@@ -1,5 +1,34 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Recovered tree put in place; `dist/` retired (no change to the build)
+
+The upload of the recovered tree (commit `03b7118`) came through the GitHub web interface and was flattened again:
+all 60 files landed at the repository root. The layout the new `CLAUDE.md` and `docs/SUITE_RECOVERY.md` describe is
+restored, each file placed by its own path references:
+- **Removed as byte-identical duplicates** of files already in place (checked with `cmp`): `README (1).md`,
+  `README (2).md`, `STAGE0_VERIFICATION.md`, `VISUAL_AUDIT.md`, the eight `tools/visual/` scripts, the four
+  `tools/stage0/` files, `split-from-html.py`, both `archive/` builds, and `download` (= `.gitattributes`).
+- **Replaced by the uploaded version:** `docs/SUITE_RECOVERY.md` (now the recovery record), and `.gitignore`
+  (uploaded as `download (3)`; adds `bundle.js` and the generated `_*.js` test modules).
+- **Moved:** `HANDOFF.md` to `docs/`; `run-all.sh`, `mk-helpers.js`, `mk-world-mod.js` (they take `..` as the root)
+  and the twelve history tools (`geo-migrate.js`, `geo-anchor.js`, `warp.js`, `warp-proto.js`, `geo-proto.js`,
+  `geo-dump.js`, `relief-fit.js`, `stale-compare.js`, `inventory.js`, `leg-check.js`, `patch-app.py`,
+  `patch-history.py`; they `require('../geo.js')`) to `tools/`. The suites and `style.css` stay at the top level.
+- **`docs/HANDOFF.md` task 1:** `dist/` deleted; it was byte-identical to the top-level
+  `austerlitz-command-map.html`. Nothing else refers to it: the remaining mentions are earlier entries of this
+  changelog, `docs/HANDOFF.md` itself, and `apply-stage0.py`'s generic list of folders to skip.
+- The entry "Repository structure restored", dropped by the upload, is restored below.
+
+No source, data, suite or tool content changed. **Verified:** `npm run check:baseline`: md5
+`c09c4b23d9e245ff9d693960cf9496b9` (`build.py` prints "bytes: 1097392", which is its count of characters; the file
+is 1,097,610 bytes). `npm run check:data`: all 112 DATA declarations byte-identical. `npm test`: build OK; seven
+suites pass with the recorded results (CSS 0 errors, 9/9; test.js 0 errors, 41/41; geo-test 54/0; terrain all OK;
+audit 0 and 0 violations; sim-test 25 events, 0 disagreements; redteam 37 claims, 0 found, 0 findings);
+`runtime-test.js` reports the 2 known errors (`mesh.getMatrixAt is not a function`,
+`_cR.setFromMatrixColumn is not a function`), as `docs/SUITE_RECOVERY.md` records. The runner exits 0 regardless
+(`docs/HANDOFF.md`, task 3). Not re-run here: `npm run check:visual`. `austerlitz-command-map.html`: 1,097,610
+bytes, md5 `c09c4b23d9e245ff9d693960cf9496b9`.
+
 ## 2026-09 · Source tree and regression suite recovered; source synchronised with Stage 0
 
 **Status: done; both builds reproduced byte for byte.** The correction-pass source tree, its eight suites, the
@@ -27,6 +56,39 @@ Recovered from the first project chat and validated: `tools/mk-helpers.js` (verb
 and Stage 0 builds; the world module reproduces the verified elevations. Generated test modules are
 ignored by git. The eight suites are still to be recovered (`docs/SUITE_RECOVERY.md`). The build is
 unchanged (md5 `c09c4b23…`).
+
+## 2026-09 · Repository structure restored (no change to the build)
+
+*(Restored: this entry was dropped when the recovered tree was uploaded. The layout it describes held until the recovered tree replaced `dist/`; see the entry above.)*
+
+The first upload through the GitHub web interface flattened the tree: every file landed at the
+repository root, `.gitignore` and `.gitattributes` arrived as `download` and `download (3)`, and the two
+sub-READMEs as `README (1).md` and `README (2).md`. `check:data` and `check:visual` could not run
+(`Cannot find module tools/visual/data-invariance.js`). The layout is restored with 23 pure renames
+(`git mv`, every one 100% similar, 0 lines changed), each placed by its own header and by the paths
+that `package.json`, `CLAUDE.md`, `README.md` and the documents already cite:
+- `tools/visual/`: `data-invariance.js`, `harness.js`, `measure.js`, `thresholds.js`, `cases.js`,
+  `check-report.js`, `compare-gallery.js`, `darkness-study.js`, and `README.md` (was `README (1).md`,
+  "Visual regression harness (Stage 0)").
+- `tools/stage0/`: `apply-stage0.py`, `extract-edits.py`, `stage0-edits.json`, `stage0.patch`, and
+  `README.md` (was `README (2).md`, "Stage 0 source patch", which names these four files).
+- `tools/split-from-html.py` (its docstring gives that path).
+- `archive/`: `stage0-c09c4b23.html` (md5 `c09c4b23…`), `correction-pass-672aff9f.html` (md5 `672aff9f…`).
+- `docs/`: `VISUAL_AUDIT.md`, `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`.
+- `dist/austerlitz-command-map.html` (was at the root; md5 `c09c4b23…`).
+- `.gitignore` (was `download`: `node_modules/`, `tools/visual/out/`, `*.pre-stage0`, `__pycache__/`) and
+  `.gitattributes` (was `download (3)`: `* text=auto eol=lf` and the binary types). Every tracked file
+  was already LF, so `.gitattributes` renormalises nothing.
+
+No source, data, HTML, test or script content changed. **Verified after the move:** `npm run
+check:baseline`: 1,097,610 bytes, md5 `c09c4b23d9e245ff9d693960cf9496b9`, matches. `npm run check:data`:
+all 112 DATA declarations byte-identical (and, as an extra check, also between
+`archive/correction-pass-672aff9f.html` and `archive/stage0-c09c4b23.html`). `npm run check:visual`
+(Playwright 1.56.0, its bundled Chromium 141): 11 cases and the self-test, "STAGE0: all checks passed";
+the only overlap is the allowed hybrid-dimmed counter pair; two Canvas2D `willReadFrequently`
+performance warnings in the console. **Not run:** the correction-pass suite (`tools/run-all.sh`), which
+is not in the repository (`docs/SUITE_RECOVERY.md`). `dist/austerlitz-command-map.html` unchanged:
+1,097,610 bytes, md5 `c09c4b23d9e245ff9d693960cf9496b9`.
 
 ## 2026-09 · Repository set-up (no change to the build)
 

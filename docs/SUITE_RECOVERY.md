@@ -1,38 +1,51 @@
-# The correction-pass regression suite: status and recovery plan
+# The correction-pass source tree and regression suite: recovered
 
-**Status: not in this repository.** The suites were written in the first project chat ("Napoleon's
-Austerlitz battle progression map"), inside that chat's temporary sandbox (`/home/claude/aus2`), and
-were never downloaded. Their recorded results stand for the correction-pass build
-(`archive/correction-pass-672aff9f.html`), and the data they checked is byte-identical in the current
-build (`npm run check:data`). They cannot be re-run until recovered.
+**Status: recovered, proven, and synchronised with Stage 0.**
 
-## What they were, and what each must reproduce
-| file | guarded | recorded result on the correction-pass build |
+## How
+The first project chat built the source tree, the suites and the tools in its own temporary sandbox and never
+downloaded them. The account data export (`conversations.json`) holds that chat complete: 94 messages, 616 tool
+calls and their outputs. Every call that wrote files was re-run in order in a fresh sandbox, with `/bin/sh` as the
+original used (read-only commands and test runs, which change no files, were skipped); file creations and edits were
+re-applied from their recorded inputs. Exit codes were compared with the originals: the one difference was the step
+that built `assets.js` from ground-texture photographs downloaded from Poly Haven, which the sandbox could not reach,
+so `assets.js` was taken from the verified build.
+
+## Proof
+- The recovered tree, built with its own original `build.py`, reproduces `archive/correction-pass-672aff9f.html`
+  byte for byte (1,047,490 bytes, md5 `672aff9f...`): every source file, and the seeded `assets.js`, is exact.
+- The original suite, run unmodified on that tree, reproduces the recorded results:
+
+| suite | correction-pass build | Stage 0 build |
 |---|---|---|
-| `css-test.js` | stylesheet validity and interface behaviour | 0 CSS errors, 9/9 behaviour checks |
-| `test.js` | historical data integrity, order of battle | 0 errors, 0 warnings, order of battle 41/41 |
-| `geo-test.js` | transform and inverse, scale, rotation, anchors, villages | 54 passed, 0 failed |
-| `terrain-test.js` | 13 elevation anchors, ordering, downstream fall, pond edges, land-cover guard, tour stop 5 | all pass |
-| `audit.js` | movement model: march rates, terrain crossings | 0 march-rate and 0 terrain violations |
-| `sim-test.js` | events against plotted positions (1.0 km true), tour stop 4 | 25 events, 0 disagreements |
-| `redteam.js` | retired claims stay absent | 0 findings; 37 retired claims, none present |
-| `runtime-test.js` | the page in a headless browser, parent/child rendering | 36 checks OK, 0 errors |
+| `css-test.js` | 0 CSS errors, 9/9 behaviour checks | same |
+| `test.js` | 0 errors, 0 warnings, order of battle 41/41 | same |
+| `geo-test.js` | 54 passed, 0 failed | same |
+| `terrain-test.js` | all pass (summits, downstream fall, meres, tour stop 5) | same |
+| `audit.js` | 0 march-rate, 0 terrain violations | same |
+| `sim-test.js` | 25 events, 0 disagreements; tour stop 4 agrees | same |
+| `redteam.js` | 37 retired claims, 0 found; 0 findings | same |
+| `runtime-test.js` | 0 errors; tour stops and parent/child checks OK | 2 errors (below) |
 
-Also lost: `tools/run-all.sh` (runner), `tools/mk-helpers.js` and `tools/mk-world-mod.js` (regenerated
-test modules from `app.js` and `world.js`), and one-off geography tools (`warp.js`, `geo-migrate.js`,
-`geo-anchor.js`, `geo-dump.js`, `relief-fit.js`, `stale-compare.js`), whose results are already in the data.
+## Synchronised with Stage 0
+The 73 Stage 0 edits (`tools/stage0/stage0-edits.json`) were applied to the recovered tree: 72 located by
+`apply-stage0.py` (with the one-off `tools/patch-*.py` excluded, since they quote the old code); the CSS block, whose
+anchor spans `style.css` and `shell.html`, appended to `style.css`. The original `build.py` then reproduces
+`archive/stage0-c09c4b23.html` byte for byte (1,097,610 bytes, md5 `c09c4b23...`).
 
-## How they will be recovered
-Recovery happens in a claude.ai chat in the Austerlitz project, because cloud sessions cannot read chats.
-1. Rebuild each file from its creation in the first chat plus every later edit, in order.
-2. Prove it: split `archive/correction-pass-672aff9f.html` with `tools/split-from-html.py`, run the
-   recovered suite, and require the recorded result above exactly. (The old runner read `bundle.js` and
-   the HTML from the tree root; paths are adapted to `dist/`, nothing else.)
-3. Then adapt `css-test.js` and `runtime-test.js` to the intentional Stage 0 interface changes (first-run
-   buttons `fr-watch`, `fr-close` now meaning Explore; legend swatches filled from `COLOUR_KEY`;
-   `#selchip`; `#devstats`) and run everything on the current build.
-4. A file that cannot be recovered exactly is rebuilt from the recorded expectations and labelled as
-   rebuilt, never presented as the original.
+## Changes to recovered files
+- `tools/run-all.sh`: finds the repository root from its own location (it had the sandbox path hard-coded).
+- `build.py`: writes its outputs with LF line endings on every platform (Linux output unchanged; md5 still `c09c4b23`).
+- `runtime-test.js`: two browser stand-ins that Stage 0 code needs (`location`, `renderer.info`).
 
-Order: `test.js`, `sim-test.js`, `audit.js`, `geo-test.js`, `terrain-test.js`, `redteam.js`, then
-`runtime-test.js` and `css-test.js`; the one-off tools last. Keep the first project chat: it is the only copy.
+## Open
+`runtime-test.js` still reports 2 errors on Stage 0 (`mesh.getMatrixAt is not a function`;
+`_cR.setFromMatrixColumn is not a function`): its hand-written three.js stand-in has only token maths, and Stage 0's
+figure seating and label placement use real vector, matrix and quaternion methods. The application is unaffected
+(the Stage 0 harness and self-test run it in a real browser). The fix is `docs/HANDOFF.md`, task 2.
+
+## History kept in `tools/`, never to be run again
+`geo-migrate.js`, `geo-anchor.js`, `warp.js`, `warp-proto.js`, `geo-proto.js`, `geo-dump.js`, `relief-fit.js`,
+`stale-compare.js`, `inventory.js`, `leg-check.js`, `patch-app.py`, `patch-history.py` (one-off correction-pass
+tools, already applied); `split-from-html.py` and `stage0/` (how the interim tree and the Stage 0 patch were made).
+The first chat's scratch files (renders, relief images, backups) are not part of the build or tests and were left out.
