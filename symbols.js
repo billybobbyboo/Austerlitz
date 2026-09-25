@@ -198,4 +198,3 @@ function makePlainLabel(text,size,colour,paper){
   cv._ink=[12/w,0.14,(w-12)/w,0.80];
   return {canvas:cv, w:w, h:Math.round(size*1.9)};
 }
-

@@ -13,7 +13,7 @@ lower one without saying so explicitly.
 ## Layout
 | file | contents |
 |---|---|
-| `shell.html` | CSS, markup, three.js tag; the bundle replaces `/*@@BUNDLE@@*/` |
+| `shell.html`, `style.css` | page markup and stylesheet; `build.py` puts the CSS at `/*CSS*/` and the bundle at `/*JS*/` |
 | `assets.js` | embedded CC0 ground textures |
 | `geo.js` | `GEOREF`: the only geographic and scale authority (transform, horizontal and vertical scale, ground truth) |
 | `data.js` | historical dataset: phases, order of battle and tracks, features, sources note |
@@ -21,10 +21,14 @@ lower one without saying so explicitly.
 | `world.js` | ground: relief model, land cover, water, roads, woods, settlements, mist, `groundY` |
 | `symbols.js` | canvas counters and labels |
 | `app.js` | scene, overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, interface, runtime checks |
-| `build.py` | concatenates in load order into `dist/austerlitz-command-map.html` |
+| `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
+| `*test.js`, `audit.js`, `redteam.js` | the regression suite; `tools/run-all.sh` runs it |
+| `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), and history (see `docs/SUITE_RECOVERY.md`) |
 | `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html` |
-| `docs/` | `VISUAL_AUDIT.md` (the working roadmap), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md` |
-| `tools/visual/` | Stage 0 visual harness, report checker, data-invariance proof, darkness study |
+| `docs/` | `VISUAL_AUDIT.md` (the roadmap), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
+
+The one-off correction-pass tools (`geo-migrate.js`, `geo-anchor.js`, `patch-app.py`, `patch-history.py`, and the
+others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; their results are already in the data.
 
 ## Before changing anything
 - Read `CHANGELOG.md` (current state), the relevant part of `docs/VISUAL_AUDIT.md`, and the code you
@@ -53,20 +57,23 @@ lower one without saying so explicitly.
 
 ## Checks: run them; never claim a result you did not run
 - First time: `npm install`, then `npx playwright install chromium` (for the visual harness).
-- `npm run build`, then `npm run check:data`: must pass unless the task changes data on purpose.
+- `npm run build`; `npm test` runs the whole regression suite and prints each suite's result: read the output,
+  the runner does not yet exit non-zero on a failed suite (`docs/HANDOFF.md`).
+- `npm run check:data`: must pass unless the task changes data on purpose.
 - `npm run check:visual`: 11 fixed views, Stage 0 thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()`.
   One known residual is allowed by name (hybrid-dimmed Walther/Nansouty counter overlap, Stage 2).
 - `npm run check:baseline` passes only on the unmodified Stage 0 build (md5 `c09c4b23...`).
-- The correction-pass regression suite is not in the repository yet (`docs/SUITE_RECOVERY.md`). Do not
-  describe anything as fully regression-tested, and do not write replacement suites and call them the originals.
+- Known open item: `runtime-test.js` reports 2 errors on Stage 0 until its three.js stand-ins are extended
+  (`docs/HANDOFF.md`, task 2). Never loosen or remove an assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
 
 ## Finishing a task
 - Update `CHANGELOG.md`: what changed and why, what was verified (numbers), what remains uncertain,
-  and the new size and md5 of `dist/austerlitz-command-map.html`. Keep historical uncertainty
+  and the new size and md5 of `austerlitz-command-map.html`. Keep historical uncertainty
   separate from implementation choices.
-- Commit `dist/` with the sources. Report files changed, checks run with results, and anything not verified.
+- Commit `austerlitz-command-map.html` with the sources. Report files changed, checks run with results, and anything not verified.
 
 ## Current state (September 2026)
-Stage 0 (trust and baseline) is complete. Stage 1 (visual language) has not started. The shadow toe
+Stage 0 (trust and baseline) is complete; the source tree and the regression suite are recovered and
+synchronised with it (CHANGELOG.md). Stage 1 (visual language) has not started. The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.

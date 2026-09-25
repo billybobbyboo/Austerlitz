@@ -1,0 +1,737 @@
+{
+ "description": "Stage 0 (visual/UX baseline and trust) edits to the Austerlitz command map. Each edit replaces `old` (unique in the original build) with `new`. Data sections are untouched; see tools/visual/data-invariance.js.",
+ "original_md5": "672aff9f0d1b1673d079903185d39351",
+ "patched_md5": "c09c4b23d9e245ff9d693960cf9496b9",
+ "edits": [
+  {
+   "n": 1,
+   "original_lines": [
+    588,
+    589
+   ],
+   "where": "compact formation card, before the full dossier",
+   "old": "}\n</style>\n",
+   "new": "}\n\n/* ---------- Stage 0: the first-run card on its own, low over a legible field ---------- */\n#firstrun{left:calc(var(--rail) + (100vw - var(--rail))/2);top:auto;bottom:calc(var(--tb) + 18px);\n  transform:translateX(-50%);width:min(540px,calc(100vw - var(--rail) - 40px));padding:20px 24px 18px}\nbody.rail-hidden #firstrun{left:50%;width:min(540px,calc(100vw - 32px))}\n#firstrun h2{font-size:23px;margin:0 0 8px}\n#firstrun p{margin:0 0 9px}\n#firstrun .key-sw{display:inline-block;width:11px;height:11px;border:1px solid rgba(0,0,0,.55);border-radius:1px;\n  margin:0 5px 0 1px;vertical-align:-1px}\n#firstrun .key-ar{display:inline-block;width:18px;height:5px;border-radius:2px;margin:0 5px 0 1px;vertical-align:2px}\n#firstrun .fr-act .t{min-height:34px;padding:7px 14px;font-size:12.5px}\nbody.firstrun-on .dispatch,body.firstrun-on .legend,body.firstrun-on .drawer,\nbody.firstrun-on #vsbadge,body.firstrun-on #tourbar,body.firstrun-on #selchip{display:none !important}\n.legend .ar{width:20px;height:5px;border-radius:2px}\n\n/* ---------- Stage 0: what is selected, whenever the dossier is not on screen ---------- */\n#selchip{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--tb) + 14px);z-index:27;\n  display:flex;align-items:center;gap:10px;max-width:calc(100vw - 32px);\n  background:rgba(10,14,19,.92);border:1px solid var(--line-2);border-left:2px solid var(--sun);\n  padding:6px 8px 6px 12px;font-size:12px;color:var(--bone);backdrop-filter:blur(8px)}\n#selchip[hidden]{display:none}\n#selchip .sc-k{color:var(--faint);font-size:11px}\n#selchip .sc-n{font-weight:400;color:var(--bone-hi);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}\n#selchip .sc-s{color:var(--dim)}\n#sc-clear{background:none;border:0;color:var(--dim);font-size:16px;line-height:1;cursor:pointer;padding:2px 5px}\n#sc-clear:hover{color:var(--bone)}\nbody.mode-staff #selchip{background:rgba(243,238,226,.95);color:#2E2B1E;border-color:rgba(40,36,28,.25);border-left-color:#9A6F1E}\nbody.mode-staff #selchip .sc-n{color:#14120C}\n\n/* ---------- Stage 0: development readout (the ` key, or ?stats in the address) ---------- */\n#devstats{position:fixed;left:8px;top:8px;z-index:70;pointer-events:none;white-space:pre;\n  font:11px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#CFE3C8;\n  background:rgba(4,8,10,.84);border:1px solid rgba(160,200,150,.25);padding:6px 9px}\n#devstats[hidden]{display:none}\n</style>\n"
+  },
+  {
+   "n": 2,
+   "original_lines": [
+    710,
+    711
+   ],
+   "where": "markup",
+   "old": "\n<div class=\"legend\">\n",
+   "new": "\n<div id=\"selchip\" hidden role=\"status\" aria-live=\"polite\">\n  <span class=\"sc-k\">Selected</span><b class=\"sc-n\"></b><span class=\"sc-s\"></span>\n  <button class=\"t\" id=\"sc-open\" type=\"button\">Open the dossier</button>\n  <button id=\"sc-clear\" type=\"button\" aria-label=\"Clear the selection\" title=\"Clear the selection (Esc)\">&times;</button>\n</div>\n<div id=\"devstats\" hidden aria-hidden=\"true\"></div>\n\n<div class=\"legend\">\n"
+  },
+  {
+   "n": 3,
+   "original_lines": [
+    720,
+    722
+   ],
+   "where": "markup",
+   "old": "  <div class=\"k\"><span>French</span><span class=\"sw\" style=\"background:#2E5496\"></span></div>\n  <div class=\"k\"><span>Russian</span><span class=\"sw\" style=\"background:#3E6B4A\"></span></div>\n  <div class=\"k\"><span>Austrian</span><span class=\"sw\" style=\"background:#D9D2BF\"></span></div>\n",
+   "new": "  <div class=\"k\"><span>French</span><span class=\"sw\" data-key=\"fr\"></span></div>\n  <div class=\"k\"><span>Russian</span><span class=\"sw\" data-key=\"ru\"></span></div>\n  <div class=\"k\"><span>Austrian</span><span class=\"sw\" data-key=\"at\"></span></div>\n  <div class=\"k\"><span>French movement</span><span class=\"ar\" data-key=\"arrow-fr\"></span></div>\n  <div class=\"k\"><span>Allied movement</span><span class=\"ar\" data-key=\"arrow-al\"></span></div>\n"
+  },
+  {
+   "n": 4,
+   "original_lines": [
+    791,
+    799
+   ],
+   "where": "markup",
+   "old": "<div id=\"firstrun\">\n  <h2>The Battle of Austerlitz</h2>\n  <p><b class=\"fr\">Blue</b> is the French army. <b class=\"al\">Amber</b> is the Russian and Austrian army.\n     The high ground in the centre is the Pratzen plateau, and it decides the battle.</p>\n  <p class=\"fr-hint\">Press <b>Play</b> to watch it unfold, drag the timeline to move through the day,\n     or click any formation to see who it was and what it was doing.</p>\n  <div class=\"fr-act\">\n    <button class=\"t\" id=\"fr-tour\">Take the guided tour</button>\n    <button class=\"t\" id=\"fr-close\">Explore on my own</button>\n",
+   "new": "<div id=\"firstrun\" role=\"dialog\" aria-labelledby=\"fr-title\">\n  <h2 id=\"fr-title\">The Battle of Austerlitz</h2>\n  <!-- written at start-up from the same colour key as the legend (COLOUR_KEY), so the two cannot disagree -->\n  <p id=\"fr-key\">Blue is the French army. The Allies are green for Russia and white for Austria, and their\n     movement arrows are drawn in amber. The high ground in the centre is the Pratzen plateau, and it decides the battle.</p>\n  <p class=\"fr-hint\">Drag to turn the view, scroll to zoom, and click any formation to see who it was and what it was doing.</p>\n  <div class=\"fr-act\">\n    <button class=\"t\" id=\"fr-tour\">Guided tour</button>\n    <button class=\"t\" id=\"fr-watch\">Watch the battle</button>\n    <button class=\"t\" id=\"fr-close\">Explore</button>\n"
+  },
+  {
+   "n": 5,
+   "original_lines": [
+    2374,
+    2375
+   ],
+   "where": "gridAt",
+   "old": "\n/* ---------------- state ---------------- */\n",
+   "new": "\n/* ---------------- the ground as drawn ----------------\n   Anything that must stand on the visible ground - figures, standards, the camera floor, mist\n   edges - reads the terrain mesh's own triangles, not the analytic height(), which the 81 m\n   triangulation departs from by up to a few tenths of a unit on steep ground. The layout matches\n   PlaneGeometry(360,310,280,240) turned flat: cell (ix,iz) is triangles (a,b,d) and (b,c,d). */\nvar GROUND_W=360, GROUND_D=310, GROUND_NX=280, GROUND_NZ=240;\nfunction groundY(x,z){\n  if(!groundMesh) return height(x,z);\n  var P=groundMesh.geometry.attributes.position.array, cw=GROUND_W/GROUND_NX, cd=GROUND_D/GROUND_NZ;\n  var fx=(x+GROUND_W/2)/cw, fz=(z+GROUND_D/2)/cd;\n  if(fx<0||fz<0||fx>GROUND_NX||fz>GROUND_NZ) return height(x,z);\n  var ix=Math.min(GROUND_NX-1,Math.floor(fx)), iz=Math.min(GROUND_NZ-1,Math.floor(fz)), u=fx-ix, v=fz-iz;\n  var o0=(iz*GROUND_NX+ix)*18, o1=o0+9;\n  var ha=P[o0+1], hb=P[o0+4], hd=P[o0+7], hc=P[o1+4];\n  return (u+v<=1) ? ha+u*(hd-ha)+v*(hb-ha) : hc+(1-u)*(hb-hc)+(1-v)*(hd-hc);\n}\n\n/* ---------------- state ---------------- */\n"
+  },
+  {
+   "n": 6,
+   "original_lines": [
+    2398,
+    2398
+   ],
+   "where": "buildWorld",
+   "old": "  var geo=new THREE.PlaneGeometry(360,310,280,240);\n",
+   "new": "  var geo=new THREE.PlaneGeometry(GROUND_W,GROUND_D,GROUND_NX,GROUND_NZ);   /* groundY() reads this layout */\n"
+  },
+  {
+   "n": 7,
+   "original_lines": [
+    2545,
+    2545
+   ],
+   "where": "makePalette",
+   "old": "      var rel=(paper ? (0.66+0.46*sh) : (0.46+0.74*sh)) * FACE.ao[f];\n",
+   "new": "      /* The landscape is also lit in real time by the phase's sun, usually from the south-east to\n         the south-west, so the baked north-west hillshade is kept narrow there (0.70-1.12, was\n         0.46-1.20): at full range the two lights multiplied a slope facing away from both down to\n         near-black. The paper map is not sun-lit and keeps its full cartographic hillshade. */\n      var rel=(paper ? (0.66+0.46*sh) : (0.70+0.42*sh)) * FACE.ao[f];\n"
+  },
+  {
+   "n": 8,
+   "original_lines": [
+    2723,
+    2724
+   ],
+   "where": "photoAtlas",
+   "old": "    _atlas.needsUpdate=true;\n    photoNormal();\n",
+   "new": "    _atlas.needsUpdate=true;\n    if(typeof requestRender===\"function\") requestRender(2);\n    photoNormal();\n"
+  },
+  {
+   "n": 9,
+   "original_lines": [
+    2756,
+    2757
+   ],
+   "where": "photoNormal",
+   "old": "    _nrmAtlas.needsUpdate=true;\n  }\n",
+   "new": "    _nrmAtlas.needsUpdate=true;\n    if(typeof requestRender===\"function\") requestRender(2);\n  }\n"
+  },
+  {
+   "n": 10,
+   "original_lines": [
+    3381,
+    3382
+   ],
+   "where": "buildAnalysis",
+   "old": "}\nfunction buildMist(scene){\n",
+   "new": "}\n/* A mist sheet is flat, so wherever the ground rises through it the sheet would end in a hard\n   line along the contour. Each vertex carries an alpha that falls to nothing as the ground comes\n   up to meet the sheet - checked across the sheet's whole drift - so the edge dissolves instead.\n   Stage 0 only: the valley fog itself is Stage 4. */\nvar MIST_DRIFT=0.8;\nfunction mistSheet(w,h,nx,ny,cx,cz,y){\n  var geo=new THREE.PlaneGeometry(w,h,nx,ny), pa=geo.attributes.position.array, n=pa.length/3;\n  var col=new Float32Array(n*4), dep=new Float32Array(n), i, j;\n  for(i=0;i<n;i++){\n    var x=cx+pa[i*3], z=cz-pa[i*3+1];          /* plane space to world, after the -90 degree turn about x */\n    dep[i]=y-Math.max(groundY(x,z),groundY(x-MIST_DRIFT,z),groundY(x+MIST_DRIFT,z));\n    col[i*4]=col[i*4+1]=col[i*4+2]=1;\n    col[i*4+3]=smoothstep(0.2,3.0,dep[i]);\n  }\n  /* erode by one cell: a vertex next to one at or under the ground is clear too, so a cell the\n     ground passes through carries no alpha anywhere, however steep the slope across it */\n  var W1=nx+1;\n  for(j=0;j<=ny;j++) for(i=0;i<=nx;i++){\n    var k=j*W1+i, low=false;\n    for(var dj=-1;dj<=1&&!low;dj++) for(var di=-1;di<=1;di++){\n      var ii=i+di, jj=j+dj; if(ii<0||jj<0||ii>nx||jj>ny) continue;\n      if(dep[jj*W1+ii]<0.2){ low=true; break; }\n    }\n    if(low) col[k*4+3]=0;\n  }\n  geo.setAttribute(\"color\",new THREE.BufferAttribute(col,4));\n  return geo;\n}\nfunction buildMist(scene){\n"
+  },
+  {
+   "n": 11,
+   "original_lines": [
+    3397,
+    3407
+   ],
+   "where": "buildMist",
+   "old": "    var w2=W(s2[0],s2[1]);\n    var m=new THREE.Mesh(new THREE.PlaneGeometry(s2[2],s2[2]),\n      new THREE.MeshBasicMaterial({map:mtex,transparent:true,opacity:0.9,depthWrite:false,fog:false}));\n    m.rotation.x=-Math.PI/2;\n    m.position.set(w2[0],height(w2[0],w2[1])+1.5,w2[1]);\n    mistGroup.add(m);\n  });\n  /* one broad sheet of haze so the far ground recedes properly */\n  var haze=new THREE.Mesh(new THREE.PlaneGeometry(360,310),\n    new THREE.MeshBasicMaterial({map:mtex,transparent:true,opacity:0.34,depthWrite:false,fog:false}));\n  haze.rotation.x=-Math.PI/2; haze.position.set(0,3.4,0);\n",
+   "new": "    var w2=W(s2[0],s2[1]), y2=height(w2[0],w2[1])+1.5;\n    var m=new THREE.Mesh(mistSheet(s2[2],s2[2],40,40,w2[0],w2[1],y2),\n      new THREE.MeshBasicMaterial({map:mtex,transparent:true,opacity:0.9,depthWrite:false,fog:false,vertexColors:true}));\n    m.rotation.x=-Math.PI/2;\n    m.position.set(w2[0],y2,w2[1]);\n    m.userData.x0=w2[0];\n    mistGroup.add(m);\n  });\n  /* one broad sheet of haze so the far ground recedes properly */\n  var haze=new THREE.Mesh(mistSheet(360,310,144,124,0,0,3.4),\n    new THREE.MeshBasicMaterial({map:mtex,transparent:true,opacity:0.34,depthWrite:false,fog:false,vertexColors:true}));\n  haze.rotation.x=-Math.PI/2; haze.position.set(0,3.4,0);\n  haze.userData.x0=0;\n"
+  },
+  {
+   "n": 12,
+   "original_lines": [
+    3448,
+    3449
+   ],
+   "where": "drawSymbol",
+   "old": "\n  function label(text,x,y,font,align,col,maxW){\n",
+   "new": "\n  /* the extent actually inked, in canvas units, so label placement can use the counter's real\n     footprint instead of its padded canvas */\n  var inkBox=[1e9,1e9,-1e9,-1e9];\n  function grow(x0,y0,x1,y1){ if(x0<inkBox[0])inkBox[0]=x0; if(y0<inkBox[1])inkBox[1]=y0; if(x1>inkBox[2])inkBox[2]=x1; if(y1>inkBox[3])inkBox[3]=y1; }\n  function inkText(t,x,y,align){\n    var w=c.measureText(t).width, m=/(\\d+(\\.\\d+)?)px/.exec(c.font), px=m?parseFloat(m[1]):20;\n    var x0=align===\"right\"?x-w:(align===\"center\"?x-w/2:x);\n    grow(x0-2,y-px*0.62,x0+w+2,y+px*0.62);\n  }\n  function label(text,x,y,font,align,col,maxW){\n"
+  },
+  {
+   "n": 13,
+   "original_lines": [
+    3465,
+    3469
+   ],
+   "where": "drawSymbol",
+   "old": "      for(var j=0;j<lines.length;j++){ c.strokeText(lines[j],x,sy+j*lh); }\n      for(var k=0;k<lines.length;k++){ c.fillText(lines[k],x,sy+k*lh); }\n      c.fillStyle=save;\n    } else {\n      c.strokeText(text,x,y);\n",
+   "new": "      for(var j=0;j<lines.length;j++){ c.strokeText(lines[j],x,sy+j*lh); inkText(lines[j],x,sy+j*lh,align); }\n      for(var k=0;k<lines.length;k++){ c.fillText(lines[k],x,sy+k*lh); }\n      c.fillStyle=save;\n    } else {\n      c.strokeText(text,x,y); inkText(text,x,y,align);\n"
+  },
+  {
+   "n": 14,
+   "original_lines": [
+    3483,
+    3483
+   ],
+   "where": "drawSymbol",
+   "old": "    c.strokeText(ech,FX+FW/2,30); c.fillStyle=ink; c.fillText(ech,FX+FW/2,30);\n",
+   "new": "    c.strokeText(ech,FX+FW/2,30); c.fillStyle=ink; c.fillText(ech,FX+FW/2,30); inkText(ech,FX+FW/2,30,\"center\");\n"
+  },
+  {
+   "n": 15,
+   "original_lines": [
+    3496,
+    3497
+   ],
+   "where": "drawSymbol",
+   "old": "  c.restore();\n\n",
+   "new": "  c.restore();\n  grow(FX-3,FY-3,FX+FW+3,FY+FH+3);\n  if(f.arm===\"hq\") grow(FX-3,FY,FX+3,FY+FH+32);\n\n"
+  },
+  {
+   "n": 16,
+   "original_lines": [
+    3531,
+    3532
+   ],
+   "where": "drawSymbol",
+   "old": "\n  /* designation, left of frame */\n",
+   "new": "\n  if(opts.know===\"uncertain\"||(cf&&cf!==\"A\")) grow(FX+FW+4,FY-6,FX+FW+26,FY+22);\n  /* designation, left of frame */\n"
+  },
+  {
+   "n": 17,
+   "original_lines": [
+    3552,
+    3556
+   ],
+   "where": "drawSymbol",
+   "old": "    roundRect(c,SYM_W/2-tw/2,FY+FH+42,tw,26,13); c.fill();\n    c.fillStyle=\"#FBF7EE\"; c.fillText(s.label,SYM_W/2,FY+FH+55);\n  }\n\n  c.globalAlpha=1;\n",
+   "new": "    roundRect(c,SYM_W/2-tw/2,FY+FH+42,tw,26,13); c.fill(); grow(SYM_W/2-tw/2,FY+FH+42,SYM_W/2+tw/2,FY+FH+68);\n    c.fillStyle=\"#FBF7EE\"; c.fillText(s.label,SYM_W/2,FY+FH+55);\n  }\n\n  c.globalAlpha=1;\n  cv._ink=[Math.max(0,inkBox[0]/SYM_W),Math.max(0,inkBox[1]/SYM_H),Math.min(1,inkBox[2]/SYM_W),Math.min(1,inkBox[3]/SYM_H)];\n"
+  },
+  {
+   "n": 18,
+   "original_lines": [
+    3577,
+    3578
+   ],
+   "where": "makeFeatureGlyph",
+   "old": "  c.strokeText(name,Wc/2,48); c.fillStyle=col; c.fillText(name,Wc/2,48);\n  return cv;\n",
+   "new": "  c.strokeText(name,Wc/2,48); c.fillStyle=col; c.fillText(name,Wc/2,48);\n  var tw=c.measureText(name).width;\n  cv._ink=[Math.max(0,(Wc/2-Math.max(tw/2,10)-2)/Wc),6/Hc,Math.min(1,(Wc/2+Math.max(tw/2,10)+2)/Wc),62/Hc];\n  return cv;\n"
+  },
+  {
+   "n": 19,
+   "original_lines": [
+    3594,
+    3595
+   ],
+   "where": "makePlainLabel",
+   "old": "  c.fillStyle=colour; c.fillText(text,w/2,cy);\n  return {canvas:cv, w:w, h:Math.round(size*1.9)};\n",
+   "new": "  c.fillStyle=colour; c.fillText(text,w/2,cy);\n  cv._ink=[12/w,0.14,(w-12)/w,0.80];\n  return {canvas:cv, w:w, h:Math.round(size*1.9)};\n"
+  },
+  {
+   "n": 20,
+   "original_lines": [
+    3601,
+    3602
+   ],
+   "where": "RM",
+   "old": "var RM = window.matchMedia && window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches;\n\n",
+   "new": "var RM = window.matchMedia && window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches;\n/* ?harness=1: deterministic frames for the visual regression harness (no drift, no grain animation) */\nvar HARNESS = /[?&]harness=1\\b/.test(location.search);\n\n"
+  },
+  {
+   "n": 21,
+   "original_lines": [
+    3808,
+    3809
+   ],
+   "where": "init",
+   "old": "  renderer.shadowMap.type=THREE.PCFSoftShadowMap;\n  renderer.outputEncoding=THREE.LinearEncoding;\n",
+   "new": "  renderer.shadowMap.type=THREE.PCFSoftShadowMap;\n  renderer.info.autoReset=false;          /* the frame resets it, so the readout can split the passes */\n  renderer.outputEncoding=THREE.LinearEncoding;\n"
+  },
+  {
+   "n": 22,
+   "original_lines": [
+    3848,
+    3849
+   ],
+   "where": "init",
+   "old": "  setPresentation(\"study\");\n  var probs=auditMovement();\n",
+   "new": "  setPresentation(\"study\");\n  openFirstRun();\n  var probs=auditMovement();\n"
+  },
+  {
+   "n": 23,
+   "original_lines": [
+    4156,
+    4156
+   ],
+   "where": "makeBlock",
+   "old": "          deployed:null, limbered:null, W0:6, D0:4, figs:[], lastSw:-1, lastSd:-1};\n",
+   "new": "          deployed:null, limbered:null, W0:6, D0:4, figs:[], seat:[], lastSw:-1, lastSd:-1};\n"
+  },
+  {
+   "n": 24,
+   "original_lines": [
+    4173,
+    4196
+   ],
+   "where": "makeBlock",
+   "old": "    ud.figs.push({mesh:m,base:base,rots:rots,n:pts.length});\n    return m;\n  }\n  var _wp=new THREE.Vector3();\n  function layoutFigs(sw,sd){\n    g.updateMatrixWorld(true);\n    var ground = (typeof gridH!==\"undefined\" && gridH);\n    ud.figs.forEach(function(fg){\n      for(var i=0;i<fg.n;i++){\n        var lx=fg.base[i*3]*sw, lz=fg.base[i*3+2]*sd, ly=fg.base[i*3+1];\n        if(ground){\n          /* where this man stands in the world, and how far the ground there is from the block's plane */\n          _wp.set(lx,ly,lz).applyMatrix4(g.matrixWorld);\n          var gy=gridAt(gridH,_wp.x,_wp.z);\n          ly += (gy - _wp.y);\n        }\n        d.position.set(lx, ly, lz);\n        d.rotation.set(0,fg.rots[i],0); d.scale.set(1,1,1); d.updateMatrix();\n        fg.mesh.setMatrixAt(i,d.matrix);\n      }\n      fg.mesh.instanceMatrix.needsUpdate=true;\n    });\n  }\n  ud.layout=layoutFigs;\n",
+   "new": "    ud.figs.push({mesh:m,base:base,rots:rots,n:pts.length,src:pts});\n    return m;\n  }\n  /* anything else that stands on the ground - skirmishers, gun crews, teams, guns, limbers, tents -\n     is registered with its designed layout, and re-seated with the men */\n  var _pv0=new THREE.Vector3(), _sv0=new THREE.Vector3(), _qr=new THREE.Quaternion(), _mm=new THREE.Matrix4();\n  function seatable(mesh,shape,upright){\n    var n=mesh.count, P=new Float32Array(n*3), R=new Float32Array(n*4), S=new Float32Array(n*3);\n    for(var i=0;i<n;i++){\n      mesh.getMatrixAt(i,_mm); _mm.decompose(_pv0,_qr,_sv0);\n      P[i*3]=_pv0.x; P[i*3+1]=_pv0.y; P[i*3+2]=_pv0.z;\n      R[i*4]=_qr.x; R[i*4+1]=_qr.y; R[i*4+2]=_qr.z; R[i*4+3]=_qr.w;\n      S[i*3]=_sv0.x; S[i*3+1]=_sv0.y; S[i*3+2]=_sv0.z;\n    }\n    ud.seat.push({mesh:mesh,n:n,P:P,R:R,S:S,shape:!!shape,upright:!!upright});\n    return mesh;\n  }\n  /* Seating, in world space, on the ground as drawn (groundY). Each man keeps the world x,z his\n     place in the (tilted, scaled) block gives him, is set on the drawn ground at that x,z, and the\n     point is mapped back into the block's frame through the inverse of its world matrix. That is\n     exact under any block scale (highlight dimming, hybrid mode), tilt or deployment, with no\n     iteration - an earlier fixed-point version diverged where the 10x relief is steeper than 45\n     degrees. Before Stage 0 the error was written in unscaled and untilted, and only refreshed\n     when the block moved 1.5 units or turned: men stood up to 16 units off the ground on the\n     Pratzeberg. Men and horses now stand with gravity; guns, limbers and tents keep the slope. */\n  var _wp=new THREE.Vector3(), _up0=new THREE.Vector3(0,1,0), _nb=new THREE.Vector3(), _inv=new THREE.Matrix4(),\n      _gl=new THREE.Vector3(), _qt0=new THREE.Quaternion(), _qc=new THREE.Quaternion(), _qa=new THREE.Quaternion(), _one=new THREE.Vector3(1,1,1);\n  function seatPrep(){ g.updateMatrixWorld(true); _inv.copy(g.matrixWorld).invert(); }\n  function seatLocal(lx,lz,out){\n    _wp.set(lx,0,lz).applyMatrix4(g.matrixWorld);\n    _wp.y=groundY(_wp.x,_wp.z);\n    return out.copy(_wp).applyMatrix4(_inv);\n  }\n  /* the block's rotation is tilt x yaw; this is the local rotation that undoes the tilt and keeps the yaw */\n  function uprightQuat(){\n    _nb.copy(_up0).applyQuaternion(g.quaternion).normalize();\n    _qt0.setFromUnitVectors(_up0,_nb).invert();\n    return _qc.copy(g.quaternion).invert().multiply(_qt0).multiply(g.quaternion);\n  }\n  function layoutFigs(sw,sd){\n    seatPrep();\n    var C=uprightQuat(), cache=new Map();\n    ud.figs.forEach(function(fg){\n      var L=cache.get(fg.src);\n      if(!L){\n        L=new Float32Array(fg.n*3);\n        for(var i=0;i<fg.n;i++){ seatLocal(fg.base[i*3]*sw,fg.base[i*3+2]*sd,_gl); L[i*3]=_gl.x; L[i*3+1]=_gl.y; L[i*3+2]=_gl.z; }\n        cache.set(fg.src,L);\n      }\n      for(var j=0;j<fg.n;j++){\n        _qa.setFromAxisAngle(_up0,fg.rots[j]).premultiply(C);\n        _pv0.set(L[j*3], L[j*3+1]+fg.base[j*3+1], L[j*3+2]);\n        _mm.compose(_pv0,_qa,_one);\n        fg.mesh.setMatrixAt(j,_mm);\n      }\n      fg.mesh.instanceMatrix.needsUpdate=true;\n    });\n    ud.seat.forEach(function(st){\n      for(var i=0;i<st.n;i++){\n        var lx=st.shape?st.P[i*3]*sw:st.P[i*3], lz=st.shape?st.P[i*3+2]*sd:st.P[i*3+2];\n        seatLocal(lx,lz,_gl);\n        _pv0.set(_gl.x, _gl.y+st.P[i*3+1], _gl.z);\n        _qa.set(st.R[i*4],st.R[i*4+1],st.R[i*4+2],st.R[i*4+3]);\n        if(st.upright) _qa.premultiply(C);\n        _sv0.set(st.S[i*3],st.S[i*3+1],st.S[i*3+2]);\n        _mm.compose(_pv0,_qa,_sv0);\n        st.mesh.setMatrixAt(i,_mm);\n      }\n      st.mesh.instanceMatrix.needsUpdate=true;\n    });\n    SEAT_STATS.blocks++;\n  }\n  ud.layout=layoutFigs;\n  ud.seatPrep=seatPrep;\n  ud.seatLocal=seatLocal;\n  ud.upright=uprightQuat;\n"
+  },
+  {
+   "n": 25,
+   "original_lines": [
+    4216,
+    4216
+   ],
+   "where": "makeBlock",
+   "old": "    body.add(tents);\n",
+   "new": "    body.add(tents); seatable(tents,false,true);\n"
+  },
+  {
+   "n": 26,
+   "original_lines": [
+    4244,
+    4245
+   ],
+   "where": "makeBlock",
+   "old": "    dep.add(bar); dep.add(whl); dep.add(tra);\n    /* crews: the same figure kit, parented to the deployed group so they limber up with the guns */\n",
+   "new": "    dep.add(bar); dep.add(whl); dep.add(tra);\n    seatable(bar,false,false); seatable(whl,false,false); seatable(tra,false,false);\n    /* crews: the same figure kit, parented to the deployed group so they limber up with the guns */\n"
+  },
+  {
+   "n": 27,
+   "original_lines": [
+    4256,
+    4256
+   ],
+   "where": "makeBlock",
+   "old": "    dep.add(cM); dep.add(fM);\n",
+   "new": "    dep.add(cM); dep.add(fM); seatable(cM,false,true); seatable(fM,false,true);\n"
+  },
+  {
+   "n": 28,
+   "original_lines": [
+    4274,
+    4276
+   ],
+   "where": "makeBlock",
+   "old": "    var hM=new THREE.InstancedMesh(K.horse,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),team.length);\n    team.forEach(function(pt,i){ d.position.set(pt[0],pt[1],pt[2]); d.rotation.set(0,pt[3],0); d.scale.set(1,1,1); d.updateMatrix(); hM.setMatrixAt(i,d.matrix); });\n    hM.castShadow=true; lim.add(hM);\n",
+   "new": "    seatable(lb,false,false); seatable(lw,false,false); seatable(lbar,false,false);\n    var hM=new THREE.InstancedMesh(K.horse,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),team.length);\n    team.forEach(function(pt,i){ d.position.set(pt[0],pt[1],pt[2]); d.rotation.set(0,pt[3],0); d.scale.set(1,1,1); d.updateMatrix(); hM.setMatrixAt(i,d.matrix); });\n    hM.castShadow=true; lim.add(hM); seatable(hM,false,true);\n"
+  },
+  {
+   "n": 29,
+   "original_lines": [
+    4333,
+    4334
+   ],
+   "where": "makeBlock",
+   "old": "      screen.visible=false; body.add(screen); ud.skirmish=screen;\n      /* two mounted officers on the flanks */\n",
+   "new": "      screen.visible=false; body.add(screen); ud.skirmish=screen;\n      seatable(skC,false,true); seatable(skF,false,true);\n      /* two mounted officers on the flanks */\n"
+  },
+  {
+   "n": 30,
+   "original_lines": [
+    4348,
+    4349
+   ],
+   "where": "makeBlock",
+   "old": "      bb.castShadow=bwl.castShadow=btr.castShadow=true; body.add(bb); body.add(bwl); body.add(btr);\n    }\n",
+   "new": "      bb.castShadow=bwl.castShadow=btr.castShadow=true; body.add(bb); body.add(bwl); body.add(btr);\n      seatable(bb,false,false); seatable(bwl,false,false); seatable(btr,false,false);\n    }\n"
+  },
+  {
+   "n": 31,
+   "original_lines": [
+    4389,
+    4403
+   ],
+   "where": "placeStandards",
+   "old": "function placeStandards(g,sw,tilt){\n  var ud=g.userData, d=new THREE.Object3D();\n  tilt=tilt||0;\n  var tall=(ud.body&&ud.body.children.length&&ud.stdX.length===1&&!ud.skirmish)?1.25:1;\n  for(var i=0;i<ud.stdX.length;i++){\n    var X=ud.stdX[i]*sw;\n    d.scale.set(1,tall,1); d.rotation.set(0,0,0);\n    d.position.set(X,2.6*tall,0); d.updateMatrix(); ud.poles.setMatrixAt(i,d.matrix);\n    d.scale.set(1,1,1); d.rotation.set(0,0,-tilt);\n    d.position.set(X+1.25*Math.cos(tilt),4.5*tall-1.25*Math.sin(tilt),0);\n    d.updateMatrix(); ud.flags.setMatrixAt(i,d.matrix);\n    d.rotation.set(0,0,0);\n  }\n  ud.poles.instanceMatrix.needsUpdate=true;\n  ud.flags.instanceMatrix.needsUpdate=true;\n",
+   "new": "/* standards stand on the drawn ground and upright, like the men who carry them */\nvar _stQ=new THREE.Quaternion(), _stZ=new THREE.Quaternion(), _stP=new THREE.Vector3(), _stO=new THREE.Vector3(),\n    _stS=new THREE.Vector3(), _stM=new THREE.Matrix4(), _stAx=new THREE.Vector3(0,0,1), _stG=new THREE.Vector3();\nfunction placeStandards(g,sw,tilt){\n  var ud=g.userData;\n  tilt=tilt||0;\n  var tall=(ud.body&&ud.body.children.length&&ud.stdX.length===1&&!ud.skirmish)?1.25:1;\n  if(ud.seatPrep) ud.seatPrep(); else g.updateMatrixWorld(true);\n  var C=ud.upright?_stQ.copy(ud.upright()):_stQ.identity();\n  for(var i=0;i<ud.stdX.length;i++){\n    var X=ud.stdX[i]*sw;\n    if(ud.seatLocal) ud.seatLocal(X,0,_stG); else _stG.set(X,0,0);\n    _stO.set(0,2.6*tall,0).applyQuaternion(C);\n    _stP.copy(_stG).add(_stO);\n    _stM.compose(_stP,C,_stS.set(1,tall,1)); ud.poles.setMatrixAt(i,_stM);\n    _stO.set(1.25*Math.cos(tilt),4.5*tall-1.25*Math.sin(tilt),0).applyQuaternion(C);\n    _stP.copy(_stG).add(_stO);\n    _stZ.setFromAxisAngle(_stAx,-tilt).premultiply(C);\n    _stM.compose(_stP,_stZ,_stS.set(1,1,1)); ud.flags.setMatrixAt(i,_stM);\n  }\n  ud.poles.instanceMatrix.needsUpdate=true;\n  ud.flags.instanceMatrix.needsUpdate=true;\n}\n/* multiply a canvas's alpha by a round window that is zero at every edge, so whatever overlaps\n   inside it the sprite can never show a straight side */\nfunction softWindow(x,n){\n  x.globalCompositeOperation=\"destination-in\";\n  var w=x.createRadialGradient(n/2,n/2,n*0.24,n/2,n/2,n*0.49);\n  w.addColorStop(0,\"rgba(0,0,0,1)\"); w.addColorStop(1,\"rgba(0,0,0,0)\");\n  x.fillStyle=w; x.fillRect(0,0,n,n);\n  x.globalCompositeOperation=\"source-over\";\n}\n/* the highest drawn ground under a camera-facing sprite, across its width */\nvar _sfR=new THREE.Vector3();\nfunction spriteFloor(x,z,half){\n  _sfR.setFromMatrixColumn(camera.matrixWorld,0); _sfR.y=0;\n  var L=_sfR.length()||1; _sfR.multiplyScalar(1/L);\n  var m=groundY(x,z);\n  for(var k=-2;k<=2;k++){ if(k) m=Math.max(m,groundY(x+_sfR.x*half*k/2,z+_sfR.z*half*k/2)); }\n  return m;\n"
+  },
+  {
+   "n": 32,
+   "original_lines": [
+    4410,
+    4410
+   ],
+   "where": "smokeTexture",
+   "old": "    var px=26+((i*37)%74), py=38+((i*53)%62), r=15+((i*29)%30);\n",
+   "new": "    /* the same ten puffs, pulled inside the canvas: before, several were cut off by the left and\n       bottom edges, so the sprite showed a straight translucent edge - a card */\n    var r=15+((i*29)%30)*0.7, px=26+((i*37)%74), py=38+((i*53)%62);\n    px=Math.max(r+2,Math.min(126-r,px)); py=Math.max(r+2,Math.min(126-r,py));\n"
+  },
+  {
+   "n": 33,
+   "original_lines": [
+    4415,
+    4416
+   ],
+   "where": "smokeTexture",
+   "old": "  }\n  _smokeTex=ctexS(c); return _smokeTex;\n",
+   "new": "  }\n  softWindow(x,128);\n  _smokeTex=ctexS(c); return _smokeTex;\n"
+  },
+  {
+   "n": 34,
+   "original_lines": [
+    4434,
+    4434
+   ],
+   "where": "dustTexture",
+   "old": "    var px=20+((i*43)%88), py=64+((i*31)%46), r=18+((i*23)%26);\n",
+   "new": "    var r=18+((i*23)%26)*0.7, px=20+((i*43)%88), py=64+((i*31)%46);\n    px=Math.max(r+2,Math.min(126-r,px)); py=Math.max(r+2,Math.min(126-r,py));\n"
+  },
+  {
+   "n": 35,
+   "original_lines": [
+    4439,
+    4440
+   ],
+   "where": "dustTexture",
+   "old": "  }\n  _dustTex=ctexS(c); return _dustTex;\n",
+   "new": "  }\n  softWindow(x,128);\n  _dustTex=ctexS(c); return _dustTex;\n"
+  },
+  {
+   "n": 36,
+   "original_lines": [
+    4893,
+    4894
+   ],
+   "where": "applyArc",
+   "old": "  orbitTarget.copy(_ct);\n  camera.lookAt(_ct);\n",
+   "new": "  orbitTarget.copy(_ct);\n  clampCamera();\n  camera.lookAt(_ct);\n"
+  },
+  {
+   "n": 37,
+   "original_lines": [
+    5105,
+    5105
+   ],
+   "where": "initFX",
+   "old": "      \"  c=clamp((c-0.5)*contrast+0.5,0.0,1.0);\",\n",
+   "new": "      /* contrast about mid-grey in perceptual (gamma 2.2) space. Done in linear light, a pivot at\n         0.5 sent every value below 0.5(1-1/k) - 0.02 to 0.04 for these presets - to pure black,\n         which is what turned slopes in shade into black silhouettes. Here the clip point is\n         below one code value, so shade keeps its texture while mid-tones keep the same curve. */\n      \"  vec3 pc=clamp(pow(max(c,vec3(0.0)),vec3(1.0/2.2)),0.0,1.0);\",\n      /* pinned at black and white, so the curve can steepen the middle but never clip an end */\n      \"  vec3 pk=pow(pc,vec3(contrast)), qk=pow(vec3(1.0)-pc,vec3(contrast));\",\n      \"  c=pow(pk/max(pk+qk,vec3(1e-6)),vec3(2.2));\",\n"
+  },
+  {
+   "n": 38,
+   "original_lines": [
+    5114,
+    5115
+   ],
+   "where": "initFX",
+   "old": "      \"                step(vec3(0.0031308),c));\",\n      \"  gl_FragColor=vec4(srgb,1.0);\",\n",
+   "new": "      \"                step(vec3(0.0031308),c));\",\n      /* a shadow toe below 0.2 on screen: the filmic curve's toe (slope about 0.2 near zero) put a\n         slope in shade at a few code values, so it read as a black silhouette. This lifts only the\n         deep shadows, continuously (value and slope match at 0.2), and leaves black black. */\n      \"  vec3 tt=clamp(vec3(0.2)-srgb,0.0,0.2);\",\n      \"  srgb+=1.2*srgb*tt*tt/0.04;\",\n      \"  gl_FragColor=vec4(srgb,1.0);\",\n"
+  },
+  {
+   "n": 39,
+   "original_lines": [
+    5145,
+    5148
+   ],
+   "where": "renderFX",
+   "old": "  camera.layers.set(LAYER_WORLD);\n  renderer.setRenderTarget(FX.rtScene);\n  renderer.clear();\n  renderer.render(scene,camera);\n",
+   "new": "  var t0=performance.now();\n  camera.layers.set(LAYER_WORLD);\n  renderer.setRenderTarget(FX.rtScene);\n  renderer.clear();\n  renderer.render(scene,camera);\n  DEV.world=devMark(); DEV.tWorld=performance.now()-t0; t0=performance.now();\n"
+  },
+  {
+   "n": 40,
+   "original_lines": [
+    5174,
+    5177
+   ],
+   "where": "renderFX",
+   "old": "  FX.matComp.uniforms.time.value=(performance.now()%10000)*0.001;\n  pass(FX.matComp,FX.rtFinal);\n  FX.matFXAA.uniforms.tDiffuse.value=FX.rtFinal.texture;\n  pass(FX.matFXAA,null);\n",
+   "new": "  FX.matComp.uniforms.time.value=HARNESS?0:(performance.now()%10000)*0.001;\n  pass(FX.matComp,FX.rtFinal);\n  FX.matFXAA.uniforms.tDiffuse.value=FX.rtFinal.texture;\n  pass(FX.matFXAA,null);\n  DEV.post=devMark(); DEV.tPost=performance.now()-t0; t0=performance.now();\n"
+  },
+  {
+   "n": 41,
+   "original_lines": [
+    5190,
+    5191
+   ],
+   "where": "renderFX",
+   "old": "  camera.layers.enableAll();\n}\n",
+   "new": "  camera.layers.enableAll();\n  DEV.total=devMark(); DEV.tLabels=performance.now()-t0;\n}\n"
+  },
+  {
+   "n": 42,
+   "original_lines": [
+    5220,
+    5220
+   ],
+   "where": "renderFrame",
+   "old": "  if(!FX.on){ renderStandard(); return; }\n",
+   "new": "  renderer.info.reset();\n  /* the guard: anything that placed the eye without clampCamera() is counted and corrected */\n  if(camera.position.y<camFloor(camera.position.x,camera.position.z)-1e-6){\n    CAM.violations++; clampCamera();\n    if(CAM.violations===1) console.warn(\"Austerlitz runtime check: a camera path bypassed the ground floor\");\n  }\n  if(!FX.on){ var t0=performance.now(); renderStandard(); DEV.world=DEV.total=devMark(); DEV.tWorld=performance.now()-t0; DEV.tPost=DEV.tLabels=0; DEV.frames++; return; }\n"
+  },
+  {
+   "n": 43,
+   "original_lines": [
+    5224,
+    5227
+   ],
+   "where": "renderFrame",
+   "old": "    renderStandard();\n  }\n}\n\n",
+   "new": "    renderStandard();\n  }\n  DEV.frames++;\n}\n/* ---- development readout: render and frame statistics (the ` key, or ?stats) ---- */\nvar DEV={state:\"active\",frames:0,skipped:0,tUpdate:0,tWorld:0,tPost:0,tLabels:0,\n  world:{calls:0,triangles:0,points:0,lines:0},post:{calls:0,triangles:0,points:0,lines:0},total:{calls:0,triangles:0,points:0,lines:0}};\nfunction devMark(){ var r=renderer.info.render; return {calls:r.calls,triangles:r.triangles,points:r.points,lines:r.lines}; }\nvar devOn=/[?&]stats\\b/.test(location.search), _devT=0, _devSeat=0;\nfunction kfmt(n){ return n>=1e6?(n/1e6).toFixed(2)+\"M\":(n>=1e3?(n/1e3).toFixed(1)+\"k\":String(n)); }\nfunction paintDevStats(now){\n  var el=document.getElementById(\"devstats\"); if(!el) return;\n  if(el.hidden===devOn) el.hidden=!devOn;\n  if(!devOn||now-_devT<500) return;\n  var sec=_devT?(now-_devT)/1000:1; _devT=now;\n  var fps=DEV.frames/sec, sk=DEV.skipped/sec, se=(SEAT_STATS.blocks-_devSeat)/sec;\n  DEV.frames=0; DEV.skipped=0; _devSeat=SEAT_STATS.blocks;\n  var mi=renderer.info.memory, c=camera.position, W=DEV.world, T=DEV.total;\n  el.textContent=[\n    \"frames drawn \"+fps.toFixed(0)+\"/s   skipped \"+sk.toFixed(0)+\"/s   state \"+DEV.state,\n    \"cpu ms   update \"+DEV.tUpdate.toFixed(1)+\"   world \"+DEV.tWorld.toFixed(1)+\"   post \"+DEV.tPost.toFixed(1)+\"   labels \"+DEV.tLabels.toFixed(1),\n    \"world pass   \"+W.calls+\" calls   \"+kfmt(W.triangles)+\" tris   \"+kfmt(W.lines)+\" lines   \"+W.points+\" points\",\n    \"post+labels  \"+(T.calls-W.calls)+\" calls (labels \"+(T.calls-DEV.post.calls)+\")\",\n    \"seating  \"+se.toFixed(1)+\" blocks/s (\"+SEAT_STATS.blocks+\" since load)\",\n    \"labels   \"+LABEL_STATS.shown+\" shown   \"+LABEL_STATS.hidden+\" hidden   \"+LABEL_STATS.moved+\" moved   \"+(LABEL_STATS.shrunk||0)+\" shrunk   \"+LABEL_STATS.unresolved+\" unresolved\",\n    \"camera   \"+(c.y-camGround(c.x,c.z)).toFixed(2)+\" above ground   clamps \"+CAM.clamps+\"   bypassed \"+CAM.violations,\n    \"memory   \"+mi.geometries+\" geometries   \"+mi.textures+\" textures   \"+(renderer.info.programs?renderer.info.programs.length:0)+\" programs\"\n  ].join(\"\\n\");\n}\n\n"
+  },
+  {
+   "n": 44,
+   "original_lines": [
+    5317,
+    5317
+   ],
+   "where": "updatePlateauRing",
+   "old": "  plateauRing.material.opacity += (tgt-plateauRing.material.opacity)*0.06;\n",
+   "new": "  var pro=tgt-plateauRing.material.opacity; if(Math.abs(pro)>0.004) settling=true;\n  plateauRing.material.opacity += pro*ease(0.06);\n"
+  },
+  {
+   "n": 45,
+   "original_lines": [
+    5364,
+    5364
+   ],
+   "where": "updateSelRing",
+   "old": "  selRing.material.opacity += (0.62-selRing.material.opacity)*0.12;\n",
+   "new": "  var sro=0.62-selRing.material.opacity; if(Math.abs(sro)>0.004) settling=true;\n  selRing.material.opacity += sro*ease(0.12);\n"
+  },
+  {
+   "n": 46,
+   "original_lines": [
+    5813,
+    5814
+   ],
+   "where": "startTour",
+   "old": "function startTour(){\n  tourStep=0;\n",
+   "new": "function startTour(){\n  closeFirst(null);\n  tourStep=0;\n"
+  },
+  {
+   "n": 47,
+   "original_lines": [
+    5946,
+    5961
+   ],
+   "where": "declutter",
+   "old": "function declutter(){\n  var taken=[];\n  function reserve(sp){ var r=rectOf(sp,2); if(r) taken.push(r); }\n  function claim(sp){\n    if(!sp.visible) return;\n    var r=rectOf(sp,3);\n    if(!r){ sp.visible=false; return; }\n    for(var i=0;i<taken.length;i++) if(overlaps(r,taken[i])){ sp.visible=false; return; }\n    taken.push(r);\n  }\n  Object.keys(units).forEach(function(id){ if(units[id].sprite.visible) reserve(units[id].sprite); });\n  Object.keys(aggregates).forEach(function(id){ if(aggregates[id].sprite.visible) reserve(aggregates[id].sprite); });\n  Object.keys(units).forEach(function(id){ var l=units[id].nameLabel; if(l) claim(l); });\n  for(var i=0;i<overlayLabels.length;i++) claim(overlayLabels[i]);\n  analysisSprites.forEach(function(o){ claim(o.sprite); });\n  featureSprites.forEach(function(o){ claim(o.sprite); });\n",
+   "new": "/* Label placement, in priority order: counters (the order of battle is never hidden), then the\n   moments of the battle (event labels), the plateau reading, arrow and objective labels, formation\n   names, terrain study, place names. A counter, event label or the plateau reading that collides\n   tries a few nearby places before giving way; a counter that moves keeps its stem on its true\n   position. Rectangles are the inked extent, measured in view depth as the renderer draws them.\n   Before, event labels and the plateau reading were never placed at all and counters only\n   reserved space, so they printed through one another. Stage 0 only: the DOM/SVG layer is Stage 2. */\nvar LABEL_STATS={shown:0,hidden:0,moved:0,unresolved:0};\nvar _cR=new THREE.Vector3(), _cU=new THREE.Vector3(), _lv=new THREE.Vector3(), _lw=new THREE.Vector3();\nvar ECH_RANK={army:0,corps:1,div:2,bde:3};\nfunction labelRect(sp,pos,dx,dy,pad){\n  _lv.copy(pos).applyMatrix4(camera.matrixWorldInverse);\n  if(_lv.z>-camera.near) return null;\n  _lw.copy(pos).project(camera);\n  if(_lw.z>1||Math.abs(_lw.x)>1.1||Math.abs(_lw.y)>1.1) return null;\n  var H0=renderer.domElement.clientHeight||window.innerHeight, W0=renderer.domElement.clientWidth||window.innerWidth;\n  var ppw=H0/(2*(-_lv.z)*Math.tan(THREE.MathUtils.degToRad(camera.fov/2)));\n  var sx=sp.scale.x*ppw, sy=sp.scale.y*ppw, cx=(_lw.x*0.5+0.5)*W0+dx, cy=(-_lw.y*0.5+0.5)*H0+dy;\n  var im=sp.material&&sp.material.map&&sp.material.map.image, b=(im&&im._ink)||[0,0,1,1];\n  pad=pad||0;\n  return {r:[cx-sx/2+b[0]*sx-pad, cy-sy/2+b[1]*sy-pad, cx-sx/2+b[2]*sx+pad, cy-sy/2+b[3]*sy+pad],\n          ppw:ppw, w:(b[2]-b[0])*sx, h:(b[3]-b[1])*sy};\n}\n/* the interface panels lying over the map: a label wholly under one is not seen, so it neither\n   needs nor takes space */\nvar _panelSel=[\".rail\",\".dispatch\",\".legend\",\".drawer\",\".timebar\",\"#tourbar\",\"#firstrun\",\"#selchip\",\"#layerpop\"];\nfunction panelCovers(){\n  var R=[];\n  _panelSel.forEach(function(q){ var e=document.querySelector(q); if(!e||e.hidden) return;\n    var r=e.getBoundingClientRect(); if(r.width<2||r.height<2) return;\n    var cs=getComputedStyle(e); if(cs.display===\"none\"||cs.visibility===\"hidden\") return;\n    if(e.classList.contains(\"rail\")&&document.body.classList.contains(\"rail-hidden\")) return;\n    if(e.classList.contains(\"drawer\")&&!e.classList.contains(\"on\")) return;\n    R.push([r.left,r.top,r.right,r.bottom]); });\n  return R;\n}\nfunction declutter(){\n  var taken=[], st={shown:0,hidden:0,moved:0,unresolved:0,shrunk:0};\n  camera.updateMatrixWorld();\n  _cR.setFromMatrixColumn(camera.matrixWorld,0).normalize();\n  _cU.setFromMatrixColumn(camera.matrixWorld,1).normalize();\n  var covers=panelCovers(), VW=renderer.domElement.clientWidth||window.innerWidth, VH=renderer.domElement.clientHeight||window.innerHeight;\n  function free(r){ for(var i=0;i<taken.length;i++) if(overlaps(r,taken[i])) return false; return true; }\n  function underPanel(r){ for(var i=0;i<covers.length;i++){ var c=covers[i]; if(r[0]>=c[0]&&r[1]>=c[1]&&r[2]<=c[2]&&r[3]<=c[3]) return true; } return false; }\n  function inView(r){ return r[0]>=0&&r[1]>=0&&r[2]<=VW&&r[3]<=VH; }\n  function place(sp,anchor,cands,mustShow,shrink){\n    if(!sp||!sp.visible) return false;\n    var s0x=sp.scale.x, s0y=sp.scale.y, scales=shrink?[1,0.8,0.64]:[1];\n    for(var si=0;si<scales.length;si++){\n      sp.scale.set(s0x*scales[si],s0y*scales[si],1);\n      var base=labelRect(sp,anchor,0,0,2);\n      if(!base){ sp.scale.set(s0x,s0y,1); sp.visible=false; return false; }\n      if(!si&&underPanel(base.r)){ sp.position.copy(anchor); return true; }   /* hidden by a panel: no space taken */\n      for(var i=0;i<cands.length;i++){\n        var dx=cands[i][0]*base.w, dy=cands[i][1]*base.h;\n        var r=i?labelRect(sp,anchor,dx,dy,2):base;\n        if(r&&(!i||inView(r.r))&&free(r.r)){\n          taken.push(r.r);\n          sp.position.copy(anchor).addScaledVector(_cR,dx/base.ppw).addScaledVector(_cU,-dy/base.ppw);\n          st.shown++; if(i) st.moved++; if(si) st.shrunk++;\n          return true;\n        }\n      }\n    }\n    sp.scale.set(s0x,s0y,1);\n    var b0=labelRect(sp,anchor,0,0,2);\n    if(mustShow&&b0){ taken.push(b0.r); sp.position.copy(anchor); st.shown++; st.unresolved++; return true; }\n    sp.visible=false; st.hidden++; return false;\n  }\n  var AROUND=[[0,0],[0,-1.08],[0.62,-0.62],[-0.62,-0.62],[1.1,0],[-1.1,0],[0,1.08],[0.62,0.62],[-0.62,0.62],\n              [0,-2.12],[1.1,-1.08],[-1.1,-1.08],[1.1,1.08],[-1.1,1.08],[0,2.12],[2.2,0],[-2.2,0],[0,-3.15],[1.6,-2.12],[-1.6,-2.12]];\n  var NEAR=[[0,0],[0,-1.15],[0,1.15],[0,-2.3],[0.7,0],[-0.7,0],[0,2.3]];\n  var ONLY=[[0,0]];\n  function isSel(kind,id){ return !!(selection&&selection.kind===kind&&selection.id===id); }\n  /* 1. counters */\n  var cs=[];\n  Object.keys(units).forEach(function(id){ var r=units[id]; if(r.sprite.visible&&r.sprite.userData.anchor) cs.push({rec:r,id:id}); });\n  Object.keys(aggregates).forEach(function(id){ var r=aggregates[id]; if(r.sprite.visible&&r.sprite.userData.anchor) cs.push({rec:r,id:id}); });\n  cs.sort(function(a,b){\n    var sa=isSel(\"f\",a.id)?0:1, sb=isSel(\"f\",b.id)?0:1; if(sa!==sb) return sa-sb;\n    var ea=ECH_RANK[FORMATIONS[a.id].ech], eb=ECH_RANK[FORMATIONS[b.id].ech];\n    if(ea!==eb) return (ea===undefined?2:ea)-(eb===undefined?2:eb);\n    return (aggStrength(b.id)||0)-(aggStrength(a.id)||0);\n  });\n  cs.forEach(function(c){\n    var sp=c.rec.sprite;\n    place(sp,sp.userData.anchor,AROUND,true,true);\n    if(c.rec.stem&&c.rec.stem.visible){\n      var sa=c.rec.stem.geometry.attributes.position.array, h=sp.userData.h||0;\n      sa[3]=sp.position.x; sa[4]=sp.position.y-h*0.54; sa[5]=sp.position.z;\n      c.rec.stem.geometry.attributes.position.needsUpdate=true;\n    }\n  });\n  /* 2. the moments of the battle, the selected one and then the most live first */\n  var evs=(eventMarks||[]).filter(function(k){ return k.ls.visible; });\n  evs.sort(function(a,b){ var sa=isSel(\"e\",a.e.id)?0:1, sb=isSel(\"e\",b.e.id)?0:1; if(sa!==sb) return sa-sb;\n    return evWeight(b.e,clock)-evWeight(a.e,clock); });\n  evs.forEach(function(k){ var u=k.ls.userData; if(!u.anchor) u.anchor=k.ls.position.clone(); place(k.ls,u.anchor,NEAR,false); });\n  /* 3. the plateau reading (the same figure is always on the situation line) */\n  if(plateauLabel&&plateauLabel.visible){ var pu=plateauLabel.userData; if(!pu.anchor) pu.anchor=plateauLabel.position.clone(); place(plateauLabel,pu.anchor,NEAR,false); }\n  /* 4 to 7 */\n  overlayLabels.forEach(function(o){ if(!o.userData.anchor) o.userData.anchor=o.position.clone(); place(o,o.userData.anchor,ONLY,false); });\n  Object.keys(units).forEach(function(id){ var l=units[id].nameLabel; if(l&&l.visible) place(l,l.position.clone(),ONLY,false); });\n  analysisSprites.forEach(function(o){ if(o.sprite.visible) place(o.sprite,o.sprite.position.clone(),ONLY,false); });\n  featureSprites.forEach(function(o){ if(o.sprite.visible) place(o.sprite,o.sprite.position.clone(),ONLY,false); });\n  LABEL_STATS=st;\n"
+  },
+  {
+   "n": 48,
+   "original_lines": [
+    5996,
+    6012
+   ],
+   "where": "settleBlock",
+   "old": "function settleBlock(rec){\n  var p=rec.block.position;\n  var e=1.6;\n  var hx=(gridAt(gridH,p.x+e,p.z)-gridAt(gridH,p.x-e,p.z))/(2*e);\n  var hz=(gridAt(gridH,p.x,p.z+e)-gridAt(gridH,p.x,p.z-e))/(2*e);\n  _nrm.set(-hx,1,-hz).normalize();\n  _qt.setFromUnitVectors(_up,_nrm);\n  _qy.setFromAxisAngle(_up,rec.yaw||0);\n  rec.block.quaternion.copy(_qt).multiply(_qy);\n  var u=rec.block.userData;\n  if(!u||!u.layout) return;\n  var moved = !rec.seatPos || rec.seatPos.distanceTo(p)>1.5 || Math.abs((rec.seatYaw||0)-(rec.yaw||0))>0.08;\n  if(moved){\n    u.layout(u.sw,u.sd);\n    if(!rec.seatPos) rec.seatPos=new THREE.Vector3();\n    rec.seatPos.copy(p); rec.seatYaw=rec.yaw||0;\n  }\n",
+   "new": "/* Called after poseBlock, once this frame's position, scale, yaw and deployment are known. The\n   men are re-seated whenever anything that moves them in the world has changed - position, tilt,\n   yaw, block scale (highlight dimming, hybrid mode) or deployment - and never otherwise, so an\n   idle block costs nothing. */\nvar SEAT_STATS={blocks:0};\nfunction settleBlock(rec){\n  var b=rec.block, p=b.position, u=b.userData;\n  var e=1.6;\n  var hx=(groundY(p.x+e,p.z)-groundY(p.x-e,p.z))/(2*e);\n  var hz=(groundY(p.x,p.z+e)-groundY(p.x,p.z-e))/(2*e);\n  _nrm.set(-hx,1,-hz).normalize();\n  _qt.setFromUnitVectors(_up,_nrm);\n  _qy.setFromAxisAngle(_up,rec.yaw||0);\n  b.quaternion.copy(_qt).multiply(_qy);\n  if(!u||!u.layout) return;\n  var S=rec.seatSig||(rec.seatSig=new Float64Array(10)), q=b.quaternion, k=b.scale.x;\n  var changed=!rec.seated||\n    Math.abs(S[0]-p.x)>0.004||Math.abs(S[1]-p.y)>0.004||Math.abs(S[2]-p.z)>0.004||\n    Math.abs(S[3]-q.x)>2e-5||Math.abs(S[4]-q.y)>2e-5||Math.abs(S[5]-q.z)>2e-5||Math.abs(S[6]-q.w)>2e-5||\n    Math.abs(S[7]-k)>1e-5||Math.abs(S[8]-u.sw)>0.001||Math.abs(S[9]-u.sd)>0.001;\n  if(changed){\n    u.layout(u.sw,u.sd);\n    S[0]=p.x; S[1]=p.y; S[2]=p.z; S[3]=q.x; S[4]=q.y; S[5]=q.z; S[6]=q.w; S[7]=k; S[8]=u.sw; S[9]=u.sd;\n    rec.seated=true;\n  }\n  if(changed||rec.stdTilt!==u.tilt){ placeStandards(b,u.sw,u.tilt); rec.stdTilt=u.tilt; }\n"
+  },
+  {
+   "n": 49,
+   "original_lines": [
+    6021,
+    6027
+   ],
+   "where": "poseBlock",
+   "old": "  var rate=moving?0.075:0.045;\n  u.sw += (sh[0]-u.sw)*rate;\n  u.sd += (sh[1]-u.sd)*rate;\n  /* column and line are re-layouts of the same men, not a stretched block */\n  if(u.layout && (Math.abs(u.sw-u.lastSw)>0.004 || Math.abs(u.sd-u.lastSd)>0.004)){\n    u.layout(u.sw,u.sd); u.lastSw=u.sw; u.lastSd=u.sd;\n  }\n",
+   "new": "  var rate=ease(moving?0.075:0.045);\n  if(Math.abs(sh[0]-u.sw)>0.002||Math.abs(sh[1]-u.sd)>0.002) settling=true;\n  u.sw += (sh[0]-u.sw)*rate;\n  u.sd += (sh[1]-u.sd)*rate;\n  /* column and line are re-layouts of the same men, not a stretched block; the re-seat itself\n     happens in settleBlock, once the frame's scale and yaw are known too */\n"
+  },
+  {
+   "n": 50,
+   "original_lines": [
+    6033,
+    6034
+   ],
+   "where": "poseBlock",
+   "old": "  u.tilt = (u.tilt||0) + (lowered-(u.tilt||0))*0.05;\n  placeStandards(rec.block,u.sw,u.tilt);\n",
+   "new": "  if(Math.abs(lowered-(u.tilt||0))>0.002) settling=true;\n  u.tilt = (u.tilt||0) + (lowered-(u.tilt||0))*ease(0.05);\n"
+  },
+  {
+   "n": 51,
+   "original_lines": [
+    6051,
+    6056
+   ],
+   "where": "poseBlock",
+   "old": "  if(LOOSE[st]) want += Math.sin(smokeT*0.5+rec.delay*47)*0.10;\n  if(rec.yaw===undefined) rec.yaw=rec.block.rotation.y||0;\n  var diff=want-rec.yaw;\n  while(diff>Math.PI) diff-=Math.PI*2;\n  while(diff<-Math.PI) diff+=Math.PI*2;\n  rec.yaw += diff*(WHEEL[f.arm]||0.05);\n",
+   "new": "  var want0=want;\n  if(LOOSE[st]) want += Math.sin(smokeT*0.5+rec.delay*47)*0.10;   /* a broken body sways: ambient, not settling */\n  if(rec.yaw===undefined) rec.yaw=rec.block.rotation.y||0;\n  var diff=want-rec.yaw, d0=want0-rec.yaw;\n  while(diff>Math.PI) diff-=Math.PI*2;\n  while(diff<-Math.PI) diff+=Math.PI*2;\n  while(d0>Math.PI) d0-=Math.PI*2;\n  while(d0<-Math.PI) d0+=Math.PI*2;\n  if(Math.abs(d0)>(LOOSE[st]?0.13:0.002)) settling=true;\n  rec.yaw += diff*ease(WHEEL[f.arm]||0.05);\n"
+  },
+  {
+   "n": 52,
+   "original_lines": [
+    6088,
+    6089
+   ],
+   "where": "updateVisibility",
+   "old": "    rec.sprite.visible=true;\n    var sp=rec.stem.geometry.attributes.position.array;\n",
+   "new": "    rec.sprite.visible=true;\n    var su=rec.sprite.userData; su.rec=rec; su.h=h; su.anchor=(su.anchor||new THREE.Vector3()).copy(rec.sprite.position);\n    var sp=rec.stem.geometry.attributes.position.array;\n"
+  },
+  {
+   "n": 53,
+   "original_lines": [
+    6109,
+    6110
+   ],
+   "where": "updateVisibility",
+   "old": "      rec.block.position.set(wq[0],height(wq[0],wq[1]),wq[1]);\n      settleBlock(rec);\n",
+   "new": "      rec.block.position.set(wq[0],groundY(wq[0],wq[1]),wq[1]);   /* settled below, after pose and scale */\n"
+  },
+  {
+   "n": 54,
+   "original_lines": [
+    6127,
+    6127
+   ],
+   "where": "updateVisibility",
+   "old": "    if(rec.block.visible) poseBlock(rec,id,aggStatus(id,curPhase));\n",
+   "new": "    if(rec.block.visible){ poseBlock(rec,id,aggStatus(id,curPhase)); settleBlock(rec); }\n"
+  },
+  {
+   "n": 55,
+   "original_lines": [
+    6155,
+    6159
+   ],
+   "where": "updateVisibility",
+   "old": "        rec.dust.position.set(\n          rec.block.position.x - Math.sin(yaw)*dsc*0.42 + Math.sin(smokeT*0.7+rec.delay*23)*0.6,\n          rec.block.position.y + 1.5,\n          rec.block.position.z - Math.cos(yaw)*dsc*0.42);\n        rec.dust.material.opacity += (0.34-rec.dust.material.opacity)*0.05;\n",
+   "new": "        var dxp=rec.block.position.x - Math.sin(yaw)*dsc*0.42 + Math.sin(smokeT*0.7+rec.delay*23)*0.6,\n            dzp=rec.block.position.z - Math.cos(yaw)*dsc*0.42;\n        rec.dust.position.set(dxp, Math.max(rec.block.position.y+1.5, spriteFloor(dxp,dzp,dsc*0.5)+0.2+dsc*0.13), dzp);\n        var dto=0.34-rec.dust.material.opacity; if(Math.abs(dto)>0.004) settling=true;\n        rec.dust.material.opacity += dto*ease(0.05);\n"
+  },
+  {
+   "n": 56,
+   "original_lines": [
+    6171,
+    6174
+   ],
+   "where": "updateVisibility",
+   "old": "        rec.smoke.position.set(rec.block.position.x+drift,\n                               rec.block.position.y+2.4+sc*0.14,\n                               rec.block.position.z-1.4);\n        rec.smoke.material.opacity += (0.32-rec.smoke.material.opacity)*0.05;\n",
+   "new": "        var sxp=rec.block.position.x+drift, szp=rec.block.position.z-1.4;\n        rec.smoke.position.set(sxp, Math.max(rec.block.position.y+2.4+sc*0.14, spriteFloor(sxp,szp,sc*0.5)+0.2+sc*0.18), szp);\n        var sto=0.32-rec.smoke.material.opacity; if(Math.abs(sto)>0.004) settling=true;\n        rec.smoke.material.opacity += sto*ease(0.05);\n"
+  },
+  {
+   "n": 57,
+   "original_lines": [
+    6267,
+    6268
+   ],
+   "where": "camera",
+   "old": "/* ---------------- camera ---------------- */\nfunction glide(toPos,toTgt,ms,bulge){\n",
+   "new": "/* ---------------- camera ---------------- */\n/* The eye never enters the ground. Its floor is the highest drawn ground within CAM_R of the eye\n   plus CAM_CLEAR, so the near plane (1 unit) cannot cut into a slope either. Every path that\n   places the camera - orbit, zoom, glides, presets, the first view - goes through clampCamera();\n   a guard before each frame counts anything that did not (CAM.violations). */\nvar CAM_CLEAR=1.8, CAM_R=1.6, CAM={clamps:0,violations:0};\nfunction camGround(x,z){\n  var m=groundY(x,z);\n  for(var k=0;k<8;k++){ var a=k*Math.PI/4; m=Math.max(m,groundY(x+Math.cos(a)*CAM_R,z+Math.sin(a)*CAM_R)); }\n  return (Math.abs(x)<178&&Math.abs(z)<153) ? m : m+1.2;   /* the apron outside the field is coarser */\n}\nfunction camFloor(x,z){ return camGround(x,z)+CAM_CLEAR; }\nfunction clampCamera(){\n  var p=camera.position, f=camFloor(p.x,p.z);\n  if(p.y<f){ p.y=f; camera.lookAt(orbitTarget); CAM.clamps++; return true; }\n  return false;\n}\nvar _ov=new THREE.Vector3();\n/* orbit placement shared by drag, wheel and the self-test */\nfunction orbitPlace(){\n  camera.position.copy(orbitTarget).add(_ov.setFromSpherical(sph));\n  if(clampCamera()) sph.setFromVector3(_ov.copy(camera.position).sub(orbitTarget));\n  camera.lookAt(orbitTarget);\n}\nfunction glide(toPos,toTgt,ms,bulge){\n"
+  },
+  {
+   "n": 58,
+   "original_lines": [
+    6304,
+    6307
+   ],
+   "where": "bindCanvas",
+   "old": "    lx=e.clientX; ly=e.clientY;\n    camera.position.copy(orbitTarget).add(new THREE.Vector3().setFromSpherical(sph));\n    camera.lookAt(orbitTarget);\n  });\n",
+   "new": "    lx=e.clientX; ly=e.clientY;\n    orbitPlace();\n  });\n"
+  },
+  {
+   "n": 59,
+   "original_lines": [
+    6317,
+    6320
+   ],
+   "where": "bindCanvas",
+   "old": "    sph.radius=Math.max(24,Math.min(620,sph.radius*(1+Math.sign(e.deltaY)*0.09)));\n    camera.position.copy(orbitTarget).add(new THREE.Vector3().setFromSpherical(sph));\n    camera.lookAt(orbitTarget);\n  },{passive:false});\n",
+   "new": "    sph.radius=Math.max(24,Math.min(620,sph.radius*(1+Math.sign(e.deltaY)*0.09)));\n    orbitPlace();\n  },{passive:false});\n"
+  },
+  {
+   "n": 60,
+   "original_lines": [
+    6450,
+    6453
+   ],
+   "where": "buildUI",
+   "old": "  var fr=document.getElementById(\"firstrun\");\n  function closeFirst(){ fr.hidden=true; }\n  document.getElementById(\"fr-close\").addEventListener(\"click\",closeFirst);\n  document.getElementById(\"fr-tour\").addEventListener(\"click\",function(){ closeFirst(); startTour(); });\n",
+   "new": "  paintKey();\n  document.getElementById(\"fr-close\").addEventListener(\"click\",function(){ closeFirst(\"explore\"); });\n  document.getElementById(\"fr-watch\").addEventListener(\"click\",function(){ closeFirst(\"watch\"); });\n  document.getElementById(\"fr-tour\").addEventListener(\"click\",function(){ closeFirst(\"tour\"); });\n  /* anything done outside the card is Explore, in place */\n  window.addEventListener(\"pointerdown\",function(e){\n    if(firstRunOpen && !e.target.closest(\"#firstrun\")) closeFirst(null); },{capture:true});\n  document.getElementById(\"sc-open\").addEventListener(\"click\",function(){ setPresentation(\"study\"); paintDrawer(); });\n  document.getElementById(\"sc-clear\").addEventListener(\"click\",function(){ select(null,null); });\n"
+  },
+  {
+   "n": 61,
+   "original_lines": [
+    6489,
+    6490
+   ],
+   "where": "buildUI",
+   "old": "  window.addEventListener(\"keydown\",function(e){\n    if(e.key===\"ArrowRight\"){ stopPlay(); setClock(clock+(e.shiftKey?60:10)); }\n",
+   "new": "  window.addEventListener(\"keydown\",function(e){\n    if(firstRunOpen && e.key!==\"Escape\" && e.key!==\"Tab\" && e.key!==\"Shift\" && e.key!==\"`\" && !(e.target&&e.target.closest&&e.target.closest(\"#firstrun\"))) closeFirst(null);\n    if(e.key===\"ArrowRight\"){ stopPlay(); setClock(clock+(e.shiftKey?60:10)); }\n"
+  },
+  {
+   "n": 62,
+   "original_lines": [
+    6497,
+    6497
+   ],
+   "where": "buildUI",
+   "old": "      if(fr2&&!fr2.hidden){ fr2.hidden=true; return; }\n",
+   "new": "      if(firstRunOpen){ closeFirst(null); return; }\n"
+  },
+  {
+   "n": 63,
+   "original_lines": [
+    6510,
+    6511
+   ],
+   "where": "buildUI",
+   "old": "    if(e.key===\" \"){ e.preventDefault(); togglePlay(); }\n    if(e.key===\"1\") setPresentation(\"study\");\n",
+   "new": "    if(e.key===\" \"){ e.preventDefault(); togglePlay(); }\n    if(e.key===\"`\"){ devOn=!devOn; _devT=0; paintDevStats(performance.now()); }\n    if(e.key===\"1\") setPresentation(\"study\");\n"
+  },
+  {
+   "n": 64,
+   "original_lines": [
+    6518,
+    6518
+   ],
+   "where": "buildUI",
+   "old": "  window.addEventListener(\"resize\",function(){\n",
+   "new": "  /* render on demand: input asks for frames; a drag only while a button is held */\n  [\"pointerdown\",\"pointerup\",\"wheel\",\"keydown\",\"click\"].forEach(function(ev){\n    window.addEventListener(ev,function(){ lastInput=performance.now(); requestRender(2); },{capture:true,passive:true}); });\n  window.addEventListener(\"pointermove\",function(e){ if(e.buttons){ lastInput=performance.now(); requestRender(1); } },{capture:true,passive:true});\n  window.addEventListener(\"resize\",function(){\n    requestRender(3);\n"
+  },
+  {
+   "n": 65,
+   "original_lines": [
+    6526,
+    6527
+   ],
+   "where": "buildUI",
+   "old": "\nfunction shortCommander(f){\n",
+   "new": "\n/* ---- one colour key ----\n   The legend and the first-run card are both written from this table, and the table reads the\n   same colours that draw the counters, figures and arrows (NATION, SIDE_COL), so the key a\n   visitor is told and the key on screen cannot drift apart. The larger encoding problems\n   (status and claim colours reusing the side hues) are Stage 1. */\nfunction hexOf(n){ return \"#\"+(\"000000\"+n.toString(16)).slice(-6).toUpperCase(); }\nvar COLOUR_KEY={\n  fr:{word:\"blue\", hex:NATION.fr.fill}, ru:{word:\"green\", hex:NATION.ru.fill}, at:{word:\"white\", hex:NATION.at.fill},\n  \"arrow-fr\":{word:\"blue\", hex:hexOf(SIDE_COL.fr.attack)}, \"arrow-al\":{word:\"amber\", hex:hexOf(SIDE_COL.al.attack)}\n};\nfunction paintKey(){\n  document.querySelectorAll(\".legend [data-key]\").forEach(function(e){\n    var k=COLOUR_KEY[e.dataset.key]; if(k) e.style.background=k.hex; });\n  var p=document.getElementById(\"fr-key\"); if(!p) return;\n  var K=COLOUR_KEY;\n  function sw(k,cls){ return '<i class=\"'+(cls||\"key-sw\")+'\" data-key=\"'+k+'\" style=\"background:'+K[k].hex+'\" aria-hidden=\"true\"></i>'; }\n  function cap(w){ return w.charAt(0).toUpperCase()+w.slice(1); }\n  p.innerHTML=sw(\"fr\")+cap(K.fr.word)+\" is the French army. The Allies are \"+sw(\"ru\")+K.ru.word+\" for Russia and \"+\n    sw(\"at\")+K.at.word+\" for Austria, and their movement arrows are drawn in \"+sw(\"arrow-al\",\"key-ar\")+K[\"arrow-al\"].word+\n    \". The high ground in the centre is the Pratzen plateau, and it decides the battle.\";\n}\n/* ---- the first view ----\n   The whole field from above (the Overview vantage) at 04:00, the first-run card alone near the\n   foot of the map, the dispatch and legend held back until the visitor chooses a way in. Any\n   click or key outside the card counts as Explore, without moving the camera. */\nvar firstRunOpen=false;\nfunction openFirstRun(){\n  var fr=document.getElementById(\"firstrun\"); if(!fr||fr.hidden) return;\n  firstRunOpen=true;\n  document.body.classList.add(\"firstrun-on\");\n  var v=VANTAGE.plan;\n  camArc=null;                                  /* the start-up phase transition keeps its light, not its camera */\n  camera.position.set(v[0],v[1],v[2]); orbitTarget.set(v[3],v[4],v[5]); camera.lookAt(orbitTarget);\n  clampCamera();\n  document.querySelectorAll(\".van-btn\").forEach(function(b){ b.setAttribute(\"aria-pressed\",b.dataset.v===\"plan\"?\"true\":\"false\"); });\n  requestRender(3);\n}\nfunction closeFirst(how){\n  if(!firstRunOpen) return;\n  firstRunOpen=false;\n  var fr=document.getElementById(\"firstrun\"); if(fr) fr.hidden=true;\n  document.body.classList.remove(\"firstrun-on\");\n  if(how===\"tour\") startTour();\n  else if(how===\"watch\"){ setPresentation(\"watch\"); setPhase(0); if(!playing) togglePlay(); }\n  else if(how===\"explore\") setPhase(0);\n  syncSelChip(); requestRender(3);\n}\n/* ---- the selection chip ----\n   Whenever something is selected but its dossier is not on screen (Watch, the clean Map view),\n   this says what is selected, why the rest is dimmed, and offers the dossier or a way out. */\nfunction drawerShown(){ var d=document.getElementById(\"drawer\"); return !!d&&d.classList.contains(\"on\")&&getComputedStyle(d).display!==\"none\"; }\nfunction syncSelChip(){\n  var chip=document.getElementById(\"selchip\"); if(!chip) return;\n  var show=!!selection && !drawerShown() && !firstRunOpen;\n  chip.hidden=!show;\n  if(!show) return;\n  var k=\"Selected\", n=\"\", st=\"\";\n  if(selection.kind===\"f\"&&FORMATIONS[selection.id]){\n    n=FORMATIONS[selection.id].name; var s1=aggStatus(selection.id,curPhase); st=(s1&&STATUS[s1])?STATUS[s1].label:\"\";\n    if(highlight) k=\"Selected, with its chain of command\";\n  } else if(selection.kind===\"e\"){ k=\"Event\"; EVENTS.forEach(function(e){ if(e.id===selection.id) n=e.n; }); }\n  else if(selection.kind===\"t\"){ k=\"Place\"; FEATURES.forEach(function(x){ if(x.id===selection.id) n=x.name; }); }\n  else { k=\"Terrain\"; n=selection.id; }\n  chip.querySelector(\".sc-k\").textContent=k;\n  chip.querySelector(\".sc-n\").textContent=n;\n  chip.querySelector(\".sc-s\").textContent=st;\n}\nfunction shortCommander(f){\n"
+  },
+  {
+   "n": 66,
+   "original_lines": [
+    6740,
+    6740
+   ],
+   "where": "paintDrawer",
+   "old": "function paintDrawer(){\n",
+   "new": "function paintDrawer(){ paintDrawerBody(); syncSelChip(); }\nfunction paintDrawerBody(){\n"
+  },
+  {
+   "n": 67,
+   "original_lines": [
+    6963,
+    6964
+   ],
+   "where": "nearestFeature",
+   "old": "\nfunction dossierFeature(id){\n",
+   "new": "\n/* features that are surveyed places in GEOREF.GT */\nvar FEATURE_GT={pratzeberg:\"pratzeberg\",vinohrady:\"vinohrady\",santon:\"santon\",zuran:\"zuran\",telnitz:\"telnitz\",\n  sokolnitz:\"sokolnitz\",kobelnitz:\"kobelnitz\",pratzenv:\"pratzen\",puntowitz:\"puntowitz\",girzikowitz:\"girzikowitz\",\n  blasowitz:\"blasowitz\",augezd:\"augezd\",krzenowitz:\"krzenowitz\",austerlitz:\"austerlitz\",chapel:\"chapel\",posthouse:\"posthouse\"};\nfunction dossierFeature(id){\n"
+  },
+  {
+   "n": 68,
+   "original_lines": [
+    6974,
+    6975
+   ],
+   "where": "dossierFeature",
+   "old": "  var el2=hAt(ft.p[0],ft.p[1]);\n  var facts=row(\"Relative elevation on this model\", (el2>=0?\"+\":\"\")+el2.toFixed(1)+\" units above the valley floor\");\n",
+   "new": "  /* heights in metres through GEOREF, the only vertical scale; where the feature is a surveyed\n     place its surveyed height is quoted beside the model's (GEOREF.GT, GEOREF.ELEV_SRC) */\n  var elM=GEOREF.elevM(hAt(ft.p[0],ft.p[1])), gtk=FEATURE_GT[ft.id], gt=gtk&&GEOREF.GT[gtk];\n  var surveyed = (gt&&gt.elev) ? \"; surveyed \"+gt.elev+\" m\"+(GEOREF.ELEV_SRC[gtk]?' <span class=\"hh\">('+esc(GEOREF.ELEV_SRC[gtk])+')</span>':\"\")\n               : (gtk&&GEOREF.ELEV_SRC[gtk]) ? '; surveyed <span class=\"hh\">'+esc(GEOREF.ELEV_SRC[gtk])+'</span>' : \"\";\n  var facts=row(\"Elevation on this model\", \"\\u2248 \"+Math.round(elM)+\" m at the marker\"+surveyed+\n    ' <span class=\"hh\">(relief drawn \\u00d7'+geoText(\"{EXAG}\")+' vertically)</span>');\n"
+  },
+  {
+   "n": 69,
+   "original_lines": [
+    7095,
+    7095
+   ],
+   "where": "dossierAnalysis",
+   "old": "    row(\"Elevation along it\",lo.toFixed(1)+\" to \"+hi.toFixed(1)+\" on this model\")));\n",
+   "new": "    row(\"Elevation along it\",\"\\u2248 \"+Math.round(GEOREF.elevM(lo))+\"\\u2013\"+Math.round(GEOREF.elevM(hi))+\" m on this model\")));\n"
+  },
+  {
+   "n": 70,
+   "original_lines": [
+    7196,
+    7197
+   ],
+   "where": "setPresentation",
+   "old": "function setPresentation(m){\n  if(!PRESENT[m]) m=\"study\";\n",
+   "new": "function setPresentation(m){\n  closeFirst(null);\n  if(!PRESENT[m]) m=\"study\";\n"
+  },
+  {
+   "n": 71,
+   "original_lines": [
+    7209,
+    7210
+   ],
+   "where": "setPresentation",
+   "old": "  syncVis();\n}\n",
+   "new": "  syncVis();\n  syncSelChip();\n  if(typeof requestRender===\"function\") requestRender(2);\n}\n"
+  },
+  {
+   "n": 72,
+   "original_lines": [
+    7234,
+    7236
+   ],
+   "where": "loop",
+   "old": "function loop(){\n  requestAnimationFrame(loop);\n  var now=performance.now();\n",
+   "new": "/* ---- render on demand ----\n   A frame is drawn when something changes: a tween, playback, recent input, an easing that has\n   not arrived (settling), or a request from a state change. When the only motion is slow drift -\n   mist, smoke, dust, a broken formation's sway - frames drop to the ambient rate; when nothing\n   moves, nothing is drawn. Easings are time-based through ease(), so they run at the same\n   wall-clock speed at any frame rate. */\nvar needFrames=3, lastInput=0, lastAmbient=0, settling=false, FK=1;\nvar AMBIENT_MS=90, INPUT_HOLD_MS=450;\nfunction requestRender(n){ needFrames=Math.max(needFrames,n||2); }\nfunction ease(r){ return 1-Math.pow(1-r,FK); }\nfunction ambientNow(){\n  if(RM||HARNESS) return false;\n  if(mode!==\"staff\"&&world.mist.visible) return true;\n  for(var id in units){\n    var r=units[id];\n    if((r.smoke&&r.smoke.visible)||(r.dust&&r.dust.visible)) return true;\n    if(r.block&&r.block.visible&&LOOSE[aggStatus(id,curPhase)]) return true;\n  }\n  return false;\n}\nfunction frameState(now){\n  if(tween||playing||needFrames>0||settling||now-lastInput<INPUT_HOLD_MS) return \"active\";\n  if(ambientNow()) return (now-lastAmbient>=AMBIENT_MS)?\"ambient\":\"waiting\";\n  return \"idle\";\n}\nfunction loop(){\n  requestAnimationFrame(loop);\n  var now=performance.now(), state=frameState(now);\n  paintDevStats(now);\n  if(state===\"idle\"||state===\"waiting\"){ DEV.skipped++; if(state===\"idle\") DEV.state=\"idle\"; return; }\n  DEV.state=state; lastAmbient=now;\n  if(needFrames>0) needFrames--;\n  settling=false;\n"
+  },
+  {
+   "n": 73,
+   "original_lines": [
+    7246,
+    7256
+   ],
+   "where": "loop",
+   "old": "  if(tween) tween(now);\n  tickClock(dt);\n  setProg((clock-T_MIN)/(T_MAX-T_MIN));\n  updateVisibility();\n  smokeT=now*0.001;\n  if(!RM && mode!==\"staff\" && world.mist.visible){\n    var t=frameClock.getElapsedTime();\n    world.mist.children.forEach(function(m,i){ m.position.x+=Math.sin(t*0.2+i)*0.005; });\n  }\n  renderFrame();\n}\n",
+   "new": "  FK=Math.max(0.25,Math.min(7.2,dt/16.667));\n  if(tween) tween(now);\n  tickClock(dt);\n  setProg((clock-T_MIN)/(T_MAX-T_MIN));\n  var tu=performance.now(); updateVisibility(); DEV.tUpdate=performance.now()-tu;\n  smokeT=HARNESS?0:now*0.001;\n  if(!RM && !HARNESS && mode!==\"staff\" && world.mist.visible){\n    /* bounded, time-based drift (the fade on each sheet allows for MIST_DRIFT either way) */\n    var t=frameClock.getElapsedTime();\n    world.mist.children.forEach(function(m,i){ m.position.x=m.userData.x0+Math.sin(t*0.2+i)*MIST_DRIFT; });\n  }\n  renderFrame();\n  loop._n=(loop._n||0)+1;\n  if(devOn&&loop._n%120===0){ var fe=AUSTERLITZ_DEBUG.figureError();   /* with the readout on: a periodic check of the seating */\n    if(fe.worst>0.02&&!loop._warned){ loop._warned=true; console.warn(\"Austerlitz runtime check: a figure is \"+fe.worst.toFixed(3)+\" units off the drawn ground (\"+fe.where+\")\"); } }\n}\n\n/* ============================================================\n   RUNTIME CHECKS AND THE HARNESS HOOK\n   AUSTERLITZ_DEBUG.selfTest() runs the Stage 0 guarantees against the live application. The\n   visual harness (tools/visual) calls it; it can also be run from the console at any time.\n   applyCase() and settle() let the harness put the app into a fixed, fully settled state.\n   ============================================================ */\nvar AUSTERLITZ_DEBUG=(function(){\n  function finishTween(){ var n=0; while(tween&&n<4){ tween(performance.now()+1e7); n++; } }\n  function settle(n,noRender){\n    finishTween();\n    var fk=FK; FK=7.2;\n    for(var i=0;i<(n||60);i++){ settling=false; updateVisibility(); }\n    FK=fk;\n    if(!noRender) renderFrame();\n    return settling;\n  }\n  function placeCamera(c){\n    tween=null; camArc=null; freeCam=true;\n    camera.position.set(c[0],c[1],c[2]); orbitTarget.set(c[3],c[4],c[5]); camera.lookAt(orbitTarget);\n    clampCamera();\n  }\n  function applyCase(spec,aimOf){\n    closeFirst(null);\n    stopPlay(); if(tourStep>=0) exitTour();\n    if(planSide) setPlan(planSide); if(chapter) setChapter(null);\n    freeCam=true;\n    setPresentation(spec.presentation||\"study\");\n    if(mode!==(spec.mode||\"terrain\")) setMode(spec.mode||\"terrain\");\n    setClock(spec.t,{instant:true,force:true,camera:false});\n    finishTween();\n    select(null,null);\n    if(spec.select) select(spec.select[0],spec.select[1]);\n    placeCamera(spec.cam||aimOf(spec));\n    requestRender(3);\n    return true;\n  }\n  function visibleUp(o){ while(o){ if(!o.visible) return false; o=o.parent; } return true; }\n  /* every visible man and horse (the figure kit), and the foot of every standard, against groundY */\n  function figureError(){\n    var K=figKit(), geos=[K.infCoat,K.infFixed,K.horse,K.rider,K.riderFixed], m=new THREE.Matrix4(), p=new THREE.Vector3();\n    var worst=0, where=\"\", n=0;\n    Object.keys(units).forEach(function(id){\n      var b=units[id].block; if(!b||!visibleUp(b)) return;\n      b.updateMatrixWorld(true);\n      b.traverse(function(o){\n        if(!o.isInstancedMesh||geos.indexOf(o.geometry)<0||!visibleUp(o)) return;\n        for(var i=0;i<o.count;i++){\n          o.getMatrixAt(i,m); p.set(0,0,0).applyMatrix4(m).applyMatrix4(o.matrixWorld);\n          var e=Math.abs(p.y-groundY(p.x,p.z)); n++; if(e>worst){ worst=e; where=id; }\n        }\n      });\n      var u=b.userData;\n      if(u&&u.poles&&visibleUp(u.poles)) for(var j=0;j<u.poles.count;j++){\n        u.poles.getMatrixAt(j,m); p.set(0,-2.6,0).applyMatrix4(m).applyMatrix4(u.poles.matrixWorld);\n        var e2=Math.abs(p.y-groundY(p.x,p.z)); if(e2>worst){ worst=e2; where=id+\" (standard)\"; }\n      }\n    });\n    return {worst:worst,where:where,n:n};\n  }\n  function selfTest(){\n    var out=[], t0=performance.now(), i;\n    function ck(name,ok,detail){ out.push({name:name,ok:!!ok,detail:detail}); }\n    var save={t:clock,mode:mode,pres:presentation,pos:camera.position.clone(),tgt:orbitTarget.clone(),fc:freeCam};\n    closeFirst(null); stopPlay(); if(tourStep>=0) exitTour();\n\n    /* 1. the ground as drawn */\n    var gw=0;\n    for(i=0;i<600;i++){ var ix=(i*37)%(GROUND_NX+1), iz=(i*53)%(GROUND_NZ+1);\n      var gx=-GROUND_W/2+ix*GROUND_W/GROUND_NX, gz=-GROUND_D/2+iz*GROUND_D/GROUND_NZ;\n      gw=Math.max(gw,Math.abs(groundY(gx,gz)-height(gx,gz))); }\n    ck(\"ground: groundY() returns the drawn terrain at its vertices\", gw<1e-3, \"largest |groundY - height| at mesh vertices \"+gw.toExponential(1));\n\n    /* 2. every fixed view, and every view the app computes when it centres on something */\n    var views=[];\n    Object.keys(VANTAGE).forEach(function(k){ views.push([\"vantage \"+k,VANTAGE[k]]); });\n    PHASES.forEach(function(ph){ views.push([\"phase \"+ph.id+\" (\"+ph.label+\")\",ph.cam]); });\n    ANALYSIS.forEach(function(a){ views.push([\"chapter \"+a.id,a.cam]); });\n    TOUR.forEach(function(st,k){ views.push([\"tour stop \"+(k+1),st.cam]); });\n    views.push([\"staff map\",[-27,262,41,-27,0,9]]);\n    var fixedMin=1e9, fixedWorst=\"\", below=[];\n    views.forEach(function(v){ var c=v[1], cl=c[1]-camGround(c[0],c[2]);\n      if(cl<fixedMin){ fixedMin=cl; fixedWorst=v[0]; } if(cl<CAM_CLEAR) below.push(v[0]+\" (\"+cl.toFixed(2)+\")\"); });\n    var comp=0, compMin=1e9, compWorst=\"\";\n    function centreEye(mp,r){ var w=W(mp[0],mp[1]), y=height(w[0],w[1]), d=new THREE.Vector3(-0.55,0.62,0.56).normalize().multiplyScalar(r);\n      return [w[0]+d.x,y+d.y,w[1]+d.z]; }\n    function chkEye(e,label){ comp++; var cl=e[1]-camGround(e[0],e[2]);\n      if(cl<compMin){ compMin=cl; compWorst=label; } if(cl<CAM_CLEAR) below.push(label+\" (\"+cl.toFixed(2)+\")\"); }\n    var keepClock=clock;\n    PHASES.forEach(function(ph){ clock=(ph.t0+ph.t1)/2;\n      Object.keys(FORMATIONS).forEach(function(id){ var q=posNow(id); if(q) chkEye(centreEye(q,86),\"centring on \"+id+\" at \"+fmtClock(clock)); }); });\n    clock=keepClock;\n    EVENTS.forEach(function(e){ chkEye(centreEye(e.p,96),\"event \"+e.id); chkEye(centreEye(e.p,112),\"event \"+e.id+\" (next/previous)\"); });\n    FEATURES.forEach(function(f){ chkEye(centreEye(f.p,82),\"place \"+f.id); });\n    TERRAIN_LINES.forEach(function(tl){ chkEye(centreEye(tl.p[Math.floor(tl.p.length/2)],92),\"terrain line \"+tl.n); });\n    ck(\"camera: every fixed and computed view is above the ground\", below.length===0,\n      views.length+\" fixed views (vantages, phases, chapters, tour stops, staff map), lowest \"+fixedMin.toFixed(1)+\" units at \"+fixedWorst+\n      \"; \"+comp+\" centring views, lowest \"+compMin.toFixed(1)+\" at \"+compWorst+(below.length?\"; BELOW THE FLOOR: \"+below.slice(0,8).join(\", \"):\"\"));\n\n    /* 3. glides, through the same arc code the application uses */\n    var arcsN=0, arcsMin=1e9, arcsBad=0, c0=CAM.clamps;\n    function arcCheck(a,b,bulge){\n      var A=setupArc(new THREE.Vector3(a[0],a[1],a[2]),new THREE.Vector3(a[3],a[4],a[5]),new THREE.Vector3(b[0],b[1],b[2]),new THREE.Vector3(b[3],b[4],b[5]));\n      for(var k=0;k<=24;k++){ applyArc(A,easeInOut(k/24),bulge); arcsN++;\n        var cl=camera.position.y-camGround(camera.position.x,camera.position.z); if(cl<arcsMin) arcsMin=cl; if(cl<CAM_CLEAR-1e-6) arcsBad++; }\n    }\n    for(i=0;i+1<TOUR.length;i++) arcCheck(TOUR[i].cam,TOUR[i+1].cam,0.12);\n    for(i=0;i+1<PHASES.length;i++) arcCheck(PHASES[i].cam,PHASES[i+1].cam,0.15);\n    for(i=1;i<ANALYSIS.length;i++) arcCheck(ANALYSIS[i-1].cam,ANALYSIS[i].cam,0.12);\n    var vk=Object.keys(VANTAGE);\n    vk.forEach(function(a){ vk.forEach(function(b){ if(a!==b) arcCheck(VANTAGE[a],VANTAGE[b],0.12); }); });\n    ck(\"camera: glides between tour stops, phases, chapters and vantages stay above the ground\", arcsBad===0,\n      arcsN+\" positions sampled; lowest clearance \"+arcsMin.toFixed(2)+\" units; the floor lifted \"+(CAM.clamps-c0)+\" of them\");\n\n    /* 4. orbit extremes, through the placement the pointer handlers use */\n    var orbN=0, orbMin=1e9, orbBad=0;\n    views.forEach(function(v){ var c=v[1]; orbitTarget.set(c[3],c[4],c[5]);\n      for(var th=0;th<24;th++){\n        sph.set(24,Math.PI/2-0.03,th/24*Math.PI*2); orbitPlace(); orbN++;\n        var cl=camera.position.y-camGround(camera.position.x,camera.position.z); if(cl<orbMin) orbMin=cl; if(cl<CAM_CLEAR-1e-6) orbBad++;\n      } });\n    ck(\"camera: orbiting at the lowest pitch and closest zoom never enters the ground\", orbBad===0,\n      orbN+\" orbit positions around \"+views.length+\" targets; lowest clearance \"+orbMin.toFixed(2)+\" units\");\n    renderFrame();\n    ck(\"camera: no path placed the eye below the floor before a frame\", CAM.violations===0, \"render-time guard count \"+CAM.violations);\n\n    /* 5. figures on the drawn ground, across the day, both modes, with and without dimming */\n    freeCam=true;\n    var fw={worst:0,where:\"\",n:0}, cases=0;\n    var times=PHASES.map(function(ph){ return Math.round((ph.t0+ph.t1)/2); }).concat([PHASES[3].t0+22,PHASES[7].t0+35,PHASES[8].t0+40]);\n    [\"terrain\",\"hybrid\"].forEach(function(md){\n      if(mode!==md) setMode(md);\n      [null,\"c_iv\",\"buxhowden\"].forEach(function(hl){\n        times.forEach(function(tm){\n          setClock(tm,{instant:true,force:true,camera:false}); finishTween();\n          select(null,null); if(hl) select(\"f\",hl);\n          settle(28,true);\n          var r=figureError(); cases++; fw.n+=r.n;\n          if(r.worst>fw.worst){ fw.worst=r.worst; fw.where=r.where+\" at \"+fmtClock(tm)+\", \"+md+(hl?\", \"+hl+\" highlighted\":\"\"); }\n        });\n      });\n    });\n    select(null,null);\n    ck(\"figures: every visible man, horse and standard stands on the drawn ground\", fw.worst<=0.02,\n      cases+\" states (10 phases and 3 marching moments; terrain and hybrid; no highlight and two highlight families), \"+\n      fw.n+\" figure placements; worst \"+fw.worst.toFixed(4)+\" units\"+(fw.where?\" (\"+fw.where+\")\":\"\"));\n\n    /* 6. the first-run key, the legend, and what is actually drawn */\n    var fr=document.getElementById(\"firstrun\"), lg=document.querySelector(\".legend\"), mism=[];\n    var frKeys=fr.querySelectorAll(\"[data-key]\");\n    if(!frKeys.length) mism.push(\"the first-run card carries no colour key\");\n    frKeys.forEach(function(e){ var l=lg.querySelector('[data-key=\"'+e.dataset.key+'\"]');\n      if(!l) mism.push(e.dataset.key+\" is not in the legend\");\n      else if(getComputedStyle(e).backgroundColor!==getComputedStyle(l).backgroundColor)\n        mism.push(e.dataset.key+\": \"+getComputedStyle(e).backgroundColor+\" against the legend's \"+getComputedStyle(l).backgroundColor); });\n    var txt=(document.getElementById(\"fr-key\").textContent||\"\").replace(/\\s+/g,\" \");\n    [\"Blue is the French army\",\"green for Russia\",\"white for Austria\",\"drawn in amber\"].forEach(function(w){ if(txt.indexOf(w)<0) mism.push('missing \"'+w+'\"'); });\n    if(/amber is the russian/i.test(fr.textContent)) mism.push(\"still says amber is the Russian and Austrian army\");\n    function rgb(hex){ var n=parseInt(hex.replace(\"#\",\"\"),16); return \"rgb(\"+((n>>16)&255)+\", \"+((n>>8)&255)+\", \"+(n&255)+\")\"; }\n    [[\"fr\",NATION.fr.fill],[\"ru\",NATION.ru.fill],[\"at\",NATION.at.fill],[\"arrow-fr\",hexOf(SIDE_COL.fr.attack)],[\"arrow-al\",hexOf(SIDE_COL.al.attack)]].forEach(function(k){\n      var l=lg.querySelector('[data-key=\"'+k[0]+'\"]');\n      if(!l||getComputedStyle(l).backgroundColor!==rgb(k[1])) mism.push(\"legend \"+k[0]+\" is not the drawing colour \"+k[1]); });\n    ck(\"first run: the colour key agrees with the legend, and the legend with what is drawn\", mism.length===0,\n      mism.length?mism.join(\"; \"):'\"'+txt.slice(0,150)+'...\"');\n\n    /* 7. dossiers in metres */\n    var bad=[];\n    FEATURES.forEach(function(ft){ var t=dossierFeature(ft.id).textContent, want=Math.round(GEOREF.elevM(hAt(ft.p[0],ft.p[1])));\n      if(/\\bunits?\\b/i.test(t)) bad.push(ft.id+\" shows model units\");\n      if(t.indexOf(\"\\u2248 \"+want+\" m\")<0) bad.push(ft.id+\" lacks \"+want+\" m\"); });\n    TERRAIN_LINES.forEach(function(tl){ var t=dossierAnalysis(tl.n).textContent;\n      if(/\\bunits?\\b/i.test(t)) bad.push(tl.n+\" shows model units\");\n      if(!/\\u2248 \\d+\\u2013\\d+ m on this model/.test(t)) bad.push(tl.n+\" lacks a range in metres\"); });\n    ck(\"dossiers: elevations are metres through GEOREF, never model units\", bad.length===0,\n      bad.length?bad.join(\"; \"):FEATURES.length+\" place dossiers and \"+TERRAIN_LINES.length+\" terrain-study dossiers\");\n\n    /* 8. a selection is always shown somewhere, and clearing it clears the dimming */\n    var steps=[], okAll=true;\n    function chip(){ var c=document.getElementById(\"selchip\"); return !c.hidden&&getComputedStyle(c).display!==\"none\"; }\n    function note(label,ok){ steps.push((ok?\"\":\"FAILED: \")+label); if(!ok) okAll=false; }\n    if(mode!==\"terrain\") setMode(\"terrain\");\n    setClock(585,{instant:true,force:true,camera:false}); finishTween();\n    setPresentation(\"watch\"); select(\"f\",\"kamensky\");\n    note(\"Watch, formation selected: chip shown, dossier hidden, family highlighted\", chip()&&!drawerShown()&&!!highlight);\n    document.getElementById(\"sc-open\").click();\n    note(\"chip opens the dossier in Study, selection kept\", presentation===\"study\"&&drawerShown()&&!chip()&&!!selection&&selection.id===\"kamensky\");\n    setPresentation(\"watch\");\n    note(\"entering Watch clears selection, chip and dimming\", !selection&&!chip()&&!highlight);\n    select(\"e\",\"kamensky\");\n    note(\"Watch, event selected: chip shown\", chip()&&!drawerShown());\n    document.getElementById(\"sc-clear\").click();\n    note(\"chip clears the selection\", !selection&&!chip()&&!highlight);\n    setPresentation(\"map\"); select(\"f\",\"sthilaire\");\n    note(\"clean map view, selection: chip shown\", chip());\n    select(null,null);\n    note(\"nothing selected: no chip, no dimming\", !chip()&&!highlight);\n    setPresentation(\"study\"); select(\"f\",\"sthilaire\");\n    note(\"Study, selection: dossier shown, no chip\", drawerShown()&&!chip());\n    select(null,null);\n    ck(\"watch mode: a selection is always shown, and clearing it clears the dimming\", okAll, steps.join(\"; \"));\n\n    /* 9. sprite edges and mist edges */\n    function edge(t){ var c=t.image,w=c.width,h=c.height,d=c.getContext(\"2d\").getImageData(0,0,w,h).data,mx=0,x,y;\n      for(x=0;x<w;x++) mx=Math.max(mx,d[x*4+3],d[((h-1)*w+x)*4+3]);\n      for(y=0;y<h;y++) mx=Math.max(mx,d[y*w*4+3],d[(y*w+w-1)*4+3]);\n      return mx; }\n    var se=edge(smokeTexture()), de=edge(dustTexture());\n    ck(\"sprites: smoke and dust fade to nothing at every edge\", se===0&&de===0, \"largest edge alpha: smoke \"+se+\", dust \"+de+\" of 255\");\n    var mistBad=0, mistN=0;\n    world.mist.children.forEach(function(m){ var a=m.geometry.attributes.color.array, pa=m.geometry.attributes.position.array, x0=m.userData.x0, y=m.position.y;\n      for(var q=0;q<pa.length/3;q++){ var x=x0+pa[q*3], z=m.position.z-pa[q*3+1];\n        var g=Math.max(groundY(x-MIST_DRIFT,z),groundY(x,z),groundY(x+MIST_DRIFT,z));\n        if(y-g<0.2){ mistN++; if(a[q*4+3]>0.001) mistBad++; } } });\n    ck(\"mist: no sheet shows where the ground rises through it\", mistBad===0, mistN+\" sheet vertices at or below the ground, \"+mistBad+\" with any alpha\");\n\n    /* 10. derived readings: rendering changes must not move them */\n    keepClock=clock; clock=240;\n    var p04=plateauStrength(\"al\");\n    clock=keepClock;\n    var over=[]; for(var tm=240;tm<=1080;tm+=15){ if(sideOnFieldAt(\"al\",tm)>85400||sideOnFieldAt(\"fr\",tm)>73000) over.push(fmtClock(tm)); }\n    var aud=auditMovement();\n    ck(\"derived readings unchanged: the plateau at 04:00, both army totals, the movement audit\", p04===38700&&!over.length&&!aud.length,\n      \"Allied on the plateau at 04:00 = \"+p04.toLocaleString()+\" (changelog 38,700); \"+\n      (over.length?\"totals exceed an army at \"+over.join(\",\"):\"totals within 85,400 and 73,000 at 57 moments\")+\"; movement audit \"+aud.length+\" findings\");\n\n    /* 11. render on demand */\n    setMode(\"staff\"); setClock(600,{instant:true,force:true,camera:false}); finishTween(); settle(40,true);\n    needFrames=0; lastInput=-1e9; settling=false;\n    var sIdle=frameState(performance.now());\n    setMode(\"terrain\"); setClock(250,{instant:true,force:true,camera:false}); finishTween(); settle(40,true);\n    needFrames=0; lastInput=-1e9; settling=false;\n    var sMist=frameState(performance.now()+1000);\n    ck(\"render on demand: a view at rest draws nothing; slow drift alone draws at the ambient rate\",\n      sIdle===\"idle\"&&(HARNESS||RM?sMist===\"idle\":sMist===\"ambient\"),\n      \"paper map at rest: \"+sIdle+\"; landscape at 04:10 with mist: \"+sMist+((HARNESS||RM)?\" (drift is off in harness or reduced-motion mode)\":\"\"));\n\n    if(mode!==save.mode) setMode(save.mode);\n    setPresentation(save.pres);\n    setClock(save.t,{instant:true,force:true,camera:false}); finishTween();\n    camera.position.copy(save.pos); orbitTarget.copy(save.tgt); camera.lookAt(orbitTarget); clampCamera(); freeCam=save.fc;\n    requestRender(3);\n    return {ms:Math.round(performance.now()-t0), ok:out.every(function(c){ return c.ok; }), checks:out};\n  }\n  function stats(){\n    return {state:DEV.state, world:DEV.world, total:DEV.total, labels:LABEL_STATS,\n            camera:{clamps:CAM.clamps,violations:CAM.violations}, seating:{blocks:SEAT_STATS.blocks},\n            memory:{geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}};\n  }\n  return {groundY:groundY, camFloor:camFloor, settle:settle, applyCase:applyCase, placeCamera:placeCamera,\n          selfTest:selfTest, stats:stats, figureError:figureError};\n})();\n"
+  }
+ ]
+}

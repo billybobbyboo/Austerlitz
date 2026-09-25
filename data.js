@@ -746,4 +746,3 @@ var SOURCE_NOTE = {
        "Narrative of the fight for the Pratzeberg follows accounts drawing on Thiebault's memoirs and Duffy.",
        "Figures for the meres follow the record of the ponds being drained after the battle."]
 };
-

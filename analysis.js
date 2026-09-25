@@ -358,4 +358,3 @@ var TOUR = [
 {n:"What it cost", t:1000, chapter:null, cam:[-220,158,206,-28,0,6],
  x:"Allied losses are usually given as fifteen to sixteen thousand killed and wounded and twelve thousand or more taken, with about a hundred and eighty guns. French losses were near nine thousand. Everything you have watched today is a reconstruction: positions are graded A, B or C, strengths carry their ranges, and two figures on the situation line are computed rather than recorded. The sources panel says which is which."}
 ];
-

@@ -1,35 +1,32 @@
 # Austerlitz Command Map — Changelog
 
-## 2026-09 · Repository structure restored (no change to the build)
+## 2026-09 · Source tree and regression suite recovered; source synchronised with Stage 0
 
-The first upload through the GitHub web interface flattened the tree: every file landed at the
-repository root, `.gitignore` and `.gitattributes` arrived as `download` and `download (3)`, and the two
-sub-READMEs as `README (1).md` and `README (2).md`. `check:data` and `check:visual` could not run
-(`Cannot find module tools/visual/data-invariance.js`). The layout is restored with 23 pure renames
-(`git mv`, every one 100% similar, 0 lines changed), each placed by its own header and by the paths
-that `package.json`, `CLAUDE.md`, `README.md` and the documents already cite:
-- `tools/visual/`: `data-invariance.js`, `harness.js`, `measure.js`, `thresholds.js`, `cases.js`,
-  `check-report.js`, `compare-gallery.js`, `darkness-study.js`, and `README.md` (was `README (1).md`,
-  "Visual regression harness (Stage 0)").
-- `tools/stage0/`: `apply-stage0.py`, `extract-edits.py`, `stage0-edits.json`, `stage0.patch`, and
-  `README.md` (was `README (2).md`, "Stage 0 source patch", which names these four files).
-- `tools/split-from-html.py` (its docstring gives that path).
-- `archive/`: `stage0-c09c4b23.html` (md5 `c09c4b23…`), `correction-pass-672aff9f.html` (md5 `672aff9f…`).
-- `docs/`: `VISUAL_AUDIT.md`, `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`.
-- `dist/austerlitz-command-map.html` (was at the root; md5 `c09c4b23…`).
-- `.gitignore` (was `download`: `node_modules/`, `tools/visual/out/`, `*.pre-stage0`, `__pycache__/`) and
-  `.gitattributes` (was `download (3)`: `* text=auto eol=lf` and the binary types). Every tracked file
-  was already LF, so `.gitattributes` renormalises nothing.
+**Status: done; both builds reproduced byte for byte.** The correction-pass source tree, its eight suites, the
+runner and every tool were recovered from the account data export by replaying the first project chat's tool calls
+(method and proof: `docs/SUITE_RECOVERY.md`). The recovered tree rebuilds the correction-pass file exactly (md5
+`672aff9f...`), and the original suite reproduces every recorded result on it. With the 73 Stage 0 edits applied, the
+original `build.py` rebuilds the Stage 0 file exactly: 1,097,610 bytes, md5 `c09c4b23d9e245ff9d693960cf9496b9`.
 
-No source, data, HTML, test or script content changed. **Verified after the move:** `npm run
-check:baseline`: 1,097,610 bytes, md5 `c09c4b23d9e245ff9d693960cf9496b9`, matches. `npm run check:data`:
-all 112 DATA declarations byte-identical (and, as an extra check, also between
-`archive/correction-pass-672aff9f.html` and `archive/stage0-c09c4b23.html`). `npm run check:visual`
-(Playwright 1.56.0, its bundled Chromium 141): 11 cases and the self-test, "STAGE0: all checks passed";
-the only overlap is the allowed hybrid-dimmed counter pair; two Canvas2D `willReadFrequently`
-performance warnings in the console. **Not run:** the correction-pass suite (`tools/run-all.sh`), which
-is not in the repository (`docs/SUITE_RECOVERY.md`). `dist/austerlitz-command-map.html` unchanged:
-1,097,610 bytes, md5 `c09c4b23d9e245ff9d693960cf9496b9`.
+**Implementation source of truth: this recovered tree** (`style.css`, the scripts, the suites at the top level,
+`tools/run-all.sh`), built by `build.py`. It supersedes the interim tree split from the HTML and its `dist/` folder.
+
+**On Stage 0, seven suites pass unchanged** with the correction-pass results. `runtime-test.js` reports 2 errors:
+its stand-in three.js lacks maths that Stage 0's seating and labels use; the application is unaffected (verified in a
+real browser by the Stage 0 harness and self-test). Fix: `docs/HANDOFF.md`, task 2.
+
+**Changed in recovered files:** `tools/run-all.sh` finds the repository root itself (was a sandbox path); `build.py`
+writes LF on every platform (output unchanged); `runtime-test.js` gains the `location` and `renderer.info` stand-ins
+Stage 0 needs. `assets.js` was taken from the verified build, because its source photographs were downloaded in that
+chat; the byte-identical rebuild proves it exact.
+
+## 2026-09 · Suite recovery, round 1 (no change to the build)
+
+Recovered from the first project chat and validated: `tools/mk-helpers.js` (verbatim) and
+`tools/mk-world-mod.js` (creation plus its one recorded edit). Both run cleanly on the correction-pass
+and Stage 0 builds; the world module reproduces the verified elevations. Generated test modules are
+ignored by git. The eight suites are still to be recovered (`docs/SUITE_RECOVERY.md`). The build is
+unchanged (md5 `c09c4b23…`).
 
 ## 2026-09 · Repository set-up (no change to the build)
 
