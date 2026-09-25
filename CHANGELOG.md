@@ -1,5 +1,33 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · `runtime-test.js` brought up to Stage 0 (test harness only; no change to the build)
+
+**Status: done (`docs/HANDOFF.md`, task 2).** `runtime-test.js` reported 2 errors on Stage 0 (`mesh.getMatrixAt is
+not a function`; `_cR.setFromMatrixColumn is not a function`). The first was thrown inside `init`, so on Stage 0 none of
+its drive checks had run. Cause: its stand-in three.js had token maths, while Stage 0 seats figures through world
+matrices and places labels through the camera's projection. Changes, all in `runtime-test.js`:
+- The maths is the real `three@0.128.0` (the existing devDependency): `Vector2`, `Vector3`, `Matrix3`, `Matrix4`,
+  `Quaternion`, `Euler`, `Spherical`. Beyond the handoff's list, and needed for the same reason: the stand-in
+  `Object3D` extends the real one (its token quaternion and empty `matrix` could not carry a world transform), and the
+  cameras are the real `PerspectiveCamera` and `OrthographicCamera`. Rendering stays stubbed (renderer, render
+  targets, textures, materials, geometries, `Color`).
+- `InstancedMesh` stores per-instance matrices as r128 does (`instanceMatrix.array`, `setMatrixAt`, `getMatrixAt`,
+  `count`).
+- The `document` stand-in gained element `querySelector` (Stage 0's selection chip) and `getComputedStyle` (inline
+  style or defaults; no stylesheet is loaded), which Stage 0's label placement asks for.
+- The re-seating check's reset set `rec.seatPos=null`, which Stage 0's `settleBlock` no longer reads (it keeps the
+  state in `rec.seated`); the reset now clears both. Its assertion is unchanged.
+
+No assertion was removed or loosened (no changed line in the diff contains `throw`, `Error`, `errs`, `warns` or
+`console`). **Verified:** on Stage 0, `runtime-test.js` reports 0 errors, 0 warnings, and its output is byte-identical
+to the unmodified test's output on the correction-pass build (36 drive checks plus the photo atlas, same numbers:
+40 formations, 281 clock steps, 24 event hops, 12,688 apron faces, 294 men in 5 draws, 57 parent/child moments). The
+modified test's output on the correction-pass build is byte-identical to the unmodified test's. `npm test`: all eight
+suites pass (runtime 0 errors). `npm run check:baseline`: md5 `c09c4b23d9e245ff9d693960cf9496b9`. `npm run
+check:data`: 112 DATA declarations byte-identical. `docs/SUITE_RECOVERY.md` and the checks note in `CLAUDE.md`
+updated. Not re-run: `npm run check:visual` (no application code changed). `austerlitz-command-map.html`
+unchanged: 1,097,610 bytes, md5 `c09c4b23d9e245ff9d693960cf9496b9`.
+
 ## 2026-09 · Recovered tree put in place; `dist/` retired (no change to the build)
 
 The upload of the recovered tree (commit `03b7118`) came through the GitHub web interface and was flattened again:

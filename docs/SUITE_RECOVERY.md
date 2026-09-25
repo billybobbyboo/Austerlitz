@@ -25,7 +25,7 @@ so `assets.js` was taken from the verified build.
 | `audit.js` | 0 march-rate, 0 terrain violations | same |
 | `sim-test.js` | 25 events, 0 disagreements; tour stop 4 agrees | same |
 | `redteam.js` | 37 retired claims, 0 found; 0 findings | same |
-| `runtime-test.js` | 0 errors; tour stops and parent/child checks OK | 2 errors (below) |
+| `runtime-test.js` | 0 errors; tour stops and parent/child checks OK | same, since task 2 (below) |
 
 ## Synchronised with Stage 0
 The 73 Stage 0 edits (`tools/stage0/stage0-edits.json`) were applied to the recovered tree: 72 located by
@@ -36,13 +36,30 @@ anchor spans `style.css` and `shell.html`, appended to `style.css`. The original
 ## Changes to recovered files
 - `tools/run-all.sh`: finds the repository root from its own location (it had the sandbox path hard-coded).
 - `build.py`: writes its outputs with LF line endings on every platform (Linux output unchanged; md5 still `c09c4b23`).
-- `runtime-test.js`: two browser stand-ins that Stage 0 code needs (`location`, `renderer.info`).
+- `runtime-test.js`: two browser stand-ins that Stage 0 code needs (`location`, `renderer.info`); then brought up to
+  Stage 0 (`docs/HANDOFF.md`, task 2; below).
 
-## Open
-`runtime-test.js` still reports 2 errors on Stage 0 (`mesh.getMatrixAt is not a function`;
-`_cR.setFromMatrixColumn is not a function`): its hand-written three.js stand-in has only token maths, and Stage 0's
-figure seating and label placement use real vector, matrix and quaternion methods. The application is unaffected
-(the Stage 0 harness and self-test run it in a real browser). The fix is `docs/HANDOFF.md`, task 2.
+## `runtime-test.js` brought up to Stage 0 (task 2, done)
+It reported 2 errors on Stage 0 (`mesh.getMatrixAt is not a function`; `_cR.setFromMatrixColumn is not a function`):
+its hand-written three.js stand-in had only token maths, and Stage 0's figure seating and label placement use real
+vector, matrix and quaternion methods. The first error was thrown inside `init`, so none of the drive checks ran.
+- The maths is now the real `three@0.128.0`: `Vector2`, `Vector3`, `Matrix3`, `Matrix4`, `Quaternion`, `Euler`,
+  `Spherical`; the stand-in `Object3D` extends the real one (its token quaternion and empty matrix could not carry a
+  world transform), and the cameras are the real `PerspectiveCamera` and `OrthographicCamera` (labels are placed
+  through their projection). Rendering stays stubbed: renderer, render targets, textures, materials, geometries,
+  `Color`.
+- `InstancedMesh` stores per-instance matrices as r128 does (`instanceMatrix.array`, 16 floats each, zero until set;
+  `setMatrixAt`, `getMatrixAt`, `count`).
+- The `document` stand-in: elements answer `querySelector` as `document` already did (Stage 0's selection chip fills
+  its `.sc-k`/`.sc-n`/`.sc-s`), and `getComputedStyle` reports an element's inline `display`/`visibility` or the
+  defaults, since no stylesheet is loaded. `getBoundingClientRect` is unchanged.
+- The re-seating check reset its block with `rec.seatPos=null`, the correction pass's "not yet seated" state; Stage 0
+  (edit to `settleBlock`) keeps that state in `rec.seated`, so the reset reset nothing and the check saw 1 re-seat, not
+  2. The reset now clears both. The assertion (exactly 2: first, then after a move) is unchanged.
+
+No assertion was removed or changed. Verified: on Stage 0 the test reports 0 errors and 0 warnings, and its output is
+byte-identical to the unmodified test's output on the correction-pass build (the 36 drive checks, the photo atlas,
+the same numbers); the modified test also gives byte-identical output on the correction-pass build.
 
 ## History kept in `tools/`, never to be run again
 `geo-migrate.js`, `geo-anchor.js`, `warp.js`, `warp-proto.js`, `geo-proto.js`, `geo-dump.js`, `relief-fit.js`,

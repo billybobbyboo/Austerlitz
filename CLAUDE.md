@@ -63,8 +63,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - `npm run check:visual`: 11 fixed views, Stage 0 thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()`.
   One known residual is allowed by name (hybrid-dimmed Walther/Nansouty counter overlap, Stage 2).
 - `npm run check:baseline` passes only on the unmodified Stage 0 build (md5 `c09c4b23...`).
-- Known open item: `runtime-test.js` reports 2 errors on Stage 0 until its three.js stand-ins are extended
-  (`docs/HANDOFF.md`, task 2). Never loosen or remove an assertion to make a suite pass.
+- All eight suites pass on Stage 0 (`runtime-test.js` since `docs/HANDOFF.md` task 2). Never loosen or remove an
+  assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
 
 ## Finishing a task
