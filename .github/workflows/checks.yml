@@ -1,0 +1,24 @@
+# Automated checks on every push and pull request (docs/HANDOFF.md, task 4): build, the regression suite
+# (tools/run-all.sh exits non-zero if any suite fails), and the data-invariance proof. The visual harness
+# (npm run check:visual) is not run here: it needs Chromium and about ten minutes of software rendering.
+name: checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+      - run: npm run build
+      - run: npm test
+      - run: npm run check:data

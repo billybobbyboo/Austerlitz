@@ -1,5 +1,17 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Automated checks on every push (CI only; no change to the build)
+
+**Status: added (`docs/HANDOFF.md`, task 4).** `.github/workflows/checks.yml` runs on every push and pull request, on
+`ubuntu-latest` with Node 22: `npm install`, `npm run build`, `npm test` (fails if any suite fails, since task 3) and
+`npm run check:data`. Implementation choices: `npm install` rather than `npm ci`, because the repository has no lockfile;
+Playwright's browser download is skipped, and `npm run check:visual` is not run in CI (it needs Chromium and about ten
+minutes of software rendering; it stays a local check); read-only repository permissions; a 45-minute job limit.
+
+**Verified locally** on a fresh clone of this branch with the same steps: all four exit 0 (`ALL 8 SUITES PASSED`; 112
+DATA declarations byte-identical). The first run on GitHub is the push of this change; its result is reported in the
+pull request. `austerlitz-command-map.html` unchanged: 1,097,610 bytes, md5 `c09c4b23d9e245ff9d693960cf9496b9`.
+
 ## 2026-09 · The test runner fails loudly (test tooling only; no change to the build)
 
 **Status: done (`docs/HANDOFF.md`, task 3).** `tools/run-all.sh` printed each suite's summary but always exited 0, so
