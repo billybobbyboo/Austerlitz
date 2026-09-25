@@ -1,0 +1,4305 @@
+/* ============================================================
+   COMMAND MAP — application
+   ============================================================ */
+var RM = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* ?harness=1: deterministic frames for the visual regression harness (no drift, no grain animation) */
+var HARNESS = /[?&]harness=1\b/.test(location.search);
+
+/* ---------------- per-phase map overlays ---------------- */
+var OVERLAYS = {
+0:{ lines:[
+     {pts:[[223,82],[229,116],[238,158],[213,222],[205,277],[208,365],[212,408]],side:"fr",label:"French line on the Goldbach"},
+     {pts:[[318,188],[315,227],[289,276],[291,332]],side:"al",label:"Allied columns on the plateau"}],
+    bounds:[{pts:[[165,143],[244,139]],label:"V Corps · IV Corps"},
+            {pts:[[160,252],[216,253]],label:"Soult's assault · Legrand"}],
+    arrows:[
+     {pts:[[291,332],[272,362],[234,395]],kind:"axis",side:"al",label:"I Column → Telnitz"},
+     {pts:[[291,308],[268,328],[237,348]],kind:"axis",side:"al",label:"II Column → Sokolnitz"},
+     {pts:[[290,282],[264,303],[240,330]],kind:"axis",side:"al",label:"III Column → the castle"},
+     {pts:[[331,230],[285,251],[217,277]],kind:"axis",side:"al",label:"IV Column → Kobelnitz"},
+     {pts:[[296,243],[317,217],[312,178]],kind:"move",side:"al",label:"V Column counter-marches north"}],
+    obj:[[212,408,"Telnitz"],[208,365,"Sokolnitz"],[205,277,"Kobelnitz"]]},
+
+1:{ lines:[{pts:[[223,82],[229,116],[238,158],[213,222],[205,277],[208,365],[212,408]],side:"fr",label:"French line on the Goldbach"}],
+    arrows:[
+     {pts:[[291,367],[251,390],[226,406]],kind:"attack",side:"al",label:"Kienmayer"},
+     {pts:[[291,332],[272,359],[247,381]],kind:"move",side:"al",label:"I Column descends"},
+     {pts:[[106,428],[156,417],[195,409]],kind:"move",side:"fr",label:"Friant's approach march"}],
+    obj:[[212,408,"Telnitz"]]},
+
+2:{ lines:[{pts:[[213,222],[205,277],[208,365],[212,408]],side:"fr",label:"Legrand and Friant on the stream"}],
+    arrows:[
+     {pts:[[268,328],[249,338],[229,356]],kind:"attack",side:"al",label:"II Column → Sokolnitz"},
+     {pts:[[266,296],[254,316],[236,336]],kind:"attack",side:"al",label:"III Column → castle"},
+     {pts:[[296,243],[313,225],[320,204]],kind:"move",side:"al",label:"Liechtenstein crosses the front"},
+     {pts:[[325,230],[301,237]],kind:"axis",side:"al",label:"IV Column halted"},
+     {pts:[[167,410],[187,403],[202,403]],kind:"attack",side:"fr",label:"Friant retakes Telnitz"}],
+    obj:[[208,365,"Sokolnitz"],[205,277,"Kobelnitz — never reached"]]},
+
+3:{ arrows:[
+     {pts:[[206,231],[238,256],[266,276]],kind:"attack",side:"fr",label:"Saint-Hilaire"},
+     {pts:[[221,182],[241,199],[279,208]],kind:"attack",side:"fr",label:"Vandamme"}],
+    obj:[[285,289,"Pratzeberg"],[313,205,"Stare Vinohrady"]]},
+
+4:{ arrows:[
+     {pts:[[259,316],[270,300],[280,291]],kind:"counter",side:"al",label:"Kamensky turns about"},
+     {pts:[[324,233],[280,239],[289,273]],kind:"counter",side:"al",label:"Jurczek's Austrians"},
+     {pts:[[213,299],[233,307],[246,307]],kind:"move",side:"fr",label:"Levasseur up the Goldbach"}],
+    lines:[{pts:[[309,207],[294,241],[283,287]],side:"fr",label:"French hold the crest"}],
+    obj:[[285,289,"Pratzeberg"]]},
+
+5:{ arrows:[
+     {pts:[[240,115],[268,119],[294,122]],kind:"attack",side:"fr",label:"Caffarelli"},
+     {pts:[[227,95],[235,85],[245,77]],kind:"attack",side:"fr",label:"Suchet"},
+     {pts:[[292,52],[276,61],[262,68]],kind:"attack",side:"al",label:"Bagration"},
+     {pts:[[319,194],[305,170],[298,153]],kind:"counter",side:"al",label:"Liechtenstein and Uvarov"},
+     {pts:[[221,138],[251,145],[275,147]],kind:"counter",side:"fr",label:"Nansouty's cuirassiers"}],
+    obj:[[296,147,"Blasowitz"],[222,87,"The Santon holds"]]},
+
+6:{ arrows:[
+     {pts:[[413,202],[359,187],[330,192]],kind:"attack",side:"al",label:"Russian Imperial Guard"},
+     {pts:[[201,154],[245,184],[285,208]],kind:"counter",side:"fr",label:"Bessieres and Rapp"},
+     {pts:[[179,177],[233,194],[285,204]],kind:"move",side:"fr",label:"Drouet forms line"}],
+    lines:[{pts:[[296,145],[309,207],[296,241],[283,287]],side:"fr",label:"French on the plateau"}],
+    obj:[[313,205,"Stare Vinohrady"]]},
+
+7:{ arrows:[
+     {pts:[[290,248],[276,285],[285,324]],kind:"attack",side:"fr",label:"Saint-Hilaire wheels south"},
+     {pts:[[294,224],[271,271],[272,342]],kind:"attack",side:"fr",label:"Vandamme wheels south"},
+     {pts:[[198,398],[220,400],[238,392]],kind:"attack",side:"fr",label:"Davout resumes the offensive"},
+     {pts:[[227,338],[223,313],[215,291]],kind:"retreat",side:"al",label:"Przybyszewski's breakout"}],
+    lines:[{pts:[[212,408],[208,365],[205,277]],side:"al",label:"Buxhowden's columns, now cut off"}],
+    obj:[[208,365,"Sokolnitz"]]},
+
+8:{ arrows:[
+     {pts:[[226,404],[260,385],[295,375]],kind:"retreat",side:"al",label:"I Column to the defile"},
+     {pts:[[297,374],[282,412],[261,436]],kind:"retreat",side:"al",label:"Over the Satschan mere"},
+     {pts:[[243,396],[226,422],[203,444]],kind:"retreat",side:"al",label:"Across the Menitz mere"},
+     {pts:[[270,347],[281,365],[295,367]],kind:"attack",side:"fr",label:"Vandamme takes the height"},
+     {pts:[[223,379],[244,388],[270,375]],kind:"attack",side:"fr",label:"Legrand and Friant"},
+     {pts:[[304,46],[329,33],[354,20]],kind:"retreat",side:"al",label:"Bagration withdraws on Rausnitz"}],
+    obj:[[297,372,"The Augezd defile"]]},
+
+9:{ lines:[{pts:[[223,82],[264,114],[313,205],[278,283],[290,366],[297,391]],side:"fr",label:"French positions at nightfall"}],
+    arrows:[]}
+};
+
+/* ---------------- three.js scaffolding ---------------- */
+var scene,camera,renderer,sun,hemi,world;
+var orbitTarget=new THREE.Vector3(0,0,14), sph=new THREE.Spherical();
+var mode="terrain", tween=null;
+var selection=null, freeCam=false;
+var layerOn={symbols:true,arrows:true,labels:true,trails:true,contours:true,analysis:false,events:true};
+var goingOn=false;
+var analysisSprites=[];
+var highlight=null;      /* id -> true, or null for "show everything equally" */
+var commandView="none";  /* none | fr | al */
+var chapter=null;
+var tourStep=-1, sitOff=false;
+var planSide=null;      /* "al" | "fr" | "both" | null */
+var planGroup=null;
+var cleanView=false;
+function textOn(){ return layerOn.labels && !cleanView; }
+
+var units={};        /* leaf formations with 3D blocks + symbols */
+var aggregates={};   /* corps-level symbol only */
+var featureSprites=[];
+
+/* sky: zenith, mid-sky, horizon · disc: how much of the low December sun shows */
+/* sun: intensity, colour, direction · hemi: sky fill · fog: atmospheric perspective,
+   cool and darker than the ground so distance recedes instead of whitening ·
+   sky: zenith, mid, horizon · disc: how much of the low sun shows ·
+   grade: lift, gain, saturation, contrast, bloom, exposure */
+var LIGHT={
+ predawn:  {i:0.26,c:0x8FA2B6,p:[ -60, 80,-160],hemi:0.62,fogN:100,fogF:640, fogC:0x4A5666,bg:0x0D1520,
+            sky:[0x0F1A26,0x2B3A48,0x4A5666],mistC:0x3E4852,disc:0.0,
+            grade:[[0,0,0],[0.96,0.98,1.06],0.86,1.02,0.22,1.08]},
+ dawn:     {i:0.46,c:0xD9B189,p:[ 210, 30, 140],hemi:0.50,fogN:110,fogF:680, fogC:0x787A7E,bg:0x152029,
+            sky:[0x1B2836,0x4A5866,0x787A7E],mistC:0x8A8884,disc:0.35,
+            grade:[[0,0,0],[1.02,1.00,0.98],0.94,1.04,0.34,1.00]},
+ mist:     {i:0.62,c:0xDCC3A2,p:[ 200, 44, 146],hemi:0.48,fogN:120,fogF:720, fogC:0x82878A,bg:0x17242E,
+            sky:[0x24313E,0x66717A,0x82878A],mistC:0xA4A7A6,disc:0.45,
+            grade:[[0,0,0],[1.01,1.00,1.00],0.92,1.03,0.30,1.00]},
+ sunburst: {i:1.10,c:0xFFD2A0,p:[ 206, 52, 148],hemi:0.40,fogN:220,fogF:1000,fogC:0x8E959A,bg:0x18262F,
+            sky:[0x2A3D52,0x7A8D9C,0x8E959A],mistC:0xC4BFB4,disc:1.0,
+            grade:[[0,0,0],[1.02,1.00,0.98],0.96,1.06,0.36,0.98]},
+ morning:  {i:1.02,c:0xFFDFB2,p:[ 156, 80, 166],hemi:0.40,fogN:220,fogF:1000,fogC:0x8C949A,bg:0x16232D,
+            sky:[0x2E4560,0x8497A8,0x8C949A],mistC:0xB8BCBC,disc:0.55,
+            grade:[[0,0,0],[1.01,1.01,1.00],0.94,1.06,0.32,0.96]},
+ midday:   {i:1.05,c:0xFFEDD4,p:[  46,108, 178],hemi:0.42,fogN:240,fogF:1080,fogC:0x8898A6,bg:0x152230,
+            sky:[0x334C68,0x8EA0B0,0x8898A6],mistC:0xB9BEC2,disc:0.40,
+            grade:[[0,0,0],[1.00,1.00,1.02],0.93,1.04,0.28,0.96]},
+ afternoon:{i:0.96,c:0xFFD69A,p:[-124, 74, 168],hemi:0.40,fogN:220,fogF:1000,fogC:0x8E9498,bg:0x152130,
+            sky:[0x2E4358,0x8393A2,0x8E9498],mistC:0xBDB8B0,disc:0.55,
+            grade:[[0,0,0],[1.02,1.01,0.98],0.96,1.06,0.32,0.96]},
+ late:     {i:0.82,c:0xF0B87C,p:[-204, 32, 118],hemi:0.38,fogN:180,fogF:900, fogC:0x8C8A8A,bg:0x131D28,
+            sky:[0x243346,0x6E7A88,0x8C8A8A],mistC:0xAE9E8E,disc:0.9,
+            grade:[[0,0,0],[1.04,1.00,0.96],0.98,1.08,0.40,0.98]},
+ dusk:     {i:0.34,c:0xA9663E,p:[-236, 12,  62],hemi:0.58,fogN:120,fogF:720, fogC:0x565A64,bg:0x0C1420,
+            sky:[0x0C1522,0x2E3948,0x565A64],mistC:0x4A4C54,disc:0.5,
+            grade:[[0,0,0],[1.00,0.97,1.02],0.88,1.02,0.30,1.06]},
+ staff:    {i:0.28,c:0xFFFFFF,p:[  60,220, -40],hemi:1.05,fogN:600,fogF:2000,fogC:0xD8D2C0,bg:0x171C21,
+            sky:[0x171C21,0x171C21,0x171C21],mistC:0xC0BCB2,disc:0.0,
+            grade:[[0,0,0],[1.00,1.00,1.00],1.00,1.00,0.04,1.00]}
+};
+var skyCanvas=null, skyCtx=null, sunDisc=null;
+var _skyNow=[new THREE.Color(0x0F1A26),new THREE.Color(0x2B3A48),new THREE.Color(0x6E7A82)];
+var _gradeNow=[[0,0,0],[0.94,0.97,1.06],0.86,1.10,0.26,0.94];
+function paintSky(c0,c1,c2){
+  if(!skyCanvas){
+    skyCanvas=document.createElement("canvas"); skyCanvas.width=4; skyCanvas.height=256;
+    skyCtx=skyCanvas.getContext("2d");
+  }
+  var g=skyCtx.createLinearGradient(0,0,0,256);
+  /* the sphere's equator is at 0.5: zenith above, the fog colour at and below it */
+  g.addColorStop(0,"#"+c0.getHexString()); g.addColorStop(0.30,"#"+c1.getHexString());
+  g.addColorStop(0.47,"#"+c2.getHexString()); g.addColorStop(1,"#"+c2.getHexString());
+  skyCtx.fillStyle=g; skyCtx.fillRect(0,0,4,256);
+  if(world&&world.dome){
+    var m=world.dome.material;
+    if(!m.map||m.map.image!==skyCanvas){ m.map=ctexS(skyCanvas); m.needsUpdate=true; }
+    else m.map.needsUpdate=true;
+  }
+}
+var pmrem=null, envRT=null, _envKey="";
+function refreshEnvironment(){
+  if(!skyCanvas) return;
+  var key=_skyNow[0].getHexString()+_skyNow[2].getHexString();
+  if(key===_envKey) return;
+  _envKey=key;
+  if(!pmrem){ pmrem=new THREE.PMREMGenerator(renderer); pmrem.compileEquirectangularShader(); }
+  var eq=document.createElement("canvas"); eq.width=64; eq.height=32;
+  var x=eq.getContext("2d");
+  var g=x.createLinearGradient(0,0,0,32);
+  g.addColorStop(0,"#"+_skyNow[0].getHexString());
+  g.addColorStop(0.30,"#"+_skyNow[1].getHexString());
+  g.addColorStop(0.48,"#"+_skyNow[2].getHexString());
+  g.addColorStop(1,"#2A2A24");
+  x.fillStyle=g; x.fillRect(0,0,64,32);
+  var tex=new THREE.CanvasTexture(eq);
+  tex.mapping=THREE.EquirectangularReflectionMapping;
+  tex.encoding=THREE.sRGBEncoding;
+  var out=pmrem.fromEquirectangular(tex);
+  if(envRT) envRT.dispose();
+  envRT=out;
+  scene.environment=out.texture;
+  tex.dispose();
+}
+function buildSunDisc(){
+  var c=document.createElement("canvas"); c.width=c.height=128;
+  var x=c.getContext("2d");
+  var gr=x.createRadialGradient(64,64,4,64,64,64);
+  gr.addColorStop(0,"rgba(255,244,214,1)"); gr.addColorStop(0.18,"rgba(255,222,160,.95)");
+  gr.addColorStop(0.42,"rgba(255,190,110,.35)"); gr.addColorStop(1,"rgba(255,170,90,0)");
+  x.fillStyle=gr; x.fillRect(0,0,128,128);
+  sunDisc=new THREE.Sprite(new THREE.SpriteMaterial({map:ctexS(c),transparent:true,opacity:0,
+    depthWrite:false,fog:false}));
+  sunDisc.scale.set(74,74,1); sunDisc.renderOrder=2;
+  scene.add(sunDisc);
+}
+var sunDir=new THREE.Vector3(-60,80,-160);
+
+function init(){
+  scene=new THREE.Scene();
+  scene.background=lin(0x121A22);
+  scene.fog=new THREE.Fog(lin(0x3E4A58),90,560);
+
+  renderer=new THREE.WebGLRenderer({antialias:true});
+  lowTier = (window.innerWidth*window.innerHeight < 900*700) ||
+             /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent||"");
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, lowTier?1.5:2));
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  renderer.shadowMap.enabled=true;
+  renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  renderer.info.autoReset=false;          /* the frame resets it, so the readout can split the passes */
+  renderer.outputEncoding=THREE.LinearEncoding;
+  renderer.toneMapping=THREE.NoToneMapping;
+  document.getElementById("stage").appendChild(renderer.domElement);
+
+  camera=new THREE.PerspectiveCamera(37,window.innerWidth/window.innerHeight,1,1900);
+  camera.position.set(-196,132,226);
+
+  hemi=new THREE.HemisphereLight(0xA9BBCC,0x3E3A30,0.34); scene.add(hemi);
+  /* a weak fill from opposite the sun so shaded slopes are dark, never black */
+  var fill=new THREE.DirectionalLight(0x9AA8B8,0.16);
+  fill.position.set(80,60,-120); scene.add(fill);
+  sun=new THREE.DirectionalLight(0xA5B2BE,0.40);
+  sun.position.set(-140,92,-160); sun.castShadow=true;
+  var shadowPx = lowTier ? 1024 : (renderer.capabilities.maxTextureSize>=8192 ? 4096 : 2048);
+  sun.shadow.mapSize.set(shadowPx,shadowPx);
+  sun.shadow.radius=1.5;
+  var s=sun.shadow.camera;
+  s.left=-118; s.right=118; s.top=108; s.bottom=-108; s.near=20; s.far=660;
+  sun.shadow.bias=-0.0009;
+  sun.shadow.normalBias=0.35;
+  scene.add(sun); scene.add(sun.target); sun.target.position.set(0,0,0);
+
+  world=buildWorld(scene);
+  setFXEnabled(true);
+
+  overlayRoot=new THREE.Group(); scene.add(overlayRoot);
+  curOv=new THREE.Group(); overlayRoot.add(curOv);
+
+  buildSunDisc();
+  buildFormations();
+  buildFeatureGlyphs();
+  buildAnalysisLabels();
+  buildEventLayer();
+  buildUI();
+
+  camera.lookAt(orbitTarget);
+  setMode("terrain");
+  setClock(T_MIN,{instant:true,force:true});
+  setCommandView("none");
+  setPresentation("study");
+  openFirstRun();
+  var probs=auditMovement();
+  if(probs.length){
+    console.warn("Austerlitz movement audit: "+probs.length+" leg(s) need attention");
+    probs.forEach(function(x){ console.warn("  ",x.id,x.leg,x.why,x.kmh?x.kmh.toFixed(2)+" km/h":""); });
+  }
+  loop();
+
+  var b=document.getElementById("boot");
+  requestAnimationFrame(function(){ b.style.opacity="0"; });
+  setTimeout(function(){ if(b.parentNode) b.parentNode.removeChild(b); },900);
+}
+
+/* ---------------- formation state ---------------- */
+function stateAt(id,ph){
+  var f=FORMATIONS[id];
+  if(!f.track) return null;
+  var s={p:undefined,st:null,obj:null,act:null,cf:"B",actPhase:0,pPhase:0};
+  for(var i=0;i<=ph;i++){
+    var e=f.track[i]; if(!e) continue;
+    if("p" in e){ s.p=e.p; s.pPhase=i; }
+    if(e.st){ s.st=e.st; }
+    if(e.obj){ s.obj=e.obj; }
+    if(e.act){ s.act=e.act; s.actPhase=i; }
+    if(e.cf){ s.cf=e.cf; }
+  }
+  return s;
+}
+function leavesOf(id,out){
+  out=out||[];
+  var f=FORMATIONS[id];
+  if(f.track) out.push(id);
+  if(f.children) f.children.forEach(function(k){ leavesOf(k,out); });
+  return out;
+}
+function posOf(id,ph){ return posNow(id); }
+function aggStrength(id){
+  var f=FORMATIONS[id];
+  if(f.strength) return f.strength;
+  var t=0; leavesOf(id,[]).forEach(function(k){ t+=FORMATIONS[k].strength||0; });
+  return t;
+}
+function aggStatus(id,ph){
+  var f=FORMATIONS[id];
+  if(f.track){ var s=stateAt(id,ph); return s?s.st:null; }
+  var counts={},best=null,bn=0;
+  leavesOf(id,[]).forEach(function(k){
+    var s2=stateAt(k,ph); if(!s2||!s2.st) return;
+    counts[s2.st]=(counts[s2.st]||0)+1;
+    if(counts[s2.st]>bn){ bn=counts[s2.st]; best=s2.st; }
+  });
+  return best;
+}
+/* ---- the leaf rule: troops are counted once ----
+   A formation's own troops are its strength less the strength of every
+   subordinate formation that is itself on the field (tracked and active)
+   at that moment. Command-only formations (arm "hq") carry no troops of
+   their own. Every battlefield total goes through ownStrengthAt, so any
+   future parent/child hierarchy obeys the rule without special cases. */
+function trackedDescendants(id,out){
+  out=out||[];
+  (FORMATIONS[id].children||[]).forEach(function(k){ if(FORMATIONS[k].track) out.push(k); trackedDescendants(k,out); });
+  return out;
+}
+function activeAt(id,t){ return !!FORMATIONS[id].track && !notYetAt(id,t) && !goneAt(id,t); }
+function ownStrengthAt(id,t){
+  var f=FORMATIONS[id];
+  if(!f.track||f.arm==="hq") return 0;
+  var s=f.strength||0;
+  trackedDescendants(id).forEach(function(k){ if(activeAt(k,t)) s-=(FORMATIONS[k].strength||0); });
+  return Math.max(0,s);
+}
+function sideOnFieldAt(side,t){
+  var tot=0;
+  Object.keys(FORMATIONS).forEach(function(id){
+    if((FORMATIONS[id].nation==="fr")!==(side==="fr")) return;
+    if(activeAt(id,t)) tot+=ownStrengthAt(id,t);
+  });
+  return tot;
+}
+
+/* ---- confidence of a position ----
+   A plotted position between two anchors is an interpolation. It is graded
+   no better than the weaker of the two anchors it lies between. */
+var GRADE_RANK={A:0,B:1,C:2};
+function worseGrade(a,b){ return (GRADE_RANK[a]||0)>=(GRADE_RANK[b]||0)?a:b; }
+function confAt(id,t){
+  var f=FORMATIONS[id]; if(!f.track) return null;
+  var s=stateAt(id,phaseAt(t)), cf=s?s.cf:"B";
+  var L=(typeof legAt==="function")?legAt(id,t):null;
+  if(L&&L.b&&L.u>0&&L.u<1){
+    var ca=stateAt(id,L.a.ph), cb=stateAt(id,L.b.ph);
+    return {cf:worseGrade(worseGrade(ca?ca.cf:"B",cb?cb.cf:"B"),cf), interp:true};
+  }
+  return {cf:cf, interp:false};
+}
+function liveConf(id,ph){
+  var live=(typeof clock!=="undefined" && typeof phaseAt==="function" && ph===phaseAt(clock));
+  if(live) return confAt(id,clock);
+  var s=stateAt(id,ph); return {cf:s?s.cf:"B", interp:false};
+}
+function aggConf(id,ph){
+  var f=FORMATIONS[id];
+  if(f.track) return liveConf(id,ph).cf;
+  var worst="A";
+  leavesOf(id,[]).forEach(function(k){ worst=worseGrade(worst,liveConf(k,ph).cf); });
+  return worst;
+}
+function aggInterp(id,ph){
+  var f=FORMATIONS[id];
+  if(f.track) return liveConf(id,ph).interp;
+  return leavesOf(id,[]).some(function(k){ return liveConf(k,ph).interp; });
+}
+
+/* ---------------- build 3D objects ---------------- */
+/* ============================================================
+   FORMATION MODELS
+   A division is drawn as its battalions: separate blocks with intervals,
+   echeloned into two lines when it is large enough, with a skirmish screen
+   in front when it is going forward. Each formation's mass is one merged
+   geometry with one baked texture, so a body of men costs a single draw call.
+   ============================================================ */
+var GEO={}, _smokeTex=null, _dustTex=null;
+
+function initBlockGeo(){
+  GEO.shako  = new THREE.CylinderGeometry(0.16,0.18,0.28,6);
+  GEO.bear   = new THREE.CylinderGeometry(0.18,0.19,0.42,6);
+  GEO.musket = new THREE.BoxGeometry(0.05,1.15,0.05);
+  GEO.sabre  = new THREE.BoxGeometry(0.05,1.05,0.05);
+  GEO.body   = new THREE.BoxGeometry(0.30,0.92,0.22);
+  GEO.horse  = new THREE.BoxGeometry(0.34,0.44,1.05);
+  GEO.rider  = new THREE.BoxGeometry(0.30,0.62,0.26);
+  GEO.barrel = new THREE.CylinderGeometry(0.09,0.115,1.50,8);
+  GEO.wheel  = new THREE.CylinderGeometry(0.44,0.44,0.10,14);
+  GEO.trail  = new THREE.BoxGeometry(0.20,0.18,1.60);
+  GEO.limber = new THREE.BoxGeometry(1.05,0.58,0.75);
+  GEO.tent   = new THREE.ConeGeometry(1.75,2.3,4);
+  GEO.pole   = new THREE.CylinderGeometry(0.06,0.06,5.2,5);
+  GEO.flag   = new THREE.PlaneGeometry(2.4,1.4);
+}
+function shade(hex,k){
+  var r=Math.min(255,((hex>>16)&255)*k), g=Math.min(255,((hex>>8)&255)*k), b=Math.min(255,(hex&255)*k);
+  return "rgb("+(r|0)+","+(g|0)+","+(b|0)+")";
+}
+function srnd(i){ var v=Math.sin(i*127.1+i*i*0.017)*43758.5453; return v-Math.floor(v); }
+function imesh(geo,colour,count){
+  var m=new THREE.InstancedMesh(geo, matte({color:colour,flatShading:true}), count);
+  m.castShadow=true; return m;
+}
+
+/* One atlas per formation: ranked men across the top half, the same body
+   seen from above across the bottom half. No tiling, so no wrap artefacts. */
+function formationAtlas(coat,arm,files){
+  var c=document.createElement("canvas"); c.width=512; c.height=256;
+  var x=c.getContext("2d");
+  var dark=shade(coat,0.50), mid=shade(coat,0.82), hat="#1B1917", steel="#787C82";
+
+  /* --- upper half: the rank in silhouette --- */
+  x.clearRect(0,0,512,128);
+  var step=512/files;
+  for(var i=0;i<files;i++){
+    var px=i*step+step/2, jy=((i*37)%5)-2, w=Math.max(6,step*0.52);
+    if(arm==="cav"){
+      x.fillStyle=shade(0x4A3A2C,0.70+((i*13)%5)*0.07);
+      x.fillRect(px-w*0.9,58+jy,w*1.8,30);
+      x.fillRect(px+w*0.5,40+jy,w*0.62,24);
+      x.fillRect(px-w*0.8,88+jy,w*0.3,26); x.fillRect(px+w*0.5,88+jy,w*0.3,26);
+      x.fillStyle=mid;  x.fillRect(px-w*0.3,28+jy,w*0.7,34);
+      x.fillStyle=hat;  x.fillRect(px-w*0.3,16+jy,w*0.7,14);
+      x.strokeStyle=steel; x.lineWidth=2;
+      x.beginPath(); x.moveTo(px+w*0.4,32+jy); x.lineTo(px+w*1.1,2+jy); x.stroke();
+    } else {
+      x.fillStyle=dark; x.fillRect(px-w*0.5,50+jy,w,62);
+      x.fillStyle=mid;  x.fillRect(px-w*0.5,50+jy,w,14);
+      x.fillStyle=hat;  x.fillRect(px-w*0.36,24+jy,w*0.72,28);
+      x.strokeStyle=steel; x.lineWidth=1.8;
+      x.beginPath(); x.moveTo(px+w*0.42,56+jy); x.lineTo(px+w*0.95,4+jy); x.stroke();
+    }
+  }
+  /* --- lower half: the same body from above --- */
+  x.fillStyle=shade(coat,0.58); x.fillRect(0,128,512,128);
+  for(var r=0;r<4;r++) for(var k=0;k<files;k++){
+    var qx=k*step+step/2+((r*7)%9)-4, qy=128+r*30+16;
+    x.fillStyle="#1D1B18";
+    x.beginPath();
+    if(arm==="cav") x.ellipse(qx,qy,step*0.20,13,0,0,Math.PI*2);
+    else x.ellipse(qx,qy,Math.min(7,step*0.24),6.4,0,0,Math.PI*2);
+    x.fill();
+  }
+  var t=ctexS(c); t.anisotropy=4;
+  return t;
+}
+/* a box written straight into a shared buffer, UV-mapped to the atlas */
+function pushBox(P,N,U,cx,cy,cz,w,h,dp){
+  var x0=cx-w/2,x1=cx+w/2, y0=cy-h/2,y1=cy+h/2, z0=cz-dp/2,z1=cz+dp/2;
+  var F=[
+   [[x0,y0,z1],[x1,y0,z1],[x1,y1,z1],[x0,y1,z1],[0,0,1],1],   /* front */
+   [[x1,y0,z0],[x0,y0,z0],[x0,y1,z0],[x1,y1,z0],[0,0,-1],1],  /* back  */
+   [[x1,y0,z1],[x1,y0,z0],[x1,y1,z0],[x1,y1,z1],[1,0,0],1],   /* right */
+   [[x0,y0,z0],[x0,y0,z1],[x0,y1,z1],[x0,y1,z0],[-1,0,0],1],  /* left  */
+   [[x0,y1,z1],[x1,y1,z1],[x1,y1,z0],[x0,y1,z0],[0,1,0],0],   /* top   */
+   [[x0,y0,z0],[x1,y0,z0],[x1,y0,z1],[x0,y0,z1],[0,-1,0],0]   /* base  */
+  ];
+  for(var f=0;f<F.length;f++){
+    var q=F[f], n=q[4], upper=q[5];
+    var v0=upper?0.52:0.02, v1=upper?0.98:0.48;
+    var uv=[[0,v0],[1,v0],[1,v1],[0,v1]];
+    var order=[0,1,2, 0,2,3];
+    for(var o=0;o<6;o++){
+      var idx=order[o];
+      P.push(q[idx][0],q[idx][1],q[idx][2]);
+      N.push(n[0],n[1],n[2]);
+      U.push(uv[idx][0],uv[idx][1]);
+    }
+  }
+}
+/* how a formation is subdivided: battalions, or squadrons for horse */
+function subUnits(f){
+  var s=f.strength||3000;
+  if(f.arm==="cav") return Math.max(2,Math.min(6,Math.round(s/950)));
+  if(f.arm==="hq"||f.arm==="art") return 1;
+  return Math.max(2,Math.min(7,Math.round(s/1150)));
+}
+
+/* ---- the figure kit: one merged geometry per kind, built once ----
+   Everything is at the same symbolic scale as before (a man is 1.5 world units,
+   the frontage is real). Two meshes per formation: the coats, coloured per
+   instance, and everything else with its colours baked into the vertices. */
+var FIG=null;
+function figKit(){
+  if(FIG) return FIG;
+  function box(w,h,d){ return new THREE.BoxGeometry(w,h,d); }
+  function part(geo,p,s,rot,col){ return {geo:geo,p:p,s:s||[1,1,1],rot:rot||[0,0,0],col:col}; }
+  /* merges parts into one geometry with vertex colours; colour undefined = white (takes the instance colour) */
+  function merge(parts){
+    var P=[],N=[],C=[], m=new THREE.Matrix4(), q=new THREE.Quaternion(), e=new THREE.Euler(), v=new THREE.Vector3(), nrm=new THREE.Vector3();
+    var white=new THREE.Color(1,1,1);
+    parts.forEach(function(pt){
+      var g=pt.geo.index?pt.geo.toNonIndexed():pt.geo;
+      g.computeVertexNormals();
+      e.set(pt.rot[0],pt.rot[1],pt.rot[2]); q.setFromEuler(e);
+      m.compose(new THREE.Vector3(pt.p[0],pt.p[1],pt.p[2]), q, new THREE.Vector3(pt.s[0],pt.s[1],pt.s[2]));
+      var nm=new THREE.Matrix3().getNormalMatrix(m);
+      var pa=g.attributes.position.array, na=g.attributes.normal.array;
+      var col=pt.col?lin(pt.col):white;
+      for(var k=0;k<pa.length;k+=3){
+        v.set(pa[k],pa[k+1],pa[k+2]).applyMatrix4(m); P.push(v.x,v.y,v.z);
+        nrm.set(na[k],na[k+1],na[k+2]).applyMatrix3(nm).normalize(); N.push(nrm.x,nrm.y,nrm.z);
+        C.push(col.r,col.g,col.b);
+      }
+    });
+    var out=new THREE.BufferGeometry();
+    out.setAttribute("position",new THREE.Float32BufferAttribute(P,3));
+    out.setAttribute("normal",new THREE.Float32BufferAttribute(N,3));
+    out.setAttribute("color",new THREE.Float32BufferAttribute(C,3));
+    return out;
+  }
+  var head=new THREE.IcosahedronGeometry(0.115,1), shako=new THREE.CylinderGeometry(0.115,0.13,0.27,7);
+  var SKIN=0xC9A98A, BLACK=0x1C1A17, WOOD=0x4A3826, STEEL=0x8A8E92, BREECH=0xBDB8AC, HORSE=0x5A4232, LEATHER=0x3A2E22;
+  FIG={
+    /* infantry: coat parts take the instance colour */
+    infCoat: merge([
+      part(box(0.36,0.56,0.24),[0,0.90,0]),                    /* torso */
+      part(box(0.10,0.48,0.12),[-0.24,0.86,0.02]),              /* left arm */
+      part(box(0.10,0.48,0.12),[ 0.24,0.88,0.06],[1,1,1],[-0.35,0,0])   /* right arm, holding the musket */
+    ]),
+    infFixed: merge([
+      part(box(0.13,0.62,0.18),[-0.09,0.31,0],null,null,BREECH), part(box(0.13,0.62,0.18),[0.09,0.31,0],null,null,BREECH),
+      part(head,[0,1.30,0],null,null,SKIN),
+      part(shako,[0,1.50,0],null,null,BLACK),
+      part(box(0.28,0.30,0.14),[0,0.96,-0.20],null,null,LEATHER),           /* pack */
+      part(box(0.045,1.25,0.045),[0.27,1.12,0.12],null,[0.18,0,0.10],WOOD),  /* musket */
+      part(box(0.03,0.32,0.03),[0.33,1.82,0.06],null,[0.18,0,0.10],STEEL)    /* bayonet */
+    ]),
+    /* cavalry: the horse is fixed, the rider's coat takes the instance colour */
+    horse: merge([
+      part(box(0.38,0.42,1.05),[0,0.78,0],null,null,HORSE),
+      part(box(0.22,0.44,0.24),[0,1.10,0.56],null,[0.5,0,0],HORSE),          /* neck */
+      part(box(0.18,0.20,0.36),[0,1.32,0.78],null,null,HORSE),               /* head */
+      part(box(0.10,0.62,0.10),[-0.13,0.31,0.40],null,null,HORSE), part(box(0.10,0.62,0.10),[0.13,0.31,0.40],null,null,HORSE),
+      part(box(0.10,0.62,0.10),[-0.13,0.31,-0.40],null,null,HORSE), part(box(0.10,0.62,0.10),[0.13,0.31,-0.40],null,null,HORSE),
+      part(box(0.06,0.34,0.08),[0,0.80,-0.56],null,[0.6,0,0],BLACK),        /* tail */
+      part(box(0.30,0.08,0.44),[0,1.01,0],null,null,LEATHER)                 /* saddle */
+    ]),
+    rider: merge([
+      part(box(0.32,0.50,0.22),[0,1.30,0]),                                  /* coat */
+      part(box(0.10,0.40,0.12),[-0.22,1.26,0]), part(box(0.10,0.40,0.12),[0.22,1.28,0.04],null,[-0.4,0,0])
+    ]),
+    riderFixed: merge([
+      part(head,[0,1.68,0],null,null,SKIN), part(shako,[0,1.88,0],null,null,BLACK),
+      part(box(0.11,0.34,0.14),[-0.14,0.98,0.05],null,[0.5,0,0],BREECH), part(box(0.11,0.34,0.14),[0.14,0.98,0.05],null,[0.5,0,0],BREECH),
+      part(box(0.03,0.95,0.03),[0.28,1.55,0.10],null,[-0.55,0,0.15],STEEL)   /* sabre */
+    ])
+  };
+  return FIG;
+}
+
+/* how a formation is subdivided: battalions, or squadrons for horse */
+function subUnitsFig(f){ return subUnits(f); }
+
+function makeBlock(f){
+  var g=new THREE.Group();
+  var body=new THREE.Group(), std=new THREE.Group();
+  g.add(body); g.add(std);
+  var coat=parseInt(NATION[f.nation].fill.slice(1),16);
+  var d=new THREE.Object3D();
+  var arm=f.arm, str=f.strength||3000, K=figKit();
+  var ud={body:body, std:std, sw:1, sd:1, stdX:[], skirmish:null,
+          deployed:null, limbered:null, W0:6, D0:4, figs:[], seat:[], lastSw:-1, lastSd:-1};
+
+  /* one instanced mesh whose instances are laid out from a base position table,
+     so column and line are re-layouts of the same men rather than a stretched box */
+  function figMesh(geo,colour,pts,rotJitter){
+    var m=new THREE.InstancedMesh(geo,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),Math.max(1,pts.length));
+    m.castShadow=true; m.count=Math.max(1,pts.length);
+    var base=new Float32Array(pts.length*3), rots=new Float32Array(pts.length), c=new THREE.Color();
+    var tint=lin(colour);
+    pts.forEach(function(pt,i){
+      base[i*3]=pt[0]; base[i*3+1]=pt[1]; base[i*3+2]=pt[2];
+      rots[i]=pt[3]+(srnd(i*13+7)-0.5)*(rotJitter||0);
+      c.copy(tint).multiplyScalar(0.86+0.28*srnd(i*7+3));
+      if(colour!==0xFFFFFF) m.setColorAt(i,c);
+    });
+    if(m.instanceColor) m.instanceColor.needsUpdate=true;
+    body.add(m);
+    ud.figs.push({mesh:m,base:base,rots:rots,n:pts.length,src:pts});
+    return m;
+  }
+  /* anything else that stands on the ground - skirmishers, gun crews, teams, guns, limbers, tents -
+     is registered with its designed layout, and re-seated with the men */
+  var _pv0=new THREE.Vector3(), _sv0=new THREE.Vector3(), _qr=new THREE.Quaternion(), _mm=new THREE.Matrix4();
+  function seatable(mesh,shape,upright){
+    var n=mesh.count, P=new Float32Array(n*3), R=new Float32Array(n*4), S=new Float32Array(n*3);
+    for(var i=0;i<n;i++){
+      mesh.getMatrixAt(i,_mm); _mm.decompose(_pv0,_qr,_sv0);
+      P[i*3]=_pv0.x; P[i*3+1]=_pv0.y; P[i*3+2]=_pv0.z;
+      R[i*4]=_qr.x; R[i*4+1]=_qr.y; R[i*4+2]=_qr.z; R[i*4+3]=_qr.w;
+      S[i*3]=_sv0.x; S[i*3+1]=_sv0.y; S[i*3+2]=_sv0.z;
+    }
+    ud.seat.push({mesh:mesh,n:n,P:P,R:R,S:S,shape:!!shape,upright:!!upright});
+    return mesh;
+  }
+  /* Seating, in world space, on the ground as drawn (groundY). Each man keeps the world x,z his
+     place in the (tilted, scaled) block gives him, is set on the drawn ground at that x,z, and the
+     point is mapped back into the block's frame through the inverse of its world matrix. That is
+     exact under any block scale (highlight dimming, hybrid mode), tilt or deployment, with no
+     iteration - an earlier fixed-point version diverged where the 10x relief is steeper than 45
+     degrees. Before Stage 0 the error was written in unscaled and untilted, and only refreshed
+     when the block moved 1.5 units or turned: men stood up to 16 units off the ground on the
+     Pratzeberg. Men and horses now stand with gravity; guns, limbers and tents keep the slope. */
+  var _wp=new THREE.Vector3(), _up0=new THREE.Vector3(0,1,0), _nb=new THREE.Vector3(), _inv=new THREE.Matrix4(),
+      _gl=new THREE.Vector3(), _qt0=new THREE.Quaternion(), _qc=new THREE.Quaternion(), _qa=new THREE.Quaternion(), _one=new THREE.Vector3(1,1,1);
+  function seatPrep(){ g.updateMatrixWorld(true); _inv.copy(g.matrixWorld).invert(); }
+  function seatLocal(lx,lz,out){
+    _wp.set(lx,0,lz).applyMatrix4(g.matrixWorld);
+    _wp.y=groundY(_wp.x,_wp.z);
+    return out.copy(_wp).applyMatrix4(_inv);
+  }
+  /* the block's rotation is tilt x yaw; this is the local rotation that undoes the tilt and keeps the yaw */
+  function uprightQuat(){
+    _nb.copy(_up0).applyQuaternion(g.quaternion).normalize();
+    _qt0.setFromUnitVectors(_up0,_nb).invert();
+    return _qc.copy(g.quaternion).invert().multiply(_qt0).multiply(g.quaternion);
+  }
+  function layoutFigs(sw,sd){
+    seatPrep();
+    var C=uprightQuat(), cache=new Map();
+    ud.figs.forEach(function(fg){
+      var L=cache.get(fg.src);
+      if(!L){
+        L=new Float32Array(fg.n*3);
+        for(var i=0;i<fg.n;i++){ seatLocal(fg.base[i*3]*sw,fg.base[i*3+2]*sd,_gl); L[i*3]=_gl.x; L[i*3+1]=_gl.y; L[i*3+2]=_gl.z; }
+        cache.set(fg.src,L);
+      }
+      for(var j=0;j<fg.n;j++){
+        _qa.setFromAxisAngle(_up0,fg.rots[j]).premultiply(C);
+        _pv0.set(L[j*3], L[j*3+1]+fg.base[j*3+1], L[j*3+2]);
+        _mm.compose(_pv0,_qa,_one);
+        fg.mesh.setMatrixAt(j,_mm);
+      }
+      fg.mesh.instanceMatrix.needsUpdate=true;
+    });
+    ud.seat.forEach(function(st){
+      for(var i=0;i<st.n;i++){
+        var lx=st.shape?st.P[i*3]*sw:st.P[i*3], lz=st.shape?st.P[i*3+2]*sd:st.P[i*3+2];
+        seatLocal(lx,lz,_gl);
+        _pv0.set(_gl.x, _gl.y+st.P[i*3+1], _gl.z);
+        _qa.set(st.R[i*4],st.R[i*4+1],st.R[i*4+2],st.R[i*4+3]);
+        if(st.upright) _qa.premultiply(C);
+        _sv0.set(st.S[i*3],st.S[i*3+1],st.S[i*3+2]);
+        _mm.compose(_pv0,_qa,_sv0);
+        st.mesh.setMatrixAt(i,_mm);
+      }
+      st.mesh.instanceMatrix.needsUpdate=true;
+    });
+    SEAT_STATS.blocks++;
+  }
+  ud.layout=layoutFigs;
+  ud.seatPrep=seatPrep;
+  ud.seatLocal=seatLocal;
+  ud.upright=uprightQuat;
+  /* show only the battalions that are this formation's own troops (a detachment drawn separately is not drawn twice) */
+  ud.showBattalions=function(k){
+    if(!ud.batFigs||!ud.perBat) return;
+    k=Math.max(1,Math.min(ud.nBat,k));
+    ud.batFigs.forEach(function(fg){ fg.mesh.count=Math.max(1,k*ud.perBat); });
+    ud.shownBat=k;
+  };
+
+  if(arm==="hq"){
+    ud.W0=6.0; ud.D0=5.0;
+    var marq=new THREE.Mesh(GEO.tent, matte({color:0xD8D1BC,flatShading:true}));
+    marq.position.y=1.28; marq.castShadow=true; body.add(marq);
+    var tents=imesh(GEO.tent,0xC4BCA6,4);
+    for(var t0=0;t0<4;t0++){
+      var ta=t0/4*Math.PI*2+0.6;
+      d.scale.set(0.5,0.5,0.5); d.rotation.set(0,ta,0);
+      d.position.set(Math.cos(ta)*3.1,0.6,Math.sin(ta)*2.4); d.updateMatrix();
+      tents.setMatrixAt(t0,d.matrix);
+    }
+    body.add(tents); seatable(tents,false,true);
+    var esc=[], escR=[];
+    for(var e=0;e<12;e++){
+      var a=e/12*Math.PI*2, rr=3.6+srnd(e)*1.0;
+      esc.push([Math.cos(a)*rr,0,Math.sin(a)*rr*0.75,a+1.57]);
+    }
+    figMesh(K.horse,0xFFFFFF,esc,0.3); figMesh(K.rider,coat,esc,0.3); figMesh(K.riderFixed,0xFFFFFF,esc,0.3);
+    ud.stdX=[0];
+  }
+  else if(arm==="art"){
+    var guns=Math.max(3,Math.min(8,Math.round((f.guns||12)/2)));
+    ud.W0=guns*2.7; ud.D0=6.0;
+    var dep=new THREE.Group(), lim=new THREE.Group();
+    body.add(dep); body.add(lim);
+    ud.deployed=dep; ud.limbered=lim;
+    var bar=imesh(GEO.barrel,0x35322C,guns), whl=imesh(GEO.wheel,0x6B563C,guns*2), tra=imesh(GEO.trail,0x5A4832,guns);
+    var nw=0, crew=[];
+    for(var q=0;q<guns;q++){
+      var gx=(q-(guns-1)/2)*2.7, jz=(srnd(q)-0.5)*0.6;
+      d.scale.set(1.35,1.35,1.35);
+      d.position.set(gx,0.95,jz); d.rotation.set(1.5708,0,0); d.updateMatrix(); bar.setMatrixAt(q,d.matrix);
+      d.position.set(gx,0.62,jz-1.15); d.rotation.set(0,0,0); d.updateMatrix(); tra.setMatrixAt(q,d.matrix);
+      for(var sg=-1;sg<=1;sg+=2){
+        d.position.set(gx+sg*0.72,0.60,jz-0.15); d.rotation.set(0,0,1.5708);
+        d.updateMatrix(); whl.setMatrixAt(nw++,d.matrix);
+      }
+      for(var k2=0;k2<5;k2++) crew.push([gx-1.1+srnd(q*7+k2)*2.2, 0, jz-1.6-srnd(q*3+k2)*1.2, (srnd(q*5+k2)-0.5)*1.2]);
+    }
+    dep.add(bar); dep.add(whl); dep.add(tra);
+    seatable(bar,false,false); seatable(whl,false,false); seatable(tra,false,false);
+    /* crews: the same figure kit, parented to the deployed group so they limber up with the guns */
+    var cM=new THREE.InstancedMesh(K.infCoat,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),crew.length);
+    var fM=new THREE.InstancedMesh(K.infFixed,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),crew.length);
+    var cc=new THREE.Color(), tint=lin(coat);
+    crew.forEach(function(pt,i){
+      d.position.set(pt[0],pt[1],pt[2]); d.rotation.set(0,pt[3],0); d.scale.set(1,1,1); d.updateMatrix();
+      cM.setMatrixAt(i,d.matrix); fM.setMatrixAt(i,d.matrix);
+      cc.copy(tint).multiplyScalar(0.86+0.28*srnd(i*7+3)); cM.setColorAt(i,cc);
+    });
+    if(cM.instanceColor) cM.instanceColor.needsUpdate=true;
+    cM.castShadow=fM.castShadow=true;
+    dep.add(cM); dep.add(fM); seatable(cM,false,true); seatable(fM,false,true);
+    /* the same battery hitched up and on the move */
+    var lb=imesh(GEO.limber,0x6A5741,guns), lw=imesh(GEO.wheel,0x6B563C,guns*4), lbar=imesh(GEO.barrel,0x35322C,guns);
+    var mw=0, team=[];
+    for(var q2=0;q2<guns;q2++){
+      var lx=(q2-(guns-1)/2)*2.7;
+      d.scale.set(1.35,1.35,1.35); d.rotation.set(0,0,0);
+      d.position.set(lx,0.68,0.5); d.updateMatrix(); lb.setMatrixAt(q2,d.matrix);
+      d.position.set(lx,0.92,-1.9); d.rotation.set(1.5708,0,0); d.updateMatrix(); lbar.setMatrixAt(q2,d.matrix);
+      d.rotation.set(0,0,1.5708);
+      for(var sg2=-1;sg2<=1;sg2+=2){
+        d.position.set(lx+sg2*0.72,0.60,0.5); d.updateMatrix(); lw.setMatrixAt(mw++,d.matrix);
+        d.position.set(lx+sg2*0.72,0.60,-2.2); d.updateMatrix(); lw.setMatrixAt(mw++,d.matrix);
+      }
+      for(var hz=0;hz<2;hz++) team.push([lx-0.25+hz*0.5,0,2.2+hz*0.2,0]);
+      for(var hz2=0;hz2<2;hz2++) team.push([lx-0.25+hz2*0.5,0,3.5+hz2*0.2,0]);
+    }
+    lim.add(lb); lim.add(lw); lim.add(lbar);
+    seatable(lb,false,false); seatable(lw,false,false); seatable(lbar,false,false);
+    var hM=new THREE.InstancedMesh(K.horse,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),team.length);
+    team.forEach(function(pt,i){ d.position.set(pt[0],pt[1],pt[2]); d.rotation.set(0,pt[3],0); d.scale.set(1,1,1); d.updateMatrix(); hM.setMatrixAt(i,d.matrix); });
+    hM.castShadow=true; lim.add(hM); seatable(hM,false,true);
+    lim.visible=false;
+    ud.stdX=[0];
+  }
+  else {
+    var cav=(arm==="cav"), mixed=(arm==="mixed");
+    var n=subUnits(f);
+    var bw = cav?3.0:2.7, bd = cav?2.3:1.6;
+    var gap = cav?1.4:1.0;
+    var front = (n>=5) ? Math.ceil(n*0.6) : n, back=n-front;
+    var rowW=function(k){ return k*bw+(k-1)*gap; };
+    var W1=rowW(front), W2=back?rowW(back):0;
+    ud.W0=Math.max(W1,W2); ud.D0=back?(bd*2+3.4):bd;
+    var stdAt=[], pts=[];
+    var files=cav?5:8, ranks=cav?2:3;
+    function fill(bcx,bcz){
+      for(var r=0;r<ranks;r++) for(var k3=0;k3<files;k3++){
+        var X=bcx-bw/2+bw*(k3+0.5)/files+(srnd(pts.length)-0.5)*0.10;
+        var Z=bcz+bd/2-bd*(r+0.5)/ranks+(srnd(pts.length+41)-0.5)*0.08;
+        pts.push([X,0,Z,0]);
+      }
+    }
+    for(var i=0;i<front;i++){
+      var cx2=-W1/2+bw/2+i*(bw+gap);
+      fill(cx2, back?1.7:0);
+      if(i%2===0) stdAt.push(cx2);
+    }
+    for(var j2=0;j2<back;j2++){
+      var cx3=-W2/2+bw/2+j2*(bw+gap)+(bw+gap)*0.5;
+      fill(cx3,-1.7);
+    }
+    ud.perBat=files*ranks; ud.nBat=n; ud.batFigs=[];
+    if(cav){
+      figMesh(K.horse,0xFFFFFF,pts,0.10); var rid=figMesh(K.rider,coat,pts,0.10); figMesh(K.riderFixed,0xFFFFFF,pts,0.10);
+      ud.batFigs=ud.figs.slice(-3);
+      if(f.mix){   /* a mixed column: a share of the riders in the second nation's coat */
+        var mc=lin(parseInt(NATION[f.mix.nation].fill.slice(1),16)), mcc=new THREE.Color();
+        for(var mi=0;mi<pts.length;mi++) if(srnd(mi*11+5)<f.mix.share){ mcc.copy(mc).multiplyScalar(0.86+0.28*srnd(mi*7+3)); rid.setColorAt(mi,mcc); }
+        if(rid.instanceColor) rid.instanceColor.needsUpdate=true;
+      }
+    } else {
+      figMesh(K.infCoat,coat,pts,0.14); figMesh(K.infFixed,0xFFFFFF,pts,0.14);
+      ud.batFigs=ud.figs.slice(-2);
+      /* voltigeurs thrown out in front when the formation is going forward */
+      var sk=[];
+      for(var v=0;v<16;v++) sk.push([(srnd(v*3)-0.5)*ud.W0*1.06,0,ud.D0*0.5+2.4+srnd(v*5)*3.0,(srnd(v)-0.5)*1.2]);
+      var skC=new THREE.InstancedMesh(K.infCoat,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),sk.length);
+      var skF=new THREE.InstancedMesh(K.infFixed,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),sk.length);
+      var cs=new THREE.Color(), ts=lin(coat);
+      sk.forEach(function(pt,i){
+        d.position.set(pt[0],pt[1],pt[2]); d.rotation.set(0,pt[3],0); d.scale.set(1,1,1); d.updateMatrix();
+        skC.setMatrixAt(i,d.matrix); skF.setMatrixAt(i,d.matrix);
+        cs.copy(ts).multiplyScalar(0.9+0.2*srnd(i)); skC.setColorAt(i,cs);
+      });
+      if(skC.instanceColor) skC.instanceColor.needsUpdate=true;
+      skC.castShadow=skF.castShadow=true;
+      var screen=new THREE.Group(); screen.add(skC); screen.add(skF);
+      screen.visible=false; body.add(screen); ud.skirmish=screen;
+      seatable(skC,false,true); seatable(skF,false,true);
+      /* two mounted officers on the flanks */
+      var off=[[-(ud.W0*0.5+1.5),0,ud.D0*0.5+0.9,0],[ud.W0*0.5+1.5,0,ud.D0*0.5+0.9,0]];
+      figMesh(K.horse,0xFFFFFF,off,0); figMesh(K.rider,coat,off,0); figMesh(K.riderFixed,0xFFFFFF,off,0);
+    }
+    if(f.battery){   /* an attached battery in front of the infantry (the Santon's eighteen guns) */
+      var bg=Math.max(3,Math.min(6,Math.round(f.battery/3)));
+      var bb=imesh(GEO.barrel,0x35322C,bg), bwl=imesh(GEO.wheel,0x6B563C,bg*2), btr=imesh(GEO.trail,0x5A4832,bg), bw2=0;
+      for(var bq=0;bq<bg;bq++){
+        var bx=(bq-(bg-1)/2)*2.4, bz=ud.D0*0.5+1.6;
+        d.scale.set(1.35,1.35,1.35);
+        d.position.set(bx,0.95,bz); d.rotation.set(1.5708,0,0); d.updateMatrix(); bb.setMatrixAt(bq,d.matrix);
+        d.position.set(bx,0.62,bz-1.15); d.rotation.set(0,0,0); d.updateMatrix(); btr.setMatrixAt(bq,d.matrix);
+        for(var bs=-1;bs<=1;bs+=2){ d.position.set(bx+bs*0.72,0.60,bz-0.15); d.rotation.set(0,0,1.5708); d.updateMatrix(); bwl.setMatrixAt(bw2++,d.matrix); }
+      }
+      bb.castShadow=bwl.castShadow=btr.castShadow=true; body.add(bb); body.add(bwl); body.add(btr);
+      seatable(bb,false,false); seatable(bwl,false,false); seatable(btr,false,false);
+    }
+    if(mixed){
+      var sq=Math.max(5,Math.min(9,Math.round(str/850))), hp=[];
+      for(var q3=0;q3<sq;q3++) hp.push([(q3-(sq-1)/2)*1.15,0,-ud.D0*0.5-2.4,0]);
+      figMesh(K.horse,0xFFFFFF,hp,0.1); figMesh(K.rider,coat,hp,0.1); figMesh(K.riderFixed,0xFFFFFF,hp,0.1);
+    }
+    ud.stdX = cav ? [0] : stdAt;
+  }
+  layoutFigs(1,1);
+
+  /* standards: the cloth carries the nation, and never distorts with the deployment */
+  var nStd=Math.max(1,ud.stdX.length);
+  var poles=imesh(GEO.pole,0x6A5B48,nStd);
+  var flags=new THREE.InstancedMesh(GEO.flag,
+    matte({map:flagTexture(f.nation),side:THREE.DoubleSide}),nStd);
+  std.add(poles); std.add(flags);
+  ud.poles=poles; ud.flags=flags;
+  g.userData=ud;
+  placeStandards(g,1);
+  return g;
+}
+/* national colours, painted once per nation */
+var _flagTex={};
+function flagTexture(nation){
+  if(_flagTex[nation]) return _flagTex[nation];
+  var c=document.createElement("canvas"); c.width=128; c.height=64;
+  var x=c.getContext("2d");
+  if(nation==="fr"){
+    x.fillStyle="#2C4C9C"; x.fillRect(0,0,43,64); x.fillStyle="#E9E2D2"; x.fillRect(43,0,43,64); x.fillStyle="#B3302E"; x.fillRect(86,0,42,64);
+  } else if(nation==="ru"){
+    x.fillStyle="#2E7A48"; x.fillRect(0,0,128,64); x.fillStyle="#E9E2D2";
+    x.fillRect(0,26,128,12); x.fillRect(58,0,12,64);            /* a green colour with a white cross */
+  } else {
+    x.fillStyle="#E9E2D2"; x.fillRect(0,0,128,64);
+    x.fillStyle="#C8A03A"; x.fillRect(0,0,128,10); x.fillRect(0,54,128,10);   /* Austrian: white with a gold border */
+    x.fillStyle="#2A2622"; x.beginPath(); x.arc(64,32,11,0,Math.PI*2); x.fill();
+  }
+  x.fillStyle="rgba(0,0,0,.12)"; for(var k=0;k<128;k+=4) x.fillRect(k,0,1,64);   /* a little cloth */
+  var t=ctexS(c); _flagTex[nation]=t; return t;
+}
+/* standards stand on the drawn ground and upright, like the men who carry them */
+var _stQ=new THREE.Quaternion(), _stZ=new THREE.Quaternion(), _stP=new THREE.Vector3(), _stO=new THREE.Vector3(),
+    _stS=new THREE.Vector3(), _stM=new THREE.Matrix4(), _stAx=new THREE.Vector3(0,0,1), _stG=new THREE.Vector3();
+function placeStandards(g,sw,tilt){
+  var ud=g.userData;
+  tilt=tilt||0;
+  var tall=(ud.body&&ud.body.children.length&&ud.stdX.length===1&&!ud.skirmish)?1.25:1;
+  if(ud.seatPrep) ud.seatPrep(); else g.updateMatrixWorld(true);
+  var C=ud.upright?_stQ.copy(ud.upright()):_stQ.identity();
+  for(var i=0;i<ud.stdX.length;i++){
+    var X=ud.stdX[i]*sw;
+    if(ud.seatLocal) ud.seatLocal(X,0,_stG); else _stG.set(X,0,0);
+    _stO.set(0,2.6*tall,0).applyQuaternion(C);
+    _stP.copy(_stG).add(_stO);
+    _stM.compose(_stP,C,_stS.set(1,tall,1)); ud.poles.setMatrixAt(i,_stM);
+    _stO.set(1.25*Math.cos(tilt),4.5*tall-1.25*Math.sin(tilt),0).applyQuaternion(C);
+    _stP.copy(_stG).add(_stO);
+    _stZ.setFromAxisAngle(_stAx,-tilt).premultiply(C);
+    _stM.compose(_stP,_stZ,_stS.set(1,1,1)); ud.flags.setMatrixAt(i,_stM);
+  }
+  ud.poles.instanceMatrix.needsUpdate=true;
+  ud.flags.instanceMatrix.needsUpdate=true;
+}
+/* multiply a canvas's alpha by a round window that is zero at every edge, so whatever overlaps
+   inside it the sprite can never show a straight side */
+function softWindow(x,n){
+  x.globalCompositeOperation="destination-in";
+  var w=x.createRadialGradient(n/2,n/2,n*0.24,n/2,n/2,n*0.49);
+  w.addColorStop(0,"rgba(0,0,0,1)"); w.addColorStop(1,"rgba(0,0,0,0)");
+  x.fillStyle=w; x.fillRect(0,0,n,n);
+  x.globalCompositeOperation="source-over";
+}
+/* the highest drawn ground under a camera-facing sprite, across its width */
+var _sfR=new THREE.Vector3();
+function spriteFloor(x,z,half){
+  _sfR.setFromMatrixColumn(camera.matrixWorld,0); _sfR.y=0;
+  var L=_sfR.length()||1; _sfR.multiplyScalar(1/L);
+  var m=groundY(x,z);
+  for(var k=-2;k<=2;k++){ if(k) m=Math.max(m,groundY(x+_sfR.x*half*k/2,z+_sfR.z*half*k/2)); }
+  return m;
+}
+function smokeTexture(){
+  if(_smokeTex) return _smokeTex;
+  var c=document.createElement("canvas"); c.width=c.height=128;
+  var x=c.getContext("2d");
+  for(var i=0;i<10;i++){
+    /* the same ten puffs, pulled inside the canvas: before, several were cut off by the left and
+       bottom edges, so the sprite showed a straight translucent edge - a card */
+    var r=15+((i*29)%30)*0.7, px=26+((i*37)%74), py=38+((i*53)%62);
+    px=Math.max(r+2,Math.min(126-r,px)); py=Math.max(r+2,Math.min(126-r,py));
+    var gr=x.createRadialGradient(px,py,1,px,py,r);
+    gr.addColorStop(0,"rgba(255,255,255,.32)");
+    gr.addColorStop(1,"rgba(255,255,255,0)");
+    x.fillStyle=gr; x.beginPath(); x.arc(px,py,r,0,Math.PI*2); x.fill();
+  }
+  softWindow(x,128);
+  _smokeTex=ctexS(c); return _smokeTex;
+}
+var _padTex=null;
+var PAD_GEO=(function(){ var g=new THREE.PlaneGeometry(1,1); g.rotateX(-Math.PI/2); return g; })();
+function padTexture(){
+  if(_padTex) return _padTex;
+  var c=document.createElement("canvas"); c.width=c.height=128;
+  var x=c.getContext("2d");
+  var gr=x.createRadialGradient(64,64,10,64,64,64);
+  gr.addColorStop(0,"rgba(0,0,0,.55)"); gr.addColorStop(0.55,"rgba(0,0,0,.30)"); gr.addColorStop(1,"rgba(0,0,0,0)");
+  x.fillStyle=gr; x.fillRect(0,0,128,128);
+  _padTex=ctex(c); return _padTex;
+}
+function dustTexture(){
+  if(_dustTex) return _dustTex;
+  var c=document.createElement("canvas"); c.width=c.height=128;
+  var x=c.getContext("2d");
+  for(var i=0;i<7;i++){
+    var r=18+((i*23)%26)*0.7, px=20+((i*43)%88), py=64+((i*31)%46);
+    px=Math.max(r+2,Math.min(126-r,px)); py=Math.max(r+2,Math.min(126-r,py));
+    var gr=x.createRadialGradient(px,py,1,px,py,r);
+    gr.addColorStop(0,"rgba(255,255,255,.22)");
+    gr.addColorStop(1,"rgba(255,255,255,0)");
+    x.fillStyle=gr; x.beginPath(); x.arc(px,py,r,0,Math.PI*2); x.fill();
+  }
+  softWindow(x,128);
+  _dustTex=ctexS(c); return _dustTex;
+}
+
+/* column of march, deployed line, or coming apart */
+var SHAPE={
+  march:[0.40,2.55], countermarch:[0.42,2.40], advancing:[0.58,1.85],
+  attacking:[1.16,0.82], charging:[1.30,0.76], counterattack:[1.18,0.80],
+  holding:[1.00,1.00], engaged:[1.06,0.96], supporting:[0.88,1.24],
+  forming:[0.86,1.22], reserve:[0.68,1.62], concealed:[0.74,1.52],
+  observing:[1.00,1.00], fortifying:[1.00,1.00], delayed:[0.84,1.34],
+  surprised:[0.94,1.12], withdrawing:[0.66,1.62], retreating:[0.56,1.82],
+  repulsed:[0.76,1.50], broken:[1.40,1.40], encircled:[1.26,1.26],
+  pursuing:[0.82,1.42], captured:[1.00,1.00]
+};
+var SKIRMISH={attacking:1,advancing:1,engaged:1,charging:1,counterattack:1,pursuing:1};
+var LOOSE={broken:1,encircled:1,repulsed:1,retreating:1};
+function shapeFor(st){ return SHAPE[st]||[1,1]; }
+function buildFormations(){
+  initBlockGeo();
+  var d=new THREE.Object3D();
+
+  Object.keys(FORMATIONS).forEach(function(id){
+    var f=FORMATIONS[id];
+    var isLeaf=!!f.track;
+    var hsh=0; for(var q=0;q<id.length;q++) hsh=(hsh*31+id.charCodeAt(q))%997;
+    var rec={id:id, f:f, leaf:isLeaf, delay:(hsh%100)/100*0.20, trailOn:false};
+
+    /* symbol sprite */
+    var mat=new THREE.SpriteMaterial({transparent:true,depthTest:false,fog:false});
+    var sp=new THREE.Sprite(mat);
+    sp.renderOrder=20; sp.visible=false;
+    asLabel(sp); scene.add(sp);
+    rec.sprite=sp; rec.texKey="";
+
+    /* stem from ground to counter */
+    var stemGeo=new THREE.BufferGeometry();
+    stemGeo.setAttribute("position",new THREE.Float32BufferAttribute([0,0,0,0,1,0],3));
+    var stem=new THREE.Line(stemGeo,new THREE.LineBasicMaterial({color:lin(0x9AA3A8),transparent:true,opacity:0.5,depthTest:false}));
+    stem.renderOrder=19; stem.visible=false; scene.add(stem);
+    rec.stem=stem;
+
+    if(isLeaf){
+      var g=makeBlock(f);
+      g.visible=false; scene.add(g);
+      rec.block=g;
+
+      /* powder smoke where a formation is actually fighting */
+      var sm=new THREE.Sprite(new THREE.SpriteMaterial({
+        map:smokeTexture(), transparent:true, opacity:0, depthWrite:false, color:lin(0xA9A69E) }));
+      sm.scale.set(8.5,5.4,1); sm.visible=false; sm.renderOrder=6;
+      scene.add(sm); rec.smoke=sm;
+
+      /* the ground under the formation: trodden, occluded, in contact */
+      var pad=new THREE.Mesh(PAD_GEO,
+        new THREE.MeshBasicMaterial({map:padTexture(),transparent:true,opacity:0.66,
+          depthWrite:false,color:lin(0x2A2620)}));
+      pad.renderOrder=3; pad.visible=false;
+      scene.add(pad); rec.pad=pad;
+
+      /* dust kicked up by horse and by teams on the move */
+      var du=new THREE.Sprite(new THREE.SpriteMaterial({
+        map:dustTexture(), transparent:true, opacity:0, depthWrite:false, color:lin(0xC6BCA6) }));
+      du.scale.set(13,6,1); du.visible=false; du.renderOrder=5;
+      scene.add(du); rec.dust=du;
+
+      var lbl=makePlainLabel(f.name.replace("'s Division","").replace("'s Brigade",""),34,
+        f.nation==="fr"?"#A9C6EE":(f.nation==="ru"?"#AED3AC":"#EFE7D2"),false);
+      var ltex=ctex(lbl.canvas);
+      var lsp=new THREE.Sprite(new THREE.SpriteMaterial({map:ltex,transparent:true,depthTest:false,fog:false}));
+      lsp.scale.set(3.4*lbl.w/lbl.h,3.4,1); lsp.userData.ar=lbl.w/lbl.h; lsp.renderOrder=18; lsp.visible=false;
+      asLabel(lsp); scene.add(lsp); rec.nameLabel=lsp;
+
+      /* movement trail */
+      var tg=new THREE.BufferGeometry();
+      tg.setAttribute("position",new THREE.Float32BufferAttribute(new Float32Array(32*3),3));
+      tg.setDrawRange(0,0);
+      var tl=new THREE.Line(tg,new THREE.LineDashedMaterial({color:lin(0xD8C48A),dashSize:2.2,gapSize:2.0,
+        transparent:true,opacity:0.55,depthTest:false}));
+      tl.renderOrder=17; tl.visible=false; scene.add(tl);
+      rec.trail=tl;
+
+      units[id]=rec;
+    } else {
+      aggregates[id]=rec;
+    }
+  });
+}
+
+function buildFeatureGlyphs(){
+  FEATURES.forEach(function(ft){
+    var w=W(ft.p[0],ft.p[1]);
+    var mat=new THREE.SpriteMaterial({transparent:true,depthTest:false,fog:false});
+    var sp=new THREE.Sprite(mat);
+    sp.position.set(w[0],height(w[0],w[1])+(ft.kind==="height"?6:3.2),w[1]);
+    sp.renderOrder=12;
+    asLabel(sp); scene.add(sp);
+    featureSprites.push({ft:ft,sprite:sp,world:sp.position.clone(),texKey:""});
+  });
+}
+
+function refreshGlyphTextures(){
+  var paper=(mode==="staff");
+  featureSprites.forEach(function(o){
+    var key=(paper?"p":"t");
+    if(o.texKey===key) return;
+    o.texKey=key;
+    var cv=makeFeatureGlyph(o.ft.name,o.ft.kind,paper);
+    if(o.sprite.material.map) o.sprite.material.map.dispose();
+    var t=ctex(cv);
+    o.sprite.material.map=t; o.sprite.material.needsUpdate=true;
+  });
+}
+
+function updateTrail(rec,id){
+  var L=legAt(id,clock);
+  if(!L||!L.b||L.u<=0.001){ rec.trail.visible=false; return; }
+  if(rec.trailU!==undefined && Math.abs(rec.trailU-L.u)<0.004 && rec.trailA===L.a) return;
+  rec.trailU=L.u; rec.trailA=L.a;
+  var pp=legPath(L.a,L.b), N=24, arr=rec.trail.geometry.attributes.position.array, n=0;
+  for(var i=0;i<N;i++){
+    var q=pointOnPath(pp,L.u*i/(N-1)), w=W(q[0],q[1]);
+    arr[n++]=w[0]; arr[n++]=height(w[0],w[1])+1.4; arr[n++]=w[1];
+  }
+  rec.trail.geometry.attributes.position.needsUpdate=true;
+  rec.trail.geometry.setDrawRange(0,N);
+  rec.trail.computeLineDistances();
+}
+function refreshSymbol(rec,ph){
+  var f=rec.f;
+  var st=aggStatus(rec.id,ph), cf=aggConf(rec.id,ph);
+  var sel=(selection&&selection.kind==="f"&&selection.id===rec.id);
+  var paper=(mode==="staff");
+  var dim=!!(highlight && !highlight[rec.id]);
+  var kn=knowledgeOf(rec.id);
+  var key=[st,cf,sel?1:0,paper?1:0,dim?1:0,kn].join("|");
+  if(rec.texKey===key) return;
+  rec.texKey=key;
+  var view=Object.create(f);
+  view.strength = f.strength || aggStrength(rec.id);
+  var cv=drawSymbol(view,st,cf,{sel:sel,paper:paper,dim:dim,know:kn});
+  if(rec.sprite.material.map) rec.sprite.material.map.dispose();
+  var t=ctex(cv);
+  rec.sprite.material.map=t; rec.sprite.material.needsUpdate=true;
+}
+
+/* ---------------- overlays ---------------- */
+var SIDE_COL={ fr:{attack:0x4C86D8, move:0x6E9BD0, counter:0x2F6BC4, retreat:0x7FA6CE, axis:0x6E9BD0, line:0x4C86D8},
+               al:{attack:0xD4703A, move:0xC98E58, counter:0xC85A2C, retreat:0xCB9366, axis:0xC98E58, line:0xD4703A} };
+
+var overlayRoot, curOv=null, oldOv=null;
+var overlayMats=[], overlayTextMats=[], overlayLabels=[], oldMats=[];
+var ovFadeIn=1, ovFadeOut=0;
+
+function ovAdd(o){ curOv.add(o); }
+function disposeGroup(g){
+  g.traverse(function(o){
+    if(o.geometry) o.geometry.dispose();
+    if(o.material){ if(o.material.map) o.material.map.dispose(); o.material.dispose(); }
+  });
+}
+function groundPts(mapPts,lift){
+  return mapPts.map(function(p){ var w=W(p[0],p[1]); return new THREE.Vector3(w[0],height(w[0],w[1])+lift,w[1]); });
+}
+function addTube(curve,t0,t1,rad,mat){
+  var sub=[];
+  for(var i=0;i<=16;i++) sub.push(curve.getPoint(t0+(t1-t0)*i/16));
+  var c2=new THREE.CatmullRomCurve3(sub);
+  ovAdd(new THREE.Mesh(new THREE.TubeGeometry(c2,18,rad,8,false),mat));
+}
+function buildArrow(a){
+  var col=SIDE_COL[a.side][a.kind]||SIDE_COL[a.side].move;
+  var rad = a.kind==="attack"?0.95 : a.kind==="counter"?0.85 : a.kind==="retreat"?0.5 : 0.48;
+  var mat=new THREE.MeshBasicMaterial({color:lin(col).clone().multiplyScalar(0.58),transparent:true,opacity:0,fog:false,depthWrite:false});
+  overlayMats.push(mat);
+  var curve=new THREE.CatmullRomCurve3(groundPts(a.pts,2.4));
+  if(a.kind==="retreat"||a.kind==="axis"){
+    var seg=9;
+    for(var i=0;i<seg;i++){ var t0=i/seg; addTube(curve,t0,Math.min(t0+0.62/seg,1),rad,mat); }
+  } else addTube(curve,0,1,rad,mat);
+  var end=curve.getPoint(1), tan=curve.getTangent(1).normalize();
+  var hr = a.kind==="attack"?2.6:2.0;
+  var head=new THREE.Mesh(new THREE.ConeGeometry(hr,hr*2.3,14),mat);
+  head.position.copy(end).add(tan.clone().multiplyScalar(hr*0.9));
+  head.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),tan);
+  ovAdd(head);
+  if(a.label) addOverlayLabel(a.label,curve.getPoint(0.5),col);
+}
+function buildLine(l){
+  var col=SIDE_COL[l.side].line;
+  var mat=new THREE.MeshBasicMaterial({color:lin(col).clone().multiplyScalar(0.58),transparent:true,opacity:0,fog:false,depthWrite:false});
+  overlayMats.push(mat);
+  var curve=new THREE.CatmullRomCurve3(groundPts(l.pts,1.9));
+  addTube(curve,0,1,0.55,mat);
+  for(var i=0;i<=14;i++){
+    var t=i/14, p=curve.getPoint(t), tg=curve.getTangent(t).normalize();
+    var side=new THREE.Vector3(-tg.z,0,tg.x).normalize().multiplyScalar(l.side==="fr"?2.6:-2.6);
+    var g=new THREE.BufferGeometry().setFromPoints([p,p.clone().add(side)]);
+    var lm=new THREE.LineBasicMaterial({color:lin(col),transparent:true,opacity:0});
+    overlayMats.push(lm);
+    ovAdd(new THREE.Line(g,lm));
+  }
+  if(l.label) addOverlayLabel(l.label,curve.getPoint(0.18),col);
+}
+function buildBoundary(b){
+  var mat=new THREE.MeshBasicMaterial({color:lin(0xB9B0A0),transparent:true,opacity:0,fog:false,depthWrite:false});
+  overlayMats.push(mat);
+  var curve=new THREE.CatmullRomCurve3(groundPts(b.pts,1.6));
+  for(var i=0;i<7;i++){ var t0=i/7; addTube(curve,t0,Math.min(t0+0.55/7,1),0.35,mat); }
+  if(b.label) addOverlayLabel(b.label,curve.getPoint(0.5),0xCDC4B2);
+}
+function addOverlayLabel(text,pos,col){
+  var hex="#"+("000000"+col.toString(16)).slice(-6);
+  var l=makePlainLabel(text,30,hex,mode==="staff");
+  var m=new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,opacity:0,depthTest:false,fog:false});
+  var sp=new THREE.Sprite(m);
+  sp.position.copy(pos); sp.position.y+=4.4;
+  sp.scale.set(2.9*l.w/l.h,2.9,1); sp.renderOrder=22;
+  asLabel(sp); ovAdd(sp); overlayTextMats.push(m); overlayLabels.push(sp);
+}
+function buildObjective(o){
+  var w=W(o[0],o[1]);
+  var cv=document.createElement("canvas"); cv.width=cv.height=128;
+  var c=cv.getContext("2d");
+  c.strokeStyle="#EFC468"; c.lineWidth=7;
+  c.beginPath(); c.arc(64,64,40,0,Math.PI*2); c.stroke();
+  c.beginPath(); c.moveTo(64,14); c.lineTo(64,114); c.moveTo(14,64); c.lineTo(114,64); c.stroke();
+  var m=new THREE.SpriteMaterial({map:ctex(cv),transparent:true,opacity:0,depthTest:false,fog:false});
+  var sp=new THREE.Sprite(m); sp.position.set(w[0],height(w[0],w[1])+3.0,w[1]);
+  sp.scale.set(4.4,4.4,1); sp.renderOrder=21;
+  asLabel(sp); ovAdd(sp); overlayMats.push(m);
+  var l=makePlainLabel(o[2],28,"#EFC468",mode==="staff");
+  var lm=new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,opacity:0,depthTest:false,fog:false});
+  var ls=new THREE.Sprite(lm); ls.position.set(w[0],height(w[0],w[1])+7.4,w[1]);
+  ls.scale.set(2.7*l.w/l.h,2.7,1); ls.renderOrder=21;
+  asLabel(ls); ovAdd(ls); overlayTextMats.push(lm); overlayLabels.push(ls);
+}
+function retireOld(){
+  if(oldOv){ overlayRoot.remove(oldOv); disposeGroup(oldOv); oldOv=null; oldMats=[]; }
+}
+function rebuildOverlays(ph,instant){
+  retireOld();
+  oldOv=curOv; oldMats=overlayMats.concat(overlayTextMats);
+  curOv=new THREE.Group(); overlayRoot.add(curOv);
+  overlayMats=[]; overlayTextMats=[]; overlayLabels=[];
+  var o=OVERLAYS[ph];
+  if(o){
+    (o.lines||[]).forEach(buildLine);
+    (o.bounds||[]).forEach(buildBoundary);
+    (o.arrows||[]).forEach(buildArrow);
+    (o.obj||[]).forEach(buildObjective);
+  }
+  if(instant){ retireOld(); ovFadeIn=1; ovFadeOut=0; }
+  else { ovFadeIn=0; ovFadeOut=1; }
+}
+function applyOverlayOpacity(){
+  var base=layerOn.arrows?0.95:0;
+  var tb=(layerOn.arrows&&textOn())?0.95:0;
+  var i;
+  for(i=0;i<overlayMats.length;i++) overlayMats[i].opacity=base*ovFadeIn;
+  for(i=0;i<overlayTextMats.length;i++) overlayTextMats[i].opacity=tb*ovFadeIn;
+  for(i=0;i<oldMats.length;i++) oldMats[i].opacity=0.9*ovFadeOut;
+}
+
+/* ============================================================
+   CLOCK AND MOVEMENT MODEL
+   Positions are a continuous function of the battle clock, evaluated
+   along a march route, so a formation can never jump. Phase-scoped
+   content (narrative, overlays, light, camera) switches at boundaries.
+   ============================================================ */
+var TRANS_MS=2600;
+var T_MIN=PHASES[0].t0, T_MAX=PHASES[PHASES.length-1].t1;
+var clock=T_MIN, curPhase=0;
+var playing=false, playRAF=0, speed=1, MIN_PER_SEC=10;
+var KM_PER_MAP=GEOREF.KM_PER_MAP;   /* one map unit on the ground: from geo.js, the only scale */
+
+function easeInOut(k){ return k<0.5 ? 4*k*k*k : 1-Math.pow(-2*k+2,3)/2; }
+function clamp01(x){ return x<0?0:(x>1?1:x); }
+function clampT(t){ return Math.max(T_MIN,Math.min(T_MAX,t)); }
+function phaseAt(t){
+  for(var i=PHASES.length-1;i>=0;i--) if(t>=PHASES[i].t0) return i;
+  return 0;
+}
+function fmtClock(t){
+  var h=Math.floor(t/60)%24, m=Math.floor(t%60);
+  return (h<10?"0":"")+h+":"+(m<10?"0":"")+m;
+}
+
+/* ---- anchors and march routes ---- */
+function anchorList(id){
+  var f=FORMATIONS[id];
+  if(!f||!f.track) return [];
+  if(f._anchors) return f._anchors;
+  var out=[];
+  Object.keys(f.track).map(Number).sort(function(a,b){return a-b;}).forEach(function(ph){
+    var e=f.track[ph];
+    if("p" in e) out.push({ph:ph,p:e.p,via:e.via||null,moveMin:e.moveMin||null,ice:!!e.ice});
+  });
+  f._anchors=out;
+  return out;
+}
+function legPath(a,b){
+  if(b._path) return b._path;
+  var pts=[a.p].concat(b.via||[],[b.p]), cum=[0], tot=0;
+  for(var i=1;i<pts.length;i++){
+    var dx=pts[i][0]-pts[i-1][0], dy=pts[i][1]-pts[i-1][1];
+    tot+=Math.sqrt(dx*dx+dy*dy); cum.push(tot);
+  }
+  b._path={pts:pts,cum:cum,len:tot};
+  return b._path;
+}
+function pointOnPath(pp,u){
+  if(pp.len<=0) return pp.pts[0].slice();
+  var d=u*pp.len, i=1;
+  while(i<pp.cum.length-1 && pp.cum[i]<d) i++;
+  var seg=(pp.cum[i]-pp.cum[i-1])||1, t=(d-pp.cum[i-1])/seg;
+  return [pp.pts[i-1][0]+(pp.pts[i][0]-pp.pts[i-1][0])*t,
+          pp.pts[i-1][1]+(pp.pts[i][1]-pp.pts[i-1][1])*t];
+}
+function legWindow(a,b){
+  var t0=PHASES[a.ph].t0, t1=PHASES[b.ph].t0;
+  if(b.moveMin && b.moveMin<(t1-t0)) t0=t1-b.moveMin;   /* holds, then marches */
+  return [t0,t1];
+}
+function legAt(id,t){
+  var A=anchorList(id);
+  if(!A.length) return null;
+  if(A[0].p===null) return null;
+  if(t<=PHASES[A[0].ph].t0) return {a:A[0],b:null,u:0};
+  var i=0;
+  while(i<A.length-1 && t>=PHASES[A[i+1].ph].t0) i++;
+  var a=A[i];
+  if(a.p===null) return null;
+  if(i===A.length-1) return {a:a,b:null,u:0};
+  var b=A[i+1];
+  if(b.p===null) return {a:a,b:null,u:0};
+  var w=legWindow(a,b);
+  if(t<=w[0]) return {a:a,b:b,u:0,w:w};
+  return {a:a,b:b,u:clamp01((t-w[0])/((w[1]-w[0])||1)),w:w};
+}
+function posAtClock(id,t){
+  var L=legAt(id,t);
+  if(!L) return null;
+  if(!L.b||L.u<=0) return L.a.p.slice();
+  return pointOnPath(legPath(L.a,L.b),L.u);
+}
+function notYetAt(id,t){
+  var A=anchorList(id);
+  return A.length ? (t < PHASES[A[0].ph].t0-0.001) : false;
+}
+function goneAt(id,t){
+  var A=anchorList(id);
+  for(var i=0;i<A.length;i++) if(A[i].p===null && t>=PHASES[A[i].ph].t0) return true;
+  return false;
+}
+function headingAt(id,t){
+  var L=legAt(id,t);
+  if(!L||!L.b||L.u<=0||L.u>=1) return null;
+  var pp=legPath(L.a,L.b);
+  var p0=pointOnPath(pp,Math.max(0,L.u-0.03)), p1=pointOnPath(pp,Math.min(1,L.u+0.03));
+  var dx=p1[0]-p0[0], dy=p1[1]-p0[1];
+  if(dx*dx+dy*dy<1e-6) return null;
+  var w0=W(p0[0],p0[1]), w1=W(p1[0],p1[1]);
+  return Math.atan2(w1[0]-w0[0],w1[1]-w0[1]);
+}
+/* march rate for the leg in progress, or the one just completed */
+function marchRate(id,t){
+  var L=legAt(id,t);
+  if(!L||!L.b) return null;
+  var pp=legPath(L.a,L.b), w=L.w||legWindow(L.a,L.b);
+  var km=pp.len*KM_PER_MAP, min=w[1]-w[0];
+  if(min<=0||km<0.02) return null;
+  return {km:km, min:min, kmh:km/(min/60), moving:(L.u>0&&L.u<1), ice:L.b.ice};
+}
+
+/* ---- current-clock accessors used across the app ---- */
+function posNow(id){
+  var f=FORMATIONS[id];
+  if(f.track) return (goneAt(id,clock)||notYetAt(id,clock))?null:posAtClock(id,clock);
+  var ls=leavesOf(id,[]), sx=0,sy=0,n=0;
+  ls.forEach(function(k){
+    var p=(goneAt(k,clock)||notYetAt(k,clock))?null:posAtClock(k,clock);
+    if(p){ sx+=p[0]; sy+=p[1]; n++; }
+  });
+  return n?[sx/n,sy/n]:null;
+}
+
+/* ---- plausibility audit: run at load, reported to the console ---- */
+var SPEED_CEIL={inf:5.0, guard:5.0, art:4.5, cav:12.0, mixed:8.0, hq:12.0};
+/* The Goldbach itself was a trickle. What stopped guns and formed cavalry
+   was the marshy bottom it ran through, and the meres in the south. */
+function wetAt(mx,my){
+  var w=W(mx,my);
+  var pS=1-smoothstep(0.55,1.08,Math.sqrt(Math.pow((w[0]-SATS[0])/28,2)+Math.pow((w[1]-SATS[1])/10.5,2)));
+  var pM=1-smoothstep(0.55,1.08,Math.sqrt(Math.pow((w[0]-MENI[0])/23,2)+Math.pow((w[1]-MENI[1])/9,2)));
+  return {pond:Math.max(pS,pM), marsh:covAt(covMarsh,w[0],w[1]), road:covAt(covRoad,w[0],w[1])};
+}
+function nearSettlement(mx,my){
+  for(var i=0;i<VILLAGES.length;i++){
+    var dx=mx-VILLAGES[i][1], dy=my-VILLAGES[i][2];
+    if(dx*dx+dy*dy < 22*22) return true;
+  }
+  return false;
+}
+function crossingProblem(pp,ice){
+  var step=3.5, n=Math.max(2,Math.ceil(pp.len/step));
+  for(var i=1;i<n;i++){
+    var q=pointOnPath(pp,i/n), w=wetAt(q[0],q[1]);
+    if(!ice && w.pond>0.55) return {at:q,why:"crosses open water"};
+    if(!ice && w.marsh>0.50 && w.road<0.35 && !nearSettlement(q[0],q[1]))
+      return {at:q,why:"crosses the marshy bottom away from a village or road"};
+  }
+  return null;
+}
+function auditMovement(){
+  var out=[];
+  Object.keys(FORMATIONS).forEach(function(id){
+    var f=FORMATIONS[id];
+    if(!f.track) return;
+    var A=anchorList(id);
+    for(var i=0;i<A.length-1;i++){
+      var a=A[i], b=A[i+1];
+      if(a.p===null||b.p===null) continue;
+      var pp=legPath(a,b), w=legWindow(a,b);
+      var km=pp.len*KM_PER_MAP, min=w[1]-w[0];
+      var kmh=min>0?km/(min/60):Infinity;
+      var ceil=SPEED_CEIL[f.arm]||5.0;
+      if(kmh>ceil+0.001)
+        out.push({id:id,leg:a.ph+"->"+b.ph,why:"rate",km:km,min:min,kmh:kmh,ceil:ceil});
+      var x=crossingProblem(pp,b.ice);
+      if(x) out.push({id:id,leg:a.ph+"->"+b.ph,why:x.why,at:x.at});
+    }
+  });
+  return out;
+}
+
+/* ---- phase transition: light, camera, overlays ---- */
+var camArc=null;
+var _sp=new THREE.Spherical(), _cv=new THREE.Vector3(), _ct=new THREE.Vector3();
+function setupArc(fromPos,fromTgt,toPos,toTgt){
+  var s0=new THREE.Spherical().setFromVector3(fromPos.clone().sub(fromTgt));
+  var s1=new THREE.Spherical().setFromVector3(toPos.clone().sub(toTgt));
+  var d=s1.theta-s0.theta;
+  while(d>Math.PI) d-=Math.PI*2;
+  while(d<-Math.PI) d+=Math.PI*2;
+  return {s0:s0,s1:s1,dth:d,t0:fromTgt.clone(),t1:toTgt.clone()};
+}
+function applyArc(a,e,bulge){
+  _ct.copy(a.t0).lerp(a.t1,e);
+  var r=a.s0.radius+(a.s1.radius-a.s0.radius)*e;
+  r*=1+(bulge===undefined?0.15:bulge)*Math.sin(Math.PI*e);
+  _sp.set(r, a.s0.phi+(a.s1.phi-a.s0.phi)*e, a.s0.theta+a.dth*e);
+  _sp.makeSafe();
+  camera.position.copy(_ct).add(_cv.setFromSpherical(_sp));
+  orbitTarget.copy(_ct);
+  clampCamera();
+  camera.lookAt(_ct);
+}
+function startPhaseTransition(ph,instant,moveCam){
+  var L=LIGHT[mode==="staff"?"staff":ph.light];
+  var mistTo=(mode==="staff")?0:ph.mist;
+  var f0={i:sun.intensity,c:sun.color.clone(),p:sunDir.clone(),h:hemi.intensity,
+          mistC:(world.mist.children[0]?world.mist.children[0].material.color.clone():lin(0xB8BCBC)),
+          sky:[_skyNow[0].clone(),_skyNow[1].clone(),_skyNow[2].clone()],
+          disc:sunDisc?sunDisc.material.opacity/0.92:0, grade:_gradeNow.slice(),
+          fn:scene.fog.near,ff:scene.fog.far,fc:scene.fog.color.clone(),
+          bg:scene.background.clone(),mist:world.mist.children[0].material.opacity};
+  var camMove=moveCam && !freeCam;
+  if(camMove){
+    camArc=setupArc(camera.position,orbitTarget,
+      new THREE.Vector3(ph.cam[0],ph.cam[1],ph.cam[2]),
+      new THREE.Vector3(ph.cam[3],ph.cam[4],ph.cam[5]));
+  }
+  var dur=(instant||RM)?1:TRANS_MS, t0=performance.now();
+  tween=function(now){
+    var k=Math.min(1,(now-t0)/dur), e=easeInOut(k);
+    if(camMove&&camArc) applyArc(camArc,e);
+    sun.intensity=f0.i+(L.i-f0.i)*e;
+    sun.color.copy(f0.c).lerp(new THREE.Color(L.c),e);
+    sunDir.set(f0.p.x+(L.p[0]-f0.p.x)*e,f0.p.y+(L.p[1]-f0.p.y)*e,f0.p.z+(L.p[2]-f0.p.z)*e);
+    hemi.intensity=f0.h+(L.hemi-f0.h)*e;
+    scene.fog.near=f0.fn+(L.fogN-f0.fn)*e;
+    scene.fog.far=f0.ff+(L.fogF-f0.ff)*e;
+    scene.fog.color.copy(f0.fc).lerp(lin(L.fogC),e);
+    scene.background.copy(f0.bg).lerp(lin(L.bg),e);
+    _skyNow[0].copy(f0.sky[0]).lerp(new THREE.Color(L.sky[0]),e);
+    _skyNow[1].copy(f0.sky[1]).lerp(new THREE.Color(L.sky[1]),e);
+    _skyNow[2].copy(f0.sky[2]).lerp(new THREE.Color(L.sky[2]),e);
+    paintSky(_skyNow[0],_skyNow[1],_skyNow[2]);
+    refreshEnvironment();
+    if(sunDisc) sunDisc.material.opacity=(f0.disc+(L.disc-f0.disc)*e)*(mode==="staff"?0:0.92);
+    applyGrade(lerpGrade(f0.grade,L.grade,e));
+    var mo=f0.mist+(mistTo-f0.mist)*e;
+    var mc=f0.mistC.clone().lerp(lin(L.mistC),e);
+    world.mist.children.forEach(function(m){
+      m.material.opacity = m.userData.haze ? mo*0.26 : mo*0.55;
+      m.material.color.copy(mc);
+    });
+    world.mist.visible=world.mist.children[0].material.opacity>0.012 && mode!=="staff";
+    ovFadeOut=1-clamp01(k/0.42);
+    ovFadeIn=clamp01((k-0.34)/0.66);
+    if(k>=1){ tween=null; retireOld(); ovFadeIn=1; ovFadeOut=0; }
+  };
+}
+
+function setClock(t,opts){
+  opts=opts||{};
+  clock=clampT(t);
+  var ph=phaseAt(clock);
+  if(ph!==curPhase || opts.force){
+    curPhase=ph;
+    faceCache={};
+    rebuildOverlays(ph,!!opts.instant);
+    startPhaseTransition(PHASES[ph],!!opts.instant,opts.camera!==false);
+    paintDispatch(PHASES[ph]);
+    paintOOB();
+    if(selection) paintDrawer();
+    if(PHASES[ph].flash && !opts.instant) flash(PHASES[ph].flash);
+  }
+  paintTimeline();
+}
+function setPhase(n,instant){
+  n=Math.max(0,Math.min(PHASES.length-1,n));
+  freeCam=false;
+  setClock(PHASES[n].t0,{instant:!!instant,force:true});
+}
+
+/* ============================================================
+   POST PROCESSING
+   Hand-rolled because cdnjs ships only the three.js build, not the
+   example modules. Scene renders linear into a half-float target;
+   a bright pass and two blur levels make the bloom; a final pass
+   tone-maps, grades to the hour, and writes sRGB to the screen.
+   Text sprites live on layer 1 and are drawn afterwards, ungraded,
+   so map labels stay legible.
+   ============================================================ */
+var lowTier=false;
+var LAYER_WORLD=0, LAYER_LABEL=1;
+var FX={on:false, scale:1, rtScene:null, rtA:null, rtB:null, rtC:null, rtD:null, rtFinal:null, matFXAA:null,
+        quadScene:null, quadCam:null, quad:null,
+        matBright:null, matBlur:null, matComp:null};
+
+/* text and military symbology are drawn after the grade, so they stay legible */
+function asLabel(o){ if(o&&o.layers) o.layers.set(LAYER_LABEL); return o; }
+function fsQuad(mat){
+  var g=new THREE.BufferGeometry();
+  g.setAttribute("position",new THREE.Float32BufferAttribute([-1,-1,0, 3,-1,0, -1,3,0],3));
+  g.setAttribute("uv",new THREE.Float32BufferAttribute([0,0, 2,0, 0,2],2));
+  return new THREE.Mesh(g,mat);
+}
+function makeRT(w,h,half){
+  var o={minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter,
+         format:THREE.RGBAFormat,depthBuffer:true,stencilBuffer:false};
+  if(half) o.type=THREE.HalfFloatType;
+  var rt=new THREE.WebGLRenderTarget(Math.max(2,w|0),Math.max(2,h|0),o);
+  rt.texture.generateMipmaps=false;
+  return rt;
+}
+function initFX(){
+  var half = renderer.capabilities.isWebGL2 ||
+             !!renderer.extensions.get("OES_texture_half_float");
+  FX.scale = lowTier?1.0:1.3;
+  var s=new THREE.Vector2(); renderer.getDrawingBufferSize(s);
+  var w=s.x*FX.scale, h=s.y*FX.scale;
+  FX.rtScene=makeRT(w,h,half);
+  FX.rtA=makeRT(w/2,h/2,half); FX.rtB=makeRT(w/2,h/2,half);
+  FX.rtC=makeRT(w/4,h/4,half); FX.rtD=makeRT(w/4,h/4,half);
+  FX.rtFinal=makeRT(s.x,s.y,false);          /* the graded frame at screen size, sRGB */
+  FX.rtFinal.depthBuffer=false;
+
+  /* FXAA: edge-directed blur along the luma gradient, on the finished sRGB frame */
+  FX.matFXAA=new THREE.ShaderMaterial({
+    uniforms:{tDiffuse:{value:null},texel:{value:new THREE.Vector2(1/1024,1/1024)}},
+    vertexShader:"varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }",
+    fragmentShader:[
+      "uniform sampler2D tDiffuse; uniform vec2 texel; varying vec2 vUv;",
+      "float luma(vec3 c){ return dot(c,vec3(0.299,0.587,0.114)); }",
+      "void main(){",
+      "  vec3 rgbM =texture2D(tDiffuse,vUv).rgb;",
+      "  vec3 rgbNW=texture2D(tDiffuse,vUv+vec2(-1.0,-1.0)*texel).rgb;",
+      "  vec3 rgbNE=texture2D(tDiffuse,vUv+vec2( 1.0,-1.0)*texel).rgb;",
+      "  vec3 rgbSW=texture2D(tDiffuse,vUv+vec2(-1.0, 1.0)*texel).rgb;",
+      "  vec3 rgbSE=texture2D(tDiffuse,vUv+vec2( 1.0, 1.0)*texel).rgb;",
+      "  float lM=luma(rgbM), lNW=luma(rgbNW), lNE=luma(rgbNE), lSW=luma(rgbSW), lSE=luma(rgbSE);",
+      "  float lMin=min(lM,min(min(lNW,lNE),min(lSW,lSE)));",
+      "  float lMax=max(lM,max(max(lNW,lNE),max(lSW,lSE)));",
+      "  vec2 dir=vec2(-((lNW+lNE)-(lSW+lSE)), ((lNW+lSW)-(lNE+lSE)));",
+      "  float dirReduce=max((lNW+lNE+lSW+lSE)*0.03125, 0.0078125);",
+      "  float rcpDirMin=1.0/(min(abs(dir.x),abs(dir.y))+dirReduce);",
+      "  dir=min(vec2(8.0),max(vec2(-8.0),dir*rcpDirMin))*texel;",
+      "  vec3 rgbA=0.5*(texture2D(tDiffuse,vUv+dir*(1.0/3.0-0.5)).rgb+texture2D(tDiffuse,vUv+dir*(2.0/3.0-0.5)).rgb);",
+      "  vec3 rgbB=rgbA*0.5+0.25*(texture2D(tDiffuse,vUv+dir*-0.5).rgb+texture2D(tDiffuse,vUv+dir*0.5).rgb);",
+      "  float lB=luma(rgbB);",
+      "  gl_FragColor=vec4((lB<lMin||lB>lMax)?rgbA:rgbB,1.0);",
+      "}"].join("\n"),
+    depthTest:false,depthWrite:false});
+
+  FX.matBright=new THREE.ShaderMaterial({
+    uniforms:{tDiffuse:{value:null},threshold:{value:0.82},knee:{value:0.45}},
+    vertexShader:"varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }",
+    fragmentShader:[
+      "uniform sampler2D tDiffuse; uniform float threshold; uniform float knee;",
+      "varying vec2 vUv;",
+      "void main(){",
+      "  vec3 c=texture2D(tDiffuse,vUv).rgb;",
+      "  float l=dot(c,vec3(0.2126,0.7152,0.0722));",
+      "  float s=smoothstep(threshold,threshold+knee,l);",
+      "  gl_FragColor=vec4(c*s,1.0);",
+      "}"].join("\n"),
+    depthTest:false,depthWrite:false});
+
+  FX.matBlur=new THREE.ShaderMaterial({
+    uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},
+              texel:{value:new THREE.Vector2(1/512,1/512)}},
+    vertexShader:"varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }",
+    fragmentShader:[
+      "uniform sampler2D tDiffuse; uniform vec2 dir; uniform vec2 texel;",
+      "varying vec2 vUv;",
+      /* nine-tap gaussian, linear-sampled */
+      "void main(){",
+      "  vec2 o=dir*texel;",
+      "  vec3 c=texture2D(tDiffuse,vUv).rgb*0.2270270270;",
+      "  c+=texture2D(tDiffuse,vUv+o*1.3846153846).rgb*0.3162162162;",
+      "  c+=texture2D(tDiffuse,vUv-o*1.3846153846).rgb*0.3162162162;",
+      "  c+=texture2D(tDiffuse,vUv+o*3.2307692308).rgb*0.0702702703;",
+      "  c+=texture2D(tDiffuse,vUv-o*3.2307692308).rgb*0.0702702703;",
+      "  gl_FragColor=vec4(c,1.0);",
+      "}"].join("\n"),
+    depthTest:false,depthWrite:false});
+
+  FX.matComp=new THREE.ShaderMaterial({
+    uniforms:{
+      tDiffuse:{value:null}, tBloomA:{value:null}, tBloomB:{value:null},
+      texel:{value:new THREE.Vector2(1/1024,1/1024)},
+      bloom:{value:0.42}, exposure:{value:1.05},
+      lift:{value:new THREE.Vector3(0,0,0)}, gain:{value:new THREE.Vector3(1,1,1)},
+      sat:{value:1.04}, contrast:{value:1.06},
+      vignette:{value:0.26}, grain:{value:0.011}, sharpen:{value:0.22},
+      time:{value:0}
+    },
+    vertexShader:"varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }",
+    fragmentShader:[
+      "uniform sampler2D tDiffuse; uniform sampler2D tBloomA; uniform sampler2D tBloomB;",
+      "uniform vec2 texel; uniform float bloom, exposure, sat, contrast, vignette, grain, sharpen, time;",
+      "uniform vec3 lift, gain;",
+      "varying vec2 vUv;",
+      /* ACES filmic, Narkowicz's fit */
+      "vec3 aces(vec3 x){",
+      "  return clamp((x*(2.51*x+0.03))/(x*(2.43*x+0.59)+0.14),0.0,1.0);",
+      "}",
+      "void main(){",
+      "  vec3 c=texture2D(tDiffuse,vUv).rgb;",
+      /* unsharp mask against a four-tap neighbourhood, recovering the
+         softness that supersampling costs */
+      "  vec3 b=texture2D(tDiffuse,vUv+vec2(texel.x,0.0)).rgb",
+      "        +texture2D(tDiffuse,vUv-vec2(texel.x,0.0)).rgb",
+      "        +texture2D(tDiffuse,vUv+vec2(0.0,texel.y)).rgb",
+      "        +texture2D(tDiffuse,vUv-vec2(0.0,texel.y)).rgb;",
+      "  c+=(c-b*0.25)*sharpen;",
+      "  c=max(c,vec3(0.0));",
+      "  c+=(texture2D(tBloomA,vUv).rgb+texture2D(tBloomB,vUv).rgb*1.3)*bloom;",
+      "  c*=exposure;",
+      "  c=aces(c);",
+      /* lift and gain, then saturation and contrast about mid grey */
+      "  c=clamp(c*gain+lift,0.0,1.0);",
+      "  float l=dot(c,vec3(0.2126,0.7152,0.0722));",
+      "  c=clamp(mix(vec3(l),c,sat),0.0,1.0);",
+      /* contrast about mid-grey in perceptual (gamma 2.2) space. Done in linear light, a pivot at
+         0.5 sent every value below 0.5(1-1/k) - 0.02 to 0.04 for these presets - to pure black,
+         which is what turned slopes in shade into black silhouettes. Here the clip point is
+         below one code value, so shade keeps its texture while mid-tones keep the same curve. */
+      "  vec3 pc=clamp(pow(max(c,vec3(0.0)),vec3(1.0/2.2)),0.0,1.0);",
+      /* pinned at black and white, so the curve can steepen the middle but never clip an end */
+      "  vec3 pk=pow(pc,vec3(contrast)), qk=pow(vec3(1.0)-pc,vec3(contrast));",
+      "  c=pow(pk/max(pk+qk,vec3(1e-6)),vec3(2.2));",
+      /* a quiet frame, and fine grain so flat sky does not band */
+      "  vec2 q=vUv-0.5;",
+      "  c*=1.0-vignette*dot(q,q)*1.6;",
+      "  float n=fract(sin(dot(vUv*vec2(1.0,1.3)+time,vec2(12.9898,78.233)))*43758.5453);",
+      "  c+=(n-0.5)*grain;",
+      /* linear to sRGB */
+      "  c=clamp(c,0.0,1.0);",
+      "  vec3 srgb=mix(c*12.92, 1.055*pow(max(c,vec3(0.0031308)),vec3(1.0/2.4))-0.055,",
+      "                step(vec3(0.0031308),c));",
+      /* a shadow toe below 0.2 on screen: the filmic curve's toe (slope about 0.2 near zero) put a
+         slope in shade at a few code values, so it read as a black silhouette. This lifts only the
+         deep shadows, continuously (value and slope match at 0.2), and leaves black black. */
+      "  vec3 tt=clamp(vec3(0.2)-srgb,0.0,0.2);",
+      "  srgb+=1.2*srgb*tt*tt/0.04;",
+      "  gl_FragColor=vec4(srgb,1.0);",
+      "}"].join("\n"),
+    depthTest:false,depthWrite:false});
+
+  FX.quadCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+  FX.quadScene=new THREE.Scene();
+  FX.quad=fsQuad(FX.matBright);
+  FX.quad.frustumCulled=false;
+  FX.quadScene.add(FX.quad);
+  FX.on=true;
+  sizeFX();
+}
+function sizeFX(){
+  if(!FX.on) return;
+  var s=new THREE.Vector2(); renderer.getDrawingBufferSize(s);
+  var w=Math.max(2,(s.x*FX.scale)|0), h=Math.max(2,(s.y*FX.scale)|0);
+  FX.rtScene.setSize(w,h);
+  FX.rtA.setSize(w/2|0,h/2|0); FX.rtB.setSize(w/2|0,h/2|0);
+  FX.rtC.setSize(w/4|0,h/4|0); FX.rtD.setSize(w/4|0,h/4|0);
+  FX.matComp.uniforms.texel.value.set(1/w,1/h);
+  if(FX.rtFinal){ FX.rtFinal.setSize(s.x,s.y); FX.matFXAA.uniforms.texel.value.set(1/s.x,1/s.y); }
+}
+function pass(mat,target){
+  FX.quad.material=mat;
+  renderer.setRenderTarget(target||null);
+  renderer.clear();
+  renderer.render(FX.quadScene,FX.quadCam);
+}
+function renderFX(){
+  /* 1. the world, linear, into the scene target */
+  var t0=performance.now();
+  camera.layers.set(LAYER_WORLD);
+  renderer.setRenderTarget(FX.rtScene);
+  renderer.clear();
+  renderer.render(scene,camera);
+  DEV.world=devMark(); DEV.tWorld=performance.now()-t0; t0=performance.now();
+
+  /* 2. bright pass, then two blur levels */
+  FX.matBright.uniforms.tDiffuse.value=FX.rtScene.texture;
+  pass(FX.matBright,FX.rtA);
+  var hw=FX.rtA.width, hh=FX.rtA.height;
+  FX.matBlur.uniforms.tDiffuse.value=FX.rtA.texture;
+  FX.matBlur.uniforms.dir.value.set(1,0);
+  FX.matBlur.uniforms.texel.value.set(1/hw,1/hh);
+  pass(FX.matBlur,FX.rtB);
+  FX.matBlur.uniforms.tDiffuse.value=FX.rtB.texture;
+  FX.matBlur.uniforms.dir.value.set(0,1);
+  pass(FX.matBlur,FX.rtA);
+
+  FX.matBlur.uniforms.tDiffuse.value=FX.rtA.texture;
+  FX.matBlur.uniforms.texel.value.set(1/FX.rtC.width,1/FX.rtC.height);
+  FX.matBlur.uniforms.dir.value.set(1,0);
+  pass(FX.matBlur,FX.rtC);
+  FX.matBlur.uniforms.tDiffuse.value=FX.rtC.texture;
+  FX.matBlur.uniforms.dir.value.set(0,1);
+  pass(FX.matBlur,FX.rtD);
+
+  /* 3. composite at screen size, then anti-alias the finished frame to the screen */
+  FX.matComp.uniforms.tDiffuse.value=FX.rtScene.texture;
+  FX.matComp.uniforms.tBloomA.value=FX.rtA.texture;
+  FX.matComp.uniforms.tBloomB.value=FX.rtD.texture;
+  FX.matComp.uniforms.time.value=HARNESS?0:(performance.now()%10000)*0.001;
+  pass(FX.matComp,FX.rtFinal);
+  FX.matFXAA.uniforms.tDiffuse.value=FX.rtFinal.texture;
+  pass(FX.matFXAA,null);
+  DEV.post=devMark(); DEV.tPost=performance.now()-t0; t0=performance.now();
+
+  /* 4. labels on top, ungraded, so the map stays readable.
+     r128 forces a clear whenever scene.background is a Color, regardless of
+     autoClear (WebGLBackground.render, line 51). With the background left in
+     place this pass wiped the composite to sky-blue and drew labels on it. */
+  camera.layers.set(LAYER_LABEL);
+  var ac=renderer.autoClear, bg=scene.background;
+  renderer.autoClear=false;
+  scene.background=null;
+  renderer.render(scene,camera);
+  scene.background=bg;
+  renderer.autoClear=ac;
+  camera.layers.enableAll();
+  DEV.total=devMark(); DEV.tLabels=performance.now()-t0;
+}
+
+/* ---- one frame path. FX renders linear into a target and grades on the way out;
+   the standard path lets the renderer tone-map and encode itself. Either way the
+   world reaches the screen, and a failure inside FX drops to the standard path
+   instead of leaving the frame empty. ---- */
+function setFXEnabled(on){
+  if(on && !FX.on){
+    try{ initFX(); }
+    catch(err){ FX.on=false; console.warn("post processing unavailable, standard path in use"); }
+  }
+  if(!on) FX.on=false;
+  if(FX.on){
+    renderer.outputEncoding=THREE.LinearEncoding;
+    renderer.toneMapping=THREE.NoToneMapping;
+  } else {
+    renderer.outputEncoding=THREE.sRGBEncoding;
+    renderer.toneMapping=THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure=1.0;
+  }
+  var vb=document.getElementById("fxstate");
+  if(vb) vb.textContent=FX.on?"FX on":"FX off";
+}
+function renderStandard(){
+  camera.layers.enableAll();
+  renderer.setRenderTarget(null);
+  renderer.render(scene,camera);
+}
+function renderFrame(){
+  renderer.info.reset();
+  /* the guard: anything that placed the eye without clampCamera() is counted and corrected */
+  if(camera.position.y<camFloor(camera.position.x,camera.position.z)-1e-6){
+    CAM.violations++; clampCamera();
+    if(CAM.violations===1) console.warn("Austerlitz runtime check: a camera path bypassed the ground floor");
+  }
+  if(!FX.on){ var t0=performance.now(); renderStandard(); DEV.world=DEV.total=devMark(); DEV.tWorld=performance.now()-t0; DEV.tPost=DEV.tLabels=0; DEV.frames++; return; }
+  try{ renderFX(); }
+  catch(err){
+    setFXEnabled(false);
+    renderStandard();
+  }
+  DEV.frames++;
+}
+/* ---- development readout: render and frame statistics (the ` key, or ?stats) ---- */
+var DEV={state:"active",frames:0,skipped:0,tUpdate:0,tWorld:0,tPost:0,tLabels:0,
+  world:{calls:0,triangles:0,points:0,lines:0},post:{calls:0,triangles:0,points:0,lines:0},total:{calls:0,triangles:0,points:0,lines:0}};
+function devMark(){ var r=renderer.info.render; return {calls:r.calls,triangles:r.triangles,points:r.points,lines:r.lines}; }
+var devOn=/[?&]stats\b/.test(location.search), _devT=0, _devSeat=0;
+function kfmt(n){ return n>=1e6?(n/1e6).toFixed(2)+"M":(n>=1e3?(n/1e3).toFixed(1)+"k":String(n)); }
+function paintDevStats(now){
+  var el=document.getElementById("devstats"); if(!el) return;
+  if(el.hidden===devOn) el.hidden=!devOn;
+  if(!devOn||now-_devT<500) return;
+  var sec=_devT?(now-_devT)/1000:1; _devT=now;
+  var fps=DEV.frames/sec, sk=DEV.skipped/sec, se=(SEAT_STATS.blocks-_devSeat)/sec;
+  DEV.frames=0; DEV.skipped=0; _devSeat=SEAT_STATS.blocks;
+  var mi=renderer.info.memory, c=camera.position, W=DEV.world, T=DEV.total;
+  el.textContent=[
+    "frames drawn "+fps.toFixed(0)+"/s   skipped "+sk.toFixed(0)+"/s   state "+DEV.state,
+    "cpu ms   update "+DEV.tUpdate.toFixed(1)+"   world "+DEV.tWorld.toFixed(1)+"   post "+DEV.tPost.toFixed(1)+"   labels "+DEV.tLabels.toFixed(1),
+    "world pass   "+W.calls+" calls   "+kfmt(W.triangles)+" tris   "+kfmt(W.lines)+" lines   "+W.points+" points",
+    "post+labels  "+(T.calls-W.calls)+" calls (labels "+(T.calls-DEV.post.calls)+")",
+    "seating  "+se.toFixed(1)+" blocks/s ("+SEAT_STATS.blocks+" since load)",
+    "labels   "+LABEL_STATS.shown+" shown   "+LABEL_STATS.hidden+" hidden   "+LABEL_STATS.moved+" moved   "+(LABEL_STATS.shrunk||0)+" shrunk   "+LABEL_STATS.unresolved+" unresolved",
+    "camera   "+(c.y-camGround(c.x,c.z)).toFixed(2)+" above ground   clamps "+CAM.clamps+"   bypassed "+CAM.violations,
+    "memory   "+mi.geometries+" geometries   "+mi.textures+" textures   "+(renderer.info.programs?renderer.info.programs.length:0)+" programs"
+  ].join("\n");
+}
+
+/* the grade follows the hour: cold and blue before the sun, golden at 08:45 */
+function applyGrade(g){
+  if(!g) return;
+  _gradeNow=[g[0].slice(),g[1].slice(),g[2],g[3],g[4],g[5]];
+  if(!FX.on) return;
+  var u=FX.matComp.uniforms;
+  u.lift.value.set(g[0][0],g[0][1],g[0][2]);
+  u.gain.value.set(g[1][0],g[1][1],g[1][2]);
+  u.sat.value=g[2]; u.contrast.value=g[3]; u.bloom.value=g[4]; u.exposure.value=g[5];
+}
+function lerpGrade(a,b,e){
+  var o=[[0,0,0],[0,0,0],0,0,0,0];
+  for(var i=0;i<3;i++){ o[0][i]=a[0][i]+(b[0][i]-a[0][i])*e; o[1][i]=a[1][i]+(b[1][i]-a[1][i])*e; }
+  for(var k=2;k<6;k++) o[k]=a[k]+(b[k]-a[k])*e;
+  return o;
+}
+
+/* ============================================================
+   THE EVENT LAYER
+   Events are the joints of the reconstruction: a time, a place, the
+   formations concerned, what followed, and how well it is attested.
+   ============================================================ */
+var eventGroup=null, eventMarks=[];
+function evWindow(e){ return Array.isArray(e.t)?e.t:[e.t,e.t]; }
+function evWeight(e,t){
+  var w=evWindow(e), lead=14, tail=26;
+  if(t>=w[0]&&t<=w[1]) return 1;
+  if(t<w[0]) return clamp01(1-(w[0]-t)/lead);
+  return clamp01(1-(t-w[1])/tail);
+}
+/* the event the viewer is most likely looking at right now */
+function liveEvents(t){
+  var out=[];
+  for(var i=0;i<EVENTS.length;i++){
+    var w=evWeight(EVENTS[i],t);
+    if(w>0.02) out.push({e:EVENTS[i],w:w});
+  }
+  out.sort(function(a,b){ return b.w-a.w; });
+  return out;
+}
+function actOf(ph){
+  for(var i=0;i<ACTS.length;i++) if(ACTS[i].phases.indexOf(ph)>=0) return ACTS[i];
+  return ACTS[0];
+}
+function eventGlyph(side,kind){
+  var cv=document.createElement("canvas"); cv.width=cv.height=128;
+  var x=cv.getContext("2d");
+  var col = kind==="decision" ? "#E7C069" : (side==="fr" ? "#7FB0F0" : "#EC9A5E");
+  x.strokeStyle=col; x.lineWidth=5;
+  x.beginPath(); x.arc(64,64,38,0,Math.PI*2); x.stroke();
+  x.lineWidth=3.5;
+  if(kind==="capture"){ x.beginPath(); x.moveTo(64,16); x.lineTo(64,112); x.moveTo(16,64); x.lineTo(112,64); x.stroke(); }
+  else if(kind==="decision"){ x.beginPath(); x.arc(64,64,14,0,Math.PI*2); x.stroke(); }
+  else if(kind==="arrival"){ x.beginPath(); x.moveTo(40,78); x.lineTo(64,40); x.lineTo(88,78); x.stroke(); }
+  else if(kind==="collapse"){ x.beginPath(); x.moveTo(40,40); x.lineTo(88,88); x.moveTo(88,40); x.lineTo(40,88); x.stroke(); }
+  else { x.beginPath(); x.moveTo(64,34); x.lineTo(64,94); x.stroke();
+         x.beginPath(); x.moveTo(48,52); x.lineTo(64,32); x.lineTo(80,52); x.stroke(); }
+  return ctex(cv);
+}
+/* The decisive fact of the morning is a negative one: the plateau emptying.
+   Empty ground shows nothing, so the plateau is surveyed on the map and the
+   holding read off the plotted formations. */
+var plateauRing=null, plateauLabel=null, _plKey="";
+function buildPlateauRing(){
+  var pts=[], P=PLATEAU_POLY.concat([PLATEAU_POLY[0]]);
+  for(var a=0;a<P.length-1;a++) for(var k=0;k<8;k++){
+    var mx=P[a][0]+(P[a+1][0]-P[a][0])*k/8, my=P[a][1]+(P[a+1][1]-P[a][1])*k/8;
+    var w=W(mx,my);
+    pts.push(w[0],height(w[0],w[1])+1.6,w[1]);
+  }
+  var w0=W(P[0][0],P[0][1]); pts.push(w0[0],height(w0[0],w0[1])+1.6,w0[1]);
+  var g=new THREE.BufferGeometry();
+  g.setAttribute("position",new THREE.Float32BufferAttribute(pts,3));
+  plateauRing=new THREE.Line(g,new THREE.LineDashedMaterial({color:lin(0xD8CFB6),
+    dashSize:3.0,gapSize:3.4,transparent:true,opacity:0,depthTest:false}));
+  plateauRing.computeLineDistances();
+  plateauRing.renderOrder=16;
+  eventGroup.add(plateauRing);
+  var c=W(298,196);   /* label on the northern part of the outline */
+  plateauLabel=new THREE.Sprite(new THREE.SpriteMaterial({transparent:true,opacity:0,
+    depthTest:false,fog:false}));
+  plateauLabel.position.set(c[0],height(c[0],c[1])+7.0,c[1]);
+  plateauLabel.renderOrder=26;
+  asLabel(plateauLabel); eventGroup.add(plateauLabel);
+}
+function updatePlateauRing(){
+  if(!plateauRing) return;
+  var show = curPhase<=7 && presentation!=="map";
+  var tgt = show?0.5:0;
+  var pro=tgt-plateauRing.material.opacity; if(Math.abs(pro)>0.004) settling=true;
+  plateauRing.material.opacity += pro*ease(0.06);
+  plateauRing.visible=plateauRing.material.opacity>0.01;
+  var al=plateauStrength("al"), fr=plateauStrength("fr");
+  var key=Math.round(al/1000)+"/"+Math.round(fr/1000)+"/"+(mode==="staff"?1:0);
+  if(key!==_plKey){
+    _plKey=key;
+    var txt="THE PRATZEN  \u00b7  Allied \u2248 "+al.toLocaleString()
+          + (fr>500?("   French \u2248 "+fr.toLocaleString()):"");
+    var l=makePlainLabel(txt,30,"#E3D9BE",mode==="staff");
+    if(plateauLabel.material.map) plateauLabel.material.map.dispose();
+    plateauLabel.material.map=ctex(l.canvas);
+    plateauLabel.material.needsUpdate=true;
+    plateauLabel.scale.set(3.6*l.w/l.h,3.6,1); plateauLabel.userData.ar=l.w/l.h;
+  }
+  plateauLabel.material.opacity=plateauRing.material.opacity*1.7;
+  plateauLabel.visible=plateauRing.visible;
+  if(plateauLabel.visible && window.__fitLabel) window.__fitLabel(plateauLabel,24,1.6);
+}
+var selRing=null;
+function buildSelRing(){
+  var pts=[];
+  for(var a=0;a<=64;a++){
+    var th=a/64*Math.PI*2;
+    pts.push(Math.cos(th),0,Math.sin(th));
+  }
+  var g=new THREE.BufferGeometry();
+  g.setAttribute("position",new THREE.Float32BufferAttribute(pts,3));
+  selRing=new THREE.Line(g,new THREE.LineDashedMaterial({color:lin(0xE8DCBC),
+    dashSize:0.9,gapSize:0.8,transparent:true,opacity:0,depthTest:false}));
+  selRing.computeLineDistances();
+  selRing.renderOrder=17;
+  selRing.visible=false;
+  scene.add(selRing);
+}
+function updateSelRing(){
+  if(!selRing) return;
+  var on = selection && selection.kind==="f" && units[selection.id] &&
+           mode!=="staff" && presentation!=="map";
+  if(!on){ selRing.material.opacity=0; selRing.visible=false; return; }
+  var p=posNow(selection.id);
+  if(!p){ selRing.visible=false; return; }
+  var rec=units[selection.id], ud=rec.block.userData;
+  var r=Math.max(7,(ud&&ud.W0?ud.W0:8)*0.62*1.25*(ud?ud.sw:1)+3.4);
+  var w=W(p[0],p[1]);
+  selRing.position.set(w[0],height(w[0],w[1])+0.7,w[1]);
+  selRing.scale.set(r,1,r*0.82);
+  selRing.visible=true;
+  var sro=0.62-selRing.material.opacity; if(Math.abs(sro)>0.004) settling=true;
+  selRing.material.opacity += sro*ease(0.12);
+}
+function buildEventLayer(){
+  eventGroup=new THREE.Group(); scene.add(eventGroup);
+  EVENTS.forEach(function(e){
+    var w=W(e.p[0],e.p[1]), gy=height(w[0],w[1]);
+    var col = e.kind==="decision" ? "#E7C069" : (e.side==="fr" ? "#7FB0F0" : "#EC9A5E");
+    var m=new THREE.SpriteMaterial({map:eventGlyph(e.side,e.kind),transparent:true,
+      opacity:0,depthTest:false,fog:false});
+    var sp=new THREE.Sprite(m);
+    sp.position.set(w[0],gy+4.2,w[1]); sp.scale.set(5.4,5.4,1); sp.renderOrder=23;
+    asLabel(sp); eventGroup.add(sp);
+    var l=makePlainLabel(e.n,28,col,false);
+    var lm=new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,opacity:0,
+      depthTest:false,fog:false});
+    var ls=new THREE.Sprite(lm);
+    ls.position.set(w[0],gy+8.4,w[1]);
+    ls.scale.set(3.3*l.w/l.h,3.3,1); ls.userData.ar=l.w/l.h; ls.renderOrder=25;
+    asLabel(ls); eventGroup.add(ls);
+    eventMarks.push({e:e,sp:sp,ls:ls,m:m,lm:lm,world:sp.position.clone()});
+  });
+  buildPlateauRing();
+  buildSelRing();
+}
+function updateEventLayer(){
+  if(!eventGroup) return;
+  var show=layerOn.events && !cleanViewHidesEvents();
+  eventGroup.visible=show;
+  if(!show) return;
+  updatePlateauRing();
+  for(var i=0;i<eventMarks.length;i++){
+    var k=eventMarks[i], w=evWeight(k.e,clock);
+    var sel=(selection&&selection.kind==="e"&&selection.id===k.e.id);
+    var a=sel?1:w;
+    k.m.opacity=a*0.95;
+    k.lm.opacity=(a>0.45||sel)?Math.min(1,(a-0.3)/0.5):0;
+    k.sp.visible=a>0.02; k.ls.visible=k.lm.opacity>0.02;
+    if(k.ls.visible && window.__fitLabel) window.__fitLabel(k.ls,24,1.5);
+  }
+}
+function cleanViewHidesEvents(){ return presentation==="map"; }
+
+/* ============================================================
+   DERIVED READINGS
+   Computed from the plotted reconstruction, not from a source.
+   ============================================================ */
+/* The plateau outline: encloses Pratzen village, Stare Vinohrady, the col
+   and the Pratzeberg, and excludes every surrounding village (Blasowitz,
+   Girzikowitz, Puntowitz, Kobelnitz, Sokolnitz, Augezd, Hostieradek,
+   Krzenowitz). A drawing decision for a derived reading, not a surveyed edge. */
+var PLATEAU_POLY=[[250,226],[262,200],[298,183],[336,187],[356,222],[358,272],[326,302],[300,318],[266,306],[248,272]];
+function onPlateau(mp){
+  var inside=false, P=PLATEAU_POLY;
+  for(var i=0,j=P.length-1;i<P.length;j=i++){
+    if(((P[i][1]>mp[1])!==(P[j][1]>mp[1])) && (mp[0] < (P[j][0]-P[i][0])*(mp[1]-P[i][1])/(P[j][1]-P[i][1])+P[i][0])) inside=!inside;
+  }
+  return inside;
+}
+/* Derived reading: men of one side standing on the plateau, counted once
+   (the leaf rule), from plotted - not documented - positions. */
+function plateauStrength(side){
+  var tot=0;
+  Object.keys(units).forEach(function(id){
+    var f=FORMATIONS[id];
+    if((side==="fr")!==(f.nation==="fr")) return;
+    var own=ownStrengthAt(id,clock); if(!own) return;
+    var p=posNow(id);
+    if(p&&onPlateau(p)) tot+=own;
+  });
+  return tot;
+}
+var PBERG_NORTHING=GEOREF.GT.pratzeberg?GEOREF.northingKm(GEOREF.GT.pratzeberg.map[0],GEOREF.GT.pratzeberg.map[1]):0;
+var SEP_KM=1.45;   /* how close to the line a French formation must stand to separate the two groups */
+function sideCentroid(side,which){
+  var sx=0,sy=0,n=0;
+  Object.keys(units).forEach(function(id){
+    var f=FORMATIONS[id];
+    if(f.arm==="hq") return;
+    if((f.nation==="fr")!==(side==="fr")) return;
+    var p=posNow(id); if(!p) return;
+    var dn=GEOREF.northingKm(p[0],p[1])-PBERG_NORTHING;   /* true north/south of the Pratzeberg */
+    if(which==="south"&&dn>0) return;
+    if(which==="north"&&dn<=0) return;
+    sx+=p[0]; sy+=p[1]; n++;
+  });
+  return n?[sx/n,sy/n]:null;
+}
+/* A derived spatial reading, not a historical statistic: is a French
+   formation standing across the line joining the Allied groups north and
+   south of the plateau? When it stops being true, that means the geometry
+   no longer holds, not that the Allied army has reunited. */
+function centreSeparation(){
+  var a=sideCentroid("al","south"), b=sideCentroid("al","north");
+  if(!a||!b) return false;
+  var cut=false;
+  Object.keys(units).forEach(function(id){
+    if(cut) return;
+    var f=FORMATIONS[id];
+    if(f.nation!=="fr"||f.arm==="hq") return;
+    var p=posNow(id); if(!p) return;
+    var vx=b[0]-a[0], vy=b[1]-a[1], L=vx*vx+vy*vy;
+    if(L<1) return;
+    var t=((p[0]-a[0])*vx+(p[1]-a[1])*vy)/L;
+    if(t<0.18||t>0.82) return;
+    var qx=a[0]+vx*t, qy=a[1]+vy*t;
+    if(Math.hypot(p[0]-qx,p[1]-qy)*KM_PER_MAP<SEP_KM) cut=true;
+  });
+  return cut;
+}
+
+/* ============================================================
+   WHAT A COMMANDER COULD KNOW
+   ============================================================ */
+/* Heights above ground are real metres converted through the vertical scale:
+   a mounted observer's eye (3 m) and the top of a formed body - heads,
+   bayonets, standards (2.5 m). The relief is exaggerated but uniformly, and a
+   uniform vertical scale does not change what can be seen; only these offsets
+   must be converted. */
+var EYE_OBSERVER_M=3.0, EYE_TARGET_M=2.5, LOS_CLEAR_M=0.5;
+function hasLOS(aMap,bMap,eyeA,eyeB){
+  var wa=W(aMap[0],aMap[1]), wb=W(bMap[0],bMap[1]);
+  var ha=height(wa[0],wa[1])+(eyeA||GEOREF.unitsFromM(EYE_OBSERVER_M)), hb=height(wb[0],wb[1])+(eyeB||GEOREF.unitsFromM(EYE_TARGET_M));
+  var dx=wb[0]-wa[0], dz=wb[1]-wa[1];
+  var L=Math.sqrt(dx*dx+dz*dz);
+  if(L<2) return true;
+  var n=Math.min(110,Math.max(4,Math.ceil(L/2.2)));
+  for(var i=1;i<n;i++){
+    var t=i/n;
+    if(height(wa[0]+dx*t, wa[1]+dz*t) > ha+(hb-ha)*t+GEOREF.unitsFromM(LOS_CLEAR_M)) return false;
+  }
+  return true;
+}
+var knowCache={}, knowKey="";
+function knowledgeOf(id){
+  if(commandView==="none") return "all";
+  var f=FORMATIONS[id];
+  if(!f) return "all";
+  var side=(f.nation==="fr")?"fr":"al";
+  if(side===commandView) return "own";
+  var key=commandView+"|"+curPhase;
+  if(knowKey!==key){ knowKey=key; knowCache={}; }
+  if(knowCache[id]) return knowCache[id];
+  var r="seen", ov=KNOW_OVERRIDE[commandView] && KNOW_OVERRIDE[commandView][id];
+  if(ov){
+    for(var i=ov.length-1;i>=0;i--) if(curPhase>=ov[i][0]){ r=ov[i][1]; break; }
+  } else {
+    var hq=posNow(commandView==="fr"?"gqg":"ahq"), p=posNow(id);
+    if(!hq||!p) r="unknown";
+    else if(!hasLOS(hq,p)) r="unknown";
+    else if(PHASES[curPhase].mist>0.5 && hAt(p[0],p[1])<-0.8) r="uncertain";
+  }
+  knowCache[id]=r;
+  return r;
+}
+
+/* ============================================================
+   HIERARCHY HIGHLIGHTING AND ANALYSIS CHAPTERS
+   ============================================================ */
+function familyOf(id){
+  var set={}, f=FORMATIONS[id];
+  if(!f) return null;
+  (function down(k){
+    set[k]=true;
+    var g=FORMATIONS[k];
+    if(g&&g.children) g.children.forEach(down);
+  })(id);
+  var p=f.parent;
+  while(p){ set[p]=true; p=FORMATIONS[p]?FORMATIONS[p].parent:null; }
+  return set;
+}
+function setHighlight(set){
+  if(highlight===set) return;
+  highlight=set;
+  Object.keys(units).forEach(function(k){ units[k].texKey=""; });
+  Object.keys(aggregates).forEach(function(k){ aggregates[k].texKey=""; });
+}
+function chapterById(cid){
+  for(var i=0;i<ANALYSIS.length;i++) if(ANALYSIS[i].id===cid) return ANALYSIS[i];
+  return null;
+}
+function setChapter(cid){
+  var c=chapterById(cid);
+  if(!c){ chapter=null; setHighlight(null); paintChapters(); paintChapterText(); return; }
+  chapter=cid;
+  var set={};
+  c.forms.forEach(function(k){
+    var fam=familyOf(k);
+    if(fam) Object.keys(fam).forEach(function(q){ set[q]=true; });
+  });
+  setHighlight(set);
+  freeCam=false;
+  setClock(c.t,{force:true,camera:false});
+  flyTo(c.cam);
+  paintChapters();
+  paintChapterText();
+}
+function paintChapters(){
+  document.querySelectorAll(".chap").forEach(function(b){
+    b.setAttribute("aria-current", b.dataset.c===chapter ? "true":"false");
+  });
+}
+function paintChapterText(){
+  var host=document.getElementById("chaptext");
+  if(!host) return;
+  if(!chapter){ host.innerHTML='<p class="muted">Pick one of the ten moments above. The map will move to that hour, highlight the formations and ground involved, and dim everything else.</p>'; return; }
+  var c=chapterById(chapter);
+  var feats=c.feats.map(function(fid){
+    var nm=fid; FEATURES.forEach(function(x){ if(x.id===fid) nm=x.name; });
+    return '<button class="linkb" data-feat="'+esc(fid)+'">'+esc(nm)+'</button>';
+  }).join(" ");
+  host.innerHTML='<h3>'+esc(c.n)+' <span class="hh">'+esc(fmtClock(c.t))+'</span></h3>'+
+    '<p class="prose">'+esc(c.text)+'</p>'+
+    '<div class="chapfeat">'+feats+'</div>';
+  host.querySelectorAll("[data-feat]").forEach(function(b){
+    b.addEventListener("click",function(){ select("t",b.dataset.feat); });
+  });
+}
+function paintCommand(){
+  var host=document.getElementById("cmdbody");
+  if(!host) return;
+  if(commandView==="none"){
+    host.innerHTML='<p class="muted">Choose a headquarters. Enemy formations it could not see are removed from the map; formations known only by report are drawn with a broken outline and a query.</p>';
+    return;
+  }
+  var side=commandView, book=COMMAND[side]||{}, items=null;
+  for(var i=curPhase;i>=0;i--){ if(book[i]){ items=book[i]; break; } }
+  var who = side==="fr" ? "Imperial Headquarters, Napoleon" : "Allied Headquarters, Kutuzov and the Tsar";
+  var KIND={saw:"Could see",knew:"Knew",didnt:"Did not know",ordered:"Ordered",expected:"Expected"};
+  var h='<p class="cmdwho">'+esc(who)+' <span class="hh">'+esc(PHASES[curPhase].clock)+'</span></p>';
+  if(!items) h+='<p class="muted">Nothing recorded for this hour.</p>';
+  else h+='<dl class="cmdlist">'+items.map(function(it){
+    return '<div class="cmdrow"><dt>'+esc(KIND[it[0]]||it[0])+
+      '</dt><dd>'+esc(it[2])+' <span class="src '+(it[1]==="doc"?"doc":"inf")+'">'+
+      (it[1]==="doc"?"DOCUMENTED":"INFERRED")+'</span></dd></div>';
+  }).join("")+'</dl>';
+  host.innerHTML=h;
+}
+function setCommandView(v){
+  commandView=v;
+  knowKey="";
+  Object.keys(units).forEach(function(k){ units[k].texKey=""; });
+  Object.keys(aggregates).forEach(function(k){ aggregates[k].texKey=""; });
+  document.querySelectorAll(".cmd-btn").forEach(function(b){
+    b.setAttribute("aria-pressed", b.dataset.cv===v ? "true":"false");
+  });
+  document.body.classList.toggle("cmd-on", v!=="none");
+  paintCommand();
+}
+
+/* ============================================================
+   PLAN OVERLAY — intended lines of march, drawn heavy
+   ============================================================ */
+function clearPlan(){
+  if(!planGroup) return;
+  scene.remove(planGroup);
+  disposeGroup(planGroup);
+  planGroup=null;
+}
+/* A staff-map arrow: a tapered ribbon laid on the ground with a broad head,
+   which reads from directly above far better than a tube does. */
+function planRibbon(pts,colour,edge,w0,w1,headW,headL,chevron){
+  var lift=1.9;
+  var curve=new THREE.CatmullRomCurve3(groundPts(pts,lift));
+  function build(scale,col,op,yAdd){
+    var N=56, v=[], idx=[];
+    for(var i=0;i<=N;i++){
+      var t=i/N, pt=curve.getPoint(t), tg=curve.getTangent(t).normalize();
+      var nx=-tg.z, nz=tg.x, L=Math.sqrt(nx*nx+nz*nz)||1; nx/=L; nz/=L;
+      var hw=((w0+(w1-w0)*t)*scale)/2;
+      var ax=pt.x+nx*hw, az=pt.z+nz*hw, bx=pt.x-nx*hw, bz=pt.z-nz*hw;
+      v.push(ax,height(ax,az)+lift+yAdd,az, bx,height(bx,bz)+lift+yAdd,bz);
+    }
+    for(var k=0;k<N;k++){ var o=k*2; idx.push(o,o+1,o+2, o+1,o+3,o+2); }
+    var g=new THREE.BufferGeometry();
+    g.setAttribute("position",new THREE.Float32BufferAttribute(v,3));
+    g.setIndex(idx); g.computeVertexNormals();
+    var m=new THREE.Mesh(g,new THREE.MeshBasicMaterial({color:lin(col).clone().multiplyScalar(0.58),transparent:true,opacity:op*0.78,
+      fog:false,depthWrite:false,depthTest:false,side:THREE.DoubleSide}));
+    m.renderOrder=13; planGroup.add(m);
+
+    /* head */
+    var end=curve.getPoint(1), tg2=curve.getTangent(1).normalize();
+    var nx2=-tg2.z, nz2=tg2.x, L2=Math.sqrt(nx2*nx2+nz2*nz2)||1; nx2/=L2; nz2/=L2;
+    var hw2=(headW*scale)/2, hl=headL*scale;
+    var tipx=end.x+tg2.x*hl, tipz=end.z+tg2.z*hl;
+    var lx=end.x+nx2*hw2, lz=end.z+nz2*hw2;
+    var rx=end.x-nx2*hw2, rz=end.z-nz2*hw2;
+    var hv=[tipx,height(tipx,tipz)+lift+yAdd,tipz,
+            lx,height(lx,lz)+lift+yAdd,lz,
+            rx,height(rx,rz)+lift+yAdd,rz];
+    var hidx=[0,1,2];
+    if(chevron){
+      var bx2=end.x-tg2.x*hl*0.38, bz2=end.z-tg2.z*hl*0.38;
+      hv.push(bx2,height(bx2,bz2)+lift+yAdd,bz2);
+      hidx=[0,1,3, 0,3,2];
+    }
+    var hg=new THREE.BufferGeometry();
+    hg.setAttribute("position",new THREE.Float32BufferAttribute(hv,3));
+    hg.setIndex(hidx); hg.computeVertexNormals();
+    var hm=new THREE.Mesh(hg,new THREE.MeshBasicMaterial({color:lin(col).clone().multiplyScalar(0.58),transparent:true,opacity:op*0.78,
+      fog:false,depthWrite:false,depthTest:false,side:THREE.DoubleSide}));
+    hm.renderOrder=13; planGroup.add(hm);
+  }
+  build(1.34,edge,0.55,-0.06);   /* dark casing so the arrow reads over any ground */
+  build(1.00,colour,0.96,0.0);
+}
+function planStaging(area,colour,edge){
+  var c=W(area.c[0],area.c[1]);
+  var mk=new THREE.Mesh(new THREE.CircleGeometry(1,48),
+    new THREE.MeshBasicMaterial({color:lin(colour).clone().multiplyScalar(0.6),transparent:true,opacity:0.13,
+      fog:false,depthWrite:false,depthTest:false}));
+  mk.rotation.x=-Math.PI/2;
+  mk.position.set(c[0],height(c[0],c[1])+1.2,c[1]);
+  mk.scale.set(area.rx*0.5,area.ry*0.5,1);
+  mk.renderOrder=11; planGroup.add(mk);
+  var pts=[];
+  for(var a=0;a<=64;a++){
+    var th=a/64*Math.PI*2;
+    var x=c[0]+Math.cos(th)*area.rx*0.5, z=c[1]+Math.sin(th)*area.ry*0.5;
+    if(a%2===0||a===64) pts.push(x,height(x,z)+1.4,z);
+  }
+  var g=new THREE.BufferGeometry();
+  g.setAttribute("position",new THREE.Float32BufferAttribute(pts,3));
+  var ln=new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:lin(edge),transparent:true,
+    opacity:0.65,depthTest:false}));
+  ln.renderOrder=12; planGroup.add(ln);
+  planLabel(area.n, new THREE.Vector3(c[0],height(c[0],c[1])+3.2,c[1]), colour, 26, 0.86);
+}
+function planObjective(obj,colour){
+  var c=W(obj.p[0],obj.p[1]);
+  var cv=document.createElement("canvas"); cv.width=cv.height=160;
+  var x=cv.getContext("2d");
+  x.strokeStyle="#"+("000000"+colour.toString(16)).slice(-6);
+  x.lineWidth=11; x.beginPath(); x.arc(80,80,54,0,Math.PI*2); x.stroke();
+  x.lineWidth=9; x.beginPath();
+  x.moveTo(80,12); x.lineTo(80,148); x.moveTo(12,80); x.lineTo(148,80); x.stroke();
+  var m=new THREE.SpriteMaterial({map:ctex(cv),transparent:true,opacity:0.95,depthTest:false,fog:false});
+  var sp=new THREE.Sprite(m);
+  sp.position.set(c[0],height(c[0],c[1])+4.0,c[1]);
+  sp.scale.set(7.2,7.2,1); sp.renderOrder=24; asLabel(sp); planGroup.add(sp);
+  planLabel(obj.n,new THREE.Vector3(c[0],height(c[0],c[1])+8.6,c[1]),colour,30,1);
+}
+function planLabel(text,pos,colour,size,op){
+  var hex="#"+("000000"+colour.toString(16)).slice(-6);
+  var l=makePlainLabel(text,size,hex,mode==="staff");
+  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,
+    opacity:op===undefined?1:op,depthTest:false,fog:false}));
+  sp.position.copy(pos);
+  sp.scale.set((size/8.2)*l.w/l.h,(size/8.2),1);
+  sp.renderOrder=26; asLabel(sp); planGroup.add(sp);
+}
+var planLinks=null;
+function buildPlanLinks(){
+  var sides = planSide==="both" ? ["al","fr"] : [planSide];
+  var n=0;
+  sides.forEach(function(sd){ PLANS[sd].cols.forEach(function(c){ if(c.forms) n+=c.forms.length; }); });
+  if(!n) return;
+  var g=new THREE.BufferGeometry();
+  g.setAttribute("position",new THREE.Float32BufferAttribute(new Float32Array(n*6),3));
+  planLinks=new THREE.LineSegments(g,new THREE.LineDashedMaterial({color:lin(0xE8DCC0),
+    dashSize:2.4,gapSize:2.0,transparent:true,opacity:0.5,depthTest:false}));
+  planLinks.renderOrder=15;
+  planGroup.add(planLinks);
+  planLinks.userData.pairs=[];
+  sides.forEach(function(sd){
+    PLANS[sd].cols.forEach(function(c){
+      (c.forms||[]).forEach(function(fid,ix){
+        planLinks.userData.pairs.push([fid,c.obj,ix===0]);
+      });
+    });
+  });
+}
+function updatePlanLinks(){
+  if(!planLinks||!planSide) return;
+  var arr=planLinks.geometry.attributes.position.array, pairs=planLinks.userData.pairs, k=0, drawn=0;
+  var near=camera.position.distanceTo(orbitTarget)<190;
+  for(var i=0;i<pairs.length;i++){
+    var show = pairs[i][2] || near ||
+               (selection&&selection.kind==="f"&&selection.id===pairs[i][0]);
+    var p=show?posNow(pairs[i][0]):null;
+    if(!p){ arr[k]=arr[k+1]=arr[k+2]=arr[k+3]=arr[k+4]=arr[k+5]=0; k+=6; continue; }
+    var a=W(p[0],p[1]), b=W(pairs[i][1][0],pairs[i][1][1]);
+    arr[k++]=a[0]; arr[k++]=height(a[0],a[1])+2.6; arr[k++]=a[1];
+    arr[k++]=b[0]; arr[k++]=height(b[0],b[1])+2.6; arr[k++]=b[1];
+    drawn++;
+  }
+  planLinks.geometry.attributes.position.needsUpdate=true;
+  planLinks.computeLineDistances();
+  planLinks.visible=drawn>0;
+}
+function setPlan(side){
+  planSide=(planSide===side)?null:side;
+  planLinks=null;
+  clearPlan();
+  if(planSide){
+    planGroup=new THREE.Group(); scene.add(planGroup);
+    var sides = planSide==="both" ? ["al","fr"] : [planSide];
+    sides.forEach(function(sd){
+      var col  = sd==="fr" ? 0x4B8CE0 : 0xE07A2E;
+      var edge = sd==="fr" ? 0x0E2748 : 0x50230A;
+      var chev = (sd==="al");
+      var P=PLANS[sd];
+      (P.staging||[]).forEach(function(a){ planStaging(a,col,edge); });
+      P.cols.forEach(function(c){
+        planRibbon(c.route,col,edge,3.6,6.4,15.0,13.0,chev);
+        var mid=c.route[Math.max(0,Math.floor(c.route.length/2)-1)];
+        var w=W(mid[0],mid[1]);
+        planLabel(c.n.split(" - ")[0],
+          new THREE.Vector3(w[0],height(w[0],w[1])+7.0,w[1]),col,34,1);
+      });
+      (P.objectives||[]).forEach(function(o){ planObjective(o,col); });
+    });
+    buildPlanLinks();
+    if(!freeCam) flyTo(VANTAGE.plan);
+  }
+  document.querySelectorAll(".plan-btn").forEach(function(b){
+    b.setAttribute("aria-pressed", b.dataset.p===planSide ? "true":"false");
+  });
+  if(!chapter) setHighlight(planSide?{}:null);
+  paintPlanText();
+}
+function paintPlanText(){
+  var host=document.getElementById("plantext");
+  if(!host) return;
+  if(!planSide){
+    host.innerHTML='<p class="muted">Choose a plan. The intended lines of march are drawn across the whole field in heavy arrows, independent of the clock, so you can compare what was ordered with what happened.</p>';
+    return;
+  }
+  var sides = planSide==="both" ? ["al","fr"] : [planSide];
+  host.innerHTML = sides.map(function(sd){
+    var P=PLANS[sd];
+    return '<div class="planblock plan-'+sd+'">'+
+      '<h3>'+esc(P.name)+'</h3>'+
+      '<p class="planauth">'+esc(P.author)+'</p>'+
+      '<h4>Intent</h4><p class="prose">'+esc(P.intent)+'</p>'+
+      '<h4>What it assumed</h4><ul class="bul">'+P.assumed.map(function(a){return '<li>'+esc(a)+'</li>';}).join('')+'</ul>'+
+      '<h4>Orders</h4><dl class="kvs">'+P.cols.map(function(c){
+        return '<div class="kv"><dt>'+esc(c.n)+'</dt><dd>'+esc(c.ord)+'</dd></div>'; }).join('')+'</dl>'+
+      '<p class="note">'+esc(P.cost)+'</p></div>';
+  }).join('');
+}
+
+/* ============================================================
+   GUIDED TOUR — eight stops through the existing material
+   ============================================================ */
+function clearOverlays(){
+  if(planSide) setPlan(planSide);
+  if(chapter) setChapter(null);
+}
+function startTour(){
+  closeFirst(null);
+  tourStep=0;
+  hideDispatch=true; syncVis();
+  applyTour();
+}
+function exitTour(){
+  tourStep=-1;
+  var b=document.getElementById("tourbar");
+  if(b) b.hidden=true;
+  clearOverlays();
+  select(null,null);
+  hideDispatch=false; syncVis();
+}
+function tourGo(d){
+  if(tourStep<0) return;
+  var n=tourStep+d;
+  if(n<0) return;
+  if(n>=TOUR.length){ exitTour(); return; }
+  tourStep=n; applyTour();
+}
+function applyTour(){
+  var st=TOUR[tourStep];
+  stopPlay();
+  clearOverlays();
+  if(st.chapter) setChapter(st.chapter);
+  if(st.plan) setPlan(st.plan);
+  setClock(st.t,{force:true,camera:false});
+  freeCam=false; flyTo(st.cam);
+  if(st.feature) select("t",st.feature); else select(null,null);
+  var bar=document.getElementById("tourbar");
+  bar.hidden=false;
+  document.getElementById("tour-n").textContent=(tourStep+1)+" OF "+TOUR.length;
+  document.getElementById("tour-t").textContent=st.n;
+  document.getElementById("tour-x").textContent=st.x;
+  var pv=document.getElementById("tour-prev");
+  pv.disabled=(tourStep===0);
+  pv.style.opacity=tourStep===0?0.4:1;
+  document.getElementById("tour-next").textContent =
+    (tourStep===TOUR.length-1) ? "Finish" : "Next";
+}
+
+/* ---------------- view modes ---------------- */
+function setMode(m){
+  mode=m;
+  var staff=(m==="staff");
+  setGround(goingOn?"going":(staff?"paper":"natural"));
+  setContourStyle(staff);
+  world.dome.visible=!staff;
+  world.trees.visible=!staff;
+  world.conifers.visible=!staff;
+  if(world.scrub) world.scrub.visible=!staff;
+  world.roofs.visible=!staff;
+  world.spires.visible=!staff;
+  renderer.shadowMap.enabled=!staff;
+  world.water.forEach(function(w2){ if(w2.material.opacity!==undefined) w2.material.opacity=staff?1:0.94; });
+
+  var L=LIGHT[staff?"staff":PHASES[curPhase].light];
+  sun.intensity=L.i; sun.color.setHex(L.c);
+  sunDir.set(L.p[0],L.p[1],L.p[2]);
+  hemi.intensity=L.hemi;
+  scene.fog.near=L.fogN; scene.fog.far=L.fogF; scene.fog.color.copy(lin(L.fogC));
+  scene.background.copy(lin(L.bg));
+  _skyNow[0].setHex(L.sky[0]); _skyNow[1].setHex(L.sky[1]); _skyNow[2].setHex(L.sky[2]);
+  paintSky(_skyNow[0],_skyNow[1],_skyNow[2]);
+  refreshEnvironment();
+  if(sunDisc) sunDisc.material.opacity=staff?0:L.disc*0.92;
+  applyGrade(L.grade);
+  var mt=staff?0:PHASES[curPhase].mist;
+  world.mist.children.forEach(function(x){
+    x.material.opacity = x.userData.haze ? mt*0.26 : mt*0.55;
+    x.material.color.copy(lin(L.mistC));
+  });
+  world.mist.visible=!staff && mt>0.012;
+
+  Object.keys(units).forEach(function(id){ units[id].texKey=""; });
+  Object.keys(aggregates).forEach(function(id){ aggregates[id].texKey=""; });
+  featureSprites.forEach(function(o){ o.texKey=""; });
+  refreshAnalysisLabels();
+
+  document.body.classList.toggle("mode-staff",staff);
+  document.querySelectorAll(".mode-btn").forEach(function(b){
+    b.setAttribute("aria-pressed", b.dataset.m===m ? "true":"false");
+  });
+
+  rebuildOverlays(curPhase,true);
+  if(planSide){ var keep=planSide; planSide=null; setPlan(keep); }
+  if(!freeCam) flyTo(staff ? [-27,262,41,-27,0,9] : PHASES[curPhase].cam);
+}
+
+function buildAnalysisLabels(){
+  TERRAIN_LINES.forEach(function(tl){
+    var col={ridge:"#E7BC7C",scarp:"#DA9366",valley:"#93BFD4",defile:"#E88377",dead:"#B4A6D6"}[tl.t];
+    var mat=new THREE.SpriteMaterial({transparent:true,depthTest:false,fog:false});
+    var sp=new THREE.Sprite(mat);
+    sp.position.set(tl._mid[0],tl._mid[1],tl._mid[2]);
+    sp.renderOrder=23; sp.visible=false;
+    asLabel(sp); world.analysis.add(sp);
+    analysisSprites.push({tl:tl,sprite:sp,col:col,texKey:"",world:sp.position.clone()});
+  });
+  refreshAnalysisLabels();
+}
+function refreshAnalysisLabels(){
+  var paper=(mode==="staff");
+  analysisSprites.forEach(function(o){
+    var key=paper?"p":"t";
+    if(o.texKey===key) return;
+    o.texKey=key;
+    var l=makePlainLabel(o.tl.n,30,o.col,paper);
+    if(o.sprite.material.map) o.sprite.material.map.dispose();
+    o.sprite.material.map=ctex(l.canvas);
+    o.sprite.material.needsUpdate=true;
+    o.sprite.userData.ar=l.w/l.h;
+  });
+}
+
+/* ---------------- level of detail and label decluttering ---------------- */
+var _pv=new THREE.Vector3();
+function pxPerWorld(atPos){
+  var hpx=renderer.domElement.clientHeight||window.innerHeight;
+  var d=camera.position.distanceTo(atPos);
+  return 1/(2*d*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))/hpx);
+}
+function rectOf(sp,pad){
+  _pv.copy(sp.position).project(camera);
+  if(_pv.z>1||_pv.z<-1) return null;
+  var k=pxPerWorld(sp.position);
+  var w=sp.scale.x*k, h=sp.scale.y*k;
+  var cx=(_pv.x*0.5+0.5)*window.innerWidth, cy=(-_pv.y*0.5+0.5)*window.innerHeight;
+  pad=pad||0;
+  if(cx<-w||cy<-h||cx>window.innerWidth+w||cy>window.innerHeight+h) return null;
+  return [cx-w/2-pad, cy-h/2-pad, cx+w/2+pad, cy+h/2+pad];
+}
+function overlaps(a,b){ return !(a[2]<b[0]||b[2]<a[0]||a[3]<b[1]||b[3]<a[1]); }
+/* Label placement, in priority order: counters (the order of battle is never hidden), then the
+   moments of the battle (event labels), the plateau reading, arrow and objective labels, formation
+   names, terrain study, place names. A counter, event label or the plateau reading that collides
+   tries a few nearby places before giving way; a counter that moves keeps its stem on its true
+   position. Rectangles are the inked extent, measured in view depth as the renderer draws them.
+   Before, event labels and the plateau reading were never placed at all and counters only
+   reserved space, so they printed through one another. Stage 0 only: the DOM/SVG layer is Stage 2. */
+var LABEL_STATS={shown:0,hidden:0,moved:0,unresolved:0};
+var _cR=new THREE.Vector3(), _cU=new THREE.Vector3(), _lv=new THREE.Vector3(), _lw=new THREE.Vector3();
+var ECH_RANK={army:0,corps:1,div:2,bde:3};
+function labelRect(sp,pos,dx,dy,pad){
+  _lv.copy(pos).applyMatrix4(camera.matrixWorldInverse);
+  if(_lv.z>-camera.near) return null;
+  _lw.copy(pos).project(camera);
+  if(_lw.z>1||Math.abs(_lw.x)>1.1||Math.abs(_lw.y)>1.1) return null;
+  var H0=renderer.domElement.clientHeight||window.innerHeight, W0=renderer.domElement.clientWidth||window.innerWidth;
+  var ppw=H0/(2*(-_lv.z)*Math.tan(THREE.MathUtils.degToRad(camera.fov/2)));
+  var sx=sp.scale.x*ppw, sy=sp.scale.y*ppw, cx=(_lw.x*0.5+0.5)*W0+dx, cy=(-_lw.y*0.5+0.5)*H0+dy;
+  var im=sp.material&&sp.material.map&&sp.material.map.image, b=(im&&im._ink)||[0,0,1,1];
+  pad=pad||0;
+  return {r:[cx-sx/2+b[0]*sx-pad, cy-sy/2+b[1]*sy-pad, cx-sx/2+b[2]*sx+pad, cy-sy/2+b[3]*sy+pad],
+          ppw:ppw, w:(b[2]-b[0])*sx, h:(b[3]-b[1])*sy};
+}
+/* the interface panels lying over the map: a label wholly under one is not seen, so it neither
+   needs nor takes space */
+var _panelSel=[".rail",".dispatch",".legend",".drawer",".timebar","#tourbar","#firstrun","#selchip","#layerpop"];
+function panelCovers(){
+  var R=[];
+  _panelSel.forEach(function(q){ var e=document.querySelector(q); if(!e||e.hidden) return;
+    var r=e.getBoundingClientRect(); if(r.width<2||r.height<2) return;
+    var cs=getComputedStyle(e); if(cs.display==="none"||cs.visibility==="hidden") return;
+    if(e.classList.contains("rail")&&document.body.classList.contains("rail-hidden")) return;
+    if(e.classList.contains("drawer")&&!e.classList.contains("on")) return;
+    R.push([r.left,r.top,r.right,r.bottom]); });
+  return R;
+}
+function declutter(){
+  var taken=[], st={shown:0,hidden:0,moved:0,unresolved:0,shrunk:0};
+  camera.updateMatrixWorld();
+  _cR.setFromMatrixColumn(camera.matrixWorld,0).normalize();
+  _cU.setFromMatrixColumn(camera.matrixWorld,1).normalize();
+  var covers=panelCovers(), VW=renderer.domElement.clientWidth||window.innerWidth, VH=renderer.domElement.clientHeight||window.innerHeight;
+  function free(r){ for(var i=0;i<taken.length;i++) if(overlaps(r,taken[i])) return false; return true; }
+  function underPanel(r){ for(var i=0;i<covers.length;i++){ var c=covers[i]; if(r[0]>=c[0]&&r[1]>=c[1]&&r[2]<=c[2]&&r[3]<=c[3]) return true; } return false; }
+  function inView(r){ return r[0]>=0&&r[1]>=0&&r[2]<=VW&&r[3]<=VH; }
+  function place(sp,anchor,cands,mustShow,shrink){
+    if(!sp||!sp.visible) return false;
+    var s0x=sp.scale.x, s0y=sp.scale.y, scales=shrink?[1,0.8,0.64]:[1];
+    for(var si=0;si<scales.length;si++){
+      sp.scale.set(s0x*scales[si],s0y*scales[si],1);
+      var base=labelRect(sp,anchor,0,0,2);
+      if(!base){ sp.scale.set(s0x,s0y,1); sp.visible=false; return false; }
+      if(!si&&underPanel(base.r)){ sp.position.copy(anchor); return true; }   /* hidden by a panel: no space taken */
+      for(var i=0;i<cands.length;i++){
+        var dx=cands[i][0]*base.w, dy=cands[i][1]*base.h;
+        var r=i?labelRect(sp,anchor,dx,dy,2):base;
+        if(r&&(!i||inView(r.r))&&free(r.r)){
+          taken.push(r.r);
+          sp.position.copy(anchor).addScaledVector(_cR,dx/base.ppw).addScaledVector(_cU,-dy/base.ppw);
+          st.shown++; if(i) st.moved++; if(si) st.shrunk++;
+          return true;
+        }
+      }
+    }
+    sp.scale.set(s0x,s0y,1);
+    var b0=labelRect(sp,anchor,0,0,2);
+    if(mustShow&&b0){ taken.push(b0.r); sp.position.copy(anchor); st.shown++; st.unresolved++; return true; }
+    sp.visible=false; st.hidden++; return false;
+  }
+  var AROUND=[[0,0],[0,-1.08],[0.62,-0.62],[-0.62,-0.62],[1.1,0],[-1.1,0],[0,1.08],[0.62,0.62],[-0.62,0.62],
+              [0,-2.12],[1.1,-1.08],[-1.1,-1.08],[1.1,1.08],[-1.1,1.08],[0,2.12],[2.2,0],[-2.2,0],[0,-3.15],[1.6,-2.12],[-1.6,-2.12]];
+  var NEAR=[[0,0],[0,-1.15],[0,1.15],[0,-2.3],[0.7,0],[-0.7,0],[0,2.3]];
+  var ONLY=[[0,0]];
+  function isSel(kind,id){ return !!(selection&&selection.kind===kind&&selection.id===id); }
+  /* 1. counters */
+  var cs=[];
+  Object.keys(units).forEach(function(id){ var r=units[id]; if(r.sprite.visible&&r.sprite.userData.anchor) cs.push({rec:r,id:id}); });
+  Object.keys(aggregates).forEach(function(id){ var r=aggregates[id]; if(r.sprite.visible&&r.sprite.userData.anchor) cs.push({rec:r,id:id}); });
+  cs.sort(function(a,b){
+    var sa=isSel("f",a.id)?0:1, sb=isSel("f",b.id)?0:1; if(sa!==sb) return sa-sb;
+    var ea=ECH_RANK[FORMATIONS[a.id].ech], eb=ECH_RANK[FORMATIONS[b.id].ech];
+    if(ea!==eb) return (ea===undefined?2:ea)-(eb===undefined?2:eb);
+    return (aggStrength(b.id)||0)-(aggStrength(a.id)||0);
+  });
+  cs.forEach(function(c){
+    var sp=c.rec.sprite;
+    place(sp,sp.userData.anchor,AROUND,true,true);
+    if(c.rec.stem&&c.rec.stem.visible){
+      var sa=c.rec.stem.geometry.attributes.position.array, h=sp.userData.h||0;
+      sa[3]=sp.position.x; sa[4]=sp.position.y-h*0.54; sa[5]=sp.position.z;
+      c.rec.stem.geometry.attributes.position.needsUpdate=true;
+    }
+  });
+  /* 2. the moments of the battle, the selected one and then the most live first */
+  var evs=(eventMarks||[]).filter(function(k){ return k.ls.visible; });
+  evs.sort(function(a,b){ var sa=isSel("e",a.e.id)?0:1, sb=isSel("e",b.e.id)?0:1; if(sa!==sb) return sa-sb;
+    return evWeight(b.e,clock)-evWeight(a.e,clock); });
+  evs.forEach(function(k){ var u=k.ls.userData; if(!u.anchor) u.anchor=k.ls.position.clone(); place(k.ls,u.anchor,NEAR,false); });
+  /* 3. the plateau reading (the same figure is always on the situation line) */
+  if(plateauLabel&&plateauLabel.visible){ var pu=plateauLabel.userData; if(!pu.anchor) pu.anchor=plateauLabel.position.clone(); place(plateauLabel,pu.anchor,NEAR,false); }
+  /* 4 to 7 */
+  overlayLabels.forEach(function(o){ if(!o.userData.anchor) o.userData.anchor=o.position.clone(); place(o,o.userData.anchor,ONLY,false); });
+  Object.keys(units).forEach(function(id){ var l=units[id].nameLabel; if(l&&l.visible) place(l,l.position.clone(),ONLY,false); });
+  analysisSprites.forEach(function(o){ if(o.sprite.visible) place(o.sprite,o.sprite.position.clone(),ONLY,false); });
+  featureSprites.forEach(function(o){ if(o.sprite.visible) place(o.sprite,o.sprite.position.clone(),ONLY,false); });
+  LABEL_STATS=st;
+}
+
+var lodEch="div";
+var smokeT=0;
+var _lastChip=-1;
+var MAJOR_FEATURES={pratzen:1,vinohrady:1,pratzeberg:1,santon:1,zuran:1,goldbach:1,
+  litava:1,austerlitz:1,telnitz:1,sokolnitz:1,augezd:1,satschan:1};
+var _evTicks=[];
+var faceCache={};
+function enemyFacing(id){
+  var key=curPhase+"|"+id;
+  if(faceCache[key]!==undefined) return faceCache[key];
+  var f=FORMATIONS[id], me=posNow(id), r=null;
+  if(me){
+    var best=null, bd=1e9;
+    Object.keys(units).forEach(function(k){
+      var g2=FORMATIONS[k];
+      if(g2.arm==="hq") return;
+      if((g2.nation==="fr")===(f.nation==="fr")) return;
+      var q=posNow(k); if(!q) return;
+      var dd=(q[0]-me[0])*(q[0]-me[0])+(q[1]-me[1])*(q[1]-me[1]);
+      if(dd<bd){ bd=dd; best=q; }
+    });
+    if(best){
+      var a=W(me[0],me[1]), b=W(best[0],best[1]);
+      r=Math.atan2(b[0]-a[0], b[1]-a[1]);
+    }
+  }
+  faceCache[key]=r; return r;
+}
+/* Different arms carry different mass, so they wheel at different rates. */
+var WHEEL={cav:0.085, mixed:0.062, inf:0.050, guard:0.050, art:0.028, hq:0.10};
+/* lay the block's yaw onto the slope, and re-seat its men when it has moved or turned */
+var _up=new THREE.Vector3(0,1,0), _nrm=new THREE.Vector3(), _qt=new THREE.Quaternion(), _qy=new THREE.Quaternion();
+/* Called after poseBlock, once this frame's position, scale, yaw and deployment are known. The
+   men are re-seated whenever anything that moves them in the world has changed - position, tilt,
+   yaw, block scale (highlight dimming, hybrid mode) or deployment - and never otherwise, so an
+   idle block costs nothing. */
+var SEAT_STATS={blocks:0};
+function settleBlock(rec){
+  var b=rec.block, p=b.position, u=b.userData;
+  var e=1.6;
+  var hx=(groundY(p.x+e,p.z)-groundY(p.x-e,p.z))/(2*e);
+  var hz=(groundY(p.x,p.z+e)-groundY(p.x,p.z-e))/(2*e);
+  _nrm.set(-hx,1,-hz).normalize();
+  _qt.setFromUnitVectors(_up,_nrm);
+  _qy.setFromAxisAngle(_up,rec.yaw||0);
+  b.quaternion.copy(_qt).multiply(_qy);
+  if(!u||!u.layout) return;
+  var S=rec.seatSig||(rec.seatSig=new Float64Array(10)), q=b.quaternion, k=b.scale.x;
+  var changed=!rec.seated||
+    Math.abs(S[0]-p.x)>0.004||Math.abs(S[1]-p.y)>0.004||Math.abs(S[2]-p.z)>0.004||
+    Math.abs(S[3]-q.x)>2e-5||Math.abs(S[4]-q.y)>2e-5||Math.abs(S[5]-q.z)>2e-5||Math.abs(S[6]-q.w)>2e-5||
+    Math.abs(S[7]-k)>1e-5||Math.abs(S[8]-u.sw)>0.001||Math.abs(S[9]-u.sd)>0.001;
+  if(changed){
+    u.layout(u.sw,u.sd);
+    S[0]=p.x; S[1]=p.y; S[2]=p.z; S[3]=q.x; S[4]=q.y; S[5]=q.z; S[6]=q.w; S[7]=k; S[8]=u.sw; S[9]=u.sd;
+    rec.seated=true;
+  }
+  if(changed||rec.stdTilt!==u.tilt){ placeStandards(b,u.sw,u.tilt); rec.stdTilt=u.tilt; }
+}
+function poseBlock(rec,id,st){
+  var u=rec.block.userData;
+  if(!u||!u.body) return;
+  var f=rec.f, mr=f.track?marchRate(id,clock):null;
+  var moving=!!(mr&&mr.moving);
+
+  var sh=shapeFor(st);
+  var rate=ease(moving?0.075:0.045);
+  if(Math.abs(sh[0]-u.sw)>0.002||Math.abs(sh[1]-u.sd)>0.002) settling=true;
+  u.sw += (sh[0]-u.sw)*rate;
+  u.sd += (sh[1]-u.sd)*rate;
+  /* column and line are re-layouts of the same men, not a stretched block; the re-seat itself
+     happens in settleBlock, once the frame's scale and yaw are known too */
+  if(u.showBattalions && f.strength && f.track && trackedDescendants(id).length){
+    var kb=Math.round(u.nBat*ownStrengthAt(id,clock)/f.strength);
+    if(kb!==u.shownBat) u.showBattalions(kb);
+  }
+  var lowered = (st==="broken"||st==="captured"||st==="encircled"||st==="repulsed") ? 0.95 : 0;
+  if(Math.abs(lowered-(u.tilt||0))>0.002) settling=true;
+  u.tilt = (u.tilt||0) + (lowered-(u.tilt||0))*ease(0.05);
+
+  if(u.skirmish) u.skirmish.visible = !!SKIRMISH[st] && (!moving || st==="advancing" || st==="pursuing");
+  if(rec.pad){
+    var sc=rec.block.scale.x||1;
+    rec.pad.scale.set((u.W0*u.sw*sc)+4.5,1,(u.D0*u.sd*sc)+4.5);
+    rec.pad.position.set(rec.block.position.x,rec.block.position.y+0.22,rec.block.position.z);
+    rec.pad.rotation.y=rec.yaw||0;
+  }
+  if(u.deployed){                       /* a battery on the move is hitched up */
+    u.deployed.visible=!moving;
+    u.limbered.visible=moving;
+  }
+
+  var want=headingAt(id,clock);
+  if(want===null) want=enemyFacing(id);
+  if(want===null) return;
+  var want0=want;
+  if(LOOSE[st]) want += Math.sin(smokeT*0.5+rec.delay*47)*0.10;   /* a broken body sways: ambient, not settling */
+  if(rec.yaw===undefined) rec.yaw=rec.block.rotation.y||0;
+  var diff=want-rec.yaw, d0=want0-rec.yaw;
+  while(diff>Math.PI) diff-=Math.PI*2;
+  while(diff<-Math.PI) diff+=Math.PI*2;
+  while(d0>Math.PI) d0-=Math.PI*2;
+  while(d0<-Math.PI) d0+=Math.PI*2;
+  if(Math.abs(d0)>(LOOSE[st]?0.13:0.002)) settling=true;
+  rec.yaw += diff*ease(WHEEL[f.arm]||0.05);
+}
+var FIGHTING={attacking:1,engaged:1,charging:1,counterattack:1,repulsed:1,encircled:1,broken:1};
+function updateVisibility(){
+  var dist=camera.position.distanceTo(orbitTarget);
+  var wantCorps = dist>250;
+  var showBde = dist<165;
+  var showSym = layerOn.symbols && mode!=="terrain" && !cleanView;
+  var showBlocks = mode!=="staff";
+  var labels = textOn();
+  lodEch = wantCorps?"corps":"div";
+
+  var hpx=renderer.domElement.clientHeight||window.innerHeight;
+  var tanH=Math.tan(THREE.MathUtils.degToRad(camera.fov/2));
+  var targetPx = mode==="staff"?104:88;
+
+    /* a text sprite sized to a fixed height on screen, whatever the distance */
+  function fitLabel(sp,px,minH){
+    var d=camera.position.distanceTo(sp.position);
+    var h=Math.max(minH,px*(2*d*tanH/hpx));
+    sp.scale.set(h*(sp.userData.ar||6),h,1);
+  }
+  window.__fitLabel=fitLabel;
+  function placeSprite(rec,mapPos,show){
+    if(!mapPos||!show){ rec.sprite.visible=false; rec.stem.visible=false; return; }
+    var w=W(mapPos[0],mapPos[1]);
+    var gy=height(w[0],w[1]);
+    var d=camera.position.distanceTo(new THREE.Vector3(w[0],gy,w[1]));
+    var worldPerPx=2*d*tanH/hpx;
+    var h=targetPx*worldPerPx;
+    rec.sprite.scale.set(h*(SYM_W/SYM_H),h,1);
+    rec.sprite.position.set(w[0],gy+2.2+h*0.62,w[1]);
+    rec.sprite.visible=true;
+    var su=rec.sprite.userData; su.rec=rec; su.h=h; su.anchor=(su.anchor||new THREE.Vector3()).copy(rec.sprite.position);
+    var sp=rec.stem.geometry.attributes.position.array;
+    sp[0]=w[0]; sp[1]=gy+0.3; sp[2]=w[1];
+    sp[3]=w[0]; sp[4]=gy+2.2+h*0.08; sp[5]=w[1];
+    rec.stem.geometry.attributes.position.needsUpdate=true;
+    rec.stem.visible=true;
+  }
+
+  Object.keys(aggregates).forEach(function(id){
+    var rec=aggregates[id];
+    var p=posOf(id,curPhase);
+    var show = showSym && wantCorps && !!p;
+    placeSprite(rec,p,show);
+    if(show) refreshSymbol(rec,curPhase);
+  });
+
+  Object.keys(units).forEach(function(id){
+    var rec=units[id], f=rec.f;
+    var p=posNow(id);
+    if(p){
+      var wq=W(p[0],p[1]);
+      rec.block.position.set(wq[0],groundY(wq[0],wq[1]),wq[1]);   /* settled below, after pose and scale */
+    }
+    /* a parent is only folded away by its children if those children are
+       divisions; a brigade detachment does not replace its parent */
+    var isParent = !!(f.children && f.children.some(function(c){
+      return FORMATIONS[c] && FORMATIONS[c].ech!=="bde"; }));
+    var kn=knowledgeOf(id);
+    if(kn==="unknown") p=null;
+    var show = wantCorps
+      ? (showSym && !!p && !f.parent)
+      : (showSym && !!p && !isParent && (f.ech!=="bde" || showBde));
+    placeSprite(rec,p,show);
+    if(show) refreshSymbol(rec,curPhase);
+
+    rec.block.visible = showBlocks && !!p;
+    var dimmed = highlight && !highlight[id];
+    rec.block.scale.setScalar(1.25*(mode==="hybrid"?0.86:1)*(dimmed?0.80:1));
+    if(rec.block.visible){ poseBlock(rec,id,aggStatus(id,curPhase)); settleBlock(rec); }
+
+    if(rec.nameLabel){
+      var nameRange = f.ech==="bde" ? 170 : (f.arm==="art"||f.arm==="hq") ? 220 : 300;
+      var dHere=camera.position.distanceTo(rec.block.position);
+      var wantName = labels && mode==="terrain" && !!p && dHere>34 &&
+                     (dist<nameRange || (selection&&selection.kind==="f"&&selection.id===id));
+      rec.nameLabel.visible=wantName;
+      if(wantName){
+        rec.nameLabel.position.copy(rec.block.position);
+        rec.nameLabel.position.y+=6.4;
+        fitLabel(rec.nameLabel,22,1.4);
+      }
+    }
+    if(rec.trail){
+      rec.trail.visible = layerOn.trails && !!p && !cleanView && !dimmed;
+      if(rec.trail.visible) updateTrail(rec,id);
+    }
+    if(rec.pad) rec.pad.visible = !!p && rec.block.visible && mode!=="staff";
+    if(rec.dust){
+      var mrv=f.track?marchRate(id,clock):null;
+      var dusty=!!(mrv&&mrv.moving) && (f.arm==="cav"||f.arm==="art"||f.arm==="mixed")
+                && !!p && mode!=="staff" && !dimmed;
+      rec.dust.visible=dusty;
+      if(dusty){
+        var dsc=10+Math.min(9,(f.strength||3000)/700);
+        rec.dust.scale.set(dsc,dsc*0.44,1);
+        var yaw=rec.yaw||0;
+        var dxp=rec.block.position.x - Math.sin(yaw)*dsc*0.42 + Math.sin(smokeT*0.7+rec.delay*23)*0.6,
+            dzp=rec.block.position.z - Math.cos(yaw)*dsc*0.42;
+        rec.dust.position.set(dxp, Math.max(rec.block.position.y+1.5, spriteFloor(dxp,dzp,dsc*0.5)+0.2+dsc*0.13), dzp);
+        var dto=0.34-rec.dust.material.opacity; if(Math.abs(dto)>0.004) settling=true;
+        rec.dust.material.opacity += dto*ease(0.05);
+      } else rec.dust.material.opacity=0;
+    }
+    if(rec.smoke){
+      var stx=aggStatus(id,curPhase);
+      var fighting = stx && FIGHTING[stx];
+      var wantS = fighting && !!p && mode!=="staff" && !dimmed;
+      rec.smoke.visible=wantS;
+      if(wantS){
+        var sc=8+Math.min(10,(f.strength||3000)/850);
+        rec.smoke.scale.set(sc,sc*0.60,1);
+        var drift=Math.sin(smokeT*0.6+rec.delay*31)*0.8;
+        var sxp=rec.block.position.x+drift, szp=rec.block.position.z-1.4;
+        rec.smoke.position.set(sxp, Math.max(rec.block.position.y+2.4+sc*0.14, spriteFloor(sxp,szp,sc*0.5)+0.2+sc*0.18), szp);
+        var sto=0.32-rec.smoke.material.opacity; if(Math.abs(sto)>0.004) settling=true;
+        rec.smoke.material.opacity += sto*ease(0.05);
+      } else rec.smoke.material.opacity=0;
+    }
+  });
+
+  featureSprites.forEach(function(o){
+    var major=MAJOR_FEATURES[o.ft.id] || o.ft.kind==="height" || o.ft.kind==="town";
+    o.sprite.visible = labels && (major || dist<210);
+    if(!o.sprite.visible) return;
+    var d=camera.position.distanceTo(o.world);
+    var worldPerPx=2*d*tanH/hpx;
+    var h=Math.max(2.2, 30*worldPerPx);
+    o.sprite.scale.set(h*(320/72),h,1);
+  });
+
+  world.contours.visible=layerOn.contours && !cleanView;
+  world.marsh.visible=layerOn.contours && !cleanView;
+  world.analysis.visible=layerOn.analysis;
+  analysisSprites.forEach(function(o){
+    var show=layerOn.analysis && labels;
+    o.sprite.visible=show;
+    if(!show) return;
+    var d=camera.position.distanceTo(o.world);
+    var worldPerPx=2*d*tanH/hpx;
+    var h=Math.max(2.4, 32*worldPerPx);
+    o.sprite.scale.set(h*(o.sprite.userData.ar||6),h,1);
+  });
+  updateScaleBar(); updateRose();
+  for(var i=0;i<overlayLabels.length;i++) overlayLabels[i].visible = labels && layerOn.arrows;
+
+  refreshGlyphTextures();
+  applyOverlayOpacity();
+  updateEventLayer();
+  updateSelRing();
+  updatePlanLinks();
+  declutter();
+}
+
+/* ---------------- picking ---------------- */
+var v3=new THREE.Vector3();
+function pickAt(cx,cy){
+  var best=null, bestD=34;
+  function test(pos,kind,id){
+    if(!pos) return;
+    v3.copy(pos).project(camera);
+    if(v3.z>1) return;
+    var sx=(v3.x*0.5+0.5)*window.innerWidth, sy=(-v3.y*0.5+0.5)*window.innerHeight;
+    var d=Math.hypot(sx-cx,sy-cy);
+    if(d<bestD){ bestD=d; best={kind:kind,id:id}; }
+  }
+  Object.keys(units).forEach(function(id){
+    var u=units[id];
+    if(!u.sprite.visible && !u.block.visible) return;
+    var pp=posNow(id); if(!pp) return;
+    var w=W(pp[0],pp[1]);
+    test(new THREE.Vector3(w[0],height(w[0],w[1])+3,w[1]),"f",id);
+    if(u.sprite.visible) test(u.sprite.position,"f",id);
+  });
+  Object.keys(aggregates).forEach(function(id){
+    var a=aggregates[id];
+    if(!a.sprite.visible) return;
+    test(a.sprite.position,"f",id);
+  });
+  if(!best){
+    for(var ei=0;ei<eventMarks.length;ei++){
+      if(eventMarks[ei].sp.visible) test(eventMarks[ei].sp.position,"e",eventMarks[ei].e.id);
+    }
+  }
+  if(!best){
+    analysisSprites.forEach(function(o){
+      if(!o.sprite.visible) return;
+      test(o.sprite.position,"a",o.tl.n);
+    });
+    featureSprites.forEach(function(o){
+      if(!o.sprite.visible) return;
+      test(o.sprite.position,"t",o.ft.id);
+    });
+  }
+  return best;
+}
+function select(kind,id){
+  var prev=selection;
+  if(!prev||prev.kind!==kind||prev.id!==id) dossierExpanded=false;
+  selection=(kind&&id)?{kind:kind,id:id}:null;
+  if(prev&&prev.kind==="f"){ var r=units[prev.id]||aggregates[prev.id]; if(r) r.texKey=""; }
+  if(selection&&selection.kind==="f"){ var r2=units[id]||aggregates[id]; if(r2) r2.texKey=""; }
+  if(!chapter){
+    if(selection&&selection.kind==="f") setHighlight(familyOf(selection.id));
+    else setHighlight(null);
+  }
+  paintDrawer(); paintOOB();
+}
+
+/* ---------------- camera ---------------- */
+/* The eye never enters the ground. Its floor is the highest drawn ground within CAM_R of the eye
+   plus CAM_CLEAR, so the near plane (1 unit) cannot cut into a slope either. Every path that
+   places the camera - orbit, zoom, glides, presets, the first view - goes through clampCamera();
+   a guard before each frame counts anything that did not (CAM.violations). */
+var CAM_CLEAR=1.8, CAM_R=1.6, CAM={clamps:0,violations:0};
+function camGround(x,z){
+  var m=groundY(x,z);
+  for(var k=0;k<8;k++){ var a=k*Math.PI/4; m=Math.max(m,groundY(x+Math.cos(a)*CAM_R,z+Math.sin(a)*CAM_R)); }
+  return (Math.abs(x)<178&&Math.abs(z)<153) ? m : m+1.2;   /* the apron outside the field is coarser */
+}
+function camFloor(x,z){ return camGround(x,z)+CAM_CLEAR; }
+function clampCamera(){
+  var p=camera.position, f=camFloor(p.x,p.z);
+  if(p.y<f){ p.y=f; camera.lookAt(orbitTarget); CAM.clamps++; return true; }
+  return false;
+}
+var _ov=new THREE.Vector3();
+/* orbit placement shared by drag, wheel and the self-test */
+function orbitPlace(){
+  camera.position.copy(orbitTarget).add(_ov.setFromSpherical(sph));
+  if(clampCamera()) sph.setFromVector3(_ov.copy(camera.position).sub(orbitTarget));
+  camera.lookAt(orbitTarget);
+}
+function glide(toPos,toTgt,ms,bulge){
+  freeCam=false;
+  var arc=setupArc(camera.position,orbitTarget,toPos,toTgt);
+  var t0=performance.now(), dur=RM?1:(ms||1500);
+  tween=function(now){
+    var k=Math.min(1,(now-t0)/dur);
+    applyArc(arc,easeInOut(k),bulge);
+    if(k>=1) tween=null;
+  };
+}
+function flyTo(v){
+  glide(new THREE.Vector3(v[0],v[1],v[2]), new THREE.Vector3(v[3],v[4],v[5]), 1600, 0.12);
+}
+var VANTAGE={
+  field:[-195,92,156,-33,4,-2],
+  zuran:[-83,26,-53,9,6,-5],
+  plateau:[23,26,55,-31,10,-13],
+  allied:[135,44,-22,-25,6,12],
+  plan:[-27,272,41,-27,0,9]
+};
+
+/* ---------------- interaction ---------------- */
+function bindCanvas(){
+  var el=renderer.domElement, dragging=false, moved=0, lx=0, ly=0;
+  function syncSph(){ sph.setFromVector3(camera.position.clone().sub(orbitTarget)); }
+  el.addEventListener("pointerdown",function(e){
+    dragging=true; moved=0; lx=e.clientX; ly=e.clientY; syncSph();
+    el.setPointerCapture(e.pointerId);
+  });
+  el.addEventListener("pointermove",function(e){
+    if(!dragging) return;
+    var dx=e.clientX-lx, dy=e.clientY-ly;
+    moved+=Math.abs(dx)+Math.abs(dy);
+    if(moved>4) freeCam=true;
+    sph.theta-=dx*0.005; sph.phi-=dy*0.005;
+    sph.phi=Math.max(0.10,Math.min(Math.PI/2-0.03,sph.phi));
+    lx=e.clientX; ly=e.clientY;
+    orbitPlace();
+  });
+  window.addEventListener("pointerup",function(e){
+    if(dragging&&moved<5){
+      var hit=pickAt(e.clientX,e.clientY);
+      select(hit?hit.kind:null, hit?hit.id:null);
+    }
+    dragging=false;
+  });
+  el.addEventListener("wheel",function(e){
+    e.preventDefault(); freeCam=true; syncSph();
+    sph.radius=Math.max(24,Math.min(620,sph.radius*(1+Math.sign(e.deltaY)*0.09)));
+    orbitPlace();
+  },{passive:false});
+}
+
+/* ---------------- UI ---------------- */
+function el(tag,cls,html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e; }
+function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+function buildUI(){
+  bindCanvas();
+
+  /* timeline */
+  var tl=document.getElementById("phases");
+  PHASES.forEach(function(p,i){
+    var b=el("button","step");
+    b.type="button";
+    b.innerHTML='<time>'+esc(p.clock)+'</time><span>'+esc(p.label)+'</span>';
+    b.addEventListener("click",function(){ stopPlay(); freeCam=false; setPhase(i); });
+    tl.appendChild(b);
+  });
+
+  document.querySelectorAll(".mode-btn").forEach(function(b){
+    b.addEventListener("click",function(){ setMode(b.dataset.m); });
+  });
+
+  /* rail tabs */
+  document.querySelectorAll(".tab-btn").forEach(function(b){
+    b.addEventListener("click",function(){
+      document.querySelectorAll(".tab-btn").forEach(function(o){ o.setAttribute("aria-selected","false"); });
+      b.setAttribute("aria-selected","true");
+      document.querySelectorAll(".tabpane").forEach(function(pane){ pane.hidden = (pane.id!==b.dataset.t); });
+      if(b.dataset.t==="command") paintCommand();
+      if(b.dataset.t==="plans") paintPlanText();
+    });
+  });
+
+  /* the ten moments */
+  var ch=document.getElementById("chapters");
+  ANALYSIS.forEach(function(c){
+    var b=el("button","chap");
+    b.type="button"; b.dataset.c=c.id;
+    b.innerHTML='<em>'+esc(fmtClock(c.t))+'</em><span>'+esc(c.n)+'</span>';
+    b.addEventListener("click",function(){ setChapter(chapter===c.id?null:c.id); });
+    ch.appendChild(b);
+  });
+  paintChapterText();
+
+  document.querySelectorAll(".cmd-btn").forEach(function(b){
+    b.addEventListener("click",function(){ setCommandView(b.dataset.cv); });
+  });
+  document.querySelectorAll(".spd-btn").forEach(function(b){
+    b.addEventListener("click",function(){ setSpeed(+b.dataset.s); });
+  });
+
+  /* scrub rail */
+  (function(){
+    var rail=document.getElementById("timerail"), ticks=document.getElementById("railticks");
+    if(!rail) return;
+    var html="";
+    for(var t=Math.ceil(T_MIN/60)*60; t<=T_MAX; t+=60){
+      var pc=100*(t-T_MIN)/(T_MAX-T_MIN);
+      var h=Math.floor(t/60);
+      var major=(h%2===0);
+      html+='<i class="'+(major?"hr":"")+'" style="left:'+pc+'%"></i>';
+      if(major) html+='<b style="left:'+pc+'%">'+((h<10?"0":"")+h)+'</b>';
+    }
+    EVENTS.forEach(function(e,ix){
+      var w=evWindow(e), mid=(w[0]+w[1])/2;
+      var cls = e.kind==="decision" ? "dec" : e.side;
+      html+='<s class="'+cls+'" data-ev="'+ix+'" title="'+esc(fmtClock(mid)+"  "+e.n)+'" style="left:'+
+        (100*(mid-T_MIN)/(T_MAX-T_MIN))+'%"></s>';
+    });
+    ticks.innerHTML=html;
+    ticks.querySelectorAll("[data-ev]").forEach(function(el){
+      var e=EVENTS[+el.dataset.ev];
+      _evTicks.push({el:el,e:e});
+      el.addEventListener("pointerdown",function(ev){
+        ev.stopPropagation(); stopPlay();
+        var w=evWindow(e);
+        setClock((w[0]+w[1])/2);
+        select("e",e.id);
+      });
+    });
+    var dragging=false;
+    function toClock(clientX){
+      var r=rail.getBoundingClientRect();
+      var u=Math.max(0,Math.min(1,(clientX-r.left)/(r.width||1)));
+      return T_MIN+u*(T_MAX-T_MIN);
+    }
+    rail.addEventListener("pointerdown",function(e){
+      dragging=true; stopPlay(); rail.setPointerCapture(e.pointerId);
+      setClock(toClock(e.clientX));
+    });
+    rail.addEventListener("pointermove",function(e){ if(dragging) setClock(toClock(e.clientX)); });
+    window.addEventListener("pointerup",function(){ dragging=false; });
+    rail.addEventListener("keydown",function(e){
+      if(e.key==="ArrowRight"){ e.preventDefault(); stopPlay(); setClock(clock+15); }
+      if(e.key==="ArrowLeft"){ e.preventDefault(); stopPlay(); setClock(clock-15); }
+    });
+  })();
+  document.querySelectorAll(".van-btn").forEach(function(b){
+    b.addEventListener("click",function(){
+      document.querySelectorAll(".van-btn").forEach(function(o){o.setAttribute("aria-pressed","false");});
+      b.setAttribute("aria-pressed","true");
+      flyTo(VANTAGE[b.dataset.v]);
+    });
+  });
+  document.querySelectorAll(".layer-btn").forEach(function(b){
+    b.addEventListener("click",function(){
+      var k=b.dataset.l, on=b.getAttribute("aria-pressed")==="true";
+      layerOn[k]=!on; b.setAttribute("aria-pressed",String(!on));
+
+    });
+  });
+  document.getElementById("prev").addEventListener("click",function(){ stopPlay(); setClock(clock-10); });
+  document.getElementById("next").addEventListener("click",function(){ stopPlay(); setClock(clock+10); });
+  document.getElementById("prevEv").addEventListener("click",function(){ jumpEvent(-1); });
+  document.getElementById("nextEv").addEventListener("click",function(){ jumpEvent(1); });
+  buildActs();
+  document.getElementById("play").addEventListener("click",togglePlay);
+  document.querySelectorAll(".vm-btn").forEach(function(b){
+    b.addEventListener("click",function(){ setPresentation(b.dataset.vm); });
+  });
+
+  document.getElementById("restore").addEventListener("click",showEverything);
+  document.getElementById("tourbtn").addEventListener("click",function(){
+    if(tourStep>=0) exitTour(); else startTour();
+  });
+  document.getElementById("tour-prev").addEventListener("click",function(){ tourGo(-1); });
+  document.getElementById("tour-next").addEventListener("click",function(){ tourGo(1); });
+  document.getElementById("tour-exit").addEventListener("click",exitTour);
+  paintKey();
+  document.getElementById("fr-close").addEventListener("click",function(){ closeFirst("explore"); });
+  document.getElementById("fr-watch").addEventListener("click",function(){ closeFirst("watch"); });
+  document.getElementById("fr-tour").addEventListener("click",function(){ closeFirst("tour"); });
+  /* anything done outside the card is Explore, in place */
+  window.addEventListener("pointerdown",function(e){
+    if(firstRunOpen && !e.target.closest("#firstrun")) closeFirst(null); },{capture:true});
+  document.getElementById("sc-open").addEventListener("click",function(){ setPresentation("study"); paintDrawer(); });
+  document.getElementById("sc-clear").addEventListener("click",function(){ select(null,null); });
+  document.querySelectorAll(".plan-btn").forEach(function(b){
+    b.addEventListener("click",function(){ setPlan(b.dataset.p); });
+  });
+  paintPlanText();
+  (function(){
+    _tbEl=document.querySelector(".timebar");
+    if(window.ResizeObserver && _tbEl) new ResizeObserver(syncTimebarHeight).observe(_tbEl);
+    window.addEventListener("resize",syncTimebarHeight);
+    syncTimebarHeight();
+  })();
+  if(window.innerWidth<1080) document.body.classList.add("rail-hidden");
+
+  var pop=document.getElementById("layerpop"), popBtn=document.getElementById("layersbtn");
+  function setPop(open){
+    pop.hidden=!open;
+    popBtn.setAttribute("aria-expanded",String(open));
+  }
+  popBtn.addEventListener("click",function(e){ e.stopPropagation(); setPop(pop.hidden); });
+  document.getElementById("layerclose").addEventListener("click",function(){ setPop(false); });
+  pop.addEventListener("click",function(e){ e.stopPropagation(); });
+  document.addEventListener("click",function(){ if(!pop.hidden) setPop(false); });
+  window.__setPop=setPop;
+  document.getElementById("going").addEventListener("click",function(){
+    goingOn=!goingOn;
+    this.setAttribute("aria-pressed",String(goingOn));
+    setGround(goingOn?"going":(mode==="staff"?"paper":"natural"));
+    document.getElementById("goingkey").style.display=goingOn?"block":"none";
+  });
+  document.getElementById("vsclear").addEventListener("click",function(){
+    clearViewshed(); syncViewBadge(); if(selection) paintDrawer();
+  });
+  document.getElementById("drawer-close").addEventListener("click",function(){ select(null,null); });
+  document.getElementById("srcbtn").addEventListener("click",function(){ openSources(); });
+  document.getElementById("modal-close").addEventListener("click",function(){ document.getElementById("modal").classList.remove("on"); });
+
+  window.addEventListener("keydown",function(e){
+    if(firstRunOpen && e.key!=="Escape" && e.key!=="Tab" && e.key!=="Shift" && e.key!=="`" && !(e.target&&e.target.closest&&e.target.closest("#firstrun"))) closeFirst(null);
+    if(e.key==="ArrowRight"){ stopPlay(); setClock(clock+(e.shiftKey?60:10)); }
+    if(e.key==="ArrowLeft"){ stopPlay(); setClock(clock-(e.shiftKey?60:10)); }
+    if(e.key==="."){ jumpEvent(1); }
+    if(e.key==="f"||e.key==="F"){ setFXEnabled(!FX.on); }
+    if(e.key===","){ jumpEvent(-1); }
+    if(e.key==="Escape"){
+      var fr2=document.getElementById("firstrun");
+      if(firstRunOpen){ closeFirst(null); return; }
+      if(!document.getElementById("layerpop").hidden){ window.__setPop(false); return; }
+      if(tourStep>=0){ exitTour(); return; }
+      if(presentation!=="study"||hideDispatch) showEverything();
+      if(chapter) setChapter(null);
+      select(null,null);
+      document.getElementById("modal").classList.remove("on");
+    }
+    if(e.key==="h"||e.key==="H"){ setPresentation(presentation==="map"?"study":"map"); }
+    if(e.key==="d"||e.key==="D"){ setDispatchVisible(hideDispatch); }
+    if(e.key==="u"||e.key==="U"){ setPresentation(presentation==="study"?"watch":"study"); }
+    if(e.key==="c"||e.key==="C"){ var cb=document.querySelector('.layer-btn[data-l="contours"]'); if(cb) cb.click(); }
+    if(e.key==="t"||e.key==="T"){ var ab=document.querySelector('.layer-btn[data-l="analysis"]'); if(ab) ab.click(); }
+    if(e.key===" "){ e.preventDefault(); togglePlay(); }
+    if(e.key==="`"){ devOn=!devOn; _devT=0; paintDevStats(performance.now()); }
+    if(e.key==="1") setPresentation("study");
+    if(e.key==="2") setPresentation("watch");
+    if(e.key==="3") setPresentation("map");
+    if(e.key==="m"||e.key==="M"){
+      setMode(mode==="terrain"?"staff":(mode==="staff"?"hybrid":"terrain"));
+    }
+  });
+  /* render on demand: input asks for frames; a drag only while a button is held */
+  ["pointerdown","pointerup","wheel","keydown","click"].forEach(function(ev){
+    window.addEventListener(ev,function(){ lastInput=performance.now(); requestRender(2); },{capture:true,passive:true}); });
+  window.addEventListener("pointermove",function(e){ if(e.buttons){ lastInput=performance.now(); requestRender(1); } },{capture:true,passive:true});
+  window.addEventListener("resize",function(){
+    requestRender(3);
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+    sizeFX();
+  });
+  buildOOB();
+}
+
+/* ---- one colour key ----
+   The legend and the first-run card are both written from this table, and the table reads the
+   same colours that draw the counters, figures and arrows (NATION, SIDE_COL), so the key a
+   visitor is told and the key on screen cannot drift apart. The larger encoding problems
+   (status and claim colours reusing the side hues) are Stage 1. */
+function hexOf(n){ return "#"+("000000"+n.toString(16)).slice(-6).toUpperCase(); }
+var COLOUR_KEY={
+  fr:{word:"blue", hex:NATION.fr.fill}, ru:{word:"green", hex:NATION.ru.fill}, at:{word:"white", hex:NATION.at.fill},
+  "arrow-fr":{word:"blue", hex:hexOf(SIDE_COL.fr.attack)}, "arrow-al":{word:"amber", hex:hexOf(SIDE_COL.al.attack)}
+};
+function paintKey(){
+  document.querySelectorAll(".legend [data-key]").forEach(function(e){
+    var k=COLOUR_KEY[e.dataset.key]; if(k) e.style.background=k.hex; });
+  var p=document.getElementById("fr-key"); if(!p) return;
+  var K=COLOUR_KEY;
+  function sw(k,cls){ return '<i class="'+(cls||"key-sw")+'" data-key="'+k+'" style="background:'+K[k].hex+'" aria-hidden="true"></i>'; }
+  function cap(w){ return w.charAt(0).toUpperCase()+w.slice(1); }
+  p.innerHTML=sw("fr")+cap(K.fr.word)+" is the French army. The Allies are "+sw("ru")+K.ru.word+" for Russia and "+
+    sw("at")+K.at.word+" for Austria, and their movement arrows are drawn in "+sw("arrow-al","key-ar")+K["arrow-al"].word+
+    ". The high ground in the centre is the Pratzen plateau, and it decides the battle.";
+}
+/* ---- the first view ----
+   The whole field from above (the Overview vantage) at 04:00, the first-run card alone near the
+   foot of the map, the dispatch and legend held back until the visitor chooses a way in. Any
+   click or key outside the card counts as Explore, without moving the camera. */
+var firstRunOpen=false;
+function openFirstRun(){
+  var fr=document.getElementById("firstrun"); if(!fr||fr.hidden) return;
+  firstRunOpen=true;
+  document.body.classList.add("firstrun-on");
+  var v=VANTAGE.plan;
+  camArc=null;                                  /* the start-up phase transition keeps its light, not its camera */
+  camera.position.set(v[0],v[1],v[2]); orbitTarget.set(v[3],v[4],v[5]); camera.lookAt(orbitTarget);
+  clampCamera();
+  document.querySelectorAll(".van-btn").forEach(function(b){ b.setAttribute("aria-pressed",b.dataset.v==="plan"?"true":"false"); });
+  requestRender(3);
+}
+function closeFirst(how){
+  if(!firstRunOpen) return;
+  firstRunOpen=false;
+  var fr=document.getElementById("firstrun"); if(fr) fr.hidden=true;
+  document.body.classList.remove("firstrun-on");
+  if(how==="tour") startTour();
+  else if(how==="watch"){ setPresentation("watch"); setPhase(0); if(!playing) togglePlay(); }
+  else if(how==="explore") setPhase(0);
+  syncSelChip(); requestRender(3);
+}
+/* ---- the selection chip ----
+   Whenever something is selected but its dossier is not on screen (Watch, the clean Map view),
+   this says what is selected, why the rest is dimmed, and offers the dossier or a way out. */
+function drawerShown(){ var d=document.getElementById("drawer"); return !!d&&d.classList.contains("on")&&getComputedStyle(d).display!=="none"; }
+function syncSelChip(){
+  var chip=document.getElementById("selchip"); if(!chip) return;
+  var show=!!selection && !drawerShown() && !firstRunOpen;
+  chip.hidden=!show;
+  if(!show) return;
+  var k="Selected", n="", st="";
+  if(selection.kind==="f"&&FORMATIONS[selection.id]){
+    n=FORMATIONS[selection.id].name; var s1=aggStatus(selection.id,curPhase); st=(s1&&STATUS[s1])?STATUS[s1].label:"";
+    if(highlight) k="Selected, with its chain of command";
+  } else if(selection.kind==="e"){ k="Event"; EVENTS.forEach(function(e){ if(e.id===selection.id) n=e.n; }); }
+  else if(selection.kind==="t"){ k="Place"; FEATURES.forEach(function(x){ if(x.id===selection.id) n=x.name; }); }
+  else { k="Terrain"; n=selection.id; }
+  chip.querySelector(".sc-k").textContent=k;
+  chip.querySelector(".sc-n").textContent=n;
+  chip.querySelector(".sc-s").textContent=st;
+}
+function shortCommander(f){
+  var c=f.commander||"";
+  c=c.replace(/^(Marshal|Gen\. de division|Gen\.|General|Lt\.-Gen\.|Maj\.-Gen\.|FML|Feldmarschall-Leutnant|Emperor|Grand Duke)\s+/,"");
+  var cut=c.indexOf(";"); if(cut>0) c=c.slice(0,cut);
+  return c.length>34 ? c.slice(0,33)+"\u2026" : c;
+}
+function buildOOB(){
+  var host=document.getElementById("oob");
+  host.innerHTML="";
+  [["French army — Grande Armee",["gqg","c_iv","c_iii","c_v","c_cav","c_i","c_gd","c_gren"],"fr"],
+   ["Allied army — Russia and Austria",["ahq","buxhowden","col4","lich","bag","constantine"],"al"]]
+  .forEach(function(grp){
+    var h=el("div","oob-head",esc(grp[0]));
+    host.appendChild(h);
+    grp[1].forEach(function(id){
+      var f=FORMATIONS[id];
+      var row=el("button","oob-row");
+      row.type="button"; row.dataset.id=id;
+      row.innerHTML='<span class="oob-dot" style="background:'+NATION[f.nation].fill+'"></span>'+
+        '<span class="oob-name">'+esc(f.name)+'<em>'+esc(shortCommander(f))+'</em></span>'+
+        '<span class="oob-str">'+(aggStrength(id)?aggStrength(id).toLocaleString():"—")+'</span>';
+      row.addEventListener("click",function(){ select("f",id); focusOn(id); });
+      host.appendChild(row);
+      if(f.children) f.children.forEach(function(cid){
+        var cf=FORMATIONS[cid];
+        var r2=el("button","oob-row sub");
+        r2.type="button"; r2.dataset.id=cid;
+        r2.innerHTML='<span class="oob-name">'+esc(cf.name)+'<em>'+esc(shortCommander(cf))+'</em></span>'+
+          '<span class="oob-str">'+(cf.strength?cf.strength.toLocaleString():"—")+'</span>';
+        r2.addEventListener("click",function(){ select("f",cid); focusOn(cid); });
+        host.appendChild(r2);
+        if(cf.children) cf.children.forEach(function(gid){
+          var gf=FORMATIONS[gid];
+          var r3=el("button","oob-row sub2");
+          r3.type="button"; r3.dataset.id=gid;
+          r3.innerHTML='<span class="oob-name">'+esc(gf.name)+'</span>'+
+            '<span class="oob-str">'+(gf.strength?gf.strength.toLocaleString():"—")+'</span>';
+          r3.addEventListener("click",function(){ select("f",gid); focusOn(gid); });
+          host.appendChild(r3);
+        });
+      });
+    });
+  });
+  /* orphan leaves that hang off a leaf parent (Kamensky) */
+  paintOOB();
+}
+function paintOOB(){
+  document.querySelectorAll(".oob-row").forEach(function(r){
+    var id=r.dataset.id;
+    r.classList.toggle("off", !posNow(id));
+    r.classList.toggle("sel", !!(selection&&selection.kind==="f"&&selection.id===id));
+    r.classList.toggle("kin", !!(highlight && highlight[id] && !(selection&&selection.id===id)));
+  });
+  paintCommand();
+}
+function centreOnMap(mp,radius){
+  var w=W(mp[0],mp[1]), y=height(w[0],w[1]);
+  var tgt=new THREE.Vector3(w[0],y,w[1]);
+  var pos=tgt.clone().add(new THREE.Vector3(-0.55,0.62,0.56).normalize().multiplyScalar(radius||86));
+  glide(pos,tgt,1500,0.10);
+}
+function focusOn(id){
+  var p=posOf(id,curPhase); if(!p) return;
+  centreOnMap(p,86);
+}
+
+var _sitKey="", _plLastVal=-1, _plLastT=0;
+var SEP_NOTE="Derived from the plotted formations: a French formation stands across the line joining the Allied groups north and south of the plateau. A spatial reading, not a casualty figure.";
+var FLAT_NOTE="The reconstruction plots formations, not losses. A holding that does not change does not mean the fighting there has stopped.";
+function paintSituation(){
+  var host=document.getElementById("situation");
+  if(!host) return;
+  var live=liveEvents(clock), top=live.length?live[0].e:null;
+  var act=actOf(curPhase);
+  var onH=plateauStrength("al"), cut=centreSeparation();
+  if(onH!==_plLastVal){ _plLastVal=onH; _plLastT=clock; }
+  var flatFor=clock-_plLastT;
+  var key=[act.id,curPhase,top?top.id:"-",Math.round(onH/1000),cut?1:0,
+           flatFor>=60?1:0,playing?1:0].join("|");
+  if(key===_sitKey) return;
+  _sitKey=key;
+  var h='<span class="act">'+esc(act.n.toUpperCase())+'</span>';
+  h+='<span class="sep">&middot;</span><span>'+esc(PHASES[curPhase].title)+'</span>';
+  if(top){
+    h+='<span class="sep">&middot;</span><span class="ev">'+esc(top.n)+'</span>';
+  }
+  if(curPhase<=6 && onH>0){
+    h+='<span class="sep">&middot;</span><span class="der" title="'+esc(FLAT_NOTE)+'">'
+      + '<small>derived</small> on the heights: Allied &asymp; '+onH.toLocaleString()
+      + (flatFor>=60?' <em>plotted strength unchanged</em>':'')+'</span>';
+  }
+  if(cut) h+='<span class="sep">&middot;</span><span class="cut" title="'+esc(SEP_NOTE)+
+             '"><small>derived</small> centre separation detected</span>';
+  var why = top ? top.why : act.line;
+  h+='<span class="why">'+esc(why)+'</span>';
+  h+='<button id="sit-close" aria-label="Hide this line" title="Hide this line">&times;</button>';
+  host.innerHTML=h;
+  var cb=document.getElementById("sit-close");
+  if(cb) cb.addEventListener("click",function(){
+    sitOff=true; document.body.classList.add("sit-off"); syncTimebarHeight();
+  });
+}
+function buildActs(){
+  var host=document.getElementById("acts");
+  if(!host) return;
+  host.innerHTML="";
+  ACTS.forEach(function(a){
+    var b=el("button","act-btn");
+    b.type="button"; b.dataset.a=a.id;
+    b.textContent=a.n;
+    b.title=a.line;
+    b.addEventListener("click",function(){ stopPlay(); setPhase(a.phases[0]); });
+    host.appendChild(b);
+  });
+}
+function paintActs(){
+  var cur=actOf(curPhase);
+  document.querySelectorAll(".act-btn").forEach(function(b){
+    b.setAttribute("aria-current", b.dataset.a===cur.id ? "true":"false");
+  });
+}
+/* jump between the moments that matter, not between arbitrary minutes */
+function eventTimes(){
+  return EVENTS.map(function(e){ var w=evWindow(e); return (w[0]+w[1])/2; })
+               .sort(function(a,b){ return a-b; });
+}
+var _pv2=new THREE.Vector3();
+function onScreen(mp,margin){
+  var w=W(mp[0],mp[1]);
+  _pv2.set(w[0],height(w[0],w[1])+3,w[1]).project(camera);
+  if(_pv2.z>1) return false;
+  margin=(margin===undefined)?0.16:margin;
+  return Math.abs(_pv2.x)<1-margin && Math.abs(_pv2.y)<1-margin;
+}
+function goToEventAt(t){
+  /* the clock moves; the camera only follows if the moment is off screen */
+  setClock(t,{camera:false});
+  var best=null,bw=0;
+  liveEvents(t).forEach(function(x){ if(x.w>bw){ bw=x.w; best=x.e; } });
+  if(best && !onScreen(best.p)) centreOnMap(best.p,112);
+}
+function jumpEvent(dir){
+  stopPlay();
+  var ts=eventTimes(), t=clock;
+  if(dir>0){
+    for(var i=0;i<ts.length;i++) if(ts[i]>t+1.5){ goToEventAt(ts[i]); return; }
+    goToEventAt(T_MAX);
+  } else {
+    for(var j=ts.length-1;j>=0;j--) if(ts[j]<t-1.5){ goToEventAt(ts[j]); return; }
+    goToEventAt(T_MIN);
+  }
+}
+function paintTimeline(){
+  document.querySelectorAll("#phases .step").forEach(function(b,i){
+    b.setAttribute("aria-current", i===curPhase?"true":"false");
+  });
+  if(_lastChip!==curPhase){
+    _lastChip=curPhase;
+    var chips=document.querySelectorAll("#phases .step");
+    if(chips[curPhase] && chips[curPhase].scrollIntoView){
+      try{ chips[curPhase].scrollIntoView({inline:"center",block:"nearest",behavior:RM?"auto":"smooth"}); }
+      catch(err){ chips[curPhase].scrollIntoView(false); }
+    }
+  }
+  paintSituation();
+  paintActs();
+  var r=document.getElementById("clockread");
+  if(r) r.textContent=fmtClock(clock);
+  for(var q=0;q<_evTicks.length;q++){
+    _evTicks[q].el.classList.toggle("on", evWeight(_evTicks[q].e,clock)>0.5);
+  }
+  var head=document.getElementById("playhead");
+  if(head) head.style.left=(100*(clock-T_MIN)/(T_MAX-T_MIN))+"%";
+}
+function paintChanges(phIdx){
+  var host=document.getElementById("d-changes");
+  if(!host) return;
+  var items=[];
+  Object.keys(FORMATIONS).forEach(function(id){
+    var f=FORMATIONS[id];
+    var e=f.track && f.track[phIdx];
+    if(!e) return;
+    var txt=e.act || (e.st&&STATUS[e.st]?FORMATIONS[id].name+" "+STATUS[e.st].label.toLowerCase():null);
+    if(!txt) return;
+    items.push({id:id,txt:txt,rank:e.act?0:1});
+  });
+  if(!items.length){ host.innerHTML=""; return; }
+  items.sort(function(a,b){ return a.rank-b.rank; });
+  items=items.slice(0,7);
+  host.innerHTML='<h4>WHAT CHANGED AT '+esc(PHASES[phIdx].clock.split(" ")[0])+'</h4><ul>'+
+    items.map(function(it){
+      return '<li><i style="background:'+NATION[FORMATIONS[it.id].nation].fill+'"></i>'+
+             '<span>'+esc(it.txt)+'</span></li>';
+    }).join("")+'</ul>';
+}
+function paintDispatch(ph){
+  document.getElementById("d-clock").textContent=ph.clock;
+  document.getElementById("d-title").textContent=ph.title;
+  document.getElementById("d-lede").textContent=ph.lede;
+  var ev=document.getElementById("d-events");
+  ev.innerHTML="";
+  (ph.events||[]).forEach(function(e2){
+    var li=el("li",null,'<b>'+esc(e2[0])+'</b><span>'+esc(e2[1])+'</span>');
+    ev.appendChild(li);
+  });
+  paintChanges(ph.id);
+}
+
+var CONF_INTERP="The formation is between two plotted anchors: this position is interpolated, and graded no better than the weaker anchor.";
+var CONF_TEXT={A:"Position documented in the sources.",
+               B:"Sector documented; the frontage shown is an approximation.",
+               C:"Reconstructed from the narrative — treat as indicative only."};
+
+function paintDrawer(){ paintDrawerBody(); syncSelChip(); }
+function paintDrawerBody(){
+  var dr=document.getElementById("drawer");
+  if(!selection){ dr.classList.remove("on"); document.body.classList.remove("drawer-open"); return; }
+  dr.classList.add("on");
+  document.body.classList.add("drawer-open");
+  var body=document.getElementById("drawer-body");
+  body.innerHTML="";
+  if(selection.kind==="f") body.appendChild(dossierExpanded?dossierFormation(selection.id):compactCard(selection.id));
+  else if(selection.kind==="e") body.appendChild(dossierEvent(selection.id));
+  else if(selection.kind==="a") body.appendChild(dossierAnalysis(selection.id));
+  else body.appendChild(dossierFeature(selection.id));
+}
+
+function row(k,v){ return '<div class="kv"><dt>'+esc(k)+'</dt><dd>'+v+'</dd></div>'; }
+
+function outcomeOf(id){
+  var f=FORMATIONS[id];
+  if(!f.track) return null;
+  var ks=Object.keys(f.track).map(Number).sort(function(a,b){return b-a;});
+  for(var i=0;i<ks.length;i++){
+    var e=f.track[ks[i]];
+    if(e.act) return {ph:ks[i],act:e.act,st:e.st};
+    if(e.p===null) return {ph:ks[i],act:"No longer on the field as a formation.",st:e.st};
+  }
+  return null;
+}
+function claimOf(id,cf){
+  var f=FORMATIONS[id];
+  var explicit=null;
+  if(f.track){
+    for(var i=0;i<=curPhase;i++){ var e=f.track[i]; if(e&&e.claim) explicit=e.claim; }
+  }
+  return explicit || CLAIM_FROM_CONF[cf] || "est";
+}
+var dossierExpanded=false;
+function compactCard(id){
+  var f=FORMATIONS[id];
+  var st=aggStatus(id,curPhase), cf=aggConf(id,curPhase), cl=claimOf(id,cf);
+  var s2=f.track?stateAt(id,curPhase):null;
+  var pos=posNow(id), nat=NATION[f.nation];
+  var wrap=el("div","dossier card-compact");
+  var head=el("div","dh");
+  head.innerHTML='<div class="dh-bar" style="background:'+nat.fill+'"></div><div class="dh-tx">'+
+    '<p class="dh-sub">'+esc(f.desig||"")+' &middot; '+esc(nat.name)+'</p>'+
+    '<h2>'+esc(f.name)+'</h2><p class="dh-cmd">'+esc(f.commander||"")+'</p></div>';
+  wrap.appendChild(head);
+  var pills='';
+  if(st) pills+='<span class="pill" style="background:'+TONE[STATUS[st].tone]+'">'+esc(STATUS[st].label)+'</span>';
+  pills+='<span class="pill claim-'+cl+'">'+esc(CLAIM[cl].label)+'</span>';
+  pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
+  wrap.appendChild(el("div","pillrow",pills));
+  var str=f.strength||aggStrength(id);
+  var body='';
+  if(f.army) body+=row("Army total", esc(f.army.men)+", "+f.army.guns+" guns <span class=\"hh\">("+esc(f.army.src)+")</span>");
+  else if(f.strengthRange) body+=row("Strength","&asymp; "+f.strengthRange[0].toLocaleString()+"&ndash;"+f.strengthRange[1].toLocaleString()+" men <span class=\"hh\">(working figure "+str.toLocaleString()+")</span>"+(f.guns?", "+f.guns+" guns":""));
+  else if(str) body+=row("Strength","&asymp; "+str.toLocaleString()+" men"+(f.guns?", "+f.guns+" guns":""));
+  if(f.parent){
+    var pf=FORMATIONS[f.parent];
+    body+=row("Under", esc(shortCommander(pf))+" &middot; "+esc(pf.name));
+  }
+  if(s2&&s2.act) body+=row("Doing now", esc(s2.act));
+  if(s2&&s2.obj) body+=row("Objective", esc(s2.obj));
+  body+=row("Where", pos? esc(nearestFeature(pos)) : "Not on the field at this hour");
+  wrap.appendChild(el("dl","kvs",body));
+  var mb=el("button","more-btn","Full dossier: role, movement, sources");
+  mb.addEventListener("click",function(){ dossierExpanded=true; paintDrawer(); });
+  wrap.appendChild(mb);
+  return wrap;
+}
+function dossierFormation(id){
+  var f=FORMATIONS[id];
+  var isAgg=!f.track;
+  var s=f.track?stateAt(id,curPhase):null;
+  var st=aggStatus(id,curPhase), cf=aggConf(id,curPhase);
+  var pos=posNow(id);
+  var wrap=el("div","dossier");
+  var nat=NATION[f.nation];
+
+  var head=el("div","dh");
+  head.innerHTML=
+    '<div class="dh-bar" style="background:'+nat.fill+'"></div>'+
+    '<div class="dh-tx"><p class="dh-sub">'+esc(f.desig||"")+' &middot; '+esc(nat.name)+'</p>'+
+    '<h2>'+esc(f.name)+'</h2>'+
+    '<p class="dh-cmd">'+esc(f.commander||"")+'</p></div>';
+  wrap.appendChild(head);
+
+  var pills='';
+  if(st) pills+='<span class="pill" style="background:'+TONE[STATUS[st].tone]+'">'+esc(STATUS[st].label)+'</span>';
+  var cl=claimOf(id,cf);
+  pills+='<span class="pill claim-'+cl+'">'+esc(CLAIM[cl].label)+'</span>';
+  pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
+  if(commandView!=="none"){
+    var kn=knowledgeOf(id);
+    var KL={own:"Own troops",seen:"In sight",uncertain:"Reported only",unknown:"Not known"};
+    if(KL[kn]) pills+='<span class="pill ghost">'+esc(KL[kn])+'</span>';
+  }
+  wrap.appendChild(el("div","pillrow",pills));
+
+  /* WHO */
+  var who=row("Commander", esc(f.commander||"—"));
+  if(f.staff) who+=row("Composition", esc(f.staff));
+  if(f.parent) who+=row("Higher formation",
+    '<button class="linkb" data-goto="'+esc(f.parent)+'">'+esc(FORMATIONS[f.parent].name)+'</button>');
+  who+=row("Arm", esc({inf:"Infantry",cav:"Cavalry",art:"Artillery",mixed:"Infantry and cavalry",
+                       hq:"Headquarters",guard:"Guard infantry"}[f.arm]||f.arm));
+  who+=row("Echelon", esc({army:"Army / headquarters",corps:"Corps or column",div:"Division",bde:"Brigade or detachment"}[f.ech]||f.ech));
+  wrap.appendChild(sect("Who",who,true,"record"));
+
+  /* HOW MANY */
+  var str=f.strength||aggStrength(id);
+  var many = str ? row("Approximate strength","&asymp; "+str.toLocaleString()+" men") : row("Strength","Not recorded");
+  if(f.guns) many+=row("Guns", esc(String(f.guns)));
+  if(f.strengthNote) many+=row("On the figures", esc(f.strengthNote));
+  wrap.appendChild(sect("How many",many,true,"record"));
+
+  /* WHERE, and how fast it is moving */
+  var absent = f.track ? (notYetAt(id,clock) ? "Not yet on the field in this reconstruction"
+                                             : "No longer on the field") : "\u2014";
+  var whr=row("Position at "+esc(fmtClock(clock)), pos? esc(nearestFeature(pos)) : esc(absent));
+  var mr=f.track?marchRate(id,clock):null;
+  if(mr){
+    whr+=row(mr.moving?"Marching":"Next move",
+      mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h"+
+      (mr.ice?' <span class="hh">over the frozen mere</span>':''));
+  }
+  wrap.appendChild(sect("Where",whr,true,"recon"));
+
+  /* WHEN and WHAT */
+  if(f.track){
+    var prev=curPhase>0?stateAt(id,curPhase-1):null;
+    var nx=nextChange(id,curPhase);
+    var h='<ol class="tl">';
+    h+='<li class="past"><b>'+(prev&&prev.act?esc(PHASES[Math.max(0,curPhase-1)].clock):"—")+'</b><span>'+
+        (prev&&prev.act?esc(prev.act):"No earlier action recorded.")+'</span></li>';
+    h+='<li class="now"><b>'+esc(PHASES[curPhase].clock)+'</b><span>'+
+        (s&&s.act?esc(s.act):"Position unchanged.")+
+        (s&&s.act&&s.actPhase<curPhase?' <i>(continuing from '+esc(PHASES[s.actPhase].clock)+')</i>':'')+'</span></li>';
+    h+='<li class="next"><b>'+(nx?esc(PHASES[nx.i].clock):"—")+'</b><span>'+
+        (nx?esc(nx.act):"No further change recorded in this reconstruction.")+'</span></li>';
+    h+='</ol>';
+    wrap.appendChild(sect("What it was doing",h,false,"recon"));
+  }
+
+  /* WHY */
+  var why='';
+  if(s&&s.obj) why+=row("Objective", esc(s.obj));
+  if(f.role) why+=row("Role in the battle", esc(f.role));
+  if(why) wrap.appendChild(sect("Why it was there",why,true,"record"));
+
+  /* the event it is part of at this moment */
+  var mine=liveEvents(clock).filter(function(x){ return x.e.forms.indexOf(id)>=0; });
+  if(mine.length){
+    var se=el("div","sect");
+    se.innerHTML='<h3>Historical event</h3>';
+    var ule=el("ul","links");
+    mine.slice(0,3).forEach(function(x){
+      var li=el("li");
+      var b=el("button","linkb",esc(x.e.n));
+      b.addEventListener("click",function(){ select("e",x.e.id); });
+      li.appendChild(b); ule.appendChild(li);
+    });
+    se.appendChild(ule); wrap.appendChild(se);
+  }
+
+  /* OUTCOME */
+  var oc=f.track?outcomeOf(id):null;
+  if(oc) wrap.appendChild(sect("What became of it",
+    '<p class="prose">'+esc(oc.act)+'</p><p class="hh">Last recorded at '+esc(PHASES[oc.ph].clock)+'</p>',false));
+
+  /* subordinates */
+  if(f.children&&f.children.length){
+    var ul=el("ul","links");
+    f.children.forEach(function(k){
+      var li=el("li");
+      var b=el("button","linkb",esc(FORMATIONS[k].name));
+      b.addEventListener("click",function(){ select("f",k); focusOn(k); });
+      li.appendChild(b); ul.appendChild(li);
+    });
+    var sc=sect("Subordinate formations","",false);
+    sc.appendChild(ul);
+    wrap.appendChild(sc);
+  }
+
+  if(f.note) wrap.appendChild(el("p","note",esc(f.note)));
+  wrap.appendChild(el("p","conf",esc(CLAIM[cl].note)+" "+esc(CONF_TEXT[cf]||"")+(aggInterp(id,curPhase)?" "+esc(CONF_INTERP):"")));
+
+  var act=el("div","dact");
+  var btn=el("button","t","Centre the map here");
+  btn.addEventListener("click",function(){ focusOn(id); });
+  act.appendChild(btn);
+  wrap.appendChild(act);
+
+  wrap.querySelectorAll("[data-goto]").forEach(function(b){
+    b.addEventListener("click",function(){ select("f",b.dataset.goto); focusOn(b.dataset.goto); });
+  });
+  return wrap;
+}
+var LAYER_TAG={record:"record",recon:"reconstruction",derived:"derived"};
+function sect(title,html,isDl,layer){
+  var d=el("div","sect");
+  d.innerHTML='<h3>'+esc(title)+(layer?' <span class="ltag '+layer+'">'+esc(LAYER_TAG[layer])+'</span>':'')+'</h3>'+
+    (isDl?'<dl class="kvs">'+html+'</dl>':html);
+  return d;
+}
+function nextChange(id,ph){
+  var f=FORMATIONS[id]; if(!f.track) return null;
+  for(var i=ph+1;i<PHASES.length;i++){
+    if(f.track[i]&&f.track[i].act) return {i:i,act:f.track[i].act};
+    if(f.track[i]&&f.track[i].p===null) return {i:i,act:"No longer on the field as a formation."};
+  }
+  return null;
+}
+function nearestFeature(p){
+  var best=null,bd=1e9;
+  FEATURES.forEach(function(ft){
+    var d=Math.hypot(ft.p[0]-p[0],ft.p[1]-p[1]);
+    if(d<bd){ bd=d; best=ft; }
+  });
+  if(!best) return "—";
+  var km=GEOREF.kmBetween(best.p,p);
+  if(km<0.5) return best.name;
+  return km.toFixed(1)+" km "+GEOREF.compass8(GEOREF.bearingDeg(best.p,p))+" of "+best.name;   /* true bearing, not map axes */
+}
+
+/* features that are surveyed places in GEOREF.GT */
+var FEATURE_GT={pratzeberg:"pratzeberg",vinohrady:"vinohrady",santon:"santon",zuran:"zuran",telnitz:"telnitz",
+  sokolnitz:"sokolnitz",kobelnitz:"kobelnitz",pratzenv:"pratzen",puntowitz:"puntowitz",girzikowitz:"girzikowitz",
+  blasowitz:"blasowitz",augezd:"augezd",krzenowitz:"krzenowitz",austerlitz:"austerlitz",chapel:"chapel",posthouse:"posthouse"};
+function dossierFeature(id){
+  var ft=null; FEATURES.forEach(function(x){ if(x.id===id) ft=x; });
+  var wrap=el("div","dossier");
+  if(!ft) return wrap;
+  var kindName={height:"High ground",water:"Watercourse or mere",village:"Village",town:"Town",road:"Road"}[ft.kind]||ft.kind;
+  var head=el("div","dh");
+  head.innerHTML='<div class="dh-bar" style="background:#8A8570"></div><div class="dh-tx">'+
+    '<p class="dh-sub">'+esc(kindName)+'</p><h2>'+esc(ft.name)+'</h2>'+
+    '<p class="dh-cmd">'+esc(ft.sub||"")+'</p></div>';
+  wrap.appendChild(head);
+  /* heights in metres through GEOREF, the only vertical scale; where the feature is a surveyed
+     place its surveyed height is quoted beside the model's (GEOREF.GT, GEOREF.ELEV_SRC) */
+  var elM=GEOREF.elevM(hAt(ft.p[0],ft.p[1])), gtk=FEATURE_GT[ft.id], gt=gtk&&GEOREF.GT[gtk];
+  var surveyed = (gt&&gt.elev) ? "; surveyed "+gt.elev+" m"+(GEOREF.ELEV_SRC[gtk]?' <span class="hh">('+esc(GEOREF.ELEV_SRC[gtk])+')</span>':"")
+               : (gtk&&GEOREF.ELEV_SRC[gtk]) ? '; surveyed <span class="hh">'+esc(GEOREF.ELEV_SRC[gtk])+'</span>' : "";
+  var facts=row("Elevation on this model", "\u2248 "+Math.round(elM)+" m at the marker"+surveyed+
+    ' <span class="hh">(relief drawn \u00d7'+geoText("{EXAG}")+' vertically)</span>');
+  (ft.facts||[]).forEach(function(k){ facts+=row(k[0],esc(k[1])); });
+  wrap.appendChild(el("dl","kvs",facts));
+  if(ft.why&&ft.why.length){
+    var s=el("div","sect");
+    s.innerHTML='<h3>Operational importance</h3><ul class="bul">'+
+      ft.why.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>';
+    wrap.appendChild(s);
+  }
+  if(ft.story){
+    var s2=el("div","sect");
+    s2.innerHTML='<h3>What happened here</h3><p class="prose">'+esc(ft.story)+'</p>';
+    wrap.appendChild(s2);
+  }
+  var here=[];
+  Object.keys(units).forEach(function(uid){
+    var pp=posNow(uid);
+    if(pp&&Math.hypot(pp[0]-ft.p[0],pp[1]-ft.p[1])<34) here.push(uid);
+  });
+  if(here.length){
+    var s3=el("div","sect");
+    s3.innerHTML='<h3>Formations nearby now</h3>';
+    var ul=el("ul","links");
+    here.forEach(function(uid){
+      var li=el("li");
+      var b=el("button","linkb",esc(FORMATIONS[uid].name));
+      b.addEventListener("click",function(){ select("f",uid); });
+      li.appendChild(b); ul.appendChild(li);
+    });
+    s3.appendChild(ul); wrap.appendChild(s3);
+  }
+  var act=el("div","dact");
+  var btn=el("button","t","Centre the map here");
+  btn.addEventListener("click",function(){ centreOnMap(ft.p,82); });
+  act.appendChild(btn);
+  var isHere = vsOrigin && vsOrigin[0]===ft.p[0] && vsOrigin[1]===ft.p[1];
+  var vb=el("button","t", isHere?"Clear the sightlines":"What can be seen from here");
+  vb.addEventListener("click",function(){
+    if(isHere) clearViewshed();
+    else computeViewshed(ft.p, EYE_OBSERVER_M);   /* metres */
+    paintDrawer(); syncViewBadge();
+  });
+  act.appendChild(vb);
+  wrap.appendChild(act);
+  wrap.appendChild(el("p","conf",
+    "Sightlines are computed from this model's elevations, not the real survey, and take no account of woods, buildings or smoke."));
+  return wrap;
+}
+function syncViewBadge(){
+  var b=document.getElementById("vsbadge");
+  if(!b) return;
+  b.style.display=vsOrigin?"flex":"none";
+  var nm="";
+  FEATURES.forEach(function(f){ if(vsOrigin&&f.p[0]===vsOrigin[0]&&f.p[1]===vsOrigin[1]) nm=f.name; });
+  var t=document.getElementById("vsname");
+  if(t) t.textContent=nm||"selected point";
+}
+
+function dossierEvent(eid){
+  var e=null; EVENTS.forEach(function(x){ if(x.id===eid) e=x; });
+  var wrap=el("div","dossier");
+  if(!e) return wrap;
+  var w=evWindow(e), exact=(w[0]===w[1]);
+  var col = e.kind==="decision" ? "#D9A64B" : (e.side==="fr" ? NATION.fr.fill : NATION.ru.fill);
+  var KIND={decision:"Command decision",attack:"Attack",capture:"Position taken",
+            arrival:"Reinforcement",engagement:"Engagement",movement:"Movement",
+            withdrawal:"Withdrawal",collapse:"Collapse"};
+  var head=el("div","dh");
+  head.innerHTML='<div class="dh-bar" style="background:'+col+'"></div><div class="dh-tx">'+
+    '<p class="dh-sub">'+esc(KIND[e.kind]||e.kind)+' &middot; '+
+      (e.side==="fr"?"French":"Allied")+'</p><h2>'+esc(e.n)+'</h2>'+
+    '<p class="dh-cmd">'+esc(exact?("about "+fmtClock(w[0])):(fmtClock(w[0])+" to "+fmtClock(w[1])))+'</p></div>';
+  wrap.appendChild(head);
+  wrap.appendChild(el("div","pillrow",
+    '<span class="pill claim-'+e.claim+'">'+esc(CLAIM[e.claim].label)+'</span>'+
+    '<span class="pill ghost">Timing '+esc(e.cf)+'</span>'+
+    (exact?'':'<span class="pill ghost">Interval, not a timestamp</span>')));
+  var s2=el("div","sect");
+  s2.innerHTML='<h3>Why it matters</h3><p class="ev-why">'+esc(e.why)+'</p>';
+  wrap.appendChild(s2);
+  if(e.forms.length){
+    var s3=el("div","sect");
+    s3.innerHTML='<h3>Formations concerned</h3>';
+    var ul=el("ul","links");
+    e.forms.forEach(function(fid){
+      if(!FORMATIONS[fid]) return;
+      var li=el("li");
+      var b=el("button","linkb",esc(FORMATIONS[fid].name));
+      b.addEventListener("click",function(){ select("f",fid); focusOn(fid); });
+      li.appendChild(b); ul.appendChild(li);
+    });
+    s3.appendChild(ul); wrap.appendChild(s3);
+  }
+  wrap.appendChild(el("p","conf",esc(CLAIM[e.claim].note)+
+    (exact?"":" The hour is not fixed in the sources, so this is shown as an interval rather than a timestamp.")));
+  var act=el("div","dact");
+  var b1=el("button","t","Go to this moment");
+  b1.addEventListener("click",function(){ stopPlay(); setClock((w[0]+w[1])/2); centreOnMap(e.p,96); });
+  act.appendChild(b1);
+  wrap.appendChild(act);
+  return wrap;
+}
+function dossierAnalysis(name){
+  var tl=null; TERRAIN_LINES.forEach(function(x){ if(x.n===name) tl=x; });
+  var wrap=el("div","dossier");
+  if(!tl) return wrap;
+  var kind={ridge:"Ridge line",scarp:"Escarpment",valley:"Valley floor",
+            defile:"Defile",dead:"Dead ground"}[tl.t];
+  var col={ridge:"#D8A05A",scarp:"#C2743C",valley:"#6FA0B8",defile:"#D05A4C",dead:"#9080B4"}[tl.t];
+  var head=el("div","dh");
+  head.innerHTML='<div class="dh-bar" style="background:'+col+'"></div><div class="dh-tx">'+
+    '<p class="dh-sub">Terrain analysis</p><h2>'+esc(tl.n)+'</h2>'+
+    '<p class="dh-cmd">'+esc(kind)+'</p></div>';
+  wrap.appendChild(head);
+  var hs=tl.p.map(function(q){ return hAt(q[0],q[1]); });
+  var lo=Math.min.apply(null,hs), hi=Math.max.apply(null,hs);
+  var len=0;
+  for(var i=0;i<tl.p.length-1;i++) len+=Math.hypot(tl.p[i+1][0]-tl.p[i][0],tl.p[i+1][1]-tl.p[i][1]);
+  wrap.appendChild(el("dl","kvs",
+    row("Length","about "+(len*0.5/UNITS_PER_KM).toFixed(1)+" km")+
+    row("Elevation along it","\u2248 "+Math.round(GEOREF.elevM(lo))+"\u2013"+Math.round(GEOREF.elevM(hi))+" m on this model")));
+  var s2=el("div","sect");
+  s2.innerHTML='<h3>Why it matters</h3><p class="prose">'+esc(tl.note)+'</p>';
+  wrap.appendChild(s2);
+  var act=el("div","dact");
+  var b1=el("button","t","Centre the map here");
+  b1.addEventListener("click",function(){ centreOnMap(tl.p[Math.floor(tl.p.length/2)],92); });
+  act.appendChild(b1);
+  wrap.appendChild(act);
+  return wrap;
+}
+
+/* The rose points to true north as seen from the current camera: the map frame
+   is rotated GEOREF.ROT_DEG from north, and the camera orbits freely. */
+var _rose=null, _rA=new THREE.Vector3(), _rB=new THREE.Vector3();
+function updateRose(){
+  if(!_rose){ _rose=document.getElementById("rose-needle");
+    var cv=document.getElementById("contour-val"); if(cv) cv.innerHTML="&asymp; "+geoText("{CONTOUR_M}")+" m"; }
+  if(!_rose||!camera) return;
+  _rA.copy(orbitTarget); _rB.set(orbitTarget.x+GEOREF.NORTH[0]*20, orbitTarget.y, orbitTarget.z+GEOREF.NORTH[1]*20);
+  _rA.project(camera); _rB.project(camera);
+  var ang=Math.atan2(_rB.x-_rA.x, _rB.y-_rA.y)*180/Math.PI;
+  _rose.setAttribute("transform","rotate("+ang.toFixed(1)+" 30 30)");
+}
+function updateScaleBar(){
+  var box=document.getElementById("scalebar");
+  var bar=document.getElementById("sb-fill"), lab=document.getElementById("sb-label");
+  if(!box||!bar||!lab) return;
+  var k=pxPerWorld(orbitTarget)*UNITS_PER_KM;
+  var choices=[0.25,0.5,1,2,5,10], pick=1;
+  for(var i=0;i<choices.length;i++){
+    var w=choices[i]*k;
+    if(w>=62&&w<=170){ pick=choices[i]; break; }
+    if(w<62) pick=choices[i];
+  }
+  var px=Math.round(pick*k);
+  if(px<10||px>400){ box.style.opacity="0"; return; }
+  box.style.opacity="1";
+  bar.style.width=px+"px";
+  lab.textContent=(pick<1? (pick*1000)+" m" : pick+" km");
+}
+
+/* numbers in prose that depend on the map's scale are filled in from GEO, never typed */
+function geoText(p){
+  return String(p).replace(/\{EXAG\}/g,GEOREF.EXAG.toFixed(0)).replace(/\{M_PER_UNIT\}/g,(GEOREF.KM_PER_MAP*1000).toFixed(0))
+    .replace(/\{ROT\}/g,GEOREF.ROT_DEG.toFixed(0)).replace(/\{CONTOUR_M\}/g,(CONTOUR_INTERVAL*GEOREF.V_M_PER_UNIT).toFixed(0));
+}
+function openSources(){
+  var m=document.getElementById("modal");
+  var b=document.getElementById("modal-body");
+  b.innerHTML='<h2>'+esc(SOURCE_NOTE.title)+'</h2>'+
+    SOURCE_NOTE.body.map(function(p){return '<p>'+esc(geoText(p))+'</p>';}).join('')+
+    '<h3>Three layers</h3><dl class="kvs">'+SOURCE_NOTE.layers.map(function(l){
+      return '<div class="kv"><dt>'+esc(l[0])+'</dt><dd>'+esc(l[1])+'</dd></div>'; }).join('')+'</dl>'+
+    '<h3>Confidence grades</h3><ul class="bul">'+
+    '<li><b>A</b> — '+esc(CONF_TEXT.A)+'</li>'+
+    '<li><b>B</b> — '+esc(CONF_TEXT.B)+'</li>'+
+    '<li><b>C</b> — '+esc(CONF_TEXT.C)+'</li></ul>'+
+    '<h3>Basis</h3><ul class="bul">'+SOURCE_NOTE.refs.map(function(r){return '<li>'+esc(r)+'</li>';}).join('')+'</ul>';
+  m.classList.add("on");
+}
+
+function flash(msg){
+  var t=document.getElementById("toast");
+  t.textContent=msg; t.classList.add("on");
+  setTimeout(function(){ t.classList.remove("on"); },3400);
+}
+function setProg(f){
+  var b=document.getElementById("prog");
+  if(b) b.style.transform="scaleX("+Math.max(0,Math.min(1,f))+")";
+}
+function stopPlay(){
+  playing=false;
+  var b=document.getElementById("play");
+  if(b) b.textContent="Play";
+}
+function togglePlay(){
+  if(playing){ stopPlay(); return; }
+  if(clock>=T_MAX-0.5) setClock(T_MIN,{force:true});
+  playing=true;
+  var b=document.getElementById("play");
+  if(b) b.textContent="Pause";
+}
+function setSpeed(x){
+  speed=x;
+  document.querySelectorAll(".spd-btn").forEach(function(b){
+    b.setAttribute("aria-pressed", (+b.dataset.s===x)?"true":"false");
+  });
+}
+function tickClock(dtMs){
+  if(!playing) return;
+  var nt=clock + (dtMs/1000)*MIN_PER_SEC*speed;
+  if(nt>=T_MAX){ setClock(T_MAX); stopPlay(); return; }
+  setClock(nt);
+}
+var presentation="study", hideDispatch=false;
+var PRESENT={
+  study:{cls:"pm-study", rail:true},
+  watch:{cls:"pm-watch", rail:false},
+  map:  {cls:"pm-map",   rail:false}
+};
+function setPresentation(m){
+  closeFirst(null);
+  if(!PRESENT[m]) m="study";
+  presentation=m;
+  var b=document.body;
+  b.classList.remove("pm-study","pm-watch","pm-map");
+  b.classList.add(PRESENT[m].cls);
+  if(m!=="study"){ select(null,null); b.classList.add("rail-hidden"); }
+  else if(window.innerWidth>=1080) b.classList.remove("rail-hidden");
+  document.querySelectorAll(".vm-btn").forEach(function(x){
+    x.setAttribute("aria-pressed", x.dataset.vm===m ? "true":"false");
+  });
+
+  cleanView=(m==="map");
+  syncVis();
+  syncSelChip();
+  if(typeof requestRender==="function") requestRender(2);
+}
+function syncVis(){
+  document.body.classList.toggle("no-dispatch",hideDispatch);
+
+  syncTimebarHeight();
+}
+function setDispatchVisible(on){ hideDispatch=!on; syncVis(); }
+function showEverything(){
+  hideDispatch=false;
+  document.body.classList.remove("rail-hidden");
+  setPresentation("study");
+}
+/* the time bar wraps at narrow widths, so its height is measured, never assumed */
+var _tbEl=null;
+function syncTimebarHeight(){
+  if(!_tbEl) _tbEl=document.querySelector(".timebar");
+  if(!_tbEl) return;
+  var h=(presentation==="map")?0:Math.round(_tbEl.getBoundingClientRect().height);
+  document.documentElement.style.setProperty("--tb",h+"px");
+}
+
+/* ---------------- loop ---------------- */
+var frameClock=new THREE.Clock();
+var lastFrame=0;
+/* ---- render on demand ----
+   A frame is drawn when something changes: a tween, playback, recent input, an easing that has
+   not arrived (settling), or a request from a state change. When the only motion is slow drift -
+   mist, smoke, dust, a broken formation's sway - frames drop to the ambient rate; when nothing
+   moves, nothing is drawn. Easings are time-based through ease(), so they run at the same
+   wall-clock speed at any frame rate. */
+var needFrames=3, lastInput=0, lastAmbient=0, settling=false, FK=1;
+var AMBIENT_MS=90, INPUT_HOLD_MS=450;
+function requestRender(n){ needFrames=Math.max(needFrames,n||2); }
+function ease(r){ return 1-Math.pow(1-r,FK); }
+function ambientNow(){
+  if(RM||HARNESS) return false;
+  if(mode!=="staff"&&world.mist.visible) return true;
+  for(var id in units){
+    var r=units[id];
+    if((r.smoke&&r.smoke.visible)||(r.dust&&r.dust.visible)) return true;
+    if(r.block&&r.block.visible&&LOOSE[aggStatus(id,curPhase)]) return true;
+  }
+  return false;
+}
+function frameState(now){
+  if(tween||playing||needFrames>0||settling||now-lastInput<INPUT_HOLD_MS) return "active";
+  if(ambientNow()) return (now-lastAmbient>=AMBIENT_MS)?"ambient":"waiting";
+  return "idle";
+}
+function loop(){
+  requestAnimationFrame(loop);
+  var now=performance.now(), state=frameState(now);
+  paintDevStats(now);
+  if(state==="idle"||state==="waiting"){ DEV.skipped++; if(state==="idle") DEV.state="idle"; return; }
+  DEV.state=state; lastAmbient=now;
+  if(needFrames>0) needFrames--;
+  settling=false;
+  sun.target.position.copy(orbitTarget);
+  sun.target.updateMatrixWorld();
+  sun.position.copy(orbitTarget).add(sunDir);
+  if(sunDisc){
+    sunDisc.position.copy(sunDir).normalize().multiplyScalar(560).add(orbitTarget);
+    sunDisc.visible=sunDisc.material.opacity>0.02;
+  }
+  var dt=lastFrame?Math.min(120,now-lastFrame):16;
+  lastFrame=now;
+  FK=Math.max(0.25,Math.min(7.2,dt/16.667));
+  if(tween) tween(now);
+  tickClock(dt);
+  setProg((clock-T_MIN)/(T_MAX-T_MIN));
+  var tu=performance.now(); updateVisibility(); DEV.tUpdate=performance.now()-tu;
+  smokeT=HARNESS?0:now*0.001;
+  if(!RM && !HARNESS && mode!=="staff" && world.mist.visible){
+    /* bounded, time-based drift (the fade on each sheet allows for MIST_DRIFT either way) */
+    var t=frameClock.getElapsedTime();
+    world.mist.children.forEach(function(m,i){ m.position.x=m.userData.x0+Math.sin(t*0.2+i)*MIST_DRIFT; });
+  }
+  renderFrame();
+  loop._n=(loop._n||0)+1;
+  if(devOn&&loop._n%120===0){ var fe=AUSTERLITZ_DEBUG.figureError();   /* with the readout on: a periodic check of the seating */
+    if(fe.worst>0.02&&!loop._warned){ loop._warned=true; console.warn("Austerlitz runtime check: a figure is "+fe.worst.toFixed(3)+" units off the drawn ground ("+fe.where+")"); } }
+}
+
+/* ============================================================
+   RUNTIME CHECKS AND THE HARNESS HOOK
+   AUSTERLITZ_DEBUG.selfTest() runs the Stage 0 guarantees against the live application. The
+   visual harness (tools/visual) calls it; it can also be run from the console at any time.
+   applyCase() and settle() let the harness put the app into a fixed, fully settled state.
+   ============================================================ */
+var AUSTERLITZ_DEBUG=(function(){
+  function finishTween(){ var n=0; while(tween&&n<4){ tween(performance.now()+1e7); n++; } }
+  function settle(n,noRender){
+    finishTween();
+    var fk=FK; FK=7.2;
+    for(var i=0;i<(n||60);i++){ settling=false; updateVisibility(); }
+    FK=fk;
+    if(!noRender) renderFrame();
+    return settling;
+  }
+  function placeCamera(c){
+    tween=null; camArc=null; freeCam=true;
+    camera.position.set(c[0],c[1],c[2]); orbitTarget.set(c[3],c[4],c[5]); camera.lookAt(orbitTarget);
+    clampCamera();
+  }
+  function applyCase(spec,aimOf){
+    closeFirst(null);
+    stopPlay(); if(tourStep>=0) exitTour();
+    if(planSide) setPlan(planSide); if(chapter) setChapter(null);
+    freeCam=true;
+    setPresentation(spec.presentation||"study");
+    if(mode!==(spec.mode||"terrain")) setMode(spec.mode||"terrain");
+    setClock(spec.t,{instant:true,force:true,camera:false});
+    finishTween();
+    select(null,null);
+    if(spec.select) select(spec.select[0],spec.select[1]);
+    placeCamera(spec.cam||aimOf(spec));
+    requestRender(3);
+    return true;
+  }
+  function visibleUp(o){ while(o){ if(!o.visible) return false; o=o.parent; } return true; }
+  /* every visible man and horse (the figure kit), and the foot of every standard, against groundY */
+  function figureError(){
+    var K=figKit(), geos=[K.infCoat,K.infFixed,K.horse,K.rider,K.riderFixed], m=new THREE.Matrix4(), p=new THREE.Vector3();
+    var worst=0, where="", n=0;
+    Object.keys(units).forEach(function(id){
+      var b=units[id].block; if(!b||!visibleUp(b)) return;
+      b.updateMatrixWorld(true);
+      b.traverse(function(o){
+        if(!o.isInstancedMesh||geos.indexOf(o.geometry)<0||!visibleUp(o)) return;
+        for(var i=0;i<o.count;i++){
+          o.getMatrixAt(i,m); p.set(0,0,0).applyMatrix4(m).applyMatrix4(o.matrixWorld);
+          var e=Math.abs(p.y-groundY(p.x,p.z)); n++; if(e>worst){ worst=e; where=id; }
+        }
+      });
+      var u=b.userData;
+      if(u&&u.poles&&visibleUp(u.poles)) for(var j=0;j<u.poles.count;j++){
+        u.poles.getMatrixAt(j,m); p.set(0,-2.6,0).applyMatrix4(m).applyMatrix4(u.poles.matrixWorld);
+        var e2=Math.abs(p.y-groundY(p.x,p.z)); if(e2>worst){ worst=e2; where=id+" (standard)"; }
+      }
+    });
+    return {worst:worst,where:where,n:n};
+  }
+  function selfTest(){
+    var out=[], t0=performance.now(), i;
+    function ck(name,ok,detail){ out.push({name:name,ok:!!ok,detail:detail}); }
+    var save={t:clock,mode:mode,pres:presentation,pos:camera.position.clone(),tgt:orbitTarget.clone(),fc:freeCam};
+    closeFirst(null); stopPlay(); if(tourStep>=0) exitTour();
+
+    /* 1. the ground as drawn */
+    var gw=0;
+    for(i=0;i<600;i++){ var ix=(i*37)%(GROUND_NX+1), iz=(i*53)%(GROUND_NZ+1);
+      var gx=-GROUND_W/2+ix*GROUND_W/GROUND_NX, gz=-GROUND_D/2+iz*GROUND_D/GROUND_NZ;
+      gw=Math.max(gw,Math.abs(groundY(gx,gz)-height(gx,gz))); }
+    ck("ground: groundY() returns the drawn terrain at its vertices", gw<1e-3, "largest |groundY - height| at mesh vertices "+gw.toExponential(1));
+
+    /* 2. every fixed view, and every view the app computes when it centres on something */
+    var views=[];
+    Object.keys(VANTAGE).forEach(function(k){ views.push(["vantage "+k,VANTAGE[k]]); });
+    PHASES.forEach(function(ph){ views.push(["phase "+ph.id+" ("+ph.label+")",ph.cam]); });
+    ANALYSIS.forEach(function(a){ views.push(["chapter "+a.id,a.cam]); });
+    TOUR.forEach(function(st,k){ views.push(["tour stop "+(k+1),st.cam]); });
+    views.push(["staff map",[-27,262,41,-27,0,9]]);
+    var fixedMin=1e9, fixedWorst="", below=[];
+    views.forEach(function(v){ var c=v[1], cl=c[1]-camGround(c[0],c[2]);
+      if(cl<fixedMin){ fixedMin=cl; fixedWorst=v[0]; } if(cl<CAM_CLEAR) below.push(v[0]+" ("+cl.toFixed(2)+")"); });
+    var comp=0, compMin=1e9, compWorst="";
+    function centreEye(mp,r){ var w=W(mp[0],mp[1]), y=height(w[0],w[1]), d=new THREE.Vector3(-0.55,0.62,0.56).normalize().multiplyScalar(r);
+      return [w[0]+d.x,y+d.y,w[1]+d.z]; }
+    function chkEye(e,label){ comp++; var cl=e[1]-camGround(e[0],e[2]);
+      if(cl<compMin){ compMin=cl; compWorst=label; } if(cl<CAM_CLEAR) below.push(label+" ("+cl.toFixed(2)+")"); }
+    var keepClock=clock;
+    PHASES.forEach(function(ph){ clock=(ph.t0+ph.t1)/2;
+      Object.keys(FORMATIONS).forEach(function(id){ var q=posNow(id); if(q) chkEye(centreEye(q,86),"centring on "+id+" at "+fmtClock(clock)); }); });
+    clock=keepClock;
+    EVENTS.forEach(function(e){ chkEye(centreEye(e.p,96),"event "+e.id); chkEye(centreEye(e.p,112),"event "+e.id+" (next/previous)"); });
+    FEATURES.forEach(function(f){ chkEye(centreEye(f.p,82),"place "+f.id); });
+    TERRAIN_LINES.forEach(function(tl){ chkEye(centreEye(tl.p[Math.floor(tl.p.length/2)],92),"terrain line "+tl.n); });
+    ck("camera: every fixed and computed view is above the ground", below.length===0,
+      views.length+" fixed views (vantages, phases, chapters, tour stops, staff map), lowest "+fixedMin.toFixed(1)+" units at "+fixedWorst+
+      "; "+comp+" centring views, lowest "+compMin.toFixed(1)+" at "+compWorst+(below.length?"; BELOW THE FLOOR: "+below.slice(0,8).join(", "):""));
+
+    /* 3. glides, through the same arc code the application uses */
+    var arcsN=0, arcsMin=1e9, arcsBad=0, c0=CAM.clamps;
+    function arcCheck(a,b,bulge){
+      var A=setupArc(new THREE.Vector3(a[0],a[1],a[2]),new THREE.Vector3(a[3],a[4],a[5]),new THREE.Vector3(b[0],b[1],b[2]),new THREE.Vector3(b[3],b[4],b[5]));
+      for(var k=0;k<=24;k++){ applyArc(A,easeInOut(k/24),bulge); arcsN++;
+        var cl=camera.position.y-camGround(camera.position.x,camera.position.z); if(cl<arcsMin) arcsMin=cl; if(cl<CAM_CLEAR-1e-6) arcsBad++; }
+    }
+    for(i=0;i+1<TOUR.length;i++) arcCheck(TOUR[i].cam,TOUR[i+1].cam,0.12);
+    for(i=0;i+1<PHASES.length;i++) arcCheck(PHASES[i].cam,PHASES[i+1].cam,0.15);
+    for(i=1;i<ANALYSIS.length;i++) arcCheck(ANALYSIS[i-1].cam,ANALYSIS[i].cam,0.12);
+    var vk=Object.keys(VANTAGE);
+    vk.forEach(function(a){ vk.forEach(function(b){ if(a!==b) arcCheck(VANTAGE[a],VANTAGE[b],0.12); }); });
+    ck("camera: glides between tour stops, phases, chapters and vantages stay above the ground", arcsBad===0,
+      arcsN+" positions sampled; lowest clearance "+arcsMin.toFixed(2)+" units; the floor lifted "+(CAM.clamps-c0)+" of them");
+
+    /* 4. orbit extremes, through the placement the pointer handlers use */
+    var orbN=0, orbMin=1e9, orbBad=0;
+    views.forEach(function(v){ var c=v[1]; orbitTarget.set(c[3],c[4],c[5]);
+      for(var th=0;th<24;th++){
+        sph.set(24,Math.PI/2-0.03,th/24*Math.PI*2); orbitPlace(); orbN++;
+        var cl=camera.position.y-camGround(camera.position.x,camera.position.z); if(cl<orbMin) orbMin=cl; if(cl<CAM_CLEAR-1e-6) orbBad++;
+      } });
+    ck("camera: orbiting at the lowest pitch and closest zoom never enters the ground", orbBad===0,
+      orbN+" orbit positions around "+views.length+" targets; lowest clearance "+orbMin.toFixed(2)+" units");
+    renderFrame();
+    ck("camera: no path placed the eye below the floor before a frame", CAM.violations===0, "render-time guard count "+CAM.violations);
+
+    /* 5. figures on the drawn ground, across the day, both modes, with and without dimming */
+    freeCam=true;
+    var fw={worst:0,where:"",n:0}, cases=0;
+    var times=PHASES.map(function(ph){ return Math.round((ph.t0+ph.t1)/2); }).concat([PHASES[3].t0+22,PHASES[7].t0+35,PHASES[8].t0+40]);
+    ["terrain","hybrid"].forEach(function(md){
+      if(mode!==md) setMode(md);
+      [null,"c_iv","buxhowden"].forEach(function(hl){
+        times.forEach(function(tm){
+          setClock(tm,{instant:true,force:true,camera:false}); finishTween();
+          select(null,null); if(hl) select("f",hl);
+          settle(28,true);
+          var r=figureError(); cases++; fw.n+=r.n;
+          if(r.worst>fw.worst){ fw.worst=r.worst; fw.where=r.where+" at "+fmtClock(tm)+", "+md+(hl?", "+hl+" highlighted":""); }
+        });
+      });
+    });
+    select(null,null);
+    ck("figures: every visible man, horse and standard stands on the drawn ground", fw.worst<=0.02,
+      cases+" states (10 phases and 3 marching moments; terrain and hybrid; no highlight and two highlight families), "+
+      fw.n+" figure placements; worst "+fw.worst.toFixed(4)+" units"+(fw.where?" ("+fw.where+")":""));
+
+    /* 6. the first-run key, the legend, and what is actually drawn */
+    var fr=document.getElementById("firstrun"), lg=document.querySelector(".legend"), mism=[];
+    var frKeys=fr.querySelectorAll("[data-key]");
+    if(!frKeys.length) mism.push("the first-run card carries no colour key");
+    frKeys.forEach(function(e){ var l=lg.querySelector('[data-key="'+e.dataset.key+'"]');
+      if(!l) mism.push(e.dataset.key+" is not in the legend");
+      else if(getComputedStyle(e).backgroundColor!==getComputedStyle(l).backgroundColor)
+        mism.push(e.dataset.key+": "+getComputedStyle(e).backgroundColor+" against the legend's "+getComputedStyle(l).backgroundColor); });
+    var txt=(document.getElementById("fr-key").textContent||"").replace(/\s+/g," ");
+    ["Blue is the French army","green for Russia","white for Austria","drawn in amber"].forEach(function(w){ if(txt.indexOf(w)<0) mism.push('missing "'+w+'"'); });
+    if(/amber is the russian/i.test(fr.textContent)) mism.push("still says amber is the Russian and Austrian army");
+    function rgb(hex){ var n=parseInt(hex.replace("#",""),16); return "rgb("+((n>>16)&255)+", "+((n>>8)&255)+", "+(n&255)+")"; }
+    [["fr",NATION.fr.fill],["ru",NATION.ru.fill],["at",NATION.at.fill],["arrow-fr",hexOf(SIDE_COL.fr.attack)],["arrow-al",hexOf(SIDE_COL.al.attack)]].forEach(function(k){
+      var l=lg.querySelector('[data-key="'+k[0]+'"]');
+      if(!l||getComputedStyle(l).backgroundColor!==rgb(k[1])) mism.push("legend "+k[0]+" is not the drawing colour "+k[1]); });
+    ck("first run: the colour key agrees with the legend, and the legend with what is drawn", mism.length===0,
+      mism.length?mism.join("; "):'"'+txt.slice(0,150)+'..."');
+
+    /* 7. dossiers in metres */
+    var bad=[];
+    FEATURES.forEach(function(ft){ var t=dossierFeature(ft.id).textContent, want=Math.round(GEOREF.elevM(hAt(ft.p[0],ft.p[1])));
+      if(/\bunits?\b/i.test(t)) bad.push(ft.id+" shows model units");
+      if(t.indexOf("\u2248 "+want+" m")<0) bad.push(ft.id+" lacks "+want+" m"); });
+    TERRAIN_LINES.forEach(function(tl){ var t=dossierAnalysis(tl.n).textContent;
+      if(/\bunits?\b/i.test(t)) bad.push(tl.n+" shows model units");
+      if(!/\u2248 \d+\u2013\d+ m on this model/.test(t)) bad.push(tl.n+" lacks a range in metres"); });
+    ck("dossiers: elevations are metres through GEOREF, never model units", bad.length===0,
+      bad.length?bad.join("; "):FEATURES.length+" place dossiers and "+TERRAIN_LINES.length+" terrain-study dossiers");
+
+    /* 8. a selection is always shown somewhere, and clearing it clears the dimming */
+    var steps=[], okAll=true;
+    function chip(){ var c=document.getElementById("selchip"); return !c.hidden&&getComputedStyle(c).display!=="none"; }
+    function note(label,ok){ steps.push((ok?"":"FAILED: ")+label); if(!ok) okAll=false; }
+    if(mode!=="terrain") setMode("terrain");
+    setClock(585,{instant:true,force:true,camera:false}); finishTween();
+    setPresentation("watch"); select("f","kamensky");
+    note("Watch, formation selected: chip shown, dossier hidden, family highlighted", chip()&&!drawerShown()&&!!highlight);
+    document.getElementById("sc-open").click();
+    note("chip opens the dossier in Study, selection kept", presentation==="study"&&drawerShown()&&!chip()&&!!selection&&selection.id==="kamensky");
+    setPresentation("watch");
+    note("entering Watch clears selection, chip and dimming", !selection&&!chip()&&!highlight);
+    select("e","kamensky");
+    note("Watch, event selected: chip shown", chip()&&!drawerShown());
+    document.getElementById("sc-clear").click();
+    note("chip clears the selection", !selection&&!chip()&&!highlight);
+    setPresentation("map"); select("f","sthilaire");
+    note("clean map view, selection: chip shown", chip());
+    select(null,null);
+    note("nothing selected: no chip, no dimming", !chip()&&!highlight);
+    setPresentation("study"); select("f","sthilaire");
+    note("Study, selection: dossier shown, no chip", drawerShown()&&!chip());
+    select(null,null);
+    ck("watch mode: a selection is always shown, and clearing it clears the dimming", okAll, steps.join("; "));
+
+    /* 9. sprite edges and mist edges */
+    function edge(t){ var c=t.image,w=c.width,h=c.height,d=c.getContext("2d").getImageData(0,0,w,h).data,mx=0,x,y;
+      for(x=0;x<w;x++) mx=Math.max(mx,d[x*4+3],d[((h-1)*w+x)*4+3]);
+      for(y=0;y<h;y++) mx=Math.max(mx,d[y*w*4+3],d[(y*w+w-1)*4+3]);
+      return mx; }
+    var se=edge(smokeTexture()), de=edge(dustTexture());
+    ck("sprites: smoke and dust fade to nothing at every edge", se===0&&de===0, "largest edge alpha: smoke "+se+", dust "+de+" of 255");
+    var mistBad=0, mistN=0;
+    world.mist.children.forEach(function(m){ var a=m.geometry.attributes.color.array, pa=m.geometry.attributes.position.array, x0=m.userData.x0, y=m.position.y;
+      for(var q=0;q<pa.length/3;q++){ var x=x0+pa[q*3], z=m.position.z-pa[q*3+1];
+        var g=Math.max(groundY(x-MIST_DRIFT,z),groundY(x,z),groundY(x+MIST_DRIFT,z));
+        if(y-g<0.2){ mistN++; if(a[q*4+3]>0.001) mistBad++; } } });
+    ck("mist: no sheet shows where the ground rises through it", mistBad===0, mistN+" sheet vertices at or below the ground, "+mistBad+" with any alpha");
+
+    /* 10. derived readings: rendering changes must not move them */
+    keepClock=clock; clock=240;
+    var p04=plateauStrength("al");
+    clock=keepClock;
+    var over=[]; for(var tm=240;tm<=1080;tm+=15){ if(sideOnFieldAt("al",tm)>85400||sideOnFieldAt("fr",tm)>73000) over.push(fmtClock(tm)); }
+    var aud=auditMovement();
+    ck("derived readings unchanged: the plateau at 04:00, both army totals, the movement audit", p04===38700&&!over.length&&!aud.length,
+      "Allied on the plateau at 04:00 = "+p04.toLocaleString()+" (changelog 38,700); "+
+      (over.length?"totals exceed an army at "+over.join(","):"totals within 85,400 and 73,000 at 57 moments")+"; movement audit "+aud.length+" findings");
+
+    /* 11. render on demand */
+    setMode("staff"); setClock(600,{instant:true,force:true,camera:false}); finishTween(); settle(40,true);
+    needFrames=0; lastInput=-1e9; settling=false;
+    var sIdle=frameState(performance.now());
+    setMode("terrain"); setClock(250,{instant:true,force:true,camera:false}); finishTween(); settle(40,true);
+    needFrames=0; lastInput=-1e9; settling=false;
+    var sMist=frameState(performance.now()+1000);
+    ck("render on demand: a view at rest draws nothing; slow drift alone draws at the ambient rate",
+      sIdle==="idle"&&(HARNESS||RM?sMist==="idle":sMist==="ambient"),
+      "paper map at rest: "+sIdle+"; landscape at 04:10 with mist: "+sMist+((HARNESS||RM)?" (drift is off in harness or reduced-motion mode)":""));
+
+    if(mode!==save.mode) setMode(save.mode);
+    setPresentation(save.pres);
+    setClock(save.t,{instant:true,force:true,camera:false}); finishTween();
+    camera.position.copy(save.pos); orbitTarget.copy(save.tgt); camera.lookAt(orbitTarget); clampCamera(); freeCam=save.fc;
+    requestRender(3);
+    return {ms:Math.round(performance.now()-t0), ok:out.every(function(c){ return c.ok; }), checks:out};
+  }
+  function stats(){
+    return {state:DEV.state, world:DEV.world, total:DEV.total, labels:LABEL_STATS,
+            camera:{clamps:CAM.clamps,violations:CAM.violations}, seating:{blocks:SEAT_STATS.blocks},
+            memory:{geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}};
+  }
+  return {groundY:groundY, camFloor:camFloor, settle:settle, applyCase:applyCase, placeCamera:placeCamera,
+          selfTest:selfTest, stats:stats, figureError:figureError};
+})();
+
+init();

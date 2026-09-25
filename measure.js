@@ -1,0 +1,241 @@
+/* In-page driver and measurements for the Stage 0 harness. Uses the application's own globals,
+   so the same measurements run against the pre-Stage-0 build and later builds. Independent of
+   the code under test where it matters: the ground surface is read from the ground mesh's own
+   vertex buffer, not from any helper in the app. */
+(function(){
+  var V=THREE.Vector3, M4=THREE.Matrix4;
+  var D=function(){ return window.AUSTERLITZ_DEBUG||null; };
+  function effVisible(o){ while(o){ if(!o.visible) return false; o=o.parent; } return true; }
+
+  /* ---- the rendered ground: the triangles of the terrain mesh as drawn ---- */
+  var SW=360/280, SH=310/240;
+  function rg(x,z){
+    var P=groundMesh.geometry.attributes.position.array;
+    var fx=(x+180)/SW, fz=(z+155)/SH;
+    if(fx<0||fz<0||fx>280||fz>240) return height(x,z);
+    var ix=Math.min(279,Math.floor(fx)), iz=Math.min(239,Math.floor(fz)), u=fx-ix, v=fz-iz;
+    var o0=(iz*280+ix)*18, o1=o0+9;
+    var ha=P[o0+1], hb=P[o0+4], hd=P[o0+7], hc=P[o1+4];
+    return (u+v<=1) ? ha+u*(hd-ha)+v*(hb-ha) : hc+(1-u)*(hb-hc)+(1-v)*(hd-hc);
+  }
+  function groundMax(x,z,r){
+    var m=rg(x,z);
+    for(var k=0;k<8;k++){ var a=k/8*Math.PI*2; m=Math.max(m,rg(x+Math.cos(a)*r,z+Math.sin(a)*r)); }
+    return m;
+  }
+  function selfCheckGround(){
+    var worst=0;
+    for(var i=0;i<200;i++){
+      var ix=(i*37)%280, iz=(i*53)%240, x=-180+ix*SW, z=-155+iz*SH;
+      worst=Math.max(worst,Math.abs(rg(x,z)-height(x,z)));
+    }
+    return worst;
+  }
+
+  /* ---- drive the app into a case ---- */
+  function aimOf(spec){
+    var mp=spec.aim.map;
+    if(typeof mp==="string") mp=posNow(mp);
+    var w=W(mp[0],mp[1]), ty=height(w[0],w[1]);
+    var d=new V(spec.aim.dir[0],spec.aim.dir[1],spec.aim.dir[2]).normalize().multiplyScalar(spec.aim.r);
+    return [w[0]+d.x,ty+d.y,w[1]+d.z, w[0],ty,w[1]];
+  }
+  function apply(spec){
+    var dbg=D();
+    if(dbg&&dbg.applyCase) return dbg.applyCase(spec, aimOf);
+    /* pre-Stage-0 build: set the same state through its globals */
+    var fr=document.getElementById("firstrun"); if(fr) fr.hidden=true;
+    if(typeof stopPlay==="function") stopPlay();
+    if(typeof tourStep!=="undefined"&&tourStep>=0) exitTour();
+    setPresentation(spec.presentation||"study");
+    if(mode!==(spec.mode||"terrain")) setMode(spec.mode||"terrain");
+    setClock(spec.t,{instant:true,force:true,camera:false});
+    select(null,null);
+    if(spec.select) select(spec.select[0],spec.select[1]);
+    var c=spec.cam||aimOf(spec);
+    freeCam=true; tween=null;
+    camera.position.set(c[0],c[1],c[2]); orbitTarget.set(c[3],c[4],c[5]); camera.lookAt(orbitTarget);
+    return true;
+  }
+
+  /* ---- sprites on screen ---- */
+  var inkCache=new WeakMap();
+  function inkBox(tex){
+    if(!tex||!tex.image||!tex.image.getContext) return [0,0,1,1];
+    var cv=tex.image; if(inkCache.has(cv)) return inkCache.get(cv);
+    var w=cv.width,h=cv.height,d=cv.getContext("2d").getImageData(0,0,w,h).data;
+    var x0=w,y0=h,x1=-1,y1=-1;
+    for(var y=0;y<h;y++) for(var x=0;x<w;x++){ if(d[(y*w+x)*4+3]>24){ if(x<x0)x0=x; if(x>x1)x1=x; if(y<y0)y0=y; if(y>y1)y1=y; } }
+    var r = x1<0 ? [0.5,0.5,0.5,0.5] : [x0/w,y0/h,(x1+1)/w,(y1+1)/h];
+    inkCache.set(cv,r); return r;
+  }
+  function rectOfSprite(sp){
+    var cam=camera, W0=window.innerWidth, H0=window.innerHeight;
+    var p=sp.getWorldPosition(new V()), v=p.clone().applyMatrix4(cam.matrixWorldInverse);
+    if(v.z>-cam.near) return null;
+    var ndc=p.clone().project(cam); if(Math.abs(ndc.x)>1.05||Math.abs(ndc.y)>1.05) return null;
+    var ppw=H0/(2*(-v.z)*Math.tan(cam.fov*Math.PI/360));
+    var sx=sp.scale.x*ppw, sy=sp.scale.y*ppw, cx=(ndc.x*0.5+0.5)*W0, cy=(-ndc.y*0.5+0.5)*H0;
+    var b=inkBox(sp.material&&sp.material.map);
+    return [cx-sx/2+b[0]*sx, cy-sy/2+b[1]*sy, cx-sx/2+b[2]*sx, cy-sy/2+b[3]*sy];
+  }
+  function labelSet(){
+    var L=[];
+    function add(sp,cat,id){ if(sp&&effVisible(sp)&&(!sp.material||sp.material.opacity>0.05)) L.push({sp:sp,cat:cat,id:id}); }
+    Object.keys(units).forEach(function(k){ add(units[k].sprite,"counter",k); add(units[k].nameLabel,"name",k); });
+    Object.keys(aggregates).forEach(function(k){ add(aggregates[k].sprite,"counter",k); });
+    (eventMarks||[]).forEach(function(m){ add(m.ls,"event",m.e.id); });
+    if(typeof plateauLabel!=="undefined") add(plateauLabel,"plateau","plateau");
+    (overlayLabels||[]).forEach(function(s,i){ add(s,"overlay",i); });
+    (featureSprites||[]).forEach(function(o){ add(o.sprite,"feature",o.ft.id); });
+    (analysisSprites||[]).forEach(function(o){ add(o.sprite,"analysis",o.tl.n); });
+    return L;
+  }
+  function overlaps(){
+    camera.updateMatrixWorld(true);
+    var L=labelSet(), R=[];
+    L.forEach(function(o){ var r=rectOfSprite(o.sp); if(r) R.push({o:o,r:r}); });
+    var pairs={}, list=[], P=panelRects();
+    /* an overlap wholly under an opaque interface panel cannot be seen, so it is not counted */
+    function hidden(x0,y0,x1,y1){ for(var k=0;k<P.length;k++){ var c=P[k]; if(x0>=c[0]&&y0>=c[1]&&x1<=c[2]&&y1<=c[3]) return true; } return false; }
+    for(var i=0;i<R.length;i++) for(var j=i+1;j<R.length;j++){
+      var a=R[i].r,b=R[j].r, ix=Math.min(a[2],b[2])-Math.max(a[0],b[0]), iy=Math.min(a[3],b[3])-Math.max(a[1],b[1]);
+      if(ix>4&&iy>4&&!hidden(Math.max(a[0],b[0]),Math.max(a[1],b[1]),Math.min(a[2],b[2]),Math.min(a[3],b[3]))){
+        var k=[R[i].o.cat,R[j].o.cat].sort().join("x");
+        pairs[k]=(pairs[k]||0)+1;
+        if(list.length<40) list.push(R[i].o.cat+":"+R[i].o.id+" / "+R[j].o.cat+":"+R[j].o.id);
+      }
+    }
+    return {visible:R.length, pairs:pairs, examples:list};
+  }
+
+  /* ---- figures on the ground ---- */
+  function figureGeos(){ var K=(typeof figKit==="function")?figKit():FIG; return [K.infCoat,K.infFixed,K.horse,K.rider,K.riderFixed]; }
+  function figures(){
+    var geos=figureGeos(), m=new M4(), p=new V(), n=0, worst=0, sum=0, bad=0, worstId=null;
+    Object.keys(units).forEach(function(id){
+      var b=units[id].block; if(!b||!effVisible(b)) return;
+      b.updateMatrixWorld(true);
+      b.traverse(function(o){
+        if(!o.isInstancedMesh||geos.indexOf(o.geometry)<0||!effVisible(o)) return;
+        for(var i=0;i<o.count;i++){
+          o.getMatrixAt(i,m); p.set(0,0,0).applyMatrix4(m).applyMatrix4(o.matrixWorld);
+          var e=p.y-rg(p.x,p.z), a=Math.abs(e);
+          n++; sum+=a; if(a>0.05) bad++; if(a>worst){ worst=a; worstId=id+(e>0?" floats ":" sinks ")+a.toFixed(2); }
+        }
+      });
+    });
+    return {count:n, maxErr:+worst.toFixed(4), meanErr:n?+(sum/n).toFixed(4):0, over005:bad, worst:worstId};
+  }
+  /* standards: the foot of each pole */
+  function standards(){
+    var m=new M4(), p=new V(), worst=0, n=0;
+    Object.keys(units).forEach(function(id){
+      var b=units[id].block, u=b&&b.userData; if(!b||!effVisible(b)||!u||!u.poles) return;
+      b.updateMatrixWorld(true);
+      for(var i=0;i<u.poles.count;i++){
+        u.poles.getMatrixAt(i,m);
+        p.set(0,-2.6,0).applyMatrix4(m).applyMatrix4(u.poles.matrixWorld);  /* pole geometry is 5.2 long, centred */
+        var a=Math.abs(p.y-rg(p.x,p.z)); n++; if(a>worst) worst=a;
+      }
+    });
+    return {count:n, maxErr:+worst.toFixed(3)};
+  }
+
+  /* ---- sprite textures and mist ---- */
+  function edgeAlpha(tex){
+    if(!tex||!tex.image||!tex.image.getContext) return null;
+    var c=tex.image, w=c.width, h=c.height, d=c.getContext("2d").getImageData(0,0,w,h).data, mx=0;
+    for(var x=0;x<w;x++){ mx=Math.max(mx,d[(x)*4+3],d[((h-1)*w+x)*4+3]); }
+    for(var y=0;y<h;y++){ mx=Math.max(mx,d[(y*w)*4+3],d[(y*w+w-1)*4+3]); }
+    return mx;
+  }
+  function mistEdge(){
+    if(!world||!world.mist||!world.mist.visible) return {visible:false};
+    var worst=0, band=0;
+    world.mist.children.forEach(function(ms){
+      if(!ms.visible||!ms.geometry.parameters) return;
+      var gp=ms.geometry.parameters, pw=gp.width, ph=gp.height, op=ms.material.opacity;
+      var col=ms.geometry.attributes.color, nx=gp.widthSegments||1, ny=gp.heightSegments||1;
+      for(var j=0;j<=24;j++) for(var i=0;i<=24;i++){
+        var lx=(i/24-0.5)*pw, ly=(j/24-0.5)*ph, x=ms.position.x+lx, z=ms.position.z-ly;
+        var r=Math.min(1,Math.hypot(lx/(pw/2),ly/(ph/2)));
+        var ta = r<0.6 ? 0.86+(0.52-0.86)*(r/0.6) : 0.52*(1-(r-0.6)/0.4);
+        if(ms.userData.haze) ta=ta; 
+        var va=1;
+        if(col&&col.itemSize===4){
+          var fx=(lx/pw+0.5)*nx, fy=(0.5-ly/ph)*ny, ix=Math.min(nx-1,Math.floor(fx)), iy=Math.min(ny-1,Math.floor(fy)), u=fx-ix, v=fy-iy;
+          var A=col.array, idx=function(a,b){ return ((b*(nx+1))+a)*4+3; };
+          va=(A[idx(ix,iy)]*(1-u)+A[idx(ix+1,iy)]*u)*(1-v)+(A[idx(ix,iy+1)]*(1-u)+A[idx(ix+1,iy+1)]*u)*v;
+        }
+        var g=rg(x,z), dy=ms.position.y-g;
+        if(dy<0.45&&dy>-0.05){ band++; worst=Math.max(worst,ta*op*va); }
+      }
+    });
+    return {visible:true, crossingSamples:band, maxAlphaAtCrossing:+worst.toFixed(3)};
+  }
+
+  /* ---- everything for one case ---- */
+  function metrics(){
+    camera.updateMatrixWorld(true);
+    var c=camera.position;
+    return {
+      clock:(typeof fmtClock==="function")?fmtClock(clock):null, phase:curPhase, mode:mode, presentation:presentation,
+      camera:{pos:[+c.x.toFixed(2),+c.y.toFixed(2),+c.z.toFixed(2)], clearance:+(c.y-groundMax(c.x,c.z,1.5)).toFixed(3)},
+      groundSelfCheck:+selfCheckGround().toFixed(6),
+      figures:figures(), standards:standards(), labels:overlaps(),
+      smokeEdgeAlpha:(typeof _smokeTex!=="undefined")?edgeAlpha(_smokeTex):null,
+      dustEdgeAlpha:(typeof _dustTex!=="undefined")?edgeAlpha(_dustTex):null,
+      mist:mistEdge(),
+      selection:selection?selection.kind+":"+selection.id:null,
+      highlightOn:!!highlight,
+      drawerVisible:(function(){ var d=document.getElementById("drawer"); if(!d) return false; var cs=getComputedStyle(d); return d.classList.contains("on")&&cs.display!=="none"; })(),
+      chipVisible:(function(){ var d=document.getElementById("selchip"); if(!d) return null; return !d.hidden&&getComputedStyle(d).display!=="none"; })(),
+      firstRunVisible:(function(){ var d=document.getElementById("firstrun"); return !!d&&!d.hidden; })(),
+      dispatchVisible:(function(){ var d=document.querySelector(".dispatch"); return !!d&&getComputedStyle(d).display!=="none"&&d.getBoundingClientRect().width>0; })(),
+      stats:(D()&&D().stats)?D().stats():null
+    };
+  }
+
+  /* ---- pixels of a screenshot, outside the interface panels ---- */
+  function panelRects(){
+    var sel=[".rail",".dispatch",".legend",".timebar",".tools","#viewmode","#firstrun",".drawer","#tourbar","#selchip","#devstats","#restore","#layerpop","#vsbadge","#toast"];
+    var railHidden=document.body.classList.contains("rail-hidden");
+    var R=[];
+    sel.forEach(function(s){ document.querySelectorAll(s).forEach(function(e){
+      var cs=getComputedStyle(e); if(cs.display==="none"||cs.visibility==="hidden"||+cs.opacity<0.05||e.hidden) return;
+      if((e.classList.contains("rail")&&railHidden)||(e.classList.contains("drawer")&&!e.classList.contains("on"))) return;
+      var r=e.getBoundingClientRect(); if(r.width>0&&r.height>0) R.push([r.left,r.top,r.right,r.bottom]); }); });
+    return R;
+  }
+  function pixels(b64){
+    return new Promise(function(res){
+      var im=new Image();
+      im.onload=function(){
+        var cv=document.createElement("canvas"); cv.width=im.width; cv.height=im.height;
+        var x=cv.getContext("2d"); x.drawImage(im,0,0);
+        var d=x.getImageData(0,0,cv.width,cv.height).data, R=panelRects(), n=0, blk=0, lum=0;
+        function inUI(xx,y){ for(var k=0;k<R.length;k++){ var r=R[k]; if(xx>=r[0]&&xx<r[2]&&y>=r[1]&&y<r[3]) return true; } return false; }
+        for(var y=0;y<cv.height;y+=2) for(var xx=0;xx<cv.width;xx+=2){
+          if(inUI(xx,y)) continue;
+          var o=(y*cv.width+xx)*4, mx=Math.max(d[o],d[o+1],d[o+2]); n++;
+          if(mx<16) blk++; lum+=0.2126*d[o]+0.7152*d[o+1]+0.0722*d[o+2];
+        }
+        /* a slope clipped to black forms solid regions; a shako, a letter or a pole does not.
+           Count 8x8 blocks outside the panels that are at least 90% near-black. */
+        var B=8, solid=0, blocks=0;
+        for(var by=0;by+B<=cv.height;by+=B) for(var bx=0;bx+B<=cv.width;bx+=B){
+          if(inUI(bx,by)||inUI(bx+B-1,by+B-1)) continue;
+          blocks++; var c=0;
+          for(var yy=by;yy<by+B;yy++) for(var x2=bx;x2<bx+B;x2++){ var o2=(yy*cv.width+x2)*4; if(Math.max(d[o2],d[o2+1],d[o2+2])<16) c++; }
+          if(c>=0.9*B*B) solid++;
+        }
+        res({samples:n, nearBlack:n?+(blk/n).toFixed(4):0, solidBlack:blocks?+(solid/blocks).toFixed(5):0, solidBlocks:solid, meanLum:n?+(lum/n).toFixed(1):0});
+      };
+      im.src="data:image/png;base64,"+b64;
+    });
+  }
+
+  window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures,
+                overlaps:overlaps, aimOf:aimOf, effVisible:effVisible};
+})();

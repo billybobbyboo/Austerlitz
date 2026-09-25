@@ -1,0 +1,4 @@
+node_modules/
+tools/visual/out/
+*.pre-stage0
+__pycache__/

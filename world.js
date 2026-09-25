@@ -1,0 +1,1419 @@
+/* ============================================================
+   WORLD v2 — terrain, land cover, hydrography, settlement
+   map (0..680, 0..500) -> world (x -170..170, z -125..125)
+   1 world unit = 2 map units = GEOREF.M_PER_WORLD m (~63 m); relief exaggeration is GEOREF.EXAG
+   ============================================================ */
+
+/* One matte helper for the whole scene: rough, non-metallic, lit by the sun
+   and by the sky environment. */
+function matte(o){
+  if(o.roughness===undefined) o.roughness=0.88;
+  if(o.metalness===undefined) o.metalness=0.0;
+  if(o.envMapIntensity===undefined) o.envMapIntensity=0.32;
+  if(typeof o.color==="number") o.color=lin(o.color);
+  return new THREE.MeshStandardMaterial(o);
+}
+/* r128 stores a hex handed to a material as if it were already linear, and the
+   post chain converts linear to sRGB on output. Every colour in these files was
+   designed as an sRGB value, so it is decoded once here; a Color object is
+   assumed to be linear already. */
+function lin(c){ return (typeof c==="number") ? new THREE.Color(c).convertSRGBToLinear() : c; }
+/* canvas textures that carry colour (sky, mist, smoke, coats) are sRGB and are
+   decoded on sample; label sprites bypass the chain and stay as painted */
+function ctexS(cv){
+  var t=ctex(cv); t.encoding=THREE.sRGBEncoding;
+  /* every canvas that reaches this path is a power of two, so mipmaps are safe on any context */
+  t.generateMipmaps=true; t.minFilter=THREE.LinearMipmapLinearFilter; t.anisotropy=4;
+  return t;
+}
+function ctex(cv){
+  var t=new THREE.CanvasTexture(cv);
+  t.minFilter=THREE.LinearFilter; t.magFilter=THREE.LinearFilter;
+  t.generateMipmaps=false; t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping;
+  return t;
+}
+function W(mx,my){ return [(mx-340)*0.5, (my-250)*0.5]; }
+function M2W(pts){ return pts.map(function(p){ return W(p[0],p[1]); }); }
+
+var UNITS_PER_KM = GEOREF.UNITS_PER_KM;   /* from geo.js: the only scale */
+
+/* ---------------- hydrography ---------------- */
+var GOLDBACH_M=[[250,109],[240,160],[212,218],[208,256],[207,297],[204,362],[208,376],[214,410],[237,415],[276,415]];
+var LITAVA_M  =[[552,128],[511,138],[351,313],[297,372],[262,444],[215,500],[209,508]];   /* Slavkov south edge -> Hostěrádky -> Újezd -> Žatčany -> toward Židlochovice */
+var BROOKS_M=[
+  [[275,147],[256,185],[225,236]],
+  [[283,237],[247,257],[208,275]],
+  [[277,318],[251,341],[212,367]],
+  [[199,205],[201,239],[201,260]],
+  [[401,150],[415,196],[439,217]]   /* the Rakovec through Křenovice to the Litava (turistika.cz); course north of the village schematic */
+];
+var GOLDBACH=M2W(GOLDBACH_M), LITAVA=M2W(LITAVA_M), BROOKS=BROOKS_M.map(M2W);
+
+/* ---------------- roads and tracks ---------------- */
+var ROADS=[
+ {n:"Brunn-Olmutz highway", cls:"highway", w:2.9,
+  p:[[30,154],[142,128],[225,97],[239,80],[324,36],[401,-4]]},   /* west: legacy course; east of the Santon: past Tvarožná to the Posoritz post house and on toward Rausnitz */
+ {n:"Pratzen-Austerlitz road", cls:"post", w:2.0, p:[[276,243],[360,199],[433,158],[507,126]]},   /* legacy shape re-anchored on its two villages; course unverified */
+ {n:"Krzenowitz road", cls:"track", w:1.5, p:[[415,196],[348,217],[276,243]]},
+ {n:"Sokolnitz-Telnitz track", cls:"track", w:1.5, p:[[208,365],[208,376],[212,408]]},
+ {n:"Telnitz-Augezd track", cls:"track", w:1.5, p:[[212,408],[247,397],[297,372]]},
+ {n:"Augezd causeway", cls:"track", w:1.6, p:[[297,372],[285,409],[262,444]]},
+ {n:"Kobelnitz-Sokolnitz track", cls:"track", w:1.3, p:[[205,277],[211,312],[208,365]]},
+ {n:"Puntowitz-Kobelnitz track", cls:"track", w:1.3, p:[[213,222],[215,247],[205,277]]},
+ {n:"Blasowitz-Krzenowitz track", cls:"track", w:1.4, p:[[296,147],[339,139],[415,196]]},
+ {n:"Schlapanitz-Girzikowitz track", cls:"track", w:1.4, p:[[163,177],[177,163],[233,162]]},
+ {n:"Bosenitz-Blasowitz track", cls:"track", w:1.3, p:[[236,69],[261,114],[296,147]]},
+ {n:"Pratzen-Sokolnitz track", cls:"track", w:1.4, p:[[276,243],[271,292],[238,334]]},
+ {n:"Menitz track", cls:"track", w:1.3, p:[[212,408],[187,427],[182,464]]},
+ {n:"Holubitz-Posoritz track", cls:"track", w:1.3, p:[[340,89],[332,62],[324,36]]},
+ {n:"Raigern-Telnitz road", cls:"track", w:1.2, p:[[18,500],[115,443],[212,408]]}   /* local road via Otmarov; Raigern itself is off the map */
+];
+
+/* ---------------- woodland ---------------- */
+var WOODS=[
+ {c:[236,385], rx:24, ry:17, rot:0.08, n:190, conifer:0.12},   /* Sokolnitz pheasantry: legacy offset from the village */
+ {c:[551,151], rx:30, ry:22, rot:0.0,  n:170, conifer:0.30},   /* Austerlitz park: legacy offset from the town */
+ {c:[353,55],  rx:28, ry:13, rot:0.12, n:110, conifer:0.55},   /* wood above Holubitz */
+ {c:[76,396],  rx:27, ry:19, rot:0.2,  n:112, conifer:0.40},   /* Raigern woods */
+ {c:[229,253], rx:13, ry:9,  rot:0.4,  n:48,  conifer:0.45},   /* copse west of the plateau */
+ {c:[235,64],  rx:15, ry:9,  rot:0.0,  n:50,  conifer:0.50},   /* copse behind the Santon */
+ {c:[461,151], rx:23, ry:15, rot:0.3,  n:86,  conifer:0.35},   /* east of Krzenowitz */
+ {c:[198,478], rx:24, ry:12, rot:0.15, n:66,  conifer:0.25},   /* below the Menitz mere */
+ {c:[611,305], rx:28, ry:21, rot:0.0,  n:104, conifer:0.45},   /* far east */
+ {c:[394,423], rx:23, ry:13, rot:0.25, n:74,  conifer:0.30}    /* south-east */
+];
+
+/* ---------------- marshy bottoms ---------------- */
+var MARSH=[
+ {c:[207,372], rx:15, ry:58},   /* lower Goldbach, Sokolnitz down to Telnitz */
+ {c:[227,418], rx:38, ry:26},   /* confluence below Telnitz */
+ {c:[272,418], rx:76, ry:26},   /* Satschan fringe */
+ {c:[188,457], rx:62, ry:24},   /* Menitz fringe */
+ {c:[202,273], rx:13, ry:44},   /* Kobelnitz bottom */
+ {c:[324,343], rx:30, ry:22},   /* Litava bottom, Hostěrádky to Újezd */
+ {c:[202,271], rx:12, ry:44},   /* Kobelnitz reach, where the bottom first turns wet */
+ {c:[252,415], rx:34, ry:16},
+ {c:[415,243], rx:34, ry:14}   /* Litava bottom below Slavkov */
+];
+
+var VINEYARD={c:[313,205], rx:23, ry:16};
+
+/* ---------------- settlements ---------------- */
+var VILLAGES=[   /* from GEOREF ground truth; Krug, Bellowitz and Turas are not in the register and keep their warped legacy place.
+                    Raigern, Rausnitz and Kowalowitz lie beyond the frame and are shown as edge markers */
+ ["Bosenitz",236,69,7],["Girzikowitz",233,162,9],["Puntowitz",213,222,8],
+ ["Kobelnitz",205,277,9],["Sokolnitz",208,365,13],["Telnitz",212,408,12],
+ ["Augezd",297,372,9],["Blasowitz",296,147,10],["Krug",339,139,5],
+ ["Holubitz",340,89,7],["Pratzen",276,243,11],["Bellowitz",164,113,7],
+ ["Schlapanitz",163,177,9],["Krzenowitz",415,196,10],["Austerlitz",507,126,24],
+ ["Menitz",181,489,7],["Satschan",262,444,7],["Turas",89,372,5],
+ ["Hostieradek",342,309,7],["Posoritz post house",324,36,3]
+];
+var CHURCHES=["Girzikowitz","Kobelnitz","Sokolnitz","Telnitz","Augezd","Blasowitz",
+  "Pratzen","Schlapanitz","Krzenowitz","Austerlitz","Bosenitz","Holubitz"];
+
+/* The Pratzen crest: Stare Vinohrady -> the col between them -> the Pratzeberg (GEOREF ground truth;
+   the col is PeakVisor's key col of Stare Vinohrady). Used by the relief and the terrain line. */
+var CREST_M=[[309,193],[313,205],[323,231],[332,257],[309,273],[285,289],[281,302]];
+
+/* ---------------- named terrain analysis ---------------- */
+var TERRAIN_LINES=[
+ {t:"ridge", n:"Pratzen crest", p:CREST_M,
+  note:"The dominant ground of the field. Whoever held it held the centre and the interior lines."},
+ {t:"ridge", n:"Santon spur", p:[[213,80],[222,87],[227,94]],
+  note:"Short steep spur north of the highway, scarped and entrenched before the battle."},
+ {t:"ridge", n:"Holubitz ridge", p:[[384,91],[349,108],[330,125],[309,139]],
+  note:"Bagration's shelf along the highway. Low, but enough to anchor the Allied right."},
+ {t:"ridge", n:"Zuran rise", p:[[168,131],[177,134],[193,143]],
+  note:"Napoleon's first command post. Low, but it looks straight down the French front."},
+ {t:"scarp", n:"Western escarpment", p:[[273,188],[259,233],[245,280],[248,324],[258,349]],
+  note:"The face Soult's divisions climbed. Steep enough to hide a division at the foot of it."},
+ {t:"valley", n:"Goldbach bottom", p:[[240,160],[213,222],[203,277],[206,365],[212,408],[239,413]],
+  note:"Marshy in December. Infantry cross it anywhere; guns and formed cavalry cross it at the villages."},
+ {t:"valley", n:"Litava bottom", p:[[511,138],[351,313],[297,372],[262,444]],
+  note:"Frames the south-east of the field and funnels the Allied retreat toward the meres."},
+ {t:"defile", n:"Augezd defile", p:[[297,372],[280,408],[262,444]],
+  note:"The neck of dry ground between the two meres. The only ordered way out for three Allied columns."},
+ {t:"dead", n:"Dead ground, Goldbach valley", p:[[221,192],[210,242],[201,281]],
+  note:"Dead ground as seen from the Pratzeberg in this model's terrain - a derived reading. On the morning of the battle it was the fog that hid Saint-Hilaire's and Vandamme's divisions forming here."}
+];
+
+/* ---------------- noise and relief ---------------- */
+function hash2(i,j){
+  var n=Math.imul(i,374761393)+Math.imul(j,668265263);
+  n=Math.imul(n^(n>>>13),1274126177);
+  return ((n^(n>>>16))>>>0)/4294967295;
+}
+function vnoise(x,z){
+  var xi=Math.floor(x), zi=Math.floor(z), xf=x-xi, zf=z-zi;
+  var u=xf*xf*(3-2*xf), v=zf*zf*(3-2*zf);
+  var a=hash2(xi,zi), b=hash2(xi+1,zi), c=hash2(xi,zi+1), d=hash2(xi+1,zi+1);
+  return (a*(1-u)+b*u)*(1-v)+(c*(1-u)+d*u)*v;
+}
+function dist2(ax,az,bx,bz){ var dx=ax-bx, dz=az-bz; return Math.sqrt(dx*dx+dz*dz); }
+function pnoise(x,z,P){
+  var xi=Math.floor(x), zi=Math.floor(z), xf=x-xi, zf=z-zi;
+  var u=xf*xf*(3-2*xf), v=zf*zf*(3-2*zf);
+  var x0=((xi%P)+P)%P, x1=(x0+1)%P, z0=((zi%P)+P)%P, z1=(z0+1)%P;
+  var a=hash2(x0,z0), b=hash2(x1,z0), c=hash2(x0,z1), d=hash2(x1,z1);
+  return (a*(1-u)+b*u)*(1-v)+(c*(1-u)+d*u)*v;
+}
+function segDist(px,pz,ax,az,bx,bz){
+  var vx=bx-ax, vz=bz-az, wa=px-ax, wb=pz-az;
+  var c1=wa*vx+wb*vz; if(c1<=0) return dist2(px,pz,ax,az);
+  var c2=vx*vx+vz*vz; if(c2<=c1) return dist2(px,pz,bx,bz);
+  var t=c1/c2; return dist2(px,pz,ax+t*vx,az+t*vz);
+}
+function polyDist(px,pz,pts){
+  var d=1e9;
+  for(var i=0;i<pts.length-1;i++){
+    var s=segDist(px,pz,pts[i][0],pts[i][1],pts[i+1][0],pts[i+1][1]);
+    if(s<d) d=s;
+  }
+  return d;
+}
+function smoothstep(a,b,x){ var t=Math.min(1,Math.max(0,(x-a)/(b-a))); return t*t*(3-2*t); }
+function bump(x,z,c,rx,rz,h,edge){
+  var d=Math.sqrt(((x-c[0])/rx)*((x-c[0])/rx)+((z-c[1])/rz)*((z-c[1])/rz));
+  return h*(1-smoothstep(edge,1,d));
+}
+function ell(x,z,cm,rx,ry){
+  if(!cm._w) cm._w=W(cm[0],cm[1]);
+  var a=(x-cm._w[0])/(rx*0.5), b=(z-cm._w[1])/(ry*0.5);
+  return Math.sqrt(a*a+b*b);
+}
+
+var CREST=M2W(CREST_M);
+var PRAT=W(310,250), VINO=W(313,205), PBERG=W(285,289), SANTON=W(222,87),
+    ZURAN=W(177,134), SATS=W(268,421), MENI=W(187,457), SLAV=W(507,126), SCHLAP=W(163,177);
+
+/* The land's large-scale fall, fitted to surveyed elevations (tools/relief-fit.js): ground rising
+   to the north, and the broad middle-Litava lowland along the Litava and the Rakovec. Kept apart
+   from the local relief, because the floor, the land-cover thresholds and the pond levels are
+   calibrated on local relief and must keep their meaning. World units, before the 1.2 factor. */
+function regionalH(x,z){
+  var nk=GEOREF.mapToEN(x*2+340,z*2+250)[1];                 /* true northing, km           */
+  var dv=Math.min(polyDist(x,z,LITAVA),polyDist(x,z,BROOKS[BROOKS.length-1]));
+  return 0.51*smoothstep(3.0,6.0,nk) + 0.37*nk - 3.16*Math.exp(-(dv*dv)/625);
+}
+/* A pond's shoreline is level: within and just around each mere the regional level is held at
+   the mere's own value, blending out beyond the rim. The legacy water levels (local relief)
+   then sit below the rim all the way round, as they did before the regional fall was added. */
+var _RS=null, _RM=null;
+function pondHold(x,z,c,rx,rz){ var d=Math.sqrt(((x-c[0])/rx)*((x-c[0])/rx)+((z-c[1])/rz)*((z-c[1])/rz)); return 1-smoothstep(1.05,1.25,d); }   /* full hold to just past the water's edge (d=1), fading by 1.25 */
+function regionalLevel(x,z){
+  if(_RS===null){ _RS=regionalH(SATS[0],SATS[1]); _RM=regionalH(MENI[0],MENI[1]); }
+  var r=regionalH(x,z), ws=pondHold(x,z,SATS,28,10.5), wm=pondHold(x,z,MENI,23,9);
+  if(ws>0) r=r*(1-ws)+_RS*ws;
+  if(wm>0) r=r*(1-wm)+_RM*wm;
+  return r;
+}
+function height(x,z){ return localHeight(x,z) + 1.2*regionalLevel(x,z); }
+function localHeight(x,z){
+  var h = 2.3*(vnoise(x/34+11.3,z/34+5.7)-0.5)
+        + 1.1*(vnoise(x/15+61.1,z/15+27.9)-0.5)
+        + 0.32*(vnoise(x/7+103.7,z/7+83.1)-0.5);
+  /* relief amplitudes fitted to verified elevations (tools/relief-fit.js):
+     Pratzeberg 324 m, Stare Vinohrady 294, Santon 296, Zuran 286-293, Tvarozna 257,
+     Kobylnice 211 -> Sokolnice 207 (the drop kept), Prace 245, the col 273, Ujezd 195,
+     Krenovice 203-216, Slavkov 200-237 (range only). Metres = GEOREF.elevM(h).           */
+  h += bump(x,z,PRAT,50,60,1.13,0.48);                       /* the broad upland            */
+  var dc=polyDist(x,z,CREST); h += 5.29*Math.exp(-(dc*dc)/64); /* the crest arc, ~0.5 km wide */
+  h += bump(x,z,VINO,11,10,1.03,0.26);
+  h += bump(x,z,PBERG,10,9.5,5.45,0.26);
+  h += bump(x,z,SANTON,7.4,6.4,5.24,0.30);
+  h += bump(x,z,ZURAN,6.6,5.8,5.45,0.36);
+  h += bump(x,z,SLAV,13,11,2.58,0.40);                       /* the rise Austerlitz stands on (fitted) */
+  h += bump(x,z,SCHLAP,15,9,3.0,0.36);
+  var dg=polyDist(x,z,GOLDBACH); h -= 3.3*Math.exp(-(dg*dg)/66);
+  var dl=polyDist(x,z,LITAVA);   h -= 2.6*Math.exp(-(dl*dl)/88);
+  for(var i=0;i<BROOKS.length;i++){
+    var db=polyDist(x,z,BROOKS[i]); h -= 1.15*Math.exp(-(db*db)/34);
+  }
+  var ps=Math.sqrt(((x-SATS[0])/28)*((x-SATS[0])/28)+((z-SATS[1])/10.5)*((z-SATS[1])/10.5));
+  h -= 4.3*(1-smoothstep(0.55,1.15,ps));
+  var pm=Math.sqrt(((x-MENI[0])/23)*((x-MENI[0])/23)+((z-MENI[1])/9)*((z-MENI[1])/9));
+  h -= 5.3*(1-smoothstep(0.55,1.15,pm));
+  return Math.max(h*1.2,-6.9);
+}
+/* The land-cover classifier: one definition, used by the terrain build and by the tests.
+   ml is LOCAL relief (see regionalH): the thresholds were calibrated on it.
+   0 field, 1 meadow, 2 marsh, 3 water, 4 wood, 5 village, 6 vineyard, 7 track */
+function coverClass(mx,mz,ml){
+  var water=covAt(covWater,mx,mz), marsh=covAt(covMarsh,mx,mz), wood=covAt(covWood,mx,mz),
+      vill=covAt(covVill,mx,mz), road=covAt(covRoad,mx,mz), vine=covAt(covVine,mx,mz);
+  var pondS=1-smoothstep(0.55,1.08,Math.sqrt(((mx-SATS[0])/28)*((mx-SATS[0])/28)+((mz-SATS[1])/10.5)*((mz-SATS[1])/10.5)));
+  var pondM=1-smoothstep(0.55,1.08,Math.sqrt(((mx-MENI[0])/23)*((mx-MENI[0])/23)+((mz-MENI[1])/9)*((mz-MENI[1])/9)));
+  if(pondS>0.5||pondM>0.5||(water>0.55&&ml<-2.6)) return 3;
+  if(marsh>0.45&&ml<0.4) return 2;
+  if(vill>0.55) return 5;
+  if(wood>0.5) return 4;
+  if(road>0.6) return 7;
+  if(vine>0.55) return 6;
+  if(ml<-1.2||water>0.35) return 1;
+  return 0;
+}
+function hAt(mx,my){ var w=W(mx,my); return height(w[0],w[1]); }
+
+/* ---------------- coarse land-cover raster ---------------- */
+var COV_NX=168, COV_NZ=146, COV_X0=-180, COV_Z0=-155, COV_DX=360/167, COV_DZ=310/145;
+var covWood, covMarsh, covVill, covRoad, covWater, covVine;
+
+function buildCover(){
+  var n=COV_NX*COV_NZ;
+  covWood=new Float32Array(n); covMarsh=new Float32Array(n); covVill=new Float32Array(n);
+  covRoad=new Float32Array(n); covWater=new Float32Array(n); covVine=new Float32Array(n);
+  var roadPts=ROADS.map(function(r){ return {p:M2W(r.p), w:r.w}; });
+  var villW=VILLAGES.map(function(v){ var c=W(v[1],v[2]); return [c[0],c[1],2.6+v[3]*0.46]; });
+  for(var j=0;j<COV_NZ;j++){
+    var z=COV_Z0+j*COV_DZ;
+    for(var i=0;i<COV_NX;i++){
+      var x=COV_X0+i*COV_DX, k=j*COV_NX+i, s, t;
+      s=0;
+      for(t=0;t<WOODS.length;t++){
+        var wd=WOODS[t];
+        s=Math.max(s,1-smoothstep(0.62,1.16,ell(x,z,wd.c,wd.rx,wd.ry)));
+      }
+      covWood[k]=s;
+      s=0;
+      for(t=0;t<MARSH.length;t++){
+        var mr=MARSH[t];
+        s=Math.max(s,1-smoothstep(0.6,1.05,ell(x,z,mr.c,mr.rx,mr.ry)));
+      }
+      covMarsh[k]=s;
+      s=0;
+      for(t=0;t<villW.length;t++){
+        var vv=villW[t], dv=Math.hypot(x-vv[0],z-vv[1]);
+        s=Math.max(s,1-smoothstep(vv[2]*0.72,vv[2]*1.35,dv));
+      }
+      covVill[k]=s;
+      var dr=1e9;
+      for(t=0;t<roadPts.length;t++) dr=Math.min(dr,polyDist(x,z,roadPts[t].p)-roadPts[t].w*0.5);
+      covRoad[k]=1-smoothstep(0.4,2.6,dr);
+      var dw=Math.min(polyDist(x,z,GOLDBACH),polyDist(x,z,LITAVA));
+      for(t=0;t<BROOKS.length;t++) dw=Math.min(dw,polyDist(x,z,BROOKS[t]));
+      covWater[k]=1-smoothstep(1.0,3.0,dw);
+      covVine[k]=1-smoothstep(0.75,1.06,ell(x,z,VINEYARD.c,VINEYARD.rx,VINEYARD.ry));
+    }
+  }
+}
+function covAt(a,x,z){
+  var fi=(x-COV_X0)/COV_DX, fj=(z-COV_Z0)/COV_DZ;
+  var i=Math.max(0,Math.min(COV_NX-2,Math.floor(fi))), j=Math.max(0,Math.min(COV_NZ-2,Math.floor(fj)));
+  var u=Math.max(0,Math.min(1,fi-i)), v=Math.max(0,Math.min(1,fj-j));
+  var k=j*COV_NX+i;
+  return (a[k]*(1-u)+a[k+1]*u)*(1-v)+(a[k+COV_NX]*(1-u)+a[k+COV_NX+1]*u)*v;
+}
+
+/* ---------------- analysis grid ---------------- */
+var G_NX=301, G_NZ=259, G_X0=-180, G_Z0=-155, G_DX=360/300, G_DZ=310/258;
+var gridH=null, gridCurv=null;
+function buildGrid(){
+  gridH=new Float32Array(G_NX*G_NZ);
+  gridCurv=new Float32Array(G_NX*G_NZ);
+  var i,j;
+  for(j=0;j<G_NZ;j++) for(i=0;i<G_NX;i++)
+    gridH[j*G_NX+i]=height(G_X0+i*G_DX, G_Z0+j*G_DZ);
+  for(j=1;j<G_NZ-1;j++) for(i=1;i<G_NX-1;i++){
+    var k=j*G_NX+i;
+    gridCurv[k]=gridH[k-1]+gridH[k+1]+gridH[k-G_NX]+gridH[k+G_NX]-4*gridH[k];
+  }
+}
+function gridAt(a,x,z){
+  var fi=(x-G_X0)/G_DX, fj=(z-G_Z0)/G_DZ;
+  var i=Math.max(0,Math.min(G_NX-2,Math.floor(fi))), j=Math.max(0,Math.min(G_NZ-2,Math.floor(fj)));
+  var u=Math.max(0,Math.min(1,fi-i)), v=Math.max(0,Math.min(1,fj-j)), k=j*G_NX+i;
+  return (a[k]*(1-u)+a[k+1]*u)*(1-v)+(a[k+G_NX]*(1-u)+a[k+G_NX+1]*u)*v;
+}
+
+/* ---------------- the ground as drawn ----------------
+   Anything that must stand on the visible ground - figures, standards, the camera floor, mist
+   edges - reads the terrain mesh's own triangles, not the analytic height(), which the 81 m
+   triangulation departs from by up to a few tenths of a unit on steep ground. The layout matches
+   PlaneGeometry(360,310,280,240) turned flat: cell (ix,iz) is triangles (a,b,d) and (b,c,d). */
+var GROUND_W=360, GROUND_D=310, GROUND_NX=280, GROUND_NZ=240;
+function groundY(x,z){
+  if(!groundMesh) return height(x,z);
+  var P=groundMesh.geometry.attributes.position.array, cw=GROUND_W/GROUND_NX, cd=GROUND_D/GROUND_NZ;
+  var fx=(x+GROUND_W/2)/cw, fz=(z+GROUND_D/2)/cd;
+  if(fx<0||fz<0||fx>GROUND_NX||fz>GROUND_NZ) return height(x,z);
+  var ix=Math.min(GROUND_NX-1,Math.floor(fx)), iz=Math.min(GROUND_NZ-1,Math.floor(fz)), u=fx-ix, v=fz-iz;
+  var o0=(iz*GROUND_NX+ix)*18, o1=o0+9;
+  var ha=P[o0+1], hb=P[o0+4], hd=P[o0+7], hc=P[o1+4];
+  return (u+v<=1) ? ha+u*(hd-ha)+v*(hb-ha) : hc+(1-u)*(hb-hc)+(1-v)*(hd-hc);
+}
+
+/* ---------------- state ---------------- */
+var scrubMesh=null;
+var groundMesh=null, domeMesh=null, mistGroup=null, treeMesh=null, coniferMesh=null,
+    roofMesh=null, houseMesh=null, spireMesh=null, waterMeshes=[], roadMeshes=[],
+    contourGroup=null, marshGroup=null, analysisGroup=null;
+var FACE={n:0,x:null,z:null,h:null,slope:null,shade:null,cover:null,tint:null,ao:null,nz:null};
+var palNatural=null, palPaper=null, palGoing=null;
+var groundPalette="natural", vsMask=null, vsOrigin=null;
+
+/* ---------------- build ---------------- */
+function buildWorld(scene){
+  buildCover();
+  buildGrid();
+
+  var sc=document.createElement("canvas"); sc.width=4; sc.height=256;
+  var sctx=sc.getContext("2d");
+  var g=sctx.createLinearGradient(0,0,0,256);
+  g.addColorStop(0,"#18242E"); g.addColorStop(.55,"#47575F"); g.addColorStop(.83,"#959E9C"); g.addColorStop(1,"#C6B9A0");
+  sctx.fillStyle=g; sctx.fillRect(0,0,4,256);
+  domeMesh=new THREE.Mesh(new THREE.SphereGeometry(1400,32,20),   /* beyond the apron and the fog */
+    new THREE.MeshBasicMaterial({map:ctex(sc),side:THREE.BackSide,fog:false,depthWrite:false}));
+  scene.add(domeMesh);
+
+  var geo=new THREE.PlaneGeometry(GROUND_W,GROUND_D,GROUND_NX,GROUND_NZ);   /* groundY() reads this layout */
+  geo.rotateX(-Math.PI/2);
+  var pos=geo.attributes.position;
+  for(var i=0;i<pos.count;i++) pos.setY(i, height(pos.getX(i),pos.getZ(i)));
+  geo.computeVertexNormals();      /* averaged across faces, so slopes are continuous */
+  geo=geo.toNonIndexed();          /* then split, keeping those smooth normals per vertex */
+  /* world-space UVs for the grain texture: one tile per 7 world units (about 270 m) */
+  (function(){
+    var pa=geo.attributes.position, uv=new Float32Array(pa.count*2);
+    for(var i=0;i<pa.count;i++){ uv[i*2]=pa.getX(i)/11.0; uv[i*2+1]=pa.getZ(i)/11.0; }
+    geo.setAttribute("uv",new THREE.BufferAttribute(uv,2));
+  })();
+  buildFaceFacts(geo);
+  (function(){
+    var cov=new Float32Array(FACE.n*3);
+    for(var f=0;f<FACE.n;f++){
+      var cell=FACE.cover[f];
+      if(cell===0){ var cr=FACE.crop[f]; cell = cr===1?8 : cr===2?9 : cr===3?10 : 0; }
+      cov[f*3]=cov[f*3+1]=cov[f*3+2]=cell;
+    }
+    geo.setAttribute("cover",new THREE.BufferAttribute(cov,1));
+  })();
+  palNatural=makePalette("natural");
+  palPaper=makePalette("paper");
+  geo.setAttribute("color",new THREE.BufferAttribute(new Float32Array(FACE.n*9),3));
+  groundMesh=new THREE.Mesh(geo,atlasShader(matte({vertexColors:true,flatShading:false,
+    map:coverAtlas(), normalMap:coverNormalAtlas(), envMapIntensity:0.28,
+    normalScale:new THREE.Vector2(0.45,0.45), roughness:0.94, metalness:0.0})));
+  groundMesh.material.userData.grain=groundMesh.material.map;
+  groundMesh.receiveShadow=true;
+  scene.add(groundMesh);
+  applyGround();
+
+  buildWater(scene);
+  buildRoads(scene);
+  buildSettlements(scene);
+  buildWoods(scene);
+  var apronMesh=buildApron(scene);
+  buildContours(scene);
+  buildMarshSymbols(scene);
+  buildAnalysis(scene);
+  buildMist(scene);
+
+  return {ground:groundMesh, apron:apronMesh, dome:domeMesh, mist:mistGroup, trees:treeMesh, conifers:coniferMesh, scrub:scrubMesh,
+          houses:houseMesh, roofs:roofMesh, spires:spireMesh, water:waterMeshes, roads:roadMeshes,
+          contours:contourGroup, marsh:marshGroup, analysis:analysisGroup};
+}
+
+function buildFaceFacts(geo){
+  var p=geo.attributes.position.array;
+  var nf=geo.attributes.position.count/3;
+  FACE.n=nf;
+  FACE.x=new Float32Array(nf); FACE.z=new Float32Array(nf); FACE.h=new Float32Array(nf);
+  FACE.slope=new Float32Array(nf); FACE.shade=new Float32Array(nf);
+  FACE.cover=new Uint8Array(nf); FACE.tint=new Float32Array(nf); FACE.ao=new Float32Array(nf);
+  FACE.crop=new Uint8Array(nf);       /* 0 stubble, 1 plough, 2 pasture, 3 winter sowing */
+  FACE.nz=new Float32Array(nf);
+  FACE.vsh=new Float32Array(nf*3); FACE.vnz=new Float32Array(nf*3);   /* per vertex */
+  var LX=-0.52, LY=0.70, LZ=-0.49;
+  var ln=Math.sqrt(LX*LX+LY*LY+LZ*LZ); LX/=ln; LY/=ln; LZ/=ln;
+  var vn=geo.attributes.normal.array;
+  for(var q=0;q<nf*3;q++){
+    var qx=vn[q*3],qy=vn[q*3+1],qz=vn[q*3+2];
+    FACE.vsh[q]=Math.max(0,qx*LX+qy*LY+qz*LZ);
+    FACE.vnz[q]=qz;
+  }
+  for(var f=0;f<nf;f++){
+    var o=f*9;
+    var ax=p[o],ay=p[o+1],az=p[o+2], bx=p[o+3],by=p[o+4],bz=p[o+5], cx=p[o+6],cy=p[o+7],cz=p[o+8];
+    var ux=bx-ax, uy=by-ay, uz=bz-az, vx=cx-ax, vy=cy-ay, vz=cz-az;
+    var nx=uy*vz-uz*vy, ny=uz*vx-ux*vz, nz=ux*vy-uy*vx;
+    var nl=Math.sqrt(nx*nx+ny*ny+nz*nz)||1; nx/=nl; ny/=nl; nz/=nl;
+    if(ny<0){ nx=-nx; ny=-ny; nz=-nz; }
+    var mx=(ax+bx+cx)/3, mz=(az+bz+cz)/3, mh=(ay+by+cy)/3;
+    var ml=mh-1.2*regionalLevel(mx,mz);   /* local relief: what the land-cover thresholds were calibrated on */
+    FACE.x[f]=mx; FACE.z[f]=mz; FACE.h[f]=mh;
+    FACE.slope[f]=Math.acos(Math.max(-1,Math.min(1,ny)));
+    FACE.shade[f]=Math.max(0,nx*LX+ny*LY+nz*LZ);
+    FACE.nz[f]=nz;
+
+    FACE.cover[f]=coverClass(mx,mz,ml);
+    var water=covAt(covWater,mx,mz), vill=covAt(covVill,mx,mz);   /* still used by the tint below (damp and trodden ground) */
+
+    var curvAO=gridAt(gridCurv,mx,mz);
+    FACE.ao[f]=Math.max(0.62,Math.min(1.10, 1 - curvAO*0.40));
+    var ang=0.5+1.7*vnoise(mx/88+3.1,mz/88+7.7);
+    var ca=Math.cos(ang), sa=Math.sin(ang);
+    var u1=mx*ca+mz*sa, v1=-mx*sa+mz*ca;
+    var block=Math.floor(v1/30), strip=Math.floor(u1/5.2);
+    var id=hash2(strip,block*17+3);
+    /* a field block is one holding: stubble, plough, pasture or a winter sowing */
+    var bh=hash2(block*3+1,(strip>>2)*7+5);
+    var crop = bh<0.42?0 : bh<0.68?1 : bh<0.88?2 : 3;
+    FACE.crop[f]=crop;
+    var blockTint=[1.00,0.92,0.98,0.96][crop]*(0.975+0.05*hash2(block,strip>>2));
+    var frac=Math.abs(u1/5.2-Math.floor(u1/5.2)-0.5);
+    var vfrac=Math.abs(v1/30-Math.floor(v1/30)-0.5);
+    var t=(0.955+0.09*id)*blockTint;
+    if(id>0.84) t*=0.93;
+    if(frac>0.46) t*=0.965;                       /* strip baulk */
+    if(vfrac>0.475) t*=0.90;                      /* field boundary: a headland or a hedge line */
+    var curv=gridAt(gridCurv,mx,mz);
+    t*= 1 - Math.max(-0.05,Math.min(0.06, curv*0.10));
+    /* damp ground darkens toward the streams; trodden ground lightens around a village */
+    t*= 1 - Math.min(0.35,water)*0.30;
+    if(vill>0.15&&vill<0.55) t*=1.04;
+    FACE.tint[f]=t;
+  }
+}
+
+var COVER_COL={
+  natural:[0x686659,0x5C5F50,0x4E5650,0x3A4850,0x33402E,0x6A665A,0x62634F,0x5F5A4A],
+  paper:  [0xE8DFC6,0xDCD9BC,0xCBD5C8,0xA8BEC8,0xBFCBA8,0xDCCFB4,0xE2DCBA,0xD2C4A4]
+};
+function makePalette(kind){
+  var n=FACE.n, out=new Float32Array(n*9);
+  var paper=(kind==="paper");
+  var base=COVER_COL[paper?"paper":"natural"];
+  var c=new THREE.Color();
+  var bc=new THREE.Color();
+  for(var f=0;f<n;f++){
+    var cov=FACE.cover[f], h=FACE.h[f], t=FACE.tint[f];
+    /* what is the same across the face: ground type, elevation tint, field strip, occlusion */
+    bc.setHex(base[cov]);
+    var e=Math.max(0,Math.min(1,(GEOREF.elevM(h)-200)/123));   /* elevation tint, in metres */
+    if(paper){ bc.r*=(0.90+0.16*e); bc.g*=(0.92+0.10*e); bc.b*=(0.98-0.20*e); }
+    else     { bc.r*=(0.90+0.14*e); bc.g*=(0.90+0.14*e); bc.b*=(0.92+0.12*e); }
+    if(cov!==3&&cov!==4){
+      bc.r*=t; bc.g*=t; bc.b*=t;
+      if(cov===0){
+        var cr=FACE.crop[f];
+        if(cr===1){ bc.r*=1.025; bc.g*=0.99; bc.b*=0.97; }       /* plough: a little browner */
+        else if(cr===2){ bc.r*=0.98; bc.g*=1.015; bc.b*=0.985; } /* pasture: grey-green */
+        else if(cr===3){ bc.r*=0.99; bc.g*=1.01; bc.b*=0.995; }  /* winter sowing: barely green */
+      }
+    }
+    var hollow=Math.max(0,0.94-FACE.ao[f])*2.4;
+    /* what changes across the face: the shade and the frost, from the vertex normals,
+       so relief is a continuous gradient instead of a terrace of flat facets */
+    for(var k=0;k<3;k++){
+      var q=f*3+k, sh=FACE.vsh[q];
+      c.copy(bc);
+      if(!paper && cov!==3){
+        var north=Math.max(0,-FACE.vnz[q]);
+        var frost=Math.min(0.30, north*0.26 + hollow*0.22 + (cov===1?0.08:0) + (cov===2?0.06:0));
+        if(frost>0.01){ c.r+=(0.70-c.r)*frost; c.g+=(0.73-c.g)*frost; c.b+=(0.78-c.b)*frost; }
+      }
+      /* The landscape is also lit in real time by the phase's sun, usually from the south-east to
+         the south-west, so the baked north-west hillshade is kept narrow there (0.70-1.12, was
+         0.46-1.20): at full range the two lights multiplied a slope facing away from both down to
+         near-black. The paper map is not sun-lit and keeps its full cartographic hillshade. */
+      var rel=(paper ? (0.66+0.46*sh) : (0.70+0.42*sh)) * FACE.ao[f];
+      c.r*=rel; c.g*=rel; c.b*=rel;
+      if(!paper){ var wc=(sh-0.55)*0.07; c.r*=1+wc; c.b*=1-wc; }
+      c.convertSRGBToLinear();
+      var o=f*9+k*3;
+      out[o]=Math.max(0,Math.min(1,c.r)); out[o+1]=Math.max(0,Math.min(1,c.g)); out[o+2]=Math.max(0,Math.min(1,c.b));
+    }
+  }
+  return out;
+}
+function makeGoingPalette(){
+  var n=FACE.n, out=new Float32Array(n*9), c=new THREE.Color();
+  for(var f=0;f<n;f++){
+    var cov=FACE.cover[f], deg=FACE.slope[f]*180/Math.PI, sh=FACE.shade[f], hex;
+    if(cov===3) hex=0x36505E;
+    else if(cov===2) hex=0x6B5A3E;
+    else if(deg>17) hex=0x8E4436;
+    else if(deg>9||cov===4||cov===5) hex=0xB8863A;
+    else if(cov===6) hex=0xA89A4C;
+    else hex=0x6E8A5A;
+    c.setHex(hex);
+    var rel=(0.70+0.46*sh)*FACE.ao[f];
+    c.r*=rel; c.g*=rel; c.b*=rel;
+    var o=f*9;
+    c.convertSRGBToLinear();
+    var R=Math.max(0,Math.min(1,c.r)),
+        G=Math.max(0,Math.min(1,c.g)),
+        B=Math.max(0,Math.min(1,c.b));
+    for(var k=0;k<3;k++){ out[o+k*3]=R; out[o+k*3+1]=G; out[o+k*3+2]=B; }
+  }
+  return out;
+}
+function applyGround(){
+  if(!groundMesh) return;
+  var base = groundPalette==="paper" ? palPaper
+           : groundPalette==="going" ? (palGoing||(palGoing=makeGoingPalette()))
+           : palNatural;
+  var arr=groundMesh.geometry.attributes.color.array;
+  var i,f,k;
+  if(!vsMask){
+    for(i=0;i<arr.length;i++) arr[i]=base[i];
+  } else {
+    for(f=0;f<FACE.n;f++){
+      var vis=sampleVS(FACE.x[f],FACE.z[f]);
+      var o=f*9;
+      for(k=0;k<3;k++){
+        var q=o+k*3;
+        var r=base[q], gg=base[q+1], b=base[q+2];
+        if(vis){ r=r*0.86+0.20; gg=gg*0.88+0.17; b=b*0.70+0.03; }
+        else   { r=r*0.40+0.035; gg=gg*0.42+0.055; b=b*0.52+0.10; }
+        arr[q]=r; arr[q+1]=gg; arr[q+2]=b;
+      }
+    }
+  }
+  groundMesh.geometry.attributes.color.needsUpdate=true;
+}
+function setGround(name){
+  groundPalette=name;
+  /* the staff map is a sheet of paper, not a field */
+  var m=groundMesh&&groundMesh.material;
+  if(m){ m.map=(name==="paper")?null:m.userData.grain; m.needsUpdate=true; }
+  applyGround();
+}
+/* 8 ground types in a 4x2 atlas. Each 256px cell holds a 240px periodic
+   pattern with an 8px gutter of the same pattern, so linear filtering at a
+   cell edge never reads the neighbouring cell. */
+/* domain-warped patterns, shared by the colour atlas and the normal atlas */
+var _pats=null;
+function coverPatterns(){
+  if(_pats) return _pats;
+  var P=8;
+  function n(u,v,s,o){ return pnoise((u*P*s+o)%(P*s+1e9),(v*P*s+o*0.7)%(P*s+1e9),P*s); }
+  function warp(u,v,amt,o){ return [u+(n(u,v,2,o)-0.5)*amt, v+(n(u,v,2,o+17)-0.5)*amt]; }
+  function base(u,v){ return 0.55*n(u,v,1,3.1)+0.30*n(u,v,2,7.7)+0.15*n(u,v,4,1.3); }
+  _pats=[
+    /* 0 open field: ploughed furrows drifting across a warped mottle */
+    function(u,v){ var w=warp(u,v,0.05,3.3);
+      var f=0.5+0.5*Math.sin((w[0]*11+w[1]*3.2)*Math.PI*2);
+      return 0.84+(base(w[0],w[1])-0.5)*0.22+(f-0.5)*0.09; },
+    /* 1 meadow: soft tussock, no furrows */
+    function(u,v){ var w=warp(u,v,0.07,8.1); return 0.92+(base(w[0],w[1])-0.5)*0.20; },
+    /* 2 marsh: wet blotches with reed dashes */
+    function(u,v){ var w=warp(u,v,0.09,2.2), b=base(w[0],w[1]);
+      var wet=b<0.42?-0.11:0;
+      var reed=(Math.sin(u*Math.PI*2*23)>0.86&&Math.abs(Math.sin(v*Math.PI*2*9))<0.45)?0.10:0;
+      return 0.86+(b-0.5)*0.26+wet+reed; },
+    /* 3 water: faint ripple */
+    function(u,v){ return 0.92+0.05*Math.sin((u*6+v*2)*Math.PI*2)+(base(u,v)-0.5)*0.10; },
+    /* 4 wood: dense canopy, high contrast */
+    function(u,v){ var w=warp(u,v,0.10,5.5);
+      var b=0.5*n(w[0],w[1],3,5.5)+0.5*n(w[0],w[1],6,2.2); return 0.78+(b-0.5)*0.46; },
+    /* 5 village: yards and gardens */
+    function(u,v){ var w=warp(u,v,0.06,9.1);
+      var b=0.6*n(w[0],w[1],2,9.1)+0.4*n(w[0],w[1],5,4.4); return 0.86+(b-0.5)*0.28; },
+    /* 6 vineyard: rows at an angle */
+    function(u,v){ var r=0.5+0.5*Math.sin((u*7-v*5)*Math.PI*2);
+      return 0.86+(base(u,v)-0.5)*0.16+(r>0.5?0.045:-0.045); },
+    /* 7 track: ruts along the way */
+    function(u,v){ var rut=(Math.abs(v-0.36)<0.03||Math.abs(v-0.64)<0.03)?-0.11:0;
+      return 0.88+(base(u,v)-0.5)*0.18+rut; },
+    /* 8 plough: deep furrows */
+    function(u,v){ var w=warp(u,v,0.03,4.4);
+      var f=0.5+0.5*Math.sin((w[0]*14+w[1]*2.0)*Math.PI*2);
+      return 0.84+(base(w[0],w[1])-0.5)*0.18+(f-0.5)*0.16; },
+    /* 9 pasture: soft tussock */
+    function(u,v){ var w=warp(u,v,0.07,6.1); return 0.92+(base(w[0],w[1])-0.5)*0.20; },
+    /* 10 winter sowing: faint drill rows */
+    function(u,v){ var r=0.5+0.5*Math.sin((u*22+v*1.5)*Math.PI*2);
+      return 0.88+(base(u,v)-0.5)*0.16+(r-0.5)*0.06; },
+    /* 11 trodden ground */
+    function(u,v){ var w=warp(u,v,0.10,2.9); return 0.86+(base(w[0],w[1])-0.5)*0.24; }
+  ];
+  return _pats;
+}
+var _atlas=null, _atlasCanvas=null;
+function coverAtlas(){
+  if(_atlas) return _atlas;
+  var CW=2048, CH=1536, R=512, IN=480, G=16;
+  var c=document.createElement("canvas"); c.width=CW; c.height=CH;
+  var x=c.getContext("2d"), img=x.createImageData(CW,CH), d=img.data;
+  function cell(cx,cy,fn){
+    for(var j=0;j<R;j++) for(var i=0;i<R;i++){
+      var u=(i-G)/IN, v=(j-G)/IN;               /* 0..1 across the period */
+      var g=fn(u,v);
+      var val=Math.max(0,Math.min(255,g*255))|0;
+      var o=((cy*R+j)*CW+(cx*R+i))*4;
+      d[o]=val; d[o+1]=val; d[o+2]=val; d[o+3]=255;
+    }
+  }
+  var pats=coverPatterns();
+  for(var k=0;k<12;k++) cell(k%4,Math.floor(k/4),pats[k]);
+  x.putImageData(img,0,0);
+  _atlasCanvas=c;
+  _atlas=new THREE.CanvasTexture(c);
+  _atlas.wrapS=_atlas.wrapT=THREE.ClampToEdgeWrapping;
+  _atlas.anisotropy=8;
+  photoAtlas();
+  return _atlas;
+}
+/* When the embedded photograph decodes, every land cell is repainted as the
+   photograph tinted for its ground type, with the procedural pattern multiplied
+   over it so furrows, ruts and vine rows survive. The texture object is the same,
+   so the material simply updates. */
+function photoAtlas(){
+  if(typeof ASSETS==="undefined"||!ASSETS.grass) return;
+  /* cell -> [source, r, g, b, pattern weight] */
+  var CELL={0:["grass",0.94,0.92,0.86,0.55], 1:["grass",1.00,1.00,0.92,0.35], 2:["grass",0.78,0.82,0.78,0.60],
+            4:["litter",0.72,0.70,0.64,0.50], 5:["mud",1.06,1.02,0.96,0.45], 6:["litter",0.96,0.94,0.86,0.60],
+            7:["mud",0.98,0.94,0.88,0.65], 8:["litter",0.80,0.76,0.70,0.70], 9:["grass",0.96,1.02,0.88,0.40],
+            10:["litter",0.86,0.86,0.76,0.55], 11:["mud",0.92,0.90,0.86,0.50]};
+  var srcs={}, pending=3;
+  ["grass","mud","litter"].forEach(function(n){
+    var im=new Image();
+    im.onload=function(){ srcs[n]=im; if(--pending===0) paint(); };
+    im.src=ASSETS[n].diff;
+  });
+  function tileOf(img){
+    var R=512, IN=480, G=16, t=document.createElement("canvas"); t.width=t.height=R;
+    var tx=t.getContext("2d");
+    for(var oy=-1;oy<=1;oy++) for(var ox=-1;ox<=1;ox++) tx.drawImage(img, G+ox*IN, G+oy*IN, IN, IN);
+    return tx.getImageData(0,0,R,R).data;
+  }
+  function paint(){
+    var c=_atlasCanvas, x=c.getContext("2d"), R=512;
+    var pattern=x.getImageData(0,0,c.width,c.height), d=pattern.data;
+    var tiles={grass:tileOf(srcs.grass), mud:tileOf(srcs.mud), litter:tileOf(srcs.litter)};
+    Object.keys(CELL).forEach(function(kk){
+      var k=+kk, t=CELL[kk], photo=tiles[t[0]];
+      var cx=(k%4)*R, cy=Math.floor(k/4)*R;
+      for(var j=0;j<R;j++) for(var i=0;i<R;i++){
+        var o=((cy+j)*c.width+(cx+i))*4, p=(j*R+i)*4;
+        var proc=d[o]/255, mix=1+(proc-0.86)*t[4]*2.2;
+        d[o]  =Math.max(0,Math.min(255,photo[p]  *t[1]*mix));
+        d[o+1]=Math.max(0,Math.min(255,photo[p+1]*t[2]*mix));
+        d[o+2]=Math.max(0,Math.min(255,photo[p+2]*t[3]*mix));
+      }
+    });
+    x.putImageData(pattern,0,0);
+    _atlas.needsUpdate=true;
+    if(typeof requestRender==="function") requestRender(2);
+    photoNormal();
+  }
+}
+function photoNormal(){
+  if(!_nrmAtlas||!ASSETS.grass) return;
+  var SRC={0:"grass",1:"grass",2:"grass",4:"litter",5:"mud",6:"litter",7:"mud",8:"litter",9:"grass",10:"litter",11:"mud"};
+  var KEEP={0:0.55,6:0.5,7:0.45,8:0.4,10:0.5};      /* how much of the procedural furrow/rut normal survives */
+  var srcs={}, pending=3;
+  ["grass","mud","litter"].forEach(function(n){
+    var im=new Image();
+    im.onload=function(){ srcs[n]=im; if(--pending===0) paint(); };
+    im.src=ASSETS[n].nor;
+  });
+  function paint(){
+    var c=_nrmAtlas.image, x=c.getContext("2d"), R=512, IN=480, G=16;
+    var base=x.getImageData(0,0,c.width,c.height), d=base.data;
+    var tiles={};
+    ["grass","mud","litter"].forEach(function(n){
+      var t=document.createElement("canvas"); t.width=t.height=R; var tx=t.getContext("2d");
+      for(var oy=-1;oy<=1;oy++) for(var ox=-1;ox<=1;ox++) tx.drawImage(srcs[n], G+ox*IN, G+oy*IN, IN, IN);
+      tiles[n]=tx.getImageData(0,0,R,R).data;
+    });
+    Object.keys(SRC).forEach(function(kk){
+      var k=+kk, ph=tiles[SRC[kk]], w=1-(KEEP[kk]||0.25);
+      var cx=(k%4)*R, cy=Math.floor(k/4)*R;
+      for(var j=0;j<R;j++) for(var i=0;i<R;i++){
+        var o=((cy+j)*c.width+(cx+i))*4, p=(j*R+i)*4;
+        d[o]  =Math.round(d[o]  *(1-w)+ph[p]  *w);
+        d[o+1]=Math.round(d[o+1]*(1-w)+ph[p+1]*w);
+      }
+    });
+    x.putImageData(base,0,0);
+    _nrmAtlas.needsUpdate=true;
+    if(typeof requestRender==="function") requestRender(2);
+  }
+}
+/* the same eight patterns, differentiated into a tangent-space normal map so
+   the ground catches the low winter light instead of reading as tinted paper */
+var _nrmAtlas=null;
+function coverNormalAtlas(){
+  if(_nrmAtlas) return _nrmAtlas;
+  var CW=2048, CH=1536, R=512, IN=480, G=16;
+  var c=document.createElement("canvas"); c.width=CW; c.height=CH;
+  var x=c.getContext("2d"), img=x.createImageData(CW,CH), d=img.data;
+  var pats=coverPatterns(), STR=[2.6,1.5,2.2,0.8,3.2,2.4,2.0,2.2,3.0,1.4,1.8,2.4];
+  for(var k=0;k<12;k++){
+    var cx=k%4, cy=Math.floor(k/4), fn=pats[k], s=STR[k];
+    for(var j=0;j<R;j++) for(var i=0;i<R;i++){
+      var u=(i-G)/IN, v=(j-G)/IN, e=1/IN;
+      var hL=fn(u-e,v), hR=fn(u+e,v), hD=fn(u,v-e), hU=fn(u,v+e);
+      var nx=-(hR-hL)*s, ny=-(hU-hD)*s, nz=1.0;
+      var L=Math.sqrt(nx*nx+ny*ny+nz*nz); nx/=L; ny/=L; nz/=L;
+      var o=((cy*R+j)*CW+(cx*R+i))*4;
+      d[o]=(nx*0.5+0.5)*255|0; d[o+1]=(ny*0.5+0.5)*255|0; d[o+2]=(nz*0.5+0.5)*255|0; d[o+3]=255;
+    }
+  }
+  x.putImageData(img,0,0);
+  _nrmAtlas=new THREE.CanvasTexture(c);
+  _nrmAtlas.wrapS=_nrmAtlas.wrapT=THREE.ClampToEdgeWrapping;
+  _nrmAtlas.anisotropy=8;
+  return _nrmAtlas;
+}
+
+/* the standard material samples map and normalMap by uv; this makes both
+   sample the atlas cell chosen by the face's cover type */
+function atlasShader(mat){
+  mat.onBeforeCompile=function(sh){
+    sh.vertexShader=sh.vertexShader
+      .replace("#include <common>","#include <common>\nattribute float cover;\nvarying float vCover;")
+      .replace("#include <uv_vertex>","#include <uv_vertex>\nvCover=cover;");
+    sh.fragmentShader=sh.fragmentShader
+      .replace("#include <common>","#include <common>\nvarying float vCover;")
+      /* tuv is computed once, at main scope, before anything samples a map */
+      .replace("vec4 diffuseColor = vec4( diffuse, opacity );",
+        "float ci=mod(vCover,4.0), cj=floor(vCover/4.0);\n"+
+        "vec2 tuv=vec2(fract(vUv.x)*0.234375+0.0078125+ci*0.25, fract(vUv.y)*0.3125+0.0104167+cj*0.3333333);\n"+
+        "vec4 diffuseColor = vec4( diffuse, opacity );")
+      .replace("#include <map_fragment>",
+        "#ifdef USE_MAP\n"+
+        "  vec4 texelColor=texture2D(map,tuv);\n"+
+        "  texelColor=mapTexelToLinear(texelColor);\n"+
+        "  diffuseColor*=texelColor;\n"+
+        "#endif")
+      .replace("#include <normal_fragment_maps>",
+        "#ifdef USE_NORMALMAP\n"+
+        "  vec3 mapN=texture2D(normalMap,tuv).xyz*2.0-1.0;\n"+
+        "  mapN.xy*=normalScale;\n"+
+        "  normal=perturbNormal2Arb(-vViewPosition,normal,mapN,faceDirection);\n"+
+        "#endif");
+  };
+  return mat;
+}
+var _grain=null;
+function grainTexture(){
+  if(_grain) return _grain;
+  var N=256, c=document.createElement("canvas"); c.width=c.height=N;
+  var x=c.getContext("2d"), img=x.createImageData(N,N), d=img.data;
+  for(var j=0;j<N;j++) for(var i=0;i<N;i++){
+    /* three octaves of value noise, tileable because vnoise is sampled on a
+       period that divides the tile; then a faint furrow direction */
+    var u=i/N*8, v=j/N*8;
+    var n = 0.55*vnoise(u+0.5,v+0.5) + 0.30*vnoise(u*2.3+11.1,v*2.3+7.3) + 0.15*vnoise(u*5.1+3.7,v*5.1+9.9);
+    var furrow = 0.5+0.5*Math.sin((i*0.9+j*0.35)*0.42);
+    var g = 0.86 + (n-0.5)*0.30 + (furrow-0.5)*0.06;
+    var val=Math.max(0,Math.min(255,g*255))|0;
+    var o=(j*N+i)*4; d[o]=val; d[o+1]=val; d[o+2]=val; d[o+3]=255;
+  }
+  x.putImageData(img,0,0);
+  _grain=new THREE.CanvasTexture(c);
+  _grain.wrapS=_grain.wrapT=THREE.RepeatWrapping;
+  _grain.anisotropy=4;
+  return _grain;
+}
+
+function sampleVS(x,z){
+  var i=Math.round((x-G_X0)/G_DX), j=Math.round((z-G_Z0)/G_DZ);
+  if(i<0||j<0||i>=G_NX||j>=G_NZ) return 0;
+  return vsMask[j*G_NX+i];
+}
+/* What an observer can see of the ground. The eye height is real metres through
+   the vertical scale (default: a mounted observer, 3 m); the relief's uniform
+   exaggeration does not change what is visible, but an eye height typed in world
+   units would put the observer on a tower. */
+function computeViewshed(mapPt,eyeM){
+  var w=W(mapPt[0],mapPt[1]);
+  var oi=Math.round((w[0]-G_X0)/G_DX), oj=Math.round((w[1]-G_Z0)/G_DZ);
+  oi=Math.max(0,Math.min(G_NX-1,oi)); oj=Math.max(0,Math.min(G_NZ-1,oj));
+  var oh=gridH[oj*G_NX+oi]+GEOREF.unitsFromM(eyeM||3.0);
+  vsMask=new Uint8Array(G_NX*G_NZ);
+  vsOrigin=mapPt.slice();
+  var RAYS=900, MAXR=170;
+  for(var r=0;r<RAYS;r++){
+    var a=r/RAYS*Math.PI*2, dx=Math.cos(a), dz=Math.sin(a), best=-1e9;
+    for(var s=1;s<MAXR;s++){
+      var x=w[0]+dx*s*1.2, z=w[1]+dz*s*1.2;
+      var i=Math.round((x-G_X0)/G_DX), j=Math.round((z-G_Z0)/G_DZ);
+      if(i<0||j<0||i>=G_NX||j>=G_NZ) break;
+      var k=j*G_NX+i, ang=(gridH[k]-oh)/(s*1.2);
+      if(ang>=best-0.0006){ vsMask[k]=1; if(ang>best) best=ang; }
+    }
+  }
+  vsMask[oj*G_NX+oi]=1;
+  applyGround();
+}
+function clearViewshed(){ vsMask=null; vsOrigin=null; applyGround(); }
+
+function ribbon(scene,pts,width,yoff,mat,store){
+  var v=[],idx=[];
+  for(var i=0;i<pts.length;i++){
+    var a=pts[Math.max(0,i-1)], b=pts[Math.min(pts.length-1,i+1)];
+    var dx=b[0]-a[0], dz=b[1]-a[1], L=Math.sqrt(dx*dx+dz*dz)||1;
+    var nx=-dz/L*width/2, nz=dx/L*width/2;
+    var x=pts[i][0], z=pts[i][1];
+    v.push(x+nx,height(x+nx,z+nz)+yoff,z+nz);
+    v.push(x-nx,height(x-nx,z-nz)+yoff,z-nz);
+  }
+  for(var j=0;j<pts.length-1;j++){ var o=j*2; idx.push(o,o+1,o+2,o+1,o+3,o+2); }
+  var g=new THREE.BufferGeometry();
+  g.setAttribute("position",new THREE.Float32BufferAttribute(v,3));
+  g.setIndex(idx); g.computeVertexNormals();
+  var m=new THREE.Mesh(g,mat); scene.add(m); if(store) store.push(m);
+  return m;
+}
+function resample(pts,step){
+  var out=[pts[0]];
+  for(var i=0;i<pts.length-1;i++){
+    var a=pts[i], b=pts[i+1], L=dist2(a[0],a[1],b[0],b[1]);
+    var n=Math.max(1,Math.round(L/step));
+    for(var k=1;k<=n;k++) out.push([a[0]+(b[0]-a[0])*k/n, a[1]+(b[1]-a[1])*k/n]);
+  }
+  return out;
+}
+function buildWater(scene){
+  var iceMat=new THREE.MeshStandardMaterial({color:lin(0x4E5C66),roughness:0.58,metalness:0.0,envMapIntensity:0.12,
+    transparent:true,opacity:0.96,flatShading:true});
+  function mere(cc,rx,rz,y){
+    var m=new THREE.Mesh(new THREE.CircleGeometry(1,48),iceMat);
+    m.rotation.x=-Math.PI/2; m.position.set(cc[0],y,cc[1]); m.scale.set(rx,rz,1);
+    scene.add(m); waterMeshes.push(m);
+  }
+  /* a mere's level: its legacy level carried with the land, never above the lowest ground on its own
+     edge - so no edge of the water can hang above the ground (the Litava now runs through Satschan) */
+  function mereLevel(cc,rx,rz,base){
+    var lo=1e9; for(var a=0;a<96;a++){ var t=a/96*Math.PI*2; lo=Math.min(lo,height(cc[0]+Math.cos(t)*rx,cc[1]+Math.sin(t)*rz)); }
+    return Math.min(base+1.2*regionalLevel(cc[0],cc[1]), lo-0.05);
+  }
+  mere(SATS,28,10.5,mereLevel(SATS,28,10.5,-3.85));
+  mere(MENI,23,9,mereLevel(MENI,23,9,-3.95));
+  var bankMat=matte({color:0x4E5A4C,roughness:0.96});
+  var streamMat=new THREE.MeshStandardMaterial({color:lin(0x587A8E),roughness:0.48,metalness:0.0,envMapIntensity:0.18});
+  ribbon(scene,resample(GOLDBACH,3.0),4.6,0.16,bankMat,waterMeshes);
+  ribbon(scene,resample(GOLDBACH,3.0),2.8,0.26,streamMat,waterMeshes);
+  ribbon(scene,resample(LITAVA,3.0),5.0,0.16,bankMat,waterMeshes);
+  ribbon(scene,resample(LITAVA,3.0),3.2,0.26,streamMat,waterMeshes);
+  BROOKS.forEach(function(b){
+    ribbon(scene,resample(b,3.0),2.4,0.16,bankMat,waterMeshes);
+    ribbon(scene,resample(b,3.0),1.4,0.26,streamMat,waterMeshes);
+  });
+}
+function buildRoads(scene){
+  var hi=matte({color:0x9C9078,roughness:0.94});
+  var po=matte({color:0x857A63,roughness:0.94});
+  var tr=matte({color:0x736A58,roughness:0.95});
+  var edge=matte({color:0x554C3E,roughness:0.97});
+  ROADS.forEach(function(r){
+    var mat = r.cls==="highway"?hi : r.cls==="post"?po : tr;
+    var pts=resample(M2W(r.p),3.0);
+    ribbon(scene, pts, r.w+1.1, 0.26, edge, roadMeshes);
+    ribbon(scene, pts, r.w, 0.34, mat, roadMeshes);
+  });
+}
+var _wallTex=null, _roofTex=null;
+function wallTexture(){
+  if(_wallTex) return _wallTex;
+  var c=document.createElement("canvas"); c.width=256; c.height=128;
+  var x=c.getContext("2d");
+  x.fillStyle="#D9D2C2"; x.fillRect(0,0,256,128);
+  for(var i=0;i<900;i++){ x.fillStyle="rgba(120,110,95,"+(0.03+hash2(i,7)*0.05)+")";
+    x.fillRect(hash2(i,1)*256,hash2(i,2)*128,2+hash2(i,3)*6,2+hash2(i,4)*4); }
+  x.fillStyle="#8E8474"; x.fillRect(0,104,256,24);
+  x.fillStyle="rgba(70,62,52,.35)"; x.fillRect(0,100,256,6);
+  x.fillStyle="#2E2A26"; x.fillRect(52,40,26,30); x.fillRect(178,40,26,30);
+  x.fillStyle="#B9B2A2"; x.fillRect(64,40,2,30); x.fillRect(52,54,26,2); x.fillRect(190,40,2,30); x.fillRect(178,54,26,2);
+  x.fillStyle="#5A4C3E"; x.fillRect(114,58,26,46); x.fillStyle="#3A3028"; x.fillRect(116,60,22,42);
+  var g=x.createLinearGradient(0,0,0,18); g.addColorStop(0,"rgba(0,0,0,.42)"); g.addColorStop(1,"rgba(0,0,0,0)");
+  x.fillStyle=g; x.fillRect(0,0,256,18);
+  _wallTex=ctexS(c); return _wallTex;
+}
+function roofTexture(){
+  if(_roofTex) return _roofTex;
+  var c=document.createElement("canvas"); c.width=128; c.height=128;
+  var x=c.getContext("2d");
+  x.fillStyle="#C8C0B0"; x.fillRect(0,0,128,128);
+  for(var r=0;r<16;r++){
+    x.fillStyle="rgba(60,40,30,"+(0.18+(r%2)*0.06)+")"; x.fillRect(0,r*8,128,2);
+    for(var k=0;k<16;k++){ x.fillStyle="rgba(255,255,255,"+(hash2(r,k)*0.08)+")"; x.fillRect(k*8+(r%2)*4,r*8+2,7,5); }
+  }
+  _roofTex=ctexS(c); return _roofTex;
+}
+function buildSettlements(scene){
+  var seed=1805;
+  function rnd(){ seed=(seed*1664525+1013904223)%4294967296; return seed/4294967296; }
+  var wallGeo=new THREE.BoxGeometry(1,1,1);
+  /* a gable roof: a triangular prism the width of the house, ridge along its length */
+  var roofGeo=(function(){
+    /* a gable, extruded along its ridge: winding, normals and UVs all come out right */
+    var sh=new THREE.Shape(); sh.moveTo(-0.5,0); sh.lineTo(0.5,0); sh.lineTo(0,0.5); sh.lineTo(-0.5,0);
+    var g=new THREE.ExtrudeGeometry(sh,{depth:1,bevelEnabled:false});
+    g.translate(0,0,-0.5);
+    g.computeVertexNormals();
+    return g;
+  })();
+  var chimneyGeo=new THREE.BoxGeometry(0.22,0.5,0.22);
+  function laneDir(cc){
+    /* the lane runs with the nearest road through the village, else with the valley */
+    var best=1e9, dir=0.3;
+    ROADS.forEach(function(r){
+      var pts=M2W(r.p);
+      for(var k=0;k<pts.length-1;k++){
+        var ax=pts[k][0],az=pts[k][1],bx=pts[k+1][0],bz=pts[k+1][1];
+        var dd=segDist(cc[0],cc[1],ax,az,bx,bz);
+        if(dd<best){ best=dd; dir=Math.atan2(bz-az,bx-ax); }
+      }
+    });
+    return best<14 ? dir : 0.3+hash2(Math.floor(cc[0]),Math.floor(cc[1]))*3.1;
+  }
+  var spireGeo=new THREE.ConeGeometry(0.62,3.2,6);
+  var wallMat=matte({color:0xFFFFFF,flatShading:true,map:wallTexture()});   /* colour comes from each instance */
+  var roofMat=matte({color:0xFFFFFF,flatShading:true,map:roofTexture(),side:THREE.DoubleSide});
+  var chimneyMat=matte({color:0x4A3E36,flatShading:true});
+  var spireMat=matte({color:0x4E4136,flatShading:true});
+  var houses=[],roofs=[],spires=[],chims=[];
+  VILLAGES.forEach(function(v){
+    var cc=W(v[1],v[2]);
+    var lane=laneDir(cc), cl=Math.cos(lane), sl=Math.sin(lane);
+    var R=2.4+v[3]*0.42;
+    for(var i=0;i<v[3];i++){
+      /* along the lane, close either side of it; a few outliers behind */
+      var along=(rnd()*2-1)*R*1.15, off=(rnd()<0.75?1:-1)*(1.1+rnd()*1.3)*(rnd()<0.85?1:2.4);
+      var x=cc[0]+along*cl-off*sl, z=cc[1]+along*sl+off*cl;
+      var barn=rnd()<0.22;
+      var w2=barn?(2.6+rnd()*1.6):(1.4+rnd()*1.0), d2=barn?(1.3+rnd()*0.5):(1.1+rnd()*0.7);
+      var hh=barn?(1.0+rnd()*0.4):(1.1+rnd()*0.6), y=height(x,z);
+      var rot=lane+(rnd()<0.5?0:Math.PI/2)+(rnd()-0.5)*0.22;
+      houses.push([x,y+hh/2,z,w2,hh,d2,rot]);
+      roofs.push([x,y+hh,z,w2*1.18,d2*1.16,rot,barn?0.80:1.05]);
+      if(!barn && rnd()<0.6){
+        var cr=Math.cos(rot), sr=Math.sin(rot), ox=(rnd()-0.5)*d2*0.5, oz=w2*0.22;
+        chims.push([x+ox*cr-oz*sr, y+hh+0.52*(1.05*0.5)+0.18, z+ox*sr+oz*cr, rot]);
+      }
+    }
+    if(CHURCHES.indexOf(v[0])>=0){
+      var y2=height(cc[0],cc[1]);
+      houses.push([cc[0],y2+1.0,cc[1],3.4,2.0,2.4,0.1]);          /* nave */
+      houses.push([cc[0]-1.4,y2+2.1,cc[1],1.5,4.2,1.5,0.1]);      /* tower */
+      spires.push([cc[0]-1.4,y2+5.6,cc[1]]);
+    }
+  });
+  (function(){
+    var cc=W(226,355), y=height(cc[0],cc[1]);   /* legacy offset from the village */
+    /* Sokolnitz castle: three wings round a court, and a taller block at the corner */
+    houses.push([cc[0],y+1.6,cc[1]-2.2,7.0,3.2,2.2,0.2]);  roofs.push([cc[0],y+3.2,cc[1]-2.2,7.3,2.6,0.2,1.2]);
+    houses.push([cc[0]-2.6,y+1.5,cc[1]+0.4,2.0,3.0,4.6,0.2]); roofs.push([cc[0]-2.6,y+3.0,cc[1]+0.4,2.3,5.0,0.2,1.1]);
+    houses.push([cc[0]+2.6,y+1.5,cc[1]+0.4,2.0,3.0,4.6,0.2]); roofs.push([cc[0]+2.6,y+3.0,cc[1]+0.4,2.3,5.0,0.2,1.1]);
+    houses.push([cc[0]+3.0,y+2.4,cc[1]-2.4,2.4,4.8,2.4,0.2]); roofs.push([cc[0]+3.0,y+4.8,cc[1]-2.4,2.7,2.7,0.2,1.4]);
+    for(var s=0;s<16;s++){
+      var a=s/16*Math.PI*2, x=cc[0]+Math.cos(a)*7.0, z=cc[1]+Math.sin(a)*5.0;
+      houses.push([x,height(x,z)+0.55,z,1.5,1.1,0.5,a]);
+    }
+  })();
+  houseMesh=new THREE.InstancedMesh(wallGeo,wallMat,houses.length);
+  roofMesh=new THREE.InstancedMesh(roofGeo,roofMat,roofs.length);
+  var chimMesh=new THREE.InstancedMesh(chimneyGeo,chimneyMat,Math.max(1,chims.length));
+  chimMesh.castShadow=true;
+  var tmpC=new THREE.Color();
+  spireMesh=new THREE.InstancedMesh(spireGeo,spireMat,Math.max(1,spires.length));
+  houseMesh.castShadow=roofMesh.castShadow=spireMesh.castShadow=true;
+  houseMesh.receiveShadow=roofMesh.receiveShadow=true;
+  var d=new THREE.Object3D();
+  houses.forEach(function(h,i){
+    d.position.set(h[0],h[1],h[2]); d.rotation.set(0,h[6],0); d.scale.set(h[3],h[4],h[5]);
+    d.updateMatrix(); houseMesh.setMatrixAt(i,d.matrix);
+    tmpC.setHex([0xC9BFAA,0xBDB39F,0xD1C7B2,0xB2A894][(i*3)%4]).convertSRGBToLinear().multiplyScalar(0.86+0.20*((i*37)%11)/11);
+    houseMesh.setColorAt(i,tmpC);
+  });
+  if(houseMesh.instanceColor) houseMesh.instanceColor.needsUpdate=true;
+  roofs.forEach(function(r,i){
+    d.position.set(r[0],r[1],r[2]); d.rotation.set(0,r[5],0); d.scale.set(r[3],r[6]||0.7,r[4]);
+    d.updateMatrix(); roofMesh.setMatrixAt(i,d.matrix);
+    var pick=(i*7)%5;
+    tmpC.setHex([0x8A4A38,0x7C4536,0x6E4C3E,0x93553F,0x5F4E42][pick]).convertSRGBToLinear().multiplyScalar(0.86+0.26*((i*13)%7)/7);
+    roofMesh.setColorAt(i,tmpC);
+  });
+  if(roofMesh.instanceColor) roofMesh.instanceColor.needsUpdate=true;
+  chims.forEach(function(ch,i){
+    d.position.set(ch[0],ch[1],ch[2]); d.rotation.set(0,ch[3],0); d.scale.set(1,1,1);
+    d.updateMatrix(); chimMesh.setMatrixAt(i,d.matrix);
+  });
+  scene.add(chimMesh);
+  spires.forEach(function(s,i){
+    d.position.set(s[0],s[1],s[2]); d.rotation.set(0,0.4,0); d.scale.set(1,1,1);
+    d.updateMatrix(); spireMesh.setMatrixAt(i,d.matrix);
+  });
+  scene.add(houseMesh); scene.add(roofMesh); scene.add(spireMesh);
+}
+function buildWoods(scene){
+  var seed=77; function rnd(){ seed=(seed*1664525+1013904223)%4294967296; return seed/4294967296; }
+  var broad=[],conif=[];
+  WOODS.forEach(function(wd){
+    var c=W(wd.c[0],wd.c[1]), guard=0;
+    for(var i=0;i<wd.n;i++){
+      var u=rnd()*2-1, v=rnd()*2-1;
+      if(u*u+v*v>1){ if(++guard<wd.n*6){ i--; } continue; }
+      var lx=u*wd.rx*0.5, lz=v*wd.ry*0.5;
+      var ca=Math.cos(wd.rot), sa=Math.sin(wd.rot);
+      var x=c[0]+lx*ca-lz*sa, z=c[1]+lx*sa+lz*ca;
+      var s=0.7+rnd()*0.65;
+      (rnd()<Math.max(0.28,wd.conifer)?conif:broad).push([x,height(x,z),z,s]);
+    }
+  });
+  VILLAGES.forEach(function(v){
+    if(v[3]<7) return;
+    var cc=W(v[1],v[2]), R=2.6+v[3]*0.46;
+    for(var i=0;i<Math.round(v[3]*1.1);i++){
+      var a=rnd()*Math.PI*2, r=R*(1.05+rnd()*0.45);
+      var x=cc[0]+Math.cos(a)*r, z=cc[1]+Math.sin(a)*r*0.75;
+      broad.push([x,height(x,z),z,0.5+rnd()*0.3]);
+    }
+  });
+  var d=new THREE.Object3D();
+  /* ---- silhouettes: a small kit, merged so each variant is one draw call.
+     Deciduous crowns in December are bare wood: a dense mass of twig, grey-brown,
+     darker than the field but never green. Conifers keep their green. ---- */
+  var kit=treeKit();
+  var tcol=new THREE.Color();
+  var byVar=[[],[],[],[]], conVar=[[],[]];
+  broad.forEach(function(t,i){ byVar[(i*7+Math.floor(t[0]*3))%4 & 3].push(t); });
+  conif.forEach(function(t,i){ conVar[(i*5)%2].push(t); });
+  treeMesh=new THREE.Group(); coniferMesh=new THREE.Group();
+  var BARE=[0x45423C,0x4A4741,0x403E39,0x4E4A43,0x474540];
+  byVar.forEach(function(list,vi){
+    var im=new THREE.InstancedMesh(kit.broad[vi],matte({color:0xFFFFFF,flatShading:true}),Math.max(1,list.length));
+    im.castShadow=true; im.count=Math.max(1,list.length);
+    list.forEach(function(t,k){
+      d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
+      d.scale.set(t[3],t[3]*(0.92+rnd()*0.22),t[3]); d.updateMatrix(); im.setMatrixAt(k,d.matrix);
+      tcol.setHex(BARE[(k*7+vi)%5]).convertSRGBToLinear().multiplyScalar(0.84+0.30*((k*11)%9)/9);
+      im.setColorAt(k,tcol);
+    });
+    if(im.instanceColor) im.instanceColor.needsUpdate=true;
+    if(list.length) treeMesh.add(im);
+  });
+  var EVER=[0x2C3A2C,0x27332A,0x30402F];
+  conVar.forEach(function(list,vi){
+    var im=new THREE.InstancedMesh(kit.conifer[vi],matte({color:0xFFFFFF,flatShading:true}),Math.max(1,list.length));
+    im.castShadow=true; im.count=Math.max(1,list.length);
+    list.forEach(function(t,k){
+      d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
+      d.scale.set(t[3],t[3]*(0.9+rnd()*0.3),t[3]); d.updateMatrix(); im.setMatrixAt(k,d.matrix);
+      tcol.setHex(EVER[(k*5+vi)%3]).convertSRGBToLinear().multiplyScalar(0.84+0.30*((k*13)%7)/7);
+      im.setColorAt(k,tcol);
+    });
+    if(im.instanceColor) im.instanceColor.needsUpdate=true;
+    if(list.length) coniferMesh.add(im);
+  });
+  /* scrub: low thorn and hazel along the water and at the wood edges */
+  var scrub=[];
+  WOODS.forEach(function(wd){
+    var c=W(wd.c[0],wd.c[1]);
+    for(var q=0;q<Math.round(wd.n*0.35);q++){
+      var a=rnd()*6.28, r=1.02+rnd()*0.22;
+      var lx=Math.cos(a)*wd.rx*0.5*r, lz=Math.sin(a)*wd.ry*0.5*r;
+      var ca=Math.cos(wd.rot), sa=Math.sin(wd.rot);
+      var x=c[0]+lx*ca-lz*sa, z=c[1]+lx*sa+lz*ca;
+      scrub.push([x,height(x,z),z,0.5+rnd()*0.5]);
+    }
+  });
+  [GOLDBACH,LITAVA].forEach(function(line){
+    for(var q=0;q<160;q++){
+      var t=rnd(), k=Math.floor(t*(line.length-1)), p0=line[k], p1=line[Math.min(line.length-1,k+1)];
+      var f=t*(line.length-1)-k, x=p0[0]+(p1[0]-p0[0])*f, z=p0[1]+(p1[1]-p0[1])*f;
+      var side=rnd()<0.5?-1:1, off=2.2+rnd()*2.6;
+      var dx=p1[0]-p0[0], dz=p1[1]-p0[1], L=Math.hypot(dx,dz)||1;
+      x+=(-dz/L)*side*off; z+=(dx/L)*side*off;
+      if(covAt(covVill,x,z)>0.3) continue;
+      scrub.push([x,height(x,z),z,0.45+rnd()*0.45]);
+    }
+  });
+  scrubMesh=new THREE.InstancedMesh(kit.scrub,matte({color:0xFFFFFF,flatShading:true}),Math.max(1,scrub.length));
+  scrubMesh.castShadow=false; scrubMesh.receiveShadow=true;
+  scrub.forEach(function(t,k){
+    d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
+    d.scale.set(t[3],t[3]*0.8,t[3]); d.updateMatrix(); scrubMesh.setMatrixAt(k,d.matrix);
+    tcol.setHex([0x4E4A3E,0x574F42,0x46433A][k%3]).convertSRGBToLinear().multiplyScalar(0.85+0.3*((k*7)%5)/5);
+    scrubMesh.setColorAt(k,tcol);
+  });
+  if(scrubMesh.instanceColor) scrubMesh.instanceColor.needsUpdate=true;
+  scene.add(treeMesh); scene.add(coniferMesh); scene.add(scrubMesh);
+}
+
+/* geometry kit: low-poly crowns merged with their trunks; four bare deciduous
+   habits, two conifers, one bush */
+function mergeParts(parts){
+  var P=[],N=[];
+  parts.forEach(function(pt){
+    var g=pt.geo.index ? pt.geo.toNonIndexed() : pt.geo;   /* icosahedra arrive non-indexed */
+    g.computeVertexNormals();
+    var pa=g.attributes.position.array, na=g.attributes.normal.array;
+    var sx=pt.s[0],sy=pt.s[1],sz=pt.s[2], ox=pt.p[0],oy=pt.p[1],oz=pt.p[2];
+    for(var i=0;i<pa.length;i+=3){
+      P.push(pa[i]*sx+ox, pa[i+1]*sy+oy, pa[i+2]*sz+oz);
+      var nx=na[i]/sx, ny=na[i+1]/sy, nz=na[i+2]/sz, L=Math.sqrt(nx*nx+ny*ny+nz*nz)||1;
+      N.push(nx/L,ny/L,nz/L);
+    }
+  });
+  var out=new THREE.BufferGeometry();
+  out.setAttribute("position",new THREE.Float32BufferAttribute(P,3));
+  out.setAttribute("normal",new THREE.Float32BufferAttribute(N,3));
+  return out;
+}
+var _kit=null;
+function treeKit(){
+  if(_kit) return _kit;
+  /* a crown is an icosahedron pushed in and out along its normals, so no two silhouettes match */
+  function crown(seed){
+    var g=new THREE.IcosahedronGeometry(1,2), pa=g.attributes.position.array;
+    for(var i=0;i<pa.length;i+=3){
+      var k=0.78+0.44*hash2(Math.round(pa[i]*13+seed),Math.round(pa[i+1]*7+pa[i+2]*11));
+      pa[i]*=k; pa[i+1]*=k*0.92; pa[i+2]*=k;
+    }
+    g.computeVertexNormals(); return g;
+  }
+  var sph=crown(1), sph2=crown(2), sph3=crown(3), trunk=new THREE.CylinderGeometry(0.11,0.16,1,5), cone=new THREE.ConeGeometry(1,1,7);
+  var T=function(h){ return {geo:trunk,p:[0,h/2,0],s:[1,h,1]}; };
+  _kit={
+    broad:[
+      /* round-headed oak */
+      mergeParts([T(1.1),{geo:sph,p:[0,2.0,0],s:[1.25,1.05,1.25]},{geo:sph2,p:[0.55,2.35,0.2],s:[0.75,0.7,0.75]},{geo:sph3,p:[-0.5,2.25,-0.3],s:[0.7,0.62,0.7]}]),
+      /* tall lime, two storeys of crown */
+      mergeParts([T(1.5),{geo:sph2,p:[0,2.4,0],s:[0.95,1.1,0.95]},{geo:sph3,p:[0.1,3.4,0.1],s:[0.7,0.85,0.7]}]),
+      /* squat, wide-spreading */
+      mergeParts([T(0.8),{geo:sph3,p:[0,1.6,0],s:[1.55,0.85,1.45]},{geo:sph,p:[0.8,1.7,0],s:[0.7,0.55,0.7]},{geo:sph2,p:[-0.75,1.65,0.3],s:[0.65,0.5,0.65]}]),
+      /* poplar-like, narrow and tall */
+      mergeParts([T(1.2),{geo:sph2,p:[0,2.4,0],s:[0.62,1.5,0.62]},{geo:sph3,p:[0,3.5,0],s:[0.45,0.8,0.45]}])
+    ],
+    conifer:[
+      mergeParts([T(0.6),{geo:cone,p:[0,2.3,0],s:[0.95,3.4,0.95]},{geo:cone,p:[0,1.35,0],s:[1.25,1.4,1.25]}]),
+      mergeParts([T(0.9),{geo:cone,p:[0,3.0,0],s:[0.8,4.2,0.8]}])
+    ],
+    scrub: mergeParts([{geo:sph,p:[0,0.5,0],s:[1,0.6,0.9]},{geo:sph,p:[0.6,0.4,0.2],s:[0.6,0.45,0.55]}])
+  };
+  return _kit;
+}
+
+var CONTOUR_INTERVAL=1.5, CONTOUR_INDEX=4;
+/* the ground continues beyond the field, coarsely, until the fog takes it */
+function buildApron(scene){
+  var X0=-860, X1=860, Z0=-760, Z1=760, NX=86, NZ=76;
+  var P=[],N=[],U=[],C=[],COV=[];
+  var base=lin(COVER_COL.natural[0]);
+  function v(x,z){ return [x,height(x,z),z]; }
+  function push(a,b,c){
+    var ux=b[0]-a[0],uy=b[1]-a[1],uz=b[2]-a[2], vx=c[0]-a[0],vy=c[1]-a[1],vz=c[2]-a[2];
+    var nx=uy*vz-uz*vy, ny=uz*vx-ux*vz, nz=ux*vy-uy*vx, L=Math.sqrt(nx*nx+ny*ny+nz*nz)||1;
+    nx/=L; ny/=L; nz/=L;
+    if(ny<0){ nx=-nx; ny=-ny; nz=-nz; }
+    var sh=Math.max(0,(nx*-0.52+ny*0.70+nz*-0.49)/1.0);
+    var k=0.50+0.62*sh, mid=(a[1]+b[1]+c[1])/3, e=Math.max(0,Math.min(1,(GEOREF.elevM(mid)-200)/123));
+    var r=base.r*k*(0.88+0.24*e), g=base.g*k*(0.90+0.20*e), bb=base.b*k*(0.94+0.06*e);
+    [a,b,c].forEach(function(q){
+      P.push(q[0],q[1],q[2]); N.push(nx,ny,nz); U.push(q[0]/11,q[2]/11); C.push(r,g,bb); COV.push(0);
+    });
+  }
+  var dx=(X1-X0)/NX, dz=(Z1-Z0)/NZ;
+  for(var j=0;j<NZ;j++) for(var i=0;i<NX;i++){
+    var x0=X0+i*dx, x1=x0+dx, z0=Z0+j*dz, z1=z0+dz;
+    var cx=(x0+x1)/2, cz=(z0+z1)/2;
+    if(Math.abs(cx)<168 && Math.abs(cz)<123) continue;     /* the field itself */
+    var a=v(x0,z0), b=v(x1,z0), c=v(x1,z1), d=v(x0,z1);
+    push(a,c,b); push(a,d,c);          /* counter-clockwise seen from above */
+  }
+  var g=new THREE.BufferGeometry();
+  g.setAttribute("position",new THREE.Float32BufferAttribute(P,3));
+  g.setAttribute("normal",new THREE.Float32BufferAttribute(N,3));
+  g.setAttribute("uv",new THREE.Float32BufferAttribute(U,2));
+  g.setAttribute("color",new THREE.Float32BufferAttribute(C,3));
+  g.setAttribute("cover",new THREE.Float32BufferAttribute(COV,1));
+  var m=new THREE.Mesh(g,groundMesh.material);
+  m.position.y=-0.35;            /* tucked just under the field's own edge */
+  m.receiveShadow=true;
+  scene.add(m);
+  return m;
+}
+function buildContours(scene){
+  contourGroup=new THREE.Group();
+  var fine=[], index=[], n=0;
+  var hmin=1e9, hmax=-1e9; for(var gi=0;gi<gridH.length;gi++){ if(gridH[gi]<hmin) hmin=gridH[gi]; if(gridH[gi]>hmax) hmax=gridH[gi]; }
+  var k0=Math.floor((hmin+5)/CONTOUR_INTERVAL), k1=Math.ceil((hmax+5)/CONTOUR_INTERVAL);
+  for(var kk=k0; kk<=k1; kk++){   /* the legacy lattice (-5 + k x interval) and its index lines, over the real range */
+    var L=-5+kk*CONTOUR_INTERVAL;
+    marchLevel(L, (((kk%CONTOUR_INDEX)+CONTOUR_INDEX)%CONTOUR_INDEX===0)?index:fine);
+    n++;
+  }
+  function mk(arr,col,op){
+    if(!arr.length) return null;
+    var g=new THREE.BufferGeometry();
+    g.setAttribute("position",new THREE.Float32BufferAttribute(arr,3));
+    var l=new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:col,transparent:true,opacity:op}));
+    contourGroup.add(l);
+    return l;
+  }
+  contourGroup.userData.fine=mk(fine,0x2A2418,0.30);
+  contourGroup.userData.index=mk(index,0x17140C,0.50);
+  scene.add(contourGroup);
+}
+function marchLevel(L,out){
+  var lift=0.30;
+  for(var j=0;j<G_NZ-1;j++){
+    var z0=G_Z0+j*G_DZ, z1=z0+G_DZ;
+    for(var i=0;i<G_NX-1;i++){
+      var x0=G_X0+i*G_DX, x1=x0+G_DX;
+      var k=j*G_NX+i;
+      var a=gridH[k], b=gridH[k+1], c=gridH[k+1+G_NX], d=gridH[k+G_NX];
+      var idx=(a>L?1:0)|(b>L?2:0)|(c>L?4:0)|(d>L?8:0);
+      if(idx===0||idx===15) continue;
+      var t;
+      t=(L-a)/((b-a)||1e-6); var ABx=x0+(x1-x0)*t, ABz=z0;
+      t=(L-b)/((c-b)||1e-6); var BCx=x1,            BCz=z0+(z1-z0)*t;
+      t=(L-d)/((c-d)||1e-6); var CDx=x0+(x1-x0)*t, CDz=z1;
+      t=(L-a)/((d-a)||1e-6); var DAx=x0,            DAz=z0+(z1-z0)*t;
+      var y=L+lift;
+      switch(idx){
+        case 1: case 14: out.push(DAx,y,DAz, ABx,y,ABz); break;
+        case 2: case 13: out.push(ABx,y,ABz, BCx,y,BCz); break;
+        case 3: case 12: out.push(DAx,y,DAz, BCx,y,BCz); break;
+        case 4: case 11: out.push(BCx,y,BCz, CDx,y,CDz); break;
+        case 6: case 9:  out.push(ABx,y,ABz, CDx,y,CDz); break;
+        case 7: case 8:  out.push(DAx,y,DAz, CDx,y,CDz); break;
+        case 5:  out.push(DAx,y,DAz, ABx,y,ABz, BCx,y,BCz, CDx,y,CDz); break;
+        case 10: out.push(ABx,y,ABz, BCx,y,BCz, CDx,y,CDz, DAx,y,DAz); break;
+      }
+    }
+  }
+}
+function setContourStyle(paper){
+  var f=contourGroup.userData.fine, x=contourGroup.userData.index;
+  if(f){ f.material.color.copy(lin(paper?0x8A7346:0x2A2418)); f.material.opacity=paper?0.42:0.30; }
+  if(x){ x.material.color.copy(lin(paper?0x6E5629:0x17140C)); x.material.opacity=paper?0.62:0.50; }
+  if(marshGroup&&marshGroup.userData.mat){
+    marshGroup.userData.mat.color.copy(lin(paper?0x3E6D88:0x5D7C8C));
+    marshGroup.userData.mat.opacity=paper?0.7:0.55;
+  }
+}
+function buildMarshSymbols(scene){
+  marshGroup=new THREE.Group();
+  var pts=[], seed=404;
+  function rnd(){ seed=(seed*1664525+1013904223)%4294967296; return seed/4294967296; }
+  for(var j=0;j<COV_NZ;j+=2) for(var i=0;i<COV_NX;i+=2){
+    var x=COV_X0+i*COV_DX+(rnd()-0.5)*2.4, z=COV_Z0+j*COV_DZ+(rnd()-0.5)*2.4;
+    if(covAt(covMarsh,x,z)<0.55) continue;
+    if(rnd()>0.42) continue;
+    var h=height(x,z), hl=localHeight(x,z);
+    if(hl>0.6||hl<-4.4) continue;
+    for(var r=0;r<3;r++){
+      var len=1.5-r*0.42, zz=z+(r-1)*0.62;
+      pts.push(x-len/2,h+0.34,zz, x+len/2,h+0.34,zz);
+    }
+  }
+  var g=new THREE.BufferGeometry();
+  g.setAttribute("position",new THREE.Float32BufferAttribute(pts,3));
+  var m=new THREE.LineBasicMaterial({color:lin(0x5D7C8C),transparent:true,opacity:0.55});
+  marshGroup.add(new THREE.LineSegments(g,m));
+  marshGroup.userData.mat=m;
+  scene.add(marshGroup);
+}
+var ANALYSIS_STYLE={
+  ridge: {col:0xD8A05A, dash:false, tick:true},
+  scarp: {col:0xC2743C, dash:false, tick:true},
+  valley:{col:0x6FA0B8, dash:true,  tick:false},
+  defile:{col:0xD05A4C, dash:false, tick:false},
+  dead:  {col:0x9080B4, dash:true,  tick:false}
+};
+function buildAnalysis(scene){
+  analysisGroup=new THREE.Group();
+  analysisGroup.visible=false;
+  TERRAIN_LINES.forEach(function(tl){
+    var st=ANALYSIS_STYLE[tl.t];
+    var pts=resample(M2W(tl.p),2.2);
+    var verts=[];
+    for(var i=0;i<pts.length-1;i++){
+      if(st.dash && i%2===1) continue;
+      verts.push(pts[i][0],height(pts[i][0],pts[i][1])+1.5,pts[i][1],
+                 pts[i+1][0],height(pts[i+1][0],pts[i+1][1])+1.5,pts[i+1][1]);
+    }
+    var g=new THREE.BufferGeometry();
+    g.setAttribute("position",new THREE.Float32BufferAttribute(verts,3));
+    analysisGroup.add(new THREE.LineSegments(g,
+      new THREE.LineBasicMaterial({color:st.col,transparent:true,opacity:0.92})));
+    if(st.tick){
+      var tv=[];
+      for(var k=1;k<pts.length-1;k+=2){
+        var a=pts[k-1], b=pts[k+1];
+        var dx=b[0]-a[0], dz=b[1]-a[1], L=Math.sqrt(dx*dx+dz*dz)||1;
+        var nx=-dz/L, nz=dx/L;
+        var h1=height(pts[k][0]+nx*2,pts[k][1]+nz*2), h2=height(pts[k][0]-nx*2,pts[k][1]-nz*2);
+        var s=(h1<h2)?1:-1;
+        var ex=pts[k][0]+nx*2.4*s, ez=pts[k][1]+nz*2.4*s;
+        tv.push(pts[k][0],height(pts[k][0],pts[k][1])+1.5,pts[k][1], ex,height(ex,ez)+1.1,ez);
+      }
+      var g2=new THREE.BufferGeometry();
+      g2.setAttribute("position",new THREE.Float32BufferAttribute(tv,3));
+      analysisGroup.add(new THREE.LineSegments(g2,
+        new THREE.LineBasicMaterial({color:st.col,transparent:true,opacity:0.6})));
+    }
+    var mid=pts[Math.floor(pts.length/2)];
+    tl._mid=[mid[0],height(mid[0],mid[1])+4.2,mid[1]];
+  });
+  scene.add(analysisGroup);
+}
+/* A mist sheet is flat, so wherever the ground rises through it the sheet would end in a hard
+   line along the contour. Each vertex carries an alpha that falls to nothing as the ground comes
+   up to meet the sheet - checked across the sheet's whole drift - so the edge dissolves instead.
+   Stage 0 only: the valley fog itself is Stage 4. */
+var MIST_DRIFT=0.8;
+function mistSheet(w,h,nx,ny,cx,cz,y){
+  var geo=new THREE.PlaneGeometry(w,h,nx,ny), pa=geo.attributes.position.array, n=pa.length/3;
+  var col=new Float32Array(n*4), dep=new Float32Array(n), i, j;
+  for(i=0;i<n;i++){
+    var x=cx+pa[i*3], z=cz-pa[i*3+1];          /* plane space to world, after the -90 degree turn about x */
+    dep[i]=y-Math.max(groundY(x,z),groundY(x-MIST_DRIFT,z),groundY(x+MIST_DRIFT,z));
+    col[i*4]=col[i*4+1]=col[i*4+2]=1;
+    col[i*4+3]=smoothstep(0.2,3.0,dep[i]);
+  }
+  /* erode by one cell: a vertex next to one at or under the ground is clear too, so a cell the
+     ground passes through carries no alpha anywhere, however steep the slope across it */
+  var W1=nx+1;
+  for(j=0;j<=ny;j++) for(i=0;i<=nx;i++){
+    var k=j*W1+i, low=false;
+    for(var dj=-1;dj<=1&&!low;dj++) for(var di=-1;di<=1;di++){
+      var ii=i+di, jj=j+dj; if(ii<0||jj<0||ii>nx||jj>ny) continue;
+      if(dep[jj*W1+ii]<0.2){ low=true; break; }
+    }
+    if(low) col[k*4+3]=0;
+  }
+  geo.setAttribute("color",new THREE.BufferAttribute(col,4));
+  return geo;
+}
+function buildMist(scene){
+  var mc=document.createElement("canvas"); mc.width=mc.height=256;
+  var g2=mc.getContext("2d");
+  var rg=g2.createRadialGradient(128,128,10,128,128,128);
+  rg.addColorStop(0,"rgba(196,204,208,.86)"); rg.addColorStop(.6,"rgba(190,198,204,.52)");
+  rg.addColorStop(1,"rgba(190,198,204,0)");
+  g2.fillStyle=rg; g2.fillRect(0,0,256,256);
+  var mtex=ctexS(mc);
+  mistGroup=new THREE.Group();
+  /* the fog lay in the bottoms, not over the whole country: dense along the
+     Goldbach and the meres, thinner on the open ground, nothing on the crest */
+  [[228,176,62],[224,214,66],[228,248,64],[232,292,66],[228,332,68],[226,372,66],
+   [228,404,64],[252,430,62],[286,450,66],[196,448,58],[176,300,50],[196,196,48],
+   [262,146,44],[318,398,52],[356,418,52],[140,320,48],[150,400,54],[300,462,58],
+   [214,120,44],[264,268,44]].forEach(function(s2){
+    var w2=W(s2[0],s2[1]), y2=height(w2[0],w2[1])+1.5;
+    var m=new THREE.Mesh(mistSheet(s2[2],s2[2],40,40,w2[0],w2[1],y2),
+      new THREE.MeshBasicMaterial({map:mtex,transparent:true,opacity:0.9,depthWrite:false,fog:false,vertexColors:true}));
+    m.rotation.x=-Math.PI/2;
+    m.position.set(w2[0],y2,w2[1]);
+    m.userData.x0=w2[0];
+    mistGroup.add(m);
+  });
+  /* one broad sheet of haze so the far ground recedes properly */
+  var haze=new THREE.Mesh(mistSheet(360,310,144,124,0,0,3.4),
+    new THREE.MeshBasicMaterial({map:mtex,transparent:true,opacity:0.34,depthWrite:false,fog:false,vertexColors:true}));
+  haze.rotation.x=-Math.PI/2; haze.position.set(0,3.4,0);
+  haze.userData.x0=0;
+  haze.userData.haze=true;
+  mistGroup.add(haze);
+  scene.add(mistGroup);
+}
+

@@ -1,0 +1,17 @@
+{
+  "name": "austerlitz-command-map",
+  "private": true,
+  "description": "Interactive reconstruction of the Battle of Austerlitz (2 December 1805): one self-contained HTML built from source.",
+  "scripts": {
+    "build": "python3 build.py",
+    "check:baseline": "python3 build.py --expect c09c4b23d9e245ff9d693960cf9496b9",
+    "check:data": "node tools/visual/data-invariance.js archive/stage0-c09c4b23.html dist/austerlitz-command-map.html",
+    "check:visual": "node tools/visual/harness.js dist/austerlitz-command-map.html tools/visual/out --test",
+    "check:report": "node tools/visual/check-report.js tools/visual/out"
+  },
+  "devDependencies": {
+    "acorn": "8.18.0",
+    "playwright": "1.56.0",
+    "three": "0.128.0"
+  }
+}
