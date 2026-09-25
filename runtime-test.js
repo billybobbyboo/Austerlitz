@@ -5,22 +5,12 @@ const origWarn=console.warn, origErr=console.error;
 console.warn=(...a)=>warns.push(a.join(" "));
 console.error=(...a)=>errs.push(a.join(" "));
 
-class V3{constructor(x=0,y=0,z=0){this.x=x;this.y=y;this.z=z}
- set(x,y,z){this.x=x;this.y=y;this.z=z;return this}
- applyMatrix4(){return this} applyMatrix3(){return this} normalize(){return this}
- copy(v){this.x=v.x;this.y=v.y;this.z=v.z;return this}
- clone(){return new V3(this.x,this.y,this.z)}
- add(v){this.x+=v.x;this.y+=v.y;this.z+=v.z;return this}
- sub(v){this.x-=v.x;this.y-=v.y;this.z-=v.z;return this}
- multiplyScalar(s){this.x*=s;this.y*=s;this.z*=s;return this}
- normalize(){const l=Math.hypot(this.x,this.y,this.z)||1;return this.multiplyScalar(1/l)}
- lengthSq(){return this.x**2+this.y**2+this.z**2}
- distanceTo(v){return Math.hypot(this.x-v.x,this.y-v.y,this.z-v.z)}
- lerp(v,a){this.x+=(v.x-this.x)*a;this.y+=(v.y-this.y)*a;this.z+=(v.z-this.z)*a;return this}
- lerpVectors(a,b,t){this.x=a.x+(b.x-a.x)*t;this.y=a.y+(b.y-a.y)*t;this.z=a.z+(b.z-a.z)*t;return this}
- setFromSpherical(s){const si=Math.sin(s.phi)*s.radius;this.x=si*Math.sin(s.theta);this.y=Math.cos(s.phi)*s.radius;this.z=si*Math.cos(s.theta);return this}
- project(){this.x=0.2;this.y=0.1;this.z=0.5;return this}
- setFromPoints(){return this}}
+/* The maths is the real three.js r128 (the devDependency three@0.128.0): vectors, matrices, quaternions,
+   Euler angles, spherical coordinates, and Object3D's transforms (position, rotation, quaternion, scale,
+   matrix, matrixWorld, lookAt) and the cameras' projection. Stage 0 seats every figure through world
+   matrices and places labels through the camera's projection, which token maths cannot exercise.
+   Rendering stays stubbed: renderer, render targets, textures, materials, geometries, Color. */
+const REAL=require('three');
 class Col{constructor(h){this.r=1;this.g=1;this.b=1;this.setHex(h===undefined?0xffffff:h)}
  setHex(h){this.hex=h;this.r=((h>>16)&255)/255;this.g=((h>>8)&255)/255;this.b=(h&255)/255;return this}
  copy(c){this.r=c.r;this.g=c.g;this.b=c.b;this.hex=c.hex;return this}
@@ -30,12 +20,7 @@ class Col{constructor(h){this.r=1;this.g=1;this.b=1;this.setHex(h===undefined?0x
  setHSL(){return this}
  getHexString(){const h=x=>("0"+Math.round(Math.max(0,Math.min(1,x))*255).toString(16)).slice(-2);return h(this.r)+h(this.g)+h(this.b)}
  convertSRGBToLinear(){const f=x=>x<0.04045?x/12.92:Math.pow((x+0.055)/1.055,2.4);this.r=f(this.r);this.g=f(this.g);this.b=f(this.b);return this}}
-class Obj{constructor(){this.children=[];this.position=new V3();this.rotation={x:0,y:0,z:0,set(){}};
-  this.scale=new V3(1,1,1);this.scale.setScalar=function(s){this.x=this.y=this.z=s;return this};
-  this.visible=true;this.userData={};this.matrix={};this.quaternion={setFromUnitVectors(){return this},setFromAxisAngle(){return this},copy(){return this},multiply(){return this}};this.layers={set(){},enableAll(){},test:()=>true};this.frustumCulled=true;}
- add(o){this.children.push(o);return this} remove(o){const i=this.children.indexOf(o);if(i>=0)this.children.splice(i,1);return this}
- traverse(fn){fn(this);this.children.forEach(c=>c.traverse&&c.traverse(fn))}
- lookAt(){} updateMatrix(){} updateMatrixWorld(){} clear(){this.children=[]}}
+class Obj extends REAL.Object3D{}
 function attr(n,item){const a={count:n,array:new Float32Array(n*item),needsUpdate:false,
   getX:i=>a.array[i*item],getY:i=>a.array[i*item+1],getZ:i=>a.array[i*item+2],
   setY(i,v){a.array[i*item+1]=v},set(x){a.array.set(x)}};return a;}
@@ -46,13 +31,10 @@ class Geo{constructor(n=12){this.attributes={position:attr(n,3),normal:attr(n,3)
  setAttribute(k,v){this.attributes[k]=v;return this} setIndex(){return this}
  setFromPoints(){return this} setDrawRange(){return this} dispose(){}}
 const stub={
- Vector3:V3, Color:Col, Object3D:Obj, Group:Obj,
- Spherical:class{constructor(r=1,p=0,t=0){this.radius=r;this.phi=p;this.theta=t}
-   set(r,p,t){this.radius=r;this.phi=p;this.theta=t;return this} makeSafe(){return this}
-   setFromVector3(v){this.radius=Math.hypot(v.x,v.y,v.z)||1;this.phi=Math.acos(Math.max(-1,Math.min(1,v.y/this.radius)));this.theta=Math.atan2(v.x,v.z);return this}},
+ Vector3:REAL.Vector3, Color:Col, Object3D:Obj, Group:Obj,
+ Spherical:REAL.Spherical,
  Scene:class extends Obj{},
- PerspectiveCamera:class extends Obj{constructor(f){super();this.fov=f;this.aspect=1;
-   this.layers={set(){},enableAll(){},test:()=>true}}updateProjectionMatrix(){}},
+ PerspectiveCamera:REAL.PerspectiveCamera,
  WebGLRenderer:class{constructor(){this.domElement={style:{},clientHeight:900,clientWidth:1600,
    addEventListener(){},setPointerCapture(){}};this.shadowMap={enabled:true,type:0};
    this.capabilities={isWebGL2:true};this.extensions={get:()=>true};this.autoClear=true;
@@ -73,23 +55,23 @@ const stub={
    setSize(w,h){this.width=w;this.height=h} dispose(){}},
  ShaderMaterial:function(o){Object.assign(this,o||{});this.uniforms=o&&o.uniforms||{};
    this.dispose=()=>{};this.userData={}},
- OrthographicCamera:class extends Obj{constructor(){super();this.layers={set(){},enableAll(){}}}
-   updateProjectionMatrix(){}},
+ OrthographicCamera:REAL.OrthographicCamera,
  PMREMGenerator:class{constructor(){}compileEquirectangularShader(){}
    fromEquirectangular(){return {texture:{},dispose(){}}} dispose(){}},
  HalfFloatType:1016, RGBAFormat:1023, LinearEncoding:3000, NoToneMapping:0,
  EquirectangularReflectionMapping:303,
- Matrix4:class{compose(){return this}}, Matrix3:class{getNormalMatrix(){return this}},
- Quaternion:class{setFromEuler(){return this} setFromUnitVectors(){return this} setFromAxisAngle(){return this} copy(){return this} multiply(){return this}}, Euler:class{set(){return this}},
- Vector2:class{constructor(x,y){this.x=x||0;this.y=y||0}set(x,y){this.x=x;this.y=y;return this}},
+ Matrix4:REAL.Matrix4, Matrix3:REAL.Matrix3, Quaternion:REAL.Quaternion, Euler:REAL.Euler, Vector2:REAL.Vector2,
  Mesh:class extends Obj{constructor(g,m){super();this.geometry=g;this.material=m}},
  Line:class extends Obj{constructor(g,m){super();this.geometry=g;this.material=m}computeLineDistances(){}},
  LineSegments:class extends Obj{constructor(g,m){super();this.geometry=g;this.material=m}
    computeLineDistances(){}},
  Sprite:class extends Obj{constructor(m){super();this.material=m;this.renderOrder=0}},
  InstancedMesh:class extends Obj{constructor(g,m,c){super();this.geometry=g;this.material=m;this.count=c;
-     this.instanceColor={needsUpdate:false};this.instanceMatrix={needsUpdate:false}}
-   setMatrixAt(){} setColorAt(){}},
+     this.instanceColor={needsUpdate:false};
+     /* as r128: count x 16 floats, zero until set; get/setMatrixAt read and write them */
+     this.instanceMatrix={array:new Float32Array(c*16),itemSize:16,count:c,needsUpdate:false}}
+   setMatrixAt(i,m){m.toArray(this.instanceMatrix.array,i*16)} getMatrixAt(i,m){m.fromArray(this.instanceMatrix.array,i*16)}
+   setColorAt(){}},
  DirectionalLight:class extends Obj{constructor(c,i){super();this.color=new Col(c);this.intensity=i;
    this.shadow={mapSize:{set(){}},camera:{},bias:0};this.target=new Obj()}},
  HemisphereLight:class extends Obj{constructor(a,b,i){super();this.intensity=i}},
@@ -99,7 +81,7 @@ const stub={
  TubeGeometry:Geo,BufferGeometry:Geo,
  CatmullRomCurve3:class{constructor(p){this.p=p}
    getPoint(t){const i=Math.min(this.p.length-1,Math.floor(t*(this.p.length-1)));return this.p[i].clone()}
-   getTangent(){return new V3(1,0,0)}},
+   getTangent(){return new REAL.Vector3(1,0,0)}},
  BufferAttribute:function(a,i){const t=attr(a.length/i,i);t.array=a;return t},
  Float32BufferAttribute:function(a,i){const t=attr(a.length/i,i);t.array=(a instanceof Float32Array)?a:Float32Array.from(a);return t},
  CanvasTexture:class{constructor(img){this.image=img;this.minFilter=0;this.magFilter=0;this.generateMipmaps=true;
@@ -136,7 +118,8 @@ function mkEl(id){ return {id,style:{},dataset:{},classList:{add(){},remove(){},
   removeChild(){},parentNode:null,getContext:()=>ctx2d,width:0,height:0,children:[],
   getBoundingClientRect:()=>({width:820,height:96,left:0,top:0,right:820,bottom:96}),
   hidden:false,
-  querySelectorAll:()=>[]};}
+  querySelectorAll:()=>[],
+  querySelector:(q)=>mkEl(id+" "+q)};}   /* like document.querySelector: a stand-in element (Stage 0's #selchip fills its .sc-k/.sc-n/.sc-s) */
 const ctx2d=new Proxy({},{get:(t,k)=>{
   if(k==="measureText") return ()=>({width:60});
   if(k==="createLinearGradient"||k==="createRadialGradient") return ()=>({addColorStop(){}});
@@ -158,7 +141,11 @@ global.document={
   documentElement:{style:{setProperty(){},removeProperty(){}}},
   addEventListener(){}
 };
-global.window={innerWidth:1600,innerHeight:900,devicePixelRatio:1,
+/* Stage 0's label placement asks which interface panels cover the map (panelCovers). With no stylesheet
+   loaded, an element's computed display and visibility are its inline style or the defaults. */
+global.getComputedStyle=(e)=>({display:(e&&e.style&&e.style.display)||"block",
+  visibility:(e&&e.style&&e.style.visibility)||"visible",getPropertyValue:(k)=>(e&&e.style&&e.style[k])||""});
+global.window={innerWidth:1600,innerHeight:900,devicePixelRatio:1,getComputedStyle:global.getComputedStyle,
   addEventListener(){},matchMedia:()=>({matches:false})};
 global.performance={now:()=>Date.now()};
 global.requestAnimationFrame=()=>0;
@@ -453,7 +440,8 @@ try{
   /* every block is laid onto its slope and re-seats its men when it moves */
   const rec=units.vandamme; let seats=0; const origLayout=rec.block.userData.layout;
   rec.block.userData.layout=function(a,b){ seats++; return origLayout(a,b); };
-  rec.seatPos=null; settleBlock(rec); rec.block.position.x+=2; settleBlock(rec); settleBlock(rec);
+  rec.seatPos=null; rec.seated=false;   /* "not yet seated": seatPos before Stage 0, seated since */
+  settleBlock(rec); rec.block.position.x+=2; settleBlock(rec); settleBlock(rec);
   if(seats!==2) throw new Error("re-seating fired "+seats+" times, expected 2 (first, then after a move)");
   rec.block.userData.layout=origLayout;
   console.log("figures re-seat on the ground when the block moves OK");
