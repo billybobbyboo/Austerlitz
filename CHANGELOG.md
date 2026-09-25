@@ -1,5 +1,27 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · The test runner fails loudly (test tooling only; no change to the build)
+
+**Status: done (`docs/HANDOFF.md`, task 3).** `tools/run-all.sh` printed each suite's summary but always exited 0, so
+`npm test` passed whatever the suites found. Two suites never set an exit code at all: `audit.js` (it reports only
+`MARCH RATE VIOLATIONS (N)` and `TERRAIN VIOLATIONS (N)`) and `runtime-test.js` (`errors: N` and `  E ` lines). The
+runner now marks a suite failed if it exits non-zero (which covers a crash and the 600 s timeout) or its output shows an
+error summary: a non-zero `ERRORS`, `CSS ERRORS`, `errors`, `findings`, `VIOLATIONS`, `failed` or `disagreements`
+count, or a failed-check line (`  ! `, `  E `, `  FAIL `, `  ✗ `, `BROKEN`, `FLOATS`, `DISAGREE`, `<-- outside`). It
+prints `!!! <suite> FAILED` after that suite, and at the end either `ALL 8 SUITES PASSED` (exit 0) or `REGRESSION
+FAILED: <suites>` (exit 1). The per-suite summary it prints is unchanged, and no suite was changed. **Design decision:**
+warnings (`warnings: N`, `console.warn unique: N`) do not fail the run; the suites themselves keep them apart from
+errors.
+
+**Verified:** on this tree `npm test` prints `ALL 8 SUITES PASSED` and exits 0, and none of the failure patterns
+matches anything in the eight suites' full output (no false alarms). On a scratch copy broken three ways (the infantry
+march-rate ceiling lowered to 1 km/h, a throw added to `syncSelChip`, the French gun total set to 140), the new runner
+exits 1 and names `test.js`, `audit.js`, `sim-test.js` and `runtime-test.js`; `audit.js` and `runtime-test.js` exited
+0 and were caught by their summaries (25 march-rate violations; 2 errors). The original runner, on the same copy,
+exited 0. `npm run check:baseline`: md5 `c09c4b23d9e245ff9d693960cf9496b9`. `npm run check:data`: 112 DATA
+declarations byte-identical. `docs/SUITE_RECOVERY.md` and the checks note in `CLAUDE.md` updated.
+`austerlitz-command-map.html` unchanged: 1,097,610 bytes, md5 `c09c4b23d9e245ff9d693960cf9496b9`.
+
 ## 2026-09 · `runtime-test.js` brought up to Stage 0 (test harness only; no change to the build)
 
 **Status: done (`docs/HANDOFF.md`, task 2).** `runtime-test.js` reported 2 errors on Stage 0 (`mesh.getMatrixAt is
