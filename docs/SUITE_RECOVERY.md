@@ -34,7 +34,8 @@ anchor spans `style.css` and `shell.html`, appended to `style.css`. The original
 `archive/stage0-c09c4b23.html` byte for byte (1,097,610 bytes, md5 `c09c4b23...`).
 
 ## Changes to recovered files
-- `tools/run-all.sh`: finds the repository root from its own location (it had the sandbox path hard-coded).
+- `tools/run-all.sh`: finds the repository root from its own location (it had the sandbox path hard-coded); since
+  `docs/HANDOFF.md` task 3 it exits non-zero when any suite exits non-zero or prints an error summary.
 - `build.py`: writes its outputs with LF line endings on every platform (Linux output unchanged; md5 still `c09c4b23`).
 - `runtime-test.js`: two browser stand-ins that Stage 0 code needs (`location`, `renderer.info`); then brought up to
   Stage 0 (`docs/HANDOFF.md`, task 2; below).

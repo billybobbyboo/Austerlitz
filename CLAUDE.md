@@ -57,8 +57,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 
 ## Checks: run them; never claim a result you did not run
 - First time: `npm install`, then `npx playwright install chromium` (for the visual harness).
-- `npm run build`; `npm test` runs the whole regression suite and prints each suite's result: read the output,
-  the runner does not yet exit non-zero on a failed suite (`docs/HANDOFF.md`).
+- `npm run build`; `npm test` runs the whole regression suite and prints each suite's result: it exits non-zero, naming
+  the failed suites, if any suite exits non-zero or prints an error summary.
 - `npm run check:data`: must pass unless the task changes data on purpose.
 - `npm run check:visual`: 11 fixed views, Stage 0 thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()`.
   One known residual is allowed by name (hybrid-dimmed Walther/Nansouty counter overlap, Stage 2).
