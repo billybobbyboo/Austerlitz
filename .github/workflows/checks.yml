@@ -1,6 +1,6 @@
 # Automated checks on every push and pull request (docs/HANDOFF.md, task 4): build, the committed HTML
 # matches that build, the regression suite
-# (tools/run-all.sh exits non-zero if any suite fails), and the data-invariance proof. The visual harness
+# (tools/run-all.sh exits non-zero if any suite fails), the data-invariance proof and the chronology regression. The visual harness
 # (npm run check:visual) is not run here: it needs Chromium and about ten minutes of software rendering.
 name: checks
 on:
@@ -25,3 +25,5 @@ jobs:
       - run: git diff --exit-code --stat austerlitz-command-map.html
       - run: npm test
       - run: npm run check:data
+      # the chronology regression (owner decisions 40-46): no early or late move but the named unresolved conflicts
+      - run: npm run check:chronology

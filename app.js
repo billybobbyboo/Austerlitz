@@ -1061,7 +1061,7 @@ function updateTrail(rec,id){
 }
 function refreshSymbol(rec,ph){
   var f=rec.f;
-  var st=aggStatus(rec.id,ph), cf=aggConf(rec.id,ph);
+  var st=liveStatus(rec.id,ph), cf=aggConf(rec.id,ph);
   var sel=(selection&&selection.kind==="f"&&selection.id===rec.id);
   var paper=(mode==="staff");
   var dim=!!(highlight && !highlight[rec.id]);
@@ -1220,7 +1220,21 @@ function fmtClock(t){
   return (h<10?"0":"")+h+":"+(m<10?"0":"")+m;
 }
 
-/* ---- anchors and march routes ---- */
+/* ---- anchors and march routes ----
+   THE TIMING RULE (owner decisions 33 and 40; docs/STAGE2_SPEC.md section M). A track entry with a position is an
+   anchor. By default an anchor is reached at the START of its phase, PHASES[ph].t0: the move into it runs from the
+   previous anchor's arrival (or moveMin before the phase start: "holds, then marches") and is complete as the phase
+   begins, so the default anchor is "in place when the phase opens". An anchor may instead carry its own timing, tm,
+   in minutes of the day, only where a dated statement supports it (decision 41: tm also carries that evidence, a
+   timing grade A/B/C and its basis, "source" or "app narrative, unsourced"):
+     tm.at   when the anchor is reached; may lie after its phase start. A range [lo,hi] is honoured at hi;
+     tm.dep  when the move into it begins. A range [lo,hi] is honoured at lo.
+   So a ranged move is shown in motion across the whole range; no midpoint is ever taken. With a departure at or
+   after the phase start and no arrival, the anchor is reached after moveMin, or once the leg has been marched at its
+   arm's ceiling (SPEED_CEIL), whichever is later, rounded up to the minute: the least delay the dated departure and
+   the ceiling allow (the arrival is then derived, a.arrDerived). Anchors without tm behave exactly as before.
+   auditMovement() validates every explicit time: departure before arrival, no overlap with the neighbouring legs,
+   inside the day. The leg into anchor b runs over b.w = [departure, arrival]; b.arr is its arrival. */
 function anchorList(id){
   var f=FORMATIONS[id];
   if(!f||!f.track) return [];
@@ -1228,7 +1242,22 @@ function anchorList(id){
   var out=[];
   Object.keys(f.track).map(Number).sort(function(a,b){return a-b;}).forEach(function(ph){
     var e=f.track[ph];
-    if("p" in e) out.push({ph:ph,p:e.p,via:e.via||null,moveMin:e.moveMin||null,ice:!!e.ice});
+    if("p" in e) out.push({ph:ph,p:e.p,via:e.via||null,moveMin:e.moveMin||null,ice:!!e.ice,tm:e.tm||null});
+  });
+  out.forEach(function(b,i){
+    var t0=PHASES[b.ph].t0, a=out[i-1];
+    b.arr=t0; b.w=null; b.arrDerived=false;
+    if(!a||a.p===null||b.p===null) return;
+    var tm=b.tm||{}, dep=tm.dep==null?null:(Array.isArray(tm.dep)?tm.dep[0]:tm.dep),
+        at=tm.at==null?null:(Array.isArray(tm.at)?tm.at[1]:tm.at);
+    if(at!==null) b.arr=at;
+    else if(dep!==null && dep>=t0){
+      var mins=legPath(a,b).len*KM_PER_MAP/(SPEED_CEIL[f.arm]||5.0)*60;
+      b.arr=Math.ceil(dep+Math.max(b.moveMin||0,mins)-1e-9); b.arrDerived=true;
+    }
+    var d=dep;
+    if(d===null){ d=a.arr; if(b.moveMin && b.moveMin<(b.arr-d)) d=b.arr-b.moveMin; }   /* holds, then marches */
+    b.w=[d,b.arr];
   });
   f._anchors=out;
   return out;
@@ -1251,8 +1280,11 @@ function pointOnPath(pp,u){
   return [pp.pts[i-1][0]+(pp.pts[i][0]-pp.pts[i-1][0])*t,
           pp.pts[i-1][1]+(pp.pts[i][1]-pp.pts[i-1][1])*t];
 }
+/* the leg from anchor a to the next anchor b: [departure, arrival]. The default (the timing rule above): an anchor is
+   reached at its phase's start unless it carries an explicit time (tm); anchorList resolves the window once. */
 function legWindow(a,b){
-  var t0=PHASES[a.ph].t0, t1=PHASES[b.ph].t0;
+  if(b.w) return b.w;
+  var t0=a.arr!==undefined?a.arr:PHASES[a.ph].t0, t1=PHASES[b.ph].t0;
   if(b.moveMin && b.moveMin<(t1-t0)) t0=t1-b.moveMin;   /* holds, then marches */
   return [t0,t1];
 }
@@ -1262,7 +1294,7 @@ function legAt(id,t){
   if(A[0].p===null) return null;
   if(t<=PHASES[A[0].ph].t0) return {a:A[0],b:null,u:0};
   var i=0;
-  while(i<A.length-1 && t>=PHASES[A[i+1].ph].t0) i++;
+  while(i<A.length-1 && t>=A[i+1].arr) i++;   /* an anchor is passed when it is reached, not when its phase opens */
   var a=A[i];
   if(a.p===null) return null;
   if(i===A.length-1) return {a:a,b:null,u:0};
@@ -1364,6 +1396,18 @@ function auditMovement(){
       var x=crossingProblem(pp,b.ice);
       if(x) out.push({id:id,leg:a.ph+"->"+b.ph,why:x.why,at:x.at});
     }
+    /* explicit times (decision 40): departure before arrival, no overlap with the neighbouring legs, inside the day */
+    A.forEach(function(b,k){
+      if(!b.tm) return;
+      var leg=(k?A[k-1].ph:"-")+"->"+b.ph, bad=function(why){ out.push({id:id,leg:leg,why:"timing: "+why,at:b.p||[0,0]}); };
+      if(k===0||b.p===null||A[k-1].p===null){ bad("a first or removal entry cannot carry its own time"); return; }
+      if(!(b.w[0]<b.w[1])) bad("departure "+fmtClock(b.w[0])+" is not before arrival "+fmtClock(b.w[1]));
+      if(b.w[0]<A[k-1].arr) bad("departs "+fmtClock(b.w[0])+", before the previous anchor is reached at "+fmtClock(A[k-1].arr));
+      var c=A[k+1];
+      if(c&&c.p!==null&&(b.arr>c.w[0]||b.arr>c.arr)) bad("arrives "+fmtClock(b.arr)+", after the next leg departs ("+fmtClock(c.w[0])+") or the next anchor is reached ("+fmtClock(c.arr)+")");
+      if(c&&c.p===null&&b.arr>PHASES[c.ph].t0) bad("arrives "+fmtClock(b.arr)+", after the formation leaves the field");
+      if(b.w[0]<T_MIN||b.arr>T_MAX) bad("outside the day ("+fmtClock(b.w[0])+"-"+fmtClock(b.arr)+")");
+    });
   });
   return out;
 }
@@ -1451,6 +1495,7 @@ function setClock(t,opts){
     if(selection) paintDrawer();
     if(PHASES[ph].flash && !opts.instant) flash(PHASES[ph].flash);
   }
+  else if(selection&&selection.kind==="f"&&drawerKey()!==_drawerKey) paintDrawer();   /* a delayed move begins or ends */
   paintTimeline();
 }
 function setPhase(n,instant){
@@ -2558,7 +2603,9 @@ function declutter(){
     sp.visible=false; st.hidden++; return false;
   }
   var AROUND=[[0,0],[0,-1.08],[0.62,-0.62],[-0.62,-0.62],[1.1,0],[-1.1,0],[0,1.08],[0.62,0.62],[-0.62,0.62],
-              [0,-2.12],[1.1,-1.08],[-1.1,-1.08],[1.1,1.08],[-1.1,1.08],[0,2.12],[2.2,0],[-2.2,0],[0,-3.15],[1.6,-2.12],[-1.6,-2.12]];
+              [0,-2.12],[1.1,-1.08],[-1.1,-1.08],[1.1,1.08],[-1.1,1.08],[0,2.12],[2.2,0],[-2.2,0],[0,-3.15],[1.6,-2.12],[-1.6,-2.12],
+              /* a wider ring, tried only by a counter that found no place above (Stage 0 left it overlapping) */
+              [2.2,-1.08],[-2.2,-1.08],[2.2,1.08],[-2.2,1.08],[1.6,2.12],[-1.6,2.12],[0,3.15],[3.3,0],[-3.3,0],[0,-4.2]];
   var NEAR=[[0,0],[0,-1.15],[0,1.15],[0,-2.3],[0.7,0],[-0.7,0],[0,2.3]];
   var ONLY=[[0,0]];
   function isSel(kind,id){ return !!(selection&&selection.kind===kind&&selection.id===id); }
@@ -2771,7 +2818,7 @@ function updateVisibility(){
     rec.block.visible = showBlocks && !!p;
     var dimmed = highlight && !highlight[id];
     rec.block.scale.setScalar(1.25*(mode==="hybrid"?0.86:1)*(dimmed?0.80:1));
-    if(rec.block.visible){ poseBlock(rec,id,aggStatus(id,curPhase)); settleBlock(rec); }
+    if(rec.block.visible){ poseBlock(rec,id,liveStatus(id,curPhase)); settleBlock(rec); }
 
     if(rec.nameLabel){
       var nameRange = f.ech==="bde" ? 170 : (f.arm==="art"||f.arm==="hq") ? 220 : 300;
@@ -2807,7 +2854,7 @@ function updateVisibility(){
       } else rec.dust.material.opacity=0;
     }
     if(rec.smoke){
-      var stx=aggStatus(id,curPhase);
+      var stx=liveStatus(id,curPhase);
       var fighting = stx && FIGHTING[stx];
       var wantS = fighting && !!p && mode!=="staff" && !dimmed;
       rec.smoke.visible=wantS;
@@ -3267,7 +3314,7 @@ function syncSelChip(){
   if(!show) return;
   var k="Selected", n="", st="";
   if(selection.kind==="f"&&FORMATIONS[selection.id]){
-    n=FORMATIONS[selection.id].name; var s1=aggStatus(selection.id,curPhase); st=(s1&&STATUS[s1])?STATUS[s1].label:"";
+    n=FORMATIONS[selection.id].name; var s1=liveStatus(selection.id,curPhase); st=(s1&&STATUS[s1])?STATUS[s1].label:"";
     if(highlight) k="Selected, with its chain of command";
   } else if(selection.kind==="e"){ k="Event"; EVENTS.forEach(function(e){ if(e.id===selection.id) n=e.n; }); }
   else if(selection.kind==="t"){ k="Place"; FEATURES.forEach(function(x){ if(x.id===selection.id) n=x.name; }); }
@@ -3460,6 +3507,8 @@ function paintChanges(phIdx){
     if(!e) return;
     var txt=e.act || (e.st&&STATUS[e.st]?FORMATIONS[id].name+" "+STATUS[e.st].label.toLowerCase():null);
     if(!txt) return;
+    var an=anchorList(id).filter(function(q){ return q.ph===phIdx; })[0];
+    if(an&&an.w&&an.w[0]>PHASES[phIdx].t0) txt="From "+fmtClock(an.w[0])+": "+txt;   /* a dated move that begins later in the phase */
     items.push({id:id,txt:txt,rank:e.act?0:1});
   });
   if(!items.length){ host.innerHTML=""; return; }
@@ -3484,12 +3533,52 @@ function paintDispatch(ph){
   paintChanges(ph.id);
 }
 
+/* ---- a formation's text during a delayed move (owner decision 46) ----
+   An anchor whose move is dated to begin after its phase opens (tm.dep) is still held at the previous position when
+   the phase starts. Until it moves, its act and status are the previous anchor's, and the dossier says when the dated
+   move begins. Presentation only: the model (stateAt, aggStatus, the tracks) is unchanged. */
+function waitingFor(id,t){
+  var f=FORMATIONS[id]; if(!f||!f.track) return null;
+  var L=legAt(id,t), ph=phaseAt(t);
+  if(L&&L.b&&L.w&&L.b.ph===ph&&t<L.w[0]&&L.w[0]>PHASES[ph].t0) return L.b;
+  return null;
+}
+function textPhase(id,t){ return waitingFor(id,t)?phaseAt(t)-1:phaseAt(t); }
+function liveStatus(id,ph){
+  if(ph!==phaseAt(clock)) return aggStatus(id,ph);
+  var f=FORMATIONS[id];
+  if(f.track){ var s=stateAt(id,textPhase(id,clock)); return s?s.st:null; }
+  var counts={},best=null,bn=0;
+  leavesOf(id,[]).forEach(function(k){
+    var s2=stateAt(k,textPhase(k,clock)); if(!s2||!s2.st) return;
+    counts[s2.st]=(counts[s2.st]||0)+1;
+    if(counts[s2.st]>bn){ bn=counts[s2.st]; best=s2.st; }
+  });
+  return best;
+}
+/* the explicit timing that governs a formation now: the leg in progress or awaited, or the anchor reached this phase */
+function timingNow(id){
+  var f=FORMATIONS[id]; if(!f||!f.track) return null;
+  var L=legAt(id,clock);
+  if(!L) return null;
+  if(L.b&&L.b.tm) return L.b;
+  if(!L.b&&L.a.tm&&L.a.ph===curPhase) return L.a;
+  return null;
+}
+var TIMING_TEXT={A:"Timing dated in a cited source.",
+                 B:"Timing given as approximate in this reconstruction's narrative, which cites no source for it.",
+                 C:"Timing inferred from the narrative (a bound, a sequence or a range), applied to this move."};
+function drawerKey(){
+  if(!selection||selection.kind!=="f") return "";
+  return leavesOf(selection.id,[]).map(function(k){ var L=legAt(k,clock); return textPhase(k,clock)+(L&&L.b&&L.u>0&&L.u<1?"m":"s"); }).join(",");
+}
+var _drawerKey="";
 var CONF_INTERP="The formation is between two plotted anchors: this position is interpolated, and graded no better than the weaker anchor.";
 var CONF_TEXT={A:"Position documented in the sources.",
                B:"Sector documented; the frontage shown is an approximation.",
                C:"Reconstructed from the narrative — treat as indicative only."};
 
-function paintDrawer(){ paintDrawerBody(); syncSelChip(); }
+function paintDrawer(){ _drawerKey=drawerKey(); paintDrawerBody(); syncSelChip(); }
 function paintDrawerBody(){
   var dr=document.getElementById("drawer");
   if(!selection){ dr.classList.remove("on"); document.body.classList.remove("drawer-open"); return; }
@@ -3527,8 +3616,8 @@ function claimOf(id,cf){
 var dossierExpanded=false;
 function compactCard(id){
   var f=FORMATIONS[id];
-  var st=aggStatus(id,curPhase), cf=aggConf(id,curPhase), cl=claimOf(id,cf);
-  var s2=f.track?stateAt(id,curPhase):null;
+  var st=liveStatus(id,curPhase), cf=aggConf(id,curPhase), cl=claimOf(id,cf);
+  var s2=f.track?stateAt(id,textPhase(id,clock)):null, wt=f.track?waitingFor(id,clock):null, tmg=timingNow(id);
   var pos=posNow(id), nat=NATION[f.nation];
   var wrap=el("div","dossier card-compact");
   var head=el("div","dh");
@@ -3540,6 +3629,7 @@ function compactCard(id){
   if(st) pills+=statusPill(st);
   pills+=claimPill(cl);
   pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
+  if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
   wrap.appendChild(el("div","pillrow",pills));
   var str=f.strength||aggStrength(id);
   var body='';
@@ -3551,6 +3641,7 @@ function compactCard(id){
     body+=row("Under", esc(shortCommander(pf))+" &middot; "+esc(pf.name));
   }
   if(s2&&s2.act) body+=row("Doing now", esc(s2.act));
+  if(wt&&f.track[wt.ph].act) body+=row("From "+esc(fmtClock(wt.w[0])), esc(f.track[wt.ph].act));
   if(s2&&s2.obj) body+=row("Objective", esc(s2.obj));
   body+=row("Where", pos? esc(nearestFeature(pos)) : "Not on the field at this hour");
   wrap.appendChild(el("dl","kvs",body));
@@ -3562,8 +3653,8 @@ function compactCard(id){
 function dossierFormation(id){
   var f=FORMATIONS[id];
   var isAgg=!f.track;
-  var s=f.track?stateAt(id,curPhase):null;
-  var st=aggStatus(id,curPhase), cf=aggConf(id,curPhase);
+  var s=f.track?stateAt(id,textPhase(id,clock)):null, wt=f.track?waitingFor(id,clock):null, tmg=timingNow(id);
+  var st=liveStatus(id,curPhase), cf=aggConf(id,curPhase);
   var pos=posNow(id);
   var wrap=el("div","dossier");
   var nat=NATION[f.nation];
@@ -3581,6 +3672,7 @@ function dossierFormation(id){
   var cl=claimOf(id,cf);
   pills+=claimPill(cl);
   pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
+  if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
   if(commandView!=="none"){
     var kn=knowledgeOf(id);
     var KL={own:"Own troops",seen:"In sight",uncertain:"Reported only",unknown:"Not known"};
@@ -3615,19 +3707,27 @@ function dossierFormation(id){
       mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h"+
       (mr.ice?' <span class="hh">over the frozen mere</span>':''));
   }
+  if(tmg){
+    var tw=tmg.w, tt=tmg.tm;
+    whr+=row("Timing", (tw[0]<clock&&tw[1]<=clock?"Reached ":"Moves ")+esc(fmtClock(tw[0]))+"&ndash;"+esc(fmtClock(tw[1]))+
+      (tmg.arrDerived?' <span class="hh">(arrival derived: '+(tmg.moveMin?"its "+tmg.moveMin+"-minute march":"the march-rate ceiling")+')</span>':'')+
+      " &middot; grade "+esc(tt.gr)+" &middot; "+esc(tt.basis));
+    whr+=row("Dated by", tt.ev.map(function(q){ return "&ldquo;"+esc(q)+"&rdquo;"; }).join("; ")+'<br><span class="hh">'+esc(tt.note)+'</span>');
+  }
   wrap.appendChild(sect("Where",whr,true,"recon"));
 
   /* WHEN and WHAT */
   if(f.track){
-    var prev=curPhase>0?stateAt(id,curPhase-1):null;
-    var nx=nextChange(id,curPhase);
+    var tp=textPhase(id,clock);
+    var prev=tp>0?stateAt(id,tp-1):null;
+    var nx=wt?{i:curPhase,act:f.track[wt.ph].act||"Moves to its next position.",from:wt.w[0]}:nextChange(id,curPhase);
     var h='<ol class="tl">';
-    h+='<li class="past"><b>'+(prev&&prev.act?esc(PHASES[Math.max(0,curPhase-1)].clock):"—")+'</b><span>'+
+    h+='<li class="past"><b>'+(prev&&prev.act?esc(PHASES[Math.max(0,tp-1)].clock):"—")+'</b><span>'+
         (prev&&prev.act?esc(prev.act):"No earlier action recorded.")+'</span></li>';
     h+='<li class="now"><b>'+esc(PHASES[curPhase].clock)+'</b><span>'+
         (s&&s.act?esc(s.act):"Position unchanged.")+
         (s&&s.act&&s.actPhase<curPhase?' <i>(continuing from '+esc(PHASES[s.actPhase].clock)+')</i>':'')+'</span></li>';
-    h+='<li class="next"><b>'+(nx?esc(PHASES[nx.i].clock):"—")+'</b><span>'+
+    h+='<li class="next"><b>'+(nx?(nx.from!==undefined?"From "+esc(fmtClock(nx.from)):esc(PHASES[nx.i].clock)):"—")+'</b><span>'+
         (nx?esc(nx.act):"No further change recorded in this reconstruction.")+'</span></li>';
     h+='</ol>';
     wrap.appendChild(sect("What it was doing",h,false,"recon"));
@@ -3674,7 +3774,7 @@ function dossierFormation(id){
   }
 
   if(f.note) wrap.appendChild(el("p","note",esc(f.note)));
-  wrap.appendChild(el("p","conf",esc(CLAIM[cl].note)+" "+esc(CONF_TEXT[cf]||"")+(aggInterp(id,curPhase)?" "+esc(CONF_INTERP):"")));
+  wrap.appendChild(el("p","conf",esc(CLAIM[cl].note)+" "+esc(CONF_TEXT[cf]||"")+(aggInterp(id,curPhase)?" "+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));
 
   var act=el("div","dact");
   var btn=el("button","t","Centre the map here");
@@ -4016,7 +4116,7 @@ function ambientNow(){
   for(var id in units){
     var r=units[id];
     if((r.smoke&&r.smoke.visible)||(r.dust&&r.dust.visible)) return true;
-    if(r.block&&r.block.visible&&LOOSE[aggStatus(id,curPhase)]) return true;
+    if(r.block&&r.block.visible&&LOOSE[liveStatus(id,curPhase)]) return true;
   }
   return false;
 }

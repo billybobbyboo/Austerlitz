@@ -109,6 +109,31 @@ if(byArm.art&&maxOf(byArm.art)>SPEED_CEIL.art)
 if(byArm.cav&&maxOf(byArm.cav)>SPEED_CEIL.cav)
   fail("movement",`cavalry peaks above its ceiling`);
 
+/* ---------- 3b. EXPLICIT TIMES (owner decision 40): the movement audit must reject every invalid one ---------- */
+{ const CASES=[
+    ["arrival before departure",   {2:{p:[100,100],cf:"C"},4:{p:[110,100],tm:{dep:600,at:590,gr:"C",basis:"app narrative, unsourced",ev:["x"]}}}],
+    ["departs before the previous anchor is reached", {2:{p:[100,100],cf:"C"},4:{p:[110,100],tm:{at:640,gr:"C",basis:"app narrative, unsourced",ev:["x"]}},5:{p:[120,100],tm:{dep:620,gr:"C",basis:"app narrative, unsourced",ev:["x"]}}}],
+    ["arrives after the next leg departs", {2:{p:[100,100],cf:"C"},4:{p:[110,100],tm:{at:700,gr:"C",basis:"app narrative, unsourced",ev:["x"]}},5:{p:[120,100]}}],
+    ["outside the day",            {2:{p:[100,100],cf:"C"},9:{p:[110,100],tm:{at:1200,gr:"C",basis:"app narrative, unsourced",ev:["x"]}}}],
+    ["a first entry with a time",  {2:{p:[100,100],cf:"C",tm:{at:500,gr:"C",basis:"app narrative, unsourced",ev:["x"]}},4:{p:[110,100]}}]];
+  let caught=0;
+  CASES.forEach(([what,track])=>{
+    FORMATIONS.__probe={ech:"div",nation:"fr",arm:"inf",name:"probe",commander:"probe",track:track};
+    const hits=auditMovement().filter(p=>p.id==="__probe"&&/^timing/.test(p.why));
+    delete FORMATIONS.__probe;
+    if(hits.length) caught++; else fail("timing",`the movement audit accepts an invalid explicit time: ${what}`);
+  });
+  /* and a valid delayed move is accepted, and moves inside its phase */
+  FORMATIONS.__probe={ech:"div",nation:"fr",arm:"inf",name:"probe",commander:"probe",
+    track:{2:{p:[100,100],cf:"C"},4:{p:[110,100],tm:{dep:585,gr:"C",basis:"app narrative, unsourced",ev:["x"]}},5:{p:[112,100]}}};
+  const okHits=auditMovement().filter(p=>p.id==="__probe"), A=anchorList("__probe");
+  const moving=posAtClock("__probe",580)[0]===100 && posAtClock("__probe",600)[0]>100;
+  delete FORMATIONS.__probe;
+  if(okHits.length) fail("timing",`the movement audit rejects a valid delayed move: ${okHits.map(p=>p.why).join("; ")}`);
+  if(!moving) fail("timing","a move dated to begin inside its phase does not hold until its departure");
+  console.log("explicit-time rules: "+caught+" of "+CASES.length+" invalid timings rejected; a valid delayed move holds until "+fmtClock(A[1].w[0])+" and arrives "+fmtClock(A[1].w[1]));
+}
+
 /* ---------- 4. COMMAND ---------- */
 Object.keys(FORMATIONS).forEach(id=>{
   const f=FORMATIONS[id];
