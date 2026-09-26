@@ -71,7 +71,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - Update `CHANGELOG.md`: what changed and why, what was verified (numbers), what remains uncertain,
   and the new size and md5 of `austerlitz-command-map.html`. Keep historical uncertainty
   separate from implementation choices.
-- Commit `austerlitz-command-map.html` with the sources. Report files changed, checks run with results, and anything not verified.
+- Commit `austerlitz-command-map.html` with the sources (CI fails if it differs from a fresh build). Report files changed, checks run with results, and anything not verified.
 
 ## Current state (September 2026)
 Stage 0 (trust and baseline) is complete; the source tree and the regression suite are recovered and
