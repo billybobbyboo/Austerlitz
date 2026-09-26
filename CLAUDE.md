@@ -64,7 +64,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - `npm run check:contrast`: every visible text element in 16 interface states meets WCAG AA and the 10.5 px floor.
 - `npm run check:visual`: 11 fixed views, Stage 0 thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()`.
   One known residual is allowed by name (hybrid-dimmed Walther/Nansouty counter overlap, Stage 2).
-- `npm run check:baseline` passes only on the unmodified Stage 0 build (md5 `c09c4b23...`).
+- `npm run check:baseline` passes only on the unmodified Stage 1B build (md5 `5bf48b75...`, 1,107,799 bytes; re-baselined in
+  Stage 2A from the Stage 0 build `c09c4b23...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All eight suites pass on Stage 0 (`runtime-test.js` since `docs/HANDOFF.md` task 2). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
