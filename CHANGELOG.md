@@ -1,5 +1,29 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Stage 1A: specification drafted; no code change
+
+`docs/VISUAL_SPEC.md`: the visual language specification (Stage 1, Part A), written against `e9190e1` with the
+owner's seven decisions as fixed input. It holds the colour and type inventory with file and line (533 colour
+literals, 168 distinct interface and symbol colours), the encoding table, proposed colour tokens with one
+source of truth for CSS and JavaScript, measured text contrast, a colour-vision check, the type scale and label
+hierarchy, the symbol-scale convention, the confidence encoding, the Part B plan with its expected effect on
+every check, and ten open questions.
+
+**Measured, not estimated:** 192 text/background pairs read from the built page in Chromium across 17
+interface states, composited over dark and bright map backdrops; 72 fail WCAG AA (4.5:1). Findings that
+bear on the decisions: a single side-coloured counter frame cannot reach 3:1 against its own fill and every
+ground, so decision 1 needs a cased frame (a side band between dark keylines); the confidence badge that
+decision 4 makes the only encoding has no plate today (1.15:1 on bright ground); amber also carries
+non-Allied meanings (terrain-analysis ridge and escarpment, the "hard for guns" going class, the height
+label, objectives, the movement trail, decision events), which decision 2 moves off it except for the going
+classes (terrain palette, Stage 4); the paper map is half themed. `NATION` does not need to change. Blue and
+amber stay distinct under protanopia, deuteranopia and tritanopia but are identical in greyscale, so side
+also needs a non-hue cue.
+
+No code, data, test or build change: `austerlitz-command-map.html` unchanged, 1,097,610 bytes, md5
+`c09c4b23d9e245ff9d693960cf9496b9`. Uncertain: the real-world sizes used to state the symbol-scale factors
+are rough general values, not historical data; standard and flag dimensions are to be sourced in Stage 6.
+
 ## 2026-09 · CI checks the committed build; set-up tasks closed (no change to the build)
 
 `.github/workflows/checks.yml` now runs `git diff --exit-code --stat austerlitz-command-map.html` after `npm run
