@@ -10,3 +10,4 @@ _state.js
 _ov.js
 *.pre-stage0
 __pycache__/
+tools/stage2/out/
