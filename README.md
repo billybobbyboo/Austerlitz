@@ -7,7 +7,7 @@ one self-contained HTML file: open `austerlitz-command-map.html` in a browser.
 Edit the sources (`geo.js`, `data.js`, `analysis.js`, `world.js`, `symbols.js`, `app.js`, `shell.html`, `style.css`),
 then `npm run build` (or `python3 build.py`; on Windows `py build.py`). Never edit the built HTML by hand.
 Rules for Claude Code: `CLAUDE.md`. State and history: `CHANGELOG.md`. Roadmap: `docs/VISUAL_AUDIT.md`.
-Next tasks: `docs/HANDOFF.md`.
+Completed set-up tasks: `docs/HANDOFF.md`.
 
 ## Checks
 | command | what it proves |

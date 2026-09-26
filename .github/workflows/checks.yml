@@ -1,4 +1,5 @@
-# Automated checks on every push and pull request (docs/HANDOFF.md, task 4): build, the regression suite
+# Automated checks on every push and pull request (docs/HANDOFF.md, task 4): build, the committed HTML
+# matches that build, the regression suite
 # (tools/run-all.sh exits non-zero if any suite fails), and the data-invariance proof. The visual harness
 # (npm run check:visual) is not run here: it needs Chromium and about ten minutes of software rendering.
 name: checks
@@ -20,5 +21,7 @@ jobs:
           node-version: 22
       - run: npm install
       - run: npm run build
+      # the committed product must be exactly what the sources build (rebuild and commit it with any source change)
+      - run: git diff --exit-code --stat austerlitz-command-map.html
       - run: npm test
       - run: npm run check:data

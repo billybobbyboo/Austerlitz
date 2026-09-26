@@ -1,5 +1,14 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · CI checks the committed build; set-up tasks closed (no change to the build)
+
+`.github/workflows/checks.yml` now runs `git diff --exit-code --stat austerlitz-command-map.html` after `npm run
+build`: the committed product must be exactly what the sources build, so a source change committed without its
+rebuilt HTML fails CI. Checked on a scratch clone: exit 0 on this tree; exit 1 after a one-character edit to
+`style.css` and a rebuild. `docs/HANDOFF.md` is now the record of the four completed set-up tasks; `README.md` and
+the finishing note in `CLAUDE.md` follow. `austerlitz-command-map.html` unchanged: 1,097,610 bytes, md5
+`c09c4b23d9e245ff9d693960cf9496b9`.
+
 ## 2026-09 · Automated checks on every push (CI only; no change to the build)
 
 **Status: added (`docs/HANDOFF.md`, task 4).** `.github/workflows/checks.yml` runs on every push and pull request, on
