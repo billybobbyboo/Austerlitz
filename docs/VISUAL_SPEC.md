@@ -1,8 +1,9 @@
 # Visual language specification (Stage 1, Part A)
 
-**Status: specification drafted; no code, data or test changed.** Written against `main` at `e9190e1`
-(`austerlitz-command-map.html` md5 `c09c4b23d9e245ff9d693960cf9496b9`). Part B implements it. Line numbers
-refer to that commit.
+**Status: specification drafted and reviewed; the owner's answers to the open questions are recorded
+(§1.1) and the sections they affect are updated; no code, data or test changed.** Written against `main` at
+`e9190e1` (`austerlitz-command-map.html` md5 `c09c4b23d9e245ff9d693960cf9496b9`). Part B implements it; it has
+not started. Line numbers refer to that commit.
 
 Scope: the colour and type used by the interface, the counters, the labels and the map symbology. The 3D
 terrain palette, lighting, sky, fog, smoke and mist are Stage 4 and are only documented here (appendix A).
@@ -22,7 +23,8 @@ Contrast is WCAG 2.x relative luminance; colour differences are CIEDE2000; colou
 simulated with the Machado, Oliveira and Fernandes (2009) matrices at full severity.
 
 Labels used below: **fact** (read from the code or measured), **derived** (computed from facts),
-**recommendation** (a proposal for Part B), **open** (needs the owner).
+**owner decision** (fixed by the owner; decisions 1-7 in §1, decisions 8-17 in §1.1),
+**recommendation** (a proposal for Part B), **open** (still needs a decision).
 
 ## 1. The owner's decisions, and whether they are workable
 
@@ -34,10 +36,10 @@ in part with other colours that already exist; both are stated here so that Part
 | 1 | Side symbology: French blue; Allied amber for arrows, event markers and counter frames. Nation colours stay as counter fills and figure coats. | Workable, with a **cased frame**. | A frame in one side colour cannot be seen against its own fill and every ground: French arrow blue on the French fill is 2.02:1, Allied amber on the Russian fill 1.81:1, and both fall to 1.5-1.6:1 on the bright landscape (WCAG non-text minimum 3:1). A frame made of a side-colour band between two thin dark keylines passes everywhere: the band carries it on dark ground (5.2-5.6:1), the keyline on light ground (8.6-16.5:1). See §6. The same casing makes the Austrian white counter visible on the paper map, where its fill is 1.02-1.29:1 today. **Selection** can no longer recolour the frame (it does today, `symbols.js:90`), because the frame now carries side: selection becomes a separate outer ring. |
 | 1 | (continued) figure coats | Workable now; **note for Stage 6.** | Coats in nation colours are right for this convention, but `docs/VISUAL_AUDIT.md` (opportunity 3) plans historically accurate uniforms, where French dragoons and chasseurs wore green and the Chevalier Guard white. From Stage 6 a coat cannot carry nation; nothing in this specification relies on coats to carry nation or side. |
 | 2 | The interface accent becomes a neutral warm ivory; amber is used only for the Allies. | Workable, with two conditions and **one partial conflict**. | (a) An ivory accent is close in hue and lightness to the ivory text, so it cannot be the only sign of "current" or "selected": pair it with a bar, weight or background (§5, §8). (b) Ivory cannot work on the paper map's light panels (about 1.1:1); the paper theme needs a dark counterpart (`#4E3F1E`, 5.0:1 or better). (c) **Conflict:** amber and gold also carry non-Allied meanings: the terrain-analysis ridge `#D8A05A` and escarpment `#C2743C` lines and labels (`world.js:1316-1317`, `app.js:2450`, `app.js:3841`), the "hard for guns" going class `#B8863A` (`world.js:537`, `shell.html:154`), the height place-label colour `#D9BC7A` (`symbols.js:169`), the objective marker `#EFC468` (`app.js:1157`, `1164`), the movement trail `#D8C48A` (`app.js:1010`) and the "decision" event gold `#E7C069` (`app.js:1818`, `1915`). The overlay colours are symbology and can move in Part B (§5). The going classes are part of the terrain palette (Stage 4, out of scope): they stay amber until Stage 4, and the legend says so. |
-| 3 | Status and claim labels stop using side colours: neutral tones, distinguished by icon, shape, weight and text. | Workable, **no data change needed.** | `STATUS[*].tone` (guarded by `check:data`) stays as a meaning key; only `TONE` (not guarded, `symbols.js:7-10`) and the drawing change. Today three of the six tone pills fail contrast (warn 3.04, quiet 3.56, active 3.97:1) and "active" orange is 1.0 CIEDE2000 from the Allied plan colour. The same treatment is recommended for the evidence-layer and source tags, which have the same problem (§3.2); that is an extension of decision 3 for the owner to confirm (open question 3). |
+| 3 | Status and claim labels stop using side colours: neutral tones, distinguished by icon, shape, weight and text. | Workable, **no data change needed.** | `STATUS[*].tone` (guarded by `check:data`) stays as a meaning key; only `TONE` (not guarded, `symbols.js:7-10`) and the drawing change. Today three of the six tone pills fail contrast (warn 3.04, quiet 3.56, active 3.97:1) and "active" orange is 1.0 CIEDE2000 from the Allied plan colour. The same treatment is recommended for the evidence-layer and source tags, which have the same problem (§3.2); the owner extended decision 3 to them (owner decision 10). |
 | 4 | Counter confidence: no dashed or dotted frames; B and C by a letter badge; "reported only" keeps its "?". | Workable, with a **plated badge.** | The badge letter is drawn today with no halo or plate: `#D8B563` on the bright landscape is 1.15:1, the "?" `#EFC468` 1.37:1 (`symbols.js:118-131`). Once the dash is gone the badge is the only encoding, so it needs its own plate and keyline (§10). The legend's "approximate position ----" entry (`shell.html:150`) must change with it. |
 | 5 | Vertical exaggeration adjustable in Stage 2 (1x, default about 4x, current 10.3x). | Recorded (§11). | No conflict. The display factor must apply to the ground mesh and `groundY()` only; `height()`, the viewshed and line of sight stay in true model units (all guarded by `check:data`). |
-| 6 | Miniature scale of figures, buildings and flags is deliberate; flags come to the same symbol scale in Stage 2. | Recorded (§9). | Measured: figures are drawn about 55-70 times life size, buildings 10-15 times, flags over 100 times. "One convention" is today three different factors (open question 7). |
+| 6 | Miniature scale of figures, buildings and flags is deliberate; flags come to the same symbol scale in Stage 2. | Recorded (§9). | Measured: figures are drawn about 55-70 times life size, buildings 10-15 times, flags over 100 times. "One convention" is today three different factors; the owner chose named scales (owner decision 14). |
 | 7 | The paper map becomes a true north-up, top-down map in Stage 2. | Recorded (§11). | No conflict: `GEOREF.NORTH` and `GEOREF.ROT` (17.42 degrees) already give the rotation. |
 
 **`NATION` does not need to change.** The three nation fills stay well apart under protanopia and
@@ -45,6 +47,24 @@ deuteranopia (CIEDE2000 34-55). They are weak only under tritanopia (French/Russ
 (4.4), and decision 1's side-coloured frame restores the French/Russian separation under tritanopia (frame
 difference 66). The Austrian fill's low contrast against the paper map is fixed by the cased frame, not by
 changing the fill. So the task's stop condition does not apply.
+
+## 1.1 Owner decisions on the review questions (26 September 2026)
+
+The owner answered the ten questions of the first draft. They are fixed like decisions 1-7; the sections
+they affect below are updated to match, and §13 keeps only what is still open.
+
+| # | question | owner decision | consequence in this specification |
+|---|---|---|---|
+| 8 | Paper-map panels | **The whole interface turns light on the paper map, through a second token set; the landscape stays dark.** This extends the ink-on-paper dispatch card that the audit says to keep. | §5.1, §5.2, §12.1: every token has a paper value; the rail, dossier drawer, sources sheet, tools and first-run card join the paper theme. |
+| 9 | Formation name labels | **Neutral text; hue never on the text itself. In the landscape view, which draws no counters, a small side-coloured mark (blue or amber) sits beside each name.** | §4, §8.3, §12.5: name text uses `counter-ink`; the side mark is a symbology element (3:1 against its surround, cased like the frame). |
+| 10 | Evidence-layer and source tags | **Neutral, distinguished by icon and text, consistent with the claim labels.** | §4, §10.4. |
+| 11 | Nation tag on counters | **Yes: `NATION.tag` small below the arm glyph, read from the data without changing it.** | §4, §10.1, §12.2. |
+| 12 | Side cue on arrows | **Record the requirement, decide in Stage 2. The side cue must not reuse any mark that already means "planned" or "intended"; if the plan ribbons use chevrons to mean "plan", choose a different Allied arrowhead.** | §10.5 states what the chevron means today (checked: it is a side cue, not a plan cue) and which arrows are dashed. |
+| 13 | Reported-only and dimmed counters | **Drop the 82% opacity for reported only; the "?" carries it. Dimmed counters: text and badge legible and at AA, while the highlighted family stays clearly dominant; full opacity only if that holds, checked on the hybrid-dimmed harness view.** | §10.1 gives the rule and the prototype evidence on that view. |
+| 14 | Symbol scales | **Named scales, stated in the legend or the sources sheet. State the tree scale too: its own named scale, or grouped with settlements with a justification. Flags join the figure scale in Stage 2.** | §9: two named scales, figure and landscape; trees grouped with buildings, with the measurements. |
+| 15 | Dashes | **Dashes mean "planned or intended" only. The movement trail, selection ring and plateau ring become solid. The dashed valley and dead-ground lines stay as terrain notation, explained in the legend and shown only with the terrain-study layer. The legend's "approximate position" dash entry is removed.** | §3.2, §10.2, §10.5, §12.4, §12.5; retreat arrows (dashed today) become solid too, since a retreat is not intended movement. |
+| 16 | Type | **Seven steps with a 10.5 px floor, for tertiary metadata only. Anything needed to follow the battle (times, strengths, commander names, the situation line) is at least 12 px; dossier and dispatch body text at least 13 px.** | §8.2, §8.3, §12.7: several rules and the counter canvas text must grow. |
+| 17 | Ridge, escarpment and "hard for guns" | **Ridge and escarpment leave the amber axis. "Hard for guns" changes in Stage 1 if that is only a palette value and its legend key; defer only if it needs the terrain shader or lighting, and say so.** | §5.4: checked, it is only a palette value (`makeGoingPalette`, `world.js:530-545`) and a legend key (`shell.html:154`): it changes in Stage 1. |
 
 ## 2. Findings in brief
 
@@ -77,6 +97,13 @@ changing the fill. So the task's stop condition does not apply.
    (`world.js:1316-1320`, `app.js:2450`, `app.js:3841`).
 10. **19 font sizes** from 9 to 25 px, and two different font stacks for the same role (CSS `--sans`/`--serif`
     against canvas `ui-sans-serif, system-ui, sans-serif` and `'Iowan Old Style', Palatino, Georgia, serif`).
+11. **Retreats are drawn dashed.** Movement arrows of kind `retreat` and `axis` are segmented tubes
+    (`app.js:1109-1111`). `axis` marks intended routes (the Allied columns' objectives), which decision 15
+    allows; `retreat` marks retreats that happened, which it does not.
+12. **A going class with no legend key:** vineyards (`coverClass` 6, `world.js:252`) are drawn `#A89A4C` in the
+    going layer (`world.js:538`) but the legend lists only five classes (`shell.html:153-157`).
+13. **Counter text is below the battle-information floor** of decision 16: strengths and designations reach
+    only 9.5-11.8 px on screen, commander names 11.3-14 px (§8.3).
 
 ## 3. Inventory
 
@@ -147,18 +174,18 @@ meaning depends on hue alone.
 
 | meaning | primary channel | redundant channel | tokens | never carried by |
 |---|---|---|---|---|
-| **Side** (French / Allied) | hue: blue / amber on arrows, event markers, counter frame band, plan ribbons, timeline ticks | shape: Allied arrows keep the plans' chevrons, event glyphs keep their kind shapes; text in legend and dossier | `side-fr`, `side-fr-light`, `side-fr-deep`, `side-al`, `side-al-light`, `side-al-deep`, `keyline` | the interface accent; status; claim |
-| **Nation** (France / Russia / Austria) | hue: `NATION` fill on counters, figure coats (until Stage 6), order-of-battle dot, dossier bar | text: nation name in dossier; proposed nation tag on counters (open question 4) | `NATION` only (no copy) | side symbology |
+| **Side** (French / Allied) | hue: blue / amber on arrows, event markers, counter frame band, plan ribbons, timeline ticks, and the side mark beside each formation name in the landscape view (owner decision 9) | shape: an Allied arrowhead chosen in Stage 2 (§10.5); event glyphs keep their kind shapes; text in legend and dossier | `side-fr`, `side-fr-light`, `side-fr-deep`, `side-al`, `side-al-light`, `side-al-deep`, `keyline` | the interface accent; status; claim |
+| **Nation** (France / Russia / Austria) | hue: `NATION` fill on counters, figure coats (until Stage 6), order-of-battle dot, dossier bar | text: `NATION.tag` (FR, RU, AT) below the arm glyph on counters (owner decision 11); nation name in the dossier | `NATION` only (no copy) | side symbology |
 | **Status** (22 states in 6 groups) | text label | icon shape per group, weight; neutral plate | `status-plate`, `status-ink`; icon set §10.3 | hue |
 | **Claim type** (fact / estimate / reconstruction) | text label | icon: filled / half / hollow circle | `plate`, `text` | hue |
-| **Evidence layer** (record / reconstruction / derived) | text tag | icon: filled circle / hollow circle / diamond | `plate`, `text-muted` | hue (today green / amber / blue) |
-| **Source kind** (documented / inference) | text tag | weight (documented regular, inference italic) | `text-muted` | hue (today blue / amber) |
+| **Evidence layer** (record / reconstruction / derived) | text tag | icon: filled circle / hollow circle / diamond (owner decision 10) | `plate`, `text-muted` | hue (today green / amber / blue) |
+| **Source kind** (documented / inference) | text tag | icon (filled circle for documented, hollow circle for inference) and style (inference italic) (owner decision 10) | `plate`, `text-muted` | hue (today blue / amber) |
 | **Confidence grade** (A / B / C, reported only) | counter badge: none for A, letter "B" or "C", "?" for reported only | dossier text "Position B"; spatial encoding in Stage 5 | `badge-plate`, `badge-ink`, `keyline` | dashed or dotted frames; hue |
 | **Derived reading** (plateau strength, centre separation) | text tag "derived" | diamond icon; solid thin ring on the ground | `text-muted`, `annotation` | the accent; hue |
 | **Interface emphasis** (current, selected, pressed, focus) | ivory accent bar, underline or outline | weight, background tint | `accent`, `accent-tint` | amber |
 | **Map selection** | accent ring outside the counter's frame; solid selection ring on the ground | dossier opens; chip | `accent`, `keyline` | recolouring the frame |
 | **Annotation** (objectives, overlay text, movement trail) | warm neutral text on halo | shape (objective cross-circle) | `annotation`, `annotation-paper` | amber, gold |
-| **Terrain classes** (going, cover, analysis lines) | documented here; terrain palette is Stage 4 | analysis lines: dash and tick patterns (existing) | analysis tokens §5.4 | amber for analysis lines (moves off it in Part B); going classes keep their values until Stage 4 |
+| **Terrain classes** (going, cover, analysis lines) | the natural terrain palette is Stage 4; the going layer and the analysis lines are overlay palettes, in scope | analysis lines: dash and tick patterns (valley and dead ground dashed as terrain notation, only with the terrain-study layer, explained in the legend) | analysis and going tokens §5.4 | amber (ridge, escarpment and "hard for guns" move off it in Part B, owner decision 17) |
 
 ## 5. Colour tokens
 
@@ -183,8 +210,9 @@ Proposal:
 4. **Nation colours stay only in `NATION`.** CSS never uses them (the four nation/panel custom properties
    declared today are unused and are removed); the legend, first-run key and order-of-battle dots are painted
    from `NATION` by JavaScript, as now.
-5. A theme is a set of values for the same token names: the paper map redefines the tokens under
-   `body.mode-staff` instead of 73 per-selector overrides.
+5. A theme is a set of values for the same token names: the paper map redefines every token under
+   `body.mode-staff` (owner decision 8: the whole interface turns light there, the landscape stays dark),
+   replacing the 73 per-selector overrides.
 
 Rejected alternatives: reading CSS custom properties from JavaScript with `getComputedStyle` (no stylesheet in
 Node, and a flash of wrong colours before the stylesheet applies); generating CSS only into the built HTML
@@ -245,8 +273,15 @@ Exact ridge and escarpment values are chosen in Part B against two tests: at lea
 for normal vision and deuteranopia, and at least 4.5:1 for the label on its halo in both themes. The height
 place label (`#D9BC7A`, `symbols.js:169`) moves to the same ridge brown.
 
-The going classes (`world.js:534-539`) are terrain palette (Stage 4): **values unchanged**; Part B only makes
-the legend read them from the same table (`shell.html:153-157` stops repeating them).
+**Going classes (owner decision 17).** Checked: the going layer is a per-face colour table in
+`makeGoingPalette()` (`world.js:530-545`), multiplied by the baked shade; it does not touch the terrain shader
+or the lighting, and it is not a guarded declaration. So "hard for guns" (`#B8863A`, `world.js:537`; slopes of
+9-17 degrees, woods and villages) **changes in Stage 1** with its legend key, chosen against the same two
+tests as the ridge and escarpment (at least 20 CIEDE2000 from `side-al` under normal vision and deuteranopia)
+and staying distinct from "severe slope" `#8E4436`. The table becomes the single source for both the drawing
+and the legend (`shell.html:153-157` stops repeating it), and the legend gains the missing vineyard class
+(`#A89A4C`, `world.js:538`), which is itself checked against the same amber test. The natural and paper
+terrain palettes remain Stage 4.
 
 ## 6. Contrast
 
@@ -338,7 +373,7 @@ Readings:
   question 5).
 - **French and Russian fills converge under tritanopia and in greyscale.** Decision 1's side band separates
   them under tritanopia (frame blue against frame amber: 66.0). In greyscale the text (nation tag or dossier)
-  is the only remaining cue (open question 4).
+  is the only remaining cue (owner decision 11: the nation tag on counters).
 - The **decision gold is nearly the Allied amber under deuteranopia** (5.5): moving decision events to their
   side colour with a distinct glyph (§10.4) removes the confusion.
 - Amber on the Russian fill under protanopia drops to 14.4: the cased frame's dark keylines separate band and
@@ -360,17 +395,24 @@ Seven steps; sizes in CSS px at the base layout (media queries scale the whole s
 
 | step | size / line height | family, weight | use |
 |---|---|---|---|
-| `t-micro` | 10.5 / 1.3, tracking .06em | sans 400, tabular numerals | hour ticks, tags, small caps headings |
-| `t-small` | 11.5 / 1.45 | sans 400 | secondary interface text, definition terms |
-| `t-ui` | 12.5 / 1.5 | sans 400 | interface body, list rows, definition values |
-| `t-prose` | 14 / 1.6 | serif 400 | narrative, dossier prose, tour text |
+| `t-micro` | 10.5 / 1.3, tracking .06em | sans 400, tabular numerals | tertiary metadata only: hour tick numerals, tag words, small-caps section headings, the date under the clock |
+| `t-small` | 11.5 / 1.45 | sans 400 | secondary interface text: tab and button labels, definition terms, hints |
+| `t-ui` | 12.5 / 1.5 | sans 400 | everything needed to follow the battle (times, strengths, commander names, the situation line), list rows, definition values |
+| `t-prose` | 14 / 1.6 | serif 400 | dossier and dispatch body text, narrative, tour text |
 | `t-h3` | 17 / 1.3 | serif 400 | tour title, panel titles |
 | `t-h2` | 21 / 1.15 | serif 400 | dossier and sheet titles |
 | `t-display` | 25 / 1.12 | serif 400 | dispatch and first-run titles |
 
-No text below 10.5 px (today 9 and 9.5 px exist: `style.css:271`, `284`, `291`, `481`, `486`, `514`, and the
-compass "N"). Emphasis within a step uses weight 500 or the `accent` bar, not a new size. Canvas text uses
-the same two families as CSS (one stack each, defined once in `TOKENS`).
+Floors (owner decision 16): no text below 10.5 px, and 10.5 px only for tertiary metadata; anything needed to
+follow the battle (times, strengths, commander names, the situation line) at least 12 px; dossier and dispatch
+body text at least 13 px. Today's rules below those floors (fact): below 10.5 px, `style.css:271`, `284`, `291`,
+`481`, `486`, `514` and the compass "N"; battle information below 12 px, the phase times `.step time` 10 px
+(`style.css:209`), the dossier timeline times `ol.tl li b` 11 px (`146`), the order-of-battle strengths
+`.oob-str` 11 px (`54`), the situation line `.tb-sit` 11.5 px (`359-360`; 11 px in the compact layout, `517`), its explanation `.why` 11 px (`433`) and its act 10.5 px (`361`), the rail hour
+labels 9 px (`291`); body text below 13 px, the dispatch items `.dispatch li` 12 px (`70`), dossier values `.kv
+dd` and lists `ul.bul li` 12.5 px (`134`, `140`), which move to `t-prose`. Emphasis within a step uses weight
+500 or the `accent` bar, not a new size. Canvas text uses the same two families as CSS (one stack each, defined
+once in `TOKENS`) and the same floors on screen (§8.3).
 
 ### 8.3 Label hierarchy on the map (fact, then recommendation)
 
@@ -381,11 +423,11 @@ names, 6 terrain-analysis labels, 7 place names.
 | level | what | on-screen size (today) | style (recommendation) |
 |---|---|---|---|
 | 1 | selected formation | counter 88-116 px tall | counter + selection ring |
-| 2 | counters by echelon (army, corps, division, brigade) | name 11-14 px, sub 9.5-12 px | sans; name `counter-ink` 500, sub `counter-sub` 400 |
+| 2 | counters by echelon (army, corps, division, brigade) | name 11.3-14 px, designation and strength 9.5-11.8 px (below the 12 px floor) | sans; name `counter-ink` 500, designation and strength `counter-sub` 400; canvas sizes raised so that name, strength and status reach at least 12 px on screen at the smallest counter (about 27 canvas units at scale 0.45), which Part B must fit in the counter layout (owner decision 16) |
 | 3 | events | glyph 5.4 units, label serif | side-coloured glyph, `annotation` text |
 | 4 | derived reading (plateau) | serif 30-unit label | `annotation` text with "derived" diamond |
 | 5 | overlay annotations and objectives | serif 28-30-unit labels | `annotation` |
-| 6 | formation names | serif 34-unit label | neutral `counter-ink` (open question 2) |
+| 6 | formation names | serif 34-unit label | neutral `counter-ink` text; in the landscape view a small side-coloured mark beside the name (owner decision 9) |
 | 7 | terrain analysis | about 17 px | analysis tokens §5.4 |
 | 8 | place names | 9 px and up (22-unit text in a 72-unit glyph shown at least 30 px tall) | place tokens; minimum on-screen height raised so text is at least 10.5 px |
 
@@ -407,16 +449,29 @@ Figures, buildings and flags are not vertically exaggerated: they are drawn at t
 | standard pole | 5.2, or 6.5 for a single-standard block (`GEO.pole`, `app.js:858`) | 330-410 m | to be sourced (Stage 6) | over 100x |
 | flag cloth | 2.4 x 1.4 (`GEO.flag`) | 152 x 88 m | to be sourced (Stage 6) | |
 | tent | 3.5 x 2.3 x 3.5 (`GEO.tent`) | 221 m | | |
+| broadleaf tree, height (median of 810) | 3.39 (range 1.3-6.6) | 214 m (82-416 m) | about 15-25 m | about 10-14x |
+| broadleaf tree, crown | 2.17 (0.7-4.6) | 137 m | | |
+| conifer, height (median of 384) | 4.66 (range 2.7-7.7) | 295 m (168-485 m) | about 20-30 m | about 10-15x |
+| scrub (one instance, unscaled kit) | 2.2 x 1.1 x 2.0 | 139 x 71 x 127 m | | |
 | formation footprint (Saint-Hilaire's division) | 13.8 x 6.6 (`W0`, `D0`) | 872 x 417 m | frontage modelled to scale | 1x |
 
 Other facts: Saint-Hilaire's block draws 294 men for 6,600, so one figure stands for about 22 men; standards
 are placed at 2.6 x tall above the ground, flags at 4.5 x tall (`app.js:864-867`).
 
-**The convention (to be stated in the legend and the sources sheet, decision 6):** *ground is to scale;
-what stands on it is a symbol.* Frontages, depths, distances and the ground are true to `GEOREF`. Men,
-horses, guns and standards are drawn at a single **figure scale** (about 60-70 times life), so that a
-formation reads as troops at every zoom. Buildings are drawn at a separate **settlement scale** (about 12
-times), so that a village keeps roughly its footprint and does not swallow its surroundings. The real sizes
+**The convention (owner decisions 6 and 14; stated in the legend and the sources sheet):** *ground is to
+scale; what stands on it is a symbol, at one of two named scales.*
+- **Ground scale (1x):** the ground, distances, frontages and depths, woods, marshes, water and village
+  extents, true to `GEOREF`.
+- **Figure scale (about 45-70 times life):** men, horses, guns and, from Stage 2, standards and flags, so that
+  a formation reads as troops at every zoom.
+- **Landscape scale (about 10-15 times life):** buildings, trees and scrub.
+
+Trees are grouped with settlements, not given a scale of their own (owner decision 14), for three measured
+reasons: their factor (about 10-15x) is the settlement factor (about 10-15x); they are both landscape objects
+placed inside extents that are true to scale (wood and village polygons), so enlarging them does not move any
+extent; and grouping keeps their real proportion to buildings (a median broadleaf is drawn 2.5 times a median
+house's height, a real one about 3 times). A separate tree scale would add a legend line without changing any
+drawing. The real sizes
 in the table are rough general values used only to state the factor; they are not historical data, and any
 historical dimension (a colour and its pike, a gun) is sourced in Stage 6 before use.
 
@@ -435,19 +490,32 @@ in Stage 6; until then Stage 2 uses a provisional ratio and labels it as such.
 - **Grades B and C (decision 4):** a square badge at the frame's top right corner, overlapping it by a
   third: `badge-plate` with a `keyline` border, the letter in `badge-ink`, sans 500. The letter is at least
   10.5 px on screen at the smallest counter height.
-- **Reported only:** the same badge with "?". The 82% opacity (`symbols.js:71`) is dropped: it lowers the
-  contrast of everything on the counter and the "?" already says it (open question 6).
+- **Nation tag (owner decision 11):** `NATION.tag` (FR, RU, AT) in small sans below the arm glyph, in
+  `NATION.edge` on the fill (read from the data, which does not change).
+- **Reported only (owner decision 13):** the same badge with "?". The 82% opacity (`symbols.js:71`) is dropped.
 - **Selection:** a ring in `accent` outside the outer keyline, 2 units clear of it; the frame keeps its side
   colour.
-- **Dimmed (highlight families):** unchanged (34% opacity) for figures; the counter keeps full opacity for
-  its badge and text, and dims only its fill and frame (open question 6).
+- **Dimmed counters (owner decision 13).** Today everything on a dimmed counter is drawn at 34% opacity
+  (`symbols.js:71`), so its text reaches only 1.28-2.84:1 (derived: ink and halo at 34% over the dark, median
+  and bright grounds). Rule for Part B: fill, frame and arm glyph stay at 34%; the text, the badge and the
+  status plate are drawn at full opacity **but one step down in tone and weight** from the highlighted family:
+  `counter-sub` `#B9B5A8` at weight 400 (7.59-9.41:1 on its halo) against the highlighted family's
+  `counter-ink` `#F2EEE4` at weight 500 (13.4-16.7:1), with neutral status plates (decision 3).
+  **Evidence:** a scratch prototype of the built page (not committed) drew dimmed text, badges and pills at
+  full opacity in their current colours and was rendered through the harness's hybrid-dimmed case. The
+  dimmed names became legible and the label overlaps were unchanged (the one allowed pair), but the highlighted
+  family lost dominance, chiefly to the full-strength orange and blue status pills of the dimmed counters and
+  to their full-contrast names. Full opacity is therefore acceptable only together with the tone and weight step
+  and the neutral plates. Part B must show on the hybrid-dimmed view that dimmed text meets 4.5:1 and that the
+  highlighted family remains the only full-strength fills, frames and primary-ink names.
 
 ### 10.2 Elsewhere today
 
 - Dossier pills: "Position B", "Timing B", "interpolated", "Interval, not a timestamp" (`app.js:3538`,
   `3579`, `3808-3809`): text on a ghost pill. Kept; they meet contrast once `text-muted` replaces `--dim`.
-- Legend: "approximate position ----" (`shell.html:150`, `style.css:102`, `106`) is replaced by the badge
-  itself ("B, C: position approximate; ?: reported only").
+- Legend: the "approximate position ----" entry (`shell.html:150`, `style.css:102`, `106`) is removed
+  (owner decision 15) and replaced by the badge itself ("B, C: position approximate; ?: reported only").
+  The legend explains the dashed valley and dead-ground lines only while the terrain-study layer is on.
 - **Spatial display of uncertainty** (crisp footprint A, soft frontage B, diffuse zone C, evidence skeleton)
   is Stage 5. Until then the map shows grade only on counters, which appear in paper and hybrid modes; the
   landscape view shows no grade (a known gap, `docs/VISUAL_AUDIT.md` problem 9).
@@ -475,9 +543,40 @@ Shapes are drawn, not font glyphs (font coverage of symbols differs by system).
   (required by `css-test.js`).
 - **Evidence layer tags** (record / reconstruction / derived): the same circle family, and a diamond for
   derived; `text-muted` on `plate`.
-- **Source tags** (documented / inference): text only, documented upright and inference italic.
+- **Source tags** (documented / inference, owner decision 10): neutral `plate`; documented with a filled
+  circle, inference with a hollow circle and in italic, each with its word.
 - **Event markers:** side colour (decision 1) for every event, including decisions, which keep their own glyph
   shape instead of gold. The dossier header bar uses the side colour, not `NATION.ru.fill` (`app.js:3796`).
+
+### 10.5 Dashes, arrowheads and the side cue on arrows (owner decisions 12 and 15)
+
+**What the chevron means today (fact).** Plan ribbons (`planRibbon`, `app.js:2169-2214`) take a `chevron`
+argument that is set by side: `var chev = (sd==="al")` (`app.js:2309`). The notched (chevron) head is
+therefore a **side cue** (Allied), not a plan cue; the French plan ribbon has a plain triangular head. What
+says "plan" is the rest: the heavy, tapered, ground-laid ribbon with a dark casing, the Plans overlay itself
+("intended lines of march, drawn heavy", `app.js:2159`), and the dashed plan-divergence links
+(`app.js:2268`). Caveat: because the chevron is drawn only on plan ribbons today, a viewer meets it only on
+plans and could learn it as a plan mark.
+
+**Movement arrows today (fact).** `buildArrow` (`app.js:1103-1120`) draws a tube with a cone head, the same
+for both sides; kinds `retreat` and `axis` are drawn as segmented (dashed) tubes (`app.js:1109-1111`).
+`axis` is used for five Allied arrows: the four columns' ordered objectives ("I Column → Telnitz" and the
+rest, `app.js:16-19`), which are intended routes, and "IV Column halted" (`app.js:35`). `retreat` is used for
+five retreats that happened (for example "Over the Satschan mere", `app.js:76`).
+
+**Rules.**
+- Dashes mean "planned or intended" only (decision 15). Kept dashed: plan-divergence links, `axis` arrows
+  (intended routes), and the valley and dead-ground analysis lines as terrain notation (shown only with the
+  terrain-study layer, explained in the legend). Made solid in Part B: the movement trail (`app.js:1010`), the
+  selection ring (`app.js:1888`), the plateau ring (`app.js:1844`), and `retreat` arrows (`app.js:1109-1111`,
+  a rendering change: `OVERLAYS` is not touched).
+- The Allied arrowhead is decided in Stage 2 (decision 12). Constraint: it must not reuse a mark that means
+  "planned" or "intended" (dashes, the plan ribbon form). The chevron is not such a mark today, so Stage 2 may
+  use it as the Allied head on all arrows, which would also make it read as side rather than plan; if Stage 2
+  judges that the chevron has become associated with plans, it chooses a different Allied head.
+- **Open (data, not changed here):** "IV Column halted" (`app.js:35`) is drawn with the `axis` kind, so it
+  reads as an intended route although the label describes a halt. `OVERLAYS` is historical interpretation
+  data guarded by `check:data`; whether its kind should change is a data question for a data task.
 
 ## 11. Recorded for Stage 2 (decisions 5-7; not implemented)
 
@@ -487,7 +586,7 @@ Shapes are drawn, not font glyphs (font coverage of symbols differs by system).
   viewsheds, line of sight, contours, dossier elevations and march-rate checks stay in model units (guarded
   by `check:data`). Figure seating, the camera floor and the Stage 0 harness checks must hold at every
   setting. The legend states the current factor.
-- **Symbol scale (decision 6):** as §9; flags to the figure scale in Stage 2.
+- **Symbol scale (decisions 6 and 14):** as §9; flags and standards join the figure scale in Stage 2.
 - **Paper map (decision 7):** a true north-up, top-down map: camera looking straight down, rotated by
   `GEOREF.ROT` (17.42 degrees) so that `GEOREF.NORTH` points up; hillshade, contours, flat village footprints
   and water, ground-draped arrows, compact counters. Its colours are the paper theme of §5.
@@ -504,9 +603,9 @@ Every site to change, grouped. Line numbers at `e9190e1`.
   `--panel-2` are removed (unused).
 - `style.css`, about 40 literal text and panel colours (appendix A, "Interface surfaces and text" and
   "Interface emphasis") become tokens.
-- The paper theme: the 73 `body.mode-staff` overrides (list in §3.1) are replaced by token values under
-  `body.mode-staff`, extended to the panels that stay dark today (rail, drawer, sheet, tools, first-run card)
-  or explicitly kept dark (open question 1).
+- The paper theme (owner decision 8): the 73 `body.mode-staff` overrides (list in §3.1) are replaced by
+  token values under `body.mode-staff`, extended to every panel that stays dark today (rail, dossier drawer,
+  sources sheet, tools, first-run card, selection chip); the landscape theme is unchanged in structure.
 
 ### 12.2 Side (decision 1)
 - `app.js:1080-1081` `SIDE_COL`: values from side tokens (three steps per side; the six roles stay).
@@ -515,6 +614,9 @@ Every site to change, grouped. Line numbers at `e9190e1`.
 - `app.js:2307-2308` plan ribbons; `style.css:346-347` plan blocks; `style.css:377-379` timeline ticks
   (decision ticks: side colour and a distinct tick shape); `style.css:463-464` first-run side words.
 - `symbols.js:83-94` counter frame: cased band (§10.1); selection ring outside it instead of `#F0C463`.
+- `symbols.js:97-116` arm glyph: `NATION.tag` below it (owner decision 11).
+- `app.js:999-1003` formation name labels: neutral text; a side-coloured mark beside the name in the
+  landscape view (owner decision 9).
 
 ### 12.3 Status, claims, evidence (decision 3)
 - `symbols.js:7-10` `TONE`: becomes the icon table (§10.3); `symbols.js:146-154` counter status pill: neutral
@@ -525,7 +627,8 @@ Every site to change, grouped. Line numbers at `e9190e1`.
   where they are written.
 
 ### 12.4 Confidence (decision 4)
-- `symbols.js:85-87` remove all `setLineDash`; `symbols.js:71` drop the 82% opacity for reported only;
+- `symbols.js:85-87` remove all `setLineDash`; `symbols.js:71` drop the 82% opacity for reported only and
+  split the dimming (fill, frame and glyph at 34%; text, badge and plate at full opacity, one step down, §10.1);
   `symbols.js:118-131` plated badge; ink extent (`grow`, `symbols.js:131`) updated for the badge.
 - `shell.html:150`, `style.css:102`, `106`: legend entry replaced.
 
@@ -533,12 +636,13 @@ Every site to change, grouped. Line numbers at `e9190e1`.
 - Every `--sun` use and `rgba(217,166,75,…)` tint in `style.css` (lines listed in appendix A) becomes
   `accent` or `accent-tint`, always paired with a bar, underline, weight or tint.
 - `app.js:1157`, `1164` objectives; `app.js:1142` overlay labels; `app.js:1869` plateau label; `app.js:1010`
-  movement trail (solid, `annotation`); `app.js:1844` plateau ring and `app.js:1888` selection ring (solid).
-- `app.js:1000` formation names (open question 2); `symbols.js:166-173` place labels (height colour off
-  amber); `symbols.js:184-199` plain label halo from tokens.
+  movement trail (solid, `annotation`); `app.js:1844` plateau ring and `app.js:1888` selection ring (solid);
+  `app.js:1109-1111` `retreat` arrows solid, `axis` arrows stay segmented (§10.5).
+- `symbols.js:166-173` place labels (height colour off amber); `symbols.js:184-199` plain label halo from tokens.
 - Terrain analysis: `world.js:1316-1320`, `app.js:2450`, `app.js:3841` read one table with paper variants
   (§5.4). `TERRAIN_LINES` untouched.
-- Going classes: `shell.html:153-157` read from the table in `world.js:534-539` (values unchanged).
+- Going classes (owner decision 17): `world.js:537` "hard for guns" off amber; `world.js:534-539` becomes the
+  one table for the drawing and the legend (`shell.html:153-157`), and the legend gains the vineyard class.
 
 ### 12.6 Legend and first-run key
 - `app.js:3214-3217` `COLOUR_KEY`: reads `NATION` and the side tokens; the words "blue", "green", "white",
@@ -547,9 +651,11 @@ Every site to change, grouped. Line numbers at `e9190e1`.
   `SIDE_COL.*.attack`. This keeps the same check (legend equals the drawing colour); it is not loosened.
 
 ### 12.7 Type (§8)
-- `style.css`: 19 sizes to 7 steps (`t-*` custom properties, generated with the tokens); the 9 and 9.5 px
-  rules raised to 10.5 px.
-- `symbols.js` canvas fonts: families and sizes from `TOKENS`.
+- `style.css`: 19 sizes to 7 steps (`t-*` custom properties, generated with the tokens); the rules listed in
+  §8.2 raised to their floors (10.5 px tertiary, 12 px battle information, 13 px body text; owner decision 16).
+- `symbols.js` canvas fonts: families and sizes from `TOKENS`; counter name, strength and status raised to at
+  least 12 px on screen at the smallest counter, which means re-fitting the counter layout (`SYM_W`/`SYM_H`,
+  `symbols.js:5`) or raising the counter's on-screen height (`targetPx`, `app.js:2718`).
 
 ### 12.8 Expected effect on the checks
 
@@ -566,36 +672,28 @@ Every site to change, grouped. Line numbers at `e9190e1`.
 | `check:visual`, `pixels.nearBlack` | small rise | keylines `#0A0E12` are near-black by the harness's definition (below 16/255); `solidBlocks` (8 x 8 blocks at 90%) should not change, since keylines are 1 unit wide |
 | self-test item "first run: the colour key agrees with the legend" | passes | the sentence and swatches still equal the drawing colours |
 | CI build-drift check | passes | the rebuilt HTML is committed with the sources |
+| `check:visual`, `labels.pairs` after the counter text grows (owner decision 16) | must be re-examined | larger counters or larger counter text enlarge ink extents; any new overlap is reported by name, not accepted silently |
+| going layer colours (owner decision 17) | pixel change in going mode only | `makeGoingPalette` is not guarded and is not drawn in the 11 harness cases' default ground |
 
 Part B must also add a check for the token block (the build fails on drift, §5.1) and should add a contrast
 check to the harness: the collector used for this specification (every visible text element per state,
 composited over the bright and dark backdrops) as a Stage 1 threshold of 4.5:1.
 
-## 13. Open questions for the owner
+## 13. Decided, and what is still open
 
-1. **Paper-map panels.** Should the whole interface turn light on the paper map (rail, dossier drawer,
-   sheet, tools, first-run card included), or should every panel stay dark over the paper map? Today it is
-   half and half, which is the source of nine contrast failures. Recommendation: whole interface light.
-2. **Formation name labels** are tinted by nation today (`app.js:1000`). Keep the tint, or neutral text with
-   nation shown only by the counter? Recommendation: neutral (hue on thin text is a weak channel).
-3. **Evidence-layer and source tags:** extend decision 3 (neutral, icon and text) to "record /
-   reconstruction / derived" and "documented / inference"? They repeat the side hues today.
-   Recommendation: yes.
-4. **A non-hue nation cue on counters** for greyscale and tritanopia: draw `NATION.tag` (FR, RU, AT, already
-   in the data) small inside the frame? Recommendation: yes, below the arm glyph.
-5. **A non-hue side cue on arrows** (Stage 2): chevrons on Allied arrows as on the plan ribbons, or a
-   different arrowhead? Dashes are excluded (they mean "planned").
-6. **Reported-only and dimmed counters:** drop the 82% opacity for "reported only" (the "?" says it), and
-   keep counter text and badge at full opacity when a counter is dimmed by a highlight?
-7. **Symbol scales:** confirm two named scales (figure scale about 60-70x; settlement scale about 12x)
-   rather than one, since one factor for figures and buildings is impossible (a house at figure scale would
-   be about 700 m long).
-8. **Dashes elsewhere:** recommendation: keep dashes only where they mean "planned or intended" (plan
-   links); make the movement trail, the selection ring and the plateau ring solid; keep the dashed valley
-   and dead-ground analysis lines (terrain notation, explained in the legend).
-9. **Minimum text size** of 10.5 px, and the seven-step scale.
-10. **Ridge and escarpment colours** leave the amber axis (decision 2 read strictly); confirm, and confirm
-    that the going class "hard for guns" stays amber until Stage 4.
+The ten questions of the first draft are decided (§1.1, owner decisions 8-17). Still open:
+
+1. **Exact colour values** for ridge, escarpment, "hard for guns" and the height place label: chosen in Part B
+   against the tests in §5.4, and recorded in `CHANGELOG.md` with their measured differences.
+2. **The Allied arrowhead** (Stage 2, owner decision 12): the chevron if it reads as side, otherwise another
+   shape; never a dash.
+3. **"IV Column halted"** is drawn as an `axis` (intended-route) arrow (`app.js:35`): a question for a data
+   task, since `OVERLAYS` is guarded (§10.5).
+4. **Counter re-fit** for the 12 px floor: a larger canvas layout or a taller on-screen counter, whichever keeps
+   the harness's label overlaps at or below today's; decided in Part B with the harness numbers.
+5. **Default vertical exaggeration** (about 4x), confirmed visually in Stage 2.
+6. **Real sizes of standards, colours and their pikes**, to be sourced in Stage 6 before flags join the figure
+   scale.
 
 ## Appendix A. Colour inventory (fact)
 

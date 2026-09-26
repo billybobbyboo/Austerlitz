@@ -1,5 +1,30 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Stage 1A: owner decisions recorded in the specification; no code change
+
+`docs/VISUAL_SPEC.md` records the owner's answers to its ten open questions as owner decisions 8-17 (§1.1)
+and updates the sections they affect: the whole interface turns light on the paper map through a second token
+set; formation names are neutral text with a side-coloured mark beside them in the landscape view; evidence
+and source tags are neutral with icons; counters carry `NATION.tag`; dashes mean "planned or intended" only;
+two named symbol scales (figure, landscape), with trees grouped with settlements; type floors of 10.5 px
+(tertiary), 12 px (battle information) and 13 px (body text); ridge, escarpment and "hard for guns" leave the
+amber axis in Stage 1.
+
+Checked for the decisions (fact): the chevron head on plan ribbons is set by side (`app.js:2309`), not by plan,
+so it is a side cue; `retreat` movement arrows are drawn dashed although they are not intended movement, and
+become solid in Part B (`axis`, the Allied columns' intended routes, stays dashed); "hard for guns" is only a
+palette value in `makeGoingPalette` and a legend key, so it changes in Stage 1, not Stage 4; the going legend
+lacks the vineyard class; the tree kit measures 3.4 (broadleaf) and 4.7 (conifer) world units median, 214 and
+295 m, about 10-15 times life like the buildings; counter strengths and designations reach only 9.5-11.8 px on
+screen, below the new 12 px floor. A scratch prototype (not committed) of full-opacity text on dimmed counters,
+rendered through the hybrid-dimmed harness case, made the text legible but weakened the highlighted family's
+dominance, so the rule is full opacity one step down in tone and weight, with neutral status plates.
+
+No code, data, test or build change: `austerlitz-command-map.html` unchanged, 1,097,610 bytes, md5
+`c09c4b23d9e245ff9d693960cf9496b9`. Still open: exact replacement colours (chosen in Part B against the tests in
+the specification), the Allied arrowhead (Stage 2), the kind of the "IV Column halted" arrow (a data question),
+and the counter re-fit for the 12 px floor.
+
 ## 2026-09 · Stage 1A: specification drafted; no code change
 
 `docs/VISUAL_SPEC.md`: the visual language specification (Stage 1, Part A), written against `e9190e1` with the
