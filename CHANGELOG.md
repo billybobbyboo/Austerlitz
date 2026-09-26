@@ -113,12 +113,15 @@ the separation interval (before, the reading had stopped at 14:14); nothing need
 
 **Tests** (on this build)
 - `npm run build`: 1,121,991 bytes, md5 `e76222b31b3671020c7643b9e6ea1925`.
-- `npm test`: RESULT_TEST.
+- `npm test`: ALL 8 SUITES PASSED (`redteam.js`: 0 findings, 1 warning, the march-rate one above; `sim-test.js`: 0 errors, 0
+  disagreements).
 - `npm run check:data` against the Stage 0 reference: 7 DATA declarations changed, exactly those listed; against the new
   reference: all identical.
-- `npm run check:chronology`: RESULT_CHRON.
-- `npm run check:visual`: RESULT_VISUAL.
-- `npm run check:contrast`: RESULT_CONTRAST.
+- `npm run check:chronology`: 69 moves with a timed statement, 65 consistent, 4 early (the named conflicts), 0 late; 20
+  explicit times, every evidence quote found; 0 errors.
+- `npm run check:visual`: STAGE0: all checks passed; 11 views, 0 overlapping labels or counters in every view (no residual
+  allowed); `selfTest` 13 of 13 PASS, "derived readings unchanged" included (38,700 at 04:00; movement audit 0 findings).
+- `npm run check:contrast`: 3,103 text elements, 70 pairs, 0 below AA, 0 below 10.5 px.
 - `npm run check:baseline`: passes on this build.
 - `tools/stage2/delayed-moves.js`: eight states, before and after (`docs/stage2-evidence/delayed-moves.md`).
 
