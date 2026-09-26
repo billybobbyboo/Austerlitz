@@ -15,6 +15,7 @@ lower one without saying so explicitly.
 |---|---|
 | `shell.html`, `style.css` | page markup and stylesheet; `build.py` puts the CSS at `/*CSS*/` and the bundle at `/*JS*/` |
 | `assets.js` | embedded CC0 ground textures |
+| `tokens.js` | `TOKENS`: the only source of interface and symbology colours and type (`docs/VISUAL_SPEC.md`); `python3 build.py --tokens` writes its copy into `style.css`, and the build fails if that copy drifts. Nation colours stay in `NATION` |
 | `geo.js` | `GEOREF`: the only geographic and scale authority (transform, horizontal and vertical scale, ground truth) |
 | `data.js` | historical dataset: phases, order of battle and tracks, features, sources note |
 | `analysis.js` | analysis chapters, command knowledge, the two plans, acts, events, guided tour |
@@ -60,6 +61,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - `npm run build`; `npm test` runs the whole regression suite and prints each suite's result: it exits non-zero, naming
   the failed suites, if any suite exits non-zero or prints an error summary.
 - `npm run check:data`: must pass unless the task changes data on purpose.
+- `npm run check:contrast`: every visible text element in 16 interface states meets WCAG AA and the 10.5 px floor.
 - `npm run check:visual`: 11 fixed views, Stage 0 thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()`.
   One known residual is allowed by name (hybrid-dimmed Walther/Nansouty counter overlap, Stage 2).
 - `npm run check:baseline` passes only on the unmodified Stage 0 build (md5 `c09c4b23...`).
@@ -75,5 +77,6 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 
 ## Current state (September 2026)
 Stage 0 (trust and baseline) is complete; the source tree and the regression suite are recovered and
-synchronised with it (CHANGELOG.md). Stage 1 (visual language) has not started. The shadow toe
+synchronised with it (CHANGELOG.md). Stage 1 (visual language): the specification (`docs/VISUAL_SPEC.md`) and
+its implementation (Part B) are done; colours and type come only from `tokens.js`. The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.

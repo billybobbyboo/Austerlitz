@@ -1,5 +1,59 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Stage 1B: the visual language implemented (docs/VISUAL_SPEC.md)
+
+**Status: done; all checks pass except `check:baseline`, which fails by design (the build changed).**
+`austerlitz-command-map.html`: 1,107,799 bytes, md5 `5bf48b75373fe0cf9fc8a32cbeae918c` (was 1,097,610, `c09c4b23…`).
+
+**What changed** (the specification's §12 plan; values and departures in its new §14):
+- **One source of colour and type:** `tokens.js` (`TOKENS`, strict JSON between markers) holds every interface and
+  symbology colour for the landscape and paper themes, the seven type steps and the font stacks. `build.py` loads
+  it second in the bundle; `python3 build.py --tokens` writes its copy into `style.css`, and the normal build stops
+  if that copy has drifted. Nation colours stay only in `NATION` (unchanged); the four unused CSS nation/panel
+  properties are gone.
+- **Stylesheet:** every colour is a token (the developer overlay's text excepted); the 52 paper-map override rules
+  are replaced by the paper token set, so the whole interface turns light on the paper map (owner decision 8); the
+  interface accent is warm ivory, paired with a bar, underline or weight; 20 font sizes became the seven steps with
+  floors of 10.5 px (tertiary), 12.5 px (battle information) and 14 px (dossier and dispatch body); text is no
+  longer faded with opacity.
+- **Counters (`symbols.js`):** a cased frame in the side colour (blue / amber) between dark keylines; the nation's
+  fill and a nation tag (`NATION.tag` in `NATION.ink`); no dashes; plated B / C / "?" badges; neutral status plates
+  with icons; dimmed counters dim only fill, frame, glyph and tag, with text one step down; a selection ring
+  outside the frame; frame 110 x 78 units, names, strengths and status at 27 units (at least 12 px on screen).
+- **Map and interface (`app.js`, `world.js`, `shell.html`):** `SIDE_COL` from the side tokens; every event, decisions
+  included, in its side colour (dossier bar: side, not the Russian fill); annotation colour for overlay, objective,
+  plan, plateau and event text, with paper variants; formation names neutral with a side mark; solid movement
+  trail, selection ring, plateau ring and retreat arrows (only intended routes and plan links stay dashed);
+  terrain-analysis colours from one table with paper variants, recoloured on the paper map; ridge, escarpment,
+  "hard for guns" and vineyards off the amber axis; status, claim, layer and source tags as neutral plates with
+  icons; the legend's going rows written from the table the going layer draws, the dash entry replaced by the badge
+  row, the terrain-notation dash shown only with the terrain-study layer; place labels at least 10.5 px.
+- **New check:** `npm run check:contrast` (`tools/visual/contrast.js`).
+
+**Tests (all run on the final build):**
+- `npm run build`: 1,107,799 bytes; the token block matches `tokens.js`. Drift check proven on a scratch copy: an
+  edited token without `--tokens` stops the build (exit 1).
+- `npm test`: ALL 8 SUITES PASSED (css-test 0 errors, 9/9; test.js 0 errors, 41/41; geo-test 54/0; terrain all OK;
+  audit 0 and 0 violations; sim-test 0 errors; redteam 0 findings; runtime-test 0 errors).
+- `npm run check:data`: all 112 DATA declarations byte-identical; 34 rendering and interface declarations changed,
+  11 added, `TONE` removed.
+- `npm run check:visual`: STAGE0: all checks passed; `AUSTERLITZ_DEBUG.selfTest()` 13/13 PASS, including the
+  first-run key against the legend and the drawing colours. Counter overlaps: only the allowed hybrid-dimmed
+  Walther / Nansouty pair. An earlier counter layout (frame 150 x 86, all counter text at 27 units) failed this
+  threshold (7 pairs hybrid-dimmed, 1 paper map) and was re-fitted, not the threshold.
+- `npm run check:contrast`: 3,101 text elements, 0 below WCAG AA, 0 below 10.5 px (the Stage 0 build: 67 below AA,
+  447 below 10.5 px).
+- `npm run check:baseline`: fails by design (new md5).
+- No suite or self-test assertion was changed: none checked a colour the specification changed.
+- Screenshots before and after: `docs/stage1-review/`.
+
+**Not verified or not done:** browsers other than headless Chromium 141 with software WebGL (the CSS uses
+`rgba(var(--x-rgb),a)`, supported in all current browsers); canvas text contrast is computed from the drawing code
+(specification §6.3), not measured in pixels; the highlighted family's dominance in the hybrid-dimmed view was judged
+by eye, with no numeric metric; event glyphs keep their landscape (light) side colours on the paper map, since they
+are built once; the view-mode switch still fades to 24% in watch and map modes (a behaviour, left); the legend's empty
+area and its overlap with the dispatch on the paper map were there before (layout, Stage 2 and 3).
+
 ## 2026-09 · Stage 1A: owner decisions recorded in the specification; no code change
 
 `docs/VISUAL_SPEC.md` records the owner's answers to its ten open questions as owner decisions 8-17 (§1.1)

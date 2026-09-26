@@ -135,11 +135,11 @@
 
 <div class="legend">
   <svg class="rose" viewBox="0 0 60 60" aria-hidden="true">
-    <circle cx="30" cy="30" r="21" fill="none" stroke="#6E7A84" stroke-width=".7"/>
+    <circle class="rose-ring" cx="30" cy="30" r="21" fill="none" stroke-width=".7"/>
     <g id="rose-needle"><!-- rotated to true north for the current view (app.js updateRose) -->
-    <path d="M30 6 L34 28 L30 32 L26 28 Z" fill="#CABFA8"/>
-    <path d="M30 54 L26 32 L30 28 L34 32 Z" fill="#3E4A54"/>
-    <text x="30" y="5" text-anchor="middle" font-size="9" fill="#CABFA8" font-family="Georgia,serif">N</text>
+    <path class="rose-n" d="M30 14 L34 29 L30 33 L26 29 Z"/>
+    <path class="rose-s" d="M30 54 L26 33 L30 29 L34 33 Z"/>
+    <text class="rose-n" x="30" y="12" text-anchor="middle" font-size="14" font-family="Georgia,serif">N</text>
     </g>
   </svg>
   <div class="k"><span>French</span><span class="sw" data-key="fr"></span></div>
@@ -147,15 +147,10 @@
   <div class="k"><span>Austrian</span><span class="sw" data-key="at"></span></div>
   <div class="k"><span>French movement</span><span class="ar" data-key="arrow-fr"></span></div>
   <div class="k"><span>Allied movement</span><span class="ar" data-key="arrow-al"></span></div>
-  <div class="k"><span>approximate position</span><span class="dsh"></span></div>
+  <div class="k"><span>position approximate (B, C) &middot; reported only (?)</span><span class="bdg"><b>B</b><b>?</b></span></div>
+  <div class="k an-only"><span>dashed: valley floor, dead ground</span><span class="dsh"></span></div>
   <div class="k"><span>contour interval</span><span class="val" id="contour-val">&asymp; 9 m</span></div>
-  <div id="goingkey">
-    <div class="k"><span>good going</span><span class="sw" style="background:#6E8A5A"></span></div>
-    <div class="k"><span>hard for guns</span><span class="sw" style="background:#B8863A"></span></div>
-    <div class="k"><span>severe slope</span><span class="sw" style="background:#8E4436"></span></div>
-    <div class="k"><span>marsh</span><span class="sw" style="background:#6B5A3E"></span></div>
-    <div class="k"><span>water</span><span class="sw" style="background:#36505E"></span></div>
-  </div>
+  <div id="goingkey"><!-- rows written from TOKENS.sym.going by paintKey (app.js), the table the going layer draws --></div>
   <div class="hint">drag to orbit &middot; scroll to zoom &middot; click a counter or a name</div>
   <div class="hint keys"><b>1</b> study <b>2</b> watch <b>3</b> map only &middot; <b>M</b> map mode
     &middot; <b>D</b> text · <b>F</b> <span id="fxstate">FX on</span> &middot; <b>space</b> play &middot; <b>Esc</b> back</div>
