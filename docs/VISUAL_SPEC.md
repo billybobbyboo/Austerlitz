@@ -1,7 +1,6 @@
 # Visual language specification (Stage 1, Part A)
 
-**Status: specification drafted and reviewed; the owner's answers to the open questions are recorded
-(§1.1) and the sections they affect are updated; no code, data or test changed.** Written against `main` at
+**Status: approved and implemented in Part B (Stage 1B, §14).** Written against `main` at
 `e9190e1` (`austerlitz-command-map.html` md5 `c09c4b23d9e245ff9d693960cf9496b9`). Part B implements it; it has
 not started. Line numbers refer to that commit.
 
@@ -491,7 +490,7 @@ in Stage 6; until then Stage 2 uses a provisional ratio and labels it as such.
   third: `badge-plate` with a `keyline` border, the letter in `badge-ink`, sans 500. The letter is at least
   10.5 px on screen at the smallest counter height.
 - **Nation tag (owner decision 11):** `NATION.tag` (FR, RU, AT) in small sans below the arm glyph, in
-  `NATION.edge` on the fill (read from the data, which does not change).
+  `NATION.ink` on the fill (read from the data, which does not change; §14).
 - **Reported only (owner decision 13):** the same badge with "?". The 82% opacity (`symbols.js:71`) is dropped.
 - **Selection:** a ring in `accent` outside the outer keyline, 2 units clear of it; the frame keeps its side
   colour.
@@ -694,6 +693,34 @@ The ten questions of the first draft are decided (§1.1, owner decisions 8-17). 
 5. **Default vertical exaggeration** (about 4x), confirmed visually in Stage 2.
 6. **Real sizes of standards, colours and their pikes**, to be sourced in Stage 6 before flags join the figure
    scale.
+
+## 14. As implemented in Part B (Stage 1B)
+
+Part B implemented §12. Values it had to choose, and where it departed from the wording above, with the reason:
+
+- **Colours chosen against §5.4's tests** (CIEDE2000 from `side-al` under normal vision / deuteranopia):
+  ridge `#C8C6C0` (30 / 26; 22 / 22 from the valley blue), label `#DCDAD4` (8.31:1), paper `#56503E` (6.79:1);
+  escarpment `#9C5A6E` (28 / 24), label `#D6A0AE` (5.25:1), paper `#7E3A4E` (6.81:1); defile label `#F0A098`
+  (5.63:1), paper `#9A3A30`; dead ground paper `#584A86`; "hard for guns" `#8C7A9A` (33 / 37, and at least 20 / 17
+  from every other going class); height place label as the ridge label. Warm grey-browns cannot pass: under
+  deuteranopia amber becomes a grey-yellow they collapse onto.
+- **Vineyards changed too.** The vineyard going class (`#A89A4C`) failed the same amber test under deuteranopia
+  (3.5), so it became `#ADCCBF` (40 / 26, at least 22 from every other class); the legend now lists it.
+- **Nation tag colour.** §10.1 said `NATION.edge`; the edge on its own fill is 1.98:1 (French) and 2.23:1
+  (Russian). The tag is drawn in `NATION.ink`, the data's own text-on-fill colour (6.49:1 French, 5.38:1 Russian,
+  9.88:1 Austrian). `NATION` is unchanged.
+- **Counter re-fit (§13 item 4).** The frame is 110 x 78 units (was 150 x 96); commander name, strength and status
+  are 27 units (at least 12 px on screen); the designation, which decision 16 does not list as battle information,
+  is 24 units (the 10.5 px tertiary size). The first attempt (frame 150 x 86, designation at 27 units) raised the
+  harness's counter overlaps from the one allowed pair to 7 in the hybrid-dimmed view and 1 in the paper-map view,
+  because the Stage 0 placement pass seeks free slots and small size changes cascade. At 110 x 78 every view is
+  back at or below the Stage 0 baseline (only the allowed Walther / Nansouty pair).
+- **Status plate weight** follows §10.3 on normal counters; on dimmed counters it is 400 (one step down, §10.1).
+- **Not changed, by scope:** the watch- and map-mode fading of the view-mode switch (`#viewmode` at 24% until
+  hovered, a behaviour, not a colour); the developer overlay's text colour; smoke, dust, mist, lighting and
+  terrain palettes (Stage 4); figures, standards and flags (Stage 6).
+- **Check added:** `npm run check:contrast` (`tools/visual/contrast.js`) measures every visible text element in 16
+  interface states and fails below WCAG AA or below 10.5 px.
 
 ## Appendix A. Colour inventory (fact)
 

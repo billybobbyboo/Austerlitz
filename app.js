@@ -968,7 +968,7 @@ function buildFormations(){
     /* stem from ground to counter */
     var stemGeo=new THREE.BufferGeometry();
     stemGeo.setAttribute("position",new THREE.Float32BufferAttribute([0,0,0,0,1,0],3));
-    var stem=new THREE.Line(stemGeo,new THREE.LineBasicMaterial({color:lin(0x9AA3A8),transparent:true,opacity:0.5,depthTest:false}));
+    var stem=new THREE.Line(stemGeo,new THREE.LineBasicMaterial({color:lin(hexNum(TOKENS.theme.dark["text-muted"])),transparent:true,opacity:0.5,depthTest:false}));
     stem.renderOrder=19; stem.visible=false; scene.add(stem);
     rec.stem=stem;
 
@@ -996,8 +996,9 @@ function buildFormations(){
       du.scale.set(13,6,1); du.visible=false; du.renderOrder=5;
       scene.add(du); rec.dust=du;
 
+      /* neutral text; the side is a small mark beside the name, since the landscape draws no counters */
       var lbl=makePlainLabel(f.name.replace("'s Division","").replace("'s Brigade",""),34,
-        f.nation==="fr"?"#A9C6EE":(f.nation==="ru"?"#AED3AC":"#EFE7D2"),false);
+        TOKENS.sym.label.dark.ink,false,{mark:TOKENS.sym.side[sideOfNation(f.nation)].base});
       var ltex=ctex(lbl.canvas);
       var lsp=new THREE.Sprite(new THREE.SpriteMaterial({map:ltex,transparent:true,depthTest:false,fog:false}));
       lsp.scale.set(3.4*lbl.w/lbl.h,3.4,1); lsp.userData.ar=lbl.w/lbl.h; lsp.renderOrder=18; lsp.visible=false;
@@ -1007,7 +1008,7 @@ function buildFormations(){
       var tg=new THREE.BufferGeometry();
       tg.setAttribute("position",new THREE.Float32BufferAttribute(new Float32Array(32*3),3));
       tg.setDrawRange(0,0);
-      var tl=new THREE.Line(tg,new THREE.LineDashedMaterial({color:lin(0xD8C48A),dashSize:2.2,gapSize:2.0,
+      var tl=new THREE.Line(tg,new THREE.LineBasicMaterial({color:lin(hexNum(TOKENS.sym.label.dark.annotation)),
         transparent:true,opacity:0.55,depthTest:false}));
       tl.renderOrder=17; tl.visible=false; scene.add(tl);
       rec.trail=tl;
@@ -1077,8 +1078,10 @@ function refreshSymbol(rec,ph){
 }
 
 /* ---------------- overlays ---------------- */
-var SIDE_COL={ fr:{attack:0x4C86D8, move:0x6E9BD0, counter:0x2F6BC4, retreat:0x7FA6CE, axis:0x6E9BD0, line:0x4C86D8},
-               al:{attack:0xD4703A, move:0xC98E58, counter:0xC85A2C, retreat:0xCB9366, axis:0xC98E58, line:0xD4703A} };
+function hexNum(h){ return parseInt(String(h).replace("#",""),16); }
+function sideCol(sd){ var S=TOKENS.sym.side[sd];
+  return {attack:hexNum(S.base), move:hexNum(S.step2), counter:hexNum(S.step3), retreat:hexNum(S.step2), axis:hexNum(S.step2), line:hexNum(S.base)}; }
+var SIDE_COL={ fr:sideCol("fr"), al:sideCol("al") };
 
 var overlayRoot, curOv=null, oldOv=null;
 var overlayMats=[], overlayTextMats=[], overlayLabels=[], oldMats=[];
@@ -1106,7 +1109,7 @@ function buildArrow(a){
   var mat=new THREE.MeshBasicMaterial({color:lin(col).clone().multiplyScalar(0.58),transparent:true,opacity:0,fog:false,depthWrite:false});
   overlayMats.push(mat);
   var curve=new THREE.CatmullRomCurve3(groundPts(a.pts,2.4));
-  if(a.kind==="retreat"||a.kind==="axis"){
+  if(a.kind==="axis"){                      /* an intended route: broken; a retreat happened, so it is solid */
     var seg=9;
     for(var i=0;i<seg;i++){ var t0=i/seg; addTube(curve,t0,Math.min(t0+0.62/seg,1),rad,mat); }
   } else addTube(curve,0,1,rad,mat);
@@ -1116,7 +1119,7 @@ function buildArrow(a){
   head.position.copy(end).add(tan.clone().multiplyScalar(hr*0.9));
   head.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),tan);
   ovAdd(head);
-  if(a.label) addOverlayLabel(a.label,curve.getPoint(0.5),col);
+  if(a.label) addOverlayLabel(a.label,curve.getPoint(0.5));
 }
 function buildLine(l){
   var col=SIDE_COL[l.side].line;
@@ -1132,18 +1135,17 @@ function buildLine(l){
     overlayMats.push(lm);
     ovAdd(new THREE.Line(g,lm));
   }
-  if(l.label) addOverlayLabel(l.label,curve.getPoint(0.18),col);
+  if(l.label) addOverlayLabel(l.label,curve.getPoint(0.18));
 }
 function buildBoundary(b){
-  var mat=new THREE.MeshBasicMaterial({color:lin(0xB9B0A0),transparent:true,opacity:0,fog:false,depthWrite:false});
+  var mat=new THREE.MeshBasicMaterial({color:lin(hexNum(TOKENS.sym.label.dark.annotation)),transparent:true,opacity:0,fog:false,depthWrite:false});
   overlayMats.push(mat);
   var curve=new THREE.CatmullRomCurve3(groundPts(b.pts,1.6));
   for(var i=0;i<7;i++){ var t0=i/7; addTube(curve,t0,Math.min(t0+0.55/7,1),0.35,mat); }
-  if(b.label) addOverlayLabel(b.label,curve.getPoint(0.5),0xCDC4B2);
+  if(b.label) addOverlayLabel(b.label,curve.getPoint(0.5));
 }
-function addOverlayLabel(text,pos,col){
-  var hex="#"+("000000"+col.toString(16)).slice(-6);
-  var l=makePlainLabel(text,30,hex,mode==="staff");
+function addOverlayLabel(text,pos){          /* annotation text: hue stays on the arrow, not the words */
+  var l=makePlainLabel(text,30,TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation,mode==="staff");
   var m=new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,opacity:0,depthTest:false,fog:false});
   var sp=new THREE.Sprite(m);
   sp.position.copy(pos); sp.position.y+=4.4;
@@ -1154,14 +1156,14 @@ function buildObjective(o){
   var w=W(o[0],o[1]);
   var cv=document.createElement("canvas"); cv.width=cv.height=128;
   var c=cv.getContext("2d");
-  c.strokeStyle="#EFC468"; c.lineWidth=7;
+  c.strokeStyle=TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation; c.lineWidth=7;
   c.beginPath(); c.arc(64,64,40,0,Math.PI*2); c.stroke();
   c.beginPath(); c.moveTo(64,14); c.lineTo(64,114); c.moveTo(14,64); c.lineTo(114,64); c.stroke();
   var m=new THREE.SpriteMaterial({map:ctex(cv),transparent:true,opacity:0,depthTest:false,fog:false});
   var sp=new THREE.Sprite(m); sp.position.set(w[0],height(w[0],w[1])+3.0,w[1]);
   sp.scale.set(4.4,4.4,1); sp.renderOrder=21;
   asLabel(sp); ovAdd(sp); overlayMats.push(m);
-  var l=makePlainLabel(o[2],28,"#EFC468",mode==="staff");
+  var l=makePlainLabel(o[2],28,TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation,mode==="staff");
   var lm=new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,opacity:0,depthTest:false,fog:false});
   var ls=new THREE.Sprite(lm); ls.position.set(w[0],height(w[0],w[1])+7.4,w[1]);
   ls.scale.set(2.7*l.w/l.h,2.7,1); ls.renderOrder=21;
@@ -1815,7 +1817,7 @@ function actOf(ph){
 function eventGlyph(side,kind){
   var cv=document.createElement("canvas"); cv.width=cv.height=128;
   var x=cv.getContext("2d");
-  var col = kind==="decision" ? "#E7C069" : (side==="fr" ? "#7FB0F0" : "#EC9A5E");
+  var col = TOKENS.sym.side[side==="fr"?"fr":"al"].light;
   x.strokeStyle=col; x.lineWidth=5;
   x.beginPath(); x.arc(64,64,38,0,Math.PI*2); x.stroke();
   x.lineWidth=3.5;
@@ -1841,9 +1843,8 @@ function buildPlateauRing(){
   var w0=W(P[0][0],P[0][1]); pts.push(w0[0],height(w0[0],w0[1])+1.6,w0[1]);
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute(pts,3));
-  plateauRing=new THREE.Line(g,new THREE.LineDashedMaterial({color:lin(0xD8CFB6),
-    dashSize:3.0,gapSize:3.4,transparent:true,opacity:0,depthTest:false}));
-  plateauRing.computeLineDistances();
+  plateauRing=new THREE.Line(g,new THREE.LineBasicMaterial({color:lin(hexNum(TOKENS.sym.label.dark.annotation)),
+    transparent:true,opacity:0,depthTest:false}));
   plateauRing.renderOrder=16;
   eventGroup.add(plateauRing);
   var c=W(298,196);   /* label on the northern part of the outline */
@@ -1866,7 +1867,7 @@ function updatePlateauRing(){
     _plKey=key;
     var txt="THE PRATZEN  \u00b7  Allied \u2248 "+al.toLocaleString()
           + (fr>500?("   French \u2248 "+fr.toLocaleString()):"");
-    var l=makePlainLabel(txt,30,"#E3D9BE",mode==="staff");
+    var l=makePlainLabel(txt,30,TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation,mode==="staff");
     if(plateauLabel.material.map) plateauLabel.material.map.dispose();
     plateauLabel.material.map=ctex(l.canvas);
     plateauLabel.material.needsUpdate=true;
@@ -1885,9 +1886,8 @@ function buildSelRing(){
   }
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute(pts,3));
-  selRing=new THREE.Line(g,new THREE.LineDashedMaterial({color:lin(0xE8DCBC),
-    dashSize:0.9,gapSize:0.8,transparent:true,opacity:0,depthTest:false}));
-  selRing.computeLineDistances();
+  selRing=new THREE.Line(g,new THREE.LineBasicMaterial({color:lin(hexNum(TOKENS.theme.dark.accent)),
+    transparent:true,opacity:0,depthTest:false}));
   selRing.renderOrder=17;
   selRing.visible=false;
   scene.add(selRing);
@@ -1912,7 +1912,7 @@ function buildEventLayer(){
   eventGroup=new THREE.Group(); scene.add(eventGroup);
   EVENTS.forEach(function(e){
     var w=W(e.p[0],e.p[1]), gy=height(w[0],w[1]);
-    var col = e.kind==="decision" ? "#E7C069" : (e.side==="fr" ? "#7FB0F0" : "#EC9A5E");
+    var col = TOKENS.sym.label.dark.annotation;          /* the glyph carries the side; the words stay neutral */
     var m=new THREE.SpriteMaterial({map:eventGlyph(e.side,e.kind),transparent:true,
       opacity:0,depthTest:false,fog:false});
     var sp=new THREE.Sprite(m);
@@ -2139,7 +2139,7 @@ function paintCommand(){
   else h+='<dl class="cmdlist">'+items.map(function(it){
     return '<div class="cmdrow"><dt>'+esc(KIND[it[0]]||it[0])+
       '</dt><dd>'+esc(it[2])+' <span class="src '+(it[1]==="doc"?"doc":"inf")+'">'+
-      (it[1]==="doc"?"DOCUMENTED":"INFERRED")+'</span></dd></div>';
+      iconSVG(TOKENS.sym.source[it[1]==="doc"?"doc":"inf"])+(it[1]==="doc"?"DOCUMENTED":"INFERRED")+'</span></dd></div>';
   }).join("")+'</dl>';
   host.innerHTML=h;
 }
@@ -2248,9 +2248,8 @@ function planObjective(obj,colour){
   sp.scale.set(7.2,7.2,1); sp.renderOrder=24; asLabel(sp); planGroup.add(sp);
   planLabel(obj.n,new THREE.Vector3(c[0],height(c[0],c[1])+8.6,c[1]),colour,30,1);
 }
-function planLabel(text,pos,colour,size,op){
-  var hex="#"+("000000"+colour.toString(16)).slice(-6);
-  var l=makePlainLabel(text,size,hex,mode==="staff");
+function planLabel(text,pos,colour,size,op){   /* annotation text; the ribbon carries the side */
+  var l=makePlainLabel(text,size,TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation,mode==="staff");
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,
     opacity:op===undefined?1:op,depthTest:false,fog:false}));
   sp.position.copy(pos);
@@ -2265,7 +2264,7 @@ function buildPlanLinks(){
   if(!n) return;
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute(new Float32Array(n*6),3));
-  planLinks=new THREE.LineSegments(g,new THREE.LineDashedMaterial({color:lin(0xE8DCC0),
+  planLinks=new THREE.LineSegments(g,new THREE.LineDashedMaterial({color:lin(hexNum(TOKENS.sym.label.dark.annotation)),
     dashSize:2.4,gapSize:2.0,transparent:true,opacity:0.5,depthTest:false}));
   planLinks.renderOrder=15;
   planGroup.add(planLinks);
@@ -2304,8 +2303,8 @@ function setPlan(side){
     planGroup=new THREE.Group(); scene.add(planGroup);
     var sides = planSide==="both" ? ["al","fr"] : [planSide];
     sides.forEach(function(sd){
-      var col  = sd==="fr" ? 0x4B8CE0 : 0xE07A2E;
-      var edge = sd==="fr" ? 0x0E2748 : 0x50230A;
+      var col  = hexNum(TOKENS.sym.side[sd].base);
+      var edge = hexNum(TOKENS.sym.side[sd].edge);
       var chev = (sd==="al");
       var P=PLANS[sd];
       (P.staging||[]).forEach(function(a){ planStaging(a,col,edge); });
@@ -2447,7 +2446,7 @@ function setMode(m){
 
 function buildAnalysisLabels(){
   TERRAIN_LINES.forEach(function(tl){
-    var col={ridge:"#E7BC7C",scarp:"#DA9366",valley:"#93BFD4",defile:"#E88377",dead:"#B4A6D6"}[tl.t];
+    var col=TOKENS.sym.analysis[tl.t];
     var mat=new THREE.SpriteMaterial({transparent:true,depthTest:false,fog:false});
     var sp=new THREE.Sprite(mat);
     sp.position.set(tl._mid[0],tl._mid[1],tl._mid[2]);
@@ -2463,7 +2462,7 @@ function refreshAnalysisLabels(){
     var key=paper?"p":"t";
     if(o.texKey===key) return;
     o.texKey=key;
-    var l=makePlainLabel(o.tl.n,30,o.col,paper);
+    var l=makePlainLabel(o.tl.n,30,paper?o.col.paper:o.col.label,paper);
     if(o.sprite.material.map) o.sprite.material.map.dispose();
     o.sprite.material.map=ctex(l.canvas);
     o.sprite.material.needsUpdate=true;
@@ -2830,13 +2829,14 @@ function updateVisibility(){
     if(!o.sprite.visible) return;
     var d=camera.position.distanceTo(o.world);
     var worldPerPx=2*d*tanH/hpx;
-    var h=Math.max(2.2, 30*worldPerPx);
+    var h=Math.max(2.2, 35*worldPerPx);       /* 22-unit text in a 72-unit glyph: at least 10.5 px */
     o.sprite.scale.set(h*(320/72),h,1);
   });
 
   world.contours.visible=layerOn.contours && !cleanView;
   world.marsh.visible=layerOn.contours && !cleanView;
   world.analysis.visible=layerOn.analysis;
+  document.body.classList.toggle("layer-analysis",!!layerOn.analysis);   /* the legend explains its dashes */
   analysisSprites.forEach(function(o){
     var show=layerOn.analysis && labels;
     o.sprite.visible=show;
@@ -3053,7 +3053,7 @@ function buildUI(){
     }
     EVENTS.forEach(function(e,ix){
       var w=evWindow(e), mid=(w[0]+w[1])/2;
-      var cls = e.kind==="decision" ? "dec" : e.side;
+      var cls = (e.kind==="decision" ? "dec " : "")+(e.side==="fr"?"fr":"al");
       html+='<s class="'+cls+'" data-ev="'+ix+'" title="'+esc(fmtClock(mid)+"  "+e.n)+'" style="left:'+
         (100*(mid-T_MIN)/(T_MAX-T_MIN))+'%"></s>';
     });
@@ -3218,6 +3218,10 @@ var COLOUR_KEY={
 function paintKey(){
   document.querySelectorAll(".legend [data-key]").forEach(function(e){
     var k=COLOUR_KEY[e.dataset.key]; if(k) e.style.background=k.hex; });
+  /* the going classes: the same table the going layer is drawn from (world.js makeGoingPalette) */
+  var gk=document.getElementById("goingkey");
+  if(gk) gk.innerHTML=TOKENS.sym.going.map(function(g){
+    return '<div class="k"><span>'+esc(g.label)+'</span><span class="sw" data-going="'+g.key+'" style="background:'+g.hex+'"></span></div>'; }).join("");
   var p=document.getElementById("fr-key"); if(!p) return;
   var K=COLOUR_KEY;
   function sw(k,cls){ return '<i class="'+(cls||"key-sw")+'" data-key="'+k+'" style="background:'+K[k].hex+'" aria-hidden="true"></i>'; }
@@ -3533,8 +3537,8 @@ function compactCard(id){
     '<h2>'+esc(f.name)+'</h2><p class="dh-cmd">'+esc(f.commander||"")+'</p></div>';
   wrap.appendChild(head);
   var pills='';
-  if(st) pills+='<span class="pill" style="background:'+TONE[STATUS[st].tone]+'">'+esc(STATUS[st].label)+'</span>';
-  pills+='<span class="pill claim-'+cl+'">'+esc(CLAIM[cl].label)+'</span>';
+  if(st) pills+=statusPill(st);
+  pills+=claimPill(cl);
   pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
   wrap.appendChild(el("div","pillrow",pills));
   var str=f.strength||aggStrength(id);
@@ -3573,9 +3577,9 @@ function dossierFormation(id){
   wrap.appendChild(head);
 
   var pills='';
-  if(st) pills+='<span class="pill" style="background:'+TONE[STATUS[st].tone]+'">'+esc(STATUS[st].label)+'</span>';
+  if(st) pills+=statusPill(st);
   var cl=claimOf(id,cf);
-  pills+='<span class="pill claim-'+cl+'">'+esc(CLAIM[cl].label)+'</span>';
+  pills+=claimPill(cl);
   pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
   if(commandView!=="none"){
     var kn=knowledgeOf(id);
@@ -3684,9 +3688,13 @@ function dossierFormation(id){
   return wrap;
 }
 var LAYER_TAG={record:"record",recon:"reconstruction",derived:"derived"};
+/* status and claim as neutral plates: the icon and the words carry them, never hue (decisions 3 and 10) */
+function statusPill(st){ var t=STATUS[st].tone, ic=TOKENS.sym.status[t];
+  return '<span class="pill st-'+t+'">'+iconSVG(ic.icon)+esc(STATUS[st].label)+'</span>'; }
+function claimPill(cl){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS.sym.claim[cl])+esc(CLAIM[cl].label)+'</span>'; }
 function sect(title,html,isDl,layer){
   var d=el("div","sect");
-  d.innerHTML='<h3>'+esc(title)+(layer?' <span class="ltag '+layer+'">'+esc(LAYER_TAG[layer])+'</span>':'')+'</h3>'+
+  d.innerHTML='<h3>'+esc(title)+(layer?' <span class="ltag '+layer+'">'+iconSVG(TOKENS.sym.layer[layer])+esc(LAYER_TAG[layer])+'</span>':'')+'</h3>'+
     (isDl?'<dl class="kvs">'+html+'</dl>':html);
   return d;
 }
@@ -3720,7 +3728,7 @@ function dossierFeature(id){
   if(!ft) return wrap;
   var kindName={height:"High ground",water:"Watercourse or mere",village:"Village",town:"Town",road:"Road"}[ft.kind]||ft.kind;
   var head=el("div","dh");
-  head.innerHTML='<div class="dh-bar" style="background:#8A8570"></div><div class="dh-tx">'+
+  head.innerHTML='<div class="dh-bar" style="background:var(--text-muted)"></div><div class="dh-tx">'+
     '<p class="dh-sub">'+esc(kindName)+'</p><h2>'+esc(ft.name)+'</h2>'+
     '<p class="dh-cmd">'+esc(ft.sub||"")+'</p></div>';
   wrap.appendChild(head);
@@ -3793,7 +3801,7 @@ function dossierEvent(eid){
   var wrap=el("div","dossier");
   if(!e) return wrap;
   var w=evWindow(e), exact=(w[0]===w[1]);
-  var col = e.kind==="decision" ? "#D9A64B" : (e.side==="fr" ? NATION.fr.fill : NATION.ru.fill);
+  var col = e.side==="fr" ? "var(--side-fr)" : "var(--side-al)";     /* the side, not a nation */
   var KIND={decision:"Command decision",attack:"Attack",capture:"Position taken",
             arrival:"Reinforcement",engagement:"Engagement",movement:"Movement",
             withdrawal:"Withdrawal",collapse:"Collapse"};
@@ -3804,7 +3812,7 @@ function dossierEvent(eid){
     '<p class="dh-cmd">'+esc(exact?("about "+fmtClock(w[0])):(fmtClock(w[0])+" to "+fmtClock(w[1])))+'</p></div>';
   wrap.appendChild(head);
   wrap.appendChild(el("div","pillrow",
-    '<span class="pill claim-'+e.claim+'">'+esc(CLAIM[e.claim].label)+'</span>'+
+    claimPill(e.claim)+
     '<span class="pill ghost">Timing '+esc(e.cf)+'</span>'+
     (exact?'':'<span class="pill ghost">Interval, not a timestamp</span>')));
   var s2=el("div","sect");
@@ -3838,7 +3846,7 @@ function dossierAnalysis(name){
   if(!tl) return wrap;
   var kind={ridge:"Ridge line",scarp:"Escarpment",valley:"Valley floor",
             defile:"Defile",dead:"Dead ground"}[tl.t];
-  var col={ridge:"#D8A05A",scarp:"#C2743C",valley:"#6FA0B8",defile:"#D05A4C",dead:"#9080B4"}[tl.t];
+  var col=TOKENS.sym.analysis[tl.t].line;
   var head=el("div","dh");
   head.innerHTML='<div class="dh-bar" style="background:'+col+'"></div><div class="dh-tx">'+
     '<p class="dh-sub">Terrain analysis</p><h2>'+esc(tl.n)+'</h2>'+

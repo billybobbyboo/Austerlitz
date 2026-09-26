@@ -528,15 +528,13 @@ function makePalette(kind){
   return out;
 }
 function makeGoingPalette(){
-  var n=FACE.n, out=new Float32Array(n*9), c=new THREE.Color();
+  var n=FACE.n, out=new Float32Array(n*9), c=new THREE.Color(), GOING_HEX={};
+  TOKENS.sym.going.forEach(function(g){ GOING_HEX[g.key]=parseInt(g.hex.slice(1),16); });
   for(var f=0;f<n;f++){
     var cov=FACE.cover[f], deg=FACE.slope[f]*180/Math.PI, sh=FACE.shade[f], hex;
-    if(cov===3) hex=0x36505E;
-    else if(cov===2) hex=0x6B5A3E;
-    else if(deg>17) hex=0x8E4436;
-    else if(deg>9||cov===4||cov===5) hex=0xB8863A;
-    else if(cov===6) hex=0xA89A4C;
-    else hex=0x6E8A5A;
+    /* the classes and their colours are one table, TOKENS.sym.going, which the legend also reads */
+    var gk = cov===3 ? "water" : cov===2 ? "marsh" : deg>17 ? "severe" : (deg>9||cov===4||cov===5) ? "hard" : cov===6 ? "vine" : "good";
+    hex=GOING_HEX[gk];
     c.setHex(hex);
     var rel=(0.70+0.46*sh)*FACE.ao[f];
     c.r*=rel; c.g*=rel; c.b*=rel;
@@ -1289,6 +1287,7 @@ function setContourStyle(paper){
     marshGroup.userData.mat.color.copy(lin(paper?0x3E6D88:0x5D7C8C));
     marshGroup.userData.mat.opacity=paper?0.7:0.55;
   }
+  if(analysisGroup) analysisGroup.children.forEach(function(o){ if(o.userData.t) o.material.color.setHex(analysisCol(o.userData.t,paper)); });
 }
 function buildMarshSymbols(scene){
   marshGroup=new THREE.Group();
@@ -1312,13 +1311,15 @@ function buildMarshSymbols(scene){
   marshGroup.userData.mat=m;
   scene.add(marshGroup);
 }
+/* line colours come from TOKENS.sym.analysis (with paper variants); the patterns are terrain notation */
 var ANALYSIS_STYLE={
-  ridge: {col:0xD8A05A, dash:false, tick:true},
-  scarp: {col:0xC2743C, dash:false, tick:true},
-  valley:{col:0x6FA0B8, dash:true,  tick:false},
-  defile:{col:0xD05A4C, dash:false, tick:false},
-  dead:  {col:0x9080B4, dash:true,  tick:false}
+  ridge: {dash:false, tick:true},
+  scarp: {dash:false, tick:true},
+  valley:{dash:true,  tick:false},
+  defile:{dash:false, tick:false},
+  dead:  {dash:true,  tick:false}
 };
+function analysisCol(t,paper){ var a=TOKENS.sym.analysis[t]; return parseInt((paper?a.paper:a.line).slice(1),16); }
 function buildAnalysis(scene){
   analysisGroup=new THREE.Group();
   analysisGroup.visible=false;
@@ -1333,8 +1334,8 @@ function buildAnalysis(scene){
     }
     var g=new THREE.BufferGeometry();
     g.setAttribute("position",new THREE.Float32BufferAttribute(verts,3));
-    analysisGroup.add(new THREE.LineSegments(g,
-      new THREE.LineBasicMaterial({color:st.col,transparent:true,opacity:0.92})));
+    var lm=new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:analysisCol(tl.t,false),transparent:true,opacity:0.92}));
+    lm.userData.t=tl.t; analysisGroup.add(lm);
     if(st.tick){
       var tv=[];
       for(var k=1;k<pts.length-1;k+=2){
@@ -1348,8 +1349,8 @@ function buildAnalysis(scene){
       }
       var g2=new THREE.BufferGeometry();
       g2.setAttribute("position",new THREE.Float32BufferAttribute(tv,3));
-      analysisGroup.add(new THREE.LineSegments(g2,
-        new THREE.LineBasicMaterial({color:st.col,transparent:true,opacity:0.6})));
+      var tm=new THREE.LineSegments(g2,new THREE.LineBasicMaterial({color:analysisCol(tl.t,false),transparent:true,opacity:0.6}));
+      tm.userData.t=tl.t; analysisGroup.add(tm);
     }
     var mid=pts[Math.floor(pts.length/2)];
     tl._mid=[mid[0],height(mid[0],mid[1])+4.2,mid[1]];
