@@ -1,6 +1,7 @@
 # Map readability specification (Stage 2, Part A)
 
-**Status: draft for the owner's review. No change to the build.** Written against `main` at `7e03692`
+**Status: Part A reviewed; the owner's answers are decisions 31-39 (§0, §L); §M (the chronology audit) awaits review. No
+change to the build; 2B starts only after §M is reviewed.** Written against `main` at `7e03692`
 (`austerlitz-command-map.html` 1,107,799 bytes, md5 `5bf48b75373fe0cf9fc8a32cbeae918c`, confirmed before any work;
 `npm run check:baseline` now checks exactly that build). Line numbers refer to that commit.
 
@@ -27,8 +28,10 @@ facts), **owner decision** (decisions 1-30), **recommendation** (a proposal for 
 | `map-text.js` | E, H | every in-scene text element's on-screen size and rendered contrast; the unobstructed map fraction |
 | `dom-layer.js` | F | the one-layer prototype: overlaps, drops, leaders, pass time, node count per harness view |
 | `paper-map.js` | G | today's paper map against a north-up, straight-down, near-orthographic probe |
+| `chronology.js [--md f] [--evidence]` | M | every anchor's engine window against the app's timed statements; the reviewed verdicts |
+| `chronology-sim.js` | M | the derived readings and suite values under each timing remedy |
 
-## 0. Owner decisions 18-30 (fixed), and whether the evidence contradicts them
+## 0. Owner decisions 18-39 (fixed), and whether the evidence contradicts them
 
 The decisions are recorded here as given; the verdict column says what the measurements found. Where a decision
 conflicts with the evidence or with an earlier decision the conflict is stated, not worked around.
@@ -42,12 +45,21 @@ conflicts with the evidence or with an earlier decision the conflict is stated, 
 | 22 | No change to `OVERLAYS` in Part A; bind every arrow to the tracks; verdicts derivable / interpretive / mismatch; in 2C only derivable arrows are generated. | **Workable, with one contradiction in its wording.** "Their track legs *across* that phase" does not describe how the arrows were authored. A track anchor is where a formation stands at the *start* of its phase (`legWindow`, `app.js:1254`), so the model makes the move shown in a phase's arrow *before* that phase begins. Of the 11 derivable arrows, 10 match the leg that *arrives* at the phase's anchor and 1 matches the leg *across* the phase (§C.1). Deriving arrows "across the phase" would move ten arrows one phase later than they are drawn today. Question L3. |
 | 23 | "IV Column halted" is not intended movement and will not be an axis arrow; propose its representation. | Proposal in §C.3. |
 | 24 | One DOM/SVG layer for counters and all map text (2D), priority layout, panels as obstacles, leader lines, occlusion; compact counters by default; all map text measurable with the 10.5 / 12 / 13 px floors; zero unresolved overlaps, the Walther / Nansouty allowance retired; keyboard focus, accessible names, picking by footprint. | **Workable** (§E, §F). Measured today: 149 of 495 in-scene text runs are below their floor and 83 below AA across the harness views (§E). The prototype reaches 0 overlaps in all eleven views, the hybrid Walther / Nansouty pair included; its pass time is dominated by the occlusion rays, which need a cheaper method (§F.3). |
-| 25 | Paper map: true north up (`GEOREF.NORTH`, `GEOREF.ROT`), straight down, orthographic or near-orthographic; pan and zoom only; drag-to-pan and zoom-to-cursor brought forward for the paper map; drawn and hidden elements as listed; framing inside the unobstructed area. | **Workable** (§G). Naming only: `geo.js` exports the rotation as `GEOREF.ROT_DEG` (17.42 degrees), not `GEOREF.ROT`. |
+| 25 | Paper map: true north up (`GEOREF.NORTH`, `GEOREF.ROT`), straight down, orthographic or near-orthographic; pan and zoom only; drag-to-pan and zoom-to-cursor brought forward for the paper map; drawn and hidden elements as listed; framing inside the unobstructed area. | **Workable** (§G). Naming only: `geo.js` exports the rotation as `GEOREF.ROT_DEG` (17.42 degrees), not `GEOREF.ROT`; **the decision's wording is superseded: read `GEOREF.ROT_DEG`** (owner, on review). |
 | 26 | Flags and standards join the figure scale (2B) with a provisional pike-to-man ratio, labelled provisional until Stage 6; state its basis. | Proposal in §I.1. |
 | 27 | Meres: no outline change without a georeferenced source; a research note on the Satschan, Menitz and Kobelnitz ponds. | Note in §I.2. Two points the owner's brief states differently from the sources found: the Second Military Survey covered **Moravia in 1836-1840** (1836-52 is the span for the Czech lands as a whole), and the local estate report as quoted gives the Satschan draining as **8-16 December 1805**, not 8-12. The recovered finds also disagree with the app's own data (§I.2). |
 | 28 | Land cover follows the cover polygons, not the 81 m triangles; roads and streams draped; palette colours stay Stage 4. | Workable; §K (2F). |
 | 29 | Legend (2D, 2E): contextual, compact, collapsible, no empty area, never over the dispatch; states the current exaggeration and the two named symbol scales. | Workable; §F.2. |
 | 30 | Scope guard: no historical, geographic, chronological or order-of-battle change in Stage 2 except the traceable `OVERLAYS` changes under 21-23; no other Stage 3 item. | Noted. The going-layer thresholds (§B.4) and the pond finds (§I.2) are recorded as questions for data tasks, not changed. |
+| 31 | (L1) 2E stays before 2F: the paper map draws woods, villages and water from their polygons (§G.2), so triangle edges matter mainly in the landscape until 2F. | Recorded. |
+| 32 | (L2) In 2B the going classes are computed from the model's slope with today's thresholds converted to true degrees (0.88 and 1.70), so the map does not change at any factor. "Hard for guns" and "severe slope" at under 2 degrees of true slope are unsupported claims about the ground, so until a data task decides: the legend shows each slope class with its true-degree threshold and the word "provisional"; the sources sheet states the thresholds are unsourced design values; the texts relying on the classes are listed; the data task (source the thresholds, or rename the classes descriptively) is recorded as open in `CHANGELOG.md`. | Recorded. Texts relying on the classes (fact): the layer's own description, "Where guns and formed cavalry could and could not pass" (`shell.html:120`); the class labels (`tokens.js:71-76`) and the legend rows written from them (`app.js:3221-3224`). No narrative, dossier or analysis text uses the classes. Related claims that do not use them: the Goldbach "difficult for guns and horse in December mud" (`data.js:627`), the stream note "guns and formed cavalry cross it at the villages" (`world.js:132`), the escarpment "steep enough to hide a division" (`world.js:130`). Note: "hard for guns" also covers woods and villages by cover class, not by slope (`world.js:536`). |
+| 33 | (L3) Not decided as posed. Neither reading is adopted as a rule. Target: the arrow shown during phase ph depicts the movement the model makes during phase ph, and the model's timing agrees with the app's timed statements. Fix the model, not the arrow; the rule for 2C is settled after §M and the data task that follows it. | Recorded; §M is the audit. |
+| 34 | (L4) Option (b): at 1x formations are drawn as their modelled footprints (W0, D0) in the side colour; buildings, trees, scrub, figures and standards are not drawn; counters, labels and the legend line ("true scale: formations drawn as their footprints") stay. The footprint is one primitive that Stage 5's spatial-confidence display can reuse. | Recorded; §J, §K (2B). |
+| 35 | (L5) Default display factor 4x. Settings are stated relative to true scale (1x = true); the internal scale applied to model heights is factor / `GEOREF.EXAG`, which stays unchanged as the model's vertical scale. Every user-facing statement of the relief's exaggeration reads the display factor: the sources text (built HTML line 1755, `SOURCE_NOTE`, `data.js:737`), the relief caption (built line 7510, `app.js:3741`), the legend, the paper map's hillshade line. A self-test that no user-facing text states `GEOREF.EXAG` as the drawn exaggeration. | Recorded. Both texts reach the page through `geoText()` (`app.js:3905`), which substitutes `{EXAG}` with `GEOREF.EXAG`: 2B changes that substitution to the display factor, so `SOURCE_NOTE` (guarded data) does not change. |
+| 36 | (L6) The provisional standard ratio 1.6 is accepted, labelled as proposed in §I.1 (a design rule, not a historical value). | Recorded. |
+| 37 | (L7) No blanket tolerance rule. After §M and its data task, each of the 11 mismatches is resolved on its own against the app's narrative, events and cited sources: a wrong track changes (traceable) and the arrow is derived; an arrow that points at a place or objective becomes interpretive and is flagged; one that cannot be settled stays hand-authored and is listed by name in the binding test. §C lists what each mismatch's endpoints correspond to. | Recorded; §C.1. |
+| 38 | (L8) Compact counter as proposed, plus the status icon without its text. For 2D: counter text, badges and nation tags sit on plates opaque enough to meet AA over any ground, measured, not computed (§E shows today's translucent paper halo fails); on dimmed counters the nation tag is text under decision 13: full opacity, one step down, at AA (Stage 1B's 34% tag does not meet decision 13). | Recorded; §F.1, §J. |
+| 39 | (L9) Accepted with conditions: per view, drops may not exceed the number of labels today's canvas pass hides in that view; never dropped: the selection, the highlighted family and labels of live events; a dropped formation stays reachable by hovering its position and from the keyboard; §H's numbers are the input to Stage 3, where docking the dispatch comes first. | Recorded; §J. Today's hidden counts per view are in §F.3 ("canvas today: hidden"): 12, 14, 10, 10, 9, 9, 7, 21, 5, 11, 10. The probe's drops (4, 6, 19, 0, 0, 5, 1, 0, 14, 1, 0) exceed them in overview-field (19 > 10) and selected-formation (14 > 5): 2D must place better there. |
 
 ## A. Height call-site inventory and the display-height design
 
@@ -160,7 +172,8 @@ degrees** (derived: `atan(tan(t) / 10.33)`). The share of triangles in the slope
 analysis layer would change its reading with a view setting. In 2B the classification must be computed from the
 model's slope (presentation must not change analysis). Whether the thresholds should keep today's meaning (0.88 and
 1.70 true degrees, so the map is unchanged) or be re-set in true degrees from a source is a data question, not
-decided here: **question L2**.
+decided here: **question L2**, now **decision 32** (thresholds kept at 0.88 and 1.70 true degrees, labelled provisional
+and unsourced until a data task decides).
 
 ### B.5 Recommended default (recommendation)
 
@@ -170,7 +183,7 @@ heights above Sokolnitz, so the relief reads above its own symbols; the Santon i
 Goldbach; the low Pratzen view gives the relief 139 px. At 3x the Santon is 1.5 figures and the relief 1.6 trees, so
 the knoll on the French left barely clears the tree crowns; at 5x the west face is back to 35-45 degrees.
 The choice is visual: it trades the owner's aim (a defensible, not dramatic, relief) against legibility of the
-relief above figure-scale symbols. 4x is what the numbers support; the owner confirms it on the renders.
+relief above figure-scale symbols. 4x is what the numbers support. **Decided: decision 35 (4x).**
 
 ### B.6 True scale (1x): options (derived, then recommendation; decision 19 keeps 1x)
 
@@ -185,7 +198,8 @@ the whole Pratzeberg-Sokolnitz relief (1.85), a broadleaf is 1.8 times it. Optio
 
 **Recommendation: (b)**, labelled in the legend ("true scale: formations drawn as their footprints"). It does not
 rescale any symbol (decision 19): at 1x the figure-scale and landscape-scale layers are not drawn. Renders:
-`docs/stage2-evidence/exag-1x-options.jpg` (Pratzen, low Pratzen and Zuran, (a) against (b)). Question L4.
+`docs/stage2-evidence/exag-1x-options.jpg` (Pratzen, low Pratzen and Zuran, (a) against (b)). **Decided: decision 34, option
+(b)**; the footprint is built as one primitive that Stage 5's spatial-confidence display can reuse.
 
 ## C. Movement arrows, dashes, and "IV Column halted"
 
@@ -229,10 +243,29 @@ reading (the reading is recorded); *mismatch* otherwise.
 | 8 | I Column to the defile (Dokhturov) | leg 7→8: 0 / 899 m | ends 899 m short |
 | 8 | Bagration withdraws on Rausnitz | leg 7→8: 0 / 608 m | ends 608 m short |
 
+**What each mismatch's endpoints correspond to** (decision 37; derived: the named places (`FEATURES`), event markers and
+`OVERLAYS` objectives within 600 m of each end point, nearest first). This is evidence for the per-arrow resolution after
+§M, not a verdict.
+
+| ph | arrow | start point | end point | reading |
+|---|---|---|---|---|
+| 0 | V Column counter-marches north | Pratzen Heights 268 m; event `face-about` 268 m | nothing within 600 m (Stare Vinohrady 854 m) | a direction on the plateau, not a place |
+| 1 | I Column descends | nothing within 600 m | event `buxhowden-blind` 530 m | follows the column's own route; ends short of the anchor |
+| 1 | Friant's approach march | nothing within 600 m (off the map toward Raigern) | event `davout` 241 m; Telnitz 538 m | points at the event "Friant's leading brigade reaches the Goldbach" |
+| 4 | Kamensky turns about | nothing within 600 m | the Pratzeberg 170 m; events `kamensky` and `pratzeberg` 170 m | points at the summit, the objective of the counter-attack |
+| 5 | Bagration | nothing within 600 m | Brünn–Olmütz highway 430 m | along the highway |
+| 6 | Drouet forms line | nothing within 600 m | nothing within 600 m | neither |
+| 7 | Saint-Hilaire wheels south | event `face-about` 348 m; Pratzen Heights 381 m | nothing within 600 m (event `wheel` 710 m) | a direction (the wheel) |
+| 7 | Vandamme wheels south | event `face-about` 430 m | nothing within 600 m | a direction (the wheel) |
+| 7 | Przybyszewski's breakout | event `sokolnitz-falls` 544 m | Kobelnitz 544 m; objective "Kobelnitz — never reached" 544 m | points at the break-out's objective, Kobelnitz |
+| 8 | I Column to the defile | Telnitz 460 m; events `telnitz-retaken` 384 m, `telnitz` 460 m | Augezd and the objective "The Augezd defile" 114 m | points at a place: the defile |
+| 8 | Bagration withdraws on Rausnitz | nothing within 600 m | nothing within 600 m (toward Rausnitz, off the map) | a direction toward an off-map place |
+
 **What this shows (derived).** (1) The arrows were drawn from the same anchors as the tracks: 16 of the 22 arrows
 that name one tracked formation (and are not `axis`) start within 5 m of one of its anchors. (2) They were authored
 mostly on the *into* reading (10 of 11 derivable), with three on the *across* reading (Vandamme twice, Przybyszewski). (3) Of the 11 mismatches, 4 arrows stop short of the anchor, 6 start off it, and 1 is a question of phase (the V Column's counter-march). Decision 22's "legs across that phase"
-would draw 10 of the 11 derivable arrows one phase later than today: **question L3**. The full list, with every
+would draw 10 of the 11 derivable arrows one phase later than today. **Decision 33:** neither reading is adopted; the model's
+timing is audited first (§M), and the arrows follow the corrected model. The full list, with every
 candidate's distances, is `docs/stage2-evidence/arrow-binding.md` (from `arrow-binding.js --md`).
 
 ### C.2 Dashed and segmented drawing today (fact)
@@ -384,8 +417,8 @@ text meets AA (computed) is therefore **not confirmed by measurement** for the p
   selection or layer changed) and after a resize; a frame skipped by render-on-demand does not lay out. Element content
   (text) is rebuilt only when its key changes (as `refreshSymbol` does today with `texKey`), positions every drawn frame.
 - **Compact counter (default):** a 40 x 28 px cased frame (1 px keyline, 3 px side band, keyline, nation fill), the arm
-  glyph (SVG), the nation tag (10.5 px), the echelon mark above (10.5 px), the B / C / ? badge on its plate, and the
-  short name beside it at 12.5 px. **Full counter** (on hover, keyboard focus, selection, for the highlighted family, and
+  glyph (SVG), the nation tag (10.5 px), the echelon mark above (10.5 px), the B / C / ? badge on its plate, the status
+  icon without its text (decision 38), and the short name beside it at 12.5 px. **Full counter** (on hover, keyboard focus, selection, for the highlighted family, and
   when zoomed closer than a stated distance, set in 2D from the harness views): adds the strength (12.5 px) and the
   status plate with its icon (12.5 px); the commander's name appears in the full counter. All colours from `TOKENS`.
 - **Accessibility.** Each counter is a focusable element (`tabindex`, `role="button"`) with an accessible name
@@ -508,7 +541,7 @@ Today (fact, `app.js:392-393`, `855-875`): the pole is 5.2 units (6.5 for a sing
 the ground to its top; the cloth is 2.4 x 1.4 units, hung with its centre at 4.5 units (5.6). A standing figure is
 1.98 units, so the pole top is **2.63 (3.28) figure heights** and the cloth spans 1.9-2.6 figure heights.
 
-**Proposal: a provisional pole-top-to-man ratio of 1.6**, with the cloth, the pole's thickness and the hanging
+**Proposal (accepted, decision 36): a provisional pole-top-to-man ratio of 1.6**, with the cloth, the pole's thickness and the hanging
 offsets scaled by the same factor (0.61; 0.49 for the single-standard block, so every block uses one ratio): pole
 3.17 units, cloth 1.46 x 0.85, cloth bottom at 2.32 units (1.17 figure heights).
 
@@ -537,16 +570,20 @@ pond. Areas of the ellipses (derived): Satschan about 3.7 km², Menitz about 2.6
 |---|---|---|---|---|
 | First Military Survey (Josephine) | 1764-68 | expected to (the ponds are older); not checked | surveyed "a la vue", without a geodetic basis: low positional accuracy, known | before the battle; needs local rubber-sheeting to be usable |
 | Stable cadastre, imperial obligatory prints, 1:2,880 (ČÚZK archive) | Moravia 1824-1830 and 1833-1836 | depends on whether each pond still existed; not checked | trigonometric survey: the most accurate of the four | after the battle, and after any draining or conversion to fields; shows a later state |
-| Second Military Survey (Franciscan) | Moravia 1836-1840 (146 sections) | as the cadastre (it was drawn on it) | triangulated, derived from the cadastre | as the cadastre |
+| Second Military Survey (Franciscan) | Moravia 1836-1840 (146 sections; accepted by the owner, superseding "1836-52") | as the cadastre (it was drawn on it) | triangulated, derived from the cadastre | as the cadastre |
 | Contemporary battle plans (French and Austrian) | 1805-06 and after | usually show both ponds | schematic; not surveyed | the state at the battle, but not georeferenced |
 
 **The draining in December 1805 (reported).** A report by František Brutmann, administrator of the Chrlice estate,
 quoted in Czech local sources (austerlitz.org, Žatčany chronicle; obeczatcany.cz), says the Satschan pond was
 drained on Napoleon's order between **8 and 16 December 1805** and held two drowned Russian soldiers, 180 artillery horses
-and 18 guns. English-language summaries (napoleon-series.org, historyofwar.org) give 38 guns and about 130 horses,
+and 18 guns. **Correction (owner, on review):** austerlitz.org's Žatčany page gives **8-12 December 1805**; the estate
+report as quoted elsewhere gives **8-16 December**. The two dates are a disagreement between sources, not an error in one
+of them; both are recorded with their sources and neither is adopted until the report itself is read. (Not verified here:
+the pages could not be opened from this environment.) English-language summaries (napoleon-series.org, historyofwar.org) give 38 guns and about 130 horses,
 or two or three men and about 150 horses. **The app's own data** (`FEATURES`, satschan, `data.js:687`) says "38 guns,
 about 130 horses, and two men (figures as usually given)". These disagree; the disagreement is kept, and changing the
-data is a data task. The owner's brief gives 8-12 December; the quoted report gives 8-16.
+data is a data task. The finds disagreement (18 guns and 180 horses in the quoted report; 38 guns and about 130 horses in the app's data and the
+English summaries) stays open for a data task.
 
 **Areas that disagree (reported).** Menitz: 514 ha (one local source) against "over 800 ha" and "the largest pond in
 Moravia" (another; slavkov-austerlitz.com); a search summary of the same article also gives "almost 189 jitra
@@ -587,10 +624,22 @@ Every threshold below is new or stricter; none is loosened. A threshold that rep
   `pratzen-low-1x` and `pratzen-low-10x` (the old default kept as a case) with the same thresholds.
 - **Standards (new):** pole top / figure height = the provisional ratio for every block (to 0.01); seating as today.
 - **Legend (new, self-test):** states the current factor and the two named symbol scales.
+- **No stale exaggeration (new, self-test; decision 35):** no user-facing text (sources sheet, place-dossier relief caption,
+  legend, paper-map hillshade line) states `GEOREF.EXAG` as the drawn exaggeration; each states the display factor
+  relative to true scale. `geoText()`'s `{EXAG}` substitution reads the display factor; `SOURCE_NOTE` is unchanged.
+- **Going classes (decision 32):** computed from the model slope at 0.88 and 1.70 true degrees; identical at every factor;
+  the legend rows show the true-degree threshold and "provisional"; the sources sheet states the thresholds are unsourced.
+- **True scale (decision 34):** at 1x no figure, standard, building, tree or scrub is drawn and every formation on the
+  field has its footprint (frontage W0 x sw, depth D0 x sd) drawn in its side colour; counters, labels and the legend line
+  stay. The footprint is one function, reused by Stage 5.
 - `check:baseline` moves to 2B's build, recorded in `CHANGELOG.md`.
 
+**Data task between 2B and 2C: the chronology** (§M.5; decisions 33 and 37). Every timing change is a traceable data
+change; the suite values it moves (§M.3) are re-derived and recorded, never loosened.
+
 **2C, movement arrows**
-- **Arrow-track binding (new suite test, `binding-test.js`):** every `OVERLAYS` arrow has one verdict; every arrow
+- **Arrow-track binding (new suite test, `binding-test.js`):** run after the chronology data task, on the corrected model:
+  the arrow of phase ph is the model's movement during ph (decision 33); every `OVERLAYS` arrow has one verdict; every arrow
   marked derivable is generated from its leg and its end points equal the leg's anchors exactly; every other arrow
   carries an explicit interpretive marker; no `axis` arrow describes a halt. Mismatches left after 2C's data decisions
   are listed by name in the test as data questions, each with its `CHANGELOG.md` entry; any other mismatch fails.
@@ -604,8 +653,13 @@ Every threshold below is new or stricter; none is loosened. A threshold that rep
 - **Label overlaps, stricter (replaces the Stage 0 threshold with its named residual):** 0 overlaps among map
   elements in every harness view; the Walther / Nansouty allowance removed from `thresholds.js`. `measure.js` reads
   the rendered boxes of the DOM layer instead of projecting sprites.
-- **Nothing that matters dropped (new):** the selection and the highlighted family are never dropped; drops of other
-  elements are reported per view, with a ceiling set from 2D's own numbers.
+- **Nothing that matters dropped (new; decision 39):** the selection, the highlighted family and the labels of live events are
+  never dropped; in each view the number of dropped labels is at most the number today's canvas pass hides in that view
+  (12, 14, 10, 10, 9, 9, 7, 21, 5, 11, 10 in the harness order, §F.3); every dropped formation is reachable by hovering its
+  position and from the keyboard.
+- **Plates at AA, measured (new; decision 38):** counter text, badges and nation tags on plates that meet AA over both
+  map backdrops and over the rendered ground of every harness view, measured by the §E method on the DOM layer; a dimmed
+  counter's nation tag at full opacity, one step down, at AA.
 - **Map text measurable (extends `check:contrast`):** the layer is DOM, so the contrast collector reads it: WCAG AA
   over the rendered map (the two backdrops), 12 px for battle information, 10.5 px for tertiary map text, as §E.
 - **Accessibility (new, self-test):** every counter is focusable, has an accessible name (name, side, echelon,
@@ -637,39 +691,187 @@ Every threshold below is new or stricter; none is loosened. A threshold that rep
 | part | files touched | depends on | regression risks | its report must show |
 |---|---|---|---|---|
 | **2B** display height, exaggeration, flags | `world.js` (display helper, re-seating, `groundY` fallback, going classes from the model), `app.js` (52 sites, camera re-framing in `flyTo`, `startPhaseTransition`, `placeCamera`; exaggeration control; standards ratio; self-test), `shell.html`, `style.css` (the control and legend line), `tokens.js` only if a colour is needed; `tools/run-all.sh`, harness cases | Part A | every guarded preset re-framed at use (29 presets): a glide could dip below the ground at 1x (the self-test's glide check must pass at every factor); the Stage 0 darkness measures at other factors; mist fade; the going layer | the 52 → 0 guard, the relief test, the seating and camera checks at three factors, harness at the default, renders at 1x / default / 10.33x, the standards ratio, `check:data` identical |
-| **2C** movement arrows | `app.js` (draped arrow drawer from `planRibbon`, derivation from legs, heads, boundaries, halt kind, trail leftover), **`OVERLAYS`** (traceable data changes only: the halt entry; any mismatch the owner decides), a new `binding-test.js`, `tools/run-all.sh` | 2B (draping on the display height) | ten derived arrows move if the owner chooses the *across* reading (L3); overlay labels move with the arrows and meet the label-overlap threshold; `check:data` will report `OVERLAYS` changed, with each change in `CHANGELOG.md` | the binding table after 2C, every `OVERLAYS` change (was, is, evidence, why), the chevron renders, the dash test |
+| **data task** chronology (§M.5) | `data.js` (anchor times, the events re-dated), the engine's timing (`legWindow`, `legAt`: guarded model code), the suites' recorded values, `CHANGELOG.md` | 2B (independent of it, but after it by decision) | every reading of §M.3 moves; the harness views at 08:20-10:00 change | each change: what it was, the statement it follows, what it becomes, why; the re-derived suite values |
+| **2C** movement arrows | `app.js` (draped arrow drawer from `planRibbon`, derivation from legs, heads, boundaries, halt kind, trail leftover), **`OVERLAYS`** (traceable data changes only: the halt entry; any mismatch the owner decides), a new `binding-test.js`, `tools/run-all.sh` | 2B (draping on the display height) and the chronology data task | the arrows follow the corrected model (decision 33); overlay labels move with the arrows and meet the label-overlap threshold; `check:data` will report `OVERLAYS` changed, with each change in `CHANGELOG.md` | the binding table after 2C, every `OVERLAYS` change (was, is, evidence, why), the chevron renders, the dash test |
 | **2D** one DOM/SVG layer, legend | `app.js` (layer, layout, occlusion, accessibility, picking, legend), `symbols.js` (canvas counter path removed at the end), `shell.html`, `style.css`, `tools/visual/measure.js`, `thresholds.js` (residual removed), `contrast.js` | 2C (arrow labels are among its elements) | the largest change of the stage: every view's text moves; render-on-demand (the layer updates only when a frame is drawn); picking; the first-run and tour states | per view: overlaps (0), drops, leaders, pass time, node count, text sizes and contrast, unobstructed fraction; parity screenshots against the canvas path before it is removed |
 | **2E** paper map | `app.js` (camera mode, pan and zoom-to-cursor written for reuse in Stage 3, what is drawn), `world.js` (flat village footprints, woods symbology, cartographic hillshade), `style.css`, harness cases | 2B (factor handling), 2C (draped arrows), 2D (compact counters) | the camera code assumes a perspective `fov` in label sizing (`pxPerWorld`, `labelRect`, `fitLabel`); 2D removes most of that; the scale bar | north bearing, scale uniformity, the new cases, the framing, what is hidden |
 | **2F** ground surface | `world.js` (cover from polygons in the shader or a cover texture, draped roads and streams), possibly `assets.js` (no new asset expected) | 2B | cover classification is model (`coverClass`, guarded): the drawing changes, not the classes; performance of a cover texture; the paper map's look | the boundary test, draping, the meres note's status |
 
-## L. Open questions for the owner
+## L. The owner's answers (decisions 31-39)
 
-Only what the evidence cannot settle, each with a recommendation.
+The nine questions of the first draft are decided; the recommendations they answered are kept in the history of this
+file. In short (full wording in §0):
 
-1. **Order of 2E and 2F.** The paper map shows the triangle cover boundaries more plainly than the landscape. Nothing
-   forces a change of order. *Recommendation:* keep 2E before 2F as decided, and accept that the paper map's cover edges
-   improve in 2F; or swap them if the owner prefers the paper map to arrive finished.
-2. **The going layer's slope thresholds** (§B.4) are 9 and 17 degrees of the drawn 10.33x slope, i.e. 0.88 and 1.70
-   degrees true. *Recommendation:* in 2B compute the classes from the model slope with the thresholds converted to
-   true degrees (0.88, 1.70), so the map is unchanged at every factor, and record the thresholds as design values to
-   be sourced in a later data task.
-3. **Which leg an arrow shows** (§C.1). A phase's arrow, as drawn today, is the leg that *arrives* at that phase's anchor
-   (10 of 11 derivable arrows); decision 22 says "across that phase". *Recommendation:* derive the arrow of phase ph
-   from the leg arriving at anchor ph, shown during phase ph, because that is how the arrows were authored and how
-   the anchors are defined (a position at the phase's start); the three arrows drawn on the other reading become
-   data questions. The alternative moves ten arrows one phase later.
-4. **True scale (1x)** (§B.6). *Recommendation:* option (b), formations as footprints at 1x.
-5. **Default factor** (§B.5). *Recommendation:* 4x, to be confirmed on the renders.
-6. **Provisional standard ratio** (§I.1). *Recommendation:* 1.6 (pole top to figure height), design rule stated.
-7. **Mismatched arrows** (§C.1). *Recommendation:* in 2C, the eight that stop short of or start off an anchor by
-   under 900 m are generated from their legs, each change recorded; Friant's approach march (2.0 km), Drouet forms line
-   (1.8 km) and the V Column's counter-march (a phase question) stay hand-authored and flagged until a data task
-   settles them.
-8. **Compact counter content** (§F.1): frame, glyph, nation tag, echelon, badge and the short name; strength, status and
-   commander only when full. *Recommendation:* as stated; the zoom distance at which counters open is set in 2D from the
-   harness views.
-9. **Legibility of the landscape Study views.** The one-layer prototype has to drop up to 14 of 20 formation names in the
-   Study views because the panels leave a third of the screen (§H). Stage 2 cannot move the panels (decision 30).
-   *Recommendation:* accept the drops in Stage 2 (reported, never the selection or highlighted family) and treat §H as
-   the input to Stage 3's docking of the dispatch.
+1. **Order of 2E and 2F** (decision 31): 2E stays before 2F.
+2. **Going thresholds** (decision 32): computed from the model slope at 0.88 and 1.70 true degrees in 2B; shown as
+   "provisional" with their true-degree thresholds; stated as unsourced in the sources sheet; a data task is open.
+3. **Which leg an arrow shows** (decision 33): not decided as posed; the model's timing is to agree with the app's timed
+   statements, and the arrow of phase ph shows the model's movement during ph. §M is the audit; the rule for 2C follows
+   the data task after it.
+4. **True scale** (decision 34): option (b), footprints, as one primitive reusable in Stage 5.
+5. **Default factor** (decision 35): 4x; every user-facing statement of exaggeration reads the display factor.
+6. **Standard ratio** (decision 36): 1.6, provisional.
+7. **Mismatched arrows** (decision 37): no blanket tolerance; each resolved on its own after §M (§C.1 lists what each
+   one's endpoints correspond to).
+8. **Compact counter** (decision 38): as proposed, plus the status icon; plates measured at AA; dimmed nation tags at
+   full opacity, one step down.
+9. **Drops** (decision 39): accepted with conditions (no more than today's hidden labels per view; never the selection,
+   the highlighted family or live events; reachable by hover and keyboard); §H feeds Stage 3.
 
+**Still open:** the chronology remedy and its data task (§M.5), and the source questions of §M.6.
+
+## M. The chronology audit (owner decision 33; report only, no data change)
+
+**Question.** The engine completes every move by the start of its anchor's phase (`legWindow`, `app.js:1254-1258`: a leg
+runs from the previous anchor's phase start, or `moveMin` before, to `PHASES[b.ph].t0`). The anchors' act and status
+text, the phase timelines and the events are shown during that phase and read as what happens during it. Does the
+app's own chronology agree with the engine?
+
+**Method (fact; `node tools/stage2/chronology.js`, `--md` writes the full table to `docs/stage2-evidence/chronology.md`).**
+Every anchor with a position after the first (148 moves across 31 formations; 4 status-only entries and 1 removal are not
+moves) is compared with every timed statement about its formation in the app's own data: phase timelines and ledes,
+`EVENTS` (by their `forms` and by name), the anchors' act and objective text, formation notes, analysis chapters (text and
+the clock each chapter sets), tour stops (text and clock), features, the command-knowledge text and comments in `data.js`:
+102 timed statements. A statement is first attached to the anchor whose phase contains its time; each attachment was then
+**reviewed by hand** against the anchor's act, and the verdict recorded with its evidence in the script's `REVIEW` table
+(so the classification can be re-checked line by line). A verdict needs a timed statement about *this* move; falling
+in the same phase is not enough. **consistent**: the text's time lies in the engine's window (plus or minus 15 min);
+**early**: the engine arrives before the text says the move happens (size = the text's time minus the engine's, the start
+or the arrival, whichever the text gives); **late**: the reverse; **undetermined**: no timed statement about the move. Moves
+under 250 m are "minor"; phase-9 positions are "nightfall" (reached at 17:00, after dark by definition). A **creep** flag
+marks moves the engine spreads over hours from 04:00 although the text starts them later.
+
+### M.1 Results (fact)
+
+| | consistent | early | late | undetermined | minor | nightfall | total |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| French | 20 | 13 | 0 | 26 | 3 | 16 | 78 |
+| Allied | 28 | 9 | 0 | 23 | 1 | 9 | 70 |
+| **all** | **48** | **22** | **0** | **49** | **4** | **25** | **148** |
+
+By phase: phase 1: 4 consistent, 2 early; 2: 7 / 1 (5 undetermined); 3: 2 / 4; 4: 2 / 3; 5: 9 / 0; 6: 9 / 3; 7: 7 / 5; 8: 6 / 4.
+Of the 70 moves with a timed statement, **22 are early (31%) and none is late**. Sizes: 15 min (3), 30 (6), 45 (5), 60 (3),
+75 (4), 120 (1); median 45 min. In addition 9 moves creep (Caffarelli, Suchet, Kellermann, Nansouty and d'Hautpoul to
+phase 5, Rivaud to phase 3, the Allied headquarters to phase 3, Bagration to phase 5, the Russian Guard cavalry to phase 6),
+and 9 undetermined moves have an act that describes the move as happening during its phase (the crossings of the Goldbach,
+Levasseur's march, Bourcier's pursuit, the grenadiers moving up, the Allied headquarters falling back, Buxhowden's escape,
+Kienmayer holding, Rottermund's retreat).
+
+**The early moves** (engine window → the text's time; evidence):
+
+| move | engine | text | early by | evidence |
+|---|---|---|---:|---|
+| Friant, Raigern → the Goldbach (ph1) | 04:00-07:00 | c. 08:00 (07:45-08:15) | 60 | `data.js:64`, `analysis.js:251` |
+| Dokhturov descends (ph1) | 04:00-07:00 | begins c. 07:30 | 30 | `data.js:63` (but the event 04:00-07:00, `analysis.js:236`, agrees with the engine) |
+| Friant retakes Telnitz (ph2) | 07:00-08:00 | c. 08:30 | 30 | `data.js:71`, `analysis.js:259` |
+| Saint-Hilaire climbs (ph3) | 08:00-08:45 | 08:45, village 09:00 | 45 | `data.js:78-79`, `analysis.js:267`, `271`, `31`, `353` |
+| Vandamme climbs (ph3) | 08:00-08:45 | 08:45 | 45 | as above |
+| Rivaud follows Soult (ph3) | 04:00-08:45 | after 08:45 | 15+ | act, `data.js:78` |
+| Kamensky turns about (ph3) | 08:00-08:45 | c. 09:45 | 60 | `data.js:87`, `analysis.js:279` (the act itself puts it in phase 3) |
+| Kamensky drives the 10e Légère off (ph4) | 08:45-09:30 | c. 09:45 | 15 | `data.js:87` |
+| Kollowrat: Jurczek attacks the summit (ph4) | 08:45-09:30 | c. 10:15 | 45 | `data.js:88` |
+| Langeron's reinforcements (ph4) | 08:00-09:30 | c. 10:30 | 60 | `data.js:89`, `analysis.js:283` |
+| Napoleon to Stare Vinohrady (ph6) | 10:35-11:15 | c. 12:00 | 45 | `data.js:105`, `analysis.js:303` |
+| Rapp's counter-charge (ph6) | 10:30-11:15 | c. 11:45 | 30 | `data.js:104` (but the event window starts 11:15, `analysis.js:299`) |
+| Bagration falls back (ph6) | 10:30-11:15 | begins c. 11:15 | 45 | `data.js:97` |
+| Saint-Hilaire, Vandamme, the Guard infantry, the grenadiers wheel south (ph7) | 11:15-12:45 | 13:00-14:00 | 75 each | `data.js:113`, `analysis.js:315`, `51` |
+| Legrand presses east "as the trap closes" (ph7) | 09:30-12:45 | 13:00-14:00 | 15+ | act, `data.js:113` |
+| Legrand retakes Telnitz for good (ph8) | 12:45-14:30 | until 15:00 | 30 | `data.js:640` |
+| Kienmayer and Dokhturov fall back over the meres under fire (ph8) | 12:45-14:30 | 14:30-15:00 | 30 each | `data.js:120-121`, `analysis.js:327` |
+| Bagration withdraws on Rausnitz (ph8) | 12:45-14:30 | c. 16:30 | 120 | `data.js:122` |
+
+**The owner's two cases (verified).** Saint-Hilaire: the phase-3 anchor `[267,275]` ("Climbs the western slope") is
+reached at 08:45, moving 08:00-08:45; the event `soult` is at t 525 (08:45) and `pratzen-village` at t 540 (09:00):
+**confirmed**, early by 45 min. The Guard cavalry: the phase-6 anchor (moveMin 45) moves 10:30-11:15; phase 6's timeline
+says "c. 11:45 Bessieres and Rapp counter-charge" (`data.js:104`): **confirmed**, early by 30 min. **One correction:** the
+item at t 680 (11:20) is the *analysis chapter* "guard" (its clock, `analysis.js:38`), not an event; the event is
+`guard-broken`, window 11:15-13:15 (`analysis.js:299`), which starts exactly when the engine arrives. So the app's own
+statements disagree about this one: the timeline says 11:45, the event's window allows 11:15.
+
+### M.2 The pattern (derived)
+
+**Mixed, with one clear rule inside it.** A phase begins at a moment the narrative dates: an attack on a village (07:00
+Telnitz, 08:00 Sokolnitz), Soult's advance (08:45), the fall of Blasowitz (11:15), the height above Augezd (14:30). Moves
+that *prepare* that moment (formations in place when it happens) agree with the engine: 27 of the 48 consistent moves
+have their text time at the start of the anchor's phase. Moves that *are* the phase's action (a climb, a charge, a wheel, a
+retreat under fire) are early: the phase start is when they begin, and the engine has them finished. None is late. So:
+- **Your reading holds for 22 moves**, whose acts and the timelines describe the move as happening during its phase.
+- **The phase-start rule was nevertheless used deliberately** and the data was fitted to it in places: the correction
+  pass named anchors by the clock at which they are reached ("the Allied HQ at 09:30, Kamensky at 11:15", `CHANGELOG.md:634`);
+  Przybyszewski's phase-8 timing is written for it (`data.js:496`); and several **event markers were placed where the
+  engine puts the formation**: `soult` (08:45, "climb the slope") has its marker at `[262,262]` on the slope's crest, where
+  the engine has Saint-Hilaire at 08:45, not at the foot where the text starts the climb. The sim-test's event-agreement
+  check (1 km) then binds that. Nowhere is it documented that an act text summarises the whole phase or that an anchor
+  means "in place at the phase's start"; the code comment says only "track keys are phase ids; values carry forward until
+  changed" (`data.js:135`).
+- **The texts themselves disagree in three places** (source questions, below): Dokhturov's descent (timeline 07:30,
+  event 04:00-07:00); Rapp's charge (timeline 11:45, event from 11:15); Kamensky's turn (act in phase 3, timeline 09:45).
+
+### M.3 Derived readings that move with the timing (fact; `node tools/stage2/chronology-sim.js`)
+
+The simulation reloads the model as the suites do and replaces only the leg timing; its generic engine reproduces today's
+positions exactly (difference 0.000000 map units) before any variant is applied. Variants: **(a-end)** every anchor reached
+at the end of its phase; **(a-mid)** half-way through it; **(b-shift)** today's rule with each of the 22 early moves moved
+later by its measured offset, later legs pushed back keeping their durations (a sketch of remedy (b)).
+
+| reading (who checks it) | today | (a-end) | (a-mid) | (b-shift) |
+|---|---|---|---|---|
+| march-rate audit: legs over their arm's ceiling (`audit.js`, `selfTest` "movement audit", `redteam.js`) | 0 | 1 (Friant's march, 5.2 km/h) | 10 (fastest 14.8 km/h) | 0 |
+| event agreement: events with no named formation within 1 km (`sim-test.js`) | 0 (worst 0.82 km) | 5 (telnitz, soult, pratzen-village, hq-forward, augezd) | 3 | 2 (soult, pratzen-village) |
+| plateau, Allied / French at 08:45 (`sim-test.js` series, situation line) | 23,550 / 13,300 | 19,300 / 0 | 19,300 / 0 | 19,300 / 0 |
+| plateau at 12:00 | 4,250 / 37,500 | 18,150 / 13,300 | 23,780 / 31,500 | 13,350 / 37,500 |
+| plateau at 14:00 | 0 / 18,500 | 13,350 / 37,500 | 9,100 / 30,900 | 0 / 30,900 |
+| tour stop 4 figures, 38,700 at dawn and the low before 08:45 (`sim-test.js`; quoted in the tour text) | 38,700 / 19,300 | 38,700 / 19,300 | 38,700 / 19,300 | 38,700 / 19,300 |
+| plateau at 04:00 (`selfTest` "derived readings unchanged") | 38,700 | 38,700 | 38,700 | 38,700 |
+| centre separation first reported (situation line, `sim-test.js` "not cut before the battle") | **08:26** | 09:16 | 09:01 | 09:10 |
+| "the centre empties before Soult attacks" / "the French hold the plateau at 11:00" (`sim-test.js`) | yes / yes | yes / yes | yes / yes | yes / yes |
+| Command view (`knowledgeOf`): enemy formations seen / uncertain / unknown at each phase's midpoint; phases whose counts change | French eyes 3/3/6 4/4/4 5/3/5 6/2/5 5/2/6 2/2/9 4/0/9 9/0/4 7/0/6 4/0/8; Allied eyes 2/0/16 1/0/17 3/1/14 5/1/12 3/2/13 3/2/13 8/1/9 9/1/9 9/1/9 9/1/9 | French 9 of 10, Allied 6 | French 7, Allied 5 | French 4 (phases 2, 5, 7, 8), Allied 1 (phase 7) |
+| formations moved at the harness clocks (08:20-10:00), largest / mean | 0 | 3,529 m / 941 m | 3,529 m / 714 m | 1,561 m / 140 m |
+| events naming a formation not yet on the field (`redteam.js`) | none | none | none | none |
+
+Two readings deserve a note. **Centre separation is reported at 08:26 today**, 19 minutes before the texts have Soult's
+divisions start to climb: a symptom of the early engine, visible on the situation line. And at 08:45 today the plateau
+already holds 13,300 French, when the texts say that is the moment they begin the climb. Everything else that reads
+`posAtClock` moves with the timing too: the counters and blocks, the movement trail, headings and formations' facing,
+the dossier's "moving at ... km/h" line, the plateau ring, the arrow binding (§C.1) and every harness screenshot at the
+clocks above. `selfTest` would fail its "movement audit" check under (a-mid) and (a-end); `sim-test.js` would fail its
+event-agreement check under every variant until the events named are re-dated or re-placed.
+
+### M.4 Remedies and their consequences (derived)
+
+| | what changes | what it does to the 27 moves written for the phase-start rule | other consequences |
+|---|---|---|---|
+| **(a) change the rule globally** (an anchor is reached at its phase's end, or during it) | `legWindow` and `legAt` (guarded model code) | breaks them: pre-positioning for an action that opens a phase would arrive after the action (Kienmayer reaches Telnitz at 08:00 for a 07:00 attack; event `telnitz` fails at 2.81 km); the phase-9 positions arrive at 18:00 | compresses long marches into one phase (10 legs over their ceilings at "mid"); 5 events fail (at "end"); the creeping moves stay; the 22 early moves become roughly right, but by rule, not by evidence |
+| **(b) keep the rule, give individual anchors explicit timing** from the app's own timed statements (an arrival or departure time; `moveMin` alone cannot express an arrival *after* the phase start) | a small engine extension (optional per-anchor times honoured by `legWindow`; guarded, so part of the data task) and 22 + 9 anchors | leaves them untouched | the sketch keeps the march-rate audit clean; 2 events whose markers were fitted to the early timing (`soult`, `pratzen-village`) need their window or marker re-dated; centre separation moves from 08:26 to about 09:10; the event-agreement results, the centre-separation time and the `sim-test.js` series change and must be re-derived, not loosened |
+| **(c) a combination**: (b), plus a documented default rule (an anchor is in place at its phase's start unless it carries its own time), plus the three disagreeing texts settled first | as (b) plus a comment and a `CHANGELOG.md` record of the rule | leaves them untouched and makes the rule they rely on explicit | as (b); the 49 undetermined moves keep today's timing and are listed, not guessed |
+
+### M.5 Recommendation
+
+**(c).** Document the phase-start rule as the default, since 27 moves and several events were fitted to it deliberately;
+add optional explicit times to anchors; and in a separate data task before 2C, never inside 2B:
+1. settle the three disagreeing texts (Dokhturov's descent, Rapp's charge, Kamensky's turn) against the literature, or
+   record them as disputed;
+2. give the 22 early moves explicit times from the app's own statements, each a traceable data change (what it was, the
+   statement it follows, what it becomes, why);
+3. give the 9 creeping moves a departure time where a text dates the start (Lannes's advance c. 09:30, the emperors
+   joining the column c. 08:30-09:00), otherwise leave them and list them;
+4. re-date the events whose markers were fitted to the early timing (`soult` as a window over the climb; `pratzen-village`),
+   as data changes;
+5. re-derive, not loosen, every suite value that moves (the event agreement, the centre-separation time, the series in
+   `sim-test.js`, the knowledge counts), and record the new values.
+The 49 undetermined moves keep today's timing; their act texts are not evidence of timing on their own. Then decision 33's
+target holds: the arrow shown during phase ph is the movement the model makes during phase ph, and 2C derives it.
+
+### M.6 Source questions (the app's text against the literature; not resolved here)
+
+The 22 early verdicts rest on the app's own statements, and almost none of them cites a source: of the timeline entries
+used, none carries a citation; the Allied headquarters' 08:45 cites the *Russian Biographical Dictionary* (1903,
+`data.js:412`); Friant's march cites "sources vary" (`data.js:64`). Before the data task adopts any of these times:
+- the three internal disagreements above;
+- "after 11:00 ... the hour is not established" for the Russian Guard's attack (`data.js:103`), which bounds Vandamme's,
+  Drouet's and both Guards' phase-6 moves from one side only;
+- Bagration's withdrawal "c. 16:30" (`data.js:122`), dated by the end of organised resistance rather than by his own
+  movement;
+- the wheel "13:00-14:00" (`data.js:113`, `analysis.js:51`), on which five early verdicts rest;
+- the Pratzeberg "firmly in French hands" at 11:00 (`analysis.js:287`) and the Telnitz fighting "between 07:00 and 15:00"
+  (`data.js:640`).

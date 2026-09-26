@@ -25,7 +25,7 @@ function load(extra){
     appDecls(["OVERLAYS","clamp01","phaseAt","anchorList","legPath","pointOnPath","legWindow","legAt","posAtClock","notYetAt","goneAt",
               "leavesOf"].concat(extra||[])),
     "this.X={GEOREF,FORMATIONS,PHASES,OVERLAYS,EVENTS,W,height,hAt,localHeight,anchorList,legPath,pointOnPath,legWindow,legAt,posAtClock,notYetAt,goneAt,leavesOf,"+
-    "SATS,MENI,PBERG,SANTON,ZURAN,VINO,PRAT,GOLDBACH,LITAVA,TERRAIN_LINES,VILLAGES};"].join("\n;\n");
+    "SATS,MENI,PBERG,SANTON,ZURAN,VINO,PRAT,GOLDBACH,LITAVA,TERRAIN_LINES,VILLAGES,ANALYSIS,TOUR,ACTS,FEATURES,COMMAND,PLANS,SOURCE_NOTE,KNOW_OVERRIDE};"].join("\n;\n");
   vm.runInContext(code,ctx,{filename:"model"});
   return ctx.X;
 }

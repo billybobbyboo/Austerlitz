@@ -1,5 +1,52 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Stage 2A continued: owner decisions 31-39 and the chronology audit (docs/STAGE2_SPEC.md §M); no change to the build
+
+**Status: §M awaits the owner's review; 2B has not started. `austerlitz-command-map.html` unchanged: 1,107,799 bytes, md5
+`5bf48b75373fe0cf9fc8a32cbeae918c`.**
+
+**What changed**
+- `docs/STAGE2_SPEC.md`: the owner's answers to §L recorded as decisions 31-39 (§0, §L), and the specification updated
+  where they apply (§B, §C, §F, §I, §J, §K); §C lists what each mismatched arrow's endpoints correspond to (decision 37);
+  new §M, the chronology audit.
+- `tools/stage2/chronology.js` (every anchor against the app's timed statements, with the hand-reviewed verdicts) and
+  `chronology-sim.js` (the derived readings under each timing remedy); `model.js` exports more data; evidence
+  `docs/stage2-evidence/chronology.md`.
+
+**The audit (§M), in brief.** 148 moves; 70 have a timed statement about the move in the app's own data: 48 consistent,
+**22 early** (median 45 min, up to 120), **0 late**; 9 more creep from 04:00. Mixed, not systematic: moves that prepare a
+phase's opening action agree with the engine's phase-start rule; moves that are the phase's action (climbs, charges, the
+wheel, retreats under fire) are early. The rule was used deliberately in the correction pass and some event markers were
+fitted to it. Remedies simulated; recommendation (c): keep the rule as a documented default, add explicit anchor times
+from the app's own statements in a separate data task before 2C. Both of the owner's cases confirmed; the item at t 680
+is the analysis chapter "guard", not an event (the event `guard-broken` starts at 11:15).
+
+**Corrections recorded**
+- Decision 25: the rotation export is `GEOREF.ROT_DEG`; the decision's wording `GEOREF.ROT` is superseded.
+- The Second Military Survey covered Moravia in 1836-1840 (accepted).
+- The Satschan draining dates disagree between sources: austerlitz.org's Žatčany page gives 8-12 December 1805; the
+  estate report as quoted elsewhere gives 8-16 December. Both recorded with their sources; neither adopted until the
+  report itself is read.
+- The finds disagreement (18 guns and 180 horses in the quoted report; 38 guns and about 130 horses in the app's data and
+  English summaries) stays open.
+
+**Open data tasks (recorded, not done)**
+- The going layer's slope thresholds (0.88 and 1.70 true degrees): source them, or rename the classes descriptively
+  (decision 32). Until then they are provisional and unsourced design values.
+- The chronology (§M.5): explicit anchor times from the app's timed statements; the three disagreeing texts; re-dating the
+  events fitted to the early timing; the suite values re-derived. Before 2C.
+- The Satschan draining dates and finds.
+
+**Tests**
+- `npm run build`: md5 `5bf48b75373fe0cf9fc8a32cbeae918c`, 1,107,799 bytes (unchanged).
+- `npm run check:baseline`: passes.
+- `npm test`: ALL 8 SUITES PASSED.
+- `npm run check:data`: all 112 DATA declarations byte-identical.
+- `chronology-sim.js` check: its variant engine reproduces today's positions exactly (0.000000 map units).
+
+**Not verified:** the literature behind the app's timed statements (§M.6 lists the source questions); the draining dates
+(the pages could not be opened from this environment); the remedies are simulated, not implemented.
+
 ## 2026-09 · Stage 2A: map readability specified (docs/STAGE2_SPEC.md); no change to the build
 
 **Status: specification for the owner's review. `austerlitz-command-map.html` unchanged: 1,107,799 bytes, md5
@@ -99,6 +146,12 @@ areas) is recorded in §I.2 as disagreement between sources, separate from these
 by eye, with no numeric metric; event glyphs keep their landscape (light) side colours on the paper map, since they
 are built once; the view-mode switch still fades to 24% in watch and map modes (a behaviour, left); the legend's empty
 area and its overlap with the dispatch on the paper map were there before (layout, Stage 2 and 3).
+
+**Note added 26 September 2026 (Stage 2A review):** the contrast results above measure page text; for the canvas text (counters
+and map labels) this entry relied on values computed from the drawing code (`docs/VISUAL_SPEC.md` §6.3), as its "Not verified"
+line says. The measurement in `docs/STAGE2_SPEC.md` §E does not confirm it for counters on the paper
+map (grey text on the translucent paper halo, 2.9-4.5:1 over darker hillshade) or for dimmed counters' nation tags (about
+1.7:1, drawn at 34% opacity, which also does not meet owner decision 13). The entry is left as written.
 
 ## 2026-09 · Stage 1A: owner decisions recorded in the specification; no code change
 
