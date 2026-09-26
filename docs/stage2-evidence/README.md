@@ -14,3 +14,4 @@ injected into the running page, not the 2B-2F implementation.
 | `map-text.json` | E, H | `map-text.js` (every text run: size, contrast; unobstructed fraction) |
 | `dom-layer.jpg` | F.2 | `dom-layer.js` |
 | `paper-map.jpg` | G | `paper-map.js` |
+| `chronology.md` | M | `chronology.js --md` (every move: engine window, act, text time, verdict, evidence) |
