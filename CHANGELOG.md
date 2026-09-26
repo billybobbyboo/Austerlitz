@@ -1,5 +1,51 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Stage 2A: map readability specified (docs/STAGE2_SPEC.md); no change to the build
+
+**Status: specification for the owner's review. `austerlitz-command-map.html` unchanged: 1,107,799 bytes, md5
+`5bf48b75373fe0cf9fc8a32cbeae918c`** (confirmed on `main` before the work, and by `check:baseline` after it).
+
+**What changed**
+- `docs/STAGE2_SPEC.md`: owner decisions 18-30 and their verdicts; sections A-L (height inventory and display-height
+  design, exaggeration evidence and the 1x options, arrow binding, dashes, "IV Column halted", the Allied arrowhead,
+  map text measured, the DOM/SVG layer, the north-up paper map, the unobstructed-map baseline, the provisional
+  standard ratio, the meres research note, test plan, pull-request plan, open questions).
+- `docs/stage2-evidence/`: the renders and tables the specification cites.
+- `tools/stage2/`: the scripts that produced every number (not bundled). Probes are injected into the running page
+  for measurement only; no source file is changed by them.
+- **`check:baseline` re-baselined** (`package.json`): it passed only on the Stage 0 build (`c09c4b23…`) and has failed
+  since Stage 1B by design. It now passes only on the Stage 1B build: md5 `5bf48b75373fe0cf9fc8a32cbeae918c` **and**
+  1,107,799 bytes, so it proves this task did not change the build. `CLAUDE.md` updated to match.
+- `.gitignore`: `tools/stage2/out/`.
+
+**Findings that the owner's decisions did not anticipate** (details and questions in the specification)
+- The going layer's slope classes are computed on the drawn 10.33x slope: "hard for guns" above 9 degrees drawn is 0.88
+  degrees true, "severe slope" above 17 is 1.70 (§B.4, question L2). Not changed.
+- 29 camera presets live in guarded data (`PHASES`, `ANALYSIS`, `TOUR`) in 10.33x world units; 2B must re-frame at use.
+- `OVERLAYS` arrows depict the leg that *arrives* at the phase's anchor (10 of the 11 derivable arrows), not the leg
+  *across* the phase that decision 22 names (§C.1, question L3).
+- The plan staging-area outline is a dashed drawing missing from `VISUAL_SPEC.md` §10.5 (a plan, so allowed).
+- The Satschan pond finds in the app's data (38 guns, about 130 horses, two men) disagree with a local estate report
+  as quoted (18 guns, 180 horses, two men; drained 8-16 December 1805). Kept as a disagreement; not changed.
+**Tests (all run on the unchanged build)**
+- `npm run build`: md5 `5bf48b75373fe0cf9fc8a32cbeae918c`, 1,107,799 bytes, identical to `main`.
+- `npm run check:baseline` (re-baselined): passes; a copy with one byte added fails (exit 1).
+- `npm test`: ALL 8 SUITES PASSED.
+- `npm run check:data`: all 112 DATA declarations byte-identical (against the Stage 0 reference, as before).
+- `npm run check:visual`: STAGE0: all checks passed; `selfTest()` 13/13 PASS; the only counter overlap is the named
+  hybrid-dimmed Walther / Nansouty residual.
+- `npm run check:contrast`: 3,101 text elements, 0 below AA, 0 below 10.5 px.
+- The measurement scripts in `tools/stage2/` ran to completion; their outputs are in `docs/stage2-evidence/`.
+
+**Not verified or not done:** browsers other than headless Chromium 141 with software WebGL (the pass times of the
+DOM probe and the factor-change times are for that renderer, not a user's GPU); the meres sources could not be opened
+from this environment (the network policy blocked them), so every figure in §I.2 is as quoted in search results and
+must be read from the source before use; arrowhead legibility was judged by eye on crops, with measured sizes, not by a
+numeric test; the map-text contrast method can under-read where a run's 2 px margin takes in a neighbouring mark; the
+probes approximate what 2B-2F would build (for example the 1x footprints use the block's own frontage and depth, the
+paper-map probe is near-orthographic, not orthographic). Historical uncertainty (the pond finds and dates, the pond
+areas) is recorded in §I.2 as disagreement between sources, separate from these implementation limits.
+
 ## 2026-09 · Stage 1B: the visual language implemented (docs/VISUAL_SPEC.md)
 
 **Status: done; all checks pass except `check:baseline`, which fails by design (the build changed).**

@@ -8,7 +8,7 @@
      content: counters COMPACT (a 40 x 28 px cased frame in the side colour with the nation fill and tag, the
      echelon mark, the B / C / ? badge, and the short name at 12.5 px); FULL for the selection and the highlighted
      family (+ strength and status at 12.5 px). Text elements carry their own words at the type scale.
-     placement: at the anchor (bottom-centre 6 px above the ground point), else eight neighbours, else rings of
+     placement: at the anchor (bottom-centre 6 px above the point 2.2 units over the ground, where counters stand today), else eight neighbours, else rings of
      24-144 px around it with a leader line; never over a fixed panel or another placed element (2 px pad); an
      element that finds no place is dropped and counted. Occlusion: a ray from the eye to the anchor against the
      terrain mesh; an anchor behind the drawn ground is dropped and counted.
@@ -45,7 +45,7 @@ const PROBE=`window.__dom=function(){
       '<span style="position:absolute;left:0;right:0;top:-14px;text-align:center;font:500 10.5px/1 '+TOKENS.type.sans+';color:'+K.ink+'">'+ech+'</span></div>'+
       '<div style="font:500 12.5px/1.25 '+TOKENS.type.sans+';color:'+K.ink+';text-shadow:0 0 3px '+K.halo+',0 0 3px '+K.halo+'">'+nm+
       (full?'<br><span style="font-weight:400">≈'+(f.strength||aggStrength(id)||"?").toLocaleString()+' · '+(STATUS[st]?STATUS[st].label:"")+'</span>':'')+'</div></div>';
-    items.push({el:e,world:new THREE.Vector3(w[0],height(w[0],w[1]),w[1]),pri:isSel("f",id)?0:full?1:2+(ECH[f.ech]||2)*0.1-(aggStrength(id)||0)/1e7,kind:"counter",id:id});
+    items.push({el:e,world:new THREE.Vector3(w[0],height(w[0],w[1])+2.2,w[1]),pri:isSel("f",id)?0:full?1:2+(ECH[f.ech]||2)*0.1-(aggStrength(id)||0)/1e7,kind:"counter",id:id});
   }
   function text(sp,kind,pri,px,col,serif){
     if(!sp||!vis(sp)||!sp.material||sp.material.opacity<0.05) return; var s=txt(sp.material.map&&sp.material.map.image); if(!s) return;
@@ -66,7 +66,7 @@ const PROBE=`window.__dom=function(){
   items.sort(function(a,b){ return a.pri-b.pri; });
   function layout(){
     camera.updateMatrixWorld(true);
-    var t0=performance.now(), taken=[], panels=[], st={placed:0,displaced:0,dropped:0,occluded:0,offscreen:0};
+    var t0=performance.now(), taken=[], panels=[], st={placed:0,displaced:0,dropped:0,occluded:0,offscreen:0,rayMs:0};
     [".rail",".dispatch",".legend",".timebar",".tools","#viewmode","#firstrun",".drawer","#tourbar","#selchip","#layerpop"].forEach(function(s){
       document.querySelectorAll(s).forEach(function(e){ var cs=getComputedStyle(e); if(cs.display==="none"||cs.visibility==="hidden"||e.hidden||+cs.opacity<0.05) return;
         if(e.classList.contains("drawer")&&!e.classList.contains("on")) return; if(e.classList.contains("rail")&&document.body.classList.contains("rail-hidden")) return;
@@ -79,8 +79,8 @@ const PROBE=`window.__dom=function(){
       it.el.style.visibility="hidden";
       var v=it.world.clone().project(camera); if(v.z>1||Math.abs(v.x)>1||Math.abs(v.y)>1){ st.offscreen++; return; }
       var ax=(v.x*0.5+0.5)*innerWidth, ay=(-v.y*0.5+0.5)*innerHeight;
-      dir.copy(it.world).sub(eye); var dist=dir.length(); dir.normalize(); rc.set(eye,dir); rc.far=dist-0.8;
-      if(rc.intersectObject(groundMesh,false).length){ st.occluded++; return; }
+      var tr=performance.now(); dir.copy(it.world).sub(eye); var dist=dir.length(); dir.normalize(); rc.set(eye,dir); rc.far=dist-0.8;
+      var occ=rc.intersectObject(groundMesh,false).length>0; st.rayMs+=performance.now()-tr; if(occ){ st.occluded++; return; }
       var c=[[0,-1],[1,-1],[-1,-1],[1,0],[-1,0],[0,0],[1,1],[-1,1]], best=null;
       function rect(dx,dy){ var x=ax+dx-it.w/2, y=ay+dy-it.h-6; return [x,y,x+it.w,y+it.h]; }
       for(var i=0;i<c.length&&!best;i++){ var r=rect(c[i][0]*(it.w/2+4),c[i][1]===-1?0:c[i][1]===0?it.h/2+6:it.h+12);
@@ -104,7 +104,7 @@ const PROBE=`window.__dom=function(){
     st.overlaps=ov; st.panelOverlaps=ovp; return st;
   }
   var times=[], st; for(var n=0;n<5;n++){ st=layout(); times.push(st.ms); } times.sort(function(a,b){ return a-b; });
-  st.ms=+times[2].toFixed(2); st.items=items.length; st.domNodes=root.getElementsByTagName("*").length+1;
+  st.ms=+times[2].toFixed(2); st.rayMs=+st.rayMs.toFixed(2); st.items=items.length; st.domNodes=root.getElementsByTagName("*").length+1;
   st.byKind={}; items.forEach(function(it){ var k=st.byKind[it.kind]=st.byKind[it.kind]||{n:0,shown:0}; k.n++; if(it.el.style.visibility==="visible") k.shown++; });
   renderFrame();
   window.__domRestore=function(){ hidden.forEach(function(h){ h[0].visible=h[1]; }); root.remove(); };
@@ -113,7 +113,7 @@ const PROBE=`window.__dom=function(){
 (async()=>{
   const b=await P.launch(), res={};
   let page=null, vpKey="";
-  for(const c of P.CASES){
+  for(const c of P.CASES.filter(c=>!process.env.ONLY||process.env.ONLY.split(",").includes(c.name))){
     const key=c.viewport.join("x")+(c.fresh?":"+c.name:"");
     if(key!==vpKey||c.fresh){ if(page) await page.close(); page=await P.open(b,c.viewport,null,
       `(function(){var C=CanvasRenderingContext2D.prototype,ft=C.fillText;C.fillText=function(t){try{(this.canvas.__runs=this.canvas.__runs||[]).push({t:String(t)});}catch(e){} return ft.apply(this,arguments);};})();`);
@@ -129,6 +129,6 @@ const PROBE=`window.__dom=function(){
     console.log(c.name.padEnd(20),"today: visible",before.visible,"overlaps",JSON.stringify(before.pairs),"stats",JSON.stringify(before.stats),"declutter ms",before.declutterMs,
       "| dom:",JSON.stringify(st));
   }
-  fs.writeFileSync(path.join(out,"dom.json"),JSON.stringify(res,null,1));
+  fs.writeFileSync(path.join(out,process.env.ONLY?"dom-only.json":"dom.json"),JSON.stringify(res,null,1));
   await b.close();
 })().catch(e=>{ console.error(e); process.exit(2); });

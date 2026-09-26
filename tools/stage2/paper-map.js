@@ -18,13 +18,13 @@ const PROBE=`window.__paper={
     if(rail) L=rail.right; if(tb) B=tb.top; if(tools) T=Math.max(T,tools.bottom*0);
     return [L,T,R,B];
   },
-  northUp:function(fov,focus){ var f=this.free(), cx=(f[0]+f[2])/2, cy=(f[1]+f[3])/2;
+  northUp:function(fov,focus,zoom){ var f=this.free(), cx=(f[0]+f[2])/2, cy=(f[1]+f[3])/2;
     camera.fov=fov; camera.far=20000; camera.near=10; scene.fog.near=1e5; scene.fog.far=2e5;
     var ang=GEOREF.ROT_DEG*Math.PI/180, n=new THREE.Vector3(-Math.sin(ang),0,-Math.cos(ang));
     /* the frame's extent across and along north, to fit the free rectangle */
     var C=[[-180,-155],[180,-155],[180,155],[-180,155]], e=new THREE.Vector3(-n.z,0,n.x), ax=0, ay=0;
     C.forEach(function(q){ ax=Math.max(ax,Math.abs(q[0]*e.x+q[1]*e.z)); ay=Math.max(ay,Math.abs(q[0]*n.x+q[1]*n.z)); });
-    var fw=f[2]-f[0], fh=f[3]-f[1], half=Math.max(ay, ax*fh/fw)*(focus||1);
+    var fw=f[2]-f[0], fh=f[3]-f[1], half=Math.max(ay, ax*fh/fw)*(zoom||1);
     var d=half/Math.tan(fov*Math.PI/360)*(innerHeight/fh);
     var c=focus?new THREE.Vector3(focus.x,0,focus.z):new THREE.Vector3(0,0,0);
     camera.up.copy(n); camera.position.set(c.x,d,c.z); orbitTarget.copy(c); camera.lookAt(c);
@@ -55,8 +55,8 @@ const PROBE=`window.__paper={
   await page.evaluate(()=>{ __paper.northUp(4); }); await P.settle(page);
   res.northUp=await page.evaluate(()=>__paper.measure()); png=await page.screenshot({timeout:300000}); fs.writeFileSync(path.join(out,"northup-overview.png"),png); shots.push({png,cap:"probe: north up, straight down, 4° (near-orthographic)"});
   const sok=await page.evaluate(()=>{ const w=W(GEOREF.GT.sokolnitz.map[0],GEOREF.GT.sokolnitz.map[1]); return {x:w[0],z:w[1]}; });
-  await page.evaluate(f=>{ __paper.northUp(4,Object.assign({},f)); },sok);
-  await page.evaluate(f=>{ /* zoom: a quarter of the frame height around Sokolnitz */ camera.position.y*=0.28; camera.updateMatrixWorld(true); requestRender(3); },sok); await P.settle(page);
+  /* closer: 0.28 of the frame's extent, centred on Sokolnitz */
+  await page.evaluate(f=>{ __paper.northUp(4,f,0.28); },sok); await P.settle(page);
   res.northUpClose=await page.evaluate(()=>__paper.measure()); png=await page.screenshot({timeout:300000}); fs.writeFileSync(path.join(out,"northup-sokolnitz.png"),png); shots.push({png,cap:"probe: north up, closer, on Sokolnitz"});
   fs.writeFileSync(path.join(out,"sheet-paper.jpg"),await P.sheet(page,shots,3,640,360,"Paper map: today and the north-up probe (staff mode, 09:30)"));
   fs.writeFileSync(path.join(out,"paper.json"),JSON.stringify(res,null,1));

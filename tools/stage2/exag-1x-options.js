@@ -2,8 +2,8 @@
 /* Stage 2 Part A, section B (owner decision 19): what true scale (1x) could show. In-page PROBE on top of probe-exag.js.
    (a) 1x unchanged: figures, buildings and trees at their symbol scales on true-scale ground;
    (b) 1x with formations as footprints: the figure blocks hidden, each formation drawn as its modelled footprint
-       (the pad the app already lays under a block: frontage and depth from the model, plus its 4.5-unit margin)
-       tinted in the side colour; buildings, roofs, chimneys, spires, trees and scrub hidden (their ground-scale
+       (frontage W0 x sw and depth D0 x sd from the block's own layout, ground scale) in the side colour, laid on the
+       drawn ground with the block's own tilt and yaw; buildings, roofs, chimneys, spires, trees and scrub hidden (their ground-scale
        extents stay in the ground palette as village and wood cover).
    Also timed: the probe's exag() call (re-seating everything, shade and palettes), which bounds what a factor change costs.
    Views: Pratzen vantage, the harness's low Pratzen view, Zuran vantage, at 09:30 / 09:50 (as exag-renders.js).
@@ -13,10 +13,16 @@ const out=path.resolve(process.argv[2]||path.join(__dirname,"out","exag")); fs.m
 const FOOT=`window.__foot=function(on){
   ["trees","conifers","scrub","houses","roofs","spires"].forEach(function(k){ if(world[k]) world[k].visible=!on; });
   scene.children.forEach(function(o){ var g=o.isInstancedMesh&&o.geometry.parameters; if(g&&g.width===0.22&&g.height===0.5) o.visible=!on; });   /* the chimneys */
+  if(window.__fp){ window.__fp.forEach(function(m){ scene.remove(m); }); window.__fp=null; }
   Object.keys(units).forEach(function(id){ var r=units[id]; if(!r.block) return;
     r.block.children.forEach(function(c){ c.visible=!on; });
-    if(r.pad){ if(on){ r.pad.userData.c0=r.pad.userData.c0||r.pad.material.color.clone(); r.pad.material.color.copy(lin(hexNum(TOKENS.sym.side[sideOfNation(r.f.nation)].base))); r.pad.material.opacity=0.9; }
-      else if(r.pad.userData.c0){ r.pad.material.color.copy(r.pad.userData.c0); r.pad.material.opacity=0.66; } } });
+    ["pad","smoke","dust"].forEach(function(k){ if(r[k]&&on) r[k].visible=false; }); });
+  if(on){ window.__fp=[];
+    Object.keys(units).forEach(function(id){ var r=units[id], u=r.block&&r.block.userData; if(!u||!r.block.visible||!posNow(id)) return;
+      /* the modelled footprint: frontage W0 x sw, depth D0 x sd (ground scale), laid on the drawn ground */
+      var m=new THREE.Mesh(PAD_GEO,new THREE.MeshBasicMaterial({color:lin(hexNum(TOKENS.sym.side[sideOfNation(r.f.nation)].base)),transparent:true,opacity:0.85,depthWrite:false}));
+      m.scale.set(u.W0*u.sw,1,u.D0*u.sd); m.position.copy(r.block.position); m.position.y+=0.25; m.quaternion.copy(r.block.quaternion); m.renderOrder=4;
+      scene.add(m); window.__fp.push(m); }); }
   renderFrame();
 };`;
 (async()=>{
