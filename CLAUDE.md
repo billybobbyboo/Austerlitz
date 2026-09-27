@@ -59,16 +59,19 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 ## Checks: run them; never claim a result you did not run
 - First time: `npm install`, then `npx playwright install chromium` (for the visual harness).
 - `npm run build`; `npm test` runs the whole regression suite and prints each suite's result: it exits non-zero, naming
-  the failed suites, if any suite exits non-zero or prints an error summary.
+  the failed suites, if any suite exits non-zero or prints an error summary. It also runs the Stage 2B height guard
+  (`tools/stage2/height-sites.js --check`): no presentation code may read `height()`/`hAt()`; draw on `displayHeight()`
+  or `groundY()`, and classify any new call site.
 - `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/chronology-12d34eed.html`
   (the chronology data task's build); a data task that changes it lists every changed declaration in `CHANGELOG.md` and moves the reference.
 - `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
   explicit anchor time carries evidence found in the sources, a grade and a basis.
 - `npm run check:contrast`: every visible text element in 16 interface states meets WCAG AA and the 10.5 px floor.
-- `npm run check:visual`: 11 fixed views, Stage 0 thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()`.
+- `npm run check:visual`: 13 fixed views (11 at the 4x default, plus the low Pratzen view at 1x and 10.33x), Stage 0
+  thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()` (its ground, camera, figure and mist checks at 1x, 4x and 10.33x).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified chronology-data-task build (md5 `12d34eed...`, 1,122,358 bytes;
-  re-baselined from the Stage 1B build `5bf48b75...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 2B build (md5 `0c485151...`, 1,149,340 bytes;
+  re-baselined from the chronology build `12d34eed...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All eight suites pass on Stage 0 (`runtime-test.js` since `docs/HANDOFF.md` task 2). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -83,6 +86,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 Stage 0 (trust and baseline) is complete; the source tree and the regression suite are recovered and
 synchronised with it (CHANGELOG.md). Stage 1 (visual language): the specification (`docs/VISUAL_SPEC.md`) and
 its implementation (Part B) are done; colours and type come only from `tokens.js`. Stage 2 Part A (the specification,
-`docs/STAGE2_SPEC.md`) is reviewed; the chronology data task after it (owner decisions 40-46, §M.7-§M.12: explicit anchor
-times with evidence, the phase-start rule documented as the default) is done and awaits review; 2B-2F have not started. The shadow toe
+`docs/STAGE2_SPEC.md`) is reviewed; the chronology data task after it (owner decisions 40-46, §M.7-§M.13) is merged. Stage 2B
+(display height and the relief control, 1x / 4x / 10.33x, default 4x; footprints at 1x; standards at the provisional ratio;
+the going classes from the model slope) is done and awaits review; 2C-2F have not started, and 2C waits on the derived-arrival
+question of §M.13. The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.

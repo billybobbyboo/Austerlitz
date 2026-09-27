@@ -54,6 +54,8 @@ async function interact(page,it,vp){
       /* centre, as the app does, on the place or formation from which the closest, lowest orbit reaches
          furthest into the ground: target on the ground, eye 86 units out along (-0.55,0.62,0.56) */
       var cands=[], bT=null, bD=-1e9;
+      /* the drawn ground: the display height since Stage 2B, the model height on earlier builds */
+      var height=(typeof displayHeight==="function")?displayHeight:window.height;
       FEATURES.forEach(function(ft){ var w=W(ft.p[0],ft.p[1]); cands.push([w[0],height(w[0],w[1]),w[1],"place "+ft.id]); });
       Object.keys(FORMATIONS).forEach(function(id){ var q=posNow(id); if(q){ var w=W(q[0],q[1]); cands.push([w[0],height(w[0],w[1]),w[1],"formation "+id]); } });
       cands.forEach(function(c){ for(var q2=0;q2<72;q2++){ var th=q2/72*Math.PI*2;
@@ -69,6 +71,7 @@ async function interact(page,it,vp){
       /* at the closest zoom and lowest pitch, turn to the bearing where the drawn ground stands
          highest above the eye's orbit height: the move that took the eye into a hill */
       var tg=orbitTarget, phi=Math.PI/2-0.03, r=24, best=-1e9, bt=0;
+      var height=(typeof displayHeight==="function")?displayHeight:window.height;   /* the drawn ground */
       for(var q=0;q<360;q++){ var th=q/360*Math.PI*2;
         var x=tg.x+r*Math.sin(phi)*Math.sin(th), z=tg.z+r*Math.sin(phi)*Math.cos(th), d=height(x,z)-(tg.y+r*Math.cos(phi));
         if(d>best){ best=d; bt=th; } }

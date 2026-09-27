@@ -29,5 +29,12 @@ module.exports = [
     note:"A formation selected while in Watch mode." },
   { name:"hybrid-dimmed", viewport:[1600,900], t:600, presentation:"watch", mode:"hybrid",
     select:["f","c_iv"], aim:{map:[285,289], dir:[-0.7,0.45,0.55], r:95},
-    note:"Hybrid mode with a corps highlighted, so most blocks are drawn at the dimmed scale." }
+    note:"Hybrid mode with a corps highlighted, so most blocks are drawn at the dimmed scale." },
+  /* Stage 2B: every case above runs at the default display factor (4x), its camera re-framed to the drawn ground
+     (app.js placeCamera); these two run the low Pratzen view at true scale and at the model's own scale (the
+     drawing before 2B), with the same thresholds */
+  { name:"pratzen-low-1x", viewport:[1600,900], t:590, presentation:"watch", mode:"terrain", factor:1,
+    aim:{map:[285,289], dir:[-1.0,0.13,0.18], r:70}, note:"The low Pratzen view at true scale: formations drawn as footprints." },
+  { name:"pratzen-low-10x", viewport:[1600,900], t:590, presentation:"watch", mode:"terrain", factor:"model",
+    aim:{map:[285,289], dir:[-1.0,0.13,0.18], r:70}, note:"The low Pratzen view at the model's own vertical scale (GEOREF.EXAG, the drawing before 2B)." }
 ];

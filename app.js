@@ -816,6 +816,7 @@ function makeBlock(f){
       figMesh(K.horse,0xFFFFFF,hp,0.1); figMesh(K.rider,coat,hp,0.1); figMesh(K.riderFixed,0xFFFFFF,hp,0.1);
     }
     ud.stdX = cav ? [0] : stdAt;
+    ud.mounted = cav;   /* the standard's reference height: the mounted figure */
   }
   layoutFigs(1,1);
 
@@ -849,25 +850,39 @@ function flagTexture(nation){
   x.fillStyle="rgba(0,0,0,.12)"; for(var k=0;k<128;k+=4) x.fillRect(k,0,1,64);   /* a little cloth */
   var t=ctexS(c); _flagTex[nation]=t; return t;
 }
-/* standards stand on the drawn ground and upright, like the men who carry them */
+/* standards stand on the drawn ground and upright, like the men who carry them. Stage 2B (decisions 26 and 36):
+   they join the figure scale at a PROVISIONAL pole-top-to-figure ratio of 1.6, a design rule, not a historical
+   value: the shortest pole whose cloth, in today's proportions, clears the heads of the ranks (cloth bottom at
+   least 1.05 figure heights). Provisional (Stage 2): to be replaced by a sourced ratio in Stage 6. The pole, its
+   thickness, the cloth and the hanging offsets scale together; cavalry use the mounted figure's height. */
+var STD_RATIO=1.6, STD_POLE=5.2;
+var _figTop={};
+function figureTop(mounted){
+  var k=mounted?"m":"f"; if(_figTop[k]) return _figTop[k];
+  var K=figKit(), top=0;
+  (mounted?[K.horse,K.rider,K.riderFixed]:[K.infCoat,K.infFixed]).forEach(function(g){ if(g.computeBoundingBox) g.computeBoundingBox(); if(g.boundingBox) top=Math.max(top,g.boundingBox.max.y); });
+  return (_figTop[k]=top);
+}
 var _stQ=new THREE.Quaternion(), _stZ=new THREE.Quaternion(), _stP=new THREE.Vector3(), _stO=new THREE.Vector3(),
     _stS=new THREE.Vector3(), _stM=new THREE.Matrix4(), _stAx=new THREE.Vector3(0,0,1), _stG=new THREE.Vector3();
 function placeStandards(g,sw,tilt){
   var ud=g.userData;
   tilt=tilt||0;
   var tall=(ud.body&&ud.body.children.length&&ud.stdX.length===1&&!ud.skirmish)?1.25:1;
+  var k=STD_RATIO*figureTop(!!ud.mounted)/(STD_POLE*tall);   /* one ratio for every block */
+  ud.stdScale=k; ud.stdTall=tall;
   if(ud.seatPrep) ud.seatPrep(); else g.updateMatrixWorld(true);
   var C=ud.upright?_stQ.copy(ud.upright()):_stQ.identity();
   for(var i=0;i<ud.stdX.length;i++){
     var X=ud.stdX[i]*sw;
     if(ud.seatLocal) ud.seatLocal(X,0,_stG); else _stG.set(X,0,0);
-    _stO.set(0,2.6*tall,0).applyQuaternion(C);
+    _stO.set(0,STD_POLE/2*tall*k,0).applyQuaternion(C);
     _stP.copy(_stG).add(_stO);
-    _stM.compose(_stP,C,_stS.set(1,tall,1)); ud.poles.setMatrixAt(i,_stM);
-    _stO.set(1.25*Math.cos(tilt),4.5*tall-1.25*Math.sin(tilt),0).applyQuaternion(C);
+    _stM.compose(_stP,C,_stS.set(k,tall*k,k)); ud.poles.setMatrixAt(i,_stM);
+    _stO.set(1.25*k*Math.cos(tilt),4.5*tall*k-1.25*k*Math.sin(tilt),0).applyQuaternion(C);
     _stP.copy(_stG).add(_stO);
     _stZ.setFromAxisAngle(_stAx,-tilt).premultiply(C);
-    _stM.compose(_stP,_stZ,_stS.set(1,1,1)); ud.flags.setMatrixAt(i,_stM);
+    _stM.compose(_stP,_stZ,_stS.set(k,k,k)); ud.flags.setMatrixAt(i,_stM);
   }
   ud.poles.instanceMatrix.needsUpdate=true;
   ud.flags.instanceMatrix.needsUpdate=true;
@@ -909,6 +924,100 @@ function smokeTexture(){
 }
 var _padTex=null;
 var PAD_GEO=(function(){ var g=new THREE.PlaneGeometry(1,1); g.rotateX(-Math.PI/2); return g; })();
+
+/* ---- the footprint (Stage 2B, owner decision 34) ----
+   A formation's modelled ground extent, frontage W0 x sw by depth D0 x sd (the block's own layout, at ground
+   scale), draped on the drawn ground in its side's colour. One primitive: true scale draws formations as
+   footprints now, and Stage 5's spatial-confidence display is meant to reuse it. */
+function makeFootprint(hex,opacity){
+  var g=new THREE.PlaneGeometry(1,1,6,4); g.rotateX(-Math.PI/2);
+  var m=new THREE.Mesh(g,new THREE.MeshBasicMaterial({color:lin(hex),transparent:true,opacity:opacity||0.85,
+    depthWrite:false,side:THREE.DoubleSide,fog:false}));
+  m.userData.base=Float32Array.from(g.attributes.position.array); m.renderOrder=4; m.frustumCulled=false;
+  return m;
+}
+function placeFootprint(m,x,z,yaw,w,d,lift){
+  var P=m.geometry.attributes.position, B=m.userData.base, c=Math.cos(yaw), sn=Math.sin(yaw);
+  for(var i=0;i<P.count;i++){
+    var lx=B[i*3]*w, lz=B[i*3+2]*d, wx=x+lx*c+lz*sn, wz=z-lx*sn+lz*c;
+    P.setXYZ(i,wx,groundY(wx,wz)+lift,wz);
+  }
+  P.needsUpdate=true; if(m.geometry.computeBoundingSphere) m.geometry.computeBoundingSphere();
+}
+/* true scale (decision 34): at 1x the relief is honest and every symbol would stand taller than it, so the
+   figure-scale and landscape-scale layers are not drawn; formations are drawn as their footprints */
+function isTrueScale(){ return DISPLAY.factor===1; }
+function landscapeVisible(){ return mode!=="staff" && !isTrueScale(); }
+function syncLandscapeLayers(){
+  var on=landscapeVisible();
+  world.trees.visible=on; world.conifers.visible=on;
+  if(world.scrub) world.scrub.visible=on;
+  world.roofs.visible=on; world.spires.visible=on;
+  if(world.chimneys) world.chimneys.visible=on;
+  world.houses.visible=!isTrueScale();
+}
+/* ---- the display factor (Stage 2B; owner decisions 19 and 35) ----
+   Presentation only: the model, GEOREF.EXAG and every model-unit value are unchanged. Everything built once on
+   the ground is redrawn or re-seated (rescaleWorld in world.js; labels, glyphs and the plateau ring keep their
+   height above the ground); overlays and plans are rebuilt; the camera keeps its height above the ground.
+   Returns the time the change took, in ms. */
+function setDisplayFactor(f){
+  if(!(f>0)||f===DISPLAY.factor) return 0;
+  var t0=performance.now(), hold=[];
+  function keep(v){ if(v) hold.push([v,v.y-displayHeight(v.x,v.z)]); }
+  featureSprites.forEach(function(o){ keep(o.sprite.position); keep(o.world); });
+  eventMarks.forEach(function(k){ keep(k.sp.position); keep(k.ls.position); keep(k.world); keep(k.sp.userData.anchor); keep(k.ls.userData.anchor); });
+  analysisSprites.forEach(function(o){ keep(o.sprite.position); keep(o.world); keep(o.sprite.userData.anchor); });
+  if(plateauLabel){ keep(plateauLabel.position); keep(plateauLabel.userData.anchor); }
+  if(plateauRing&&!plateauRing.userData.seatOff) seatGeometry(plateauRing);
+  keep(orbitTarget); keep(camera.position);
+  DISPLAY.factor=f;
+  rescaleWorld();
+  hold.forEach(function(h){ h[0].y=displayHeight(h[0].x,h[0].z)+h[1]; });
+  if(plateauRing) reseatGeometry(plateauRing);
+  tween=null; camArc=null;
+  camera.lookAt(orbitTarget); clampCamera();
+  rebuildOverlays(curPhase,true);
+  if(planSide){ var ps=planSide, fc=freeCam; planSide=null; freeCam=true; setPlan(ps); freeCam=fc; }
+  Object.keys(units).forEach(function(id){ var r=units[id]; r.seated=false; r.trailU=undefined; });
+  syncLandscapeLayers();
+  paintExaggeration();
+  if(selection) paintDrawer();
+  var md=document.getElementById("modal"); if(md&&md.classList.contains("on")&&md.dataset.sources) openSources();
+  requestRender(4);
+  DISPLAY.lastMs=performance.now()-t0;
+  return DISPLAY.lastMs;
+}
+/* the relief control and its legend line: the factor stated relative to true scale, and the two symbol scales */
+/* A factor change is not offered during playback when it takes over 100 ms on the harness machine. Measured in
+   Stage 2B (tools/stage2/renders-2b.js, headless Chromium, software rendering): 186-421 ms over two runs of nine
+   changes each, so the control is disabled while the battle plays. */
+var EXAG_SLOW_MS=100, EXAG_MEASURED_MS=215;
+function bindExaggeration(){
+  var set=document.getElementById("exag-set"); if(!set) return;
+  set.innerHTML=DISPLAY.settings.map(function(x){
+    return '<button class="t exag-btn" type="button" data-x="'+x+'" aria-pressed="false">'+fmtFactor(x)+'\u00d7'+(x===1?' true':'')+'</button>'; }).join("");
+  set.querySelectorAll(".exag-btn").forEach(function(b){
+    b.addEventListener("click",function(){ if(b.disabled) return; setDisplayFactor(+b.dataset.x); });
+  });
+  paintExaggeration();
+}
+function fmtFactor(f){ return f===1?"1":(Math.round(f*100)/100).toString(); }
+function paintExaggeration(){
+  var f=DISPLAY.factor;
+  document.querySelectorAll(".exag-btn").forEach(function(b){
+    b.setAttribute("aria-pressed",+b.dataset.x===f?"true":"false");
+    b.disabled=playing&&EXAG_MEASURED_MS>EXAG_SLOW_MS;
+    b.title=b.disabled?"Pause to change the relief (a change takes about "+EXAG_MEASURED_MS+" ms)":"";
+  });
+  var el=document.getElementById("exag-line");
+  if(el) el.textContent = isTrueScale()
+    ? "relief at true scale: formations drawn as their footprints"
+    : "relief drawn \u00d7"+fmtFactor(f)+" vertically (1\u00d7 is true scale)";
+  var sy=document.getElementById("exag-symbols");
+  if(sy) sy.textContent = isTrueScale() ? "counters and names at symbol scale"
+    : "symbols: figures and standards about 45\u201370\u00d7 life, buildings and trees about 10\u201315\u00d7";
+}
 function padTexture(){
   if(_padTex) return _padTex;
   var c=document.createElement("canvas"); c.width=c.height=128;
@@ -1025,7 +1134,7 @@ function buildFeatureGlyphs(){
     var w=W(ft.p[0],ft.p[1]);
     var mat=new THREE.SpriteMaterial({transparent:true,depthTest:false,fog:false});
     var sp=new THREE.Sprite(mat);
-    sp.position.set(w[0],height(w[0],w[1])+(ft.kind==="height"?6:3.2),w[1]);
+    sp.position.set(w[0],displayHeight(w[0],w[1])+(ft.kind==="height"?6:3.2),w[1]);
     sp.renderOrder=12;
     asLabel(sp); scene.add(sp);
     featureSprites.push({ft:ft,sprite:sp,world:sp.position.clone(),texKey:""});
@@ -1053,7 +1162,7 @@ function updateTrail(rec,id){
   var pp=legPath(L.a,L.b), N=24, arr=rec.trail.geometry.attributes.position.array, n=0;
   for(var i=0;i<N;i++){
     var q=pointOnPath(pp,L.u*i/(N-1)), w=W(q[0],q[1]);
-    arr[n++]=w[0]; arr[n++]=height(w[0],w[1])+1.4; arr[n++]=w[1];
+    arr[n++]=w[0]; arr[n++]=displayHeight(w[0],w[1])+1.4; arr[n++]=w[1];
   }
   rec.trail.geometry.attributes.position.needsUpdate=true;
   rec.trail.geometry.setDrawRange(0,N);
@@ -1095,7 +1204,7 @@ function disposeGroup(g){
   });
 }
 function groundPts(mapPts,lift){
-  return mapPts.map(function(p){ var w=W(p[0],p[1]); return new THREE.Vector3(w[0],height(w[0],w[1])+lift,w[1]); });
+  return mapPts.map(function(p){ var w=W(p[0],p[1]); return new THREE.Vector3(w[0],displayHeight(w[0],w[1])+lift,w[1]); });
 }
 function addTube(curve,t0,t1,rad,mat){
   var sub=[];
@@ -1160,12 +1269,12 @@ function buildObjective(o){
   c.beginPath(); c.arc(64,64,40,0,Math.PI*2); c.stroke();
   c.beginPath(); c.moveTo(64,14); c.lineTo(64,114); c.moveTo(14,64); c.lineTo(114,64); c.stroke();
   var m=new THREE.SpriteMaterial({map:ctex(cv),transparent:true,opacity:0,depthTest:false,fog:false});
-  var sp=new THREE.Sprite(m); sp.position.set(w[0],height(w[0],w[1])+3.0,w[1]);
+  var sp=new THREE.Sprite(m); sp.position.set(w[0],displayHeight(w[0],w[1])+3.0,w[1]);
   sp.scale.set(4.4,4.4,1); sp.renderOrder=21;
   asLabel(sp); ovAdd(sp); overlayMats.push(m);
   var l=makePlainLabel(o[2],28,TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation,mode==="staff");
   var lm=new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,opacity:0,depthTest:false,fog:false});
-  var ls=new THREE.Sprite(lm); ls.position.set(w[0],height(w[0],w[1])+7.4,w[1]);
+  var ls=new THREE.Sprite(lm); ls.position.set(w[0],displayHeight(w[0],w[1])+7.4,w[1]);
   ls.scale.set(2.7*l.w/l.h,2.7,1); ls.renderOrder=21;
   asLabel(ls); ovAdd(ls); overlayTextMats.push(lm); overlayLabels.push(ls);
 }
@@ -1446,8 +1555,8 @@ function startPhaseTransition(ph,instant,moveCam){
   var camMove=moveCam && !freeCam;
   if(camMove){
     camArc=setupArc(camera.position,orbitTarget,
-      new THREE.Vector3(ph.cam[0],ph.cam[1],ph.cam[2]),
-      new THREE.Vector3(ph.cam[3],ph.cam[4],ph.cam[5]));
+      new THREE.Vector3(reframe(ph.cam)[0],reframe(ph.cam)[1],reframe(ph.cam)[2]),
+      new THREE.Vector3(reframe(ph.cam)[3],reframe(ph.cam)[4],reframe(ph.cam)[5]));
   }
   var dur=(instant||RM)?1:TRANS_MS, t0=performance.now();
   tween=function(now){
@@ -1883,9 +1992,9 @@ function buildPlateauRing(){
   for(var a=0;a<P.length-1;a++) for(var k=0;k<8;k++){
     var mx=P[a][0]+(P[a+1][0]-P[a][0])*k/8, my=P[a][1]+(P[a+1][1]-P[a][1])*k/8;
     var w=W(mx,my);
-    pts.push(w[0],height(w[0],w[1])+1.6,w[1]);
+    pts.push(w[0],displayHeight(w[0],w[1])+1.6,w[1]);
   }
-  var w0=W(P[0][0],P[0][1]); pts.push(w0[0],height(w0[0],w0[1])+1.6,w0[1]);
+  var w0=W(P[0][0],P[0][1]); pts.push(w0[0],displayHeight(w0[0],w0[1])+1.6,w0[1]);
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute(pts,3));
   plateauRing=new THREE.Line(g,new THREE.LineBasicMaterial({color:lin(hexNum(TOKENS.sym.label.dark.annotation)),
@@ -1895,7 +2004,7 @@ function buildPlateauRing(){
   var c=W(298,196);   /* label on the northern part of the outline */
   plateauLabel=new THREE.Sprite(new THREE.SpriteMaterial({transparent:true,opacity:0,
     depthTest:false,fog:false}));
-  plateauLabel.position.set(c[0],height(c[0],c[1])+7.0,c[1]);
+  plateauLabel.position.set(c[0],displayHeight(c[0],c[1])+7.0,c[1]);
   plateauLabel.renderOrder=26;
   asLabel(plateauLabel); eventGroup.add(plateauLabel);
 }
@@ -1947,7 +2056,7 @@ function updateSelRing(){
   var rec=units[selection.id], ud=rec.block.userData;
   var r=Math.max(7,(ud&&ud.W0?ud.W0:8)*0.62*1.25*(ud?ud.sw:1)+3.4);
   var w=W(p[0],p[1]);
-  selRing.position.set(w[0],height(w[0],w[1])+0.7,w[1]);
+  selRing.position.set(w[0],displayHeight(w[0],w[1])+0.7,w[1]);
   selRing.scale.set(r,1,r*0.82);
   selRing.visible=true;
   var sro=0.62-selRing.material.opacity; if(Math.abs(sro)>0.004) settling=true;
@@ -1956,7 +2065,7 @@ function updateSelRing(){
 function buildEventLayer(){
   eventGroup=new THREE.Group(); scene.add(eventGroup);
   EVENTS.forEach(function(e){
-    var w=W(e.p[0],e.p[1]), gy=height(w[0],w[1]);
+    var w=W(e.p[0],e.p[1]), gy=displayHeight(w[0],w[1]);
     var col = TOKENS.sym.label.dark.annotation;          /* the glyph carries the side; the words stay neutral */
     var m=new THREE.SpriteMaterial({map:eventGlyph(e.side,e.kind),transparent:true,
       opacity:0,depthTest:false,fog:false});
@@ -2221,7 +2330,7 @@ function planRibbon(pts,colour,edge,w0,w1,headW,headL,chevron){
       var nx=-tg.z, nz=tg.x, L=Math.sqrt(nx*nx+nz*nz)||1; nx/=L; nz/=L;
       var hw=((w0+(w1-w0)*t)*scale)/2;
       var ax=pt.x+nx*hw, az=pt.z+nz*hw, bx=pt.x-nx*hw, bz=pt.z-nz*hw;
-      v.push(ax,height(ax,az)+lift+yAdd,az, bx,height(bx,bz)+lift+yAdd,bz);
+      v.push(ax,displayHeight(ax,az)+lift+yAdd,az, bx,displayHeight(bx,bz)+lift+yAdd,bz);
     }
     for(var k=0;k<N;k++){ var o=k*2; idx.push(o,o+1,o+2, o+1,o+3,o+2); }
     var g=new THREE.BufferGeometry();
@@ -2238,13 +2347,13 @@ function planRibbon(pts,colour,edge,w0,w1,headW,headL,chevron){
     var tipx=end.x+tg2.x*hl, tipz=end.z+tg2.z*hl;
     var lx=end.x+nx2*hw2, lz=end.z+nz2*hw2;
     var rx=end.x-nx2*hw2, rz=end.z-nz2*hw2;
-    var hv=[tipx,height(tipx,tipz)+lift+yAdd,tipz,
-            lx,height(lx,lz)+lift+yAdd,lz,
-            rx,height(rx,rz)+lift+yAdd,rz];
+    var hv=[tipx,displayHeight(tipx,tipz)+lift+yAdd,tipz,
+            lx,displayHeight(lx,lz)+lift+yAdd,lz,
+            rx,displayHeight(rx,rz)+lift+yAdd,rz];
     var hidx=[0,1,2];
     if(chevron){
       var bx2=end.x-tg2.x*hl*0.38, bz2=end.z-tg2.z*hl*0.38;
-      hv.push(bx2,height(bx2,bz2)+lift+yAdd,bz2);
+      hv.push(bx2,displayHeight(bx2,bz2)+lift+yAdd,bz2);
       hidx=[0,1,3, 0,3,2];
     }
     var hg=new THREE.BufferGeometry();
@@ -2263,21 +2372,21 @@ function planStaging(area,colour,edge){
     new THREE.MeshBasicMaterial({color:lin(colour).clone().multiplyScalar(0.6),transparent:true,opacity:0.13,
       fog:false,depthWrite:false,depthTest:false}));
   mk.rotation.x=-Math.PI/2;
-  mk.position.set(c[0],height(c[0],c[1])+1.2,c[1]);
+  mk.position.set(c[0],displayHeight(c[0],c[1])+1.2,c[1]);
   mk.scale.set(area.rx*0.5,area.ry*0.5,1);
   mk.renderOrder=11; planGroup.add(mk);
   var pts=[];
   for(var a=0;a<=64;a++){
     var th=a/64*Math.PI*2;
     var x=c[0]+Math.cos(th)*area.rx*0.5, z=c[1]+Math.sin(th)*area.ry*0.5;
-    if(a%2===0||a===64) pts.push(x,height(x,z)+1.4,z);
+    if(a%2===0||a===64) pts.push(x,displayHeight(x,z)+1.4,z);
   }
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute(pts,3));
   var ln=new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:lin(edge),transparent:true,
     opacity:0.65,depthTest:false}));
   ln.renderOrder=12; planGroup.add(ln);
-  planLabel(area.n, new THREE.Vector3(c[0],height(c[0],c[1])+3.2,c[1]), colour, 26, 0.86);
+  planLabel(area.n, new THREE.Vector3(c[0],displayHeight(c[0],c[1])+3.2,c[1]), colour, 26, 0.86);
 }
 function planObjective(obj,colour){
   var c=W(obj.p[0],obj.p[1]);
@@ -2289,9 +2398,9 @@ function planObjective(obj,colour){
   x.moveTo(80,12); x.lineTo(80,148); x.moveTo(12,80); x.lineTo(148,80); x.stroke();
   var m=new THREE.SpriteMaterial({map:ctex(cv),transparent:true,opacity:0.95,depthTest:false,fog:false});
   var sp=new THREE.Sprite(m);
-  sp.position.set(c[0],height(c[0],c[1])+4.0,c[1]);
+  sp.position.set(c[0],displayHeight(c[0],c[1])+4.0,c[1]);
   sp.scale.set(7.2,7.2,1); sp.renderOrder=24; asLabel(sp); planGroup.add(sp);
-  planLabel(obj.n,new THREE.Vector3(c[0],height(c[0],c[1])+8.6,c[1]),colour,30,1);
+  planLabel(obj.n,new THREE.Vector3(c[0],displayHeight(c[0],c[1])+8.6,c[1]),colour,30,1);
 }
 function planLabel(text,pos,colour,size,op){   /* annotation text; the ribbon carries the side */
   var l=makePlainLabel(text,size,TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation,mode==="staff");
@@ -2332,8 +2441,8 @@ function updatePlanLinks(){
     var p=show?posNow(pairs[i][0]):null;
     if(!p){ arr[k]=arr[k+1]=arr[k+2]=arr[k+3]=arr[k+4]=arr[k+5]=0; k+=6; continue; }
     var a=W(p[0],p[1]), b=W(pairs[i][1][0],pairs[i][1][1]);
-    arr[k++]=a[0]; arr[k++]=height(a[0],a[1])+2.6; arr[k++]=a[1];
-    arr[k++]=b[0]; arr[k++]=height(b[0],b[1])+2.6; arr[k++]=b[1];
+    arr[k++]=a[0]; arr[k++]=displayHeight(a[0],a[1])+2.6; arr[k++]=a[1];
+    arr[k++]=b[0]; arr[k++]=displayHeight(b[0],b[1])+2.6; arr[k++]=b[1];
     drawn++;
   }
   planLinks.geometry.attributes.position.needsUpdate=true;
@@ -2358,7 +2467,7 @@ function setPlan(side){
         var mid=c.route[Math.max(0,Math.floor(c.route.length/2)-1)];
         var w=W(mid[0],mid[1]);
         planLabel(c.n.split(" - ")[0],
-          new THREE.Vector3(w[0],height(w[0],w[1])+7.0,w[1]),col,34,1);
+          new THREE.Vector3(w[0],displayHeight(w[0],w[1])+7.0,w[1]),col,34,1);
       });
       (P.objectives||[]).forEach(function(o){ planObjective(o,col); });
     });
@@ -2448,11 +2557,7 @@ function setMode(m){
   setGround(goingOn?"going":(staff?"paper":"natural"));
   setContourStyle(staff);
   world.dome.visible=!staff;
-  world.trees.visible=!staff;
-  world.conifers.visible=!staff;
-  if(world.scrub) world.scrub.visible=!staff;
-  world.roofs.visible=!staff;
-  world.spires.visible=!staff;
+  syncLandscapeLayers();
   renderer.shadowMap.enabled=!staff;
   world.water.forEach(function(w2){ if(w2.material.opacity!==undefined) w2.material.opacity=staff?1:0.94; });
 
@@ -2605,7 +2710,10 @@ function declutter(){
   var AROUND=[[0,0],[0,-1.08],[0.62,-0.62],[-0.62,-0.62],[1.1,0],[-1.1,0],[0,1.08],[0.62,0.62],[-0.62,0.62],
               [0,-2.12],[1.1,-1.08],[-1.1,-1.08],[1.1,1.08],[-1.1,1.08],[0,2.12],[2.2,0],[-2.2,0],[0,-3.15],[1.6,-2.12],[-1.6,-2.12],
               /* a wider ring, tried only by a counter that found no place above (Stage 0 left it overlapping) */
-              [2.2,-1.08],[-2.2,-1.08],[2.2,1.08],[-2.2,1.08],[1.6,2.12],[-1.6,2.12],[0,3.15],[3.3,0],[-3.3,0],[0,-4.2]];
+              [2.2,-1.08],[-2.2,-1.08],[2.2,1.08],[-2.2,1.08],[1.6,2.12],[-1.6,2.12],[0,3.15],[3.3,0],[-3.3,0],[0,-4.2],
+              /* Stage 2B: a third ring, again only for a counter that found no place above (flatter relief at the 4x default
+                 packs the cavalry reserve's counters at the screen edge) */
+              [3.3,-1.08],[-3.3,-1.08],[3.3,1.08],[-3.3,1.08],[2.2,-2.12],[-2.2,-2.12],[2.2,2.12],[-2.2,2.12],[4.4,0],[-4.4,0],[0,4.2],[1.1,-3.15],[-1.1,-3.15]];
   var NEAR=[[0,0],[0,-1.15],[0,1.15],[0,-2.3],[0.7,0],[-0.7,0],[0,2.3]];
   var ONLY=[[0,0]];
   function isSel(kind,id){ return !!(selection&&selection.kind===kind&&selection.id===id); }
@@ -2773,7 +2881,7 @@ function updateVisibility(){
   function placeSprite(rec,mapPos,show){
     if(!mapPos||!show){ rec.sprite.visible=false; rec.stem.visible=false; return; }
     var w=W(mapPos[0],mapPos[1]);
-    var gy=height(w[0],w[1]);
+    var gy=displayHeight(w[0],w[1]);
     var d=camera.position.distanceTo(new THREE.Vector3(w[0],gy,w[1]));
     var worldPerPx=2*d*tanH/hpx;
     var h=targetPx*worldPerPx;
@@ -2815,7 +2923,15 @@ function updateVisibility(){
     placeSprite(rec,p,show);
     if(show) refreshSymbol(rec,curPhase);
 
-    rec.block.visible = showBlocks && !!p;
+    var trueScale=isTrueScale();
+    rec.block.visible = showBlocks && !!p && !trueScale;
+    if(showBlocks && p && trueScale){
+      if(!rec.foot){ rec.foot=makeFootprint(hexNum(TOKENS.sym.side[sideOfNation(f.nation)].base)); scene.add(rec.foot); }
+      poseBlock(rec,id,liveStatus(id,curPhase));
+      var fu=rec.block.userData;
+      placeFootprint(rec.foot,wq[0],wq[1],rec.yaw||0,fu.W0*fu.sw,fu.D0*fu.sd,0.25);
+      rec.foot.visible=true;
+    } else if(rec.foot) rec.foot.visible=false;
     var dimmed = highlight && !highlight[id];
     rec.block.scale.setScalar(1.25*(mode==="hybrid"?0.86:1)*(dimmed?0.80:1));
     if(rec.block.visible){ poseBlock(rec,id,liveStatus(id,curPhase)); settleBlock(rec); }
@@ -2837,6 +2953,7 @@ function updateVisibility(){
       if(rec.trail.visible) updateTrail(rec,id);
     }
     if(rec.pad) rec.pad.visible = !!p && rec.block.visible && mode!=="staff";
+    if(trueScale){ if(rec.dust) rec.dust.visible=false; }
     if(rec.dust){
       var mrv=f.track?marchRate(id,clock):null;
       var dusty=!!(mrv&&mrv.moving) && (f.arm==="cav"||f.arm==="art"||f.arm==="mixed")
@@ -2921,7 +3038,7 @@ function pickAt(cx,cy){
     if(!u.sprite.visible && !u.block.visible) return;
     var pp=posNow(id); if(!pp) return;
     var w=W(pp[0],pp[1]);
-    test(new THREE.Vector3(w[0],height(w[0],w[1])+3,w[1]),"f",id);
+    test(new THREE.Vector3(w[0],displayHeight(w[0],w[1])+3,w[1]),"f",id);
     if(u.sprite.visible) test(u.sprite.position,"f",id);
   });
   Object.keys(aggregates).forEach(function(id){
@@ -2968,7 +3085,22 @@ var CAM_CLEAR=1.8, CAM_R=1.6, CAM={clamps:0,violations:0};
 function camGround(x,z){
   var m=groundY(x,z);
   for(var k=0;k<8;k++){ var a=k*Math.PI/4; m=Math.max(m,groundY(x+Math.cos(a)*CAM_R,z+Math.sin(a)*CAM_R)); }
+  m=Math.max(m,formationTop(x,z));
   return (Math.abs(x)<178&&Math.abs(z)<153) ? m : m+1.2;   /* the apron outside the field is coarser */
+}
+/* Stage 2B: the camera floor also clears the men. Inside a drawn formation's footprint (with CAM_R to spare) the
+   "ground" is the top of its figures, so the eye never stands among them; at the 4x default the ground is gentle
+   enough for the lowest orbit to reach a body of men, which at 10.33x a hill usually kept away */
+function formationTop(x,z){
+  var top=-1e9;
+  if(typeof units==="undefined") return top;
+  for(var id in units){ var r=units[id], b=r.block; if(!b||!b.visible) continue; var u=b.userData; if(!u||!u.W0) continue;
+    var sc=b.scale.x||1, dx=x-b.position.x, dz=z-b.position.z, yaw=r.yaw||0, c=Math.cos(yaw), sn=Math.sin(yaw);
+    var lx=dx*c-dz*sn, lz=dx*sn+dz*c;
+    if(Math.abs(lx)<=u.W0*u.sw*sc/2+CAM_R && Math.abs(lz)<=u.D0*u.sd*sc/2+CAM_R)
+      top=Math.max(top,b.position.y+figureTop(!!u.mounted)*sc);
+  }
+  return top;
 }
 function camFloor(x,z){ return camGround(x,z)+CAM_CLEAR; }
 function clampCamera(){
@@ -2993,7 +3125,8 @@ function glide(toPos,toTgt,ms,bulge){
     if(k>=1) tween=null;
   };
 }
-function flyTo(v){
+function flyTo(v){   /* v is an authored preset: re-framed to the drawn ground */
+  v=reframe(v);
   glide(new THREE.Vector3(v[0],v[1],v[2]), new THREE.Vector3(v[3],v[4],v[5]), 1600, 0.12);
 }
 var VANTAGE={
@@ -3163,7 +3296,7 @@ function buildUI(){
   document.getElementById("tour-prev").addEventListener("click",function(){ tourGo(-1); });
   document.getElementById("tour-next").addEventListener("click",function(){ tourGo(1); });
   document.getElementById("tour-exit").addEventListener("click",exitTour);
-  paintKey();
+  paintKey(); bindExaggeration();
   document.getElementById("fr-close").addEventListener("click",function(){ closeFirst("explore"); });
   document.getElementById("fr-watch").addEventListener("click",function(){ closeFirst("watch"); });
   document.getElementById("fr-tour").addEventListener("click",function(){ closeFirst("tour"); });
@@ -3205,7 +3338,7 @@ function buildUI(){
   });
   document.getElementById("drawer-close").addEventListener("click",function(){ select(null,null); });
   document.getElementById("srcbtn").addEventListener("click",function(){ openSources(); });
-  document.getElementById("modal-close").addEventListener("click",function(){ document.getElementById("modal").classList.remove("on"); });
+  document.getElementById("modal-close").addEventListener("click",function(){ var md=document.getElementById("modal"); md.classList.remove("on"); delete md.dataset.sources; });
 
   window.addEventListener("keydown",function(e){
     if(firstRunOpen && e.key!=="Escape" && e.key!=="Tab" && e.key!=="Shift" && e.key!=="`" && !(e.target&&e.target.closest&&e.target.closest("#firstrun"))) closeFirst(null);
@@ -3222,7 +3355,7 @@ function buildUI(){
       if(presentation!=="study"||hideDispatch) showEverything();
       if(chapter) setChapter(null);
       select(null,null);
-      document.getElementById("modal").classList.remove("on");
+      document.getElementById("modal").classList.remove("on"); delete document.getElementById("modal").dataset.sources;
     }
     if(e.key==="h"||e.key==="H"){ setPresentation(presentation==="map"?"study":"map"); }
     if(e.key==="d"||e.key==="D"){ setDispatchVisible(hideDispatch); }
@@ -3267,8 +3400,11 @@ function paintKey(){
     var k=COLOUR_KEY[e.dataset.key]; if(k) e.style.background=k.hex; });
   /* the going classes: the same table the going layer is drawn from (world.js makeGoingPalette) */
   var gk=document.getElementById("goingkey");
+  /* the slope classes are read from the model slope (decision 32): their thresholds in true degrees, provisional */
+  var GT={hard:GOING_TRUE_DEG[0], severe:GOING_TRUE_DEG[1]};
   if(gk) gk.innerHTML=TOKENS.sym.going.map(function(g){
-    return '<div class="k"><span>'+esc(g.label)+'</span><span class="sw" data-going="'+g.key+'" style="background:'+g.hex+'"></span></div>'; }).join("");
+    var lab=g.label+(GT[g.key]!==undefined?" (true slope over "+GT[g.key].toFixed(2)+"\u00b0, provisional)":"");
+    return '<div class="k"><span>'+esc(lab)+'</span><span class="sw" data-going="'+g.key+'" style="background:'+g.hex+'"></span></div>'; }).join("");
   var p=document.getElementById("fr-key"); if(!p) return;
   var K=COLOUR_KEY;
   function sw(k,cls){ return '<i class="'+(cls||"key-sw")+'" data-key="'+k+'" style="background:'+K[k].hex+'" aria-hidden="true"></i>'; }
@@ -3286,7 +3422,7 @@ function openFirstRun(){
   var fr=document.getElementById("firstrun"); if(!fr||fr.hidden) return;
   firstRunOpen=true;
   document.body.classList.add("firstrun-on");
-  var v=VANTAGE.plan;
+  var v=reframe(VANTAGE.plan);
   camArc=null;                                  /* the start-up phase transition keeps its light, not its camera */
   camera.position.set(v[0],v[1],v[2]); orbitTarget.set(v[3],v[4],v[5]); camera.lookAt(orbitTarget);
   clampCamera();
@@ -3379,7 +3515,7 @@ function paintOOB(){
   paintCommand();
 }
 function centreOnMap(mp,radius){
-  var w=W(mp[0],mp[1]), y=height(w[0],w[1]);
+  var w=W(mp[0],mp[1]), y=displayHeight(w[0],w[1]);
   var tgt=new THREE.Vector3(w[0],y,w[1]);
   var pos=tgt.clone().add(new THREE.Vector3(-0.55,0.62,0.56).normalize().multiplyScalar(radius||86));
   glide(pos,tgt,1500,0.10);
@@ -3452,7 +3588,7 @@ function eventTimes(){
 var _pv2=new THREE.Vector3();
 function onScreen(mp,margin){
   var w=W(mp[0],mp[1]);
-  _pv2.set(w[0],height(w[0],w[1])+3,w[1]).project(camera);
+  _pv2.set(w[0],displayHeight(w[0],w[1])+3,w[1]).project(camera);
   if(_pv2.z>1) return false;
   margin=(margin===undefined)?0.16:margin;
   return Math.abs(_pv2.x)<1-margin && Math.abs(_pv2.y)<1-margin;
@@ -4002,7 +4138,8 @@ function updateScaleBar(){
 
 /* numbers in prose that depend on the map's scale are filled in from GEO, never typed */
 function geoText(p){
-  return String(p).replace(/\{EXAG\}/g,GEOREF.EXAG.toFixed(0)).replace(/\{M_PER_UNIT\}/g,(GEOREF.KM_PER_MAP*1000).toFixed(0))
+  /* {EXAG} is the DISPLAY factor relative to true scale (decision 35), never GEOREF.EXAG, the model's own scale */
+  return String(p).replace(/\{EXAG\}/g,fmtFactor(DISPLAY.factor)).replace(/\{M_PER_UNIT\}/g,(GEOREF.KM_PER_MAP*1000).toFixed(0))
     .replace(/\{ROT\}/g,GEOREF.ROT_DEG.toFixed(0)).replace(/\{CONTOUR_M\}/g,(CONTOUR_INTERVAL*GEOREF.V_M_PER_UNIT).toFixed(0));
 }
 function openSources(){
@@ -4016,7 +4153,15 @@ function openSources(){
     '<li><b>A</b> — '+esc(CONF_TEXT.A)+'</li>'+
     '<li><b>B</b> — '+esc(CONF_TEXT.B)+'</li>'+
     '<li><b>C</b> — '+esc(CONF_TEXT.C)+'</li></ul>'+
-    '<h3>Basis</h3><ul class="bul">'+SOURCE_NOTE.refs.map(function(r){return '<li>'+esc(r)+'</li>';}).join('')+'</ul>';
+    '<h3>Basis</h3><ul class="bul">'+SOURCE_NOTE.refs.map(function(r){return '<li>'+esc(r)+'</li>';}).join('')+'</ul>'+
+    /* the display (decisions 19, 32, 35, 36): written by the app, so the guarded SOURCE_NOTE stays as it is */
+    '<h3>How the ground and the symbols are drawn</h3><ul class="bul">'+
+    '<li>'+esc(isTrueScale()?"The relief is drawn at true scale (1\u00d7). Formations are drawn as their modelled footprints; figures, standards, buildings and trees are not drawn."
+      :"The relief is drawn "+fmtFactor(DISPLAY.factor)+" times its true height; 1\u00d7 is true scale. The setting is a view, not the model: heights in metres, sightlines and the going classes do not change with it.")+'</li>'+
+    '<li>'+esc("Symbols stand on the ground at two named scales: figures and standards about 45\u201370 times life size, buildings and trees about 10\u201315 times.")+'</li>'+
+    '<li>'+esc("The standards' pole-to-figure ratio (1.6) is provisional: a design rule chosen so that the colour clears the ranks, not a sourced ratio, to be replaced in Stage 6.")+'</li>'+
+    '<li>'+esc("The going layer's slope classes (hard for guns over "+GOING_TRUE_DEG[0].toFixed(2)+"\u00b0, severe over "+GOING_TRUE_DEG[1].toFixed(2)+"\u00b0 of true slope) are unsourced design values, provisional until a data task sources or renames them.")+'</li></ul>';
+  m.dataset.sources="1";
   m.classList.add("on");
 }
 
@@ -4033,6 +4178,7 @@ function stopPlay(){
   playing=false;
   var b=document.getElementById("play");
   if(b) b.textContent="Play";
+  paintExaggeration();
 }
 function togglePlay(){
   if(playing){ stopPlay(); return; }
@@ -4040,6 +4186,7 @@ function togglePlay(){
   playing=true;
   var b=document.getElementById("play");
   if(b) b.textContent="Pause";
+  paintExaggeration();
 }
 function setSpeed(x){
   speed=x;
@@ -4175,7 +4322,8 @@ var AUSTERLITZ_DEBUG=(function(){
     if(!noRender) renderFrame();
     return settling;
   }
-  function placeCamera(c){
+  function placeCamera(c){   /* an authored camera (a harness case, a preset): re-framed to the drawn ground */
+    c=reframe(c);
     tween=null; camArc=null; freeCam=true;
     camera.position.set(c[0],c[1],c[2]); orbitTarget.set(c[3],c[4],c[5]); camera.lookAt(orbitTarget);
     clampCamera();
@@ -4187,6 +4335,7 @@ var AUSTERLITZ_DEBUG=(function(){
     freeCam=true;
     setPresentation(spec.presentation||"study");
     if(mode!==(spec.mode||"terrain")) setMode(spec.mode||"terrain");
+    setDisplayFactor(spec.factor||DISPLAY.defaultFactor);   /* a case runs at the default display factor unless it names one */
     setClock(spec.t,{instant:true,force:true,camera:false});
     finishTween();
     select(null,null);
@@ -4218,92 +4367,183 @@ var AUSTERLITZ_DEBUG=(function(){
     });
     return {worst:worst,where:where,n:n};
   }
+  /* ---- Stage 2B facts measured at one display factor, compared across factors by stage2bChecks ---- */
+  function factorFacts(fct){
+    var P=W(285,289), S=W(208,365), o={f:fct, s:displayScale()};
+    o.relief=groundY(P[0],P[1])-groundY(S[0],S[1]);                 /* drawn Pratzeberg-Sokolnitz relief */
+    o.analytic=displayHeight(P[0],P[1])-displayHeight(S[0],S[1]);
+    var g=makeGoingPalette(), h=0; for(var q=0;q<g.length;q+=9) h=(h*31+Math.round(g[q]*4095)+7*Math.round(g[q+1]*4095)+13*Math.round(g[q+2]*4095))%2147483647;
+    o.going=h;
+    /* standards: pole top over the figure's height, in the block's own frame */
+    var m=new THREE.Matrix4(), top=new THREE.Vector3(), foot=new THREE.Vector3(), worst=0, n=0;
+    Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u||!u.poles||!u.stdX.length) return;
+      if(u.stdScale===undefined) placeStandards(units[id].block,u.sw||1,u.tilt||0);
+      for(var j=0;j<u.poles.count;j++){ u.poles.getMatrixAt(j,m); top.set(0,STD_POLE/2,0).applyMatrix4(m); foot.set(0,-STD_POLE/2,0).applyMatrix4(m);
+        var r=top.distanceTo(foot)/figureTop(!!u.mounted);   /* the pole's length: it stands upright on a tilted block */ n++; worst=Math.max(worst,Math.abs(r-STD_RATIO)); } });
+    o.std={n:n,worst:worst};
+    /* the words: legend, the sources sheet, a place dossier's relief caption */
+    paintExaggeration();
+    o.legend=(document.getElementById("exag-line").textContent||"")+" | "+(document.getElementById("exag-symbols").textContent||"");
+    openSources(); o.sources=document.getElementById("modal-body").textContent||"";
+    var md=document.getElementById("modal"); md.classList.remove("on"); delete md.dataset.sources;
+    o.dossier=dossierFeature("pratzeberg").textContent||"";
+    /* true scale: nothing at figure or landscape scale drawn; every formation on the field has its footprint */
+    o.landscape=[world.trees,world.conifers,world.scrub,world.houses,world.roofs,world.spires,world.chimneys].filter(function(x){ return x&&x.visible; }).length;
+    var onField=0, feet=0, blocks=0;
+    setMode("terrain"); setClock(PHASES[3].t0+22,{instant:true,force:true,camera:false}); finishTween(); settle(8,true);
+    Object.keys(units).forEach(function(id){ var r=units[id]; if(!r.block||!posNow(id)||knowledgeOf(id)==="unknown") return; onField++;
+      if(r.block.visible) blocks++; if(r.foot&&r.foot.visible) feet++; });
+    o.onField=onField; o.feet=feet; o.blocks=blocks;
+    return o;
+  }
+  function stage2bChecks(B){
+    var out2=[], F=DISPLAY.settings, M=B[GEOREF.EXAG];
+    function ck2(name,ok,detail){ out2.push({name:name,ok:!!ok,detail:detail}); }
+    var relBad=F.filter(function(f){ return Math.abs(B[f].relief-B[f].s*M.relief)>0.01; });
+    ck2("relief: the drawn Pratzeberg-Sokolnitz relief is s times the model's at every factor", !relBad.length,
+      F.map(function(f){ return fmtFactor(f)+"\u00d7 "+B[f].relief.toFixed(3)+" (s x model "+(B[f].s*M.relief).toFixed(3)+"; analytic "+B[f].analytic.toFixed(3)+")"; }).join("; ")+" units");
+    var goBad=F.filter(function(f){ return B[f].going!==M.going; });
+    ck2("going: the going classes (from the model slope) are identical at every factor", !goBad.length,
+      "palette checksum "+F.map(function(f){ return fmtFactor(f)+"\u00d7 "+B[f].going; }).join(", ")+"; thresholds "+GOING_TRUE_DEG.map(function(d){ return d.toFixed(2); }).join(" and ")+" true degrees");
+    var stBad=F.filter(function(f){ return B[f].std.n===0||B[f].std.worst>0.01; });
+    ck2("standards: pole top / figure height is the provisional ratio "+STD_RATIO+" for every block", !stBad.length,
+      F.map(function(f){ return fmtFactor(f)+"\u00d7 "+B[f].std.n+" standards, worst deviation "+B[f].std.worst.toFixed(4); }).join("; "));
+    var lgBad=F.filter(function(f){ var t=B[f].legend; return f===1 ? !/true scale/.test(t)||!/footprints/.test(t)
+      : t.indexOf("\u00d7"+fmtFactor(f))<0||!/true scale/.test(t)||!/45\u201370/.test(t)||!/10\u201315/.test(t); });
+    ck2("legend: states the current factor, relative to true scale, and the two named symbol scales", !lgBad.length,
+      F.map(function(f){ return fmtFactor(f)+"\u00d7: \""+B[f].legend+"\""; }).join("; "));
+    var stale=[], model=GEOREF.EXAG.toFixed(0);
+    F.forEach(function(f){ var o=B[f];
+      if(o.sources.indexOf("exaggerated about "+fmtFactor(f)+" times")<0) stale.push(fmtFactor(f)+"\u00d7 sources sheet does not state it");
+      if(o.dossier.indexOf("\u00d7"+fmtFactor(f)+" vertically")<0) stale.push(fmtFactor(f)+"\u00d7 place dossier does not state it");
+      if(f!==GEOREF.EXAG){ if(o.sources.indexOf("about "+model+" times")>=0) stale.push(fmtFactor(f)+"\u00d7 sources sheet states "+model);
+        if(o.dossier.indexOf("\u00d7"+model+" ")>=0) stale.push(fmtFactor(f)+"\u00d7 dossier states \u00d7"+model);
+        if(o.legend.indexOf("\u00d7"+model)>=0) stale.push(fmtFactor(f)+"\u00d7 legend states \u00d7"+model); } });
+    ck2("no stale exaggeration: the sources sheet, place dossier and legend state the display factor, never GEOREF.EXAG as drawn", !stale.length,
+      stale.length?stale.join("; "):"checked at "+F.map(fmtFactor).join(", ")+" (the model's own "+GEOREF.EXAG+" appears only when it is the display factor)");
+    var t1=B[1];
+    ck2("true scale: at 1\u00d7 no figure, standard, building, tree or scrub is drawn, and every formation on the field has its footprint",
+      t1.landscape===0&&t1.blocks===0&&t1.feet===t1.onField&&t1.onField>0,
+      t1.onField+" formations on the field at "+fmtClock(PHASES[3].t0+22)+", "+t1.feet+" footprints, "+t1.blocks+" figure blocks, "+t1.landscape+" landscape layers drawn");
+    return out2;
+  }
   function selfTest(){
     var out=[], t0=performance.now(), i;
     function ck(name,ok,detail){ out.push({name:name,ok:!!ok,detail:detail}); }
     var save={t:clock,mode:mode,pres:presentation,pos:camera.position.clone(),tgt:orbitTarget.clone(),fc:freeCam};
     closeFirst(null); stopPlay(); if(tourStep>=0) exitTour();
 
-    /* 1. the ground as drawn */
-    var gw=0;
-    for(i=0;i<600;i++){ var ix=(i*37)%(GROUND_NX+1), iz=(i*53)%(GROUND_NZ+1);
-      var gx=-GROUND_W/2+ix*GROUND_W/GROUND_NX, gz=-GROUND_D/2+iz*GROUND_D/GROUND_NZ;
-      gw=Math.max(gw,Math.abs(groundY(gx,gz)-height(gx,gz))); }
-    ck("ground: groundY() returns the drawn terrain at its vertices", gw<1e-3, "largest |groundY - height| at mesh vertices "+gw.toExponential(1));
+    /* 1-5, the mist and the derived readings, at each display factor (Stage 2B: 1x, the default, GEOREF.EXAG).
+       Replaces the single-factor checks of Stage 0; every threshold is the same. */
+    var keepClock, saveFactor=DISPLAY.factor, bySetting={};
+    function atFactor(fct){
+      setDisplayFactor(fct);
+      var tag=" (at "+fmtFactor(fct)+"\u00d7)";
+      function ck(name,ok,detail){ out.push({name:name+tag,ok:!!ok,detail:detail}); }
+      /* 1. the ground as drawn */
+      var gw=0;
+      for(i=0;i<600;i++){ var ix=(i*37)%(GROUND_NX+1), iz=(i*53)%(GROUND_NZ+1);
+        var gx=-GROUND_W/2+ix*GROUND_W/GROUND_NX, gz=-GROUND_D/2+iz*GROUND_D/GROUND_NZ;
+        gw=Math.max(gw,Math.abs(groundY(gx,gz)-displayHeight(gx,gz))); }
+      ck("ground: groundY() returns the drawn terrain, the display height, at its vertices", gw<1e-3, "largest |groundY - displayHeight| at mesh vertices "+gw.toExponential(1));
 
-    /* 2. every fixed view, and every view the app computes when it centres on something */
-    var views=[];
-    Object.keys(VANTAGE).forEach(function(k){ views.push(["vantage "+k,VANTAGE[k]]); });
-    PHASES.forEach(function(ph){ views.push(["phase "+ph.id+" ("+ph.label+")",ph.cam]); });
-    ANALYSIS.forEach(function(a){ views.push(["chapter "+a.id,a.cam]); });
-    TOUR.forEach(function(st,k){ views.push(["tour stop "+(k+1),st.cam]); });
-    views.push(["staff map",[-27,262,41,-27,0,9]]);
-    var fixedMin=1e9, fixedWorst="", below=[];
-    views.forEach(function(v){ var c=v[1], cl=c[1]-camGround(c[0],c[2]);
-      if(cl<fixedMin){ fixedMin=cl; fixedWorst=v[0]; } if(cl<CAM_CLEAR) below.push(v[0]+" ("+cl.toFixed(2)+")"); });
-    var comp=0, compMin=1e9, compWorst="";
-    function centreEye(mp,r){ var w=W(mp[0],mp[1]), y=height(w[0],w[1]), d=new THREE.Vector3(-0.55,0.62,0.56).normalize().multiplyScalar(r);
-      return [w[0]+d.x,y+d.y,w[1]+d.z]; }
-    function chkEye(e,label){ comp++; var cl=e[1]-camGround(e[0],e[2]);
-      if(cl<compMin){ compMin=cl; compWorst=label; } if(cl<CAM_CLEAR) below.push(label+" ("+cl.toFixed(2)+")"); }
-    var keepClock=clock;
-    PHASES.forEach(function(ph){ clock=(ph.t0+ph.t1)/2;
-      Object.keys(FORMATIONS).forEach(function(id){ var q=posNow(id); if(q) chkEye(centreEye(q,86),"centring on "+id+" at "+fmtClock(clock)); }); });
-    clock=keepClock;
-    EVENTS.forEach(function(e){ chkEye(centreEye(e.p,96),"event "+e.id); chkEye(centreEye(e.p,112),"event "+e.id+" (next/previous)"); });
-    FEATURES.forEach(function(f){ chkEye(centreEye(f.p,82),"place "+f.id); });
-    TERRAIN_LINES.forEach(function(tl){ chkEye(centreEye(tl.p[Math.floor(tl.p.length/2)],92),"terrain line "+tl.n); });
-    ck("camera: every fixed and computed view is above the ground", below.length===0,
-      views.length+" fixed views (vantages, phases, chapters, tour stops, staff map), lowest "+fixedMin.toFixed(1)+" units at "+fixedWorst+
-      "; "+comp+" centring views, lowest "+compMin.toFixed(1)+" at "+compWorst+(below.length?"; BELOW THE FLOOR: "+below.slice(0,8).join(", "):""));
+      /* 2. every fixed view, and every view the app computes when it centres on something */
+      var views=[];
+      Object.keys(VANTAGE).forEach(function(k){ views.push(["vantage "+k,VANTAGE[k]]); });
+      PHASES.forEach(function(ph){ views.push(["phase "+ph.id+" ("+ph.label+")",ph.cam]); });
+      ANALYSIS.forEach(function(a){ views.push(["chapter "+a.id,a.cam]); });
+      TOUR.forEach(function(st,k){ views.push(["tour stop "+(k+1),st.cam]); });
+      views.push(["staff map",[-27,262,41,-27,0,9]]);
+      var fixedMin=1e9, fixedWorst="", below=[];
+      views.forEach(function(v){ var c=reframe(v[1]), cl=c[1]-camGround(c[0],c[2]);   /* presets are re-framed at use */
+        if(cl<fixedMin){ fixedMin=cl; fixedWorst=v[0]; } if(cl<CAM_CLEAR) below.push(v[0]+" ("+cl.toFixed(2)+")"); });
+      var comp=0, compMin=1e9, compWorst="";
+      function centreEye(mp,r){ var w=W(mp[0],mp[1]), y=displayHeight(w[0],w[1]), d=new THREE.Vector3(-0.55,0.62,0.56).normalize().multiplyScalar(r);
+        return [w[0]+d.x,y+d.y,w[1]+d.z]; }
+      function chkEye(e,label){ comp++; var cl=e[1]-camGround(e[0],e[2]);
+        if(cl<compMin){ compMin=cl; compWorst=label; } if(cl<CAM_CLEAR) below.push(label+" ("+cl.toFixed(2)+")"); }
+      keepClock=clock;
+      PHASES.forEach(function(ph){ clock=(ph.t0+ph.t1)/2;
+        Object.keys(FORMATIONS).forEach(function(id){ var q=posNow(id); if(q) chkEye(centreEye(q,86),"centring on "+id+" at "+fmtClock(clock)); }); });
+      clock=keepClock;
+      EVENTS.forEach(function(e){ chkEye(centreEye(e.p,96),"event "+e.id); chkEye(centreEye(e.p,112),"event "+e.id+" (next/previous)"); });
+      FEATURES.forEach(function(f){ chkEye(centreEye(f.p,82),"place "+f.id); });
+      TERRAIN_LINES.forEach(function(tl){ chkEye(centreEye(tl.p[Math.floor(tl.p.length/2)],92),"terrain line "+tl.n); });
+      ck("camera: every fixed and computed view is above the ground", below.length===0,
+        views.length+" fixed views (vantages, phases, chapters, tour stops, staff map), lowest "+fixedMin.toFixed(1)+" units at "+fixedWorst+
+        "; "+comp+" centring views, lowest "+compMin.toFixed(1)+" at "+compWorst+(below.length?"; BELOW THE FLOOR: "+below.slice(0,8).join(", "):""));
 
-    /* 3. glides, through the same arc code the application uses */
-    var arcsN=0, arcsMin=1e9, arcsBad=0, c0=CAM.clamps;
-    function arcCheck(a,b,bulge){
-      var A=setupArc(new THREE.Vector3(a[0],a[1],a[2]),new THREE.Vector3(a[3],a[4],a[5]),new THREE.Vector3(b[0],b[1],b[2]),new THREE.Vector3(b[3],b[4],b[5]));
-      for(var k=0;k<=24;k++){ applyArc(A,easeInOut(k/24),bulge); arcsN++;
-        var cl=camera.position.y-camGround(camera.position.x,camera.position.z); if(cl<arcsMin) arcsMin=cl; if(cl<CAM_CLEAR-1e-6) arcsBad++; }
-    }
-    for(i=0;i+1<TOUR.length;i++) arcCheck(TOUR[i].cam,TOUR[i+1].cam,0.12);
-    for(i=0;i+1<PHASES.length;i++) arcCheck(PHASES[i].cam,PHASES[i+1].cam,0.15);
-    for(i=1;i<ANALYSIS.length;i++) arcCheck(ANALYSIS[i-1].cam,ANALYSIS[i].cam,0.12);
-    var vk=Object.keys(VANTAGE);
-    vk.forEach(function(a){ vk.forEach(function(b){ if(a!==b) arcCheck(VANTAGE[a],VANTAGE[b],0.12); }); });
-    ck("camera: glides between tour stops, phases, chapters and vantages stay above the ground", arcsBad===0,
-      arcsN+" positions sampled; lowest clearance "+arcsMin.toFixed(2)+" units; the floor lifted "+(CAM.clamps-c0)+" of them");
+      /* 3. glides, through the same arc code the application uses */
+      var arcsN=0, arcsMin=1e9, arcsBad=0, c0=CAM.clamps;
+      function arcCheck(a,b,bulge){
+        a=reframe(a); b=reframe(b);
+        var A=setupArc(new THREE.Vector3(a[0],a[1],a[2]),new THREE.Vector3(a[3],a[4],a[5]),new THREE.Vector3(b[0],b[1],b[2]),new THREE.Vector3(b[3],b[4],b[5]));
+        for(var k=0;k<=24;k++){ applyArc(A,easeInOut(k/24),bulge); arcsN++;
+          var cl=camera.position.y-camGround(camera.position.x,camera.position.z); if(cl<arcsMin) arcsMin=cl; if(cl<CAM_CLEAR-1e-6) arcsBad++; }
+      }
+      for(i=0;i+1<TOUR.length;i++) arcCheck(TOUR[i].cam,TOUR[i+1].cam,0.12);
+      for(i=0;i+1<PHASES.length;i++) arcCheck(PHASES[i].cam,PHASES[i+1].cam,0.15);
+      for(i=1;i<ANALYSIS.length;i++) arcCheck(ANALYSIS[i-1].cam,ANALYSIS[i].cam,0.12);
+      var vk=Object.keys(VANTAGE);
+      vk.forEach(function(a){ vk.forEach(function(b){ if(a!==b) arcCheck(VANTAGE[a],VANTAGE[b],0.12); }); });
+      ck("camera: glides between tour stops, phases, chapters and vantages stay above the ground", arcsBad===0,
+        arcsN+" positions sampled; lowest clearance "+arcsMin.toFixed(2)+" units; the floor lifted "+(CAM.clamps-c0)+" of them");
 
-    /* 4. orbit extremes, through the placement the pointer handlers use */
-    var orbN=0, orbMin=1e9, orbBad=0;
-    views.forEach(function(v){ var c=v[1]; orbitTarget.set(c[3],c[4],c[5]);
-      for(var th=0;th<24;th++){
-        sph.set(24,Math.PI/2-0.03,th/24*Math.PI*2); orbitPlace(); orbN++;
-        var cl=camera.position.y-camGround(camera.position.x,camera.position.z); if(cl<orbMin) orbMin=cl; if(cl<CAM_CLEAR-1e-6) orbBad++;
-      } });
-    ck("camera: orbiting at the lowest pitch and closest zoom never enters the ground", orbBad===0,
-      orbN+" orbit positions around "+views.length+" targets; lowest clearance "+orbMin.toFixed(2)+" units");
-    renderFrame();
-    ck("camera: no path placed the eye below the floor before a frame", CAM.violations===0, "render-time guard count "+CAM.violations);
+      /* 4. orbit extremes, through the placement the pointer handlers use */
+      var orbN=0, orbMin=1e9, orbBad=0;
+      views.forEach(function(v){ var c=reframe(v[1]); orbitTarget.set(c[3],c[4],c[5]);
+        for(var th=0;th<24;th++){
+          sph.set(24,Math.PI/2-0.03,th/24*Math.PI*2); orbitPlace(); orbN++;
+          var cl=camera.position.y-camGround(camera.position.x,camera.position.z); if(cl<orbMin) orbMin=cl; if(cl<CAM_CLEAR-1e-6) orbBad++;
+        } });
+      ck("camera: orbiting at the lowest pitch and closest zoom never enters the ground", orbBad===0,
+        orbN+" orbit positions around "+views.length+" targets; lowest clearance "+orbMin.toFixed(2)+" units");
+      renderFrame();
+      ck("camera: no path placed the eye below the floor before a frame", CAM.violations===0, "render-time guard count "+CAM.violations);
 
-    /* 5. figures on the drawn ground, across the day, both modes, with and without dimming */
-    freeCam=true;
-    var fw={worst:0,where:"",n:0}, cases=0;
-    var times=PHASES.map(function(ph){ return Math.round((ph.t0+ph.t1)/2); }).concat([PHASES[3].t0+22,PHASES[7].t0+35,PHASES[8].t0+40]);
-    ["terrain","hybrid"].forEach(function(md){
-      if(mode!==md) setMode(md);
-      [null,"c_iv","buxhowden"].forEach(function(hl){
-        times.forEach(function(tm){
-          setClock(tm,{instant:true,force:true,camera:false}); finishTween();
-          select(null,null); if(hl) select("f",hl);
-          settle(28,true);
-          var r=figureError(); cases++; fw.n+=r.n;
-          if(r.worst>fw.worst){ fw.worst=r.worst; fw.where=r.where+" at "+fmtClock(tm)+", "+md+(hl?", "+hl+" highlighted":""); }
+      /* 5. figures on the drawn ground, across the day, both modes, with and without dimming */
+      freeCam=true;
+      var fw={worst:0,where:"",n:0}, cases=0;
+      var times=PHASES.map(function(ph){ return Math.round((ph.t0+ph.t1)/2); }).concat([PHASES[3].t0+22,PHASES[7].t0+35,PHASES[8].t0+40]);
+      ["terrain","hybrid"].forEach(function(md){
+        if(mode!==md) setMode(md);
+        [null,"c_iv","buxhowden"].forEach(function(hl){
+          times.forEach(function(tm){
+            setClock(tm,{instant:true,force:true,camera:false}); finishTween();
+            select(null,null); if(hl) select("f",hl);
+            settle(28,true);
+            var r=figureError(); cases++; fw.n+=r.n;
+            if(r.worst>fw.worst){ fw.worst=r.worst; fw.where=r.where+" at "+fmtClock(tm)+", "+md+(hl?", "+hl+" highlighted":""); }
+          });
         });
       });
-    });
-    select(null,null);
-    ck("figures: every visible man, horse and standard stands on the drawn ground", fw.worst<=0.02,
-      cases+" states (10 phases and 3 marching moments; terrain and hybrid; no highlight and two highlight families), "+
-      fw.n+" figure placements; worst "+fw.worst.toFixed(4)+" units"+(fw.where?" ("+fw.where+")":""));
+      select(null,null);
+      ck("figures: every visible man, horse and standard stands on the drawn ground", fw.worst<=0.02,
+        cases+" states (10 phases and 3 marching moments; terrain and hybrid; no highlight and two highlight families), "+
+        fw.n+" figure placements; worst "+fw.worst.toFixed(4)+" units"+(fw.where?" ("+fw.where+")":""));
+
+      var mistBad=0, mistN=0;
+      world.mist.children.forEach(function(m){ var a=m.geometry.attributes.color.array, pa=m.geometry.attributes.position.array, x0=m.userData.x0, y=m.position.y;
+        for(var q=0;q<pa.length/3;q++){ var x=x0+pa[q*3], z=m.position.z-pa[q*3+1];
+          var g=Math.max(groundY(x-MIST_DRIFT,z),groundY(x,z),groundY(x+MIST_DRIFT,z));
+          if(y-g<0.2){ mistN++; if(a[q*4+3]>0.001) mistBad++; } } });
+      ck("mist: no sheet shows where the ground rises through it", mistBad===0, mistN+" sheet vertices at or below the ground, "+mistBad+" with any alpha");
+      /* 10. derived readings: rendering changes must not move them */
+      keepClock=clock; clock=240;   /* model readings: the same at every display factor */
+      var p04=plateauStrength("al");
+      clock=keepClock;
+      var over=[]; for(var tm=240;tm<=1080;tm+=15){ if(sideOnFieldAt("al",tm)>85400||sideOnFieldAt("fr",tm)>73000) over.push(fmtClock(tm)); }
+      var aud=auditMovement();
+      ck("derived readings unchanged: the plateau at 04:00, both army totals, the movement audit", p04===38700&&!over.length&&!aud.length,
+        "Allied on the plateau at 04:00 = "+p04.toLocaleString()+" (changelog 38,700); "+
+        (over.length?"totals exceed an army at "+over.join(","):"totals within 85,400 and 73,000 at 57 moments")+"; movement audit "+aud.length+" findings");
+
+
+      bySetting[fct]=factorFacts(fct);
+    }
+    DISPLAY.settings.forEach(atFactor);
+    stage2bChecks(bySetting).forEach(function(c){ out.push(c); });
+    setDisplayFactor(saveFactor);
 
     /* 6. the first-run key, the legend, and what is actually drawn */
     var fr=document.getElementById("firstrun"), lg=document.querySelector(".legend"), mism=[];
@@ -4366,22 +4606,6 @@ var AUSTERLITZ_DEBUG=(function(){
       return mx; }
     var se=edge(smokeTexture()), de=edge(dustTexture());
     ck("sprites: smoke and dust fade to nothing at every edge", se===0&&de===0, "largest edge alpha: smoke "+se+", dust "+de+" of 255");
-    var mistBad=0, mistN=0;
-    world.mist.children.forEach(function(m){ var a=m.geometry.attributes.color.array, pa=m.geometry.attributes.position.array, x0=m.userData.x0, y=m.position.y;
-      for(var q=0;q<pa.length/3;q++){ var x=x0+pa[q*3], z=m.position.z-pa[q*3+1];
-        var g=Math.max(groundY(x-MIST_DRIFT,z),groundY(x,z),groundY(x+MIST_DRIFT,z));
-        if(y-g<0.2){ mistN++; if(a[q*4+3]>0.001) mistBad++; } } });
-    ck("mist: no sheet shows where the ground rises through it", mistBad===0, mistN+" sheet vertices at or below the ground, "+mistBad+" with any alpha");
-
-    /* 10. derived readings: rendering changes must not move them */
-    keepClock=clock; clock=240;
-    var p04=plateauStrength("al");
-    clock=keepClock;
-    var over=[]; for(var tm=240;tm<=1080;tm+=15){ if(sideOnFieldAt("al",tm)>85400||sideOnFieldAt("fr",tm)>73000) over.push(fmtClock(tm)); }
-    var aud=auditMovement();
-    ck("derived readings unchanged: the plateau at 04:00, both army totals, the movement audit", p04===38700&&!over.length&&!aud.length,
-      "Allied on the plateau at 04:00 = "+p04.toLocaleString()+" (changelog 38,700); "+
-      (over.length?"totals exceed an army at "+over.join(","):"totals within 85,400 and 73,000 at 57 moments")+"; movement audit "+aud.length+" findings");
 
     /* 11. render on demand */
     setMode("staff"); setClock(600,{instant:true,force:true,camera:false}); finishTween(); settle(40,true);

@@ -11,6 +11,12 @@ echo "BUILD OK: $(cat /tmp/build.out)  bundle $(wc -c < bundle.js) bytes, html $
 # audit.js and runtime-test.js report only in their output; the others also set their exit code.
 FAILS='^(CSS ERRORS|ERRORS|errors|findings): *[1-9]|VIOLATIONS \([1-9]|, [1-9][0-9]* failed$|: [1-9][0-9]* disagreements|^  (!|E|FAIL|✗) |BROKEN|  FLOATS$|: DISAGREE$|<-- outside'
 failed=""
+# Stage 2B height guard: no presentation code reads the model height (height()/hAt()) where the drawn ground is meant,
+# and every call site is classified (docs/STAGE2_SPEC.md §A, §J)
+node tools/stage2/height-sites.js --check > /tmp/out_height-guard.txt 2>&1; code=$?
+echo "=== height guard  exit=$code"
+grep -E "call sites|presentation sites|UNCLASSIFIED" /tmp/out_height-guard.txt | cut -c1-200
+if [ $code -ne 0 ]; then echo "!!! height guard FAILED (full output in /tmp/out_height-guard.txt)"; failed="$failed height-guard"; fi
 for t in css-test.js test.js geo-test.js terrain-test.js audit.js sim-test.js redteam.js runtime-test.js; do
   timeout 600 node $t > /tmp/out_$t.txt 2>&1; code=$?
   echo "=== $t  exit=$code"
@@ -21,4 +27,4 @@ for t in css-test.js test.js geo-test.js terrain-test.js audit.js sim-test.js re
   fi
 done
 if [ -n "$failed" ]; then echo "REGRESSION FAILED:$failed"; exit 1; fi
-echo "ALL 8 SUITES PASSED"
+echo "ALL 8 SUITES PASSED (and the height guard)"

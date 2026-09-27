@@ -38,8 +38,12 @@ for(const f of FILES){
    test:         a runtime check of the drawn scene (compares against the drawn ground). */
 const CLASS={
   "world.js:height":"model","world.js:hAt":"model","world.js:buildGrid":"model","world.js:buildFaceFacts":"model",
-  "world.js:groundY":"presentation","world.js:buildWorld":"presentation","world.js:ribbon":"presentation",
-  "world.js:buildWater > mereLevel":"presentation","world.js:buildSettlements":"presentation","world.js:buildWoods":"presentation",
+  /* Stage 2B: the display height is defined from the model height; the camera presets, authored over the model
+     ground, are re-framed from it; the ground mesh is built on the model surface (land cover, the elevation tint and
+     the going classes are read from it) and then drawn at the display factor by scaleGround */
+  "world.js:displayHeight":"model","world.js:authoredLift":"model","world.js:buildWorld":"model",
+  "world.js:groundY":"presentation","world.js:ribbon":"presentation","world.js:mereLevel":"presentation",
+  "world.js:buildSettlements":"presentation","world.js:buildWoods":"presentation",
   "world.js:buildApron > v":"presentation","world.js:buildMarshSymbols":"presentation","world.js:buildAnalysis":"presentation",
   "world.js:mistSheet":"presentation","world.js:buildMist":"presentation",
   "app.js:makeBlock > seatLocal":"presentation","app.js:spriteFloor":"presentation","app.js:buildFeatureGlyphs":"presentation",
@@ -50,7 +54,8 @@ const CLASS={
   "app.js:settleBlock":"presentation","app.js:updateVisibility > placeSprite":"presentation","app.js:updateVisibility":"presentation",
   "app.js:pickAt":"presentation","app.js:camGround":"presentation","app.js:centreOnMap":"presentation","app.js:onScreen":"presentation",
   "app.js:dossierFeature":"model","app.js:dossierAnalysis":"model",
-  "app.js:figureError":"test","app.js:selfTest":"test","app.js:selfTest > centreEye":"test"
+  "app.js:placeFootprint":"presentation",
+  "app.js:figureError":"test","app.js:selfTest":"test","app.js:selfTest > centreEye":"test","app.js:selfTest > atFactor":"test","app.js:factorFacts":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */
@@ -60,9 +65,10 @@ const byC={}; rows.forEach(r=>{ byC[r.cls]=(byC[r.cls]||0)+1; });
 console.log("height-function call sites: "+rows.length+"  "+JSON.stringify(by)+"  "+JSON.stringify(byC));
 rows.forEach(r=>console.log(r.file+":"+r.line+"\t"+r.cls+"\t"+r.call+"\t"+r.where+"\t"+r.text));
 const un=rows.filter(r=>r.cls==="UNCLASSIFIED"); if(un.length){ console.log("UNCLASSIFIED sites: "+un.length); process.exitCode=1; }
-/* --check (the 2B guard, informational until 2B): presentation sites must not call height() or hAt() */
+/* --check (the 2B guard, run by tools/run-all.sh since Stage 2B): presentation sites must not call height() or hAt(),
+   and every site must be classified (an unclassified site fails above) */
 if(process.argv.includes("--check")){ const bad=rows.filter(r=>r.cls==="presentation"&&(r.call==="height"||r.call==="hAt"));
-  console.log("presentation sites calling height()/hAt(): "+bad.length+(bad.length?" (2B moves them to the display height)":"")); if(bad.length) process.exitCode=1; }
+  console.log("presentation sites calling height()/hAt(): "+bad.length+(bad.length?" (they must read the display height)":"")); if(bad.length) process.exitCode=1; }
 const md=process.argv.indexOf("--md"); if(md>0){
   const L=["| site | call | enclosing function | class |","|---|---|---|---|"];
   rows.forEach(r=>L.push("| `"+r.file+":"+r.line+"` | "+r.call+" | "+r.where+" | "+r.cls+" |")); fs.writeFileSync(process.argv[md+1],L.join("\n")+"\n"); }

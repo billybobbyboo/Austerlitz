@@ -376,6 +376,10 @@ body.pm-map #restore{display:block}
 .lp-row:hover{background:rgba(var(--line-rgb),.06)}
 .lp-row:hover b{color:var(--text)}
 .lp-row[aria-pressed="true"]{border-left-color:var(--accent);background:rgba(var(--accent-rgb),.08)}
+.exag-row{cursor:default}
+.exag-set{display:flex;gap:4px;margin-top:6px}
+.exag-set .t{padding:5px 9px;min-height:30px;font-variant-numeric:tabular-nums}
+.exag-set .t:disabled{opacity:.55;cursor:not-allowed}
 .lp-row[aria-pressed="true"] b{color:var(--text-hi)}
 #layerpop .modes{margin:0}
 

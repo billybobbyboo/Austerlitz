@@ -1,5 +1,103 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Stage 2B: display height, exaggeration, standards (docs/STAGE2_SPEC.md §A, §B, §I.1, §J, §K; decisions 19, 26, 32, 34, 35, 36)
+
+**Status: done; awaits the owner's review. 2C has not started. `austerlitz-command-map.html`: 1,149,340 bytes, md5
+`0c48515152e57c29963b79c4a99d78c9`** (was 1,122,358 bytes, md5 `12d34eed…`). `check:baseline` moves to this build. `check:data`: all 112 data
+declarations identical to the #12/#13 build (only rendering declarations change); its reference is unchanged.
+
+**What changed (presentation only; the model, `GEOREF.EXAG` and every model-unit value are unchanged)**
+- **One display height** (`world.js`): `DISPLAY.factor` (1, 4 by default, or `GEOREF.EXAG` = 10.33, the drawing before
+  2B), `displayScale()` = factor / `GEOREF.EXAG`, `displayY(h)`, `displayHeight(x, z)`. Not a second scale: metres and
+  kilometres still come only from `GEOREF`.
+  - All **52 presentation sites** that read `height()` now read the display height.
+  - The guard is `tools/stage2/height-sites.js --check`, now run by `tools/run-all.sh`: **52 → 0** presentation sites
+    on `height()`/`hAt()`. 39 sites in all: 15 model, 15 presentation, 9 test; an unclassified site fails.
+- **The ground** is built on the model surface, exactly as before, and then drawn at the factor (`scaleGround`):
+  - Land cover, the elevation tint and the going classes are read from the model surface, so they are identical at every
+    factor. The going classes are also identical to Stage 1B.
+  - The drawn normals, baked shade and frost follow the display factor.
+- **A factor change** (`setDisplayFactor`, `rescaleWorld`) re-seats everything built once:
+  - Rebuilt from the display height: the ground, apron, meres (same rule on display heights), contours (the lattice is
+    model data; only its drawn height changes) and mist sheets with their fade. The haze scales.
+  - Keeping their height above the ground: the instanced houses, roofs, chimneys, spires, trees and scrub, the stream
+    ribbons, marsh ticks and terrain-study lines, plus the labels, glyphs and plateau ring.
+  - Rebuilt from scratch: overlays and plans.
+  - The camera keeps its height above the ground.
+  - A change takes **186-421 ms** on the harness machine (two runs of nine changes, `tools/stage2/renders-2b.js`). That
+    is over 100 ms, so **the control is disabled during playback**; its tooltip says why.
+- **Camera presets** (the 29 in the data, `VANTAGE`, the staff view, the harness cases) are unchanged and **re-framed at
+  use** (`reframe`): each point keeps its height above its own ground. Applied in `flyTo`, `startPhaseTransition`, the
+  first view and `placeCamera`.
+- **True scale (decision 34):**
+  - At 1x no figure, standard, building, tree or scrub is drawn.
+  - Every formation is drawn as its **footprint**: frontage W0 x sw by depth D0 x sd, draped on the drawn ground in its
+    side's colour.
+  - The footprint is one primitive (`makeFootprint`, `placeFootprint`), meant for reuse by Stage 5.
+- **Standards (decisions 26 and 36):** at the provisional pole-to-figure ratio **1.6** (the mounted figure for cavalry).
+  The pole, its thickness, the cloth and the offsets are scaled together. It is labelled provisional, a design rule
+  and not a sourced ratio, in the code and on the sources sheet.
+- **Going (decision 32):** classified from the model slope. Thresholds are 9 and 17 degrees on the model's scale, i.e.
+  **0.88 and 1.70 true degrees**. The legend shows each slope class with its true-degree threshold and "provisional";
+  the sources sheet states they are unsourced design values.
+- **Every statement of the exaggeration reads the display factor (decision 35):**
+  - `geoText`'s `{EXAG}` (the sources sheet; `SOURCE_NOTE` itself is unchanged), and the place dossier's relief caption.
+  - A new legend line gives the factor relative to true scale and the two named symbol scales: figures and standards
+    about 45-70x life, buildings and trees about 10-15x.
+  - The sources sheet gains a short section on how the ground and the symbols are drawn.
+- **The control:** "Relief" in the layers panel, buttons 1x (true) / 4x / 10.33x.
+
+**Changes needed to keep Stage 0 thresholds at the 4x default (presentation, none loosened)**
+- **The camera floor clears the men** (`formationTop` in `camGround`). Inside a drawn formation's footprint, the floor
+  is the top of its figures. At 4x the harness case `pratzen-orbit-min` reached a body of infantry at Pratzen village
+  and put the eye among the men, failing the near-black threshold (0.82% against 0.05%). With the new floor it passes
+  (clearance 4.2 units, 0 solid black).
+- **A third declutter ring** of thirteen positions, tried only by a counter that still has no place. At 4x the
+  hybrid-dimmed view left Caffarelli and Walther overlapping at the screen edge; with the third ring the view has 0
+  overlaps. Like the second ring (#12), this is a stopgap in the Stage 0 canvas pass that 2D replaces.
+- **The harness's orbit case** (`tools/visual/harness.js`) now chooses its target and bearing on the **drawn** ground
+  (`displayHeight`; the model height on earlier builds). Before, it placed them on the model height, which is the drawn
+  ground only at 10.33x. `measure.js` compares the mesh with the display height for the same reason.
+
+**Tests**
+- **Height guard (new, in `npm test`):** 0 presentation sites on `height()`/`hAt()`, 0 unclassified.
+- **Self-test, stricter:** 35 checks, up from 13.
+  - Run at **each of 1x, 4x and 10.33x**, with every threshold as before: ground (groundY equals the display height at
+    the vertices), every fixed and computed view, every glide, the lowest orbit, the render-time guard, figures on the
+    ground, mist, derived readings unchanged.
+  - New:
+    - relief: the drawn Pratzeberg-Sokolnitz relief is s times the model's, to 0.01 (1.853 / 7.413 / 19.138 units);
+    - going classes identical at every factor;
+    - standards: pole / figure = 1.6 for all 56 standards, deviation 0.0000;
+    - the legend line;
+    - no stale exaggeration in the sources sheet, place dossier or legend;
+    - true scale: at 1x, 31 formations have 31 footprints, 0 figure blocks and 0 landscape layers.
+- **Harness:** the 11 cases at the 4x default with re-framed cameras, plus the new `pratzen-low-1x` and
+  `pratzen-low-10x`, with the same thresholds. `pratzen-low-10x` reproduces the Stage 1B `pratzen-low` metrics (black
+  0.0251, 1 solid block, luminance 105).
+- `npm test`: ALL 8 SUITES PASSED, and the height guard.
+- `npm run check:data`: all 112 data declarations byte-identical (reference `archive/chronology-12d34eed.html`).
+- `npm run check:chronology`: 0 errors.
+- `npm run check:visual`: STAGE0 all checks passed; 13 cases, 0 overlaps in every one; self-test 35 of 35 PASS.
+- `npm run check:contrast`: 3,148 text elements, 0 below AA, 0 below 10.5 px (the relief control and legend lines included).
+- `npm run check:baseline`: passes on this build.
+- Playback lock, probed in the page: the three relief buttons are enabled when paused, disabled while playing (tooltip
+  "Pause to change the relief (a change takes about 215 ms)"), enabled again on pause.
+
+**Renders:** `docs/stage2-evidence/2b-field.jpg`, `2b-zuran.jpg`, `2b-pratzen.jpg`, `2b-allied.jpg`,
+`2b-overview.jpg`, `2b-pratzen-low.jpg`: 1x, 4x, 10.33x each. Per-render measures (seating, clearance, the drawn relief
+and its screen height) are in `exag-2b.json`.
+
+**Not done, or open**
+- **The paper map (2E):** not changed. It works at every setting and draws the ground at the display factor. Decision
+  19's own cartographic hillshade factor for the paper map is 2E's.
+- **The sources text at 1x** reads "Terrain relief is exaggerated about 1 times". `SOURCE_NOTE` is guarded data and
+  decision 35 keeps it unchanged, so the wording can only change in a data task. The new section of the sources sheet
+  states true scale plainly.
+- **The figures check at 1x is vacuous** (no figures are drawn). The true-scale check covers that setting.
+- **The camera-floor and declutter additions are behaviour** the spec did not ask for. They are recorded here because
+  they were needed to keep the thresholds.
+
 ## 2026-09 · Chronology data task, follow-up on #12 (owner): derived arrivals, creeping moves, settling sources, the counter ring
 
 **Status: report and documentation; one text change in the data (the Sources panel, as asked). `austerlitz-command-map.html`:

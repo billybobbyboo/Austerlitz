@@ -1,8 +1,9 @@
 # Map readability specification (Stage 2, Part A)
 
 **Status: Part A reviewed; the owner's answers are decisions 31-39 (§0, §L). §M (the chronology audit) was reviewed and
-remedy (c) accepted; the chronology data task that followed it (owner decisions 40-46, §M.7-§M.12) changed the timing
-data and the engine, and awaits review. 2B starts only after that review.** Sections A-L below still describe the build
+remedy (c) accepted; the chronology data task that followed it (owner decisions 40-46, §M.7-§M.13) is merged. 2B (display height,
+exaggeration, standards) is implemented as specified in §A, §B, §I.1, §J and §K; what it found is at the end of §K. 2C
+waits on the derived-arrival question of §M.13.** Sections A-L below still describe the build
 they were written against, except §C.1, whose tables were re-run on the new tracks (the earlier ones are §C.4). Written against `main` at `7e03692`
 (`austerlitz-command-map.html` 1,107,799 bytes, md5 `5bf48b75373fe0cf9fc8a32cbeae918c`, confirmed before any work;
 `npm run check:baseline` now checks exactly that build). Line numbers refer to that commit.
@@ -33,6 +34,7 @@ facts), **owner decision** (decisions 1-30), **recommendation** (a proposal for 
 | `chronology.js [--md f] [--evidence] [--times] [--check]` | M | every anchor's engine window against the app's timed statements; verdicts computed from the reviewed statements; `--times` lists each explicit time with its evidence; `--check` is the regression (`npm run check:chronology`) |
 | `chronology-sim.js` | M | the derived readings and suite values under each timing remedy |
 | `delayed-moves.js [build] [--json f] [--shots dir]` | M.11 | what the interface shows while a dated move waits or runs inside its phase (decision 46) |
+| `renders-2b.js [out] [--sheets dir]` | K (2B) | the built page at 1x, 4x and 10.33x from the five vantages and the low Pratzen view, through the app's own control; the time a factor change takes |
 | `derived-legs.js [--md f] [--json f]` | M.13 | every leg with a derived arrival or near its ceiling: speed, status, ground, the slack its next anchor leaves; the options simulated |
 
 ## 0. Owner decisions 18-46 (fixed), and whether the evidence contradicts them
@@ -755,6 +757,27 @@ change; the suite values it moves (§M.3) are re-derived and recorded, never loo
 | **2D** one DOM/SVG layer, legend | `app.js` (layer, layout, occlusion, accessibility, picking, legend), `symbols.js` (canvas counter path removed at the end), `shell.html`, `style.css`, `tools/visual/measure.js`, `thresholds.js` (residual removed), `contrast.js` | 2C (arrow labels are among its elements) | the largest change of the stage: every view's text moves; render-on-demand (the layer updates only when a frame is drawn); picking; the first-run and tour states | per view: overlaps (0), drops, leaders, pass time, node count, text sizes and contrast, unobstructed fraction; parity screenshots against the canvas path before it is removed |
 | **2E** paper map | `app.js` (camera mode, pan and zoom-to-cursor written for reuse in Stage 3, what is drawn), `world.js` (flat village footprints, woods symbology, cartographic hillshade), `style.css`, harness cases | 2B (factor handling), 2C (draped arrows), 2D (compact counters) | the camera code assumes a perspective `fov` in label sizing (`pxPerWorld`, `labelRect`, `fitLabel`); 2D removes most of that; the scale bar | north bearing, scale uniformity, the new cases, the framing, what is hidden |
 | **2F** ground surface | `world.js` (cover from polygons in the shader or a cover texture, draped roads and streams), possibly `assets.js` (no new asset expected) | 2B | cover classification is model (`coverClass`, guarded): the drawing changes, not the classes; performance of a cover texture; the paper map's look | the boundary test, draping, the meres note's status |
+
+**2B, as delivered (fact; `CHANGELOG.md`, Stage 2B).** The design of §A.2 and §A.3 was built as written:
+- one display height, and the ground built on the model surface then drawn at the factor, so land cover and the going
+  classes cannot move with it;
+- a factor change re-seats or rebuilds everything built once;
+- the presets are re-framed at use;
+- footprints at 1x, and standards at 1.6.
+
+The guard went from 52 to 0. A factor change takes 186-421 ms on the harness machine, so the control is disabled during
+playback. Four things were not as the plan assumed:
+1. At the 4x default the lowest orbit can reach a body of men, which at 10.33x a hill usually kept away. The camera floor
+   now also clears the figures inside a drawn formation's footprint. The harness case `pratzen-orbit-min` needed this to
+   stay within the near-black threshold.
+2. The hybrid-dimmed view needed a third declutter ring, like the second (#12). It is a stopgap until 2D.
+3. The harness's orbit case chose its target on the model height, which is the drawn ground only at 10.33x; it now reads
+   the display height.
+4. At 1x the guarded sources text reads "exaggerated about 1 times". Rewording it is a data-task question; the sources
+   sheet's new section states true scale plainly.
+
+The paper map follows the display factor, as the owner asked for 2B. Its own hillshade factor (decision 19) is 2E's.
+Renders: `docs/stage2-evidence/2b-*.jpg`.
 
 ## L. The owner's answers (decisions 31-39)
 

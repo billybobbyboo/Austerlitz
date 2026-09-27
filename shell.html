@@ -118,6 +118,10 @@
       <b>Terrain study</b><i>Named ridges, valleys, escarpments and defiles</i></button>
     <button class="lp-row" id="going" aria-pressed="false">
       <b>Going</b><i>Where guns and formed cavalry could and could not pass</i></button>
+    <div class="lp-row exag-row" role="group" aria-labelledby="exag-lbl">
+      <b id="exag-lbl">Relief</b><i>How tall the ground is drawn; 1&times; is true scale</i>
+      <span class="exag-set" id="exag-set"><!-- one button per DISPLAY.settings, written by bindExaggeration (app.js) --></span>
+    </div>
   </div>
 </div>
 
@@ -150,6 +154,8 @@
   <div class="k"><span>position approximate (B, C) &middot; reported only (?)</span><span class="bdg"><b>B</b><b>?</b></span></div>
   <div class="k an-only"><span>dashed: valley floor, dead ground</span><span class="dsh"></span></div>
   <div class="k"><span>contour interval</span><span class="val" id="contour-val">&asymp; 9 m</span></div>
+  <div class="k"><span id="exag-line"></span></div>
+  <div class="k"><span id="exag-symbols"></span></div>
   <div id="goingkey"><!-- rows written from TOKENS.sym.going by paintKey (app.js), the table the going layer draws --></div>
   <div class="hint">drag to orbit &middot; scroll to zoom &middot; click a counter or a name</div>
   <div class="hint keys"><b>1</b> study <b>2</b> watch <b>3</b> map only &middot; <b>M</b> map mode
