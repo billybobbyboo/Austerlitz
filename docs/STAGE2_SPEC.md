@@ -2,8 +2,9 @@
 
 **Status: Part A reviewed; the owner's answers are decisions 31-39 (§0, §L). §M (the chronology audit) was reviewed and
 remedy (c) accepted; the chronology data task that followed it (owner decisions 40-46, §M.7-§M.13) is merged. 2B (display height,
-exaggeration, standards) is implemented as specified in §A, §B, §I.1, §J and §K; what it found is at the end of §K. 2C
-waits on the derived-arrival question of §M.13.** Sections A-L below still describe the build
+exaggeration, standards) is implemented as specified in §A, §B, §I.1, §J and §K; what it found is at the end of §K. The
+derived-arrival question of §M.13 is decided (the 2C precondition), and 2C (movement arrows) is implemented as §C.1 ("After
+2C"), §C.3, §D, §J and §K describe; it awaits the owner's review.** Sections A-L below still describe the build
 they were written against, except §C.1, whose tables were re-run on the new tracks (the earlier ones are §C.4). Written against `main` at `7e03692`
 (`austerlitz-command-map.html` 1,107,799 bytes, md5 `5bf48b75373fe0cf9fc8a32cbeae918c`, confirmed before any work;
 `npm run check:baseline` now checks exactly that build). Line numbers refer to that commit.
@@ -289,6 +290,28 @@ questions.
 ph* (the **exec** column): a leg whose window overlaps the phase. With the phase-start default, that is the leg into the
 next phase's anchor; with a dated move, it is the dated leg. 2C derives arrows from this reading, and resolves the arrows
 that are not derivable on it one by one under decision 37.
+
+**After 2C (fact; `node tools/stage2/arrow-binding.js`, `binding-test.js`; `docs/stage2-evidence/arrow-binding.md`).** The
+rule above is implemented: every arrow either names the leg, or run of consecutive legs, that the model executes during its
+phase (`leg:[id, from, to]`), and takes its points from the track (`arrowPts`), or carries an interpretive marker
+(`interp:"<kind>: <why>"`). Of the 36: **17 derived** (all derivable on the executed reading, end points equal to the anchors
+exactly), **19 interpretive**: 4 routes (the `axis` arrows of phase 0), 3 objectives, 5 groups, 4 unmodelled, 1 halt and 2
+unsettled, hand-authored and listed by name. Decision 37's three outcomes needed a fourth reading, stated here because it
+is an interpretation of decisions 33 and 46 rather than of 37. **Where the model is right and the arrow was drawn a phase
+late or off its leg, the arrow now follows the model**: it is generated from the leg the model executes in its phase. Where
+that leg is the one the arrow depicted, the arrow moves to the phase that leg runs in (Caffarelli, Suchet and Bagration, to
+phase 4: its timeline dates "Lannes advances along the highway. Bagration counter-attacks." c. 09:30). Otherwise it
+depicts the executed leg in its own phase, under the same label, where the formation's act in that phase still describes it.
+**No track changed**: no arrow gave evidence that a track was wrong, and the sources that would test the doubtful hours are
+unread (§M.9). Arrow by arrow, with was and is, in `CHANGELOG.md` (Stage 2C).
+
+| verdict after 2C | arrows |
+|---|---|
+| derived, same phase | V Column counter-marches north (ph0, lich 0→2); Kienmayer (ph1, 1→2); Friant's approach march (ph1, friant 1→2); Liechtenstein crosses the front (ph2, lich 2→3); Friant retakes Telnitz (ph2, friant 1→2); Saint-Hilaire, Vandamme (ph3, 2→3); Nansouty's cuirassiers (ph5, 5→6); Drouet forms line (ph6, 6→7); Saint-Hilaire wheels south (ph7, 6→7); Vandamme wheels south (ph7, 6→7→8); Przybyszewski's breakout (ph7, 7→8); Vandamme takes the height (ph8, 8→9); Bagration withdraws on Rausnitz (ph8, 7→8→9) |
+| derived, moved to the phase its leg runs in | Caffarelli, Suchet, Bagration (ph5 → ph4, 0→5, 09:30-10:30) |
+| interpretive: objective | II Column → Sokolnitz, III Column → castle (ph2); I Column to the defile (ph8) |
+| interpretive: unsettled (hand-authored, listed) | I Column descends (ph1; the Dokhturov conflict, `dok@1`); Kamensky turns about (ph4; the Kamensky conflict, `kamensky@3`, `kamensky@4`) |
+| interpretive: route, group, unmodelled, halt | as before (§C.4), with "IV Column halted" now the `halt` kind (§C.3) |
 
 ### C.2 Dashed and segmented drawing today (fact)
 
@@ -779,6 +802,22 @@ playback. Four things were not as the plan assumed:
 The paper map follows the display factor, as the owner asked for 2B. Its own hillshade factor (decision 19) is 2E's.
 Renders: `docs/stage2-evidence/2b-*.jpg`.
 
+**2C, as delivered (fact; `CHANGELOG.md`, Stage 2C).**
+- The precondition (§M.13) came first, as its own commit.
+- Arrows, lines, boundaries and the halt bar are flat ribbons draped on the drawn ground (`drapedRibbon`, from
+  `planRibbon`'s ribbon and head). Every vertex stands at its lift above `groundY` at 1x, 4x and 10.33x (self-test,
+  14,911 vertices, worst 0.0000).
+- They are drawn over woods and buildings, as the plan ribbons are. The tubes were hidden by them.
+- Heads: Allied heads are the notched chevron (the notch 0.38 of the head's length, inside the head), French heads the
+  plain triangle. The tip stands on the last point, so a derived arrow's tip is its anchor.
+- One finding about §D. The probe drew its "chevron" with `planRibbon`, whose fourth head point lies 0.38 of the head's
+  length *behind* the base. That makes a kite, not a notch. The plan ribbons keep that head (decision 20). The movement
+  arrows now carry the notched shape decision 20 names; it was re-rendered and measured (`2c-heads.jpg`: 37 px wide and
+  a 12 px notch at the Overview, distinct in greyscale).
+- Dashes come only from `dashRuns`, which only the `axis` arrows and the plan staging outlines use; the static test
+  checks this.
+- `computeLineDistances` was removed from the trail.
+
 ## L. The owner's answers (decisions 31-39)
 
 The nine questions of the first draft are decided; the recommendations they answered are kept in the history of this
@@ -1174,7 +1213,7 @@ attack on the Pratzen" (clock 08:47) no longer shows the army as cut and the Fre
 matches its text ("At about 08:45 they climbed the western slope"). No text states the centre-separation time, the knowledge
 counts or the march rates. **Nothing needed correcting; nothing is flagged.**
 
-### M.13 Arrivals derived from the march-rate ceiling: an open data question, to be decided before 2C
+### M.13 Arrivals derived from the march-rate ceiling: decided (owner, 2C precondition): "(b) where it fits, otherwise (c), flagged"
 
 **The problem (owner, on #12).** For an undated arrival after a dated departure, §M.8 takes "no earlier than the ceiling
 allows" as the arrival. That turns an upper bound into a pace: those formations move at 93-99% of their arm's ceiling.
@@ -1228,3 +1267,39 @@ when Saint-Hilaire reached the Pratzeberg crest, which is the same question as K
 settled from the same passage of Duffy and Thiebault, not by choosing a rate. Also in scope for that data task: the two
 dated legs forced near the ceiling by a following default (`c_gren@8`, `kollo@5`), which are the same pattern. Until it is
 decided, the tracks stay as they are, and 2C must not start.
+
+**Decided (owner, the 2C precondition) and done: the recommendation, "(b) where it fits, otherwise (c), flagged".** The rule
+lives in `anchorList` (`app.js`, guarded) with the table `TACTICAL_RATE` and the statuses `BATTLE_ORDER` beside `SPEED_CEIL`.
+For a leg whose arrival is derived (a dated departure, no dated arrival) and whose formation is in battle order during the leg
+(its status at the anchor's phase is attacking, advancing, counterattack, engaged, charging, holding, supporting, withdrawing or
+repulsed), the arrival is taken at a **tactical rate: infantry and Guard 3.0 km/h, cavalry 6.0, mixed 4.0**; artillery and
+headquarters have none, so their ceilings apply as before. **These rates are design values, unsourced**: said so in the code,
+in the dossier ("arrival derived: tactical rate, a design value") and on the sources sheet ("Arrivals the map derives"). The
+tactical arrival is used only where the leg still fits before its next anchor (no later than the latest arrival that leaves the
+next leg within the ceiling, the next leg's dated departure, or the phase the formation leaves the field); otherwise the arrival
+stays at the ceiling and is flagged (`arrFlag`), by name in `chronology.js` (`CEILING_FLAGGED`; `--check` fails on any other
+derived arrival at the ceiling). The outcome reproduces the simulation, leg by leg (`node tools/stage2/derived-legs.js`):
+
+| leg | before | after | rule |
+|---|---|---|---|
+| vandamme@7, the wheel | 13:00-13:15, 4.76 km/h | **13:00-13:24, 2.97 km/h** | tactical |
+| rivaud@3, follows Soult | 08:45-09:09, 4.92 km/h | **08:45-09:25, 2.96 km/h** | tactical |
+| bag@6, falls back | 11:15-11:25, 4.68 km/h | **11:15-11:31, 2.93 km/h** | tactical |
+| sthilaire@3, the climb | 08:45-09:15 | unchanged | ceiling, flagged: the tactical rate (09:35) does not fit before `sthilaire@4` (latest 09:22) |
+| vandamme@3, the climb | 08:45-09:14 | unchanged | ceiling, flagged: the tactical rate (09:33) does not fit before `vandamme@4` (latest 09:20) |
+| bag@8, withdraws on Rausnitz | 16:30-16:45 | unchanged | ceiling, flagged: its status is *retreating*, not a battle-order status, so the tactical rate does not apply; it would not fit either (16:54 against the latest 16:48) |
+| gqg@6, Napoleon forward | 12:00-12:40 | unchanged | its own `moveMin` (headquarters: no tactical rate) |
+
+The following legs move with them, their departures being the new arrivals: `vandamme@8` 13:24-14:30 (was 13:15), `rivaud@6`
+09:25-11:15 (was 09:09), `bag@7` 11:31-12:45 (was 11:25). **Not changed, and still open:** the two climbs and Bagration's
+withdrawal are a dating question tied to the unresolved Kamensky passage (Duffy 1977; Thiebault's memoirs) and to nightfall;
+they wait on the sources. The dated legs forced near the ceiling, `c_gren@8` and `kollo@5`, and the four unresolved conflicts
+(`dok@1`, `guard_cav@6`, `kamensky@3`, `kamensky@4`) are untouched.
+
+Re-derived (`chronology-sim.js`, the suites): centre separation 09:03 (unchanged); the plateau series (04:00 38,700 / 0 to
+16:00 0 / 18,500) unchanged; the Command view's knowledge counts at every phase midpoint unchanged; event agreement 0
+disagreements, worst 0.82 km (telnitz), unchanged; the march-rate audit 0 legs over a ceiling, fastest by arm unchanged (inf
+4.97, the climbs); the chronology audit 65 consistent, 4 early (the named conflicts), 0 late. Positions change only for
+Vandamme (13:01-14:29, up to 446 m), Rivaud (08:46-11:14, up to 729 m) and Bagration (11:16-12:44, up to 291 m); at the
+harness clocks only Rivaud moves (09:30 158 m, 09:45 135 m, 09:50 128 m, 10:00 113 m). `redteam.js` mean march rates:
+infantry 1.28 → **1.23** km/h, cavalry 0.82: its warning (cavalry not above infantry) **still fires**, kept as a warning.

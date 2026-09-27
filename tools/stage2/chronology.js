@@ -184,6 +184,12 @@ const REVIEW={
    keeping today's timing, when the sources could not be read. Kamensky's drive off the crest (kamensky@4) is dated by the
    same timeline entry as his turn, so it stays with that conflict. */
 const CONFLICTS=["dok@1","guard_cav@6","kamensky@3","kamensky@4"];
+/* 2C precondition (docs/STAGE2_SPEC.md section M.13): derived arrivals that keep the march-rate ceiling, flagged, by name.
+   The two climbs and Bagration's withdrawal are a dating question (the Kamensky passage; nightfall), not a rate one:
+   they wait on the sources. The dated legs forced near the ceiling by a following default stay open too. Any other
+   derived arrival at the ceiling, or one of these moving off it, fails --check. */
+const CEILING_FLAGGED=["sthilaire@3","vandamme@3","bag@8"];
+const FORCED_DATED=["c_gren@8","kollo@5"];
 const TOL=15;
 function judge(kind,from,to,w){
   const s=w[0], e=w[1], hi=to==null?Infinity:to;
@@ -214,7 +220,7 @@ function audit(){
     }); });
   return rows;
 }
-module.exports.audit=audit; module.exports.REVIEW=REVIEW; module.exports.CONFLICTS=CONFLICTS;
+module.exports.audit=audit; module.exports.REVIEW=REVIEW; module.exports.CONFLICTS=CONFLICTS; module.exports.CEILING_FLAGGED=CEILING_FLAGGED;
 if(require.main===module&&!["--evidence","--times","--check"].some(a=>process.argv.includes(a))){
   const rows=audit(), cnt=(f)=>rows.filter(f).length, V=["consistent","early","late","undetermined","minor","nightfall"];
   console.log("movement anchors: "+rows.length);
@@ -273,11 +279,20 @@ if(require.main===module&&process.argv.includes("--check")){
   times().forEach(t=>t.bad.forEach(x=>bad.push(t.key+": "+x)));
   CONFLICTS.forEach(k=>{ if(!rows.find(r=>r.key===k)) bad.push("named conflict "+k+" is not an anchor"); });
   const ids=Object.keys(F).filter(id=>F[id].track);
+  /* derived arrivals: the tactical rate (a design value) or the ceiling, flagged by name */
+  const derived=[]; ids.forEach(id=>X.anchorList(id).forEach(b=>{ if(b.arrDerived) derived.push({key:id+"@"+b.ph,b}); }));
+  derived.forEach(d=>{ const flagged=CEILING_FLAGGED.includes(d.key);
+    if(d.b.arrRule==="ceiling"&&!flagged) bad.push(d.key+": derived arrival at the ceiling, not named in CEILING_FLAGGED");
+    if(d.b.arrRule==="ceiling"&&!d.b.arrFlag) bad.push(d.key+": at the ceiling without a flag");
+    if(flagged&&d.b.arrRule!=="ceiling") bad.push(d.key+": named in CEILING_FLAGGED but its arrival is "+d.b.arrRule); });
+  CEILING_FLAGGED.forEach(k=>{ if(!derived.find(d=>d.key===k)) bad.push("flagged leg "+k+" has no derived arrival"); });
   /* the movement audit, as the suites run it, is checked by audit.js and selfTest; here only the explicit-time rules */
   const early=rows.filter(r=>r.verdict==="early"), late=rows.filter(r=>r.verdict==="late"), withText=rows.filter(r=>r.kind);
   console.log("chronology: "+withText.length+" moves with a timed statement: "+rows.filter(r=>r.kind&&r.verdict==="consistent").length+" consistent, "+
     early.length+" early, "+late.length+" late; unresolved conflicts (decision 42, allowed by name): "+CONFLICTS.map(k=>{ const r=rows.find(q=>q.key===k); return k+" "+(r?r.verdict:"?"); }).join(", ")+
     "; explicit times "+times().length);
+  console.log("derived arrivals: "+derived.map(d=>d.key+" "+hm(d.b.w[0])+"-"+hm(d.b.w[1])+" "+d.b.arrRule+(d.b.arrFlag?" (flagged: "+d.b.arrFlag+")":"")).join("; "));
+  console.log("still open (a dating question, waiting on the sources): the ceiling-flagged legs "+CEILING_FLAGGED.join(", ")+"; the dated legs forced near the ceiling "+FORCED_DATED.join(", ")+"; the unresolved conflicts "+CONFLICTS.join(", "));
   console.log("errors: "+bad.length); bad.forEach(x=>console.log("  ! "+x));
   process.exitCode=bad.length?1:0;
 }

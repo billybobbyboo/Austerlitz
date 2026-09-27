@@ -17,8 +17,8 @@
 | vandamme@3 | fr | 08:45-09:14 (arrival derived) | dep 08:45, grade B | 2108 | Climbs toward Stare Vinohrady, the 'old vineyards' (whether vines stood there in 1805 is not established) (data.js:210) | 08:45-09:00 | start | consistent |  | early | data.js:78; analysis.js:267; analysis.js:31; analysis.js:353 | as Saint-Hilaire: the climb starts c. 08:45; the engine climbs 08:00-08:45 |
 | vandamme@4 | fr | 09:14-09:30 | - | 856 | Consolidates on the Old Vineyards, facing east (data.js:211) |  | - | undetermined |  | undetermined |  | no timed statement about this action |
 | vandamme@6 | fr | 09:30-11:15 | - | 412 | Struck by the Russian Imperial Guard; two battalions broken, and the eagle of the 4th Line taken by the Guard cavalry (data.js:212) | 11:00 onward | during | consistent |  | consistent | data.js:103; analysis.js:295; data.js:564 | the Guard attacks after 11:00 (hour not established); the engine arrives 11:15 |
-| vandamme@7 | fr | 13:00-13:15 (arrival derived) | dep 13:00, grade B | 1190 | Turns south with Saint-Hilaire toward the Allied rear (data.js:214) | 13:00-14:00 | start | consistent |  | early | data.js:113; analysis.js:315; analysis.js:51 | as Saint-Hilaire: the wheel is 13:00-14:00 |
-| vandamme@8 | fr | 13:15-14:30 | - | 3341 | Seizes the ground commanding the causeway between the meres (data.js:215) | 14:30 | arrival | consistent |  | consistent | data.js:120; analysis.js:323 | takes the height above Augezd c. 14:30; the engine arrives 14:30 |
+| vandamme@7 | fr | 13:00-13:24 (arrival derived) | dep 13:00, grade B | 1190 | Turns south with Saint-Hilaire toward the Allied rear (data.js:214) | 13:00-14:00 | start | consistent |  | early | data.js:113; analysis.js:315; analysis.js:51 | as Saint-Hilaire: the wheel is 13:00-14:00 |
+| vandamme@8 | fr | 13:24-14:30 | - | 3341 | Seizes the ground commanding the causeway between the meres (data.js:215) | 14:30 | arrival | consistent |  | consistent | data.js:120; analysis.js:323 | takes the height above Augezd c. 14:30; the engine arrives 14:30 |
 | vandamme@9 | fr | 14:30-17:00 | - | 782 | Holds the Augezd defile (data.js:216) |  | - | nightfall |  | nightfall | data.js:125 | the phase-9 (after dark) position; reached at 17:00 |
 | legrand@1 | fr | 04:00-07:00 | - | 2119 | Contests Telnitz house by house against Kienmayer (data.js:225) | 07:00 | arrival | consistent |  | consistent | data.js:62; analysis.js:244 | Telnitz attacked c. 07:00; the engine's defenders are in place at 07:00 |
 | legrand@2 | fr | 07:00-08:00 | - | 440 | Fights for Sokolnitz village and the castle wall (data.js:226) | 08:00 | arrival | consistent |  | consistent | data.js:70; analysis.js:255 | Sokolnitz attacked c. 08:00 |
@@ -60,8 +60,8 @@
 | walther@5 | fr | 04:00-10:30 | - | 2088 | - |  | - | undetermined |  | undetermined |  | no timed statement about this action |
 | walther@7 | fr | 10:30-12:45 | - | 2101 | - |  | - | undetermined |  | undetermined |  | no timed statement about this action |
 | walther@9 | fr | 12:45-17:00 | - | 792 | - |  | - | nightfall |  | nightfall | data.js:125 | the phase-9 (after dark) position; reached at 17:00 |
-| rivaud@3 | fr | 08:45-09:09 (arrival derived) | dep 08:45, grade C | 1771 | Follows Soult onto the plateau (data.js:364) | 08:45 onward | start | consistent (creep resolved) |  | early | data.js:78 | the act (phase 3) 'Follows Soult onto the plateau'; Soult advances c. 08:45; the engine arrives 08:45 (at least 15 min early) |
-| rivaud@6 | fr | 09:09-11:15 | - | 1302 | - |  | - | undetermined |  | undetermined |  | no timed statement about this action |
+| rivaud@3 | fr | 08:45-09:25 (arrival derived) | dep 08:45, grade C | 1771 | Follows Soult onto the plateau (data.js:364) | 08:45 onward | start | consistent (creep resolved) |  | early | data.js:78 | the act (phase 3) 'Follows Soult onto the plateau'; Soult advances c. 08:45; the engine arrives 08:45 (at least 15 min early) |
+| rivaud@6 | fr | 09:25-11:15 | - | 1302 | - |  | - | undetermined |  | undetermined |  | no timed statement about this action |
 | rivaud@7 | fr | 11:15-12:45 | - | 1253 | - |  | - | undetermined |  | undetermined |  | no timed statement about this action |
 | rivaud@9 | fr | 12:45-17:00 | - | 806 | - |  | - | nightfall |  | nightfall | data.js:125 | the phase-9 (after dark) position; reached at 17:00 |
 | drouet@3 | fr | 04:00-08:45 | - | 1759 | - |  | - | undetermined |  | undetermined |  | no timed statement about this action |
@@ -135,8 +135,8 @@
 | lich@8 | al | 12:45-14:30 | - | 1659 | - |  | - | undetermined |  | undetermined |  | no timed statement about this action |
 | lich@9 | al | 14:30-17:00 | - | 1176 | - |  | - | nightfall |  | nightfall | data.js:125 | the phase-9 (after dark) position; reached at 17:00 |
 | bag@5 | al | 09:30-10:30 | dep 09:30, grade B | 1899 | Attacks along the highway; cannot get past the Santon battery (data.js:578) | 09:30 onward | during | consistent (creep resolved) |  | consistent | data.js:86 | counter-attacks from c. 09:30, inside the engine's 04:00-10:30 |
-| bag@6 | al | 11:15-11:25 (arrival derived) | dep 11:15, grade B | 777 | Falls back fighting as Blasowitz is lost (data.js:580) | 11:15 onward | start | consistent |  | early | data.js:97 | 'begins falling back' c. 11:15; the engine moves 10:30-11:15 (start 45 min early) |
-| bag@7 | al | 11:25-12:45 | - | 721 | - | 11:15 onward | during | consistent |  | consistent | data.js:97 | falling back from 11:15 |
+| bag@6 | al | 11:15-11:31 (arrival derived) | dep 11:15, grade B | 777 | Falls back fighting as Blasowitz is lost (data.js:580) | 11:15 onward | start | consistent |  | early | data.js:97 | 'begins falling back' c. 11:15; the engine moves 10:30-11:15 (start 45 min early) |
+| bag@7 | al | 11:31-12:45 | - | 721 | - | 11:15 onward | during | consistent |  | consistent | data.js:97 | falling back from 11:15 |
 | bag@8 | al | 16:30-16:45 (arrival derived) | dep 16:30, grade C | 1173 | Withdraws on Rausnitz in good order, covering the Allied right (data.js:583) | 16:30 | during | consistent |  | early | data.js:122 | 'withdraws on Rausnitz' c. 16:30; the engine completes the move by 14:30 |
 | bag@9 | al | 16:45-17:00 | - | 1032 | - |  | - | nightfall |  | nightfall | data.js:125 | the phase-9 (after dark) position; reached at 17:00 |
 | rg_inf@5 | al | 04:00-10:30 | - | 1122 | - |  | - | undetermined |  | undetermined |  | no timed statement about this action |

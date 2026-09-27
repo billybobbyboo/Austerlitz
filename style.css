@@ -549,6 +549,16 @@ body.rail-hidden #firstrun{left:50%;width:min(540px,calc(100vw - 32px))}
 body.firstrun-on .dispatch,body.firstrun-on .legend,body.firstrun-on .drawer,
 body.firstrun-on #vsbadge,body.firstrun-on #tourbar,body.firstrun-on #selchip{display:none !important}
 .legend .ar{width:20px;height:5px;border-radius:2px}
+/* Stage 2C: the heads as drawn (decision 20): French the plain triangle, Allied the notched chevron */
+.legend .ar{position:relative;margin-right:8px;border-radius:2px 0 0 2px}
+.legend .ar::after{content:"";position:absolute;right:-8px;top:-3px;width:9px;height:11px;background:inherit;
+  clip-path:polygon(0 0,100% 50%,0 100%)}
+.legend .ar[data-key="arrow-al"]::after{clip-path:polygon(0 0,100% 50%,0 100%,38% 50%)}
+.legend .hlt{width:5px;height:15px;border-radius:1px;margin:0 7px}
+.legend .bnd{width:20px;height:0;border-top:2px solid}
+.legend .stg{width:20px;height:0;border-top:2px dashed var(--text-muted)}
+.legend .plan-only{display:none}
+body.plan-on .legend .plan-only{display:flex}
 
 /* ---------- Stage 0: what is selected, whenever the dossier is not on screen ---------- */
 #selchip{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--tb) + 14px);z-index:27;
