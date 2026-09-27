@@ -4,7 +4,8 @@
    The model is loaded as the suites load it (the generated helpers _clock.js, _derived.js, _events.js and _world_mod.js,
    regenerated first from the live sources by tools/mk-helpers.js and tools/mk-world-mod.js). The engine's leg timing is
    then replaced by a variant, and the readings the suites and the self-test check are recomputed:
-     today   legWindow as it is: a leg ends at the start of its anchor's phase (the check: must reproduce today exactly);
+     today   legWindow as it is (since the chronology data task: the phase-start default, or the anchor's own explicit
+             time; the check: must reproduce the live engine exactly);
      a-end   remedy (a): an anchor is reached at the END of its phase (moveMin keeps "holds, then marches");
      a-mid   remedy (a): an anchor is reached half-way through its phase;
      b-shift remedy (b), sketched: today's rule, and each anchor the audit found early is moved later by its measured

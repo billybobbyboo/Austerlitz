@@ -1,5 +1,133 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Chronology data task (owner decisions 40-46; docs/STAGE2_SPEC.md §M.7-§M.12): explicit anchor times
+
+**Status: done; awaits the owner's review. 2B has not started. `austerlitz-command-map.html`: 1,121,991 bytes, md5
+`e76222b31b3671020c7643b9e6ea1925`** (was 1,107,799 bytes, md5 `5bf48b75…`). `check:baseline` and `check:data` move to this
+build (below).
+
+**What this is, and what it is not.** It makes the model agree with the app's own dated statements. Every time written here
+has basis "app narrative, unsourced": the statements it follows cite no source (§M.6). The result is **internal
+consistency, not verified history**. Implementation choices (the rule for a derived arrival, the audit's tolerance, the
+presentation of a waiting move) are kept apart from historical claims below.
+
+**What changed**
+- **Engine** (`app.js`; guarded): the phase-start rule is documented above `anchorList` and at `FORMATIONS` (`data.js`), and
+  stays the default. A track entry may carry `tm` with `at` (arrival, possibly after the phase opens) and/or `dep`
+  (departure), plus evidence, grade and basis. `anchorList` resolves each anchor's window (`w`, `arr`); `legWindow` returns
+  it; `legAt` passes an anchor when it is reached, not when its phase opens. A range is honoured at its far end, never a
+  midpoint. A departure at or after the phase start without an arrival is reached after `moveMin` or at the arm's
+  march-rate ceiling, whichever is later (**derived**, flagged `arrDerived`, and said so in the dossier). `auditMovement`
+  validates every explicit time (departure before arrival; no overlap with the neighbouring legs; inside the day; none on a
+  first or removal entry). Without `tm` the engine reproduces the Stage 1B timing exactly (checked before any time was
+  written: every reading of `chronology-sim.js` identical).
+- **Data** (`data.js`, `analysis.js`; guarded): explicit times on 20 anchors (table below); events `soult` and `hq-forward`
+  re-dated as intervals; `pratzen-village`'s tolerance reason corrected; the Sources panel's open questions list the three
+  unresolved conflicts.
+- **Presentation** (`app.js`, not guarded): `waitingFor`, `textPhase`, `liveStatus`, `timingNow`, `TIMING_TEXT`, `drawerKey`.
+  While a dated move has not begun inside its phase, the counter, block pose, smoke, selection chip and dossier show the
+  previous anchor's act and status, plus "From hh:mm: <act>"; the dispatch's "What changed" list prefixes such acts with the
+  time; the dossier repaints when a selected formation's move begins or ends inside a phase; a "Timing A/B/C" pill, and in the
+  full dossier the window, the basis, the quoted evidence and the grade's meaning. The counter declutter (`declutter`,
+  Stage 0's fallback) tries a wider ring of ten positions after its twenty; only a counter that found no place before can use
+  them. This was needed because Caffarelli's dated advance puts his counter among the cavalry reserve at 10:00, and
+  `check:visual`'s hybrid-dimmed view then failed with four overlaps (Caffarelli, d'Hautpoul, Walther, Drouet). With the
+  ring, the view has no overlap at all, the Stage 0 Walther / Nansouty residual included.
+- **Thresholds, tightened**: `tools/visual/thresholds.js` no longer allows the Walther / Nansouty overlap (fixed; the
+  file's own rule is to remove an entry when fixed). `check:visual` now allows no residual.
+- **Tools**: `tools/stage2/chronology.js` now computes its verdicts. REVIEW records what each statement dates (start,
+  arrival, during, span), and `--times` / `--check` are new; `npm run check:chronology` is the regression, also run in CI.
+  `arrow-binding.js` scores a third reading, the leg the model executes during the phase. New
+  `delayed-moves.js` probes the interface. `model.js` loads `KM_PER_MAP` and `SPEED_CEIL`. `redteam.js` has a new
+  section: five invalid timings must each be rejected, and a valid delayed move must hold, then move.
+- **Docs**: `docs/STAGE2_SPEC.md`: decisions 40-46 (§0, §M.7), what was done (§M.8-§M.12), §C.1 re-run on the new tracks
+  with the 2C rule, the earlier tables kept as §C.4 (dated). Evidence regenerated: `chronology.md`, `arrow-binding.md`;
+  new: `arrow-binding-before-chronology.md`, `delayed-moves.md`, two screenshots.
+- **Baselines**: `check:baseline` checks this build; `check:data` compares against `archive/chronology-e76222b3.html` (this
+  build, frozen), because the data changed on purpose. Its report against the Stage 0 reference is recorded below.
+
+**Guarded declarations changed** (`check:data` against `archive/stage0-c09c4b23.html`; exactly these 7):
+- `FORMATIONS`: `tm` on 20 anchors (below). No position, strength, route, status, act or order-of-battle entry changed.
+- `EVENTS`: `soult` t 525 → [525, 555]; `hq-forward` t 720 → [720, 760]; `pratzen-village` tolWhy text only (time and 1.5 km
+  tolerance unchanged).
+- `SOURCE_NOTE`: one sentence added to the open questions, on the three unresolved conflicts.
+- `anchorList`, `legWindow`, `legAt`, `auditMovement`: the engine extension and its validation (above).
+Unchanged: `OVERLAYS` (2C's), `PHASES`, `FEATURES`, `ANALYSIS`, `TOUR`, `ACTS`, `COMMAND`, `PLANS`, all geography and every
+derived-reading function.
+
+**The anchors** (was = Stage 1B window; evidence file:line and full reasoning in §M.8; grade B = the app's "c." hour,
+C = inferred; basis for all: app narrative, unsourced):
+
+| anchor | was | is | time written | grade |
+|---|---|---|---|---|
+| gqg@6 Napoleon to Stare Vinohrady | 10:35-11:15 | 12:00-12:40 | dep 12:00 (arrival from its 40-min march) | B |
+| sthilaire@3, vandamme@3 the climb | 08:00-08:45 | 08:45-09:15, 08:45-09:14 | dep 08:45 (arrival derived) | B |
+| rivaud@3 follows Soult | 04:00-08:45 | 08:45-09:09 | dep 08:45 (arrival derived) | C |
+| sthilaire@7, guard_inf@7, c_gren@7 the wheel | 11:15-12:45 | 13:00-14:00 | dep 13:00, at 14:00 | B |
+| vandamme@7 the wheel | 11:15-12:45 | 13:00-13:15 | dep 13:00 (arrival derived; 14:00 would break the ceiling to Augezd by 14:30) | B |
+| legrand@7 "as the trap closes" | 09:30-12:45 | 13:00-14:00 | dep 13:00, at 14:00 | C |
+| legrand@8 retakes Telnitz for good | 12:45-14:30 | 14:00-15:00 | at 15:00 | C |
+| friant@2 retakes Telnitz, falls back | 07:00-08:00 | 07:00-08:30 | at 08:30 | C |
+| kollo@4 Jurczek attacks the summit | 08:45-09:30 | 08:45-10:15 | at 10:15 | B |
+| lang@4 Langeron's reinforcements | 08:00-09:30 | 08:00-10:30 | at 10:30 | C |
+| bag@6 begins falling back | 10:30-11:15 | 11:15-11:25 | dep 11:15 (arrival derived) | B |
+| bag@8 withdraws on Rausnitz | 12:45-14:30 | 16:30-16:45 | dep 16:30 (arrival derived) | C |
+| kienmayer@8, dok@8 over the neck under fire | 12:45-14:30 | 14:30-15:00 | dep 14:30, at 15:00 | C |
+| caffarelli@5, suchet@5 Lannes advances; bag@5 counter-attacks | 04:00-10:30 | 09:30-10:30 | dep 09:30 | B |
+
+Not given a time: `friant@1` (re-reviewed: §M matched its statement to the wrong anchor; the statement dates the arrival at the
+Goldbach, `friant@2`; the waypoint's own move is undated); and the four anchors of the unresolved conflicts.
+
+**The three conflicts (decision 42): not settled.** Duffy (1977) and Smith (1998) are not in the repository, and this
+environment's network policy blocked every host tried (archive.org: HTTP 403 from the proxy; Google Books, HathiTrust, Open
+Library, Gallica, Wikipedia: no connection). No web summary or AI output was used. Dokhturov's descent (`dok@1`), Kamensky's
+turn (`kamensky@3`, and `kamensky@4`, dated by the same timeline entry) and Rapp's counter-charge (`guard_cav@6`) keep
+today's timing, are listed in the Sources panel's open questions, and are the only early moves the regression allows, by name.
+
+**Creeping moves (decision 45).** Given a departure: Caffarelli, Suchet, Bagration (c. 09:30), Rivaud (after 08:45).
+**Undated, unchanged:** Kellermann, Nansouty, d'Hautpoul (phase 5), the Allied headquarters (phase 3), the Russian Guard
+cavalry (phase 6).
+
+**Derived values that moved** (old → new; re-derived, no threshold loosened; details §M.12):
+- centre separation first reported 08:26 → **09:03** (last 14:14 → 14:52);
+- plateau at 08:45, Allied / French 23,550 / 13,300 (cut) → 23,550 / **0** (not cut); at 14:00, 0 / 18,500 → 0 / **30,900**;
+  every other mark, the 04:00 figure (38,700) and tour stop 4's figures (38,700, 19,300 first at 07:07) unchanged;
+- event agreement: still 0 disagreements, worst 0.82 km; `soult` 0.44 → 0.20 km, `pratzen-village` 1.14 → 1.21 km (1.5
+  allowed, unchanged), `hq-forward` 0.32 → 0.00 km;
+- fastest leg by arm: infantry 3.41 → 4.97 km/h, hq 7.15 → 7.62, mixed 1.11 → 3.87 (ceilings 5, 12, 8: no leg over);
+- `redteam.js` mean march rates, infantry / cavalry 0.77 / 0.82 → 1.28 / 0.82; its **warning** "cavalry mean rate is not
+  above infantry" now fires (a warning, not a finding: the dated moves are faster, the undated cavalry moves still creep);
+- Command view counts (seen / uncertain / unknown): French eyes, phases 5-8, 2/2/9, 4/0/9, 9/0/4, 7/0/6 → 4/2/7, 6/0/7,
+  7/0/6, 8/0/5; Allied eyes, phases 2-3, 3/1/14, 5/1/12 → 4/1/13, 6/1/11;
+- harness clocks 08:20-10:00: 6 to 8 formations moved, up to 1,656 m (Rivaud, 08:20);
+- chronology audit: 22 early (70 with a timed statement) → **4 early** (69; the unresolved conflicts), 0 late;
+- arrows derivable on the leg executed in their phase: 1 → 4.
+
+**Expected values that changed** (each a recorded consequence of this data change): `check:baseline` md5 and size;
+`check:data`'s reference build; `tools/visual/thresholds.js` KNOWN emptied (tighter). No suite's assertion was edited;
+`sim-test.js`'s event rule (1 km, 2 km cap) and `selfTest`'s 38,700 are unchanged.
+
+**Text.** Searched narrative, tour, analysis, dispatch, command and dossier text for derived times or figures: tour stop
+4's "by 07:15" still holds; tour stop 8 and the chapter "The destruction of the Allied left" (both at 14:40) now fall inside
+the separation interval (before, the reading had stopped at 14:14); nothing needed correcting, nothing is flagged.
+
+**Tests** (on this build)
+- `npm run build`: 1,121,991 bytes, md5 `e76222b31b3671020c7643b9e6ea1925`.
+- `npm test`: ALL 8 SUITES PASSED (`redteam.js`: 0 findings, 1 warning, the march-rate one above; `sim-test.js`: 0 errors, 0
+  disagreements).
+- `npm run check:data` against the Stage 0 reference: 7 DATA declarations changed, exactly those listed; against the new
+  reference: all identical.
+- `npm run check:chronology`: 69 moves with a timed statement, 65 consistent, 4 early (the named conflicts), 0 late; 20
+  explicit times, every evidence quote found; 0 errors.
+- `npm run check:visual`: STAGE0: all checks passed; 11 views, 0 overlapping labels or counters in every view (no residual
+  allowed); `selfTest` 13 of 13 PASS, "derived readings unchanged" included (38,700 at 04:00; movement audit 0 findings).
+- `npm run check:contrast`: 3,103 text elements, 70 pairs, 0 below AA, 0 below 10.5 px.
+- `npm run check:baseline`: passes on this build.
+- `tools/stage2/delayed-moves.js`: eight states, before and after (`docs/stage2-evidence/delayed-moves.md`).
+
+**Not verified:** the literature behind every time written (all "app narrative, unsourced"); the three conflicts (sources
+unreadable here); the derived arrivals (a model rule, not evidence); the undated creeping moves.
+
 ## 2026-09 · Stage 2A continued: owner decisions 31-39 and the chronology audit (docs/STAGE2_SPEC.md §M); no change to the build
 
 **Status: §M awaits the owner's review; 2B has not started. `austerlitz-command-map.html` unchanged: 1,107,799 bytes, md5

@@ -264,12 +264,12 @@ var EVENTS = [
  p:[177,134], forms:["gqg","c_iv","sthilaire","vandamme"], cf:"B", claim:"est",
  why:"Asked how long he needed, Soult is reported to have answered under twenty minutes, and Napoleon to have waited a further quarter of an hour to let more of the enemy get down into the valley. A memoir anecdote."},
 
-{id:"soult", t:525, n:"Saint-Hilaire and Vandamme climb the slope", side:"fr", kind:"attack",
+{id:"soult", t:[525,555], n:"Saint-Hilaire and Vandamme climb the slope", side:"fr", kind:"attack",
  p:[262,262], forms:["sthilaire","vandamme"], cf:"A", claim:"fact",
  why:"Two divisions that had been standing in fog, invisible from the crest, arrive on the plateau the Allies have just vacated."},
 
 {id:"pratzen-village", t:540, n:"Thiebault's brigade clears Pratzen village", side:"fr", kind:"capture",
- p:[276,243], forms:["sthilaire"], tolKm:1.5, tolWhy:"Thiebault\u2019s brigade is not plotted separately: the marker is the village it cleared, and the division\u2019s plotted centre lies between the village and the Pratzeberg", cf:"B", claim:"est",
+ p:[276,243], forms:["sthilaire"], tolKm:1.5, tolWhy:"Thiebault\u2019s brigade is not plotted separately: the marker is the village it cleared, and at about 09:00 the division\u2019s plotted centre is still climbing the western slope below it", cf:"B", claim:"est",
  why:"Opens the way to the Pratzeberg. The hour is documented; the exact sequence within it is not."},
 
 {id:"face-about", t:555, n:"Kutuzov orders the 4th Column to face about", side:"al", kind:"decision",
@@ -300,7 +300,7 @@ var EVENTS = [
  p:[308,210], forms:["guard_cav","guard_inf","drouet","rg_cav"], cf:"B", claim:"est",
  why:"Prince Repnin is taken prisoner. With the reserve spent, nothing remains to retake the plateau."},
 
-{id:"hq-forward", t:720, n:"Napoleon moves forward to Stare Vinohrady", side:"fr", kind:"decision",
+{id:"hq-forward", t:[720,760], n:"Napoleon moves forward to Stare Vinohrady", side:"fr", kind:"decision",
  p:[309,207], forms:["gqg"], cf:"B", claim:"est",
  why:"From Stare Vinohrady he directs the centre while the Allied left is still fighting westward on the Goldbach with its rear open. Later he moves again, to the chapel of St Anthony above Augezd, from which he watches the end."},
 
