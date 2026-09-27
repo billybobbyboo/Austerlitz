@@ -9,10 +9,12 @@
 
   /* ---- the rendered ground: the triangles of the terrain mesh as drawn ---- */
   var SW=360/280, SH=310/240;
+  /* the ground the app means to draw: the display height since Stage 2B, the model height before it */
+  function drawnH(x,z){ return (typeof displayHeight==="function")?displayHeight(x,z):height(x,z); }
   function rg(x,z){
     var P=groundMesh.geometry.attributes.position.array;
     var fx=(x+180)/SW, fz=(z+155)/SH;
-    if(fx<0||fz<0||fx>280||fz>240) return height(x,z);
+    if(fx<0||fz<0||fx>280||fz>240) return drawnH(x,z);
     var ix=Math.min(279,Math.floor(fx)), iz=Math.min(239,Math.floor(fz)), u=fx-ix, v=fz-iz;
     var o0=(iz*280+ix)*18, o1=o0+9;
     var ha=P[o0+1], hb=P[o0+4], hd=P[o0+7], hc=P[o1+4];
@@ -27,7 +29,7 @@
     var worst=0;
     for(var i=0;i<200;i++){
       var ix=(i*37)%280, iz=(i*53)%240, x=-180+ix*SW, z=-155+iz*SH;
-      worst=Math.max(worst,Math.abs(rg(x,z)-height(x,z)));
+      worst=Math.max(worst,Math.abs(rg(x,z)-drawnH(x,z)));
     }
     return worst;
   }
@@ -42,6 +44,7 @@
   }
   function apply(spec){
     var dbg=D();
+    if(spec.factor==="model") spec=Object.assign({},spec,{factor:GEOREF.EXAG});
     if(dbg&&dbg.applyCase) return dbg.applyCase(spec, aimOf);
     /* pre-Stage-0 build: set the same state through its globals */
     var fr=document.getElementById("firstrun"); if(fr) fr.hidden=true;
