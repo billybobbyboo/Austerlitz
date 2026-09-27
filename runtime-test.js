@@ -379,13 +379,22 @@ try{
   if(new Set(grades).size<4) throw new Error("the grade barely changes across the day");
   console.log("post chain through "+PHASES.length+" hours, bloom "+Math.min(...grades)+"-"+Math.max(...grades)+" OK");
 
-  /* every text sprite must sit on the ungraded label layer */
-  let worldCount=0,label=0;
-  scene.traverse(o=>{ if(o.material&&o.material.map&&o.scale&&o.renderOrder>=10) label++; });
-  select("f","sthilaire"); updateVisibility();
-  if(!units.sthilaire.sprite.layers) throw new Error("counter has no layer");
-  select(null,null);
-  console.log("label layer separation in place OK");
+  /* the map symbols sit on the ungraded label layer, and the counters and all map text are the map layer's. Before Stage 2D
+     this checked that the counter sprite had a layer; the counter and every text sprite are retired, so the check now covers
+     both halves of the separation: every sprite drawn over the ground (render order 10 and up: event glyphs, objective and
+     plan markers) on LAYER_LABEL, and the selected formation's counter collected by the map layer */
+  let onLabel=0; const offLabel=[];
+  setPlan("al");
+  scene.traverse(o=>{ if(o instanceof THREE.Sprite&&o.renderOrder>=10){ if(o.layers.mask===(1<<LAYER_LABEL)) onLabel++; else offLabel.push(o.renderOrder); } });
+  setPlan(planSide);
+  if(!onLabel||offLabel.length) throw new Error("map symbols off the label layer (render orders "+offLabel.join(",")+"), "+onLabel+" on it");
+  setMode("staff"); updateVisibility();
+  const sid=lodEch==="corps"?"c_iv":"sthilaire";   /* a counter of the echelon the level of detail draws */
+  select("f",sid); updateVisibility(); mlLayout();
+  const ci=ML.items["c:"+sid];
+  if(!ci||ci.frame!==ML.frame) throw new Error("the selected formation's counter is not in the map layer");
+  select(null,null); setMode("terrain");
+  console.log("label layer: "+onLabel+" map symbols on it; the counters and map text in the map layer OK");
 
   /* the apron must face upward, or it is culled and the map edge shows */
   const an=world.apron.geometry.attributes.normal.array;

@@ -1,0 +1,93 @@
+{
+ "pratzen-low": {
+  "factor": 4,
+  "anchors": 1076,
+  "layerAnchors": 26,
+  "agree": 1076,
+  "rayOccluded": 0,
+  "marchOccluded": 0,
+  "marchMs": 8.4,
+  "rayMs": 8240,
+  "marchMsPerAnchor": 0.0078,
+  "rayMsPerAnchor": 7.66,
+  "disagree": []
+ },
+ "pratzen-orbit-min": {
+  "factor": 4,
+  "anchors": 1094,
+  "layerAnchors": 44,
+  "agree": 1094,
+  "rayOccluded": 0,
+  "marchOccluded": 0,
+  "marchMs": 3.1,
+  "rayMs": 8350,
+  "marchMsPerAnchor": 0.0028,
+  "rayMsPerAnchor": 7.63,
+  "disagree": []
+ },
+ "pratzen-low-1x": {
+  "factor": 1,
+  "anchors": 1078,
+  "layerAnchors": 28,
+  "agree": 1078,
+  "rayOccluded": 0,
+  "marchOccluded": 0,
+  "marchMs": 0.1,
+  "rayMs": 8308,
+  "marchMsPerAnchor": 0.0001,
+  "rayMsPerAnchor": 7.71,
+  "disagree": []
+ },
+ "pratzen-low-10x": {
+  "factor": 10.32642489706367,
+  "anchors": 1071,
+  "layerAnchors": 21,
+  "agree": 1071,
+  "rayOccluded": 44,
+  "marchOccluded": 44,
+  "marchMs": 17.3,
+  "rayMs": 8400,
+  "marchMsPerAnchor": 0.0162,
+  "rayMsPerAnchor": 7.84,
+  "disagree": []
+ },
+ "close-sokolnitz": {
+  "factor": 4,
+  "anchors": 1080,
+  "layerAnchors": 30,
+  "agree": 1080,
+  "rayOccluded": 0,
+  "marchOccluded": 0,
+  "marchMs": 5.6,
+  "rayMs": 8426,
+  "marchMsPerAnchor": 0.0052,
+  "rayMsPerAnchor": 7.8,
+  "disagree": []
+ },
+ "hybrid-dimmed": {
+  "factor": 4,
+  "anchors": 1087,
+  "layerAnchors": 37,
+  "agree": 1087,
+  "rayOccluded": 0,
+  "marchOccluded": 0,
+  "marchMs": 2.4,
+  "rayMs": 8919,
+  "marchMsPerAnchor": 0.0022,
+  "rayMsPerAnchor": 8.21,
+  "disagree": []
+ },
+ "overview-field": {
+  "factor": 4,
+  "anchors": 1077,
+  "layerAnchors": 27,
+  "agree": 1077,
+  "rayOccluded": 0,
+  "marchOccluded": 0,
+  "marchMs": 2,
+  "rayMs": 8409,
+  "marchMsPerAnchor": 0.0019,
+  "rayMsPerAnchor": 7.81,
+  "disagree": []
+ }
+}

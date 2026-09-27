@@ -1,5 +1,224 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Stage 2D: one DOM/SVG layer for map text, and the contextual legend (docs/STAGE2_SPEC.md §E, §F, §H, §J, §K; decisions 24, 29, 38, 39)
+
+**Status: done; awaits the owner's review. 2E has not started. `austerlitz-command-map.html`: 1,189,512 bytes, md5
+`2dc0c26d969ec037cb838929d259320f`** (was 1,166,868 bytes, md5 `68ac7721…`, Stage 2C).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move.
+  No track, `OVERLAYS`, strength, order-of-battle or geography change. Presentation only.
+- Delivered in two pull requests: #16 (merged work in progress: the layer with the Stage 0 canvas path still behind
+  `?labels=canvas`), then this one: the parity screenshots from that build, the canvas path retired, the checks.
+
+**Before building: the drop limits, re-measured** (decision 39; `tools/stage2/dom-layer.js`, "canvas today", on
+`archive/stage2c-68ac7721.html`). What the Stage 0 canvas pass hides, per harness view. §F.3's counts were taken on the
+Stage 1B build, before the chronology task, 2B's third declutter ring and 2C's arrow changes. The re-measured counts are
+the limits (`tools/visual/thresholds.js`, `DROP_LIMIT`).
+
+| view | §F.3 (Stage 1B) | re-measured on 2C: the limit |
+|---|---:|---:|
+| first-run | 12 | 12 |
+| first-run-laptop | 14 | 16 |
+| overview-field | 10 | 11 |
+| overview-plan | 10 | 12 |
+| close-sokolnitz | 9 | 18 |
+| staff-paper | 9 | 13 |
+| pratzen-low | 7 | 13 |
+| pratzen-orbit-min | 21 | 27 |
+| selected-formation | 5 | 3 |
+| watch-selected | 11 | 8 |
+| hybrid-dimmed | 10 | 13 |
+| pratzen-low-1x | — | 12 |
+| pratzen-low-10x | — | 8 |
+
+The two views 2B added have no §F.3 count. selected-formation is **3**: the canvas pass hides 3 there with the dossier at
+rest. A first count of 5 was taken with the dossier frozen mid-slide (the harness finding below), and the limit was corrected
+to the at-rest count, which is stricter. A finding about the probe: its item list was read after the canvas pass had
+already hidden what it hides, so §F.3's "dropped" counted drops among what the canvas had kept (and the anchors under
+panels). The layer's drops are counted over the whole level-of-detail set, like the canvas pass's hidden count.
+
+`tools/stage2/map-text.js`, re-run on the 2C build (the section E method on the sprites): **562 in-scene text runs,
+130 below their floor, 83 below AA** in the 13 views (§E: 495, 149 and 83 in 11 views on the Stage 1B build).
+
+**A finding about the harness, fixed in the tools (no threshold involved).** In headless Chromium a CSS transition does not
+advance while the page draws nothing, and render on demand draws nothing once a view has settled. So every harness view
+reached from a Watch view was measured with the panels frozen at the start of their 0.32 s slide: in selected-formation the
+dossier drawer stood at x 1598-1974 on a 1600 px screen, its `on` class set (`document.getAnimations()`: 13 transitions
+"running" at 17 ms, unchanged 1.5 s later). The harness (`harness.js`) and the Stage 2 page helper (`page.js`) now turn CSS
+transitions off, as `check:contrast` already did, so each view stands where its panels come to rest; `settle` then waits
+450 ms for the time bar's ResizeObserver and draws once more. The app itself now draws frames while an interface panel
+slides (`transitionrun`/`transitionend`), so the layer follows a moving panel in real use.
+
+**A second harness finding, fixed in the tools.** For the same reason, a `resize` event is delivered only with a rendered
+frame. After the harness measured a view at 1280 x 720 and restored the viewport, the page still had the old size, and
+the self-test, run later on that page, measured a 1280 x 720 canvas in a 1366 x 768 window. The harness now tells the page
+of its new size (it dispatches the pending `resize`) before it draws. The app's resize handler is unchanged.
+
+**The unobstructed baselines** (§H; `thresholds.js`, `UNOBSTRUCTED`) were measured by this harness on the 2C build, at rest.
+They equal `map-text.js`'s values in every view but one: selected-formation at 1280 x 720 is **6.97%** at rest, where
+`map-text.js` reported 15.1% with the drawer frozen almost wholly off screen. The baseline is the at-rest value. Stated
+because it is the one number the 2D build is compared against that moved: the 2D build has 12.5% there.
+
+**Also found on the 2C build: the legend lay over the dispatch** in selected-formation at 1600 x 900, by 51,124 px²
+(the 587 px Stage 1B legend, shifted left of the open dossier). The harness now fails on any overlap of the two; the 2D
+legend never overlaps it (below).
+
+**The layer** (`app.js`, "THE MAP LAYER"; `symbols.js`; `style.css`; `shell.html`)
+- **One DOM layer**, `#maplayer`, over the WebGL canvas and under every panel (z-index), holds every counter and all
+  in-scene map text:
+  - formation counters (paper map and hybrid) and names (landscape);
+  - event labels and the plateau reading;
+  - movement, line, boundary, halt and objective labels;
+  - plan labels (staging areas, columns, objectives);
+  - place names (each with its marker) and terrain-study labels.
+  Symbols stay in the scene: arrows and ribbons with their heads, event glyphs, objective and plan markers.
+- **One pass per drawn frame** (`renderFrame` calls `mlLayout`): render on demand is unchanged, a skipped frame lays out
+  nothing (self-test). An item's content is rebuilt only when its key changes; positions every drawn frame.
+- **Priority** (§F.1): the selection; the formation under the pointer or keyboard focus; the highlighted family; counters
+  by echelon, larger first; live events; the plateau reading; movement and plan labels; formation names; place names,
+  major first; terrain-study labels; objective names. What is never dropped (decision 39: the selection, the formation
+  hovered or focused, the highlighted family, the labels of live events) is placed first.
+- **Placement:** at the anchor (the counter's frame 6 px above its point), then the eight places around it, then rings of
+  28-148 px (on to 380 px for what is never dropped) with a leader line to the anchor. A place name sits only beside its
+  marker. A counter at its anchor keeps a short stem to its ground point.
+- **Obstacles:** the interface panels, every item already placed, the arrow heads (the casing's head mesh as drawn now, every
+  vertex projected: a change of display factor re-drapes a head in place), event glyphs, objective and plan markers, 2 px
+  apart. An item that finds no room is dropped and counted.
+- **Not drawn, and counted apart:** an anchor off screen, under a panel, or behind the drawn ground. A place whose 10 px
+  marker cannot be drawn inside the screen (its anchor within 7 px of an edge) counts as off screen, not dropped: a
+  definition, stated because it decides selected-formation (Litava and Křenovice sit at the top edge there).
+- **Occlusion** (§F.3 asked for a method cheaper than its rays): the segment from the eye to the anchor is marched over
+  the drawn ground (`groundY`), every 0.35 units from where it first comes below the highest drawn ground, the last 1.2
+  units left out. What is never dropped is not occluded. Measured against §F.3's rays on the same anchors
+  (`tools/stage2/occlusion-2d.js`; `docs/stage2-evidence/occlusion-2d.json`): **7,563 of 7,563 anchors agree** in 7 views (44 occluded at 10.33x by both, none at 1x or 4x); the march takes 0.1-17 ms
+  per view (0.0001-0.016 ms an anchor), the rays about 8.4 s (7.7 ms an anchor).
+  - A finding: at the 4x default no anchor in the harness views is behind the ground; occlusion matters at 10.33x.
+  - The first version's tolerance (0.05 units) missed 4 grazing contacts at 10.33x (the segment 0.03-0.05 units below the
+    ground); it is 0.005 now.
+- **Found while finishing** (each by the self-test at 1366 x 768, on the harness's own page):
+  - a never-dropped label longer than the gap between two panels (Telnitz retaken, 291 px in a 298 px gap) found no ring
+    position; what is never dropped is now tried, as a last resort, flush against each obstacle's sides on rows 8 px apart;
+  - item sizes measured before the web fonts arrived were kept; every item is measured again when fonts finish loading;
+  - a head's screen box is projected from its mesh as drawn, with its parents' matrices brought up to date first.
+- **Tab order:** the layer comes last in the page, so Tab reaches the interface first, then the map objects in priority
+  order.
+
+**Counters** (decision 38; `symbols.js`, `counterHTML`)
+- **Compact by default:**
+  - the 40 x 28 px cased frame (keyline, side band, keyline, nation fill) with the arm glyph as SVG;
+  - the nation tag (10.5 px) and the echelon mark above (10.5 px);
+  - the B / C / ? badge on its plate;
+  - the status icon without its text, and the short name at 12.5 px.
+- **Full** for the selection, the highlighted family, hover, keyboard focus, and closer than 70 world units (about
+  4.4 km; `ML_FULL_DIST`, chosen on the harness views: in hybrid-dimmed only the family is full): adds the status words
+  with their icon, the strength and the commander (12.5 px).
+- **Plates:** counter text, badges and nation tags sit on opaque plates (the counter plate, the badge plate, the nation
+  fill): 5.4-16.7:1 by value. Every other map text sits on `TOKENS.sym.plate` (new): 0.88 dark, 0.95 paper, chosen so the
+  dimmest map ink stays at AA over black and white ground (road ink 5.8:1, water ink on paper 4.6:1).
+- **Dimmed counters** (decision 13): fill, band and glyph at 34%; text and badge at full opacity one step down
+  (`counter-sub`, 400); the nation tag is text at full opacity, `counter-sub` 400 on the neutral plate, 6.49:1.
+- **Accessible names:** "Saint-Hilaire's Division, French, division, about 6,600, heavily engaged, position grade A"
+  (name, side, echelon, strength, status, grade; "reported only" where it is).
+
+**Drops, hover and the keyboard** (decision 39)
+- A dropped item stays in the layer, invisible and focusable. Tab reaches it; focus draws it (never dropped while focused).
+- Hovering a formation's position draws it: the pointer is tested against the layer's boxes, then the formations'
+  footprints, then within 20 px of a counter's anchor (a corps counter has no footprint).
+- **Picking by footprint:** a click selects the item whose drawn box it is in; else the formation whose footprint (the
+  2B primitive, frontage W0 x sw by depth D0 x sd at its yaw, or the drawn block where larger, with one unit to spare)
+  contains the ground under the pointer (the view ray marched over `groundY`, then bisected); else a corps counter, an event
+  glyph or a place within 34 px, as before.
+
+**The legend** (decision 29, §F.2; `shell.html`, `app.js` `paintLegend` and `mlLegendFit`)
+- **Contextual:** one row per encoding on screen, from the tables that draw it:
+  - the nation fills where counters or figures are drawn; the two footprint colours at true scale;
+  - each side's movement row where that side has an arrow; the halt and the boundary where one is drawn;
+  - the plan staging outline while a plan is on; the analysis dashes while the terrain study is on; the going classes
+    (with their provisional true-degree thresholds) while the going layer is on;
+  - the badge row where counters are drawn; the contour interval with the contours;
+  - always: the display factor relative to true scale, and the two named symbol scales.
+- **Compact:** at most 296 px wide, rows wrapped: 296 x 324 px in overview-field against 587 x 379 px before.
+- **Collapsible:** its head ("Key", with the north rose) opens and closes it.
+- **Never over the dispatch:** where the open legend would overlap it (a narrow window with the dossier open) it stays
+  closed, and its head says why. At 1280 x 720 with a dossier open it is closed.
+- **Not adopted from §F.2:** "collapsed to a Key button by default in Watch". A Key button in Watch would be a new panel in
+  the Watch views, whose unobstructed fraction §J forbids to fall. The legend stays hidden in Watch, as before.
+
+**The guided tour: a bug found and fixed** (present on 2C and since the first build). At each stop, `flyTo` replaced
+the phase change's transition, so the overlay fade stopped at 0: the stop's arrows were drawn at opacity 0 and the previous
+phase's stayed drawn (`ovFadeIn` 0, `ovFadeOut` 1, measured 9 s after the stop on 2C and the phase-1 build). `glide` now
+runs a transition already under way beneath the camera move; after the fix the stop's arrows stand at 0.95 within 3 s. The
+self-test's tour state found it. (The WIP pull request #16 said this fix was not applied; it was, in that commit.)
+
+**Retired** (after the parity screenshots, on this branch)
+- The Stage 0 canvas pass: `declutter` with its second and third rings, `labelRect`, `panelCovers`, `LABEL_STATS`,
+  `window.__fitLabel`.
+- Every text sprite (counters, names, place glyphs, overlay, objective, event, plateau, plan and terrain-study labels),
+  the counter stems, and `drawSymbol`, `makePlainLabel`, `makeFeatureGlyph`, `refreshSymbol`, `refreshGlyphTextures`,
+  `refreshAnalysisLabels`; the `?labels=canvas` switch.
+- `thresholds.js`: there was no residual left to remove (the Walther / Nansouty pair went in the chronology data task);
+  its note now says the layer replaced the fallback.
+
+**Per view, before (the canvas pass on the 2C build) and after (the layer)** (`tools/stage2/report-2d.js`;
+`docs/stage2-evidence/2d-layer.md`)
+
+| view | overlaps | dropped (limit) | leaders | pass ms | DOM nodes | text below floor | text below AA (lowest) | unobstructed 1600 x 900 or case | 1280 x 720 | legend over dispatch |
+|---|---|---|---|---|---|---|---|---|---|---|
+| first-run | 0 → 0 | 12 hidden → 7 (12) | 0 moved → 9 | 0.2 → 1.3 | 0 → 86 | 26/37 → 0/30 | 1 (4.44) → 0 (8.71) | 54.4% → 54.4% | 43.9% → 43.9% | 0 → 0 px |
+| overview-field | 0 → 0 | 11 hidden → 5 (11) | 0 moved → 8 | 0.2 → 1.1 | 0 → 70 | 27/36 → 0/22 | 4 (3.75) → 0 (8.71) | 30.3% → 39.0% | 15.1% → 25.7% | 0 → 0 px |
+| overview-plan | 0 → 0 | 12 hidden → 5 (12) | 0 moved → 7 | 0.1 → 0.8 | 0 → 88 | 22/33 → 0/34 | 9 (3.37) → 0 (8.76) | 80.5% → 80.5% | 79.9% → 79.9% | 0 → 0 px |
+| close-sokolnitz | 0 → 0 | 18 hidden → 5 (18) | 0 moved → 3 | 0.1 → 1 | 0 → 58 | 1/23 → 0/25 | 6 (3.40) → 0 (7.94) | 80.5% → 80.5% | 79.9% → 79.9% | 0 → 0 px |
+| staff-paper | 0 → 0 | 13 hidden → 6 (13) | 7 moved → 11 | 0.5 → 1.7 | 0 → 193 | 2/100 → 0/37 | 23 (1.08) → 0 (5.08) | 30.3% → 38.3% | 15.1% → 24.5% | 0 → 0 px |
+| pratzen-low | 0 → 0 | 13 hidden → 5 (13) | 0 moved → 5 | 0.1 → 0.9 | 0 → 58 | 2/16 → 0/21 | 3 (3.82) → 0 (12.23) | 80.5% → 80.5% | 77.1% → 77.1% | 0 → 0 px |
+| pratzen-orbit-min | 0 → 0 | 27 hidden → 18 (27) | 0 moved → 0 | 0.1 → 0.7 | 0 → 28 | 5/18 → 0/0 | 4 (3.36) → 0 (null) | 80.5% → 80.5% | 77.1% → 77.1% | 0 → 0 px |
+| selected-formation | 0 → 0 | 3 hidden → 2 (3) | 0 moved → 4 | 0.1 → 0.9 | 0 → 34 | 5/35 → 0/10 | 0 (5.00) → 0 (11.49) | 14.8% → 20.0% | 7.0% → 12.5% | 51124 → 0 px |
+| watch-selected | 0 → 0 | 8 hidden → 2 (8) | 0 moved → 6 | 0.2 → 0.8 | 0 → 69 | 3/27 → 0/27 | 1 (3.96) → 0 (12.35) | 78.4% → 78.4% | 73.2% → 73.2% | 0 → 0 px |
+| hybrid-dimmed | 0 → 0 | 13 hidden → 7 (13) | 11 moved → 18 | 0.8 → 2.4 | 0 → 374 | 12/166 → 0/73 | 27 (1.20) → 0 (6.49) | 78.7% → 78.7% | 74.3% → 74.3% | 0 → 0 px |
+| pratzen-low-1x | 0 → 0 | 12 hidden → 4 (12) | 0 moved → 5 | 0.1 → 0.7 | 0 → 60 | 0/19 → 0/23 | 2 (2.69) → 0 (8.71) | 80.5% → 80.5% | 77.1% → 77.1% | 0 → 0 px |
+| pratzen-low-10x | 0 → 0 | 8 hidden → 3 (8) | 0 moved → 3 | 0.1 → 1 | 0 → 44 | 2/19 → 0/18 | 3 (2.96) → 0 (7.84) | 80.5% → 80.5% | 77.1% → 77.1% | 0 → 0 px |
+| first-run-laptop | 0 → 0 | 16 hidden → 5 (16) | 0 moved → 10 | 0.3 → 1.4 | 0 → 86 | 23/33 → 0/29 | 0 (4.86) → 0 (8.71) | 48.3% → 48.3% | 43.9% → 43.9% | 0 → 0 px |
+
+"hidden" is what the canvas pass hid, "moved" what its rings displaced; the layer's leaders are the items placed away
+from their anchor. Text is counted as runs on the canvas and as elements in the layer. Contrast is §E's 10th percentile
+as rendered, lowest per view. The layer's DOM nodes are the displayed items only.
+
+**Parity screenshots** (`tools/stage2/parity-2d.js --sheets`, on the first commit's build): `2d-parity-1.jpg`,
+`2d-parity-2.jpg` (each harness view, the canvas path left, the layer right) and `2d-legend.jpg` (the legend in its states).
+
+**Tests**
+- Harness, per view (`thresholds.js`): map-layer overlaps 0 (the old label-overlap check stays); nothing over a panel or
+  an arrow head; drops within `DROP_LIMIT`; nothing never-dropped missing; pass under 8 ms (`LAYER_MS`); every map
+  text at its floor (10.5 px for the echelon mark, nation tag, badge and small text, 12 px otherwise) and at AA as
+  rendered; the unobstructed fraction at the case's viewport and at 1280 x 720 not below the 2C baseline; the legend
+  never over the dispatch. All new; none replaces a weaker one except the unobstructed baselines, now measured at rest.
+- Self-test, at 1x, 4x and 10.33x in 7 states (the first-run card and a tour stop among them): overlaps 0 and nothing over
+  a panel or head; the never-dropped drawn; every formation focusable with its accessible name, Enter selects; every
+  dropped formation reachable by keyboard focus and by hovering its footprint; layout only in a drawn frame; the legend
+  never over the dispatch, its rows what the view draws, and the factor and symbol scales stated.
+- `check:contrast`: 20 states (4 added: the legend with the layers on, at 1x, closed; hybrid-dimmed); map text is also
+  composited over black and white ground.
+- `runtime-test.js`: a map-layer section (items collected once, content keyed, focus, names); the label-layer check now
+  covers the symbols left in the scene and the selected formation's counter in the layer.
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard (54 sites; `mlOccluded` and `groundAt` classified presentation, on
+  `groundY`).
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:visual`: all checks passed, 13 views, the self-test 59 of 59.
+- `npm run check:contrast`: 4,035 text elements in 20 states, 0 below AA, 0 below 10.5 px.
+- `npm run check:baseline`: moved to this build.
+
+**Not done, or open**
+- **pratzen-orbit-min draws no map text** (18 dropped, limit 27; the canvas drew 18 labels there, over the arrows). At the
+  orbit minimum three arrow heads fill most of the view, and labels keep clear of each head's bounding box. Testing
+  against the head's triangles would place labels there, but would make the self-test's "nothing over an arrow head"
+  (a box test) weaker. Left for the owner: decision 39's limit is met, the view's text is not.
+- The Watch-mode `#viewmode` control is drawn at 24% opacity (pre-existing; outside 2D). `check:contrast` measures it
+  in Study.
+- `ML_FULL_DIST` (70 units) and the rings are design values chosen on the harness views, not measured optima.
+- §H's numbers are the input to Stage 3 (docking the dispatch), as decision 39 says.
+
 ## 2026-09 · Stage 2C: movement arrows (docs/STAGE2_SPEC.md §C, §D, §J, §K; decisions 20-23, 33, 37, 46)
 
 **Status: done; merged (#15). 2D has not started. `austerlitz-command-map.html`: 1,166,868 bytes, md5

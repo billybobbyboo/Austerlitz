@@ -120,7 +120,11 @@ async function interact(page,it,vp){
     m.textContrast=await page.evaluate(b=>window.__aus.textContrast?window.__aus.textContrast(b):null,buf.toString("base64"));
     if(await page.evaluate(()=>!!window.__aus.unobstructed)){
       /* one drawn frame at each size is enough: the panels are DOM, and the legend decides in that frame whether it fits */
-      const frame=async()=>{ await page.waitForTimeout(450); await page.evaluate(()=>{ if(window.AUSTERLITZ_DEBUG) AUSTERLITZ_DEBUG.settle(2); }); };
+      /* headless Chromium delivers a resize event only with a rendered frame, which a page that draws on demand may not
+         produce: the page is told of its new size before it draws (else the layer and the legend fit the old size, and the
+         self-test, run later on this page, measured a 1280 x 720 canvas in a 1366 x 768 window) */
+      const frame=async()=>{ await page.evaluate(()=>window.dispatchEvent(new Event("resize"))); await page.waitForTimeout(450);
+        await page.evaluate(()=>{ if(window.AUSTERLITZ_DEBUG) AUSTERLITZ_DEBUG.settle(2); }); };
       const vp0=page.viewportSize(); await page.setViewportSize({width:1280,height:720}); await frame();
       m.unobstructed720=await page.evaluate(()=>window.__aus.unobstructed());
       await page.setViewportSize(vp0); await frame();

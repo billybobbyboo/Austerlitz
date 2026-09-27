@@ -12,7 +12,7 @@ module.exports.KNOWN=KNOWN;
    today"; section F.3's earlier counts, on the Stage 1B build, were 12, 14, 10, 10, 9, 9, 7, 21, 5, 11, 10): the map layer
    may drop no more in that view (decision 39). */
 const DROP_LIMIT={"first-run":12,"first-run-laptop":16,"overview-field":11,"overview-plan":12,"close-sokolnitz":18,"staff-paper":13,
-  "pratzen-low":13,"pratzen-orbit-min":27,"selected-formation":5,"watch-selected":8,"hybrid-dimmed":13,"pratzen-low-1x":12,"pratzen-low-10x":8};
+  "pratzen-low":13,"pratzen-orbit-min":27,"selected-formation":3,"watch-selected":8,"hybrid-dimmed":13,"pratzen-low-1x":12,"pratzen-low-10x":8};
 /* section H: the unobstructed share of the viewport on the Stage 2C build, at the case's viewport and at 1280 x 720, measured
    by this harness (CSS transitions off, the panels at rest). It must not fall. These equal tools/stage2/map-text.js's values
    in every view but one: selected-formation at 1280 x 720 is 6.97% at rest, where map-text.js reported 15.1% with the

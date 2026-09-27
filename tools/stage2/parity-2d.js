@@ -9,8 +9,10 @@ const argv=process.argv.slice(2), out=path.resolve(argv[0]||path.join(__dirname,
 const si=argv.indexOf("--sheets"), sheets=si>=0?path.resolve(argv[si+1]):null;
 fs.mkdirSync(out,{recursive:true}); if(sheets) fs.mkdirSync(sheets,{recursive:true});
 (async()=>{
-  const b=await P.launch(), res={};
-  for(const [tag,q] of [["canvas","&labels=canvas"],["layer",""]]){
+  const b=await P.launch(), pj=path.join(out,"parity.json");
+  /* --legend-only: the views' PNGs and counts are already in <outdir>; only the legend is taken again */
+  const legendOnly=argv.includes("--legend-only"), res=legendOnly&&fs.existsSync(pj)?JSON.parse(fs.readFileSync(pj,"utf8")):{};
+  for(const [tag,q] of legendOnly?[]:[["canvas","&labels=canvas"],["layer",""]]){
     let page=null, key0="";
     for(const c of P.CASES){
       const key=c.viewport.join("x")+(c.fresh?":"+c.name:"");
@@ -47,13 +49,13 @@ fs.mkdirSync(out,{recursive:true}); if(sheets) fs.mkdirSync(sheets,{recursive:tr
     (res.legend=res.legend||{})[cap]={size:[Math.round(r[2]),Math.round(r[3])],rows:rows};
     console.log("legend",cap,Math.round(r[2])+"x"+Math.round(r[3]),JSON.stringify(rows));
     const pad=6, clip={x:Math.max(0,r[0]-pad),y:Math.max(0,r[1]-pad),width:Math.min(1600-Math.max(0,r[0]-pad),r[2]+2*pad),height:r[3]+2*pad};
-    L.push({cap:cap+" ("+Math.round(r[2])+" x "+Math.round(r[3])+" px)",png:await page.screenshot({clip})});
+    L.push({cap:cap+" ("+Math.round(r[2])+" x "+Math.round(r[3])+" px)",png:await page.screenshot({clip,timeout:180000})});
   }
-  await page.evaluate(()=>document.getElementById("lg-toggle").click());
-  await page.setViewportSize({width:1280,height:720});
-  await P.applyCase(page,{name:"narrow",viewport:[1280,720],t:570,presentation:"study",mode:"terrain",select:["f","sthilaire"],aim:{map:"sthilaire",dir:[-0.55,0.62,0.56],r:86}});
-  const narrow=await page.screenshot();
-  const lg=await page.evaluate(()=>{ const e=document.querySelector(".legend"); return e.className+" "+JSON.stringify(e.getBoundingClientRect()); });
+  /* a fresh page at 1280 x 720: a screenshot after resizing a page that draws on demand can wait for a frame that never comes */
+  const np=await P.open(b,[1280,720]);
+  await P.applyCase(np,{name:"narrow",viewport:[1280,720],t:570,presentation:"study",mode:"terrain",select:["f","sthilaire"],aim:{map:"sthilaire",dir:[-0.55,0.62,0.56],r:86}});
+  const narrow=await np.screenshot({timeout:180000});
+  const lg=await np.evaluate(()=>{ const e=document.querySelector(".legend"); return e.className+" "+JSON.stringify(e.getBoundingClientRect()); });
   console.log("1280 x 720 with the dossier open:",lg);
   fs.writeFileSync(path.join(out,"parity.json"),JSON.stringify(res,null,1));
   if(sheets){
