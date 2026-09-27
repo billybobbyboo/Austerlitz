@@ -18,3 +18,4 @@ injected into the running page, not the 2B-2F implementation.
 | `chronology.md` | M | `chronology.js --md` (every move: engine window, explicit time, act, text time, what it dates, verdict now and in §M, evidence); re-run on the chronology data task's build |
 | `delayed-moves.md`, `delayed-gqg-waiting.jpg`, `delayed-ph7-start.jpg` | M.11 | `delayed-moves.js` on the Stage 1B build and the chronology data task's build |
 | `derived-legs.md` | M.13 | `derived-legs.js --md` (the arrivals derived from the march-rate ceiling; the options) |
+| `2b-<view>.jpg`, `exag-2b.json` | K (2B) | `renders-2b.js --sheets` on the Stage 2B build: 1x, 4x, 10.33x from the five vantages and the low Pratzen view; the factor-change time |
