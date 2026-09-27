@@ -1,5 +1,61 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Chronology data task, follow-up on #12 (owner): derived arrivals, creeping moves, settling sources, the counter ring
+
+**Status: report and documentation; one text change in the data (the Sources panel, as asked). `austerlitz-command-map.html`:
+1,122,358 bytes, md5 `12d34eede25938877b5b007f9ea3af89`** (was 1,121,991, md5 `e76222b3…`, the build of the entry below).
+`check:baseline` and `check:data`'s reference move to it (`archive/chronology-12d34eed.html` replaces
+`archive/chronology-e76222b3.html`; both belong to #12, which is not yet merged).
+
+**1. Arrivals derived from the march-rate ceiling: open, to be decided before 2C** (`docs/STAGE2_SPEC.md` §M.13;
+`tools/stage2/derived-legs.js`, `docs/stage2-evidence/derived-legs.md`).
+- The legs:
+  - Seven legs have a derived arrival: six at 93-99% of the ceiling, plus Napoleon's move at 60% of its ceiling (from its `moveMin`).
+  - Four dated legs also run at 80% of the ceiling or more (`c_gren@8`, `kollo@5`, `bag@9`, and `guard_inf@6`, which is unchanged from Stage 1B).
+  - Each leg is tabled with its speed, share of the ceiling, status, ground, and the slack its next anchor leaves.
+- A correction to the premise: the Augezd height by 14:30 does not force Vandamme's 15-minute wheel. It leaves him until
+  13:50, and the ceiling rule chose the speed.
+- Genuinely constrained: the two climbs (by the undated phase-4 anchors at 09:30), Bagration's withdrawal (by nightfall),
+  and `c_gren@8` and `kollo@5` (a dated time followed by a default phase start). In each case the constraint is an undated
+  default.
+- Options simulated:
+  - (a) a share of the ceiling: unworkable below about 80% without re-timing undated anchors;
+  - (b) a tactical rate for formed bodies (design values, unsourced): the climbs do not fit, and `pratzen-village` fails;
+  - (c) as now, flagged.
+- Recommended: (b) where the leg still fits, else (c) flagged by name. The climbs are to be dated from the same passage that
+  settles Kamensky's turn.
+- No track changed. The `redteam.js` warning (infantry mean rate above cavalry's) stays a warning.
+
+**2. Undated creeping moves show "interpolated" (decision 45): confirmed, no change.** Checked in the built page:
+- Formations: Kellermann, Nansouty, d'Hautpoul, the Allied headquarters, the Russian Guard cavalry.
+- Three clocks each, inside their creeping legs.
+- The marker shows in both the compact card and the full dossier.
+
+**3. What would settle the three conflicts** (Sources panel open questions, `SOURCE_NOTE`, and §M.9; only works the
+project already cites; no page numbers):
+- Dokhturov's descent: Duffy (1977), on the Allied left columns coming down toward Telnitz.
+- Kamensky's turn: Duffy (1977), with Thiebault's memoirs (on which the map's Pratzeberg narrative draws), on Kamensky's
+  counter-attack.
+- Rapp's counter-charge: Duffy (1977), on the Guard cavalry fight at Stare Vinohrady.
+- Smith (1998) is cited for strengths; whether it dates these moves is stated as not known.
+- Guarded declaration changed: `SOURCE_NOTE` only (one sentence added).
+
+**4. The counter-placement change is a presentation change made inside a data task.** The wider ring of ten positions in
+`declutter` (entry below) was added because the data change moved Caffarelli's counter into the cavalry reserve's at the
+hybrid-dimmed view's clock. `check:visual` then failed with four overlaps. The alternative was to add those pairs to the
+known residuals, which would have loosened a threshold, so the presentation was fixed instead. As a side effect it retired
+the Stage 0 Walther / Nansouty allowance. It is a stopgap in the Stage 0 canvas pass: **2D replaces it** with the single
+DOM/SVG layer (decision 24).
+
+**Tests** (on this build)
+- `npm test`: ALL 8 SUITES PASSED (`redteam.js`: 0 findings, 1 warning, the march-rate one, kept).
+- `npm run check:data`: all 112 DATA declarations identical to the new reference; against the entry below's build, only `SOURCE_NOTE`
+  changed; against Stage 0, the same 7 declarations as below.
+- `npm run check:chronology`: 65 consistent, 4 early (the named conflicts), 0 late; 0 errors.
+- `npm run check:visual`: STAGE0: all checks passed; 0 overlaps in all 11 views; `selfTest` 13 of 13 PASS.
+- `npm run check:contrast`: 3,103 text elements, 0 below AA, 0 below 10.5 px.
+- `npm run check:baseline`: passes (md5 `12d34eede25938877b5b007f9ea3af89`, 1,122,358 bytes).
+
 ## 2026-09 · Chronology data task (owner decisions 40-46; docs/STAGE2_SPEC.md §M.7-§M.12): explicit anchor times
 
 **Status: done; awaits the owner's review. 2B has not started. `austerlitz-command-map.html`: 1,121,991 bytes, md5
