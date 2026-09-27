@@ -1,9 +1,7 @@
 # Map readability specification (Stage 2, Part A)
 
-**Status: Part A reviewed; the owner's answers are decisions 31-39 (§0, §L). §M (the chronology audit) was reviewed and
-remedy (c) accepted; the chronology data task that followed it (owner decisions 40-46, §M.7-§M.12) changed the timing
-data and the engine, and awaits review. 2B starts only after that review.** Sections A-L below still describe the build
-they were written against, except §C.1, whose tables were re-run on the new tracks (the earlier ones are §C.4). Written against `main` at `7e03692`
+**Status: Part A reviewed; the owner's answers are decisions 31-39 (§0, §L); §M (the chronology audit) awaits review. No
+change to the build; 2B starts only after §M is reviewed.** Written against `main` at `7e03692`
 (`austerlitz-command-map.html` 1,107,799 bytes, md5 `5bf48b75373fe0cf9fc8a32cbeae918c`, confirmed before any work;
 `npm run check:baseline` now checks exactly that build). Line numbers refer to that commit.
 
@@ -30,11 +28,10 @@ facts), **owner decision** (decisions 1-30), **recommendation** (a proposal for 
 | `map-text.js` | E, H | every in-scene text element's on-screen size and rendered contrast; the unobstructed map fraction |
 | `dom-layer.js` | F | the one-layer prototype: overlaps, drops, leaders, pass time, node count per harness view |
 | `paper-map.js` | G | today's paper map against a north-up, straight-down, near-orthographic probe |
-| `chronology.js [--md f] [--evidence] [--times] [--check]` | M | every anchor's engine window against the app's timed statements; verdicts computed from the reviewed statements; `--times` lists each explicit time with its evidence; `--check` is the regression (`npm run check:chronology`) |
+| `chronology.js [--md f] [--evidence]` | M | every anchor's engine window against the app's timed statements; the reviewed verdicts |
 | `chronology-sim.js` | M | the derived readings and suite values under each timing remedy |
-| `delayed-moves.js [build] [--json f] [--shots dir]` | M.11 | what the interface shows while a dated move waits or runs inside its phase (decision 46) |
 
-## 0. Owner decisions 18-46 (fixed), and whether the evidence contradicts them
+## 0. Owner decisions 18-39 (fixed), and whether the evidence contradicts them
 
 The decisions are recorded here as given; the verdict column says what the measurements found. Where a decision
 conflicts with the evidence or with an earlier decision the conflict is stated, not worked around.
@@ -63,7 +60,6 @@ conflicts with the evidence or with an earlier decision the conflict is stated, 
 | 37 | (L7) No blanket tolerance rule. After §M and its data task, each of the 11 mismatches is resolved on its own against the app's narrative, events and cited sources: a wrong track changes (traceable) and the arrow is derived; an arrow that points at a place or objective becomes interpretive and is flagged; one that cannot be settled stays hand-authored and is listed by name in the binding test. §C lists what each mismatch's endpoints correspond to. | Recorded; §C.1. |
 | 38 | (L8) Compact counter as proposed, plus the status icon without its text. For 2D: counter text, badges and nation tags sit on plates opaque enough to meet AA over any ground, measured, not computed (§E shows today's translucent paper halo fails); on dimmed counters the nation tag is text under decision 13: full opacity, one step down, at AA (Stage 1B's 34% tag does not meet decision 13). | Recorded; §F.1, §J. |
 | 39 | (L9) Accepted with conditions: per view, drops may not exceed the number of labels today's canvas pass hides in that view; never dropped: the selection, the highlighted family and labels of live events; a dropped formation stays reachable by hovering its position and from the keyboard; §H's numbers are the input to Stage 3, where docking the dispatch comes first. | Recorded; §J. Today's hidden counts per view are in §F.3 ("canvas today: hidden"): 12, 14, 10, 10, 9, 9, 7, 21, 5, 11, 10. The probe's drops (4, 6, 19, 0, 0, 5, 1, 0, 14, 1, 0) exceed them in overview-field (19 > 10) and selected-formation (14 > 5): 2D must place better there. |
-| 40-46 | The chronology data task: the phase-start rule documented and kept as the default, explicit anchor times with evidence, grade and basis, the three disagreeing texts, the early and creeping moves, the events, the interface during a delayed move. | Recorded in §M.7; what was done in §M.8-§M.12. |
 
 ## A. Height call-site inventory and the display-height design
 
@@ -221,41 +217,31 @@ frontage, Saint-Hilaire's block being 872 m, so an arrow drawn from the front of
 a corps without a track) or no modelled formation; *derivable* if one named formation matches one-to-one in either
 reading (the reading is recorded); *mismatch* otherwise.
 
-**Re-run after the chronology data task (owner decision 46).** The tables below are the report re-run on the new tracks
-(anchors may now be reached after their phase opens, or begin their move later in it: §M.8). A third reading is scored:
-**exec** = the leg the model *executes* during the phase (every leg whose window overlaps the phase by a minute or more;
-the arrow is derivable if it matches one of them one-to-one, same tolerance). The tables as first published, on the
-Stage 1B tracks, are kept in §C.4.
-
-**Summary (on the chronology data task's tracks).**
+**Summary.**
 
 | verdict | arrows | which |
 |---|---:|---|
 | derivable, leg *into* the phase | 10 | Kienmayer (ph1); II Column → Sokolnitz, III Column → castle, Liechtenstein crosses the front, Friant retakes Telnitz (ph2); Saint-Hilaire, Vandamme (ph3); Caffarelli, Suchet, Nansouty's cuirassiers (ph5) |
-| derivable, leg *across* the phase | 2 | Vandamme takes the height (ph8); **Bagration withdraws on Rausnitz (ph8)**, newly, because his withdrawal now runs inside phase 8 (16:30-16:45) |
-| **derivable, leg executed in the phase (the 2C rule)** | **4** | Friant retakes Telnitz (ph2, leg 07:00-08:30), Saint-Hilaire (ph3, 08:45-09:15), Vandamme (ph3, 08:45-09:14), Vandamme takes the height (ph8, 14:30-17:00). On the Stage 1B tracks: 1 (Vandamme takes the height) |
-| interpretive | 14 | unchanged (§C.4) |
-| mismatch (neither *into* nor *across*) | 10 | the 11 of §C.4 less Bagration withdraws on Rausnitz |
-| other overlay items | 24 | unchanged: all interpretive |
+| derivable, leg *across* the phase | 1 | Vandamme takes the height (ph8) |
+| interpretive | 14 | the four ordered routes of phase 0 and "IV Column halted" (`axis`); Jurczek's Austrians, Levasseur up the Goldbach, Over the Satschan mere, Across the Menitz mere (no modelled formation); Liechtenstein and Uvarov, Russian Imperial Guard, Bessieres and Rapp, Davout resumes the offensive, Legrand and Friant (groups) |
+| mismatch | 11 | listed below as data questions |
+| other overlay items | 24 | 8 lines, 2 boundaries, 14 objective markers: all interpretive |
 
-**The arrows that are not derivable on the executed leg** (18; the binding test of 2C will read this column). *Into* arrows
-whose leg the model still executes in the phase before (the timing of their anchor is the phase-start default, with no dated
-statement that moves it): Kienmayer (ph1), II Column → Sokolnitz, III Column → castle, Liechtenstein crosses the front
-(ph2), Caffarelli, Suchet, Nansouty's cuirassiers (ph5). The 10 mismatches: V Column counter-marches north (ph0), I Column
-descends and Friant's approach march (ph1), Kamensky turns about (ph4), Bagration (ph5: he now holds throughout phase 5, his
-advance being dated c. 09:30), Drouet forms line (ph6), Saint-Hilaire wheels south, Vandamme wheels south, Przybyszewski's
-breakout (ph7), I Column to the defile (ph8); plus Bagration withdraws on Rausnitz (ph8), derivable across the phase but on
-two legs, 16:30-16:45 and 16:45-17:00, not on one. Per-arrow figures: `docs/stage2-evidence/arrow-binding.md`.
+**Mismatches: data questions for 2C, not fixed here.**
 
-**Mismatches (both readings): data questions for 2C, not fixed here.** The endpoint distances are unchanged from §C.4 except:
-
-| ph | arrow | the nearest leg of the named formation now | change from §C.4 |
+| ph | arrow | the nearest leg of the named formation | question |
 |---|---|---|---|
-| 1 | Friant's approach march | leg 1→2 (07:00-08:30): 2,010 / 241 m | the leg now ends at 08:30 (was 08:00) |
-| 7 | Saint-Hilaire wheels south | leg 6→7 (13:00-14:00): 761 / 0 m | the leg now runs inside phase 7 (was 11:15-12:45) |
-| 7 | Vandamme wheels south | leg 7→8 (13:15-14:30): 621 / 170 m; leg 6→7 (13:00-13:15): 572 / 3,174 m | both legs now run in phase 7 |
-| 8 | I Column to the defile | leg 7→8 (14:30-15:00): 0 / 899 m | the leg now runs in phase 8 (was 12:45-14:30) |
-| 8 | Bagration withdraws on Rausnitz | derivable across the phase; legs 7→8 (16:30-16:45) 0 / 608 m and 8→9 (16:45-17:00) | no longer a mismatch |
+| 0 | V Column counter-marches north (Liechtenstein) | no anchor at phase 0; the leg 0→2 starts at the arrow's start and ends 1,159 m from its end | the counter-march is drawn in phase 0 but the track moves over phases 0-1; which is meant? |
+| 1 | I Column descends (Dokhturov) | leg 0→1: 0 / 470 m, 2 degrees | 20 m outside tolerance: the arrow stops short of the anchor |
+| 1 | Friant's approach march | leg 1→2 (across): 2,010 / 241 m; leg 0→1: 3,297 / 885 m | the arrow starts about 2 km east of where the track has Friant |
+| 4 | Kamensky turns about | leg 3→4: 651 / 71 m | the arrow starts 651 m from the phase-3 anchor |
+| 5 | Bagration | leg 0→5: 858 / 0 m, 10 degrees | the start differs by 858 m |
+| 6 | Drouet forms line | leg 3→6: 1,759 / 170 m | the start differs by 1.8 km |
+| 7 | Saint-Hilaire wheels south | leg 6→7: 761 / 0 m | start 761 m off |
+| 7 | Vandamme wheels south | leg 7→8 (across): 621 / 170 m | 171 m outside tolerance at the start, and drawn on the *across* reading |
+| 7 | Przybyszewski's breakout | leg 7→8 (across): 0 / 684 m | the arrow ends 684 m short of the phase-8 anchor |
+| 8 | I Column to the defile (Dokhturov) | leg 7→8: 0 / 899 m | ends 899 m short |
+| 8 | Bagration withdraws on Rausnitz | leg 7→8: 0 / 608 m | ends 608 m short |
 
 **What each mismatch's endpoints correspond to** (decision 37; derived: the named places (`FEATURES`), event markers and
 `OVERLAYS` objectives within 600 m of each end point, nearest first). This is evidence for the per-arrow resolution after
@@ -275,17 +261,12 @@ two legs, 16:30-16:45 and 16:45-17:00, not on one. Per-arrow figures: `docs/stag
 | 8 | I Column to the defile | Telnitz 460 m; events `telnitz-retaken` 384 m, `telnitz` 460 m | Augezd and the objective "The Augezd defile" 114 m | points at a place: the defile |
 | 8 | Bagration withdraws on Rausnitz | nothing within 600 m | nothing within 600 m (toward Rausnitz, off the map) | a direction toward an off-map place |
 
-**What this shows now (derived).** With the dated moves in place, the arrows drawn on the *into* reading for phases 2 and 3
-(Friant, Saint-Hilaire, Vandamme) now show the leg the model runs during their phase, which the Stage 1B tracks ran a
-phase early. Seven *into* arrows still sit one phase after their leg, because nothing in the app dates those moves later
-than the phase-start default; they are not evidence that the default is wrong. The wheel arrows (ph7) and the I Column's
-retreat (ph8) now fall in the right phase but still start or stop off the anchors; their endpoints are decision 37's per-arrow
-questions.
-
-**The rule for 2C (owner decision 46).** *The arrow shown during phase ph depicts the leg the model executes during phase
-ph* (the **exec** column): a leg whose window overlaps the phase. With the phase-start default, that is the leg into the
-next phase's anchor; with a dated move, it is the dated leg. 2C derives arrows from this reading, and resolves the arrows
-that are not derivable on it one by one under decision 37.
+**What this shows (derived).** (1) The arrows were drawn from the same anchors as the tracks: 16 of the 22 arrows
+that name one tracked formation (and are not `axis`) start within 5 m of one of its anchors. (2) They were authored
+mostly on the *into* reading (10 of 11 derivable), with three on the *across* reading (Vandamme twice, Przybyszewski). (3) Of the 11 mismatches, 4 arrows stop short of the anchor, 6 start off it, and 1 is a question of phase (the V Column's counter-march). Decision 22's "legs across that phase"
+would draw 10 of the 11 derivable arrows one phase later than today. **Decision 33:** neither reading is adopted; the model's
+timing is audited first (§M), and the arrows follow the corrected model. The full list, with every
+candidate's distances, is `docs/stage2-evidence/arrow-binding.md` (from `arrow-binding.js --md`).
 
 ### C.2 Dashed and segmented drawing today (fact)
 
@@ -318,44 +299,6 @@ treats `halt` as interpretive. Legend line: "halt: a column stopped short of its
 traceable: the entry's kind changes from `axis` to `halt` (what it was, the evidence above, what it becomes, why).
 Reading (derived): the Fourth Column's centroid (Miloradovich and Kollowrat) is 200 m from `[301,237]` at the end
 of phase 2, within the binding tolerance, so the bar stands where the model has the column.
-
-### C.4 Appendix (dated 2026-09, before the chronology data task): the binding report on the Stage 1B tracks
-
-These are §C.1's tables as first published, from `arrow-binding.js` on the Stage 1B build (md5 `5bf48b75…`), kept for
-comparison. The full table is `docs/stage2-evidence/arrow-binding-before-chronology.md`.
-
-**Summary.**
-
-| verdict | arrows | which |
-|---|---:|---|
-| derivable, leg *into* the phase | 10 | Kienmayer (ph1); II Column → Sokolnitz, III Column → castle, Liechtenstein crosses the front, Friant retakes Telnitz (ph2); Saint-Hilaire, Vandamme (ph3); Caffarelli, Suchet, Nansouty's cuirassiers (ph5) |
-| derivable, leg *across* the phase | 1 | Vandamme takes the height (ph8) |
-| interpretive | 14 | the four ordered routes of phase 0 and "IV Column halted" (`axis`); Jurczek's Austrians, Levasseur up the Goldbach, Over the Satschan mere, Across the Menitz mere (no modelled formation); Liechtenstein and Uvarov, Russian Imperial Guard, Bessieres and Rapp, Davout resumes the offensive, Legrand and Friant (groups) |
-| mismatch | 11 | listed below as data questions |
-| other overlay items | 24 | 8 lines, 2 boundaries, 14 objective markers: all interpretive |
-
-**Mismatches: data questions for 2C, not fixed here.**
-
-| ph | arrow | the nearest leg of the named formation | question |
-|---|---|---|---|
-| 0 | V Column counter-marches north (Liechtenstein) | no anchor at phase 0; the leg 0→2 starts at the arrow's start and ends 1,159 m from its end | the counter-march is drawn in phase 0 but the track moves over phases 0-1; which is meant? |
-| 1 | I Column descends (Dokhturov) | leg 0→1: 0 / 470 m, 2 degrees | 20 m outside tolerance: the arrow stops short of the anchor |
-| 1 | Friant's approach march | leg 1→2 (across): 2,010 / 241 m; leg 0→1: 3,297 / 885 m | the arrow starts about 2 km east of where the track has Friant |
-| 4 | Kamensky turns about | leg 3→4: 651 / 71 m | the arrow starts 651 m from the phase-3 anchor |
-| 5 | Bagration | leg 0→5: 858 / 0 m, 10 degrees | the start differs by 858 m |
-| 6 | Drouet forms line | leg 3→6: 1,759 / 170 m | the start differs by 1.8 km |
-| 7 | Saint-Hilaire wheels south | leg 6→7: 761 / 0 m | start 761 m off |
-| 7 | Vandamme wheels south | leg 7→8 (across): 621 / 170 m | 171 m outside tolerance at the start, and drawn on the *across* reading |
-| 7 | Przybyszewski's breakout | leg 7→8 (across): 0 / 684 m | the arrow ends 684 m short of the phase-8 anchor |
-| 8 | I Column to the defile (Dokhturov) | leg 7→8: 0 / 899 m | ends 899 m short |
-| 8 | Bagration withdraws on Rausnitz | leg 7→8: 0 / 608 m | ends 608 m short |
-
-**What this shows (derived).** (1) The arrows were drawn from the same anchors as the tracks: 16 of the 22 arrows
-that name one tracked formation (and are not `axis`) start within 5 m of one of its anchors. (2) They were authored
-mostly on the *into* reading (10 of 11 derivable), with three on the *across* reading (Vandamme twice, Przybyszewski). (3) Of the 11 mismatches, 4 arrows stop short of the anchor, 6 start off it, and 1 is a question of phase (the V Column's counter-march). Decision 22's "legs across that phase"
-would draw 10 of the 11 derivable arrows one phase later than today. **Decision 33:** neither reading is adopted; the model's
-timing is audited first (§M), and the arrows follow the corrected model. The full list, with every
-candidate's distances, is `docs/stage2-evidence/arrow-binding.md` (from `arrow-binding.js --md`).
 
 ## D. The Allied arrowhead (owner decision 20)
 
@@ -708,8 +651,7 @@ change; the suite values it moves (§M.3) are re-derived and recorded, never loo
 
 **2D, one DOM/SVG layer**
 - **Label overlaps, stricter (replaces the Stage 0 threshold with its named residual):** 0 overlaps among map
-  elements in every harness view; the Walther / Nansouty allowance removed from `thresholds.js` (done early, in the
-  chronology data task, §M.11). `measure.js` reads
+  elements in every harness view; the Walther / Nansouty allowance removed from `thresholds.js`. `measure.js` reads
   the rendered boxes of the DOM layer instead of projecting sprites.
 - **Nothing that matters dropped (new; decision 39):** the selection, the highlighted family and the labels of live events are
   never dropped; in each view the number of dropped labels is at most the number today's canvas pass hides in that view
@@ -776,8 +718,7 @@ file. In short (full wording in §0):
 9. **Drops** (decision 39): accepted with conditions (no more than today's hidden labels per view; never the selection,
    the highlighted family or live events; reachable by hover and keyboard); §H feeds Stage 3.
 
-**Still open:** the three disagreeing texts, left unresolved by the chronology data task because the sources could not be
-read (§M.9), and the other source questions of §M.6.
+**Still open:** the chronology remedy and its data task (§M.5), and the source questions of §M.6.
 
 ## M. The chronology audit (owner decision 33; report only, no data change)
 
@@ -934,205 +875,3 @@ used, none carries a citation; the Allied headquarters' 08:45 cites the *Russian
 - the wheel "13:00-14:00" (`data.js:113`, `analysis.js:51`), on which five early verdicts rest;
 - the Pratzeberg "firmly in French hands" at 11:00 (`analysis.js:287`) and the Telnitz fighting "between 07:00 and 15:00"
   (`data.js:640`).
-
-### M.7 Owner decisions 40-46 (the chronology data task)
-
-The owner reviewed §M and accepted remedy (c): the phase-start rule stays the documented default and individual anchors
-get explicit times. The framing that every early move was an error was partly wrong (the rule was deliberate), and so was
-the "guard" detail (t 680 is an analysis chapter). The task makes the model agree with the app's own dated statements; most
-of them cite no source (§M.6), so the result is **internal consistency, not verified history**, and every change says which.
-
-| # | decision |
-|---|---|
-| 40 | **The rule.** The phase-start rule stays the default and is documented in the code at `FORMATIONS` and `legWindow`: an anchor is reached at its phase's start unless it carries an explicit time. The smallest engine extension expresses an arrival after the phase start, and a departure time where a text dates the start of a move. Validated: departure before arrival, no overlap with the next leg, inside the day. Anchors without a time behave exactly as before. |
-| 41 | **Evidence and grade on every explicit time**: its evidence (the statement with file and line, or a source with page); a timing grade using the grades the dossier already shows; a basis, "source" or "app narrative, unsourced". The dossier shows the grade as it does today. No time without evidence; where evidence gives a range, the range is used, not its midpoint. |
-| 42 | **The three disagreeing texts** (Dokhturov's descent, Rapp's charge, Kamensky's turn) are settled against sources (those the project cites, Duffy 1977 and Smith 1998, and any others in the Sources panel), not by choosing one of the app's texts. Where the sources agree, their time is used and the disagreeing text corrected; where they disagree, the anchor gets an interval spanning them and the disagreement goes into the Sources panel's open questions; where a source cannot be read (network policy), that is said, the conflict is left unresolved with today's behaviour, and listed. No web summaries or AI output as a source. |
-| 43 | **The 22 early moves** get explicit times from the statements §M cites, under decision 41; each reported: was, is, evidence, grade, basis. |
-| 44 | **Events.** `soult` and `pratzen-village` are re-dated; an event that describes a process becomes an interval (as `guard-broken`); a marker placed where the engine put the formation moves with the corrected track (old and new position and time stated). The sim-test event check keeps its 1 km rule; its expected values change with this task and are recorded; the rule is not loosened. |
-| 45 | **Creeping moves.** Where a text dates the start, a departure time; otherwise nothing is invented, today's behaviour stays, and while the formation is between anchors the dossier shows the existing "interpolated" marker. The undated ones are listed. |
-| 46 | **The interface during a delayed move** reads coherently: the dossier's "Doing now", status and counter while a formation is still at its old position inside its phase; the Study view at the phase start; the Watch view during the move; the arrow of that phase. Presentation is fixed only where inconsistent. §C records the rule this makes natural for 2C (the arrow shown during phase ph depicts the leg the model executes during phase ph); the binding report is re-run on the new tracks and §C's tables replaced, the old ones kept as a dated appendix. |
-
-Also: every derived value that moves is re-derived and reported (old, new); no threshold is loosened; narrative text that
-states a derived time or figure is corrected or flagged; the march-rate ceiling holds on every leg; `check:data` reports
-only the declarations this task changes; no `OVERLAYS`, strength, order-of-battle or geography change.
-
-### M.8 The engine and the explicit times (decisions 40, 41, 43)
-
-**The engine (fact; `app.js`, the comment above `anchorList`).** A track entry may carry `tm`: `tm.at` (the anchor is
-reached then, possibly after its phase opens) and `tm.dep` (the move into it begins then), in minutes of the day, plus
-`gr` (A/B/C), `basis`, `ev` (the quoted statements) and `note`. `anchorList` resolves each anchor's window once, `w =
-[departure, arrival]`, and its arrival `arr`; `legWindow` returns it; `legAt` passes an anchor when it is *reached* (`arr`),
-not when its phase opens. Rules, in order:
-- no `tm`: exactly as before (reached at `PHASES[ph].t0`; departs at the previous arrival, or `moveMin` before);
-- a range is honoured at its far end: `dep:[lo,hi]` departs at lo, `at:[lo,hi]` arrives at hi, so a ranged move is shown in
-  motion across the whole range; no midpoint is taken (none of the times written in this task is a range: where a text gives
-  one, e.g. the wheel "between about 13:00 and 14:00", it is written as `dep` 13:00 and `at` 14:00);
-- a departure at or after the phase start with no arrival: reached after `moveMin`, or once the leg has been marched at its
-  arm's ceiling (`SPEED_CEIL`), whichever is later, rounded up to the minute (`arrDerived`). This is **derived**, not a time
-  from a text: the least delay that the dated departure and the ceiling allow. The dossier says so.
-`auditMovement` validates every explicit time (departure before arrival; not before the previous anchor is reached; arriving
-no later than the next leg departs and the next anchor is reached; inside the day; never on a first or removal entry);
-`redteam.js` proves each of the five rules rejects a bad case and that a valid delayed move holds, then moves. The refactor
-was checked to reproduce the Stage 1B timing exactly before any time was written (`chronology-sim.js`: every reading
-identical).
-
-**Timing grades** (the dossier's A/B/C, applied to time): **A** dated in a cited source; **B** given as approximate ("c.")
-in the app's narrative, which cites no source for it; **C** inferred from the narrative (a bound, a sequence, or a range
-applied to this move). Every time written here has basis "app narrative, unsourced", so none is A.
-
-**Every anchor changed, and the 22 early moves** (was = the Stage 1B engine window; evidence file:line resolved by
-`chronology.js --times` on this build; verdict computed by the audit):
-
-| anchor | was (engine window) | §M verdict | is (window) | explicit time | grade | basis | evidence (file:line) | verdict now |
-|---|---|---|---|---|---|---|---|---|
-| gqg@6 | 10:35-11:15 | early 45 | 12:00-12:40 (arrival derived) | dep 12:00 | B | app narrative, unsourced | data.js:105; data.js:646 | consistent |
-| sthilaire@3 | 08:00-08:45 | early 45 | 08:45-09:15 (arrival derived) | dep 08:45 | B | app narrative, unsourced | data.js:78; analysis.js:31; data.js:79 | consistent |
-| sthilaire@7 | 11:15-12:45 | early 75 | 13:00-14:00 | dep 13:00, at 14:00 | B | app narrative, unsourced | analysis.js:51; data.js:113 | consistent |
-| vandamme@3 | 08:00-08:45 | early 45 | 08:45-09:14 (arrival derived) | dep 08:45 | B | app narrative, unsourced | data.js:78; analysis.js:31 | consistent |
-| vandamme@7 | 11:15-12:45 | early 75 | 13:00-13:15 (arrival derived) | dep 13:00 | B | app narrative, unsourced | analysis.js:51; data.js:113 | consistent |
-| legrand@7 | 09:30-12:45 | early 15 | 13:00-14:00 | dep 13:00, at 14:00 | C | app narrative, unsourced | data.js:229; analysis.js:51 | consistent |
-| legrand@8 | 12:45-14:30 | early 30 | 14:00-15:00 | at 15:00 | C | app narrative, unsourced | data.js:665; data.js:231 | consistent |
-| friant@1 | 04:00-07:00 | early 60 | 04:00-07:00 | none | - | - | - | undetermined |
-| friant@2 | 07:00-08:00 | early 30 | 07:00-08:30 | at 08:30 | C | app narrative, unsourced | data.js:71; data.js:64 | consistent |
-| caffarelli@5 | 04:00-10:30 | consistent | 09:30-10:30 | dep 09:30 | B | app narrative, unsourced | data.js:86 | consistent |
-| suchet@5 | 04:00-10:30 | consistent | 09:30-10:30 | dep 09:30 | B | app narrative, unsourced | data.js:86 | consistent |
-| rivaud@3 | 04:00-08:45 | early 15 | 08:45-09:09 (arrival derived) | dep 08:45 | C | app narrative, unsourced | data.js:365; data.js:78 | consistent |
-| guard_inf@7 | 11:15-12:45 | early 75 | 13:00-14:00 | dep 13:00, at 14:00 | B | app narrative, unsourced | analysis.js:51; data.js:113 | consistent |
-| guard_cav@6 | 10:30-11:15 | early 30 | 10:30-11:15 | none | - | - | - | early (unresolved conflict) |
-| c_gren@7 | 11:15-12:45 | early 75 | 13:00-14:00 | dep 13:00, at 14:00 | B | app narrative, unsourced | analysis.js:51; data.js:113 | consistent |
-| kienmayer@8 | 12:45-14:30 | early 30 | 14:30-15:00 | dep 14:30, at 15:00 | C | app narrative, unsourced | data.js:120; data.js:121 | consistent |
-| dok@1 | 04:00-07:00 | early 30 | 04:00-07:00 | none | - | - | - | early (unresolved conflict) |
-| dok@8 | 12:45-14:30 | early 30 | 14:30-15:00 | dep 14:30, at 15:00 | C | app narrative, unsourced | data.js:120; data.js:121 | consistent |
-| lang@4 | 08:00-09:30 | early 60 | 08:00-10:30 | at 10:30 | C | app narrative, unsourced | data.js:89 | consistent |
-| kamensky@3 | 08:00-08:45 | early 60 | 08:00-08:45 | none | - | - | - | early (unresolved conflict) |
-| kamensky@4 | 08:45-09:30 | early 15 | 08:45-09:30 | none | - | - | - | early (unresolved conflict) |
-| kollo@4 | 08:45-09:30 | early 45 | 08:45-10:15 | at 10:15 | B | app narrative, unsourced | data.js:88 | consistent |
-| bag@5 | 04:00-10:30 | consistent | 09:30-10:30 | dep 09:30 | B | app narrative, unsourced | data.js:86 | consistent |
-| bag@6 | 10:30-11:15 | early 45 | 11:15-11:25 (arrival derived) | dep 11:15 | B | app narrative, unsourced | data.js:97 | consistent |
-| bag@8 | 12:45-14:30 | early 120 | 16:30-16:45 (arrival derived) | dep 16:30 | C | app narrative, unsourced | data.js:122 | consistent |
-
-**Anchors whose window moved only as a consequence** (the leg after a delayed anchor departs when it is reached; no time
-written): `gqg@7` 11:15-12:45 → 12:40-12:45; `sthilaire@4` 08:45-09:30 → 09:15-09:30; `sthilaire@8` 12:45-14:30 → 14:00-14:30;
-`vandamme@4` 08:45-09:30 → 09:14-09:30; `vandamme@8` 12:45-14:30 → 13:15-14:30; `legrand@9` 14:30-17:00 → 15:00-17:00;
-`friant@3` 08:00-08:45 → 08:30-08:45; `rivaud@6` 08:45-11:15 → 09:09-11:15; `guard_inf@9` 12:45-17:00 → 14:00-17:00;
-`c_gren@8` 12:45-14:30 → 14:00-14:30; `kienmayer@9` and `dok@9` 14:30-17:00 → 15:00-17:00; `lang@7` 09:30-12:45 →
-10:30-12:45; `kollo@5` 09:30-10:30 → 10:15-10:30; `bag@7` 11:15-12:45 → 11:25-12:45; `bag@9` 14:30-17:00 → 16:45-17:00.
-None changes verdict.
-
-**How each was read (inference, stated in each `tm.note`).** The climb (Saint-Hilaire, Vandamme): the texts date its start,
-c. 08:45; Pratzen village is passed c. 09:00 but the end of the climb is not dated, and 2.5 km at the infantry ceiling takes
-30 minutes, so the arrival is derived (09:15, 09:14). Rivaud "follows Soult": it cannot start before Soult. Napoleon: "moves
-forward ... c. 12:00" and the Zuran "vacated about noon" date a departure; the existing 40-minute march gives 12:40. The wheel
-is a range, used whole for Saint-Hilaire, the Guard infantry, the grenadiers and Legrand ("as the trap closes"); **not for
-Vandamme**: his next anchor, the height above Augezd c. 14:30, is 3.3 km on (40 minutes at the ceiling), so an arrival at
-14:00 would break the ceiling; he gets the start, 13:00, and a derived arrival (13:15). Legrand retakes Telnitz "for good":
-Telnitz changed hands until about 15:00. Friant's phase-2 anchor is the position behind the stream *after* Telnitz is retaken
-c. 08:30. Jurczek's attack on the summit, c. 10:15, is Kollowrat's arrival; Langeron's reinforcements, c. 10:30, his (the event
-it rests on is itself graded a reconstruction, so C). Bagration begins falling back c. 11:15 (derived arrival 11:25) and
-withdraws on Rausnitz c. 16:30, a time that dates the end of organised resistance, not his own move (§M.6), hence C. Kienmayer
-and Dokhturov fall back "under fire": not before the causeway is under fire, c. 14:30, and over the neck before the ice is
-fired on, c. 15:00.
-
-**Friant's phase-1 anchor, re-reviewed (a correction to §M).** §M counted `friant@1` early by 60, matching "the leading
-brigade reaches the Goldbach c. 08:00" to it. That statement dates the arrival *at the Goldbach*, which is the leg into
-`friant@2` (the `davout` event's marker is that anchor), not this waypoint 1.4 km short of the stream; the waypoint's own
-march from Raigern is undated. So `friant@1` gets no time and is **undetermined** (its act, "Marching from Raigern toward
-Telnitz", is shown while the leg 1→2 is in motion, 07:00-08:30). §M's count of 22 early moves is therefore 21 on this reading.
-
-**The audit's rule, made explicit (a correction to §M's prose).** §M's verdicts were made by hand; the audit now records,
-for each reviewed statement, *what it dates* for that move (its start, the arrival, an action during the move, or the
-whole move as a span) and computes the verdict against the live engine window, so re-running it re-derives every verdict.
-The tolerance that reproduces §M's table is **a difference of 15 minutes or more counts** (§M's prose said "plus or minus
-15", but its table counts three 15-minute cases as early). On the Stage 1B data the computed verdicts reproduce §M's
-exactly, except `friant@1` (above); two sizes differ because the statement's kind is now explicit: `rivaud@3` (the start:
-285 minutes, not "at least 15") and `vandamme@7` (the start: 105, not 75).
-
-### M.9 The three disagreeing texts (decision 42): not settled; the sources could not be read
-
-The project cites Duffy (1977) and Smith (1998); the Sources panel names no other source for these hours. Neither book is
-in the repository, and this environment's network policy blocked every host tried (archive.org: HTTP 403 from the proxy;
-Google Books, HathiTrust, Open Library, Gallica, Wikipedia: no connection). No web summary or AI output was used. So, under
-decision 42, **all three conflicts are left unresolved, with today's timing**, and listed:
-
-| conflict | the app's texts | kept (today's behaviour) | listed in |
-|---|---|---|---|
-| Dokhturov's descent | phase 1 timeline "c. 07:30 Dokhturov's I Column begins descending" (`data.js:63`) against the event "columns begin to leave the plateau", 04:00-07:00 (`analysis.js:236`) | `dok@1` reached 07:00, moving from 04:00 (early 30 on the timeline's reading) | the Sources panel's open questions (`SOURCE_NOTE`, new sentence); `chronology.js` CONFLICTS |
-| Kamensky's turn | phase 4 timeline "c. 09:45 Kamensky turns his brigade about and drives the 10e Legere off the crest" (`data.js:87`) and the event at 09:45 (`analysis.js:279`), against his own act in phase 3, 08:45-09:30 (`data.js:500`) | `kamensky@3` reached 08:45 and `kamensky@4` 09:30 (early 60 and 15); `kamensky@4` is dated by the same timeline entry, so it stays with the conflict | as above |
-| Rapp's counter-charge | phase 6 timeline "c. 11:45 Bessieres and Rapp counter-charge" (`data.js:104`) against the event `guard-broken`, 11:15-13:15 (`analysis.js:299`) | `guard_cav@6` reached 11:15 (early 30) | as above |
-
-The regression allows exactly these four anchors, by name, to remain early (`chronology.js --check`). Settling them needs
-the pages of Duffy (1977) and Smith (1998), or another source added to the Sources panel.
-
-### M.10 Creeping moves (decision 45)
-
-Dated start, given a departure: **Caffarelli and Suchet** (phase 5, c. 09:30, "Lannes advances along the highway"),
-**Bagration** (phase 5, c. 09:30, "Bagration counter-attacks"), **Rivaud** (phase 3, after Soult's advance c. 08:45; §M.8).
-Each now holds until then and moves 09:30-10:30 (Rivaud 08:45-09:09). **Undated, kept as they are and listed:** Kellermann,
-Nansouty and d'Hautpoul to phase 5 (the texts date the cavalry collision, c. 10:40, not the start of their move); the Allied
-headquarters to phase 3 (the emperors "join the column about 08:30-09:00"; its departure from Krzenowitz is not dated); the
-Russian Guard cavalry to phase 6 (its attack is "after 11:00"; its start is not dated). Between anchors their dossiers show
-"interpolated", as before.
-
-### M.11 Events and the interface (decisions 44, 46)
-
-**Events** (fact; nearest named formation by `sim-test.js`'s rule):
-
-| event | was | is | marker | agreement on the new tracks |
-|---|---|---|---|---|
-| `soult` "Saint-Hilaire and Vandamme climb the slope" | t 525 (08:45) | **t [525, 555]** (08:45-09:15: the climb, a process; its end is the derived arrival, §M.8) | kept at [262,262]: it lies 0.2 km off the corrected track, which passes it at about 09:10, inside the new window | Saint-Hilaire 0.20 km at 09:10 (was 0.44 km at 08:45) |
-| `pratzen-village` "Thiebault's brigade clears Pratzen village" | t 540 (09:00), tolerance 1.5 km | **time kept**: "c. 09:00" is what the texts say, and the check passes at 09:00 on the new track; only its written reason changed, because it described the old track ("the division's plotted centre lies between the village and the Pratzeberg" → "at about 09:00 the division's plotted centre is still climbing the western slope below it") | the village, [276,243] (not engine-fitted) | 1.21 km at 09:00 (was 1.14), under the same 1.5 km |
-| `hq-forward` "Napoleon moves forward to Stare Vinohrady" | t 720 (12:00) | **t [720, 760]** (the move, 12:00-12:40): a consequence of `gqg@6`'s dated departure, needed because at 12:00 Napoleon is now still at the Zuran, 4.8 km from the marker | kept at [309,207], the destination | 0.00 km at 12:40 (was 0.32 at 12:00) |
-
-The decision named `pratzen-village` for re-dating on the strength of §M.3's sketch (b-shift), which moved Saint-Hilaire later
-than this task does; on the corrected track re-dating it would detach it from the text's "c. 09:00", so it was not done. No
-other event changed; `sim-test.js` reports 0 disagreements with its 1 km rule unchanged, worst 0.82 km (telnitz, unchanged).
-
-**The interface during a delayed move** (fact; `node tools/stage2/delayed-moves.js`, before and after in
-`docs/stage2-evidence/delayed-moves.md`). Inconsistent before: while a dated move had not begun inside its phase, the
-dossier's "Doing now" and the counter's status already showed the phase's act (e.g. Napoleon at 11:30 "moves forward" while
-the Stage 1B engine already had him at Stare Vinohrady; at 12:45 Saint-Hilaire "wheels south" 15 minutes before the dated
-wheel). Fixed in presentation only (`waitingFor`, `textPhase`, `liveStatus`, `timingNow`; the model is unchanged): until the
-dated departure the counter, the block's pose, the smoke, the selection chip and the dossier use the previous anchor's act
-and status; the dossier adds a row "From hh:mm: <the phase's act>" and its timeline shows the move as "From hh:mm"; the
-dispatch's "What changed" list prefixes such acts with "From hh:mm:"; the dossier repaints when a selected formation's move
-begins or ends inside a phase (it repainted only at phase changes before). Every explicitly timed move shows a "Timing" pill
-with its grade, and in the full dossier the window, whether the arrival is derived, the basis, the quoted evidence and the
-note; the footer adds the grade's meaning. During a move the existing "interpolated" marker shows, as before. Study view at a
-phase start and Watch view during a move were checked in the probe's eight states; the arrow of each phase is §C.1's re-run
-(no `OVERLAYS` change: 2C's).
-
-**A consequence for `check:visual` (fact).** Caffarelli's dated advance (09:30-10:30) puts his counter among the cavalry
-reserve's at 10:00, where the hybrid-dimmed harness view looks: the Stage 0 counter fallback (20 positions, then 80% and 64%
-size) then left four counters overlapping (Caffarelli, d'Hautpoul, Walther, Drouet), a threshold failure. Adding those
-pairs to the allowance would loosen it, so the fallback was extended instead: after its 20 positions it tries a ring of ten
-wider ones (`declutter`, `app.js`), which only a counter that found no place before can reach. The view now has no overlap,
-the Stage 0 Walther / Nansouty residual included, so that allowance is removed from `thresholds.js` (decision 24 had put
-this in 2D). 2D's DOM layer replaces this canvas pass in any case.
-
-### M.12 Derived readings and text (re-derived, not loosened)
-
-| reading (who checks it) | before (Stage 1B) | after |
-|---|---|---|
-| centre separation first reported (situation line; `sim-test.js` "not cut before the battle") | 08:26, reported until 14:14 | **09:03**, until 14:52 |
-| plateau Allied / French at 08:45 (`sim-test.js` series) | 23,550 / 13,300, ARMY CUT | 23,550 / **0**, not cut |
-| plateau at 09:30, 11:00, 12:00 | 18,150 / 13,300; 17,050 / 20,300; 4,250 / 37,500 | unchanged |
-| plateau at 14:00 | 0 / 18,500 | 0 / **30,900** (the wheel now leaves the plateau 13:00-14:00) |
-| plateau at 04:00, 07:00, 08:00, 16:00; tour stop 4's 38,700 and 19,300 (first reached 07:07) | 38,700; 27,000; 19,300; 0 / 18,500 | unchanged |
-| "the centre empties before Soult attacks"; "the French hold the plateau at 11:00" (`sim-test.js`) | yes; yes | yes; yes |
-| event agreement (`sim-test.js`, 1 km) | 0 disagreements, worst 0.82 km | 0, worst 0.82 km; `soult` 0.44 → 0.20, `pratzen-village` 1.14 → 1.21 (1.5 allowed, unchanged), `hq-forward` 0.32 → 0.00 |
-| march-rate audit (`audit.js`, `selfTest`, `redteam.js`): legs over the ceiling; fastest leg by arm (km/h) | 0; inf 3.41, hq 7.15, mixed 1.11 | 0; inf **4.97** (Saint-Hilaire's climb), hq **7.62**, mixed **3.87**; cav, guard, art unchanged |
-| `redteam.js` mean march rates, infantry / cavalry (km/h) | 0.77 / 0.82 | **1.28** / 0.82: its warning "cavalry mean rate is not above infantry" now fires (a warning, not a finding). Cause: the dated moves are shorter and faster; the cavalry's slow legs are the undated creeping moves of §M.10. Not changed |
-| Command view, enemy formations seen / uncertain / unknown at each phase's midpoint, French eyes | phases 5-8: 2/2/9, 4/0/9, 9/0/4, 7/0/6 | 4/2/7, 6/0/7, 7/0/6, 8/0/5 (phases 0-4 and 9 unchanged) |
-| the same, Allied eyes | phases 2-3: 3/1/14, 5/1/12 | 4/1/13, 6/1/11 (the rest unchanged) |
-| formations moved at the harness clocks, against Stage 1B | - | 08:20: 8 (largest Rivaud 1,656 m); 09:30: 6 (Bagration 1,607 m); 09:45: 7 (Bagration 1,205 m); 09:50: 7 (1,071 m); 10:00: 7 (803 m) |
-| chronology audit (`chronology.js --check`) | 70 moves with a timed statement: 48 consistent, 22 early | 69 (friant@1 re-reviewed): **65 consistent, 4 early (the unresolved conflicts, by name), 0 late** |
-| arrow binding (§C.1): derivable on the executed leg | 1 | 4 |
-
-**Text against the derived readings (searched: narrative, tour, analysis, dispatch, command and dossier text).** Tour stop 4
-("about 39,000 at 04:00 to about 19,000 by 07:15") still matches (first reached at 07:07). Tour stop 8 ("in two halves", clock
-14:40) and the chapter "The destruction of the Allied left" (14:40) now fall inside the centre-separation interval; on the
-Stage 1B tracks the reading had already stopped at 14:14, so the new timing removes that inconsistency. The chapter "The
-attack on the Pratzen" (clock 08:47) no longer shows the army as cut and the French as holding 13,300 on the plateau, which
-matches its text ("At about 08:45 they climbed the western slope"). No text states the centre-separation time, the knowledge
-counts or the march rates. **Nothing needed correcting; nothing is flagged.**
-

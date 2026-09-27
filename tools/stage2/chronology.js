@@ -1,11 +1,6 @@
 #!/usr/bin/env node
 /* Stage 2 Part A, section M: the chronology audit. Reads the live data; changes nothing.
-   node tools/stage2/chronology.js [--md out.md] [--json out.json] [--evidence] [--times] [--check]
-   --times  every explicit anchor time (tm, owner decisions 40-41): window, grade, basis, and each evidence quote resolved
-            to its current file:line;
-   --check  the regression (npm run check:chronology): exits 1 if any move with a timed statement is early or late, other
-            than the unresolved conflicts named in CONFLICTS; if any explicit time lacks evidence, grade or basis, or quotes
-            text that is not in the sources; or if the movement audit reports a timing or march-rate finding.
+   node tools/stage2/chronology.js [--md out.md] [--json out.json] [--evidence]
 
    For every anchor (a track entry with a position) of every formation:
    - the engine's movement window: legWindow(previous anchor, anchor) (app.js), i.e. from the previous anchor's phase start
@@ -13,7 +8,6 @@
    - every timed statement about the formation in the app's own data: phase timelines ("c. 11:45 ...") and ledes, EVENTS
      (by their forms list and by names), the anchors' act / obj text, formation notes, analysis chapters (their text and the
      clock each chapter sets), tour stops (text and clock), features, the command-knowledge text, and comments in data.js;
-     since the chronology data task an anchor may carry its own time (tm.at, tm.dep), and legWindow returns the real window;
    - a statement is attached to the anchor whose phase contains its time (the reading that an anchor's text describes its
      phase); REVIEW below records, by hand, for each attached statement whether it describes the anchor's action, and the
      verdict with its evidence.
@@ -88,134 +82,107 @@ SRC["data.js"].forEach((l,i)=>{ const c=/\/\*(.*?)\*\//.exec(l); if(c&&/track|ti
 ST.filter(s=>s.src==="comment data.js:496").forEach(s=>s.forms=["prz"]);
 module.exports={ST,X,hm,lineOf,namesIn,timesIn};
 
-/* ---- the review: what each timed statement dates, recorded by hand (docs/STAGE2_SPEC.md section M) ----
-   [the verdict section M recorded (frozen, for comparison), kind, text time from, text time to (minutes; null = open),
-    evidence (file:line when section M was written), note, flag].
-   kind says what the statement dates for THIS anchor's move; the verdict is then COMPUTED against the live engine window
-   [start, arrival] (legWindow), so re-running the audit after a timing change re-derives every verdict:
-     start    the move's beginning:    early if start <= from - 15;  late if start >= to + 15
-     arrival  when the anchor is reached: early if arrival <= from - 15;  late if arrival >= to + 15
-     during   an action that is (part of) the move: early if arrival <= from - 15;  late if start >= to + 15
-     span     the move from beginning to end: early if arrival <= to - 15 or start <= from - 15;  late if start >= from + 15
-              or arrival >= to + 15
-   A difference of 15 minutes or more counts (section M's tolerance; its prose said "plus or minus 15"). Size = the text's
-   time minus the engine's (positive = early). A kind of null: no timed statement about this move ("undetermined").
-   Unlisted anchors: under 250 m of movement "minor"; phase 9 "nightfall"; otherwise "undetermined". Flag "creep": the engine
-   spread the move from 04:00 although the text starts it later; it is reported while the engine still starts it 15 minutes
-   or more before the text's time. */
+/* ---- the review: verdicts made by hand on the attached statements (docs/STAGE2_SPEC.md §M) ----
+   [verdict, text time from, text time to (minutes; null = open), size in minutes (positive = the engine is early),
+    evidence (file:line), note]. A verdict needs a timed statement about THIS anchor's action; statements that only fall
+   in the same phase are not enough. Unlisted anchors: under 250 m of movement "minor"; phase 9 "nightfall"; otherwise
+   "undetermined". Flag "creep": the engine spreads a move over hours from 04:00 where the text puts it later. */
 const T=(h,m)=>h*60+(m||0);
 const REVIEW={
- "gqg@6":["early","during",T(12),T(12),"data.js:105; analysis.js:303","the move to Stare Vinohrady is c. 12:00; the engine arrives 11:15"],
+ "gqg@6":["early",T(12),T(12),45,"data.js:105; analysis.js:303","the move to Stare Vinohrady is c. 12:00; the engine arrives 11:15"],
  "gqg@7":["undetermined",null,null,null,"analysis.js:51","the order to wheel is untimed; the wheel itself is 13:00-14:00"],
- "heightguns@8":["consistent","during",T(14,30),T(15),"data.js:120; analysis.js:323; analysis.js:327","the causeway under fire from c. 14:30; the engine's battery arrives 14:30"],
+ "heightguns@8":["consistent",T(14,30),T(15),0,"data.js:120; analysis.js:323; analysis.js:327","the causeway under fire from c. 14:30; the engine's battery arrives 14:30"],
  "sthilaire@2":["undetermined",null,null,null,"data.js:72; analysis.js:263","the crossing is untimed; the release is 08:25-08:45"],
- "sthilaire@3":["early","start",T(8,45),T(9),"data.js:78; data.js:79; analysis.js:267; analysis.js:271; analysis.js:31; analysis.js:353","the climb starts c. 08:45 and Pratzen village is cleared c. 09:00; the engine climbs 08:00-08:45 (start 45 min early, arrival at least 15)"],
- "sthilaire@4":["consistent","during",T(9),T(9,45),"data.js:79; data.js:87","the 10e Legere pushes for the summit from c. 09:00 and is on the crest before 09:45; the engine arrives 09:30"],
- "sthilaire@7":["early","span",T(13),T(14),"data.js:113; analysis.js:315; analysis.js:51","the wheel is 13:00-14:00; the engine wheels 11:15-12:45 (arrival 75 min before the text's end, start 105 min before its start)"],
- "sthilaire@8":["consistent","during",T(13),T(14),"data.js:113; analysis.js:319","Sokolnitz falls c. 14:00, inside the engine's 12:45-14:30; note the act, shown in phase 8 (from 14:30), describes 13:00-14:00"],
- "vandamme@3":["early","start",T(8,45),T(9),"data.js:78; analysis.js:267; analysis.js:31; analysis.js:353","as Saint-Hilaire: the climb starts c. 08:45; the engine climbs 08:00-08:45"],
- "vandamme@6":["consistent","during",T(11),null,"data.js:103; analysis.js:295; data.js:564","the Guard attacks after 11:00 (hour not established); the engine arrives 11:15"],
- "vandamme@7":["early","start",T(13),T(14),"data.js:113; analysis.js:315; analysis.js:51","as Saint-Hilaire: the wheel is 13:00-14:00"],
- "vandamme@8":["consistent","arrival",T(14,30),T(14,30),"data.js:120; analysis.js:323","takes the height above Augezd c. 14:30; the engine arrives 14:30"],
- "legrand@1":["consistent","arrival",T(7),T(7),"data.js:62; analysis.js:244","Telnitz attacked c. 07:00; the engine's defenders are in place at 07:00"],
- "legrand@2":["consistent","arrival",T(8),T(8),"data.js:70; analysis.js:255","Sokolnitz attacked c. 08:00"],
- "legrand@7":["early","during",T(13),T(14),"data.js:113; analysis.js:51","the act ties the move to the trap closing, dated 13:00-14:00; the engine arrives 12:45 (at least 15 min early)"],
- "legrand@8":["early","arrival",T(15),T(15),"data.js:640","Telnitz changed hands until 15:00 and the act (phase 8) retakes it 'for good'; the engine arrives 14:30"],
- "friant@1":["early",null,null,null,"data.js:64; analysis.js:251","the statement it was matched to (the leading brigade reaches the Goldbach c. 08:00) dates the arrival at the Goldbach, which is the leg into friant@2 (the davout event's marker is that anchor); this waypoint's own move from Raigern is undated. Section M counted it early by 60 (re-reviewed in the chronology data task)"],
- "friant@2":["early","arrival",T(8,30),T(8,30),"data.js:71; analysis.js:259","Telnitz retaken c. 08:30; the engine arrives 08:00"],
- "friant@7":["consistent","during",T(12,30),T(12,30),"data.js:239; data.js:112; analysis.js:311","the act itself says 'at about 12:30'; the engine arrives 12:45"],
- "friant@8":["consistent","during",T(14),T(14),"analysis.js:319","Sokolnitz falls c. 14:00, inside the engine's 12:45-14:30"],
- "bourcier@7":["consistent","during",T(12,30),T(12,30),"analysis.js:311","Davout resumes c. 12:30; the engine arrives 12:45"],
- "caffarelli@5":["consistent","during",T(9,30),T(10,40),"data.js:86; data.js:95","Lannes advances c. 09:30, the cavalry collide c. 10:40; the engine arrives 10:30","creep"],
- "caffarelli@6":["consistent","arrival",T(11,15),T(11,15),"analysis.js:291","Blasowitz falls c. 11:15"],
- "suchet@5":["consistent","during",T(9,30),T(10,40),"data.js:86","as Caffarelli","creep"],
- "suchet@6":["consistent","arrival",T(11,15),T(11,15),"analysis.js:291","Blasowitz falls c. 11:15"],
- "kellermann@5":["consistent","during",T(10,40),T(10,40),"data.js:95","the collision c. 10:40; the engine arrives 10:30","creep"],
- "nansouty@5":["consistent","during",T(10,40),T(10,40),"data.js:95","the collision c. 10:40","creep"],
- "dhautpoul@5":["consistent","during",T(10,40),T(10,40),"data.js:95","the collision c. 10:40","creep"],
- "rivaud@3":["early","start",T(8,45),null,"data.js:78","the act (phase 3) 'Follows Soult onto the plateau'; Soult advances c. 08:45; the engine arrives 08:45 (at least 15 min early)","creep"],
- "drouet@6":["consistent","during",T(11),null,"data.js:103; analysis.js:299","the Guard attack after 11:00; the engine forms the line by 11:15"],
- "guard_inf@6":["consistent","during",T(11),null,"data.js:103; analysis.js:295","committed as the Russian Guard attacks, after 11:00; the engine arrives 11:15"],
- "guard_inf@7":["early","span",T(13),T(14),"analysis.js:315","the wheel (which names the Guard infantry) is 13:00-14:00; the engine moves 11:15-12:45"],
- "guard_cav@6":["early","during",T(11,45),T(11,45),"data.js:104; analysis.js:299; analysis.js:38","Rapp's counter-charge c. 11:45; the engine arrives 11:15. The texts disagree: the event's window starts 11:15 (analysis.js:299) and the chapter's clock is 11:20 (analysis.js:38)"],
- "c_gren@7":["early","span",T(13),T(14),"analysis.js:315","the wheel (which names the grenadiers) is 13:00-14:00; the engine moves 11:15-12:45"],
- "c_gren@8":["consistent","during",T(13),T(14),"analysis.js:315","the wheel 13:00-14:00 inside the engine's 12:45-14:30"],
- "ahq@3":["consistent","during",T(8,30),T(9),"data.js:411; data.js:412; analysis.js:96","the emperors join the column about 08:30-09:00; the engine arrives 08:45; but the headquarters is 'at Krzenowitz' in phase 0 and the engine moves it from 04:00","creep"],
+ "sthilaire@3":["early",T(8,45),T(9),45,"data.js:78; data.js:79; analysis.js:267; analysis.js:271; analysis.js:31; analysis.js:353","the climb starts c. 08:45 and Pratzen village is cleared c. 09:00; the engine climbs 08:00-08:45 (start 45 min early, arrival at least 15)"],
+ "sthilaire@4":["consistent",T(9),T(9,45),0,"data.js:79; data.js:87","the 10e Legere pushes for the summit from c. 09:00 and is on the crest before 09:45; the engine arrives 09:30"],
+ "sthilaire@7":["early",T(13),T(14),75,"data.js:113; analysis.js:315; analysis.js:51","the wheel is 13:00-14:00; the engine wheels 11:15-12:45 (arrival 75 min before the text's end, start 105 min before its start)"],
+ "sthilaire@8":["consistent",T(13),T(14),0,"data.js:113; analysis.js:319","Sokolnitz falls c. 14:00, inside the engine's 12:45-14:30; note the act, shown in phase 8 (from 14:30), describes 13:00-14:00"],
+ "vandamme@3":["early",T(8,45),T(9),45,"data.js:78; analysis.js:267; analysis.js:31; analysis.js:353","as Saint-Hilaire: the climb starts c. 08:45; the engine climbs 08:00-08:45"],
+ "vandamme@6":["consistent",T(11),null,0,"data.js:103; analysis.js:295; data.js:564","the Guard attacks after 11:00 (hour not established); the engine arrives 11:15"],
+ "vandamme@7":["early",T(13),T(14),75,"data.js:113; analysis.js:315; analysis.js:51","as Saint-Hilaire: the wheel is 13:00-14:00"],
+ "vandamme@8":["consistent",T(14,30),T(14,30),0,"data.js:120; analysis.js:323","takes the height above Augezd c. 14:30; the engine arrives 14:30"],
+ "legrand@1":["consistent",T(7),T(7),0,"data.js:62; analysis.js:244","Telnitz attacked c. 07:00; the engine's defenders are in place at 07:00"],
+ "legrand@2":["consistent",T(8),T(8),0,"data.js:70; analysis.js:255","Sokolnitz attacked c. 08:00"],
+ "legrand@7":["early",T(13),T(14),15,"data.js:113; analysis.js:51","the act ties the move to the trap closing, dated 13:00-14:00; the engine arrives 12:45 (at least 15 min early)"],
+ "legrand@8":["early",null,T(15),30,"data.js:640","Telnitz changed hands until 15:00 and the act (phase 8) retakes it 'for good'; the engine arrives 14:30"],
+ "friant@1":["early",T(7,45),T(8,15),60,"data.js:64; analysis.js:251","the leading brigade reaches the Goldbach c. 08:00 (07:45-08:15); the engine arrives 07:00; the act shown 07:00-08:00 says 'Marching from Raigern'"],
+ "friant@2":["early",T(8,30),T(8,30),30,"data.js:71; analysis.js:259","Telnitz retaken c. 08:30; the engine arrives 08:00"],
+ "friant@7":["consistent",T(12,30),T(12,30),-15,"data.js:239; data.js:112; analysis.js:311","the act itself says 'at about 12:30'; the engine arrives 12:45"],
+ "friant@8":["consistent",T(14),T(14),0,"analysis.js:319","Sokolnitz falls c. 14:00, inside the engine's 12:45-14:30"],
+ "bourcier@7":["consistent",T(12,30),T(12,30),-15,"analysis.js:311","Davout resumes c. 12:30; the engine arrives 12:45"],
+ "caffarelli@5":["consistent",T(9,30),T(10,40),0,"data.js:86; data.js:95","Lannes advances c. 09:30, the cavalry collide c. 10:40; the engine arrives 10:30","creep"],
+ "caffarelli@6":["consistent",T(11,15),T(11,15),0,"analysis.js:291","Blasowitz falls c. 11:15"],
+ "suchet@5":["consistent",T(9,30),T(10,40),0,"data.js:86","as Caffarelli","creep"],
+ "suchet@6":["consistent",T(11,15),T(11,15),0,"analysis.js:291","Blasowitz falls c. 11:15"],
+ "kellermann@5":["consistent",T(10,40),T(10,40),-10,"data.js:95","the collision c. 10:40; the engine arrives 10:30","creep"],
+ "nansouty@5":["consistent",T(10,40),T(10,40),-10,"data.js:95","the collision c. 10:40","creep"],
+ "dhautpoul@5":["consistent",T(10,40),T(10,40),-10,"data.js:95","the collision c. 10:40","creep"],
+ "rivaud@3":["early",T(8,45),null,15,"data.js:78","the act (phase 3) 'Follows Soult onto the plateau'; Soult advances c. 08:45; the engine arrives 08:45 (at least 15 min early)","creep"],
+ "drouet@6":["consistent",T(11),null,0,"data.js:103; analysis.js:299","the Guard attack after 11:00; the engine forms the line by 11:15"],
+ "guard_inf@6":["consistent",T(11),null,0,"data.js:103; analysis.js:295","committed as the Russian Guard attacks, after 11:00; the engine arrives 11:15"],
+ "guard_inf@7":["early",T(13),T(14),75,"analysis.js:315","the wheel (which names the Guard infantry) is 13:00-14:00; the engine moves 11:15-12:45"],
+ "guard_cav@6":["early",T(11,45),T(11,45),30,"data.js:104; analysis.js:299; analysis.js:38","Rapp's counter-charge c. 11:45; the engine arrives 11:15. The texts disagree: the event's window starts 11:15 (analysis.js:299) and the chapter's clock is 11:20 (analysis.js:38)"],
+ "c_gren@7":["early",T(13),T(14),75,"analysis.js:315","the wheel (which names the grenadiers) is 13:00-14:00; the engine moves 11:15-12:45"],
+ "c_gren@8":["consistent",T(13),T(14),0,"analysis.js:315","the wheel 13:00-14:00 inside the engine's 12:45-14:30"],
+ "ahq@3":["consistent",T(8,30),T(9),0,"data.js:411; data.js:412; analysis.js:96","the emperors join the column about 08:30-09:00; the engine arrives 08:45; but the headquarters is 'at Krzenowitz' in phase 0 and the engine moves it from 04:00","creep"],
  "ahq@6":["undetermined",null,null,null,"data.js:414","the fall-back to Krzenowitz is untimed; the act places it in phase 6 (from 11:15), after the engine's arrival"],
  "buxhowden@7":["undetermined",null,null,null,"data.js:106; analysis.js:307","the statements (still unaware c. 12:00) concern knowledge, not the move"],
- "kienmayer@1":["consistent","arrival",T(7),T(7),"data.js:62; analysis.js:244","attacks Telnitz c. 07:00; the engine arrives 07:00"],
- "kienmayer@8":["early","span",T(14,30),T(15),"data.js:120; data.js:121; analysis.js:327","the act falls back 'under artillery fire'; the causeway is under fire from c. 14:30 and the ice c. 15:00; the engine completes the move by 14:30"],
- "kienmayer@9":["consistent","during",T(15),T(15),"analysis.js:327","fire on the ice c. 15:00, inside the engine's 14:30-17:00"],
- "dok@1":["early","during",T(7,30),null,"data.js:63","the column 'begins descending' c. 07:30; the engine completes the descent by 07:00. The texts disagree: the event 'columns begin to leave the plateau' is 04:00-07:00 (analysis.js:236), which agrees with the engine"],
- "dok@2":["consistent","during",T(7),T(9),"analysis.js:26","the columns descend into the villages between 07:00 and 09:00"],
- "dok@8":["early","span",T(14,30),T(15),"data.js:120; analysis.js:327","as Kienmayer: the retreat over the meres is under fire from c. 14:30-15:00; the engine completes it by 14:30"],
- "dok@9":["consistent","during",T(15),T(15),"analysis.js:327","the ice c. 15:00, inside 14:30-17:00"],
- "lang@1":["consistent","during",T(4),T(7),"analysis.js:236","the columns leave the plateau 04:00-07:00"],
- "lang@2":["consistent","arrival",T(8),T(8),"data.js:70; analysis.js:255","attacks Sokolnitz c. 08:00"],
- "lang@4":["early","arrival",T(10,30),T(10,30),"data.js:89; analysis.js:283","the reinforcements are sent up c. 10:30; the engine completes the move by 09:30"],
- "lang@7":["consistent","during",T(12,30),T(12,30),"data.js:469; data.js:112","the act: driven back 'at about 12:30'; the engine arrives 12:45"],
- "kamensky@3":["early","during",T(9,45),T(9,45),"data.js:87; analysis.js:279","turns about c. 09:45 (timeline and event); the engine arrives 08:45. The texts disagree: the act puts the turn in phase 3 (08:45-09:30)"],
- "kamensky@4":["early","during",T(9,45),T(9,45),"data.js:87; analysis.js:279","drives the 10e Legere off the crest c. 09:45; the engine arrives 09:30"],
- "kamensky@5":["consistent","during",T(10,15),T(10,15),"data.js:88","Jurczek's attack c. 10:15, inside the engine's 09:30-10:30"],
- "kamensky@6":["consistent","during",T(10,30),T(11),"analysis.js:283; analysis.js:287","the crest is lost c. 10:30 and firmly French by 11:00, inside 10:30-11:15"],
- "kamensky@7":["consistent","during",T(11,15),null,"data.js:483","the act: its route 'after 11:15'"],
- "prz@1":["consistent","during",T(4),T(7),"analysis.js:236","the columns leave the plateau 04:00-07:00"],
- "prz@2":["consistent","arrival",T(8),T(8),"data.js:70; analysis.js:255","goes for the castle c. 08:00"],
- "prz@8":["consistent","during",T(14),T(14,30),"data.js:496; analysis.js:319","written for the engine's rule: holds until surrounded c. 14:00, then 14:10-14:30"],
- "milo@2":["consistent","during",T(4,15),T(8),"analysis.js:240","held up by the counter-march 04:15-08:00"],
- "milo@3":["consistent","arrival",T(8,45),T(8,45),"data.js:78","caught as Soult appears c. 08:45; the engine arrives 08:45"],
- "milo@4":["consistent","during",T(9,15),T(9,15),"data.js:80; analysis.js:275","faces about c. 09:15, inside 08:45-09:30"],
- "kollo@2":["consistent","during",T(4,15),T(8),"analysis.js:240","held up by the counter-march 04:15-08:00"],
- "kollo@4":["early","arrival",T(10,15),T(10,15),"data.js:88","Jurczek attacks the Pratzeberg c. 10:15; the engine arrives 09:30"],
- "kollo@5":["consistent","during",T(10,15),T(11),"data.js:88; analysis.js:287","inside 09:30-10:30"],
- "lich@2":["consistent","during",T(4,15),T(8),"analysis.js:240","the counter-march 04:15-08:00"],
- "lich@5":["consistent","during",T(10,40),T(10,40),"data.js:95","the collision c. 10:40; the engine arrives 10:30"],
- "lich@6":["consistent","arrival",T(11,15),T(11,15),"analysis.js:291","Blasowitz falls c. 11:15"],
- "bag@5":["consistent","during",T(9,30),null,"data.js:86","counter-attacks from c. 09:30, inside the engine's 04:00-10:30","creep"],
- "bag@6":["early","start",T(11,15),null,"data.js:97","'begins falling back' c. 11:15; the engine moves 10:30-11:15 (start 45 min early)"],
- "bag@7":["consistent","during",T(11,15),null,"data.js:97","falling back from 11:15"],
- "bag@8":["early","during",T(16,30),T(16,30),"data.js:122","'withdraws on Rausnitz' c. 16:30; the engine completes the move by 14:30"],
- "rg_inf@6":["consistent","during",T(11),null,"data.js:564; data.js:103","committed around 11:00; the engine arrives 11:15"],
- "rg_inf@7":["consistent","during",T(11,45),T(13,15),"data.js:104; analysis.js:299","driven off after Rapp's charge, inside 11:15-12:45"],
- "rg_cav@6":["consistent","during",T(11),null,"data.js:103","takes the eagle after 11:00; the engine arrives 11:15","creep"],
- "rg_cav@7":["consistent","during",T(11,15),T(13,15),"analysis.js:299","inside the event's window"]
+ "kienmayer@1":["consistent",T(7),T(7),0,"data.js:62; analysis.js:244","attacks Telnitz c. 07:00; the engine arrives 07:00"],
+ "kienmayer@8":["early",T(14,30),T(15),30,"data.js:120; data.js:121; analysis.js:327","the act falls back 'under artillery fire'; the causeway is under fire from c. 14:30 and the ice c. 15:00; the engine completes the move by 14:30"],
+ "kienmayer@9":["consistent",T(15),T(15),0,"analysis.js:327","fire on the ice c. 15:00, inside the engine's 14:30-17:00"],
+ "dok@1":["early",T(7,30),null,30,"data.js:63","the column 'begins descending' c. 07:30; the engine completes the descent by 07:00. The texts disagree: the event 'columns begin to leave the plateau' is 04:00-07:00 (analysis.js:236), which agrees with the engine"],
+ "dok@2":["consistent",T(7),T(9),0,"analysis.js:26","the columns descend into the villages between 07:00 and 09:00"],
+ "dok@8":["early",T(14,30),T(15),30,"data.js:120; analysis.js:327","as Kienmayer: the retreat over the meres is under fire from c. 14:30-15:00; the engine completes it by 14:30"],
+ "dok@9":["consistent",T(15),T(15),0,"analysis.js:327","the ice c. 15:00, inside 14:30-17:00"],
+ "lang@1":["consistent",T(4),T(7),0,"analysis.js:236","the columns leave the plateau 04:00-07:00"],
+ "lang@2":["consistent",T(8),T(8),0,"data.js:70; analysis.js:255","attacks Sokolnitz c. 08:00"],
+ "lang@4":["early",T(10,30),T(10,30),60,"data.js:89; analysis.js:283","the reinforcements are sent up c. 10:30; the engine completes the move by 09:30"],
+ "lang@7":["consistent",T(12,30),T(12,30),-15,"data.js:469; data.js:112","the act: driven back 'at about 12:30'; the engine arrives 12:45"],
+ "kamensky@3":["early",T(9,45),T(9,45),60,"data.js:87; analysis.js:279","turns about c. 09:45 (timeline and event); the engine arrives 08:45. The texts disagree: the act puts the turn in phase 3 (08:45-09:30)"],
+ "kamensky@4":["early",T(9,45),T(9,45),15,"data.js:87; analysis.js:279","drives the 10e Legere off the crest c. 09:45; the engine arrives 09:30"],
+ "kamensky@5":["consistent",T(10,15),T(10,15),0,"data.js:88","Jurczek's attack c. 10:15, inside the engine's 09:30-10:30"],
+ "kamensky@6":["consistent",T(10,30),T(11),0,"analysis.js:283; analysis.js:287","the crest is lost c. 10:30 and firmly French by 11:00, inside 10:30-11:15"],
+ "kamensky@7":["consistent",T(11,15),null,0,"data.js:483","the act: its route 'after 11:15'"],
+ "prz@1":["consistent",T(4),T(7),0,"analysis.js:236","the columns leave the plateau 04:00-07:00"],
+ "prz@2":["consistent",T(8),T(8),0,"data.js:70; analysis.js:255","goes for the castle c. 08:00"],
+ "prz@8":["consistent",T(14),T(14,30),0,"data.js:496; analysis.js:319","written for the engine's rule: holds until surrounded c. 14:00, then 14:10-14:30"],
+ "milo@2":["consistent",T(4,15),T(8),0,"analysis.js:240","held up by the counter-march 04:15-08:00"],
+ "milo@3":["consistent",T(8,45),T(8,45),0,"data.js:78","caught as Soult appears c. 08:45; the engine arrives 08:45"],
+ "milo@4":["consistent",T(9,15),T(9,15),0,"data.js:80; analysis.js:275","faces about c. 09:15, inside 08:45-09:30"],
+ "kollo@2":["consistent",T(4,15),T(8),0,"analysis.js:240","held up by the counter-march 04:15-08:00"],
+ "kollo@4":["early",T(10,15),T(10,15),45,"data.js:88","Jurczek attacks the Pratzeberg c. 10:15; the engine arrives 09:30"],
+ "kollo@5":["consistent",T(10,15),T(11),0,"data.js:88; analysis.js:287","inside 09:30-10:30"],
+ "lich@2":["consistent",T(4,15),T(8),0,"analysis.js:240","the counter-march 04:15-08:00"],
+ "lich@5":["consistent",T(10,40),T(10,40),-10,"data.js:95","the collision c. 10:40; the engine arrives 10:30"],
+ "lich@6":["consistent",T(11,15),T(11,15),0,"analysis.js:291","Blasowitz falls c. 11:15"],
+ "bag@5":["consistent",T(9,30),null,0,"data.js:86","counter-attacks from c. 09:30, inside the engine's 04:00-10:30","creep"],
+ "bag@6":["early",T(11,15),null,45,"data.js:97","'begins falling back' c. 11:15; the engine moves 10:30-11:15 (start 45 min early)"],
+ "bag@7":["consistent",T(11,15),null,0,"data.js:97","falling back from 11:15"],
+ "bag@8":["early",T(16,30),T(16,30),120,"data.js:122","'withdraws on Rausnitz' c. 16:30; the engine completes the move by 14:30"],
+ "rg_inf@6":["consistent",T(11),null,0,"data.js:564; data.js:103","committed around 11:00; the engine arrives 11:15"],
+ "rg_inf@7":["consistent",T(11,45),T(13,15),0,"data.js:104; analysis.js:299","driven off after Rapp's charge, inside 11:15-12:45"],
+ "rg_cav@6":["consistent",T(11),null,0,"data.js:103","takes the eagle after 11:00; the engine arrives 11:15","creep"],
+ "rg_cav@7":["consistent",T(11,15),T(13,15),0,"analysis.js:299","inside the event's window"]
 };
-/* the three internal disagreements of section M (owner decision 42): settled against the sources, or left unresolved,
-   keeping today's timing, when the sources could not be read. Kamensky's drive off the crest (kamensky@4) is dated by the
-   same timeline entry as his turn, so it stays with that conflict. */
-const CONFLICTS=["dok@1","guard_cav@6","kamensky@3","kamensky@4"];
-const TOL=15;
-function judge(kind,from,to,w){
-  const s=w[0], e=w[1], hi=to==null?Infinity:to;
-  if(!kind) return ["undetermined",null];
-  if(kind==="start"){ if(s<=from-TOL) return ["early",from-s]; if(s>=hi+TOL) return ["late",hi-s]; return ["consistent",null]; }
-  if(kind==="arrival"){ if(e<=from-TOL) return ["early",from-e]; if(e>=hi+TOL) return ["late",hi-e]; return ["consistent",null]; }
-  if(kind==="during"){ if(e<=from-TOL) return ["early",from-e]; if(s>=hi+TOL) return ["late",hi-s]; return ["consistent",null]; }
-  if(kind==="span"){ if(e<=hi-TOL) return ["early",hi-e]; if(s<=from-TOL) return ["early",from-s];
-    if(s>=from+TOL) return ["late",from-s]; if(e>=hi+TOL) return ["late",hi-e]; return ["consistent",null]; }
-  throw new Error("unknown kind "+kind);
-}
 const MOTION=/\b(march|marches|marching|climbs|advances|falls back|retreats|escapes|pursues|moves|crosses|wheels|comes down|withdraws|follows|attacks|charges|presses|closes|breaks|retakes|seizes|turns)\b/i;
 function audit(){
   const rows=[];
   Object.entries(F).forEach(([id,f])=>{ if(!f.track) return; const A=X.anchorList(id);
     A.forEach((b,k)=>{ if(k===0||!b.p||!A[k-1].p) return; const a=A[k-1], w=X.legWindow(a,b);
       const m=Math.hypot(b.p[0]-a.p[0],b.p[1]-a.p[1])*X.GEOREF.KM_PER_MAP*1000, e=f.track[b.ph], key=id+"@"+b.ph, r=REVIEW[key];
-      let v,from=null,to=null,size=null,ev="",note="",flag="",was=null,kind=null;
-      if(r){ [was,kind,from,to,ev,note,flag]=r; [v,size]=judge(kind,from,to,w); }
+      let v,from=null,to=null,size=null,ev="",note="",flag="";
+      if(r){ [v,from,to,size,ev,note,flag]=r; }
       else if(m<250){ v="minor"; note="under 250 m of movement"; }
       else if(b.ph===9){ v="nightfall"; note="the phase-9 (after dark) position; reached at 17:00"; ev="data.js:125"; }
       else { v="undetermined"; note="no timed statement about this action"; }
       const actPhase=v==="undetermined"&&!!e.act&&MOTION.test(e.act);
       rows.push({key,id,side:f.nation==="fr"?"fr":"al",ph:b.ph,from:a.ph,start:w[0],end:w[1],moveMin:b.moveMin||null,metres:Math.round(m),
-        act:(e.act||"").slice(0,140),actLine:e.act?lineOf(e.act.slice(0,50)):"",verdict:v,was:was||v,kind,textFrom:from,textTo:to,size,evidence:ev||"",note:note||"",
-        creep:flag==="creep"&&from!=null&&w[0]<=from-TOL,creepResolved:flag==="creep"&&!(from!=null&&w[0]<=from-TOL),actPhase,
-        tm:b.tm||null,arrDerived:!!b.arrDerived,conflict:CONFLICTS.includes(key)});
+        act:(e.act||"").slice(0,140),actLine:e.act?lineOf(e.act.slice(0,50)):"",verdict:v,textFrom:from,textTo:to,size,evidence:ev||"",note:note||"",creep:flag==="creep",actPhase});
     }); });
   return rows;
 }
-module.exports.audit=audit; module.exports.REVIEW=REVIEW; module.exports.CONFLICTS=CONFLICTS;
-if(require.main===module&&!["--evidence","--times","--check"].some(a=>process.argv.includes(a))){
+module.exports.audit=audit; module.exports.REVIEW=REVIEW;
+if(require.main===module&&!process.argv.includes("--evidence")){
   const rows=audit(), cnt=(f)=>rows.filter(f).length, V=["consistent","early","late","undetermined","minor","nightfall"];
   console.log("movement anchors: "+rows.length);
   console.log("  "+V.map(v=>v+" "+cnt(r=>r.verdict===v)).join(", ")+"; creep "+cnt(r=>r.creep)+"; undetermined whose act describes the move in its phase "+cnt(r=>r.actPhase));
@@ -226,11 +193,9 @@ if(require.main===module&&!["--evidence","--times","--check"].some(a=>process.ar
   console.log("  early by (min): "+early.join(", ")+"; median "+early[Math.floor(early.length/2)]);
   rows.filter(r=>r.verdict==="early"||r.verdict==="late").forEach(r=>console.log("   "+r.key.padEnd(15)+" "+r.verdict+" "+r.size+" min | engine "+hm(r.start)+"-"+hm(r.end)+" | text "+(r.textFrom!=null?hm(r.textFrom):"")+(r.textTo!=null&&r.textTo!==r.textFrom?"-"+hm(r.textTo):"")+" | "+r.evidence));
   const md=process.argv.indexOf("--md"); if(md>0){
-    const L=["| anchor | side | engine window (departure-arrival) | explicit time | moved m | act (shown during the anchor's phase) | text time | what the text dates | verdict | minutes | section M verdict | evidence (when section M was written) | note |","|---|---|---|---|---:|---|---|---|---|---:|---|---|---|"];
-    const tt=v=>v==null?"":Array.isArray(v)?v.map(hm).join("-"):hm(v);
-    rows.forEach(r=>L.push("| "+r.key+" | "+r.side+" | "+hm(r.start)+"-"+hm(r.end)+(r.moveMin?" (moveMin "+r.moveMin+")":"")+(r.arrDerived?" (arrival derived)":"")+" | "+
-      (r.tm?[r.tm.dep!=null?"dep "+tt(r.tm.dep):"",r.tm.at!=null?"at "+tt(r.tm.at):""].filter(Boolean).join(", ")+", grade "+r.tm.gr:"-")+" | "+r.metres+" | "+(r.act?r.act.replace(/\|/g,"/")+" ("+r.actLine+")":"-")+" | "+
-      (r.textFrom!=null?hm(r.textFrom):"")+(r.textTo!=null&&r.textTo!==r.textFrom?"-"+hm(r.textTo):(r.textFrom!=null&&r.textTo==null?" onward":""))+" | "+(r.kind||"-")+" | "+r.verdict+(r.creep?" (creep)":"")+(r.creepResolved?" (creep resolved)":"")+(r.actPhase?" (act in phase)":"")+(r.conflict?" (unresolved conflict)":"")+" | "+(r.size==null?"":r.size)+" | "+r.was+" | "+r.evidence+" | "+r.note+" |"));
+    const L=["| anchor | side | engine window (arrival) | moved m | act (shown during the anchor's phase) | text time | verdict | minutes | evidence | note |","|---|---|---|---:|---|---|---|---:|---|---|"];
+    rows.forEach(r=>L.push("| "+r.key+" | "+r.side+" | "+hm(r.start)+"-"+hm(r.end)+(r.moveMin?" (moveMin "+r.moveMin+")":"")+" | "+r.metres+" | "+(r.act?r.act.replace(/\|/g,"/")+" ("+r.actLine+")":"-")+" | "+
+      (r.textFrom!=null?hm(r.textFrom):"")+(r.textTo!=null&&r.textTo!==r.textFrom?"-"+hm(r.textTo):(r.textFrom!=null&&r.textTo==null?" onward":""))+" | "+r.verdict+(r.creep?" (creep)":"")+(r.actPhase?" (act in phase)":"")+" | "+(r.size==null?"":r.size)+" | "+r.evidence+" | "+r.note+" |"));
     fs.writeFileSync(process.argv[md+1],L.join("\n")+"\n"); }
   const j=process.argv.indexOf("--json"); if(j>0) fs.writeFileSync(process.argv[j+1],JSON.stringify(rows,null,1));
 }
@@ -245,39 +210,4 @@ if(require.main===module&&process.argv.includes("--evidence")){
       mine.forEach(s=>console.log("   in phase: "+hm(s.a)+(s.b&&s.b!==s.a?"-"+hm(s.b):"")+(s.after?"+":"")+" ["+s.src+" "+s.where+"] "+s.text.slice(0,110)));
       inWin.forEach(s=>console.log("   in window: "+hm(s.a)+(s.b&&s.b!==s.a?"-"+hm(s.b):"")+" ["+s.src+" "+s.where+"] "+s.text.slice(0,110)));
     }); });
-}
-
-/* ---- explicit times: evidence resolved to file:line (decision 41) ---- */
-function quoteAt(q){   /* the statement itself, never the tm entry that quotes it */
-  for(const f of ["data.js","analysis.js"]){ const i=SRC[f].findIndex(l=>l.includes(q)&&!l.includes("tm:{")); if(i>=0) return f+":"+(i+1); }
-  return null; }
-function times(){
-  const out=[];
-  Object.entries(F).forEach(([id,f])=>{ if(!f.track) return; X.anchorList(id).forEach((b,k,A)=>{ if(!b.tm) return; const tm=b.tm;
-    const ev=(tm.ev||[]).map(q=>({q,at:quoteAt(q)}));
-    const bad=[]; if(!ev.length) bad.push("no evidence"); ev.forEach(e=>{ if(!e.at) bad.push("evidence not found in the sources: "+e.q); });
-    if(!/^[ABC]$/.test(tm.gr||"")) bad.push("no timing grade"); if(!/^(source|app narrative, unsourced)$/.test(tm.basis||"")) bad.push("no basis");
-    const tt=v=>v==null?null:Array.isArray(v)?v.map(hm).join("-"):hm(v);
-    out.push({key:id+"@"+b.ph,dep:tt(tm.dep),at:tt(tm.at),window:hm(b.w[0])+"-"+hm(b.w[1]),arrDerived:!!b.arrDerived,gr:tm.gr,basis:tm.basis,ev,note:tm.note||"",bad}); }); });
-  return out;
-}
-module.exports.times=times;
-if(require.main===module&&process.argv.includes("--times")){
-  times().forEach(t=>{ console.log(t.key.padEnd(14)+" "+t.window+(t.arrDerived?" (arrival derived)":"")+" | dep "+(t.dep||"-")+", at "+(t.at||"-")+" | grade "+t.gr+" | "+t.basis);
-    t.ev.forEach(e=>console.log("    "+(e.at||"NOT FOUND")+"  \""+e.q+"\""));
-    t.bad.forEach(x=>console.log("    ! "+x)); });
-}
-if(require.main===module&&process.argv.includes("--check")){
-  const rows=audit(), bad=[];
-  rows.filter(r=>(r.verdict==="early"||r.verdict==="late")&&!r.conflict).forEach(r=>bad.push(r.key+" is "+r.verdict+" by "+Math.abs(r.size)+" min (engine "+hm(r.start)+"-"+hm(r.end)+")"));
-  times().forEach(t=>t.bad.forEach(x=>bad.push(t.key+": "+x)));
-  CONFLICTS.forEach(k=>{ if(!rows.find(r=>r.key===k)) bad.push("named conflict "+k+" is not an anchor"); });
-  const ids=Object.keys(F).filter(id=>F[id].track);
-  /* the movement audit, as the suites run it, is checked by audit.js and selfTest; here only the explicit-time rules */
-  const early=rows.filter(r=>r.verdict==="early"), late=rows.filter(r=>r.verdict==="late"), withText=rows.filter(r=>r.kind);
-  console.log("chronology: "+withText.length+" moves with a timed statement: "+rows.filter(r=>r.kind&&r.verdict==="consistent").length+" consistent, "+
-    early.length+" early, "+late.length+" late; unresolved conflicts (decision 42, allowed by name): "+CONFLICTS.map(k=>{ const r=rows.find(q=>q.key===k); return k+" "+(r?r.verdict:"?"); }).join(", ")+
-    "; explicit times "+times().length);
-  console.log("errors: "+bad.length); bad.forEach(x=>console.log("  ! "+x));
-  process.exitCode=bad.length?1:0;
 }

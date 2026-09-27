@@ -1,10 +1,9 @@
 /* Known residuals, carried openly from Stage 0 into Stage 2 (the counter layer). Keyed to the exact
    case and pair, so any other overlap still fails. Remove each entry when it is fixed.
-   Removed in the chronology data task: hybrid-dimmed, Walther's and Nansouty's counters (Cavalry Reserve,
-   both dimmed) at the left screen edge, which the Stage 0 fallback (20 positions, then 80% and 64% size)
-   could not place. The fallback now tries a wider ring of positions after those 20 (app.js, declutter),
-   and the case has no overlap. There is no known residual. */
-const KNOWN={};
+   hybrid-dimmed: Walther's and Nansouty's counters (Cavalry Reserve, both dimmed) at the left
+   screen edge; the Stage 0 fallback (20 positions, then 80% and 64% size) finds no free place, and
+   the app itself reports it as unresolved in its label statistics. */
+const KNOWN={"hybrid-dimmed":["counter:nansouty / counter:walther"]};
 module.exports.KNOWN=KNOWN;
 /* Stage 0 guarantees, checked on every baseline case (harness --test). The numbers are the
    contract; each failure message says what a visitor would see. */

@@ -24,13 +24,7 @@
                anchor ph+1);
      "into":   the leg that arrives at anchor ph, completed as the phase begins (the movement the phase's
                own track entry describes).
-   The verdict is given for both.
-   Since the chronology data task (owner decisions 40-46) an anchor may be reached after its phase opens, or its move may
-   begin later in the phase (tm.at, tm.dep; legWindow gives each leg's real window), so a third reading is scored:
-     "exec":   the leg the model executes during the phase: every leg whose window overlaps [t0, t1) by a minute or more
-               is a candidate, and the arrow is derivable on it if its endpoints and heading match that leg one-to-one.
-   This is the rule recorded for 2C (STAGE2_SPEC section C): the arrow shown during phase ph depicts the leg the model
-   executes during phase ph. */
+   The verdict is given for both. */
 const {load}=require("./model.js"), fs=require("fs");
 const X=load(), G=X.GEOREF, M_PER_MAP=G.KM_PER_MAP*1000;
 const TOL_M=450, TOL_DEG=35;
@@ -117,28 +111,12 @@ Object.keys(X.OVERLAYS).map(Number).forEach(ph=>{
       else if(ci.dS<=TOL_M&&ci.dE<=TOL_M&&ci.hd!=null&&ci.hd<=TOL_DEG){ verdictInto="derivable"; whyInto="leg "+ci.from+"→"+ph+" within "+TOL_M+" m and "+TOL_DEG+" degrees"; }
       else { verdictInto="mismatch"; whyInto="leg "+ci.from+"→"+ph+": endpoints "+Math.round(ci.dS)+" / "+Math.round(ci.dE)+" m, heading "+(ci.hd==null?"-":Math.round(ci.hd))+" degrees"; }
     }
-    /* the "exec" reading: the legs the model executes during the phase */
-    let verdictExec=verdict, whyExec=why, execLegs=[];
-    if(verdict!=="interpretive"){
-      const id0=nm[0];
-      if(F[id0].track){ const A=X.anchorList(id0);
-        for(let k=1;k<A.length;k++){ const aa=A[k-1], bb=A[k]; if(!aa.p||!bb.p) continue; const w=X.legWindow(aa,bb);
-          const ov=Math.min(w[1],t1)-Math.max(w[0],t0); if(ov<1) continue;
-          const iv=[bb.p[0]-aa.p[0],bb.p[1]-aa.p[1]], im=Math.hypot(iv[0],iv[1])*M_PER_MAP;
-          execLegs.push({from:aa.ph,to:bb.ph,win:w,dS:d(S,aa.p),dE:d(E,bb.p),moved:im,hd:im>50?hdiff(v,iv):null}); } }
-      const ok=execLegs.filter(q=>q.dS<=TOL_M&&q.dE<=TOL_M&&q.hd!=null&&q.hd<=TOL_DEG);
-      const hm=t=>String(Math.floor(t/60)).padStart(2,"0")+":"+String(Math.round(t%60)).padStart(2,"0");
-      const desc=q=>"leg "+q.from+"→"+q.to+" ("+hm(q.win[0])+"-"+hm(q.win[1])+")";
-      if(ok.length){ verdictExec="derivable"; whyExec=desc(ok[0])+" within "+TOL_M+" m and "+TOL_DEG+" degrees"; }
-      else if(!execLegs.length){ verdictExec="mismatch"; whyExec=id0+" executes no leg during the phase"; }
-      else { verdictExec="mismatch"; whyExec=execLegs.map(q=>desc(q)+": endpoints "+Math.round(q.dS)+" / "+Math.round(q.dE)+" m, heading "+(q.hd==null?"-":Math.round(q.hd))+" degrees").join("; "); }
-    }
     /* the binding: derivable if either reading matches one-to-one; the reading is recorded */
     const binding=verdict==="interpretive"?"interpretive":
       (verdictInto==="derivable"&&verdict==="derivable")?"derivable (both)":verdictInto==="derivable"?"derivable (into)":verdict==="derivable"?"derivable (across)":"mismatch";
     const lenM=Math.hypot(v[0],v[1])*M_PER_MAP;
     rows.push({ph,clock:P.clock,i:ai,kind:a.kind,side:a.side,label:a.label,pts:a.pts,lenM:Math.round(lenM),named:nm,
-      verdict,why,verdictInto,whyInto,binding,verdictExec,whyExec,
+      verdict,why,verdictInto,whyInto,binding,
       namedMove:nm.map(id=>{ const c=byId[id]; return c?{id,dS:Math.round(c.dS),dE:Math.round(c.dE),moved:Math.round(c.moved),hd:c.hd==null?null:Math.round(c.hd),
         best:c.best&&{from:c.best.from,to:c.best.to,dS:Math.round(c.best.dS),dE:Math.round(c.best.dE),win:c.best.win}}:{id,absent:true}; }),
       nearest:cands.slice(0,3).map(c=>({id:c.id,dS:Math.round(c.dS),dE:Math.round(c.dE),moved:Math.round(c.moved),hd:c.hd==null?null:Math.round(c.hd)}))});
@@ -155,18 +133,17 @@ console.log("arrows "+rows.length+": across the phase: derivable "+count("deriva
   "; into the phase: derivable "+count("derivable","verdictInto")+", mismatch "+count("mismatch","verdictInto")+
   "; binding (either reading): derivable into "+count("derivable (into)","binding")+", derivable across "+count("derivable (across)","binding")+
   ", both "+count("derivable (both)","binding")+", interpretive "+count("interpretive","binding")+", mismatch "+count("mismatch","binding")+
-  "; the leg executed during the phase (the 2C rule): derivable "+count("derivable","verdictExec")+", mismatch "+count("mismatch","verdictExec")+
   "; other overlay items "+other.length+" (all interpretive). Tolerance "+TOL_M+" m at both ends, heading "+TOL_DEG+" degrees; 1 map unit = "+M_PER_MAP.toFixed(1)+" m.");
 const fmtN=r=>r.namedMove.map(n=>n.absent?n.id+" (absent)":n.id+" "+n.dS+"/"+n.dE+" m, moved "+n.moved+" m"+(n.hd==null?"":", "+n.hd+"°")+
   (n.best?"; best leg "+n.best.from+"→"+n.best.to+" "+n.best.dS+"/"+n.best.dE+" m":"")).join("; ");
-rows.forEach(r=>console.log("ph"+r.ph+" "+r.kind.padEnd(8)+r.side+" "+r.verdict.padEnd(13)+(r.verdict==="interpretive"?"":"into:"+r.verdictInto.padEnd(10)+"exec:"+r.verdictExec.padEnd(10)+"["+r.whyExec+"] ")+JSON.stringify(r.label)+"  "+r.why+(r.verdict==="interpretive"?"":" | into: "+r.whyInto)+(r.named.length?"  ["+fmtN(r)+"]":"")+
+rows.forEach(r=>console.log("ph"+r.ph+" "+r.kind.padEnd(8)+r.side+" "+r.verdict.padEnd(13)+(r.verdict==="interpretive"?"":"into:"+r.verdictInto.padEnd(10))+JSON.stringify(r.label)+"  "+r.why+(r.verdict==="interpretive"?"":" | into: "+r.whyInto)+(r.named.length?"  ["+fmtN(r)+"]":"")+
   "  nearest: "+r.nearest.map(n=>n.id+" "+n.dS+"/"+n.dE).join(", ")));
 const i=process.argv.indexOf("--json"); if(i>0) fs.writeFileSync(process.argv[i+1],JSON.stringify({TOL_M,TOL_DEG,rows,other},null,1));
 const m=process.argv.indexOf("--md"); if(m>0){
-  const L=["| ph | kind | side | label | length m | named | across the phase: start / end m, moved m, heading | best leg (phases): start / end m | nearest other candidates | verdict, across | verdict, into | binding | verdict, leg executed in the phase | reason |","|---|---|---|---|---:|---|---|---|---|---|---|---|---|---|"];
+  const L=["| ph | kind | side | label | length m | named | across the phase: start / end m, moved m, heading | best leg (phases): start / end m | nearest other candidates | verdict, across | verdict, into | binding | reason |","|---|---|---|---|---:|---|---|---|---|---|---|---|---|"];
   rows.forEach(r=>L.push("| "+r.ph+" | "+r.kind+" | "+r.side+" | "+r.label+" | "+r.lenM+" | "+(r.named.join(", ")||"-")+" | "+
     (r.namedMove.map(n=>n.absent?n.id+": absent":n.id+": "+n.dS+" / "+n.dE+", "+n.moved+(n.hd==null?"":", "+n.hd+"°")).join("; ")||"-")+" | "+
     (r.namedMove.filter(n=>n.best).map(n=>n.id+": "+n.best.from+"→"+n.best.to+", "+n.best.dS+" / "+n.best.dE).join("; ")||"-")+" | "+
-    r.nearest.filter(n=>!r.named.includes(n.id)).slice(0,2).map(n=>n.id+" "+n.dS+" / "+n.dE).join("; ")+" | **"+r.verdict+"** | "+(r.verdict==="interpretive"?"-":"**"+r.verdictInto+"**")+" | **"+r.binding+"** | "+(r.verdict==="interpretive"?"-":"**"+r.verdictExec+"**")+" | "+(r.verdict==="interpretive"?r.why:"across: "+r.why+"; into: "+r.whyInto+"; executed: "+r.whyExec)+" |"));
+    r.nearest.filter(n=>!r.named.includes(n.id)).slice(0,2).map(n=>n.id+" "+n.dS+" / "+n.dE).join("; ")+" | **"+r.verdict+"** | "+(r.verdict==="interpretive"?"-":"**"+r.verdictInto+"**")+" | **"+r.binding+"** | "+(r.verdict==="interpretive"?r.why:"across: "+r.why+"; into: "+r.whyInto)+" |"));
   fs.writeFileSync(process.argv[m+1],L.join("\n")+"\n");
 }

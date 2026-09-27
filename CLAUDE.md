@@ -25,7 +25,7 @@ lower one without saying so explicitly.
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite; `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2 measurement scripts (`stage2/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
-| `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `chronology-e76222b3.html` (the `check:data` reference) |
+| `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html` |
 | `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
 
 The one-off correction-pass tools (`geo-migrate.js`, `geo-anchor.js`, `patch-app.py`, `patch-history.py`, and the
@@ -60,15 +60,12 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - First time: `npm install`, then `npx playwright install chromium` (for the visual harness).
 - `npm run build`; `npm test` runs the whole regression suite and prints each suite's result: it exits non-zero, naming
   the failed suites, if any suite exits non-zero or prints an error summary.
-- `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/chronology-e76222b3.html`
-  (the chronology data task's build); a data task that changes it lists every changed declaration in `CHANGELOG.md` and moves the reference.
-- `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
-  explicit anchor time carries evidence found in the sources, a grade and a basis.
+- `npm run check:data`: must pass unless the task changes data on purpose.
 - `npm run check:contrast`: every visible text element in 16 interface states meets WCAG AA and the 10.5 px floor.
 - `npm run check:visual`: 11 fixed views, Stage 0 thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()`.
-  No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified chronology-data-task build (md5 `e76222b3...`, 1,121,991 bytes;
-  re-baselined from the Stage 1B build `5bf48b75...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+  One known residual is allowed by name (hybrid-dimmed Walther/Nansouty counter overlap, Stage 2).
+- `npm run check:baseline` passes only on the unmodified Stage 1B build (md5 `5bf48b75...`, 1,107,799 bytes; re-baselined in
+  Stage 2A from the Stage 0 build `c09c4b23...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All eight suites pass on Stage 0 (`runtime-test.js` since `docs/HANDOFF.md` task 2). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -83,6 +80,5 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 Stage 0 (trust and baseline) is complete; the source tree and the regression suite are recovered and
 synchronised with it (CHANGELOG.md). Stage 1 (visual language): the specification (`docs/VISUAL_SPEC.md`) and
 its implementation (Part B) are done; colours and type come only from `tokens.js`. Stage 2 Part A (the specification,
-`docs/STAGE2_SPEC.md`) is reviewed; the chronology data task after it (owner decisions 40-46, §M.7-§M.12: explicit anchor
-times with evidence, the phase-start rule documented as the default) is done and awaits review; 2B-2F have not started. The shadow toe
+`docs/STAGE2_SPEC.md`) is written and awaits the owner's review; 2B-2F have not started. The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.
