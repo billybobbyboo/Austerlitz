@@ -138,31 +138,39 @@
 <div id="devstats" hidden aria-hidden="true"></div>
 
 <div class="legend">
-  <svg class="rose" viewBox="0 0 60 60" aria-hidden="true">
-    <circle class="rose-ring" cx="30" cy="30" r="21" fill="none" stroke-width=".7"/>
-    <g id="rose-needle"><!-- rotated to true north for the current view (app.js updateRose) -->
-    <path class="rose-n" d="M30 14 L34 29 L30 33 L26 29 Z"/>
-    <path class="rose-s" d="M30 54 L26 33 L30 29 L34 33 Z"/>
-    <text class="rose-n" x="30" y="12" text-anchor="middle" font-size="14" font-family="Georgia,serif">N</text>
-    </g>
-  </svg>
-  <div class="k"><span>French</span><span class="sw" data-key="fr"></span></div>
-  <div class="k"><span>Russian</span><span class="sw" data-key="ru"></span></div>
-  <div class="k"><span>Austrian</span><span class="sw" data-key="at"></span></div>
-  <div class="k"><span>French movement</span><span class="ar" data-key="arrow-fr"></span></div>
-  <div class="k"><span>Allied movement</span><span class="ar" data-key="arrow-al"></span></div>
-  <div class="k"><span>halt: a column stopped short of its objective</span><span class="hlt" data-key="arrow-al"></span></div>
-  <div class="k"><span>boundary between commands</span><span class="bnd"></span></div>
-  <div class="k plan-only"><span>dashed outline: a plan's staging area</span><span class="stg"></span></div>
-  <div class="k"><span>position approximate (B, C) &middot; reported only (?)</span><span class="bdg"><b>B</b><b>?</b></span></div>
-  <div class="k an-only"><span>dashed: valley floor, dead ground</span><span class="dsh"></span></div>
-  <div class="k"><span>contour interval</span><span class="val" id="contour-val">&asymp; 9 m</span></div>
-  <div class="k"><span id="exag-line"></span></div>
-  <div class="k"><span id="exag-symbols"></span></div>
-  <div id="goingkey"><!-- rows written from TOKENS.sym.going by paintKey (app.js), the table the going layer draws --></div>
-  <div class="hint">drag to orbit &middot; scroll to zoom &middot; click a counter or a name</div>
-  <div class="hint keys"><b>1</b> study <b>2</b> watch <b>3</b> map only &middot; <b>M</b> map mode
-    &middot; <b>D</b> text · <b>F</b> <span id="fxstate">FX on</span> &middot; <b>space</b> play &middot; <b>Esc</b> back</div>
+  <!-- Stage 2D (decision 29): contextual (app.js paintLegend shows only the rows for what is drawn), compact, collapsible,
+       and never over the dispatch (mlLegendFit keeps it closed where it would be) -->
+  <button class="lg-head" id="lg-toggle" type="button" aria-expanded="true" aria-controls="lg-rows" title="Show or hide the key">
+    <svg class="rose" viewBox="0 0 60 60" aria-hidden="true">
+      <circle class="rose-ring" cx="30" cy="30" r="21" fill="none" stroke-width=".7"/>
+      <g id="rose-needle"><!-- rotated to true north for the current view (app.js updateRose) -->
+      <path class="rose-n" d="M30 14 L34 29 L30 33 L26 29 Z"/>
+      <path class="rose-s" d="M30 54 L26 33 L30 29 L34 33 Z"/>
+      <text class="rose-n" x="30" y="12" text-anchor="middle" font-size="14" font-family="Georgia,serif">N</text>
+      </g>
+    </svg><span class="lg-name">Key</span>
+  </button>
+  <div class="lg-rows" id="lg-rows">
+    <div class="k" data-lg="nation"><span>French</span><span class="sw" data-key="fr"></span></div>
+    <div class="k" data-lg="nation"><span>Russian</span><span class="sw" data-key="ru"></span></div>
+    <div class="k" data-lg="nation"><span>Austrian</span><span class="sw" data-key="at"></span></div>
+    <div class="k" data-lg="foot"><span>French formation, its footprint</span><span class="sw" data-key="foot-fr"></span></div>
+    <div class="k" data-lg="foot"><span>Allied formation, its footprint</span><span class="sw" data-key="foot-al"></span></div>
+    <div class="k" data-lg="arrow-fr"><span>French movement</span><span class="ar" data-key="arrow-fr"></span></div>
+    <div class="k" data-lg="arrow-al"><span>Allied movement</span><span class="ar" data-key="arrow-al"></span></div>
+    <div class="k" data-lg="halt"><span>halt: a column stopped short of its objective</span><span class="hlt" data-key="arrow-al"></span></div>
+    <div class="k" data-lg="bound"><span>boundary between commands</span><span class="bnd"></span></div>
+    <div class="k" data-lg="plan"><span>dashed outline: a plan's staging area</span><span class="stg"></span></div>
+    <div class="k" data-lg="badge"><span>position approximate (B, C) &middot; reported only (?)</span><span class="bdg"><b>B</b><b>?</b></span></div>
+    <div class="k" data-lg="analysis"><span>dashed: valley floor, dead ground</span><span class="dsh"></span></div>
+    <div class="k" data-lg="contours"><span>contour interval</span><span class="val" id="contour-val">&asymp; 9 m</span></div>
+    <div class="k"><span id="exag-line"></span></div>
+    <div class="k"><span id="exag-symbols"></span></div>
+    <div id="goingkey"><!-- rows written from TOKENS.sym.going by paintKey (app.js), the table the going layer draws --></div>
+    <div class="hint">drag to orbit &middot; scroll to zoom &middot; click or Tab to a counter or a name</div>
+    <div class="hint keys"><b>1</b> study <b>2</b> watch <b>3</b> map only &middot; <b>M</b> map mode
+      &middot; <b>D</b> text &middot; <b>F</b> <span id="fxstate">FX on</span> &middot; <b>space</b> play &middot; <b>Esc</b> back</div>
+  </div>
 </div>
 
 <div class="timebar">
@@ -233,6 +241,10 @@
 </div>
 
 <div id="toast"></div>
+
+<!-- Stage 2D: the map layer, every counter and all map text, laid out by app.js (THE MAP LAYER). It is drawn over the
+     canvas and under every panel by its z-index; it comes last so that Tab reaches the interface first, then the map -->
+<div id="maplayer" role="group" aria-label="The map: formations, events and places"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>/*JS*/</script>

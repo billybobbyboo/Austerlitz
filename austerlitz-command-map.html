@@ -87,18 +87,18 @@ button.t:hover{color:var(--text);border-color:rgba(var(--line-rgb),.5)}
 button.t[aria-pressed="true"]{background:var(--text);color:var(--on-accent);border-color:var(--text)}
 
 /* ---------- legend ---------- */
-.legend{position:fixed;right:18px;bottom:calc(var(--tb) + 14px);z-index:18;text-align:right;font-size:var(--t-small);color:var(--text-muted);line-height:1.85;
-  background:rgba(var(--scrim-rgb),.72);border:1px solid var(--line);padding:10px 12px;backdrop-filter:blur(8px);
-  transition:transform .32s ease}
+.legend{position:fixed;right:18px;bottom:calc(var(--tb) + 14px);z-index:18;text-align:right;font-size:var(--t-small);color:var(--text-muted);line-height:1.55;
+  background:rgba(var(--scrim-rgb),.72);border:1px solid var(--line);padding:6px 10px 8px;backdrop-filter:blur(8px);
+  transition:transform .32s ease;max-width:296px}
 body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 .legend .k{display:flex;align-items:center;justify-content:flex-end;gap:7px}
 .legend .sw{width:20px;height:9px;border:1px solid rgba(0,0,0,.5);border-radius:1px}
 .legend .dsh{width:20px;height:0;border-top:2px dashed var(--text-muted)}
-.legend .an-only{display:none}
-body.layer-analysis .legend .an-only{display:flex}
+.legend .k[hidden]{display:none}
+.legend .k span:first-child{text-align:right}
 .legend .bdg{display:inline-flex;gap:3px}
 .legend .bdg b{display:inline-block;min-width:13px;text-align:center;font-weight:600;color:var(--text-hi);background:var(--ink);border:1px solid var(--text-muted);border-radius:2px;padding:0 3px}
-.rose{width:46px;height:46px;margin:0 0 6px auto;color:var(--text-muted)}
+.rose{width:26px;height:26px;margin:0;color:var(--text-muted);flex:0 0 auto}
 .rose .rose-ring{stroke:var(--line-2)}
 .rose .rose-n{fill:var(--text)}
 .rose .rose-s{fill:var(--text-muted)}
@@ -563,8 +563,46 @@ body.firstrun-on #vsbadge,body.firstrun-on #tourbar,body.firstrun-on #selchip{di
 .legend .hlt{width:5px;height:15px;border-radius:1px;margin:0 7px}
 .legend .bnd{width:20px;height:0;border-top:2px solid}
 .legend .stg{width:20px;height:0;border-top:2px dashed var(--text-muted)}
-.legend .plan-only{display:none}
-body.plan-on .legend .plan-only{display:flex}
+/* Stage 2D: the legend's head toggles it; closed, its rows keep their size (measured) but are not drawn */
+.lg-head{display:flex;align-items:center;justify-content:flex-end;gap:6px;margin:0 0 0 auto;background:none;border:0;padding:0;
+  color:var(--text-muted);font-size:var(--t-small);line-height:1.3;cursor:pointer}
+.lg-head:hover{color:var(--text)}
+.lg-head::after{content:"\2212";display:inline-block;width:12px;text-align:center}
+.legend.collapsed .lg-head::after{content:"+"}
+.legend.squeezed .lg-head{cursor:not-allowed}
+.lg-rows{margin-top:3px;max-width:274px}
+.legend.collapsed .lg-rows{position:absolute;right:0;bottom:0;width:max-content;visibility:hidden;pointer-events:none}
+
+/* ---------- Stage 2D: the map layer (app.js THE MAP LAYER; symbols.js counterHTML). Colours are set from TOKENS by the
+   script; every text is on a plate. The .mlc paddings are mirrored in mlPlaceItem (the frame's foot). ---------- */
+#maplayer{position:fixed;inset:0;z-index:6;pointer-events:none;overflow:hidden}
+body.labels-canvas #maplayer{display:none}
+body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!important}   /* the self-test holds the panels' slides still */
+.ml-lines{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+.ml-item{position:absolute;left:0;top:0;opacity:0;white-space:nowrap;font-family:var(--sans);font-weight:400;border-radius:2px}
+.ml-item.on{opacity:1}
+.ml-item:focus{outline:none}
+.ml-item:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.mlt{font-size:var(--t-ui);line-height:16px;padding:0 5px 1px}
+.mlt-serif{font-family:var(--serif)}
+.mlt-small{font-size:var(--t-small);line-height:15px}
+.mln{display:flex;align-items:center;gap:5px;font-family:var(--serif)}
+.mln-mark{display:block;width:8px;height:8px;border:1px solid;flex:0 0 auto}
+.mlc{display:flex;align-items:center;gap:9px;padding:13px 0 5px 5px}
+.mlc.mlc-hq{padding-bottom:12px}
+.mlc-frame{position:relative;flex:0 0 40px;width:40px;height:28px;border-radius:3px}
+.mlc-frame.sel{outline:2px solid;outline-offset:2px}
+.mlc-svg{display:block;overflow:visible}
+.mlc-ech{position:absolute;left:50%;bottom:100%;transform:translateX(-50%);margin-bottom:2px;padding:0 3px;border-radius:2px;
+  font-size:var(--t-micro);font-weight:500;line-height:11px;letter-spacing:.04em}
+.mlc-tag{position:absolute;left:50%;bottom:5px;transform:translateX(-50%);padding:0 1px;font-size:var(--t-micro);font-weight:600;line-height:10px}
+.mlc-badge{position:absolute;right:-8px;top:-7px;min-width:14px;height:14px;padding:0 2px;border:1px solid;border-radius:2px;
+  font-size:var(--t-micro);font-weight:600;line-height:12px;text-align:center}
+.mlc-text{font-size:var(--t-ui);line-height:16px;padding:1px 6px;border-radius:2px}
+.mlc-text .ic{margin:0 0 0 5px}
+.mlc-st{margin-left:9px}
+.mlc-st .ic{margin:0 4px 0 0}
+.mlc-sub{display:block}
 
 /* ---------- Stage 0: what is selected, whenever the dossier is not on screen ---------- */
 #selchip{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--tb) + 14px);z-index:27;
@@ -717,31 +755,39 @@ body.plan-on .legend .plan-only{display:flex}
 <div id="devstats" hidden aria-hidden="true"></div>
 
 <div class="legend">
-  <svg class="rose" viewBox="0 0 60 60" aria-hidden="true">
-    <circle class="rose-ring" cx="30" cy="30" r="21" fill="none" stroke-width=".7"/>
-    <g id="rose-needle"><!-- rotated to true north for the current view (app.js updateRose) -->
-    <path class="rose-n" d="M30 14 L34 29 L30 33 L26 29 Z"/>
-    <path class="rose-s" d="M30 54 L26 33 L30 29 L34 33 Z"/>
-    <text class="rose-n" x="30" y="12" text-anchor="middle" font-size="14" font-family="Georgia,serif">N</text>
-    </g>
-  </svg>
-  <div class="k"><span>French</span><span class="sw" data-key="fr"></span></div>
-  <div class="k"><span>Russian</span><span class="sw" data-key="ru"></span></div>
-  <div class="k"><span>Austrian</span><span class="sw" data-key="at"></span></div>
-  <div class="k"><span>French movement</span><span class="ar" data-key="arrow-fr"></span></div>
-  <div class="k"><span>Allied movement</span><span class="ar" data-key="arrow-al"></span></div>
-  <div class="k"><span>halt: a column stopped short of its objective</span><span class="hlt" data-key="arrow-al"></span></div>
-  <div class="k"><span>boundary between commands</span><span class="bnd"></span></div>
-  <div class="k plan-only"><span>dashed outline: a plan's staging area</span><span class="stg"></span></div>
-  <div class="k"><span>position approximate (B, C) &middot; reported only (?)</span><span class="bdg"><b>B</b><b>?</b></span></div>
-  <div class="k an-only"><span>dashed: valley floor, dead ground</span><span class="dsh"></span></div>
-  <div class="k"><span>contour interval</span><span class="val" id="contour-val">&asymp; 9 m</span></div>
-  <div class="k"><span id="exag-line"></span></div>
-  <div class="k"><span id="exag-symbols"></span></div>
-  <div id="goingkey"><!-- rows written from TOKENS.sym.going by paintKey (app.js), the table the going layer draws --></div>
-  <div class="hint">drag to orbit &middot; scroll to zoom &middot; click a counter or a name</div>
-  <div class="hint keys"><b>1</b> study <b>2</b> watch <b>3</b> map only &middot; <b>M</b> map mode
-    &middot; <b>D</b> text · <b>F</b> <span id="fxstate">FX on</span> &middot; <b>space</b> play &middot; <b>Esc</b> back</div>
+  <!-- Stage 2D (decision 29): contextual (app.js paintLegend shows only the rows for what is drawn), compact, collapsible,
+       and never over the dispatch (mlLegendFit keeps it closed where it would be) -->
+  <button class="lg-head" id="lg-toggle" type="button" aria-expanded="true" aria-controls="lg-rows" title="Show or hide the key">
+    <svg class="rose" viewBox="0 0 60 60" aria-hidden="true">
+      <circle class="rose-ring" cx="30" cy="30" r="21" fill="none" stroke-width=".7"/>
+      <g id="rose-needle"><!-- rotated to true north for the current view (app.js updateRose) -->
+      <path class="rose-n" d="M30 14 L34 29 L30 33 L26 29 Z"/>
+      <path class="rose-s" d="M30 54 L26 33 L30 29 L34 33 Z"/>
+      <text class="rose-n" x="30" y="12" text-anchor="middle" font-size="14" font-family="Georgia,serif">N</text>
+      </g>
+    </svg><span class="lg-name">Key</span>
+  </button>
+  <div class="lg-rows" id="lg-rows">
+    <div class="k" data-lg="nation"><span>French</span><span class="sw" data-key="fr"></span></div>
+    <div class="k" data-lg="nation"><span>Russian</span><span class="sw" data-key="ru"></span></div>
+    <div class="k" data-lg="nation"><span>Austrian</span><span class="sw" data-key="at"></span></div>
+    <div class="k" data-lg="foot"><span>French formation, its footprint</span><span class="sw" data-key="foot-fr"></span></div>
+    <div class="k" data-lg="foot"><span>Allied formation, its footprint</span><span class="sw" data-key="foot-al"></span></div>
+    <div class="k" data-lg="arrow-fr"><span>French movement</span><span class="ar" data-key="arrow-fr"></span></div>
+    <div class="k" data-lg="arrow-al"><span>Allied movement</span><span class="ar" data-key="arrow-al"></span></div>
+    <div class="k" data-lg="halt"><span>halt: a column stopped short of its objective</span><span class="hlt" data-key="arrow-al"></span></div>
+    <div class="k" data-lg="bound"><span>boundary between commands</span><span class="bnd"></span></div>
+    <div class="k" data-lg="plan"><span>dashed outline: a plan's staging area</span><span class="stg"></span></div>
+    <div class="k" data-lg="badge"><span>position approximate (B, C) &middot; reported only (?)</span><span class="bdg"><b>B</b><b>?</b></span></div>
+    <div class="k" data-lg="analysis"><span>dashed: valley floor, dead ground</span><span class="dsh"></span></div>
+    <div class="k" data-lg="contours"><span>contour interval</span><span class="val" id="contour-val">&asymp; 9 m</span></div>
+    <div class="k"><span id="exag-line"></span></div>
+    <div class="k"><span id="exag-symbols"></span></div>
+    <div id="goingkey"><!-- rows written from TOKENS.sym.going by paintKey (app.js), the table the going layer draws --></div>
+    <div class="hint">drag to orbit &middot; scroll to zoom &middot; click or Tab to a counter or a name</div>
+    <div class="hint keys"><b>1</b> study <b>2</b> watch <b>3</b> map only &middot; <b>M</b> map mode
+      &middot; <b>D</b> text &middot; <b>F</b> <span id="fxstate">FX on</span> &middot; <b>space</b> play &middot; <b>Esc</b> back</div>
+  </div>
 </div>
 
 <div class="timebar">
@@ -813,6 +859,10 @@ body.plan-on .legend .plan-only{display:flex}
 
 <div id="toast"></div>
 
+<!-- Stage 2D: the map layer, every counter and all map text, laid out by app.js (THE MAP LAYER). It is drawn over the
+     canvas and under every panel by its z-index; it comes last so that Tab reaches the interface first, then the map -->
+<div id="maplayer" role="group" aria-label="The map: formations, events and places"></div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>/* Embedded ground textures, CC0 from Poly Haven (brown_mud_03, sparse_grass, forest_ground_06),
    decimated to 512 for a 512-pixel atlas cell; normals derived from the packs' displacement maps. */
@@ -828,6 +878,8 @@ var ASSETS={
    block in style.css (python3 build.py --tokens), and the build fails if that block has drifted.
    JavaScript reads TOKENS directly. Nation colours are not here: they live only in NATION (data.js).
    theme.dark is the landscape, theme.paper the paper map (body.mode-staff).
+   sym.plate (Stage 2D) is the plate under every map-layer label: opaque enough that each map text colour below meets
+   WCAG AA over black and over white ground (dark 0.88, worst 5.8:1, the road ink; paper 0.95, worst 4.6:1, the water ink).
    ============================================================ */
 var TOKENS = /*TOKENS:BEGIN*/{
   "theme": {
@@ -880,6 +932,7 @@ var TOKENS = /*TOKENS:BEGIN*/{
       "dark":  {"halo": "rgba(8,12,16,.72)", "ink": "#E8E2D3", "annotation": "#E3D9BE"},
       "paper": {"halo": "rgba(246,241,229,.9)", "ink": "#3A362C", "annotation": "#3A362C"}
     },
+    "plate": {"dark": "rgba(10,14,18,.88)", "paper": "rgba(246,241,229,.95)"},
     "place": {
       "dark":  {"water": "#8FB6CC", "height": "#DCDAD4", "road": "#B0A48C", "other": "#E8E2D3", "fill": "#141A20", "halo": "rgba(10,14,18,.8)"},
       "paper": {"water": "#3C6A86", "height": "#56503E", "road": "#6B5B45", "other": "#3A362C", "fill": "#F6F1E5", "halo": "rgba(246,241,229,.9)"}
@@ -3939,6 +3992,67 @@ function makePlainLabel(text,size,colour,paper,opts){
 }
 
 /* ============================================================
+   Stage 2D: the counter and the map labels as DOM elements (docs/STAGE2_SPEC.md section F.1; owner decisions 9, 11,
+   13, 24 and 38). The map layer in app.js places them. Colours come only from TOKENS and NATION, sizes from the type
+   scale (style.css, .mlc and .mlt). Every text sits on a plate, so it meets AA over any ground and check:contrast
+   measures it like any page text.
+   The compact counter (the default): the 40 x 28 px cased frame (keyline, side band, keyline, nation fill), the arm
+   glyph, the nation tag, the echelon mark above, the B / C / ? badge and the status icon without its text, with the
+   short name beside it. The full counter (the selection, the highlighted family, hover, keyboard focus, and closer
+   than ML_FULL_DIST) adds the status words, the strength and the commander.
+   A dimmed counter (owner decision 13): its fill, band and glyph at 34%; its text, badge and nation tag at full
+   opacity, one step down in tone and weight (counter-sub, 400), the tag on the neutral plate.
+   ============================================================ */
+var ECH_WORD={army:"army",corps:"corps",div:"division",bde:"brigade"};
+var SIDE_WORD={fr:"French",ru:"Allied, Russian",at:"Allied, Austrian"};
+function shortName(f){ return (f.name||"").replace("'s Division","").replace("'s Dragoons","").replace("'s Cuirassiers",""); }
+function nameOf(f){ return (f.name||"").replace("'s Division","").replace("'s Brigade",""); }
+/* the arm glyph in the frame's 40 x 28 box: the fill is 30 x 18 at (5, 5), the nation tag takes its lower 9 px */
+function armGlyphSVG(arm,col){
+  function L(a,b,c,d){ return '<path d="M'+a+' '+b+'L'+c+' '+d+'"/>'; }
+  var both=L(8,6.5,32,13.5)+L(32,6.5,8,13.5), one=L(8,13.5,32,6.5), g;
+  if(arm==="cav") g=one;
+  else if(arm==="art") g='<circle cx="20" cy="10" r="2.8" fill="'+col+'" stroke="none"/>';
+  else if(arm==="guard") g=both+'<rect x="14" y="5" width="12" height="2" fill="'+col+'" stroke="none"/>';
+  else if(arm==="mixed") g=both+one;
+  else if(arm==="hq") g='<path d="M0.8 28L0.8 39"/><circle cx="20" cy="10" r="3.4"/>'+L(16.6,10,23.4,10);
+  else g=both;
+  return '<g fill="none" stroke="'+col+'" stroke-width="1.4">'+g+'</g>';
+}
+/* o: {st, cf, sel, paper, dim, know, full, strength, commander} */
+function counterHTML(f,o){
+  var K=TOKENS.sym.counter[o.paper?"paper":"dark"], S=TOKENS.sym.side[sideOfNation(f.nation)], N=NATION[f.nation], kl=TOKENS.sym.keyline;
+  var dim=!!o.dim, ink=dim?K.sub:K.ink, plate="background:"+K.plate+";color:"+ink;
+  var ech=ECHELON[f.ech]||"", badge=o.know==="uncertain"?"?":(o.cf&&o.cf!=="A"?o.cf:"");
+  var s=o.st&&STATUS[o.st], ic=s?(TOKENS.sym.status[s.tone]||{icon:"ring",weight:400}):null;
+  var h='<span class="mlc-frame'+(o.sel?' sel" style="outline-color:'+K.select:'')+'">'+
+    (ech?'<span class="mlc-ech" style="'+plate+'">'+ech+'</span>':'')+
+    '<svg class="mlc-svg" viewBox="0 0 40 28" width="40" height="28" aria-hidden="true"'+(dim?' style="opacity:.34"':'')+'>'+
+      '<rect width="40" height="28" rx="3" fill="'+kl+'"/><rect x="1" y="1" width="38" height="26" rx="2.4" fill="'+(o.paper?S.deep:S.base)+'"/>'+
+      '<rect x="4" y="4" width="32" height="20" rx="1.4" fill="'+kl+'"/><rect x="5" y="5" width="30" height="18" rx="1" fill="'+N.fill+'"/>'+
+      armGlyphSVG(f.arm,N.edge)+'</svg>'+
+    '<span class="mlc-tag" style="'+(dim?plate+';font-weight:400':'background:'+N.fill+';color:'+N.ink)+'">'+esc(N.tag)+'</span>'+
+    (badge?'<span class="mlc-badge" style="background:'+K.badgePlate+';color:'+K.badgeInk+';border-color:'+kl+'">'+badge+'</span>':'')+
+    '</span>';
+  var name='<b class="mlc-name" style="font-weight:'+(dim?400:500)+'">'+esc(shortName(f))+'</b>';
+  if(!o.full) return h+'<span class="mlc-text" style="'+plate+'">'+name+(ic?iconSVG(ic.icon):'')+'</span>';
+  var sub=(o.strength?'≈'+o.strength.toLocaleString():'')+(o.commander?(o.strength?' · ':'')+esc(o.commander):'');
+  return h+'<span class="mlc-text" style="'+plate+'">'+name+
+    (s?'<span class="mlc-st" style="color:'+(dim?K.sub:K.plateInk)+';font-weight:'+(dim?400:ic.weight)+'">'+iconSVG(ic.icon)+esc(s.label)+'</span>':'')+
+    (sub?'<span class="mlc-sub" style="color:'+K.sub+'">'+sub+'</span>':'')+'</span>';
+}
+/* the accessible name (docs/STAGE2_SPEC.md section F.1): name, side, echelon, strength, status, position grade */
+function counterLabel(f,o){
+  var s=o.st&&STATUS[o.st];
+  return f.name+", "+(SIDE_WORD[f.nation]||f.nation)+", "+(ECH_WORD[f.ech]||f.ech)+(o.strength?", about "+o.strength.toLocaleString():"")+
+    (s?", "+s.label.toLowerCase():"")+", position grade "+(o.cf||"A")+(o.know==="uncertain"?", reported only":"");
+}
+/* a formation's name in the landscape, which draws no counters: neutral text with the side mark beside it (decision 9) */
+function nameHTML(f,paper){
+  return '<i class="mln-mark" style="background:'+TOKENS.sym.side[sideOfNation(f.nation)].base+';border-color:'+TOKENS.sym.keyline+'"></i>'+esc(nameOf(f));
+}
+
+/* ============================================================
    COMMAND MAP — application
    ============================================================ */
 var RM = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -4203,6 +4317,7 @@ function init(){
   buildAnalysisLabels();
   buildEventLayer();
   buildUI();
+  mlInit();
 
   camera.lookAt(orbitTarget);
   setMode("terrain");
@@ -5028,7 +5143,7 @@ function buildFormations(){
     var mat=new THREE.SpriteMaterial({transparent:true,depthTest:false,fog:false});
     var sp=new THREE.Sprite(mat);
     sp.renderOrder=20; sp.visible=false;
-    asLabel(sp); scene.add(sp);
+    asText(sp); scene.add(sp);
     rec.sprite=sp; rec.texKey="";
 
     /* stem from ground to counter */
@@ -5068,7 +5183,7 @@ function buildFormations(){
       var ltex=ctex(lbl.canvas);
       var lsp=new THREE.Sprite(new THREE.SpriteMaterial({map:ltex,transparent:true,depthTest:false,fog:false}));
       lsp.scale.set(3.4*lbl.w/lbl.h,3.4,1); lsp.userData.ar=lbl.w/lbl.h; lsp.renderOrder=18; lsp.visible=false;
-      asLabel(lsp); scene.add(lsp); rec.nameLabel=lsp;
+      asText(lsp); scene.add(lsp); rec.nameLabel=lsp;
 
       /* movement trail */
       var tg=new THREE.BufferGeometry();
@@ -5093,7 +5208,7 @@ function buildFeatureGlyphs(){
     var sp=new THREE.Sprite(mat);
     sp.position.set(w[0],displayHeight(w[0],w[1])+(ft.kind==="height"?6:3.2),w[1]);
     sp.renderOrder=12;
-    asLabel(sp); scene.add(sp);
+    asText(sp); scene.add(sp);
     featureSprites.push({ft:ft,sprite:sp,world:sp.position.clone(),texKey:""});
   });
 }
@@ -5233,6 +5348,7 @@ function drapedRibbon(mapPts,o,add,mats){
       var hm=drapeMesh(hv,hi,layer[1],layer[2],ly,14+li,mats,"head");
       hm.userData.head=o.head; hm.userData.side=li===1?o.side:null; hm.userData.tip=tip; hm.userData.base=[l,r]; if(nt) hm.userData.notch=nt;
       add(hm);
+      if(li===0&&o.heads) o.heads.push(hv.slice());   /* every draped vertex of the casing's head: labels keep clear of it (2D) */
     }
   });
   return out;
@@ -5244,7 +5360,7 @@ function buildArrow(a){
   if(a.kind==="halt") return buildHalt(a,pts);
   var col=SIDE_COL[a.side][a.kind]||SIDE_COL[a.side].move, S=TOKENS.sym.side[a.side];
   var w = a.kind==="attack"?[2.0,2.6] : a.kind==="counter"?[1.8,2.3] : [1.3,1.6];
-  var r=drapedRibbon(pts,{w0:w[0],w1:w[1],side:a.side,head:a.side==="al"?"chevron":"plain",headW:7.5,headL:6.5,
+  var r=drapedRibbon(pts,{w0:w[0],w1:w[1],side:a.side,head:a.side==="al"?"chevron":"plain",headW:7.5,headL:6.5,heads:ovHeads,
     runs:a.kind==="axis"?dashRuns(9,0.62):null,   /* an intended route: broken; a retreat happened, so it is solid */
     col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
   var mid=r.curve.getPointAt(0.5);
@@ -5288,12 +5404,13 @@ function buildBoundary(b){
   if(b.label) addOverlayLabel(b.label,new THREE.Vector3(q.x,groundY(q.x,q.z)+1.6,q.z));
 }
 function addOverlayLabel(text,pos){          /* annotation text: hue stays on the arrow, not the words */
+  ovText.push({text:text,pos:pos.clone(),acl:6});   /* the map layer's label, anchored on the drawn line (2D) */
   var l=makePlainLabel(text,30,TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation,mode==="staff");
   var m=new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,opacity:0,depthTest:false,fog:false});
   var sp=new THREE.Sprite(m);
   sp.position.copy(pos); sp.position.y+=4.4;
   sp.scale.set(2.9*l.w/l.h,2.9,1); sp.renderOrder=22;
-  asLabel(sp); ovAdd(sp); overlayTextMats.push(m); overlayLabels.push(sp);
+  asText(sp); ovAdd(sp); overlayTextMats.push(m); overlayLabels.push(sp);
 }
 function buildObjective(o){
   var w=W(o[0],o[1]);
@@ -5306,11 +5423,13 @@ function buildObjective(o){
   var sp=new THREE.Sprite(m); sp.position.set(w[0],displayHeight(w[0],w[1])+3.0,w[1]);
   sp.scale.set(4.4,4.4,1); sp.renderOrder=21;
   asLabel(sp); ovAdd(sp); overlayMats.push(m);
+  ovMarkers.push({pos:sp.position.clone(),r:1.8});   /* the marker's cross reaches 1.72 units: labels keep clear of it (2D) */
+  ovText.push({text:o[2],pos:sp.position.clone(),acl:3,r:1.8,obj:true});
   var l=makePlainLabel(o[2],28,TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation,mode==="staff");
   var lm=new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,opacity:0,depthTest:false,fog:false});
   var ls=new THREE.Sprite(lm); ls.position.set(w[0],displayHeight(w[0],w[1])+7.4,w[1]);
   ls.scale.set(2.7*l.w/l.h,2.7,1); ls.renderOrder=21;
-  asLabel(ls); ovAdd(ls); overlayTextMats.push(lm); overlayLabels.push(ls);
+  asText(ls); ovAdd(ls); overlayTextMats.push(lm); overlayLabels.push(ls);
 }
 function retireOld(){
   if(oldOv){ overlayRoot.remove(oldOv); disposeGroup(oldOv); oldOv=null; oldMats=[]; }
@@ -5319,7 +5438,7 @@ function rebuildOverlays(ph,instant){
   retireOld();
   oldOv=curOv; oldMats=overlayMats.concat(overlayTextMats);
   curOv=new THREE.Group(); overlayRoot.add(curOv);
-  overlayMats=[]; overlayTextMats=[]; overlayLabels=[];
+  overlayMats=[]; overlayTextMats=[]; overlayLabels=[]; ovText=[]; ovMarkers=[]; ovHeads=[];
   var o=OVERLAYS[ph];
   if(o){
     (o.lines||[]).forEach(buildLine);
@@ -5688,13 +5807,14 @@ function setPhase(n,instant){
    so map labels stay legible.
    ============================================================ */
 var lowTier=false;
-var LAYER_WORLD=0, LAYER_LABEL=1;
+var LAYER_WORLD=0, LAYER_LABEL=1, LAYER_TEXT=2;   /* LAYER_TEXT: the Stage 0 text sprites, drawn only with ?labels=canvas (Stage 2D) */
 var FX={on:false, scale:1, rtScene:null, rtA:null, rtB:null, rtC:null, rtD:null, rtFinal:null, matFXAA:null,
         quadScene:null, quadCam:null, quad:null,
         matBright:null, matBlur:null, matComp:null};
 
 /* text and military symbology are drawn after the grade, so they stay legible */
 function asLabel(o){ if(o&&o.layers) o.layers.set(LAYER_LABEL); return o; }
+function asText(o){ if(o&&o.layers) o.layers.set(LAYER_TEXT); return o; }
 function fsQuad(mat){
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute([-1,-1,0, 3,-1,0, -1,3,0],3));
@@ -5912,6 +6032,7 @@ function renderFX(){
      autoClear (WebGLBackground.render, line 51). With the background left in
      place this pass wiped the composite to sky-blue and drew labels on it. */
   camera.layers.set(LAYER_LABEL);
+  if(ML.canvas) camera.layers.enable(LAYER_TEXT);
   var ac=renderer.autoClear, bg=scene.background;
   renderer.autoClear=false;
   scene.background=null;
@@ -5945,6 +6066,7 @@ function setFXEnabled(on){
 }
 function renderStandard(){
   camera.layers.enableAll();
+  if(!ML.canvas) camera.layers.disable(LAYER_TEXT);
   renderer.setRenderTarget(null);
   renderer.render(scene,camera);
 }
@@ -5955,6 +6077,7 @@ function renderFrame(){
     CAM.violations++; clampCamera();
     if(CAM.violations===1) console.warn("Austerlitz runtime check: a camera path bypassed the ground floor");
   }
+  var tl=performance.now(); mlLayout(); DEV.tLayer=performance.now()-tl;   /* the map layer: only in a drawn frame (Stage 2D) */
   if(!FX.on){ var t0=performance.now(); renderStandard(); DEV.world=DEV.total=devMark(); DEV.tWorld=performance.now()-t0; DEV.tPost=DEV.tLabels=0; DEV.frames++; return; }
   try{ renderFX(); }
   catch(err){
@@ -5964,7 +6087,7 @@ function renderFrame(){
   DEV.frames++;
 }
 /* ---- development readout: render and frame statistics (the ` key, or ?stats) ---- */
-var DEV={state:"active",frames:0,skipped:0,tUpdate:0,tWorld:0,tPost:0,tLabels:0,
+var DEV={state:"active",frames:0,skipped:0,tUpdate:0,tWorld:0,tPost:0,tLabels:0,tLayer:0,
   world:{calls:0,triangles:0,points:0,lines:0},post:{calls:0,triangles:0,points:0,lines:0},total:{calls:0,triangles:0,points:0,lines:0}};
 function devMark(){ var r=renderer.info.render; return {calls:r.calls,triangles:r.triangles,points:r.points,lines:r.lines}; }
 var devOn=/[?&]stats\b/.test(location.search), _devT=0, _devSeat=0;
@@ -5979,11 +6102,12 @@ function paintDevStats(now){
   var mi=renderer.info.memory, c=camera.position, W=DEV.world, T=DEV.total;
   el.textContent=[
     "frames drawn "+fps.toFixed(0)+"/s   skipped "+sk.toFixed(0)+"/s   state "+DEV.state,
-    "cpu ms   update "+DEV.tUpdate.toFixed(1)+"   world "+DEV.tWorld.toFixed(1)+"   post "+DEV.tPost.toFixed(1)+"   labels "+DEV.tLabels.toFixed(1),
+    "cpu ms   update "+DEV.tUpdate.toFixed(1)+"   world "+DEV.tWorld.toFixed(1)+"   post "+DEV.tPost.toFixed(1)+"   labels "+DEV.tLabels.toFixed(1)+"   map layer "+DEV.tLayer.toFixed(1),
     "world pass   "+W.calls+" calls   "+kfmt(W.triangles)+" tris   "+kfmt(W.lines)+" lines   "+W.points+" points",
     "post+labels  "+(T.calls-W.calls)+" calls (labels "+(T.calls-DEV.post.calls)+")",
     "seating  "+se.toFixed(1)+" blocks/s ("+SEAT_STATS.blocks+" since load)",
-    "labels   "+LABEL_STATS.shown+" shown   "+LABEL_STATS.hidden+" hidden   "+LABEL_STATS.moved+" moved   "+(LABEL_STATS.shrunk||0)+" shrunk   "+LABEL_STATS.unresolved+" unresolved",
+    ML.canvas?"labels   "+LABEL_STATS.shown+" shown   "+LABEL_STATS.hidden+" hidden   "+LABEL_STATS.moved+" moved   "+(LABEL_STATS.shrunk||0)+" shrunk   "+LABEL_STATS.unresolved+" unresolved"
+      :"map layer   "+ML.stats.placed+" placed   "+ML.stats.dropped+" dropped   "+ML.stats.leaders+" leaders   "+ML.stats.occluded+" behind the ground   "+ML.stats.nodes+" nodes",
     "camera   "+(c.y-camGround(c.x,c.z)).toFixed(2)+" above ground   clamps "+CAM.clamps+"   bypassed "+CAM.violations,
     "memory   "+mi.geometries+" geometries   "+mi.textures+" textures   "+(renderer.info.programs?renderer.info.programs.length:0)+" programs"
   ].join("\n");
@@ -6071,7 +6195,7 @@ function buildPlateauRing(){
     depthTest:false,fog:false}));
   plateauLabel.position.set(c[0],displayHeight(c[0],c[1])+7.0,c[1]);
   plateauLabel.renderOrder=26;
-  asLabel(plateauLabel); eventGroup.add(plateauLabel);
+  asText(plateauLabel); eventGroup.add(plateauLabel);
 }
 function updatePlateauRing(){
   if(!plateauRing) return;
@@ -6143,7 +6267,7 @@ function buildEventLayer(){
     var ls=new THREE.Sprite(lm);
     ls.position.set(w[0],gy+8.4,w[1]);
     ls.scale.set(3.3*l.w/l.h,3.3,1); ls.userData.ar=l.w/l.h; ls.renderOrder=25;
-    asLabel(ls); eventGroup.add(ls);
+    asText(ls); eventGroup.add(ls);
     eventMarks.push({e:e,sp:sp,ls:ls,m:m,lm:lm,world:sp.position.clone()});
   });
   buildPlateauRing();
@@ -6161,7 +6285,7 @@ function updateEventLayer(){
     var a=sel?1:w;
     k.m.opacity=a*0.95;
     k.lm.opacity=(a>0.45||sel)?Math.min(1,(a-0.3)/0.5):0;
-    k.sp.visible=a>0.02; k.ls.visible=k.lm.opacity>0.02;
+    k.sp.visible=a>0.02; k.ls.visible=k.lm.opacity>0.02; k.labelOn=(a>0.45||sel);
     if(k.ls.visible && window.__fitLabel) window.__fitLabel(k.ls,24,1.5);
   }
 }
@@ -6378,6 +6502,7 @@ function setCommandView(v){
    PLAN OVERLAY — intended lines of march, drawn heavy
    ============================================================ */
 function clearPlan(){
+  planText=[]; planMarkers=[]; planHeads=[];
   if(!planGroup) return;
   scene.remove(planGroup);
   disposeGroup(planGroup);
@@ -6421,6 +6546,7 @@ function planRibbon(pts,colour,edge,w0,w1,headW,headL,chevron){
       hv.push(bx2,displayHeight(bx2,bz2)+lift+yAdd,bz2);
       hidx=[0,1,3, 0,3,2];
     }
+    if(scale>1) planHeads.push(hv.slice());   /* the casing's head (with the chevron's fourth point): labels keep clear of it (2D) */
     var hg=new THREE.BufferGeometry();
     hg.setAttribute("position",new THREE.Float32BufferAttribute(hv,3));
     hg.setIndex(hidx); hg.computeVertexNormals();
@@ -6449,7 +6575,8 @@ function planStaging(area,colour,edge){
   var ln=new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:lin(edge),transparent:true,
     opacity:0.65,depthTest:false}));
   ln.renderOrder=12; planGroup.add(ln);
-  planLabel(area.n, new THREE.Vector3(c[0],displayHeight(c[0],c[1])+3.2,c[1]), colour, 26, 0.86);
+  planLabel(area.n, new THREE.Vector3(c[0],displayHeight(c[0],c[1])+3.2,c[1]), colour, 26, 0.86,
+    {pos:new THREE.Vector3(c[0],displayHeight(c[0],c[1])+1.2,c[1]),acl:4});
 }
 function planObjective(obj,colour){
   var c=W(obj.p[0],obj.p[1]);
@@ -6463,15 +6590,17 @@ function planObjective(obj,colour){
   var sp=new THREE.Sprite(m);
   sp.position.set(c[0],displayHeight(c[0],c[1])+4.0,c[1]);
   sp.scale.set(7.2,7.2,1); sp.renderOrder=24; asLabel(sp); planGroup.add(sp);
-  planLabel(obj.n,new THREE.Vector3(c[0],displayHeight(c[0],c[1])+8.6,c[1]),colour,30,1);
+  planMarkers.push({pos:sp.position.clone(),r:3.1});   /* the cross reaches 3.06 units */
+  planLabel(obj.n,new THREE.Vector3(c[0],displayHeight(c[0],c[1])+8.6,c[1]),colour,30,1,{pos:sp.position.clone(),acl:3,r:3.1});
 }
-function planLabel(text,pos,colour,size,op){   /* annotation text; the ribbon carries the side */
+function planLabel(text,pos,colour,size,op,anchor){   /* annotation text; the ribbon carries the side */
+  if(anchor) planText.push({text:text,pos:anchor.pos,acl:anchor.acl,r:anchor.r||0});   /* the map layer's label (2D) */
   var l=makePlainLabel(text,size,TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation,mode==="staff");
   var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,
     opacity:op===undefined?1:op,depthTest:false,fog:false}));
   sp.position.copy(pos);
   sp.scale.set((size/8.2)*l.w/l.h,(size/8.2),1);
-  sp.renderOrder=26; asLabel(sp); planGroup.add(sp);
+  sp.renderOrder=26; asText(sp); planGroup.add(sp);
 }
 var planLinks=null;
 function buildPlanLinks(){
@@ -6530,7 +6659,7 @@ function setPlan(side){
         var mid=c.route[Math.max(0,Math.floor(c.route.length/2)-1)];
         var w=W(mid[0],mid[1]);
         planLabel(c.n.split(" - ")[0],
-          new THREE.Vector3(w[0],displayHeight(w[0],w[1])+7.0,w[1]),col,34,1);
+          new THREE.Vector3(w[0],displayHeight(w[0],w[1])+7.0,w[1]),col,34,1,{pos:new THREE.Vector3(w[0],displayHeight(w[0],w[1])+1.9,w[1]),acl:6});
       });
       (P.objectives||[]).forEach(function(o){ planObjective(o,col); });
     });
@@ -6665,7 +6794,7 @@ function buildAnalysisLabels(){
     var sp=new THREE.Sprite(mat);
     sp.position.set(tl._mid[0],tl._mid[1],tl._mid[2]);
     sp.renderOrder=23; sp.visible=false;
-    asLabel(sp); world.analysis.add(sp);
+    asText(sp); world.analysis.add(sp);
     analysisSprites.push({tl:tl,sprite:sp,col:col,texKey:"",world:sp.position.clone()});
   });
   refreshAnalysisLabels();
@@ -6815,6 +6944,403 @@ function declutter(){
   LABEL_STATS=st;
 }
 
+/* ============================================================
+   THE MAP LAYER (Stage 2D; docs/STAGE2_SPEC.md sections E, F and H; owner decisions 24, 29, 38 and 39)
+   One DOM layer (#maplayer) over the WebGL canvas and under the interface panels holds every counter and all in-scene
+   map text: formation counters (paper map and hybrid) and names (landscape), event labels, the plateau reading, the
+   movement, line, boundary, halt and objective labels, the plan labels, place and terrain-study labels. Symbols stay in
+   the scene: arrows and ribbons with their heads, event glyphs, objective and plan markers.
+   - One pass per DRAWN frame (renderFrame): render on demand is unchanged, and a skipped frame lays out nothing. An
+     item's content is rebuilt only when its key changes; positions are computed in every drawn frame.
+   - Priority, highest first: the selection; the formation under the pointer or the keyboard focus; the highlighted
+     family; counters by echelon, larger first; live events; the plateau reading; movement and plan labels; formation
+     names; place names, major first; terrain-study labels; objective names. What is never dropped (the selection, the
+     formation hovered or focused, the highlighted family, live events: decision 39) is placed first.
+   - Placement: at the anchor, then the eight places around it, then rings of 28-148 px (on to 380 px for what is never
+     dropped) with a leader line to the anchor; a place name only beside its marker. Obstacles: the interface panels,
+     every item already placed, the arrow heads (section D), event glyphs and objective markers, ML_PAD px apart. An
+     item that finds no room is dropped and counted: it stays in the layer, invisible, reachable by hovering its
+     position and from the keyboard (Tab, in priority order; Enter selects).
+   - Not drawn, and counted apart: an anchor off screen, under a panel, or behind the drawn ground. Occlusion: the
+     segment from the eye to the anchor is marched over the drawn ground (groundY), only where it is low enough to meet
+     it (section F.3 measured rays against the mesh at 84-205 ms a pass); what is never dropped is not occluded.
+   ?labels=canvas draws the Stage 0 sprites instead (the parity screenshots; removed with the canvas path).
+   ============================================================ */
+var ML={root:null, lines:null, items:{}, frame:0, canvas:/[?&]labels=canvas\b/.test(location.search), hover:null, focus:null,
+        order:"", maxG:{}, stats:{items:0,placed:0,leaders:0,dropped:0,occluded:0,offscreen:0,underPanel:0,keepMissing:[],dropped_:[],ms:0,nodes:0},
+        taken:[], svg:"", legendOpen:true, lgSize:null};
+var ML_FULL_DIST=70;   /* a counter nearer the eye than this (world units; about 4.4 km) is drawn full (section F.1) */
+var ML_PAD=2;          /* px kept clear between placed items, and from panels and symbols */
+var ML_RINGS=[28,44,64,88,116,148], ML_RINGS_KEEP=[190,240,300,380];
+/* what the overlays and plans hand the layer: labels with their anchors, markers and heads (world positions) */
+var ovText=[], ovMarkers=[], ovHeads=[], planText=[], planMarkers=[], planHeads=[];
+var _mlV=new THREE.Vector3(), _mlW=new THREE.Vector3(), _mlR=new THREE.Vector3();
+function mlInit(){
+  ML.root=document.getElementById("maplayer");
+  if(!ML.root) return;
+  ML.root.innerHTML='<svg class="ml-lines" aria-hidden="true" focusable="false"></svg>';
+  ML.lines=ML.root.querySelector(".ml-lines");
+  document.body.classList.toggle("labels-canvas",ML.canvas);
+}
+function mlItem(key,cls){
+  var it=ML.items[key];
+  if(!it){
+    var e=document.createElement("div"); e.className="ml-item "+cls; e.style.display="none";
+    ML.root.appendChild(e);
+    it=ML.items[key]={key:key,el:e,ck:null,aria:null,w:0,h:0,disp:false,on:false,tx:null,world:new THREE.Vector3(),ground:null,
+      fid:null,pick:null,focusable:false,op:1,opS:1,rect:null,lead:false,state:"",eFrame:-1};
+    e.addEventListener("focus",function(){ ML.focus=key; requestRender(2); });
+    e.addEventListener("blur",function(){ if(ML.focus===key){ ML.focus=null; requestRender(2); } });
+    e.addEventListener("keydown",function(ev){
+      if((ev.key==="Enter"||ev.key===" ")&&it.pick){ ev.preventDefault(); ev.stopPropagation(); select(it.pick.kind,it.pick.id); }
+    });
+  }
+  it.frame=ML.frame;
+  return it;
+}
+/* content is rebuilt only when its key changes; plate is the item's own background and ink, when it has one */
+function mlContent(it,ck,html,plate){
+  if(it.ck===ck) return;
+  it.ck=ck; it.el.innerHTML=html; it.dirty=true;
+  if(plate){ it.el.style.background=plate[0]; it.el.style.color=plate[1]; }
+}
+function mlAria(it,label){
+  if(!label||it.aria===label) return;
+  if(!it.focusable){ it.el.setAttribute("tabindex","0"); it.el.setAttribute("role","button"); it.focusable=true; }
+  it.el.setAttribute("aria-label",label); it.aria=label;
+}
+/* the items this frame, from the level of detail updateVisibility decided (rec.show, rec.nameShow, o.show, k.labelOn) */
+function mlCollect(){
+  var out=[], paper=(mode==="staff"), labels=textOn(), K=paper?"paper":"dark";
+  var PL=TOKENS.sym.plate[K], LB=TOKENS.sym.label[K], PC=TOKENS.sym.place[K];
+  var fam=(highlight&&Object.keys(highlight).length)?highlight:null;
+  var foc=(ML.focus&&ML.items[ML.focus])?ML.items[ML.focus].fid:null;
+  function isSel(k,id){ return !!(selection&&selection.kind===k&&selection.id===id); }
+  function add(it,o){
+    it.cat=o.cat; it.pri=o.pri; it.base=o.base===undefined?o.pri:o.base; it.keep=!!o.keep; it.occl=o.occl!==false; it.acl=o.acl||4;
+    it.r=o.r||0; it.mode=o.mode||"label"; it.fid=o.fid||null; it.pick=o.pick||null; it.ground=o.ground||null; it.op=o.op===undefined?1:o.op;
+    it.mk=o.mk||null; mlAria(it,o.aria); out.push(it); return it;
+  }
+  function text(key,cat,cls,str,col,w,o){
+    var it=mlItem(key,"mlt "+cls);
+    mlContent(it,[str,col,PL].join("|"),esc(str),[PL,col]);
+    it.world.copy(w); o.cat=cat; return add(it,o);
+  }
+  function fstate(id){ var f=FORMATIONS[id]; return {st:liveStatus(id,curPhase),cf:aggConf(id,curPhase),know:knowledgeOf(id),strength:f.strength||aggStrength(id)}; }
+  function rank(f,s){ var e=ECH_RANK[f.ech]; return (e===undefined?2:e)*0.1-(s||0)/1e7; }
+  /* formation counters: the paper map and hybrid */
+  function counter(id,rec){
+    var f=FORMATIONS[id], w=W(rec.p[0],rec.p[1]), gy=displayHeight(w[0],w[1]), S=fstate(id);
+    var sel=isSel("f",id), inFam=!!(fam&&fam[id]), hov=(ML.hover===id), fo=(foc===id);
+    var near=camera.position.distanceTo(_mlV.set(w[0],gy,w[1]))<ML_FULL_DIST;
+    var o={st:S.st,cf:S.cf,sel:sel,paper:paper,dim:!!(highlight&&!highlight[id]),know:S.know,full:sel||inFam||hov||fo||near,
+           strength:S.strength,commander:shortCommander(f)};
+    var it=mlItem("c:"+id,"mlc"+(f.arm==="hq"?" mlc-hq":"")); it.hq=(f.arm==="hq");
+    mlContent(it,["c",o.st,o.cf,sel?1:0,paper?1:0,o.dim?1:0,o.know,o.full?1:0,o.strength].join("|"),counterHTML(f,o));
+    it.world.set(w[0],gy+2.2,w[1]);
+    it.gp=(it.gp||new THREE.Vector3()).set(w[0],gy+0.3,w[1]);
+    var base=3+rank(f,S.strength);
+    add(it,{cat:"counter",mode:"counter",pri:sel?0:(hov||fo)?0.5:inFam?1:base,base:base,keep:sel||hov||fo||inFam,
+            fid:id,pick:{kind:"f",id:id},ground:it.gp,acl:6,aria:counterLabel(f,o)});
+  }
+  Object.keys(aggregates).forEach(function(id){ var r=aggregates[id]; if(r.show&&r.p) counter(id,r); });
+  Object.keys(units).forEach(function(id){ var r=units[id]; if(r.show&&r.p) counter(id,r); });
+  /* formation names: the landscape, which draws no counters (owner decision 9) */
+  Object.keys(units).forEach(function(id){ var r=units[id]; if(!r.nameShow) return;
+    var f=FORMATIONS[id], S=fstate(id), it=mlItem("n:"+id,"mlt mln");
+    mlContent(it,["n",id,PL].join("|"),nameHTML(f,false),[PL,LB.ink]);
+    it.world.set(r.block.position.x,r.block.position.y+6.4,r.block.position.z);
+    var sel=isSel("f",id), inFam=!!(fam&&fam[id]), hov=(ML.hover===id), fo=(foc===id), base=7+rank(f,S.strength);
+    add(it,{cat:"name",pri:sel?0:(hov||fo)?0.5:inFam?1:base,base:base,keep:sel||hov||fo||inFam,fid:id,pick:{kind:"f",id:id},acl:2,
+            aria:counterLabel(f,S)});
+  });
+  /* the moments of the battle: every live event's label is kept (decision 39) */
+  if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(!k.labelOn) return;
+    var sel=isSel("e",k.e.id), w=evWindow(k.e);
+    text("e:"+k.e.id,"event","mlt-serif",k.e.n,LB.annotation,k.world,{pri:sel?0:4+(1-evWeight(k.e,clock))*0.5,base:4,keep:true,r:2.1,acl:3,
+      pick:{kind:"e",id:k.e.id},aria:"Event, "+fmtClock((w[0]+w[1])/2)+": "+k.e.n});
+  });
+  /* the plateau reading, over the northern part of its outline */
+  if(eventGroup&&eventGroup.visible&&plateauRing&&plateauRing.visible){
+    var pc=W(298,196); _mlR.set(pc[0],displayHeight(pc[0],pc[1])+1.6,pc[1]);
+    text("p:plateau","plateau","mlt-serif",plateauText(),LB.annotation,_mlR,{pri:5,acl:5});
+  }
+  /* movement, line, boundary, halt and objective labels, and the plans' */
+  var seen={};
+  function uniq(k){ var n=seen[k]||0; seen[k]=n+1; return n?k+"#"+n:k; }
+  if(labels&&layerOn.arrows) ovText.forEach(function(t){
+    text(uniq("o:"+t.text),t.obj?"objective":"overlay","mlt-serif",t.text,LB.annotation,t.pos,{pri:t.obj?10:6,acl:t.acl,r:t.r,op:ovFadeIn});
+  });
+  if(planGroup) planText.forEach(function(t){ text(uniq("pl:"+t.text),"plan","mlt-serif",t.text,LB.annotation,t.pos,{pri:6,acl:t.acl,r:t.r}); });
+  /* place names: a marker at the place, the name beside it */
+  featureSprites.forEach(function(o){ if(!o.show) return;
+    var ft=o.ft, col=ft.kind==="water"?PC.water:ft.kind==="height"?PC.height:ft.kind==="road"?PC.road:PC.other;
+    var sel=isSel("t",ft.id), base=MAJOR_FEATURES[ft.id]?8:8.5;
+    text("t:"+ft.id,"place","mlt-small",ft.name,col,o.world,{pri:sel?0:base,base:base,keep:sel,mode:"place",mk:[col,PC.fill],
+      pick:{kind:"t",id:ft.id},aria:"Place: "+ft.name});
+  });
+  /* terrain-study labels */
+  if(layerOn.analysis&&labels) analysisSprites.forEach(function(o){
+    var sel=isSel("a",o.tl.n);
+    text("a:"+o.tl.n,"analysis","mlt-small",o.tl.n,paper?o.col.paper:o.col.label,o.world,{pri:sel?0:9,base:9,keep:sel,
+      pick:{kind:"a",id:o.tl.n},aria:"Terrain: "+o.tl.n});
+  });
+  return out;
+}
+function plateauText(){
+  var al=plateauStrength("al"), fr=plateauStrength("fr");
+  return "THE PRATZEN  ·  Allied ≈ "+al.toLocaleString()+(fr>500?("   French ≈ "+fr.toLocaleString()):"");
+}
+/* the interface panels over the map, read as rectangles once per pass */
+var ML_PANELS=[".rail",".dispatch",".legend",".drawer",".timebar",".tools","#viewmode","#tourbar","#firstrun","#selchip","#layerpop","#vsbadge","#restore"];
+function mlPanels(){
+  var R=[];
+  ML_PANELS.forEach(function(q){ var e=document.querySelector(q); if(!e||e.hidden) return;
+    if(e.classList.contains("rail")&&document.body.classList.contains("rail-hidden")) return;
+    if(e.classList.contains("drawer")&&!e.classList.contains("on")) return;
+    var cs=getComputedStyle(e); if(cs.display==="none"||cs.visibility==="hidden"||+cs.opacity<0.05) return;
+    var r=e.getBoundingClientRect(); if(!(r.width>=2&&r.height>=2)) return;
+    R.push([r.left,r.top,r.right,r.bottom]); });
+  return R;
+}
+/* the highest drawn ground, per display factor: above it no segment can meet the ground */
+function mlMaxG(){
+  var f=DISPLAY.factor; if(ML.maxG[f]!==undefined) return ML.maxG[f];
+  var P=groundMesh.geometry.attributes.position.array, m=-1e9;
+  for(var i=1;i<P.length;i+=3) if(P[i]>m) m=P[i];
+  return (ML.maxG[f]=m);
+}
+/* is the anchor behind the drawn ground? The eye-to-anchor segment, sampled every 0.35 units over the ground (a quarter
+   of a mesh cell), from where it first comes below the highest ground; the last 1.2 units are left out so an anchor is not
+   hidden by its own slope */
+function mlOccluded(A,maxG){
+  var E=camera.position, dx=A.x-E.x, dy=A.y-E.y, dz=A.z-E.z, L=Math.sqrt(dx*dx+dy*dy+dz*dz);
+  if(L<3) return false;
+  var t1=1-1.2/L, t0=0;
+  if(E.y>maxG){ if(dy>=0) return false; t0=(maxG-E.y)/dy; if(t0>=t1) return false; }
+  var n=Math.max(2,Math.ceil(Math.sqrt(dx*dx+dz*dz)*(t1-t0)/0.35));
+  for(var i=0;i<=n;i++){ var t=t0+(t1-t0)*i/n; if(groundY(E.x+dx*t,E.z+dz*t)>E.y+dy*t+0.005) return true; }
+  return false;
+}
+/* screen rectangles of the symbols labels must leave clear: arrow heads (their casing, every draped vertex: on relief the
+   middle of a head stands off the line between its corners), event glyphs, objective and plan markers. World positions are
+   stored when the overlays are built, so this pass only projects them. */
+function mlObstacles(VW,VH){
+  var R=[], tanH=Math.tan(THREE.MathUtils.degToRad(camera.fov/2));
+  function tri(T){ var r=[1e9,1e9,-1e9,-1e9];
+    for(var i=0;i<T.length;i+=3){ _mlW.set(T[i],T[i+1],T[i+2]).project(camera); if(!(_mlW.z<1&&_mlW.z>-1)) return;
+      var x=(_mlW.x*0.5+0.5)*VW, y=(-_mlW.y*0.5+0.5)*VH; if(x<r[0]) r[0]=x; if(y<r[1]) r[1]=y; if(x>r[2]) r[2]=x; if(y>r[3]) r[3]=y; }
+    R.push(r); }
+  function px(x,y,z){ _mlW.set(x,y,z).project(camera); return _mlW.z<1&&_mlW.z>-1?[(_mlW.x*0.5+0.5)*VW,(-_mlW.y*0.5+0.5)*VH]:null; }
+  function disc(p,r){ var c=px(p.x,p.y,p.z); if(!c) return;
+    _mlV.copy(p).applyMatrix4(camera.matrixWorldInverse); var d=-_mlV.z; if(d<=camera.near) return;
+    var rp=r*(VH/(2*d*tanH)); R.push([c[0]-rp,c[1]-rp,c[0]+rp,c[1]+rp]); }
+  if(layerOn.arrows&&ovFadeIn>0.05){ ovHeads.forEach(tri); ovMarkers.forEach(function(m){ disc(m.pos,m.r); }); }
+  if(planGroup){ planHeads.forEach(tri); planMarkers.forEach(function(m){ disc(m.pos,m.r); }); }
+  if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(k.sp.visible&&k.m.opacity>0.05) disc(k.world,2.1); });
+  return R;
+}
+function mlHits(x0,y0,x1,y1,L){
+  for(var i=0;i<L.length;i++){ var q=L[i]; if(x0<q[2]+ML_PAD&&q[0]<x1+ML_PAD&&y0<q[3]+ML_PAD&&q[1]<y1+ML_PAD) return true; }
+  return false;
+}
+function mlFree(x0,y0,w,h,VW,VH,panels,obst){
+  var x1=x0+w, y1=y0+h;
+  if(x0<ML_PAD||y0<ML_PAD||x1>VW-ML_PAD||y1>VH-ML_PAD) return false;
+  return !mlHits(x0,y0,x1,y1,panels)&&!mlHits(x0,y0,x1,y1,obst)&&!mlHits(x0,y0,x1,y1,ML.taken);
+}
+/* one item: its anchor, the eight places around it, then the rings (with a leader) */
+function mlPlaceItem(it,VW,VH,panels,obst){
+  var w=it.w, h=it.h, sx=it.sx, sy=it.sy;
+  if(!(w>0&&h>0)) return false;
+  var cl=it.acl+(it.r?it.r*it.ppw:0), C, i;
+  if(it.mode==="place"){   /* a place name sits beside its marker, never away from it */
+    var m=[sx-5,sy-5,sx+5,sy+5], g=7;
+    if(!mlFree(m[0],m[1],10,10,VW,VH,panels,obst)) return false;
+    C=[[sx+g,sy-h/2],[sx-w/2,sy-g-h],[sx-g-w,sy-h/2],[sx-w/2,sy+g],[sx+g-2,sy-g-h+2],[sx+g-2,sy+g-2],[sx-g-w+2,sy-g-h+2],[sx-g-w+2,sy+g-2]];
+    ML.taken.push(m);
+    for(i=0;i<C.length;i++) if(mlFree(C[i][0],C[i][1],w,h,VW,VH,panels,obst)){ it.mrect=m; return mlTake(it,C[i][0],C[i][1],false); }
+    ML.taken.pop(); return false;
+  }
+  if(it.mode==="counter"){   /* the frame's foot 6 px above the anchor; the paddings are .mlc's (style.css) */
+    var pb=it.hq?12:5; it.ox=5+20; it.oy=13+(h-13-pb)/2+14; C=[[sx-it.ox,sy-cl-it.oy]]; }
+  else { it.ox=w/2; it.oy=h;
+    C=[[sx-w/2,sy-cl-h],[sx+2,sy-cl-h],[sx-2-w,sy-cl-h],[sx+cl+2,sy-h/2],[sx-cl-2-w,sy-h/2],[sx-w/2,sy+cl],[sx+2,sy+cl],[sx-2-w,sy+cl]]; }
+  for(i=0;i<C.length;i++) if(mlFree(C[i][0],C[i][1],w,h,VW,VH,panels,obst)) return mlTake(it,C[i][0],C[i][1],i>0&&it.mode==="counter");
+  var R=it.keep?ML_RINGS.concat(ML_RINGS_KEEP):ML_RINGS;
+  for(var k=0;k<R.length;k++){ var n=R[k]<60?12:R[k]<120?16:24, rr=R[k]+cl;
+    for(var a=0;a<n;a++){ var j=(a+1)>>1, th=-Math.PI/2+((a&1)?1:-1)*j*2*Math.PI/n;   /* from straight up, alternately either side */
+      var x0=sx+Math.cos(th)*rr-w/2, y0=sy+Math.sin(th)*rr-h/2;
+      if(mlFree(x0,y0,w,h,VW,VH,panels,obst)) return mlTake(it,x0,y0,true); } }
+  return false;
+}
+function mlTake(it,x0,y0,lead){ it.rect=[x0,y0,x0+it.w,y0+it.h]; it.lead=lead; it.state="on"; ML.taken.push(it.rect); return true; }
+/* the nearest point of a rectangle to (x, y) */
+function mlNear(r,x,y){ return [Math.max(r[0],Math.min(x,r[2])),Math.max(r[1],Math.min(y,r[3]))]; }
+function mlLine(s,a,b,C){
+  var d='M'+a[0].toFixed(1)+' '+a[1].toFixed(1)+'L'+b[0].toFixed(1)+' '+b[1].toFixed(1);
+  s.push('<path d="'+d+'" fill="none" stroke="'+C.cs+'" stroke-width="3" stroke-linecap="round"/><path d="'+d+'" fill="none" stroke="'+C.co+'" stroke-width="1.2"/>');
+}
+/* the pass */
+function mlLayout(){
+  if(!ML.root) return;
+  var t0=performance.now();
+  ML.frame++;
+  var VW=renderer.domElement.clientWidth||window.innerWidth, VH=renderer.domElement.clientHeight||window.innerHeight;
+  camera.updateMatrixWorld();
+  mlLegendFit(VW,VH);
+  var list=ML.canvas?[]:mlCollect(), panels=mlPanels(), tanH=Math.tan(THREE.MathUtils.degToRad(camera.fov/2));
+  var st={items:list.length,placed:0,leaders:0,dropped:0,occluded:0,offscreen:0,underPanel:0,keepMissing:[],dropped_:[],ms:0,nodes:0};
+  var elig=[], dirty=[];
+  list.forEach(function(it){
+    _mlV.copy(it.world).applyMatrix4(camera.matrixWorldInverse);
+    var depth=-_mlV.z;
+    _mlW.copy(it.world).project(camera);
+    if(depth<=camera.near||Math.abs(_mlW.x)>1||Math.abs(_mlW.y)>1){ it.state="offscreen"; st.offscreen++; return; }
+    it.sx=(_mlW.x*0.5+0.5)*VW; it.sy=(-_mlW.y*0.5+0.5)*VH; it.ppw=VH/(2*depth*tanH);
+    for(var p=0;p<panels.length;p++){ var q=panels[p]; if(it.sx>=q[0]&&it.sx<=q[2]&&it.sy>=q[1]&&it.sy<=q[3]){ it.state="panel"; st.underPanel++; return; } }
+    it.eFrame=ML.frame; it.state=""; elig.push(it);
+    if(!it.disp){ it.el.style.display=""; it.disp=true; it.dirty=true; }
+    if(it.dirty) dirty.push(it);
+  });
+  for(var k in ML.items){ var q=ML.items[k]; if(q.eFrame!==ML.frame&&q.disp){ q.el.style.display="none"; q.disp=false; q.on=false; q.el.classList.remove("on"); q.tx=null; } }
+  dirty.forEach(function(it){ var r=it.el.getBoundingClientRect(); it.w=Math.ceil(r.width||0); it.h=Math.ceil(r.height||0); it.dirty=false; });
+  var maxG=mlMaxG(), obst=mlObstacles(VW,VH);
+  elig.forEach(function(it){ it.occ=!it.keep&&it.occl&&mlOccluded(it.world,maxG); if(it.occ){ it.state="occluded"; st.occluded++; } });
+  var order=elig.filter(function(it){ return !it.occ; }).sort(function(a,b){ return (a.keep!==b.keep)?(a.keep?-1:1):(a.pri-b.pri); });
+  ML.taken=[];
+  order.forEach(function(it){
+    if(mlPlaceItem(it,VW,VH,panels,obst)){ st.placed++; if(it.lead) st.leaders++; }
+    else { it.state="dropped"; st.dropped++; st.dropped_.push(it.key); if(it.keep) st.keepMissing.push(it.key); }
+  });
+  /* write: positions, visibility, the leader lines and markers */
+  var K=mode==="staff"?"paper":"dark", C={cs:TOKENS.sym.plate[K],co:TOKENS.sym.label[K].annotation}, s=[];
+  elig.forEach(function(it){
+    var on=it.state==="on";
+    if(on){ var x=Math.round(it.rect[0]), y=Math.round(it.rect[1]), tx=x+","+y;
+      if(it.tx!==tx){ it.el.style.transform="translate("+x+"px,"+y+"px)"; it.tx=tx; }
+      if(it.mode==="counter"){ _mlW.copy(it.ground).project(camera);
+        var g=[(_mlW.x*0.5+0.5)*VW,(-_mlW.y*0.5+0.5)*VH], foot=[x+it.ox,y+it.oy];
+        mlLine(s,g,it.lead?mlNear([x,y,x+it.w,y+it.h],g[0],g[1]):foot,C); }
+      else if(it.lead) mlLine(s,[it.sx,it.sy],mlNear(it.rect,it.sx,it.sy),C);
+      if(it.lead) s.push('<circle cx="'+(it.mode==="counter"?g[0]:it.sx).toFixed(1)+'" cy="'+(it.mode==="counter"?g[1]:it.sy).toFixed(1)+'" r="2.2" fill="'+C.co+'" stroke="'+C.cs+'" stroke-width="1"/>');
+      if(it.mode==="place") s.push('<path d="M'+it.sx.toFixed(1)+' '+(it.sy-5).toFixed(1)+'l5 5l-5 5l-5 -5z" fill="'+it.mk[1]+'" stroke="'+it.mk[0]+'" stroke-width="1.6"/>');
+    }
+    if(it.on!==on){ it.el.classList.toggle("on",on); it.on=on; }
+    var op=on&&it.op<1?Math.max(0,it.op):1;
+    if(it.opS!==op){ it.el.style.opacity=op<1?String(op.toFixed(2)):""; it.opS=op; }
+  });
+  var svg=s.join("");
+  if(svg!==ML.svg){ ML.lines.innerHTML=svg; ML.svg=svg; }
+  /* the keyboard reaches every item on the map in priority order (section F.1): the layer's children follow it */
+  var fo=elig.filter(function(it){ return it.focusable; }).sort(function(a,b){ return a.base-b.base; });
+  var ok=fo.map(function(it){ return it.key; }).join(",");
+  if(ok!==ML.order){ ML.order=ok;
+    var act=document.activeElement, back=act&&ML.root.contains&&ML.root.contains(act)?act:null;
+    fo.forEach(function(it){ ML.root.appendChild(it.el); });
+    if(back&&document.activeElement!==back&&back.focus) back.focus({preventScroll:true}); }
+  st.ms=performance.now()-t0;
+  /* nodes drawn now: the layer, its lines and every item displayed (a hidden item is display:none and inert) */
+  st.nodes=2+(ML.lines&&ML.lines.childNodes?ML.lines.childNodes.length:0);
+  elig.forEach(function(it){ st.nodes+=1+(it.el.getElementsByTagName?it.el.getElementsByTagName("*").length:0); });
+  ML.stats=st;
+}
+/* ---- the legend: contextual, compact, collapsible, never over the dispatch (decision 29, section F.2) ----
+   One row per encoding on screen, written from the tables that draw it. If the open legend would overlap the
+   dispatch (a narrow window with the dossier open), it stays closed: the rectangle test of section J. */
+var _lgKey="";
+function paintLegend(){
+  var lg=document.querySelector(".legend"); if(!lg) return;
+  var O=OVERLAYS[curPhase]||{}, A=layerOn.arrows?(O.arrows||[]):[];
+  function side(s){ return A.some(function(a){ return a.side===s&&a.kind!=="halt"; }); }
+  var counters=layerOn.symbols&&mode!=="terrain"&&!cleanView, land=mode!=="staff";
+  var on={nation:counters||(land&&!isTrueScale()), foot:land&&isTrueScale(), "arrow-fr":side("fr"), "arrow-al":side("al"),
+          halt:A.some(function(a){ return a.kind==="halt"; }), bound:layerOn.arrows&&(O.bounds||[]).length>0, plan:!!planSide,
+          badge:counters, analysis:!!layerOn.analysis, contours:!!layerOn.contours&&!cleanView};
+  var key=JSON.stringify(on);
+  if(key===_lgKey) return;
+  _lgKey=key; ML.lgSize=null;
+  lg.querySelectorAll("[data-lg]").forEach(function(e){ e.hidden=!on[e.dataset.lg]; });
+}
+function mlLegendFit(VW,VH){
+  var lg=document.querySelector(".legend"), tg=document.getElementById("lg-toggle"); if(!lg||!tg) return;
+  paintLegend();
+  var rows=document.getElementById("lg-rows"), dp=document.querySelector(".dispatch"), squeeze=false;
+  function shown(e){ if(!e) return false; var cs=getComputedStyle(e); return cs.display!=="none"&&cs.visibility!=="hidden"; }
+  if(ML.legendOpen&&shown(lg)&&shown(dp)&&rows){
+    /* the open legend's rectangle, where it will stand when any slide has finished */
+    if(!ML.lgSize){ var rr=rows.getBoundingClientRect(), hr=tg.getBoundingClientRect(); ML.lgSize=[Math.max(rr.width,hr.width)+22,rr.height+hr.height+16]; }
+    var D=dp.getBoundingClientRect(), L=lg.getBoundingClientRect(), dr=document.getElementById("drawer");
+    var right=VW-18-(document.body.classList.contains("drawer-open")&&dr?dr.getBoundingClientRect().width:0), bottom=L.bottom;
+    squeeze=right-ML.lgSize[0]<D.right+ML_PAD&&bottom-ML.lgSize[1]<D.bottom&&bottom>D.top;
+  }
+  var open=ML.legendOpen&&!squeeze;
+  if(lg.classList.contains("collapsed")===open){ lg.classList.toggle("collapsed",!open); tg.setAttribute("aria-expanded",String(open)); }
+  if(lg.classList.contains("squeezed")!==squeeze){ lg.classList.toggle("squeezed",squeeze);
+    tg.title=squeeze?"No room for the key beside the dispatch: hide the dispatch (D) or close the dossier":"Show or hide the key"; }
+}
+/* ---- hover and picking by footprint (section F.1) ---- */
+/* the drawn ground under a screen point: the view ray marched over groundY, then bisected */
+var _gRay=new THREE.Vector3();
+function groundAt(cx,cy){
+  var VW=renderer.domElement.clientWidth||window.innerWidth, VH=renderer.domElement.clientHeight||window.innerHeight;
+  camera.updateMatrixWorld();
+  _gRay.set(cx/VW*2-1,-(cy/VH)*2+1,0.5).unproject(camera).sub(camera.position).normalize();
+  var E=camera.position, maxG=mlMaxG(), s=0, step, prev;
+  if(E.y>maxG){ if(_gRay.y>=0) return null; s=(maxG-E.y)/_gRay.y; }
+  for(prev=s;s<1400;prev=s,s+=step){
+    step=Math.max(0.5,s*0.004);
+    var x=E.x+_gRay.x*s, z=E.z+_gRay.z*s;
+    if(E.y+_gRay.y*s<=groundY(x,z)){
+      var a=prev, b=s;
+      for(var i=0;i<12;i++){ var m=(a+b)/2; if(E.y+_gRay.y*m<=groundY(E.x+_gRay.x*m,E.z+_gRay.z*m)) b=m; else a=m; }
+      return [E.x+_gRay.x*b,E.z+_gRay.z*b];
+    }
+    if(E.y+_gRay.y*s<-60) return null;
+  }
+  return null;
+}
+/* a formation is on the map when its figures or footprint are drawn, or the layer holds its counter or name */
+function mlOnMap(id){
+  var r=units[id]; if(!r||knowledgeOf(id)==="unknown") return false;
+  if((r.block&&r.block.visible)||(r.foot&&r.foot.visible)) return true;
+  var c=ML.items["c:"+id], n=ML.items["n:"+id];
+  return !!((c&&c.eFrame===ML.frame)||(n&&n.eFrame===ML.frame));
+}
+/* the formation whose footprint (frontage W0 x sw by depth D0 x sd at its yaw, the 2B primitive; the drawn block's size
+   where it is larger) contains the ground under the point, with one unit to spare; the nearest centre wins */
+function pickFormation(cx,cy){
+  var g=groundAt(cx,cy); if(!g) return null;
+  var best=null, bd=1e9;
+  Object.keys(units).forEach(function(id){
+    var r=units[id], u=r.block&&r.block.userData; if(!u||!u.W0||!mlOnMap(id)) return;
+    var p=posNow(id); if(!p) return;
+    var w=W(p[0],p[1]), sc=r.block.visible?Math.max(1,r.block.scale.x||1):1, yaw=r.yaw||0, c=Math.cos(yaw), sn=Math.sin(yaw);
+    var dx=g[0]-w[0], dz=g[1]-w[1], lx=dx*c-dz*sn, lz=dx*sn+dz*c, hw=u.W0*(u.sw||1)*sc/2+1, hd=u.D0*(u.sd||1)*sc/2+1;
+    if(Math.abs(lx)<=hw&&Math.abs(lz)<=hd){ var d=lx*lx/(hw*hw)+lz*lz/(hd*hd); if(d<bd){ bd=d; best=id; } }
+  });
+  return best;
+}
+function mlHit(cx,cy){
+  for(var k in ML.items){ var it=ML.items[k]; if(it.on&&it.rect&&cx>=it.rect[0]&&cx<=it.rect[2]&&cy>=it.rect[1]&&cy<=it.rect[3]) return it; }
+  return null;
+}
+/* the formation whose counter or name anchor lies within 20 px (a corps counter has no footprint of its own) */
+function mlNearAnchor(cx,cy){
+  var best=null, bd=400;
+  for(var k in ML.items){ var it=ML.items[k]; if(!it.fid||it.eFrame!==ML.frame||it.state==="occluded") continue;
+    var d=(it.sx-cx)*(it.sx-cx)+(it.sy-cy)*(it.sy-cy); if(d<bd){ bd=d; best=it.fid; } }
+  return best;
+}
+/* the pointer over a counter, a name or a formation's position: that formation is shown, full and never dropped */
+function mlHoverAt(cx,cy){
+  if(ML.canvas) return;
+  var it=mlHit(cx,cy), id=(it&&it.fid)||pickFormation(cx,cy)||mlNearAnchor(cx,cy);   /* a place or arrow label is no formation: look under it */
+  var cur=(it&&it.pick)||id?"pointer":"";
+  if(renderer.domElement.style.cursor!==cur) renderer.domElement.style.cursor=cur;
+  if(id!==ML.hover){ ML.hover=id; requestRender(2); }
+}
+
 var lodEch="div";
 var smokeT=0;
 var _lastChip=-1;
@@ -6943,6 +7469,7 @@ function updateVisibility(){
   }
   window.__fitLabel=fitLabel;
   function placeSprite(rec,mapPos,show){
+    rec.show=!!(mapPos&&show); rec.p=mapPos;          /* what the map layer draws (Stage 2D) */
     if(!mapPos||!show){ rec.sprite.visible=false; rec.stem.visible=false; return; }
     var w=W(mapPos[0],mapPos[1]);
     var gy=displayHeight(w[0],w[1]);
@@ -6957,7 +7484,7 @@ function updateVisibility(){
     sp[0]=w[0]; sp[1]=gy+0.3; sp[2]=w[1];
     sp[3]=w[0]; sp[4]=gy+2.2+h*0.08; sp[5]=w[1];
     rec.stem.geometry.attributes.position.needsUpdate=true;
-    rec.stem.visible=true;
+    rec.stem.visible=ML.canvas;                        /* the layer draws its own stem */
   }
 
   Object.keys(aggregates).forEach(function(id){
@@ -7005,7 +7532,7 @@ function updateVisibility(){
       var dHere=camera.position.distanceTo(rec.block.position);
       var wantName = labels && mode==="terrain" && !!p && dHere>34 &&
                      (dist<nameRange || (selection&&selection.kind==="f"&&selection.id===id));
-      rec.nameLabel.visible=wantName;
+      rec.nameLabel.visible=wantName; rec.nameShow=wantName;
       if(wantName){
         rec.nameLabel.position.copy(rec.block.position);
         rec.nameLabel.position.y+=6.4;
@@ -7054,6 +7581,7 @@ function updateVisibility(){
   featureSprites.forEach(function(o){
     var major=MAJOR_FEATURES[o.ft.id] || o.ft.kind==="height" || o.ft.kind==="town";
     o.sprite.visible = labels && (major || dist<210);
+    o.show=o.sprite.visible;
     if(!o.sprite.visible) return;
     var d=camera.position.distanceTo(o.world);
     var worldPerPx=2*d*tanH/hpx;
@@ -7082,12 +7610,30 @@ function updateVisibility(){
   updateEventLayer();
   updateSelRing();
   updatePlanLinks();
-  declutter();
+  if(ML.canvas) declutter();   /* Stage 0's sprite placement; the map layer lays out in the drawn frame (mlLayout) */
 }
 
-/* ---------------- picking ---------------- */
+/* ---------------- picking ----------------
+   Stage 2D: an item the map layer drew (counter, name, event, place or terrain label) by its drawn box; else a formation
+   by its footprint (pickFormation); else a corps counter, an event glyph or a place within 34 px of its anchor. */
 var v3=new THREE.Vector3();
 function pickAt(cx,cy){
+  if(ML.canvas) return pickAtSprites(cx,cy);
+  var hit=mlHit(cx,cy); if(hit&&hit.pick) return {kind:hit.pick.kind,id:hit.pick.id};
+  var fid=pickFormation(cx,cy); if(fid) return {kind:"f",id:fid};
+  var best=null, bestD=34;
+  function test(pos,kind,id){
+    if(!pos) return;
+    v3.copy(pos).project(camera);
+    if(v3.z>1) return;
+    var d=Math.hypot((v3.x*0.5+0.5)*window.innerWidth-cx,(-v3.y*0.5+0.5)*window.innerHeight-cy);
+    if(d<bestD){ bestD=d; best={kind:kind,id:id}; }
+  }
+  Object.keys(ML.items).forEach(function(k){ var it=ML.items[k]; if(it.eFrame===ML.frame&&it.pick&&it.state!=="occluded") test(it.world,it.pick.kind,it.pick.id); });
+  if(!best) for(var ei=0;ei<eventMarks.length;ei++) if(eventGroup.visible&&eventMarks[ei].sp.visible) test(eventMarks[ei].sp.position,"e",eventMarks[ei].e.id);
+  return best;
+}
+function pickAtSprites(cx,cy){
   var best=null, bestD=34;
   function test(pos,kind,id){
     if(!pos) return;
@@ -7183,10 +7729,14 @@ function glide(toPos,toTgt,ms,bulge){
   freeCam=false;
   var arc=setupArc(camera.position,orbitTarget,toPos,toTgt);
   var t0=performance.now(), dur=RM?1:(ms||1500);
-  tween=function(now){
+  /* a transition already running (a phase change's light and overlay fade) runs on under the glide: replacing it left the
+     tour's arrows at opacity 0 and the previous phase's drawn (found in Stage 2D) */
+  var prev=tween, self;
+  tween=self=function(now){
+    if(prev){ prev(now); if(tween!==self) prev=null; tween=self; }   /* it clears tween when it ends */
     var k=Math.min(1,(now-t0)/dur);
     applyArc(arc,easeInOut(k),bulge);
-    if(k>=1) tween=null;
+    if(k>=1&&!prev) tween=null;
   };
 }
 function flyTo(v){   /* v is an authored preset: re-framed to the drawn ground */
@@ -7210,7 +7760,7 @@ function bindCanvas(){
     el.setPointerCapture(e.pointerId);
   });
   el.addEventListener("pointermove",function(e){
-    if(!dragging) return;
+    if(!dragging){ if(e.pointerType!=="touch") mlHoverAt(e.clientX,e.clientY); return; }
     var dx=e.clientX-lx, dy=e.clientY-ly;
     moved+=Math.abs(dx)+Math.abs(dy);
     if(moved>4) freeCam=true;
@@ -7226,6 +7776,7 @@ function bindCanvas(){
     }
     dragging=false;
   });
+  el.addEventListener("pointerleave",function(){ if(ML.hover){ ML.hover=null; el.style.cursor=""; requestRender(2); } });
   el.addEventListener("wheel",function(e){
     e.preventDefault(); freeCam=true; syncSph();
     sph.radius=Math.max(24,Math.min(620,sph.radius*(1+Math.sign(e.deltaY)*0.09)));
@@ -7361,6 +7912,10 @@ function buildUI(){
   document.getElementById("tour-next").addEventListener("click",function(){ tourGo(1); });
   document.getElementById("tour-exit").addEventListener("click",exitTour);
   paintKey(); bindExaggeration();
+  /* the legend's head opens and closes it; where it would lie over the dispatch it stays closed (its title says why) */
+  document.getElementById("lg-toggle").addEventListener("click",function(){
+    if(document.querySelector(".legend").classList.contains("squeezed")) return;
+    ML.legendOpen=!ML.legendOpen; requestRender(2); });
   document.getElementById("fr-close").addEventListener("click",function(){ closeFirst("explore"); });
   document.getElementById("fr-watch").addEventListener("click",function(){ closeFirst("watch"); });
   document.getElementById("fr-tour").addEventListener("click",function(){ closeFirst("tour"); });
@@ -7439,6 +7994,9 @@ function buildUI(){
   ["pointerdown","pointerup","wheel","keydown","click"].forEach(function(ev){
     window.addEventListener(ev,function(){ lastInput=performance.now(); requestRender(2); },{capture:true,passive:true}); });
   window.addEventListener("pointermove",function(e){ if(e.buttons){ lastInput=performance.now(); requestRender(1); } },{capture:true,passive:true});
+  /* a panel sliding in or out (the drawer, the rail, the legend): draw until it has stopped, and once more after */
+  ["transitionrun","transitionstart"].forEach(function(ev){ document.addEventListener(ev,function(){ panelMoveUntil=performance.now()+450; }); });
+  document.addEventListener("transitionend",function(){ requestRender(2); });
   window.addEventListener("resize",function(){
     requestRender(3);
     camera.aspect=window.innerWidth/window.innerHeight;
@@ -7457,7 +8015,9 @@ function buildUI(){
 function hexOf(n){ return "#"+("000000"+n.toString(16)).slice(-6).toUpperCase(); }
 var COLOUR_KEY={
   fr:{word:"blue", hex:NATION.fr.fill}, ru:{word:"green", hex:NATION.ru.fill}, at:{word:"white", hex:NATION.at.fill},
-  "arrow-fr":{word:"blue", hex:hexOf(SIDE_COL.fr.attack)}, "arrow-al":{word:"amber", hex:hexOf(SIDE_COL.al.attack)}
+  "arrow-fr":{word:"blue", hex:hexOf(SIDE_COL.fr.attack)}, "arrow-al":{word:"amber", hex:hexOf(SIDE_COL.al.attack)},
+  /* true scale draws formations as footprints in the side colour (makeFootprint): the legend says so (2D) */
+  "foot-fr":{word:"blue", hex:TOKENS.sym.side.fr.base}, "foot-al":{word:"amber", hex:TOKENS.sym.side.al.base}
 };
 function paintKey(){
   document.querySelectorAll(".legend [data-key]").forEach(function(e){
@@ -8365,8 +8925,10 @@ function ambientNow(){
   }
   return false;
 }
+/* Stage 2D: while an interface panel slides (a CSS transition), frames are drawn so the map layer keeps clear of it */
+var panelMoveUntil=0;
 function frameState(now){
-  if(tween||playing||needFrames>0||settling||now-lastInput<INPUT_HOLD_MS) return "active";
+  if(tween||playing||needFrames>0||settling||now-lastInput<INPUT_HOLD_MS||now<panelMoveUntil) return "active";
   if(ambientNow()) return (now-lastAmbient>=AMBIENT_MS)?"ambient":"waiting";
   return "idle";
 }
@@ -8512,6 +9074,108 @@ var AUSTERLITZ_DEBUG=(function(){
     }
     rebuildOverlays(keep,true);
     return {worst:worst,where:where,n:n,meshes:meshes,heads:H};
+  }
+  /* ---- Stage 2D: the map layer and the legend (docs/STAGE2_SPEC.md section J), in five fixed states at the current
+     display factor. Boxes are read from the page (getBoundingClientRect); arrow heads are projected anew from the overlay
+     meshes, independently of the layer's own obstacle list. ---- */
+  var _lv3=new THREE.Vector3();
+  function layerChecks(ck){
+    var S=[
+      {n:"landscape, Study, Saint-Hilaire selected",m:"terrain",p:"study",t:585,sel:["f","sthilaire"],aim:"sthilaire"},
+      {n:"hybrid, Watch, IV Corps highlighted",m:"hybrid",p:"watch",t:600,sel:["f","c_iv"],aim:[285,289]},
+      {n:"paper map, Study",m:"staff",p:"study",t:570,sel:null,cam:[-27,262,41,-27,0,9]},
+      {n:"landscape, Watch, 04:30",m:"terrain",p:"watch",t:300,sel:null,cam:VANTAGE.plan},
+      {n:"landscape, Study, a plan, going and terrain study on",m:"terrain",p:"study",t:520,sel:null,cam:VANTAGE.field,layers:true},
+      {n:"the first-run card",m:"terrain",p:"study",t:240,sel:null,first:true},
+      {n:"the guided tour, its third stop",m:"terrain",p:"study",t:240,sel:null,tour:3}
+    ];
+    var R={overlaps:[],panel:[],head:[],keep:[],a11y:[],legend:[],ctx:[],names:0,heads:0,placed:0,keepN:0,reachKey:[],reachHover:[],dropTested:0,enter:"",idle:true};
+    function cross(a,b){ return Math.min(a[2],b[2])-Math.max(a[0],b[0])>0.5&&Math.min(a[3],b[3])-Math.max(a[1],b[1])>0.5; }
+    function box(e){ var b=e.getBoundingClientRect(); return [b.left,b.top,b.right,b.bottom]; }
+    function shown(e){ if(!e) return false; var cs=getComputedStyle(e); return cs.display!=="none"&&cs.visibility!=="hidden"&&e.getBoundingClientRect().width>0; }
+    /* the test is synchronous: the panels' CSS slides (.32 s) are held still, so each state is laid out where the panels rest */
+    document.body.classList.add("st-still");
+    function toggle(q){ var e=document.querySelector(q); if(e) e.click(); }
+    S.forEach(function(s){
+      setPresentation(s.p); if(mode!==s.m) setMode(s.m);
+      setClock(s.t,{instant:true,force:true,camera:false}); finishTween();
+      if(s.layers){ if(!planSide) setPlan("al"); if(!goingOn) toggle("#going"); if(!layerOn.analysis) toggle('.layer-btn[data-l="analysis"]'); }
+      select(null,null); if(s.sel) select(s.sel[0],s.sel[1]);
+      if(s.first){ var frc=document.getElementById("firstrun"); frc.hidden=false; openFirstRun(); }
+      else if(s.tour){ startTour(); for(var ts=1;ts<s.tour;ts++) tourGo(1); finishTween(); }
+      else if(s.cam) placeCamera(s.cam);
+      else { var q=typeof s.aim==="string"?posNow(s.aim):s.aim, w=W(q[0],q[1]), y=displayHeight(w[0],w[1]), d=_lv3.set(-0.55,0.62,0.56).normalize().multiplyScalar(90);
+        tween=null; camArc=null; freeCam=true; orbitTarget.set(w[0],y,w[1]); camera.position.set(w[0]+d.x,y+d.y,w[1]+d.z); camera.lookAt(orbitTarget); clampCamera(); }
+      settle(20,true);
+      /* render on demand: a pass without a drawn frame lays nothing out; a drawn frame lays out once */
+      var fr=ML.frame; settle(4,true); if(ML.frame!==fr) R.idle=false; renderFrame(); if(ML.frame!==fr+1) R.idle=false;
+      var items=Object.keys(ML.items).map(function(k){ return ML.items[k]; }).filter(function(it){ return it.eFrame===ML.frame; });
+      var on=items.filter(function(it){ return it.state==="on"; }), B=on.map(function(it){ return box(it.el); }), i, j;
+      R.placed+=on.length;
+      for(i=0;i<on.length;i++) for(j=i+1;j<on.length;j++) if(cross(B[i],B[j])) R.overlaps.push(s.n+": "+on[i].key+" / "+on[j].key);
+      var P=mlPanels(); on.forEach(function(it,k){ P.forEach(function(p){ if(cross(B[k],p)) R.panel.push(s.n+": "+it.key); }); });
+      var H=[]; curOv.updateMatrixWorld(true);
+      if(layerOn.arrows) curOv.traverse(function(o){ var dd=o.userData.drape; if(!dd||dd.kind!=="head"||!o.geometry) return;
+        var A=o.geometry.attributes.position, r=[1e9,1e9,-1e9,-1e9], ok=true;
+        for(var k=0;k<A.count;k++){ _lv3.fromBufferAttribute(A,k).applyMatrix4(o.matrixWorld).project(camera); if(_lv3.z>1||_lv3.z<-1){ ok=false; break; }
+          var x=(_lv3.x*0.5+0.5)*innerWidth, y=(-_lv3.y*0.5+0.5)*innerHeight; r=[Math.min(r[0],x),Math.min(r[1],y),Math.max(r[2],x),Math.max(r[3],y)]; }
+        if(ok) H.push(r); });
+      R.heads+=H.length;
+      on.forEach(function(it,k){ H.forEach(function(h){ if(cross(B[k],h)) R.head.push(s.n+": "+it.key); }); });
+      items.forEach(function(it){ if(!it.keep) return; R.keepN++; if(it.state!=="on"&&it.state!=="offscreen"&&it.state!=="panel") R.keep.push(s.n+": "+it.key+" ("+it.state+")"); });
+      items.forEach(function(it){ if(!it.fid) return; R.names++; var l=it.el.getAttribute("aria-label")||"";
+        if(it.el.getAttribute("tabindex")!=="0"||it.el.getAttribute("role")!=="button"||
+           !/^.+, (French|Allied, Russian|Allied, Austrian), (army|corps|division|brigade)(, about [\d,]+)?(, [a-z -]+)?, position grade [ABC](, reported only)?$/.test(l))
+          R.a11y.push(s.n+": "+it.key+" \""+l+"\""); });
+      if(!R.enter){ var f1=on.filter(function(it){ return !!it.fid; })[0];
+        if(f1){ f1.el.dispatchEvent(new KeyboardEvent("keydown",{key:"Enter",bubbles:true,cancelable:true}));
+          R.enter=(selection&&selection.kind==="f"&&selection.id===f1.fid)?"Enter on "+f1.key+" selects it":"FAILED: Enter on "+f1.key+" did not select it";
+          select(null,null); if(s.sel) select(s.sel[0],s.sel[1]); mlLayout(); } }
+      /* every dropped formation: from the keyboard (focus draws it), and by hovering some point of its drawn position */
+      items.filter(function(it){ return it.fid&&it.state==="dropped"; }).forEach(function(it){
+        R.dropTested++;
+        it.el.focus(); mlLayout(); if(ML.items[it.key].state!=="on") R.reachKey.push(s.n+": "+it.key); it.el.blur(); mlLayout();
+        var f=it.fid, u=units[f], hit=false, pts=[];
+        if(u&&u.block&&u.block.userData.W0){ var p=posNow(f), w=W(p[0],p[1]), bu=u.block.userData, yaw=u.yaw||0, c=Math.cos(yaw), sn=Math.sin(yaw);
+          for(var a=-2;a<=2;a++) for(var b=-2;b<=2;b++){ var lx=a/4*bu.W0*bu.sw, lz=b/4*bu.D0*bu.sd; pts.push([w[0]+lx*c+lz*sn,w[1]-lx*sn+lz*c]); } }
+        else pts.push([it.world.x,it.world.z]);   /* a corps counter has no footprint: its anchor */
+        for(var k=0;k<pts.length&&!hit;k++){ _lv3.set(pts[k][0],displayHeight(pts[k][0],pts[k][1]),pts[k][1]).project(camera);
+          if(_lv3.z>1) continue;
+          mlHoverAt((_lv3.x*0.5+0.5)*innerWidth,(-_lv3.y*0.5+0.5)*innerHeight);
+          if(ML.hover===f){ mlLayout(); hit=ML.items[it.key].state==="on"; } }
+        ML.hover=null; mlLayout();
+        if(!hit) R.reachHover.push(s.n+": "+it.key);
+      });
+      /* the legend: never over the dispatch; its rows are what is drawn */
+      var lg=document.querySelector(".legend"), dp=document.querySelector(".dispatch");
+      if(shown(lg)&&shown(dp)&&cross(box(lg),box(dp))) R.legend.push(s.n);
+      if(shown(lg)){ var row=function(k){ var e=lg.querySelector('[data-lg="'+k+'"]'); return !!e&&!e.hidden; };
+        var O=OVERLAYS[curPhase]||{};
+        if(row("plan")!==!!planSide) R.ctx.push(s.n+": the plan row");
+        if(row("analysis")!==!!layerOn.analysis) R.ctx.push(s.n+": the terrain-study row");
+        if(row("halt")!==(layerOn.arrows&&(O.arrows||[]).some(function(a){ return a.kind==="halt"; }))) R.ctx.push(s.n+": the halt row");
+        if(row("bound")!==(layerOn.arrows&&(O.bounds||[]).length>0)) R.ctx.push(s.n+": the boundary row");
+        if(row("badge")!==(mode!=="terrain"&&layerOn.symbols)) R.ctx.push(s.n+": the badge row");
+        if(row("foot")!==(mode!=="staff"&&isTrueScale())) R.ctx.push(s.n+": the footprint rows");
+        if((getComputedStyle(document.getElementById("goingkey")).display!=="none")!==goingOn) R.ctx.push(s.n+": the going rows"); }
+      if(s.layers){ setPlan(planSide); if(goingOn) toggle("#going"); if(layerOn.analysis) toggle('.layer-btn[data-l="analysis"]'); }
+      if(s.first) closeFirst(null);
+      if(s.tour) exitTour();
+    });
+    select(null,null); setPresentation("study");
+    document.body.classList.remove("st-still");
+    ck("map layer: 0 overlaps, and nothing over an interface panel or an arrow head", !R.overlaps.length&&!R.panel.length&&!R.head.length&&R.placed>0,
+      R.placed+" items drawn in 7 states (the first-run card and a tour stop among them), against "+R.heads+" arrow heads"+(R.overlaps.length?"; OVERLAP: "+R.overlaps.slice(0,4).join(", "):"")+
+      (R.panel.length?"; UNDER A PANEL: "+R.panel.slice(0,4).join(", "):"")+(R.head.length?"; OVER A HEAD: "+R.head.slice(0,4).join(", "):""));
+    ck("map layer: the selection, the highlighted family and the labels of live events are never dropped", !R.keep.length&&R.keepN>0,
+      R.keepN+" such items in view"+(R.keep.length?"; NOT DRAWN: "+R.keep.join(", "):", all drawn"));
+    ck("map layer: every formation on the map is focusable and named (name, side, echelon, strength, status, grade); Enter selects it",
+      !R.a11y.length&&R.names>0&&/^Enter/.test(R.enter), R.names+" formation items; "+R.enter+(R.a11y.length?"; BAD: "+R.a11y.slice(0,3).join(", "):""));
+    ck("map layer: every dropped formation is reachable from the keyboard and by hovering its position", R.dropTested>0&&!R.reachKey.length&&!R.reachHover.length,
+      R.dropTested+" dropped formations tested"+(R.reachKey.length?"; NOT BY KEYBOARD: "+R.reachKey.join(", "):"")+(R.reachHover.length?"; NOT BY HOVER: "+R.reachHover.join(", "):""));
+    ck("map layer: lays out only in a drawn frame (render on demand)", R.idle, R.idle?"no pass without a frame; one pass per frame, in 7 states":"a pass ran outside a drawn frame, or none in one");
+    ck("legend: never over the dispatch, and its rows are what the view draws", !R.legend.length&&!R.ctx.length,
+      "7 states"+(R.legend.length?"; OVER THE DISPATCH: "+R.legend.join(", "):"")+(R.ctx.length?"; WRONG ROWS: "+R.ctx.join(", "):""));
   }
   function stage2bChecks(B){
     var out2=[], F=DISPLAY.settings, M=B[GEOREF.EXAG];
@@ -8664,6 +9328,7 @@ var AUSTERLITZ_DEBUG=(function(){
       ck("heads: every Allied arrow head is the notched chevron, every French head the plain triangle", dr.heads.n>0&&!dr.heads.bad.length,
         dr.heads.n+" heads ("+dr.heads.al+" Allied chevrons, notch "+dr.heads.notch+" of the head's length ahead of its base; "+dr.heads.fr+" French plain)"+(dr.heads.bad.length?"; WRONG: "+dr.heads.bad.join(", "):""));
 
+      layerChecks(ck);
       bySetting[fct]=factorFacts(fct);
     }
     DISPLAY.settings.forEach(atFactor);
@@ -8751,7 +9416,7 @@ var AUSTERLITZ_DEBUG=(function(){
     return {ms:Math.round(performance.now()-t0), ok:out.every(function(c){ return c.ok; }), checks:out};
   }
   function stats(){
-    return {state:DEV.state, world:DEV.world, total:DEV.total, labels:LABEL_STATS,
+    return {state:DEV.state, world:DEV.world, total:DEV.total, labels:LABEL_STATS, layer:ML.canvas?null:ML.stats,
             camera:{clamps:CAM.clamps,violations:CAM.violations}, seating:{blocks:SEAT_STATS.blocks},
             memory:{geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}};
   }
