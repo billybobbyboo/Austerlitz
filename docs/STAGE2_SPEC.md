@@ -33,6 +33,7 @@ facts), **owner decision** (decisions 1-30), **recommendation** (a proposal for 
 | `chronology.js [--md f] [--evidence] [--times] [--check]` | M | every anchor's engine window against the app's timed statements; verdicts computed from the reviewed statements; `--times` lists each explicit time with its evidence; `--check` is the regression (`npm run check:chronology`) |
 | `chronology-sim.js` | M | the derived readings and suite values under each timing remedy |
 | `delayed-moves.js [build] [--json f] [--shots dir]` | M.11 | what the interface shows while a dated move waits or runs inside its phase (decision 46) |
+| `derived-legs.js [--md f] [--json f]` | M.13 | every leg with a derived arrival or near its ceiling: speed, status, ground, the slack its next anchor leaves; the options simulated |
 
 ## 0. Owner decisions 18-46 (fixed), and whether the evidence contradicts them
 
@@ -777,7 +778,7 @@ file. In short (full wording in §0):
    the highlighted family or live events; reachable by hover and keyboard); §H feeds Stage 3.
 
 **Still open:** the three disagreeing texts, left unresolved by the chronology data task because the sources could not be
-read (§M.9), and the other source questions of §M.6.
+read (§M.9), and the other source questions of §M.6. **Before 2C:** the arrivals derived from the march-rate ceiling (§M.13).
 
 ## M. The chronology audit (owner decision 33; report only, no data change)
 
@@ -1060,8 +1061,20 @@ decision 42, **all three conflicts are left unresolved, with today's timing**, a
 | Kamensky's turn | phase 4 timeline "c. 09:45 Kamensky turns his brigade about and drives the 10e Legere off the crest" (`data.js:87`) and the event at 09:45 (`analysis.js:279`), against his own act in phase 3, 08:45-09:30 (`data.js:500`) | `kamensky@3` reached 08:45 and `kamensky@4` 09:30 (early 60 and 15); `kamensky@4` is dated by the same timeline entry, so it stays with the conflict | as above |
 | Rapp's counter-charge | phase 6 timeline "c. 11:45 Bessieres and Rapp counter-charge" (`data.js:104`) against the event `guard-broken`, 11:15-13:15 (`analysis.js:299`) | `guard_cav@6` reached 11:15 (early 30) | as above |
 
-The regression allows exactly these four anchors, by name, to remain early (`chronology.js --check`). Settling them needs
-the pages of Duffy (1977) and Smith (1998), or another source added to the Sources panel.
+The regression allows exactly these four anchors, by name, to remain early (`chronology.js --check`).
+
+**What would settle each, from page scans** (only works the project already cites; no page numbers are given, because
+none could be checked; the same sentence is in the Sources panel's open questions):
+
+| conflict | source | passage |
+|---|---|---|
+| Dokhturov's descent | Duffy, *Austerlitz 1805* (1977) | his account of the Allied left columns (Kienmayer's advance guard and the I Column) coming down off the plateau toward Telnitz: when the I Column moved off, and when it reached the valley |
+| Kamensky's turn | Duffy (1977); Thiebault's memoirs (the Sources panel: "Narrative of the fight for the Pratzeberg follows accounts drawing on Thiebault's memoirs and Duffy") | the counter-attack of Kamensky's brigade on the Pratzeberg: when the brigade turned about, relative to Soult's advance (c. 08:45) and to the 10e Légère reaching the crest |
+| Rapp's counter-charge | Duffy (1977) | the Guard cavalry fight at Stare Vinohrady: the hour of the Russian Guard's attack on Vandamme and of Bessières's and Rapp's counter-charge |
+
+Smith, *The Napoleonic Wars Data Book* (1998), is cited for strengths; whether its Austerlitz entry dates any of these moves
+is not known, and it is not listed as settling them. The Russian Biographical Dictionary (1903), cited for the Tsar's
+arrival at the 4th Column, is not known to date these moves either.
 
 ### M.10 Creeping moves (decision 45)
 
@@ -1071,7 +1084,9 @@ Each now holds until then and moves 09:30-10:30 (Rivaud 08:45-09:09). **Undated,
 Nansouty and d'Hautpoul to phase 5 (the texts date the cavalry collision, c. 10:40, not the start of their move); the Allied
 headquarters to phase 3 (the emperors "join the column about 08:30-09:00"; its departure from Krzenowitz is not dated); the
 Russian Guard cavalry to phase 6 (its attack is "after 11:00"; its start is not dated). Between anchors their dossiers show
-"interpolated", as before.
+"interpolated", as before: **confirmed in the built page** (on #12's follow-up) for all five, at three clocks each inside
+their creeping legs (Kellermann, Nansouty, d'Hautpoul at 05:00, 07:00, 10:00; the headquarters at 05:00, 08:00, 08:40; the
+Guard cavalry at 05:00, 08:20, 11:00), in both the compact card and the full dossier. No change was needed.
 
 ### M.11 Events and the interface (decisions 44, 46)
 
@@ -1136,3 +1151,57 @@ attack on the Pratzen" (clock 08:47) no longer shows the army as cut and the Fre
 matches its text ("At about 08:45 they climbed the western slope"). No text states the centre-separation time, the knowledge
 counts or the march rates. **Nothing needed correcting; nothing is flagged.**
 
+### M.13 Arrivals derived from the march-rate ceiling: an open data question, to be decided before 2C
+
+**The problem (owner, on #12).** For an undated arrival after a dated departure, §M.8 takes "no earlier than the ceiling
+allows" as the arrival. That turns an upper bound into a pace: those formations move at 93-99% of their arm's ceiling.
+The report showed the bias: the fastest infantry leg rose from 3.41 to 4.97 km/h (ceiling 5), the mean infantry rate
+(1.28 km/h) now exceeds the cavalry's (0.82), and Vandamme's wheel takes 15 minutes. Since 2C derives arrows from these
+tracks, this is recorded as an **open data question that must be decided before 2C**. The `redteam.js` warning stays a
+warning; it is not silenced.
+
+**The legs (fact; `node tools/stage2/derived-legs.js`, table `docs/stage2-evidence/derived-legs.md`).** Seven legs have a
+derived arrival: five from the ceiling and one from its existing `moveMin` (Napoleon, 60% of the headquarters ceiling). Four
+more are dated at both ends but run at 80% of the ceiling or more. Status is the formation's status during the leg; ground is
+the ascent along the route (model elevations through `GEOREF`), a Goldbach crossing, and villages within 700 m of the route.
+
+| leg | window | km | km/h | of ceiling | arrival | status | ground | bounded by the next anchor: latest arrival; slowest pace that fits |
+|---|---|---:|---:|---:|---|---|---|---|
+| sthilaire@3, the climb | 08:45-09:15 | 2.48 | 4.97 | 99% | derived | attacking | 213 → 259 m, ascent 47 m; crosses the Goldbach; Puntowitz | `sthilaire@4` at 09:30 (phase-start default): 09:22; 3.98 km/h |
+| vandamme@3, the climb | 08:45-09:14 | 2.40 | 4.96 | 99% | derived | attacking | 226 → 254 m, ascent 31 m; crosses the Goldbach; Girzikowitz | `vandamme@4` at 09:30 (default): 09:20; 4.14 km/h |
+| rivaud@3, follows Soult | 08:45-09:09 | 1.97 | 4.93 | 99% | derived | advancing | 246 → 229 m; crosses the Goldbach; Girzikowitz | `rivaud@6` at 11:15 (default): 10:59; 0.88 km/h |
+| vandamme@7, the wheel | 13:00-13:15 | 1.19 | 4.76 | 95% | derived | advancing | 264 → 245 m; Pratzen | `vandamme@8` at 14:30 (default, the Augezd height c. 14:30): 13:50; 1.43 km/h |
+| bag@6, falls back | 11:15-11:25 | 0.78 | 4.66 | 93% | derived | holding | level | `bag@7` at 12:45 (default): 12:36; 0.57 km/h |
+| bag@8, withdraws on Rausnitz | 16:30-16:45 | 1.17 | 4.69 | 94% | derived | retreating | level; Posoritz post house | `bag@9` at 17:00 (default): 16:48; 3.99 km/h |
+| gqg@6, Napoleon forward | 12:00-12:40 | 4.77 | 7.15 | 60% of 12 | derived (moveMin 40) | observing | ascent 64 m; crosses the Goldbach; Girzikowitz | `gqg@7` at 12:45 (default): 12:42; 6.84 km/h |
+| c_gren@8 | 14:00-14:30 | 2.47 | 4.94 | 99% | dated (the wheel ends 14:00; the phase-8 anchor is the default 14:30) | attacking | 254 → 219 m, descending | forced: dated end to default start |
+| kollo@5 | 10:15-10:30 | 1.22 | 4.86 | 97% | dated (Jurczek c. 10:15; the phase-5 anchor at the default 10:30) | engaged | level | forced: dated arrival to default arrival |
+| bag@9 | 16:45-17:00 | 1.03 | 4.13 | 83% | the derived 16:45 to the default 17:00 | retreating | level | follows from bag@8 |
+| guard_inf@6 | 10:15-11:15 | 4.02 | 4.02 | 80% | moveMin 60 (unchanged since Stage 1B) | advancing | ascent 36 m; crosses the Goldbach | not changed by this task |
+
+**What forces each speed (derived).** For five of the six ceiling-derived legs the next anchor leaves room: the pace is the
+rule's choice, not a constraint. **Vandamme's wheel is the clearest case, and the premise needs correcting:** the height above
+Augezd by 14:30 does *not* force the 15-minute wheel. It leaves him until 13:50 (1.43 km/h would do). What Augezd forced was
+not using the wheel's end, 14:00, as his arrival (§M.8). The legs that are genuinely constrained are **the two climbs**:
+the phase-4 anchors on the Pratzeberg and at Stare Vinohrady are undated phase-start defaults (09:30), which leave the
+climb at least 3.98 and 4.14 km/h. **Bagration's withdrawal** is held by `bag@9`'s default (17:00, nightfall), and
+**`c_gren@8` and `kollo@5`** by a dated time followed 15-30 minutes later by a default phase start. In every constrained case
+the binding anchor is an undated default, not a dated statement.
+
+**Options for a later data task** (simulated on the whole model; any rate is a **design value, unsourced**, and would be
+labelled so, never presented as history):
+
+| option | what changes | consequences (simulated) |
+|---|---|---|
+| (a) undated arrivals at a stated share of the ceiling (75%, 60%, 50%) | the rule in `anchorList` | At 75%: both climbs and Bagration's withdrawal no longer fit before their next anchor (3 movement-audit findings). At 60% or 50%: the same, plus the climbs arrive after the phase-4 anchors (timing findings) and `pratzen-village` fails its 1.5 km (1.57 / 1.67 km). Centre separation 09:09 / 09:15 / 09:21. Unless the constrained next anchors are also re-timed (undated, so not possible without evidence), (a) is unworkable at any share below about 80%. |
+| (b) a lower tactical rate for formations deployed in battle order (design values: infantry and Guard 3.0 km/h, cavalry 6.0, mixed 4.0; statuses attacking, advancing, counter-attacking, engaged, charging, holding, supporting, withdrawing, repulsed) | a rate table beside `SPEED_CEIL`, used only for derived arrivals | The wheel (Vandamme 13:24), Rivaud (09:25) and Bagration falling back (11:31) take plausible times. The two climbs do not fit (same findings as (a) at 60%) and `pratzen-village` fails. Bagration's withdrawal stays at the ceiling (its status is "retreating"). |
+| (c) leave them at the ceiling and flag them | nothing in the engine; the dossier already says "arrival derived: the march-rate ceiling"; a list in §M | No finding and no event failure; the bias stays, and 2C would derive arrows from 15-minute moves. |
+| **(b) where it fits, else (c), flagged** (simulated) | (b)'s rate where the leg then still fits before its next anchor; otherwise the ceiling, listed by name | 0 findings, 0 event failures, centre separation 09:03 (unchanged). Vandamme 13:00-13:24, Rivaud 08:45-09:25, Bagration 11:15-11:31 at about 3 km/h. The two climbs and Bagration's withdrawal stay at the ceiling, flagged. |
+
+**Recommendation.** The last row: a tactical rate for formed bodies, labelled a design value, used only where the move
+still fits; the ceiling, flagged by name, where it does not. The flagged legs (the two climbs, Bagration's withdrawal) are
+constrained by undated default anchors, so they are not a rate question but a dating one. The climbs in particular hang on
+when Saint-Hilaire reached the Pratzeberg crest, which is the same question as Kamensky's turn (§M.9); they should be
+settled from the same passage of Duffy and Thiebault, not by choosing a rate. Also in scope for that data task: the two
+dated legs forced near the ceiling by a following default (`c_gren@8`, `kollo@5`), which are the same pattern. Until it is
+decided, the tracks stay as they are, and 2C must not start.

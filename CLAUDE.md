@@ -25,7 +25,7 @@ lower one without saying so explicitly.
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite; `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2 measurement scripts (`stage2/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
-| `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `chronology-e76222b3.html` (the `check:data` reference) |
+| `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `chronology-12d34eed.html` (the `check:data` reference) |
 | `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
 
 The one-off correction-pass tools (`geo-migrate.js`, `geo-anchor.js`, `patch-app.py`, `patch-history.py`, and the
@@ -60,14 +60,14 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - First time: `npm install`, then `npx playwright install chromium` (for the visual harness).
 - `npm run build`; `npm test` runs the whole regression suite and prints each suite's result: it exits non-zero, naming
   the failed suites, if any suite exits non-zero or prints an error summary.
-- `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/chronology-e76222b3.html`
+- `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/chronology-12d34eed.html`
   (the chronology data task's build); a data task that changes it lists every changed declaration in `CHANGELOG.md` and moves the reference.
 - `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
   explicit anchor time carries evidence found in the sources, a grade and a basis.
 - `npm run check:contrast`: every visible text element in 16 interface states meets WCAG AA and the 10.5 px floor.
 - `npm run check:visual`: 11 fixed views, Stage 0 thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()`.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified chronology-data-task build (md5 `e76222b3...`, 1,121,991 bytes;
+- `npm run check:baseline` passes only on the unmodified chronology-data-task build (md5 `12d34eed...`, 1,122,358 bytes;
   re-baselined from the Stage 1B build `5bf48b75...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All eight suites pass on Stage 0 (`runtime-test.js` since `docs/HANDOFF.md` task 2). Never loosen or remove an
   assertion to make a suite pass.
