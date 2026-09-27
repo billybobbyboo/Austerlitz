@@ -94,8 +94,17 @@
     (analysisSprites||[]).forEach(function(o){ add(o.sprite,"analysis",o.tl.n); });
     return L;
   }
+  /* Stage 2D: the map layer's rendered boxes (getBoundingClientRect of every item drawn), not projected sprites */
+  function hasLayer(){ return typeof ML!=="undefined"&&ML.root&&!ML.canvas; }
+  function layerBoxes(){
+    var R=[];
+    Object.keys(ML.items).forEach(function(k){ var it=ML.items[k]; if(!it.on||!it.disp) return;
+      var b=it.el.getBoundingClientRect(); if(b.width>0&&b.height>0) R.push({o:{cat:it.cat,id:k},r:[b.left,b.top,b.right,b.bottom]}); });
+    return R;
+  }
   function overlaps(){
     camera.updateMatrixWorld(true);
+    if(hasLayer()) return layerOverlaps();
     var L=labelSet(), R=[];
     L.forEach(function(o){ var r=rectOfSprite(o.sp); if(r) R.push({o:o,r:r}); });
     var pairs={}, list=[], P=panelRects();
@@ -110,6 +119,124 @@
       }
     }
     return {visible:R.length, pairs:pairs, examples:list};
+  }
+
+  /* Stage 2D, stricter than the sprite test above (which allowed 4 px either way): any two drawn boxes that share more
+     than half a pixel in both directions overlap; so does a box on an interface panel or on an arrow head */
+  function layerOverlaps(){
+    var R=layerBoxes(), P=panelRects(), H=headRects(), pairs={}, list=[], overPanel=[], overHead=[];
+    function cross(a,b){ return Math.min(a[2],b[2])-Math.max(a[0],b[0])>0.5&&Math.min(a[3],b[3])-Math.max(a[1],b[1])>0.5; }
+    for(var i=0;i<R.length;i++){
+      for(var j=i+1;j<R.length;j++) if(cross(R[i].r,R[j].r)){ var k=[R[i].o.cat,R[j].o.cat].sort().join("x");
+        pairs[k]=(pairs[k]||0)+1; if(list.length<40) list.push(R[i].o.cat+":"+R[i].o.id+" / "+R[j].o.cat+":"+R[j].o.id); }
+      P.forEach(function(p){ if(cross(R[i].r,p)) overPanel.push(R[i].o.id); });
+      H.forEach(function(h){ if(cross(R[i].r,h.r)) overHead.push(R[i].o.id+" on the "+h.side+" head of phase "+curPhase); });
+    }
+    return {visible:R.length, pairs:pairs, examples:list, overPanel:overPanel, overHead:overHead, heads:H.length};
+  }
+  /* the arrow heads as drawn: every vertex of each head mesh (the casing, the larger) projected, independently of the
+     layer's own obstacle list */
+  function headRects(){
+    var out=[], v=new V(), W0=window.innerWidth, H0=window.innerHeight;
+    if(typeof curOv==="undefined"||!curOv||!layerOn.arrows) return out;
+    curOv.updateMatrixWorld(true);
+    curOv.traverse(function(o){ var d=o.userData&&o.userData.drape; if(!d||d.kind!=="head"||!o.geometry||!effVisible(o)) return;
+      if(o.material&&o.material.opacity<0.05) return;
+      var P=o.geometry.attributes.position, r=[1e9,1e9,-1e9,-1e9], ok=true;
+      for(var i=0;i<P.count;i++){ v.fromBufferAttribute(P,i).applyMatrix4(o.matrixWorld).project(camera); if(v.z>1||v.z<-1){ ok=false; break; }
+        var x=(v.x*0.5+0.5)*W0, y=(-v.y*0.5+0.5)*H0; r[0]=Math.min(r[0],x); r[1]=Math.min(r[1],y); r[2]=Math.max(r[2],x); r[3]=Math.max(r[3],y); }
+      if(ok&&r[2]>0&&r[0]<W0&&r[3]>0&&r[1]<H0) out.push({r:r,side:o.userData.side||"casing"}); });
+    return out;
+  }
+  /* every text in the layer: its size against its floor (decision 16: 12 px for battle information, 10.5 px for the
+     echelon, nation tag, badge, place and terrain-study names) */
+  function layerTexts(){
+    var out=[];
+    if(!hasLayer()) return out;
+    Object.keys(ML.items).forEach(function(k){ var it=ML.items[k]; if(!it.on||!it.disp) return;
+      var els=[it.el].concat(Array.prototype.slice.call(it.el.querySelectorAll("*")));
+      els.forEach(function(e){ var own="", rg=document.createRange(), b=null;
+        for(var c=0;c<e.childNodes.length;c++){ var tn=e.childNodes[c]; if(tn.nodeType!==3||!tn.textContent.trim()) continue; own+=tn.textContent;
+          rg.selectNodeContents(tn); var rr=rg.getBoundingClientRect();   /* the words' own box: not a mark or an icon beside them */
+          b=b?{left:Math.min(b.left,rr.left),top:Math.min(b.top,rr.top),right:Math.max(b.right,rr.right),bottom:Math.max(b.bottom,rr.bottom)}:rr; }
+        own=own.replace(/\s+/g," ").trim(); if(!own||!b) return;
+        var eb=e.getBoundingClientRect();   /* clipped to the element: a line box can be shorter than the font's ascent and descent */
+        b={left:Math.max(b.left,eb.left),top:Math.max(b.top,eb.top),right:Math.min(b.right,eb.right),bottom:Math.min(b.bottom,eb.bottom)};
+        var cs=getComputedStyle(e), cls=typeof e.className==="string"?e.className:"";
+        var tert=/mlc-ech|mlc-tag|mlc-badge/.test(cls)||/mlt-small/.test(it.el.className);
+        out.push({cat:it.cat,id:k,text:own.slice(0,40),px:parseFloat(cs.fontSize),weight:cs.fontWeight,color:cs.color,floor:tert?10.5:12,
+          bx:[b.left,b.top,b.right,b.bottom]}); });
+    });
+    return out;
+  }
+  /* the pass: the layer's own counts, and its time (median of five passes over the settled view) */
+  function layer(){
+    if(!hasLayer()) return null;
+    var t=[]; for(var i=0;i<5;i++){ var a=performance.now(); mlLayout(); t.push(performance.now()-a); } t.sort(function(x,y){ return x-y; });
+    var s=ML.stats, T=layerTexts();
+    return {items:s.items,placed:s.placed,leaders:s.leaders,dropped:s.dropped,droppedIds:s.dropped_.slice(),occluded:s.occluded,offscreen:s.offscreen,
+            underPanel:s.underPanel,keepMissing:s.keepMissing.slice(),nodes:s.nodes,ms:+t[2].toFixed(2),
+            texts:T.length,belowFloor:T.filter(function(x){ return x.px<x.floor; }).map(function(x){ return x.id+" "+x.px+"px<"+x.floor; }),
+            minPx:T.length?Math.min.apply(null,T.map(function(x){ return x.px; })):null};
+  }
+  /* section H: the share of the viewport not under the interface panels (4 px grid), the harness's panel list */
+  function unobstructed(){
+    var sel=[".rail",".dispatch",".legend",".timebar",".tools","#viewmode","#firstrun",".drawer","#tourbar","#selchip","#layerpop","#vsbadge"];
+    var railHidden=document.body.classList.contains("rail-hidden"), R=[];
+    sel.forEach(function(s){ document.querySelectorAll(s).forEach(function(e){
+      var cs=getComputedStyle(e); if(cs.display==="none"||cs.visibility==="hidden"||+cs.opacity<0.05||e.hidden) return;
+      if((e.classList.contains("rail")&&railHidden)||(e.classList.contains("drawer")&&!e.classList.contains("on"))) return;
+      var r=e.getBoundingClientRect(); if(r.width>0&&r.height>0) R.push([r.left,r.top,r.right,r.bottom]); }); });
+    var G=4, nx=Math.ceil(innerWidth/G), ny=Math.ceil(innerHeight/G), free=0;
+    for(var j=0;j<ny;j++) for(var i=0;i<nx;i++){ var x=i*G+G/2, y=j*G+G/2, cov=false;
+      for(var k=0;k<R.length;k++){ var r=R[k]; if(x>=r[0]&&x<r[2]&&y>=r[1]&&y<r[3]){ cov=true; break; } } if(!cov) free++; }
+    return +(free/(nx*ny)).toFixed(4);
+  }
+  /* decision 29: the legend never over the dispatch (the area they share, px) */
+  function legendOverDispatch(){
+    var lg=document.querySelector(".legend"), dp=document.querySelector(".dispatch");
+    function box(e){ if(!e) return null; var cs=getComputedStyle(e); if(cs.display==="none"||cs.visibility==="hidden") return null; var r=e.getBoundingClientRect(); return r.width>0&&r.height>0?r:null; }
+    var a=box(lg), b=box(dp); if(!a||!b) return 0;
+    return Math.max(0,Math.min(a.right,b.right)-Math.max(a.left,b.left))*Math.max(0,Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top));
+  }
+  /* the section E method on the layer, refined for DOM text (Stage 2D). In each text's box on the rendered frame, the pixels
+     at least half the largest RGB distance from its ink are its surround, and the contrast reported is the 10th percentile
+     over them. Two refinements: only pixels wholly inside the box are read (section E added 2 px round a sprite's estimated
+     box; a DOM box is exact, and its rounded-out edge is ground, not the plate), and the ink's anti-aliased fringe (the
+     pixels within 1 px of one nearer the ink than half) is left out of the surround. Without them the 10th percentile
+     falls on the fringe: 3.8-4.0:1 for text measured 6.49:1 at the median on its opaque plate (hybrid-dimmed).
+     AA: 4.5:1 below 18 px (14 px bold), else 3:1. */
+  function textContrast(b64){
+    var T=layerTexts();
+    return new Promise(function(res){
+      var im=new Image();
+      im.onload=function(){
+        var cv=document.createElement("canvas"); cv.width=im.width; cv.height=im.height;
+        var x=cv.getContext("2d",{willReadFrequently:true}); x.drawImage(im,0,0); var d=x.getImageData(0,0,cv.width,cv.height).data;
+        function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); }
+        function L(c){ return 0.2126*lin(c[0])+0.7152*lin(c[1])+0.0722*lin(c[2]); }
+        var below=[], min=99, n=0, raw=99;
+        T.forEach(function(t){
+          var m=/rgba?\(([^)]+)\)/.exec(t.color); if(!m) return; var ink=m[1].split(",").map(parseFloat);
+          var x0=Math.max(0,Math.ceil(t.bx[0])), y0=Math.max(0,Math.ceil(t.bx[1])), x1=Math.min(cv.width,Math.floor(t.bx[2])), y1=Math.min(cv.height,Math.floor(t.bx[3]));
+          var w=x1-x0, h=y1-y0; if(w<2||h<2) return;
+          var px=[], dist=[], mx=0, i, j;
+          for(j=0;j<h;j++) for(i=0;i<w;i++){ var o=((y0+j)*cv.width+x0+i)*4, q=[d[o],d[o+1],d[o+2]], dd=Math.hypot(q[0]-ink[0],q[1]-ink[1],q[2]-ink[2]);
+            px.push(q); dist.push(dd); if(dd>mx) mx=dd; }
+          var near=new Uint8Array(w*h);   /* the ink and its 1 px fringe */
+          for(j=0;j<h;j++) for(i=0;i<w;i++) if(dist[j*w+i]<0.5*mx) for(var b2=-1;b2<=1;b2++) for(var a2=-1;a2<=1;a2++){ var ii=i+a2, jj=j+b2; if(ii>=0&&jj>=0&&ii<w&&jj<h) near[jj*w+ii]=1; }
+          var li=L(ink), cs=[], cr=[];
+          for(var k=0;k<px.length;k++){ if(dist[k]<0.5*mx) continue; var lq=L(px[k]), c=(Math.max(li,lq)+0.05)/(Math.min(li,lq)+0.05); cr.push(c); if(!near[k]) cs.push(c); }
+          if(!cs.length) return;
+          cs.sort(function(a,b){ return a-b; }); cr.sort(function(a,b){ return a-b; });
+          var c=cs[Math.floor(cs.length*0.10)], need=(t.px>=18||(t.px>=14&&+t.weight>=600))?3:4.5; n++;
+          if(c<min) min=c; raw=Math.min(raw,cr[Math.floor(cr.length*0.10)]);
+          if(c<need) below.push(t.id+" \""+t.text+"\" "+c.toFixed(2)+"<"+need);
+        });
+        res({texts:n, min:n?+min.toFixed(2):null, belowAA:below, rawSectionE:n?+raw.toFixed(2):null});
+      };
+      im.src="data:image/png;base64,"+b64;
+    });
   }
 
   /* ---- figures on the ground ---- */
@@ -196,7 +323,8 @@
       chipVisible:(function(){ var d=document.getElementById("selchip"); if(!d) return null; return !d.hidden&&getComputedStyle(d).display!=="none"; })(),
       firstRunVisible:(function(){ var d=document.getElementById("firstrun"); return !!d&&!d.hidden; })(),
       dispatchVisible:(function(){ var d=document.querySelector(".dispatch"); return !!d&&getComputedStyle(d).display!=="none"&&d.getBoundingClientRect().width>0; })(),
-      stats:(D()&&D().stats)?D().stats():null
+      stats:(D()&&D().stats)?D().stats():null,
+      layer:layer(), unobstructed:unobstructed(), legendOverDispatch:legendOverDispatch()
     };
   }
 
@@ -240,5 +368,6 @@
   }
 
   window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures,
-                overlaps:overlaps, aimOf:aimOf, effVisible:effVisible};
+                overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, layerTexts:layerTexts,
+                legendOverDispatch:legendOverDispatch, headRects:headRects};
 })();

@@ -58,6 +58,9 @@ const CLASS={
   /* Stage 2C: the overlays draped on the drawn ground, and the self-test that measures them against it */
   "app.js:drapeTri":"presentation","app.js:drapedRibbon":"presentation","app.js:buildArrow":"presentation","app.js:buildHalt":"presentation",
   "app.js:buildLine":"presentation","app.js:buildBoundary":"presentation","app.js:overlayDrape":"test",
+  /* Stage 2D: the map layer's occlusion (the eye-to-anchor segment against the drawn ground) and the ground under the
+     pointer (hover and picking by footprint): both read the drawn ground */
+  "app.js:mlOccluded":"presentation","app.js:groundAt":"presentation",
   "app.js:figureError":"test","app.js:selfTest":"test","app.js:selfTest > centreEye":"test","app.js:selfTest > atFactor":"test","app.js:factorFacts":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });

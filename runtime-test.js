@@ -167,6 +167,20 @@ try{
   }
   console.log("3 modes x "+PHASES.length+" phases OK");
 
+  /* Stage 2D: the map layer lays out in every mode and phase, with a selection too, and every item it collects is
+     accounted for exactly once (placed, dropped, behind the ground, off screen or under a panel) */
+  let mlPasses=0;
+  for(const m of ["terrain","staff","hybrid"]){
+    setMode(m);
+    for(let ph=0; ph<PHASES.length; ph++){
+      setPhase(ph,true); if(tween) tween(performance.now()+9000); updateVisibility(); mlLayout(); mlPasses++;
+      const s=ML.stats;
+      if(s.items!==s.placed+s.dropped+s.occluded+s.offscreen+s.underPanel) throw new Error("map layer: "+s.items+" items in "+m+" phase "+ph+" are not each counted once");
+    }
+  }
+  select("f","sthilaire"); updateVisibility(); mlLayout(); select(null,null); setMode("terrain");
+  console.log("map layer: "+mlPasses+" passes in 3 modes and "+PHASES.length+" phases, every item counted once OK");
+
   /* continuous playback: step the clock the way the render loop does */
   setMode("terrain"); setClock(T_MIN,{force:true});
   let frames=0;

@@ -92,6 +92,6 @@ its implementation (Part B) are done; colours and type come only from `tokens.js
 (display height and the relief control, 1x / 4x / 10.33x, default 4x; footprints at 1x; standards at the provisional ratio;
 the going classes from the model slope) is merged. Stage 2C (the §M.13 precondition, decided: derived arrivals at a tactical
 rate where they fit, else the ceiling, flagged; then the movement arrows: derived from the executed leg or marked interpretive,
-draped, the Allied chevron, solid boundaries, the halt bar, `binding-test.js`) is done and awaits review; 2D-2F have not
+draped, the Allied chevron, solid boundaries, the halt bar, `binding-test.js`) is merged (#15); 2D-2F have not
 started. The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.

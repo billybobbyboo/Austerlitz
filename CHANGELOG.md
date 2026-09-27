@@ -2,7 +2,7 @@
 
 ## 2026-09 · Stage 2C: movement arrows (docs/STAGE2_SPEC.md §C, §D, §J, §K; decisions 20-23, 33, 37, 46)
 
-**Status: done; awaits the owner's review. 2D has not started. `austerlitz-command-map.html`: 1,166,868 bytes, md5
+**Status: done; merged (#15). 2D has not started. `austerlitz-command-map.html`: 1,166,868 bytes, md5
 `68ac77219de339186b7b96aae2266a4f`** (was 1,149,340 bytes, md5 `0c485151…`, Stage 2B; 1,153,477 bytes, md5 `f6324c90…`, after the
 precondition commit, the entry below).
 - `check:baseline` moves to this build.

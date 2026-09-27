@@ -27,12 +27,19 @@ async function openPage(browser,vp){
   await page.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:180000});
   await page.waitForFunction(()=>!document.getElementById("boot")&&typeof window.camera!=="undefined",null,{timeout:240000,polling:500});
   await page.evaluate(MEASURE);
+  /* Stage 2D: CSS transitions off, as check:contrast has them. In headless Chromium a transition does not advance while the
+     page draws nothing (render on demand), so a view reached from Watch was measured with the dossier, tools and legend
+     frozen at the start of their .32 s slide (selected-formation: the drawer off screen). Each state now stands where the
+     panels come to rest. */
+  await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});
   page._logs=logs;
   return page;
 }
 async function settle(page){
   const has=await page.evaluate(()=>!!(window.AUSTERLITZ_DEBUG&&AUSTERLITZ_DEBUG.settle));
-  if(has) await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(90));
+  if(has){ await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(90));
+    /* anything the page does after a frame (the time bar's ResizeObserver): let it run, then lay out and draw once more */
+    await page.waitForTimeout(450); await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(2)); }
   else await page.waitForTimeout(3200);
 }
 async function interact(page,it,vp){
@@ -108,6 +115,16 @@ async function interact(page,it,vp){
     fs.writeFileSync(path.join(out,c.name+".png"),buf);
     const m=await page.evaluate(()=>window.__aus.metrics());
     m.pixels=await page.evaluate(b=>window.__aus.pixels(b),buf.toString("base64"));
+    /* Stage 2D: every map-layer text's contrast on the rendered frame (the section E method), and section H's unobstructed
+       fraction at 1280 x 720 too (the same page resized, then restored) */
+    m.textContrast=await page.evaluate(b=>window.__aus.textContrast?window.__aus.textContrast(b):null,buf.toString("base64"));
+    if(await page.evaluate(()=>!!window.__aus.unobstructed)){
+      /* one drawn frame at each size is enough: the panels are DOM, and the legend decides in that frame whether it fits */
+      const frame=async()=>{ await page.waitForTimeout(450); await page.evaluate(()=>{ if(window.AUSTERLITZ_DEBUG) AUSTERLITZ_DEBUG.settle(2); }); };
+      const vp0=page.viewportSize(); await page.setViewportSize({width:1280,height:720}); await frame();
+      m.unobstructed720=await page.evaluate(()=>window.__aus.unobstructed());
+      await page.setViewportSize(vp0); await frame();
+    }
     m.ms=Date.now()-t0; m.note=c.note;
     if(c.interact) m.intended=await page.evaluate(()=>window.__intended||null);
     report.cases[c.name]=m;
@@ -115,7 +132,9 @@ async function interact(page,it,vp){
     console.log(c.name.padEnd(20)," cam clr",String(m.camera.clearance).padStart(8)," fig max",String(m.figures.maxErr).padStart(7),
       "("+m.figures.count+")"," std",m.standards.maxErr," overlaps",JSON.stringify(m.labels.pairs),
       " black",m.pixels.nearBlack,"solid",m.pixels.solidBlocks," lum",m.pixels.meanLum," smoke/dust edge",m.smokeEdgeAlpha,"/",m.dustEdgeAlpha,
-      " mist",m.mist.visible?m.mist.maxAlphaAtCrossing:"-", m.selection?(" sel "+m.selection+" drawer "+m.drawerVisible+" chip "+m.chipVisible):"");
+      " mist",m.mist.visible?m.mist.maxAlphaAtCrossing:"-", m.selection?(" sel "+m.selection+" drawer "+m.drawerVisible+" chip "+m.chipVisible):"",
+      m.layer?(" | layer placed "+m.layer.placed+" dropped "+m.layer.dropped+" leaders "+m.layer.leaders+" occluded "+m.layer.occluded+" "+m.layer.ms+" ms "+m.layer.nodes+" nodes"+
+        " min "+m.layer.minPx+" px, contrast min "+(m.textContrast&&m.textContrast.min)+" | free "+m.unobstructed+" / "+m.unobstructed720):"");
   }
   if(!pages.last||pages.last.isClosed()) pages.last=current=await openPage(browser,[1600,900]);
   const first=pages.last;

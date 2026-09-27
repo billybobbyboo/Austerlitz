@@ -81,18 +81,18 @@ button.t:hover{color:var(--text);border-color:rgba(var(--line-rgb),.5)}
 button.t[aria-pressed="true"]{background:var(--text);color:var(--on-accent);border-color:var(--text)}
 
 /* ---------- legend ---------- */
-.legend{position:fixed;right:18px;bottom:calc(var(--tb) + 14px);z-index:18;text-align:right;font-size:var(--t-small);color:var(--text-muted);line-height:1.85;
-  background:rgba(var(--scrim-rgb),.72);border:1px solid var(--line);padding:10px 12px;backdrop-filter:blur(8px);
-  transition:transform .32s ease}
+.legend{position:fixed;right:18px;bottom:calc(var(--tb) + 14px);z-index:18;text-align:right;font-size:var(--t-small);color:var(--text-muted);line-height:1.55;
+  background:rgba(var(--scrim-rgb),.72);border:1px solid var(--line);padding:6px 10px 8px;backdrop-filter:blur(8px);
+  transition:transform .32s ease;max-width:296px}
 body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 .legend .k{display:flex;align-items:center;justify-content:flex-end;gap:7px}
 .legend .sw{width:20px;height:9px;border:1px solid rgba(0,0,0,.5);border-radius:1px}
 .legend .dsh{width:20px;height:0;border-top:2px dashed var(--text-muted)}
-.legend .an-only{display:none}
-body.layer-analysis .legend .an-only{display:flex}
+.legend .k[hidden]{display:none}
+.legend .k span:first-child{text-align:right}
 .legend .bdg{display:inline-flex;gap:3px}
 .legend .bdg b{display:inline-block;min-width:13px;text-align:center;font-weight:600;color:var(--text-hi);background:var(--ink);border:1px solid var(--text-muted);border-radius:2px;padding:0 3px}
-.rose{width:46px;height:46px;margin:0 0 6px auto;color:var(--text-muted)}
+.rose{width:26px;height:26px;margin:0;color:var(--text-muted);flex:0 0 auto}
 .rose .rose-ring{stroke:var(--line-2)}
 .rose .rose-n{fill:var(--text)}
 .rose .rose-s{fill:var(--text-muted)}
@@ -557,8 +557,46 @@ body.firstrun-on #vsbadge,body.firstrun-on #tourbar,body.firstrun-on #selchip{di
 .legend .hlt{width:5px;height:15px;border-radius:1px;margin:0 7px}
 .legend .bnd{width:20px;height:0;border-top:2px solid}
 .legend .stg{width:20px;height:0;border-top:2px dashed var(--text-muted)}
-.legend .plan-only{display:none}
-body.plan-on .legend .plan-only{display:flex}
+/* Stage 2D: the legend's head toggles it; closed, its rows keep their size (measured) but are not drawn */
+.lg-head{display:flex;align-items:center;justify-content:flex-end;gap:6px;margin:0 0 0 auto;background:none;border:0;padding:0;
+  color:var(--text-muted);font-size:var(--t-small);line-height:1.3;cursor:pointer}
+.lg-head:hover{color:var(--text)}
+.lg-head::after{content:"\2212";display:inline-block;width:12px;text-align:center}
+.legend.collapsed .lg-head::after{content:"+"}
+.legend.squeezed .lg-head{cursor:not-allowed}
+.lg-rows{margin-top:3px;max-width:274px}
+.legend.collapsed .lg-rows{position:absolute;right:0;bottom:0;width:max-content;visibility:hidden;pointer-events:none}
+
+/* ---------- Stage 2D: the map layer (app.js THE MAP LAYER; symbols.js counterHTML). Colours are set from TOKENS by the
+   script; every text is on a plate. The .mlc paddings are mirrored in mlPlaceItem (the frame's foot). ---------- */
+#maplayer{position:fixed;inset:0;z-index:6;pointer-events:none;overflow:hidden}
+body.labels-canvas #maplayer{display:none}
+body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!important}   /* the self-test holds the panels' slides still */
+.ml-lines{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+.ml-item{position:absolute;left:0;top:0;opacity:0;white-space:nowrap;font-family:var(--sans);font-weight:400;border-radius:2px}
+.ml-item.on{opacity:1}
+.ml-item:focus{outline:none}
+.ml-item:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.mlt{font-size:var(--t-ui);line-height:16px;padding:0 5px 1px}
+.mlt-serif{font-family:var(--serif)}
+.mlt-small{font-size:var(--t-small);line-height:15px}
+.mln{display:flex;align-items:center;gap:5px;font-family:var(--serif)}
+.mln-mark{display:block;width:8px;height:8px;border:1px solid;flex:0 0 auto}
+.mlc{display:flex;align-items:center;gap:9px;padding:13px 0 5px 5px}
+.mlc.mlc-hq{padding-bottom:12px}
+.mlc-frame{position:relative;flex:0 0 40px;width:40px;height:28px;border-radius:3px}
+.mlc-frame.sel{outline:2px solid;outline-offset:2px}
+.mlc-svg{display:block;overflow:visible}
+.mlc-ech{position:absolute;left:50%;bottom:100%;transform:translateX(-50%);margin-bottom:2px;padding:0 3px;border-radius:2px;
+  font-size:var(--t-micro);font-weight:500;line-height:11px;letter-spacing:.04em}
+.mlc-tag{position:absolute;left:50%;bottom:5px;transform:translateX(-50%);padding:0 1px;font-size:var(--t-micro);font-weight:600;line-height:10px}
+.mlc-badge{position:absolute;right:-8px;top:-7px;min-width:14px;height:14px;padding:0 2px;border:1px solid;border-radius:2px;
+  font-size:var(--t-micro);font-weight:600;line-height:12px;text-align:center}
+.mlc-text{font-size:var(--t-ui);line-height:16px;padding:1px 6px;border-radius:2px}
+.mlc-text .ic{margin:0 0 0 5px}
+.mlc-st{margin-left:9px}
+.mlc-st .ic{margin:0 4px 0 0}
+.mlc-sub{display:block}
 
 /* ---------- Stage 0: what is selected, whenever the dossier is not on screen ---------- */
 #selchip{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--tb) + 14px);z-index:27;

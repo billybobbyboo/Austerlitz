@@ -7,7 +7,12 @@
    stack of translucent ancestor backgrounds and opacities, and composites it over two map backdrops taken from
    the Stage 0 screenshots: landscape #0C1116 and #A6AEB3, paper map #F1EDE1 and #D4D5C9. Text below 18 px (14 px
    bold) needs 4.5:1, larger text 3:1. CSS transitions are disabled so nothing is read mid-transition.
-   Canvas text (counters, map labels) is not in the DOM and is covered by the specification's calculations. */
+   Stage 2D: counters and all map text are DOM (the map layer, #maplayer), so they are read here like any page text. Map text
+   sits on plates meant to meet AA over any ground: it is composited over black and white as well as the two backdrops
+   (decision 38). Six states were added for what the contextual legend and the layer show only then: the terrain study,
+   the going classes, a plan and the halt (legend-layers), true scale (legend-1x), the legend closed, and the hybrid view
+   with a corps highlighted (dimmed counters; in Study, since Watch draws the view-mode control at 24% until it is hovered,
+   a Stage 1 matter recorded in CHANGELOG.md); each state is drawn once before it is read (the layer lays out in a frame). */
 const fs=require("fs"), path=require("path");
 const { chromium } = require("playwright");
 const argv=process.argv.slice(2), html=path.resolve(argv[0]||"austerlitz-command-map.html");
@@ -32,7 +37,8 @@ const COLLECT=`(function(state){
     }
     if(hid||op<0.02) continue;
     var sel=e.id?"#"+e.id:(e.tagName.toLowerCase()+(typeof e.className==="string"&&e.className?"."+e.className.trim().split(/\\s+/).join("."):""));
-    out.push({state:state, sel:sel, text:own.slice(0,40), color:rgba(cs.color), size:parseFloat(cs.fontSize), weight:cs.fontWeight, opacity:op, bgs:bgs});
+    out.push({state:state, sel:sel, text:own.slice(0,40), color:rgba(cs.color), size:parseFloat(cs.fontSize), weight:cs.fontWeight, opacity:op, bgs:bgs,
+      map:!!(e.closest&&e.closest("#maplayer"))});
   }
   return out;
 })`;
@@ -51,7 +57,15 @@ const STATES=[
   ["tour", ()=>{ var m=document.getElementById("modal-close"); if(m) m.click(); startTour(); tourGo(1); }],
   ["staff", ()=>{ exitTour(); setMode("staff"); setPresentation("study"); select("f","sthilaire"); paintDrawer(); updateVisibility(); }],
   ["staff-tour", ()=>{ select(null,null); startTour(); tourGo(1); }],
-  ["staff-layers", ()=>{ exitTour(); var b=document.getElementById("layersbtn"); if(b) b.click(); }]
+  ["staff-layers", ()=>{ exitTour(); var b=document.getElementById("layersbtn"); if(b) b.click(); }],
+  /* Stage 2D */
+  ["legend-layers", ()=>{ var x=document.getElementById("layerclose"); if(x) x.click(); setMode("terrain"); setPresentation("study"); select(null,null);
+    setClock(460,{force:true}); setPlan("al"); document.getElementById("going").click(); document.querySelector('.layer-btn[data-l="analysis"]').click(); updateVisibility(); }],
+  ["legend-1x", ()=>{ setPlan(planSide); document.getElementById("going").click(); document.querySelector('.layer-btn[data-l="analysis"]').click();
+    setDisplayFactor(1); setClock(300,{force:true}); updateVisibility(); }],
+  ["legend-closed", ()=>{ setDisplayFactor(DISPLAY.defaultFactor); setClock(570,{force:true}); document.getElementById("lg-toggle").click(); updateVisibility(); }],
+  ["hybrid-dimmed", ()=>{ document.getElementById("lg-toggle").click(); setMode("hybrid"); setPresentation("study"); setClock(600,{force:true}); select("f","c_iv");
+    AUSTERLITZ_DEBUG.placeCamera([-66,76,101,0,19,26]); updateVisibility(); }]
 ];
 function hx(h){ h=h.replace("#",""); return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)); }
 function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); }
@@ -68,12 +82,14 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
   await page.waitForFunction(()=>!document.getElementById("boot")&&typeof window.camera!=="undefined",null,{timeout:240000,polling:500});
   await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});
   const rows=[...await page.evaluate(COLLECT+'("first-run")')];
-  for(const [name,fn] of STATES){ await page.evaluate(fn); await page.waitForTimeout(300); rows.push(...await page.evaluate(COLLECT+"("+JSON.stringify(name)+")")); }
+  for(const [name,fn] of STATES){ await page.evaluate(fn);
+    await page.evaluate(()=>{ if(window.AUSTERLITZ_DEBUG) AUSTERLITZ_DEBUG.settle(3); });   /* a drawn frame: the map layer lays out in it */
+    await page.waitForTimeout(300); rows.push(...await page.evaluate(COLLECT+"("+JSON.stringify(name)+")")); }
   await browser.close();
   const pairs=new Map(); let small=0;
   rows.forEach(r=>{
     const paper=r.state.startsWith("staff"); let worst=99, wbg=null;
-    BACK[paper?"paper":"dark"].forEach(bd=>{
+    BACK[paper?"paper":"dark"].concat(r.map?[[0,0,0],[255,255,255]]:[]).forEach(bd=>{
       let bg=bd; for(let i=r.bgs.length-1;i>=0;i--) bg=over(r.bgs[i].slice(0,3),r.bgs[i][3],bg);
       const fg=over(r.color.slice(0,3),r.color[3]*r.opacity,bg), c=ratio(fg,bg);
       if(c<worst){ worst=c; wbg=bg; }
