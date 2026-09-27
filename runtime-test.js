@@ -79,9 +79,8 @@ const stub={
  PlaneGeometry:class extends Geo{constructor(w,h,a,b){super(((a||1)+1)*((b||1)+1))}},
  SphereGeometry:Geo, ExtrudeGeometry:class extends Geo{translate(){return this}}, Shape:class{moveTo(){}lineTo(){}}, IcosahedronGeometry:class extends Geo{constructor(){super();this.index=null}},BoxGeometry:Geo,ConeGeometry:Geo,CylinderGeometry:Geo,CircleGeometry:Geo,
  TubeGeometry:Geo,BufferGeometry:Geo,
- CatmullRomCurve3:class{constructor(p){this.p=p}
-   getPoint(t){const i=Math.min(this.p.length-1,Math.floor(t*(this.p.length-1)));return this.p[i].clone()}
-   getTangent(){return new REAL.Vector3(1,0,0)}},
+ /* the real r128 curves (Stage 2C: the draped ribbons sample them by arc length) */
+ CatmullRomCurve3:REAL.CatmullRomCurve3, LineCurve3:REAL.LineCurve3,
  BufferAttribute:function(a,i){const t=attr(a.length/i,i);t.array=a;return t},
  Float32BufferAttribute:function(a,i){const t=attr(a.length/i,i);t.array=(a instanceof Float32Array)?a:Float32Array.from(a);return t},
  CanvasTexture:class{constructor(img){this.image=img;this.minFilter=0;this.magFilter=0;this.generateMipmaps=true;

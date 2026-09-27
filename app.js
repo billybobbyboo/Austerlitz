@@ -5,7 +5,18 @@ var RM = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce
 /* ?harness=1: deterministic frames for the visual regression harness (no drift, no grain animation) */
 var HARNESS = /[?&]harness=1\b/.test(location.search);
 
-/* ---------------- per-phase map overlays ---------------- */
+/* ---------------- per-phase map overlays ----------------
+   Historical interpretation data. Every arrow is one of two things (Stage 2C; docs/STAGE2_SPEC.md section C, owner
+   decisions 22, 33, 37 and 46):
+     DERIVED: leg:[id, from, to] names the leg (or run of consecutive legs) of formation id, from its anchor at phase
+       `from` to its anchor at phase `to`, that the model executes during the arrow's phase. It has no points of its own:
+       arrowPts() takes them from the track, so its ends are the anchors exactly and it moves with the model.
+     INTERPRETIVE: interp:"<kind>: <why>" says what it shows instead. Kinds: route (an ordered or intended route), objective
+       (points at a place or objective, not at a modelled position), group (a summary arrow for several formations),
+       unmodelled (names no formation the model tracks), halt (a column stopped short; drawn as a bar, not an arrow),
+       unsettled (hand-authored: the model and the app's texts disagree and the sources are unread; listed by name in
+       binding-test.js and in CHANGELOG.md).
+   binding-test.js checks every arrow against the tracks. */
 var OVERLAYS = {
 0:{ lines:[
      {pts:[[223,82],[229,116],[238,158],[213,222],[205,277],[208,365],[212,408]],side:"fr",label:"French line on the Goldbach"},
@@ -13,71 +24,77 @@ var OVERLAYS = {
     bounds:[{pts:[[165,143],[244,139]],label:"V Corps · IV Corps"},
             {pts:[[160,252],[216,253]],label:"Soult's assault · Legrand"}],
     arrows:[
-     {pts:[[291,332],[272,362],[234,395]],kind:"axis",side:"al",label:"I Column → Telnitz"},
-     {pts:[[291,308],[268,328],[237,348]],kind:"axis",side:"al",label:"II Column → Sokolnitz"},
-     {pts:[[290,282],[264,303],[240,330]],kind:"axis",side:"al",label:"III Column → the castle"},
-     {pts:[[331,230],[285,251],[217,277]],kind:"axis",side:"al",label:"IV Column → Kobelnitz"},
-     {pts:[[296,243],[317,217],[312,178]],kind:"move",side:"al",label:"V Column counter-marches north"}],
+     {pts:[[291,332],[272,362],[234,395]],kind:"axis",side:"al",label:"I Column → Telnitz",interp:"route: an ordered route in the Allied disposition, not a movement made"},
+     {pts:[[291,308],[268,328],[237,348]],kind:"axis",side:"al",label:"II Column → Sokolnitz",interp:"route: an ordered route in the Allied disposition, not a movement made"},
+     {pts:[[290,282],[264,303],[240,330]],kind:"axis",side:"al",label:"III Column → the castle",interp:"route: an ordered route in the Allied disposition, not a movement made"},
+     {pts:[[331,230],[285,251],[217,277]],kind:"axis",side:"al",label:"IV Column → Kobelnitz",interp:"route: an ordered route in the Allied disposition, not a movement made"},
+     {leg:["lich",0,2],kind:"move",side:"al",label:"V Column counter-marches north"}],
     obj:[[212,408,"Telnitz"],[208,365,"Sokolnitz"],[205,277,"Kobelnitz"]]},
 
 1:{ lines:[{pts:[[223,82],[229,116],[238,158],[213,222],[205,277],[208,365],[212,408]],side:"fr",label:"French line on the Goldbach"}],
     arrows:[
-     {pts:[[291,367],[251,390],[226,406]],kind:"attack",side:"al",label:"Kienmayer"},
-     {pts:[[291,332],[272,359],[247,381]],kind:"move",side:"al",label:"I Column descends"},
-     {pts:[[106,428],[156,417],[195,409]],kind:"move",side:"fr",label:"Friant's approach march"}],
+     {leg:["kienmayer",1,2],kind:"attack",side:"al",label:"Kienmayer"},
+     {pts:[[291,332],[272,359],[247,381]],kind:"move",side:"al",label:"I Column descends",
+      interp:"unsettled: the phase-1 timeline has the descent begin c. 07:30, the event and the track from 04:00 (the unresolved Dokhturov conflict, dok@1)"},
+     {leg:["friant",1,2],kind:"move",side:"fr",label:"Friant's approach march"}],
     obj:[[212,408,"Telnitz"]]},
 
 2:{ lines:[{pts:[[213,222],[205,277],[208,365],[212,408]],side:"fr",label:"Legrand and Friant on the stream"}],
     arrows:[
-     {pts:[[268,328],[249,338],[229,356]],kind:"attack",side:"al",label:"II Column → Sokolnitz"},
-     {pts:[[266,296],[254,316],[236,336]],kind:"attack",side:"al",label:"III Column → castle"},
-     {pts:[[296,243],[313,225],[320,204]],kind:"move",side:"al",label:"Liechtenstein crosses the front"},
-     {pts:[[325,230],[301,237]],kind:"axis",side:"al",label:"IV Column halted"},
-     {pts:[[167,410],[187,403],[202,403]],kind:"attack",side:"fr",label:"Friant retakes Telnitz"}],
+     {pts:[[268,328],[249,338],[229,356]],kind:"attack",side:"al",label:"II Column → Sokolnitz",
+      interp:"objective: the attack on Sokolnitz village; the model has the column at the village from 08:00"},
+     {pts:[[266,296],[254,316],[236,336]],kind:"attack",side:"al",label:"III Column → castle",
+      interp:"objective: the attack on the castle and pheasantry; the model has the column there from 08:00"},
+     {leg:["lich",2,3],kind:"move",side:"al",label:"Liechtenstein crosses the front"},
+     {pts:[[325,230],[301,237]],kind:"halt",side:"al",label:"IV Column halted",of:"col4",
+      interp:"halt: the 4th Column held up on the plateau, not a route; a bar where it stopped, across its line of march"},
+     {leg:["friant",1,2],kind:"attack",side:"fr",label:"Friant retakes Telnitz"}],
     obj:[[208,365,"Sokolnitz"],[205,277,"Kobelnitz — never reached"]]},
 
 3:{ arrows:[
-     {pts:[[206,231],[238,256],[266,276]],kind:"attack",side:"fr",label:"Saint-Hilaire"},
-     {pts:[[221,182],[241,199],[279,208]],kind:"attack",side:"fr",label:"Vandamme"}],
+     {leg:["sthilaire",2,3],kind:"attack",side:"fr",label:"Saint-Hilaire"},
+     {leg:["vandamme",2,3],kind:"attack",side:"fr",label:"Vandamme"}],
     obj:[[285,289,"Pratzeberg"],[313,205,"Stare Vinohrady"]]},
 
 4:{ arrows:[
-     {pts:[[259,316],[270,300],[280,291]],kind:"counter",side:"al",label:"Kamensky turns about"},
-     {pts:[[324,233],[280,239],[289,273]],kind:"counter",side:"al",label:"Jurczek's Austrians"},
-     {pts:[[213,299],[233,307],[246,307]],kind:"move",side:"fr",label:"Levasseur up the Goldbach"}],
+     {pts:[[259,316],[270,300],[280,291]],kind:"counter",side:"al",label:"Kamensky turns about",
+      interp:"unsettled: the phase-4 timeline dates the turn c. 09:45, his own record and the track in phase 3 (the unresolved Kamensky conflict, kamensky@3 and kamensky@4)"},
+     {pts:[[324,233],[280,239],[289,273]],kind:"counter",side:"al",label:"Jurczek's Austrians",interp:"unmodelled: Jurczek's brigade has no track of its own"},
+     {pts:[[213,299],[233,307],[246,307]],kind:"move",side:"fr",label:"Levasseur up the Goldbach",interp:"unmodelled: Levasseur's brigade has no track of its own"},
+     {leg:["caffarelli",0,5],kind:"attack",side:"fr",label:"Caffarelli"},
+     {leg:["suchet",0,5],kind:"attack",side:"fr",label:"Suchet"},
+     {leg:["bag",0,5],kind:"attack",side:"al",label:"Bagration"}],
     lines:[{pts:[[309,207],[294,241],[283,287]],side:"fr",label:"French hold the crest"}],
     obj:[[285,289,"Pratzeberg"]]},
 
 5:{ arrows:[
-     {pts:[[240,115],[268,119],[294,122]],kind:"attack",side:"fr",label:"Caffarelli"},
-     {pts:[[227,95],[235,85],[245,77]],kind:"attack",side:"fr",label:"Suchet"},
-     {pts:[[292,52],[276,61],[262,68]],kind:"attack",side:"al",label:"Bagration"},
-     {pts:[[319,194],[305,170],[298,153]],kind:"counter",side:"al",label:"Liechtenstein and Uvarov"},
-     {pts:[[221,138],[251,145],[275,147]],kind:"counter",side:"fr",label:"Nansouty's cuirassiers"}],
+     {pts:[[319,194],[305,170],[298,153]],kind:"counter",side:"al",label:"Liechtenstein and Uvarov",interp:"group: Liechtenstein's and Uvarov's cavalry together"},
+     {leg:["nansouty",5,6],kind:"counter",side:"fr",label:"Nansouty's cuirassiers"}],
     obj:[[296,147,"Blasowitz"],[222,87,"The Santon holds"]]},
 
 6:{ arrows:[
-     {pts:[[413,202],[359,187],[330,192]],kind:"attack",side:"al",label:"Russian Imperial Guard"},
-     {pts:[[201,154],[245,184],[285,208]],kind:"counter",side:"fr",label:"Bessieres and Rapp"},
-     {pts:[[179,177],[233,194],[285,204]],kind:"move",side:"fr",label:"Drouet forms line"}],
+     {pts:[[413,202],[359,187],[330,192]],kind:"attack",side:"al",label:"Russian Imperial Guard",interp:"group: the Guard infantry and cavalry under Constantine"},
+     {pts:[[201,154],[245,184],[285,208]],kind:"counter",side:"fr",label:"Bessieres and Rapp",interp:"group: the Guard cavalry under Bessieres, with Rapp's charge"},
+     {leg:["drouet",6,7],kind:"move",side:"fr",label:"Drouet forms line"}],
     lines:[{pts:[[296,145],[309,207],[296,241],[283,287]],side:"fr",label:"French on the plateau"}],
     obj:[[313,205,"Stare Vinohrady"]]},
 
 7:{ arrows:[
-     {pts:[[290,248],[276,285],[285,324]],kind:"attack",side:"fr",label:"Saint-Hilaire wheels south"},
-     {pts:[[294,224],[271,271],[272,342]],kind:"attack",side:"fr",label:"Vandamme wheels south"},
-     {pts:[[198,398],[220,400],[238,392]],kind:"attack",side:"fr",label:"Davout resumes the offensive"},
-     {pts:[[227,338],[223,313],[215,291]],kind:"retreat",side:"al",label:"Przybyszewski's breakout"}],
+     {leg:["sthilaire",6,7],kind:"attack",side:"fr",label:"Saint-Hilaire wheels south"},
+     {leg:["vandamme",6,8],kind:"attack",side:"fr",label:"Vandamme wheels south"},
+     {pts:[[198,398],[220,400],[238,392]],kind:"attack",side:"fr",label:"Davout resumes the offensive",interp:"group: Davout's III Corps, Friant and Bourcier"},
+     {leg:["prz",7,8],kind:"retreat",side:"al",label:"Przybyszewski's breakout"}],
     lines:[{pts:[[212,408],[208,365],[205,277]],side:"al",label:"Buxhowden's columns, now cut off"}],
     obj:[[208,365,"Sokolnitz"]]},
 
 8:{ arrows:[
-     {pts:[[226,404],[260,385],[295,375]],kind:"retreat",side:"al",label:"I Column to the defile"},
-     {pts:[[297,374],[282,412],[261,436]],kind:"retreat",side:"al",label:"Over the Satschan mere"},
-     {pts:[[243,396],[226,422],[203,444]],kind:"retreat",side:"al",label:"Across the Menitz mere"},
-     {pts:[[270,347],[281,365],[295,367]],kind:"attack",side:"fr",label:"Vandamme takes the height"},
-     {pts:[[223,379],[244,388],[270,375]],kind:"attack",side:"fr",label:"Legrand and Friant"},
-     {pts:[[304,46],[329,33],[354,20]],kind:"retreat",side:"al",label:"Bagration withdraws on Rausnitz"}],
+     {pts:[[226,404],[260,385],[295,375]],kind:"retreat",side:"al",label:"I Column to the defile",
+      interp:"objective: points at the Augezd defile, the way out; the model has the column's centre stop about 900 m short, part of it crossing the ice"},
+     {pts:[[297,374],[282,412],[261,436]],kind:"retreat",side:"al",label:"Over the Satschan mere",interp:"unmodelled: the troops on the ice are not a tracked formation"},
+     {pts:[[243,396],[226,422],[203,444]],kind:"retreat",side:"al",label:"Across the Menitz mere",interp:"unmodelled: the troops on the ice are not a tracked formation"},
+     {leg:["vandamme",8,9],kind:"attack",side:"fr",label:"Vandamme takes the height"},
+     {pts:[[223,379],[244,388],[270,375]],kind:"attack",side:"fr",label:"Legrand and Friant",interp:"group: Legrand's and Friant's divisions together"},
+     {leg:["bag",7,9],kind:"retreat",side:"al",label:"Bagration withdraws on Rausnitz"}],
     obj:[[297,372,"The Augezd defile"]]},
 
 9:{ lines:[{pts:[[223,82],[264,114],[313,205],[278,283],[290,366],[297,391]],side:"fr",label:"French positions at nightfall"}],
@@ -1166,7 +1183,6 @@ function updateTrail(rec,id){
   }
   rec.trail.geometry.attributes.position.needsUpdate=true;
   rec.trail.geometry.setDrawRange(0,N);
-  rec.trail.computeLineDistances();
 }
 function refreshSymbol(rec,ph){
   var f=rec.f;
@@ -1206,52 +1222,130 @@ function disposeGroup(g){
 function groundPts(mapPts,lift){
   return mapPts.map(function(p){ var w=W(p[0],p[1]); return new THREE.Vector3(w[0],displayHeight(w[0],w[1])+lift,w[1]); });
 }
-function addTube(curve,t0,t1,rad,mat){
-  var sub=[];
-  for(var i=0;i<=16;i++) sub.push(curve.getPoint(t0+(t1-t0)*i/16));
-  var c2=new THREE.CatmullRomCurve3(sub);
-  ovAdd(new THREE.Mesh(new THREE.TubeGeometry(c2,18,rad,8,false),mat));
+/* The only dashed or segmented drawing (docs/STAGE2_SPEC.md section C.2): n runs of `duty` of their period each, as
+   [u0,u1] fractions. Used by the axis arrows (ordered routes) and the plan staging outlines; binding-test.js checks
+   that no other drawer dashes. */
+function dashRuns(n,duty){ var r=[]; for(var i=0;i<n;i++) r.push([i/n,i/n+duty/n]); return r; }
+/* the points of an overlay arrow, in map units. A derived arrow (a.leg) has none of its own: they are its leg's, or its run
+   of consecutive legs', anchors and via points, so its ends are the anchors exactly (Stage 2C) */
+function arrowPts(a){
+  if(!a.leg) return a.pts;
+  var A=anchorList(a.leg[0]), pts=null;
+  for(var i=0;i<A.length;i++){
+    if(A[i].ph===a.leg[1]) pts=[A[i].p.slice()];
+    else if(pts && A[i].ph<=a.leg[2]) pts=pts.concat(A[i].via||[],[A[i].p]);
+  }
+  return pts;
 }
+/* ---- draped ribbons (Stage 2C; decision 20 and section D) ----
+   An arrow, line, boundary or halt bar is a flat ribbon laid on the ground AS DRAWN: every vertex stands exactly `lift`
+   above groundY() at the current display factor (the self-test checks it at 1x, 4x and 10.33x). The centre line is a
+   smooth curve through the map points in the ground plane, sampled every unit or so and across its width, so the ribbon
+   follows the relief rather than cutting through it. o: w0, w1 shaft width at start and end; head "plain" (French) or
+   "chevron" (Allied: notched, the notch 0.38 of the head's length), headW, headL, the tip on the last point; runs, the
+   dashes (dashRuns); col, edge: fill and casing; lift; world: the points are already world x, z. Meshes go to `add`,
+   materials to `mats`. */
+var CHEVRON_NOTCH=0.38;
+function drapeMesh(v,idx,col,op,lift,order,mats,kind){
+  var g=new THREE.BufferGeometry();
+  g.setAttribute("position",new THREE.Float32BufferAttribute(v,3)); g.setIndex(idx);
+  /* over woods and buildings, as the plan ribbons are: an annotation on the map, not an object in the landscape */
+  var m=new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0,fog:false,depthWrite:false,depthTest:false,side:THREE.DoubleSide});
+  m.userData.op=op; mats.push(m);
+  var mesh=new THREE.Mesh(g,m); mesh.renderOrder=order; mesh.userData.drape={lift:lift,kind:kind};
+  return mesh;
+}
+function drapeTri(A,B,C,n,lift,v,idx){   /* a flat triangle split n x n, every vertex draped */
+  var row=[], i, j;
+  for(i=0;i<=n;i++){ row.push(v.length/3);
+    for(j=0;j<=n-i;j++){ var a=i/n, b=j/n, x=A[0]+(B[0]-A[0])*a+(C[0]-A[0])*b, z=A[1]+(B[1]-A[1])*a+(C[1]-A[1])*b;
+      v.push(x,groundY(x,z)+lift,z); } }
+  for(i=0;i<n;i++) for(j=0;j<n-i;j++){ var p0=row[i]+j, p1=row[i+1]+j, p2=row[i]+j+1;
+    idx.push(p0,p1,p2); if(j<n-i-1) idx.push(p1,row[i+1]+j+1,p2); }
+}
+function drapedRibbon(mapPts,o,add,mats){
+  var wp=mapPts.map(function(p){ var w=o.world?p:W(p[0],p[1]); return new THREE.Vector3(w[0],0,w[1]); });
+  var curve=wp.length>2?new THREE.CatmullRomCurve3(wp,false,"centripetal"):new THREE.LineCurve3(wp[0],wp[1]);
+  var L=curve.getLength(), headL=o.head?Math.min(o.headL,L*0.6):0, headW=o.head?o.headW*headL/o.headL:0;
+  var uEnd=(L-headL)/L, runs=o.runs||[[0,1]], lift=o.lift, out={curve:curve,len:L};
+  [[1.34,o.edge,0.5,-0.06],[1.0,o.col,1.0,0]].forEach(function(layer,li){
+    var sc=layer[0], ly=lift+layer[3], v=[], idx=[];
+    runs.forEach(function(r){
+      var u0=r[0]*uEnd, u1=Math.min(r[1],1)*uEnd, n=Math.max(2,Math.ceil((u1-u0)*L/1.0));
+      var wmax=Math.max(o.w0,o.w1)*sc, m=Math.max(2,Math.ceil(wmax/1.0)), first=v.length/3;
+      for(var i=0;i<=n;i++){
+        var u=u0+(u1-u0)*i/n, pt=curve.getPointAt(u), tg=curve.getTangentAt(u), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1;
+        nx/=nl; nz/=nl;
+        var hw=(o.w0+(o.w1-o.w0)*(uEnd>0?u/uEnd:0))*sc/2;
+        for(var k=0;k<=m;k++){ var f=-1+2*k/m, x=pt.x+nx*hw*f, z=pt.z+nz*hw*f; v.push(x,groundY(x,z)+ly,z); }
+      }
+      for(i=0;i<n;i++) for(k=0;k<m;k++){ var a=first+i*(m+1)+k, b=a+m+1; idx.push(a,b,a+1, a+1,b,b+1); }
+    });
+    add(drapeMesh(v,idx,layer[1],layer[2],ly,12+li,mats,"shaft"));
+    if(o.head){
+      var tipU=1, end=curve.getPointAt(tipU), tg=curve.getTangentAt(tipU), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1; nx/=nl; nz/=nl;
+      var over=(sc-1)*headL*0.35, hl=headL*sc, hw2=headW*sc/2;
+      var tip=[end.x+tg.x*over,end.z+tg.z*over], bc=[tip[0]-tg.x*hl,tip[1]-tg.z*hl];
+      var l=[bc[0]+nx*hw2,bc[1]+nz*hw2], r=[bc[0]-nx*hw2,bc[1]-nz*hw2], hv=[], hi=[];
+      if(o.head==="chevron"){ var nt=[bc[0]+tg.x*hl*CHEVRON_NOTCH,bc[1]+tg.z*hl*CHEVRON_NOTCH];
+        drapeTri(tip,l,nt,5,ly,hv,hi); drapeTri(tip,nt,r,5,ly,hv,hi); }
+      else drapeTri(tip,l,r,5,ly,hv,hi);
+      var hm=drapeMesh(hv,hi,layer[1],layer[2],ly,14+li,mats,"head");
+      hm.userData.head=o.head; hm.userData.side=li===1?o.side:null; hm.userData.tip=tip; hm.userData.base=[l,r]; if(nt) hm.userData.notch=nt;
+      add(hm);
+    }
+  });
+  return out;
+}
+function overlayMesh(m){ ovAdd(m); }
 function buildArrow(a){
-  var col=SIDE_COL[a.side][a.kind]||SIDE_COL[a.side].move;
-  var rad = a.kind==="attack"?0.95 : a.kind==="counter"?0.85 : a.kind==="retreat"?0.5 : 0.48;
-  var mat=new THREE.MeshBasicMaterial({color:lin(col).clone().multiplyScalar(0.58),transparent:true,opacity:0,fog:false,depthWrite:false});
-  overlayMats.push(mat);
-  var curve=new THREE.CatmullRomCurve3(groundPts(a.pts,2.4));
-  if(a.kind==="axis"){                      /* an intended route: broken; a retreat happened, so it is solid */
-    var seg=9;
-    for(var i=0;i<seg;i++){ var t0=i/seg; addTube(curve,t0,Math.min(t0+0.62/seg,1),rad,mat); }
-  } else addTube(curve,0,1,rad,mat);
-  var end=curve.getPoint(1), tan=curve.getTangent(1).normalize();
-  var hr = a.kind==="attack"?2.6:2.0;
-  var head=new THREE.Mesh(new THREE.ConeGeometry(hr,hr*2.3,14),mat);
-  head.position.copy(end).add(tan.clone().multiplyScalar(hr*0.9));
-  head.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),tan);
-  ovAdd(head);
-  if(a.label) addOverlayLabel(a.label,curve.getPoint(0.5));
+  var pts=arrowPts(a);
+  if(!pts||pts.length<2) return;
+  if(a.kind==="halt") return buildHalt(a,pts);
+  var col=SIDE_COL[a.side][a.kind]||SIDE_COL[a.side].move, S=TOKENS.sym.side[a.side];
+  var w = a.kind==="attack"?[2.0,2.6] : a.kind==="counter"?[1.8,2.3] : [1.3,1.6];
+  var r=drapedRibbon(pts,{w0:w[0],w1:w[1],side:a.side,head:a.side==="al"?"chevron":"plain",headW:7.5,headL:6.5,
+    runs:a.kind==="axis"?dashRuns(9,0.62):null,   /* an intended route: broken; a retreat happened, so it is solid */
+    col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
+  var mid=r.curve.getPointAt(0.5);
+  if(a.label) addOverlayLabel(a.label,new THREE.Vector3(mid.x,groundY(mid.x,mid.z)+2.4,mid.z));
+}
+/* "IV Column halted" (decision 23, section C.3): a column stopped short of its objective is not a route. A solid bar
+   across its line of march at the point it had reached, cased like the arrows, no head. Its length is the frontage of
+   the column's widest formation as the blocks model it (W0 x sw): a design rule. */
+function haltFrontage(id){
+  var best=0; leavesOf(id,[]).forEach(function(k){ var b=units[k]&&units[k].block, u=b&&b.userData;
+    if(u&&u.W0) best=Math.max(best,u.W0*(u.sw||1)); });
+  return best||8;
+}
+function buildHalt(a,pts){
+  var e=W(pts[pts.length-1][0],pts[pts.length-1][1]), p=W(pts[pts.length-2][0],pts[pts.length-2][1]);
+  var dx=e[0]-p[0], dz=e[1]-p[1], L=Math.hypot(dx,dz)||1, nx=-dz/L, nz=dx/L, h=haltFrontage(a.of)/2;
+  var S=TOKENS.sym.side[a.side], col=SIDE_COL[a.side].attack;
+  var ends=[[e[0]+nx*h,e[1]+nz*h],[e[0]-nx*h,e[1]-nz*h]];
+  drapedRibbon(ends,{world:true,w0:1.6,w1:1.6,col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
+  if(a.label) addOverlayLabel(a.label,new THREE.Vector3(e[0],groundY(e[0],e[1])+2.4,e[1]));
 }
 function buildLine(l){
-  var col=SIDE_COL[l.side].line;
-  var mat=new THREE.MeshBasicMaterial({color:lin(col).clone().multiplyScalar(0.58),transparent:true,opacity:0,fog:false,depthWrite:false});
-  overlayMats.push(mat);
-  var curve=new THREE.CatmullRomCurve3(groundPts(l.pts,1.9));
-  addTube(curve,0,1,0.55,mat);
-  for(var i=0;i<=14;i++){
-    var t=i/14, p=curve.getPoint(t), tg=curve.getTangent(t).normalize();
-    var side=new THREE.Vector3(-tg.z,0,tg.x).normalize().multiplyScalar(l.side==="fr"?2.6:-2.6);
-    var g=new THREE.BufferGeometry().setFromPoints([p,p.clone().add(side)]);
-    var lm=new THREE.LineBasicMaterial({color:lin(col),transparent:true,opacity:0});
+  var col=SIDE_COL[l.side].line, S=TOKENS.sym.side[l.side];
+  var r=drapedRibbon(l.pts,{w0:1.1,w1:1.1,col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:1.9},overlayMesh,overlayMats);
+  for(var i=0;i<=14;i++){   /* ticks on the side the line faces: drawn from the line out, both ends on the drawn ground */
+    var t=i/14, p=r.curve.getPointAt(t), tg=r.curve.getTangentAt(t);
+    var sx=-tg.z, sz=tg.x, sl=Math.hypot(sx,sz)||1, k=(l.side==="fr"?2.6:-2.6)/sl, qx=p.x+sx*k, qz=p.z+sz*k;
+    var g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(p.x,groundY(p.x,p.z)+1.9,p.z),new THREE.Vector3(qx,groundY(qx,qz)+1.9,qz)]);
+    var lm=new THREE.LineBasicMaterial({color:lin(col),transparent:true,opacity:0,depthTest:false});
     overlayMats.push(lm);
-    ovAdd(new THREE.Line(g,lm));
+    var ln=new THREE.Line(g,lm); ln.renderOrder=13; ln.userData.drape={lift:1.9,kind:"tick"}; ovAdd(ln);
   }
-  if(l.label) addOverlayLabel(l.label,curve.getPoint(0.18));
+  var q=r.curve.getPointAt(0.18);
+  if(l.label) addOverlayLabel(l.label,new THREE.Vector3(q.x,groundY(q.x,q.z)+1.9,q.z));
 }
+/* a boundary between commands: one solid thin line in the annotation colour (decision 21), explained in the legend */
 function buildBoundary(b){
-  var mat=new THREE.MeshBasicMaterial({color:lin(hexNum(TOKENS.sym.label.dark.annotation)),transparent:true,opacity:0,fog:false,depthWrite:false});
-  overlayMats.push(mat);
-  var curve=new THREE.CatmullRomCurve3(groundPts(b.pts,1.6));
-  for(var i=0;i<7;i++){ var t0=i/7; addTube(curve,t0,Math.min(t0+0.55/7,1),0.35,mat); }
-  if(b.label) addOverlayLabel(b.label,curve.getPoint(0.5));
+  var c=lin(hexNum(TOKENS.sym.label.dark.annotation));
+  var r=drapedRibbon(b.pts,{w0:0.7,w1:0.7,col:c,edge:c,lift:1.6},overlayMesh,overlayMats);
+  var q=r.curve.getPointAt(0.5);
+  if(b.label) addOverlayLabel(b.label,new THREE.Vector3(q.x,groundY(q.x,q.z)+1.6,q.z));
 }
 function addOverlayLabel(text,pos){          /* annotation text: hue stays on the arrow, not the words */
   var l=makePlainLabel(text,30,TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation,mode==="staff");
@@ -1300,9 +1394,9 @@ function applyOverlayOpacity(){
   var base=layerOn.arrows?0.95:0;
   var tb=(layerOn.arrows&&textOn())?0.95:0;
   var i;
-  for(i=0;i<overlayMats.length;i++) overlayMats[i].opacity=base*ovFadeIn;
+  for(i=0;i<overlayMats.length;i++) overlayMats[i].opacity=base*ovFadeIn*(overlayMats[i].userData.op||1);
   for(i=0;i<overlayTextMats.length;i++) overlayTextMats[i].opacity=tb*ovFadeIn;
-  for(i=0;i<oldMats.length;i++) oldMats[i].opacity=0.9*ovFadeOut;
+  for(i=0;i<oldMats.length;i++) oldMats[i].opacity=0.9*ovFadeOut*(oldMats[i].userData.op||1);
 }
 
 /* ============================================================
@@ -2406,12 +2500,10 @@ function planStaging(area,colour,edge){
   mk.position.set(c[0],displayHeight(c[0],c[1])+1.2,c[1]);
   mk.scale.set(area.rx*0.5,area.ry*0.5,1);
   mk.renderOrder=11; planGroup.add(mk);
-  var pts=[];
-  for(var a=0;a<=64;a++){
-    var th=a/64*Math.PI*2;
-    var x=c[0]+Math.cos(th)*area.rx*0.5, z=c[1]+Math.sin(th)*area.ry*0.5;
-    if(a%2===0||a===64) pts.push(x,displayHeight(x,z)+1.4,z);
-  }
+  var pts=[];   /* a plan: dashed (decision 15), sixteen dashes of half their period */
+  dashRuns(16,0.5).forEach(function(r){ r.forEach(function(u){
+    var th=u*Math.PI*2, x=c[0]+Math.cos(th)*area.rx*0.5, z=c[1]+Math.sin(th)*area.ry*0.5;
+    pts.push(x,displayHeight(x,z)+1.4,z); }); });
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute(pts,3));
   var ln=new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:lin(edge),transparent:true,
@@ -2508,6 +2600,7 @@ function setPlan(side){
   document.querySelectorAll(".plan-btn").forEach(function(b){
     b.setAttribute("aria-pressed", b.dataset.p===planSide ? "true":"false");
   });
+  document.body.classList.toggle("plan-on",!!planSide);   /* the legend explains the staging outline */
   if(!chapter) setHighlight(planSide?{}:null);
   paintPlanText();
 }
@@ -3429,6 +3522,7 @@ var COLOUR_KEY={
 function paintKey(){
   document.querySelectorAll(".legend [data-key]").forEach(function(e){
     var k=COLOUR_KEY[e.dataset.key]; if(k) e.style.background=k.hex; });
+  document.querySelectorAll(".legend .bnd").forEach(function(e){ e.style.borderTopColor=TOKENS.sym.label.dark.annotation; });
   /* the going classes: the same table the going layer is drawn from (world.js makeGoingPalette) */
   var gk=document.getElementById("goingkey");
   /* the slope classes are read from the model slope (decision 32): their thresholds in true degrees, provisional */
@@ -4181,6 +4275,17 @@ function derivedArrivals(){
     anchorList(id).forEach(function(b){ if(b.arrDerived) out.push({id:id,ph:b.ph,b:b}); }); });
   return out;
 }
+/* what the sources sheet says about the movement arrows: the rule, and what every other arrow is */
+function arrowNotes(){
+  var n=0, d=0, k={}, uns=[];
+  Object.keys(OVERLAYS).forEach(function(ph){ (OVERLAYS[ph].arrows||[]).forEach(function(a){ n++;
+    if(a.leg){ d++; return; } var kind=String(a.interp).split(":")[0]; k[kind]=(k[kind]||0)+1;
+    if(kind==="unsettled") uns.push(a.label+" ("+PHASES[ph].clock+")"); }); });
+  return ["An arrow drawn for a phase shows the movement the model makes during that phase. "+d+" of the "+n+" arrows are drawn from the formation's own modelled route, so their ends are its modelled positions; they move with the model.",
+    "The others are interpretive and marked as such in the data: "+(k.route||0)+" ordered routes (dashed), "+(k.objective||0)+" that point at a place or objective rather than a modelled position, "+
+      (k.group||0)+" that stand for several formations, "+(k.unmodelled||0)+" for bodies the map does not track, and "+(k.halt||0)+" halt bar, a column stopped short of its objective.",
+    "Hand-authored, because this map's own texts disagree about the hour and the sources have not been checked: "+uns.join("; ")+"."];
+}
 function geoText(p){
   /* {EXAG} is the DISPLAY factor relative to true scale (decision 35), never GEOREF.EXAG, the model's own scale */
   return String(p).replace(/\{EXAG\}/g,fmtFactor(DISPLAY.factor)).replace(/\{M_PER_UNIT\}/g,(GEOREF.KM_PER_MAP*1000).toFixed(0))
@@ -4211,7 +4316,9 @@ function openSources(){
       TACTICAL_RATE.inf.toFixed(1)+" km/h, cavalry "+TACTICAL_RATE.cav.toFixed(1)+", mixed "+TACTICAL_RATE.mixed.toFixed(1)+
       ". These rates are design values, not sourced, and are not historical rates. They are used only where the move still fits before the formation's next position; otherwise the move keeps the march-rate ceiling and is flagged.")+'</li>'+
     derivedArrivals().map(function(r){ var f=FORMATIONS[r.id];
-      return '<li>'+esc(f.name+" ("+fmtClock(r.b.w[0])+"\u2013"+fmtClock(r.b.w[1])+"): "+arrivalRuleText(r.b)+".")+'</li>'; }).join('')+'</ul>';
+      return '<li>'+esc(f.name+" ("+fmtClock(r.b.w[0])+"\u2013"+fmtClock(r.b.w[1])+"): "+arrivalRuleText(r.b)+".")+'</li>'; }).join('')+'</ul>'+
+    /* Stage 2C: the arrows (decisions 33 and 37), counted from OVERLAYS */
+    '<h3>How the arrows are drawn</h3><ul class="bul">'+arrowNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>';
   m.dataset.sources="1";
   m.classList.add("on");
 }
@@ -4447,6 +4554,25 @@ var AUSTERLITZ_DEBUG=(function(){
     o.onField=onField; o.feet=feet; o.blocks=blocks;
     return o;
   }
+  /* Stage 2C: the draped overlays of every phase, measured against groundY at the current display factor */
+  function overlayDrape(){
+    var keep=curPhase, worst=0, where="", n=0, meshes=0, H={n:0,al:0,fr:0,notch:"",bad:[]}, v=new THREE.Vector3();
+    for(var ph=0;ph<PHASES.length;ph++){
+      rebuildOverlays(ph,true);
+      curOv.updateMatrixWorld(true);
+      curOv.traverse(function(o){ var d=o.userData.drape; if(!d||!o.geometry) return; meshes++;
+        var P=o.geometry.attributes.position;
+        for(var i=0;i<P.count;i++){ v.fromBufferAttribute(P,i).applyMatrix4(o.matrixWorld);
+          var e=Math.abs(v.y-groundY(v.x,v.z)-d.lift); n++; if(e>worst){ worst=e; where=d.kind+" in phase "+ph; } }
+        if(d.kind==="head"&&o.userData.side){ var u=o.userData, want=u.side==="al"?"chevron":"plain"; H.n++; H[u.side]++;
+          var bc=[(u.base[0][0]+u.base[1][0])/2,(u.base[0][1]+u.base[1][1])/2], ax=[u.tip[0]-bc[0],u.tip[1]-bc[1]], L2=ax[0]*ax[0]+ax[1]*ax[1];
+          var f=u.notch?((u.notch[0]-bc[0])*ax[0]+(u.notch[1]-bc[1])*ax[1])/L2:null;
+          if(u.head!==want||(want==="chevron"&&!(f>0.3&&f<0.45))||(want==="plain"&&u.notch)) H.bad.push(u.side+" head in phase "+ph+" is "+u.head+(f!==null?" (notch "+f.toFixed(2)+")":""));
+          else if(f!==null) H.notch=f.toFixed(2); } });
+    }
+    rebuildOverlays(keep,true);
+    return {worst:worst,where:where,n:n,meshes:meshes,heads:H};
+  }
   function stage2bChecks(B){
     var out2=[], F=DISPLAY.settings, M=B[GEOREF.EXAG];
     function ck2(name,ok,detail){ out2.push({name:name,ok:!!ok,detail:detail}); }
@@ -4589,6 +4715,14 @@ var AUSTERLITZ_DEBUG=(function(){
         "Allied on the plateau at 04:00 = "+p04.toLocaleString()+" (changelog 38,700); "+
         (over.length?"totals exceed an army at "+over.join(","):"totals within 85,400 and 73,000 at 57 moments")+"; movement audit "+aud.length+" findings");
 
+
+      /* 12. Stage 2C: every overlay arrow, line and boundary vertex at its lift above the drawn ground, in every phase;
+         every Allied head the notched chevron, every French head the plain triangle */
+      var dr=overlayDrape();
+      ck("overlays: every arrow, line and boundary vertex stands at its lift above the drawn ground", dr.n>0&&dr.worst<=0.05,
+        dr.n+" vertices in "+dr.meshes+" draped meshes over the 10 phases; worst |y - groundY - lift| "+dr.worst.toFixed(4)+(dr.where?" ("+dr.where+")":""));
+      ck("heads: every Allied arrow head is the notched chevron, every French head the plain triangle", dr.heads.n>0&&!dr.heads.bad.length,
+        dr.heads.n+" heads ("+dr.heads.al+" Allied chevrons, notch "+dr.heads.notch+" of the head's length ahead of its base; "+dr.heads.fr+" French plain)"+(dr.heads.bad.length?"; WRONG: "+dr.heads.bad.join(", "):""));
 
       bySetting[fct]=factorFacts(fct);
     }

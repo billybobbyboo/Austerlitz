@@ -5,8 +5,8 @@
   "scripts": {
     "build": "python3 build.py",
     "test": "sh tools/run-all.sh",
-    "check:baseline": "python3 build.py && node -e \"const b=require('fs').readFileSync('austerlitz-command-map.html'),h=require('crypto').createHash('md5').update(b).digest('hex');console.log(h,b.length);process.exit(h==='0c48515152e57c29963b79c4a99d78c9'&&b.length===1149340?0:1)\"",
-    "check:data": "node tools/visual/data-invariance.js archive/chronology-12d34eed.html austerlitz-command-map.html",
+    "check:baseline": "python3 build.py && node -e \"const b=require('fs').readFileSync('austerlitz-command-map.html'),h=require('crypto').createHash('md5').update(b).digest('hex');console.log(h,b.length);process.exit(h==='68ac77219de339186b7b96aae2266a4f'&&b.length===1166868?0:1)\"",
+    "check:data": "node tools/visual/data-invariance.js archive/stage2c-68ac7721.html austerlitz-command-map.html",
     "check:visual": "node tools/visual/harness.js austerlitz-command-map.html tools/visual/out --test",
     "check:report": "node tools/visual/check-report.js tools/visual/out",
     "check:contrast": "node tools/visual/contrast.js austerlitz-command-map.html",

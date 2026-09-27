@@ -1,5 +1,155 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Stage 2C: movement arrows (docs/STAGE2_SPEC.md §C, §D, §J, §K; decisions 20-23, 33, 37, 46)
+
+**Status: done; awaits the owner's review. 2D has not started. `austerlitz-command-map.html`: 1,166,868 bytes, md5
+`68ac77219de339186b7b96aae2266a4f`** (was 1,149,340 bytes, md5 `0c485151…`, Stage 2B; 1,153,477 bytes, md5 `f6324c90…`, after the
+precondition commit, the entry below).
+- `check:baseline` moves to this build.
+- `check:data`'s reference moves to it: `archive/stage2c-68ac7721.html` replaces `archive/chronology-12d34eed.html`.
+- Against the old reference exactly three guarded declarations changed:
+  - `OVERLAYS` (below);
+  - `anchorList` (the precondition);
+  - `TACTICAL_RATE,BATTLE_ORDER`, added and now guarded.
+- The other 110 are byte-identical. No track, strength, order of battle or geography changed.
+
+**The rule** (decisions 33 and 46): the arrow shown during phase ph depicts the leg the model executes during ph. Every
+`OVERLAYS` arrow is now one of two things:
+- **derived**: `leg:[id, from, to]`, a leg or run of consecutive legs executed in the phase. It has no points of its own:
+  `arrowPts()` takes them from the track, so its ends are the anchors exactly and it moves with the model;
+- **interpretive**: `interp:"<kind>: <why>"`, where the kind is one of route, objective, group, unmodelled, halt or
+  unsettled.
+
+The sources sheet has a new section, "How the arrows are drawn", which gives the rule, the counts and the hand-authored
+arrows.
+
+**The binding table after 2C** (`node tools/stage2/arrow-binding.js`; `docs/stage2-evidence/arrow-binding.md`; the pre-2C
+table is kept as `arrow-binding-before-2c.md`). The 36 arrows are 17 derived and 19 interpretive: 4 routes, 3 objectives,
+5 groups, 4 unmodelled, 1 halt and 2 unsettled. On the executed-leg reading: **17 derivable** (was 4) and 5 mismatch, all
+marked (3 objective, 2 unsettled). The other 24 overlay items (lines, boundaries, objective markers) stay interpretive.
+
+**How decision 37 was applied, and an interpretation it needed.** Decision 37 gives three outcomes: a wrong track changes;
+an arrow that points at a place or objective becomes interpretive; an arrow that cannot be settled stays hand-authored.
+- **No track was wrong on the evidence available.** Every mismatch agrees with the app's dated statements
+  (`check:chronology`), and the sources that would test the doubtful hours are unread (§M.9). So **no track changed**.
+- Most arrows fitted none of the three outcomes: the model was right, and the arrow had been drawn a phase late or off its
+  leg. Following decision 33 ("the arrows follow the corrected model"), such an arrow is **generated from the leg the model
+  executes in its phase**:
+  - where that leg is the movement the arrow depicted, the arrow **moves to the phase the leg runs in** (3 arrows);
+  - otherwise it depicts the executed leg under the same label, where the formation's act in that phase still describes
+    it (10 arrows).
+- This is my reading of decisions 33, 37 and 46 together, not a fourth outcome the owner stated. It is listed below as open.
+
+**Every `OVERLAYS` change** (map units; 1 unit = 31.6 m; "evidence" is the app's own text or track, basis "app narrative,
+unsourced", as in the chronology data task):
+
+| phase | arrow | was | is | evidence | why |
+|---|---|---|---|---|---|
+| 0 | V Column counter-marches north | hand-drawn [296,243]→[312,178] (the whole counter-march to the phase-3 anchor) | derived, lich 0→2, [296,243]→[319,214] (04:00-08:00); end 1,159 m shorter | lich@2 act "Crossing the front of the 4th Column", status countermarch; the phase-0 timeline "c. 04:00 … must counter-march north" | the leg executed in phase 0 |
+| 1 | Kienmayer | [291,367]→[226,406], the approach from Augezd (leg 0→1, 04:00-07:00) | derived, 1→2, [236,398]→[222,402] (07:00-08:00) | phase-1 lede and timeline "c. 07:00 Kienmayer's advance guard attacks Telnitz"; kienmayer@1 act "Attacks Telnitz" | the attack on Telnitz is what the model runs in phase 1; the approach ran in phase 0 |
+| 1 | Friant's approach march | [106,428]→[195,409], starting 2 km behind where the model has him at 07:00 | derived, friant 1→2, [167,410]→[198,402] (07:00-08:30) | timeline "c. 08:00 Friant's leading brigade comes up to the Goldbach near Telnitz"; friant@1 act "Marching from Raigern toward Telnitz" | the last stretch of the march is the leg in phase 1. The same leg carries "Friant retakes Telnitz" in phase 2, because it runs 07:00-08:30 |
+| 1 | I Column descends | hand-drawn | **unchanged, marked unsettled** | the timeline "c. 07:30 Dokhturov's I Column begins descending" against the event and track from 04:00: the unresolved conflict `dok@1` | cannot be settled until Duffy (1977) is read; listed by name in `binding-test.js` |
+| 2 | II Column → Sokolnitz | hand-drawn attack | **unchanged, marked objective** | phase-2 timeline "c. 08:00 Langeron attacks Sokolnitz"; the model has the column at the village from 08:00, and its phase-2 leg runs back up the slope (10:30) | it points at the objective of an assault the model does not represent as a movement |
+| 2 | III Column → castle | hand-drawn attack | **unchanged, marked objective** | the same timeline entry; prz@2 act "Storms the walled castle grounds" | as above |
+| 2 | Liechtenstein crosses the front | [296,243]→[320,204] (leg 0→2, run 04:00-08:00) | derived, lich 2→3, [319,214]→[317,191] (08:00-08:45) | during phase 2 the dossier's act is lich@2 "Crossing the front of the 4th Column and holding it up" | the leg executed in phase 2 under the act the app shows then |
+| 2 | IV Column halted | `axis` arrow [325,230]→[301,237] | **kind `halt`**: a solid bar across the line of march at [301,237], no head, length the frontage of the column's widest formation (a design rule), `of:"col4"` | phase-2 lede "the 4th Column … is still standing still"; the Kobelnitz feature "which never reached it" (§C.3) | decision 23: a halt is not intended movement |
+| 2 | Friant retakes Telnitz | hand-drawn, within 130 m | derived, friant 1→2 (07:00-08:30) | friant@2 tm at 08:30 "Friant's leading troops retake Telnitz" | was derivable; now generated |
+| 3 | Saint-Hilaire; Vandamme | hand-drawn, within 45 m and 100 m | derived, 2→3 each (08:45-09:15, 08:45-09:14) | the dated climbs (§M.8) | were derivable; now generated |
+| 4 | Kamensky turns about | hand-drawn | **unchanged, marked unsettled** | the timeline "c. 09:45 Kamensky turns his brigade about" against his own record and track in phase 3: the unresolved conflicts `kamensky@3`, `kamensky@4` | cannot be settled until Duffy and Thiebault are read; listed by name |
+| 5 → 4 | Caffarelli | phase 5, [240,115]→[294,122] | **phase 4**, derived, caffarelli 0→5 (09:30-10:30) | phase-4 timeline "c. 09:30 Lannes advances along the highway"; phase-4 lede "In the same hour … Lannes begins his advance"; caffarelli@5 tm dep 09:30 | the leg runs wholly in phase 4, and the app's text puts it there |
+| 5 → 4 | Suchet | phase 5, [227,95]→[245,77] | **phase 4**, derived, suchet 0→5 (09:30-10:30) | as above; suchet@5 tm dep 09:30 | as above |
+| 5 → 4 | Bagration | phase 5, [292,52]→[262,68] (the start 858 m along his leg) | **phase 4**, derived, bag 0→5, [319,49]→[262,68] (09:30-10:30) | phase-4 timeline "Bagration counter-attacks" c. 09:30; bag@5 tm dep 09:30 | as above; in phase 5 he holds and runs no leg |
+| 5 | Nansouty's cuirassiers | [221,138]→[275,147], the move up from reserve (an undated creeping leg, 04:00-10:30) | derived, nansouty 5→6, [277,146]→[307,142] (10:30-11:15) | phase-5 lede "Murat answers with Nansouty's … cuirassiers"; the model drives east as Liechtenstein is repulsed (lich@6) | the counter-charge's movement in phase 5; the move up spans five phases and cannot be one phase's arrow (decision 45 keeps it undated) |
+| 6 | Drouet forms line | [179,177]→[285,204], the whole advance from reserve (legs 0→3→6, 04:00-11:15) | derived, drouet 6→7, [290,206]→[313,217] (11:15-12:45) | during phase 6 the dossier's act is drouet@6 "Forms line across the plateau and helps break the Russian Guard attack" | the leg executed in phase 6 |
+| 7 | Saint-Hilaire wheels south | start 761 m off the phase-6 anchor | derived, sthilaire 6→7 (13:00-14:00) | sthilaire@7 tm "Wheels south off the heights" | the start is now the anchor |
+| 7 | Vandamme wheels south | [294,224]→[272,342], from the middle of the wheel | derived, run vandamme 6→7→8, [296,206]→[270,347] (13:00-14:30) | vandamme@7 "Turns south with Saint-Hilaire"; vandamme@8 "Seizes the ground commanding the causeway" | both legs run in phase 7 (the wheel now 13:00-13:24, the precondition) |
+| 7 | Przybyszewski's breakout | [227,338]→[215,291], ending 684 m beyond the model's column, toward Kobelnitz | derived, prz 7→8, [227,338]→[227,309] (14:10-14:30) | prz@8 act "Attempts to break out north toward Kobelnitz; the column disintegrates" | the arrow now stops where the model has the column break; its objective stays in the act |
+| 8 | I Column to the defile | hand-drawn | **unchanged, marked objective** | the column's centre stops 899 m short of the defile, and part of it crosses the ice (dok@8, dok@9) | it points at the place, the Augezd defile |
+| 8 | Vandamme takes the height | hand-drawn, within 261 m | derived, vandamme 8→9 | - | was derivable; now generated |
+| 8 | Bagration withdraws on Rausnitz | [304,46]→[354,20] | derived, run bag 7→8→9, [304,46]→[366,14] (16:30-17:00) | bag@8 "Withdraws on Rausnitz in good order" | both legs run in phase 8 |
+| all | the other arrows | no marker | the marker only: 4 `route` (the axis arrows of phase 0), 5 `group`, 4 `unmodelled`; points unchanged | - | decision 22: every arrow carries a verdict |
+
+**Still open (not changed here)**
+- **The two unsettled arrows**, *I Column descends* and *Kamensky turns about*. They wait on the same passages of Duffy
+  (1977) and Thiebault as their conflicts.
+- **The flagged derived arrivals and conflicts** of the precondition: `sthilaire@3`, `vandamme@3`, `bag@8`; `c_gren@8` and
+  `kollo@5`; `dok@1`, `guard_cav@6`, `kamensky@3`, `kamensky@4`.
+- **My reading of decision 37** (above): moving three arrows to phase 4, and re-deriving ten on the leg executed in their
+  phase. The owner may prefer some of them marked interpretive instead; each is one line of `OVERLAYS`.
+- **Phase 5 now has no Lannes arrows.** Its lede ("Blasowitz falls") keeps its objective marker. No arrow was added to show
+  Caffarelli's and Suchet's phase-5 legs; adding arrows was not in scope.
+
+**Presentation** (`app.js`, `style.css`, `shell.html`; not guarded)
+- **Draped drawing** (`drapedRibbon`, from `planRibbon`'s ribbon and head): arrows, front lines (and their ticks),
+  boundaries and the halt bar are flat ribbons.
+  - The centre line is a smooth curve in the ground plane, sampled every unit or so along and across.
+  - Every vertex stands at its lift above `groundY()`, the drawn ground, at the current factor. Overlays are rebuilt on a
+    factor change, as in 2B.
+  - They are drawn over woods and buildings, as the plan ribbons are. The tubes were cut up by them.
+- **Heads** (decision 20):
+  - every Allied arrow has the notched chevron, its notch 0.38 of the head's length inside the head; French arrows have
+    the plain triangle;
+  - heads are drawn above shafts; the tip stands on the last point, so a derived arrow's tip is its anchor;
+  - plan ribbons keep their own heads;
+  - the legend's movement swatches show both heads.
+  - **A finding about §D:** the probe drew its "chevron" with `planRibbon`, whose fourth point lies behind the base. That is
+    a kite, not a notch. The notched shape was therefore rendered and measured anew (below).
+- **The rest:**
+  - Boundaries (decision 21): one solid thin ribbon in the annotation colour; legend line "boundary between commands".
+  - The halt (decision 23, §C.3): legend line "halt: a column stopped short of its objective".
+  - The plan staging outline stays dashed and has a legend line, shown while a plan is on ("dashed outline: a plan's staging
+    area").
+  - Dashes come from one helper, `dashRuns`, used only by the `axis` arrows (9 dashes, as before) and the staging outlines
+    (16 dashes, the same geometry as before).
+  - The leftover `computeLineDistances` call on the movement trail is removed.
+
+**Tests**
+- **New suite `binding-test.js`** (in `tools/run-all.sh`; `npm test` now reports 9 suites): 374 checks, 0 failed. It checks
+  every arrow against the tracks:
+  - each arrow has exactly one verdict;
+  - each derived arrow is generated by `arrowPts`, its ends equal to its anchors exactly (`===`), every leg of it executed
+    in its phase, its label naming its formation, and derivable on the executed reading;
+  - each interpretive arrow has a known kind with a reason, consistent with what it shows: a route is an axis arrow and
+    vice versa, a group names several formations, an objective or unsettled arrow names one tracked formation and is
+    *not* derivable (else it must be derived);
+  - no axis arrow describes a halt;
+  - the unsettled arrows are listed by name, each with its entry here; any other mismatch fails.
+- **Dash test (static, in `binding-test.js`):** dashed or segmented drawing (`LineDashedMaterial`,
+  `computeLineDistances`, `setLineDash`, `dashRuns`, the terrain style's `dash`) appears only in `dashRuns`, `buildArrow`
+  (axis only), `planStaging`, `buildPlanLinks`, `updatePlanLinks` and `world.js` `buildAnalysis` (valley and dead ground
+  only). `buildBoundary`, `buildLine`, `buildHalt` and `updateTrail` are solid. Dashed CSS appears only in the legend's two
+  dash samples.
+- **Self-test, stricter:** 41 checks (was 35), with two new checks at each of 1x, 4x and 10.33x:
+  - every overlay arrow, line, tick, boundary and halt vertex over all ten phases stands at its lift above `groundY`: 14,911
+    vertices in 282 meshes, worst 0.0000 (threshold 0.05);
+  - 35 heads: all 20 Allied heads are chevrons with the notch at 0.38, all 15 French heads plain.
+- **Harness:** thresholds unchanged. All 13 cases pass with **0 label overlaps**, the overlay labels included (the four
+  harness views at 09:30-10:00 now show the phase-4 arrows).
+- **Height guard:** the new `groundY` call sites are classified: `drapeTri`, `drapedRibbon`, `buildArrow`, `buildHalt`,
+  `buildLine` and `buildBoundary` as presentation, the self-test's `overlayDrape` as test. There are now 48 sites (15 model,
+  23 presentation, 10 test), with 0 presentation sites on `height()`/`hAt()`.
+- **`runtime-test.js`:** its THREE stub's simplified `CatmullRomCurve3` (no `getLength`) is replaced by three's own r128
+  `CatmullRomCurve3` and `LineCurve3`. No assertion changed. Before the fix, the suite failed with "curve.getLength is not a
+  function".
+
+**Renders** (`node tools/stage2/arrows-2c.js --sheets docs/stage2-evidence`):
+- `2c-heads.jpg`: landscape and paper, Overview and close, each in greyscale.
+  - Overview, phase 4: Allied heads 36.8-37.0 px wide with a 11.9-12.5 px notch; French 35.0-37.2 px.
+  - Close views: Allied heads 76-84 px with a 26-29 px notch.
+  - The notched and plain heads are distinct in every greyscale tile where the head is on screen.
+  - In the phase-8 Overview the Allied heads lie under the timebar: the framing matter §D already recorded (§H, Stage 3).
+- `2c-drape.jpg`: the same low view at 1x, 4x and 10.33x.
+- Per-head sizes: `arrows-2c.json`.
+
+**Checks on this build**
+- `npm test`: ALL 9 SUITES PASSED, and the height guard. `redteam.js`: 0 findings, 1 warning (the march-rate one, kept).
+- `npm run check:chronology`: 0 errors. 65 consistent, 4 early (the named conflicts), 0 late. The derived arrivals are as in
+  the entry below.
+- `npm run check:data`: all 113 data declarations identical to the new reference.
+- `npm run check:visual`: STAGE0 all checks passed; 13 cases, 0 overlaps; self-test 41 of 41.
+- `npm run check:contrast`: 3,194 text elements, 0 below AA, 0 below 10.5 px, the new legend lines included.
+- `npm run check:baseline`: passes on this build.
+
 ## 2026-09 · Stage 2C precondition: derived arrivals at a tactical rate (docs/STAGE2_SPEC.md §M.13, decided: "(b) where it fits, otherwise (c), flagged")
 
 **Status: a model change, committed on its own before the arrow work of 2C. `austerlitz-command-map.html` after this commit:

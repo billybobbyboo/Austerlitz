@@ -2,8 +2,9 @@
 
 **Status: Part A reviewed; the owner's answers are decisions 31-39 (§0, §L). §M (the chronology audit) was reviewed and
 remedy (c) accepted; the chronology data task that followed it (owner decisions 40-46, §M.7-§M.13) is merged. 2B (display height,
-exaggeration, standards) is implemented as specified in §A, §B, §I.1, §J and §K; what it found is at the end of §K. 2C
-waits on the derived-arrival question of §M.13.** Sections A-L below still describe the build
+exaggeration, standards) is implemented as specified in §A, §B, §I.1, §J and §K; what it found is at the end of §K. The
+derived-arrival question of §M.13 is decided (the 2C precondition), and 2C (movement arrows) is implemented as §C.1 ("After
+2C"), §C.3, §D, §J and §K describe; it awaits the owner's review.** Sections A-L below still describe the build
 they were written against, except §C.1, whose tables were re-run on the new tracks (the earlier ones are §C.4). Written against `main` at `7e03692`
 (`austerlitz-command-map.html` 1,107,799 bytes, md5 `5bf48b75373fe0cf9fc8a32cbeae918c`, confirmed before any work;
 `npm run check:baseline` now checks exactly that build). Line numbers refer to that commit.
@@ -289,6 +290,28 @@ questions.
 ph* (the **exec** column): a leg whose window overlaps the phase. With the phase-start default, that is the leg into the
 next phase's anchor; with a dated move, it is the dated leg. 2C derives arrows from this reading, and resolves the arrows
 that are not derivable on it one by one under decision 37.
+
+**After 2C (fact; `node tools/stage2/arrow-binding.js`, `binding-test.js`; `docs/stage2-evidence/arrow-binding.md`).** The
+rule above is implemented: every arrow either names the leg, or run of consecutive legs, that the model executes during its
+phase (`leg:[id, from, to]`), and takes its points from the track (`arrowPts`), or carries an interpretive marker
+(`interp:"<kind>: <why>"`). Of the 36: **17 derived** (all derivable on the executed reading, end points equal to the anchors
+exactly), **19 interpretive**: 4 routes (the `axis` arrows of phase 0), 3 objectives, 5 groups, 4 unmodelled, 1 halt and 2
+unsettled, hand-authored and listed by name. Decision 37's three outcomes needed a fourth reading, stated here because it
+is an interpretation of decisions 33 and 46 rather than of 37. **Where the model is right and the arrow was drawn a phase
+late or off its leg, the arrow now follows the model**: it is generated from the leg the model executes in its phase. Where
+that leg is the one the arrow depicted, the arrow moves to the phase that leg runs in (Caffarelli, Suchet and Bagration, to
+phase 4: its timeline dates "Lannes advances along the highway. Bagration counter-attacks." c. 09:30). Otherwise it
+depicts the executed leg in its own phase, under the same label, where the formation's act in that phase still describes it.
+**No track changed**: no arrow gave evidence that a track was wrong, and the sources that would test the doubtful hours are
+unread (§M.9). Arrow by arrow, with was and is, in `CHANGELOG.md` (Stage 2C).
+
+| verdict after 2C | arrows |
+|---|---|
+| derived, same phase | V Column counter-marches north (ph0, lich 0→2); Kienmayer (ph1, 1→2); Friant's approach march (ph1, friant 1→2); Liechtenstein crosses the front (ph2, lich 2→3); Friant retakes Telnitz (ph2, friant 1→2); Saint-Hilaire, Vandamme (ph3, 2→3); Nansouty's cuirassiers (ph5, 5→6); Drouet forms line (ph6, 6→7); Saint-Hilaire wheels south (ph7, 6→7); Vandamme wheels south (ph7, 6→7→8); Przybyszewski's breakout (ph7, 7→8); Vandamme takes the height (ph8, 8→9); Bagration withdraws on Rausnitz (ph8, 7→8→9) |
+| derived, moved to the phase its leg runs in | Caffarelli, Suchet, Bagration (ph5 → ph4, 0→5, 09:30-10:30) |
+| interpretive: objective | II Column → Sokolnitz, III Column → castle (ph2); I Column to the defile (ph8) |
+| interpretive: unsettled (hand-authored, listed) | I Column descends (ph1; the Dokhturov conflict, `dok@1`); Kamensky turns about (ph4; the Kamensky conflict, `kamensky@3`, `kamensky@4`) |
+| interpretive: route, group, unmodelled, halt | as before (§C.4), with "IV Column halted" now the `halt` kind (§C.3) |
 
 ### C.2 Dashed and segmented drawing today (fact)
 
@@ -778,6 +801,22 @@ playback. Four things were not as the plan assumed:
 
 The paper map follows the display factor, as the owner asked for 2B. Its own hillshade factor (decision 19) is 2E's.
 Renders: `docs/stage2-evidence/2b-*.jpg`.
+
+**2C, as delivered (fact; `CHANGELOG.md`, Stage 2C).**
+- The precondition (§M.13) came first, as its own commit.
+- Arrows, lines, boundaries and the halt bar are flat ribbons draped on the drawn ground (`drapedRibbon`, from
+  `planRibbon`'s ribbon and head). Every vertex stands at its lift above `groundY` at 1x, 4x and 10.33x (self-test,
+  14,911 vertices, worst 0.0000).
+- They are drawn over woods and buildings, as the plan ribbons are. The tubes were hidden by them.
+- Heads: Allied heads are the notched chevron (the notch 0.38 of the head's length, inside the head), French heads the
+  plain triangle. The tip stands on the last point, so a derived arrow's tip is its anchor.
+- One finding about §D. The probe drew its "chevron" with `planRibbon`, whose fourth head point lies 0.38 of the head's
+  length *behind* the base. That makes a kite, not a notch. The plan ribbons keep that head (decision 20). The movement
+  arrows now carry the notched shape decision 20 names; it was re-rendered and measured (`2c-heads.jpg`: 37 px wide and
+  a 12 px notch at the Overview, distinct in greyscale).
+- Dashes come only from `dashRuns`, which only the `axis` arrows and the plan staging outlines use; the static test
+  checks this.
+- `computeLineDistances` was removed from the trail.
 
 ## L. The owner's answers (decisions 31-39)
 
