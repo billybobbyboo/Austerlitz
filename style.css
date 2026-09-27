@@ -570,7 +570,6 @@ body.firstrun-on #vsbadge,body.firstrun-on #tourbar,body.firstrun-on #selchip{di
 /* ---------- Stage 2D: the map layer (app.js THE MAP LAYER; symbols.js counterHTML). Colours are set from TOKENS by the
    script; every text is on a plate. The .mlc paddings are mirrored in mlPlaceItem (the frame's foot). ---------- */
 #maplayer{position:fixed;inset:0;z-index:6;pointer-events:none;overflow:hidden}
-body.labels-canvas #maplayer{display:none}
 body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!important}   /* the self-test holds the panels' slides still */
 .ml-lines{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
 .ml-item{position:absolute;left:0;top:0;opacity:0;white-space:nowrap;font-family:var(--sans);font-weight:400;border-radius:2px}

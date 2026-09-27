@@ -108,7 +108,7 @@ var mode="terrain", tween=null;
 var selection=null, freeCam=false;
 var layerOn={symbols:true,arrows:true,labels:true,trails:true,contours:true,analysis:false,events:true};
 var goingOn=false;
-var analysisSprites=[];
+var terrainLabels=[];   /* {tl, col, world}: the map layer's terrain-study labels */
 var highlight=null;      /* id -> true, or null for "show everything equally" */
 var commandView="none";  /* none | fr | al */
 var chapter=null;
@@ -120,7 +120,7 @@ function textOn(){ return layerOn.labels && !cleanView; }
 
 var units={};        /* leaf formations with 3D blocks + symbols */
 var aggregates={};   /* corps-level symbol only */
-var featureSprites=[];
+var placeLabels=[];   /* {ft, world}: the map layer's place names */
 
 /* sky: zenith, mid-sky, horizon · disc: how much of the low December sun shows */
 /* sun: intensity, colour, direction · hemi: sky fill · fog: atmospheric perspective,
@@ -976,17 +976,16 @@ function syncLandscapeLayers(){
 }
 /* ---- the display factor (Stage 2B; owner decisions 19 and 35) ----
    Presentation only: the model, GEOREF.EXAG and every model-unit value are unchanged. Everything built once on
-   the ground is redrawn or re-seated (rescaleWorld in world.js; labels, glyphs and the plateau ring keep their
+   the ground is redrawn or re-seated (rescaleWorld in world.js; label anchors, glyphs and the plateau ring keep their
    height above the ground); overlays and plans are rebuilt; the camera keeps its height above the ground.
    Returns the time the change took, in ms. */
 function setDisplayFactor(f){
   if(!(f>0)||f===DISPLAY.factor) return 0;
   var t0=performance.now(), hold=[];
   function keep(v){ if(v) hold.push([v,v.y-displayHeight(v.x,v.z)]); }
-  featureSprites.forEach(function(o){ keep(o.sprite.position); keep(o.world); });
-  eventMarks.forEach(function(k){ keep(k.sp.position); keep(k.ls.position); keep(k.world); keep(k.sp.userData.anchor); keep(k.ls.userData.anchor); });
-  analysisSprites.forEach(function(o){ keep(o.sprite.position); keep(o.world); keep(o.sprite.userData.anchor); });
-  if(plateauLabel){ keep(plateauLabel.position); keep(plateauLabel.userData.anchor); }
+  placeLabels.forEach(function(o){ keep(o.world); });
+  eventMarks.forEach(function(k){ keep(k.sp.position); keep(k.world); });
+  terrainLabels.forEach(function(o){ keep(o.world); });
   if(plateauRing&&!plateauRing.userData.seatOff) seatGeometry(plateauRing);
   keep(orbitTarget); keep(camera.position);
   DISPLAY.factor=f;
@@ -1083,21 +1082,7 @@ function buildFormations(){
     var f=FORMATIONS[id];
     var isLeaf=!!f.track;
     var hsh=0; for(var q=0;q<id.length;q++) hsh=(hsh*31+id.charCodeAt(q))%997;
-    var rec={id:id, f:f, leaf:isLeaf, delay:(hsh%100)/100*0.20, trailOn:false};
-
-    /* symbol sprite */
-    var mat=new THREE.SpriteMaterial({transparent:true,depthTest:false,fog:false});
-    var sp=new THREE.Sprite(mat);
-    sp.renderOrder=20; sp.visible=false;
-    asText(sp); scene.add(sp);
-    rec.sprite=sp; rec.texKey="";
-
-    /* stem from ground to counter */
-    var stemGeo=new THREE.BufferGeometry();
-    stemGeo.setAttribute("position",new THREE.Float32BufferAttribute([0,0,0,0,1,0],3));
-    var stem=new THREE.Line(stemGeo,new THREE.LineBasicMaterial({color:lin(hexNum(TOKENS.theme.dark["text-muted"])),transparent:true,opacity:0.5,depthTest:false}));
-    stem.renderOrder=19; stem.visible=false; scene.add(stem);
-    rec.stem=stem;
+    var rec={id:id, f:f, leaf:isLeaf, delay:(hsh%100)/100*0.20, trailOn:false};   /* its counter and name are the map layer's (Stage 2D) */
 
     if(isLeaf){
       var g=makeBlock(f);
@@ -1123,14 +1108,6 @@ function buildFormations(){
       du.scale.set(13,6,1); du.visible=false; du.renderOrder=5;
       scene.add(du); rec.dust=du;
 
-      /* neutral text; the side is a small mark beside the name, since the landscape draws no counters */
-      var lbl=makePlainLabel(f.name.replace("'s Division","").replace("'s Brigade",""),34,
-        TOKENS.sym.label.dark.ink,false,{mark:TOKENS.sym.side[sideOfNation(f.nation)].base});
-      var ltex=ctex(lbl.canvas);
-      var lsp=new THREE.Sprite(new THREE.SpriteMaterial({map:ltex,transparent:true,depthTest:false,fog:false}));
-      lsp.scale.set(3.4*lbl.w/lbl.h,3.4,1); lsp.userData.ar=lbl.w/lbl.h; lsp.renderOrder=18; lsp.visible=false;
-      asText(lsp); scene.add(lsp); rec.nameLabel=lsp;
-
       /* movement trail */
       var tg=new THREE.BufferGeometry();
       tg.setAttribute("position",new THREE.Float32BufferAttribute(new Float32Array(32*3),3));
@@ -1147,28 +1124,11 @@ function buildFormations(){
   });
 }
 
+/* the named places: their anchors, where the map layer puts each marker and name */
 function buildFeatureGlyphs(){
   FEATURES.forEach(function(ft){
     var w=W(ft.p[0],ft.p[1]);
-    var mat=new THREE.SpriteMaterial({transparent:true,depthTest:false,fog:false});
-    var sp=new THREE.Sprite(mat);
-    sp.position.set(w[0],displayHeight(w[0],w[1])+(ft.kind==="height"?6:3.2),w[1]);
-    sp.renderOrder=12;
-    asText(sp); scene.add(sp);
-    featureSprites.push({ft:ft,sprite:sp,world:sp.position.clone(),texKey:""});
-  });
-}
-
-function refreshGlyphTextures(){
-  var paper=(mode==="staff");
-  featureSprites.forEach(function(o){
-    var key=(paper?"p":"t");
-    if(o.texKey===key) return;
-    o.texKey=key;
-    var cv=makeFeatureGlyph(o.ft.name,o.ft.kind,paper);
-    if(o.sprite.material.map) o.sprite.material.map.dispose();
-    var t=ctex(cv);
-    o.sprite.material.map=t; o.sprite.material.needsUpdate=true;
+    placeLabels.push({ft:ft,world:new THREE.Vector3(w[0],displayHeight(w[0],w[1])+(ft.kind==="height"?6:3.2),w[1])});
   });
 }
 
@@ -1185,24 +1145,6 @@ function updateTrail(rec,id){
   rec.trail.geometry.attributes.position.needsUpdate=true;
   rec.trail.geometry.setDrawRange(0,N);
 }
-function refreshSymbol(rec,ph){
-  var f=rec.f;
-  var st=liveStatus(rec.id,ph), cf=aggConf(rec.id,ph);
-  var sel=(selection&&selection.kind==="f"&&selection.id===rec.id);
-  var paper=(mode==="staff");
-  var dim=!!(highlight && !highlight[rec.id]);
-  var kn=knowledgeOf(rec.id);
-  var key=[st,cf,sel?1:0,paper?1:0,dim?1:0,kn].join("|");
-  if(rec.texKey===key) return;
-  rec.texKey=key;
-  var view=Object.create(f);
-  view.strength = f.strength || aggStrength(rec.id);
-  var cv=drawSymbol(view,st,cf,{sel:sel,paper:paper,dim:dim,know:kn});
-  if(rec.sprite.material.map) rec.sprite.material.map.dispose();
-  var t=ctex(cv);
-  rec.sprite.material.map=t; rec.sprite.material.needsUpdate=true;
-}
-
 /* ---------------- overlays ---------------- */
 function hexNum(h){ return parseInt(String(h).replace("#",""),16); }
 function sideCol(sd){ var S=TOKENS.sym.side[sd];
@@ -1210,7 +1152,7 @@ function sideCol(sd){ var S=TOKENS.sym.side[sd];
 var SIDE_COL={ fr:sideCol("fr"), al:sideCol("al") };
 
 var overlayRoot, curOv=null, oldOv=null;
-var overlayMats=[], overlayTextMats=[], overlayLabels=[], oldMats=[];
+var overlayMats=[], oldMats=[];
 var ovFadeIn=1, ovFadeOut=0;
 
 function ovAdd(o){ curOv.add(o); }
@@ -1294,7 +1236,7 @@ function drapedRibbon(mapPts,o,add,mats){
       var hm=drapeMesh(hv,hi,layer[1],layer[2],ly,14+li,mats,"head");
       hm.userData.head=o.head; hm.userData.side=li===1?o.side:null; hm.userData.tip=tip; hm.userData.base=[l,r]; if(nt) hm.userData.notch=nt;
       add(hm);
-      if(li===0&&o.heads) o.heads.push(hv.slice());   /* every draped vertex of the casing's head: labels keep clear of it (2D) */
+      if(li===0&&o.heads) o.heads.push(hm);   /* the casing's head mesh: labels keep clear of it (2D) */
     }
   });
   return out;
@@ -1351,12 +1293,6 @@ function buildBoundary(b){
 }
 function addOverlayLabel(text,pos){          /* annotation text: hue stays on the arrow, not the words */
   ovText.push({text:text,pos:pos.clone(),acl:6});   /* the map layer's label, anchored on the drawn line (2D) */
-  var l=makePlainLabel(text,30,TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation,mode==="staff");
-  var m=new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,opacity:0,depthTest:false,fog:false});
-  var sp=new THREE.Sprite(m);
-  sp.position.copy(pos); sp.position.y+=4.4;
-  sp.scale.set(2.9*l.w/l.h,2.9,1); sp.renderOrder=22;
-  asText(sp); ovAdd(sp); overlayTextMats.push(m); overlayLabels.push(sp);
 }
 function buildObjective(o){
   var w=W(o[0],o[1]);
@@ -1371,20 +1307,15 @@ function buildObjective(o){
   asLabel(sp); ovAdd(sp); overlayMats.push(m);
   ovMarkers.push({pos:sp.position.clone(),r:1.8});   /* the marker's cross reaches 1.72 units: labels keep clear of it (2D) */
   ovText.push({text:o[2],pos:sp.position.clone(),acl:3,r:1.8,obj:true});
-  var l=makePlainLabel(o[2],28,TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation,mode==="staff");
-  var lm=new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,opacity:0,depthTest:false,fog:false});
-  var ls=new THREE.Sprite(lm); ls.position.set(w[0],displayHeight(w[0],w[1])+7.4,w[1]);
-  ls.scale.set(2.7*l.w/l.h,2.7,1); ls.renderOrder=21;
-  asText(ls); ovAdd(ls); overlayTextMats.push(lm); overlayLabels.push(ls);
 }
 function retireOld(){
   if(oldOv){ overlayRoot.remove(oldOv); disposeGroup(oldOv); oldOv=null; oldMats=[]; }
 }
 function rebuildOverlays(ph,instant){
   retireOld();
-  oldOv=curOv; oldMats=overlayMats.concat(overlayTextMats);
+  oldOv=curOv; oldMats=overlayMats;
   curOv=new THREE.Group(); overlayRoot.add(curOv);
-  overlayMats=[]; overlayTextMats=[]; overlayLabels=[]; ovText=[]; ovMarkers=[]; ovHeads=[];
+  overlayMats=[]; ovText=[]; ovMarkers=[]; ovHeads=[];
   var o=OVERLAYS[ph];
   if(o){
     (o.lines||[]).forEach(buildLine);
@@ -1397,10 +1328,8 @@ function rebuildOverlays(ph,instant){
 }
 function applyOverlayOpacity(){
   var base=layerOn.arrows?0.95:0;
-  var tb=(layerOn.arrows&&textOn())?0.95:0;
   var i;
   for(i=0;i<overlayMats.length;i++) overlayMats[i].opacity=base*ovFadeIn*(overlayMats[i].userData.op||1);
-  for(i=0;i<overlayTextMats.length;i++) overlayTextMats[i].opacity=tb*ovFadeIn;
   for(i=0;i<oldMats.length;i++) oldMats[i].opacity=0.9*ovFadeOut*(oldMats[i].userData.op||1);
 }
 
@@ -1749,18 +1678,18 @@ function setPhase(n,instant){
    example modules. Scene renders linear into a half-float target;
    a bright pass and two blur levels make the bloom; a final pass
    tone-maps, grades to the hour, and writes sRGB to the screen.
-   Text sprites live on layer 1 and are drawn afterwards, ungraded,
-   so map labels stay legible.
+   Map symbols live on layer 1 and are drawn afterwards, ungraded, so
+   they stay legible; map text is the DOM map layer's (Stage 2D).
    ============================================================ */
 var lowTier=false;
-var LAYER_WORLD=0, LAYER_LABEL=1, LAYER_TEXT=2;   /* LAYER_TEXT: the Stage 0 text sprites, drawn only with ?labels=canvas (Stage 2D) */
+var LAYER_WORLD=0, LAYER_LABEL=1;
 var FX={on:false, scale:1, rtScene:null, rtA:null, rtB:null, rtC:null, rtD:null, rtFinal:null, matFXAA:null,
         quadScene:null, quadCam:null, quad:null,
         matBright:null, matBlur:null, matComp:null};
 
-/* text and military symbology are drawn after the grade, so they stay legible */
+/* map symbols (event glyphs, objective and plan markers) are drawn after the grade, so they stay legible; counters and all
+   map text are the map layer's, over the canvas (Stage 2D) */
 function asLabel(o){ if(o&&o.layers) o.layers.set(LAYER_LABEL); return o; }
-function asText(o){ if(o&&o.layers) o.layers.set(LAYER_TEXT); return o; }
 function fsQuad(mat){
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute([-1,-1,0, 3,-1,0, -1,3,0],3));
@@ -1973,12 +1902,11 @@ function renderFX(){
   pass(FX.matFXAA,null);
   DEV.post=devMark(); DEV.tPost=performance.now()-t0; t0=performance.now();
 
-  /* 4. labels on top, ungraded, so the map stays readable.
+  /* 4. map symbols on top, ungraded, so the map stays readable.
      r128 forces a clear whenever scene.background is a Color, regardless of
      autoClear (WebGLBackground.render, line 51). With the background left in
      place this pass wiped the composite to sky-blue and drew labels on it. */
   camera.layers.set(LAYER_LABEL);
-  if(ML.canvas) camera.layers.enable(LAYER_TEXT);
   var ac=renderer.autoClear, bg=scene.background;
   renderer.autoClear=false;
   scene.background=null;
@@ -2012,7 +1940,6 @@ function setFXEnabled(on){
 }
 function renderStandard(){
   camera.layers.enableAll();
-  if(!ML.canvas) camera.layers.disable(LAYER_TEXT);
   renderer.setRenderTarget(null);
   renderer.render(scene,camera);
 }
@@ -2052,8 +1979,7 @@ function paintDevStats(now){
     "world pass   "+W.calls+" calls   "+kfmt(W.triangles)+" tris   "+kfmt(W.lines)+" lines   "+W.points+" points",
     "post+labels  "+(T.calls-W.calls)+" calls (labels "+(T.calls-DEV.post.calls)+")",
     "seating  "+se.toFixed(1)+" blocks/s ("+SEAT_STATS.blocks+" since load)",
-    ML.canvas?"labels   "+LABEL_STATS.shown+" shown   "+LABEL_STATS.hidden+" hidden   "+LABEL_STATS.moved+" moved   "+(LABEL_STATS.shrunk||0)+" shrunk   "+LABEL_STATS.unresolved+" unresolved"
-      :"map layer   "+ML.stats.placed+" placed   "+ML.stats.dropped+" dropped   "+ML.stats.leaders+" leaders   "+ML.stats.occluded+" behind the ground   "+ML.stats.nodes+" nodes",
+    "map layer   "+ML.stats.placed+" placed   "+ML.stats.dropped+" dropped   "+ML.stats.leaders+" leaders   "+ML.stats.occluded+" behind the ground   "+ML.stats.nodes+" nodes",
     "camera   "+(c.y-camGround(c.x,c.z)).toFixed(2)+" above ground   clamps "+CAM.clamps+"   bypassed "+CAM.violations,
     "memory   "+mi.geometries+" geometries   "+mi.textures+" textures   "+(renderer.info.programs?renderer.info.programs.length:0)+" programs"
   ].join("\n");
@@ -2121,7 +2047,7 @@ function eventGlyph(side,kind){
 /* The decisive fact of the morning is a negative one: the plateau emptying.
    Empty ground shows nothing, so the plateau is surveyed on the map and the
    holding read off the plotted formations. */
-var plateauRing=null, plateauLabel=null, _plKey="";
+var plateauRing=null;
 function buildPlateauRing(){
   var pts=[], P=PLATEAU_POLY.concat([PLATEAU_POLY[0]]);
   for(var a=0;a<P.length-1;a++) for(var k=0;k<8;k++){
@@ -2135,13 +2061,7 @@ function buildPlateauRing(){
   plateauRing=new THREE.Line(g,new THREE.LineBasicMaterial({color:lin(hexNum(TOKENS.sym.label.dark.annotation)),
     transparent:true,opacity:0,depthTest:false}));
   plateauRing.renderOrder=16;
-  eventGroup.add(plateauRing);
-  var c=W(298,196);   /* label on the northern part of the outline */
-  plateauLabel=new THREE.Sprite(new THREE.SpriteMaterial({transparent:true,opacity:0,
-    depthTest:false,fog:false}));
-  plateauLabel.position.set(c[0],displayHeight(c[0],c[1])+7.0,c[1]);
-  plateauLabel.renderOrder=26;
-  asText(plateauLabel); eventGroup.add(plateauLabel);
+  eventGroup.add(plateauRing);   /* its reading is the map layer's (plateauText), over the northern part of the outline */
 }
 function updatePlateauRing(){
   if(!plateauRing) return;
@@ -2150,21 +2070,6 @@ function updatePlateauRing(){
   var pro=tgt-plateauRing.material.opacity; if(Math.abs(pro)>0.004) settling=true;
   plateauRing.material.opacity += pro*ease(0.06);
   plateauRing.visible=plateauRing.material.opacity>0.01;
-  var al=plateauStrength("al"), fr=plateauStrength("fr");
-  var key=Math.round(al/1000)+"/"+Math.round(fr/1000)+"/"+(mode==="staff"?1:0);
-  if(key!==_plKey){
-    _plKey=key;
-    var txt="THE PRATZEN  \u00b7  Allied \u2248 "+al.toLocaleString()
-          + (fr>500?("   French \u2248 "+fr.toLocaleString()):"");
-    var l=makePlainLabel(txt,30,TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation,mode==="staff");
-    if(plateauLabel.material.map) plateauLabel.material.map.dispose();
-    plateauLabel.material.map=ctex(l.canvas);
-    plateauLabel.material.needsUpdate=true;
-    plateauLabel.scale.set(3.6*l.w/l.h,3.6,1); plateauLabel.userData.ar=l.w/l.h;
-  }
-  plateauLabel.material.opacity=plateauRing.material.opacity*1.7;
-  plateauLabel.visible=plateauRing.visible;
-  if(plateauLabel.visible && window.__fitLabel) window.__fitLabel(plateauLabel,24,1.6);
 }
 var selRing=null;
 function buildSelRing(){
@@ -2200,21 +2105,13 @@ function updateSelRing(){
 function buildEventLayer(){
   eventGroup=new THREE.Group(); scene.add(eventGroup);
   EVENTS.forEach(function(e){
-    var w=W(e.p[0],e.p[1]), gy=displayHeight(w[0],w[1]);
-    var col = TOKENS.sym.label.dark.annotation;          /* the glyph carries the side; the words stay neutral */
+    var w=W(e.p[0],e.p[1]), gy=displayHeight(w[0],w[1]);   /* the glyph carries the side; the words (the map layer's) stay neutral */
     var m=new THREE.SpriteMaterial({map:eventGlyph(e.side,e.kind),transparent:true,
       opacity:0,depthTest:false,fog:false});
     var sp=new THREE.Sprite(m);
     sp.position.set(w[0],gy+4.2,w[1]); sp.scale.set(5.4,5.4,1); sp.renderOrder=23;
     asLabel(sp); eventGroup.add(sp);
-    var l=makePlainLabel(e.n,28,col,false);
-    var lm=new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,opacity:0,
-      depthTest:false,fog:false});
-    var ls=new THREE.Sprite(lm);
-    ls.position.set(w[0],gy+8.4,w[1]);
-    ls.scale.set(3.3*l.w/l.h,3.3,1); ls.userData.ar=l.w/l.h; ls.renderOrder=25;
-    asText(ls); eventGroup.add(ls);
-    eventMarks.push({e:e,sp:sp,ls:ls,m:m,lm:lm,world:sp.position.clone()});
+    eventMarks.push({e:e,sp:sp,m:m,world:sp.position.clone()});
   });
   buildPlateauRing();
   buildSelRing();
@@ -2230,9 +2127,7 @@ function updateEventLayer(){
     var sel=(selection&&selection.kind==="e"&&selection.id===k.e.id);
     var a=sel?1:w;
     k.m.opacity=a*0.95;
-    k.lm.opacity=(a>0.45||sel)?Math.min(1,(a-0.3)/0.5):0;
-    k.sp.visible=a>0.02; k.ls.visible=k.lm.opacity>0.02; k.labelOn=(a>0.45||sel);
-    if(k.ls.visible && window.__fitLabel) window.__fitLabel(k.ls,24,1.5);
+    k.sp.visible=a>0.02; k.labelOn=(a>0.45||sel);   /* the map layer draws the label of a live event */
   }
 }
 function cleanViewHidesEvents(){ return presentation==="map"; }
@@ -2368,8 +2263,6 @@ function familyOf(id){
 function setHighlight(set){
   if(highlight===set) return;
   highlight=set;
-  Object.keys(units).forEach(function(k){ units[k].texKey=""; });
-  Object.keys(aggregates).forEach(function(k){ aggregates[k].texKey=""; });
 }
 function chapterById(cid){
   for(var i=0;i<ANALYSIS.length;i++) if(ANALYSIS[i].id===cid) return ANALYSIS[i];
@@ -2435,8 +2328,6 @@ function paintCommand(){
 function setCommandView(v){
   commandView=v;
   knowKey="";
-  Object.keys(units).forEach(function(k){ units[k].texKey=""; });
-  Object.keys(aggregates).forEach(function(k){ aggregates[k].texKey=""; });
   document.querySelectorAll(".cmd-btn").forEach(function(b){
     b.setAttribute("aria-pressed", b.dataset.cv===v ? "true":"false");
   });
@@ -2492,13 +2383,13 @@ function planRibbon(pts,colour,edge,w0,w1,headW,headL,chevron){
       hv.push(bx2,displayHeight(bx2,bz2)+lift+yAdd,bz2);
       hidx=[0,1,3, 0,3,2];
     }
-    if(scale>1) planHeads.push(hv.slice());   /* the casing's head (with the chevron's fourth point): labels keep clear of it (2D) */
     var hg=new THREE.BufferGeometry();
     hg.setAttribute("position",new THREE.Float32BufferAttribute(hv,3));
     hg.setIndex(hidx); hg.computeVertexNormals();
     var hm=new THREE.Mesh(hg,new THREE.MeshBasicMaterial({color:lin(col).clone().multiplyScalar(0.58),transparent:true,opacity:op*0.78,
       fog:false,depthWrite:false,depthTest:false,side:THREE.DoubleSide}));
     hm.renderOrder=13; planGroup.add(hm);
+    if(scale>1) planHeads.push(hm);   /* the casing's head (with the chevron's fourth point): labels keep clear of it (2D) */
   }
   build(1.34,edge,0.55,-0.06);   /* dark casing so the arrow reads over any ground */
   build(1.00,colour,0.96,0.0);
@@ -2521,8 +2412,7 @@ function planStaging(area,colour,edge){
   var ln=new THREE.LineSegments(g,new THREE.LineBasicMaterial({color:lin(edge),transparent:true,
     opacity:0.65,depthTest:false}));
   ln.renderOrder=12; planGroup.add(ln);
-  planLabel(area.n, new THREE.Vector3(c[0],displayHeight(c[0],c[1])+3.2,c[1]), colour, 26, 0.86,
-    {pos:new THREE.Vector3(c[0],displayHeight(c[0],c[1])+1.2,c[1]),acl:4});
+  planLabel(area.n,{pos:new THREE.Vector3(c[0],displayHeight(c[0],c[1])+1.2,c[1]),acl:4});
 }
 function planObjective(obj,colour){
   var c=W(obj.p[0],obj.p[1]);
@@ -2537,17 +2427,10 @@ function planObjective(obj,colour){
   sp.position.set(c[0],displayHeight(c[0],c[1])+4.0,c[1]);
   sp.scale.set(7.2,7.2,1); sp.renderOrder=24; asLabel(sp); planGroup.add(sp);
   planMarkers.push({pos:sp.position.clone(),r:3.1});   /* the cross reaches 3.06 units */
-  planLabel(obj.n,new THREE.Vector3(c[0],displayHeight(c[0],c[1])+8.6,c[1]),colour,30,1,{pos:sp.position.clone(),acl:3,r:3.1});
+  planLabel(obj.n,{pos:sp.position.clone(),acl:3,r:3.1});
 }
-function planLabel(text,pos,colour,size,op,anchor){   /* annotation text; the ribbon carries the side */
-  if(anchor) planText.push({text:text,pos:anchor.pos,acl:anchor.acl,r:anchor.r||0});   /* the map layer's label (2D) */
-  var l=makePlainLabel(text,size,TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation,mode==="staff");
-  var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:ctex(l.canvas),transparent:true,
-    opacity:op===undefined?1:op,depthTest:false,fog:false}));
-  sp.position.copy(pos);
-  sp.scale.set((size/8.2)*l.w/l.h,(size/8.2),1);
-  sp.renderOrder=26; asText(sp); planGroup.add(sp);
-}
+/* a plan label: annotation text, the map layer's; the ribbon carries the side */
+function planLabel(text,anchor){ planText.push({text:text,pos:anchor.pos,acl:anchor.acl,r:anchor.r||0}); }
 var planLinks=null;
 function buildPlanLinks(){
   var sides = planSide==="both" ? ["al","fr"] : [planSide];
@@ -2604,8 +2487,7 @@ function setPlan(side){
         planRibbon(c.route,col,edge,3.6,6.4,15.0,13.0,chev);
         var mid=c.route[Math.max(0,Math.floor(c.route.length/2)-1)];
         var w=W(mid[0],mid[1]);
-        planLabel(c.n.split(" - ")[0],
-          new THREE.Vector3(w[0],displayHeight(w[0],w[1])+7.0,w[1]),col,34,1,{pos:new THREE.Vector3(w[0],displayHeight(w[0],w[1])+1.9,w[1]),acl:6});
+        planLabel(c.n.split(" - ")[0],{pos:new THREE.Vector3(w[0],displayHeight(w[0],w[1])+1.9,w[1]),acl:6});
       });
       (P.objectives||[]).forEach(function(o){ planObjective(o,col); });
     });
@@ -2718,11 +2600,6 @@ function setMode(m){
   });
   world.mist.visible=!staff && mt>0.012;
 
-  Object.keys(units).forEach(function(id){ units[id].texKey=""; });
-  Object.keys(aggregates).forEach(function(id){ aggregates[id].texKey=""; });
-  featureSprites.forEach(function(o){ o.texKey=""; });
-  refreshAnalysisLabels();
-
   document.body.classList.toggle("mode-staff",staff);
   document.querySelectorAll(".mode-btn").forEach(function(b){
     b.setAttribute("aria-pressed", b.dataset.m===m ? "true":"false");
@@ -2733,162 +2610,19 @@ function setMode(m){
   if(!freeCam) flyTo(staff ? [-27,262,41,-27,0,9] : PHASES[curPhase].cam);
 }
 
+/* the terrain-study labels: their anchors (the map layer draws them) and colours */
 function buildAnalysisLabels(){
-  TERRAIN_LINES.forEach(function(tl){
-    var col=TOKENS.sym.analysis[tl.t];
-    var mat=new THREE.SpriteMaterial({transparent:true,depthTest:false,fog:false});
-    var sp=new THREE.Sprite(mat);
-    sp.position.set(tl._mid[0],tl._mid[1],tl._mid[2]);
-    sp.renderOrder=23; sp.visible=false;
-    asText(sp); world.analysis.add(sp);
-    analysisSprites.push({tl:tl,sprite:sp,col:col,texKey:"",world:sp.position.clone()});
-  });
-  refreshAnalysisLabels();
-}
-function refreshAnalysisLabels(){
-  var paper=(mode==="staff");
-  analysisSprites.forEach(function(o){
-    var key=paper?"p":"t";
-    if(o.texKey===key) return;
-    o.texKey=key;
-    var l=makePlainLabel(o.tl.n,30,paper?o.col.paper:o.col.label,paper);
-    if(o.sprite.material.map) o.sprite.material.map.dispose();
-    o.sprite.material.map=ctex(l.canvas);
-    o.sprite.material.needsUpdate=true;
-    o.sprite.userData.ar=l.w/l.h;
-  });
+  TERRAIN_LINES.forEach(function(tl){ terrainLabels.push({tl:tl,col:TOKENS.sym.analysis[tl.t],world:new THREE.Vector3(tl._mid[0],tl._mid[1],tl._mid[2])}); });
 }
 
-/* ---------------- level of detail and label decluttering ---------------- */
+/* ---------------- level of detail ---------------- */
 var _pv=new THREE.Vector3();
 function pxPerWorld(atPos){
   var hpx=renderer.domElement.clientHeight||window.innerHeight;
   var d=camera.position.distanceTo(atPos);
   return 1/(2*d*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))/hpx);
 }
-function rectOf(sp,pad){
-  _pv.copy(sp.position).project(camera);
-  if(_pv.z>1||_pv.z<-1) return null;
-  var k=pxPerWorld(sp.position);
-  var w=sp.scale.x*k, h=sp.scale.y*k;
-  var cx=(_pv.x*0.5+0.5)*window.innerWidth, cy=(-_pv.y*0.5+0.5)*window.innerHeight;
-  pad=pad||0;
-  if(cx<-w||cy<-h||cx>window.innerWidth+w||cy>window.innerHeight+h) return null;
-  return [cx-w/2-pad, cy-h/2-pad, cx+w/2+pad, cy+h/2+pad];
-}
-function overlaps(a,b){ return !(a[2]<b[0]||b[2]<a[0]||a[3]<b[1]||b[3]<a[1]); }
-/* Label placement, in priority order: counters (the order of battle is never hidden), then the
-   moments of the battle (event labels), the plateau reading, arrow and objective labels, formation
-   names, terrain study, place names. A counter, event label or the plateau reading that collides
-   tries a few nearby places before giving way; a counter that moves keeps its stem on its true
-   position. Rectangles are the inked extent, measured in view depth as the renderer draws them.
-   Before, event labels and the plateau reading were never placed at all and counters only
-   reserved space, so they printed through one another. Stage 0 only: the DOM/SVG layer is Stage 2. */
-var LABEL_STATS={shown:0,hidden:0,moved:0,unresolved:0};
-var _cR=new THREE.Vector3(), _cU=new THREE.Vector3(), _lv=new THREE.Vector3(), _lw=new THREE.Vector3();
 var ECH_RANK={army:0,corps:1,div:2,bde:3};
-function labelRect(sp,pos,dx,dy,pad){
-  _lv.copy(pos).applyMatrix4(camera.matrixWorldInverse);
-  if(_lv.z>-camera.near) return null;
-  _lw.copy(pos).project(camera);
-  if(_lw.z>1||Math.abs(_lw.x)>1.1||Math.abs(_lw.y)>1.1) return null;
-  var H0=renderer.domElement.clientHeight||window.innerHeight, W0=renderer.domElement.clientWidth||window.innerWidth;
-  var ppw=H0/(2*(-_lv.z)*Math.tan(THREE.MathUtils.degToRad(camera.fov/2)));
-  var sx=sp.scale.x*ppw, sy=sp.scale.y*ppw, cx=(_lw.x*0.5+0.5)*W0+dx, cy=(-_lw.y*0.5+0.5)*H0+dy;
-  var im=sp.material&&sp.material.map&&sp.material.map.image, b=(im&&im._ink)||[0,0,1,1];
-  pad=pad||0;
-  return {r:[cx-sx/2+b[0]*sx-pad, cy-sy/2+b[1]*sy-pad, cx-sx/2+b[2]*sx+pad, cy-sy/2+b[3]*sy+pad],
-          ppw:ppw, w:(b[2]-b[0])*sx, h:(b[3]-b[1])*sy};
-}
-/* the interface panels lying over the map: a label wholly under one is not seen, so it neither
-   needs nor takes space */
-var _panelSel=[".rail",".dispatch",".legend",".drawer",".timebar","#tourbar","#firstrun","#selchip","#layerpop"];
-function panelCovers(){
-  var R=[];
-  _panelSel.forEach(function(q){ var e=document.querySelector(q); if(!e||e.hidden) return;
-    var r=e.getBoundingClientRect(); if(r.width<2||r.height<2) return;
-    var cs=getComputedStyle(e); if(cs.display==="none"||cs.visibility==="hidden") return;
-    if(e.classList.contains("rail")&&document.body.classList.contains("rail-hidden")) return;
-    if(e.classList.contains("drawer")&&!e.classList.contains("on")) return;
-    R.push([r.left,r.top,r.right,r.bottom]); });
-  return R;
-}
-function declutter(){
-  var taken=[], st={shown:0,hidden:0,moved:0,unresolved:0,shrunk:0};
-  camera.updateMatrixWorld();
-  _cR.setFromMatrixColumn(camera.matrixWorld,0).normalize();
-  _cU.setFromMatrixColumn(camera.matrixWorld,1).normalize();
-  var covers=panelCovers(), VW=renderer.domElement.clientWidth||window.innerWidth, VH=renderer.domElement.clientHeight||window.innerHeight;
-  function free(r){ for(var i=0;i<taken.length;i++) if(overlaps(r,taken[i])) return false; return true; }
-  function underPanel(r){ for(var i=0;i<covers.length;i++){ var c=covers[i]; if(r[0]>=c[0]&&r[1]>=c[1]&&r[2]<=c[2]&&r[3]<=c[3]) return true; } return false; }
-  function inView(r){ return r[0]>=0&&r[1]>=0&&r[2]<=VW&&r[3]<=VH; }
-  function place(sp,anchor,cands,mustShow,shrink){
-    if(!sp||!sp.visible) return false;
-    var s0x=sp.scale.x, s0y=sp.scale.y, scales=shrink?[1,0.8,0.64]:[1];
-    for(var si=0;si<scales.length;si++){
-      sp.scale.set(s0x*scales[si],s0y*scales[si],1);
-      var base=labelRect(sp,anchor,0,0,2);
-      if(!base){ sp.scale.set(s0x,s0y,1); sp.visible=false; return false; }
-      if(!si&&underPanel(base.r)){ sp.position.copy(anchor); return true; }   /* hidden by a panel: no space taken */
-      for(var i=0;i<cands.length;i++){
-        var dx=cands[i][0]*base.w, dy=cands[i][1]*base.h;
-        var r=i?labelRect(sp,anchor,dx,dy,2):base;
-        if(r&&(!i||inView(r.r))&&free(r.r)){
-          taken.push(r.r);
-          sp.position.copy(anchor).addScaledVector(_cR,dx/base.ppw).addScaledVector(_cU,-dy/base.ppw);
-          st.shown++; if(i) st.moved++; if(si) st.shrunk++;
-          return true;
-        }
-      }
-    }
-    sp.scale.set(s0x,s0y,1);
-    var b0=labelRect(sp,anchor,0,0,2);
-    if(mustShow&&b0){ taken.push(b0.r); sp.position.copy(anchor); st.shown++; st.unresolved++; return true; }
-    sp.visible=false; st.hidden++; return false;
-  }
-  var AROUND=[[0,0],[0,-1.08],[0.62,-0.62],[-0.62,-0.62],[1.1,0],[-1.1,0],[0,1.08],[0.62,0.62],[-0.62,0.62],
-              [0,-2.12],[1.1,-1.08],[-1.1,-1.08],[1.1,1.08],[-1.1,1.08],[0,2.12],[2.2,0],[-2.2,0],[0,-3.15],[1.6,-2.12],[-1.6,-2.12],
-              /* a wider ring, tried only by a counter that found no place above (Stage 0 left it overlapping) */
-              [2.2,-1.08],[-2.2,-1.08],[2.2,1.08],[-2.2,1.08],[1.6,2.12],[-1.6,2.12],[0,3.15],[3.3,0],[-3.3,0],[0,-4.2],
-              /* Stage 2B: a third ring, again only for a counter that found no place above (flatter relief at the 4x default
-                 packs the cavalry reserve's counters at the screen edge) */
-              [3.3,-1.08],[-3.3,-1.08],[3.3,1.08],[-3.3,1.08],[2.2,-2.12],[-2.2,-2.12],[2.2,2.12],[-2.2,2.12],[4.4,0],[-4.4,0],[0,4.2],[1.1,-3.15],[-1.1,-3.15]];
-  var NEAR=[[0,0],[0,-1.15],[0,1.15],[0,-2.3],[0.7,0],[-0.7,0],[0,2.3]];
-  var ONLY=[[0,0]];
-  function isSel(kind,id){ return !!(selection&&selection.kind===kind&&selection.id===id); }
-  /* 1. counters */
-  var cs=[];
-  Object.keys(units).forEach(function(id){ var r=units[id]; if(r.sprite.visible&&r.sprite.userData.anchor) cs.push({rec:r,id:id}); });
-  Object.keys(aggregates).forEach(function(id){ var r=aggregates[id]; if(r.sprite.visible&&r.sprite.userData.anchor) cs.push({rec:r,id:id}); });
-  cs.sort(function(a,b){
-    var sa=isSel("f",a.id)?0:1, sb=isSel("f",b.id)?0:1; if(sa!==sb) return sa-sb;
-    var ea=ECH_RANK[FORMATIONS[a.id].ech], eb=ECH_RANK[FORMATIONS[b.id].ech];
-    if(ea!==eb) return (ea===undefined?2:ea)-(eb===undefined?2:eb);
-    return (aggStrength(b.id)||0)-(aggStrength(a.id)||0);
-  });
-  cs.forEach(function(c){
-    var sp=c.rec.sprite;
-    place(sp,sp.userData.anchor,AROUND,true,true);
-    if(c.rec.stem&&c.rec.stem.visible){
-      var sa=c.rec.stem.geometry.attributes.position.array, h=sp.userData.h||0;
-      sa[3]=sp.position.x; sa[4]=sp.position.y-h*0.54; sa[5]=sp.position.z;
-      c.rec.stem.geometry.attributes.position.needsUpdate=true;
-    }
-  });
-  /* 2. the moments of the battle, the selected one and then the most live first */
-  var evs=(eventMarks||[]).filter(function(k){ return k.ls.visible; });
-  evs.sort(function(a,b){ var sa=isSel("e",a.e.id)?0:1, sb=isSel("e",b.e.id)?0:1; if(sa!==sb) return sa-sb;
-    return evWeight(b.e,clock)-evWeight(a.e,clock); });
-  evs.forEach(function(k){ var u=k.ls.userData; if(!u.anchor) u.anchor=k.ls.position.clone(); place(k.ls,u.anchor,NEAR,false); });
-  /* 3. the plateau reading (the same figure is always on the situation line) */
-  if(plateauLabel&&plateauLabel.visible){ var pu=plateauLabel.userData; if(!pu.anchor) pu.anchor=plateauLabel.position.clone(); place(plateauLabel,pu.anchor,NEAR,false); }
-  /* 4 to 7 */
-  overlayLabels.forEach(function(o){ if(!o.userData.anchor) o.userData.anchor=o.position.clone(); place(o,o.userData.anchor,ONLY,false); });
-  Object.keys(units).forEach(function(id){ var l=units[id].nameLabel; if(l&&l.visible) place(l,l.position.clone(),ONLY,false); });
-  analysisSprites.forEach(function(o){ if(o.sprite.visible) place(o.sprite,o.sprite.position.clone(),ONLY,false); });
-  featureSprites.forEach(function(o){ if(o.sprite.visible) place(o.sprite,o.sprite.position.clone(),ONLY,false); });
-  LABEL_STATS=st;
-}
 
 /* ============================================================
    THE MAP LAYER (Stage 2D; docs/STAGE2_SPEC.md sections E, F and H; owner decisions 24, 29, 38 and 39)
@@ -2910,9 +2644,8 @@ function declutter(){
    - Not drawn, and counted apart: an anchor off screen, under a panel, or behind the drawn ground. Occlusion: the
      segment from the eye to the anchor is marched over the drawn ground (groundY), only where it is low enough to meet
      it (section F.3 measured rays against the mesh at 84-205 ms a pass); what is never dropped is not occluded.
-   ?labels=canvas draws the Stage 0 sprites instead (the parity screenshots; removed with the canvas path).
    ============================================================ */
-var ML={root:null, lines:null, items:{}, frame:0, canvas:/[?&]labels=canvas\b/.test(location.search), hover:null, focus:null,
+var ML={root:null, lines:null, items:{}, frame:0, hover:null, focus:null,
         order:"", maxG:{}, stats:{items:0,placed:0,leaders:0,dropped:0,occluded:0,offscreen:0,underPanel:0,keepMissing:[],dropped_:[],ms:0,nodes:0},
         taken:[], svg:"", legendOpen:true, lgSize:null};
 var ML_FULL_DIST=70;   /* a counter nearer the eye than this (world units; about 4.4 km) is drawn full (section F.1) */
@@ -2926,7 +2659,12 @@ function mlInit(){
   if(!ML.root) return;
   ML.root.innerHTML='<svg class="ml-lines" aria-hidden="true" focusable="false"></svg>';
   ML.lines=ML.root.querySelector(".ml-lines");
-  document.body.classList.toggle("labels-canvas",ML.canvas);
+  /* a web font that arrives after an item was measured changes its size: measure every item again and draw */
+  if(document.fonts&&document.fonts.addEventListener){
+    var remeasure=function(){ for(var k in ML.items) ML.items[k].dirty=true; requestRender(2); };
+    document.fonts.addEventListener("loadingdone",remeasure);
+    if(document.fonts.ready) document.fonts.ready.then(remeasure);
+  }
 }
 function mlItem(key,cls){
   var it=ML.items[key];
@@ -3019,14 +2757,14 @@ function mlCollect(){
   });
   if(planGroup) planText.forEach(function(t){ text(uniq("pl:"+t.text),"plan","mlt-serif",t.text,LB.annotation,t.pos,{pri:6,acl:t.acl,r:t.r}); });
   /* place names: a marker at the place, the name beside it */
-  featureSprites.forEach(function(o){ if(!o.show) return;
+  placeLabels.forEach(function(o){ if(!o.show) return;
     var ft=o.ft, col=ft.kind==="water"?PC.water:ft.kind==="height"?PC.height:ft.kind==="road"?PC.road:PC.other;
     var sel=isSel("t",ft.id), base=MAJOR_FEATURES[ft.id]?8:8.5;
     text("t:"+ft.id,"place","mlt-small",ft.name,col,o.world,{pri:sel?0:base,base:base,keep:sel,mode:"place",mk:[col,PC.fill],
       pick:{kind:"t",id:ft.id},aria:"Place: "+ft.name});
   });
   /* terrain-study labels */
-  if(layerOn.analysis&&labels) analysisSprites.forEach(function(o){
+  if(layerOn.analysis&&labels) terrainLabels.forEach(function(o){
     var sel=isSel("a",o.tl.n);
     text("a:"+o.tl.n,"analysis","mlt-small",o.tl.n,paper?o.col.paper:o.col.label,o.world,{pri:sel?0:9,base:9,keep:sel,
       pick:{kind:"a",id:o.tl.n},aria:"Terrain: "+o.tl.n});
@@ -3068,13 +2806,13 @@ function mlOccluded(A,maxG){
   for(var i=0;i<=n;i++){ var t=t0+(t1-t0)*i/n; if(groundY(E.x+dx*t,E.z+dz*t)>E.y+dy*t+0.005) return true; }
   return false;
 }
-/* screen rectangles of the symbols labels must leave clear: arrow heads (their casing, every draped vertex: on relief the
-   middle of a head stands off the line between its corners), event glyphs, objective and plan markers. World positions are
-   stored when the overlays are built, so this pass only projects them. */
+/* screen rectangles of the symbols labels must leave clear: arrow heads (their casing's mesh, every vertex as drawn now: a
+   change of display factor re-drapes the heads in place, and on relief the middle of a head stands off the line between its
+   corners), event glyphs, objective and plan markers. */
 function mlObstacles(VW,VH){
   var R=[], tanH=Math.tan(THREE.MathUtils.degToRad(camera.fov/2));
-  function tri(T){ var r=[1e9,1e9,-1e9,-1e9];
-    for(var i=0;i<T.length;i+=3){ _mlW.set(T[i],T[i+1],T[i+2]).project(camera); if(!(_mlW.z<1&&_mlW.z>-1)) return;
+  function tri(M){ var r=[1e9,1e9,-1e9,-1e9], A=M.geometry.attributes.position; M.updateWorldMatrix(true,false);   /* its parents too: the pass can run before the render updates them */
+    for(var i=0;i<A.count;i++){ _mlW.fromBufferAttribute(A,i).applyMatrix4(M.matrixWorld).project(camera); if(!(_mlW.z<1&&_mlW.z>-1)) return;
       var x=(_mlW.x*0.5+0.5)*VW, y=(-_mlW.y*0.5+0.5)*VH; if(x<r[0]) r[0]=x; if(y<r[1]) r[1]=y; if(x>r[2]) r[2]=x; if(y>r[3]) r[3]=y; }
     R.push(r); }
   function px(x,y,z){ _mlW.set(x,y,z).project(camera); return _mlW.z<1&&_mlW.z>-1?[(_mlW.x*0.5+0.5)*VW,(-_mlW.y*0.5+0.5)*VH]:null; }
@@ -3118,6 +2856,15 @@ function mlPlaceItem(it,VW,VH,panels,obst){
     for(var a=0;a<n;a++){ var j=(a+1)>>1, th=-Math.PI/2+((a&1)?1:-1)*j*2*Math.PI/n;   /* from straight up, alternately either side */
       var x0=sx+Math.cos(th)*rr-w/2, y0=sy+Math.sin(th)*rr-h/2;
       if(mlFree(x0,y0,w,h,VW,VH,panels,obst)) return mlTake(it,x0,y0,true); } }
+  /* what is never dropped, last: the nearest free place on rows 8 px apart, sliding along each row (a long label between
+     two panels, where no ring position fits the gap) */
+  if(it.keep){   /* the places to try along a row: centred, and flush against each obstacle's sides and the screen's edges */
+    var X=[sx-w/2,ML_PAD+0.01,VW-ML_PAD-w-0.01];
+    [panels,obst,ML.taken].forEach(function(L){ L.forEach(function(q){ X.push(q[2]+ML_PAD+0.01,q[0]-ML_PAD-w-0.01); }); });
+    X.sort(function(p,q){ return Math.abs(p+w/2-sx)-Math.abs(q+w/2-sx); });
+    for(var dy=0;dy<=380;dy+=8) for(var sg=-1;sg<=1;sg+=2){ if(!dy&&sg>0) continue;
+      var yy=sy-h/2+sg*dy;
+      for(var xi=0;xi<X.length;xi++) if(Math.abs(X[xi]+w/2-sx)<=w/2+380&&mlFree(X[xi],yy,w,h,VW,VH,panels,obst)) return mlTake(it,X[xi],yy,true); } }
   return false;
 }
 function mlTake(it,x0,y0,lead){ it.rect=[x0,y0,x0+it.w,y0+it.h]; it.lead=lead; it.state="on"; ML.taken.push(it.rect); return true; }
@@ -3135,7 +2882,7 @@ function mlLayout(){
   var VW=renderer.domElement.clientWidth||window.innerWidth, VH=renderer.domElement.clientHeight||window.innerHeight;
   camera.updateMatrixWorld();
   mlLegendFit(VW,VH);
-  var list=ML.canvas?[]:mlCollect(), panels=mlPanels(), tanH=Math.tan(THREE.MathUtils.degToRad(camera.fov/2));
+  var list=mlCollect(), panels=mlPanels(), tanH=Math.tan(THREE.MathUtils.degToRad(camera.fov/2));
   var st={items:list.length,placed:0,leaders:0,dropped:0,occluded:0,offscreen:0,underPanel:0,keepMissing:[],dropped_:[],ms:0,nodes:0};
   var elig=[], dirty=[];
   list.forEach(function(it){
@@ -3144,6 +2891,8 @@ function mlLayout(){
     _mlW.copy(it.world).project(camera);
     if(depth<=camera.near||Math.abs(_mlW.x)>1||Math.abs(_mlW.y)>1){ it.state="offscreen"; st.offscreen++; return; }
     it.sx=(_mlW.x*0.5+0.5)*VW; it.sy=(-_mlW.y*0.5+0.5)*VH; it.ppw=VH/(2*depth*tanH);
+    /* a place whose 10 px marker cannot be drawn inside the screen is not in view: off screen, not dropped */
+    var me=5+ML_PAD; if(it.mode==="place"&&(it.sx<me||it.sy<me||it.sx>VW-me||it.sy>VH-me)){ it.state="offscreen"; st.offscreen++; return; }
     for(var p=0;p<panels.length;p++){ var q=panels[p]; if(it.sx>=q[0]&&it.sx<=q[2]&&it.sy>=q[1]&&it.sy<=q[3]){ it.state="panel"; st.underPanel++; return; } }
     it.eFrame=ML.frame; it.state=""; elig.push(it);
     if(!it.disp){ it.el.style.display=""; it.disp=true; it.dirty=true; }
@@ -3280,7 +3029,6 @@ function mlNearAnchor(cx,cy){
 }
 /* the pointer over a counter, a name or a formation's position: that formation is shown, full and never dropped */
 function mlHoverAt(cx,cy){
-  if(ML.canvas) return;
   var it=mlHit(cx,cy), id=(it&&it.fid)||pickFormation(cx,cy)||mlNearAnchor(cx,cy);   /* a place or arrow label is no formation: look under it */
   var cur=(it&&it.pick)||id?"pointer":"";
   if(renderer.domElement.style.cursor!==cur) renderer.domElement.style.cursor=cur;
@@ -3403,42 +3151,13 @@ function updateVisibility(){
   var labels = textOn();
   lodEch = wantCorps?"corps":"div";
 
-  var hpx=renderer.domElement.clientHeight||window.innerHeight;
-  var tanH=Math.tan(THREE.MathUtils.degToRad(camera.fov/2));
-  var targetPx = mode==="staff"?104:88;
-
-    /* a text sprite sized to a fixed height on screen, whatever the distance */
-  function fitLabel(sp,px,minH){
-    var d=camera.position.distanceTo(sp.position);
-    var h=Math.max(minH,px*(2*d*tanH/hpx));
-    sp.scale.set(h*(sp.userData.ar||6),h,1);
-  }
-  window.__fitLabel=fitLabel;
-  function placeSprite(rec,mapPos,show){
-    rec.show=!!(mapPos&&show); rec.p=mapPos;          /* what the map layer draws (Stage 2D) */
-    if(!mapPos||!show){ rec.sprite.visible=false; rec.stem.visible=false; return; }
-    var w=W(mapPos[0],mapPos[1]);
-    var gy=displayHeight(w[0],w[1]);
-    var d=camera.position.distanceTo(new THREE.Vector3(w[0],gy,w[1]));
-    var worldPerPx=2*d*tanH/hpx;
-    var h=targetPx*worldPerPx;
-    rec.sprite.scale.set(h*(SYM_W/SYM_H),h,1);
-    rec.sprite.position.set(w[0],gy+2.2+h*0.62,w[1]);
-    rec.sprite.visible=true;
-    var su=rec.sprite.userData; su.rec=rec; su.h=h; su.anchor=(su.anchor||new THREE.Vector3()).copy(rec.sprite.position);
-    var sp=rec.stem.geometry.attributes.position.array;
-    sp[0]=w[0]; sp[1]=gy+0.3; sp[2]=w[1];
-    sp[3]=w[0]; sp[4]=gy+2.2+h*0.08; sp[5]=w[1];
-    rec.stem.geometry.attributes.position.needsUpdate=true;
-    rec.stem.visible=ML.canvas;                        /* the layer draws its own stem */
-  }
+  /* which counter the map layer draws (Stage 2D): its position on the map, or none */
+  function placeSprite(rec,mapPos,show){ rec.show=!!(mapPos&&show); rec.p=mapPos; }
 
   Object.keys(aggregates).forEach(function(id){
     var rec=aggregates[id];
     var p=posOf(id,curPhase);
-    var show = showSym && wantCorps && !!p;
-    placeSprite(rec,p,show);
-    if(show) refreshSymbol(rec,curPhase);
+    placeSprite(rec,p,showSym && wantCorps && !!p);
   });
 
   Object.keys(units).forEach(function(id){
@@ -3458,7 +3177,6 @@ function updateVisibility(){
       ? (showSym && !!p && !f.parent)
       : (showSym && !!p && !isParent && (f.ech!=="bde" || showBde));
     placeSprite(rec,p,show);
-    if(show) refreshSymbol(rec,curPhase);
 
     var trueScale=isTrueScale();
     rec.block.visible = showBlocks && !!p && !trueScale;
@@ -3473,18 +3191,10 @@ function updateVisibility(){
     rec.block.scale.setScalar(1.25*(mode==="hybrid"?0.86:1)*(dimmed?0.80:1));
     if(rec.block.visible){ poseBlock(rec,id,liveStatus(id,curPhase)); settleBlock(rec); }
 
-    if(rec.nameLabel){
-      var nameRange = f.ech==="bde" ? 170 : (f.arm==="art"||f.arm==="hq") ? 220 : 300;
-      var dHere=camera.position.distanceTo(rec.block.position);
-      var wantName = labels && mode==="terrain" && !!p && dHere>34 &&
-                     (dist<nameRange || (selection&&selection.kind==="f"&&selection.id===id));
-      rec.nameLabel.visible=wantName; rec.nameShow=wantName;
-      if(wantName){
-        rec.nameLabel.position.copy(rec.block.position);
-        rec.nameLabel.position.y+=6.4;
-        fitLabel(rec.nameLabel,22,1.4);
-      }
-    }
+    /* the formation's name, in the landscape (the map layer draws it) */
+    var nameRange = f.ech==="bde" ? 170 : (f.arm==="art"||f.arm==="hq") ? 220 : 300;
+    rec.nameShow = labels && mode==="terrain" && !!p && camera.position.distanceTo(rec.block.position)>34 &&
+                   (dist<nameRange || (selection&&selection.kind==="f"&&selection.id===id));
     if(rec.trail){
       rec.trail.visible = layerOn.trails && !!p && !cleanView && !dimmed;
       if(rec.trail.visible) updateTrail(rec,id);
@@ -3524,39 +3234,19 @@ function updateVisibility(){
     }
   });
 
-  featureSprites.forEach(function(o){
+  placeLabels.forEach(function(o){
     var major=MAJOR_FEATURES[o.ft.id] || o.ft.kind==="height" || o.ft.kind==="town";
-    o.sprite.visible = labels && (major || dist<210);
-    o.show=o.sprite.visible;
-    if(!o.sprite.visible) return;
-    var d=camera.position.distanceTo(o.world);
-    var worldPerPx=2*d*tanH/hpx;
-    var h=Math.max(2.2, 35*worldPerPx);       /* 22-unit text in a 72-unit glyph: at least 10.5 px */
-    o.sprite.scale.set(h*(320/72),h,1);
+    o.show = labels && (major || dist<210);
   });
 
   world.contours.visible=layerOn.contours && !cleanView;
   world.marsh.visible=layerOn.contours && !cleanView;
   world.analysis.visible=layerOn.analysis;
-  document.body.classList.toggle("layer-analysis",!!layerOn.analysis);   /* the legend explains its dashes */
-  analysisSprites.forEach(function(o){
-    var show=layerOn.analysis && labels;
-    o.sprite.visible=show;
-    if(!show) return;
-    var d=camera.position.distanceTo(o.world);
-    var worldPerPx=2*d*tanH/hpx;
-    var h=Math.max(2.4, 32*worldPerPx);
-    o.sprite.scale.set(h*(o.sprite.userData.ar||6),h,1);
-  });
   updateScaleBar(); updateRose();
-  for(var i=0;i<overlayLabels.length;i++) overlayLabels[i].visible = labels && layerOn.arrows;
-
-  refreshGlyphTextures();
   applyOverlayOpacity();
   updateEventLayer();
   updateSelRing();
-  updatePlanLinks();
-  if(ML.canvas) declutter();   /* Stage 0's sprite placement; the map layer lays out in the drawn frame (mlLayout) */
+  updatePlanLinks();   /* the map layer lays out in the drawn frame (mlLayout), not here */
 }
 
 /* ---------------- picking ----------------
@@ -3564,7 +3254,6 @@ function updateVisibility(){
    by its footprint (pickFormation); else a corps counter, an event glyph or a place within 34 px of its anchor. */
 var v3=new THREE.Vector3();
 function pickAt(cx,cy){
-  if(ML.canvas) return pickAtSprites(cx,cy);
   var hit=mlHit(cx,cy); if(hit&&hit.pick) return {kind:hit.pick.kind,id:hit.pick.id};
   var fid=pickFormation(cx,cy); if(fid) return {kind:"f",id:fid};
   var best=null, bestD=34;
@@ -3579,52 +3268,10 @@ function pickAt(cx,cy){
   if(!best) for(var ei=0;ei<eventMarks.length;ei++) if(eventGroup.visible&&eventMarks[ei].sp.visible) test(eventMarks[ei].sp.position,"e",eventMarks[ei].e.id);
   return best;
 }
-function pickAtSprites(cx,cy){
-  var best=null, bestD=34;
-  function test(pos,kind,id){
-    if(!pos) return;
-    v3.copy(pos).project(camera);
-    if(v3.z>1) return;
-    var sx=(v3.x*0.5+0.5)*window.innerWidth, sy=(-v3.y*0.5+0.5)*window.innerHeight;
-    var d=Math.hypot(sx-cx,sy-cy);
-    if(d<bestD){ bestD=d; best={kind:kind,id:id}; }
-  }
-  Object.keys(units).forEach(function(id){
-    var u=units[id];
-    if(!u.sprite.visible && !u.block.visible) return;
-    var pp=posNow(id); if(!pp) return;
-    var w=W(pp[0],pp[1]);
-    test(new THREE.Vector3(w[0],displayHeight(w[0],w[1])+3,w[1]),"f",id);
-    if(u.sprite.visible) test(u.sprite.position,"f",id);
-  });
-  Object.keys(aggregates).forEach(function(id){
-    var a=aggregates[id];
-    if(!a.sprite.visible) return;
-    test(a.sprite.position,"f",id);
-  });
-  if(!best){
-    for(var ei=0;ei<eventMarks.length;ei++){
-      if(eventMarks[ei].sp.visible) test(eventMarks[ei].sp.position,"e",eventMarks[ei].e.id);
-    }
-  }
-  if(!best){
-    analysisSprites.forEach(function(o){
-      if(!o.sprite.visible) return;
-      test(o.sprite.position,"a",o.tl.n);
-    });
-    featureSprites.forEach(function(o){
-      if(!o.sprite.visible) return;
-      test(o.sprite.position,"t",o.ft.id);
-    });
-  }
-  return best;
-}
 function select(kind,id){
   var prev=selection;
   if(!prev||prev.kind!==kind||prev.id!==id) dossierExpanded=false;
   selection=(kind&&id)?{kind:kind,id:id}:null;
-  if(prev&&prev.kind==="f"){ var r=units[prev.id]||aggregates[prev.id]; if(r) r.texKey=""; }
-  if(selection&&selection.kind==="f"){ var r2=units[id]||aggregates[id]; if(r2) r2.texKey=""; }
   if(!chapter){
     if(selection&&selection.kind==="f") setHighlight(familyOf(selection.id));
     else setHighlight(null);
@@ -5362,7 +5009,7 @@ var AUSTERLITZ_DEBUG=(function(){
     return {ms:Math.round(performance.now()-t0), ok:out.every(function(c){ return c.ok; }), checks:out};
   }
   function stats(){
-    return {state:DEV.state, world:DEV.world, total:DEV.total, labels:LABEL_STATS, layer:ML.canvas?null:ML.stats,
+    return {state:DEV.state, world:DEV.world, total:DEV.total, layer:ML.stats,
             camera:{clamps:CAM.clamps,violations:CAM.violations}, seating:{blocks:SEAT_STATS.blocks},
             memory:{geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}};
   }

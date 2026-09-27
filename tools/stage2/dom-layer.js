@@ -17,6 +17,10 @@
    count, and today's canvas pass for comparison (the harness's own overlap count and LABEL_STATS).
    node tools/stage2/dom-layer.js <outdir> */
 const fs=require("fs"), path=require("path"), P=require("./page.js");
+/* it measures the Stage 0 canvas path (its sprites), on builds up to Stage 2C (archive/stage2c-68ac7721.html); from Stage 2D
+   the harness (tools/visual/measure.js) measures the map layer */
+async function canvasPath(page){ if(!await page.evaluate(()=>{ var k=Object.keys(units)[0]; return !!(k&&units[k].sprite); })){
+  console.error("this build has no canvas labels (Stage 2D or later): run it on archive/stage2c-68ac7721.html (AUSTERLITZ_HTML)"); process.exit(2); } }
 const out=path.resolve(process.argv[2]||path.join(__dirname,"out","dom")); fs.mkdirSync(out,{recursive:true});
 const PROBE=`window.__dom=function(){
   var old=document.getElementById("s2layer"); if(old) old.remove();
@@ -117,7 +121,7 @@ const PROBE=`window.__dom=function(){
     const key=c.viewport.join("x")+(c.fresh?":"+c.name:"");
     if(key!==vpKey||c.fresh){ if(page) await page.close(); page=await P.open(b,c.viewport,null,
       `(function(){var C=CanvasRenderingContext2D.prototype,ft=C.fillText;C.fillText=function(t){try{(this.canvas.__runs=this.canvas.__runs||[]).push({t:String(t)});}catch(e){} return ft.apply(this,arguments);};})();`);
-      await page.evaluate(PROBE); vpKey=key; }
+      await canvasPath(page); await page.evaluate(PROBE); vpKey=key; }
     if(!c.fresh) await P.applyCase(page,c); else await P.settle(page);
     const before=await page.evaluate(()=>{ const o=__aus.overlaps(); return {visible:o.visible,pairs:o.pairs,stats:Object.assign({},LABEL_STATS)}; });
     /* today's label pass cost: the declutter pass timed (median of 5) */

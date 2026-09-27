@@ -17,6 +17,10 @@
       panels (the harness's panel list), per harness view, at the case's viewport and at 1280 x 720.
    node tools/stage2/map-text.js <outdir>   (writes map-text.json and prints a summary) */
 const fs=require("fs"), path=require("path"), P=require("./page.js");
+/* it measures the Stage 0 canvas path (its sprites), on builds up to Stage 2C (archive/stage2c-68ac7721.html); from Stage 2D
+   the harness (tools/visual/measure.js) measures the map layer */
+async function canvasPath(page){ if(!await page.evaluate(()=>{ var k=Object.keys(units)[0]; return !!(k&&units[k].sprite); })){
+  console.error("this build has no canvas labels (Stage 2D or later): run it on archive/stage2c-68ac7721.html (AUSTERLITZ_HTML)"); process.exit(2); } }
 const out=path.resolve(process.argv[2]||path.join(__dirname,"out","text")); fs.mkdirSync(out,{recursive:true});
 const INIT=`(function(){
   var C=CanvasRenderingContext2D.prototype, ft=C.fillText;
@@ -93,7 +97,7 @@ function floorOf(cat,run){
   let page=null, vpKey="";
   for(const c of cases){
     const key=c.viewport.join("x")+(c.fresh?":"+c.name:"");
-    if(key!==vpKey||c.fresh){ if(page) await page.close(); page=await P.open(b,c.viewport,null,INIT); vpKey=key; }
+    if(key!==vpKey||c.fresh){ if(page) await page.close(); page=await P.open(b,c.viewport,null,INIT); await canvasPath(page); vpKey=key; }
     if(!c.fresh) await P.applyCase(page,c); else await P.settle(page);
     const png=await page.screenshot({timeout:300000});
     const rows=await page.evaluate(MEASURE_TEXT);

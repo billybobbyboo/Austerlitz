@@ -4,7 +4,8 @@
 remedy (c) accepted; the chronology data task that followed it (owner decisions 40-46, §M.7-§M.13) is merged. 2B (display height,
 exaggeration, standards) is implemented as specified in §A, §B, §I.1, §J and §K; what it found is at the end of §K. The
 derived-arrival question of §M.13 is decided (the 2C precondition), and 2C (movement arrows) is implemented as §C.1 ("After
-2C"), §C.3, §D, §J and §K describe; it is merged (#15).** Sections A-L below still describe the build
+2C"), §C.3, §D, §J and §K describe; it is merged (#15). 2D (one DOM/SVG layer for map text, and the contextual legend) is
+implemented as §E, §F, §H, §J and §K describe; what it found is at the end of §K; it awaits review.** Sections A-L below still describe the build
 they were written against, except §C.1, whose tables were re-run on the new tracks (the earlier ones are §C.4). Written against `main` at `7e03692`
 (`austerlitz-command-map.html` 1,107,799 bytes, md5 `5bf48b75373fe0cf9fc8a32cbeae918c`, confirmed before any work;
 `npm run check:baseline` now checks exactly that build). Line numbers refer to that commit.
@@ -66,7 +67,7 @@ conflicts with the evidence or with an earlier decision the conflict is stated, 
 | 36 | (L6) The provisional standard ratio 1.6 is accepted, labelled as proposed in §I.1 (a design rule, not a historical value). | Recorded. |
 | 37 | (L7) No blanket tolerance rule. After §M and its data task, each of the 11 mismatches is resolved on its own against the app's narrative, events and cited sources: a wrong track changes (traceable) and the arrow is derived; an arrow that points at a place or objective becomes interpretive and is flagged; one that cannot be settled stays hand-authored and is listed by name in the binding test. §C lists what each mismatch's endpoints correspond to. | Recorded; §C.1. |
 | 38 | (L8) Compact counter as proposed, plus the status icon without its text. For 2D: counter text, badges and nation tags sit on plates opaque enough to meet AA over any ground, measured, not computed (§E shows today's translucent paper halo fails); on dimmed counters the nation tag is text under decision 13: full opacity, one step down, at AA (Stage 1B's 34% tag does not meet decision 13). | Recorded; §F.1, §J. |
-| 39 | (L9) Accepted with conditions: per view, drops may not exceed the number of labels today's canvas pass hides in that view; never dropped: the selection, the highlighted family and labels of live events; a dropped formation stays reachable by hovering its position and from the keyboard; §H's numbers are the input to Stage 3, where docking the dispatch comes first. | Recorded; §J. Today's hidden counts per view are in §F.3 ("canvas today: hidden"): 12, 14, 10, 10, 9, 9, 7, 21, 5, 11, 10. The probe's drops (4, 6, 19, 0, 0, 5, 1, 0, 14, 1, 0) exceed them in overview-field (19 > 10) and selected-formation (14 > 5): 2D must place better there. |
+| 39 | (L9) Accepted with conditions: per view, drops may not exceed the number of labels today's canvas pass hides in that view; never dropped: the selection, the highlighted family and labels of live events; a dropped formation stays reachable by hovering its position and from the keyboard; §H's numbers are the input to Stage 3, where docking the dispatch comes first. | Recorded; §J. Today's hidden counts per view are in §F.3 ("canvas today: hidden"): 12, 14, 10, 10, 9, 9, 7, 21, 5, 11, 10. The probe's drops (4, 6, 19, 0, 0, 5, 1, 0, 14, 1, 0) exceed them in overview-field (19 > 10) and selected-formation (14 > 5): 2D must place better there. **2D re-measured the hidden counts on the 2C build with the panels at rest** (§K, 2D): 12, 16, 11, 12, 18, 13, 13, 27, 3, 8, 13, and 12 at 1x and 8 at 10.33x. Those are the limits (`thresholds.js`, `DROP_LIMIT`). |
 | 40-46 | The chronology data task: the phase-start rule documented and kept as the default, explicit anchor times with evidence, grade and basis, the three disagreeing texts, the early and creeping moves, the events, the interface during a delayed move. | Recorded in §M.7; what was done in §M.8-§M.12. |
 
 ## A. Height call-site inventory and the display-height design
@@ -817,6 +818,47 @@ Renders: `docs/stage2-evidence/2b-*.jpg`.
 - Dashes come only from `dashRuns`, which only the `axis` arrows and the plan staging outlines use; the static test
   checks this.
 - `computeLineDistances` was removed from the trail.
+
+**2D, as delivered (fact; `CHANGELOG.md`, Stage 2D).** The design of §F.1 and §F.2 was built as written:
+- one DOM layer, `#maplayer`, over the canvas and under the panels, holds every counter and all map text; the symbols
+  (arrows and their heads, event glyphs, objective and plan markers) stay in the scene;
+- one pass per drawn frame, so render on demand is unchanged (self-test);
+- the priority order, the placement (anchor, eight neighbours, rings with a leader), the panels, placed items, heads, glyphs
+  and markers as obstacles, and what is never dropped placed first;
+- compact counters, full ones for the selection, the family, hover, focus and closer than 70 units; every map text on a
+  plate; picking by footprint; keyboard focus in priority order.
+
+The canvas path was removed only after parity screenshots from one build (`2d-parity-*.jpg`). The layer's pass takes
+0.7-2.4 ms (median of five) per harness view (budget 8 ms). Seven things were not as the plan assumed:
+1. **The drop limits, re-measured on the 2C build**, differ from §F.3's in 8 of the 11 views (the limits are the new
+   counts). §F.3's probe read its items after the canvas pass had hidden what it hides, so its "dropped" is not the same
+   count; the layer's drops are counted over the whole level-of-detail set, as the canvas pass's hidden count is.
+2. **The Stage 0 harness measured some views with the panels frozen mid-slide.** Headless Chromium does not advance a CSS
+   transition while the page draws nothing, and render on demand draws nothing once a view is settled. The harness now turns
+   CSS transitions off, as `check:contrast` did; the baselines were re-measured that way. Only one value moved:
+   selected-formation at 1280 x 720 is 6.97% free at rest, not 15.1%.
+3. **The Stage 1B legend lay over the dispatch** in selected-formation (51,124 px² at 1600 x 900). The 2D legend never does:
+   where it would, it stays closed.
+4. **§E's contrast method needs two refinements for DOM text** (`measure.js`, `textContrast`): only pixels wholly inside a
+   text's box, and the ink's 1 px anti-aliased fringe left out of the surround. Without them the 10th percentile falls on
+   the fringe (3.8-4.0:1 for text measured 6.49:1 at the median on its opaque plate).
+6. **selected-formation's limit is 3, not 5.** With the dossier at rest the 2C canvas pass hides 3 there; 5 was counted
+   with the dossier frozen mid-slide (item 2). The limit is the at-rest count. There the layer drops two place names
+   (Vinohrady, Pratzeberg), which have no room beside their markers. Two more (Litava, Křenovice) have their marker's
+   anchor within 7 px of the top edge, where the 10 px marker cannot be drawn. The layer counts a place whose marker
+   does not fit on the screen as off screen, not dropped. That is a definition, and it is stated here.
+7. **The guided tour drew its stops without their arrows** (on 2C too; since the first build). `flyTo` replaced the
+   phase change's transition, so the overlay fade stopped at 0 and the previous phase's arrows stayed drawn. A glide now
+   runs on top of a transition that is already running (`glide`). Found by the self-test's tour state.
+5. **Occlusion by marching the segment over `groundY`** (§F.3's recommendation) agrees with §F.3's rays on every anchor
+   measured, at about a thousandth of the cost; at the 4x default no harness anchor is behind the ground.
+
+Open for the owner: at the orbit minimum (pratzen-orbit-min) three arrow heads fill most of the view, and labels keep
+clear of each head's bounding box, so the layer draws no map text there (18 dropped, within the limit of 27). Testing
+against the heads' triangles would place labels, but would weaken the self-test's box test.
+
+§F.2's "collapsed to a Key button by default in Watch" was not adopted: a Key button would be a new panel in the Watch
+views, whose unobstructed fraction §J forbids to fall.
 
 ## L. The owner's answers (decisions 31-39)
 
