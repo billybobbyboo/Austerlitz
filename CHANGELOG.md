@@ -1,5 +1,78 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Stage 2C precondition: derived arrivals at a tactical rate (docs/STAGE2_SPEC.md §M.13, decided: "(b) where it fits, otherwise (c), flagged")
+
+**Status: a model change, committed on its own before the arrow work of 2C. `austerlitz-command-map.html` after this commit:
+1,153,477 bytes, md5 `f6324c9081cd2e36e550b69ad6a0e6ee`** (was 1,149,340, md5 `0c485151…`, the Stage 2B build). `check:baseline`
+and `check:data`'s reference move with 2C (entry above), not here.
+
+**What was, what is, why.**
+- **Was:** a derived arrival, i.e. a dated departure with no dated arrival, was taken at the arm's march-rate ceiling
+  (`SPEED_CEIL`). That turned an upper bound into a pace, 93-99% of the ceiling (§M.13).
+- **Is:** `anchorList` (`app.js`; guarded) takes such an arrival at a **tactical rate** when the formation is in battle order during
+  the leg: infantry and Guard 3.0 km/h, cavalry 6.0, mixed 4.0 (`TACTICAL_RATE`).
+  - Battle order means its status at the anchor's phase is attacking, advancing, counterattack, engaged, charging, holding,
+    supporting, withdrawing or repulsed (`BATTLE_ORDER`).
+  - Artillery and headquarters have no tactical rate; their ceilings are unchanged.
+  - The tactical rate is used only where the leg still fits before its next anchor: no later than the latest arrival that
+    keeps the next leg within its ceiling, and no later than the next leg's dated departure or the formation's departure from
+    the field.
+  - Otherwise the arrival stays at the ceiling and is **flagged** (`arrFlag`). The flagged legs are named in
+    `tools/stage2/chronology.js` (`CEILING_FLAGGED`), and `check:chronology` now fails on any other derived arrival at the
+    ceiling, or on a named one that leaves it.
+- **Why:** the owner's decision on §M.13. 2C derives arrows from these tracks (decision 33), and a 15-minute wheel was an
+  artefact of the rule, not of any statement.
+- **The rates are design values, unsourced.** They are labelled so:
+  - in the code (`TACTICAL_RATE`);
+  - in the dossier's timing row ("arrival derived: tactical rate, a design value", or "the march-rate ceiling; flagged: …");
+  - on the sources sheet, in a new section "Arrivals the map derives" that lists every derived arrival with its rule.
+  They are not historical rates and are never presented as such.
+
+**Outcome, leg by leg** (`node tools/stage2/derived-legs.js`; it reproduces the §M.13 simulation exactly):
+
+| leg | was | is | rule |
+|---|---|---|---|
+| vandamme@7, the wheel | 13:00-13:15 (4.76 km/h) | 13:00-13:24 (2.97 km/h) | tactical |
+| rivaud@3, follows Soult | 08:45-09:09 (4.92 km/h) | 08:45-09:25 (2.96 km/h) | tactical |
+| bag@6, falls back | 11:15-11:25 (4.68 km/h) | 11:15-11:31 (2.93 km/h) | tactical |
+| sthilaire@3, the climb | 08:45-09:15 | unchanged | ceiling, flagged: the tactical rate (09:35) does not fit before `sthilaire@4` (latest 09:22) |
+| vandamme@3, the climb | 08:45-09:14 | unchanged | ceiling, flagged: the tactical rate (09:33) does not fit before `vandamme@4` (latest 09:20) |
+| bag@8, withdraws on Rausnitz | 16:30-16:45 | unchanged | ceiling, flagged: its status is *retreating*, not a battle-order status, so the rate does not apply; it would not fit either (16:54 against the latest 16:48) |
+| gqg@6, Napoleon forward | 12:00-12:40 | unchanged | its `moveMin` (headquarters) |
+
+The next legs start later with them: `vandamme@8` 13:24-14:30 (was 13:15), `rivaud@6` 09:25-11:15 (was 09:09), `bag@7`
+11:31-12:45 (was 11:25).
+
+**Still open, not touched:**
+- The two climbs (`sthilaire@3`, `vandamme@3`) and Bagration's withdrawal (`bag@8`) are a dating question: the climbs are tied
+  to the unresolved Kamensky passage (Duffy 1977; Thiebault's memoirs), the withdrawal to nightfall. They wait on the sources.
+- The dated legs forced near the ceiling, `c_gren@8` and `kollo@5`.
+- The four unresolved conflicts: `dok@1`, `guard_cav@6`, `kamensky@3`, `kamensky@4`.
+
+**Every value that moves, re-derived** (`tools/stage2/chronology-sim.js`, the suites, the harness):
+- Unchanged:
+  - centre separation, first reported 09:03;
+  - the plateau series, 04:00 38,700 / 0 to 16:00 0 / 18,500;
+  - tour stop 4, 38,700 and 19,300;
+  - the Command view's knowledge counts at every phase midpoint, both sides;
+  - event agreement: 0 disagreements, worst 0.82 km (telnitz); `pratzen-village` 1.21 km;
+  - the march-rate audit: 0 legs over a ceiling; the fastest leg per arm is also unchanged (inf 4.97 km/h, the flagged climbs);
+  - the chronology audit: 65 consistent, 4 early (the named conflicts), 0 late.
+- Positions: only Vandamme moves (13:01-14:29, up to 446 m), Rivaud (08:46-11:14, up to 729 m) and Bagration (11:16-12:44, up
+  to 291 m).
+- At the harness clocks only Rivaud moves: 158 m at 09:30, 135 m at 09:45, 128 m at 09:50 and 113 m at 10:00. The harness still
+  passes, with 0 overlaps in all 13 cases.
+- `redteam.js` mean march rates: infantry **1.28 → 1.23** km/h, cavalry 0.82 km/h. Its warning (the cavalry mean is not above
+  the infantry's) **still fires**. It is kept as a warning, not silenced.
+
+**Checks on this commit's build**
+- `npm test`: all 8 suites and the height guard passed.
+- `npm run check:chronology`: 0 errors. The derived arrivals are as tabled, and only the named conflicts are early.
+- `npm run check:visual`: STAGE0 all checks passed; the self-test passed 35 of 35.
+- `npm run check:contrast`: 3,157 text elements, 0 below AA, 0 below 10.5 px.
+- `npm run check:data`: as intended, `anchorList` changed and `TACTICAL_RATE,BATTLE_ORDER` were added (both now in the
+  guarded model list); the other 111 data declarations are identical.
+
 ## 2026-09 · Stage 2B: display height, exaggeration, standards (docs/STAGE2_SPEC.md §A, §B, §I.1, §J, §K; decisions 19, 26, 32, 34, 35, 36)
 
 **Status: done; awaits the owner's review. 2C has not started. `austerlitz-command-map.html`: 1,149,340 bytes, md5

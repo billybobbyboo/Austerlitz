@@ -22,10 +22,11 @@ function appDecls(names){
 function load(extra){
   const ctx={console}; vm.createContext(ctx);
   const code=[THREE_STUB, read("geo.js"), read("tokens.js"), read("data.js"), read("analysis.js"), read("world.js"),
-    appDecls(["OVERLAYS","KM_PER_MAP","SPEED_CEIL","clamp01","phaseAt","anchorList","legPath","pointOnPath","legWindow","legAt","posAtClock","notYetAt","goneAt",
+    appDecls(["OVERLAYS","T_MIN","KM_PER_MAP","SPEED_CEIL","TACTICAL_RATE","clamp01","phaseAt","anchorList","legPath","pointOnPath","legWindow","legAt","posAtClock","notYetAt","goneAt",
               "leavesOf"].concat(extra||[])),
     "this.X={GEOREF,FORMATIONS,PHASES,OVERLAYS,EVENTS,W,height,hAt,localHeight,anchorList,legPath,pointOnPath,legWindow,legAt,posAtClock,notYetAt,goneAt,leavesOf,"+
-    "SATS,MENI,PBERG,SANTON,ZURAN,VINO,PRAT,GOLDBACH,LITAVA,TERRAIN_LINES,VILLAGES,ANALYSIS,TOUR,ACTS,FEATURES,COMMAND,PLANS,SOURCE_NOTE,KNOW_OVERRIDE};"].join("\n;\n");
+    "SATS,MENI,PBERG,SANTON,ZURAN,VINO,PRAT,GOLDBACH,LITAVA,TERRAIN_LINES,VILLAGES,ANALYSIS,TOUR,ACTS,FEATURES,COMMAND,PLANS,SOURCE_NOTE,KNOW_OVERRIDE};"+
+    (extra||[]).map(n=>"this.X["+JSON.stringify(n)+"]="+n+";").join("")].join("\n;\n");
   vm.runInContext(code,ctx,{filename:"model"});
   return ctx.X;
 }

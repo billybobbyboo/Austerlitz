@@ -17,7 +17,7 @@ const DATA={
     "G_NX,G_NZ,G_X0,G_Z0,G_DX,G_DZ","gridH,gridCurv","buildGrid","gridAt","CONTOUR_INTERVAL,CONTOUR_INDEX"],
   "movement, strength and confidence model":["stateAt","leavesOf","posOf","aggStrength","aggStatus","trackedDescendants","activeAt","ownStrengthAt",
     "sideOnFieldAt","GRADE_RANK","worseGrade","confAt","liveConf","aggConf","aggInterp","T_MIN,T_MAX","KM_PER_MAP","phaseAt","anchorList",
-    "legPath","pointOnPath","legWindow","legAt","posAtClock","notYetAt","goneAt","headingAt","marchRate","posNow","SPEED_CEIL","wetAt",
+    "legPath","pointOnPath","legWindow","legAt","posAtClock","notYetAt","goneAt","headingAt","marchRate","posNow","SPEED_CEIL","TACTICAL_RATE,BATTLE_ORDER","wetAt",
     "nearSettlement","crossingProblem","auditMovement"],
   "derived readings, sight and knowledge":["evWindow","evWeight","liveEvents","actOf","PLATEAU_POLY","onPlateau","plateauStrength","PBERG_NORTHING",
     "SEP_KM","sideCentroid","centreSeparation","EYE_OBSERVER_M,EYE_TARGET_M,LOS_CLEAR_M","hasLOS","knowledgeOf","familyOf","sampleVS","computeViewshed"]

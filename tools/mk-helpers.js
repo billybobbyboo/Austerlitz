@@ -33,7 +33,7 @@ function extract(name){
 }
 const HELPERS={
   '_clock.js':['TRANS_MS','T_MIN','clock','playing','KM_PER_MAP','easeInOut','clamp01','clampT','phaseAt','fmtClock','anchorList','legPath',
-               'pointOnPath','legWindow','legAt','posAtClock','notYetAt','goneAt','headingAt','marchRate','posNow','SPEED_CEIL','wetAt',
+               'pointOnPath','legWindow','legAt','posAtClock','notYetAt','goneAt','headingAt','marchRate','posNow','SPEED_CEIL','TACTICAL_RATE','wetAt',
                'nearSettlement','crossingProblem','auditMovement'],
   '_derived.js':['trackedDescendants','activeAt','ownStrengthAt','sideOnFieldAt','PLATEAU_POLY','onPlateau','plateauStrength',
                  'PBERG_NORTHING','SEP_KM','sideCentroid','centreSeparation'],

@@ -5269,6 +5269,14 @@ function fmtClock(t){
    after the phase start and no arrival, the anchor is reached after moveMin, or once the leg has been marched at its
    arm's ceiling (SPEED_CEIL), whichever is later, rounded up to the minute: the least delay the dated departure and
    the ceiling allow (the arrival is then derived, a.arrDerived). Anchors without tm behave exactly as before.
+   THE TACTICAL RATE (owner, 2C precondition; docs/STAGE2_SPEC.md section M.13, "(b) where it fits, otherwise (c),
+   flagged"). A derived arrival (dated departure, no dated arrival) of a formation in battle order during the leg
+   (BATTLE_ORDER: its status at the anchor's phase) is instead the one its arm's TACTICAL_RATE gives, rounded up to the
+   minute, provided the leg then still fits before its next anchor: it arrives no later than the latest arrival that
+   leaves the next leg within the ceiling (and no later than the next leg's dated departure, or the phase the formation
+   leaves the field). Otherwise the arrival stays at the ceiling and is flagged (a.arrFlag says why). The rates are
+   DESIGN VALUES, unsourced, never history. a.arrRule is "tactical", "ceiling" or "moveMin" (the leg's own moveMin
+   governs). Arrivals are resolved from the last anchor back, because a tactical arrival depends on the next anchor's.
    auditMovement() validates every explicit time: departure before arrival, no overlap with the neighbouring legs,
    inside the day. The leg into anchor b runs over b.w = [departure, arrival]; b.arr is its arrival. */
 function anchorList(id){
@@ -5280,18 +5288,35 @@ function anchorList(id){
     var e=f.track[ph];
     if("p" in e) out.push({ph:ph,p:e.p,via:e.via||null,moveMin:e.moveMin||null,ice:!!e.ice,tm:e.tm||null});
   });
-  out.forEach(function(b,i){
-    var t0=PHASES[b.ph].t0, a=out[i-1];
-    b.arr=t0; b.w=null; b.arrDerived=false;
-    if(!a||a.p===null||b.p===null) return;
-    var tm=b.tm||{}, dep=tm.dep==null?null:(Array.isArray(tm.dep)?tm.dep[0]:tm.dep),
-        at=tm.at==null?null:(Array.isArray(tm.at)?tm.at[1]:tm.at);
+  function depOf(b){ var tm=b.tm||{}; return tm.dep==null?null:(Array.isArray(tm.dep)?tm.dep[0]:tm.dep); }
+  function statusAt(ph){ var st=null; for(var k=0;k<=ph;k++) if(f.track[k]&&f.track[k].st) st=f.track[k].st; return st; }
+  var ceil=SPEED_CEIL[f.arm]||5.0;
+  for(var i=out.length-1;i>=0;i--){
+    var b=out[i], a=out[i-1], c=out[i+1], t0=PHASES[b.ph].t0;
+    b.arr=t0; b.w=null; b.arrDerived=false; b.arrRule=null; b.arrFlag=null;
+    if(!a||a.p===null||b.p===null) continue;
+    var tm=b.tm||{}, dep=depOf(b), at=tm.at==null?null:(Array.isArray(tm.at)?tm.at[1]:tm.at);
     if(at!==null) b.arr=at;
     else if(dep!==null && dep>=t0){
-      var mins=legPath(a,b).len*KM_PER_MAP/(SPEED_CEIL[f.arm]||5.0)*60;
-      b.arr=Math.ceil(dep+Math.max(b.moveMin||0,mins)-1e-9); b.arrDerived=true;
+      var km=legPath(a,b).len*KM_PER_MAP, mm=b.moveMin||0, rate=TACTICAL_RATE[f.arm]||null;
+      b.arr=Math.ceil(dep+Math.max(mm,km/ceil*60)-1e-9); b.arrDerived=true;
+      b.arrRule=mm>=km/ceil*60?"moveMin":"ceiling";
+      if(rate && b.arrRule==="ceiling"){
+        if(!BATTLE_ORDER[statusAt(b.ph)]) b.arrFlag="not in battle order";
+        else {
+          var tac=Math.ceil(dep+Math.max(mm,km/rate*60)-1e-9), latest=T_MAX;
+          if(c && c.p===null) latest=PHASES[c.ph].t0;
+          else if(c){ latest=c.arr-legPath(b,c).len*KM_PER_MAP/ceil*60; if(depOf(c)!==null) latest=Math.min(latest,depOf(c)); }
+          if(tac<=latest){ b.arr=tac; b.arrRule="tactical"; }
+          else b.arrFlag="the tactical rate does not fit before the next anchor";
+        }
+      }
     }
-    var d=dep;
+  }
+  out.forEach(function(b,i){
+    var a=out[i-1];
+    if(!a||a.p===null||b.p===null) return;
+    var d=depOf(b);
     if(d===null){ d=a.arr; if(b.moveMin && b.moveMin<(b.arr-d)) d=b.arr-b.moveMin; }   /* holds, then marches */
     b.w=[d,b.arr];
   });
@@ -5389,6 +5414,12 @@ function posNow(id){
 
 /* ---- plausibility audit: run at load, reported to the console ---- */
 var SPEED_CEIL={inf:5.0, guard:5.0, art:4.5, cav:12.0, mixed:8.0, hq:12.0};
+/* The tactical rate for a derived arrival of a formation in battle order (anchorList; docs/STAGE2_SPEC.md section M.13).
+   DESIGN VALUES, UNSOURCED: chosen so that a formed body moving under fire is not given the march-rate ceiling as its
+   pace; they are not historical rates and are never presented as such. Artillery and headquarters have none (their
+   ceilings apply unchanged). BATTLE_ORDER: the statuses in which a formation counts as deployed in battle order. */
+var TACTICAL_RATE={inf:3.0, guard:3.0, cav:6.0, mixed:4.0},
+    BATTLE_ORDER={attacking:1, advancing:1, counterattack:1, engaged:1, charging:1, holding:1, supporting:1, withdrawing:1, repulsed:1};
 /* The Goldbach itself was a trickle. What stopped guns and formed cavalry
    was the marshy bottom it ran through, and the meres in the south. */
 function wetAt(mx,my){
@@ -7773,7 +7804,7 @@ function dossierFormation(id){
   if(tmg){
     var tw=tmg.w, tt=tmg.tm;
     whr+=row("Timing", (tw[0]<clock&&tw[1]<=clock?"Reached ":"Moves ")+esc(fmtClock(tw[0]))+"&ndash;"+esc(fmtClock(tw[1]))+
-      (tmg.arrDerived?' <span class="hh">(arrival derived: '+(tmg.moveMin?"its "+tmg.moveMin+"-minute march":"the march-rate ceiling")+')</span>':'')+
+      (tmg.arrDerived?' <span class="hh">(arrival derived: '+esc(arrivalRuleText(tmg))+')</span>':'')+
       " &middot; grade "+esc(tt.gr)+" &middot; "+esc(tt.basis));
     whr+=row("Dated by", tt.ev.map(function(q){ return "&ldquo;"+esc(q)+"&rdquo;"; }).join("; ")+'<br><span class="hh">'+esc(tt.note)+'</span>');
   }
@@ -8064,6 +8095,19 @@ function updateScaleBar(){
 }
 
 /* numbers in prose that depend on the map's scale are filled in from GEO, never typed */
+/* how a derived arrival was reached (anchorList): the tactical rate is a design value, never history */
+function arrivalRuleText(b){
+  if(b.arrRule==="moveMin") return "its "+b.moveMin+"-minute march";
+  if(b.arrRule==="tactical") return "tactical rate, a design value";
+  return "the march-rate ceiling"+(b.arrFlag?"; flagged: "+b.arrFlag:"");
+}
+/* every derived arrival in the model, with its rule (the sources sheet lists them) */
+function derivedArrivals(){
+  var out=[];
+  Object.keys(FORMATIONS).forEach(function(id){ if(!FORMATIONS[id].track) return;
+    anchorList(id).forEach(function(b){ if(b.arrDerived) out.push({id:id,ph:b.ph,b:b}); }); });
+  return out;
+}
 function geoText(p){
   /* {EXAG} is the DISPLAY factor relative to true scale (decision 35), never GEOREF.EXAG, the model's own scale */
   return String(p).replace(/\{EXAG\}/g,fmtFactor(DISPLAY.factor)).replace(/\{M_PER_UNIT\}/g,(GEOREF.KM_PER_MAP*1000).toFixed(0))
@@ -8087,7 +8131,14 @@ function openSources(){
       :"The relief is drawn "+fmtFactor(DISPLAY.factor)+" times its true height; 1\u00d7 is true scale. The setting is a view, not the model: heights in metres, sightlines and the going classes do not change with it.")+'</li>'+
     '<li>'+esc("Symbols stand on the ground at two named scales: figures and standards about 45\u201370 times life size, buildings and trees about 10\u201315 times.")+'</li>'+
     '<li>'+esc("The standards' pole-to-figure ratio (1.6) is provisional: a design rule chosen so that the colour clears the ranks, not a sourced ratio, to be replaced in Stage 6.")+'</li>'+
-    '<li>'+esc("The going layer's slope classes (hard for guns over "+GOING_TRUE_DEG[0].toFixed(2)+"\u00b0, severe over "+GOING_TRUE_DEG[1].toFixed(2)+"\u00b0 of true slope) are unsourced design values, provisional until a data task sources or renames them.")+'</li></ul>';
+    '<li>'+esc("The going layer's slope classes (hard for guns over "+GOING_TRUE_DEG[0].toFixed(2)+"\u00b0, severe over "+GOING_TRUE_DEG[1].toFixed(2)+"\u00b0 of true slope) are unsourced design values, provisional until a data task sources or renames them.")+'</li></ul>'+
+    /* the tactical rate (2C precondition, docs/STAGE2_SPEC.md section M.13): design values, stated as such */
+    '<h3>Arrivals the map derives</h3><ul class="bul">'+
+    '<li>'+esc("Where a move's start is dated and its arrival is not, the map derives the arrival. A formation in battle order moves at a tactical rate: infantry and Guard "+
+      TACTICAL_RATE.inf.toFixed(1)+" km/h, cavalry "+TACTICAL_RATE.cav.toFixed(1)+", mixed "+TACTICAL_RATE.mixed.toFixed(1)+
+      ". These rates are design values, not sourced, and are not historical rates. They are used only where the move still fits before the formation's next position; otherwise the move keeps the march-rate ceiling and is flagged.")+'</li>'+
+    derivedArrivals().map(function(r){ var f=FORMATIONS[r.id];
+      return '<li>'+esc(f.name+" ("+fmtClock(r.b.w[0])+"\u2013"+fmtClock(r.b.w[1])+"): "+arrivalRuleText(r.b)+".")+'</li>'; }).join('')+'</ul>';
   m.dataset.sources="1";
   m.classList.add("on");
 }
