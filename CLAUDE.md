@@ -98,5 +98,5 @@ the going classes from the model slope) is merged. Stage 2C (the §M.13 precondi
 rate where they fit, else the ceiling, flagged; then the movement arrows: derived from the executed leg or marked interpretive,
 draped, the Allied chevron, solid boundaries, the halt bar, `binding-test.js`) is merged (#15). Stage 2D (one DOM/SVG
 layer, `#maplayer`, for counters and all map text, replacing the canvas sprite pass; compact counters on plates; the
-contextual legend) is done and awaits review; 2E-2F have not started. The shadow toe
+contextual legend) is merged (#17); 2E-2F have not started. The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.

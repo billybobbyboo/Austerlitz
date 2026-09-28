@@ -5,7 +5,7 @@ remedy (c) accepted; the chronology data task that followed it (owner decisions 
 exaggeration, standards) is implemented as specified in §A, §B, §I.1, §J and §K; what it found is at the end of §K. The
 derived-arrival question of §M.13 is decided (the 2C precondition), and 2C (movement arrows) is implemented as §C.1 ("After
 2C"), §C.3, §D, §J and §K describe; it is merged (#15). 2D (one DOM/SVG layer for map text, and the contextual legend) is
-implemented as §E, §F, §H, §J and §K describe; what it found is at the end of §K; it awaits review.** Sections A-L below still describe the build
+implemented as §E, §F, §H, §J and §K describe; what it found is at the end of §K; it is merged (#17).** Sections A-L below still describe the build
 they were written against, except §C.1, whose tables were re-run on the new tracks (the earlier ones are §C.4). Written against `main` at `7e03692`
 (`austerlitz-command-map.html` 1,107,799 bytes, md5 `5bf48b75373fe0cf9fc8a32cbeae918c`, confirmed before any work;
 `npm run check:baseline` now checks exactly that build). Line numbers refer to that commit.

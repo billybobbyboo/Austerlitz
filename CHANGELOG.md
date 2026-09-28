@@ -2,7 +2,7 @@
 
 ## 2026-09 · Stage 2D: one DOM/SVG layer for map text, and the contextual legend (docs/STAGE2_SPEC.md §E, §F, §H, §J, §K; decisions 24, 29, 38, 39)
 
-**Status: done; awaits the owner's review. 2E has not started. `austerlitz-command-map.html`: 1,189,512 bytes, md5
+**Status: done; merged (#17). 2E has not started. `austerlitz-command-map.html`: 1,189,512 bytes, md5
 `2dc0c26d969ec037cb838929d259320f`** (was 1,166,868 bytes, md5 `68ac7721…`, Stage 2C).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move.
