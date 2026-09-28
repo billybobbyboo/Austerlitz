@@ -79,8 +79,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   at figure or landscape scale drawn, its symbology drawn, and the entered views framed inside the unobstructed area; the
   self-test's paper-map checks (flat ground, its own hillshade, the controls, identical at every relief setting).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 2D build (md5 `2dc0c26d...`, 1,189,512 bytes;
-  re-baselined from the Stage 2C build `68ac7721...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 2E build (md5 `c5883f79...`, 1,226,091 bytes;
+  re-baselined from the Stage 2D build `2dc0c26d...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
