@@ -36,5 +36,16 @@ module.exports = [
   { name:"pratzen-low-1x", viewport:[1600,900], t:590, presentation:"watch", mode:"terrain", factor:1,
     aim:{map:[285,289], dir:[-1.0,0.13,0.18], r:70}, note:"The low Pratzen view at true scale: formations drawn as footprints." },
   { name:"pratzen-low-10x", viewport:[1600,900], t:590, presentation:"watch", mode:"terrain", factor:"model",
-    aim:{map:[285,289], dir:[-1.0,0.13,0.18], r:70}, note:"The low Pratzen view at the model's own vertical scale (GEOREF.EXAG, the drawing before 2B)." }
+    aim:{map:[285,289], dir:[-1.0,0.13,0.18], r:70}, note:"The low Pratzen view at the model's own vertical scale (GEOREF.EXAG, the drawing before 2B)." },
+  /* Stage 2E (docs/STAGE2_SPEC.md sections G.2 and J): the true north-up paper map. paper:"frame" frames the whole modelled
+     ground in the part of the screen no panel covers, as entering the paper map does; an aim centres its point there at the
+     zoom its distance gives the landscape eye. cam is what a build before 2E uses instead (its tilted staff map, Overview) */
+  { name:"paper-north-up", viewport:[1600,900], t:570, presentation:"study", mode:"staff", paper:"frame", cam:[-27,272,41,-27,0,9],
+    note:"The paper map as entered: north up, the whole field framed clear of the panels, Study, 09:30." },
+  { name:"paper-close", viewport:[1600,900], t:500, presentation:"study", mode:"staff",
+    aim:{map:[210,362], dir:[-0.62,0.46,0.64], r:58}, note:"The paper map close on Sokolnitz and the lower Goldbach, Study, 08:20." },
+  { name:"paper-drawer", viewport:[1600,900], t:570, presentation:"study", mode:"staff",
+    select:["f","sthilaire"], aim:{map:"sthilaire", dir:[-0.55,0.62,0.56], r:86}, note:"The paper map with Saint-Hilaire's division selected: dossier open, family highlighted." },
+  { name:"paper-laptop", viewport:[1280,720], t:570, presentation:"study", mode:"staff", paper:"frame", cam:[-27,272,41,-27,0,9],
+    note:"The paper map as entered, on a 1280 x 720 screen." }
 ];

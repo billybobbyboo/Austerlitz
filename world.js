@@ -343,9 +343,12 @@ var GROUND_W=360, GROUND_D=310, GROUND_NX=280, GROUND_NZ=240;
    ground reads displayHeight() or groundY() (the mesh itself); tools/stage2/height-sites.js --check,
    run by tools/run-all.sh, fails if presentation code calls height() or hAt(). Symbols (figures,
    standards, buildings, trees) are never rescaled: only their seat on the ground moves. */
-var DISPLAY={factor:4, defaultFactor:4, settings:[1,4,GEOREF.EXAG]};
-function displayScale(){ return DISPLAY.factor/GEOREF.EXAG; }
-function displayY(h){ return h*DISPLAY.factor/GEOREF.EXAG; }
+var DISPLAY={factor:4, defaultFactor:4, settings:[1,4,GEOREF.EXAG], flat:false};
+/* Stage 2E (decision 19, docs/STAGE2_SPEC.md section G.2): the paper map draws the ground FLAT, whatever the setting:
+   DISPLAY.flat is set while it is shown, and the drawn scale is then 0 (the setting, DISPLAY.factor, is kept for the
+   landscape). Its relief is read from its own cartographic hillshade (PAPER_HILLSHADE), never from the drawn height. */
+function displayScale(){ return DISPLAY.flat ? 0 : DISPLAY.factor/GEOREF.EXAG; }
+function displayY(h){ return h*displayScale(); }
 function displayHeight(x,z){ return displayY(height(x,z)); }
 /* The camera presets (PHASES, ANALYSIS and TOUR cameras, VANTAGE, the staff view, the harness cases) were
    authored over the ground drawn at GEOREF.EXAG, i.e. over the model height. They are never edited; at use
@@ -402,7 +405,19 @@ var groundMesh=null, domeMesh=null, mistGroup=null, treeMesh=null, coniferMesh=n
     roofMesh=null, houseMesh=null, spireMesh=null, waterMeshes=[], roadMeshes=[],
     contourGroup=null, marshGroup=null, analysisGroup=null;
 var FACE={n:0,x:null,z:null,h:null,slope:null,shade:null,cover:null,tint:null,ao:null,nz:null};
-var palNatural=null, palPaper=null, palGoing=null, apronMesh=null, chimneyMesh=null;
+var palNatural=null, palPaper=null, palGoing=null, apronMesh=null, chimneyMesh=null, _palNat={};
+/* Stage 2E (decision 19; docs/STAGE2_SPEC.md section G.2): the paper map's cartographic hillshade has its own factor,
+   stated in its legend, whatever the relief setting of the landscape. Relative to true scale, as the setting is: the
+   model's normals (FACE.baseN, on its own vertical scale GEOREF.EXAG) are re-scaled by PAPER_HILLSHADE / GEOREF.EXAG.
+   A design value, chosen on the renders (CHANGELOG.md, Stage 2E), not a scale: nothing is measured with it. */
+var PAPER_HILLSHADE=6;
+function paperShade(){
+  var s=PAPER_HILLSHADE/GEOREF.EXAG, B=FACE.baseN, n=B.length/3, out=new Float32Array(n);
+  var LX=-0.52, LY=0.70, LZ=-0.49, ln=Math.sqrt(LX*LX+LY*LY+LZ*LZ); LX/=ln; LY/=ln; LZ/=ln;
+  for(var q=0;q<n;q++){ var nx=B[q*3]*s, ny=B[q*3+1], nz=B[q*3+2]*s, L=Math.sqrt(nx*nx+ny*ny+nz*nz)||1;
+    out[q]=Math.max(0,(nx*LX+ny*LY+nz*LZ)/L); }
+  FACE.psh=out;
+}
 var groundPalette="natural", vsMask=null, vsOrigin=null;
 
 /* ---------------- build ---------------- */
@@ -449,7 +464,8 @@ function buildWorld(scene){
     }
     geo.setAttribute("cover",new THREE.BufferAttribute(cov,1));
   })();
-  palNatural=makePalette("natural");
+  palNatural=_palNat[displayScale()]=makePalette("natural");
+  paperShade();
   palPaper=makePalette("paper");
   geo.setAttribute("color",new THREE.BufferAttribute(new Float32Array(FACE.n*9),3));
   groundMesh=new THREE.Mesh(geo,atlasShader(matte({vertexColors:true,flatShading:false,
@@ -469,10 +485,11 @@ function buildWorld(scene){
   buildMarshSymbols(scene);
   buildAnalysis(scene);
   buildMist(scene);
+  buildPaperSymbols(scene);
 
   return {ground:groundMesh, apron:apronMesh, dome:domeMesh, mist:mistGroup, trees:treeMesh, conifers:coniferMesh, scrub:scrubMesh,
           houses:houseMesh, roofs:roofMesh, spires:spireMesh, chimneys:chimneyMesh, water:waterMeshes, roads:roadMeshes,
-          contours:contourGroup, marsh:marshGroup, analysis:analysisGroup};
+          contours:contourGroup, marsh:marshGroup, analysis:analysisGroup, paper:paperGroup};
 }
 
 /* draw the model-built ground at the display factor: y = s * h; the smooth normals of a surface scaled
@@ -503,7 +520,9 @@ function scaleGround(geo){
    then rebuilds its overlays and moves the camera (setDisplayFactor in app.js) */
 function rescaleWorld(){
   scaleGround(groundMesh.geometry);
-  palNatural=makePalette("natural"); palPaper=makePalette("paper");   /* palGoing reads the model slope: unchanged */
+  /* palGoing reads the model slope and palPaper its own hillshade (Stage 2E): neither changes. The landscape's palette
+     follows the drawn slope: kept per drawn scale, and not made at all for the flat paper map, which never shows it */
+  palNatural=DISPLAY.flat?null:(_palNat[displayScale()]||(_palNat[displayScale()]=makePalette("natural")));
   applyGround();
   apronMesh.geometry.dispose(); apronMesh.geometry=apronGeometry();
   SEATED.forEach(reseatInstances);
@@ -606,7 +625,7 @@ function makePalette(kind){
     /* what changes across the face: the shade and the frost, from the vertex normals,
        so relief is a continuous gradient instead of a terrace of flat facets */
     for(var k=0;k<3;k++){
-      var q=f*3+k, sh=FACE.vsh[q];
+      var q=f*3+k, sh=paper?FACE.psh[q]:FACE.vsh[q];   /* the paper map: its own hillshade (Stage 2E) */
       c.copy(bc);
       if(!paper && cov!==3){
         var north=Math.max(0,-FACE.vnz[q]);
@@ -655,7 +674,7 @@ function applyGround(){
   if(!groundMesh) return;
   var base = groundPalette==="paper" ? palPaper
            : groundPalette==="going" ? (palGoing||(palGoing=makeGoingPalette()))
-           : palNatural;
+           : (palNatural||(palNatural=_palNat[displayScale()]=makePalette("natural")));
   var arr=groundMesh.geometry.attributes.color.array;
   var i,f,k;
   if(!vsMask){
@@ -976,6 +995,7 @@ function resample(pts,step){
    edge - so no edge of the water can hang above the ground (the Litava now runs through Satschan). On the
    display ground: the legacy level scales with the land, the 0.05 margin is drawn units */
 function mereLevel(cc,rx,rz,base){
+  if(DISPLAY.flat) return 0.12;   /* the flat paper map (Stage 2E): the water lies on the sheet, under the roads and streams */
   var lo=1e9; for(var a=0;a<96;a++){ var t=a/96*Math.PI*2; lo=Math.min(lo,displayHeight(cc[0]+Math.cos(t)*rx,cc[1]+Math.sin(t)*rz)); }
   return Math.min(displayY(base+1.2*regionalLevel(cc[0],cc[1])), lo-0.05);
 }
@@ -1319,7 +1339,10 @@ function apronGeometry(){
     nx/=L; ny/=L; nz/=L;
     if(ny<0){ nx=-nx; ny=-ny; nz=-nz; }
     var sh=Math.max(0,(nx*-0.52+ny*0.70+nz*-0.49)/1.0);
-    var k=0.50+0.62*sh, mid=(a[1]+b[1]+c[1])/3/s, e=Math.max(0,Math.min(1,(GEOREF.elevM(mid)-200)/123));   /* elevation from the model height */
+    /* elevation from the model height: the drawn height over the drawn scale; on the flat paper map (Stage 2E) the drawn
+       scale is 0, and the model height is read directly (a colour, not a drawn position) */
+    var mid=s?(a[1]+b[1]+c[1])/3/s:height((a[0]+b[0]+c[0])/3,(a[2]+b[2]+c[2])/3);
+    var k=0.50+0.62*sh, e=Math.max(0,Math.min(1,(GEOREF.elevM(mid)-200)/123));
     var r=base.r*k*(0.88+0.24*e), g=base.g*k*(0.90+0.20*e), bb=base.b*k*(0.94+0.06*e);
     [a,b,c].forEach(function(q){
       P.push(q[0],q[1],q[2]); N.push(nx,ny,nz); U.push(q[0]/11,q[2]/11); C.push(r,g,bb); COV.push(0);
@@ -1479,6 +1502,93 @@ function buildAnalysis(scene){
   });
   scene.add(analysisGroup);
 }
+/* ---------------- the paper map's own symbology (Stage 2E; docs/STAGE2_SPEC.md section G.2; decisions 25 and 31) ----------------
+   Drawn only on the flat paper map: the villages as flat footprints and the woods as map symbology (a tint, tree marks
+   and an outline), in place of roofs, houses and 3D trees. Each is traced from the model's own land cover, so it marks the
+   ground the model calls village or wood: the outline is the level of the cover field built from VILLAGES and WOODS
+   (buildCover) at coverClass's threshold (village 0.55, wood 0.5), traced on a grid four times finer than the cover
+   raster, which covAt interpolates. A footprint is the village's extent in the model, as schematic as the cover it comes
+   from (VILLAGES gives a place and a size, not a plan); where coverClass gives water or marsh priority, the footprint is
+   still drawn. Nothing here is drawn on the landscape, and nothing is seated: the paper map's ground is flat (y 0). */
+var paperGroup=null, PAPER_SYM={wood:{level:0.5,lift:0.05}, village:{level:0.55,lift:0.08}, markPx:26};
+/* closed outlines of {field > level}, as rings of world [x, z]; the raster is padded with 0 so every ring closes */
+function coverRings(field,level){
+  var st=4, nx=(COV_NX-1)*st+3, nz=(COV_NZ-1)*st+3, dx=COV_DX/st, dz=COV_DZ/st, x0=COV_X0-dx, z0=COV_Z0-dz;
+  var v=new Float32Array(nx*nz), i, j;
+  for(j=1;j<nz-1;j++) for(i=1;i<nx-1;i++) v[j*nx+i]=covAt(field,x0+i*dx,z0+j*dz);
+  var pts={}, nb={};
+  function P(a,b){ var k=a<b?a+"_"+b:b+"_"+a; if(!pts[k]){ var t=(level-v[a])/((v[b]-v[a])||1e-9), ia=a%nx, ja=(a-ia)/nx, ib=b%nx, jb=(b-ib)/nx;
+    pts[k]=[x0+(ia+(ib-ia)*t)*dx, z0+(ja+(jb-ja)*t)*dz]; } return k; }
+  function S(p,q){ (nb[p]=nb[p]||[]).push(q); (nb[q]=nb[q]||[]).push(p); }
+  /* corners a (i,j), b (i+1,j), c (i+1,j+1), d (i,j+1); edges 0 ab, 1 bc, 2 cd, 3 da; each case joins two edges */
+  var T={1:[[3,0]],2:[[0,1]],3:[[3,1]],4:[[1,2]],6:[[0,2]],7:[[2,3]],8:[[2,3]],9:[[0,2]],11:[[1,2]],12:[[1,3]],13:[[0,1]],14:[[3,0]]};
+  for(j=0;j<nz-1;j++) for(i=0;i<nx-1;i++){
+    var a=j*nx+i, b=a+1, c=a+nx+1, d=a+nx, m=(v[a]>level?1:0)|(v[b]>level?2:0)|(v[c]>level?4:0)|(v[d]>level?8:0);
+    if(m===0||m===15) continue;
+    var E=[[a,b],[b,c],[d,c],[a,d]], L=T[m];
+    if(m===5||m===10){ var mid=(v[a]+v[b]+v[c]+v[d])/4>level;   /* a saddle: the centre decides which corners join */
+      L=(m===5)===mid?[[0,1],[2,3]]:[[3,0],[1,2]]; }
+    L.forEach(function(q){ S(P(E[q[0]][0],E[q[0]][1]),P(E[q[1]][0],E[q[1]][1])); });
+  }
+  var seen={}, rings=[];
+  Object.keys(nb).forEach(function(k0){ if(seen[k0]) return;
+    var ring=[], prev=null, k=k0;
+    while(k&&!seen[k]){ seen[k]=1; ring.push(pts[k]); var n=nb[k], nx2=(n[0]!==prev)?n[0]:n[1]; prev=k; k=nx2; }
+    if(ring.length>=3) rings.push(ring); });
+  return rings;
+}
+function ringInside(p,R){ var c=false; for(var i=0,j=R.length-1;i<R.length;j=i++){ var a=R[i], b=R[j];
+  if((a[1]>p[1])!==(b[1]>p[1])&&p[0]<(b[0]-a[0])*(p[1]-a[1])/(b[1]-a[1])+a[0]) c=!c; } return c; }
+/* rings to one flat mesh (outer rings with the rings nested in them as holes), and their outline */
+function ringMeshes(rings,lift,fill,edge,uvOf){
+  var depth=rings.map(function(r,i){ var n=0; rings.forEach(function(o,j){ if(i!==j&&ringInside(r[0],o)) n++; }); return n; });
+  var P=[], U=[], I=[], Lp=[];
+  rings.forEach(function(r,i){ if(depth[i]%2) return;
+    var holes=rings.filter(function(o,j){ return depth[j]===depth[i]+1&&ringInside(o[0],r); });
+    var V=[r].concat(holes), base=P.length/3;
+    var tri=THREE.ShapeUtils.triangulateShape(r.map(function(q){ return new THREE.Vector2(q[0],q[1]); }),
+      holes.map(function(h){ return h.map(function(q){ return new THREE.Vector2(q[0],q[1]); }); }));
+    V.forEach(function(R){ R.forEach(function(q){ P.push(q[0],lift,q[1]); if(uvOf){ var uv=uvOf(q); U.push(uv[0],uv[1]); } }); });
+    tri.forEach(function(t){ I.push(base+t[0],base+t[1],base+t[2]); });
+  });
+  rings.forEach(function(r){ for(var k=0;k<r.length;k++){ var a=r[k], b=r[(k+1)%r.length]; Lp.push(a[0],lift+0.01,a[1],b[0],lift+0.01,b[1]); } });
+  var g=new THREE.BufferGeometry(); g.setAttribute("position",new THREE.Float32BufferAttribute(P,3)); if(uvOf) g.setAttribute("uv",new THREE.Float32BufferAttribute(U,2)); g.setIndex(I);
+  var lg=new THREE.BufferGeometry(); lg.setAttribute("position",new THREE.Float32BufferAttribute(Lp,3));
+  var m=new THREE.Mesh(g,fill), l=new THREE.LineSegments(lg,edge);
+  m.renderOrder=l.renderOrder=2;
+  return [m,l];
+}
+/* the tree mark: a map symbol on a transparent tile, upright on the north-up paper map */
+function woodMarkTexture(){
+  var cv=document.createElement("canvas"); cv.width=cv.height=64;
+  var x=cv.getContext("2d"), col=TOKENS.sym.paperMap.wood.mark;
+  x.strokeStyle=col; x.fillStyle=col; x.lineWidth=2.2; x.lineCap="round";
+  [[18,22],[50,54]].forEach(function(c){ x.beginPath(); x.arc(c[0],c[1]-3,6.5,0,Math.PI*2); x.stroke();
+    x.beginPath(); x.moveTo(c[0],c[1]+3.5); x.lineTo(c[0],c[1]+9); x.stroke(); });
+  var t=ctexS(cv); t.wrapS=t.wrapT=THREE.RepeatWrapping; return t;
+}
+function buildPaperSymbols(scene){
+  paperGroup=new THREE.Group(); paperGroup.visible=false;
+  var T=TOKENS.sym.paperMap, N=[GEOREF.NORTH[0],GEOREF.NORTH[1]], E=[-N[1],N[0]];
+  function basic(hex,op){ return new THREE.MeshBasicMaterial({color:lin(parseInt(hex.slice(1),16)),transparent:op<1,opacity:op,depthWrite:false,fog:false,side:THREE.DoubleSide}); }
+  function line(hex,op){ return new THREE.LineBasicMaterial({color:lin(parseInt(hex.slice(1),16)),transparent:op<1,opacity:op}); }
+  /* woods: the tint, then the tree marks (texture coordinates east and north, so the marks stand upright), then the outline */
+  var wr=coverRings(covWood,PAPER_SYM.wood.level);
+  var wt=ringMeshes(wr,PAPER_SYM.wood.lift,basic(T.wood.fill,0.72),line(T.wood.edge,0.9));
+  var marks=new THREE.MeshBasicMaterial({map:woodMarkTexture(),transparent:true,opacity:0.85,depthWrite:false,fog:false,side:THREE.DoubleSide});
+  var wm=ringMeshes(wr,PAPER_SYM.wood.lift+0.005,marks,line(T.wood.edge,0),function(q){ return [q[0]*E[0]+q[1]*E[1],q[0]*N[0]+q[1]*N[1]]; });
+  wm[0].userData.marks=true;
+  /* villages: the footprint and its edge */
+  var vr=coverRings(covVill,PAPER_SYM.village.level);
+  var vt=ringMeshes(vr,PAPER_SYM.village.lift,basic(T.village.fill,0.88),line(T.village.edge,0.95));
+  [wt[0],wm[0],wt[1],vt[0],vt[1]].forEach(function(o){ paperGroup.add(o); });
+  paperGroup.userData={woods:wr.length, villages:vr.length, marks:wm[0], rings:{wood:wr,village:vr}};
+  scene.add(paperGroup);
+}
+/* the tree marks keep one size on screen (PAPER_SYM.markPx px a tile) at every zoom: wpp is world units per pixel */
+function paperMarkScale(wpp){ var m=paperGroup&&paperGroup.userData.marks; if(!m||!m.material.map) return;
+  var k=1/(PAPER_SYM.markPx*wpp); if(Math.abs(m.material.map.repeat.x-k)>1e-6*k){ m.material.map.repeat.set(k,k); } }
+
 /* A mist sheet is flat, so wherever the ground rises through it the sheet would end in a hard
    line along the contour. Each vertex carries an alpha that falls to nothing as the ground comes
    up to meet the sheet - checked across the sheet's whole drift - so the edge dissolves instead.

@@ -19,9 +19,9 @@ lower one without saying so explicitly.
 | `geo.js` | `GEOREF`: the only geographic and scale authority (transform, horizontal and vertical scale, ground truth) |
 | `data.js` | historical dataset: phases, order of battle and tracks, features, sources note |
 | `analysis.js` | analysis chapters, command knowledge, the two plans, acts, events, guided tour |
-| `world.js` | ground: relief model, land cover, water, roads, woods, settlements, mist, `groundY` |
+| `world.js` | ground: relief model, land cover, water, roads, woods, settlements, mist, `groundY`; the paper map's flat symbology (village footprints, woods) and its own hillshade (since 2E) |
 | `symbols.js` | the map layer's counters and names (HTML/SVG builders, accessible names), event and objective glyphs |
-| `app.js` | scene, overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, interface, runtime checks |
+| `app.js` | scene, overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface, runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2 measurement scripts (`stage2/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
@@ -67,14 +67,17 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
   explicit anchor time carries evidence found in the sources, a grade and a basis; a derived arrival at the march-rate ceiling
   only for the legs it names (`CEILING_FLAGGED`), every other at the tactical rate (a design value, unsourced).
-- `npm run check:contrast`: every visible text element in 20 interface states (the map layer's plates and the legend among them, map text also
-  over black and white ground) meets WCAG AA and the 10.5 px floor.
-- `npm run check:visual`: 13 fixed views (11 at the 4x default, plus the low Pratzen view at 1x and 10.33x), Stage 0
+- `npm run check:contrast`: every visible text element in 22 interface states (the map layer's plates and the legend among them, map text also
+  over black and white ground, the paper map as entered and close since 2E) meets WCAG AA and the 10.5 px floor.
+- `npm run check:visual`: 17 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, and since 2E four paper-map views), Stage 0
   thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()` (its ground, camera, figure, mist, overlay-draping and arrowhead
   checks at 1x, 4x and 10.33x, and since 2D its map-layer checks: no overlap, nothing over a panel or an arrow head, the
   never-dropped items drawn, every dropped formation reachable by hover and keyboard, the legend never over the dispatch).
   Per view since 2D: map-layer drops within `DROP_LIMIT` (what the 2C canvas pass hid there), pass time under 8 ms, every
   map text at its floor and at AA as rendered, the unobstructed fraction at both viewports not below the 2C baseline.
+  Since 2E, every paper-map view: north within 0.5 degrees of up, one scale across the view and the scale bar to 1%, nothing
+  at figure or landscape scale drawn, its symbology drawn, and the entered views framed inside the unobstructed area; the
+  self-test's paper-map checks (flat ground, its own hillshade, the controls, identical at every relief setting).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
 - `npm run check:baseline` passes only on the unmodified Stage 2D build (md5 `2dc0c26d...`, 1,189,512 bytes;
   re-baselined from the Stage 2C build `68ac7721...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
@@ -98,5 +101,7 @@ the going classes from the model slope) is merged. Stage 2C (the §M.13 precondi
 rate where they fit, else the ceiling, flagged; then the movement arrows: derived from the executed leg or marked interpretive,
 draped, the Allied chevron, solid boundaries, the halt bar, `binding-test.js`) is merged (#15). Stage 2D (one DOM/SVG
 layer, `#maplayer`, for counters and all map text, replacing the canvas sprite pass; compact counters on plates; the
-contextual legend) is merged (#17); 2E-2F have not started. The shadow toe
+contextual legend) is merged (#17). Stage 2E (the true north-up paper map: an orthographic plan over flat ground with its own
+hillshade, pan and zoom-to-cursor in `MAPCAM`, one projection helper, flat village footprints and woods symbology) is done and
+awaits review; 2F has not started. The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.

@@ -380,6 +380,7 @@ body.pm-map #restore{display:block}
 .exag-set{display:flex;gap:4px;margin-top:6px}
 .exag-set .t{padding:5px 9px;min-height:30px;font-variant-numeric:tabular-nums}
 .exag-set .t:disabled{opacity:.55;cursor:not-allowed}
+.exag-set[hidden]{display:none}
 .lp-row[aria-pressed="true"] b{color:var(--text-hi)}
 #layerpop .modes{margin:0}
 

@@ -103,6 +103,10 @@ var OVERLAYS = {
 
 /* ---------------- three.js scaffolding ---------------- */
 var scene,camera,renderer,sun,hemi,world;
+/* Stage 2E: two cameras. landCam, the perspective eye of the landscape and hybrid views; paperCam, the paper map's
+   orthographic plan (MAPCAM). `camera` is the one drawn and projected through now; code that moves the landscape's eye
+   (orbit, glides, presets, the ground floor) moves landCam. */
+var landCam=null, paperCam=null;
 var orbitTarget=new THREE.Vector3(0,0,14), sph=new THREE.Spherical();
 var mode="terrain", tween=null;
 var selection=null, freeCam=false;
@@ -233,8 +237,10 @@ function init(){
   renderer.toneMapping=THREE.NoToneMapping;
   document.getElementById("stage").appendChild(renderer.domElement);
 
-  camera=new THREE.PerspectiveCamera(37,window.innerWidth/window.innerHeight,1,1900);
+  camera=landCam=new THREE.PerspectiveCamera(37,window.innerWidth/window.innerHeight,1,1900);
   camera.position.set(-196,132,226);
+  paperCam=new THREE.OrthographicCamera(-1,1,1,-1,1,600);
+  MAPCAM.init(paperCam,{schedule:mapSchedule,panels:function(){ mlLegendFit(renderer.domElement.clientWidth||innerWidth,viewH()); return mlPanels(); },viewport:function(){ var e=renderer.domElement; return [e.clientWidth||innerWidth,e.clientHeight||innerHeight]; }});
 
   hemi=new THREE.HemisphereLight(0xA9BBCC,0x3E3A30,0.34); scene.add(hemi);
   /* a weak fill from opposite the sun so shaded slopes are dark, never black */
@@ -972,28 +978,36 @@ function syncLandscapeLayers(){
   if(world.scrub) world.scrub.visible=on;
   world.roofs.visible=on; world.spires.visible=on;
   if(world.chimneys) world.chimneys.visible=on;
-  world.houses.visible=!isTrueScale();
+  world.houses.visible=!isTrueScale()&&mode!=="staff";   /* the paper map draws the villages as flat footprints (Stage 2E) */
+  if(world.paper) world.paper.visible=(mode==="staff");
 }
 /* ---- the display factor (Stage 2B; owner decisions 19 and 35) ----
    Presentation only: the model, GEOREF.EXAG and every model-unit value are unchanged. Everything built once on
    the ground is redrawn or re-seated (rescaleWorld in world.js; label anchors, glyphs and the plateau ring keep their
    height above the ground); overlays and plans are rebuilt; the camera keeps its height above the ground.
-   Returns the time the change took, in ms. */
+   Returns the time the change took, in ms.
+   Stage 2E: the paper map draws the ground flat whatever the setting (decision 19): while it is shown a change of the
+   setting is recorded for the landscape and nothing is redrawn; entering and leaving it redraw the ground (setDrawnFlat). */
 function setDisplayFactor(f){
   if(!(f>0)||f===DISPLAY.factor) return 0;
+  if(DISPLAY.flat){ DISPLAY.factor=f; syncLandscapeLayers(); paintExaggeration(); return 0; }
+  return redrawGround(function(){ DISPLAY.factor=f; });
+}
+function setDrawnFlat(on){ return DISPLAY.flat===on ? 0 : redrawGround(function(){ DISPLAY.flat=on; }); }
+function redrawGround(change){
   var t0=performance.now(), hold=[];
   function keep(v){ if(v) hold.push([v,v.y-displayHeight(v.x,v.z)]); }
   placeLabels.forEach(function(o){ keep(o.world); });
   eventMarks.forEach(function(k){ keep(k.sp.position); keep(k.world); });
   terrainLabels.forEach(function(o){ keep(o.world); });
   if(plateauRing&&!plateauRing.userData.seatOff) seatGeometry(plateauRing);
-  keep(orbitTarget); keep(camera.position);
-  DISPLAY.factor=f;
+  keep(orbitTarget); keep(landCam.position);
+  change();
   rescaleWorld();
   hold.forEach(function(h){ h[0].y=displayHeight(h[0].x,h[0].z)+h[1]; });
   if(plateauRing) reseatGeometry(plateauRing);
   tween=null; camArc=null;
-  camera.lookAt(orbitTarget); clampCamera();
+  landCam.lookAt(orbitTarget); clampCamera();
   rebuildOverlays(curPhase,true);
   if(planSide){ var ps=planSide, fc=freeCam; planSide=null; freeCam=true; setPlan(ps); freeCam=fc; }
   Object.keys(units).forEach(function(id){ var r=units[id]; r.seated=false; r.trailU=undefined; });
@@ -1021,17 +1035,24 @@ function bindExaggeration(){
 }
 function fmtFactor(f){ return f===1?"1":(Math.round(f*100)/100).toString(); }
 function paintExaggeration(){
-  var f=DISPLAY.factor;
+  var f=DISPLAY.factor, paper=(mode==="staff");
   document.querySelectorAll(".exag-btn").forEach(function(b){
     b.setAttribute("aria-pressed",+b.dataset.x===f?"true":"false");
     b.disabled=playing&&EXAG_MEASURED_MS>EXAG_SLOW_MS;
     b.title=b.disabled?"Pause to change the relief (a change takes about "+EXAG_MEASURED_MS+" ms)":"";
   });
-  var el=document.getElementById("exag-line");
+  /* the paper map has no relief setting (decision 19): the control is not offered there, and its row says why */
+  var set=document.getElementById("exag-set"), desc=document.getElementById("exag-desc");
+  if(set) set.hidden=paper;
+  if(desc) desc.textContent=paper?"The paper map is drawn flat, with its own hillshade (\u00d7"+fmtFactor(PAPER_HILLSHADE)+"); the setting applies to the landscape"
+    :"How tall the ground is drawn; 1\u00d7 is true scale";
+  var el=document.getElementById("exag-line"), sy=document.getElementById("exag-symbols");
+  /* the paper map (Stage 2E, decisions 19 and 29): its hillshade's own factor; it draws no figure, building or tree */
+  if(paper){ if(el) el.textContent="paper map: the ground drawn flat, in plan; hillshade exaggerated \u00d7"+fmtFactor(PAPER_HILLSHADE)+" (1\u00d7 is true scale)";
+    if(sy) sy.textContent="villages and woods at their extent in the model; counters and names at symbol scale"; return; }
   if(el) el.textContent = isTrueScale()
     ? "relief at true scale: formations drawn as their footprints"
     : "relief drawn \u00d7"+fmtFactor(f)+" vertically (1\u00d7 is true scale)";
-  var sy=document.getElementById("exag-symbols");
   if(sy) sy.textContent = isTrueScale() ? "counters and names at symbol scale"
     : "symbols: figures and standards about 45\u201370\u00d7 life, buildings and trees about 10\u201315\u00d7";
 }
@@ -1597,10 +1618,10 @@ function applyArc(a,e,bulge){
   r*=1+(bulge===undefined?0.15:bulge)*Math.sin(Math.PI*e);
   _sp.set(r, a.s0.phi+(a.s1.phi-a.s0.phi)*e, a.s0.theta+a.dth*e);
   _sp.makeSafe();
-  camera.position.copy(_ct).add(_cv.setFromSpherical(_sp));
+  landCam.position.copy(_ct).add(_cv.setFromSpherical(_sp));
   orbitTarget.copy(_ct);
   clampCamera();
-  camera.lookAt(_ct);
+  landCam.lookAt(_ct);
 }
 function startPhaseTransition(ph,instant,moveCam){
   var L=LIGHT[mode==="staff"?"staff":ph.light];
@@ -1611,9 +1632,9 @@ function startPhaseTransition(ph,instant,moveCam){
           disc:sunDisc?sunDisc.material.opacity/0.92:0, grade:_gradeNow.slice(),
           fn:scene.fog.near,ff:scene.fog.far,fc:scene.fog.color.clone(),
           bg:scene.background.clone(),mist:world.mist.children[0].material.opacity};
-  var camMove=moveCam && !freeCam;
+  var camMove=moveCam && !freeCam && mode!=="staff";   /* the paper map's plan stays where it is: the whole field is on it */
   if(camMove){
-    camArc=setupArc(camera.position,orbitTarget,
+    camArc=setupArc(landCam.position,orbitTarget,
       new THREE.Vector3(reframe(ph.cam)[0],reframe(ph.cam)[1],reframe(ph.cam)[2]),
       new THREE.Vector3(reframe(ph.cam)[3],reframe(ph.cam)[4],reframe(ph.cam)[5]));
   }
@@ -1945,8 +1966,9 @@ function renderStandard(){
 }
 function renderFrame(){
   renderer.info.reset();
-  /* the guard: anything that placed the eye without clampCamera() is counted and corrected */
-  if(camera.position.y<camFloor(camera.position.x,camera.position.z)-1e-6){
+  /* the guard: anything that placed the eye without clampCamera() is counted and corrected (the landscape's eye: the paper
+     map's plan camera stands far above the flat sheet) */
+  if(landCam.position.y<camFloor(landCam.position.x,landCam.position.z)-1e-6){
     CAM.violations++; clampCamera();
     if(CAM.violations===1) console.warn("Austerlitz runtime check: a camera path bypassed the ground floor");
   }
@@ -2455,7 +2477,7 @@ function buildPlanLinks(){
 function updatePlanLinks(){
   if(!planLinks||!planSide) return;
   var arr=planLinks.geometry.attributes.position.array, pairs=planLinks.userData.pairs, k=0, drawn=0;
-  var near=camera.position.distanceTo(orbitTarget)<190;
+  var near=viewDist()<190;
   for(var i=0;i<pairs.length;i++){
     var show = pairs[i][2] || near ||
                (selection&&selection.kind==="f"&&selection.id===pairs[i][0]);
@@ -2573,8 +2595,12 @@ function applyTour(){
 
 /* ---------------- view modes ---------------- */
 function setMode(m){
+  var was=mode;
   mode=m;
   var staff=(m==="staff");
+  /* Stage 2E: the paper map is a true north-up plan (MAPCAM) over the ground drawn flat (decisions 19 and 25) */
+  setDrawnFlat(staff);
+  camera=staff?paperCam:landCam;
   setGround(goingOn?"going":(staff?"paper":"natural"));
   setContourStyle(staff);
   world.dome.visible=!staff;
@@ -2601,13 +2627,21 @@ function setMode(m){
   world.mist.visible=!staff && mt>0.012;
 
   document.body.classList.toggle("mode-staff",staff);
+  if(ML.root){ if(staff) ML.root.tabIndex=0; else ML.root.removeAttribute("tabindex");
+    ML.root.setAttribute("aria-label",staff?"The paper map, north up: arrow keys pan, plus and minus zoom; Tab reaches its formations, events and places"
+      :"The map: formations, events and places"); }
   document.querySelectorAll(".mode-btn").forEach(function(b){
     b.setAttribute("aria-pressed", b.dataset.m===m ? "true":"false");
   });
 
   rebuildOverlays(curPhase,true);
-  if(planSide){ var keep=planSide; planSide=null; setPlan(keep); }
-  if(!freeCam) flyTo(staff ? [-27,262,41,-27,0,9] : PHASES[curPhase].cam);
+  if(planSide){ var keep=planSide, fc=freeCam; planSide=null; freeCam=true; setPlan(keep); freeCam=fc; }
+  paintExaggeration();
+  /* entering the paper map: the whole field framed in the free part of the screen, unless the plan was moved by hand
+     before (then it is as it was left); leaving it: the landscape eye where it was, or the phase's view */
+  if(staff){ if(was!=="staff"){ if(MAPCAM.moved()) MAPCAM.apply(); else MAPCAM.frameField(true); } }
+  else if(!freeCam) flyTo(PHASES[curPhase].cam);
+  requestRender(3);
 }
 
 /* the terrain-study labels: their anchors (the map layer draws them) and colours */
@@ -2615,12 +2649,115 @@ function buildAnalysisLabels(){
   TERRAIN_LINES.forEach(function(tl){ terrainLabels.push({tl:tl,col:TOKENS.sym.analysis[tl.t],world:new THREE.Vector3(tl._mid[0],tl._mid[1],tl._mid[2])}); });
 }
 
-/* ---------------- level of detail ---------------- */
+/* ---------------- the projection, and level of detail ----------------
+   Stage 2E (docs/STAGE2_SPEC.md sections F and G): one projection helper serves both cameras. worldPerPx(p) is the
+   ground length (world units) one screen pixel spans at the point p: for the perspective eye it grows with p's depth
+   along the view, for the paper map's orthographic plan it is the same everywhere. It is the projection, not a scale:
+   metres and kilometres still come only from GEOREF (UNITS_PER_KM, M_PER_WORLD). The level of detail, the map layer's
+   sizes, the symbols' clearances and the scale bar read it; nothing reads a camera's field of view any more. */
 var _pv=new THREE.Vector3();
-function pxPerWorld(atPos){
-  var hpx=renderer.domElement.clientHeight||window.innerHeight;
-  var d=camera.position.distanceTo(atPos);
-  return 1/(2*d*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))/hpx);
+function viewH(){ return renderer.domElement.clientHeight||window.innerHeight; }
+function worldPerPx(p){
+  if(camera.isOrthographicCamera) return (camera.top-camera.bottom)/(camera.zoom*viewH());
+  camera.updateMatrixWorld();
+  var d=p ? -_pv.copy(p).applyMatrix4(camera.matrixWorldInverse).z : camera.position.distanceTo(orbitTarget);
+  return 2*d*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))/viewH();
+}
+function pxPerWorld(atPos){ return 1/worldPerPx(atPos); }
+/* the distance at which the landscape eye shows the ground at a given worldPerPx, and back: the paper map's zoom is read
+   against the landscape's level-of-detail distances (corps beyond 250, brigades within 165, full counters within 70) */
+function distAtWpp(w){ return w*viewH()/(2*Math.tan(THREE.MathUtils.degToRad(landCam.fov/2))); }
+function mapWppAt(d){ return 2*d*Math.tan(THREE.MathUtils.degToRad(landCam.fov/2))/viewH(); }
+function viewDist(){ return camera.isOrthographicCamera ? distAtWpp(worldPerPx(null)) : camera.position.distanceTo(orbitTarget); }
+function viewDistTo(p){ return camera.isOrthographicCamera ? distAtWpp(worldPerPx(p)) : camera.position.distanceTo(p); }
+
+/* ---------------- the paper map's camera: MAPCAM (Stage 2E; docs/STAGE2_SPEC.md section G.2; owner decision 25) ----------------
+   A true north-up plan: an orthographic camera looking straight down with GEOREF.NORTH up on the screen (the map frame is
+   rotated GEOREF.ROT_DEG from north), so one scale holds across the whole view and the scale bar is exact everywhere.
+   The map controls: a drag moves the ground with the pointer; the wheel zooms toward the cursor, the ground point under it
+   staying under it; keys pan and zoom; framing puts the ground in question in the largest part of the screen no panel
+   covers; eased moves. The state is in ground terms (the point at the centre of the screen, world units per pixel), and
+   the module knows only its camera and three functions it is given (the viewport, the panels, a scheduler for eased moves),
+   so that Stage 3 can reuse it. No orbit, no tilt. */
+var MAPCAM=(function(){
+  var cam=null, env=null, st={x:0,z:0,wpp:0.5}, moved=false, framed=false, gid=0, H=400;
+  var N=new THREE.Vector3(GEOREF.NORTH[0],0,GEOREF.NORTH[1]).normalize(), E=new THREE.Vector3(-N.z,0,N.x);   /* north and east on the ground */
+  var FIELD=[[-GROUND_W/2,-GROUND_D/2],[GROUND_W/2,-GROUND_D/2],[GROUND_W/2,GROUND_D/2],[-GROUND_W/2,GROUND_D/2]];   /* the modelled ground */
+  var MARGIN=10, lim={min:0.015,max:0.8};
+  function vp(){ return env.viewport(); }
+  function init(c,e){ cam=c; env=e; cam.up.copy(N); }
+  function apply(){
+    var v=vp(), hw=v[0]*st.wpp/2, hh=v[1]*st.wpp/2;
+    cam.left=-hw; cam.right=hw; cam.top=hh; cam.bottom=-hh; cam.near=1; cam.far=H+220; cam.zoom=1;
+    cam.up.copy(N); cam.position.set(st.x,H,st.z); cam.lookAt(st.x,0,st.z);
+    cam.updateProjectionMatrix(); cam.updateMatrixWorld();
+    if(typeof paperMarkScale==="function") paperMarkScale(st.wpp);
+    requestRender(2);
+  }
+  function clampW(w){ return Math.max(lim.min,Math.min(lim.max,w)); }
+  function toGround(sx,sy){ var v=vp(), a=(sx-v[0]/2)*st.wpp, b=(v[1]/2-sy)*st.wpp; return [st.x+E.x*a+N.x*b, st.z+E.z*a+N.z*b]; }
+  function toScreen(x,z){ var v=vp(), rx=x-st.x, rz=z-st.z; return [v[0]/2+(rx*E.x+rz*E.z)/st.wpp, v[1]/2-(rx*N.x+rz*N.z)/st.wpp]; }
+  function stop(){ gid++; framed=false; }
+  /* a drag of (dx, dy) screen pixels: the ground under the pointer moves with it */
+  function pan(dx,dy){ stop(); moved=true; st.x+=(-E.x*dx+N.x*dy)*st.wpp; st.z+=(-E.z*dx+N.z*dy)*st.wpp; apply(); }
+  /* zoom by k about a screen point: the ground point under it stays under it */
+  function zoomAt(sx,sy,k){ stop(); moved=true; var g=toGround(sx,sy), v=vp(); st.wpp=clampW(st.wpp*k);
+    var a=(sx-v[0]/2)*st.wpp, b=(v[1]/2-sy)*st.wpp; st.x=g[0]-E.x*a-N.x*b; st.z=g[1]-E.z*a-N.z*b; apply(); }
+  /* the largest rectangle of the screen no panel covers (on an 8 px grid, MARGIN px clear of each panel and edge) */
+  function freeRect(){
+    var v=vp(), G=8, nx=Math.floor(v[0]/G), ny=Math.floor(v[1]/G), P=env.panels(), h=new Int32Array(nx), best=[0,0,v[0],v[1]], bA=-1;
+    for(var j=0;j<ny;j++){
+      var y0=j*G, y1=y0+G;
+      for(var i=0;i<nx;i++){ var x0=i*G, x1=x0+G, bad=x0<MARGIN||y0<MARGIN||x1>v[0]-MARGIN||y1>v[1]-MARGIN;
+        for(var k=0;!bad&&k<P.length;k++){ var q=P[k]; if(x0<q[2]+MARGIN&&x1>q[0]-MARGIN&&y0<q[3]+MARGIN&&y1>q[1]-MARGIN) bad=true; }
+        h[i]=bad?0:h[i]+1; }
+      var S=[];   /* the largest rectangle under the histogram of free cells ending on this row */
+      for(var i2=0;i2<=nx;i2++){ var hh=i2<nx?h[i2]:0, s0=i2;
+        while(S.length&&S[S.length-1][1]>=hh){ var t=S.pop(), A=t[1]*(i2-t[0]); if(A>bA){ bA=A; best=[t[0]*G,(j+1-t[1])*G,i2*G,(j+1)*G]; } s0=t[0]; }
+        S.push([s0,hh]); }
+    }
+    return best;
+  }
+  /* put ground points inside the free rectangle: the zoom that fits them, their middle at its centre */
+  function fit(pts,r){ r=r||freeRect();
+    var a0=1e9,a1=-1e9,b0=1e9,b1=-1e9;
+    pts.forEach(function(p){ var a=p[0]*E.x+p[1]*E.z, b=p[0]*N.x+p[1]*N.z; a0=Math.min(a0,a); a1=Math.max(a1,a); b0=Math.min(b0,b); b1=Math.max(b1,b); });
+    var w=Math.max((a1-a0)/Math.max(1,r[2]-r[0]),(b1-b0)/Math.max(1,r[3]-r[1]));
+    return place((a0+a1)/2*E.x+(b0+b1)/2*N.x,(a0+a1)/2*E.z+(b0+b1)/2*N.z,w,r); }
+  /* the state that shows ground point (x, z) at the centre of the free rectangle r at wpp */
+  function place(x,z,w,r){ r=r||freeRect(); var v=vp(), cx=(r[0]+r[2])/2, cy=(r[1]+r[3])/2, a=(cx-v[0]/2)*w, b=(v[1]/2-cy)*w;
+    return {x:x-E.x*a-N.x*b, z:z-E.z*a-N.z*b, wpp:w}; }
+  function set(s){ stop(); st.x=s.x; st.z=s.z; st.wpp=clampW(s.wpp); apply(); }
+  /* an eased move to state s (the zoom eased in its logarithm), run by the app's scheduler */
+  function glide(s,ms){ framed=false; var my=++gid, a={x:st.x,z:st.z,w:Math.log(st.wpp)}, w1=Math.log(clampW(s.wpp)), t0=performance.now(), dur=ms||900;
+    env.schedule(function(now){ if(my!==gid) return true;
+      var k=Math.min(1,(now-t0)/dur), e=easeInOut(k); st.x=a.x+(s.x-a.x)*e; st.z=a.z+(s.z-a.z)*e; st.wpp=Math.exp(a.w+(w1-a.w)*e); apply();
+      return k>=1; }, dur); }
+  /* the whole modelled ground, framed; the zoom limits follow it (from 12 times closer to 1.5 times farther) */
+  function fieldState(){ var s=fit(FIELD); lim.max=Math.max(0.8,s.wpp*1.5); return s; }
+  return {
+    init:init, apply:apply, toGround:toGround, toScreen:toScreen, pan:pan, zoomAt:zoomAt, freeRect:freeRect, stop:stop,
+    frameField:function(instant){ moved=false; var s=fieldState(); if(instant) set(s); else glide(s,900); framed=true; },
+    framed:function(){ return framed; },
+    centreOn:function(x,z,w,instant){ var s=place(x,z,clampW(w)); if(instant) set(s); else glide(s,900); },
+    glideTo:function(x,z,w,ms){ glide(place(x,z,clampW(w)),ms||1200); },
+    state:function(){ return {x:st.x,z:st.z,wpp:st.wpp,moved:moved}; },
+    restore:function(s){ set(s); moved=!!s.moved; },
+    moved:function(){ return moved; },
+    north:N, east:E, field:FIELD, limits:lim
+  };
+})();
+/* the scheduler MAPCAM's eased moves run on: the app's tween, on top of a phase change's transition already running
+   (as glide does); the move ends when its step returns true. Reduced motion: at once. */
+function mapSchedule(step,ms){
+  if(RM){ step(performance.now()+1e9); return; }
+  var prev=tween, self;
+  tween=self=function(now){
+    if(prev){ prev(now); if(tween!==self) prev=null; tween=self; }
+    var done=step(now);
+    if(done&&!prev) tween=null;
+    else if(done) tween=prev;
+  };
 }
 var ECH_RANK={army:0,corps:1,div:2,bde:3};
 
@@ -2659,6 +2796,17 @@ function mlInit(){
   if(!ML.root) return;
   ML.root.innerHTML='<svg class="ml-lines" aria-hidden="true" focusable="false"></svg>';
   ML.lines=ML.root.querySelector(".ml-lines");
+  /* Stage 2E: on the paper map the layer itself takes keyboard focus (Tab, after the interface, before the map's items):
+     the arrow keys pan and + and - zoom about the centre. Elsewhere the arrows keep stepping the clock. */
+  ML.root.addEventListener("keydown",function(e){
+    if(e.target!==ML.root||mode!=="staff") return;
+    var v=[renderer.domElement.clientWidth||innerWidth,viewH()], d=Math.round(Math.min(v[0],v[1])*0.12), done=true;
+    if(e.key==="ArrowLeft") MAPCAM.pan(d,0); else if(e.key==="ArrowRight") MAPCAM.pan(-d,0);
+    else if(e.key==="ArrowUp") MAPCAM.pan(0,d); else if(e.key==="ArrowDown") MAPCAM.pan(0,-d);
+    else if(e.key==="+"||e.key==="=") MAPCAM.zoomAt(v[0]/2,v[1]/2,1/1.25); else if(e.key==="-"||e.key==="_") MAPCAM.zoomAt(v[0]/2,v[1]/2,1.25);
+    else done=false;
+    if(done){ e.preventDefault(); e.stopPropagation(); freeCam=true; }
+  });
   /* a web font that arrives after an item was measured changes its size: measure every item again and draw */
   if(document.fonts&&document.fonts.addEventListener){
     var remeasure=function(){ for(var k in ML.items) ML.items[k].dirty=true; requestRender(2); };
@@ -2716,7 +2864,7 @@ function mlCollect(){
   function counter(id,rec){
     var f=FORMATIONS[id], w=W(rec.p[0],rec.p[1]), gy=displayHeight(w[0],w[1]), S=fstate(id);
     var sel=isSel("f",id), inFam=!!(fam&&fam[id]), hov=(ML.hover===id), fo=(foc===id);
-    var near=camera.position.distanceTo(_mlV.set(w[0],gy,w[1]))<ML_FULL_DIST;
+    var near=viewDistTo(_mlV.set(w[0],gy,w[1]))<ML_FULL_DIST;
     var o={st:S.st,cf:S.cf,sel:sel,paper:paper,dim:!!(highlight&&!highlight[id]),know:S.know,full:sel||inFam||hov||fo||near,
            strength:S.strength,commander:shortCommander(f)};
     var it=mlItem("c:"+id,"mlc"+(f.arm==="hq"?" mlc-hq":"")); it.hq=(f.arm==="hq");
@@ -2787,9 +2935,10 @@ function mlPanels(){
     R.push([r.left,r.top,r.right,r.bottom]); });
   return R;
 }
-/* the highest drawn ground, per display factor: above it no segment can meet the ground */
+/* the highest drawn ground, per drawn scale (Stage 2E: the flat paper map's is 0, whatever the setting): above it no segment
+   can meet the ground */
 function mlMaxG(){
-  var f=DISPLAY.factor; if(ML.maxG[f]!==undefined) return ML.maxG[f];
+  var f=displayScale(); if(ML.maxG[f]!==undefined) return ML.maxG[f];
   var P=groundMesh.geometry.attributes.position.array, m=-1e9;
   for(var i=1;i<P.length;i+=3) if(P[i]>m) m=P[i];
   return (ML.maxG[f]=m);
@@ -2798,6 +2947,7 @@ function mlMaxG(){
    of a mesh cell), from where it first comes below the highest ground; the last 1.2 units are left out so an anchor is not
    hidden by its own slope */
 function mlOccluded(A,maxG){
+  if(camera.isOrthographicCamera) return false;   /* the paper map looks straight down on flat ground: nothing is behind it */
   var E=camera.position, dx=A.x-E.x, dy=A.y-E.y, dz=A.z-E.z, L=Math.sqrt(dx*dx+dy*dy+dz*dz);
   if(L<3) return false;
   var t1=1-1.2/L, t0=0;
@@ -2810,7 +2960,7 @@ function mlOccluded(A,maxG){
    change of display factor re-drapes the heads in place, and on relief the middle of a head stands off the line between its
    corners), event glyphs, objective and plan markers. */
 function mlObstacles(VW,VH){
-  var R=[], tanH=Math.tan(THREE.MathUtils.degToRad(camera.fov/2));
+  var R=[];
   function tri(M){ var r=[1e9,1e9,-1e9,-1e9], A=M.geometry.attributes.position; M.updateWorldMatrix(true,false);   /* its parents too: the pass can run before the render updates them */
     for(var i=0;i<A.count;i++){ _mlW.fromBufferAttribute(A,i).applyMatrix4(M.matrixWorld).project(camera); if(!(_mlW.z<1&&_mlW.z>-1)) return;
       var x=(_mlW.x*0.5+0.5)*VW, y=(-_mlW.y*0.5+0.5)*VH; if(x<r[0]) r[0]=x; if(y<r[1]) r[1]=y; if(x>r[2]) r[2]=x; if(y>r[3]) r[3]=y; }
@@ -2818,7 +2968,7 @@ function mlObstacles(VW,VH){
   function px(x,y,z){ _mlW.set(x,y,z).project(camera); return _mlW.z<1&&_mlW.z>-1?[(_mlW.x*0.5+0.5)*VW,(-_mlW.y*0.5+0.5)*VH]:null; }
   function disc(p,r){ var c=px(p.x,p.y,p.z); if(!c) return;
     _mlV.copy(p).applyMatrix4(camera.matrixWorldInverse); var d=-_mlV.z; if(d<=camera.near) return;
-    var rp=r*(VH/(2*d*tanH)); R.push([c[0]-rp,c[1]-rp,c[0]+rp,c[1]+rp]); }
+    var rp=r/worldPerPx(p); R.push([c[0]-rp,c[1]-rp,c[0]+rp,c[1]+rp]); }
   if(layerOn.arrows&&ovFadeIn>0.05){ ovHeads.forEach(tri); ovMarkers.forEach(function(m){ disc(m.pos,m.r); }); }
   if(planGroup){ planHeads.forEach(tri); planMarkers.forEach(function(m){ disc(m.pos,m.r); }); }
   if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(k.sp.visible&&k.m.opacity>0.05) disc(k.world,2.1); });
@@ -2851,14 +3001,17 @@ function mlPlaceItem(it,VW,VH,panels,obst){
   else { it.ox=w/2; it.oy=h;
     C=[[sx-w/2,sy-cl-h],[sx+2,sy-cl-h],[sx-2-w,sy-cl-h],[sx+cl+2,sy-h/2],[sx-cl-2-w,sy-h/2],[sx-w/2,sy+cl],[sx+2,sy+cl],[sx-2-w,sy+cl]]; }
   for(i=0;i<C.length;i++) if(mlFree(C[i][0],C[i][1],w,h,VW,VH,panels,obst)) return mlTake(it,C[i][0],C[i][1],i>0&&it.mode==="counter");
-  var R=it.keep?ML_RINGS.concat(ML_RINGS_KEEP):ML_RINGS;
+  /* Stage 2E: on the paper map every label may go as far as what is never dropped does (the far rings, then the rows): the
+     plan, framed inside the free part of the screen, is small and dense, and its free room lies around the sheet */
+  var far=it.keep||mode==="staff";
+  var R=far?ML_RINGS.concat(ML_RINGS_KEEP):ML_RINGS;
   for(var k=0;k<R.length;k++){ var n=R[k]<60?12:R[k]<120?16:24, rr=R[k]+cl;
     for(var a=0;a<n;a++){ var j=(a+1)>>1, th=-Math.PI/2+((a&1)?1:-1)*j*2*Math.PI/n;   /* from straight up, alternately either side */
       var x0=sx+Math.cos(th)*rr-w/2, y0=sy+Math.sin(th)*rr-h/2;
       if(mlFree(x0,y0,w,h,VW,VH,panels,obst)) return mlTake(it,x0,y0,true); } }
-  /* what is never dropped, last: the nearest free place on rows 8 px apart, sliding along each row (a long label between
-     two panels, where no ring position fits the gap) */
-  if(it.keep){   /* the places to try along a row: centred, and flush against each obstacle's sides and the screen's edges */
+  /* what is never dropped (and, on the paper map, every label), last: the nearest free place on rows 8 px apart, sliding
+     along each row (a long label between two panels, where no ring position fits the gap) */
+  if(far){   /* the places to try along a row: centred, and flush against each obstacle's sides and the screen's edges */
     var X=[sx-w/2,ML_PAD+0.01,VW-ML_PAD-w-0.01];
     [panels,obst,ML.taken].forEach(function(L){ L.forEach(function(q){ X.push(q[2]+ML_PAD+0.01,q[0]-ML_PAD-w-0.01); }); });
     X.sort(function(p,q){ return Math.abs(p+w/2-sx)-Math.abs(q+w/2-sx); });
@@ -2882,7 +3035,7 @@ function mlLayout(){
   var VW=renderer.domElement.clientWidth||window.innerWidth, VH=renderer.domElement.clientHeight||window.innerHeight;
   camera.updateMatrixWorld();
   mlLegendFit(VW,VH);
-  var list=mlCollect(), panels=mlPanels(), tanH=Math.tan(THREE.MathUtils.degToRad(camera.fov/2));
+  var list=mlCollect(), panels=mlPanels();
   var st={items:list.length,placed:0,leaders:0,dropped:0,occluded:0,offscreen:0,underPanel:0,keepMissing:[],dropped_:[],ms:0,nodes:0};
   var elig=[], dirty=[];
   list.forEach(function(it){
@@ -2890,7 +3043,7 @@ function mlLayout(){
     var depth=-_mlV.z;
     _mlW.copy(it.world).project(camera);
     if(depth<=camera.near||Math.abs(_mlW.x)>1||Math.abs(_mlW.y)>1){ it.state="offscreen"; st.offscreen++; return; }
-    it.sx=(_mlW.x*0.5+0.5)*VW; it.sy=(-_mlW.y*0.5+0.5)*VH; it.ppw=VH/(2*depth*tanH);
+    it.sx=(_mlW.x*0.5+0.5)*VW; it.sy=(-_mlW.y*0.5+0.5)*VH; it.ppw=1/worldPerPx(it.world);
     /* a place whose 10 px marker cannot be drawn inside the screen is not in view: off screen, not dropped */
     var me=5+ML_PAD; if(it.mode==="place"&&(it.sx<me||it.sy<me||it.sx>VW-me||it.sy>VH-me)){ it.state="offscreen"; st.offscreen++; return; }
     for(var p=0;p<panels.length;p++){ var q=panels[p]; if(it.sx>=q[0]&&it.sx<=q[2]&&it.sy>=q[1]&&it.sy<=q[3]){ it.state="panel"; st.underPanel++; return; } }
@@ -2951,11 +3104,15 @@ function paintLegend(){
   var counters=layerOn.symbols&&mode!=="terrain"&&!cleanView, land=mode!=="staff";
   var on={nation:counters||(land&&!isTrueScale()), foot:land&&isTrueScale(), "arrow-fr":side("fr"), "arrow-al":side("al"),
           halt:A.some(function(a){ return a.kind==="halt"; }), bound:layerOn.arrows&&(O.bounds||[]).length>0, plan:!!planSide,
-          badge:counters, analysis:!!layerOn.analysis, contours:!!layerOn.contours&&!cleanView};
+          badge:counters, analysis:!!layerOn.analysis, contours:!!layerOn.contours&&!cleanView,
+          wood:!land, village:!land};   /* Stage 2E: the paper map's own symbology */
   var key=JSON.stringify(on);
   if(key===_lgKey) return;
   _lgKey=key; ML.lgSize=null;
   lg.querySelectorAll("[data-lg]").forEach(function(e){ e.hidden=!on[e.dataset.lg]; });
+  var hint=document.getElementById("lg-hint");   /* the controls of the view shown: the paper map pans, the landscape orbits */
+  if(hint) hint.innerHTML=land?"drag to orbit &middot; scroll to zoom &middot; click or Tab to a counter or a name"
+    :"drag to pan &middot; scroll to zoom toward the pointer &middot; Tab to the map: arrows pan, + &minus; zoom &middot; click or Tab to a counter or a name";
 }
 function mlLegendFit(VW,VH){
   var lg=document.querySelector(".legend"), tg=document.getElementById("lg-toggle"); if(!lg||!tg) return;
@@ -2978,6 +3135,7 @@ function mlLegendFit(VW,VH){
 /* the drawn ground under a screen point: the view ray marched over groundY, then bisected */
 var _gRay=new THREE.Vector3();
 function groundAt(cx,cy){
+  if(camera.isOrthographicCamera) return MAPCAM.toGround(cx,cy);   /* the paper map: the plan point under the pointer */
   var VW=renderer.domElement.clientWidth||window.innerWidth, VH=renderer.domElement.clientHeight||window.innerHeight;
   camera.updateMatrixWorld();
   _gRay.set(cx/VW*2-1,-(cy/VH)*2+1,0.5).unproject(camera).sub(camera.position).normalize();
@@ -3143,7 +3301,7 @@ function poseBlock(rec,id,st){
 }
 var FIGHTING={attacking:1,engaged:1,charging:1,counterattack:1,repulsed:1,encircled:1,broken:1};
 function updateVisibility(){
-  var dist=camera.position.distanceTo(orbitTarget);
+  var dist=viewDist();   /* the paper map: the distance at which the landscape eye would show the ground at its scale */
   var wantCorps = dist>250;
   var showBde = dist<165;
   var showSym = layerOn.symbols && mode!=="terrain" && !cleanView;
@@ -3307,20 +3465,24 @@ function formationTop(x,z){
 }
 function camFloor(x,z){ return camGround(x,z)+CAM_CLEAR; }
 function clampCamera(){
-  var p=camera.position, f=camFloor(p.x,p.z);
-  if(p.y<f){ p.y=f; camera.lookAt(orbitTarget); CAM.clamps++; return true; }
+  var p=landCam.position, f=camFloor(p.x,p.z);
+  if(p.y<f){ p.y=f; landCam.lookAt(orbitTarget); CAM.clamps++; return true; }
   return false;
 }
 var _ov=new THREE.Vector3();
 /* orbit placement shared by drag, wheel and the self-test */
 function orbitPlace(){
-  camera.position.copy(orbitTarget).add(_ov.setFromSpherical(sph));
-  if(clampCamera()) sph.setFromVector3(_ov.copy(camera.position).sub(orbitTarget));
-  camera.lookAt(orbitTarget);
+  landCam.position.copy(orbitTarget).add(_ov.setFromSpherical(sph));
+  if(clampCamera()) sph.setFromVector3(_ov.copy(landCam.position).sub(orbitTarget));
+  landCam.lookAt(orbitTarget);
 }
+/* every camera move the app asks for (a preset, a centring, a tour stop, a chapter, an event) arrives here; on the paper
+   map it becomes a move of the plan (MAPCAM): the target centred in the free part of the screen, at the zoom that shows
+   the ground as the landscape eye would at that distance (mapWppAt) */
 function glide(toPos,toTgt,ms,bulge){
   freeCam=false;
-  var arc=setupArc(camera.position,orbitTarget,toPos,toTgt);
+  if(mode==="staff"){ MAPCAM.glideTo(toTgt.x,toTgt.z,mapWppAt(toPos.distanceTo(toTgt)),ms); return; }
+  var arc=setupArc(landCam.position,orbitTarget,toPos,toTgt);
   var t0=performance.now(), dur=RM?1:(ms||1500);
   /* a transition already running (a phase change's light and overlay fade) runs on under the glide: replacing it left the
      tour's arrows at opacity 0 and the previous phase's drawn (found in Stage 2D) */
@@ -3333,6 +3495,9 @@ function glide(toPos,toTgt,ms,bulge){
   };
 }
 function flyTo(v){   /* v is an authored preset: re-framed to the drawn ground */
+  if(mode==="staff"){ freeCam=false;   /* the paper map: the overview frames the whole field; any other preset centres its target at its distance */
+    if(v===VANTAGE.plan) MAPCAM.frameField(); else MAPCAM.glideTo(v[3],v[5],mapWppAt(Math.hypot(v[0]-v[3],v[1]-v[4],v[2]-v[5])),1600);
+    return; }
   v=reframe(v);
   glide(new THREE.Vector3(v[0],v[1],v[2]), new THREE.Vector3(v[3],v[4],v[5]), 1600, 0.12);
 }
@@ -3347,7 +3512,7 @@ var VANTAGE={
 /* ---------------- interaction ---------------- */
 function bindCanvas(){
   var el=renderer.domElement, dragging=false, moved=0, lx=0, ly=0;
-  function syncSph(){ sph.setFromVector3(camera.position.clone().sub(orbitTarget)); }
+  function syncSph(){ sph.setFromVector3(landCam.position.clone().sub(orbitTarget)); }
   el.addEventListener("pointerdown",function(e){
     dragging=true; moved=0; lx=e.clientX; ly=e.clientY; syncSph();
     el.setPointerCapture(e.pointerId);
@@ -3357,6 +3522,7 @@ function bindCanvas(){
     var dx=e.clientX-lx, dy=e.clientY-ly;
     moved+=Math.abs(dx)+Math.abs(dy);
     if(moved>4) freeCam=true;
+    if(mode==="staff"){ MAPCAM.pan(dx,dy); lx=e.clientX; ly=e.clientY; return; }   /* the paper map pans; it never orbits */
     sph.theta-=dx*0.005; sph.phi-=dy*0.005;
     sph.phi=Math.max(0.10,Math.min(Math.PI/2-0.03,sph.phi));
     lx=e.clientX; ly=e.clientY;
@@ -3371,7 +3537,9 @@ function bindCanvas(){
   });
   el.addEventListener("pointerleave",function(){ if(ML.hover){ ML.hover=null; el.style.cursor=""; requestRender(2); } });
   el.addEventListener("wheel",function(e){
-    e.preventDefault(); freeCam=true; syncSph();
+    e.preventDefault(); freeCam=true;
+    if(mode==="staff"){ MAPCAM.zoomAt(e.clientX,e.clientY,1+Math.sign(e.deltaY)*0.09); return; }   /* toward the cursor */
+    syncSph();
     sph.radius=Math.max(24,Math.min(620,sph.radius*(1+Math.sign(e.deltaY)*0.09)));
     orbitPlace();
   },{passive:false});
@@ -3592,10 +3760,12 @@ function buildUI(){
   document.addEventListener("transitionend",function(){ requestRender(2); });
   window.addEventListener("resize",function(){
     requestRender(3);
-    camera.aspect=window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
+    landCam.aspect=window.innerWidth/window.innerHeight;
+    landCam.updateProjectionMatrix();
     renderer.setSize(window.innerWidth,window.innerHeight);
     sizeFX();
+    /* the paper map: the field framed anew if that is what it shows, else the plan keeps its centre and scale */
+    if(mode==="staff"){ if(MAPCAM.framed()) MAPCAM.frameField(true); else MAPCAM.apply(); }
   });
   buildOOB();
 }
@@ -3616,6 +3786,9 @@ function paintKey(){
   document.querySelectorAll(".legend [data-key]").forEach(function(e){
     var k=COLOUR_KEY[e.dataset.key]; if(k) e.style.background=k.hex; });
   document.querySelectorAll(".legend .bnd").forEach(function(e){ e.style.borderTopColor=TOKENS.sym.label.dark.annotation; });
+  /* the paper map's woods and village footprints (Stage 2E): the colours world.js draws them in */
+  document.querySelectorAll(".legend .psym").forEach(function(e){ var t=TOKENS.sym.paperMap[e.dataset.sym];
+    e.style.background=t.fill; e.style.borderColor=t.edge; });
   /* the going classes: the same table the going layer is drawn from (world.js makeGoingPalette) */
   var gk=document.getElementById("goingkey");
   /* the slope classes are read from the model slope (decision 32): their thresholds in true degrees, provisional */
@@ -3642,7 +3815,7 @@ function openFirstRun(){
   document.body.classList.add("firstrun-on");
   var v=reframe(VANTAGE.plan);
   camArc=null;                                  /* the start-up phase transition keeps its light, not its camera */
-  camera.position.set(v[0],v[1],v[2]); orbitTarget.set(v[3],v[4],v[5]); camera.lookAt(orbitTarget);
+  landCam.position.set(v[0],v[1],v[2]); orbitTarget.set(v[3],v[4],v[5]); landCam.lookAt(orbitTarget);
   clampCamera();
   document.querySelectorAll(".van-btn").forEach(function(b){ b.setAttribute("aria-pressed",b.dataset.v==="plan"?"true":"false"); });
   requestRender(3);
@@ -4576,9 +4749,11 @@ var AUSTERLITZ_DEBUG=(function(){
     return settling;
   }
   function placeCamera(c){   /* an authored camera (a harness case, a preset): re-framed to the drawn ground */
-    c=reframe(c);
     tween=null; camArc=null; freeCam=true;
-    camera.position.set(c[0],c[1],c[2]); orbitTarget.set(c[3],c[4],c[5]); camera.lookAt(orbitTarget);
+    /* the paper map: the preset's target centred in the free part of the screen, at the zoom of its distance (glide) */
+    if(mode==="staff"){ MAPCAM.centreOn(c[3],c[5],mapWppAt(Math.hypot(c[0]-c[3],c[1]-c[4],c[2]-c[5])),true); return; }
+    c=reframe(c);
+    landCam.position.set(c[0],c[1],c[2]); orbitTarget.set(c[3],c[4],c[5]); landCam.lookAt(orbitTarget);
     clampCamera();
   }
   function applyCase(spec,aimOf){
@@ -4593,7 +4768,9 @@ var AUSTERLITZ_DEBUG=(function(){
     finishTween();
     select(null,null);
     if(spec.select) select(spec.select[0],spec.select[1]);
-    placeCamera(spec.cam||aimOf(spec));
+    /* Stage 2E: a paper-map case frames the whole field (paper:"frame"), or centres a preset or an aim */
+    if(mode==="staff"&&(spec.paper==="frame"||(!spec.cam&&!spec.aim))){ tween=null; freeCam=true; MAPCAM.frameField(true); }
+    else placeCamera(spec.cam||aimOf(spec));
     requestRender(3);
     return true;
   }
@@ -4676,11 +4853,13 @@ var AUSTERLITZ_DEBUG=(function(){
     var S=[
       {n:"landscape, Study, Saint-Hilaire selected",m:"terrain",p:"study",t:585,sel:["f","sthilaire"],aim:"sthilaire"},
       {n:"hybrid, Watch, IV Corps highlighted",m:"hybrid",p:"watch",t:600,sel:["f","c_iv"],aim:[285,289]},
-      {n:"paper map, Study",m:"staff",p:"study",t:570,sel:null,cam:[-27,262,41,-27,0,9]},
+      {n:"paper map, Study",m:"staff",p:"study",t:570,sel:null,paper:true},
+      {n:"paper map, Study, Saint-Hilaire selected",m:"staff",p:"study",t:585,sel:["f","sthilaire"],aim:"sthilaire"},
       {n:"landscape, Watch, 04:30",m:"terrain",p:"watch",t:300,sel:null,cam:VANTAGE.plan},
       {n:"landscape, Study, a plan, going and terrain study on",m:"terrain",p:"study",t:520,sel:null,cam:VANTAGE.field,layers:true},
       {n:"the first-run card",m:"terrain",p:"study",t:240,sel:null,first:true},
-      {n:"the guided tour, its third stop",m:"terrain",p:"study",t:240,sel:null,tour:3}
+      {n:"the guided tour, its third stop",m:"terrain",p:"study",t:240,sel:null,tour:3},
+      {n:"the guided tour on the paper map, its third stop",m:"staff",p:"study",t:240,sel:null,tour:3}
     ];
     var R={overlaps:[],panel:[],head:[],keep:[],a11y:[],legend:[],ctx:[],names:0,heads:0,placed:0,keepN:0,reachKey:[],reachHover:[],dropTested:0,enter:"",idle:true};
     function cross(a,b){ return Math.min(a[2],b[2])-Math.max(a[0],b[0])>0.5&&Math.min(a[3],b[3])-Math.max(a[1],b[1])>0.5; }
@@ -4696,9 +4875,12 @@ var AUSTERLITZ_DEBUG=(function(){
       select(null,null); if(s.sel) select(s.sel[0],s.sel[1]);
       if(s.first){ var frc=document.getElementById("firstrun"); frc.hidden=false; openFirstRun(); }
       else if(s.tour){ startTour(); for(var ts=1;ts<s.tour;ts++) tourGo(1); finishTween(); }
+      else if(s.paper){ tween=null; freeCam=true; MAPCAM.frameField(true); }
       else if(s.cam) placeCamera(s.cam);
       else { var q=typeof s.aim==="string"?posNow(s.aim):s.aim, w=W(q[0],q[1]), y=displayHeight(w[0],w[1]), d=_lv3.set(-0.55,0.62,0.56).normalize().multiplyScalar(90);
-        tween=null; camArc=null; freeCam=true; orbitTarget.set(w[0],y,w[1]); camera.position.set(w[0]+d.x,y+d.y,w[1]+d.z); camera.lookAt(orbitTarget); clampCamera(); }
+        tween=null; camArc=null; freeCam=true;
+        if(mode==="staff") MAPCAM.centreOn(w[0],w[1],mapWppAt(90),true);
+        else { orbitTarget.set(w[0],y,w[1]); landCam.position.set(w[0]+d.x,y+d.y,w[1]+d.z); landCam.lookAt(orbitTarget); clampCamera(); } }
       settle(20,true);
       /* render on demand: a pass without a drawn frame lays nothing out; a drawn frame lays out once */
       var fr=ML.frame; settle(4,true); if(ML.frame!==fr) R.idle=false; renderFrame(); if(ML.frame!==fr+1) R.idle=false;
@@ -4750,6 +4932,7 @@ var AUSTERLITZ_DEBUG=(function(){
         if(row("bound")!==(layerOn.arrows&&(O.bounds||[]).length>0)) R.ctx.push(s.n+": the boundary row");
         if(row("badge")!==(mode!=="terrain"&&layerOn.symbols)) R.ctx.push(s.n+": the badge row");
         if(row("foot")!==(mode!=="staff"&&isTrueScale())) R.ctx.push(s.n+": the footprint rows");
+        if(row("wood")!==(mode==="staff")||row("village")!==(mode==="staff")) R.ctx.push(s.n+": the paper map's wood and village rows");
         if((getComputedStyle(document.getElementById("goingkey")).display!=="none")!==goingOn) R.ctx.push(s.n+": the going rows"); }
       if(s.layers){ setPlan(planSide); if(goingOn) toggle("#going"); if(layerOn.analysis) toggle('.layer-btn[data-l="analysis"]'); }
       if(s.first) closeFirst(null);
@@ -4758,7 +4941,7 @@ var AUSTERLITZ_DEBUG=(function(){
     select(null,null); setPresentation("study");
     document.body.classList.remove("st-still");
     ck("map layer: 0 overlaps, and nothing over an interface panel or an arrow head", !R.overlaps.length&&!R.panel.length&&!R.head.length&&R.placed>0,
-      R.placed+" items drawn in 7 states (the first-run card and a tour stop among them), against "+R.heads+" arrow heads"+(R.overlaps.length?"; OVERLAP: "+R.overlaps.slice(0,4).join(", "):"")+
+      R.placed+" items drawn in "+S.length+" states (the first-run card, the paper map and a tour stop on each map among them), against "+R.heads+" arrow heads"+(R.overlaps.length?"; OVERLAP: "+R.overlaps.slice(0,4).join(", "):"")+
       (R.panel.length?"; UNDER A PANEL: "+R.panel.slice(0,4).join(", "):"")+(R.head.length?"; OVER A HEAD: "+R.head.slice(0,4).join(", "):""));
     ck("map layer: the selection, the highlighted family and the labels of live events are never dropped", !R.keep.length&&R.keepN>0,
       R.keepN+" such items in view"+(R.keep.length?"; NOT DRAWN: "+R.keep.join(", "):", all drawn"));
@@ -4766,9 +4949,96 @@ var AUSTERLITZ_DEBUG=(function(){
       !R.a11y.length&&R.names>0&&/^Enter/.test(R.enter), R.names+" formation items; "+R.enter+(R.a11y.length?"; BAD: "+R.a11y.slice(0,3).join(", "):""));
     ck("map layer: every dropped formation is reachable from the keyboard and by hovering its position", R.dropTested>0&&!R.reachKey.length&&!R.reachHover.length,
       R.dropTested+" dropped formations tested"+(R.reachKey.length?"; NOT BY KEYBOARD: "+R.reachKey.join(", "):"")+(R.reachHover.length?"; NOT BY HOVER: "+R.reachHover.join(", "):""));
-    ck("map layer: lays out only in a drawn frame (render on demand)", R.idle, R.idle?"no pass without a frame; one pass per frame, in 7 states":"a pass ran outside a drawn frame, or none in one");
+    ck("map layer: lays out only in a drawn frame (render on demand)", R.idle, R.idle?"no pass without a frame; one pass per frame, in "+S.length+" states":"a pass ran outside a drawn frame, or none in one");
     ck("legend: never over the dispatch, and its rows are what the view draws", !R.legend.length&&!R.ctx.length,
-      "7 states"+(R.legend.length?"; OVER THE DISPATCH: "+R.legend.join(", "):"")+(R.ctx.length?"; WRONG ROWS: "+R.ctx.join(", "):""));
+      S.length+" states"+(R.legend.length?"; OVER THE DISPATCH: "+R.legend.join(", "):"")+(R.ctx.length?"; WRONG ROWS: "+R.ctx.join(", "):""));
+  }
+  /* ---- Stage 2E: the paper map (docs/STAGE2_SPEC.md sections G and J; decisions 19, 25 and 29), at the current setting:
+     the north bearing, one scale across the view and the scale bar, the field framed in the free part of the screen, what
+     is drawn and what is hidden, and the controls (drag, wheel and keys through the handlers a visitor drives). Returns what
+     must not change with the setting, compared across settings by paperCross. ---- */
+  function paperChecks(ck){
+    var o={}, i, VW=renderer.domElement.clientWidth||innerWidth, VH=viewH(), el=renderer.domElement;
+    document.body.classList.add("st-still");
+    setPresentation("study"); if(mode!=="staff") setMode("staff");
+    setClock(570,{instant:true,force:true,camera:false}); finishTween(); select(null,null);
+    tween=null; freeCam=true; MAPCAM.frameField(true); settle(20,true); renderFrame();
+    function scr(mp){ var w=W(mp[0],mp[1]); _lv3.set(w[0],groundY(w[0],w[1]),w[1]).project(camera); return [(_lv3.x*0.5+0.5)*VW,(-_lv3.y*0.5+0.5)*VH]; }
+    function perKm(mp){ var g=GEOREF.toGeo(mp[0],mp[1]), dl=0.5/(111.32*Math.cos(g[0]*Math.PI/180)), a=scr(GEOREF.toMap(g[0],g[1]-dl)), b=scr(GEOREF.toMap(g[0],g[1]+dl));
+      return Math.hypot(a[0]-b[0],a[1]-b[1]); }
+    function bearing(){ var pb=GEOREF.GT.pratzeberg.map, g=GEOREF.toGeo(pb[0],pb[1]), c=scr(pb), u=scr(GEOREF.toMap(g[0]+0.01,g[1]));
+      return Math.atan2(u[0]-c[0],-(u[1]-c[1]))*180/Math.PI; }
+    /* flat, and the setting kept for the landscape */
+    var P=groundMesh.geometry.attributes.position.array, ymax=0; for(i=1;i<P.length;i+=3) ymax=Math.max(ymax,Math.abs(P[i]));
+    var pal=0; for(i=0;i<palPaper.length;i+=7) pal=(pal*31+Math.round(palPaper[i]*65535))%2147483647;
+    var geo=0; curOv.updateMatrixWorld(true); curOv.traverse(function(q){ if(!q.userData.drape||!q.geometry) return; var A=q.geometry.attributes.position.array;
+      for(var k=0;k<A.length;k+=5) geo=((geo*31+Math.round(A[k]*1000))%2147483647+2147483647)%2147483647; });
+    o.pal=pal; o.geo=geo; o.flat=ymax;
+    ck("paper map: the ground is drawn flat and hillshaded at its own factor, whatever the setting", ymax===0&&DISPLAY.flat&&groundPalette==="paper",
+      "largest |drawn height| "+ymax+"; hillshade \u00d7"+fmtFactor(PAPER_HILLSHADE)+" (palette checksum "+pal+"); the setting kept for the landscape: \u00d7"+fmtFactor(DISPLAY.factor));
+    /* north, one scale, the scale bar */
+    var brg=bearing(), GT=GEOREF.GT, K=[GT.pratzeberg.map,GT.sokolnitz.map,GT.santon.map,GT.satschan.map].map(perKm);
+    var kmax=Math.max.apply(null,K), kmin=Math.min.apply(null,K), spread=(kmax-kmin)/kmax, kmean=K.reduce(function(a,b){ return a+b; },0)/K.length;
+    ck("paper map: true north is up (within 0.5\u00b0)", Math.abs(brg)<=0.5, "GEOREF.NORTH on screen "+brg.toFixed(3)+"\u00b0 from up (the frame is rotated "+GEOREF.ROT_DEG.toFixed(2)+"\u00b0)");
+    var lab=(document.getElementById("sb-label").textContent||""), km=/km/.test(lab)?parseFloat(lab):parseFloat(lab)/1000, bw=document.getElementById("sb-fill").getBoundingClientRect().width;
+    var sbErr=Math.abs(bw-km*kmean)/(km*kmean);
+    o.pxkm=kmean;
+    ck("paper map: one scale across the view (four places within 1%), and the scale bar correct to 1%", spread<=0.01&&sbErr<=0.01,
+      "px per true km at the Pratzeberg, Sokolnitz, the Santon, Satschan: "+K.map(function(k){ return k.toFixed(2); }).join(", ")+" (spread "+(100*spread).toFixed(3)+"%); scale bar "+lab+" = "+bw.toFixed(1)+" px against "+(km*kmean).toFixed(1)+" (error "+(100*sbErr).toFixed(2)+"%)");
+    /* the whole modelled ground inside the free part of the screen */
+    var PN=mlPanels(), n=0, bad=0;
+    for(i=0;i<=36;i++) for(var j=0;j<=31;j++){ var x=-180+i*10, z=-155+j*10; _lv3.set(x,0,z).project(camera); var sx=(_lv3.x*0.5+0.5)*VW, sy=(-_lv3.y*0.5+0.5)*VH; n++;
+      var off=sx<0||sy<0||sx>VW||sy>VH; for(var k2=0;!off&&k2<PN.length;k2++){ var q=PN[k2]; if(sx>=q[0]&&sx<=q[2]&&sy>=q[1]&&sy<=q[3]) off=true; } if(off) bad++; }
+    ck("paper map: the whole field is framed inside the part of the screen no panel covers", bad===0,
+      (n-bad)+" of "+n+" points of the modelled ground on screen and clear of every panel; "+(1/(worldPerPx(null)*GEOREF.KM_PER_MAP*2)).toFixed(1)+" px per km in the free rectangle "+MAPCAM.freeRect().join(","));
+    /* drawn and hidden */
+    var hidden=[];
+    [["trees",world.trees],["conifers",world.conifers],["scrub",world.scrub],["houses",world.houses],["roofs",world.roofs],["spires",world.spires],["chimneys",world.chimneys],
+     ["mist",world.mist],["sky dome",world.dome]].forEach(function(q){ if(q[1]&&visibleUp(q[1])) hidden.push(q[0]); });
+    Object.keys(units).forEach(function(id){ var r=units[id]; if(r.block&&visibleUp(r.block)) hidden.push("figures of "+id); if(r.foot&&r.foot.visible) hidden.push("footprint of "+id);
+      if(r.smoke&&r.smoke.visible) hidden.push("smoke of "+id); if(r.dust&&r.dust.visible) hidden.push("dust of "+id); });
+    var drapes=0; curOv.traverse(function(q){ if(q.userData.drape&&q.userData.drape.kind!=="head") drapes++; });
+    var counters=Object.keys(ML.items).filter(function(k){ var it=ML.items[k]; return it.mode==="counter"&&it.state==="on"; }).length;
+    var drawn=[["hillshade",groundPalette==="paper"&&visibleUp(groundMesh)],["contours",!layerOn.contours||visibleUp(world.contours)],
+      ["village footprints",visibleUp(world.paper)&&world.paper.userData.villages>0],["woods symbology",visibleUp(world.paper)&&world.paper.userData.woods>0],
+      ["water",world.water.every(function(w2){ return visibleUp(w2); })],["draped arrows",drapes>0],["counters",counters>0]];
+    var missing=drawn.filter(function(q){ return !q[1]; }).map(function(q){ return q[0]; });
+    ck("paper map: no figures, roofs, chimneys, houses or 3D trees drawn; hillshade, contours, village footprints, water, woods, draped arrows and counters drawn",
+      !hidden.length&&!missing.length, (hidden.length?"DRAWN: "+hidden.slice(0,6).join(", ")+"; ":"")+(missing.length?"MISSING: "+missing.join(", ")+"; ":"")+
+      world.paper.userData.villages+" village footprints, "+world.paper.userData.woods+" woods, "+drapes+" draped overlay meshes, "+counters+" counters");
+    /* the controls, through the handlers: a drag pans (the ground under the pointer stays under it), the wheel zooms toward
+       the cursor, the keys pan; nothing orbits (north stays up, the landscape eye does not move) */
+    var fr=MAPCAM.freeRect(), cx=(fr[0]+fr[2])/2, cy=(fr[1]+fr[3])/2, spc=el.setPointerCapture, land=landCam.position.clone();
+    el.setPointerCapture=function(){};
+    function pe(t,x,y,b){ return new PointerEvent(t,{pointerId:1,isPrimary:true,pointerType:"mouse",clientX:x,clientY:y,buttons:b,button:0,bubbles:true,cancelable:true}); }
+    var g0=MAPCAM.toGround(cx,cy);
+    el.dispatchEvent(pe("pointerdown",cx,cy,1)); for(i=1;i<=10;i++) el.dispatchEvent(pe("pointermove",cx+12*i,cy+7*i,1)); window.dispatchEvent(pe("pointerup",cx+120,cy+70,0));
+    var a0=MAPCAM.toScreen(g0[0],g0[1]), dragErr=Math.hypot(a0[0]-(cx+120),a0[1]-(cy+70));
+    var wx=fr[0]+(fr[2]-fr[0])*0.3, wy=fr[1]+(fr[3]-fr[1])*0.7, g1=MAPCAM.toGround(wx,wy), w0=MAPCAM.state().wpp;
+    for(i=0;i<3;i++) el.dispatchEvent(new WheelEvent("wheel",{deltaY:-120,clientX:wx,clientY:wy,bubbles:true,cancelable:true}));
+    var a1=MAPCAM.toScreen(g1[0],g1[1]), zoomErr=Math.hypot(a1[0]-wx,a1[1]-wy), w1=MAPCAM.state().wpp;
+    var s0=MAPCAM.state(), clk=clock; ML.root.focus({preventScroll:true});
+    ML.root.dispatchEvent(new KeyboardEvent("keydown",{key:"ArrowRight",bubbles:true,cancelable:true}));
+    var s1=MAPCAM.state(), keyPx=Math.hypot(s1.x-s0.x,s1.z-s0.z)/s1.wpp; ML.root.blur();
+    el.setPointerCapture=spc; renderFrame();
+    var brg2=bearing(), still=landCam.position.distanceTo(land);
+    ck("paper map: a drag pans, the wheel zooms toward the cursor (the ground under it within 1 px), the keys pan; nothing orbits",
+      dragErr<=1&&zoomErr<=1&&w1<w0&&keyPx>1&&clock===clk&&Math.abs(brg2)<=0.5&&still<1e-9,
+      "drag 139 px: the ground point under the pointer ends "+dragErr.toFixed(3)+" px from it; three wheel steps ("+(w0/w1).toFixed(3)+" times closer): "+zoomErr.toFixed(3)+
+      " px; the right arrow key pans "+keyPx.toFixed(0)+" px, clock unchanged; north still "+brg2.toFixed(3)+"\u00b0 from up; the landscape eye moved "+still.toFixed(6));
+    /* back to the landscape: the relief as it was */
+    setMode("terrain"); settle(4,true);
+    var gw=0; for(i=0;i<300;i++){ var ix=(i*37)%(GROUND_NX+1), iz=(i*53)%(GROUND_NZ+1), gx=-GROUND_W/2+ix*GROUND_W/GROUND_NX, gz=-GROUND_D/2+iz*GROUND_D/GROUND_NZ;
+      gw=Math.max(gw,Math.abs(groundY(gx,gz)-displayHeight(gx,gz))); }
+    ck("paper map: leaving it redraws the relief at the setting", !DISPLAY.flat&&gw<1e-3&&displayScale()===DISPLAY.factor/GEOREF.EXAG,
+      "|groundY - displayHeight| at mesh vertices "+gw.toExponential(1)+" at \u00d7"+fmtFactor(DISPLAY.factor));
+    document.body.classList.remove("st-still");
+    return o;
+  }
+  function paperCross(B){
+    var F=DISPLAY.settings, M=B[F[0]], bad=F.filter(function(f){ return B[f].pal!==M.pal||B[f].geo!==M.geo||B[f].flat!==0||Math.abs(B[f].pxkm-M.pxkm)>1e-6; });
+    return [{name:"paper map: identical at every relief setting (flat ground, the same hillshade and the same draped overlays; decision 19)", ok:!bad.length,
+      detail:F.map(function(f){ return fmtFactor(f)+"\u00d7: hillshade "+B[f].pal+", overlays "+B[f].geo+", "+B[f].pxkm.toFixed(3)+" px/km"; }).join("; ")}];
   }
   function stage2bChecks(B){
     var out2=[], F=DISPLAY.settings, M=B[GEOREF.EXAG];
@@ -4804,12 +5074,13 @@ var AUSTERLITZ_DEBUG=(function(){
   function selfTest(){
     var out=[], t0=performance.now(), i;
     function ck(name,ok,detail){ out.push({name:name,ok:!!ok,detail:detail}); }
-    var save={t:clock,mode:mode,pres:presentation,pos:camera.position.clone(),tgt:orbitTarget.clone(),fc:freeCam};
+    var save={t:clock,mode:mode,pres:presentation,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,map:MAPCAM.state()};
     closeFirst(null); stopPlay(); if(tourStep>=0) exitTour();
+    if(mode==="staff") setMode("terrain");   /* the checks of the drawn relief run on the landscape (Stage 2E) */
 
     /* 1-5, the mist and the derived readings, at each display factor (Stage 2B: 1x, the default, GEOREF.EXAG).
        Replaces the single-factor checks of Stage 0; every threshold is the same. */
-    var keepClock, saveFactor=DISPLAY.factor, bySetting={};
+    var keepClock, saveFactor=DISPLAY.factor, bySetting={}, paperBy={};
     function atFactor(fct){
       setDisplayFactor(fct);
       var tag=" (at "+fmtFactor(fct)+"\u00d7)";
@@ -4853,7 +5124,7 @@ var AUSTERLITZ_DEBUG=(function(){
         a=reframe(a); b=reframe(b);
         var A=setupArc(new THREE.Vector3(a[0],a[1],a[2]),new THREE.Vector3(a[3],a[4],a[5]),new THREE.Vector3(b[0],b[1],b[2]),new THREE.Vector3(b[3],b[4],b[5]));
         for(var k=0;k<=24;k++){ applyArc(A,easeInOut(k/24),bulge); arcsN++;
-          var cl=camera.position.y-camGround(camera.position.x,camera.position.z); if(cl<arcsMin) arcsMin=cl; if(cl<CAM_CLEAR-1e-6) arcsBad++; }
+          var cl=landCam.position.y-camGround(landCam.position.x,landCam.position.z); if(cl<arcsMin) arcsMin=cl; if(cl<CAM_CLEAR-1e-6) arcsBad++; }
       }
       for(i=0;i+1<TOUR.length;i++) arcCheck(TOUR[i].cam,TOUR[i+1].cam,0.12);
       for(i=0;i+1<PHASES.length;i++) arcCheck(PHASES[i].cam,PHASES[i+1].cam,0.15);
@@ -4868,7 +5139,7 @@ var AUSTERLITZ_DEBUG=(function(){
       views.forEach(function(v){ var c=reframe(v[1]); orbitTarget.set(c[3],c[4],c[5]);
         for(var th=0;th<24;th++){
           sph.set(24,Math.PI/2-0.03,th/24*Math.PI*2); orbitPlace(); orbN++;
-          var cl=camera.position.y-camGround(camera.position.x,camera.position.z); if(cl<orbMin) orbMin=cl; if(cl<CAM_CLEAR-1e-6) orbBad++;
+          var cl=landCam.position.y-camGround(landCam.position.x,landCam.position.z); if(cl<orbMin) orbMin=cl; if(cl<CAM_CLEAR-1e-6) orbBad++;
         } });
       ck("camera: orbiting at the lowest pitch and closest zoom never enters the ground", orbBad===0,
         orbN+" orbit positions around "+views.length+" targets; lowest clearance "+orbMin.toFixed(2)+" units");
@@ -4922,10 +5193,12 @@ var AUSTERLITZ_DEBUG=(function(){
         dr.heads.n+" heads ("+dr.heads.al+" Allied chevrons, notch "+dr.heads.notch+" of the head's length ahead of its base; "+dr.heads.fr+" French plain)"+(dr.heads.bad.length?"; WRONG: "+dr.heads.bad.join(", "):""));
 
       layerChecks(ck);
+      paperBy[fct]=paperChecks(ck);
       bySetting[fct]=factorFacts(fct);
     }
     DISPLAY.settings.forEach(atFactor);
     stage2bChecks(bySetting).forEach(function(c){ out.push(c); });
+    paperCross(paperBy).forEach(function(c){ out.push(c); });
     setDisplayFactor(saveFactor);
 
     /* 6. the first-run key, the legend, and what is actually drawn */
@@ -5004,7 +5277,8 @@ var AUSTERLITZ_DEBUG=(function(){
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);
     setClock(save.t,{instant:true,force:true,camera:false}); finishTween();
-    camera.position.copy(save.pos); orbitTarget.copy(save.tgt); camera.lookAt(orbitTarget); clampCamera(); freeCam=save.fc;
+    landCam.position.copy(save.pos); orbitTarget.copy(save.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=save.fc;
+    if(mode==="staff") MAPCAM.restore(save.map);
     requestRender(3);
     return {ms:Math.round(performance.now()-t0), ok:out.every(function(c){ return c.ok; }), checks:out};
   }
