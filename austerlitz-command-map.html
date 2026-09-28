@@ -581,6 +581,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 .ml-lines{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
 .ml-item{position:absolute;left:0;top:0;opacity:0;white-space:nowrap;font-family:var(--sans);font-weight:400;border-radius:2px}
 .ml-item.on{opacity:1}
+.ml-item.ml-wrap{white-space:normal}
 .ml-item:focus{outline:none}
 .ml-item:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .mlt{font-size:var(--t-ui);line-height:16px;padding:0 5px 1px}
@@ -6996,6 +6997,17 @@ function mlPlaceItem(it,VW,VH,panels,obst){
       for(var xi=0;xi<X.length;xi++) if(Math.abs(X[xi]+w/2-sx)<=w/2+380&&mlFree(X[xi],yy,w,h,VW,VH,panels,obst)) return mlTake(it,X[xi],yy,true); } }
   return false;
 }
+/* Stage 2E: what is never dropped and finds no room whole is laid out again with its words wrapped, narrower each time,
+   until it fits. Found on the paper map at 1366 x 768 with a dossier open, where the only free strip (236 px, between the
+   dispatch and the drawer) is narrower than the selection's full counter (308 px) and a live event's name (355 px). A last
+   resort: where everything fits whole, as in every view before 2E, nothing wraps. */
+function mlWrapPlace(it,VW,VH,panels,obst){
+  var w0=it.w, h0=it.h; it.el.classList.add("ml-wrap");
+  for(var f=0.75;f>0.3;f-=0.1){ it.el.style.maxWidth=Math.max(110,Math.round(w0*f))+"px";
+    var r=it.el.getBoundingClientRect(); it.w=Math.ceil(r.width); it.h=Math.ceil(r.height);
+    if(mlPlaceItem(it,VW,VH,panels,obst)){ it.wrapped=true; return true; } }
+  it.el.classList.remove("ml-wrap"); it.el.style.maxWidth=""; it.w=w0; it.h=h0; return false;
+}
 function mlTake(it,x0,y0,lead){ it.rect=[x0,y0,x0+it.w,y0+it.h]; it.lead=lead; it.state="on"; ML.taken.push(it.rect); return true; }
 /* the nearest point of a rectangle to (x, y) */
 function mlNear(r,x,y){ return [Math.max(r[0],Math.min(x,r[2])),Math.max(r[1],Math.min(y,r[3]))]; }
@@ -7025,6 +7037,7 @@ function mlLayout(){
     for(var p=0;p<panels.length;p++){ var q=panels[p]; if(it.sx>=q[0]&&it.sx<=q[2]&&it.sy>=q[1]&&it.sy<=q[3]){ it.state="panel"; st.underPanel++; return; } }
     it.eFrame=ML.frame; it.state=""; elig.push(it);
     if(!it.disp){ it.el.style.display=""; it.disp=true; it.dirty=true; }
+    if(it.wrapped){ it.el.classList.remove("ml-wrap"); it.el.style.maxWidth=""; it.wrapped=false; it.dirty=true; }   /* each pass tries it whole first */
     if(it.dirty) dirty.push(it);
   });
   for(var k in ML.items){ var q=ML.items[k]; if(q.eFrame!==ML.frame&&q.disp){ q.el.style.display="none"; q.disp=false; q.on=false; q.el.classList.remove("on"); q.tx=null; } }
@@ -7034,7 +7047,7 @@ function mlLayout(){
   var order=elig.filter(function(it){ return !it.occ; }).sort(function(a,b){ return (a.keep!==b.keep)?(a.keep?-1:1):(a.pri-b.pri); });
   ML.taken=[];
   order.forEach(function(it){
-    if(mlPlaceItem(it,VW,VH,panels,obst)){ st.placed++; if(it.lead) st.leaders++; }
+    if(mlPlaceItem(it,VW,VH,panels,obst)||(it.keep&&mlWrapPlace(it,VW,VH,panels,obst))){ st.placed++; if(it.lead) st.leaders++; }
     else { it.state="dropped"; st.dropped++; st.dropped_.push(it.key); if(it.keep) st.keepMissing.push(it.key); }
   });
   /* write: positions, visibility, the leader lines and markers */
@@ -7155,15 +7168,17 @@ function mlHit(cx,cy){
   return null;
 }
 /* the formation whose counter or name anchor lies within 20 px (a corps counter has no footprint of its own) */
-function mlNearAnchor(cx,cy){
-  var best=null, bd=400;
-  for(var k in ML.items){ var it=ML.items[k]; if(!it.fid||it.eFrame!==ML.frame||it.state==="occluded") continue;
+function mlNearAnchor(cx,cy,r2,dropped){
+  var best=null, bd=r2||400;
+  for(var k in ML.items){ var it=ML.items[k]; if(!it.fid||it.eFrame!==ML.frame||it.state==="occluded"||(dropped&&it.state!=="dropped")) continue;
     var d=(it.sx-cx)*(it.sx-cx)+(it.sy-cy)*(it.sy-cy); if(d<bd){ bd=d; best=it.fid; } }
   return best;
 }
 /* the pointer over a counter, a name or a formation's position: that formation is shown, full and never dropped */
 function mlHoverAt(cx,cy){
-  var it=mlHit(cx,cy), id=(it&&it.fid)||pickFormation(cx,cy)||mlNearAnchor(cx,cy);   /* a place or arrow label is no formation: look under it */
+  /* a dropped formation's own position (within 6 px) comes first, even under another item's box: Stage 2E found a dropped
+     counter on the small framed paper map whose anchor lay under a neighbour's counter, reachable only from the keyboard */
+  var it=mlHit(cx,cy), id=mlNearAnchor(cx,cy,36,true)||(it&&it.fid)||pickFormation(cx,cy)||mlNearAnchor(cx,cy);   /* a place or arrow label is no formation: look under it */
   var cur=(it&&it.pick)||id?"pointer":"";
   if(renderer.domElement.style.cursor!==cur) renderer.domElement.style.cursor=cur;
   if(id!==ML.hover){ ML.hover=id; requestRender(2); }
