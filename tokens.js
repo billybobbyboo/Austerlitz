@@ -6,6 +6,8 @@
    theme.dark is the landscape, theme.paper the paper map (body.mode-staff).
    sym.plate (Stage 2D) is the plate under every map-layer label: opaque enough that each map text colour below meets
    WCAG AA over black and over white ground (dark 0.88, worst 5.8:1, the road ink; paper 0.95, worst 4.6:1, the water ink).
+   sym.paperMap (Stage 2E) is the paper map's own symbology: woods (a tint, the tree marks and the outline) and the flat
+   village footprints. Symbols on the map, not text: the ground's cover colours stay in world.js (Stage 4).
    ============================================================ */
 var TOKENS = /*TOKENS:BEGIN*/{
   "theme": {
@@ -59,6 +61,10 @@ var TOKENS = /*TOKENS:BEGIN*/{
       "paper": {"halo": "rgba(246,241,229,.9)", "ink": "#3A362C", "annotation": "#3A362C"}
     },
     "plate": {"dark": "rgba(10,14,18,.88)", "paper": "rgba(246,241,229,.95)"},
+    "paperMap": {
+      "wood":    {"fill": "#C9D3B2", "mark": "#566E43", "edge": "#566E43"},
+      "village": {"fill": "#B8A58A", "edge": "#6B5B45"}
+    },
     "place": {
       "dark":  {"water": "#8FB6CC", "height": "#DCDAD4", "road": "#B0A48C", "other": "#E8E2D3", "fill": "#141A20", "halo": "rgba(10,14,18,.8)"},
       "paper": {"water": "#3C6A86", "height": "#56503E", "road": "#6B5B45", "other": "#3A362C", "fill": "#F6F1E5", "halo": "rgba(246,241,229,.9)"}

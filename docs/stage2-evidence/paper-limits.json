@@ -1,0 +1,378 @@
+{
+ "paper-north-up": {
+  "view2E": {
+   "x": -162.760507527369,
+   "z": 111.14404071055083,
+   "wpp": 0.9243727804886405,
+   "free": [
+    768,
+    64,
+    1240,
+    712
+   ],
+   "dropped": 11,
+   "unob": 0.3681,
+   "panels": {
+    ".rail": [
+     0,
+     0,
+     300,
+     730
+    ],
+    ".dispatch": [
+     314,
+     136,
+     440,
+     580
+    ],
+    ".legend": [
+     1286,
+     284.546875,
+     296,
+     431.453125
+    ],
+    ".timebar": [
+     0,
+     729.859375,
+     1600,
+     170.140625
+    ],
+    ".tools": [
+     1257.8125,
+     20,
+     320.1875,
+     86
+    ],
+    "#viewmode": [
+     712.3515625,
+     14,
+     175.296875,
+     34
+    ],
+    ".drawer": [
+     1600,
+     0,
+     376,
+     900
+    ],
+    "#selchip": null,
+    "#vsbadge": null
+   }
+  },
+  "probe2C": {
+   "native": {
+    "hidden": 19,
+    "stats": {
+     "shown": 15,
+     "hidden": 19,
+     "moved": 12,
+     "unresolved": 0,
+     "shrunk": 0
+    },
+    "unob": 0.3028,
+    "pxPerUnit": 1.0818146326976272,
+    "unob720": 0.1511
+   },
+   "matched": {
+    "hidden": 20,
+    "stats": {
+     "shown": 15,
+     "hidden": 20,
+     "moved": 12,
+     "unresolved": 0,
+     "shrunk": 0
+    },
+    "unob": 0.3681,
+    "pxPerUnit": 1.0818146326976272
+   }
+  },
+  "limitNative": 19,
+  "limitMatched": 20,
+  "baseline": [
+   0.3028,
+   0.1511
+  ]
+ },
+ "paper-close": {
+  "view2E": {
+   "x": -72.5934166141639,
+   "z": 61.185305809856175,
+   "wpp": 0.04312561895804498,
+   "free": [
+    768,
+    64,
+    1240,
+    712
+   ],
+   "dropped": 1,
+   "unob": 0.3607,
+   "panels": {
+    ".rail": [
+     0,
+     0,
+     300,
+     730
+    ],
+    ".dispatch": [
+     314,
+     136,
+     440,
+     580
+    ],
+    ".legend": [
+     1286,
+     248.921875,
+     296,
+     467.078125
+    ],
+    ".timebar": [
+     0,
+     729.859375,
+     1600,
+     170.140625
+    ],
+    ".tools": [
+     1257.8125,
+     20,
+     320.1875,
+     86
+    ],
+    "#viewmode": [
+     712.3515625,
+     14,
+     175.296875,
+     34
+    ],
+    ".drawer": [
+     1600,
+     0,
+     376,
+     900
+    ],
+    "#selchip": null,
+    "#vsbadge": null
+   }
+  },
+  "probe2C": {
+   "native": {
+    "hidden": 3,
+    "stats": {
+     "shown": 6,
+     "hidden": 3,
+     "moved": 1,
+     "unresolved": 0,
+     "shrunk": 0
+    },
+    "unob": 0.3028,
+    "pxPerUnit": 23.18807298679831,
+    "unob720": 0.1626
+   },
+   "matched": {
+    "hidden": 2,
+    "stats": {
+     "shown": 6,
+     "hidden": 2,
+     "moved": 1,
+     "unresolved": 0,
+     "shrunk": 0
+    },
+    "unob": 0.3607,
+    "pxPerUnit": 23.18807298679831
+   }
+  },
+  "limitNative": 3,
+  "limitMatched": 2,
+  "baseline": [
+   0.3028,
+   0.1626
+  ]
+ },
+ "paper-drawer": {
+  "view2E": {
+   "x": -29.801380368424688,
+   "z": 21.187064567586567,
+   "wpp": 0.06394488328261842,
+   "free": [
+    768,
+    120,
+    896,
+    712
+   ],
+   "dropped": 4,
+   "unob": 0.1782,
+   "panels": {
+    ".rail": [
+     0,
+     0,
+     300,
+     730
+    ],
+    ".dispatch": [
+     314,
+     136,
+     440,
+     580
+    ],
+    ".legend": [
+     910,
+     284.546875,
+     296,
+     431.453125
+    ],
+    ".timebar": [
+     0,
+     729.859375,
+     1600,
+     170.140625
+    ],
+    ".tools": [
+     881.8125,
+     20,
+     320.1875,
+     86
+    ],
+    "#viewmode": [
+     712.3515625,
+     14,
+     175.296875,
+     34
+    ],
+    ".drawer": [
+     1224,
+     0,
+     376,
+     900
+    ],
+    "#selchip": null,
+    "#vsbadge": null
+   }
+  },
+  "probe2C": {
+   "native": {
+    "hidden": 3,
+    "stats": {
+     "shown": 9,
+     "hidden": 3,
+     "moved": 3,
+     "unresolved": 0,
+     "shrunk": 0
+    },
+    "unob": 0.1477,
+    "pxPerUnit": 15.638467828305844,
+    "unob720": 0.0697
+   },
+   "matched": {
+    "hidden": 5,
+    "stats": {
+     "shown": 11,
+     "hidden": 5,
+     "moved": 4,
+     "unresolved": 0,
+     "shrunk": 0
+    },
+    "unob": 0.1782,
+    "pxPerUnit": 15.638467828305844
+   }
+  },
+  "limitNative": 3,
+  "limitMatched": 5,
+  "baseline": [
+   0.1477,
+   0.0697
+  ]
+ },
+ "paper-laptop": {
+  "view2E": {
+   "x": -500.2574353795298,
+   "z": 361.5638728882632,
+   "wpp": 2.870420739412094,
+   "free": [
+    768,
+    16,
+    920,
+    568
+   ],
+   "dropped": 17,
+   "unob": 0.2218,
+   "panels": {
+    ".rail": [
+     0,
+     0,
+     300,
+     581
+    ],
+    ".dispatch": [
+     314,
+     106,
+     440,
+     461
+    ],
+    ".legend": [
+     966,
+     135.546875,
+     296,
+     431.453125
+    ],
+    ".timebar": [
+     0,
+     580.859375,
+     1280,
+     139.140625
+    ],
+    ".tools": [
+     937.8125,
+     20,
+     320.1875,
+     82
+    ],
+    "#viewmode": [
+     552.3515625,
+     14,
+     175.296875,
+     34
+    ],
+    ".drawer": [
+     1280,
+     0,
+     376,
+     720
+    ],
+    "#selchip": null,
+    "#vsbadge": null
+   }
+  },
+  "probe2C": {
+   "native": {
+    "hidden": 0,
+    "stats": {
+     "shown": 0,
+     "hidden": 0,
+     "moved": 0,
+     "unresolved": 0,
+     "shrunk": 0
+    },
+    "unob": 0.1511,
+    "pxPerUnit": 0.3483809834110985,
+    "unob720": 0.1511
+   },
+   "matched": {
+    "hidden": 21,
+    "stats": {
+     "shown": 14,
+     "hidden": 21,
+     "moved": 13,
+     "unresolved": 0,
+     "shrunk": 0
+    },
+    "unob": 0.2218,
+    "pxPerUnit": 0.3483809834110985
+   }
+  },
+  "limitNative": 0,
+  "limitMatched": 21,
+  "baseline": [
+   0.1511,
+   0.1511
+  ]
+ }
+}

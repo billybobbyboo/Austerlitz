@@ -12,7 +12,14 @@ module.exports.KNOWN=KNOWN;
    today"; section F.3's earlier counts, on the Stage 1B build, were 12, 14, 10, 10, 9, 9, 7, 21, 5, 11, 10): the map layer
    may drop no more in that view (decision 39). */
 const DROP_LIMIT={"first-run":12,"first-run-laptop":16,"overview-field":11,"overview-plan":12,"close-sokolnitz":18,"staff-paper":13,
-  "pratzen-low":13,"pratzen-orbit-min":27,"selected-formation":3,"watch-selected":8,"hybrid-dimmed":13,"pratzen-low-1x":12,"pratzen-low-10x":8};
+  "pratzen-low":13,"pratzen-orbit-min":27,"selected-formation":3,"watch-selected":8,"hybrid-dimmed":13,"pratzen-low-1x":12,"pratzen-low-10x":8,
+  /* Stage 2E: the four paper-map views are new, and the 2C build has no plan camera. tools/stage2/paper-limits.js reproduces
+     each on the 2C build (its own camera straight down, north up, at the 2E view's centre and scale) and counts what the 2C
+     canvas pass hides there, with the 2C panels moved to where the 2E panels stand ("matched"). With the 2C build's own
+     panels (the method used above) the counts are 19, 3, 3 and 0: its 587 px legend covers ground the 2E legend leaves free,
+     and the 2C pass counts an item under a panel as neither shown nor hidden, so at 1280 x 720, where that legend covers the
+     whole framed field, it hides nothing by construction. The matched counts are the limits (CHANGELOG.md, Stage 2E). */
+  "paper-north-up":20,"paper-close":2,"paper-drawer":5,"paper-laptop":21};
 /* section H: the unobstructed share of the viewport on the Stage 2C build, at the case's viewport and at 1280 x 720, measured
    by this harness (CSS transitions off, the panels at rest). It must not fall. These equal tools/stage2/map-text.js's values
    in every view but one: selected-formation at 1280 x 720 is 6.97% at rest, where map-text.js reported 15.1% with the
@@ -20,8 +27,17 @@ const DROP_LIMIT={"first-run":12,"first-run-laptop":16,"overview-field":11,"over
 const UNOBSTRUCTED={"first-run":[0.5442,0.4391],"first-run-laptop":[0.4831,0.4391],"overview-field":[0.3028,0.1511],"overview-plan":[0.8045,0.7987],
   "close-sokolnitz":[0.8045,0.7987],"staff-paper":[0.3028,0.1511],"pratzen-low":[0.8045,0.7709],"pratzen-orbit-min":[0.8045,0.7709],
   "selected-formation":[0.1477,0.0697],"watch-selected":[0.7844,0.732],"hybrid-dimmed":[0.7869,0.7434],"pratzen-low-1x":[0.8045,0.7709],
-  "pratzen-low-10x":[0.8045,0.7709]};
+  "pratzen-low-10x":[0.8045,0.7709],
+  /* Stage 2E: the paper-map views on the 2C build in the same presentation and selection, its own panels (paper-limits.js) */
+  "paper-north-up":[0.3028,0.1511],"paper-close":[0.3028,0.1626],"paper-drawer":[0.1477,0.0697],"paper-laptop":[0.1511,0.1511]};
 const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harness machine */
+/* Stage 2E (section J, 2E): every paper-map view is a true north-up plan: GEOREF.NORTH within 0.5 degrees of up; screen pixels
+   per true km at four places equal to 1% (on the 2D build's tilted staff map they differ by 6.0% and north is 17.8 degrees
+   off); the scale bar correct to 1%; no figure, roof, chimney, house or 3D tree drawn; hillshade, contours, village
+   footprints, water, woods, draped arrows and counters drawn. The views that enter the paper map as a visitor does frame the
+   whole modelled ground inside the unobstructed area (every sample point on screen and clear of every panel). All new. */
+const PAPER={north:0.5, spread:0.01, scaleBar:0.01}, FRAMED=["paper-north-up","paper-laptop"];
+module.exports.PAPER=PAPER; module.exports.FRAMED=FRAMED;
 module.exports.DROP_LIMIT=DROP_LIMIT; module.exports.UNOBSTRUCTED=UNOBSTRUCTED; module.exports.LAYER_MS=LAYER_MS;
 /* Stage 0 guarantees, checked on every baseline case (harness --test). The numbers are the
    contract; each failure message says what a visitor would see. */
@@ -58,5 +74,14 @@ module.exports.check=function(name,m){
   if(U&&m.unobstructed!==undefined&&m.unobstructed<U[0]) f.push("unobstructed map "+(100*m.unobstructed).toFixed(1)+"%, below the Stage 2C "+(100*U[0]).toFixed(1)+"%");
   if(U&&m.unobstructed720!==undefined&&m.unobstructed720<U[1]) f.push("unobstructed map at 1280 x 720 "+(100*m.unobstructed720).toFixed(1)+"%, below the Stage 2C "+(100*U[1]).toFixed(1)+"%");
   if(m.legendOverDispatch>0) f.push("the legend lies over the dispatch ("+Math.round(m.legendOverDispatch)+" px)");
+  const Pm=m.paper;
+  if(Pm){
+    if(!(Math.abs(Pm.northBearing)<=PAPER.north)) f.push("paper map: north is "+Pm.northBearing+" degrees off up (limit "+PAPER.north+")");
+    if(!(Pm.spread<=PAPER.spread)) f.push("paper map: px per true km differs by "+(100*Pm.spread).toFixed(2)+"% across the view "+JSON.stringify(Pm.pxPerKm)+" (limit 1%)");
+    if(!(Pm.scaleBar.err<=PAPER.scaleBar)) f.push("paper map: the scale bar ("+Pm.scaleBar.label+", "+Pm.scaleBar.px+" px) is off by "+(100*Pm.scaleBar.err).toFixed(2)+"% (want "+Pm.scaleBar.want+" px)");
+    if(Pm.hidden.length) f.push("paper map draws what it hides: "+Pm.hidden.slice(0,6).join(", "));
+    const miss=Object.keys(Pm.drawn).filter(k=>!Pm.drawn[k]); if(miss.length) f.push("paper map does not draw: "+miss.join(", "));
+    if(FRAMED.includes(name)&&Pm.frameInFree<1) f.push("paper map: "+(100*(1-Pm.frameInFree)).toFixed(1)+"% of the modelled ground is off screen or under a panel (on screen "+(100*Pm.frameOnScreen).toFixed(1)+"%)");
+  }
   return f;
 };

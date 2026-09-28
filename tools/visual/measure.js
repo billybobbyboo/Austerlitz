@@ -239,6 +239,49 @@
     });
   }
 
+  /* Stage 2E: the paper map's geometry, read from the page as drawn (docs/STAGE2_SPEC.md section J, 2E): the bearing of
+     GEOREF.NORTH on screen, screen pixels per true kilometre (east-west, from GEOREF) at four places, the scale bar against
+     them, the share of the modelled ground (360 x 310 world units, sampled every 10) on screen and in the unobstructed area,
+     and what is drawn and hidden. Runs on any build in staff mode (the perspective staff map before 2E, for comparison). */
+  function paperMap(){
+    if(typeof mode==="undefined"||mode!=="staff") return null;
+    camera.updateMatrixWorld(true);
+    var VW=window.innerWidth, VH=window.innerHeight, v=new V();
+    function scr(mp){ var w=W(mp[0],mp[1]); v.set(w[0],rg(w[0],w[1]),w[1]).project(camera); return [(v.x*0.5+0.5)*VW,(-v.y*0.5+0.5)*VH]; }
+    function perKm(mp){ var g=GEOREF.toGeo(mp[0],mp[1]), dl=0.5/(111.32*Math.cos(g[0]*Math.PI/180)), a=scr(GEOREF.toMap(g[0],g[1]-dl)), b=scr(GEOREF.toMap(g[0],g[1]+dl));
+      return +Math.hypot(a[0]-b[0],a[1]-b[1]).toFixed(3); }
+    var GT=GEOREF.GT, pb=GT.pratzeberg.map, g=GEOREF.toGeo(pb[0],pb[1]), c=scr(pb), u=scr(GEOREF.toMap(g[0]+0.01,g[1]));
+    var brg=Math.atan2(u[0]-c[0],-(u[1]-c[1]))*180/Math.PI;
+    var K={pratzeberg:perKm(pb),sokolnitz:perKm(GT.sokolnitz.map),santon:perKm(GT.santon.map),satschan:perKm(GT.satschan.map)}, KV=Object.values(K);
+    var kmax=Math.max.apply(null,KV), kmin=Math.min.apply(null,KV), kmean=KV.reduce(function(a,b){ return a+b; },0)/KV.length;
+    var lab=(document.getElementById("sb-label")||{}).textContent||"", km=/km/.test(lab)?parseFloat(lab):parseFloat(lab)/1000;
+    var sb=document.getElementById("sb-fill"), bw=sb?sb.getBoundingClientRect().width:0;
+    /* the harness's own panel list, as unobstructed() reads it */
+    var R=[], railHidden=document.body.classList.contains("rail-hidden");
+    [".rail",".dispatch",".legend",".timebar",".tools","#viewmode","#firstrun",".drawer","#tourbar","#selchip","#layerpop","#vsbadge"].forEach(function(q){ document.querySelectorAll(q).forEach(function(e){
+      var cs=getComputedStyle(e); if(cs.display==="none"||cs.visibility==="hidden"||+cs.opacity<0.05||e.hidden) return;
+      if((e.classList.contains("rail")&&railHidden)||(e.classList.contains("drawer")&&!e.classList.contains("on"))) return;
+      var r=e.getBoundingClientRect(); if(r.width>0&&r.height>0) R.push([r.left,r.top,r.right,r.bottom]); }); });
+    var n=0, onS=0, inF=0;
+    for(var i=0;i<=36;i++) for(var j=0;j<=31;j++){ var x=-180+i*10, z=-155+j*10; v.set(x,rg(x,z),z).project(camera); var sx=(v.x*0.5+0.5)*VW, sy=(-v.y*0.5+0.5)*VH; n++;
+      if(sx<0||sy<0||sx>VW||sy>VH) continue; onS++; var cov=false; for(var k=0;k<R.length;k++){ var q=R[k]; if(sx>=q[0]&&sx<=q[2]&&sy>=q[1]&&sy<=q[3]){ cov=true; break; } } if(!cov) inF++; }
+    var hidden=[];
+    [["trees",world.trees],["conifers",world.conifers],["scrub",world.scrub],["houses",world.houses],["roofs",world.roofs],["spires",world.spires],["chimneys",world.chimneys],["mist",world.mist],["dome",world.dome]]
+      .forEach(function(q){ if(q[1]&&effVisible(q[1])) hidden.push(q[0]); });
+    Object.keys(units).forEach(function(id){ var r=units[id]; if(r.block&&effVisible(r.block)) hidden.push("figures:"+id); if(r.smoke&&effVisible(r.smoke)) hidden.push("smoke:"+id); if(r.dust&&effVisible(r.dust)) hidden.push("dust:"+id); });
+    var drapes=0; if(typeof curOv!=="undefined"&&curOv) curOv.traverse(function(o){ if(o.userData&&o.userData.drape&&o.userData.drape.kind!=="head"&&effVisible(o)) drapes++; });
+    var counters=hasLayer()?Object.keys(ML.items).filter(function(k){ return ML.items[k].mode==="counter"&&ML.items[k].on; }).length:0;
+    var P=world.paper;
+    var drawn={hillshade:(typeof groundPalette!=="undefined"&&groundPalette==="paper"&&effVisible(groundMesh)),contours:!layerOn.contours||effVisible(world.contours),
+      villageFootprints:!!(P&&effVisible(P)&&P.userData.villages>0),woods:!!(P&&effVisible(P)&&P.userData.woods>0),
+      water:world.water.every(function(w){ return effVisible(w); }),drapedArrows:drapes>0,counters:counters>0};
+    var ym=0, GP=groundMesh.geometry.attributes.position.array; for(var q2=1;q2<GP.length;q2+=3) ym=Math.max(ym,Math.abs(GP[q2]));
+    return {camera:camera.isOrthographicCamera?"orthographic":"perspective "+camera.fov+"\u00b0", northBearing:+brg.toFixed(3), pxPerKm:K,
+      spread:+((kmax-kmin)/kmax).toFixed(5), scaleBar:{label:lab,px:+bw.toFixed(1),want:+(km*kmean).toFixed(1),err:km?+(Math.abs(bw-km*kmean)/(km*kmean)).toFixed(5):null},
+      frameOnScreen:+(onS/n).toFixed(4), frameInFree:+(inF/n).toFixed(4), hidden:hidden, drawn:drawn, groundMaxY:+ym.toFixed(4),
+      hillshade:(typeof PAPER_HILLSHADE!=="undefined")?PAPER_HILLSHADE:null};
+  }
+
   /* ---- figures on the ground ---- */
   function figureGeos(){ var K=(typeof figKit==="function")?figKit():FIG; return [K.infCoat,K.infFixed,K.horse,K.rider,K.riderFixed]; }
   function figures(){
@@ -324,7 +367,7 @@
       firstRunVisible:(function(){ var d=document.getElementById("firstrun"); return !!d&&!d.hidden; })(),
       dispatchVisible:(function(){ var d=document.querySelector(".dispatch"); return !!d&&getComputedStyle(d).display!=="none"&&d.getBoundingClientRect().width>0; })(),
       stats:(D()&&D().stats)?D().stats():null,
-      layer:layer(), unobstructed:unobstructed(), legendOverDispatch:legendOverDispatch()
+      layer:layer(), unobstructed:unobstructed(), legendOverDispatch:legendOverDispatch(), paper:paperMap()
     };
   }
 
@@ -369,5 +412,5 @@
 
   window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures,
                 overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, layerTexts:layerTexts,
-                legendOverDispatch:legendOverDispatch, headRects:headRects};
+                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap};
 })();

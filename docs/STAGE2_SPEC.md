@@ -5,7 +5,9 @@ remedy (c) accepted; the chronology data task that followed it (owner decisions 
 exaggeration, standards) is implemented as specified in §A, §B, §I.1, §J and §K; what it found is at the end of §K. The
 derived-arrival question of §M.13 is decided (the 2C precondition), and 2C (movement arrows) is implemented as §C.1 ("After
 2C"), §C.3, §D, §J and §K describe; it is merged (#15). 2D (one DOM/SVG layer for map text, and the contextual legend) is
-implemented as §E, §F, §H, §J and §K describe; what it found is at the end of §K; it awaits review.** Sections A-L below still describe the build
+implemented as §E, §F, §H, §J and §K describe; what it found is at the end of §K; it is merged (#17). 2E (the true north-up
+paper map) is implemented as §F, §G, §J and §K describe; what it found, and where it departs from §G.2, is at the end of §K; it
+awaits review.** Sections A-L below still describe the build
 they were written against, except §C.1, whose tables were re-run on the new tracks (the earlier ones are §C.4). Written against `main` at `7e03692`
 (`austerlitz-command-map.html` 1,107,799 bytes, md5 `5bf48b75373fe0cf9fc8a32cbeae918c`, confirmed before any work;
 `npm run check:baseline` now checks exactly that build). Line numbers refer to that commit.
@@ -859,6 +861,36 @@ against the heads' triangles would place labels, but would weaken the self-test'
 
 §F.2's "collapsed to a Key button by default in Watch" was not adopted: a Key button would be a new panel in the Watch
 views, whose unobstructed fraction §J forbids to fall.
+
+**2E, as delivered (fact; `CHANGELOG.md`, Stage 2E).** The design of §G.2 was built as written:
+- an orthographic camera straight down with `GEOREF.NORTH` up; north on screen 0.00°, and px per true km at four places equal
+  to 0.2% (the cos-latitude difference of true kilometres across the field, not the camera);
+- the ground drawn flat through the 2B helper (`DISPLAY.flat`; the setting is kept for the landscape), with its own
+  cartographic hillshade, `PAPER_HILLSHADE` = 6, chosen on renders and stated in the legend;
+- flat village footprints and woods symbology, traced from the model's cover fields at `coverClass`'s thresholds;
+- `MAPCAM`: drag to pan, wheel toward the cursor, keys, framing in the largest free rectangle, eased moves, written for reuse;
+- one projection helper, `worldPerPx(point)`, for both cameras;
+- the four harness cases, with the §J assertions.
+
+The paper map is identical at 1x, 4x and 10.33x (self-test). A switch into it takes 111-157 ms, and back 70-92 ms.
+Renders: `2e-paper.jpg`, `2e-legend.jpg`, `2e-hillshade.jpg`, `2e-sawtooth.jpg`. Five things were not as the plan assumed:
+1. **The framed field is small in Study.** "Inside the unobstructed area" (§H counts the legend; §G.2 names the rail, the
+   dispatch and the timebar) leaves 472 x 648 px at 1600 x 900 (17.1 px per km) and 152 x 552 px at 1280 x 720 (5.5 px per
+   km). This is §H's finding again, and Stage 3's remedy.
+2. **Drop limits for the new views** had no 2C view to count on. They were reproduced on the 2C build with a straight-down
+   camera at each view's centre and scale, with the 2C panels moved to the 2E rectangles: 20, 2, 5, 21. With the 2C build's
+   own panels the counts are 19, 3, 3, 0; the 0 is its large legend covering the whole framed field. A method choice for the
+   owner.
+3. **The small plan needed more room for labels.** On the paper map every label may use the far rings and rows that 2D gave
+   only to what is never dropped. At 1366 x 768 with a dossier open, the selection's counter and a live event's name are
+   wider than the only free strip (236 px), so what is never dropped now wraps as a last resort. Hover reaches a dropped
+   formation's own position before a neighbour's box.
+4. **The head-obstacle question affects the paper map**: one drop each in staff-paper, paper-close and paper-drawer.
+5. **Village footprints are larger than the drawn houses.** Model cover radius about 480 m for Pratzen. The woods' cover
+   ignores `WOODS.rot`. Both are guarded model code, left for 2F or a data task.
+
+Question L1: the triangle edges of the cover classes are plain on the flat sheet, worst along the Goldbach and the Litava;
+not fixed in 2E.
 
 ## L. The owner's answers (decisions 31-39)
 

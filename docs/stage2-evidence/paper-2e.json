@@ -1,0 +1,190 @@
+{
+ "overview": {
+  "camera": "orthographic",
+  "northBearing": 0,
+  "pxPerKm": {
+   "pratzeberg": 17.114,
+   "sokolnitz": 17.109,
+   "santon": 17.135,
+   "satschan": 17.1
+  },
+  "spread": 0.00204,
+  "scaleBar": {
+   "label": "5 km",
+   "px": 86,
+   "want": 85.6,
+   "err": 0.005
+  },
+  "frameOnScreen": 1,
+  "frameInProbeFree": 1,
+  "frameInUnobstructed": 1,
+  "probeFree": [
+   300,
+   0,
+   1600,
+   730
+  ],
+  "freeRect": [
+   768,
+   64,
+   1240,
+   712
+  ],
+  "pxPerKmMean": 17.11
+ },
+ "switchMs": {
+  "1x": {
+   "intoPaper": [
+    157,
+    131,
+    120
+   ],
+   "backToLandscape": [
+    92,
+    77,
+    75
+   ]
+  },
+  "4x": {
+   "intoPaper": [
+    117,
+    115,
+    111
+   ],
+   "backToLandscape": [
+    73,
+    72,
+    72
+   ]
+  },
+  "10.33x": {
+   "intoPaper": [
+    140,
+    127,
+    114
+   ],
+   "backToLandscape": [
+    83,
+    74,
+    70
+   ]
+  }
+ },
+ "heads": {
+  "staff-paper": {
+   "dropped": 4,
+   "ids": [
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:goldbach"
+   ],
+   "heads": 6,
+   "withoutSymbolObstacles": 3,
+   "idsWithout": [
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg"
+   ]
+  },
+  "paper-north-up": {
+   "dropped": 11,
+   "ids": [
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:santon",
+    "t:zuran",
+    "t:goldbach",
+    "t:litava",
+    "t:telnitz",
+    "t:sokolnitz",
+    "t:augezd",
+    "t:satschan"
+   ],
+   "heads": 6,
+   "withoutSymbolObstacles": 11,
+   "idsWithout": [
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:santon",
+    "t:zuran",
+    "t:goldbach",
+    "t:litava",
+    "t:telnitz",
+    "t:augezd",
+    "t:satschan",
+    "t:austerlitz"
+   ]
+  },
+  "paper-close": {
+   "dropped": 1,
+   "ids": [
+    "t:sokolnitz"
+   ],
+   "heads": 4,
+   "withoutSymbolObstacles": 0,
+   "idsWithout": []
+  },
+  "paper-drawer": {
+   "dropped": 4,
+   "ids": [
+    "c:lang",
+    "c:prz",
+    "t:pratzen",
+    "t:pratzeberg"
+   ],
+   "heads": 6,
+   "withoutSymbolObstacles": 3,
+   "idsWithout": [
+    "c:lang",
+    "c:prz",
+    "t:pratzen"
+   ]
+  },
+  "paper-laptop": {
+   "dropped": 17,
+   "ids": [
+    "c:buxhowden",
+    "c:bag",
+    "c:constantine",
+    "c:lich",
+    "c:c_iii",
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:santon",
+    "t:zuran",
+    "t:goldbach",
+    "t:litava",
+    "t:telnitz",
+    "t:sokolnitz",
+    "t:augezd",
+    "t:satschan",
+    "t:austerlitz"
+   ],
+   "heads": 6,
+   "withoutSymbolObstacles": 17,
+   "idsWithout": [
+    "c:buxhowden",
+    "c:constantine",
+    "c:lich",
+    "c:c_iii",
+    "c:c_gren",
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:santon",
+    "t:zuran",
+    "t:goldbach",
+    "t:litava",
+    "t:telnitz",
+    "t:sokolnitz",
+    "t:augezd",
+    "t:satschan",
+    "t:austerlitz"
+   ]
+  }
+ }
+}

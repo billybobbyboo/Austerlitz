@@ -1,8 +1,245 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Stage 2E: the true north-up paper map (docs/STAGE2_SPEC.md §F, §G, §H, §J, §K; decisions 18, 19, 25, 29, 31, 39)
+
+**Status: done; awaits the owner's review. 2F has not started. `austerlitz-command-map.html`: 1,226,091 bytes, md5
+`c5883f79cc1481b2dc4863d089b4e363`** (was 1,189,512 bytes, md5 `2dc0c26d…`, Stage 2D).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move.
+  No track, `OVERLAYS`, strength, order-of-battle or geography change. Presentation only.
+- The first commit records 2D as merged (#17) in `CLAUDE.md`, this file and `docs/STAGE2_SPEC.md`.
+
+**Before building (fact).**
+- `main` (19abc15) matched `check:baseline`: md5 `2dc0c26d969ec037cb838929d259320f`, 1,189,512 bytes.
+- **What still assumed a perspective camera after 2D**, read from the code. 2D had removed `labelRect`, `fitLabel` and the
+  sprite sizing, the three places §G.2 and the §K 2E row named. What was left:
+  - `pxPerWorld` (camera `fov`, distance): only the scale bar used it;
+  - the map layer's pass and its symbol obstacles (`mlLayout`, `mlObstacles`): `tan(fov/2)` for the world-to-pixel size;
+  - occlusion (`mlOccluded`) and the ground under the pointer (`groundAt`): rays from the eye as a point;
+  - the level of detail read the eye's distance: corps beyond 250, brigades within 165, place names within 210, full
+    counters within 70, the plan links within 190;
+  - every camera path moved the one perspective camera: orbit, glides, presets, the first view, the ground floor, the
+    factor change, the resize handler.
+  So the §K risk had shrunk from label sizing to one projection helper, a distance for the level of detail, two eye rays and
+  the camera paths. Each is handled below.
+- **`tools/stage2/paper-map.js` re-run on the 2D build** (1600 x 900; §G.1 was measured on the Stage 1B build):
+
+  | | §G.1 (Stage 1B) | re-run on 2D |
+  |---|---|---|
+  | today, north on screen | 18.4° off up | 17.8° off up |
+  | today, px per true km at the Pratzeberg / Sokolnitz / the Santon / Satschan | 79.6 / 79.0 / 75.5 / 78.7 (5.2%) | 78.0 / 78.8 / 74.6 / 79.4 (6.0%) |
+  | today, the frame on screen / in the probe's free area | 51.6% / 35.9% | 51.9% / 36.4% |
+  | probe (4°), north | 0.2° | 0.1° |
+  | probe, px per km | 28.6 / 28.6 / 28.7 / 28.6 (0.3%) | 28.6 at all four (0.0%) |
+  | probe, frame | 99.9% / 99.9% | 99.9% / 99.9% |
+  | probe close on Sokolnitz | 102.4 / 102.0 / 102.4 / 101.5 (0.9%), north 1.0° | 102.3 / 102.1 / 102.4 / 101.9 (0.5%), north 0.4° |
+
+  The close probe is better on 2D because the 4x default relief has less parallax than the 10.33x of Stage 1B.
+  The probe cannot run on the 2E build: it sets the perspective camera's field of view, and the paper map no longer uses
+  that camera.
+
+**The paper map** (decisions 19 and 25, §G.2; `app.js` "the paper map's camera: MAPCAM", `world.js`)
+- **An orthographic plan**, straight down, with `GEOREF.NORTH` up (the frame is rotated `GEOREF.ROT_DEG`, 17.42°).
+  - `camera` is now the camera drawn and projected through. `landCam` is the landscape's perspective eye and `paperCam` the
+    plan. Every path that moves the landscape's eye moves `landCam`, so the landscape view survives a visit to the paper map.
+  - Phase changes do not move the plan: the whole field is on it.
+- **The ground is drawn flat** (§G.2: "factor 0 in the 2B helper"). `DISPLAY.flat` makes the drawn scale 0, and the 2B
+  redraw (`rescaleWorld`, factored into `redrawGround`) re-seats everything on the flat sheet. `DISPLAY.factor`, the
+  setting, is kept for the landscape: a changed setting is recorded while the paper map is shown, and drawn on return.
+  - The relief control is not offered on the paper map. Its row says why: "The paper map is drawn flat, with its own
+    hillshade (×6); the setting applies to the landscape".
+  - **A switch into the paper map takes 111-157 ms, and back 70-92 ms** (1x, 4x, 10.33x, three times each, on the harness
+    machine; `tools/stage2/paper-2e.js`). The landscape's palette is kept per drawn scale, so a return is not recomputed.
+- **Its own cartographic hillshade** (decision 19): `PAPER_HILLSHADE`, 6 relative to true scale. It is computed once, from
+  the model's normals, and does not change with the setting.
+  - Chosen on the renders at ×2, ×4, ×6 and ×10.33 (`2e-hillshade.jpg`). At ×6 the western escarpment and the Goldbach
+    valley read, and the round knobs of the relief model (the Santon, the Pratzeberg summit) are no stronger than at ×10.33.
+  - A design value, not a scale. The legend states it.
+- **Hidden** on the paper map: figures, standards, houses (the roofless crates 2D still drew), roofs, chimneys, spires, 3D
+  trees and scrub, smoke, dust, mist, the sky dome.
+- **Drawn**, besides the hillshade, contours, water, roads, draped arrows, event glyphs and counters:
+  - **flat village footprints** and **woods as map symbology** (a tint, tree marks that keep one size on screen, an outline);
+  - both are traced from the model's own land cover: the level of the cover field `buildCover` builds from `VILLAGES` and
+    `WOODS`, at `coverClass`'s thresholds (village 0.55, wood 0.5), on a grid four times finer than the cover raster;
+  - 20 village footprints and 10 woods; colours in `TOKENS.sym.paperMap` (new).
+- **Controls** (`MAPCAM`, written for reuse in Stage 3: it knows only its camera, the viewport, the panels and a scheduler):
+  - a drag pans, the ground under the pointer staying under it; the wheel zooms toward the cursor;
+  - keys: on the paper map the map layer itself takes focus (Tab, after the interface), and then the arrows pan and + and -
+    zoom. Elsewhere the arrows keep stepping the clock, as before;
+  - no orbit, no tilt;
+  - every camera move the app asks for (a vantage, a tour stop, a chapter, an event, centring on a formation) becomes a move
+    of the plan: its target at the centre of the free rectangle, at the zoom the landscape eye would show at that distance.
+    The Overview vantage frames the whole field.
+- **Framing** (§G.2, §J): entering the paper map frames the whole modelled ground (360 x 310 world units) in the largest
+  rectangle of the screen that no panel covers, 10 px clear. Once the plan is moved by hand, it stays where it was left. A
+  resize frames the field again if the plan is showing the framed field.
+- **One projection helper** (§F, §G.2): `worldPerPx(point)` gives the ground length one screen pixel spans at a point, for
+  either camera. The scale bar, the level of detail, the layer's sizes and the symbol clearances read it; no code reads a
+  field of view. For the level of detail the plan's zoom is read as the landscape distance that shows the ground at that
+  scale (`distAtWpp`). `GEOREF` stays the only scale authority: `worldPerPx` is the projection, not a second scale.
+- Occlusion is off on the plan (nothing lies behind flat ground seen from straight above). The ground under the pointer is
+  the plan point.
+
+**The map layer and the legend on the paper map** (decision 29)
+- Every counter and map text still goes through the 2D layer.
+- **Paper-map labels may go farther** (new; paper map only): every label may use the far rings (to 380 px) and the
+  last-resort rows that 2D gave only to what is never dropped. The framed plan is small and dense, and its free room lies
+  around the sheet. Measured, on the paper views: paper-north-up 18 → 11 drops, paper-close 2 → 1, paper-drawer 7 → 4,
+  paper-laptop 24 → 17. The landscape and hybrid views are unchanged (the per-view table: identical numbers).
+- **What is never dropped now wraps, as a last resort** (new; all views, only where it would otherwise not be drawn). Found
+  by the self-test at 1366 x 768 with a dossier open: the paper map's only free strip (236 px, between the dispatch and the
+  drawer) is narrower than the selection's full counter (308 px) and a live event's name (355 px). Such an item is laid out
+  again with its words wrapped, narrower each time, until it fits. In every view before 2E everything fitted whole, so
+  nothing there changes.
+- **Hover reaches a dropped formation's own position first** (new): its anchor, within 6 px of the pointer, wins over
+  another item's box drawn over it. Found by the self-test: a dropped corps counter (III Corps) on the framed paper map at
+  1366 x 768 had its anchor under a neighbour's counter, so it was reachable only from the keyboard.
+- **The legend, contextual:** two rows while the paper map is shown, "wood (its extent in the model)" and "village (its extent
+  in the model)", in the colours they are drawn in. Its scale line reads "paper map: the ground drawn flat, in plan; hillshade
+  exaggerated ×6 (1× is true scale)". Its symbol line reads "villages and woods at their extent in the model; counters and
+  names at symbol scale", because the paper map draws no figure, building or tree. Its controls line reads "drag to pan …".
+  It is never over the dispatch (unchanged rule, tested).
+
+**New harness cases** (§J, 2E; `tools/visual/cases.js`)
+- paper-north-up: 1600 x 900, Study, 09:30, entered.
+- paper-close: Sokolnitz, 08:20, the zoom of the landscape's close view.
+- paper-drawer: Saint-Hilaire selected, dossier open, the zoom the app centres a formation at.
+- paper-laptop: 1280 x 720, entered.
+- A build before 2E frames paper-north-up and paper-laptop by their `cam` (its Overview), so the harness measures both builds.
+
+**Their drop limits and baselines** (decision 39; `tools/stage2/paper-limits.js`; `docs/stage2-evidence/paper-limits.json`).
+The 2C build has no plan camera. Each view is reproduced there with the app's own camera straight down and north up, at the
+2E view's centre and scale: 1.082, 23.19, 15.64 and 0.348 px per world unit, matched to 0.001. The 2C level of detail sees
+the same distance. What the 2C canvas pass hides there:
+
+| view | 2C, its own panels | 2C, panels at the 2E rectangles: **the limit** | 2E drops |
+|---|---:|---:|---:|
+| paper-north-up | 19 | **20** | 11 |
+| paper-close | 3 | **2** | 1 |
+| paper-drawer | 3 | **5** | 4 |
+| paper-laptop | 0 | **21** | 17 |
+
+- **A method choice, for the owner.** 2D measured every other limit with the 2C build's own panels. For these four views the
+  matched count is used. The 2C legend (the Stage 1B legend, 587 px) covers ground the 2E legend (296 px) leaves free, and the
+  2C pass counts an item under a panel as neither shown nor hidden. At 1280 x 720 that legend covers the whole framed field,
+  so the native count is 0 by construction. The matched counts are the same items against the same obstacles (the 2E
+  build's unobstructed fractions are reproduced exactly: 36.81%, 36.07%, 17.82%, 22.18%). With the native counts,
+  paper-drawer (4 > 3) and paper-laptop (17 > 0) would fail.
+- A finding about the probe: a narrow field of view (4°, as `paper-map.js`) puts the eye 10-40 times farther, and the 2C level
+  of detail, which reads the eye's distance, then changes the item set.
+- The unobstructed baselines are the 2C build's own, as 2D's are: 30.28 / 15.11%, 30.28 / 16.26%, 14.77 / 6.97%, 15.11 /
+  15.11%.
+
+**Per view, before (2D build) and after** (`tools/stage2/report-2e.js`; `docs/stage2-evidence/2e-report.md`, both harness
+runs on the same cases). The paper map, §J (2E):
+
+| view | camera | north | px per true km at 4 places | spread | scale bar error | field on screen / in the unobstructed area | 3D drawn | missing |
+|---|---|---|---|---|---|---|---|---|
+| staff-paper | perspective → orthographic | -17.80° → 0.00° | 78.0-79.4 → 77.6-77.8 | 6.06% → 0.20% | 0.88% → 0.40% | 51.9 / 22.7% → 44.9 / 18.8% | houses → none | footprints, woods → none |
+| paper-north-up | perspective → orthographic | -17.80° → 0.00° | 74.6-79.4 → 17.1 | 6.06% → 0.20% | 0.88% → 0.50% | 51.9 / 22.7% → **100 / 100%** | houses → none | footprints, woods → none |
+| paper-close | perspective → orthographic | -101.87° → 0.00° | 102.9-252.3 → 366.5-367.3 | 59.24% → 0.20% | 104% → 0.32% | 16.5 / 9.5% → 2.3 / 0.7% | houses → none | footprints, woods → none |
+| paper-drawer | perspective → orthographic | -81.73° → 0.00° | 165.7-499.8 → 247.2-247.7 | 66.85% → 0.20% | 27.8% → 0.24% | 13.1 / 3.6% → 5.1 / 0.8% | houses → none | footprints, woods → none |
+| paper-laptop | perspective → orthographic | -17.80° → 0.00° | 59.7-63.5 → 5.5 | 6.06% → 0.20% | 1.04% → 0.21% | 51.9 / 13.8% → **100 / 100%** | houses → none | footprints, woods → none |
+
+- The remaining 0.20% is not the camera. The four places are measured in true kilometres east-west (cos of each place's
+  latitude); the map is `GEOREF`'s plane. The spread is the cos(latitude) change across the field.
+- The close views' "field on screen" is small by design: they are close views.
+
+The map layer, every view (§J, 2D; the full table in `2e-report.md`):
+- **The 12 landscape and hybrid views are unchanged**: the same drops, leaders, nodes, text sizes and contrast as the 2D
+  build; pass times 0.5-1.0 ms.
+- Overlaps 0, nothing over a panel or a head, text below floor 0 and below AA 0 in all 17 views.
+- The paper views: staff-paper 6 → 4 drops (13); paper-north-up 11 (20); paper-close 1 (2); paper-drawer 4 (5); paper-laptop
+  17 (21). Pass times 0.6-3.0 ms (budget 8). Lowest text contrast 4.68:1 (paper-drawer).
+- **The unobstructed fraction on the paper views fell against 2D**, not below the 2C baselines: staff-paper 38.3 → 36.8% at
+  1600 x 900 (baseline 30.3%) and 24.5 → 22.2% at 1280 x 720 (15.1%). The legend's two paper rows make it taller.
+
+**Tests** (none loosened; all new)
+- Harness (`thresholds.js`), every paper-map view: north within 0.5° of up; px per true km at four places equal to 1%; the
+  scale bar correct to 1%; no figure, roof, chimney, house or 3D tree drawn; hillshade, contours, village footprints, water,
+  woods, draped arrows and counters drawn. paper-north-up and paper-laptop: every one of the 1,184 sample points of the
+  modelled ground on screen and clear of every panel. Plus every 2D threshold, with the new views' limits and baselines above.
+  `measure.js` reads the paper map's geometry from the page as drawn (`paperMap`).
+- Self-test, at 1x, 4x and 10.33x (7 checks each), plus one across the settings:
+  - the ground flat and hillshaded at its own factor, the setting kept;
+  - north up; one scale and the scale bar;
+  - the field framed clear of the panels;
+  - drawn and hidden;
+  - the controls through the handlers a visitor drives: a 139 px drag leaves the ground point 0.000 px from the pointer;
+    three wheel steps leave the ground under the cursor 0.277 px from it; the right arrow pans 108 px with the clock
+    unchanged; north still up and the landscape eye unmoved;
+  - leaving the paper map redraws the relief;
+  - the paper map identical at every setting: the same hillshade checksum, the same draped overlays, the same scale.
+  Two paper states join the layer checks (the paper map entered, and Saint-Hilaire selected on it), and so does a tour stop
+  on the paper map; the legend's wood and village rows are checked. The self-test now starts on the landscape.
+- `check:contrast`: 22 states (2 added: the paper map as entered, and close on Sokolnitz in Study; Watch's view-mode control at
+  24% is the open 2D item, so the close state is in Study, as 2D's hybrid state is).
+- `runtime-test.js`: its three.js stub takes the real `ShapeUtils` and its DOM stub `removeAttribute` (test harness only).
+- The height guard: 51 → 54 call sites, each new one classified. The apron's elevation tint on the flat paper map reads the
+  model height (model: a colour, as `buildFaceFacts`' tint); the self-test's paper checks (test). The 2D entry above says 54
+  for the 2D build; the guard counts 51 on it.
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard (54 sites, 0 presentation sites calling `height()`/`hAt()`, none
+  unclassified).
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:visual`: all checks passed, 17 views, the self-test 81 of 81 (11 min 17 s on the harness machine).
+- `npm run check:contrast`: 4,348 text elements in 22 states, 0 below AA, 0 below 10.5 px.
+- `npm run check:baseline`: moved to this build.
+
+**Question L1: the triangle land-cover edges** (not fixed in 2E; 2F fixes them; `2e-sawtooth.jpg`)
+- On the paper map they are plainer than on the landscape: flat, unlit and seen from straight above, each 81 m triangle of
+  the cover classes reads as a saw-toothed patch. The worst are:
+  - the damp low ground (class 1) and marsh along the Goldbach and the Litava, a pale blue-grey stair-stepped band either
+    side of the stream;
+  - the elevation tint and the hillshade, which are smooth across a triangle but faceted between neighbours at close zoom.
+- Woods and villages have a clean outline and tint drawn from the model (decision 31), but the cover colours under them still
+  poke out in steps along their edges.
+
+**Findings, and where 2E departs from §G.2**
+- **The framed field is small in Study** (decision 25 with §H). The rail, the dispatch and the open legend leave a free
+  rectangle of 472 x 648 px at 1600 x 900 (17.1 px per km; the field is 436 px across its north-up bounding box). At 1366 x
+  768 it is 272 x 504 px (9.9 px per km), and at 1280 x 720 152 x 552 px (5.5 px per km). With a dossier open at 1600 x 900 it is 128 px wide. That is what "the battlefield
+  frame inside the unobstructed area" gives while two-thirds of the screen is interface (§H); Stage 3's docked dispatch is
+  the remedy §H names. §G.2 lists "the rail, the dispatch and the timebar"; §H's definition, which §J's test uses, also
+  counts the legend. I followed §H. Without the legend, the rectangle at 1600 x 900 would be about 820 px wide.
+- **Village footprints are much larger than the drawn houses.** A footprint is the model's village cover (radius 2.6 +
+  0.46 × houses world units: about 480 m for Pratzen, 540 m for Sokolnitz). The landscape's houses stand in a smaller cluster
+  along the lane (radius 2.4 + 0.42 × houses, along the lane). The footprint shows the ground the model classes as village,
+  and the going layer reads that class. Both extents are schematic; neither is a sourced plan. Not changed: `buildCover` is
+  guarded model code.
+- **Woods: the model's cover and its trees disagree slightly.** The cover field ignores each wood's rotation (`WOODS.rot`,
+  up to 0.4 rad) and ends at about 0.89 of its radii. The landscape's trees fill the rotated ellipse to its radii. The paper
+  map draws the cover. This is pre-existing and guarded; it is for 2F or a data task.
+- **Hidden** adds houses to §G.2's list. §G.2 notes that today's staff map draws them as roofless crates.
+- Keys: §G.2 asks for keyboard pan and zoom, but the arrows already step the clock, so they pan only while the map layer has
+  focus.
+- The paper map's symbol line in the legend replaces §F.2's "always the two named symbol scales". The paper map draws no
+  figure, building or tree, and decision 29 asks for one row per encoding on screen.
+
+**Decisions 18, 19, 25 and 29: nothing proved unworkable.** Decision 19 holds exactly: the paper map is identical at 1x, 4x and
+10.33x. Decision 25 holds: north 0.00°, one scale to 0.2%, framing complete. Its framing with the Study layout gives a small
+map, as above. Decision 29 holds with two additions stated above: the wrap and the paper-map rows. Decision 39: see the limits
+method above.
+
+**The head-obstacle question (open from 2D) does affect the paper map.** Arrow heads, event glyphs and markers as obstacles
+cost one drop each in staff-paper (Goldbach), paper-close (Sokolnitz) and paper-drawer (Pratzeberg), and none in
+paper-north-up and paper-laptop (`paper-2e.json`, a diagnostic run without them). Seen from straight above, a head is a
+large flat triangle, and its bounding box is larger still.
+
+**Not done, or open**
+- The method of the four new limits (matched panels), above.
+- The paper-map rings and rows, and the last-resort wrap, are design choices made on the harness views.
+- A switch into and out of the paper map takes 70-157 ms. Unlike the relief control (disabled during playback above 100 ms),
+  it is not disabled during playback: a visitor switching view pays it once. Say if it should be.
+- `PAPER_HILLSHADE` (6) is a design value chosen on renders.
+- Still open from 2D, unchanged: pratzen-orbit-min draws no map text; the Watch view-mode control at 24%; selected-formation's
+  drop limit of 3; "a place whose marker cannot fit on screen is off screen".
+
 ## 2026-09 · Stage 2D: one DOM/SVG layer for map text, and the contextual legend (docs/STAGE2_SPEC.md §E, §F, §H, §J, §K; decisions 24, 29, 38, 39)
 
-**Status: done; awaits the owner's review. 2E has not started. `austerlitz-command-map.html`: 1,189,512 bytes, md5
+**Status: done; merged (#17). 2E has not started. `austerlitz-command-map.html`: 1,189,512 bytes, md5
 `2dc0c26d969ec037cb838929d259320f`** (was 1,166,868 bytes, md5 `68ac7721…`, Stage 2C).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move.

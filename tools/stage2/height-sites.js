@@ -61,7 +61,11 @@ const CLASS={
   /* Stage 2D: the map layer's occlusion (the eye-to-anchor segment against the drawn ground) and the ground under the
      pointer (hover and picking by footprint): both read the drawn ground */
   "app.js:mlOccluded":"presentation","app.js:groundAt":"presentation",
-  "app.js:figureError":"test","app.js:selfTest":"test","app.js:selfTest > centreEye":"test","app.js:selfTest > atFactor":"test","app.js:factorFacts":"test"
+  "app.js:figureError":"test","app.js:selfTest":"test","app.js:selfTest > centreEye":"test","app.js:selfTest > atFactor":"test","app.js:factorFacts":"test",
+  /* Stage 2E: on the flat paper map the drawn scale is 0, so the apron's elevation tint (a colour, as buildFaceFacts' tint)
+     reads the model height directly instead of the drawn height over the drawn scale; the self-test's paper-map checks
+     project the drawn ground and compare it with the display height when the relief is back */
+  "world.js:apronGeometry > push":"model","app.js:paperChecks":"test","app.js:paperChecks > scr":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */

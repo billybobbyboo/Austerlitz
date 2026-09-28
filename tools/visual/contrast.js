@@ -12,7 +12,9 @@
    (decision 38). Six states were added for what the contextual legend and the layer show only then: the terrain study,
    the going classes, a plan and the halt (legend-layers), true scale (legend-1x), the legend closed, and the hybrid view
    with a corps highlighted (dimmed counters; in Study, since Watch draws the view-mode control at 24% until it is hovered,
-   a Stage 1 matter recorded in CHANGELOG.md); each state is drawn once before it is read (the layer lays out in a frame). */
+   a Stage 1 matter recorded in CHANGELOG.md); each state is drawn once before it is read (the layer lays out in a frame).
+   Stage 2E: two paper-map states (the paper backdrops, as every state named staff-*): the overview as entered, and close
+   on Sokolnitz. */
 const fs=require("fs"), path=require("path");
 const { chromium } = require("playwright");
 const argv=process.argv.slice(2), html=path.resolve(argv[0]||"austerlitz-command-map.html");
@@ -65,7 +67,12 @@ const STATES=[
     setDisplayFactor(1); setClock(300,{force:true}); updateVisibility(); }],
   ["legend-closed", ()=>{ setDisplayFactor(DISPLAY.defaultFactor); setClock(570,{force:true}); document.getElementById("lg-toggle").click(); updateVisibility(); }],
   ["hybrid-dimmed", ()=>{ document.getElementById("lg-toggle").click(); setMode("hybrid"); setPresentation("study"); setClock(600,{force:true}); select("f","c_iv");
-    AUSTERLITZ_DEBUG.placeCamera([-66,76,101,0,19,26]); updateVisibility(); }]
+    AUSTERLITZ_DEBUG.placeCamera([-66,76,101,0,19,26]); updateVisibility(); }],
+  /* Stage 2E: the true north-up paper map as entered (the whole field framed; the legend's paper rows, its hillshade line
+     and its controls), and close on Sokolnitz (full counters, place names and movement labels on the flat sheet; in Study, as
+     hybrid-dimmed above, since Watch draws the view-mode control at 24% until it is hovered) */
+  ["staff-overview", ()=>{ select(null,null); setMode("staff"); setPresentation("study"); setClock(570,{force:true}); MAPCAM.frameField(true); updateVisibility(); }],
+  ["staff-close", ()=>{ setClock(500,{force:true}); AUSTERLITZ_DEBUG.placeCamera([-80,40,92,-65,0,56]); updateVisibility(); }]
 ];
 function hx(h){ h=h.replace("#",""); return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)); }
 function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); }

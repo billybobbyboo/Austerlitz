@@ -81,6 +81,8 @@ const stub={
  TubeGeometry:Geo,BufferGeometry:Geo,
  /* the real r128 curves (Stage 2C: the draped ribbons sample them by arc length) */
  CatmullRomCurve3:REAL.CatmullRomCurve3, LineCurve3:REAL.LineCurve3,
+ /* the real r128 triangulation (Stage 2E: the paper map's village footprints and woods, traced from the land cover) */
+ ShapeUtils:REAL.ShapeUtils,
  BufferAttribute:function(a,i){const t=attr(a.length/i,i);t.array=a;return t},
  Float32BufferAttribute:function(a,i){const t=attr(a.length/i,i);t.array=(a instanceof Float32Array)?a:Float32Array.from(a);return t},
  CanvasTexture:class{constructor(img){this.image=img;this.minFilter=0;this.magFilter=0;this.generateMipmaps=true;
@@ -112,7 +114,7 @@ global.THREE=stub;
 /* --- DOM --- */
 const listeners={};
 function mkEl(id){ return {id,style:{},dataset:{},classList:{add(){},remove(){},toggle(){},contains(){return false}},
-  innerHTML:"",textContent:"",appendChild(){},setAttribute(){},getAttribute(){return "true"},
+  innerHTML:"",textContent:"",appendChild(){},setAttribute(){},removeAttribute(){},getAttribute(){return "true"},
   addEventListener(k,f){ (listeners[id]=listeners[id]||{})[k]=f; },
   removeChild(){},parentNode:null,getContext:()=>ctx2d,width:0,height:0,children:[],
   getBoundingClientRect:()=>({width:820,height:96,left:0,top:0,right:820,bottom:96}),

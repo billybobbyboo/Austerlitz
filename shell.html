@@ -119,7 +119,7 @@
     <button class="lp-row" id="going" aria-pressed="false">
       <b>Going</b><i>Where guns and formed cavalry could and could not pass</i></button>
     <div class="lp-row exag-row" role="group" aria-labelledby="exag-lbl">
-      <b id="exag-lbl">Relief</b><i>How tall the ground is drawn; 1&times; is true scale</i>
+      <b id="exag-lbl">Relief</b><i id="exag-desc">How tall the ground is drawn; 1&times; is true scale</i>
       <span class="exag-set" id="exag-set"><!-- one button per DISPLAY.settings, written by bindExaggeration (app.js) --></span>
     </div>
   </div>
@@ -161,13 +161,15 @@
     <div class="k" data-lg="halt"><span>halt: a column stopped short of its objective</span><span class="hlt" data-key="arrow-al"></span></div>
     <div class="k" data-lg="bound"><span>boundary between commands</span><span class="bnd"></span></div>
     <div class="k" data-lg="plan"><span>dashed outline: a plan's staging area</span><span class="stg"></span></div>
+    <div class="k" data-lg="wood"><span>wood (its extent in the model)</span><span class="sw psym" data-sym="wood"></span></div>
+    <div class="k" data-lg="village"><span>village (its extent in the model)</span><span class="sw psym" data-sym="village"></span></div>
     <div class="k" data-lg="badge"><span>position approximate (B, C) &middot; reported only (?)</span><span class="bdg"><b>B</b><b>?</b></span></div>
     <div class="k" data-lg="analysis"><span>dashed: valley floor, dead ground</span><span class="dsh"></span></div>
     <div class="k" data-lg="contours"><span>contour interval</span><span class="val" id="contour-val">&asymp; 9 m</span></div>
     <div class="k"><span id="exag-line"></span></div>
     <div class="k"><span id="exag-symbols"></span></div>
     <div id="goingkey"><!-- rows written from TOKENS.sym.going by paintKey (app.js), the table the going layer draws --></div>
-    <div class="hint">drag to orbit &middot; scroll to zoom &middot; click or Tab to a counter or a name</div>
+    <div class="hint" id="lg-hint">drag to orbit &middot; scroll to zoom &middot; click or Tab to a counter or a name</div>
     <div class="hint keys"><b>1</b> study <b>2</b> watch <b>3</b> map only &middot; <b>M</b> map mode
       &middot; <b>D</b> text &middot; <b>F</b> <span id="fxstate">FX on</span> &middot; <b>space</b> play &middot; <b>Esc</b> back</div>
   </div>
