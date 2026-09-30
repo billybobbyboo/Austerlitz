@@ -781,6 +781,8 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
     <div class="k" data-lg="plan"><span>dashed outline: a plan's staging area</span><span class="stg"></span></div>
     <div class="k" data-lg="wood"><span>wood (its extent in the model)</span><span class="sw psym" data-sym="wood"></span></div>
     <div class="k" data-lg="village"><span>village (its extent in the model)</span><span class="sw psym" data-sym="village"></span></div>
+    <!-- Stage 2F (decision 27; docs/STAGE2_SPEC.md section I.2): no georeferenced outline of the meres is adopted -->
+    <div class="k" data-lg="mere"><span>meres: pond outlines schematic</span></div>
     <div class="k" data-lg="badge"><span>position approximate (B, C) &middot; reported only (?)</span><span class="bdg"><b>B</b><b>?</b></span></div>
     <div class="k" data-lg="analysis"><span>dashed: valley floor, dead ground</span><span class="dsh"></span></div>
     <div class="k" data-lg="contours"><span>contour interval</span><span class="val" id="contour-val">&asymp; 9 m</span></div>
@@ -2564,6 +2566,45 @@ function gridAt(a,x,z){
   return (a[k]*(1-u)+a[k+1]*u)*(1-v)+(a[k+G_NX]*(1-u)+a[k+G_NX+1]*u)*v;
 }
 
+/* ---------------- the land cover as drawn (Stage 2F; decision 28; docs/STAGE2_SPEC.md sections J and K) ----------------
+   The classes are the model's own, coverClass on the cover rasters (buildCover, covAt) and the local relief: nothing here
+   changes a class. Until 2F each 81 m triangle of the ground was drawn in the class of its centroid, so every edge was a
+   saw-tooth of triangles, up to 156 m from the model's edge (tools/stage2/cover-2f.js). Now the ground shader evaluates the
+   same rule at every drawn point (atlasShader): the six rasters are uploaded as they are and interpolated as covAt does,
+   and the local relief is read from COVER_ML, the model's localHeight on a grid of 0.25 world units (16 m), interpolated
+   bicubically (coverMlAt). The local relief matters only at coverClass's three thresholds (-2.6, 0.4, -1.2), and on a flat
+   valley floor a small error there moves the edge far: from the 81 m vertices meadow would be 234 m out, bilinear on a 0.5
+   grid 44 m, bilinear on this grid 24.5 m (one island a centimetre of relief high), bicubic 7.2 m. So the
+   grid is built coarse to fine: localHeight exactly every 1.0 unit; each node of the 0.5 and then the 0.25 lattice
+   interpolated from the coarser one, and evaluated exactly where that value lies within COVER_ML.near of a threshold
+   (0.5, then 0.2). Every node then lies on the same side of every threshold as localHeight itself (checked against the
+   exact grid, all 1,809,801 nodes; tools/stage2/cover-2f.js), for 632,442 evaluations instead of 1.81 million.
+   drawnCover(x, z) is the same rule on the CPU, for what is placed by class (the trees and scrub of the woods, the paper
+   map's woods). The going layer is not this: it stays per triangle, from FACE.cover and the model slope (decision 32). */
+var COVER_ML={step:0.25, nx:1449, nz:1249, x0:-181, z0:-156, near:[0.5,0.2], a:null, exact:0};   /* one node beyond the field all round */
+function buildCoverMl(){
+  var M=COVER_ML, nx=M.nx, nz=M.nz, a=new Float32Array(nx*nz), n=0, i, j;
+  function exact(i,j){ n++; return localHeight(M.x0+i*M.step,M.z0+j*M.step); }
+  for(j=0;j<nz;j+=4) for(i=0;i<nx;i+=4) a[j*nx+i]=exact(i,j);
+  [[2,M.near[0]],[1,M.near[1]]].forEach(function(L){ var s=L[0], d=L[1], S=2*s;
+    for(j=0;j<nz;j+=s) for(i=0;i<nx;i+=s){ if(i%S===0&&j%S===0) continue;
+      var i0=i-i%S, j0=j-j%S, i1=Math.min(nx-1,i0+S), j1=Math.min(nz-1,j0+S), u=(i-i0)/S, v=(j-j0)/S;
+      var val=(a[j0*nx+i0]*(1-u)+a[j0*nx+i1]*u)*(1-v)+(a[j1*nx+i0]*(1-u)+a[j1*nx+i1]*u)*v;
+      a[j*nx+i]=(Math.abs(val+2.6)<d||Math.abs(val+1.2)<d||Math.abs(val-0.4)<d)?exact(i,j):val; } });
+  M.a=a; M.exact=n;
+}
+/* between the nodes, Catmull-Rom (bicubic, the 4 x 4 nodes around the point): it follows a rounded crest or hollow that
+   bilinear interpolation cuts, which matters where the relief only just crosses a threshold */
+function crWeights(t){ var t2=t*t, t3=t2*t; return [0.5*(-t3+2*t2-t),0.5*(3*t3-5*t2+2),0.5*(-3*t3+4*t2+t),0.5*(t3-t2)]; }
+function coverMlAt(x,z){
+  var M=COVER_ML, fi=(x-M.x0)/M.step, fj=(z-M.z0)/M.step;
+  var i=Math.max(1,Math.min(M.nx-3,Math.floor(fi))), j=Math.max(1,Math.min(M.nz-3,Math.floor(fj)));
+  var wx=crWeights(Math.max(0,Math.min(1,fi-i))), wz=crWeights(Math.max(0,Math.min(1,fj-j))), a=M.a, r=0;
+  for(var b=0;b<4;b++){ var k=(j-1+b)*M.nx+i-1; r+=wz[b]*(wx[0]*a[k]+wx[1]*a[k+1]+wx[2]*a[k+2]+wx[3]*a[k+3]); }
+  return r;
+}
+function drawnCover(x,z){ return coverClass(x,z,coverMlAt(x,z)); }
+
 /* ---------------- the ground as drawn ----------------
    Anything that must stand on the visible ground - figures, standards, the camera floor, mist
    edges - reads the terrain mesh's own triangles, not the analytic height(), which the 81 m
@@ -2642,7 +2683,7 @@ var scrubMesh=null;
 var groundMesh=null, domeMesh=null, mistGroup=null, treeMesh=null, coniferMesh=null,
     roofMesh=null, houseMesh=null, spireMesh=null, waterMeshes=[], roadMeshes=[],
     contourGroup=null, marshGroup=null, analysisGroup=null;
-var FACE={n:0,x:null,z:null,h:null,slope:null,shade:null,cover:null,tint:null,ao:null,nz:null};
+var FACE={n:0,x:null,z:null,h:null,slope:null,shade:null,cover:null,ao:null,nz:null};
 var palNatural=null, palPaper=null, palGoing=null, apronMesh=null, chimneyMesh=null, _palNat={};
 /* Stage 2E (decision 19; docs/STAGE2_SPEC.md section G.2): the paper map's cartographic hillshade has its own factor,
    stated in its legend, whatever the relief setting of the landscape. Relative to true scale, as the setting is: the
@@ -2662,6 +2703,7 @@ var groundPalette="natural", vsMask=null, vsOrigin=null;
 function buildWorld(scene){
   buildCover();
   buildGrid();
+  buildCoverMl();
 
   var sc=document.createElement("canvas"); sc.width=4; sc.height=256;
   var sctx=sc.getContext("2d");
@@ -2692,6 +2734,7 @@ function buildWorld(scene){
   for(var bi=0;bi<FACE.baseY.length;bi++) FACE.baseY[bi]=geo.attributes.position.array[bi*3+1];
   FACE.baseN=Float32Array.from(geo.attributes.normal.array);
   FACE.gslope=Float32Array.from(FACE.slope); FACE.gshade=Float32Array.from(FACE.shade);   /* model slope: the going classes */
+  groundVertexFacts(geo);
   scaleGround(geo);
   (function(){
     var cov=new Float32Array(FACE.n*3);
@@ -2730,6 +2773,17 @@ function buildWorld(scene){
           contours:contourGroup, marsh:marshGroup, analysis:analysisGroup, paper:paperGroup};
 }
 
+/* Stage 2F: what the ground shader interpolates between the vertices to colour each point (atlasShader): the elevation tint
+   (from the model height, in metres), the curvature (the hollows' occlusion and the field tint), and the frame of the field
+   pattern (fieldStrip's strips and blocks, turned by the angle at the vertex). Read once, on the model surface (FACE.baseY). */
+function groundVertexFacts(geo){
+  var pa=geo.attributes.position.array, n=pa.length/3, g=new Float32Array(n*4), cw=GROUND_W/GROUND_NX, cd=GROUND_D/GROUND_NZ, L={};
+  for(var q=0;q<n;q++){ var x=pa[q*3], z=pa[q*3+2], key=Math.round((x+GROUND_W/2)/cw)*1000+Math.round((z+GROUND_D/2)/cd), c=L[key];
+    if(!c){ var ang=0.5+1.7*vnoise(x/88+3.1,z/88+7.7), ca=Math.cos(ang), sa=Math.sin(ang);
+      c=L[key]=[Math.max(0,Math.min(1,(GEOREF.elevM(FACE.baseY[q])-200)/123)),gridAt(gridCurv,x,z),x*ca+z*sa,-x*sa+z*ca]; }
+    g[q*4]=c[0]; g[q*4+1]=c[1]; g[q*4+2]=c[2]; g[q*4+3]=c[3]; }
+  geo.setAttribute("gnd",new THREE.BufferAttribute(g,4));
+}
 /* draw the model-built ground at the display factor: y = s * h; the smooth normals of a surface scaled
    vertically by s are (s nx, ny, s nz), normalised; the baked shade, frost and drawn slope follow them */
 function scaleGround(geo){
@@ -2765,6 +2819,7 @@ function rescaleWorld(){
   apronMesh.geometry.dispose(); apronMesh.geometry=apronGeometry();
   SEATED.forEach(reseatInstances);
   SEATED_GEO.forEach(reseatGeometry);
+  DRAPED.forEach(drape);
   waterMeshes.forEach(function(m){ if(m.userData.mere) m.position.y=mereLevel.apply(null,m.userData.mere); });
   rebuildContours();
   TERRAIN_LINES.forEach(function(tl){ if(tl._midXZ) tl._mid=[tl._midXZ[0],displayHeight(tl._midXZ[0],tl._midXZ[1])+4.2,tl._midXZ[1]]; });
@@ -2777,7 +2832,7 @@ function buildFaceFacts(geo){
   FACE.n=nf;
   FACE.x=new Float32Array(nf); FACE.z=new Float32Array(nf); FACE.h=new Float32Array(nf);
   FACE.slope=new Float32Array(nf); FACE.shade=new Float32Array(nf);
-  FACE.cover=new Uint8Array(nf); FACE.tint=new Float32Array(nf); FACE.ao=new Float32Array(nf);
+  FACE.cover=new Uint8Array(nf); FACE.ao=new Float32Array(nf);
   FACE.crop=new Uint8Array(nf);       /* 0 stubble, 1 plough, 2 pasture, 3 winter sowing */
   FACE.nz=new Float32Array(nf);
   FACE.vsh=new Float32Array(nf*3); FACE.vnz=new Float32Array(nf*3);   /* per vertex */
@@ -2803,84 +2858,46 @@ function buildFaceFacts(geo){
     FACE.shade[f]=Math.max(0,nx*LX+ny*LY+nz*LZ);
     FACE.nz[f]=nz;
 
-    FACE.cover[f]=coverClass(mx,mz,ml);
-    var water=covAt(covWater,mx,mz), vill=covAt(covVill,mx,mz);   /* still used by the tint below (damp and trodden ground) */
+    FACE.cover[f]=coverClass(mx,mz,ml);   /* per triangle: the going layer's classes (the ground itself draws per point, Stage 2F) */
 
     var curvAO=gridAt(gridCurv,mx,mz);
     FACE.ao[f]=Math.max(0.62,Math.min(1.10, 1 - curvAO*0.40));
     var ang=0.5+1.7*vnoise(mx/88+3.1,mz/88+7.7);
     var ca=Math.cos(ang), sa=Math.sin(ang);
     var u1=mx*ca+mz*sa, v1=-mx*sa+mz*ca;
-    var block=Math.floor(v1/30), strip=Math.floor(u1/5.2);
-    var id=hash2(strip,block*17+3);
-    /* a field block is one holding: stubble, plough, pasture or a winter sowing */
-    var bh=hash2(block*3+1,(strip>>2)*7+5);
-    var crop = bh<0.42?0 : bh<0.68?1 : bh<0.88?2 : 3;
-    FACE.crop[f]=crop;
-    var blockTint=[1.00,0.92,0.98,0.96][crop]*(0.975+0.05*hash2(block,strip>>2));
-    var frac=Math.abs(u1/5.2-Math.floor(u1/5.2)-0.5);
-    var vfrac=Math.abs(v1/30-Math.floor(v1/30)-0.5);
-    var t=(0.955+0.09*id)*blockTint;
-    if(id>0.84) t*=0.93;
-    if(frac>0.46) t*=0.965;                       /* strip baulk */
-    if(vfrac>0.475) t*=0.90;                      /* field boundary: a headland or a hedge line */
-    var curv=gridAt(gridCurv,mx,mz);
-    t*= 1 - Math.max(-0.05,Math.min(0.06, curv*0.10));
-    /* damp ground darkens toward the streams; trodden ground lightens around a village */
-    t*= 1 - Math.min(0.35,water)*0.30;
-    if(vill>0.15&&vill<0.55) t*=1.04;
-    FACE.tint[f]=t;
+    FACE.crop[f]=fieldStrip(Math.floor(u1/5.2),Math.floor(v1/30))[1];   /* the going layer's atlas cell */
   }
 }
+/* The field pattern: strips 5.2 world units wide in blocks 30 deep, turned with the lie of the land (the angle is read at
+   each point; buildFaceFacts, and the vertex attribute "gnd" the ground shader interpolates). A block is one holding:
+   stubble, plough, pasture or a winter sowing (crop 0-3); a strip has its own tint (t). Presentation, not data: the
+   pattern is drawn, and read by nothing. The shader reads this table from a texture (groundTextures), and draws the baulks
+   between strips and the headlands between blocks itself (atlasShader). */
+function fieldStrip(strip,block){
+  var id=hash2(strip,block*17+3);
+  var bh=hash2(block*3+1,(strip>>2)*7+5);
+  var crop = bh<0.42?0 : bh<0.68?1 : bh<0.88?2 : 3;
+  var blockTint=[1.00,0.92,0.98,0.96][crop]*(0.975+0.05*hash2(block,strip>>2));
+  var t=(0.955+0.09*id)*blockTint;
+  if(id>0.84) t*=0.93;
+  return [t,crop];
+}
 
+/* the base colour of each cover class (sRGB), the palette's own: Stage 4's to change */
 var COVER_COL={
   natural:[0x686659,0x5C5F50,0x4E5650,0x3A4850,0x33402E,0x6A665A,0x62634F,0x5F5A4A],
   paper:  [0xE8DFC6,0xDCD9BC,0xCBD5C8,0xA8BEC8,0xBFCBA8,0xDCCFB4,0xE2DCBA,0xD2C4A4]
 };
+/* Stage 2F: the ground is coloured per point by its shader (atlasShader), from the class at that point and the palette's
+   colour for it (COVER_COL), the elevation tint, the field pattern, the damp and trodden ground, the hollows and the light.
+   What the vertices still carry is the light, which comes from the drawn slope and so changes with the display factor:
+   per vertex, the baked hillshade and how far the slope faces north (the frost). The paper map carries its own hillshade
+   (paperShade) and no frost. Until 2F this function returned each triangle's finished colour. */
 function makePalette(kind){
-  var n=FACE.n, out=new Float32Array(n*9);
-  var paper=(kind==="paper");
-  var base=COVER_COL[paper?"paper":"natural"];
-  var c=new THREE.Color();
-  var bc=new THREE.Color();
-  for(var f=0;f<n;f++){
-    var cov=FACE.cover[f], h=FACE.h[f], t=FACE.tint[f];
-    /* what is the same across the face: ground type, elevation tint, field strip, occlusion */
-    bc.setHex(base[cov]);
-    var e=Math.max(0,Math.min(1,(GEOREF.elevM(h)-200)/123));   /* elevation tint, in metres */
-    if(paper){ bc.r*=(0.90+0.16*e); bc.g*=(0.92+0.10*e); bc.b*=(0.98-0.20*e); }
-    else     { bc.r*=(0.90+0.14*e); bc.g*=(0.90+0.14*e); bc.b*=(0.92+0.12*e); }
-    if(cov!==3&&cov!==4){
-      bc.r*=t; bc.g*=t; bc.b*=t;
-      if(cov===0){
-        var cr=FACE.crop[f];
-        if(cr===1){ bc.r*=1.025; bc.g*=0.99; bc.b*=0.97; }       /* plough: a little browner */
-        else if(cr===2){ bc.r*=0.98; bc.g*=1.015; bc.b*=0.985; } /* pasture: grey-green */
-        else if(cr===3){ bc.r*=0.99; bc.g*=1.01; bc.b*=0.995; }  /* winter sowing: barely green */
-      }
-    }
-    var hollow=Math.max(0,0.94-FACE.ao[f])*2.4;
-    /* what changes across the face: the shade and the frost, from the vertex normals,
-       so relief is a continuous gradient instead of a terrace of flat facets */
-    for(var k=0;k<3;k++){
-      var q=f*3+k, sh=paper?FACE.psh[q]:FACE.vsh[q];   /* the paper map: its own hillshade (Stage 2E) */
-      c.copy(bc);
-      if(!paper && cov!==3){
-        var north=Math.max(0,-FACE.vnz[q]);
-        var frost=Math.min(0.30, north*0.26 + hollow*0.22 + (cov===1?0.08:0) + (cov===2?0.06:0));
-        if(frost>0.01){ c.r+=(0.70-c.r)*frost; c.g+=(0.73-c.g)*frost; c.b+=(0.78-c.b)*frost; }
-      }
-      /* The landscape is also lit in real time by the phase's sun, usually from the south-east to
-         the south-west, so the baked north-west hillshade is kept narrow there (0.70-1.12, was
-         0.46-1.20): at full range the two lights multiplied a slope facing away from both down to
-         near-black. The paper map is not sun-lit and keeps its full cartographic hillshade. */
-      var rel=(paper ? (0.66+0.46*sh) : (0.70+0.42*sh)) * FACE.ao[f];
-      c.r*=rel; c.g*=rel; c.b*=rel;
-      if(!paper){ var wc=(sh-0.55)*0.07; c.r*=1+wc; c.b*=1-wc; }
-      c.convertSRGBToLinear();
-      var o=f*9+k*3;
-      out[o]=Math.max(0,Math.min(1,c.r)); out[o+1]=Math.max(0,Math.min(1,c.g)); out[o+2]=Math.max(0,Math.min(1,c.b));
-    }
+  var n=FACE.n*3, out=new Float32Array(n*3), paper=(kind==="paper");
+  for(var q=0;q<n;q++){
+    out[q*3]=paper?FACE.psh[q]:FACE.vsh[q];
+    out[q*3+1]=paper?0:Math.max(0,-FACE.vnz[q]);
   }
   return out;
 }
@@ -2910,12 +2927,19 @@ function makeGoingPalette(){
 }
 function applyGround(){
   if(!groundMesh) return;
+  var U=groundMesh.material.userData.U, going=(groundPalette==="going");
   var base = groundPalette==="paper" ? palPaper
-           : groundPalette==="going" ? (palGoing||(palGoing=makeGoingPalette()))
+           : going ? (palGoing||(palGoing=makeGoingPalette()))
            : (palNatural||(palNatural=_palNat[displayScale()]=makePalette("natural")));
   var arr=groundMesh.geometry.attributes.color.array;
   var i,f,k;
-  if(!vsMask){
+  /* the going layer: each triangle's colour, its class from the model slope and FACE.cover (unchanged by 2F); the natural
+     ground and the paper map: the light at each vertex, the shader colouring each point (atlasShader) */
+  U.uMode.value = going ? 0 : groundPalette==="paper" ? 2 : 1;
+  U.uPal.value = groundPal(groundPalette==="paper"?"paper":"natural");
+  U.uVSOn.value = (vsMask&&!going) ? 1 : 0;
+  if(vsMask&&!going) viewshedTexture();
+  if(!vsMask||!going){
     for(i=0;i<arr.length;i++) arr[i]=base[i];
   } else {
     for(f=0;f<FACE.n;f++){
@@ -2935,8 +2959,9 @@ function applyGround(){
 function setGround(name){
   groundPalette=name;
   /* the staff map is a sheet of paper, not a field */
-  var m=groundMesh&&groundMesh.material;
-  if(m){ m.map=(name==="paper")?null:m.userData.grain; m.needsUpdate=true; }
+  [groundMesh,apronMesh].forEach(function(o){ var m=o&&o.material;
+    if(m){ m.map=(name==="paper")?null:m.userData.grain; m.needsUpdate=true; } });
+  if(apronMesh) apronMesh.material.userData.U.uMode.value=0;
   applyGround();
 }
 /* 8 ground types in a 4x2 atlas. Each 256px cell holds a 240px periodic
@@ -3119,32 +3144,157 @@ function coverNormalAtlas(){
   return _nrmAtlas;
 }
 
-/* the standard material samples map and normalMap by uv; this makes both
-   sample the atlas cell chosen by the face's cover type */
+/* ---- the ground shader (Stage 2F; decision 28) ----
+   The standard material, with the ground's own colour: each drawn point is classified by coverClass's rule (the same tests,
+   in the same order, on the same rasters: gClass below), then coloured as the palette colours that class (the colour of
+   the class in COVER_COL, the elevation tint, the field pattern, the damp and trodden ground, the hollows' occlusion, the
+   frost and the hillshade: makePalette before 2F). The landscape is also lit in real time by the phase's sun, usually from
+   the south-east to the south-west, so its baked north-west hillshade is kept narrow (0.70-1.12, was 0.46-1.20): at full
+   range the two lights multiplied a slope facing away from both down to near-black (Stage 0's temporary lighting
+   correction, for Stage 4). The paper map is not sun-lit and keeps its full cartographic hillshade (0.66-1.12). The map
+   and the normal map sample the atlas cell of that class. uMode:
+   0 the going layer (each triangle's colour and cell, as before 2F), 1 the natural ground, 2 the paper map. The pond radii
+   below are coverClass's own; the self-test renders the classes (uDebug) and checks them against drawnCover and coverClass.
+   The atlas is sampled with the gradients of the continuous texture coordinate, so neither a cell's wrap nor a class edge
+   draws a seam of the atlas's smallest mip. */
+var GROUND_VERT_HEAD="\nattribute float cover;\nvarying float vCover;\nattribute vec4 gnd;\nvarying vec4 vGnd;\nvarying vec2 vWxz;";
+var GROUND_FRAG_HEAD=[
+  "varying float vCover; varying vec4 vGnd; varying vec2 vWxz;",
+  "uniform sampler2D uCovA; uniform sampler2D uCovB; uniform sampler2D uMl; uniform sampler2D uField; uniform sampler2D uVS;",
+  "uniform vec4 uCovG; uniform vec2 uCovN; uniform vec4 uMlG; uniform vec2 uMlN; uniform vec4 uVSG; uniform vec2 uVSN; uniform vec4 uFieldG;",
+  "uniform vec4 uPondS; uniform vec4 uPondM; uniform vec3 uPal[8]; uniform float uMode; uniform float uVSOn; uniform float uDebug;",
+  /* COVER_ML, four nodes along x to a texel (uMlT its size in texels): nodes i0 to i0+3 of row j, and coverMlAt */
+  "uniform vec2 uMlT;",
+  "vec4 gMlRow(float i0,float j){ float I=floor(i0/4.0), c=i0-4.0*I; vec2 r=(vec2(I,j)+0.5)/uMlT;",
+  "  vec4 a=texture2D(uMl,r), b=texture2D(uMl,r+vec2(1.0/uMlT.x,0.0)); return c<0.5?a:c<1.5?vec4(a.yzw,b.x):c<2.5?vec4(a.zw,b.xy):vec4(a.w,b.xyz); }",
+  "vec4 gCR(float t){ float t2=t*t, t3=t2*t; return 0.5*vec4(-t3+2.0*t2-t,3.0*t3-5.0*t2+2.0,-3.0*t3+4.0*t2+t,t3-t2); }",
+  "float gMl(vec2 p){ vec2 f=(p-uMlG.xy)/uMlG.zw, i=clamp(floor(f),vec2(1.0),uMlN-3.0); vec4 wx=gCR(clamp(f.x-i.x,0.0,1.0)), wz=gCR(clamp(f.y-i.y,0.0,1.0));",
+  "  return wz.x*dot(wx,gMlRow(i.x-1.0,i.y-1.0))+wz.y*dot(wx,gMlRow(i.x-1.0,i.y))+wz.z*dot(wx,gMlRow(i.x-1.0,i.y+1.0))+wz.w*dot(wx,gMlRow(i.x-1.0,i.y+2.0)); }",
+  /* covAt: bilinear between the four raster nodes around the point, clamped at the edge */
+  "vec4 gBil(sampler2D t,vec2 n,vec4 g,vec2 p){ vec2 f=(p-g.xy)/g.zw, i=clamp(floor(f),vec2(0.0),n-2.0), u=clamp(f-i,0.0,1.0), c=(i+0.5)/n, d=1.0/n;",
+  "  return mix(mix(texture2D(t,c),texture2D(t,c+vec2(d.x,0.0)),u.x),mix(texture2D(t,c+vec2(0.0,d.y)),texture2D(t,c+d),u.x),u.y); }",
+  "float gPond(vec4 P,vec2 p){ return 1.0-smoothstep(0.55,1.08,length((p-P.xy)/P.zw)); }",
+  /* coverClass: A = water, marsh, wood, village; B = road, vineyard; ml the local relief */
+  "float gClass(vec2 p,float ml,vec4 A,vec4 B){",
+  "  if(gPond(uPondS,p)>0.5||gPond(uPondM,p)>0.5||(A.x>0.55&&ml< -2.6)) return 3.0;",
+  "  if(A.y>0.45&&ml<0.4) return 2.0;",
+  "  if(A.w>0.55) return 5.0;",
+  "  if(A.z>0.5) return 4.0;",
+  "  if(B.x>0.6) return 7.0;",
+  "  if(B.y>0.55) return 6.0;",
+  "  if(ml< -1.2||A.x>0.35) return 1.0;",
+  "  return 0.0; }",
+  "vec3 gPalOf(float c){ return c<0.5?uPal[0]:c<1.5?uPal[1]:c<2.5?uPal[2]:c<3.5?uPal[3]:c<4.5?uPal[4]:c<5.5?uPal[5]:c<6.5?uPal[6]:uPal[7]; }",
+  "vec3 gLin(vec3 c){ return mix(c*0.0773993808,pow(max(c*0.9478672986+0.0521327014,vec3(0.0)),vec3(2.4)),step(vec3(0.04045),c)); }"
+].join("\n");
+var GROUND_FRAG_ATLAS=[
+  "#ifdef USE_UV",
+  "vec4 gAtlas(sampler2D t,vec2 uv){",
+  "#if __VERSION__ >= 300",
+  "  vec2 k=vec2(0.234375,0.3125); return textureGrad(t,uv,dFdx(vUv)*k,dFdy(vUv)*k);",
+  "#else",
+  "  return texture2D(t,uv);",
+  "#endif",
+  "}",
+  "#endif"
+].join("\n");
+var GROUND_FRAG_MAIN=[
+  "float gCls=vCover, gCrop=0.0; vec3 gCol=vec3(1.0);",
+  "if(uMode>0.5){",
+  "  vec4 A=gBil(uCovA,uCovN,uCovG,vWxz), B=gBil(uCovB,uCovN,uCovG,vWxz);",
+  "  gCls=gClass(vWxz,gMl(vWxz),A,B);",
+  /* the field pattern (fieldStrip): the strip's tint and the block's crop; the baulks and headlands drawn here, averaged where
+     they are finer than a pixel */
+  "  float su=vGnd.z/5.2, sv=vGnd.w/30.0;",
+  "  vec2 sb=clamp(floor(vec2(su,sv))+uFieldG.xy,vec2(0.0),uFieldG.zw-1.0);",
+  "  vec4 F=texture2D(uField,(sb+0.5)/uFieldG.zw);",
+  "  float t=F.x, curv=vGnd.y; gCrop=F.y;",
+  "  t*=mix(abs(fract(su)-0.5)>0.46?0.965:1.0,1.0-0.08*0.035,smoothstep(0.02,0.08,fwidth(su)));",
+  "  t*=mix(abs(fract(sv)-0.5)>0.475?0.90:1.0,1.0-0.05*0.10,smoothstep(0.02,0.08,fwidth(sv)));",
+  "  t*=1.0-clamp(curv*0.10,-0.05,0.06);",
+  "  t*=1.0-min(0.35,A.x)*0.30;",
+  "  if(A.w>0.15&&A.w<0.55) t*=1.04;",
+  "  float ao=clamp(1.0-curv*0.40,0.62,1.10), e=vGnd.x, paper=step(1.5,uMode);",
+  "  vec3 bc=gPalOf(gCls);",
+  "  bc*=paper>0.5?vec3(0.90+0.16*e,0.92+0.10*e,0.98-0.20*e):vec3(0.90+0.14*e,0.90+0.14*e,0.92+0.12*e);",
+  "  if(gCls!=3.0&&gCls!=4.0){ bc*=t;",
+  "    if(gCls==0.0) bc*=gCrop==1.0?vec3(1.025,0.99,0.97):gCrop==2.0?vec3(0.98,1.015,0.985):gCrop==3.0?vec3(0.99,1.01,0.995):vec3(1.0); }",
+  "  float hollow=max(0.0,0.94-ao)*2.4, sh=vColor.r;",
+  "  if(paper<0.5&&gCls!=3.0){ float frost=min(0.30,vColor.g*0.26+hollow*0.22+(gCls==1.0?0.08:0.0)+(gCls==2.0?0.06:0.0));",
+  "    if(frost>0.01) bc+=(vec3(0.70,0.73,0.78)-bc)*frost; }",
+  "  bc*=(paper>0.5?(0.66+0.46*sh):(0.70+0.42*sh))*ao;",
+  "  if(paper<0.5){ float wc=(sh-0.55)*0.07; bc.r*=1.0+wc; bc.b*=1.0-wc; }",
+  "  gCol=clamp(gLin(bc),0.0,1.0);",
+  "  if(uVSOn>0.5){ vec2 q=floor((vWxz-uVSG.xy)/uVSG.zw+0.5); float vis=0.0;",   /* sampleVS: the nearest node of the analysis grid */
+  "    if(q.x>=0.0&&q.y>=0.0&&q.x<uVSN.x&&q.y<uVSN.y) vis=texture2D(uVS,(q+0.5)/uVSN).x;",
+  "    gCol=vis>0.5?gCol*vec3(0.86,0.88,0.70)+vec3(0.20,0.17,0.03):gCol*vec3(0.40,0.42,0.52)+vec3(0.035,0.055,0.10); }",
+  "}",
+  "float gCell=uMode>0.5?(gCls==0.0?(gCrop==1.0?8.0:gCrop==2.0?9.0:gCrop==3.0?10.0:0.0):gCls):vCover;",
+  "float ci=mod(gCell,4.0), cj=floor(gCell/4.0);",
+  "#ifdef USE_UV",
+  "vec2 tuv=vec2(fract(vUv.x)*0.234375+0.0078125+ci*0.25, fract(vUv.y)*0.3125+0.0104167+cj*0.3333333);",
+  "#endif",
+  "vec4 diffuseColor = vec4( diffuse, opacity );"
+].join("\n");
+/* the data the shader reads, made once: the six cover rasters (as covAt reads them), the local relief (COVER_ML), the
+   field-strip table, and the viewshed (refreshed when one is drawn) */
+var _gTex=null;
+function groundTextures(){
+  if(_gTex) return _gTex;
+  function tex(d,w,h,type){ var t=new THREE.DataTexture(d,w,h,THREE.RGBAFormat,type);
+    t.magFilter=t.minFilter=THREE.NearestFilter; t.generateMipmaps=false; t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping; t.needsUpdate=true; return t; }
+  var n=COV_NX*COV_NZ, A=new Float32Array(n*4), B=new Float32Array(n*4), k;
+  for(k=0;k<n;k++){ A[k*4]=covWater[k]; A[k*4+1]=covMarsh[k]; A[k*4+2]=covWood[k]; A[k*4+3]=covVill[k]; B[k*4]=covRoad[k]; B[k*4+1]=covVine[k]; }
+  var M=COVER_ML, MT=Math.ceil(M.nx/4), ml=new Float32Array(MT*M.nz*4);
+  for(var j=0;j<M.nz;j++) for(var i=0;i<M.nx;i++) ml[(j*MT)*4+i]=M.a[j*M.nx+i];   /* texel (i/4, j), channel i%4 */
+  var FX=128, FZ=32, fd=new Float32Array(FX*FZ*4);
+  for(var b=0;b<FZ;b++) for(var s=0;s<FX;s++){ var fs=fieldStrip(s-64,b-16); k=(b*FX+s)*4; fd[k]=fs[0]; fd[k+1]=fs[1]; }
+  _gTex={a:tex(A,COV_NX,COV_NZ,THREE.FloatType), b:tex(B,COV_NX,COV_NZ,THREE.FloatType), ml:tex(ml,MT,M.nz,THREE.FloatType),
+    field:tex(fd,FX,FZ,THREE.FloatType), vs:tex(new Uint8Array(G_NX*G_NZ*4),G_NX,G_NZ,THREE.UnsignedByteType)};
+  return _gTex;
+}
+function viewshedTexture(){
+  var t=groundTextures().vs, d=t.image.data;
+  for(var i=0;i<vsMask.length;i++) d[i*4]=vsMask[i]?255:0;
+  t.needsUpdate=true;
+}
+var _gPal={};
+function groundPal(kind){ return _gPal[kind]||(_gPal[kind]=COVER_COL[kind].map(function(h){ var c=new THREE.Color(h); return new THREE.Vector3(c.r,c.g,c.b); })); }
+function groundUniforms(){
+  var T=groundTextures(), M=COVER_ML;
+  return {uCovA:{value:T.a}, uCovB:{value:T.b}, uCovN:{value:new THREE.Vector2(COV_NX,COV_NZ)}, uCovG:{value:new THREE.Vector4(COV_X0,COV_Z0,COV_DX,COV_DZ)},
+    uMl:{value:T.ml}, uMlN:{value:new THREE.Vector2(M.nx,M.nz)}, uMlT:{value:new THREE.Vector2(Math.ceil(M.nx/4),M.nz)}, uMlG:{value:new THREE.Vector4(M.x0,M.z0,M.step,M.step)},
+    uField:{value:T.field}, uFieldG:{value:new THREE.Vector4(64,16,128,32)},
+    uVS:{value:T.vs}, uVSN:{value:new THREE.Vector2(G_NX,G_NZ)}, uVSG:{value:new THREE.Vector4(G_X0,G_Z0,G_DX,G_DZ)},
+    uPondS:{value:new THREE.Vector4(SATS[0],SATS[1],28,10.5)}, uPondM:{value:new THREE.Vector4(MENI[0],MENI[1],23,9)},
+    uPal:{value:groundPal("natural")}, uMode:{value:1}, uVSOn:{value:0}, uDebug:{value:0}};
+}
 function atlasShader(mat){
+  var U=groundUniforms(); mat.userData.U=U;
   mat.onBeforeCompile=function(sh){
+    Object.keys(U).forEach(function(k){ sh.uniforms[k]=U[k]; });
     sh.vertexShader=sh.vertexShader
-      .replace("#include <common>","#include <common>\nattribute float cover;\nvarying float vCover;")
-      .replace("#include <uv_vertex>","#include <uv_vertex>\nvCover=cover;");
+      .replace("#include <common>","#include <common>"+GROUND_VERT_HEAD)
+      .replace("#include <uv_vertex>","#include <uv_vertex>\nvCover=cover; vGnd=gnd; vWxz=(modelMatrix*vec4(position,1.0)).xz;");
     sh.fragmentShader=sh.fragmentShader
-      .replace("#include <common>","#include <common>\nvarying float vCover;")
-      /* tuv is computed once, at main scope, before anything samples a map */
-      .replace("vec4 diffuseColor = vec4( diffuse, opacity );",
-        "float ci=mod(vCover,4.0), cj=floor(vCover/4.0);\n"+
-        "vec2 tuv=vec2(fract(vUv.x)*0.234375+0.0078125+ci*0.25, fract(vUv.y)*0.3125+0.0104167+cj*0.3333333);\n"+
-        "vec4 diffuseColor = vec4( diffuse, opacity );")
+      .replace("#include <common>","#include <common>\n"+GROUND_FRAG_HEAD)
+      .replace("void main() {",GROUND_FRAG_ATLAS+"\nvoid main() {")
+      .replace("vec4 diffuseColor = vec4( diffuse, opacity );",GROUND_FRAG_MAIN)
       .replace("#include <map_fragment>",
         "#ifdef USE_MAP\n"+
-        "  vec4 texelColor=texture2D(map,tuv);\n"+
+        "  vec4 texelColor=gAtlas(map,tuv);\n"+
         "  texelColor=mapTexelToLinear(texelColor);\n"+
         "  diffuseColor*=texelColor;\n"+
         "#endif")
+      .replace("#include <color_fragment>",
+        "#if defined( USE_COLOR )\n  diffuseColor.rgb*=(uMode>0.5?gCol:vColor);\n#endif")
       .replace("#include <normal_fragment_maps>",
         "#ifdef USE_NORMALMAP\n"+
-        "  vec3 mapN=texture2D(normalMap,tuv).xyz*2.0-1.0;\n"+
+        "  vec3 mapN=gAtlas(normalMap,tuv).xyz*2.0-1.0;\n"+
         "  mapN.xy*=normalScale;\n"+
         "  normal=perturbNormal2Arb(-vViewPosition,normal,mapN,faceDirection);\n"+
-        "#endif");
+        "#endif")
+      .replace("#include <dithering_fragment>","#include <dithering_fragment>\n  if(uDebug>0.5) gl_FragColor=vec4(gCls/255.0,gCrop/255.0,uMode/255.0,1.0);");
   };
   return mat;
 }
@@ -3202,23 +3352,34 @@ function computeViewshed(mapPt,eyeM){
 }
 function clearViewshed(){ vsMask=null; vsOrigin=null; applyGround(); }
 
-function ribbon(scene,pts,width,yoff,mat,store){
-  var v=[],idx=[];
+/* Roads and streams (Stage 2F; decision 28): flat ribbons draped on the drawn ground, as the 2C overlays are. Every vertex
+   stands at its lift above groundY, the ground mesh itself, not the analytic height between its vertices; the vertices are
+   RIBBON_STEP (0.5 world units, 31 m) apart along the line and across it, so the ribbon follows the 81 m triangles instead of
+   cutting through them (at 1 unit, 30 edge midpoints still dipped under the ground at 10.33x; at 0.5, none: drape-2f.js); and
+   when the ground is redrawn (a display factor, the flat paper map) each vertex is draped again (drape). */
+var DRAPED=[], RIBBON_STEP=0.5;
+function ribbon(scene,pts,width,yoff,mat,store,kind){
+  pts=resample(pts,RIBBON_STEP);
+  var m=Math.max(1,Math.ceil(width/RIBBON_STEP)), v=[], idx=[];
   for(var i=0;i<pts.length;i++){
     var a=pts[Math.max(0,i-1)], b=pts[Math.min(pts.length-1,i+1)];
     var dx=b[0]-a[0], dz=b[1]-a[1], L=Math.sqrt(dx*dx+dz*dz)||1;
     var nx=-dz/L*width/2, nz=dx/L*width/2;
-    var x=pts[i][0], z=pts[i][1];
-    v.push(x+nx,displayHeight(x+nx,z+nz)+yoff,z+nz);
-    v.push(x-nx,displayHeight(x-nx,z-nz)+yoff,z-nz);
+    for(var k=0;k<=m;k++){ var f=-1+2*k/m, x=pts[i][0]+nx*f, z=pts[i][1]+nz*f; v.push(x,groundY(x,z)+yoff,z); }
   }
-  for(var j=0;j<pts.length-1;j++){ var o=j*2; idx.push(o,o+1,o+2,o+1,o+3,o+2); }
+  for(var j=0;j<pts.length-1;j++) for(k=0;k<m;k++){ var o=j*(m+1)+k, p=o+m+1; idx.push(o,p,o+1, o+1,p,p+1); }
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute(v,3));
   g.setIndex(idx); g.computeVertexNormals();
-  var m=new THREE.Mesh(g,mat); scene.add(m); if(store) store.push(m);
-  SEATED_GEO.push(seatGeometry(m));
-  return m;
+  var mesh=new THREE.Mesh(g,mat); scene.add(mesh); if(store) store.push(mesh);
+  mesh.userData.drape={lift:yoff,kind:kind};
+  DRAPED.push(mesh);
+  return mesh;
+}
+function drape(o){
+  var P=o.geometry.attributes.position, lift=o.userData.drape.lift;
+  for(var i=0;i<P.count;i++) P.setY(i,groundY(P.getX(i),P.getZ(i))+lift);
+  P.needsUpdate=true; o.geometry.computeVertexNormals(); if(o.geometry.computeBoundingSphere) o.geometry.computeBoundingSphere();
 }
 function resample(pts,step){
   var out=[pts[0]];
@@ -3250,13 +3411,13 @@ function buildWater(scene){
   mere(MENI,23,9,-3.95);
   var bankMat=matte({color:0x4E5A4C,roughness:0.96});
   var streamMat=new THREE.MeshStandardMaterial({color:lin(0x587A8E),roughness:0.48,metalness:0.0,envMapIntensity:0.18});
-  ribbon(scene,resample(GOLDBACH,3.0),4.6,0.16,bankMat,waterMeshes);
-  ribbon(scene,resample(GOLDBACH,3.0),2.8,0.26,streamMat,waterMeshes);
-  ribbon(scene,resample(LITAVA,3.0),5.0,0.16,bankMat,waterMeshes);
-  ribbon(scene,resample(LITAVA,3.0),3.2,0.26,streamMat,waterMeshes);
+  ribbon(scene,GOLDBACH,4.6,0.16,bankMat,waterMeshes,"bank");
+  ribbon(scene,GOLDBACH,2.8,0.26,streamMat,waterMeshes,"stream");
+  ribbon(scene,LITAVA,5.0,0.16,bankMat,waterMeshes,"bank");
+  ribbon(scene,LITAVA,3.2,0.26,streamMat,waterMeshes,"stream");
   BROOKS.forEach(function(b){
-    ribbon(scene,resample(b,3.0),2.4,0.16,bankMat,waterMeshes);
-    ribbon(scene,resample(b,3.0),1.4,0.26,streamMat,waterMeshes);
+    ribbon(scene,b,2.4,0.16,bankMat,waterMeshes,"bank");
+    ribbon(scene,b,1.4,0.26,streamMat,waterMeshes,"stream");
   });
 }
 function buildRoads(scene){
@@ -3266,9 +3427,9 @@ function buildRoads(scene){
   var edge=matte({color:0x554C3E,roughness:0.97});
   ROADS.forEach(function(r){
     var mat = r.cls==="highway"?hi : r.cls==="post"?po : tr;
-    var pts=resample(M2W(r.p),3.0);
-    ribbon(scene, pts, r.w+1.1, 0.26, edge, roadMeshes);
-    ribbon(scene, pts, r.w, 0.34, mat, roadMeshes);
+    var pts=M2W(r.p);
+    ribbon(scene, pts, r.w+1.1, 0.26, edge, roadMeshes, "road edge");
+    ribbon(scene, pts, r.w, 0.34, mat, roadMeshes, "road");
   });
 }
 var _wallTex=null, _roofTex=null;
@@ -3410,16 +3571,17 @@ function buildSettlements(scene){
 function buildWoods(scene){
   var seed=77; function rnd(){ seed=(seed*1664525+1013904223)%4294967296; return seed/4294967296; }
   var broad=[],conif=[];
+  /* Stage 2F (owner, on the 2E review): a wood's trees stand inside the wood as the model's land cover has it, where
+     drawnCover is wood, so the landscape, the ground's cover and the paper map's woods agree. That cover is buildCover's
+     unrotated ellipse, ending at about 0.89 of the wood's radii, less what a village, water or marsh takes from it (coverClass);
+     before 2F the trees filled the ellipse turned by WOODS.rot, to its radii. The same number of trees per wood (WOODS.n). */
   WOODS.forEach(function(wd){
     var c=W(wd.c[0],wd.c[1]), guard=0;
     for(var i=0;i<wd.n;i++){
-      var u=rnd()*2-1, v=rnd()*2-1;
-      if(u*u+v*v>1){ if(++guard<wd.n*6){ i--; } continue; }
-      var lx=u*wd.rx*0.5, lz=v*wd.ry*0.5;
-      var ca=Math.cos(wd.rot), sa=Math.sin(wd.rot);
-      var x=c[0]+lx*ca-lz*sa, z=c[1]+lx*sa+lz*ca;
+      var u=rnd()*2-1, v=rnd()*2-1, x=c[0]+u*wd.rx*0.5, z=c[1]+v*wd.ry*0.5;
+      if(u*u+v*v>1||drawnCover(x,z)!==4){ if(++guard<wd.n*20){ i--; } continue; }
       var s=0.7+rnd()*0.65;
-      (rnd()<Math.max(0.28,wd.conifer)?conif:broad).push([x,displayHeight(x,z),z,s]);
+      (rnd()<Math.max(0.28,wd.conifer)?conif:broad).push([x,displayHeight(x,z),z,s,"wood"]);
     }
   });
   VILLAGES.forEach(function(v){
@@ -3428,7 +3590,7 @@ function buildWoods(scene){
     for(var i=0;i<Math.round(v[3]*1.1);i++){
       var a=rnd()*Math.PI*2, r=R*(1.05+rnd()*0.45);
       var x=cc[0]+Math.cos(a)*r, z=cc[1]+Math.sin(a)*r*0.75;
-      broad.push([x,displayHeight(x,z),z,0.5+rnd()*0.3]);
+      broad.push([x,displayHeight(x,z),z,0.5+rnd()*0.3,"village"]);   /* a village's trees and orchards, round it: not a wood */
     }
   });
   var d=new THREE.Object3D();
@@ -3452,6 +3614,7 @@ function buildWoods(scene){
       im.setColorAt(k,tcol);
     });
     if(im.instanceColor) im.instanceColor.needsUpdate=true;
+    im.userData.kinds=list.map(function(t){ return t[4]; });
     if(list.length) treeMesh.add(im);
   });
   var EVER=[0x2C3A2C,0x27332A,0x30402F];
@@ -3465,18 +3628,19 @@ function buildWoods(scene){
       im.setColorAt(k,tcol);
     });
     if(im.instanceColor) im.instanceColor.needsUpdate=true;
+    im.userData.kinds=list.map(function(t){ return t[4]; });
     if(list.length) coniferMesh.add(im);
   });
   /* scrub: low thorn and hazel along the water and at the wood edges */
   var scrub=[];
+  /* at the wood's edge, inside it (Stage 2F): in the outer band of its cover, 0.72 to 0.89 of the radii, where drawnCover is
+     wood (before 2F: a ring just outside the turned ellipse, 1.02 to 1.24 of its radii) */
   WOODS.forEach(function(wd){
-    var c=W(wd.c[0],wd.c[1]);
-    for(var q=0;q<Math.round(wd.n*0.35);q++){
-      var a=rnd()*6.28, r=1.02+rnd()*0.22;
-      var lx=Math.cos(a)*wd.rx*0.5*r, lz=Math.sin(a)*wd.ry*0.5*r;
-      var ca=Math.cos(wd.rot), sa=Math.sin(wd.rot);
-      var x=c[0]+lx*ca-lz*sa, z=c[1]+lx*sa+lz*ca;
-      scrub.push([x,displayHeight(x,z),z,0.5+rnd()*0.5]);
+    var c=W(wd.c[0],wd.c[1]), want=Math.round(wd.n*0.35), got=0, guard=0;
+    while(got<want&&guard++<want*40){
+      var a=rnd()*6.28, r=0.72+rnd()*0.17, x=c[0]+Math.cos(a)*wd.rx*0.5*r, z=c[1]+Math.sin(a)*wd.ry*0.5*r;
+      if(drawnCover(x,z)!==4) continue;
+      scrub.push([x,displayHeight(x,z),z,0.5+rnd()*0.5,"edge"]); got++;
     }
   });
   [GOLDBACH,LITAVA].forEach(function(line){
@@ -3487,7 +3651,7 @@ function buildWoods(scene){
       var dx=p1[0]-p0[0], dz=p1[1]-p0[1], L=Math.hypot(dx,dz)||1;
       x+=(-dz/L)*side*off; z+=(dx/L)*side*off;
       if(covAt(covVill,x,z)>0.3) continue;
-      scrub.push([x,displayHeight(x,z),z,0.45+rnd()*0.45]);
+      scrub.push([x,displayHeight(x,z),z,0.45+rnd()*0.45,"stream"]);   /* bank scrub along the streams: not a wood */
     }
   });
   scrubMesh=new THREE.InstancedMesh(kit.scrub,matte({color:0xFFFFFF,flatShading:true}),Math.max(1,scrub.length));
@@ -3499,6 +3663,7 @@ function buildWoods(scene){
     scrubMesh.setColorAt(k,tcol);
   });
   if(scrubMesh.instanceColor) scrubMesh.instanceColor.needsUpdate=true;
+  scrubMesh.userData.kinds=scrub.map(function(t){ return t[4]; });
   scene.add(treeMesh); scene.add(coniferMesh); scene.add(scrubMesh);
   treeMesh.children.concat(coniferMesh.children,[scrubMesh]).forEach(seatInstances);
 }
@@ -3560,7 +3725,11 @@ function treeKit(){
 var CONTOUR_INTERVAL=1.5, CONTOUR_INDEX=4;
 /* the ground continues beyond the field, coarsely, until the fog takes it */
 function buildApron(scene){
-  var m=new THREE.Mesh(apronGeometry(),groundMesh.material);
+  /* its own material (Stage 2F): the ground's shader, always in its per-triangle mode (uMode 0), its colours its own */
+  var mat=atlasShader(matte({vertexColors:true,flatShading:false,map:coverAtlas(),normalMap:coverNormalAtlas(),envMapIntensity:0.28,
+    normalScale:new THREE.Vector2(0.45,0.45),roughness:0.94,metalness:0.0}));
+  mat.userData.grain=mat.map; mat.userData.U.uMode.value=0;
+  var m=new THREE.Mesh(apronGeometry(),mat);
   m.position.y=-0.35;            /* tucked just under the field's own edge */
   m.receiveShadow=true;
   scene.add(m);
@@ -3568,7 +3737,7 @@ function buildApron(scene){
 }
 function apronGeometry(){
   var X0=-860, X1=860, Z0=-760, Z1=760, NX=86, NZ=76;
-  var P=[],N=[],U=[],C=[],COV=[], s=displayScale();
+  var P=[],N=[],U=[],C=[],COV=[],GN=[], s=displayScale();
   var base=lin(COVER_COL.natural[0]);
   function v(x,z){ return [x,displayHeight(x,z),z]; }
   function push(a,b,c){
@@ -3583,7 +3752,7 @@ function apronGeometry(){
     var k=0.50+0.62*sh, e=Math.max(0,Math.min(1,(GEOREF.elevM(mid)-200)/123));
     var r=base.r*k*(0.88+0.24*e), g=base.g*k*(0.90+0.20*e), bb=base.b*k*(0.94+0.06*e);
     [a,b,c].forEach(function(q){
-      P.push(q[0],q[1],q[2]); N.push(nx,ny,nz); U.push(q[0]/11,q[2]/11); C.push(r,g,bb); COV.push(0);
+      P.push(q[0],q[1],q[2]); N.push(nx,ny,nz); U.push(q[0]/11,q[2]/11); C.push(r,g,bb); COV.push(0); GN.push(0,0,0,0);
     });
   }
   var dx=(X1-X0)/NX, dz=(Z1-Z0)/NZ;
@@ -3600,6 +3769,7 @@ function apronGeometry(){
   g.setAttribute("uv",new THREE.Float32BufferAttribute(U,2));
   g.setAttribute("color",new THREE.Float32BufferAttribute(C,3));
   g.setAttribute("cover",new THREE.Float32BufferAttribute(COV,1));
+  g.setAttribute("gnd",new THREE.Float32BufferAttribute(GN,4));
   return g;
 }
 function buildContours(scene){
@@ -3747,15 +3917,23 @@ function buildAnalysis(scene){
    (buildCover) at coverClass's threshold (village 0.55, wood 0.5), traced on a grid four times finer than the cover
    raster, which covAt interpolates. A footprint is the village's extent in the model, as schematic as the cover it comes
    from (VILLAGES gives a place and a size, not a plan); where coverClass gives water or marsh priority, the footprint is
-   still drawn. Nothing here is drawn on the landscape, and nothing is seated: the paper map's ground is flat (y 0). */
+   still drawn (owner, on the 2E review: the footprints stay the model's cover disc). Since 2F the woods are traced from the
+   drawn wood class itself (drawnCover), where the ground draws wood and the trees of the landscape stand: the cover field
+   less what a village, water or marsh takes from it. Nothing here is drawn on the landscape, and nothing is seated: the
+   paper map's ground is flat (y 0). */
 var paperGroup=null, PAPER_SYM={wood:{level:0.5,lift:0.05}, village:{level:0.55,lift:0.08}, markPx:26};
 /* closed outlines of {field > level}, as rings of world [x, z]; the raster is padded with 0 so every ring closes */
-function coverRings(field,level){
+/* Stage 2F: with inside(x, z) given, the outline of the region where it holds (a class of drawnCover): the grid marks each
+   node in or out, and each crossing is found on its edge by bisection, to 1/256 of the step (about 0.1 m) */
+function coverRings(field,level,inside){
   var st=4, nx=(COV_NX-1)*st+3, nz=(COV_NZ-1)*st+3, dx=COV_DX/st, dz=COV_DZ/st, x0=COV_X0-dx, z0=COV_Z0-dz;
   var v=new Float32Array(nx*nz), i, j;
-  for(j=1;j<nz-1;j++) for(i=1;i<nx-1;i++) v[j*nx+i]=covAt(field,x0+i*dx,z0+j*dz);
+  for(j=1;j<nz-1;j++) for(i=1;i<nx-1;i++){ var gx=x0+i*dx, gz=z0+j*dz; v[j*nx+i]=inside?(inside(gx,gz)?1:0):covAt(field,gx,gz); }
+  if(inside) level=0.5;
   var pts={}, nb={};
   function P(a,b){ var k=a<b?a+"_"+b:b+"_"+a; if(!pts[k]){ var t=(level-v[a])/((v[b]-v[a])||1e-9), ia=a%nx, ja=(a-ia)/nx, ib=b%nx, jb=(b-ib)/nx;
+    if(inside){ var lo=0, hi=1, ina=v[a]>level; for(var it=0;it<8;it++){ var m=(lo+hi)/2;
+      if(inside(x0+(ia+(ib-ia)*m)*dx, z0+(ja+(jb-ja)*m)*dz)===ina) lo=m; else hi=m; } t=(lo+hi)/2; }
     pts[k]=[x0+(ia+(ib-ia)*t)*dx, z0+(ja+(jb-ja)*t)*dz]; } return k; }
   function S(p,q){ (nb[p]=nb[p]||[]).push(q); (nb[q]=nb[q]||[]).push(p); }
   /* corners a (i,j), b (i+1,j), c (i+1,j+1), d (i,j+1); edges 0 ab, 1 bc, 2 cd, 3 da; each case joins two edges */
@@ -3764,7 +3942,7 @@ function coverRings(field,level){
     var a=j*nx+i, b=a+1, c=a+nx+1, d=a+nx, m=(v[a]>level?1:0)|(v[b]>level?2:0)|(v[c]>level?4:0)|(v[d]>level?8:0);
     if(m===0||m===15) continue;
     var E=[[a,b],[b,c],[d,c],[a,d]], L=T[m];
-    if(m===5||m===10){ var mid=(v[a]+v[b]+v[c]+v[d])/4>level;   /* a saddle: the centre decides which corners join */
+    if(m===5||m===10){ var mid=inside?inside(x0+(i+0.5)*dx,z0+(j+0.5)*dz):(v[a]+v[b]+v[c]+v[d])/4>level;   /* a saddle: the centre decides which corners join */
       L=(m===5)===mid?[[0,1],[2,3]]:[[3,0],[1,2]]; }
     L.forEach(function(q){ S(P(E[q[0]][0],E[q[0]][1]),P(E[q[1]][0],E[q[1]][1])); });
   }
@@ -3811,7 +3989,7 @@ function buildPaperSymbols(scene){
   function basic(hex,op){ return new THREE.MeshBasicMaterial({color:lin(parseInt(hex.slice(1),16)),transparent:op<1,opacity:op,depthWrite:false,fog:false,side:THREE.DoubleSide}); }
   function line(hex,op){ return new THREE.LineBasicMaterial({color:lin(parseInt(hex.slice(1),16)),transparent:op<1,opacity:op}); }
   /* woods: the tint, then the tree marks (texture coordinates east and north, so the marks stand upright), then the outline */
-  var wr=coverRings(covWood,PAPER_SYM.wood.level);
+  var wr=coverRings(null,0,function(x,z){ return covAt(covWood,x,z)>PAPER_SYM.wood.level&&drawnCover(x,z)===4; });   /* Stage 2F: the drawn wood class */
   var wt=ringMeshes(wr,PAPER_SYM.wood.lift,basic(T.wood.fill,0.72),line(T.wood.edge,0.9));
   var marks=new THREE.MeshBasicMaterial({map:woodMarkTexture(),transparent:true,opacity:0.85,depthWrite:false,fog:false,side:THREE.DoubleSide});
   var wm=ringMeshes(wr,PAPER_SYM.wood.lift+0.005,marks,line(T.wood.edge,0),function(q){ return [q[0]*E[0]+q[1]*E[1],q[0]*N[0]+q[1]*N[1]]; });
@@ -3819,6 +3997,7 @@ function buildPaperSymbols(scene){
   /* villages: the footprint and its edge */
   var vr=coverRings(covVill,PAPER_SYM.village.level);
   var vt=ringMeshes(vr,PAPER_SYM.village.lift,basic(T.village.fill,0.88),line(T.village.edge,0.95));
+  wt[0].userData.cover=4; vt[0].userData.cover=5;   /* the class each fill draws (the self-test's cover render, Stage 2F) */
   [wt[0],wm[0],wt[1],vt[0],vt[1]].forEach(function(o){ paperGroup.add(o); });
   paperGroup.userData={woods:wr.length, villages:vr.length, marks:wm[0], rings:{wood:wr,village:vr}};
   scene.add(paperGroup);
@@ -7094,7 +7273,8 @@ function paintLegend(){
   var on={nation:counters||(land&&!isTrueScale()), foot:land&&isTrueScale(), "arrow-fr":side("fr"), "arrow-al":side("al"),
           halt:A.some(function(a){ return a.kind==="halt"; }), bound:layerOn.arrows&&(O.bounds||[]).length>0, plan:!!planSide,
           badge:counters, analysis:!!layerOn.analysis, contours:!!layerOn.contours&&!cleanView,
-          wood:!land, village:!land};   /* Stage 2E: the paper map's own symbology */
+          wood:!land, village:!land,   /* Stage 2E: the paper map's own symbology */
+          mere:true};   /* Stage 2F: the meres are drawn in every view, and their outlines are schematic (decision 27, section I.2) */
   var key=JSON.stringify(on);
   if(key===_lgKey) return;
   _lgKey=key; ML.lgSize=null;
@@ -8924,6 +9104,7 @@ var AUSTERLITZ_DEBUG=(function(){
         if(row("badge")!==(mode!=="terrain"&&layerOn.symbols)) R.ctx.push(s.n+": the badge row");
         if(row("foot")!==(mode!=="staff"&&isTrueScale())) R.ctx.push(s.n+": the footprint rows");
         if(row("wood")!==(mode==="staff")||row("village")!==(mode==="staff")) R.ctx.push(s.n+": the paper map's wood and village rows");
+        if(!row("mere")) R.ctx.push(s.n+": the meres' row (pond outlines schematic)");
         if((getComputedStyle(document.getElementById("goingkey")).display!=="none")!==goingOn) R.ctx.push(s.n+": the going rows"); }
       if(s.layers){ setPlan(planSide); if(goingOn) toggle("#going"); if(layerOn.analysis) toggle('.layer-btn[data-l="analysis"]'); }
       if(s.first) closeFirst(null);
@@ -8994,6 +9175,11 @@ var AUSTERLITZ_DEBUG=(function(){
       ["village footprints",visibleUp(world.paper)&&world.paper.userData.villages>0],["woods symbology",visibleUp(world.paper)&&world.paper.userData.woods>0],
       ["water",world.water.every(function(w2){ return visibleUp(w2); })],["draped arrows",drapes>0],["counters",counters>0]];
     var missing=drawn.filter(function(q){ return !q[1]; }).map(function(q){ return q[0]; });
+    /* Stage 2F: the paper map's cover, its ground alone and with its woods and footprints; its roads and streams draped flat */
+    var pc=coverChecks(ck,true); o.cover=pc.hash; o.coverPaper=pc.paper;
+    var rdp=roadDrape();
+    ck("paper map: roads and streams draped on the flat sheet, every vertex at its lift", rdp.n>0&&rdp.worst<=0.05&&rdp.mids>0&&!rdp.under,
+      rdp.n+" vertices in "+rdp.meshes+" meshes; worst |y - groundY - lift| "+rdp.worst.toExponential(1)+"; "+rdp.under+" of "+rdp.mids+" edge midpoints under the sheet");
     ck("paper map: no figures, roofs, chimneys, houses or 3D trees drawn; hillshade, contours, village footprints, water, woods, draped arrows and counters drawn",
       !hidden.length&&!missing.length, (hidden.length?"DRAWN: "+hidden.slice(0,6).join(", ")+"; ":"")+(missing.length?"MISSING: "+missing.join(", ")+"; ":"")+
       world.paper.userData.villages+" village footprints, "+world.paper.userData.woods+" woods, "+drapes+" draped overlay meshes, "+counters+" counters");
@@ -9027,9 +9213,10 @@ var AUSTERLITZ_DEBUG=(function(){
     return o;
   }
   function paperCross(B){
-    var F=DISPLAY.settings, M=B[F[0]], bad=F.filter(function(f){ return B[f].pal!==M.pal||B[f].geo!==M.geo||B[f].flat!==0||Math.abs(B[f].pxkm-M.pxkm)>1e-6; });
-    return [{name:"paper map: identical at every relief setting (flat ground, the same hillshade and the same draped overlays; decision 19)", ok:!bad.length,
-      detail:F.map(function(f){ return fmtFactor(f)+"\u00d7: hillshade "+B[f].pal+", overlays "+B[f].geo+", "+B[f].pxkm.toFixed(3)+" px/km"; }).join("; ")}];
+    var F=DISPLAY.settings, M=B[F[0]], bad=F.filter(function(f){ return B[f].pal!==M.pal||B[f].geo!==M.geo||B[f].flat!==0||Math.abs(B[f].pxkm-M.pxkm)>1e-6||
+      B[f].cover!==M.cover||B[f].coverPaper!==M.coverPaper; });
+    return [{name:"paper map: identical at every relief setting (flat ground, the same hillshade, the same draped overlays and the same cover; decision 19)", ok:!bad.length,
+      detail:F.map(function(f){ return fmtFactor(f)+"\u00d7: hillshade "+B[f].pal+", overlays "+B[f].geo+", cover "+B[f].coverPaper+", "+B[f].pxkm.toFixed(3)+" px/km"; }).join("; ")}];
   }
   function stage2bChecks(B){
     var out2=[], F=DISPLAY.settings, M=B[GEOREF.EXAG];
@@ -9062,6 +9249,98 @@ var AUSTERLITZ_DEBUG=(function(){
       t1.onField+" formations on the field at "+fmtClock(PHASES[3].t0+22)+", "+t1.feet+" footprints, "+t1.blocks+" figure blocks, "+t1.landscape+" landscape layers drawn");
     return out2;
   }
+  /* ---- Stage 2F: the land cover as drawn (docs/STAGE2_SPEC.md section J, 2F; decision 28) ----
+     The ground is rendered straight down, one pixel per COVER_H world units (7.9 m) over the whole modelled ground, with the
+     ground shader's own class output (uDebug); on the paper map its wood and village fills are drawn over it in their class.
+     The cover polygon of a class is where the model's classifier, at the point itself, gives it: coverClass(x, z,
+     localHeight(x, z)), at each pixel's centre. For each class the error is the largest distance from a pixel where the
+     drawing and the model disagree about that class (one says it, the other not) to the model's edge of it, less half a
+     pixel: "along each cover polygon's edge, how far from the edge the drawn cover changes". */
+  var COVER_H=0.125, COVER_TOL_M=20, COVER_NAMES=["field","meadow","marsh","water","wood","village","vineyard","track"], _covTruth=null;
+  function coverGrid(){ return {nx:Math.round(GROUND_W/COVER_H), nz:Math.round(GROUND_D/COVER_H), x0:-GROUND_W/2, z0:-GROUND_D/2}; }
+  function coverTruth(){   /* the model's classes at the pixel centres: the same at every factor and on the paper map */
+    if(_covTruth) return _covTruth;
+    var g=coverGrid(), T=new Uint8Array(g.nx*g.nz);
+    for(var j=0;j<g.nz;j++){ var z=g.z0+(j+0.5)*COVER_H; for(var i=0;i<g.nx;i++){ var x=g.x0+(i+0.5)*COVER_H; T[j*g.nx+i]=coverClass(x,z,localHeight(x,z)); } }
+    return (_covTruth=T);
+  }
+  /* the drawn classes, row j from the smallest z; 255 where nothing is drawn. paper: the paper map's wood and village fills too */
+  function coverRender(paper){
+    var g=coverGrid(), rt=new THREE.WebGLRenderTarget(g.nx,g.nz,{minFilter:THREE.NearestFilter,magFilter:THREE.NearestFilter});
+    var cam=new THREE.OrthographicCamera(g.x0,g.x0+GROUND_W,-g.z0,-(g.z0+GROUND_D),1,4000);
+    cam.position.set(0,2000,0); cam.up.set(0,0,-1); cam.lookAt(0,0,0); cam.updateMatrixWorld(); cam.updateProjectionMatrix();
+    var hid=[], mats=[], U=groundMesh.material.userData.U, cc=new THREE.Color(), ca=renderer.getClearAlpha(), tm=renderer.toneMapping, oe=renderer.outputEncoding;
+    renderer.getClearColor(cc);
+    scene.children.forEach(function(o){ if(o!==groundMesh&&!(paper&&o===world.paper)&&o.visible){ o.visible=false; hid.push(o); } });
+    if(paper) world.paper.children.forEach(function(o){ var k=o.userData.cover;
+      if(k===undefined){ if(o.visible){ o.visible=false; hid.push(o); } return; }
+      mats.push([o,o.material]); o.material=new THREE.MeshBasicMaterial({color:new THREE.Color(k/255,0,0),fog:false,toneMapped:false,side:THREE.DoubleSide}); });
+    U.uDebug.value=1; renderer.toneMapping=THREE.NoToneMapping; renderer.outputEncoding=THREE.LinearEncoding;
+    renderer.setClearColor(0xffffff,1); renderer.setRenderTarget(rt); renderer.clear(); renderer.render(scene,cam);
+    var buf=new Uint8Array(g.nx*g.nz*4); renderer.readRenderTargetPixels(rt,0,0,g.nx,g.nz,buf);
+    renderer.setRenderTarget(null); renderer.setClearColor(cc,ca); renderer.toneMapping=tm; renderer.outputEncoding=oe; U.uDebug.value=0;
+    hid.forEach(function(o){ o.visible=true; }); mats.forEach(function(m){ m[0].material.dispose(); m[0].material=m[1]; });
+    rt.dispose(); requestRender(2);
+    var D=new Uint8Array(g.nx*g.nz);
+    for(var q=0;q<g.nz;q++){ var j=g.nz-1-q; for(var i=0;i<g.nx;i++) D[j*g.nx+i]=buf[(q*g.nx+i)*4]; }
+    return D;
+  }
+  /* per class, the largest distance (m) from a disagreeing pixel to the model's edge of that class; T the model's classes */
+  function coverError(D,T){
+    var g=coverGrid(), nx=g.nx, nz=g.nz, R=64, worst={}, wrong={}, far={}, blank=0;
+    function near(i,j,test){ var best=1e9;   /* the nearest pixel where test holds, searched in square rings */
+      for(var r=1;r<=R&&r<=best;r++) for(var dj=-r;dj<=r;dj++) for(var di=-r;di<=r;di+=(Math.abs(dj)===r?1:2*r)){
+        var a=i+di, b=j+dj; if(a<0||b<0||a>=nx||b>=nz||!test(T[b*nx+a])) continue; var d=Math.sqrt(di*di+dj*dj); if(d<best) best=d; }
+      return best; }
+    for(var j=0;j<nz;j++) for(var i=0;i<nx;i++){ var q=j*nx+i, t=T[q], d=D[q]; if(d===t) continue;
+      if(d===255){ blank++; continue; }
+      [[t,function(v){ return v!==t; }],[d,function(v){ return v===d; }]].forEach(function(c){
+        var k=c[0], e=near(i,j,c[1]); wrong[k]=(wrong[k]||0)+1; if(e>R) far[k]=(far[k]||0)+1;
+        var m=Math.max(0,e-0.5)*COVER_H*GEOREF.M_PER_WORLD; if(!(m<=(worst[k]||0))) worst[k]=m; }); }
+    var per=COVER_NAMES.map(function(n,k){ return {name:n, m:worst[k]||0, px:wrong[k]||0, far:far[k]||0}; });
+    return {per:per, blank:blank, ok:!blank&&per.every(function(c){ return c.m<=COVER_TOL_M&&!c.far; }),
+      text:per.map(function(c){ return c.name+" "+(c.far?">"+Math.round(R*COVER_H*GEOREF.M_PER_WORLD):c.m.toFixed(1))+" m"; }).join(", ")+
+        " (pixels disagreeing: "+per.reduce(function(a,c){ return a+c.px; },0)+" of "+(nx*nz)+(blank?"; NOT DRAWN: "+blank:"")+")"};
+  }
+  function coverHash(D){ var h=0; for(var i=0;i<D.length;i+=3) h=(h*31+D[i])%2147483647; return h; }
+  /* the paper map's classes: the model's, except that a village footprint is the model's cover disc (covVill > 0.55; owner,
+     on the 2E review), drawn over whatever class the ground has there */
+  function paperTruth(T){ var g=coverGrid(), P=new Uint8Array(T), fp=0, over={};
+    for(var j=0;j<g.nz;j++){ var z=g.z0+(j+0.5)*COVER_H; for(var i=0;i<g.nx;i++){ var x=g.x0+(i+0.5)*COVER_H, q=j*g.nx+i;
+      if(covAt(covVill,x,z)>PAPER_SYM.village.level){ fp++; if(T[q]!==5){ over[COVER_NAMES[T[q]]]=(over[COVER_NAMES[T[q]]]||0)+1; } P[q]=5; } } }
+    return {P:P, fp:fp, over:over}; }
+  function coverChecks(ck,paper){
+    var T=coverTruth(), D=coverRender(false), e=coverError(D,T), o={hash:coverHash(D)};
+    ck("cover: along each class's edge the drawn cover changes within "+COVER_TOL_M+" m of the model's edge"+(paper?" (the paper map's ground)":""), e.ok, e.text);
+    if(paper){ var pt=paperTruth(T), P=coverRender(true), e2=coverError(P,pt.P), a=COVER_H*COVER_H*GEOREF.M_PER_WORLD*GEOREF.M_PER_WORLD/1e6;
+      o.paper=coverHash(P);
+      ck("cover: on the paper map, with its woods and village footprints, every class's drawn edge within "+COVER_TOL_M+" m of its edge", e2.ok,
+        e2.text+"; the village footprints are the model's cover disc (owner decision): "+(pt.fp*a).toFixed(2)+" km\u00b2, of which the model classes "+
+        Object.keys(pt.over).map(function(k){ return k+" "+(pt.over[k]*a).toFixed(2); }).join(", ")+" km\u00b2 (drawn under them on the landscape)"); }
+    o.per=e.per; return o;
+  }
+  /* roads and streams (Stage 2F): every vertex at its lift above the drawn ground, and no edge of theirs cutting under it
+     (the midpoint of every triangle edge above groundY) */
+  function roadDrape(){
+    var worst=0, where="", n=0, meshes=0, mids=0, under=0, v=new THREE.Vector3(), w=new THREE.Vector3();
+    world.roads.concat(world.water).forEach(function(o){ var d=o.userData.drape; if(!d) return; meshes++; o.updateMatrixWorld(true);
+      var P=o.geometry.attributes.position, I=o.geometry.index?o.geometry.index.array:[];
+      for(var i=0;i<P.count;i++){ v.fromBufferAttribute(P,i).applyMatrix4(o.matrixWorld);
+        var e=Math.abs(v.y-groundY(v.x,v.z)-d.lift); n++; if(e>worst){ worst=e; where=d.kind; } }
+      for(var t=0;t<I.length;t+=3) for(var k=0;k<3;k++){ v.fromBufferAttribute(P,I[t+k]).applyMatrix4(o.matrixWorld); w.fromBufferAttribute(P,I[t+(k+1)%3]).applyMatrix4(o.matrixWorld);
+        mids++; if((v.y+w.y)/2<groundY((v.x+w.x)/2,(v.z+w.z)/2)) under++; } });
+    return {worst:worst,where:where,n:n,meshes:meshes,mids:mids,under:under};
+  }
+  /* the trees and scrub of the woods (Stage 2F; owner, on the 2E review): every one inside the wood as the land cover has it */
+  function woodPlacement(){
+    var m=new THREE.Matrix4(), p=new THREE.Vector3(), R={wood:0,edge:0,village:0,stream:0,out:[],notModel:0};
+    world.trees.children.concat(world.conifers.children,[world.scrub]).forEach(function(im){ var K=im.userData.kinds||[];
+      for(var i=0;i<im.count;i++){ var k=K[i]; if(!k) continue; R[k]++; if(k!=="wood"&&k!=="edge") continue;
+        im.getMatrixAt(i,m); p.setFromMatrixPosition(m);
+        if(drawnCover(p.x,p.z)!==4) R.out.push(k+" at "+p.x.toFixed(1)+","+p.z.toFixed(1));
+        if(coverClass(p.x,p.z,localHeight(p.x,p.z))!==4) R.notModel++; } });
+    return R;
+  }
   function selfTest(){
     var out=[], t0=performance.now(), i;
     function ck(name,ok,detail){ out.push({name:name,ok:!!ok,detail:detail}); }
@@ -9071,7 +9350,7 @@ var AUSTERLITZ_DEBUG=(function(){
 
     /* 1-5, the mist and the derived readings, at each display factor (Stage 2B: 1x, the default, GEOREF.EXAG).
        Replaces the single-factor checks of Stage 0; every threshold is the same. */
-    var keepClock, saveFactor=DISPLAY.factor, bySetting={}, paperBy={};
+    var keepClock, saveFactor=DISPLAY.factor, bySetting={}, paperBy={}, coverBy={};
     function atFactor(fct){
       setDisplayFactor(fct);
       var tag=" (at "+fmtFactor(fct)+"\u00d7)";
@@ -9183,6 +9462,13 @@ var AUSTERLITZ_DEBUG=(function(){
       ck("heads: every Allied arrow head is the notched chevron, every French head the plain triangle", dr.heads.n>0&&!dr.heads.bad.length,
         dr.heads.n+" heads ("+dr.heads.al+" Allied chevrons, notch "+dr.heads.notch+" of the head's length ahead of its base; "+dr.heads.fr+" French plain)"+(dr.heads.bad.length?"; WRONG: "+dr.heads.bad.join(", "):""));
 
+      /* 13. Stage 2F: the land cover drawn per point (within 20 m of each class's edge), the roads and streams draped */
+      coverBy[fct]=coverChecks(ck,false).hash;
+      var rd=roadDrape();
+      ck("roads and streams: every vertex stands at its lift above the drawn ground, and no edge cuts under it", rd.n>0&&rd.worst<=0.05&&rd.mids>0&&!rd.under,
+        rd.n+" vertices in "+rd.meshes+" road and stream meshes; worst |y - groundY - lift| "+rd.worst.toExponential(1)+(rd.where?" ("+rd.where+")":"")+
+        "; "+rd.under+" of "+rd.mids+" edge midpoints under the ground");
+
       layerChecks(ck);
       paperBy[fct]=paperChecks(ck);
       bySetting[fct]=factorFacts(fct);
@@ -9191,6 +9477,14 @@ var AUSTERLITZ_DEBUG=(function(){
     stage2bChecks(bySetting).forEach(function(c){ out.push(c); });
     paperCross(paperBy).forEach(function(c){ out.push(c); });
     setDisplayFactor(saveFactor);
+    /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
+    var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });
+    ck("cover: the drawn classes are the same at every relief setting and on the paper map", !cvBad.length,
+      cvF.map(function(f){ return fmtFactor(f)+"\u00d7 "+coverBy[f]+" (paper map "+paperBy[f].cover+")"; }).join("; "));
+    var wp=woodPlacement();
+    ck("woods: every tree and every scrub of a wood stands inside the wood as the land cover has it", wp.wood>0&&wp.edge>0&&!wp.out.length&&!wp.notModel,
+      wp.wood+" trees and "+wp.edge+" edge scrub of the woods, all where the drawn cover is wood ("+wp.notModel+" where the model's own class is not)"+
+      (wp.out.length?"; OUTSIDE: "+wp.out.slice(0,5).join(", "):"")+"; not woods, and not tested: "+wp.village+" trees round the villages, "+wp.stream+" bank scrub along the streams");
 
     /* 6. the first-run key, the legend, and what is actually drawn */
     var fr=document.getElementById("firstrun"), lg=document.querySelector(".legend"), mism=[];
@@ -9279,7 +9573,8 @@ var AUSTERLITZ_DEBUG=(function(){
             memory:{geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}};
   }
   return {groundY:groundY, camFloor:camFloor, settle:settle, applyCase:applyCase, placeCamera:placeCamera,
-          selfTest:selfTest, stats:stats, figureError:figureError};
+          selfTest:selfTest, stats:stats, figureError:figureError,
+          cover:{grid:coverGrid, truth:coverTruth, render:coverRender, error:coverError, paperTruth:paperTruth, checks:coverChecks, roads:roadDrape, woods:woodPlacement}};
 })();
 
 init();

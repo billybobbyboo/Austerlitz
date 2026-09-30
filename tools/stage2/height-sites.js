@@ -65,7 +65,12 @@ const CLASS={
   /* Stage 2E: on the flat paper map the drawn scale is 0, so the apron's elevation tint (a colour, as buildFaceFacts' tint)
      reads the model height directly instead of the drawn height over the drawn scale; the self-test's paper-map checks
      project the drawn ground and compare it with the display height when the relief is back */
-  "world.js:apronGeometry > push":"model","app.js:paperChecks":"test","app.js:paperChecks > scr":"test"
+  "world.js:apronGeometry > push":"model","app.js:paperChecks":"test","app.js:paperChecks > scr":"test",
+  /* Stage 2F: the local relief the cover classes are read on (COVER_ML, sampled from localHeight: the model's classes, drawn
+     per point); roads and streams draped on the drawn ground; the self-test's cover truth (the model's class at a point),
+     its road and stream draping, and its check of the woods' trees against the model's class */
+  "world.js:buildCoverMl > exact":"model","world.js:drape":"presentation",
+  "app.js:coverTruth":"test","app.js:roadDrape":"test","app.js:woodPlacement":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */

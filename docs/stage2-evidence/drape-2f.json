@@ -1,0 +1,95 @@
+{
+ "2E": {
+  "1": {
+   "vertices": 2244,
+   "worstVertex": 0.044,
+   "edgeMidpoints": 6468,
+   "underGround": 0,
+   "deepestUnder": 0
+  },
+  "4": {
+   "vertices": 2244,
+   "worstVertex": 0.1759,
+   "edgeMidpoints": 6468,
+   "underGround": 3,
+   "deepestUnder": 0.114
+  },
+  "build": "2e.html",
+  "model": {
+   "vertices": 2244,
+   "worstVertex": 0.454,
+   "edgeMidpoints": 6468,
+   "underGround": 62,
+   "deepestUnder": 0.548
+  },
+  "paper": {
+   "vertices": 2244,
+   "worstVertex": 0,
+   "edgeMidpoints": 6468,
+   "underGround": 0,
+   "deepestUnder": 0
+  }
+ },
+ "2F, vertices 1 unit apart (not adopted)": {
+  "1": {
+   "vertices": 13634,
+   "worstVertex": 0,
+   "edgeMidpoints": 61404,
+   "underGround": 0,
+   "deepestUnder": 0
+  },
+  "4": {
+   "vertices": 13634,
+   "worstVertex": 0,
+   "edgeMidpoints": 61404,
+   "underGround": 0,
+   "deepestUnder": 0
+  },
+  "build": "austerlitz-command-map.html",
+  "model": {
+   "vertices": 13634,
+   "worstVertex": 0,
+   "edgeMidpoints": 61404,
+   "underGround": 30,
+   "deepestUnder": 0.124
+  },
+  "paper": {
+   "vertices": 13634,
+   "worstVertex": 0,
+   "edgeMidpoints": 61404,
+   "underGround": 0,
+   "deepestUnder": 0
+  }
+ },
+ "2F, as built (0.5 apart)": {
+  "1": {
+   "vertices": 43932,
+   "worstVertex": 0,
+   "edgeMidpoints": 223302,
+   "underGround": 0,
+   "deepestUnder": 0
+  },
+  "4": {
+   "vertices": 43932,
+   "worstVertex": 0,
+   "edgeMidpoints": 223302,
+   "underGround": 0,
+   "deepestUnder": 0
+  },
+  "build": "austerlitz-command-map.html",
+  "model": {
+   "vertices": 43932,
+   "worstVertex": 0,
+   "edgeMidpoints": 223302,
+   "underGround": 0,
+   "deepestUnder": 0
+  },
+  "paper": {
+   "vertices": 43932,
+   "worstVertex": 0,
+   "edgeMidpoints": 223302,
+   "underGround": 0,
+   "deepestUnder": 0
+  }
+ }
+}

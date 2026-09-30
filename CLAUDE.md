@@ -19,7 +19,7 @@ lower one without saying so explicitly.
 | `geo.js` | `GEOREF`: the only geographic and scale authority (transform, horizontal and vertical scale, ground truth) |
 | `data.js` | historical dataset: phases, order of battle and tracks, features, sources note |
 | `analysis.js` | analysis chapters, command knowledge, the two plans, acts, events, guided tour |
-| `world.js` | ground: relief model, land cover, water, roads, woods, settlements, mist, `groundY`; the paper map's flat symbology (village footprints, woods) and its own hillshade (since 2E) |
+| `world.js` | ground: relief model, land cover, water, roads, woods, settlements, mist, `groundY`; the paper map's flat symbology (village footprints, woods) and its own hillshade (since 2E); the ground shader, which draws the land cover per point, and `COVER_ML`/`drawnCover` (since 2F) |
 | `symbols.js` | the map layer's counters and names (HTML/SVG builders, accessible names), event and objective glyphs |
 | `app.js` | scene, overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface, runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
@@ -78,9 +78,12 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   Since 2E, every paper-map view: north within 0.5 degrees of up, one scale across the view and the scale bar to 1%, nothing
   at figure or landscape scale drawn, its symbology drawn, and the entered views framed inside the unobstructed area; the
   self-test's paper-map checks (flat ground, its own hillshade, the controls, identical at every relief setting).
+  Since 2F, the self-test's ground checks: every cover class's drawn edge within 20 m of the model's (`coverClass` on
+  `localHeight`), rendered at 1x, 4x, 10.33x and on the paper map; the drawn classes identical at every setting; every tree
+  and scrub of a wood inside the drawn wood class; roads and streams at their lift above `groundY`, no edge under it.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 2E build (md5 `c5883f79...`, 1,226,091 bytes;
-  re-baselined from the Stage 2D build `2dc0c26d...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 2F build (md5 `ee4390a2...`, 1,253,655 bytes;
+  re-baselined from the Stage 2E build `c5883f79...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -102,6 +105,8 @@ rate where they fit, else the ceiling, flagged; then the movement arrows: derive
 draped, the Allied chevron, solid boundaries, the halt bar, `binding-test.js`) is merged (#15). Stage 2D (one DOM/SVG
 layer, `#maplayer`, for counters and all map text, replacing the canvas sprite pass; compact counters on plates; the
 contextual legend) is merged (#17). Stage 2E (the true north-up paper map: an orthographic plan over flat ground with its own
-hillshade, pan and zoom-to-cursor in `MAPCAM`, one projection helper, flat village footprints and woods symbology) is done and
-awaits review; 2F has not started. The shadow toe
+hillshade, pan and zoom-to-cursor in `MAPCAM`, one projection helper, flat village footprints and woods symbology) is merged
+(#18). Stage 2F (the ground surface: land cover drawn per point by the ground shader from the model's own classes and a
+local-relief grid, `COVER_ML`; the woods' trees inside the drawn wood class; roads and streams draped; the meres' legend row) is
+done and awaits review. The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.

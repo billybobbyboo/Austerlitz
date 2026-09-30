@@ -1,0 +1,350 @@
+{
+ "h": 0.125,
+ "metresPerUnit": 63.19772037002967,
+ "coverMl": {
+  "nodes": 1809801,
+  "exact": 632442,
+  "sideFlips": 0,
+  "buildMs": 598
+ },
+ "classes": {
+  "field": {
+   "areaKm2": 372.785,
+   "2E landscape": {
+    "maxErrorM": 113.5,
+    "wrongKm2": 3.073,
+    "worstAt": [
+     -96.31,
+     112.31
+    ]
+   },
+   "2E paper map": {
+    "maxErrorM": 113.5,
+    "wrongKm2": 2.739,
+    "worstAt": [
+     -96.31,
+     112.31
+    ]
+   },
+   "2F": {
+    "maxErrorM": 3.9,
+    "wrongKm2": 0.002,
+    "worstAt": [
+     -81.56,
+     -63.94
+    ]
+   },
+   "relief from the 81 m vertices": {
+    "maxErrorM": 56.2,
+    "wrongKm2": 0.21,
+    "worstAt": [
+     -74.81,
+     -60.44
+    ]
+   },
+   "relief bilinear on a 0.5 grid": {
+    "maxErrorM": 11.8,
+    "wrongKm2": 0.033,
+    "worstAt": [
+     -81.06,
+     -63.81
+    ]
+   }
+  },
+  "meadow": {
+   "areaKm2": 25.901,
+   "2E landscape": {
+    "maxErrorM": 155.8,
+    "wrongKm2": 2.348,
+    "worstAt": [
+     -42.31,
+     73.56
+    ]
+   },
+   "2E paper map": {
+    "maxErrorM": 155.8,
+    "wrongKm2": 2.216,
+    "worstAt": [
+     -42.31,
+     73.56
+    ]
+   },
+   "2F": {
+    "maxErrorM": 3.9,
+    "wrongKm2": 0.002,
+    "worstAt": [
+     -81.56,
+     -63.94
+    ]
+   },
+   "relief from the 81 m vertices": {
+    "maxErrorM": 234.2,
+    "wrongKm2": 0.209,
+    "worstAt": [
+     -80.56,
+     93.56
+    ]
+   },
+   "relief bilinear on a 0.5 grid": {
+    "maxErrorM": 44.1,
+    "wrongKm2": 0.034,
+    "worstAt": [
+     -83.56,
+     93.81
+    ]
+   }
+  },
+  "marsh": {
+   "areaKm2": 7.455,
+   "2E landscape": {
+    "maxErrorM": 75,
+    "wrongKm2": 0.922,
+    "worstAt": [
+     -14.19,
+     76.19
+    ]
+   },
+   "2E paper map": {
+    "maxErrorM": 355.4,
+    "wrongKm2": 2.327,
+    "worstAt": [
+     -64.56,
+     87.06
+    ]
+   },
+   "2F": {
+    "maxErrorM": 0,
+    "wrongKm2": 0,
+    "worstAt": null
+   },
+   "relief from the 81 m vertices": {
+    "maxErrorM": 29.6,
+    "wrongKm2": 0.01,
+    "worstAt": [
+     -14.94,
+     76.69
+    ]
+   },
+   "relief bilinear on a 0.5 grid": {
+    "maxErrorM": 3.9,
+    "wrongKm2": 0.002,
+    "worstAt": [
+     38.44,
+     -6.31
+    ]
+   }
+  },
+  "water": {
+   "areaKm2": 10.24,
+   "2E landscape": {
+    "maxErrorM": 51.9,
+    "wrongKm2": 0.946,
+    "worstAt": [
+     -87.44,
+     108.56
+    ]
+   },
+   "2E paper map": {
+    "maxErrorM": 222.3,
+    "wrongKm2": 2.72,
+    "worstAt": [
+     -66.19,
+     -8.44
+    ]
+   },
+   "2F": {
+    "maxErrorM": 3.9,
+    "wrongKm2": 0,
+    "worstAt": [
+     -54.56,
+     -13.44
+    ]
+   },
+   "relief from the 81 m vertices": {
+    "maxErrorM": 7.2,
+    "wrongKm2": 0.011,
+    "worstAt": [
+     38.69,
+     -5.81
+    ]
+   },
+   "relief bilinear on a 0.5 grid": {
+    "maxErrorM": 3.9,
+    "wrongKm2": 0.003,
+    "worstAt": [
+     70.06,
+     -40.06
+    ]
+   }
+  },
+  "wood": {
+   "areaKm2": 8.329,
+   "2E landscape": {
+    "maxErrorM": 53.6,
+    "wrongKm2": 0.535,
+    "worstAt": [
+     -61.69,
+     2.56
+    ]
+   },
+   "2E paper map": {
+    "maxErrorM": 293.5,
+    "wrongKm2": 0.642,
+    "worstAt": [
+     -72.31,
+     108.81
+    ]
+   },
+   "2F": {
+    "maxErrorM": 0,
+    "wrongKm2": 0,
+    "worstAt": null
+   },
+   "relief from the 81 m vertices": {
+    "maxErrorM": 0,
+    "wrongKm2": 0,
+    "worstAt": null
+   },
+   "relief bilinear on a 0.5 grid": {
+    "maxErrorM": 0,
+    "wrongKm2": 0,
+    "worstAt": null
+   }
+  },
+  "village": {
+   "areaKm2": 9.043,
+   "2E landscape": {
+    "maxErrorM": 53,
+    "wrongKm2": 0.828,
+    "worstAt": [
+     3.81,
+     23.31
+    ]
+   },
+   "2E paper map": {
+    "maxErrorM": 809.9,
+    "wrongKm2": 3.557,
+    "worstAt": [
+     -59.81,
+     85.94
+    ]
+   },
+   "2F": {
+    "maxErrorM": 0,
+    "wrongKm2": 0,
+    "worstAt": null
+   },
+   "relief from the 81 m vertices": {
+    "maxErrorM": 3.9,
+    "wrongKm2": 0.001,
+    "worstAt": [
+     91.94,
+     -59.06
+    ]
+   },
+   "relief bilinear on a 0.5 grid": {
+    "maxErrorM": 3.9,
+    "wrongKm2": 0,
+    "worstAt": [
+     6.56,
+     29.06
+    ]
+   }
+  },
+  "vineyard": {
+   "areaKm2": 0.852,
+   "2E landscape": {
+    "maxErrorM": 53,
+    "wrongKm2": 0.048,
+    "worstAt": [
+     -7.69,
+     -27.19
+    ]
+   },
+   "2E paper map": {
+    "maxErrorM": 53,
+    "wrongKm2": 0.048,
+    "worstAt": [
+     -7.69,
+     -27.19
+    ]
+   },
+   "2F": {
+    "maxErrorM": 0,
+    "wrongKm2": 0,
+    "worstAt": null
+   },
+   "relief from the 81 m vertices": {
+    "maxErrorM": 0,
+    "wrongKm2": 0,
+    "worstAt": null
+   },
+   "relief bilinear on a 0.5 grid": {
+    "maxErrorM": 0,
+    "wrongKm2": 0,
+    "worstAt": null
+   }
+  },
+  "track": {
+   "areaKm2": 11.12,
+   "2E landscape": {
+    "maxErrorM": 53,
+    "wrongKm2": 1.247,
+    "worstAt": [
+     15.44,
+     -40.06
+    ]
+   },
+   "2E paper map": {
+    "maxErrorM": 53,
+    "wrongKm2": 1.181,
+    "worstAt": [
+     15.44,
+     -40.06
+    ]
+   },
+   "2F": {
+    "maxErrorM": 0,
+    "wrongKm2": 0,
+    "worstAt": null
+   },
+   "relief from the 81 m vertices": {
+    "maxErrorM": 3.9,
+    "wrongKm2": 0,
+    "worstAt": [
+     -22.81,
+     67.94
+    ]
+   },
+   "relief bilinear on a 0.5 grid": {
+    "maxErrorM": 3.9,
+    "wrongKm2": 0,
+    "worstAt": [
+     -22.81,
+     67.94
+    ]
+   }
+  }
+ },
+ "symbology": {
+  "wood symbology, 2E (covWood > 0.5)": {
+   "areaKm2": 9.111,
+   "otherClassKm2": 0.782,
+   "byClass": {
+    "village": 0.373,
+    "water": 0.094,
+    "marsh": 0.315
+   },
+   "classOutsideKm2": 0
+  },
+  "village footprints (covVill > 0.55)": {
+   "areaKm2": 12.294,
+   "otherClassKm2": 3.251,
+   "byClass": {
+    "water": 1.945,
+    "marsh": 1.306
+   },
+   "classOutsideKm2": 0
+  }
+ }
+}

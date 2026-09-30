@@ -1,0 +1,291 @@
+{
+ "2E": [
+  {
+   "build": "2e.html",
+   "bootMs": [
+    20769,
+    22077,
+    22316
+   ],
+   "cover": {
+    "makePalette natural": 48.8,
+    "makePalette paper": 51.5,
+    "applyGround": 9.2,
+    "total": 109.5
+   },
+   "factorMs": [
+    146,
+    163,
+    140,
+    114,
+    101,
+    83,
+    79,
+    77,
+    82,
+    77,
+    84,
+    90
+   ],
+   "switchMs": {
+    "1x": {
+     "intoPaper": [
+      184,
+      142,
+      131
+     ],
+     "backToLandscape": [
+      90,
+      91,
+      98
+     ]
+    },
+    "4x": {
+     "intoPaper": [
+      138,
+      149,
+      125
+     ],
+     "backToLandscape": [
+      87,
+      94,
+      80
+     ]
+    },
+    "10.33x": {
+     "intoPaper": [
+      130,
+      140,
+      135
+     ],
+     "backToLandscape": [
+      84,
+      82,
+      118
+     ]
+    }
+   },
+   "frameMs": {
+    "overview-field": 517,
+    "paper-north-up": 3
+   }
+  },
+  {
+   "build": "2e.html",
+   "bootMs": [
+    20526,
+    23704
+   ],
+   "cover": {
+    "makePalette natural": 96.7,
+    "makePalette paper": 57.4,
+    "applyGround": 3.7,
+    "total": 157.8
+   },
+   "factorMs": [
+    138,
+    232,
+    130,
+    82,
+    75,
+    79,
+    76,
+    80,
+    81,
+    76,
+    78,
+    78
+   ],
+   "switchMs": {
+    "1x": {
+     "intoPaper": [
+      249,
+      130,
+      129
+     ],
+     "backToLandscape": [
+      99,
+      86,
+      85
+     ]
+    },
+    "4x": {
+     "intoPaper": [
+      123,
+      127,
+      133
+     ],
+     "backToLandscape": [
+      83,
+      81,
+      81
+     ]
+    },
+    "10.33x": {
+     "intoPaper": [
+      134,
+      155,
+      132
+     ],
+     "backToLandscape": [
+      86,
+      101,
+      87
+     ]
+    }
+   },
+   "frameMs": {
+    "overview-field": 3445,
+    "paper-north-up": 1166
+   }
+  }
+ ],
+ "2F": [
+  {
+   "build": "austerlitz-command-map.html",
+   "bootMs": [
+    22262,
+    26748,
+    28309
+   ],
+   "cover": {
+    "buildCoverMl": 461.2,
+    "groundTextures": 23.5,
+    "groundVertexFacts": 46.8,
+    "makePalette natural": 11.7,
+    "makePalette paper": 14.7,
+    "applyGround": 13.3,
+    "total": 571.2
+   },
+   "factorMs": [
+    169,
+    124,
+    89,
+    93,
+    93,
+    83,
+    84,
+    92,
+    134,
+    108,
+    124,
+    118
+   ],
+   "switchMs": {
+    "1x": {
+     "intoPaper": [
+      153,
+      111,
+      132
+     ],
+     "backToLandscape": [
+      94,
+      116,
+      187
+     ]
+    },
+    "4x": {
+     "intoPaper": [
+      145,
+      128,
+      136
+     ],
+     "backToLandscape": [
+      134,
+      129,
+      123
+     ]
+    },
+    "10.33x": {
+     "intoPaper": [
+      131,
+      117,
+      103
+     ],
+     "backToLandscape": [
+      118,
+      97,
+      102
+     ]
+    }
+   },
+   "frameMs": {
+    "overview-field": 26,
+    "paper-north-up": 3
+   }
+  },
+  {
+   "build": "austerlitz-command-map.html",
+   "bootMs": [
+    21963,
+    25563
+   ],
+   "cover": {
+    "buildCoverMl": 509.4,
+    "groundTextures": 21.3,
+    "groundVertexFacts": 36,
+    "makePalette natural": 9.7,
+    "makePalette paper": 9.2,
+    "applyGround": 6.8,
+    "total": 592.4
+   },
+   "factorMs": [
+    119,
+    117,
+    88,
+    94,
+    100,
+    87,
+    96,
+    91,
+    85,
+    88,
+    88,
+    103
+   ],
+   "switchMs": {
+    "1x": {
+     "intoPaper": [
+      195,
+      127,
+      169
+     ],
+     "backToLandscape": [
+      129,
+      119,
+      145
+     ]
+    },
+    "4x": {
+     "intoPaper": [
+      126,
+      108,
+      141
+     ],
+     "backToLandscape": [
+      142,
+      99,
+      110
+     ]
+    },
+    "10.33x": {
+     "intoPaper": [
+      106,
+      109,
+      120
+     ],
+     "backToLandscape": [
+      90,
+      105,
+      121
+     ]
+    }
+   },
+   "frameMs": {
+    "overview-field": 4340,
+    "paper-north-up": 1415
+   }
+  }
+ ],
+ "note": "two sessions each; the first session timed a frame without a read-back (renderFrame + finish), which does not wait for software WebGL: use the second session frame times"
+}

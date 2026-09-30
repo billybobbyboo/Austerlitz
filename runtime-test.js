@@ -89,6 +89,9 @@ const stub={
    this.repeat={set(){}};this.needsUpdate=false}
    clone(){return new stub.CanvasTexture()} dispose(){}},
  RepeatWrapping:1000,
+ /* Stage 2F: the ground shader's data textures (the cover rasters, the local relief, the field table, the viewshed) */
+ DataTexture:class{constructor(d,w,h,f,t){this.image={data:d,width:w,height:h};this.format=f;this.type=t;this.needsUpdate=false} dispose(){}},
+ Vector4:REAL.Vector4, NearestFilter:1003, FloatType:1015, UnsignedByteType:1009,
  MathUtils:{degToRad:d=>d*Math.PI/180},
  Clock:class{constructor(){this.t=Date.now()}getElapsedTime(){return (Date.now()-this.t)/1000}},
  PCFSoftShadowMap:1,sRGBEncoding:1,ACESFilmicToneMapping:1,BackSide:1,DoubleSide:2,
@@ -353,10 +356,13 @@ try{
   /* the terrain material carries the atlas shader and a cover attribute */
   if(typeof groundMesh.material.onBeforeCompile!=="function") throw new Error("atlas shader not attached");
   if(!groundMesh.geometry.attributes.cover) throw new Error("cover attribute missing from the terrain");
-  const fakeShader={vertexShader:"#include <common>\n#include <uv_vertex>\n",fragmentShader:"#include <common>\n#include <map_fragment>\n"};
+  const fakeShader={uniforms:{},vertexShader:"#include <common>\n#include <uv_vertex>\n",fragmentShader:"#include <common>\n#include <map_fragment>\n"};
   groundMesh.material.onBeforeCompile(fakeShader);
   if(!/attribute float cover/.test(fakeShader.vertexShader)) throw new Error("vertex patch did not apply");
-  if(!/texture2D\(map,tuv\)/.test(fakeShader.fragmentShader)) throw new Error("fragment patch did not apply");
+  /* Stage 2F: the atlas is sampled at the cover cell's coordinate through gAtlas (with the gradients of the continuous
+     coordinate; was texture2D(map,tuv)), and the fragment classifies each point by coverClass's rule (gClass) */
+  if(!/gAtlas\(map,tuv\)/.test(fakeShader.fragmentShader)) throw new Error("fragment patch did not apply");
+  if(!/float gClass\(/.test(fakeShader.fragmentShader)||!fakeShader.uniforms.uCovA||!fakeShader.uniforms.uMl) throw new Error("the per-point cover classification is not in the ground shader");
   console.log("terrain atlas shader and cover attribute OK");
 
   /* the post chain: targets sized, passes wired, grade tweened per hour */

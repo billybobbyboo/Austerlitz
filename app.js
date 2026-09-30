@@ -3117,7 +3117,8 @@ function paintLegend(){
   var on={nation:counters||(land&&!isTrueScale()), foot:land&&isTrueScale(), "arrow-fr":side("fr"), "arrow-al":side("al"),
           halt:A.some(function(a){ return a.kind==="halt"; }), bound:layerOn.arrows&&(O.bounds||[]).length>0, plan:!!planSide,
           badge:counters, analysis:!!layerOn.analysis, contours:!!layerOn.contours&&!cleanView,
-          wood:!land, village:!land};   /* Stage 2E: the paper map's own symbology */
+          wood:!land, village:!land,   /* Stage 2E: the paper map's own symbology */
+          mere:true};   /* Stage 2F: the meres are drawn in every view, and their outlines are schematic (decision 27, section I.2) */
   var key=JSON.stringify(on);
   if(key===_lgKey) return;
   _lgKey=key; ML.lgSize=null;
@@ -4947,6 +4948,7 @@ var AUSTERLITZ_DEBUG=(function(){
         if(row("badge")!==(mode!=="terrain"&&layerOn.symbols)) R.ctx.push(s.n+": the badge row");
         if(row("foot")!==(mode!=="staff"&&isTrueScale())) R.ctx.push(s.n+": the footprint rows");
         if(row("wood")!==(mode==="staff")||row("village")!==(mode==="staff")) R.ctx.push(s.n+": the paper map's wood and village rows");
+        if(!row("mere")) R.ctx.push(s.n+": the meres' row (pond outlines schematic)");
         if((getComputedStyle(document.getElementById("goingkey")).display!=="none")!==goingOn) R.ctx.push(s.n+": the going rows"); }
       if(s.layers){ setPlan(planSide); if(goingOn) toggle("#going"); if(layerOn.analysis) toggle('.layer-btn[data-l="analysis"]'); }
       if(s.first) closeFirst(null);
@@ -5017,6 +5019,11 @@ var AUSTERLITZ_DEBUG=(function(){
       ["village footprints",visibleUp(world.paper)&&world.paper.userData.villages>0],["woods symbology",visibleUp(world.paper)&&world.paper.userData.woods>0],
       ["water",world.water.every(function(w2){ return visibleUp(w2); })],["draped arrows",drapes>0],["counters",counters>0]];
     var missing=drawn.filter(function(q){ return !q[1]; }).map(function(q){ return q[0]; });
+    /* Stage 2F: the paper map's cover, its ground alone and with its woods and footprints; its roads and streams draped flat */
+    var pc=coverChecks(ck,true); o.cover=pc.hash; o.coverPaper=pc.paper;
+    var rdp=roadDrape();
+    ck("paper map: roads and streams draped on the flat sheet, every vertex at its lift", rdp.n>0&&rdp.worst<=0.05&&rdp.mids>0&&!rdp.under,
+      rdp.n+" vertices in "+rdp.meshes+" meshes; worst |y - groundY - lift| "+rdp.worst.toExponential(1)+"; "+rdp.under+" of "+rdp.mids+" edge midpoints under the sheet");
     ck("paper map: no figures, roofs, chimneys, houses or 3D trees drawn; hillshade, contours, village footprints, water, woods, draped arrows and counters drawn",
       !hidden.length&&!missing.length, (hidden.length?"DRAWN: "+hidden.slice(0,6).join(", ")+"; ":"")+(missing.length?"MISSING: "+missing.join(", ")+"; ":"")+
       world.paper.userData.villages+" village footprints, "+world.paper.userData.woods+" woods, "+drapes+" draped overlay meshes, "+counters+" counters");
@@ -5050,9 +5057,10 @@ var AUSTERLITZ_DEBUG=(function(){
     return o;
   }
   function paperCross(B){
-    var F=DISPLAY.settings, M=B[F[0]], bad=F.filter(function(f){ return B[f].pal!==M.pal||B[f].geo!==M.geo||B[f].flat!==0||Math.abs(B[f].pxkm-M.pxkm)>1e-6; });
-    return [{name:"paper map: identical at every relief setting (flat ground, the same hillshade and the same draped overlays; decision 19)", ok:!bad.length,
-      detail:F.map(function(f){ return fmtFactor(f)+"\u00d7: hillshade "+B[f].pal+", overlays "+B[f].geo+", "+B[f].pxkm.toFixed(3)+" px/km"; }).join("; ")}];
+    var F=DISPLAY.settings, M=B[F[0]], bad=F.filter(function(f){ return B[f].pal!==M.pal||B[f].geo!==M.geo||B[f].flat!==0||Math.abs(B[f].pxkm-M.pxkm)>1e-6||
+      B[f].cover!==M.cover||B[f].coverPaper!==M.coverPaper; });
+    return [{name:"paper map: identical at every relief setting (flat ground, the same hillshade, the same draped overlays and the same cover; decision 19)", ok:!bad.length,
+      detail:F.map(function(f){ return fmtFactor(f)+"\u00d7: hillshade "+B[f].pal+", overlays "+B[f].geo+", cover "+B[f].coverPaper+", "+B[f].pxkm.toFixed(3)+" px/km"; }).join("; ")}];
   }
   function stage2bChecks(B){
     var out2=[], F=DISPLAY.settings, M=B[GEOREF.EXAG];
@@ -5085,6 +5093,98 @@ var AUSTERLITZ_DEBUG=(function(){
       t1.onField+" formations on the field at "+fmtClock(PHASES[3].t0+22)+", "+t1.feet+" footprints, "+t1.blocks+" figure blocks, "+t1.landscape+" landscape layers drawn");
     return out2;
   }
+  /* ---- Stage 2F: the land cover as drawn (docs/STAGE2_SPEC.md section J, 2F; decision 28) ----
+     The ground is rendered straight down, one pixel per COVER_H world units (7.9 m) over the whole modelled ground, with the
+     ground shader's own class output (uDebug); on the paper map its wood and village fills are drawn over it in their class.
+     The cover polygon of a class is where the model's classifier, at the point itself, gives it: coverClass(x, z,
+     localHeight(x, z)), at each pixel's centre. For each class the error is the largest distance from a pixel where the
+     drawing and the model disagree about that class (one says it, the other not) to the model's edge of it, less half a
+     pixel: "along each cover polygon's edge, how far from the edge the drawn cover changes". */
+  var COVER_H=0.125, COVER_TOL_M=20, COVER_NAMES=["field","meadow","marsh","water","wood","village","vineyard","track"], _covTruth=null;
+  function coverGrid(){ return {nx:Math.round(GROUND_W/COVER_H), nz:Math.round(GROUND_D/COVER_H), x0:-GROUND_W/2, z0:-GROUND_D/2}; }
+  function coverTruth(){   /* the model's classes at the pixel centres: the same at every factor and on the paper map */
+    if(_covTruth) return _covTruth;
+    var g=coverGrid(), T=new Uint8Array(g.nx*g.nz);
+    for(var j=0;j<g.nz;j++){ var z=g.z0+(j+0.5)*COVER_H; for(var i=0;i<g.nx;i++){ var x=g.x0+(i+0.5)*COVER_H; T[j*g.nx+i]=coverClass(x,z,localHeight(x,z)); } }
+    return (_covTruth=T);
+  }
+  /* the drawn classes, row j from the smallest z; 255 where nothing is drawn. paper: the paper map's wood and village fills too */
+  function coverRender(paper){
+    var g=coverGrid(), rt=new THREE.WebGLRenderTarget(g.nx,g.nz,{minFilter:THREE.NearestFilter,magFilter:THREE.NearestFilter});
+    var cam=new THREE.OrthographicCamera(g.x0,g.x0+GROUND_W,-g.z0,-(g.z0+GROUND_D),1,4000);
+    cam.position.set(0,2000,0); cam.up.set(0,0,-1); cam.lookAt(0,0,0); cam.updateMatrixWorld(); cam.updateProjectionMatrix();
+    var hid=[], mats=[], U=groundMesh.material.userData.U, cc=new THREE.Color(), ca=renderer.getClearAlpha(), tm=renderer.toneMapping, oe=renderer.outputEncoding;
+    renderer.getClearColor(cc);
+    scene.children.forEach(function(o){ if(o!==groundMesh&&!(paper&&o===world.paper)&&o.visible){ o.visible=false; hid.push(o); } });
+    if(paper) world.paper.children.forEach(function(o){ var k=o.userData.cover;
+      if(k===undefined){ if(o.visible){ o.visible=false; hid.push(o); } return; }
+      mats.push([o,o.material]); o.material=new THREE.MeshBasicMaterial({color:new THREE.Color(k/255,0,0),fog:false,toneMapped:false,side:THREE.DoubleSide}); });
+    U.uDebug.value=1; renderer.toneMapping=THREE.NoToneMapping; renderer.outputEncoding=THREE.LinearEncoding;
+    renderer.setClearColor(0xffffff,1); renderer.setRenderTarget(rt); renderer.clear(); renderer.render(scene,cam);
+    var buf=new Uint8Array(g.nx*g.nz*4); renderer.readRenderTargetPixels(rt,0,0,g.nx,g.nz,buf);
+    renderer.setRenderTarget(null); renderer.setClearColor(cc,ca); renderer.toneMapping=tm; renderer.outputEncoding=oe; U.uDebug.value=0;
+    hid.forEach(function(o){ o.visible=true; }); mats.forEach(function(m){ m[0].material.dispose(); m[0].material=m[1]; });
+    rt.dispose(); requestRender(2);
+    var D=new Uint8Array(g.nx*g.nz);
+    for(var q=0;q<g.nz;q++){ var j=g.nz-1-q; for(var i=0;i<g.nx;i++) D[j*g.nx+i]=buf[(q*g.nx+i)*4]; }
+    return D;
+  }
+  /* per class, the largest distance (m) from a disagreeing pixel to the model's edge of that class; T the model's classes */
+  function coverError(D,T){
+    var g=coverGrid(), nx=g.nx, nz=g.nz, R=64, worst={}, wrong={}, far={}, blank=0;
+    function near(i,j,test){ var best=1e9;   /* the nearest pixel where test holds, searched in square rings */
+      for(var r=1;r<=R&&r<=best;r++) for(var dj=-r;dj<=r;dj++) for(var di=-r;di<=r;di+=(Math.abs(dj)===r?1:2*r)){
+        var a=i+di, b=j+dj; if(a<0||b<0||a>=nx||b>=nz||!test(T[b*nx+a])) continue; var d=Math.sqrt(di*di+dj*dj); if(d<best) best=d; }
+      return best; }
+    for(var j=0;j<nz;j++) for(var i=0;i<nx;i++){ var q=j*nx+i, t=T[q], d=D[q]; if(d===t) continue;
+      if(d===255){ blank++; continue; }
+      [[t,function(v){ return v!==t; }],[d,function(v){ return v===d; }]].forEach(function(c){
+        var k=c[0], e=near(i,j,c[1]); wrong[k]=(wrong[k]||0)+1; if(e>R) far[k]=(far[k]||0)+1;
+        var m=Math.max(0,e-0.5)*COVER_H*GEOREF.M_PER_WORLD; if(!(m<=(worst[k]||0))) worst[k]=m; }); }
+    var per=COVER_NAMES.map(function(n,k){ return {name:n, m:worst[k]||0, px:wrong[k]||0, far:far[k]||0}; });
+    return {per:per, blank:blank, ok:!blank&&per.every(function(c){ return c.m<=COVER_TOL_M&&!c.far; }),
+      text:per.map(function(c){ return c.name+" "+(c.far?">"+Math.round(R*COVER_H*GEOREF.M_PER_WORLD):c.m.toFixed(1))+" m"; }).join(", ")+
+        " (pixels disagreeing: "+per.reduce(function(a,c){ return a+c.px; },0)+" of "+(nx*nz)+(blank?"; NOT DRAWN: "+blank:"")+")"};
+  }
+  function coverHash(D){ var h=0; for(var i=0;i<D.length;i+=3) h=(h*31+D[i])%2147483647; return h; }
+  /* the paper map's classes: the model's, except that a village footprint is the model's cover disc (covVill > 0.55; owner,
+     on the 2E review), drawn over whatever class the ground has there */
+  function paperTruth(T){ var g=coverGrid(), P=new Uint8Array(T), fp=0, over={};
+    for(var j=0;j<g.nz;j++){ var z=g.z0+(j+0.5)*COVER_H; for(var i=0;i<g.nx;i++){ var x=g.x0+(i+0.5)*COVER_H, q=j*g.nx+i;
+      if(covAt(covVill,x,z)>PAPER_SYM.village.level){ fp++; if(T[q]!==5){ over[COVER_NAMES[T[q]]]=(over[COVER_NAMES[T[q]]]||0)+1; } P[q]=5; } } }
+    return {P:P, fp:fp, over:over}; }
+  function coverChecks(ck,paper){
+    var T=coverTruth(), D=coverRender(false), e=coverError(D,T), o={hash:coverHash(D)};
+    ck("cover: along each class's edge the drawn cover changes within "+COVER_TOL_M+" m of the model's edge"+(paper?" (the paper map's ground)":""), e.ok, e.text);
+    if(paper){ var pt=paperTruth(T), P=coverRender(true), e2=coverError(P,pt.P), a=COVER_H*COVER_H*GEOREF.M_PER_WORLD*GEOREF.M_PER_WORLD/1e6;
+      o.paper=coverHash(P);
+      ck("cover: on the paper map, with its woods and village footprints, every class's drawn edge within "+COVER_TOL_M+" m of its edge", e2.ok,
+        e2.text+"; the village footprints are the model's cover disc (owner decision): "+(pt.fp*a).toFixed(2)+" km\u00b2, of which the model classes "+
+        Object.keys(pt.over).map(function(k){ return k+" "+(pt.over[k]*a).toFixed(2); }).join(", ")+" km\u00b2 (drawn under them on the landscape)"); }
+    o.per=e.per; return o;
+  }
+  /* roads and streams (Stage 2F): every vertex at its lift above the drawn ground, and no edge of theirs cutting under it
+     (the midpoint of every triangle edge above groundY) */
+  function roadDrape(){
+    var worst=0, where="", n=0, meshes=0, mids=0, under=0, v=new THREE.Vector3(), w=new THREE.Vector3();
+    world.roads.concat(world.water).forEach(function(o){ var d=o.userData.drape; if(!d) return; meshes++; o.updateMatrixWorld(true);
+      var P=o.geometry.attributes.position, I=o.geometry.index?o.geometry.index.array:[];
+      for(var i=0;i<P.count;i++){ v.fromBufferAttribute(P,i).applyMatrix4(o.matrixWorld);
+        var e=Math.abs(v.y-groundY(v.x,v.z)-d.lift); n++; if(e>worst){ worst=e; where=d.kind; } }
+      for(var t=0;t<I.length;t+=3) for(var k=0;k<3;k++){ v.fromBufferAttribute(P,I[t+k]).applyMatrix4(o.matrixWorld); w.fromBufferAttribute(P,I[t+(k+1)%3]).applyMatrix4(o.matrixWorld);
+        mids++; if((v.y+w.y)/2<groundY((v.x+w.x)/2,(v.z+w.z)/2)) under++; } });
+    return {worst:worst,where:where,n:n,meshes:meshes,mids:mids,under:under};
+  }
+  /* the trees and scrub of the woods (Stage 2F; owner, on the 2E review): every one inside the wood as the land cover has it */
+  function woodPlacement(){
+    var m=new THREE.Matrix4(), p=new THREE.Vector3(), R={wood:0,edge:0,village:0,stream:0,out:[],notModel:0};
+    world.trees.children.concat(world.conifers.children,[world.scrub]).forEach(function(im){ var K=im.userData.kinds||[];
+      for(var i=0;i<im.count;i++){ var k=K[i]; if(!k) continue; R[k]++; if(k!=="wood"&&k!=="edge") continue;
+        im.getMatrixAt(i,m); p.setFromMatrixPosition(m);
+        if(drawnCover(p.x,p.z)!==4) R.out.push(k+" at "+p.x.toFixed(1)+","+p.z.toFixed(1));
+        if(coverClass(p.x,p.z,localHeight(p.x,p.z))!==4) R.notModel++; } });
+    return R;
+  }
   function selfTest(){
     var out=[], t0=performance.now(), i;
     function ck(name,ok,detail){ out.push({name:name,ok:!!ok,detail:detail}); }
@@ -5094,7 +5194,7 @@ var AUSTERLITZ_DEBUG=(function(){
 
     /* 1-5, the mist and the derived readings, at each display factor (Stage 2B: 1x, the default, GEOREF.EXAG).
        Replaces the single-factor checks of Stage 0; every threshold is the same. */
-    var keepClock, saveFactor=DISPLAY.factor, bySetting={}, paperBy={};
+    var keepClock, saveFactor=DISPLAY.factor, bySetting={}, paperBy={}, coverBy={};
     function atFactor(fct){
       setDisplayFactor(fct);
       var tag=" (at "+fmtFactor(fct)+"\u00d7)";
@@ -5206,6 +5306,13 @@ var AUSTERLITZ_DEBUG=(function(){
       ck("heads: every Allied arrow head is the notched chevron, every French head the plain triangle", dr.heads.n>0&&!dr.heads.bad.length,
         dr.heads.n+" heads ("+dr.heads.al+" Allied chevrons, notch "+dr.heads.notch+" of the head's length ahead of its base; "+dr.heads.fr+" French plain)"+(dr.heads.bad.length?"; WRONG: "+dr.heads.bad.join(", "):""));
 
+      /* 13. Stage 2F: the land cover drawn per point (within 20 m of each class's edge), the roads and streams draped */
+      coverBy[fct]=coverChecks(ck,false).hash;
+      var rd=roadDrape();
+      ck("roads and streams: every vertex stands at its lift above the drawn ground, and no edge cuts under it", rd.n>0&&rd.worst<=0.05&&rd.mids>0&&!rd.under,
+        rd.n+" vertices in "+rd.meshes+" road and stream meshes; worst |y - groundY - lift| "+rd.worst.toExponential(1)+(rd.where?" ("+rd.where+")":"")+
+        "; "+rd.under+" of "+rd.mids+" edge midpoints under the ground");
+
       layerChecks(ck);
       paperBy[fct]=paperChecks(ck);
       bySetting[fct]=factorFacts(fct);
@@ -5214,6 +5321,14 @@ var AUSTERLITZ_DEBUG=(function(){
     stage2bChecks(bySetting).forEach(function(c){ out.push(c); });
     paperCross(paperBy).forEach(function(c){ out.push(c); });
     setDisplayFactor(saveFactor);
+    /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
+    var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });
+    ck("cover: the drawn classes are the same at every relief setting and on the paper map", !cvBad.length,
+      cvF.map(function(f){ return fmtFactor(f)+"\u00d7 "+coverBy[f]+" (paper map "+paperBy[f].cover+")"; }).join("; "));
+    var wp=woodPlacement();
+    ck("woods: every tree and every scrub of a wood stands inside the wood as the land cover has it", wp.wood>0&&wp.edge>0&&!wp.out.length&&!wp.notModel,
+      wp.wood+" trees and "+wp.edge+" edge scrub of the woods, all where the drawn cover is wood ("+wp.notModel+" where the model's own class is not)"+
+      (wp.out.length?"; OUTSIDE: "+wp.out.slice(0,5).join(", "):"")+"; not woods, and not tested: "+wp.village+" trees round the villages, "+wp.stream+" bank scrub along the streams");
 
     /* 6. the first-run key, the legend, and what is actually drawn */
     var fr=document.getElementById("firstrun"), lg=document.querySelector(".legend"), mism=[];
@@ -5302,7 +5417,8 @@ var AUSTERLITZ_DEBUG=(function(){
             memory:{geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}};
   }
   return {groundY:groundY, camFloor:camFloor, settle:settle, applyCase:applyCase, placeCamera:placeCamera,
-          selfTest:selfTest, stats:stats, figureError:figureError};
+          selfTest:selfTest, stats:stats, figureError:figureError,
+          cover:{grid:coverGrid, truth:coverTruth, render:coverRender, error:coverError, paperTruth:paperTruth, checks:coverChecks, roads:roadDrape, woods:woodPlacement}};
 })();
 
 init();

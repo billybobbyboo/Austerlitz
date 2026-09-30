@@ -7,7 +7,8 @@ derived-arrival question of §M.13 is decided (the 2C precondition), and 2C (mov
 2C"), §C.3, §D, §J and §K describe; it is merged (#15). 2D (one DOM/SVG layer for map text, and the contextual legend) is
 implemented as §E, §F, §H, §J and §K describe; what it found is at the end of §K; it is merged (#17). 2E (the true north-up
 paper map) is implemented as §F, §G, §J and §K describe; what it found, and where it departs from §G.2, is at the end of §K; it
-awaits review.** Sections A-L below still describe the build
+is merged (#18). 2F (the ground surface: land cover drawn per point, draped roads and streams, the meres' legend row) is
+implemented as §J and §K describe; what it found is at the end of §K; it awaits review.** Sections A-L below still describe the build
 they were written against, except §C.1, whose tables were re-run on the new tracks (the earlier ones are §C.4). Written against `main` at `7e03692`
 (`austerlitz-command-map.html` 1,107,799 bytes, md5 `5bf48b75373fe0cf9fc8a32cbeae918c`, confirmed before any work;
 `npm run check:baseline` now checks exactly that build). Line numbers refer to that commit.
@@ -681,6 +682,9 @@ schematic and not fitted to either.
 century fort and was drained in the 19th century. Its extent and whether it held water in December 1805 were not
 found; the app draws the ground as marsh.
 
+**Status at 2F (fact):** no georeferenced outline has been adopted; the meres are unchanged, and the legend says "meres:
+pond outlines schematic" in every view (§K, 2F).
+
 **What 2F needs before any outline changes (recommendation).** A georeferenced trace of each pond from the stable
 cadastre sheets of Žatčany, Měnín, Újezd, Telnice and Kobylnice (with its date), compared with the First Military
 Survey and with at least one contemporary plan; the outline adopted is the cadastre's only where the sources agree the
@@ -891,6 +895,30 @@ Renders: `2e-paper.jpg`, `2e-legend.jpg`, `2e-hillshade.jpg`, `2e-sawtooth.jpg`.
 
 Question L1: the triangle edges of the cover classes are plain on the flat sheet, worst along the Goldbach and the Litava;
 not fixed in 2E.
+
+**2F, as delivered (fact; `CHANGELOG.md`, Stage 2F).** The plan of the 2F row was built as written, in the shader:
+- the ground shader classifies every drawn point by `coverClass`'s rule, on the six cover rasters uploaded as they are and
+  a local-relief grid (`COVER_ML`, `localHeight` at 0.25 world units, built coarse to fine, bicubic between nodes); the
+  classes, `coverClass`, `buildCover`, `covAt`, the rasters and the going layer are unchanged;
+- the colour of each point is the palette's colour of its class, with the elevation tint, the field pattern and the
+  occlusion per point instead of per triangle; the palette colours are unchanged;
+- the woods' trees and edge scrub stand inside the drawn wood class, and the paper map's woods are traced from it;
+- roads and streams are draped on `groundY`, 0.5 units apart, at every factor and on the flat paper map;
+- the meres are unchanged; the legend says their outlines are schematic.
+
+The cover boundary error (§J, "today up to one 81 m triangle") fell from 52-156 m per class on the landscape and 53-810 m on
+the paper map to 7.2 m (meadow) and 3.9 m (every other class), measured on the render at 1x, 4x, 10.33x and on the paper map.
+Renders: `2f-sawtooth.jpg`, `2f-woods.jpg`. Four things were not as the plan assumed:
+1. **The cover polygons of meadow, marsh and stream water are contours of the local relief**, not polygons in the data. On a
+   flat valley floor a small error in the relief moves them far, so the relief interpolated from the 81 m vertices (234 m out)
+   or from a 0.5 grid (44 m) was not enough. The 0.25 grid costs about 0.45 s at start-up on the harness machine.
+2. **The paper map's village footprints are the cover disc** (owner decision on 2E), and 3.25 km² of them is classed water or
+   marsh. Against the class polygon the footprint's edge is 810 m out; the paper-map test measures it against the disc, as
+   decided, and the ground under it against the classes.
+3. **"No known sawtooth" needed more than the classes.** The field pattern, the elevation tint and the occlusion were per
+   triangle too, and made the paper map's mosaic; they are per point now.
+4. **Draping needed a finer ribbon than one vertex per unit**: at 1 unit 30 ribbon edges still cut under the ground at
+   10.33x; at 0.5 none do. The test checks the edge midpoints as well as the vertices.
 
 ## L. The owner's answers (decisions 31-39)
 

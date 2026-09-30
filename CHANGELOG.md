@@ -1,8 +1,230 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Stage 2F: the ground surface (docs/STAGE2_SPEC.md §B.4, §I.2, §J, §K; decisions 27, 28, 30, 31)
+
+**Status: done; awaits the owner's review. Stage 2 has no further part. `austerlitz-command-map.html`: 1,253,655 bytes, md5
+`ee4390a2585f3df170fba82eb1994112`** (was 1,226,091 bytes, md5 `c5883f79…`, Stage 2E).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move.
+  No track, `OVERLAYS`, strength, order-of-battle or geography change; `coverClass`, `buildCover`, `covAt`, the cover rasters,
+  `WOODS`, `VILLAGES`, `MARSH` and the meres untouched. Presentation only.
+- The first commit records 2E as merged (#18) in `CLAUDE.md`, this file and `docs/STAGE2_SPEC.md`.
+
+**Before building (fact).**
+- `main` (1a7d1a9) matched `check:baseline`: md5 `c5883f79cc1481b2dc4863d089b4e363`, 1,226,091 bytes.
+- **How land cover was drawn in 2E**, read from the code:
+  - `buildFaceFacts` classified each 81 m triangle of the ground mesh once. Its class is `coverClass` at the triangle's
+    centroid, on the local relief there, taken as the mean of its three vertices' model heights less the regional level.
+    That class was stored per face (`FACE.cover`), with a field pattern (`FACE.tint`, `FACE.crop`) and an occlusion
+    (`FACE.ao`), also per face.
+  - `makePalette` gave every triangle one colour for the natural ground and one for the paper map (`COVER_COL`), times the
+    elevation tint (from the face's mean height), the field tint and the occlusion. Only the hillshade and the frost varied
+    across a triangle, from its vertex normals.
+  - The `cover` attribute (one atlas cell per face) chose the atlas pattern in `atlasShader`. `makeGoingPalette` coloured
+    each triangle by its going class. `applyGround` wrote the chosen palette, with a viewshed darkened per face.
+  - On the paper map (2E), the woods' tint and marks and the village footprints were drawn over that ground, traced from
+    the cover fields (`covWood` > 0.5, `covVill` > 0.55).
+- **What is guarded** (`tools/visual/data-invariance.js`): `coverClass`, `buildCover`, `covAt`, the six cover rasters and
+  their grid, `localHeight`, `regionalLevel`, `height`, the analysis grid, and the data (`WOODS`, `MARSH`, `VILLAGES`,
+  `VINEYARD`, `ROADS`, the streams). The drawing (`buildFaceFacts`, `makePalette`, `atlasShader`, `applyGround`, `ribbon`,
+  `buildWoods`, `buildPaperSymbols`) is presentation. 2F changes only the drawing.
+- **The cover boundary error, measured.** §J defines it: along each cover polygon's edge, how far from the edge the drawn
+  cover changes (`tools/stage2/cover-2f.js`).
+  - The cover polygon of a class is where the model's classifier, at the point itself, gives that class:
+    `coverClass(x, z, localHeight(x, z))`, as `terrain-test.js` samples it.
+  - Measured on a grid of 0.125 world units (7.9 m) over the whole modelled ground. For each class: the largest distance
+    from a point where the drawing and the model disagree about that class to the model's edge of it, less half a step.
+  - The 2E drawings as their code defines them (each triangle in its centroid's class; on the paper map, the footprints
+    and the wood symbology over it). Resolution ±4 m:
+
+  | class | area | 2E landscape | 2E paper map | 2F, rendered (landscape at 1x, 4x, 10.33x; paper map) |
+  |---|---:|---:|---:|---:|
+  | field | 372.8 km² | 113.5 m | 113.5 m | 3.9 m |
+  | meadow | 25.9 km² | 155.8 m | 155.8 m | 7.2 m |
+  | marsh | 7.5 km² | 75.0 m | 355.4 m | 3.9 m |
+  | water | 10.2 km² | 51.9 m | 222.3 m | 3.9 m |
+  | wood | 8.3 km² | 53.6 m | 293.5 m | 3.9 m |
+  | village | 9.0 km² | 53.0 m | 809.9 m | 3.9 m (the ground); see the footprints below |
+  | vineyard | 0.9 km² | 53.0 m | 53.0 m | 3.9 m |
+  | track | 11.1 km² | 53.0 m | 53.0 m | 3.9 m |
+
+  - On the 2E landscape the error is about one triangle: its diagonal is 115 m, less half a step. Meadow and field go
+    further because on a flat valley floor the triangle's mean relief and the point's relief fall on opposite sides of
+    the -1.2 threshold.
+  - On the 2E paper map, marsh, water, wood and village are worse still. The symbology was drawn over classes the model
+    gives priority: the 2E wood tint covered 0.78 km² that is village (0.37), marsh (0.32) or water (0.09); the village
+    footprints cover 3.25 km² that is water (1.95) or marsh (1.31).
+- **The meres (§I.2), re-read.** No georeferenced outline of the Satschan, Menitz or Kobelnitz ponds has been adopted since
+  the note: no entry in this file adopts one, and the data carries none. The meres stay as they are (decision 27).
+
+**The land cover drawn per point** (decision 28; `world.js`, "the land cover as drawn" and "the ground shader")
+- The ground shader classifies every drawn point by `coverClass`'s own rule: the same tests, in the same order, on the same
+  rasters (`gClass`).
+  - The six rasters are uploaded unchanged (float textures) and interpolated exactly as `covAt` interpolates them (`gBil`).
+  - The ponds' ellipses are `coverClass`'s own. The self-test checks the shader against `coverClass`, so a drift fails.
+- **The local relief** is `COVER_ML`: the model's `localHeight` on a grid of 0.25 world units (16 m), interpolated
+  bicubically (Catmull-Rom).
+  - It matters only at `coverClass`'s three thresholds (-2.6, 0.4, -1.2). On a flat valley floor a small error there moves
+    the edge far. Measured (`cover-2f.js --alternatives`, and the render):
+    - the relief interpolated from the 81 m vertices puts meadow 234 m out and field 56 m;
+    - bilinear on a 0.5 grid, 44 m and 12 m;
+    - bilinear on the 0.25 grid, 24.5 m, for one 55 m island of field where the relief peaks 0.0017 units (about 1 cm)
+      above the meadow threshold;
+    - bicubic on the 0.25 grid, 7.2 m.
+  - The grid is built coarse to fine. `localHeight` is evaluated exactly every 1.0 unit. Each node of the 0.5 lattice and
+    then of the 0.25 lattice is interpolated from the coarser one, and evaluated exactly where that value lies within 0.5
+    (then 0.2) of a threshold. That is 632,442 exact evaluations instead of 1,809,801. Checked against the exact grid:
+    every node lies on the same side of every threshold as `localHeight`. With 0.3 and 0.1 (tried on the grid without its border), three nodes do not.
+  - Four nodes to a texel, 7.3 MB.
+- `drawnCover(x, z)` is the same rule on the CPU, for what is placed by class.
+- **Coloured per point, as the palette coloured each triangle** (`makePalette` before 2F): the class's colour in `COVER_COL`,
+  the elevation tint, the field pattern, the damp and trodden ground, the hollows' occlusion, the frost and the hillshade.
+  - The per-face values became per point. The elevation, the curvature and the field pattern's frame are interpolated from
+    the vertices (`groundVertexFacts`). The strips' tint and crop come from a table (`fieldStrip`, the old per-face formula,
+    now one function).
+  - The baulks and headlands are drawn per point, averaged where finer than a pixel.
+  - The vertices carry only the light (hillshade and frost exposure), which follows the drawn slope. `makePalette` now
+    returns that.
+- **Palette colours unchanged** (Stage 4): `COVER_COL`, the elevation tint, the crop tints, the frost colour and the
+  hillshade ranges are the same numbers.
+- The atlas is sampled with the gradients of the continuous texture coordinate (WebGL2's `textureGrad`), so neither a class
+  edge nor a tile's wrap draws a seam from the atlas's smallest mip.
+- **The going layer is unchanged**: per triangle, its classes from `FACE.cover` and the model slope (decision 32). The
+  self-test's checksum is the same at 1x, 4x and 10.33x, and the same as the 2E build's (1124006188).
+- The viewshed is darkened per point on the natural ground and the paper map, from the nearest node of the analysis grid,
+  as `sampleVS` reads it; on the going layer per triangle, as before.
+- The apron (the ground beyond the field) has its own material now, in the per-triangle mode, its colours unchanged.
+
+**The paper map after the change** (question L1)
+- The triangle edges are gone (`2f-sawtooth.jpg`): the damp bands, the tracks, the field strips, the elevation tint and the
+  occlusion change per point.
+- **Woods on the paper map are traced from the drawn wood class** (`drawnCover` is wood), with each crossing found by
+  bisection (about 0.1 m). They were traced from the wood field. So the paper wood, the ground under it and the landscape's
+  trees are one extent: the cover field (unrotated, to about 0.89 of the radii, as the owner decided) less what a village,
+  water or marsh takes from it. 12 outlines (2E: 10): a village or marsh cuts two woods in two.
+- **Village footprints are unchanged**: the model's cover disc (owner decision on 2E). See the conflict below.
+
+**Trees and scrub inside the wood's cover** (owner decision on 2E; `buildWoods`)
+- A wood's trees are placed where `drawnCover` is wood, the same number per wood (`WOODS.n`). They used to fill the ellipse
+  turned by `WOODS.rot`, to its radii.
+- Its edge scrub is placed inside the cover's outer band (0.72 to 0.89 of the radii), where it is wood. It used to form a
+  ring just outside the turned ellipse (1.02 to 1.24).
+- Self-test: 1,010 trees and 354 edge scrub, every one where the drawn cover is wood, and every one where the model's own
+  class (`coverClass` on `localHeight`) is wood. 354 of the 355 scrub were placed; one wood's band is mostly village, and
+  the placement gives up after 40 tries each.
+- **Not woods, and kept:** 184 trees round the villages (orchards and gardens) and 202 bank scrub along the Goldbach and the
+  Litava. They are not part of a wood, stand on field, meadow or marsh, and the paper map does not draw them. I read the
+  decision as about the woods' trees and scrub. Say if these should go.
+
+**Roads and streams draped** (decision 28; `ribbon`, `drape`)
+- Every vertex stands at its lift above `groundY`, the ground mesh itself. The vertices are 0.5 world units apart along the
+  line and across it; they were 3 along, and only the two edges across. When the ground is redrawn (a factor, the paper
+  map), every vertex is draped again.
+- Measured (`tools/stage2/drape-2f.js`):
+
+  | | 2E: worst vertex off its lift | 2E: edge midpoints under the ground | 2F: worst vertex | 2F: midpoints under |
+  |---|---:|---:|---:|---:|
+  | 1x | 0.044 | 0 of 6,468 | 0 | 0 of 223,302 |
+  | 4x | 0.176 | 3 (to 0.114 deep) | 0 | 0 |
+  | 10.33x | 0.454 | 62 (to 0.548 deep) | 0 | 0 |
+  | paper map | 0 | 0 | 0 | 0 |
+
+  At 1 unit apart, 30 midpoints still dipped under the ground at 10.33x (to 0.124). At 0.5, none.
+- 43,932 vertices in 44 meshes (2E: 2,244).
+
+**The meres** (decision 27; §I.2): no outline changes. The legend now carries a row "meres: pond outlines schematic", in
+every view (the meres are drawn in every view). The self-test checks the row.
+
+**Tests** (none loosened; new or stricter)
+- Self-test, at 1x, 4x and 10.33x and on the paper map (`AUSTERLITZ_DEBUG.cover`):
+  - **Cover boundaries (new, §J).** The ground is rendered straight down, one pixel per 0.125 units (7.9 m) over the whole
+    field, with the shader's own class output. It is compared per pixel with `coverClass` on `localHeight`. Every class's
+    drawn edge must lie within 20 m of the model's.
+    - Measured: meadow 7.2 m, every other class 3.9 m. 948 of 7,142,400 pixels disagree, all within a pixel or so of an
+      edge.
+    - On the paper map, its ground alone, and with its woods and footprints (the footprints measured against the cover
+      disc they are, by the owner's decision): the same numbers, 1,026 pixels.
+  - **The drawn classes are one set** at every setting and on the paper map (new): the same class-render checksum.
+  - **Woods (new):** every tree and scrub of a wood where the drawn cover is wood.
+  - **Roads and streams (new, §J; stricter than §J asks):**
+    - every vertex at its lift above `groundY` (to 0.05; worst 4.8e-7 on relief, 9.5e-9 flat);
+    - and no edge midpoint under the ground (§J asks only for the vertices).
+  - **The paper map identical at every setting:** now also compares the cover render.
+- Unchanged checks still pass: the going classes identical at every factor; the paper map identical at every setting.
+- `runtime-test.js`: its three.js stub takes `DataTexture`, `Vector4` and three constants, and its fake shader carries
+  `uniforms`, as three.js passes them (test harness only).
+  - **One assertion replaced, not loosened.** It looked for the atlas sampled as `texture2D(map,tuv)`; the atlas is now
+    sampled through `gAtlas(map,tuv)`.
+  - The new assertion also requires the per-point classifier (`gClass`) and its rasters' uniforms, so it is stricter.
+- The height guard: 54 → 61 call sites, each new one classified.
+  - model: `buildCoverMl` (`localHeight`, the cover's own relief);
+  - presentation: `drape` (`groundY`);
+  - test: the self-test's `coverTruth`, `roadDrape` (two), `woodPlacement`.
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard (61 sites, 0 presentation sites calling `height()`/`hAt()`, none
+  unclassified).
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:visual`: all checks passed, 17 views, the self-test 98 of 98 (81 in 2E) in 182 s.
+  - Per view (`docs/stage2-evidence/2f-report.md`, both builds on the same harness): overlaps 0 in all 17; drops within every limit (paper-laptop
+    17 → 18 of 21, the legend's new row taking room; every other view as in 2E); pass times 0.6-2.8 ms; no text below its
+    floor or AA (lowest 4.68:1, as 2E); the unobstructed fraction 0.3-0.7 points lower in the Study views (the meres' row),
+    every view above its 2C baseline; the legend never over the dispatch. The ground's colour: mean luminance within 0.6 of
+    2E's in every view but paper-laptop (102.7 → 100.3), the near-black fraction unchanged in every view.
+- `npm run check:contrast`: 4,364 text elements in 22 states (2E: 4,348; the meres' row), 0 below AA, 0 below 10.5 px.
+- `npm run check:baseline`: moved to this build.
+
+**Performance** (`tools/stage2/perf-2f.js`; the harness machine, headless Chromium, software WebGL; both builds in turn)
+- **Start-up, the cover drawing's own work:** 110-158 ms (2E: the two palettes and their upload) → 571-592 ms.
+  - `buildCoverMl` 461-509 ms; the textures 21-24; the vertex facts 36-47; the palettes, now light only, 19-26.
+  - **An increase of about 0.45 s**, almost all the 632,442 `localHeight` evaluations of the relief grid.
+  - The whole page, navigation to ready: 20.5-22.3 s (2E) and 22.0-28.3 s (2F) over two sessions of three and two runs,
+    too noisy on this machine to state the difference more closely than the component timing.
+- **A display-factor change:** 75-232 ms (2E) → 85-169 ms (2F), twelve changes each. The palette is now only light, and the
+  ribbons are re-draped. The control stays disabled during playback, as before.
+- **A switch into the paper map:** 123-249 ms (2E) → 106-195 ms. **Back to the landscape:** 81-118 → 90-187 ms, from
+  re-draping 43,932 ribbon vertices. 2E recorded 70-157 ms for both.
+- **A drawn frame**, software rendering, read back (median of seven after three to warm up):
+  - overview-field 3,445 → 4,340 ms (+26%); paper-north-up 1,166 → 1,415 ms (+21%). That is the per-point classification
+    in SwiftShader.
+  - A GPU does this pixel work in parallel; the harness machine is the worst case.
+  - The ground's textures add about 8.4 MB of GPU memory (the relief grid 7.3 MB, the rasters 0.8 MB, the viewshed 0.3 MB,
+    the field table).
+
+**Decisions 27, 28, 30 and 31: nothing proved unworkable.** Two contradictions and one reading, stated:
+1. **Village footprints (owner decision) against §J's paper-map boundary test.**
+   - The footprint is the model's cover disc (`covVill` > 0.55). 3.25 km² of its 12.29 km² is classed water (1.94) or
+     marsh (1.31) by `coverClass`, which gives water and marsh priority.
+   - Measured against the class polygon, the paper map's village edge would be 810 m out.
+   - The paper-map test therefore takes the footprint as the paper map's village polygon, as decided. The ground under it,
+     and the landscape, draw the classes. Both are measured and both pass.
+   - Which extent the paper map should show is the village-extent data question the owner recorded; it is open.
+2. **"Cover polygons" (decision 28) for meadow, marsh and the stream water are not polygons in the data.** They are contours
+   of the local relief (`coverClass`'s thresholds), so drawing them within 20 m needed the fine relief grid above.
+3. **Trees round villages and stream scrub** are kept, as above.
+
+**Not done, or open**
+- **Recorded as open (owner, on 2E):**
+  - **Woods:** whether `WOODS`' shapes and rotations should change (the cover ignores `WOODS.rot` and ends at about 0.89 of
+    the radii) is a data-task question. Not changed.
+  - **Villages:** sourcing their extents is a data-task question. Not changed. The land cover and the footprints stay the
+    cover disc; the houses stay as they are (symbols at 10-15x life).
+- **Meres:** schematic until a georeferenced outline is adopted (§I.2 lists what that needs).
+- The start-up cost of the relief grid (+0.45 s). It could be computed after the first frame, or in a worker, drawing the
+  first frames from the coarse grid: a design choice for the owner, not made here.
+- The per-point classification makes a software-rendered frame 21-26% slower.
+- Still open from 2D and 2E, unchanged:
+  - pratzen-orbit-min draws no map text (head boxes against triangles; it also costs one drop in three paper views);
+  - the Watch `#viewmode` at 24% opacity;
+  - selected-formation's drop limit of 3;
+  - the paper map's framing inside the unobstructed area (small in Study);
+  - the mode switch not disabled during playback.
+- The going thresholds (decision 32) and the other data questions are unchanged and still open.
+
 ## 2026-09 · Stage 2E: the true north-up paper map (docs/STAGE2_SPEC.md §F, §G, §H, §J, §K; decisions 18, 19, 25, 29, 31, 39)
 
-**Status: done; awaits the owner's review. 2F has not started. `austerlitz-command-map.html`: 1,226,091 bytes, md5
+**Status: done; merged (#18). 2F has not started. `austerlitz-command-map.html`: 1,226,091 bytes, md5
 `c5883f79cc1481b2dc4863d089b4e363`** (was 1,189,512 bytes, md5 `2dc0c26d…`, Stage 2D).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move.
