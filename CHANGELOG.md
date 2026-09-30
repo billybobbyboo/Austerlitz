@@ -1,5 +1,79 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Stage 3 Part A: navigation and structure specified (docs/STAGE3_SPEC.md); no change to the build
+
+**Status: specification for the owner's review; 3B has not started. `austerlitz-command-map.html` unchanged: 1,253,655 bytes,
+md5 `ee4390a2585f3df170fba82eb1994112`** (confirmed on `main` at `0f2b17e` before the work, with #19 and #20 merged, and by
+`check:baseline` after it).
+
+**What changed**
+- `docs/STAGE3_SPEC.md`: the decisions that bind Stage 3 and eleven places where the evidence contradicts the roadmap, an
+  earlier record or the brief (§0); camera controls on the landscape (§A); docked panels (§B); one time spine (§C); one
+  timeline of about 90 px (§D); mode names (§E); a "?" help overlay (§F); the open items carried from Stage 2 (§G); the
+  test plan (§H); the pull-request plan for 3B-3E and a separate data task (§I); 14 questions for the owner (§J).
+- `tools/stage3/` (not bundled): `spine.js` (the day's structures against one another), `dock-probe.js` (the docked
+  layout tried in five levels on every harness view), `nav-probe.js` (map-style navigation, `setViewOffset`, the open
+  items, key presses), `report-3a.js` (the tables). Probes are injected into the running page for measurement only.
+- `docs/stage3-evidence/`: `spine.md`/`.json`, `dock-probe.json`, `dock-report.md`, `dock-probe.jpg`, `nav-probe.json`,
+  `orbit-min.jpg`, and a README.
+- `CLAUDE.md`: the layout table names `STAGE3_SPEC.md`, `stage3-evidence/` and `tools/stage3/`; the current state says
+  Part A is written.
+- No source file, no data, no test and no threshold changed.
+
+**Key measurements (fact)**
+- **The unobstructed fraction** (the Stage 2 §H measure), today → the docked probe with all four changes (the Now tab, one
+  91.6 px timeline, the legend closed, the dossier in the rail), at 1600 x 900 / 1280 x 720: the Study landscape
+  (overview-field) 38.6 / 25.0% → 70.4 / 62.9%; a formation selected 19.6 / 12.5% → 70.4 / 62.9%; the paper map 36.5 / 21.5%
+  → 70.4 / 62.9%; Watch 80.5 / 79.9% → 89.3 / 86.5%; first run 54.4 / 43.9% → 61.6 / 49.3% (the timeline only). Every view
+  rises; the Now tab alone gives +17.7 points (1600 x 900) and +22.2 (1280 x 720) in Study. Per view and level:
+  `docs/stage3-evidence/dock-report.md`.
+- **The paper map as entered, Study**: 17.1 → 28.5 px per true km at 1600 x 900, 9.9 → 23.5 at 1366 x 768, 5.5 → 21.6 at
+  1280 x 720 (framed to fit the field; `MAPCAM`'s largest-area rule gives 24.2 / 19.5 / 17.6 once the legend closes).
+- **The timebar**: 170.1 px (four rows) → 91.6 px (two) at 1600 x 900; 139.1 → 91.6 at 1366 x 768 and 1280 x 720.
+- **Landscape navigation** (probe, 1x, 4x, 10.33x, four views): zoom about the cursor's ground point keeps it under the
+  cursor exactly except where the floor lifts the eye (1 step in 60, 89 px); a pan in the grabbed point's plane with the
+  target re-anchored on its own view ray keeps the point under the pointer to 0 px during and after, where re-seating the
+  target on the ground jumps 3-288 px; the floor held everywhere; `setViewOffset` leaves `groundAt` and `worldPerPx` unchanged
+  (round trip 0.001-0.006 px).
+- **The time spine**: 10 phases, 5 acts, 25 events, 32 phase timeline lines, 10 chapters, 9 tour stops (`spine.md`).
+- **Watch's presentation control** at 24% opacity: 1.27-2.66:1 rendered over the map (below AA in every Watch view).
+
+**Findings that contradict the roadmap or an earlier record** (§0.2; stated, not worked around)
+- The guided tour has 9 stops, not 8 (the roadmap, two code comments and the brief say 8).
+- The timebar is 170 px at 1600 x 900, not about 145; 139 px at 1366 x 768, where the act row is hidden.
+- "Map" names three controls under four labels, plus a generic sense; the paper style's label is "Staff map". "Both", the
+  roadmap's name for the hybrid style, is already the Plans tab's label and misdescribes the style.
+- **pratzen-orbit-min draws no map text because a live event glyph (1.8 units from the eye, an obstacle disc about 2,370 px
+  in radius) and an objective marker are drawn around the eye**, not because of the arrow heads' boxes as recorded in 2D and
+  2E (the heads' boxes cover 12.3% of the screen; with every head and marker removed the obstacles still cover all of it).
+- The time spine: the chapter "cut" is set at 10:00 while its text begins "With the plateau taken" (11:00 by the event
+  `pratzeberg`), and its tour stop sets 11:20; three tour stops borrow another phase's camera; the act and phase rows of the
+  timebar are equal-width while the rail above them is proportional to time.
+- `MAPCAM` frames the paper map in the largest-area free rectangle; with the legend closed that rectangle is wide and short
+  and the (about square) field is drawn 15-19% smaller than in the rectangle that fits it.
+- In the phase-8 Overview two Allied arrows' heads lie wholly under the timebar even at 91.6 px and with the view offset: a
+  framing matter of the fixed Overview preset (the recommendation: fit the modelled ground into the free rectangle).
+- Keys: the time rail steps 25 min (its ±15 plus the window's ±10), exposes no `aria-valuenow`, and Space on a focused
+  button toggles playback instead of pressing the button (measured by real key presses).
+
+**Open (questions §J, recorded, not decided)**: what turns Follow off; left-drag pans; the legend closed by default; the
+names; the H and U keys; the "cut" chapter's clock; the time axis; the dossier in the rail and the rail's width; the Now
+tab as default; the mode switch during playback; pratzen-orbit-min's remedy; the layout below 1080 px; the spine data task;
+the Watch presentation control.
+
+**Tests (all on the unchanged build)**
+- `npm run build`: md5 `ee4390a2585f3df170fba82eb1994112`, 1,253,655 bytes, identical to `main`.
+- `npm test`: all 9 suites pass; the height guard (61 sites, 0 presentation sites calling `height()`/`hAt()`).
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:baseline`: passes.
+- Not run: `check:visual` and `check:contrast` (the build is byte-identical to the 2F build, whose results stand).
+
+**Not verified**
+- Touch and two-finger gestures (no device in the harness); the probes' timings (another probe ran on the same machine).
+- The probe's layout is a measurement, not the 3B-3C design: its type sizes, the hour numerals it leaves out and its
+  narrow-width behaviour are for those parts to settle and measure.
+
 ## 2026-09 · Stage 2F: the ground surface (docs/STAGE2_SPEC.md §B.4, §I.2, §J, §K; decisions 27, 28, 30, 31)
 
 **Status: done; merged (#19). Stage 2 has no further part; Stage 3 has not started. `austerlitz-command-map.html`: 1,253,655 bytes, md5

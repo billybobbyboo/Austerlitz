@@ -1,0 +1,3460 @@
+{
+ "when": "2026-09-30T12:59:21.724Z",
+ "nav": {
+  "1x field": {
+   "drag": {
+    "release": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 17.69,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 90.48
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 21.1,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 90.08
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 25.75,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 91.55
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 9.43,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 90.6
+     }
+    ],
+    "step": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 17.37,
+      "after": 0.46,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 90.52
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 17.29,
+      "after": 0.31,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 90.07
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 18.19,
+      "after": 0.48,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 91.62
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 16.5,
+      "after": 0.27,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 90.72
+     }
+    ],
+    "anchor": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 94.03
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 94.32
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 95.22
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 94.5
+     }
+    ]
+   },
+   "zoom": [
+    {
+     "at": [
+      0.5,
+      0.5
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.3,
+      0.4
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.7,
+      0.6
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.5,
+      0.75
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.62,
+      0.3
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    }
+   ],
+   "offset": {
+    "target": [
+     800,
+     388
+    ],
+    "freeCentre": [
+     800,
+     388
+    ],
+    "roundTripWorld": 0.0004,
+    "roundTripPx": 0.001,
+    "points": 40,
+    "missed": 0,
+    "wppWithout": 0.1815,
+    "wppWith": 0.1815,
+    "layoutMs": 2.1,
+    "keepMissing": 0
+   },
+   "violations": 0
+  },
+  "1x pratzen": {
+   "drag": {
+    "release": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 88.95,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 19.24
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 84.95,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 19.48
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 169.15,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 18.99
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "lost": true,
+      "atStep": 12
+     }
+    ],
+    "step": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 86.81,
+      "after": 0.13,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 19.4
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 86.8,
+      "after": 0.55,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 19.51
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 94.1,
+      "after": 0.21,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 19.04
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "lost": true,
+      "atStep": 12
+     }
+    ],
+    "anchor": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 27.93
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 27.8
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 27.49
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "lost": true,
+      "atStep": 12
+     }
+    ]
+   },
+   "zoom": [
+    {
+     "at": [
+      0.5,
+      0.5
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.3,
+      0.4
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.7,
+      0.6
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.5,
+      0.75
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.62,
+      0.3
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    }
+   ],
+   "offset": {
+    "target": [
+     800,
+     388
+    ],
+    "freeCentre": [
+     800,
+     388
+    ],
+    "roundTripWorld": 75.2595,
+    "roundTripPx": 2.154,
+    "points": 40,
+    "missed": 0,
+    "wppWithout": 0.06609,
+    "wppWith": 0.06609,
+    "layoutMs": 1,
+    "keepMissing": 0
+   },
+   "violations": 0
+  },
+  "1x overview": {
+   "drag": {
+    "release": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 3.87,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 277.87
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 1.91,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 277.42
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 1.61,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 277.74
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 2.87,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 277.57
+     }
+    ],
+    "step": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 1.92,
+      "after": 0.03,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 277.88
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 1.75,
+      "after": 0.16,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 277.43
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 1.51,
+      "after": 0.03,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 277.74
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 2.5,
+      "after": 0.08,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 277.56
+     }
+    ],
+    "anchor": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 275.22
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 275.43
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 275.08
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 275.78
+     }
+    ]
+   },
+   "zoom": [
+    {
+     "at": [
+      0.5,
+      0.5
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.3,
+      0.4
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.7,
+      0.6
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.5,
+      0.75
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.62,
+      0.3
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    }
+   ],
+   "offset": {
+    "target": [
+     800,
+     388
+    ],
+    "freeCentre": [
+     800,
+     388
+    ],
+    "roundTripWorld": 0.0001,
+    "roundTripPx": 0.001,
+    "points": 40,
+    "missed": 0,
+    "wppWithout": 0.208,
+    "wppWith": 0.208,
+    "layoutMs": 3.2,
+    "keepMissing": 0
+   },
+   "violations": 0
+  },
+  "1x pratzen-low": {
+   "drag": {
+    "release": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 20.31,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 20.61
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 26.03,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 20.36
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 47.66,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 20.51
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 6.1,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 19.16
+     }
+    ],
+    "step": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 4.15,
+      "after": 0.43,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 20.6
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 5.34,
+      "after": 1.14,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 20.24
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 14.41,
+      "after": 1.34,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 20.32
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 11.47,
+      "after": 0.77,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 19.25
+     }
+    ],
+    "anchor": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 21.76
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 21.83
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 22.15
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 20.47
+     }
+    ]
+   },
+   "zoom": [
+    {
+     "at": [
+      0.5,
+      0.5
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.3,
+      0.4
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.7,
+      0.6
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.5,
+      0.75
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.62,
+      0.3
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    }
+   ],
+   "offset": {
+    "target": [
+     800,
+     388
+    ],
+    "freeCentre": [
+     800,
+     388
+    ],
+    "roundTripWorld": 0.0002,
+    "roundTripPx": 0.001,
+    "points": 40,
+    "missed": 0,
+    "wppWithout": 0.05384,
+    "wppWith": 0.05384,
+    "layoutMs": 1.1,
+    "keepMissing": 0
+   },
+   "violations": 0
+  },
+  "4x field": {
+   "drag": {
+    "release": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 17.81,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 89.85
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 32.17,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 88.18
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 28.73,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 90.51
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 12.15,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 90.2
+     }
+    ],
+    "step": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 16.87,
+      "after": 2.68,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 89.94
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 16.55,
+      "after": 0.33,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 88.05
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 18.13,
+      "after": 1.74,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 90.83
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 15.43,
+      "after": 1.03,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 90.77
+     }
+    ],
+    "anchor": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 93.39
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 94.57
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 94.54
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 95.26
+     }
+    ]
+   },
+   "zoom": [
+    {
+     "at": [
+      0.5,
+      0.5
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.3,
+      0.4
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.7,
+      0.6
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.5,
+      0.75
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.62,
+      0.3
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    }
+   ],
+   "offset": {
+    "target": [
+     800,
+     388
+    ],
+    "freeCentre": [
+     800,
+     388
+    ],
+    "roundTripWorld": 0.0003,
+    "roundTripPx": 0.001,
+    "points": 40,
+    "missed": 0,
+    "wppWithout": 0.18118,
+    "wppWith": 0.18118,
+    "layoutMs": 1.4,
+    "keepMissing": 0
+   },
+   "violations": 0
+  },
+  "4x pratzen": {
+   "drag": {
+    "release": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 92.57,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 18.83
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 79.06,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 19.6
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 167.44,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 18.08
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "lost": true,
+      "atStep": 12
+     }
+    ],
+    "step": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 83.57,
+      "after": 0.16,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 19.12
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 83.56,
+      "after": 2.69,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 18.19
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 92.2,
+      "after": 0.69,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 18.11
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "lost": true,
+      "atStep": 12
+     }
+    ],
+    "anchor": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 28.23
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 27.65
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 26.58
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "lost": true,
+      "atStep": 12
+     }
+    ]
+   },
+   "zoom": [
+    {
+     "at": [
+      0.5,
+      0.5
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.3,
+      0.4
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.7,
+      0.6
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.5,
+      0.75
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.62,
+      0.3
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    }
+   ],
+   "offset": {
+    "target": [
+     800,
+     388
+    ],
+    "freeCentre": [
+     800,
+     388
+    ],
+    "roundTripWorld": 0.0002,
+    "roundTripPx": 0.001,
+    "points": 32,
+    "missed": 8,
+    "wppWithout": 0.06594,
+    "wppWith": 0.06594,
+    "layoutMs": 1.4,
+    "keepMissing": 0
+   },
+   "violations": 0
+  },
+  "4x overview": {
+   "drag": {
+    "release": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 2.7,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 275.82
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 0.86,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 273.97
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 1.15,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 275.36
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 2.58,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 274.71
+     }
+    ],
+    "step": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 1.86,
+      "after": 0.1,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 275.85
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 1.91,
+      "after": 0.51,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 273.93
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 1.28,
+      "after": 0.13,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 275.35
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 3.9,
+      "after": 0.18,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 274.72
+     }
+    ],
+    "anchor": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 273.99
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 274.85
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 273.47
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 276.28
+     }
+    ]
+   },
+   "zoom": [
+    {
+     "at": [
+      0.5,
+      0.5
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.3,
+      0.4
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.7,
+      0.6
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.5,
+      0.75
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.62,
+      0.3
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    }
+   ],
+   "offset": {
+    "target": [
+     800,
+     388
+    ],
+    "freeCentre": [
+     800,
+     388
+    ],
+    "roundTripWorld": 0.0001,
+    "roundTripPx": 0.001,
+    "points": 40,
+    "missed": 0,
+    "wppWithout": 0.2066,
+    "wppWith": 0.2066,
+    "layoutMs": 2.5,
+    "keepMissing": 0
+   },
+   "violations": 0
+  },
+  "4x pratzen-low": {
+   "drag": {
+    "release": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 66.15,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 16.7
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 90.2,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 15.17
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 204.53,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 13.55
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 2.99,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 15.54
+     }
+    ],
+    "step": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 22.05,
+      "after": 0.39,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 17.67
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 46.5,
+      "after": 0.15,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 12.38
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 48.95,
+      "after": 5.57,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 10.3
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 59.51,
+      "after": 1.96,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 15.13
+     }
+    ],
+    "anchor": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 21.66
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 21.92
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 21.79
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 18.29
+     }
+    ]
+   },
+   "zoom": [
+    {
+     "at": [
+      0.5,
+      0.5
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.3,
+      0.4
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.7,
+      0.6
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.5,
+      0.75
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.62,
+      0.3
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    }
+   ],
+   "offset": {
+    "target": [
+     800,
+     388
+    ],
+    "freeCentre": [
+     800,
+     388
+    ],
+    "roundTripWorld": 0.0005,
+    "roundTripPx": 0.001,
+    "points": 40,
+    "missed": 0,
+    "wppWithout": 0.05312,
+    "wppWith": 0.05312,
+    "layoutMs": 2.2,
+    "keepMissing": 0
+   },
+   "violations": 0
+  },
+  "10.33x field": {
+   "drag": {
+    "release": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 19.86,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 88.77
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 67.27,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 82.98
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 46.72,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 87.74
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 17.81,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 89.84
+     }
+    ],
+    "step": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 17.55,
+      "after": 3.03,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 85.43
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 16.44,
+      "after": 9.42,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 83.62
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 43.94,
+      "after": 4.86,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 88.4
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 15.79,
+      "after": 4.63,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 89.84
+     }
+    ],
+    "anchor": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 92.36
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 95.02
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 93.6
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 96.83
+     }
+    ]
+   },
+   "zoom": [
+    {
+     "at": [
+      0.5,
+      0.5
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.3,
+      0.4
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.7,
+      0.6
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.5,
+      0.75
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.62,
+      0.3
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    }
+   ],
+   "offset": {
+    "target": [
+     800,
+     388
+    ],
+    "freeCentre": [
+     800,
+     388
+    ],
+    "roundTripWorld": 0.0004,
+    "roundTripPx": 0.002,
+    "points": 40,
+    "missed": 0,
+    "wppWithout": 0.18053,
+    "wppWith": 0.18053,
+    "layoutMs": 2.9,
+    "keepMissing": 0
+   },
+   "violations": 0
+  },
+  "10.33x pratzen": {
+   "drag": {
+    "release": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 106.36,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 17.74
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 75.34,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 19.36
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 171.88,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 16.47
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "lost": true,
+      "atStep": 10
+     }
+    ],
+    "step": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 81.03,
+      "after": 0,
+      "clamps": 5,
+      "floorViolations": 0,
+      "clearance": 1.8
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 86.27,
+      "after": 38.35,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 16.77
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 95.82,
+      "after": 2.75,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 15.8
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "lost": true,
+      "atStep": 10
+     }
+    ],
+    "anchor": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 28.87
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 27.28
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 24.88
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "lost": true,
+      "atStep": 10
+     }
+    ]
+   },
+   "zoom": [
+    {
+     "at": [
+      0.5,
+      0.5
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.3,
+      0.4
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.7,
+      0.6
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.5,
+      0.75
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.62,
+      0.3
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    }
+   ],
+   "offset": {
+    "target": [
+     800,
+     388
+    ],
+    "freeCentre": [
+     800,
+     388
+    ],
+    "roundTripWorld": 0.0002,
+    "roundTripPx": 0.006,
+    "points": 32,
+    "missed": 8,
+    "wppWithout": 0.06565,
+    "wppWith": 0.06565,
+    "layoutMs": 1.8,
+    "keepMissing": 0
+   },
+   "violations": 0
+  },
+  "10.33x overview": {
+   "drag": {
+    "release": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 0.08,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 271.39
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 7.54,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 266.34
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 0.22,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 270.55
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 14.79,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 268.81
+     }
+    ],
+    "step": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 3.94,
+      "after": 0.28,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 271.38
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 2.25,
+      "after": 0.5,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 265.86
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0.79,
+      "after": 0.37,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 270.53
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 6.79,
+      "after": 0.48,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 268.96
+     }
+    ],
+    "anchor": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 271.33
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 273.68
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 270.19
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 277.39
+     }
+    ]
+   },
+   "zoom": [
+    {
+     "at": [
+      0.5,
+      0.5
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.3,
+      0.4
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.7,
+      0.6
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.5,
+      0.75
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.62,
+      0.3
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    }
+   ],
+   "offset": {
+    "target": [
+     800,
+     388
+    ],
+    "freeCentre": [
+     800,
+     388
+    ],
+    "roundTripWorld": 0.0001,
+    "roundTripPx": 0.001,
+    "points": 40,
+    "missed": 0,
+    "wppWithout": 0.20364,
+    "wppWith": 0.20364,
+    "layoutMs": 2.8,
+    "keepMissing": 0
+   },
+   "violations": 0
+  },
+  "10.33x pratzen-low": {
+   "drag": {
+    "release": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 85.88,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 10.18
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 166.49,
+      "clamps": 1,
+      "floorViolations": 0,
+      "clearance": 1.8
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 288.27,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 15.63
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "lost": true,
+      "atStep": 7
+     }
+    ],
+    "step": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 235.21,
+      "after": 1.18,
+      "clamps": 1,
+      "floorViolations": 0,
+      "clearance": 15.75
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 103.94,
+      "after": 2.09,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 12.14
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 124.8,
+      "after": 0.38,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 7.92
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "during": 114.12,
+      "after": 2.22,
+      "clamps": 2,
+      "floorViolations": 0,
+      "clearance": 15.91
+     }
+    ],
+    "anchor": [
+     {
+      "dir": [
+       300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 21.72
+     },
+     {
+      "dir": [
+       -300,
+       0
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 23.63
+     },
+     {
+      "dir": [
+       0,
+       300
+      ],
+      "during": 0,
+      "after": 0,
+      "clamps": 0,
+      "floorViolations": 0,
+      "clearance": 29.89
+     },
+     {
+      "dir": [
+       0,
+       -300
+      ],
+      "lost": true,
+      "atStep": 7
+     }
+    ]
+   },
+   "zoom": [
+    {
+     "at": [
+      0.5,
+      0.5
+     ],
+     "steps": 12,
+     "worstDrift": 89.33,
+     "limited": 0,
+     "clamped": 1,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.3,
+      0.4
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.7,
+      0.6
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.5,
+      0.75
+     ],
+     "steps": 12,
+     "worstDrift": 0,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    },
+    {
+     "at": [
+      0.62,
+      0.3
+     ],
+     "steps": 0,
+     "worstDrift": null,
+     "limited": 0,
+     "clamped": 0,
+     "floorViolations": 0,
+     "driftUnclamped": 0
+    }
+   ],
+   "offset": {
+    "target": [
+     800,
+     388
+    ],
+    "freeCentre": [
+     800,
+     388
+    ],
+    "roundTripWorld": 0.0011,
+    "roundTripPx": 0.003,
+    "points": 31,
+    "missed": 9,
+    "wppWithout": 0.05205,
+    "wppWith": 0.05205,
+    "layoutMs": 2.8,
+    "keepMissing": 0
+   },
+   "violations": 0
+  }
+ },
+ "viewmode": {
+  "overview-plan": [
+   {
+    "text": "Study",
+    "pressed": "false",
+    "opacity": "0.24",
+    "inkLum": 0.0422,
+    "groundLum": 0.0146,
+    "ratio": 1.43
+   },
+   {
+    "text": "Watch",
+    "pressed": "true",
+    "opacity": "0.24",
+    "inkLum": 0.022,
+    "groundLum": 0.0657,
+    "ratio": 1.61
+   },
+   {
+    "text": "Map",
+    "pressed": "false",
+    "opacity": "0.24",
+    "inkLum": 0.0437,
+    "groundLum": 0.0155,
+    "ratio": 1.43
+   }
+  ],
+  "close-sokolnitz": [
+   {
+    "text": "Study",
+    "pressed": "false",
+    "opacity": "0.24",
+    "inkLum": 0.2754,
+    "groundLum": 0.1071,
+    "ratio": 2.07
+   },
+   {
+    "text": "Watch",
+    "pressed": "true",
+    "opacity": "0.24",
+    "inkLum": 0.4417,
+    "groundLum": 0.181,
+    "ratio": 2.13
+   },
+   {
+    "text": "Map",
+    "pressed": "false",
+    "opacity": "0.24",
+    "inkLum": 0.2425,
+    "groundLum": 0.0292,
+    "ratio": 3.69
+   }
+  ],
+  "pratzen-low": [
+   {
+    "text": "Study",
+    "pressed": "false",
+    "opacity": "0.24",
+    "inkLum": 0.355,
+    "groundLum": 0.266,
+    "ratio": 1.28
+   },
+   {
+    "text": "Watch",
+    "pressed": "true",
+    "opacity": "0.24",
+    "inkLum": 0.2749,
+    "groundLum": 0.4191,
+    "ratio": 1.44
+   },
+   {
+    "text": "Map",
+    "pressed": "false",
+    "opacity": "0.24",
+    "inkLum": 0.3511,
+    "groundLum": 0.266,
+    "ratio": 1.27
+   }
+  ],
+  "watch-selected": [
+   {
+    "text": "Study",
+    "pressed": "false",
+    "opacity": "0.24",
+    "inkLum": 0.0495,
+    "groundLum": 0.0146,
+    "ratio": 1.54
+   },
+   {
+    "text": "Watch",
+    "pressed": "true",
+    "opacity": "0.24",
+    "inkLum": 0.2202,
+    "groundLum": 0.0661,
+    "ratio": 2.33
+   },
+   {
+    "text": "Map",
+    "pressed": "false",
+    "opacity": "0.24",
+    "inkLum": 0.1268,
+    "groundLum": 0.0164,
+    "ratio": 2.66
+   }
+  ],
+  "hybrid-dimmed": [
+   {
+    "text": "Study",
+    "pressed": "false",
+    "opacity": "0.24",
+    "inkLum": 0.0535,
+    "groundLum": 0.0184,
+    "ratio": 1.51
+   },
+   {
+    "text": "Watch",
+    "pressed": "true",
+    "opacity": "0.24",
+    "inkLum": 0.2983,
+    "groundLum": 0.0812,
+    "ratio": 2.65
+   },
+   {
+    "text": "Map",
+    "pressed": "false",
+    "opacity": "0.24",
+    "inkLum": 0.1446,
+    "groundLum": 0.0233,
+    "ratio": 2.66
+   }
+  ]
+ },
+ "viewmodeStudy": [
+  {
+   "text": "Study",
+   "pressed": "true",
+   "opacity": "1",
+   "inkLum": 0.0572,
+   "groundLum": 0.5265,
+   "ratio": 5.38
+  },
+  {
+   "text": "Watch",
+   "pressed": "false",
+   "opacity": "1",
+   "inkLum": 0.2614,
+   "groundLum": 0.04,
+   "ratio": 3.46
+  },
+  {
+   "text": "Map",
+   "pressed": "false",
+   "opacity": "1",
+   "inkLum": 0.2373,
+   "groundLum": 0.04,
+   "ratio": 3.19
+  }
+ ],
+ "headCover": {
+  "pratzen-orbit-min": {
+   "layerObstacles": {
+    "all": 1,
+    "count": 6,
+    "withoutArrowHeadsAndMarkers": 1,
+    "withoutEventGlyphs": 0.785,
+    "list": [
+     {
+      "kind": "arrow head",
+      "rect": [
+       677,
+       455,
+       1447,
+       667
+      ],
+      "w": 769,
+      "h": 212
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       962,
+       52,
+       1121,
+       70
+      ],
+      "w": 159,
+      "h": 18
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       606,
+       -3,
+       739,
+       43
+      ],
+      "w": 132,
+      "h": 46
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       856,
+       21,
+       981,
+       27
+      ],
+      "w": 124,
+      "h": 6
+     },
+     {
+      "kind": "objective marker",
+      "rect": [
+       346,
+       -418,
+       3346,
+       2582
+      ],
+      "w": 2999,
+      "h": 2999
+     },
+     {
+      "kind": "event glyph",
+      "rect": [
+       -154,
+       -2332,
+       4588,
+       2409
+      ],
+      "w": 4741,
+      "h": 4741
+     }
+    ],
+    "liveGlyphs": [
+     {
+      "id": "kamensky",
+      "distance": 1.8,
+      "pxRadius": 2371
+     }
+    ]
+   },
+   "heads": 12,
+   "behindEye": 4,
+   "boxShare": 0.1234,
+   "triangleShare": 0.0488,
+   "dropped": 18,
+   "placed": 0
+  },
+  "overview-plan": {
+   "layerObstacles": {
+    "all": 0.0103,
+    "count": 9,
+    "withoutArrowHeadsAndMarkers": 0.0009,
+    "withoutEventGlyphs": 0.0094,
+    "list": [
+     {
+      "kind": "arrow head",
+      "rect": [
+       739,
+       499,
+       788,
+       549
+      ],
+      "w": 49,
+      "h": 49
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       774,
+       416,
+       821,
+       462
+      ],
+      "w": 48,
+      "h": 46
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       662,
+       519,
+       705,
+       569
+      ],
+      "w": 43,
+      "h": 50
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       783,
+       74,
+       828,
+       120
+      ],
+      "w": 44,
+      "h": 46
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       652,
+       -3,
+       698,
+       43
+      ],
+      "w": 47,
+      "h": 46
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       740,
+       -55,
+       786,
+       -13
+      ],
+      "w": 47,
+      "h": 43
+     },
+     {
+      "kind": "objective marker",
+      "rect": [
+       788,
+       488,
+       807,
+       506
+      ],
+      "w": 18,
+      "h": 18
+     },
+     {
+      "kind": "event glyph",
+      "rect": [
+       730,
+       421,
+       751,
+       442
+      ],
+      "w": 21,
+      "h": 21
+     },
+     {
+      "kind": "event glyph",
+      "rect": [
+       800,
+       361,
+       820,
+       381
+      ],
+      "w": 21,
+      "h": 21
+     }
+    ],
+    "liveGlyphs": [
+     {
+      "id": "soult",
+      "distance": 271.9,
+      "pxRadius": 10
+     },
+     {
+      "id": "face-about",
+      "distance": 274.1,
+      "pxRadius": 10
+     }
+    ]
+   },
+   "heads": 12,
+   "behindEye": 0,
+   "boxShare": 0.0091,
+   "triangleShare": 0.0031,
+   "dropped": 5,
+   "placed": 34
+  },
+  "pratzen-low": {
+   "layerObstacles": {
+    "all": 0.0604,
+    "count": 8,
+    "withoutArrowHeadsAndMarkers": 0.0054,
+    "withoutEventGlyphs": 0.0578,
+    "list": [
+     {
+      "kind": "arrow head",
+      "rect": [
+       803,
+       414,
+       985,
+       558
+      ],
+      "w": 183,
+      "h": 143
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       510,
+       442,
+       679,
+       500
+      ],
+      "w": 169,
+      "h": 58
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       772,
+       639,
+       1076,
+       763
+      ],
+      "w": 304,
+      "h": 124
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       -587,
+       412,
+       -379,
+       448
+      ],
+      "w": 208,
+      "h": 36
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       -1598,
+       493,
+       -1198,
+       526
+      ],
+      "w": 401,
+      "h": 33
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       -1080,
+       415,
+       -831,
+       452
+      ],
+      "w": 249,
+      "h": 37
+     },
+     {
+      "kind": "objective marker",
+      "rect": [
+       766,
+       360,
+       834,
+       429
+      ],
+      "w": 68,
+      "h": 68
+     },
+     {
+      "kind": "event glyph",
+      "rect": [
+       760,
+       332,
+       840,
+       412
+      ],
+      "w": 80,
+      "h": 80
+     }
+    ],
+    "liveGlyphs": [
+     {
+      "id": "kamensky",
+      "distance": 70.6,
+      "pxRadius": 40
+     }
+    ]
+   },
+   "heads": 12,
+   "behindEye": 0,
+   "boxShare": 0.0547,
+   "triangleShare": 0.0189,
+   "dropped": 5,
+   "placed": 21
+  },
+  "staff-paper": {
+   "layerObstacles": {
+    "all": 0.0084,
+    "count": 9,
+    "withoutArrowHeadsAndMarkers": 0.0008,
+    "withoutEventGlyphs": 0.0076,
+    "list": [
+     {
+      "kind": "arrow head",
+      "rect": [
+       927,
+       431,
+       976,
+       476
+      ],
+      "w": 49,
+      "h": 45
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       984,
+       362,
+       1034,
+       406
+      ],
+      "w": 49,
+      "h": 44
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       837,
+       415,
+       885,
+       462
+      ],
+      "w": 48,
+      "h": 47
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       1089,
+       15,
+       1138,
+       60
+      ],
+      "w": 49,
+      "h": 45
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       994,
+       -91,
+       1044,
+       -48
+      ],
+      "w": 49,
+      "h": 43
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       1091,
+       -124,
+       1134,
+       -74
+      ],
+      "w": 43,
+      "h": 49
+     },
+     {
+      "kind": "objective marker",
+      "rect": [
+       977,
+       428,
+       995,
+       445
+      ],
+      "w": 18,
+      "h": 18
+     },
+     {
+      "kind": "event glyph",
+      "rect": [
+       942,
+       346,
+       962,
+       367
+      ],
+      "w": 21,
+      "h": 21
+     },
+     {
+      "kind": "event glyph",
+      "rect": [
+       1026,
+       308,
+       1046,
+       329
+      ],
+      "w": 21,
+      "h": 21
+     }
+    ],
+    "liveGlyphs": [
+     {
+      "id": "soult",
+      "distance": 397.5,
+      "pxRadius": 10
+     },
+     {
+      "id": "face-about",
+      "distance": 399.6,
+      "pxRadius": 10
+     }
+    ]
+   },
+   "heads": 12,
+   "behindEye": 0,
+   "boxShare": 0.0074,
+   "triangleShare": 0.0023,
+   "dropped": 4,
+   "placed": 16
+  },
+  "paper-close": {
+   "layerObstacles": {
+    "all": 0.117,
+    "count": 11,
+    "withoutArrowHeadsAndMarkers": 0.0191,
+    "withoutEventGlyphs": 0.1081,
+    "list": [
+     {
+      "kind": "arrow head",
+      "rect": [
+       1219,
+       205,
+       1451,
+       417
+      ],
+      "w": 232,
+      "h": 212
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       1366,
+       -3,
+       1600,
+       200
+      ],
+      "w": 233,
+      "h": 203
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       2628,
+       -1150,
+       2855,
+       -927
+      ],
+      "w": 228,
+      "h": 222
+     },
+     {
+      "kind": "arrow head",
+      "rect": [
+       543,
+       663,
+       750,
+       896
+      ],
+      "w": 208,
+      "h": 233
+     },
+     {
+      "kind": "objective marker",
+      "rect": [
+       930,
+       373,
+       1013,
+       456
+      ],
+      "w": 83,
+      "h": 83
+     },
+     {
+      "kind": "objective marker",
+      "rect": [
+       1202,
+       -611,
+       1286,
+       -528
+      ],
+      "w": 83,
+      "h": 83
+     },
+     {
+      "kind": "event glyph",
+      "rect": [
+       2541,
+       -803,
+       2639,
+       -706
+      ],
+      "w": 97,
+      "h": 97
+     },
+     {
+      "kind": "event glyph",
+      "rect": [
+       684,
+       740,
+       781,
+       838
+      ],
+      "w": 97,
+      "h": 97
+     },
+     {
+      "kind": "event glyph",
+      "rect": [
+       923,
+       366,
+       1020,
+       463
+      ],
+      "w": 97,
+      "h": 97
+     },
+     {
+      "kind": "event glyph",
+      "rect": [
+       847,
+       840,
+       944,
+       937
+      ],
+      "w": 97,
+      "h": 97
+     },
+     {
+      "kind": "event glyph",
+      "rect": [
+       1382,
+       -2297,
+       1479,
+       -2200
+      ],
+      "w": 97,
+      "h": 97
+     }
+    ],
+    "liveGlyphs": [
+     {
+      "id": "counter-march",
+      "distance": 406.6,
+      "pxRadius": 49
+     },
+     {
+      "id": "davout",
+      "distance": 396.1,
+      "pxRadius": 49
+     },
+     {
+      "id": "sokolnitz",
+      "distance": 395.9,
+      "pxRadius": 49
+     },
+     {
+      "id": "telnitz-retaken",
+      "distance": 396.3,
+      "pxRadius": 49
+     },
+     {
+      "id": "decision",
+      "distance": 413.5,
+      "pxRadius": 49
+     }
+    ]
+   },
+   "heads": 8,
+   "behindEye": 0,
+   "boxShare": 0.1029,
+   "triangleShare": 0.0367,
+   "dropped": 1,
+   "placed": 3
+  }
+ },
+ "switchDuringPlay": [
+  [
+   210.2,
+   119
+  ],
+  [
+   134,
+   120.3
+  ],
+  [
+   234.1,
+   119.8
+  ]
+ ],
+ "keys": {
+  "spaceOnTourButton": {
+   "before": {
+    "tour": -1,
+    "playing": false
+   },
+   "after": {
+    "tour": -1,
+    "playing": true
+   }
+  },
+  "timerail": {
+   "start": 570,
+   "arrowRight": 25,
+   "shiftArrowRight": 75,
+   "ariaValueNow": null
+  },
+  "arrowOnPlayButton": 10
+ },
+ "pageErrors": []
+}

@@ -1,0 +1,651 @@
+{
+ "counts": {
+  "phases": 10,
+  "phaseLines": 32,
+  "acts": 5,
+  "events": 25,
+  "chapters": 10,
+  "tour": 9
+ },
+ "phases": [
+  {
+   "ph": 0,
+   "act": "deception",
+   "label": "Deployment",
+   "title": "Dispositions in the dark",
+   "t0": 240,
+   "t1": 420,
+   "clock": "04:00 - 07:00",
+   "eventsStarting": [
+    "columns-move 04:00-07:00",
+    "counter-march 04:15-08:00",
+    "raigern 04:00-04:45"
+   ],
+   "eventsRunningInto": [],
+   "timeline": [
+    "c. 01:00",
+    "c. 04:00",
+    "c. 06:00"
+   ],
+   "chapters": [
+    "plan 04:10",
+    "deception 04:10"
+   ],
+   "tour": [
+    "1 04:10",
+    "2 04:10",
+    "3 04:10"
+   ]
+  },
+  {
+   "ph": 1,
+   "act": "advance",
+   "label": "Telnitz",
+   "title": "The Allied left opens the battle",
+   "t0": 420,
+   "t1": 480,
+   "clock": "07:00 - 08:00",
+   "eventsStarting": [
+    "telnitz 07:00",
+    "davout 07:45-08:15"
+   ],
+   "eventsRunningInto": [
+    "counter-march"
+   ],
+   "timeline": [
+    "c. 07:00",
+    "c. 07:30",
+    "c. 08:00"
+   ],
+   "chapters": [
+    "weakness 07:00",
+    "commitment 07:10"
+   ],
+   "tour": [
+    "4 07:25"
+   ]
+  },
+  {
+   "ph": 2,
+   "act": "advance",
+   "label": "Sokolnitz",
+   "title": "Sokolnitz, the castle and the pheasantry",
+   "t0": 480,
+   "t1": 525,
+   "clock": "08:00 - 08:45",
+   "eventsStarting": [
+    "sokolnitz 08:00",
+    "telnitz-retaken 08:30",
+    "decision 08:25-08:45"
+   ],
+   "eventsRunningInto": [
+    "davout"
+   ],
+   "timeline": [
+    "c. 08:00",
+    "c. 08:30",
+    "c. 08:30"
+   ],
+   "chapters": [],
+   "tour": [
+    "5 08:20"
+   ]
+  },
+  {
+   "ph": 3,
+   "act": "strike",
+   "label": "The Pratzen",
+   "title": "Soult storms the heights",
+   "t0": 525,
+   "t1": 570,
+   "clock": "08:45 - 09:30",
+   "eventsStarting": [
+    "soult 08:45-09:15",
+    "pratzen-village 09:00",
+    "face-about 09:15"
+   ],
+   "eventsRunningInto": [],
+   "timeline": [
+    "c. 08:45",
+    "c. 09:00",
+    "c. 09:15"
+   ],
+   "chapters": [
+    "pratzen 08:47"
+   ],
+   "tour": [
+    "6 08:50"
+   ]
+  },
+  {
+   "ph": 4,
+   "act": "strike",
+   "label": "Pratzeberg",
+   "title": "The crisis on the Pratzeberg",
+   "t0": 570,
+   "t1": 630,
+   "clock": "09:30 - 10:30",
+   "eventsStarting": [
+    "kamensky 09:45"
+   ],
+   "eventsRunningInto": [],
+   "timeline": [
+    "c. 09:30",
+    "c. 09:45",
+    "c. 10:15",
+    "c. 10:30"
+   ],
+   "chapters": [
+    "cut 10:00"
+   ],
+   "tour": []
+  },
+  {
+   "ph": 5,
+   "act": "divided",
+   "label": "Olmutz road",
+   "title": "The northern battle decided",
+   "t0": 630,
+   "t1": 675,
+   "clock": "10:30 - 11:15",
+   "eventsStarting": [
+    "kursk 10:30",
+    "pratzeberg 11:00",
+    "guard-attack 11:00-13:00"
+   ],
+   "eventsRunningInto": [],
+   "timeline": [
+    "c. 10:40",
+    "c. 11:00",
+    "c. 11:15"
+   ],
+   "chapters": [
+    "north 10:40"
+   ],
+   "tour": []
+  },
+  {
+   "ph": 6,
+   "act": "divided",
+   "label": "The Guard",
+   "title": "The Russian Guard at Stare Vinohrady",
+   "t0": 675,
+   "t1": 765,
+   "clock": "11:15 - 12:45",
+   "eventsStarting": [
+    "blasowitz 11:15",
+    "guard-broken 11:15-13:15",
+    "hq-forward 12:00-12:40",
+    "buxhowden-blind 11:40-12:40",
+    "davout-resumes 12:30"
+   ],
+   "eventsRunningInto": [
+    "guard-attack"
+   ],
+   "timeline": [
+    "after 11:00",
+    "c. 11:45",
+    "c. 12:00",
+    "c. 12:00"
+   ],
+   "chapters": [
+    "guard 11:20"
+   ],
+   "tour": [
+    "7 11:20"
+   ]
+  },
+  {
+   "ph": 7,
+   "act": "collapse",
+   "label": "The wheel",
+   "title": "The centre turns south",
+   "t0": 765,
+   "t1": 870,
+   "clock": "12:45 - 14:30",
+   "eventsStarting": [
+    "wheel 13:00-14:00",
+    "sokolnitz-falls 14:00"
+   ],
+   "eventsRunningInto": [
+    "guard-attack",
+    "guard-broken"
+   ],
+   "timeline": [
+    "c. 12:30",
+    "c. 13:00-14:00",
+    "c. 14:00"
+   ],
+   "chapters": [
+    "wheel 12:50"
+   ],
+   "tour": []
+  },
+  {
+   "ph": 8,
+   "act": "collapse",
+   "label": "The ponds",
+   "title": "Augezd, the ponds and the ice",
+   "t0": 870,
+   "t1": 1020,
+   "clock": "14:30 - 17:00",
+   "eventsStarting": [
+    "augezd 14:30",
+    "ice 15:00",
+    "end 16:30"
+   ],
+   "eventsRunningInto": [],
+   "timeline": [
+    "c. 14:30",
+    "c. 15:00",
+    "c. 16:30"
+   ],
+   "chapters": [
+    "collapse 14:40"
+   ],
+   "tour": [
+    "8 14:40",
+    "9 16:40"
+   ]
+  },
+  {
+   "ph": 9,
+   "act": "collapse",
+   "label": "Reckoning",
+   "title": "The reckoning",
+   "t0": 1020,
+   "t1": 1080,
+   "clock": "After dark",
+   "eventsStarting": [],
+   "eventsRunningInto": [],
+   "timeline": [
+    "2 Dec",
+    "26 Dec",
+    "6 Aug 1806"
+   ],
+   "chapters": [],
+   "tour": []
+  }
+ ],
+ "findings": [
+  {
+   "kind": "tour-cam-own",
+   "where": "TOUR[1] (stop 2, \"The Allied plan\")",
+   "text": "camera is its own (no phase's), clock 04:10 in phase 0"
+  },
+  {
+   "kind": "tour-cam-own",
+   "where": "TOUR[2] (stop 3, \"The French deception\")",
+   "text": "camera is its own (no phase's), clock 04:10 in phase 0"
+  },
+  {
+   "kind": "tour-clock",
+   "where": "TOUR[3] (stop 4, \"The Allied advance\")",
+   "text": "stop clock 07:25 (phase 1) but its chapter \"commitment\" sets 07:10 (phase 1)"
+  },
+  {
+   "kind": "tour-text-time",
+   "where": "TOUR[3] (stop 4, \"The Allied advance\")",
+   "text": "text says 04:00 (phase 0); shown at 07:25 (phase 1)"
+  },
+  {
+   "kind": "tour-cam-phase",
+   "where": "TOUR[4] (stop 5, \"Why the Pratzen matters\")",
+   "text": "camera is phase 3's (The Pratzen), clock 08:20 is in phase 2 (Sokolnitz)"
+  },
+  {
+   "kind": "tour-clock",
+   "where": "TOUR[5] (stop 6, \"The French strike\")",
+   "text": "stop clock 08:50 (phase 3) but its chapter \"pratzen\" sets 08:47 (phase 3)"
+  },
+  {
+   "kind": "tour-clock",
+   "where": "TOUR[6] (stop 7, \"The army divided\")",
+   "text": "stop clock 11:20 (phase 6) but its chapter \"cut\" sets 10:00 (phase 4)"
+  },
+  {
+   "kind": "tour-cam-phase",
+   "where": "TOUR[6] (stop 7, \"The army divided\")",
+   "text": "camera is phase 4's (Pratzeberg), clock 11:20 is in phase 6 (The Guard)"
+  },
+  {
+   "kind": "tour-cam-phase",
+   "where": "TOUR[8] (stop 9, \"What it cost\")",
+   "text": "camera is phase 9's (Reckoning), clock 16:40 is in phase 8 (The ponds)"
+  },
+  {
+   "kind": "chapter-cam-own",
+   "where": "ANALYSIS \"plan\" (\"The Allied plan\")",
+   "text": "camera is its own, clock 04:10 in phase 0"
+  },
+  {
+   "kind": "chapter-cam-own",
+   "where": "ANALYSIS \"deception\" (\"The French deception\")",
+   "text": "camera is its own, clock 04:10 in phase 0"
+  },
+  {
+   "kind": "chapter-cam-own",
+   "where": "ANALYSIS \"weakness\" (\"The apparent weakness on the right\")",
+   "text": "camera is its own, clock 07:00 in phase 1"
+  },
+  {
+   "kind": "chapter-text-time",
+   "where": "ANALYSIS \"commitment\" (\"The commitment of the Allied left\")",
+   "text": "text says 09:00 (phase 3); set at 07:10 (phase 1)"
+  },
+  {
+   "kind": "chapter-text-time",
+   "where": "ANALYSIS \"pratzen\" (\"The attack on the Pratzen\")",
+   "text": "text says 11:00 (phase 5); set at 08:47 (phase 3)"
+  },
+  {
+   "kind": "chapter-text-time",
+   "where": "ANALYSIS \"cut\" (\"The cutting of the Allied army\")",
+   "text": "text says noon (phase 6); set at 10:00 (phase 4)"
+  },
+  {
+   "kind": "chapter-text-time",
+   "where": "ANALYSIS \"north\" (\"Lannes, Murat and Bagration\")",
+   "text": "text says 11:15 (phase 6); set at 10:40 (phase 5)"
+  },
+  {
+   "kind": "event-crosses-act",
+   "where": "EVENTS \"counter-march\"",
+   "text": "04:15-08:00: phases 0-1, acts deception / advance"
+  },
+  {
+   "kind": "event-crosses-phase",
+   "where": "EVENTS \"davout\"",
+   "text": "07:45-08:15: phases 1-2"
+  },
+  {
+   "kind": "event-crosses-act",
+   "where": "EVENTS \"guard-attack\"",
+   "text": "11:00-13:00: phases 5-7, acts divided / collapse"
+  },
+  {
+   "kind": "event-crosses-act",
+   "where": "EVENTS \"guard-broken\"",
+   "text": "11:15-13:15: phases 6-7, acts divided / collapse"
+  },
+  {
+   "kind": "phase-line-outside",
+   "where": "PHASES[0] timeline",
+   "text": "c. 01:00 is outside 04:00-07:00: \"Weyrother reads the dispositions at Allied headquarters, Krzenowitz. K...\""
+  },
+  {
+   "kind": "phase-lede-outside",
+   "where": "PHASES[3] lede",
+   "text": "states 11:00, outside 08:45-09:30"
+  },
+  {
+   "kind": "phase-line-outside",
+   "where": "PHASES[6] timeline",
+   "text": "after 11:00 is outside 11:15-12:45: \"The Russian Guard attacks Vandamme; the 4th Line loses its eagle. The ...\""
+  },
+  {
+   "kind": "phase-line-outside",
+   "where": "PHASES[7] timeline",
+   "text": "c. 12:30 is outside 12:45-14:30: \"Davout regroups and attacks; Langeron is forced back toward Sokolnitz....\""
+  },
+  {
+   "kind": "event-vs-line",
+   "where": "counter-march",
+   "text": "event 04:15-08:00, phase 0 \"c. 04:00\" at 04:00 (15 min apart; shared: Liechtenstein)"
+  }
+ ],
+ "eventLinePairs": [
+  {
+   "event": "counter-march",
+   "eventTime": "04:15-08:00",
+   "line": "phase 0 \"c. 04:00\"",
+   "lineTime": "04:00",
+   "apart": 15,
+   "shared": [
+    "Liechtenstein"
+   ]
+  },
+  {
+   "event": "telnitz",
+   "eventTime": "07:00",
+   "line": "phase 1 \"c. 07:00\"",
+   "lineTime": "07:00",
+   "apart": 0,
+   "shared": [
+    "Kienmayer",
+    "Telnitz"
+   ]
+  },
+  {
+   "event": "davout",
+   "eventTime": "07:45-08:15",
+   "line": "phase 1 \"c. 08:00\"",
+   "lineTime": "08:00",
+   "apart": 0,
+   "shared": [
+    "Friant",
+    "Goldbach",
+    "Telnitz"
+   ]
+  },
+  {
+   "event": "sokolnitz",
+   "eventTime": "08:00",
+   "line": "phase 2 \"c. 08:00\"",
+   "lineTime": "08:00",
+   "apart": 0,
+   "shared": [
+    "Langeron",
+    "Przybyszewski",
+    "Sokolnitz"
+   ]
+  },
+  {
+   "event": "telnitz-retaken",
+   "eventTime": "08:30",
+   "line": "phase 2 \"c. 08:30\"",
+   "lineTime": "08:30",
+   "apart": 0,
+   "shared": [
+    "Friant",
+    "Telnitz"
+   ]
+  },
+  {
+   "event": "decision",
+   "eventTime": "08:25-08:45",
+   "line": "phase 2 \"c. 08:30\"",
+   "lineTime": "08:30",
+   "apart": 0,
+   "shared": [
+    "Napoleon",
+    "Soult"
+   ]
+  },
+  {
+   "event": "pratzen-village",
+   "eventTime": "09:00",
+   "line": "phase 3 \"c. 09:00\"",
+   "lineTime": "09:00",
+   "apart": 0,
+   "shared": [
+    "Thiebault",
+    "Pratzen",
+    "Pratzeberg"
+   ]
+  },
+  {
+   "event": "face-about",
+   "eventTime": "09:15",
+   "line": "phase 3 \"c. 09:15\"",
+   "lineTime": "09:15",
+   "apart": 0,
+   "shared": [
+    "Kutuzov"
+   ]
+  },
+  {
+   "event": "kamensky",
+   "eventTime": "09:45",
+   "line": "phase 4 \"c. 09:45\"",
+   "lineTime": "09:45",
+   "apart": 0,
+   "shared": [
+    "Kamensky"
+   ]
+  },
+  {
+   "event": "kursk",
+   "eventTime": "10:30",
+   "line": "phase 4 \"c. 10:30\"",
+   "lineTime": "10:30",
+   "apart": 0,
+   "shared": [
+    "Langeron"
+   ]
+  },
+  {
+   "event": "pratzeberg",
+   "eventTime": "11:00",
+   "line": "phase 5 \"c. 11:00\"",
+   "lineTime": "11:00",
+   "apart": 0,
+   "shared": [
+    "Pratzeberg"
+   ]
+  },
+  {
+   "event": "blasowitz",
+   "eventTime": "11:15",
+   "line": "phase 5 \"c. 11:15\"",
+   "lineTime": "11:15",
+   "apart": 0,
+   "shared": [
+    "Blasowitz",
+    "Bagration",
+    "Rausnitz"
+   ]
+  },
+  {
+   "event": "guard-attack",
+   "eventTime": "11:00-13:00",
+   "line": "phase 6 \"after 11:00\"",
+   "lineTime": "11:00",
+   "apart": 0,
+   "shared": [
+    "Line"
+   ]
+  },
+  {
+   "event": "guard-broken",
+   "eventTime": "11:15-13:15",
+   "line": "phase 6 \"c. 11:45\"",
+   "lineTime": "11:45",
+   "apart": 0,
+   "shared": [
+    "Rapp",
+    "Chevalier",
+    "Prince",
+    "Repnin"
+   ]
+  },
+  {
+   "event": "hq-forward",
+   "eventTime": "12:00-12:40",
+   "line": "phase 6 \"c. 12:00\"",
+   "lineTime": "12:00",
+   "apart": 0,
+   "shared": [
+    "Napoleon",
+    "Stare",
+    "Vinohrady"
+   ]
+  },
+  {
+   "event": "buxhowden-blind",
+   "eventTime": "11:40-12:40",
+   "line": "phase 6 \"c. 12:00\"",
+   "lineTime": "12:00",
+   "apart": 0,
+   "shared": [
+    "Buxhowden"
+   ]
+  },
+  {
+   "event": "davout-resumes",
+   "eventTime": "12:30",
+   "line": "phase 7 \"c. 12:30\"",
+   "lineTime": "12:30",
+   "apart": 0,
+   "shared": [
+    "Davout",
+    "Langeron",
+    "Sokolnitz"
+   ]
+  },
+  {
+   "event": "sokolnitz-falls",
+   "eventTime": "14:00",
+   "line": "phase 7 \"c. 14:00\"",
+   "lineTime": "14:00",
+   "apart": 0,
+   "shared": [
+    "Sokolnitz",
+    "Przybyszewski"
+   ]
+  },
+  {
+   "event": "augezd",
+   "eventTime": "14:30",
+   "line": "phase 8 \"c. 14:30\"",
+   "lineTime": "14:30",
+   "apart": 0,
+   "shared": [
+    "Vandamme",
+    "Augezd"
+   ]
+  },
+  {
+   "event": "ice",
+   "eventTime": "15:00",
+   "line": "phase 8 \"c. 15:00\"",
+   "lineTime": "15:00",
+   "apart": 0,
+   "shared": [
+    "Satschan"
+   ]
+  },
+  {
+   "event": "end",
+   "eventTime": "16:30",
+   "line": "phase 8 \"c. 16:30\"",
+   "lineTime": "16:30",
+   "apart": 0,
+   "shared": [
+    "Organised",
+    "Bagration",
+    "Rausnitz",
+    "Austerlitz"
+   ]
+  }
+ ],
+ "eventsWithoutLine": [
+  "columns-move",
+  "raigern",
+  "soult",
+  "wheel"
+ ],
+ "linesWithoutEvent": [
+  "phase 0 \"c. 01:00\" Weyrother reads the dispositions at Allied headquarters, Krz",
+  "phase 0 \"c. 06:00\" Napoleon takes post on the Zuran mound with Berthier and the",
+  "phase 1 \"c. 07:30\" Dokhturov's I Column begins descending toward the Goldbach.",
+  "phase 3 \"c. 08:45\" Soult's divisions advance. The mist lifts off the heights.",
+  "phase 4 \"c. 09:30\" Lannes advances along the highway. Bagration counter-attacks",
+  "phase 4 \"c. 10:15\" Jurczek's Austrians attack the Pratzeberg; French and Austri",
+  "phase 5 \"c. 10:40\" The cavalry collision west of Blasowitz. Kellermann falls ba",
+  "phase 7 \"c. 13:00-14:00\" Soult and Davout launch the converging assault on the Allied",
+  "phase 9 \"2 Dec\" Allied army effectively destroyed as a field force; Russia b",
+  "phase 9 \"26 Dec\" Treaty of Pressburg: Austria cedes Venetia, Istria, Dalmatia",
+  "phase 9 \"6 Aug 1806\" Francis II abdicates as Holy Roman Emperor."
+ ]
+}
