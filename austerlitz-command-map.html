@@ -74,6 +74,24 @@ body.rail-hidden .rail{transform:translateX(-101%)}
 .dispatch li b{font-weight:400;color:var(--text-muted);font-variant-numeric:tabular-nums}
 .dispatch li span{color:var(--text-body);line-height:1.5}
 
+/* ---------- Stage 3B: the docked layout (docs/STAGE3_SPEC.md section B.2; owner decisions 49, 54, 55, 58) ----------
+   From 1080 px wide (body.docked, app.js syncDock) the dispatch is the rail's Now tab and the dossier opens in the rail's
+   column, so neither lies over the map. Below 1080 px both keep their earlier places: the card, and the drawer on the right. */
+body.docked .dispatch{position:static;left:auto;bottom:auto;width:auto;max-height:none;overflow:visible;z-index:auto;
+  background:none;border:0;padding:2px 2px 14px;backdrop-filter:none;box-shadow:none}
+body.docked .dispatch h2{font-size:var(--t-h2)}
+body.docked .dispatch ol{display:block}
+body.docked #d-changes{display:block}
+.now-off{display:none;font-size:var(--t-ui);color:var(--text-muted);line-height:1.5;margin:2px 0 10px}
+body.docked.no-dispatch .now-off{display:block}
+body.docked .drawer{left:0;right:auto;width:var(--rail);bottom:var(--tb);border-left:0;border-right:1px solid var(--line-2);
+  transform:translateX(-101%)}
+body.docked .drawer.on{transform:translateX(0)}
+body.docked.drawer-open .tools,body.docked.drawer-open .legend{transform:none}
+#drawer-back{display:none;margin-right:auto;background:none;border:0;padding:4px 2px;color:var(--text-muted);font-size:var(--t-small);cursor:pointer}
+body.docked #drawer-back{display:block}
+#drawer-back:hover{color:var(--text)}
+
 
 /* ---------- tools ---------- */
 .tools{position:fixed;right:22px;top:20px;z-index:22;display:flex;flex-direction:column;align-items:flex-end;gap:9px;
@@ -225,7 +243,7 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
 
 /* ---------- rail tabs ---------- */
 .tabs{display:flex;margin:14px 0 2px;border-bottom:1px solid var(--line)}
-.tab-btn{flex:1;background:none;border:0;border-bottom:2px solid transparent;padding:8px 4px;
+.tab-btn{flex:1 1 auto;background:none;border:0;border-bottom:2px solid transparent;padding:8px 3px;line-height:1.25;
   font-size:var(--t-small);color:var(--text-muted);cursor:pointer;transition:color .18s,border-color .18s}
 .tab-btn:hover{color:var(--text)}
 .tab-btn[aria-selected="true"]{color:var(--text-hi);border-bottom-color:var(--accent);font-weight:500}
@@ -642,21 +660,34 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
     <p>2 December 1805 &middot; Moravia</p>
   </div>
 
-  <div class="tabs" role="tablist">
-    <button class="tab-btn" data-t="oob" aria-selected="true">Order of battle</button>
-    <button class="tab-btn" data-t="analysis" aria-selected="false">Analysis</button>
-    <button class="tab-btn" data-t="command" aria-selected="false">Command</button>
-    <button class="tab-btn" data-t="plans" aria-selected="false">Plans</button>
+  <!-- Stage 3B (docs/STAGE3_SPEC.md section B.2; owner decisions 54, 55): the dispatch is the rail's first tab, "Now", at
+       1080 px and wider; below that it stays a card (decision 58) and the Now tab is hidden (app.js syncDock) -->
+  <div class="tabs" role="tablist" aria-label="The rail">
+    <button class="tab-btn" id="tab-now" data-t="now" role="tab" aria-controls="now" aria-selected="true" tabindex="0">Now</button>
+    <button class="tab-btn" id="tab-oob" data-t="oob" role="tab" aria-controls="oob" aria-selected="false" tabindex="-1">Order of battle</button>
+    <button class="tab-btn" id="tab-analysis" data-t="analysis" role="tab" aria-controls="analysis" aria-selected="false" tabindex="-1">Analysis</button>
+    <button class="tab-btn" id="tab-command" data-t="command" role="tab" aria-controls="command" aria-selected="false" tabindex="-1">Command</button>
+    <button class="tab-btn" id="tab-plans" data-t="plans" role="tab" aria-controls="plans" aria-selected="false" tabindex="-1">Plans</button>
   </div>
 
   <div class="railscroll">
-    <div id="oob" class="tabpane"></div>
-    <div id="analysis" class="tabpane" hidden>
+    <div id="now" class="tabpane" role="tabpanel" aria-labelledby="tab-now">
+      <p class="now-off">The phase text is hidden: press D to show it. During the guided tour, its text is in the tour bar.</p>
+      <section class="dispatch">
+        <div class="clock" id="d-clock"></div>
+        <h2 id="d-title"></h2>
+        <p class="lede" id="d-lede"></p>
+        <ol id="d-events"></ol>
+        <div id="d-changes"></div>
+      </section>
+    </div>
+    <div id="oob" class="tabpane" role="tabpanel" aria-labelledby="tab-oob" hidden></div>
+    <div id="analysis" class="tabpane" role="tabpanel" aria-labelledby="tab-analysis" hidden>
       <p class="sechead">The battle in ten moments</p>
       <div id="chapters"></div>
       <div id="chaptext"></div>
     </div>
-    <div id="command" class="tabpane" hidden>
+    <div id="command" class="tabpane" role="tabpanel" aria-labelledby="tab-command" hidden>
       <p class="sechead">See the field as a headquarters saw it</p>
       <div class="grp cmdpick">
         <button class="t cmd-btn" data-cv="none" aria-pressed="true">Omniscient</button>
@@ -665,7 +696,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
       </div>
       <div id="cmdbody"></div>
     </div>
-    <div id="plans" class="tabpane" hidden>
+    <div id="plans" class="tabpane" role="tabpanel" aria-labelledby="tab-plans" hidden>
       <p class="sechead">What each army meant to do</p>
       <div class="grp cmdpick">
         <button class="t plan-btn" data-p="al" aria-pressed="false">Allied</button>
@@ -681,13 +712,10 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   </div>
 </nav>
 
-<section class="dispatch" aria-live="polite">
-  <div class="clock" id="d-clock"></div>
-  <h2 id="d-title"></h2>
-  <p class="lede" id="d-lede"></p>
-  <ol id="d-events"></ol>
-  <div id="d-changes"></div>
-</section>
+<!-- below 1080 px the dispatch card stands here, where it stood before Stage 3B (app.js syncDock) -->
+<div id="dispatch-home" hidden></div>
+<!-- one polite announcement per phase change, whichever tab is shown (a hidden tab's live region would not be read) -->
+<div id="live-phase" class="sr-only" aria-live="polite"></div>
 
 <div class="tools">
   <div class="grp">
@@ -827,7 +855,8 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 </div>
 
 <aside class="drawer" id="drawer" aria-label="Dossier">
-  <div class="dbar"><button id="drawer-close" type="button" aria-label="Close dossier">&times;</button></div>
+  <div class="dbar"><button id="drawer-back" type="button">&lsaquo; Back to <span id="drawer-back-to">Now</span></button>
+    <button id="drawer-close" type="button" aria-label="Close dossier">&times;</button></div>
   <div id="drawer-body"></div>
 </aside>
 
@@ -6859,9 +6888,12 @@ var MAPCAM=(function(){
   /* zoom by k about a screen point: the ground point under it stays under it */
   function zoomAt(sx,sy,k){ stop(); moved=true; var g=toGround(sx,sy), v=vp(); st.wpp=clampW(st.wpp*k);
     var a=(sx-v[0]/2)*st.wpp, b=(v[1]/2-sy)*st.wpp; st.x=g[0]-E.x*a-N.x*b; st.z=g[1]-E.z*a-N.z*b; apply(); }
-  /* the largest rectangle of the screen no panel covers (on an 8 px grid, MARGIN px clear of each panel and edge) */
-  function freeRect(){
-    var v=vp(), G=8, nx=Math.floor(v[0]/G), ny=Math.floor(v[1]/G), P=env.panels(), h=new Int32Array(nx), best=[0,0,v[0],v[1]], bA=-1;
+  /* the largest rectangle of the screen no panel covers (on an 8 px grid, MARGIN px clear of each panel and edge). Stage 3B
+     (docs/STAGE3_SPEC.md section B.4): given the extent of what is to be framed (ext, ground units along east and north),
+     the free rectangle in which it is drawn largest instead, the larger area breaking a tie: with the legend closed the
+     largest rectangle is wide and short, and the about square field was drawn 15-19% smaller in it than it need be */
+  function freeRect(ext){
+    var v=vp(), G=8, nx=Math.floor(v[0]/G), ny=Math.floor(v[1]/G), P=env.panels(), h=new Int32Array(nx), best=[0,0,v[0],v[1]], bA=-1, bS=-1;
     for(var j=0;j<ny;j++){
       var y0=j*G, y1=y0+G;
       for(var i=0;i<nx;i++){ var x0=i*G, x1=x0+G, bad=x0<MARGIN||y0<MARGIN||x1>v[0]-MARGIN||y1>v[1]-MARGIN;
@@ -6869,15 +6901,17 @@ var MAPCAM=(function(){
         h[i]=bad?0:h[i]+1; }
       var S=[];   /* the largest rectangle under the histogram of free cells ending on this row */
       for(var i2=0;i2<=nx;i2++){ var hh=i2<nx?h[i2]:0, s0=i2;
-        while(S.length&&S[S.length-1][1]>=hh){ var t=S.pop(), A=t[1]*(i2-t[0]); if(A>bA){ bA=A; best=[t[0]*G,(j+1-t[1])*G,i2*G,(j+1)*G]; } s0=t[0]; }
+        while(S.length&&S[S.length-1][1]>=hh){ var t=S.pop(), A=t[1]*(i2-t[0]), sc=ext?Math.min((i2-t[0])*G/ext[0],t[1]*G/ext[1]):0;
+          if(ext?(sc>bS+1e-9||(sc>bS-1e-9&&A>bA)):A>bA){ bA=A; bS=sc; best=[t[0]*G,(j+1-t[1])*G,i2*G,(j+1)*G]; } s0=t[0]; }
         S.push([s0,hh]); }
     }
     return best;
   }
   /* put ground points inside the free rectangle: the zoom that fits them, their middle at its centre */
-  function fit(pts,r){ r=r||freeRect();
+  function fit(pts,r){
     var a0=1e9,a1=-1e9,b0=1e9,b1=-1e9;
     pts.forEach(function(p){ var a=p[0]*E.x+p[1]*E.z, b=p[0]*N.x+p[1]*N.z; a0=Math.min(a0,a); a1=Math.max(a1,a); b0=Math.min(b0,b); b1=Math.max(b1,b); });
+    r=r||freeRect([Math.max(1e-6,a1-a0),Math.max(1e-6,b1-b0)]);
     var w=Math.max((a1-a0)/Math.max(1,r[2]-r[0]),(b1-b0)/Math.max(1,r[3]-r[1]));
     return place((a0+a1)/2*E.x+(b0+b1)/2*N.x,(a0+a1)/2*E.z+(b0+b1)/2*N.z,w,r); }
   /* the state that shows ground point (x, z) at the centre of the free rectangle r at wpp */
@@ -6940,7 +6974,7 @@ var ECH_RANK={army:0,corps:1,div:2,bde:3};
    ============================================================ */
 var ML={root:null, lines:null, items:{}, frame:0, hover:null, focus:null,
         order:"", maxG:{}, stats:{items:0,placed:0,leaders:0,dropped:0,occluded:0,offscreen:0,underPanel:0,keepMissing:[],dropped_:[],ms:0,nodes:0},
-        taken:[], svg:"", legendOpen:true, lgSize:null};
+        taken:[], svg:"", legendOpen:false, lgSize:null};   /* Stage 3B (decision 49): the legend opens closed to its head; the visitor's choice then holds */
 var ML_FULL_DIST=70;   /* a counter nearer the eye than this (world units; about 4.4 km) is drawn full (section F.1) */
 var ML_PAD=2;          /* px kept clear between placed items, and from panels and symbols */
 var ML_RINGS=[28,44,64,88,116,148], ML_RINGS_KEEP=[190,240,300,380];
@@ -7292,7 +7326,7 @@ function mlLegendFit(VW,VH){
     /* the open legend's rectangle, where it will stand when any slide has finished */
     if(!ML.lgSize){ var rr=rows.getBoundingClientRect(), hr=tg.getBoundingClientRect(); ML.lgSize=[Math.max(rr.width,hr.width)+22,rr.height+hr.height+16]; }
     var D=dp.getBoundingClientRect(), L=lg.getBoundingClientRect(), dr=document.getElementById("drawer");
-    var right=VW-18-(document.body.classList.contains("drawer-open")&&dr?dr.getBoundingClientRect().width:0), bottom=L.bottom;
+    var right=VW-18-(document.body.classList.contains("drawer-open")&&dr&&!docked?dr.getBoundingClientRect().width:0), bottom=L.bottom;   /* docked (3B): the legend does not slide */
     squeeze=right-ML.lgSize[0]<D.right+ML_PAD&&bottom-ML.lgSize[1]<D.bottom&&bottom>D.top;
   }
   var open=ML.legendOpen&&!squeeze;
@@ -7737,15 +7771,19 @@ function buildUI(){
     b.addEventListener("click",function(){ setMode(b.dataset.m); });
   });
 
-  /* rail tabs */
+  /* rail tabs (Stage 3B: a tablist; arrow keys, Home and End move between the tabs shown, without stepping the clock) */
   document.querySelectorAll(".tab-btn").forEach(function(b){
-    b.addEventListener("click",function(){
-      document.querySelectorAll(".tab-btn").forEach(function(o){ o.setAttribute("aria-selected","false"); });
-      b.setAttribute("aria-selected","true");
-      document.querySelectorAll(".tabpane").forEach(function(pane){ pane.hidden = (pane.id!==b.dataset.t); });
-      if(b.dataset.t==="command") paintCommand();
-      if(b.dataset.t==="plans") paintPlanText();
-    });
+    b.addEventListener("click",function(){ selectTab(b.dataset.t); tabChosen=true; });
+  });
+  var tl2=document.querySelector(".tabs");
+  if(tl2) tl2.addEventListener("keydown",function(e){
+    var T=Array.prototype.filter.call(document.querySelectorAll(".tab-btn"),function(x){ return !x.hidden; }), i=T.indexOf(document.activeElement), j=-1;
+    if(i<0) return;
+    if(e.key==="ArrowRight") j=(i+1)%T.length; else if(e.key==="ArrowLeft") j=(i-1+T.length)%T.length;
+    else if(e.key==="Home") j=0; else if(e.key==="End") j=T.length-1;
+    if(j<0) return;
+    e.preventDefault(); e.stopPropagation();
+    selectTab(T[j].dataset.t,true); tabChosen=true;
   });
 
   /* the ten moments */
@@ -7867,6 +7905,8 @@ function buildUI(){
     syncTimebarHeight();
   })();
   if(window.innerWidth<1080) document.body.classList.add("rail-hidden");
+  syncDock();
+  var db=document.getElementById("drawer-back"); if(db) db.addEventListener("click",function(){ select(null,null); });
 
   var pop=document.getElementById("layerpop"), popBtn=document.getElementById("layersbtn");
   function setPop(open){
@@ -7931,6 +7971,7 @@ function buildUI(){
   document.addEventListener("transitionend",function(){ requestRender(2); });
   window.addEventListener("resize",function(){
     requestRender(3);
+    syncDock();
     landCam.aspect=window.innerWidth/window.innerHeight;
     landCam.updateProjectionMatrix();
     renderer.setSize(window.innerWidth,window.innerHeight);
@@ -7984,6 +8025,7 @@ function openFirstRun(){
   var fr=document.getElementById("firstrun"); if(!fr||fr.hidden) return;
   firstRunOpen=true;
   document.body.classList.add("firstrun-on");
+  if(docked) selectTab("oob");                  /* Stage 3B: the rail as before while the card is open */
   var v=reframe(VANTAGE.plan);
   camArc=null;                                  /* the start-up phase transition keeps its light, not its camera */
   landCam.position.set(v[0],v[1],v[2]); orbitTarget.set(v[3],v[4],v[5]); landCam.lookAt(orbitTarget);
@@ -7996,6 +8038,7 @@ function closeFirst(how){
   firstRunOpen=false;
   var fr=document.getElementById("firstrun"); if(fr) fr.hidden=true;
   document.body.classList.remove("firstrun-on");
+  if(docked&&!tabChosen) selectTab("now");      /* Stage 3B (decision 55): Study opens on the Now tab */
   if(how==="tour") startTour();
   else if(how==="watch"){ setPresentation("watch"); setPhase(0); if(!playing) togglePlay(); }
   else if(how==="explore") setPhase(0);
@@ -8229,6 +8272,9 @@ function paintDispatch(ph){
     ev.appendChild(li);
   });
   paintChanges(ph.id);
+  /* Stage 3B: one polite announcement per phase change, whichever tab is shown (the dispatch itself is no longer a live
+     region: in a hidden tab it would not be read) */
+  var lv=document.getElementById("live-phase"); if(lv){ lv.textContent=ph.clock+". "+actOf(ph.id).n+": "+ph.title+"."; PHASE_SAID++; }
 }
 
 /* ---- a formation's text during a delayed move (owner decision 46) ----
@@ -8817,6 +8863,36 @@ function setPresentation(m){
   cleanView=(m==="map");
   syncVis();
   syncSelChip();
+  if(typeof requestRender==="function") requestRender(2);
+}
+/* ---- Stage 3B: the docked layout (docs/STAGE3_SPEC.md section B.2; owner decisions 49, 54, 55, 58) ----
+   From 1080 px wide (DOCK_MIN) the dispatch is the rail's first tab, "Now", and Study opens on it; the dossier opens in the
+   rail's column (style.css, body.docked). Below 1080 px, where the rail starts hidden, the dispatch stays a card where it
+   stood before (#dispatch-home) and the Now tab is hidden. While the first-run card is open the rail shows the order of
+   battle, as before (the first run is Stage 7's); closing the card opens the Now tab unless a tab was chosen meanwhile. */
+var DOCK_MIN=1080, docked=null, tabNow="now", tabChosen=false, PHASE_SAID=0;
+function syncDock(){
+  var want=window.innerWidth>=DOCK_MIN;
+  if(want===docked) return;
+  docked=want;
+  var dp=document.querySelector(".dispatch"), pane=document.getElementById("now"), home=document.getElementById("dispatch-home");
+  document.body.classList.toggle("docked",want);
+  if(dp&&pane&&home&&home.parentNode&&home.parentNode.insertBefore){ if(want) pane.appendChild(dp); else home.parentNode.insertBefore(dp,home); }
+  var nb=document.getElementById("tab-now"); if(nb) nb.hidden=!want;
+  if(want&&presentation==="study") document.body.classList.remove("rail-hidden");
+  if(!want&&tabNow==="now") selectTab("oob");
+  else if(want&&!tabChosen&&!firstRunOpen) selectTab("now");
+}
+function selectTab(t,focus){
+  var ok=false;
+  document.querySelectorAll(".tab-btn").forEach(function(b){ var on=(b.dataset.t===t&&!b.hidden); if(on) ok=true;
+    b.setAttribute("aria-selected",on?"true":"false"); b.setAttribute("tabindex",on?"0":"-1"); if(on&&focus&&b.focus) b.focus(); });
+  if(!ok) return;
+  tabNow=t;
+  document.querySelectorAll(".tabpane").forEach(function(pane){ pane.hidden=(pane.id!==t); });
+  if(t==="command") paintCommand();
+  if(t==="plans") paintPlanText();
+  var to=document.getElementById("drawer-back-to"), tb=document.getElementById("tab-"+t); if(to&&tb) to.textContent=tb.textContent;
   if(typeof requestRender==="function") requestRender(2);
 }
 function syncVis(){
@@ -9481,6 +9557,53 @@ var AUSTERLITZ_DEBUG=(function(){
     var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });
     ck("cover: the drawn classes are the same at every relief setting and on the paper map", !cvBad.length,
       cvF.map(function(f){ return fmtFactor(f)+"\u00d7 "+coverBy[f]+" (paper map "+paperBy[f].cover+")"; }).join("; "));
+    /* Stage 3B (docs/STAGE3_SPEC.md sections B.2, B.4 and H; owner decisions 49, 54, 55, 58): the docked layout */
+    (function(){
+      var wide=window.innerWidth>=DOCK_MIN, dp=document.querySelector(".dispatch"), inRail=!!(dp&&dp.closest(".rail")), nowB=document.getElementById("tab-now");
+      var tab0=tabNow, chosen0=tabChosen;
+      setPresentation("study"); select(null,null); document.body.classList.add("st-still");
+      ck("docked layout: from 1080 px the dispatch is the rail's Now tab; below it a card, and the Now tab hidden",
+        docked===wide&&inRail===wide&&!!nowB&&nowB.hidden===!wide,
+        window.innerWidth+" px wide: docked "+docked+", the dispatch "+(inRail?"in the rail":"a card")+", the Now tab "+(nowB&&nowB.hidden?"hidden":"shown"));
+      /* the tabs: roles, and the arrow keys, Home and End between the tabs shown, the clock untouched */
+      var T=Array.prototype.filter.call(document.querySelectorAll(".tab-btn"),function(b){ return !b.hidden; }), clk=clock, bad=[];
+      T.forEach(function(b){ var pn=document.getElementById(b.getAttribute("aria-controls")||"");
+        if(b.getAttribute("role")!=="tab"||!pn||pn.getAttribute("role")!=="tabpanel") bad.push(b.dataset.t+": roles"); });
+      function key(k){ var a=document.activeElement; if(a) a.dispatchEvent(new KeyboardEvent("keydown",{key:k,bubbles:true,cancelable:true})); }
+      selectTab(T[0].dataset.t,true);
+      key("ArrowRight"); if(tabNow!==T[1].dataset.t||document.activeElement!==T[1]) bad.push("ArrowRight did not move to "+T[1].dataset.t);
+      key("End"); if(tabNow!==T[T.length-1].dataset.t) bad.push("End did not move to the last tab");
+      key("Home"); if(tabNow!==T[0].dataset.t) bad.push("Home did not move to the first tab");
+      key("ArrowLeft"); if(tabNow!==T[T.length-1].dataset.t) bad.push("ArrowLeft did not wrap to the last tab");
+      T.forEach(function(b){ if((b.getAttribute("aria-selected")==="true")!==(b.dataset.t===tabNow)||(b.getAttribute("tabindex")==="0")!==(b.dataset.t===tabNow)) bad.push(b.dataset.t+": selection state"); });
+      if(clock!==clk) bad.push("the clock moved ("+clk+" to "+clock+")");
+      ck("rail tabs: a tablist; the arrow keys, Home and End move between the tabs shown without stepping the clock", !bad.length,
+        T.length+" tabs"+(bad.length?"; "+bad.join("; "):", every key as expected"));
+      /* one announcement per phase change, while another tab hides the Now tab */
+      selectTab("analysis");
+      var said=PHASE_SAID, ph=(curPhase+1)%PHASES.length; setClock(PHASES[ph].t0+1,{instant:true,camera:false}); finishTween();
+      var lv=document.getElementById("live-phase"), want=PHASES[ph].clock+". "+actOf(ph).n+": "+PHASES[ph].title+".";
+      ck("a phase change is announced once by the polite live region, whichever tab is shown", PHASE_SAID===said+1&&lv&&lv.getAttribute("aria-live")==="polite"&&lv.textContent===want&&
+        !(dp&&dp.hasAttribute("aria-live")), (PHASE_SAID-said)+" announcement: \""+(lv?lv.textContent:"")+"\" (the dispatch "+(dp&&dp.hasAttribute("aria-live")?"is still":"is not")+" a live region)");
+      /* the dossier in the rail's column: over the rail, down to the timebar, the tools and the legend unmoved */
+      if(wide){ var rb=function(q){ var r=document.querySelector(q).getBoundingClientRect(); return [r.left,r.top,r.right,r.bottom]; };
+        var tools0=rb(".tools"), lg0=rb(".legend"); select("f","sthilaire");
+        var d=rb(".drawer"), ra=rb(".rail"), tb=rb(".timebar"), tools1=rb(".tools"), lg1=rb(".legend"), near=function(a,b){ return Math.abs(a-b)<=1; };
+        ck("the dossier opens in the rail's column, down to the timebar; the tools and the legend do not move",
+          near(d[0],ra[0])&&near(d[2],ra[2])&&near(d[3],tb[1])&&tools0.join()===tools1.join()&&lg0.join()===lg1.join()&&drawerShown(),
+          "dossier "+d.map(Math.round).join(",")+", rail "+ra.map(Math.round).join(",")+", timebar top "+Math.round(tb[1])+(tools0.join()===tools1.join()?"":"; the tools moved")+(lg0.join()===lg1.join()?"":"; the legend moved"));
+        select(null,null); }
+      /* the paper map frames the field in the free rectangle where it is drawn largest, never smaller than in the largest one */
+      setMode("staff"); tween=null; MAPCAM.frameField(true);
+      var N0=MAPCAM.north, E0=MAPCAM.east, A=MAPCAM.field.map(function(q){ return q[0]*E0.x+q[1]*E0.z; }), B=MAPCAM.field.map(function(q){ return q[0]*N0.x+q[1]*N0.z; });
+      var aw=Math.max.apply(null,A)-Math.min.apply(null,A), bh=Math.max.apply(null,B)-Math.min.apply(null,B), ra2=MAPCAM.freeRect(), rf=MAPCAM.freeRect([aw,bh]);
+      var wArea=Math.max(aw/(ra2[2]-ra2[0]),bh/(ra2[3]-ra2[1])), wNow=MAPCAM.state().wpp;
+      ck("paper map: the field is framed in the free rectangle where it is drawn largest", wNow<=wArea*(1+1e-9)&&Math.abs(wNow-Math.max(aw/(rf[2]-rf[0]),bh/(rf[3]-rf[1])))<1e-9,
+        (GEOREF.UNITS_PER_KM/wNow).toFixed(1)+" px per km in "+(rf[2]-rf[0])+" x "+(rf[3]-rf[1])+" px; the largest free rectangle, "+(ra2[2]-ra2[0])+" x "+(ra2[3]-ra2[1])+" px, gives "+(GEOREF.UNITS_PER_KM/wArea).toFixed(1));
+      setMode("terrain");
+      document.body.classList.remove("st-still");
+      tabChosen=chosen0; selectTab(tab0);
+    })();
     var wp=woodPlacement();
     ck("woods: every tree and every scrub of a wood stands inside the wood as the land cover has it", wp.wood>0&&wp.edge>0&&!wp.out.length&&!wp.notModel,
       wp.wood+" trees and "+wp.edge+" edge scrub of the woods, all where the drawn cover is wood ("+wp.notModel+" where the model's own class is not)"+

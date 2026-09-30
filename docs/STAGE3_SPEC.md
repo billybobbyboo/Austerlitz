@@ -1,6 +1,7 @@
 # Navigation and structure specification (Stage 3, Part A)
 
-**Status: Part A, for the owner's review. No change to the build.** Written against `main` at `0f2b17e` (Stage 2F merged,
+**Status: Part A reviewed (#21); the owner accepted every recommendation of §J, recorded as decisions 47-60 (§0.3). 3B (docked
+panels) is implemented as §B.2 and §I describe; what it found is at the end of §I. Sections A-J below still describe the build they were written against.** Part A was written against `main` at `0f2b17e` (Stage 2F merged,
 #19, and recorded as merged, #20), whose build `austerlitz-command-map.html` is 1,253,655 bytes, md5
 `ee4390a2585f3df170fba82eb1994112`. Before any work: `npm test` (all nine suites and the height guard), `check:data`
 (all 113 declarations byte-identical to `archive/stage2c-68ac7721.html`), `check:chronology` (0 errors) and
@@ -91,6 +92,28 @@ Each is stated, not worked around.
    framing matter §D already recorded (§H, Stage 3)". With the timebar at 91.6 px two arrows' heads are still wholly under it,
    with or without the view offset (§B.3): the fixed Overview preset puts them in the bottom 92 px. The remedy is the
    preset's framing (§B.4), which §I puts in 3D.
+
+### 0.3 Owner decisions 47-60 (the answers to §J)
+
+The owner accepted every recommendation of §J ("Lets go with your recommendations"). Each is recorded as a decision, in the
+question's order; §J keeps the trade-offs.
+
+| # | question | decision |
+|---|---|---|
+| 47 | 1, Follow | A pan, orbit, zoom or double-click turns Follow off; a vantage, chapter (theme), tour stop, phase or act button turns it on; a centring from the dossier or the order of battle turns it off. (3D) |
+| 48 | 2, pointer | Left-drag pans the landscape; right-drag (or Shift/Ctrl + left-drag) orbits; the harness's orbit case drives the right button. (3D) |
+| 49 | 3, legend | Closed to its "Key" head by default in Study, remembered while the page is open; `MAPCAM` frames to fit (§B.4). (3B) |
+| 50 | 4, names | Study / Watch / Clean; Landscape / Paper map / Landscape with counters; Layers. Labels only; identifiers unchanged. (3E) |
+| 51 | 5, H and U | Kept and listed in the help overlay. (3E) |
+| 52 | 6, "cut" | For the spine data task: principal moment `pratzeberg` (11:00), tour stop 7 following it. (data task) |
+| 53 | 7, time axis | Proportional to time; below about 1,400 px the narrow phases' labels shorten, the current phase always whole. (3C) |
+| 54 | 8, dossier | In the rail's column; the rail at 300 px (3B may try 340 px and report). (3B) |
+| 55 | 9, Now as default | Study opens on the Now tab. (3B) |
+| 56 | 10, mode switch in playback | Kept enabled; the difference from the relief control stated. (no code; stated in 3E's sources text if the owner wants it there) |
+| 57 | 11, pratzen-orbit-min | Event glyphs and objective markers get a largest size on screen and fade near the eye; the heads' box test stays. (3E) |
+| 58 | 12, below 1080 px | The dispatch stays a card there; 3B adds a 1024 x 768 harness view. (3B) |
+| 59 | 13, spine data task | After 3C: themes and tour only (moments, principal moments, the two misplaced timeline lines). (data task) |
+| 60 | 14, Watch control | In the timeline's control row in Watch, at full opacity. (3C) |
 
 ## A. Camera controls on the landscape
 
@@ -757,6 +780,36 @@ short of the probe's by more than 1 point in any listed view explains why in its
 
 Order: 3B, 3C, 3D, 3E, each passing every check on its own. The data task may follow 3C at any time. G.1 needs no code if
 the owner agrees; G.2 lands in 3C, G.4 and G.5 in 3B, G.6 in 3C and 3E, G.3 in 3E if decided.
+
+**3B, as delivered (fact; `CHANGELOG.md`, Stage 3B).** Built as §B.2 and the 3B row describe, under decisions 49, 54, 55 and 58:
+- from 1080 px wide the dispatch is the rail's first tab, "Now" (`syncDock`, `body.docked`), and Study opens on it; below 1080 px
+  it stays a card where it stood (`#dispatch-home`) and the Now tab is hidden;
+- the dossier opens in the rail's column, down to the timebar, headed "‹ Back to" the tab it covers; the tools and the legend
+  no longer slide, and the timebar is never covered;
+- the legend opens closed to its "Key" head, and stays as the visitor leaves it;
+- `MAPCAM` frames in the free rectangle where the content is drawn largest (`freeRect(ext)`, §B.4); centring a point still
+  uses the largest free rectangle;
+- the tabs are a tablist (roles, a roving `tabindex`, the arrow keys, Home and End; the keys stop at the tabs, so the clock
+  does not step);
+- one polite live region (`#live-phase`) announces each phase change, whichever tab is shown; the dispatch is no longer a live
+  region.
+
+Measured (`docs/stage3-evidence/3b-report.md`, both builds on the same harness): the Study views 36.5-38.6% → 63.1% unobstructed
+at 1600 x 900 and 21.5-25.0% → 57.8% at 1280 x 720; with a formation selected 17.5-19.6% → 63.1% and 12.5% → 57.8%; the paper
+map as entered 17.1 → 25.4 px per true km (1600 x 900) and 5.5 → 19.8 (1280 x 720); Watch, the first run and the undocked view
+unchanged. Every §H claim for 3B is met; the baselines are raised to these values. Five things were not as the plan assumed:
+1. **While the first-run card is open the rail shows the Order of battle, as before**, and the dispatch stays hidden: the first
+   run is Stage 7's, and the harness's Stage 0 check "first-run card stacked on the dispatch card" is kept as it is. Closing the
+   card opens the Now tab, unless the visitor chose a tab meanwhile.
+2. **At 1600 x 900 the paper map stays at 25.4 px per km with the legend closed**: its free rectangle's height is set by the
+   170 px timebar. The probe's 28.5 needs 3C's timeline.
+3. **`check:contrast` needed two changes to keep its coverage**: the legend is opened explicitly for the states that read its
+   rows before (it now opens closed), and a paper state opens the Now tab (the paper states come after the Plans tab is
+   chosen). With the new first state (Study as it opens) that is 24 states. Fewer elements are read than before because the
+   order of battle, no longer the default tab, is not read again in six states; it is still read (the first-run state).
+4. **The self-test runs on a 1366 x 768 page, so it checks the docked layout**; the undocked one is checked by the new harness
+   view `narrow-1024` (the dispatch a card there; its limits are the Stage 2F build's own values).
+5. **Not tried:** the 340 px rail that decision 54 allowed; the rail stays 300 px.
 
 ## J. Questions for the owner
 

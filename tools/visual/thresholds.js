@@ -19,17 +19,27 @@ const DROP_LIMIT={"first-run":12,"first-run-laptop":16,"overview-field":11,"over
      panels (the method used above) the counts are 19, 3, 3 and 0: its 587 px legend covers ground the 2E legend leaves free,
      and the 2C pass counts an item under a panel as neither shown nor hidden, so at 1280 x 720, where that legend covers the
      whole framed field, it hides nothing by construction. The matched counts are the limits (CHANGELOG.md, Stage 2E). */
-  "paper-north-up":20,"paper-close":2,"paper-drawer":5,"paper-laptop":21};
+  "paper-north-up":20,"paper-close":2,"paper-drawer":5,"paper-laptop":21,
+  /* Stage 3B: narrow-1024 (the undocked layout, decision 58) has no 2C count; its limit is what the map layer drops there on the
+     build before 3B (the Stage 2F build, ee4390a2), so 3B, which leaves that layout as it was, may drop no more */
+  "narrow-1024":5};
 /* section H: the unobstructed share of the viewport on the Stage 2C build, at the case's viewport and at 1280 x 720, measured
    by this harness (CSS transitions off, the panels at rest). It must not fall. These equal tools/stage2/map-text.js's values
    in every view but one: selected-formation at 1280 x 720 is 6.97% at rest, where map-text.js reported 15.1% with the
    dossier drawer frozen at the start of its slide, almost wholly off screen (CHANGELOG.md, Stage 2D). */
-const UNOBSTRUCTED={"first-run":[0.5442,0.4391],"first-run-laptop":[0.4831,0.4391],"overview-field":[0.3028,0.1511],"overview-plan":[0.8045,0.7987],
-  "close-sokolnitz":[0.8045,0.7987],"staff-paper":[0.3028,0.1511],"pratzen-low":[0.8045,0.7709],"pratzen-orbit-min":[0.8045,0.7709],
-  "selected-formation":[0.1477,0.0697],"watch-selected":[0.7844,0.732],"hybrid-dimmed":[0.7869,0.7434],"pratzen-low-1x":[0.8045,0.7709],
-  "pratzen-low-10x":[0.8045,0.7709],
-  /* Stage 2E: the paper-map views on the 2C build in the same presentation and selection, its own panels (paper-limits.js) */
-  "paper-north-up":[0.3028,0.1511],"paper-close":[0.3028,0.1626],"paper-drawer":[0.1477,0.0697],"paper-laptop":[0.1511,0.1511]};
+/* Stage 3B (docs/STAGE3_SPEC.md section H): raised to what the 3B build measures (the dispatch in the rail's Now tab, the dossier
+   in the rail's column, the legend closed by default), rounded down to 0.1 point, so no later part can give it back; never
+   below the Stage 2C value it replaces. The Stage 2C baselines (at 1600 x 900 or the case's viewport / 1280 x 720) were:
+   first-run .5442/.4391, first-run-laptop .4831/.4391, overview-field .3028/.1511, overview-plan and close-sokolnitz
+   .8045/.7987, staff-paper .3028/.1511, pratzen-low, pratzen-orbit-min, pratzen-low-1x and pratzen-low-10x .8045/.7709,
+   selected-formation .1477/.0697, watch-selected .7844/.732, hybrid-dimmed .7869/.7434, paper-north-up .3028/.1511,
+   paper-close .3028/.1626, paper-drawer .1477/.0697, paper-laptop .1511/.1511; narrow-1024 (new in 3B) .4845/.4389 on the
+   Stage 2F build. The views 3B does not change (Watch, the first run, the undocked view at its own size) keep their values. */
+const UNOBSTRUCTED={"first-run":[0.5442,0.4391],"first-run-laptop":[0.4831,0.4391],"overview-field":[0.631,0.577],"overview-plan":[0.8045,0.7987],
+  "close-sokolnitz":[0.8045,0.7987],"staff-paper":[0.631,0.577],"pratzen-low":[0.8045,0.7709],"pratzen-orbit-min":[0.8045,0.7709],
+  "selected-formation":[0.631,0.577],"watch-selected":[0.7844,0.732],"hybrid-dimmed":[0.7869,0.7434],"pratzen-low-1x":[0.8045,0.7709],
+  "pratzen-low-10x":[0.8045,0.7709],"paper-north-up":[0.631,0.577],"paper-close":[0.631,0.577],"paper-drawer":[0.631,0.577],"paper-laptop":[0.577,0.577],
+  "narrow-1024":[0.4845,0.577]};
 const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harness machine */
 /* Stage 2E (section J, 2E): every paper-map view is a true north-up plan: GEOREF.NORTH within 0.5 degrees of up; screen pixels
    per true km at four places equal to 1% (on the 2D build's tilted staff map they differ by 6.0% and north is 17.8 degrees
@@ -38,6 +48,10 @@ const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harn
    whole modelled ground inside the unobstructed area (every sample point on screen and clear of every panel). All new. */
 const PAPER={north:0.5, spread:0.01, scaleBar:0.01}, FRAMED=["paper-north-up","paper-laptop"];
 module.exports.PAPER=PAPER; module.exports.FRAMED=FRAMED;
+/* Stage 3B (docs/STAGE3_SPEC.md sections B.4 and H; owner decision 49): the paper map as entered, Study, framed at least this
+   many screen px per true km (east-west, at the Pratzeberg). Before 3B: 17.1 at 1600 x 900 and 5.5 at 1280 x 720. New. */
+const PAPER_MIN_PXKM={"paper-north-up":25,"paper-laptop":19};
+module.exports.PAPER_MIN_PXKM=PAPER_MIN_PXKM;
 module.exports.DROP_LIMIT=DROP_LIMIT; module.exports.UNOBSTRUCTED=UNOBSTRUCTED; module.exports.LAYER_MS=LAYER_MS;
 /* Stage 0 guarantees, checked on every baseline case (harness --test). The numbers are the
    contract; each failure message says what a visitor would see. */
@@ -71,9 +85,21 @@ module.exports.check=function(name,m){
     if(m.textContrast&&m.textContrast.belowAA.length) f.push(m.textContrast.belowAA.length+" map texts below AA on the rendered frame: "+m.textContrast.belowAA.slice(0,4).join("; "));
   }
   const U=UNOBSTRUCTED[name];
-  if(U&&m.unobstructed!==undefined&&m.unobstructed<U[0]) f.push("unobstructed map "+(100*m.unobstructed).toFixed(1)+"%, below the Stage 2C "+(100*U[0]).toFixed(1)+"%");
-  if(U&&m.unobstructed720!==undefined&&m.unobstructed720<U[1]) f.push("unobstructed map at 1280 x 720 "+(100*m.unobstructed720).toFixed(1)+"%, below the Stage 2C "+(100*U[1]).toFixed(1)+"%");
+  if(U&&m.unobstructed!==undefined&&m.unobstructed<U[0]) f.push("unobstructed map "+(100*m.unobstructed).toFixed(1)+"%, below the baseline "+(100*U[0]).toFixed(1)+"%");
+  if(U&&m.unobstructed720!==undefined&&m.unobstructed720<U[1]) f.push("unobstructed map at 1280 x 720 "+(100*m.unobstructed720).toFixed(1)+"%, below the baseline "+(100*U[1]).toFixed(1)+"%");
   if(m.legendOverDispatch>0) f.push("the legend lies over the dispatch ("+Math.round(m.legendOverDispatch)+" px)");
+  /* Stage 3B (docs/STAGE3_SPEC.md sections B.2 and H; owner decisions 49, 54, 55, 58). All new; run only on a build that has
+     the Now tab (the harness also measures earlier builds for comparison) */
+  if(m.legendOverPanels>0) f.push("the legend lies over the rail, the dossier or the timebar ("+Math.round(m.legendOverPanels)+" px)");
+  const Dk=m.docking;
+  if(Dk&&Dk.hasNowTab&&m.viewport){ const wide=m.viewport[0]>=1080;
+    if(Dk.docked!==wide) f.push("docked is "+Dk.docked+" at "+m.viewport[0]+" px wide (docked from 1080 px)");
+    if(m.presentation==="study"&&m.dispatchVisible&&Dk.dispatchInRail!==wide)
+      f.push(wide?"the dispatch is a card over the map at "+m.viewport[0]+" px (from 1080 px it is the rail's Now tab)":"the dispatch is in the rail at "+m.viewport[0]+" px (below 1080 px it stays a card)");
+    if(m.presentation==="study"&&wide&&!m.firstRunVisible&&Dk.tab!=="now") f.push("Study shows the "+Dk.tab+" tab, not the Now tab (decision 55)");
+    if(m.presentation==="study"&&!m.firstRunVisible&&Dk.legendOpen) f.push("the legend is open though nobody opened it (it opens closed, decision 49)"); }
+  if(m.paper&&PAPER_MIN_PXKM[name]!==undefined&&!(m.paper.pxPerKm.pratzeberg>=PAPER_MIN_PXKM[name]))
+    f.push("paper map as entered: "+m.paper.pxPerKm.pratzeberg+" px per true km, below "+PAPER_MIN_PXKM[name]);
   const Pm=m.paper;
   if(Pm){
     if(!(Math.abs(Pm.northBearing)<=PAPER.north)) f.push("paper map: north is "+Pm.northBearing+" degrees off up (limit "+PAPER.north+")");

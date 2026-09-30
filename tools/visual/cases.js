@@ -47,5 +47,9 @@ module.exports = [
   { name:"paper-drawer", viewport:[1600,900], t:570, presentation:"study", mode:"staff",
     select:["f","sthilaire"], aim:{map:"sthilaire", dir:[-0.55,0.62,0.56], r:86}, note:"The paper map with Saint-Hilaire's division selected: dossier open, family highlighted." },
   { name:"paper-laptop", viewport:[1280,720], t:570, presentation:"study", mode:"staff", paper:"frame", cam:[-27,272,41,-27,0,9],
-    note:"The paper map as entered, on a 1280 x 720 screen." }
+    note:"The paper map as entered, on a 1280 x 720 screen." },
+  /* Stage 3B (docs/STAGE3_SPEC.md section B.2; owner decision 58): below 1080 px the rail starts hidden and the dispatch stays a
+     card over the map, as before 3B. The Field vantage in Study at 09:30, as overview-field */
+  { name:"narrow-1024", viewport:[1024,768], t:570, presentation:"study", mode:"terrain", cam:[-195,92,156,-33,4,-2],
+    note:"Study at 1024 x 768: below 1080 px the dispatch stays a card (Stage 3B, decision 58)." }
 ];

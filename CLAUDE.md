@@ -21,7 +21,7 @@ lower one without saying so explicitly.
 | `analysis.js` | analysis chapters, command knowledge, the two plans, acts, events, guided tour |
 | `world.js` | ground: relief model, land cover, water, roads, woods, settlements, mist, `groundY`; the paper map's flat symbology (village footprints, woods) and its own hillshade (since 2E); the ground shader, which draws the land cover per point, and `COVER_ML`/`drawnCover` (since 2F) |
 | `symbols.js` | the map layer's counters and names (HTML/SVG builders, accessible names), event and objective glyphs |
-| `app.js` | scene, overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface, runtime checks |
+| `app.js` | scene, overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3B the docked layout: `syncDock`, `selectTab`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2 and Stage 3 measurement scripts (`stage2/`, `stage3/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
@@ -67,9 +67,11 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
   explicit anchor time carries evidence found in the sources, a grade and a basis; a derived arrival at the march-rate ceiling
   only for the legs it names (`CEILING_FLAGGED`), every other at the tactical rate (a design value, unsourced).
-- `npm run check:contrast`: every visible text element in 22 interface states (the map layer's plates and the legend among them, map text also
-  over black and white ground, the paper map as entered and close since 2E) meets WCAG AA and the 10.5 px floor.
-- `npm run check:visual`: 17 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, and since 2E four paper-map views), Stage 0
+- `npm run check:contrast`: every visible text element in 24 interface states (the map layer's plates and the legend among them, map text also
+  over black and white ground, the paper map as entered and close since 2E; Study as it opens and the Now tab on the paper map since 3B)
+  meets WCAG AA and the 10.5 px floor.
+- `npm run check:visual`: 18 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, and since 3B
+  `narrow-1024`, the undocked layout), Stage 0
   thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()` (its ground, camera, figure, mist, overlay-draping and arrowhead
   checks at 1x, 4x and 10.33x, and since 2D its map-layer checks: no overlap, nothing over a panel or an arrow head, the
   never-dropped items drawn, every dropped formation reachable by hover and keyboard, the legend never over the dispatch).
@@ -81,9 +83,13 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   Since 2F, the self-test's ground checks: every cover class's drawn edge within 20 m of the model's (`coverClass` on
   `localHeight`), rendered at 1x, 4x, 10.33x and on the paper map; the drawn classes identical at every setting; every tree
   and scrub of a wood inside the drawn wood class; roads and streams at their lift above `groundY`, no edge under it.
+  Since 3B: the unobstructed baselines are the 3B build's (raised; never lowered); from 1080 px wide the dispatch is the rail's
+  Now tab and Study shows it, below 1080 px a card; the legend opens closed and is never over the rail, the dossier or the
+  timebar; the paper map as entered at least 25 px per true km at 1600 x 900 and 19 at 1280 x 720; the self-test's docked
+  layout, tab keys, phase announcement, dossier-in-the-rail and fit-framing checks.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 2F build (md5 `ee4390a2...`, 1,253,655 bytes;
-  re-baselined from the Stage 2E build `c5883f79...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 3B build (md5 `543a9bf0...`, 1,265,532 bytes;
+  re-baselined from the Stage 2F build `ee4390a2...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -108,6 +114,8 @@ contextual legend) is merged (#17). Stage 2E (the true north-up paper map: an or
 hillshade, pan and zoom-to-cursor in `MAPCAM`, one projection helper, flat village footprints and woods symbology) is merged
 (#18). Stage 2F (the ground surface: land cover drawn per point by the ground shader from the model's own classes and a
 local-relief grid, `COVER_ML`; the woods' trees inside the drawn wood class; roads and streams draped; the meres' legend row) is
-merged (#19); Stage 2 is complete. Stage 3 Part A (the specification, `docs/STAGE3_SPEC.md`) is written, for review, with no
-change to the build; 3B has not started. The shadow toe
+merged (#19); Stage 2 is complete. Stage 3 Part A (the specification, `docs/STAGE3_SPEC.md`) is merged (#21); the owner accepted every
+recommendation (decisions 47-60, §0.3). Stage 3B (docked panels: the dispatch as the rail's Now tab from 1080 px, the dossier in
+the rail's column, the legend closed by default, the paper map framed to fit, the tablist and the phase live region) is
+implemented, for review; 3C has not started. The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.
