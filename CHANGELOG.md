@@ -2,7 +2,7 @@
 
 ## 2026-09 · Stage 2E: the true north-up paper map (docs/STAGE2_SPEC.md §F, §G, §H, §J, §K; decisions 18, 19, 25, 29, 31, 39)
 
-**Status: done; awaits the owner's review. 2F has not started. `austerlitz-command-map.html`: 1,226,091 bytes, md5
+**Status: done; merged (#18). 2F has not started. `austerlitz-command-map.html`: 1,226,091 bytes, md5
 `c5883f79cc1481b2dc4863d089b4e363`** (was 1,189,512 bytes, md5 `2dc0c26d…`, Stage 2D).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move.

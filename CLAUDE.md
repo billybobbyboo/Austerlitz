@@ -102,6 +102,6 @@ rate where they fit, else the ceiling, flagged; then the movement arrows: derive
 draped, the Allied chevron, solid boundaries, the halt bar, `binding-test.js`) is merged (#15). Stage 2D (one DOM/SVG
 layer, `#maplayer`, for counters and all map text, replacing the canvas sprite pass; compact counters on plates; the
 contextual legend) is merged (#17). Stage 2E (the true north-up paper map: an orthographic plan over flat ground with its own
-hillshade, pan and zoom-to-cursor in `MAPCAM`, one projection helper, flat village footprints and woods symbology) is done and
-awaits review; 2F has not started. The shadow toe
+hillshade, pan and zoom-to-cursor in `MAPCAM`, one projection helper, flat village footprints and woods symbology) is merged
+(#18); 2F has not started. The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.
