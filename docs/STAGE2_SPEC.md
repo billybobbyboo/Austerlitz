@@ -8,7 +8,7 @@ derived-arrival question of §M.13 is decided (the 2C precondition), and 2C (mov
 implemented as §E, §F, §H, §J and §K describe; what it found is at the end of §K; it is merged (#17). 2E (the true north-up
 paper map) is implemented as §F, §G, §J and §K describe; what it found, and where it departs from §G.2, is at the end of §K; it
 is merged (#18). 2F (the ground surface: land cover drawn per point, draped roads and streams, the meres' legend row) is
-implemented as §J and §K describe; what it found is at the end of §K; it awaits review.** Sections A-L below still describe the build
+implemented as §J and §K describe; what it found is at the end of §K; it is merged (#19). Stage 2 is complete.** Sections A-L below still describe the build
 they were written against, except §C.1, whose tables were re-run on the new tracks (the earlier ones are §C.4). Written against `main` at `7e03692`
 (`austerlitz-command-map.html` 1,107,799 bytes, md5 `5bf48b75373fe0cf9fc8a32cbeae918c`, confirmed before any work;
 `npm run check:baseline` now checks exactly that build). Line numbers refer to that commit.

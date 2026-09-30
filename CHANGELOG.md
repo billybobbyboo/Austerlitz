@@ -2,7 +2,7 @@
 
 ## 2026-09 · Stage 2F: the ground surface (docs/STAGE2_SPEC.md §B.4, §I.2, §J, §K; decisions 27, 28, 30, 31)
 
-**Status: done; awaits the owner's review. Stage 2 has no further part. `austerlitz-command-map.html`: 1,253,655 bytes, md5
+**Status: done; merged (#19). Stage 2 has no further part; Stage 3 has not started. `austerlitz-command-map.html`: 1,253,655 bytes, md5
 `ee4390a2585f3df170fba82eb1994112`** (was 1,226,091 bytes, md5 `c5883f79…`, Stage 2E).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move.
