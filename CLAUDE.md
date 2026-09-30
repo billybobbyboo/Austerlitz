@@ -24,9 +24,9 @@ lower one without saying so explicitly.
 | `app.js` | scene, overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface, runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
-| `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2 measurement scripts (`stage2/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
+| `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2 and Stage 3 measurement scripts (`stage2/`, `stage3/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
 | `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `stage2c-68ac7721.html` (the `check:data` reference) |
-| `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
+| `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE3_SPEC.md` (Stage 3, with `stage3-evidence/`), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
 
 The one-off correction-pass tools (`geo-migrate.js`, `geo-anchor.js`, `patch-app.py`, `patch-history.py`, and the
 others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; their results are already in the data.
@@ -108,5 +108,6 @@ contextual legend) is merged (#17). Stage 2E (the true north-up paper map: an or
 hillshade, pan and zoom-to-cursor in `MAPCAM`, one projection helper, flat village footprints and woods symbology) is merged
 (#18). Stage 2F (the ground surface: land cover drawn per point by the ground shader from the model's own classes and a
 local-relief grid, `COVER_ML`; the woods' trees inside the drawn wood class; roads and streams draped; the meres' legend row) is
-merged (#19); Stage 2 is complete, and Stage 3 has not started. The shadow toe
+merged (#19); Stage 2 is complete. Stage 3 Part A (the specification, `docs/STAGE3_SPEC.md`) is written, for review, with no
+change to the build; 3B has not started. The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.
