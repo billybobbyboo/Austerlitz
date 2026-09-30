@@ -24,21 +24,34 @@
     <p>2 December 1805 &middot; Moravia</p>
   </div>
 
-  <div class="tabs" role="tablist">
-    <button class="tab-btn" data-t="oob" aria-selected="true">Order of battle</button>
-    <button class="tab-btn" data-t="analysis" aria-selected="false">Analysis</button>
-    <button class="tab-btn" data-t="command" aria-selected="false">Command</button>
-    <button class="tab-btn" data-t="plans" aria-selected="false">Plans</button>
+  <!-- Stage 3B (docs/STAGE3_SPEC.md section B.2; owner decisions 54, 55): the dispatch is the rail's first tab, "Now", at
+       1080 px and wider; below that it stays a card (decision 58) and the Now tab is hidden (app.js syncDock) -->
+  <div class="tabs" role="tablist" aria-label="The rail">
+    <button class="tab-btn" id="tab-now" data-t="now" role="tab" aria-controls="now" aria-selected="true" tabindex="0">Now</button>
+    <button class="tab-btn" id="tab-oob" data-t="oob" role="tab" aria-controls="oob" aria-selected="false" tabindex="-1">Order of battle</button>
+    <button class="tab-btn" id="tab-analysis" data-t="analysis" role="tab" aria-controls="analysis" aria-selected="false" tabindex="-1">Analysis</button>
+    <button class="tab-btn" id="tab-command" data-t="command" role="tab" aria-controls="command" aria-selected="false" tabindex="-1">Command</button>
+    <button class="tab-btn" id="tab-plans" data-t="plans" role="tab" aria-controls="plans" aria-selected="false" tabindex="-1">Plans</button>
   </div>
 
   <div class="railscroll">
-    <div id="oob" class="tabpane"></div>
-    <div id="analysis" class="tabpane" hidden>
+    <div id="now" class="tabpane" role="tabpanel" aria-labelledby="tab-now">
+      <p class="now-off">The phase text is hidden: press D to show it. During the guided tour, its text is in the tour bar.</p>
+      <section class="dispatch">
+        <div class="clock" id="d-clock"></div>
+        <h2 id="d-title"></h2>
+        <p class="lede" id="d-lede"></p>
+        <ol id="d-events"></ol>
+        <div id="d-changes"></div>
+      </section>
+    </div>
+    <div id="oob" class="tabpane" role="tabpanel" aria-labelledby="tab-oob" hidden></div>
+    <div id="analysis" class="tabpane" role="tabpanel" aria-labelledby="tab-analysis" hidden>
       <p class="sechead">The battle in ten moments</p>
       <div id="chapters"></div>
       <div id="chaptext"></div>
     </div>
-    <div id="command" class="tabpane" hidden>
+    <div id="command" class="tabpane" role="tabpanel" aria-labelledby="tab-command" hidden>
       <p class="sechead">See the field as a headquarters saw it</p>
       <div class="grp cmdpick">
         <button class="t cmd-btn" data-cv="none" aria-pressed="true">Omniscient</button>
@@ -47,7 +60,7 @@
       </div>
       <div id="cmdbody"></div>
     </div>
-    <div id="plans" class="tabpane" hidden>
+    <div id="plans" class="tabpane" role="tabpanel" aria-labelledby="tab-plans" hidden>
       <p class="sechead">What each army meant to do</p>
       <div class="grp cmdpick">
         <button class="t plan-btn" data-p="al" aria-pressed="false">Allied</button>
@@ -63,13 +76,10 @@
   </div>
 </nav>
 
-<section class="dispatch" aria-live="polite">
-  <div class="clock" id="d-clock"></div>
-  <h2 id="d-title"></h2>
-  <p class="lede" id="d-lede"></p>
-  <ol id="d-events"></ol>
-  <div id="d-changes"></div>
-</section>
+<!-- below 1080 px the dispatch card stands here, where it stood before Stage 3B (app.js syncDock) -->
+<div id="dispatch-home" hidden></div>
+<!-- one polite announcement per phase change, whichever tab is shown (a hidden tab's live region would not be read) -->
+<div id="live-phase" class="sr-only" aria-live="polite"></div>
 
 <div class="tools">
   <div class="grp">
@@ -209,7 +219,8 @@
 </div>
 
 <aside class="drawer" id="drawer" aria-label="Dossier">
-  <div class="dbar"><button id="drawer-close" type="button" aria-label="Close dossier">&times;</button></div>
+  <div class="dbar"><button id="drawer-back" type="button">&lsaquo; Back to <span id="drawer-back-to">Now</span></button>
+    <button id="drawer-close" type="button" aria-label="Close dossier">&times;</button></div>
   <div id="drawer-body"></div>
 </aside>
 

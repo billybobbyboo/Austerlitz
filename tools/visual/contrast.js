@@ -14,7 +14,9 @@
    with a corps highlighted (dimmed counters; in Study, since Watch draws the view-mode control at 24% until it is hovered,
    a Stage 1 matter recorded in CHANGELOG.md); each state is drawn once before it is read (the layer lays out in a frame).
    Stage 2E: two paper-map states (the paper backdrops, as every state named staff-*): the overview as entered, and close
-   on Sokolnitz. */
+   on Sokolnitz.
+   Stage 3B: Study as it opens (the Now tab, the legend closed), before the legend is opened for the states after it; and the
+   Now tab in the paper theme. */
 const fs=require("fs"), path=require("path");
 const { chromium } = require("playwright");
 const argv=process.argv.slice(2), html=path.resolve(argv[0]||"austerlitz-command-map.html");
@@ -45,7 +47,11 @@ const COLLECT=`(function(state){
   return out;
 })`;
 const STATES=[
-  ["study", ()=>{ closeFirst&&closeFirst(); setPresentation("study"); setMode("terrain"); setClock(570,{force:true}); updateVisibility(); }],
+  /* Stage 3B: Study as it opens (the dispatch in the rail's Now tab, the legend closed to its head); then the legend opened, so
+     that every later state reads its rows as before 3B (decision 49 closed it by default). The dossier states below read it
+     in the rail's column. */
+  ["now-default", ()=>{ closeFirst&&closeFirst(); setPresentation("study"); setMode("terrain"); setClock(570,{force:true}); updateVisibility(); }],
+  ["study", ()=>{ if(typeof ML!=="undefined") ML.legendOpen=true; closeFirst&&closeFirst(); setPresentation("study"); setMode("terrain"); setClock(570,{force:true}); updateVisibility(); }],
   ["formation", ()=>{ select("f","sthilaire"); paintDrawer(); }],
   ["formation-expanded", ()=>{ dossierExpanded=true; paintDrawer(); }],
   ["event", ()=>{ select("e",EVENTS[3].id); paintDrawer(); }],
@@ -72,7 +78,9 @@ const STATES=[
      and its controls), and close on Sokolnitz (full counters, place names and movement labels on the flat sheet; in Study, as
      hybrid-dimmed above, since Watch draws the view-mode control at 24% until it is hovered) */
   ["staff-overview", ()=>{ select(null,null); setMode("staff"); setPresentation("study"); setClock(570,{force:true}); MAPCAM.frameField(true); updateVisibility(); }],
-  ["staff-close", ()=>{ setClock(500,{force:true}); AUSTERLITZ_DEBUG.placeCamera([-80,40,92,-65,0,56]); updateVisibility(); }]
+  ["staff-close", ()=>{ setClock(500,{force:true}); AUSTERLITZ_DEBUG.placeCamera([-80,40,92,-65,0,56]); updateVisibility(); }],
+  /* Stage 3B: the Now tab in the paper theme (the states above leave the Plans tab chosen, so it is opened here) */
+  ["staff-now", ()=>{ select(null,null); if(typeof selectTab==="function") selectTab("now"); setClock(570,{force:true}); updateVisibility(); }]
 ];
 function hx(h){ h=h.replace("#",""); return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)); }
 function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); }

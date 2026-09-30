@@ -1,8 +1,99 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-09 · Stage 3B: docked panels (docs/STAGE3_SPEC.md §B, §H, §I; owner decisions 49, 54, 55, 58)
+
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,265,532 bytes, md5 `543a9bf056978ef6e8b2d55f02190637`**
+(was 1,253,655 bytes, md5 `ee4390a2…`, Stage 2F).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move. No
+  data, track, text of the record or `OVERLAYS` change. Presentation only.
+- The first work on the branch records Part A as merged (#21) and the owner's answers to §J as decisions 47-60
+  (`docs/STAGE3_SPEC.md` §0.3: every recommendation accepted).
+
+**Before building (fact).** `main` (e9c4fbe) matched `check:baseline` (md5 `ee4390a2…`, 1,253,655 bytes). The harness was run on
+that build with this part's measurement code (the new view included), as the "before" of every table below.
+
+**What changed** (`shell.html`, `style.css`, `app.js`)
+- **The dispatch is the rail's first tab, "Now"** (decisions 54, 55), from 1080 px wide (`syncDock`, `body.docked`). The
+  section itself moves into the tab's pane; its type is the card's (the title at `t-h2` in the narrower column), and the
+  timeline lines and "what changed" are no longer cut on short screens, since the rail scrolls. Study opens on it.
+  - While the first-run card is open the rail shows the Order of battle and the dispatch stays hidden, as before: the first
+    run is Stage 7's, and the Stage 0 check "first-run card stacked on the dispatch card" is untouched. Closing the card opens
+    the Now tab unless the visitor chose a tab meanwhile.
+  - D hides and shows the Now text, as it did the card; the pane then says how to show it (and that the tour's text is in the
+    tour bar while the tour hides it, as before).
+- **Below 1080 px the dispatch stays a card** (decision 58), where it stood before (`#dispatch-home`); the Now tab is hidden
+  there. A resize across 1080 px moves it; widening into the docked layout in Study also shows the rail (before, a rail hidden
+  at start-up below 1080 px stayed hidden after any resize).
+- **The dossier opens in the rail's column** (decision 54; the rail stays 300 px, the 340 px it allowed was not tried): over the
+  tabs' content, down to the timebar, headed "‹ Back to" the tab it covers. The tools and the legend no longer slide left, and
+  the dossier no longer covers the timebar's speeds and scale bar. Below 1080 px it is the drawer on the right, as before.
+- **The legend opens closed to its "Key" head** (decision 49); the visitor's choice then holds while the page is open.
+- **The paper map is framed where it is drawn largest** (§B.4): `MAPCAM.freeRect(ext)` picks, among the free rectangles, the
+  one in which the field's north-up outline (436 x 404 world units) is drawn largest, the larger area breaking a tie; the
+  largest-area rule stays for centring a point. At 1366 x 768 (the self-test's page): 21.6 px per km in 696 x 552 px, where
+  the largest free rectangle (928 x 504) gives 19.8.
+- **The rail's tabs are a tablist**: `role="tab"`/`tabpanel`, a roving `tabindex`, ← → Home End between the tabs shown; the keys
+  stop at the tabs, so the clock does not step (before, any arrow key stepped it).
+- **One polite live region** (`#live-phase`) announces each phase change ("09:30 - 10:30. The Pratzen Strike: The crisis on the
+  Pratzeberg."), whichever tab is shown. The dispatch is no longer a live region: in a hidden tab it would not be read, and it
+  used to read the whole lede at every phase.
+
+**Per view, before (Stage 2F) and after** (`tools/stage3/report-3b.js`; `docs/stage3-evidence/3b-report.md`, `3b-sheet.jpg`)
+
+| views | unobstructed, 1600 x 900 (or the case's) | at 1280 x 720 |
+|---|---|---|
+| Study, landscape (overview-field) | 38.6% → 63.1% | 25.0% → 57.8% |
+| a formation selected (selected-formation) | 19.6% → 63.1% | 12.5% → 57.8% |
+| the paper map (staff-paper, paper-north-up, paper-close) | 35.7-36.5% → 63.1% | 21.5-22.2% → 57.8% |
+| the paper map with the dossier (paper-drawer) | 17.5% → 63.1% | 12.5% → 57.8% |
+| the paper map at 1280 x 720 (paper-laptop) | 21.5% → 57.8% | |
+| Watch, the first run, narrow-1024 at 1024 x 768 | unchanged | unchanged (narrow-1024 at 1280 x 720 is docked: 43.9% → 57.8%) |
+
+- **The paper map as entered:** 17.1 → 25.4 px per true km at 1600 x 900, 5.5 → 19.8 at 1280 x 720. At 1600 x 900 the free
+  rectangle's height is set by the 170 px timebar; the probe's 28.5 needs 3C.
+- Drops within every limit (selected-formation 2 of 3, as before: G.4 re-measured, the limit unchanged); paper-laptop 18 → 12,
+  paper-drawer 4 → 2, overview-field 5 → 6 (an item that was under the dispatch now counts). Overlaps 0, nothing over a panel or
+  a head, text at its floor and AA as rendered (lowest 5.04:1), pass times 0.6-1.7 ms.
+- Every claim of `docs/STAGE3_SPEC.md` §H for 3B is met (the Now tab's level of the probe: overview-field 56.3 / 47.2%, the paper
+  views 54.2 / 43.7%): the legend closed by default adds the rest.
+
+**Tests** (none loosened; new or stricter)
+- **Unobstructed baselines raised** (`thresholds.js`) to this build's values, rounded down to 0.1 point, never below the Stage 2C
+  values they replace (kept in the file's comment): the Study and paper views to 63.1 / 57.8%, paper-laptop to 57.8%.
+- **New harness checks** (every view, on a build with the Now tab): docked exactly from 1080 px; in Study the dispatch in the
+  rail's Now tab from 1080 px and a card below; Study shows the Now tab; the legend closed unless opened; the legend never over
+  the rail, the dossier or the timebar (stricter than "never over the dispatch", which stays); the paper map as entered at least
+  25 px per km (paper-north-up) and 19 (paper-laptop).
+- **New harness view `narrow-1024`** (1024 x 768, Study, the Field vantage): the undocked layout. Its limits are the Stage 2F
+  build's own (drops 5, unobstructed 48.45 / 43.89%): 3B leaves it as it was, and it does.
+- **Self-test** (103 checks, was 98), new: the docked layout by width; the tablist and its keys, the clock unmoved; one
+  announcement per phase change while another tab is shown, the dispatch no longer a live region; the dossier in the rail's
+  column down to the timebar, the tools and the legend unmoved; the paper map framed in the rectangle where the field is drawn
+  largest, never smaller than in the largest one.
+- **`check:contrast`: 24 states** (two new: Study as it opens, and the Now tab on the paper map). The legend is opened explicitly
+  for the states that read its rows before (it opens closed now). 4,052 text elements, 0 below AA, 0 below 10.5 px. Fewer
+  elements than before (4,750 on the Stage 2F build with these 24 states) because the order of battle, no longer the default tab,
+  is not read again in six states; it is read in the first-run state as before.
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard (61 sites, 0 presentation sites calling `height()`/`hAt()`).
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:visual`: all checks passed, 18 views, the self-test 103 of 103.
+- `npm run check:contrast`: 4,052 text elements in 24 states, 0 below AA, 0 below 10.5 px.
+- `npm run check:baseline`: moved to this build.
+
+**Not done, or open**
+- The 340 px rail (decision 54 allowed trying it) was not tried.
+- The situation row stays in the timebar until 3C, which moves its readings to the top of the Now tab.
+- Below 1080 px the layout is as before (decision 58), including its known rail behaviour on narrowing (the rail is not hidden
+  again when the window narrows).
+- The rest of Stage 3 (3C the timeline, 3D the camera, 3E names and help) and the spine data task are not started.
+
 ## 2026-09 · Stage 3 Part A: navigation and structure specified (docs/STAGE3_SPEC.md); no change to the build
 
-**Status: specification for the owner's review; 3B has not started. `austerlitz-command-map.html` unchanged: 1,253,655 bytes,
+**Status: reviewed and merged (#21); the owner accepted every recommendation (decisions 47-60). `austerlitz-command-map.html` unchanged by it: 1,253,655 bytes,
 md5 `ee4390a2585f3df170fba82eb1994112`** (confirmed on `main` at `0f2b17e` before the work, with #19 and #20 merged, and by
 `check:baseline` after it).
 

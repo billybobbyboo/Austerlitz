@@ -199,6 +199,25 @@
     var a=box(lg), b=box(dp); if(!a||!b) return 0;
     return Math.max(0,Math.min(a.right,b.right)-Math.max(a.left,b.left))*Math.max(0,Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top));
   }
+  /* Stage 3B (docs/STAGE3_SPEC.md section H): the legend never over the rail, the dossier or the timebar (the area it shares
+     with them, px): stricter than "never over the dispatch", which is vacuous once the dispatch is in the rail */
+  function legendOverPanels(){
+    var lg=document.querySelector(".legend"); if(!lg) return 0;
+    var cs=getComputedStyle(lg); if(cs.display==="none"||cs.visibility==="hidden") return 0;
+    var a=lg.getBoundingClientRect(); if(!(a.width>0&&a.height>0)) return 0;
+    var sum=0, railHidden=document.body.classList.contains("rail-hidden");
+    [".rail",".drawer",".timebar"].forEach(function(q){ var e=document.querySelector(q); if(!e) return; var c=getComputedStyle(e);
+      if(c.display==="none"||c.visibility==="hidden") return;
+      if((e.classList.contains("rail")&&railHidden)||(e.classList.contains("drawer")&&!e.classList.contains("on"))) return;
+      var b=e.getBoundingClientRect(); sum+=Math.max(0,Math.min(a.right,b.right)-Math.max(a.left,b.left))*Math.max(0,Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)); });
+    return sum;
+  }
+  /* Stage 3B: where the dispatch stands (in the rail's Now tab, or a card), and whether the legend is open */
+  function docking(){
+    var dp=document.querySelector(".dispatch"), lg=document.querySelector(".legend");
+    return {hasNowTab:!!document.getElementById("tab-now"), dispatchInRail:!!(dp&&dp.closest&&dp.closest(".rail")), docked:document.body.classList.contains("docked"),
+      legendOpen:!!(lg&&!lg.classList.contains("collapsed")), tab:(document.querySelector('.tab-btn[aria-selected="true"]')||{dataset:{}}).dataset.t||null};
+  }
   /* the section E method on the layer, refined for DOM text (Stage 2D). In each text's box on the rendered frame, the pixels
      at least half the largest RGB distance from its ink are its surround, and the contrast reported is the 10th percentile
      over them. Two refinements: only pixels wholly inside the box are read (section E added 2 px round a sprite's estimated
@@ -367,7 +386,8 @@
       firstRunVisible:(function(){ var d=document.getElementById("firstrun"); return !!d&&!d.hidden; })(),
       dispatchVisible:(function(){ var d=document.querySelector(".dispatch"); return !!d&&getComputedStyle(d).display!=="none"&&d.getBoundingClientRect().width>0; })(),
       stats:(D()&&D().stats)?D().stats():null,
-      layer:layer(), unobstructed:unobstructed(), legendOverDispatch:legendOverDispatch(), paper:paperMap()
+      layer:layer(), unobstructed:unobstructed(), legendOverDispatch:legendOverDispatch(), paper:paperMap(),
+      legendOverPanels:legendOverPanels(), docking:docking(), viewport:[window.innerWidth,window.innerHeight]
     };
   }
 
@@ -412,5 +432,5 @@
 
   window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures,
                 overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, layerTexts:layerTexts,
-                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap};
+                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking};
 })();
