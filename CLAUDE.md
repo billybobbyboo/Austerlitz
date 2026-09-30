@@ -108,5 +108,5 @@ contextual legend) is merged (#17). Stage 2E (the true north-up paper map: an or
 hillshade, pan and zoom-to-cursor in `MAPCAM`, one projection helper, flat village footprints and woods symbology) is merged
 (#18). Stage 2F (the ground surface: land cover drawn per point by the ground shader from the model's own classes and a
 local-relief grid, `COVER_ML`; the woods' trees inside the drawn wood class; roads and streams draped; the meres' legend row) is
-done and awaits review. The shadow toe
+merged (#19); Stage 2 is complete, and Stage 3 has not started. The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.
