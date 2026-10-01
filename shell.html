@@ -184,7 +184,7 @@
     <div class="k"><span id="exag-line"></span></div>
     <div class="k"><span id="exag-symbols"></span></div>
     <div id="goingkey"><!-- rows written from TOKENS.sym.going by paintKey (app.js), the table the going layer draws --></div>
-    <div class="hint" id="lg-hint">drag to orbit &middot; scroll to zoom &middot; click or Tab to a counter or a name</div>
+    <div class="hint" id="lg-hint">drag to pan &middot; right-drag or Shift-drag to turn &middot; scroll to zoom toward the pointer &middot; double-click to centre &middot; click or Tab to a counter or a name</div>
     <div class="hint keys"><b>1</b> study <b>2</b> watch <b>3</b> map only &middot; <b>M</b> map mode
       &middot; <b>D</b> text &middot; <b>F</b> <span id="fxstate">FX on</span> &middot; <b>space</b> play &middot; <b>Esc</b> back</div>
   </div>
@@ -203,6 +203,7 @@
       <button class="t tb-play" id="play" aria-pressed="false">Play</button>
       <button class="t tb-icon" id="next" aria-label="Forward ten minutes" title="Forward ten minutes">&#9658;</button>
       <button class="t tb-icon" id="nextEv" aria-label="Next event" title="Next event">&#9474;&#9658;</button>
+      <button class="t tb-follow" id="follow" aria-pressed="true" title="Follow the action: move to each phase's view as the clock reaches it">Follow</button>
     </div>
     <div class="clockbox"><span id="clockread">04:00</span><small>2 Dec 1805</small></div>
     <div class="tb-cap" id="tb-cap"></div>
@@ -259,7 +260,7 @@
   <!-- written at start-up from the same colour key as the legend (COLOUR_KEY), so the two cannot disagree -->
   <p id="fr-key">Blue is the French army. The Allies are green for Russia and white for Austria, and their
      movement arrows are drawn in amber. The high ground in the centre is the Pratzen plateau, and it decides the battle.</p>
-  <p class="fr-hint">Drag to turn the view, scroll to zoom, and click any formation to see who it was and what it was doing.</p>
+  <p class="fr-hint">Drag to move the map, right-drag to turn it, scroll to zoom, and click any formation to see who it was and what it was doing.</p>
   <div class="fr-act">
     <button class="t" id="fr-tour">Guided tour</button>
     <button class="t" id="fr-watch">Watch the battle</button>

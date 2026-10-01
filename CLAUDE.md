@@ -21,7 +21,7 @@ lower one without saying so explicitly.
 | `analysis.js` | analysis chapters, command knowledge, the two plans, acts, events, guided tour |
 | `world.js` | ground: relief model, land cover, water, roads, woods, settlements, mist, `groundY`; the paper map's flat symbology (village footprints, woods) and its own hillshade (since 2E); the ground shader, which draws the land cover per point, and `COVER_ML`/`drawnCover` (since 2F) |
 | `symbols.js` | the map layer's counters and names (HTML/SVG builders, accessible names), event and objective glyphs |
-| `app.js` | scene, overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`), runtime checks |
+| `app.js` | scene, overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2 and Stage 3 measurement scripts (`stage2/`, `stage3/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
@@ -92,6 +92,12 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   the timeline's control row at full opacity and the caption's derived reading shown; at 1280 x 720 the current phase's label never
   cut; the slider (arrows, Shift, Home, End, PageUp, PageDown, its ARIA value) and an event marker's Enter by real key presses; the
   self-test's timeline, hour-numeral, keyboard-group, Watch-switch and spine checks.
+  Since 3D: the harness's orbit case drives the right button and aims its wheel at the target; in every landscape view the orbit
+  target at the free rectangle's centre within 1 px, also after the resize to 1280 x 720; in the phase-8 Overview views no arrow
+  head more than a quarter hidden; the self-test's landscape controls at 1x, 4x and 10.33x from every vantage (a left-drag pans
+  within 1 px, the wheel zooms toward the cursor within 1 px, a double-click centres within 2 px, a right-drag orbits, the keys and
+  touch, the floor after every step), the offset after each panel change, picking through it, Follow after 14 paths, every
+  vantage's target centred and the Overview's field inside the free rectangle, and one tween chain.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
 - `npm run check:baseline` passes only on the unmodified Stage 3C build (md5 `6ae3f8a7...`, 1,281,813 bytes;
   re-baselined from the Stage 3B build `543a9bf0...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.

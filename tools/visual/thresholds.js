@@ -63,6 +63,11 @@ const PAPER_MIN_PXKM={"paper-north-up":28,"paper-laptop":21};
 /* Stage 3C (section H): the one timeline's height, at every viewport (before 3C: 170 px at 1600 x 900, 139 at 1366 x 768 and
    1280 x 720). New */
 const TIMELINE_MAX=92;
+/* Stage 3D (section H): in the phase-8 Overview views no arrow head more than a quarter hidden by a panel or the screen's edge
+   (4 of 5 Allied arrows in Part A; 2 of 5 still wholly under the 90 px timeline before the Overview was fitted); in every
+   landscape view on a build with the view offset, the orbit target at the free rectangle's centre within 1 px. New */
+const HEADS_SHOWN=["ph8-overview-study","ph8-overview-watch"], FOCUS_PX=1;
+module.exports.HEADS_SHOWN=HEADS_SHOWN; module.exports.FOCUS_PX=FOCUS_PX;
 module.exports.TIMELINE_MAX=TIMELINE_MAX;
 module.exports.PAPER_MIN_PXKM=PAPER_MIN_PXKM;
 module.exports.DROP_LIMIT=DROP_LIMIT; module.exports.UNOBSTRUCTED=UNOBSTRUCTED; module.exports.LAYER_MS=LAYER_MS;
@@ -119,6 +124,9 @@ module.exports.check=function(name,m){
     if(m.presentation==="watch"&&!(TL.switchInRow&&TL.switchOpacity===1)) f.push("Watch: the presentation switch is not in the timeline's control row at full opacity ("+TL.switchOpacity+")");
     if(m.presentation==="watch"&&TL.capDerived===false) f.push("Watch: the caption's derived reading is not shown");
     if(m.phaseLabels720&&m.phaseLabels720.cut.length) f.push("at 1280 x 720 the current phase's label is cut: "+m.phaseLabels720.cut.join(", ")); }
+  if(HEADS_SHOWN.includes(name)&&m.heads&&m.heads.hiddenOverQuarter>0) f.push("arrow heads more than a quarter hidden by a panel or the edge: "+m.heads.list.join(", "));
+  if(m.focus!=null&&!(m.focus<=FOCUS_PX)) f.push("the orbit target "+m.focus+" px from the free rectangle's centre (limit "+FOCUS_PX+" px)");
+  if(m.focus720!=null&&!(m.focus720<=FOCUS_PX)) f.push("after the resize to 1280 x 720 the orbit target is "+m.focus720+" px from the free rectangle's centre (limit "+FOCUS_PX+" px)");
   if(m.paper&&PAPER_MIN_PXKM[name]!==undefined&&!(m.paper.pxPerKm.pratzeberg>=PAPER_MIN_PXKM[name]))
     f.push("paper map as entered: "+m.paper.pxPerKm.pratzeberg+" px per true km, below "+PAPER_MIN_PXKM[name]);
   const Pm=m.paper;

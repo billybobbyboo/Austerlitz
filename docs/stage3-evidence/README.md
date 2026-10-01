@@ -4,7 +4,7 @@ Produced by the scripts in `tools/stage3/` against the Stage 2F build (md5 `ee43
 bytes) in headless Chromium with software WebGL. Cited from `docs/STAGE3_SPEC.md`. The page scripts inject **probes** into
 the running page: measurement code, not the Stage 3 implementation; they changed no source file. The `3b-*` files compare the
 Stage 2F build with the Stage 3B build (both through the harness); the `3c-*` files compare the Stage 3B build with the
-Stage 3C build.
+Stage 3C build, and the `3d-*` files the Stage 3C build with the Stage 3D build.
 
 | file | section | script |
 |---|---|---|
@@ -17,6 +17,9 @@ Stage 3C build.
 | `3b-sheet.jpg` | I (3B) | `report-3b.js --sheet`: six views from the harness's screenshots, the Stage 2F build (left) and 3B (right) |
 | `3c-report.md` | I (3C) | `report-3b.js --part 3C --before "Stage 3B"`: per harness view, the 3B build against the 3C build (the same columns, and the timebar's height) |
 | `3c-sheet.jpg` | I (3C) | `report-3b.js --sheet --views ...`: six views, the 3B build (left) and 3C (right) |
+| `3d-report.md` | I (3D) | `report-3b.js --part 3D --before "Stage 3C"`: per harness view, the 3C build against the 3D build (the same columns) |
+| `3d-sheet.jpg` | I (3D) | `report-3b.js --sheet --views ...`: six views, the 3C build (left) and 3D (right) |
+| `3d-overview.jpg` | I (3D) | the phase-8 Overview in Study: the 3C build; the modelled ground fitted without the fog's recession; fitted with it (the build); the day's action fitted instead (the alternative not adopted) |
 | `orbit-min.jpg` | G.3 | `nav-probe.js --only heads`: the harness view pratzen-orbit-min (its own interaction replayed), the event glyph drawn across the view |
 
 The probe's measurements read CSS pixels only, so `dock-probe.js` draws at a quarter of the pixel ratio and at 1 for its
