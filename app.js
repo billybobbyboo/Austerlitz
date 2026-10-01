@@ -116,7 +116,7 @@ var terrainLabels=[];   /* {tl, col, world}: the map layer's terrain-study label
 var highlight=null;      /* id -> true, or null for "show everything equally" */
 var commandView="none";  /* none | fr | al */
 var chapter=null;
-var tourStep=-1, sitOff=false;
+var tourStep=-1;
 var planSide=null;      /* "al" | "fr" | "both" | null */
 var planGroup=null;
 var cleanView=false;
@@ -2292,7 +2292,7 @@ function chapterById(cid){
 }
 function setChapter(cid){
   var c=chapterById(cid);
-  if(!c){ chapter=null; setHighlight(null); paintChapters(); paintChapterText(); return; }
+  if(!c){ chapter=null; setHighlight(null); paintChapters(); paintChapterText(); paintTimeline(); return; }
   chapter=cid;
   var set={};
   c.forms.forEach(function(k){
@@ -2558,7 +2558,7 @@ function startTour(){
   applyTour();
 }
 function exitTour(){
-  tourStep=-1;
+  tourStep=-1; paintTimeline();
   var b=document.getElementById("tourbar");
   if(b) b.hidden=true;
   clearOverlays();
@@ -3215,7 +3215,6 @@ function mlHoverAt(cx,cy){
 
 var lodEch="div";
 var smokeT=0;
-var _lastChip=-1;
 var MAJOR_FEATURES={pratzen:1,vinohrady:1,pratzeberg:1,santon:1,zuran:1,goldbach:1,
   litava:1,austerlitz:1,telnitz:1,sokolnitz:1,augezd:1,satschan:1};
 var _evTicks=[];
@@ -3572,15 +3571,8 @@ function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,
 function buildUI(){
   bindCanvas();
 
-  /* timeline */
-  var tl=document.getElementById("phases");
-  PHASES.forEach(function(p,i){
-    var b=el("button","step");
-    b.type="button";
-    b.innerHTML='<time>'+esc(p.clock)+'</time><span>'+esc(p.label)+'</span>';
-    b.addEventListener("click",function(){ stopPlay(); freeCam=false; setPhase(i); });
-    tl.appendChild(b);
-  });
+  /* the one timeline (Stage 3C): act bands, phase ticks, the rail, the event markers, on one time axis */
+  buildTimeline();
 
   document.querySelectorAll(".mode-btn").forEach(function(b){
     b.addEventListener("click",function(){ setMode(b.dataset.m); });
@@ -3619,52 +3611,6 @@ function buildUI(){
     b.addEventListener("click",function(){ setSpeed(+b.dataset.s); });
   });
 
-  /* scrub rail */
-  (function(){
-    var rail=document.getElementById("timerail"), ticks=document.getElementById("railticks");
-    if(!rail) return;
-    var html="";
-    for(var t=Math.ceil(T_MIN/60)*60; t<=T_MAX; t+=60){
-      var pc=100*(t-T_MIN)/(T_MAX-T_MIN);
-      var h=Math.floor(t/60);
-      var major=(h%2===0);
-      html+='<i class="'+(major?"hr":"")+'" style="left:'+pc+'%"></i>';
-      if(major) html+='<b style="left:'+pc+'%">'+((h<10?"0":"")+h)+'</b>';
-    }
-    EVENTS.forEach(function(e,ix){
-      var w=evWindow(e), mid=(w[0]+w[1])/2;
-      var cls = (e.kind==="decision" ? "dec " : "")+(e.side==="fr"?"fr":"al");
-      html+='<s class="'+cls+'" data-ev="'+ix+'" title="'+esc(fmtClock(mid)+"  "+e.n)+'" style="left:'+
-        (100*(mid-T_MIN)/(T_MAX-T_MIN))+'%"></s>';
-    });
-    ticks.innerHTML=html;
-    ticks.querySelectorAll("[data-ev]").forEach(function(el){
-      var e=EVENTS[+el.dataset.ev];
-      _evTicks.push({el:el,e:e});
-      el.addEventListener("pointerdown",function(ev){
-        ev.stopPropagation(); stopPlay();
-        var w=evWindow(e);
-        setClock((w[0]+w[1])/2);
-        select("e",e.id);
-      });
-    });
-    var dragging=false;
-    function toClock(clientX){
-      var r=rail.getBoundingClientRect();
-      var u=Math.max(0,Math.min(1,(clientX-r.left)/(r.width||1)));
-      return T_MIN+u*(T_MAX-T_MIN);
-    }
-    rail.addEventListener("pointerdown",function(e){
-      dragging=true; stopPlay(); rail.setPointerCapture(e.pointerId);
-      setClock(toClock(e.clientX));
-    });
-    rail.addEventListener("pointermove",function(e){ if(dragging) setClock(toClock(e.clientX)); });
-    window.addEventListener("pointerup",function(){ dragging=false; });
-    rail.addEventListener("keydown",function(e){
-      if(e.key==="ArrowRight"){ e.preventDefault(); stopPlay(); setClock(clock+15); }
-      if(e.key==="ArrowLeft"){ e.preventDefault(); stopPlay(); setClock(clock-15); }
-    });
-  })();
   document.querySelectorAll(".van-btn").forEach(function(b){
     b.addEventListener("click",function(){
       document.querySelectorAll(".van-btn").forEach(function(o){o.setAttribute("aria-pressed","false");});
@@ -3683,7 +3629,6 @@ function buildUI(){
   document.getElementById("next").addEventListener("click",function(){ stopPlay(); setClock(clock+10); });
   document.getElementById("prevEv").addEventListener("click",function(){ jumpEvent(-1); });
   document.getElementById("nextEv").addEventListener("click",function(){ jumpEvent(1); });
-  buildActs();
   document.getElementById("play").addEventListener("click",togglePlay);
   document.querySelectorAll(".vm-btn").forEach(function(b){
     b.addEventListener("click",function(){ setPresentation(b.dataset.vm); });
@@ -3948,9 +3893,12 @@ function focusOn(id){
 var _sitKey="", _plLastVal=-1, _plLastT=0;
 var SEP_NOTE="Derived from the plotted formations: a French formation stands across the line joining the Allied groups north and south of the plateau. A spatial reading, not a casualty figure.";
 var FLAT_NOTE="The reconstruction plots formations, not losses. A holding that does not change does not mean the fighting there has stopped.";
+/* Stage 3C (docs/STAGE3_SPEC.md section D.2): the situation is split. The timeline's caption carries the act, the phase and the
+   live event, and, where no Now tab is shown (Watch, the tour, D), the two derived readings; the top of the Now tab (inside
+   the dispatch) carries the derived readings and the live event's reason. The row's dismiss went with the row. */
 function paintSituation(){
-  var host=document.getElementById("situation");
-  if(!host) return;
+  var host=document.getElementById("situation"), cap=document.getElementById("tb-cap");
+  if(!host&&!cap) return;
   var live=liveEvents(clock), top=live.length?live[0].e:null;
   var act=actOf(curPhase);
   var onH=plateauStrength("al"), cut=centreSeparation();
@@ -3960,25 +3908,77 @@ function paintSituation(){
            flatFor>=60?1:0,playing?1:0].join("|");
   if(key===_sitKey) return;
   _sitKey=key;
-  var h='<span class="act">'+esc(act.n.toUpperCase())+'</span>';
-  h+='<span class="sep">&middot;</span><span>'+esc(PHASES[curPhase].title)+'</span>';
-  if(top){
-    h+='<span class="sep">&middot;</span><span class="ev">'+esc(top.n)+'</span>';
-  }
-  if(curPhase<=6 && onH>0){
-    h+='<span class="sep">&middot;</span><span class="der" title="'+esc(FLAT_NOTE)+'">'
-      + '<small>derived</small> on the heights: Allied &asymp; '+onH.toLocaleString()
-      + (flatFor>=60?' <em>plotted strength unchanged</em>':'')+'</span>';
-  }
-  if(cut) h+='<span class="sep">&middot;</span><span class="cut" title="'+esc(SEP_NOTE)+
-             '"><small>derived</small> centre separation detected</span>';
-  var why = top ? top.why : act.line;
-  h+='<span class="why">'+esc(why)+'</span>';
-  h+='<button id="sit-close" aria-label="Hide this line" title="Hide this line">&times;</button>';
-  host.innerHTML=h;
-  var cb=document.getElementById("sit-close");
-  if(cb) cb.addEventListener("click",function(){
-    sitOff=true; document.body.classList.add("sit-off"); syncTimebarHeight();
+  var der=(curPhase<=6&&onH>0)?'<span class="der" title="'+esc(FLAT_NOTE)+'"><small>derived</small> on the heights: Allied &asymp; '+
+      onH.toLocaleString()+(flatFor>=60?' <em>plotted strength unchanged</em>':'')+'</span>':"";
+  var cutH=cut?'<span class="cut der" title="'+esc(SEP_NOTE)+'"><small>derived</small> centre separation detected</span>':"";
+  var c='<span class="act">'+esc(act.n.toUpperCase())+'</span><span class="sep">&middot;</span><span>'+esc(PHASES[curPhase].title)+'</span>';
+  if(top) c+='<span class="sep">&middot;</span><span class="ev">'+esc(top.n)+'</span>';
+  if(der) c+='<span class="sep der-sep">&middot;</span>'+der;
+  if(cutH) c+='<span class="sep der-sep">&middot;</span>'+cutH;
+  if(cap){ cap.innerHTML=c; cap.title=cap.textContent; }
+  if(host) host.innerHTML=der+cutH+(top?'<span class="ev">'+esc(top.n)+'</span>':'')+'<span class="why">'+esc(top?top.why:act.line)+'</span>';
+}
+/* ---- Stage 3C: one timeline (docs/STAGE3_SPEC.md section D; owner decisions 53, 60) ----
+   One axis, proportional to time from 04:00 to 18:00 (decision 53): the act bands, the phase ticks with their labels and the
+   rail (hour ticks, the event markers, the playhead) are placed at their share of it. The current phase's label is always
+   whole (style.css); a narrow phase's label shortens where it does not fit. Acts, phases and events are each one keyboard
+   stop (a roving tabindex: the arrow keys, Home and End move within the group and stop there, so the clock does not step);
+   the rail is the slider (arrows ±10 min, Shift ±60, Home and End, PageUp and PageDown the phase starts). */
+function tlPc(t){ return 100*(t-T_MIN)/(T_MAX-T_MIN); }
+function tlText(t){ var ph=phaseAt(t); return fmtClock(t)+", "+PHASES[ph].label+", "+actOf(ph).n; }
+function rovingGroup(host,sel){
+  if(!host) return;
+  host.addEventListener("keydown",function(e){
+    var B=Array.prototype.slice.call(host.querySelectorAll(sel)), i=B.indexOf(document.activeElement), j=-1;
+    if(i<0) return;
+    if(e.key==="ArrowRight"||e.key==="ArrowDown") j=Math.min(B.length-1,i+1); else if(e.key==="ArrowLeft"||e.key==="ArrowUp") j=Math.max(0,i-1);
+    else if(e.key==="Home") j=0; else if(e.key==="End") j=B.length-1;
+    if(j<0) return;
+    e.preventDefault(); e.stopPropagation();
+    B.forEach(function(b,k){ b.tabIndex=(k===j)?0:-1; }); B[j].focus();
+  });
+}
+function buildTimeline(){
+  SPINE=buildSpine();
+  var tl=document.getElementById("phases");
+  if(tl){ tl.innerHTML="";
+    PHASES.forEach(function(p,i){
+      var b=el("button","step"); b.type="button"; b.textContent=p.label; b.title=p.clock+"  "+p.title;
+      b.setAttribute("aria-label",p.clock+", "+p.label+": "+p.title);
+      b.style.left=tlPc(p.t0)+"%"; b.style.width=(tlPc(p.t1)-tlPc(p.t0))+"%"; b.tabIndex=-1;
+      b.addEventListener("click",function(){ stopPlay(); freeCam=false; setPhase(i); });
+      tl.appendChild(b); });
+    rovingGroup(tl,".step"); }
+  buildActs();
+  var rail=document.getElementById("timerail"), ticks=document.getElementById("railticks"), evh=document.getElementById("evmarks");
+  if(ticks){ var html="";
+    for(var t=Math.ceil(T_MIN/60)*60; t<=T_MAX; t+=60){ var h=Math.floor(t/60), major=(h%2===0);
+      html+='<i class="'+(major?"hr":"")+'" style="left:'+tlPc(t)+'%"></i>';
+      if(major) html+='<b style="left:'+tlPc(t)+'%">'+((h<10?"0":"")+h)+'</b>'; }
+    ticks.innerHTML=html; }
+  if(evh){ evh.innerHTML="";
+    /* in time order, so the arrow keys go forward in time */
+    EVENTS.map(function(e){ var w=evWindow(e); return {e:e,mid:(w[0]+w[1])/2}; }).sort(function(a,b){ return a.mid-b.mid; }).forEach(function(o,k){
+      var e=o.e, b=el("button","ev-mark "+(e.kind==="decision"?"dec ":"")+(e.side==="fr"?"fr":"al")); b.type="button";
+      b.style.left=tlPc(o.mid)+"%"; b.title=fmtClock(o.mid)+"  "+e.n; b.setAttribute("aria-label",fmtClock(o.mid)+", "+e.n); b.tabIndex=k===0?0:-1;
+      b.addEventListener("click",function(){ stopPlay(); setClock(o.mid); select("e",e.id); });
+      evh.appendChild(b); _evTicks.push({el:b,e:e,mid:o.mid}); });
+    rovingGroup(evh,".ev-mark"); }
+  if(!rail) return;
+  var dragging=false;
+  function toClock(clientX){ var r=rail.getBoundingClientRect(); return T_MIN+Math.max(0,Math.min(1,(clientX-r.left)/(r.width||1)))*(T_MAX-T_MIN); }
+  rail.addEventListener("pointerdown",function(e){ dragging=true; stopPlay(); if(rail.setPointerCapture) rail.setPointerCapture(e.pointerId); setClock(toClock(e.clientX)); });
+  rail.addEventListener("pointermove",function(e){ if(dragging) setClock(toClock(e.clientX)); });
+  window.addEventListener("pointerup",function(){ dragging=false; });
+  rail.addEventListener("keydown",function(e){
+    var t=null, ph=phaseAt(clock);
+    if(e.key==="ArrowRight") t=clock+(e.shiftKey?60:10); else if(e.key==="ArrowLeft") t=clock-(e.shiftKey?60:10);
+    else if(e.key==="Home") t=T_MIN; else if(e.key==="End") t=T_MAX;
+    else if(e.key==="PageDown") t=ph<PHASES.length-1?PHASES[ph+1].t0:T_MAX;
+    else if(e.key==="PageUp") t=(clock>PHASES[ph].t0+0.5)?PHASES[ph].t0:PHASES[Math.max(0,ph-1)].t0;
+    if(t===null) return;
+    e.preventDefault(); e.stopPropagation();   /* one step: the window's own arrow keys do not step it again (before 3C: +25 min) */
+    stopPlay(); setClock(t);
   });
 }
 function buildActs(){
@@ -3986,19 +3986,31 @@ function buildActs(){
   if(!host) return;
   host.innerHTML="";
   ACTS.forEach(function(a){
-    var b=el("button","act-btn");
-    b.type="button"; b.dataset.a=a.id;
-    b.textContent=a.n;
-    b.title=a.line;
+    var p0=PHASES[a.phases[0]], p1=PHASES[a.phases[a.phases.length-1]], b=el("button","act-btn");
+    b.type="button"; b.dataset.a=a.id; b.textContent=a.n; b.title=a.line; b.tabIndex=-1;
+    b.setAttribute("aria-label",a.n+", "+fmtClock(p0.t0)+" to "+fmtClock(p1.t1)+": "+a.line);
+    b.style.left=tlPc(p0.t0)+"%"; b.style.width=(tlPc(p1.t1)-tlPc(p0.t0))+"%";
     b.addEventListener("click",function(){ stopPlay(); setPhase(a.phases[0]); });
     host.appendChild(b);
   });
+  rovingGroup(host,".act-btn");
 }
 function paintActs(){
-  var cur=actOf(curPhase);
+  var cur=actOf(curPhase), host=document.getElementById("acts"), inG=!!(host&&document.activeElement&&document.activeElement.parentNode===host);
   document.querySelectorAll(".act-btn").forEach(function(b){
-    b.setAttribute("aria-current", b.dataset.a===cur.id ? "true":"false");
+    var on=b.dataset.a===cur.id; b.setAttribute("aria-current", on?"true":"false"); if(!inG) b.tabIndex=on?0:-1;
   });
+}
+/* ---- Stage 3C: the spine index (docs/STAGE3_SPEC.md section C.2), built from the data as it is; no data change ----
+   acts > phases > events: each event in the phase that holds the start of its window; each chapter and tour stop placed by its
+   clock. The timeline marks the chosen chapter's or tour stop's place on the axis. */
+var SPINE=null;
+function buildSpine(){
+  var P=PHASES.map(function(p,i){ return {ph:i,t0:p.t0,t1:p.t1,act:actOf(i).id,events:[],chapters:[],tour:[]}; });
+  EVENTS.forEach(function(e){ P[phaseAt(evWindow(e)[0])].events.push(e.id); });
+  ANALYSIS.forEach(function(c){ P[phaseAt(c.t)].chapters.push(c.id); });
+  TOUR.forEach(function(st,k){ P[phaseAt(st.t)].tour.push(k); });
+  return {acts:ACTS.map(function(a){ return {id:a.id,phases:a.phases.slice()}; }),phases:P};
 }
 /* jump between the moments that matter, not between arbitrary minutes */
 function eventTimes(){
@@ -4032,26 +4044,28 @@ function jumpEvent(dir){
   }
 }
 function paintTimeline(){
+  var tl=document.getElementById("phases"), inG=!!(tl&&document.activeElement&&document.activeElement.parentNode===tl);
   document.querySelectorAll("#phases .step").forEach(function(b,i){
-    b.setAttribute("aria-current", i===curPhase?"true":"false");
+    b.setAttribute("aria-current", i===curPhase?"true":"false"); if(!inG) b.tabIndex=(i===curPhase)?0:-1;
   });
-  if(_lastChip!==curPhase){
-    _lastChip=curPhase;
-    var chips=document.querySelectorAll("#phases .step");
-    if(chips[curPhase] && chips[curPhase].scrollIntoView){
-      try{ chips[curPhase].scrollIntoView({inline:"center",block:"nearest",behavior:RM?"auto":"smooth"}); }
-      catch(err){ chips[curPhase].scrollIntoView(false); }
-    }
-  }
   paintSituation();
   paintActs();
   var r=document.getElementById("clockread");
   if(r) r.textContent=fmtClock(clock);
+  var evh=document.getElementById("evmarks"), inE=!!(evh&&document.activeElement&&document.activeElement.parentNode===evh), best=-1, bd=1e9;
   for(var q=0;q<_evTicks.length;q++){
     _evTicks[q].el.classList.toggle("on", evWeight(_evTicks[q].e,clock)>0.5);
+    var d=Math.abs(_evTicks[q].mid-clock); if(d<bd){ bd=d; best=q; }
   }
+  if(!inE) for(var q2=0;q2<_evTicks.length;q2++) _evTicks[q2].el.tabIndex=(q2===best)?0:-1;   /* the keyboard enters the events at the nearest */
   var head=document.getElementById("playhead");
-  if(head) head.style.left=(100*(clock-T_MIN)/(T_MAX-T_MIN))+"%";
+  if(head) head.style.left=tlPc(clock)+"%";
+  var rail=document.getElementById("timerail"), m=Math.round(clock);
+  if(rail&&rail.getAttribute("aria-valuenow")!==String(m)){ rail.setAttribute("aria-valuenow",String(m)); rail.setAttribute("aria-valuetext",tlText(clock)); }
+  /* the chosen chapter's or tour stop's place on the axis */
+  var sm=document.getElementById("spinemark");
+  if(sm){ var c=(chapter&&typeof chapterById==="function")?chapterById(chapter):null, st=(tourStep>=0)?TOUR[tourStep]:null, t2=c?c.t:(st?st.t:null);
+    sm.hidden=(t2===null); if(t2!==null){ sm.style.left=tlPc(t2)+"%"; sm.title=c?"The chapter \u201c"+c.n+"\u201d, at "+fmtClock(c.t):"Tour stop "+(tourStep+1)+", at "+fmtClock(st.t); } }
 }
 function paintChanges(phIdx){
   var host=document.getElementById("d-changes");
@@ -4633,7 +4647,7 @@ function setProg(f){
 function stopPlay(){
   playing=false;
   var b=document.getElementById("play");
-  if(b) b.textContent="Play";
+  if(b){ b.textContent="Play"; b.setAttribute("aria-pressed","false"); }
   paintExaggeration();
 }
 function togglePlay(){
@@ -4641,7 +4655,7 @@ function togglePlay(){
   if(clock>=T_MAX-0.5) setClock(T_MIN,{force:true});
   playing=true;
   var b=document.getElementById("play");
-  if(b) b.textContent="Pause";
+  if(b){ b.textContent="Pause"; b.setAttribute("aria-pressed","true"); }
   paintExaggeration();
 }
 function setSpeed(x){
@@ -4676,6 +4690,7 @@ function setPresentation(m){
   });
 
   cleanView=(m==="map");
+  syncViewmode();
   syncVis();
   syncSelChip();
   if(typeof requestRender==="function") requestRender(2);
@@ -4709,6 +4724,14 @@ function selectTab(t,focus){
   if(t==="plans") paintPlanText();
   var to=document.getElementById("drawer-back-to"), tb=document.getElementById("tab-"+t); if(to&&tb) to.textContent=tb.textContent;
   if(typeof requestRender==="function") requestRender(2);
+}
+/* Stage 3C (decision 60; docs/STAGE3_SPEC.md section G.2): in Watch the presentation switch stands in the timeline's control row,
+   at full opacity (it was a floating control at 24%, below AA over the map); elsewhere it stands where it stood */
+function syncViewmode(){
+  var vm=document.getElementById("viewmode"), slot=document.getElementById("tb-vm"), home=document.getElementById("viewmode-home");
+  if(!vm||!slot||!home||!home.parentNode||!home.parentNode.insertBefore) return;
+  if(presentation==="watch"){ if(vm.parentNode!==slot) slot.appendChild(vm); }
+  else if(vm.parentNode===slot) home.parentNode.insertBefore(vm,home);
 }
 function syncVis(){
   document.body.classList.toggle("no-dispatch",hideDispatch);
@@ -5418,6 +5441,64 @@ var AUSTERLITZ_DEBUG=(function(){
       setMode("terrain");
       document.body.classList.remove("st-still");
       tabChosen=chosen0; selectTab(tab0);
+    })();
+    /* Stage 3C (docs/STAGE3_SPEC.md sections C.2, D and H; owner decisions 53, 60): the one timeline */
+    (function(){
+      var bad=[], keys=[], grp=[], pl0=playing;
+      setPresentation("study"); select(null,null); if(chapter) setChapter(null); stopPlay(); document.body.classList.add("st-still");
+      setClock(600,{instant:true,force:true,camera:false}); finishTween();
+      var H=document.querySelector(".timebar").getBoundingClientRect().height, ax=document.querySelector(".tb-trackwrap").getBoundingClientRect();
+      function pcAt(x){ return (x-ax.left)/ax.width*100; }
+      document.querySelectorAll("#phases .step").forEach(function(b,i){ var r=b.getBoundingClientRect(), fs=parseFloat(getComputedStyle(b).fontSize);
+        if(Math.abs(pcAt(r.left)-tlPc(PHASES[i].t0))>0.15) bad.push("phase "+i+" at "+pcAt(r.left).toFixed(2)+"%, not "+tlPc(PHASES[i].t0).toFixed(2)+"%");
+        if(fs<12) bad.push("phase "+i+" label "+fs+" px"); });
+      document.querySelectorAll(".act-btn").forEach(function(b,i){ var r=b.getBoundingClientRect(), a=ACTS[i], fs=parseFloat(getComputedStyle(b).fontSize);
+        if(Math.abs(pcAt(r.left)-tlPc(PHASES[a.phases[0]].t0))>0.15||Math.abs(pcAt(r.right)-tlPc(PHASES[a.phases[a.phases.length-1]].t1))>0.15) bad.push("act "+a.id+" not on its phases");
+        if(fs<12) bad.push("act "+a.id+" label "+fs+" px"); });
+      ck("timeline: at most 92 px; the act bands and phase ticks at their share of one time axis; their labels at 12 px or more",
+        H<=92&&!bad.length, Math.round(H*10)/10+" px tall at "+window.innerWidth+" x "+window.innerHeight+(bad.length?"; "+bad.slice(0,4).join("; "):"; 5 acts and 10 phases placed"));
+      var cut=[];
+      for(var i=0;i<PHASES.length;i++){ setClock(PHASES[i].t0+1,{instant:true,camera:false}); finishTween(); var st=document.querySelectorAll("#phases .step")[i];
+        if(st.getAttribute("aria-current")!=="true"||st.scrollWidth>st.clientWidth+1) cut.push(PHASES[i].label); }
+      var short=Array.prototype.filter.call(document.querySelectorAll("#phases .step"),function(b){ return b.getAttribute("aria-current")!=="true"&&b.scrollWidth>b.clientWidth+1; }).map(function(b){ return b.textContent; });
+      ck("timeline: the current phase's label is always whole (decision 53)", !cut.length,
+        window.innerWidth+" px wide, each phase made current in turn"+(cut.length?"; CUT: "+cut.join(", "):"")+"; shortened while not current: "+(short.join(", ")||"none"));
+      /* the slider: one step per key (the window's arrows no longer step it again), and its value exposed */
+      function key(k,sh){ var a=document.activeElement; if(a) a.dispatchEvent(new KeyboardEvent("keydown",{key:k,shiftKey:!!sh,bubbles:true,cancelable:true})); }
+      setClock(600,{instant:true,camera:false}); finishTween(); var rail=document.getElementById("timerail"); rail.focus();
+      [["ArrowRight",0,610],["ArrowRight",1,670],["ArrowLeft",0,660],["PageUp",0,630],["PageUp",0,570],["PageDown",0,630],["Home",0,T_MIN],["End",0,T_MAX]].forEach(function(q){
+        key(q[0],q[1]); finishTween(); var v=rail.getAttribute("aria-valuenow"), vt=rail.getAttribute("aria-valuetext");
+        if(Math.abs(clock-q[2])>1e-6||v!==String(Math.round(clock))||vt!==tlText(clock)) keys.push((q[1]?"Shift+":"")+q[0]+": "+clock+" (want "+q[2]+"), valuenow "+v); });
+      ck("timeline: the slider's keys (arrows 10 min, Shift 60, PageUp and PageDown the phase starts, Home, End), one step each, and its value exposed",
+        !keys.length, keys.length?keys.join("; "):"8 keys from 10:00, each as expected; aria-valuenow and aria-valuetext current");
+      /* the groups: the arrow keys move within acts, phases and events and stop there; events named and selectable */
+      [["#acts",".act-btn"],["#phases",".step"],["#evmarks",".ev-mark"]].forEach(function(g){
+        var B=document.querySelectorAll(g[0]+" "+g[1]), c0=clock; B[0].focus(); key("ArrowRight"); if(document.activeElement!==B[1]) grp.push(g[0]+": ArrowRight did not move");
+        key("End"); if(document.activeElement!==B[B.length-1]) grp.push(g[0]+": End"); if(clock!==c0) grp.push(g[0]+": the clock moved"); });
+      var M=Array.prototype.slice.call(document.querySelectorAll("#evmarks .ev-mark")), names=M.filter(function(b){ return !/^\d\d:\d\d, .+/.test(b.getAttribute("aria-label")||""); });
+      if(names.length) grp.push(names.length+" event markers without a clock and title");
+      var mids=_evTicks.map(function(o){ return o.mid; }); for(var k=1;k<mids.length;k++) if(mids[k]<mids[k-1]) grp.push("event markers not in time order");
+      M[3].click(); if(!selection||selection.kind!=="e"||Math.abs(clock-_evTicks[3].mid)>1e-6) grp.push("a marker's click did not select its event at its clock");
+      select(null,null);
+      togglePlay(); var pp=document.getElementById("play").getAttribute("aria-pressed"); stopPlay(); var pp2=document.getElementById("play").getAttribute("aria-pressed");
+      if(pp!=="true"||pp2!=="false") grp.push("Play's aria-pressed "+pp+"/"+pp2);
+      ck("timeline: acts, phases and events are each one keyboard stop, the arrows stay in them; events named by clock and title; Play pressed while playing",
+        !grp.length, grp.length?grp.join("; "):M.length+" event markers in time order, each named; the clock unmoved by the groups' keys");
+      /* Watch: the presentation switch in the control row at full opacity; the caption carries the derived readings */
+      setClock(570,{instant:true,camera:false}); finishTween(); setPresentation("watch"); var vm=document.getElementById("viewmode"), d=document.querySelector("#tb-cap .der");
+      var inRow=!!vm.closest(".tb-top"), op=getComputedStyle(vm).opacity, derOn=!!d&&getComputedStyle(d).display!=="none";
+      setPresentation("study"); var back=!vm.closest(".timebar"), derOff=!d||getComputedStyle(document.querySelector("#tb-cap .der")).display==="none";
+      ck("Watch: the presentation switch stands in the timeline's control row at full opacity; the caption carries the derived plateau reading (decision 60)",
+        inRow&&+op===1&&derOn&&back&&derOff, "in Watch: in the control row "+inRow+", opacity "+op+", the derived reading "+(derOn?"shown":"MISSING")+"; in Study: the switch back "+back+", the caption's reading "+(derOff?"left to the Now tab":"SHOWN TWICE"));
+      /* the spine index, and the chosen chapter's place on the axis */
+      var nE=SPINE.phases.reduce(function(a,p){ return a+p.events.length; },0), nC=SPINE.phases.reduce(function(a,p){ return a+p.chapters.length; },0), nT=SPINE.phases.reduce(function(a,p){ return a+p.tour.length; },0), sp=[];
+      EVENTS.forEach(function(e){ if(SPINE.phases[phaseAt(evWindow(e)[0])].events.indexOf(e.id)<0) sp.push(e.id); });
+      setChapter("cut"); finishTween(); var sm=document.getElementById("spinemark"), smL=parseFloat(sm.style.left), smOn=!sm.hidden; setChapter(null); finishTween(); var smOff=sm.hidden;
+      ck("spine: acts > phases > events built from the data (no data change); the chosen chapter's place marked on the axis",
+        nE===EVENTS.length&&nC===ANALYSIS.length&&nT===TOUR.length&&!sp.length&&smOn&&Math.abs(smL-tlPc(chapterById("cut").t))<1e-6&&smOff,
+        nE+" events, "+nC+" chapters, "+nT+" tour stops placed in "+SPINE.phases.length+" phases"+(sp.length?"; MISPLACED: "+sp.join(", "):"")+"; the chapter \u201ccut\u201d marked at "+smL.toFixed(2)+"% ("+(smOff?"cleared after":"NOT CLEARED")+")");
+      if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+      document.body.classList.remove("st-still"); if(pl0) togglePlay();
     })();
     var wp=woodPlacement();
     ck("woods: every tree and every scrub of a wood stands inside the wood as the land cover has it", wp.wood>0&&wp.edge>0&&!wp.out.length&&!wp.notModel,

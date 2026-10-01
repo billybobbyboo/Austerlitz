@@ -51,6 +51,10 @@ module.exports.PAPER=PAPER; module.exports.FRAMED=FRAMED;
 /* Stage 3B (docs/STAGE3_SPEC.md sections B.4 and H; owner decision 49): the paper map as entered, Study, framed at least this
    many screen px per true km (east-west, at the Pratzeberg). Before 3B: 17.1 at 1600 x 900 and 5.5 at 1280 x 720. New. */
 const PAPER_MIN_PXKM={"paper-north-up":25,"paper-laptop":19};
+/* Stage 3C (section H): the one timeline's height, at every viewport (before 3C: 170 px at 1600 x 900, 139 at 1366 x 768 and
+   1280 x 720). New */
+const TIMELINE_MAX=92;
+module.exports.TIMELINE_MAX=TIMELINE_MAX;
 module.exports.PAPER_MIN_PXKM=PAPER_MIN_PXKM;
 module.exports.DROP_LIMIT=DROP_LIMIT; module.exports.UNOBSTRUCTED=UNOBSTRUCTED; module.exports.LAYER_MS=LAYER_MS;
 /* Stage 0 guarantees, checked on every baseline case (harness --test). The numbers are the
@@ -98,6 +102,14 @@ module.exports.check=function(name,m){
       f.push(wide?"the dispatch is a card over the map at "+m.viewport[0]+" px (from 1080 px it is the rail's Now tab)":"the dispatch is in the rail at "+m.viewport[0]+" px (below 1080 px it stays a card)");
     if(m.presentation==="study"&&wide&&!m.firstRunVisible&&Dk.tab!=="now") f.push("Study shows the "+Dk.tab+" tab, not the Now tab (decision 55)");
     if(m.presentation==="study"&&!m.firstRunVisible&&Dk.legendOpen) f.push("the legend is open though nobody opened it (it opens closed, decision 49)"); }
+  /* Stage 3C (docs/STAGE3_SPEC.md sections D, G.2 and H; owner decisions 53, 60). All new; run only on a build with the timeline's
+     control row (#tb-vm) */
+  const TL=m.timeline;
+  if(TL&&TL.hasRow){
+    if(TL.height!==null&&TL.height>TIMELINE_MAX) f.push("the timeline is "+TL.height+" px tall (at most "+TIMELINE_MAX+")");
+    if(m.presentation==="watch"&&!(TL.switchInRow&&TL.switchOpacity===1)) f.push("Watch: the presentation switch is not in the timeline's control row at full opacity ("+TL.switchOpacity+")");
+    if(m.presentation==="watch"&&TL.capDerived===false) f.push("Watch: the caption's derived reading is not shown");
+    if(m.phaseLabels720&&m.phaseLabels720.cut.length) f.push("at 1280 x 720 the current phase's label is cut: "+m.phaseLabels720.cut.join(", ")); }
   if(m.paper&&PAPER_MIN_PXKM[name]!==undefined&&!(m.paper.pxPerKm.pratzeberg>=PAPER_MIN_PXKM[name]))
     f.push("paper map as entered: "+m.paper.pxPerKm.pratzeberg+" px per true km, below "+PAPER_MIN_PXKM[name]);
   const Pm=m.paper;

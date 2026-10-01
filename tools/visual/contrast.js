@@ -16,7 +16,8 @@
    Stage 2E: two paper-map states (the paper backdrops, as every state named staff-*): the overview as entered, and close
    on Sokolnitz.
    Stage 3B: Study as it opens (the Now tab, the legend closed), before the legend is opened for the states after it; and the
-   Now tab in the paper theme. */
+   Now tab in the paper theme.
+   Stage 3C: Watch on the paper map and on the landscape (the presentation switch in the timeline, at full opacity). */
 const fs=require("fs"), path=require("path");
 const { chromium } = require("playwright");
 const argv=process.argv.slice(2), html=path.resolve(argv[0]||"austerlitz-command-map.html");
@@ -80,7 +81,11 @@ const STATES=[
   ["staff-overview", ()=>{ select(null,null); setMode("staff"); setPresentation("study"); setClock(570,{force:true}); MAPCAM.frameField(true); updateVisibility(); }],
   ["staff-close", ()=>{ setClock(500,{force:true}); AUSTERLITZ_DEBUG.placeCamera([-80,40,92,-65,0,56]); updateVisibility(); }],
   /* Stage 3B: the Now tab in the paper theme (the states above leave the Plans tab chosen, so it is opened here) */
-  ["staff-now", ()=>{ select(null,null); if(typeof selectTab==="function") selectTab("now"); setClock(570,{force:true}); updateVisibility(); }]
+  ["staff-now", ()=>{ select(null,null); if(typeof selectTab==="function") selectTab("now"); setClock(570,{force:true}); updateVisibility(); }],
+  /* Stage 3C: Watch, its presentation switch in the timeline's control row at full opacity (decision 60), with the caption's
+     derived readings, on the paper map and on the landscape */
+  ["staff-watch", ()=>{ setPresentation("watch"); setClock(570,{force:true}); updateVisibility(); }],
+  ["watch", ()=>{ setMode("terrain"); setPresentation("watch"); setClock(570,{force:true}); updateVisibility(); }]
 ];
 function hx(h){ h=h.replace("#",""); return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)); }
 function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); }

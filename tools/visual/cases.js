@@ -51,5 +51,11 @@ module.exports = [
   /* Stage 3B (docs/STAGE3_SPEC.md section B.2; owner decision 58): below 1080 px the rail starts hidden and the dispatch stays a
      card over the map, as before 3B. The Field vantage in Study at 09:30, as overview-field */
   { name:"narrow-1024", viewport:[1024,768], t:570, presentation:"study", mode:"terrain", cam:[-195,92,156,-33,4,-2],
-    note:"Study at 1024 x 768: below 1080 px the dispatch stays a card (Stage 3B, decision 58)." }
+    note:"Study at 1024 x 768: below 1080 px the dispatch stays a card (Stage 3B, decision 58)." },
+  /* Stage 3C (docs/STAGE3_SPEC.md sections B.3 and H): the phase-8 Overview, where two Allied arrows' heads lay under the old
+     timebar; in Study and in Watch, at 14:40 */
+  { name:"ph8-overview-study", viewport:[1600,900], t:880, presentation:"study", mode:"terrain", cam:[-27,272,41,-27,0,9],
+    note:"Phase 8 (14:40), the Overview vantage, Study." },
+  { name:"ph8-overview-watch", viewport:[1600,900], t:880, presentation:"watch", mode:"terrain", cam:[-27,272,41,-27,0,9],
+    note:"Phase 8 (14:40), the Overview vantage, Watch." }
 ];
