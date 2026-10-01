@@ -282,8 +282,8 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
 .rail-ticks{position:absolute;left:0;right:0;top:5px;height:3px;background:rgba(var(--line-rgb),.16)}
 .rail-ticks i{position:absolute;top:-3px;width:1px;height:9px;background:rgba(var(--line-rgb),.30)}
 .rail-ticks i.hr{height:11px;top:-4px;background:rgba(var(--line-rgb),.46)}
-.rail-ticks b{position:absolute;top:6px;font-size:var(--t-micro);font-weight:400;color:var(--text-muted);
-  transform:translateX(-50%);font-variant-numeric:tabular-nums;line-height:11px}
+.rail-ticks b{position:absolute;top:8.5px;font-size:var(--t-micro);font-weight:400;color:var(--text-muted);
+  transform:translateX(-50%);font-variant-numeric:tabular-nums;line-height:10px}
 .playhead{position:absolute;top:-31px;width:2px;height:53px;background:var(--accent);
   box-shadow:0 0 6px rgba(var(--accent-rgb),.7);pointer-events:none;transform:translateX(-1px);z-index:3}
 /* the place of the chosen chapter (theme) or tour stop on the axis (the spine index, Stage 3C) */
@@ -9655,6 +9655,15 @@ var AUSTERLITZ_DEBUG=(function(){
         if(fs<12) bad.push("act "+a.id+" label "+fs+" px"); });
       ck("timeline: at most 92 px; the act bands and phase ticks at their share of one time axis; their labels at 12 px or more",
         H<=92&&!bad.length, Math.round(H*10)/10+" px tall at "+window.innerWidth+" x "+window.innerHeight+(bad.length?"; "+bad.slice(0,4).join("; "):"; 5 acts and 10 phases placed"));
+      /* the even hours' numerals (section D.2: placed under the rail, their overlap measured): clear of every event marker's box and
+         of one another, inside the timebar */
+      var NR=Array.prototype.map.call(document.querySelectorAll("#railticks b"),function(b){ return b.getBoundingClientRect(); }),
+        MR=Array.prototype.map.call(document.querySelectorAll("#evmarks .ev-mark"),function(b){ return b.getBoundingClientRect(); }),
+        tbB=document.querySelector(".timebar").getBoundingClientRect().bottom, nOv=0, nSelf=0, nOut=0;
+      NR.forEach(function(n,i){ MR.forEach(function(m){ if(Math.min(n.right,m.right)>Math.max(n.left,m.left)&&Math.min(n.bottom,m.bottom)>Math.max(n.top,m.top)) nOv++; });
+        if(i&&n.left<NR[i-1].right) nSelf++; if(n.bottom>tbB) nOut++; });
+      ck("timeline: the hour numerals clear of the event markers and of one another, inside the timebar",
+        NR.length===8&&!nOv&&!nSelf&&!nOut, NR.length+" numerals, "+MR.length+" event markers: "+nOv+" overlaps with a marker, "+nSelf+" with one another, "+nOut+" below the timebar");
       var cut=[];
       for(var i=0;i<PHASES.length;i++){ setClock(PHASES[i].t0+1,{instant:true,camera:false}); finishTween(); var st=document.querySelectorAll("#phases .step")[i];
         if(st.getAttribute("aria-current")!=="true"||st.scrollWidth>st.clientWidth+1) cut.push(PHASES[i].label); }
@@ -9693,8 +9702,8 @@ var AUSTERLITZ_DEBUG=(function(){
       EVENTS.forEach(function(e){ if(SPINE.phases[phaseAt(evWindow(e)[0])].events.indexOf(e.id)<0) sp.push(e.id); });
       setChapter("cut"); finishTween(); var sm=document.getElementById("spinemark"), smL=parseFloat(sm.style.left), smOn=!sm.hidden; setChapter(null); finishTween(); var smOff=sm.hidden;
       ck("spine: acts > phases > events built from the data (no data change); the chosen chapter's place marked on the axis",
-        nE===EVENTS.length&&nC===ANALYSIS.length&&nT===TOUR.length&&!sp.length&&smOn&&Math.abs(smL-tlPc(chapterById("cut").t))<1e-6&&smOff,
-        nE+" events, "+nC+" chapters, "+nT+" tour stops placed in "+SPINE.phases.length+" phases"+(sp.length?"; MISPLACED: "+sp.join(", "):"")+"; the chapter \u201ccut\u201d marked at "+smL.toFixed(2)+"% ("+(smOff?"cleared after":"NOT CLEARED")+")");
+        nE===EVENTS.length&&nC===ANALYSIS.length&&nT===TOUR.length&&!sp.length&&smOn&&Math.abs(smL-tlPc(chapterById("cut").t))<0.01&&smOff,
+        nE+" events, "+nC+" chapters, "+nT+" tour stops placed in "+SPINE.phases.length+" phases"+(sp.length?"; MISPLACED: "+sp.join(", "):"")+"; the chapter \u201ccut\u201d "+(smOn?"marked":"NOT MARKED")+" at "+smL.toFixed(3)+"% (its clock "+tlPc(chapterById("cut").t).toFixed(3)+"%; within 0.01, the style's own precision) ("+(smOff?"cleared after":"NOT CLEARED")+")");
       if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
       document.body.classList.remove("st-still"); if(pl0) togglePlay();
     })();

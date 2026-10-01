@@ -22,7 +22,10 @@ const DROP_LIMIT={"first-run":12,"first-run-laptop":16,"overview-field":11,"over
   "paper-north-up":20,"paper-close":2,"paper-drawer":5,"paper-laptop":21,
   /* Stage 3B: narrow-1024 (the undocked layout, decision 58) has no 2C count; its limit is what the map layer drops there on the
      build before 3B (the Stage 2F build, ee4390a2), so 3B, which leaves that layout as it was, may drop no more */
-  "narrow-1024":5};
+  "narrow-1024":5,
+  /* Stage 3C: the two phase-8 Overview views are new; their limits are the main method's, what the Stage 2C canvas pass hides there
+     (tools/stage2/dom-layer.js "today", AUSTERLITZ_HTML=archive/stage2c-68ac7721.html, which gives overview-field's 11 again) */
+  "ph8-overview-study":7,"ph8-overview-watch":7};
 /* section H: the unobstructed share of the viewport on the Stage 2C build, at the case's viewport and at 1280 x 720, measured
    by this harness (CSS transitions off, the panels at rest). It must not fall. These equal tools/stage2/map-text.js's values
    in every view but one: selected-formation at 1280 x 720 is 6.97% at rest, where map-text.js reported 15.1% with the
@@ -35,11 +38,16 @@ const DROP_LIMIT={"first-run":12,"first-run-laptop":16,"overview-field":11,"over
    selected-formation .1477/.0697, watch-selected .7844/.732, hybrid-dimmed .7869/.7434, paper-north-up .3028/.1511,
    paper-close .3028/.1626, paper-drawer .1477/.0697, paper-laptop .1511/.1511; narrow-1024 (new in 3B) .4845/.4389 on the
    Stage 2F build. The views 3B does not change (Watch, the first run, the undocked view at its own size) keep their values. */
-const UNOBSTRUCTED={"first-run":[0.5442,0.4391],"first-run-laptop":[0.4831,0.4391],"overview-field":[0.631,0.577],"overview-plan":[0.8045,0.7987],
-  "close-sokolnitz":[0.8045,0.7987],"staff-paper":[0.631,0.577],"pratzen-low":[0.8045,0.7709],"pratzen-orbit-min":[0.8045,0.7709],
-  "selected-formation":[0.631,0.577],"watch-selected":[0.7844,0.732],"hybrid-dimmed":[0.7869,0.7434],"pratzen-low-1x":[0.8045,0.7709],
-  "pratzen-low-10x":[0.8045,0.7709],"paper-north-up":[0.631,0.577],"paper-close":[0.631,0.577],"paper-drawer":[0.631,0.577],"paper-laptop":[0.577,0.577],
-  "narrow-1024":[0.4845,0.577]};
+/* Stage 3C (section H): raised again to what the 3C build measures (the one timeline of 90.5 px, 92 in Watch), rounded down to
+   0.1 point; the two phase-8 views are new and take their 3C values. The Stage 3B baselines were: first-run .5442/.4391,
+   first-run-laptop .4831/.4391, overview-field, staff-paper, selected-formation and the paper views .631/.577, overview-plan and
+   close-sokolnitz .8045/.7987, pratzen-low, pratzen-orbit-min, pratzen-low-1x and pratzen-low-10x .8045/.7709, watch-selected
+   .7844/.732, hybrid-dimmed .7869/.7434, paper-laptop .577/.577, narrow-1024 .4845/.577. */
+const UNOBSTRUCTED={"first-run":[0.614,0.49],"first-run-laptop":[0.531,0.49],"overview-field":[0.703,0.628],"overview-plan":[0.897,0.872],
+  "close-sokolnitz":[0.897,0.872],"staff-paper":[0.703,0.628],"pratzen-low":[0.897,0.872],"pratzen-orbit-min":[0.897,0.872],
+  "selected-formation":[0.703,0.628],"watch-selected":[0.879,0.833],"hybrid-dimmed":[0.881,0.847],"pratzen-low-1x":[0.897,0.872],
+  "pratzen-low-10x":[0.897,0.872],"paper-north-up":[0.703,0.628],"paper-close":[0.703,0.628],"paper-drawer":[0.703,0.628],"paper-laptop":[0.628,0.628],
+  "narrow-1024":[0.535,0.628],"ph8-overview-study":[0.703,0.628],"ph8-overview-watch":[0.897,0.872]};
 const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harness machine */
 /* Stage 2E (section J, 2E): every paper-map view is a true north-up plan: GEOREF.NORTH within 0.5 degrees of up; screen pixels
    per true km at four places equal to 1% (on the 2D build's tilted staff map they differ by 6.0% and north is 17.8 degrees
@@ -49,8 +57,9 @@ const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harn
 const PAPER={north:0.5, spread:0.01, scaleBar:0.01}, FRAMED=["paper-north-up","paper-laptop"];
 module.exports.PAPER=PAPER; module.exports.FRAMED=FRAMED;
 /* Stage 3B (docs/STAGE3_SPEC.md sections B.4 and H; owner decision 49): the paper map as entered, Study, framed at least this
-   many screen px per true km (east-west, at the Pratzeberg). Before 3B: 17.1 at 1600 x 900 and 5.5 at 1280 x 720. New. */
-const PAPER_MIN_PXKM={"paper-north-up":25,"paper-laptop":19};
+   many screen px per true km (east-west, at the Pratzeberg). Before 3B: 17.1 at 1600 x 900 and 5.5 at 1280 x 720. New.
+   Stage 3C (section H): raised from 25 and 19 to 28 and 21 (the 3C build: 28.5 and 21.6, with the one timeline). */
+const PAPER_MIN_PXKM={"paper-north-up":28,"paper-laptop":21};
 /* Stage 3C (section H): the one timeline's height, at every viewport (before 3C: 170 px at 1600 x 900, 139 at 1366 x 768 and
    1280 x 720). New */
 const TIMELINE_MAX=92;

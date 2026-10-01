@@ -1,7 +1,8 @@
 # Navigation and structure specification (Stage 3, Part A)
 
 **Status: Part A reviewed (#21); the owner accepted every recommendation of §J, recorded as decisions 47-60 (§0.3). 3B (docked
-panels) is implemented as §B.2 and §I describe; what it found is at the end of §I. Sections A-J below still describe the build they were written against.** Part A was written against `main` at `0f2b17e` (Stage 2F merged,
+panels) is merged (#22); 3C (one timeline, and the spine index) is implemented as §D and §I describe. What each found is at the end
+of §I. Sections A-J below still describe the build they were written against.** Part A was written against `main` at `0f2b17e` (Stage 2F merged,
 #19, and recorded as merged, #20), whose build `austerlitz-command-map.html` is 1,253,655 bytes, md5
 `ee4390a2585f3df170fba82eb1994112`. Before any work: `npm test` (all nine suites and the height guard), `check:data`
 (all 113 declarations byte-identical to `archive/stage2c-68ac7721.html`), `check:chronology` (0 errors) and
@@ -810,6 +811,42 @@ unchanged. Every §H claim for 3B is met; the baselines are raised to these valu
 4. **The self-test runs on a 1366 x 768 page, so it checks the docked layout**; the undocked one is checked by the new harness
    view `narrow-1024` (the dispatch a card there; its limits are the Stage 2F build's own values).
 5. **Not tried:** the 340 px rail that decision 54 allowed; the rail stays 300 px.
+
+**3C, as delivered (fact; `CHANGELOG.md`, Stage 3C).** Built as §D.2, §D.3 and the 3C row describe, under decisions 50, 53 and 60:
+- one timeline of 90.5 px (92 in Watch) on one proportional axis: act bands, phase ticks, the rail (the slider), the event
+  markers; a 34 px control row above it with a one-line caption; the current phase's label always whole;
+- the situation's readings at the top of the Now tab (in the card below 1080 px), and in the caption in Watch;
+- Watch's presentation switch in the control row at full opacity (G.2);
+- the slider's keys and value, the acts, phases and events as roving groups, Play as a toggle;
+- the spine index built from the data, and the chosen chapter's or tour stop's place marked on the axis.
+
+Measured (`docs/stage3-evidence/3c-report.md`, both builds on the same harness): the Study views 63.1% → 70.4% unobstructed at
+1600 x 900 and 57.8% → 62.9% at 1280 x 720; the Watch views 78.4-80.5% → 88.0-89.8% and 73.2-79.9% → 83.3-87.2%; the first run
+54.4 / 43.9% → 61.5 / 49.0%; the paper map as entered 25.4 → 28.5 px per true km (1600 x 900) and 19.8 → 21.6 (1280 x 720). Every
+§H claim for 3C is met; the baselines and the paper map's floors are raised to these values. Seven things were not as the plan
+assumed:
+1. **The first build was 94 px**, over the 92 px limit: the clock's box set the control row's height (35 px). Setting its line
+   height to 1 gives 90.5 px. In Watch the switch sets the row: 92 px, at the limit.
+2. **The centre-separation reading lived only in the situation row**, which the plan did not list. With the row gone, both derived
+   readings (the plateau, phases 0-6, and the centre separation) lead the Now tab, and in Watch, which has no Now tab, they stand in
+   the caption; in Study the caption hides them so they are not shown twice.
+3. **The situation sits in the dispatch**, so below 1080 px it is at the top of the dispatch card, not in a tab (decision 58's
+   layout is otherwise unchanged).
+4. **The event markers are drawn on the rail's line but are their own group, not children of the slider**: a slider has one
+   value and its children are presentational, so markers inside it could not be reached as buttons. Each is a button named by
+   its clock and title, and the group is one tab stop.
+5. **The theme and tour marks show only the place** of the chosen chapter or stop (`#spinemark`): marking a chapter's moment against
+   the events, and its misfits (§C.1), needs the data task, which has not been asked for.
+6. **`check:contrast` has 26 states**: Watch on the paper map and on the landscape are added, for the switch in the row and the
+   caption's derived readings.
+7. **The hour numerals** (the probe left them out; §D.2 asked 3C to place them and measure their overlap): placed under the rail's
+   line, their boxes overlapped four event markers' boxes by 0.7 px at 1600, 1366 and 1280 px wide (the decision markers are the
+   larger). Lowered by 2.5 px with a 10 px line, they clear every marker (13.5 px below the rail's top against the markers' 13.1)
+   and one another, inside the timebar, whose height does not change; a self-test check holds it.
+
+The two new phase-8 views take their drop limits by the main method (what the Stage 2C canvas pass hides there: 7 and 7), not from
+the 3B build, because 3C changes those views: drops rise against 3B in six views, within every limit, as ground the old timebar
+covered enters the map layer's pass.
 
 ## J. Questions for the owner
 

@@ -5457,6 +5457,15 @@ var AUSTERLITZ_DEBUG=(function(){
         if(fs<12) bad.push("act "+a.id+" label "+fs+" px"); });
       ck("timeline: at most 92 px; the act bands and phase ticks at their share of one time axis; their labels at 12 px or more",
         H<=92&&!bad.length, Math.round(H*10)/10+" px tall at "+window.innerWidth+" x "+window.innerHeight+(bad.length?"; "+bad.slice(0,4).join("; "):"; 5 acts and 10 phases placed"));
+      /* the even hours' numerals (section D.2: placed under the rail, their overlap measured): clear of every event marker's box and
+         of one another, inside the timebar */
+      var NR=Array.prototype.map.call(document.querySelectorAll("#railticks b"),function(b){ return b.getBoundingClientRect(); }),
+        MR=Array.prototype.map.call(document.querySelectorAll("#evmarks .ev-mark"),function(b){ return b.getBoundingClientRect(); }),
+        tbB=document.querySelector(".timebar").getBoundingClientRect().bottom, nOv=0, nSelf=0, nOut=0;
+      NR.forEach(function(n,i){ MR.forEach(function(m){ if(Math.min(n.right,m.right)>Math.max(n.left,m.left)&&Math.min(n.bottom,m.bottom)>Math.max(n.top,m.top)) nOv++; });
+        if(i&&n.left<NR[i-1].right) nSelf++; if(n.bottom>tbB) nOut++; });
+      ck("timeline: the hour numerals clear of the event markers and of one another, inside the timebar",
+        NR.length===8&&!nOv&&!nSelf&&!nOut, NR.length+" numerals, "+MR.length+" event markers: "+nOv+" overlaps with a marker, "+nSelf+" with one another, "+nOut+" below the timebar");
       var cut=[];
       for(var i=0;i<PHASES.length;i++){ setClock(PHASES[i].t0+1,{instant:true,camera:false}); finishTween(); var st=document.querySelectorAll("#phases .step")[i];
         if(st.getAttribute("aria-current")!=="true"||st.scrollWidth>st.clientWidth+1) cut.push(PHASES[i].label); }
@@ -5495,8 +5504,8 @@ var AUSTERLITZ_DEBUG=(function(){
       EVENTS.forEach(function(e){ if(SPINE.phases[phaseAt(evWindow(e)[0])].events.indexOf(e.id)<0) sp.push(e.id); });
       setChapter("cut"); finishTween(); var sm=document.getElementById("spinemark"), smL=parseFloat(sm.style.left), smOn=!sm.hidden; setChapter(null); finishTween(); var smOff=sm.hidden;
       ck("spine: acts > phases > events built from the data (no data change); the chosen chapter's place marked on the axis",
-        nE===EVENTS.length&&nC===ANALYSIS.length&&nT===TOUR.length&&!sp.length&&smOn&&Math.abs(smL-tlPc(chapterById("cut").t))<1e-6&&smOff,
-        nE+" events, "+nC+" chapters, "+nT+" tour stops placed in "+SPINE.phases.length+" phases"+(sp.length?"; MISPLACED: "+sp.join(", "):"")+"; the chapter \u201ccut\u201d marked at "+smL.toFixed(2)+"% ("+(smOff?"cleared after":"NOT CLEARED")+")");
+        nE===EVENTS.length&&nC===ANALYSIS.length&&nT===TOUR.length&&!sp.length&&smOn&&Math.abs(smL-tlPc(chapterById("cut").t))<0.01&&smOff,
+        nE+" events, "+nC+" chapters, "+nT+" tour stops placed in "+SPINE.phases.length+" phases"+(sp.length?"; MISPLACED: "+sp.join(", "):"")+"; the chapter \u201ccut\u201d "+(smOn?"marked":"NOT MARKED")+" at "+smL.toFixed(3)+"% (its clock "+tlPc(chapterById("cut").t).toFixed(3)+"%; within 0.01, the style's own precision) ("+(smOff?"cleared after":"NOT CLEARED")+")");
       if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
       document.body.classList.remove("st-still"); if(pl0) togglePlay();
     })();

@@ -276,8 +276,8 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
 .rail-ticks{position:absolute;left:0;right:0;top:5px;height:3px;background:rgba(var(--line-rgb),.16)}
 .rail-ticks i{position:absolute;top:-3px;width:1px;height:9px;background:rgba(var(--line-rgb),.30)}
 .rail-ticks i.hr{height:11px;top:-4px;background:rgba(var(--line-rgb),.46)}
-.rail-ticks b{position:absolute;top:6px;font-size:var(--t-micro);font-weight:400;color:var(--text-muted);
-  transform:translateX(-50%);font-variant-numeric:tabular-nums;line-height:11px}
+.rail-ticks b{position:absolute;top:8.5px;font-size:var(--t-micro);font-weight:400;color:var(--text-muted);
+  transform:translateX(-50%);font-variant-numeric:tabular-nums;line-height:10px}
 .playhead{position:absolute;top:-31px;width:2px;height:53px;background:var(--accent);
   box-shadow:0 0 6px rgba(var(--accent-rgb),.7);pointer-events:none;transform:translateX(-1px);z-index:3}
 /* the place of the chosen chapter (theme) or tour stop on the axis (the spine index, Stage 3C) */
