@@ -17,7 +17,8 @@
    on Sokolnitz.
    Stage 3B: Study as it opens (the Now tab, the legend closed), before the legend is opened for the states after it; and the
    Now tab in the paper theme.
-   Stage 3C: Watch on the paper map and on the landscape (the presentation switch in the timeline, at full opacity). */
+   Stage 3C: Watch on the paper map and on the landscape (the presentation switch in the timeline, at full opacity).
+   Stage 3E: the "?" overlay over the landscape and over the paper map. */
 const fs=require("fs"), path=require("path");
 const { chromium } = require("playwright");
 const argv=process.argv.slice(2), html=path.resolve(argv[0]||"austerlitz-command-map.html");
@@ -85,7 +86,10 @@ const STATES=[
   /* Stage 3C: Watch, its presentation switch in the timeline's control row at full opacity (decision 60), with the caption's
      derived readings, on the paper map and on the landscape */
   ["staff-watch", ()=>{ setPresentation("watch"); setClock(570,{force:true}); updateVisibility(); }],
-  ["watch", ()=>{ setMode("terrain"); setPresentation("watch"); setClock(570,{force:true}); updateVisibility(); }]
+  ["watch", ()=>{ setMode("terrain"); setPresentation("watch"); setClock(570,{force:true}); updateVisibility(); }],
+  /* Stage 3E: the "?" overlay, every row of the key table, over the landscape and over the paper map */
+  ["help", ()=>{ setPresentation("study"); if(typeof setHelp==="function") setHelp(true); }],
+  ["staff-help", ()=>{ if(typeof setHelp==="function"){ setHelp(false); setMode("staff"); setHelp(true); } }]
 ];
 function hx(h){ h=h.replace("#",""); return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)); }
 function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); }

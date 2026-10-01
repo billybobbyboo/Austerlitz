@@ -187,6 +187,21 @@ p.conf{font-size:var(--t-small);color:var(--text-muted);line-height:1.5;margin:0
   border-bottom:1px solid var(--line);padding-bottom:5px}
 .sheet p{font-family:var(--serif);font-size:var(--t-prose);line-height:1.66;color:var(--text-body);margin:0 0 12px}
 #modal-close{position:absolute;right:14px;top:12px;background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);cursor:pointer}
+/* Stage 3E: the "?" overlay, a sheet like the sources' */
+#help{position:fixed;inset:0;z-index:52;background:rgba(var(--scrim-rgb),.72);display:flex;align-items:center;justify-content:center;padding:24px}
+#help[hidden]{display:none}
+#help-close{position:absolute;right:14px;top:12px;background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);cursor:pointer}
+.help-sheet{max-width:720px}
+#help-body:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+.hp-row{display:grid;grid-template-columns:minmax(132px,max-content) 1fr;gap:4px 16px;padding:5px 0;border-bottom:1px solid var(--line);
+  font-size:var(--t-ui);line-height:1.45;color:var(--text-body)}
+.hp-row:last-child{border-bottom:0}
+.hp-row kbd{font-family:var(--sans);font-size:var(--t-small);color:var(--text-hi);white-space:nowrap}
+.hp-row kbd b{display:inline-block;min-width:18px;padding:1px 6px;margin:0 2px 2px 0;border:1px solid var(--line-2);border-radius:2px;
+  text-align:center;font-weight:400;background:rgba(var(--panel-rgb),.6)}
+.tb-help{min-width:32px;min-height:32px;font-weight:600}
+.tb-top .tb-help{display:none}
+body.pm-watch .tb-top .tb-help{display:inline-block}
 
 #toast{position:fixed;left:calc(50% + var(--rail)/2);top:26px;transform:translateX(-50%);z-index:40;
   font-family:var(--serif);font-size:var(--t-prose);color:var(--text-hi);background:rgba(var(--scrim-rgb),.82);
@@ -650,9 +665,9 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 <div id="vignette" aria-hidden="true"></div>
 
 <div id="viewmode" role="group" aria-label="Presentation">
-  <button class="vm-btn" data-vm="study" aria-pressed="true" title="Everything: panels, dossiers, sources (1)">Study</button>
-  <button class="vm-btn" data-vm="watch" aria-pressed="false" title="Battlefield and timeline only (2)">Watch</button>
-  <button class="vm-btn" data-vm="map" aria-pressed="false" title="Clean battlefield (3)">Map</button>
+  <button class="vm-btn" data-vm="study" aria-pressed="true" title="Everything: panels, dossiers, sources (key 1)">Study</button>
+  <button class="vm-btn" data-vm="watch" aria-pressed="false" title="Battlefield and timeline only (key 2)">Watch</button>
+  <button class="vm-btn" data-vm="map" aria-pressed="false" title="The battlefield alone: no panels (key 3)">Clean</button>
 </div>
 <div id="viewmode-home" hidden><!-- the presentation switch's place outside Watch (app.js syncViewmode) --></div>
 
@@ -726,7 +741,8 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 <div class="tools">
   <div class="grp">
     <button class="t" id="tourbtn">Guided tour</button>
-    <button class="t" id="layersbtn" aria-expanded="false">Map&hellip;</button>
+    <button class="t" id="layersbtn" aria-expanded="false">Layers&hellip;</button>
+    <button class="t tb-help" id="helpbtn" aria-haspopup="dialog" aria-label="Keys and controls (?)" title="Keys and controls (?)">?</button>
   </div>
   <div class="tlabel">Vantage</div>
   <div class="grp" id="vantages">
@@ -738,19 +754,19 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   </div>
 </div>
 
-<div id="layerpop" hidden role="dialog" aria-label="Map settings">
-  <div class="lp-head"><span>Map</span>
+<div id="layerpop" hidden role="dialog" aria-label="Layers and ground">
+  <div class="lp-head"><span>Layers</span>
     <button id="layerclose" aria-label="Close">&times;</button></div>
   <div class="lp-sec">
     <p class="lp-lbl">How the ground is drawn</p>
-    <div class="modes" role="group" aria-label="Map mode">
-      <button class="mode-btn" data-m="terrain" aria-pressed="true">Terrain</button>
-      <button class="mode-btn" data-m="staff" aria-pressed="false">Staff map</button>
-      <button class="mode-btn" data-m="hybrid" aria-pressed="false">Hybrid</button>
+    <div class="modes" role="group" aria-label="Ground">
+      <button class="mode-btn" data-m="terrain" aria-pressed="true">Landscape</button>
+      <button class="mode-btn" data-m="staff" aria-pressed="false">Paper map</button>
+      <button class="mode-btn" data-m="hybrid" aria-pressed="false">Landscape with counters</button>
     </div>
   </div>
   <div class="lp-sec">
-    <p class="lp-lbl">What the map shows</p>
+    <p class="lp-lbl">What is drawn</p>
     <button class="lp-row layer-btn" data-l="symbols" aria-pressed="true">
       <b>Formation counters</b><i>Military symbols with commander and strength</i></button>
     <button class="lp-row layer-btn" data-l="arrows" aria-pressed="true">
@@ -824,8 +840,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
     <div class="k"><span id="exag-symbols"></span></div>
     <div id="goingkey"><!-- rows written from TOKENS.sym.going by paintKey (app.js), the table the going layer draws --></div>
     <div class="hint" id="lg-hint">drag to pan &middot; right-drag or Shift-drag to turn &middot; scroll to zoom toward the pointer &middot; double-click to centre &middot; click or Tab to a counter or a name</div>
-    <div class="hint keys"><b>1</b> study <b>2</b> watch <b>3</b> map only &middot; <b>M</b> map mode
-      &middot; <b>D</b> text &middot; <b>F</b> <span id="fxstate">FX on</span> &middot; <b>space</b> play &middot; <b>Esc</b> back</div>
+    <div class="hint keys"><b>?</b> all keys and controls</div>
   </div>
 </div>
 
@@ -846,6 +861,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
     </div>
     <div class="clockbox"><span id="clockread">04:00</span><small>2 Dec 1805</small></div>
     <div class="tb-cap" id="tb-cap"></div>
+    <button class="t tb-help" id="helpbtn2" aria-haspopup="dialog" aria-label="Keys and controls (?)" title="Keys and controls (?)">?</button>
     <div class="tb-vm" id="tb-vm"><!-- Watch: the presentation switch (#viewmode) stands here (app.js syncViewmode, decision 60) --></div>
     <div class="grp speeds" aria-label="Playback speed">
       <button class="t spd-btn" data-s="0.5" aria-pressed="false">&frac12;&times;</button>
@@ -876,6 +892,15 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   <div id="drawer-body"></div>
 </aside>
 
+<!-- Stage 3E (docs/STAGE3_SPEC.md section F; owner decisions 50, 51): every key and pointer control, written from the one key
+     table (app.js KEYS), which the key handlers read too. "?" opens it; Esc or "?" closes it and focus returns. -->
+<div id="help" role="dialog" aria-modal="true" aria-labelledby="help-t" hidden>
+  <div class="sheet help-sheet">
+    <button id="help-close" type="button" aria-label="Close (Esc)">&times;</button>
+    <h2 id="help-t">Keys and controls</h2>
+    <div id="help-body" tabindex="0" aria-label="The keys and controls, by group"></div>
+  </div>
+</div>
 <div id="modal" role="dialog" aria-modal="true" aria-label="Accuracy and sources">
   <div class="sheet">
     <button id="modal-close" type="button" aria-label="Close">&times;</button>
@@ -5544,7 +5569,7 @@ function buildObjective(o){
   var sp=new THREE.Sprite(m); sp.position.set(w[0],displayHeight(w[0],w[1])+3.0,w[1]);
   sp.scale.set(4.4,4.4,1); sp.renderOrder=21;
   asLabel(sp); ovAdd(sp); overlayMats.push(m);
-  ovMarkers.push({pos:sp.position.clone(),r:1.8});   /* the marker's cross reaches 1.72 units: labels keep clear of it (2D) */
+  ovMarkers.push({pos:sp.position.clone(),r:1.8,r0:1.8,sp:sp,s0:4.4,fade:1});   /* the marker's cross reaches 1.72 units: labels keep clear of it (2D) */
   ovText.push({text:o[2],pos:sp.position.clone(),acl:3,r:1.8,obj:true});
 }
 function retireOld(){
@@ -6364,7 +6389,7 @@ function buildEventLayer(){
     var sp=new THREE.Sprite(m);
     sp.position.set(w[0],gy+4.2,w[1]); sp.scale.set(5.4,5.4,1); sp.renderOrder=23;
     asLabel(sp); eventGroup.add(sp);
-    eventMarks.push({e:e,sp:sp,m:m,world:sp.position.clone()});
+    eventMarks.push({e:e,sp:sp,m:m,world:sp.position.clone(),r:2.1,r0:2.1,s0:5.4,fade:1});
   });
   buildPlateauRing();
   buildSelRing();
@@ -6384,6 +6409,28 @@ function updateEventLayer(){
   }
 }
 function cleanViewHidesEvents(){ return presentation==="map"; }
+/* Stage 3E (docs/STAGE3_SPEC.md section G.3; owner decision 57): the event glyphs and the objective markers (the overlays' and
+   the plans') keep a largest size on screen, SYM_MAX_PX, and fade out within SYM_FADE of the eye, as the counters and labels keep
+   one size. They are world-sized sprites: at the orbit minimum the eye stood 1.8 units from an event glyph drawn 6,100 px wide,
+   and the map layer, which keeps labels clear of it, placed nothing. Every harness view but that one draws them at 189 px or less
+   (close-sokolnitz), so the cap changes only views closer than those. The layer's obstacle discs shrink and fade with them.
+   Run after updateVisibility has set their opacities (each drawn frame, and settle). */
+var SYM_MAX_PX=192, SYM_FADE=[4,12];
+function symbolSizes(){
+  if(camera.isOrthographicCamera){   /* the paper map: drawn at their authored size, as before (no eye stands among them) */
+    var reset=function(o,sp){ o.fade=1; o.r=o.r0; if(sp) sp.scale.set(o.s0,o.s0,1); if(o.op0!==undefined&&sp) sp.material.opacity=o.op0; };
+    eventMarks.forEach(function(k){ reset(k,k.sp); }); ovMarkers.forEach(function(m){ reset(m,m.sp); }); planMarkers.forEach(function(m){ reset(m,m.sp); });
+    return; }
+  function one(o,pos,sp,mat,op){
+    var wpp=worldPerPx(pos), f=Math.min(1,SYM_MAX_PX*wpp/o.s0), d=camera.position.distanceTo(pos);
+    o.fade=Math.max(0,Math.min(1,(d-SYM_FADE[0])/(SYM_FADE[1]-SYM_FADE[0])));
+    o.r=o.r0*f;
+    if(sp){ sp.scale.set(o.s0*f,o.s0*f,1); if(mat&&op!==undefined) mat.opacity=op*o.fade; }
+  }
+  eventMarks.forEach(function(k){ one(k,k.world,k.sp,k.m,k.m.opacity); });
+  ovMarkers.forEach(function(m){ if(m.sp) one(m,m.pos,m.sp,m.sp.material,m.sp.material.opacity); });
+  planMarkers.forEach(function(m){ if(m.sp) one(m,m.pos,m.sp,m.sp.material,m.op0); });
+}
 
 /* ============================================================
    DERIVED READINGS
@@ -6679,7 +6726,7 @@ function planObjective(obj,colour){
   var sp=new THREE.Sprite(m);
   sp.position.set(c[0],displayHeight(c[0],c[1])+4.0,c[1]);
   sp.scale.set(7.2,7.2,1); sp.renderOrder=24; asLabel(sp); planGroup.add(sp);
-  planMarkers.push({pos:sp.position.clone(),r:3.1});   /* the cross reaches 3.06 units */
+  planMarkers.push({pos:sp.position.clone(),r:3.1,r0:3.1,sp:sp,s0:7.2,op0:0.95,fade:1});   /* the cross reaches 3.06 units */
   planLabel(obj.n,{pos:sp.position.clone(),acl:3,r:3.1});
 }
 /* a plan label: annotation text, the map layer's; the ribbon carries the side */
@@ -7032,14 +7079,10 @@ function mlInit(){
      the arrow keys pan and + and - zoom about the centre. Elsewhere the arrows keep stepping the clock. */
   ML.root.addEventListener("keydown",function(e){
     if(e.target!==ML.root) return;
-    /* Stage 3D: the landscape takes the keys too (section A.3) */
-    if(mode!=="staff"){ if(LANDCAM.key(e)){ e.preventDefault(); e.stopPropagation(); } return; }
-    var v=[renderer.domElement.clientWidth||innerWidth,viewH()], d=Math.round(Math.min(v[0],v[1])*0.12), done=true;
-    if(e.key==="ArrowLeft") MAPCAM.pan(d,0); else if(e.key==="ArrowRight") MAPCAM.pan(-d,0);
-    else if(e.key==="ArrowUp") MAPCAM.pan(0,d); else if(e.key==="ArrowDown") MAPCAM.pan(0,-d);
-    else if(e.key==="+"||e.key==="=") MAPCAM.zoomAt(v[0]/2,v[1]/2,1/1.25); else if(e.key==="-"||e.key==="_") MAPCAM.zoomAt(v[0]/2,v[1]/2,1.25);
-    else done=false;
-    if(done){ e.preventDefault(); e.stopPropagation(); freeCam=true; }
+    /* Stage 3E: the key table's map rows (KEYS); Stage 3D: the landscape takes the keys too (section A.3) */
+    var r=keyRow(e,"map"); if(!r) return;
+    if(KEYS_DRY){ KEYS_DRY.push("map:"+r.id); e.preventDefault(); e.stopPropagation(); return; }
+    if(r.run(e)!==false){ e.preventDefault(); e.stopPropagation(); }
   });
   /* a web font that arrives after an item was measured changes its size: measure every item again and draw */
   if(document.fonts&&document.fonts.addEventListener){
@@ -7203,9 +7246,10 @@ function mlObstacles(VW,VH){
   function disc(p,r){ var c=px(p.x,p.y,p.z); if(!c) return;
     _mlV.copy(p).applyMatrix4(camera.matrixWorldInverse); var d=-_mlV.z; if(d<=camera.near) return;
     var rp=r/worldPerPx(p); R.push([c[0]-rp,c[1]-rp,c[0]+rp,c[1]+rp]); }
-  if(layerOn.arrows&&ovFadeIn>0.05){ ovHeads.forEach(tri); ovMarkers.forEach(function(m){ disc(m.pos,m.r); }); }
-  if(planGroup){ planHeads.forEach(tri); planMarkers.forEach(function(m){ disc(m.pos,m.r); }); }
-  if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(k.sp.visible&&k.m.opacity>0.05) disc(k.world,2.1); });
+  /* Stage 3E: a symbol faded near the eye is no obstacle; a capped one keeps clear only its drawn size (symbolSizes) */
+  if(layerOn.arrows&&ovFadeIn>0.05){ ovHeads.forEach(tri); ovMarkers.forEach(function(m){ if(m.fade>0.05) disc(m.pos,m.r); }); }
+  if(planGroup){ planHeads.forEach(tri); planMarkers.forEach(function(m){ if(m.fade>0.05) disc(m.pos,m.r); }); }
+  if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(k.sp.visible&&k.m.opacity>0.05) disc(k.world,k.r); });
   return R;
 }
 function mlHits(x0,y0,x1,y1,L){
@@ -7653,6 +7697,7 @@ function updateVisibility(){
   updateScaleBar(); updateRose();
   applyOverlayOpacity();
   updateEventLayer();
+  symbolSizes();   /* Stage 3E: event glyphs and objective markers capped on screen, faded near the eye */
   updateSelRing();
   updatePlanLinks();   /* the map layer lays out in the drawn frame (mlLayout), not here */
 }
@@ -7934,6 +7979,160 @@ var LANDCAM=(function(){
     screenOf:screenOf, stats:stats, grabbing:function(){ return !!grab; }};
 })();
 
+/* ---------------- names (Stage 3E; docs/STAGE3_SPEC.md section E; owner decision 50) ----------------
+   One table of the words the interface shows for the three axes of the view. The identifiers stay (terrain, staff, hybrid,
+   study, watch, map): the harness drives the archived builds through them and keys its limits by case names. The buttons, their
+   titles and accessible names, the layers panel and the help overlay read this table; shell.html carries the same words. */
+var LABELS={
+  presentation:{
+    study:{label:"Study", title:"Everything: panels, dossiers, sources", key:"1"},
+    watch:{label:"Watch", title:"Battlefield and timeline only", key:"2"},
+    map:{label:"Clean", title:"The battlefield alone: no panels", key:"3"}
+  },
+  ground:{
+    terrain:{label:"Landscape", title:"The ground in relief, with figures"},
+    staff:{label:"Paper map", title:"A north-up plan on flat ground, with counters"},
+    hybrid:{label:"Landscape with counters", title:"The ground in relief, with the paper map's counters"}
+  },
+  layers:{button:"Layers\u2026", heading:"Layers", aria:"Layers and ground", ground:"Ground", shows:"What is drawn"}
+};
+function applyLabels(){
+  document.querySelectorAll(".vm-btn").forEach(function(b){ var L=LABELS.presentation[b.dataset.vm]; if(!L) return;
+    b.textContent=L.label; b.title=L.title+" (key "+L.key+")"; });
+  document.querySelectorAll(".mode-btn").forEach(function(b){ var L=LABELS.ground[b.dataset.m]; if(!L) return; b.textContent=L.label; b.title=L.title+" (M cycles)"; });
+  var lb=document.getElementById("layersbtn"); if(lb) lb.textContent=LABELS.layers.button;
+  var lp=document.getElementById("layerpop"); if(lp){ lp.setAttribute("aria-label",LABELS.layers.aria);
+    var h=lp.querySelector(".lp-head span"); if(h) h.textContent=LABELS.layers.heading;
+    var g=lp.querySelector(".modes"); if(g) g.setAttribute("aria-label",LABELS.layers.ground); }
+}
+
+/* ---------------- keys (Stage 3E; docs/STAGE3_SPEC.md section F; owner decisions 50, 51) ----------------
+   One table of every key and pointer control. The window's key handler and the map layer's run the rows of their scope
+   (keyRow); the "?" overlay lists every row; the self-test checks, by a dry run, that each row's keys reach that row and that
+   other keys reach none. Rows of the scopes "item", "rail", "group" and "pointer" are bound by their own widgets (the map
+   layer's items, the time rail, the roving groups and the tablist, bindCanvas) and listed here so the overlay shows them.
+   shift: true or false when it matters, absent when it does not. Keys with Ctrl, Meta or Alt reach no row. */
+var ARROWS=["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"];
+var KEYS=[
+  {id:"time", scope:"window", group:"Time", keys:["ArrowLeft","ArrowRight"], show:["←","→"], text:"Back or forward ten minutes; with Shift, an hour. Stops playback.",
+    run:function(e){ stopPlay(); setClock(clock+(e.key==="ArrowRight"?1:-1)*(e.shiftKey?60:10)); }},
+  {id:"play", scope:"window", group:"Time", keys:[" "], show:["Space"], text:"Play or pause (on a focused button, Space presses the button)",
+    run:function(e){ e.preventDefault(); togglePlay(); }},
+  {id:"nextev", scope:"window", group:"Time", keys:["."], show:["."], text:"The next event", run:function(){ jumpEvent(1); }},
+  {id:"prevev", scope:"window", group:"Time", keys:[","], show:[","], text:"The previous event", run:function(){ jumpEvent(-1); }},
+  {id:"study", scope:"window", group:"View and ground", keys:["1"], show:["1"], text:function(){ return presLine("study"); },
+    run:function(){ setPresentation("study"); }},
+  {id:"watch", scope:"window", group:"View and ground", keys:["2"], show:["2"], text:function(){ return presLine("watch"); },
+    run:function(){ setPresentation("watch"); }},
+  {id:"clean", scope:"window", group:"View and ground", keys:["3"], show:["3"], text:function(){ return presLine("map"); },
+    run:function(){ setPresentation("map"); }},
+  {id:"h", scope:"window", group:"View and ground", keys:["h","H"], show:["H"], text:function(){ return LABELS.presentation.map.label+" and "+LABELS.presentation.study.label+", in turn"; },
+    run:function(){ setPresentation(presentation==="map"?"study":"map"); }},
+  {id:"u", scope:"window", group:"View and ground", keys:["u","U"], show:["U"], text:function(){ return LABELS.presentation.study.label+" and "+LABELS.presentation.watch.label+", in turn"; },
+    run:function(){ setPresentation(presentation==="study"?"watch":"study"); }},
+  {id:"m", scope:"window", group:"View and ground", keys:["m","M"], show:["M"], text:function(){ var G=LABELS.ground; return "The ground: "+G.terrain.label+", "+G.staff.label+", "+G.hybrid.label+", in turn"; },
+    run:function(){ setMode(mode==="terrain"?"staff":(mode==="staff"?"hybrid":"terrain")); }},
+  {id:"esc", scope:"window", group:"View and ground", keys:["Escape"], show:["Esc"], text:"Back: close the first card, the layers panel or the tour; else everything shown in Study, and the chapter, the selection and the sources sheet cleared",
+    run:function(){
+      if(firstRunOpen){ closeFirst(null); return; }
+      if(!document.getElementById("layerpop").hidden){ window.__setPop(false); return; }
+      if(tourStep>=0){ exitTour(); return; }
+      if(presentation!=="study"||hideDispatch) showEverything();
+      if(chapter) setChapter(null);
+      select(null,null);
+      document.getElementById("modal").classList.remove("on"); delete document.getElementById("modal").dataset.sources; }},
+  {id:"d", scope:"window", group:"Layers and panels", keys:["d","D"], show:["D"], text:"Show or hide the dispatch's text", run:function(){ setDispatchVisible(hideDispatch); }},
+  {id:"c", scope:"window", group:"Layers and panels", keys:["c","C"], show:["C"], text:"Contours on or off",
+    run:function(){ var cb=document.querySelector('.layer-btn[data-l="contours"]'); if(cb) cb.click(); }},
+  {id:"t", scope:"window", group:"Layers and panels", keys:["t","T"], show:["T"], text:"The terrain study on or off",
+    run:function(){ var ab=document.querySelector('.layer-btn[data-l="analysis"]'); if(ab) ab.click(); }},
+  {id:"f", scope:"window", group:"Layers and panels", keys:["f","F"], show:["F"], text:"Visual effects (post-processing) on or off", run:function(){ setFXEnabled(!FX.on); }},
+  {id:"help", scope:"window", group:"Layers and panels", keys:["?"], show:["?"], text:"This list; ? or Esc closes it", run:function(){ setHelp(true); }},
+  {id:"mappan", scope:"map", group:"The map, when it has focus (Tab to it)", keys:ARROWS, shift:false, show:["←","↑","→","↓"], text:"Pan",
+    run:function(e){ mapKey(e); }},
+  {id:"mapturn", scope:"map", group:"The map, when it has focus (Tab to it)", keys:ARROWS, shift:true, show:["Shift","←","↑","→","↓"],
+    text:function(){ return "On the "+LABELS.ground.terrain.label.toLowerCase()+": turn 15° and tilt 5°; on the "+LABELS.ground.staff.label.toLowerCase()+": pan"; },
+    run:function(e){ mapKey(e); }},
+  {id:"mapzoom", scope:"map", group:"The map, when it has focus (Tab to it)", keys:["+","=","-","_"], show:["+","−"], text:"Zoom in or out about the centre",
+    run:function(e){ mapKey(e); }},
+  {id:"item", scope:"item", group:"The map, when it has focus (Tab to it)", keys:["Enter"," "], show:["Tab","Enter"], text:"Tab reaches the counters and names on the map, in order of importance; Enter or Space selects one"},
+  {id:"rail", scope:"rail", group:"The timeline", keys:[], show:["←","→","Home","End","PgUp","PgDn"], text:"On the time rail: ten minutes (Shift, an hour), the day's start and end, the phases' starts"},
+  {id:"groups", scope:"group", group:"The timeline", keys:[], show:["←","→","Home","End"], text:"In the acts, the phases, the events and the panel's tabs: move between them; Enter or Space chooses"},
+  {id:"drag", scope:"pointer", group:"Pointer and touch", keys:[], show:["Drag"], text:"Pan the map (the ground under the pointer stays under it)"},
+  {id:"rdrag", scope:"pointer", group:"Pointer and touch", keys:[], show:["Right-drag"], text:function(){ return "Turn and tilt the "+LABELS.ground.terrain.label.toLowerCase()+" (also Shift or Ctrl and drag)"; }},
+  {id:"wheel", scope:"pointer", group:"Pointer and touch", keys:[], show:["Wheel"], text:"Zoom toward the pointer"},
+  {id:"dbl", scope:"pointer", group:"Pointer and touch", keys:[], show:["Double-click"], text:function(){ return "Centre the "+LABELS.ground.terrain.label.toLowerCase()+" on that point"; }},
+  {id:"click", scope:"pointer", group:"Pointer and touch", keys:[], show:["Click"], text:"Select a counter, a name or an event; on empty ground, clear the selection"},
+  {id:"touch", scope:"pointer", group:"Pointer and touch", keys:[], show:["One finger","Two fingers"], text:"Pan; pinch to zoom and twist to turn"},
+  {id:"dev", scope:"window", group:"Developer", keys:["`"], show:["`"], text:"The developer readout: frame and render statistics",
+    run:function(){ devOn=!devOn; _devT=0; paintDevStats(performance.now()); }}
+];
+function keyText(r){ return typeof r.text==="function"?r.text():r.text; }
+function presLine(k){ var L=LABELS.presentation[k]; return L.label+" ("+L.title.charAt(0).toLowerCase()+L.title.slice(1)+")"; }
+/* the row of a scope a key event reaches, if any */
+function keyRow(e,scope){
+  if(e.ctrlKey||e.metaKey||e.altKey) return null;
+  for(var i=0;i<KEYS.length;i++){ var r=KEYS[i];
+    if(r.scope===scope&&r.keys.indexOf(e.key)>=0&&(r.shift===undefined||r.shift===!!e.shiftKey)) return r; }
+  return null;
+}
+var KEYS_DRY=null;   /* the self-test's dry run: the rows reached are recorded, not run */
+/* the map layer's keys: the paper map pans and zooms (Stage 2E), the landscape (LANDCAM, Stage 3D) also turns and tilts */
+function mapKey(e){
+  if(mode!=="staff") return LANDCAM.key(e);
+  var v=[renderer.domElement.clientWidth||innerWidth,viewH()], d=Math.round(Math.min(v[0],v[1])*0.12);
+  if(e.key==="ArrowLeft") MAPCAM.pan(d,0); else if(e.key==="ArrowRight") MAPCAM.pan(-d,0);
+  else if(e.key==="ArrowUp") MAPCAM.pan(0,d); else if(e.key==="ArrowDown") MAPCAM.pan(0,-d);
+  else if(e.key==="+"||e.key==="=") MAPCAM.zoomAt(v[0]/2,v[1]/2,1/1.25); else if(e.key==="-"||e.key==="_") MAPCAM.zoomAt(v[0]/2,v[1]/2,1.25);
+  else return false;
+  freeCam=true; return true;
+}
+/* the overlay: built from the table; a modal dialog that keeps focus inside and returns it on closing */
+var HELP_GROUPS=["Time","View and ground","Layers and panels","The map, when it has focus (Tab to it)","The timeline","Pointer and touch","Developer"];
+function buildHelp(){
+  var host=document.getElementById("help-body"); if(!host) return;
+  var html="";
+  HELP_GROUPS.forEach(function(g){ var rows=KEYS.filter(function(r){ return r.group===g; }); if(!rows.length) return;
+    html+='<h3>'+esc(g)+'</h3>';
+    rows.forEach(function(r){ html+='<div class="hp-row" data-key="'+r.id+'"><kbd>'+r.show.map(function(k){ return "<b>"+esc(k)+"</b>"; }).join("")+'</kbd><span>'+esc(keyText(r))+'</span></div>'; }); });
+  host.innerHTML=html;
+}
+var _helpFrom=null;
+function helpOpen(){ var h=document.getElementById("help"); return !!h&&!h.hidden; }
+function setHelp(open){
+  var h=document.getElementById("help"); if(!h) return;
+  if(open===helpOpen()) return;
+  if(open){ _helpFrom=document.activeElement; buildHelp(); h.hidden=false; document.getElementById("help-close").focus({preventScroll:true}); }
+  else { h.hidden=true; var f=_helpFrom; _helpFrom=null;
+    if(f&&f.focus&&document.contains(f)&&f!==document.body) f.focus({preventScroll:true}); else if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); }
+  ["helpbtn","helpbtn2"].forEach(function(id){ var b=document.getElementById(id); if(b) b.setAttribute("aria-expanded",String(open)); });
+  requestRender(2);
+}
+function bindHelp(){
+  var h=document.getElementById("help"); if(!h) return;
+  ["helpbtn","helpbtn2"].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener("click",function(e){ e.stopPropagation(); setHelp(true); }); });
+  document.getElementById("help-close").addEventListener("click",function(){ setHelp(false); });
+  h.addEventListener("click",function(e){ if(e.target===h) setHelp(false); });   /* the scrim around the sheet */
+  h.addEventListener("keydown",function(e){
+    if(e.key==="Escape"||e.key==="?"){ e.preventDefault(); e.stopPropagation(); setHelp(false); return; }
+    if(e.key==="Tab"){   /* focus stays in the dialog: the close button and the scrolling list */
+      var F=[document.getElementById("help-close"),document.getElementById("help-body")], i=F.indexOf(document.activeElement);
+      e.preventDefault(); F[(i+(e.shiftKey?F.length-1:1))%F.length].focus({preventScroll:true}); return; }
+    e.stopPropagation();   /* modal: no other key acts while it is open */
+  });
+}
+/* the window's keys. Space and Enter on a focused button, link or tab do what the platform does (press it), not play */
+function onWindowKey(e){
+  if(helpOpen()) return;   /* the dialog has the keys (bindHelp) */
+  if(e.ctrlKey||e.metaKey||e.altKey) return;
+  var t=e.target, ctl=t&&t.closest&&t.closest("button,a[href],input,select,textarea,summary,[role='button'],[role='tab']");
+  if((e.key===" "||e.key==="Enter")&&ctl) return;
+  var r=keyRow(e,"window");
+  if(KEYS_DRY){ KEYS_DRY.push(r?r.id:null); return; }
+  if(firstRunOpen && e.key!=="Escape" && e.key!=="Tab" && e.key!=="Shift" && e.key!=="`" && !(t&&t.closest&&t.closest("#firstrun"))) closeFirst(null);
+  if(r) r.run(e);
+}
+
 /* ---------------- interaction ---------------- */
 /* Stage 3D (owner decision 48): on the landscape a left-drag pans and a right-drag (or Shift or Ctrl + left-drag) orbits;
    the wheel zooms toward the cursor; a double-click centres the ground under it; one finger pans and two pinch and twist.
@@ -7992,6 +8191,7 @@ function el(tag,cls,html){ var e=document.createElement(tag); if(cls) e.classNam
 function esc(s){ return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
 function buildUI(){
+  applyLabels();   /* Stage 3E */
   bindCanvas();
 
   /* the one timeline (Stage 3C): act bands, phase ticks, the rail, the event markers, on one time axis */
@@ -8116,37 +8316,8 @@ function buildUI(){
   document.getElementById("srcbtn").addEventListener("click",function(){ openSources(); });
   document.getElementById("modal-close").addEventListener("click",function(){ var md=document.getElementById("modal"); md.classList.remove("on"); delete md.dataset.sources; });
 
-  window.addEventListener("keydown",function(e){
-    if(firstRunOpen && e.key!=="Escape" && e.key!=="Tab" && e.key!=="Shift" && e.key!=="`" && !(e.target&&e.target.closest&&e.target.closest("#firstrun"))) closeFirst(null);
-    if(e.key==="ArrowRight"){ stopPlay(); setClock(clock+(e.shiftKey?60:10)); }
-    if(e.key==="ArrowLeft"){ stopPlay(); setClock(clock-(e.shiftKey?60:10)); }
-    if(e.key==="."){ jumpEvent(1); }
-    if(e.key==="f"||e.key==="F"){ setFXEnabled(!FX.on); }
-    if(e.key===","){ jumpEvent(-1); }
-    if(e.key==="Escape"){
-      var fr2=document.getElementById("firstrun");
-      if(firstRunOpen){ closeFirst(null); return; }
-      if(!document.getElementById("layerpop").hidden){ window.__setPop(false); return; }
-      if(tourStep>=0){ exitTour(); return; }
-      if(presentation!=="study"||hideDispatch) showEverything();
-      if(chapter) setChapter(null);
-      select(null,null);
-      document.getElementById("modal").classList.remove("on"); delete document.getElementById("modal").dataset.sources;
-    }
-    if(e.key==="h"||e.key==="H"){ setPresentation(presentation==="map"?"study":"map"); }
-    if(e.key==="d"||e.key==="D"){ setDispatchVisible(hideDispatch); }
-    if(e.key==="u"||e.key==="U"){ setPresentation(presentation==="study"?"watch":"study"); }
-    if(e.key==="c"||e.key==="C"){ var cb=document.querySelector('.layer-btn[data-l="contours"]'); if(cb) cb.click(); }
-    if(e.key==="t"||e.key==="T"){ var ab=document.querySelector('.layer-btn[data-l="analysis"]'); if(ab) ab.click(); }
-    if(e.key===" "){ e.preventDefault(); togglePlay(); }
-    if(e.key==="`"){ devOn=!devOn; _devT=0; paintDevStats(performance.now()); }
-    if(e.key==="1") setPresentation("study");
-    if(e.key==="2") setPresentation("watch");
-    if(e.key==="3") setPresentation("map");
-    if(e.key==="m"||e.key==="M"){
-      setMode(mode==="terrain"?"staff":(mode==="staff"?"hybrid":"terrain"));
-    }
-  });
+  window.addEventListener("keydown",onWindowKey);   /* Stage 3E: the key table (KEYS) */
+  bindHelp();
   /* render on demand: input asks for frames; a drag only while a button is held */
   ["pointerdown","pointerup","wheel","keydown","click"].forEach(function(ev){
     window.addEventListener(ev,function(){ lastInput=performance.now(); requestRender(2); },{capture:true,passive:true}); });
@@ -9444,6 +9615,68 @@ var AUSTERLITZ_DEBUG=(function(){
       kept<1e-6&&won<1e-6, "Follow off: the double-click's point ends "+kept.toExponential(1)+" units from the target; Follow on (a vantage glide in flight): the phase's view ends "+won.toExponential(1)+" from its preset");
     el.setPointerCapture=spc;
   }
+  /* ---- Stage 3E (docs/STAGE3_SPEC.md section H): the key table, the overlay, the names, the symbols' largest size ---- */
+  function keyChecks3E(ck){
+    function kd(el,k,o){ o=o||{}; el.dispatchEvent(new KeyboardEvent("keydown",{key:k,shiftKey:!!o.shift,ctrlKey:!!o.ctrl,metaKey:!!o.meta,altKey:!!o.alt,bubbles:true,cancelable:true})); }
+    if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+    setHelp(false);
+    /* 1. a dry run: every row's keys reach that row, other keys none, and no two rows claim one key */
+    var wrong=[], n=0, claims={};
+    KEYS_DRY=[];
+    KEYS.forEach(function(r){
+      if(r.scope!=="window"&&r.scope!=="map") return;
+      r.keys.forEach(function(k){ (r.shift===undefined?[false,true]:[r.shift]).forEach(function(sh){
+        var c=r.scope+"|"+k+"|"+sh; if(claims[c]&&claims[c]!==r.id) wrong.push(k+" claimed by "+claims[c]+" and "+r.id); claims[c]=r.id;
+        KEYS_DRY.length=0;
+        if(r.scope==="map"){ ML.root.focus({preventScroll:true}); kd(ML.root,k,{shift:sh}); ML.root.blur(); }
+        else kd(document.body,k,{shift:sh});
+        var want=(r.scope==="map"?"map:":"")+r.id; n++;
+        if(KEYS_DRY[0]!==want) wrong.push((sh?"Shift+":"")+(k===" "?"Space":k)+" reached "+KEYS_DRY[0]+", not "+want); }); }); });
+    var unb=["q","x","a","0","4","/","Home","End","PageUp","Enter","Tab","Backspace"], hit=[];
+    unb.forEach(function(k){ KEYS_DRY.length=0; kd(document.body,k); if(KEYS_DRY[0]) hit.push(k+" → "+KEYS_DRY[0]); });
+    var mods=0; [["c",{ctrl:true}],["m",{meta:true}],["1",{alt:true}],["ArrowRight",{ctrl:true}]].forEach(function(q){ KEYS_DRY.length=0; kd(document.body,q[0],q[1]); if(KEYS_DRY.length) mods++; });
+    var tb=document.getElementById("tourbtn"); tb.focus({preventScroll:true}); KEYS_DRY.length=0; kd(tb," "); var spaceOnButton=KEYS_DRY.length; tb.blur();
+    KEYS_DRY=null;
+    var bound=KEYS.filter(function(r){ return r.scope==="window"||r.scope==="map"; }).length;
+    ck("keys: every key the window and the map layer bind is a row of the key table and every row's keys reach it; other keys, keys with Ctrl, Meta or Alt, and Space on a button reach none",
+      !wrong.length&&!hit.length&&!mods&&!spaceOnButton&&n>0,
+      KEYS.length+" rows ("+bound+" bound by the two handlers, the rest by their own widgets or the pointer); "+n+" key presses reached their rows"+(wrong.length?"; WRONG: "+wrong.slice(0,6).join("; "):"")+
+      "; unbound keys reaching a row: "+(hit.length?hit.join(", "):"none")+"; with a modifier: "+mods+" of 4; Space on a focused button: "+(spaceOnButton?"REACHED A ROW":"pressed the button, no row"));
+    /* 2. the overlay lists every row, in its groups; opening and closing return focus; Tab stays inside */
+    tb.focus({preventScroll:true}); kd(tb,"?",{shift:true});
+    var hp=document.getElementById("help"), open1=!hp.hidden, inFocus=document.activeElement===document.getElementById("help-close");
+    var rows=hp.querySelectorAll(".hp-row"), listed=Array.prototype.map.call(rows,function(e){ return e.dataset.key; });
+    var missing=KEYS.filter(function(r){ return listed.indexOf(r.id)<0; }).map(function(r){ return r.id; }), ungrouped=KEYS.filter(function(r){ return HELP_GROUPS.indexOf(r.group)<0; }).map(function(r){ return r.id; });
+    kd(document.activeElement,"Tab"); var t1=document.activeElement&&document.activeElement.id; kd(document.activeElement,"Tab"); var t2=document.activeElement&&document.activeElement.id;
+    var clk=clock; kd(document.activeElement,"ArrowRight"); var modal=clock===clk;
+    kd(document.activeElement,"Escape"); var closed=hp.hidden, back=document.activeElement===tb;
+    document.getElementById("helpbtn").focus({preventScroll:true}); document.getElementById("helpbtn").click(); var byBtn=!hp.hidden; kd(document.activeElement,"?"); var closed2=hp.hidden, back2=document.activeElement===document.getElementById("helpbtn");
+    if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+    ck("keys: the “?” overlay lists every row of the key table in its groups; a modal dialog, focus moved in, kept in by Tab, and returned when Esc or “?” closes it",
+      open1&&inFocus&&rows.length===KEYS.length&&!missing.length&&!ungrouped.length&&t1==="help-body"&&t2==="help-close"&&modal&&closed&&back&&byBtn&&closed2&&back2,
+      rows.length+" rows listed of "+KEYS.length+(missing.length?"; MISSING: "+missing.join(", "):"")+(ungrouped.length?"; NO GROUP: "+ungrouped.join(", "):"")+"; opened by ? on the focused tour button: "+open1+
+      ", focus on its close button: "+inFocus+"; Tab: "+t1+", then "+t2+"; the arrow key inside it left the clock "+(modal?"unchanged":"MOVED")+"; Esc closed it: "+closed+", focus back on the tour button: "+back+
+      "; the ? button opened it: "+byBtn+", ? closed it: "+closed2+", focus back on that button: "+back2);
+    /* 3. the names (decision 50): no presentation labelled "Map", no ground labelled "Staff map"; the identifiers unchanged */
+    var vm=Array.prototype.map.call(document.querySelectorAll(".vm-btn"),function(b){ return b.dataset.vm+"="+b.textContent.trim(); }),
+      gm=Array.prototype.map.call(document.querySelectorAll(".mode-btn"),function(b){ return b.dataset.m+"="+b.textContent.trim(); });
+    var badN=vm.concat(gm).filter(function(x){ return /=(Map|Staff map|Terrain|Hybrid)$/.test(x); });
+    var lb=document.getElementById("layersbtn").textContent.trim(), lpa=document.getElementById("layerpop").getAttribute("aria-label");
+    ck("names: the presentations, the ground and the layers labelled from one table (decision 50); identifiers unchanged",
+      !badN.length&&vm.join()==="study=Study,watch=Watch,map=Clean"&&gm.join()==="terrain=Landscape,staff=Paper map,hybrid=Landscape with counters"&&lb==="Layers…"&&lpa==="Layers and ground",
+      vm.join(", ")+"; "+gm.join(", ")+"; the layers button “"+lb+"”, its panel “"+lpa+"”");
+    /* 4. decision 57: event glyphs and objective markers at most SYM_MAX_PX on screen, faded near the eye */
+    setClock(590,{instant:true,force:true,camera:false}); finishTween(); var k0=eventMarks.filter(function(k){ return k.e.id==="kamensky"; })[0];
+    tween=null; camArc=null; freeCam=true; landCam.position.copy(k0.world).add(new THREE.Vector3(0,1.2,1.35)); orbitTarget.copy(k0.world); landCam.lookAt(orbitTarget); clampCamera();
+    settle(4,true);
+    var big=0, faded=0, near=0; eventMarks.forEach(function(k){ if(!k.sp.visible) return; var px=k.sp.scale.x/worldPerPx(k.world); big=Math.max(big,px); if(camera.position.distanceTo(k.world)<SYM_FADE[0]){ near++; if(k.m.opacity<=1e-6&&k.fade===0) faded++; } });
+    ovMarkers.forEach(function(m){ if(m.sp){ big=Math.max(big,m.sp.scale.x/worldPerPx(m.pos)); } });
+    landPlace(VANTAGE.field); settle(4,true);
+    var same=eventMarks.every(function(k){ return !k.sp.visible||Math.abs(k.sp.scale.x-k.s0)<1e-9||k.s0/worldPerPx(k.world)>SYM_MAX_PX; });
+    ck("symbols: event glyphs and objective markers at most "+SYM_MAX_PX+" px on screen, and faded within "+SYM_FADE[0]+" units of the eye (decision 57); drawn as before where smaller",
+      big<=SYM_MAX_PX+0.5&&near>0&&faded===near&&same,
+      "the eye 1.8 units from the live glyph “kamensky”: the largest symbol drawn "+big.toFixed(1)+" px; "+faded+" of "+near+" glyphs within "+SYM_FADE[0]+" units faded out; from the Field vantage every glyph at its authored size: "+same);
+  }
   function applyCase(spec,aimOf){
     closeFirst(null);
     stopPlay(); if(tourStep>=0) exitTour();
@@ -9885,7 +10118,7 @@ var AUSTERLITZ_DEBUG=(function(){
       PHASES.forEach(function(ph){ views.push(["phase "+ph.id+" ("+ph.label+")",ph.cam]); });
       ANALYSIS.forEach(function(a){ views.push(["chapter "+a.id,a.cam]); });
       TOUR.forEach(function(st,k){ views.push(["tour stop "+(k+1),st.cam]); });
-      views.push(["staff map",[-27,262,41,-27,0,9]]);
+      views.push(["the paper map's preset",[-27,262,41,-27,0,9]]);
       var fixedMin=1e9, fixedWorst="", below=[];
       views.forEach(function(v){ var c=reframe(v[1]), cl=c[1]-camGround(c[0],c[2]);   /* presets are re-framed at use */
         if(cl<fixedMin){ fixedMin=cl; fixedWorst=v[0]; } if(cl<CAM_CLEAR) below.push(v[0]+" ("+cl.toFixed(2)+")"); });
@@ -9902,7 +10135,7 @@ var AUSTERLITZ_DEBUG=(function(){
       FEATURES.forEach(function(f){ chkEye(centreEye(f.p,82),"place "+f.id); });
       TERRAIN_LINES.forEach(function(tl){ chkEye(centreEye(tl.p[Math.floor(tl.p.length/2)],92),"terrain line "+tl.n); });
       ck("camera: every fixed and computed view is above the ground", below.length===0,
-        views.length+" fixed views (vantages, phases, chapters, tour stops, staff map), lowest "+fixedMin.toFixed(1)+" units at "+fixedWorst+
+        views.length+" fixed views (vantages, phases, chapters, tour stops, the paper map's preset), lowest "+fixedMin.toFixed(1)+" units at "+fixedWorst+
         "; "+comp+" centring views, lowest "+compMin.toFixed(1)+" at "+compWorst+(below.length?"; BELOW THE FLOOR: "+below.slice(0,8).join(", "):""));
 
       /* 3. glides, through the same arc code the application uses */
@@ -10124,6 +10357,7 @@ var AUSTERLITZ_DEBUG=(function(){
       document.body.classList.remove("st-still"); if(pl0) togglePlay();
     })();
     cameraChecks3D(ck);   /* Stage 3D */
+    keyChecks3E(ck);      /* Stage 3E */
     var wp=woodPlacement();
     ck("woods: every tree and every scrub of a wood stands inside the wood as the land cover has it", wp.wood>0&&wp.edge>0&&!wp.out.length&&!wp.notModel,
       wp.wood+" trees and "+wp.edge+" edge scrub of the woods, all where the drawn cover is wood ("+wp.notModel+" where the model's own class is not)"+
