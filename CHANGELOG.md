@@ -56,7 +56,7 @@ harness was run on that build with this part's measurement code (the two new vie
   2 → 1, paper-laptop 12 → 11), while more items are placed in every view but five, which are unchanged (ph8-overview-study 30 →
   35, ph8-overview-watch 31 → 36). Derived: anchors that the 170 px timebar covered are now in the pass; the layer counts an anchor
   under a panel apart (`underPanel`), neither placed nor dropped, so a smaller timebar can add drops as well as placements. Overlaps 0, nothing over a panel or a head, map text at its floor and AA as
-  rendered (lowest 4.89:1, staff-paper; was 5.07), pass times 0.5-1.9 ms.
+  rendered (lowest 4.89:1, staff-paper; was 5.07), pass times 0.5-2.3 ms.
 
 **Tests** (none loosened; new or stricter)
 - **Unobstructed baselines raised** (`thresholds.js`) to this build's values rounded down to 0.1 point, never below the 3B values
@@ -77,14 +77,17 @@ harness was run on that build with this part's measurement code (the two new vie
   switch in the control row at full opacity, and back in Study; the spine index (25 events, 10 chapters, 9 tour stops in 10 phases)
   and the chapter's mark on the axis.
 - **`check:contrast`: 26 states** (two new: Watch on the paper map and on the landscape, the switch in the timeline and the
-  caption's derived readings).
+  caption's derived readings). On the 3B build these two states fail on the switch's buttons (1.50-2.02:1, four elements). This
+  build reads 3,927 elements, 0 below AA; the 3B build reads 4,216 in the same 26 states, 5-17 more in each: its timebar printed
+  each phase's times above its name and had the situation row, where the phase ticks now carry the name only (the axis, its
+  numerals and the slider's value give the time).
 
 **Checks on this build**
 - `npm test`: all 9 suites pass, and the height guard (61 sites, 0 presentation sites calling `height()`/`hAt()`).
 - `npm run check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`.
 - `npm run check:chronology`: 0 errors.
-- `npm run check:visual`: RESULT_VISUAL
-- `npm run check:contrast`: RESULT_CONTRAST
+- `npm run check:visual`: all checks passed, 20 views, the self-test 110 of 110; the slider and an event marker by real key presses.
+- `npm run check:contrast`: 3,927 text elements in 26 states, 0 below AA, 0 below 10.5 px.
 - `npm run check:baseline`: moved to this build; passes.
 
 **Not done, or open**
