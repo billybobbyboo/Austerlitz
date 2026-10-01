@@ -127,6 +127,8 @@ async function interact(page,it,vp){
         await page.evaluate(()=>{ if(window.AUSTERLITZ_DEBUG) AUSTERLITZ_DEBUG.settle(2); }); };
       const vp0=page.viewportSize(); await page.setViewportSize({width:1280,height:720}); await frame();
       m.unobstructed720=await page.evaluate(()=>window.__aus.unobstructed());
+      /* Stage 3C: every phase's label whole when current, at 1280 x 720 (one Study view and one Watch view) */
+      if(["overview-field","overview-plan"].includes(c.name)) m.phaseLabels720=await page.evaluate(()=>window.__aus.phaseLabels?window.__aus.phaseLabels():null);
       await page.setViewportSize(vp0); await frame();
     }
     m.ms=Date.now()-t0; m.note=c.note;
@@ -147,6 +149,22 @@ async function interact(page,it,vp){
     report.selfTest=st;
     if(!st) report.failures.push("build exposes no AUSTERLITZ_DEBUG.selfTest");
     else st.checks.forEach(ch=>{ console.log((ch.ok?"PASS ":"FAIL ")+ch.name+"  "+ch.detail); if(!ch.ok) report.failures.push(ch.name+": "+ch.detail); });
+    /* Stage 3C (docs/STAGE3_SPEC.md section H): the slider by real key presses, from 10:00 (a build with the one timeline) */
+    if(await first.evaluate(()=>!!document.getElementById("tb-vm"))){
+      await first.evaluate(()=>{ setPresentation("study"); setClock(600,{instant:true,force:true,camera:false}); });
+      await first.focus("#timerail"); const seq=[["ArrowRight",610],["Shift+ArrowRight",670],["ArrowLeft",660],["PageUp",630],["PageUp",570],["PageDown",630],["Home",240],["End",1080]], got=[];
+      for(const [k,want] of seq){ await first.keyboard.press(k); const r=await first.evaluate(()=>({c:clock,v:document.getElementById("timerail").getAttribute("aria-valuenow")}));
+        got.push(k+" "+r.c); if(Math.abs(r.c-want)>1e-6||r.v!==String(Math.round(r.c))) report.failures.push("the slider by real key presses: "+k+" gave "+r.c+" (want "+want+"), aria-valuenow "+r.v); }
+      const vt=await first.evaluate(()=>{ const r=document.getElementById("timerail"); return {t:r.getAttribute("aria-valuetext"),want:tlText(clock)}; });
+      if(vt.t!==vt.want) report.failures.push("the slider's aria-valuetext "+JSON.stringify(vt.t)+", want "+JSON.stringify(vt.want));
+      /* an event marker by keyboard: focus the group, step to the third marker, Enter selects it and moves the clock to it */
+      await first.evaluate(()=>{ setClock(240,{instant:true,force:true,camera:false}); select(null,null); });
+      await first.focus("#evmarks .ev-mark[tabindex='0']"); await first.keyboard.press("ArrowRight"); await first.keyboard.press("ArrowRight"); await first.keyboard.press("Enter");
+      const ev=await first.evaluate(()=>{ const a=document.activeElement, o=_evTicks.find(x=>x.el===a);
+        return {name:a&&a.getAttribute("aria-label"), mid:o&&o.mid, id:o&&o.e.id, clock:clock, sel:selection?selection.kind+":"+selection.id:null}; });
+      got.push("event marker Enter: "+ev.name+" → clock "+ev.clock+", "+ev.sel);
+      if(!ev.id||Math.abs(ev.clock-ev.mid)>1e-6||ev.sel!=="e:"+ev.id) report.failures.push("an event marker by real key presses: "+JSON.stringify(ev));
+      report.sliderKeys=got; console.log("slider by real key presses: "+got.join(", ")); }
     const T=require("./thresholds.js");
     for(const [name,m] of Object.entries(report.cases)) T.check(name,m).forEach(f=>{ console.log("FAIL "+name+": "+f); report.failures.push(name+": "+f); });
   }

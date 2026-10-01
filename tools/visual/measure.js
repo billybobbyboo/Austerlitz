@@ -218,6 +218,22 @@
     return {hasNowTab:!!document.getElementById("tab-now"), dispatchInRail:!!(dp&&dp.closest&&dp.closest(".rail")), docked:document.body.classList.contains("docked"),
       legendOpen:!!(lg&&!lg.classList.contains("collapsed")), tab:(document.querySelector('.tab-btn[aria-selected="true"]')||{dataset:{}}).dataset.t||null};
   }
+  /* Stage 3C (docs/STAGE3_SPEC.md sections D and H): the timeline's height; where the presentation switch stands and whether
+     the caption's derived reading is shown; and, made current in turn, whether every phase's label is whole */
+  function timeline(){
+    var tb=document.querySelector(".timebar"), vm=document.getElementById("viewmode"), d=document.querySelector("#tb-cap .der");
+    var shown=function(e){ if(!e) return false; var cs=getComputedStyle(e); return cs.display!=="none"&&cs.visibility!=="hidden"&&e.getBoundingClientRect().width>0; };
+    return {height:shown(tb)?+tb.getBoundingClientRect().height.toFixed(1):null, hasRow:!!document.getElementById("tb-vm"),
+      switchInRow:!!(vm&&vm.closest&&vm.closest(".tb-top")), switchOpacity:vm?+getComputedStyle(vm).opacity:null,
+      capDerived:d?shown(d):null};
+  }
+  function phaseLabels(){
+    if(!document.getElementById("tb-vm")||typeof setClock!=="function") return null;
+    var t0=clock, cut=[], S=document.querySelectorAll("#phases .step");
+    for(var i=0;i<PHASES.length;i++){ setClock(PHASES[i].t0+1,{instant:true,camera:false}); var b=S[i]; if(b.scrollWidth>b.clientWidth+1) cut.push(PHASES[i].label); }
+    setClock(t0,{instant:true,camera:false});
+    return {width:window.innerWidth, cut:cut};
+  }
   /* the section E method on the layer, refined for DOM text (Stage 2D). In each text's box on the rendered frame, the pixels
      at least half the largest RGB distance from its ink are its surround, and the contrast reported is the 10th percentile
      over them. Two refinements: only pixels wholly inside the box are read (section E added 2 px round a sprite's estimated
@@ -387,7 +403,7 @@
       dispatchVisible:(function(){ var d=document.querySelector(".dispatch"); return !!d&&getComputedStyle(d).display!=="none"&&d.getBoundingClientRect().width>0; })(),
       stats:(D()&&D().stats)?D().stats():null,
       layer:layer(), unobstructed:unobstructed(), legendOverDispatch:legendOverDispatch(), paper:paperMap(),
-      legendOverPanels:legendOverPanels(), docking:docking(), viewport:[window.innerWidth,window.innerHeight]
+      legendOverPanels:legendOverPanels(), docking:docking(), viewport:[window.innerWidth,window.innerHeight], timeline:timeline()
     };
   }
 
@@ -432,5 +448,5 @@
 
   window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures,
                 overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, layerTexts:layerTexts,
-                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking};
+                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, phaseLabels:phaseLabels};
 })();

@@ -1,8 +1,104 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 3C: one timeline, and the spine index (docs/STAGE3_SPEC.md §C.2, §D, §H, §I; owner decisions 50, 53, 60)
+
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,281,813 bytes, md5 `6ae3f8a76dc6fecc8bcd87eb3b1b6dfc`**
+(was 1,265,532 bytes, md5 `543a9bf0…`, Stage 3B).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move. No
+  data, track, text of the record or `OVERLAYS` change. Presentation only: the spine index is built from the data as it is.
+
+**Before building (fact).** `main` (f4eb8bb, 3B merged as #22) matched `check:baseline` (md5 `543a9bf0…`, 1,265,532 bytes). The
+harness was run on that build with this part's measurement code (the two new views included), as the "before" of every table below.
+
+**What changed** (`shell.html`, `style.css`, `app.js`)
+- **One timeline of 90.5 px** (decision 53; 92 px in Watch, where the presentation switch sits in it), was 170.1 px at 1600 x 900
+  and 139.1 at 1366 x 768 and 1280 x 720. One proportional time axis, 04:00-18:00 (`tlPc`), carries, top to bottom:
+  - the act bands (15 px) and the phase ticks (16 px), each at its share of the axis; their labels at 12.5 px, ellipsised when
+    their share is too narrow, **except the current phase's, which is always whole** (it widens over its neighbours on a scrim);
+  - the rail (22 px), with the hour ticks, the even hours' numerals under its line (clear of every event marker), the playhead,
+    and the spine mark;
+  - the event markers on the rail's line, each at its event's window, a group of their own (not children of the slider).
+  The control row above it (34 px) holds the transport, the clock, a one-line caption, Watch's presentation switch, the speeds
+  and the scale bar. The situation row and its close button are gone.
+- **The caption** (`#tb-cap`) reads act · phase title · the live event. The derived readings (the Allied strength on the heights,
+  phases 0-6, and the centre separation) stand in the caption in Watch, where there is no Now tab, and are hidden there in Study,
+  where they lead the Now tab.
+- **The situation moves to the top of the Now tab** (`#situation`, the dispatch's first child): its derived readings, the live
+  event and why it matters. Below 1080 px it is at the top of the dispatch card.
+- **Watch's presentation switch stands in the timeline's control row at full opacity** (decision 60; was a floating control at 24%,
+  1.27-2.66:1 over the map), moved there by `syncViewmode` on entering Watch and back to its own place (`#viewmode-home`) on leaving.
+- **Keyboard and screen reader** (§D.3):
+  - the rail is a `slider`: ← → 10 minutes, Shift 60, Home and End the day's ends, PageUp and PageDown the phase starts; its
+    `aria-valuenow` and `aria-valuetext` ("10:10, Pratzeberg, The Pratzen Strike") stay current, by key, pointer or play;
+  - the acts, the phases and the event markers are each one tab stop (a roving `tabindex`), the arrow keys moving within them;
+    each event marker is a button named by its clock and title ("06:07, The counter-march"), and Enter or a click selects it
+    and moves the clock to it;
+  - Play is a toggle button (`aria-pressed`).
+- **The spine index** (decision 50, §C.2): `SPINE` (acts > phases > events, with the chapters and tour stops in each phase), built
+  from the data at start. The chosen chapter's or tour stop's place is marked on the axis (`#spinemark`).
+
+**Per view, before (Stage 3B) and after** (`tools/stage3/report-3b.js`; `docs/stage3-evidence/3c-report.md`, `3c-sheet.jpg`)
+
+| views | unobstructed, 1600 x 900 (or the case's) | at 1280 x 720 |
+|---|---|---|
+| Study: overview-field, selected-formation, the paper views, ph8-overview-study | 63.1% → 70.4% | 57.8% → 62.9% |
+| Watch: overview-plan, close-sokolnitz, the Pratzen views, ph8-overview-watch | 80.5% → 89.8% | 77.1-79.9% → 87.2% |
+| watch-selected, hybrid-dimmed | 78.4%, 78.7% → 88.0%, 88.2% | 73.2%, 74.3% → 83.3%, 84.7% |
+| first-run, first-run-laptop | 54.4%, 48.3% → 61.5%, 53.2% | 43.9% → 49.0% |
+| paper-laptop (1280 x 720), narrow-1024 (1024 x 768) | 57.8% → 62.9%; 48.4% → 53.5% | |
+
+- Every §H claim for 3C is met within 0.1 point: the probe's level 4 (the Study views 70.4 / 62.9%), the Watch views above its
+  87.5-89.3 / 82.7-86.5%, first-run 61.5 / 49.0% against 61.6 / 49.3% (within the 1 point §H allows without comment).
+- **The paper map as entered:** 25.4 → 28.5 px per true km at 1600 x 900, 19.8 → 21.6 at 1280 x 720 (§H: 28 and 21).
+- **Drops** within every limit. Against 3B they rise in six views (first-run 7 → 9, overview-plan and close-sokolnitz 5 → 6,
+  watch-selected 2 → 4, hybrid-dimmed 7 → 8, ph8-overview-study 3 → 6, ph8-overview-watch 2 → 5) and fall in two (paper-drawer
+  2 → 1, paper-laptop 12 → 11), while more items are placed in every view but five, which are unchanged (ph8-overview-study 30 →
+  35, ph8-overview-watch 31 → 36). Derived: anchors that the 170 px timebar covered are now in the pass; the layer counts an anchor
+  under a panel apart (`underPanel`), neither placed nor dropped, so a smaller timebar can add drops as well as placements. Overlaps 0, nothing over a panel or a head, map text at its floor and AA as
+  rendered (lowest 4.89:1, staff-paper; was 5.07), pass times 0.5-2.3 ms.
+
+**Tests** (none loosened; new or stricter)
+- **Unobstructed baselines raised** (`thresholds.js`) to this build's values rounded down to 0.1 point, never below the 3B values
+  they replace (kept in the file's comment).
+- **The paper map's floors raised** from 25 and 19 to 28 and 21 px per true km (§H).
+- **Two new harness views**, the phase-8 Overview at 1600 x 900 in Study (`ph8-overview-study`) and in Watch
+  (`ph8-overview-watch`), as `dock-probe.js` defines them, with every threshold of the other views. Their unobstructed baselines
+  are this build's values (§H); their drop limits (7 and 7) are what the Stage 2C canvas pass hides there, the method of the other
+  views' limits (`tools/stage2/dom-layer.js` on `archive/stage2c-68ac7721.html`, which gives overview-field's 11 again).
+- **New harness checks**, every view: the timeline at most 92 px; in Watch the switch in the control row at full opacity and the
+  caption's derived reading shown; at 1280 x 720 (overview-field, overview-plan) no phase's label cut while it is current, for
+  every phase. After the self-test, by real key presses: the slider from 10:00 (→ 10:10, Shift+→ 11:10, ← 11:00, PageUp 10:30,
+  PageUp 09:30, PageDown 10:30, Home 04:00, End 18:00), `aria-valuenow` after each and `aria-valuetext`; an event marker reached
+  by the arrow keys and chosen by Enter (its clock and selection).
+- **Self-test** (110 checks, was 103), new: the timeline's height, the act bands and phase ticks at their share of the axis and
+  their labels at 12 px or more; the hour numerals clear of the event markers and of one another, inside the timebar; the current phase's label whole in every phase; the slider's keys, one step each, and its value
+  exposed; the acts, phases and events each one keyboard stop, events named by clock and title, Play pressed while playing; Watch's
+  switch in the control row at full opacity, and back in Study; the spine index (25 events, 10 chapters, 9 tour stops in 10 phases)
+  and the chapter's mark on the axis.
+- **`check:contrast`: 26 states** (two new: Watch on the paper map and on the landscape, the switch in the timeline and the
+  caption's derived readings). On the 3B build these two states fail on the switch's buttons (1.50-2.02:1, four elements). This
+  build reads 3,927 elements, 0 below AA; the 3B build reads 4,216 in the same 26 states, 5-17 more in each: its timebar printed
+  each phase's times above its name and had the situation row, where the phase ticks now carry the name only (the axis, its
+  numerals and the slider's value give the time).
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard (61 sites, 0 presentation sites calling `height()`/`hAt()`).
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:visual`: all checks passed, 20 views, the self-test 110 of 110; the slider and an event marker by real key presses.
+- `npm run check:contrast`: 3,927 text elements in 26 states, 0 below AA, 0 below 10.5 px.
+- `npm run check:baseline`: moved to this build; passes.
+
+**Not done, or open**
+- The theme and tour marks show only the place of the chosen chapter or stop; marking a chapter's moment against the events, or
+  its misfits (§C.1), needs the spine data task, which the owner has not asked for.
+- At 1366 and 1280 px wide the labels "The Pratzen" and "Olmutz road" are shortened while their phase is not current (whole when it is).
+- The rest of Stage 3 (3D the camera, 3E names and help) and the spine data task are not started.
+
 ## 2026-09 · Stage 3B: docked panels (docs/STAGE3_SPEC.md §B, §H, §I; owner decisions 49, 54, 55, 58)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,265,532 bytes, md5 `543a9bf056978ef6e8b2d55f02190637`**
+**Status: merged (#22). `austerlitz-command-map.html`: 1,265,532 bytes, md5 `543a9bf056978ef6e8b2d55f02190637`**
 (was 1,253,655 bytes, md5 `ee4390a2…`, Stage 2F).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move. No
