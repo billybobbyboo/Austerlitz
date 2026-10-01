@@ -26,6 +26,13 @@ const DROP_LIMIT={"first-run":12,"first-run-laptop":16,"overview-field":11,"over
   /* Stage 3C: the two phase-8 Overview views are new; their limits are the main method's, what the Stage 2C canvas pass hides there
      (tools/stage2/dom-layer.js "today", AUSTERLITZ_HTML=archive/stage2c-68ac7721.html, which gives overview-field's 11 again) */
   "ph8-overview-study":7,"ph8-overview-watch":7};
+/* Stage 3D: the view offset puts the orbit target at the free rectangle's centre, and two views then show ground their panels
+   had covered, where one more place name finds no room beside its marker: selected-formation 4 (was limit 3), narrow-1024 6
+   (was 5). The same framing on the Stage 3C build (tools/stage3/offset-limits.js --prev) drops the same items, 4 and 6: the
+   framing adds them, not the layer. Re-derived by Stage 2E's method the 2C canvas pass hides 10 (matched panels; 7 native)
+   and 23 there; the owner chose the tight count, the previous build's in the same framing (the method 3B used for
+   narrow-1024), so that any further drop fails (docs/stage3-evidence/offset-limits.json; CHANGELOG.md, Stage 3D). */
+DROP_LIMIT["selected-formation"]=4; DROP_LIMIT["narrow-1024"]=6;
 /* section H: the unobstructed share of the viewport on the Stage 2C build, at the case's viewport and at 1280 x 720, measured
    by this harness (CSS transitions off, the panels at rest). It must not fall. These equal tools/stage2/map-text.js's values
    in every view but one: selected-formation at 1280 x 720 is 6.97% at rest, where map-text.js reported 15.1% with the

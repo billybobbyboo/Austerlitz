@@ -6938,8 +6938,8 @@ var MAPCAM=(function(){
      (docs/STAGE3_SPEC.md section B.4): given the extent of what is to be framed (ext, ground units along east and north),
      the free rectangle in which it is drawn largest instead, the larger area breaking a tie: with the legend closed the
      largest rectangle is wide and short, and the about square field was drawn 15-19% smaller in it than it need be */
-  function freeRect(ext){
-    var v=vp(), G=8, nx=Math.floor(v[0]/G), ny=Math.floor(v[1]/G), P=env.panels(), h=new Int32Array(nx), best=[0,0,v[0],v[1]], bA=-1, bS=-1;
+  function freeRect(ext,P0){   /* P0: a panel list instead of the app's (Stage 3D: the landscape's, without the first-run card) */
+    var v=vp(), G=8, nx=Math.floor(v[0]/G), ny=Math.floor(v[1]/G), P=P0||env.panels(), h=new Int32Array(nx), best=[0,0,v[0],v[1]], bA=-1, bS=-1;
     for(var j=0;j<ny;j++){
       var y0=j*G, y1=y0+G;
       for(var i=0;i<nx;i++){ var x0=i*G, x1=x0+G, bad=x0<MARGIN||y0<MARGIN||x1>v[0]-MARGIN||y1>v[1]-MARGIN;
@@ -7598,7 +7598,9 @@ function updateVisibility(){
     if(rec.block.visible){ poseBlock(rec,id,liveStatus(id,curPhase)); settleBlock(rec); }
 
     /* the formation's name, in the landscape (the map layer draws it) */
-    var nameRange = f.ech==="bde" ? 170 : (f.arm==="art"||f.arm==="hq") ? 220 : 300;
+    /* Stage 3D (the owner's answer): once the view shows corps (beyond 250 units), corps and army names are drawn at any distance;
+       the Overview fitted to the free rectangle stands 425-536 units out, beyond the 300 that named every formation before */
+    var nameRange = (f.ech==="corps"||f.ech==="army")&&dist>250 ? Infinity : f.ech==="bde" ? 170 : (f.arm==="art"||f.arm==="hq") ? 220 : 300;
     rec.nameShow = labels && mode==="terrain" && !!p && camera.position.distanceTo(rec.block.position)>34 &&
                    (dist<nameRange || (selection&&selection.kind==="f"&&selection.id===id));
     if(rec.trail){
@@ -7766,10 +7768,20 @@ var VANTAGE={
    to the new centre over the panels' slide; a resize sets it at once. On the paper map it is not drawn (MAPCAM frames its
    own plan); in Clean there is no panel, so it is about zero. */
 var VOFF={x:0,y:0,tx:0,ty:0,key:"",W:0,H:0};
-function freeCentre(){ var fr=MAPCAM.freeRect(); return [(fr[0]+fr[2])/2,(fr[1]+fr[3])/2]; }
+/* the panels the landscape's focus keeps clear of: the map layer's, without the first-run card, which stands over the map only
+   until the visitor chooses a way in (owner's answer in 3D: the first screen is framed as Study is, not into the short strip
+   above the card) */
+function landPanels(){
+  mlLegendFit(renderer.domElement.clientWidth||innerWidth,viewH());
+  var P=mlPanels(), fr=document.getElementById("firstrun");
+  if(fr&&!fr.hidden){ var r=fr.getBoundingClientRect(); P=P.filter(function(q){ return !(Math.abs(q[0]-r.left)<0.5&&Math.abs(q[1]-r.top)<0.5&&Math.abs(q[2]-r.right)<0.5&&Math.abs(q[3]-r.bottom)<0.5); }); }
+  return P;
+}
+function landFreeRect(){ return MAPCAM.freeRect(null,landPanels()); }
+function freeCentre(){ var fr=landFreeRect(); return [(fr[0]+fr[2])/2,(fr[1]+fr[3])/2]; }
 function syncViewOffset(instant){
   if(mode==="staff"||!landCam) return true;
-  var W=renderer.domElement.clientWidth||window.innerWidth, H=viewH(), P=mlPanels(), key=W+"x"+H;
+  var W=renderer.domElement.clientWidth||window.innerWidth, H=viewH(), P=landPanels(), key=W+"x"+H;
   for(var i=0;i<P.length;i++) key+=";"+Math.round(P[i][0])+","+Math.round(P[i][1])+","+Math.round(P[i][2])+","+Math.round(P[i][3]);
   if(key!==VOFF.key){ VOFF.key=key; var c=freeCentre(); VOFF.tx=W/2-c[0]; VOFF.ty=H/2-c[1]; }
   var done=true;
@@ -7783,24 +7795,37 @@ function syncViewOffset(instant){
   VOFF.W=W; VOFF.H=H;
   return done;
 }
-/* The Overview on the landscape (section B.4): the modelled ground fitted into the free rectangle, as the paper map's
-   Overview already is (MAPCAM.frameField). The preset gives the direction of view; the target and the distance are found so
-   the field's edge, on the drawn ground, is inside the free rectangle and centred in it. Every other preset is re-framed in
-   height only (reframe, Stage 2B); with the offset its target lands at the free rectangle's centre. */
+/* The Overview on the landscape (section B.4, as the owner settled it in 3D): what the day's battle covers fitted into the free
+   rectangle. The preset gives the direction of view; the target and the distance are found so the extent's edge, on the
+   drawn ground, is inside the free rectangle and centred in it. Section B.4 proposed the whole modelled ground, as the paper
+   map's Overview (MAPCAM.frameField); on the landscape that put the eye 533-712 units out (1,000-1,230 on the first-run
+   screen) against the authored 278, and the owner chose the battle's extent (derived from the data, no data change): every
+   formation's position at the start, middle and end of every phase, every event and every place. Every other preset is
+   re-framed in height only (reframe, Stage 2B); with the offset its target lands at the free rectangle's centre. */
+var _actExt=null;
+function actionExtent(){
+  if(_actExt) return _actExt;
+  var B=[1e9,1e9,-1e9,-1e9];
+  function add(m){ var w=W(m[0],m[1]); B[0]=Math.min(B[0],w[0]); B[1]=Math.min(B[1],w[1]); B[2]=Math.max(B[2],w[0]); B[3]=Math.max(B[3],w[1]); }
+  PHASES.forEach(function(ph){ [ph.t0+1,(ph.t0+ph.t1)/2,ph.t1-1].forEach(function(t){
+    Object.keys(FORMATIONS).forEach(function(id){ if(FORMATIONS[id].track&&!goneAt(id,t)&&!notYetAt(id,t)){ var p=posAtClock(id,t); if(p) add(p); } }); }); });
+  EVENTS.forEach(function(e){ add(e.p); }); FEATURES.forEach(function(f){ add(f.p); });
+  return (_actExt=B);
+}
 function isOverview(v){ var P=VANTAGE.plan; for(var i=0;i<6;i++) if(Math.abs(v[i]-P[i])>1e-9) return false; return true; }
 function presetFrame(v){ var c=reframe(v); return isOverview(v)?fitOverview(c):c; }
 function fitOverview(c){
   syncViewOffset(true);
-  var fr=MAPCAM.freeRect(), W=renderer.domElement.clientWidth||window.innerWidth, H=viewH(), S=[], v=new THREE.Vector3();
+  var fr=landFreeRect(), VW=renderer.domElement.clientWidth||window.innerWidth, H=viewH(), S=[], v=new THREE.Vector3();
   var sp=landCam.position.clone(), st=orbitTarget.clone();
-  var X=[-GROUND_W/2,-GROUND_D/2,GROUND_W/2,GROUND_D/2];   /* the modelled ground, as the paper map's Overview */
+  var X=actionExtent();
   for(var k=0;k<=8;k++){ var a=X[0]+(X[2]-X[0])*k/8, b=X[1]+(X[3]-X[1])*k/8;
     [[a,X[1]],[a,X[3]],[X[0],b],[X[2],b]].forEach(function(q){ S.push(new THREE.Vector3(q[0],groundY(q[0],q[1]),q[1])); }); }
   var dir=new THREE.Vector3(c[0]-c[3],c[1]-c[4],c[2]-c[5]).normalize(), T=new THREE.Vector3(c[3],c[4],c[5]);
   function place(d){ landCam.position.copy(T).addScaledVector(dir,d); landCam.lookAt(T); landCam.updateMatrixWorld(true); }
   function box(){ var bx=[1e9,1e9,-1e9,-1e9];
     for(var i=0;i<S.length;i++){ v.copy(S[i]).project(landCam); if(v.z>1||v.z<-1) return null;
-      var x=(v.x*0.5+0.5)*W, y=(-v.y*0.5+0.5)*H; bx[0]=Math.min(bx[0],x); bx[1]=Math.min(bx[1],y); bx[2]=Math.max(bx[2],x); bx[3]=Math.max(bx[3],y); }
+      var x=(v.x*0.5+0.5)*VW, y=(-v.y*0.5+0.5)*H; bx[0]=Math.min(bx[0],x); bx[1]=Math.min(bx[1],y); bx[2]=Math.max(bx[2],x); bx[3]=Math.max(bx[3],y); }
     return bx; }
   function inside(d){ place(d); var b=box(); return !!b&&b[0]>=fr[0]&&b[1]>=fr[1]&&b[2]<=fr[2]&&b[3]<=fr[3]; }
   var d=1;
@@ -9247,7 +9272,7 @@ var AUSTERLITZ_DEBUG=(function(){
   }
   /* ---- Stage 3D (docs/STAGE3_SPEC.md section H): the landscape's controls, through the handlers a visitor drives ---- */
   function pev(t,x,y,b,btn,type,id){ return new PointerEvent(t,{pointerId:id||7,isPrimary:(id||7)===7,pointerType:type||"mouse",clientX:x,clientY:y,buttons:b,button:btn,bubbles:true,cancelable:true}); }
-  function freeC(){ var fr=MAPCAM.freeRect(); return [Math.round((fr[0]+fr[2])/2),Math.round((fr[1]+fr[3])/2)]; }
+  function freeC(){ var fr=landFreeRect(); return [Math.round((fr[0]+fr[2])/2),Math.round((fr[1]+fr[3])/2)]; }
   function landPlace(v){ placeCamera(v); syncViewOffset(true); }
   /* from every vantage: a left-drag pans, the wheel zooms toward the cursor, a right-drag orbits, a double-click centres;
      the eye at or above the floor after every step. A pan step the floor lifted is counted apart (the grabbed point cannot
@@ -9260,7 +9285,7 @@ var AUSTERLITZ_DEBUG=(function(){
     function sphNow(){ return new THREE.Spherical().setFromVector3(landCam.position.clone().sub(orbitTarget)); }
     Object.keys(VANTAGE).forEach(function(k){
       landPlace(VANTAGE[k]); R.views++;
-      var fr=MAPCAM.freeRect(), c=freeC();
+      var fr=landFreeRect(), c=freeC();
       /* pan */
       var sx=c[0]-80, sy=c[1]+60, g=groundAt(sx,sy);
       if(g){ var gp=new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]), cl=CAM.clamps;
@@ -9338,7 +9363,7 @@ var AUSTERLITZ_DEBUG=(function(){
     var el=renderer.domElement, spc=el.setPointerCapture, i, q;
     el.setPointerCapture=function(){};
     function ease(){ var n=0, fk=FK; FK=7.2; while(!syncViewOffset(false)&&n<400) n++; FK=fk; return n; }
-    function off(){ var c=freeC(), fr=MAPCAM.freeRect(), t=LANDCAM.screenOf(orbitTarget); return Math.hypot(t[0]-(fr[0]+fr[2])/2,t[1]-(fr[1]+fr[3])/2); }
+    function off(){ var fr=landFreeRect(), t=LANDCAM.screenOf(orbitTarget); return Math.hypot(t[0]-(fr[0]+fr[2])/2,t[1]-(fr[1]+fr[3])/2); }
     /* 1. the offset after panel changes */
     setPresentation("study"); if(typeof selectTab==="function") selectTab("now"); select(null,null); landPlace(VANTAGE.field);
     var states=[], worst=0, lg=document.getElementById("lg-toggle");
@@ -9362,7 +9387,7 @@ var AUSTERLITZ_DEBUG=(function(){
     /* the round trip on the modelled ground: beyond it, on the coarse apron toward the horizon, the ground has a step at the
        apron's edge, where a grazing ray's crossing is not a point of the ground (found here: 3.3 px at 700 units, with or
        without the offset; section A.2's 2.2 px grazing ray) */
-    var fr=MAPCAM.freeRect(), rt=0, rn=0, beyond=0;
+    var fr=landFreeRect(), rt=0, rn=0, beyond=0;
     for(i=0;i<40;i++){ var sx=fr[0]+(fr[2]-fr[0])*((i%8)+0.5)/8, sy=fr[1]+(fr[3]-fr[1])*(Math.floor(i/8)+0.5)/5, g=groundAt(sx,sy); if(!g) continue;
       if(Math.abs(g[0])>GROUND_W/2||Math.abs(g[1])>GROUND_D/2){ beyond++; continue; }
       var p=new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]); q=LANDCAM.screenOf(p); rt=Math.max(rt,Math.hypot(q[0]-sx,q[1]-sy)); rn++; }
@@ -9396,13 +9421,15 @@ var AUSTERLITZ_DEBUG=(function(){
     ck("camera: Follow shows !freeCam after every camera path, as decision 47 sets it; a vantage's button is released when the eye leaves it",
       !bad.length&&vp1==="true"&&vp2==="false", walk.length+" paths ("+walk.join(", ")+")"+(bad.length?"; WRONG: "+bad.join("; "):"")+"; the Field vantage pressed "+vp1+", after a pan "+vp2);
     /* 4. presets: every vantage's target at the free centre; the Overview's field inside the free rectangle */
-    var pw=0, pl=[], fieldOut=0;
+    var pw=0, pl=[], fieldOut=0, ovNames=[];
     Object.keys(VANTAGE).forEach(function(k){ flyTo(VANTAGE[k]); finishTween(); syncViewOffset(true); var e=off(); pw=Math.max(pw,e); pl.push(k+" "+e.toFixed(2));
-      if(k==="plan"){ var fr2=MAPCAM.freeRect(), W=GROUND_W/2, D=GROUND_D/2;
-        [[-W,-D],[W,-D],[W,D],[-W,D],[0,-D],[0,D],[-W,0],[W,0]].forEach(function(c){ var s2=LANDCAM.screenOf(new THREE.Vector3(c[0],groundY(c[0],c[1]),c[1]));
+      if(k==="plan"){ updateVisibility(); mlLayout();   /* the Overview names its corps and armies (the owner's answer in 3D) */
+        Object.keys(ML.items).forEach(function(q){ var it=ML.items[q]; if(q.indexOf("n:")===0&&it.eFrame===ML.frame&&it.state==="on") ovNames.push(q.slice(2)); }); }
+      if(k==="plan"){ var fr2=landFreeRect(), X=actionExtent(), mx=(X[0]+X[2])/2, mz=(X[1]+X[3])/2;
+        [[X[0],X[1]],[X[2],X[1]],[X[2],X[3]],[X[0],X[3]],[mx,X[1]],[mx,X[3]],[X[0],mz],[X[2],mz]].forEach(function(c){ var s2=LANDCAM.screenOf(new THREE.Vector3(c[0],groundY(c[0],c[1]),c[1]));
           if(s2[0]<fr2[0]-0.5||s2[0]>fr2[2]+0.5||s2[1]<fr2[1]-0.5||s2[1]>fr2[3]+0.5) fieldOut++; }); } });
-    ck("camera: every vantage's target at the free rectangle's centre; the Overview fits the modelled ground into the free rectangle (section B.4)",
-      pw<=1&&fieldOut===0, pl.join(", ")+" px; the Overview: "+(8-fieldOut)+" of 8 points of the field's edge inside the free rectangle, at "+landCam.position.distanceTo(orbitTarget).toFixed(0)+" units");
+    ck("camera: every vantage's target at the free rectangle's centre; the Overview fits the day's battle into the free rectangle and names its corps and armies (section B.4, as settled in 3D)",
+      pw<=1&&fieldOut===0&&ovNames.length>0, pl.join(", ")+" px; the Overview: "+(8-fieldOut)+" of 8 points of the battle's extent ("+actionExtent().map(function(x){ return x.toFixed(1); }).join(", ")+") inside the free rectangle, at "+landCam.position.distanceTo(orbitTarget).toFixed(0)+" units, naming "+ovNames.length+" formations ("+ovNames.slice(0,6).join(", ")+(ovNames.length>6?", ...":"")+")");
     /* 5. one tween chain: a double-click during a phase change is not dropped when Follow is off; with Follow on the phase's view wins */
     setPhase(2,true); finishTween(); landPlace(VANTAGE.field);
     var c3=freeC(), g3=groundAt(c3[0]+60,c3[1]+30), keep=new THREE.Vector3(g3[0],groundY(g3[0],g3[1]),g3[1]);

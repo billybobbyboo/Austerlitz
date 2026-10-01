@@ -420,7 +420,7 @@
   /* Stage 3D: the landscape's orbit target against the free rectangle's centre (px), on a build with the view offset */
   function focusOffset(){
     if(typeof syncViewOffset!=="function"||camera.isOrthographicCamera) return null;
-    var fr=MAPCAM.freeRect(), v=new V().copy(orbitTarget); camera.updateMatrixWorld(true); v.project(camera);
+    var fr=(typeof landFreeRect==="function")?landFreeRect():MAPCAM.freeRect(), v=new V().copy(orbitTarget); camera.updateMatrixWorld(true); v.project(camera);
     var x=(v.x*0.5+0.5)*window.innerWidth, y=(-v.y*0.5+0.5)*window.innerHeight;
     return +Math.hypot(x-(fr[0]+fr[2])/2,y-(fr[1]+fr[3])/2).toFixed(3);
   }
