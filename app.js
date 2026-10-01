@@ -3861,7 +3861,9 @@ function mapKey(e){
   else return false;
   freeCam=true; return true;
 }
-/* the overlay: built from the table; a modal dialog that keeps focus inside and returns it on closing */
+/* the overlay: built from the table; a modal dialog that keeps focus inside and returns it on closing. Its "?" button stands in
+   the timeline's control row in Study and Watch (section F.2 put Study's in the tools group, which it widened: the unobstructed
+   fraction of every Study view fell by 0.1 point) */
 var HELP_GROUPS=["Time","View and ground","Layers and panels","The map, when it has focus (Tab to it)","The timeline","Pointer and touch","Developer"];
 function buildHelp(){
   var host=document.getElementById("help-body"); if(!host) return;
@@ -3879,12 +3881,12 @@ function setHelp(open){
   if(open){ _helpFrom=document.activeElement; buildHelp(); h.hidden=false; document.getElementById("help-close").focus({preventScroll:true}); }
   else { h.hidden=true; var f=_helpFrom; _helpFrom=null;
     if(f&&f.focus&&document.contains(f)&&f!==document.body) f.focus({preventScroll:true}); else if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); }
-  ["helpbtn","helpbtn2"].forEach(function(id){ var b=document.getElementById(id); if(b) b.setAttribute("aria-expanded",String(open)); });
+  ["helpbtn"].forEach(function(id){ var b=document.getElementById(id); if(b) b.setAttribute("aria-expanded",String(open)); });
   requestRender(2);
 }
 function bindHelp(){
   var h=document.getElementById("help"); if(!h) return;
-  ["helpbtn","helpbtn2"].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener("click",function(e){ e.stopPropagation(); setHelp(true); }); });
+  ["helpbtn"].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener("click",function(e){ e.stopPropagation(); setHelp(true); }); });
   document.getElementById("help-close").addEventListener("click",function(){ setHelp(false); });
   h.addEventListener("click",function(e){ if(e.target===h) setHelp(false); });   /* the scrim around the sheet */
   h.addEventListener("keydown",function(e){

@@ -199,9 +199,7 @@ p.conf{font-size:var(--t-small);color:var(--text-muted);line-height:1.5;margin:0
 .hp-row kbd{font-family:var(--sans);font-size:var(--t-small);color:var(--text-hi);white-space:nowrap}
 .hp-row kbd b{display:inline-block;min-width:18px;padding:1px 6px;margin:0 2px 2px 0;border:1px solid var(--line-2);border-radius:2px;
   text-align:center;font-weight:400;background:rgba(var(--panel-rgb),.6)}
-.tb-help{min-width:32px;min-height:32px;font-weight:600}
-.tb-top .tb-help{display:none}
-body.pm-watch .tb-top .tb-help{display:inline-block}
+.tb-help{min-width:32px;min-height:32px;font-weight:600;flex:0 0 auto}   /* in the timeline's control row, Study and Watch: no panel grows */
 
 #toast{position:fixed;left:calc(50% + var(--rail)/2);top:26px;transform:translateX(-50%);z-index:40;
   font-family:var(--serif);font-size:var(--t-prose);color:var(--text-hi);background:rgba(var(--scrim-rgb),.82);
@@ -742,7 +740,6 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   <div class="grp">
     <button class="t" id="tourbtn">Guided tour</button>
     <button class="t" id="layersbtn" aria-expanded="false">Layers&hellip;</button>
-    <button class="t tb-help" id="helpbtn" aria-haspopup="dialog" aria-label="Keys and controls (?)" title="Keys and controls (?)">?</button>
   </div>
   <div class="tlabel">Vantage</div>
   <div class="grp" id="vantages">
@@ -861,7 +858,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
     </div>
     <div class="clockbox"><span id="clockread">04:00</span><small>2 Dec 1805</small></div>
     <div class="tb-cap" id="tb-cap"></div>
-    <button class="t tb-help" id="helpbtn2" aria-haspopup="dialog" aria-label="Keys and controls (?)" title="Keys and controls (?)">?</button>
+    <button class="t tb-help" id="helpbtn" aria-haspopup="dialog" aria-label="Keys and controls (?)" title="Keys and controls (?)">?</button>
     <div class="tb-vm" id="tb-vm"><!-- Watch: the presentation switch (#viewmode) stands here (app.js syncViewmode, decision 60) --></div>
     <div class="grp speeds" aria-label="Playback speed">
       <button class="t spd-btn" data-s="0.5" aria-pressed="false">&frac12;&times;</button>
@@ -8087,7 +8084,9 @@ function mapKey(e){
   else return false;
   freeCam=true; return true;
 }
-/* the overlay: built from the table; a modal dialog that keeps focus inside and returns it on closing */
+/* the overlay: built from the table; a modal dialog that keeps focus inside and returns it on closing. Its "?" button stands in
+   the timeline's control row in Study and Watch (section F.2 put Study's in the tools group, which it widened: the unobstructed
+   fraction of every Study view fell by 0.1 point) */
 var HELP_GROUPS=["Time","View and ground","Layers and panels","The map, when it has focus (Tab to it)","The timeline","Pointer and touch","Developer"];
 function buildHelp(){
   var host=document.getElementById("help-body"); if(!host) return;
@@ -8105,12 +8104,12 @@ function setHelp(open){
   if(open){ _helpFrom=document.activeElement; buildHelp(); h.hidden=false; document.getElementById("help-close").focus({preventScroll:true}); }
   else { h.hidden=true; var f=_helpFrom; _helpFrom=null;
     if(f&&f.focus&&document.contains(f)&&f!==document.body) f.focus({preventScroll:true}); else if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); }
-  ["helpbtn","helpbtn2"].forEach(function(id){ var b=document.getElementById(id); if(b) b.setAttribute("aria-expanded",String(open)); });
+  ["helpbtn"].forEach(function(id){ var b=document.getElementById(id); if(b) b.setAttribute("aria-expanded",String(open)); });
   requestRender(2);
 }
 function bindHelp(){
   var h=document.getElementById("help"); if(!h) return;
-  ["helpbtn","helpbtn2"].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener("click",function(e){ e.stopPropagation(); setHelp(true); }); });
+  ["helpbtn"].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener("click",function(e){ e.stopPropagation(); setHelp(true); }); });
   document.getElementById("help-close").addEventListener("click",function(){ setHelp(false); });
   h.addEventListener("click",function(e){ if(e.target===h) setHelp(false); });   /* the scrim around the sheet */
   h.addEventListener("keydown",function(e){

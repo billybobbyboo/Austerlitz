@@ -193,9 +193,7 @@ p.conf{font-size:var(--t-small);color:var(--text-muted);line-height:1.5;margin:0
 .hp-row kbd{font-family:var(--sans);font-size:var(--t-small);color:var(--text-hi);white-space:nowrap}
 .hp-row kbd b{display:inline-block;min-width:18px;padding:1px 6px;margin:0 2px 2px 0;border:1px solid var(--line-2);border-radius:2px;
   text-align:center;font-weight:400;background:rgba(var(--panel-rgb),.6)}
-.tb-help{min-width:32px;min-height:32px;font-weight:600}
-.tb-top .tb-help{display:none}
-body.pm-watch .tb-top .tb-help{display:inline-block}
+.tb-help{min-width:32px;min-height:32px;font-weight:600;flex:0 0 auto}   /* in the timeline's control row, Study and Watch: no panel grows */
 
 #toast{position:fixed;left:calc(50% + var(--rail)/2);top:26px;transform:translateX(-50%);z-index:40;
   font-family:var(--serif);font-size:var(--t-prose);color:var(--text-hi);background:rgba(var(--scrim-rgb),.82);
