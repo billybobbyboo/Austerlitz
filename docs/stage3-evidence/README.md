@@ -20,6 +20,7 @@ Stage 3C build, and the `3d-*` files the Stage 3C build with the Stage 3D build.
 | `3d-report.md` | I (3D) | `report-3b.js --part 3D --before "Stage 3C"`: per harness view, the 3C build against the 3D build (the same columns) |
 | `3d-sheet.jpg` | I (3D) | `report-3b.js --sheet --views ...`: six views, the 3C build (left) and 3D (right) |
 | `3d-overview.jpg` | I (3D) | the phase-8 Overview in Study: the 3C build; the modelled ground fitted without the fog's recession; fitted with it (the build); the day's action fitted instead (the alternative not adopted) |
+| `offset-limits.json` | I (3D), §0.3 decision 62 | `tools/stage3/offset-limits.js --prev <3C build>`: selected-formation and narrow-1024 in the 3D framing, on the Stage 2C build (its canvas pass's hidden count, native and with matched panels) and on the 3C build (its map layer's drops) |
 | `orbit-min.jpg` | G.3 | `nav-probe.js --only heads`: the harness view pratzen-orbit-min (its own interaction replayed), the event glyph drawn across the view |
 
 The probe's measurements read CSS pixels only, so `dock-probe.js` draws at a quarter of the pixel ratio and at 1 for its

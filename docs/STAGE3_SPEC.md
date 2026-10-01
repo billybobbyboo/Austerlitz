@@ -856,6 +856,37 @@ The two new phase-8 views take their drop limits by the main method (what the St
 the 3B build, because 3C changes those views: drops rise against 3B in six views, within every limit, as ground the old timebar
 covered enters the map layer's pass.
 
+**3D, as delivered (fact; `CHANGELOG.md`, Stage 3D).** Built as §A.3 and the 3D row describe, under decisions 47, 48 and 61-63:
+- `LANDCAM`: left-drag pans by the anchor rule, right-drag (or Shift or Ctrl) orbits, the wheel zooms toward the cursor (a step
+  the floor would cut stops at the floor), a double-click centres, the arrows and + - on the focused map layer, one-finger pan and
+  two-finger pinch and twist; the paper map unchanged;
+- `camera.setViewOffset` puts the orbit target at the free rectangle's centre, eased with the panels, set at once on a resize;
+- Follow in the control row, `!freeCam` made visible, set and cleared as decision 47 says; a vantage's button released when the
+  eye leaves it;
+- one tween chain (`setTween`: a scene slot and a camera slot);
+- the Overview fits the day's battle (decision 61), the fog recedes beyond the authored Overview's distance, and corps and army
+  names are drawn at any distance once the view shows corps (decision 63).
+
+Measured (`docs/stage3-evidence/3d-report.md`, both builds on the same harness): the phase-8 heads more than a quarter hidden
+4 → 0 in Study and Watch; the orbit target 0 px from the free centre in every landscape view, before and after a resize; the
+controls within 0.012 px (pan and wheel) and 0.000 px (double-click) at 1x, 4x and 10.33x from every vantage, never below the
+floor; unobstructed fractions unchanged. Every §H claim for 3D is met. Five things were not as the plan assumed:
+1. **Fitting the whole modelled ground (§B.4) does not work on the landscape.** The eye stood 533-712 units out (996-1,228 on the
+   first-run screen, where the card leaves a short strip) against the authored 278; the fog, whose distances are from the eye and
+   were chosen for the authored views, drew the field grey, and the Overview named no formation (names stop at 300 units). The
+   owner chose the day's battle (decision 61), the fog receding beyond 274 units, and corps and army names at any distance
+   (decision 63) (`3d-overview.jpg`).
+2. **The offset adds a drop in two views** (selected-formation, narrow-1024): ground the panels covered comes into view, and a
+   place name there finds no room beside its marker. The 3C build's layer in the same framing drops the same items; the owner
+   took those counts as the limits (decision 62; `offset-limits.json`).
+3. **Every centring turns Follow off**, not only the dossier's and the order of battle's (decision 47 named those): the event
+   jumps and "Go to this moment" centre through the same path.
+4. **The ground's round trip is exact only on the modelled ground**: toward the horizon the apron's edge is a step, where a
+   grazing ray's crossing is not a point of the ground (3.3 px at 700 units, with or without the offset). The self-test checks it
+   on the modelled ground.
+5. **The harness's orbit case aims its wheel at the target**: the wheel now zooms toward the cursor, and aimed at the target it
+   zooms about it, as before; its measure is unchanged (4.31 units below the ground, the same target and bearing).
+
 ## J. Questions for the owner
 
 Each with the recommendation and what it trades.
