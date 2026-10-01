@@ -1,0 +1,233 @@
+{
+ "selected-formation": {
+  "view3D": {
+   "eye": [
+    -75.78817943252815,
+    68.1881135563042,
+    66.64796451311958
+   ],
+   "target": [
+    -28.5,
+    5.182661349606587,
+    18.5
+   ],
+   "off": [
+    -148,
+    22
+   ],
+   "dropped": 4,
+   "placed": 24,
+   "droppedIds": [
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:augezd",
+    "t:kobelnitz"
+   ],
+   "panels": {
+    ".rail": [
+     0,
+     0,
+     300,
+     809
+    ],
+    ".dispatch": [
+     18,
+     136.84375,
+     259,
+     1455.734375
+    ],
+    ".legend": [
+     1489.140625,
+     753,
+     92.859375,
+     42
+    ],
+    ".timebar": [
+     0,
+     809.5,
+     1600,
+     90.5
+    ],
+    ".tools": [
+     1257.8125,
+     20,
+     320.1875,
+     86
+    ],
+    "#viewmode": [
+     712.3515625,
+     14,
+     175.296875,
+     34
+    ],
+    ".drawer": [
+     0,
+     0,
+     300,
+     809
+    ],
+    "#selchip": null,
+    "#vsbadge": null,
+    "#firstrun": null,
+    "#tourbar": null
+   }
+  },
+  "probe2C": {
+   "native": {
+    "hidden": 7,
+    "stats": {
+     "shown": 22,
+     "hidden": 7,
+     "moved": 0,
+     "unresolved": 0,
+     "shrunk": 0
+    },
+    "target": [
+     948,
+     428
+    ]
+   },
+   "matched": {
+    "hidden": 10,
+    "stats": {
+     "shown": 29,
+     "hidden": 10,
+     "moved": 0,
+     "unresolved": 0,
+     "shrunk": 0
+    },
+    "target": [
+     948,
+     428
+    ]
+   }
+  },
+  "limitNative": 7,
+  "limitMatched": 10,
+  "prevBuild": {
+   "dropped": 4,
+   "placed": 24,
+   "droppedIds": [
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:augezd",
+    "t:kobelnitz"
+   ]
+  }
+ },
+ "narrow-1024": {
+  "view3D": {
+   "eye": [
+    -195,
+    94.10852215492369,
+    156
+   ],
+   "target": [
+    -33,
+    3.724891828834621,
+    -2
+   ],
+   "off": [
+    -228,
+    -16
+   ],
+   "dropped": 6,
+   "placed": 33,
+   "droppedIds": [
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:telnitz",
+    "t:sokolnitz",
+    "t:austerlitz"
+   ],
+   "panels": {
+    ".rail": [
+     -274.7200012207031,
+     0,
+     272,
+     677
+    ],
+    ".dispatch": [
+     16,
+     108,
+     440,
+     557
+    ],
+    ".legend": null,
+    ".timebar": [
+     0,
+     677.5,
+     1024,
+     90.5
+    ],
+    ".tools": [
+     689.8125,
+     56,
+     320.1875,
+     63
+    ],
+    "#viewmode": [
+     424.3515625,
+     14,
+     175.296875,
+     34
+    ],
+    ".drawer": [
+     1024,
+     0,
+     360,
+     768
+    ],
+    "#selchip": null,
+    "#vsbadge": null,
+    "#firstrun": null,
+    "#tourbar": null
+   }
+  },
+  "probe2C": {
+   "native": {
+    "hidden": 23,
+    "stats": {
+     "shown": 22,
+     "hidden": 23,
+     "moved": 0,
+     "unresolved": 0,
+     "shrunk": 0
+    },
+    "target": [
+     740,
+     400
+    ]
+   },
+   "matched": {
+    "hidden": 23,
+    "stats": {
+     "shown": 22,
+     "hidden": 23,
+     "moved": 0,
+     "unresolved": 0,
+     "shrunk": 0
+    },
+    "target": [
+     740,
+     400
+    ]
+   }
+  },
+  "limitNative": 23,
+  "limitMatched": 23,
+  "prevBuild": {
+   "dropped": 6,
+   "placed": 33,
+   "droppedIds": [
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:telnitz",
+    "t:sokolnitz",
+    "t:austerlitz"
+   ]
+  }
+ }
+}

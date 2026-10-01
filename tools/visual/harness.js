@@ -49,8 +49,14 @@ async function interact(page,it,vp){
   await page.evaluate(([it,vp])=>{
     var el=renderer.domElement, cx=Math.round(vp[0]*0.62), cy=Math.round(vp[1]*0.45), spc=el.setPointerCapture;
     el.setPointerCapture=function(){};
-    for(var i=0;i<(it.target==="deepest"?0:(it.wheel||0));i++) el.dispatchEvent(new WheelEvent("wheel",{deltaY:-120,clientX:cx,clientY:cy,bubbles:true,cancelable:true}));
-    var o=function(x,y,b){ return {pointerId:1,isPrimary:true,pointerType:"mouse",clientX:x,clientY:y,buttons:b,button:0,bubbles:true,cancelable:true}; };
+    /* Stage 3D (owner decision 48): the wheel zooms toward the cursor, so the zoom is aimed at the orbit target's place on the
+       screen (it then zooms about the target, as the wheel did before); a left-drag pans, so the orbit drags press the right
+       button (on earlier builds any button orbited) */
+    var land=typeof LANDCAM!=="undefined";
+    function wheelAt(){ if(!land) return [cx,cy]; camera.updateMatrixWorld(true); var v=orbitTarget.clone().project(camera); return [Math.round((v.x*0.5+0.5)*vp[0]),Math.round((-v.y*0.5+0.5)*vp[1])]; }
+    var wa=wheelAt();
+    for(var i=0;i<(it.target==="deepest"?0:(it.wheel||0));i++) el.dispatchEvent(new WheelEvent("wheel",{deltaY:-120,clientX:wa[0],clientY:wa[1],bubbles:true,cancelable:true}));
+    var o=function(x,y,b){ return {pointerId:1,isPrimary:true,pointerType:"mouse",clientX:x,clientY:y,buttons:b?2:0,button:2,bubbles:true,cancelable:true}; };
     function drag(dx,dy){
       var n=12;
       el.dispatchEvent(new PointerEvent("pointerdown",o(cx,cy,1)));
@@ -72,7 +78,9 @@ async function interact(page,it,vp){
       camera.position.set(bT[0]+dv.x,bT[1]+dv.y,bT[2]+dv.z); camera.lookAt(orbitTarget);
       window.__target=bT[3];
     }
-    for(var w2=0;w2<(it.target==="deepest"?(it.wheel||0):0);w2++) el.dispatchEvent(new WheelEvent("wheel",{deltaY:-120,clientX:cx,clientY:cy,bubbles:true,cancelable:true}));
+    if(land&&typeof syncViewOffset==="function") syncViewOffset(true);
+    var wb=wheelAt();
+    for(var w2=0;w2<(it.target==="deepest"?(it.wheel||0):0);w2++) el.dispatchEvent(new WheelEvent("wheel",{deltaY:-120,clientX:wb[0],clientY:wb[1],bubbles:true,cancelable:true}));
     if(it.dragX||it.dragY) drag(it.dragX||0,it.dragY||0);
     if(it.aim==="deepest"){
       /* at the closest zoom and lowest pitch, turn to the bearing where the drawn ground stands
@@ -127,6 +135,8 @@ async function interact(page,it,vp){
         await page.evaluate(()=>{ if(window.AUSTERLITZ_DEBUG) AUSTERLITZ_DEBUG.settle(2); }); };
       const vp0=page.viewportSize(); await page.setViewportSize({width:1280,height:720}); await frame();
       m.unobstructed720=await page.evaluate(()=>window.__aus.unobstructed());
+      /* Stage 3D: after the resize, the landscape's orbit target at the new free rectangle's centre */
+      m.focus720=await page.evaluate(()=>window.__aus.focusOffset?window.__aus.focusOffset():null);
       /* Stage 3C: every phase's label whole when current, at 1280 x 720 (one Study view and one Watch view) */
       if(["overview-field","overview-plan"].includes(c.name)) m.phaseLabels720=await page.evaluate(()=>window.__aus.phaseLabels?window.__aus.phaseLabels():null);
       await page.setViewportSize(vp0); await frame();

@@ -70,7 +70,12 @@ const CLASS={
      per point); roads and streams draped on the drawn ground; the self-test's cover truth (the model's class at a point),
      its road and stream draping, and its check of the woods' trees against the model's class */
   "world.js:buildCoverMl > exact":"model","world.js:drape":"presentation",
-  "app.js:coverTruth":"test","app.js:roadDrape":"test","app.js:woodPlacement":"test"
+  "app.js:coverTruth":"test","app.js:roadDrape":"test","app.js:woodPlacement":"test",
+  /* Stage 3D: the landscape camera (LANDCAM) and the Overview's fit read the drawn ground: the grabbed point's plane, the
+     cursor's point a zoom scales about, the target anchored on its view ray, the double-click's focus, the field's edge */
+  "app.js:fitOverview":"presentation","app.js:anchor":"presentation","app.js:panStart":"presentation","app.js:zoomAt":"presentation",
+  "app.js:focusAt":"presentation",
+  "app.js:landControls":"test","app.js:landKeysTouch":"test","app.js:cameraChecks3D":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */

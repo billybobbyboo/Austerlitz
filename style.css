@@ -5,7 +5,7 @@ body.mode-staff{--ink:#F3EEE2;--ink-rgb:243,238,226;--panel:#F5F1E6;--panel-rgb:
 html{--rail:300px;--draw:376px;--tb:108px}
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:var(--ink);color:var(--text);font-family:var(--sans);overflow:hidden}
-canvas{display:block}
+canvas{display:block;touch-action:none}   /* Stage 3D: the landscape takes one-finger pans and two-finger pinches itself */
 #stage{position:fixed;inset:0}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 button{font:inherit;color:inherit}
@@ -311,6 +311,7 @@ body.pm-watch .tb-vm #viewmode{position:static;transform:none;opacity:1;backdrop
 .speeds .t{padding:6px 8px;font-size:var(--t-small);min-height:30px}
 .tb-icon{min-width:36px;min-height:32px}
 .tb-play{min-width:58px;min-height:32px}
+.tb-follow{min-height:32px;margin-left:4px}   /* Stage 3D: Follow the action, a toggle (aria-pressed) */
 
 /* ---------- presentation states ---------- */
 /* study: everything · watch: battlefield + timeline · map: battlefield alone */
@@ -496,6 +497,7 @@ body.mode-staff #vignette{display:none}
   #firstrun h2{font-size:var(--t-h2)}
   .tb-icon{min-width:42px;min-height:38px}
   .tb-play{min-width:66px;min-height:38px}
+  .tb-follow{min-height:38px}
   .tb-sit{font-size:var(--t-ui);padding:0 10px 6px}
   .tb-sit .der{display:none}
   .dispatch{left:10px;right:10px;width:auto;bottom:calc(var(--tb) + 10px);padding:12px 14px 10px}

@@ -1,8 +1,125 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 3D: the camera (docs/STAGE3_SPEC.md §A.3, §B.4, §H, §I; owner decisions 47, 48, 61-63)
+
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,319,262 bytes, md5 `732e04c0f12f939984fec3d452e48de0`**
+(was 1,281,813 bytes, md5 `6ae3f8a7…`, Stage 3C).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move. No
+  data, track, text of the record or `OVERLAYS` change. Presentation only: the battle's extent the Overview fits is derived
+  from the data at start.
+- Three owner decisions were taken while building it (61-63, `docs/STAGE3_SPEC.md` §0.3), on evidence Part A did not have.
+
+**Before building (fact).** `main` (e432d17, 3C merged as #23) matched `check:baseline` (md5 `6ae3f8a7…`, 1,281,813 bytes). The
+harness was run on that build with this part's measurement code, as the "before" of every table below.
+
+**What changed** (`app.js`, `shell.html`, `style.css`)
+- **The landscape's controls** (§A.3; decision 48), in `LANDCAM` and `bindCanvas`:
+  - left-drag pans: the grabbed ground point stays under the pointer (the eye and target move in its horizontal plane; the
+    pointer's ray is held at least 3° below the horizontal; the target stays on the modelled ground; when the drag ends the
+    target is moved along its own view ray onto the drawn ground, so nothing on screen moves);
+  - right-drag, or Shift or Ctrl + left-drag, orbits about the target, as every drag did before; the context menu is suppressed
+    on the canvas only;
+  - the wheel zooms toward the cursor: the eye and target scaled about the ground point under it, the distance kept in 24-620
+    units; a step the floor would cut is shortened to stop at the floor, so the point stays under the cursor;
+  - a double-click glides the ground point under it to the free rectangle's centre, at the current distance or 86 units;
+  - one finger pans, two pinch and twist (`touch-action:none` on the canvas);
+  - the map layer takes keyboard focus on the landscape too: the arrows pan 12% of the shorter side, Shift and the arrows turn
+    15° and tilt 5°, + and - zoom about the centre; the clock is not stepped.
+  - The paper map's controls are unchanged (Stage 2E).
+- **The focus in the unobstructed area** (§A.3): `camera.setViewOffset` puts the orbit target at the centre of the free
+  rectangle (`MAPCAM.freeRect`'s rule, without the first-run card: decision 61). The offset follows the panels each drawn
+  frame, eased over their slide; a resize sets it at once. Picking, hover, the map layer and the scale bar project through the
+  camera, so they are unchanged.
+- **The Overview** (§B.4; decision 61): on the landscape it fits the day's battle (every formation's position at the start,
+  middle and end of every phase, every event and every place; x -161 to 83.5, z -122 to 125) into the free rectangle; every
+  other preset is re-framed in height only, as before, and lands at the free centre. The eye stands 536 units out in Study
+  and 425 in Watch at 1600 x 900 (the authored preset 278), 491 on the first-run screen.
+- **The fog recedes** with the eye beyond the authored Overview's distance from the target (274 units): the fitted Overview
+  and a wide zoom were drawn in fog (the fog's near and far are distances from the eye, chosen for the authored views). Every
+  view within that distance is drawn as before. A matter of the light, which Stage 4 replaces.
+- **Corps and army names** are drawn at any distance once the view shows corps (beyond 250 units; decision 63); before, every
+  formation name stopped at 300 units, and the fitted Overview named none.
+- **Follow** (§A.3; decision 47): a toggle in the timeline's control row after the transport buttons (`aria-pressed`), showing
+  `!freeCam`. A pan, orbit, zoom, double-click, the map layer's keys and every centring (the dossier, the order of battle, the
+  events) turn it off; a vantage, chapter, tour stop, phase or act turns it on; pressing it on glides to the current phase's
+  view. A vantage's button is released when the eye leaves it.
+- **One tween chain** (§A.3): the loop's `tween` runs two slots, the phase change's light and overlay fade, and the camera move.
+  A phase change replaces the camera move only when it moves the camera itself (Follow on); before, it dropped a glide in
+  flight. The relief control still stops both, as before.
+- **Words**: the first-run hint and the legend's control line follow the new controls (§E.3 put them with the controls); the map
+  layer's accessible name on the landscape gains its keys.
+
+**Per view, before (Stage 3C) and after** (`tools/stage3/report-3b.js --part 3D`; `docs/stage3-evidence/3d-report.md`, `3d-sheet.jpg`,
+`3d-overview.jpg`)
+| | before (3C) | after (3D) |
+|---|---|---|
+| the phase-8 Overview, Study / Watch: arrow heads more than a quarter hidden | 4 of 10 / 4 of 10 | 0 of 12 / 0 of 12 |
+| every landscape view: the orbit target from the free rectangle's centre | (not centred) | 0 px, and 0 px after the resize to 1280 x 720 |
+| the Overview's eye distance, Study / Watch / first run | 278 / 278 / 278 | 536 / 425 / 491 |
+| unobstructed fraction | | unchanged in every view (the panels did not change) |
+
+- **Drops**, all within their limits: fewer in eight views (first-run 9 → 5, overview-plan 6 → 4, close-sokolnitz 6 → 4,
+  pratzen-orbit-min 18 → 7, watch-selected 4 → 3, ph8-overview-study 6 → 3, ph8-overview-watch 5 → 3, first-run-laptop 5 → 4), more
+  in two (selected-formation 2 → 4, narrow-1024 5 → 6; decision 62 below), the same in the rest. The Overview views place fewer
+  items (ph8-overview-study 35 → 22): at their distance the level of detail draws corps and armies, not divisions.
+- Overlaps 0, nothing over a panel or a head, map text at its floor and AA as rendered (lowest 4.89:1, staff-paper, as before),
+  pass times 0.4-1.9 ms.
+- pratzen-orbit-min still reaches the orbit minimum through the right button: the "intended depth" 4.31 units below the ground
+  (4.314 before), the same target and bearing, the eye's clearance 4.235 (4.234).
+- **The controls** (self-test, at 1x, 4x and 10.33x from the five vantages): a pan within 0.001 px of the pointer during and
+  after (50 steps a factor, none lifted by the floor); the wheel within 0.012 px over 60 steps (2 shortened by the floor at
+  10.33x); a double-click 0.000 px from the free centre; a right-drag orbits in 5 of 5; never below the floor; a pan move
+  0.007-0.012 ms (budget 2 ms).
+
+**Decisions taken while building it** (§0.3, 61-63; each asked, with the numbers):
+- **61, the Overview's framing.** §B.4 proposed fitting the whole modelled ground, as the paper map does. On the landscape that
+  put the eye 533-712 units out, and 996-1,228 on the first-run screen (the card leaves a short free strip), where the fog drew
+  the field grey and the first-run view at 1280 x 720 dropped 11 of 27 items (5 before). The owner chose the day's battle, the
+  card not counted, the fog receding (`3d-overview.jpg`: four framings).
+- **62, two drop limits.** The offset brings ground the panels covered into view, and one more place name there finds no room
+  beside its marker: selected-formation 4 against 3 (Augezd beside the legend, Kobelnitz under "Goldbach stream"), narrow-1024 6
+  against 5 (Sokolnitz). Reproduced on the 3C build in the same framing (`tools/stage3/offset-limits.js --prev`), its map layer
+  drops the same items, 4 and 6: the framing adds them, not the code. Stage 2E's method gives 10 (matched panels; 7 native) and 23
+  there. The owner chose 4 and 6 (`docs/stage3-evidence/offset-limits.json`).
+- **63, formation names on the Overview.** Names stopped at 300 units; the fitted Overview named none. Corps and army names are
+  now drawn at any distance once the view shows corps; the Overview in the self-test names 5 (gqg, ahq, buxhowden, lich, bag).
+
+**Tests** (none loosened; new or stricter)
+- **Harness** (`harness.js`, `measure.js`, `thresholds.js`): pratzen-orbit-min drives the orbit with the right button (decision 48)
+  and aims its wheel at the orbit target's place on screen (the wheel now zooms toward the cursor; aimed at the target it zooms
+  about it, as before); new, every landscape view: the orbit target within 1 px of the free rectangle's centre, and again after
+  the resize to 1280 x 720; new, the phase-8 Overview views: no arrow head more than a quarter hidden.
+- **Drop limits**: selected-formation 3 → 4 and narrow-1024 5 → 6 (decision 62, the measured reason above); every other limit
+  unchanged.
+- **Self-test** (121 checks, was 110), new: at each factor, the landscape controls through real pointer and wheel events from every
+  vantage, and the keys and touch; once, the offset after eight panel changes, picking and the ground through the offset, Follow
+  after 14 camera paths (decision 47), every vantage's target at the free centre and the Overview's battle inside the free
+  rectangle, naming its corps and armies, and one tween chain. The existing camera checks are unchanged and pass at each factor.
+  The ground's round trip is checked on the modelled ground: beyond it, toward the horizon, the coarse apron has a step at its
+  edge where a grazing ray's crossing is not a point of the ground (3.3 px at 700 units, with or without the offset; §A.2's
+  2.2 px grazing ray).
+- **Height guard**: the new `groundY` call sites classified (the camera's as presentation, the self-test's as test).
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard (0 presentation sites calling `height()`/`hAt()`).
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:visual`: all checks passed, 20 views, the self-test 121 of 121.
+- `npm run check:contrast`: 3,880 text elements in 26 states, 0 below AA, 0 below 10.5 px (3,927 on the 3C build: the states drawn
+  on the Overview read 14-18 fewer map texts at its distance, most others one more, the Follow button).
+- `npm run check:baseline`: moved to this build; passes.
+
+**Not done, or open**
+- Touch is tested by synthetic pointer events only; no device was used.
+- The phase-8 heads are clear because the Overview is fitted; the other presets are not re-framed into the free rectangle
+  beyond their target's centring (§H asks only that their target lands inside it, which it does at the centre).
+- The fog's recession is a stopgap for the fitted Overview; Stage 4's light replaces it.
+- The rest of Stage 3 (3E: names, the "?" overlay and the key table) and the spine data task are not started.
+
 ## 2026-10 · Stage 3C: one timeline, and the spine index (docs/STAGE3_SPEC.md §C.2, §D, §H, §I; owner decisions 50, 53, 60)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,281,813 bytes, md5 `6ae3f8a76dc6fecc8bcd87eb3b1b6dfc`**
+**Status: merged (#23). `austerlitz-command-map.html`: 1,281,813 bytes, md5 `6ae3f8a76dc6fecc8bcd87eb3b1b6dfc`**
 (was 1,265,532 bytes, md5 `543a9bf0…`, Stage 3B).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move. No

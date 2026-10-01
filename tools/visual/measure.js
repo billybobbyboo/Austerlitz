@@ -403,8 +403,26 @@
       dispatchVisible:(function(){ var d=document.querySelector(".dispatch"); return !!d&&getComputedStyle(d).display!=="none"&&d.getBoundingClientRect().width>0; })(),
       stats:(D()&&D().stats)?D().stats():null,
       layer:layer(), unobstructed:unobstructed(), legendOverDispatch:legendOverDispatch(), paper:paperMap(),
-      legendOverPanels:legendOverPanels(), docking:docking(), viewport:[window.innerWidth,window.innerHeight], timeline:timeline()
+      legendOverPanels:legendOverPanels(), docking:docking(), viewport:[window.innerWidth,window.innerHeight], timeline:timeline(),
+      heads:headsHidden(), focus:focusOffset()
     };
+  }
+  /* Stage 3D (docs/STAGE3_SPEC.md section H; the measure of tools/stage3/dock-probe.js): the arrow heads on screen, and those
+     more than a quarter hidden, under one panel or off the screen's edge (a box partly off screen counts its off-screen part) */
+  function headsHidden(){
+    var H=headRects(), P=panelRects(), W0=window.innerWidth, H0=window.innerHeight, n=0, list=[];
+    H.forEach(function(h){ var r=h.r, a=Math.max(1e-9,(r[2]-r[0])*(r[3]-r[1])), worst=0;
+      P.forEach(function(q){ var ix=Math.max(0,Math.min(r[2],q[2])-Math.max(r[0],q[0])), iy=Math.max(0,Math.min(r[3],q[3])-Math.max(r[1],q[1])); worst=Math.max(worst,ix*iy); });
+      var on=Math.max(0,Math.min(r[2],W0)-Math.max(r[0],0))*Math.max(0,Math.min(r[3],H0)-Math.max(r[1],0)), hid=Math.min(a,worst+(a-on));
+      if(hid>0.25*a){ n++; list.push(h.side+" head "+Math.round(100*hid/a)+"% hidden"); } });
+    return {heads:H.length, hiddenOverQuarter:n, list:list};
+  }
+  /* Stage 3D: the landscape's orbit target against the free rectangle's centre (px), on a build with the view offset */
+  function focusOffset(){
+    if(typeof syncViewOffset!=="function"||camera.isOrthographicCamera) return null;
+    var fr=(typeof landFreeRect==="function")?landFreeRect():MAPCAM.freeRect(), v=new V().copy(orbitTarget); camera.updateMatrixWorld(true); v.project(camera);
+    var x=(v.x*0.5+0.5)*window.innerWidth, y=(-v.y*0.5+0.5)*window.innerHeight;
+    return +Math.hypot(x-(fr[0]+fr[2])/2,y-(fr[1]+fr[3])/2).toFixed(3);
   }
 
   /* ---- pixels of a screenshot, outside the interface panels ---- */
@@ -448,5 +466,5 @@
 
   window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures,
                 overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, layerTexts:layerTexts,
-                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, phaseLabels:phaseLabels};
+                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, phaseLabels:phaseLabels, headsHidden:headsHidden, focusOffset:focusOffset};
 })();

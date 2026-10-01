@@ -26,6 +26,13 @@ const DROP_LIMIT={"first-run":12,"first-run-laptop":16,"overview-field":11,"over
   /* Stage 3C: the two phase-8 Overview views are new; their limits are the main method's, what the Stage 2C canvas pass hides there
      (tools/stage2/dom-layer.js "today", AUSTERLITZ_HTML=archive/stage2c-68ac7721.html, which gives overview-field's 11 again) */
   "ph8-overview-study":7,"ph8-overview-watch":7};
+/* Stage 3D: the view offset puts the orbit target at the free rectangle's centre, and two views then show ground their panels
+   had covered, where one more place name finds no room beside its marker: selected-formation 4 (was limit 3), narrow-1024 6
+   (was 5). The same framing on the Stage 3C build (tools/stage3/offset-limits.js --prev) drops the same items, 4 and 6: the
+   framing adds them, not the layer. Re-derived by Stage 2E's method the 2C canvas pass hides 10 (matched panels; 7 native)
+   and 23 there; the owner chose the tight count, the previous build's in the same framing (the method 3B used for
+   narrow-1024), so that any further drop fails (docs/stage3-evidence/offset-limits.json; CHANGELOG.md, Stage 3D). */
+DROP_LIMIT["selected-formation"]=4; DROP_LIMIT["narrow-1024"]=6;
 /* section H: the unobstructed share of the viewport on the Stage 2C build, at the case's viewport and at 1280 x 720, measured
    by this harness (CSS transitions off, the panels at rest). It must not fall. These equal tools/stage2/map-text.js's values
    in every view but one: selected-formation at 1280 x 720 is 6.97% at rest, where map-text.js reported 15.1% with the
@@ -63,6 +70,11 @@ const PAPER_MIN_PXKM={"paper-north-up":28,"paper-laptop":21};
 /* Stage 3C (section H): the one timeline's height, at every viewport (before 3C: 170 px at 1600 x 900, 139 at 1366 x 768 and
    1280 x 720). New */
 const TIMELINE_MAX=92;
+/* Stage 3D (section H): in the phase-8 Overview views no arrow head more than a quarter hidden by a panel or the screen's edge
+   (4 of 5 Allied arrows in Part A; 2 of 5 still wholly under the 90 px timeline before the Overview was fitted); in every
+   landscape view on a build with the view offset, the orbit target at the free rectangle's centre within 1 px. New */
+const HEADS_SHOWN=["ph8-overview-study","ph8-overview-watch"], FOCUS_PX=1;
+module.exports.HEADS_SHOWN=HEADS_SHOWN; module.exports.FOCUS_PX=FOCUS_PX;
 module.exports.TIMELINE_MAX=TIMELINE_MAX;
 module.exports.PAPER_MIN_PXKM=PAPER_MIN_PXKM;
 module.exports.DROP_LIMIT=DROP_LIMIT; module.exports.UNOBSTRUCTED=UNOBSTRUCTED; module.exports.LAYER_MS=LAYER_MS;
@@ -119,6 +131,9 @@ module.exports.check=function(name,m){
     if(m.presentation==="watch"&&!(TL.switchInRow&&TL.switchOpacity===1)) f.push("Watch: the presentation switch is not in the timeline's control row at full opacity ("+TL.switchOpacity+")");
     if(m.presentation==="watch"&&TL.capDerived===false) f.push("Watch: the caption's derived reading is not shown");
     if(m.phaseLabels720&&m.phaseLabels720.cut.length) f.push("at 1280 x 720 the current phase's label is cut: "+m.phaseLabels720.cut.join(", ")); }
+  if(HEADS_SHOWN.includes(name)&&m.heads&&m.heads.hiddenOverQuarter>0) f.push("arrow heads more than a quarter hidden by a panel or the edge: "+m.heads.list.join(", "));
+  if(m.focus!=null&&!(m.focus<=FOCUS_PX)) f.push("the orbit target "+m.focus+" px from the free rectangle's centre (limit "+FOCUS_PX+" px)");
+  if(m.focus720!=null&&!(m.focus720<=FOCUS_PX)) f.push("after the resize to 1280 x 720 the orbit target is "+m.focus720+" px from the free rectangle's centre (limit "+FOCUS_PX+" px)");
   if(m.paper&&PAPER_MIN_PXKM[name]!==undefined&&!(m.paper.pxPerKm.pratzeberg>=PAPER_MIN_PXKM[name]))
     f.push("paper map as entered: "+m.paper.pxPerKm.pratzeberg+" px per true km, below "+PAPER_MIN_PXKM[name]);
   const Pm=m.paper;

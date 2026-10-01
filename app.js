@@ -110,6 +110,23 @@ var landCam=null, paperCam=null;
 var orbitTarget=new THREE.Vector3(0,0,14), sph=new THREE.Spherical();
 var mode="terrain", tween=null;
 var selection=null, freeCam=false;
+/* Stage 3D (docs/STAGE3_SPEC.md section A.3, "one tween chain"): what the loop runs as `tween` is two slots. The scene slot
+   holds a phase change's light and overlay fade; the camera slot holds a glide, a phase's camera arc or an eased move of the
+   paper map. Each step returns true when it has ended. A phase change replaces the camera move only when it moves the camera
+   itself (Follow on): before, it assigned `tween` and dropped any glide in flight, so a centring or a double-click made while
+   the battle played was lost at the next phase boundary. Setting `tween=null` (a placement, the tools) still stops both. */
+var _tw={scene:null,cam:null};
+function _runTween(now){
+  var s=_tw.scene, c=_tw.cam;
+  if(s&&s(now)&&_tw.scene===s) _tw.scene=null;
+  if(c&&c(now)&&_tw.cam===c) _tw.cam=null;
+  if(!_tw.scene&&!_tw.cam&&tween===_runTween) tween=null;
+}
+function setTween(slot,fn){
+  if(tween!==_runTween){ _tw.scene=null; _tw.cam=null; }
+  _tw[slot]=fn||null;
+  tween=(_tw.scene||_tw.cam)?_runTween:(tween===_runTween?null:tween);
+}
 var layerOn={symbols:true,arrows:true,labels:true,trails:true,contours:true,analysis:false,events:true};
 var goingOn=false;
 var terrainLabels=[];   /* {tl, col, world}: the map layer's terrain-study labels */
@@ -1634,14 +1651,14 @@ function startPhaseTransition(ph,instant,moveCam){
           bg:scene.background.clone(),mist:world.mist.children[0].material.opacity};
   var camMove=moveCam && !freeCam && mode!=="staff";   /* the paper map's plan stays where it is: the whole field is on it */
   if(camMove){
-    camArc=setupArc(landCam.position,orbitTarget,
-      new THREE.Vector3(reframe(ph.cam)[0],reframe(ph.cam)[1],reframe(ph.cam)[2]),
-      new THREE.Vector3(reframe(ph.cam)[3],reframe(ph.cam)[4],reframe(ph.cam)[5]));
+    var pc=presetFrame(ph.cam);
+    camArc=setupArc(landCam.position,orbitTarget,new THREE.Vector3(pc[0],pc[1],pc[2]),new THREE.Vector3(pc[3],pc[4],pc[5]));
   }
   var dur=(instant||RM)?1:TRANS_MS, t0=performance.now();
-  tween=function(now){
+  if(camMove){ curVantage=null;
+    setTween("cam",function(now){ var k=Math.min(1,(now-t0)/dur); if(camArc) applyArc(camArc,easeInOut(k)); return k>=1||!camArc; }); }
+  setTween("scene",function(now){
     var k=Math.min(1,(now-t0)/dur), e=easeInOut(k);
-    if(camMove&&camArc) applyArc(camArc,e);
     sun.intensity=f0.i+(L.i-f0.i)*e;
     sun.color.copy(f0.c).lerp(new THREE.Color(L.c),e);
     sunDir.set(f0.p.x+(L.p[0]-f0.p.x)*e,f0.p.y+(L.p[1]-f0.p.y)*e,f0.p.z+(L.p[2]-f0.p.z)*e);
@@ -1666,8 +1683,9 @@ function startPhaseTransition(ph,instant,moveCam){
     world.mist.visible=world.mist.children[0].material.opacity>0.012 && mode!=="staff";
     ovFadeOut=1-clamp01(k/0.42);
     ovFadeIn=clamp01((k-0.34)/0.66);
-    if(k>=1){ tween=null; retireOld(); ovFadeIn=1; ovFadeOut=0; }
-  };
+    if(k>=1){ retireOld(); ovFadeIn=1; ovFadeOut=0; return true; }
+    return false;
+  });
 }
 
 function setClock(t,opts){
@@ -1964,7 +1982,19 @@ function renderStandard(){
   renderer.setRenderTarget(null);
   renderer.render(scene,camera);
 }
+/* Stage 3D: the fog recedes with the eye beyond the authored Overview's distance from the target (VANTAGE.plan, about 274
+   units). The fog's near and far are distances from the eye, chosen for the authored views; the Overview fitted to the free
+   rectangle (fitOverview) and a wide zoom stand two to three times farther, where the whole field was drawn in fog. Every
+   view at or within that distance is drawn as before. A presentation matter of the light, which Stage 4 replaces. */
+var FOG_REF=null;
+function fogShift(){
+  if(FOG_REF===null) FOG_REF=Math.hypot(VANTAGE.plan[0]-VANTAGE.plan[3],VANTAGE.plan[1]-VANTAGE.plan[4],VANTAGE.plan[2]-VANTAGE.plan[5]);
+  return (camera===landCam)?Math.max(0,landCam.position.distanceTo(orbitTarget)-FOG_REF):0; }
 function renderFrame(){
+  var fs=fogShift(); scene.fog.near+=fs; scene.fog.far+=fs;
+  try{ renderFrameNow(); } finally { scene.fog.near-=fs; scene.fog.far-=fs; }
+}
+function renderFrameNow(){
   renderer.info.reset();
   /* the guard: anything that placed the eye without clampCamera() is counted and corrected (the landscape's eye: the paper
      map's plan camera stands far above the flat sheet) */
@@ -2627,9 +2657,9 @@ function setMode(m){
   world.mist.visible=!staff && mt>0.012;
 
   document.body.classList.toggle("mode-staff",staff);
-  if(ML.root){ if(staff) ML.root.tabIndex=0; else ML.root.removeAttribute("tabindex");
+  if(ML.root){ ML.root.tabIndex=0;   /* Stage 3D: the landscape layer takes keyboard focus as the paper map's does */
     ML.root.setAttribute("aria-label",staff?"The paper map, north up: arrow keys pan, plus and minus zoom; Tab reaches its formations, events and places"
-      :"The map: formations, events and places"); }
+      :"The map: arrow keys pan, Shift and the arrow keys turn and tilt, plus and minus zoom; Tab reaches its formations, events and places"); }
   document.querySelectorAll(".mode-btn").forEach(function(b){
     b.setAttribute("aria-pressed", b.dataset.m===m ? "true":"false");
   });
@@ -2707,8 +2737,8 @@ var MAPCAM=(function(){
      (docs/STAGE3_SPEC.md section B.4): given the extent of what is to be framed (ext, ground units along east and north),
      the free rectangle in which it is drawn largest instead, the larger area breaking a tie: with the legend closed the
      largest rectangle is wide and short, and the about square field was drawn 15-19% smaller in it than it need be */
-  function freeRect(ext){
-    var v=vp(), G=8, nx=Math.floor(v[0]/G), ny=Math.floor(v[1]/G), P=env.panels(), h=new Int32Array(nx), best=[0,0,v[0],v[1]], bA=-1, bS=-1;
+  function freeRect(ext,P0){   /* P0: a panel list instead of the app's (Stage 3D: the landscape's, without the first-run card) */
+    var v=vp(), G=8, nx=Math.floor(v[0]/G), ny=Math.floor(v[1]/G), P=P0||env.panels(), h=new Int32Array(nx), best=[0,0,v[0],v[1]], bA=-1, bS=-1;
     for(var j=0;j<ny;j++){
       var y0=j*G, y1=y0+G;
       for(var i=0;i<nx;i++){ var x0=i*G, x1=x0+G, bad=x0<MARGIN||y0<MARGIN||x1>v[0]-MARGIN||y1>v[1]-MARGIN;
@@ -2756,13 +2786,7 @@ var MAPCAM=(function(){
    (as glide does); the move ends when its step returns true. Reduced motion: at once. */
 function mapSchedule(step,ms){
   if(RM){ step(performance.now()+1e9); return; }
-  var prev=tween, self;
-  tween=self=function(now){
-    if(prev){ prev(now); if(tween!==self) prev=null; tween=self; }
-    var done=step(now);
-    if(done&&!prev) tween=null;
-    else if(done) tween=prev;
-  };
+  setTween("cam",step);   /* Stage 3D: the camera slot; a phase change's fade runs on in its own */
 }
 var ECH_RANK={army:0,corps:1,div:2,bde:3};
 
@@ -2801,10 +2825,14 @@ function mlInit(){
   if(!ML.root) return;
   ML.root.innerHTML='<svg class="ml-lines" aria-hidden="true" focusable="false"></svg>';
   ML.lines=ML.root.querySelector(".ml-lines");
+  ML.root.tabIndex=0;   /* Stage 3D: the layer takes keyboard focus on the landscape too (setMode words its label) */
+  ML.root.setAttribute("aria-label","The map: arrow keys pan, Shift and the arrow keys turn and tilt, plus and minus zoom; Tab reaches its formations, events and places");
   /* Stage 2E: on the paper map the layer itself takes keyboard focus (Tab, after the interface, before the map's items):
      the arrow keys pan and + and - zoom about the centre. Elsewhere the arrows keep stepping the clock. */
   ML.root.addEventListener("keydown",function(e){
-    if(e.target!==ML.root||mode!=="staff") return;
+    if(e.target!==ML.root) return;
+    /* Stage 3D: the landscape takes the keys too (section A.3) */
+    if(mode!=="staff"){ if(LANDCAM.key(e)){ e.preventDefault(); e.stopPropagation(); } return; }
     var v=[renderer.domElement.clientWidth||innerWidth,viewH()], d=Math.round(Math.min(v[0],v[1])*0.12), done=true;
     if(e.key==="ArrowLeft") MAPCAM.pan(d,0); else if(e.key==="ArrowRight") MAPCAM.pan(-d,0);
     else if(e.key==="ArrowUp") MAPCAM.pan(0,d); else if(e.key==="ArrowDown") MAPCAM.pan(0,-d);
@@ -3129,7 +3157,7 @@ function paintLegend(){
   _lgKey=key; ML.lgSize=null;
   lg.querySelectorAll("[data-lg]").forEach(function(e){ e.hidden=!on[e.dataset.lg]; });
   var hint=document.getElementById("lg-hint");   /* the controls of the view shown: the paper map pans, the landscape orbits */
-  if(hint) hint.innerHTML=land?"drag to orbit &middot; scroll to zoom &middot; click or Tab to a counter or a name"
+  if(hint) hint.innerHTML=land?"drag to pan &middot; right-drag or Shift-drag to turn &middot; scroll to zoom toward the pointer &middot; double-click to centre &middot; click or Tab to a counter or a name"
     :"drag to pan &middot; scroll to zoom toward the pointer &middot; Tab to the map: arrows pan, + &minus; zoom &middot; click or Tab to a counter or a name";
 }
 function mlLegendFit(VW,VH){
@@ -3369,7 +3397,9 @@ function updateVisibility(){
     if(rec.block.visible){ poseBlock(rec,id,liveStatus(id,curPhase)); settleBlock(rec); }
 
     /* the formation's name, in the landscape (the map layer draws it) */
-    var nameRange = f.ech==="bde" ? 170 : (f.arm==="art"||f.arm==="hq") ? 220 : 300;
+    /* Stage 3D (the owner's answer): once the view shows corps (beyond 250 units), corps and army names are drawn at any distance;
+       the Overview fitted to the free rectangle stands 425-536 units out, beyond the 300 that named every formation before */
+    var nameRange = (f.ech==="corps"||f.ech==="army")&&dist>250 ? Infinity : f.ech==="bde" ? 170 : (f.arm==="art"||f.arm==="hq") ? 220 : 300;
     rec.nameShow = labels && mode==="terrain" && !!p && camera.position.distanceTo(rec.block.position)>34 &&
                    (dist<nameRange || (selection&&selection.kind==="f"&&selection.id===id));
     if(rec.trail){
@@ -3499,26 +3529,26 @@ function orbitPlace(){
    map it becomes a move of the plan (MAPCAM): the target centred in the free part of the screen, at the zoom that shows
    the ground as the landscape eye would at that distance (mapWppAt) */
 function glide(toPos,toTgt,ms,bulge){
-  freeCam=false;
+  freeCam=false; curVantage=null;
   if(mode==="staff"){ MAPCAM.glideTo(toTgt.x,toTgt.z,mapWppAt(toPos.distanceTo(toTgt)),ms); return; }
   var arc=setupArc(landCam.position,orbitTarget,toPos,toTgt);
   var t0=performance.now(), dur=RM?1:(ms||1500);
-  /* a transition already running (a phase change's light and overlay fade) runs on under the glide: replacing it left the
-     tour's arrows at opacity 0 and the previous phase's drawn (found in Stage 2D) */
-  var prev=tween, self;
-  tween=self=function(now){
-    if(prev){ prev(now); if(tween!==self) prev=null; tween=self; }   /* it clears tween when it ends */
+  /* a transition already running (a phase change's light and overlay fade) runs on under the glide, in its own slot:
+     replacing it left the tour's arrows at opacity 0 and the previous phase's drawn (found in Stage 2D) */
+  setTween("cam",function(now){
     var k=Math.min(1,(now-t0)/dur);
     applyArc(arc,easeInOut(k),bulge);
-    if(k>=1&&!prev) tween=null;
-  };
+    return k>=1;
+  });
 }
-function flyTo(v){   /* v is an authored preset: re-framed to the drawn ground */
-  if(mode==="staff"){ freeCam=false;   /* the paper map: the overview frames the whole field; any other preset centres its target at its distance */
+function flyTo(v){   /* v is an authored preset: re-framed to the drawn ground (presetFrame) */
+  var vk=null; Object.keys(VANTAGE).forEach(function(k){ if(VANTAGE[k]===v) vk=k; });
+  if(mode==="staff"){ freeCam=false; curVantage=vk;   /* the paper map: the overview frames the whole field; any other preset centres its target at its distance */
     if(v===VANTAGE.plan) MAPCAM.frameField(); else MAPCAM.glideTo(v[3],v[5],mapWppAt(Math.hypot(v[0]-v[3],v[1]-v[4],v[2]-v[5])),1600);
     return; }
-  v=reframe(v);
+  v=presetFrame(v);
   glide(new THREE.Vector3(v[0],v[1],v[2]), new THREE.Vector3(v[3],v[4],v[5]), 1600, 0.12);
+  curVantage=vk;   /* the vantage's button stays pressed until the eye leaves it (Stage 3D) */
 }
 var VANTAGE={
   field:[-195,92,156,-33,4,-2],
@@ -3528,39 +3558,231 @@ var VANTAGE={
   plan:[-27,272,41,-27,0,9]
 };
 
+/* ---------------- the landscape camera (Stage 3D; docs/STAGE3_SPEC.md sections A.3 and H) ----------------
+   The focus in the unobstructed area. The landscape's principal point is moved to the centre of the free rectangle
+   (MAPCAM.freeRect(), the rectangle the paper map frames in) by camera.setViewOffset: the orbit target, every preset's target
+   and every centring land in the middle of the free map, not of the window. Picking, hover, the map layer, occlusion and
+   the scale bar project through the camera's own matrices, so nothing else changes (section A.2: groundAt's round trip and
+   worldPerPx unchanged). The offset follows the panels: each drawn frame compares them with the last, and the offset eases
+   to the new centre over the panels' slide; a resize sets it at once. On the paper map it is not drawn (MAPCAM frames its
+   own plan); in Clean there is no panel, so it is about zero. */
+var VOFF={x:0,y:0,tx:0,ty:0,key:"",W:0,H:0};
+/* the panels the landscape's focus keeps clear of: the map layer's, without the first-run card, which stands over the map only
+   until the visitor chooses a way in (owner's answer in 3D: the first screen is framed as Study is, not into the short strip
+   above the card) */
+function landPanels(){
+  mlLegendFit(renderer.domElement.clientWidth||innerWidth,viewH());
+  var P=mlPanels(), fr=document.getElementById("firstrun");
+  if(fr&&!fr.hidden){ var r=fr.getBoundingClientRect(); P=P.filter(function(q){ return !(Math.abs(q[0]-r.left)<0.5&&Math.abs(q[1]-r.top)<0.5&&Math.abs(q[2]-r.right)<0.5&&Math.abs(q[3]-r.bottom)<0.5); }); }
+  return P;
+}
+function landFreeRect(){ return MAPCAM.freeRect(null,landPanels()); }
+function freeCentre(){ var fr=landFreeRect(); return [(fr[0]+fr[2])/2,(fr[1]+fr[3])/2]; }
+function syncViewOffset(instant){
+  if(mode==="staff"||!landCam) return true;
+  var W=renderer.domElement.clientWidth||window.innerWidth, H=viewH(), P=landPanels(), key=W+"x"+H;
+  for(var i=0;i<P.length;i++) key+=";"+Math.round(P[i][0])+","+Math.round(P[i][1])+","+Math.round(P[i][2])+","+Math.round(P[i][3]);
+  if(key!==VOFF.key){ VOFF.key=key; var c=freeCentre(); VOFF.tx=W/2-c[0]; VOFF.ty=H/2-c[1]; }
+  var done=true;
+  if(instant||W!==VOFF.W||H!==VOFF.H){ VOFF.x=VOFF.tx; VOFF.y=VOFF.ty; }
+  else if(VOFF.x!==VOFF.tx||VOFF.y!==VOFF.ty){
+    var r=ease(0.28); VOFF.x+=(VOFF.tx-VOFF.x)*r; VOFF.y+=(VOFF.ty-VOFF.y)*r;
+    if(Math.abs(VOFF.tx-VOFF.x)<0.05&&Math.abs(VOFF.ty-VOFF.y)<0.05){ VOFF.x=VOFF.tx; VOFF.y=VOFF.ty; } else { done=false; settling=true; } }
+  var v=landCam.view;
+  if(!v||!v.enabled||v.fullWidth!==W||v.fullHeight!==H||v.offsetX!==VOFF.x||v.offsetY!==VOFF.y||v.width!==W||v.height!==H){
+    landCam.setViewOffset(W,H,VOFF.x,VOFF.y,W,H); landCam.updateProjectionMatrix(); }
+  VOFF.W=W; VOFF.H=H;
+  return done;
+}
+/* The Overview on the landscape (section B.4, as the owner settled it in 3D): what the day's battle covers fitted into the free
+   rectangle. The preset gives the direction of view; the target and the distance are found so the extent's edge, on the
+   drawn ground, is inside the free rectangle and centred in it. Section B.4 proposed the whole modelled ground, as the paper
+   map's Overview (MAPCAM.frameField); on the landscape that put the eye 533-712 units out (1,000-1,230 on the first-run
+   screen) against the authored 278, and the owner chose the battle's extent (derived from the data, no data change): every
+   formation's position at the start, middle and end of every phase, every event and every place. Every other preset is
+   re-framed in height only (reframe, Stage 2B); with the offset its target lands at the free rectangle's centre. */
+var _actExt=null;
+function actionExtent(){
+  if(_actExt) return _actExt;
+  var B=[1e9,1e9,-1e9,-1e9];
+  function add(m){ var w=W(m[0],m[1]); B[0]=Math.min(B[0],w[0]); B[1]=Math.min(B[1],w[1]); B[2]=Math.max(B[2],w[0]); B[3]=Math.max(B[3],w[1]); }
+  PHASES.forEach(function(ph){ [ph.t0+1,(ph.t0+ph.t1)/2,ph.t1-1].forEach(function(t){
+    Object.keys(FORMATIONS).forEach(function(id){ if(FORMATIONS[id].track&&!goneAt(id,t)&&!notYetAt(id,t)){ var p=posAtClock(id,t); if(p) add(p); } }); }); });
+  EVENTS.forEach(function(e){ add(e.p); }); FEATURES.forEach(function(f){ add(f.p); });
+  return (_actExt=B);
+}
+function isOverview(v){ var P=VANTAGE.plan; for(var i=0;i<6;i++) if(Math.abs(v[i]-P[i])>1e-9) return false; return true; }
+function presetFrame(v){ var c=reframe(v); return isOverview(v)?fitOverview(c):c; }
+function fitOverview(c){
+  syncViewOffset(true);
+  var fr=landFreeRect(), VW=renderer.domElement.clientWidth||window.innerWidth, H=viewH(), S=[], v=new THREE.Vector3();
+  var sp=landCam.position.clone(), st=orbitTarget.clone();
+  var X=actionExtent();
+  for(var k=0;k<=8;k++){ var a=X[0]+(X[2]-X[0])*k/8, b=X[1]+(X[3]-X[1])*k/8;
+    [[a,X[1]],[a,X[3]],[X[0],b],[X[2],b]].forEach(function(q){ S.push(new THREE.Vector3(q[0],groundY(q[0],q[1]),q[1])); }); }
+  var dir=new THREE.Vector3(c[0]-c[3],c[1]-c[4],c[2]-c[5]).normalize(), T=new THREE.Vector3(c[3],c[4],c[5]);
+  function place(d){ landCam.position.copy(T).addScaledVector(dir,d); landCam.lookAt(T); landCam.updateMatrixWorld(true); }
+  function box(){ var bx=[1e9,1e9,-1e9,-1e9];
+    for(var i=0;i<S.length;i++){ v.copy(S[i]).project(landCam); if(v.z>1||v.z<-1) return null;
+      var x=(v.x*0.5+0.5)*VW, y=(-v.y*0.5+0.5)*H; bx[0]=Math.min(bx[0],x); bx[1]=Math.min(bx[1],y); bx[2]=Math.max(bx[2],x); bx[3]=Math.max(bx[3],y); }
+    return bx; }
+  function inside(d){ place(d); var b=box(); return !!b&&b[0]>=fr[0]&&b[1]>=fr[1]&&b[2]<=fr[2]&&b[3]<=fr[3]; }
+  var d=1;
+  for(var it=0;it<4;it++){
+    var lo=40, hi=3000; for(var n=0;n<34;n++){ var m=(lo+hi)/2; if(inside(m)) hi=m; else lo=m; } d=hi;
+    /* centre the field's outline: the box's middle moved to the free rectangle's, through the ground under the two points */
+    place(d); var b=box(); if(!b) break;
+    var g0=groundAt((b[0]+b[2])/2,(b[1]+b[3])/2), g1=groundAt((fr[0]+fr[2])/2,(fr[1]+fr[3])/2); if(!g0||!g1) break;
+    T.x+=g0[0]-g1[0]; T.z+=g0[1]-g1[1]; T.y=groundY(T.x,T.z);
+  }
+  var lo2=40, hi2=3000; for(var n2=0;n2<34;n2++){ var m2=(lo2+hi2)/2; if(inside(m2)) hi2=m2; else lo2=m2; } d=hi2;
+  landCam.position.copy(sp); orbitTarget.copy(st); landCam.lookAt(orbitTarget); landCam.updateMatrixWorld(true);
+  var E=T.clone().addScaledVector(dir,d);
+  return [E.x,E.y,E.z,T.x,T.y,T.z];
+}
+/* Follow (section A.3; owner decision 47): today's rule made visible. On, the eye goes to each phase's view at the phase
+   boundary; off, it stays where the visitor put it. It is !freeCam. A pan, orbit, zoom or double-click, and a centring
+   (the dossier, the order of battle, the events), turn it off; a vantage, chapter, tour stop, phase or act turns it on.
+   The button and the vantages' pressed state are brought up to date every animation frame (and by the self-test). */
+var curVantage=null;
+function syncFollow(){
+  var b=document.getElementById("follow"), on=String(!freeCam);
+  if(b&&b.getAttribute("aria-pressed")!==on) b.setAttribute("aria-pressed",on);
+  var vs=document.querySelectorAll(".van-btn");
+  for(var i=0;i<vs.length;i++){ var pr=String(vs[i].dataset.v===curVantage); if(vs[i].getAttribute("aria-pressed")!==pr) vs[i].setAttribute("aria-pressed",pr); }
+}
+function setFollow(on){
+  if(on){ freeCam=false; flyTo(PHASES[curPhase].cam); }
+  else { freeCam=true; curVantage=null; }
+  syncFollow();
+}
+/* The landscape's pointer, wheel, touch and key moves (section A.3), through the app's own groundAt, groundY and clampCamera.
+   - pan (left-drag, one finger, the arrow keys): the grabbed ground point stays under the pointer. The eye and the target
+     move in the horizontal plane of the grabbed point; the pointer's ray is held at least 3 degrees below the horizontal,
+     so a drag toward the horizon slows instead of running out; the target stays on the modelled ground. When the drag ends
+     the target is moved along its own view ray onto the drawn ground ("anchor"): nothing on screen moves (section A.2).
+   - zoom (the wheel, a pinch, + and -): the eye and the target scaled about the ground point under the cursor, the distance
+     to the target kept in 24-620 units; a step the floor would cut is shortened to stop at the floor, so the point stays.
+   - orbit (right-drag, Shift or Ctrl + left-drag, a two-finger twist, Shift + the arrow keys): about the target, as before.
+   - focus (double-click): the ground point under the pointer glided to the free rectangle's centre, at the current distance
+     or 86 units if farther (the dossier's centring distance).
+   Each turns Follow off. Every write to the eye goes through clampCamera. */
+var LANDCAM=(function(){
+  var R=new THREE.Vector3(), V=new THREE.Vector3(), MIN_DEP=Math.sin(3*Math.PI/180), FX=GROUND_W/2, FZ=GROUND_D/2, grab=null;
+  var stats={moves:0,ms:0,floorStops:0};
+  function vw(){ return renderer.domElement.clientWidth||window.innerWidth; }
+  function ray(sx,sy){ landCam.updateMatrixWorld(); return R.set(sx/vw()*2-1,-(sy/viewH())*2+1,0.5).unproject(landCam).sub(landCam.position).normalize(); }
+  function screenOf(p){ landCam.updateMatrixWorld(); V.copy(p).project(landCam); return [(V.x*0.5+0.5)*vw(),(-V.y*0.5+0.5)*viewH()]; }
+  function free(){ freeCam=true; curVantage=null; }
+  /* the target moved along its own view ray onto the drawn ground: the picture does not move */
+  function anchor(){ var t=screenOf(orbitTarget), g=groundAt(t[0],t[1]);
+    if(g){ orbitTarget.set(g[0],groundY(g[0],g[1]),g[1]); landCam.lookAt(orbitTarget); } }
+  function panStart(sx,sy){
+    var g=groundAt(sx,sy), E=landCam.position; grab=null; if(!g) return false;
+    var gy=Math.min(groundY(g[0],g[1]),E.y-0.5), r=ray(sx,sy);
+    if(r.y>-MIN_DEP) return false;
+    var t=(gy-E.y)/r.y; grab={x:E.x+r.x*t,y:gy,z:E.z+r.z*t}; return true;
+  }
+  function panTo(sx,sy){
+    if(!grab) return false; var a=performance.now(), E=landCam.position, r=ray(sx,sy);
+    if(r.y>-MIN_DEP){ var hl=Math.hypot(r.x,r.z)||1, c=Math.sqrt(1-MIN_DEP*MIN_DEP); r.set(r.x/hl*c,-MIN_DEP,r.z/hl*c); }
+    var t=(grab.y-E.y)/r.y, dx=grab.x-(E.x+r.x*t), dz=grab.z-(E.z+r.z*t);
+    dx=Math.max(-FX,Math.min(FX,orbitTarget.x+dx))-orbitTarget.x; dz=Math.max(-FZ,Math.min(FZ,orbitTarget.z+dz))-orbitTarget.z;
+    orbitTarget.x+=dx; orbitTarget.z+=dz; E.x+=dx; E.z+=dz;
+    clampCamera(); landCam.lookAt(orbitTarget); free();
+    stats.moves++; stats.ms+=performance.now()-a; requestRender(2); return true;
+  }
+  function panEnd(){ if(grab){ grab=null; anchor(); requestRender(2); } }
+  function zoomAt(sx,sy,k){
+    var g=groundAt(sx,sy), E=landCam.position, T=orbitTarget;
+    var P=g?new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]):T.clone();
+    var r0=E.distanceTo(T); if(r0<1e-6) return;
+    var kk=Math.max(24,Math.min(620,r0*k))/r0; free();
+    if(Math.abs(kk-1)<1e-9) return;
+    var e=new THREE.Vector3();
+    function eyeAt(q){ return e.copy(E).sub(P).multiplyScalar(q).add(P); }
+    function ok(q){ eyeAt(q); return e.y>=camFloor(e.x,e.z); }
+    if(!ok(kk)){ var lo=1, hi=kk; for(var i=0;i<24;i++){ var m=(lo+hi)/2; if(ok(m)) lo=m; else hi=m; } kk=lo; stats.floorStops++; }
+    eyeAt(kk); T.sub(P).multiplyScalar(kk).add(P); E.copy(e);
+    clampCamera(); landCam.lookAt(T); anchor(); requestRender(2);
+  }
+  function orbit(dx,dy){
+    sph.setFromVector3(landCam.position.clone().sub(orbitTarget));
+    sph.theta-=dx*0.005; sph.phi-=dy*0.005; sph.phi=Math.max(0.10,Math.min(Math.PI/2-0.03,sph.phi));
+    orbitPlace(); free(); requestRender(2);
+  }
+  function focusAt(sx,sy){
+    var g=groundAt(sx,sy); if(!g) return false;
+    var P=new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]), d=landCam.position.clone().sub(orbitTarget), r=Math.min(d.length(),86);
+    glide(P.clone().addScaledVector(d.normalize(),r),P,RM?1:900,0.04); free(); return true;
+  }
+  /* the keys, with the map layer focused: the arrows pan 12% of the shorter side, Shift and the arrows turn 15 degrees and
+     tilt 5, + and - zoom about the free rectangle's centre */
+  function key(e){
+    var c=freeCentre(), d=Math.round(Math.min(vw(),viewH())*0.12), k=e.key, sh=e.shiftKey, A=Math.PI/180;
+    if(sh&&(k==="ArrowLeft"||k==="ArrowRight"||k==="ArrowUp"||k==="ArrowDown")){
+      var dx=k==="ArrowLeft"?-15*A/0.005:k==="ArrowRight"?15*A/0.005:0, dy=k==="ArrowUp"?-5*A/0.005:k==="ArrowDown"?5*A/0.005:0;
+      orbit(dx,dy); return true; }
+    var m={ArrowLeft:[d,0],ArrowRight:[-d,0],ArrowUp:[0,d],ArrowDown:[0,-d]}[k];
+    if(m){ if(panStart(c[0],c[1])&&panTo(c[0]+m[0],c[1]+m[1])) panEnd(); else { grab=null; free(); } return true; }
+    if(k==="+"||k==="="){ zoomAt(c[0],c[1],1/1.25); return true; }
+    if(k==="-"||k==="_"){ zoomAt(c[0],c[1],1.25); return true; }
+    return false;
+  }
+  return {panStart:panStart, panTo:panTo, panEnd:panEnd, zoomAt:zoomAt, orbit:orbit, focusAt:focusAt, key:key, anchor:anchor,
+    screenOf:screenOf, stats:stats, grabbing:function(){ return !!grab; }};
+})();
+
 /* ---------------- interaction ---------------- */
+/* Stage 3D (owner decision 48): on the landscape a left-drag pans and a right-drag (or Shift or Ctrl + left-drag) orbits;
+   the wheel zooms toward the cursor; a double-click centres the ground under it; one finger pans and two pinch and twist.
+   The paper map is unchanged (Stage 2E): any drag pans, the wheel zooms toward the cursor. A press that moves under 5 px is
+   a click, and selects, as before. */
 function bindCanvas(){
-  var el=renderer.domElement, dragging=false, moved=0, lx=0, ly=0;
-  function syncSph(){ sph.setFromVector3(landCam.position.clone().sub(orbitTarget)); }
+  var el=renderer.domElement, drag=null, touch={}, pinch=null;
+  el.addEventListener("contextmenu",function(e){ e.preventDefault(); });   /* the right button orbits; on the canvas only */
+  function nTouch(){ return Object.keys(touch).length; }
+  function pinchState(){ var k=Object.keys(touch), a=touch[k[0]], b=touch[k[1]];
+    return {mx:(a[0]+b[0])/2, my:(a[1]+b[1])/2, d:Math.hypot(b[0]-a[0],b[1]-a[1])||1, ang:Math.atan2(b[1]-a[1],b[0]-a[0])}; }
   el.addEventListener("pointerdown",function(e){
-    dragging=true; moved=0; lx=e.clientX; ly=e.clientY; syncSph();
-    el.setPointerCapture(e.pointerId);
+    if(e.pointerType==="touch"){ touch[e.pointerId]=[e.clientX,e.clientY];
+      if(nTouch()===2&&mode!=="staff"){ if(drag&&drag.kind==="pan") LANDCAM.panEnd(); drag=null; pinch=pinchState(); return; } }
+    if(drag&&e.pointerType==="touch") return;
+    var orbit=(e.button===2||e.shiftKey||e.ctrlKey);
+    drag={kind:mode==="staff"?"map":(orbit?"orbit":"pan"), moved:0, x0:e.clientX, y0:e.clientY, lx:e.clientX, ly:e.clientY, started:false, id:e.pointerId};
+    if(el.setPointerCapture) el.setPointerCapture(e.pointerId);
   });
   el.addEventListener("pointermove",function(e){
-    if(!dragging){ if(e.pointerType!=="touch") mlHoverAt(e.clientX,e.clientY); return; }
-    var dx=e.clientX-lx, dy=e.clientY-ly;
-    moved+=Math.abs(dx)+Math.abs(dy);
-    if(moved>4) freeCam=true;
-    if(mode==="staff"){ MAPCAM.pan(dx,dy); lx=e.clientX; ly=e.clientY; return; }   /* the paper map pans; it never orbits */
-    sph.theta-=dx*0.005; sph.phi-=dy*0.005;
-    sph.phi=Math.max(0.10,Math.min(Math.PI/2-0.03,sph.phi));
-    lx=e.clientX; ly=e.clientY;
-    orbitPlace();
+    if(e.pointerType==="touch"&&touch[e.pointerId]){ touch[e.pointerId]=[e.clientX,e.clientY];
+      if(pinch&&nTouch()===2){ var p=pinchState();
+        LANDCAM.zoomAt(p.mx,p.my,pinch.d/p.d); LANDCAM.orbit(-(p.ang-pinch.ang)/0.005,0); pinch=p; return; } }
+    if(!drag){ if(e.pointerType!=="touch") mlHoverAt(e.clientX,e.clientY); return; }
+    if(e.pointerId!==drag.id) return;
+    var dx=e.clientX-drag.lx, dy=e.clientY-drag.ly;
+    drag.moved+=Math.abs(dx)+Math.abs(dy); drag.lx=e.clientX; drag.ly=e.clientY;
+    if(drag.moved>4){ freeCam=true; curVantage=null; }
+    if(drag.kind==="map"){ MAPCAM.pan(dx,dy); return; }   /* the paper map pans; it never orbits */
+    if(drag.kind==="orbit"){ LANDCAM.orbit(dx,dy); return; }
+    if(!drag.started){ drag.started=true; LANDCAM.panStart(drag.x0,drag.y0); }
+    LANDCAM.panTo(e.clientX,e.clientY);
   });
   window.addEventListener("pointerup",function(e){
-    if(dragging&&moved<5){
+    if(e.pointerType==="touch"){ delete touch[e.pointerId]; if(pinch){ if(nTouch()<2) pinch=null; return; } }
+    if(!drag||(e.pointerId!==undefined&&drag.id!==undefined&&e.pointerId!==drag.id)) return;
+    if(drag.moved<5){
       var hit=pickAt(e.clientX,e.clientY);
       select(hit?hit.kind:null, hit?hit.id:null);
     }
-    dragging=false;
+    if(drag.kind==="pan"&&drag.started) LANDCAM.panEnd();
+    drag=null;
   });
+  window.addEventListener("pointercancel",function(e){ delete touch[e.pointerId]; pinch=null; if(drag&&drag.kind==="pan"&&drag.started) LANDCAM.panEnd(); drag=null; });
   el.addEventListener("pointerleave",function(){ if(ML.hover){ ML.hover=null; el.style.cursor=""; requestRender(2); } });
+  el.addEventListener("dblclick",function(e){ if(mode!=="staff"){ e.preventDefault(); LANDCAM.focusAt(e.clientX,e.clientY); } });
   el.addEventListener("wheel",function(e){
-    e.preventDefault(); freeCam=true;
+    e.preventDefault(); freeCam=true; curVantage=null;
     if(mode==="staff"){ MAPCAM.zoomAt(e.clientX,e.clientY,1+Math.sign(e.deltaY)*0.09); return; }   /* toward the cursor */
-    syncSph();
-    sph.radius=Math.max(24,Math.min(620,sph.radius*(1+Math.sign(e.deltaY)*0.09)));
-    orbitPlace();
+    LANDCAM.zoomAt(e.clientX,e.clientY,1+Math.sign(e.deltaY)*0.09);
   },{passive:false});
 }
 
@@ -3628,6 +3850,8 @@ function buildUI(){
   document.getElementById("prev").addEventListener("click",function(){ stopPlay(); setClock(clock-10); });
   document.getElementById("next").addEventListener("click",function(){ stopPlay(); setClock(clock+10); });
   document.getElementById("prevEv").addEventListener("click",function(){ jumpEvent(-1); });
+  var fb=document.getElementById("follow");   /* Stage 3D: Follow the action (section A.3, decision 47) */
+  if(fb) fb.addEventListener("click",function(){ setFollow(freeCam); });
   document.getElementById("nextEv").addEventListener("click",function(){ jumpEvent(1); });
   document.getElementById("play").addEventListener("click",togglePlay);
   document.querySelectorAll(".vm-btn").forEach(function(b){
@@ -3736,6 +3960,7 @@ function buildUI(){
     landCam.updateProjectionMatrix();
     renderer.setSize(window.innerWidth,window.innerHeight);
     sizeFX();
+    syncViewOffset(true);   /* Stage 3D: the focus at the new free rectangle's centre at once */
     /* the paper map: the field framed anew if that is what it shows, else the plan keeps its centre and scale */
     if(mode==="staff"){ if(MAPCAM.framed()) MAPCAM.frameField(true); else MAPCAM.apply(); }
   });
@@ -3786,11 +4011,11 @@ function openFirstRun(){
   firstRunOpen=true;
   document.body.classList.add("firstrun-on");
   if(docked) selectTab("oob");                  /* Stage 3B: the rail as before while the card is open */
-  var v=reframe(VANTAGE.plan);
+  var v=presetFrame(VANTAGE.plan);              /* Stage 3D: the field fitted into the free rectangle above the card */
   camArc=null;                                  /* the start-up phase transition keeps its light, not its camera */
   landCam.position.set(v[0],v[1],v[2]); orbitTarget.set(v[3],v[4],v[5]); landCam.lookAt(orbitTarget);
   clampCamera();
-  document.querySelectorAll(".van-btn").forEach(function(b){ b.setAttribute("aria-pressed",b.dataset.v==="plan"?"true":"false"); });
+  curVantage="plan"; syncFollow();
   requestRender(3);
 }
 function closeFirst(how){
@@ -3884,6 +4109,7 @@ function centreOnMap(mp,radius){
   var tgt=new THREE.Vector3(w[0],y,w[1]);
   var pos=tgt.clone().add(new THREE.Vector3(-0.55,0.62,0.56).normalize().multiplyScalar(radius||86));
   glide(pos,tgt,1500,0.10);
+  freeCam=true;   /* Stage 3D (decision 47): a centring turns Follow off */
 }
 function focusOn(id){
   var p=posOf(id,curPhase); if(!p) return;
@@ -4785,6 +5011,7 @@ function frameState(now){
 }
 function loop(){
   requestAnimationFrame(loop);
+  syncFollow();   /* Stage 3D: the Follow button and the vantages' pressed state, every animation frame */
   var now=performance.now(), state=frameState(now);
   paintDevStats(now);
   if(state==="idle"||state==="waiting"){ DEV.skipped++; if(state==="idle") DEV.state="idle"; return; }
@@ -4805,6 +5032,7 @@ function loop(){
   tickClock(dt);
   setProg((clock-T_MIN)/(T_MAX-T_MIN));
   var tu=performance.now(); updateVisibility(); DEV.tUpdate=performance.now()-tu;
+  syncViewOffset(false);   /* Stage 3D: the landscape's focus eased to the free rectangle's centre */
   smokeT=HARNESS?0:now*0.001;
   if(!RM && !HARNESS && mode!=="staff" && world.mist.visible){
     /* bounded, time-based drift (the fade on each sheet allows for MIST_DRIFT either way) */
@@ -4826,7 +5054,7 @@ function loop(){
 var AUSTERLITZ_DEBUG=(function(){
   function finishTween(){ var n=0; while(tween&&n<4){ tween(performance.now()+1e7); n++; } }
   function settle(n,noRender){
-    finishTween();
+    finishTween(); syncViewOffset(true);
     var fk=FK; FK=7.2;
     for(var i=0;i<(n||60);i++){ settling=false; updateVisibility(); }
     FK=fk;
@@ -4834,12 +5062,186 @@ var AUSTERLITZ_DEBUG=(function(){
     return settling;
   }
   function placeCamera(c){   /* an authored camera (a harness case, a preset): re-framed to the drawn ground */
-    tween=null; camArc=null; freeCam=true;
+    tween=null; camArc=null; freeCam=true; curVantage=null;
     /* the paper map: the preset's target centred in the free part of the screen, at the zoom of its distance (glide) */
     if(mode==="staff"){ MAPCAM.centreOn(c[3],c[5],mapWppAt(Math.hypot(c[0]-c[3],c[1]-c[4],c[2]-c[5])),true); return; }
-    c=reframe(c);
+    c=presetFrame(c);   /* Stage 3D: the Overview fitted into the free rectangle; every other preset re-framed in height */
     landCam.position.set(c[0],c[1],c[2]); orbitTarget.set(c[3],c[4],c[5]); landCam.lookAt(orbitTarget);
     clampCamera();
+  }
+  /* ---- Stage 3D (docs/STAGE3_SPEC.md section H): the landscape's controls, through the handlers a visitor drives ---- */
+  function pev(t,x,y,b,btn,type,id){ return new PointerEvent(t,{pointerId:id||7,isPrimary:(id||7)===7,pointerType:type||"mouse",clientX:x,clientY:y,buttons:b,button:btn,bubbles:true,cancelable:true}); }
+  function freeC(){ var fr=landFreeRect(); return [Math.round((fr[0]+fr[2])/2),Math.round((fr[1]+fr[3])/2)]; }
+  function landPlace(v){ placeCamera(v); syncViewOffset(true); }
+  /* from every vantage: a left-drag pans, the wheel zooms toward the cursor, a right-drag orbits, a double-click centres;
+     the eye at or above the floor after every step. A pan step the floor lifted is counted apart (the grabbed point cannot
+     stay under the pointer when the eye is lifted). */
+  function landControls(){
+    var el=renderer.domElement, spc=el.setPointerCapture, i, q;
+    var R={pan:0,panAfter:0,panN:0,panLifted:0,zoom:0,zoomN:0,zoomStops:0,focus:0,focusN:0,orbitBad:0,orbitN:0,below:0,views:0,lost:[]};
+    el.setPointerCapture=function(){};
+    function floorOK(){ var p=landCam.position; if(p.y<camFloor(p.x,p.z)-1e-6) R.below++; }
+    function sphNow(){ return new THREE.Spherical().setFromVector3(landCam.position.clone().sub(orbitTarget)); }
+    Object.keys(VANTAGE).forEach(function(k){
+      landPlace(VANTAGE[k]); R.views++;
+      var fr=landFreeRect(), c=freeC();
+      /* pan */
+      var sx=c[0]-80, sy=c[1]+60, g=groundAt(sx,sy);
+      if(g){ var gp=new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]), cl=CAM.clamps;
+        el.dispatchEvent(pev("pointerdown",sx,sy,1,0));
+        for(i=1;i<=10;i++){ var x=sx+12*i, y=sy+7*i, cb=CAM.clamps; el.dispatchEvent(pev("pointermove",x,y,1,0)); floorOK();
+          if(CAM.clamps>cb){ R.panLifted++; continue; }
+          q=LANDCAM.screenOf(gp); R.pan=Math.max(R.pan,Math.hypot(q[0]-x,q[1]-y)); R.panN++; }
+        window.dispatchEvent(pev("pointerup",sx+120,sy+70,0,0)); floorOK();
+        if(CAM.clamps===cl){ q=LANDCAM.screenOf(gp); R.panAfter=Math.max(R.panAfter,Math.hypot(q[0]-(sx+120),q[1]-(sy+70))); }
+      } else R.lost.push(k+": no ground to pan");
+      /* the wheel, twelve steps in toward a point off the centre */
+      landPlace(VANTAGE[k]);
+      var wx=Math.round(fr[0]+(fr[2]-fr[0])*0.3), wy=Math.round(fr[1]+(fr[3]-fr[1])*0.7), g1=groundAt(wx,wy);
+      if(g1){ var gp1=new THREE.Vector3(g1[0],groundY(g1[0],g1[1]),g1[1]);
+        for(i=0;i<12;i++){ var fs0=LANDCAM.stats.floorStops;
+          el.dispatchEvent(new WheelEvent("wheel",{deltaY:-120,clientX:wx,clientY:wy,bubbles:true,cancelable:true})); floorOK();
+          q=LANDCAM.screenOf(gp1); R.zoom=Math.max(R.zoom,Math.hypot(q[0]-wx,q[1]-wy)); R.zoomN++; if(LANDCAM.stats.floorStops>fs0) R.zoomStops++; }
+      } else R.lost.push(k+": no ground to zoom toward");
+      /* a right-drag orbits about the target */
+      landPlace(VANTAGE[k]);
+      var t0=orbitTarget.clone(), th0=sphNow().theta;
+      el.dispatchEvent(pev("pointerdown",c[0],c[1],2,2));
+      for(i=1;i<=6;i++){ el.dispatchEvent(pev("pointermove",c[0]+10*i,c[1],2,2)); floorOK(); }
+      window.dispatchEvent(pev("pointerup",c[0]+60,c[1],0,2));
+      var dth=sphNow().theta-th0; while(dth>Math.PI) dth-=2*Math.PI; while(dth<-Math.PI) dth+=2*Math.PI;
+      R.orbitN++; if(orbitTarget.distanceTo(t0)>1e-9||Math.abs(dth+0.3)>1e-6) R.orbitBad++;
+      /* a double-click centres the ground point under it in the free rectangle */
+      landPlace(VANTAGE[k]);
+      var dx=Math.round(fr[0]+(fr[2]-fr[0])*0.25), dy=Math.round(fr[1]+(fr[3]-fr[1])*0.35), g2=groundAt(dx,dy);
+      if(g2){ var gp2=new THREE.Vector3(g2[0],groundY(g2[0],g2[1]),g2[1]);
+        el.dispatchEvent(new MouseEvent("dblclick",{clientX:dx,clientY:dy,bubbles:true,cancelable:true}));
+        finishTween(); syncViewOffset(true); floorOK();
+        q=LANDCAM.screenOf(gp2); R.focus=Math.max(R.focus,Math.hypot(q[0]-c[0],q[1]-c[1])); R.focusN++;
+      } else R.lost.push(k+": no ground to centre");
+    });
+    el.setPointerCapture=spc;
+    return R;
+  }
+  /* the keys on the focused map layer, and touch (synthetic pointer events: one finger pans, two pinch and twist) */
+  function landKeysTouch(){
+    var el=renderer.domElement, spc=el.setPointerCapture, R={}, c, q, i;
+    el.setPointerCapture=function(){};
+    landPlace(VANTAGE.field); c=freeC();
+    var clk=clock, t0=orbitTarget.clone(), s0=new THREE.Spherical().setFromVector3(landCam.position.clone().sub(orbitTarget));
+    ML.root.focus({preventScroll:true});
+    function key(k,sh){ ML.root.dispatchEvent(new KeyboardEvent("keydown",{key:k,shiftKey:!!sh,bubbles:true,cancelable:true})); }
+    key("ArrowRight"); var t1=orbitTarget.clone(); R.keyPan=+t1.distanceTo(t0).toFixed(2);
+    var r1=landCam.position.distanceTo(orbitTarget); key("+"); R.keyZoom=+(landCam.position.distanceTo(orbitTarget)/r1).toFixed(3);
+    var th1=new THREE.Spherical().setFromVector3(landCam.position.clone().sub(orbitTarget)).theta; key("ArrowLeft",true);
+    var d=new THREE.Spherical().setFromVector3(landCam.position.clone().sub(orbitTarget)).theta-th1; while(d>Math.PI) d-=2*Math.PI; while(d<-Math.PI) d+=2*Math.PI;
+    R.keyTurnDeg=+(d*180/Math.PI).toFixed(2); R.clockKept=clock===clk; R.keyFree=freeCam; ML.root.blur();
+    /* one finger pans: the grabbed point stays under it */
+    landPlace(VANTAGE.field); c=freeC();
+    var g=groundAt(c[0]-40,c[1]+40), gp=new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]);
+    el.dispatchEvent(pev("pointerdown",c[0]-40,c[1]+40,1,0,"touch",11));
+    for(i=1;i<=8;i++) el.dispatchEvent(pev("pointermove",c[0]-40+10*i,c[1]+40-6*i,1,0,"touch",11));
+    window.dispatchEvent(pev("pointerup",c[0]+40,c[1]-8,0,0,"touch",11));
+    q=LANDCAM.screenOf(gp); R.touchPan=+Math.hypot(q[0]-(c[0]+40),q[1]-(c[1]-8)).toFixed(3);
+    /* two fingers: pinch apart (zoom in) and twist */
+    landPlace(VANTAGE.field); c=freeC();
+    var r0=landCam.position.distanceTo(orbitTarget), th0=new THREE.Spherical().setFromVector3(landCam.position.clone().sub(orbitTarget)).theta;
+    el.dispatchEvent(pev("pointerdown",c[0]-50,c[1],1,0,"touch",21)); el.dispatchEvent(pev("pointerdown",c[0]+50,c[1],1,0,"touch",22));
+    for(i=1;i<=6;i++){ var a=i*0.05, rr=50+10*i;
+      el.dispatchEvent(pev("pointermove",c[0]-rr*Math.cos(a),c[1]-rr*Math.sin(a),1,0,"touch",21)); el.dispatchEvent(pev("pointermove",c[0]+rr*Math.cos(a),c[1]+rr*Math.sin(a),1,0,"touch",22)); }
+    window.dispatchEvent(pev("pointerup",0,0,0,0,"touch",21)); window.dispatchEvent(pev("pointerup",0,0,0,0,"touch",22));
+    var th2=new THREE.Spherical().setFromVector3(landCam.position.clone().sub(orbitTarget)).theta, dt=th2-th0; while(dt>Math.PI) dt-=2*Math.PI; while(dt<-Math.PI) dt+=2*Math.PI;
+    R.pinchRatio=+(landCam.position.distanceTo(orbitTarget)/r0).toFixed(3); R.twistDeg=+(dt*180/Math.PI).toFixed(2); R.touchSelect=selection;
+    el.setPointerCapture=spc;
+    return R;
+  }
+  /* the focus in the free rectangle after each panel change, as the loop eases it; picking through the offset; Follow after
+     every camera path; every preset's target at the free centre; the Overview's field inside the free rectangle; one tween
+     chain */
+  function cameraChecks3D(ck){
+    var el=renderer.domElement, spc=el.setPointerCapture, i, q;
+    el.setPointerCapture=function(){};
+    function ease(){ var n=0, fk=FK; FK=7.2; while(!syncViewOffset(false)&&n<400) n++; FK=fk; return n; }
+    function off(){ var fr=landFreeRect(), t=LANDCAM.screenOf(orbitTarget); return Math.hypot(t[0]-(fr[0]+fr[2])/2,t[1]-(fr[1]+fr[3])/2); }
+    /* 1. the offset after panel changes */
+    setPresentation("study"); if(typeof selectTab==="function") selectTab("now"); select(null,null); landPlace(VANTAGE.field);
+    var states=[], worst=0, lg=document.getElementById("lg-toggle");
+    function st(name,fn){ fn(); var n=ease(), e=off(); worst=Math.max(worst,e); states.push(name+" "+e.toFixed(2)+" px ("+n+" frames)"); }
+    st("Study, the Now tab",function(){});
+    st("a formation selected (the dossier in the rail)",function(){ select("f","sthilaire"); });
+    st("the dossier closed",function(){ select(null,null); });
+    st("the legend opened",function(){ if(lg&&!ML.legendOpen) lg.click(); mlLayout(); });
+    st("the legend closed",function(){ if(lg&&ML.legendOpen) lg.click(); mlLayout(); });
+    st("Watch",function(){ setPresentation("watch"); });
+    st("Clean",function(){ setPresentation("map"); });
+    st("Study again",function(){ setPresentation("study"); });
+    var vx=VOFF.x, vy=VOFF.y;
+    ck("camera: the orbit target at the free rectangle's centre after each panel change (setViewOffset, eased as the loop does)", worst<=1, states.join("; ")+"; the offset now ("+vx.toFixed(1)+", "+vy.toFixed(1)+") px");
+    /* 2. picking and the ground through the offset */
+    landPlace(VANTAGE.plateau); renderFrame();
+    var hit=null; Object.keys(ML.items).some(function(k){ var it=ML.items[k]; if(it.eFrame===ML.frame&&it.pick&&it.pick.kind==="f"&&it.rect&&it.state!=="occluded"&&it.el.style.display!=="none"){ hit=it; return true; } return false; });
+    var picked=null;
+    if(hit){ var hx=Math.round((hit.rect[0]+hit.rect[2])/2), hy=Math.round((hit.rect[1]+hit.rect[3])/2); select(null,null);
+      el.dispatchEvent(pev("pointerdown",hx,hy,1,0)); window.dispatchEvent(pev("pointerup",hx,hy,0,0)); picked=selection; }
+    /* the round trip on the modelled ground: beyond it, on the coarse apron toward the horizon, the ground has a step at the
+       apron's edge, where a grazing ray's crossing is not a point of the ground (found here: 3.3 px at 700 units, with or
+       without the offset; section A.2's 2.2 px grazing ray) */
+    var fr=landFreeRect(), rt=0, rn=0, beyond=0;
+    for(i=0;i<40;i++){ var sx=fr[0]+(fr[2]-fr[0])*((i%8)+0.5)/8, sy=fr[1]+(fr[3]-fr[1])*(Math.floor(i/8)+0.5)/5, g=groundAt(sx,sy); if(!g) continue;
+      if(Math.abs(g[0])>GROUND_W/2||Math.abs(g[1])>GROUND_D/2){ beyond++; continue; }
+      var p=new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]); q=LANDCAM.screenOf(p); rt=Math.max(rt,Math.hypot(q[0]-sx,q[1]-sy)); rn++; }
+    ck("camera: picking and the ground through the offset (a click on a counter's box selects it; groundAt's round trip within 1 px)",
+      !!hit&&!!picked&&picked.kind===hit.pick.kind&&picked.id===hit.pick.id&&rt<=1&&rn>=20,
+      (hit?"the counter of "+hit.pick.id+" clicked at its box's centre: "+(picked?"selected "+picked.kind+":"+picked.id:"NOTHING SELECTED"):"NO COUNTER PLACED")+"; round trip worst "+rt.toFixed(3)+" px over "+rn+" points of the modelled ground ("+beyond+" beyond it, on the apron, not counted)");
+    select(null,null);
+    /* 3. Follow equals !freeCam after every camera path, with the value decision 47 gives */
+    var walk=[], bad=[], fb=document.getElementById("follow");
+    function path(name,want,fn){ fn(); finishTween(); syncFollow(); var pr=fb&&fb.getAttribute("aria-pressed");
+      var okk=pr===String(!freeCam)&&(!freeCam)===want; walk.push(name+" "+(want?"on":"off")); if(!okk) bad.push(name+": pressed "+pr+", freeCam "+freeCam); }
+    var cc=freeC();
+    function drag(btn){ el.dispatchEvent(pev("pointerdown",cc[0],cc[1],btn===2?2:1,btn)); for(var j=1;j<=5;j++) el.dispatchEvent(pev("pointermove",cc[0]+8*j,cc[1]+3*j,btn===2?2:1,btn)); window.dispatchEvent(pev("pointerup",cc[0]+40,cc[1]+15,0,btn)); }
+    path("a vantage",true,function(){ document.querySelector('.van-btn[data-v="field"]').click(); });
+    var vp1=document.querySelector('.van-btn[data-v="field"]').getAttribute("aria-pressed");
+    path("a pan",false,function(){ drag(0); });
+    var vp2=document.querySelector('.van-btn[data-v="field"]').getAttribute("aria-pressed");
+    path("Follow pressed",true,function(){ fb.click(); });
+    path("the wheel",false,function(){ el.dispatchEvent(new WheelEvent("wheel",{deltaY:-120,clientX:cc[0],clientY:cc[1],bubbles:true,cancelable:true})); });
+    path("a phase button",true,function(){ document.querySelectorAll("#phases .step")[3].click(); });
+    path("a right-drag orbit",false,function(){ drag(2); });
+    path("an act button",true,function(){ document.querySelectorAll(".act-btn")[1].click(); });
+    path("a double-click",false,function(){ el.dispatchEvent(new MouseEvent("dblclick",{clientX:cc[0]+30,clientY:cc[1]+20,bubbles:true,cancelable:true})); });
+    path("a chapter",true,function(){ setChapter(ANALYSIS[2].id); });
+    path("a centring from the order of battle",false,function(){ setChapter(null); var r=document.querySelector(".oob-row"); if(r) r.click(); });
+    path("a tour stop",true,function(){ startTour(); });
+    path("the keys on the map layer",false,function(){ exitTour(); ML.root.focus({preventScroll:true}); ML.root.dispatchEvent(new KeyboardEvent("keydown",{key:"ArrowUp",bubbles:true,cancelable:true})); ML.root.blur(); });
+    path("Follow pressed again",true,function(){ fb.click(); });
+    path("Follow released",false,function(){ fb.click(); });
+    select(null,null);
+    ck("camera: Follow shows !freeCam after every camera path, as decision 47 sets it; a vantage's button is released when the eye leaves it",
+      !bad.length&&vp1==="true"&&vp2==="false", walk.length+" paths ("+walk.join(", ")+")"+(bad.length?"; WRONG: "+bad.join("; "):"")+"; the Field vantage pressed "+vp1+", after a pan "+vp2);
+    /* 4. presets: every vantage's target at the free centre; the Overview's field inside the free rectangle */
+    var pw=0, pl=[], fieldOut=0, ovNames=[];
+    Object.keys(VANTAGE).forEach(function(k){ flyTo(VANTAGE[k]); finishTween(); syncViewOffset(true); var e=off(); pw=Math.max(pw,e); pl.push(k+" "+e.toFixed(2));
+      if(k==="plan"){ updateVisibility(); mlLayout();   /* the Overview names its corps and armies (the owner's answer in 3D) */
+        Object.keys(ML.items).forEach(function(q){ var it=ML.items[q]; if(q.indexOf("n:")===0&&it.eFrame===ML.frame&&it.state==="on") ovNames.push(q.slice(2)); }); }
+      if(k==="plan"){ var fr2=landFreeRect(), X=actionExtent(), mx=(X[0]+X[2])/2, mz=(X[1]+X[3])/2;
+        [[X[0],X[1]],[X[2],X[1]],[X[2],X[3]],[X[0],X[3]],[mx,X[1]],[mx,X[3]],[X[0],mz],[X[2],mz]].forEach(function(c){ var s2=LANDCAM.screenOf(new THREE.Vector3(c[0],groundY(c[0],c[1]),c[1]));
+          if(s2[0]<fr2[0]-0.5||s2[0]>fr2[2]+0.5||s2[1]<fr2[1]-0.5||s2[1]>fr2[3]+0.5) fieldOut++; }); } });
+    ck("camera: every vantage's target at the free rectangle's centre; the Overview fits the day's battle into the free rectangle and names its corps and armies (section B.4, as settled in 3D)",
+      pw<=1&&fieldOut===0&&ovNames.length>0, pl.join(", ")+" px; the Overview: "+(8-fieldOut)+" of 8 points of the battle's extent ("+actionExtent().map(function(x){ return x.toFixed(1); }).join(", ")+") inside the free rectangle, at "+landCam.position.distanceTo(orbitTarget).toFixed(0)+" units, naming "+ovNames.length+" formations ("+ovNames.slice(0,6).join(", ")+(ovNames.length>6?", ...":"")+")");
+    /* 5. one tween chain: a double-click during a phase change is not dropped when Follow is off; with Follow on the phase's view wins */
+    setPhase(2,true); finishTween(); landPlace(VANTAGE.field);
+    var c3=freeC(), g3=groundAt(c3[0]+60,c3[1]+30), keep=new THREE.Vector3(g3[0],groundY(g3[0],g3[1]),g3[1]);
+    el.dispatchEvent(new MouseEvent("dblclick",{clientX:c3[0]+60,clientY:c3[1]+30,bubbles:true,cancelable:true}));
+    setClock(PHASES[3].t0+1);   /* a phase change while the glide runs */
+    finishTween(); var kept=orbitTarget.distanceTo(keep);
+    setClock(PHASES[2].t0+1,{instant:true,force:true}); finishTween();
+    document.querySelector('.van-btn[data-v="zuran"]').click();   /* Follow on, a glide in flight */
+    setClock(PHASES[3].t0+1); var pc3=presetFrame(PHASES[3].cam); finishTween();
+    var won=Math.hypot(orbitTarget.x-pc3[3],orbitTarget.z-pc3[5]);
+    ck("camera: one tween chain: a centring made during a phase change is kept with Follow off; with Follow on the phase's view wins",
+      kept<1e-6&&won<1e-6, "Follow off: the double-click's point ends "+kept.toExponential(1)+" units from the target; Follow on (a vantage glide in flight): the phase's view ends "+won.toExponential(1)+" from its preset");
+    el.setPointerCapture=spc;
   }
   function applyCase(spec,aimOf){
     closeFirst(null);
@@ -5327,6 +5729,17 @@ var AUSTERLITZ_DEBUG=(function(){
         } });
       ck("camera: orbiting at the lowest pitch and closest zoom never enters the ground", orbBad===0,
         orbN+" orbit positions around "+views.length+" targets; lowest clearance "+orbMin.toFixed(2)+" units");
+      /* Stage 3D: the landscape's controls, through real pointer and wheel events, from every vantage */
+      var m0=LANDCAM.stats.moves, t0m=LANDCAM.stats.ms, lc=landControls(), kt=landKeysTouch(), mv=LANDCAM.stats.moves-m0, msMove=mv?(LANDCAM.stats.ms-t0m)/mv:0;
+      ck("camera controls: a left-drag pans (the grabbed ground point within 1 px of the pointer during and after), the wheel zooms toward the cursor (within 1 px, a step the floor shortens included), a double-click centres the point in the free rectangle (within 2 px), a right-drag orbits; the eye at or above the floor after every step",
+        lc.pan<=1&&lc.panAfter<=1&&lc.zoom<=1&&lc.focus<=2&&!lc.orbitBad&&!lc.below&&!lc.lost.length&&lc.panN>0&&lc.zoomN>0&&msMove<=2,
+        lc.views+" vantages: pan worst "+lc.pan.toFixed(3)+" px during ("+lc.panN+" steps; "+lc.panLifted+" the floor lifted, counted apart), "+lc.panAfter.toFixed(3)+" px after; wheel worst "+
+        lc.zoom.toFixed(3)+" px over "+lc.zoomN+" steps ("+lc.zoomStops+" shortened by the floor); double-click "+lc.focus.toFixed(3)+" px from the free centre; right-drag orbits "+(lc.orbitN-lc.orbitBad)+" of "+lc.orbitN+
+        "; below the floor "+lc.below+"; a pan move "+msMove.toFixed(3)+" ms on average over "+mv+" (budget 2 ms)"+(lc.lost.length?"; "+lc.lost.join(", "):""));
+      ck("camera controls: the keys on the focused map layer pan, zoom and turn without stepping the clock; one finger pans, two pinch and twist",
+        kt.keyPan>1&&kt.keyZoom<1&&Math.abs(kt.keyTurnDeg-15)<0.01&&kt.clockKept&&kt.keyFree&&kt.touchPan<=1&&kt.pinchRatio<1&&Math.abs(kt.twistDeg)>1,
+        "the right arrow moves the target "+kt.keyPan+" units; + brings the eye to "+kt.keyZoom+" of its distance; Shift + left arrow turns "+kt.keyTurnDeg+"\u00b0; clock "+(kt.clockKept?"unchanged":"MOVED")+
+        "; one-finger pan "+kt.touchPan+" px; a pinch apart brings the eye to "+kt.pinchRatio+" of its distance and the twist turns "+kt.twistDeg+"\u00b0");
       renderFrame();
       ck("camera: no path placed the eye below the floor before a frame", CAM.violations===0, "render-time guard count "+CAM.violations);
 
@@ -5509,6 +5922,7 @@ var AUSTERLITZ_DEBUG=(function(){
       if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
       document.body.classList.remove("st-still"); if(pl0) togglePlay();
     })();
+    cameraChecks3D(ck);   /* Stage 3D */
     var wp=woodPlacement();
     ck("woods: every tree and every scrub of a wood stands inside the wood as the land cover has it", wp.wood>0&&wp.edge>0&&!wp.out.length&&!wp.notModel,
       wp.wood+" trees and "+wp.edge+" edge scrub of the woods, all where the drawn cover is wood ("+wp.notModel+" where the model's own class is not)"+

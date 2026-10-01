@@ -1,8 +1,8 @@
 # Navigation and structure specification (Stage 3, Part A)
 
 **Status: Part A reviewed (#21); the owner accepted every recommendation of §J, recorded as decisions 47-60 (§0.3). 3B (docked
-panels) is merged (#22); 3C (one timeline, and the spine index) is implemented as §D and §I describe. What each found is at the end
-of §I. Sections A-J below still describe the build they were written against.** Part A was written against `main` at `0f2b17e` (Stage 2F merged,
+panels) is merged (#22); 3C (one timeline, and the spine index) is merged (#23); 3D (the camera) is implemented as §A.3 and §I
+describe, with owner decisions 61-63 taken during it (§0.3). What each found is at the end of §I. Sections A-J below still describe the build they were written against.** Part A was written against `main` at `0f2b17e` (Stage 2F merged,
 #19, and recorded as merged, #20), whose build `austerlitz-command-map.html` is 1,253,655 bytes, md5
 `ee4390a2585f3df170fba82eb1994112`. Before any work: `npm test` (all nine suites and the height guard), `check:data`
 (all 113 declarations byte-identical to `archive/stage2c-68ac7721.html`), `check:chronology` (0 errors) and
@@ -115,6 +115,14 @@ question's order; §J keeps the trade-offs.
 | 58 | 12, below 1080 px | The dispatch stays a card there; 3B adds a 1024 x 768 harness view. (3B) |
 | 59 | 13, spine data task | After 3C: themes and tour only (moments, principal moments, the two misplaced timeline lines). (data task) |
 | 60 | 14, Watch control | In the timeline's control row in Watch, at full opacity. (3C) |
+
+Three more were settled while 3D was built, on evidence Part A did not have (the end of §I, "3D, as delivered"):
+
+| # | question (asked in 3D) | decision |
+|---|---|---|
+| 61 | the Overview's framing: fitting the whole modelled ground put the eye 533-712 units out (996-1,228 on the first-run screen) against the authored 278 | Fit the day's battle (every formation's position at the start, middle and end of every phase, every event, every place: x -161 to 83.5, z -122 to 125 world units), not the whole modelled ground; the first-run card is not counted as a panel for the landscape's focus; the fog recedes beyond the authored Overview's distance. (3D) |
+| 62 | two drop limits the view offset exceeds by one (selected-formation 4 against 3, narrow-1024 6 against 5) | 4 and 6: what the previous build's map layer drops in the same framing (the same items). Re-derived by Stage 2E's method the 2C canvas pass hides 10 and 23 there; not used. (3D) |
+| 63 | the fitted Overview named no formation (names are drawn within 300 units) | Once the view shows corps (beyond 250 units), corps and army names are drawn at any distance. (3D) |
 
 ## A. Camera controls on the landscape
 
@@ -847,6 +855,37 @@ assumed:
 The two new phase-8 views take their drop limits by the main method (what the Stage 2C canvas pass hides there: 7 and 7), not from
 the 3B build, because 3C changes those views: drops rise against 3B in six views, within every limit, as ground the old timebar
 covered enters the map layer's pass.
+
+**3D, as delivered (fact; `CHANGELOG.md`, Stage 3D).** Built as §A.3 and the 3D row describe, under decisions 47, 48 and 61-63:
+- `LANDCAM`: left-drag pans by the anchor rule, right-drag (or Shift or Ctrl) orbits, the wheel zooms toward the cursor (a step
+  the floor would cut stops at the floor), a double-click centres, the arrows and + - on the focused map layer, one-finger pan and
+  two-finger pinch and twist; the paper map unchanged;
+- `camera.setViewOffset` puts the orbit target at the free rectangle's centre, eased with the panels, set at once on a resize;
+- Follow in the control row, `!freeCam` made visible, set and cleared as decision 47 says; a vantage's button released when the
+  eye leaves it;
+- one tween chain (`setTween`: a scene slot and a camera slot);
+- the Overview fits the day's battle (decision 61), the fog recedes beyond the authored Overview's distance, and corps and army
+  names are drawn at any distance once the view shows corps (decision 63).
+
+Measured (`docs/stage3-evidence/3d-report.md`, both builds on the same harness): the phase-8 heads more than a quarter hidden
+4 → 0 in Study and Watch; the orbit target 0 px from the free centre in every landscape view, before and after a resize; the
+controls within 0.012 px (pan and wheel) and 0.000 px (double-click) at 1x, 4x and 10.33x from every vantage, never below the
+floor; unobstructed fractions unchanged. Every §H claim for 3D is met. Five things were not as the plan assumed:
+1. **Fitting the whole modelled ground (§B.4) does not work on the landscape.** The eye stood 533-712 units out (996-1,228 on the
+   first-run screen, where the card leaves a short strip) against the authored 278; the fog, whose distances are from the eye and
+   were chosen for the authored views, drew the field grey, and the Overview named no formation (names stop at 300 units). The
+   owner chose the day's battle (decision 61), the fog receding beyond 274 units, and corps and army names at any distance
+   (decision 63) (`3d-overview.jpg`).
+2. **The offset adds a drop in two views** (selected-formation, narrow-1024): ground the panels covered comes into view, and a
+   place name there finds no room beside its marker. The 3C build's layer in the same framing drops the same items; the owner
+   took those counts as the limits (decision 62; `offset-limits.json`).
+3. **Every centring turns Follow off**, not only the dossier's and the order of battle's (decision 47 named those): the event
+   jumps and "Go to this moment" centre through the same path.
+4. **The ground's round trip is exact only on the modelled ground**: toward the horizon the apron's edge is a step, where a
+   grazing ray's crossing is not a point of the ground (3.3 px at 700 units, with or without the offset). The self-test checks it
+   on the modelled ground.
+5. **The harness's orbit case aims its wheel at the target**: the wheel now zooms toward the cursor, and aimed at the target it
+   zooms about it, as before; its measure is unchanged (4.31 units below the ground, the same target and bearing).
 
 ## J. Questions for the owner
 
