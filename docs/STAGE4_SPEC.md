@@ -808,12 +808,12 @@ from their tables (no colour literal outside them in the drawing code that 4B-4E
 | change | darkness (Stage 0, solid near-black ≤ 0.05%) | map text as rendered (AA) | unobstructed fraction | drops (`DROP_LIMIT`) | layer pass (< 8 ms) | frame cost (world pass, software) | camera floor |
 |---|---|---|---|---|---|---|---|
 | corrected sun, no toe (E) | 3 views at 4x over (§A.4) | 0 below; lowest 6.49, at most 0.39 lower than today | unchanged (identical before and after) | unchanged in every view | ≤ 1.7 ms | no difference beyond noise (6.1-7.8 ms medians) | untouched (clearance identical) |
-| + the fill opposite the sun (H) | worst 4 blocks, 0.02% (§A.4b) | not measured with H (the ground lighter only in shade) | unchanged | unchanged | - | one directional light moved: none | untouched |
+| + the fill opposite the sun (H) | worst 4 blocks, 0.02% (§A.4b) | not measured with H (the ground lighter only in shade) | unchanged | unchanged | - | not measured (one existing light turned and raised; no new light) | untouched |
 | no baked hillshade (G) | as E (within 0.04 point) | as E | unchanged | unchanged | ≤ 1.7 ms | none | untouched |
 | haze beyond the focus (H3) | 0 blocks in every view tried | 0 below; lowest 7.76 | unchanged | unchanged | ≤ 1.2 ms | within ±5% of today's (software; §B.2) | untouched |
 | valley fog at 238.2 m, 55% (V55) | 0 blocks | 0 below; lowest 7.42 | unchanged | unchanged | ≤ 1.2 ms | within ±5% of today's (software; §B.2) | untouched (the fog is not geometry) |
 | continuous follow (§D.2) | not measured along the day (the light is per view) | not measured along the day | unchanged (no panel) | largest along the day 19, as today's rule | - | the frame draws every frame while playing, as today | 0 clamps, lowest clearance 27.6 |
-| smoke cap, ice surface, horizon | the meres and puffs are not dark | measured per view in 4E | unchanged | unchanged | - | fewer, smaller sprites; no depth pass | untouched |
+| smoke cap, ice surface, horizon | not measured (4E) | not measured (4E) | unchanged (no panel) | not measured (4E) | - | not measured; the design adds no pass (a depth pre-pass measured at 2.0-8.1 ms, §E.1, is not recommended) | untouched |
 
 ### H.2 Checks that stay, unchanged (every part)
 
