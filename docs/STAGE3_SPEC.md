@@ -2,7 +2,8 @@
 
 **Status: Part A reviewed (#21); the owner accepted every recommendation of §J, recorded as decisions 47-60 (§0.3). 3B (docked
 panels) is merged (#22); 3C (one timeline, and the spine index) is merged (#23); 3D (the camera) is merged (#24), with owner decisions 61-63
-taken during it (§0.3); 3E (names, the "?" overlay, the key table, the symbols capped) is implemented as §E, §F and §I describe. What each found is at the end of §I. Sections A-J below still describe the build they were written against.** Part A was written against `main` at `0f2b17e` (Stage 2F merged,
+taken during it (§0.3); 3E (names, the "?" overlay, the key table, the symbols capped) is merged (#25); the spine data task (§C.3)
+is implemented with decisions 64-67 (§0.3). Stage 3 is complete. What each found is at the end of §I. Sections A-J below still describe the build they were written against.** Part A was written against `main` at `0f2b17e` (Stage 2F merged,
 #19, and recorded as merged, #20), whose build `austerlitz-command-map.html` is 1,253,655 bytes, md5
 `ee4390a2585f3df170fba82eb1994112`. Before any work: `npm test` (all nine suites and the height guard), `check:data`
 (all 113 declarations byte-identical to `archive/stage2c-68ac7721.html`), `check:chronology` (0 errors) and
@@ -123,6 +124,15 @@ Three more were settled while 3D was built, on evidence Part A did not have (the
 | 61 | the Overview's framing: fitting the whole modelled ground put the eye 533-712 units out (996-1,228 on the first-run screen) against the authored 278 | Fit the day's battle (every formation's position at the start, middle and end of every phase, every event, every place: x -161 to 83.5, z -122 to 125 world units), not the whole modelled ground; the first-run card is not counted as a panel for the landscape's focus; the fog recedes beyond the authored Overview's distance. (3D) |
 | 62 | two drop limits the view offset exceeds by one (selected-formation 4 against 3, narrow-1024 6 against 5) | 4 and 6: what the previous build's map layer drops in the same framing (the same items). Re-derived by Stage 2E's method the 2C canvas pass hides 10 and 23 there; not used. (3D) |
 | 63 | the fitted Overview named no formation (names are drawn within 300 units) | Once the view shows corps (beyond 250 units), corps and army names are drawn at any distance. (3D) |
+
+Four more were settled at the start of the spine data task, the choices §C.3 left open:
+
+| # | question (asked in the data task) | decision |
+|---|---|---|
+| 64 | the theme "guard": `guard-attack` (11:00) or phase 6 (11:15) | Phase 6, 11:15: the attack's hour "is not established" (phase 6's own line), and phase 6's view is the theme's. (data task) |
+| 65 | tour stop 9: phase 9 (17:00) or `end` (16:30) | Phase 9, 17:00, "The reckoning"; its camera is already phase 9's. (data task) |
+| 66 | the two timeline lines in the phase after their time | Move "c. 12:30 Davout regroups" to phase 6; keep "after 11:00 The Russian Guard attacks" in phase 6, with the reason recorded (its hour is not established; the Guard is phase 6's subject; its event runs mostly in phase 6). (data task) |
+| 67 | a theme or stop whose moment's phase view does not show its subject | Keeps its own camera, recorded as an exception: the theme "cut" (phase 4's view of the plateau, its moment in phase 5) and tour stop 5 (the Pratzen, its moment in phase 2). (data task) |
 
 ## A. Camera controls on the landscape
 
@@ -898,6 +908,14 @@ event glyphs and objective markers at most 192 px on screen and faded near the e
    buttons' padding was narrowed so the switch keeps its width.
 3. **Not covered by §F.2's fixes**: ← and → on a focused button still step the clock (§G.6); decision 56's sentence in the
    sources sheet is not written.
+
+**The spine data task, as delivered (fact; `CHANGELOG.md`).** §C.3's rows for `ANALYSIS`, `TOUR` and the two misplaced lines, under
+decisions 52, 59 and 64-67: every theme names its moments and a principal moment (its clock retired, its camera kept only for plan,
+deception, weakness and cut); every stop names one moment (stop 4 keeps its clock; stops 2 and 5 their cameras); "c. 12:30" moved
+to phase 6, "after 11:00" kept there with its reason. The page resolves the moments (`momentOf`) and marks a theme's other moments
+on the timeline. With it, decision 56's sentence is in `SOURCE_NOTE`, and ← → on a focused button no longer step the clock.
+`check:data`'s reference moves to `archive/spine-6b2cccd4.html`. Not done (decision 59): one wording per moment for the 23
+duplicated phase lines; events for the nine lines without one.
 
 ## J. Questions for the owner
 

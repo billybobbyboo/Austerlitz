@@ -22,6 +22,7 @@ Stage 3C build, the `3d-*` files the Stage 3C build with the Stage 3D build, and
 | `3d-overview.jpg` | I (3D) | the phase-8 Overview in Study: the 3C build; the modelled ground fitted without the fog's recession; fitted with it (the build); the day's action fitted instead (the alternative not adopted) |
 | `3e-report.md` | I (3E) | `report-3b.js --part 3E --before "Stage 3D"`: per harness view, the 3D build against the 3E build |
 | `3e-sheet.jpg` | I (3E) | `report-3b.js --sheet --views ...`: six views, the 3D build (left) and 3E (right) |
+| `spine-after.md`, `spine-after.json` | C (the data task) | `spine.js --md --json` on the data after the spine data task (themes and stops resolved to their moments, as the app resolves them): only the recorded exceptions remain |
 | `offset-limits.json` | I (3D), §0.3 decision 62 | `tools/stage3/offset-limits.js --prev <3C build>`: selected-formation and narrow-1024 in the 3D framing, on the Stage 2C build (its canvas pass's hidden count, native and with matched panels) and on the 3C build (its map layer's drops) |
 | `orbit-min.jpg` | G.3 | `nav-probe.js --only heads`: the harness view pratzen-orbit-min (its own interaction replayed), the event glyph drawn across the view |
 

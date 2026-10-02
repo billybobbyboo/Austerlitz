@@ -2342,6 +2342,20 @@ function chapterById(cid){
   for(var i=0;i<ANALYSIS.length;i++) if(ANALYSIS[i].id===cid) return ANALYSIS[i];
   return null;
 }
+/* The spine (the data task; docs/STAGE3_SPEC.md section C.2): a moment is a phase ("ph:<n>") or an event ("ev:<id>"); its clock is
+   the phase's start or the event's start, its camera the phase's (an event's: the phase its start falls in). A theme opens on
+   its principal moment (at) with its own camera if it has one; a tour stop takes its moment's clock unless it keeps its own (t),
+   and its own camera, else its theme's, else its moment's phase's. */
+function momentOf(m){
+  var k=String(m||""), i=k.indexOf(":"), kind=k.slice(0,i), id=k.slice(i+1);
+  if(kind==="ph"){ var n=+id; if(PHASES[n]&&String(n)===id) return {kind:"ph",id:n,t:PHASES[n].t0,ph:n}; return null; }
+  if(kind==="ev"){ for(var j=0;j<EVENTS.length;j++) if(EVENTS[j].id===id){ var t=evWindow(EVENTS[j])[0]; return {kind:"ev",id:id,t:t,ph:phaseAt(t)}; } }
+  return null;
+}
+function chapterClock(c){ return momentOf(c.at).t; }
+function chapterCam(c){ return c.cam||PHASES[momentOf(c.at).ph].cam; }
+function stopClock(st){ return st.t!==undefined?st.t:momentOf(st.at).t; }
+function stopCam(st){ if(st.cam) return st.cam; var c=st.chapter?chapterById(st.chapter):null; return c?chapterCam(c):PHASES[momentOf(st.at).ph].cam; }
 function setChapter(cid){
   var c=chapterById(cid);
   if(!c){ chapter=null; setHighlight(null); paintChapters(); paintChapterText(); paintTimeline(); return; }
@@ -2353,8 +2367,8 @@ function setChapter(cid){
   });
   setHighlight(set);
   freeCam=false;
-  setClock(c.t,{force:true,camera:false});
-  flyTo(c.cam);
+  setClock(chapterClock(c),{force:true,camera:false});
+  flyTo(chapterCam(c));
   paintChapters();
   paintChapterText();
 }
@@ -2372,7 +2386,7 @@ function paintChapterText(){
     var nm=fid; FEATURES.forEach(function(x){ if(x.id===fid) nm=x.name; });
     return '<button class="linkb" data-feat="'+esc(fid)+'">'+esc(nm)+'</button>';
   }).join(" ");
-  host.innerHTML='<h3>'+esc(c.n)+' <span class="hh">'+esc(fmtClock(c.t))+'</span></h3>'+
+  host.innerHTML='<h3>'+esc(c.n)+' <span class="hh">'+esc(fmtClock(chapterClock(c)))+'</span></h3>'+
     '<p class="prose">'+esc(c.text)+'</p>'+
     '<div class="chapfeat">'+feats+'</div>';
   host.querySelectorAll("[data-feat]").forEach(function(b){
@@ -2630,8 +2644,8 @@ function applyTour(){
   clearOverlays();
   if(st.chapter) setChapter(st.chapter);
   if(st.plan) setPlan(st.plan);
-  setClock(st.t,{force:true,camera:false});
-  freeCam=false; flyTo(st.cam);
+  setClock(stopClock(st),{force:true,camera:false});
+  freeCam=false; flyTo(stopCam(st));
   if(st.feature) select("t",st.feature); else select(null,null);
   var bar=document.getElementById("tourbar");
   bar.hidden=false;
@@ -3788,7 +3802,7 @@ function applyLabels(){
    shift: true or false when it matters, absent when it does not. Keys with Ctrl, Meta or Alt reach no row. */
 var ARROWS=["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"];
 var KEYS=[
-  {id:"time", scope:"window", group:"Time", keys:["ArrowLeft","ArrowRight"], show:["←","→"], text:"Back or forward ten minutes; with Shift, an hour. Stops playback.",
+  {id:"time", scope:"window", group:"Time", keys:["ArrowLeft","ArrowRight"], show:["←","→"], text:"Back or forward ten minutes; with Shift, an hour. Stops playback. Not while a button has focus",
     run:function(e){ stopPlay(); setClock(clock+(e.key==="ArrowRight"?1:-1)*(e.shiftKey?60:10)); }},
   {id:"play", scope:"window", group:"Time", keys:[" "], show:["Space"], text:"Play or pause (on a focused button, Space presses the button)",
     run:function(e){ e.preventDefault(); togglePlay(); }},
@@ -3903,6 +3917,9 @@ function onWindowKey(e){
   if(e.ctrlKey||e.metaKey||e.altKey) return;
   var t=e.target, ctl=t&&t.closest&&t.closest("button,a[href],input,select,textarea,summary,[role='button'],[role='tab']");
   if((e.key===" "||e.key==="Enter")&&ctl) return;
+  /* a Stage 3 leftover (section G.6): ← and → on a focused button, link or tab no longer step the clock; they step it from the
+     map, the page, or nothing focused (the time rail and the roving groups have their own arrow keys) */
+  if((e.key==="ArrowLeft"||e.key==="ArrowRight")&&ctl) return;
   var r=keyRow(e,"window");
   if(KEYS_DRY){ KEYS_DRY.push(r?r.id:null); return; }
   if(firstRunOpen && e.key!=="Escape" && e.key!=="Tab" && e.key!=="Shift" && e.key!=="`" && !(t&&t.closest&&t.closest("#firstrun"))) closeFirst(null);
@@ -3997,7 +4014,7 @@ function buildUI(){
   ANALYSIS.forEach(function(c){
     var b=el("button","chap");
     b.type="button"; b.dataset.c=c.id;
-    b.innerHTML='<em>'+esc(fmtClock(c.t))+'</em><span>'+esc(c.n)+'</span>';
+    b.innerHTML='<em>'+esc(fmtClock(chapterClock(c)))+'</em><span>'+esc(c.n)+'</span>';
     b.addEventListener("click",function(){ setChapter(chapter===c.id?null:c.id); });
     ch.appendChild(b);
   });
@@ -4382,8 +4399,8 @@ var SPINE=null;
 function buildSpine(){
   var P=PHASES.map(function(p,i){ return {ph:i,t0:p.t0,t1:p.t1,act:actOf(i).id,events:[],chapters:[],tour:[]}; });
   EVENTS.forEach(function(e){ P[phaseAt(evWindow(e)[0])].events.push(e.id); });
-  ANALYSIS.forEach(function(c){ P[phaseAt(c.t)].chapters.push(c.id); });
-  TOUR.forEach(function(st,k){ P[phaseAt(st.t)].tour.push(k); });
+  ANALYSIS.forEach(function(c){ P[momentOf(c.at).ph].chapters.push(c.id); });
+  TOUR.forEach(function(st,k){ P[phaseAt(stopClock(st))].tour.push(k); });
   return {acts:ACTS.map(function(a){ return {id:a.id,phases:a.phases.slice()}; }),phases:P};
 }
 /* jump between the moments that matter, not between arbitrary minutes */
@@ -4438,8 +4455,14 @@ function paintTimeline(){
   if(rail&&rail.getAttribute("aria-valuenow")!==String(m)){ rail.setAttribute("aria-valuenow",String(m)); rail.setAttribute("aria-valuetext",tlText(clock)); }
   /* the chosen chapter's or tour stop's place on the axis */
   var sm=document.getElementById("spinemark");
-  if(sm){ var c=(chapter&&typeof chapterById==="function")?chapterById(chapter):null, st=(tourStep>=0)?TOUR[tourStep]:null, t2=c?c.t:(st?st.t:null);
-    sm.hidden=(t2===null); if(t2!==null){ sm.style.left=tlPc(t2)+"%"; sm.title=c?"The chapter \u201c"+c.n+"\u201d, at "+fmtClock(c.t):"Tour stop "+(tourStep+1)+", at "+fmtClock(st.t); } }
+  if(sm){ var c=(chapter&&typeof chapterById==="function")?chapterById(chapter):null, st=(tourStep>=0)?TOUR[tourStep]:null, t2=c?chapterClock(c):(st?stopClock(st):null);
+    sm.hidden=(t2===null); if(t2!==null){ sm.style.left=tlPc(t2)+"%"; sm.title=c?"The chapter \u201c"+c.n+"\u201d, at "+fmtClock(t2):"Tour stop "+(tourStep+1)+", at "+fmtClock(t2); } }
+  /* the theme's other moments, marked on the timeline (section C.2): its events' markers and its phases' ticks */
+  var ms=c?c.moments.map(momentOf):[], evIn={}, phIn={};
+  ms.forEach(function(m){ if(!m) return; if(m.kind==="ev") evIn[m.id]=1; else phIn[m.id]=1; });
+  for(var q3=0;q3<_evTicks.length;q3++){ var on3=!!evIn[_evTicks[q3].e.id]; if(_evTicks[q3].el.classList.contains("inth")!==on3) _evTicks[q3].el.classList.toggle("inth",on3); }
+  var stepsT=document.querySelectorAll("#phases .step");
+  for(var q4=0;q4<stepsT.length;q4++){ var on4=!!phIn[q4]; if(stepsT[q4].classList.contains("inth")!==on4) stepsT[q4].classList.toggle("inth",on4); }
 }
 function paintChanges(phIdx){
   var host=document.getElementById("d-changes");
@@ -5411,13 +5434,14 @@ var AUSTERLITZ_DEBUG=(function(){
     var unb=["q","x","a","0","4","/","Home","End","PageUp","Enter","Tab","Backspace"], hit=[];
     unb.forEach(function(k){ KEYS_DRY.length=0; kd(document.body,k); if(KEYS_DRY[0]) hit.push(k+" → "+KEYS_DRY[0]); });
     var mods=0; [["c",{ctrl:true}],["m",{meta:true}],["1",{alt:true}],["ArrowRight",{ctrl:true}]].forEach(function(q){ KEYS_DRY.length=0; kd(document.body,q[0],q[1]); if(KEYS_DRY.length) mods++; });
-    var tb=document.getElementById("tourbtn"); tb.focus({preventScroll:true}); KEYS_DRY.length=0; kd(tb," "); var spaceOnButton=KEYS_DRY.length; tb.blur();
+    var tb=document.getElementById("tourbtn"); tb.focus({preventScroll:true}); KEYS_DRY.length=0; kd(tb," "); var spaceOnButton=KEYS_DRY.length;
+    KEYS_DRY.length=0; kd(tb,"ArrowRight"); kd(tb,"ArrowLeft",{shift:true}); spaceOnButton+=KEYS_DRY.length; tb.blur();
     KEYS_DRY=null;
     var bound=KEYS.filter(function(r){ return r.scope==="window"||r.scope==="map"; }).length;
-    ck("keys: every key the window and the map layer bind is a row of the key table and every row's keys reach it; other keys, keys with Ctrl, Meta or Alt, and Space on a button reach none",
+    ck("keys: every key the window and the map layer bind is a row of the key table and every row's keys reach it; other keys, keys with Ctrl, Meta or Alt, and Space and the arrows on a button reach none",
       !wrong.length&&!hit.length&&!mods&&!spaceOnButton&&n>0,
       KEYS.length+" rows ("+bound+" bound by the two handlers, the rest by their own widgets or the pointer); "+n+" key presses reached their rows"+(wrong.length?"; WRONG: "+wrong.slice(0,6).join("; "):"")+
-      "; unbound keys reaching a row: "+(hit.length?hit.join(", "):"none")+"; with a modifier: "+mods+" of 4; Space on a focused button: "+(spaceOnButton?"REACHED A ROW":"pressed the button, no row"));
+      "; unbound keys reaching a row: "+(hit.length?hit.join(", "):"none")+"; with a modifier: "+mods+" of 4; Space, \u2192 and Shift+\u2190 on a focused button: "+(spaceOnButton?"REACHED A ROW":"no row (Space presses the button)"));
     /* 2. the overlay lists every row, in its groups; opening and closing return focus; Tab stays inside */
     tb.focus({preventScroll:true}); kd(tb,"?",{shift:true});
     var hp=document.getElementById("help"), open1=!hp.hidden, inFocus=document.activeElement===document.getElementById("help-close");
@@ -5892,8 +5916,8 @@ var AUSTERLITZ_DEBUG=(function(){
       var views=[];
       Object.keys(VANTAGE).forEach(function(k){ views.push(["vantage "+k,VANTAGE[k]]); });
       PHASES.forEach(function(ph){ views.push(["phase "+ph.id+" ("+ph.label+")",ph.cam]); });
-      ANALYSIS.forEach(function(a){ views.push(["chapter "+a.id,a.cam]); });
-      TOUR.forEach(function(st,k){ views.push(["tour stop "+(k+1),st.cam]); });
+      ANALYSIS.forEach(function(a){ views.push(["chapter "+a.id,chapterCam(a)]); });
+      TOUR.forEach(function(st,k){ views.push(["tour stop "+(k+1),stopCam(st)]); });
       views.push(["the paper map's preset",[-27,262,41,-27,0,9]]);
       var fixedMin=1e9, fixedWorst="", below=[];
       views.forEach(function(v){ var c=reframe(v[1]), cl=c[1]-camGround(c[0],c[2]);   /* presets are re-framed at use */
@@ -5922,9 +5946,9 @@ var AUSTERLITZ_DEBUG=(function(){
         for(var k=0;k<=24;k++){ applyArc(A,easeInOut(k/24),bulge); arcsN++;
           var cl=landCam.position.y-camGround(landCam.position.x,landCam.position.z); if(cl<arcsMin) arcsMin=cl; if(cl<CAM_CLEAR-1e-6) arcsBad++; }
       }
-      for(i=0;i+1<TOUR.length;i++) arcCheck(TOUR[i].cam,TOUR[i+1].cam,0.12);
+      for(i=0;i+1<TOUR.length;i++) arcCheck(stopCam(TOUR[i]),stopCam(TOUR[i+1]),0.12);
       for(i=0;i+1<PHASES.length;i++) arcCheck(PHASES[i].cam,PHASES[i+1].cam,0.15);
-      for(i=1;i<ANALYSIS.length;i++) arcCheck(ANALYSIS[i-1].cam,ANALYSIS[i].cam,0.12);
+      for(i=1;i<ANALYSIS.length;i++) arcCheck(chapterCam(ANALYSIS[i-1]),chapterCam(ANALYSIS[i]),0.12);
       var vk=Object.keys(VANTAGE);
       vk.forEach(function(a){ vk.forEach(function(b){ if(a!==b) arcCheck(VANTAGE[a],VANTAGE[b],0.12); }); });
       ck("camera: glides between tour stops, phases, chapters and vantages stay above the ground", arcsBad===0,
@@ -6126,9 +6150,24 @@ var AUSTERLITZ_DEBUG=(function(){
       var nE=SPINE.phases.reduce(function(a,p){ return a+p.events.length; },0), nC=SPINE.phases.reduce(function(a,p){ return a+p.chapters.length; },0), nT=SPINE.phases.reduce(function(a,p){ return a+p.tour.length; },0), sp=[];
       EVENTS.forEach(function(e){ if(SPINE.phases[phaseAt(evWindow(e)[0])].events.indexOf(e.id)<0) sp.push(e.id); });
       setChapter("cut"); finishTween(); var sm=document.getElementById("spinemark"), smL=parseFloat(sm.style.left), smOn=!sm.hidden; setChapter(null); finishTween(); var smOff=sm.hidden;
-      ck("spine: acts > phases > events built from the data (no data change); the chosen chapter's place marked on the axis",
-        nE===EVENTS.length&&nC===ANALYSIS.length&&nT===TOUR.length&&!sp.length&&smOn&&Math.abs(smL-tlPc(chapterById("cut").t))<0.01&&smOff,
-        nE+" events, "+nC+" chapters, "+nT+" tour stops placed in "+SPINE.phases.length+" phases"+(sp.length?"; MISPLACED: "+sp.join(", "):"")+"; the chapter \u201ccut\u201d "+(smOn?"marked":"NOT MARKED")+" at "+smL.toFixed(3)+"% (its clock "+tlPc(chapterById("cut").t).toFixed(3)+"%; within 0.01, the style's own precision) ("+(smOff?"cleared after":"NOT CLEARED")+")");
+      ck("spine: acts > phases > events built from the data; the chosen chapter's place marked on the axis",
+        nE===EVENTS.length&&nC===ANALYSIS.length&&nT===TOUR.length&&!sp.length&&smOn&&Math.abs(smL-tlPc(chapterClock(chapterById("cut"))))<0.01&&smOff,
+        nE+" events, "+nC+" chapters, "+nT+" tour stops placed in "+SPINE.phases.length+" phases"+(sp.length?"; MISPLACED: "+sp.join(", "):"")+"; the chapter \u201ccut\u201d "+(smOn?"marked":"NOT MARKED")+" at "+smL.toFixed(3)+"% (its clock "+tlPc(chapterClock(chapterById("cut"))).toFixed(3)+"%; within 0.01, the style's own precision) ("+(smOff?"cleared after":"NOT CLEARED")+")");
+      /* the spine data task (section C.2; owner decisions 52, 59, 64-67): every theme and stop resolves to its moment; choosing a
+         theme goes to its principal moment and marks its other moments; tour stop 7 follows its theme's clock */
+      var bad3=[], nM=0;
+      ANALYSIS.forEach(function(c){ var m=momentOf(c.at); if(!m){ bad3.push(c.id+": "+c.at); return; }
+        c.moments.forEach(function(q){ nM++; if(!momentOf(q)) bad3.push(c.id+": "+q); }); });
+      TOUR.forEach(function(st,k){ if(!momentOf(st.at)) bad3.push("stop "+(k+1)+": "+st.at); });
+      setChapter("cut"); finishTween();
+      var ck3=clock, marked=_evTicks.filter(function(o){ return o.el.classList.contains("inth"); }).map(function(o){ return o.e.id; }).sort().join(",");
+      setChapter("guard"); finishTween(); var phMarked=document.querySelectorAll("#phases .step.inth").length, ckG=clock;
+      setChapter(null); finishTween(); var cleared=!document.querySelector(".ev-mark.inth,.step.inth");
+      var s7=stopClock(TOUR[6]), c7=chapterClock(chapterById(TOUR[6].chapter)), own=TOUR.filter(function(st){ return st.t!==undefined; }).length;
+      ck("spine: every theme and tour stop names its moments (phases or events); a theme opens on its principal moment and marks the others; stop 7 follows its theme (decision 52)",
+        !bad3.length&&ck3===660&&marked==="buxhowden-blind,pratzeberg"&&ckG===675&&phMarked===0&&cleared&&s7===c7&&own===1,
+        ANALYSIS.length+" themes naming "+nM+" moments, "+TOUR.length+" stops"+(bad3.length?"; UNRESOLVED: "+bad3.join(", "):"")+"; the theme \u201ccut\u201d at "+fmtClock(ck3)+", marking "+marked+
+        "; \u201cguard\u201d at "+fmtClock(ckG)+"; marks cleared after: "+cleared+"; stop 7 at "+fmtClock(s7)+" (its theme "+fmtClock(c7)+"); "+own+" stop with its own clock (stop 4)");
       if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
       document.body.classList.remove("st-still"); if(pl0) togglePlay();
     })();

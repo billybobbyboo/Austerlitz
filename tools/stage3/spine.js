@@ -23,6 +23,13 @@ const phaseAt=t=>{ for(let i=P.length-1;i>=0;i--) if(t>=P[i].t0) return i; retur
 const actOf=ph=>A.find(a=>a.phases.includes(ph));
 const camEq=(a,b)=>a&&b&&a.length===b.length&&a.every((v,i)=>v===b[i]);
 const phaseCam=cam=>{ const i=P.findIndex(p=>camEq(p.cam,cam)); return i; };
+/* since the spine data task, a theme and a stop name a moment ("ph:<n>" or "ev:<id>") instead of a clock and camera of their own:
+   resolved here as the app resolves them (app.js momentOf, chapterCam, stopCam), so the report reads either data */
+const mom=m=>{ const k=String(m||""), i=k.indexOf(":"), kind=k.slice(0,i), id=k.slice(i+1);
+  if(kind==="ph") return P[+id]?{t:P[+id].t0,ph:+id}:null;
+  const e=E.find(x=>x.id===id); return e?{t:win(e)[0],ph:phaseAt(win(e)[0])}:null; };
+C.forEach(c=>{ if(c.t===undefined&&c.at){ const r=mom(c.at); c.t=r.t; if(!c.cam) c.cam=P[r.ph].cam; } });
+T.forEach(st=>{ if(st.at){ const r=mom(st.at); if(st.t===undefined) st.t=r.t; if(!st.cam){ const c=st.chapter?C.find(x=>x.id===st.chapter):null; st.cam=c?c.cam:P[r.ph].cam; } } });
 /* times in free text: the parser of tools/stage2/chronology.js (timesIn), unchanged */
 const WORD={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12};
 const hr=h=>h<4?h+12:h;

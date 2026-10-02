@@ -12,6 +12,11 @@ function anchorPos(id,ph){ const f=FORMATIONS[id];
   for(const k of leavesOf(id,[])){ const q=anchorPos(k,ph); if(q) return q; } return null; }
 
 let errs=[], warn=[];
+/* a moment's clock: a phase's start ("ph:<n>") or an event's start ("ev:<id>"); null if it names neither */
+function momentT(m){ const k=String(m||""), i=k.indexOf(":"), kind=k.slice(0,i), id=k.slice(i+1);
+  if(kind==="ph"){ const n=+id; return (PHASES[n]&&String(n)===id)?PHASES[n].t0:null; }
+  if(kind==="ev"){ const e=EVENTS.find(x=>x.id===id); return e?(Array.isArray(e.t)?e.t[0]:e.t):null; }
+  return null; }
 const ids=Object.keys(FORMATIONS);
 console.log("formations:",ids.length,"| phases:",PHASES.length,"| features:",FEATURES.length);
 
@@ -95,7 +100,22 @@ for(let i=0;i<PHASES.length;i++){
 ANALYSIS.forEach(c=>{
   c.forms.forEach(f=>{ if(!FORMATIONS[f]) errs.push("chapter "+c.id+": unknown formation "+f); });
   c.feats.forEach(f=>{ if(!FEATURES.some(x=>x.id===f)) errs.push("chapter "+c.id+": unknown feature "+f); });
-  if(c.t<PHASES[0].t0||c.t>PHASES[PHASES.length-1].t1) errs.push("chapter "+c.id+": time off the clock");
+  /* the spine data task: a chapter's clock is its principal moment's; every moment it names is a phase or an event (stricter
+     than the clock-range check it replaces, which the resolved clock still passes) */
+  const at=momentT(c.at);
+  if(at===null) errs.push("chapter "+c.id+": principal moment "+c.at+" is not a phase or an event");
+  else if(at<PHASES[0].t0||at>PHASES[PHASES.length-1].t1) errs.push("chapter "+c.id+": time off the clock");
+  if(!Array.isArray(c.moments)||!c.moments.length) errs.push("chapter "+c.id+": no moments");
+  else c.moments.forEach(m=>{ if(momentT(m)===null) errs.push("chapter "+c.id+": moment "+m+" is not a phase or an event"); });
+  if(c.t!==undefined) errs.push("chapter "+c.id+": keeps a clock of its own (t); its clock is its principal moment's");
+});
+TOUR.forEach((st,i)=>{
+  const at=momentT(st.at);
+  if(at===null) errs.push("tour stop "+(i+1)+": moment "+st.at+" is not a phase or an event");
+  const t=st.t!==undefined?st.t:at;
+  if(t===null||t<PHASES[0].t0||t>PHASES[PHASES.length-1].t1) errs.push("tour stop "+(i+1)+": time off the clock");
+  if(st.chapter&&!ANALYSIS.some(c=>c.id===st.chapter)) errs.push("tour stop "+(i+1)+": unknown chapter "+st.chapter);
+  if(st.t!==undefined&&i!==3) errs.push("tour stop "+(i+1)+": keeps its own clock; only stop 4 does (its text quotes the 07:15 reading)");
 });
 ["fr","al"].forEach(sd=>{
   Object.keys(COMMAND[sd]).forEach(ph=>{

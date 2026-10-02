@@ -1,8 +1,108 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · The spine data task: themes and tour on the day's moments (docs/STAGE3_SPEC.md §C.2, §C.3; owner decisions 52, 56, 59, 64-67); two Stage 3 leftovers
+
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,348,542 bytes, md5 `6b2cccd44138e95e6082c82b8b2d2f8a`**
+(was 1,342,333 bytes, md5 `eb18a8ea…`, Stage 3E).
+- **A data task.** Four guarded declarations change, and no others: `ANALYSIS`, `TOUR`, `PHASES` (one timeline line moved) and
+  `SOURCE_NOTE` (one sentence). `check:data`'s reference moves to this build: `archive/spine-6b2cccd4.html` (identical to the
+  committed build) replaces `archive/stage2c-68ac7721.html` as the reference. The Stage 2C build stays in `archive/`: the drop
+  limits are derived on it (`tools/stage2/dom-layer.js`, `paper-limits.js`, `tools/stage3/offset-limits.js`).
+- `check:baseline` moves to this build.
+- **No new source is used or claimed.** Every clock below is one the data already carried (an event's or a phase's); the evidence
+  for each change is the app's own text, as §C.3 lists it. No coordinate, strength, movement, track or `OVERLAYS` entry changes.
+
+**Before building (fact).** `main` (a130948, 3E merged as #25) matched `check:baseline` (md5 `eb18a8ea…`, 1,342,333 bytes) and
+`check:data` (all 113 declarations identical to `archive/stage2c-68ac7721.html`).
+
+**The data model** (§C.2; decision 59: themes and tour only)
+- A chapter is a **theme**: it names the **moments** it concerns (`moments`: `"ph:<phase>"` or `"ev:<event id>"`) and the
+  **principal moment** it opens on (`at`). Its clock (`t`) is retired: it is the principal moment's (a phase's start, an event's
+  start). Its camera (`cam`) is kept only where no phase's view shows its subject (plan, deception, weakness, cut); otherwise it is
+  the camera of the phase its moment falls in, which in every such case is the camera the chapter already carried.
+- A tour **stop** names one moment (`at`) and, as before, a theme, plan or feature; it takes the moment's clock and its theme's
+  camera, or the moment's phase's. Exceptions, each from the stop's own text: stop 4 keeps its own clock; stops 2 and 5 keep
+  their own cameras.
+
+**Every change: was → is, and why**
+
+| entry | was | is | evidence (the app's own texts) and why |
+|---|---|---|---|
+| `ANALYSIS` plan | 04:10, own camera | phase 0 (04:00); own camera kept | "Weyrother's dispositions…": the start of the day; no phase's view is the plan's overview |
+| `ANALYSIS` deception | 04:10, own camera | phase 0 (04:00); own camera kept | "abandoned the Pratzen plateau on 1 December" |
+| `ANALYSIS` weakness | 07:00, own camera | `telnitz` (07:00); moments `raigern`, `davout`, `telnitz`; own camera kept | "Legrand's single division held roughly five kilometres… reached Raigern only on the night of 1 December" |
+| `ANALYSIS` commitment | 07:10, phase 1's camera | phase 1 (07:00); moments `telnitz`, `sokolnitz`, `telnitz-retaken` | "Between 07:00 and 09:00…" |
+| `ANALYSIS` pratzen | 08:47, phase 3's camera | `soult` (08:45); moments `decision`, `soult`, `pratzen-village`, `face-about`, `kamensky`, `pratzeberg` | "At about 08:45… until about 11:00" |
+| `ANALYSIS` cut | 10:00 (phase 4), phase 4's camera | `pratzeberg` (11:00, phase 5); moments `pratzeberg`, `buxhowden-blind`; own camera kept (phase 4's view of the plateau) | decision 52: "With the plateau taken…" and the event `pratzeberg` 11:00; decision 67: phase 5's view looks north at Bagration |
+| `ANALYSIS` north | 10:40, phase 5's camera | phase 5 (10:30); moment `blasowitz` | "Blasowitz fell about 11:15"; phase 5 is the northern battle |
+| `ANALYSIS` guard | 11:20, phase 6's camera | phase 6 (11:15); moments `guard-attack`, `guard-broken`, `hq-forward` | decision 64: the attack's hour "is not established" (phase 6's own line), so the theme opens on the phase, not on a minute |
+| `ANALYSIS` wheel | 12:50, phase 7's camera | `wheel` (13:00); moments `davout-resumes`, `wheel`, `sokolnitz-falls` | "Between about 13:00 and 14:00…"; the event `wheel` 13:00-14:00 |
+| `ANALYSIS` collapse | 14:40, phase 8's camera | `augezd` (14:30); moments `augezd`, `ice`, `end` | "the neck of dry ground at Augezd… the frozen water" |
+| `TOUR` 1 "The battlefield" | 04:10, own camera (phase 0's) | phase 0 (04:00), phase 0's camera | the same view |
+| `TOUR` 2 "The Allied plan" | 04:10, own camera | phase 0 (04:00), own camera kept | the plan overlay's overview |
+| `TOUR` 3 "The French deception" | 04:10, own camera (the theme's) | phase 0 (04:00), the theme's camera | the same view |
+| `TOUR` 4 "The Allied advance" | 07:25 | phase 1, **own clock 07:25 kept**, the theme's camera (the same) | its text quotes the plateau reading "about 19,000 by 07:15", which `sim-test.js` checks |
+| `TOUR` 5 "Why the Pratzen matters" | 08:20 (phase 2), phase 3's camera | phase 2 (08:00), own camera kept | "the fog that hid Soult's divisions forming at the foot of the slope" (before 08:45); decision 67: phase 2's view looks at Sokolnitz |
+| `TOUR` 6 "The French strike" | 08:50 | `soult` (08:45), the theme's camera (the same) | "At about a quarter to nine…" |
+| `TOUR` 7 "The army divided" | 11:20 (phase 6), phase 4's camera | `pratzeberg` (11:00), following its theme (decision 52); the theme's camera (the same) | "With the plateau gone…" |
+| `TOUR` 8 "The collapse" | 14:40 | `augezd` (14:30), the theme's camera (the same) | its theme |
+| `TOUR` 9 "What it cost" | 16:40 (phase 8), phase 9's camera | phase 9 (17:00), phase 9's camera | decision 65: "The reckoning"; its text is the losses |
+| `PHASES` phase 7 → phase 6 | "c. 12:30 Davout regroups and attacks…" in phase 7 (12:45-14:30) | in phase 6 (11:15-12:45), after the two c. 12:00 lines | decision 66: its own label; the event `davout-resumes` (12:30) is in phase 6 |
+| `PHASES` phase 6 | "after 11:00 The Russian Guard attacks Vandamme…" in phase 6 | **unchanged**, by decision 66 | its hour "is not established" (its own words); the Guard is phase 6's subject; the event `guard-attack` runs 11:00-13:00, mostly in phase 6 |
+| `SOURCE_NOTE` | the relief paragraph | adds: "The relief setting cannot be changed while the battle plays, because redrawing the ground can take longer than a frame; the ground switch (Landscape, Paper map, Landscape with counters) can, and a slow frame while it redraws advances the battle clock by at most 1.2 minutes at normal speed (4.8 at four times speed)." | decision 56 (G.1): the frame step is capped at 120 ms and the clock runs 10 minutes a second at 1x (fact, `app.js` `loop` and `tickClock`) |
+
+Comments: `analysis.js`'s tour heading said "eight stops"; it says nine (Part A found it, §0.2).
+
+**What the page does with it** (`app.js`, `style.css`)
+- `momentOf`, `chapterClock`, `chapterCam`, `stopClock`, `stopCam` resolve the moments; `setChapter`, `applyTour`, the Analysis
+  list's clocks, the spine index and the spine mark read them.
+- Choosing a theme marks its other moments on the timeline: its events' markers (a light ring) and its phases' ticks (a line
+  under the label), cleared when the theme is left (§C.2).
+- Not done (decision 59): the one-wording-per-moment change to the 23 phase lines that duplicate an event; new events for the nine
+  lines without one.
+
+**The two Stage 3 leftovers**
+- ← and → on a focused button, link or tab no longer step the clock (they still do from the map, the page, or nothing focused; the
+  time rail and the roving groups keep their own arrow keys). The key table's line says so.
+- Decision 56's sentence is in the sources sheet (`SOURCE_NOTE`, above).
+
+**What the change does to the clocks the page sets** (derived): every theme and stop opens at its moment's start. Eight of the
+ten themes move by 2-10 minutes, "weakness" not at all, and "cut" by an hour (decision 52); eight of the nine stops move by 5-20
+minutes, stop 4 not at all. Two stops change phase: 7 (phase 6 → 5) and 9 (phase 8 → 9); one theme, "cut" (phase 4 → 5). `tools/stage3/spine.js` on the new data
+(`docs/stage3-evidence/spine-after.md`) reports only the recorded exceptions: stop 4's own clock, stops 2 and 5's own cameras, the
+theme cut's own camera, the four themes whose text spans more than their phase (a theme is a span), and the kept "after 11:00".
+
+**Tests** (none loosened; new or stricter)
+- `test.js`: the chapter clock check now resolves the principal moment (the clock range still checked); new: every moment a theme
+  names is a phase or an event, no theme keeps its own clock, every stop's moment resolves on the clock and names a known theme,
+  and only stop 4 keeps its own clock.
+- Self-test (126 checks, was 125), new: every theme and stop resolves; theme "cut" opens at 11:00 and marks exactly
+  `pratzeberg` and `buxhowden-blind`; theme "guard" opens at 11:15; the marks clear; stop 7 follows its theme (decision 52); one
+  stop keeps its own clock. The key-table dry run now also presses → and Shift+← on a focused button (no row reached).
+- Harness, by real key presses: → and Shift+← on the focused Play button leave the clock where it was.
+- `sim-test.js` (stop 4's quoted reading) and `terrain-test.js` (stop 5's viewshed figures) pass unchanged.
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard.
+- `npm run check:data`: against the old reference (`archive/stage2c-68ac7721.html`) exactly four data declarations changed:
+  `PHASES`, `SOURCE_NOTE`, `ANALYSIS`, `TOUR`; against the new reference (`archive/spine-6b2cccd4.html`) all 113 identical.
+- `npm run check:chronology`: 0 errors (the clocks it checks are the movements', which do not change).
+- `npm run check:visual`: all checks passed, 20 views, the self-test 126 of 126; by real key presses, → and Shift+← on the
+  focused Play button left the clock at 10:00.
+- `npm run check:contrast`: 4,223 text elements in 28 states, 0 below AA, 0 below 10.5 px (4,226 on the 3E build; the three
+  fewer elements were not traced to a state; derived, not measured: the tour and chapter states now open at other clocks).
+- `npm run check:baseline`: moved to this build; passes.
+
+**Not done, or open**
+- The phase lines that duplicate an event (23) keep their own wording (decision 59: later, if at all); the nine lines without an
+  event stay notes.
+- `ANALYSIS`'s other moments are marked on the timeline only; the dispatch does not yet list a theme's moments.
+- The movement-timing conflicts that `check:chronology` names (dok@1, guard_cav@6, kamensky@3, kamensky@4) and §M.9's three
+  disagreeing texts are not spine structure and are untouched.
+
 ## 2026-10 · Stage 3E: names, the "?" overlay, the key table; event glyphs and objective markers capped (docs/STAGE3_SPEC.md §E, §F, §G.3, §H, §I; owner decisions 50, 51, 57)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,342,333 bytes, md5 `eb18a8eaf4e37a3061aa0a9227b4dd14`**
+**Status: merged (#25). `austerlitz-command-map.html`: 1,342,333 bytes, md5 `eb18a8eaf4e37a3061aa0a9227b4dd14`**
 (was 1,319,262 bytes, md5 `732e04c0…`, Stage 3D).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move. No
