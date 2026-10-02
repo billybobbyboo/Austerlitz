@@ -11,9 +11,9 @@
 <div id="vignette" aria-hidden="true"></div>
 
 <div id="viewmode" role="group" aria-label="Presentation">
-  <button class="vm-btn" data-vm="study" aria-pressed="true" title="Everything: panels, dossiers, sources (1)">Study</button>
-  <button class="vm-btn" data-vm="watch" aria-pressed="false" title="Battlefield and timeline only (2)">Watch</button>
-  <button class="vm-btn" data-vm="map" aria-pressed="false" title="Clean battlefield (3)">Map</button>
+  <button class="vm-btn" data-vm="study" aria-pressed="true" title="Everything: panels, dossiers, sources (key 1)">Study</button>
+  <button class="vm-btn" data-vm="watch" aria-pressed="false" title="Battlefield and timeline only (key 2)">Watch</button>
+  <button class="vm-btn" data-vm="map" aria-pressed="false" title="The battlefield alone: no panels (key 3)">Clean</button>
 </div>
 <div id="viewmode-home" hidden><!-- the presentation switch's place outside Watch (app.js syncViewmode) --></div>
 
@@ -87,7 +87,7 @@
 <div class="tools">
   <div class="grp">
     <button class="t" id="tourbtn">Guided tour</button>
-    <button class="t" id="layersbtn" aria-expanded="false">Map&hellip;</button>
+    <button class="t" id="layersbtn" aria-expanded="false">Layers&hellip;</button>
   </div>
   <div class="tlabel">Vantage</div>
   <div class="grp" id="vantages">
@@ -99,19 +99,19 @@
   </div>
 </div>
 
-<div id="layerpop" hidden role="dialog" aria-label="Map settings">
-  <div class="lp-head"><span>Map</span>
+<div id="layerpop" hidden role="dialog" aria-label="Layers and ground">
+  <div class="lp-head"><span>Layers</span>
     <button id="layerclose" aria-label="Close">&times;</button></div>
   <div class="lp-sec">
     <p class="lp-lbl">How the ground is drawn</p>
-    <div class="modes" role="group" aria-label="Map mode">
-      <button class="mode-btn" data-m="terrain" aria-pressed="true">Terrain</button>
-      <button class="mode-btn" data-m="staff" aria-pressed="false">Staff map</button>
-      <button class="mode-btn" data-m="hybrid" aria-pressed="false">Hybrid</button>
+    <div class="modes" role="group" aria-label="Ground">
+      <button class="mode-btn" data-m="terrain" aria-pressed="true">Landscape</button>
+      <button class="mode-btn" data-m="staff" aria-pressed="false">Paper map</button>
+      <button class="mode-btn" data-m="hybrid" aria-pressed="false">Landscape with counters</button>
     </div>
   </div>
   <div class="lp-sec">
-    <p class="lp-lbl">What the map shows</p>
+    <p class="lp-lbl">What is drawn</p>
     <button class="lp-row layer-btn" data-l="symbols" aria-pressed="true">
       <b>Formation counters</b><i>Military symbols with commander and strength</i></button>
     <button class="lp-row layer-btn" data-l="arrows" aria-pressed="true">
@@ -185,8 +185,7 @@
     <div class="k"><span id="exag-symbols"></span></div>
     <div id="goingkey"><!-- rows written from TOKENS.sym.going by paintKey (app.js), the table the going layer draws --></div>
     <div class="hint" id="lg-hint">drag to pan &middot; right-drag or Shift-drag to turn &middot; scroll to zoom toward the pointer &middot; double-click to centre &middot; click or Tab to a counter or a name</div>
-    <div class="hint keys"><b>1</b> study <b>2</b> watch <b>3</b> map only &middot; <b>M</b> map mode
-      &middot; <b>D</b> text &middot; <b>F</b> <span id="fxstate">FX on</span> &middot; <b>space</b> play &middot; <b>Esc</b> back</div>
+    <div class="hint keys"><b>?</b> all keys and controls</div>
   </div>
 </div>
 
@@ -207,6 +206,7 @@
     </div>
     <div class="clockbox"><span id="clockread">04:00</span><small>2 Dec 1805</small></div>
     <div class="tb-cap" id="tb-cap"></div>
+    <button class="t tb-help" id="helpbtn" aria-haspopup="dialog" aria-label="Keys and controls (?)" title="Keys and controls (?)">?</button>
     <div class="tb-vm" id="tb-vm"><!-- Watch: the presentation switch (#viewmode) stands here (app.js syncViewmode, decision 60) --></div>
     <div class="grp speeds" aria-label="Playback speed">
       <button class="t spd-btn" data-s="0.5" aria-pressed="false">&frac12;&times;</button>
@@ -237,6 +237,15 @@
   <div id="drawer-body"></div>
 </aside>
 
+<!-- Stage 3E (docs/STAGE3_SPEC.md section F; owner decisions 50, 51): every key and pointer control, written from the one key
+     table (app.js KEYS), which the key handlers read too. "?" opens it; Esc or "?" closes it and focus returns. -->
+<div id="help" role="dialog" aria-modal="true" aria-labelledby="help-t" hidden>
+  <div class="sheet help-sheet">
+    <button id="help-close" type="button" aria-label="Close (Esc)">&times;</button>
+    <h2 id="help-t">Keys and controls</h2>
+    <div id="help-body" tabindex="0" aria-label="The keys and controls, by group"></div>
+  </div>
+</div>
 <div id="modal" role="dialog" aria-modal="true" aria-label="Accuracy and sources">
   <div class="sheet">
     <button id="modal-close" type="button" aria-label="Close">&times;</button>

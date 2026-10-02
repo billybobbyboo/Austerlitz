@@ -1317,6 +1317,12 @@ Measured in the built page (method at the top). "On (worst)" is the composited b
 | 4.44 | 4.5 | paper | 12 | `#6B6553` | `#E5E1D6` | dispatch | `b` | c. 01:00 |
 | 4.44 | 4.5 | paper | 10 | `#6B6553` | `#E5E1D6` | dispatch | `h4` | WHAT CHANGED AT 04:00 |
 
+*Dated note (Stage 3E, October 2026; `docs/STAGE3_SPEC.md` §E and §F, owner decisions 50 and 51).* The two `div.hint.keys` rows above
+quote the legend's key line as it was measured ("1 study 2 watch 3 map only · M map mode · …"). That line is now one line, "? all
+keys and controls"; the full list is the "?" overlay, written from the key table that the key handlers read. The presentation
+once labelled "Map" is labelled "Clean", and the ground's "Terrain / Staff map / Hybrid" are "Landscape / Paper map / Landscape
+with counters"; the identifiers are unchanged. The rows are kept as measured.
+
 ### B.2 The 40 lowest passing pairs (of 120)
 
 | ratio | theme | size | text | on (worst) | element |

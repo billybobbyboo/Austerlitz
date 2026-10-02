@@ -54,9 +54,9 @@ function decls(sel){
   return body===null?null:{body:body};
 }
 const checks=[
- ["body.pm-map .dispatch","display:none","map mode must hide the dispatch text"],
- ["body.pm-map .timebar","display:none","map mode must hide the timeline"],
- ["body.pm-map .tools","display:none","map mode must hide the controls"],
+ ["body.pm-map .dispatch","display:none","Clean (the presentation map) must hide the dispatch text"],
+ ["body.pm-map .timebar","display:none","Clean (the presentation map) must hide the timeline"],
+ ["body.pm-map .tools","display:none","Clean (the presentation map) must hide the controls"],
  ["body.pm-watch .dispatch","display:none","watch mode must hide the dispatch text"],
  ["body.pm-watch .tools","display:none","watch mode must hide the controls"],
  ["body.no-dispatch .dispatch","display:none","the text toggle must hide the dispatch"],
@@ -74,3 +74,22 @@ checks.forEach(([sel,need,why])=>{
 });
 console.log("behaviour checks:",checks.length-cerrs+"/"+checks.length+" pass");
 if(cerrs) process.exitCode=1;
+
+/* Stage 3E (docs/STAGE3_SPEC.md sections E and H; owner decision 50): the names, a static check over shell.html and the label
+   table in app.js. No presentation is labelled "Map" and no ground "Staff map", "Terrain" or "Hybrid"; the identifiers
+   (data-vm, data-m) are unchanged. */
+{
+  const sh=fs.readFileSync('shell.html','utf8'), app=fs.readFileSync('app.js','utf8'), nerr=[];
+  const btn=(attr,val)=>{ const m=sh.match(new RegExp('<button[^>]*'+attr+'="'+val+'"[^>]*>([^<]*)</button>')); return m?m[1].trim():null; };
+  const want={'data-vm':{study:"Study",watch:"Watch",map:"Clean"},'data-m':{terrain:"Landscape",staff:"Paper map",hybrid:"Landscape with counters"}};
+  Object.keys(want).forEach(a=>Object.keys(want[a]).forEach(v=>{ const t=btn(a,v); if(t!==want[a][v]) nerr.push(a+'="'+v+'" is labelled '+JSON.stringify(t)+', not "'+want[a][v]+'"'); }));
+  const i=app.indexOf("var LABELS="), j=app.indexOf("function applyLabels");
+  if(i<0||j<0) nerr.push("app.js has no label table (LABELS)");
+  else { const T=app.slice(i,j);
+    [['study',"Study"],['watch',"Watch"],['map',"Clean"]].forEach(q=>{ if(!new RegExp(q[0]+':\\{label:"'+q[1]+'"').test(T)) nerr.push("LABELS.presentation."+q[0]+" is not "+q[1]); });
+    if(/label:"Map"|label:"Staff map"|label:"Terrain"|label:"Hybrid"/.test(T)) nerr.push("the label table still names Map, Staff map, Terrain or Hybrid"); }
+  if(/>\s*Staff map\s*</.test(sh)||/>Map&hellip;</.test(sh)||/aria-label="Map (mode|settings)"/.test(sh)) nerr.push("shell.html still says Staff map, Map\u2026 or Map mode/settings");
+  nerr.forEach(e=>console.log("  ! "+e));
+  console.log("names: "+(nerr.length?nerr.length+" wrong":"the presentations, the ground and the layers as decision 50 names them"));
+  if(nerr.length) process.exitCode=1;
+}

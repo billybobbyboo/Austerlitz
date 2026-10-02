@@ -1,8 +1,8 @@
 # Navigation and structure specification (Stage 3, Part A)
 
 **Status: Part A reviewed (#21); the owner accepted every recommendation of §J, recorded as decisions 47-60 (§0.3). 3B (docked
-panels) is merged (#22); 3C (one timeline, and the spine index) is merged (#23); 3D (the camera) is implemented as §A.3 and §I
-describe, with owner decisions 61-63 taken during it (§0.3). What each found is at the end of §I. Sections A-J below still describe the build they were written against.** Part A was written against `main` at `0f2b17e` (Stage 2F merged,
+panels) is merged (#22); 3C (one timeline, and the spine index) is merged (#23); 3D (the camera) is merged (#24), with owner decisions 61-63
+taken during it (§0.3); 3E (names, the "?" overlay, the key table, the symbols capped) is implemented as §E, §F and §I describe. What each found is at the end of §I. Sections A-J below still describe the build they were written against.** Part A was written against `main` at `0f2b17e` (Stage 2F merged,
 #19, and recorded as merged, #20), whose build `austerlitz-command-map.html` is 1,253,655 bytes, md5
 `ee4390a2585f3df170fba82eb1994112`. Before any work: `npm test` (all nine suites and the height guard), `check:data`
 (all 113 declarations byte-identical to `archive/stage2c-68ac7721.html`), `check:chronology` (0 errors) and
@@ -886,6 +886,18 @@ floor; unobstructed fractions unchanged. Every §H claim for 3D is met. Five thi
    on the modelled ground.
 5. **The harness's orbit case aims its wheel at the target**: the wheel now zooms toward the cursor, and aimed at the target it
    zooms about it, as before; its measure is unchanged (4.31 units below the ground, the same target and bearing).
+
+**3E, as delivered (fact; `CHANGELOG.md`, Stage 3E).** Built as §E.2, §E.3, §F.2 and G.3 describe, under decisions 50, 51 and 57:
+labels from one table (`LABELS`), identifiers unchanged; one key table (`KEYS`) read by the window's and the map layer's
+handlers and by the "?" overlay, a modal dialog; keys with a modifier ignored, Space and Enter on a focused button press it;
+event glyphs and objective markers at most 192 px on screen and faded near the eye. pratzen-orbit-min draws map text again
+(0 → 6 placed); every other harness view unchanged. Three things were not as the plan assumed:
+1. **The "?" button stands only in the timeline's control row** (Study and Watch), not also in the tools group: there it widened
+   the panel and every Study view's unobstructed fraction fell 0.1 point under its baseline.
+2. **"Clean" is 8 px wider than "Map"**: the switch widened and first-run at 1280 x 720 fell to 48.99% (baseline 49.0%); the
+   buttons' padding was narrowed so the switch keeps its width.
+3. **Not covered by §F.2's fixes**: ← and → on a focused button still step the clock (§G.6); decision 56's sentence in the
+   sources sheet is not written.
 
 ## J. Questions for the owner
 

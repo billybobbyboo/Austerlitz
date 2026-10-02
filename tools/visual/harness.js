@@ -175,6 +175,28 @@ async function interact(page,it,vp){
       got.push("event marker Enter: "+ev.name+" → clock "+ev.clock+", "+ev.sel);
       if(!ev.id||Math.abs(ev.clock-ev.mid)>1e-6||ev.sel!=="e:"+ev.id) report.failures.push("an event marker by real key presses: "+JSON.stringify(ev));
       report.sliderKeys=got; console.log("slider by real key presses: "+got.join(", ")); }
+    /* Stage 3E (docs/STAGE3_SPEC.md section H): by real key presses, Space and Enter on a focused button press it and do not
+       toggle play; a key with Ctrl does nothing; "?" opens the overlay, Tab stays in it, Esc closes it and focus returns */
+    if(await first.evaluate(()=>typeof KEYS!=="undefined")){
+      const kr=[], bad=[];
+      await first.evaluate(()=>{ setPresentation("study"); stopPlay(); setSpeed(1); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+      await first.focus('.spd-btn[data-s="2"]'); await first.keyboard.press(" ");
+      let st=await first.evaluate(()=>({speed:speed,playing:playing})); kr.push("Space on 2x: speed "+st.speed+", playing "+st.playing); if(st.speed!==2||st.playing) bad.push("Space on a speed button: "+JSON.stringify(st));
+      await first.focus('.spd-btn[data-s="4"]'); await first.keyboard.press("Enter");
+      st=await first.evaluate(()=>({speed:speed,playing:playing})); kr.push("Enter on 4x: speed "+st.speed+", playing "+st.playing); if(st.speed!==4||st.playing) bad.push("Enter on a speed button: "+JSON.stringify(st));
+      await first.evaluate(()=>{ setSpeed(1); document.activeElement.blur(); });
+      const c0=await first.evaluate(()=>layerOn.contours); await first.keyboard.press("Control+c"); const c1=await first.evaluate(()=>layerOn.contours);
+      kr.push("Ctrl+C: contours "+c0+" -> "+c1); if(c0!==c1) bad.push("Ctrl+C toggled the contours");
+      await first.focus("#tourbtn"); await first.keyboard.press("?");
+      const h1=await first.evaluate(()=>({open:!document.getElementById("help").hidden,focus:document.activeElement&&document.activeElement.id}));
+      await first.keyboard.press("Tab"); const h2=await first.evaluate(()=>document.activeElement&&document.activeElement.id);
+      await first.keyboard.press("Tab"); const h3=await first.evaluate(()=>document.activeElement&&document.activeElement.id);
+      await first.keyboard.press("Escape"); const h4=await first.evaluate(()=>({open:!document.getElementById("help").hidden,focus:document.activeElement&&document.activeElement.id}));
+      kr.push("? on the tour button: open "+h1.open+", focus "+h1.focus+"; Tab "+h2+", Tab "+h3+"; Esc: open "+h4.open+", focus "+h4.focus);
+      if(!h1.open||h1.focus!=="help-close"||h2!=="help-body"||h3!=="help-close"||h4.open||h4.focus!=="tourbtn") bad.push("the overlay's focus: "+kr[kr.length-1]);
+      await first.evaluate(()=>document.activeElement&&document.activeElement.blur());
+      report.keys3E=kr; console.log("keys by real key presses: "+kr.join("; "));
+      bad.forEach(b=>report.failures.push("keys by real key presses: "+b)); }
     const T=require("./thresholds.js");
     for(const [name,m] of Object.entries(report.cases)) T.check(name,m).forEach(f=>{ console.log("FAIL "+name+": "+f); report.failures.push(name+": "+f); });
   }
