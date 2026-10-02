@@ -89,8 +89,8 @@ theme cut's own camera, the four themes whose text spans more than their phase (
 - `npm run check:chronology`: 0 errors (the clocks it checks are the movements', which do not change).
 - `npm run check:visual`: all checks passed, 20 views, the self-test 126 of 126; by real key presses, → and Shift+← on the
   focused Play button left the clock at 10:00.
-- `npm run check:contrast`: 4,223 text elements in 28 states, 0 below AA, 0 below 10.5 px (4,226 on the 3E build: the tour
-  states open at 04:00 instead of 04:10, where three fewer map texts are drawn).
+- `npm run check:contrast`: 4,223 text elements in 28 states, 0 below AA, 0 below 10.5 px (4,226 on the 3E build; the three
+  fewer elements were not traced to a state; derived, not measured: the tour and chapter states now open at other clocks).
 - `npm run check:baseline`: moved to this build; passes.
 
 **Not done, or open**
