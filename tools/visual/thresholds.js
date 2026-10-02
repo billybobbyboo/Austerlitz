@@ -76,6 +76,12 @@ const TIMELINE_MAX=92;
 const HEADS_SHOWN=["ph8-overview-study","ph8-overview-watch"], FOCUS_PX=1;
 module.exports.HEADS_SHOWN=HEADS_SHOWN; module.exports.FOCUS_PX=FOCUS_PX;
 module.exports.TIMELINE_MAX=TIMELINE_MAX;
+/* Stage 4B (docs/STAGE4_SPEC.md section A.6): the Stage 0 darkness limit, and the views the harness renders through the day without
+   the shadow toe: [case, clock or null (the case's own), factor or null (the case's own)]. New */
+const SOLID_BLACK=0.0005, LIGHT_SWEEP=[];
+["overview-field","pratzen-low"].forEach(n=>{ for(let t=480;t<=960;t+=60) LIGHT_SWEEP.push([n,t,4]); });
+["overview-field","close-sokolnitz","ph8-overview-study"].forEach(n=>{ LIGHT_SWEEP.push([n,null,1]); LIGHT_SWEEP.push([n,null,"model"]); });
+module.exports.SOLID_BLACK=SOLID_BLACK; module.exports.LIGHT_SWEEP=LIGHT_SWEEP;
 module.exports.PAPER_MIN_PXKM=PAPER_MIN_PXKM;
 module.exports.DROP_LIMIT=DROP_LIMIT; module.exports.UNOBSTRUCTED=UNOBSTRUCTED; module.exports.LAYER_MS=LAYER_MS;
 /* Stage 0 guarantees, checked on every baseline case (harness --test). The numbers are the
@@ -93,7 +99,7 @@ module.exports.check=function(name,m){
   if(m.dustEdgeAlpha) f.push("dust sprites have a visible edge (alpha "+m.dustEdgeAlpha+"/255)");
   if(m.mist.visible&&m.mist.maxAlphaAtCrossing>0.02) f.push("mist visible where the ground rises through it (alpha "+m.mist.maxAlphaAtCrossing+")");
   /* black-slope clipping shows as solid near-black regions; small black details (shakos, text, poles) are fine */
-  if(m.pixels.solidBlack>0.0005) f.push("solid near-black regions cover "+(100*m.pixels.solidBlack).toFixed(3)+"% of the map ("+m.pixels.solidBlocks+" blocks of 8x8; limit 0.05%)");
+  if(m.pixels.solidBlack>SOLID_BLACK) f.push("solid near-black regions cover "+(100*m.pixels.solidBlack).toFixed(3)+"% of the map ("+m.pixels.solidBlocks+" blocks of 8x8; limit 0.05%)");
   if(m.selection&&!m.drawerVisible&&!m.chipVisible) f.push("selection "+m.selection+" is shown nowhere");
   if(!m.selection&&m.chipVisible) f.push("selection chip shown with nothing selected");
   if(m.firstRunVisible&&m.dispatchVisible) f.push("first-run card stacked on the dispatch card");

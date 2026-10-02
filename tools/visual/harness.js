@@ -200,7 +200,20 @@ async function interact(page,it,vp){
       await first.evaluate(()=>document.activeElement&&document.activeElement.blur());
       report.keys3E=kr; console.log("keys by real key presses: "+kr.join("; "));
       bad.forEach(b=>report.failures.push("keys by real key presses: "+b)); }
+    /* Stage 4B (docs/STAGE4_SPEC.md section A.6): the light through the day, without the shadow toe. The Field vantage and the low
+       Pratzen view at 4x every hour 08:00-16:00, and three more views at 1x and 10.33x (the low Pratzen view has its own cases):
+       solid near-black within the Stage 0 limit in each (a build with the computed sun) */
     const T=require("./thresholds.js");
+    if(await first.evaluate(()=>typeof SUN_DAY!=="undefined")){
+      const sw=[];
+      for(const [name,t,f] of T.LIGHT_SWEEP){
+        const c=require("./cases.js").find(x=>x.name===name), spec=Object.assign({},c,t!==null?{t}:{},f!==null?{factor:f}:{});
+        await first.evaluate(s=>window.__aus.apply(s),spec); await settle(first);
+        const buf=await first.screenshot({timeout:180000}), px=await first.evaluate(b=>window.__aus.pixels(b),buf.toString("base64"));
+        const tag=name+(t!==null?" at "+String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0"):"")+(f!==null?" at "+(f==="model"?"10.33":f)+"x":"");
+        sw.push(tag+" "+(100*px.solidBlack).toFixed(3)+"%");
+        if(px.solidBlack>T.SOLID_BLACK) report.failures.push("the day's light: "+tag+": solid near-black regions cover "+(100*px.solidBlack).toFixed(3)+"% of the map ("+px.solidBlocks+" blocks; limit 0.05%)"); }
+      report.lightSweep=sw; console.log("the day's light (solid near-black): "+sw.join("; ")); }
     for(const [name,m] of Object.entries(report.cases)) T.check(name,m).forEach(f=>{ console.log("FAIL "+name+": "+f); report.failures.push(name+": "+f); });
   }
   if(CMP){

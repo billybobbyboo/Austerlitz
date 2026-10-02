@@ -73,7 +73,7 @@ const stub={
    setMatrixAt(i,m){m.toArray(this.instanceMatrix.array,i*16)} getMatrixAt(i,m){m.fromArray(this.instanceMatrix.array,i*16)}
    setColorAt(){}},
  DirectionalLight:class extends Obj{constructor(c,i){super();this.color=new Col(c);this.intensity=i;
-   this.shadow={mapSize:{set(){}},camera:{},bias:0};this.target=new Obj()}},
+   this.shadow={mapSize:{x:2048,y:2048,set(a,b){this.x=a;this.y=b}},camera:{left:-1,right:1,top:1,bottom:-1,near:1,far:2,updateProjectionMatrix(){}},bias:0};this.target=new Obj()}},
  HemisphereLight:class extends Obj{constructor(a,b,i){super();this.intensity=i}},
  Fog:class{constructor(c,n,f){this.color=new Col(c);this.near=n;this.far=f}},
  PlaneGeometry:class extends Geo{constructor(w,h,a,b){super(((a||1)+1)*((b||1)+1))}},
@@ -452,6 +452,16 @@ try{
     if((k==="predawn"||k==="dusk") && L.hemi<0.5) throw new Error(k+" is too dark to read (hemi "+L.hemi+")");
   });
   console.log("atmosphere: cool air in every state, readable nights OK");
+
+  /* Stage 4B: the light is the computed sun's and the light table's. Each branch of the table rises in altitude to the day's
+     highest, every row names a preset, and the light is finite at every minute of the day */
+  ["am","pm"].forEach(b=>{ const R=LIGHT_BY_ALT[b];
+    R.forEach((r,i)=>{ if(!LIGHT[r[1]]) throw new Error("light table "+b+" row "+i+" names no preset ("+r[1]+")"); if(i&&r[0]<R[i-1][0]) throw new Error("light table "+b+" not in rising altitude"); });
+    if(Math.abs(R[R.length-1][0]-SUN_DAY.noonAlt)>1e-9) throw new Error("light table "+b+" does not end at the day's highest altitude"); });
+  for(let t=T_MIN;t<=T_MAX;t+=7){ const L=lightAt(t);
+    [L.i,L.hemi,L.fill,L.disc,L.dir.x,L.dir.y,L.dir.z,L.grade[4],L.grade[5]].forEach(v=>{ if(!isFinite(v)) throw new Error("light not finite at "+t); });
+    if(L.dir.y<=0) throw new Error("the light comes from below the horizon at "+t); }
+  console.log("light table: two branches to the day's highest sun, finite and from above at every minute OK");
 
   /* the armies are ranks of figures now, with national colours on the standards */
   const inf=units.sthilaire.block.userData, cav=units.nansouty.block.userData;

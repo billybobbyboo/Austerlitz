@@ -908,10 +908,11 @@ function coverNormalAtlas(){
    The standard material, with the ground's own colour: each drawn point is classified by coverClass's rule (the same tests,
    in the same order, on the same rasters: gClass below), then coloured as the palette colours that class (the colour of
    the class in COVER_COL, the elevation tint, the field pattern, the damp and trodden ground, the hollows' occlusion, the
-   frost and the hillshade: makePalette before 2F). The landscape is also lit in real time by the phase's sun, usually from
-   the south-east to the south-west, so its baked north-west hillshade is kept narrow (0.70-1.12, was 0.46-1.20): at full
-   range the two lights multiplied a slope facing away from both down to near-black (Stage 0's temporary lighting
-   correction, for Stage 4). The paper map is not sun-lit and keeps its full cartographic hillshade (0.66-1.12). The map
+   frost and the hillshade: makePalette before 2F). Since Stage 4B the landscape carries no baked hillshade (every point is
+   coloured as the flat ground, 0.994): it is lit by the computed sun, its altitude corrected to the display factor (app.js
+   applyLight), and a baked light from the north-west was a second light that contradicted it (docs/STAGE4_SPEC.md A.5; until
+   4B it was kept narrow, 0.70-1.12, Stage 0's temporary correction). The paper map is not sun-lit and keeps its full
+   cartographic hillshade (0.66-1.12). The map
    and the normal map sample the atlas cell of that class. uMode:
    0 the going layer (each triangle's colour and cell, as before 2F), 1 the natural ground, 2 the paper map. The pond radii
    below are coverClass's own; the self-test renders the classes (uDebug) and checks them against drawnCover and coverClass.
@@ -982,8 +983,9 @@ var GROUND_FRAG_MAIN=[
   "  float hollow=max(0.0,0.94-ao)*2.4, sh=vColor.r;",
   "  if(paper<0.5&&gCls!=3.0){ float frost=min(0.30,vColor.g*0.26+hollow*0.22+(gCls==1.0?0.08:0.0)+(gCls==2.0?0.06:0.0));",
   "    if(frost>0.01) bc+=(vec3(0.70,0.73,0.78)-bc)*frost; }",
-  "  bc*=(paper>0.5?(0.66+0.46*sh):(0.70+0.42*sh))*ao;",
-  "  if(paper<0.5){ float wc=(sh-0.55)*0.07; bc.r*=1.0+wc; bc.b*=1.0-wc; }",
+  "  float shL=paper>0.5?sh:0.70;",   /* Stage 4B: the landscape carries no baked hillshade, every point the flat ground's (0.70) */
+  "  bc*=(paper>0.5?(0.66+0.46*shL):(0.70+0.42*shL))*ao;",
+  "  if(paper<0.5){ float wc=(shL-0.55)*0.07; bc.r*=1.0+wc; bc.b*=1.0-wc; }",
   "  gCol=clamp(gLin(bc),0.0,1.0);",
   "  if(uVSOn>0.5){ vec2 q=floor((vWxz-uVSG.xy)/uVSG.zw+0.5); float vis=0.0;",   /* sampleVS: the nearest node of the analysis grid */
   "    if(q.x>=0.0&&q.y>=0.0&&q.x<uVSN.x&&q.y<uVSN.y) vis=texture2D(uVS,(q+0.5)/uVSN).x;",
@@ -1509,7 +1511,7 @@ function apronGeometry(){
     /* elevation from the model height: the drawn height over the drawn scale; on the flat paper map (Stage 2E) the drawn
        scale is 0, and the model height is read directly (a colour, not a drawn position) */
     var mid=s?(a[1]+b[1]+c[1])/3/s:height((a[0]+b[0]+c[0])/3,(a[2]+b[2]+c[2])/3);
-    var k=0.50+0.62*sh, e=Math.max(0,Math.min(1,(GEOREF.elevM(mid)-200)/123));
+    var k=0.50+0.62*(s?0.70:sh), e=Math.max(0,Math.min(1,(GEOREF.elevM(mid)-200)/123));   /* Stage 4B: no baked hillshade on the landscape's apron */
     var r=base.r*k*(0.88+0.24*e), g=base.g*k*(0.90+0.20*e), bb=base.b*k*(0.94+0.06*e);
     [a,b,c].forEach(function(q){
       P.push(q[0],q[1],q[2]); N.push(nx,ny,nz); U.push(q[0]/11,q[2]/11); C.push(r,g,bb); COV.push(0); GN.push(0,0,0,0);
