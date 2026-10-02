@@ -2,7 +2,7 @@
 
 ## 2026-10 · The spine data task: themes and tour on the day's moments (docs/STAGE3_SPEC.md §C.2, §C.3; owner decisions 52, 56, 59, 64-67); two Stage 3 leftovers
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,348,542 bytes, md5 `6b2cccd44138e95e6082c82b8b2d2f8a`**
+**Status: merged (#26). `austerlitz-command-map.html`: 1,348,542 bytes, md5 `6b2cccd44138e95e6082c82b8b2d2f8a`**
 (was 1,342,333 bytes, md5 `eb18a8ea…`, Stage 3E).
 - **A data task.** Four guarded declarations change, and no others: `ANALYSIS`, `TOUR`, `PHASES` (one timeline line moved) and
   `SOURCE_NOTE` (one sentence). `check:data`'s reference moves to this build: `archive/spine-6b2cccd4.html` (identical to the

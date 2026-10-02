@@ -142,6 +142,6 @@ battle with the fog receding and corps and army names drawn far, owner decisions
 Study / Watch / Clean, Landscape / Paper map / Landscape with counters, Layers, from `LABELS`; one key table `KEYS` and the "?"
 overlay; the key fixes; event glyphs and objective markers capped on screen) is merged (#25); Stage 3 is complete. The spine data
 task (themes and tour stops name their moments, `ANALYSIS.at`/`moments` and `TOUR.at`; owner decisions 52, 59, 64-67; one timeline
-line moved; decision 56's sentence in `SOURCE_NOTE`; ← → on a focused button no longer step the clock) is implemented, for
-review. The shadow toe
+line moved; decision 56's sentence in `SOURCE_NOTE`; ← → on a focused button no longer step the clock) is merged
+(#26). The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.
