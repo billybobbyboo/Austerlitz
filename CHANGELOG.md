@@ -1,8 +1,74 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 4 Part A: time and atmosphere, the specification (docs/STAGE4_SPEC.md)
+
+**Status: Part A, for review. No source file changes. `austerlitz-command-map.html` is unchanged: 1,348,542 bytes, md5
+`6b2cccd44138e95e6082c82b8b2d2f8a`; `check:baseline` does not move.**
+- A specification, its probes and their evidence: `docs/STAGE4_SPEC.md`; `tools/stage4/` (`ephem.js`, `sun.js`, `light-probe.js`,
+  `dark-probe.js`, `fog-probe.js`, `pace-probe.js`, `extras-probe.js`; not bundled); `docs/stage4-evidence/` (with a README).
+- Nothing implemented; no data, geography, chronology, order of battle or `OVERLAYS` changed (`check:data`: all 113 declarations
+  identical to `archive/spine-6b2cccd4.html`). The probes inject measurement code into the running page only.
+- The first commit records the spine data task as merged (#26) in `CLAUDE.md`, this file and `docs/STAGE3_SPEC.md`.
+
+**Before (fact).** `main` (18e014b, the spine data task merged as #26): `check:baseline` passed (md5 `6b2cccd4…`, 1,348,542 bytes);
+`npm test` all nine suites and the height guard; `check:data` all 113 identical; `check:chronology` 0 errors; `check:visual` all
+checks, 20 views, the self-test 126 of 126; `check:contrast` 4,223 text elements in 28 states, 0 below AA, 0 below 10.5 px.
+
+**Scope** (§0.2): the roadmap's Stage 4 line (the computed sun and continuous light replacing Stage 0's shadow toe and narrowed
+landscape hillshade; the valley fog; smoke; ice; the horizon; pacing), Stage 3D's fog recession (`fogShift`), Stage 3's deferred
+continuous follow, and what the records assign that the roadmap's line does not name: the terrain palette and appendix A's 3D colour
+literals (`docs/VISUAL_SPEC.md`; decision 28), and opportunity 4's arrows that draw on with the clock.
+
+**What the evidence says** (each a section of the specification; derived and measured, with the numbers there)
+- **The sun** (derived, astronomy, not a record): at 49.14 N 16.76 E on 2 December 1805 it rises at 07:45 and sets at 16:15 local
+  apparent time (07:34 and 16:05 mean time), south at 12:00 at 19.0 degrees. The presets show a disc before sunrise (phase 1) and
+  after sunset (phases 8 and 9), a midday sun 30.4 degrees up, an afternoon sun 30 degrees too far west.
+- **The display factor contradicts a true-altitude sun** (§0.3 item 3): at 08:00 the computed sun leaves 5.5% of the modelled ground
+  in cast shadow at 1x, 27.2% at 4x, 59.2% at 10.33x. A sun whose vertical is scaled by the factor gives the true ground's lit side
+  and shadows at every factor exactly (derived).
+- **The toe still matters at 4x** (against 2B's expectation): without it four of nine landscape views at 4x exceed the Stage 0
+  darkness limit (0.16-0.44% against 0.05%), two at 10.33x (up to 1.85%). Under the corrected sun three remain, mostly conifer
+  crowns in shade; a fill light opposite the sun brings the worst to 4 blocks (0.02%). The baked hillshade makes no measurable
+  difference under the corrected sun.
+- **The fog today** does almost nothing in the harness views (a mean of at most 6% over the ground) except at the fitted Overview,
+  which `fogShift` keeps clear (0.05 at the target; 0.49 without it). A haze computed in the true geometry and counted beyond the
+  focus keeps every subject clear and the Overview near today's look, with no shift.
+- **The model already has a fog**: the Command view's knowledge rule treats ground below 238.2 m as fogged while the phase's `mist`
+  exceeds 0.5 (to 08:45). The app's texts on the fog cite no source ("app narrative, unsourced"). Drawn at that top the valley fog
+  holds both of Soult's assault divisions (213 and 226 m) and leaves the Zuran and the plateau's columns above it; at 85% opacity it
+  whites out the figures, at 55% they show.
+- **Pacing**: the day plays in 84 s at 1x; the phase change's 2.6 s glide takes 58% of each 45-minute phase, and 12 of the 22
+  events after phase 0 start inside it. A continuous follow keeps every live event in the free rectangle in 83-88% of the day's
+  minutes (today 71-73%), with no floor clamp and no more drops than today's rule (largest 19).
+- **Smoke** is tied to the phase status, not to engagement: only 28% of the day's smoking formation-samples are named by a live
+  event; in the close and low views smoke covers 41-53% of the free rectangle. A depth pre-pass for soft particles costs about half
+  the world pass in software WebGL.
+- **Ice** exists already (the meres are an ice material; outlines schematic, decision 27); **the horizon** shows only in the low
+  views, the apron's edge 60-78 km out and mostly fogged; a ring of real distant relief would be a data task.
+
+**Recommendations** (§A.5, §B.3, §C.5, §D.3, §E.2, §F, §G.2) and **15 questions for the owner** (§J), each with its trade-off; the
+pull-request plan 4B (light), 4C (atmosphere and valley fog), 4D (pacing), 4E (smoke, ice, horizon, palette tables) (§I) and the
+test plan (§H).
+
+**Uncertain, kept separate**
+- Historical: the fog's depth and when the valley cleared are in no text of the app; its lifting at 08:45 is the app's narrative,
+  unsourced; the clock basis of the sources' hours is not established (apparent and mean time differ by 10.4 minutes); the moon on
+  the night is not computed (about 10 days old by the mean month, derived).
+- Implementation: the frame costs are software WebGL on one machine (the fog candidates' frame cost was within ±5% of today's, the noise of the measure, and the absolute times were not usable, §B.2); the environment map's regeneration under a
+  continuous light is not measured; touch and GPUs are not tried; the haze's and the fog's parameters are design values from one
+  probe each, not tuned.
+
+**Checks on this commit** (run on this tree, the build unchanged from the spine data task's; the only edit after they started is one table of `docs/STAGE4_SPEC.md`, §H.1)
+- `npm test`: all 9 suites pass, and the height guard.
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/spine-6b2cccd4.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:visual`: all checks passed, 20 views, the self-test 126 of 126; the slider and the 3E keys by real key presses.
+- `npm run check:contrast`: 4,223 text elements in 28 states, 0 below AA, 0 below 10.5 px.
+- `npm run check:baseline`: passes (md5 `6b2cccd4…`, 1,348,542 bytes); it does not move.
+
 ## 2026-10 · The spine data task: themes and tour on the day's moments (docs/STAGE3_SPEC.md §C.2, §C.3; owner decisions 52, 56, 59, 64-67); two Stage 3 leftovers
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,348,542 bytes, md5 `6b2cccd44138e95e6082c82b8b2d2f8a`**
+**Status: merged (#26). `austerlitz-command-map.html`: 1,348,542 bytes, md5 `6b2cccd44138e95e6082c82b8b2d2f8a`**
 (was 1,342,333 bytes, md5 `eb18a8ea…`, Stage 3E).
 - **A data task.** Four guarded declarations change, and no others: `ANALYSIS`, `TOUR`, `PHASES` (one timeline line moved) and
   `SOURCE_NOTE` (one sentence). `check:data`'s reference moves to this build: `archive/spine-6b2cccd4.html` (identical to the

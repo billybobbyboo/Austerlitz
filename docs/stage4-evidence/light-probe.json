@@ -1,0 +1,6343 @@
+{
+ "when": "2026-10-02T08:32:05.974Z",
+ "variants": [
+  {
+   "k": "A",
+   "dir": "preset",
+   "toe": true,
+   "hill": "narrow",
+   "note": "today"
+  },
+  {
+   "k": "B",
+   "dir": "preset",
+   "toe": false,
+   "hill": "narrow",
+   "note": "today, no toe"
+  },
+  {
+   "k": "C",
+   "dir": "true",
+   "toe": true,
+   "hill": "narrow",
+   "note": "computed sun, toe"
+  },
+  {
+   "k": "D",
+   "dir": "true",
+   "toe": false,
+   "hill": "narrow",
+   "note": "computed sun, no toe"
+  },
+  {
+   "k": "E",
+   "dir": "corrected",
+   "toe": false,
+   "hill": "narrow",
+   "note": "computed sun corrected to the factor, no toe"
+  },
+  {
+   "k": "F",
+   "dir": "corrected",
+   "toe": false,
+   "hill": "full",
+   "note": "E, full baked hillshade"
+  },
+  {
+   "k": "G",
+   "dir": "corrected",
+   "toe": false,
+   "hill": "none",
+   "note": "E, no baked hillshade"
+  }
+ ],
+ "views": {
+  "overview-field@1x": {
+   "case": "overview-field",
+   "state": {
+    "clock": 570,
+    "phase": 4,
+    "light": "morning",
+    "factor": 1,
+    "eye": [
+     -195,
+     95.11,
+     156
+    ],
+    "clearance": 94.234,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.7036,
+    "clearance": 94.234,
+    "eye": [
+     -195,
+     95.11,
+     156
+    ]
+   },
+   "dropLimit": 11,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 2.6,
+      "post": 0.2
+     },
+     "nearBlack": 0.0001,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 64.2,
+     "lum": {
+      "p1": 17,
+      "p5": 23,
+      "p50": 43,
+      "under25": 0.0518
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.43,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 0.9
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 1.8,
+      "post": 4.1
+     },
+     "nearBlack": 0.0007,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 61.8,
+     "lum": {
+      "p1": 16,
+      "p5": 20,
+      "p50": 41,
+      "under25": 0.0996
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.43,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 11.5
+     },
+     "frameMs": {
+      "world": 1.8,
+      "post": 0.2
+     },
+     "nearBlack": 0.0002,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 61.4,
+     "lum": {
+      "p1": 16,
+      "p5": 20,
+      "p50": 40,
+      "under25": 0.0725
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.5,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 1.2
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 11.5
+     },
+     "frameMs": {
+      "world": 1.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0024,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 58.3,
+     "lum": {
+      "p1": 15,
+      "p5": 17,
+      "p50": 36,
+      "under25": 0.2245
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.5,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 11.5
+     },
+     "frameMs": {
+      "world": 1.7,
+      "post": 0.1
+     },
+     "nearBlack": 0.0024,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 58.3,
+     "lum": {
+      "p1": 15,
+      "p5": 17,
+      "p50": 36,
+      "under25": 0.2245
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.5,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 0.8
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 11.5
+     },
+     "frameMs": {
+      "world": 8.5,
+      "post": 0.2
+     },
+     "nearBlack": 0.0029,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 58,
+     "lum": {
+      "p1": 14,
+      "p5": 17,
+      "p50": 36,
+      "under25": 0.2389
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.5,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 1.1
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 11.5
+     },
+     "frameMs": {
+      "world": 9.8,
+      "post": 0.2
+     },
+     "nearBlack": 0.0024,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 58.3,
+     "lum": {
+      "p1": 15,
+      "p5": 17,
+      "p50": 37,
+      "under25": 0.2239
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.5,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 0.8
+     }
+    }
+   ]
+  },
+  "close-sokolnitz@1x": {
+   "case": "close-sokolnitz",
+   "state": {
+    "clock": 500,
+    "phase": 2,
+    "light": "mist",
+    "factor": 1,
+    "eye": [
+     -100.86,
+     23.41,
+     93.02
+    ],
+    "clearance": 23.636,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.8978,
+    "clearance": 23.636,
+    "eye": [
+     -100.86,
+     23.41,
+     93.02
+    ]
+   },
+   "dropLimit": 18,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 1.7,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 76.5,
+     "lum": {
+      "p1": 20,
+      "p5": 33,
+      "p50": 70,
+      "under25": 0.0194
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 7.89,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 1.7,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 75.9,
+     "lum": {
+      "p1": 20,
+      "p5": 28,
+      "p50": 70,
+      "under25": 0.0307
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 7.89,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 4
+     },
+     "frameMs": {
+      "world": 1.7,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 75.3,
+     "lum": {
+      "p1": 20,
+      "p5": 31,
+      "p50": 68,
+      "under25": 0.0209
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 7.89,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 4
+     },
+     "frameMs": {
+      "world": 1.5,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 74.6,
+     "lum": {
+      "p1": 19,
+      "p5": 26,
+      "p50": 68,
+      "under25": 0.0413
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 7.89,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 4
+     },
+     "frameMs": {
+      "world": 2.4,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 74.6,
+     "lum": {
+      "p1": 19,
+      "p5": 26,
+      "p50": 68,
+      "under25": 0.0413
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 7.89,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 4
+     },
+     "frameMs": {
+      "world": 1.6,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 74.4,
+     "lum": {
+      "p1": 19,
+      "p5": 26,
+      "p50": 68,
+      "under25": 0.0427
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 7.89,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 4
+     },
+     "frameMs": {
+      "world": 1.8,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 74.7,
+     "lum": {
+      "p1": 19,
+      "p5": 26,
+      "p50": 69,
+      "under25": 0.0414
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 7.89,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 0.8
+     }
+    }
+   ]
+  },
+  "pratzen-low@1x": {
+   "case": "pratzen-low",
+   "state": {
+    "clock": 590,
+    "phase": 4,
+    "light": "morning",
+    "factor": 1,
+    "eye": [
+     -95.84,
+     21.84,
+     31.8
+    ],
+    "clearance": 21.81,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.8978,
+    "clearance": 21.81,
+    "eye": [
+     -95.84,
+     21.84,
+     31.8
+    ]
+   },
+   "dropLimit": 13,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 1.8,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 68.9,
+     "lum": {
+      "p1": 17,
+      "p5": 32,
+      "p50": 48,
+      "under25": 0.0259
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 8.76,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 25,
+      "ms": 0.8
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 2.8,
+      "post": 0.2
+     },
+     "nearBlack": 0.0001,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 67.4,
+     "lum": {
+      "p1": 17,
+      "p5": 26,
+      "p50": 47,
+      "under25": 0.0427
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 8.76,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 25,
+      "ms": 0.5
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 13.3
+     },
+     "frameMs": {
+      "world": 1.7,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 68.7,
+     "lum": {
+      "p1": 17,
+      "p5": 30,
+      "p50": 48,
+      "under25": 0.0288
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 8.76,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 25,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 13.3
+     },
+     "frameMs": {
+      "world": 2.9,
+      "post": 0.1
+     },
+     "nearBlack": 0.0008,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 66.8,
+     "lum": {
+      "p1": 16,
+      "p5": 23,
+      "p50": 47,
+      "under25": 0.0604
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 8.76,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 25,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 13.3
+     },
+     "frameMs": {
+      "world": 2,
+      "post": 0.3
+     },
+     "nearBlack": 0.0008,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 66.8,
+     "lum": {
+      "p1": 16,
+      "p5": 23,
+      "p50": 47,
+      "under25": 0.0604
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 8.76,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 25,
+      "ms": 0.5
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 13.3
+     },
+     "frameMs": {
+      "world": 1.4,
+      "post": 0.2
+     },
+     "nearBlack": 0.0009,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 66.5,
+     "lum": {
+      "p1": 16,
+      "p5": 23,
+      "p50": 46,
+      "under25": 0.0617
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 8.76,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 25,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 13.3
+     },
+     "frameMs": {
+      "world": 2,
+      "post": 0.2
+     },
+     "nearBlack": 0.0009,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 66.8,
+     "lum": {
+      "p1": 16,
+      "p5": 23,
+      "p50": 47,
+      "under25": 0.0615
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 8.76,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 25,
+      "ms": 0.6
+     }
+    }
+   ]
+  },
+  "ph8-overview-study@1x": {
+   "case": "ph8-overview-study",
+   "state": {
+    "clock": 880,
+    "phase": 8,
+    "light": "late",
+    "factor": 1,
+    "eye": [
+     -38.76,
+     532.2,
+     65.93
+    ],
+    "clearance": 532.62,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.7036,
+    "clearance": 532.62,
+    "eye": [
+     -38.76,
+     532.2,
+     65.93
+    ]
+   },
+   "dropLimit": 7,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 2.2,
+      "post": 0
+     },
+     "nearBlack": 0.0003,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 35.1,
+     "lum": {
+      "p1": 16,
+      "p5": 23,
+      "p50": 33,
+      "under25": 0.0647
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.69,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.3
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 1.7,
+      "post": 0.2
+     },
+     "nearBlack": 0.0025,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 29,
+     "lum": {
+      "p1": 14,
+      "p5": 17,
+      "p50": 27,
+      "under25": 0.3399
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.7,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.3
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 10.6
+     },
+     "frameMs": {
+      "world": 1.5,
+      "post": 0.1
+     },
+     "nearBlack": 0.0001,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 36,
+     "lum": {
+      "p1": 16,
+      "p5": 25,
+      "p50": 34,
+      "under25": 0.0483
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.69,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.8
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 10.6
+     },
+     "frameMs": {
+      "world": 1.5,
+      "post": 0.2
+     },
+     "nearBlack": 0.0014,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 30.3,
+     "lum": {
+      "p1": 15,
+      "p5": 18,
+      "p50": 28,
+      "under25": 0.2627
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.7,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.4
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 10.6
+     },
+     "frameMs": {
+      "world": 1.6,
+      "post": 0
+     },
+     "nearBlack": 0.0014,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 30.3,
+     "lum": {
+      "p1": 15,
+      "p5": 18,
+      "p50": 28,
+      "under25": 0.2627
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.7,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.9
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 10.6
+     },
+     "frameMs": {
+      "world": 1.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0015,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 30.1,
+     "lum": {
+      "p1": 15,
+      "p5": 18,
+      "p50": 28,
+      "under25": 0.2729
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.7,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.4
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 10.6
+     },
+     "frameMs": {
+      "world": 2,
+      "post": 0.1
+     },
+     "nearBlack": 0.0014,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 30.3,
+     "lum": {
+      "p1": 15,
+      "p5": 18,
+      "p50": 28,
+      "under25": 0.2624
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.7,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.4
+     }
+    }
+   ]
+  },
+  "overview-field@4x": {
+   "case": "overview-field",
+   "state": {
+    "clock": 570,
+    "phase": 4,
+    "light": "morning",
+    "factor": 4,
+    "eye": [
+     -195,
+     94.11,
+     156
+    ],
+    "clearance": 94.211,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.7036,
+    "clearance": 94.211,
+    "eye": [
+     -195,
+     94.11,
+     156
+    ]
+   },
+   "dropLimit": 11,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 2371.7,
+      "post": 0.1
+     },
+     "nearBlack": 0.0016,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 63.8,
+     "lum": {
+      "p1": 16,
+      "p5": 20,
+      "p50": 44,
+      "under25": 0.063
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.55,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 6.4,
+      "post": 0.2
+     },
+     "nearBlack": 0.0058,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 61.4,
+     "lum": {
+      "p1": 15,
+      "p5": 19,
+      "p50": 42,
+      "under25": 0.113
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.56,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 11.5
+     },
+     "frameMs": {
+      "world": 7.4,
+      "post": 0.1
+     },
+     "nearBlack": 0.0025,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 60.8,
+     "lum": {
+      "p1": 16,
+      "p5": 19,
+      "p50": 41,
+      "under25": 0.0875
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.61,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 0.9
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 11.5
+     },
+     "frameMs": {
+      "world": 8.4,
+      "post": 0.1
+     },
+     "nearBlack": 0.0116,
+     "solidBlack": 0.00013,
+     "solidBlocks": 2,
+     "meanLum": 57.6,
+     "lum": {
+      "p1": 13,
+      "p5": 17,
+      "p50": 37,
+      "under25": 0.247
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.61,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 0.8
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 39.3
+     },
+     "frameMs": {
+      "world": 12,
+      "post": 0.2
+     },
+     "nearBlack": 0.0033,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 68.7,
+     "lum": {
+      "p1": 16,
+      "p5": 20,
+      "p50": 52,
+      "under25": 0.065
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 39.3
+     },
+     "frameMs": {
+      "world": 6.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0034,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 68.2,
+     "lum": {
+      "p1": 16,
+      "p5": 20,
+      "p50": 51,
+      "under25": 0.0656
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 39.3
+     },
+     "frameMs": {
+      "world": 10.4,
+      "post": 0.1
+     },
+     "nearBlack": 0.0032,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 68.8,
+     "lum": {
+      "p1": 16,
+      "p5": 20,
+      "p50": 52,
+      "under25": 0.0649
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 1.2
+     }
+    }
+   ]
+  },
+  "overview-plan@4x": {
+   "case": "overview-plan",
+   "state": {
+    "clock": 570,
+    "phase": 4,
+    "light": "morning",
+    "factor": 4,
+    "eye": [
+     -38.83,
+     423.18,
+     54.16
+    ],
+    "clearance": 421.956,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.8978,
+    "clearance": 421.956,
+    "eye": [
+     -38.83,
+     423.18,
+     54.16
+    ]
+   },
+   "dropLimit": 12,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 7.6,
+      "post": 0.1
+     },
+     "nearBlack": 0.0014,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 36.4,
+     "lum": {
+      "p1": 16,
+      "p5": 27,
+      "p50": 35,
+      "under25": 0.034
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.42,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.3
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 5.9,
+      "post": 0.1
+     },
+     "nearBlack": 0.0056,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 31,
+     "lum": {
+      "p1": 15,
+      "p5": 20,
+      "p50": 29,
+      "under25": 0.1517
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.42,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.5
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 11.5
+     },
+     "frameMs": {
+      "world": 8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0025,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 32.6,
+     "lum": {
+      "p1": 16,
+      "p5": 22,
+      "p50": 31,
+      "under25": 0.0897
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.5,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.3
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 11.5
+     },
+     "frameMs": {
+      "world": 6.1,
+      "post": 0.1
+     },
+     "nearBlack": 0.0127,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 26,
+     "lum": {
+      "p1": 12,
+      "p5": 16,
+      "p50": 24,
+      "under25": 0.5363
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.5,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.3
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 39.3
+     },
+     "frameMs": {
+      "world": 6.5,
+      "post": 0
+     },
+     "nearBlack": 0.002,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 40.8,
+     "lum": {
+      "p1": 17,
+      "p5": 30,
+      "p50": 39,
+      "under25": 0.031
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.19,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.3
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 39.3
+     },
+     "frameMs": {
+      "world": 8.4,
+      "post": 0.1
+     },
+     "nearBlack": 0.0021,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 40.3,
+     "lum": {
+      "p1": 16,
+      "p5": 29,
+      "p50": 39,
+      "under25": 0.0316
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.19,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.3
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 39.3
+     },
+     "frameMs": {
+      "world": 5.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.002,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 40.9,
+     "lum": {
+      "p1": 17,
+      "p5": 30,
+      "p50": 39,
+      "under25": 0.031
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.19,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.5
+     }
+    }
+   ]
+  },
+  "close-sokolnitz@4x": {
+   "case": "close-sokolnitz",
+   "state": {
+    "clock": 500,
+    "phase": 2,
+    "light": "mist",
+    "factor": 4,
+    "eye": [
+     -100.86,
+     22.69,
+     93.02
+    ],
+    "clearance": 23.58,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.8978,
+    "clearance": 23.58,
+    "eye": [
+     -100.86,
+     22.69,
+     93.02
+    ]
+   },
+   "dropLimit": 18,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 5.7,
+      "post": 0.1
+     },
+     "nearBlack": 0.0009,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 75.9,
+     "lum": {
+      "p1": 20,
+      "p5": 34,
+      "p50": 69,
+      "under25": 0.0218
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 8.01,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 6.2,
+      "post": 0.1
+     },
+     "nearBlack": 0.0032,
+     "solidBlack": 0.0001,
+     "solidBlocks": 2,
+     "meanLum": 75.4,
+     "lum": {
+      "p1": 18,
+      "p5": 28,
+      "p50": 69,
+      "under25": 0.0343
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 8.01,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 4
+     },
+     "frameMs": {
+      "world": 6.6,
+      "post": 0.1
+     },
+     "nearBlack": 0.0011,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 74.4,
+     "lum": {
+      "p1": 20,
+      "p5": 33,
+      "p50": 67,
+      "under25": 0.0239
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 4
+     },
+     "frameMs": {
+      "world": 7.7,
+      "post": 0.2
+     },
+     "nearBlack": 0.0041,
+     "solidBlack": 0.0001,
+     "solidBlocks": 2,
+     "meanLum": 73.7,
+     "lum": {
+      "p1": 17,
+      "p5": 26,
+      "p50": 67,
+      "under25": 0.038
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.9
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 15.5
+     },
+     "frameMs": {
+      "world": 7.3,
+      "post": 0.1
+     },
+     "nearBlack": 0.0034,
+     "solidBlack": 0.0001,
+     "solidBlocks": 2,
+     "meanLum": 76.3,
+     "lum": {
+      "p1": 17,
+      "p5": 28,
+      "p50": 70,
+      "under25": 0.0349
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 15.5
+     },
+     "frameMs": {
+      "world": 6.3,
+      "post": 0.1
+     },
+     "nearBlack": 0.0035,
+     "solidBlack": 0.0001,
+     "solidBlocks": 2,
+     "meanLum": 76,
+     "lum": {
+      "p1": 17,
+      "p5": 28,
+      "p50": 70,
+      "under25": 0.0356
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.5
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 15.5
+     },
+     "frameMs": {
+      "world": 5.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0035,
+     "solidBlack": 0.0001,
+     "solidBlocks": 2,
+     "meanLum": 76.4,
+     "lum": {
+      "p1": 18,
+      "p5": 28,
+      "p50": 70,
+      "under25": 0.0344
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.6
+     }
+    }
+   ]
+  },
+  "pratzen-low@4x": {
+   "case": "pratzen-low",
+   "state": {
+    "clock": 590,
+    "phase": 4,
+    "light": "morning",
+    "factor": 4,
+    "eye": [
+     -95.84,
+     21.93,
+     31.8
+    ],
+    "clearance": 21.801,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.8978,
+    "clearance": 21.801,
+    "eye": [
+     -95.84,
+     21.93,
+     31.8
+    ]
+   },
+   "dropLimit": 13,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 6.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0112,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 73.3,
+     "lum": {
+      "p1": 13,
+      "p5": 21,
+      "p50": 54,
+      "under25": 0.0733
+     },
+     "contrast": {
+      "texts": 23,
+      "min": 12.11,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 23,
+      "ms": 0.5
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 5.9,
+      "post": 0.1
+     },
+     "nearBlack": 0.0316,
+     "solidBlack": 0.00257,
+     "solidBlocks": 52,
+     "meanLum": 71.5,
+     "lum": {
+      "p1": 8,
+      "p5": 16,
+      "p50": 53,
+      "under25": 0.1201
+     },
+     "contrast": {
+      "texts": 23,
+      "min": 12.11,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 23,
+      "ms": 0.9
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 13.3
+     },
+     "frameMs": {
+      "world": 9.4,
+      "post": 0.1
+     },
+     "nearBlack": 0.0142,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 72.6,
+     "lum": {
+      "p1": 12,
+      "p5": 19,
+      "p50": 53,
+      "under25": 0.0859
+     },
+     "contrast": {
+      "texts": 23,
+      "min": 12.11,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 23,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 13.3
+     },
+     "frameMs": {
+      "world": 6,
+      "post": 0.1
+     },
+     "nearBlack": 0.0397,
+     "solidBlack": 0.00475,
+     "solidBlocks": 96,
+     "meanLum": 70.4,
+     "lum": {
+      "p1": 7,
+      "p5": 15,
+      "p50": 53,
+      "under25": 0.1515
+     },
+     "contrast": {
+      "texts": 23,
+      "min": 12.11,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 23,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 43.4
+     },
+     "frameMs": {
+      "world": 8.2,
+      "post": 0.3
+     },
+     "nearBlack": 0.0204,
+     "solidBlack": 0.00109,
+     "solidBlocks": 22,
+     "meanLum": 76.3,
+     "lum": {
+      "p1": 10,
+      "p5": 19,
+      "p50": 59,
+      "under25": 0.0826
+     },
+     "contrast": {
+      "texts": 23,
+      "min": 12.11,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 23,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 43.4
+     },
+     "frameMs": {
+      "world": 5.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0205,
+     "solidBlack": 0.00099,
+     "solidBlocks": 20,
+     "meanLum": 76.1,
+     "lum": {
+      "p1": 10,
+      "p5": 19,
+      "p50": 59,
+      "under25": 0.0822
+     },
+     "contrast": {
+      "texts": 23,
+      "min": 12.11,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 23,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 43.4
+     },
+     "frameMs": {
+      "world": 5.3,
+      "post": 0.1
+     },
+     "nearBlack": 0.0206,
+     "solidBlack": 0.00124,
+     "solidBlocks": 25,
+     "meanLum": 76.1,
+     "lum": {
+      "p1": 10,
+      "p5": 19,
+      "p50": 59,
+      "under25": 0.0839
+     },
+     "contrast": {
+      "texts": 23,
+      "min": 12.11,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 23,
+      "ms": 0.7
+     }
+    }
+   ]
+  },
+  "selected-formation@4x": {
+   "case": "selected-formation",
+   "state": {
+    "clock": 570,
+    "phase": 4,
+    "light": "morning",
+    "factor": 4,
+    "eye": [
+     -75.79,
+     68.19,
+     66.65
+    ],
+    "clearance": 69.005,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.7036,
+    "clearance": 69.005,
+    "eye": [
+     -75.79,
+     68.19,
+     66.65
+    ]
+   },
+   "dropLimit": 4,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 1165.3,
+      "post": 0.1
+     },
+     "nearBlack": 0.0131,
+     "solidBlack": 0.00006,
+     "solidBlocks": 1,
+     "meanLum": 40.1,
+     "lum": {
+      "p1": 12,
+      "p5": 17,
+      "p50": 35,
+      "under25": 0.1025
+     },
+     "contrast": {
+      "texts": 24,
+      "min": 7.91,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 24,
+      "ms": 0.9
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 9.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0387,
+     "solidBlack": 0.0044,
+     "solidBlocks": 69,
+     "meanLum": 35.2,
+     "lum": {
+      "p1": 8,
+      "p5": 14,
+      "p50": 29,
+      "under25": 0.2731
+     },
+     "contrast": {
+      "texts": 24,
+      "min": 7.91,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 24,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 11.5
+     },
+     "frameMs": {
+      "world": 6.9,
+      "post": 0.1
+     },
+     "nearBlack": 0.0275,
+     "solidBlack": 0.00013,
+     "solidBlocks": 2,
+     "meanLum": 36.2,
+     "lum": {
+      "p1": 9,
+      "p5": 15,
+      "p50": 31,
+      "under25": 0.2118
+     },
+     "contrast": {
+      "texts": 24,
+      "min": 8.01,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 24,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 11.5
+     },
+     "frameMs": {
+      "world": 5.7,
+      "post": 0.1
+     },
+     "nearBlack": 0.0946,
+     "solidBlack": 0.01058,
+     "solidBlocks": 166,
+     "meanLum": 30.5,
+     "lum": {
+      "p1": 6,
+      "p5": 11,
+      "p50": 24,
+      "under25": 0.5133
+     },
+     "contrast": {
+      "texts": 24,
+      "min": 8.01,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 24,
+      "ms": 1.1
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 39.3
+     },
+     "frameMs": {
+      "world": 9.8,
+      "post": 0.2
+     },
+     "nearBlack": 0.0144,
+     "solidBlack": 0.00083,
+     "solidBlocks": 13,
+     "meanLum": 43.7,
+     "lum": {
+      "p1": 12,
+      "p5": 18,
+      "p50": 39,
+      "under25": 0.087
+     },
+     "contrast": {
+      "texts": 24,
+      "min": 7.66,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 24,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 39.3
+     },
+     "frameMs": {
+      "world": 10.4,
+      "post": 0.2
+     },
+     "nearBlack": 0.0147,
+     "solidBlack": 0.00096,
+     "solidBlocks": 15,
+     "meanLum": 43,
+     "lum": {
+      "p1": 11,
+      "p5": 17,
+      "p50": 38,
+      "under25": 0.0897
+     },
+     "contrast": {
+      "texts": 24,
+      "min": 7.66,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 24,
+      "ms": 0.8
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 39.3
+     },
+     "frameMs": {
+      "world": 9,
+      "post": 0.1
+     },
+     "nearBlack": 0.015,
+     "solidBlack": 0.00115,
+     "solidBlocks": 18,
+     "meanLum": 43.9,
+     "lum": {
+      "p1": 11,
+      "p5": 17,
+      "p50": 40,
+      "under25": 0.0884
+     },
+     "contrast": {
+      "texts": 24,
+      "min": 7.66,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 24,
+      "ms": 0.6
+     }
+    }
+   ]
+  },
+  "watch-selected@4x": {
+   "case": "watch-selected",
+   "state": {
+    "clock": 585,
+    "phase": 4,
+    "light": "morning",
+    "factor": 4,
+    "eye": [
+     -72.99,
+     65.08,
+     63.04
+    ],
+    "clearance": 66.194,
+    "unobstructed": 0.8796,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.8796,
+    "clearance": 66.194,
+    "eye": [
+     -72.99,
+     65.08,
+     63.04
+    ]
+   },
+   "dropLimit": 8,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 7.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0124,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 39.5,
+     "lum": {
+      "p1": 13,
+      "p5": 18,
+      "p50": 35,
+      "under25": 0.0957
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 7.93,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 25,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 9.6,
+      "post": 0.2
+     },
+     "nearBlack": 0.0379,
+     "solidBlack": 0.00406,
+     "solidBlocks": 80,
+     "meanLum": 34.5,
+     "lum": {
+      "p1": 8,
+      "p5": 14,
+      "p50": 29,
+      "under25": 0.2723
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 7.93,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 25,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 148.1,
+      "alt": 12.9,
+      "drawnAlt": 12.9
+     },
+     "frameMs": {
+      "world": 8.6,
+      "post": 0.4
+     },
+     "nearBlack": 0.0223,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 36.3,
+     "lum": {
+      "p1": 10,
+      "p5": 16,
+      "p50": 32,
+      "under25": 0.175
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 8.07,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 25,
+      "ms": 0.5
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 148.1,
+      "alt": 12.9,
+      "drawnAlt": 12.9
+     },
+     "frameMs": {
+      "world": 5.7,
+      "post": 0.1
+     },
+     "nearBlack": 0.0757,
+     "solidBlack": 0.00994,
+     "solidBlocks": 196,
+     "meanLum": 30.7,
+     "lum": {
+      "p1": 6,
+      "p5": 12,
+      "p50": 25,
+      "under25": 0.4771
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 8.07,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 25,
+      "ms": 0.9
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 148.1,
+      "alt": 12.9,
+      "drawnAlt": 42.5
+     },
+     "frameMs": {
+      "world": 8.5,
+      "post": 0.2
+     },
+     "nearBlack": 0.0117,
+     "solidBlack": 0.00025,
+     "solidBlocks": 5,
+     "meanLum": 44.4,
+     "lum": {
+      "p1": 13,
+      "p5": 20,
+      "p50": 40,
+      "under25": 0.0721
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 7.67,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 25,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 148.1,
+      "alt": 12.9,
+      "drawnAlt": 42.5
+     },
+     "frameMs": {
+      "world": 6.2,
+      "post": 0.1
+     },
+     "nearBlack": 0.0121,
+     "solidBlack": 0.0003,
+     "solidBlocks": 6,
+     "meanLum": 43.7,
+     "lum": {
+      "p1": 13,
+      "p5": 20,
+      "p50": 39,
+      "under25": 0.0737
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 7.67,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 25,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 148.1,
+      "alt": 12.9,
+      "drawnAlt": 42.5
+     },
+     "frameMs": {
+      "world": 9.5,
+      "post": 0.1
+     },
+     "nearBlack": 0.012,
+     "solidBlack": 0.00036,
+     "solidBlocks": 7,
+     "meanLum": 44.6,
+     "lum": {
+      "p1": 13,
+      "p5": 19,
+      "p50": 40,
+      "under25": 0.074
+     },
+     "contrast": {
+      "texts": 25,
+      "min": 7.67,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 25,
+      "ms": 0.8
+     }
+    }
+   ]
+  },
+  "hybrid-dimmed@4x": {
+   "case": "hybrid-dimmed",
+   "state": {
+    "clock": 600,
+    "phase": 4,
+    "light": "morning",
+    "factor": 4,
+    "eye": [
+     -94.17,
+     56.99,
+     71.88
+    ],
+    "clearance": 57.509,
+    "unobstructed": 0.8818,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.8818,
+    "clearance": 57.509,
+    "eye": [
+     -94.17,
+     56.99,
+     71.88
+    ]
+   },
+   "dropLimit": 13,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 1084.7,
+      "post": 0.1
+     },
+     "nearBlack": 0.0065,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 42.6,
+     "lum": {
+      "p1": 15,
+      "p5": 24,
+      "p50": 37,
+      "under25": 0.0542
+     },
+     "contrast": {
+      "texts": 78,
+      "min": 6.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 32,
+      "ms": 0.9
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 8.7,
+      "post": 0.1
+     },
+     "nearBlack": 0.0215,
+     "solidBlack": 0.00162,
+     "solidBlocks": 32,
+     "meanLum": 38.4,
+     "lum": {
+      "p1": 11,
+      "p5": 17,
+      "p50": 33,
+      "under25": 0.1398
+     },
+     "contrast": {
+      "texts": 78,
+      "min": 6.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 32,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 151.4,
+      "alt": 14.1,
+      "drawnAlt": 14.1
+     },
+     "frameMs": {
+      "world": 6.3,
+      "post": 0.1
+     },
+     "nearBlack": 0.0092,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 40.4,
+     "lum": {
+      "p1": 13,
+      "p5": 21,
+      "p50": 35,
+      "under25": 0.0778
+     },
+     "contrast": {
+      "texts": 78,
+      "min": 6.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 32,
+      "ms": 1.7
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 151.4,
+      "alt": 14.1,
+      "drawnAlt": 14.1
+     },
+     "frameMs": {
+      "world": 9.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0326,
+     "solidBlack": 0.00344,
+     "solidBlocks": 68,
+     "meanLum": 35.4,
+     "lum": {
+      "p1": 9,
+      "p5": 15,
+      "p50": 29,
+      "under25": 0.2548
+     },
+     "contrast": {
+      "texts": 78,
+      "min": 6.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 32,
+      "ms": 1.4
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 151.4,
+      "alt": 14.1,
+      "drawnAlt": 45.2
+     },
+     "frameMs": {
+      "world": 9.9,
+      "post": 0.1
+     },
+     "nearBlack": 0.0079,
+     "solidBlack": 0.00015,
+     "solidBlocks": 3,
+     "meanLum": 48.5,
+     "lum": {
+      "p1": 14,
+      "p5": 25,
+      "p50": 44,
+      "under25": 0.0467
+     },
+     "contrast": {
+      "texts": 78,
+      "min": 6.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 32,
+      "ms": 0.9
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 151.4,
+      "alt": 14.1,
+      "drawnAlt": 45.2
+     },
+     "frameMs": {
+      "world": 7,
+      "post": 0.1
+     },
+     "nearBlack": 0.0083,
+     "solidBlack": 0.00015,
+     "solidBlocks": 3,
+     "meanLum": 47.9,
+     "lum": {
+      "p1": 14,
+      "p5": 25,
+      "p50": 44,
+      "under25": 0.047
+     },
+     "contrast": {
+      "texts": 78,
+      "min": 6.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 32,
+      "ms": 0.8
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 151.4,
+      "alt": 14.1,
+      "drawnAlt": 45.2
+     },
+     "frameMs": {
+      "world": 5.9,
+      "post": 0.1
+     },
+     "nearBlack": 0.0079,
+     "solidBlack": 0.0001,
+     "solidBlocks": 2,
+     "meanLum": 48.7,
+     "lum": {
+      "p1": 14,
+      "p5": 25,
+      "p50": 45,
+      "under25": 0.0476
+     },
+     "contrast": {
+      "texts": 78,
+      "min": 6.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 32,
+      "ms": 1
+     }
+    }
+   ]
+  },
+  "ph8-overview-study@4x": {
+   "case": "ph8-overview-study",
+   "state": {
+    "clock": 880,
+    "phase": 8,
+    "light": "late",
+    "factor": 4,
+    "eye": [
+     -38.81,
+     533.15,
+     66.16
+    ],
+    "clearance": 532.138,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.7036,
+    "clearance": 532.138,
+    "eye": [
+     -38.81,
+     533.15,
+     66.16
+    ]
+   },
+   "dropLimit": 7,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 1075.4,
+      "post": 0.6
+     },
+     "nearBlack": 0.0001,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 35.4,
+     "lum": {
+      "p1": 16,
+      "p5": 24,
+      "p50": 34,
+      "under25": 0.0551
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.56,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 8.9,
+      "post": 0.1
+     },
+     "nearBlack": 0.0005,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 29.5,
+     "lum": {
+      "p1": 15,
+      "p5": 17,
+      "p50": 28,
+      "under25": 0.2813
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.56,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.4
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 10.6
+     },
+     "frameMs": {
+      "world": 6.1,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 36.4,
+     "lum": {
+      "p1": 16,
+      "p5": 26,
+      "p50": 35,
+      "under25": 0.0426
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.57,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.5
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 10.6
+     },
+     "frameMs": {
+      "world": 7.4,
+      "post": 0.2
+     },
+     "nearBlack": 0.0002,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 30.9,
+     "lum": {
+      "p1": 16,
+      "p5": 19,
+      "p50": 29,
+      "under25": 0.2051
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.57,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.4
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 36.7
+     },
+     "frameMs": {
+      "world": 11.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0001,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 40.3,
+     "lum": {
+      "p1": 17,
+      "p5": 28,
+      "p50": 39,
+      "under25": 0.0348
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.55,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.4
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 36.7
+     },
+     "frameMs": {
+      "world": 13.2,
+      "post": 0.1
+     },
+     "nearBlack": 0.0001,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 40,
+     "lum": {
+      "p1": 17,
+      "p5": 28,
+      "p50": 39,
+      "under25": 0.0352
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.55,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 36.7
+     },
+     "frameMs": {
+      "world": 9.6,
+      "post": 0.1
+     },
+     "nearBlack": 0.0001,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 40.3,
+     "lum": {
+      "p1": 17,
+      "p5": 28,
+      "p50": 39,
+      "under25": 0.0347
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.55,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.5
+     }
+    }
+   ]
+  },
+  "ph8-overview-watch@4x": {
+   "case": "ph8-overview-watch",
+   "state": {
+    "clock": 880,
+    "phase": 8,
+    "light": "late",
+    "factor": 4,
+    "eye": [
+     -38.83,
+     423.18,
+     54.16
+    ],
+    "clearance": 422.396,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.8978,
+    "clearance": 422.396,
+    "eye": [
+     -38.83,
+     423.18,
+     54.16
+    ]
+   },
+   "dropLimit": 7,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 8.5,
+      "post": 0.2
+     },
+     "nearBlack": 0.0001,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 35.4,
+     "lum": {
+      "p1": 16,
+      "p5": 25,
+      "p50": 34,
+      "under25": 0.0479
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.62,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.3
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 8.6,
+      "post": 0.1
+     },
+     "nearBlack": 0.0007,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 29.6,
+     "lum": {
+      "p1": 15,
+      "p5": 18,
+      "p50": 27,
+      "under25": 0.2961
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.62,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.3
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 10.6
+     },
+     "frameMs": {
+      "world": 6.6,
+      "post": 0.1
+     },
+     "nearBlack": 0.0001,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 36.4,
+     "lum": {
+      "p1": 17,
+      "p5": 26,
+      "p50": 35,
+      "under25": 0.0371
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.62,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.3
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 10.6
+     },
+     "frameMs": {
+      "world": 5.5,
+      "post": 0.1
+     },
+     "nearBlack": 0.0003,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 31,
+     "lum": {
+      "p1": 16,
+      "p5": 19,
+      "p50": 29,
+      "under25": 0.2135
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.62,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.4
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 36.7
+     },
+     "frameMs": {
+      "world": 6.6,
+      "post": 0.2
+     },
+     "nearBlack": 0.0001,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 40.2,
+     "lum": {
+      "p1": 17,
+      "p5": 28,
+      "p50": 38,
+      "under25": 0.0295
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.55,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.5
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 36.7
+     },
+     "frameMs": {
+      "world": 8.2,
+      "post": 0.1
+     },
+     "nearBlack": 0.0001,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 39.9,
+     "lum": {
+      "p1": 17,
+      "p5": 28,
+      "p50": 38,
+      "under25": 0.0302
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.55,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.4
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 36.7
+     },
+     "frameMs": {
+      "world": 11.2,
+      "post": 0.1
+     },
+     "nearBlack": 0.0001,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 40.3,
+     "lum": {
+      "p1": 17,
+      "p5": 28,
+      "p50": 38,
+      "under25": 0.0294
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.55,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.2
+     }
+    }
+   ]
+  },
+  "overview-field@10.33x": {
+   "case": "overview-field",
+   "state": {
+    "clock": 570,
+    "phase": 4,
+    "light": "morning",
+    "factor": 10.33,
+    "eye": [
+     -195,
+     92,
+     156
+    ],
+    "clearance": 94.162,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.7036,
+    "clearance": 94.162,
+    "eye": [
+     -195,
+     92,
+     156
+    ]
+   },
+   "dropLimit": 11,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 2824.3,
+      "post": 0.1
+     },
+     "nearBlack": 0.0022,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 63.5,
+     "lum": {
+      "p1": 16,
+      "p5": 20,
+      "p50": 44,
+      "under25": 0.0691
+     },
+     "contrast": {
+      "texts": 40,
+      "min": 8.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 40,
+      "ms": 1.1
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 7.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0093,
+     "solidBlack": 0.00051,
+     "solidBlocks": 8,
+     "meanLum": 61,
+     "lum": {
+      "p1": 14,
+      "p5": 18,
+      "p50": 42,
+      "under25": 0.13
+     },
+     "contrast": {
+      "texts": 40,
+      "min": 8.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 40,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 11.5
+     },
+     "frameMs": {
+      "world": 6.3,
+      "post": 0.1
+     },
+     "nearBlack": 0.0045,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 60.6,
+     "lum": {
+      "p1": 15,
+      "p5": 19,
+      "p50": 41,
+      "under25": 0.0966
+     },
+     "contrast": {
+      "texts": 40,
+      "min": 8.57,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 40,
+      "ms": 0.8
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 11.5
+     },
+     "frameMs": {
+      "world": 7.1,
+      "post": 0.1
+     },
+     "nearBlack": 0.0202,
+     "solidBlack": 0.00076,
+     "solidBlocks": 12,
+     "meanLum": 57.5,
+     "lum": {
+      "p1": 11,
+      "p5": 16,
+      "p50": 38,
+      "under25": 0.2499
+     },
+     "contrast": {
+      "texts": 40,
+      "min": 8.57,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 40,
+      "ms": 0.8
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 64.6
+     },
+     "frameMs": {
+      "world": 6.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0015,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 73.3,
+     "lum": {
+      "p1": 17,
+      "p5": 22,
+      "p50": 59,
+      "under25": 0.0593
+     },
+     "contrast": {
+      "texts": 40,
+      "min": 8.1,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 40,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 64.6
+     },
+     "frameMs": {
+      "world": 8.6,
+      "post": 0.3
+     },
+     "nearBlack": 0.0019,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 72.7,
+     "lum": {
+      "p1": 16,
+      "p5": 21,
+      "p50": 58,
+      "under25": 0.0627
+     },
+     "contrast": {
+      "texts": 40,
+      "min": 8.1,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 40,
+      "ms": 1.6
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 144.8,
+      "alt": 11.5,
+      "drawnAlt": 64.6
+     },
+     "frameMs": {
+      "world": 10.7,
+      "post": 0.2
+     },
+     "nearBlack": 0.0015,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 73.6,
+     "lum": {
+      "p1": 17,
+      "p5": 22,
+      "p50": 59,
+      "under25": 0.0573
+     },
+     "contrast": {
+      "texts": 40,
+      "min": 8.1,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 40,
+      "ms": 0.7
+     }
+    }
+   ]
+  },
+  "close-sokolnitz@10.33x": {
+   "case": "close-sokolnitz",
+   "state": {
+    "clock": 500,
+    "phase": 2,
+    "light": "mist",
+    "factor": 10.33,
+    "eye": [
+     -100.86,
+     21.16,
+     93.02
+    ],
+    "clearance": 23.463,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.8978,
+    "clearance": 23.463,
+    "eye": [
+     -100.86,
+     21.16,
+     93.02
+    ]
+   },
+   "dropLimit": 18,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 11.8,
+      "post": 0.2
+     },
+     "nearBlack": 0.0001,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 81,
+     "lum": {
+      "p1": 23,
+      "p5": 42,
+      "p50": 75,
+      "under25": 0.0129
+     },
+     "contrast": {
+      "texts": 20,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 7.7,
+      "post": 0.2
+     },
+     "nearBlack": 0.0003,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 80.9,
+     "lum": {
+      "p1": 23,
+      "p5": 40,
+      "p50": 75,
+      "under25": 0.0134
+     },
+     "contrast": {
+      "texts": 20,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 4
+     },
+     "frameMs": {
+      "world": 6.5,
+      "post": 0.1
+     },
+     "nearBlack": 0.0002,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 79.8,
+     "lum": {
+      "p1": 23,
+      "p5": 40,
+      "p50": 74,
+      "under25": 0.0132
+     },
+     "contrast": {
+      "texts": 20,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 4
+     },
+     "frameMs": {
+      "world": 6.2,
+      "post": 0
+     },
+     "nearBlack": 0.0006,
+     "solidBlack": 0.00005,
+     "solidBlocks": 1,
+     "meanLum": 79.6,
+     "lum": {
+      "p1": 23,
+      "p5": 38,
+      "p50": 74,
+      "under25": 0.0138
+     },
+     "contrast": {
+      "texts": 20,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 35.5
+     },
+     "frameMs": {
+      "world": 6.4,
+      "post": 0.1
+     },
+     "nearBlack": 0.0003,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 83.9,
+     "lum": {
+      "p1": 23,
+      "p5": 45,
+      "p50": 79,
+      "under25": 0.0131
+     },
+     "contrast": {
+      "texts": 20,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 35.5
+     },
+     "frameMs": {
+      "world": 6.9,
+      "post": 0.1
+     },
+     "nearBlack": 0.0004,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 83.6,
+     "lum": {
+      "p1": 23,
+      "p5": 45,
+      "p50": 78,
+      "under25": 0.0134
+     },
+     "contrast": {
+      "texts": 20,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 130.4,
+      "alt": 4,
+      "drawnAlt": 35.5
+     },
+     "frameMs": {
+      "world": 6.2,
+      "post": 0.1
+     },
+     "nearBlack": 0.0003,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 84.2,
+     "lum": {
+      "p1": 23,
+      "p5": 46,
+      "p50": 79,
+      "under25": 0.0126
+     },
+     "contrast": {
+      "texts": 20,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 1
+     }
+    }
+   ]
+  },
+  "pratzen-low@10.33x": {
+   "case": "pratzen-low",
+   "state": {
+    "clock": 590,
+    "phase": 4,
+    "light": "morning",
+    "factor": 10.33,
+    "eye": [
+     -95.84,
+     22.12,
+     31.8
+    ],
+    "clearance": 21.782,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.8978,
+    "clearance": 21.782,
+    "eye": [
+     -95.84,
+     22.12,
+     31.8
+    ]
+   },
+   "dropLimit": 13,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 6.6,
+      "post": 0.2
+     },
+     "nearBlack": 0.0222,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 91.4,
+     "lum": {
+      "p1": 9,
+      "p5": 18,
+      "p50": 72,
+      "under25": 0.092
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 7.83,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 9.6,
+      "post": 0.2
+     },
+     "nearBlack": 0.0506,
+     "solidBlack": 0.01847,
+     "solidBlocks": 373,
+     "meanLum": 89.6,
+     "lum": {
+      "p1": 6,
+      "p5": 13,
+      "p50": 72,
+      "under25": 0.1548
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 7.83,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 13.3
+     },
+     "frameMs": {
+      "world": 6.9,
+      "post": 0.2
+     },
+     "nearBlack": 0.0289,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 90.6,
+     "lum": {
+      "p1": 8,
+      "p5": 17,
+      "p50": 75,
+      "under25": 0.121
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 7.84,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 13.3
+     },
+     "frameMs": {
+      "world": 6.3,
+      "post": 0.1
+     },
+     "nearBlack": 0.0693,
+     "solidBlack": 0.02431,
+     "solidBlocks": 491,
+     "meanLum": 88.6,
+     "lum": {
+      "p1": 5,
+      "p5": 12,
+      "p50": 75,
+      "under25": 0.207
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 7.84,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.8
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 67.8
+     },
+     "frameMs": {
+      "world": 9,
+      "post": 0.1
+     },
+     "nearBlack": 0.0081,
+     "solidBlack": 0.00015,
+     "solidBlocks": 3,
+     "meanLum": 96.2,
+     "lum": {
+      "p1": 14,
+      "p5": 24,
+      "p50": 72,
+      "under25": 0.0505
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 7.99,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 67.8
+     },
+     "frameMs": {
+      "world": 6.6,
+      "post": 0.1
+     },
+     "nearBlack": 0.008,
+     "solidBlack": 0.00015,
+     "solidBlocks": 3,
+     "meanLum": 96.2,
+     "lum": {
+      "p1": 14,
+      "p5": 24,
+      "p50": 72,
+      "under25": 0.0501
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 7.99,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 149.2,
+      "alt": 13.3,
+      "drawnAlt": 67.8
+     },
+     "frameMs": {
+      "world": 9.5,
+      "post": 0.1
+     },
+     "nearBlack": 0.0086,
+     "solidBlack": 0.00025,
+     "solidBlocks": 5,
+     "meanLum": 95.8,
+     "lum": {
+      "p1": 14,
+      "p5": 24,
+      "p50": 72,
+      "under25": 0.0534
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 7.99,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 1.1
+     }
+    }
+   ]
+  },
+  "ph8-overview-study@10.33x": {
+   "case": "ph8-overview-study",
+   "state": {
+    "clock": 880,
+    "phase": 8,
+    "light": "late",
+    "factor": 10.33,
+    "eye": [
+     -38.9,
+     535.18,
+     66.66
+    ],
+    "clearance": 536.485,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "stateAfter": {
+    "unobstructed": 0.7036,
+    "clearance": 536.485,
+    "eye": [
+     -38.9,
+     535.18,
+     66.66
+    ]
+   },
+   "dropLimit": 7,
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 1066.4,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 35.9,
+     "lum": {
+      "p1": 16,
+      "p5": 24,
+      "p50": 34,
+      "under25": 0.0519
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.55,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.3
+     }
+    },
+    {
+     "variant": "B",
+     "sun": null,
+     "frameMs": {
+      "world": 6.5,
+      "post": 0.1
+     },
+     "nearBlack": 0.0006,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 30.2,
+     "lum": {
+      "p1": 15,
+      "p5": 18,
+      "p50": 28,
+      "under25": 0.2586
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.55,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "C",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 10.6
+     },
+     "frameMs": {
+      "world": 11.7,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 37,
+     "lum": {
+      "p1": 17,
+      "p5": 26,
+      "p50": 36,
+      "under25": 0.0395
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.56,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 10.6
+     },
+     "frameMs": {
+      "world": 9.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0002,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 31.7,
+     "lum": {
+      "p1": 16,
+      "p5": 19,
+      "p50": 30,
+      "under25": 0.1745
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.56,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.4
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 62.5
+     },
+     "frameMs": {
+      "world": 7.9,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 46.3,
+     "lum": {
+      "p1": 18,
+      "p5": 34,
+      "p50": 45,
+      "under25": 0.0307
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.48,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.3
+     }
+    },
+    {
+     "variant": "F",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 62.5
+     },
+     "frameMs": {
+      "world": 5.8,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 45.9,
+     "lum": {
+      "p1": 17,
+      "p5": 34,
+      "p50": 44,
+      "under25": 0.0311
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.48,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "G",
+     "sun": {
+      "az": 217.3,
+      "alt": 10.6,
+      "drawnAlt": 62.5
+     },
+     "frameMs": {
+      "world": 7.8,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 46.5,
+     "lum": {
+      "p1": 18,
+      "p5": 34,
+      "p50": 45,
+      "under25": 0.0305
+     },
+     "contrast": {
+      "texts": 22,
+      "min": 8.48,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.4
+     }
+    }
+   ]
+  }
+ },
+ "sweep": {
+  "overview-field@480": {
+   "state": {
+    "clock": 480,
+    "phase": 2,
+    "light": "mist",
+    "factor": 4,
+    "eye": [
+     -195,
+     94.11,
+     156
+    ],
+    "clearance": 94.211,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 3768.8,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 87.8,
+     "lum": {
+      "p1": 20,
+      "p5": 25,
+      "p50": 85,
+      "under25": 0.0484
+     },
+     "contrast": {
+      "texts": 42,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 42,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 126.5,
+      "alt": 1.5,
+      "drawnAlt": 1.5
+     },
+     "frameMs": {
+      "world": 7.2,
+      "post": 0.1
+     },
+     "nearBlack": 0.0012,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 85.2,
+     "lum": {
+      "p1": 17,
+      "p5": 22,
+      "p50": 83,
+      "under25": 0.0938
+     },
+     "contrast": {
+      "texts": 42,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 42,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 126.5,
+      "alt": 1.5,
+      "drawnAlt": 6.2
+     },
+     "frameMs": {
+      "world": 7.6,
+      "post": 0.1
+     },
+     "nearBlack": 0.0001,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 86.5,
+     "lum": {
+      "p1": 19,
+      "p5": 23,
+      "p50": 85,
+      "under25": 0.0742
+     },
+     "contrast": {
+      "texts": 42,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 42,
+      "ms": 1
+     }
+    }
+   ]
+  },
+  "overview-field@540": {
+   "state": {
+    "clock": 540,
+    "phase": 3,
+    "light": "sunburst",
+    "factor": 4,
+    "eye": [
+     -195,
+     94.11,
+     156
+    ],
+    "clearance": 94.211,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 1587,
+      "post": 0.1
+     },
+     "nearBlack": 0.0009,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 64.6,
+     "lum": {
+      "p1": 17,
+      "p5": 21,
+      "p50": 46,
+      "under25": 0.0632
+     },
+     "contrast": {
+      "texts": 38,
+      "min": 8.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 38,
+      "ms": 0.9
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 138.5,
+      "alt": 8.5,
+      "drawnAlt": 8.5
+     },
+     "frameMs": {
+      "world": 11.1,
+      "post": 0.2
+     },
+     "nearBlack": 0.0064,
+     "solidBlack": 0.00019,
+     "solidBlocks": 3,
+     "meanLum": 60.5,
+     "lum": {
+      "p1": 13,
+      "p5": 17,
+      "p50": 43,
+      "under25": 0.1918
+     },
+     "contrast": {
+      "texts": 38,
+      "min": 8.5,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 38,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 138.5,
+      "alt": 8.5,
+      "drawnAlt": 31
+     },
+     "frameMs": {
+      "world": 6.7,
+      "post": 0.1
+     },
+     "nearBlack": 0.0019,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 70.8,
+     "lum": {
+      "p1": 17,
+      "p5": 22,
+      "p50": 57,
+      "under25": 0.0578
+     },
+     "contrast": {
+      "texts": 38,
+      "min": 8.47,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 38,
+      "ms": 0.9
+     }
+    }
+   ]
+  },
+  "overview-field@600": {
+   "state": {
+    "clock": 600,
+    "phase": 4,
+    "light": "morning",
+    "factor": 4,
+    "eye": [
+     -195,
+     94.11,
+     156
+    ],
+    "clearance": 94.211,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 1427.3,
+      "post": 0.1
+     },
+     "nearBlack": 0.0016,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 63.9,
+     "lum": {
+      "p1": 16,
+      "p5": 20,
+      "p50": 44,
+      "under25": 0.0631
+     },
+     "contrast": {
+      "texts": 40,
+      "min": 8.43,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 40,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 151.4,
+      "alt": 14.1,
+      "drawnAlt": 14.1
+     },
+     "frameMs": {
+      "world": 6.6,
+      "post": 0
+     },
+     "nearBlack": 0.0084,
+     "solidBlack": 0.00006,
+     "solidBlocks": 1,
+     "meanLum": 58.9,
+     "lum": {
+      "p1": 14,
+      "p5": 17,
+      "p50": 39,
+      "under25": 0.1903
+     },
+     "contrast": {
+      "texts": 40,
+      "min": 8.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 40,
+      "ms": 1.1
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 151.4,
+      "alt": 14.1,
+      "drawnAlt": 45.2
+     },
+     "frameMs": {
+      "world": 9.3,
+      "post": 0.1
+     },
+     "nearBlack": 0.0026,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 70.1,
+     "lum": {
+      "p1": 17,
+      "p5": 21,
+      "p50": 54,
+      "under25": 0.0616
+     },
+     "contrast": {
+      "texts": 40,
+      "min": 8.19,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 40,
+      "ms": 0.9
+     }
+    }
+   ]
+  },
+  "overview-field@660": {
+   "state": {
+    "clock": 660,
+    "phase": 5,
+    "light": "morning",
+    "factor": 4,
+    "eye": [
+     -195,
+     94.11,
+     156
+    ],
+    "clearance": 94.211,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 1274.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0057,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 62.5,
+     "lum": {
+      "p1": 15,
+      "p5": 19,
+      "p50": 42,
+      "under25": 0.0801
+     },
+     "contrast": {
+      "texts": 39,
+      "min": 8.5,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 39,
+      "ms": 0.8
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 165.4,
+      "alt": 17.7,
+      "drawnAlt": 17.7
+     },
+     "frameMs": {
+      "world": 9.5,
+      "post": 0.1
+     },
+     "nearBlack": 0.0164,
+     "solidBlack": 0.00083,
+     "solidBlocks": 13,
+     "meanLum": 59,
+     "lum": {
+      "p1": 11,
+      "p5": 17,
+      "p50": 38,
+      "under25": 0.1942
+     },
+     "contrast": {
+      "texts": 39,
+      "min": 8.5,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 39,
+      "ms": 1.1
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 165.4,
+      "alt": 17.7,
+      "drawnAlt": 52
+     },
+     "frameMs": {
+      "world": 6.6,
+      "post": 0.1
+     },
+     "nearBlack": 0.003,
+     "solidBlack": 0.00006,
+     "solidBlocks": 1,
+     "meanLum": 70.2,
+     "lum": {
+      "p1": 16,
+      "p5": 21,
+      "p50": 53,
+      "under25": 0.0631
+     },
+     "contrast": {
+      "texts": 39,
+      "min": 8.19,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 39,
+      "ms": 0.6
+     }
+    }
+   ]
+  },
+  "overview-field@720": {
+   "state": {
+    "clock": 720,
+    "phase": 6,
+    "light": "midday",
+    "factor": 4,
+    "eye": [
+     -195,
+     94.11,
+     156
+    ],
+    "clearance": 94.211,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 6.1,
+      "post": 0.1
+     },
+     "nearBlack": 0.0013,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 65.3,
+     "lum": {
+      "p1": 17,
+      "p5": 20,
+      "p50": 47,
+      "under25": 0.0692
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.35,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 41,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 180,
+      "alt": 19,
+      "drawnAlt": 19
+     },
+     "frameMs": {
+      "world": 6.8,
+      "post": 0.2
+     },
+     "nearBlack": 0.0085,
+     "solidBlack": 0.00025,
+     "solidBlocks": 4,
+     "meanLum": 58.9,
+     "lum": {
+      "p1": 14,
+      "p5": 18,
+      "p50": 39,
+      "under25": 0.127
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.48,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 41,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 180,
+      "alt": 19,
+      "drawnAlt": 53.9
+     },
+     "frameMs": {
+      "world": 6.6,
+      "post": 0.1
+     },
+     "nearBlack": 0.0017,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 70.5,
+     "lum": {
+      "p1": 17,
+      "p5": 21,
+      "p50": 55,
+      "under25": 0.0684
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.13,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 7,
+      "placed": 41,
+      "ms": 0.7
+     }
+    }
+   ]
+  },
+  "overview-field@780": {
+   "state": {
+    "clock": 780,
+    "phase": 7,
+    "light": "afternoon",
+    "factor": 4,
+    "eye": [
+     -195,
+     94.11,
+     156
+    ],
+    "clearance": 94.211,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 2863.1,
+      "post": 0.1
+     },
+     "nearBlack": 0.0021,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 62.5,
+     "lum": {
+      "p1": 16,
+      "p5": 20,
+      "p50": 41,
+      "under25": 0.0797
+     },
+     "contrast": {
+      "texts": 42,
+      "min": 7.88,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 42,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 194.6,
+      "alt": 17.7,
+      "drawnAlt": 17.7
+     },
+     "frameMs": {
+      "world": 6.1,
+      "post": 0.1
+     },
+     "nearBlack": 0.0127,
+     "solidBlack": 0.00025,
+     "solidBlocks": 4,
+     "meanLum": 58.1,
+     "lum": {
+      "p1": 12,
+      "p5": 16,
+      "p50": 36,
+      "under25": 0.2388
+     },
+     "contrast": {
+      "texts": 42,
+      "min": 8.11,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 42,
+      "ms": 1.1
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 194.6,
+      "alt": 17.7,
+      "drawnAlt": 51.9
+     },
+     "frameMs": {
+      "world": 11.1,
+      "post": 0.1
+     },
+     "nearBlack": 0.0016,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 68,
+     "lum": {
+      "p1": 16,
+      "p5": 20,
+      "p50": 50,
+      "under25": 0.0695
+     },
+     "contrast": {
+      "texts": 42,
+      "min": 8.18,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 42,
+      "ms": 0.7
+     }
+    }
+   ]
+  },
+  "overview-field@840": {
+   "state": {
+    "clock": 840,
+    "phase": 7,
+    "light": "afternoon",
+    "factor": 4,
+    "eye": [
+     -195,
+     94.11,
+     156
+    ],
+    "clearance": 94.211,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 1229.3,
+      "post": 0.2
+     },
+     "nearBlack": 0.002,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 62.6,
+     "lum": {
+      "p1": 16,
+      "p5": 20,
+      "p50": 41,
+      "under25": 0.075
+     },
+     "contrast": {
+      "texts": 38,
+      "min": 8.63,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 9,
+      "placed": 38,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 208.6,
+      "alt": 14.1,
+      "drawnAlt": 14.1
+     },
+     "frameMs": {
+      "world": 6.4,
+      "post": 0.1
+     },
+     "nearBlack": 0.0179,
+     "solidBlack": 0.00153,
+     "solidBlocks": 24,
+     "meanLum": 56.9,
+     "lum": {
+      "p1": 11,
+      "p5": 15,
+      "p50": 35,
+      "under25": 0.3032
+     },
+     "contrast": {
+      "texts": 38,
+      "min": 8.69,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 9,
+      "placed": 38,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 208.6,
+      "alt": 14.1,
+      "drawnAlt": 45.1
+     },
+     "frameMs": {
+      "world": 7.4,
+      "post": 0.1
+     },
+     "nearBlack": 0.0013,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 67,
+     "lum": {
+      "p1": 16,
+      "p5": 21,
+      "p50": 49,
+      "under25": 0.0658
+     },
+     "contrast": {
+      "texts": 38,
+      "min": 8.56,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 9,
+      "placed": 38,
+      "ms": 0.6
+     }
+    }
+   ]
+  },
+  "overview-field@900": {
+   "state": {
+    "clock": 900,
+    "phase": 8,
+    "light": "late",
+    "factor": 4,
+    "eye": [
+     -195,
+     94.11,
+     156
+    ],
+    "clearance": 94.211,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 2713.9,
+      "post": 26.5
+     },
+     "nearBlack": 0.0041,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 62.6,
+     "lum": {
+      "p1": 13,
+      "p5": 17,
+      "p50": 43,
+      "under25": 0.1534
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.41,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 41,
+      "ms": 1.7
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 221.5,
+      "alt": 8.5,
+      "drawnAlt": 8.5
+     },
+     "frameMs": {
+      "world": 9.9,
+      "post": 0.2
+     },
+     "nearBlack": 0.022,
+     "solidBlack": 0.00121,
+     "solidBlocks": 19,
+     "meanLum": 60.1,
+     "lum": {
+      "p1": 8,
+      "p5": 14,
+      "p50": 42,
+      "under25": 0.266
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.4,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 41,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 221.5,
+      "alt": 8.5,
+      "drawnAlt": 30.9
+     },
+     "frameMs": {
+      "world": 5.9,
+      "post": 0.1
+     },
+     "nearBlack": 0.0003,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 66.4,
+     "lum": {
+      "p1": 17,
+      "p5": 20,
+      "p50": 50,
+      "under25": 0.1023
+     },
+     "contrast": {
+      "texts": 41,
+      "min": 8.38,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 41,
+      "ms": 0.7
+     }
+    }
+   ]
+  },
+  "overview-field@960": {
+   "state": {
+    "clock": 960,
+    "phase": 8,
+    "light": "late",
+    "factor": 4,
+    "eye": [
+     -195,
+     94.11,
+     156
+    ],
+    "clearance": 94.211,
+    "unobstructed": 0.7036,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 2754.9,
+      "post": 1.4
+     },
+     "nearBlack": 0.0041,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 62.7,
+     "lum": {
+      "p1": 13,
+      "p5": 18,
+      "p50": 44,
+      "under25": 0.1487
+     },
+     "contrast": {
+      "texts": 39,
+      "min": 8.41,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 39,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 233.4,
+      "alt": 1.5,
+      "drawnAlt": 1.5
+     },
+     "frameMs": {
+      "world": 6.6,
+      "post": 0.1
+     },
+     "nearBlack": 0.0836,
+     "solidBlack": 0.00503,
+     "solidBlocks": 79,
+     "meanLum": 57.3,
+     "lum": {
+      "p1": 5,
+      "p5": 10,
+      "p50": 38,
+      "under25": 0.3294
+     },
+     "contrast": {
+      "texts": 39,
+      "min": 8.41,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 39,
+      "ms": 0.8
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 233.4,
+      "alt": 1.5,
+      "drawnAlt": 6
+     },
+     "frameMs": {
+      "world": 7.5,
+      "post": 0.2
+     },
+     "nearBlack": 0.0376,
+     "solidBlack": 0.00147,
+     "solidBlocks": 23,
+     "meanLum": 59.3,
+     "lum": {
+      "p1": 7,
+      "p5": 12,
+      "p50": 41,
+      "under25": 0.2877
+     },
+     "contrast": {
+      "texts": 39,
+      "min": 8.41,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 39,
+      "ms": 1
+     }
+    }
+   ]
+  },
+  "pratzen-low@480": {
+   "state": {
+    "clock": 480,
+    "phase": 2,
+    "light": "mist",
+    "factor": 4,
+    "eye": [
+     -95.84,
+     21.93,
+     31.8
+    ],
+    "clearance": 21.801,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 9.1,
+      "post": 0.2
+     },
+     "nearBlack": 0.004,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 87.4,
+     "lum": {
+      "p1": 16,
+      "p5": 25,
+      "p50": 83,
+      "under25": 0.0464
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 8.56,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.5
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 126.5,
+      "alt": 1.5,
+      "drawnAlt": 1.5
+     },
+     "frameMs": {
+      "world": 13.2,
+      "post": 0.1
+     },
+     "nearBlack": 0.0195,
+     "solidBlack": 0.00129,
+     "solidBlocks": 26,
+     "meanLum": 84.9,
+     "lum": {
+      "p1": 10,
+      "p5": 19,
+      "p50": 82,
+      "under25": 0.0912
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 8.56,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.5
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 126.5,
+      "alt": 1.5,
+      "drawnAlt": 6.2
+     },
+     "frameMs": {
+      "world": 6.1,
+      "post": 0
+     },
+     "nearBlack": 0.0186,
+     "solidBlack": 0.00089,
+     "solidBlocks": 18,
+     "meanLum": 88.6,
+     "lum": {
+      "p1": 11,
+      "p5": 19,
+      "p50": 88,
+      "under25": 0.0865
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 8.56,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.7
+     }
+    }
+   ]
+  },
+  "pratzen-low@540": {
+   "state": {
+    "clock": 540,
+    "phase": 3,
+    "light": "sunburst",
+    "factor": 4,
+    "eye": [
+     -95.84,
+     21.93,
+     31.8
+    ],
+    "clearance": 21.801,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 5.7,
+      "post": 0.1
+     },
+     "nearBlack": 0.0072,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 78,
+     "lum": {
+      "p1": 15,
+      "p5": 23,
+      "p50": 60,
+      "under25": 0.0577
+     },
+     "contrast": {
+      "texts": 24,
+      "min": 8.71,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 24,
+      "ms": 0.4
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 138.5,
+      "alt": 8.5,
+      "drawnAlt": 8.5
+     },
+     "frameMs": {
+      "world": 6.4,
+      "post": 0.1
+     },
+     "nearBlack": 0.0256,
+     "solidBlack": 0.00173,
+     "solidBlocks": 35,
+     "meanLum": 76.5,
+     "lum": {
+      "p1": 9,
+      "p5": 17,
+      "p50": 60,
+      "under25": 0.1053
+     },
+     "contrast": {
+      "texts": 24,
+      "min": 8.76,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 24,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 138.5,
+      "alt": 8.5,
+      "drawnAlt": 31
+     },
+     "frameMs": {
+      "world": 7.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0152,
+     "solidBlack": 0.00144,
+     "solidBlocks": 29,
+     "meanLum": 82.7,
+     "lum": {
+      "p1": 11,
+      "p5": 21,
+      "p50": 69,
+      "under25": 0.0651
+     },
+     "contrast": {
+      "texts": 24,
+      "min": 8.61,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 24,
+      "ms": 0.8
+     }
+    }
+   ]
+  },
+  "pratzen-low@600": {
+   "state": {
+    "clock": 600,
+    "phase": 4,
+    "light": "morning",
+    "factor": 4,
+    "eye": [
+     -95.84,
+     21.93,
+     31.8
+    ],
+    "clearance": 21.801,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 8.7,
+      "post": 0.2
+     },
+     "nearBlack": 0.0111,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 73.4,
+     "lum": {
+      "p1": 13,
+      "p5": 21,
+      "p50": 54,
+      "under25": 0.0696
+     },
+     "contrast": {
+      "texts": 24,
+      "min": 8.5,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 24,
+      "ms": 0.5
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 151.4,
+      "alt": 14.1,
+      "drawnAlt": 14.1
+     },
+     "frameMs": {
+      "world": 7.3,
+      "post": 0.1
+     },
+     "nearBlack": 0.0367,
+     "solidBlack": 0.00391,
+     "solidBlocks": 79,
+     "meanLum": 70.2,
+     "lum": {
+      "p1": 8,
+      "p5": 15,
+      "p50": 52,
+      "under25": 0.1408
+     },
+     "contrast": {
+      "texts": 24,
+      "min": 8.55,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 24,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 151.4,
+      "alt": 14.1,
+      "drawnAlt": 45.2
+     },
+     "frameMs": {
+      "world": 7.9,
+      "post": 0.2
+     },
+     "nearBlack": 0.02,
+     "solidBlack": 0.00099,
+     "solidBlocks": 20,
+     "meanLum": 76.4,
+     "lum": {
+      "p1": 10,
+      "p5": 19,
+      "p50": 59,
+      "under25": 0.0768
+     },
+     "contrast": {
+      "texts": 24,
+      "min": 8.41,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 24,
+      "ms": 0.7
+     }
+    }
+   ]
+  },
+  "pratzen-low@660": {
+   "state": {
+    "clock": 660,
+    "phase": 5,
+    "light": "morning",
+    "factor": 4,
+    "eye": [
+     -95.84,
+     21.93,
+     31.8
+    ],
+    "clearance": 21.801,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 1205.1,
+      "post": 0.1
+     },
+     "nearBlack": 0.0202,
+     "solidBlack": 0.00005,
+     "solidBlocks": 1,
+     "meanLum": 68.7,
+     "lum": {
+      "p1": 10,
+      "p5": 18,
+      "p50": 48,
+      "under25": 0.0922
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 11.62,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.5
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 165.4,
+      "alt": 17.7,
+      "drawnAlt": 17.7
+     },
+     "frameMs": {
+      "world": 5.9,
+      "post": 0.1
+     },
+     "nearBlack": 0.0445,
+     "solidBlack": 0.0049,
+     "solidBlocks": 99,
+     "meanLum": 63.5,
+     "lum": {
+      "p1": 6,
+      "p5": 14,
+      "p50": 42,
+      "under25": 0.1775
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 11.51,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 165.4,
+      "alt": 17.7,
+      "drawnAlt": 52
+     },
+     "frameMs": {
+      "world": 7.1,
+      "post": 0.1
+     },
+     "nearBlack": 0.0249,
+     "solidBlack": 0.00163,
+     "solidBlocks": 33,
+     "meanLum": 71.8,
+     "lum": {
+      "p1": 8,
+      "p5": 18,
+      "p50": 53,
+      "under25": 0.0785
+     },
+     "contrast": {
+      "texts": 21,
+      "min": 11.65,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.8
+     }
+    }
+   ]
+  },
+  "pratzen-low@720": {
+   "state": {
+    "clock": 720,
+    "phase": 6,
+    "light": "midday",
+    "factor": 4,
+    "eye": [
+     -95.84,
+     21.93,
+     31.8
+    ],
+    "clearance": 21.801,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 6.2,
+      "post": 0.1
+     },
+     "nearBlack": 0.0081,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 70.5,
+     "lum": {
+      "p1": 14,
+      "p5": 22,
+      "p50": 49,
+      "under25": 0.0608
+     },
+     "contrast": {
+      "texts": 30,
+      "min": 12.19,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 30,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 180,
+      "alt": 19,
+      "drawnAlt": 19
+     },
+     "frameMs": {
+      "world": 5.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0293,
+     "solidBlack": 0.00129,
+     "solidBlocks": 26,
+     "meanLum": 64.9,
+     "lum": {
+      "p1": 9,
+      "p5": 16,
+      "p50": 43,
+      "under25": 0.1219
+     },
+     "contrast": {
+      "texts": 30,
+      "min": 12.17,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 30,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 180,
+      "alt": 19,
+      "drawnAlt": 53.9
+     },
+     "frameMs": {
+      "world": 6.1,
+      "post": 0.1
+     },
+     "nearBlack": 0.0158,
+     "solidBlack": 0.00059,
+     "solidBlocks": 12,
+     "meanLum": 74.4,
+     "lum": {
+      "p1": 11,
+      "p5": 20,
+      "p50": 56,
+      "under25": 0.068
+     },
+     "contrast": {
+      "texts": 30,
+      "min": 12.27,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 30,
+      "ms": 1.1
+     }
+    }
+   ]
+  },
+  "pratzen-low@780": {
+   "state": {
+    "clock": 780,
+    "phase": 7,
+    "light": "afternoon",
+    "factor": 4,
+    "eye": [
+     -95.84,
+     21.93,
+     31.8
+    ],
+    "clearance": 21.801,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 6.8,
+      "post": 0
+     },
+     "nearBlack": 0.005,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 68.7,
+     "lum": {
+      "p1": 16,
+      "p5": 23,
+      "p50": 42,
+      "under25": 0.0558
+     },
+     "contrast": {
+      "texts": 28,
+      "min": 11.09,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 28,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 194.6,
+      "alt": 17.7,
+      "drawnAlt": 17.7
+     },
+     "frameMs": {
+      "world": 6,
+      "post": 0.1
+     },
+     "nearBlack": 0.0288,
+     "solidBlack": 0.00149,
+     "solidBlocks": 30,
+     "meanLum": 63.1,
+     "lum": {
+      "p1": 9,
+      "p5": 16,
+      "p50": 37,
+      "under25": 0.1936
+     },
+     "contrast": {
+      "texts": 28,
+      "min": 11.39,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 28,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 194.6,
+      "alt": 17.7,
+      "drawnAlt": 51.9
+     },
+     "frameMs": {
+      "world": 7.4,
+      "post": 0.1
+     },
+     "nearBlack": 0.0133,
+     "solidBlack": 0.00059,
+     "solidBlocks": 12,
+     "meanLum": 71,
+     "lum": {
+      "p1": 12,
+      "p5": 19,
+      "p50": 49,
+      "under25": 0.07
+     },
+     "contrast": {
+      "texts": 28,
+      "min": 11.51,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 28,
+      "ms": 0.7
+     }
+    }
+   ]
+  },
+  "pratzen-low@840": {
+   "state": {
+    "clock": 840,
+    "phase": 7,
+    "light": "afternoon",
+    "factor": 4,
+    "eye": [
+     -95.84,
+     21.93,
+     31.8
+    ],
+    "clearance": 21.801,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 8.3,
+      "post": 0.1
+     },
+     "nearBlack": 0.0084,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 68.3,
+     "lum": {
+      "p1": 14,
+      "p5": 21,
+      "p50": 42,
+      "under25": 0.0643
+     },
+     "contrast": {
+      "texts": 28,
+      "min": 11.08,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 28,
+      "ms": 0.5
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 208.6,
+      "alt": 14.1,
+      "drawnAlt": 14.1
+     },
+     "frameMs": {
+      "world": 5.6,
+      "post": 0.1
+     },
+     "nearBlack": 0.0418,
+     "solidBlack": 0.00386,
+     "solidBlocks": 78,
+     "meanLum": 61.7,
+     "lum": {
+      "p1": 7,
+      "p5": 14,
+      "p50": 34,
+      "under25": 0.2677
+     },
+     "contrast": {
+      "texts": 28,
+      "min": 11.21,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 28,
+      "ms": 0.9
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 208.6,
+      "alt": 14.1,
+      "drawnAlt": 45.1
+     },
+     "frameMs": {
+      "world": 10.4,
+      "post": 0.1
+     },
+     "nearBlack": 0.0121,
+     "solidBlack": 0.0005,
+     "solidBlocks": 10,
+     "meanLum": 69.9,
+     "lum": {
+      "p1": 12,
+      "p5": 19,
+      "p50": 47,
+      "under25": 0.0675
+     },
+     "contrast": {
+      "texts": 28,
+      "min": 11.36,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 28,
+      "ms": 0.7
+     }
+    }
+   ]
+  },
+  "pratzen-low@900": {
+   "state": {
+    "clock": 900,
+    "phase": 8,
+    "light": "late",
+    "factor": 4,
+    "eye": [
+     -95.84,
+     21.93,
+     31.8
+    ],
+    "clearance": 21.801,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 10.1,
+      "post": 0.1
+     },
+     "nearBlack": 0.0019,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 65.9,
+     "lum": {
+      "p1": 16,
+      "p5": 23,
+      "p50": 42,
+      "under25": 0.061
+     },
+     "contrast": {
+      "texts": 26,
+      "min": 11.35,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 26,
+      "ms": 1
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 221.5,
+      "alt": 8.5,
+      "drawnAlt": 8.5
+     },
+     "frameMs": {
+      "world": 8.7,
+      "post": 0.2
+     },
+     "nearBlack": 0.0129,
+     "solidBlack": 0.00144,
+     "solidBlocks": 29,
+     "meanLum": 61.8,
+     "lum": {
+      "p1": 11,
+      "p5": 16,
+      "p50": 38,
+      "under25": 0.1955
+     },
+     "contrast": {
+      "texts": 26,
+      "min": 11.61,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 26,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 221.5,
+      "alt": 8.5,
+      "drawnAlt": 30.9
+     },
+     "frameMs": {
+      "world": 7,
+      "post": 0.1
+     },
+     "nearBlack": 0.0021,
+     "solidBlack": 0.00005,
+     "solidBlocks": 1,
+     "meanLum": 67.5,
+     "lum": {
+      "p1": 16,
+      "p5": 24,
+      "p50": 46,
+      "under25": 0.0532
+     },
+     "contrast": {
+      "texts": 26,
+      "min": 11.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 26,
+      "ms": 0.5
+     }
+    }
+   ]
+  },
+  "pratzen-low@960": {
+   "state": {
+    "clock": 960,
+    "phase": 8,
+    "light": "late",
+    "factor": 4,
+    "eye": [
+     -95.84,
+     21.93,
+     31.8
+    ],
+    "clearance": 21.801,
+    "unobstructed": 0.8978,
+    "shadowBox": [
+     236,
+     216
+    ],
+    "shadowPx": 4096
+   },
+   "rows": [
+    {
+     "variant": "A",
+     "sun": null,
+     "frameMs": {
+      "world": 1217.1,
+      "post": 0.1
+     },
+     "nearBlack": 0.002,
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 65.1,
+     "lum": {
+      "p1": 16,
+      "p5": 23,
+      "p50": 42,
+      "under25": 0.0626
+     },
+     "contrast": {
+      "texts": 26,
+      "min": 8.77,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 26,
+      "ms": 0.7
+     }
+    },
+    {
+     "variant": "D",
+     "sun": {
+      "az": 233.4,
+      "alt": 1.5,
+      "drawnAlt": 1.5
+     },
+     "frameMs": {
+      "world": 11.4,
+      "post": 0.2
+     },
+     "nearBlack": 0.0578,
+     "solidBlack": 0.0099,
+     "solidBlocks": 200,
+     "meanLum": 58.3,
+     "lum": {
+      "p1": 6,
+      "p5": 12,
+      "p50": 35,
+      "under25": 0.3141
+     },
+     "contrast": {
+      "texts": 26,
+      "min": 8.89,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 26,
+      "ms": 0.6
+     }
+    },
+    {
+     "variant": "E",
+     "sun": {
+      "az": 233.4,
+      "alt": 1.5,
+      "drawnAlt": 6
+     },
+     "frameMs": {
+      "world": 6.2,
+      "post": 0.1
+     },
+     "nearBlack": 0.0197,
+     "solidBlack": 0.00124,
+     "solidBlocks": 25,
+     "meanLum": 60.5,
+     "lum": {
+      "p1": 10,
+      "p5": 15,
+      "p50": 37,
+      "under25": 0.2319
+     },
+     "contrast": {
+      "texts": 26,
+      "min": 8.83,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 26,
+      "ms": 0.5
+     }
+    }
+   ]
+  }
+ }
+}

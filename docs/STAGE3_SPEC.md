@@ -3,7 +3,7 @@
 **Status: Part A reviewed (#21); the owner accepted every recommendation of §J, recorded as decisions 47-60 (§0.3). 3B (docked
 panels) is merged (#22); 3C (one timeline, and the spine index) is merged (#23); 3D (the camera) is merged (#24), with owner decisions 61-63
 taken during it (§0.3); 3E (names, the "?" overlay, the key table, the symbols capped) is merged (#25); the spine data task (§C.3)
-is implemented with decisions 64-67 (§0.3). Stage 3 is complete. What each found is at the end of §I. Sections A-J below still describe the build they were written against.** Part A was written against `main` at `0f2b17e` (Stage 2F merged,
+is merged (#26), with decisions 64-67 (§0.3). Stage 3 is complete. What each found is at the end of §I. Sections A-J below still describe the build they were written against.** Part A was written against `main` at `0f2b17e` (Stage 2F merged,
 #19, and recorded as merged, #20), whose build `austerlitz-command-map.html` is 1,253,655 bytes, md5
 `ee4390a2585f3df170fba82eb1994112`. Before any work: `npm test` (all nine suites and the height guard), `check:data`
 (all 113 declarations byte-identical to `archive/stage2c-68ac7721.html`), `check:chronology` (0 errors) and
