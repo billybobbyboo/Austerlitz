@@ -2,7 +2,7 @@
 
 ## 2026-10 · Stage 4 Part A: time and atmosphere, the specification (docs/STAGE4_SPEC.md)
 
-**Status: Part A, for review. No source file changes. `austerlitz-command-map.html` is unchanged: 1,348,542 bytes, md5
+**Status: merged (#27). No source file changes. `austerlitz-command-map.html` is unchanged: 1,348,542 bytes, md5
 `6b2cccd44138e95e6082c82b8b2d2f8a`; `check:baseline` does not move.**
 - A specification, its probes and their evidence: `docs/STAGE4_SPEC.md`; `tools/stage4/` (`ephem.js`, `sun.js`, `light-probe.js`,
   `dark-probe.js`, `fog-probe.js`, `pace-probe.js`, `extras-probe.js`; not bundled); `docs/stage4-evidence/` (with a README).

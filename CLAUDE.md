@@ -144,5 +144,7 @@ overlay; the key fixes; event glyphs and objective markers capped on screen) is 
 task (themes and tour stops name their moments, `ANALYSIS.at`/`moments` and `TOUR.at`; owner decisions 52, 59, 64-67; one timeline
 line moved; decision 56's sentence in `SOURCE_NOTE`; ← → on a focused button no longer step the clock) is merged
 (#26). Stage 4 Part A (the specification, `docs/STAGE4_SPEC.md`: the computed sun and continuous light, the atmosphere and the
-valley fog, pacing, smoke, ice, the horizon and the 3D palette; probes in `tools/stage4/`) is written, for review; no source changed.
-The shadow toe and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.
+valley fog, pacing, smoke, ice, the horizon and the 3D palette; probes in `tools/stage4/`) is merged (#27); the owner accepted
+every recommendation (decisions 68-82, §0.4). Stage 4B (the light: the computed sun, its altitude corrected to the display factor,
+one light table keyed by the sun's altitude, a fill opposite the sun in place of Stage 0's shadow toe, no baked hillshade on the
+landscape, the shadow box fitted to the view) is implemented, for review.

@@ -1,6 +1,8 @@
 # Time and atmosphere specification (Stage 4, Part A)
 
-**Status: Part A, for review. No source file changes; the build is unchanged (`check:baseline` passes).** Part A was written
+**Status: Part A merged (#27); the owner accepted every recommendation of §J, recorded as decisions 68-82 (§0.4). 4B (the light)
+is implemented, for review; what it found is at the end of §I. Sections A-J below still describe the build they were written
+against.** Part A was written
 against `main` at `18e014b` (the spine data task merged, #26), whose build `austerlitz-command-map.html` is 1,348,542 bytes,
 md5 `6b2cccd44138e95e6082c82b8b2d2f8a`. Before any work: `check:baseline` passed; `npm test` (all nine suites and the height
 guard) passed; `check:data` found all 113 declarations identical to `archive/spine-6b2cccd4.html`; `check:chronology` reported 0
@@ -137,6 +139,29 @@ Each is stated, not worked around.
 12. **The roadmap's pacing figures are confirmed** (`pace-probe.js`, fact): at 1x the day (04:00-18:00, 840 clock minutes) plays
    in 84 s and the Pratzen assault (phase 3, 45 minutes) in 4.5 s. The phase change's camera glide (`TRANS_MS`, 2.6 s) takes 26 clock
    minutes at 1x: 58% of each of the three 45-minute phases (2, 3 and 5) and 43% of the 60-minute ones (§D.1).
+
+### 0.4 Owner decisions 68-82 (the answers to §J)
+
+The owner accepted every recommendation of §J ("happy to go with your recommendations re questions"). Each is recorded as a
+decision, in the question's order; §J keeps the trade-offs.
+
+| # | question | decision |
+|---|---|---|
+| 68 | 1, the light at 4x and 10.33x | The light's vertical is scaled by the display factor (tan alt_k = k tan alt); the disc at the true altitude. (4B) |
+| 69 | 2, the clock's basis | The app's clock read as local apparent (solar) time, stated as a reading, not a finding. (4B) |
+| 70 | 3, the shadow toe | Replaced by a fill light opposite the sun, its strength in the light table. (4B) |
+| 71 | 4, before dawn | A design night light, labelled; no moon computed. (4B) |
+| 72 | 5, the valley fog's opacity | About 55%. (4C) |
+| 73 | 6, `PHASES[].mist` 0.22 and 0.30 | Kept, drawn as a thin evening haze labelled "modelled"; no data change. (4C) |
+| 74 | 7, the default speed | ½×, no new button. (4D) |
+| 75 | 8, dwell | About 2.5 s at each of the 22 event starts while playing, on by default, a toggle in the layers panel. (4D) |
+| 76 | 9, decision 56's sentence | "normal speed" becomes "1×" in a one-line data task with 4D, recorded. (4D) |
+| 77 | 10, smoke | The phase status decides who smokes; the naming events' windows decide how much. (4E) |
+| 78 | 11, Follow while playing | Continuous while the clock plays; the phase views for the phase buttons and the pause. (4D) |
+| 79 | 12, the 3D colours | The paper map's ground colours into `TOKENS.sym.paperMap`; the landscape's in four named tables. (4E) |
+| 80 | 13, the horizon | No ring of distant relief; the haze and the sky meet at the horizon. (4C, 4E) |
+| 81 | 14, the haze | Counted from the focus (beyond the orbit target's distance). (4C) |
+| 82 | 15, sequencing | 4B, 4C, 4D, 4E. |
 
 ## A. The light
 
