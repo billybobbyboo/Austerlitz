@@ -184,7 +184,10 @@ async function interact(page,it,vp){
       let st=await first.evaluate(()=>({speed:speed,playing:playing})); kr.push("Space on 2x: speed "+st.speed+", playing "+st.playing); if(st.speed!==2||st.playing) bad.push("Space on a speed button: "+JSON.stringify(st));
       await first.focus('.spd-btn[data-s="4"]'); await first.keyboard.press("Enter");
       st=await first.evaluate(()=>({speed:speed,playing:playing})); kr.push("Enter on 4x: speed "+st.speed+", playing "+st.playing); if(st.speed!==4||st.playing) bad.push("Enter on a speed button: "+JSON.stringify(st));
-      await first.evaluate(()=>{ setSpeed(1); document.activeElement.blur(); });
+      await first.evaluate(()=>{ setSpeed(1); setClock(600,{instant:true,force:true,camera:false}); });
+      await first.focus("#play"); await first.keyboard.press("ArrowRight"); await first.keyboard.press("Shift+ArrowLeft");
+      st=await first.evaluate(()=>({clock:clock,playing:playing})); kr.push("arrows on the focused Play button: clock "+st.clock); if(st.clock!==600) bad.push("the arrows on a focused button stepped the clock to "+st.clock);
+      await first.evaluate(()=>{ document.activeElement.blur(); });
       const c0=await first.evaluate(()=>layerOn.contours); await first.keyboard.press("Control+c"); const c1=await first.evaluate(()=>layerOn.contours);
       kr.push("Ctrl+C: contours "+c0+" -> "+c1); if(c0!==c1) bad.push("Ctrl+C toggled the contours");
       await first.focus("#tourbtn"); await first.keyboard.press("?");

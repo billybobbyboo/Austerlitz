@@ -4,53 +4,57 @@
    src: "doc" = attested decision or report · "inf" = labelled inference
    ============================================================ */
 
+/* The spine data task (docs/STAGE3_SPEC.md sections C.2-C.3; owner decisions 52, 59, 64-67): a chapter is a theme. It names the
+   moments it concerns (moments: "ph:<phase>" or "ev:<event id>") and the principal moment it opens on (at); its clock is that
+   moment's (a phase's start, an event's start). It keeps its own camera (cam) only where no phase's view shows its subject:
+   plan, deception, weakness, and cut (whose moment, the Pratzeberg taken at 11:00, falls in phase 5, whose view looks north). */
 var ANALYSIS = [
-{ id:"plan", n:"The Allied plan", t:250, cam:[-27,262,41,-27,0,9],
+{ id:"plan", n:"The Allied plan", at:"ph:0", moments:["ph:0"], cam:[-27,262,41,-27,0,9],
   forms:["kienmayer","dok","lang","prz","col4","milo","kollo","lich","bag","constantine"],
   feats:["pratzen","goldbach","telnitz","sokolnitz","kobelnitz"],
   text:"Weyrother's dispositions send four of the five Allied columns south-west off the Pratzen plateau to turn the French right and cut the road to Vienna. Bagration holds the highway in the north, Liechtenstein's cavalry links the two, and the Russian Guard stands in reserve behind Krzenowitz. The plan assumes the French will stand still while roughly 60,000 men march across their front."},
 
-{ id:"deception", n:"The French deception", t:250, cam:[-129,44,27,-7,8,-5],
+{ id:"deception", n:"The French deception", at:"ph:0", moments:["ph:0"], cam:[-129,44,27,-7,8,-5],
   forms:["gqg","legrand","sthilaire","vandamme","c_gd","c_gren"],
   feats:["pratzen","vinohrady","pratzeberg","goldbach"],
   text:"Napoleon abandoned the Pratzen plateau on 1 December and camped his army west of it, behind the Goldbach. He asked for an armistice interview and let his outposts be pushed in. The intention, stated in his orders to the army, was to invite an attack on his right so that the enemy would leave the high ground in the centre."},
 
-{ id:"weakness", n:"The apparent weakness on the right", t:420, cam:[-160,58,157,-56,4,59],
+{ id:"weakness", n:"The apparent weakness on the right", at:"ev:telnitz", moments:["ev:raigern","ev:davout","ev:telnitz"], cam:[-160,58,157,-56,4,59],
   forms:["legrand","friant","bourcier","c_iii"],
   feats:["telnitz","sokolnitz","goldbach","viennaroad"],
   text:"Legrand's single division held roughly five kilometres of the lower Goldbach on its own. Davout's III Corps detachment, some 4,300 men by Duffy's and Smith's count, reached Raigern only on the night of 1 December after a forced march from Vienna, 8 km from the villages it had to hold. Against them the Allies committed nearly 40,000. The weakness was real, not simulated, which is what made it convincing."},
 
-{ id:"commitment", n:"The commitment of the Allied left", t:430, cam:[-167,62,162,-55,4,62],
+{ id:"commitment", n:"The commitment of the Allied left", at:"ph:1", moments:["ev:telnitz","ev:sokolnitz","ev:telnitz-retaken"],
   forms:["buxhowden","kienmayer","dok","lang","prz"],
   feats:["telnitz","sokolnitz","augezd","goldbach"],
   text:"Between 07:00 and 09:00 the three left-hand columns and Kienmayer's advance guard descended into the Goldbach villages and fed themselves into a fight for four hamlets. Each column that went down was a column no longer on the plateau. By the time Soult moved, the centre of the Allied position had been emptied by the Allies themselves."},
 
-{ id:"pratzen", n:"The attack on the Pratzen", t:527, cam:[-136,46,31,-6,8,-3],
+{ id:"pratzen", n:"The attack on the Pratzen", at:"ev:soult", moments:["ev:decision","ev:soult","ev:pratzen-village","ev:face-about","ev:kamensky","ev:pratzeberg"],
   forms:["sthilaire","vandamme","c_iv","milo","kollo","ahq"],
   feats:["pratzen","pratzeberg","vinohrady","puntowitz","girzikowitz"],
   text:"Saint-Hilaire and Vandamme had been standing in fog in the Goldbach valley, invisible from the heights. At about 08:45 they climbed the western slope and struck the 4th Column, which was still on the plateau. It had started about two hours late: held up by Liechtenstein's cavalry crossing its line of march and, in Russian accounts, chiefly by Kutuzov's reluctance to leave the heights until the Tsar ordered it forward. The fight for the two summits lasted until about 11:00, when the plateau was French from end to end."},
 
-{ id:"cut", n:"The cutting of the Allied army", t:600, cam:[-75,38,42,7,8,12],
+{ id:"cut", n:"The cutting of the Allied army", at:"ev:pratzeberg", moments:["ev:pratzeberg","ev:buxhowden-blind"], cam:[-75,38,42,7,8,12],
   forms:["sthilaire","vandamme","buxhowden","dok","lang","prz","constantine","bag"],
   feats:["pratzen","pratzeberg","goldbach"],
   text:"With the plateau taken, the Allied army was in two halves that could no longer support one another. Buxhowden's 40,000 were west and south of the heights; Bagration and the Guard were north and east of them. Buxhowden did not learn that the centre had gone until about noon. From this point the French hold the interior lines on their enemy's own battlefield."},
 
-{ id:"guard", n:"The Russian Guard counterattack", t:680, cam:[-76,36,-1,26,6,-31],
+{ id:"guard", n:"The Russian Guard counterattack", at:"ph:6", moments:["ev:guard-attack","ev:guard-broken","ev:hq-forward"],
   forms:["constantine","rg_inf","rg_cav","vandamme","guard_cav","guard_inf","drouet"],
   feats:["vinohrady"],
   text:"Grand Duke Constantine threw the last Allied reserve at Vandamme on the Old Vineyards. The Guard infantry broke two French battalions and the Guard cavalry took the eagle of the 4th Line, the only one lost that day. Bessieres brought up the Guard cavalry and Rapp charged with the chasseurs and Mamelukes; Drouet's division formed line across the plateau. Prince Repnin was taken prisoner."},
 
-{ id:"north", n:"Lannes, Murat and Bagration", t:640, cam:[-120,58,-150,34,6,-66],
+{ id:"north", n:"Lannes, Murat and Bagration", at:"ph:5", moments:["ev:blasowitz"],
   forms:["c_v","caffarelli","suchet","santon","c_cav","kellermann","nansouty","dhautpoul","bag","lich"],
   feats:["santon","olmutzroad","blasowitz"],
   text:"The northern battle was a holding action that Lannes turned into an advance. The Santon, scarped and carrying eighteen guns, made the flank unturnable, so Bagration could not get past it. When Liechtenstein's and Uvarov's horse charged, Murat answered with Nansouty's and d'Hautpoul's cuirassiers. Blasowitz fell about 11:15 and Bagration was levered off the rest of the army, withdrawing on Rausnitz in good order."},
 
-{ id:"wheel", n:"The French wheel", t:770, cam:[-160,112,-55,-20,0,59],
+{ id:"wheel", n:"The French wheel", at:"ev:wheel", moments:["ev:davout-resumes","ev:wheel","ev:sokolnitz-falls"],
   forms:["sthilaire","vandamme","c_gren","guard_inf","heightguns","friant","legrand","prz","lang","dok"],
   feats:["pratzen","sokolnitz","telnitz"],
   text:"Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau onto the back of Buxhowden's columns, while Davout attacked from the west. Przybyszewski's column was surrounded in Sokolnitz and largely captured. The Allied left was now being attacked from the direction of its own rear."},
 
-{ id:"collapse", n:"The destruction of the Allied left", t:880, cam:[-122,96,2,-18,0,68],
+{ id:"collapse", n:"The destruction of the Allied left", at:"ev:augezd", moments:["ev:augezd","ev:ice","ev:end"],
   forms:["dok","kienmayer","lang","buxhowden","vandamme","sthilaire","heightguns"],
   feats:["augezd","satschan","menitz","telnitz"],
   text:"The only ordered way out was the neck of dry ground at Augezd between the two meres, with French guns on the height above it. Some formations broke south across the frozen water. The 30th Bulletin claimed twenty thousand drowned; when the meres were drained the recovery was thirty-eight guns, about a hundred and thirty horses and two men. The catastrophe was real, but it was encirclement, not drowning."}
@@ -334,27 +338,31 @@ var EVENTS = [
 ];
 
 /* ============================================================
-   GUIDED TOUR — eight stops, about twelve minutes.
+   GUIDED TOUR — nine stops, about twelve minutes.
    Every stop reuses an existing chapter, plan or feature; none of the
    text asserts anything the reconstruction does not already carry.
    ============================================================ */
+/* A stop names one moment (at), and as before a theme, plan or feature; it takes the moment's clock and its theme's camera, or the
+   moment's phase's. Exceptions, each from the stop's own text: stop 4 keeps its own clock (t), because its text quotes the plateau
+   reading at 07:15 (sim-test.js checks it); stops 2 and 5 keep their own cameras (the plan's overview; the Pratzen, which phase
+   2's view does not show). */
 var TOUR = [
-{n:"The battlefield", t:250, cam:[-230,132,211,-28,0,1],
+{n:"The battlefield", at:"ph:0",
  x:"Ten kilometres of open Moravian farmland. The blue army to the west is French; to the east are the Russians in green and the Austrians in white, whose arrows and outlines are drawn in amber. Between them runs the Goldbach, a small stream in a marshy bottom, and behind it stands the Pratzen plateau, the high ground in the centre of the field."},
-{n:"The Allied plan", t:250, plan:"al", cam:[-27,262,41,-27,0,9],
+{n:"The Allied plan", at:"ph:0", plan:"al", cam:[-27,262,41,-27,0,9],
  x:"Weyrother's orders send four of the five Allied columns south-west, off the plateau, to turn the French right and cut the road to Vienna. The heavy arrows are the intended lines of march. Note what they all have in common: they lead away from the centre."},
-{n:"The French deception", t:250, chapter:"deception", cam:[-129,44,27,-7,8,-5],
+{n:"The French deception", at:"ph:0", chapter:"deception",
  x:"Napoleon gave up the plateau on 1 December and camped behind the Goldbach, leaving his right so thin that a single division held five kilometres of stream. The weakness was real, which is what made it convincing."},
-{n:"The Allied advance", t:445, chapter:"commitment", cam:[-167,62,162,-55,4,62],
+{n:"The Allied advance", at:"ph:1", t:445, chapter:"commitment",
  x:"From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 39,000 at 04:00 to about 19,000 by 07:15, half of it gone before a shot is fired at the plateau."},
-{n:"Why the Pratzen matters", t:500, feature:"pratzen", cam:[-136,46,31,-6,8,-3],
+{n:"Why the Pratzen matters", at:"ph:2", feature:"pratzen", cam:[-136,46,31,-6,8,-3],
  x:"In this model's terrain an observer on the Pratzeberg summit can see about 73 per cent of the field, and one on the valley floor at Puntowitz under 3 per cent. That is a reading from the model, not a record of what anyone saw: on the morning of the battle the valley lay in fog, and it was the fog that hid Soult's divisions forming at the foot of the slope."},
-{n:"The French strike", t:530, chapter:"pratzen", cam:[-136,46,31,-6,8,-3],
+{n:"The French strike", at:"ev:soult", chapter:"pratzen",
  x:"At about a quarter to nine Saint-Hilaire and Vandamme climb out of the fog onto ground the Allies have just left. Two divisions, no reserve committed, against a column still filing off the heights."},
-{n:"The army divided", t:680, chapter:"cut", cam:[-75,38,42,7,8,12],
+{n:"The army divided", at:"ev:pratzeberg", chapter:"cut",
  x:"With the plateau gone the Allied army is in two halves that can no longer help one another. Buxhowden's forty thousand are still attacking westward and will not learn what has happened behind them until about noon."},
-{n:"The collapse", t:880, chapter:"collapse", cam:[-122,96,2,-18,0,68],
+{n:"The collapse", at:"ev:augezd", chapter:"collapse",
  x:"The French centre turns ninety degrees and comes down off the heights into the rear of the Allied left. The only ordered way out is the neck of dry ground at Augezd, under guns on ground the Allies held at dawn."},
-{n:"What it cost", t:1000, chapter:null, cam:[-220,158,206,-28,0,6],
+{n:"What it cost", at:"ph:9", chapter:null,
  x:"Allied losses are usually given as fifteen to sixteen thousand killed and wounded and twelve thousand or more taken, with about a hundred and eighty guns. French losses were near nine thousand. Everything you have watched today is a reconstruction: positions are graded A, B or C, strengths carry their ranges, and two figures on the situation line are computed rather than recorded. The sources panel says which is which."}
 ];

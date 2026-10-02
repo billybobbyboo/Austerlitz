@@ -18,14 +18,14 @@ lower one without saying so explicitly.
 | `tokens.js` | `TOKENS`: the only source of interface and symbology colours and type (`docs/VISUAL_SPEC.md`); `python3 build.py --tokens` writes its copy into `style.css`, and the build fails if that copy drifts. Nation colours stay in `NATION` |
 | `geo.js` | `GEOREF`: the only geographic and scale authority (transform, horizontal and vertical scale, ground truth) |
 | `data.js` | historical dataset: phases, order of battle and tracks, features, sources note |
-| `analysis.js` | analysis chapters, command knowledge, the two plans, acts, events, guided tour |
+| `analysis.js` | analysis chapters (themes: each names its moments, `at` and `moments`, since the spine data task), command knowledge, the two plans, acts, events, guided tour (each stop names a moment) |
 | `world.js` | ground: relief model, land cover, water, roads, woods, settlements, mist, `groundY`; the paper map's flat symbology (village footprints, woods) and its own hillshade (since 2E); the ground shader, which draws the land cover per point, and `COVER_ML`/`drawnCover` (since 2F) |
 | `symbols.js` | the map layer's counters and names (HTML/SVG builders, accessible names), event and objective glyphs |
 | `app.js` | scene, overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2 and Stage 3 measurement scripts (`stage2/`, `stage3/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
-| `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `stage2c-68ac7721.html` (the `check:data` reference) |
+| `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `stage2c-68ac7721.html` (the 2C build, on which the drop limits are derived), `spine-6b2cccd4.html` (the `check:data` reference, since the spine data task) |
 | `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE3_SPEC.md` (Stage 3, with `stage3-evidence/`), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
 
 The one-off correction-pass tools (`geo-migrate.js`, `geo-anchor.js`, `patch-app.py`, `patch-history.py`, and the
@@ -62,8 +62,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   the failed suites, if any suite exits non-zero or prints an error summary. It also runs the Stage 2B height guard
   (`tools/stage2/height-sites.js --check`): no presentation code may read `height()`/`hAt()`; draw on `displayHeight()`
   or `groundY()`, and classify any new call site.
-- `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/stage2c-68ac7721.html`
-  (the Stage 2C build); a data task that changes it lists every changed declaration in `CHANGELOG.md` and moves the reference.
+- `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/spine-6b2cccd4.html`
+  (the spine data task's build; before it, `archive/stage2c-68ac7721.html`); a data task that changes it lists every changed declaration in `CHANGELOG.md` and moves the reference.
 - `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
   explicit anchor time carries evidence found in the sources, a grade and a basis; a derived arrival at the march-rate ceiling
   only for the legs it names (`CEILING_FLAGGED`), every other at the tactical rate (a design value, unsourced).
@@ -102,9 +102,11 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   Since 3E: by real key presses, Space and Enter on a focused button press it, Ctrl+C does nothing, "?" opens the overlay and
   focus returns when Esc closes it; the self-test's key-table dry run, the overlay, the names and the symbols' largest size;
   `css-test.js` checks the names (no presentation "Map", no ground "Staff map").
+  Since the spine data task: the self-test's spine check (every theme and stop resolves to its moments; a theme opens on its
+  principal moment and marks the others; stop 7 follows its theme); by real key presses, ← → on a focused button leave the clock.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 3E build (md5 `eb18a8ea...`, 1,342,333 bytes;
-  re-baselined from the Stage 3D build `732e04c0...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified spine data task build (md5 `6b2cccd4...`, 1,348,542 bytes;
+  re-baselined from the Stage 3E build `eb18a8ea...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -138,6 +140,8 @@ data) is merged (#23). Stage 3D (the camera: pan, orbit, zoom toward the cursor,
 landscape; the focus at the free rectangle's centre by the view offset; Follow; one tween chain; the Overview fitted to the day's
 battle with the fog receding and corps and army names drawn far, owner decisions 61-63) is merged (#24). Stage 3E (names:
 Study / Watch / Clean, Landscape / Paper map / Landscape with counters, Layers, from `LABELS`; one key table `KEYS` and the "?"
-overlay; the key fixes; event glyphs and objective markers capped on screen) is implemented, for review; Stage 3 is then
-complete. The spine data task has not started. The shadow toe
+overlay; the key fixes; event glyphs and objective markers capped on screen) is merged (#25); Stage 3 is complete. The spine data
+task (themes and tour stops name their moments, `ANALYSIS.at`/`moments` and `TOUR.at`; owner decisions 52, 59, 64-67; one timeline
+line moved; decision 56's sentence in `SOURCE_NOTE`; ← → on a focused button no longer step the clock) is implemented, for
+review. The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.
