@@ -4,7 +4,7 @@ Produced by the scripts in `tools/stage3/` against the Stage 2F build (md5 `ee43
 bytes) in headless Chromium with software WebGL. Cited from `docs/STAGE3_SPEC.md`. The page scripts inject **probes** into
 the running page: measurement code, not the Stage 3 implementation; they changed no source file. The `3b-*` files compare the
 Stage 2F build with the Stage 3B build (both through the harness); the `3c-*` files compare the Stage 3B build with the
-Stage 3C build, and the `3d-*` files the Stage 3C build with the Stage 3D build.
+Stage 3C build, the `3d-*` files the Stage 3C build with the Stage 3D build, and the `3e-*` files the 3D build with the 3E build.
 
 | file | section | script |
 |---|---|---|
@@ -20,6 +20,8 @@ Stage 3C build, and the `3d-*` files the Stage 3C build with the Stage 3D build.
 | `3d-report.md` | I (3D) | `report-3b.js --part 3D --before "Stage 3C"`: per harness view, the 3C build against the 3D build (the same columns) |
 | `3d-sheet.jpg` | I (3D) | `report-3b.js --sheet --views ...`: six views, the 3C build (left) and 3D (right) |
 | `3d-overview.jpg` | I (3D) | the phase-8 Overview in Study: the 3C build; the modelled ground fitted without the fog's recession; fitted with it (the build); the day's action fitted instead (the alternative not adopted) |
+| `3e-report.md` | I (3E) | `report-3b.js --part 3E --before "Stage 3D"`: per harness view, the 3D build against the 3E build |
+| `3e-sheet.jpg` | I (3E) | `report-3b.js --sheet --views ...`: six views, the 3D build (left) and 3E (right) |
 | `offset-limits.json` | I (3D), §0.3 decision 62 | `tools/stage3/offset-limits.js --prev <3C build>`: selected-formation and narrow-1024 in the 3D framing, on the Stage 2C build (its canvas pass's hidden count, native and with matched panels) and on the 3C build (its map layer's drops) |
 | `orbit-min.jpg` | G.3 | `nav-probe.js --only heads`: the harness view pratzen-orbit-min (its own interaction replayed), the event glyph drawn across the view |
 

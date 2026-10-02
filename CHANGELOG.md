@@ -1,8 +1,85 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 3E: names, the "?" overlay, the key table; event glyphs and objective markers capped (docs/STAGE3_SPEC.md §E, §F, §G.3, §H, §I; owner decisions 50, 51, 57)
+
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,342,333 bytes, md5 `eb18a8eaf4e37a3061aa0a9227b4dd14`**
+(was 1,319,262 bytes, md5 `732e04c0…`, Stage 3D).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move. No
+  data, track, text of the record or `OVERLAYS` change. Presentation only.
+
+**Before building (fact).** `main` (ed71075, 3D merged as #24) matched `check:baseline` (md5 `732e04c0…`, 1,319,262 bytes). The
+harness was run on that build with this part's measurement code, as the "before" of the per-view table.
+
+**What changed** (`app.js`, `shell.html`, `style.css`)
+- **Names** (§E.2; decision 50), labels only, from one table (`LABELS`) that the buttons, their titles and accessible names,
+  the layers panel and the overlay read; `shell.html` carries the same words. The identifiers (`study`, `watch`, `map`;
+  `terrain`, `staff`, `hybrid`) are unchanged.
+
+  | where | was | is |
+  |---|---|---|
+  | the third presentation | Map ("Clean battlefield (3)") | Clean ("The battlefield alone: no panels (key 3)"); the switch's padding narrowed so it keeps its 176 px |
+  | the first two presentations' titles | "Everything: panels, dossiers, sources (1)", "Battlefield and timeline only (2)" | the same words, "(key 1)", "(key 2)" |
+  | the ground's buttons | Terrain / Staff map / Hybrid | Landscape / Paper map / Landscape with counters |
+  | the ground group's accessible name | "Map mode" | "Ground" |
+  | the layers button, panel heading, panel's accessible name | "Map…", "Map", "Map settings" | "Layers…", "Layers", "Layers and ground" |
+  | the layers panel's section | "What the map shows" | "What is drawn" |
+  | the legend's key line | "1 study 2 watch 3 map only · M map mode · D text · F FX on · space play · Esc back" | "? all keys and controls" |
+  | the self-test's detail strings | "staff map" | "the paper map's preset" |
+  | `css-test.js` messages | "map mode must hide …" | "Clean (the presentation map) must hide …" |
+
+- **One key table** (`KEYS`, §F.2): every key and pointer control, with its scope, group, keys and words. The window's key
+  handler and the map layer's run the rows of their scope (`keyRow`); the rail, the roving groups, the tablist, the map layer's
+  items and the pointer keep their own handlers and have rows, so the overlay lists them. H and U are kept and listed (decision 51).
+- **The "?" overlay** (§F.2): "?" or the "?" button in the timeline's control row (Study and Watch) opens a
+  modal dialog written from the table, in seven groups (Time; View and ground; Layers and panels; The map, when it has focus;
+  The timeline; Pointer and touch; Developer). Focus moves to its close button and Tab keeps it inside; Esc or "?" closes it and
+  focus returns to where it was; while it is open no other key acts.
+- **Key fixes** (§F.2): keys with Ctrl, Meta or Alt do nothing (before, Ctrl+C toggled the contours); Space and Enter on a
+  focused button, link or tab press it, as the platform does, and do not toggle play (before, Space on the "Guided tour" button
+  started playback). The rail's double step, its keys and the tablist were fixed in 3C and 3B.
+- **Event glyphs and objective markers** (§G.3; decision 57): drawn at most 192 px on screen and faded out within 4-12 units of
+  the eye; the map layer's obstacle discs shrink and fade with them; the arrow heads' box test is unchanged. Every harness view
+  but pratzen-orbit-min drew them at 189 px or less (close-sokolnitz's event glyph, 40 units from the eye), so only views closer
+  than those change. The paper map draws them as before.
+
+**Per view, before (Stage 3D) and after** (`tools/stage3/report-3b.js --part 3E`; `docs/stage3-evidence/3e-report.md`, `3e-sheet.jpg`)
+- **pratzen-orbit-min draws map text again**: 0 → 6 items placed, 7 → 1 dropped (lowest contrast 11.46:1). Before, the live event
+  glyph 1.8 units from the eye was drawn 6,100 px wide and the map layer's discs covered the whole screen (§G.3).
+- Every other view is unchanged: unobstructed fraction, drops, placements and lowest contrast identical at both viewports.
+- Found while checking: "Clean" is 8 px wider than "Map", which widened the switch and put first-run at 1280 x 720 at 48.99%,
+  under its 49.0% baseline; the padding was narrowed rather than the baseline lowered. A "?" button in the tools group (§F.2)
+  lowered every Study view by 0.1 point for the same reason; there is one "?" button, in the timeline's control row.
+
+**Tests** (none loosened; new or stricter)
+- **Self-test** (125 checks, was 121), new: a dry run of the key table (66 key presses reach their rows; unbound keys, keys
+  with Ctrl, Meta or Alt, and Space on a focused button reach none; no key claimed by two rows); the overlay lists all 29 rows in
+  its groups, is modal, keeps focus by Tab and returns it when Esc or "?" closes it; the names from the label table; event
+  glyphs and objective markers at most 192 px and faded near the eye, and drawn as before from the Field vantage.
+- **Harness, by real key presses**: Space and Enter on a focused speed button set the speed and do not play; Ctrl+C leaves the
+  contours as they are; "?" on the focused tour button opens the overlay, Tab cycles its close button and list, Esc closes it and
+  focus returns to the tour button.
+- **`css-test.js`**: a static check of the names over `shell.html` and the label table (no presentation labelled "Map", no ground
+  "Staff map", "Terrain" or "Hybrid"; the identifiers unchanged); three messages reworded ("map mode" → "Clean").
+- **`check:contrast`: 28 states** (two new: the overlay over the landscape and over the paper map).
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard.
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:visual`: all checks passed, 20 views, the self-test 125 of 125, the slider and the 3E keys by real key presses.
+- `npm run check:contrast`: 4,226 text elements in 28 states, 0 below AA, 0 below 10.5 px.
+- `npm run check:baseline`: moved to this build; passes.
+
+**Not done, or open**
+- Decision 56 (the mode switch kept enabled during playback): no code; the difference from the relief control is not yet stated
+  in the sources sheet (§0.3 left it to the owner).
+- The ← and → keys on a focused button still step the clock (§G.6 measured it); §F.2 did not list it among the fixes.
+- Stage 3 is complete with this part; the spine data task (decisions 52, 59) is not started.
+
 ## 2026-10 · Stage 3D: the camera (docs/STAGE3_SPEC.md §A.3, §B.4, §H, §I; owner decisions 47, 48, 61-63)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,319,262 bytes, md5 `732e04c0f12f939984fec3d452e48de0`**
+**Status: merged (#24). `austerlitz-command-map.html`: 1,319,262 bytes, md5 `732e04c0f12f939984fec3d452e48de0`**
 (was 1,281,813 bytes, md5 `6ae3f8a7…`, Stage 3C).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move. No

@@ -21,7 +21,7 @@ lower one without saying so explicitly.
 | `analysis.js` | analysis chapters, command knowledge, the two plans, acts, events, guided tour |
 | `world.js` | ground: relief model, land cover, water, roads, woods, settlements, mist, `groundY`; the paper map's flat symbology (village footprints, woods) and its own hillshade (since 2E); the ground shader, which draws the land cover per point, and `COVER_ML`/`drawnCover` (since 2F) |
 | `symbols.js` | the map layer's counters and names (HTML/SVG builders, accessible names), event and objective glyphs |
-| `app.js` | scene, overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
+| `app.js` | scene, overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2 and Stage 3 measurement scripts (`stage2/`, `stage3/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
@@ -67,9 +67,9 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
   explicit anchor time carries evidence found in the sources, a grade and a basis; a derived arrival at the march-rate ceiling
   only for the legs it names (`CEILING_FLAGGED`), every other at the tactical rate (a design value, unsourced).
-- `npm run check:contrast`: every visible text element in 26 interface states (the map layer's plates and the legend among them, map text also
+- `npm run check:contrast`: every visible text element in 28 interface states (the map layer's plates and the legend among them, map text also
   over black and white ground, the paper map as entered and close since 2E; Study as it opens and the Now tab on the paper map since 3B;
-  Watch on the paper map and on the landscape since 3C)
+  Watch on the paper map and on the landscape since 3C; the "?" overlay over both since 3E)
   meets WCAG AA and the 10.5 px floor.
 - `npm run check:visual`: 20 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
   `narrow-1024`, the undocked layout, and since 3C the phase-8 Overview in Study and in Watch), Stage 0
@@ -99,9 +99,12 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   touch, the floor after every step), the offset after each panel change, picking through it, Follow after 14 paths, every
   vantage's target centred and the Overview's battle inside the free rectangle naming its corps and armies, and one tween chain.
   The drop limits of selected-formation (4) and narrow-1024 (6) are the 3C layer's in the 3D framing (owner decision 62).
+  Since 3E: by real key presses, Space and Enter on a focused button press it, Ctrl+C does nothing, "?" opens the overlay and
+  focus returns when Esc closes it; the self-test's key-table dry run, the overlay, the names and the symbols' largest size;
+  `css-test.js` checks the names (no presentation "Map", no ground "Staff map").
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 3D build (md5 `732e04c0...`, 1,319,262 bytes;
-  re-baselined from the Stage 3C build `6ae3f8a7...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 3E build (md5 `eb18a8ea...`, 1,342,333 bytes;
+  re-baselined from the Stage 3D build `732e04c0...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -133,6 +136,8 @@ merged (#22). Stage 3C (one timeline of about 90 px on one time axis: act bands,
 markers; the situation's readings at the top of the Now tab; Watch's switch in the control row; the spine index, built from the
 data) is merged (#23). Stage 3D (the camera: pan, orbit, zoom toward the cursor, double-click focus, keys and touch on the
 landscape; the focus at the free rectangle's centre by the view offset; Follow; one tween chain; the Overview fitted to the day's
-battle with the fog receding and corps and army names drawn far, owner decisions 61-63) is implemented, for review; 3E has not
-started. The shadow toe
+battle with the fog receding and corps and army names drawn far, owner decisions 61-63) is merged (#24). Stage 3E (names:
+Study / Watch / Clean, Landscape / Paper map / Landscape with counters, Layers, from `LABELS`; one key table `KEYS` and the "?"
+overlay; the key fixes; event glyphs and objective markers capped on screen) is implemented, for review; Stage 3 is then
+complete. The spine data task has not started. The shadow toe
 and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.
