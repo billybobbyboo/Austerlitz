@@ -1,0 +1,156 @@
+{
+ "when": "2026-10-02T10:23:27.966Z",
+ "cases": {
+  "pratzen-low@4": {
+   "A": {
+    "solidBlocks": 0,
+    "what": {}
+   },
+   "B": {
+    "solidBlocks": 52,
+    "what": {
+     "figures": 3,
+     "ids": {
+      "vandamme": 2,
+      "legrand": 1
+     },
+     "ground": 31,
+     "trees": 1,
+     "conifers": 17
+    }
+   },
+   "E": {
+    "solidBlocks": 22,
+    "what": {
+     "ground": 3,
+     "trees": 1,
+     "conifers": 17,
+     "figures": 1,
+     "ids": {
+      "legrand": 1
+     }
+    }
+   },
+   "H": {
+    "solidBlocks": 4,
+    "what": {
+     "ground": 1,
+     "conifers": 2,
+     "figures": 1,
+     "ids": {
+      "legrand": 1
+     }
+    }
+   },
+   "J": {
+    "solidBlocks": 4,
+    "what": {
+     "conifers": 3,
+     "figures": 1,
+     "ids": {
+      "legrand": 1
+     }
+    }
+   }
+  },
+  "pratzen-low@10.33": {
+   "A": {
+    "solidBlocks": 0,
+    "what": {}
+   },
+   "B": {
+    "solidBlocks": 373,
+    "what": {
+     "ground": 334,
+     "Line": 7,
+     "figures": 16,
+     "ids": {
+      "vandamme": 16
+     },
+     "Mesh": 6,
+     "LineSegments": 7,
+     "conifers": 3
+    }
+   },
+   "E": {
+    "solidBlocks": 3,
+    "what": {
+     "ground": 1,
+     "conifers": 2
+    }
+   },
+   "H": {
+    "solidBlocks": 0,
+    "what": {}
+   },
+   "J": {
+    "solidBlocks": 2,
+    "what": {
+     "ground": 1,
+     "conifers": 1
+    }
+   }
+  },
+  "close-sokolnitz@4": {
+   "A": {
+    "solidBlocks": 0,
+    "what": {}
+   },
+   "B": {
+    "solidBlocks": 2,
+    "what": {
+     "conifers": 1,
+     "figures": 1,
+     "ids": {
+      "bourcier": 1
+     }
+    }
+   },
+   "E": {
+    "solidBlocks": 2,
+    "what": {
+     "conifers": 1,
+     "figures": 1,
+     "ids": {
+      "bourcier": 1
+     }
+    }
+   },
+   "H": {
+    "solidBlocks": 1,
+    "what": {
+     "figures": 1,
+     "ids": {
+      "bourcier": 1
+     }
+    }
+   },
+   "J": {
+    "solidBlocks": 0,
+    "what": {}
+   }
+  },
+  "overview-field@4": {
+   "A": {
+    "solidBlocks": 0,
+    "what": {}
+   },
+   "B": {
+    "solidBlocks": 0,
+    "what": {}
+   },
+   "E": {
+    "solidBlocks": 0,
+    "what": {}
+   },
+   "H": {
+    "solidBlocks": 0,
+    "what": {}
+   },
+   "J": {
+    "solidBlocks": 0,
+    "what": {}
+   }
+  }
+ }
+}

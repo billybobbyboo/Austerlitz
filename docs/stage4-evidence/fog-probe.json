@@ -1,0 +1,4574 @@
+{
+ "when": "2026-10-02T10:31:29.629Z",
+ "today": {
+  "overview-field": {
+   "eyeToTarget": 243.7,
+   "shift": 0,
+   "near": 220,
+   "far": 1000,
+   "samples": 576,
+   "withShift": {
+    "atTarget": 0.003,
+    "mean": 0.062,
+    "over50": 0,
+    "over90": 0
+   },
+   "withoutShift": {
+    "atTarget": 0.003,
+    "mean": 0.062,
+    "over50": 0,
+    "over90": 0
+   },
+   "clock": 570,
+   "factor": 4
+  },
+  "overview-plan": {
+   "eyeToTarget": 425.4,
+   "shift": 151.6,
+   "near": 220,
+   "far": 999.9999999999999,
+   "samples": 576,
+   "withShift": {
+    "atTarget": 0.014,
+    "mean": 0.014,
+    "over50": 0,
+    "over90": 0
+   },
+   "withoutShift": {
+    "atTarget": 0.172,
+    "mean": 0.173,
+    "over50": 0,
+    "over90": 0
+   },
+   "clock": 570,
+   "factor": 4
+  },
+  "close-sokolnitz": {
+   "eyeToTarget": 57.2,
+   "shift": 0,
+   "near": 120,
+   "far": 720,
+   "samples": 576,
+   "withShift": {
+    "atTarget": 0,
+    "mean": 0,
+    "over50": 0,
+    "over90": 0
+   },
+   "withoutShift": {
+    "atTarget": 0,
+    "mean": 0,
+    "over50": 0,
+    "over90": 0
+   },
+   "clock": 500,
+   "factor": 4
+  },
+  "pratzen-low": {
+   "eyeToTarget": 71.4,
+   "shift": 0,
+   "near": 220,
+   "far": 1000,
+   "samples": 512,
+   "withShift": {
+    "atTarget": 0,
+    "mean": 0.048,
+    "over50": 0.055,
+    "over90": 0.002
+   },
+   "withoutShift": {
+    "atTarget": 0,
+    "mean": 0.048,
+    "over50": 0.055,
+    "over90": 0.002
+   },
+   "clock": 590,
+   "factor": 4
+  },
+  "selected-formation": {
+   "eyeToTarget": 92.3,
+   "shift": 0,
+   "near": 220,
+   "far": 1000,
+   "samples": 576,
+   "withShift": {
+    "atTarget": 0,
+    "mean": 0,
+    "over50": 0,
+    "over90": 0
+   },
+   "withoutShift": {
+    "atTarget": 0,
+    "mean": 0,
+    "over50": 0,
+    "over90": 0
+   },
+   "clock": 570,
+   "factor": 4
+  },
+  "watch-selected": {
+   "eyeToTarget": 86.8,
+   "shift": 0,
+   "near": 220,
+   "far": 1000,
+   "samples": 576,
+   "withShift": {
+    "atTarget": 0,
+    "mean": 0,
+    "over50": 0,
+    "over90": 0
+   },
+   "withoutShift": {
+    "atTarget": 0,
+    "mean": 0,
+    "over50": 0,
+    "over90": 0
+   },
+   "clock": 585,
+   "factor": 4
+  },
+  "hybrid-dimmed": {
+   "eyeToTarget": 99.4,
+   "shift": 0,
+   "near": 220,
+   "far": 1000,
+   "samples": 576,
+   "withShift": {
+    "atTarget": 0,
+    "mean": 0,
+    "over50": 0,
+    "over90": 0
+   },
+   "withoutShift": {
+    "atTarget": 0,
+    "mean": 0,
+    "over50": 0,
+    "over90": 0
+   },
+   "clock": 600,
+   "factor": 4
+  },
+  "pratzen-low-1x": {
+   "eyeToTarget": 72.4,
+   "shift": 0,
+   "near": 220,
+   "far": 1000,
+   "samples": 576,
+   "withShift": {
+    "atTarget": 0,
+    "mean": 0.064,
+    "over50": 0.056,
+    "over90": 0.056
+   },
+   "withoutShift": {
+    "atTarget": 0,
+    "mean": 0.064,
+    "over50": 0.056,
+    "over90": 0.056
+   },
+   "clock": 590,
+   "factor": 1
+  },
+  "pratzen-low-10x": {
+   "eyeToTarget": 70,
+   "shift": 0,
+   "near": 220,
+   "far": 1000,
+   "samples": 395,
+   "withShift": {
+    "atTarget": 0,
+    "mean": 0.059,
+    "over50": 0.053,
+    "over90": 0.02
+   },
+   "withoutShift": {
+    "atTarget": 0,
+    "mean": 0.059,
+    "over50": 0.053,
+    "over90": 0.02
+   },
+   "clock": 590,
+   "factor": "model"
+  },
+  "ph8-overview-study": {
+   "eyeToTarget": 536.2,
+   "shift": 262.3,
+   "near": 180,
+   "far": 900,
+   "samples": 576,
+   "withShift": {
+    "atTarget": 0.047,
+    "mean": 0.048,
+    "over50": 0,
+    "over90": 0
+   },
+   "withoutShift": {
+    "atTarget": 0.492,
+    "mean": 0.494,
+    "over50": 0.377,
+    "over90": 0
+   },
+   "clock": 880,
+   "factor": 4
+  },
+  "ph8-overview-watch": {
+   "eyeToTarget": 425.4,
+   "shift": 151.6,
+   "near": 180,
+   "far": 899.9999999999999,
+   "samples": 576,
+   "withShift": {
+    "atTarget": 0.047,
+    "mean": 0.048,
+    "over50": 0,
+    "over90": 0
+   },
+   "withoutShift": {
+    "atTarget": 0.269,
+    "mean": 0.271,
+    "over50": 0,
+    "over90": 0
+   },
+   "clock": 880,
+   "factor": 4
+  }
+ },
+ "model": {
+  "clocks": {
+   "300": [
+    {
+     "id": "gqg",
+     "name": "Imperial Headquarters",
+     "men": null,
+     "m": 290,
+     "drawn": true
+    },
+    {
+     "id": "c_iv",
+     "name": "IV Corps",
+     "men": 23600,
+     "m": 214,
+     "drawn": false
+    },
+    {
+     "id": "sthilaire",
+     "name": "Saint-Hilaire's Division",
+     "men": 6600,
+     "m": 217,
+     "drawn": true
+    },
+    {
+     "id": "vandamme",
+     "name": "Vandamme's Division",
+     "men": 6700,
+     "m": 235,
+     "drawn": true
+    },
+    {
+     "id": "legrand",
+     "name": "Legrand's Division",
+     "men": 7000,
+     "m": 219,
+     "drawn": true
+    },
+    {
+     "id": "c_iii",
+     "name": "III Corps (detachment)",
+     "men": 4300,
+     "m": 222,
+     "drawn": false
+    },
+    {
+     "id": "friant",
+     "name": "Friant's Division",
+     "men": 3470,
+     "m": 223,
+     "drawn": true
+    },
+    {
+     "id": "bourcier",
+     "name": "Bourcier's Dragoons",
+     "men": 830,
+     "m": 223,
+     "drawn": true
+    },
+    {
+     "id": "c_v",
+     "name": "V Corps",
+     "men": 12700,
+     "m": 254,
+     "drawn": false
+    },
+    {
+     "id": "caffarelli",
+     "name": "Caffarelli's Division",
+     "men": 6700,
+     "m": 238,
+     "drawn": true
+    },
+    {
+     "id": "suchet",
+     "name": "Suchet's Division",
+     "men": 6000,
+     "m": 263,
+     "drawn": true
+    },
+    {
+     "id": "santon",
+     "name": "The Santon detachment",
+     "men": 1600,
+     "m": 296,
+     "drawn": true
+    },
+    {
+     "id": "c_cav",
+     "name": "Cavalry Reserve",
+     "men": 7400,
+     "m": 250,
+     "drawn": false
+    },
+    {
+     "id": "kellermann",
+     "name": "Kellermann's Light Cavalry",
+     "men": 2400,
+     "m": 228,
+     "drawn": true
+    },
+    {
+     "id": "nansouty",
+     "name": "Nansouty's Cuirassiers",
+     "men": 1600,
+     "m": 243,
+     "drawn": true
+    },
+    {
+     "id": "dhautpoul",
+     "name": "d'Hautpoul's Cuirassiers",
+     "men": 1300,
+     "m": 249,
+     "drawn": true
+    },
+    {
+     "id": "walther",
+     "name": "Walther's Dragoons",
+     "men": 1500,
+     "m": 251,
+     "drawn": true
+    },
+    {
+     "id": "c_i",
+     "name": "I Corps",
+     "men": 13000,
+     "m": 246,
+     "drawn": false
+    },
+    {
+     "id": "rivaud",
+     "name": "Rivaud's Division",
+     "men": 6000,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "drouet",
+     "name": "Drouet d'Erlon's Division",
+     "men": 7000,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "c_gd",
+     "name": "Imperial Guard",
+     "men": 5500,
+     "m": 245,
+     "drawn": false
+    },
+    {
+     "id": "guard_inf",
+     "name": "Guard Infantry",
+     "men": 3000,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "guard_cav",
+     "name": "Guard Cavalry",
+     "men": 2500,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "c_gren",
+     "name": "Grenadier Division",
+     "men": 5700,
+     "m": 248,
+     "drawn": true
+    },
+    {
+     "id": "ahq",
+     "name": "Allied Headquarters",
+     "men": null,
+     "m": 236,
+     "drawn": true
+    },
+    {
+     "id": "buxhowden",
+     "name": "Left Wing Command",
+     "men": 40000,
+     "m": 218,
+     "drawn": true
+    },
+    {
+     "id": "kienmayer",
+     "name": "Kienmayer's Advance Guard",
+     "men": 6800,
+     "m": 211,
+     "drawn": true
+    },
+    {
+     "id": "dok",
+     "name": "First Column",
+     "men": 13490,
+     "m": 214,
+     "drawn": true
+    },
+    {
+     "id": "lang",
+     "name": "Second Column",
+     "men": 11700,
+     "m": 249,
+     "drawn": true
+    },
+    {
+     "id": "prz",
+     "name": "Third Column",
+     "men": 7700,
+     "m": 325,
+     "drawn": true
+    },
+    {
+     "id": "col4",
+     "name": "Fourth Column",
+     "men": 13900,
+     "m": 269,
+     "drawn": false
+    },
+    {
+     "id": "milo",
+     "name": "Miloradovich's Russians",
+     "men": 4800,
+     "m": 278,
+     "drawn": true
+    },
+    {
+     "id": "kollo",
+     "name": "Kollowrat's Austrians",
+     "men": 9100,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "lich",
+     "name": "Fifth Column (cavalry)",
+     "men": 5400,
+     "m": 250,
+     "drawn": true
+    },
+    {
+     "id": "bag",
+     "name": "Advance Guard of the Right",
+     "men": 13700,
+     "m": 268,
+     "drawn": true
+    },
+    {
+     "id": "constantine",
+     "name": "Russian Imperial Guard",
+     "men": 10500,
+     "m": 218,
+     "drawn": false
+    },
+    {
+     "id": "rg_inf",
+     "name": "Guard Infantry",
+     "men": 6730,
+     "m": 220,
+     "drawn": true
+    },
+    {
+     "id": "rg_cav",
+     "name": "Guard Cavalry",
+     "men": 3700,
+     "m": 217,
+     "drawn": true
+    }
+   ],
+   "420": [
+    {
+     "id": "gqg",
+     "name": "Imperial Headquarters",
+     "men": null,
+     "m": 290,
+     "drawn": true
+    },
+    {
+     "id": "c_iv",
+     "name": "IV Corps",
+     "men": 23600,
+     "m": 214,
+     "drawn": false
+    },
+    {
+     "id": "sthilaire",
+     "name": "Saint-Hilaire's Division",
+     "men": 6600,
+     "m": 214,
+     "drawn": true
+    },
+    {
+     "id": "vandamme",
+     "name": "Vandamme's Division",
+     "men": 6700,
+     "m": 229,
+     "drawn": true
+    },
+    {
+     "id": "legrand",
+     "name": "Legrand's Division",
+     "men": 7000,
+     "m": 206,
+     "drawn": true
+    },
+    {
+     "id": "c_iii",
+     "name": "III Corps (detachment)",
+     "men": 4300,
+     "m": 226,
+     "drawn": false
+    },
+    {
+     "id": "friant",
+     "name": "Friant's Division",
+     "men": 3470,
+     "m": 230,
+     "drawn": true
+    },
+    {
+     "id": "bourcier",
+     "name": "Bourcier's Dragoons",
+     "men": 830,
+     "m": 226,
+     "drawn": true
+    },
+    {
+     "id": "c_v",
+     "name": "V Corps",
+     "men": 12700,
+     "m": 254,
+     "drawn": false
+    },
+    {
+     "id": "caffarelli",
+     "name": "Caffarelli's Division",
+     "men": 6700,
+     "m": 238,
+     "drawn": true
+    },
+    {
+     "id": "suchet",
+     "name": "Suchet's Division",
+     "men": 6000,
+     "m": 263,
+     "drawn": true
+    },
+    {
+     "id": "santon",
+     "name": "The Santon detachment",
+     "men": 1600,
+     "m": 296,
+     "drawn": true
+    },
+    {
+     "id": "c_cav",
+     "name": "Cavalry Reserve",
+     "men": 7400,
+     "m": 230,
+     "drawn": false
+    },
+    {
+     "id": "kellermann",
+     "name": "Kellermann's Light Cavalry",
+     "men": 2400,
+     "m": 240,
+     "drawn": true
+    },
+    {
+     "id": "nansouty",
+     "name": "Nansouty's Cuirassiers",
+     "men": 1600,
+     "m": 228,
+     "drawn": true
+    },
+    {
+     "id": "dhautpoul",
+     "name": "d'Hautpoul's Cuirassiers",
+     "men": 1300,
+     "m": 236,
+     "drawn": true
+    },
+    {
+     "id": "walther",
+     "name": "Walther's Dragoons",
+     "men": 1500,
+     "m": 253,
+     "drawn": true
+    },
+    {
+     "id": "c_i",
+     "name": "I Corps",
+     "men": 13000,
+     "m": 246,
+     "drawn": false
+    },
+    {
+     "id": "rivaud",
+     "name": "Rivaud's Division",
+     "men": 6000,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "drouet",
+     "name": "Drouet d'Erlon's Division",
+     "men": 7000,
+     "m": 232,
+     "drawn": true
+    },
+    {
+     "id": "c_gd",
+     "name": "Imperial Guard",
+     "men": 5500,
+     "m": 245,
+     "drawn": false
+    },
+    {
+     "id": "guard_inf",
+     "name": "Guard Infantry",
+     "men": 3000,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "guard_cav",
+     "name": "Guard Cavalry",
+     "men": 2500,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "c_gren",
+     "name": "Grenadier Division",
+     "men": 5700,
+     "m": 248,
+     "drawn": true
+    },
+    {
+     "id": "ahq",
+     "name": "Allied Headquarters",
+     "men": null,
+     "m": 262,
+     "drawn": true
+    },
+    {
+     "id": "buxhowden",
+     "name": "Left Wing Command",
+     "men": 40000,
+     "m": 215,
+     "drawn": true
+    },
+    {
+     "id": "kienmayer",
+     "name": "Kienmayer's Advance Guard",
+     "men": 6800,
+     "m": 213,
+     "drawn": true
+    },
+    {
+     "id": "dok",
+     "name": "First Column",
+     "men": 13490,
+     "m": 219,
+     "drawn": true
+    },
+    {
+     "id": "lang",
+     "name": "Second Column",
+     "men": 11700,
+     "m": 222,
+     "drawn": true
+    },
+    {
+     "id": "prz",
+     "name": "Third Column",
+     "men": 7700,
+     "m": 262,
+     "drawn": true
+    },
+    {
+     "id": "col4",
+     "name": "Fourth Column",
+     "men": 13900,
+     "m": 278,
+     "drawn": false
+    },
+    {
+     "id": "milo",
+     "name": "Miloradovich's Russians",
+     "men": 4800,
+     "m": 254,
+     "drawn": true
+    },
+    {
+     "id": "kollo",
+     "name": "Kollowrat's Austrians",
+     "men": 9100,
+     "m": 269,
+     "drawn": true
+    },
+    {
+     "id": "lich",
+     "name": "Fifth Column (cavalry)",
+     "men": 5400,
+     "m": 278,
+     "drawn": true
+    },
+    {
+     "id": "bag",
+     "name": "Advance Guard of the Right",
+     "men": 13700,
+     "m": 268,
+     "drawn": true
+    },
+    {
+     "id": "constantine",
+     "name": "Russian Imperial Guard",
+     "men": 10500,
+     "m": 230,
+     "drawn": false
+    },
+    {
+     "id": "rg_inf",
+     "name": "Guard Infantry",
+     "men": 6730,
+     "m": 226,
+     "drawn": true
+    },
+    {
+     "id": "rg_cav",
+     "name": "Guard Cavalry",
+     "men": 3700,
+     "m": 234,
+     "drawn": true
+    }
+   ],
+   "480": [
+    {
+     "id": "gqg",
+     "name": "Imperial Headquarters",
+     "men": null,
+     "m": 290,
+     "drawn": true
+    },
+    {
+     "id": "c_iv",
+     "name": "IV Corps",
+     "men": 23600,
+     "m": 214,
+     "drawn": false
+    },
+    {
+     "id": "sthilaire",
+     "name": "Saint-Hilaire's Division",
+     "men": 6600,
+     "m": 213,
+     "drawn": true
+    },
+    {
+     "id": "vandamme",
+     "name": "Vandamme's Division",
+     "men": 6700,
+     "m": 226,
+     "drawn": true
+    },
+    {
+     "id": "legrand",
+     "name": "Legrand's Division",
+     "men": 7000,
+     "m": 206,
+     "drawn": true
+    },
+    {
+     "id": "c_iii",
+     "name": "III Corps (detachment)",
+     "men": 4300,
+     "m": 226,
+     "drawn": false
+    },
+    {
+     "id": "friant",
+     "name": "Friant's Division",
+     "men": 3470,
+     "m": 227,
+     "drawn": true
+    },
+    {
+     "id": "bourcier",
+     "name": "Bourcier's Dragoons",
+     "men": 830,
+     "m": 225,
+     "drawn": true
+    },
+    {
+     "id": "c_v",
+     "name": "V Corps",
+     "men": 12700,
+     "m": 254,
+     "drawn": false
+    },
+    {
+     "id": "caffarelli",
+     "name": "Caffarelli's Division",
+     "men": 6700,
+     "m": 238,
+     "drawn": true
+    },
+    {
+     "id": "suchet",
+     "name": "Suchet's Division",
+     "men": 6000,
+     "m": 263,
+     "drawn": true
+    },
+    {
+     "id": "santon",
+     "name": "The Santon detachment",
+     "men": 1600,
+     "m": 296,
+     "drawn": true
+    },
+    {
+     "id": "c_cav",
+     "name": "Cavalry Reserve",
+     "men": 7400,
+     "m": 229,
+     "drawn": false
+    },
+    {
+     "id": "kellermann",
+     "name": "Kellermann's Light Cavalry",
+     "men": 2400,
+     "m": 244,
+     "drawn": true
+    },
+    {
+     "id": "nansouty",
+     "name": "Nansouty's Cuirassiers",
+     "men": 1600,
+     "m": 235,
+     "drawn": true
+    },
+    {
+     "id": "dhautpoul",
+     "name": "d'Hautpoul's Cuirassiers",
+     "men": 1300,
+     "m": 227,
+     "drawn": true
+    },
+    {
+     "id": "walther",
+     "name": "Walther's Dragoons",
+     "men": 1500,
+     "m": 245,
+     "drawn": true
+    },
+    {
+     "id": "c_i",
+     "name": "I Corps",
+     "men": 13000,
+     "m": 244,
+     "drawn": false
+    },
+    {
+     "id": "rivaud",
+     "name": "Rivaud's Division",
+     "men": 6000,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "drouet",
+     "name": "Drouet d'Erlon's Division",
+     "men": 7000,
+     "m": 221,
+     "drawn": true
+    },
+    {
+     "id": "c_gd",
+     "name": "Imperial Guard",
+     "men": 5500,
+     "m": 245,
+     "drawn": false
+    },
+    {
+     "id": "guard_inf",
+     "name": "Guard Infantry",
+     "men": 3000,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "guard_cav",
+     "name": "Guard Cavalry",
+     "men": 2500,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "c_gren",
+     "name": "Grenadier Division",
+     "men": 5700,
+     "m": 248,
+     "drawn": true
+    },
+    {
+     "id": "ahq",
+     "name": "Allied Headquarters",
+     "men": null,
+     "m": 265,
+     "drawn": true
+    },
+    {
+     "id": "buxhowden",
+     "name": "Left Wing Command",
+     "men": 40000,
+     "m": 216,
+     "drawn": true
+    },
+    {
+     "id": "kienmayer",
+     "name": "Kienmayer's Advance Guard",
+     "men": 6800,
+     "m": 208,
+     "drawn": true
+    },
+    {
+     "id": "dok",
+     "name": "First Column",
+     "men": 13490,
+     "m": 216,
+     "drawn": true
+    },
+    {
+     "id": "lang",
+     "name": "Second Column",
+     "men": 11700,
+     "m": 223,
+     "drawn": true
+    },
+    {
+     "id": "kamensky",
+     "name": "Kamensky's Brigade",
+     "men": 4250,
+     "m": 240,
+     "drawn": true
+    },
+    {
+     "id": "prz",
+     "name": "Third Column",
+     "men": 7700,
+     "m": 233,
+     "drawn": true
+    },
+    {
+     "id": "col4",
+     "name": "Fourth Column",
+     "men": 13900,
+     "m": 266,
+     "drawn": false
+    },
+    {
+     "id": "milo",
+     "name": "Miloradovich's Russians",
+     "men": 4800,
+     "m": 248,
+     "drawn": true
+    },
+    {
+     "id": "kollo",
+     "name": "Kollowrat's Austrians",
+     "men": 9100,
+     "m": 280,
+     "drawn": true
+    },
+    {
+     "id": "lich",
+     "name": "Fifth Column (cavalry)",
+     "men": 5400,
+     "m": 288,
+     "drawn": true
+    },
+    {
+     "id": "bag",
+     "name": "Advance Guard of the Right",
+     "men": 13700,
+     "m": 268,
+     "drawn": true
+    },
+    {
+     "id": "constantine",
+     "name": "Russian Imperial Guard",
+     "men": 10500,
+     "m": 236,
+     "drawn": false
+    },
+    {
+     "id": "rg_inf",
+     "name": "Guard Infantry",
+     "men": 6730,
+     "m": 229,
+     "drawn": true
+    },
+    {
+     "id": "rg_cav",
+     "name": "Guard Cavalry",
+     "men": 3700,
+     "m": 242,
+     "drawn": true
+    }
+   ],
+   "510": [
+    {
+     "id": "gqg",
+     "name": "Imperial Headquarters",
+     "men": null,
+     "m": 290,
+     "drawn": true
+    },
+    {
+     "id": "c_iv",
+     "name": "IV Corps",
+     "men": 23600,
+     "m": 218,
+     "drawn": false
+    },
+    {
+     "id": "sthilaire",
+     "name": "Saint-Hilaire's Division",
+     "men": 6600,
+     "m": 213,
+     "drawn": true
+    },
+    {
+     "id": "vandamme",
+     "name": "Vandamme's Division",
+     "men": 6700,
+     "m": 226,
+     "drawn": true
+    },
+    {
+     "id": "legrand",
+     "name": "Legrand's Division",
+     "men": 7000,
+     "m": 217,
+     "drawn": true
+    },
+    {
+     "id": "c_iii",
+     "name": "III Corps (detachment)",
+     "men": 4300,
+     "m": 224,
+     "drawn": false
+    },
+    {
+     "id": "friant",
+     "name": "Friant's Division",
+     "men": 3470,
+     "m": 218,
+     "drawn": true
+    },
+    {
+     "id": "bourcier",
+     "name": "Bourcier's Dragoons",
+     "men": 830,
+     "m": 225,
+     "drawn": true
+    },
+    {
+     "id": "c_v",
+     "name": "V Corps",
+     "men": 12700,
+     "m": 254,
+     "drawn": false
+    },
+    {
+     "id": "caffarelli",
+     "name": "Caffarelli's Division",
+     "men": 6700,
+     "m": 238,
+     "drawn": true
+    },
+    {
+     "id": "suchet",
+     "name": "Suchet's Division",
+     "men": 6000,
+     "m": 263,
+     "drawn": true
+    },
+    {
+     "id": "santon",
+     "name": "The Santon detachment",
+     "men": 1600,
+     "m": 296,
+     "drawn": true
+    },
+    {
+     "id": "c_cav",
+     "name": "Cavalry Reserve",
+     "men": 7400,
+     "m": 232,
+     "drawn": false
+    },
+    {
+     "id": "kellermann",
+     "name": "Kellermann's Light Cavalry",
+     "men": 2400,
+     "m": 245,
+     "drawn": true
+    },
+    {
+     "id": "nansouty",
+     "name": "Nansouty's Cuirassiers",
+     "men": 1600,
+     "m": 239,
+     "drawn": true
+    },
+    {
+     "id": "dhautpoul",
+     "name": "d'Hautpoul's Cuirassiers",
+     "men": 1300,
+     "m": 229,
+     "drawn": true
+    },
+    {
+     "id": "walther",
+     "name": "Walther's Dragoons",
+     "men": 1500,
+     "m": 238,
+     "drawn": true
+    },
+    {
+     "id": "c_i",
+     "name": "I Corps",
+     "men": 13000,
+     "m": 241,
+     "drawn": false
+    },
+    {
+     "id": "rivaud",
+     "name": "Rivaud's Division",
+     "men": 6000,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "drouet",
+     "name": "Drouet d'Erlon's Division",
+     "men": 7000,
+     "m": 220,
+     "drawn": true
+    },
+    {
+     "id": "c_gd",
+     "name": "Imperial Guard",
+     "men": 5500,
+     "m": 245,
+     "drawn": false
+    },
+    {
+     "id": "guard_inf",
+     "name": "Guard Infantry",
+     "men": 3000,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "guard_cav",
+     "name": "Guard Cavalry",
+     "men": 2500,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "c_gren",
+     "name": "Grenadier Division",
+     "men": 5700,
+     "m": 248,
+     "drawn": true
+    },
+    {
+     "id": "ahq",
+     "name": "Allied Headquarters",
+     "men": null,
+     "m": 248,
+     "drawn": true
+    },
+    {
+     "id": "buxhowden",
+     "name": "Left Wing Command",
+     "men": 40000,
+     "m": 215,
+     "drawn": true
+    },
+    {
+     "id": "kienmayer",
+     "name": "Kienmayer's Advance Guard",
+     "men": 6800,
+     "m": 208,
+     "drawn": true
+    },
+    {
+     "id": "dok",
+     "name": "First Column",
+     "men": 13490,
+     "m": 215,
+     "drawn": true
+    },
+    {
+     "id": "lang",
+     "name": "Second Column",
+     "men": 11700,
+     "m": 223,
+     "drawn": true
+    },
+    {
+     "id": "kamensky",
+     "name": "Kamensky's Brigade",
+     "men": 4250,
+     "m": 260,
+     "drawn": true
+    },
+    {
+     "id": "prz",
+     "name": "Third Column",
+     "men": 7700,
+     "m": 231,
+     "drawn": true
+    },
+    {
+     "id": "col4",
+     "name": "Fourth Column",
+     "men": 13900,
+     "m": 260,
+     "drawn": false
+    },
+    {
+     "id": "milo",
+     "name": "Miloradovich's Russians",
+     "men": 4800,
+     "m": 245,
+     "drawn": true
+    },
+    {
+     "id": "kollo",
+     "name": "Kollowrat's Austrians",
+     "men": 9100,
+     "m": 281,
+     "drawn": true
+    },
+    {
+     "id": "lich",
+     "name": "Fifth Column (cavalry)",
+     "men": 5400,
+     "m": 289,
+     "drawn": true
+    },
+    {
+     "id": "bag",
+     "name": "Advance Guard of the Right",
+     "men": 13700,
+     "m": 268,
+     "drawn": true
+    },
+    {
+     "id": "constantine",
+     "name": "Russian Imperial Guard",
+     "men": 10500,
+     "m": 238,
+     "drawn": false
+    },
+    {
+     "id": "rg_inf",
+     "name": "Guard Infantry",
+     "men": 6730,
+     "m": 231,
+     "drawn": true
+    },
+    {
+     "id": "rg_cav",
+     "name": "Guard Cavalry",
+     "men": 3700,
+     "m": 245,
+     "drawn": true
+    }
+   ],
+   "525": [
+    {
+     "id": "gqg",
+     "name": "Imperial Headquarters",
+     "men": null,
+     "m": 290,
+     "drawn": true
+    },
+    {
+     "id": "c_iv",
+     "name": "IV Corps",
+     "men": 23600,
+     "m": 219,
+     "drawn": false
+    },
+    {
+     "id": "sthilaire",
+     "name": "Saint-Hilaire's Division",
+     "men": 6600,
+     "m": 213,
+     "drawn": true
+    },
+    {
+     "id": "vandamme",
+     "name": "Vandamme's Division",
+     "men": 6700,
+     "m": 226,
+     "drawn": true
+    },
+    {
+     "id": "legrand",
+     "name": "Legrand's Division",
+     "men": 7000,
+     "m": 221,
+     "drawn": true
+    },
+    {
+     "id": "c_iii",
+     "name": "III Corps (detachment)",
+     "men": 4300,
+     "m": 223,
+     "drawn": false
+    },
+    {
+     "id": "friant",
+     "name": "Friant's Division",
+     "men": 3470,
+     "m": 215,
+     "drawn": true
+    },
+    {
+     "id": "bourcier",
+     "name": "Bourcier's Dragoons",
+     "men": 830,
+     "m": 224,
+     "drawn": true
+    },
+    {
+     "id": "c_v",
+     "name": "V Corps",
+     "men": 12700,
+     "m": 254,
+     "drawn": false
+    },
+    {
+     "id": "caffarelli",
+     "name": "Caffarelli's Division",
+     "men": 6700,
+     "m": 238,
+     "drawn": true
+    },
+    {
+     "id": "suchet",
+     "name": "Suchet's Division",
+     "men": 6000,
+     "m": 263,
+     "drawn": true
+    },
+    {
+     "id": "santon",
+     "name": "The Santon detachment",
+     "men": 1600,
+     "m": 296,
+     "drawn": true
+    },
+    {
+     "id": "c_cav",
+     "name": "Cavalry Reserve",
+     "men": 7400,
+     "m": 234,
+     "drawn": false
+    },
+    {
+     "id": "kellermann",
+     "name": "Kellermann's Light Cavalry",
+     "men": 2400,
+     "m": 245,
+     "drawn": true
+    },
+    {
+     "id": "nansouty",
+     "name": "Nansouty's Cuirassiers",
+     "men": 1600,
+     "m": 240,
+     "drawn": true
+    },
+    {
+     "id": "dhautpoul",
+     "name": "d'Hautpoul's Cuirassiers",
+     "men": 1300,
+     "m": 231,
+     "drawn": true
+    },
+    {
+     "id": "walther",
+     "name": "Walther's Dragoons",
+     "men": 1500,
+     "m": 235,
+     "drawn": true
+    },
+    {
+     "id": "c_i",
+     "name": "I Corps",
+     "men": 13000,
+     "m": 240,
+     "drawn": false
+    },
+    {
+     "id": "rivaud",
+     "name": "Rivaud's Division",
+     "men": 6000,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "drouet",
+     "name": "Drouet d'Erlon's Division",
+     "men": 7000,
+     "m": 222,
+     "drawn": true
+    },
+    {
+     "id": "c_gd",
+     "name": "Imperial Guard",
+     "men": 5500,
+     "m": 245,
+     "drawn": false
+    },
+    {
+     "id": "guard_inf",
+     "name": "Guard Infantry",
+     "men": 3000,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "guard_cav",
+     "name": "Guard Cavalry",
+     "men": 2500,
+     "m": 246,
+     "drawn": true
+    },
+    {
+     "id": "c_gren",
+     "name": "Grenadier Division",
+     "men": 5700,
+     "m": 248,
+     "drawn": true
+    },
+    {
+     "id": "ahq",
+     "name": "Allied Headquarters",
+     "men": null,
+     "m": 245,
+     "drawn": true
+    },
+    {
+     "id": "buxhowden",
+     "name": "Left Wing Command",
+     "men": 40000,
+     "m": 214,
+     "drawn": true
+    },
+    {
+     "id": "kienmayer",
+     "name": "Kienmayer's Advance Guard",
+     "men": 6800,
+     "m": 207,
+     "drawn": true
+    },
+    {
+     "id": "dok",
+     "name": "First Column",
+     "men": 13490,
+     "m": 214,
+     "drawn": true
+    },
+    {
+     "id": "lang",
+     "name": "Second Column",
+     "men": 11700,
+     "m": 223,
+     "drawn": true
+    },
+    {
+     "id": "kamensky",
+     "name": "Kamensky's Brigade",
+     "men": 4250,
+     "m": 269,
+     "drawn": true
+    },
+    {
+     "id": "prz",
+     "name": "Third Column",
+     "men": 7700,
+     "m": 230,
+     "drawn": true
+    },
+    {
+     "id": "col4",
+     "name": "Fourth Column",
+     "men": 13900,
+     "m": 257,
+     "drawn": false
+    },
+    {
+     "id": "milo",
+     "name": "Miloradovich's Russians",
+     "men": 4800,
+     "m": 244,
+     "drawn": true
+    },
+    {
+     "id": "kollo",
+     "name": "Kollowrat's Austrians",
+     "men": 9100,
+     "m": 281,
+     "drawn": true
+    },
+    {
+     "id": "lich",
+     "name": "Fifth Column (cavalry)",
+     "men": 5400,
+     "m": 282,
+     "drawn": true
+    },
+    {
+     "id": "bag",
+     "name": "Advance Guard of the Right",
+     "men": 13700,
+     "m": 268,
+     "drawn": true
+    },
+    {
+     "id": "constantine",
+     "name": "Russian Imperial Guard",
+     "men": 10500,
+     "m": 240,
+     "drawn": false
+    },
+    {
+     "id": "rg_inf",
+     "name": "Guard Infantry",
+     "men": 6730,
+     "m": 232,
+     "drawn": true
+    },
+    {
+     "id": "rg_cav",
+     "name": "Guard Cavalry",
+     "men": 3700,
+     "m": 245,
+     "drawn": true
+    }
+   ]
+  },
+  "places": [
+   {
+    "id": "pratzen",
+    "m": 247
+   },
+   {
+    "id": "vinohrady",
+    "m": 295
+   },
+   {
+    "id": "pratzeberg",
+    "m": 324
+   },
+   {
+    "id": "santon",
+    "m": 296
+   },
+   {
+    "id": "zuran",
+    "m": 290
+   },
+   {
+    "id": "goldbach",
+    "m": 214
+   },
+   {
+    "id": "litava",
+    "m": 198
+   },
+   {
+    "id": "telnitz",
+    "m": 197
+   },
+   {
+    "id": "sokolnitz",
+    "m": 207
+   },
+   {
+    "id": "kobelnitz",
+    "m": 211
+   },
+   {
+    "id": "pratzenv",
+    "m": 245
+   },
+   {
+    "id": "puntowitz",
+    "m": 214
+   },
+   {
+    "id": "girzikowitz",
+    "m": 229
+   },
+   {
+    "id": "blasowitz",
+    "m": 246
+   },
+   {
+    "id": "augezd",
+    "m": 190
+   },
+   {
+    "id": "satschan",
+    "m": 164
+   },
+   {
+    "id": "menitz",
+    "m": 177
+   },
+   {
+    "id": "austerlitz",
+    "m": 227
+   },
+   {
+    "id": "krzenowitz",
+    "m": 216
+   },
+   {
+    "id": "olmutzroad",
+    "m": 258
+   },
+   {
+    "id": "viennaroad",
+    "m": 224
+   },
+   {
+    "id": "chapel",
+    "m": 201
+   },
+   {
+    "id": "posthouse",
+    "m": 265
+   },
+   {
+    "id": "rausnitz",
+    "m": 263
+   }
+  ],
+  "gt": [
+   {
+    "id": "telnitz",
+    "sourced": 195,
+    "model": 196
+   },
+   {
+    "id": "sokolnitz",
+    "sourced": 207,
+    "model": 207
+   },
+   {
+    "id": "kobelnitz",
+    "sourced": 211,
+    "model": 210
+   },
+   {
+    "id": "bosenitz",
+    "sourced": 257,
+    "model": 258
+   },
+   {
+    "id": "augezd",
+    "sourced": 195,
+    "model": 190
+   },
+   {
+    "id": "pratzeberg",
+    "sourced": 324,
+    "model": 324
+   },
+   {
+    "id": "vinohrady",
+    "sourced": 294,
+    "model": 294
+   },
+   {
+    "id": "zuran",
+    "sourced": 290,
+    "model": 290
+   },
+   {
+    "id": "santon",
+    "sourced": 296,
+    "model": 296
+   }
+  ],
+  "tops": [
+   {
+    "top": 210,
+    "fr": 0,
+    "al": 0,
+    "frIds": [],
+    "alIds": []
+   },
+   {
+    "top": 220,
+    "fr": 0,
+    "al": 0,
+    "frIds": [],
+    "alIds": []
+   },
+   {
+    "top": 230,
+    "fr": 0,
+    "al": 0,
+    "frIds": [],
+    "alIds": []
+   },
+   {
+    "top": 240,
+    "fr": 0,
+    "al": 0,
+    "frIds": [],
+    "alIds": []
+   },
+   {
+    "top": 250,
+    "fr": 0,
+    "al": 0,
+    "frIds": [],
+    "alIds": []
+   },
+   {
+    "top": 260,
+    "fr": 0,
+    "al": 0,
+    "frIds": [],
+    "alIds": []
+   },
+   {
+    "top": 270,
+    "fr": 0,
+    "al": 0,
+    "frIds": [],
+    "alIds": []
+   },
+   {
+    "top": 280,
+    "fr": 0,
+    "al": 0,
+    "frIds": [],
+    "alIds": []
+   },
+   {
+    "top": 290,
+    "fr": 0,
+    "al": 0,
+    "frIds": [],
+    "alIds": []
+   },
+   {
+    "top": 300,
+    "fr": 0,
+    "al": 0,
+    "frIds": [],
+    "alIds": []
+   },
+   {
+    "top": 310,
+    "fr": 0,
+    "al": 0,
+    "frIds": [],
+    "alIds": []
+   },
+   {
+    "top": 320,
+    "fr": 0,
+    "al": 0,
+    "frIds": [],
+    "alIds": []
+   },
+   {
+    "top": 330,
+    "fr": 0,
+    "al": 0,
+    "frIds": [],
+    "alIds": []
+   }
+  ]
+ },
+ "render": {
+  "overview-plan@1x": {
+   "clock": 570,
+   "dropLimit": 12,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 3009.1,
+      "post": 0.1
+     },
+     "nearBlack": 0.001,
+     "solidBlocks": 0,
+     "meanLum": 36.6,
+     "contrast": {
+      "texts": 22,
+      "min": 8.42,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.4
+     },
+     "analytic": {
+      "eyeToTarget": 425,
+      "shift": 151.1,
+      "near": 220,
+      "far": 999.9999999999999,
+      "samples": 576,
+      "withShift": {
+       "atTarget": 0.014,
+       "mean": 0.014,
+       "over50": 0,
+       "over90": 0
+      },
+      "withoutShift": {
+       "atTarget": 0.171,
+       "mean": 0.172,
+       "over50": 0,
+       "over90": 0
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 134.6,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 63.1,
+     "contrast": {
+      "texts": 22,
+      "min": 8.19,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.4
+     },
+     "analytic": {
+      "eyeM": 26933,
+      "hazeAtTarget": 0.129,
+      "haze": {
+       "mean": 0.141,
+       "over50": 0,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 119.9,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 47.9,
+     "contrast": {
+      "texts": 22,
+      "min": 8.28,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.7
+     },
+     "analytic": {
+      "eyeM": 26933,
+      "hazeAtTarget": 0.067,
+      "haze": {
+       "mean": 0.073,
+       "over50": 0,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "close-sokolnitz@1x": {
+   "clock": 500,
+   "dropLimit": 18,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 2913.2,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 76.5,
+     "contrast": {
+      "texts": 25,
+      "min": 7.89,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeToTarget": 56.8,
+      "shift": 0,
+      "near": 120,
+      "far": 720,
+      "samples": 576,
+      "withShift": {
+       "atTarget": 0,
+       "mean": 0,
+       "over50": 0,
+       "over90": 0
+      },
+      "withoutShift": {
+       "atTarget": 0,
+       "mean": 0,
+       "over50": 0,
+       "over90": 0
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 142.6,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 108.3,
+     "contrast": {
+      "texts": 25,
+      "min": 7.81,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeM": 1723,
+      "hazeAtTarget": 0.298,
+      "haze": {
+       "mean": 0.336,
+       "over50": 0.122,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 125.4,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 95.9,
+     "contrast": {
+      "texts": 25,
+      "min": 7.82,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 1723,
+      "hazeAtTarget": 0.162,
+      "haze": {
+       "mean": 0.188,
+       "over50": 0,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "pratzen-low@1x": {
+   "clock": 590,
+   "dropLimit": 13,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 2989.3,
+      "post": 0.4
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 68.9,
+     "contrast": {
+      "texts": 25,
+      "min": 8.76,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 25,
+      "ms": 0.7
+     },
+     "analytic": {
+      "eyeToTarget": 72.4,
+      "shift": 0,
+      "near": 220,
+      "far": 1000,
+      "samples": 576,
+      "withShift": {
+       "atTarget": 0,
+       "mean": 0.064,
+       "over50": 0.056,
+       "over90": 0.056
+      },
+      "withoutShift": {
+       "atTarget": 0,
+       "mean": 0.064,
+       "over50": 0.056,
+       "over90": 0.056
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 123.3,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 122.6,
+     "contrast": {
+      "texts": 25,
+      "min": 7.76,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 25,
+      "ms": 0.8
+     },
+     "analytic": {
+      "eyeM": 1624,
+      "hazeAtTarget": 0.322,
+      "haze": {
+       "mean": 0.49,
+       "over50": 0.37,
+       "over90": 0.111
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 109.9,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 105.2,
+     "contrast": {
+      "texts": 25,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 25,
+      "ms": 0.7
+     },
+     "analytic": {
+      "eyeM": 1624,
+      "hazeAtTarget": 0.176,
+      "haze": {
+       "mean": 0.323,
+       "over50": 0.174,
+       "over90": 0.056
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "close-sokolnitz@t500@1x": {
+   "clock": 500,
+   "dropLimit": 18,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 2579.2,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 76.5,
+     "contrast": {
+      "texts": 25,
+      "min": 7.89,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeToTarget": 56.8,
+      "shift": 0,
+      "near": 120,
+      "far": 720,
+      "samples": 576,
+      "withShift": {
+       "atTarget": 0,
+       "mean": 0,
+       "over50": 0,
+       "over90": 0
+      },
+      "withoutShift": {
+       "atTarget": 0,
+       "mean": 0,
+       "over50": 0,
+       "over90": 0
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 115.3,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 108.3,
+     "contrast": {
+      "texts": 25,
+      "min": 7.81,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 1723,
+      "hazeAtTarget": 0.298,
+      "haze": {
+       "mean": 0.336,
+       "over50": 0.122,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 117.8,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 95.9,
+     "contrast": {
+      "texts": 25,
+      "min": 7.82,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeM": 1723,
+      "hazeAtTarget": 0.162,
+      "haze": {
+       "mean": 0.188,
+       "over50": 0,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "V238",
+     "frameMs": {
+      "world": 114.7,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 154.4,
+     "contrast": {
+      "texts": 25,
+      "min": 7.4,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeM": 1723,
+      "hazeAtTarget": 0.298,
+      "haze": {
+       "mean": 0.336,
+       "over50": 0.122,
+       "over90": 0
+      },
+      "valley": {
+       "mean": 0.661,
+       "over50": 0.719,
+       "atTarget": 0.85
+      }
+     },
+     "figuresUnder": {
+      "formations": 0,
+      "under": 0
+     }
+    },
+    {
+     "cand": "V260",
+     "frameMs": {
+      "world": 123,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 164.8,
+     "contrast": {
+      "texts": 25,
+      "min": 7.4,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 25,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 1723,
+      "hazeAtTarget": 0.298,
+      "haze": {
+       "mean": 0.336,
+       "over50": 0.122,
+       "over90": 0
+      },
+      "valley": {
+       "mean": 0.812,
+       "over50": 0.99,
+       "atTarget": 0.85
+      }
+     },
+     "figuresUnder": {
+      "formations": 0,
+      "under": 0
+     }
+    }
+   ]
+  },
+  "pratzen-low@t510@1x": {
+   "clock": 510,
+   "dropLimit": 13,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 3652.3,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 83.2,
+     "contrast": {
+      "texts": 22,
+      "min": 8.77,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeToTarget": 72.4,
+      "shift": 0,
+      "near": 120,
+      "far": 720,
+      "samples": 576,
+      "withShift": {
+       "atTarget": 0,
+       "mean": 0.093,
+       "over50": 0.064,
+       "over90": 0.056
+      },
+      "withoutShift": {
+       "atTarget": 0,
+       "mean": 0.093,
+       "over50": 0.064,
+       "over90": 0.056
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 103.9,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 121.6,
+     "contrast": {
+      "texts": 22,
+      "min": 7.85,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.9
+     },
+     "analytic": {
+      "eyeM": 1624,
+      "hazeAtTarget": 0.322,
+      "haze": {
+       "mean": 0.49,
+       "over50": 0.37,
+       "over90": 0.111
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 112.3,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 108.3,
+     "contrast": {
+      "texts": 22,
+      "min": 8.17,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 1624,
+      "hazeAtTarget": 0.176,
+      "haze": {
+       "mean": 0.323,
+       "over50": 0.174,
+       "over90": 0.056
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "V238",
+     "frameMs": {
+      "world": 106.8,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 155.4,
+     "contrast": {
+      "texts": 22,
+      "min": 7.33,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeM": 1624,
+      "hazeAtTarget": 0.322,
+      "haze": {
+       "mean": 0.49,
+       "over50": 0.37,
+       "over90": 0.111
+      },
+      "valley": {
+       "mean": 0.631,
+       "over50": 0.694,
+       "atTarget": 0.003
+      }
+     },
+     "figuresUnder": {
+      "formations": 0,
+      "under": 0
+     }
+    },
+    {
+     "cand": "V260",
+     "frameMs": {
+      "world": 122.7,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 166.2,
+     "contrast": {
+      "texts": 22,
+      "min": 7.33,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeM": 1624,
+      "hazeAtTarget": 0.322,
+      "haze": {
+       "mean": 0.49,
+       "over50": 0.37,
+       "over90": 0.111
+      },
+      "valley": {
+       "mean": 0.799,
+       "over50": 0.953,
+       "atTarget": 0.014
+      }
+     },
+     "figuresUnder": {
+      "formations": 0,
+      "under": 0
+     }
+    }
+   ]
+  },
+  "overview-field@4x": {
+   "clock": 570,
+   "dropLimit": 11,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 8952.8,
+      "post": 0.2
+     },
+     "nearBlack": 0.0016,
+     "solidBlocks": 0,
+     "meanLum": 63.8,
+     "contrast": {
+      "texts": 41,
+      "min": 8.55,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 0.8
+     },
+     "analytic": {
+      "eyeToTarget": 243.7,
+      "shift": 0,
+      "near": 220,
+      "far": 1000,
+      "samples": 576,
+      "withShift": {
+       "atTarget": 0.003,
+       "mean": 0.062,
+       "over50": 0,
+       "over90": 0
+      },
+      "withoutShift": {
+       "atTarget": 0.003,
+       "mean": 0.062,
+       "over50": 0,
+       "over90": 0
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 405.5,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 144.8,
+     "contrast": {
+      "texts": 41,
+      "min": 7.59,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 1
+     },
+     "analytic": {
+      "eyeM": 1730,
+      "hazeAtTarget": 0.695,
+      "haze": {
+       "mean": 0.771,
+       "over50": 1,
+       "over90": 0.182
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 427.5,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 125.4,
+     "contrast": {
+      "texts": 41,
+      "min": 7.83,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 0.7
+     },
+     "analytic": {
+      "eyeM": 1730,
+      "hazeAtTarget": 0.447,
+      "haze": {
+       "mean": 0.539,
+       "over50": 0.528,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "overview-plan@4x": {
+   "clock": 570,
+   "dropLimit": 12,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 3800.9,
+      "post": 0.1
+     },
+     "nearBlack": 0.0014,
+     "solidBlocks": 0,
+     "meanLum": 36.4,
+     "contrast": {
+      "texts": 22,
+      "min": 8.42,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeToTarget": 425.4,
+      "shift": 151.6,
+      "near": 220,
+      "far": 999.9999999999999,
+      "samples": 576,
+      "withShift": {
+       "atTarget": 0.014,
+       "mean": 0.014,
+       "over50": 0,
+       "over90": 0
+      },
+      "withoutShift": {
+       "atTarget": 0.172,
+       "mean": 0.173,
+       "over50": 0,
+       "over90": 0
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 378.3,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 79.8,
+     "contrast": {
+      "texts": 22,
+      "min": 8.19,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.4
+     },
+     "analytic": {
+      "eyeM": 6929,
+      "hazeAtTarget": 0.14,
+      "haze": {
+       "mean": 0.224,
+       "over50": 0,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 374.6,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 58.3,
+     "contrast": {
+      "texts": 22,
+      "min": 8.27,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 6929,
+      "hazeAtTarget": 0.073,
+      "haze": {
+       "mean": 0.119,
+       "over50": 0,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "close-sokolnitz@4x": {
+   "clock": 500,
+   "dropLimit": 18,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 5289.1,
+      "post": 0.1
+     },
+     "nearBlack": 0.0009,
+     "solidBlocks": 0,
+     "meanLum": 75.9,
+     "contrast": {
+      "texts": 21,
+      "min": 8.01,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.8
+     },
+     "analytic": {
+      "eyeToTarget": 57.2,
+      "shift": 0,
+      "near": 120,
+      "far": 720,
+      "samples": 576,
+      "withShift": {
+       "atTarget": 0,
+       "mean": 0,
+       "over50": 0,
+       "over90": 0
+      },
+      "withoutShift": {
+       "atTarget": 0,
+       "mean": 0,
+       "over50": 0,
+       "over90": 0
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 367.8,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 124.2,
+     "contrast": {
+      "texts": 21,
+      "min": 7.77,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeM": 602,
+      "hazeAtTarget": 0.55,
+      "haze": {
+       "mean": 0.578,
+       "over50": 0.634,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 354.5,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 109.2,
+     "contrast": {
+      "texts": 21,
+      "min": 7.85,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeM": 602,
+      "hazeAtTarget": 0.329,
+      "haze": {
+       "mean": 0.363,
+       "over50": 0.175,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "pratzen-low@4x": {
+   "clock": 590,
+   "dropLimit": 13,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 4733.6,
+      "post": 0.1
+     },
+     "nearBlack": 0.0112,
+     "solidBlocks": 0,
+     "meanLum": 73.3,
+     "contrast": {
+      "texts": 23,
+      "min": 12.11,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 23,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeToTarget": 71.4,
+      "shift": 0,
+      "near": 220,
+      "far": 1000,
+      "samples": 512,
+      "withShift": {
+       "atTarget": 0,
+       "mean": 0.048,
+       "over50": 0.055,
+       "over90": 0.002
+      },
+      "withoutShift": {
+       "atTarget": 0,
+       "mean": 0.048,
+       "over50": 0.055,
+       "over90": 0.002
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 405.8,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 144.3,
+     "contrast": {
+      "texts": 23,
+      "min": 11.52,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 23,
+      "ms": 1
+     },
+     "analytic": {
+      "eyeM": 590,
+      "hazeAtTarget": 0.602,
+      "haze": {
+       "mean": 0.738,
+       "over50": 0.916,
+       "over90": 0.289
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 364,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 128.8,
+     "contrast": {
+      "texts": 23,
+      "min": 11.76,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 23,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 590,
+      "hazeAtTarget": 0.369,
+      "haze": {
+       "mean": 0.544,
+       "over50": 0.455,
+       "over90": 0.125
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "ph8-overview-study@4x": {
+   "clock": 880,
+   "dropLimit": 7,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 4213.7,
+      "post": 0.1
+     },
+     "nearBlack": 0.0001,
+     "solidBlocks": 0,
+     "meanLum": 35.4,
+     "contrast": {
+      "texts": 22,
+      "min": 8.56,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.3
+     },
+     "analytic": {
+      "eyeToTarget": 536.2,
+      "shift": 262.3,
+      "near": 180,
+      "far": 900,
+      "samples": 576,
+      "withShift": {
+       "atTarget": 0.047,
+       "mean": 0.048,
+       "over50": 0,
+       "over90": 0
+      },
+      "withoutShift": {
+       "atTarget": 0.492,
+       "mean": 0.494,
+       "over50": 0.377,
+       "over90": 0
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 392.7,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 66.3,
+     "contrast": {
+      "texts": 22,
+      "min": 8.41,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.4
+     },
+     "analytic": {
+      "eyeM": 8667,
+      "hazeAtTarget": 0.141,
+      "haze": {
+       "mean": 0.202,
+       "over50": 0,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 386,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 46.7,
+     "contrast": {
+      "texts": 22,
+      "min": 8.55,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.4
+     },
+     "analytic": {
+      "eyeM": 8667,
+      "hazeAtTarget": 0.073,
+      "haze": {
+       "mean": 0.107,
+       "over50": 0,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "overview-field@t480@4x": {
+   "clock": 480,
+   "dropLimit": 11,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 5501.1,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 87.8,
+     "contrast": {
+      "texts": 42,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 42,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeToTarget": 243.7,
+      "shift": 0,
+      "near": 120,
+      "far": 720,
+      "samples": 576,
+      "withShift": {
+       "atTarget": 0.11,
+       "mean": 0.223,
+       "over50": 0.163,
+       "over90": 0
+      },
+      "withoutShift": {
+       "atTarget": 0.11,
+       "mean": 0.223,
+       "over50": 0.163,
+       "over90": 0
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 390.4,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 133.9,
+     "contrast": {
+      "texts": 42,
+      "min": 7.74,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 42,
+      "ms": 1.2
+     },
+     "analytic": {
+      "eyeM": 1730,
+      "hazeAtTarget": 0.695,
+      "haze": {
+       "mean": 0.771,
+       "over50": 1,
+       "over90": 0.182
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 341.9,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 117.6,
+     "contrast": {
+      "texts": 42,
+      "min": 7.85,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 42,
+      "ms": 1.1
+     },
+     "analytic": {
+      "eyeM": 1730,
+      "hazeAtTarget": 0.447,
+      "haze": {
+       "mean": 0.539,
+       "over50": 0.528,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "V238",
+     "frameMs": {
+      "world": 402.4,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 164,
+     "contrast": {
+      "texts": 42,
+      "min": 7.31,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 42,
+      "ms": 0.7
+     },
+     "analytic": {
+      "eyeM": 1730,
+      "hazeAtTarget": 0.695,
+      "haze": {
+       "mean": 0.771,
+       "over50": 1,
+       "over90": 0.182
+      },
+      "valley": {
+       "mean": 0.702,
+       "over50": 0.832,
+       "atTarget": 0.041
+      }
+     },
+     "figuresUnder": {
+      "formations": 31,
+      "under": 15
+     }
+    },
+    {
+     "cand": "V260",
+     "frameMs": {
+      "world": 539,
+      "post": 0.4
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 168.8,
+     "contrast": {
+      "texts": 42,
+      "min": 7.31,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 42,
+      "ms": 0.9
+     },
+     "analytic": {
+      "eyeM": 1730,
+      "hazeAtTarget": 0.695,
+      "haze": {
+       "mean": 0.771,
+       "over50": 1,
+       "over90": 0.182
+      },
+      "valley": {
+       "mean": 0.827,
+       "over50": 0.969,
+       "atTarget": 0.165
+      }
+     },
+     "figuresUnder": {
+      "formations": 31,
+      "under": 24
+     }
+    }
+   ]
+  },
+  "close-sokolnitz@t500@4x": {
+   "clock": 500,
+   "dropLimit": 18,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 5117.4,
+      "post": 0.2
+     },
+     "nearBlack": 0.0009,
+     "solidBlocks": 0,
+     "meanLum": 75.9,
+     "contrast": {
+      "texts": 21,
+      "min": 8.01,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeToTarget": 57.2,
+      "shift": 0,
+      "near": 120,
+      "far": 720,
+      "samples": 576,
+      "withShift": {
+       "atTarget": 0,
+       "mean": 0,
+       "over50": 0,
+       "over90": 0
+      },
+      "withoutShift": {
+       "atTarget": 0,
+       "mean": 0,
+       "over50": 0,
+       "over90": 0
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 331.9,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 124.2,
+     "contrast": {
+      "texts": 21,
+      "min": 7.77,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 602,
+      "hazeAtTarget": 0.55,
+      "haze": {
+       "mean": 0.578,
+       "over50": 0.634,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 409.6,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 109.2,
+     "contrast": {
+      "texts": 21,
+      "min": 7.85,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeM": 602,
+      "hazeAtTarget": 0.329,
+      "haze": {
+       "mean": 0.363,
+       "over50": 0.175,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "V238",
+     "frameMs": {
+      "world": 362.2,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 166.4,
+     "contrast": {
+      "texts": 21,
+      "min": 7.4,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeM": 602,
+      "hazeAtTarget": 0.55,
+      "haze": {
+       "mean": 0.578,
+       "over50": 0.634,
+       "over90": 0
+      },
+      "valley": {
+       "mean": 0.835,
+       "over50": 0.99,
+       "atTarget": 0.85
+      }
+     },
+     "figuresUnder": {
+      "formations": 31,
+      "under": 15
+     }
+    },
+    {
+     "cand": "V260",
+     "frameMs": {
+      "world": 379.5,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 169.4,
+     "contrast": {
+      "texts": 21,
+      "min": 7.4,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.9
+     },
+     "analytic": {
+      "eyeM": 602,
+      "hazeAtTarget": 0.55,
+      "haze": {
+       "mean": 0.578,
+       "over50": 0.634,
+       "over90": 0
+      },
+      "valley": {
+       "mean": 0.847,
+       "over50": 0.995,
+       "atTarget": 0.85
+      }
+     },
+     "figuresUnder": {
+      "formations": 31,
+      "under": 25
+     }
+    }
+   ]
+  },
+  "pratzen-low@t510@4x": {
+   "clock": 510,
+   "dropLimit": 13,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 5551,
+      "post": 0.1
+     },
+     "nearBlack": 0.0033,
+     "solidBlocks": 0,
+     "meanLum": 87.9,
+     "contrast": {
+      "texts": 21,
+      "min": 8.56,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeToTarget": 71.4,
+      "shift": 0,
+      "near": 120,
+      "far": 720,
+      "samples": 512,
+      "withShift": {
+       "atTarget": 0,
+       "mean": 0.09,
+       "over50": 0.063,
+       "over90": 0.057
+      },
+      "withoutShift": {
+       "atTarget": 0,
+       "mean": 0.09,
+       "over50": 0.063,
+       "over90": 0.057
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 444.6,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 137.6,
+     "contrast": {
+      "texts": 21,
+      "min": 7.68,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.9
+     },
+     "analytic": {
+      "eyeM": 590,
+      "hazeAtTarget": 0.602,
+      "haze": {
+       "mean": 0.738,
+       "over50": 0.916,
+       "over90": 0.289
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 357.2,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 126.2,
+     "contrast": {
+      "texts": 21,
+      "min": 7.77,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 590,
+      "hazeAtTarget": 0.369,
+      "haze": {
+       "mean": 0.544,
+       "over50": 0.455,
+       "over90": 0.125
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "V238",
+     "frameMs": {
+      "world": 360.8,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 165.4,
+     "contrast": {
+      "texts": 21,
+      "min": 7.31,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.8
+     },
+     "analytic": {
+      "eyeM": 590,
+      "hazeAtTarget": 0.602,
+      "haze": {
+       "mean": 0.738,
+       "over50": 0.916,
+       "over90": 0.289
+      },
+      "valley": {
+       "mean": 0.798,
+       "over50": 0.941,
+       "atTarget": 0.016
+      }
+     },
+     "figuresUnder": {
+      "formations": 31,
+      "under": 15
+     }
+    },
+    {
+     "cand": "V260",
+     "frameMs": {
+      "world": 417.5,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 168.5,
+     "contrast": {
+      "texts": 21,
+      "min": 7.31,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 590,
+      "hazeAtTarget": 0.602,
+      "haze": {
+       "mean": 0.738,
+       "over50": 0.916,
+       "over90": 0.289
+      },
+      "valley": {
+       "mean": 0.837,
+       "over50": 0.982,
+       "atTarget": 0.065
+      }
+     },
+     "figuresUnder": {
+      "formations": 31,
+      "under": 25
+     }
+    }
+   ]
+  },
+  "overview-plan@10.33x": {
+   "clock": 570,
+   "dropLimit": 12,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 5875.8,
+      "post": 0.1
+     },
+     "nearBlack": 0.0013,
+     "solidBlocks": 0,
+     "meanLum": 36.7,
+     "contrast": {
+      "texts": 22,
+      "min": 8.42,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.4
+     },
+     "analytic": {
+      "eyeToTarget": 426.5,
+      "shift": 152.7,
+      "near": 220,
+      "far": 1000,
+      "samples": 576,
+      "withShift": {
+       "atTarget": 0.014,
+       "mean": 0.015,
+       "over50": 0,
+       "over90": 0
+      },
+      "withoutShift": {
+       "atTarget": 0.173,
+       "mean": 0.176,
+       "over50": 0,
+       "over90": 0
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 438.9,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 109.2,
+     "contrast": {
+      "texts": 22,
+      "min": 8.16,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 2844,
+      "hazeAtTarget": 0.194,
+      "haze": {
+       "mean": 0.412,
+       "over50": 0.292,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 515.6,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 82,
+     "contrast": {
+      "texts": 22,
+      "min": 8.27,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.4
+     },
+     "analytic": {
+      "eyeM": 2844,
+      "hazeAtTarget": 0.102,
+      "haze": {
+       "mean": 0.237,
+       "over50": 0,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "close-sokolnitz@10.33x": {
+   "clock": 500,
+   "dropLimit": 18,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 5125.7,
+      "post": 0.2
+     },
+     "nearBlack": 0.0001,
+     "solidBlocks": 0,
+     "meanLum": 81,
+     "contrast": {
+      "texts": 20,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeToTarget": 58,
+      "shift": 0,
+      "near": 120,
+      "far": 720,
+      "samples": 576,
+      "withShift": {
+       "atTarget": 0,
+       "mean": 0,
+       "over50": 0,
+       "over90": 0
+      },
+      "withoutShift": {
+       "atTarget": 0,
+       "mean": 0,
+       "over50": 0,
+       "over90": 0
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 353.2,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 128.8,
+     "contrast": {
+      "texts": 20,
+      "min": 7.77,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 0.8
+     },
+     "analytic": {
+      "eyeM": 373,
+      "hazeAtTarget": 0.64,
+      "haze": {
+       "mean": 0.643,
+       "over50": 0.766,
+       "over90": 0.04
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 371.2,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 114.8,
+     "contrast": {
+      "texts": 20,
+      "min": 7.85,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 0.8
+     },
+     "analytic": {
+      "eyeM": 373,
+      "hazeAtTarget": 0.4,
+      "haze": {
+       "mean": 0.419,
+       "over50": 0.293,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "pratzen-low@10.33x": {
+   "clock": 590,
+   "dropLimit": 13,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 5512.4,
+      "post": 0.1
+     },
+     "nearBlack": 0.0222,
+     "solidBlocks": 0,
+     "meanLum": 91.4,
+     "contrast": {
+      "texts": 21,
+      "min": 7.83,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 1.1
+     },
+     "analytic": {
+      "eyeToTarget": 70,
+      "shift": 0,
+      "near": 220,
+      "far": 1000,
+      "samples": 395,
+      "withShift": {
+       "atTarget": 0,
+       "mean": 0.059,
+       "over50": 0.053,
+       "over90": 0.02
+      },
+      "withoutShift": {
+       "atTarget": 0,
+       "mean": 0.059,
+       "over50": 0.053,
+       "over90": 0.02
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 394,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 153.8,
+     "contrast": {
+      "texts": 21,
+      "min": 7.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.7
+     },
+     "analytic": {
+      "eyeM": 378,
+      "hazeAtTarget": 0.692,
+      "haze": {
+       "mean": 0.846,
+       "over50": 1,
+       "over90": 0.423
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 359.1,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 143.5,
+     "contrast": {
+      "texts": 21,
+      "min": 7.58,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 378,
+      "hazeAtTarget": 0.445,
+      "haze": {
+       "mean": 0.666,
+       "over50": 0.699,
+       "over90": 0.203
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "close-sokolnitz@t500@10.33x": {
+   "clock": 500,
+   "dropLimit": 18,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 4520.4,
+      "post": 0
+     },
+     "nearBlack": 0.0001,
+     "solidBlocks": 0,
+     "meanLum": 81,
+     "contrast": {
+      "texts": 20,
+      "min": 8.02,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 1
+     },
+     "analytic": {
+      "eyeToTarget": 58,
+      "shift": 0,
+      "near": 120,
+      "far": 720,
+      "samples": 576,
+      "withShift": {
+       "atTarget": 0,
+       "mean": 0,
+       "over50": 0,
+       "over90": 0
+      },
+      "withoutShift": {
+       "atTarget": 0,
+       "mean": 0,
+       "over50": 0,
+       "over90": 0
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 345,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 128.8,
+     "contrast": {
+      "texts": 20,
+      "min": 7.77,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 1
+     },
+     "analytic": {
+      "eyeM": 373,
+      "hazeAtTarget": 0.64,
+      "haze": {
+       "mean": 0.643,
+       "over50": 0.766,
+       "over90": 0.04
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 379,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 114.8,
+     "contrast": {
+      "texts": 20,
+      "min": 7.85,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 373,
+      "hazeAtTarget": 0.4,
+      "haze": {
+       "mean": 0.419,
+       "over50": 0.293,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "V238",
+     "frameMs": {
+      "world": 414,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 171.4,
+     "contrast": {
+      "texts": 20,
+      "min": 7.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 0.8
+     },
+     "analytic": {
+      "eyeM": 373,
+      "hazeAtTarget": 0.64,
+      "haze": {
+       "mean": 0.643,
+       "over50": 0.766,
+       "over90": 0.04
+      },
+      "valley": {
+       "mean": 0.85,
+       "over50": 1,
+       "atTarget": 0.85
+      }
+     },
+     "figuresUnder": {
+      "formations": 31,
+      "under": 15
+     }
+    },
+    {
+     "cand": "V260",
+     "frameMs": {
+      "world": 451.7,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 171.4,
+     "contrast": {
+      "texts": 20,
+      "min": 7.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 20,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 373,
+      "hazeAtTarget": 0.64,
+      "haze": {
+       "mean": 0.643,
+       "over50": 0.766,
+       "over90": 0.04
+      },
+      "valley": {
+       "mean": 0.85,
+       "over50": 1,
+       "atTarget": 0.85
+      }
+     },
+     "figuresUnder": {
+      "formations": 31,
+      "under": 25
+     }
+    }
+   ]
+  },
+  "pratzen-low@t510@10.33x": {
+   "clock": 510,
+   "dropLimit": 13,
+   "rows": [
+    {
+     "cand": "H0",
+     "frameMs": {
+      "world": 3930,
+      "post": 0.1
+     },
+     "nearBlack": 0.0144,
+     "solidBlocks": 0,
+     "meanLum": 100.2,
+     "contrast": {
+      "texts": 19,
+      "min": 8.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 2,
+      "placed": 19,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeToTarget": 70,
+      "shift": 0,
+      "near": 120,
+      "far": 720,
+      "samples": 395,
+      "withShift": {
+       "atTarget": 0,
+       "mean": 0.111,
+       "over50": 0.094,
+       "over90": 0.053
+      },
+      "withoutShift": {
+       "atTarget": 0,
+       "mean": 0.111,
+       "over50": 0.094,
+       "over90": 0.053
+      }
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H1",
+     "frameMs": {
+      "world": 402.8,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 144.6,
+     "contrast": {
+      "texts": 19,
+      "min": 7.59,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 2,
+      "placed": 19,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 378,
+      "hazeAtTarget": 0.692,
+      "haze": {
+       "mean": 0.846,
+       "over50": 1,
+       "over90": 0.423
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "H2",
+     "frameMs": {
+      "world": 338.5,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 136.4,
+     "contrast": {
+      "texts": 19,
+      "min": 7.74,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 2,
+      "placed": 19,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeM": 378,
+      "hazeAtTarget": 0.445,
+      "haze": {
+       "mean": 0.666,
+       "over50": 0.699,
+       "over90": 0.203
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    },
+    {
+     "cand": "V238",
+     "frameMs": {
+      "world": 405.5,
+      "post": 0.1
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 165.9,
+     "contrast": {
+      "texts": 19,
+      "min": 7.31,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 2,
+      "placed": 19,
+      "ms": 0.7
+     },
+     "analytic": {
+      "eyeM": 378,
+      "hazeAtTarget": 0.692,
+      "haze": {
+       "mean": 0.846,
+       "over50": 1,
+       "over90": 0.423
+      },
+      "valley": {
+       "mean": 0.815,
+       "over50": 0.957,
+       "atTarget": 0.072
+      }
+     },
+     "figuresUnder": {
+      "formations": 31,
+      "under": 15
+     }
+    },
+    {
+     "cand": "V260",
+     "frameMs": {
+      "world": 343.8,
+      "post": 0.2
+     },
+     "nearBlack": 0,
+     "solidBlocks": 0,
+     "meanLum": 166.9,
+     "contrast": {
+      "texts": 19,
+      "min": 7.31,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 2,
+      "placed": 19,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeM": 378,
+      "hazeAtTarget": 0.692,
+      "haze": {
+       "mean": 0.846,
+       "over50": 1,
+       "over90": 0.423
+      },
+      "valley": {
+       "mean": 0.842,
+       "over50": 0.99,
+       "atTarget": 0.275
+      }
+     },
+     "figuresUnder": {
+      "formations": 31,
+      "under": 25
+     }
+    }
+   ]
+  }
+ },
+ "focus": {
+  "overview-field@4x": {
+   "rows": [
+    {
+     "cand": "H3",
+     "focus": 243.7,
+     "nearBlack": 0.001,
+     "solidBlocks": 0,
+     "meanLum": 96.1,
+     "contrast": {
+      "texts": 41,
+      "min": 7.76,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 6,
+      "placed": 41,
+      "ms": 0.8
+     },
+     "analytic": {
+      "eyeM": 1730,
+      "hazeAtTarget": 0,
+      "haze": {
+       "mean": 0.377,
+       "over50": 0.427,
+       "over90": 0.099
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "overview-plan@4x": {
+   "rows": [
+    {
+     "cand": "H3",
+     "focus": 425.4,
+     "nearBlack": 0.0004,
+     "solidBlocks": 0,
+     "meanLum": 63.4,
+     "contrast": {
+      "texts": 22,
+      "min": 8.35,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 22,
+      "ms": 0.3
+     },
+     "analytic": {
+      "eyeM": 6929,
+      "hazeAtTarget": 0,
+      "haze": {
+       "mean": 0.143,
+       "over50": 0,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "close-sokolnitz@4x": {
+   "rows": [
+    {
+     "cand": "H3",
+     "focus": 57.2,
+     "nearBlack": 0.0003,
+     "solidBlocks": 0,
+     "meanLum": 91.5,
+     "contrast": {
+      "texts": 21,
+      "min": 7.85,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 4,
+      "placed": 21,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 602,
+      "hazeAtTarget": 0,
+      "haze": {
+       "mean": 0.202,
+       "over50": 0.188,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "pratzen-low@4x": {
+   "rows": [
+    {
+     "cand": "H3",
+     "focus": 71.4,
+     "nearBlack": 0.0078,
+     "solidBlocks": 0,
+     "meanLum": 106.7,
+     "contrast": {
+      "texts": 23,
+      "min": 11.65,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 5,
+      "placed": 23,
+      "ms": 0.9
+     },
+     "analytic": {
+      "eyeM": 590,
+      "hazeAtTarget": 0,
+      "haze": {
+       "mean": 0.399,
+       "over50": 0.408,
+       "over90": 0.199
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "ph8-overview-study@4x": {
+   "rows": [
+    {
+     "cand": "H3",
+     "focus": 536.2,
+     "nearBlack": 0.0011,
+     "solidBlocks": 0,
+     "meanLum": 51.2,
+     "contrast": {
+      "texts": 22,
+      "min": 8.62,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 22,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 8667,
+      "hazeAtTarget": 0,
+      "haze": {
+       "mean": 0.117,
+       "over50": 0,
+       "over90": 0
+      },
+      "valley": null
+     },
+     "figuresUnder": null
+    }
+   ]
+  },
+  "overview-field@t480@4x": {
+   "rows": [
+    {
+     "cand": "V55",
+     "focus": 243.7,
+     "nearBlack": 0.0092,
+     "solidBlocks": 0,
+     "meanLum": 101.9,
+     "contrast": {
+      "texts": 42,
+      "min": 7.49,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 8,
+      "placed": 42,
+      "ms": 0.6
+     },
+     "analytic": {
+      "eyeM": 1730,
+      "hazeAtTarget": 0,
+      "haze": {
+       "mean": 0.377,
+       "over50": 0.427,
+       "over90": 0.099
+      },
+      "valley": {
+       "mean": 0.276,
+       "over50": 0.411,
+       "atTarget": 0
+      }
+     },
+     "figuresUnder": {
+      "formations": 31,
+      "under": 15
+     }
+    }
+   ]
+  },
+  "pratzen-low@t510@4x": {
+   "rows": [
+    {
+     "cand": "V55",
+     "focus": 71.4,
+     "nearBlack": 0.0146,
+     "solidBlocks": 0,
+     "meanLum": 113.5,
+     "contrast": {
+      "texts": 21,
+      "min": 7.42,
+      "belowAA": 0
+     },
+     "layer": {
+      "dropped": 3,
+      "placed": 21,
+      "ms": 0.5
+     },
+     "analytic": {
+      "eyeM": 590,
+      "hazeAtTarget": 0,
+      "haze": {
+       "mean": 0.399,
+       "over50": 0.408,
+       "over90": 0.199
+      },
+      "valley": {
+       "mean": 0.324,
+       "over50": 0.568,
+       "atTarget": 0
+      }
+     },
+     "figuresUnder": {
+      "formations": 31,
+      "under": 15
+     }
+    }
+   ]
+  }
+ },
+ "cost": {
+  "overview-field@t480": {
+   "H0": 4092.7,
+   "H1": 4111.5,
+   "V238": 3904.3
+  },
+  "pratzen-low@t510": {
+   "H0": 3947.4,
+   "H1": 4163.3,
+   "V238": 3806.9
+  },
+  "overview-plan": {
+   "H0": 3345.3,
+   "H1": 3322.1,
+   "V238": 3188
+  }
+ }
+}

@@ -24,9 +24,9 @@ lower one without saying so explicitly.
 | `app.js` | scene, overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
-| `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2 and Stage 3 measurement scripts (`stage2/`, `stage3/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
+| `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2, Stage 3 and Stage 4 measurement scripts (`stage2/`, `stage3/`, `stage4/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
 | `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `stage2c-68ac7721.html` (the 2C build, on which the drop limits are derived), `spine-6b2cccd4.html` (the `check:data` reference, since the spine data task) |
-| `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE3_SPEC.md` (Stage 3, with `stage3-evidence/`), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
+| `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE3_SPEC.md` (Stage 3, with `stage3-evidence/`), `STAGE4_SPEC.md` (Stage 4, with `stage4-evidence/`), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
 
 The one-off correction-pass tools (`geo-migrate.js`, `geo-anchor.js`, `patch-app.py`, `patch-history.py`, and the
 others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; their results are already in the data.
@@ -143,5 +143,6 @@ Study / Watch / Clean, Landscape / Paper map / Landscape with counters, Layers, 
 overlay; the key fixes; event glyphs and objective markers capped on screen) is merged (#25); Stage 3 is complete. The spine data
 task (themes and tour stops name their moments, `ANALYSIS.at`/`moments` and `TOUR.at`; owner decisions 52, 59, 64-67; one timeline
 line moved; decision 56's sentence in `SOURCE_NOTE`; ← → on a focused button no longer step the clock) is merged
-(#26). The shadow toe
-and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.
+(#26). Stage 4 Part A (the specification, `docs/STAGE4_SPEC.md`: the computed sun and continuous light, the atmosphere and the
+valley fog, pacing, smoke, ice, the horizon and the 3D palette; probes in `tools/stage4/`) is written, for review; no source changed.
+The shadow toe and the narrowed landscape hillshade are a temporary lighting correction, to be replaced in Stage 4.
