@@ -58,7 +58,7 @@ test plan (§H).
   continuous light is not measured; touch and GPUs are not tried; the haze's and the fog's parameters are design values from one
   probe each, not tuned.
 
-**Checks on this commit** (run after the last change to the tree; the build is the spine data task's, unchanged)
+**Checks on this commit** (run on this tree, the build unchanged from the spine data task's; the only edit after they started is one table of `docs/STAGE4_SPEC.md`, §H.1)
 - `npm test`: all 9 suites pass, and the height guard.
 - `npm run check:data`: all 113 data declarations byte-identical to `archive/spine-6b2cccd4.html`.
 - `npm run check:chronology`: 0 errors.
