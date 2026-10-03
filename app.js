@@ -229,6 +229,11 @@ function drawnAltitude(alt){ return Math.atan(DISPLAY.factor*Math.tan(alt*Math.P
    chosen on the harness's darkness measure without the toe: Part A's 0.28 alone (section A.4b) left the figures' and houses'
    cast shadows near-black in two views at 4x (selected-formation 0.076%, the low Pratzen view at 11:00 0.079%, against 0.05%);
    these values bring the worst to 0.030% (CHANGELOG.md, Stage 4B). Design values. */
+/* Stage 4E (docs/STAGE4_SPEC.md section G.2; owner decision 79): the light's fixed colours, part of the light table: the sky fill's
+   sky and ground, the fill light, the sun, background, fog and sky before the first applyLight, and the environment map's ground
+   (values unchanged from the literals they replace) */
+var LIGHT_RIG={hemiSky:0xA9BBCC, hemiGround:0x3E3A30, fill:0x9AA8B8, sun0:0xA5B2BE, bg0:0x121A22, fog0:0x3E4A58,
+  sky0:[0x0F1A26,0x2B3A48,0x6E7A82], envGround:0x2A2A24};
 var LIGHT_FILL={predawn:0.16,dawn:0.22,dusk:0.16,staff:0.16}, LIGHT_FILL_DAY=0.52, LIGHT_SKY_LIFT={predawn:0,dawn:0.04,dusk:0,staff:0};
 /* Stage 4C: the haze's strength for each preset's hour, as the visibility (km) at the valley floor that would give it. A depth cue
    counted beyond the orbit target (decision 81), not the day's air: physical visibilities (10-25 km) hazed the ground behind the
@@ -436,7 +441,7 @@ function applyAtmo(){
   ATMO.u.uAtmoV.value.copy(LIGHT_NOW.mistC);
 }
 var skyCanvas=null, skyCtx=null, sunDisc=null;
-var _skyNow=[new THREE.Color(0x0F1A26),new THREE.Color(0x2B3A48),new THREE.Color(0x6E7A82)];
+var _skyNow=LIGHT_RIG.sky0.map(function(h){ return new THREE.Color(h); });
 var _gradeNow=[[0,0,0],[0.94,0.97,1.06],0.86,1.10,0.26,0.94];
 function paintSky(c0,c1,c2){
   if(!skyCanvas){
@@ -469,7 +474,7 @@ function refreshEnvironment(){
   g.addColorStop(0,"#"+_skyNow[0].getHexString());
   g.addColorStop(0.30,"#"+_skyNow[1].getHexString());
   g.addColorStop(0.48,"#"+_skyNow[2].getHexString());
-  g.addColorStop(1,"#2A2A24");
+  g.addColorStop(1,"#"+new THREE.Color(LIGHT_RIG.envGround).getHexString());   /* the environment's ground below the horizon */
   x.fillStyle=g; x.fillRect(0,0,64,32);
   var tex=new THREE.CanvasTexture(eq);
   tex.mapping=THREE.EquirectangularReflectionMapping;
@@ -496,8 +501,8 @@ var sunDir=new THREE.Vector3(-60,80,-160), fillLight=null;
 
 function init(){
   scene=new THREE.Scene();
-  scene.background=lin(0x121A22);
-  scene.fog=new THREE.Fog(lin(0x3E4A58),90,560);
+  scene.background=lin(LIGHT_RIG.bg0);
+  scene.fog=new THREE.Fog(lin(LIGHT_RIG.fog0),90,560);
 
   renderer=new THREE.WebGLRenderer({antialias:true});
   lowTier = (window.innerWidth*window.innerHeight < 900*700) ||
@@ -516,12 +521,12 @@ function init(){
   paperCam=new THREE.OrthographicCamera(-1,1,1,-1,1,600);
   MAPCAM.init(paperCam,{schedule:mapSchedule,panels:function(){ mlLegendFit(renderer.domElement.clientWidth||innerWidth,viewH()); return mlPanels(); },viewport:function(){ var e=renderer.domElement; return [e.clientWidth||innerWidth,e.clientHeight||innerHeight]; }});
 
-  hemi=new THREE.HemisphereLight(0xA9BBCC,0x3E3A30,0.34); scene.add(hemi);
+  hemi=new THREE.HemisphereLight(LIGHT_RIG.hemiSky,LIGHT_RIG.hemiGround,0.34); scene.add(hemi);
   /* a weak fill from opposite the sun so shaded slopes are dark, never black: since Stage 4B it turns with the light
      (placeLights) and its strength is the light table's (decision 70: it replaces the shadow toe) */
-  fillLight=new THREE.DirectionalLight(0x9AA8B8,0.16);
+  fillLight=new THREE.DirectionalLight(LIGHT_RIG.fill,0.16);
   fillLight.position.set(80,60,-120); scene.add(fillLight);
-  sun=new THREE.DirectionalLight(0xA5B2BE,0.40);
+  sun=new THREE.DirectionalLight(LIGHT_RIG.sun0,0.40);
   sun.position.set(-140,92,-160); sun.castShadow=true;
   var shadowPx = lowTier ? 1024 : (renderer.capabilities.maxTextureSize>=8192 ? 4096 : 2048);
   sun.shadow.mapSize.set(shadowPx,shadowPx);

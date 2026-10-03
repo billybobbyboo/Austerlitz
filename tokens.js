@@ -7,7 +7,8 @@
    sym.plate (Stage 2D) is the plate under every map-layer label: opaque enough that each map text colour below meets
    WCAG AA over black and over white ground (dark 0.88, worst 5.8:1, the road ink; paper 0.95, worst 4.6:1, the water ink).
    sym.paperMap (Stage 2E) is the paper map's own symbology: woods (a tint, the tree marks and the outline) and the flat
-   village footprints. Symbols on the map, not text: the ground's cover colours stay in world.js (Stage 4).
+   village footprints. Symbols on the map, not text. Since Stage 4E also its ground (the cover classes' colours, in
+   coverClass's order through COVER_KEYS), its contours and its marsh lines (owner decision 79; values unchanged).
    ============================================================ */
 var TOKENS = /*TOKENS:BEGIN*/{
   "theme": {
@@ -63,7 +64,11 @@ var TOKENS = /*TOKENS:BEGIN*/{
     "plate": {"dark": "rgba(10,14,18,.88)", "paper": "rgba(246,241,229,.95)"},
     "paperMap": {
       "wood":    {"fill": "#C9D3B2", "mark": "#566E43", "edge": "#566E43"},
-      "village": {"fill": "#B8A58A", "edge": "#6B5B45"}
+      "village": {"fill": "#B8A58A", "edge": "#6B5B45"},
+      "ground":  {"field": "#E8DFC6", "meadow": "#DCD9BC", "marsh": "#CBD5C8", "water": "#A8BEC8", "wood": "#BFCBA8",
+                  "village": "#DCCFB4", "vineyard": "#E2DCBA", "track": "#D2C4A4"},
+      "contour": {"fine": "#8A7346", "index": "#6E5629"},
+      "marsh":   "#3E6D88"
     },
     "place": {
       "dark":  {"water": "#8FB6CC", "height": "#DCDAD4", "road": "#B0A48C", "other": "#E8E2D3", "fill": "#141A20", "halo": "rgba(10,14,18,.8)"},

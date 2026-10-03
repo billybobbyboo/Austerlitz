@@ -2,6 +2,7 @@ global.GEOREF=require('./geo.js');   /* the single geographic reference */
 const fs=require('fs');
 function load(f){ eval(fs.readFileSync(f,'utf8')); return eval; }
 eval(fs.readFileSync('data.js','utf8'));
+eval(fs.readFileSync('tokens.js','utf8'));   /* Stage 4E: world.js reads the paper map's ground colours from TOKENS, as in the build's order */
 eval(fs.readFileSync('world.js','utf8'));
 eval(fs.readFileSync('_state.js','utf8'));
 eval(fs.readFileSync('_ov.js','utf8'));

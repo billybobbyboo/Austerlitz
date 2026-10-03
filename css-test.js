@@ -133,3 +133,20 @@ if(cerrs) process.exitCode=1;
   console.log("pacing: "+(perr.length?perr.length+" wrong":"half speed by default, its button pressed; the dwell's toggle on; no phase glide while playing"));
   if(perr.length) process.exitCode=1;
 }
+/* Stage 4E (docs/STAGE4_SPEC.md section G.3; owner decision 79): the landscape's colours live in their tables. Every colour literal
+   in world.js is in COVER_COL, LAND_COL or WATER_COL; in app.js in the light's tables (LIGHT, LIGHT_RIG) or the sprite palette
+   (SPRITE_COL), or in the figures, coats and flags, which are Stage 6's (formationAtlas, figKit, makeBlock, flagTexture). White
+   (a vertex-coloured material's neutral base) is not a palette colour. The paper map's ground is TOKENS.sym.paperMap.ground. */
+{
+  const acorn=require('acorn'), perr=[];
+  const ALLOW={"world.js":["COVER_COL","LAND_COL","WATER_COL"],"app.js":["LIGHT","LIGHT_RIG","SPRITE_COL","formationAtlas","figKit","makeBlock","flagTexture"]};
+  Object.keys(ALLOW).forEach(f=>{ const src=fs.readFileSync(f,'utf8'), ast=acorn.parse(src,{ecmaVersion:2020});
+    ast.body.forEach(n=>{ const name=n.type==="FunctionDeclaration"?n.id.name:n.type==="VariableDeclaration"?n.declarations.map(d=>d.id.name).join(","):"("+n.type+")";
+      const lit=(src.slice(n.start,n.end).match(/0x[0-9A-Fa-f]{6}\b|#[0-9A-Fa-f]{6}\b/g)||[]).filter(x=>!/^(0x|#)(FFFFFF|ffffff)$/.test(x));
+      if(lit.length&&!ALLOW[f].includes(name)) perr.push(f+": "+name+" has colour literals outside the palette tables ("+lit.slice(0,3).join(", ")+")"); }); });
+  const T=fs.readFileSync('tokens.js','utf8'), W=fs.readFileSync('world.js','utf8');
+  if(!/"ground":\s*\{"field":/.test(T)||!/paper:\s*COVER_KEYS\.map\(function\(k\)\{ return hexNumW\(TOKENS\.sym\.paperMap\.ground\[k\]\); \}\)/.test(W)) perr.push("the paper map's ground colours are not read from TOKENS.sym.paperMap.ground");
+  perr.forEach(e=>console.log("  ! "+e));
+  console.log("palette: "+(perr.length?perr.length+" wrong":"the landscape's colours in their tables (light, sprites, ground, land, water), the paper map's ground in the tokens"));
+  if(perr.length) process.exitCode=1;
+}
