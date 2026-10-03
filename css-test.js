@@ -107,3 +107,16 @@ if(cerrs) process.exitCode=1;
   console.log("light: "+(lerr.length?lerr.length+" wrong":"no shadow toe, no baked hillshade on the landscape, the light from the computed sun and its table"));
   if(lerr.length) process.exitCode=1;
 }
+/* Stage 4C (docs/STAGE4_SPEC.md sections B.4 and C.6): one atmosphere in the fog chunks; no recession, no mist sheets; the fog's top
+   is the knowledge model's threshold; the legend says what the fog is */
+{
+  const app=fs.readFileSync('app.js','utf8'), world=fs.readFileSync('world.js','utf8'), sh=fs.readFileSync('shell.html','utf8'), aerr=[];
+  if(/function fogShift\(/.test(app)) aerr.push("app.js: the fog's recession (fogShift) is back");
+  if(/function mistSheet\(/.test(world)||/MIST_DRIFT/.test(world+app)) aerr.push("the mist sheets are back");
+  if(!/C\.fog_fragment=/.test(app)||!/function applyAtmo\(/.test(app)) aerr.push("app.js: the atmosphere's fog chunks or applyAtmo are missing");
+  if(!/FOG_TOP_H:-0\.8/.test(app)||!/hAt\(p\[0\],p\[1\]\)<-0\.8/.test(app)) aerr.push("the fog's top and the knowledge model's threshold are no longer the same -0.8");
+  if(!/data-lg="fog"/.test(sh)) aerr.push("shell.html: the legend has no valley fog row");
+  aerr.forEach(e=>console.log("  ! "+e));
+  console.log("atmosphere: "+(aerr.length?aerr.length+" wrong":"the fog chunks and applyAtmo, no recession, no mist sheets, the fog's top the knowledge model's, its legend row"));
+  if(aerr.length) process.exitCode=1;
+}
