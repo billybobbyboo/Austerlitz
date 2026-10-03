@@ -260,6 +260,33 @@ async function interact(page,it,vp){
         if(!(st.under>0)) report.failures.push("the valley fog: "+tag+": no formation drawn under the fog");
         if(!(st.worst<=st.cap+1e-9)||!(st.cap>0)) report.failures.push("the valley fog: "+tag+": the fog "+st.worst.toFixed(3)+" against its cap "+st.cap); }
       report.fogViews=fw; console.log("the valley fog: "+fw.join("; ")); }
+    /* Stage 4E (docs/STAGE4_SPEC.md section F.2): in the low views the gap, if any, between the apron's far edge and the true
+       horizon is drawn in the haze's colour (a pixel test along the horizon, in 32 columns of the free rectangle) */
+    if(await first.evaluate(()=>typeof SMOKE!=="undefined")){
+      const hv=[];
+      for(const [name,fk] of T.HORIZON_VIEWS){
+        const c=require("./cases.js").find(x=>x.name===name);
+        await first.evaluate(s=>window.__aus.apply(s),Object.assign({},c,{factor:fk})); await settle(first);
+        const cols=await first.evaluate(()=>{ landCam.updateMatrixWorld(true); var E=landCam.position, fr=landFreeRect(), W0=renderer.domElement.clientWidth||innerWidth, H0=viewH(), out=[], v=new THREE.Vector3();
+          function sy(p){ v.copy(p).project(landCam); return v.z<1?[(v.x*0.5+0.5)*W0,(-v.y*0.5+0.5)*H0]:null; }
+          for(var i=0;i<32;i++){ var sx=fr[0]+(i+0.5)/32*(fr[2]-fr[0]), r=new THREE.Vector3(sx/W0*2-1,0,0.5).unproject(landCam).sub(E); r.y=0; if(r.lengthSq()<1e-9) continue; r.normalize();
+            var tx=r.x>0?(860-E.x)/r.x:(-860-E.x)/r.x, tz=r.z>0?(760-E.z)/r.z:(-760-E.z)/r.z, t=Math.min(tx,tz); if(!(t>0)) continue;
+            var e=sy(new THREE.Vector3(E.x+r.x*t,-0.35,E.z+r.z*t)), h=sy(new THREE.Vector3(E.x+r.x*1800,E.y,E.z+r.z*1800)); if(!e||!h) continue;
+            if(h[1]<fr[1]+10||e[1]>fr[3]) continue; out.push([Math.round(sx),Math.round(h[1]),Math.round(e[1])]); }
+          return out; });
+        await first.evaluate(()=>{ const m=document.getElementById("maplayer"); if(m) m.style.visibility="hidden"; });   /* the ground and the sky only: no map text */
+        const buf=await first.screenshot({timeout:180000}), b64=buf.toString("base64");
+        await first.evaluate(()=>{ const m=document.getElementById("maplayer"); if(m) m.style.visibility=""; });
+        const r=await first.evaluate(([b,cols])=>new Promise(res=>{ const im=new Image(); im.onload=()=>{ const cv=document.createElement("canvas"); cv.width=im.width; cv.height=im.height;
+          const x=cv.getContext("2d",{willReadFrequently:true}); x.drawImage(im,0,0); const d=x.getImageData(0,0,cv.width,cv.height).data;
+          function mean(px,y0,y1){ let s=[0,0,0],n=0; for(let y=Math.max(0,y0);y<=Math.min(cv.height-1,y1);y++) for(let dx=-2;dx<=2;dx++){ const o=(y*cv.width+px+dx)*4; s[0]+=d[o]; s[1]+=d[o+1]; s[2]+=d[o+2]; n++; } return n?s.map(a=>a/n):null; }
+          let worst=0, gaps=0; cols.forEach(([px,hy,ey])=>{ if(ey-hy<4) return; gaps++; const g=mean(px,hy+1,ey-2), k=mean(px,hy-8,hy-3); if(!g||!k) return;
+            worst=Math.max(worst,Math.abs(g[0]-k[0]),Math.abs(g[1]-k[1]),Math.abs(g[2]-k[2])); });
+          res({columns:cols.length,gaps:gaps,worst:+worst.toFixed(1)}); }; im.src="data:image/png;base64,"+b; }),[b64,cols]);
+        const tag=name+" at "+(fk==="model"?"10.33":fk)+"x";
+        hv.push(tag+": "+r.columns+" columns, "+r.gaps+" with a gap under the horizon, the gap within "+r.worst+" of the sky above it");
+        if(r.gaps&&!(r.worst<=T.HORIZON_DE)) report.failures.push("the horizon: "+tag+": the gap under the horizon differs from the sky by "+r.worst+" (limit "+T.HORIZON_DE+")"); }
+      report.horizon=hv; console.log("the horizon: "+hv.join("; ")); }
     for(const [name,m] of Object.entries(report.cases)) T.check(name,m).forEach(f=>{ console.log("FAIL "+name+": "+f); report.failures.push(name+": "+f); });
   }
   if(CMP){

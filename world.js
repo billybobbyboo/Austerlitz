@@ -441,7 +441,7 @@ function groundY(x,z){
 /* ---------------- state ---------------- */
 var scrubMesh=null;
 var groundMesh=null, domeMesh=null, mistGroup=null, treeMesh=null, coniferMesh=null,
-    roofMesh=null, houseMesh=null, spireMesh=null, waterMeshes=[], roadMeshes=[],
+    roofMesh=null, houseMesh=null, spireMesh=null, waterMeshes=[], iceRims=[], roadMeshes=[],
     contourGroup=null, marshGroup=null, analysisGroup=null;
 var FACE={n:0,x:null,z:null,h:null,slope:null,shade:null,cover:null,ao:null,nz:null};
 var palNatural=null, palPaper=null, palGoing=null, apronMesh=null, chimneyMesh=null, _palNat={};
@@ -529,7 +529,7 @@ function buildWorld(scene){
   buildPaperSymbols(scene);
 
   return {ground:groundMesh, apron:apronMesh, dome:domeMesh, mist:mistGroup, trees:treeMesh, conifers:coniferMesh, scrub:scrubMesh,
-          houses:houseMesh, roofs:roofMesh, spires:spireMesh, chimneys:chimneyMesh, water:waterMeshes, roads:roadMeshes,
+          houses:houseMesh, roofs:roofMesh, spires:spireMesh, chimneys:chimneyMesh, water:waterMeshes, iceRims:iceRims, roads:roadMeshes,
           contours:contourGroup, marsh:marshGroup, analysis:analysisGroup, paper:paperGroup};
 }
 
@@ -580,7 +580,7 @@ function rescaleWorld(){
   SEATED.forEach(reseatInstances);
   SEATED_GEO.forEach(reseatGeometry);
   DRAPED.forEach(drape);
-  waterMeshes.forEach(function(m){ if(m.userData.mere) m.position.y=mereLevel.apply(null,m.userData.mere); });
+  waterMeshes.concat(iceRims).forEach(function(m){ if(m.userData.mere) m.position.y=mereLevel.apply(null,m.userData.mere)+(m.userData.mereLift||0); });
   rebuildContours();
   TERRAIN_LINES.forEach(function(tl){ if(tl._midXZ) tl._mid=[tl._midXZ[0],displayHeight(tl._midXZ[0],tl._midXZ[1])+4.2,tl._midXZ[1]]; });
 }
@@ -1159,19 +1159,31 @@ function mereLevel(cc,rx,rz,base){
   var lo=1e9; for(var a=0;a<96;a++){ var t=a/96*Math.PI*2; lo=Math.min(lo,displayHeight(cc[0]+Math.cos(t)*rx,cc[1]+Math.sin(t)*rz)); }
   return Math.min(displayY(base+1.2*regionalLevel(cc[0],cc[1])), lo-0.05);
 }
+/* Stage 4E (docs/STAGE4_SPEC.md sections F.1 and G.2; owner decision 79): the water's palette, one table. The meres are ice (the
+   data: the Satschan mere "frozen on 2 December"; the phase-8 texts' guns firing "down on the ice"): smoother than before, taking
+   the computed sun's sheen and the sky (the environment map), with a lighter rim where the shore ice meets the bank. Their
+   outlines stay schematic (decision 27); no cracks, holes, snow or figures in the water. The banks and streams are unchanged. */
+var WATER_COL={ice:0x4E5C66, iceRim:0x75838B, bank:0x4E5A4C, stream:0x587A8E};
+var ICE={roughness:0.32, env:0.42, rim:0.86, rimLift:0.02};
 function buildWater(scene){
-  var iceMat=new THREE.MeshStandardMaterial({color:lin(0x4E5C66),roughness:0.58,metalness:0.0,envMapIntensity:0.12,
-    transparent:true,opacity:0.96,flatShading:true});
+  var iceMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.ice),roughness:ICE.roughness,metalness:0.0,envMapIntensity:ICE.env,
+    transparent:true,opacity:0.96});
+  var rimMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.iceRim),roughness:ICE.roughness+0.2,metalness:0.0,envMapIntensity:ICE.env*0.6,
+    transparent:true,opacity:0.96});
   function mere(cc,rx,rz,base){
     var m=new THREE.Mesh(new THREE.CircleGeometry(1,48),iceMat);
     m.rotation.x=-Math.PI/2; m.position.set(cc[0],mereLevel(cc,rx,rz,base),cc[1]); m.scale.set(rx,rz,1);
     m.userData.mere=[cc,rx,rz,base];
     scene.add(m); waterMeshes.push(m);
+    var r=new THREE.Mesh(new THREE.RingGeometry(ICE.rim,1,48,1),rimMat);   /* the shore ice: its outer edge the mere's own */
+    r.rotation.x=-Math.PI/2; r.position.set(cc[0],mereLevel(cc,rx,rz,base)+ICE.rimLift,cc[1]); r.scale.set(rx,rz,1);
+    r.userData.mere=[cc,rx,rz,base]; r.userData.mereLift=ICE.rimLift;
+    scene.add(r); iceRims.push(r);   /* not water: the landscape's ice surface only (hidden on the paper map) */
   }
   mere(SATS,28,10.5,-3.85);
   mere(MENI,23,9,-3.95);
-  var bankMat=matte({color:0x4E5A4C,roughness:0.96});
-  var streamMat=new THREE.MeshStandardMaterial({color:lin(0x587A8E),roughness:0.48,metalness:0.0,envMapIntensity:0.18});
+  var bankMat=matte({color:WATER_COL.bank,roughness:0.96});
+  var streamMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.stream),roughness:0.48,metalness:0.0,envMapIntensity:0.18});
   ribbon(scene,GOLDBACH,4.6,0.16,bankMat,waterMeshes,"bank");
   ribbon(scene,GOLDBACH,2.8,0.26,streamMat,waterMeshes,"stream");
   ribbon(scene,LITAVA,5.0,0.16,bankMat,waterMeshes,"bank");

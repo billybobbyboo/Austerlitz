@@ -404,8 +404,23 @@
       stats:(D()&&D().stats)?D().stats():null,
       layer:layer(), unobstructed:unobstructed(), legendOverDispatch:legendOverDispatch(), paper:paperMap(),
       legendOverPanels:legendOverPanels(), docking:docking(), viewport:[window.innerWidth,window.innerHeight], timeline:timeline(),
-      heads:headsHidden(), focus:focusOffset()
+      heads:headsHidden(), focus:focusOffset(), smoke:smokeShare(), smokePuffs:(typeof SMOKE!=="undefined")
     };
+  }
+  /* Stage 4E (docs/STAGE4_SPEC.md section E.3; the measure of tools/stage4/extras-probe.js): the smoke's share of the free
+     rectangle, each visible smoke sprite's projected square (its own scale, at its distance), clipped to the rectangle, overlaps
+     counted twice; read from the scene, not from the app's own cap. A build with one sprite per formation or with puffs. */
+  function smokeShare(){
+    if(typeof units==="undefined"||camera.isOrthographicCamera) return null;
+    camera.updateMatrixWorld(true);
+    var fr=(typeof landFreeRect==="function")?landFreeRect():MAPCAM.freeRect(), A=(fr[2]-fr[0])*(fr[3]-fr[1]), H=window.innerHeight, t=Math.tan(camera.fov*Math.PI/360), S=0, n=0, v=new V();
+    Object.keys(units).forEach(function(id){ var g=units[id].smoke; if(!g||!g.visible) return;
+      (g.isSprite?[g]:g.children).forEach(function(s){ if(!s.visible||s.material.opacity<0.02) return;
+        var p=s.getWorldPosition(new V()), c=p.clone().applyMatrix4(camera.matrixWorldInverse); if(c.z>-1) return;
+        v.copy(p).project(camera); var x=(v.x*0.5+0.5)*window.innerWidth, y=(-v.y*0.5+0.5)*H, w=s.scale.x*H/(2*(-c.z)*t), h=s.scale.y*H/(2*(-c.z)*t);
+        var x0=Math.max(fr[0],x-w/2), x1=Math.min(fr[2],x+w/2), y0=Math.max(fr[1],y-h/2), y1=Math.min(fr[3],y+h/2); n++;
+        if(x1>x0&&y1>y0) S+=(x1-x0)*(y1-y0)/A; }); });
+    return {sprites:n, share:+S.toFixed(4)};
   }
   /* Stage 3D (docs/STAGE3_SPEC.md section H; the measure of tools/stage3/dock-probe.js): the arrow heads on screen, and those
      more than a quarter hidden, under one panel or off the screen's edge (a box partly off screen counts its off-screen part) */

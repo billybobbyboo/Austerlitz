@@ -77,7 +77,7 @@ const stub={
  HemisphereLight:class extends Obj{constructor(a,b,i){super();this.intensity=i}},
  Fog:class{constructor(c,n,f){this.color=new Col(c);this.near=n;this.far=f}},
  PlaneGeometry:class extends Geo{constructor(w,h,a,b){super(((a||1)+1)*((b||1)+1))}},
- SphereGeometry:Geo, ExtrudeGeometry:class extends Geo{translate(){return this}}, Shape:class{moveTo(){}lineTo(){}}, IcosahedronGeometry:class extends Geo{constructor(){super();this.index=null}},BoxGeometry:Geo,ConeGeometry:Geo,CylinderGeometry:Geo,CircleGeometry:Geo,
+ SphereGeometry:Geo, ExtrudeGeometry:class extends Geo{translate(){return this}}, Shape:class{moveTo(){}lineTo(){}}, IcosahedronGeometry:class extends Geo{constructor(){super();this.index=null}},BoxGeometry:Geo,ConeGeometry:Geo,CylinderGeometry:Geo,CircleGeometry:Geo,RingGeometry:Geo,
  TubeGeometry:Geo,BufferGeometry:Geo,
  /* the real r128 curves (Stage 2C: the draped ribbons sample them by arc length) */
  CatmullRomCurve3:REAL.CatmullRomCurve3, LineCurve3:REAL.LineCurve3,

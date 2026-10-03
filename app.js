@@ -278,7 +278,10 @@ function applyLight(force){
   if(fillLight) fillLight.intensity=R.fill;
   scene.fog.near=R.fogN; scene.fog.far=R.fogF; scene.fog.color.copy(R.fogC);
   scene.background.copy(R.bg);
-  _skyNow[0].copy(R.sky[0]); _skyNow[1].copy(R.sky[1]); _skyNow[2].copy(R.sky[2]);
+  /* Stage 4E (docs/STAGE4_SPEC.md section F.2; decision 80): the horizon is the atmosphere's. The dome's colour at and below its
+     equator is the haze's (the fog colour the chunks mix toward), so where the apron's far edge shows it sinks into the same
+     colour; no ring of distant relief is drawn. On the landscape the light table's horizon is the fog colour in every row. */
+  _skyNow[0].copy(R.sky[0]); _skyNow[1].copy(R.sky[1]); _skyNow[2].copy(R.sky[2]); if(!staff) _skyNow[2].copy(R.fogC).convertLinearToSRGB();   /* the sky's colours are sRGB, the fog's linear */
   paintSky(_skyNow[0],_skyNow[1],_skyNow[2]);
   refreshEnvironment();
   if(sunDisc) sunDisc.material.opacity=staff?0:R.disc*0.92;
@@ -420,6 +423,10 @@ function atmoAt(e,p,focus){
   return [h,v];
 }
 /* the atmosphere's uniforms for this frame: the light's haze and mist colour, the clock's fog, the eye's focus */
+/* Stage 4E (docs/STAGE4_SPEC.md section F.2): the sky dome is centred on the eye, so its equator, where the sky turns to the haze's
+   colour, is the eye's own horizon at every height and factor (centred on the origin, a high eye saw the dome above its equator
+   below the level horizon) */
+function domeFollow(){ if(world&&world.dome&&landCam&&mode!=="staff") world.dome.position.copy(landCam.position); }
 function applyAtmo(){
   var A=ATMO.u.uAtmoA.value, B=ATMO.u.uAtmoB.value, C=ATMO.u.uAtmoC.value, paper=(mode==="staff");
   A.set(DISPLAY.flat?1:DISPLAY.factor,GEOREF.DATUM_M,GEOREF.M_PER_WORLD,landCam.position.distanceTo(orbitTarget));
@@ -667,6 +674,9 @@ function aggInterp(id,ph){
    geometry with one baked texture, so a body of men costs a single draw call.
    ============================================================ */
 var GEO={}, _smokeTex=null, _dustTex=null;
+/* Stage 4E (docs/STAGE4_SPEC.md section G.2; owner decision 79): the sprite palette, one table: powder smoke, dust, and the trodden
+   ground under a formation (values unchanged from the literals they replace) */
+var SPRITE_COL={smoke:0xA9A69E, dust:0xC6BCA6, pad:0x2A2620};
 
 function initBlockGeo(){
   GEO.shako  = new THREE.CylinderGeometry(0.16,0.18,0.28,6);
@@ -1212,6 +1222,11 @@ function smokeTexture(){
     x.fillStyle=gr; x.beginPath(); x.arc(px,py,r,0,Math.PI*2); x.fill();
   }
   softWindow(x,128);
+  /* Stage 4E (docs/STAGE4_SPEC.md section E.2): a puff fades toward its lower edge, so where it stands near a slope it thins
+     into the ground's air instead of ending on a line */
+  x.globalCompositeOperation="destination-in";
+  var vg=x.createLinearGradient(0,0,0,128); vg.addColorStop(0,"rgba(0,0,0,1)"); vg.addColorStop(0.55,"rgba(0,0,0,1)"); vg.addColorStop(1,"rgba(0,0,0,0)");
+  x.fillStyle=vg; x.fillRect(0,0,128,128); x.globalCompositeOperation="source-over";
   _smokeTex=ctexS(c); return _smokeTex;
 }
 var _padTex=null;
@@ -1378,22 +1393,23 @@ function buildFormations(){
       g.visible=false; scene.add(g);
       rec.block=g;
 
-      /* powder smoke where a formation is actually fighting */
-      var sm=new THREE.Sprite(new THREE.SpriteMaterial({
-        map:smokeTexture(), transparent:true, opacity:0, depthWrite:false, color:lin(0xA9A69E) }));
-      sm.scale.set(8.5,5.4,1); sm.visible=false; sm.renderOrder=6;
+      /* powder smoke where a formation is fighting: since Stage 4E a few puffs along its front (SMOKE) */
+      var sm=new THREE.Group(); sm.visible=false;
+      for(var pf=0;pf<SMOKE.PUFFS;pf++){ var sp=new THREE.Sprite(new THREE.SpriteMaterial({
+          map:smokeTexture(), transparent:true, opacity:0, depthWrite:false, color:lin(SPRITE_COL.smoke) }));
+        sp.renderOrder=6; sm.add(sp); }
       scene.add(sm); rec.smoke=sm;
 
       /* the ground under the formation: trodden, occluded, in contact */
       var pad=new THREE.Mesh(PAD_GEO,
         new THREE.MeshBasicMaterial({map:padTexture(),transparent:true,opacity:0.66,
-          depthWrite:false,color:lin(0x2A2620)}));
+          depthWrite:false,color:lin(SPRITE_COL.pad)}));
       pad.renderOrder=3; pad.visible=false;
       scene.add(pad); rec.pad=pad;
 
       /* dust kicked up by horse and by teams on the move */
       var du=new THREE.Sprite(new THREE.SpriteMaterial({
-        map:dustTexture(), transparent:true, opacity:0, depthWrite:false, color:lin(0xC6BCA6) }));
+        map:dustTexture(), transparent:true, opacity:0, depthWrite:false, color:lin(SPRITE_COL.dust) }));
       du.scale.set(13,6,1); du.visible=false; du.renderOrder=5;
       scene.add(du); rec.dust=du;
 
@@ -2306,6 +2322,7 @@ function renderStandard(){
 function renderFrame(){
   applyLight(false); placeLights();   /* Stage 4B: the light of the clock, and the lights and the shadow box placed for this view */
   applyAtmo();   /* Stage 4C: the haze and the valley fog for this view and this clock */
+  domeFollow();  /* Stage 4E: the sky's equator at the eye's horizon */
   renderFrameNow();
 }
 function renderFrameNow(){
@@ -2987,6 +3004,7 @@ function setMode(m){
   syncLandscapeLayers();
   renderer.shadowMap.enabled=!staff;
   world.water.forEach(function(w2){ if(w2.material.opacity!==undefined) w2.material.opacity=staff?1:0.94; });
+  (world.iceRims||[]).forEach(function(r2){ r2.visible=!staff; });   /* Stage 4E: the shore ice is the landscape's */
 
   applyLight(true);   /* Stage 4B: the paper map's own light, or the landscape's light of the clock */
 
@@ -3679,6 +3697,66 @@ function poseBlock(rec,id,st){
   rec.yaw += diff*ease(WHEEL[f.arm]||0.05);
 }
 var FIGHTING={attacking:1,engaged:1,charging:1,counterattack:1,repulsed:1,encircled:1,broken:1};
+/* ---- Stage 4E: smoke (docs/STAGE4_SPEC.md section E.2; owner decision 77) ----
+   Who smokes is the phase status, as before: a formation smokes while its status is a fighting one (the record of who fought in
+   the phase). How much follows the clock: full inside the window of any event that names the formation or one of its parents
+   (EVENTS[].forms, through evWeight's own lead and tail, so it eases in and out), a thin residue (SMOKE.RESIDUE) otherwise; no
+   event, status or window is added. A formation's smoke is SMOKE.PUFFS puffs along its front (the frontage the block draws), each
+   standing with its lower edge above the drawn ground across its width (spriteFloor) and fading toward that edge. On screen the
+   smoke covers at most SMOKE.CAP of the free rectangle: past it the puffs largest on screen (the nearest) are shrunk, none culled,
+   so the formations they belong to stay legible. Dust is unchanged. */
+var SMOKE={PUFFS:3, RESIDUE:0.25, OP:0.32, CAP:0.25, ev:null, want:[], share:0, capped:0};
+function smokeEvents(id){
+  if(!SMOKE.ev){ SMOKE.ev={}; EVENTS.forEach(function(e){ (e.forms||[]).forEach(function(k){ (SMOKE.ev[k]=SMOKE.ev[k]||[]).push(e); }); }); }
+  var out=[], a=id, n=0; while(a&&n++<8){ (SMOKE.ev[a]||[]).forEach(function(e){ if(out.indexOf(e)<0) out.push(e); }); a=FORMATIONS[a]&&FORMATIONS[a].parent; }
+  return out;
+}
+/* the smoke's amount for a formation at clock t, 0 when its phase status is not a fighting one */
+function smokeAmount(id,t){
+  var st=liveStatus(id,phaseAt(t)); if(!(st&&FIGHTING[st])) return 0;
+  var w=0; smokeEvents(id).forEach(function(e){ w=Math.max(w,evWeight(e,t)); });
+  return SMOKE.RESIDUE+(1-SMOKE.RESIDUE)*w;
+}
+function smokeWant(rec,id,f,p,dimmed){
+  var amt=(!!p&&mode!=="staff"&&!dimmed)?smokeAmount(id,clock):0;
+  rec.smokeAmt=amt; rec.smoke.visible=amt>0;
+  if(!(amt>0)){ rec.smoke.children.forEach(function(sp){ sp.material.opacity=0; }); return; }
+  var u=rec.block.userData, sc=8+Math.min(10,(f.strength||3000)/850), ps=Math.max(5,sc*0.62);
+  var front=Math.max(ps*0.6,(u&&u.W0?u.W0*(u.sw||1):6)*rec.block.scale.x), yaw=rec.yaw||0, c=Math.cos(yaw), sn=Math.sin(yaw);
+  var drift=Math.sin(smokeT*0.6+rec.delay*31)*0.8, N=rec.smoke.children.length;
+  rec.smoke.children.forEach(function(sp,i){
+    var o=N>1?(i/(N-1)-0.5)*front*0.8:0, x=rec.block.position.x+o*c+drift, z=rec.block.position.z-o*sn-1.4;
+    SMOKE.want.push({sp:sp,x:x,z:z,s:ps*(1-0.12*((i+1)%2)),y0:rec.block.position.y,op:SMOKE.OP*amt});
+  });
+}
+/* the share of the free rectangle a set of puffs covers (each puff's projected rectangle, clipped; overlaps counted twice) */
+var _smV=new THREE.Vector3();
+function smokeShareOf(list,fr,lim){
+  var A=(fr[2]-fr[0])*(fr[3]-fr[1]), H=viewH(), Wd=renderer.domElement.clientWidth||innerWidth, t=Math.tan(camera.fov*Math.PI/360), S=0;
+  for(var i=0;i<list.length;i++){ var q=list[i], s=Math.min(q.s,lim===undefined?1e9:q.px>lim?q.s*lim/q.px:q.s);
+    if(!(q.d>camera.near)) continue; var w=s*H/(2*q.d*t), h=w*0.6;
+    var x0=Math.max(fr[0],q.sx-w/2), x1=Math.min(fr[2],q.sx+w/2), y0=Math.max(fr[1],q.sy-h/2), y1=Math.min(fr[3],q.sy+h/2);
+    if(x1>x0&&y1>y0) S+=(x1-x0)*(y1-y0)/A; }
+  return S;
+}
+function smokePlace(){
+  var L=SMOKE.want; SMOKE.want=[]; SMOKE.capped=0;
+  if(!L.length||camera.isOrthographicCamera){ SMOKE.share=0; return; }
+  camera.updateMatrixWorld(); var fr=landFreeRect(), H=viewH(), Wd=renderer.domElement.clientWidth||innerWidth, t=Math.tan(camera.fov*Math.PI/360);
+  L.forEach(function(q){ _smV.set(q.x,q.y0+2.4,q.z); var d=-_smV.clone().applyMatrix4(camera.matrixWorldInverse).z; _smV.project(camera);
+    q.d=d; q.sx=(_smV.x*0.5+0.5)*Wd; q.sy=(-_smV.y*0.5+0.5)*H; q.px=d>camera.near?q.s*H/(2*d*t):0; });
+  var S=smokeShareOf(L,fr), lim;
+  if(S>SMOKE.CAP*0.96){   /* the largest on screen shrunk to a common size, found by bisection, so the share is under the cap */
+    var lo=0, hi=Math.max.apply(null,L.map(function(q){ return q.px; }));
+    for(var k=0;k<30;k++){ var m=(lo+hi)/2; if(smokeShareOf(L,fr,m)>SMOKE.CAP*0.96) hi=m; else lo=m; }
+    lim=lo; SMOKE.capped=L.filter(function(q){ return q.px>lim; }).length; S=smokeShareOf(L,fr,lim); }
+  SMOKE.share=S;
+  L.forEach(function(q){ var sp=q.sp, s=(lim!==undefined&&q.px>lim)?q.s*lim/q.px:q.s, h=s*0.6;
+    sp.scale.set(s,h,1);
+    sp.position.set(q.x, Math.max(q.y0+2.4+h*0.24, spriteFloor(q.x,q.z,s*0.5)+0.2+h/2), q.z);
+    var to=q.op-sp.material.opacity; if(Math.abs(to)>0.004) settling=true;
+    sp.material.opacity+=to*ease(0.05); });
+}
 function updateVisibility(){
   var dist=viewDist();   /* the paper map: the distance at which the landscape eye would show the ground at its scale */
   var wantCorps = dist>250;
@@ -3756,22 +3834,9 @@ function updateVisibility(){
         rec.dust.material.opacity += dto*ease(0.05);
       } else rec.dust.material.opacity=0;
     }
-    if(rec.smoke){
-      var stx=liveStatus(id,curPhase);
-      var fighting = stx && FIGHTING[stx];
-      var wantS = fighting && !!p && mode!=="staff" && !dimmed;
-      rec.smoke.visible=wantS;
-      if(wantS){
-        var sc=8+Math.min(10,(f.strength||3000)/850);
-        rec.smoke.scale.set(sc,sc*0.60,1);
-        var drift=Math.sin(smokeT*0.6+rec.delay*31)*0.8;
-        var sxp=rec.block.position.x+drift, szp=rec.block.position.z-1.4;
-        rec.smoke.position.set(sxp, Math.max(rec.block.position.y+2.4+sc*0.14, spriteFloor(sxp,szp,sc*0.5)+0.2+sc*0.18), szp);
-        var sto=0.32-rec.smoke.material.opacity; if(Math.abs(sto)>0.004) settling=true;
-        rec.smoke.material.opacity += sto*ease(0.05);
-      } else rec.smoke.material.opacity=0;
-    }
+    if(rec.smoke) smokeWant(rec,id,f,p,dimmed);
   });
+  smokePlace();   /* Stage 4E: the puffs placed, the cap on screen applied */
 
   placeLabels.forEach(function(o){
     var major=MAJOR_FEATURES[o.ft.id] || o.ft.kind==="height" || o.ft.kind==="town";

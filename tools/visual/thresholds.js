@@ -81,6 +81,12 @@ module.exports.TIMELINE_MAX=TIMELINE_MAX;
 const SOLID_BLACK=0.0005, LIGHT_SWEEP=[];
 ["overview-field","pratzen-low"].forEach(n=>{ for(let t=480;t<=960;t+=60) LIGHT_SWEEP.push([n,t,4]); });
 ["overview-field","close-sokolnitz","ph8-overview-study"].forEach(n=>{ LIGHT_SWEEP.push([n,null,1]); LIGHT_SWEEP.push([n,null,"model"]); });
+const SMOKE_SHARE=0.25; module.exports.SMOKE_SHARE=SMOKE_SHARE;   /* Stage 4E: the smoke's share of the free rectangle, at most */
+/* Stage 4E (docs/STAGE4_SPEC.md section F.2): the horizon in the low views [case, factor]; where the apron's far edge stands below
+   the true horizon, the gap is drawn in the haze's colour: its mean colour per column within HORIZON_DE (0-255, the largest
+   channel) of the sky's just above the horizon */
+const HORIZON_VIEWS=[["pratzen-low",1],["pratzen-low",4],["pratzen-low","model"]], HORIZON_DE=10;
+module.exports.HORIZON_VIEWS=HORIZON_VIEWS; module.exports.HORIZON_DE=HORIZON_DE;
 module.exports.SOLID_BLACK=SOLID_BLACK; module.exports.LIGHT_SWEEP=LIGHT_SWEEP;
 /* Stage 4C (docs/STAGE4_SPEC.md section C.6): the valley fog's hours, rendered by the harness at 4x [case, clock]. New */
 const FOG_VIEWS=[["overview-field",480],["pratzen-low",510]];
@@ -140,6 +146,8 @@ module.exports.check=function(name,m){
     if(m.presentation==="watch"&&!(TL.switchInRow&&TL.switchOpacity===1)) f.push("Watch: the presentation switch is not in the timeline's control row at full opacity ("+TL.switchOpacity+")");
     if(m.presentation==="watch"&&TL.capDerived===false) f.push("Watch: the caption's derived reading is not shown");
     if(m.phaseLabels720&&m.phaseLabels720.cut.length) f.push("at 1280 x 720 the current phase's label is cut: "+m.phaseLabels720.cut.join(", ")); }
+  /* Stage 4E (docs/STAGE4_SPEC.md section E.3): the smoke covers at most a quarter of the free rectangle; new, on a build with puffs */
+  if(m.smoke&&m.smokePuffs&&!(m.smoke.share<=SMOKE_SHARE)) f.push("smoke covers "+(100*m.smoke.share).toFixed(1)+"% of the free rectangle (limit "+(100*SMOKE_SHARE)+"%)");
   if(HEADS_SHOWN.includes(name)&&m.heads&&m.heads.hiddenOverQuarter>0) f.push("arrow heads more than a quarter hidden by a panel or the edge: "+m.heads.list.join(", "));
   if(m.focus!=null&&!(m.focus<=FOCUS_PX)) f.push("the orbit target "+m.focus+" px from the free rectangle's centre (limit "+FOCUS_PX+" px)");
   if(m.focus720!=null&&!(m.focus720<=FOCUS_PX)) f.push("after the resize to 1280 x 720 the orbit target is "+m.focus720+" px from the free rectangle's centre (limit "+FOCUS_PX+" px)");
