@@ -175,6 +175,29 @@ async function interact(page,it,vp){
       got.push("event marker Enter: "+ev.name+" → clock "+ev.clock+", "+ev.sel);
       if(!ev.id||Math.abs(ev.clock-ev.mid)>1e-6||ev.sel!=="e:"+ev.id) report.failures.push("an event marker by real key presses: "+JSON.stringify(ev));
       report.sliderKeys=got; console.log("slider by real key presses: "+got.join(", ")); }
+    /* Stage 4D (docs/STAGE4_SPEC.md section D.4; decisions 74, 75): Play by a real key press runs at half speed, its button
+       pressed; and the Watch view of the low Pratzen case held in a dwell at the phase-3 event start 09:00 keeps every threshold
+       of its view (the darkness limit, map text at AA as rendered, drops within its limit), its event lit and named */
+    if(await first.evaluate(()=>typeof DWELL!=="undefined")){
+      const pr=[];
+      await first.evaluate(()=>{ setPresentation("study"); stopPlay(); setClock(730,{instant:true,force:true,camera:false}); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+      await first.keyboard.press(" "); await first.waitForTimeout(600);
+      const pl=await first.evaluate(()=>({playing:playing,speed:speed,clock:clock,pressed:[].filter.call(document.querySelectorAll(".spd-btn"),b=>b.getAttribute("aria-pressed")==="true").map(b=>b.dataset.s)}));
+      await first.keyboard.press(" "); const pl2=await first.evaluate(()=>playing);
+      pr.push("Space: playing "+pl.playing+" at "+pl.speed+"x (pressed "+pl.pressed.join(",")+"), clock 12:10 -> "+pl.clock.toFixed(2)+"; Space again: playing "+pl2);
+      if(!pl.playing||pl.speed!==0.5||pl.pressed.join()!=="0.5"||!(pl.clock>730)||pl2) report.failures.push("Play by a real key press: "+pr[0]);
+      const c=require("./cases.js").find(x=>x.name==="pratzen-low");
+      await first.evaluate(s=>window.__aus.apply(s),Object.assign({},c,{t:538})); await settle(first);
+      const dw=await first.evaluate(()=>{ DWELL.HOLD=1e9; playing=true; dwellReset(); DWELL.expect=clock; var n=0; while(!(DWELL.st&&DWELL.st.stage==="hold")&&n++<400) tickClock(50);
+        return {E:DWELL.st&&DWELL.st.E,clock:clock,ev:(dwellEvents()||[]).map(e=>e.id)}; });
+      await settle(first);
+      const buf=await first.screenshot({timeout:180000}), b64=buf.toString("base64");
+      const px=await first.evaluate(b=>window.__aus.pixels(b),b64), tc=await first.evaluate(b=>window.__aus.textContrast(b),b64);
+      const st=await first.evaluate(()=>{ mlLayout(); var cap=document.querySelector("#tb-cap .ev.dwell"), lit=document.querySelectorAll("#evmarks .ev-mark.dw").length;
+        var r={dropped:ML.stats.dropped,cap:cap?cap.textContent:null,lit:lit}; DWELL.HOLD=1.5; stopPlay(); return r; });
+      pr.push("Watch held in the dwell at "+(dw.E!==null?Math.floor(dw.E/60)+":"+String(dw.E%60).padStart(2,"0"):"-")+" ("+dw.ev.join(", ")+"): solid "+(100*px.solidBlack).toFixed(3)+"%, below AA "+tc.belowAA.length+", drops "+st.dropped+" (limit "+T.DROP_LIMIT["pratzen-low"]+"), caption \""+st.cap+"\", "+st.lit+" marker lit");
+      if(dw.E!==540||px.solidBlack>T.SOLID_BLACK||tc.belowAA.length||st.dropped>T.DROP_LIMIT["pratzen-low"]||!st.cap||st.lit<1) report.failures.push("the Watch view in a dwell: "+pr[1]);
+      report.pacing=pr; console.log("pacing: "+pr.join("; ")); }
     /* Stage 3E (docs/STAGE3_SPEC.md section H): by real key presses, Space and Enter on a focused button press it and do not
        toggle play; a key with Ctrl does nothing; "?" opens the overlay, Tab stays in it, Esc closes it and focus returns */
     if(await first.evaluate(()=>typeof KEYS!=="undefined")){

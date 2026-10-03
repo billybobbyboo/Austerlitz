@@ -104,6 +104,9 @@ const dashers={};
     const ba=fn("buildArrow");
     ok(/runs\s*:\s*a\.kind==="axis"\?dashRuns\(/.test(ba), "app.js: buildArrow dashes something other than the axis arrows");
     const ps=fn("planStaging"); ok(/dashRuns\(/.test(ps), "app.js: the plan staging outline is no longer dashed");
+    /* Stage 4D (docs/STAGE4_SPEC.md section D.4): only an arrow derived from an executed leg draws on with the clock */
+    ok((src.match(/DRAWON\.push\(/g)||[]).length===1&&/if\(a\.leg\)\{ var d=\{[^{}]*\}; DRAWON\.push\(/.test(ba), "app.js: an arrow that is not derived (a.leg) draws on with the clock");
+    ["buildBoundary","buildLine","buildHalt","buildObjective","planStaging","buildPlanLinks"].forEach(nm=>{ ok(!/DRAWON/.test(fn(nm)), "app.js: "+nm+" draws on with the clock"); });
   }
   if(file==="world.js"){
     const d=ast.body.find(n=>n.type==="VariableDeclaration"&&n.declarations[0].id.name==="ANALYSIS_STYLE"), t=d?src.slice(d.start,d.end):"";
@@ -117,6 +120,7 @@ ok(cssDash.length&&cssDash.every(sel=>/^\.legend \.(dsh|stg)$/.test(sel)), "styl
 /* ---- report ---- */
 console.log("binding: "+nArrows+" arrows, "+counts.derived+" derived from the leg executed in their phase, "+
   KINDS.map(k=>counts[k]+" "+k).join(", ")+" (interpretive)");
+console.log("draw-on: only the derived arrows (a.leg) draw on with the clock; interpretive arrows, lines, boundaries, halt bars and plans keep the phase's fade");
 console.log("unsettled, hand-authored and listed (decision 37): "+UNSETTLED.map(u=>"phase "+u.ph+" \""+u.label+"\" ("+u.why+")").join("; "));
 console.log("dashed or segmented drawers: "+Object.entries(dashers).map(([f,n])=>f+": "+n.join(", ")).join("; ")+"; boundaries, lines, halt bars and the trail solid");
 console.log("binding-test: "+checks+" checks, "+errors.length+" failed");

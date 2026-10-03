@@ -79,7 +79,9 @@ const CLASS={
   /* Stage 4B: the self-test's shadow coverage reads the drawn ground under the free rectangle */
   "app.js:lightChecks":"test",
   /* Stage 4C: the self-test's atmosphere checks (the Overview's ground, the knowledge model's threshold) */
-  "app.js:fogChecks":"test","app.js:atmoDayChecks":"test"
+  "app.js:fogChecks":"test","app.js:atmoDayChecks":"test",
+  /* Stage 4D: Follow's target stands on the drawn ground */
+  "app.js:followGoal":"presentation","app.js:followStep":"presentation"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */

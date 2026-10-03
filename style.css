@@ -320,6 +320,9 @@ body.pm-watch .tb-vm #viewmode{position:static;transform:none;opacity:1;backdrop
 .ev-mark.dec{background:var(--ink);border:2px solid var(--side-al);width:10px;height:10px;top:1px}
 .ev-mark.dec.fr{border-color:var(--side-fr)}
 .ev-mark.on{opacity:1;box-shadow:0 0 0 2px var(--accent)}
+/* Stage 4D: the event the playing clock dwells on: its marker lit, its name in the caption (docs/STAGE4_SPEC.md section D.3) */
+.ev-mark.dw{opacity:1;transform:translateX(-50%) rotate(45deg) scale(1.5);box-shadow:0 0 0 2px var(--accent)}
+.tb-cap .ev.dwell{box-shadow:inset 0 -1px 0 var(--accent)}
 /* the spine data task: the chosen theme's other moments on the timeline (docs/STAGE3_SPEC.md section C.2) */
 .ev-mark.inth{opacity:1;outline:1px solid var(--text-hi);outline-offset:3px}
 .step.inth{box-shadow:inset 0 -2px 0 var(--text-hi)}

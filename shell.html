@@ -136,6 +136,12 @@
       <span class="exag-set" id="exag-set"><!-- one button per DISPLAY.settings, written by bindExaggeration (app.js) --></span>
     </div>
   </div>
+  <!-- Stage 4D (docs/STAGE4_SPEC.md section D.3; decision 75) -->
+  <div class="lp-sec">
+    <p class="lp-lbl">Playing</p>
+    <button class="lp-row" id="dwell" aria-pressed="true">
+      <b>Pause briefly at events</b><i>While playing, the clock stops for a moment at each event</i></button>
+  </div>
 </div>
 
 <div id="vsbadge">
@@ -204,15 +210,15 @@
       <button class="t tb-play" id="play" aria-pressed="false">Play</button>
       <button class="t tb-icon" id="next" aria-label="Forward ten minutes" title="Forward ten minutes">&#9658;</button>
       <button class="t tb-icon" id="nextEv" aria-label="Next event" title="Next event">&#9474;&#9658;</button>
-      <button class="t tb-follow" id="follow" aria-pressed="true" title="Follow the action: move to each phase's view as the clock reaches it">Follow</button>
+      <button class="t tb-follow" id="follow" aria-pressed="true" title="Follow the action: while the clock plays, keep the live events in view; paused, each phase's view">Follow</button>
     </div>
     <div class="clockbox"><span id="clockread">04:00</span><small>2 Dec 1805</small></div>
     <div class="tb-cap" id="tb-cap"></div>
     <button class="t tb-help" id="helpbtn" aria-haspopup="dialog" aria-label="Keys and controls (?)" title="Keys and controls (?)">?</button>
     <div class="tb-vm" id="tb-vm"><!-- Watch: the presentation switch (#viewmode) stands here (app.js syncViewmode, decision 60) --></div>
     <div class="grp speeds" aria-label="Playback speed">
-      <button class="t spd-btn" data-s="0.5" aria-pressed="false">&frac12;&times;</button>
-      <button class="t spd-btn" data-s="1" aria-pressed="true">1&times;</button>
+      <button class="t spd-btn" data-s="0.5" aria-pressed="true">&frac12;&times;</button>
+      <button class="t spd-btn" data-s="1" aria-pressed="false">1&times;</button>
       <button class="t spd-btn" data-s="2" aria-pressed="false">2&times;</button>
       <button class="t spd-btn" data-s="4" aria-pressed="false">4&times;</button>
     </div>

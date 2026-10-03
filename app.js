@@ -1499,7 +1499,7 @@ function drapedRibbon(mapPts,o,add,mats){
   var wp=mapPts.map(function(p){ var w=o.world?p:W(p[0],p[1]); return new THREE.Vector3(w[0],0,w[1]); });
   var curve=wp.length>2?new THREE.CatmullRomCurve3(wp,false,"centripetal"):new THREE.LineCurve3(wp[0],wp[1]);
   var L=curve.getLength(), headL=o.head?Math.min(o.headL,L*0.6):0, headW=o.head?o.headW*headL/o.headL:0;
-  var uEnd=(L-headL)/L, runs=o.runs||[[0,1]], lift=o.lift, out={curve:curve,len:L};
+  var uEnd=(L-headL)/L, runs=o.runs||[[0,1]], lift=o.lift, out={curve:curve,len:L,uEnd:uEnd,headL:headL,headW:headW,layers:[]};
   [[1.34,o.edge,0.5,-0.06],[1.0,o.col,1.0,0]].forEach(function(layer,li){
     var sc=layer[0], ly=lift+layer[3], v=[], idx=[];
     runs.forEach(function(r){
@@ -1513,22 +1513,29 @@ function drapedRibbon(mapPts,o,add,mats){
       }
       for(i=0;i<n;i++) for(k=0;k<m;k++){ var a=first+i*(m+1)+k, b=a+m+1; idx.push(a,b,a+1, a+1,b,b+1); }
     });
-    add(drapeMesh(v,idx,layer[1],layer[2],ly,12+li,mats,"shaft"));
+    var sh=drapeMesh(v,idx,layer[1],layer[2],ly,12+li,mats,"shaft"), lay={shaft:sh,cols:Math.max(2,Math.ceil(Math.max(o.w0,o.w1)*sc/1.0)),sc:sc,ly:ly};
+    add(sh); out.layers.push(lay);
     if(o.head){
-      var tipU=1, end=curve.getPointAt(tipU), tg=curve.getTangentAt(tipU), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1; nx/=nl; nz/=nl;
-      var over=(sc-1)*headL*0.35, hl=headL*sc, hw2=headW*sc/2;
-      var tip=[end.x+tg.x*over,end.z+tg.z*over], bc=[tip[0]-tg.x*hl,tip[1]-tg.z*hl];
-      var l=[bc[0]+nx*hw2,bc[1]+nz*hw2], r=[bc[0]-nx*hw2,bc[1]-nz*hw2], hv=[], hi=[];
-      if(o.head==="chevron"){ var nt=[bc[0]+tg.x*hl*CHEVRON_NOTCH,bc[1]+tg.z*hl*CHEVRON_NOTCH];
-        drapeTri(tip,l,nt,5,ly,hv,hi); drapeTri(tip,nt,r,5,ly,hv,hi); }
-      else drapeTri(tip,l,r,5,ly,hv,hi);
-      var hm=drapeMesh(hv,hi,layer[1],layer[2],ly,14+li,mats,"head");
-      hm.userData.head=o.head; hm.userData.side=li===1?o.side:null; hm.userData.tip=tip; hm.userData.base=[l,r]; if(nt) hm.userData.notch=nt;
-      add(hm);
+      var H=ribbonHead(curve,1,headL,headW,sc,ly,o.head);
+      var hm=drapeMesh(H.v,H.idx,layer[1],layer[2],ly,14+li,mats,"head");
+      hm.userData.head=o.head; hm.userData.side=li===1?o.side:null; hm.userData.tip=H.tip; hm.userData.base=H.base; if(H.notch) hm.userData.notch=H.notch;
+      add(hm); lay.head=hm;
       if(li===0&&o.heads) o.heads.push(hm);   /* the casing's head mesh: labels keep clear of it (2D) */
     }
   });
   return out;
+}
+/* a ribbon's head with its tip at arc length u of the curve (u = 1: the arrow's end), every vertex draped; the casing's head
+   (sc > 1) stands a little beyond the tip. Since Stage 4D also the head of an arrow drawn on with the clock. */
+function ribbonHead(curve,u,headL,headW,sc,ly,type){
+  var end=curve.getPointAt(u), tg=curve.getTangentAt(u), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1; nx/=nl; nz/=nl;
+  var over=(sc-1)*headL*0.35, hl=headL*sc, hw2=headW*sc/2;
+  var tip=[end.x+tg.x*over,end.z+tg.z*over], bc=[tip[0]-tg.x*hl,tip[1]-tg.z*hl];
+  var l=[bc[0]+nx*hw2,bc[1]+nz*hw2], r=[bc[0]-nx*hw2,bc[1]-nz*hw2], hv=[], hi=[], nt=null;
+  if(type==="chevron"){ nt=[bc[0]+tg.x*hl*CHEVRON_NOTCH,bc[1]+tg.z*hl*CHEVRON_NOTCH];
+    drapeTri(tip,l,nt,5,ly,hv,hi); drapeTri(tip,nt,r,5,ly,hv,hi); }
+  else drapeTri(tip,l,r,5,ly,hv,hi);
+  return {v:hv,idx:hi,tip:tip,base:[l,r],notch:nt};
 }
 function overlayMesh(m){ ovAdd(m); }
 function buildArrow(a){
@@ -1540,8 +1547,9 @@ function buildArrow(a){
   var r=drapedRibbon(pts,{w0:w[0],w1:w[1],side:a.side,head:a.side==="al"?"chevron":"plain",headW:7.5,headL:6.5,heads:ovHeads,
     runs:a.kind==="axis"?dashRuns(9,0.62):null,   /* an intended route: broken; a retreat happened, so it is solid */
     col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
-  var mid=r.curve.getPointAt(0.5);
-  if(a.label) addOverlayLabel(a.label,new THREE.Vector3(mid.x,groundY(mid.x,mid.z)+2.4,mid.z));
+  var mid=r.curve.getPointAt(0.5), lb=null;
+  if(a.label) lb=addOverlayLabel(a.label,new THREE.Vector3(mid.x,groundY(mid.x,mid.z)+2.4,mid.z));
+  if(a.leg){ var d={a:a,r:r,pts:pts,s:1,label:lb,head:a.side==="al"?"chevron":"plain"}; DRAWON.push(d); if(lb) lb.drawOn=d; }   /* Stage 4D: drawn on with the clock */
 }
 /* "IV Column halted" (decision 23, section C.3): a column stopped short of its objective is not a route. A solid bar
    across its line of march at the point it had reached, cased like the arrows, no head. Its length is the frontage of
@@ -1581,7 +1589,8 @@ function buildBoundary(b){
   if(b.label) addOverlayLabel(b.label,new THREE.Vector3(q.x,groundY(q.x,q.z)+1.6,q.z));
 }
 function addOverlayLabel(text,pos){          /* annotation text: hue stays on the arrow, not the words */
-  ovText.push({text:text,pos:pos.clone(),acl:6});   /* the map layer's label, anchored on the drawn line (2D) */
+  var t={text:text,pos:pos.clone(),acl:6}; ovText.push(t);   /* the map layer's label, anchored on the drawn line (2D) */
+  return t;
 }
 function buildObjective(o){
   var w=W(o[0],o[1]);
@@ -1604,7 +1613,7 @@ function rebuildOverlays(ph,instant){
   retireOld();
   oldOv=curOv; oldMats=overlayMats;
   curOv=new THREE.Group(); overlayRoot.add(curOv);
-  overlayMats=[]; ovText=[]; ovMarkers=[]; ovHeads=[];
+  overlayMats=[]; ovText=[]; ovMarkers=[]; ovHeads=[]; DRAWON=[];
   var o=OVERLAYS[ph];
   if(o){
     (o.lines||[]).forEach(buildLine);
@@ -1614,6 +1623,62 @@ function rebuildOverlays(ph,instant){
   }
   if(instant){ retireOld(); ovFadeIn=1; ovFadeOut=0; }
   else { ovFadeIn=0; ovFadeOut=1; }
+  drawOnArrows();
+}
+/* ---- Stage 4D: arrows that draw on with the clock (docs/STAGE4_SPEC.md section D.3, item 4) ----
+   Only an arrow derived from an executed leg (a.leg; Stage 2C) is drawn on: its drawn length is the formation's progress along
+   the leg, or run of legs, at the clock (legWindow and legPath, read, not changed), its head at the tip. Before the first leg
+   starts the arrow is not drawn, and its label not shown until the tip passes it; once the last leg is complete it is whole,
+   as before. Interpretive arrows, lines and boundaries keep the phase change's fade. Under reduced motion every arrow is whole.
+   The tip is placed on the drawn curve at the point the formation has reached on its path: the curve passes through the
+   path's points (Catmull-Rom), so the formation's place between two of them is carried to the same place between them on the
+   curve. */
+var DRAWON=[];
+function arrowProgress(a,t){
+  var A=anchorList(a.leg[0]), i0=-1, i1=-1, k;
+  for(k=0;k<A.length;k++){ if(A[k].ph===a.leg[1]&&i0<0) i0=k; if(A[k].ph===a.leg[2]&&i0>=0) i1=k; }
+  if(i0<0||i1<=i0) return {g:null,frac:1};
+  var seg=0, g=null, started=false, segs=0;
+  for(k=i0+1;k<=i1;k++) segs+=legPath(A[k-1],A[k]).pts.length-1;
+  for(k=i0+1;k<=i1;k++){ var pp=legPath(A[k-1],A[k]), w=legWindow(A[k-1],A[k]), f=clamp01((t-w[0])/((w[1]-w[0])||1));
+    if(t>w[0]) started=true;
+    if(f<1){ if(!started){ g=seg; break; }
+      var d=f*pp.len, j=1; while(j<pp.cum.length-1&&pp.cum[j]<d) j++;
+      var sl=(pp.cum[j]-pp.cum[j-1])||1; g=seg+(j-1)+clamp01((d-pp.cum[j-1])/sl); break; }
+    seg+=pp.pts.length-1; }
+  if(g===null) g=segs;
+  return {g:g,frac:segs?g/segs:1,started:started};
+}
+function drawOnArrows(){
+  for(var i=0;i<DRAWON.length;i++){ var d=DRAWON[i], r=d.r, P=(RM)?{frac:1,started:true}:arrowProgress(d.a,clock);
+    var want=(!P.started&&P.frac<=0)?0:(P.frac>=1?1:-1);
+    var u=1;
+    if(want<0){ var curve=r.curve, tP=Math.min(1,Math.max(0,P.frac)), Ls=curve.getLengths(200), x=tP*200, i0=Math.floor(x), i1=Math.min(200,i0+1);
+      u=(Ls[i0]+(Ls[i1]-Ls[i0])*(x-i0))/(r.len||1); }
+    else u=want;
+    if(Math.abs(u-d.s)<1e-6&&d.done) continue;
+    d.s=u; d.done=true; drawOnApply(d);
+  }
+}
+function drawOnApply(d){
+  var r=d.r, u=d.s, L=r.len, show=u>1e-6;
+  r.layers.forEach(function(lay){
+    lay.shaft.visible=show; if(lay.head) lay.head.visible=show;
+    if(!show) return;
+    var I=lay.shaft.geometry.index, rows=(I.count/(6*lay.cols));
+    if(u>=1){ lay.shaft.geometry.setDrawRange(0,Infinity); if(lay.head) drawOnHead(lay,ribbonHead(r.curve,1,r.headL,r.headW,lay.sc,lay.ly,d.head)); return; }
+    var hL=Math.min(r.headL,u*L*0.6), hW=r.headW*hL/(r.headL||1), uS=Math.max(0,(u*L-hL)/L);
+    var k=Math.max(0,Math.min(rows,Math.round(uS/(r.uEnd||1)*rows)));
+    lay.shaft.geometry.setDrawRange(0,k*6*lay.cols);
+    if(lay.head) drawOnHead(lay,ribbonHead(r.curve,u,hL,hW,lay.sc,lay.ly,d.head));
+  });
+  if(d.label) d.label.hidden=u<0.5;
+}
+function drawOnHead(lay,H){
+  var A=lay.head.geometry.attributes.position, src=H.v;
+  for(var i=0;i<A.array.length&&i<src.length;i++) A.array[i]=src[i];
+  A.needsUpdate=true; lay.head.geometry.boundingSphere=null;   /* three recomputes it before culling */
+  lay.head.userData.tip=H.tip; lay.head.userData.base=H.base; if(H.notch) lay.head.userData.notch=H.notch;
 }
 function applyOverlayOpacity(){
   var base=layerOn.arrows?0.95:0;
@@ -1631,7 +1696,7 @@ function applyOverlayOpacity(){
 var TRANS_MS=2600;
 var T_MIN=PHASES[0].t0, T_MAX=PHASES[PHASES.length-1].t1;
 var clock=T_MIN, curPhase=0;
-var playing=false, playRAF=0, speed=1, MIN_PER_SEC=10;
+var playing=false, playRAF=0, speed=0.5, MIN_PER_SEC=10;   /* Stage 4D (decision 74): Play starts at half speed; the buttons keep their meaning */
 var KM_PER_MAP=GEOREF.KM_PER_MAP;   /* one map unit on the ground: from geo.js, the only scale */
 
 function easeInOut(k){ return k<0.5 ? 4*k*k*k : 1-Math.pow(-2*k+2,3)/2; }
@@ -1895,7 +1960,9 @@ function applyArc(a,e,bulge){
    change no longer interpolates it; since 4C neither is the fog (applyAtmo, from the clock). What remains here is the overlays'
    fade and the camera's glide while Follow is on. */
 function startPhaseTransition(ph,instant,moveCam){
-  var camMove=moveCam && !freeCam && mode!=="staff";   /* the paper map's plan stays where it is: the whole field is on it */
+  /* the paper map's plan stays where it is: the whole field is on it; while the clock plays, Follow follows the live events
+     instead (Stage 4D, followStep) */
+  var camMove=moveCam && !freeCam && mode!=="staff" && !playing;
   if(camMove){
     var pc=presetFrame(ph.cam);
     camArc=setupArc(landCam.position,orbitTarget,new THREE.Vector3(pc[0],pc[1],pc[2]),new THREE.Vector3(pc[3],pc[4],pc[5]));
@@ -1928,6 +1995,7 @@ function setClock(t,opts){
   }
   else if(selection&&selection.kind==="f"&&drawerKey()!==_drawerKey) paintDrawer();   /* a delayed move begins or ends */
   applyLight(false);   /* Stage 4B: the light is the clock's */
+  drawOnArrows();      /* Stage 4D: derived arrows drawn to the clock */
   paintTimeline();
 }
 function setPhase(n,instant){
@@ -3165,7 +3233,7 @@ function mlCollect(){
   /* movement, line, boundary, halt and objective labels, and the plans' */
   var seen={};
   function uniq(k){ var n=seen[k]||0; seen[k]=n+1; return n?k+"#"+n:k; }
-  if(labels&&layerOn.arrows) ovText.forEach(function(t){
+  if(labels&&layerOn.arrows) ovText.forEach(function(t){ if(t.hidden) return;   /* Stage 4D: a drawn-on arrow's label waits for its tip */
     text(uniq("o:"+t.text),t.obj?"objective":"overlay","mlt-serif",t.text,LB.annotation,t.pos,{pri:t.obj?10:6,acl:t.acl,r:t.r,op:ovFadeIn});
   });
   if(planGroup) planText.forEach(function(t){ text(uniq("pl:"+t.text),"plan","mlt-serif",t.text,LB.annotation,t.pos,{pri:6,acl:t.acl,r:t.r}); });
@@ -3235,7 +3303,7 @@ function mlObstacles(VW,VH){
     _mlV.copy(p).applyMatrix4(camera.matrixWorldInverse); var d=-_mlV.z; if(d<=camera.near) return;
     var rp=r/worldPerPx(p); R.push([c[0]-rp,c[1]-rp,c[0]+rp,c[1]+rp]); }
   /* Stage 3E: a symbol faded near the eye is no obstacle; a capped one keeps clear only its drawn size (symbolSizes) */
-  if(layerOn.arrows&&ovFadeIn>0.05){ ovHeads.forEach(tri); ovMarkers.forEach(function(m){ if(m.fade>0.05) disc(m.pos,m.r); }); }
+  if(layerOn.arrows&&ovFadeIn>0.05){ ovHeads.forEach(function(M){ if(M.visible) tri(M); }); ovMarkers.forEach(function(m){ if(m.fade>0.05) disc(m.pos,m.r); }); }
   if(planGroup){ planHeads.forEach(tri); planMarkers.forEach(function(m){ if(m.fade>0.05) disc(m.pos,m.r); }); }
   if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(k.sp.visible&&k.m.opacity>0.05) disc(k.world,k.r); });
   return R;
@@ -4242,6 +4310,8 @@ function buildUI(){
 
     });
   });
+  var dwb=document.getElementById("dwell");   /* Stage 4D (decision 75): pause briefly at events, on by default */
+  if(dwb) dwb.addEventListener("click",function(){ DWELL.on=!DWELL.on; dwb.setAttribute("aria-pressed",String(DWELL.on)); if(!DWELL.on) DWELL.st=null; });
   document.getElementById("prev").addEventListener("click",function(){ stopPlay(); setClock(clock-10); });
   document.getElementById("next").addEventListener("click",function(){ stopPlay(); setClock(clock+10); });
   document.getElementById("prevEv").addEventListener("click",function(){ jumpEvent(-1); });
@@ -4496,15 +4566,17 @@ function paintSituation(){
   var onH=plateauStrength("al"), cut=centreSeparation();
   if(onH!==_plLastVal){ _plLastVal=onH; _plLastT=clock; }
   var flatFor=clock-_plLastT;
+  var dw=dwellEvents();   /* Stage 4D: during a dwell the caption names the event(s) the clock stopped for */
   var key=[act.id,curPhase,top?top.id:"-",Math.round(onH/1000),cut?1:0,
-           flatFor>=60?1:0,playing?1:0].join("|");
+           flatFor>=60?1:0,playing?1:0,dw?dw.map(function(e){ return e.id; }).join(","):"-"].join("|");
   if(key===_sitKey) return;
   _sitKey=key;
   var der=(curPhase<=6&&onH>0)?'<span class="der" title="'+esc(FLAT_NOTE)+'"><small>derived</small> on the heights: Allied &asymp; '+
       onH.toLocaleString()+(flatFor>=60?' <em>plotted strength unchanged</em>':'')+'</span>':"";
   var cutH=cut?'<span class="cut der" title="'+esc(SEP_NOTE)+'"><small>derived</small> centre separation detected</span>':"";
   var c='<span class="act">'+esc(act.n.toUpperCase())+'</span><span class="sep">&middot;</span><span>'+esc(PHASES[curPhase].title)+'</span>';
-  if(top) c+='<span class="sep">&middot;</span><span class="ev">'+esc(top.n)+'</span>';
+  if(dw&&dw.length) c+='<span class="sep">&middot;</span><span class="ev dwell">'+esc(dw.map(function(e){ return e.n; }).join("; "))+'</span>';
+  else if(top) c+='<span class="sep">&middot;</span><span class="ev">'+esc(top.n)+'</span>';
   if(der) c+='<span class="sep der-sep">&middot;</span>'+der;
   if(cutH) c+='<span class="sep der-sep">&middot;</span>'+cutH;
   if(cap){ cap.innerHTML=c; cap.title=cap.textContent; }
@@ -4645,8 +4717,10 @@ function paintTimeline(){
   var r=document.getElementById("clockread");
   if(r) r.textContent=fmtClock(clock);
   var evh=document.getElementById("evmarks"), inE=!!(evh&&document.activeElement&&document.activeElement.parentNode===evh), best=-1, bd=1e9;
+  var dwI={}; (dwellEvents()||[]).forEach(function(e){ dwI[e.id]=1; });
   for(var q=0;q<_evTicks.length;q++){
     _evTicks[q].el.classList.toggle("on", evWeight(_evTicks[q].e,clock)>0.5);
+    if(_evTicks[q].el.classList.contains("dw")!==!!dwI[_evTicks[q].e.id]) _evTicks[q].el.classList.toggle("dw",!!dwI[_evTicks[q].e.id]);   /* Stage 4D: lit while the clock dwells on it */
     var d=Math.abs(_evTicks[q].mid-clock); if(d<bd){ bd=d; best=q; }
   }
   if(!inE) for(var q2=0;q2<_evTicks.length;q2++) _evTicks[q2].el.tabIndex=(q2===best)?0:-1;   /* the keyboard enters the events at the nearest */
@@ -5260,7 +5334,7 @@ function setProg(f){
   if(b) b.style.transform="scaleX("+Math.max(0,Math.min(1,f))+")";
 }
 function stopPlay(){
-  playing=false;
+  playing=false; dwellReset(); FOLLOW.T=null;
   var b=document.getElementById("play");
   if(b){ b.textContent="Play"; b.setAttribute("aria-pressed","false"); }
   paintExaggeration();
@@ -5268,7 +5342,7 @@ function stopPlay(){
 function togglePlay(){
   if(playing){ stopPlay(); return; }
   if(clock>=T_MAX-0.5) setClock(T_MIN,{force:true});
-  playing=true;
+  playing=true; dwellReset(); FOLLOW.T=null; FOLLOW.ev=null;
   var b=document.getElementById("play");
   if(b){ b.textContent="Pause"; b.setAttribute("aria-pressed","true"); }
   paintExaggeration();
@@ -5281,9 +5355,101 @@ function setSpeed(x){
 }
 function tickClock(dtMs){
   if(!playing) return;
-  var nt=clock + (dtMs/1000)*MIN_PER_SEC*speed;
+  if(DWELL.expect!==null&&Math.abs(clock-DWELL.expect)>1e-9) dwellReset();   /* the clock was moved by other means */
+  var nt=dwellAdvance(dtMs/1000,MIN_PER_SEC*speed);
   if(nt>=T_MAX){ setClock(T_MAX); stopPlay(); return; }
-  setClock(nt);
+  setClock(nt); DWELL.expect=clock;
+}
+/* ---- Stage 4D: the dwell (docs/STAGE4_SPEC.md section D.3, item 2; owner decision 75) ----
+   While the clock plays, at each event's start (the distinct start minutes of EVENTS) the clock eases down to a stop, holds
+   DWELL.HOLD seconds with the event's marker lit and its name in the caption, and eases back to speed. Each ease covers d clock
+   minutes in 2d/v seconds (v, the speed in clock minutes a second), so the clock's rate is continuous: d is a quarter second's
+   travel at speed (DWELL.EASE = 0.5 s each way), less where two starts are closer than that (half the gap). A dwell adds
+   HOLD + 2d/v seconds to the day (2.0 s where the ease is whole). The start the clock stands on when Play is pressed does not
+   dwell. Scrubbing, the keys, the phase and act buttons, the tour and the themes stop the clock, and never dwell. It is time,
+   not motion: it stays under reduced motion. The toggle (DWELL.on) is in the layers panel. */
+var DWELL={on:true, HOLD:1.5, EASE:0.5, starts:null, next:0, st:null, expect:null};
+function dwellStarts(){
+  if(!DWELL.starts){ var o={}; EVENTS.forEach(function(e){ o[evWindow(e)[0]]=1; }); DWELL.starts=Object.keys(o).map(Number).sort(function(a,b){ return a-b; }); }
+  return DWELL.starts;
+}
+function dwellReach(i,v){ var S=dwellStarts(), d=v*DWELL.EASE/2;
+  if(i>0) d=Math.min(d,(S[i]-S[i-1])/2); if(i<S.length-1) d=Math.min(d,(S[i+1]-S[i])/2); return d; }
+function dwellReset(){ var S=dwellStarts(), i=0; while(i<S.length&&S[i]<=clock+1e-9) i++; DWELL.next=i; DWELL.st=null; DWELL.expect=null; }
+function dwellEvents(){ if(!DWELL.st) return null; var E=DWELL.st.E; return EVENTS.filter(function(e){ return evWindow(e)[0]===E; }); }
+/* the clock after dt seconds at v clock minutes a second, through any dwell */
+function dwellAdvance(dt,v){
+  var c=clock, S=dwellStarts(), guard=0;
+  while(dt>1e-9&&guard++<64){
+    var st=DWELL.st;
+    if(!st){
+      if(!DWELL.on||DWELL.next>=S.length){ return c+dt*v; }
+      var i=DWELL.next, E=S[i], d=dwellReach(i,v), z=E-d;
+      if(c+dt*v<z){ return c+dt*v; }
+      if(c<z){ dt-=(z-c)/v; c=z; }
+      else { d=Math.max(1e-6,E-c); }   /* already inside the ease (a change of speed): ease from here */
+      DWELL.st={E:E,d:d,te:2*d/v,stage:"in",tau:0}; continue;
+    }
+    var lim=st.stage==="hold"?DWELL.HOLD:st.te, step=Math.min(dt,lim-st.tau);
+    st.tau+=step; dt-=step;
+    var k=lim>0?st.tau/lim:1;
+    if(st.stage==="in") c=st.E-st.d*(1-k)*(1-k);
+    else if(st.stage==="hold") c=st.E;
+    else c=st.E+st.d*k*k;
+    if(st.tau>=lim-1e-9){
+      if(st.stage==="in"){ st.stage="hold"; st.tau=0; c=st.E; }
+      else if(st.stage==="hold"){ st.stage="out"; st.tau=0; }
+      else { DWELL.st=null; DWELL.next++; c=st.E+st.d; }
+    }
+  }
+  return c;
+}
+/* the length of the day's play in real seconds from t0 at speed x, with the dwells as built (the self-test's reference) */
+function dwellDayLength(t0,x){
+  var v=MIN_PER_SEC*x, S=dwellStarts(), L=(T_MAX-t0)/v;
+  if(DWELL.on) for(var i=0;i<S.length;i++) if(S[i]>t0+1e-9&&S[i]<T_MAX) L+=DWELL.HOLD+2*dwellReach(i,v)/v;
+  return L;
+}
+/* ---- Stage 4D: Follow while the clock plays (docs/STAGE4_SPEC.md sections D.2 and D.3, item 3; owner decision 78) ----
+   With Follow on and the clock playing, the eye follows the action: its target eased toward the weighted centre of the live
+   events (liveEvents, their own weights), its distance toward one that holds their spread (2.4 x their weighted radius + 70
+   units, in 86-274), its direction toward the current phase's authored view; eased in real time (time constant FOLLOW.TAU) and
+   the target's move across the screen held to FOLLOW.CAP px a second at the free centre by slowing, never by a jump; every
+   step through the floor (clampCamera). While playing the phase boundary's glide is not used; when the clock stops the view
+   stays, and a phase or act button, a vantage, a theme or a tour stop glides to its view as before. Any pan, orbit, zoom or
+   double-click turns Follow off (decision 47). Under reduced motion the eye moves only at each event's start, at once. On
+   the paper map nothing follows (its plan shows the whole field). */
+var FOLLOW={TAU:1.5, CAP:150, T:null, dist:0, dir:null, ev:null};
+function followGoal(){
+  var L=liveEvents(clock), sw=0, cx=0, cz=0, c=presetFrame(PHASES[curPhase].cam);
+  var dir=new THREE.Vector3(c[0]-c[3],c[1]-c[4],c[2]-c[5]).normalize();
+  L.forEach(function(o){ var w=W(o.e.p[0],o.e.p[1]); cx+=w[0]*o.w; cz+=w[1]*o.w; sw+=o.w; });
+  if(!(sw>0)) return {T:null,dist:null,dir:dir};
+  cx/=sw; cz/=sw; var rad=0;
+  L.forEach(function(o){ var w=W(o.e.p[0],o.e.p[1]); rad+=o.w*Math.hypot(w[0]-cx,w[1]-cz); }); rad/=sw;
+  return {T:new THREE.Vector3(cx,groundY(cx,cz),cz),dist:Math.max(86,Math.min(274,2.4*rad+70)),dir:dir};
+}
+function followActive(){ return playing&&!freeCam&&mode!=="staff"&&!_tw.cam; }
+function followStep(dtMs){
+  if(!followActive()){ FOLLOW.T=null; return false; }
+  var g=followGoal();
+  if(!FOLLOW.T){ FOLLOW.T=orbitTarget.clone(); FOLLOW.dist=landCam.position.distanceTo(orbitTarget); FOLLOW.dir=landCam.position.clone().sub(orbitTarget).normalize(); }
+  if(RM){   /* reduced motion: at each event start, at once (not when Play is pressed) */
+    var S=dwellStarts(), j=-1; for(var i=0;i<S.length;i++) if(S[i]<=clock+1e-9) j=i;
+    if(FOLLOW.ev===null){ FOLLOW.ev=j; return false; }
+    if(j===FOLLOW.ev) return false;
+    FOLLOW.ev=j; if(g.T){ FOLLOW.T.copy(g.T); FOLLOW.dist=g.dist; } FOLLOW.dir.copy(g.dir);
+  } else {
+    var a=1-Math.exp(-(dtMs/1000)/FOLLOW.TAU);
+    if(g.T){ var mv=g.T.clone().sub(FOLLOW.T).multiplyScalar(a), cap=FOLLOW.CAP*(dtMs/1000)*worldPerPx(FOLLOW.T), ml=Math.hypot(mv.x,mv.z);
+      if(ml>cap) mv.multiplyScalar(cap/ml);
+      FOLLOW.T.add(mv); FOLLOW.dist+=(g.dist-FOLLOW.dist)*a; }
+    FOLLOW.dir.lerp(g.dir,a).normalize();
+  }
+  FOLLOW.T.y=groundY(FOLLOW.T.x,FOLLOW.T.z);
+  orbitTarget.copy(FOLLOW.T); landCam.position.copy(FOLLOW.T).addScaledVector(FOLLOW.dir,FOLLOW.dist); landCam.lookAt(orbitTarget);
+  clampCamera(); curVantage=null;
+  return true;
 }
 var presentation="study", hideDispatch=false;
 var PRESENT={
@@ -5411,6 +5577,7 @@ function loop(){
   FK=Math.max(0.25,Math.min(7.2,dt/16.667));
   if(tween) tween(now);
   tickClock(dt);
+  followStep(dt);   /* Stage 4D: Follow while the clock plays */
   setProg((clock-T_MIN)/(T_MAX-T_MIN));
   var tu=performance.now(); updateVisibility(); DEV.tUpdate=performance.now()-tu;
   syncViewOffset(false);   /* Stage 3D: the landscape's focus eased to the free rectangle's centre */
@@ -6144,6 +6311,88 @@ var AUSTERLITZ_DEBUG=(function(){
     setClock(keep,{instant:true,camera:false}); finishTween(); applyLight(true);
     return out;
   }
+  /* Stage 4D (docs/STAGE4_SPEC.md section D.4): pacing. paceChecks runs at each display factor, paceDayChecks once.
+     playDay plays the clock from `from` to `to` at speed x with Follow on, through the app's own tickClock and followStep,
+     stepMs of real time a step; pre and post run around each step. */
+  function playDay(x,from,to,stepMs,pre,post){
+    var sp=speed, real=0, n=0, c=presetFrame(PHASES[phaseAt(from)].cam);
+    setSpeed(x); setClock(from,{instant:true,force:true,camera:false}); finishTween();
+    landCam.position.set(c[0],c[1],c[2]); orbitTarget.set(c[3],c[4],c[5]); landCam.lookAt(orbitTarget); clampCamera(); syncViewOffset(true);
+    freeCam=false; playing=true; dwellReset(); FOLLOW.T=null; FOLLOW.ev=null;
+    while(playing&&clock<to&&n<400000){ if(pre) pre(); tickClock(stepMs); followStep(stepMs); real+=stepMs; n++; if(post) post(real); }
+    stopPlay(); setSpeed(sp); finishTween();
+    return real/1000;
+  }
+  var _pv4=new THREE.Vector3();
+  function onFreeRect(p,fr){ _pv4.set(p[0],p[1],p[2]).project(landCam); if(_pv4.z>1||_pv4.z<-1) return false;
+    var x=(_pv4.x*0.5+0.5)*(renderer.domElement.clientWidth||innerWidth), y=(-_pv4.y*0.5+0.5)*viewH(); return x>=fr[0]&&x<=fr[2]&&y>=fr[1]&&y<=fr[3]; }
+  function paceChecks(ck,fct){
+    var keep=clock, cam={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam};
+    /* the day under Follow at half speed: the floor, the live events in the free rectangle, the screen speed, the drops */
+    var fr=landFreeRect(), R={min:0,inn:0,below:0,spd:0,drops:0,dropAt:"",lastMin:-1}, pT=new THREE.Vector3(), pW=1;
+    var sec=playDay(0.5,T_MIN,T_MAX,100,function(){ pT.copy(orbitTarget); pW=worldPerPx(orbitTarget); },function(){
+      var p=landCam.position; if(p.y<camFloor(p.x,p.z)-1e-6) R.below++;
+      R.spd=Math.max(R.spd,Math.hypot(orbitTarget.x-pT.x,orbitTarget.z-pT.z)/pW/0.1);
+      var m=Math.floor(clock); if(m===R.lastMin) return; R.lastMin=m; R.min++;
+      landCam.updateMatrixWorld(true);
+      var live=liveEvents(clock).filter(function(o){ return o.w>=0.5; }), ok=live.every(function(o){ var w=W(o.e.p[0],o.e.p[1]); return onFreeRect([w[0],groundY(w[0],w[1]),w[1]],fr); });
+      if(ok) R.inn++;
+      if(m%10===0){ for(var k=0;k<12;k++){ settling=false; updateVisibility(); } mlLayout(); if(ML.stats.dropped>R.drops){ R.drops=ML.stats.dropped; R.dropAt=fmtClock(m); } } });
+    var share=R.inn/Math.max(1,R.min);
+    ck("Follow while playing: the day at \u00bd\u00d7 never under the floor, every live event in the free rectangle in at least 80% of its minutes, the ground's speed across the screen within "+FOLLOW.CAP+" px/s, drops never above 19 (section D.4)",
+      !R.below&&share>=0.8&&R.spd<=FOLLOW.CAP+1e-6&&R.drops<=19,
+      "played in "+sec.toFixed(1)+" s; "+R.below+" steps under the floor; every live event inside in "+(100*share).toFixed(1)+"% of "+R.min+" minutes; the target's largest speed "+R.spd.toFixed(1)+" px/s; drops at most "+R.drops+(R.dropAt?" ("+R.dropAt+")":""));
+    /* draw-on: at 20 clocks inside each derived arrow's legs, its drawn tip on the formation's path at its progress */
+    var nA=0, nT=0, worst=0, where="", bad=[];
+    for(var ph=0;ph<PHASES.length;ph++){ rebuildOverlays(ph,true);
+      DRAWON.slice().forEach(function(d){ var A=anchorList(d.a.leg[0]), i0=-1, i1=-1;
+        A.forEach(function(q,k){ if(q.ph===d.a.leg[1]&&i0<0) i0=k; if(q.ph===d.a.leg[2]&&i0>=0) i1=k; });
+        var w0=legWindow(A[i0],A[i0+1])[0], w1=legWindow(A[i1-1],A[i1])[1]; nA++;
+        clock=w0-0.5; drawOnArrows(); if(d.r.layers[0].shaft.visible) bad.push(d.a.label+": drawn before its leg starts");
+        clock=w1+0.5; drawOnArrows(); if(d.s!==1) bad.push(d.a.label+": not whole after its leg ends");
+        for(var k=1;k<=20;k++){ var t=w0+(w1-w0)*k/21; clock=t; drawOnArrows(); var L=legAt(d.a.leg[0],t); if(!L||!L.b||L.u<=0) continue;
+          var q=posAtClock(d.a.leg[0],t), w=W(q[0],q[1]), tip=d.r.layers[1].head.userData.tip, e=Math.hypot(tip[0]-w[0],tip[1]-w[1]); nT++;
+          if(e>worst){ worst=e; where=d.a.label+" at "+fmtClock(t); } } }); }
+    clock=keep; rebuildOverlays(phaseAt(keep),true);
+    ck("draw-on: a derived arrow's tip lies on its formation's path at the formation's progress, within 0.5 units; not drawn before its leg, whole after (section D.4)",
+      nA>0&&nT>0&&worst<=0.5&&!bad.length, nA+" derived arrows, "+nT+" clocks inside their legs: the tip at most "+worst.toFixed(3)+" units from the formation"+(where?" ("+where+")":"")+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):""));
+    setClock(keep,{instant:true,force:true,camera:false}); finishTween();
+    landCam.position.copy(cam.p); orbitTarget.copy(cam.t); landCam.lookAt(orbitTarget); freeCam=cam.fc;
+  }
+  function paceDayChecks(){
+    var out=[], keep=clock, keepRM=RM, cam={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam};
+    /* the dwell: a dry run of the day at each speed takes its computed length within 1 s, one dwell at each start after 04:00 */
+    function dry(x,from,to){ var c0=clock, real=0, st=1/60, n=0, was=false; clock=from; dwellReset();
+      while(clock<to&&real<3600){ clock=Math.min(T_MAX,dwellAdvance(st,MIN_PER_SEC*x)); real+=st; if(DWELL.st&&!was) n++; was=!!DWELL.st; }
+      clock=c0; dwellReset(); return {real:real,n:n}; }
+    var S=dwellStarts(), want=S.filter(function(t){ return t>T_MIN; }).length, rows=[], badD=[];
+    [0.5,1,2,4].forEach(function(x){ var r=dry(x,T_MIN,T_MAX), L=dwellDayLength(T_MIN,x); rows.push(x+"\u00d7 "+r.real.toFixed(1)+" s (computed "+L.toFixed(1)+", "+r.n+" dwells)");
+      if(Math.abs(r.real-L)>1||r.n!==want) badD.push(x+"\u00d7"); });
+    var lenHalf=dwellDayLength(T_MIN,0.5);
+    out.push({name:"dwell: the day plays in its computed length at every speed, one dwell at each event start after 04:00 (section D.4)", ok:!badD.length,
+      detail:rows.join("; ")+"; "+want+" starts after 04:00 ("+S.length+" in all); at \u00bd\u00d7 "+Math.floor(lenHalf/60)+" min "+Math.round(lenHalf%60)+" s"+(badD.length?"; WRONG at "+badD.join(", "):"")});
+    /* scrubbing does not dwell: the clock moved past an event start while playing, and the time keys */
+    var E=S[S.length-3], scrub=[];
+    playing=true; setClock(E-2,{instant:true,camera:false}); dwellReset(); DWELL.expect=clock; tickClock(16);
+    setClock(E+3,{instant:true,camera:false}); tickClock(16); if(DWELL.st||S[DWELL.next]<=E) scrub.push("a move past "+fmtClock(E)+" while playing dwelt");
+    for(var j=0;j<6;j++) tickClock(100); if(DWELL.st) scrub.push("dwelt after the move");
+    var kev={key:"ArrowRight",shiftKey:false,preventDefault:function(){},target:document.body}, kr=keyRow(kev,"window"); if(kr) kr.run(kev); if(!kr||playing||DWELL.st) scrub.push("the time key left the clock playing or dwelling");
+    stopPlay();
+    out.push({name:"dwell: scrubbing never dwells (a move of the clock while playing, the time keys)", ok:!scrub.length, detail:scrub.length?scrub.join("; "):"a move past "+fmtClock(E)+" while playing: no dwell; the → key stops the clock"});
+    /* reduced motion: the dwell kept; the camera moved only at event starts; every arrow whole */
+    RM=true; var rm=[], r1=dry(0.5,T_MIN,T_MAX); if(r1.n!==want) rm.push(r1.n+" dwells");
+    var moves=0, atStart=0, lastP=new THREE.Vector3(), c0=-1;
+    playDay(0.5,480,660,100,function(){ lastP.copy(landCam.position); c0=clock; },function(){ if(landCam.position.distanceTo(lastP)>1e-9){ moves++;
+      var hit=S.some(function(t){ return t>c0-1e-9&&t<=clock+1e-9; }); if(hit) atStart++; else rm.push("moved at "+fmtClock(clock)+" with no event start"); } });
+    rebuildOverlays(curPhase,true); var whole=DRAWON.every(function(d){ return d.s===1; }), nd=DRAWON.length;
+    RM=keepRM; rebuildOverlays(curPhase,true);
+    if(!whole) rm.push("an arrow drawn on");
+    out.push({name:"reduced motion: the dwell kept, the camera moved only at event starts, every arrow whole (section D.4)", ok:!rm.length&&moves>0,
+      detail:r1.n+" dwells over the day; 08:00-11:00 at \u00bd\u00d7: "+moves+" camera moves, "+atStart+" at an event start; "+nd+" arrows of the phase whole"+(rm.length?"; WRONG: "+rm.slice(0,4).join("; "):"")});
+    setClock(keep,{instant:true,force:true,camera:false}); finishTween();
+    landCam.position.copy(cam.p); orbitTarget.copy(cam.t); landCam.lookAt(orbitTarget); freeCam=cam.fc;
+    return out;
+  }
   /* Stage 4C (docs/STAGE4_SPEC.md sections B.4 and C.6): the atmosphere. fogChecks runs at each display factor, atmoDayChecks once. */
   function fogChecks(ck,fct){
     var keep=clock, bad=[], K=DISPLAY.factor, yOf=function(m){ return (m-GEOREF.DATUM_M)/GEOREF.M_PER_WORLD*K; };
@@ -6337,12 +6586,14 @@ var AUSTERLITZ_DEBUG=(function(){
       bySetting[fct]=factorFacts(fct);
       lightChecks(ck,fct);   /* Stage 4B */
       fogChecks(ck,fct);    /* Stage 4C */
+      paceChecks(ck,fct);   /* Stage 4D */
     }
     DISPLAY.settings.forEach(atFactor);
     stage2bChecks(bySetting).forEach(function(c){ out.push(c); });
     paperCross(paperBy).forEach(function(c){ out.push(c); });
     lightDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4B */
     atmoDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4C */
+    paceDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4D */
     setDisplayFactor(saveFactor);
     /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
     var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });
