@@ -229,6 +229,11 @@ function drawnAltitude(alt){ return Math.atan(DISPLAY.factor*Math.tan(alt*Math.P
    chosen on the harness's darkness measure without the toe: Part A's 0.28 alone (section A.4b) left the figures' and houses'
    cast shadows near-black in two views at 4x (selected-formation 0.076%, the low Pratzen view at 11:00 0.079%, against 0.05%);
    these values bring the worst to 0.030% (CHANGELOG.md, Stage 4B). Design values. */
+/* Stage 4E (docs/STAGE4_SPEC.md section G.2; owner decision 79): the light's fixed colours, part of the light table: the sky fill's
+   sky and ground, the fill light, the sun, background, fog and sky before the first applyLight, and the environment map's ground
+   (values unchanged from the literals they replace) */
+var LIGHT_RIG={hemiSky:0xA9BBCC, hemiGround:0x3E3A30, fill:0x9AA8B8, sun0:0xA5B2BE, bg0:0x121A22, fog0:0x3E4A58,
+  sky0:[0x0F1A26,0x2B3A48,0x6E7A82], envGround:0x2A2A24};
 var LIGHT_FILL={predawn:0.16,dawn:0.22,dusk:0.16,staff:0.16}, LIGHT_FILL_DAY=0.52, LIGHT_SKY_LIFT={predawn:0,dawn:0.04,dusk:0,staff:0};
 /* Stage 4C: the haze's strength for each preset's hour, as the visibility (km) at the valley floor that would give it. A depth cue
    counted beyond the orbit target (decision 81), not the day's air: physical visibilities (10-25 km) hazed the ground behind the
@@ -278,7 +283,10 @@ function applyLight(force){
   if(fillLight) fillLight.intensity=R.fill;
   scene.fog.near=R.fogN; scene.fog.far=R.fogF; scene.fog.color.copy(R.fogC);
   scene.background.copy(R.bg);
-  _skyNow[0].copy(R.sky[0]); _skyNow[1].copy(R.sky[1]); _skyNow[2].copy(R.sky[2]);
+  /* Stage 4E (docs/STAGE4_SPEC.md section F.2; decision 80): the horizon is the atmosphere's. The dome's colour at and below its
+     equator is the haze's (the fog colour the chunks mix toward), so where the apron's far edge shows it sinks into the same
+     colour; no ring of distant relief is drawn. On the landscape the light table's horizon is the fog colour in every row. */
+  _skyNow[0].copy(R.sky[0]); _skyNow[1].copy(R.sky[1]); _skyNow[2].copy(R.sky[2]); if(!staff) _skyNow[2].copy(R.fogC).convertLinearToSRGB();   /* the sky's colours are sRGB, the fog's linear */
   paintSky(_skyNow[0],_skyNow[1],_skyNow[2]);
   refreshEnvironment();
   if(sunDisc) sunDisc.material.opacity=staff?0:R.disc*0.92;
@@ -420,6 +428,10 @@ function atmoAt(e,p,focus){
   return [h,v];
 }
 /* the atmosphere's uniforms for this frame: the light's haze and mist colour, the clock's fog, the eye's focus */
+/* Stage 4E (docs/STAGE4_SPEC.md section F.2): the sky dome is centred on the eye, so its equator, where the sky turns to the haze's
+   colour, is the eye's own horizon at every height and factor (centred on the origin, a high eye saw the dome above its equator
+   below the level horizon) */
+function domeFollow(){ if(world&&world.dome&&landCam&&mode!=="staff") world.dome.position.copy(landCam.position); }
 function applyAtmo(){
   var A=ATMO.u.uAtmoA.value, B=ATMO.u.uAtmoB.value, C=ATMO.u.uAtmoC.value, paper=(mode==="staff");
   A.set(DISPLAY.flat?1:DISPLAY.factor,GEOREF.DATUM_M,GEOREF.M_PER_WORLD,landCam.position.distanceTo(orbitTarget));
@@ -429,7 +441,7 @@ function applyAtmo(){
   ATMO.u.uAtmoV.value.copy(LIGHT_NOW.mistC);
 }
 var skyCanvas=null, skyCtx=null, sunDisc=null;
-var _skyNow=[new THREE.Color(0x0F1A26),new THREE.Color(0x2B3A48),new THREE.Color(0x6E7A82)];
+var _skyNow=LIGHT_RIG.sky0.map(function(h){ return new THREE.Color(h); });
 var _gradeNow=[[0,0,0],[0.94,0.97,1.06],0.86,1.10,0.26,0.94];
 function paintSky(c0,c1,c2){
   if(!skyCanvas){
@@ -462,7 +474,7 @@ function refreshEnvironment(){
   g.addColorStop(0,"#"+_skyNow[0].getHexString());
   g.addColorStop(0.30,"#"+_skyNow[1].getHexString());
   g.addColorStop(0.48,"#"+_skyNow[2].getHexString());
-  g.addColorStop(1,"#2A2A24");
+  g.addColorStop(1,"#"+new THREE.Color(LIGHT_RIG.envGround).getHexString());   /* the environment's ground below the horizon */
   x.fillStyle=g; x.fillRect(0,0,64,32);
   var tex=new THREE.CanvasTexture(eq);
   tex.mapping=THREE.EquirectangularReflectionMapping;
@@ -489,8 +501,8 @@ var sunDir=new THREE.Vector3(-60,80,-160), fillLight=null;
 
 function init(){
   scene=new THREE.Scene();
-  scene.background=lin(0x121A22);
-  scene.fog=new THREE.Fog(lin(0x3E4A58),90,560);
+  scene.background=lin(LIGHT_RIG.bg0);
+  scene.fog=new THREE.Fog(lin(LIGHT_RIG.fog0),90,560);
 
   renderer=new THREE.WebGLRenderer({antialias:true});
   lowTier = (window.innerWidth*window.innerHeight < 900*700) ||
@@ -509,12 +521,12 @@ function init(){
   paperCam=new THREE.OrthographicCamera(-1,1,1,-1,1,600);
   MAPCAM.init(paperCam,{schedule:mapSchedule,panels:function(){ mlLegendFit(renderer.domElement.clientWidth||innerWidth,viewH()); return mlPanels(); },viewport:function(){ var e=renderer.domElement; return [e.clientWidth||innerWidth,e.clientHeight||innerHeight]; }});
 
-  hemi=new THREE.HemisphereLight(0xA9BBCC,0x3E3A30,0.34); scene.add(hemi);
+  hemi=new THREE.HemisphereLight(LIGHT_RIG.hemiSky,LIGHT_RIG.hemiGround,0.34); scene.add(hemi);
   /* a weak fill from opposite the sun so shaded slopes are dark, never black: since Stage 4B it turns with the light
      (placeLights) and its strength is the light table's (decision 70: it replaces the shadow toe) */
-  fillLight=new THREE.DirectionalLight(0x9AA8B8,0.16);
+  fillLight=new THREE.DirectionalLight(LIGHT_RIG.fill,0.16);
   fillLight.position.set(80,60,-120); scene.add(fillLight);
-  sun=new THREE.DirectionalLight(0xA5B2BE,0.40);
+  sun=new THREE.DirectionalLight(LIGHT_RIG.sun0,0.40);
   sun.position.set(-140,92,-160); sun.castShadow=true;
   var shadowPx = lowTier ? 1024 : (renderer.capabilities.maxTextureSize>=8192 ? 4096 : 2048);
   sun.shadow.mapSize.set(shadowPx,shadowPx);
@@ -667,6 +679,9 @@ function aggInterp(id,ph){
    geometry with one baked texture, so a body of men costs a single draw call.
    ============================================================ */
 var GEO={}, _smokeTex=null, _dustTex=null;
+/* Stage 4E (docs/STAGE4_SPEC.md section G.2; owner decision 79): the sprite palette, one table: powder smoke, dust, and the trodden
+   ground under a formation (values unchanged from the literals they replace) */
+var SPRITE_COL={smoke:0xA9A69E, dust:0xC6BCA6, pad:0x2A2620};
 
 function initBlockGeo(){
   GEO.shako  = new THREE.CylinderGeometry(0.16,0.18,0.28,6);
@@ -699,7 +714,9 @@ function imesh(geo,colour,count){
 function formationAtlas(coat,arm,files){
   var c=document.createElement("canvas"); c.width=512; c.height=256;
   var x=c.getContext("2d");
-  var dark=shade(coat,0.50), mid=shade(coat,0.82), hat="#1B1917", steel="#787C82";
+  /* owner decision 84 (Stage 4E): the figures' black drawn at about 2.7% reflectance (#2E2B27), still black; it was #1B1917, about
+     1%, darker than black cloth, and at the closest orbit it drew solid black blocks once the smoke no longer covered them */
+  var dark=shade(coat,0.50), mid=shade(coat,0.82), hat="#2E2B27", steel="#787C82";
 
   /* --- upper half: the rank in silhouette --- */
   x.clearRect(0,0,512,128);
@@ -802,7 +819,7 @@ function figKit(){
     return out;
   }
   var head=new THREE.IcosahedronGeometry(0.115,1), shako=new THREE.CylinderGeometry(0.115,0.13,0.27,7);
-  var SKIN=0xC9A98A, BLACK=0x1C1A17, WOOD=0x4A3826, STEEL=0x8A8E92, BREECH=0xBDB8AC, HORSE=0x5A4232, LEATHER=0x3A2E22;
+  var SKIN=0xC9A98A, BLACK=0x2E2B27 /* decision 84; was 0x1C1A17 */, WOOD=0x4A3826, STEEL=0x8A8E92, BREECH=0xBDB8AC, HORSE=0x5A4232, LEATHER=0x3A2E22;
   FIG={
     /* infantry: coat parts take the instance colour */
     infCoat: merge([
@@ -1212,6 +1229,11 @@ function smokeTexture(){
     x.fillStyle=gr; x.beginPath(); x.arc(px,py,r,0,Math.PI*2); x.fill();
   }
   softWindow(x,128);
+  /* Stage 4E (docs/STAGE4_SPEC.md section E.2): a puff fades toward its lower edge, so where it stands near a slope it thins
+     into the ground's air instead of ending on a line */
+  x.globalCompositeOperation="destination-in";
+  var vg=x.createLinearGradient(0,0,0,128); vg.addColorStop(0,"rgba(0,0,0,1)"); vg.addColorStop(0.55,"rgba(0,0,0,1)"); vg.addColorStop(1,"rgba(0,0,0,0)");
+  x.fillStyle=vg; x.fillRect(0,0,128,128); x.globalCompositeOperation="source-over";
   _smokeTex=ctexS(c); return _smokeTex;
 }
 var _padTex=null;
@@ -1329,7 +1351,10 @@ function padTexture(){
   var c=document.createElement("canvas"); c.width=c.height=128;
   var x=c.getContext("2d");
   var gr=x.createRadialGradient(64,64,10,64,64,64);
-  gr.addColorStop(0,"rgba(0,0,0,.55)"); gr.addColorStop(0.55,"rgba(0,0,0,.30)"); gr.addColorStop(1,"rgba(0,0,0,0)");
+  /* Stage 4E: a white mask, so the pad tints the ground toward its own colour (SPRITE_COL.pad, a dark earth) as its material says;
+     a black mask made the colour irrelevant and darkened the ground under a formation toward black (in the low Pratzen view at 14:00,
+     no longer under smoke, 36 solid near-black blocks) */
+  gr.addColorStop(0,"rgba(255,255,255,.55)"); gr.addColorStop(0.55,"rgba(255,255,255,.30)"); gr.addColorStop(1,"rgba(255,255,255,0)");
   x.fillStyle=gr; x.fillRect(0,0,128,128);
   _padTex=ctex(c); return _padTex;
 }
@@ -1378,22 +1403,23 @@ function buildFormations(){
       g.visible=false; scene.add(g);
       rec.block=g;
 
-      /* powder smoke where a formation is actually fighting */
-      var sm=new THREE.Sprite(new THREE.SpriteMaterial({
-        map:smokeTexture(), transparent:true, opacity:0, depthWrite:false, color:lin(0xA9A69E) }));
-      sm.scale.set(8.5,5.4,1); sm.visible=false; sm.renderOrder=6;
+      /* powder smoke where a formation is fighting: since Stage 4E a few puffs along its front (SMOKE) */
+      var sm=new THREE.Group(); sm.visible=false;
+      for(var pf=0;pf<SMOKE.PUFFS;pf++){ var sp=new THREE.Sprite(new THREE.SpriteMaterial({
+          map:smokeTexture(), transparent:true, opacity:0, depthWrite:false, color:lin(SPRITE_COL.smoke) }));
+        sp.renderOrder=6; sm.add(sp); }
       scene.add(sm); rec.smoke=sm;
 
       /* the ground under the formation: trodden, occluded, in contact */
       var pad=new THREE.Mesh(PAD_GEO,
         new THREE.MeshBasicMaterial({map:padTexture(),transparent:true,opacity:0.66,
-          depthWrite:false,color:lin(0x2A2620)}));
+          depthWrite:false,color:lin(SPRITE_COL.pad)}));
       pad.renderOrder=3; pad.visible=false;
       scene.add(pad); rec.pad=pad;
 
       /* dust kicked up by horse and by teams on the move */
       var du=new THREE.Sprite(new THREE.SpriteMaterial({
-        map:dustTexture(), transparent:true, opacity:0, depthWrite:false, color:lin(0xC6BCA6) }));
+        map:dustTexture(), transparent:true, opacity:0, depthWrite:false, color:lin(SPRITE_COL.dust) }));
       du.scale.set(13,6,1); du.visible=false; du.renderOrder=5;
       scene.add(du); rec.dust=du;
 
@@ -2306,6 +2332,7 @@ function renderStandard(){
 function renderFrame(){
   applyLight(false); placeLights();   /* Stage 4B: the light of the clock, and the lights and the shadow box placed for this view */
   applyAtmo();   /* Stage 4C: the haze and the valley fog for this view and this clock */
+  domeFollow();  /* Stage 4E: the sky's equator at the eye's horizon */
   renderFrameNow();
 }
 function renderFrameNow(){
@@ -2987,6 +3014,7 @@ function setMode(m){
   syncLandscapeLayers();
   renderer.shadowMap.enabled=!staff;
   world.water.forEach(function(w2){ if(w2.material.opacity!==undefined) w2.material.opacity=staff?1:0.94; });
+  (world.iceRims||[]).forEach(function(r2){ r2.visible=!staff; });   /* Stage 4E: the shore ice is the landscape's */
 
   applyLight(true);   /* Stage 4B: the paper map's own light, or the landscape's light of the clock */
 
@@ -3679,6 +3707,69 @@ function poseBlock(rec,id,st){
   rec.yaw += diff*ease(WHEEL[f.arm]||0.05);
 }
 var FIGHTING={attacking:1,engaged:1,charging:1,counterattack:1,repulsed:1,encircled:1,broken:1};
+/* ---- Stage 4E: smoke (docs/STAGE4_SPEC.md section E.2; owner decision 77) ----
+   Who smokes is the phase status, as before: a formation smokes while its status is a fighting one (the record of who fought in
+   the phase). How much follows the clock: full inside the window of any event that names the formation or one of its parents
+   (EVENTS[].forms, through evWeight's own lead and tail, so it eases in and out), a thin residue (SMOKE.RESIDUE) otherwise; no
+   event, status or window is added. A formation's smoke is SMOKE.PUFFS puffs along its front (the frontage the block draws), each
+   standing with its lower edge above the drawn ground across its width (spriteFloor) and fading toward that edge. On screen the
+   smoke covers at most SMOKE.CAP of the free rectangle: past it the puffs largest on screen (the nearest) are shrunk, none culled,
+   so the formations they belong to stay legible. Dust is unchanged. */
+var SMOKE={PUFFS:3, RESIDUE:0.25, OP:0.32, CAP:0.25, ev:null, want:[], share:0, capped:0};
+function smokeEvents(id){
+  if(!SMOKE.ev){ SMOKE.ev={}; EVENTS.forEach(function(e){ (e.forms||[]).forEach(function(k){ (SMOKE.ev[k]=SMOKE.ev[k]||[]).push(e); }); }); }
+  var out=[], a=id, n=0; while(a&&n++<8){ (SMOKE.ev[a]||[]).forEach(function(e){ if(out.indexOf(e)<0) out.push(e); }); a=FORMATIONS[a]&&FORMATIONS[a].parent; }
+  return out;
+}
+/* the smoke's amount for a formation at clock t, 0 when its phase status is not a fighting one */
+function smokeAmount(id,t){
+  var st=liveStatus(id,phaseAt(t)); if(!(st&&FIGHTING[st])) return 0;
+  var w=0; smokeEvents(id).forEach(function(e){ w=Math.max(w,evWeight(e,t)); });
+  return SMOKE.RESIDUE+(1-SMOKE.RESIDUE)*w;
+}
+function smokeWant(rec,id,f,p,dimmed){
+  var amt=(!!p&&mode!=="staff"&&!dimmed)?smokeAmount(id,clock):0;
+  rec.smokeAmt=amt; rec.smoke.visible=amt>0;
+  if(!(amt>0)){ rec.smoke.children.forEach(function(sp){ sp.material.opacity=0; }); return; }
+  var u=rec.block.userData, sc=8+Math.min(10,(f.strength||3000)/850), ps=Math.max(5,sc*0.62);
+  var front=Math.max(ps*0.6,(u&&u.W0?u.W0*(u.sw||1):6)*rec.block.scale.x), yaw=rec.yaw||0, c=Math.cos(yaw), sn=Math.sin(yaw);
+  var drift=Math.sin(smokeT*0.6+rec.delay*31)*0.8, N=rec.smoke.children.length;
+  rec.smoke.children.forEach(function(sp,i){
+    var o=N>1?(i/(N-1)-0.5)*front*0.8:0, x=rec.block.position.x+o*c+drift, z=rec.block.position.z-o*sn-1.4;
+    SMOKE.want.push({sp:sp,x:x,z:z,s:ps*(1-0.12*((i+1)%2)),y0:rec.block.position.y,op:SMOKE.OP*amt});
+  });
+}
+/* the share of the free rectangle the puffs cover as placed: each sprite's projected rectangle at its own scale and distance,
+   clipped, overlaps counted twice (the harness measures the same, tools/visual/measure.js smokeShare) */
+var _smV=new THREE.Vector3(), _smC=new THREE.Vector3();
+function smokeShareOf(list,fr){
+  var A=(fr[2]-fr[0])*(fr[3]-fr[1]), H=viewH(), Wd=renderer.domElement.clientWidth||innerWidth, t=Math.tan(camera.fov*Math.PI/360), S=0;
+  for(var i=0;i<list.length;i++){ var sp=list[i].sp; _smC.copy(sp.position).applyMatrix4(camera.matrixWorldInverse); if(_smC.z>-1) continue;
+    _smV.copy(sp.position).project(camera); var x=(_smV.x*0.5+0.5)*Wd, y=(-_smV.y*0.5+0.5)*H, w=sp.scale.x*H/(2*(-_smC.z)*t), h=sp.scale.y*H/(2*(-_smC.z)*t);
+    var x0=Math.max(fr[0],x-w/2), x1=Math.min(fr[2],x+w/2), y0=Math.max(fr[1],y-h/2), y1=Math.min(fr[3],y+h/2);
+    if(x1>x0&&y1>y0) S+=(x1-x0)*(y1-y0)/A; }
+  return S;
+}
+/* the puffs placed with every size on screen held to lim px (Infinity: none held): the scale, and the height that keeps the lower
+   edge above the drawn ground across the width */
+function smokePut(L,lim){
+  L.forEach(function(q){ var sp=q.sp, s=(q.px>lim)?q.s*lim/q.px:q.s, h=s*0.6;
+    sp.scale.set(s,h,1);
+    sp.position.set(q.x, Math.max(q.y0+2.4+h*0.24, spriteFloor(q.x,q.z,s*0.5)+0.2+h/2), q.z); });
+}
+function smokePlace(){
+  var L=SMOKE.want; SMOKE.want=[]; SMOKE.capped=0;
+  if(!L.length||camera.isOrthographicCamera){ SMOKE.share=0; return; }
+  camera.updateMatrixWorld(); var fr=landFreeRect(), H=viewH(), t=Math.tan(camera.fov*Math.PI/360);
+  L.forEach(function(q){ _smV.set(q.x,q.y0+2.4,q.z); var d=-_smV.applyMatrix4(camera.matrixWorldInverse).z; q.px=d>camera.near?q.s*H/(2*d*t):0; });
+  smokePut(L,Infinity); var S=smokeShareOf(L,fr);
+  if(S>SMOKE.CAP*0.96){   /* the largest on screen held to a common size, found by bisection on the puffs as placed */
+    var lo=0, hi=Math.max.apply(null,L.map(function(q){ return q.px; }));
+    for(var k=0;k<30;k++){ var m=(lo+hi)/2; smokePut(L,m); if(smokeShareOf(L,fr)>SMOKE.CAP*0.96) hi=m; else lo=m; }
+    smokePut(L,lo); SMOKE.capped=L.filter(function(q){ return q.px>lo; }).length; S=smokeShareOf(L,fr); }
+  SMOKE.share=S;
+  L.forEach(function(q){ var sp=q.sp, to=q.op-sp.material.opacity; if(Math.abs(to)>0.004) settling=true; sp.material.opacity+=to*ease(0.05); });
+}
 function updateVisibility(){
   var dist=viewDist();   /* the paper map: the distance at which the landscape eye would show the ground at its scale */
   var wantCorps = dist>250;
@@ -3756,22 +3847,9 @@ function updateVisibility(){
         rec.dust.material.opacity += dto*ease(0.05);
       } else rec.dust.material.opacity=0;
     }
-    if(rec.smoke){
-      var stx=liveStatus(id,curPhase);
-      var fighting = stx && FIGHTING[stx];
-      var wantS = fighting && !!p && mode!=="staff" && !dimmed;
-      rec.smoke.visible=wantS;
-      if(wantS){
-        var sc=8+Math.min(10,(f.strength||3000)/850);
-        rec.smoke.scale.set(sc,sc*0.60,1);
-        var drift=Math.sin(smokeT*0.6+rec.delay*31)*0.8;
-        var sxp=rec.block.position.x+drift, szp=rec.block.position.z-1.4;
-        rec.smoke.position.set(sxp, Math.max(rec.block.position.y+2.4+sc*0.14, spriteFloor(sxp,szp,sc*0.5)+0.2+sc*0.18), szp);
-        var sto=0.32-rec.smoke.material.opacity; if(Math.abs(sto)>0.004) settling=true;
-        rec.smoke.material.opacity += sto*ease(0.05);
-      } else rec.smoke.material.opacity=0;
-    }
+    if(rec.smoke) smokeWant(rec,id,f,p,dimmed);
   });
+  smokePlace();   /* Stage 4E: the puffs placed, the cap on screen applied */
 
   placeLabels.forEach(function(o){
     var major=MAJOR_FEATURES[o.ft.id] || o.ft.kind==="height" || o.ft.kind==="town";
@@ -6428,6 +6506,42 @@ var AUSTERLITZ_DEBUG=(function(){
     landCam.position.copy(cam.p); orbitTarget.copy(cam.t); landCam.lookAt(orbitTarget); freeCam=cam.fc;
     return out;
   }
+  /* Stage 4E (docs/STAGE4_SPEC.md sections E.3 and F.1): smoke and ice. extrasChecks runs at each display factor, smokeDayChecks once. */
+  function extrasChecks(ck,fct){
+    var keep=clock, cam={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam};
+    /* the meres' ice, and its shore rim, under the lowest drawn ground on their own edge */
+    var worst=-1e9, where="";
+    world.water.concat(world.iceRims||[]).forEach(function(m){ var q=m.userData.mere; if(!q) return; var cc=q[0], lo=1e9;
+      for(var a=0;a<96;a++){ var t=a/96*Math.PI*2; lo=Math.min(lo,groundY(cc[0]+Math.cos(t)*q[1],cc[1]+Math.sin(t)*q[2])); }
+      var e=m.position.y-lo; if(e>worst){ worst=e; where=(m.userData.mereLift?"the shore ice":"the ice")+" at "+cc.join(","); } });
+    ck("ice: the meres and their shore ice lie under the lowest drawn ground on their own edge (section F.1)", worst<0,
+      "the highest, "+where+": "+worst.toFixed(3)+" units against the edge's lowest ground");
+    /* every smoke puff's lower edge above the drawn ground across its width, in the two views where smoke is thickest, at 09:50 */
+    var bad=0, n=0, low=1e9;
+    var sw=W(210,362), sy=displayHeight(sw[0],sw[1]), sd=new THREE.Vector3(-0.62,0.46,0.64).normalize().multiplyScalar(58);   /* the harness's close-sokolnitz aim */
+    [[VANTAGE.plateau,590],[[sw[0]+sd.x,sy+sd.y,sw[1]+sd.z,sw[0],sy,sw[1]],500]].forEach(function(v){ setClock(v[1],{instant:true,force:true,camera:false}); finishTween();
+      placeCamera(v[0]); syncViewOffset(true); settle(30,true);
+      Object.keys(units).forEach(function(id){ var g=units[id].smoke; if(!g||!g.visible) return;
+        g.children.forEach(function(sp){ if(sp.material.opacity<0.02) return; n++; var half=sp.scale.x/2, R=new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld,0); R.y=0; R.normalize();
+          var top=-1e9; for(var k=-4;k<=4;k++) top=Math.max(top,groundY(sp.position.x+R.x*half*k/4,sp.position.z+R.z*half*k/4));
+          var gap=sp.position.y-sp.scale.y/2-top; low=Math.min(low,gap); if(gap<0) bad++; }); }); });
+    ck("smoke: every puff's lower edge stands above the drawn ground across its width (section E.3)", n>0&&!bad,
+      n+" puffs in two views (the Pratzen vantage at 09:50, Sokolnitz at 08:20): "+bad+" under the ground; the lowest "+(low===1e9?"-":low.toFixed(2))+" units above it");
+    setClock(keep,{instant:true,force:true,camera:false}); finishTween();
+    landCam.position.copy(cam.p); orbitTarget.copy(cam.t); landCam.lookAt(orbitTarget); freeCam=cam.fc;
+  }
+  function smokeDayChecks(){
+    var out=[], keep=clock, bad=[], n=0, full=0, resid=0;
+    for(var i=0;i<20;i++){ var t=T_MIN+30+(T_MAX-T_MIN-60)*i/19; setClock(t,{instant:true,force:true,camera:false}); finishTween();
+      Object.keys(units).forEach(function(id){ var a=smokeAmount(id,clock); if(!(a>0)) return; n++;
+        var st=liveStatus(id,curPhase); if(!(st&&FIGHTING[st])) bad.push(id+" at "+fmtClock(t)+" smokes with status "+st);
+        if(a>=1-1e-9){ full++; if(!smokeEvents(id).some(function(e){ var w=evWindow(e); return clock>=w[0]&&clock<=w[1]; })) bad.push(id+" at "+fmtClock(t)+" at full smoke outside any naming event's window"); }
+        else if(a<=SMOKE.RESIDUE+1e-9) resid++; }); }
+    out.push({name:"smoke: a formation smokes only with a fighting phase status, and at full amount only inside a naming event's window (section E.3; decision 77)", ok:n>0&&!bad.length,
+      detail:"20 clocks: "+n+" smoking formation-samples, "+full+" at full, "+resid+" at the residue "+SMOKE.RESIDUE+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):"")});
+    setClock(keep,{instant:true,force:true,camera:false}); finishTween();
+    return out;
+  }
   /* Stage 4C (docs/STAGE4_SPEC.md sections B.4 and C.6): the atmosphere. fogChecks runs at each display factor, atmoDayChecks once. */
   function fogChecks(ck,fct){
     var keep=clock, bad=[], K=DISPLAY.factor, yOf=function(m){ return (m-GEOREF.DATUM_M)/GEOREF.M_PER_WORLD*K; };
@@ -6622,6 +6736,7 @@ var AUSTERLITZ_DEBUG=(function(){
       lightChecks(ck,fct);   /* Stage 4B */
       fogChecks(ck,fct);    /* Stage 4C */
       paceChecks(ck,fct);   /* Stage 4D */
+      extrasChecks(ck,fct); /* Stage 4E */
     }
     DISPLAY.settings.forEach(atFactor);
     stage2bChecks(bySetting).forEach(function(c){ out.push(c); });
@@ -6629,6 +6744,7 @@ var AUSTERLITZ_DEBUG=(function(){
     lightDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4B */
     atmoDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4C */
     paceDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4D */
+    smokeDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4E */
     setDisplayFactor(saveFactor);
     /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
     var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });

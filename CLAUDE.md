@@ -15,13 +15,13 @@ lower one without saying so explicitly.
 |---|---|
 | `shell.html`, `style.css` | page markup and stylesheet; `build.py` puts the CSS at `/*CSS*/` and the bundle at `/*JS*/` |
 | `assets.js` | embedded CC0 ground textures |
-| `tokens.js` | `TOKENS`: the only source of interface and symbology colours and type (`docs/VISUAL_SPEC.md`); `python3 build.py --tokens` writes its copy into `style.css`, and the build fails if that copy drifts. Nation colours stay in `NATION` |
+| `tokens.js` | `TOKENS`: the only source of interface and symbology colours and type (`docs/VISUAL_SPEC.md`; since 4E also the paper map's ground, contours and marsh lines, `sym.paperMap`); `python3 build.py --tokens` writes its copy into `style.css`, and the build fails if that copy drifts. Nation colours stay in `NATION` |
 | `geo.js` | `GEOREF`: the only geographic and scale authority (transform, horizontal and vertical scale, ground truth) |
 | `data.js` | historical dataset: phases, order of battle and tracks, features, sources note |
 | `analysis.js` | analysis chapters (themes: each names its moments, `at` and `moments`, since the spine data task), command knowledge, the two plans, acts, events, guided tour (each stop names a moment) |
-| `world.js` | ground: relief model, land cover, water, roads, woods, settlements, `groundY` (since 4C no mist sheets: the fog is the atmosphere's, in `app.js`); the paper map's flat symbology (village footprints, woods) and its own hillshade (since 2E); the ground shader, which draws the land cover per point, and `COVER_ML`/`drawnCover` (since 2F) |
+| `world.js` | ground: relief model, land cover, water, roads, woods, settlements, `groundY` (since 4C no mist sheets: the fog is the atmosphere's, in `app.js`; since 4E the landscape's colours in `COVER_COL`, `LAND_COL` and `WATER_COL`, the meres' ice and shore ice); the paper map's flat symbology (village footprints, woods) and its own hillshade (since 2E); the ground shader, which draws the land cover per point, and `COVER_ML`/`drawnCover` (since 2F) |
 | `symbols.js` | the map layer's counters and names (HTML/SVG builders, accessible names), event and objective glyphs |
-| `app.js` | scene, the light (since 4B: the computed sun `SUN_DAY`, the light table `LIGHT_BY_ALT`, `applyLight`, `placeLights` and the fitted shadow box `SHADOW_FIT`), the atmosphere (since 4C: `ATMO`, the fog chunks, `applyAtmo`, `atmoAt`: the haze beyond the focus and the valley fog), pacing (since 4D: the dwell `DWELL`/`dwellAdvance`, Follow while playing `FOLLOW`/`followStep`, the derived arrows' draw-on `DRAWON`/`drawOnArrows`), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
+| `app.js` | scene, the light (since 4B: the computed sun `SUN_DAY`, the light table `LIGHT_BY_ALT`, `applyLight`, `placeLights` and the fitted shadow box `SHADOW_FIT`), the atmosphere (since 4C: `ATMO`, the fog chunks, `applyAtmo`, `atmoAt`: the haze beyond the focus and the valley fog), pacing (since 4D: the dwell `DWELL`/`dwellAdvance`, Follow while playing `FOLLOW`/`followStep`, the derived arrows' draw-on `DRAWON`/`drawOnArrows`), smoke and the sky (since 4E: `SMOKE`, `smokeAmount`, `smokePlace` with its cap; the dome on the eye, `domeFollow`; the light's fixed colours `LIGHT_RIG` and the sprite palette `SPRITE_COL`), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2, Stage 3 and Stage 4 measurement scripts (`stage2/`, `stage3/`, `stage4/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
@@ -121,9 +121,15 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   0.5 units at 20 clocks, over the whole arrow drawn faint, full once complete, decision 83; the day's length at every speed, one
   dwell at each event start; no dwell on scrubbing; reduced motion); `binding-test.js` checks only derived arrows draw on;
   `runtime-test.js` dry-runs the dwell; `css-test.js` checks the default speed and the dwell's toggle.
+  Since 4E: in every landscape view the smoke covers at most a quarter of the free rectangle (measure.js `smokeShare`); in the low
+  Pratzen view at 1x, 4x and 10.33x any gap between the apron's far edge and the true horizon drawn in the sky's colour above it (within
+  10 of 255, the map text hidden); the self-test's smoke and ice checks (a formation smokes only with a fighting status, at full only in
+  a naming event's window, decision 77; every puff's lower edge above the drawn ground; the meres and the shore ice under their own
+  edge at each factor); `css-test.js` checks the landscape's colours are in their tables and the paper map's ground in the tokens
+  (decision 79).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 4D build (md5 `9b13adbf...`, 1,402,090 bytes;
-  re-baselined from the Stage 4C build `622634ef...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 4E build (md5 `e1fac9ea...`, 1,416,737 bytes;
+  re-baselined from the Stage 4D build `9b13adbf...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -168,4 +174,6 @@ landscape, the shadow box fitted to the view) is merged (#28). Stage 4C (the atm
 the haze counted beyond the focus, the fog's top the Command view's 238.2 m and its amount `PHASES[].mist` eased in the clock, drawn
 at most 55% opaque; `fogShift` and the mist sheets gone) is merged (#29). Stage 4D (pacing: Play at ½×, a dwell at each event start
 with its toggle, Follow continuous while playing at 230-300 units, derived arrows drawn whole and faint with the part marched at full
-strength, owner decision 83; decision 76's one-word data change, the `check:data` reference moved) is implemented, for review.
+strength, owner decision 83; decision 76's one-word data change, the `check:data` reference moved) is merged (#30). Stage 4E (smoke in
+puffs along the front, its amount by the naming events and capped on screen; the meres' ice and shore ice; the sky dome on the eye, the
+horizon the haze's colour; the 3D colours in named tables, the paper map's ground in the tokens) is implemented, for review.

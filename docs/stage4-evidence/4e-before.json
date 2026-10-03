@@ -1,0 +1,292 @@
+{
+ "html": "the Stage 4D build (md5 9b13adbf7c481e36585fae9eb8ac1be1, main at 4fba007, #30)",
+ "when": "2026-10-03T09:49:26.879Z",
+ "views": {
+  "overview-field": {
+   "solidBlack": 0,
+   "meanLum": 76.5,
+   "contrast": {
+    "min": 8.32,
+    "belowAA": 0
+   },
+   "dropped": 6,
+   "smoke": {
+    "sprites": 11,
+    "share": 0.0873
+   },
+   "dropLimit": 11
+  },
+  "overview-plan": {
+   "solidBlack": 0,
+   "meanLum": 52.2,
+   "contrast": {
+    "min": 8.02,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "smoke": {
+    "sprites": 11,
+    "share": 0.0139
+   },
+   "dropLimit": 12
+  },
+  "close-sokolnitz": {
+   "solidBlack": 0,
+   "meanLum": 128.7,
+   "contrast": {
+    "min": 7.58,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "smoke": {
+    "sprites": 7,
+    "share": 0.5325
+   },
+   "dropLimit": 18
+  },
+  "pratzen-low": {
+   "solidBlack": 0.0003,
+   "meanLum": 90.4,
+   "contrast": {
+    "min": 11.94,
+    "belowAA": 0
+   },
+   "dropped": 5,
+   "smoke": {
+    "sprites": 11,
+    "share": 0.4145
+   },
+   "dropLimit": 13
+  },
+  "selected-formation": {
+   "solidBlack": 0,
+   "meanLum": 61.2,
+   "contrast": {
+    "min": 7.57,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "smoke": {
+    "sprites": 1,
+    "share": 0.0426
+   },
+   "dropLimit": 4
+  },
+  "watch-selected": {
+   "solidBlack": 0.0001,
+   "meanLum": 54,
+   "contrast": {
+    "min": 7.59,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "smoke": {
+    "sprites": 3,
+    "share": 0.0367
+   },
+   "dropLimit": 8
+  },
+  "hybrid-dimmed": {
+   "solidBlack": 0.00005,
+   "meanLum": 58.6,
+   "contrast": {
+    "min": 6.49,
+    "belowAA": 0
+   },
+   "dropped": 8,
+   "smoke": {
+    "sprites": 1,
+    "share": 0.0244
+   },
+   "dropLimit": 13
+  },
+  "pratzen-low-1x": {
+   "solidBlack": 0,
+   "meanLum": 74.1,
+   "contrast": {
+    "min": 8.49,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "smoke": {
+    "sprites": 11,
+    "share": 0.4231
+   },
+   "dropLimit": 12
+  },
+  "pratzen-low-10x": {
+   "solidBlack": 0,
+   "meanLum": 110,
+   "contrast": {
+    "min": 7.87,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "smoke": {
+    "sprites": 11,
+    "share": 0.274
+   },
+   "dropLimit": 8
+  },
+  "ph8-overview-study": {
+   "solidBlack": 0,
+   "meanLum": 43,
+   "contrast": {
+    "min": 8.7,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "smoke": {
+    "sprites": 7,
+    "share": 0.0077
+   },
+   "dropLimit": 7
+  },
+  "ph8-overview-watch": {
+   "solidBlack": 0,
+   "meanLum": 42.8,
+   "contrast": {
+    "min": 8.7,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "smoke": {
+    "sprites": 7,
+    "share": 0.0079
+   },
+   "dropLimit": 7
+  },
+  "overview-field@1x": {
+   "solidBlack": 0,
+   "meanLum": 53.3,
+   "contrast": {
+    "min": 8.34,
+    "belowAA": 0
+   },
+   "dropped": 6,
+   "smoke": {
+    "sprites": 11,
+    "share": 0.0871
+   },
+   "dropLimit": 11
+  },
+  "close-sokolnitz@1x": {
+   "solidBlack": 0,
+   "meanLum": 118.9,
+   "contrast": {
+    "min": 7.72,
+    "belowAA": 0
+   },
+   "dropped": 5,
+   "smoke": {
+    "sprites": 7,
+    "share": 0.5363
+   },
+   "dropLimit": 18
+  },
+  "pratzen-low@1x": {
+   "solidBlack": 0,
+   "meanLum": 74.1,
+   "contrast": {
+    "min": 8.49,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "smoke": {
+    "sprites": 11,
+    "share": 0.4231
+   },
+   "dropLimit": 13
+  },
+  "ph8-overview-study@1x": {
+   "solidBlack": 0.00006,
+   "meanLum": 32.2,
+   "contrast": {
+    "min": 8.77,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "smoke": {
+    "sprites": 7,
+    "share": 0.0078
+   },
+   "dropLimit": 7
+  },
+  "overview-field@10.33x": {
+   "solidBlack": 0,
+   "meanLum": 87.5,
+   "contrast": {
+    "min": 7.95,
+    "belowAA": 0
+   },
+   "dropped": 7,
+   "smoke": {
+    "sprites": 11,
+    "share": 0.0878
+   },
+   "dropLimit": 11
+  },
+  "close-sokolnitz@10.33x": {
+   "solidBlack": 0,
+   "meanLum": 146.5,
+   "contrast": {
+    "min": 7.67,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "smoke": {
+    "sprites": 7,
+    "share": 0.5199
+   },
+   "dropLimit": 18
+  },
+  "pratzen-low@10.33x": {
+   "solidBlack": 0,
+   "meanLum": 110,
+   "contrast": {
+    "min": 7.87,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "smoke": {
+    "sprites": 11,
+    "share": 0.274
+   },
+   "dropLimit": 13
+  },
+  "ph8-overview-study@10.33x": {
+   "solidBlack": 0,
+   "meanLum": 50.8,
+   "contrast": {
+    "min": 8.62,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "smoke": {
+    "sprites": 7,
+    "share": 0.0076
+   },
+   "dropLimit": 7
+  }
+ },
+ "horizon": {
+  "pratzen-low@1x": {
+   "columns": 0,
+   "gaps": 0,
+   "gapPx": 0,
+   "worst": 0
+  },
+  "pratzen-low@4x": {
+   "columns": 32,
+   "gaps": 32,
+   "gapPx": 35,
+   "worst": 4.4
+  },
+  "pratzen-low@10.33x": {
+   "columns": 32,
+   "gaps": 32,
+   "gapPx": 35,
+   "worst": 5.4
+  }
+ }
+}

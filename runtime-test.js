@@ -19,7 +19,8 @@ class Col{constructor(h){this.r=1;this.g=1;this.b=1;this.setHex(h===undefined?0x
  multiplyScalar(k){this.r*=k;this.g*=k;this.b*=k;return this}
  setHSL(){return this}
  getHexString(){const h=x=>("0"+Math.round(Math.max(0,Math.min(1,x))*255).toString(16)).slice(-2);return h(this.r)+h(this.g)+h(this.b)}
- convertSRGBToLinear(){const f=x=>x<0.04045?x/12.92:Math.pow((x+0.055)/1.055,2.4);this.r=f(this.r);this.g=f(this.g);this.b=f(this.b);return this}}
+ convertSRGBToLinear(){const f=x=>x<0.04045?x/12.92:Math.pow((x+0.055)/1.055,2.4);this.r=f(this.r);this.g=f(this.g);this.b=f(this.b);return this}
+ convertLinearToSRGB(){const f=x=>x<0.0031308?x*12.92:1.055*Math.pow(x,1/2.4)-0.055;this.r=f(this.r);this.g=f(this.g);this.b=f(this.b);return this}}
 class Obj extends REAL.Object3D{}
 function attr(n,item){const a={count:n,array:new Float32Array(n*item),needsUpdate:false,
   getX:i=>a.array[i*item],getY:i=>a.array[i*item+1],getZ:i=>a.array[i*item+2],
@@ -77,7 +78,7 @@ const stub={
  HemisphereLight:class extends Obj{constructor(a,b,i){super();this.intensity=i}},
  Fog:class{constructor(c,n,f){this.color=new Col(c);this.near=n;this.far=f}},
  PlaneGeometry:class extends Geo{constructor(w,h,a,b){super(((a||1)+1)*((b||1)+1))}},
- SphereGeometry:Geo, ExtrudeGeometry:class extends Geo{translate(){return this}}, Shape:class{moveTo(){}lineTo(){}}, IcosahedronGeometry:class extends Geo{constructor(){super();this.index=null}},BoxGeometry:Geo,ConeGeometry:Geo,CylinderGeometry:Geo,CircleGeometry:Geo,
+ SphereGeometry:Geo, ExtrudeGeometry:class extends Geo{translate(){return this}}, Shape:class{moveTo(){}lineTo(){}}, IcosahedronGeometry:class extends Geo{constructor(){super();this.index=null}},BoxGeometry:Geo,ConeGeometry:Geo,CylinderGeometry:Geo,CircleGeometry:Geo,RingGeometry:Geo,
  TubeGeometry:Geo,BufferGeometry:Geo,
  /* the real r128 curves (Stage 2C: the draped ribbons sample them by arc length) */
  CatmullRomCurve3:REAL.CatmullRomCurve3, LineCurve3:REAL.LineCurve3,

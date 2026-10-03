@@ -1,7 +1,7 @@
 # Time and atmosphere specification (Stage 4, Part A)
 
 **Status: Part A merged (#27); the owner accepted every recommendation of §J, recorded as decisions 68-82 (§0.4). 4B (the light)
-is merged (#28); 4C (the atmosphere) is merged (#29); 4D (pacing) is implemented, for review; what each found is at the end of §I. Sections A-J below still describe the build they were written
+is merged (#28); 4C (the atmosphere) is merged (#29); 4D (pacing) is merged (#30); 4E (smoke, ice, the horizon and the palette tables) is implemented, for review; what each found is at the end of §I. Sections A-J below still describe the build they were written
 against.** Part A was written
 against `main` at `18e014b` (the spine data task merged, #26), whose build `austerlitz-command-map.html` is 1,348,542 bytes,
 md5 `6b2cccd44138e95e6082c82b8b2d2f8a`. Before any work: `check:baseline` passed; `npm test` (all nine suites and the height
@@ -164,6 +164,7 @@ decision, in the question's order; §J keeps the trade-offs.
 | 81 | 14, the haze | Counted from the focus (beyond the orbit target's distance). (4C) |
 | 82 | 15, sequencing | 4B, 4C, 4D, 4E. |
 | 83 | asked while building 4D (§I, "4D, as delivered") | The draw-on as "ghost and progress": a derived arrow is always drawn whole and faint, its head at the destination; the part marched is drawn over it at full strength to the formation, without a head; once the leg is complete the arrow is drawn at full strength. In place of §D.3 item 4's "not drawn before the leg starts, the head at the tip". (4D) |
+| 84 | asked while building 4E (§I, "4E, as delivered") | The figures' black (their hats and black kit) drawn at about 2.7% reflectance, #2E2B27 (was #1B1917, about 1%): still black; a rendering value, not a uniform change; Stage 6 sets the figures' colours from sources. (4E) |
 
 ## A. The light
 
@@ -945,6 +946,38 @@ Per the report: the phase glide before 4D kept every live event in the free rect
 1×), moved the ground across the screen at up to 853 px/s, and dropped at most 16 (19 at 1×) map items; with 4D 92.7% (92.4%), at most
 150 px/s, at most 11. The self-test's pacing checks: the day under Follow at each factor, the draw-on at each factor, the dwell's
 length at every speed, scrubbing, reduced motion.
+
+### 4E, as delivered (smoke, ice, the horizon and the palette; decisions 77, 79, 80)
+
+Implemented in `app.js` (`SMOKE`, `smokeAmount`, `smokePlace`; `SPRITE_COL`; `LIGHT_RIG`; the dome centred on the eye, `domeFollow`; the
+sky's horizon the fog colour), `world.js` (`WATER_COL`, `ICE` and the shore ice; `LAND_COL`; `COVER_KEYS`), `tokens.js`
+(`sym.paperMap.ground`, `contour`, `marsh`), with these changes found while building it, each measured (`tools/stage4/report-4e.js`,
+`docs/stage4-evidence/4e-report.md`, `4e-before.json`, `4e-after.json`, `4e-sheet.jpg`, `4e-sheet-before.jpg`; `CHANGELOG.md`, Stage 4E):
+- **The smoke's cap** shrinks the puffs largest on screen to one common size, found by bisection on the puffs as placed (a first
+  estimate from their provisional heights let one view reach 25.06%), so the share stays at 24% or under; none is culled or made
+  fainter for it. The close and low views reach it (before 4E 27-54%); every other view is under 9%, as before.
+- **The horizon** already met §F.2 on the 4D build: in the low Pratzen view the gap under the horizon is within 4.4 (4x) and 5.4
+  (10.33x) of the sky above it, before and after 4E (at 1x the horizon is above the screen). 4E makes it hold by construction: the
+  dome's horizon colour is the fog colour itself (converted to sRGB: the sky's colours are sRGB, the fog's linear; an unconverted
+  first attempt drew a dark band, 55-75), and the dome is centred on the eye, so its equator is the eye's horizon however high the
+  eye stands (centred on the origin, a high eye sees the dome above its equator below the level horizon). No ring of distant relief
+  (decision 80).
+- **The shore ice is the landscape's**: on the paper map the meres are drawn as before (the paper map unchanged).
+- **The palette needed no rebalancing**: the Field vantage's median luminance through the day at 4x is 61-71 at 10:00-16:00, inside
+  its range before Stage 4 (41-85); only the valley fog's hours (08:00-09:05, 4C) are brighter, by design. The hues are unchanged.
+- **The tables** hold every value they replace unchanged: the paper map's ground, contours and marsh lines in `TOKENS.sym.paperMap`;
+  the landscape's in `LIGHT`/`LIGHT_RIG` (app.js), `SPRITE_COL` (app.js), `COVER_COL` and `LAND_COL` (world.js) and `WATER_COL`
+  (world.js). The figures', coats' and flags' colours stay where they are: Stage 6's.
+- **The figures' black (decision 84).** The old single smoke sprite stood over the formations nearest the eye; the puffs (and the cap)
+  uncovered them, and at the closest orbit (the harness's `pratzen-orbit-min`) the figures' hats and black kit, drawn at #1B1917
+  (about 1% reflectance, darker than black cloth), made 73 solid near-black blocks (0.361%; the 4D build 5 under its smoke). More sky
+  fill or fill light barely moved it (+0.16 and +0.12: 61 blocks). The owner chose to draw the black at #2E2B27 (about 2.7%, still
+  black): 7 blocks (0.035%). No hue, garment or headgear changes; Stage 6 sets the figures' colours from sources.
+- **The pad under each formation** (the trodden ground, `SPRITE_COL.pad`) had a black mask, so it darkened the ground toward black
+  whatever its colour; uncovered by the thinner smoke, the low Pratzen view at 14:00 made 16 solid near-black blocks. Its mask is
+  white: it tints toward its own dark earth colour (3 blocks).
+- **Not done:** the ice "matte where the formations cross" (§F.1) is not drawn: it would need the formations' crossing points on the
+  ice as a moving mask, and the phase-8 texts give no more than "across the frozen water"; no depth pre-pass for soft particles.
 
 ## J. Questions for the owner
 

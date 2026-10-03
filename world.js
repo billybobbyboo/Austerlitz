@@ -441,7 +441,7 @@ function groundY(x,z){
 /* ---------------- state ---------------- */
 var scrubMesh=null;
 var groundMesh=null, domeMesh=null, mistGroup=null, treeMesh=null, coniferMesh=null,
-    roofMesh=null, houseMesh=null, spireMesh=null, waterMeshes=[], roadMeshes=[],
+    roofMesh=null, houseMesh=null, spireMesh=null, waterMeshes=[], iceRims=[], roadMeshes=[],
     contourGroup=null, marshGroup=null, analysisGroup=null;
 var FACE={n:0,x:null,z:null,h:null,slope:null,shade:null,cover:null,ao:null,nz:null};
 var palNatural=null, palPaper=null, palGoing=null, apronMesh=null, chimneyMesh=null, _palNat={};
@@ -468,7 +468,7 @@ function buildWorld(scene){
   var sc=document.createElement("canvas"); sc.width=4; sc.height=256;
   var sctx=sc.getContext("2d");
   var g=sctx.createLinearGradient(0,0,0,256);
-  g.addColorStop(0,"#18242E"); g.addColorStop(.55,"#47575F"); g.addColorStop(.83,"#959E9C"); g.addColorStop(1,"#C6B9A0");
+  LAND_COL.skyInit.forEach(function(q){ g.addColorStop(q[0],hexCss(q[1])); });   /* the dome's first texture; the light table repaints it (paintSky) */
   sctx.fillStyle=g; sctx.fillRect(0,0,4,256);
   domeMesh=new THREE.Mesh(new THREE.SphereGeometry(1400,32,20),   /* beyond the apron and the fog */
     new THREE.MeshBasicMaterial({map:ctex(sc),side:THREE.BackSide,fog:false,depthWrite:false}));
@@ -529,7 +529,7 @@ function buildWorld(scene){
   buildPaperSymbols(scene);
 
   return {ground:groundMesh, apron:apronMesh, dome:domeMesh, mist:mistGroup, trees:treeMesh, conifers:coniferMesh, scrub:scrubMesh,
-          houses:houseMesh, roofs:roofMesh, spires:spireMesh, chimneys:chimneyMesh, water:waterMeshes, roads:roadMeshes,
+          houses:houseMesh, roofs:roofMesh, spires:spireMesh, chimneys:chimneyMesh, water:waterMeshes, iceRims:iceRims, roads:roadMeshes,
           contours:contourGroup, marsh:marshGroup, analysis:analysisGroup, paper:paperGroup};
 }
 
@@ -580,7 +580,7 @@ function rescaleWorld(){
   SEATED.forEach(reseatInstances);
   SEATED_GEO.forEach(reseatGeometry);
   DRAPED.forEach(drape);
-  waterMeshes.forEach(function(m){ if(m.userData.mere) m.position.y=mereLevel.apply(null,m.userData.mere); });
+  waterMeshes.concat(iceRims).forEach(function(m){ if(m.userData.mere) m.position.y=mereLevel.apply(null,m.userData.mere)+(m.userData.mereLift||0); });
   rebuildContours();
   TERRAIN_LINES.forEach(function(tl){ if(tl._midXZ) tl._mid=[tl._midXZ[0],displayHeight(tl._midXZ[0],tl._midXZ[1])+4.2,tl._midXZ[1]]; });
 }
@@ -641,11 +641,31 @@ function fieldStrip(strip,block){
   return [t,crop];
 }
 
-/* the base colour of each cover class (sRGB), the palette's own: Stage 4's to change */
+/* the base colour of each cover class (sRGB), in coverClass's order (field, meadow, marsh, water, wood, village, vineyard, track).
+   Since Stage 4E (docs/STAGE4_SPEC.md section G.2; owner decision 79) the landscape's are this table's, the paper map's are its
+   symbology's, TOKENS.sym.paperMap.ground (values unchanged); the landscape's other colours are LAND_COL's (below) */
+var COVER_KEYS=["field","meadow","marsh","water","wood","village","vineyard","track"];
 var COVER_COL={
   natural:[0x686659,0x5C5F50,0x4E5650,0x3A4850,0x33402E,0x6A665A,0x62634F,0x5F5A4A],
-  paper:  [0xE8DFC6,0xDCD9BC,0xCBD5C8,0xA8BEC8,0xBFCBA8,0xDCCFB4,0xE2DCBA,0xD2C4A4]
+  paper:  COVER_KEYS.map(function(k){ return hexNumW(TOKENS.sym.paperMap.ground[k]); })
 };
+/* Stage 4E (section G.2; decision 79): the landscape's terrain, building, vegetation and contour colours, one table (values
+   unchanged from the literals they replace); the water's are WATER_COL (buildWater), the light's and the sprites' are app.js's
+   LIGHT, LIGHT_RIG and SPRITE_COL */
+var LAND_COL={
+  skyInit:[[0,0x18242E],[0.55,0x47575F],[0.83,0x959E9C],[1,0xC6B9A0]],
+  road:{highway:0x9C9078, post:0x857A63, track:0x736A58, edge:0x554C3E},
+  wallTex:{plaster:0xD9D2C2, plinth:0x8E8474, window:0x2E2A26, frame:0xB9B2A2, door:0x5A4C3E, doorway:0x3A3028},
+  roofTex:0xC8C0B0, chimney:0x4A3E36, spire:0x4E4136,
+  walls:[0xC9BFAA,0xBDB39F,0xD1C7B2,0xB2A894],
+  roofs:[0x8A4A38,0x7C4536,0x6E4C3E,0x93553F,0x5F4E42],
+  bare:[0x45423C,0x4A4741,0x403E39,0x4E4A43,0x474540],
+  conifer:[0x2C3A2C,0x27332A,0x30402F],
+  scrub:[0x4E4A3E,0x574F42,0x46433A],
+  contour:{fine:0x2A2418, index:0x17140C}, marsh:0x5D7C8C
+};
+function hexNumW(h){ return parseInt(String(h).replace("#",""),16); }
+function hexCss(n){ return "#"+("000000"+n.toString(16)).slice(-6).toUpperCase(); }
 /* Stage 2F: the ground is coloured per point by its shader (atlasShader), from the class at that point and the palette's
    colour for it (COVER_COL), the elevation tint, the field pattern, the damp and trodden ground, the hollows and the light.
    What the vertices still carry is the light, which comes from the drawn slope and so changes with the display factor:
@@ -1159,19 +1179,31 @@ function mereLevel(cc,rx,rz,base){
   var lo=1e9; for(var a=0;a<96;a++){ var t=a/96*Math.PI*2; lo=Math.min(lo,displayHeight(cc[0]+Math.cos(t)*rx,cc[1]+Math.sin(t)*rz)); }
   return Math.min(displayY(base+1.2*regionalLevel(cc[0],cc[1])), lo-0.05);
 }
+/* Stage 4E (docs/STAGE4_SPEC.md sections F.1 and G.2; owner decision 79): the water's palette, one table. The meres are ice (the
+   data: the Satschan mere "frozen on 2 December"; the phase-8 texts' guns firing "down on the ice"): smoother than before, taking
+   the computed sun's sheen and the sky (the environment map), with a lighter rim where the shore ice meets the bank. Their
+   outlines stay schematic (decision 27); no cracks, holes, snow or figures in the water. The banks and streams are unchanged. */
+var WATER_COL={ice:0x4E5C66, iceRim:0x75838B, bank:0x4E5A4C, stream:0x587A8E};
+var ICE={roughness:0.32, env:0.42, rim:0.86, rimLift:0.02};
 function buildWater(scene){
-  var iceMat=new THREE.MeshStandardMaterial({color:lin(0x4E5C66),roughness:0.58,metalness:0.0,envMapIntensity:0.12,
-    transparent:true,opacity:0.96,flatShading:true});
+  var iceMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.ice),roughness:ICE.roughness,metalness:0.0,envMapIntensity:ICE.env,
+    transparent:true,opacity:0.96});
+  var rimMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.iceRim),roughness:ICE.roughness+0.2,metalness:0.0,envMapIntensity:ICE.env*0.6,
+    transparent:true,opacity:0.96});
   function mere(cc,rx,rz,base){
     var m=new THREE.Mesh(new THREE.CircleGeometry(1,48),iceMat);
     m.rotation.x=-Math.PI/2; m.position.set(cc[0],mereLevel(cc,rx,rz,base),cc[1]); m.scale.set(rx,rz,1);
     m.userData.mere=[cc,rx,rz,base];
     scene.add(m); waterMeshes.push(m);
+    var r=new THREE.Mesh(new THREE.RingGeometry(ICE.rim,1,48,1),rimMat);   /* the shore ice: its outer edge the mere's own */
+    r.rotation.x=-Math.PI/2; r.position.set(cc[0],mereLevel(cc,rx,rz,base)+ICE.rimLift,cc[1]); r.scale.set(rx,rz,1);
+    r.userData.mere=[cc,rx,rz,base]; r.userData.mereLift=ICE.rimLift;
+    scene.add(r); iceRims.push(r);   /* not water: the landscape's ice surface only (hidden on the paper map) */
   }
   mere(SATS,28,10.5,-3.85);
   mere(MENI,23,9,-3.95);
-  var bankMat=matte({color:0x4E5A4C,roughness:0.96});
-  var streamMat=new THREE.MeshStandardMaterial({color:lin(0x587A8E),roughness:0.48,metalness:0.0,envMapIntensity:0.18});
+  var bankMat=matte({color:WATER_COL.bank,roughness:0.96});
+  var streamMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.stream),roughness:0.48,metalness:0.0,envMapIntensity:0.18});
   ribbon(scene,GOLDBACH,4.6,0.16,bankMat,waterMeshes,"bank");
   ribbon(scene,GOLDBACH,2.8,0.26,streamMat,waterMeshes,"stream");
   ribbon(scene,LITAVA,5.0,0.16,bankMat,waterMeshes,"bank");
@@ -1182,10 +1214,10 @@ function buildWater(scene){
   });
 }
 function buildRoads(scene){
-  var hi=matte({color:0x9C9078,roughness:0.94});
-  var po=matte({color:0x857A63,roughness:0.94});
-  var tr=matte({color:0x736A58,roughness:0.95});
-  var edge=matte({color:0x554C3E,roughness:0.97});
+  var hi=matte({color:LAND_COL.road.highway,roughness:0.94});
+  var po=matte({color:LAND_COL.road.post,roughness:0.94});
+  var tr=matte({color:LAND_COL.road.track,roughness:0.95});
+  var edge=matte({color:LAND_COL.road.edge,roughness:0.97});
   ROADS.forEach(function(r){
     var mat = r.cls==="highway"?hi : r.cls==="post"?po : tr;
     var pts=M2W(r.p);
@@ -1198,14 +1230,15 @@ function wallTexture(){
   if(_wallTex) return _wallTex;
   var c=document.createElement("canvas"); c.width=256; c.height=128;
   var x=c.getContext("2d");
-  x.fillStyle="#D9D2C2"; x.fillRect(0,0,256,128);
+  var WC=LAND_COL.wallTex;
+  x.fillStyle=hexCss(WC.plaster); x.fillRect(0,0,256,128);
   for(var i=0;i<900;i++){ x.fillStyle="rgba(120,110,95,"+(0.03+hash2(i,7)*0.05)+")";
     x.fillRect(hash2(i,1)*256,hash2(i,2)*128,2+hash2(i,3)*6,2+hash2(i,4)*4); }
-  x.fillStyle="#8E8474"; x.fillRect(0,104,256,24);
+  x.fillStyle=hexCss(WC.plinth); x.fillRect(0,104,256,24);
   x.fillStyle="rgba(70,62,52,.35)"; x.fillRect(0,100,256,6);
-  x.fillStyle="#2E2A26"; x.fillRect(52,40,26,30); x.fillRect(178,40,26,30);
-  x.fillStyle="#B9B2A2"; x.fillRect(64,40,2,30); x.fillRect(52,54,26,2); x.fillRect(190,40,2,30); x.fillRect(178,54,26,2);
-  x.fillStyle="#5A4C3E"; x.fillRect(114,58,26,46); x.fillStyle="#3A3028"; x.fillRect(116,60,22,42);
+  x.fillStyle=hexCss(WC.window); x.fillRect(52,40,26,30); x.fillRect(178,40,26,30);
+  x.fillStyle=hexCss(WC.frame); x.fillRect(64,40,2,30); x.fillRect(52,54,26,2); x.fillRect(190,40,2,30); x.fillRect(178,54,26,2);
+  x.fillStyle=hexCss(WC.door); x.fillRect(114,58,26,46); x.fillStyle=hexCss(WC.doorway); x.fillRect(116,60,22,42);
   var g=x.createLinearGradient(0,0,0,18); g.addColorStop(0,"rgba(0,0,0,.42)"); g.addColorStop(1,"rgba(0,0,0,0)");
   x.fillStyle=g; x.fillRect(0,0,256,18);
   _wallTex=ctexS(c); return _wallTex;
@@ -1214,7 +1247,7 @@ function roofTexture(){
   if(_roofTex) return _roofTex;
   var c=document.createElement("canvas"); c.width=128; c.height=128;
   var x=c.getContext("2d");
-  x.fillStyle="#C8C0B0"; x.fillRect(0,0,128,128);
+  x.fillStyle=hexCss(LAND_COL.roofTex); x.fillRect(0,0,128,128);
   for(var r=0;r<16;r++){
     x.fillStyle="rgba(60,40,30,"+(0.18+(r%2)*0.06)+")"; x.fillRect(0,r*8,128,2);
     for(var k=0;k<16;k++){ x.fillStyle="rgba(255,255,255,"+(hash2(r,k)*0.08)+")"; x.fillRect(k*8+(r%2)*4,r*8+2,7,5); }
@@ -1251,8 +1284,8 @@ function buildSettlements(scene){
   var spireGeo=new THREE.ConeGeometry(0.62,3.2,6);
   var wallMat=matte({color:0xFFFFFF,flatShading:true,map:wallTexture()});   /* colour comes from each instance */
   var roofMat=matte({color:0xFFFFFF,flatShading:true,map:roofTexture(),side:THREE.DoubleSide});
-  var chimneyMat=matte({color:0x4A3E36,flatShading:true});
-  var spireMat=matte({color:0x4E4136,flatShading:true});
+  var chimneyMat=matte({color:LAND_COL.chimney,flatShading:true});
+  var spireMat=matte({color:LAND_COL.spire,flatShading:true});
   var houses=[],roofs=[],spires=[],chims=[];
   VILLAGES.forEach(function(v){
     var cc=W(v[1],v[2]);
@@ -1304,7 +1337,7 @@ function buildSettlements(scene){
   houses.forEach(function(h,i){
     d.position.set(h[0],h[1],h[2]); d.rotation.set(0,h[6],0); d.scale.set(h[3],h[4],h[5]);
     d.updateMatrix(); houseMesh.setMatrixAt(i,d.matrix);
-    tmpC.setHex([0xC9BFAA,0xBDB39F,0xD1C7B2,0xB2A894][(i*3)%4]).convertSRGBToLinear().multiplyScalar(0.86+0.20*((i*37)%11)/11);
+    tmpC.setHex(LAND_COL.walls[(i*3)%4]).convertSRGBToLinear().multiplyScalar(0.86+0.20*((i*37)%11)/11);
     houseMesh.setColorAt(i,tmpC);
   });
   if(houseMesh.instanceColor) houseMesh.instanceColor.needsUpdate=true;
@@ -1312,7 +1345,7 @@ function buildSettlements(scene){
     d.position.set(r[0],r[1],r[2]); d.rotation.set(0,r[5],0); d.scale.set(r[3],r[6]||0.7,r[4]);
     d.updateMatrix(); roofMesh.setMatrixAt(i,d.matrix);
     var pick=(i*7)%5;
-    tmpC.setHex([0x8A4A38,0x7C4536,0x6E4C3E,0x93553F,0x5F4E42][pick]).convertSRGBToLinear().multiplyScalar(0.86+0.26*((i*13)%7)/7);
+    tmpC.setHex(LAND_COL.roofs[pick]).convertSRGBToLinear().multiplyScalar(0.86+0.26*((i*13)%7)/7);
     roofMesh.setColorAt(i,tmpC);
   });
   if(roofMesh.instanceColor) roofMesh.instanceColor.needsUpdate=true;
@@ -1364,7 +1397,7 @@ function buildWoods(scene){
   broad.forEach(function(t,i){ byVar[(i*7+Math.floor(t[0]*3))%4 & 3].push(t); });
   conif.forEach(function(t,i){ conVar[(i*5)%2].push(t); });
   treeMesh=new THREE.Group(); coniferMesh=new THREE.Group();
-  var BARE=[0x45423C,0x4A4741,0x403E39,0x4E4A43,0x474540];
+  var BARE=LAND_COL.bare;
   byVar.forEach(function(list,vi){
     var im=new THREE.InstancedMesh(kit.broad[vi],matte({color:0xFFFFFF,flatShading:true}),Math.max(1,list.length));
     im.castShadow=true; im.count=Math.max(1,list.length);
@@ -1378,7 +1411,7 @@ function buildWoods(scene){
     im.userData.kinds=list.map(function(t){ return t[4]; });
     if(list.length) treeMesh.add(im);
   });
-  var EVER=[0x2C3A2C,0x27332A,0x30402F];
+  var EVER=LAND_COL.conifer;
   conVar.forEach(function(list,vi){
     var im=new THREE.InstancedMesh(kit.conifer[vi],matte({color:0xFFFFFF,flatShading:true}),Math.max(1,list.length));
     im.castShadow=true; im.count=Math.max(1,list.length);
@@ -1420,7 +1453,7 @@ function buildWoods(scene){
   scrub.forEach(function(t,k){
     d.position.set(t[0],t[1],t[2]); d.rotation.set(0,rnd()*6.28,0);
     d.scale.set(t[3],t[3]*0.8,t[3]); d.updateMatrix(); scrubMesh.setMatrixAt(k,d.matrix);
-    tcol.setHex([0x4E4A3E,0x574F42,0x46433A][k%3]).convertSRGBToLinear().multiplyScalar(0.85+0.3*((k*7)%5)/5);
+    tcol.setHex(LAND_COL.scrub[k%3]).convertSRGBToLinear().multiplyScalar(0.85+0.3*((k*7)%5)/5);
     scrubMesh.setColorAt(k,tcol);
   });
   if(scrubMesh.instanceColor) scrubMesh.instanceColor.needsUpdate=true;
@@ -1551,8 +1584,8 @@ function buildContours(scene){
     contourGroup.add(l);
     return l;
   }
-  contourGroup.userData.fine=mk(fine,0x2A2418,0.30);
-  contourGroup.userData.index=mk(index,0x17140C,0.50);
+  contourGroup.userData.fine=mk(fine,LAND_COL.contour.fine,0.30);
+  contourGroup.userData.index=mk(index,LAND_COL.contour.index,0.50);
   scene.add(contourGroup);
 }
 /* the contour lattice is model data (gridH, CONTOUR_INTERVAL); only its drawn height follows the factor */
@@ -1595,10 +1628,11 @@ function marchLevel(L,out){
 }
 function setContourStyle(paper){
   var f=contourGroup.userData.fine, x=contourGroup.userData.index;
-  if(f){ f.material.color.copy(lin(paper?0x8A7346:0x2A2418)); f.material.opacity=paper?0.42:0.30; }
-  if(x){ x.material.color.copy(lin(paper?0x6E5629:0x17140C)); x.material.opacity=paper?0.62:0.50; }
+  var PM=TOKENS.sym.paperMap;
+  if(f){ f.material.color.copy(lin(paper?hexNumW(PM.contour.fine):LAND_COL.contour.fine)); f.material.opacity=paper?0.42:0.30; }
+  if(x){ x.material.color.copy(lin(paper?hexNumW(PM.contour.index):LAND_COL.contour.index)); x.material.opacity=paper?0.62:0.50; }
   if(marshGroup&&marshGroup.userData.mat){
-    marshGroup.userData.mat.color.copy(lin(paper?0x3E6D88:0x5D7C8C));
+    marshGroup.userData.mat.color.copy(lin(paper?hexNumW(PM.marsh):LAND_COL.marsh));
     marshGroup.userData.mat.opacity=paper?0.7:0.55;
   }
   if(analysisGroup) analysisGroup.children.forEach(function(o){ if(o.userData.t) o.material.color.setHex(analysisCol(o.userData.t,paper)); });
@@ -1620,7 +1654,7 @@ function buildMarshSymbols(scene){
   }
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute(pts,3));
-  var m=new THREE.LineBasicMaterial({color:lin(0x5D7C8C),transparent:true,opacity:0.55});
+  var m=new THREE.LineBasicMaterial({color:lin(LAND_COL.marsh),transparent:true,opacity:0.55});
   var ls=new THREE.LineSegments(g,m); marshGroup.add(ls); SEATED_GEO.push(seatGeometry(ls));
   marshGroup.userData.mat=m;
   scene.add(marshGroup);

@@ -1,8 +1,104 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 4E: smoke, ice, the horizon and the palette tables (docs/STAGE4_SPEC.md §E, §F, §G, §I; owner decisions 77, 79, 80, 84)
+
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,416,737 bytes, md5 `e1fac9ea08a4c2b2eaefe5b78529c843`**
+(was 1,402,090 bytes, md5 `9b13adbf…`, Stage 4D). With it, every part of Stage 4 is built (4B-4E).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. No data,
+  geography, chronology, order of battle, track, event or `OVERLAYS` change; `EVENTS[].forms` and the phase statuses are read, not
+  changed. Presentation only.
+- The first commit records Stage 4D as merged (#30).
+
+**Before building (fact).** `main` (4fba007, Stage 4D merged as #30) matched `check:baseline` (md5 `9b13adbf…`, 1,402,090 bytes).
+`tools/stage4/report-4e.js` measured it as the "before" (`AUSTERLITZ_HTML`, the same build).
+
+**What changed** (`app.js`, `world.js`, `tokens.js`)
+- **Smoke** (decision 77; `SMOKE`, `smokeAmount`, `smokePlace`): who smokes is the phase status, as before (a fighting status). How much
+  follows the clock: full inside the window of any event that names the formation or a parent (`EVENTS[].forms`, through `evWeight`'s
+  own lead and tail, so it eases), a residue of a quarter otherwise. Each formation's smoke is three smaller puffs along its front
+  (the block's own frontage), each standing with its lower edge above the drawn ground across its width and fading toward that edge
+  (the texture). On screen the smoke covers at most a quarter of the free rectangle: past it the puffs largest on screen are shrunk
+  to one common size (bisection on the puffs as placed); none is culled. Dust is unchanged. No depth pre-pass (§E.2).
+- **Ice** (§F.1): the meres smoother (roughness 0.58 to 0.32, the environment's weight 0.12 to 0.42), so they take the computed sun's
+  sheen and the sky, and a lighter shore-ice rim (the outer 14% of each mere, under its own edge). Outlines schematic (decision 27);
+  no cracks, holes, snow or figures in the water. On the paper map the meres are as before (the rim is the landscape's).
+- **The horizon** (decision 80): the sky dome's horizon colour is the fog colour itself, and the dome is centred on the eye, so the sky
+  meets the haze at the eye's horizon however high it stands. No ring of distant relief.
+- **The palette tables** (decision 79): the paper map's ground (the eight cover classes), contours and marsh lines in
+  `TOKENS.sym.paperMap` (`ground`, `contour`, `marsh`); the landscape's colours in named tables in the code that draws them: the light
+  (`LIGHT`, and `LIGHT_RIG` for the lights' fixed colours, the first sky, background and fog and the environment's ground), the sprites
+  (`SPRITE_COL`: smoke, dust, the trodden ground), the ground (`COVER_COL`), the land (`LAND_COL`: roads, walls and roofs, chimneys and
+  spires, trees, conifers and scrub, contours and marsh, the dome's first texture) and the water (`WATER_COL`). Every value unchanged
+  from the literal it replaces. The figures', coats' and flags' colours stay where they are (Stage 6), with one exception:
+- **The figures' black** (owner decision 84): their hats and black kit drawn at #2E2B27, about 2.7% reflectance (was #1B1917, about
+  1%, darker than black cloth). Still black; no hue, garment or headgear changes; not a uniform claim. Stage 6 sets the figures'
+  colours from sources.
+
+**Decisions taken while building it** (`docs/STAGE4_SPEC.md` §I, "4E, as delivered")
+- **No palette rebalancing** (§G.2 "only what the new light needs, measured"): the Field vantage's median luminance at 4x is 61-71 at
+  10:00-16:00 (`4c-after.json`), inside its range before Stage 4 (41-85, `4b-before.json`); the valley fog's hours (08:00-09:05) are
+  brighter by design (4C). The hues are unchanged.
+- **The horizon already held** on the 4D build (the gap under it within 4.4 and 5.4 of the sky above, at 4x and 10.33x); 4E makes it
+  hold by construction. A first attempt put the fog's linear colour into the sky's sRGB texture and drew a dark band (55-75); the
+  conversion is in place.
+- **The cap measured as placed**: a first estimate from the puffs' provisional heights let the low Pratzen view at 10.33x reach 25.06%.
+- **The shore ice is the landscape's**, hidden on the paper map, and is kept out of `world.water` (the paper map's water check).
+- **The figures' black, asked of the owner (decision 84).** The old single smoke sprite stood over the formations nearest the eye; the
+  puffs and the cap uncovered them, and at the closest orbit (`pratzen-orbit-min`) the figures' black made 73 solid near-black blocks
+  (0.361%, the limit 0.05%; the 4D build 5, under its smoke; 4E's puffs without the cap 28). More light barely helped (sky fill +0.16
+  and fill +0.12: 61 blocks). Options put to the owner: lift the black (chosen), keep the old smoke (no cap), or defer to Stage 6.
+  At #2E2B27: 7 blocks (0.035%).
+- **The pad under each formation tints toward its own colour.** Its texture was a black mask, so its material colour (`SPRITE_COL.pad`,
+  a dark earth) had no effect and it darkened the ground toward black; uncovered by the thinner smoke, the low Pratzen view at 14:00
+  (the day's light at 4x) made 16 solid near-black blocks in the harness (36 in the probe; the 4D build 3). With a white mask the pad
+  tints toward its colour: 3 blocks at 14:00, 3 at 10:00, 1 at 16:00; the view's mean luminance unchanged (82.0 to 82.2).
+- **Not done:** the ice "matte where the formations cross" (§F.1); no depth pre-pass (true soft particles), as §E.2 recommended.
+
+**Per view, before and after** (`tools/stage4/report-4e.js`; `docs/stage4-evidence/4e-report.md`, `4e-sheet-before.jpg`, `4e-sheet.jpg`)
+- **The smoke's share** of the free rectangle: the Sokolnitz close view 53.3% to 24.0% (53.6% and 52.0% at 1x and 10.33x, to 24.0%),
+  the low Pratzen view 41.4% to 24.0% (42.3% at 1x; 27.4% at 10.33x, to 24.0%); every other view under 9%, about as before (the Field
+  vantage 8.7% to 8.5%). Sprites: three puffs where one sprite stood.
+- **Solid near-black** at most 0.020% in every view (before at most 0.030%; the figures' black, decision 84); **map text** 0 below AA, the lowest contrast 6.49 (unchanged), each view
+  at most 0.07 lower than before (overview-field at 1x, 8.34 to 8.27; pratzen-low at 10.33x 7.87 to 8.00, higher); **drops** unchanged in every view.
+- **The ground's mean luminance** within 2.6 of before in every view (the smoke thinner: pratzen-low at 1x 74.1 to 71.5).
+- **The horizon** in the low Pratzen view: 32 columns with a 35 px gap at 4x and 10.33x, within 4.4 and 5.4 of the sky (before: the same).
+
+**Tests** (none loosened; new or stricter)
+- **Self-test** (157 checks, was 150), new: at each factor, the meres and the shore ice under the lowest drawn ground on their own edge,
+  and every smoke puff's lower edge above the drawn ground across its width (two views: the Pratzen vantage at 09:50, Sokolnitz at
+  08:20); once, at 20 clocks, a formation smokes only with a fighting status and at full only inside a naming event's window.
+- **Harness**: new, in every landscape view the smoke's share of the free rectangle at most 25% (`measure.js` `smokeShare`, read from
+  the scene, not from the app's cap); in the low Pratzen view at 1x, 4x and 10.33x the gap under the horizon within 10 (of 255) of the
+  sky above it, the map text hidden.
+- **`css-test.js`**: new, every colour literal in `world.js` in its tables, in `app.js` in the light's and the sprites' tables or in
+  Stage 6's figure functions; the paper map's ground read from the tokens.
+- **Test setup**: `tools/mk-world-mod.js`, `test.js` and `terrain-test.js` load `tokens.js` before `world.js`, as the build does;
+  `runtime-test.js`'s three.js stand-in has `RingGeometry` and `Color.convertLinearToSRGB`.
+- **Height guard**: one new call site classified (the self-test's checks: test).
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard.
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:visual`: all checks passed, 20 views (the smoke at most 24.0% of the free rectangle in every landscape view; the
+  closest orbit, `pratzen-orbit-min`, 6 solid blocks), the day's light (the largest solid near-black 0.014%), the valley fog's hours,
+  the horizon (the gap under it within 4.7 and 5.3 of the sky at 4x and 10.33x), the self-test 157 of 157; Play by Space at ½×, the
+  Watch dwell, the slider and the 3E keys by real key presses. The two Canvas2D `willReadFrequently` warnings are the known ones.
+- `npm run check:contrast`: 4,250 text elements in 28 states, 0 below AA, 0 below 10.5 px (4,244 on 4D; the six more were not
+  traced to a state: 4E adds no interface text).
+- `npm run check:baseline`: moved to this build; passes.
+
+**Not done, or open**
+- The smoke's look (a quarter's residue where no live event names a fighting formation; three puffs; the cap in close views) and the
+  ice's sheen are for the owner's eye.
+- The frame cost of the extra puffs is not measured on a GPU (software WebGL only).
+- Historical: nothing. Who smokes is the record's phase status; how much follows the events' own windows; the ice is the data's
+  "frozen" mere, its outline schematic.
+
 ## 2026-10 · Stage 4D: pacing (docs/STAGE4_SPEC.md §D, §H, §I; owner decisions 74-76, 78, 83)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,402,090 bytes, md5 `9b13adbf7c481e36585fae9eb8ac1be1`**
+**Status: merged (#30). `austerlitz-command-map.html`: 1,402,090 bytes, md5 `9b13adbf7c481e36585fae9eb8ac1be1`**
 (was 1,376,800 bytes, md5 `622634ef…`, Stage 4C).
 - `check:baseline` moves to this build.
 - **A one-word data change (decision 76).** `check:data` against the old reference (`archive/spine-6b2cccd4.html`): exactly one data

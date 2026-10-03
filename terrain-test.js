@@ -4,6 +4,7 @@ global.THREE={ Color:class{constructor(h){this.setHex(h||0xffffff)}
   setHex(h){this.r=((h>>16)&255)/255;this.g=((h>>8)&255)/255;this.b=(h&255)/255;return this} } };
 const fs=require('fs');
 eval(fs.readFileSync('data.js','utf8'));
+eval(fs.readFileSync('tokens.js','utf8'));   /* Stage 4E: world.js reads the paper map's ground colours from TOKENS, as in the build's order */
 eval(fs.readFileSync('world.js','utf8'));
 
 let t=Date.now();
