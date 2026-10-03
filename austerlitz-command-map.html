@@ -3228,10 +3228,11 @@ function coverNormalAtlas(){
    The standard material, with the ground's own colour: each drawn point is classified by coverClass's rule (the same tests,
    in the same order, on the same rasters: gClass below), then coloured as the palette colours that class (the colour of
    the class in COVER_COL, the elevation tint, the field pattern, the damp and trodden ground, the hollows' occlusion, the
-   frost and the hillshade: makePalette before 2F). The landscape is also lit in real time by the phase's sun, usually from
-   the south-east to the south-west, so its baked north-west hillshade is kept narrow (0.70-1.12, was 0.46-1.20): at full
-   range the two lights multiplied a slope facing away from both down to near-black (Stage 0's temporary lighting
-   correction, for Stage 4). The paper map is not sun-lit and keeps its full cartographic hillshade (0.66-1.12). The map
+   frost and the hillshade: makePalette before 2F). Since Stage 4B the landscape carries no baked hillshade (every point is
+   coloured as the flat ground, 0.994): it is lit by the computed sun, its altitude corrected to the display factor (app.js
+   applyLight), and a baked light from the north-west was a second light that contradicted it (docs/STAGE4_SPEC.md A.5; until
+   4B it was kept narrow, 0.70-1.12, Stage 0's temporary correction). The paper map is not sun-lit and keeps its full
+   cartographic hillshade (0.66-1.12). The map
    and the normal map sample the atlas cell of that class. uMode:
    0 the going layer (each triangle's colour and cell, as before 2F), 1 the natural ground, 2 the paper map. The pond radii
    below are coverClass's own; the self-test renders the classes (uDebug) and checks them against drawnCover and coverClass.
@@ -3302,8 +3303,9 @@ var GROUND_FRAG_MAIN=[
   "  float hollow=max(0.0,0.94-ao)*2.4, sh=vColor.r;",
   "  if(paper<0.5&&gCls!=3.0){ float frost=min(0.30,vColor.g*0.26+hollow*0.22+(gCls==1.0?0.08:0.0)+(gCls==2.0?0.06:0.0));",
   "    if(frost>0.01) bc+=(vec3(0.70,0.73,0.78)-bc)*frost; }",
-  "  bc*=(paper>0.5?(0.66+0.46*sh):(0.70+0.42*sh))*ao;",
-  "  if(paper<0.5){ float wc=(sh-0.55)*0.07; bc.r*=1.0+wc; bc.b*=1.0-wc; }",
+  "  float shL=paper>0.5?sh:0.70;",   /* Stage 4B: the landscape carries no baked hillshade, every point the flat ground's (0.70) */
+  "  bc*=(paper>0.5?(0.66+0.46*shL):(0.70+0.42*shL))*ao;",
+  "  if(paper<0.5){ float wc=(shL-0.55)*0.07; bc.r*=1.0+wc; bc.b*=1.0-wc; }",
   "  gCol=clamp(gLin(bc),0.0,1.0);",
   "  if(uVSOn>0.5){ vec2 q=floor((vWxz-uVSG.xy)/uVSG.zw+0.5); float vis=0.0;",   /* sampleVS: the nearest node of the analysis grid */
   "    if(q.x>=0.0&&q.y>=0.0&&q.x<uVSN.x&&q.y<uVSN.y) vis=texture2D(uVS,(q+0.5)/uVSN).x;",
@@ -3829,7 +3831,7 @@ function apronGeometry(){
     /* elevation from the model height: the drawn height over the drawn scale; on the flat paper map (Stage 2E) the drawn
        scale is 0, and the model height is read directly (a colour, not a drawn position) */
     var mid=s?(a[1]+b[1]+c[1])/3/s:height((a[0]+b[0]+c[0])/3,(a[2]+b[2]+c[2])/3);
-    var k=0.50+0.62*sh, e=Math.max(0,Math.min(1,(GEOREF.elevM(mid)-200)/123));
+    var k=0.50+0.62*(s?0.70:sh), e=Math.max(0,Math.min(1,(GEOREF.elevM(mid)-200)/123));   /* Stage 4B: no baked hillshade on the landscape's apron */
     var r=base.r*k*(0.88+0.24*e), g=base.g*k*(0.90+0.20*e), bb=base.b*k*(0.94+0.06*e);
     [a,b,c].forEach(function(q){
       P.push(q[0],q[1],q[2]); N.push(nx,ny,nz); U.push(q[0]/11,q[2]/11); C.push(r,g,bb); COV.push(0); GN.push(0,0,0,0);
@@ -4416,6 +4418,162 @@ var LIGHT={
             sky:[0x171C21,0x171C21,0x171C21],mistC:0xC0BCB2,disc:0.0,
             grade:[[0,0,0],[1.00,1.00,1.00],1.00,1.00,0.04,1.00]}
 };
+/* ---- Stage 4B: the light from the computed sun (docs/STAGE4_SPEC.md section A.5; owner decisions 68-71) ----
+   The sun's position is derived from astronomy, not a record of the day: Meeus's low-accuracy solar coordinates (Astronomical
+   Algorithms, ch. 25), NOAA's equation of time and Bennett's refraction, for the field's centre on 2 December 1805, the app's
+   clock read as local apparent (solar) time (decision 69; a reading, not a finding: the clock basis of the sources' hours is
+   not established). tools/stage4/ephem.js is the same computation, used by the measurement scripts (one coefficient is
+   written 1.9993e-2 here, so geo-test.js's search for the retired map scale's digits does not take it for one). */
+var SUN_DAY=(function(){
+  var ll=GEOREF.toGeo(340,250), LAT=ll[0], LON=ll[1], D2R=Math.PI/180, R2D=180/Math.PI;   /* the field's centre, W(0,0) */
+  function jd(y,m,d){ if(m<=2){ y--; m+=12; } var A=Math.floor(y/100), B=2-A+Math.floor(A/4);
+    return Math.floor(365.25*(y+4716))+Math.floor(30.6001*(m+1))+d+B-1524.5; }
+  var JD0=jd(1805,12,2);
+  function solar(JD){
+    var T=(JD-2451545)/36525, L0=((280.46646+36000.76983*T+0.0003032*T*T)%360+360)%360;
+    var M=357.52911+35999.05029*T-0.0001537*T*T, e=0.016708634-0.000042037*T-0.0000001267*T*T;
+    var C=(1.914602-0.004817*T-0.000014*T*T)*Math.sin(M*D2R)+(1.9993e-2-0.000101*T)*Math.sin(2*M*D2R)+0.000289*Math.sin(3*M*D2R);
+    var Om=125.04-1934.136*T, lam=L0+C-0.00569-0.00478*Math.sin(Om*D2R);
+    var eps=23+(26+(21.448-T*(46.815+T*(0.00059-T*0.001813)))/60)/60+0.00256*Math.cos(Om*D2R);
+    var y=Math.pow(Math.tan(eps*D2R/2),2), L=L0*D2R, Mr=M*D2R;
+    return {dec:Math.asin(Math.sin(eps*D2R)*Math.sin(lam*D2R))*R2D,
+            eot:4*R2D*(y*Math.sin(2*L)-2*e*Math.sin(Mr)+4*e*y*Math.sin(Mr)*Math.cos(2*L)-0.5*y*y*Math.sin(4*L)-1.25*e*e*Math.sin(2*Mr))};
+  }
+  /* t: the clock in minutes after midnight, as apparent solar time. alt is refracted, geo geometric; az true, from north */
+  function at(t){
+    var s=solar(JD0+(t-LON*4)/1440); s=solar(JD0+(t-s.eot-LON*4)/1440);
+    var H=(t/4-180)*D2R, ph=LAT*D2R, de=s.dec*D2R;
+    var geo=Math.asin(Math.sin(ph)*Math.sin(de)+Math.cos(ph)*Math.cos(de)*Math.cos(H))*R2D;
+    var az=(Math.atan2(Math.sin(H),Math.cos(H)*Math.sin(ph)-Math.tan(de)*Math.cos(ph))*R2D+540)%360;
+    var refr=geo>-1?1.02/Math.tan((geo+10.3/(geo+5.11))*D2R)/60:0;
+    return {alt:geo+refr, geo:geo, az:az, dec:s.dec, eot:s.eot, am:t<720};
+  }
+  var noon=at(720).alt;
+  return {at:at, noonAlt:noon, lat:LAT, lon:LON};
+})();
+/* the sun's horizontal direction in world x, z for a true azimuth (GEOREF.NORTH is true north in the map's x, y, which W()
+   carries to world x, z) */
+function sunWorldDir(az,alt,out){
+  var N=GEOREF.NORTH, a=az*Math.PI/180, b=alt*Math.PI/180, hx=Math.sin(a)*-N[1]+Math.cos(a)*N[0], hz=Math.sin(a)*N[0]+Math.cos(a)*N[1];
+  return (out||new THREE.Vector3()).set(hx*Math.cos(b),Math.sin(b),hz*Math.cos(b)).normalize();
+}
+/* the drawn light's altitude: the true altitude's tangent times the display factor (decision 68), so the drawn ground's lit side
+   and cast shadows are the true ground's under the true sun at every factor (section A.3); at 1x it is the true altitude */
+function drawnAltitude(alt){ return Math.atan(DISPLAY.factor*Math.tan(alt*Math.PI/180))*180/Math.PI; }
+/* LIGHT_BY_ALT: every value a preset carried, as a function of the sun's true (refracted) altitude, morning and afternoon. Its
+   rows are today's presets placed where each one's phase has the sun (section A.5): design values, interpolated; the top row is
+   the day's highest altitude, where morning and afternoon meet. fill: the light opposite the sun (decision 70; it replaces the
+   shadow toe), 0.36 by day, 0.16 (the fixed fill before 4B) at night; with it the sky fill is raised by 0.08 by day. Both were
+   chosen on the harness's darkness measure without the toe: Part A's 0.28 alone (section A.4b) left the figures' and houses'
+   cast shadows near-black in two views at 4x (selected-formation 0.076%, the low Pratzen view at 11:00 0.079%, against 0.05%);
+   these values bring the worst to 0.030% (CHANGELOG.md, Stage 4B). Design values. */
+var LIGHT_FILL={predawn:0.16,dawn:0.22,dusk:0.16,staff:0.16}, LIGHT_SKY_LIFT={predawn:0,dawn:0.04,dusk:0,staff:0};
+var LIGHT_BY_ALT={
+  am:[[-18,"predawn"],[-3,"dawn"],[4,"mist"],[9,"sunburst"],[15,"morning"],[SUN_DAY.noonAlt,"midday"]],
+  pm:[[-18,"dusk"],[-12,"dusk"],[3,"late"],[16,"afternoon"],[SUN_DAY.noonAlt,"midday"]]
+};
+/* the night light: a design light (decision 71), the predawn preset's direction, not a moon */
+var NIGHT_DIR=new THREE.Vector3(LIGHT.predawn.p[0],LIGHT.predawn.p[1],LIGHT.predawn.p[2]).normalize();
+function lightRow(L,k){ return {i:L.i,c:new THREE.Color(L.c),hemi:L.hemi+(LIGHT_SKY_LIFT[k]!==undefined?LIGHT_SKY_LIFT[k]:0.08),fogN:L.fogN,fogF:L.fogF,fogC:lin(L.fogC),bg:lin(L.bg),
+  sky:[new THREE.Color(L.sky[0]),new THREE.Color(L.sky[1]),new THREE.Color(L.sky[2])],mistC:lin(L.mistC),disc:L.disc,grade:L.grade,
+  fill:LIGHT_FILL[k]!==undefined?LIGHT_FILL[k]:0.36}; }
+function mixRow(a,b,e){ return {i:a.i+(b.i-a.i)*e,c:a.c.clone().lerp(b.c,e),hemi:a.hemi+(b.hemi-a.hemi)*e,fogN:a.fogN+(b.fogN-a.fogN)*e,
+  fogF:a.fogF+(b.fogF-a.fogF)*e,fogC:a.fogC.clone().lerp(b.fogC,e),bg:a.bg.clone().lerp(b.bg,e),
+  sky:[a.sky[0].clone().lerp(b.sky[0],e),a.sky[1].clone().lerp(b.sky[1],e),a.sky[2].clone().lerp(b.sky[2],e)],
+  mistC:a.mistC.clone().lerp(b.mistC,e),disc:a.disc+(b.disc-a.disc)*e,grade:lerpGrade(a.grade,b.grade,e),fill:a.fill+(b.fill-a.fill)*e}; }
+/* the light at a clock: the table's values at the sun's altitude, the drawn light's direction and the disc's */
+function lightAt(t){
+  var s=SUN_DAY.at(t), rows=s.am?LIGHT_BY_ALT.am:LIGHT_BY_ALT.pm, a=Math.max(rows[0][0],Math.min(SUN_DAY.noonAlt,s.alt)), R=null;
+  for(var i=0;i<rows.length-1;i++){ var r0=rows[i], r1=rows[i+1];
+    if(a>=r0[0]&&a<=r1[0]){ R=mixRow(lightRow(LIGHT[r0[1]],r0[1]),lightRow(LIGHT[r1[1]],r1[1]),r1[0]>r0[0]?(a-r0[0])/(r1[0]-r0[0]):0); break; } }
+  if(!R) R=lightRow(LIGHT[rows[0][1]],rows[0][1]);
+  /* the drawn light: the sun's azimuth at its corrected altitude (kept 0.5 degrees above the horizon) once the sun is up; through
+     civil twilight it turns to the night light, which it is below -6 degrees */
+  var w=smoothstep(-6,0,s.geo), sd=sunWorldDir(s.az,drawnAltitude(Math.max(0.5,s.alt)));
+  R.dir=w>=1?sd:NIGHT_DIR.clone().multiplyScalar(1-w).addScaledVector(sd,w).normalize();
+  /* the disc: at the true altitude, drawn while the upper limb is above the horizon (geometric altitude above -0.833 degrees) */
+  R.discDir=sunWorldDir(s.az,s.alt); R.disc*=clamp01((s.geo+0.833)/0.5);
+  R.sun=s; R.twilight=w;
+  return R;
+}
+var LIGHT_NOW=null, _lightKey="", _envQ=32;
+/* the light of the current clock (or the paper map's), applied when the clock, the factor or the ground style changes */
+function applyLight(force){
+  var staff=(mode==="staff"), key=staff?"staff":(Math.round(clock*100)+"|"+DISPLAY.factor);
+  if(!force&&key===_lightKey) return false;
+  _lightKey=key;
+  var R;
+  if(staff){ var L=LIGHT.staff; R=lightRow(L,"staff"); R.dir=new THREE.Vector3(L.p[0],L.p[1],L.p[2]).normalize(); R.discDir=R.dir.clone(); R.disc=0; R.fill=0.16; R.sun=null; R.twilight=1; }
+  else R=lightAt(clock);
+  LIGHT_NOW=R;
+  sun.intensity=R.i; sun.color.copy(R.c); sunDir.copy(R.dir).multiplyScalar(SHADOW_FIT.D);
+  hemi.intensity=R.hemi;
+  if(fillLight) fillLight.intensity=R.fill;
+  scene.fog.near=R.fogN; scene.fog.far=R.fogF; scene.fog.color.copy(R.fogC);
+  scene.background.copy(R.bg);
+  _skyNow[0].copy(R.sky[0]); _skyNow[1].copy(R.sky[1]); _skyNow[2].copy(R.sky[2]);
+  paintSky(_skyNow[0],_skyNow[1],_skyNow[2]);
+  refreshEnvironment();
+  if(sunDisc) sunDisc.material.opacity=staff?0:R.disc*0.92;
+  applyGrade(R.grade);
+  if(world&&world.mist) world.mist.children.forEach(function(m){ m.material.color.copy(R.mistC); });
+  return true;
+}
+/* ---- the shadow map follows what is drawn (section A.5, item 7) ----
+   The shadow camera's box is fitted to the ground under the free rectangle (each screen ray's stretch between the highest and
+   the lowest drawn ground, kept within R of the orbit target: R = 1.4 x the eye's distance to it, 120-700 units), square, its
+   size rounded up to 16 units (240-1,600: never finer than the fixed box before 4B, so the figures' own shadows stay as soft as
+   they were) and its centre snapped to whole shadow texels in a frame fixed to the light, so a moving eye does not make shadows
+   shimmer. The light stands back along its direction from the receivers by MARGIN units, so near and far also cover the ground
+   toward the light (a hill that casts onto them); the depth bias is kept at its pre-4B size in world units (0.0009 x 640). */
+var SHADOW_FIT={D:400,margin:520,biasUnits:0.576,key:"",ext:0,pts:[],R:0,minG:null};
+var _sfR=new THREE.Vector3(), _sfU=new THREE.Vector3(), _sfF=new THREE.Vector3(), _sfP=new THREE.Vector3(), _sfRay=new THREE.Vector3(), _sfUp=new THREE.Vector3(0,1,0);
+function groundMinY(){ var s=displayScale(); if(SHADOW_FIT.minG&&SHADOW_FIT.minG[0]===s) return SHADOW_FIT.minG[1];
+  var m=1e9, B=FACE.baseY; for(var i=0;i<B.length;i++) if(B[i]<m) m=B[i]; SHADOW_FIT.minG=[s,m*s]; return m*s; }
+function shadowReceivers(){
+  var fr=landFreeRect(), E=landCam.position, T=orbitTarget, R=Math.max(120,Math.min(700,1.4*E.distanceTo(T))), out=[T.clone()];
+  var VW=renderer.domElement.clientWidth||window.innerWidth, VH=renderer.domElement.clientHeight||window.innerHeight;
+  var top=mlMaxG(), bot=groundMinY();
+  landCam.updateMatrixWorld();
+  function add(p){ var dx=p.x-T.x, dz=p.z-T.z, h=Math.hypot(dx,dz); if(h>R){ p.x=T.x+dx*R/h; p.z=T.z+dz*R/h; } out.push(p); }
+  for(var j=0;j<=4;j++) for(var i=0;i<=6;i++){
+    var sx=fr[0]+(fr[2]-fr[0])*i/6, sy=fr[1]+(fr[3]-fr[1])*j/4;
+    _sfRay.set(sx/VW*2-1,-(sy/VH)*2+1,0.5).unproject(landCam).sub(E).normalize();
+    if(_sfRay.y<-1e-4){
+      var s0=Math.max(0,(top-E.y)/_sfRay.y), s1=(bot-E.y)/_sfRay.y;
+      add(E.clone().addScaledVector(_sfRay,s0)); add(E.clone().addScaledVector(_sfRay,Math.max(s0,s1)));
+    } else { var hz=new THREE.Vector3(_sfRay.x,0,_sfRay.z); if(hz.lengthSq()<1e-9) continue; hz.normalize();
+      add(new THREE.Vector3(T.x+hz.x*R,top,T.z+hz.z*R)); add(new THREE.Vector3(T.x+hz.x*R,bot,T.z+hz.z*R)); }
+  }
+  SHADOW_FIT.R=R; return out;
+}
+function placeLights(){
+  var paper=(mode==="staff");
+  if(sunDisc){ sunDisc.position.copy(LIGHT_NOW?LIGHT_NOW.discDir:sunDir).normalize().multiplyScalar(560).add(orbitTarget); sunDisc.visible=!paper&&sunDisc.material.opacity>0.02; }
+  if(fillLight&&paper) fillLight.position.set(80,60,-120);   /* the paper map keeps its light as before 4B */
+  else if(fillLight&&LIGHT_NOW){ var d=LIGHT_NOW.dir; fillLight.position.set(-d.x,0,-d.z); if(fillLight.position.lengthSq()<1e-9) fillLight.position.set(1,0,0);
+    fillLight.position.normalize().multiplyScalar(130).setY(60); }   /* opposite the light's azimuth, about 22.6 degrees up, as the fixed fill stood */
+  if(paper){ sun.target.position.copy(orbitTarget); sun.target.updateMatrixWorld(); sun.position.copy(orbitTarget).add(sunDir); return; }
+  landCam.updateMatrixWorld();
+  var e=landCam.matrixWorld.elements, key=sunDir.x.toFixed(5)+","+sunDir.y.toFixed(5)+","+sunDir.z.toFixed(5)+"|"+DISPLAY.factor+"|"+orbitTarget.x.toFixed(3)+","+orbitTarget.z.toFixed(3);
+  for(var i=0;i<16;i++) key+=","+e[i].toFixed(4);
+  key+="|"+(renderer.domElement.clientWidth||0)+"x"+(renderer.domElement.clientHeight||0)+"|"+landFreeRect().map(Math.round).join(",");
+  if(key===SHADOW_FIT.key) return;
+  SHADOW_FIT.key=key;
+  var P=shadowReceivers(), f=_sfF.copy(sunDir).normalize().negate();   /* the light's view direction */
+  _sfR.crossVectors(f,_sfUp); if(_sfR.lengthSq()<1e-9) _sfR.set(1,0,0); _sfR.normalize(); _sfU.crossVectors(_sfR,f).normalize();
+  var x0=1e9,x1=-1e9,y0=1e9,y1=-1e9,d0=1e9,d1=-1e9;
+  P.forEach(function(p){ var x=p.dot(_sfR), y=p.dot(_sfU), d=p.dot(f); x0=Math.min(x0,x); x1=Math.max(x1,x); y0=Math.min(y0,y); y1=Math.max(y1,y); d0=Math.min(d0,d); d1=Math.max(d1,d); });
+  var cam=sun.shadow.camera, n=sun.shadow.mapSize.x, ext=Math.ceil((Math.max(x1-x0,y1-y0)+12)/16)*16;
+  ext=Math.max(240,Math.min(1600,ext));
+  var tex=ext/n, cx=Math.round((x0+x1)/2/tex)*tex, cy=Math.round((y0+y1)/2/tex)*tex, back=d0-SHADOW_FIT.margin;
+  _sfP.copy(_sfR).multiplyScalar(cx).addScaledVector(_sfU,cy).addScaledVector(f,back);
+  sun.position.copy(_sfP); sun.target.position.copy(_sfP).add(f); sun.updateMatrixWorld(); sun.target.updateMatrixWorld();
+  cam.left=-ext/2; cam.right=ext/2; cam.bottom=-ext/2; cam.top=ext/2; cam.near=0.5; cam.far=(d1-back)+20;
+  cam.updateProjectionMatrix();
+  sun.shadow.bias=-SHADOW_FIT.biasUnits/(cam.far-cam.near);
+  SHADOW_FIT.ext=ext; SHADOW_FIT.pts=P;
+}
 var skyCanvas=null, skyCtx=null, sunDisc=null;
 var _skyNow=[new THREE.Color(0x0F1A26),new THREE.Color(0x2B3A48),new THREE.Color(0x6E7A82)];
 var _gradeNow=[[0,0,0],[0.94,0.97,1.06],0.86,1.10,0.26,0.94];
@@ -4438,7 +4596,9 @@ function paintSky(c0,c1,c2){
 var pmrem=null, envRT=null, _envKey="";
 function refreshEnvironment(){
   if(!skyCanvas) return;
-  var key=_skyNow[0].getHexString()+_skyNow[2].getHexString();
+  /* Stage 4B: the light moves with the clock, so the environment map (a PMREM pass) is re-made only when the sky's colours have
+     moved by a 32nd of their range, not every frame */
+  var key=[0,2].map(function(k){ var c=_skyNow[k]; return Math.round(c.r*_envQ)+","+Math.round(c.g*_envQ)+","+Math.round(c.b*_envQ); }).join("|");
   if(key===_envKey) return;
   _envKey=key;
   if(!pmrem){ pmrem=new THREE.PMREMGenerator(renderer); pmrem.compileEquirectangularShader(); }
@@ -4471,7 +4631,7 @@ function buildSunDisc(){
   sunDisc.scale.set(74,74,1); sunDisc.renderOrder=2;
   scene.add(sunDisc);
 }
-var sunDir=new THREE.Vector3(-60,80,-160);
+var sunDir=new THREE.Vector3(-60,80,-160), fillLight=null;
 
 function init(){
   scene=new THREE.Scene();
@@ -4496,9 +4656,10 @@ function init(){
   MAPCAM.init(paperCam,{schedule:mapSchedule,panels:function(){ mlLegendFit(renderer.domElement.clientWidth||innerWidth,viewH()); return mlPanels(); },viewport:function(){ var e=renderer.domElement; return [e.clientWidth||innerWidth,e.clientHeight||innerHeight]; }});
 
   hemi=new THREE.HemisphereLight(0xA9BBCC,0x3E3A30,0.34); scene.add(hemi);
-  /* a weak fill from opposite the sun so shaded slopes are dark, never black */
-  var fill=new THREE.DirectionalLight(0x9AA8B8,0.16);
-  fill.position.set(80,60,-120); scene.add(fill);
+  /* a weak fill from opposite the sun so shaded slopes are dark, never black: since Stage 4B it turns with the light
+     (placeLights) and its strength is the light table's (decision 70: it replaces the shadow toe) */
+  fillLight=new THREE.DirectionalLight(0x9AA8B8,0.16);
+  fillLight.position.set(80,60,-120); scene.add(fillLight);
   sun=new THREE.DirectionalLight(0xA5B2BE,0.40);
   sun.position.set(-140,92,-160); sun.castShadow=true;
   var shadowPx = lowTier ? 1024 : (renderer.capabilities.maxTextureSize>=8192 ? 4096 : 2048);
@@ -5876,15 +6037,12 @@ function applyArc(a,e,bulge){
   clampCamera();
   landCam.lookAt(_ct);
 }
+/* Since Stage 4B the light is not a phase's: it follows the clock (applyLight, from the computed sun and LIGHT_BY_ALT), so a phase
+   change no longer interpolates it. What remains here is the phase's own: the mist's amount (PHASES[].mist; its colour is the
+   light's), the overlays' fade, and the camera's glide while Follow is on. */
 function startPhaseTransition(ph,instant,moveCam){
-  var L=LIGHT[mode==="staff"?"staff":ph.light];
   var mistTo=(mode==="staff")?0:ph.mist;
-  var f0={i:sun.intensity,c:sun.color.clone(),p:sunDir.clone(),h:hemi.intensity,
-          mistC:(world.mist.children[0]?world.mist.children[0].material.color.clone():lin(0xB8BCBC)),
-          sky:[_skyNow[0].clone(),_skyNow[1].clone(),_skyNow[2].clone()],
-          disc:sunDisc?sunDisc.material.opacity/0.92:0, grade:_gradeNow.slice(),
-          fn:scene.fog.near,ff:scene.fog.far,fc:scene.fog.color.clone(),
-          bg:scene.background.clone(),mist:world.mist.children[0].material.opacity};
+  var f0={mist:world.mist.children[0].material.opacity};
   var camMove=moveCam && !freeCam && mode!=="staff";   /* the paper map's plan stays where it is: the whole field is on it */
   if(camMove){
     var pc=presetFrame(ph.cam);
@@ -5895,27 +6053,8 @@ function startPhaseTransition(ph,instant,moveCam){
     setTween("cam",function(now){ var k=Math.min(1,(now-t0)/dur); if(camArc) applyArc(camArc,easeInOut(k)); return k>=1||!camArc; }); }
   setTween("scene",function(now){
     var k=Math.min(1,(now-t0)/dur), e=easeInOut(k);
-    sun.intensity=f0.i+(L.i-f0.i)*e;
-    sun.color.copy(f0.c).lerp(new THREE.Color(L.c),e);
-    sunDir.set(f0.p.x+(L.p[0]-f0.p.x)*e,f0.p.y+(L.p[1]-f0.p.y)*e,f0.p.z+(L.p[2]-f0.p.z)*e);
-    hemi.intensity=f0.h+(L.hemi-f0.h)*e;
-    scene.fog.near=f0.fn+(L.fogN-f0.fn)*e;
-    scene.fog.far=f0.ff+(L.fogF-f0.ff)*e;
-    scene.fog.color.copy(f0.fc).lerp(lin(L.fogC),e);
-    scene.background.copy(f0.bg).lerp(lin(L.bg),e);
-    _skyNow[0].copy(f0.sky[0]).lerp(new THREE.Color(L.sky[0]),e);
-    _skyNow[1].copy(f0.sky[1]).lerp(new THREE.Color(L.sky[1]),e);
-    _skyNow[2].copy(f0.sky[2]).lerp(new THREE.Color(L.sky[2]),e);
-    paintSky(_skyNow[0],_skyNow[1],_skyNow[2]);
-    refreshEnvironment();
-    if(sunDisc) sunDisc.material.opacity=(f0.disc+(L.disc-f0.disc)*e)*(mode==="staff"?0:0.92);
-    applyGrade(lerpGrade(f0.grade,L.grade,e));
     var mo=f0.mist+(mistTo-f0.mist)*e;
-    var mc=f0.mistC.clone().lerp(lin(L.mistC),e);
-    world.mist.children.forEach(function(m){
-      m.material.opacity = m.userData.haze ? mo*0.26 : mo*0.55;
-      m.material.color.copy(mc);
-    });
+    world.mist.children.forEach(function(m){ m.material.opacity = m.userData.haze ? mo*0.26 : mo*0.55; });
     world.mist.visible=world.mist.children[0].material.opacity>0.012 && mode!=="staff";
     ovFadeOut=1-clamp01(k/0.42);
     ovFadeIn=clamp01((k-0.34)/0.66);
@@ -5939,6 +6078,7 @@ function setClock(t,opts){
     if(PHASES[ph].flash && !opts.instant) flash(PHASES[ph].flash);
   }
   else if(selection&&selection.kind==="f"&&drawerKey()!==_drawerKey) paintDrawer();   /* a delayed move begins or ends */
+  applyLight(false);   /* Stage 4B: the light is the clock's */
   paintTimeline();
 }
 function setPhase(n,instant){
@@ -6105,11 +6245,8 @@ function initFX(){
       "  c=clamp(c,0.0,1.0);",
       "  vec3 srgb=mix(c*12.92, 1.055*pow(max(c,vec3(0.0031308)),vec3(1.0/2.4))-0.055,",
       "                step(vec3(0.0031308),c));",
-      /* a shadow toe below 0.2 on screen: the filmic curve's toe (slope about 0.2 near zero) put a
-         slope in shade at a few code values, so it read as a black silhouette. This lifts only the
-         deep shadows, continuously (value and slope match at 0.2), and leaves black black. */
-      "  vec3 tt=clamp(vec3(0.2)-srgb,0.0,0.2);",
-      "  srgb+=1.2*srgb*tt*tt/0.04;",
+      /* Stage 4B (decision 70): no shadow toe. Stage 0 lifted values below 0.2 here; the light now keeps shade off black where
+         the shade is made, by the sun's altitude corrected to the display factor and a fill opposite the sun */
       "  gl_FragColor=vec4(srgb,1.0);",
       "}"].join("\n"),
     depthTest:false,depthWrite:false});
@@ -6227,6 +6364,7 @@ function fogShift(){
   if(FOG_REF===null) FOG_REF=Math.hypot(VANTAGE.plan[0]-VANTAGE.plan[3],VANTAGE.plan[1]-VANTAGE.plan[4],VANTAGE.plan[2]-VANTAGE.plan[5]);
   return (camera===landCam)?Math.max(0,landCam.position.distanceTo(orbitTarget)-FOG_REF):0; }
 function renderFrame(){
+  applyLight(false); placeLights();   /* Stage 4B: the light of the clock, and the lights and the shadow box placed for this view */
   var fs=fogShift(); scene.fog.near+=fs; scene.fog.far+=fs;
   try{ renderFrameNow(); } finally { scene.fog.near-=fs; scene.fog.far-=fs; }
 }
@@ -6910,22 +7048,9 @@ function setMode(m){
   renderer.shadowMap.enabled=!staff;
   world.water.forEach(function(w2){ if(w2.material.opacity!==undefined) w2.material.opacity=staff?1:0.94; });
 
-  var L=LIGHT[staff?"staff":PHASES[curPhase].light];
-  sun.intensity=L.i; sun.color.setHex(L.c);
-  sunDir.set(L.p[0],L.p[1],L.p[2]);
-  hemi.intensity=L.hemi;
-  scene.fog.near=L.fogN; scene.fog.far=L.fogF; scene.fog.color.copy(lin(L.fogC));
-  scene.background.copy(lin(L.bg));
-  _skyNow[0].setHex(L.sky[0]); _skyNow[1].setHex(L.sky[1]); _skyNow[2].setHex(L.sky[2]);
-  paintSky(_skyNow[0],_skyNow[1],_skyNow[2]);
-  refreshEnvironment();
-  if(sunDisc) sunDisc.material.opacity=staff?0:L.disc*0.92;
-  applyGrade(L.grade);
+  applyLight(true);   /* Stage 4B: the paper map's own light, or the landscape's light of the clock */
   var mt=staff?0:PHASES[curPhase].mist;
-  world.mist.children.forEach(function(x){
-    x.material.opacity = x.userData.haze ? mt*0.26 : mt*0.55;
-    x.material.color.copy(lin(L.mistC));
-  });
+  world.mist.children.forEach(function(x){ x.material.opacity = x.userData.haze ? mt*0.26 : mt*0.55; });
   world.mist.visible=!staff && mt>0.012;
 
   document.body.classList.toggle("mode-staff",staff);
@@ -9231,6 +9356,18 @@ function arrowNotes(){
       (k.group||0)+" that stand for several formations, "+(k.unmodelled||0)+" for bodies the map does not track, and "+(k.halt||0)+" halt bar, a column stopped short of its objective.",
     "Hand-authored, because this map's own texts disagree about the hour and the sources have not been checked: "+uns.join("; ")+"."];
 }
+/* Stage 4B (docs/STAGE4_SPEC.md section A.5; decisions 68-71): how the light is drawn, a presentation note of the sources sheet
+   (not SOURCE_NOTE): derived from astronomy and the app's clock, with what it is not */
+function lightNotes(){
+  var hm=fmtClock, rise=null, set=null; for(var t=T_MIN;t<=T_MAX;t+=1){ var g=SUN_DAY.at(t).geo>-0.833; if(g&&rise===null) rise=t; if(!g&&rise!==null&&set===null) set=t; }
+  return ["The sun is computed, not recorded: its position over the field on 2 December 1805, with the map's clock read as local solar time "+
+      "(the sun due south at 12:00). On that reading it rises at "+hm(rise)+" and sets at "+hm(set)+", and is never more than "+Math.round(SUN_DAY.noonAlt)+
+      " degrees above the horizon. Which time the sources' hours keep is not established; local mean time would move every sun event about 10 minutes earlier.",
+    "The relief is drawn exaggerated, so the light is steepened by the same factor: the ground's lit and shaded sides, and its shadows, are those the true "+
+      "ground would have under the true sun. The sun's disc stands at its true height, so where the relief is exaggerated the light seems to come from higher than the disc.",
+    "Before dawn the field is lit by a design light, not by a moon; nothing about the night's sky is claimed. The weather of the day (the fog in the valley, "+
+      "the sun on the heights at about 08:45) is the narrative's, as the phases' texts give it; this reconstruction cites no source for it."];
+}
 function geoText(p){
   /* {EXAG} is the DISPLAY factor relative to true scale (decision 35), never GEOREF.EXAG, the model's own scale */
   return String(p).replace(/\{EXAG\}/g,fmtFactor(DISPLAY.factor)).replace(/\{M_PER_UNIT\}/g,(GEOREF.KM_PER_MAP*1000).toFixed(0))
@@ -9263,7 +9400,8 @@ function openSources(){
     derivedArrivals().map(function(r){ var f=FORMATIONS[r.id];
       return '<li>'+esc(f.name+" ("+fmtClock(r.b.w[0])+"\u2013"+fmtClock(r.b.w[1])+"): "+arrivalRuleText(r.b)+".")+'</li>'; }).join('')+'</ul>'+
     /* Stage 2C: the arrows (decisions 33 and 37), counted from OVERLAYS */
-    '<h3>How the arrows are drawn</h3><ul class="bul">'+arrowNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>';
+    '<h3>How the arrows are drawn</h3><ul class="bul">'+arrowNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
+    '<h3>How the light is drawn</h3><ul class="bul">'+lightNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>';
   m.dataset.sources="1";
   m.classList.add("on");
 }
@@ -9425,13 +9563,6 @@ function loop(){
   DEV.state=state; lastAmbient=now;
   if(needFrames>0) needFrames--;
   settling=false;
-  sun.target.position.copy(orbitTarget);
-  sun.target.updateMatrixWorld();
-  sun.position.copy(orbitTarget).add(sunDir);
-  if(sunDisc){
-    sunDisc.position.copy(sunDir).normalize().multiplyScalar(560).add(orbitTarget);
-    sunDisc.visible=sunDisc.material.opacity>0.02;
-  }
   var dt=lastFrame?Math.min(120,now-lastFrame):16;
   lastFrame=now;
   FK=Math.max(0.25,Math.min(7.2,dt/16.667));
@@ -10127,6 +10258,54 @@ var AUSTERLITZ_DEBUG=(function(){
         if(coverClass(p.x,p.z,localHeight(p.x,p.z))!==4) R.notModel++; } });
     return R;
   }
+  /* Stage 4B (docs/STAGE4_SPEC.md section A.6): the light. lightChecks runs at each display factor, lightDayChecks once. */
+  function azOf(v){ var N=GEOREF.NORTH, n=v.x*N[0]+v.z*N[1], e=v.x*-N[1]+v.z*N[0]; return (Math.atan2(e,n)*180/Math.PI+360)%360; }
+  function angDiff(a,b){ var d=Math.abs(a-b)%360; return d>180?360-d:d; }
+  function lightChecks(ck,fct){
+    var keep=clock, worstAz=0, worstAlt=0, worstLight=0, n=0, at1=0;
+    for(var k=0;k<40;k++){ var t=T_MIN+(T_MAX-T_MIN)*k/39, s=SUN_DAY.at(t); setClock(t,{instant:true,camera:false}); finishTween(); applyLight(true); placeLights();
+      if(s.geo<0||s.alt<0.5) continue; n++;
+      var d=sunDir.clone().normalize(), real=sun.position.clone().sub(sun.target.position).normalize();
+      worstAz=Math.max(worstAz,angDiff(azOf(d),s.az)); worstAlt=Math.max(worstAlt,Math.abs(Math.asin(d.y)*180/Math.PI-drawnAltitude(s.alt)));
+      worstLight=Math.max(worstLight,real.angleTo(d)*180/Math.PI);
+      if(fct===1) at1=Math.max(at1,Math.abs(Math.asin(d.y)*180/Math.PI-s.alt)); }
+    ck("light: the drawn sun is the computed sun, its altitude corrected to the display factor (decision 68)", n>0&&worstAz<=0.1&&worstAlt<=0.1&&worstLight<=0.1&&at1<=0.1,
+      n+" of 40 clocks with the sun up: worst azimuth "+worstAz.toFixed(3)+" deg, worst altitude against tan(alt) x "+fmtFactor(fct)+" "+worstAlt.toFixed(3)+
+      " deg, the shadow-casting light against it "+worstLight.toFixed(3)+" deg"+(fct===1?"; at 1x against the true altitude "+at1.toFixed(3)+" deg":""));
+    /* the shadow box covers the drawn ground under the free rectangle (within SHADOW_FIT.R of the target) from every vantage */
+    setClock(600,{instant:true,camera:false}); finishTween(); applyLight(true);
+    var outside=[], pts=0, vw=renderer.domElement.clientWidth||innerWidth, vh=renderer.domElement.clientHeight||innerHeight, q=new THREE.Vector3();
+    Object.keys(VANTAGE).forEach(function(vk){ placeCamera(VANTAGE[vk]); syncViewOffset(true); placeLights(); sun.shadow.updateMatrices(sun);
+      var fr=landFreeRect(), T=orbitTarget, bad=0;
+      for(var j=0;j<=6;j++) for(var i=0;i<=8;i++){ var g=groundAt(fr[0]+(fr[2]-fr[0])*i/8,fr[1]+(fr[3]-fr[1])*j/6); if(!g) continue;
+        if(Math.hypot(g[0]-T.x,g[1]-T.z)>SHADOW_FIT.R) continue; pts++;
+        q.set(g[0],groundY(g[0],g[1]),g[1]).applyMatrix4(sun.shadow.matrix);
+        if(q.x<0||q.x>1||q.y<0||q.y>1||q.z<0||q.z>1) bad++; }
+      if(bad) outside.push(vk+" "+bad); });
+    ck("light: the shadow map covers the drawn ground under the free rectangle from every vantage", pts>0&&!outside.length,
+      pts+" ground points in "+Object.keys(VANTAGE).length+" vantages, box "+SHADOW_FIT.ext+" units at the last"+(outside.length?"; OUTSIDE: "+outside.join(", "):""));
+    setClock(keep,{instant:true,camera:false}); finishTween(); applyLight(true);
+  }
+  function lightDayChecks(){
+    var out=[], keep=clock, bad=[], first=null, last=null;
+    for(var t=T_MIN;t<=T_MAX;t+=5){ var s=SUN_DAY.at(t); setClock(t,{instant:true,camera:false}); finishTween(); applyLight(true);
+      var on=sunDisc.material.opacity>0, up=s.geo>-0.833; if(on!==up) bad.push(fmtClock(t)+" disc "+on+", sun up "+up); if(on){ if(first===null) first=t; last=t; } }
+    out.push({name:"light: the sun disc is drawn exactly while the sun's upper limb is above the horizon, at its true altitude", ok:!bad.length&&first!==null,
+      detail:"every 5 minutes 04:00-18:00: drawn from "+(first===null?"-":fmtClock(first))+" to "+(last===null?"-":fmtClock(last))+" (sunrise and sunset, apparent time: 07:45, 16:15)"+(bad.length?"; WRONG: "+bad.slice(0,6).join("; "):"")});
+    /* continuity: no step at a phase boundary larger than the largest one-minute change elsewhere in the day */
+    function vec(t){ var L=lightAt(t); return [L.dir.x,L.dir.y,L.dir.z,L.i,L.c.r,L.c.g,L.c.b,L.hemi,L.fill,L.grade[4],L.grade[5],L.grade[2],L.grade[3],L.bg.r,L.bg.g,L.bg.b,L.disc]; }
+    var prev=vec(T_MIN), bnd={}, inMax=0, bMax=0, where="";
+    PHASES.forEach(function(p){ bnd[p.t0]=1; });
+    for(var m=T_MIN+1;m<=T_MAX;m++){ var v=vec(m), d=0; for(var k=0;k<v.length;k++) d=Math.max(d,Math.abs(v[k]-prev[k])); prev=v;
+      if(bnd[m]){ if(d>bMax){ bMax=d; where=fmtClock(m); } } else inMax=Math.max(inMax,d); }
+    out.push({name:"light: continuous in the clock, no step at a phase boundary", ok:bMax<=inMax+1e-9,
+      detail:"largest one-minute change at a phase boundary "+bMax.toFixed(4)+" ("+where+"), elsewhere "+inMax.toFixed(4)});
+    var comp=FX.on?FX.matComp.fragmentShader:"";
+    out.push({name:"light: no shadow toe in the grade, no baked hillshade on the landscape (decision 70)", ok:(!FX.on||comp.indexOf("tt*tt")<0)&&GROUND_FRAG_MAIN.indexOf("float shL=paper>0.5?sh:0.70;")>=0,
+      detail:"composite "+(FX.on?(comp.indexOf("tt*tt")<0?"without the toe":"WITH THE TOE"):"off")+"; the ground shader "+(GROUND_FRAG_MAIN.indexOf("shL=paper>0.5?sh:0.70")>=0?"colours the landscape as the flat ground":"BAKES A HILLSHADE ON THE LANDSCAPE")});
+    setClock(keep,{instant:true,camera:false}); finishTween(); applyLight(true);
+    return out;
+  }
   function selfTest(){
     var out=[], t0=performance.now(), i;
     function ck(name,ok,detail){ out.push({name:name,ok:!!ok,detail:detail}); }
@@ -10269,10 +10448,12 @@ var AUSTERLITZ_DEBUG=(function(){
       layerChecks(ck);
       paperBy[fct]=paperChecks(ck);
       bySetting[fct]=factorFacts(fct);
+      lightChecks(ck,fct);   /* Stage 4B */
     }
     DISPLAY.settings.forEach(atFactor);
     stage2bChecks(bySetting).forEach(function(c){ out.push(c); });
     paperCross(paperBy).forEach(function(c){ out.push(c); });
+    lightDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4B */
     setDisplayFactor(saveFactor);
     /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
     var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });

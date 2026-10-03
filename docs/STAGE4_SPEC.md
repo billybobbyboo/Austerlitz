@@ -1,6 +1,8 @@
 # Time and atmosphere specification (Stage 4, Part A)
 
-**Status: Part A, for review. No source file changes; the build is unchanged (`check:baseline` passes).** Part A was written
+**Status: Part A merged (#27); the owner accepted every recommendation of §J, recorded as decisions 68-82 (§0.4). 4B (the light)
+is implemented, for review; what it found is at the end of §I. Sections A-J below still describe the build they were written
+against.** Part A was written
 against `main` at `18e014b` (the spine data task merged, #26), whose build `austerlitz-command-map.html` is 1,348,542 bytes,
 md5 `6b2cccd44138e95e6082c82b8b2d2f8a`. Before any work: `check:baseline` passed; `npm test` (all nine suites and the height
 guard) passed; `check:data` found all 113 declarations identical to `archive/spine-6b2cccd4.html`; `check:chronology` reported 0
@@ -36,6 +38,7 @@ Labels, as in the earlier specifications: **fact** (read from the code or data, 
 | `sun.js [--md f] [--json f]` | A, C | the computed sun every 10 minutes in two readings of the clock; sunrise, sunset, twilight; each phase's `LIGHT` preset as an azimuth and altitude against it; the altitude a sun corrected to the display factor takes; the share of the modelled ground facing away from the sun and in the terrain's cast shadow, at 1x, 4x and 10.33x, under the true and the corrected sun; the model's slopes |
 | `light-probe.js [--json f] [--sheet f]` | A | seven variants of the light (today; no toe; the computed sun; corrected to the factor; three baked hillshades) rendered in every landscape harness view, four of them at 1x, 4x and 10.33x, and an hourly sweep 08:00-16:00: darkness, luminance percentiles, map text contrast as rendered, drops, pass and frame times |
 | `fog-probe.js [--json f] [--sheet f]` | B, C | the fog as drawn in every landscape view (with and without Stage 3D's recession); the formations' and places' elevations against candidate fog tops; a true-space haze and a valley fog layer rendered through replaced fog chunks: darkness, contrast, drops, frame times, the haze over the ground, the figures under the fog |
+| `report-4b.js [--json f] [--md f] [--sheet f]` | I (4B) | per landscape view (four also at 1x and 10.33x) and the day at 4x: solid near-black, luminance, map text contrast as rendered, drops, and on a 4B build the sun's true and drawn altitude and the shadow box; run on the build before 4B with `AUSTERLITZ_HTML` |
 | `pace-probe.js [--json f]` | D | the clock's durations at each speed; the phase change's glide against each phase; two camera rules over the whole day (today's phase-boundary rule and a continuous follow): live events inside the free rectangle, the floor, the ground's speed across the screen, the map layer's drops |
 
 ## 0. The decisions, the scope and the records against the evidence
@@ -137,6 +140,29 @@ Each is stated, not worked around.
 12. **The roadmap's pacing figures are confirmed** (`pace-probe.js`, fact): at 1x the day (04:00-18:00, 840 clock minutes) plays
    in 84 s and the Pratzen assault (phase 3, 45 minutes) in 4.5 s. The phase change's camera glide (`TRANS_MS`, 2.6 s) takes 26 clock
    minutes at 1x: 58% of each of the three 45-minute phases (2, 3 and 5) and 43% of the 60-minute ones (§D.1).
+
+### 0.4 Owner decisions 68-82 (the answers to §J)
+
+The owner accepted every recommendation of §J ("happy to go with your recommendations re questions"). Each is recorded as a
+decision, in the question's order; §J keeps the trade-offs.
+
+| # | question | decision |
+|---|---|---|
+| 68 | 1, the light at 4x and 10.33x | The light's vertical is scaled by the display factor (tan alt_k = k tan alt); the disc at the true altitude. (4B) |
+| 69 | 2, the clock's basis | The app's clock read as local apparent (solar) time, stated as a reading, not a finding. (4B) |
+| 70 | 3, the shadow toe | Replaced by a fill light opposite the sun, its strength in the light table. (4B) |
+| 71 | 4, before dawn | A design night light, labelled; no moon computed. (4B) |
+| 72 | 5, the valley fog's opacity | About 55%. (4C) |
+| 73 | 6, `PHASES[].mist` 0.22 and 0.30 | Kept, drawn as a thin evening haze labelled "modelled"; no data change. (4C) |
+| 74 | 7, the default speed | ½×, no new button. (4D) |
+| 75 | 8, dwell | About 2.5 s at each of the 22 event starts while playing, on by default, a toggle in the layers panel. (4D) |
+| 76 | 9, decision 56's sentence | "normal speed" becomes "1×" in a one-line data task with 4D, recorded. (4D) |
+| 77 | 10, smoke | The phase status decides who smokes; the naming events' windows decide how much. (4E) |
+| 78 | 11, Follow while playing | Continuous while the clock plays; the phase views for the phase buttons and the pause. (4D) |
+| 79 | 12, the 3D colours | The paper map's ground colours into `TOKENS.sym.paperMap`; the landscape's in four named tables. (4E) |
+| 80 | 13, the horizon | No ring of distant relief; the haze and the sky meet at the horizon. (4C, 4E) |
+| 81 | 14, the haze | Counted from the focus (beyond the orbit target's distance). (4C) |
+| 82 | 15, sequencing | 4B, 4C, 4D, 4E. |
 
 ## A. The light
 
@@ -843,6 +869,28 @@ Each part passes every check on its own, records what changed and why in `CHANGE
 | **4C, the atmosphere** (§B, §C) | `app.js` (the fog chunks set before any material compiles; the haze and the valley fog from the light table and `PHASES[].mist`; `fogShift` removed; the legend's fog row; the sources sheet's notes), `world.js` (`buildMist`'s sheets and the haze sheet removed; the dome's gradient), `tools/visual` (two views, the mist-edge check replaced) | 4B (the haze's and the mist's colours come from the light table) | every material recompiles with the new chunks (sprites, lines, points included); the fitted Overview's look (decision 61); contrast as rendered over the white fog; the frame cost of the chunks; the Command view must not change | the today/after table of §B.2 for every landscape view at 1x, 4x and 10.33x; the two 08:00-08:30 views; the frame cost on the harness machine and, if available, on a GPU; the fog's top against the knowledge rule |
 | **4D, pacing** (§D) | `app.js` (the default speed, the dwell, the continuous follow, the draw-on of derived arrows, reduced motion), `shell.html` (½× pressed at start; the dwell toggle in the layers panel), `style.css` (the dwell's caption), `binding-test.js` | 4B soft (the shadow box must follow a moving camera without shimmer) | Follow's semantics (decision 47); the key fixes of 3E; the tour and themes (they never dwell); the map layer's drops along the day; the relief control's disabled time (decision 56) | §D.2's table on the implementation; the day's length at each speed; Follow after the 14 camera paths; the draw-on against the legs |
 | **4E, smoke, ice, horizon and the palette tables** (§E, §F, §G) | `app.js` (smoke amount and puffs, the cap), `world.js` (the ice's material, `COVER_COL` balance, the sprite palette), `tokens.js` (the paper map's ground colours), `style.css` (via `build.py --tokens`) | 4B, 4C | the sprites' edge check; the paper map identical at every relief setting (its ground colours move to tokens, unchanged in value); 2F's cover checks; `check:contrast` on the paper map | the smoke's share per view before and after; the meres under the new light; the horizon row in the low views; the colour tables with every moved literal listed (was, is) |
+
+### 4B, as delivered (the light; decisions 68-71)
+
+Implemented in `app.js` and `world.js` as §A.5 proposed, with three changes found while building it, each measured
+(`tools/stage4/report-4b.js`, `docs/stage4-evidence/4b-report.md`, `4b-before.json`, `4b-after.json`, `4b-sheet.jpg`,
+`4b-sheet-before.jpg`; `CHANGELOG.md`, Stage 4B):
+- **The fill's strength.** Part A's fill opposite the sun at 0.28 (§A.4b, H) left the figures' and houses' cast shadows
+  near-black in two views at 4x (selected-formation 0.076%, the low Pratzen view at 11:00 0.079%, limit 0.05%); §A.4b had
+  measured four views, not these. The light table carries a fill of 0.36 by day and raises the sky fill by 0.08 by day (Part A's
+  J, smaller); the worst view is then 0.035%.
+- **The shadow box's least size.** Fitted to a close view the box was 112 units, finer than the fixed 236 before 4B, which drew
+  the figures' own shadows as solid dark blocks; it is never smaller than 240 units now (the box grows for wide views, to 592 in
+  the fitted Overview).
+- **The light follows the clock at once.** `setClock` applies the light, so a phase button or the slider changes the light and
+  the grade without waiting for a frame (`runtime-test.js` reads the grade after `setPhase`).
+
+Per view (fact; every landscape view at its factor and four at 1x and 10.33x, and the day at 4x): solid near-black at most
+0.035% everywhere (before 4B, with the toe, at most 0.006%; without the toe and under the presets, up to 1.85%: §A.4); map text
+0 below AA, the lowest contrast 6.49 (unchanged) and in each view at most 0.45 lower than before (overview-field at 10.33x); drops unchanged in every view;
+the ground's mean luminance from 4 lower (at 1x, where the drawn sun is the true one and lower than the presets') to 15 higher (at
+10.33x, where it is steeper). The self-test has 135 checks (126 before): the drawn sun against the computed one at each factor,
+the shadow box's coverage from every vantage at each factor, the disc, continuity, and the toe and hillshade absent.
 
 ## J. Questions for the owner
 

@@ -1,8 +1,99 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 4B: the light (docs/STAGE4_SPEC.md §A, §H, §I; owner decisions 68-71)
+
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,367,134 bytes, md5 `3d6d2295bf8fbbedc60153513a3ff3e8`**
+(was 1,348,542 bytes, md5 `6b2cccd4…`, the spine data task).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/spine-6b2cccd4.html`; the reference does not move. No data,
+  track, text of the record or `OVERLAYS` change. Presentation only. `PHASES[].light` (guarded) is no longer read on the
+  landscape: the light follows the clock; the declaration is unchanged.
+- The first commit records Part A as merged (#27) and the owner's answers to §J as decisions 68-82 (`docs/STAGE4_SPEC.md` §0.4).
+
+**Before building (fact).** `main` (5c8778a, Part A merged as #27) matched `check:baseline` (md5 `6b2cccd4…`, 1,348,542 bytes).
+`tools/stage4/report-4b.js` measured it (`AUSTERLITZ_HTML=archive/spine-6b2cccd4.html`, the same build) as the "before" of the table below.
+
+**What changed** (`app.js`, `world.js`)
+- **The sun is computed** (`SUN_DAY`; decision 69): Meeus's low-accuracy solar coordinates, NOAA's equation of time and Bennett's
+  refraction for the field's centre (from `GEOREF.toGeo`) on 2 December 1805, the clock read as local apparent time. Derived
+  from astronomy, not a record of the day; the sources sheet says so ("How the light is drawn", `lightNotes`, a presentation note,
+  not `SOURCE_NOTE`). Sunrise 07:45, sunset 16:15, at most 19.0 degrees.
+- **The light's altitude is corrected to the display factor** (decision 68): tan(alt_k) = k tan(alt), so the drawn ground's lit
+  side and cast shadows are the true ground's under the true sun at every factor; at 1x it is the true sun. The disc stands at the
+  true altitude and is drawn only while the sun's upper limb is above the horizon.
+- **One light table** (`LIGHT_BY_ALT`): every value a preset carried (intensity and colour, sky fill, fog, background, sky, mist
+  colour, disc, grade) is a function of the sun's true altitude, morning and afternoon, its rows today's presets placed where each
+  one's phase has the sun; interpolated from the clock. The phase change (`startPhaseTransition`) no longer moves the light; it
+  fades the overlays, the mist's amount and the camera. Scrubbing gives the light of that minute. The environment map is re-made
+  only when the sky's colours move by a 32nd.
+- **Night and twilight** (decision 71): below -6 degrees the light is the design night light (the predawn preset's direction, not
+  a moon); through civil twilight it turns to the sun.
+- **No shadow toe** (decision 70): the composite no longer lifts the shadows. In its place the fill light stands opposite the
+  sun's azimuth (it was fixed at azimuth 51), at 0.36 by day (0.16 at night), and the sky fill is 0.08 higher by day; both in the
+  light table. The FX and non-FX paths draw shade alike.
+- **No baked hillshade on the landscape**: the ground shader colours every landscape point as the flat ground (0.994); the apron
+  likewise. The paper map keeps its own cartographic hillshade, the going layer its shade, the frost stays.
+- **The shadow box follows the view**: fitted each frame to the ground under the free rectangle (within 1.4 x the eye's distance of
+  the target, 120-700 units), 240-1,600 units square, its centre snapped to whole texels; the depth bias kept at its pre-4B size in
+  world units.
+- The paper map is unchanged: its `staff` light, no shadows, the fill where it stood.
+
+**Decisions taken while building it** (measured; `docs/STAGE4_SPEC.md` §I, "4B, as delivered")
+- The fill at Part A's 0.28 alone left two views at 4x over the darkness limit (selected-formation 0.076%, the low Pratzen view at
+  11:00 0.079%): the figures' and houses' cast shadows. 0.36 with the sky fill +0.08 brings the worst to 0.035%.
+- A shadow box fitted to a close view (112 units) drew the figures' own shadows as solid blocks; its least size is 240, the fixed
+  box's before 4B.
+- One coefficient of the solar formula is written `1.9993e-2`: `geo-test.js` searches the sources for the retired map scale's
+  digits and took `0.019993` for it. The test is unchanged.
+
+**Per view, before and after** (`tools/stage4/report-4b.js`; `docs/stage4-evidence/4b-report.md`, `4b-sheet-before.jpg`, `4b-sheet.jpg`)
+- **Solid near-black** at most 0.035% in every landscape view, at 1x, 4x and 10.33x, and through the day at 4x (08:00-16:00 hourly,
+  the Field vantage and the low Pratzen view); before 4B, with the toe, at most 0.006%; Part A measured up to 1.85% for the presets
+  without the toe.
+- **Map text**: 0 below AA everywhere; the lowest contrast 6.49 (hybrid-dimmed, unchanged); in each view at most 0.45 lower than
+  before (overview-field at 10.33x, 8.49 to 8.04), the ground behind the plates lighter.
+- **Drops** unchanged in every view; the layer's pass at most 1.4 ms.
+- **The ground's mean luminance** from 4 lower (at 1x, where the drawn sun is the true one, lower than the presets') to 15 higher
+  (at 10.33x, where the drawn sun is steepest) than before.
+- The drawn sun at 4x: 39-45 degrees in the 09:30-10:00 views (11.6-14.1 true), 54 at noon (19.0 true).
+
+**Tests** (none loosened; new or stricter)
+- **Self-test** (135 checks, was 126), new: at each factor, the drawn light against the computed sun at 40 clocks (azimuth and
+  corrected altitude within 0.1 degree; the shadow-casting light the same), and the shadow box covering the ground under the free
+  rectangle from every vantage; once, the disc drawn exactly while the sun is up (07:45-16:10 in 5-minute steps), the light
+  continuous in the clock (no step at a phase boundary larger than the largest one-minute change elsewhere), the toe and the
+  landscape hillshade absent.
+- **Harness** (`harness.js`, `thresholds.js`): new, the day's light without the toe: the Field vantage and the low Pratzen view at
+  4x every hour 08:00-16:00 and three views at 1x and 10.33x, each within the Stage 0 darkness limit (24 renders).
+- **`css-test.js`**: new, no shadow toe in `initFX`, no baked hillshade on the landscape, the computed sun and the light table
+  present, no `LIGHT[...light]` read.
+- **`runtime-test.js`**: new, the light table's two branches rise to the day's highest sun, every row names a preset, the light
+  finite and from above at every minute; the stub's shadow camera and map size given the r128 members the light now uses
+  (`updateProjectionMatrix`, `x`, `y`).
+- **Height guard**: the self-test's new `groundY` call site classified (test).
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard.
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/spine-6b2cccd4.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:visual`: all checks passed, 20 views, the day's light (24 renders, the largest solid near-black 0.028%), the
+  self-test 135 of 135; the slider and the 3E keys by real key presses.
+- `npm run check:contrast`: 4,227 text elements in 28 states, 0 below AA, 0 below 10.5 px (4,223 on the spine build; the four
+  more were not traced to a state).
+- `npm run check:baseline`: moved to this build; passes.
+
+**Not done, or open**
+- The fog (linear, with Stage 3D's `fogShift`) and the mist sheets are unchanged: 4C.
+- The environment map's regeneration cost under a moving clock and the shadow box's cost are not measured on a GPU (software
+  WebGL only).
+- The largest one-minute change of the light in the day is the disc's fade as the sun's upper limb crosses the horizon (0.22 of
+  its opacity a minute at 16:12-16:15, 0.11 at 07:47-07:48; at any phase boundary the largest change is 0.02). By design (the
+  disc is drawn only while the limb is up); for the owner's eye.
+- Historical: the clock's basis (apparent or mean time) is a reading, not a finding (decision 69); the weather is the narrative's.
+
 ## 2026-10 · Stage 4 Part A: time and atmosphere, the specification (docs/STAGE4_SPEC.md)
 
-**Status: Part A, for review. No source file changes. `austerlitz-command-map.html` is unchanged: 1,348,542 bytes, md5
+**Status: merged (#27). No source file changes. `austerlitz-command-map.html` is unchanged: 1,348,542 bytes, md5
 `6b2cccd44138e95e6082c82b8b2d2f8a`; `check:baseline` does not move.**
 - A specification, its probes and their evidence: `docs/STAGE4_SPEC.md`; `tools/stage4/` (`ephem.js`, `sun.js`, `light-probe.js`,
   `dark-probe.js`, `fog-probe.js`, `pace-probe.js`, `extras-probe.js`; not bundled); `docs/stage4-evidence/` (with a README).

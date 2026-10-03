@@ -93,3 +93,17 @@ if(cerrs) process.exitCode=1;
   console.log("names: "+(nerr.length?nerr.length+" wrong":"the presentations, the ground and the layers as decision 50 names them"));
   if(nerr.length) process.exitCode=1;
 }
+/* Stage 4B (docs/STAGE4_SPEC.md section A.6; decision 70): the grade carries no shadow toe and the landscape no baked hillshade,
+   so neither can come back unmeasured; the light reads the computed sun and its table */
+{
+  const app=fs.readFileSync('app.js','utf8'), world=fs.readFileSync('world.js','utf8'), lerr=[];
+  const i=app.indexOf("function initFX"), j=app.indexOf("function sizeFX");
+  if(i<0||j<0) lerr.push("app.js: initFX not found");
+  else if(/tt\*tt|shadow toe below/.test(app.slice(i,j))) lerr.push("the composite still lifts the shadows (the shadow toe)");
+  if(!/float shL=paper>0\.5\?sh:0\.70;/.test(world)||/\(0\.70\+0\.42\*sh\)/.test(world)) lerr.push("world.js: the landscape bakes a hillshade again");
+  if(!/var SUN_DAY=/.test(app)||!/var LIGHT_BY_ALT=/.test(app)||!/function applyLight\(/.test(app)) lerr.push("app.js: the computed sun or the light table is missing");
+  if(/LIGHT\[[^\]]*\.light\]/.test(app)) lerr.push("app.js reads a phase's light preset on the landscape (LIGHT[...light])");
+  lerr.forEach(e=>console.log("  ! "+e));
+  console.log("light: "+(lerr.length?lerr.length+" wrong":"no shadow toe, no baked hillshade on the landscape, the light from the computed sun and its table"));
+  if(lerr.length) process.exitCode=1;
+}

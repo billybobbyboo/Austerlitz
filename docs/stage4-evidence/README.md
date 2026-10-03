@@ -15,3 +15,14 @@ implementation; they changed no source file. Frame times are software WebGL on o
 | `fog-sheet.jpg` | B, C | `fog-probe.js --sheet`: the fitted Overview at 1x, 4x and 10.33x, today (H0) and with the true-space haze (H1); the Field vantage at 08:00 and the low Pratzen view at 08:30 at 4x: today, the valley fog at 238.2 m, at 260 m |
 | `pace-probe.json` | D | `pace-probe.js --json`: the clock's durations at each speed, each phase against the camera glide, the events starting inside it; two camera rules over the whole day at 1x and 0.5x (today's phase-boundary rule and a continuous follow): live events inside the free rectangle, the floor, the ground's speed across the screen, the map layer's drops every 10 minutes |
 | `extras-probe.json` | E, F | `extras-probe.js --json`: per landscape view, smoke and dust sprites and their share of the free rectangle, the cost of a depth pre-pass (soft particles), the meres on screen, the horizon (the gap between the true horizon and the apron's far edge, the edge's distance and fog); over the day, the formations that smoke against those a live event names |
+
+**Stage 4B** (the light, implemented): `report-4b.js` on the build before 4B (`archive/spine-6b2cccd4.html`) and on the 4B build.
+
+| file | section | script |
+|---|---|---|
+| `4b-before.json`, `4b-after.json` | I (4B) | `report-4b.js --json`: per landscape view at its factor, four at 1x and 10.33x, and the day at 4x: solid near-black, luminance p5 and mean, map text contrast as rendered, drops and pass time; on the 4B build the sun's true and drawn altitude, the fill and the shadow box |
+| `4b-report.md` | I (4B) | the two side by side |
+| `4b-sheet-before.jpg`, `4b-sheet.jpg` | I (4B) | `report-4b.js --sheet`: six views before 4B and with it |
+
+The 4B run measured a build that differs from the committed one only in the sources sheet's text (`lightNotes`, added after the run
+started) and in two comments; the light's code is the same.
