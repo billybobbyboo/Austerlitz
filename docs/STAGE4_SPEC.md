@@ -1,7 +1,7 @@
 # Time and atmosphere specification (Stage 4, Part A)
 
 **Status: Part A merged (#27); the owner accepted every recommendation of §J, recorded as decisions 68-82 (§0.4). 4B (the light)
-is merged (#28); 4C (the atmosphere) is implemented, for review; what each found is at the end of §I. Sections A-J below still describe the build they were written
+is merged (#28); 4C (the atmosphere) is merged (#29); 4D (pacing) is implemented, for review; what each found is at the end of §I. Sections A-J below still describe the build they were written
 against.** Part A was written
 against `main` at `18e014b` (the spine data task merged, #26), whose build `austerlitz-command-map.html` is 1,348,542 bytes,
 md5 `6b2cccd44138e95e6082c82b8b2d2f8a`. Before any work: `check:baseline` passed; `npm test` (all nine suites and the height
@@ -163,6 +163,7 @@ decision, in the question's order; §J keeps the trade-offs.
 | 80 | 13, the horizon | No ring of distant relief; the haze and the sky meet at the horizon. (4C, 4E) |
 | 81 | 14, the haze | Counted from the focus (beyond the orbit target's distance). (4C) |
 | 82 | 15, sequencing | 4B, 4C, 4D, 4E. |
+| 83 | asked while building 4D (§I, "4D, as delivered") | The draw-on as "ghost and progress": a derived arrow is always drawn whole and faint, its head at the destination; the part marched is drawn over it at full strength to the formation, without a head; once the leg is complete the arrow is drawn at full strength. In place of §D.3 item 4's "not drawn before the leg starts, the head at the tip". (4D) |
 
 ## A. The light
 
@@ -915,6 +916,35 @@ solid near-black at most 0.030%; map text 0 below AA, the lowest contrast 6.49 (
 4B (the low Pratzen view at 08:30, over the fog); drops unchanged; the haze at the orbit target 0 everywhere; the valley fog 0.31-0.54
 over the ground at 08:00-08:30 (cap 0.55). The self-test has 141 checks (135 before): the fog's top and the haze at the target at each
 factor; the Command view's "uncertain" against the drawn top, the fog's amount over the day, nothing on the paper map, once.
+
+### 4D, as delivered (pacing; decisions 74-76, 78 and 83)
+
+Implemented in `app.js` (the default speed; the dwell, `DWELL`, `dwellAdvance`; Follow while playing, `FOLLOW`, `followStep`; the
+draw-on, `DRAWON`, `drawOnArrows`), `shell.html` (½× pressed; the layers panel's "Playing" section with the dwell's toggle; Follow's
+title), `style.css` (the dwell's lit marker and caption) and `data.js` (decision 76's one word), with these changes found while
+building it, each measured (`tools/stage4/report-4d.js`, `docs/stage4-evidence/4d-report.md`, `4d-before.json`, `4d-after.json`;
+`CHANGELOG.md`, Stage 4D):
+- **The draw-on (decision 83).** 12 of the 17 derived arrows' legs run from their phase's first minute to its last (the timing rule:
+  an anchor is reached as its phase opens, so the leg into the next anchor runs through the phase). As §D.3 item 4 had it, at every
+  phase start (a phase button, a tour stop, a theme, every harness view) those arrows were not drawn, and each was whole only at the
+  instant its phase's overlay was replaced; a head at the tip also lay under the moving formation's own counter, against Stage 2D's
+  rule that nothing is drawn over a head. The owner chose "ghost and progress" (decision 83).
+- **Derived arrows kept to their path.** The arrow's curve (Catmull-Rom through the path's points, Stage 2C) bulged up to 1.4 units
+  off the formation's path between points; points are added every 2 units along each segment, so the marched part ends within
+  0.13 units of the formation. The ends stay the anchors exactly (`binding-test.js`).
+- **Follow's distance** is 230-300 units (2.4 x the live events' spread + 130), not §D.2's candidate 86-274: at those distances the
+  map layer dropped 19-20 items over the day (the limit 19), where every brigade is labelled; at 230-300 at most 11-12, with every
+  live event in the free rectangle in 92-93% of the day's minutes (the phase glide before 4D: 71-73%). Wider than most phase views
+  (92-212 units in phases 1-8).
+- **The dwell's length.** Each dwell adds 1.5 s plus its two eases, 2.0 s where the eases are whole (§D.3 estimated 2.5 s): the day
+  plays in 3 min 30 s at ½× (§D.3: about 3 min 45 s). The event start at 04:00, where Play begins, does not dwell: 21 dwells.
+- **§D.4's harness case** is a check in the key tests: Play by a real key press runs at ½×, and the low Pratzen case in Watch held
+  in the dwell at 09:00 keeps its thresholds. The self-test's layer check counts only the heads drawn, as the harness's measure does.
+
+Per the report: the phase glide before 4D kept every live event in the free rectangle in 71.1% of the day's minutes at ½× (73.1% at
+1×), moved the ground across the screen at up to 853 px/s, and dropped at most 16 (19 at 1×) map items; with 4D 92.7% (92.4%), at most
+150 px/s, at most 11. The self-test's pacing checks: the day under Follow at each factor, the draw-on at each factor, the dwell's
+length at every speed, scrubbing, reduced motion.
 
 ## J. Questions for the owner
 

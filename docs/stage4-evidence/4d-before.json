@@ -1,0 +1,195 @@
+{
+ "html": "the Stage 4C build (md5 622634ef37c67e5ae9e9a921228ab0c7, main at 71ffd88, #29)",
+ "when": "2026-10-03T04:47:39.493Z",
+ "views": {
+  "overview-field": {
+   "dropped": 6,
+   "placed": 41,
+   "arrows": {
+    "whole": 3,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 11
+  },
+  "overview-plan": {
+   "dropped": 4,
+   "placed": 22,
+   "arrows": {
+    "whole": 3,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 12
+  },
+  "close-sokolnitz": {
+   "dropped": 4,
+   "placed": 21,
+   "arrows": {
+    "whole": 2,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 18
+  },
+  "staff-paper": {
+   "dropped": 3,
+   "placed": 25,
+   "arrows": {
+    "whole": 3,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 13
+  },
+  "pratzen-low": {
+   "dropped": 5,
+   "placed": 23,
+   "arrows": {
+    "whole": 3,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 13
+  },
+  "selected-formation": {
+   "dropped": 4,
+   "placed": 24,
+   "arrows": {
+    "whole": 3,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 4
+  },
+  "watch-selected": {
+   "dropped": 3,
+   "placed": 25,
+   "arrows": {
+    "whole": 3,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 8
+  },
+  "hybrid-dimmed": {
+   "dropped": 8,
+   "placed": 32,
+   "arrows": {
+    "whole": 3,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 13
+  },
+  "pratzen-low-1x": {
+   "dropped": 4,
+   "placed": 25,
+   "arrows": {
+    "whole": 3,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 12
+  },
+  "pratzen-low-10x": {
+   "dropped": 3,
+   "placed": 21,
+   "arrows": {
+    "whole": 3,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 8
+  },
+  "paper-north-up": {
+   "dropped": 12,
+   "placed": 23,
+   "arrows": {
+    "whole": 3,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 20
+  },
+  "paper-close": {
+   "dropped": 1,
+   "placed": 5,
+   "arrows": {
+    "whole": 2,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 2
+  },
+  "paper-drawer": {
+   "dropped": 1,
+   "placed": 16,
+   "arrows": {
+    "whole": 3,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 5
+  },
+  "ph8-overview-study": {
+   "dropped": 3,
+   "placed": 22,
+   "arrows": {
+    "whole": 2,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 7
+  },
+  "ph8-overview-watch": {
+   "dropped": 3,
+   "placed": 22,
+   "arrows": {
+    "whole": 2,
+    "part": 0,
+    "notYet": 0
+   },
+   "dropLimit": 7
+  }
+ },
+ "is4d": false,
+ "lengths": null,
+ "drawOn": null,
+ "rules": {
+  "0.5x": {
+   "speed": 0.5,
+   "seconds": 168,
+   "allLiveShare": 0.711,
+   "liveSeenShare": 0.764,
+   "screenSpeed": {
+    "p50": 0,
+    "p95": 146.1,
+    "max": 853.5
+   },
+   "clamps": 0,
+   "minClear": 36.6,
+   "drops": {
+    "mean": 5.86,
+    "max": 16
+   }
+  },
+  "1x": {
+   "speed": 1,
+   "seconds": 84,
+   "allLiveShare": 0.731,
+   "liveSeenShare": 0.779,
+   "screenSpeed": {
+    "p50": 0,
+    "p95": 288.4,
+    "max": 853.5
+   },
+   "clamps": 0,
+   "minClear": 36.6,
+   "drops": {
+    "mean": 5.92,
+    "max": 19
+   }
+  }
+ }
+}

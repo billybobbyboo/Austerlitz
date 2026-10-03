@@ -120,3 +120,16 @@ if(cerrs) process.exitCode=1;
   console.log("atmosphere: "+(aerr.length?aerr.length+" wrong":"the fog chunks and applyAtmo, no recession, no mist sheets, the fog's top the knowledge model's, its legend row"));
   if(aerr.length) process.exitCode=1;
 }
+/* Stage 4D (docs/STAGE4_SPEC.md section D.4; decisions 74, 75, 78): Play starts at half speed with its button pressed; the dwell's
+   toggle in the layers panel, on; the phase boundary's glide not used while playing */
+{
+  const app=fs.readFileSync('app.js','utf8'), sh=fs.readFileSync('shell.html','utf8'), perr=[];
+  if(!/var playing=false, playRAF=0, speed=0\.5,/.test(app)) perr.push("app.js: the default speed is not half speed");
+  if(!/data-s="0\.5" aria-pressed="true"/.test(sh)||/data-s="1" aria-pressed="true"/.test(sh)) perr.push("shell.html: the half-speed button is not the pressed one");
+  if(!/id="dwell" aria-pressed="true"/.test(sh)) perr.push("shell.html: the dwell's toggle is missing or off");
+  if(!/camMove=moveCam && !freeCam && mode!=="staff" && !playing/.test(app)) perr.push("app.js: the phase boundary's glide runs while playing");
+  if(!/function followStep\(/.test(app)||!/function dwellAdvance\(/.test(app)) perr.push("app.js: followStep or dwellAdvance missing");
+  perr.forEach(e=>console.log("  ! "+e));
+  console.log("pacing: "+(perr.length?perr.length+" wrong":"half speed by default, its button pressed; the dwell's toggle on; no phase glide while playing"));
+  if(perr.length) process.exitCode=1;
+}

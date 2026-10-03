@@ -464,6 +464,17 @@ try{
     if(L.dir.y<=0) throw new Error("the light comes from below the horizon at "+t); }
   console.log("light table: two branches to the day's highest sun, finite and from above at every minute OK");
 
+  /* Stage 4D: the dwell. A dry run of the day at each speed: its length the computed one within a step, one dwell at each
+     event start after 04:00, the clock never running backwards nor faster than its speed */
+  { const c0=clock, st=1/60;
+    [0.5,1,2,4].forEach(x=>{ clock=T_MIN; dwellReset(); let real=0, n=0, was=null, fast=0, back=0;
+      while(clock<T_MAX&&real<3600){ const nt=Math.min(T_MAX,dwellAdvance(st,MIN_PER_SEC*x)); if(nt<clock-1e-9) back++; if(nt-clock>MIN_PER_SEC*x*st*(1+1e-6)) fast++;
+        clock=nt; real+=st; if(DWELL.st&&DWELL.st.E!==was){ n++; was=DWELL.st.E; } }
+      const L=dwellDayLength(T_MIN,x), want=dwellStarts().filter(t=>t>T_MIN).length;
+      if(Math.abs(real-L)>2*st||n!==want||back||fast) throw new Error("dwell at "+x+"x: "+real.toFixed(2)+" s against "+L.toFixed(2)+", "+n+" dwells of "+want+", "+back+" backward and "+fast+" too fast steps"); });
+    clock=c0; dwellReset();
+    console.log("dwell: the day at 0.5x, 1x, 2x and 4x in its computed length, one dwell at each event start, the clock monotone and never faster than its speed OK"); }
+
   /* the armies are ranks of figures now, with national colours on the standards */
   const inf=units.sthilaire.block.userData, cav=units.nansouty.block.userData;
   const infN=inf.figs.reduce((a,f)=>a+f.n,0), cavN=cav.figs.reduce((a,f)=>a+f.n,0);

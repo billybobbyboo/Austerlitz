@@ -36,3 +36,11 @@ valley fog over the ground under the free rectangle by the page's own `atmoAt`, 
 | `4c-before.json`, `4c-after.json` | I (4C) | `report-4b.js --json`: as 4B's, and on the 4C build the atmosphere per view (the mean haze and valley fog over the free rectangle's ground, the haze at the orbit target, the fog's top and cap, the haze's visibility); the Field vantage at 08:00, the Sokolnitz close view at 08:20 and the low Pratzen view at 08:30 at 4x |
 | `4c-report.md` | I (4C) | `report-4b.js --from 4c-after.json --before 4c-before.json --md`: the two side by side, the atmosphere per view, the fog's hours |
 | `4c-sheet-before.jpg`, `4c-sheet.jpg` | I (4C) | `report-4b.js --sheet`: six views on the 4B build and on the 4C build (the Sokolnitz close view at 08:20 is in the fog) |
+
+**Stage 4D** (pacing, implemented): `report-4d.js` on the 4C build as merged (#29, md5 `622634ef…`) and on the 4D build. It drives the
+clock and the camera through the page's own functions; on the 4C build the phase glide runs on a simulated clock.
+
+| file | section | script |
+|---|---|---|
+| `4d-before.json`, `4d-after.json` | I (4D) | `report-4d.js --json`: per harness view the derived arrows drawn whole, in part and not yet, and the drops; the day's length at each speed; section D.2's table on the build (the phase glide before 4D, the continuous follow and the dwells with it) at ½× and 1×; the draw-on's largest distance from the formation per derived arrow |
+| `4d-report.md` | I (4D) | `report-4d.js --from 4d-after.json --before 4d-before.json --md`: the two side by side |

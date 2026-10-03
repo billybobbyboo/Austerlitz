@@ -1,0 +1,531 @@
+{
+ "html": "austerlitz-command-map.html",
+ "when": "2026-10-03T04:47:39.578Z",
+ "views": {
+  "overview-field": {
+   "dropped": 6,
+   "placed": 41,
+   "arrows": {
+    "whole": 0,
+    "part": 0,
+    "notYet": 3
+   },
+   "dropLimit": 11
+  },
+  "overview-plan": {
+   "dropped": 4,
+   "placed": 22,
+   "arrows": {
+    "whole": 0,
+    "part": 0,
+    "notYet": 3
+   },
+   "dropLimit": 12
+  },
+  "close-sokolnitz": {
+   "dropped": 4,
+   "placed": 21,
+   "arrows": {
+    "whole": 0,
+    "part": 2,
+    "notYet": 0
+   },
+   "dropLimit": 18
+  },
+  "staff-paper": {
+   "dropped": 3,
+   "placed": 25,
+   "arrows": {
+    "whole": 0,
+    "part": 0,
+    "notYet": 3
+   },
+   "dropLimit": 13
+  },
+  "pratzen-low": {
+   "dropped": 5,
+   "placed": 23,
+   "arrows": {
+    "whole": 0,
+    "part": 3,
+    "notYet": 0
+   },
+   "dropLimit": 13
+  },
+  "selected-formation": {
+   "dropped": 4,
+   "placed": 24,
+   "arrows": {
+    "whole": 0,
+    "part": 0,
+    "notYet": 3
+   },
+   "dropLimit": 4
+  },
+  "watch-selected": {
+   "dropped": 3,
+   "placed": 25,
+   "arrows": {
+    "whole": 0,
+    "part": 3,
+    "notYet": 0
+   },
+   "dropLimit": 8
+  },
+  "hybrid-dimmed": {
+   "dropped": 8,
+   "placed": 32,
+   "arrows": {
+    "whole": 0,
+    "part": 3,
+    "notYet": 0
+   },
+   "dropLimit": 13
+  },
+  "pratzen-low-1x": {
+   "dropped": 4,
+   "placed": 25,
+   "arrows": {
+    "whole": 0,
+    "part": 3,
+    "notYet": 0
+   },
+   "dropLimit": 12
+  },
+  "pratzen-low-10x": {
+   "dropped": 3,
+   "placed": 21,
+   "arrows": {
+    "whole": 0,
+    "part": 3,
+    "notYet": 0
+   },
+   "dropLimit": 8
+  },
+  "paper-north-up": {
+   "dropped": 12,
+   "placed": 23,
+   "arrows": {
+    "whole": 0,
+    "part": 0,
+    "notYet": 3
+   },
+   "dropLimit": 20
+  },
+  "paper-close": {
+   "dropped": 1,
+   "placed": 5,
+   "arrows": {
+    "whole": 0,
+    "part": 2,
+    "notYet": 0
+   },
+   "dropLimit": 2
+  },
+  "paper-drawer": {
+   "dropped": 1,
+   "placed": 16,
+   "arrows": {
+    "whole": 0,
+    "part": 0,
+    "notYet": 3
+   },
+   "dropLimit": 5
+  },
+  "ph8-overview-study": {
+   "dropped": 3,
+   "placed": 22,
+   "arrows": {
+    "whole": 0,
+    "part": 1,
+    "notYet": 1
+   },
+   "dropLimit": 7
+  },
+  "ph8-overview-watch": {
+   "dropped": 3,
+   "placed": 22,
+   "arrows": {
+    "whole": 0,
+    "part": 1,
+    "notYet": 1
+   },
+   "dropLimit": 7
+  }
+ },
+ "is4d": true,
+ "lengths": {
+  "day": {
+   "0.5x": 210,
+   "1x": 126,
+   "2x": 83.5,
+   "4x": 61.3
+  },
+  "phases": [
+   {
+    "id": 0,
+    "label": "Deployment",
+    "minutes": 180,
+    "seconds": 38,
+    "dwells": 1
+   },
+   {
+    "id": 1,
+    "label": "Telnitz",
+    "minutes": 60,
+    "seconds": 16,
+    "dwells": 2
+   },
+   {
+    "id": 2,
+    "label": "Sokolnitz",
+    "minutes": 45,
+    "seconds": 15,
+    "dwells": 3
+   },
+   {
+    "id": 3,
+    "label": "The Pratzen",
+    "minutes": 45,
+    "seconds": 15,
+    "dwells": 3
+   },
+   {
+    "id": 4,
+    "label": "Pratzeberg",
+    "minutes": 60,
+    "seconds": 14,
+    "dwells": 1
+   },
+   {
+    "id": 5,
+    "label": "Olmutz road",
+    "minutes": 45,
+    "seconds": 13,
+    "dwells": 2
+   },
+   {
+    "id": 6,
+    "label": "The Guard",
+    "minutes": 90,
+    "seconds": 26,
+    "dwells": 4
+   },
+   {
+    "id": 7,
+    "label": "The wheel",
+    "minutes": 105,
+    "seconds": 25,
+    "dwells": 2
+   },
+   {
+    "id": 8,
+    "label": "The ponds",
+    "minutes": 150,
+    "seconds": 36,
+    "dwells": 3
+   },
+   {
+    "id": 9,
+    "label": "Reckoning",
+    "minutes": 60,
+    "seconds": 12,
+    "dwells": 0
+   }
+  ],
+  "starts": 22
+ },
+ "drawOn": [
+  {
+   "phase": 0,
+   "label": "V Column counter-marches north",
+   "leg": [
+    "lich",
+    0,
+    2
+   ],
+   "window": [
+    240,
+    480
+   ],
+   "worst": 0,
+   "length": 18.5
+  },
+  {
+   "phase": 1,
+   "label": "Kienmayer",
+   "leg": [
+    "kienmayer",
+    1,
+    2
+   ],
+   "window": [
+    420,
+    480
+   ],
+   "worst": 0,
+   "length": 7.3
+  },
+  {
+   "phase": 1,
+   "label": "Friant's approach march",
+   "leg": [
+    "friant",
+    1,
+    2
+   ],
+   "window": [
+    420,
+    510
+   ],
+   "worst": 0,
+   "length": 16
+  },
+  {
+   "phase": 2,
+   "label": "Liechtenstein crosses the front",
+   "leg": [
+    "lich",
+    2,
+    3
+   ],
+   "window": [
+    480,
+    525
+   ],
+   "worst": 0,
+   "length": 11.5
+  },
+  {
+   "phase": 2,
+   "label": "Friant retakes Telnitz",
+   "leg": [
+    "friant",
+    1,
+    2
+   ],
+   "window": [
+    420,
+    510
+   ],
+   "worst": 0,
+   "length": 16
+  },
+  {
+   "phase": 3,
+   "label": "Saint-Hilaire",
+   "leg": [
+    "sthilaire",
+    2,
+    3
+   ],
+   "window": [
+    525,
+    555
+   ],
+   "worst": 0.086,
+   "length": 39.3
+  },
+  {
+   "phase": 3,
+   "label": "Vandamme",
+   "leg": [
+    "vandamme",
+    2,
+    3
+   ],
+   "window": [
+    525,
+    554
+   ],
+   "worst": 0.061,
+   "length": 38
+  },
+  {
+   "phase": 4,
+   "label": "Caffarelli",
+   "leg": [
+    "caffarelli",
+    0,
+    5
+   ],
+   "window": [
+    570,
+    630
+   ],
+   "worst": 0,
+   "length": 28.2
+  },
+  {
+   "phase": 4,
+   "label": "Suchet",
+   "leg": [
+    "suchet",
+    0,
+    5
+   ],
+   "window": [
+    570,
+    630
+   ],
+   "worst": 0,
+   "length": 12.7
+  },
+  {
+   "phase": 4,
+   "label": "Bagration",
+   "leg": [
+    "bag",
+    0,
+    5
+   ],
+   "window": [
+    570,
+    630
+   ],
+   "worst": 0,
+   "length": 30
+  },
+  {
+   "phase": 5,
+   "label": "Nansouty's cuirassiers",
+   "leg": [
+    "nansouty",
+    5,
+    6
+   ],
+   "window": [
+    630,
+    675
+   ],
+   "worst": 0,
+   "length": 15.1
+  },
+  {
+   "phase": 6,
+   "label": "Drouet forms line",
+   "leg": [
+    "drouet",
+    6,
+    7
+   ],
+   "window": [
+    675,
+    765
+   ],
+   "worst": 0,
+   "length": 12.7
+  },
+  {
+   "phase": 7,
+   "label": "Saint-Hilaire wheels south",
+   "leg": [
+    "sthilaire",
+    6,
+    7
+   ],
+   "window": [
+    780,
+    840
+   ],
+   "worst": 0,
+   "length": 26
+  },
+  {
+   "phase": 7,
+   "label": "Vandamme wheels south",
+   "leg": [
+    "vandamme",
+    6,
+    8
+   ],
+   "window": [
+    780,
+    870
+   ],
+   "worst": 0,
+   "length": 71.7
+  },
+  {
+   "phase": 7,
+   "label": "Przybyszewski's breakout",
+   "leg": [
+    "prz",
+    7,
+    8
+   ],
+   "window": [
+    850,
+    870
+   ],
+   "worst": 0,
+   "length": 14.5
+  },
+  {
+   "phase": 8,
+   "label": "Vandamme takes the height",
+   "leg": [
+    "vandamme",
+    8,
+    9
+   ],
+   "window": [
+    870,
+    1020
+   ],
+   "worst": 0,
+   "length": 12.4
+  },
+  {
+   "phase": 8,
+   "label": "Bagration withdraws on Rausnitz",
+   "leg": [
+    "bag",
+    7,
+    9
+   ],
+   "window": [
+    990,
+    1020
+   ],
+   "worst": 0,
+   "length": 34.9
+  }
+ ],
+ "rules": {
+  "0.5x": {
+   "speed": 0.5,
+   "seconds": 210,
+   "allLiveShare": 0.927,
+   "liveSeenShare": 0.958,
+   "screenSpeed": {
+    "p50": 8.6,
+    "p95": 54.1,
+    "max": 150
+   },
+   "clamps": 0,
+   "minClear": 57,
+   "drops": {
+    "mean": 6.78,
+    "max": 11
+   }
+  },
+  "1x": {
+   "speed": 1,
+   "seconds": 126,
+   "allLiveShare": 0.924,
+   "liveSeenShare": 0.955,
+   "screenSpeed": {
+    "p50": 17.2,
+    "p95": 72.1,
+    "max": 150
+   },
+   "clamps": 0,
+   "minClear": 57.2,
+   "drops": {
+    "mean": 6.76,
+    "max": 11
+   }
+  }
+ }
+}
