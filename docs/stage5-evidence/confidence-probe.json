@@ -1,0 +1,5361 @@
+{
+ "html": "austerlitz-command-map.html",
+ "when": "2026-10-03T14:25:06.892Z",
+ "views": {
+  "overview-field": {
+   "clock": 570,
+   "factor": 4,
+   "census": {
+    "drawn": 31,
+    "inFree": 30,
+    "A": 15,
+    "B": 12,
+    "C": 3,
+    "interp": 15,
+    "foot": [
+     [
+      "gqg",
+      "A",
+      379,
+      316
+     ],
+     [
+      "sthilaire",
+      "A",
+      924,
+      400
+     ],
+     [
+      "vandamme",
+      "A",
+      872,
+      417
+     ],
+     [
+      "legrand",
+      "B",
+      767,
+      517
+     ],
+     [
+      "friant",
+      "A",
+      677,
+      97
+     ],
+     [
+      "caffarelli",
+      "A",
+      872,
+      417
+     ],
+     [
+      "suchet",
+      "A",
+      638,
+      417
+     ],
+     [
+      "santon",
+      "A",
+      404,
+      101
+     ],
+     [
+      "kellermann",
+      "B",
+      746,
+      145
+     ],
+     [
+      "nansouty",
+      "B",
+      318,
+      235
+     ],
+     [
+      "dhautpoul",
+      "B",
+      318,
+      235
+     ],
+     [
+      "walther",
+      "C",
+      318,
+      235
+     ],
+     [
+      "rivaud",
+      "B",
+      370,
+      772
+     ],
+     [
+      "drouet",
+      "B",
+      506,
+      772
+     ],
+     [
+      "guard_inf",
+      "A",
+      434,
+      164
+     ],
+     [
+      "guard_cav",
+      "A",
+      507,
+      235
+     ],
+     [
+      "c_gren",
+      "B",
+      434,
+      676
+     ],
+     [
+      "ahq",
+      "B",
+      402,
+      303
+     ],
+     [
+      "buxhowden",
+      "C",
+      440,
+      259
+     ],
+     [
+      "kienmayer",
+      "B",
+      924,
+      400
+     ],
+     [
+      "dok",
+      "A",
+      1283,
+      342
+     ],
+     [
+      "lang",
+      "C",
+      1172,
+      400
+     ],
+     [
+      "kamensky",
+      "A",
+      1029,
+      81
+     ],
+     [
+      "prz",
+      "A",
+      1172,
+      400
+     ],
+     [
+      "milo",
+      "B",
+      1029,
+      81
+     ],
+     [
+      "kollo",
+      "B",
+      1305,
+      334
+     ],
+     [
+      "lich",
+      "A",
+      410,
+      1289
+     ],
+     [
+      "bag",
+      "B",
+      1106,
+      417
+     ],
+     [
+      "rg_inf",
+      "A",
+      593,
+      676
+     ],
+     [
+      "rg_cav",
+      "A",
+      696,
+      235
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 76.4
+    },
+    "worldMs": 9.9
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 177748,
+     "changed": 0.0107,
+     "contrastMedian": 1.59,
+     "contrastP90": 3.31,
+     "share3to1": 0.21
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 76.7
+    },
+    "worldMs": 10.1
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 177748,
+     "changed": 0.0246,
+     "contrastMedian": 1.47,
+     "contrastP90": 2.67,
+     "share3to1": 0.054
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 77
+    },
+    "worldMs": 16
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 177748,
+     "changed": 0.0357,
+     "contrastMedian": 1.46,
+     "contrastP90": 2.55,
+     "share3to1": 0.038
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 77.5
+    },
+    "worldMs": 9.1
+   },
+   "G3": {
+    "meshes": 16,
+    "underShare": 0,
+    "diff": {
+     "samples": 177748,
+     "changed": 0.0211,
+     "contrastMedian": 1.47,
+     "contrastP90": 2.56,
+     "share3to1": 0.039
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 76.9
+    },
+    "worldMs": 15.9
+   }
+  },
+  "overview-plan": {
+   "clock": 570,
+   "factor": 4,
+   "census": {
+    "drawn": 31,
+    "inFree": 31,
+    "A": 15,
+    "B": 12,
+    "C": 4,
+    "interp": 16,
+    "foot": [
+     [
+      "gqg",
+      "A",
+      379,
+      316
+     ],
+     [
+      "sthilaire",
+      "A",
+      924,
+      400
+     ],
+     [
+      "vandamme",
+      "A",
+      872,
+      417
+     ],
+     [
+      "legrand",
+      "B",
+      767,
+      517
+     ],
+     [
+      "friant",
+      "A",
+      677,
+      97
+     ],
+     [
+      "bourcier",
+      "C",
+      468,
+      145
+     ],
+     [
+      "caffarelli",
+      "A",
+      872,
+      417
+     ],
+     [
+      "suchet",
+      "A",
+      638,
+      417
+     ],
+     [
+      "santon",
+      "A",
+      404,
+      101
+     ],
+     [
+      "kellermann",
+      "B",
+      746,
+      145
+     ],
+     [
+      "nansouty",
+      "B",
+      318,
+      235
+     ],
+     [
+      "dhautpoul",
+      "B",
+      318,
+      235
+     ],
+     [
+      "walther",
+      "C",
+      318,
+      235
+     ],
+     [
+      "rivaud",
+      "B",
+      370,
+      772
+     ],
+     [
+      "drouet",
+      "B",
+      506,
+      772
+     ],
+     [
+      "guard_inf",
+      "A",
+      434,
+      164
+     ],
+     [
+      "guard_cav",
+      "A",
+      507,
+      235
+     ],
+     [
+      "c_gren",
+      "B",
+      434,
+      676
+     ],
+     [
+      "ahq",
+      "B",
+      402,
+      303
+     ],
+     [
+      "buxhowden",
+      "C",
+      440,
+      259
+     ],
+     [
+      "kienmayer",
+      "B",
+      924,
+      400
+     ],
+     [
+      "dok",
+      "A",
+      1283,
+      342
+     ],
+     [
+      "lang",
+      "C",
+      1172,
+      400
+     ],
+     [
+      "kamensky",
+      "A",
+      1029,
+      81
+     ],
+     [
+      "prz",
+      "A",
+      1172,
+      400
+     ],
+     [
+      "milo",
+      "B",
+      1029,
+      81
+     ],
+     [
+      "kollo",
+      "B",
+      1305,
+      334
+     ],
+     [
+      "lich",
+      "A",
+      410,
+      1289
+     ],
+     [
+      "bag",
+      "B",
+      1106,
+      417
+     ],
+     [
+      "rg_inf",
+      "A",
+      593,
+      676
+     ],
+     [
+      "rg_cav",
+      "A",
+      696,
+      235
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 52.3
+    },
+    "worldMs": 11.1
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 294649,
+     "changed": 0.012,
+     "contrastMedian": 2.37,
+     "contrastP90": 3.82,
+     "share3to1": 0.37
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 52.9
+    },
+    "worldMs": 8.9
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 294649,
+     "changed": 0.0214,
+     "contrastMedian": 1.92,
+     "contrastP90": 3.51,
+     "share3to1": 0.209
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 53.1
+    },
+    "worldMs": 10.2
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 294649,
+     "changed": 0.0306,
+     "contrastMedian": 1.81,
+     "contrastP90": 3.3,
+     "share3to1": 0.146
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 53.4
+    },
+    "worldMs": 12.2
+   },
+   "G3": {
+    "meshes": 16,
+    "underShare": 0,
+    "diff": {
+     "samples": 294649,
+     "changed": 0.0166,
+     "contrastMedian": 1.82,
+     "contrastP90": 3.19,
+     "share3to1": 0.139
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 52.9
+    },
+    "worldMs": 8
+   }
+  },
+  "close-sokolnitz": {
+   "clock": 500,
+   "factor": 4,
+   "census": {
+    "drawn": 31,
+    "inFree": 14,
+    "A": 5,
+    "B": 7,
+    "C": 2,
+    "interp": 12,
+    "foot": [
+     [
+      "sthilaire",
+      "A",
+      750,
+      509
+     ],
+     [
+      "vandamme",
+      "A",
+      750,
+      509
+     ],
+     [
+      "legrand",
+      "B",
+      924,
+      400
+     ],
+     [
+      "friant",
+      "B",
+      753,
+      81
+     ],
+     [
+      "dhautpoul",
+      "B",
+      318,
+      235
+     ],
+     [
+      "drouet",
+      "B",
+      593,
+      676
+     ],
+     [
+      "ahq",
+      "B",
+      379,
+      316
+     ],
+     [
+      "buxhowden",
+      "C",
+      440,
+      259
+     ],
+     [
+      "kienmayer",
+      "B",
+      924,
+      400
+     ],
+     [
+      "dok",
+      "A",
+      1283,
+      342
+     ],
+     [
+      "lang",
+      "C",
+      1283,
+      342
+     ],
+     [
+      "kamensky",
+      "B",
+      349,
+      258
+     ],
+     [
+      "prz",
+      "A",
+      1283,
+      342
+     ],
+     [
+      "milo",
+      "A",
+      733,
+      135
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.58,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 127
+    },
+    "worldMs": 8.2
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 294881,
+     "changed": 0.0177,
+     "contrastMedian": 1.02,
+     "contrastP90": 1.12,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 127
+    },
+    "worldMs": 14.1
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 294881,
+     "changed": 0.0573,
+     "contrastMedian": 1.02,
+     "contrastP90": 1.06,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 127
+    },
+    "worldMs": 12.6
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 294881,
+     "changed": 0.0906,
+     "contrastMedian": 1.01,
+     "contrastP90": 1.04,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 127
+    },
+    "worldMs": 9.1
+   },
+   "G3": {
+    "meshes": 16,
+    "underShare": 0,
+    "diff": {
+     "samples": 294881,
+     "changed": 0.0547,
+     "contrastMedian": 1.02,
+     "contrastP90": 1.05,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.58,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 127
+    },
+    "worldMs": 8
+   }
+  },
+  "pratzen-low": {
+   "clock": 590,
+   "factor": 4,
+   "census": {
+    "drawn": 31,
+    "inFree": 10,
+    "A": 5,
+    "B": 3,
+    "C": 2,
+    "interp": 10,
+    "foot": [
+     [
+      "sthilaire",
+      "A",
+      924,
+      400
+     ],
+     [
+      "vandamme",
+      "A",
+      872,
+      417
+     ],
+     [
+      "ahq",
+      "B",
+      402,
+      303
+     ],
+     [
+      "buxhowden",
+      "C",
+      440,
+      259
+     ],
+     [
+      "lang",
+      "C",
+      1172,
+      400
+     ],
+     [
+      "kamensky",
+      "A",
+      1029,
+      81
+     ],
+     [
+      "milo",
+      "B",
+      1029,
+      81
+     ],
+     [
+      "kollo",
+      "B",
+      1305,
+      334
+     ],
+     [
+      "rg_inf",
+      "A",
+      593,
+      676
+     ],
+     [
+      "rg_cav",
+      "A",
+      696,
+      235
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 5,
+     "items": 65,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 11.94,
+     "belowAA": 0,
+     "texts": 23
+    },
+    "dark": {
+     "solidBlack": 0.0002,
+     "meanLum": 88
+    },
+    "worldMs": 6.8
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 292325,
+     "changed": 0.0236,
+     "contrastMedian": 2.94,
+     "contrastP90": 4.12,
+     "share3to1": 0.456
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 65,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 11.94,
+     "belowAA": 0,
+     "texts": 23
+    },
+    "dark": {
+     "solidBlack": 0.0002,
+     "meanLum": 89.4
+    },
+    "worldMs": 13.9
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 292325,
+     "changed": 0.072,
+     "contrastMedian": 1.66,
+     "contrastP90": 2.74,
+     "share3to1": 0.07
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 65,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 11.94,
+     "belowAA": 0,
+     "texts": 23
+    },
+    "dark": {
+     "solidBlack": 0.0002,
+     "meanLum": 90.3
+    },
+    "worldMs": 7.2
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 292325,
+     "changed": 0.0722,
+     "contrastMedian": 1.71,
+     "contrastP90": 2.82,
+     "share3to1": 0.081
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 65,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 11.94,
+     "belowAA": 0,
+     "texts": 23
+    },
+    "dark": {
+     "solidBlack": 0.0002,
+     "meanLum": 90.4
+    },
+    "worldMs": 8.1
+   },
+   "G3": {
+    "meshes": 17,
+    "underShare": 0,
+    "diff": {
+     "samples": 292325,
+     "changed": 0.0675,
+     "contrastMedian": 1.66,
+     "contrastP90": 2.61,
+     "share3to1": 0.036
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 65,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 11.94,
+     "belowAA": 0,
+     "texts": 23
+    },
+    "dark": {
+     "solidBlack": 0.0002,
+     "meanLum": 90.2
+    },
+    "worldMs": 9
+   }
+  },
+  "selected-formation": {
+   "clock": 570,
+   "factor": 4,
+   "census": {
+    "drawn": 31,
+    "inFree": 10,
+    "A": 3,
+    "B": 7,
+    "C": 0,
+    "interp": 5,
+    "foot": [
+     [
+      "sthilaire",
+      "A",
+      924,
+      400
+     ],
+     [
+      "vandamme",
+      "A",
+      872,
+      417
+     ],
+     [
+      "nansouty",
+      "B",
+      318,
+      235
+     ],
+     [
+      "dhautpoul",
+      "B",
+      318,
+      235
+     ],
+     [
+      "rivaud",
+      "B",
+      370,
+      772
+     ],
+     [
+      "drouet",
+      "B",
+      506,
+      772
+     ],
+     [
+      "ahq",
+      "B",
+      402,
+      303
+     ],
+     [
+      "kamensky",
+      "A",
+      1029,
+      81
+     ],
+     [
+      "milo",
+      "B",
+      1029,
+      81
+     ],
+     [
+      "kollo",
+      "B",
+      1305,
+      334
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 24
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 61.4
+    },
+    "worldMs": 8.9
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 186651,
+     "changed": 0.04,
+     "contrastMedian": 2.77,
+     "contrastP90": 3.75,
+     "share3to1": 0.393
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 24
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 63.2
+    },
+    "worldMs": 8.8
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 186651,
+     "changed": 0.0836,
+     "contrastMedian": 1.73,
+     "contrastP90": 3.29,
+     "share3to1": 0.167
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 24
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 65.1
+    },
+    "worldMs": 7.6
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 186651,
+     "changed": 0.0949,
+     "contrastMedian": 1.61,
+     "contrastP90": 3.23,
+     "share3to1": 0.147
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 24
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 65.6
+    },
+    "worldMs": 7.4
+   },
+   "G3": {
+    "meshes": 16,
+    "underShare": 0,
+    "diff": {
+     "samples": 186651,
+     "changed": 0.0701,
+     "contrastMedian": 1.61,
+     "contrastP90": 3.08,
+     "share3to1": 0.118
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 24
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 64.3
+    },
+    "worldMs": 8.1
+   }
+  },
+  "watch-selected": {
+   "clock": 585,
+   "factor": 4,
+   "census": {
+    "drawn": 31,
+    "inFree": 15,
+    "A": 6,
+    "B": 8,
+    "C": 1,
+    "interp": 15,
+    "foot": [
+     [
+      "sthilaire",
+      "A",
+      924,
+      400
+     ],
+     [
+      "vandamme",
+      "A",
+      872,
+      417
+     ],
+     [
+      "caffarelli",
+      "A",
+      872,
+      417
+     ],
+     [
+      "kellermann",
+      "B",
+      746,
+      145
+     ],
+     [
+      "nansouty",
+      "B",
+      318,
+      235
+     ],
+     [
+      "dhautpoul",
+      "B",
+      318,
+      235
+     ],
+     [
+      "walther",
+      "C",
+      318,
+      235
+     ],
+     [
+      "rivaud",
+      "B",
+      370,
+      772
+     ],
+     [
+      "drouet",
+      "B",
+      506,
+      772
+     ],
+     [
+      "ahq",
+      "B",
+      402,
+      303
+     ],
+     [
+      "kamensky",
+      "A",
+      1029,
+      81
+     ],
+     [
+      "milo",
+      "B",
+      1029,
+      81
+     ],
+     [
+      "kollo",
+      "B",
+      1305,
+      334
+     ],
+     [
+      "lich",
+      "A",
+      410,
+      1289
+     ],
+     [
+      "rg_cav",
+      "A",
+      696,
+      235
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0.0001,
+     "meanLum": 54
+    },
+    "worldMs": 8
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 270749,
+     "changed": 0.0362,
+     "contrastMedian": 2.8,
+     "contrastP90": 3.79,
+     "share3to1": 0.413
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0.0001,
+     "meanLum": 55.7
+    },
+    "worldMs": 14.4
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 270749,
+     "changed": 0.0936,
+     "contrastMedian": 1.71,
+     "contrastP90": 3.2,
+     "share3to1": 0.145
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0.0001,
+     "meanLum": 57.6
+    },
+    "worldMs": 21.9
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 270749,
+     "changed": 0.1134,
+     "contrastMedian": 1.66,
+     "contrastP90": 3.12,
+     "share3to1": 0.122
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 58.4
+    },
+    "worldMs": 7.4
+   },
+   "G3": {
+    "meshes": 17,
+    "underShare": 0,
+    "diff": {
+     "samples": 270749,
+     "changed": 0.0797,
+     "contrastMedian": 1.64,
+     "contrastP90": 3.05,
+     "share3to1": 0.11
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0.0001,
+     "meanLum": 56.9
+    },
+    "worldMs": 7.5
+   }
+  },
+  "hybrid-dimmed": {
+   "clock": 600,
+   "factor": 4,
+   "census": {
+    "drawn": 31,
+    "inFree": 18,
+    "A": 7,
+    "B": 9,
+    "C": 2,
+    "interp": 18,
+    "foot": [
+     [
+      "sthilaire",
+      "A",
+      924,
+      400
+     ],
+     [
+      "vandamme",
+      "A",
+      872,
+      417
+     ],
+     [
+      "caffarelli",
+      "A",
+      872,
+      417
+     ],
+     [
+      "kellermann",
+      "B",
+      746,
+      145
+     ],
+     [
+      "nansouty",
+      "B",
+      318,
+      235
+     ],
+     [
+      "dhautpoul",
+      "B",
+      318,
+      235
+     ],
+     [
+      "walther",
+      "C",
+      318,
+      235
+     ],
+     [
+      "rivaud",
+      "B",
+      370,
+      772
+     ],
+     [
+      "drouet",
+      "B",
+      506,
+      772
+     ],
+     [
+      "ahq",
+      "B",
+      402,
+      303
+     ],
+     [
+      "buxhowden",
+      "C",
+      440,
+      259
+     ],
+     [
+      "kamensky",
+      "A",
+      1029,
+      81
+     ],
+     [
+      "milo",
+      "B",
+      1029,
+      81
+     ],
+     [
+      "kollo",
+      "B",
+      1305,
+      334
+     ],
+     [
+      "lich",
+      "A",
+      410,
+      1289
+     ],
+     [
+      "bag",
+      "B",
+      1106,
+      417
+     ],
+     [
+      "rg_inf",
+      "A",
+      593,
+      676
+     ],
+     [
+      "rg_cav",
+      "A",
+      696,
+      235
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 58.6
+    },
+    "worldMs": 8.2
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 238967,
+     "changed": 0.0261,
+     "contrastMedian": 2.59,
+     "contrastP90": 3.81,
+     "share3to1": 0.386
+    },
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 60.5
+    },
+    "worldMs": 8.5
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 238967,
+     "changed": 0.1066,
+     "contrastMedian": 1.93,
+     "contrastP90": 2.98,
+     "share3to1": 0.095
+    },
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 63.1
+    },
+    "worldMs": 8
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 238967,
+     "changed": 0.1248,
+     "contrastMedian": 1.95,
+     "contrastP90": 2.97,
+     "share3to1": 0.092
+    },
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 64.3
+    },
+    "worldMs": 7.9
+   },
+   "G3": {
+    "meshes": 17,
+    "underShare": 0,
+    "diff": {
+     "samples": 238967,
+     "changed": 0.098,
+     "contrastMedian": 1.9,
+     "contrastP90": 2.84,
+     "share3to1": 0.066
+    },
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 62.7
+    },
+    "worldMs": 7.6
+   }
+  },
+  "ph8-overview-study": {
+   "clock": 880,
+   "factor": 4,
+   "census": {
+    "drawn": 32,
+    "inFree": 32,
+    "A": 14,
+    "B": 14,
+    "C": 4,
+    "interp": 27,
+    "foot": [
+     [
+      "gqg",
+      "B",
+      379,
+      316
+     ],
+     [
+      "heightguns",
+      "B",
+      1188,
+      311
+     ],
+     [
+      "sthilaire",
+      "B",
+      1012,
+      342
+     ],
+     [
+      "vandamme",
+      "A",
+      1012,
+      342
+     ],
+     [
+      "legrand",
+      "B",
+      1012,
+      342
+     ],
+     [
+      "friant",
+      "A",
+      740,
+      83
+     ],
+     [
+      "bourcier",
+      "C",
+      383,
+      206
+     ],
+     [
+      "caffarelli",
+      "A",
+      715,
+      592
+     ],
+     [
+      "suchet",
+      "B",
+      523,
+      592
+     ],
+     [
+      "santon",
+      "A",
+      404,
+      101
+     ],
+     [
+      "kellermann",
+      "A",
+      612,
+      206
+     ],
+     [
+      "nansouty",
+      "A",
+      383,
+      206
+     ],
+     [
+      "dhautpoul",
+      "B",
+      383,
+      206
+     ],
+     [
+      "walther",
+      "C",
+      383,
+      206
+     ],
+     [
+      "rivaud",
+      "B",
+      638,
+      417
+     ],
+     [
+      "drouet",
+      "A",
+      872,
+      417
+     ],
+     [
+      "guard_inf",
+      "A",
+      562,
+      125
+     ],
+     [
+      "guard_cav",
+      "A",
+      746,
+      145
+     ],
+     [
+      "c_gren",
+      "B",
+      740,
+      342
+     ],
+     [
+      "ahq",
+      "B",
+      250,
+      512
+     ],
+     [
+      "buxhowden",
+      "B",
+      250,
+      512
+     ],
+     [
+      "kienmayer",
+      "B",
+      488,
+      759
+     ],
+     [
+      "dok",
+      "A",
+      619,
+      759
+     ],
+     [
+      "lang",
+      "C",
+      619,
+      759
+     ],
+     [
+      "kamensky",
+      "C",
+      488,
+      184
+     ],
+     [
+      "prz",
+      "A",
+      1548,
+      584
+     ],
+     [
+      "milo",
+      "B",
+      488,
+      184
+     ],
+     [
+      "kollo",
+      "B",
+      619,
+      759
+     ],
+     [
+      "lich",
+      "A",
+      573,
+      920
+     ],
+     [
+      "bag",
+      "B",
+      730,
+      676
+     ],
+     [
+      "rg_inf",
+      "A",
+      488,
+      759
+     ],
+     [
+      "rg_cav",
+      "A",
+      573,
+      265
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 43.1
+    },
+    "worldMs": 8
+   },
+   "F": {
+    "meshes": 32,
+    "underShare": 0,
+    "diff": {
+     "samples": 184989,
+     "changed": 0.0132,
+     "contrastMedian": 2.47,
+     "contrastP90": 4.1,
+     "share3to1": 0.393
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 43.6
+    },
+    "worldMs": 11.2
+   },
+   "G1": {
+    "meshes": 32,
+    "underShare": 0,
+    "diff": {
+     "samples": 184989,
+     "changed": 0.0182,
+     "contrastMedian": 2.14,
+     "contrastP90": 3.93,
+     "share3to1": 0.299
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.66,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 43.7
+    },
+    "worldMs": 13.1
+   },
+   "G2": {
+    "meshes": 32,
+    "underShare": 0,
+    "diff": {
+     "samples": 184989,
+     "changed": 0.0277,
+     "contrastMedian": 1.99,
+     "contrastP90": 3.77,
+     "share3to1": 0.216
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.66,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44
+    },
+    "worldMs": 13.6
+   },
+   "G3": {
+    "meshes": 18,
+    "underShare": 0,
+    "diff": {
+     "samples": 184989,
+     "changed": 0.0117,
+     "contrastMedian": 1.86,
+     "contrastP90": 3.52,
+     "share3to1": 0.204
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.66,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 43.4
+    },
+    "worldMs": 9.8
+   }
+  },
+  "ph8-overview-watch": {
+   "clock": 880,
+   "factor": 4,
+   "census": {
+    "drawn": 32,
+    "inFree": 32,
+    "A": 14,
+    "B": 14,
+    "C": 4,
+    "interp": 27,
+    "foot": [
+     [
+      "gqg",
+      "B",
+      379,
+      316
+     ],
+     [
+      "heightguns",
+      "B",
+      1188,
+      311
+     ],
+     [
+      "sthilaire",
+      "B",
+      1012,
+      342
+     ],
+     [
+      "vandamme",
+      "A",
+      1012,
+      342
+     ],
+     [
+      "legrand",
+      "B",
+      1012,
+      342
+     ],
+     [
+      "friant",
+      "A",
+      740,
+      83
+     ],
+     [
+      "bourcier",
+      "C",
+      383,
+      206
+     ],
+     [
+      "caffarelli",
+      "A",
+      715,
+      592
+     ],
+     [
+      "suchet",
+      "B",
+      523,
+      592
+     ],
+     [
+      "santon",
+      "A",
+      404,
+      101
+     ],
+     [
+      "kellermann",
+      "A",
+      612,
+      206
+     ],
+     [
+      "nansouty",
+      "A",
+      383,
+      206
+     ],
+     [
+      "dhautpoul",
+      "B",
+      383,
+      206
+     ],
+     [
+      "walther",
+      "C",
+      383,
+      206
+     ],
+     [
+      "rivaud",
+      "B",
+      638,
+      417
+     ],
+     [
+      "drouet",
+      "A",
+      872,
+      417
+     ],
+     [
+      "guard_inf",
+      "A",
+      562,
+      125
+     ],
+     [
+      "guard_cav",
+      "A",
+      746,
+      145
+     ],
+     [
+      "c_gren",
+      "B",
+      740,
+      342
+     ],
+     [
+      "ahq",
+      "B",
+      250,
+      512
+     ],
+     [
+      "buxhowden",
+      "B",
+      250,
+      512
+     ],
+     [
+      "kienmayer",
+      "B",
+      488,
+      759
+     ],
+     [
+      "dok",
+      "A",
+      619,
+      759
+     ],
+     [
+      "lang",
+      "C",
+      619,
+      759
+     ],
+     [
+      "kamensky",
+      "C",
+      488,
+      184
+     ],
+     [
+      "prz",
+      "A",
+      1548,
+      584
+     ],
+     [
+      "milo",
+      "B",
+      488,
+      184
+     ],
+     [
+      "kollo",
+      "B",
+      619,
+      759
+     ],
+     [
+      "lich",
+      "A",
+      573,
+      920
+     ],
+     [
+      "bag",
+      "B",
+      730,
+      676
+     ],
+     [
+      "rg_inf",
+      "A",
+      488,
+      759
+     ],
+     [
+      "rg_cav",
+      "A",
+      573,
+      265
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 43
+    },
+    "worldMs": 7.9
+   },
+   "F": {
+    "meshes": 32,
+    "underShare": 0,
+    "diff": {
+     "samples": 293158,
+     "changed": 0.0137,
+     "contrastMedian": 2.61,
+     "contrastP90": 4.15,
+     "share3to1": 0.43
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 43.7
+    },
+    "worldMs": 8.2
+   },
+   "G1": {
+    "meshes": 32,
+    "underShare": 0,
+    "diff": {
+     "samples": 293158,
+     "changed": 0.0192,
+     "contrastMedian": 2.18,
+     "contrastP90": 3.99,
+     "share3to1": 0.322
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.54,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 43.8
+    },
+    "worldMs": 10.3
+   },
+   "G2": {
+    "meshes": 32,
+    "underShare": 0,
+    "diff": {
+     "samples": 293158,
+     "changed": 0.0297,
+     "contrastMedian": 1.99,
+     "contrastP90": 3.8,
+     "share3to1": 0.228
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.54,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.2
+    },
+    "worldMs": 10.5
+   },
+   "G3": {
+    "meshes": 18,
+    "underShare": 0,
+    "diff": {
+     "samples": 293158,
+     "changed": 0.0124,
+     "contrastMedian": 1.94,
+     "contrastP90": 3.63,
+     "share3to1": 0.238
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.54,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 43.5
+    },
+    "worldMs": 8.1
+   }
+  },
+  "overview-field@1x": {
+   "clock": 570,
+   "factor": 1,
+   "census": {
+    "drawn": 31,
+    "inFree": 30,
+    "A": 15,
+    "B": 12,
+    "C": 3,
+    "interp": 15,
+    "foot": [
+     [
+      "gqg",
+      "A",
+      379,
+      316
+     ],
+     [
+      "sthilaire",
+      "A",
+      924,
+      400
+     ],
+     [
+      "vandamme",
+      "A",
+      872,
+      417
+     ],
+     [
+      "legrand",
+      "B",
+      767,
+      517
+     ],
+     [
+      "friant",
+      "A",
+      677,
+      97
+     ],
+     [
+      "caffarelli",
+      "A",
+      872,
+      417
+     ],
+     [
+      "suchet",
+      "A",
+      638,
+      417
+     ],
+     [
+      "santon",
+      "A",
+      404,
+      101
+     ],
+     [
+      "kellermann",
+      "B",
+      746,
+      145
+     ],
+     [
+      "nansouty",
+      "B",
+      318,
+      235
+     ],
+     [
+      "dhautpoul",
+      "B",
+      318,
+      235
+     ],
+     [
+      "walther",
+      "C",
+      318,
+      235
+     ],
+     [
+      "rivaud",
+      "B",
+      370,
+      772
+     ],
+     [
+      "drouet",
+      "B",
+      506,
+      772
+     ],
+     [
+      "guard_inf",
+      "A",
+      434,
+      164
+     ],
+     [
+      "guard_cav",
+      "A",
+      507,
+      235
+     ],
+     [
+      "c_gren",
+      "B",
+      434,
+      676
+     ],
+     [
+      "ahq",
+      "B",
+      402,
+      303
+     ],
+     [
+      "buxhowden",
+      "C",
+      440,
+      259
+     ],
+     [
+      "kienmayer",
+      "B",
+      924,
+      400
+     ],
+     [
+      "dok",
+      "A",
+      1283,
+      342
+     ],
+     [
+      "lang",
+      "C",
+      1172,
+      400
+     ],
+     [
+      "kamensky",
+      "A",
+      1029,
+      81
+     ],
+     [
+      "prz",
+      "A",
+      1172,
+      400
+     ],
+     [
+      "milo",
+      "B",
+      1029,
+      81
+     ],
+     [
+      "kollo",
+      "B",
+      1305,
+      334
+     ],
+     [
+      "lich",
+      "A",
+      410,
+      1289
+     ],
+     [
+      "bag",
+      "B",
+      1106,
+      417
+     ],
+     [
+      "rg_inf",
+      "A",
+      593,
+      676
+     ],
+     [
+      "rg_cav",
+      "A",
+      696,
+      235
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 53.2
+    },
+    "worldMs": 1.9
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 177431,
+     "changed": 0.0014,
+     "contrastMedian": 1.05,
+     "contrastP90": 1.22,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 53.3
+    },
+    "worldMs": 3.5
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 177431,
+     "changed": 0.0312,
+     "contrastMedian": 1.6,
+     "contrastP90": 2.55,
+     "share3to1": 0.045
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 54
+    },
+    "worldMs": 2
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 177431,
+     "changed": 0.0483,
+     "contrastMedian": 1.65,
+     "contrastP90": 2.51,
+     "share3to1": 0.027
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 54.8
+    },
+    "worldMs": 2.7
+   },
+   "G3": {
+    "meshes": 16,
+    "underShare": 0,
+    "diff": {
+     "samples": 177431,
+     "changed": 0.0303,
+     "contrastMedian": 1.63,
+     "contrastP90": 2.56,
+     "share3to1": 0.047
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 54
+    },
+    "worldMs": 1.6
+   }
+  },
+  "overview-field@10.33x": {
+   "clock": 570,
+   "factor": "model",
+   "census": {
+    "drawn": 31,
+    "inFree": 30,
+    "A": 15,
+    "B": 12,
+    "C": 3,
+    "interp": 15,
+    "foot": [
+     [
+      "gqg",
+      "A",
+      379,
+      316
+     ],
+     [
+      "sthilaire",
+      "A",
+      924,
+      400
+     ],
+     [
+      "vandamme",
+      "A",
+      872,
+      417
+     ],
+     [
+      "legrand",
+      "B",
+      767,
+      517
+     ],
+     [
+      "friant",
+      "A",
+      677,
+      97
+     ],
+     [
+      "caffarelli",
+      "A",
+      872,
+      417
+     ],
+     [
+      "suchet",
+      "A",
+      638,
+      417
+     ],
+     [
+      "santon",
+      "A",
+      404,
+      101
+     ],
+     [
+      "kellermann",
+      "B",
+      746,
+      145
+     ],
+     [
+      "nansouty",
+      "B",
+      318,
+      235
+     ],
+     [
+      "dhautpoul",
+      "B",
+      318,
+      235
+     ],
+     [
+      "walther",
+      "C",
+      318,
+      235
+     ],
+     [
+      "rivaud",
+      "B",
+      370,
+      772
+     ],
+     [
+      "drouet",
+      "B",
+      506,
+      772
+     ],
+     [
+      "guard_inf",
+      "A",
+      434,
+      164
+     ],
+     [
+      "guard_cav",
+      "A",
+      507,
+      235
+     ],
+     [
+      "c_gren",
+      "B",
+      434,
+      676
+     ],
+     [
+      "ahq",
+      "B",
+      402,
+      303
+     ],
+     [
+      "buxhowden",
+      "C",
+      440,
+      259
+     ],
+     [
+      "kienmayer",
+      "B",
+      924,
+      400
+     ],
+     [
+      "dok",
+      "A",
+      1283,
+      342
+     ],
+     [
+      "lang",
+      "C",
+      1172,
+      400
+     ],
+     [
+      "kamensky",
+      "A",
+      1029,
+      81
+     ],
+     [
+      "prz",
+      "A",
+      1172,
+      400
+     ],
+     [
+      "milo",
+      "B",
+      1029,
+      81
+     ],
+     [
+      "kollo",
+      "B",
+      1305,
+      334
+     ],
+     [
+      "lich",
+      "A",
+      410,
+      1289
+     ],
+     [
+      "bag",
+      "B",
+      1106,
+      417
+     ],
+     [
+      "rg_inf",
+      "A",
+      593,
+      676
+     ],
+     [
+      "rg_cav",
+      "A",
+      696,
+      235
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 40
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 87.4
+    },
+    "worldMs": 10.5
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 177997,
+     "changed": 0.0119,
+     "contrastMedian": 1.66,
+     "contrastP90": 3.04,
+     "share3to1": 0.117
+    },
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 40
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 87.7
+    },
+    "worldMs": 8.6
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 177997,
+     "changed": 0.025,
+     "contrastMedian": 1.45,
+     "contrastP90": 2.64,
+     "share3to1": 0.041
+    },
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 40
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 88
+    },
+    "worldMs": 13.1
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 177997,
+     "changed": 0.0314,
+     "contrastMedian": 1.39,
+     "contrastP90": 2.54,
+     "share3to1": 0.033
+    },
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 40
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 88.3
+    },
+    "worldMs": 7.9
+   },
+   "G3": {
+    "meshes": 16,
+    "underShare": 0,
+    "diff": {
+     "samples": 177997,
+     "changed": 0.0201,
+     "contrastMedian": 1.43,
+     "contrastP90": 2.47,
+     "share3to1": 0.008
+    },
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 40
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 87.9
+    },
+    "worldMs": 7.4
+   }
+  },
+  "close-sokolnitz@1x": {
+   "clock": 500,
+   "factor": 1,
+   "census": {
+    "drawn": 31,
+    "inFree": 19,
+    "A": 8,
+    "B": 8,
+    "C": 3,
+    "interp": 16,
+    "foot": [
+     [
+      "sthilaire",
+      "A",
+      750,
+      509
+     ],
+     [
+      "vandamme",
+      "A",
+      750,
+      509
+     ],
+     [
+      "legrand",
+      "B",
+      924,
+      400
+     ],
+     [
+      "friant",
+      "B",
+      753,
+      81
+     ],
+     [
+      "caffarelli",
+      "A",
+      872,
+      417
+     ],
+     [
+      "nansouty",
+      "B",
+      318,
+      235
+     ],
+     [
+      "dhautpoul",
+      "B",
+      318,
+      235
+     ],
+     [
+      "walther",
+      "C",
+      318,
+      235
+     ],
+     [
+      "drouet",
+      "B",
+      593,
+      676
+     ],
+     [
+      "ahq",
+      "B",
+      379,
+      316
+     ],
+     [
+      "buxhowden",
+      "C",
+      440,
+      259
+     ],
+     [
+      "kienmayer",
+      "B",
+      924,
+      400
+     ],
+     [
+      "dok",
+      "A",
+      1283,
+      342
+     ],
+     [
+      "lang",
+      "C",
+      1283,
+      342
+     ],
+     [
+      "kamensky",
+      "B",
+      349,
+      258
+     ],
+     [
+      "prz",
+      "A",
+      1283,
+      342
+     ],
+     [
+      "milo",
+      "A",
+      733,
+      135
+     ],
+     [
+      "kollo",
+      "A",
+      929,
+      559
+     ],
+     [
+      "lich",
+      "A",
+      430,
+      1213
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 5,
+     "items": 66,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.72,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 118
+    },
+    "worldMs": 1.5
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 293066,
+     "changed": 0.0572,
+     "contrastMedian": 1.01,
+     "contrastP90": 1.02,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 66,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.74,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 117.9
+    },
+    "worldMs": 2.1
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 293066,
+     "changed": 0.1548,
+     "contrastMedian": 1.02,
+     "contrastP90": 1.07,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 66,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.74,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 118.2
+    },
+    "worldMs": 1.9
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 293066,
+     "changed": 0.208,
+     "contrastMedian": 1.02,
+     "contrastP90": 1.11,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 66,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.74,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 118.4
+    },
+    "worldMs": 1.9
+   },
+   "G3": {
+    "meshes": 16,
+    "underShare": 0,
+    "diff": {
+     "samples": 293066,
+     "changed": 0.1312,
+     "contrastMedian": 1.02,
+     "contrastP90": 1.08,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 66,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.72,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 118.3
+    },
+    "worldMs": 1.8
+   }
+  },
+  "close-sokolnitz@10.33x": {
+   "clock": 500,
+   "factor": "model",
+   "census": {
+    "drawn": 31,
+    "inFree": 11,
+    "A": 4,
+    "B": 5,
+    "C": 2,
+    "interp": 9,
+    "foot": [
+     [
+      "sthilaire",
+      "A",
+      750,
+      509
+     ],
+     [
+      "vandamme",
+      "A",
+      750,
+      509
+     ],
+     [
+      "legrand",
+      "B",
+      924,
+      400
+     ],
+     [
+      "friant",
+      "B",
+      753,
+      81
+     ],
+     [
+      "drouet",
+      "B",
+      593,
+      676
+     ],
+     [
+      "buxhowden",
+      "C",
+      440,
+      259
+     ],
+     [
+      "kienmayer",
+      "B",
+      924,
+      400
+     ],
+     [
+      "dok",
+      "A",
+      1283,
+      342
+     ],
+     [
+      "lang",
+      "C",
+      1283,
+      342
+     ],
+     [
+      "kamensky",
+      "B",
+      349,
+      258
+     ],
+     [
+      "prz",
+      "A",
+      1283,
+      342
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 20
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 146.1
+    },
+    "worldMs": 10.3
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 295136,
+     "changed": 0.0206,
+     "contrastMedian": 1.01,
+     "contrastP90": 1.12,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 20
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 146
+    },
+    "worldMs": 9.1
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0.0005,
+    "diff": {
+     "samples": 295136,
+     "changed": 0.0663,
+     "contrastMedian": 1.01,
+     "contrastP90": 1.05,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 20
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 146.1
+    },
+    "worldMs": 7.8
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 295136,
+     "changed": 0.0942,
+     "contrastMedian": 1.01,
+     "contrastP90": 1.04,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 20
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 146
+    },
+    "worldMs": 7.9
+   },
+   "G3": {
+    "meshes": 16,
+    "underShare": 0.0008,
+    "diff": {
+     "samples": 295136,
+     "changed": 0.0631,
+     "contrastMedian": 1.02,
+     "contrastP90": 1.05,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 20
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 146.1
+    },
+    "worldMs": 7.2
+   }
+  },
+  "pratzen-low@1x": {
+   "clock": 590,
+   "factor": 1,
+   "census": {
+    "drawn": 31,
+    "inFree": 12,
+    "A": 6,
+    "B": 4,
+    "C": 2,
+    "interp": 11,
+    "foot": [
+     [
+      "sthilaire",
+      "A",
+      924,
+      400
+     ],
+     [
+      "vandamme",
+      "A",
+      872,
+      417
+     ],
+     [
+      "legrand",
+      "B",
+      767,
+      517
+     ],
+     [
+      "ahq",
+      "B",
+      402,
+      303
+     ],
+     [
+      "buxhowden",
+      "C",
+      440,
+      259
+     ],
+     [
+      "lang",
+      "C",
+      1172,
+      400
+     ],
+     [
+      "kamensky",
+      "A",
+      1029,
+      81
+     ],
+     [
+      "prz",
+      "A",
+      1172,
+      400
+     ],
+     [
+      "milo",
+      "B",
+      1029,
+      81
+     ],
+     [
+      "kollo",
+      "B",
+      1305,
+      334
+     ],
+     [
+      "rg_inf",
+      "A",
+      593,
+      676
+     ],
+     [
+      "rg_cav",
+      "A",
+      696,
+      235
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 71.5
+    },
+    "worldMs": 1.7
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 291786,
+     "changed": 0.002,
+     "contrastMedian": 1.05,
+     "contrastP90": 1.21,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 71.9
+    },
+    "worldMs": 1.7
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 291786,
+     "changed": 0.1208,
+     "contrastMedian": 1.74,
+     "contrastP90": 2.55,
+     "share3to1": 0.063
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 75.5
+    },
+    "worldMs": 2.9
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 291786,
+     "changed": 0.1188,
+     "contrastMedian": 1.72,
+     "contrastP90": 2.58,
+     "share3to1": 0.056
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 75.4
+    },
+    "worldMs": 1.6
+   },
+   "G3": {
+    "meshes": 17,
+    "underShare": 0,
+    "diff": {
+     "samples": 291786,
+     "changed": 0.1192,
+     "contrastMedian": 1.75,
+     "contrastP90": 2.56,
+     "share3to1": 0.064
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 75.4
+    },
+    "worldMs": 1.9
+   }
+  },
+  "pratzen-low@10.33x": {
+   "clock": 590,
+   "factor": "model",
+   "census": {
+    "drawn": 31,
+    "inFree": 8,
+    "A": 5,
+    "B": 3,
+    "C": 0,
+    "interp": 8,
+    "foot": [
+     [
+      "sthilaire",
+      "A",
+      924,
+      400
+     ],
+     [
+      "vandamme",
+      "A",
+      872,
+      417
+     ],
+     [
+      "ahq",
+      "B",
+      402,
+      303
+     ],
+     [
+      "kamensky",
+      "A",
+      1029,
+      81
+     ],
+     [
+      "milo",
+      "B",
+      1029,
+      81
+     ],
+     [
+      "kollo",
+      "B",
+      1305,
+      334
+     ],
+     [
+      "rg_inf",
+      "A",
+      593,
+      676
+     ],
+     [
+      "rg_cav",
+      "A",
+      696,
+      235
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 109.2
+    },
+    "worldMs": 11.4
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 293453,
+     "changed": 0.0106,
+     "contrastMedian": 2.2,
+     "contrastP90": 3.88,
+     "share3to1": 0.337
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 109.7
+    },
+    "worldMs": 10.5
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0.0001,
+    "diff": {
+     "samples": 293453,
+     "changed": 0.0271,
+     "contrastMedian": 1.32,
+     "contrastP90": 3.36,
+     "share3to1": 0.132
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 110
+    },
+    "worldMs": 8.8
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0.0001,
+    "diff": {
+     "samples": 293453,
+     "changed": 0.0238,
+     "contrastMedian": 1.35,
+     "contrastP90": 3.47,
+     "share3to1": 0.15
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 109.9
+    },
+    "worldMs": 6.9
+   },
+   "G3": {
+    "meshes": 17,
+    "underShare": 0.0002,
+    "diff": {
+     "samples": 293453,
+     "changed": 0.0178,
+     "contrastMedian": 1.24,
+     "contrastP90": 1.67,
+     "share3to1": 0.002
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 109.6
+    },
+    "worldMs": 10
+   }
+  },
+  "ph8-overview-watch@1x": {
+   "clock": 880,
+   "factor": 1,
+   "census": {
+    "drawn": 32,
+    "inFree": 32,
+    "A": 14,
+    "B": 14,
+    "C": 4,
+    "interp": 27,
+    "foot": [
+     [
+      "gqg",
+      "B",
+      379,
+      316
+     ],
+     [
+      "heightguns",
+      "B",
+      1188,
+      311
+     ],
+     [
+      "sthilaire",
+      "B",
+      1012,
+      342
+     ],
+     [
+      "vandamme",
+      "A",
+      1012,
+      342
+     ],
+     [
+      "legrand",
+      "B",
+      1012,
+      342
+     ],
+     [
+      "friant",
+      "A",
+      740,
+      83
+     ],
+     [
+      "bourcier",
+      "C",
+      383,
+      206
+     ],
+     [
+      "caffarelli",
+      "A",
+      715,
+      592
+     ],
+     [
+      "suchet",
+      "B",
+      523,
+      592
+     ],
+     [
+      "santon",
+      "A",
+      404,
+      101
+     ],
+     [
+      "kellermann",
+      "A",
+      612,
+      206
+     ],
+     [
+      "nansouty",
+      "A",
+      383,
+      206
+     ],
+     [
+      "dhautpoul",
+      "B",
+      383,
+      206
+     ],
+     [
+      "walther",
+      "C",
+      383,
+      206
+     ],
+     [
+      "rivaud",
+      "B",
+      638,
+      417
+     ],
+     [
+      "drouet",
+      "A",
+      872,
+      417
+     ],
+     [
+      "guard_inf",
+      "A",
+      562,
+      125
+     ],
+     [
+      "guard_cav",
+      "A",
+      746,
+      145
+     ],
+     [
+      "c_gren",
+      "B",
+      740,
+      342
+     ],
+     [
+      "ahq",
+      "B",
+      250,
+      512
+     ],
+     [
+      "buxhowden",
+      "B",
+      250,
+      512
+     ],
+     [
+      "kienmayer",
+      "B",
+      488,
+      759
+     ],
+     [
+      "dok",
+      "A",
+      619,
+      759
+     ],
+     [
+      "lang",
+      "C",
+      619,
+      759
+     ],
+     [
+      "kamensky",
+      "C",
+      488,
+      184
+     ],
+     [
+      "prz",
+      "A",
+      1548,
+      584
+     ],
+     [
+      "milo",
+      "B",
+      488,
+      184
+     ],
+     [
+      "kollo",
+      "B",
+      619,
+      759
+     ],
+     [
+      "lich",
+      "A",
+      573,
+      920
+     ],
+     [
+      "bag",
+      "B",
+      730,
+      676
+     ],
+     [
+      "rg_inf",
+      "A",
+      488,
+      759
+     ],
+     [
+      "rg_cav",
+      "A",
+      573,
+      265
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.77,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 32
+    },
+    "worldMs": 2.8
+   },
+   "F": {
+    "meshes": 32,
+    "underShare": 0,
+    "diff": {
+     "samples": 293172,
+     "changed": 0.0008,
+     "contrastMedian": 1.04,
+     "contrastP90": 1.14,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.77,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 32.1
+    },
+    "worldMs": 3.4
+   },
+   "G1": {
+    "meshes": 32,
+    "underShare": 0,
+    "diff": {
+     "samples": 293172,
+     "changed": 0.0082,
+     "contrastMedian": 1.45,
+     "contrastP90": 3.15,
+     "share3to1": 0.122
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 32.3
+    },
+    "worldMs": 1.9
+   },
+   "G2": {
+    "meshes": 32,
+    "underShare": 0,
+    "diff": {
+     "samples": 293172,
+     "changed": 0.0207,
+     "contrastMedian": 1.57,
+     "contrastP90": 2.95,
+     "share3to1": 0.09
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 32.7
+    },
+    "worldMs": 2
+   },
+   "G3": {
+    "meshes": 18,
+    "underShare": 0,
+    "diff": {
+     "samples": 293172,
+     "changed": 0.0081,
+     "contrastMedian": 1.46,
+     "contrastP90": 3.15,
+     "share3to1": 0.124
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 32.3
+    },
+    "worldMs": 1.7
+   }
+  },
+  "ph8-overview-watch@10.33x": {
+   "clock": 880,
+   "factor": "model",
+   "census": {
+    "drawn": 32,
+    "inFree": 32,
+    "A": 14,
+    "B": 14,
+    "C": 4,
+    "interp": 27,
+    "foot": [
+     [
+      "gqg",
+      "B",
+      379,
+      316
+     ],
+     [
+      "heightguns",
+      "B",
+      1188,
+      311
+     ],
+     [
+      "sthilaire",
+      "B",
+      1012,
+      342
+     ],
+     [
+      "vandamme",
+      "A",
+      1012,
+      342
+     ],
+     [
+      "legrand",
+      "B",
+      1012,
+      342
+     ],
+     [
+      "friant",
+      "A",
+      740,
+      83
+     ],
+     [
+      "bourcier",
+      "C",
+      383,
+      206
+     ],
+     [
+      "caffarelli",
+      "A",
+      715,
+      592
+     ],
+     [
+      "suchet",
+      "B",
+      523,
+      592
+     ],
+     [
+      "santon",
+      "A",
+      404,
+      101
+     ],
+     [
+      "kellermann",
+      "A",
+      612,
+      206
+     ],
+     [
+      "nansouty",
+      "A",
+      383,
+      206
+     ],
+     [
+      "dhautpoul",
+      "B",
+      383,
+      206
+     ],
+     [
+      "walther",
+      "C",
+      383,
+      206
+     ],
+     [
+      "rivaud",
+      "B",
+      638,
+      417
+     ],
+     [
+      "drouet",
+      "A",
+      872,
+      417
+     ],
+     [
+      "guard_inf",
+      "A",
+      562,
+      125
+     ],
+     [
+      "guard_cav",
+      "A",
+      746,
+      145
+     ],
+     [
+      "c_gren",
+      "B",
+      740,
+      342
+     ],
+     [
+      "ahq",
+      "B",
+      250,
+      512
+     ],
+     [
+      "buxhowden",
+      "B",
+      250,
+      512
+     ],
+     [
+      "kienmayer",
+      "B",
+      488,
+      759
+     ],
+     [
+      "dok",
+      "A",
+      619,
+      759
+     ],
+     [
+      "lang",
+      "C",
+      619,
+      759
+     ],
+     [
+      "kamensky",
+      "C",
+      488,
+      184
+     ],
+     [
+      "prz",
+      "A",
+      1548,
+      584
+     ],
+     [
+      "milo",
+      "B",
+      488,
+      184
+     ],
+     [
+      "kollo",
+      "B",
+      619,
+      759
+     ],
+     [
+      "lich",
+      "A",
+      573,
+      920
+     ],
+     [
+      "bag",
+      "B",
+      730,
+      676
+     ],
+     [
+      "rg_inf",
+      "A",
+      488,
+      759
+     ],
+     [
+      "rg_cav",
+      "A",
+      573,
+      265
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.63,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 51.2
+    },
+    "worldMs": 8
+   },
+   "F": {
+    "meshes": 32,
+    "underShare": 0,
+    "diff": {
+     "samples": 293284,
+     "changed": 0.0134,
+     "contrastMedian": 2.56,
+     "contrastP90": 3.84,
+     "share3to1": 0.405
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.62,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 51.9
+    },
+    "worldMs": 7.6
+   },
+   "G1": {
+    "meshes": 32,
+    "underShare": 0,
+    "diff": {
+     "samples": 293284,
+     "changed": 0.0188,
+     "contrastMedian": 2.14,
+     "contrastP90": 3.71,
+     "share3to1": 0.282
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.57,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 52
+    },
+    "worldMs": 8.6
+   },
+   "G2": {
+    "meshes": 32,
+    "underShare": 0.0005,
+    "diff": {
+     "samples": 293284,
+     "changed": 0.0284,
+     "contrastMedian": 1.95,
+     "contrastP90": 3.55,
+     "share3to1": 0.199
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.57,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 52.3
+    },
+    "worldMs": 9.8
+   },
+   "G3": {
+    "meshes": 18,
+    "underShare": 0,
+    "diff": {
+     "samples": 293284,
+     "changed": 0.0119,
+     "contrastMedian": 1.86,
+     "contrastP90": 3.34,
+     "share3to1": 0.175
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.57,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 51.7
+    },
+    "worldMs": 13.5
+   }
+  },
+  "pratzen-low-1x": {
+   "clock": 590,
+   "factor": 1,
+   "census": {
+    "drawn": 31,
+    "inFree": 12,
+    "A": 6,
+    "B": 4,
+    "C": 2,
+    "interp": 11,
+    "foot": [
+     [
+      "sthilaire",
+      "A",
+      924,
+      400
+     ],
+     [
+      "vandamme",
+      "A",
+      872,
+      417
+     ],
+     [
+      "legrand",
+      "B",
+      767,
+      517
+     ],
+     [
+      "ahq",
+      "B",
+      402,
+      303
+     ],
+     [
+      "buxhowden",
+      "C",
+      440,
+      259
+     ],
+     [
+      "lang",
+      "C",
+      1172,
+      400
+     ],
+     [
+      "kamensky",
+      "A",
+      1029,
+      81
+     ],
+     [
+      "prz",
+      "A",
+      1172,
+      400
+     ],
+     [
+      "milo",
+      "B",
+      1029,
+      81
+     ],
+     [
+      "kollo",
+      "B",
+      1305,
+      334
+     ],
+     [
+      "rg_inf",
+      "A",
+      593,
+      676
+     ],
+     [
+      "rg_cav",
+      "A",
+      696,
+      235
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 71.5
+    },
+    "worldMs": 1.9
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 291786,
+     "changed": 0.002,
+     "contrastMedian": 1.05,
+     "contrastP90": 1.21,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 71.9
+    },
+    "worldMs": 1.7
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 291786,
+     "changed": 0.1208,
+     "contrastMedian": 1.74,
+     "contrastP90": 2.55,
+     "share3to1": 0.063
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 75.5
+    },
+    "worldMs": 2.9
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 291786,
+     "changed": 0.1188,
+     "contrastMedian": 1.72,
+     "contrastP90": 2.58,
+     "share3to1": 0.056
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 75.4
+    },
+    "worldMs": 2.1
+   },
+   "G3": {
+    "meshes": 17,
+    "underShare": 0,
+    "diff": {
+     "samples": 291786,
+     "changed": 0.1192,
+     "contrastMedian": 1.75,
+     "contrastP90": 2.56,
+     "share3to1": 0.064
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 75.4
+    },
+    "worldMs": 1.5
+   }
+  },
+  "pratzen-low-10x": {
+   "clock": 590,
+   "factor": "model",
+   "census": {
+    "drawn": 31,
+    "inFree": 8,
+    "A": 5,
+    "B": 3,
+    "C": 0,
+    "interp": 8,
+    "foot": [
+     [
+      "sthilaire",
+      "A",
+      924,
+      400
+     ],
+     [
+      "vandamme",
+      "A",
+      872,
+      417
+     ],
+     [
+      "ahq",
+      "B",
+      402,
+      303
+     ],
+     [
+      "kamensky",
+      "A",
+      1029,
+      81
+     ],
+     [
+      "milo",
+      "B",
+      1029,
+      81
+     ],
+     [
+      "kollo",
+      "B",
+      1305,
+      334
+     ],
+     [
+      "rg_inf",
+      "A",
+      593,
+      676
+     ],
+     [
+      "rg_cav",
+      "A",
+      696,
+      235
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 109.2
+    },
+    "worldMs": 7.4
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 293453,
+     "changed": 0.0106,
+     "contrastMedian": 2.2,
+     "contrastP90": 3.88,
+     "share3to1": 0.337
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 109.7
+    },
+    "worldMs": 8.7
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0.0001,
+    "diff": {
+     "samples": 293453,
+     "changed": 0.0271,
+     "contrastMedian": 1.32,
+     "contrastP90": 3.36,
+     "share3to1": 0.132
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 110
+    },
+    "worldMs": 8.1
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0.0001,
+    "diff": {
+     "samples": 293453,
+     "changed": 0.0238,
+     "contrastMedian": 1.35,
+     "contrastP90": 3.47,
+     "share3to1": 0.15
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 109.9
+    },
+    "worldMs": 8.7
+   },
+   "G3": {
+    "meshes": 17,
+    "underShare": 0.0002,
+    "diff": {
+     "samples": 293453,
+     "changed": 0.0178,
+     "contrastMedian": 1.24,
+     "contrastP90": 1.67,
+     "share3to1": 0.002
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 109.6
+    },
+    "worldMs": 7.1
+   }
+  },
+  "paper-north-up": {
+   "clock": 570,
+   "factor": 4,
+   "census": {
+    "drawn": 31,
+    "inFree": 31,
+    "A": 15,
+    "B": 12,
+    "C": 4,
+    "interp": 16,
+    "foot": [
+     [
+      "gqg",
+      "A",
+      379,
+      316
+     ],
+     [
+      "sthilaire",
+      "A",
+      924,
+      400
+     ],
+     [
+      "vandamme",
+      "A",
+      872,
+      417
+     ],
+     [
+      "legrand",
+      "B",
+      767,
+      517
+     ],
+     [
+      "friant",
+      "A",
+      677,
+      97
+     ],
+     [
+      "bourcier",
+      "C",
+      468,
+      145
+     ],
+     [
+      "caffarelli",
+      "A",
+      872,
+      417
+     ],
+     [
+      "suchet",
+      "A",
+      638,
+      417
+     ],
+     [
+      "santon",
+      "A",
+      404,
+      101
+     ],
+     [
+      "kellermann",
+      "B",
+      746,
+      145
+     ],
+     [
+      "nansouty",
+      "B",
+      318,
+      235
+     ],
+     [
+      "dhautpoul",
+      "B",
+      318,
+      235
+     ],
+     [
+      "walther",
+      "C",
+      318,
+      235
+     ],
+     [
+      "rivaud",
+      "B",
+      370,
+      772
+     ],
+     [
+      "drouet",
+      "B",
+      506,
+      772
+     ],
+     [
+      "guard_inf",
+      "A",
+      434,
+      164
+     ],
+     [
+      "guard_cav",
+      "A",
+      507,
+      235
+     ],
+     [
+      "c_gren",
+      "B",
+      434,
+      676
+     ],
+     [
+      "ahq",
+      "B",
+      402,
+      303
+     ],
+     [
+      "buxhowden",
+      "C",
+      440,
+      259
+     ],
+     [
+      "kienmayer",
+      "B",
+      924,
+      400
+     ],
+     [
+      "dok",
+      "A",
+      1283,
+      342
+     ],
+     [
+      "lang",
+      "C",
+      1172,
+      400
+     ],
+     [
+      "kamensky",
+      "A",
+      1029,
+      81
+     ],
+     [
+      "prz",
+      "A",
+      1172,
+      400
+     ],
+     [
+      "milo",
+      "B",
+      1029,
+      81
+     ],
+     [
+      "kollo",
+      "B",
+      1305,
+      334
+     ],
+     [
+      "lich",
+      "A",
+      410,
+      1289
+     ],
+     [
+      "bag",
+      "B",
+      1106,
+      417
+     ],
+     [
+      "rg_inf",
+      "A",
+      593,
+      676
+     ],
+     [
+      "rg_cav",
+      "A",
+      696,
+      235
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 146
+    },
+    "worldMs": 1.3
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 161726,
+     "changed": 0.0028,
+     "contrastMedian": 1.23,
+     "contrastP90": 1.29,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.9
+    },
+    "worldMs": 1.3
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 161726,
+     "changed": 0.004,
+     "contrastMedian": 1.14,
+     "contrastP90": 1.27,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.9
+    },
+    "worldMs": 1.4
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 161726,
+     "changed": 0.0044,
+     "contrastMedian": 1.13,
+     "contrastP90": 1.25,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.9
+    },
+    "worldMs": 2.2
+   },
+   "G3": {
+    "meshes": 16,
+    "underShare": 0,
+    "diff": {
+     "samples": 161726,
+     "changed": 0.0029,
+     "contrastMedian": 1.12,
+     "contrastP90": 1.24,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 146
+    },
+    "worldMs": 1.7
+   }
+  },
+  "paper-close": {
+   "clock": 500,
+   "factor": 4,
+   "census": {
+    "drawn": 31,
+    "inFree": 3,
+    "A": 1,
+    "B": 1,
+    "C": 1,
+    "interp": 3,
+    "foot": [
+     [
+      "legrand",
+      "B",
+      767,
+      517
+     ],
+     [
+      "lang",
+      "C",
+      1172,
+      400
+     ],
+     [
+      "prz",
+      "A",
+      1172,
+      400
+     ]
+    ]
+   },
+   "base": {
+    "layer": {
+     "dropped": 1,
+     "items": 65,
+     "placed": 5
+    },
+    "contrast": {
+     "min": 5.1,
+     "belowAA": 0,
+     "texts": 19
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 194.7
+    },
+    "worldMs": 1
+   },
+   "F": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 185342,
+     "changed": 0.1528,
+     "contrastMedian": 1.28,
+     "contrastP90": 1.61,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 1,
+     "items": 65,
+     "placed": 5
+    },
+    "contrast": {
+     "min": 5.1,
+     "belowAA": 0,
+     "texts": 19
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 191.1
+    },
+    "worldMs": 1.2
+   },
+   "G1": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 185342,
+     "changed": 0.3936,
+     "contrastMedian": 1.1,
+     "contrastP90": 1.37,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 1,
+     "items": 65,
+     "placed": 5
+    },
+    "contrast": {
+     "min": 5.1,
+     "belowAA": 0,
+     "texts": 19
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 189.8
+    },
+    "worldMs": 1.8
+   },
+   "G2": {
+    "meshes": 31,
+    "underShare": 0,
+    "diff": {
+     "samples": 185342,
+     "changed": 0.3631,
+     "contrastMedian": 1.12,
+     "contrastP90": 1.35,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 1,
+     "items": 65,
+     "placed": 5
+    },
+    "contrast": {
+     "min": 5.1,
+     "belowAA": 0,
+     "texts": 19
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 189.9
+    },
+    "worldMs": 1.3
+   },
+   "G3": {
+    "meshes": 16,
+    "underShare": 0,
+    "diff": {
+     "samples": 185342,
+     "changed": 0.4057,
+     "contrastMedian": 1.1,
+     "contrastP90": 1.2,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 1,
+     "items": 65,
+     "placed": 5
+    },
+    "contrast": {
+     "min": 5.1,
+     "belowAA": 0,
+     "texts": 19
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 190.9
+    },
+    "worldMs": 1.3
+   }
+  }
+ }
+}

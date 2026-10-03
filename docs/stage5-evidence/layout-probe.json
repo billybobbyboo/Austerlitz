@@ -1,0 +1,1300 @@
+{
+ "html": "austerlitz-command-map.html",
+ "when": "2026-10-03T14:07:11.228Z",
+ "timeline": {
+  "1600x900:study": {
+   "railW": 1572,
+   "pxPerMin": 1.871,
+   "timebarH": 90.5,
+   "eventRowH": 22,
+   "slackTo92": 1.5,
+   "intervals": 11,
+   "lanes": 4,
+   "shortestBarPx": 37.4,
+   "assign": [
+    [
+     "columns-move",
+     0
+    ],
+    [
+     "raigern",
+     1
+    ],
+    [
+     "counter-march",
+     2
+    ],
+    [
+     "davout",
+     0
+    ],
+    [
+     "decision",
+     0
+    ],
+    [
+     "soult",
+     1
+    ],
+    [
+     "guard-attack",
+     0
+    ],
+    [
+     "guard-broken",
+     1
+    ],
+    [
+     "buxhowden-blind",
+     2
+    ],
+    [
+     "hq-forward",
+     3
+    ],
+    [
+     "wheel",
+     2
+    ]
+   ],
+   "barContrast": {
+    "fr": 5.26,
+    "al": 5.69,
+    "ground": {
+     "c": [
+      10,
+      14,
+      19
+     ],
+     "a": 0.96
+    }
+   },
+   "markerFromDwellPx": [
+    [
+     "columns-move",
+     168.4
+    ],
+    [
+     "raigern",
+     42.1
+    ],
+    [
+     "counter-march",
+     210.5
+    ],
+    [
+     "davout",
+     28.1
+    ],
+    [
+     "decision",
+     18.7
+    ],
+    [
+     "soult",
+     28.1
+    ],
+    [
+     "guard-attack",
+     112.3
+    ],
+    [
+     "guard-broken",
+     112.3
+    ],
+    [
+     "buxhowden-blind",
+     56.1
+    ],
+    [
+     "hq-forward",
+     37.4
+    ],
+    [
+     "wheel",
+     56.1
+    ]
+   ],
+   "withBars": {
+    "lanes": 4,
+    "band": [
+     877,
+     886.5
+    ],
+    "numeralsTop": 889.5,
+    "barsOverNumerals": 0,
+    "barsUnderAMarker": 11,
+    "timebarH": 90.5,
+    "timebarH0": 90.5
+   }
+  },
+  "1600x900:watch": {
+   "railW": 1572,
+   "pxPerMin": 1.871,
+   "timebarH": 92,
+   "eventRowH": 22,
+   "slackTo92": 0,
+   "intervals": 11,
+   "lanes": 4,
+   "shortestBarPx": 37.4,
+   "assign": [
+    [
+     "columns-move",
+     0
+    ],
+    [
+     "raigern",
+     1
+    ],
+    [
+     "counter-march",
+     2
+    ],
+    [
+     "davout",
+     0
+    ],
+    [
+     "decision",
+     0
+    ],
+    [
+     "soult",
+     1
+    ],
+    [
+     "guard-attack",
+     0
+    ],
+    [
+     "guard-broken",
+     1
+    ],
+    [
+     "buxhowden-blind",
+     2
+    ],
+    [
+     "hq-forward",
+     3
+    ],
+    [
+     "wheel",
+     2
+    ]
+   ],
+   "barContrast": {
+    "fr": 5.26,
+    "al": 5.69,
+    "ground": {
+     "c": [
+      10,
+      14,
+      19
+     ],
+     "a": 0.96
+    }
+   },
+   "markerFromDwellPx": [
+    [
+     "columns-move",
+     168.4
+    ],
+    [
+     "raigern",
+     42.1
+    ],
+    [
+     "counter-march",
+     210.5
+    ],
+    [
+     "davout",
+     28.1
+    ],
+    [
+     "decision",
+     18.7
+    ],
+    [
+     "soult",
+     28.1
+    ],
+    [
+     "guard-attack",
+     112.3
+    ],
+    [
+     "guard-broken",
+     112.3
+    ],
+    [
+     "buxhowden-blind",
+     56.1
+    ],
+    [
+     "hq-forward",
+     37.4
+    ],
+    [
+     "wheel",
+     56.1
+    ]
+   ],
+   "withBars": {
+    "lanes": 4,
+    "band": [
+     877,
+     886.5
+    ],
+    "numeralsTop": 889.5,
+    "barsOverNumerals": 0,
+    "barsUnderAMarker": 11,
+    "timebarH": 92,
+    "timebarH0": 92
+   }
+  },
+  "1280x720:study": {
+   "railW": 1252,
+   "pxPerMin": 1.49,
+   "timebarH": 90.5,
+   "eventRowH": 22,
+   "slackTo92": 1.5,
+   "intervals": 11,
+   "lanes": 4,
+   "shortestBarPx": 29.8,
+   "assign": [
+    [
+     "columns-move",
+     0
+    ],
+    [
+     "raigern",
+     1
+    ],
+    [
+     "counter-march",
+     2
+    ],
+    [
+     "davout",
+     0
+    ],
+    [
+     "decision",
+     0
+    ],
+    [
+     "soult",
+     1
+    ],
+    [
+     "guard-attack",
+     0
+    ],
+    [
+     "guard-broken",
+     1
+    ],
+    [
+     "buxhowden-blind",
+     2
+    ],
+    [
+     "hq-forward",
+     3
+    ],
+    [
+     "wheel",
+     2
+    ]
+   ],
+   "barContrast": {
+    "fr": 5.26,
+    "al": 5.69,
+    "ground": {
+     "c": [
+      10,
+      14,
+      19
+     ],
+     "a": 0.96
+    }
+   },
+   "markerFromDwellPx": [
+    [
+     "columns-move",
+     134.1
+    ],
+    [
+     "raigern",
+     33.5
+    ],
+    [
+     "counter-march",
+     167.7
+    ],
+    [
+     "davout",
+     22.4
+    ],
+    [
+     "decision",
+     14.9
+    ],
+    [
+     "soult",
+     22.4
+    ],
+    [
+     "guard-attack",
+     89.4
+    ],
+    [
+     "guard-broken",
+     89.4
+    ],
+    [
+     "buxhowden-blind",
+     44.7
+    ],
+    [
+     "hq-forward",
+     29.8
+    ],
+    [
+     "wheel",
+     44.7
+    ]
+   ],
+   "withBars": {
+    "lanes": 4,
+    "band": [
+     697,
+     706.5
+    ],
+    "numeralsTop": 709.5,
+    "barsOverNumerals": 0,
+    "barsUnderAMarker": 11,
+    "timebarH": 90.5,
+    "timebarH0": 90.5
+   }
+  },
+  "1280x720:watch": {
+   "railW": 1252,
+   "pxPerMin": 1.49,
+   "timebarH": 92,
+   "eventRowH": 22,
+   "slackTo92": 0,
+   "intervals": 11,
+   "lanes": 4,
+   "shortestBarPx": 29.8,
+   "assign": [
+    [
+     "columns-move",
+     0
+    ],
+    [
+     "raigern",
+     1
+    ],
+    [
+     "counter-march",
+     2
+    ],
+    [
+     "davout",
+     0
+    ],
+    [
+     "decision",
+     0
+    ],
+    [
+     "soult",
+     1
+    ],
+    [
+     "guard-attack",
+     0
+    ],
+    [
+     "guard-broken",
+     1
+    ],
+    [
+     "buxhowden-blind",
+     2
+    ],
+    [
+     "hq-forward",
+     3
+    ],
+    [
+     "wheel",
+     2
+    ]
+   ],
+   "barContrast": {
+    "fr": 5.26,
+    "al": 5.69,
+    "ground": {
+     "c": [
+      10,
+      14,
+      19
+     ],
+     "a": 0.96
+    }
+   },
+   "markerFromDwellPx": [
+    [
+     "columns-move",
+     134.1
+    ],
+    [
+     "raigern",
+     33.5
+    ],
+    [
+     "counter-march",
+     167.7
+    ],
+    [
+     "davout",
+     22.4
+    ],
+    [
+     "decision",
+     14.9
+    ],
+    [
+     "soult",
+     22.4
+    ],
+    [
+     "guard-attack",
+     89.4
+    ],
+    [
+     "guard-broken",
+     89.4
+    ],
+    [
+     "buxhowden-blind",
+     44.7
+    ],
+    [
+     "hq-forward",
+     29.8
+    ],
+    [
+     "wheel",
+     44.7
+    ]
+   ],
+   "withBars": {
+    "lanes": 4,
+    "band": [
+     697,
+     706.5
+    ],
+    "numeralsTop": 709.5,
+    "barsOverNumerals": 0,
+    "barsUnderAMarker": 11,
+    "timebarH": 92,
+    "timebarH0": 92
+   }
+  },
+  "1024x768:study": {
+   "railW": 996,
+   "pxPerMin": 1.186,
+   "timebarH": 90.5,
+   "eventRowH": 22,
+   "slackTo92": 1.5,
+   "intervals": 11,
+   "lanes": 4,
+   "shortestBarPx": 23.7,
+   "assign": [
+    [
+     "columns-move",
+     0
+    ],
+    [
+     "raigern",
+     1
+    ],
+    [
+     "counter-march",
+     2
+    ],
+    [
+     "davout",
+     0
+    ],
+    [
+     "decision",
+     0
+    ],
+    [
+     "soult",
+     1
+    ],
+    [
+     "guard-attack",
+     0
+    ],
+    [
+     "guard-broken",
+     1
+    ],
+    [
+     "buxhowden-blind",
+     2
+    ],
+    [
+     "hq-forward",
+     3
+    ],
+    [
+     "wheel",
+     2
+    ]
+   ],
+   "barContrast": {
+    "fr": 5.26,
+    "al": 5.69,
+    "ground": {
+     "c": [
+      10,
+      14,
+      19
+     ],
+     "a": 0.96
+    }
+   },
+   "markerFromDwellPx": [
+    [
+     "columns-move",
+     106.7
+    ],
+    [
+     "raigern",
+     26.7
+    ],
+    [
+     "counter-march",
+     133.4
+    ],
+    [
+     "davout",
+     17.8
+    ],
+    [
+     "decision",
+     11.9
+    ],
+    [
+     "soult",
+     17.8
+    ],
+    [
+     "guard-attack",
+     71.1
+    ],
+    [
+     "guard-broken",
+     71.1
+    ],
+    [
+     "buxhowden-blind",
+     35.6
+    ],
+    [
+     "hq-forward",
+     23.7
+    ],
+    [
+     "wheel",
+     35.6
+    ]
+   ],
+   "withBars": {
+    "lanes": 4,
+    "band": [
+     745,
+     754.5
+    ],
+    "numeralsTop": 757.5,
+    "barsOverNumerals": 0,
+    "barsUnderAMarker": 11,
+    "timebarH": 90.5,
+    "timebarH0": 90.5
+   }
+  },
+  "1024x768:watch": {
+   "railW": 996,
+   "pxPerMin": 1.186,
+   "timebarH": 92,
+   "eventRowH": 22,
+   "slackTo92": 0,
+   "intervals": 11,
+   "lanes": 4,
+   "shortestBarPx": 23.7,
+   "assign": [
+    [
+     "columns-move",
+     0
+    ],
+    [
+     "raigern",
+     1
+    ],
+    [
+     "counter-march",
+     2
+    ],
+    [
+     "davout",
+     0
+    ],
+    [
+     "decision",
+     0
+    ],
+    [
+     "soult",
+     1
+    ],
+    [
+     "guard-attack",
+     0
+    ],
+    [
+     "guard-broken",
+     1
+    ],
+    [
+     "buxhowden-blind",
+     2
+    ],
+    [
+     "hq-forward",
+     3
+    ],
+    [
+     "wheel",
+     2
+    ]
+   ],
+   "barContrast": {
+    "fr": 5.26,
+    "al": 5.69,
+    "ground": {
+     "c": [
+      10,
+      14,
+      19
+     ],
+     "a": 0.96
+    }
+   },
+   "markerFromDwellPx": [
+    [
+     "columns-move",
+     106.7
+    ],
+    [
+     "raigern",
+     26.7
+    ],
+    [
+     "counter-march",
+     133.4
+    ],
+    [
+     "davout",
+     17.8
+    ],
+    [
+     "decision",
+     11.9
+    ],
+    [
+     "soult",
+     17.8
+    ],
+    [
+     "guard-attack",
+     71.1
+    ],
+    [
+     "guard-broken",
+     71.1
+    ],
+    [
+     "buxhowden-blind",
+     35.6
+    ],
+    [
+     "hq-forward",
+     23.7
+    ],
+    [
+     "wheel",
+     35.6
+    ]
+   ],
+   "withBars": {
+    "lanes": 4,
+    "band": [
+     745,
+     754.5
+    ],
+    "numeralsTop": 757.5,
+    "barsOverNumerals": 0,
+    "barsUnderAMarker": 11,
+    "timebarH": 92,
+    "timebarH0": 92
+   }
+  }
+ },
+ "dossier": {
+  "1600x900": {
+   "w": 255,
+   "h": 558.8,
+   "inner": 255,
+   "drawer": [
+    300,
+    809
+   ],
+   "docked": true
+  },
+  "1280x720": {
+   "w": 255,
+   "h": 558.8,
+   "inner": 255,
+   "drawer": [
+    300,
+    629
+   ],
+   "docked": true
+  },
+  "1024x768": {
+   "w": 315,
+   "h": 409.6,
+   "inner": 315,
+   "drawer": [
+    360,
+    768
+   ],
+   "docked": null
+  }
+ },
+ "dayTrackInset": {
+  "1600x900": {
+   "insetPx": [
+    239,
+    159
+   ],
+   "rows": [
+    [
+     "gqg",
+     23.1,
+     14.8
+    ],
+    [
+     "heightguns",
+     67.9,
+     161
+    ],
+    [
+     "sthilaire",
+     29.8,
+     6
+    ],
+    [
+     "vandamme",
+     25.9,
+     9.6
+    ],
+    [
+     "legrand",
+     62.1,
+     24.8
+    ],
+    [
+     "friant",
+     38.6,
+     5.4
+    ],
+    [
+     "bourcier",
+     27.5,
+     15.1
+    ],
+    [
+     "caffarelli",
+     41.3,
+     32.7
+    ],
+    [
+     "suchet",
+     78.9,
+     32.3
+    ],
+    [
+     "santon",
+     239,
+     null
+    ],
+    [
+     "kellermann",
+     53.6,
+     47.7
+    ],
+    [
+     "nansouty",
+     48.2,
+     46.3
+    ],
+    [
+     "dhautpoul",
+     46.4,
+     50.1
+    ],
+    [
+     "walther",
+     48.8,
+     38.5
+    ],
+    [
+     "rivaud",
+     52.2,
+     42.3
+    ],
+    [
+     "drouet",
+     50.4,
+     31.8
+    ],
+    [
+     "guard_inf",
+     50.3,
+     28.2
+    ],
+    [
+     "guard_cav",
+     60.7,
+     21.2
+    ],
+    [
+     "c_gren",
+     24.2,
+     13.8
+    ],
+    [
+     "ahq",
+     40.4,
+     14.2
+    ],
+    [
+     "buxhowden",
+     47.5,
+     46.5
+    ],
+    [
+     "kienmayer",
+     72.9,
+     33.6
+    ],
+    [
+     "dok",
+     51.8,
+     15
+    ],
+    [
+     "lang",
+     71.9,
+     41.7
+    ],
+    [
+     "kamensky",
+     53,
+     22.8
+    ],
+    [
+     "prz",
+     81.1,
+     21.9
+    ],
+    [
+     "milo",
+     40.9,
+     11.8
+    ],
+    [
+     "kollo",
+     41.2,
+     5.4
+    ],
+    [
+     "lich",
+     37.9,
+     27.6
+    ],
+    [
+     "bag",
+     72.6,
+     52.3
+    ],
+    [
+     "rg_inf",
+     51.1,
+     57.2
+    ],
+    [
+     "rg_cav",
+     47.2,
+     64.2
+    ]
+   ]
+  },
+  "1280x720": {
+   "insetPx": [
+    239,
+    159
+   ],
+   "rows": [
+    [
+     "gqg",
+     23.1,
+     14.8
+    ],
+    [
+     "heightguns",
+     67.9,
+     161
+    ],
+    [
+     "sthilaire",
+     29.8,
+     6
+    ],
+    [
+     "vandamme",
+     25.9,
+     9.6
+    ],
+    [
+     "legrand",
+     62.1,
+     24.8
+    ],
+    [
+     "friant",
+     38.6,
+     5.4
+    ],
+    [
+     "bourcier",
+     27.5,
+     15.1
+    ],
+    [
+     "caffarelli",
+     41.3,
+     32.7
+    ],
+    [
+     "suchet",
+     78.9,
+     32.3
+    ],
+    [
+     "santon",
+     239,
+     null
+    ],
+    [
+     "kellermann",
+     53.6,
+     47.7
+    ],
+    [
+     "nansouty",
+     48.2,
+     46.3
+    ],
+    [
+     "dhautpoul",
+     46.4,
+     50.1
+    ],
+    [
+     "walther",
+     48.8,
+     38.5
+    ],
+    [
+     "rivaud",
+     52.2,
+     42.3
+    ],
+    [
+     "drouet",
+     50.4,
+     31.8
+    ],
+    [
+     "guard_inf",
+     50.3,
+     28.2
+    ],
+    [
+     "guard_cav",
+     60.7,
+     21.2
+    ],
+    [
+     "c_gren",
+     24.2,
+     13.8
+    ],
+    [
+     "ahq",
+     40.4,
+     14.2
+    ],
+    [
+     "buxhowden",
+     47.5,
+     46.5
+    ],
+    [
+     "kienmayer",
+     72.9,
+     33.6
+    ],
+    [
+     "dok",
+     51.8,
+     15
+    ],
+    [
+     "lang",
+     71.9,
+     41.7
+    ],
+    [
+     "kamensky",
+     53,
+     22.8
+    ],
+    [
+     "prz",
+     81.1,
+     21.9
+    ],
+    [
+     "milo",
+     40.9,
+     11.8
+    ],
+    [
+     "kollo",
+     41.2,
+     5.4
+    ],
+    [
+     "lich",
+     37.9,
+     27.6
+    ],
+    [
+     "bag",
+     72.6,
+     52.3
+    ],
+    [
+     "rg_inf",
+     51.1,
+     57.2
+    ],
+    [
+     "rg_cav",
+     47.2,
+     64.2
+    ]
+   ]
+  },
+  "1024x768": {
+   "insetPx": [
+    299,
+    199
+   ],
+   "rows": [
+    [
+     "gqg",
+     28.9,
+     18.5
+    ],
+    [
+     "heightguns",
+     85,
+     201.6
+    ],
+    [
+     "sthilaire",
+     37.3,
+     7.5
+    ],
+    [
+     "vandamme",
+     32.5,
+     12
+    ],
+    [
+     "legrand",
+     77.7,
+     31.1
+    ],
+    [
+     "friant",
+     48.3,
+     6.8
+    ],
+    [
+     "bourcier",
+     34.4,
+     18.9
+    ],
+    [
+     "caffarelli",
+     51.7,
+     40.9
+    ],
+    [
+     "suchet",
+     98.7,
+     40.5
+    ],
+    [
+     "santon",
+     299,
+     null
+    ],
+    [
+     "kellermann",
+     67,
+     59.7
+    ],
+    [
+     "nansouty",
+     60.3,
+     57.9
+    ],
+    [
+     "dhautpoul",
+     58.1,
+     62.7
+    ],
+    [
+     "walther",
+     61,
+     48.2
+    ],
+    [
+     "rivaud",
+     65.3,
+     52.9
+    ],
+    [
+     "drouet",
+     63.1,
+     39.7
+    ],
+    [
+     "guard_inf",
+     63,
+     35.3
+    ],
+    [
+     "guard_cav",
+     76,
+     26.6
+    ],
+    [
+     "c_gren",
+     30.3,
+     17.3
+    ],
+    [
+     "ahq",
+     50.6,
+     17.7
+    ],
+    [
+     "buxhowden",
+     59.4,
+     58.2
+    ],
+    [
+     "kienmayer",
+     91.3,
+     42
+    ],
+    [
+     "dok",
+     64.8,
+     18.8
+    ],
+    [
+     "lang",
+     90,
+     52.2
+    ],
+    [
+     "kamensky",
+     66.3,
+     28.5
+    ],
+    [
+     "prz",
+     101.5,
+     27.4
+    ],
+    [
+     "milo",
+     51.1,
+     14.8
+    ],
+    [
+     "kollo",
+     51.6,
+     6.7
+    ],
+    [
+     "lich",
+     47.4,
+     34.6
+    ],
+    [
+     "bag",
+     90.9,
+     65.4
+    ],
+    [
+     "rg_inf",
+     63.9,
+     71.6
+    ],
+    [
+     "rg_cav",
+     59.1,
+     80.4
+    ]
+   ]
+  }
+ }
+}
