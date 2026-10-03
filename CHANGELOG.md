@@ -78,11 +78,15 @@
 - **Height guard**: one new call site classified (the self-test's checks: test).
 
 **Checks on this build**
-- `npm test`: TEST_RESULT
-- `npm run check:data`: DATA_RESULT
-- `npm run check:chronology`: CHRON_RESULT
-- `npm run check:visual`: VISUAL_RESULT
-- `npm run check:contrast`: CONTRAST_RESULT
+- `npm test`: all 9 suites pass, and the height guard.
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:visual`: all checks passed, 20 views (the smoke at most 24.0% of the free rectangle in every landscape view; the
+  closest orbit, `pratzen-orbit-min`, 6 solid blocks), the day's light (the largest solid near-black 0.014%), the valley fog's hours,
+  the horizon (the gap under it within 4.7 and 5.3 of the sky at 4x and 10.33x), the self-test 157 of 157; Play by Space at ½×, the
+  Watch dwell, the slider and the 3E keys by real key presses. The two Canvas2D `willReadFrequently` warnings are the known ones.
+- `npm run check:contrast`: 4,250 text elements in 28 states, 0 below AA, 0 below 10.5 px (4,244 on 4D; the six more were not
+  traced to a state: 4E adds no interface text).
 - `npm run check:baseline`: moved to this build; passes.
 
 **Not done, or open**
