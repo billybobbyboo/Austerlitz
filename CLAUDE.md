@@ -19,9 +19,9 @@ lower one without saying so explicitly.
 | `geo.js` | `GEOREF`: the only geographic and scale authority (transform, horizontal and vertical scale, ground truth) |
 | `data.js` | historical dataset: phases, order of battle and tracks, features, sources note |
 | `analysis.js` | analysis chapters (themes: each names its moments, `at` and `moments`, since the spine data task), command knowledge, the two plans, acts, events, guided tour (each stop names a moment) |
-| `world.js` | ground: relief model, land cover, water, roads, woods, settlements, mist, `groundY`; the paper map's flat symbology (village footprints, woods) and its own hillshade (since 2E); the ground shader, which draws the land cover per point, and `COVER_ML`/`drawnCover` (since 2F) |
+| `world.js` | ground: relief model, land cover, water, roads, woods, settlements, `groundY` (since 4C no mist sheets: the fog is the atmosphere's, in `app.js`); the paper map's flat symbology (village footprints, woods) and its own hillshade (since 2E); the ground shader, which draws the land cover per point, and `COVER_ML`/`drawnCover` (since 2F) |
 | `symbols.js` | the map layer's counters and names (HTML/SVG builders, accessible names), event and objective glyphs |
-| `app.js` | scene, the light (since 4B: the computed sun `SUN_DAY`, the light table `LIGHT_BY_ALT`, `applyLight`, `placeLights` and the fitted shadow box `SHADOW_FIT`), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
+| `app.js` | scene, the light (since 4B: the computed sun `SUN_DAY`, the light table `LIGHT_BY_ALT`, `applyLight`, `placeLights` and the fitted shadow box `SHADOW_FIT`), the atmosphere (since 4C: `ATMO`, the fog chunks, `applyAtmo`, `atmoAt`: the haze beyond the focus and the valley fog), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2, Stage 3 and Stage 4 measurement scripts (`stage2/`, `stage3/`, `stage4/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
@@ -109,9 +109,14 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   the computed one at each factor, the shadow box covering the free rectangle's ground from every vantage, the disc only while the
   sun is up, the light continuous in the clock, no toe and no baked hillshade on the landscape); `css-test.js` checks the toe and
   the hillshade stay out.
+  Since 4C: the valley fog's hours (the Field vantage at 08:00, the low Pratzen view at 08:30, at 4x) within the darkness limit,
+  map text at AA, drops within the case's limit, formations drawn under the fog, the fog at most its cap; the self-test's
+  atmosphere checks (the fog's top at the knowledge model's 238.2 m at each factor, the Command view's "uncertain" exactly the enemy
+  in sight under it, the fog's amount continuous and whole while the mist exceeds 0.5, no haze at the orbit target, the fitted
+  Overview lightly hazed, none on the paper map, no `fogShift`); `css-test.js` checks the recession and the mist sheets stay out.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 4B build (md5 `3d6d2295...`, 1,367,134 bytes;
-  re-baselined from the spine data task build `6b2cccd4...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 4C build (md5 `622634ef...`, 1,376,800 bytes;
+  re-baselined from the Stage 4B build `3d6d2295...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -152,4 +157,6 @@ line moved; decision 56's sentence in `SOURCE_NOTE`; ← → on a focused button
 valley fog, pacing, smoke, ice, the horizon and the 3D palette; probes in `tools/stage4/`) is merged (#27); the owner accepted
 every recommendation (decisions 68-82, §0.4). Stage 4B (the light: the computed sun, its altitude corrected to the display factor,
 one light table keyed by the sun's altitude, a fill opposite the sun in place of Stage 0's shadow toe, no baked hillshade on the
-landscape, the shadow box fitted to the view) is implemented, for review.
+landscape, the shadow box fitted to the view) is merged (#28). Stage 4C (the atmosphere: one haze and valley fog in the fog chunks,
+the haze counted beyond the focus, the fog's top the Command view's 238.2 m and its amount `PHASES[].mist` eased in the clock, drawn
+at most 55% opaque; `fogShift` and the mist sheets gone) is implemented, for review.

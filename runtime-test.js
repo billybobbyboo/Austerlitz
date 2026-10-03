@@ -412,12 +412,13 @@ try{
   if(down) throw new Error(down+" of "+faces+" apron faces point down (would be back-face culled)");
   console.log("apron: "+faces+" faces, all facing up OK");
 
-  /* mist must be lit by the hour: darker before dawn than at midday */
+  /* mist must be lit by the hour: darker before dawn than at midday (since Stage 4C the valley fog's colour; the sheets are gone) */
   setMode("terrain"); setPhase(0,true); if(tween) tween(performance.now()+50);
-  const m0=world.mist.children[0].material.color.clone();
+  const m0=ATMO.u.uAtmoV.value.clone();
   setPhase(6,true); if(tween) tween(performance.now()+50);
-  const m6=world.mist.children[0].material.color;
+  const m6=ATMO.u.uAtmoV.value;
   if(!(m0.r+m0.g+m0.b < m6.r+m6.g+m6.b)) throw new Error("predawn mist is not darker than midday mist");
+  if(world.mist.children.length||world.mist.visible) throw new Error("the mist sheets are drawn again (Stage 4C: the fog is the atmosphere's)");
   console.log("mist tinted by the hour OK");
 
   /* one frame path with a live fallback: FX failure must not empty the frame */

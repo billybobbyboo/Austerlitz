@@ -1,7 +1,7 @@
 # Time and atmosphere specification (Stage 4, Part A)
 
 **Status: Part A merged (#27); the owner accepted every recommendation of §J, recorded as decisions 68-82 (§0.4). 4B (the light)
-is implemented, for review; what it found is at the end of §I. Sections A-J below still describe the build they were written
+is merged (#28); 4C (the atmosphere) is implemented, for review; what each found is at the end of §I. Sections A-J below still describe the build they were written
 against.** Part A was written
 against `main` at `18e014b` (the spine data task merged, #26), whose build `austerlitz-command-map.html` is 1,348,542 bytes,
 md5 `6b2cccd44138e95e6082c82b8b2d2f8a`. Before any work: `check:baseline` passed; `npm test` (all nine suites and the height
@@ -891,6 +891,30 @@ Per view (fact; every landscape view at its factor and four at 1x and 10.33x, an
 the ground's mean luminance from 4 lower (at 1x, where the drawn sun is the true one and lower than the presets') to 15 higher (at
 10.33x, where it is steeper). The self-test has 135 checks (126 before): the drawn sun against the computed one at each factor,
 the shadow box's coverage from every vantage at each factor, the disc, continuity, and the toe and hillshade absent.
+
+### 4C, as delivered (the atmosphere; decisions 72, 73, 80, 81)
+
+Implemented in `app.js` (`ATMO`, the fog chunks, `applyAtmo`, `atmoAt`), `world.js` (the mist sheets removed) and `shell.html` (the
+legend's row) as §B.3 and §C.5 proposed, with these changes found while building it, each measured (`tools/stage4/report-4b.js`,
+`docs/stage4-evidence/4c-report.md`, `4c-before.json`, `4c-after.json`, `4c-sheet.jpg`, `4c-sheet-before.jpg`; `CHANGELOG.md`, Stage 4C):
+- **The haze's visibilities.** At §B.2's physical values (8-25 km) the ground's mean luminance rose 17-29 above 4B in four views,
+  against §B.4's ±15. The light table's `vis` is five times those (40-120 km): a depth cue, as §B.3 labels it, not the day's air.
+- **The day fill.** The mist sheets had faintly lifted the low Pratzen view's dark foreground conifers; without them the view
+  reached the 0.05% limit. The light table's day fill is 0.52 (4B: 0.36); the worst view is 0.030%.
+- **The fog's edge** is 6 m (an exponential above the top); at 15 m a point 20 m over the top kept too much fog.
+- **§C.6's top check** uses a ray falling 1 in 10 from 300 m above the top, and reads "not fogged" 20 m over it as at most a
+  quarter of the cap; a vertical ray from above measures the edge's own depth only.
+- **§C.6's two harness views** are a loop after the day's light (`FOG_VIEWS`), not new cases, so no unobstructed baseline is added.
+- **§B.4's ±15 luminance** is recorded as a measured design target, not a check: outside the fog's hours (08:00-09:05, the ease of
+  the 08:45 lifting included) every landscape view is within 13.3 and the day at 4x within 15.2; in the fog's hours the white fog
+  raises the ground 18-60, by design.
+- **The dome** needed nothing: its horizon is already drawn in the fog colour (decision 80).
+
+Per view (fact; every landscape view at its factor and four at 1x and 10.33x, the day at 4x, and three views in the fog's hours):
+solid near-black at most 0.030%; map text 0 below AA, the lowest contrast 6.49 (unchanged) and in each view at most 0.91 lower than
+4B (the low Pratzen view at 08:30, over the fog); drops unchanged; the haze at the orbit target 0 everywhere; the valley fog 0.31-0.54
+over the ground at 08:00-08:30 (cap 0.55). The self-test has 141 checks (135 before): the fog's top and the haze at the target at each
+factor; the Command view's "uncertain" against the drawn top, the fog's amount over the day, nothing on the paper map, once.
 
 ## J. Questions for the owner
 

@@ -583,8 +583,6 @@ function rescaleWorld(){
   waterMeshes.forEach(function(m){ if(m.userData.mere) m.position.y=mereLevel.apply(null,m.userData.mere); });
   rebuildContours();
   TERRAIN_LINES.forEach(function(tl){ if(tl._midXZ) tl._mid=[tl._midXZ[0],displayHeight(tl._midXZ[0],tl._midXZ[1])+4.2,tl._midXZ[1]]; });
-  mistGroup.children.forEach(function(m){ var u=m.userData, y=u.haze?displayY(3.4):displayHeight(u.cx,u.cz)+1.5;
-    m.geometry.dispose(); m.geometry=mistSheet(u.w,u.w2||u.w,u.nx,u.ny,u.cx,u.cz,y); m.position.y=y; });
 }
 function buildFaceFacts(geo){
   var p=geo.attributes.position.array;
@@ -1035,6 +1033,7 @@ function atlasShader(mat){
   var U=groundUniforms(); mat.userData.U=U;
   mat.onBeforeCompile=function(sh){
     Object.keys(U).forEach(function(k){ sh.uniforms[k]=U[k]; });
+    if(typeof atmoUniforms==="function") atmoUniforms(sh);   /* Stage 4C: the atmosphere's uniforms (app.js) */
     sh.vertexShader=sh.vertexShader
       .replace("#include <common>","#include <common>"+GROUND_VERT_HEAD)
       .replace("#include <uv_vertex>","#include <uv_vertex>\nvCover=cover; vGnd=gnd; vWxz=(modelMatrix*vec4(position,1.0)).xz;");
@@ -1768,64 +1767,10 @@ function buildPaperSymbols(scene){
 function paperMarkScale(wpp){ var m=paperGroup&&paperGroup.userData.marks; if(!m||!m.material.map) return;
   var k=1/(PAPER_SYM.markPx*wpp); if(Math.abs(m.material.map.repeat.x-k)>1e-6*k){ m.material.map.repeat.set(k,k); } }
 
-/* A mist sheet is flat, so wherever the ground rises through it the sheet would end in a hard
-   line along the contour. Each vertex carries an alpha that falls to nothing as the ground comes
-   up to meet the sheet - checked across the sheet's whole drift - so the edge dissolves instead.
-   Stage 0 only: the valley fog itself is Stage 4. */
-var MIST_DRIFT=0.8;
-function mistSheet(w,h,nx,ny,cx,cz,y){
-  var geo=new THREE.PlaneGeometry(w,h,nx,ny), pa=geo.attributes.position.array, n=pa.length/3;
-  var col=new Float32Array(n*4), dep=new Float32Array(n), i, j;
-  for(i=0;i<n;i++){
-    var x=cx+pa[i*3], z=cz-pa[i*3+1];          /* plane space to world, after the -90 degree turn about x */
-    dep[i]=y-Math.max(groundY(x,z),groundY(x-MIST_DRIFT,z),groundY(x+MIST_DRIFT,z));
-    col[i*4]=col[i*4+1]=col[i*4+2]=1;
-    col[i*4+3]=smoothstep(0.2,3.0,dep[i]);
-  }
-  /* erode by one cell: a vertex next to one at or under the ground is clear too, so a cell the
-     ground passes through carries no alpha anywhere, however steep the slope across it */
-  var W1=nx+1;
-  for(j=0;j<=ny;j++) for(i=0;i<=nx;i++){
-    var k=j*W1+i, low=false;
-    for(var dj=-1;dj<=1&&!low;dj++) for(var di=-1;di<=1;di++){
-      var ii=i+di, jj=j+dj; if(ii<0||jj<0||ii>nx||jj>ny) continue;
-      if(dep[jj*W1+ii]<0.2){ low=true; break; }
-    }
-    if(low) col[k*4+3]=0;
-  }
-  geo.setAttribute("color",new THREE.BufferAttribute(col,4));
-  return geo;
-}
+/* Stage 4C: the mist sheets (Stage 0: twenty textured squares in the bottoms and one broad haze sheet, faded where the ground rose
+   through them) are gone. The valley fog and the haze are drawn by every material's fog (app.js, ATMO), from the clock; the group
+   stays, empty and hidden, so world.mist keeps its place. */
 function buildMist(scene){
-  var mc=document.createElement("canvas"); mc.width=mc.height=256;
-  var g2=mc.getContext("2d");
-  var rg=g2.createRadialGradient(128,128,10,128,128,128);
-  rg.addColorStop(0,"rgba(196,204,208,.86)"); rg.addColorStop(.6,"rgba(190,198,204,.52)");
-  rg.addColorStop(1,"rgba(190,198,204,0)");
-  g2.fillStyle=rg; g2.fillRect(0,0,256,256);
-  var mtex=ctexS(mc);
-  mistGroup=new THREE.Group();
-  /* the fog lay in the bottoms, not over the whole country: dense along the
-     Goldbach and the meres, thinner on the open ground, nothing on the crest */
-  [[228,176,62],[224,214,66],[228,248,64],[232,292,66],[228,332,68],[226,372,66],
-   [228,404,64],[252,430,62],[286,450,66],[196,448,58],[176,300,50],[196,196,48],
-   [262,146,44],[318,398,52],[356,418,52],[140,320,48],[150,400,54],[300,462,58],
-   [214,120,44],[264,268,44]].forEach(function(s2){
-    var w2=W(s2[0],s2[1]), y2=displayHeight(w2[0],w2[1])+1.5;
-    var m=new THREE.Mesh(mistSheet(s2[2],s2[2],40,40,w2[0],w2[1],y2),
-      new THREE.MeshBasicMaterial({map:mtex,transparent:true,opacity:0.9,depthWrite:false,fog:false,vertexColors:true}));
-    m.rotation.x=-Math.PI/2;
-    m.position.set(w2[0],y2,w2[1]);
-    m.userData.x0=w2[0]; m.userData.cx=w2[0]; m.userData.cz=w2[1]; m.userData.w=s2[2]; m.userData.nx=40; m.userData.ny=40;
-    mistGroup.add(m);
-  });
-  /* one broad sheet of haze so the far ground recedes properly */
-  /* its height scales with the drawn relief (3.4 units at the model's own scale) */
-  var haze=new THREE.Mesh(mistSheet(360,310,144,124,0,0,displayY(3.4)),
-    new THREE.MeshBasicMaterial({map:mtex,transparent:true,opacity:0.34,depthWrite:false,fog:false,vertexColors:true}));
-  haze.rotation.x=-Math.PI/2; haze.position.set(0,displayY(3.4),0);
-  haze.userData.x0=0; haze.userData.cx=0; haze.userData.cz=0; haze.userData.w=360; haze.userData.w2=310; haze.userData.nx=144; haze.userData.ny=124;
-  haze.userData.haze=true;
-  mistGroup.add(haze);
+  mistGroup=new THREE.Group(); mistGroup.visible=false;
   scene.add(mistGroup);
 }

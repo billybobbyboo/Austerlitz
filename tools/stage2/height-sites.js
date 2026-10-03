@@ -77,7 +77,9 @@ const CLASS={
   "app.js:focusAt":"presentation",
   "app.js:landControls":"test","app.js:landKeysTouch":"test","app.js:cameraChecks3D":"test",
   /* Stage 4B: the self-test's shadow coverage reads the drawn ground under the free rectangle */
-  "app.js:lightChecks":"test"
+  "app.js:lightChecks":"test",
+  /* Stage 4C: the self-test's atmosphere checks (the Overview's ground, the knowledge model's threshold) */
+  "app.js:fogChecks":"test","app.js:atmoDayChecks":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */

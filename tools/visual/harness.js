@@ -214,6 +214,29 @@ async function interact(page,it,vp){
         sw.push(tag+" "+(100*px.solidBlack).toFixed(3)+"%");
         if(px.solidBlack>T.SOLID_BLACK) report.failures.push("the day's light: "+tag+": solid near-black regions cover "+(100*px.solidBlack).toFixed(3)+"% of the map ("+px.solidBlocks+" blocks; limit 0.05%)"); }
       report.lightSweep=sw; console.log("the day's light (solid near-black): "+sw.join("; ")); }
+    /* Stage 4C (docs/STAGE4_SPEC.md section C.6): the valley fog's hours, the Field vantage at 08:00 and the low Pratzen view at 08:30
+       at 4x: within the darkness limit, every map text at AA as rendered, drops within the case's limit, the figures under the fog
+       still drawn, and the fog at most its cap over the ground (a build with the atmosphere) */
+    if(await first.evaluate(()=>typeof ATMO!=="undefined")){
+      const fw=[];
+      for(const [name,t] of T.FOG_VIEWS){
+        const c=require("./cases.js").find(x=>x.name===name);
+        await first.evaluate(s=>window.__aus.apply(s),Object.assign({},c,{t,factor:4})); await settle(first);
+        const buf=await first.screenshot({timeout:180000}), b64=buf.toString("base64");
+        const px=await first.evaluate(b=>window.__aus.pixels(b),b64), tc=await first.evaluate(b=>window.__aus.textContrast(b),b64);
+        const st=await first.evaluate(()=>{ mlLayout(); applyAtmo(); var C=ATMO.u.uAtmoC.value, fr=landFreeRect(), worst=0, n=0;
+          for(var j=0;j<=6;j++) for(var i=0;i<=8;i++){ var g=groundAt(fr[0]+(fr[2]-fr[0])*i/8,fr[1]+(fr[3]-fr[1])*j/6); if(!g) continue; n++;
+            worst=Math.max(worst,atmoAt(landCam.position,new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]))[1]); }
+          var under=0; Object.keys(units).forEach(function(id){ var r=units[id]; if(r.block&&r.block.visible){ var m=GEOREF.DATUM_M+r.block.position.y/DISPLAY.factor*GEOREF.M_PER_WORLD; if(m<C.x) under++; } });
+          return {dropped:ML.stats.dropped,cap:C.w,worst:worst,samples:n,under:under}; });
+        const tag=name+" at "+String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0");
+        fw.push(tag+": solid "+(100*px.solidBlack).toFixed(3)+"%, below AA "+tc.belowAA.length+", drops "+st.dropped+", "+st.under+" formations drawn under the fog, fog at most "+st.worst.toFixed(3)+" (cap "+st.cap.toFixed(2)+")");
+        if(px.solidBlack>T.SOLID_BLACK) report.failures.push("the valley fog: "+tag+": solid near-black "+(100*px.solidBlack).toFixed(3)+"%");
+        if(tc.belowAA.length) report.failures.push("the valley fog: "+tag+": "+tc.belowAA.length+" map texts below AA: "+tc.belowAA.slice(0,3).join("; "));
+        if(st.dropped>T.DROP_LIMIT[name]) report.failures.push("the valley fog: "+tag+": "+st.dropped+" items dropped, over "+T.DROP_LIMIT[name]);
+        if(!(st.under>0)) report.failures.push("the valley fog: "+tag+": no formation drawn under the fog");
+        if(!(st.worst<=st.cap+1e-9)||!(st.cap>0)) report.failures.push("the valley fog: "+tag+": the fog "+st.worst.toFixed(3)+" against its cap "+st.cap); }
+      report.fogViews=fw; console.log("the valley fog: "+fw.join("; ")); }
     for(const [name,m] of Object.entries(report.cases)) T.check(name,m).forEach(f=>{ console.log("FAIL "+name+": "+f); report.failures.push(name+": "+f); });
   }
   if(CMP){

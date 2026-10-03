@@ -82,6 +82,9 @@ const SOLID_BLACK=0.0005, LIGHT_SWEEP=[];
 ["overview-field","pratzen-low"].forEach(n=>{ for(let t=480;t<=960;t+=60) LIGHT_SWEEP.push([n,t,4]); });
 ["overview-field","close-sokolnitz","ph8-overview-study"].forEach(n=>{ LIGHT_SWEEP.push([n,null,1]); LIGHT_SWEEP.push([n,null,"model"]); });
 module.exports.SOLID_BLACK=SOLID_BLACK; module.exports.LIGHT_SWEEP=LIGHT_SWEEP;
+/* Stage 4C (docs/STAGE4_SPEC.md section C.6): the valley fog's hours, rendered by the harness at 4x [case, clock]. New */
+const FOG_VIEWS=[["overview-field",480],["pratzen-low",510]];
+module.exports.FOG_VIEWS=FOG_VIEWS;
 module.exports.PAPER_MIN_PXKM=PAPER_MIN_PXKM;
 module.exports.DROP_LIMIT=DROP_LIMIT; module.exports.UNOBSTRUCTED=UNOBSTRUCTED; module.exports.LAYER_MS=LAYER_MS;
 /* Stage 0 guarantees, checked on every baseline case (harness --test). The numbers are the

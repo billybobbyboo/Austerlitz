@@ -229,7 +229,12 @@ function drawnAltitude(alt){ return Math.atan(DISPLAY.factor*Math.tan(alt*Math.P
    chosen on the harness's darkness measure without the toe: Part A's 0.28 alone (section A.4b) left the figures' and houses'
    cast shadows near-black in two views at 4x (selected-formation 0.076%, the low Pratzen view at 11:00 0.079%, against 0.05%);
    these values bring the worst to 0.030% (CHANGELOG.md, Stage 4B). Design values. */
-var LIGHT_FILL={predawn:0.16,dawn:0.22,dusk:0.16,staff:0.16}, LIGHT_SKY_LIFT={predawn:0,dawn:0.04,dusk:0,staff:0};
+var LIGHT_FILL={predawn:0.16,dawn:0.22,dusk:0.16,staff:0.16}, LIGHT_FILL_DAY=0.52, LIGHT_SKY_LIFT={predawn:0,dawn:0.04,dusk:0,staff:0};
+/* Stage 4C: the haze's strength for each preset's hour, as the visibility (km) at the valley floor that would give it. A depth cue
+   counted beyond the orbit target (decision 81), not the day's air: physical visibilities (10-25 km) hazed the ground behind the
+   subject so heavily that the landscape's luminance rose 17-29 above 4B's in four harness views; these keep every view within 15
+   (CHANGELOG.md, Stage 4C). Design values; the day's visibility is not recorded in this reconstruction. */
+var LIGHT_VIS={predawn:40,dawn:40,mist:50,sunburst:70,morning:100,midday:120,afternoon:100,late:70,dusk:50,staff:120};
 var LIGHT_BY_ALT={
   am:[[-18,"predawn"],[-3,"dawn"],[4,"mist"],[9,"sunburst"],[15,"morning"],[SUN_DAY.noonAlt,"midday"]],
   pm:[[-18,"dusk"],[-12,"dusk"],[3,"late"],[16,"afternoon"],[SUN_DAY.noonAlt,"midday"]]
@@ -238,11 +243,11 @@ var LIGHT_BY_ALT={
 var NIGHT_DIR=new THREE.Vector3(LIGHT.predawn.p[0],LIGHT.predawn.p[1],LIGHT.predawn.p[2]).normalize();
 function lightRow(L,k){ return {i:L.i,c:new THREE.Color(L.c),hemi:L.hemi+(LIGHT_SKY_LIFT[k]!==undefined?LIGHT_SKY_LIFT[k]:0.08),fogN:L.fogN,fogF:L.fogF,fogC:lin(L.fogC),bg:lin(L.bg),
   sky:[new THREE.Color(L.sky[0]),new THREE.Color(L.sky[1]),new THREE.Color(L.sky[2])],mistC:lin(L.mistC),disc:L.disc,grade:L.grade,
-  fill:LIGHT_FILL[k]!==undefined?LIGHT_FILL[k]:0.36}; }
+  fill:LIGHT_FILL[k]!==undefined?LIGHT_FILL[k]:LIGHT_FILL_DAY,vis:LIGHT_VIS[k]}; }
 function mixRow(a,b,e){ return {i:a.i+(b.i-a.i)*e,c:a.c.clone().lerp(b.c,e),hemi:a.hemi+(b.hemi-a.hemi)*e,fogN:a.fogN+(b.fogN-a.fogN)*e,
   fogF:a.fogF+(b.fogF-a.fogF)*e,fogC:a.fogC.clone().lerp(b.fogC,e),bg:a.bg.clone().lerp(b.bg,e),
   sky:[a.sky[0].clone().lerp(b.sky[0],e),a.sky[1].clone().lerp(b.sky[1],e),a.sky[2].clone().lerp(b.sky[2],e)],
-  mistC:a.mistC.clone().lerp(b.mistC,e),disc:a.disc+(b.disc-a.disc)*e,grade:lerpGrade(a.grade,b.grade,e),fill:a.fill+(b.fill-a.fill)*e}; }
+  mistC:a.mistC.clone().lerp(b.mistC,e),disc:a.disc+(b.disc-a.disc)*e,grade:lerpGrade(a.grade,b.grade,e),fill:a.fill+(b.fill-a.fill)*e,vis:a.vis+(b.vis-a.vis)*e}; }
 /* the light at a clock: the table's values at the sun's altitude, the drawn light's direction and the disc's */
 function lightAt(t){
   var s=SUN_DAY.at(t), rows=s.am?LIGHT_BY_ALT.am:LIGHT_BY_ALT.pm, a=Math.max(rows[0][0],Math.min(SUN_DAY.noonAlt,s.alt)), R=null;
@@ -278,7 +283,7 @@ function applyLight(force){
   refreshEnvironment();
   if(sunDisc) sunDisc.material.opacity=staff?0:R.disc*0.92;
   applyGrade(R.grade);
-  if(world&&world.mist) world.mist.children.forEach(function(m){ m.material.color.copy(R.mistC); });
+  ATMO.u.uAtmoV.value.copy(R.mistC);   /* Stage 4C: the valley fog's colour is the light's */
   return true;
 }
 /* ---- the shadow map follows what is drawn (section A.5, item 7) ----
@@ -335,6 +340,93 @@ function placeLights(){
   cam.updateProjectionMatrix();
   sun.shadow.bias=-SHADOW_FIT.biasUnits/(cam.far-cam.near);
   SHADOW_FIT.ext=ext; SHADOW_FIT.pts=P;
+}
+/* ---- Stage 4C: the atmosphere (docs/STAGE4_SPEC.md sections B.3 and C.5; owner decisions 72, 73, 80 and 81) ----
+   One atmosphere in three.js's fog chunks, shared by every fogged material, computed in the true (unexaggerated) geometry: the
+   ray's vertical divided by the display factor, heights in metres through GEOREF (DATUM_M, M_PER_WORLD: no scale of its own).
+   - The haze: exponential in height (scale height ATMO.HS above ATMO.M0, the valley floor), its one parameter the visibility at
+     the valley floor (the light table's vis, km: design values, not the day's visibility, which this reconstruction does not
+     record). Counted only beyond the orbit target's distance from the eye (decision 81): a depth cue, so the subject is never
+     hazed and what lies behind it recedes. It replaces the linear fog's near and far and Stage 3D's recession (fogShift).
+   - The valley fog: a layer whose top is the Command view's own: knowledgeOf treats a formation as "uncertain" while the
+     phase's mist exceeds 0.5 and it stands below model height -0.8 (app.js knowledgeOf, guarded), so the top is drawn at
+     GEOREF.elevM(-0.8), 238.2 m, and the self-test holds the two together. Its amount follows PHASES[].mist (read, not
+     changed), eased over the first FOG_EASE minutes of each phase so nothing steps; as the amount falls below 0.9 the top sinks
+     (the heights clear before the valley, as the narrative has Soult climb out of the fog into sunlight). Drawn at most 55%
+     opaque (decision 72), so the figures in it stay visible; counted from the eye (it is a layer, not a depth cue). The evening
+     values of PHASES[].mist (0.22, 0.30; no text mentions them) are drawn as a thin haze, labelled modelled (decision 73).
+   On the paper map neither is drawn. Line of sight, the viewshed and the knowledge model are not touched. */
+var ATMO={HS:400, M0:200, EDGE:6, FOG_EASE:20, FOG_SINK:20, FOG_VIS_KM:0.2, CAP:0.55,
+  FOG_TOP_H:-0.8,   /* the knowledge model's threshold (knowledgeOf: hAt(p) < -0.8), model units */
+  u:{uAtmoA:{value:new THREE.Vector4(4,243.1,63.2,0)}, uAtmoB:{value:new THREE.Vector4(0,400,200,0)},
+     uAtmoC:{value:new THREE.Vector4(238.2,15,0,0)}, uAtmoV:{value:new THREE.Color(0.7,0.72,0.74)}}};
+ATMO.FOG_TOP=GEOREF.elevM(ATMO.FOG_TOP_H);
+/* sigma, the extinction per world unit for a meteorological visibility in km (Koschmieder: 3.912 / V) */
+function atmoSigma(km){ return 3.912/km*GEOREF.M_PER_WORLD/1000; }
+/* the valley fog's amount at a clock: PHASES[].mist, each phase's value reached FOG_EASE minutes after its start */
+function fogAmount(t){
+  var p=phaseAt(t), v=PHASES[p].mist, prev=p>0?PHASES[p-1].mist:v;
+  return prev+(v-prev)*smoothstep(0,ATMO.FOG_EASE,t-PHASES[p].t0);
+}
+function fogTop(a){ return ATMO.FOG_TOP-ATMO.FOG_SINK*(1-Math.min(1,a/0.9)); }
+function fogCap(a){ return ATMO.CAP*smoothstep(0,0.9,a); }
+/* every material compiled gets the atmosphere's uniforms (shared objects; unused where the material has no fog). Materials
+   with an onBeforeCompile of their own (the ground shader, world.js atlasShader) call atmoUniforms themselves. */
+function atmoUniforms(sh){ var U=ATMO.u; for(var k in U) sh.uniforms[k]=U[k]; }
+if(THREE.Material) THREE.Material.prototype.onBeforeCompile=function(sh){ atmoUniforms(sh); };   /* (absent only in runtime-test.js's stub, which draws nothing) */
+(function(){
+  var C=THREE.ShaderChunk; if(!C) return;
+  C.fog_pars_vertex="#ifdef USE_FOG\n\tvarying float fogDepth;\n\tvarying vec3 vFogW;\n#endif";
+  /* the fragment's world position, from the view matrix every program has: w = R^T (v - t) */
+  C.fog_vertex="#ifdef USE_FOG\n\tfogDepth = - mvPosition.z;\n\tvec3 fgT = mvPosition.xyz - viewMatrix[3].xyz;\n"+
+    "\tvFogW = vec3( dot( viewMatrix[0].xyz, fgT ), dot( viewMatrix[1].xyz, fgT ), dot( viewMatrix[2].xyz, fgT ) );\n#endif";
+  C.fog_pars_fragment=["#ifdef USE_FOG",
+    "\tuniform vec3 fogColor;\n\tvarying float fogDepth;\n\tvarying vec3 vFogW;",
+    /* A: display factor, datum (m), metres per world unit, the focus (eye to orbit target); B: the haze's extinction per world
+       unit at the valley floor, its scale height (m), the floor (m), on; C: the valley fog's top (m), edge (m), extinction, cap */
+    "\tuniform vec4 uAtmoA; uniform vec4 uAtmoB; uniform vec4 uAtmoC; uniform vec3 uAtmoV;",
+    "#endif"].join("\n");
+  C.fog_fragment=["#ifdef USE_FOG",
+    "\tvec3 fgD = vFogW - cameraPosition; float fgLen = length( fgD ), K = uAtmoA.x;",
+    "\tfloat mw = uAtmoA.y + vFogW.y / K * uAtmoA.z;",
+    /* the haze, beyond the focus */
+    "\tvec3 fgS = cameraPosition + fgD * ( min( fgLen, uAtmoA.w ) / max( fgLen, 1e-6 ) ), fgR = vFogW - fgS;",
+    "\tfloat fgL = length( vec3( fgR.x, fgR.y / K, fgR.z ) ), mc = uAtmoA.y + fgS.y / K * uAtmoA.z, dm = mw - mc;",
+    "\tfloat ec = exp( -( mc - uAtmoB.z ) / uAtmoB.y ), ew = exp( -( mw - uAtmoB.z ) / uAtmoB.y );",
+    "\tfloat tauH = uAtmoB.x * fgL * ( abs( dm ) > 0.01 ? uAtmoB.y * ( ec - ew ) / dm : ew );",
+    "\tvec3 fgC = mix( gl_FragColor.rgb, fogColor, ( 1.0 - exp( - tauH ) ) * uAtmoB.w );",
+    /* the valley fog, from the eye: uniform under the top, an exponential edge above it */
+    "\tif( uAtmoC.w > 0.0 ) {",
+    "\t\tfloat tp = uAtmoC.x, he = uAtmoC.y, me = uAtmoA.y + cameraPosition.y / K * uAtmoA.z, dme = mw - me;",
+    "\t\tfloat fgLE = length( vec3( fgD.x, fgD.y / K, fgD.z ) );",
+    "\t\tfloat gc = me <= tp ? me : tp + he * ( 1.0 - exp( -( me - tp ) / he ) );",
+    "\t\tfloat gw = mw <= tp ? mw : tp + he * ( 1.0 - exp( -( mw - tp ) / he ) );",
+    "\t\tfloat tauV = uAtmoC.z * fgLE * ( abs( dme ) > 0.01 ? ( gw - gc ) / dme : ( mw <= tp ? 1.0 : exp( -( mw - tp ) / he ) ) );",
+    "\t\tfgC = mix( fgC, uAtmoV, min( uAtmoC.w, 1.0 - exp( - tauV ) ) );",
+    "\t}",
+    "\tgl_FragColor.rgb = fgC;",
+    "#endif"].join("\n");
+})();
+/* the same in script, for the self-test and the measurements: [haze, valley fog] at world point p seen from eye e */
+function atmoAt(e,p,focus){
+  var A=ATMO.u.uAtmoA.value, B=ATMO.u.uAtmoB.value, C=ATMO.u.uAtmoC.value, K=A.x, f=(focus===undefined?A.w:focus);
+  var dx=p.x-e.x, dy=p.y-e.y, dz=p.z-e.z, len=Math.sqrt(dx*dx+dy*dy+dz*dz), k=Math.min(len,f)/Math.max(len,1e-6);
+  var s={x:e.x+dx*k,y:e.y+dy*k,z:e.z+dz*k}, rx=p.x-s.x, ry=p.y-s.y, rz=p.z-s.z, L=Math.sqrt(rx*rx+ry*ry/(K*K)+rz*rz);
+  var mw=A.y+p.y/K*A.z, mc=A.y+s.y/K*A.z, dm=mw-mc, ec=Math.exp(-(mc-B.z)/B.y), ew=Math.exp(-(mw-B.z)/B.y);
+  var tH=B.x*L*(Math.abs(dm)>0.01?B.y*(ec-ew)/dm:ew), h=(1-Math.exp(-tH))*B.w, v=0;
+  if(C.w>0){ var tp=C.x, he=C.y, me=A.y+e.y/K*A.z, dme=mw-me, LE=Math.sqrt(dx*dx+dy*dy/(K*K)+dz*dz);
+    var G=function(m){ return m<=tp?m:tp+he*(1-Math.exp(-(m-tp)/he)); };
+    var tV=C.z*LE*(Math.abs(dme)>0.01?(G(mw)-G(me))/dme:(mw<=tp?1:Math.exp(-(mw-tp)/he))); v=Math.min(C.w,1-Math.exp(-tV)); }
+  return [h,v];
+}
+/* the atmosphere's uniforms for this frame: the light's haze and mist colour, the clock's fog, the eye's focus */
+function applyAtmo(){
+  var A=ATMO.u.uAtmoA.value, B=ATMO.u.uAtmoB.value, C=ATMO.u.uAtmoC.value, paper=(mode==="staff");
+  A.set(DISPLAY.flat?1:DISPLAY.factor,GEOREF.DATUM_M,GEOREF.M_PER_WORLD,landCam.position.distanceTo(orbitTarget));
+  if(paper||!LIGHT_NOW){ B.w=0; C.w=0; return; }
+  B.set(atmoSigma(LIGHT_NOW.vis),ATMO.HS,ATMO.M0,1);
+  var a=fogAmount(clock); C.set(fogTop(a),ATMO.EDGE,atmoSigma(ATMO.FOG_VIS_KM)*a,fogCap(a));
+  ATMO.u.uAtmoV.value.copy(LIGHT_NOW.mistC);
 }
 var skyCanvas=null, skyCtx=null, sunDisc=null;
 var _skyNow=[new THREE.Color(0x0F1A26),new THREE.Color(0x2B3A48),new THREE.Color(0x6E7A82)];
@@ -1800,11 +1892,9 @@ function applyArc(a,e,bulge){
   landCam.lookAt(_ct);
 }
 /* Since Stage 4B the light is not a phase's: it follows the clock (applyLight, from the computed sun and LIGHT_BY_ALT), so a phase
-   change no longer interpolates it. What remains here is the phase's own: the mist's amount (PHASES[].mist; its colour is the
-   light's), the overlays' fade, and the camera's glide while Follow is on. */
+   change no longer interpolates it; since 4C neither is the fog (applyAtmo, from the clock). What remains here is the overlays'
+   fade and the camera's glide while Follow is on. */
 function startPhaseTransition(ph,instant,moveCam){
-  var mistTo=(mode==="staff")?0:ph.mist;
-  var f0={mist:world.mist.children[0].material.opacity};
   var camMove=moveCam && !freeCam && mode!=="staff";   /* the paper map's plan stays where it is: the whole field is on it */
   if(camMove){
     var pc=presetFrame(ph.cam);
@@ -1814,10 +1904,7 @@ function startPhaseTransition(ph,instant,moveCam){
   if(camMove){ curVantage=null;
     setTween("cam",function(now){ var k=Math.min(1,(now-t0)/dur); if(camArc) applyArc(camArc,easeInOut(k)); return k>=1||!camArc; }); }
   setTween("scene",function(now){
-    var k=Math.min(1,(now-t0)/dur), e=easeInOut(k);
-    var mo=f0.mist+(mistTo-f0.mist)*e;
-    world.mist.children.forEach(function(m){ m.material.opacity = m.userData.haze ? mo*0.26 : mo*0.55; });
-    world.mist.visible=world.mist.children[0].material.opacity>0.012 && mode!=="staff";
+    var k=Math.min(1,(now-t0)/dur);
     ovFadeOut=1-clamp01(k/0.42);
     ovFadeIn=clamp01((k-0.34)/0.66);
     if(k>=1){ retireOld(); ovFadeIn=1; ovFadeOut=0; return true; }
@@ -2117,18 +2204,11 @@ function renderStandard(){
   renderer.setRenderTarget(null);
   renderer.render(scene,camera);
 }
-/* Stage 3D: the fog recedes with the eye beyond the authored Overview's distance from the target (VANTAGE.plan, about 274
-   units). The fog's near and far are distances from the eye, chosen for the authored views; the Overview fitted to the free
-   rectangle (fitOverview) and a wide zoom stand two to three times farther, where the whole field was drawn in fog. Every
-   view at or within that distance is drawn as before. A presentation matter of the light, which Stage 4 replaces. */
-var FOG_REF=null;
-function fogShift(){
-  if(FOG_REF===null) FOG_REF=Math.hypot(VANTAGE.plan[0]-VANTAGE.plan[3],VANTAGE.plan[1]-VANTAGE.plan[4],VANTAGE.plan[2]-VANTAGE.plan[5]);
-  return (camera===landCam)?Math.max(0,landCam.position.distanceTo(orbitTarget)-FOG_REF):0; }
+/* Stage 3D's recession of the fog (fogShift) is gone since 4C: the haze is counted beyond the orbit target (applyAtmo). */
 function renderFrame(){
   applyLight(false); placeLights();   /* Stage 4B: the light of the clock, and the lights and the shadow box placed for this view */
-  var fs=fogShift(); scene.fog.near+=fs; scene.fog.far+=fs;
-  try{ renderFrameNow(); } finally { scene.fog.near-=fs; scene.fog.far-=fs; }
+  applyAtmo();   /* Stage 4C: the haze and the valley fog for this view and this clock */
+  renderFrameNow();
 }
 function renderFrameNow(){
   renderer.info.reset();
@@ -2811,9 +2891,6 @@ function setMode(m){
   world.water.forEach(function(w2){ if(w2.material.opacity!==undefined) w2.material.opacity=staff?1:0.94; });
 
   applyLight(true);   /* Stage 4B: the paper map's own light, or the landscape's light of the clock */
-  var mt=staff?0:PHASES[curPhase].mist;
-  world.mist.children.forEach(function(x){ x.material.opacity = x.userData.haze ? mt*0.26 : mt*0.55; });
-  world.mist.visible=!staff && mt>0.012;
 
   document.body.classList.toggle("mode-staff",staff);
   if(ML.root){ ML.root.tabIndex=0;   /* Stage 3D: the landscape layer takes keyboard focus as the paper map's does */
@@ -3307,7 +3384,8 @@ function paintLegend(){
           halt:A.some(function(a){ return a.kind==="halt"; }), bound:layerOn.arrows&&(O.bounds||[]).length>0, plan:!!planSide,
           badge:counters, analysis:!!layerOn.analysis, contours:!!layerOn.contours&&!cleanView,
           wood:!land, village:!land,   /* Stage 2E: the paper map's own symbology */
-          mere:true};   /* Stage 2F: the meres are drawn in every view, and their outlines are schematic (decision 27, section I.2) */
+          mere:true,   /* Stage 2F: the meres are drawn in every view, and their outlines are schematic (decision 27, section I.2) */
+          fog:land&&fogCap(fogAmount(clock))>0.01};   /* Stage 4C: while the valley fog is drawn */
   var key=JSON.stringify(on);
   if(key===_lgKey) return;
   _lgKey=key; ML.lgSize=null;
@@ -5128,7 +5206,11 @@ function lightNotes(){
     "The relief is drawn exaggerated, so the light is steepened by the same factor: the ground's lit and shaded sides, and its shadows, are those the true "+
       "ground would have under the true sun. The sun's disc stands at its true height, so where the relief is exaggerated the light seems to come from higher than the disc.",
     "Before dawn the field is lit by a design light, not by a moon; nothing about the night's sky is claimed. The weather of the day (the fog in the valley, "+
-      "the sun on the heights at about 08:45) is the narrative's, as the phases' texts give it; this reconstruction cites no source for it."];
+      "the sun on the heights at about 08:45) is the narrative's, as the phases' texts give it; this reconstruction cites no source for it.",
+    "The valley fog is drawn from the narrative: in the Goldbach valley until about 08:45, off the heights first. Its top is drawn at "+Math.round(ATMO.FOG_TOP)+
+      " m, the height below which the Command view treats ground as fogged while the mist lies; its depth and its lifting are modelled, not recorded, "+
+      "and it is drawn see-through so the formations in it stay visible. The thin mist drawn in the late afternoon is modelled too: no text mentions it.",
+    "The haze that softens what lies behind the place in view is a depth cue, the same at every zoom; the day's visibility is not recorded in this reconstruction."];
 }
 function geoText(p){
   /* {EXAG} is the DISPLAY factor relative to true scale (decision 35), never GEOREF.EXAG, the model's own scale */
@@ -5301,7 +5383,6 @@ function requestRender(n){ needFrames=Math.max(needFrames,n||2); }
 function ease(r){ return 1-Math.pow(1-r,FK); }
 function ambientNow(){
   if(RM||HARNESS) return false;
-  if(mode!=="staff"&&world.mist.visible) return true;
   for(var id in units){
     var r=units[id];
     if((r.smoke&&r.smoke.visible)||(r.dust&&r.dust.visible)) return true;
@@ -5334,11 +5415,6 @@ function loop(){
   var tu=performance.now(); updateVisibility(); DEV.tUpdate=performance.now()-tu;
   syncViewOffset(false);   /* Stage 3D: the landscape's focus eased to the free rectangle's centre */
   smokeT=HARNESS?0:now*0.001;
-  if(!RM && !HARNESS && mode!=="staff" && world.mist.visible){
-    /* bounded, time-based drift (the fade on each sheet allows for MIST_DRIFT either way) */
-    var t=frameClock.getElapsedTime();
-    world.mist.children.forEach(function(m,i){ m.position.x=m.userData.x0+Math.sin(t*0.2+i)*MIST_DRIFT; });
-  }
   renderFrame();
   loop._n=(loop._n||0)+1;
   if(devOn&&loop._n%120===0){ var fe=AUSTERLITZ_DEBUG.figureError();   /* with the readout on: a periodic check of the seating */
@@ -6068,6 +6144,60 @@ var AUSTERLITZ_DEBUG=(function(){
     setClock(keep,{instant:true,camera:false}); finishTween(); applyLight(true);
     return out;
   }
+  /* Stage 4C (docs/STAGE4_SPEC.md sections B.4 and C.6): the atmosphere. fogChecks runs at each display factor, atmoDayChecks once. */
+  function fogChecks(ck,fct){
+    var keep=clock, bad=[], K=DISPLAY.factor, yOf=function(m){ return (m-GEOREF.DATUM_M)/GEOREF.M_PER_WORLD*K; };
+    /* the valley fog's top: on a ray falling 1 in 10 from 300 m above it, a point 1 m under the top carries the cap's fog and a
+       point 20 m over it a quarter of the cap at most, at 08:00, 08:30 and 08:44 */
+    [480,510,524].forEach(function(t){ setClock(t,{instant:true,camera:false}); finishTween(); applyLight(true); applyAtmo();
+      var C=ATMO.u.uAtmoC.value; if(Math.abs(C.x-ATMO.FOG_TOP)>1e-6) bad.push(fmtClock(t)+": top "+C.x.toFixed(2)+" m");
+      var run=300*10/GEOREF.M_PER_WORLD, eye=new THREE.Vector3(0,yOf(ATMO.FOG_TOP+300),0);
+      var lo=atmoAt(eye,new THREE.Vector3(run,yOf(ATMO.FOG_TOP-1),0),1e9)[1], hi=atmoAt(eye,new THREE.Vector3(run,yOf(ATMO.FOG_TOP+20),0),1e9)[1];
+      if(!(lo>=0.9*C.w)) bad.push(fmtClock(t)+": 1 m under the top "+lo.toFixed(3)+" (cap "+C.w.toFixed(2)+")");
+      if(!(hi<=0.25*C.w)) bad.push(fmtClock(t)+": 20 m over the top "+hi.toFixed(3)); });
+    ck("valley fog: its top drawn at the knowledge model's 238.2 m (hAt -0.8) while the mist is whole, at its cap below and clear above (section C.6)",
+      !bad.length, bad.length?bad.join("; "):"at 08:00, 08:30 and 08:44: the top at "+ATMO.FOG_TOP.toFixed(1)+" m; 1 m under it the cap ("+ATMO.CAP+"), 20 m over it at most a quarter of it");
+    /* the haze: none at the orbit target from any vantage (counted beyond it); the fitted Overview's ground lightly hazed */
+    setClock(570,{instant:true,camera:false}); finishTween(); applyLight(true);
+    var tgt=[], ov=null, vw=renderer.domElement.clientWidth||innerWidth;
+    Object.keys(VANTAGE).forEach(function(vk){ placeCamera(VANTAGE[vk]); syncViewOffset(true); applyAtmo();
+      var A=ATMO.u.uAtmoA.value, d=landCam.position.distanceTo(orbitTarget), h=atmoAt(landCam.position,orbitTarget)[0];
+      if(Math.abs(A.w-d)>1e-6||h>1e-9) tgt.push(vk+": focus "+A.w.toFixed(2)+" against "+d.toFixed(2)+", haze at the target "+h.toFixed(4));
+      if(vk==="plan"){ var fr=landFreeRect(), m=0, n=0; for(var j=0;j<=5;j++) for(var i=0;i<=8;i++){ var g=groundAt(fr[0]+(fr[2]-fr[0])*i/8,fr[1]+(fr[3]-fr[1])*j/5); if(!g) continue;
+          m+=atmoAt(landCam.position,new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]))[0]; n++; } ov=n?m/n:null; } });
+    var lim=(Math.abs(fct-4)<1e-9)?0.25:0.45;
+    ck("haze: none at the orbit target from every vantage; the fitted Overview's ground at most "+lim+" (section B.4)", !tgt.length&&ov!==null&&ov<=lim,
+      (tgt.length?"WRONG: "+tgt.join("; ")+"; ":"")+"the fitted Overview at 09:30: mean haze over its ground "+(ov===null?"-":ov.toFixed(3)));
+    setClock(keep,{instant:true,camera:false}); finishTween(); applyLight(true); applyAtmo();
+  }
+  function atmoDayChecks(){
+    var out=[], keep=clock, cv0=commandView, kN=0, kBad=[];
+    /* the Command view and the drawn fog read one threshold: in phases 0-2, an enemy formation is "uncertain" exactly when it is
+       in line of sight and stands under the drawn fog's top */
+    ["fr","al"].forEach(function(cv){ setCommandView(cv);
+      [0,1,2].forEach(function(ph){ setClock((PHASES[ph].t0+PHASES[ph].t1)/2,{instant:true,camera:false}); finishTween(); applyAtmo();
+        var hq=posNow(cv==="fr"?"gqg":"ahq"), top=ATMO.u.uAtmoC.value.x;
+        Object.keys(FORMATIONS).forEach(function(id){ var f=FORMATIONS[id]; if((f.nation==="fr"?"fr":"al")===cv) return;
+          if(KNOW_OVERRIDE[cv]&&KNOW_OVERRIDE[cv][id]) return; var p=posNow(id); if(!p||!hq) return; kN++;
+          var want=hasLOS(hq,p)&&GEOREF.elevM(hAt(p[0],p[1]))<top, got=knowledgeOf(id)==="uncertain";
+          if(want!==got) kBad.push(cv+" "+PHASES[ph].label+" "+id+": drawn "+want+", read "+got); }); }); });
+    setCommandView(cv0);
+    out.push({name:"valley fog: the Command view's 'uncertain' is exactly the enemy in sight under the drawn fog's top (phases 0-2)", ok:kN>0&&!kBad.length,
+      detail:kN+" formation readings from both headquarters"+(kBad.length?"; DIFFER: "+kBad.slice(0,6).join("; "):"")});
+    /* the fog's amount: continuous in the clock, whole while the phase's mist exceeds 0.5, each phase's own value once eased */
+    var steps=0, worst=0, whole=[], own=[];
+    for(var t=T_MIN;t<T_MAX;t++){ var a=fogAmount(t), b=fogAmount(t+1); worst=Math.max(worst,Math.abs(b-a)); if(Math.abs(b-a)>0.06) steps++;
+      var ph=PHASES[phaseAt(t)]; if(ph.mist>0.5&&a<0.9-1e-9) whole.push(fmtClock(t));
+      if(t>=ph.t0+ATMO.FOG_EASE&&Math.abs(a-ph.mist)>1e-9) own.push(fmtClock(t)); }
+    out.push({name:"valley fog: its amount follows PHASES[].mist continuously, whole while the mist exceeds 0.5", ok:!steps&&!whole.length&&!own.length,
+      detail:"largest one-minute change "+worst.toFixed(3)+(whole.length?"; NOT WHOLE at "+whole.slice(0,4).join(", "):"")+(own.length?"; NOT THE PHASE'S VALUE at "+own.slice(0,4).join(", "):"")});
+    /* the paper map draws neither; Stage 3D's recession is gone */
+    setMode("staff"); renderFrame(); var pB=ATMO.u.uAtmoB.value.w, pC=ATMO.u.uAtmoC.value.w; setMode("terrain");
+    out.push({name:"atmosphere: none on the paper map; the fog's recession (fogShift) gone", ok:pB===0&&pC===0&&typeof fogShift==="undefined",
+      detail:"on the paper map haze "+pB+", valley fog "+pC+"; fogShift "+(typeof fogShift)});
+    setClock(keep,{instant:true,camera:false}); finishTween(); applyLight(true); applyAtmo();
+    return out;
+  }
   function selfTest(){
     var out=[], t0=performance.now(), i;
     function ck(name,ok,detail){ out.push({name:name,ok:!!ok,detail:detail}); }
@@ -6175,12 +6305,7 @@ var AUSTERLITZ_DEBUG=(function(){
         cases+" states (10 phases and 3 marching moments; terrain and hybrid; no highlight and two highlight families), "+
         fw.n+" figure placements; worst "+fw.worst.toFixed(4)+" units"+(fw.where?" ("+fw.where+")":""));
 
-      var mistBad=0, mistN=0;
-      world.mist.children.forEach(function(m){ var a=m.geometry.attributes.color.array, pa=m.geometry.attributes.position.array, x0=m.userData.x0, y=m.position.y;
-        for(var q=0;q<pa.length/3;q++){ var x=x0+pa[q*3], z=m.position.z-pa[q*3+1];
-          var g=Math.max(groundY(x-MIST_DRIFT,z),groundY(x,z),groundY(x+MIST_DRIFT,z));
-          if(y-g<0.2){ mistN++; if(a[q*4+3]>0.001) mistBad++; } } });
-      ck("mist: no sheet shows where the ground rises through it", mistBad===0, mistN+" sheet vertices at or below the ground, "+mistBad+" with any alpha");
+      /* Stage 4C: the mist sheets are gone, and their edge check with them; the valley fog and the haze: fogChecks, below */
       /* 10. derived readings: rendering changes must not move them */
       keepClock=clock; clock=240;   /* model readings: the same at every display factor */
       var p04=plateauStrength("al");
@@ -6211,11 +6336,13 @@ var AUSTERLITZ_DEBUG=(function(){
       paperBy[fct]=paperChecks(ck);
       bySetting[fct]=factorFacts(fct);
       lightChecks(ck,fct);   /* Stage 4B */
+      fogChecks(ck,fct);    /* Stage 4C */
     }
     DISPLAY.settings.forEach(atFactor);
     stage2bChecks(bySetting).forEach(function(c){ out.push(c); });
     paperCross(paperBy).forEach(function(c){ out.push(c); });
     lightDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4B */
+    atmoDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4C */
     setDisplayFactor(saveFactor);
     /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
     var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });
