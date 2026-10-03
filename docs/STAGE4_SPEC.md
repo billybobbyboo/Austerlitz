@@ -1,7 +1,7 @@
 # Time and atmosphere specification (Stage 4, Part A)
 
 **Status: Part A merged (#27); the owner accepted every recommendation of §J, recorded as decisions 68-82 (§0.4). 4B (the light)
-is merged (#28); 4C (the atmosphere) is merged (#29); 4D (pacing) is implemented, for review; what each found is at the end of §I. Sections A-J below still describe the build they were written
+is merged (#28); 4C (the atmosphere) is merged (#29); 4D (pacing) is merged (#30); 4E (smoke, ice, the horizon and the palette tables) is implemented, for review; what each found is at the end of §I. Sections A-J below still describe the build they were written
 against.** Part A was written
 against `main` at `18e014b` (the spine data task merged, #26), whose build `austerlitz-command-map.html` is 1,348,542 bytes,
 md5 `6b2cccd44138e95e6082c82b8b2d2f8a`. Before any work: `check:baseline` passed; `npm test` (all nine suites and the height
@@ -945,6 +945,27 @@ Per the report: the phase glide before 4D kept every live event in the free rect
 1×), moved the ground across the screen at up to 853 px/s, and dropped at most 16 (19 at 1×) map items; with 4D 92.7% (92.4%), at most
 150 px/s, at most 11. The self-test's pacing checks: the day under Follow at each factor, the draw-on at each factor, the dwell's
 length at every speed, scrubbing, reduced motion.
+
+### 4E, as delivered (smoke, ice, the horizon and the palette; decisions 77, 79, 80)
+
+Implemented in `app.js` (`SMOKE`, `smokeAmount`, `smokePlace`; `SPRITE_COL`; `LIGHT_RIG`; the dome centred on the eye, `domeFollow`; the
+sky's horizon the fog colour), `world.js` (`WATER_COL`, `ICE` and the shore ice; `LAND_COL`; `COVER_KEYS`), `tokens.js`
+(`sym.paperMap.ground`, `contour`, `marsh`), with these changes found while building it, each measured (`tools/stage4/report-4e.js`,
+`docs/stage4-evidence/4e-report.md`, `4e-before.json`, `4e-after.json`, `4e-sheet.jpg`, `4e-sheet-before.jpg`; `CHANGELOG.md`, Stage 4E):
+- **The smoke's cap** shrinks the puffs largest on screen to one common size, found by bisection, so the share stays under the cap;
+  none is culled or made fainter for it. The close and low views reach the cap (24%); every other view is under 10% with no puff shrunk.
+- **The horizon.** The dome was centred on the world's origin: from a high eye (the relief drawn 10.33x) the level horizon met the
+  dome above its equator, where the sky darkens, so the hazed far edge of the apron showed a band under a darker sky. The dome is
+  centred on the eye; its horizon colour is the fog colour itself (in sRGB: the sky's colours are sRGB, the fog's linear). No ring
+  of distant relief (decision 80).
+- **The shore ice is the landscape's**: on the paper map the meres are drawn as before (the paper map unchanged).
+- **The palette needed no rebalancing**: the Field vantage's median luminance through the day at 4x is 61-71 at 10:00-16:00, inside
+  its range before Stage 4 (41-85); only the valley fog's hours (08:00-09:05, 4C) are brighter, by design. The hues are unchanged.
+- **The tables** hold every value they replace unchanged: the paper map's ground, contours and marsh lines in `TOKENS.sym.paperMap`;
+  the landscape's in `LIGHT`/`LIGHT_RIG` (app.js), `SPRITE_COL` (app.js), `COVER_COL` and `LAND_COL` (world.js) and `WATER_COL`
+  (world.js). The figures', coats' and flags' colours stay where they are: Stage 6's.
+- **Not done:** the ice "matte where the formations cross" (§F.1) is not drawn: it would need the formations' crossing points on the
+  ice as a moving mask, and the phase-8 texts give no more than "across the frozen water"; no depth pre-pass for soft particles.
 
 ## J. Questions for the owner
 
