@@ -128,7 +128,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   edge at each factor); `css-test.js` checks the landscape's colours are in their tables and the paper map's ground in the tokens
   (decision 79).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 4E build (md5 `4c8a558f...`, 1,416,393 bytes;
+- `npm run check:baseline` passes only on the unmodified Stage 4E build (md5 `e1fac9ea...`, 1,416,737 bytes;
   re-baselined from the Stage 4D build `9b13adbf...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.

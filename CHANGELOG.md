@@ -2,7 +2,7 @@
 
 ## 2026-10 · Stage 4E: smoke, ice, the horizon and the palette tables (docs/STAGE4_SPEC.md §E, §F, §G, §I; owner decisions 77, 79, 80, 84)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,416,393 bytes, md5 `4c8a558f5334b26548635588e83731b9`**
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,416,737 bytes, md5 `e1fac9ea08a4c2b2eaefe5b78529c843`**
 (was 1,402,090 bytes, md5 `9b13adbf…`, Stage 4D). With it, every part of Stage 4 is built (4B-4E).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. No data,
@@ -49,6 +49,10 @@
   (0.361%, the limit 0.05%; the 4D build 5, under its smoke; 4E's puffs without the cap 28). More light barely helped (sky fill +0.16
   and fill +0.12: 61 blocks). Options put to the owner: lift the black (chosen), keep the old smoke (no cap), or defer to Stage 6.
   At #2E2B27: 7 blocks (0.035%).
+- **The pad under each formation tints toward its own colour.** Its texture was a black mask, so its material colour (`SPRITE_COL.pad`,
+  a dark earth) had no effect and it darkened the ground toward black; uncovered by the thinner smoke, the low Pratzen view at 14:00
+  (the day's light at 4x) made 16 solid near-black blocks in the harness (36 in the probe; the 4D build 3). With a white mask the pad
+  tints toward its colour: 3 blocks at 14:00, 3 at 10:00, 1 at 16:00; the view's mean luminance unchanged (82.0 to 82.2).
 - **Not done:** the ice "matte where the formations cross" (§F.1); no depth pre-pass (true soft particles), as §E.2 recommended.
 
 **Per view, before and after** (`tools/stage4/report-4e.js`; `docs/stage4-evidence/4e-report.md`, `4e-sheet-before.jpg`, `4e-sheet.jpg`)

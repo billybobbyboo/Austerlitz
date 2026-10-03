@@ -1351,7 +1351,10 @@ function padTexture(){
   var c=document.createElement("canvas"); c.width=c.height=128;
   var x=c.getContext("2d");
   var gr=x.createRadialGradient(64,64,10,64,64,64);
-  gr.addColorStop(0,"rgba(0,0,0,.55)"); gr.addColorStop(0.55,"rgba(0,0,0,.30)"); gr.addColorStop(1,"rgba(0,0,0,0)");
+  /* Stage 4E: a white mask, so the pad tints the ground toward its own colour (SPRITE_COL.pad, a dark earth) as its material says;
+     a black mask made the colour irrelevant and darkened the ground under a formation toward black (in the low Pratzen view at 14:00,
+     no longer under smoke, 36 solid near-black blocks) */
+  gr.addColorStop(0,"rgba(255,255,255,.55)"); gr.addColorStop(0.55,"rgba(255,255,255,.30)"); gr.addColorStop(1,"rgba(255,255,255,0)");
   x.fillStyle=gr; x.fillRect(0,0,128,128);
   _padTex=ctex(c); return _padTex;
 }

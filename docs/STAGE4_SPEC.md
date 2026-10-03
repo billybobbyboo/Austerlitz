@@ -973,6 +973,9 @@ sky's horizon the fog colour), `world.js` (`WATER_COL`, `ICE` and the shore ice;
   (about 1% reflectance, darker than black cloth), made 73 solid near-black blocks (0.361%; the 4D build 5 under its smoke). More sky
   fill or fill light barely moved it (+0.16 and +0.12: 61 blocks). The owner chose to draw the black at #2E2B27 (about 2.7%, still
   black): 7 blocks (0.035%). No hue, garment or headgear changes; Stage 6 sets the figures' colours from sources.
+- **The pad under each formation** (the trodden ground, `SPRITE_COL.pad`) had a black mask, so it darkened the ground toward black
+  whatever its colour; uncovered by the thinner smoke, the low Pratzen view at 14:00 made 16 solid near-black blocks. Its mask is
+  white: it tints toward its own dark earth colour (3 blocks).
 - **Not done:** the ice "matte where the formations cross" (§F.1) is not drawn: it would need the formations' crossing points on the
   ice as a moving mask, and the phase-8 texts give no more than "across the frozen water"; no depth pre-pass for soft particles.
 
