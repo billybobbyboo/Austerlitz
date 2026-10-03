@@ -5449,7 +5449,7 @@ function dwellDayLength(t0,x){
    stays, and a phase or act button, a vantage, a theme or a tour stop glides to its view as before. Any pan, orbit, zoom or
    double-click turns Follow off (decision 47). Under reduced motion the eye moves only at each event's start, at once. On
    the paper map nothing follows (its plan shows the whole field). */
-var FOLLOW={TAU:1.5, CAP:150, T:null, dist:0, dir:null, ev:null};
+var FOLLOW={TAU:1.5, CAP:150, K:2.4, D0:70, DMIN:86, DMAX:274, T:null, dist:0, dir:null, ev:null};
 function followGoal(){
   var L=liveEvents(clock), sw=0, cx=0, cz=0, c=presetFrame(PHASES[curPhase].cam);
   var dir=new THREE.Vector3(c[0]-c[3],c[1]-c[4],c[2]-c[5]).normalize();
@@ -5457,7 +5457,7 @@ function followGoal(){
   if(!(sw>0)) return {T:null,dist:null,dir:dir};
   cx/=sw; cz/=sw; var rad=0;
   L.forEach(function(o){ var w=W(o.e.p[0],o.e.p[1]); rad+=o.w*Math.hypot(w[0]-cx,w[1]-cz); }); rad/=sw;
-  return {T:new THREE.Vector3(cx,groundY(cx,cz),cz),dist:Math.max(86,Math.min(274,2.4*rad+70)),dir:dir};
+  return {T:new THREE.Vector3(cx,groundY(cx,cz),cz),dist:Math.max(FOLLOW.DMIN,Math.min(FOLLOW.DMAX,FOLLOW.K*rad+FOLLOW.D0)),dir:dir};
 }
 function followActive(){ return playing&&!freeCam&&mode!=="staff"&&!_tw.cam; }
 function followStep(dtMs){

@@ -34,7 +34,9 @@ const PROBE=function(){
     setSpeed(x); stopPlay(); setClock(T_MIN,{instant:true,force:true,camera:false}); AUSTERLITZ_DEBUG.settle(2,true);
     landCam.position.set(c[0],c[1],c[2]); orbitTarget.set(c[3],c[4],c[5]); landCam.lookAt(orbitTarget); clampCamera(); syncViewOffset(true);
     freeCam=false; playing=true; if(P.is4d){ dwellReset(); FOLLOW.T=null; FOLLOW.ev=null; }
-    var last=-1, now=performance.now();
+    /* the page's clock for the run is simulated: the glides and fades read performance.now(), so it is advanced with the steps */
+    var last=-1, pn=performance.now, now=pn.call(performance); performance.now=function(){ return now; };
+    try{
     while(playing&&n<200000){ var pT=orbitTarget.clone(), pW=worldPerPx(orbitTarget);
       now+=stepMs; if(tween) tween(now); tickClock(stepMs); if(P.is4d) followStep(stepMs); real+=stepMs; n++;
       R.px.push(Math.hypot(orbitTarget.x-pT.x,orbitTarget.z-pT.z)/pW/(stepMs/1000));
@@ -44,6 +46,7 @@ const PROBE=function(){
       live.forEach(function(o){ var w=W(o.e.p[0],o.e.p[1]); if(onFree([w[0],groundY(w[0],w[1]),w[1]],fr)) seen++; });
       R.liveTotal+=live.length; R.liveSeen+=seen; if(seen===live.length) R.allLive++;
       if(m%10===0){ for(var k=0;k<12;k++){ settling=false; updateVisibility(); } mlLayout(); R.drops.push([m,ML.stats.dropped]); } }
+    } finally { performance.now=pn; }
     stopPlay(); setSpeed(sp);
     R.px.sort(function(a,b){ return a-b; }); var q=function(f){ return +R.px[Math.floor(f*(R.px.length-1))].toFixed(1); };
     var d=R.drops.map(function(z){ return z[1]; });

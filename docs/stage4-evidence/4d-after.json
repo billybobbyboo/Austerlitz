@@ -1,10 +1,10 @@
 {
  "html": "austerlitz-command-map.html",
- "when": "2026-10-03T04:00:30.432Z",
+ "when": "2026-10-03T04:16:07.673Z",
  "views": {
   "overview-field": {
-   "dropped": 7,
-   "placed": 37,
+   "dropped": 6,
+   "placed": 41,
    "arrows": {
     "whole": 0,
     "part": 0,
@@ -13,8 +13,8 @@
    "dropLimit": 11
   },
   "overview-plan": {
-   "dropped": 3,
-   "placed": 20,
+   "dropped": 4,
+   "placed": 22,
    "arrows": {
     "whole": 0,
     "part": 0,
@@ -23,8 +23,8 @@
    "dropLimit": 12
   },
   "close-sokolnitz": {
-   "dropped": 3,
-   "placed": 22,
+   "dropped": 4,
+   "placed": 21,
    "arrows": {
     "whole": 0,
     "part": 2,
@@ -34,7 +34,7 @@
   },
   "staff-paper": {
    "dropped": 3,
-   "placed": 24,
+   "placed": 25,
    "arrows": {
     "whole": 0,
     "part": 0,
@@ -54,7 +54,7 @@
   },
   "selected-formation": {
    "dropped": 4,
-   "placed": 23,
+   "placed": 24,
    "arrows": {
     "whole": 0,
     "part": 0,
@@ -73,7 +73,7 @@
    "dropLimit": 8
   },
   "hybrid-dimmed": {
-   "dropped": 7,
+   "dropped": 8,
    "placed": 32,
    "arrows": {
     "whole": 0,
@@ -104,7 +104,7 @@
   },
   "paper-north-up": {
    "dropped": 12,
-   "placed": 20,
+   "placed": 23,
    "arrows": {
     "whole": 0,
     "part": 0,
@@ -134,7 +134,7 @@
   },
   "ph8-overview-study": {
    "dropped": 3,
-   "placed": 20,
+   "placed": 22,
    "arrows": {
     "whole": 0,
     "part": 1,
@@ -143,8 +143,8 @@
    "dropLimit": 7
   },
   "ph8-overview-watch": {
-   "dropped": 4,
-   "placed": 19,
+   "dropped": 3,
+   "placed": 22,
    "arrows": {
     "whole": 0,
     "part": 1,
@@ -506,8 +506,8 @@
    "clamps": 0,
    "minClear": 26.9,
    "drops": {
-    "mean": 6.21,
-    "max": 18
+    "mean": 6.29,
+    "max": 19
    }
   },
   "1x": {
@@ -523,7 +523,7 @@
    "clamps": 0,
    "minClear": 27.4,
    "drops": {
-    "mean": 6.24,
+    "mean": 6.34,
     "max": 18
    }
   }
