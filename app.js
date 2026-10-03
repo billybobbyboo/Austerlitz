@@ -5442,14 +5442,18 @@ function dwellDayLength(t0,x){
 }
 /* ---- Stage 4D: Follow while the clock plays (docs/STAGE4_SPEC.md sections D.2 and D.3, item 3; owner decision 78) ----
    With Follow on and the clock playing, the eye follows the action: its target eased toward the weighted centre of the live
-   events (liveEvents, their own weights), its distance toward one that holds their spread (2.4 x their weighted radius + 70
-   units, in 86-274), its direction toward the current phase's authored view; eased in real time (time constant FOLLOW.TAU) and
+   events (liveEvents, their own weights), its distance toward one that holds their spread (FOLLOW: 2.4 x their weighted radius
+   + 130 units, in 230-300), its direction toward the current phase's authored view; eased in real time (time constant FOLLOW.TAU) and
    the target's move across the screen held to FOLLOW.CAP px a second at the free centre by slowing, never by a jump; every
    step through the floor (clampCamera). While playing the phase boundary's glide is not used; when the clock stops the view
    stays, and a phase or act button, a vantage, a theme or a tour stop glides to its view as before. Any pan, orbit, zoom or
    double-click turns Follow off (decision 47). Under reduced motion the eye moves only at each event's start, at once. On
    the paper map nothing follows (its plan shows the whole field). */
-var FOLLOW={TAU:1.5, CAP:150, K:2.4, D0:70, DMIN:86, DMAX:274, T:null, dist:0, dir:null, ev:null};
+/* the distance: section D.2's candidate held 86-274 units (2.4 x the spread + 70); between about 140 and 200, where the map layer
+   shows every brigade, its drops reached 19-20 over the day (the limit 19). 230-300 (2.4 x the spread + 130) keeps them at 11-12
+   and every live event in the free rectangle in 92-93% of minutes (tools/stage4/report-4d.js): the action framed wider than
+   most phase views (92-212 units in phases 1-8); a zoom turns Follow off for a closer look. */
+var FOLLOW={TAU:1.5, CAP:150, K:2.4, D0:130, DMIN:230, DMAX:300, T:null, dist:0, dir:null, ev:null};
 function followGoal(){
   var L=liveEvents(clock), sw=0, cx=0, cz=0, c=presetFrame(PHASES[curPhase].cam);
   var dir=new THREE.Vector3(c[0]-c[3],c[1]-c[4],c[2]-c[5]).normalize();
