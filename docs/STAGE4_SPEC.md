@@ -164,6 +164,7 @@ decision, in the question's order; §J keeps the trade-offs.
 | 81 | 14, the haze | Counted from the focus (beyond the orbit target's distance). (4C) |
 | 82 | 15, sequencing | 4B, 4C, 4D, 4E. |
 | 83 | asked while building 4D (§I, "4D, as delivered") | The draw-on as "ghost and progress": a derived arrow is always drawn whole and faint, its head at the destination; the part marched is drawn over it at full strength to the formation, without a head; once the leg is complete the arrow is drawn at full strength. In place of §D.3 item 4's "not drawn before the leg starts, the head at the tip". (4D) |
+| 84 | asked while building 4E (§I, "4E, as delivered") | The figures' black (their hats and black kit) drawn at about 2.7% reflectance, #2E2B27 (was #1B1917, about 1%): still black; a rendering value, not a uniform change; Stage 6 sets the figures' colours from sources. (4E) |
 
 ## A. The light
 
@@ -967,6 +968,11 @@ sky's horizon the fog colour), `world.js` (`WATER_COL`, `ICE` and the shore ice;
 - **The tables** hold every value they replace unchanged: the paper map's ground, contours and marsh lines in `TOKENS.sym.paperMap`;
   the landscape's in `LIGHT`/`LIGHT_RIG` (app.js), `SPRITE_COL` (app.js), `COVER_COL` and `LAND_COL` (world.js) and `WATER_COL`
   (world.js). The figures', coats' and flags' colours stay where they are: Stage 6's.
+- **The figures' black (decision 84).** The old single smoke sprite stood over the formations nearest the eye; the puffs (and the cap)
+  uncovered them, and at the closest orbit (the harness's `pratzen-orbit-min`) the figures' hats and black kit, drawn at #1B1917
+  (about 1% reflectance, darker than black cloth), made 73 solid near-black blocks (0.361%; the 4D build 5 under its smoke). More sky
+  fill or fill light barely moved it (+0.16 and +0.12: 61 blocks). The owner chose to draw the black at #2E2B27 (about 2.7%, still
+  black): 7 blocks (0.035%). No hue, garment or headgear changes; Stage 6 sets the figures' colours from sources.
 - **Not done:** the ice "matte where the formations cross" (§F.1) is not drawn: it would need the formations' crossing points on the
   ice as a moving mask, and the phase-8 texts give no more than "across the frozen water"; no depth pre-pass for soft particles.
 

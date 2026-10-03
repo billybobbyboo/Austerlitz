@@ -4947,7 +4947,9 @@ function imesh(geo,colour,count){
 function formationAtlas(coat,arm,files){
   var c=document.createElement("canvas"); c.width=512; c.height=256;
   var x=c.getContext("2d");
-  var dark=shade(coat,0.50), mid=shade(coat,0.82), hat="#1B1917", steel="#787C82";
+  /* owner decision 84 (Stage 4E): the figures' black drawn at about 2.7% reflectance (#2E2B27), still black; it was #1B1917, about
+     1%, darker than black cloth, and at the closest orbit it drew solid black blocks once the smoke no longer covered them */
+  var dark=shade(coat,0.50), mid=shade(coat,0.82), hat="#2E2B27", steel="#787C82";
 
   /* --- upper half: the rank in silhouette --- */
   x.clearRect(0,0,512,128);
@@ -5050,7 +5052,7 @@ function figKit(){
     return out;
   }
   var head=new THREE.IcosahedronGeometry(0.115,1), shako=new THREE.CylinderGeometry(0.115,0.13,0.27,7);
-  var SKIN=0xC9A98A, BLACK=0x1C1A17, WOOD=0x4A3826, STEEL=0x8A8E92, BREECH=0xBDB8AC, HORSE=0x5A4232, LEATHER=0x3A2E22;
+  var SKIN=0xC9A98A, BLACK=0x2E2B27 /* decision 84; was 0x1C1A17 */, WOOD=0x4A3826, STEEL=0x8A8E92, BREECH=0xBDB8AC, HORSE=0x5A4232, LEATHER=0x3A2E22;
   FIG={
     /* infantry: coat parts take the instance colour */
     infCoat: merge([

@@ -1,6 +1,6 @@
 # Austerlitz Command Map — Changelog
 
-## 2026-10 · Stage 4E: smoke, ice, the horizon and the palette tables (docs/STAGE4_SPEC.md §E, §F, §G, §I; owner decisions 77, 79, 80)
+## 2026-10 · Stage 4E: smoke, ice, the horizon and the palette tables (docs/STAGE4_SPEC.md §E, §F, §G, §I; owner decisions 77, 79, 80, 84)
 
 **Status: implemented, for review. `austerlitz-command-map.html`: 1,416,102 bytes, md5 `66334482c59c5d84e778455f419e1684`**
 (was 1,402,090 bytes, md5 `9b13adbf…`, Stage 4D). With it, every part of Stage 4 is built (4B-4E).
@@ -30,7 +30,10 @@
   (`LIGHT`, and `LIGHT_RIG` for the lights' fixed colours, the first sky, background and fog and the environment's ground), the sprites
   (`SPRITE_COL`: smoke, dust, the trodden ground), the ground (`COVER_COL`), the land (`LAND_COL`: roads, walls and roofs, chimneys and
   spires, trees, conifers and scrub, contours and marsh, the dome's first texture) and the water (`WATER_COL`). Every value unchanged
-  from the literal it replaces. The figures', coats' and flags' colours stay where they are (Stage 6).
+  from the literal it replaces. The figures', coats' and flags' colours stay where they are (Stage 6), with one exception:
+- **The figures' black** (owner decision 84): their hats and black kit drawn at #2E2B27, about 2.7% reflectance (was #1B1917, about
+  1%, darker than black cloth). Still black; no hue, garment or headgear changes; not a uniform claim. Stage 6 sets the figures'
+  colours from sources.
 
 **Decisions taken while building it** (`docs/STAGE4_SPEC.md` §I, "4E, as delivered")
 - **No palette rebalancing** (§G.2 "only what the new light needs, measured"): the Field vantage's median luminance at 4x is 61-71 at
@@ -41,6 +44,11 @@
   conversion is in place.
 - **The cap measured as placed**: a first estimate from the puffs' provisional heights let the low Pratzen view at 10.33x reach 25.06%.
 - **The shore ice is the landscape's**, hidden on the paper map, and is kept out of `world.water` (the paper map's water check).
+- **The figures' black, asked of the owner (decision 84).** The old single smoke sprite stood over the formations nearest the eye; the
+  puffs and the cap uncovered them, and at the closest orbit (`pratzen-orbit-min`) the figures' black made 73 solid near-black blocks
+  (0.361%, the limit 0.05%; the 4D build 5, under its smoke; 4E's puffs without the cap 28). More light barely helped (sky fill +0.16
+  and fill +0.12: 61 blocks). Options put to the owner: lift the black (chosen), keep the old smoke (no cap), or defer to Stage 6.
+  At #2E2B27: 7 blocks (0.035%).
 - **Not done:** the ice "matte where the formations cross" (§F.1); no depth pre-pass (true soft particles), as §E.2 recommended.
 
 **Per view, before and after** (`tools/stage4/report-4e.js`; `docs/stage4-evidence/4e-report.md`, `4e-sheet-before.jpg`, `4e-sheet.jpg`)
