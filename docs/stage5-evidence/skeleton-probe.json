@@ -1,0 +1,1490 @@
+{
+ "html": "austerlitz-command-map.html",
+ "when": "2026-10-03T15:26:14.197Z",
+ "views": {
+  "overview-field": {
+   "clock": 570,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "worldMs": 14.9
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 176,
+    "legs": 148,
+    "legsInFree": 146,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 177748,
+     "changed": 0.0186,
+     "contrastMedian": 1.75,
+     "contrastP90": 3.78,
+     "share3to1": 0.197
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "worldMs": 11.3
+   },
+   "S-phase": {
+    "anchors": 77,
+    "anchorsInFree": 76,
+    "legs": 48,
+    "legsInFree": 48,
+    "segments": 2066,
+    "underShare": 0,
+    "diff": {
+     "samples": 177748,
+     "changed": 0.0063,
+     "contrastMedian": 1.7,
+     "contrastP90": 3.85,
+     "share3to1": 0.192
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "worldMs": 9.6
+   }
+  },
+  "overview-plan": {
+   "clock": 570,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 10.5
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 180,
+    "legs": 148,
+    "legsInFree": 148,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 294649,
+     "changed": 0.0222,
+     "contrastMedian": 2.12,
+     "contrastP90": 5.8,
+     "share3to1": 0.341
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 16.2
+   },
+   "S-phase": {
+    "anchors": 77,
+    "anchorsInFree": 77,
+    "legs": 48,
+    "legsInFree": 48,
+    "segments": 2066,
+    "underShare": 0,
+    "diff": {
+     "samples": 294649,
+     "changed": 0.0082,
+     "contrastMedian": 1.98,
+     "contrastP90": 5.83,
+     "share3to1": 0.318
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 8.3
+   }
+  },
+  "close-sokolnitz": {
+   "clock": 500,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.58,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "worldMs": 7.9
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 78,
+    "legs": 148,
+    "legsInFree": 83,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 294881,
+     "changed": 0.0083,
+     "contrastMedian": 1.39,
+     "contrastP90": 2.27,
+     "share3to1": 0.04
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.58,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "worldMs": 10.3
+   },
+   "S-phase": {
+    "anchors": 66,
+    "anchorsInFree": 38,
+    "legs": 43,
+    "legsInFree": 33,
+    "segments": 1738,
+    "underShare": 0,
+    "diff": {
+     "samples": 294881,
+     "changed": 0.0019,
+     "contrastMedian": 1.35,
+     "contrastP90": 2.09,
+     "share3to1": 0.048
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.58,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "worldMs": 8.8
+   }
+  },
+  "pratzen-low": {
+   "clock": 590,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 5,
+     "items": 65,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 11.94,
+     "belowAA": 0,
+     "texts": 23
+    },
+    "worldMs": 8.7
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 93,
+    "legs": 148,
+    "legsInFree": 89,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 292325,
+     "changed": 0.0215,
+     "contrastMedian": 1.86,
+     "contrastP90": 3.88,
+     "share3to1": 0.228
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 65,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 11.64,
+     "belowAA": 0,
+     "texts": 23
+    },
+    "worldMs": 14.9
+   },
+   "S-phase": {
+    "anchors": 77,
+    "anchorsInFree": 35,
+    "legs": 48,
+    "legsInFree": 28,
+    "segments": 2066,
+    "underShare": 0,
+    "diff": {
+     "samples": 292325,
+     "changed": 0.0036,
+     "contrastMedian": 1.73,
+     "contrastP90": 3.44,
+     "share3to1": 0.159
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 65,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 11.94,
+     "belowAA": 0,
+     "texts": 23
+    },
+    "worldMs": 8.9
+   }
+  },
+  "selected-formation": {
+   "clock": 570,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 24
+    },
+    "worldMs": 8.6
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 56,
+    "legs": 148,
+    "legsInFree": 64,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 186651,
+     "changed": 0.0323,
+     "contrastMedian": 1.93,
+     "contrastP90": 4.1,
+     "share3to1": 0.27
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 24
+    },
+    "worldMs": 9
+   },
+   "S-phase": {
+    "anchors": 77,
+    "anchorsInFree": 28,
+    "legs": 48,
+    "legsInFree": 25,
+    "segments": 2066,
+    "underShare": 0,
+    "diff": {
+     "samples": 186651,
+     "changed": 0.0112,
+     "contrastMedian": 1.95,
+     "contrastP90": 3.87,
+     "share3to1": 0.26
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 24
+    },
+    "worldMs": 8.7
+   },
+   "S-sel": {
+    "anchors": 9,
+    "anchorsInFree": 5,
+    "legs": 8,
+    "legsInFree": 6,
+    "segments": 282,
+    "underShare": 0,
+    "diff": {
+     "samples": 186651,
+     "changed": 0.0029,
+     "contrastMedian": 1.98,
+     "contrastP90": 5.08,
+     "share3to1": 0.335
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 24
+    },
+    "worldMs": 8
+   }
+  },
+  "watch-selected": {
+   "clock": 585,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 7.1
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 67,
+    "legs": 148,
+    "legsInFree": 77,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 270749,
+     "changed": 0.0305,
+     "contrastMedian": 1.91,
+     "contrastP90": 4.15,
+     "share3to1": 0.262
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 8
+   },
+   "S-phase": {
+    "anchors": 77,
+    "anchorsInFree": 36,
+    "legs": 48,
+    "legsInFree": 33,
+    "segments": 2066,
+    "underShare": 0,
+    "diff": {
+     "samples": 270749,
+     "changed": 0.0118,
+     "contrastMedian": 1.88,
+     "contrastP90": 3.75,
+     "share3to1": 0.22
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 7.7
+   },
+   "S-sel": {
+    "anchors": 19,
+    "anchorsInFree": 9,
+    "legs": 16,
+    "legsInFree": 9,
+    "segments": 529,
+    "underShare": 0,
+    "diff": {
+     "samples": 270749,
+     "changed": 0.0033,
+     "contrastMedian": 1.67,
+     "contrastP90": 4.79,
+     "share3to1": 0.26
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 7.7
+   }
+  },
+  "hybrid-dimmed": {
+   "clock": 600,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "worldMs": 8.4
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 116,
+    "legs": 148,
+    "legsInFree": 118,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 238967,
+     "changed": 0.0299,
+     "contrastMedian": 1.89,
+     "contrastP90": 4,
+     "share3to1": 0.245
+    },
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "worldMs": 8.8
+   },
+   "S-phase": {
+    "anchors": 77,
+    "anchorsInFree": 50,
+    "legs": 48,
+    "legsInFree": 38,
+    "segments": 2066,
+    "underShare": 0,
+    "diff": {
+     "samples": 238967,
+     "changed": 0.0085,
+     "contrastMedian": 1.84,
+     "contrastP90": 3.64,
+     "share3to1": 0.215
+    },
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "worldMs": 15.9
+   },
+   "S-sel": {
+    "anchors": 27,
+    "anchorsInFree": 17,
+    "legs": 23,
+    "legsInFree": 16,
+    "segments": 888,
+    "underShare": 0,
+    "diff": {
+     "samples": 238967,
+     "changed": 0.0074,
+     "contrastMedian": 1.84,
+     "contrastP90": 4.46,
+     "share3to1": 0.278
+    },
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "worldMs": 11.2
+   }
+  },
+  "ph8-overview-study": {
+   "clock": 880,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 10.6
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 180,
+    "legs": 148,
+    "legsInFree": 148,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 184989,
+     "changed": 0.0292,
+     "contrastMedian": 2.36,
+     "contrastP90": 7.27,
+     "share3to1": 0.404
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 9
+   },
+   "S-phase": {
+    "anchors": 82,
+    "anchorsInFree": 82,
+    "legs": 51,
+    "legsInFree": 51,
+    "segments": 2295,
+    "underShare": 0,
+    "diff": {
+     "samples": 184989,
+     "changed": 0.011,
+     "contrastMedian": 2.06,
+     "contrastP90": 6.56,
+     "share3to1": 0.317
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 8.7
+   }
+  },
+  "ph8-overview-watch": {
+   "clock": 880,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 8.1
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 180,
+    "legs": 148,
+    "legsInFree": 148,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 293158,
+     "changed": 0.0243,
+     "contrastMedian": 2.26,
+     "contrastP90": 6.74,
+     "share3to1": 0.384
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.61,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 9.5
+   },
+   "S-phase": {
+    "anchors": 82,
+    "anchorsInFree": 82,
+    "legs": 51,
+    "legsInFree": 51,
+    "segments": 2295,
+    "underShare": 0,
+    "diff": {
+     "samples": 293158,
+     "changed": 0.0088,
+     "contrastMedian": 1.95,
+     "contrastP90": 5.65,
+     "share3to1": 0.306
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 8.5
+   }
+  },
+  "overview-field@1x": {
+   "clock": 570,
+   "factor": 1,
+   "base": {
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "worldMs": 1.8
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 176,
+    "legs": 148,
+    "legsInFree": 146,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 177431,
+     "changed": 0.0296,
+     "contrastMedian": 1.82,
+     "contrastP90": 4.46,
+     "share3to1": 0.252
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "worldMs": 2.8
+   },
+   "S-phase": {
+    "anchors": 77,
+    "anchorsInFree": 76,
+    "legs": 48,
+    "legsInFree": 48,
+    "segments": 2066,
+    "underShare": 0,
+    "diff": {
+     "samples": 177431,
+     "changed": 0.0109,
+     "contrastMedian": 1.68,
+     "contrastP90": 3.88,
+     "share3to1": 0.22
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "worldMs": 2.4
+   }
+  },
+  "overview-field@10.33x": {
+   "clock": 570,
+   "factor": "model",
+   "base": {
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 40
+    },
+    "worldMs": 9.8
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 173,
+    "legs": 148,
+    "legsInFree": 144,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 177997,
+     "changed": 0.0195,
+     "contrastMedian": 1.71,
+     "contrastP90": 3.49,
+     "share3to1": 0.174
+    },
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 40
+    },
+    "worldMs": 9.6
+   },
+   "S-phase": {
+    "anchors": 77,
+    "anchorsInFree": 75,
+    "legs": 48,
+    "legsInFree": 47,
+    "segments": 2066,
+    "underShare": 0,
+    "diff": {
+     "samples": 177997,
+     "changed": 0.0071,
+     "contrastMedian": 1.6,
+     "contrastP90": 3.43,
+     "share3to1": 0.154
+    },
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 40
+    },
+    "worldMs": 8.8
+   }
+  },
+  "close-sokolnitz@1x": {
+   "clock": 500,
+   "factor": 1,
+   "base": {
+    "layer": {
+     "dropped": 5,
+     "items": 66,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.72,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 3
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 104,
+    "legs": 148,
+    "legsInFree": 104,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 293066,
+     "changed": 0.0257,
+     "contrastMedian": 1.44,
+     "contrastP90": 2.7,
+     "share3to1": 0.075
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 66,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.72,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 2.8
+   },
+   "S-phase": {
+    "anchors": 66,
+    "anchorsInFree": 49,
+    "legs": 43,
+    "legsInFree": 39,
+    "segments": 1738,
+    "underShare": 0,
+    "diff": {
+     "samples": 293066,
+     "changed": 0.0075,
+     "contrastMedian": 1.4,
+     "contrastP90": 2.42,
+     "share3to1": 0.058
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 66,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.72,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 2
+   }
+  },
+  "close-sokolnitz@10.33x": {
+   "clock": 500,
+   "factor": "model",
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 20
+    },
+    "worldMs": 7.8
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 54,
+    "legs": 148,
+    "legsInFree": 58,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 295136,
+     "changed": 0.0046,
+     "contrastMedian": 1.34,
+     "contrastP90": 1.69,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 20
+    },
+    "worldMs": 11.5
+   },
+   "S-phase": {
+    "anchors": 66,
+    "anchorsInFree": 26,
+    "legs": 43,
+    "legsInFree": 23,
+    "segments": 1738,
+    "underShare": 0,
+    "diff": {
+     "samples": 295136,
+     "changed": 0.0009,
+     "contrastMedian": 1.29,
+     "contrastP90": 1.69,
+     "share3to1": 0.004
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 20
+    },
+    "worldMs": 9
+   }
+  },
+  "pratzen-low@1x": {
+   "clock": 590,
+   "factor": 1,
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 1.6
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 97,
+    "legs": 148,
+    "legsInFree": 93,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 291786,
+     "changed": 0.0359,
+     "contrastMedian": 1.72,
+     "contrastP90": 4.24,
+     "share3to1": 0.237
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 2.8
+   },
+   "S-phase": {
+    "anchors": 77,
+    "anchorsInFree": 39,
+    "legs": 48,
+    "legsInFree": 30,
+    "segments": 2066,
+    "underShare": 0,
+    "diff": {
+     "samples": 291786,
+     "changed": 0.0093,
+     "contrastMedian": 1.53,
+     "contrastP90": 3.65,
+     "share3to1": 0.171
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 1.9
+   }
+  },
+  "pratzen-low@10.33x": {
+   "clock": 590,
+   "factor": "model",
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "worldMs": 7.4
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 82,
+    "legs": 148,
+    "legsInFree": 79,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 293453,
+     "changed": 0.0188,
+     "contrastMedian": 1.86,
+     "contrastP90": 3.74,
+     "share3to1": 0.217
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "worldMs": 8.9
+   },
+   "S-phase": {
+    "anchors": 77,
+    "anchorsInFree": 32,
+    "legs": 48,
+    "legsInFree": 24,
+    "segments": 2066,
+    "underShare": 0,
+    "diff": {
+     "samples": 293453,
+     "changed": 0.0031,
+     "contrastMedian": 1.8,
+     "contrastP90": 3.66,
+     "share3to1": 0.2
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "worldMs": 7.7
+   }
+  },
+  "ph8-overview-watch@1x": {
+   "clock": 880,
+   "factor": 1,
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.77,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 1.8
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 180,
+    "legs": 148,
+    "legsInFree": 148,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 293172,
+     "changed": 0.0253,
+     "contrastMedian": 2.06,
+     "contrastP90": 7.09,
+     "share3to1": 0.363
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.71,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 2.5
+   },
+   "S-phase": {
+    "anchors": 82,
+    "anchorsInFree": 82,
+    "legs": 51,
+    "legsInFree": 51,
+    "segments": 2295,
+    "underShare": 0,
+    "diff": {
+     "samples": 293172,
+     "changed": 0.0093,
+     "contrastMedian": 1.74,
+     "contrastP90": 5.96,
+     "share3to1": 0.282
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.77,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 2.3
+   }
+  },
+  "ph8-overview-watch@10.33x": {
+   "clock": 880,
+   "factor": "model",
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.63,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 13
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 180,
+    "legs": 148,
+    "legsInFree": 148,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 293284,
+     "changed": 0.0233,
+     "contrastMedian": 2.28,
+     "contrastP90": 6.5,
+     "share3to1": 0.383
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.63,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 9.4
+   },
+   "S-phase": {
+    "anchors": 82,
+    "anchorsInFree": 82,
+    "legs": 51,
+    "legsInFree": 51,
+    "segments": 2295,
+    "underShare": 0,
+    "diff": {
+     "samples": 293284,
+     "changed": 0.0083,
+     "contrastMedian": 1.95,
+     "contrastP90": 5.76,
+     "share3to1": 0.319
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.63,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 8.6
+   }
+  },
+  "paper-north-up": {
+   "clock": 570,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "worldMs": 1.1
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 180,
+    "legs": 148,
+    "legsInFree": 148,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 161726,
+     "changed": 0.0079,
+     "contrastMedian": 1.52,
+     "contrastP90": 5.79,
+     "share3to1": 0.181
+    },
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "worldMs": 2.9
+   },
+   "S-phase": {
+    "anchors": 77,
+    "anchorsInFree": 77,
+    "legs": 48,
+    "legsInFree": 48,
+    "segments": 2066,
+    "underShare": 0,
+    "diff": {
+     "samples": 161726,
+     "changed": 0.0029,
+     "contrastMedian": 1.61,
+     "contrastP90": 6,
+     "share3to1": 0.192
+    },
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "worldMs": 2.8
+   }
+  },
+  "paper-close": {
+   "clock": 500,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 1,
+     "items": 65,
+     "placed": 5
+    },
+    "contrast": {
+     "min": 5.1,
+     "belowAA": 0,
+     "texts": 19
+    },
+    "worldMs": 0.8
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 15,
+    "legs": 148,
+    "legsInFree": 23,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 185342,
+     "changed": 0.01,
+     "contrastMedian": 1.26,
+     "contrastP90": 2,
+     "share3to1": 0.023
+    },
+    "layer": {
+     "dropped": 1,
+     "items": 65,
+     "placed": 5
+    },
+    "contrast": {
+     "min": 5.1,
+     "belowAA": 0,
+     "texts": 19
+    },
+    "worldMs": 2.2
+   },
+   "S-phase": {
+    "anchors": 66,
+    "anchorsInFree": 8,
+    "legs": 43,
+    "legsInFree": 9,
+    "segments": 1738,
+    "underShare": 0,
+    "diff": {
+     "samples": 185342,
+     "changed": 0.0031,
+     "contrastMedian": 1.26,
+     "contrastP90": 2.23,
+     "share3to1": 0.049
+    },
+    "layer": {
+     "dropped": 1,
+     "items": 65,
+     "placed": 5
+    },
+    "contrast": {
+     "min": 5.1,
+     "belowAA": 0,
+     "texts": 19
+    },
+    "worldMs": 1.7
+   }
+  },
+  "paper-drawer": {
+   "clock": 570,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 1,
+     "items": 63,
+     "placed": 16
+    },
+    "contrast": {
+     "min": 5.04,
+     "belowAA": 0,
+     "texts": 39
+    },
+    "worldMs": 0.9
+   },
+   "S-day": {
+    "anchors": 180,
+    "anchorsInFree": 28,
+    "legs": 148,
+    "legsInFree": 37,
+    "segments": 6709,
+    "underShare": 0,
+    "diff": {
+     "samples": 176249,
+     "changed": 0.0154,
+     "contrastMedian": 1.24,
+     "contrastP90": 2.07,
+     "share3to1": 0.036
+    },
+    "layer": {
+     "dropped": 1,
+     "items": 63,
+     "placed": 16
+    },
+    "contrast": {
+     "min": 5.04,
+     "belowAA": 0,
+     "texts": 39
+    },
+    "worldMs": 1.8
+   },
+   "S-phase": {
+    "anchors": 77,
+    "anchorsInFree": 16,
+    "legs": 48,
+    "legsInFree": 17,
+    "segments": 2066,
+    "underShare": 0,
+    "diff": {
+     "samples": 176249,
+     "changed": 0.004,
+     "contrastMedian": 1.21,
+     "contrastP90": 2.22,
+     "share3to1": 0.038
+    },
+    "layer": {
+     "dropped": 1,
+     "items": 63,
+     "placed": 16
+    },
+    "contrast": {
+     "min": 5.04,
+     "belowAA": 0,
+     "texts": 39
+    },
+    "worldMs": 1.5
+   },
+   "S-sel": {
+    "anchors": 9,
+    "anchorsInFree": 5,
+    "legs": 8,
+    "legsInFree": 6,
+    "segments": 282,
+    "underShare": 0,
+    "diff": {
+     "samples": 176249,
+     "changed": 0.0019,
+     "contrastMedian": 1.22,
+     "contrastP90": 2.15,
+     "share3to1": 0.035
+    },
+    "layer": {
+     "dropped": 1,
+     "items": 63,
+     "placed": 16
+    },
+    "contrast": {
+     "min": 5.04,
+     "belowAA": 0,
+     "texts": 39
+    },
+    "worldMs": 1
+   }
+  }
+ }
+}

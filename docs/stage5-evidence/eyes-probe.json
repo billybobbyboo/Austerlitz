@@ -1,0 +1,1748 @@
+{
+ "html": "austerlitz-command-map.html",
+ "when": "2026-10-03T16:44:50.143Z",
+ "cache": {
+  "fr": {
+   "samples": 1074,
+   "stale": 65,
+   "ex": [
+    "ahq 07:30 drawn unknown, at the clock seen",
+    "ahq 07:40 drawn unknown, at the clock seen",
+    "ahq 07:50 drawn unknown, at the clock seen",
+    "kienmayer 07:50 drawn unknown, at the clock uncertain",
+    "kollo 07:50 drawn unknown, at the clock seen",
+    "kienmayer 08:30 drawn uncertain, at the clock unknown",
+    "kienmayer 08:40 drawn uncertain, at the clock unknown",
+    "milo 09:50 drawn seen, at the clock unknown",
+    "ahq 10:00 drawn seen, at the clock unknown",
+    "milo 10:00 drawn seen, at the clock unknown"
+   ]
+  },
+  "al": {
+   "samples": 1562,
+   "stale": 50,
+   "ex": [
+    "suchet 05:20 drawn unknown, at the clock seen",
+    "suchet 05:30 drawn unknown, at the clock seen",
+    "suchet 05:40 drawn unknown, at the clock seen",
+    "santon 06:10 drawn seen, at the clock unknown",
+    "santon 06:20 drawn seen, at the clock unknown",
+    "santon 06:30 drawn seen, at the clock unknown",
+    "santon 06:40 drawn seen, at the clock unknown",
+    "santon 06:50 drawn seen, at the clock unknown",
+    "gqg 07:30 drawn unknown, at the clock seen",
+    "gqg 07:40 drawn unknown, at the clock seen"
+   ]
+  }
+ },
+ "onScreen": {
+  "terrain@300:fr": {
+   "unknown": 6,
+   "uncertain": 3,
+   "seen": 3,
+   "uncertainMarked": 0,
+   "uncertainIds": [
+    "prz",
+    "rg_inf",
+    "rg_cav"
+   ]
+  },
+  "terrain@300:al": {
+   "unknown": 17,
+   "uncertain": 0,
+   "seen": 1,
+   "uncertainMarked": 0,
+   "uncertainIds": []
+  },
+  "terrain@480:fr": {
+   "unknown": 5,
+   "uncertain": 3,
+   "seen": 5,
+   "uncertainMarked": 0,
+   "uncertainIds": [
+    "kienmayer",
+    "rg_inf",
+    "rg_cav"
+   ]
+  },
+  "terrain@480:al": {
+   "unknown": 12,
+   "uncertain": 1,
+   "seen": 5,
+   "uncertainMarked": 0,
+   "uncertainIds": [
+    "bourcier"
+   ]
+  },
+  "terrain@600:fr": {
+   "unknown": 6,
+   "uncertain": 2,
+   "seen": 5,
+   "uncertainMarked": 0,
+   "uncertainIds": [
+    "rg_inf",
+    "rg_cav"
+   ]
+  },
+  "terrain@600:al": {
+   "unknown": 13,
+   "uncertain": 2,
+   "seen": 3,
+   "uncertainMarked": 0,
+   "uncertainIds": [
+    "bourcier",
+    "rivaud"
+   ]
+  },
+  "hybrid@300:fr": {
+   "unknown": 6,
+   "uncertain": 3,
+   "seen": 3,
+   "uncertainMarked": 1,
+   "uncertainIds": [
+    "prz",
+    "rg_inf",
+    "rg_cav"
+   ]
+  },
+  "hybrid@300:al": {
+   "unknown": 17,
+   "uncertain": 0,
+   "seen": 1,
+   "uncertainMarked": 0,
+   "uncertainIds": []
+  },
+  "hybrid@480:fr": {
+   "unknown": 5,
+   "uncertain": 3,
+   "seen": 5,
+   "uncertainMarked": 2,
+   "uncertainIds": [
+    "kienmayer",
+    "rg_inf",
+    "rg_cav"
+   ]
+  },
+  "hybrid@480:al": {
+   "unknown": 12,
+   "uncertain": 1,
+   "seen": 5,
+   "uncertainMarked": 1,
+   "uncertainIds": [
+    "bourcier"
+   ]
+  },
+  "staff@300:fr": {
+   "unknown": 6,
+   "uncertain": 3,
+   "seen": 3,
+   "uncertainMarked": 3,
+   "uncertainIds": [
+    "prz",
+    "rg_inf",
+    "rg_cav"
+   ]
+  },
+  "staff@300:al": {
+   "unknown": 17,
+   "uncertain": 0,
+   "seen": 1,
+   "uncertainMarked": 0,
+   "uncertainIds": []
+  }
+ },
+ "viewshed": [
+  {
+   "hq": "gqg",
+   "ph": 0,
+   "p": [
+    177,
+    134
+   ],
+   "ms": 15.8,
+   "visibleShare": 0.3902,
+   "underFogTopShareOfVisible": 0.213,
+   "losAgree": 11,
+   "losDisagree": 1,
+   "ex": [
+    "milo LOS, not in viewshed"
+   ]
+  },
+  {
+   "hq": "gqg",
+   "ph": 6,
+   "p": [
+    309,
+    207
+   ],
+   "ms": 10.8,
+   "visibleShare": 0.3177,
+   "underFogTopShareOfVisible": 0.407,
+   "losAgree": 13,
+   "losDisagree": 0,
+   "ex": []
+  },
+  {
+   "hq": "gqg",
+   "ph": 7,
+   "p": [
+    307,
+    227
+   ],
+   "ms": 6.1,
+   "visibleShare": 0.1262,
+   "underFogTopShareOfVisible": 0.049,
+   "losAgree": 13,
+   "losDisagree": 0,
+   "ex": []
+  },
+  {
+   "hq": "gqg",
+   "ph": 8,
+   "p": [
+    294,
+    352
+   ],
+   "ms": 8.1,
+   "visibleShare": 0.0659,
+   "underFogTopShareOfVisible": 0.873,
+   "losAgree": 12,
+   "losDisagree": 1,
+   "ex": [
+    "milo LOS, not in viewshed"
+   ]
+  },
+  {
+   "hq": "ahq",
+   "ph": 0,
+   "p": [
+    408,
+    198
+   ],
+   "ms": 5.1,
+   "visibleShare": 0.0629,
+   "underFogTopShareOfVisible": 0.616,
+   "losAgree": 17,
+   "losDisagree": 1,
+   "ex": [
+    "santon LOS, not in viewshed"
+   ]
+  },
+  {
+   "hq": "ahq",
+   "ph": 3,
+   "p": [
+    293,
+    240
+   ],
+   "ms": 4,
+   "visibleShare": 0.0106,
+   "underFogTopShareOfVisible": 0,
+   "losAgree": 18,
+   "losDisagree": 0,
+   "ex": []
+  },
+  {
+   "hq": "ahq",
+   "ph": 4,
+   "p": [
+    303,
+    235
+   ],
+   "ms": 4.6,
+   "visibleShare": 0.0738,
+   "underFogTopShareOfVisible": 0,
+   "losAgree": 17,
+   "losDisagree": 1,
+   "ex": [
+    "sthilaire LOS, not in viewshed"
+   ]
+  },
+  {
+   "hq": "ahq",
+   "ph": 6,
+   "p": [
+    404,
+    220
+   ],
+   "ms": 4.4,
+   "visibleShare": 0.1072,
+   "underFogTopShareOfVisible": 0.693,
+   "losAgree": 18,
+   "losDisagree": 0,
+   "ex": []
+  },
+  {
+   "hq": "ahq",
+   "ph": 8,
+   "p": [
+    454,
+    190
+   ],
+   "ms": 4.1,
+   "visibleShare": 0.0476,
+   "underFogTopShareOfVisible": 0.729,
+   "losAgree": 18,
+   "losDisagree": 1,
+   "ex": [
+    "bourcier LOS, not in viewshed"
+   ]
+  },
+  {
+   "hq": "ahq",
+   "ph": 9,
+   "p": [
+    480,
+    148
+   ],
+   "ms": 3.9,
+   "visibleShare": 0.0502,
+   "underFogTopShareOfVisible": 0.811,
+   "losAgree": 17,
+   "losDisagree": 2,
+   "ex": [
+    "sthilaire LOS, not in viewshed",
+    "bourcier LOS, not in viewshed"
+   ]
+  }
+ ],
+ "eye": {
+  "gqg@510@1x": {
+   "factor": 1,
+   "eyeAboveGroundUnits": 0.0475,
+   "camFloorUnits": 1.8,
+   "camFloorM": 113.8,
+   "nearPlaneM": 63,
+   "targets": 13,
+   "drawnAgree": 13,
+   "drawnDisagree": 0,
+   "modelHidden": 7,
+   "hiddenButDrawnShows": 6,
+   "shows": [
+    "kienmayer",
+    "dok",
+    "lang",
+    "lich",
+    "rg_inf",
+    "rg_cav"
+   ],
+   "pxTall": [
+    [
+     "ahq",
+     4.2,
+     5.06
+    ],
+    [
+     "buxhowden",
+     2.8,
+     7.47
+    ],
+    [
+     "kienmayer",
+     2.5,
+     8.59
+    ],
+    [
+     "dok",
+     2.5,
+     8.51
+    ],
+    [
+     "lang",
+     3,
+     7
+    ],
+    [
+     "kamensky",
+     3.5,
+     6.06
+    ],
+    [
+     "prz",
+     3.2,
+     6.65
+    ],
+    [
+     "milo",
+     4.3,
+     4.91
+    ],
+    [
+     "kollo",
+     3.8,
+     5.59
+    ],
+    [
+     "lich",
+     4.3,
+     4.89
+    ],
+    [
+     "bag",
+     4.1,
+     5.23
+    ],
+    [
+     "rg_inf",
+     3,
+     6.99
+    ],
+    [
+     "rg_cav",
+     3.5,
+     6.04
+    ]
+   ]
+  },
+  "gqg@600@1x": {
+   "factor": 1,
+   "eyeAboveGroundUnits": 0.0475,
+   "camFloorUnits": 1.8,
+   "camFloorM": 113.8,
+   "nearPlaneM": 63,
+   "targets": 13,
+   "drawnAgree": 13,
+   "drawnDisagree": 0,
+   "modelHidden": 8,
+   "hiddenButDrawnShows": 6,
+   "shows": [
+    "ahq",
+    "buxhowden",
+    "kienmayer",
+    "dok",
+    "lang",
+    "rg_inf"
+   ],
+   "pxTall": [
+    [
+     "ahq",
+     3.7,
+     5.77
+    ],
+    [
+     "buxhowden",
+     2.8,
+     7.69
+    ],
+    [
+     "kienmayer",
+     2.5,
+     8.61
+    ],
+    [
+     "dok",
+     2.5,
+     8.57
+    ],
+    [
+     "lang",
+     3.1,
+     6.81
+    ],
+    [
+     "kamensky",
+     3.6,
+     5.84
+    ],
+    [
+     "prz",
+     3.1,
+     6.83
+    ],
+    [
+     "milo",
+     3.5,
+     5.99
+    ],
+    [
+     "kollo",
+     3.7,
+     5.8
+    ],
+    [
+     "lich",
+     5.2,
+     4.12
+    ],
+    [
+     "bag",
+     4.9,
+     4.31
+    ],
+    [
+     "rg_inf",
+     3.2,
+     6.73
+    ],
+    [
+     "rg_cav",
+     3.9,
+     5.4
+    ]
+   ]
+  },
+  "gqg@780@1x": {
+   "factor": 1,
+   "eyeAboveGroundUnits": 0.0475,
+   "camFloorUnits": 1.8,
+   "camFloorM": 113.8,
+   "nearPlaneM": 63,
+   "targets": 13,
+   "drawnAgree": 13,
+   "drawnDisagree": 0,
+   "modelHidden": 13,
+   "hiddenButDrawnShows": 0,
+   "shows": [],
+   "pxTall": [
+    [
+     "ahq",
+     5.1,
+     4.18
+    ],
+    [
+     "buxhowden",
+     5,
+     4.28
+    ],
+    [
+     "kienmayer",
+     4,
+     5.29
+    ],
+    [
+     "dok",
+     3.8,
+     5.62
+    ],
+    [
+     "lang",
+     5,
+     4.25
+    ],
+    [
+     "kamensky",
+     9.6,
+     2.2
+    ],
+    [
+     "prz",
+     5.5,
+     3.84
+    ],
+    [
+     "milo",
+     5.7,
+     3.75
+    ],
+    [
+     "kollo",
+     6.5,
+     3.27
+    ],
+    [
+     "lich",
+     5,
+     4.28
+    ],
+    [
+     "bag",
+     3.4,
+     6.28
+    ],
+    [
+     "rg_inf",
+     6,
+     3.53
+    ],
+    [
+     "rg_cav",
+     5.5,
+     3.89
+    ]
+   ]
+  },
+  "ahq@480@1x": {
+   "factor": 1,
+   "eyeAboveGroundUnits": 0.0475,
+   "camFloorUnits": 1.8,
+   "camFloorM": 113.8,
+   "nearPlaneM": 63,
+   "targets": 18,
+   "drawnAgree": 18,
+   "drawnDisagree": 0,
+   "modelHidden": 10,
+   "hiddenButDrawnShows": 4,
+   "shows": [
+    "vandamme",
+    "caffarelli",
+    "nansouty",
+    "dhautpoul"
+   ],
+   "pxTall": [
+    [
+     "gqg",
+     4,
+     5.28
+    ],
+    [
+     "sthilaire",
+     6.4,
+     3.32
+    ],
+    [
+     "vandamme",
+     6.5,
+     3.28
+    ],
+    [
+     "legrand",
+     4,
+     5.35
+    ],
+    [
+     "friant",
+     3.2,
+     6.67
+    ],
+    [
+     "bourcier",
+     3,
+     7.14
+    ],
+    [
+     "caffarelli",
+     4.9,
+     4.36
+    ],
+    [
+     "suchet",
+     4.2,
+     5.1
+    ],
+    [
+     "santon",
+     3.9,
+     5.42
+    ],
+    [
+     "kellermann",
+     6.2,
+     3.41
+    ],
+    [
+     "nansouty",
+     6.3,
+     3.37
+    ],
+    [
+     "dhautpoul",
+     6.2,
+     3.42
+    ],
+    [
+     "walther",
+     5,
+     4.24
+    ],
+    [
+     "rivaud",
+     4.8,
+     4.44
+    ],
+    [
+     "drouet",
+     6.9,
+     3.1
+    ],
+    [
+     "guard_inf",
+     4.5,
+     4.74
+    ],
+    [
+     "guard_cav",
+     5,
+     4.29
+    ],
+    [
+     "c_gren",
+     4.3,
+     4.96
+    ]
+   ]
+  },
+  "ahq@600@1x": {
+   "factor": 1,
+   "eyeAboveGroundUnits": 0.0475,
+   "camFloorUnits": 1.8,
+   "camFloorM": 113.8,
+   "nearPlaneM": 63,
+   "targets": 18,
+   "drawnAgree": 18,
+   "drawnDisagree": 0,
+   "modelHidden": 17,
+   "hiddenButDrawnShows": 1,
+   "shows": [
+    "vandamme"
+   ],
+   "pxTall": [
+    [
+     "gqg",
+     3.7,
+     5.77
+    ],
+    [
+     "sthilaire",
+     9.4,
+     2.25
+    ],
+    [
+     "vandamme",
+     18.8,
+     1.13
+    ],
+    [
+     "legrand",
+     4.7,
+     4.54
+    ],
+    [
+     "friant",
+     3.2,
+     6.64
+    ],
+    [
+     "bourcier",
+     2.9,
+     7.41
+    ],
+    [
+     "caffarelli",
+     5.2,
+     4.08
+    ],
+    [
+     "suchet",
+     3.9,
+     5.49
+    ],
+    [
+     "santon",
+     3.7,
+     5.72
+    ],
+    [
+     "kellermann",
+     6.2,
+     3.45
+    ],
+    [
+     "nansouty",
+     6.5,
+     3.28
+    ],
+    [
+     "dhautpoul",
+     6.4,
+     3.31
+    ],
+    [
+     "walther",
+     5.1,
+     4.16
+    ],
+    [
+     "rivaud",
+     7.4,
+     2.88
+    ],
+    [
+     "drouet",
+     8.7,
+     2.44
+    ],
+    [
+     "guard_inf",
+     4,
+     5.26
+    ],
+    [
+     "guard_cav",
+     4.4,
+     4.79
+    ],
+    [
+     "c_gren",
+     3.9,
+     5.5
+    ]
+   ]
+  },
+  "place@1x": {
+   "eyeY": 0.783,
+   "floor": 2.55,
+   "underFloor": true
+  },
+  "gqg@510@4x": {
+   "factor": 4,
+   "eyeAboveGroundUnits": 0.1899,
+   "camFloorUnits": 1.8,
+   "camFloorM": 28.4,
+   "nearPlaneM": 63,
+   "targets": 13,
+   "drawnAgree": 13,
+   "drawnDisagree": 0,
+   "modelHidden": 7,
+   "hiddenButDrawnShows": 7,
+   "shows": [
+    "buxhowden",
+    "kienmayer",
+    "dok",
+    "lang",
+    "lich",
+    "rg_inf",
+    "rg_cav"
+   ],
+   "pxTall": [
+    [
+     "ahq",
+     54.5,
+     5.06
+    ],
+    [
+     "buxhowden",
+     37.1,
+     7.47
+    ],
+    [
+     "kienmayer",
+     28.6,
+     8.59
+    ],
+    [
+     "dok",
+     31.2,
+     8.51
+    ],
+    [
+     "lang",
+     39.4,
+     7
+    ],
+    [
+     "kamensky",
+     44.9,
+     6.06
+    ],
+    [
+     "prz",
+     41.5,
+     6.65
+    ],
+    [
+     "milo",
+     56.3,
+     4.91
+    ],
+    [
+     "kollo",
+     49.4,
+     5.59
+    ],
+    [
+     "lich",
+     54.8,
+     4.89
+    ],
+    [
+     "bag",
+     52.8,
+     5.23
+    ],
+    [
+     "rg_inf",
+     39.5,
+     6.99
+    ],
+    [
+     "rg_cav",
+     45.7,
+     6.04
+    ]
+   ]
+  },
+  "gqg@600@4x": {
+   "factor": 4,
+   "eyeAboveGroundUnits": 0.1899,
+   "camFloorUnits": 1.8,
+   "camFloorM": 28.4,
+   "nearPlaneM": 63,
+   "targets": 13,
+   "drawnAgree": 13,
+   "drawnDisagree": 0,
+   "modelHidden": 8,
+   "hiddenButDrawnShows": 8,
+   "shows": [
+    "ahq",
+    "buxhowden",
+    "kienmayer",
+    "dok",
+    "lang",
+    "milo",
+    "rg_inf",
+    "rg_cav"
+   ],
+   "pxTall": [
+    [
+     "ahq",
+     51.5,
+     5.77
+    ],
+    [
+     "buxhowden",
+     35.8,
+     7.69
+    ],
+    [
+     "kienmayer",
+     28.4,
+     8.61
+    ],
+    [
+     "dok",
+     29.6,
+     8.57
+    ],
+    [
+     "lang",
+     40.4,
+     6.81
+    ],
+    [
+     "kamensky",
+     46.4,
+     5.84
+    ],
+    [
+     "prz",
+     40.4,
+     6.83
+    ],
+    [
+     "milo",
+     44.8,
+     5.99
+    ],
+    [
+     "kollo",
+     47.3,
+     5.8
+    ],
+    [
+     "lich",
+     67,
+     4.12
+    ],
+    [
+     "bag",
+     64.1,
+     4.31
+    ],
+    [
+     "rg_inf",
+     41,
+     6.73
+    ],
+    [
+     "rg_cav",
+     51.2,
+     5.4
+    ]
+   ]
+  },
+  "gqg@780@4x": {
+   "factor": 4,
+   "eyeAboveGroundUnits": 0.1899,
+   "camFloorUnits": 1.8,
+   "camFloorM": 28.4,
+   "nearPlaneM": 63,
+   "targets": 13,
+   "drawnAgree": 13,
+   "drawnDisagree": 0,
+   "modelHidden": 13,
+   "hiddenButDrawnShows": 0,
+   "shows": [],
+   "pxTall": [
+    [
+     "ahq",
+     69.6,
+     4.18
+    ],
+    [
+     "buxhowden",
+     66.9,
+     4.28
+    ],
+    [
+     "kienmayer",
+     46.7,
+     5.29
+    ],
+    [
+     "dok",
+     44,
+     5.62
+    ],
+    [
+     "lang",
+     65,
+     4.25
+    ],
+    [
+     "kamensky",
+     124.2,
+     2.2
+    ],
+    [
+     "prz",
+     71.9,
+     3.84
+    ],
+    [
+     "milo",
+     73.1,
+     3.75
+    ],
+    [
+     "kollo",
+     84.5,
+     3.27
+    ],
+    [
+     "lich",
+     64.4,
+     4.28
+    ],
+    [
+     "bag",
+     44,
+     6.28
+    ],
+    [
+     "rg_inf",
+     78.2,
+     3.53
+    ],
+    [
+     "rg_cav",
+     71.1,
+     3.89
+    ]
+   ]
+  },
+  "ahq@480@4x": {
+   "factor": 4,
+   "eyeAboveGroundUnits": 0.1899,
+   "camFloorUnits": 1.8,
+   "camFloorM": 28.4,
+   "nearPlaneM": 63,
+   "targets": 18,
+   "drawnAgree": 18,
+   "drawnDisagree": 0,
+   "modelHidden": 10,
+   "hiddenButDrawnShows": 7,
+   "shows": [
+    "sthilaire",
+    "vandamme",
+    "caffarelli",
+    "kellermann",
+    "nansouty",
+    "dhautpoul",
+    "drouet"
+   ],
+   "pxTall": [
+    [
+     "gqg",
+     52.4,
+     5.28
+    ],
+    [
+     "sthilaire",
+     83.1,
+     3.32
+    ],
+    [
+     "vandamme",
+     83.7,
+     3.28
+    ],
+    [
+     "legrand",
+     51.7,
+     5.35
+    ],
+    [
+     "friant",
+     41.4,
+     6.67
+    ],
+    [
+     "bourcier",
+     38.7,
+     7.14
+    ],
+    [
+     "caffarelli",
+     62.8,
+     4.36
+    ],
+    [
+     "suchet",
+     48.5,
+     5.1
+    ],
+    [
+     "santon",
+     51,
+     5.42
+    ],
+    [
+     "kellermann",
+     80.9,
+     3.41
+    ],
+    [
+     "nansouty",
+     81.6,
+     3.37
+    ],
+    [
+     "dhautpoul",
+     81,
+     3.42
+    ],
+    [
+     "walther",
+     64.6,
+     4.24
+    ],
+    [
+     "rivaud",
+     62.2,
+     4.44
+    ],
+    [
+     "drouet",
+     89.1,
+     3.1
+    ],
+    [
+     "guard_inf",
+     58.3,
+     4.74
+    ],
+    [
+     "guard_cav",
+     64.4,
+     4.29
+    ],
+    [
+     "c_gren",
+     55.7,
+     4.96
+    ]
+   ]
+  },
+  "ahq@600@4x": {
+   "factor": 4,
+   "eyeAboveGroundUnits": 0.1899,
+   "camFloorUnits": 1.8,
+   "camFloorM": 28.4,
+   "nearPlaneM": 63,
+   "targets": 18,
+   "drawnAgree": 18,
+   "drawnDisagree": 0,
+   "modelHidden": 17,
+   "hiddenButDrawnShows": 1,
+   "shows": [
+    "vandamme"
+   ],
+   "pxTall": [
+    [
+     "gqg",
+     47.9,
+     5.77
+    ],
+    [
+     "sthilaire",
+     121.2,
+     2.25
+    ],
+    [
+     "vandamme",
+     235.6,
+     1.13
+    ],
+    [
+     "legrand",
+     60.6,
+     4.54
+    ],
+    [
+     "friant",
+     41.2,
+     6.64
+    ],
+    [
+     "bourcier",
+     37.3,
+     7.41
+    ],
+    [
+     "caffarelli",
+     67.7,
+     4.08
+    ],
+    [
+     "suchet",
+     45.7,
+     5.49
+    ],
+    [
+     "santon",
+     48.3,
+     5.72
+    ],
+    [
+     "kellermann",
+     79.9,
+     3.45
+    ],
+    [
+     "nansouty",
+     84.3,
+     3.28
+    ],
+    [
+     "dhautpoul",
+     83.4,
+     3.31
+    ],
+    [
+     "walther",
+     66.4,
+     4.16
+    ],
+    [
+     "rivaud",
+     96,
+     2.88
+    ],
+    [
+     "drouet",
+     112.9,
+     2.44
+    ],
+    [
+     "guard_inf",
+     52.6,
+     5.26
+    ],
+    [
+     "guard_cav",
+     57.7,
+     4.79
+    ],
+    [
+     "c_gren",
+     50.2,
+     5.5
+    ]
+   ]
+  },
+  "place@4x": {
+   "eyeY": 3.133,
+   "floor": 7.221,
+   "underFloor": true
+  },
+  "gqg@510@10.33x": {
+   "factor": 10.32642489706367,
+   "eyeAboveGroundUnits": 0.4902,
+   "camFloorUnits": 1.8,
+   "camFloorM": 11,
+   "nearPlaneM": 63,
+   "targets": 13,
+   "drawnAgree": 13,
+   "drawnDisagree": 0,
+   "modelHidden": 7,
+   "hiddenButDrawnShows": 7,
+   "shows": [
+    "buxhowden",
+    "kienmayer",
+    "dok",
+    "lang",
+    "lich",
+    "rg_inf",
+    "rg_cav"
+   ],
+   "pxTall": [
+    [
+     "ahq",
+     58.5,
+     5.06
+    ],
+    [
+     "buxhowden",
+     40.6,
+     7.47
+    ],
+    [
+     "kienmayer",
+     19,
+     8.59
+    ],
+    [
+     "dok",
+     25.8,
+     8.51
+    ],
+    [
+     "lang",
+     39,
+     7
+    ],
+    [
+     "kamensky",
+     40.7,
+     6.06
+    ],
+    [
+     "prz",
+     40.7,
+     6.65
+    ],
+    [
+     "milo",
+     56.1,
+     4.91
+    ],
+    [
+     "kollo",
+     49.1,
+     5.59
+    ],
+    [
+     "lich",
+     47.1,
+     4.89
+    ],
+    [
+     "bag",
+     52.8,
+     5.23
+    ],
+    [
+     "rg_inf",
+     38.9,
+     6.99
+    ],
+    [
+     "rg_cav",
+     45.5,
+     6.04
+    ]
+   ]
+  },
+  "gqg@600@10.33x": {
+   "factor": 10.32642489706367,
+   "eyeAboveGroundUnits": 0.4902,
+   "camFloorUnits": 1.8,
+   "camFloorM": 11,
+   "nearPlaneM": 63,
+   "targets": 13,
+   "drawnAgree": 13,
+   "drawnDisagree": 0,
+   "modelHidden": 8,
+   "hiddenButDrawnShows": 7,
+   "shows": [
+    "ahq",
+    "buxhowden",
+    "dok",
+    "lang",
+    "milo",
+    "rg_inf",
+    "rg_cav"
+   ],
+   "pxTall": [
+    [
+     "ahq",
+     56.3,
+     5.77
+    ],
+    [
+     "buxhowden",
+     38.5,
+     7.69
+    ],
+    [
+     "kienmayer",
+     18.9,
+     8.61
+    ],
+    [
+     "dok",
+     21.3,
+     8.57
+    ],
+    [
+     "lang",
+     39,
+     6.81
+    ],
+    [
+     "kamensky",
+     42.3,
+     5.84
+    ],
+    [
+     "prz",
+     39.6,
+     6.83
+    ],
+    [
+     "milo",
+     38.6,
+     5.99
+    ],
+    [
+     "kollo",
+     44.9,
+     5.8
+    ],
+    [
+     "lich",
+     66.3,
+     4.12
+    ],
+    [
+     "bag",
+     63.9,
+     4.31
+    ],
+    [
+     "rg_inf",
+     40.5,
+     6.73
+    ],
+    [
+     "rg_cav",
+     50.7,
+     5.4
+    ]
+   ]
+  },
+  "gqg@780@10.33x": {
+   "factor": 10.32642489706367,
+   "eyeAboveGroundUnits": 0.4902,
+   "camFloorUnits": 1.8,
+   "camFloorM": 11,
+   "nearPlaneM": 63,
+   "targets": 13,
+   "drawnAgree": 13,
+   "drawnDisagree": 0,
+   "modelHidden": 13,
+   "hiddenButDrawnShows": 0,
+   "shows": [],
+   "pxTall": [
+    [
+     "ahq",
+     78.6,
+     4.18
+    ],
+    [
+     "buxhowden",
+     74.8,
+     4.28
+    ],
+    [
+     "kienmayer",
+     31.8,
+     5.29
+    ],
+    [
+     "dok",
+     30.4,
+     5.62
+    ],
+    [
+     "lang",
+     64.7,
+     4.25
+    ],
+    [
+     "kamensky",
+     117,
+     2.2
+    ],
+    [
+     "prz",
+     71.5,
+     3.84
+    ],
+    [
+     "milo",
+     69.2,
+     3.75
+    ],
+    [
+     "kollo",
+     83.2,
+     3.27
+    ],
+    [
+     "lich",
+     62.6,
+     4.28
+    ],
+    [
+     "bag",
+     44,
+     6.28
+    ],
+    [
+     "rg_inf",
+     77,
+     3.53
+    ],
+    [
+     "rg_cav",
+     71.3,
+     3.89
+    ]
+   ]
+  },
+  "ahq@480@10.33x": {
+   "factor": 10.32642489706367,
+   "eyeAboveGroundUnits": 0.4902,
+   "camFloorUnits": 1.8,
+   "camFloorM": 11,
+   "nearPlaneM": 63,
+   "targets": 18,
+   "drawnAgree": 18,
+   "drawnDisagree": 0,
+   "modelHidden": 10,
+   "hiddenButDrawnShows": 5,
+   "shows": [
+    "vandamme",
+    "caffarelli",
+    "nansouty",
+    "dhautpoul",
+    "drouet"
+   ],
+   "pxTall": [
+    [
+     "gqg",
+     52.3,
+     5.28
+    ],
+    [
+     "sthilaire",
+     82.5,
+     3.32
+    ],
+    [
+     "vandamme",
+     79.6,
+     3.28
+    ],
+    [
+     "legrand",
+     51.1,
+     5.35
+    ],
+    [
+     "friant",
+     41,
+     6.67
+    ],
+    [
+     "bourcier",
+     38.6,
+     7.14
+    ],
+    [
+     "caffarelli",
+     59.5,
+     4.36
+    ],
+    [
+     "suchet",
+     33.1,
+     5.1
+    ],
+    [
+     "santon",
+     51,
+     5.42
+    ],
+    [
+     "kellermann",
+     80.3,
+     3.41
+    ],
+    [
+     "nansouty",
+     78.8,
+     3.37
+    ],
+    [
+     "dhautpoul",
+     81.2,
+     3.42
+    ],
+    [
+     "walther",
+     61,
+     4.24
+    ],
+    [
+     "rivaud",
+     62.2,
+     4.44
+    ],
+    [
+     "drouet",
+     88,
+     3.1
+    ],
+    [
+     "guard_inf",
+     58.3,
+     4.74
+    ],
+    [
+     "guard_cav",
+     64.5,
+     4.29
+    ],
+    [
+     "c_gren",
+     55.5,
+     4.96
+    ]
+   ]
+  },
+  "ahq@600@10.33x": {
+   "factor": 10.32642489706367,
+   "eyeAboveGroundUnits": 0.4902,
+   "camFloorUnits": 1.8,
+   "camFloorM": 11,
+   "nearPlaneM": 63,
+   "targets": 18,
+   "drawnAgree": 18,
+   "drawnDisagree": 0,
+   "modelHidden": 17,
+   "hiddenButDrawnShows": 1,
+   "shows": [
+    "vandamme"
+   ],
+   "pxTall": [
+    [
+     "gqg",
+     48.4,
+     5.77
+    ],
+    [
+     "sthilaire",
+     113.8,
+     2.25
+    ],
+    [
+     "vandamme",
+     198.1,
+     1.13
+    ],
+    [
+     "legrand",
+     58.5,
+     4.54
+    ],
+    [
+     "friant",
+     38.9,
+     6.64
+    ],
+    [
+     "bourcier",
+     36.9,
+     7.41
+    ],
+    [
+     "caffarelli",
+     67,
+     4.08
+    ],
+    [
+     "suchet",
+     32.2,
+     5.49
+    ],
+    [
+     "santon",
+     48.3,
+     5.72
+    ],
+    [
+     "kellermann",
+     79.5,
+     3.45
+    ],
+    [
+     "nansouty",
+     84.6,
+     3.28
+    ],
+    [
+     "dhautpoul",
+     83,
+     3.31
+    ],
+    [
+     "walther",
+     65.7,
+     4.16
+    ],
+    [
+     "rivaud",
+     95.1,
+     2.88
+    ],
+    [
+     "drouet",
+     110.2,
+     2.44
+    ],
+    [
+     "guard_inf",
+     52.7,
+     5.26
+    ],
+    [
+     "guard_cav",
+     57.7,
+     4.79
+    ],
+    [
+     "c_gren",
+     50,
+     5.5
+    ]
+   ]
+  },
+  "place@10.33x": {
+   "eyeY": 8.089,
+   "floor": 11.878,
+   "underFloor": true
+  }
+ }
+}
