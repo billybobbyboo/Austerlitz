@@ -5690,10 +5690,16 @@ function drapeTri(A,B,C,n,lift,v,idx){   /* a flat triangle split n x n, every v
     idx.push(p0,p1,p2); if(j<n-i-1) idx.push(p1,row[i+1]+j+1,p2); }
 }
 function drapedRibbon(mapPts,o,add,mats){
-  var wp=mapPts.map(function(p){ var w=o.world?p:W(p[0],p[1]); return new THREE.Vector3(w[0],0,w[1]); });
+  var wp=mapPts.map(function(p){ var w=o.world?p:W(p[0],p[1]); return new THREE.Vector3(w[0],0,w[1]); }), tOrig=null;
+  if(o.dense){   /* Stage 4D: points added along every segment longer than o.dense units, so the curve keeps to the path's
+                    straight runs and turns close to its corners; tOrig, each of the path's own points' curve parameter */
+    var dp=[wp[0]], ix=[0];
+    for(var q=1;q<wp.length;q++){ var sl=wp[q].distanceTo(wp[q-1]), ns=Math.max(1,Math.ceil(sl/o.dense));
+      for(var e=1;e<=ns;e++) dp.push(wp[q-1].clone().lerp(wp[q],e/ns)); ix.push(dp.length-1); }
+    wp=dp; tOrig=ix.map(function(k){ return k/(wp.length-1); }); }
   var curve=wp.length>2?new THREE.CatmullRomCurve3(wp,false,"centripetal"):new THREE.LineCurve3(wp[0],wp[1]);
   var L=curve.getLength(), headL=o.head?Math.min(o.headL,L*0.6):0, headW=o.head?o.headW*headL/o.headL:0;
-  var uEnd=(L-headL)/L, runs=o.runs||[[0,1]], lift=o.lift, out={curve:curve,len:L,uEnd:uEnd,headL:headL,headW:headW,layers:[]};
+  var uEnd=(L-headL)/L, runs=o.runs||[[0,1]], lift=o.lift, out={curve:curve,len:L,uEnd:uEnd,headL:headL,headW:headW,layers:[],tOrig:tOrig};
   [[1.34,o.edge,0.5,-0.06],[1.0,o.col,1.0,0]].forEach(function(layer,li){
     var sc=layer[0], ly=lift+layer[3], v=[], idx=[];
     var nRows=0;
@@ -5757,7 +5763,7 @@ function buildArrow(a){
   var w = a.kind==="attack"?[2.0,2.6] : a.kind==="counter"?[1.8,2.3] : [1.3,1.6];
   var r=drapedRibbon(pts,{w0:w[0],w1:w[1],side:a.side,head:a.side==="al"?"chevron":"plain",headW:7.5,headL:6.5,heads:ovHeads,
     runs:a.kind==="axis"?dashRuns(9,0.62):null,   /* an intended route: broken; a retreat happened, so it is solid */
-    full:!!a.leg,   /* Stage 4D: a derived arrow's shaft is built to its end, for the draw-on */
+    full:!!a.leg, dense:a.leg?2:0,   /* Stage 4D: a derived arrow's shaft built to its end, and kept to its path, for the draw-on */
     col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
   var mid=r.curve.getPointAt(0.5), lb=null;
   if(a.label) lb=addOverlayLabel(a.label,new THREE.Vector3(mid.x,groundY(mid.x,mid.z)+2.4,mid.z));
@@ -5865,7 +5871,7 @@ function arrowProgress(a,t){
 /* the arc length (fraction of the curve) of the drawn point nearest the formation, searched between the curve's points that
    bound its segment of the path (the curve passes through every point of the path) */
 function drawOnU(r,P,q){
-  var c=r.curve, S=P.segs, s0=Math.floor(P.g), t0=Math.min(S,s0)/S, t1=Math.min(S,s0+1)/S, best=t0, bd=1e18, v=new THREE.Vector3(), N=48, a, b, i;
+  var c=r.curve, S=P.segs, s0=Math.min(S-1,Math.floor(P.g)), TO=r.tOrig, t0=TO?TO[s0]:s0/S, t1=TO?TO[s0+1]:(s0+1)/S, best=t0, bd=1e18, v=new THREE.Vector3(), N=48, a, b, i;
   for(i=0;i<=N;i++){ var t=t0+(t1-t0)*i/N; c.getPoint(t,v); var e=(v.x-q[0])*(v.x-q[0])+(v.z-q[1])*(v.z-q[1]); if(e<bd){ bd=e; best=t; } }
   a=Math.max(t0,best-(t1-t0)/N); b=Math.min(t1,best+(t1-t0)/N);
   for(i=0;i<24;i++){ var m1=a+(b-a)/3, m2=b-(b-a)/3; c.getPoint(m1,v); var e1=(v.x-q[0])*(v.x-q[0])+(v.z-q[1])*(v.z-q[1]); c.getPoint(m2,v); var e2=(v.x-q[0])*(v.x-q[0])+(v.z-q[1])*(v.z-q[1]);
