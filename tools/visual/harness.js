@@ -179,7 +179,7 @@ async function interact(page,it,vp){
        pressed; and the Watch view of the low Pratzen case held in a dwell at the phase-3 event start 09:00 keeps every threshold
        of its view (the darkness limit, map text at AA as rendered, drops within its limit), its event lit and named */
     if(await first.evaluate(()=>typeof DWELL!=="undefined")){
-      const pr=[];
+      const pr=[], T=require("./thresholds.js");
       await first.evaluate(()=>{ setPresentation("study"); stopPlay(); setClock(730,{instant:true,force:true,camera:false}); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
       await first.keyboard.press(" "); await first.waitForTimeout(600);
       const pl=await first.evaluate(()=>({playing:playing,speed:speed,clock:clock,pressed:[].filter.call(document.querySelectorAll(".spd-btn"),b=>b.getAttribute("aria-pressed")==="true").map(b=>b.dataset.s)}));
