@@ -181,7 +181,7 @@ async function interact(page,it,vp){
     if(await first.evaluate(()=>typeof DWELL!=="undefined")){
       const pr=[], T=require("./thresholds.js");
       await first.evaluate(()=>{ setPresentation("study"); stopPlay(); setClock(730,{instant:true,force:true,camera:false}); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
-      await first.keyboard.press(" "); await first.waitForTimeout(600);
+      await first.keyboard.press(" "); await first.waitForFunction(()=>clock>730,null,{timeout:20000}).catch(()=>{});   /* a frame or two (software WebGL) */
       const pl=await first.evaluate(()=>({playing:playing,speed:speed,clock:clock,pressed:[].filter.call(document.querySelectorAll(".spd-btn"),b=>b.getAttribute("aria-pressed")==="true").map(b=>b.dataset.s)}));
       await first.keyboard.press(" "); const pl2=await first.evaluate(()=>playing);
       pr.push("Space: playing "+pl.playing+" at "+pl.speed+"x (pressed "+pl.pressed.join(",")+"), clock 12:10 -> "+pl.clock.toFixed(2)+"; Space again: playing "+pl2);
