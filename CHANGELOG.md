@@ -86,7 +86,10 @@
 - `npm test`: all 9 suites pass, and the height guard.
 - `npm run check:data`: all 113 data declarations byte-identical to `archive/spine-6b2cccd4.html`.
 - `npm run check:chronology`: 0 errors.
-- `npm run check:visual`: VISUAL_RESULT
+- `npm run check:visual`: all checks passed, 20 views, the day's light (24 renders, the largest solid near-black 0.014%), the
+  valley fog's hours (the Field vantage at 08:00 and the low Pratzen view at 08:30: 0.000% solid, 0 below AA, drops 10 and 3 within
+  11 and 13, 15 formations drawn under the fog in each, the fog at most its cap 0.55), the self-test 141 of 141; the slider and
+  the 3E keys by real key presses. The two Canvas2D `willReadFrequently` warnings are the known ones.
 - `npm run check:contrast`: 4,244 text elements in 28 states, 0 below AA, 0 below 10.5 px (4,227 on 4B; the 17 more include the
   legend's new row).
 - `npm run check:baseline`: moved to this build; passes.
