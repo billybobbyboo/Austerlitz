@@ -44,3 +44,12 @@ clock and the camera through the page's own functions; on the 4C build the phase
 |---|---|---|
 | `4d-before.json`, `4d-after.json` | I (4D) | `report-4d.js --json`: per harness view the derived arrows drawn whole, in part and not yet, and the drops; the day's length at each speed; section D.2's table on the build (the phase glide before 4D, the continuous follow and the dwells with it) at ½× and 1×; the draw-on's largest distance from the formation per derived arrow |
 | `4d-report.md` | I (4D) | `report-4d.js --from 4d-after.json --before 4d-before.json --md`: the two side by side |
+
+**Stage 4E** (smoke, ice, the horizon and the palette, implemented): `report-4e.js` on the 4D build as merged (#30, md5 `9b13adbf…`) and on
+the 4E build.
+
+| file | section | script |
+|---|---|---|
+| `4e-before.json`, `4e-after.json` | I (4E) | `report-4e.js --json`: per landscape view at its factor and four at 1x and 10.33x, the smoke's sprites and their share of the free rectangle (`measure.js` `smokeShare`), solid near-black, mean luminance, map-text contrast as rendered, drops; in the low Pratzen view at 1x, 4x and 10.33x the horizon (the gap under it and its colour against the sky above) |
+| `4e-report.md` | I (4E) | `report-4e.js --from 4e-after.json --before 4e-before.json --md`: the two side by side |
+| `4e-sheet-before.jpg`, `4e-sheet.jpg` | I (4E) | `report-4e.js --sheet`: six views on the 4D build and on the 4E build (the smoke in the close and low views; the meres in the phase-8 Overview) |

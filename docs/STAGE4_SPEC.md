@@ -952,12 +952,15 @@ Implemented in `app.js` (`SMOKE`, `smokeAmount`, `smokePlace`; `SPRITE_COL`; `LI
 sky's horizon the fog colour), `world.js` (`WATER_COL`, `ICE` and the shore ice; `LAND_COL`; `COVER_KEYS`), `tokens.js`
 (`sym.paperMap.ground`, `contour`, `marsh`), with these changes found while building it, each measured (`tools/stage4/report-4e.js`,
 `docs/stage4-evidence/4e-report.md`, `4e-before.json`, `4e-after.json`, `4e-sheet.jpg`, `4e-sheet-before.jpg`; `CHANGELOG.md`, Stage 4E):
-- **The smoke's cap** shrinks the puffs largest on screen to one common size, found by bisection, so the share stays under the cap;
-  none is culled or made fainter for it. The close and low views reach the cap (24%); every other view is under 10% with no puff shrunk.
-- **The horizon.** The dome was centred on the world's origin: from a high eye (the relief drawn 10.33x) the level horizon met the
-  dome above its equator, where the sky darkens, so the hazed far edge of the apron showed a band under a darker sky. The dome is
-  centred on the eye; its horizon colour is the fog colour itself (in sRGB: the sky's colours are sRGB, the fog's linear). No ring
-  of distant relief (decision 80).
+- **The smoke's cap** shrinks the puffs largest on screen to one common size, found by bisection on the puffs as placed (a first
+  estimate from their provisional heights let one view reach 25.06%), so the share stays at 24% or under; none is culled or made
+  fainter for it. The close and low views reach it (before 4E 27-54%); every other view is under 9%, as before.
+- **The horizon** already met §F.2 on the 4D build: in the low Pratzen view the gap under the horizon is within 4.4 (4x) and 5.4
+  (10.33x) of the sky above it, before and after 4E (at 1x the horizon is above the screen). 4E makes it hold by construction: the
+  dome's horizon colour is the fog colour itself (converted to sRGB: the sky's colours are sRGB, the fog's linear; an unconverted
+  first attempt drew a dark band, 55-75), and the dome is centred on the eye, so its equator is the eye's horizon however high the
+  eye stands (centred on the origin, a high eye sees the dome above its equator below the level horizon). No ring of distant relief
+  (decision 80).
 - **The shore ice is the landscape's**: on the paper map the meres are drawn as before (the paper map unchanged).
 - **The palette needed no rebalancing**: the Field vantage's median luminance through the day at 4x is 61-71 at 10:00-16:00, inside
   its range before Stage 4 (41-85); only the valley fog's hours (08:00-09:05, 4C) are brighter, by design. The hues are unchanged.
