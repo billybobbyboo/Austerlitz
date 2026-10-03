@@ -1,10 +1,10 @@
 {
  "html": "austerlitz-command-map.html",
- "when": "2026-10-03T09:49:26.876Z",
+ "when": "2026-10-03T11:27:03.706Z",
  "views": {
   "overview-field": {
    "solidBlack": 0,
-   "meanLum": 76.3,
+   "meanLum": 76.4,
    "contrast": {
     "min": 8.32,
     "belowAA": 0
@@ -32,7 +32,7 @@
   },
   "close-sokolnitz": {
    "solidBlack": 0,
-   "meanLum": 126.9,
+   "meanLum": 127,
    "contrast": {
     "min": 7.58,
     "belowAA": 0
@@ -45,8 +45,8 @@
    "dropLimit": 18
   },
   "pratzen-low": {
-   "solidBlack": 0.0003,
-   "meanLum": 87.7,
+   "solidBlack": 0.0002,
+   "meanLum": 87.9,
    "contrast": {
     "min": 11.94,
     "belowAA": 0
@@ -60,7 +60,7 @@
   },
   "selected-formation": {
    "solidBlack": 0,
-   "meanLum": 61.1,
+   "meanLum": 61.2,
    "contrast": {
     "min": 7.57,
     "belowAA": 0
@@ -88,7 +88,7 @@
   },
   "hybrid-dimmed": {
    "solidBlack": 0.00005,
-   "meanLum": 58.4,
+   "meanLum": 58.5,
    "contrast": {
     "min": 6.49,
     "belowAA": 0
@@ -116,7 +116,7 @@
   },
   "pratzen-low-10x": {
    "solidBlack": 0,
-   "meanLum": 109.1,
+   "meanLum": 109.2,
    "contrast": {
     "min": 8,
     "belowAA": 0
@@ -214,7 +214,7 @@
   },
   "overview-field@10.33x": {
    "solidBlack": 0,
-   "meanLum": 87.3,
+   "meanLum": 87.4,
    "contrast": {
     "min": 7.95,
     "belowAA": 0
@@ -228,7 +228,7 @@
   },
   "close-sokolnitz@10.33x": {
    "solidBlack": 0,
-   "meanLum": 146,
+   "meanLum": 146.1,
    "contrast": {
     "min": 7.67,
     "belowAA": 0
@@ -242,7 +242,7 @@
   },
   "pratzen-low@10.33x": {
    "solidBlack": 0,
-   "meanLum": 109.1,
+   "meanLum": 109.2,
    "contrast": {
     "min": 8,
     "belowAA": 0

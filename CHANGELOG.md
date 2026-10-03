@@ -2,7 +2,7 @@
 
 ## 2026-10 · Stage 4E: smoke, ice, the horizon and the palette tables (docs/STAGE4_SPEC.md §E, §F, §G, §I; owner decisions 77, 79, 80, 84)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,416,102 bytes, md5 `66334482c59c5d84e778455f419e1684`**
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,416,393 bytes, md5 `4c8a558f5334b26548635588e83731b9`**
 (was 1,402,090 bytes, md5 `9b13adbf…`, Stage 4D). With it, every part of Stage 4 is built (4B-4E).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. No data,
@@ -53,11 +53,11 @@
 
 **Per view, before and after** (`tools/stage4/report-4e.js`; `docs/stage4-evidence/4e-report.md`, `4e-sheet-before.jpg`, `4e-sheet.jpg`)
 - **The smoke's share** of the free rectangle: the Sokolnitz close view 53.3% to 24.0% (53.6% and 52.0% at 1x and 10.33x, to 24.0%),
-  the low Pratzen view 41.5% to 24.0% (42.3% at 1x; 27.4% at 10.33x, to 24.0%); every other view under 9%, about as before (the Field
+  the low Pratzen view 41.4% to 24.0% (42.3% at 1x; 27.4% at 10.33x, to 24.0%); every other view under 9%, about as before (the Field
   vantage 8.7% to 8.5%). Sprites: three puffs where one sprite stood.
-- **Solid near-black** unchanged in every view (at most 0.030%); **map text** 0 below AA, the lowest contrast 6.49 (unchanged), each view
+- **Solid near-black** at most 0.020% in every view (before at most 0.030%; the figures' black, decision 84); **map text** 0 below AA, the lowest contrast 6.49 (unchanged), each view
   at most 0.07 lower than before (overview-field at 1x, 8.34 to 8.27; pratzen-low at 10.33x 7.87 to 8.00, higher); **drops** unchanged in every view.
-- **The ground's mean luminance** within 2.7 of before in every view (the smoke thinner: pratzen-low 90.4 to 87.7).
+- **The ground's mean luminance** within 2.6 of before in every view (the smoke thinner: pratzen-low at 1x 74.1 to 71.5).
 - **The horizon** in the low Pratzen view: 32 columns with a 35 px gap at 4x and 10.33x, within 4.4 and 5.4 of the sky (before: the same).
 
 **Tests** (none loosened; new or stricter)
