@@ -1505,7 +1505,7 @@ function drapedRibbon(mapPts,o,add,mats){
     wp=dp; tOrig=ix.map(function(k){ return k/(wp.length-1); }); }
   var curve=wp.length>2?new THREE.CatmullRomCurve3(wp,false,"centripetal"):new THREE.LineCurve3(wp[0],wp[1]);
   var L=curve.getLength(), headL=o.head?Math.min(o.headL,L*0.6):0, headW=o.head?o.headW*headL/o.headL:0;
-  var uEnd=(L-headL)/L, runs=o.runs||[[0,1]], lift=o.lift, out={curve:curve,len:L,uEnd:uEnd,headL:headL,headW:headW,layers:[],tOrig:tOrig};
+  var uEnd=(L-headL)/L, uT=o.uTaper||uEnd, runs=o.runs||[[0,1]], lift=o.lift, out={curve:curve,len:L,uEnd:uEnd,headL:headL,headW:headW,layers:[],tOrig:tOrig}, ord=o.order||0;
   [[1.34,o.edge,0.5,-0.06],[1.0,o.col,1.0,0]].forEach(function(layer,li){
     var sc=layer[0], ly=lift+layer[3], v=[], idx=[];
     var nRows=0;
@@ -1516,17 +1516,17 @@ function drapedRibbon(mapPts,o,add,mats){
       for(var i=0;i<=n;i++){
         var u=u0+(u1-u0)*i/n, pt=curve.getPointAt(u), tg=curve.getTangentAt(u), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1;
         nx/=nl; nz/=nl;
-        var hw=(o.w0+(o.w1-o.w0)*(uEnd>0?Math.min(1,u/uEnd):0))*sc/2;
+        var hw=(o.w0+(o.w1-o.w0)*(uT>0?Math.min(1,u/uT):0))*sc/2;
         for(var k=0;k<=m;k++){ var f=-1+2*k/m, x=pt.x+nx*hw*f, z=pt.z+nz*hw*f; v.push(x,groundY(x,z)+ly,z); }
       }
       for(i=0;i<n;i++) for(k=0;k<m;k++){ var a=first+i*(m+1)+k, b=a+m+1; idx.push(a,b,a+1, a+1,b,b+1); }
     });
-    var sh=drapeMesh(v,idx,layer[1],layer[2],ly,12+li,mats,"shaft"), lay={shaft:sh,cols:Math.max(2,Math.ceil(Math.max(o.w0,o.w1)*sc/1.0)),rows:nRows,sc:sc,ly:ly,w0:o.w0,w1:o.w1};
+    var sh=drapeMesh(v,idx,layer[1],layer[2],ly,12+li+ord,mats,"shaft"), lay={shaft:sh,cols:Math.max(2,Math.ceil(Math.max(o.w0,o.w1)*sc/1.0)),rows:nRows,sc:sc,ly:ly,w0:o.w0,w1:o.w1,uT:uT};
     add(sh); out.layers.push(lay);
-    if(o.full) shaftEnd(lay,curve,L,uEnd,uEnd);
+    if(o.full) shaftEnd(lay,curve,L,uT,uEnd);
     if(o.head){
       var H=ribbonHead(curve,1,headL,headW,sc,ly,o.head);
-      var hm=drapeMesh(H.v,H.idx,layer[1],layer[2],ly,14+li,mats,"head");
+      var hm=drapeMesh(H.v,H.idx,layer[1],layer[2],ly,14+li+ord,mats,"head");
       hm.userData.head=o.head; hm.userData.side=li===1?o.side:null; hm.userData.tip=H.tip; hm.userData.base=H.base; if(H.notch) hm.userData.notch=H.notch;
       add(hm); lay.head=hm;
       if(li===0&&o.heads) o.heads.push(hm);   /* the casing's head mesh: labels keep clear of it (2D) */
@@ -1535,7 +1535,7 @@ function drapedRibbon(mapPts,o,add,mats){
   return out;
 }
 /* Stage 4D: a full-length shaft (o.full) drawn from its start to arc length u: the rows up to u, the last of them moved to
-   exactly u (draped, at the shaft's width there); the row moved before is put back first */
+   exactly u (draped, at the shaft's width there, uT the arc length where its taper ends); the row moved before is put back first */
 function shaftEnd(lay,curve,L,uEnd,u){
   var g=lay.shaft.geometry, A=g.attributes.position, m=lay.cols, n=lay.rows, per=(m+1)*3;
   if(lay.moved){ A.array.set(lay.moved.v,lay.moved.row*per); lay.moved=null; }
@@ -1569,11 +1569,11 @@ function buildArrow(a){
   var w = a.kind==="attack"?[2.0,2.6] : a.kind==="counter"?[1.8,2.3] : [1.3,1.6];
   var r=drapedRibbon(pts,{w0:w[0],w1:w[1],side:a.side,head:a.side==="al"?"chevron":"plain",headW:7.5,headL:6.5,heads:ovHeads,
     runs:a.kind==="axis"?dashRuns(9,0.62):null,   /* an intended route: broken; a retreat happened, so it is solid */
-    full:!!a.leg, dense:a.leg?2:0,   /* Stage 4D: a derived arrow's shaft built to its end, and kept to its path, for the draw-on */
+    dense:a.leg?2:0,   /* Stage 4D: a derived arrow kept to its path (its drawn-on part follows the formation) */
     col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
-  var mid=r.curve.getPointAt(0.5), lb=null;
-  if(a.label) lb=addOverlayLabel(a.label,new THREE.Vector3(mid.x,groundY(mid.x,mid.z)+2.4,mid.z));
-  if(a.leg){ var d={a:a,r:r,pts:pts,s:1,label:lb,head:a.side==="al"?"chevron":"plain"}; DRAWON.push(d); if(lb) lb.drawOn=d; }   /* Stage 4D: drawn on with the clock */
+  var mid=r.curve.getPointAt(0.5);
+  if(a.label) addOverlayLabel(a.label,new THREE.Vector3(mid.x,groundY(mid.x,mid.z)+2.4,mid.z));
+  if(a.leg){ var d={a:a,ghost:r,r:drawOnRibbon(pts,w,col,S,r),s:-1}; DRAWON.push(d); }   /* Stage 4D: the part marched, drawn on with the clock */
 }
 /* "IV Column halted" (decision 23, section C.3): a column stopped short of its objective is not a route. A solid bar
    across its line of march at the point it had reached, cased like the arrows, no head. Its length is the frontage of
@@ -1613,8 +1613,7 @@ function buildBoundary(b){
   if(b.label) addOverlayLabel(b.label,new THREE.Vector3(q.x,groundY(q.x,q.z)+1.6,q.z));
 }
 function addOverlayLabel(text,pos){          /* annotation text: hue stays on the arrow, not the words */
-  var t={text:text,pos:pos.clone(),acl:6}; ovText.push(t);   /* the map layer's label, anchored on the drawn line (2D) */
-  return t;
+  ovText.push({text:text,pos:pos.clone(),acl:6});   /* the map layer's label, anchored on the drawn line (2D) */
 }
 function buildObjective(o){
   var w=W(o[0],o[1]);
@@ -1693,16 +1692,23 @@ function drawOnArrows(){
     d.s=u; d.done=true; drawOnApply(d);
   }
 }
-/* drawn to u: nothing at 0; the shaft to the formation, without its head, while the leg runs (the formation's counter or
-   figures stand at the tip: a head there would lie under them, and labels keep clear of heads, Stage 2D); whole at 1 */
+/* Owner decision 83 (Stage 4D, in place of section D.3's "not drawn before the leg, the head at the tip"): the whole arrow is
+   always drawn, faint (DRAWON_GHOST of its opacity), its head at the destination and its label as before, so a phase's moves
+   read at its start; over it the part marched is drawn at full strength, from the start to the formation, without a head (the
+   formation's counter or figures stand at its end; a head there would lie under them). Once the leg is complete the arrow is
+   drawn whole at full strength, as before 4D (the marched part hidden). */
+var DRAWON_GHOST=0.4;
+function drawOnRibbon(pts,w,col,S,g){
+  var r=drapedRibbon(pts,{w0:w[0],w1:w[1],side:null,head:null,full:true,dense:2,uTaper:g.uEnd,order:4,
+    col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
+  g.layers.forEach(function(lay){ [lay.shaft,lay.head].forEach(function(m){ if(m) m.material.userData.op0=m.material.userData.op; }); });
+  return r;
+}
 function drawOnApply(d){
-  var r=d.r, u=d.s, show=u>1e-6, whole=u>=1;
-  r.layers.forEach(function(lay){
-    lay.shaft.visible=show; if(lay.head) lay.head.visible=whole;
-    if(show) shaftEnd(lay,r.curve,r.len,r.uEnd,whole?r.uEnd:u);
-  });
+  var r=d.r, g=d.ghost, u=d.s, whole=u>=1, show=u>1e-6&&!whole;   /* whole: the arrow itself at full strength, exactly as before 4D */
+  r.layers.forEach(function(lay){ lay.shaft.visible=show; if(show) shaftEnd(lay,r.curve,r.len,lay.uT,u); });
+  g.layers.forEach(function(lay){ [lay.shaft,lay.head].forEach(function(m){ if(m) m.material.userData.op=m.material.userData.op0*(whole?1:DRAWON_GHOST); }); });
   d.tip=show?[r.layers[r.layers.length-1].end.x,r.layers[r.layers.length-1].end.z]:null;
-  if(d.label) d.label.hidden=u<0.5;
 }
 function applyOverlayOpacity(){
   var base=layerOn.arrows?0.95:0;
@@ -3257,7 +3263,7 @@ function mlCollect(){
   /* movement, line, boundary, halt and objective labels, and the plans' */
   var seen={};
   function uniq(k){ var n=seen[k]||0; seen[k]=n+1; return n?k+"#"+n:k; }
-  if(labels&&layerOn.arrows) ovText.forEach(function(t){ if(t.hidden) return;   /* Stage 4D: a drawn-on arrow's label waits for its tip */
+  if(labels&&layerOn.arrows) ovText.forEach(function(t){
     text(uniq("o:"+t.text),t.obj?"objective":"overlay","mlt-serif",t.text,LB.annotation,t.pos,{pri:t.obj?10:6,acl:t.acl,r:t.r,op:ovFadeIn});
   });
   if(planGroup) planText.forEach(function(t){ text(uniq("pl:"+t.text),"plan","mlt-serif",t.text,LB.annotation,t.pos,{pri:6,acl:t.acl,r:t.r}); });
@@ -6372,14 +6378,14 @@ var AUSTERLITZ_DEBUG=(function(){
       DRAWON.slice().forEach(function(d){ var A=anchorList(d.a.leg[0]), i0=-1, i1=-1;
         A.forEach(function(q,k){ if(q.ph===d.a.leg[1]&&i0<0) i0=k; if(q.ph===d.a.leg[2]&&i0>=0) i1=k; });
         var w0=legWindow(A[i0],A[i0+1])[0], w1=legWindow(A[i1-1],A[i1])[1]; nA++;
-        clock=w0-0.5; drawOnArrows(); if(d.r.layers[0].shaft.visible) bad.push(d.a.label+": drawn before its leg starts");
-        clock=w1+0.5; drawOnArrows(); if(d.s!==1) bad.push(d.a.label+": not whole after its leg ends");
+        clock=w0-0.5; drawOnArrows(); if(d.r.layers[0].shaft.visible||!d.ghost.layers[1].shaft.visible) bad.push(d.a.label+": its marched part drawn, or the whole arrow not drawn, before its leg starts");
+        clock=w1+0.5; drawOnArrows(); if(d.s!==1||d.ghost.layers[1].shaft.material.userData.op!==d.ghost.layers[1].shaft.material.userData.op0) bad.push(d.a.label+": not whole at full strength after its leg ends");
         for(var k=1;k<=20;k++){ var t=w0+(w1-w0)*k/21; clock=t; drawOnArrows(); var L=legAt(d.a.leg[0],t); if(!L||!L.b||L.u<=0) continue;
-          if(d.s<1&&d.r.layers.some(function(l){ return l.head&&l.head.visible; })) bad.push(d.a.label+": a head drawn while drawing on at "+fmtClock(t));
+          if(d.r.layers.some(function(l){ return !!l.head; })||!d.ghost.layers.every(function(l){ return l.shaft.visible&&(!l.head||l.head.visible); })) bad.push(d.a.label+": the marched part has a head, or the whole arrow is not drawn, at "+fmtClock(t));
           var q=posAtClock(d.a.leg[0],t), w=W(q[0],q[1]), tip=d.tip||[1e9,1e9], e=Math.hypot(tip[0]-w[0],tip[1]-w[1]); nT++;
           if(e>worst){ worst=e; where=d.a.label+" at "+fmtClock(t); } } }); }
     clock=keep; rebuildOverlays(phaseAt(keep),true);
-    ck("draw-on: a derived arrow's drawn end lies on its formation's path at the formation's progress, within 0.5 units, without a head while it draws on; not drawn before its leg, whole after (section D.4)",
+    ck("draw-on: a derived arrow's marched part ends on its formation's path at the formation's progress, within 0.5 units, without a head, over the whole arrow drawn faint; at full strength once its leg is complete (section D.4; decision 83)",
       nA>0&&nT>0&&worst<=0.5&&!bad.length, nA+" derived arrows, "+nT+" clocks inside their legs: the tip at most "+worst.toFixed(3)+" units from the formation"+(where?" ("+where+")":"")+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):""));
     setClock(keep,{instant:true,force:true,camera:false}); finishTween();
     landCam.position.copy(cam.p); orbitTarget.copy(cam.t); landCam.lookAt(orbitTarget); freeCam=cam.fc;
