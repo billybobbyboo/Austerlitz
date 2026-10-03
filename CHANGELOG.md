@@ -1,8 +1,61 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 5 Part A: evidence made visible, the specification (docs/STAGE5_SPEC.md)
+
+**Status: for review. No source file changed; `austerlitz-command-map.html` is unchanged: 1,416,737 bytes, md5
+`e1fac9ea08a4c2b2eaefe5b78529c843` (Stage 4E).** `check:baseline` does not move.
+- Recorded with this part: Stage 4E merged (#31), here, in `CLAUDE.md` and in `docs/STAGE4_SPEC.md`; Stage 4 is complete.
+
+**Before writing (fact).** `main` (407cda0, Stage 4E merged as #31) matched `check:baseline` (md5 `e1fac9ea…`, 1,416,737 bytes).
+
+**What this part is.** `docs/STAGE5_SPEC.md` specifies the roadmap's Stage 5 line ("evidence made visible": spatial confidence, the
+evidence skeleton, interval events on the timeline, "Whose eyes?" with eye-level views from the command posts, plan ghosts,
+day-tracks) and what the records add to it (problem 9's interim ring, Stage 2's eye-level dependency, Stage 4's fog as a reading):
+for each, what exists today with file and line, measurements by probes on the built page at 1x, 4x and 10.33x, a recommendation, and
+what must hold; a test plan (§H), a pull-request plan for 5B-5G (§I) and thirteen questions for the owner (§J). Probes in
+`tools/stage5/` (not bundled); evidence in `docs/stage5-evidence/` (its README lists every file, its section and its script).
+
+**Found (fact; each stated in §0.3, none resolved here)**
+- The interim ground ring by grade (problem 9) was never built; the landscape still shows no grade (names carry no badge).
+- "Whose eyes?" does not need true-scale relief for its reading: over the drawn ground with the eye's metre scaled, line of sight
+  agrees with the model's for 75 of 75 headquarters-formation pairs at 1x, 4x and 10.33x. The picture does need it; and at every
+  factor the drawing (the 1x footprint's 16 m lift, the miniature figures) shows 17-23 of 55 formation-readings the model hides.
+- The Command view is not labelled a model reading (`shell.html:58`); its text still describes the broken outline decision 4 removed
+  (`app.js:2741`); "reported only" is never marked in the landscape.
+- The Command view's reading is cached per phase (`app.js:2647-2649`): 65 of 1,074 French and 50 of 1,562 Allied drawn readings are not
+  the rule's at the clock.
+- `KNOW_OVERRIDE`'s 15 "documented limits" and `COMMAND`'s 46 statements name no source; the overrides decide 29% and 51% of the two
+  headquarters' readings.
+- A duplicate key: `heightguns` phase 8 carries `cf:"C"` and `cf:"B"` (`data.js:178`, `:180`); the app computes B.
+- No timing is graded A; all 20 explicit timings are "app narrative, unsourced". A grade gives no distance: any zone size is a design
+  value. 67.5% of the day's formation-samples are interpolated.
+- An event's clock is its midpoint for the marker and keys, its start for themes, the tour and the dwell.
+- The timeline has 0-1.5 px under Stage 3C's 92 px: interval bars fit only inside the existing marker band (4 lanes, measured).
+- The phase-0 axis arrows lie on the plan routes (within 130 m): plan ghosts would draw them twice.
+- The Plans tab, with the camera kept, exceeds the view's drop limit in 9 of 19 landscape views; no harness case opens it.
+
+**Data tasks it would need (not done; §G.3):** the `heightguns` grade (`data.js:178`, `:180`); bases for `KNOW_OVERRIDE` and
+`COMMAND`; a `SOURCE_NOTE` sentence on the model readings; a sourced positional error per anchor only if the owner wants zone sizes to
+be evidence.
+
+**Checks on this build (unchanged by this part)**
+- `npm test`: all 9 suites pass, and the height guard (`binding-test.js` 381 checks, 0 failed).
+- `npm run check:baseline`: md5 `e1fac9ea…`, 1,416,737 bytes; passes (not moved).
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:contrast`: 4,250 text elements in 28 states, 0 below AA, 0 below 10.5 px.
+- `npm run check:visual`: all checks passed (20 views, the day's light, the valley fog's hours, the horizon, the key tests; the self-test
+  157 of 157; the two known Canvas2D warnings). A first run, beside the probes, was stopped at the background job's one-hour limit
+  during the self-test; the reported run ran alone.
+
+**Not done, or open**
+- Nothing is implemented. Every radius, falloff and opacity the probes tried is a design value for the measurement.
+- Frame times are software WebGL on the harness machine (comparable only with one another); no GPU measurement.
+- Historical: nothing changes. Stage 5 draws the grades, anchors, timings, plans and knowledge the data already holds.
+
 ## 2026-10 · Stage 4E: smoke, ice, the horizon and the palette tables (docs/STAGE4_SPEC.md §E, §F, §G, §I; owner decisions 77, 79, 80, 84)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,416,737 bytes, md5 `e1fac9ea08a4c2b2eaefe5b78529c843`**
+**Status: merged (#31); with it Stage 4 is complete. `austerlitz-command-map.html`: 1,416,737 bytes, md5 `e1fac9ea08a4c2b2eaefe5b78529c843`**
 (was 1,402,090 bytes, md5 `9b13adbf…`, Stage 4D). With it, every part of Stage 4 is built (4B-4E).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. No data,

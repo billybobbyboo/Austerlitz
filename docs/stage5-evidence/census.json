@@ -1,0 +1,4990 @@
+{
+ "when": "2026-10-03T13:50:51.123Z",
+ "leaves": 32,
+ "gradesEvery10": [
+  {
+   "t": 240,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 0,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 250,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 260,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 270,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 280,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 290,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 300,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 310,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 320,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 330,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 340,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 350,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 360,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 370,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 380,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 390,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 400,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 410,
+   "ph": 0,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 420,
+   "ph": 1,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 15,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 430,
+   "ph": 1,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 440,
+   "ph": 1,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 450,
+   "ph": 1,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 460,
+   "ph": 1,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 470,
+   "ph": 1,
+   "A": 17,
+   "B": 10,
+   "C": 3,
+   "interp": 21,
+   "menA": 104120,
+   "menB": 46570,
+   "menC": 42330,
+   "on": 30
+  },
+  {
+   "t": 480,
+   "ph": 2,
+   "A": 18,
+   "B": 10,
+   "C": 3,
+   "interp": 9,
+   "menA": 109520,
+   "menB": 45420,
+   "menC": 42330,
+   "on": 31
+  },
+  {
+   "t": 490,
+   "ph": 2,
+   "A": 15,
+   "B": 12,
+   "C": 4,
+   "interp": 20,
+   "menA": 84020,
+   "menB": 59220,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 500,
+   "ph": 2,
+   "A": 15,
+   "B": 12,
+   "C": 4,
+   "interp": 20,
+   "menA": 84020,
+   "menB": 59220,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 510,
+   "ph": 2,
+   "A": 16,
+   "B": 11,
+   "C": 4,
+   "interp": 19,
+   "menA": 87490,
+   "menB": 55750,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 520,
+   "ph": 2,
+   "A": 16,
+   "B": 11,
+   "C": 4,
+   "interp": 20,
+   "menA": 87490,
+   "menB": 55750,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 530,
+   "ph": 3,
+   "A": 15,
+   "B": 12,
+   "C": 4,
+   "interp": 23,
+   "menA": 77840,
+   "menB": 65400,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 540,
+   "ph": 3,
+   "A": 15,
+   "B": 12,
+   "C": 4,
+   "interp": 23,
+   "menA": 77840,
+   "menB": 65400,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 550,
+   "ph": 3,
+   "A": 15,
+   "B": 12,
+   "C": 4,
+   "interp": 23,
+   "menA": 77840,
+   "menB": 65400,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 560,
+   "ph": 3,
+   "A": 15,
+   "B": 12,
+   "C": 4,
+   "interp": 23,
+   "menA": 77840,
+   "menB": 65400,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 570,
+   "ph": 4,
+   "A": 15,
+   "B": 12,
+   "C": 4,
+   "interp": 16,
+   "menA": 77840,
+   "menB": 65400,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 580,
+   "ph": 4,
+   "A": 14,
+   "B": 13,
+   "C": 4,
+   "interp": 25,
+   "menA": 71840,
+   "menB": 71400,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 590,
+   "ph": 4,
+   "A": 14,
+   "B": 13,
+   "C": 4,
+   "interp": 25,
+   "menA": 71840,
+   "menB": 71400,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 600,
+   "ph": 4,
+   "A": 14,
+   "B": 13,
+   "C": 4,
+   "interp": 25,
+   "menA": 71840,
+   "menB": 71400,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 610,
+   "ph": 4,
+   "A": 14,
+   "B": 13,
+   "C": 4,
+   "interp": 26,
+   "menA": 71840,
+   "menB": 71400,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 620,
+   "ph": 4,
+   "A": 14,
+   "B": 13,
+   "C": 4,
+   "interp": 27,
+   "menA": 71840,
+   "menB": 71400,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 630,
+   "ph": 5,
+   "A": 16,
+   "B": 11,
+   "C": 4,
+   "interp": 14,
+   "menA": 75840,
+   "menB": 67400,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 640,
+   "ph": 5,
+   "A": 15,
+   "B": 12,
+   "C": 4,
+   "interp": 27,
+   "menA": 71590,
+   "menB": 71650,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 650,
+   "ph": 5,
+   "A": 15,
+   "B": 12,
+   "C": 4,
+   "interp": 27,
+   "menA": 71590,
+   "menB": 71650,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 660,
+   "ph": 5,
+   "A": 15,
+   "B": 12,
+   "C": 4,
+   "interp": 27,
+   "menA": 71590,
+   "menB": 71650,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 670,
+   "ph": 5,
+   "A": 15,
+   "B": 12,
+   "C": 4,
+   "interp": 27,
+   "menA": 71590,
+   "menB": 71650,
+   "menC": 54030,
+   "on": 31
+  },
+  {
+   "t": 680,
+   "ph": 6,
+   "A": 16,
+   "B": 10,
+   "C": 5,
+   "interp": 24,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 31
+  },
+  {
+   "t": 690,
+   "ph": 6,
+   "A": 16,
+   "B": 10,
+   "C": 5,
+   "interp": 24,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 31
+  },
+  {
+   "t": 700,
+   "ph": 6,
+   "A": 16,
+   "B": 10,
+   "C": 5,
+   "interp": 24,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 31
+  },
+  {
+   "t": 710,
+   "ph": 6,
+   "A": 16,
+   "B": 10,
+   "C": 5,
+   "interp": 24,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 31
+  },
+  {
+   "t": 720,
+   "ph": 6,
+   "A": 16,
+   "B": 10,
+   "C": 5,
+   "interp": 24,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 31
+  },
+  {
+   "t": 730,
+   "ph": 6,
+   "A": 16,
+   "B": 10,
+   "C": 5,
+   "interp": 25,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 31
+  },
+  {
+   "t": 740,
+   "ph": 6,
+   "A": 16,
+   "B": 10,
+   "C": 5,
+   "interp": 25,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 31
+  },
+  {
+   "t": 750,
+   "ph": 6,
+   "A": 16,
+   "B": 10,
+   "C": 5,
+   "interp": 25,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 31
+  },
+  {
+   "t": 760,
+   "ph": 6,
+   "A": 16,
+   "B": 10,
+   "C": 5,
+   "interp": 24,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 31
+  },
+  {
+   "t": 770,
+   "ph": 7,
+   "A": 15,
+   "B": 11,
+   "C": 6,
+   "interp": 21,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 32
+  },
+  {
+   "t": 780,
+   "ph": 7,
+   "A": 15,
+   "B": 11,
+   "C": 6,
+   "interp": 21,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 32
+  },
+  {
+   "t": 790,
+   "ph": 7,
+   "A": 15,
+   "B": 11,
+   "C": 6,
+   "interp": 26,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 32
+  },
+  {
+   "t": 800,
+   "ph": 7,
+   "A": 15,
+   "B": 11,
+   "C": 6,
+   "interp": 26,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 32
+  },
+  {
+   "t": 810,
+   "ph": 7,
+   "A": 15,
+   "B": 11,
+   "C": 6,
+   "interp": 26,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 32
+  },
+  {
+   "t": 820,
+   "ph": 7,
+   "A": 15,
+   "B": 11,
+   "C": 6,
+   "interp": 26,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 32
+  },
+  {
+   "t": 830,
+   "ph": 7,
+   "A": 15,
+   "B": 11,
+   "C": 6,
+   "interp": 27,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 32
+  },
+  {
+   "t": 840,
+   "ph": 7,
+   "A": 15,
+   "B": 11,
+   "C": 6,
+   "interp": 23,
+   "menA": 78590,
+   "menB": 60400,
+   "menC": 58280,
+   "on": 32
+  },
+  {
+   "t": 850,
+   "ph": 7,
+   "A": 14,
+   "B": 12,
+   "C": 6,
+   "interp": 27,
+   "menA": 71990,
+   "menB": 67000,
+   "menC": 58280,
+   "on": 32
+  },
+  {
+   "t": 860,
+   "ph": 7,
+   "A": 14,
+   "B": 12,
+   "C": 6,
+   "interp": 28,
+   "menA": 71990,
+   "menB": 67000,
+   "menC": 58280,
+   "on": 32
+  },
+  {
+   "t": 870,
+   "ph": 8,
+   "A": 15,
+   "B": 13,
+   "C": 4,
+   "interp": 9,
+   "menA": 78790,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 880,
+   "ph": 8,
+   "A": 14,
+   "B": 14,
+   "C": 4,
+   "interp": 27,
+   "menA": 71990,
+   "menB": 107000,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 890,
+   "ph": 8,
+   "A": 14,
+   "B": 14,
+   "C": 4,
+   "interp": 27,
+   "menA": 71990,
+   "menB": 107000,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 900,
+   "ph": 8,
+   "A": 15,
+   "B": 13,
+   "C": 4,
+   "interp": 24,
+   "menA": 78790,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 910,
+   "ph": 8,
+   "A": 15,
+   "B": 13,
+   "C": 4,
+   "interp": 27,
+   "menA": 78790,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 920,
+   "ph": 8,
+   "A": 15,
+   "B": 13,
+   "C": 4,
+   "interp": 27,
+   "menA": 78790,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 930,
+   "ph": 8,
+   "A": 15,
+   "B": 13,
+   "C": 4,
+   "interp": 27,
+   "menA": 78790,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 940,
+   "ph": 8,
+   "A": 15,
+   "B": 13,
+   "C": 4,
+   "interp": 27,
+   "menA": 78790,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 950,
+   "ph": 8,
+   "A": 15,
+   "B": 13,
+   "C": 4,
+   "interp": 27,
+   "menA": 78790,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 960,
+   "ph": 8,
+   "A": 15,
+   "B": 13,
+   "C": 4,
+   "interp": 27,
+   "menA": 78790,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 970,
+   "ph": 8,
+   "A": 15,
+   "B": 13,
+   "C": 4,
+   "interp": 27,
+   "menA": 78790,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 980,
+   "ph": 8,
+   "A": 15,
+   "B": 13,
+   "C": 4,
+   "interp": 27,
+   "menA": 78790,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 990,
+   "ph": 8,
+   "A": 15,
+   "B": 13,
+   "C": 4,
+   "interp": 27,
+   "menA": 78790,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 1000,
+   "ph": 8,
+   "A": 15,
+   "B": 13,
+   "C": 4,
+   "interp": 28,
+   "menA": 78790,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 1010,
+   "ph": 8,
+   "A": 15,
+   "B": 13,
+   "C": 4,
+   "interp": 28,
+   "menA": 78790,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 32
+  },
+  {
+   "t": 1020,
+   "ph": 9,
+   "A": 14,
+   "B": 13,
+   "C": 4,
+   "interp": 0,
+   "menA": 71090,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 31
+  },
+  {
+   "t": 1030,
+   "ph": 9,
+   "A": 14,
+   "B": 13,
+   "C": 4,
+   "interp": 0,
+   "menA": 71090,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 31
+  },
+  {
+   "t": 1040,
+   "ph": 9,
+   "A": 14,
+   "B": 13,
+   "C": 4,
+   "interp": 0,
+   "menA": 71090,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 31
+  },
+  {
+   "t": 1050,
+   "ph": 9,
+   "A": 14,
+   "B": 13,
+   "C": 4,
+   "interp": 0,
+   "menA": 71090,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 31
+  },
+  {
+   "t": 1060,
+   "ph": 9,
+   "A": 14,
+   "B": 13,
+   "C": 4,
+   "interp": 0,
+   "menA": 71090,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 31
+  },
+  {
+   "t": 1070,
+   "ph": 9,
+   "A": 14,
+   "B": 13,
+   "C": 4,
+   "interp": 0,
+   "menA": 71090,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 31
+  },
+  {
+   "t": 1080,
+   "ph": 9,
+   "A": 14,
+   "B": 13,
+   "C": 4,
+   "interp": 0,
+   "menA": 71090,
+   "menB": 100200,
+   "menC": 18280,
+   "on": 31
+  }
+ ],
+ "gradesPerPhase": {
+  "0": {
+   "label": "Deployment",
+   "clock": "04:00 - 07:00",
+   "start": {
+    "t": 240,
+    "A": 17,
+    "B": 10,
+    "C": 3,
+    "interp": 0,
+    "on": 30,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire",
+      "vandamme",
+      "legrand",
+      "caffarelli",
+      "suchet",
+      "santon",
+      "guard_inf",
+      "guard_cav",
+      "kienmayer",
+      "dok",
+      "lang",
+      "prz",
+      "milo",
+      "kollo",
+      "rg_inf",
+      "rg_cav"
+     ],
+     "B": [
+      "friant",
+      "kellermann",
+      "nansouty",
+      "dhautpoul",
+      "rivaud",
+      "drouet",
+      "c_gren",
+      "ahq",
+      "lich",
+      "bag"
+     ],
+     "C": [
+      "bourcier",
+      "walther",
+      "buxhowden"
+     ]
+    }
+   },
+   "mid": {
+    "t": 330,
+    "A": 17,
+    "B": 10,
+    "C": 3,
+    "interp": 21,
+    "on": 30,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire*",
+      "vandamme*",
+      "legrand*",
+      "caffarelli",
+      "suchet",
+      "santon",
+      "guard_inf",
+      "guard_cav",
+      "kienmayer*",
+      "dok*",
+      "lang*",
+      "prz*",
+      "milo*",
+      "kollo*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "friant*",
+      "kellermann*",
+      "nansouty*",
+      "dhautpoul*",
+      "rivaud",
+      "drouet*",
+      "c_gren",
+      "ahq*",
+      "lich*",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*"
+     ]
+    }
+   },
+   "end": {
+    "t": 419,
+    "A": 17,
+    "B": 10,
+    "C": 3,
+    "interp": 21,
+    "on": 30,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire*",
+      "vandamme*",
+      "legrand*",
+      "caffarelli",
+      "suchet",
+      "santon",
+      "guard_inf",
+      "guard_cav",
+      "kienmayer*",
+      "dok*",
+      "lang*",
+      "prz*",
+      "milo*",
+      "kollo*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "friant*",
+      "kellermann*",
+      "nansouty*",
+      "dhautpoul*",
+      "rivaud",
+      "drouet*",
+      "c_gren",
+      "ahq*",
+      "lich*",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*"
+     ]
+    }
+   }
+  },
+  "1": {
+   "label": "Telnitz",
+   "clock": "07:00 - 08:00",
+   "start": {
+    "t": 420,
+    "A": 17,
+    "B": 10,
+    "C": 3,
+    "interp": 15,
+    "on": 30,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire*",
+      "vandamme*",
+      "legrand",
+      "caffarelli",
+      "suchet",
+      "santon",
+      "guard_inf",
+      "guard_cav",
+      "kienmayer",
+      "dok",
+      "lang",
+      "prz",
+      "milo*",
+      "kollo*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "friant",
+      "kellermann*",
+      "nansouty*",
+      "dhautpoul*",
+      "rivaud",
+      "drouet*",
+      "c_gren",
+      "ahq*",
+      "lich*",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*"
+     ]
+    }
+   },
+   "mid": {
+    "t": 450,
+    "A": 17,
+    "B": 10,
+    "C": 3,
+    "interp": 21,
+    "on": 30,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire*",
+      "vandamme*",
+      "legrand*",
+      "caffarelli",
+      "suchet",
+      "santon",
+      "guard_inf",
+      "guard_cav",
+      "kienmayer*",
+      "dok*",
+      "lang*",
+      "prz*",
+      "milo*",
+      "kollo*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "friant*",
+      "kellermann*",
+      "nansouty*",
+      "dhautpoul*",
+      "rivaud",
+      "drouet*",
+      "c_gren",
+      "ahq*",
+      "lich*",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*"
+     ]
+    }
+   },
+   "end": {
+    "t": 479,
+    "A": 17,
+    "B": 10,
+    "C": 3,
+    "interp": 21,
+    "on": 30,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire*",
+      "vandamme*",
+      "legrand*",
+      "caffarelli",
+      "suchet",
+      "santon",
+      "guard_inf",
+      "guard_cav",
+      "kienmayer*",
+      "dok*",
+      "lang*",
+      "prz*",
+      "milo*",
+      "kollo*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "friant*",
+      "kellermann*",
+      "nansouty*",
+      "dhautpoul*",
+      "rivaud",
+      "drouet*",
+      "c_gren",
+      "ahq*",
+      "lich*",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*"
+     ]
+    }
+   }
+  },
+  "2": {
+   "label": "Sokolnitz",
+   "clock": "08:00 - 08:45",
+   "start": {
+    "t": 480,
+    "A": 18,
+    "B": 10,
+    "C": 3,
+    "interp": 9,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire",
+      "vandamme",
+      "legrand",
+      "caffarelli",
+      "suchet",
+      "santon",
+      "guard_inf",
+      "guard_cav",
+      "kienmayer",
+      "dok",
+      "lang",
+      "prz",
+      "milo",
+      "kollo",
+      "lich",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "friant*",
+      "kellermann*",
+      "nansouty*",
+      "dhautpoul*",
+      "rivaud",
+      "drouet*",
+      "c_gren",
+      "ahq*",
+      "kamensky",
+      "bag"
+     ],
+     "C": [
+      "bourcier",
+      "walther*",
+      "buxhowden"
+     ]
+    }
+   },
+   "mid": {
+    "t": 503,
+    "A": 15,
+    "B": 12,
+    "C": 4,
+    "interp": 20,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire",
+      "vandamme",
+      "caffarelli",
+      "suchet",
+      "santon",
+      "guard_inf",
+      "guard_cav",
+      "dok*",
+      "prz*",
+      "milo*",
+      "kollo*",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "legrand*",
+      "friant*",
+      "kellermann*",
+      "nansouty*",
+      "dhautpoul*",
+      "rivaud",
+      "drouet*",
+      "c_gren",
+      "ahq*",
+      "kienmayer*",
+      "kamensky*",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*"
+     ]
+    }
+   },
+   "end": {
+    "t": 524,
+    "A": 16,
+    "B": 11,
+    "C": 4,
+    "interp": 20,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire",
+      "vandamme",
+      "friant*",
+      "caffarelli",
+      "suchet",
+      "santon",
+      "guard_inf",
+      "guard_cav",
+      "dok*",
+      "prz*",
+      "milo*",
+      "kollo*",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "legrand*",
+      "kellermann*",
+      "nansouty*",
+      "dhautpoul*",
+      "rivaud",
+      "drouet*",
+      "c_gren",
+      "ahq*",
+      "kienmayer*",
+      "kamensky*",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*"
+     ]
+    }
+   }
+  },
+  "3": {
+   "label": "The Pratzen",
+   "clock": "08:45 - 09:30",
+   "start": {
+    "t": 525,
+    "A": 18,
+    "B": 9,
+    "C": 4,
+    "interp": 13,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire",
+      "vandamme",
+      "friant",
+      "caffarelli",
+      "suchet",
+      "santon",
+      "guard_inf",
+      "guard_cav",
+      "ahq",
+      "dok*",
+      "kamensky",
+      "prz*",
+      "milo",
+      "kollo",
+      "lich",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "legrand*",
+      "kellermann*",
+      "nansouty*",
+      "dhautpoul*",
+      "rivaud",
+      "drouet",
+      "c_gren",
+      "kienmayer*",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*"
+     ]
+    }
+   },
+   "mid": {
+    "t": 548,
+    "A": 15,
+    "B": 12,
+    "C": 4,
+    "interp": 23,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire*",
+      "vandamme*",
+      "friant*",
+      "caffarelli",
+      "suchet",
+      "santon",
+      "guard_inf",
+      "guard_cav",
+      "dok*",
+      "kamensky*",
+      "prz*",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "legrand*",
+      "kellermann*",
+      "nansouty*",
+      "dhautpoul*",
+      "rivaud*",
+      "drouet*",
+      "c_gren",
+      "ahq*",
+      "kienmayer*",
+      "milo*",
+      "kollo*",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*"
+     ]
+    }
+   },
+   "end": {
+    "t": 569,
+    "A": 15,
+    "B": 12,
+    "C": 4,
+    "interp": 23,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire*",
+      "vandamme*",
+      "friant*",
+      "caffarelli",
+      "suchet",
+      "santon",
+      "guard_inf",
+      "guard_cav",
+      "dok*",
+      "kamensky*",
+      "prz*",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "legrand*",
+      "kellermann*",
+      "nansouty*",
+      "dhautpoul*",
+      "rivaud*",
+      "drouet*",
+      "c_gren",
+      "ahq*",
+      "kienmayer*",
+      "milo*",
+      "kollo*",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*"
+     ]
+    }
+   }
+  },
+  "4": {
+   "label": "Pratzeberg",
+   "clock": "09:30 - 10:30",
+   "start": {
+    "t": 570,
+    "A": 15,
+    "B": 12,
+    "C": 4,
+    "interp": 16,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire",
+      "vandamme",
+      "friant*",
+      "caffarelli",
+      "suchet",
+      "santon",
+      "guard_inf",
+      "guard_cav",
+      "dok*",
+      "kamensky",
+      "prz",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "legrand",
+      "kellermann*",
+      "nansouty*",
+      "dhautpoul*",
+      "rivaud*",
+      "drouet*",
+      "c_gren",
+      "ahq",
+      "kienmayer*",
+      "milo",
+      "kollo*",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*"
+     ]
+    }
+   },
+   "mid": {
+    "t": 600,
+    "A": 14,
+    "B": 13,
+    "C": 4,
+    "interp": 25,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire*",
+      "vandamme*",
+      "friant*",
+      "caffarelli*",
+      "santon",
+      "guard_inf",
+      "guard_cav",
+      "dok*",
+      "kamensky*",
+      "prz*",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "legrand",
+      "suchet*",
+      "kellermann*",
+      "nansouty*",
+      "dhautpoul*",
+      "rivaud*",
+      "drouet*",
+      "c_gren",
+      "ahq*",
+      "kienmayer*",
+      "milo*",
+      "kollo*",
+      "bag*"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*"
+     ]
+    }
+   },
+   "end": {
+    "t": 629,
+    "A": 14,
+    "B": 13,
+    "C": 4,
+    "interp": 27,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire*",
+      "vandamme*",
+      "friant*",
+      "caffarelli*",
+      "santon",
+      "guard_inf*",
+      "guard_cav",
+      "dok*",
+      "kamensky*",
+      "prz*",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "legrand",
+      "suchet*",
+      "kellermann*",
+      "nansouty*",
+      "dhautpoul*",
+      "rivaud*",
+      "drouet*",
+      "c_gren*",
+      "ahq*",
+      "kienmayer*",
+      "milo*",
+      "kollo*",
+      "bag*"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*"
+     ]
+    }
+   }
+  },
+  "5": {
+   "label": "Olmutz road",
+   "clock": "10:30 - 11:15",
+   "start": {
+    "t": 630,
+    "A": 16,
+    "B": 11,
+    "C": 4,
+    "interp": 14,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire",
+      "vandamme*",
+      "friant*",
+      "caffarelli",
+      "santon",
+      "kellermann",
+      "nansouty",
+      "guard_inf*",
+      "guard_cav",
+      "dok*",
+      "kamensky",
+      "prz*",
+      "lich",
+      "rg_inf",
+      "rg_cav*"
+     ],
+     "B": [
+      "legrand",
+      "suchet",
+      "dhautpoul",
+      "rivaud*",
+      "drouet*",
+      "c_gren*",
+      "ahq*",
+      "kienmayer*",
+      "milo*",
+      "kollo",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther",
+      "buxhowden*",
+      "lang"
+     ]
+    }
+   },
+   "mid": {
+    "t": 653,
+    "A": 15,
+    "B": 12,
+    "C": 4,
+    "interp": 27,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire*",
+      "vandamme*",
+      "friant*",
+      "caffarelli*",
+      "santon",
+      "kellermann*",
+      "nansouty*",
+      "guard_inf*",
+      "guard_cav*",
+      "dok*",
+      "prz*",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "legrand",
+      "suchet*",
+      "dhautpoul*",
+      "rivaud*",
+      "drouet*",
+      "c_gren*",
+      "ahq*",
+      "kienmayer*",
+      "kamensky*",
+      "milo*",
+      "kollo*",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*"
+     ]
+    }
+   },
+   "end": {
+    "t": 674,
+    "A": 15,
+    "B": 12,
+    "C": 4,
+    "interp": 27,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire*",
+      "vandamme*",
+      "friant*",
+      "caffarelli*",
+      "santon",
+      "kellermann*",
+      "nansouty*",
+      "guard_inf*",
+      "guard_cav*",
+      "dok*",
+      "prz*",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "legrand",
+      "suchet*",
+      "dhautpoul*",
+      "rivaud*",
+      "drouet*",
+      "c_gren*",
+      "ahq*",
+      "kienmayer*",
+      "kamensky*",
+      "milo*",
+      "kollo*",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*"
+     ]
+    }
+   }
+  },
+  "6": {
+   "label": "The Guard",
+   "clock": "11:15 - 12:45",
+   "start": {
+    "t": 675,
+    "A": 16,
+    "B": 11,
+    "C": 4,
+    "interp": 9,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire",
+      "vandamme",
+      "friant*",
+      "caffarelli",
+      "santon",
+      "kellermann",
+      "nansouty",
+      "drouet",
+      "guard_inf",
+      "guard_cav",
+      "dok*",
+      "prz*",
+      "lich",
+      "rg_inf",
+      "rg_cav"
+     ],
+     "B": [
+      "legrand",
+      "suchet",
+      "dhautpoul*",
+      "rivaud",
+      "c_gren",
+      "ahq",
+      "kienmayer*",
+      "kamensky",
+      "milo",
+      "kollo",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*"
+     ]
+    }
+   },
+   "mid": {
+    "t": 720,
+    "A": 16,
+    "B": 10,
+    "C": 5,
+    "interp": 24,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire",
+      "vandamme",
+      "friant*",
+      "caffarelli*",
+      "santon",
+      "kellermann*",
+      "nansouty*",
+      "drouet*",
+      "guard_inf",
+      "guard_cav*",
+      "dok*",
+      "prz*",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "legrand",
+      "suchet*",
+      "dhautpoul*",
+      "rivaud*",
+      "c_gren",
+      "ahq*",
+      "kienmayer*",
+      "milo*",
+      "kollo*",
+      "bag*"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*",
+      "kamensky*"
+     ]
+    }
+   },
+   "end": {
+    "t": 764,
+    "A": 16,
+    "B": 10,
+    "C": 5,
+    "interp": 25,
+    "on": 31,
+    "ids": {
+     "A": [
+      "gqg*",
+      "sthilaire",
+      "vandamme",
+      "friant*",
+      "caffarelli*",
+      "santon",
+      "kellermann*",
+      "nansouty*",
+      "drouet*",
+      "guard_inf",
+      "guard_cav*",
+      "dok*",
+      "prz*",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "legrand",
+      "suchet*",
+      "dhautpoul*",
+      "rivaud*",
+      "c_gren",
+      "ahq*",
+      "kienmayer*",
+      "milo*",
+      "kollo*",
+      "bag*"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*",
+      "kamensky*"
+     ]
+    }
+   }
+  },
+  "7": {
+   "label": "The wheel",
+   "clock": "12:45 - 14:30",
+   "start": {
+    "t": 765,
+    "A": 16,
+    "B": 10,
+    "C": 6,
+    "interp": 3,
+    "on": 32,
+    "ids": {
+     "A": [
+      "gqg",
+      "sthilaire",
+      "vandamme",
+      "friant",
+      "caffarelli",
+      "santon",
+      "kellermann",
+      "nansouty",
+      "drouet",
+      "guard_inf",
+      "guard_cav",
+      "dok",
+      "prz",
+      "lich",
+      "rg_inf",
+      "rg_cav"
+     ],
+     "B": [
+      "legrand",
+      "suchet",
+      "dhautpoul",
+      "rivaud",
+      "c_gren",
+      "ahq*",
+      "kienmayer",
+      "milo*",
+      "kollo*",
+      "bag"
+     ],
+     "C": [
+      "heightguns",
+      "bourcier",
+      "walther",
+      "buxhowden",
+      "lang",
+      "kamensky"
+     ]
+    }
+   },
+   "mid": {
+    "t": 818,
+    "A": 15,
+    "B": 11,
+    "C": 6,
+    "interp": 26,
+    "on": 32,
+    "ids": {
+     "A": [
+      "sthilaire*",
+      "vandamme*",
+      "friant*",
+      "caffarelli*",
+      "santon",
+      "kellermann*",
+      "nansouty*",
+      "drouet*",
+      "guard_inf*",
+      "guard_cav*",
+      "dok",
+      "prz",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "gqg*",
+      "legrand*",
+      "suchet*",
+      "dhautpoul*",
+      "rivaud*",
+      "c_gren*",
+      "ahq*",
+      "kienmayer",
+      "milo*",
+      "kollo*",
+      "bag"
+     ],
+     "C": [
+      "heightguns",
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*",
+      "kamensky*"
+     ]
+    }
+   },
+   "end": {
+    "t": 869,
+    "A": 14,
+    "B": 12,
+    "C": 6,
+    "interp": 28,
+    "on": 32,
+    "ids": {
+     "A": [
+      "vandamme*",
+      "friant*",
+      "caffarelli*",
+      "santon",
+      "kellermann*",
+      "nansouty*",
+      "drouet*",
+      "guard_inf*",
+      "guard_cav*",
+      "dok",
+      "prz*",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "gqg*",
+      "sthilaire*",
+      "legrand*",
+      "suchet*",
+      "dhautpoul*",
+      "rivaud*",
+      "c_gren*",
+      "ahq*",
+      "kienmayer",
+      "milo*",
+      "kollo*",
+      "bag"
+     ],
+     "C": [
+      "heightguns*",
+      "bourcier*",
+      "walther*",
+      "buxhowden*",
+      "lang*",
+      "kamensky*"
+     ]
+    }
+   }
+  },
+  "8": {
+   "label": "The ponds",
+   "clock": "14:30 - 17:00",
+   "start": {
+    "t": 870,
+    "A": 15,
+    "B": 13,
+    "C": 4,
+    "interp": 9,
+    "on": 32,
+    "ids": {
+     "A": [
+      "vandamme",
+      "friant",
+      "caffarelli",
+      "santon",
+      "kellermann*",
+      "nansouty*",
+      "drouet*",
+      "guard_inf*",
+      "guard_cav*",
+      "kienmayer",
+      "dok",
+      "prz",
+      "lich",
+      "rg_inf",
+      "rg_cav"
+     ],
+     "B": [
+      "gqg",
+      "heightguns",
+      "sthilaire",
+      "legrand*",
+      "suchet",
+      "dhautpoul*",
+      "rivaud*",
+      "c_gren",
+      "ahq",
+      "buxhowden",
+      "milo",
+      "kollo",
+      "bag"
+     ],
+     "C": [
+      "bourcier",
+      "walther*",
+      "lang",
+      "kamensky"
+     ]
+    }
+   },
+   "mid": {
+    "t": 945,
+    "A": 15,
+    "B": 13,
+    "C": 4,
+    "interp": 27,
+    "on": 32,
+    "ids": {
+     "A": [
+      "vandamme*",
+      "friant*",
+      "caffarelli*",
+      "santon",
+      "kellermann*",
+      "nansouty*",
+      "drouet*",
+      "guard_inf*",
+      "guard_cav*",
+      "kienmayer*",
+      "dok*",
+      "prz",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "gqg",
+      "heightguns*",
+      "sthilaire*",
+      "legrand*",
+      "suchet*",
+      "dhautpoul*",
+      "rivaud*",
+      "c_gren*",
+      "ahq*",
+      "buxhowden*",
+      "milo*",
+      "kollo*",
+      "bag"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "lang*",
+      "kamensky"
+     ]
+    }
+   },
+   "end": {
+    "t": 1019,
+    "A": 15,
+    "B": 13,
+    "C": 4,
+    "interp": 28,
+    "on": 32,
+    "ids": {
+     "A": [
+      "vandamme*",
+      "friant*",
+      "caffarelli*",
+      "santon",
+      "kellermann*",
+      "nansouty*",
+      "drouet*",
+      "guard_inf*",
+      "guard_cav*",
+      "kienmayer*",
+      "dok*",
+      "prz",
+      "lich*",
+      "rg_inf*",
+      "rg_cav*"
+     ],
+     "B": [
+      "gqg",
+      "heightguns*",
+      "sthilaire*",
+      "legrand*",
+      "suchet*",
+      "dhautpoul*",
+      "rivaud*",
+      "c_gren*",
+      "ahq*",
+      "buxhowden*",
+      "milo*",
+      "kollo*",
+      "bag*"
+     ],
+     "C": [
+      "bourcier*",
+      "walther*",
+      "lang*",
+      "kamensky"
+     ]
+    }
+   }
+  },
+  "9": {
+   "label": "Reckoning",
+   "clock": "After dark",
+   "start": {
+    "t": 1020,
+    "A": 14,
+    "B": 13,
+    "C": 4,
+    "interp": 0,
+    "on": 31,
+    "ids": {
+     "A": [
+      "vandamme",
+      "friant",
+      "caffarelli",
+      "santon",
+      "kellermann",
+      "nansouty",
+      "drouet",
+      "guard_inf",
+      "guard_cav",
+      "kienmayer",
+      "dok",
+      "lich",
+      "rg_inf",
+      "rg_cav"
+     ],
+     "B": [
+      "gqg",
+      "heightguns",
+      "sthilaire",
+      "legrand",
+      "suchet",
+      "dhautpoul",
+      "rivaud",
+      "c_gren",
+      "ahq",
+      "buxhowden",
+      "milo",
+      "kollo",
+      "bag"
+     ],
+     "C": [
+      "bourcier",
+      "walther",
+      "lang",
+      "kamensky"
+     ]
+    }
+   },
+   "mid": {
+    "t": 1050,
+    "A": 14,
+    "B": 13,
+    "C": 4,
+    "interp": 0,
+    "on": 31,
+    "ids": {
+     "A": [
+      "vandamme",
+      "friant",
+      "caffarelli",
+      "santon",
+      "kellermann",
+      "nansouty",
+      "drouet",
+      "guard_inf",
+      "guard_cav",
+      "kienmayer",
+      "dok",
+      "lich",
+      "rg_inf",
+      "rg_cav"
+     ],
+     "B": [
+      "gqg",
+      "heightguns",
+      "sthilaire",
+      "legrand",
+      "suchet",
+      "dhautpoul",
+      "rivaud",
+      "c_gren",
+      "ahq",
+      "buxhowden",
+      "milo",
+      "kollo",
+      "bag"
+     ],
+     "C": [
+      "bourcier",
+      "walther",
+      "lang",
+      "kamensky"
+     ]
+    }
+   },
+   "end": {
+    "t": 1079,
+    "A": 14,
+    "B": 13,
+    "C": 4,
+    "interp": 0,
+    "on": 31,
+    "ids": {
+     "A": [
+      "vandamme",
+      "friant",
+      "caffarelli",
+      "santon",
+      "kellermann",
+      "nansouty",
+      "drouet",
+      "guard_inf",
+      "guard_cav",
+      "kienmayer",
+      "dok",
+      "lich",
+      "rg_inf",
+      "rg_cav"
+     ],
+     "B": [
+      "gqg",
+      "heightguns",
+      "sthilaire",
+      "legrand",
+      "suchet",
+      "dhautpoul",
+      "rivaud",
+      "c_gren",
+      "ahq",
+      "buxhowden",
+      "milo",
+      "kollo",
+      "bag"
+     ],
+     "C": [
+      "bourcier",
+      "walther",
+      "lang",
+      "kamensky"
+     ]
+    }
+   }
+  }
+ },
+ "formationSamples": {
+  "A": 1322,
+  "B": 970,
+  "C": 344,
+  "interp": 1779,
+  "all": 2636
+ },
+ "neverExplicitCf": [],
+ "gradeChangesWithoutMove": [],
+ "anchors": {
+  "anchors": 180,
+  "byGrade": {
+   "A": 101,
+   "B": 60,
+   "C": 19
+  },
+  "legs": 148,
+  "legsWithVia": 18,
+  "tm": 20,
+  "tmBy": {
+   "A": 0,
+   "B": 12,
+   "C": 8
+  },
+  "basis": {
+   "app narrative, unsourced": 20
+  },
+  "derived": 7,
+  "rule": {
+   "moveMin": 1,
+   "ceiling": 3,
+   "tactical": 3
+  },
+  "flag": 3,
+  "legMinutes": 18735,
+  "anchorsPer": {
+   "gqg": 4,
+   "heightguns": 3,
+   "sthilaire": 9,
+   "vandamme": 8,
+   "legrand": 7,
+   "friant": 7,
+   "bourcier": 5,
+   "caffarelli": 6,
+   "suchet": 6,
+   "santon": 1,
+   "kellermann": 5,
+   "nansouty": 5,
+   "dhautpoul": 4,
+   "walther": 4,
+   "rivaud": 5,
+   "drouet": 5,
+   "guard_inf": 4,
+   "guard_cav": 4,
+   "c_gren": 5,
+   "ahq": 6,
+   "buxhowden": 5,
+   "kienmayer": 6,
+   "dok": 6,
+   "lang": 7,
+   "kamensky": 7,
+   "prz": 6,
+   "milo": 7,
+   "kollo": 8,
+   "lich": 8,
+   "bag": 6,
+   "rg_inf": 6,
+   "rg_cav": 5
+  },
+  "legMinutesShare": 0.719,
+  "formationMinutesOnField": 26055
+ },
+ "events": {
+  "n": 25,
+  "instants": 14,
+  "intervals": 11,
+  "intervalLengths": [
+   [
+    "counter-march",
+    225
+   ],
+   [
+    "columns-move",
+    180
+   ],
+   [
+    "guard-attack",
+    120
+   ],
+   [
+    "guard-broken",
+    120
+   ],
+   [
+    "buxhowden-blind",
+    60
+   ],
+   [
+    "wheel",
+    60
+   ],
+   [
+    "raigern",
+    45
+   ],
+   [
+    "hq-forward",
+    40
+   ],
+   [
+    "davout",
+    30
+   ],
+   [
+    "soult",
+    30
+   ],
+   [
+    "decision",
+    20
+   ]
+  ],
+  "maxConcurrentIntervals": 5,
+  "at": 750,
+  "byCf": {
+   "A": 14,
+   "B": 10,
+   "C": 1
+  },
+  "list": [
+   {
+    "id": "columns-move",
+    "t0": 240,
+    "t1": 420,
+    "len": 180,
+    "cf": "A",
+    "claim": "fact",
+    "side": "al"
+   },
+   {
+    "id": "counter-march",
+    "t0": 255,
+    "t1": 480,
+    "len": 225,
+    "cf": "A",
+    "claim": "fact",
+    "side": "al"
+   },
+   {
+    "id": "telnitz",
+    "t0": 420,
+    "t1": 420,
+    "len": 0,
+    "cf": "A",
+    "claim": "fact",
+    "side": "al"
+   },
+   {
+    "id": "raigern",
+    "t0": 240,
+    "t1": 285,
+    "len": 45,
+    "cf": "B",
+    "claim": "est",
+    "side": "fr"
+   },
+   {
+    "id": "davout",
+    "t0": 465,
+    "t1": 495,
+    "len": 30,
+    "cf": "B",
+    "claim": "est",
+    "side": "fr"
+   },
+   {
+    "id": "sokolnitz",
+    "t0": 480,
+    "t1": 480,
+    "len": 0,
+    "cf": "A",
+    "claim": "fact",
+    "side": "al"
+   },
+   {
+    "id": "telnitz-retaken",
+    "t0": 510,
+    "t1": 510,
+    "len": 0,
+    "cf": "A",
+    "claim": "fact",
+    "side": "fr"
+   },
+   {
+    "id": "decision",
+    "t0": 505,
+    "t1": 525,
+    "len": 20,
+    "cf": "B",
+    "claim": "est",
+    "side": "fr"
+   },
+   {
+    "id": "soult",
+    "t0": 525,
+    "t1": 555,
+    "len": 30,
+    "cf": "A",
+    "claim": "fact",
+    "side": "fr"
+   },
+   {
+    "id": "pratzen-village",
+    "t0": 540,
+    "t1": 540,
+    "len": 0,
+    "cf": "B",
+    "claim": "est",
+    "side": "fr"
+   },
+   {
+    "id": "face-about",
+    "t0": 555,
+    "t1": 555,
+    "len": 0,
+    "cf": "A",
+    "claim": "fact",
+    "side": "al"
+   },
+   {
+    "id": "kamensky",
+    "t0": 585,
+    "t1": 585,
+    "len": 0,
+    "cf": "A",
+    "claim": "fact",
+    "side": "al"
+   },
+   {
+    "id": "kursk",
+    "t0": 630,
+    "t1": 630,
+    "len": 0,
+    "cf": "C",
+    "claim": "recon",
+    "side": "al"
+   },
+   {
+    "id": "pratzeberg",
+    "t0": 660,
+    "t1": 660,
+    "len": 0,
+    "cf": "A",
+    "claim": "fact",
+    "side": "fr"
+   },
+   {
+    "id": "blasowitz",
+    "t0": 675,
+    "t1": 675,
+    "len": 0,
+    "cf": "B",
+    "claim": "est",
+    "side": "fr"
+   },
+   {
+    "id": "guard-attack",
+    "t0": 660,
+    "t1": 780,
+    "len": 120,
+    "cf": "B",
+    "claim": "est",
+    "side": "al"
+   },
+   {
+    "id": "guard-broken",
+    "t0": 675,
+    "t1": 795,
+    "len": 120,
+    "cf": "B",
+    "claim": "est",
+    "side": "fr"
+   },
+   {
+    "id": "hq-forward",
+    "t0": 720,
+    "t1": 760,
+    "len": 40,
+    "cf": "B",
+    "claim": "est",
+    "side": "fr"
+   },
+   {
+    "id": "buxhowden-blind",
+    "t0": 700,
+    "t1": 760,
+    "len": 60,
+    "cf": "B",
+    "claim": "est",
+    "side": "al"
+   },
+   {
+    "id": "davout-resumes",
+    "t0": 750,
+    "t1": 750,
+    "len": 0,
+    "cf": "A",
+    "claim": "fact",
+    "side": "fr"
+   },
+   {
+    "id": "wheel",
+    "t0": 780,
+    "t1": 840,
+    "len": 60,
+    "cf": "B",
+    "claim": "est",
+    "side": "fr"
+   },
+   {
+    "id": "sokolnitz-falls",
+    "t0": 840,
+    "t1": 840,
+    "len": 0,
+    "cf": "A",
+    "claim": "fact",
+    "side": "fr"
+   },
+   {
+    "id": "augezd",
+    "t0": 870,
+    "t1": 870,
+    "len": 0,
+    "cf": "A",
+    "claim": "fact",
+    "side": "fr"
+   },
+   {
+    "id": "ice",
+    "t0": 900,
+    "t1": 900,
+    "len": 0,
+    "cf": "A",
+    "claim": "fact",
+    "side": "fr"
+   },
+   {
+    "id": "end",
+    "t0": 990,
+    "t1": 990,
+    "len": 0,
+    "cf": "A",
+    "claim": "fact",
+    "side": "fr"
+   }
+  ]
+ },
+ "knowledge": {
+  "fr": [
+   {
+    "t": 240,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 250,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 260,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 270,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 280,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 290,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 300,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 310,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 320,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 330,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 340,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 350,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 360,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 370,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 380,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 390,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 400,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 410,
+    "ph": 0,
+    "c:unknown": 6,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 420,
+    "ph": 1,
+    "c:unknown": 5,
+    "c:uncertain": 1,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 430,
+    "ph": 1,
+    "c:unknown": 5,
+    "c:uncertain": 1,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 440,
+    "ph": 1,
+    "c:unknown": 5,
+    "c:uncertain": 1,
+    "o:uncertain": 3,
+    "c:seen": 3
+   },
+   {
+    "t": 450,
+    "ph": 1,
+    "c:seen": 4,
+    "c:unknown": 4,
+    "c:uncertain": 1,
+    "o:uncertain": 3
+   },
+   {
+    "t": 460,
+    "ph": 1,
+    "c:seen": 4,
+    "c:unknown": 4,
+    "c:uncertain": 1,
+    "o:uncertain": 3
+   },
+   {
+    "t": 470,
+    "ph": 1,
+    "c:seen": 5,
+    "c:unknown": 2,
+    "c:uncertain": 2,
+    "o:uncertain": 3
+   },
+   {
+    "t": 480,
+    "ph": 2,
+    "c:seen": 4,
+    "c:unknown": 4,
+    "c:uncertain": 1,
+    "o:unknown": 1,
+    "o:seen": 1,
+    "o:uncertain": 2
+   },
+   {
+    "t": 490,
+    "ph": 2,
+    "c:seen": 4,
+    "c:unknown": 4,
+    "c:uncertain": 1,
+    "o:unknown": 1,
+    "o:seen": 1,
+    "o:uncertain": 2
+   },
+   {
+    "t": 500,
+    "ph": 2,
+    "c:seen": 4,
+    "c:unknown": 4,
+    "c:uncertain": 1,
+    "o:unknown": 1,
+    "o:seen": 1,
+    "o:uncertain": 2
+   },
+   {
+    "t": 510,
+    "ph": 2,
+    "c:seen": 4,
+    "c:unknown": 5,
+    "o:unknown": 1,
+    "o:seen": 1,
+    "o:uncertain": 2
+   },
+   {
+    "t": 520,
+    "ph": 2,
+    "c:seen": 4,
+    "c:unknown": 5,
+    "o:unknown": 1,
+    "o:seen": 1,
+    "o:uncertain": 2
+   },
+   {
+    "t": 530,
+    "ph": 3,
+    "c:seen": 5,
+    "c:unknown": 4,
+    "o:unknown": 1,
+    "o:seen": 1,
+    "o:uncertain": 2
+   },
+   {
+    "t": 540,
+    "ph": 3,
+    "c:seen": 5,
+    "c:unknown": 4,
+    "o:unknown": 1,
+    "o:seen": 1,
+    "o:uncertain": 2
+   },
+   {
+    "t": 550,
+    "ph": 3,
+    "c:seen": 5,
+    "c:unknown": 4,
+    "o:unknown": 1,
+    "o:seen": 1,
+    "o:uncertain": 2
+   },
+   {
+    "t": 560,
+    "ph": 3,
+    "c:seen": 5,
+    "c:unknown": 4,
+    "o:unknown": 1,
+    "o:seen": 1,
+    "o:uncertain": 2
+   },
+   {
+    "t": 570,
+    "ph": 4,
+    "c:seen": 5,
+    "c:unknown": 4,
+    "o:seen": 2,
+    "o:uncertain": 2
+   },
+   {
+    "t": 580,
+    "ph": 4,
+    "c:seen": 5,
+    "c:unknown": 4,
+    "o:seen": 2,
+    "o:uncertain": 2
+   },
+   {
+    "t": 590,
+    "ph": 4,
+    "c:seen": 4,
+    "c:unknown": 5,
+    "o:seen": 2,
+    "o:uncertain": 2
+   },
+   {
+    "t": 600,
+    "ph": 4,
+    "c:unknown": 6,
+    "o:seen": 2,
+    "c:seen": 3,
+    "o:uncertain": 2
+   },
+   {
+    "t": 610,
+    "ph": 4,
+    "c:unknown": 6,
+    "o:seen": 2,
+    "c:seen": 3,
+    "o:uncertain": 2
+   },
+   {
+    "t": 620,
+    "ph": 4,
+    "c:unknown": 6,
+    "o:seen": 2,
+    "c:seen": 3,
+    "o:uncertain": 2
+   },
+   {
+    "t": 630,
+    "ph": 5,
+    "c:unknown": 6,
+    "o:seen": 2,
+    "c:seen": 3,
+    "o:uncertain": 2
+   },
+   {
+    "t": 640,
+    "ph": 5,
+    "c:unknown": 7,
+    "o:seen": 2,
+    "c:seen": 2,
+    "o:uncertain": 2
+   },
+   {
+    "t": 650,
+    "ph": 5,
+    "c:unknown": 7,
+    "o:seen": 2,
+    "c:seen": 2,
+    "o:uncertain": 2
+   },
+   {
+    "t": 660,
+    "ph": 5,
+    "c:unknown": 7,
+    "o:seen": 2,
+    "c:seen": 2,
+    "o:uncertain": 2
+   },
+   {
+    "t": 670,
+    "ph": 5,
+    "c:unknown": 7,
+    "o:seen": 2,
+    "c:seen": 2,
+    "o:uncertain": 2
+   },
+   {
+    "t": 680,
+    "ph": 6,
+    "c:unknown": 7,
+    "o:seen": 4,
+    "c:seen": 2
+   },
+   {
+    "t": 690,
+    "ph": 6,
+    "c:unknown": 7,
+    "o:seen": 4,
+    "c:seen": 2
+   },
+   {
+    "t": 700,
+    "ph": 6,
+    "c:unknown": 7,
+    "o:seen": 4,
+    "c:seen": 2
+   },
+   {
+    "t": 710,
+    "ph": 6,
+    "c:unknown": 7,
+    "o:seen": 4,
+    "c:seen": 2
+   },
+   {
+    "t": 720,
+    "ph": 6,
+    "c:unknown": 7,
+    "o:seen": 4,
+    "c:seen": 2
+   },
+   {
+    "t": 730,
+    "ph": 6,
+    "c:unknown": 8,
+    "o:seen": 4,
+    "c:seen": 1
+   },
+   {
+    "t": 740,
+    "ph": 6,
+    "c:unknown": 9,
+    "o:seen": 4
+   },
+   {
+    "t": 750,
+    "ph": 6,
+    "c:unknown": 8,
+    "o:seen": 4,
+    "c:seen": 1
+   },
+   {
+    "t": 760,
+    "ph": 6,
+    "c:unknown": 9,
+    "o:seen": 4
+   },
+   {
+    "t": 770,
+    "ph": 7,
+    "c:unknown": 9,
+    "o:seen": 4
+   },
+   {
+    "t": 780,
+    "ph": 7,
+    "c:unknown": 9,
+    "o:seen": 4
+   },
+   {
+    "t": 790,
+    "ph": 7,
+    "c:unknown": 9,
+    "o:seen": 4
+   },
+   {
+    "t": 800,
+    "ph": 7,
+    "c:unknown": 9,
+    "o:seen": 4
+   },
+   {
+    "t": 810,
+    "ph": 7,
+    "c:unknown": 9,
+    "o:seen": 4
+   },
+   {
+    "t": 820,
+    "ph": 7,
+    "c:seen": 3,
+    "c:unknown": 6,
+    "o:seen": 4
+   },
+   {
+    "t": 830,
+    "ph": 7,
+    "c:unknown": 8,
+    "c:seen": 1,
+    "o:seen": 4
+   },
+   {
+    "t": 840,
+    "ph": 7,
+    "c:unknown": 7,
+    "c:seen": 2,
+    "o:seen": 4
+   },
+   {
+    "t": 850,
+    "ph": 7,
+    "c:unknown": 7,
+    "c:seen": 2,
+    "o:seen": 4
+   },
+   {
+    "t": 860,
+    "ph": 7,
+    "c:unknown": 7,
+    "c:seen": 2,
+    "o:seen": 4
+   },
+   {
+    "t": 870,
+    "ph": 8,
+    "c:unknown": 6,
+    "c:seen": 3,
+    "o:seen": 4
+   },
+   {
+    "t": 880,
+    "ph": 8,
+    "c:unknown": 5,
+    "c:seen": 4,
+    "o:seen": 4
+   },
+   {
+    "t": 890,
+    "ph": 8,
+    "c:unknown": 4,
+    "c:seen": 5,
+    "o:seen": 4
+   },
+   {
+    "t": 900,
+    "ph": 8,
+    "c:unknown": 4,
+    "c:seen": 5,
+    "o:seen": 4
+   },
+   {
+    "t": 910,
+    "ph": 8,
+    "c:unknown": 4,
+    "c:seen": 5,
+    "o:seen": 4
+   },
+   {
+    "t": 920,
+    "ph": 8,
+    "c:unknown": 4,
+    "c:seen": 5,
+    "o:seen": 4
+   },
+   {
+    "t": 930,
+    "ph": 8,
+    "c:unknown": 4,
+    "c:seen": 5,
+    "o:seen": 4
+   },
+   {
+    "t": 940,
+    "ph": 8,
+    "c:unknown": 5,
+    "c:seen": 4,
+    "o:seen": 4
+   },
+   {
+    "t": 950,
+    "ph": 8,
+    "c:unknown": 7,
+    "c:seen": 2,
+    "o:seen": 4
+   },
+   {
+    "t": 960,
+    "ph": 8,
+    "c:unknown": 7,
+    "c:seen": 2,
+    "o:seen": 4
+   },
+   {
+    "t": 970,
+    "ph": 8,
+    "c:unknown": 7,
+    "c:seen": 2,
+    "o:seen": 4
+   },
+   {
+    "t": 980,
+    "ph": 8,
+    "c:unknown": 8,
+    "c:seen": 1,
+    "o:seen": 4
+   },
+   {
+    "t": 990,
+    "ph": 8,
+    "c:unknown": 8,
+    "c:seen": 1,
+    "o:seen": 4
+   },
+   {
+    "t": 1000,
+    "ph": 8,
+    "c:unknown": 8,
+    "c:seen": 1,
+    "o:seen": 4
+   },
+   {
+    "t": 1010,
+    "ph": 8,
+    "c:unknown": 8,
+    "c:seen": 1,
+    "o:seen": 4
+   },
+   {
+    "t": 1020,
+    "ph": 9,
+    "c:unknown": 8,
+    "c:seen": 1,
+    "o:seen": 3
+   },
+   {
+    "t": 1030,
+    "ph": 9,
+    "c:unknown": 8,
+    "c:seen": 1,
+    "o:seen": 3
+   },
+   {
+    "t": 1040,
+    "ph": 9,
+    "c:unknown": 8,
+    "c:seen": 1,
+    "o:seen": 3
+   },
+   {
+    "t": 1050,
+    "ph": 9,
+    "c:unknown": 8,
+    "c:seen": 1,
+    "o:seen": 3
+   },
+   {
+    "t": 1060,
+    "ph": 9,
+    "c:unknown": 8,
+    "c:seen": 1,
+    "o:seen": 3
+   },
+   {
+    "t": 1070,
+    "ph": 9,
+    "c:unknown": 8,
+    "c:seen": 1,
+    "o:seen": 3
+   },
+   {
+    "t": 1080,
+    "ph": 9,
+    "c:unknown": 8,
+    "c:seen": 1,
+    "o:seen": 3
+   }
+  ],
+  "al": [
+   {
+    "t": 240,
+    "ph": 0,
+    "c:unknown": 8,
+    "o:unknown": 9,
+    "c:seen": 1
+   },
+   {
+    "t": 250,
+    "ph": 0,
+    "c:unknown": 8,
+    "o:unknown": 9,
+    "c:seen": 1
+   },
+   {
+    "t": 260,
+    "ph": 0,
+    "c:unknown": 8,
+    "o:unknown": 9,
+    "c:seen": 1
+   },
+   {
+    "t": 270,
+    "ph": 0,
+    "c:unknown": 8,
+    "o:unknown": 9,
+    "c:seen": 1
+   },
+   {
+    "t": 280,
+    "ph": 0,
+    "c:unknown": 8,
+    "o:unknown": 9,
+    "c:seen": 1
+   },
+   {
+    "t": 290,
+    "ph": 0,
+    "c:unknown": 8,
+    "o:unknown": 9,
+    "c:seen": 1
+   },
+   {
+    "t": 300,
+    "ph": 0,
+    "c:unknown": 8,
+    "o:unknown": 9,
+    "c:seen": 1
+   },
+   {
+    "t": 310,
+    "ph": 0,
+    "c:unknown": 8,
+    "o:unknown": 9,
+    "c:seen": 1
+   },
+   {
+    "t": 320,
+    "ph": 0,
+    "c:unknown": 7,
+    "o:unknown": 9,
+    "c:seen": 2
+   },
+   {
+    "t": 330,
+    "ph": 0,
+    "c:unknown": 7,
+    "o:unknown": 9,
+    "c:seen": 2
+   },
+   {
+    "t": 340,
+    "ph": 0,
+    "c:unknown": 7,
+    "o:unknown": 9,
+    "c:seen": 2
+   },
+   {
+    "t": 350,
+    "ph": 0,
+    "c:unknown": 8,
+    "o:unknown": 9,
+    "c:seen": 1
+   },
+   {
+    "t": 360,
+    "ph": 0,
+    "c:unknown": 8,
+    "o:unknown": 9,
+    "c:seen": 1
+   },
+   {
+    "t": 370,
+    "ph": 0,
+    "c:unknown": 9,
+    "o:unknown": 9
+   },
+   {
+    "t": 380,
+    "ph": 0,
+    "c:unknown": 9,
+    "o:unknown": 9
+   },
+   {
+    "t": 390,
+    "ph": 0,
+    "c:unknown": 9,
+    "o:unknown": 9
+   },
+   {
+    "t": 400,
+    "ph": 0,
+    "c:unknown": 9,
+    "o:unknown": 9
+   },
+   {
+    "t": 410,
+    "ph": 0,
+    "c:unknown": 9,
+    "o:unknown": 9
+   },
+   {
+    "t": 420,
+    "ph": 1,
+    "c:unknown": 9,
+    "o:unknown": 9
+   },
+   {
+    "t": 430,
+    "ph": 1,
+    "c:unknown": 9,
+    "o:unknown": 9
+   },
+   {
+    "t": 440,
+    "ph": 1,
+    "c:unknown": 9,
+    "o:unknown": 9
+   },
+   {
+    "t": 450,
+    "ph": 1,
+    "c:seen": 1,
+    "o:unknown": 9,
+    "c:unknown": 8
+   },
+   {
+    "t": 460,
+    "ph": 1,
+    "c:seen": 4,
+    "o:unknown": 9,
+    "c:unknown": 4,
+    "c:uncertain": 1
+   },
+   {
+    "t": 470,
+    "ph": 1,
+    "c:seen": 4,
+    "o:unknown": 9,
+    "c:unknown": 4,
+    "c:uncertain": 1
+   },
+   {
+    "t": 480,
+    "ph": 2,
+    "c:seen": 4,
+    "o:unknown": 7,
+    "c:unknown": 5,
+    "o:seen": 1,
+    "o:uncertain": 1
+   },
+   {
+    "t": 490,
+    "ph": 2,
+    "c:seen": 4,
+    "o:unknown": 7,
+    "c:unknown": 5,
+    "o:seen": 1,
+    "o:uncertain": 1
+   },
+   {
+    "t": 500,
+    "ph": 2,
+    "c:seen": 3,
+    "o:unknown": 7,
+    "c:unknown": 6,
+    "o:seen": 1,
+    "o:uncertain": 1
+   },
+   {
+    "t": 510,
+    "ph": 2,
+    "c:seen": 3,
+    "o:unknown": 7,
+    "c:unknown": 6,
+    "o:seen": 1,
+    "o:uncertain": 1
+   },
+   {
+    "t": 520,
+    "ph": 2,
+    "c:seen": 2,
+    "o:unknown": 7,
+    "c:unknown": 7,
+    "o:seen": 1,
+    "o:uncertain": 1
+   },
+   {
+    "t": 530,
+    "ph": 3,
+    "c:seen": 2,
+    "o:seen": 3,
+    "c:unknown": 7,
+    "o:uncertain": 1,
+    "o:unknown": 5
+   },
+   {
+    "t": 540,
+    "ph": 3,
+    "c:seen": 2,
+    "o:seen": 3,
+    "c:unknown": 7,
+    "o:uncertain": 1,
+    "o:unknown": 5
+   },
+   {
+    "t": 550,
+    "ph": 3,
+    "c:seen": 3,
+    "o:seen": 3,
+    "c:unknown": 6,
+    "o:uncertain": 1,
+    "o:unknown": 5
+   },
+   {
+    "t": 560,
+    "ph": 3,
+    "c:seen": 3,
+    "o:seen": 3,
+    "c:unknown": 6,
+    "o:uncertain": 1,
+    "o:unknown": 5
+   },
+   {
+    "t": 570,
+    "ph": 4,
+    "c:seen": 3,
+    "o:seen": 3,
+    "c:unknown": 6,
+    "o:uncertain": 2,
+    "o:unknown": 4
+   },
+   {
+    "t": 580,
+    "ph": 4,
+    "c:seen": 4,
+    "o:seen": 3,
+    "c:unknown": 5,
+    "o:uncertain": 2,
+    "o:unknown": 4
+   },
+   {
+    "t": 590,
+    "ph": 4,
+    "c:seen": 2,
+    "o:seen": 3,
+    "c:unknown": 7,
+    "o:uncertain": 2,
+    "o:unknown": 4
+   },
+   {
+    "t": 600,
+    "ph": 4,
+    "c:unknown": 9,
+    "o:seen": 3,
+    "o:uncertain": 2,
+    "o:unknown": 4
+   },
+   {
+    "t": 610,
+    "ph": 4,
+    "c:unknown": 9,
+    "o:seen": 3,
+    "o:uncertain": 2,
+    "o:unknown": 4
+   },
+   {
+    "t": 620,
+    "ph": 4,
+    "c:unknown": 9,
+    "o:seen": 3,
+    "o:uncertain": 2,
+    "o:unknown": 4
+   },
+   {
+    "t": 630,
+    "ph": 5,
+    "c:unknown": 8,
+    "o:seen": 3,
+    "o:uncertain": 2,
+    "c:seen": 1,
+    "o:unknown": 4
+   },
+   {
+    "t": 640,
+    "ph": 5,
+    "c:unknown": 8,
+    "o:seen": 3,
+    "o:uncertain": 2,
+    "c:seen": 1,
+    "o:unknown": 4
+   },
+   {
+    "t": 650,
+    "ph": 5,
+    "c:unknown": 9,
+    "o:seen": 3,
+    "o:uncertain": 2,
+    "o:unknown": 4
+   },
+   {
+    "t": 660,
+    "ph": 5,
+    "c:unknown": 9,
+    "o:seen": 3,
+    "o:uncertain": 2,
+    "o:unknown": 4
+   },
+   {
+    "t": 670,
+    "ph": 5,
+    "c:unknown": 9,
+    "o:seen": 3,
+    "o:uncertain": 2,
+    "o:unknown": 4
+   },
+   {
+    "t": 680,
+    "ph": 6,
+    "c:unknown": 9,
+    "o:seen": 7,
+    "o:uncertain": 1,
+    "o:unknown": 1
+   },
+   {
+    "t": 690,
+    "ph": 6,
+    "c:unknown": 9,
+    "o:seen": 7,
+    "o:uncertain": 1,
+    "o:unknown": 1
+   },
+   {
+    "t": 700,
+    "ph": 6,
+    "c:unknown": 7,
+    "o:seen": 7,
+    "o:uncertain": 1,
+    "c:seen": 2,
+    "o:unknown": 1
+   },
+   {
+    "t": 710,
+    "ph": 6,
+    "c:unknown": 8,
+    "o:seen": 7,
+    "o:uncertain": 1,
+    "c:seen": 1,
+    "o:unknown": 1
+   },
+   {
+    "t": 720,
+    "ph": 6,
+    "c:unknown": 8,
+    "o:seen": 7,
+    "o:uncertain": 1,
+    "c:seen": 1,
+    "o:unknown": 1
+   },
+   {
+    "t": 730,
+    "ph": 6,
+    "c:unknown": 9,
+    "o:seen": 7,
+    "o:uncertain": 1,
+    "o:unknown": 1
+   },
+   {
+    "t": 740,
+    "ph": 6,
+    "c:unknown": 9,
+    "o:seen": 7,
+    "o:uncertain": 1,
+    "o:unknown": 1
+   },
+   {
+    "t": 750,
+    "ph": 6,
+    "c:unknown": 9,
+    "o:seen": 7,
+    "o:uncertain": 1,
+    "o:unknown": 1
+   },
+   {
+    "t": 760,
+    "ph": 6,
+    "c:unknown": 9,
+    "o:seen": 7,
+    "o:uncertain": 1,
+    "o:unknown": 1
+   },
+   {
+    "t": 770,
+    "ph": 7,
+    "c:unknown": 9,
+    "o:unknown": 1,
+    "o:seen": 8,
+    "o:uncertain": 1
+   },
+   {
+    "t": 780,
+    "ph": 7,
+    "c:unknown": 8,
+    "o:unknown": 1,
+    "o:seen": 8,
+    "o:uncertain": 1,
+    "c:seen": 1
+   },
+   {
+    "t": 790,
+    "ph": 7,
+    "c:unknown": 8,
+    "o:unknown": 1,
+    "o:seen": 8,
+    "o:uncertain": 1,
+    "c:seen": 1
+   },
+   {
+    "t": 800,
+    "ph": 7,
+    "c:unknown": 8,
+    "o:unknown": 1,
+    "o:seen": 8,
+    "o:uncertain": 1,
+    "c:seen": 1
+   },
+   {
+    "t": 810,
+    "ph": 7,
+    "c:unknown": 8,
+    "o:unknown": 1,
+    "o:seen": 8,
+    "o:uncertain": 1,
+    "c:seen": 1
+   },
+   {
+    "t": 820,
+    "ph": 7,
+    "c:seen": 1,
+    "o:unknown": 1,
+    "o:seen": 8,
+    "c:unknown": 8,
+    "o:uncertain": 1
+   },
+   {
+    "t": 830,
+    "ph": 7,
+    "c:unknown": 9,
+    "o:unknown": 1,
+    "o:seen": 8,
+    "o:uncertain": 1
+   },
+   {
+    "t": 840,
+    "ph": 7,
+    "c:unknown": 9,
+    "o:unknown": 1,
+    "o:seen": 8,
+    "o:uncertain": 1
+   },
+   {
+    "t": 850,
+    "ph": 7,
+    "c:unknown": 9,
+    "o:unknown": 1,
+    "o:seen": 8,
+    "o:uncertain": 1
+   },
+   {
+    "t": 860,
+    "ph": 7,
+    "c:unknown": 9,
+    "o:unknown": 1,
+    "o:seen": 8,
+    "o:uncertain": 1
+   },
+   {
+    "t": 870,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 880,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 890,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 900,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 910,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 920,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 930,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 940,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 950,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 960,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 970,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 980,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 990,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 1000,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 1010,
+    "ph": 8,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 1020,
+    "ph": 9,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 1030,
+    "ph": 9,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 1040,
+    "ph": 9,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 1050,
+    "ph": 9,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 1060,
+    "ph": 9,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 1070,
+    "ph": 9,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   },
+   {
+    "t": 1080,
+    "ph": 9,
+    "c:unknown": 9,
+    "o:seen": 9,
+    "o:uncertain": 1
+   }
+  ]
+ },
+ "knowledgeWithinPhase": {
+  "fr": 73,
+  "al": 52,
+  "samples": {
+   "fr": 961,
+   "al": 1397
+  },
+  "examples": [
+   "fr ahq 450: c:unknown -> c:seen",
+   "fr ahq 460: c:unknown -> c:seen",
+   "fr ahq 470: c:unknown -> c:seen",
+   "fr kienmayer 470: c:unknown -> c:uncertain",
+   "fr kollo 470: c:unknown -> c:seen",
+   "fr kienmayer 510: c:uncertain -> c:unknown",
+   "fr kienmayer 520: c:uncertain -> c:unknown",
+   "fr milo 535: c:unknown -> c:seen",
+   "fr lich 535: c:unknown -> c:seen",
+   "fr milo 545: c:unknown -> c:seen",
+   "fr lich 545: c:unknown -> c:seen",
+   "fr milo 555: c:unknown -> c:seen"
+  ]
+ },
+ "command": {
+  "fr": {
+   "saw/doc": 6,
+   "knew/doc": 6,
+   "didnt/inf": 2,
+   "ordered/doc": 9,
+   "expected/doc": 1,
+   "saw/inf": 1
+  },
+  "al": {
+   "knew/doc": 6,
+   "didnt/doc": 3,
+   "didnt/inf": 2,
+   "ordered/doc": 6,
+   "expected/doc": 1,
+   "saw/doc": 3
+  }
+ },
+ "overrides": {
+  "fr": 5,
+  "al": 10
+ },
+ "hqPositions": {
+  "gqg": [
+   [
+    0,
+    [
+     177,
+     134
+    ],
+    "A"
+   ],
+   [
+    6,
+    [
+     309,
+     207
+    ],
+    "A"
+   ],
+   [
+    7,
+    [
+     307,
+     227
+    ],
+    "A"
+   ],
+   [
+    8,
+    [
+     294,
+     352
+    ],
+    "B"
+   ]
+  ],
+  "ahq": [
+   [
+    0,
+    [
+     408,
+     198
+    ],
+    "B"
+   ],
+   [
+    3,
+    [
+     293,
+     240
+    ],
+    "A"
+   ],
+   [
+    4,
+    [
+     303,
+     235
+    ],
+    "B"
+   ],
+   [
+    6,
+    [
+     404,
+     220
+    ],
+    "B"
+   ],
+   [
+    8,
+    [
+     454,
+     190
+    ],
+    "B"
+   ],
+   [
+    9,
+    [
+     480,
+     148
+    ],
+    "B"
+   ]
+  ]
+ },
+ "plans": [
+  {
+   "side": "al",
+   "n": "Advance Guard - Kienmayer",
+   "routeKm": 3.28,
+   "forms": [
+    {
+     "id": "kienmayer",
+     "tracked": true,
+     "maxFromRouteKm": 1.41,
+     "shareWithin1km": 0.86,
+     "lastFromObjectiveKm": 2.01,
+     "last": 1080
+    }
+   ]
+  },
+  {
+   "side": "al",
+   "n": "1st Column - Dokhturov",
+   "routeKm": 4.95,
+   "forms": [
+    {
+     "id": "dok",
+     "tracked": true,
+     "maxFromRouteKm": 1.45,
+     "shareWithin1km": 0.85,
+     "lastFromObjectiveKm": 3.47,
+     "last": 1080
+    }
+   ]
+  },
+  {
+   "side": "al",
+   "n": "2nd Column - Langeron",
+   "routeKm": 3.7,
+   "forms": [
+    {
+     "id": "lang",
+     "tracked": true,
+     "maxFromRouteKm": 1.68,
+     "shareWithin1km": 0.74,
+     "lastFromObjectiveKm": 3.07,
+     "last": 1080
+    }
+   ]
+  },
+  {
+   "side": "al",
+   "n": "3rd Column - Przybyszewski",
+   "routeKm": 3.58,
+   "forms": [
+    {
+     "id": "prz",
+     "tracked": true,
+     "maxFromRouteKm": 0.66,
+     "shareWithin1km": 1,
+     "lastFromObjectiveKm": 1.22,
+     "last": 1010
+    }
+   ]
+  },
+  {
+   "side": "al",
+   "n": "4th Column - Kollowrat and Miloradovich",
+   "routeKm": 4.34,
+   "forms": [
+    {
+     "id": "milo",
+     "tracked": true,
+     "maxFromRouteKm": 4.8,
+     "shareWithin1km": 0.47,
+     "lastFromObjectiveKm": 9.18,
+     "last": 1080
+    },
+    {
+     "id": "kollo",
+     "tracked": true,
+     "maxFromRouteKm": 5.12,
+     "shareWithin1km": 0.54,
+     "lastFromObjectiveKm": 9.47,
+     "last": 1080
+    }
+   ]
+  },
+  {
+   "side": "al",
+   "n": "5th Column - Liechtenstein",
+   "routeKm": 3.52,
+   "forms": [
+    {
+     "id": "lich",
+     "tracked": true,
+     "maxFromRouteKm": 5.51,
+     "shareWithin1km": 0.51,
+     "lastFromObjectiveKm": 5.83,
+     "last": 1080
+    }
+   ]
+  },
+  {
+   "side": "al",
+   "n": "Advance Guard of the Right - Bagration",
+   "routeKm": 2.21,
+   "forms": [
+    {
+     "id": "bag",
+     "tracked": true,
+     "maxFromRouteKm": 1.82,
+     "shareWithin1km": 0.91,
+     "lastFromObjectiveKm": 4.03,
+     "last": 1080
+    }
+   ]
+  },
+  {
+   "side": "al",
+   "n": "Reserve - Constantine",
+   "routeKm": 2.22,
+   "forms": [
+    {
+     "id": "rg_inf",
+     "tracked": true,
+     "maxFromRouteKm": 2.5,
+     "shareWithin1km": 0.74,
+     "lastFromObjectiveKm": 2.82,
+     "last": 1080
+    },
+    {
+     "id": "rg_cav",
+     "tracked": true,
+     "maxFromRouteKm": 2.91,
+     "shareWithin1km": 0.71,
+     "lastFromObjectiveKm": 3.2,
+     "last": 1080
+    }
+   ]
+  },
+  {
+   "side": "fr",
+   "n": "The bait - Legrand, then Davout",
+   "routeKm": 3.14,
+   "forms": [
+    {
+     "id": "legrand",
+     "tracked": true,
+     "maxFromRouteKm": 0.45,
+     "shareWithin1km": 1,
+     "lastFromObjectiveKm": 0.74,
+     "last": 1080
+    },
+    {
+     "id": "friant",
+     "tracked": true,
+     "maxFromRouteKm": 6.46,
+     "shareWithin1km": 0.74,
+     "lastFromObjectiveKm": 0.32,
+     "last": 1080
+    }
+   ]
+  },
+  {
+   "side": "fr",
+   "n": "The concealed centre - Soult",
+   "routeKm": 3.37,
+   "forms": [
+    {
+     "id": "sthilaire",
+     "tracked": true,
+     "maxFromRouteKm": 3.39,
+     "shareWithin1km": 0.71,
+     "lastFromObjectiveKm": 3.33,
+     "last": 1080
+    }
+   ]
+  },
+  {
+   "side": "fr",
+   "n": "The second axis - Vandamme",
+   "routeKm": 2.97,
+   "forms": [
+    {
+     "id": "vandamme",
+     "tracked": true,
+     "maxFromRouteKm": 5.04,
+     "shareWithin1km": 0.66,
+     "lastFromObjectiveKm": 5.04,
+     "last": 1080
+    }
+   ]
+  },
+  {
+   "side": "fr",
+   "n": "The pivot - Lannes and Murat",
+   "routeKm": 3,
+   "forms": [
+    {
+     "id": "suchet",
+     "tracked": true,
+     "maxFromRouteKm": 0.59,
+     "shareWithin1km": 1,
+     "lastFromObjectiveKm": 0.59,
+     "last": 1080
+    },
+    {
+     "id": "caffarelli",
+     "tracked": true,
+     "maxFromRouteKm": 4.08,
+     "shareWithin1km": 0.41,
+     "lastFromObjectiveKm": 4.08,
+     "last": 1080
+    },
+    {
+     "id": "santon",
+     "tracked": true,
+     "maxFromRouteKm": 0.29,
+     "shareWithin1km": 1,
+     "lastFromObjectiveKm": 2.9,
+     "last": 1080
+    }
+   ]
+  },
+  {
+   "side": "fr",
+   "n": "In hand - Bernadotte, the Guard, the grenadiers",
+   "routeKm": 3.87,
+   "forms": [
+    {
+     "id": "guard_inf",
+     "tracked": true,
+     "maxFromRouteKm": 1.27,
+     "shareWithin1km": 0.82,
+     "lastFromObjectiveKm": 1.28,
+     "last": 1080
+    },
+    {
+     "id": "guard_cav",
+     "tracked": true,
+     "maxFromRouteKm": 0.82,
+     "shareWithin1km": 1,
+     "lastFromObjectiveKm": 0.82,
+     "last": 1080
+    },
+    {
+     "id": "c_gren",
+     "tracked": true,
+     "maxFromRouteKm": 5.07,
+     "shareWithin1km": 0.64,
+     "lastFromObjectiveKm": 5.08,
+     "last": 1080
+    },
+    {
+     "id": "drouet",
+     "tracked": true,
+     "maxFromRouteKm": 0.94,
+     "shareWithin1km": 1,
+     "lastFromObjectiveKm": 0.94,
+     "last": 1080
+    }
+   ]
+  },
+  {
+   "side": "fr",
+   "n": "The wheel",
+   "routeKm": 3.95,
+   "forms": [
+    {
+     "id": "sthilaire",
+     "tracked": true,
+     "maxFromRouteKm": 2.89,
+     "shareWithin1km": 0.36,
+     "lastFromObjectiveKm": 1.4,
+     "last": 1080
+    },
+    {
+     "id": "vandamme",
+     "tracked": true,
+     "maxFromRouteKm": 3.33,
+     "shareWithin1km": 0.35,
+     "lastFromObjectiveKm": 0.25,
+     "last": 1080
+    }
+   ]
+  }
+ ],
+ "axisVsPlan": [
+  {
+   "label": "I Column → Telnitz",
+   "plan": "1st Column - Dokhturov",
+   "axisPts": 3,
+   "planPts": 5,
+   "hausdorffKm": 2.12,
+   "axisOffRouteKm": 0.08,
+   "endsApartKm": 2.12
+  },
+  {
+   "label": "II Column → Sokolnitz",
+   "plan": "2nd Column - Langeron",
+   "axisPts": 3,
+   "planPts": 4,
+   "hausdorffKm": 1.5,
+   "axisOffRouteKm": 0.13,
+   "endsApartKm": 1.5
+  },
+  {
+   "label": "III Column → the castle",
+   "plan": "3rd Column - Przybyszewski",
+   "axisPts": 3,
+   "planPts": 4,
+   "hausdorffKm": 1.39,
+   "axisOffRouteKm": 0.09,
+   "endsApartKm": 1.39
+  },
+  {
+   "label": "IV Column → Kobelnitz",
+   "plan": "4th Column - Kollowrat and Miloradovich",
+   "axisPts": 3,
+   "planPts": 4,
+   "hausdorffKm": 0.32,
+   "axisOffRouteKm": 0.08,
+   "endsApartKm": 0.32
+  }
+ ],
+ "dayTracks": [
+  {
+   "id": "gqg",
+   "name": "Imperial Headquarters",
+   "anchors": 4,
+   "distinctPlaces": 4,
+   "extentKm": [
+    4.17,
+    6.89
+   ],
+   "lengthKm": 9.37,
+   "shortestLegKm": 0.64,
+   "grades": "AAAB"
+  },
+  {
+   "id": "heightguns",
+   "name": "French guns on the heights",
+   "anchors": 3,
+   "distinctPlaces": 2,
+   "extentKm": [
+    0.41,
+    2.34
+   ],
+   "lengthKm": 2.37,
+   "shortestLegKm": 2.37,
+   "grades": "CBB"
+  },
+  {
+   "id": "sthilaire",
+   "name": "Saint-Hilaire's Division",
+   "anchors": 9,
+   "distinctPlaces": 9,
+   "extentKm": [
+    2.75,
+    5.34
+   ],
+   "lengthKm": 8.76,
+   "shortestLegKm": 0.2,
+   "grades": "AAAAAAABB"
+  },
+  {
+   "id": "vandamme",
+   "name": "Vandamme's Division",
+   "anchors": 8,
+   "distinctPlaces": 8,
+   "extentKm": [
+    2.91,
+    6.13
+   ],
+   "lengthKm": 9.35,
+   "shortestLegKm": 0.37,
+   "grades": "AAAAAAAA"
+  },
+  {
+   "id": "legrand",
+   "name": "Legrand's Division",
+   "anchors": 7,
+   "distinctPlaces": 7,
+   "extentKm": [
+    0.7,
+    2.56
+   ],
+   "lengthKm": 7.15,
+   "shortestLegKm": 0.4,
+   "grades": "AAABBBB"
+  },
+  {
+   "id": "friant",
+   "name": "Friant's Division",
+   "anchors": 7,
+   "distinctPlaces": 7,
+   "extentKm": [
+    6.19,
+    3.32
+   ],
+   "lengthKm": 7.61,
+   "shortestLegKm": 0.14,
+   "grades": "BBAAAAA"
+  },
+  {
+   "id": "bourcier",
+   "name": "Bourcier's Dragoons",
+   "anchors": 5,
+   "distinctPlaces": 5,
+   "extentKm": [
+    8.69,
+    3.63
+   ],
+   "lengthKm": 9.49,
+   "shortestLegKm": 0.55,
+   "grades": "CCCCC"
+  },
+  {
+   "id": "caffarelli",
+   "name": "Caffarelli's Division",
+   "anchors": 6,
+   "distinctPlaces": 6,
+   "extentKm": [
+    5.78,
+    0.82
+   ],
+   "lengthKm": 5.89,
+   "shortestLegKm": 0.79,
+   "grades": "AAAAAA"
+  },
+  {
+   "id": "suchet",
+   "name": "Suchet's Division",
+   "anchors": 6,
+   "distinctPlaces": 6,
+   "extentKm": [
+    3.03,
+    1.86
+   ],
+   "lengthKm": 3.61,
+   "shortestLegKm": 0.41,
+   "grades": "ABBBBB"
+  },
+  {
+   "id": "santon",
+   "name": "The Santon detachment",
+   "anchors": 1,
+   "distinctPlaces": 1,
+   "extentKm": [
+    0,
+    0
+   ],
+   "lengthKm": 0,
+   "shortestLegKm": null,
+   "grades": "A"
+  },
+  {
+   "id": "kellermann",
+   "name": "Kellermann's Light Cavalry",
+   "anchors": 5,
+   "distinctPlaces": 5,
+   "extentKm": [
+    4.46,
+    0.54
+   ],
+   "lengthKm": 4.5,
+   "shortestLegKm": 0.89,
+   "grades": "BAAAA"
+  },
+  {
+   "id": "nansouty",
+   "name": "Nansouty's Cuirassiers",
+   "anchors": 5,
+   "distinctPlaces": 5,
+   "extentKm": [
+    4.96,
+    0.57
+   ],
+   "lengthKm": 5.04,
+   "shortestLegKm": 0.96,
+   "grades": "BAAAA"
+  },
+  {
+   "id": "dhautpoul",
+   "name": "d'Hautpoul's Cuirassiers",
+   "anchors": 4,
+   "distinctPlaces": 4,
+   "extentKm": [
+    5.15,
+    0.54
+   ],
+   "lengthKm": 5.25,
+   "shortestLegKm": 1.08,
+   "grades": "BBBB"
+  },
+  {
+   "id": "walther",
+   "name": "Walther's Dragoons",
+   "anchors": 4,
+   "distinctPlaces": 4,
+   "extentKm": [
+    4.9,
+    0.57
+   ],
+   "lengthKm": 4.98,
+   "shortestLegKm": 0.79,
+   "grades": "CCCC"
+  },
+  {
+   "id": "rivaud",
+   "name": "Rivaud's Division",
+   "anchors": 5,
+   "distinctPlaces": 5,
+   "extentKm": [
+    4.58,
+    1.36
+   ],
+   "lengthKm": 5.33,
+   "shortestLegKm": 0.81,
+   "grades": "BBBBB"
+  },
+  {
+   "id": "drouet",
+   "name": "Drouet d'Erlon's Division",
+   "anchors": 5,
+   "distinctPlaces": 5,
+   "extentKm": [
+    4.74,
+    1.26
+   ],
+   "lengthKm": 5.31,
+   "shortestLegKm": 0.63,
+   "grades": "BBAAA"
+  },
+  {
+   "id": "guard_inf",
+   "name": "Guard Infantry",
+   "anchors": 4,
+   "distinctPlaces": 4,
+   "extentKm": [
+    3.29,
+    3.16
+   ],
+   "lengthKm": 5.35,
+   "shortestLegKm": 0.56,
+   "grades": "AAAA"
+  },
+  {
+   "id": "guard_cav",
+   "name": "Guard Cavalry",
+   "anchors": 4,
+   "distinctPlaces": 4,
+   "extentKm": [
+    3.22,
+    2.62
+   ],
+   "lengthKm": 4.69,
+   "shortestLegKm": 0.35,
+   "grades": "AAAA"
+  },
+  {
+   "id": "c_gren",
+   "name": "Grenadier Division",
+   "anchors": 5,
+   "distinctPlaces": 5,
+   "extentKm": [
+    2.72,
+    6.57
+   ],
+   "lengthKm": 8.45,
+   "shortestLegKm": 0.57,
+   "grades": "BBBBB"
+  },
+  {
+   "id": "ahq",
+   "name": "Allied Headquarters",
+   "anchors": 6,
+   "distinctPlaces": 6,
+   "extentKm": [
+    5.91,
+    2.91
+   ],
+   "lengthKm": 10.85,
+   "shortestLegKm": 0.35,
+   "grades": "BABBBB"
+  },
+  {
+   "id": "buxhowden",
+   "name": "Left Wing Command",
+   "anchors": 5,
+   "distinctPlaces": 5,
+   "extentKm": [
+    1.33,
+    3.35
+   ],
+   "lengthKm": 5.41,
+   "shortestLegKm": 0.98,
+   "grades": "CCCBB"
+  },
+  {
+   "id": "kienmayer",
+   "name": "Kienmayer's Advance Guard",
+   "anchors": 6,
+   "distinctPlaces": 6,
+   "extentKm": [
+    2.4,
+    2.18
+   ],
+   "lengthKm": 7.98,
+   "shortestLegKm": 0.46,
+   "grades": "AAABAA"
+  },
+  {
+   "id": "dok",
+   "name": "First Column",
+   "anchors": 6,
+   "distinctPlaces": 6,
+   "extentKm": [
+    2.09,
+    3.07
+   ],
+   "lengthKm": 7.18,
+   "shortestLegKm": 0.29,
+   "grades": "AAAAAA"
+  },
+  {
+   "id": "lang",
+   "name": "Second Column",
+   "anchors": 7,
+   "distinctPlaces": 7,
+   "extentKm": [
+    1.83,
+    2.21
+   ],
+   "lengthKm": 5.49,
+   "shortestLegKm": 0.58,
+   "grades": "AAACCCC"
+  },
+  {
+   "id": "kamensky",
+   "name": "Kamensky's Brigade",
+   "anchors": 7,
+   "distinctPlaces": 7,
+   "extentKm": [
+    4.36,
+    3
+   ],
+   "lengthKm": 5.57,
+   "shortestLegKm": 0.43,
+   "grades": "BAAABCC"
+  },
+  {
+   "id": "prz",
+   "name": "Third Column",
+   "anchors": 6,
+   "distinctPlaces": 6,
+   "extentKm": [
+    1.99,
+    1.96
+   ],
+   "lengthKm": 3.91,
+   "shortestLegKm": 0.27,
+   "grades": "AAAAAA"
+  },
+  {
+   "id": "milo",
+   "name": "Miloradovich's Russians",
+   "anchors": 7,
+   "distinctPlaces": 7,
+   "extentKm": [
+    5.85,
+    2.15
+   ],
+   "lengthKm": 7.78,
+   "shortestLegKm": 0.29,
+   "grades": "AAABBBB"
+  },
+  {
+   "id": "kollo",
+   "name": "Kollowrat's Austrians",
+   "anchors": 8,
+   "distinctPlaces": 8,
+   "extentKm": [
+    5.69,
+    3.86
+   ],
+   "lengthKm": 11.11,
+   "shortestLegKm": 0.13,
+   "grades": "AAABBBBB"
+  },
+  {
+   "id": "lich",
+   "name": "Fifth Column (cavalry)",
+   "anchors": 8,
+   "distinctPlaces": 8,
+   "extentKm": [
+    5.47,
+    4.2
+   ],
+   "lengthKm": 8.83,
+   "shortestLegKm": 0.73,
+   "grades": "BAAAAAAA"
+  },
+  {
+   "id": "bag",
+   "name": "Advance Guard of the Right",
+   "anchors": 6,
+   "distinctPlaces": 6,
+   "extentKm": [
+    3.29,
+    1.71
+   ],
+   "lengthKm": 5.6,
+   "shortestLegKm": 0.72,
+   "grades": "BBBBBB"
+  },
+  {
+   "id": "rg_inf",
+   "name": "Guard Infantry",
+   "anchors": 6,
+   "distinctPlaces": 6,
+   "extentKm": [
+    4.68,
+    1.83
+   ],
+   "lengthKm": 8.02,
+   "shortestLegKm": 1.12,
+   "grades": "AAAAAA"
+  },
+  {
+   "id": "rg_cav",
+   "name": "Guard Cavalry",
+   "anchors": 5,
+   "distinctPlaces": 5,
+   "extentKm": [
+    5.06,
+    1.93
+   ],
+   "lengthKm": 8.92,
+   "shortestLegKm": 1.36,
+   "grades": "AAAAA"
+  }
+ ],
+ "duplicateKeys": [
+  "data.js:180 cf (also line 178)"
+ ]
+}

@@ -1,7 +1,7 @@
 # Time and atmosphere specification (Stage 4, Part A)
 
 **Status: Part A merged (#27); the owner accepted every recommendation of §J, recorded as decisions 68-82 (§0.4). 4B (the light)
-is merged (#28); 4C (the atmosphere) is merged (#29); 4D (pacing) is merged (#30); 4E (smoke, ice, the horizon and the palette tables) is implemented, for review; what each found is at the end of §I. Sections A-J below still describe the build they were written
+is merged (#28); 4C (the atmosphere) is merged (#29); 4D (pacing) is merged (#30); 4E (smoke, ice, the horizon and the palette tables) is merged (#31), and Stage 4 is complete; what each found is at the end of §I. Sections A-J below still describe the build they were written
 against.** Part A was written
 against `main` at `18e014b` (the spine data task merged, #26), whose build `austerlitz-command-map.html` is 1,348,542 bytes,
 md5 `6b2cccd44138e95e6082c82b8b2d2f8a`. Before any work: `check:baseline` passed; `npm test` (all nine suites and the height

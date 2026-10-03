@@ -1,0 +1,1104 @@
+{
+ "html": "austerlitz-command-map.html",
+ "when": "2026-10-03T16:03:53.221Z",
+ "views": {
+  "overview-field": {
+   "clock": 570,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "worldMs": 8.9
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 170318,
+     "changed": 0.2437,
+     "contrastMedian": 1.58,
+     "contrastP90": 3.1,
+     "share3to1": 0.108
+    },
+    "layer": {
+     "dropped": 16,
+     "items": 77,
+     "placed": 60
+    },
+    "contrast": {
+     "min": 8.04,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "worldMs": 8.7
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 14,
+    "diff": {
+     "samples": 177748,
+     "changed": 0.0136,
+     "contrastMedian": 1.73,
+     "contrastP90": 2.27,
+     "share3to1": 0.004
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.22,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "worldMs": 9.6
+   }
+  },
+  "overview-plan": {
+   "clock": 570,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 9.1
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 283764,
+     "changed": 0.1276,
+     "contrastMedian": 1.26,
+     "contrastP90": 2.78,
+     "share3to1": 0.078
+    },
+    "layer": {
+     "dropped": 10,
+     "items": 56,
+     "placed": 46
+    },
+    "contrast": {
+     "min": 8.46,
+     "belowAA": 0,
+     "texts": 46
+    },
+    "worldMs": 8.9
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 14,
+    "diff": {
+     "samples": 294649,
+     "changed": 0.0093,
+     "contrastMedian": 1.76,
+     "contrastP90": 2.39,
+     "share3to1": 0.016
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 9.8
+   }
+  },
+  "close-sokolnitz": {
+   "clock": 500,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.58,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "worldMs": 10.3
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 290456,
+     "changed": 0.6616,
+     "contrastMedian": 1.61,
+     "contrastP90": 2.4,
+     "share3to1": 0.033
+    },
+    "layer": {
+     "dropped": 9,
+     "items": 96,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 11.49,
+     "belowAA": 0,
+     "texts": 32
+    },
+    "worldMs": 8.3
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 11,
+    "diff": {
+     "samples": 294881,
+     "changed": 0.0338,
+     "contrastMedian": 1.03,
+     "contrastP90": 1.41,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.58,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "worldMs": 9.9
+   }
+  },
+  "pratzen-low": {
+   "clock": 590,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 5,
+     "items": 65,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 11.94,
+     "belowAA": 0,
+     "texts": 23
+    },
+    "worldMs": 7.9
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 288097,
+     "changed": 0.5187,
+     "contrastMedian": 1.29,
+     "contrastP90": 2.62,
+     "share3to1": 0.061
+    },
+    "layer": {
+     "dropped": 8,
+     "items": 95,
+     "placed": 33
+    },
+    "contrast": {
+     "min": 8.3,
+     "belowAA": 0,
+     "texts": 33
+    },
+    "worldMs": 7.9
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 11,
+    "diff": {
+     "samples": 292325,
+     "changed": 0.0495,
+     "contrastMedian": 2,
+     "contrastP90": 2.34,
+     "share3to1": 0.002
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 65,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 11.94,
+     "belowAA": 0,
+     "texts": 23
+    },
+    "worldMs": 8.4
+   }
+  },
+  "selected-formation": {
+   "clock": 570,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 24
+    },
+    "worldMs": 16.2
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 183901,
+     "changed": 0.7743,
+     "contrastMedian": 1.23,
+     "contrastP90": 2.57,
+     "share3to1": 0.031
+    },
+    "layer": {
+     "dropped": 8,
+     "items": 94,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 11.85,
+     "belowAA": 0,
+     "texts": 32
+    },
+    "worldMs": 8.9
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 9,
+    "diff": {
+     "samples": 186651,
+     "changed": 0.0699,
+     "contrastMedian": 2.07,
+     "contrastP90": 2.45,
+     "share3to1": 0.015
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 24
+    },
+    "worldMs": 6.7
+   }
+  },
+  "watch-selected": {
+   "clock": 585,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 10.7
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 265398,
+     "changed": 0.7345,
+     "contrastMedian": 1.26,
+     "contrastP90": 2.62,
+     "share3to1": 0.033
+    },
+    "layer": {
+     "dropped": 7,
+     "items": 95,
+     "placed": 36
+    },
+    "contrast": {
+     "min": 11.47,
+     "belowAA": 0,
+     "texts": 36
+    },
+    "worldMs": 7.9
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 9,
+    "diff": {
+     "samples": 270749,
+     "changed": 0.0655,
+     "contrastMedian": 2.13,
+     "contrastP90": 2.46,
+     "share3to1": 0.022
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 8.5
+   }
+  },
+  "hybrid-dimmed": {
+   "clock": 600,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "worldMs": 7.8
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 241469,
+     "changed": 0.6455,
+     "contrastMedian": 1.26,
+     "contrastP90": 2.62,
+     "share3to1": 0.042
+    },
+    "layer": {
+     "dropped": 18,
+     "items": 93,
+     "placed": 42
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "worldMs": 8.7
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 13,
+    "diff": {
+     "samples": 238967,
+     "changed": 0.0549,
+     "contrastMedian": 2.13,
+     "contrastP90": 2.44,
+     "share3to1": 0.02
+    },
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "worldMs": 7.5
+   }
+  },
+  "ph8-overview-study": {
+   "clock": 880,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 9.9
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 175066,
+     "changed": 0.1323,
+     "contrastMedian": 1.3,
+     "contrastP90": 3.28,
+     "share3to1": 0.136
+    },
+    "layer": {
+     "dropped": 10,
+     "items": 55,
+     "placed": 45
+    },
+    "contrast": {
+     "min": 8.59,
+     "belowAA": 0,
+     "texts": 45
+    },
+    "worldMs": 11
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 14,
+    "diff": {
+     "samples": 184989,
+     "changed": 0.0099,
+     "contrastMedian": 1.85,
+     "contrastP90": 2.56,
+     "share3to1": 0.041
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 10.6
+   }
+  },
+  "ph8-overview-watch": {
+   "clock": 880,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.7,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 9.5
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 282569,
+     "changed": 0.1297,
+     "contrastMedian": 1.29,
+     "contrastP90": 3.01,
+     "share3to1": 0.101
+    },
+    "layer": {
+     "dropped": 9,
+     "items": 55,
+     "placed": 46
+    },
+    "contrast": {
+     "min": 8.59,
+     "belowAA": 0,
+     "texts": 46
+    },
+    "worldMs": 8
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 14,
+    "diff": {
+     "samples": 293158,
+     "changed": 0.0101,
+     "contrastMedian": 2.03,
+     "contrastP90": 2.6,
+     "share3to1": 0.045
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.34,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 8.6
+   }
+  },
+  "overview-field@1x": {
+   "clock": 570,
+   "factor": 1,
+   "base": {
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "worldMs": 2.9
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 170310,
+     "changed": 0.2306,
+     "contrastMedian": 1.52,
+     "contrastP90": 3.27,
+     "share3to1": 0.153
+    },
+    "layer": {
+     "dropped": 17,
+     "items": 77,
+     "placed": 59
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 59
+    },
+    "worldMs": 3.3
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 14,
+    "diff": {
+     "samples": 177431,
+     "changed": 0.0176,
+     "contrastMedian": 2.08,
+     "contrastP90": 2.56,
+     "share3to1": 0.018
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 41
+    },
+    "worldMs": 2.1
+   }
+  },
+  "overview-field@10.33x": {
+   "clock": 570,
+   "factor": "model",
+   "base": {
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 40
+    },
+    "worldMs": 10.1
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 169621,
+     "changed": 0.241,
+     "contrastMedian": 1.48,
+     "contrastP90": 3.15,
+     "share3to1": 0.121
+    },
+    "layer": {
+     "dropped": 15,
+     "items": 77,
+     "placed": 61
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 61
+    },
+    "worldMs": 9.6
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 14,
+    "diff": {
+     "samples": 177997,
+     "changed": 0.0149,
+     "contrastMedian": 1.66,
+     "contrastP90": 2.1,
+     "share3to1": 0.001
+    },
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 40
+    },
+    "worldMs": 9
+   }
+  },
+  "close-sokolnitz@1x": {
+   "clock": 500,
+   "factor": 1,
+   "base": {
+    "layer": {
+     "dropped": 5,
+     "items": 66,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.72,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 2.2
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 287230,
+     "changed": 0.6911,
+     "contrastMedian": 1.59,
+     "contrastP90": 2.24,
+     "share3to1": 0.026
+    },
+    "layer": {
+     "dropped": 11,
+     "items": 96,
+     "placed": 39
+    },
+    "contrast": {
+     "min": 11.76,
+     "belowAA": 0,
+     "texts": 39
+    },
+    "worldMs": 2.7
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 11,
+    "diff": {
+     "samples": 293066,
+     "changed": 0.0712,
+     "contrastMedian": 1.03,
+     "contrastP90": 1.46,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 66,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 7.72,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 2
+   }
+  },
+  "close-sokolnitz@10.33x": {
+   "clock": 500,
+   "factor": "model",
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 20
+    },
+    "worldMs": 11.8
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 292623,
+     "changed": 0.5632,
+     "contrastMedian": 1.63,
+     "contrastP90": 2.42,
+     "share3to1": 0.025
+    },
+    "layer": {
+     "dropped": 6,
+     "items": 96,
+     "placed": 28
+    },
+    "contrast": {
+     "min": 11.5,
+     "belowAA": 0,
+     "texts": 28
+    },
+    "worldMs": 7.4
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 10,
+    "diff": {
+     "samples": 295136,
+     "changed": 0.0267,
+     "contrastMedian": 1.02,
+     "contrastP90": 1.03,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 20
+    },
+    "worldMs": 10.4
+   }
+  },
+  "pratzen-low@1x": {
+   "clock": 590,
+   "factor": 1,
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 1.7
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 288656,
+     "changed": 0.5435,
+     "contrastMedian": 1.32,
+     "contrastP90": 2.92,
+     "share3to1": 0.078
+    },
+    "layer": {
+     "dropped": 9,
+     "items": 95,
+     "placed": 34
+    },
+    "contrast": {
+     "min": 12.04,
+     "belowAA": 0,
+     "texts": 34
+    },
+    "worldMs": 2.7
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 11,
+    "diff": {
+     "samples": 291786,
+     "changed": 0.058,
+     "contrastMedian": 2.21,
+     "contrastP90": 2.54,
+     "share3to1": 0.013
+    },
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "worldMs": 2.3
+   }
+  },
+  "pratzen-low@10.33x": {
+   "clock": 590,
+   "factor": "model",
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "worldMs": 8.3
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 290491,
+     "changed": 0.4181,
+     "contrastMedian": 1.27,
+     "contrastP90": 2.54,
+     "share3to1": 0.059
+    },
+    "layer": {
+     "dropped": 5,
+     "items": 95,
+     "placed": 29
+    },
+    "contrast": {
+     "min": 8.19,
+     "belowAA": 0,
+     "texts": 29
+    },
+    "worldMs": 7.6
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 10,
+    "diff": {
+     "samples": 293453,
+     "changed": 0.0436,
+     "contrastMedian": 1.92,
+     "contrastP90": 2.36,
+     "share3to1": 0.005
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "worldMs": 8.7
+   }
+  },
+  "ph8-overview-watch@1x": {
+   "clock": 880,
+   "factor": 1,
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.77,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 2.7
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 282448,
+     "changed": 0.1263,
+     "contrastMedian": 1.3,
+     "contrastP90": 3.34,
+     "share3to1": 0.182
+    },
+    "layer": {
+     "dropped": 9,
+     "items": 55,
+     "placed": 46
+    },
+    "contrast": {
+     "min": 8.66,
+     "belowAA": 0,
+     "texts": 46
+    },
+    "worldMs": 2
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 14,
+    "diff": {
+     "samples": 293172,
+     "changed": 0.0097,
+     "contrastMedian": 2.31,
+     "contrastP90": 2.77,
+     "share3to1": 0.065
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.4,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 1.8
+   }
+  },
+  "ph8-overview-watch@10.33x": {
+   "clock": 880,
+   "factor": "model",
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.63,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 8.5
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 282422,
+     "changed": 0.1256,
+     "contrastMedian": 1.28,
+     "contrastP90": 2.78,
+     "share3to1": 0.074
+    },
+    "layer": {
+     "dropped": 9,
+     "items": 55,
+     "placed": 46
+    },
+    "contrast": {
+     "min": 8.52,
+     "belowAA": 0,
+     "texts": 46
+    },
+    "worldMs": 8.3
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 14,
+    "diff": {
+     "samples": 293284,
+     "changed": 0.0098,
+     "contrastMedian": 1.97,
+     "contrastP90": 2.49,
+     "share3to1": 0.03
+    },
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.34,
+     "belowAA": 0,
+     "texts": 22
+    },
+    "worldMs": 15.9
+   }
+  },
+  "paper-north-up": {
+   "clock": 570,
+   "factor": 4,
+   "base": {
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "worldMs": 1.9
+   },
+   "P-today": {
+    "planSide": "both",
+    "labels": 30,
+    "diff": {
+     "samples": 153148,
+     "changed": 0.0845,
+     "contrastMedian": 1.58,
+     "contrastP90": 4.71,
+     "share3to1": 0.224
+    },
+    "layer": {
+     "dropped": 12,
+     "items": 65,
+     "placed": 53
+    },
+    "contrast": {
+     "min": 5.1,
+     "belowAA": 0,
+     "texts": 90
+    },
+    "worldMs": 1.8
+   },
+   "P-ghost": {
+    "routes": 14,
+    "routesInFree": 14,
+    "diff": {
+     "samples": 161726,
+     "changed": 0.0021,
+     "contrastMedian": 1.08,
+     "contrastP90": 1.12,
+     "share3to1": 0
+    },
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "worldMs": 1.2
+   }
+  }
+ }
+}
