@@ -481,5 +481,5 @@
 
   window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures,
                 overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, layerTexts:layerTexts,
-                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, phaseLabels:phaseLabels, headsHidden:headsHidden, focusOffset:focusOffset};
+                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, phaseLabels:phaseLabels, headsHidden:headsHidden, focusOffset:focusOffset, smokeShare:smokeShare};
 })();

@@ -10731,6 +10731,42 @@ var AUSTERLITZ_DEBUG=(function(){
     landCam.position.copy(cam.p); orbitTarget.copy(cam.t); landCam.lookAt(orbitTarget); freeCam=cam.fc;
     return out;
   }
+  /* Stage 4E (docs/STAGE4_SPEC.md sections E.3 and F.1): smoke and ice. extrasChecks runs at each display factor, smokeDayChecks once. */
+  function extrasChecks(ck,fct){
+    var keep=clock, cam={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam};
+    /* the meres' ice, and its shore rim, under the lowest drawn ground on their own edge */
+    var worst=-1e9, where="";
+    world.water.concat(world.iceRims||[]).forEach(function(m){ var q=m.userData.mere; if(!q) return; var cc=q[0], lo=1e9;
+      for(var a=0;a<96;a++){ var t=a/96*Math.PI*2; lo=Math.min(lo,groundY(cc[0]+Math.cos(t)*q[1],cc[1]+Math.sin(t)*q[2])); }
+      var e=m.position.y-lo; if(e>worst){ worst=e; where=(m.userData.mereLift?"the shore ice":"the ice")+" at "+cc.join(","); } });
+    ck("ice: the meres and their shore ice lie under the lowest drawn ground on their own edge (section F.1)", worst<0,
+      "the highest, "+where+": "+worst.toFixed(3)+" units against the edge's lowest ground");
+    /* every smoke puff's lower edge above the drawn ground across its width, in the two views where smoke is thickest, at 09:50 */
+    var bad=0, n=0, low=1e9;
+    var sw=W(210,362), sy=displayHeight(sw[0],sw[1]), sd=new THREE.Vector3(-0.62,0.46,0.64).normalize().multiplyScalar(58);   /* the harness's close-sokolnitz aim */
+    [[VANTAGE.plateau,590],[[sw[0]+sd.x,sy+sd.y,sw[1]+sd.z,sw[0],sy,sw[1]],500]].forEach(function(v){ setClock(v[1],{instant:true,force:true,camera:false}); finishTween();
+      placeCamera(v[0]); syncViewOffset(true); settle(30,true);
+      Object.keys(units).forEach(function(id){ var g=units[id].smoke; if(!g||!g.visible) return;
+        g.children.forEach(function(sp){ if(sp.material.opacity<0.02) return; n++; var half=sp.scale.x/2, R=new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld,0); R.y=0; R.normalize();
+          var top=-1e9; for(var k=-4;k<=4;k++) top=Math.max(top,groundY(sp.position.x+R.x*half*k/4,sp.position.z+R.z*half*k/4));
+          var gap=sp.position.y-sp.scale.y/2-top; low=Math.min(low,gap); if(gap<0) bad++; }); }); });
+    ck("smoke: every puff's lower edge stands above the drawn ground across its width (section E.3)", n>0&&!bad,
+      n+" puffs in two views (the Pratzen vantage at 09:50, Sokolnitz at 08:20): "+bad+" under the ground; the lowest "+(low===1e9?"-":low.toFixed(2))+" units above it");
+    setClock(keep,{instant:true,force:true,camera:false}); finishTween();
+    landCam.position.copy(cam.p); orbitTarget.copy(cam.t); landCam.lookAt(orbitTarget); freeCam=cam.fc;
+  }
+  function smokeDayChecks(){
+    var out=[], keep=clock, bad=[], n=0, full=0, resid=0;
+    for(var i=0;i<20;i++){ var t=T_MIN+30+(T_MAX-T_MIN-60)*i/19; setClock(t,{instant:true,force:true,camera:false}); finishTween();
+      Object.keys(units).forEach(function(id){ var a=smokeAmount(id,clock); if(!(a>0)) return; n++;
+        var st=liveStatus(id,curPhase); if(!(st&&FIGHTING[st])) bad.push(id+" at "+fmtClock(t)+" smokes with status "+st);
+        if(a>=1-1e-9){ full++; if(!smokeEvents(id).some(function(e){ var w=evWindow(e); return clock>=w[0]&&clock<=w[1]; })) bad.push(id+" at "+fmtClock(t)+" at full smoke outside any naming event's window"); }
+        else if(a<=SMOKE.RESIDUE+1e-9) resid++; }); }
+    out.push({name:"smoke: a formation smokes only with a fighting phase status, and at full amount only inside a naming event's window (section E.3; decision 77)", ok:n>0&&!bad.length,
+      detail:"20 clocks: "+n+" smoking formation-samples, "+full+" at full, "+resid+" at the residue "+SMOKE.RESIDUE+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):"")});
+    setClock(keep,{instant:true,force:true,camera:false}); finishTween();
+    return out;
+  }
   /* Stage 4C (docs/STAGE4_SPEC.md sections B.4 and C.6): the atmosphere. fogChecks runs at each display factor, atmoDayChecks once. */
   function fogChecks(ck,fct){
     var keep=clock, bad=[], K=DISPLAY.factor, yOf=function(m){ return (m-GEOREF.DATUM_M)/GEOREF.M_PER_WORLD*K; };
@@ -10925,6 +10961,7 @@ var AUSTERLITZ_DEBUG=(function(){
       lightChecks(ck,fct);   /* Stage 4B */
       fogChecks(ck,fct);    /* Stage 4C */
       paceChecks(ck,fct);   /* Stage 4D */
+      extrasChecks(ck,fct); /* Stage 4E */
     }
     DISPLAY.settings.forEach(atFactor);
     stage2bChecks(bySetting).forEach(function(c){ out.push(c); });
@@ -10932,6 +10969,7 @@ var AUSTERLITZ_DEBUG=(function(){
     lightDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4B */
     atmoDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4C */
     paceDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4D */
+    smokeDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4E */
     setDisplayFactor(saveFactor);
     /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
     var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });
