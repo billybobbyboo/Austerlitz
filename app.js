@@ -3734,33 +3734,36 @@ function smokeWant(rec,id,f,p,dimmed){
     SMOKE.want.push({sp:sp,x:x,z:z,s:ps*(1-0.12*((i+1)%2)),y0:rec.block.position.y,op:SMOKE.OP*amt});
   });
 }
-/* the share of the free rectangle a set of puffs covers (each puff's projected rectangle, clipped; overlaps counted twice) */
-var _smV=new THREE.Vector3();
-function smokeShareOf(list,fr,lim){
+/* the share of the free rectangle the puffs cover as placed: each sprite's projected rectangle at its own scale and distance,
+   clipped, overlaps counted twice (the harness measures the same, tools/visual/measure.js smokeShare) */
+var _smV=new THREE.Vector3(), _smC=new THREE.Vector3();
+function smokeShareOf(list,fr){
   var A=(fr[2]-fr[0])*(fr[3]-fr[1]), H=viewH(), Wd=renderer.domElement.clientWidth||innerWidth, t=Math.tan(camera.fov*Math.PI/360), S=0;
-  for(var i=0;i<list.length;i++){ var q=list[i], s=Math.min(q.s,lim===undefined?1e9:q.px>lim?q.s*lim/q.px:q.s);
-    if(!(q.d>camera.near)) continue; var w=s*H/(2*q.d*t), h=w*0.6;
-    var x0=Math.max(fr[0],q.sx-w/2), x1=Math.min(fr[2],q.sx+w/2), y0=Math.max(fr[1],q.sy-h/2), y1=Math.min(fr[3],q.sy+h/2);
+  for(var i=0;i<list.length;i++){ var sp=list[i].sp; _smC.copy(sp.position).applyMatrix4(camera.matrixWorldInverse); if(_smC.z>-1) continue;
+    _smV.copy(sp.position).project(camera); var x=(_smV.x*0.5+0.5)*Wd, y=(-_smV.y*0.5+0.5)*H, w=sp.scale.x*H/(2*(-_smC.z)*t), h=sp.scale.y*H/(2*(-_smC.z)*t);
+    var x0=Math.max(fr[0],x-w/2), x1=Math.min(fr[2],x+w/2), y0=Math.max(fr[1],y-h/2), y1=Math.min(fr[3],y+h/2);
     if(x1>x0&&y1>y0) S+=(x1-x0)*(y1-y0)/A; }
   return S;
+}
+/* the puffs placed with every size on screen held to lim px (Infinity: none held): the scale, and the height that keeps the lower
+   edge above the drawn ground across the width */
+function smokePut(L,lim){
+  L.forEach(function(q){ var sp=q.sp, s=(q.px>lim)?q.s*lim/q.px:q.s, h=s*0.6;
+    sp.scale.set(s,h,1);
+    sp.position.set(q.x, Math.max(q.y0+2.4+h*0.24, spriteFloor(q.x,q.z,s*0.5)+0.2+h/2), q.z); });
 }
 function smokePlace(){
   var L=SMOKE.want; SMOKE.want=[]; SMOKE.capped=0;
   if(!L.length||camera.isOrthographicCamera){ SMOKE.share=0; return; }
-  camera.updateMatrixWorld(); var fr=landFreeRect(), H=viewH(), Wd=renderer.domElement.clientWidth||innerWidth, t=Math.tan(camera.fov*Math.PI/360);
-  L.forEach(function(q){ _smV.set(q.x,q.y0+2.4,q.z); var d=-_smV.clone().applyMatrix4(camera.matrixWorldInverse).z; _smV.project(camera);
-    q.d=d; q.sx=(_smV.x*0.5+0.5)*Wd; q.sy=(-_smV.y*0.5+0.5)*H; q.px=d>camera.near?q.s*H/(2*d*t):0; });
-  var S=smokeShareOf(L,fr), lim;
-  if(S>SMOKE.CAP*0.96){   /* the largest on screen shrunk to a common size, found by bisection, so the share is under the cap */
+  camera.updateMatrixWorld(); var fr=landFreeRect(), H=viewH(), t=Math.tan(camera.fov*Math.PI/360);
+  L.forEach(function(q){ _smV.set(q.x,q.y0+2.4,q.z); var d=-_smV.applyMatrix4(camera.matrixWorldInverse).z; q.px=d>camera.near?q.s*H/(2*d*t):0; });
+  smokePut(L,Infinity); var S=smokeShareOf(L,fr);
+  if(S>SMOKE.CAP*0.96){   /* the largest on screen held to a common size, found by bisection on the puffs as placed */
     var lo=0, hi=Math.max.apply(null,L.map(function(q){ return q.px; }));
-    for(var k=0;k<30;k++){ var m=(lo+hi)/2; if(smokeShareOf(L,fr,m)>SMOKE.CAP*0.96) hi=m; else lo=m; }
-    lim=lo; SMOKE.capped=L.filter(function(q){ return q.px>lim; }).length; S=smokeShareOf(L,fr,lim); }
+    for(var k=0;k<30;k++){ var m=(lo+hi)/2; smokePut(L,m); if(smokeShareOf(L,fr)>SMOKE.CAP*0.96) hi=m; else lo=m; }
+    smokePut(L,lo); SMOKE.capped=L.filter(function(q){ return q.px>lo; }).length; S=smokeShareOf(L,fr); }
   SMOKE.share=S;
-  L.forEach(function(q){ var sp=q.sp, s=(lim!==undefined&&q.px>lim)?q.s*lim/q.px:q.s, h=s*0.6;
-    sp.scale.set(s,h,1);
-    sp.position.set(q.x, Math.max(q.y0+2.4+h*0.24, spriteFloor(q.x,q.z,s*0.5)+0.2+h/2), q.z);
-    var to=q.op-sp.material.opacity; if(Math.abs(to)>0.004) settling=true;
-    sp.material.opacity+=to*ease(0.05); });
+  L.forEach(function(q){ var sp=q.sp, to=q.op-sp.material.opacity; if(Math.abs(to)>0.004) settling=true; sp.material.opacity+=to*ease(0.05); });
 }
 function updateVisibility(){
   var dist=viewDist();   /* the paper map: the distance at which the landscape eye would show the ground at its scale */
