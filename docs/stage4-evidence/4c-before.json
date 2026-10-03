@@ -1,0 +1,607 @@
+{
+ "html": "/tmp/claude-0/-home-user-Austerlitz/d580a8bb-6ea9-5492-b734-fb31eff9f599/scratchpad/4b-build.html",
+ "when": "2026-10-03T02:27:23.648Z",
+ "views": {
+  "overview-field": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0009,
+   "meanLum": 71.1,
+   "p5": 22,
+   "p50": 55,
+   "contrast": {
+    "texts": 41,
+    "min": 8.48,
+    "belowAA": 0
+   },
+   "dropped": 6,
+   "layerMs": 0.7,
+   "light": {
+    "alt": 11.6,
+    "drawn": 39.3,
+    "twilight": 1,
+    "box": 464,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 11
+  },
+  "overview-plan": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.001,
+   "meanLum": 45.2,
+   "p5": 34,
+   "p50": 44,
+   "contrast": {
+    "texts": 22,
+    "min": 8.1,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "layerMs": 0.3,
+   "light": {
+    "alt": 11.6,
+    "drawn": 39.3,
+    "twilight": 1,
+    "box": 528,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 12
+  },
+  "close-sokolnitz": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0005,
+   "meanLum": 79,
+   "p5": 35,
+   "p50": 72,
+   "contrast": {
+    "texts": 21,
+    "min": 7.94,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "layerMs": 0.6,
+   "light": {
+    "alt": 4,
+    "drawn": 15.5,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 18
+  },
+  "pratzen-low": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0083,
+   "meanLum": 79.9,
+   "p5": 23,
+   "p50": 63,
+   "contrast": {
+    "texts": 23,
+    "min": 12.06,
+    "belowAA": 0
+   },
+   "dropped": 5,
+   "layerMs": 0.5,
+   "light": {
+    "alt": 13.3,
+    "drawn": 43.4,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 13
+  },
+  "selected-formation": {
+   "solidBlack": 0.00025,
+   "solidBlocks": 4,
+   "nearBlack": 0.0071,
+   "meanLum": 47.9,
+   "p5": 20,
+   "p50": 43,
+   "contrast": {
+    "texts": 24,
+    "min": 7.57,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "layerMs": 0.6,
+   "light": {
+    "alt": 11.6,
+    "drawn": 39.3,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 4
+  },
+  "watch-selected": {
+   "solidBlack": 0.0001,
+   "solidBlocks": 2,
+   "nearBlack": 0.0062,
+   "meanLum": 48.3,
+   "p5": 23,
+   "p50": 44,
+   "contrast": {
+    "texts": 25,
+    "min": 7.65,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "layerMs": 1.2,
+   "light": {
+    "alt": 12.9,
+    "drawn": 42.5,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 8
+  },
+  "hybrid-dimmed": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0039,
+   "meanLum": 51.7,
+   "p5": 29,
+   "p50": 47,
+   "contrast": {
+    "texts": 78,
+    "min": 6.49,
+    "belowAA": 0
+   },
+   "dropped": 8,
+   "layerMs": 0.9,
+   "light": {
+    "alt": 14.1,
+    "drawn": 45.2,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 13
+  },
+  "pratzen-low-1x": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0006,
+   "meanLum": 68.5,
+   "p5": 24,
+   "p50": 50,
+   "contrast": {
+    "texts": 25,
+    "min": 8.76,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "layerMs": 0.5,
+   "light": {
+    "alt": 13.3,
+    "drawn": 13.3,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 12
+  },
+  "pratzen-low-10x": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0029,
+   "meanLum": 98.6,
+   "p5": 31,
+   "p50": 75,
+   "contrast": {
+    "texts": 21,
+    "min": 7.91,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "layerMs": 0.5,
+   "light": {
+    "alt": 13.3,
+    "drawn": 67.8,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 8
+  },
+  "ph8-overview-study": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0002,
+   "meanLum": 43.3,
+   "p5": 31,
+   "p50": 42,
+   "contrast": {
+    "texts": 22,
+    "min": 8.48,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "layerMs": 0.3,
+   "light": {
+    "alt": 10.6,
+    "drawn": 36.7,
+    "twilight": 1,
+    "box": 592,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 7
+  },
+  "ph8-overview-watch": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0002,
+   "meanLum": 43.3,
+   "p5": 31,
+   "p50": 41,
+   "contrast": {
+    "texts": 22,
+    "min": 8.48,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "layerMs": 0.3,
+   "light": {
+    "alt": 10.6,
+    "drawn": 36.7,
+    "twilight": 1,
+    "box": 576,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 7
+  },
+  "overview-field@1x": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0009,
+   "meanLum": 60,
+   "p5": 18,
+   "p50": 39,
+   "contrast": {
+    "texts": 41,
+    "min": 8.43,
+    "belowAA": 0
+   },
+   "dropped": 6,
+   "layerMs": 0.9,
+   "light": {
+    "alt": 11.6,
+    "drawn": 11.6,
+    "twilight": 1,
+    "box": 464,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 11
+  },
+  "close-sokolnitz@1x": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0002,
+   "meanLum": 75.1,
+   "p5": 25,
+   "p50": 69,
+   "contrast": {
+    "texts": 25,
+    "min": 7.89,
+    "belowAA": 0
+   },
+   "dropped": 5,
+   "layerMs": 0.5,
+   "light": {
+    "alt": 4,
+    "drawn": 4,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 18
+  },
+  "pratzen-low@1x": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0006,
+   "meanLum": 68.5,
+   "p5": 24,
+   "p50": 50,
+   "contrast": {
+    "texts": 25,
+    "min": 8.76,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "layerMs": 0.8,
+   "light": {
+    "alt": 13.3,
+    "drawn": 13.3,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 13
+  },
+  "ph8-overview-study@1x": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0037,
+   "meanLum": 31.2,
+   "p5": 19,
+   "p50": 29,
+   "contrast": {
+    "texts": 22,
+    "min": 8.64,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "layerMs": 0.2,
+   "light": {
+    "alt": 10.6,
+    "drawn": 10.6,
+    "twilight": 1,
+    "box": 576,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 7
+  },
+  "overview-field@10.33x": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0003,
+   "meanLum": 76.1,
+   "p5": 24,
+   "p50": 62,
+   "contrast": {
+    "texts": 40,
+    "min": 8.04,
+    "belowAA": 0
+   },
+   "dropped": 7,
+   "layerMs": 0.6,
+   "light": {
+    "alt": 11.6,
+    "drawn": 64.7,
+    "twilight": 1,
+    "box": 480,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 11
+  },
+  "close-sokolnitz@10.33x": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0001,
+   "meanLum": 86.4,
+   "p5": 48,
+   "p50": 81,
+   "contrast": {
+    "texts": 20,
+    "min": 8.02,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "layerMs": 0.6,
+   "light": {
+    "alt": 4,
+    "drawn": 35.6,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 18
+  },
+  "pratzen-low@10.33x": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0029,
+   "meanLum": 98.6,
+   "p5": 31,
+   "p50": 75,
+   "contrast": {
+    "texts": 21,
+    "min": 7.91,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "layerMs": 0.6,
+   "light": {
+    "alt": 13.3,
+    "drawn": 67.8,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 13
+  },
+  "ph8-overview-study@10.33x": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0,
+   "meanLum": 50.5,
+   "p5": 38,
+   "p50": 49,
+   "contrast": {
+    "texts": 22,
+    "min": 8.41,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "layerMs": 0.5,
+   "light": {
+    "alt": 10.6,
+    "drawn": 62.6,
+    "twilight": 1,
+    "box": 592,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 7
+  }
+ },
+ "sweep": {
+  "overview-field@480": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0,
+   "meanLum": 84.2,
+   "p5": 23,
+   "p50": 82,
+   "contrast": {
+    "texts": 42,
+    "min": 8.04,
+    "belowAA": 0
+   },
+   "dropped": 8,
+   "layerMs": 0.5,
+   "light": {
+    "alt": 1.5,
+    "drawn": 6.2,
+    "twilight": 1,
+    "box": 480,
+    "fill": 0.31
+   },
+   "atmo": null
+  },
+  "overview-field@540": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0003,
+   "meanLum": 72.8,
+   "p5": 24,
+   "p50": 59,
+   "contrast": {
+    "texts": 38,
+    "min": 8.41,
+    "belowAA": 0
+   },
+   "dropped": 7,
+   "layerMs": 0.6,
+   "light": {
+    "alt": 8.5,
+    "drawn": 31,
+    "twilight": 1,
+    "box": 480,
+    "fill": 0.36
+   },
+   "atmo": null
+  },
+  "overview-field@600": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0008,
+   "meanLum": 71.9,
+   "p5": 22,
+   "p50": 56,
+   "contrast": {
+    "texts": 40,
+    "min": 8.12,
+    "belowAA": 0
+   },
+   "dropped": 7,
+   "layerMs": 0.8,
+   "light": {
+    "alt": 14.1,
+    "drawn": 45.2,
+    "twilight": 1,
+    "box": 464,
+    "fill": 0.36
+   },
+   "atmo": null
+  }
+ },
+ "fog": {
+  "overview-field@480": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0,
+   "meanLum": 84.2,
+   "p5": 23,
+   "p50": 82,
+   "contrast": {
+    "texts": 42,
+    "min": 8.04,
+    "belowAA": 0
+   },
+   "dropped": 8,
+   "layerMs": 0.6,
+   "light": {
+    "alt": 1.5,
+    "drawn": 6.2,
+    "twilight": 1,
+    "box": 480,
+    "fill": 0.31
+   },
+   "atmo": null,
+   "dropLimit": 11
+  },
+  "close-sokolnitz@500": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0005,
+   "meanLum": 79,
+   "p5": 35,
+   "p50": 72,
+   "contrast": {
+    "texts": 21,
+    "min": 7.94,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "layerMs": 0.5,
+   "light": {
+    "alt": 4,
+    "drawn": 15.5,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 18
+  },
+  "pratzen-low@510": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0019,
+   "meanLum": 95.6,
+   "p5": 28,
+   "p50": 97,
+   "contrast": {
+    "texts": 21,
+    "min": 8.41,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "layerMs": 0.5,
+   "light": {
+    "alt": 5.2,
+    "drawn": 19.8,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.36
+   },
+   "atmo": null,
+   "dropLimit": 13
+  }
+ }
+}
