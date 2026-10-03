@@ -1,8 +1,109 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 4C: the atmosphere (docs/STAGE4_SPEC.md §B, §C, §H, §I; owner decisions 72, 73, 80, 81)
+
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,376,800 bytes, md5 `622634ef37c67e5ae9e9a921228ab0c7`**
+(was 1,367,134 bytes, md5 `3d6d2295…`, Stage 4B).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/spine-6b2cccd4.html`; the reference does not move. No data,
+  track, text of the record or `OVERLAYS` change. Presentation only. `PHASES[].mist` (guarded) is read, not changed; the knowledge
+  rule (`knowledgeOf`), line of sight and the viewshed are untouched.
+- The first commit of this branch's records notes Stage 4B as merged (#28).
+
+**Before building (fact).** `main` (b6051da, Stage 4B merged as #28) matched `check:baseline` (md5 `3d6d2295…`, 1,367,134 bytes);
+`tools/stage4/report-4b.js` measured that build as the "before" of the table below.
+
+**What changed** (`app.js`, `world.js`, `shell.html`)
+- **One atmosphere in the fog chunks** (`ATMO`; §B.3, §C.5): three.js's `fog_*` shader chunks are replaced before any material
+  compiles, so every fogged material (ground, figures, trees, houses, sprites, lines) draws the same haze and valley fog from shared
+  uniforms (`applyAtmo`, each frame). Both are computed in the true geometry: the ray's vertical divided by the display factor,
+  heights in metres through `GEOREF.DATUM_M` and `GEOREF.M_PER_WORLD` (no scale of its own). `atmoAt` is the same formula in script,
+  for the self-test and the measurements.
+- **The haze** (decision 81): exponential in height (scale height 400 m above the valley floor's 200 m), counted only beyond the
+  orbit target's distance from the eye, so the subject is never hazed and what lies behind it recedes. It replaces `THREE.Fog`'s
+  linear near and far and Stage 3D's recession (`fogShift`, removed). Its one parameter, an equivalent visibility, is in the light
+  table (`LIGHT_VIS`, 40-120 km, design values: a depth cue, not the day's air); the sources sheet says the day's visibility is not
+  recorded. The sky dome's horizon is already drawn in the fog colour, so haze and sky meet (decision 80; nothing added).
+- **The valley fog** (decisions 72, 73): a layer whose top is the Command view's own: `knowledgeOf` treats a formation as
+  "uncertain" while the phase's mist exceeds 0.5 and it stands below model height -0.8, so the top is drawn at
+  `GEOREF.elevM(-0.8)`, 238.2 m (derived), and the self-test holds the two together. Its amount is `PHASES[].mist`, eased over the
+  first 20 minutes of each phase so nothing steps; as the amount falls below 0.9 the top sinks by up to 20 m (the heights clear
+  before the valley, as the phases' texts have Soult climb out of the fog). It is counted from the eye, with an exponential edge of
+  6 m above the top, and drawn at most 55% opaque, so the figures in it stay visible; its colour is the light table's mist colour.
+  The evening values of `PHASES[].mist` (0.22, 0.30; no text mentions them) are drawn as a thin haze and labelled modelled.
+- **The mist sheets are gone** (§C.5): `buildMist` keeps an empty, hidden `world.mist` group (so nothing that names it breaks);
+  the sheets, their drift and their phase fades are removed, with the haze sheet.
+- **Labels**: the legend's valley-fog row, shown only while the fog is drawn ("valley fog: the narrative's; depth (238 m) and
+  lifting modelled; drawn see-through"); two sentences in the sources sheet's "How the light is drawn" (`lightNotes`, a
+  presentation note, not `SOURCE_NOTE`): the fog is the narrative's, its top the Command view's height, its depth and lifting
+  modelled, the evening mist modelled; the haze a depth cue, the day's visibility not recorded.
+- The paper map draws neither haze nor fog (as before: its `staff` preset's fog amounted to none).
+
+**Decisions taken while building it** (measured; `docs/STAGE4_SPEC.md` §I, "4C, as delivered")
+- **The day fill is 0.52** (4B: 0.36). The mist sheets had faintly lifted the low Pratzen view's dark foreground conifers; without
+  them that view showed 10 solid near-black blocks, at the 0.05% limit. At 0.52 the worst view is 0.030% (6 blocks); the sky fill
+  lift barely helped.
+- **The haze's visibilities are five times the physical ones** Part A tried (§B.2: 8-25 km). At those the ground's mean luminance
+  rose 17-29 above 4B in four views, against §B.4's ±15; at ×4 the fitted Overview and selected-formation were still 8 and 15 up.
+- **The fog's edge is 6 m** (15 m first): softer, a point 20 m over the top kept too much fog for §C.6's check.
+- **§C.6's harness views are a loop, not new cases** (`FOG_VIEWS` in `thresholds.js`, after the day's light): the Field vantage at
+  08:00 and the low Pratzen view at 08:30 at 4x, with the darkness limit, AA as rendered, the case's drop limit, formations drawn
+  under the fog and the fog at most its cap. New cases would have needed new unobstructed baselines.
+- **§B.4's ±15 luminance is a measured design target, not a check**: it holds in every landscape view outside the fog's hours
+  (08:00 to 09:05, when the lifting's ease ends) within 13.3 (selected-formation), and through the day at 4x within 15.2 (the low
+  Pratzen view at 16:00, 0.2 over); in the fog's hours the ground is 18-60 brighter (the Sokolnitz close view at 08:20 and 10.33x
+  the most), where the white fog is the change. A permanent check would have
+  to exempt exactly those views; recorded here instead.
+- **§C.6's top check reads a slanting ray** (1 in 10, from 300 m above the top) rather than a vertical one, and "not fogged" 20 m
+  over the top as at most a quarter of the cap: a vertical ray from above measures only the edge's own depth.
+
+**Per view, before and after** (`tools/stage4/report-4b.js`; `docs/stage4-evidence/4c-report.md`, `4c-sheet-before.jpg`, `4c-sheet.jpg`)
+- **Solid near-black** at most 0.030% in every landscape view at 1x, 4x and 10.33x, through the day at 4x and in the fog's hours
+  (4B: at most 0.035%).
+- **Map text**: 0 below AA everywhere; the lowest contrast 6.49 (hybrid-dimmed, unchanged); in each view at most 0.91 lower than
+  on 4B (the low Pratzen view at 08:30, 8.41 to 7.50, over the white fog).
+- **Drops** unchanged in every view.
+- **The ground's mean luminance**: outside the fog's hours from 6.7 lower (overview-field at 1x) to 13.3 higher
+  (selected-formation), and through the day at 4x at most 15.2 higher; in the fog's hours (08:00-09:05) 18-60 higher (the fog).
+- **The atmosphere** (the page's own `atmoAt` over the free rectangle's ground): the haze at the orbit target 0 in every view; the
+  mean haze 0.014-0.205; at 08:00-08:30 the valley fog 0.31-0.54 (cap 0.55), its top 238.2 m.
+
+**Tests** (none loosened; new or stricter)
+- **Self-test** (141 checks, was 135), new: at each factor, the fog's top at 238.2 m at 08:00, 08:30 and 08:44 (1 m under it at
+  the cap, 20 m over it at most a quarter of it), and the haze 0 at the orbit target from every vantage (the focus uniform equal to
+  the eye's distance to it) with the fitted Overview's mean haze at most 0.25 at 4x and 0.45 at 1x and 10.33x; once, the Command
+  view's "uncertain" equal to the enemy formations in line of sight under the drawn top in phases 0-2 from both headquarters, the
+  fog's amount continuous (no one-minute change over 0.06; the largest 0.055), whole while the mist exceeds 0.5 and the phase's
+  own value once eased, and neither haze nor fog on the paper map, `fogShift` gone. The mist-sheet edge check goes with the sheets.
+- **Harness**: new, the valley fog's hours (`FOG_VIEWS`), as above.
+- **`css-test.js`**: new, no `fogShift`, no mist sheets, the fog chunks and `applyAtmo` present, the fog's top and the knowledge
+  rule both -0.8, the legend's fog row.
+- **`runtime-test.js`**: the mist test reads the valley fog's colour (darker before dawn than at midday) and asserts the mist
+  sheets are not drawn.
+- **Height guard**: the self-test's two new call sites classified (test).
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard.
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/spine-6b2cccd4.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:visual`: VISUAL_RESULT
+- `npm run check:contrast`: 4,244 text elements in 28 states, 0 below AA, 0 below 10.5 px (4,227 on 4B; the 17 more include the
+  legend's new row).
+- `npm run check:baseline`: moved to this build; passes.
+
+**Not done, or open**
+- The frame cost of the chunks is not measured on a GPU; software WebGL's frame times are not usable for it (Part A, §B.2).
+- The fog at 55% whitens the villages and woods in the valley strongly at 08:00-08:30 (`4c-sheet.jpg`, the Sokolnitz close view);
+  for the owner's eye (decision 72).
+- The haze's visibilities and the fill are design values tuned on the harness views; the Stage 0 darkness limit and AA held at
+  each step.
+- Historical: the fog's presence and its lifting at about 08:45 are the narrative's (the phases' texts); its depth (238 m, the
+  Command view's threshold) and the manner of its lifting are modelled; the evening mist is modelled; the day's visibility is not
+  recorded. Nothing here is a source.
+
 ## 2026-10 · Stage 4B: the light (docs/STAGE4_SPEC.md §A, §H, §I; owner decisions 68-71)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,367,134 bytes, md5 `3d6d2295bf8fbbedc60153513a3ff3e8`**
+**Status: merged (#28). `austerlitz-command-map.html`: 1,367,134 bytes, md5 `3d6d2295bf8fbbedc60153513a3ff3e8`**
 (was 1,348,542 bytes, md5 `6b2cccd4…`, the spine data task).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/spine-6b2cccd4.html`; the reference does not move. No data,

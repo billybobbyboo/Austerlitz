@@ -26,3 +26,13 @@ implementation; they changed no source file. Frame times are software WebGL on o
 
 The 4B run measured a build that differs from the committed one only in the sources sheet's text (`lightNotes`, added after the run
 started) and in two comments; the light's code is the same.
+
+**Stage 4C** (the atmosphere, implemented): `report-4b.js`, extended for 4C (on a build with the atmosphere it reads the haze and the
+valley fog over the ground under the free rectangle by the page's own `atmoAt`, and measures three views in the valley fog's hours;
+`--from` writes the table from a measurement already made), on the 4B build as merged (#28, md5 `3d6d2295…`) and on the 4C build.
+
+| file | section | script |
+|---|---|---|
+| `4c-before.json`, `4c-after.json` | I (4C) | `report-4b.js --json`: as 4B's, and on the 4C build the atmosphere per view (the mean haze and valley fog over the free rectangle's ground, the haze at the orbit target, the fog's top and cap, the haze's visibility); the Field vantage at 08:00, the Sokolnitz close view at 08:20 and the low Pratzen view at 08:30 at 4x |
+| `4c-report.md` | I (4C) | `report-4b.js --from 4c-after.json --before 4c-before.json --md`: the two side by side, the atmosphere per view, the fog's hours |
+| `4c-sheet-before.jpg`, `4c-sheet.jpg` | I (4C) | `report-4b.js --sheet`: six views on the 4B build and on the 4C build (the Sokolnitz close view at 08:20 is in the fog) |

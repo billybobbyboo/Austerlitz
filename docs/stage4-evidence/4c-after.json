@@ -712,6 +712,426 @@
     "cap": 0,
     "visKm": 113.7
    }
+  },
+  "overview-field@720": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0005,
+   "meanLum": 72.9,
+   "p5": 22,
+   "p50": 68,
+   "contrast": {
+    "texts": 41,
+    "min": 8.11,
+    "belowAA": 0
+   },
+   "dropped": 7,
+   "layerMs": 0.6,
+   "light": {
+    "alt": 19,
+    "drawn": 54,
+    "twilight": 1,
+    "box": 480,
+    "fill": 0.52
+   },
+   "atmo": {
+    "haze": 0.069,
+    "fog": 0,
+    "atTarget": 0,
+    "top": 218.2,
+    "cap": 0,
+    "visKm": 120
+   }
+  },
+  "overview-field@780": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0003,
+   "meanLum": 72.3,
+   "p5": 22,
+   "p50": 67,
+   "contrast": {
+    "texts": 42,
+    "min": 8.02,
+    "belowAA": 0
+   },
+   "dropped": 6,
+   "layerMs": 0.4,
+   "light": {
+    "alt": 17.7,
+    "drawn": 51.9,
+    "twilight": 1,
+    "box": 480,
+    "fill": 0.52
+   },
+   "atmo": {
+    "haze": 0.074,
+    "fog": 0,
+    "atTarget": 0,
+    "top": 218.2,
+    "cap": 0,
+    "visKm": 111.5
+   }
+  },
+  "overview-field@840": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0003,
+   "meanLum": 70.7,
+   "p5": 22,
+   "p50": 65,
+   "contrast": {
+    "texts": 38,
+    "min": 8.56,
+    "belowAA": 0
+   },
+   "dropped": 9,
+   "layerMs": 0.5,
+   "light": {
+    "alt": 14.1,
+    "drawn": 45.1,
+    "twilight": 1,
+    "box": 464,
+    "fill": 0.52
+   },
+   "atmo": {
+    "haze": 0.085,
+    "fog": 0,
+    "atTarget": 0,
+    "top": 218.2,
+    "cap": 0,
+    "visKm": 95.6
+   }
+  },
+  "overview-field@900": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0,
+   "meanLum": 74.4,
+   "p5": 24,
+   "p50": 71,
+   "contrast": {
+    "texts": 41,
+    "min": 8.41,
+    "belowAA": 0
+   },
+   "dropped": 5,
+   "layerMs": 0.6,
+   "light": {
+    "alt": 8.5,
+    "drawn": 30.9,
+    "twilight": 1,
+    "box": 432,
+    "fill": 0.52
+   },
+   "atmo": {
+    "haze": 0.096,
+    "fog": 0.033,
+    "atTarget": 0,
+    "top": 223.1,
+    "cap": 0.08,
+    "visKm": 82.7
+   }
+  },
+  "overview-field@960": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0003,
+   "meanLum": 65.2,
+   "p5": 20,
+   "p50": 61,
+   "contrast": {
+    "texts": 39,
+    "min": 8.55,
+    "belowAA": 0
+   },
+   "dropped": 6,
+   "layerMs": 0.3,
+   "light": {
+    "alt": 1.5,
+    "drawn": 6,
+    "twilight": 1,
+    "box": 432,
+    "fill": 0.48
+   },
+   "atmo": {
+    "haze": 0.114,
+    "fog": 0.033,
+    "atTarget": 0,
+    "top": 223.1,
+    "cap": 0.08,
+    "visKm": 68
+   }
+  },
+  "pratzen-low@480": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0018,
+   "meanLum": 120.2,
+   "p5": 31,
+   "p50": 140,
+   "contrast": {
+    "texts": 21,
+    "min": 7.66,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "layerMs": 0.4,
+   "light": {
+    "alt": 1.5,
+    "drawn": 6.2,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.41
+   },
+   "atmo": {
+    "haze": 0.222,
+    "fog": 0.413,
+    "atTarget": 0,
+    "top": 238.2,
+    "cap": 0.55,
+    "visKm": 46.5
+   }
+  },
+  "pratzen-low@540": {
+   "solidBlack": 0,
+   "solidBlocks": 0,
+   "nearBlack": 0.0043,
+   "meanLum": 103.1,
+   "p5": 28,
+   "p50": 114,
+   "contrast": {
+    "texts": 24,
+    "min": 7.93,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "layerMs": 0.3,
+   "light": {
+    "alt": 8.5,
+    "drawn": 31,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.52
+   },
+   "atmo": {
+    "haze": 0.183,
+    "fog": 0.069,
+    "atTarget": 0,
+    "top": 224.3,
+    "cap": 0.12,
+    "visKm": 68.1
+   }
+  },
+  "pratzen-low@600": {
+   "solidBlack": 0.00025,
+   "solidBlocks": 5,
+   "nearBlack": 0.0095,
+   "meanLum": 90.1,
+   "p5": 25,
+   "p50": 85,
+   "contrast": {
+    "texts": 24,
+    "min": 8.16,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "layerMs": 0.5,
+   "light": {
+    "alt": 14.1,
+    "drawn": 45.2,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.52
+   },
+   "atmo": {
+    "haze": 0.151,
+    "fog": 0.003,
+    "atTarget": 0,
+    "top": 219.3,
+    "cap": 0,
+    "visKm": 95.6
+   }
+  },
+  "pratzen-low@660": {
+   "solidBlack": 0.0003,
+   "solidBlocks": 6,
+   "nearBlack": 0.008,
+   "meanLum": 87.3,
+   "p5": 26,
+   "p50": 78,
+   "contrast": {
+    "texts": 21,
+    "min": 11.37,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "layerMs": 0.4,
+   "light": {
+    "alt": 17.7,
+    "drawn": 52,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.52
+   },
+   "atmo": {
+    "haze": 0.135,
+    "fog": 0,
+    "atTarget": 0,
+    "top": 218.2,
+    "cap": 0,
+    "visKm": 113.7
+   }
+  },
+  "pratzen-low@720": {
+   "solidBlack": 0.0002,
+   "solidBlocks": 4,
+   "nearBlack": 0.0064,
+   "meanLum": 87.2,
+   "p5": 26,
+   "p50": 77,
+   "contrast": {
+    "texts": 30,
+    "min": 11.93,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "layerMs": 0.7,
+   "light": {
+    "alt": 19,
+    "drawn": 54,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.52
+   },
+   "atmo": {
+    "haze": 0.131,
+    "fog": 0,
+    "atTarget": 0,
+    "top": 218.2,
+    "cap": 0,
+    "visKm": 120
+   }
+  },
+  "pratzen-low@780": {
+   "solidBlack": 0.00025,
+   "solidBlocks": 5,
+   "nearBlack": 0.0042,
+   "meanLum": 86.7,
+   "p5": 26,
+   "p50": 76,
+   "contrast": {
+    "texts": 28,
+    "min": 11.35,
+    "belowAA": 0
+   },
+   "dropped": 6,
+   "layerMs": 0.6,
+   "light": {
+    "alt": 17.7,
+    "drawn": 51.9,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.52
+   },
+   "atmo": {
+    "haze": 0.137,
+    "fog": 0,
+    "atTarget": 0,
+    "top": 218.2,
+    "cap": 0,
+    "visKm": 111.5
+   }
+  },
+  "pratzen-low@840": {
+   "solidBlack": 0.00015,
+   "solidBlocks": 3,
+   "nearBlack": 0.0055,
+   "meanLum": 83.6,
+   "p5": 25,
+   "p50": 73,
+   "contrast": {
+    "texts": 28,
+    "min": 11.35,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "layerMs": 0.5,
+   "light": {
+    "alt": 14.1,
+    "drawn": 45.1,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.52
+   },
+   "atmo": {
+    "haze": 0.151,
+    "fog": 0,
+    "atTarget": 0,
+    "top": 218.2,
+    "cap": 0,
+    "visKm": 95.6
+   }
+  },
+  "pratzen-low@900": {
+   "solidBlack": 0.00005,
+   "solidBlocks": 1,
+   "nearBlack": 0.0018,
+   "meanLum": 87.8,
+   "p5": 31,
+   "p50": 83,
+   "contrast": {
+    "texts": 26,
+    "min": 11.24,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "layerMs": 0.5,
+   "light": {
+    "alt": 8.5,
+    "drawn": 30.9,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.52
+   },
+   "atmo": {
+    "haze": 0.164,
+    "fog": 0.046,
+    "atTarget": 0,
+    "top": 223.1,
+    "cap": 0.08,
+    "visKm": 82.7
+   }
+  },
+  "pratzen-low@960": {
+   "solidBlack": 0.00005,
+   "solidBlocks": 1,
+   "nearBlack": 0.004,
+   "meanLum": 78.4,
+   "p5": 22,
+   "p50": 71,
+   "contrast": {
+    "texts": 26,
+    "min": 8.3,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "layerMs": 0.6,
+   "light": {
+    "alt": 1.5,
+    "drawn": 6,
+    "twilight": 1,
+    "box": 240,
+    "fill": 0.48
+   },
+   "atmo": {
+    "haze": 0.183,
+    "fog": 0.046,
+    "atTarget": 0,
+    "top": 223.1,
+    "cap": 0.08,
+    "visKm": 68
+   }
   }
  },
  "fog": {

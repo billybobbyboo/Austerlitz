@@ -115,8 +115,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   in sight under it, the fog's amount continuous and whole while the mist exceeds 0.5, no haze at the orbit target, the fitted
   Overview lightly hazed, none on the paper map, no `fogShift`); `css-test.js` checks the recession and the mist sheets stay out.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 4B build (md5 `3d6d2295...`, 1,367,134 bytes;
-  re-baselined from the spine data task build `6b2cccd4...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 4C build (md5 `622634ef...`, 1,376,800 bytes;
+  re-baselined from the Stage 4B build `3d6d2295...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
