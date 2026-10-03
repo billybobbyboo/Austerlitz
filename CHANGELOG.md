@@ -73,7 +73,7 @@
   first minute) only the faint whole arrows; none is at full strength. The map layer's drops are the same as before 4D in every view.
 
 **Tests** (none loosened; new or stricter)
-- **Self-test** (SELFTEST checks, was 141), new: at each factor, the day at ½× under Follow (never under the floor; every live event
+- **Self-test** (150 checks, was 141), new: at each factor, the day at ½× under Follow (never under the floor; every live event
   in the free rectangle in at least 80% of its minutes; the target's screen speed within 150 px/s; drops never above 19) and the
   draw-on (20 clocks inside each derived arrow's legs: the marched part's end within 0.5 units of the formation, no head on it, the
   whole arrow drawn faint, at full strength after); once, the dwell's dry run at ½×, 1×, 2× and 4× in its computed length within 1 s
@@ -94,8 +94,13 @@
 - `npm run check:data`: against the old reference exactly one data declaration changed (`SOURCE_NOTE`, above); against the new
   reference (`archive/stage4d-9b13adbf.html`) all 113 identical.
 - `npm run check:chronology`: 0 errors.
-- `npm run check:visual`: VISUAL_RESULT
-- `npm run check:contrast`: CONTRAST_RESULT
+- `npm run check:visual`: all checks passed, 20 views, the day's light (the largest solid near-black 0.014%), the valley fog's hours,
+  the self-test 150 of 150 (the day under Follow: every live event in the free rectangle in 91.6-92.7% of minutes, drops at most 13,
+  the screen speed at most 150 px/s; the draw-on within 0.086 units; the day at ½× in 210.0 s with 21 dwells); Play by Space at ½×
+  (its button pressed); the low Pratzen case in Watch held in the dwell at 09:00 ("Thiebault's brigade clears Pratzen village"):
+  0.000% solid, 0 below AA, drops 3 (limit 13), its marker lit; the slider and the 3E keys by real key presses. The two Canvas2D
+  `willReadFrequently` warnings are the known ones.
+- `npm run check:contrast`: 4,244 text elements in 28 states, 0 below AA, 0 below 10.5 px (as on 4C).
 - `npm run check:baseline`: moved to this build; passes.
 
 **Not done, or open**
