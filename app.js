@@ -1502,19 +1502,22 @@ function drapedRibbon(mapPts,o,add,mats){
   var uEnd=(L-headL)/L, runs=o.runs||[[0,1]], lift=o.lift, out={curve:curve,len:L,uEnd:uEnd,headL:headL,headW:headW,layers:[]};
   [[1.34,o.edge,0.5,-0.06],[1.0,o.col,1.0,0]].forEach(function(layer,li){
     var sc=layer[0], ly=lift+layer[3], v=[], idx=[];
+    var nRows=0;
     runs.forEach(function(r){
-      var u0=r[0]*uEnd, u1=Math.min(r[1],1)*uEnd, n=Math.max(2,Math.ceil((u1-u0)*L/1.0));
+      var u0=r[0]*uEnd, u1=o.full?1:Math.min(r[1],1)*uEnd, n=Math.max(2,Math.ceil((u1-u0)*L/1.0));   /* o.full (Stage 4D): the shaft built to the end, drawn to uEnd when whole */
+      nRows=n;
       var wmax=Math.max(o.w0,o.w1)*sc, m=Math.max(2,Math.ceil(wmax/1.0)), first=v.length/3;
       for(var i=0;i<=n;i++){
         var u=u0+(u1-u0)*i/n, pt=curve.getPointAt(u), tg=curve.getTangentAt(u), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1;
         nx/=nl; nz/=nl;
-        var hw=(o.w0+(o.w1-o.w0)*(uEnd>0?u/uEnd:0))*sc/2;
+        var hw=(o.w0+(o.w1-o.w0)*(uEnd>0?Math.min(1,u/uEnd):0))*sc/2;
         for(var k=0;k<=m;k++){ var f=-1+2*k/m, x=pt.x+nx*hw*f, z=pt.z+nz*hw*f; v.push(x,groundY(x,z)+ly,z); }
       }
       for(i=0;i<n;i++) for(k=0;k<m;k++){ var a=first+i*(m+1)+k, b=a+m+1; idx.push(a,b,a+1, a+1,b,b+1); }
     });
-    var sh=drapeMesh(v,idx,layer[1],layer[2],ly,12+li,mats,"shaft"), lay={shaft:sh,cols:Math.max(2,Math.ceil(Math.max(o.w0,o.w1)*sc/1.0)),sc:sc,ly:ly};
+    var sh=drapeMesh(v,idx,layer[1],layer[2],ly,12+li,mats,"shaft"), lay={shaft:sh,cols:Math.max(2,Math.ceil(Math.max(o.w0,o.w1)*sc/1.0)),rows:nRows,sc:sc,ly:ly,w0:o.w0,w1:o.w1};
     add(sh); out.layers.push(lay);
+    if(o.full) shaftEnd(lay,curve,L,uEnd,uEnd);
     if(o.head){
       var H=ribbonHead(curve,1,headL,headW,sc,ly,o.head);
       var hm=drapeMesh(H.v,H.idx,layer[1],layer[2],ly,14+li,mats,"head");
@@ -1524,6 +1527,20 @@ function drapedRibbon(mapPts,o,add,mats){
     }
   });
   return out;
+}
+/* Stage 4D: a full-length shaft (o.full) drawn from its start to arc length u: the rows up to u, the last of them moved to
+   exactly u (draped, at the shaft's width there); the row moved before is put back first */
+function shaftEnd(lay,curve,L,uEnd,u){
+  var g=lay.shaft.geometry, A=g.attributes.position, m=lay.cols, n=lay.rows, per=(m+1)*3;
+  if(lay.moved){ A.array.set(lay.moved.v,lay.moved.row*per); lay.moved=null; }
+  var k=Math.max(1,Math.min(n,Math.ceil(u*n-1e-9)));
+  if(k<n||u<1){ var row=k, save=A.array.slice(row*per,(row+1)*per), pt=curve.getPointAt(u), tg=curve.getTangentAt(u), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1;
+    nx/=nl; nz/=nl; var hw=(lay.w0+(lay.w1-lay.w0)*(uEnd>0?Math.min(1,u/uEnd):0))*lay.sc/2;
+    for(var j=0;j<=m;j++){ var f=-1+2*j/m, x=pt.x+nx*hw*f, z=pt.z+nz*hw*f, o=row*per+j*3; A.array[o]=x; A.array[o+1]=groundY(x,z)+lay.ly; A.array[o+2]=z; }
+    lay.moved={row:row,v:save}; }
+  A.needsUpdate=true; g.boundingSphere=null;
+  g.setDrawRange(0,k*m*6);
+  lay.end=curve.getPointAt(u);
 }
 /* a ribbon's head with its tip at arc length u of the curve (u = 1: the arrow's end), every vertex draped; the casing's head
    (sc > 1) stands a little beyond the tip. Since Stage 4D also the head of an arrow drawn on with the clock. */
@@ -1546,6 +1563,7 @@ function buildArrow(a){
   var w = a.kind==="attack"?[2.0,2.6] : a.kind==="counter"?[1.8,2.3] : [1.3,1.6];
   var r=drapedRibbon(pts,{w0:w[0],w1:w[1],side:a.side,head:a.side==="al"?"chevron":"plain",headW:7.5,headL:6.5,heads:ovHeads,
     runs:a.kind==="axis"?dashRuns(9,0.62):null,   /* an intended route: broken; a retreat happened, so it is solid */
+    full:!!a.leg,   /* Stage 4D: a derived arrow's shaft is built to its end, for the draw-on */
     col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
   var mid=r.curve.getPointAt(0.5), lb=null;
   if(a.label) lb=addOverlayLabel(a.label,new THREE.Vector3(mid.x,groundY(mid.x,mid.z)+2.4,mid.z));
@@ -1634,10 +1652,12 @@ function rebuildOverlays(ph,instant){
    path's points (Catmull-Rom), so the formation's place between two of them is carried to the same place between them on the
    curve. */
 var DRAWON=[];
+/* where the formation is on the arrow's path at clock t: the segment of the path's points it is on (g: its index and the
+   fraction along it), and whether its first leg has started */
 function arrowProgress(a,t){
   var A=anchorList(a.leg[0]), i0=-1, i1=-1, k;
   for(k=0;k<A.length;k++){ if(A[k].ph===a.leg[1]&&i0<0) i0=k; if(A[k].ph===a.leg[2]&&i0>=0) i1=k; }
-  if(i0<0||i1<=i0) return {g:null,frac:1};
+  if(i0<0||i1<=i0) return {g:null,segs:0,started:true,done:true};
   var seg=0, g=null, started=false, segs=0;
   for(k=i0+1;k<=i1;k++) segs+=legPath(A[k-1],A[k]).pts.length-1;
   for(k=i0+1;k<=i1;k++){ var pp=legPath(A[k-1],A[k]), w=legWindow(A[k-1],A[k]), f=clamp01((t-w[0])/((w[1]-w[0])||1));
@@ -1646,39 +1666,37 @@ function arrowProgress(a,t){
       var d=f*pp.len, j=1; while(j<pp.cum.length-1&&pp.cum[j]<d) j++;
       var sl=(pp.cum[j]-pp.cum[j-1])||1; g=seg+(j-1)+clamp01((d-pp.cum[j-1])/sl); break; }
     seg+=pp.pts.length-1; }
-  if(g===null) g=segs;
-  return {g:g,frac:segs?g/segs:1,started:started};
+  return {g:g,segs:segs,started:started,done:g===null};
+}
+/* the arc length (fraction of the curve) of the drawn point nearest the formation, searched between the curve's points that
+   bound its segment of the path (the curve passes through every point of the path) */
+function drawOnU(r,P,q){
+  var c=r.curve, S=P.segs, s0=Math.floor(P.g), t0=Math.min(S,s0)/S, t1=Math.min(S,s0+1)/S, best=t0, bd=1e18, v=new THREE.Vector3(), N=48, a, b, i;
+  for(i=0;i<=N;i++){ var t=t0+(t1-t0)*i/N; c.getPoint(t,v); var e=(v.x-q[0])*(v.x-q[0])+(v.z-q[1])*(v.z-q[1]); if(e<bd){ bd=e; best=t; } }
+  a=Math.max(t0,best-(t1-t0)/N); b=Math.min(t1,best+(t1-t0)/N);
+  for(i=0;i<24;i++){ var m1=a+(b-a)/3, m2=b-(b-a)/3; c.getPoint(m1,v); var e1=(v.x-q[0])*(v.x-q[0])+(v.z-q[1])*(v.z-q[1]); c.getPoint(m2,v); var e2=(v.x-q[0])*(v.x-q[0])+(v.z-q[1])*(v.z-q[1]);
+    if(e1<e2) b=m2; else a=m1; }
+  var t=(a+b)/2, Ls=c.getLengths(), D=Ls.length-1, x=t*D, k0=Math.floor(x), k1=Math.min(D,k0+1);
+  return Math.max(1e-4,Math.min(1,(Ls[k0]+(Ls[k1]-Ls[k0])*(x-k0))/(r.len||1)));
 }
 function drawOnArrows(){
-  for(var i=0;i<DRAWON.length;i++){ var d=DRAWON[i], r=d.r, P=(RM)?{frac:1,started:true}:arrowProgress(d.a,clock);
-    var want=(!P.started&&P.frac<=0)?0:(P.frac>=1?1:-1);
-    var u=1;
-    if(want<0){ var curve=r.curve, tP=Math.min(1,Math.max(0,P.frac)), Ls=curve.getLengths(200), x=tP*200, i0=Math.floor(x), i1=Math.min(200,i0+1);
-      u=(Ls[i0]+(Ls[i1]-Ls[i0])*(x-i0))/(r.len||1); }
-    else u=want;
-    if(Math.abs(u-d.s)<1e-6&&d.done) continue;
+  for(var i=0;i<DRAWON.length;i++){ var d=DRAWON[i], P=RM?{done:true,started:true}:arrowProgress(d.a,clock), u;
+    if(P.done) u=1; else if(!P.started) u=0;
+    else { var q=posAtClock(d.a.leg[0],clock), w=W(q[0],q[1]); u=drawOnU(d.r,P,w); if(u>=1) u=1-1e-6; }
+    if(d.done&&Math.abs(u-d.s)<1e-7) continue;
     d.s=u; d.done=true; drawOnApply(d);
   }
 }
+/* drawn to u: nothing at 0; the shaft to the formation, without its head, while the leg runs (the formation's counter or
+   figures stand at the tip: a head there would lie under them, and labels keep clear of heads, Stage 2D); whole at 1 */
 function drawOnApply(d){
-  var r=d.r, u=d.s, L=r.len, show=u>1e-6;
+  var r=d.r, u=d.s, show=u>1e-6, whole=u>=1;
   r.layers.forEach(function(lay){
-    lay.shaft.visible=show; if(lay.head) lay.head.visible=show;
-    if(!show) return;
-    var I=lay.shaft.geometry.index, rows=(I.count/(6*lay.cols));
-    if(u>=1){ lay.shaft.geometry.setDrawRange(0,Infinity); if(lay.head) drawOnHead(lay,ribbonHead(r.curve,1,r.headL,r.headW,lay.sc,lay.ly,d.head)); return; }
-    var hL=Math.min(r.headL,u*L*0.6), hW=r.headW*hL/(r.headL||1), uS=Math.max(0,(u*L-hL)/L);
-    var k=Math.max(0,Math.min(rows,Math.round(uS/(r.uEnd||1)*rows)));
-    lay.shaft.geometry.setDrawRange(0,k*6*lay.cols);
-    if(lay.head) drawOnHead(lay,ribbonHead(r.curve,u,hL,hW,lay.sc,lay.ly,d.head));
+    lay.shaft.visible=show; if(lay.head) lay.head.visible=whole;
+    if(show) shaftEnd(lay,r.curve,r.len,r.uEnd,whole?r.uEnd:u);
   });
+  d.tip=show?[r.layers[r.layers.length-1].end.x,r.layers[r.layers.length-1].end.z]:null;
   if(d.label) d.label.hidden=u<0.5;
-}
-function drawOnHead(lay,H){
-  var A=lay.head.geometry.attributes.position, src=H.v;
-  for(var i=0;i<A.array.length&&i<src.length;i++) A.array[i]=src[i];
-  A.needsUpdate=true; lay.head.geometry.boundingSphere=null;   /* three recomputes it before culling */
-  lay.head.userData.tip=H.tip; lay.head.userData.base=H.base; if(H.notch) lay.head.userData.notch=H.notch;
 }
 function applyOverlayOpacity(){
   var base=layerOn.arrows?0.95:0;
@@ -5983,7 +6001,7 @@ var AUSTERLITZ_DEBUG=(function(){
       for(i=0;i<on.length;i++) for(j=i+1;j<on.length;j++) if(cross(B[i],B[j])) R.overlaps.push(s.n+": "+on[i].key+" / "+on[j].key);
       var P=mlPanels(); on.forEach(function(it,k){ P.forEach(function(p){ if(cross(B[k],p)) R.panel.push(s.n+": "+it.key); }); });
       var H=[]; curOv.updateMatrixWorld(true);
-      if(layerOn.arrows) curOv.traverse(function(o){ var dd=o.userData.drape; if(!dd||dd.kind!=="head"||!o.geometry) return;
+      if(layerOn.arrows) curOv.traverse(function(o){ var dd=o.userData.drape; if(!dd||dd.kind!=="head"||!o.geometry||!o.visible) return;   /* a head drawn (Stage 4D: hidden while its arrow draws on), as the harness's measure counts them */
         var A=o.geometry.attributes.position, r=[1e9,1e9,-1e9,-1e9], ok=true;
         for(var k=0;k<A.count;k++){ _lv3.fromBufferAttribute(A,k).applyMatrix4(o.matrixWorld).project(camera); if(_lv3.z>1||_lv3.z<-1){ ok=false; break; }
           var x=(_lv3.x*0.5+0.5)*innerWidth, y=(-_lv3.y*0.5+0.5)*innerHeight; r=[Math.min(r[0],x),Math.min(r[1],y),Math.max(r[2],x),Math.max(r[3],y)]; }
@@ -6351,10 +6369,11 @@ var AUSTERLITZ_DEBUG=(function(){
         clock=w0-0.5; drawOnArrows(); if(d.r.layers[0].shaft.visible) bad.push(d.a.label+": drawn before its leg starts");
         clock=w1+0.5; drawOnArrows(); if(d.s!==1) bad.push(d.a.label+": not whole after its leg ends");
         for(var k=1;k<=20;k++){ var t=w0+(w1-w0)*k/21; clock=t; drawOnArrows(); var L=legAt(d.a.leg[0],t); if(!L||!L.b||L.u<=0) continue;
-          var q=posAtClock(d.a.leg[0],t), w=W(q[0],q[1]), tip=d.r.layers[1].head.userData.tip, e=Math.hypot(tip[0]-w[0],tip[1]-w[1]); nT++;
+          if(d.s<1&&d.r.layers.some(function(l){ return l.head&&l.head.visible; })) bad.push(d.a.label+": a head drawn while drawing on at "+fmtClock(t));
+          var q=posAtClock(d.a.leg[0],t), w=W(q[0],q[1]), tip=d.tip||[1e9,1e9], e=Math.hypot(tip[0]-w[0],tip[1]-w[1]); nT++;
           if(e>worst){ worst=e; where=d.a.label+" at "+fmtClock(t); } } }); }
     clock=keep; rebuildOverlays(phaseAt(keep),true);
-    ck("draw-on: a derived arrow's tip lies on its formation's path at the formation's progress, within 0.5 units; not drawn before its leg, whole after (section D.4)",
+    ck("draw-on: a derived arrow's drawn end lies on its formation's path at the formation's progress, within 0.5 units, without a head while it draws on; not drawn before its leg, whole after (section D.4)",
       nA>0&&nT>0&&worst<=0.5&&!bad.length, nA+" derived arrows, "+nT+" clocks inside their legs: the tip at most "+worst.toFixed(3)+" units from the formation"+(where?" ("+where+")":"")+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):""));
     setClock(keep,{instant:true,force:true,camera:false}); finishTween();
     landCam.position.copy(cam.p); orbitTarget.copy(cam.t); landCam.lookAt(orbitTarget); freeCam=cam.fc;
@@ -6362,8 +6381,8 @@ var AUSTERLITZ_DEBUG=(function(){
   function paceDayChecks(){
     var out=[], keep=clock, keepRM=RM, cam={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam};
     /* the dwell: a dry run of the day at each speed takes its computed length within 1 s, one dwell at each start after 04:00 */
-    function dry(x,from,to){ var c0=clock, real=0, st=1/60, n=0, was=false; clock=from; dwellReset();
-      while(clock<to&&real<3600){ clock=Math.min(T_MAX,dwellAdvance(st,MIN_PER_SEC*x)); real+=st; if(DWELL.st&&!was) n++; was=!!DWELL.st; }
+    function dry(x,from,to){ var c0=clock, real=0, st=1/60, n=0, was=null; clock=from; dwellReset();
+      while(clock<to&&real<3600){ clock=Math.min(T_MAX,dwellAdvance(st,MIN_PER_SEC*x)); real+=st; if(DWELL.st&&DWELL.st.E!==was){ n++; was=DWELL.st.E; } }
       clock=c0; dwellReset(); return {real:real,n:n}; }
     var S=dwellStarts(), want=S.filter(function(t){ return t>T_MIN; }).length, rows=[], badD=[];
     [0.5,1,2,4].forEach(function(x){ var r=dry(x,T_MIN,T_MAX), L=dwellDayLength(T_MIN,x); rows.push(x+"\u00d7 "+r.real.toFixed(1)+" s (computed "+L.toFixed(1)+", "+r.n+" dwells)");

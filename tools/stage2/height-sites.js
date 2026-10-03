@@ -81,7 +81,9 @@ const CLASS={
   /* Stage 4C: the self-test's atmosphere checks (the Overview's ground, the knowledge model's threshold) */
   "app.js:fogChecks":"test","app.js:atmoDayChecks":"test",
   /* Stage 4D: Follow's target stands on the drawn ground */
-  "app.js:followGoal":"presentation","app.js:followStep":"presentation"
+  "app.js:followGoal":"presentation","app.js:followStep":"presentation",
+  /* Stage 4D: a drawn-on arrow's end, draped like the rest of its shaft; the self-test's day under Follow */
+  "app.js:shaftEnd":"presentation","app.js:paceChecks":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */

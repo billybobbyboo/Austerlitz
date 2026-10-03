@@ -467,9 +467,9 @@ try{
   /* Stage 4D: the dwell. A dry run of the day at each speed: its length the computed one within a step, one dwell at each
      event start after 04:00, the clock never running backwards nor faster than its speed */
   { const c0=clock, st=1/60;
-    [0.5,1,2,4].forEach(x=>{ clock=T_MIN; dwellReset(); let real=0, n=0, was=false, fast=0, back=0;
+    [0.5,1,2,4].forEach(x=>{ clock=T_MIN; dwellReset(); let real=0, n=0, was=null, fast=0, back=0;
       while(clock<T_MAX&&real<3600){ const nt=Math.min(T_MAX,dwellAdvance(st,MIN_PER_SEC*x)); if(nt<clock-1e-9) back++; if(nt-clock>MIN_PER_SEC*x*st*(1+1e-6)) fast++;
-        clock=nt; real+=st; if(DWELL.st&&!was) n++; was=!!DWELL.st; }
+        clock=nt; real+=st; if(DWELL.st&&DWELL.st.E!==was){ n++; was=DWELL.st.E; } }
       const L=dwellDayLength(T_MIN,x), want=dwellStarts().filter(t=>t>T_MIN).length;
       if(Math.abs(real-L)>2*st||n!==want||back||fast) throw new Error("dwell at "+x+"x: "+real.toFixed(2)+" s against "+L.toFixed(2)+", "+n+" dwells of "+want+", "+back+" backward and "+fast+" too fast steps"); });
     clock=c0; dwellReset();
