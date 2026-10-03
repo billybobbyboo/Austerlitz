@@ -8,10 +8,10 @@ Study at 1600 x 900, the default factor, Follow on, played from 04:00 to 18:00 i
 
 | build @ speed | the day, s | minutes with every live event in the free rectangle | live event-minutes in it | target's speed px/s: median / 95th / largest | floor clamps; lowest clearance | drops every 10 min: mean / largest |
 |---|---|---|---|---|---|---|
-| before @0.5x | 168 | 69.9% | 75.0% | 0 / 0 / 24676.8 | 0; 36.6 | 5.84 / 16 |
-| 4D @0.5x | 210 | 86.4% | 92.1% | 15.5 / 100.9 / 150 | 0; 26.9 | 6.29 / 19 |
-| before @1x | 84 | 69.9% | 75.0% | 0 / 0 / 24676.8 | 0; 36.6 | 5.84 / 16 |
-| 4D @1x | 126 | 86.7% | 92.2% | 31.3 / 139.1 / 150 | 0; 27.4 | 6.34 / 18 |
+| before @0.5x | 168 | 71.1% | 76.4% | 0 / 146.1 / 853.5 | 0; 36.6 | 5.86 / 16 |
+| 4D @0.5x | 210 | 92.7% | 95.8% | 8.6 / 54.1 / 150 | 0; 57 | 6.78 / 11 |
+| before @1x | 84 | 73.1% | 77.9% | 0 / 288.4 / 853.5 | 0; 36.6 | 5.92 / 19 |
+| 4D @1x | 126 | 92.4% | 95.5% | 17.2 / 72.1 / 150 | 0; 57.2 | 6.76 / 11 |
 
 ## The day's length
 
@@ -60,7 +60,7 @@ Each derived arrow at 20 clocks inside its legs: the largest distance of its dra
 
 ## The harness views
 
-Derived arrows drawn whole / in part / not yet; the map layer's drops against the view's limit.
+Derived arrows at full strength (the leg complete) / the marched part over the faint whole arrow / the faint whole arrow only (the leg not started; before 4D every arrow was drawn whole); the map layer's drops against the view's limit.
 
 | view | before: arrows; drops | 4D: arrows; drops | limit |
 |---|---|---|---|

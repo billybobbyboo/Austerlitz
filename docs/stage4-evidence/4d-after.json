@@ -1,6 +1,6 @@
 {
  "html": "austerlitz-command-map.html",
- "when": "2026-10-03T04:16:07.673Z",
+ "when": "2026-10-03T04:47:39.578Z",
  "views": {
   "overview-field": {
    "dropped": 6,
@@ -496,35 +496,35 @@
   "0.5x": {
    "speed": 0.5,
    "seconds": 210,
-   "allLiveShare": 0.864,
-   "liveSeenShare": 0.921,
+   "allLiveShare": 0.927,
+   "liveSeenShare": 0.958,
    "screenSpeed": {
-    "p50": 15.5,
-    "p95": 100.9,
+    "p50": 8.6,
+    "p95": 54.1,
     "max": 150
    },
    "clamps": 0,
-   "minClear": 26.9,
+   "minClear": 57,
    "drops": {
-    "mean": 6.29,
-    "max": 19
+    "mean": 6.78,
+    "max": 11
    }
   },
   "1x": {
    "speed": 1,
    "seconds": 126,
-   "allLiveShare": 0.867,
-   "liveSeenShare": 0.922,
+   "allLiveShare": 0.924,
+   "liveSeenShare": 0.955,
    "screenSpeed": {
-    "p50": 31.3,
-    "p95": 139.1,
+    "p50": 17.2,
+    "p95": 72.1,
     "max": 150
    },
    "clamps": 0,
-   "minClear": 27.4,
+   "minClear": 57.2,
    "drops": {
-    "mean": 6.34,
-    "max": 18
+    "mean": 6.76,
+    "max": 11
    }
   }
  }

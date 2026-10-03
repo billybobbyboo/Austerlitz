@@ -21,11 +21,11 @@ lower one without saying so explicitly.
 | `analysis.js` | analysis chapters (themes: each names its moments, `at` and `moments`, since the spine data task), command knowledge, the two plans, acts, events, guided tour (each stop names a moment) |
 | `world.js` | ground: relief model, land cover, water, roads, woods, settlements, `groundY` (since 4C no mist sheets: the fog is the atmosphere's, in `app.js`); the paper map's flat symbology (village footprints, woods) and its own hillshade (since 2E); the ground shader, which draws the land cover per point, and `COVER_ML`/`drawnCover` (since 2F) |
 | `symbols.js` | the map layer's counters and names (HTML/SVG builders, accessible names), event and objective glyphs |
-| `app.js` | scene, the light (since 4B: the computed sun `SUN_DAY`, the light table `LIGHT_BY_ALT`, `applyLight`, `placeLights` and the fitted shadow box `SHADOW_FIT`), the atmosphere (since 4C: `ATMO`, the fog chunks, `applyAtmo`, `atmoAt`: the haze beyond the focus and the valley fog), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
+| `app.js` | scene, the light (since 4B: the computed sun `SUN_DAY`, the light table `LIGHT_BY_ALT`, `applyLight`, `placeLights` and the fitted shadow box `SHADOW_FIT`), the atmosphere (since 4C: `ATMO`, the fog chunks, `applyAtmo`, `atmoAt`: the haze beyond the focus and the valley fog), pacing (since 4D: the dwell `DWELL`/`dwellAdvance`, Follow while playing `FOLLOW`/`followStep`, the derived arrows' draw-on `DRAWON`/`drawOnArrows`), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2, Stage 3 and Stage 4 measurement scripts (`stage2/`, `stage3/`, `stage4/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
-| `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `stage2c-68ac7721.html` (the 2C build, on which the drop limits are derived), `spine-6b2cccd4.html` (the `check:data` reference, since the spine data task) |
+| `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `stage2c-68ac7721.html` (the 2C build, on which the drop limits are derived), `spine-6b2cccd4.html` (the spine data task's build), `stage4d-9b13adbf.html` (the `check:data` reference, since 4D's one-word data change) |
 | `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE3_SPEC.md` (Stage 3, with `stage3-evidence/`), `STAGE4_SPEC.md` (Stage 4, with `stage4-evidence/`), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
 
 The one-off correction-pass tools (`geo-migrate.js`, `geo-anchor.js`, `patch-app.py`, `patch-history.py`, and the
@@ -62,8 +62,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   the failed suites, if any suite exits non-zero or prints an error summary. It also runs the Stage 2B height guard
   (`tools/stage2/height-sites.js --check`): no presentation code may read `height()`/`hAt()`; draw on `displayHeight()`
   or `groundY()`, and classify any new call site.
-- `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/spine-6b2cccd4.html`
-  (the spine data task's build; before it, `archive/stage2c-68ac7721.html`); a data task that changes it lists every changed declaration in `CHANGELOG.md` and moves the reference.
+- `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/stage4d-9b13adbf.html`
+  (the 4D build, whose `SOURCE_NOTE` says "1×" for "normal speed", decision 76; before it, `archive/spine-6b2cccd4.html`); a data task that changes it lists every changed declaration in `CHANGELOG.md` and moves the reference.
 - `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
   explicit anchor time carries evidence found in the sources, a grade and a basis; a derived arrival at the march-rate ceiling
   only for the legs it names (`CEILING_FLAGGED`), every other at the tactical rate (a design value, unsourced).
@@ -114,9 +114,16 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   atmosphere checks (the fog's top at the knowledge model's 238.2 m at each factor, the Command view's "uncertain" exactly the enemy
   in sight under it, the fog's amount continuous and whole while the mist exceeds 0.5, no haze at the orbit target, the fitted
   Overview lightly hazed, none on the paper map, no `fogShift`); `css-test.js` checks the recession and the mist sheets stay out.
+  Since 4D: by real key presses, Play runs at ½× with its button pressed; the low Pratzen case in Watch held in the dwell at 09:00 within
+  the darkness limit, map text at AA, drops within its limit, its event lit and named; the self-test's pacing checks (the day played
+  under Follow at 1x, 4x and 10.33x: never under the floor, every live event in the free rectangle in at least 80% of its minutes,
+  the screen speed within 150 px/s, drops never above 19; each derived arrow's marched part ending on its formation's path within
+  0.5 units at 20 clocks, over the whole arrow drawn faint, full once complete, decision 83; the day's length at every speed, one
+  dwell at each event start; no dwell on scrubbing; reduced motion); `binding-test.js` checks only derived arrows draw on;
+  `runtime-test.js` dry-runs the dwell; `css-test.js` checks the default speed and the dwell's toggle.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 4C build (md5 `622634ef...`, 1,376,800 bytes;
-  re-baselined from the Stage 4B build `3d6d2295...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 4D build (md5 `9b13adbf...`, 1,402,090 bytes;
+  re-baselined from the Stage 4C build `622634ef...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -159,4 +166,6 @@ every recommendation (decisions 68-82, §0.4). Stage 4B (the light: the computed
 one light table keyed by the sun's altitude, a fill opposite the sun in place of Stage 0's shadow toe, no baked hillshade on the
 landscape, the shadow box fitted to the view) is merged (#28). Stage 4C (the atmosphere: one haze and valley fog in the fog chunks,
 the haze counted beyond the focus, the fog's top the Command view's 238.2 m and its amount `PHASES[].mist` eased in the clock, drawn
-at most 55% opaque; `fogShift` and the mist sheets gone) is implemented, for review.
+at most 55% opaque; `fogShift` and the mist sheets gone) is merged (#29). Stage 4D (pacing: Play at ½×, a dwell at each event start
+with its toggle, Follow continuous while playing at 230-300 units, derived arrows drawn whole and faint with the part marched at full
+strength, owner decision 83; decision 76's one-word data change, the `check:data` reference moved) is implemented, for review.

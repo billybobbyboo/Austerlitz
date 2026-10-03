@@ -1,8 +1,112 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 4D: pacing (docs/STAGE4_SPEC.md §D, §H, §I; owner decisions 74-76, 78, 83)
+
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,402,090 bytes, md5 `9b13adbf7c481e36585fae9eb8ac1be1`**
+(was 1,376,800 bytes, md5 `622634ef…`, Stage 4C).
+- `check:baseline` moves to this build.
+- **A one-word data change (decision 76).** `check:data` against the old reference (`archive/spine-6b2cccd4.html`): exactly one data
+  declaration changed, `SOURCE_NOTE`. In decision 56's sentence (the slow frame and the relief control) "1.2 minutes at normal speed
+  (4.8 at four times speed)" becomes "1.2 minutes at 1× (4.8 at four times speed)": with Play starting at ½×, "normal speed" no
+  longer names 1×. What was: "at normal speed"; what is: "at 1×"; why: the default speed changed (decision 74); the figure is
+  unchanged and still true of 1× (a frame step is capped at 120 ms; 10 clock minutes a second). No historical claim changes. The
+  reference moves to this build, `archive/stage4d-9b13adbf.html`; against it all 113 data declarations are identical.
+- No geography, chronology, order of battle, track or `OVERLAYS` change; `legWindow`, `legPath` and the arrows' anchors are read,
+  not changed (`binding-test.js`: every derived arrow's ends are its anchors exactly).
+- The first commit records Stage 4C as merged (#29).
+
+**Before building (fact).** `main` (71ffd88, Stage 4C merged as #29) matched `check:baseline` (md5 `622634ef…`, 1,376,800 bytes).
+`tools/stage4/report-4d.js` measured it as the "before" (`AUSTERLITZ_HTML`, the same build).
+
+**What changed** (`app.js`, `shell.html`, `style.css`, `data.js`)
+- **Play starts at ½×** (decision 74): `speed` 0.5 and its button pressed; the buttons keep their meaning (½×, 1×, 2×, 4×).
+- **A dwell at each event start** (decision 75; `DWELL`, `dwellAdvance`): while the clock plays it eases to a stop at each of the
+  distinct event start minutes, holds 1.5 s with the event's marker lit and its name (or both names, where two events start
+  together) in the caption, and eases back. Each ease covers a quarter second's travel at speed in half a second, so the clock's rate
+  is continuous; where two starts are closer than that, half the gap. A dwell adds 1.5 s plus its eases (2.0 s where they are whole).
+  The start the clock stands on when Play is pressed does not dwell (04:00 from the day's start: 21 dwells). Scrubbing, the keys, the
+  phase and act buttons, the tour and the themes stop the clock and never dwell; the dwell stays under reduced motion (it is time,
+  not motion). The day plays in 3 min 30 s at ½× (2 min 48 s before), 2 min 6 s at 1×, 83.5 s at 2×, 61.3 s at 4×. A toggle, "Pause
+  briefly at events", on by default, in a new "Playing" section of the layers panel.
+- **Follow while the clock plays** (decision 78; `FOLLOW`, `followStep`): with Follow on and the clock playing, the eye's target
+  eases toward the weighted centre of the live events, its distance toward 2.4 x their spread + 130 units (230-300), its direction
+  toward the phase's authored view; time constant 1.5 s; the target's move across the screen held to 150 px/s by slowing; every
+  step through the floor. While playing the phase boundary's glide is not used; when the clock stops the view stays; a phase or act
+  button, a vantage, a theme or a tour stop glides to its view as before; any pan, orbit, zoom or double-click turns Follow off
+  (decision 47, unchanged). Under reduced motion the eye moves only at each event start, at once. Not on the paper map.
+- **Derived arrows draw on with the clock** (decision 83, "ghost and progress"; `DRAWON`, `drawOnArrows`): each of the 17 arrows
+  derived from an executed leg is always drawn whole and faint (0.4 of its opacity), its head at the destination and its label as
+  before; over it the part the formation has marched is drawn at full strength from the start to the formation, without a head.
+  Once the leg is complete the arrow is drawn at full strength, exactly as before 4D. The 19 interpretive arrows, lines, boundaries
+  and halt bars keep the phase change's fade. Under reduced motion every arrow is whole. Derived arrows are kept to their path:
+  points every 2 units along each segment, so the curve no longer bulges off the formation's route between its points.
+- The layers panel's Follow title, the caption's and the marker's dwell styles (`style.css`, from the existing tokens).
+
+**Decisions taken while building it** (`docs/STAGE4_SPEC.md` §I, "4D, as delivered"; §0.4)
+- **The draw-on, asked of the owner (decision 83).** §D.3 item 4 ("not drawn before the leg starts, the head at the tip") would
+  have left 12 of the 17 derived arrows undrawn at every phase start, since their legs run from the phase's first minute to its last,
+  and whole only as their phase's overlay is replaced; and a head at the tip lies under the moving formation's own counter, against
+  Stage 2D's rule that nothing is drawn over a head (the self-test found labels over moving heads on the paper map). The owner chose
+  "ghost and progress" over "only while playing", "as specified" and "leave it out".
+- **Follow's distance 230-300 units**, not §D.2's candidate 86-274: over the day the candidate's distances (about 140-200, where every
+  brigade is labelled) made the map layer drop 19-20 items (the self-test's limit 19; the harness's run at 4x 20). Tried: 86-274
+  (19 at 4x), 110-274 (19), 86-160 (21 at 10.33x), 200-274 (18), 230-300 (11-12), 255-320 (11-12). The action is framed wider than
+  most phase views (92-212 units in phases 1-8); a zoom turns Follow off.
+- **The arrows kept to their path** (points every 2 units): the drawn end could not meet the formation within 0.5 units while the
+  curve bulged up to 1.4 units off the path (Vandamme, phase 3); now at most 0.13 (the report: 0.09). The arrows' ends and labels are
+  where they were; their shapes follow the modelled route more closely between its points.
+- **The dwell adds 2.0 s, not §D.3's 2.5 s** (the ease is counted once each way); 04:00 does not dwell.
+- **§D.4's harness case** is a check in the key tests (Play by a real key press; the low Pratzen case in Watch held in the dwell at
+  09:00), not a new case (no new unobstructed baseline).
+- **The self-test's layer check counts only the heads drawn** (`o.visible`), as the harness's own measure (`measure.js`,
+  `effVisible`) always has; before 4D every head was drawn. No threshold changed.
+
+**Per the report** (`tools/stage4/report-4d.js`; `docs/stage4-evidence/4d-report.md`, `4d-before.json`, `4d-after.json`): Study at
+1600 x 900, the default factor, Follow on, the day played in 50 ms steps.
+- Every live event in the free rectangle: 71.1% of the day's minutes at ½× before 4D (the phase glide), 92.7% with 4D; at 1× 73.1% and
+  92.4% (Part A's §D.2 measured 71.1% and 73.1% for the glide).
+- The ground's speed across the screen: the glide's 95th percentile 146-288 px/s and its largest 853; with 4D 54-72 and at most 150.
+- The map layer's drops every 10 minutes: at most 16 (½×) and 19 (1×) before, 11 with 4D; the mean 5.9 before, 6.8 with 4D.
+- The floor: no clamp in any run; the lowest clearance 36.6 before, 57 with 4D.
+- The draw-on: the marched part's end at most 0.09 units from the formation over 20 clocks of each derived arrow.
+- The harness views (at their clocks): in 9 a derived arrow shows its marched part over the faint whole arrow, in 6 (at a phase's
+  first minute) only the faint whole arrows; none is at full strength. The map layer's drops are the same as before 4D in every view.
+
+**Tests** (none loosened; new or stricter)
+- **Self-test** (SELFTEST checks, was 141), new: at each factor, the day at ½× under Follow (never under the floor; every live event
+  in the free rectangle in at least 80% of its minutes; the target's screen speed within 150 px/s; drops never above 19) and the
+  draw-on (20 clocks inside each derived arrow's legs: the marched part's end within 0.5 units of the formation, no head on it, the
+  whole arrow drawn faint, at full strength after); once, the dwell's dry run at ½×, 1×, 2× and 4× in its computed length within 1 s
+  with one dwell at each event start after 04:00, no dwell when the clock is moved while playing or by the time keys, and reduced
+  motion (the dwell kept, the camera moved only at event starts, every arrow whole).
+- **Harness**: new, Play by a real key press runs at ½× with its button pressed; the low Pratzen case in Watch held in the dwell at
+  09:00 within the darkness limit, map text at AA, drops within its limit, its marker lit and its name in the caption.
+- **`binding-test.js`**: new, only an arrow derived from an executed leg (`a.leg`) draws on; no line, boundary, halt bar, objective
+  or plan does.
+- **`runtime-test.js`**: new, the dwell's dry run at four speeds (its length, one dwell at each start, the clock monotone and never
+  faster than its speed).
+- **`css-test.js`**: new, the default speed and its pressed button, the dwell's toggle on, no phase glide while playing.
+- **Height guard**: four new call sites classified (Follow's target and the drawn-on shaft's end: presentation; the self-test's day
+  under Follow: test).
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard.
+- `npm run check:data`: against the old reference exactly one data declaration changed (`SOURCE_NOTE`, above); against the new
+  reference (`archive/stage4d-9b13adbf.html`) all 113 identical.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:visual`: VISUAL_RESULT
+- `npm run check:contrast`: CONTRAST_RESULT
+- `npm run check:baseline`: moved to this build; passes.
+
+**Not done, or open**
+- The draw-on's look (the faint whole arrow at 0.4) and Follow's wider framing (230-300 units) are for the owner's eye.
+- The frame cost of Follow and the draw-on is not measured on a GPU (software WebGL only).
+- The dwell holds the same 1.5 s at every speed; at 4× the eases between close starts are short (an eighth of a second at 08:25-08:30).
+- Historical: nothing. The pacing is presentation; the event starts are the data's own times, read, not changed.
+
 ## 2026-10 · Stage 4C: the atmosphere (docs/STAGE4_SPEC.md §B, §C, §H, §I; owner decisions 72, 73, 80, 81)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,376,800 bytes, md5 `622634ef37c67e5ae9e9a921228ab0c7`**
+**Status: merged (#29). `austerlitz-command-map.html`: 1,376,800 bytes, md5 `622634ef37c67e5ae9e9a921228ab0c7`**
 (was 1,367,134 bytes, md5 `3d6d2295…`, Stage 4B).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/spine-6b2cccd4.html`; the reference does not move. No data,

@@ -1,6 +1,6 @@
 {
  "html": "the Stage 4C build (md5 622634ef37c67e5ae9e9a921228ab0c7, main at 71ffd88, #29)",
- "when": "2026-10-03T04:00:30.461Z",
+ "when": "2026-10-03T04:47:39.493Z",
  "views": {
   "overview-field": {
    "dropped": 6,
@@ -160,35 +160,35 @@
   "0.5x": {
    "speed": 0.5,
    "seconds": 168,
-   "allLiveShare": 0.699,
-   "liveSeenShare": 0.75,
+   "allLiveShare": 0.711,
+   "liveSeenShare": 0.764,
    "screenSpeed": {
     "p50": 0,
-    "p95": 0,
-    "max": 24676.8
+    "p95": 146.1,
+    "max": 853.5
    },
    "clamps": 0,
    "minClear": 36.6,
    "drops": {
-    "mean": 5.84,
+    "mean": 5.86,
     "max": 16
    }
   },
   "1x": {
    "speed": 1,
    "seconds": 84,
-   "allLiveShare": 0.699,
-   "liveSeenShare": 0.75,
+   "allLiveShare": 0.731,
+   "liveSeenShare": 0.779,
    "screenSpeed": {
     "p50": 0,
-    "p95": 0,
-    "max": 24676.8
+    "p95": 288.4,
+    "max": 853.5
    },
    "clamps": 0,
    "minClear": 36.6,
    "drops": {
-    "mean": 5.84,
-    "max": 16
+    "mean": 5.92,
+    "max": 19
    }
   }
  }

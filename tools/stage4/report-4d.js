@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* Stage 4D (docs/STAGE4_SPEC.md sections D and I): pacing as the build plays it. It reads the running page and drives the clock and
    the camera through the app's own functions (tickClock, followStep, dwellAdvance, drawOnArrows); it changes no source file.
-   node tools/stage4/report-4d.js [--json out.json] [--md out.md] [--before before.json]
+   node tools/stage4/report-4d.js [--json out.json] [--md out.md] [--before before.json] [--from after.json]
    AUSTERLITZ_HTML=<build> measures another build (the 4C build, before 4D: section D.2's "today" rule, the phase glide).
 
    1. The day's length at each speed (on a 4D build with its dwells, the computed and a dry run), and each phase's seconds at 1/2x.
@@ -69,8 +69,10 @@ const PROBE=function(){
   window.__p4=P; return true;
 };
 (async()=>{
-  const browser=await launch(), out={html:process.env.AUSTERLITZ_HTML||"austerlitz-command-map.html",when:new Date().toISOString()};
-  const page=await open(browser,[1600,900]); const OUT=opt("--json");
+  const FROM=opt("--from");   /* write the table from a measurement already made, without a browser */
+  const browser=FROM?null:await launch(), out=FROM?JSON.parse(fs.readFileSync(FROM,"utf8")):{html:process.env.AUSTERLITZ_HTML||"austerlitz-command-map.html",when:new Date().toISOString()};
+  const page=FROM?null:await open(browser,[1600,900]); const OUT=FROM?null:opt("--json");
+  if(!FROM){
   await page.evaluate(PROBE.toString().replace(/^function\s*\(\)\s*\{/,"(function(){")+")()");
   /* the harness views: derived arrows and drops */
   out.views={};
@@ -85,6 +87,7 @@ const PROBE=function(){
   out.rules={};
   for(const x of [0.5,1]){ out.rules[x+"x"]=await page.evaluate(x=>__p4.run(x,50),x); console.log("run",x,JSON.stringify(out.rules[x+"x"])); if(OUT) fs.writeFileSync(OUT,JSON.stringify(out,null,1)); }
   if(OUT) fs.writeFileSync(OUT,JSON.stringify(out,null,1));
+  }
   if(opt("--md")&&opt("--before")){
     const B=JSON.parse(fs.readFileSync(opt("--before"),"utf8")), md=["# Stage 4D: pacing, against the build before it ("+B.html+")\n","`node tools/stage4/report-4d.js` on each build.\n","## Section D.2's table, as built\n",
       "Study at 1600 x 900, the default factor, Follow on, played from 04:00 to 18:00 in 50 ms steps of real time. Before 4D: the phase glide (Stage 3D); 4D: the continuous follow and the dwells.\n",
@@ -97,9 +100,9 @@ const PROBE=function(){
       out.lengths.phases.forEach(p=>md.push("| "+p.id+" "+p.label+" | "+p.minutes+" | "+p.seconds+" | "+p.dwells+" |")); }
     if(out.drawOn){ md.push("\n## The draw-on\n","Each derived arrow at 20 clocks inside its legs: the largest distance of its drawn end from the formation (units; the self-test's limit 0.5).\n","| phase | arrow | leg | clocks | length | worst |","|---|---|---|---|---|---|");
       out.drawOn.forEach(r=>md.push("| "+r.phase+" | "+r.label+" | "+r.leg.join(" ")+" | "+r.window.map(t=>String(Math.floor(t/60)).padStart(2,"0")+":"+String(Math.round(t%60)).padStart(2,"0")).join("-")+" | "+r.length+" | "+r.worst+" |")); }
-    md.push("\n## The harness views\n","Derived arrows drawn whole / in part / not yet; the map layer's drops against the view's limit.\n","| view | before: arrows; drops | 4D: arrows; drops | limit |","|---|---|---|---|");
+    md.push("\n## The harness views\n","Derived arrows at full strength (the leg complete) / the marched part over the faint whole arrow / the faint whole arrow only (the leg not started; before 4D every arrow was drawn whole); the map layer's drops against the view's limit.\n","| view | before: arrows; drops | 4D: arrows; drops | limit |","|---|---|---|---|");
     Object.keys(out.views).forEach(k=>{ const a=out.views[k], b=B.views[k]||{}; const f=r=>r&&r.arrows?r.arrows.whole+" / "+r.arrows.part+" / "+r.arrows.notYet+"; "+r.dropped:"-"; md.push("| "+k+" | "+f(b)+" | "+f(a)+" | "+(a.dropLimit===undefined?"-":a.dropLimit)+" |"); });
     fs.writeFileSync(opt("--md"),md.join("\n")+"\n"); }
-  if(page._errors.length) console.log("page errors:",page._errors.slice(0,5));
-  await browser.close();
+  if(page&&page._errors.length) console.log("page errors:",page._errors.slice(0,5));
+  if(browser) await browser.close();
 })().catch(e=>{ console.error(e); process.exit(2); });
