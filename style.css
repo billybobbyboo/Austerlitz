@@ -681,3 +681,15 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   font:11px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#CFE3C8;
   background:rgba(4,8,10,.84);border:1px solid rgba(160,200,150,.25);padding:6px 9px}
 #devstats[hidden]{display:none}
+
+/* Stage 5E (docs/STAGE5_SPEC.md section D.5): "Whose eyes?", its caption, the timeline's button, the eye-level vantage's caption */
+.eyes-note{margin:8px 0 4px;color:var(--text-body);font-size:var(--t-small);line-height:1.45}
+.eyes-note .ltag{margin-right:4px;vertical-align:1px}
+.eyes-go{margin:6px 0 10px}
+.tb-eyes{flex:0 0 auto;white-space:nowrap;font-size:var(--t-ui);padding:0 8px}
+.eyecap{position:fixed;top:116px;left:50%;transform:translateX(-50%);z-index:23;max-width:560px;width:max-content;box-sizing:border-box;
+  padding:7px 12px;background:rgba(var(--scrim-rgb),.93);border:1px solid var(--line);border-radius:3px;color:var(--text);
+  font-size:var(--t-ui);line-height:1.4;pointer-events:none}
+.eyecap p{margin:0}
+.eyecap .eyenote{margin-top:4px;color:var(--text-body);font-size:var(--t-small)}
+.eyecap .ltag{margin-right:4px;vertical-align:1px}

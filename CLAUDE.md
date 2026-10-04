@@ -23,7 +23,9 @@ lower one without saying so explicitly.
 | `symbols.js` | the map layer's counters and names (HTML/SVG builders, accessible names), event and objective glyphs |
 | `app.js` | scene, the light (since 4B: the computed sun `SUN_DAY`, the light table `LIGHT_BY_ALT`, `applyLight`, `placeLights` and the fitted shadow box `SHADOW_FIT`), the atmosphere (since 4C: `ATMO`, the fog chunks, `applyAtmo`, `atmoAt`: the haze beyond the focus and the valley fog), pacing (since 4D: the dwell `DWELL`/`dwellAdvance`, Follow while playing `FOLLOW`/`followStep`, the derived arrows' draw-on `DRAWON`/`drawOnArrows`), smoke and the sky (since 4E: `SMOKE`, `smokeAmount`, `smokePlace` with its cap; the dome on the eye, `domeFollow`; the light's fixed colours `LIGHT_RIG` and the sprite palette `SPRITE_COL`), spatial confidence (since 5B: `CONF`, `confPlace`: each formation's position grade drawn on the ground as a patch of the ground's own cells, A crisp, B soft, C diffuse; the landscape's names carry the grade's badge), the event clock (since 5C: `evClock`, an event's start, decision 89, and `evTimeText`), the evidence skeleton (since 5D: `SKEL`,
 `skelScope`, `skelDrape`, `skelUpdate`: the plotted anchors by grade and the interpolated legs, split on the ground's triangles; the
-ground-cell patch `groundPatch`, shared with 5B), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 5C its interval bars, `EV_BAR`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
+ground-cell patch `groundPatch`, shared with 5B), "Whose eyes?" (since 5E: `EYES`, `knowAtClock` (the guarded `knowledgeOf`'s cache
+cleared at each minute, decision 92), `drawnKnow`, `knowReason`, `eyesViewshed`; the eye-level vantage `EYE`, `eyeEnter`/`eyeLeave`, the
+one camera path below the floor), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 5C its interval bars, `EV_BAR`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2, Stage 3, Stage 4 and Stage 5 measurement scripts (`stage2/`, `stage3/`, `stage4/`, `stage5/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
@@ -69,12 +71,14 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
   explicit anchor time carries evidence found in the sources, a grade and a basis; a derived arrival at the march-rate ceiling
   only for the legs it names (`CEILING_FLAGGED`), every other at the tactical rate (a design value, unsourced).
-- `npm run check:contrast`: every visible text element in 28 interface states (the map layer's plates and the legend among them, map text also
+- `npm run check:contrast`: every visible text element in 31 interface states (the map layer's plates and the legend among them, map text also
   over black and white ground, the paper map as entered and close since 2E; Study as it opens and the Now tab on the paper map since 3B;
-  Watch on the paper map and on the landscape since 3C; the "?" overlay over both since 3E)
+  Watch on the paper map and on the landscape since 3C; the "?" overlay over both since 3E; since 5E the dossier's knowledge reason, the eye-level
+  caption, the paper map with a headquarters' reading)
   meets WCAG AA and the 10.5 px floor.
-- `npm run check:visual`: 20 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
-  `narrow-1024`, the undocked layout, and since 3C the phase-8 Overview in Study and in Watch), Stage 0
+- `npm run check:visual`: 22 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
+  `narrow-1024`, the undocked layout, since 3C the phase-8 Overview in Study and in Watch, and since 5E the eye level at the Zuran at 4x
+  and 1x), Stage 0
   thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()` (its ground, camera, figure, mist, overlay-draping and arrowhead
   checks at 1x, 4x and 10.33x, and since 2D its map-layer checks: no overlap, nothing over a panel or an arrow head, the
   never-dropped items drawn, every dropped formation reachable by hover and keyboard, the legend never over the dispatch).
@@ -147,9 +151,17 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   anchors and vias; the grade by shape and one undashed line; about 9 px on screen; no map-layer item; the hover; the legend's row; the
   paper map's colour; none in Clean); `css-test.js` checks it draws no dash, the annotation token's colour, off by default with its whole
   day off; `runtime-test.js` dry-runs it.
+  Since 5E: the eye-level views (`eye-zuran`, `eye-zuran-1x`): the eye exactly 3 m (scaled) above the drawn ground at the headquarters in
+  place of the camera floor (the one exception, decision 91), drops within the limits measured on the 5E build, map text at AA; no
+  skeleton measure there (not drawn at the eye); the self-test starts from the omniscient view and restores the reading after; its 5E
+  checks (at 1x, 4x and 10.33x the eye at the headquarters, nothing the reading does not know drawn, no enemy figures the model hides, the
+  caption, an orbit back to the floor; the reading at the clock every 10 minutes for both headquarters, decision 92; reported only drawn
+  as the C zone without figures and marked "?" in the landscape, with counters and on the paper map; the viewshed's fogged cells exactly
+  those below the rule's threshold; the dossier's reason; the control); `css-test.js` checks the one control, its model-reading label, the
+  eye's vantage hidden until a headquarters is chosen; `runtime-test.js` dry-runs the reading at the clock and the reasons.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 5D build (md5 `c5c47192...`, 1,466,861 bytes;
-  re-baselined from the Stage 5C build `96b401b3...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 5E build (md5 `b50a087c...`, 1,492,181 bytes;
+  re-baselined from the Stage 5D build `c5c47192...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -206,4 +218,7 @@ row; owner decision 89: one event clock, an event's start, for the marker, its k
 merged (#34). Stage 5D (the evidence skeleton: a layer, off by default, drawing each formation's plotted anchors by grade, filled A, ring
 B, small open ring C, a tick for an explicit time, and the legs the clock interpolates between them as thin solid lines on the drawn
 ground; owner decision 90: the selected formation's family, else the legs meeting the current phase, or the whole day) is implemented,
-for review.
+merged (#35). Stage 5E ("Whose eyes?": one control, everyone / Napoleon's headquarters / the Allied headquarters, in the Command tab and
+the timeline, labelled a model reading; the reading at the clock, decision 92; reported only drawn as the C zone without figures; the
+headquarters' viewshed with its fogged ground; the dossier's reasons; the eye-level vantage at the headquarters, decision 91) is
+implemented, for review.

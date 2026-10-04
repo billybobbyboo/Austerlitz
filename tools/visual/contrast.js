@@ -18,7 +18,8 @@
    Stage 3B: Study as it opens (the Now tab, the legend closed), before the legend is opened for the states after it; and the
    Now tab in the paper theme.
    Stage 3C: Watch on the paper map and on the landscape (the presentation switch in the timeline, at full opacity).
-   Stage 3E: the "?" overlay over the landscape and over the paper map. */
+   Stage 3E: the "?" overlay over the landscape and over the paper map.
+   Stage 5E: "Whose eyes?": the dossier's reason, the eye-level vantage's caption, the paper map with a headquarters' reading. */
 const fs=require("fs"), path=require("path");
 const { chromium } = require("playwright");
 const argv=process.argv.slice(2), html=path.resolve(argv[0]||"austerlitz-command-map.html");
@@ -89,7 +90,16 @@ const STATES=[
   ["watch", ()=>{ setMode("terrain"); setPresentation("watch"); setClock(570,{force:true}); updateVisibility(); }],
   /* Stage 3E: the "?" overlay, every row of the key table, over the landscape and over the paper map */
   ["help", ()=>{ setPresentation("study"); if(typeof setHelp==="function") setHelp(true); }],
-  ["staff-help", ()=>{ if(typeof setHelp==="function"){ setHelp(false); setMode("staff"); setHelp(true); } }]
+  ["staff-help", ()=>{ if(typeof setHelp==="function"){ setHelp(false); setMode("staff"); setHelp(true); } }],
+  /* Stage 5E (docs/STAGE5_SPEC.md section D.6): "Whose eyes?": a formation's dossier with the reading's reason (the Allied headquarters,
+     a French formation not known); the eye-level vantage's caption over the landscape (Napoleon's headquarters, 08:30); the paper map
+     with the reading on, its reported-only counters marked (05:00). The control and its caption are in tab-command above */
+  ["eyes-dossier", ()=>{ if(typeof setHelp==="function") setHelp(false); setMode("terrain"); setPresentation("study");
+    if(typeof setCommandView!=="function"||typeof knowReason!=="function") return;
+    setCommandView("al"); setClock(600,{force:true}); var id=Object.keys(units).filter(k=>knowledgeOf(k)==="unknown")[0];
+    dossierExpanded=true; if(id){ select("f",id); paintDrawer(); } updateVisibility(); }],
+  ["eye-level", ()=>{ if(typeof eyeEnter!=="function") return; select(null,null); dossierExpanded=false; setCommandView("fr"); setClock(510,{force:true}); eyeEnter(); updateVisibility(); }],
+  ["staff-eyes", ()=>{ if(typeof eyeLeave!=="function") return; eyeLeave(); setMode("staff"); setCommandView("fr"); setClock(300,{force:true}); MAPCAM.frameField(true); updateVisibility(); }]
 ];
 function hx(h){ h=h.replace("#",""); return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)); }
 function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); }

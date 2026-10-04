@@ -93,7 +93,13 @@ const CLASS={
      size on screen and the hover's projection, at the drawn ground */
   "app.js:groundPatch":"presentation","app.js:skelDrape":"presentation","app.js:skelPlaceMarks":"presentation","app.js:skelNear":"presentation",
   /* Stage 5D: the self-test's drape and size of the skeleton against the drawn ground */
-  "app.js:skelChecks":"test","app.js:skelDayChecks":"test"
+  "app.js:skelChecks":"test","app.js:skelDayChecks":"test",
+  /* Stage 5E: the valley fog's rule over the viewshed's cells, read on the model's height exactly as knowledgeOf reads it (a model
+     reading: the rule's threshold, ATMO.FOG_TOP_H); the eye at the headquarters, its target, and the camera floor at the eye, on the
+     drawn ground */
+  "app.js:eyesViewshed":"model","app.js:eyePlace":"presentation","app.js:eyeEnter":"presentation","app.js:camFloor":"presentation","app.js:clampCamera":"presentation",
+  /* Stage 5E: the self-test's eye height and its fog threshold over the viewshed (the rule's own model height) */
+  "app.js:eyesChecks":"test","app.js:eyesDayChecks":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */

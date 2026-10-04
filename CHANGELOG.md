@@ -1,8 +1,99 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 5E: "Whose eyes?" and the eye-level vantage (docs/STAGE5_SPEC.md §D, §I; owner decisions 91, 92)
+
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,492,181 bytes, md5 `b50a087c046a6dd124a66badb068f30d`**
+(was 1,466,861 bytes, md5 `c5c47192…`, Stage 5D).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. The knowledge rule
+  (`knowledgeOf`, `hasLOS`, `computeViewshed`), `KNOW_OVERRIDE`, `COMMAND` and the eye heights are unchanged; so is `SOURCE_NOTE` (its sentence
+  on the model readings is a data task, §G.3). Presentation and interface only.
+- Recorded with this part: Stage 5D merged (#35); the owner's answers to questions 5 and 8, decisions 91 and 92 (`docs/STAGE5_SPEC.md` §0.4).
+
+**Before building (fact).** `main` (2f8ea25, 5D merged as #35) matched `check:baseline` (md5 `c5c47192…`, 1,466,861 bytes).
+
+**What changed** (`app.js`, `world.js`, `shell.html`, `style.css`)
+- **One control, "Whose eyes?"** (decision 91): Everyone, Napoleon's headquarters, the Allied headquarters, in the Command tab (in place of
+  Omniscient / French / Allied) and as a button in the timeline's control row ("Eyes: everyone / Napoleon / Allied HQ", cycling). Labelled
+  everywhere a model reading (the derived tag): "A model reading: line of sight over this model's ground from the headquarters' plotted
+  position, the valley fog's rule, and authored limits on what each side knew. Not a record of what was seen." The Command tab's heading
+  and its "broken outline" sentence, which described an encoding that no longer exists, are rewritten.
+- **The reading at the clock** (decision 92): the guarded `knowledgeOf` caches by the phase; its cache is now cleared at each new minute of
+  the clock from outside it (`knowAtClock`), so what is drawn is the rule at the clock. 115 of 2,636 readings over the day change (65 French,
+  50 Allied), always to the rule as written.
+- **Reported only, everywhere**: drawn as the C zone of 5B without figures (reported, not seen); its name and counter keep the "?".
+- **The headquarters' viewshed**: the existing sightline tint from the chosen headquarters' plotted position at the clock, recomputed when it
+  moves (by more than a world unit, at most every 0.5 s while playing). Inside it, the ground under the valley fog's top by the rule's own
+  test (model height below -0.8, the 238.2 m the fog is drawn at) is tinted as fogged while the phase's mist exceeds 0.5: in sight, but in
+  the fog. A place's sightlines (its dossier) are left alone while shown.
+- **The dossier's reason**: "Not known (no line of sight)", "Not known (authored limit)", "Reported only (valley fog)", "Reported only
+  (authored limit)".
+- **The eye-level vantage** ("Eye level", among the vantages once a headquarters is chosen; also "Stand at the headquarters" in the Command
+  tab): the eye at the headquarters' plotted position at the clock, 3 m above the drawn ground with the metre scaled by the display factor
+  (so the drawn line of sight is the model's), looking toward the phase's authored target, moving with the headquarters as the clock runs.
+  The one camera path below the floor (decision 91): it holds its own height; the near plane drops from 1 to 0.05 units; any orbit, pan,
+  zoom, glide or preset leaves it for the ordinary camera at its floor (Follow off). A caption over the view: the model-reading sentence,
+  "Relief drawn ×k; figures are symbols many times life size", and at the chapel of St Anthony the correction pass's recorded mismatch.
+
+**Decisions taken while building it** (`docs/STAGE5_SPEC.md` §I, "5E, as delivered")
+- **`knowledgeOf` untouched**: the guard forbids changing it; clearing its cache per minute gives decision 92 without a data change.
+- **At the eye, the true-scale rule** (decision 34's precedent), found on the first renders: trees and houses are not drawn (at the chapel of
+  St Anthony the eye stood inside Augezd's houses); the observer's own side is drawn as its ground marks, not figures (Soult's standards
+  stood across the view from the Zuran), and not at all within 500 m (a design value); the enemy in sight keeps its figures; a known enemy
+  the eye has no line of sight to is drawn as reported. The confidence marks lie 0.02 units up with a depth offset; the skeleton is not drawn.
+  These are design choices for the owner's eye.
+- **The self-test starts from the omniscient view** and restores the reading after (the harness ran it after the eye-level cases with
+  Napoleon's headquarters still chosen, and the camera and confidence checks failed on that state).
+
+**Measured** (`tools/stage5/report-5e.js`; `docs/stage5-evidence/5e-report.md`, `5e-sheet.jpg`)
+- **The reading**: every 10 minutes over the day, 1,074 French and 1,562 Allied enemy readings; the phase's cache differs from the rule at
+  the clock in 65 and 50 (mostly "unknown" and "seen" exchanged as the line of sight opens or closes within a phase).
+- **Reported only**: Napoleon's headquarters at 05:00, 3 formations (`prz`, `rg_inf`, `rg_cav`), at 08:00 3 and at 10:00 2; the Allied
+  at 08:00 1 and at 10:00 2: every one drawn as a zone without figures, and every name and counter drawn marked "?" in the landscape and with
+  counters (before 5B, §D.2: 0 of 3 names at 05:00); on the framed paper map they are folded into their corps' counters (0 drawn).
+- **The viewshed** at each headquarters' anchor: from the Zuran 39.3% of the modelled ground in sight, 21.6% of it fogged at 04:00; from
+  Krzenowitz 6.5% and 61.6%; from the chapel of St Anthony 6.7%; 0 cells against the rule's threshold anywhere; 3.6-21.5 ms each (software).
+- **The eye level** (Napoleon's headquarters at 08:30, 10:00, 13:00, the Allied at 08:00, 10:00, at 1x, 4x, 10.33x): the eye within 1e-4 of
+  3 m scaled; 0 "not known" drawn; 0 enemy figures the model hides from the headquarters; 0 map texts below AA; solid near-black 0; drops
+  0-6; the world pass 0.8-4.3 ms (software).
+
+**Tests** (none loosened; new or changed to the decided rule)
+- **Self-test** (185 checks, was 178; 7 new): at 1x, 4x and 10.33x the eye-level vantage (the eye at the headquarters and its height, nothing not known
+  drawn, no enemy figures the model hides, the caption, an orbit back to the floor with 0 violations); once: the reading at the clock (2,636
+  readings, 0 differ from the rule afresh; the phase's cache would have drawn 115), reported only as zones and marked, the one fog threshold,
+  the dossier's reason, the control. Changed: the self-test begins from the omniscient view, leaving the eye, and restores the reading.
+- **Harness**: two new views, `eye-zuran` (4x) and `eye-zuran-1x`, Napoleon's headquarters at 08:30. In them the camera-floor threshold is
+  replaced by the eye's own (on, within 1e-4 of 3 m scaled, at the headquarters: the decided exception); their drop limits are what this
+  build drops there (5 and 6, place names on the horizon), never raised; no skeleton measure there (not drawn at the eye).
+- **`check:contrast`**: three new states (31): the dossier's reason, the eye-level caption, the paper map with a headquarters' reading.
+- **`css-test.js`**: new, one "Whose eyes?" control, labelled a model reading, no "broken outline", the eye's vantage hidden until a
+  headquarters is chosen. **`runtime-test.js`**: new, a dry run of the reading at the clock (899 readings, each the rule's), the reasons
+  and the control.
+- **Height guard**: eight new call sites classified (`eyesViewshed` model: the rule's threshold on the model's height; `eyePlace`,
+  `eyeEnter`, `camFloor`, `clampCamera` presentation; `eyesChecks`, `eyesDayChecks` test).
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard (`runtime-test.js` and `css-test.js` with their 5E checks).
+- `npm run check:baseline`: moved to this build (md5 `b50a087c…`, 1,492,181 bytes); passes.
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:contrast`: 4,985 text elements in 31 states (4,465 in 28 on 5D), 0 below AA, 0 below 10.5 px.
+- `npm run check:visual`: all checks passed: 22 views (the two eye-level views: the eye at 0.18988 and 0.04747 units, exactly 3 m scaled, at
+  the headquarters; drops 5 and 6, at their limits; 0 map texts below AA; solid near-black 0); the skeleton's measure in the 18 other
+  non-first-run views as on 5D; the day's light, the valley fog's hours, the horizon, the key tests; the self-test 185 of 185; the two known
+  Canvas2D warnings.
+
+**Not done, or open**
+- The movement arrows are drawn over everything (depth test off since 2C), so at eye level they show through the hills the eye cannot see
+  past.
+- At the chapel of St Anthony at 15:00 an Allied formation stands beside the post in the model, and its figures fill the eye's view: the
+  data's geometry, not a drawing fault; left as it is.
+- At 4x and 10.33x the eye's picture shows the relief exaggerated (the caption says so); the line of sight is the model's at every factor.
+- The `SOURCE_NOTE` sentence on the model readings (§G.3) is a data task, not done here.
+
 ## 2026-10 · Stage 5D: the evidence skeleton (docs/STAGE5_SPEC.md §B, §I; owner decision 90)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,466,861 bytes, md5 `c5c47192ec1fbd589af1ce4bbae207f2`**
+**Status: merged (#35). `austerlitz-command-map.html`: 1,466,861 bytes, md5 `c5c47192ec1fbd589af1ce4bbae207f2`**
 (was 1,441,684 bytes, md5 `96b401b3…`, Stage 5C).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. No anchor,

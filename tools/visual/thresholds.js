@@ -33,6 +33,9 @@ const DROP_LIMIT={"first-run":12,"first-run-laptop":16,"overview-field":11,"over
    and 23 there; the owner chose the tight count, the previous build's in the same framing (the method 3B used for
    narrow-1024), so that any further drop fails (docs/stage3-evidence/offset-limits.json; CHANGELOG.md, Stage 3D). */
 DROP_LIMIT["selected-formation"]=4; DROP_LIMIT["narrow-1024"]=6;
+/* Stage 5E (docs/STAGE5_SPEC.md section D.6): the eye-level views are new; their limits are what the 5E build drops there (place names on
+   the horizon: Goldbach, Telnitz, Sokolnitz, Satschan, Kobelnitz, and at 1x Menitz), never raised (as decision 62 set the 3D framing's) */
+DROP_LIMIT["eye-zuran"]=5; DROP_LIMIT["eye-zuran-1x"]=6;
 /* section H: the unobstructed share of the viewport on the Stage 2C build, at the case's viewport and at 1280 x 720, measured
    by this harness (CSS transitions off, the panels at rest). It must not fall. These equal tools/stage2/map-text.js's values
    in every view but one: selected-formation at 1280 x 720 is 6.97% at rest, where map-text.js reported 15.1% with the
@@ -101,7 +104,10 @@ module.exports.DROP_LIMIT=DROP_LIMIT; module.exports.UNOBSTRUCTED=UNOBSTRUCTED; 
    contract; each failure message says what a visitor would see. */
 module.exports.check=function(name,m){
   const f=[];
-  if(m.camera.clearance<1.79) f.push("camera only "+m.camera.clearance+" units above the drawn ground (floor 1.8)");
+  /* Stage 5E (decision 91): the eye-level vantage is the one camera path below the floor; there the eye must stand at its own height
+     above the drawn ground, exactly, at the headquarters */
+  if(m.eyeLevel){ const E=m.eyeLevel; if(!(E.on&&Math.abs(E.dy-E.want)<1e-4&&E.atHQ)) f.push("the eye-level vantage: on "+E.on+", "+E.dy+" units above the ground (want "+E.want+"), at the headquarters "+E.atHQ); }
+  else if(m.camera.clearance<1.79) f.push("camera only "+m.camera.clearance+" units above the drawn ground (floor 1.8)");
   if(m.figures.count&&m.figures.maxErr>0.02) f.push("a figure is "+m.figures.maxErr+" units off the drawn ground ("+m.figures.worst+")");
   if(m.standards.count&&m.standards.maxErr>0.02) f.push("a standard's foot is "+m.standards.maxErr+" units off the ground");
   /* overlaps: every pair fails, except a pair named in KNOWN for that case (reported, not hidden) */

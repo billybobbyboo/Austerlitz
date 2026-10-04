@@ -180,3 +180,17 @@ if(cerrs) process.exitCode=1;
   console.log("evidence skeleton: "+(kerr.length?kerr.length+" wrong":"no dash, the annotation token's colour, off by default with the whole day off"));
   if(kerr.length) process.exitCode=1;
 }
+/* Stage 5E (docs/STAGE5_SPEC.md section D.5; decision 91): the Command view is one control, "Whose eyes?", labelled a model reading;
+   the encoding it describes is the one drawn (no "broken outline"); the eye-level vantage is hidden until a headquarters is chosen */
+{
+  const sh=fs.readFileSync('shell.html','utf8'), src=fs.readFileSync('app.js','utf8'), werr=[];
+  if(!/>Whose eyes\?</.test(sh)) werr.push("shell.html: no \u201cWhose eyes?\u201d control");
+  if(/>Omniscient</.test(sh)||/See the field as a headquarters saw it/.test(sh)) werr.push("shell.html: the Command tab's old buttons or heading remain");
+  if(!/A model reading: line of sight over this model's ground/.test(sh)||!/NOTE:"A model reading: line of sight over this model's ground/.test(src)) werr.push("the control or the eye's caption is not labelled a model reading");
+  if(/broken outline/.test(src)) werr.push("app.js still describes a broken outline");
+  if(!/data-v="eye" hidden/.test(sh)||!/id="eyego" type="button" hidden/.test(sh)) werr.push("the eye-level vantage is not hidden by default");
+  if(!/id="eyesbtn"/.test(sh)) werr.push("the timeline has no \u201cWhose eyes?\u201d button");
+  werr.forEach(e=>console.log("  ! "+e));
+  console.log("Whose eyes: "+(werr.length?werr.length+" wrong":"one control, labelled a model reading, the eye's vantage hidden until a headquarters is chosen"));
+  if(werr.length) process.exitCode=1;
+}

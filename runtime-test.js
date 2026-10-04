@@ -506,6 +506,18 @@ try{
     if(!nPh||!nA||wrongLeg||wrongMask||nDay!==all||SKEL.grp||SKEL.marks.length) throw new Error("evidence skeleton: "+nPh+" legs and "+nA+" anchors in the phase ("+wrongLeg+" outside it, "+wrongMask+" with another mask); the whole day "+nDay+" of "+all+" legs; left when off: "+!!SKEL.grp);
     console.log("evidence skeleton: off by default; at 09:50 "+nPh+" legs of the phase and their "+nA+" anchors; the whole day "+nDay+" legs; none left when switched off OK"); }
 
+  /* Stage 5E (docs/STAGE5_SPEC.md section D.6; decision 92): "Whose eyes?", dry run. The reading follows the clock: every 30 minutes for
+     both headquarters the cached reading is the rule's afresh; every "not known" or "reported only" has its reason; the control cycles */
+  { let n=0, diff=0; const why={};
+    ["fr","al"].forEach(cv=>{ setCommandView(cv);
+      for(let t=T_MIN;t<=T_MAX;t+=30){ setClock(t,{instant:true,camera:false});
+        const ids=Object.keys(units).filter(id=>sideOfNation(FORMATIONS[id].nation)!==cv&&posNow(id)), d={};
+        ids.forEach(id=>{ d[id]=knowledgeOf(id); }); knowKey="";
+        ids.forEach(id=>{ n++; const k=knowledgeOf(id); if(k!==d[id]) diff++; if(k==="unknown"||k==="uncertain"){ const r=knowReason(id); if(!r) throw new Error("no reason for "+cv+" "+id+" "+k); why[r]=(why[r]||0)+1; } }); } });
+    setCommandView("none"); eyesCycle(); const c1=commandView; eyesCycle(); const c2=commandView; eyesCycle(); const c3=commandView;
+    if(!n||diff||c1!=="fr"||c2!=="al"||c3!=="none") throw new Error("Whose eyes: "+diff+" of "+n+" readings not the rule's at the clock; the cycle "+[c1,c2,c3].join(","));
+    console.log("Whose eyes: "+n+" readings at the clock, each the rule's afresh; reasons "+JSON.stringify(why)+"; the control cycles everyone, Napoleon, the Allied headquarters OK"); }
+
   /* the armies are ranks of figures now, with national colours on the standards */
   const inf=units.sthilaire.block.userData, cav=units.nansouty.block.userData;
   const infN=inf.figs.reduce((a,f)=>a+f.n,0), cavN=cav.figs.reduce((a,f)=>a+f.n,0);

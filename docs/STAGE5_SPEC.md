@@ -2,7 +2,8 @@
 
 **Status: Part A merged (#32); the owner answered questions 1-4 (decisions 85-88, §0.4). 5B (spatial confidence) is merged (#33). The
 owner answered question 6 (decision 89, §0.4); 5C (interval bars, one event clock) is merged (#34). The owner answered question 7
-(decision 90, §0.4); 5D (the evidence skeleton) is implemented, for review; what 5B, 5C and 5D found is at the end of §I. Sections A-J below still describe the build they were written against.** Written against `main` at `407cda0` (Stage 4E
+(decision 90, §0.4); 5D (the evidence skeleton) is merged (#35). The owner answered questions 5 and 8 (decisions 91, 92, §0.4); 5E ("Whose
+eyes?" and the eye-level vantage) is implemented, for review; what 5B to 5E found is at the end of §I. Sections A-J below still describe the build they were written against.** Written against `main` at `407cda0` (Stage 4E
 merged as #31; with it Stage 4 is complete), whose build `austerlitz-command-map.html` is 1,416,737 bytes, md5
 `e1fac9ea08a4c2b2eaefe5b78529c843`. On it (the same build throughout: this part changes no source file): `check:baseline` passed; `npm test` (all nine suites and the height
 guard) passed; `check:data` found all 113 declarations identical to `archive/stage4d-9b13adbf.html`; `check:chronology` reported 0
@@ -158,10 +159,10 @@ Each is stated, not resolved.
    `DROP_LIMIT` in 9 of 19 landscape harness views (the Field vantage 16 against 11; `plans-probe.js`, §E.2). No harness case opens the
    Plans tab. Outside Stage 5's scope (the Plans tab is not changed); recorded, with a check proposed (§H.3, 5F).
 
-### 0.4 Owner decisions 85-90 (the answers to §J questions 1-4, 6 and 7)
+### 0.4 Owner decisions 85-92 (the answers to §J questions 1-8)
 
-Part A merged (#32). Before 5B the owner answered the four questions that bind it, each with the recommendation; before 5C, question 6,
-and before 5D, question 7, each with the recommendation. Questions 5 and 8-13 stay open until the parts they bind.
+Part A merged (#32). Before 5B the owner answered the four questions that bind it, each with the recommendation; before 5C, question 6;
+before 5D, question 7; before 5E, questions 5 and 8; each with the recommendation. Questions 9-13 stay open until the parts they bind.
 
 | # | question | decision |
 |---|---|---|
@@ -171,6 +172,8 @@ and before 5D, question 7, each with the recommendation. Questions 5 and 8-13 st
 | 88 | 4, between anchors | The grade `confAt` gives (the weaker anchor's); "interpolated" stays the dossier's word, not a fourth look. (5B) |
 | 89 | 6, an interval's marker | At the interval's start: one event clock (the start) for the marker, a click or Enter on it, the previous/next keys, the themes, the tour, the dwell, the dossier's "Go to this moment" and the map layer's names; the bar shows the window. (5C) |
 | 90 | 7, the skeleton's scope | The selected formation's family; with no selection, the legs whose window meets the current phase and their anchors; a "whole day" choice draws every anchor and leg. Off by default (§B.3). (5D) |
+| 91 | 5, "Whose eyes?" and eye-level views | One control (everyone, Napoleon's headquarters, the Allied headquarters) in place of the Command tab's three buttons, also in the timeline's control row; the eye-level vantage at the chosen headquarters, the camera floor waived for it alone, the near plane lowered, the marks laid on the ground there. (5E) |
+| 92 | 8, the reading at the clock | The Command view's reading at the clock's minute, not the phase's; no data change. (5E) |
 
 ## A. Spatial confidence: crisp footprint A, soft frontage B, diffuse zone C
 
@@ -883,6 +886,40 @@ Per view (fact; `report-5d.js`, 23 views): with the skeleton on, in scope or for
 views' own in every view, 0 map texts below AA and the lowest contrast unchanged in every view; its share of the free rectangle 0.1-1.2% in
 scope and 0.5-3.9% for the whole day (the probe: up to 1.2% and 3.6%); the world pass at 4x and 10.33x (software WebGL, 14 views) on
 average 5.85 ms off, 5.51 in scope, 6.14 for the whole day, at most 9.0. Off by default, the views as they open are drawn as before.
+
+### 5E, as delivered ("Whose eyes?" and the eye-level vantage; decisions 91, 92)
+
+Implemented in `app.js` (`EYES`, `knowAtClock`, `drawnKnow`, `knowReason`, `eyesSync`, `eyesCycle`, `eyesViewshed`; `EYE`, `eyeEnter`,
+`eyeLeave`, `eyeFollow`, `eyeCaption`, `eyeOwnNear`; the camera floor's one exception in `camFloor`/`clampCamera`; the reported-only drawing
+in `updateVisibility`; the dossier's reason; the self-test's checks), `world.js` (the viewshed texture's fogged value and its tint),
+`shell.html` (the Command tab's control and caption, the timeline's "Eyes:" button, the "Eye level" vantage, the caption over the view),
+`style.css`, as §D.5 proposed, measured by `tools/stage5/report-5e.js` (`docs/stage5-evidence/5e-report.md`, `5e-report.json`,
+`5e-sheet.jpg`; `CHANGELOG.md`, Stage 5E), with these choices made while building it:
+- **`knowledgeOf` is not touched** (a guarded declaration, `check:data`): the reading follows the clock because its cache, keyed by the
+  phase, is cleared at each new minute of the clock from outside it (`knowAtClock`, in `setClock` and wherever the reading is drawn).
+  Over the day, every 10 minutes, 2,636 enemy readings: 0 differ from the rule at the clock; the phase's cache would have drawn 115 of them
+  otherwise (65 French, 50 Allied; as §D.2 measured).
+- **"Reported only"** is drawn as the C zone with no figures, in the landscape, with counters and on the paper map; the names and counters
+  already carried the "?" since 5B. On the framed paper map reported-only divisions are folded into their corps' counters, which carry no
+  "?" (their zones are drawn).
+- **The viewshed's fogged cells** use the rule's own test on the model's height (`height` < `ATMO.FOG_TOP_H`, -0.8, while the phase's mist
+  exceeds 0.5): 0 cells against it at every headquarters' anchor. The one formation the fog rule decides at 07:00 stands on a cell the
+  viewshed does not reach (the edge disagreement between the two line-of-sight implementations, §D.3), so the self-test's "on a fogged
+  cell" is not exercised there.
+- **At the eye, the true-scale rule** (decision 34's precedent): nothing at landscape scale is drawn (trees and houses would wall in a 3 m
+  eye: the first build put the eye at the chapel of St Anthony inside Augezd's houses), the observer's own side is drawn as its ground
+  marks, not figures (the standards of Soult's divisions stood across the view from the Zuran), none of it within 500 m of the eye; the enemy
+  in sight keeps its figures; a known enemy the eye has no line of sight to is drawn as reported (known, not seen from here). The
+  confidence marks lie 0.02 units up with a depth offset; the skeleton is not drawn there.
+- **The camera floor's one exception**: while the eye stands at the post, `camFloor` and `clampCamera` hold it at its own height (3 m
+  scaled: 0.047, 0.190, 0.490 units at 1x, 4x, 10.33x); any orbit, pan, zoom, glide or preset leaves it for the floor; 0 floor violations.
+- **The harness's self-test now starts from the omniscient view** (and restores the reading after): run after the eye-level cases it
+  measured the camera and confidence checks with Napoleon's headquarters still chosen.
+
+Per view (fact; `report-5e.js`): at the eye-level vantage, at 1x, 4x and 10.33x, from both headquarters at five clocks, the eye within
+1e-4 of 3 m scaled, 0 "not known" drawn, 0 enemy figures the model hides from the headquarters, 0 map texts below AA, solid near-black 0;
+the viewshed from the Zuran at 04:00 39.3% of the modelled ground in sight, 21.6% of it fogged; from Krzenowitz 6.5% and 61.6% (§D.3:
+39.0%, 21.3%; 6.3%, 61.6%).
 
 ## J. Questions for the owner
 

@@ -57,5 +57,11 @@ module.exports = [
   { name:"ph8-overview-study", viewport:[1600,900], t:880, presentation:"study", mode:"terrain", cam:[-27,272,41,-27,0,9],
     note:"Phase 8 (14:40), the Overview vantage, Study." },
   { name:"ph8-overview-watch", viewport:[1600,900], t:880, presentation:"watch", mode:"terrain", cam:[-27,272,41,-27,0,9],
-    note:"Phase 8 (14:40), the Overview vantage, Watch." }
+    note:"Phase 8 (14:40), the Overview vantage, Watch." },
+  /* Stage 5E (docs/STAGE5_SPEC.md section D.6; decision 91): the eye-level vantage, the one camera path below the floor. eyes chooses
+     the headquarters ("Whose eyes?"), eye stands at it; cam is the camera before the eye is entered (and what a build before 5E shows) */
+  { name:"eye-zuran", viewport:[1600,900], t:510, presentation:"watch", mode:"terrain", eyes:"fr", eye:true, cam:[-195,92,156,-33,4,-2],
+    note:"Eye level at Napoleon's headquarters on the Zuran, 08:30, at the 4x default: the Command view's reading, the eye 3 m (scaled) up." },
+  { name:"eye-zuran-1x", viewport:[1600,900], t:510, presentation:"watch", mode:"terrain", factor:1, eyes:"fr", eye:true, cam:[-195,92,156,-33,4,-2],
+    note:"The same at true scale (1x): the eye 3 m above the ground as drawn, the relief honest." }
 ];

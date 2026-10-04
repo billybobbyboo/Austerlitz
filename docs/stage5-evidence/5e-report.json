@@ -1,0 +1,502 @@
+{
+ "html": "austerlitz-command-map.html",
+ "when": "2026-10-04T08:10:06.706Z",
+ "reading": {
+  "fr": {
+   "readings": 1074,
+   "differ": 65,
+   "kinds": {
+    "unknown > seen": 30,
+    "unknown > uncertain": 1,
+    "uncertain > unknown": 2,
+    "seen > unknown": 32
+   }
+  },
+  "al": {
+   "readings": 1562,
+   "differ": 50,
+   "kinds": {
+    "unknown > seen": 25,
+    "seen > unknown": 23,
+    "unknown > uncertain": 2
+   }
+  }
+ },
+ "marked": {
+  "fr 300 terrain": {
+   "unc": 3,
+   "zone": 3,
+   "drawn": 3,
+   "marked": 3,
+   "figures": 0
+  },
+  "fr 300 hybrid": {
+   "unc": 3,
+   "zone": 3,
+   "drawn": 3,
+   "marked": 3,
+   "figures": 0
+  },
+  "fr 300 staff": {
+   "unc": 3,
+   "zone": 3,
+   "drawn": 0,
+   "marked": 0,
+   "figures": 0
+  },
+  "fr 480 terrain": {
+   "unc": 3,
+   "zone": 3,
+   "drawn": 3,
+   "marked": 3,
+   "figures": 0
+  },
+  "fr 480 hybrid": {
+   "unc": 3,
+   "zone": 3,
+   "drawn": 3,
+   "marked": 3,
+   "figures": 0
+  },
+  "fr 480 staff": {
+   "unc": 3,
+   "zone": 3,
+   "drawn": 0,
+   "marked": 0,
+   "figures": 0
+  },
+  "fr 600 terrain": {
+   "unc": 2,
+   "zone": 2,
+   "drawn": 2,
+   "marked": 2,
+   "figures": 0
+  },
+  "fr 600 hybrid": {
+   "unc": 2,
+   "zone": 2,
+   "drawn": 2,
+   "marked": 2,
+   "figures": 0
+  },
+  "fr 600 staff": {
+   "unc": 2,
+   "zone": 2,
+   "drawn": 0,
+   "marked": 0,
+   "figures": 0
+  },
+  "al 300 terrain": {
+   "unc": 0,
+   "zone": 0,
+   "drawn": 0,
+   "marked": 0,
+   "figures": 0
+  },
+  "al 300 hybrid": {
+   "unc": 0,
+   "zone": 0,
+   "drawn": 0,
+   "marked": 0,
+   "figures": 0
+  },
+  "al 300 staff": {
+   "unc": 0,
+   "zone": 0,
+   "drawn": 0,
+   "marked": 0,
+   "figures": 0
+  },
+  "al 480 terrain": {
+   "unc": 1,
+   "zone": 1,
+   "drawn": 1,
+   "marked": 1,
+   "figures": 0
+  },
+  "al 480 hybrid": {
+   "unc": 1,
+   "zone": 1,
+   "drawn": 1,
+   "marked": 1,
+   "figures": 0
+  },
+  "al 480 staff": {
+   "unc": 1,
+   "zone": 1,
+   "drawn": 0,
+   "marked": 0,
+   "figures": 0
+  },
+  "al 600 terrain": {
+   "unc": 2,
+   "zone": 2,
+   "drawn": 2,
+   "marked": 2,
+   "figures": 0
+  },
+  "al 600 hybrid": {
+   "unc": 2,
+   "zone": 2,
+   "drawn": 2,
+   "marked": 2,
+   "figures": 0
+  },
+  "al 600 staff": {
+   "unc": 2,
+   "zone": 2,
+   "drawn": 0,
+   "marked": 0,
+   "figures": 0
+  }
+ },
+ "viewshed": [
+  {
+   "hq": "fr",
+   "phase": 0,
+   "at": "04:00",
+   "visible": 0.3931,
+   "fogged": 0.2158,
+   "ms": 21.5,
+   "wrong": 0
+  },
+  {
+   "hq": "fr",
+   "phase": 6,
+   "at": "12:40",
+   "visible": 0.3203,
+   "fogged": 0,
+   "ms": 4.3,
+   "wrong": 0
+  },
+  {
+   "hq": "fr",
+   "phase": 7,
+   "at": "12:45",
+   "visible": 0.1283,
+   "fogged": 0,
+   "ms": 4.1,
+   "wrong": 0
+  },
+  {
+   "hq": "fr",
+   "phase": 8,
+   "at": "14:30",
+   "visible": 0.0666,
+   "fogged": 0,
+   "ms": 3.7,
+   "wrong": 0
+  },
+  {
+   "hq": "al",
+   "phase": 0,
+   "at": "04:00",
+   "visible": 0.0648,
+   "fogged": 0.6156,
+   "ms": 6.5,
+   "wrong": 0
+  },
+  {
+   "hq": "al",
+   "phase": 3,
+   "at": "08:45",
+   "visible": 0.0109,
+   "fogged": 0,
+   "ms": 5.2,
+   "wrong": 0
+  },
+  {
+   "hq": "al",
+   "phase": 4,
+   "at": "09:30",
+   "visible": 0.0747,
+   "fogged": 0,
+   "ms": 3.6,
+   "wrong": 0
+  },
+  {
+   "hq": "al",
+   "phase": 6,
+   "at": "11:15",
+   "visible": 0.1098,
+   "fogged": 0,
+   "ms": 3.8,
+   "wrong": 0
+  },
+  {
+   "hq": "al",
+   "phase": 8,
+   "at": "14:30",
+   "visible": 0.049,
+   "fogged": 0,
+   "ms": 4.2,
+   "wrong": 0
+  },
+  {
+   "hq": "al",
+   "phase": 9,
+   "at": "17:00",
+   "visible": 0.0516,
+   "fogged": 0,
+   "ms": 3.7,
+   "wrong": 0
+  }
+ ],
+ "eye": {
+  "fr 510 @1x": {
+   "on": true,
+   "dy": 0.0475,
+   "want": 0.0475,
+   "figures": 0,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 2,
+   "dropped": 6,
+   "ms": 1,
+   "solidBlack": 0,
+   "meanLum": 101.9,
+   "contrast": {
+    "min": 11.36,
+    "belowAA": 0
+   }
+  },
+  "fr 600 @1x": {
+   "on": true,
+   "dy": 0.0475,
+   "want": 0.0475,
+   "figures": 0,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 2,
+   "dropped": 3,
+   "ms": 1.1,
+   "solidBlack": 0,
+   "meanLum": 134.9,
+   "contrast": {
+    "min": 7.23,
+    "belowAA": 0
+   }
+  },
+  "fr 780 @1x": {
+   "on": true,
+   "dy": 0.0475,
+   "want": 0.0475,
+   "figures": 0,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 4,
+   "dropped": 1,
+   "ms": 0.8,
+   "solidBlack": 0,
+   "meanLum": 134.4,
+   "contrast": {
+    "min": 11.53,
+    "belowAA": 0
+   }
+  },
+  "al 480 @1x": {
+   "on": true,
+   "dy": 0.0475,
+   "want": 0.0475,
+   "figures": 0,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 2,
+   "dropped": 1,
+   "ms": 0.8,
+   "solidBlack": 0,
+   "meanLum": 90,
+   "contrast": {
+    "min": 6.74,
+    "belowAA": 0
+   }
+  },
+  "al 600 @1x": {
+   "on": true,
+   "dy": 0.0475,
+   "want": 0.0475,
+   "figures": 0,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 4,
+   "dropped": 0,
+   "ms": 0.8,
+   "solidBlack": 0,
+   "meanLum": 132.9,
+   "contrast": {
+    "min": null,
+    "belowAA": 0
+   }
+  },
+  "fr 510 @4x": {
+   "on": true,
+   "dy": 0.1899,
+   "want": 0.1899,
+   "figures": 5,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 2,
+   "dropped": 5,
+   "ms": 1.6,
+   "solidBlack": 0,
+   "meanLum": 118.8,
+   "contrast": {
+    "min": 7.57,
+    "belowAA": 0
+   }
+  },
+  "fr 600 @4x": {
+   "on": true,
+   "dy": 0.1899,
+   "want": 0.1899,
+   "figures": 5,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 2,
+   "dropped": 3,
+   "ms": 1.9,
+   "solidBlack": 0,
+   "meanLum": 122.1,
+   "contrast": {
+    "min": 7.95,
+    "belowAA": 0
+   }
+  },
+  "fr 780 @4x": {
+   "on": true,
+   "dy": 0.1899,
+   "want": 0.1899,
+   "figures": 0,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 4,
+   "dropped": 0,
+   "ms": 0.8,
+   "solidBlack": 0,
+   "meanLum": 101,
+   "contrast": {
+    "min": null,
+    "belowAA": 0
+   }
+  },
+  "al 480 @4x": {
+   "on": true,
+   "dy": 0.1899,
+   "want": 0.1899,
+   "figures": 4,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 2,
+   "dropped": 0,
+   "ms": 1.3,
+   "solidBlack": 0,
+   "meanLum": 109.8,
+   "contrast": {
+    "min": 6.74,
+    "belowAA": 0
+   }
+  },
+  "al 600 @4x": {
+   "on": true,
+   "dy": 0.1899,
+   "want": 0.1899,
+   "figures": 1,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 4,
+   "dropped": 0,
+   "ms": 1,
+   "solidBlack": 0,
+   "meanLum": 109.1,
+   "contrast": {
+    "min": null,
+    "belowAA": 0
+   }
+  },
+  "fr 510 @10.33x": {
+   "on": true,
+   "dy": 0.4902,
+   "want": 0.4902,
+   "figures": 5,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 2,
+   "dropped": 4,
+   "ms": 1.8,
+   "solidBlack": 0,
+   "meanLum": 137,
+   "contrast": {
+    "min": 11.23,
+    "belowAA": 0
+   }
+  },
+  "fr 600 @10.33x": {
+   "on": true,
+   "dy": 0.4902,
+   "want": 0.4902,
+   "figures": 5,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 2,
+   "dropped": 2,
+   "ms": 4.3,
+   "solidBlack": 0,
+   "meanLum": 113.6,
+   "contrast": {
+    "min": 11.51,
+    "belowAA": 0
+   }
+  },
+  "fr 780 @10.33x": {
+   "on": true,
+   "dy": 0.4902,
+   "want": 0.4902,
+   "figures": 0,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 4,
+   "dropped": 0,
+   "ms": 0.8,
+   "solidBlack": 0,
+   "meanLum": 84.1,
+   "contrast": {
+    "min": null,
+    "belowAA": 0
+   }
+  },
+  "al 480 @10.33x": {
+   "on": true,
+   "dy": 0.4902,
+   "want": 0.4902,
+   "figures": 4,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 2,
+   "dropped": 0,
+   "ms": 1.7,
+   "solidBlack": 0,
+   "meanLum": 118.1,
+   "contrast": {
+    "min": 6.57,
+    "belowAA": 0
+   }
+  },
+  "al 600 @10.33x": {
+   "on": true,
+   "dy": 0.4902,
+   "want": 0.4902,
+   "figures": 1,
+   "hidden": 0,
+   "unknownDrawn": 0,
+   "zones": 4,
+   "dropped": 0,
+   "ms": 1.6,
+   "solidBlack": 0,
+   "meanLum": 80.5,
+   "contrast": {
+    "min": null,
+    "belowAA": 0
+   }
+  }
+ }
+}

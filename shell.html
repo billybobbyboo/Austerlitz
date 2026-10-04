@@ -55,12 +55,15 @@
       <div id="chaptext"></div>
     </div>
     <div id="command" class="tabpane" role="tabpanel" aria-labelledby="tab-command" hidden>
-      <p class="sechead">See the field as a headquarters saw it</p>
-      <div class="grp cmdpick">
-        <button class="t cmd-btn" data-cv="none" aria-pressed="true">Omniscient</button>
-        <button class="t cmd-btn" data-cv="fr" aria-pressed="false">French</button>
-        <button class="t cmd-btn" data-cv="al" aria-pressed="false">Allied</button>
+      <!-- Stage 5E (docs/STAGE5_SPEC.md section D.5; decision 91): one control, "Whose eyes?", labelled a model reading -->
+      <p class="sechead" id="eyes-lbl">Whose eyes?</p>
+      <div class="grp cmdpick" role="group" aria-labelledby="eyes-lbl">
+        <button class="t cmd-btn" data-cv="none" aria-pressed="true">Everyone</button>
+        <button class="t cmd-btn" data-cv="fr" aria-pressed="false">Napoleon's headquarters</button>
+        <button class="t cmd-btn" data-cv="al" aria-pressed="false">Allied headquarters</button>
       </div>
+      <p class="eyes-note"><span class="ltag derived" id="eyes-tag"></span> A model reading: line of sight over this model's ground from the headquarters' plotted position, the valley fog's rule, and authored limits on what each side knew. Not a record of what was seen.</p>
+      <p class="eyes-go"><button class="t" id="eyego" type="button" hidden>Stand at the headquarters: eye level</button></p>
       <div id="cmdbody"></div>
     </div>
     <div id="plans" class="tabpane" role="tabpanel" aria-labelledby="tab-plans" hidden>
@@ -96,6 +99,7 @@
     <button class="t van-btn" data-v="plateau" title="The ground that decided the battle">Pratzen</button>
     <button class="t van-btn" data-v="allied" title="The field as the Allied staff saw it">Allied</button>
     <button class="t van-btn" data-v="plan" title="Operational overview from directly above">Overview</button>
+    <button class="t van-btn" data-v="eye" hidden title="Eye level at the chosen headquarters (Whose eyes?)">Eye level</button>
   </div>
 </div>
 
@@ -232,6 +236,7 @@
     </div>
     <div class="clockbox"><span id="clockread">04:00</span><small>2 Dec 1805</small></div>
     <div class="tb-cap" id="tb-cap"></div>
+    <button class="t tb-eyes" id="eyesbtn" type="button" aria-pressed="false" aria-label="Whose eyes? Everyone (press to change)" title="Whose eyes? Everyone, Napoleon's headquarters, the Allied headquarters (a model reading)">Eyes: everyone</button>
     <button class="t tb-help" id="helpbtn" aria-haspopup="dialog" aria-label="Keys and controls (?)" title="Keys and controls (?)">?</button>
     <div class="tb-vm" id="tb-vm"><!-- Watch: the presentation switch (#viewmode) stands here (app.js syncViewmode, decision 60) --></div>
     <div class="grp speeds" aria-label="Playback speed">
@@ -308,6 +313,8 @@
 <!-- Stage 2D: the map layer, every counter and all map text, laid out by app.js (THE MAP LAYER). It is drawn over the
      canvas and under every panel by its z-index; it comes last so that Tab reaches the interface first, then the map -->
 <div id="maplayer" role="group" aria-label="The map: formations, events and places"></div>
+<!-- Stage 5E: the eye-level vantage's caption (a model reading; the relief's factor; at the chapel of St Anthony the recorded mismatch) -->
+<div id="eyecap" class="eyecap" hidden></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>/*JS*/</script>
