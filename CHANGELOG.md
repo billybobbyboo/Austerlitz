@@ -1,8 +1,69 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 5C: interval events as bars on the timeline, one event clock (docs/STAGE5_SPEC.md §C, §I; owner decision 89)
+
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,441,684 bytes, md5 `96b401b321927f465c97194c113d6969`**
+(was 1,433,308 bytes, md5 `a8db7a17…`, Stage 5B).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. No event, time,
+  window, grade or any other data change: the windows are read through `evWindow`, as before. Presentation only.
+- Recorded with this part: Stage 5B merged (#33); the owner's answer to question 6, decision 89 (`docs/STAGE5_SPEC.md` §0.4): an
+  interval's marker at its start, one event clock.
+
+**Before building (fact).** `main` (5d06c40, 5B merged as #33) matched `check:baseline` (md5 `a8db7a17…`, 1,433,308 bytes).
+`tools/stage5/report-5c.js` measured it as the "before" (`AUSTERLITZ_HTML`, the same build).
+
+**What changed** (`app.js`, `style.css`)
+- **One event clock, the start** (decision 89; `evClock`): an event's marker stands at its start, and its click or Enter, the
+  previous/next event keys (`eventTimes`), the dossier's "Go to this moment" and the map layer's event names give the start, as the
+  themes, the tour (`momentOf`) and the dwell (decision 75) already did. Before, an interval's marker, its click, the event keys and the
+  dossier took the midpoint: the counter-march's marker stood at 06:07 while its theme moment and its dwell were at 04:15.
+- **Each interval a bar** on the timeline (`buildTimeline`, `EV_BAR`): 2 px tall in the event row, under the diamonds, from its start
+  to its end, in its side's colour, in up to four lanes packed in start order (a lane free 5 minutes after its last bar ends). No new
+  row: the timebar's height does not change. Instants stay diamonds alone. The bar lights with its marker (`.on`, `.dw`) and with a
+  theme's moments (`.inth`); it is hidden from assistive technology, and the marker's name carries the window ("04:15 to 08:00, ...
+  (an interval: the hour is not fixed)"), as does the map layer's event name.
+
+**Measured, before and after** (`tools/stage5/report-5c.js`; `docs/stage5-evidence/5c-report.md`, `5c-sheet.jpg`)
+- **The timebar** 90.5 px in Study and 92.0 in Watch at 1600 x 900, 1280 x 720 and 1024 x 768, before and after (Stage 3C: at most 92).
+- **The bars**: 11 for the 11 intervals, 4 lanes, in a band 9.5 px deep ending 3 px above the hour numerals; the shortest 37.4, 29.8 and
+  23.7 px; every edge within 0.03 px of its window; 0 over a numeral, 0 overlapping in a lane; the lowest contrast against the timebar
+  4.86 (dark theme; the self-test reads 4.34 at the lowest in the paper map's), at least 3:1.
+- **The markers**: every one at its event's start within 0 px at every size (before: up to 210.5 px away, the counter-march, at 1600 px
+  wide; 167.7 at 1280, 133.4 at 1024). The next-event key from 04:00 stops at 22 minutes (21 starts and the day's end; three pairs of
+  events share a start), where it stopped at 24 midpoints.
+
+**Tests** (none loosened; new, or changed to the decided rule)
+- **Self-test**, new: each interval a bar and none for an instant, its edges within 1 px of `tlPc` of its window, at most four lanes,
+  none overlapping in a lane, none over an hour numeral, the timebar's height unchanged; the bars at 3:1 or more against the timebar in the
+  dark and the paper themes (non-text contrast: §C.4 proposed it for `check:contrast`, which reads text only, so it is here); one event
+  clock (every marker at its start within 1 px, among the event keys' stops, its `momentOf` and its dwell at the start; an interval's
+  dossier "Go to this moment" at its start). Changed, decision 89: the marker-name check accepts an interval's window ("hh:mm to hh:mm,
+  ..."); before, it required one clock.
+- **Harness**: the marker Enter by real key presses compares the clock with the marker's own minute (now the start; before, the midpoint).
+- **`runtime-test.js`**: the forward event jumps assumed every event's minute distinct (at least 23 hops); now they must stop exactly
+  once at every distinct start after 04:00 and then at the end (22 hops): exact, where it was a lower bound.
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard (`binding-test.js` 381 checks, 0 failed; `runtime-test.js`: the event jumps reach
+  both ends in 22 hops).
+- `npm run check:baseline`: moved to this build (md5 `96b401b3…`, 1,441,684 bytes); passes.
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:contrast`: 4,456 text elements in 28 states (as on 5B), 0 below AA, 0 below 10.5 px.
+- `npm run check:visual`: all checks passed: 20 views, the day's light, the valley fog's hours, the horizon, the key tests (the event
+  marker's Enter on the counter-march: the clock to 04:15, its start); the self-test 166 of 166 (163 on 5B: the three above); the two
+  known Canvas2D warnings.
+
+**Not done, or open**
+- The bars do not soften by the event's grade (§C.3 item 5; the grade is the dossier's) and phases get no bar.
+- Run at 1024 x 768 outside the harness, the self-test fails five checks on this build and identically on the 5B build (the paper map's
+  scale bar reads 0 px at that width; d'Hautpoul's dropped counter not reached by hover): not caused by 5C and not in any harness view
+  (the harness runs the self-test at 1600 x 900); recorded, not fixed here.
+
 ## 2026-10 · Stage 5B: spatial confidence (docs/STAGE5_SPEC.md §A, §I; owner decisions 85-88)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,433,308 bytes, md5 `a8db7a17df01acaed029d5d4010252ff`**
+**Status: merged (#33). `austerlitz-command-map.html`: 1,433,308 bytes, md5 `a8db7a17df01acaed029d5d4010252ff`**
 (was 1,416,737 bytes, md5 `e1fac9ea…`, Stage 4E).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. No data,

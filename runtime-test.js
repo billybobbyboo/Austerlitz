@@ -281,7 +281,10 @@ try{
   setClock(T_MIN,{force:true});
   let hops=0, last=-1;
   for(let i=0;i<60;i++){ jumpEvent(1); if(clock===last) break; last=clock; hops++; }
-  if(hops<EVENTS.length-2) throw new Error("forward event jump stalled after "+hops);
+  /* Stage 5C (decision 89): an event's clock is its start, and events can share one (as the dwell counts them): the forward jumps
+     stop at every distinct start after the day's first minute, then at the day's end, each once */
+  const stops=new Set(EVENTS.map(evClock).filter(t=>t>T_MIN+1.5)).size+1;
+  if(hops!==stops) throw new Error("forward event jump: "+hops+" hops, want "+stops+" (every distinct start, then the end)");
   for(let i=0;i<60;i++){ jumpEvent(-1); if(clock<=T_MIN+1) break; }
   if(clock>T_MIN+1) throw new Error("backward event jump did not reach the start");
   console.log("event jumping reached both ends in "+hops+" hops OK");

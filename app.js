@@ -2461,6 +2461,11 @@ function lerpGrade(a,b,e){
    ============================================================ */
 var eventGroup=null, eventMarks=[];
 function evWindow(e){ return Array.isArray(e.t)?e.t:[e.t,e.t]; }
+/* Stage 5C (docs/STAGE5_SPEC.md section C.3; owner decision 89): an event's clock is its start, for the timeline's marker, a click
+   or Enter on it, the previous/next keys, the dossier's "Go to this moment" and the map layer's names, as for the themes, the tour
+   (momentOf) and the dwell (decision 75); an interval's window is drawn as a bar from its start */
+function evClock(e){ return evWindow(e)[0]; }
+function evTimeText(e){ var w=evWindow(e); return w[0]===w[1]?fmtClock(w[0]):fmtClock(w[0])+" to "+fmtClock(w[1]); }
 function evWeight(e,t){
   var w=evWindow(e), lead=14, tail=26;
   if(t>=w[0]&&t<=w[1]) return 1;
@@ -3340,7 +3345,7 @@ function mlCollect(){
   if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(!k.labelOn) return;
     var sel=isSel("e",k.e.id), w=evWindow(k.e);
     text("e:"+k.e.id,"event","mlt-serif",k.e.n,LB.annotation,k.world,{pri:sel?0:4+(1-evWeight(k.e,clock))*0.5,base:4,keep:true,r:2.1,acl:3,
-      pick:{kind:"e",id:k.e.id},aria:"Event, "+fmtClock((w[0]+w[1])/2)+": "+k.e.n});
+      pick:{kind:"e",id:k.e.id},aria:"Event, "+evTimeText(k.e)+": "+k.e.n+(w[0]===w[1]?"":" (an interval: the hour is not fixed)")});
   });
   /* the plateau reading, over the northern part of its outline */
   if(eventGroup&&eventGroup.visible&&plateauRing&&plateauRing.visible){
@@ -3667,7 +3672,7 @@ var lodEch="div";
 var smokeT=0;
 var MAJOR_FEATURES={pratzen:1,vinohrady:1,pratzeberg:1,santon:1,zuran:1,goldbach:1,
   litava:1,austerlitz:1,telnitz:1,sokolnitz:1,augezd:1,satschan:1};
-var _evTicks=[];
+var _evTicks=[], EV_BAR={GAP:5, TOP:1, STEP:2.5, lanes:0};   /* Stage 5C: the bars' lanes (minutes between bars in a lane; px) */
 var faceCache={};
 function enemyFacing(id){
   var key=curPhase+"|"+id;
@@ -4802,13 +4807,23 @@ function buildTimeline(){
       html+='<i class="'+(major?"hr":"")+'" style="left:'+tlPc(t)+'%"></i>';
       if(major) html+='<b style="left:'+tlPc(t)+'%">'+((h<10?"0":"")+h)+'</b>'; }
     ticks.innerHTML=html; }
-  if(evh){ evh.innerHTML="";
-    /* in time order, so the arrow keys go forward in time */
-    EVENTS.map(function(e){ var w=evWindow(e); return {e:e,mid:(w[0]+w[1])/2}; }).sort(function(a,b){ return a.mid-b.mid; }).forEach(function(o,k){
+  if(evh){ evh.innerHTML=""; _evTicks=[];
+    /* in time order (by start, decision 89), so the arrow keys go forward in time */
+    var evs=EVENTS.map(function(e){ var w=evWindow(e); return {e:e,t:w[0],t1:w[1]}; }).sort(function(a,b){ return a.t-b.t||a.t1-b.t1; });
+    /* Stage 5C (section C.3): each interval a bar in the event row, packed into lanes in start order (a lane is free EV_BAR.GAP
+       minutes after its last bar ends), drawn under the diamonds; an instant stays a diamond alone */
+    var lanes=[];
+    evs.forEach(function(o){ if(o.t1<=o.t) return; var k=0; while(k<lanes.length&&lanes[k]+EV_BAR.GAP>o.t) k++; lanes[k]=o.t1;
+      var bar=el("i","ev-bar "+(o.e.side==="fr"?"fr":"al")); bar.setAttribute("aria-hidden","true"); bar.dataset.ev=o.e.id; bar.dataset.lane=k;
+      bar.style.left=tlPc(o.t)+"%"; bar.style.width=(tlPc(o.t1)-tlPc(o.t))+"%"; bar.style.top=(EV_BAR.TOP+k*EV_BAR.STEP)+"px";
+      evh.appendChild(bar); o.bar=bar; });
+    EV_BAR.lanes=lanes.length;
+    evs.forEach(function(o,k){
       var e=o.e, b=el("button","ev-mark "+(e.kind==="decision"?"dec ":"")+(e.side==="fr"?"fr":"al")); b.type="button";
-      b.style.left=tlPc(o.mid)+"%"; b.title=fmtClock(o.mid)+"  "+e.n; b.setAttribute("aria-label",fmtClock(o.mid)+", "+e.n); b.tabIndex=k===0?0:-1;
-      b.addEventListener("click",function(){ stopPlay(); setClock(o.mid); select("e",e.id); });
-      evh.appendChild(b); _evTicks.push({el:b,e:e,mid:o.mid}); });
+      var lab=evTimeText(e)+", "+e.n+(o.t1>o.t?" (an interval: the hour is not fixed)":"");
+      b.style.left=tlPc(o.t)+"%"; b.title=evTimeText(e)+"  "+e.n; b.setAttribute("aria-label",lab); b.tabIndex=k===0?0:-1;
+      b.addEventListener("click",function(){ stopPlay(); setClock(o.t); select("e",e.id); });
+      evh.appendChild(b); _evTicks.push({el:b,bar:o.bar||null,e:e,t:o.t}); });
     rovingGroup(evh,".ev-mark"); }
   if(!rail) return;
   var dragging=false;
@@ -4860,7 +4875,7 @@ function buildSpine(){
 }
 /* jump between the moments that matter, not between arbitrary minutes */
 function eventTimes(){
-  return EVENTS.map(function(e){ var w=evWindow(e); return (w[0]+w[1])/2; })
+  return EVENTS.map(evClock)
                .sort(function(a,b){ return a-b; });
 }
 var _pv2=new THREE.Vector3();
@@ -4901,9 +4916,11 @@ function paintTimeline(){
   var evh=document.getElementById("evmarks"), inE=!!(evh&&document.activeElement&&document.activeElement.parentNode===evh), best=-1, bd=1e9;
   var dwI={}; (dwellEvents()||[]).forEach(function(e){ dwI[e.id]=1; });
   for(var q=0;q<_evTicks.length;q++){
-    _evTicks[q].el.classList.toggle("on", evWeight(_evTicks[q].e,clock)>0.5);
-    if(_evTicks[q].el.classList.contains("dw")!==!!dwI[_evTicks[q].e.id]) _evTicks[q].el.classList.toggle("dw",!!dwI[_evTicks[q].e.id]);   /* Stage 4D: lit while the clock dwells on it */
-    var d=Math.abs(_evTicks[q].mid-clock); if(d<bd){ bd=d; best=q; }
+    var tk=_evTicks[q], onq=evWeight(tk.e,clock)>0.5, dwq=!!dwI[tk.e.id];
+    tk.el.classList.toggle("on", onq);
+    if(tk.el.classList.contains("dw")!==dwq) tk.el.classList.toggle("dw",dwq);   /* Stage 4D: lit while the clock dwells on it */
+    if(tk.bar){ tk.bar.classList.toggle("on",onq); if(tk.bar.classList.contains("dw")!==dwq) tk.bar.classList.toggle("dw",dwq); }   /* Stage 5C: the bar with its marker */
+    var d=Math.abs(tk.t-clock); if(d<bd){ bd=d; best=q; }
   }
   if(!inE) for(var q2=0;q2<_evTicks.length;q2++) _evTicks[q2].el.tabIndex=(q2===best)?0:-1;   /* the keyboard enters the events at the nearest */
   var head=document.getElementById("playhead");
@@ -4917,7 +4934,8 @@ function paintTimeline(){
   /* the theme's other moments, marked on the timeline (section C.2): its events' markers and its phases' ticks */
   var ms=c?c.moments.map(momentOf):[], evIn={}, phIn={};
   ms.forEach(function(m){ if(!m) return; if(m.kind==="ev") evIn[m.id]=1; else phIn[m.id]=1; });
-  for(var q3=0;q3<_evTicks.length;q3++){ var on3=!!evIn[_evTicks[q3].e.id]; if(_evTicks[q3].el.classList.contains("inth")!==on3) _evTicks[q3].el.classList.toggle("inth",on3); }
+  for(var q3=0;q3<_evTicks.length;q3++){ var on3=!!evIn[_evTicks[q3].e.id]; if(_evTicks[q3].el.classList.contains("inth")!==on3) _evTicks[q3].el.classList.toggle("inth",on3);
+    if(_evTicks[q3].bar&&_evTicks[q3].bar.classList.contains("inth")!==on3) _evTicks[q3].bar.classList.toggle("inth",on3); }
   var stepsT=document.querySelectorAll("#phases .step");
   for(var q4=0;q4<stepsT.length;q4++){ var on4=!!phIn[q4]; if(stepsT[q4].classList.contains("inth")!==on4) stepsT[q4].classList.toggle("inth",on4); }
 }
@@ -5362,7 +5380,7 @@ function dossierEvent(eid){
     (exact?"":" The hour is not fixed in the sources, so this is shown as an interval rather than a timestamp.")));
   var act=el("div","dact");
   var b1=el("button","t","Go to this moment");
-  b1.addEventListener("click",function(){ stopPlay(); setClock((w[0]+w[1])/2); centreOnMap(e.p,96); });
+  b1.addEventListener("click",function(){ stopPlay(); setClock(evClock(e)); centreOnMap(e.p,96); });
   act.appendChild(b1);
   wrap.appendChild(act);
   return wrap;
@@ -6986,10 +7004,10 @@ var AUSTERLITZ_DEBUG=(function(){
       [["#acts",".act-btn"],["#phases",".step"],["#evmarks",".ev-mark"]].forEach(function(g){
         var B=document.querySelectorAll(g[0]+" "+g[1]), c0=clock; B[0].focus(); key("ArrowRight"); if(document.activeElement!==B[1]) grp.push(g[0]+": ArrowRight did not move");
         key("End"); if(document.activeElement!==B[B.length-1]) grp.push(g[0]+": End"); if(clock!==c0) grp.push(g[0]+": the clock moved"); });
-      var M=Array.prototype.slice.call(document.querySelectorAll("#evmarks .ev-mark")), names=M.filter(function(b){ return !/^\d\d:\d\d, .+/.test(b.getAttribute("aria-label")||""); });
+      var M=Array.prototype.slice.call(document.querySelectorAll("#evmarks .ev-mark")), names=M.filter(function(b){ return !/^\d\d:\d\d( to \d\d:\d\d)?, .+/.test(b.getAttribute("aria-label")||""); });   /* an interval by its window (5C, section C.3) */
       if(names.length) grp.push(names.length+" event markers without a clock and title");
-      var mids=_evTicks.map(function(o){ return o.mid; }); for(var k=1;k<mids.length;k++) if(mids[k]<mids[k-1]) grp.push("event markers not in time order");
-      M[3].click(); if(!selection||selection.kind!=="e"||Math.abs(clock-_evTicks[3].mid)>1e-6) grp.push("a marker's click did not select its event at its clock");
+      var mids=_evTicks.map(function(o){ return o.t; }); for(var k=1;k<mids.length;k++) if(mids[k]<mids[k-1]) grp.push("event markers not in time order");
+      M[3].click(); if(!selection||selection.kind!=="e"||Math.abs(clock-_evTicks[3].t)>1e-6) grp.push("a marker's click did not select its event at its clock");
       select(null,null);
       togglePlay(); var pp=document.getElementById("play").getAttribute("aria-pressed"); stopPlay(); var pp2=document.getElementById("play").getAttribute("aria-pressed");
       if(pp!=="true"||pp2!=="false") grp.push("Play's aria-pressed "+pp+"/"+pp2);
@@ -7023,6 +7041,51 @@ var AUSTERLITZ_DEBUG=(function(){
         !bad3.length&&ck3===660&&marked==="buxhowden-blind,pratzeberg"&&ckG===675&&phMarked===0&&cleared&&s7===c7&&own===1,
         ANALYSIS.length+" themes naming "+nM+" moments, "+TOUR.length+" stops"+(bad3.length?"; UNRESOLVED: "+bad3.join(", "):"")+"; the theme \u201ccut\u201d at "+fmtClock(ck3)+", marking "+marked+
         "; \u201cguard\u201d at "+fmtClock(ckG)+"; marks cleared after: "+cleared+"; stop 7 at "+fmtClock(s7)+" (its theme "+fmtClock(c7)+"); "+own+" stop with its own clock (stop 4)");
+      /* Stage 5C (docs/STAGE5_SPEC.md section C.3; owner decision 89): each interval a bar from its start to its end in the event row,
+         none for an instant; the lanes at most four, no two bars of a lane overlapping, none over an hour numeral, the timebar's height
+         unchanged; the bars at 3:1 or more against the timebar in the dark and the paper themes; one event clock, the start, everywhere */
+      setClock(600,{instant:true,force:true,camera:false}); finishTween();
+      var ax5=document.querySelector(".tb-trackwrap").getBoundingClientRect(), bars=Array.prototype.slice.call(document.querySelectorAll("#evmarks .ev-bar")), b5=[], nInt=0;
+      function xAt(t){ return ax5.left+tlPc(t)/100*ax5.width; }
+      EVENTS.forEach(function(e){ var w=evWindow(e), mine=bars.filter(function(b){ return b.dataset.ev===e.id; });
+        if(w[1]>w[0]){ nInt++; if(mine.length!==1){ b5.push(e.id+": "+mine.length+" bars"); return; }
+          var r=mine[0].getBoundingClientRect(); if(Math.abs(r.left-xAt(w[0]))>1||Math.abs(r.right-xAt(w[1]))>1) b5.push(e.id+": bar "+r.left.toFixed(1)+"-"+r.right.toFixed(1)+" px, its window "+xAt(w[0]).toFixed(1)+"-"+xAt(w[1]).toFixed(1));
+          if(mine[0].getAttribute("aria-hidden")!=="true") b5.push(e.id+": bar not hidden from assistive technology (its marker names it)"); }
+        else if(mine.length) b5.push(e.id+": an instant with a bar"); });
+      var byLane={}; bars.forEach(function(b){ (byLane[b.dataset.lane]=byLane[b.dataset.lane]||[]).push(b.getBoundingClientRect()); });
+      var nLanes=Object.keys(byLane).length, lOv=0, nOv5=0, NR5=Array.prototype.map.call(document.querySelectorAll("#railticks b"),function(b){ return b.getBoundingClientRect(); });
+      Object.keys(byLane).forEach(function(k){ var L=byLane[k].sort(function(a,b){ return a.left-b.left; }); for(var i=1;i<L.length;i++) if(L[i].left<L[i-1].right-0.5) lOv++; });
+      bars.forEach(function(b){ var r=b.getBoundingClientRect(); NR5.forEach(function(n){ if(Math.min(n.right,r.right)>Math.max(n.left,r.left)&&Math.min(n.bottom,r.bottom)>Math.max(n.top,r.top)) nOv5++; }); });
+      var H5=document.querySelector(".timebar").getBoundingClientRect().height;
+      ck("timeline: each interval a bar from its start to its end (decision 89), none for an instant; at most four lanes, none overlapping in a lane, none over an hour numeral; the timebar's height unchanged",
+        !b5.length&&nInt>0&&bars.length===nInt&&nLanes<=4&&!lOv&&!nOv5&&Math.abs(H5-H)<0.5,
+        bars.length+" bars for "+nInt+" intervals ("+(EVENTS.length-nInt)+" instants without), edges within 1 px of their window; "+nLanes+" lanes, "+lOv+" overlaps in a lane, "+nOv5+" over a numeral; the timebar "+Math.round(H5*10)/10+" px ("+Math.round(H*10)/10+" before)"+(b5.length?"; "+b5.slice(0,4).join("; "):""));
+      /* the bars' colour against the timebar (its scrim at .96 over the darkest and the lightest ground), each theme */
+      function rgb5(c){ var m=String(c).match(/[\d.]+/g)||[]; return [+m[0],+m[1],+m[2]]; }
+      function lum5(c){ var v=c.map(function(x){ x/=255; return x<=0.04045?x/12.92:Math.pow((x+0.055)/1.055,2.4); }); return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2]; }
+      function cr5(a,b){ var la=lum5(a), lb=lum5(b); return (Math.max(la,lb)+0.05)/(Math.min(la,lb)+0.05); }
+      var crs=[], staff0=document.body.classList.contains("mode-staff");
+      [false,true].forEach(function(paper){ document.body.classList.toggle("mode-staff",paper);
+        var sc=rgb5(getComputedStyle(document.body).getPropertyValue("--scrim-rgb").split(",").map(function(x){ return x.trim(); }).join(","));
+        [["fr",".ev-bar.fr"],["al",".ev-bar.al"]].forEach(function(q){ var b=document.querySelector(q[1]); if(!b) return; var c=rgb5(getComputedStyle(b).backgroundColor);
+          [0,255].forEach(function(g){ var bg=sc.map(function(x){ return 0.96*x+0.04*g; }); crs.push({k:(paper?"paper ":"dark ")+q[0]+" over "+(g?"white":"black"),r:cr5(c,bg)}); }); }); });
+      document.body.classList.toggle("mode-staff",staff0);
+      var crMin=crs.reduce(function(a,q){ return Math.min(a,q.r); },99);
+      ck("timeline: the interval bars at 3:1 or more against the timebar, in the dark and the paper themes (WCAG 1.4.11, non-text contrast)",
+        crs.length===8&&crMin>=3, crs.map(function(q){ return q.k+" "+q.r.toFixed(2); }).join(", "));
+      /* one event clock: the marker, the event keys, the themes' moments, the dwell and the dossier all at the start */
+      var c5=[], ts5=eventTimes(), ds5=dwellStarts();
+      _evTicks.forEach(function(o){ var s0=evWindow(o.e)[0], r=o.el.getBoundingClientRect();
+        if(o.t!==s0) c5.push(o.e.id+": marker clock "+o.t+", start "+s0);
+        if(Math.abs((r.left+r.right)/2-xAt(s0))>1) c5.push(o.e.id+": marker at "+((r.left+r.right)/2).toFixed(1)+" px, its start "+xAt(s0).toFixed(1));
+        if(momentOf("ev:"+o.e.id).t!==s0) c5.push(o.e.id+": its moment "+momentOf("ev:"+o.e.id).t);
+        if(ts5.indexOf(s0)<0) c5.push(o.e.id+": not among the event keys' stops"); if(ds5.indexOf(s0)<0) c5.push(o.e.id+": no dwell at its start"); });
+      var iv=EVENTS.filter(function(e){ var w=evWindow(e); return w[1]>w[0]; })[0];
+      select("e",iv.id); setClock(T_MIN,{instant:true,force:true,camera:false}); var go=Array.prototype.filter.call(document.querySelectorAll(".dossier .dact button"),function(b){ return b.textContent==="Go to this moment"; })[0];
+      if(!go) c5.push("no \u201cGo to this moment\u201d for "+iv.id); else { go.click(); finishTween(); if(clock!==evWindow(iv)[0]) c5.push("\u201cGo to this moment\u201d at "+clock+", not its start "+evWindow(iv)[0]); }
+      select(null,null);
+      ck("events: one event clock, the start, for the marker, the event keys, the themes' moments, the dwell and the dossier (decision 89)",
+        !c5.length, _evTicks.length+" markers each at its start within 1 px; the dossier of "+iv.id+" goes to "+fmtClock(evWindow(iv)[0])+(c5.length?"; "+c5.slice(0,4).join("; "):""));
       if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
       document.body.classList.remove("st-still"); if(pl0) togglePlay();
     })();

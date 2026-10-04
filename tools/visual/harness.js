@@ -175,11 +175,12 @@ async function interact(page,it,vp){
         got.push(k+" "+r.c); if(Math.abs(r.c-want)>1e-6||r.v!==String(Math.round(r.c))) report.failures.push("the slider by real key presses: "+k+" gave "+r.c+" (want "+want+"), aria-valuenow "+r.v); }
       const vt=await first.evaluate(()=>{ const r=document.getElementById("timerail"); return {t:r.getAttribute("aria-valuetext"),want:tlText(clock)}; });
       if(vt.t!==vt.want) report.failures.push("the slider's aria-valuetext "+JSON.stringify(vt.t)+", want "+JSON.stringify(vt.want));
-      /* an event marker by keyboard: focus the group, step to the third marker, Enter selects it and moves the clock to it */
+      /* an event marker by keyboard: focus the group, step to the third marker, Enter selects it and moves the clock to it (the marker's
+         minute: since Stage 5C an event's start, decision 89; before it, an interval's midpoint) */
       await first.evaluate(()=>{ setClock(240,{instant:true,force:true,camera:false}); select(null,null); });
       await first.focus("#evmarks .ev-mark[tabindex='0']"); await first.keyboard.press("ArrowRight"); await first.keyboard.press("ArrowRight"); await first.keyboard.press("Enter");
       const ev=await first.evaluate(()=>{ const a=document.activeElement, o=_evTicks.find(x=>x.el===a);
-        return {name:a&&a.getAttribute("aria-label"), mid:o&&o.mid, id:o&&o.e.id, clock:clock, sel:selection?selection.kind+":"+selection.id:null}; });
+        return {name:a&&a.getAttribute("aria-label"), mid:o&&(o.t!==undefined?o.t:o.mid), id:o&&o.e.id, clock:clock, sel:selection?selection.kind+":"+selection.id:null}; });
       got.push("event marker Enter: "+ev.name+" → clock "+ev.clock+", "+ev.sel);
       if(!ev.id||Math.abs(ev.clock-ev.mid)>1e-6||ev.sel!=="e:"+ev.id) report.failures.push("an event marker by real key presses: "+JSON.stringify(ev));
       report.sliderKeys=got; console.log("slider by real key presses: "+got.join(", ")); }
