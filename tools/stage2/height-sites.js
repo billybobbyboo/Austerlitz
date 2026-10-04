@@ -54,7 +54,6 @@ const CLASS={
   "app.js:settleBlock":"presentation","app.js:updateVisibility > placeSprite":"presentation","app.js:updateVisibility":"presentation",
   "app.js:pickAt":"presentation","app.js:camGround":"presentation","app.js:centreOnMap":"presentation","app.js:onScreen":"presentation",
   "app.js:dossierFeature":"model","app.js:dossierAnalysis":"model",
-  "app.js:placeFootprint":"presentation",
   /* Stage 2C: the overlays draped on the drawn ground, and the self-test that measures them against it */
   "app.js:drapeTri":"presentation","app.js:drapedRibbon":"presentation","app.js:buildArrow":"presentation","app.js:buildHalt":"presentation",
   "app.js:buildLine":"presentation","app.js:buildBoundary":"presentation","app.js:overlayDrape":"test",
@@ -85,7 +84,11 @@ const CLASS={
   /* Stage 4D: a drawn-on arrow's end, draped like the rest of its shaft; the self-test's day under Follow */
   "app.js:shaftEnd":"presentation","app.js:paceChecks":"test",
   /* Stage 4E: the self-test's ice and smoke checks against the drawn ground */
-  "app.js:extrasChecks":"test"
+  "app.js:extrasChecks":"test",
+  /* Stage 5B: a confidence mark's size on screen (the paper map's cap) at its drawn ground */
+  "app.js:confPlace":"presentation",
+  /* Stage 5B: the self-test's drape of the marks against the drawn ground */
+  "app.js:confDrape":"test","app.js:confChecks":"test","app.js:confDayChecks":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */

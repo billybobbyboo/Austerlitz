@@ -79,7 +79,11 @@ function counterLabel(f,o){
   return f.name+", "+(SIDE_WORD[f.nation]||f.nation)+", "+(ECH_WORD[f.ech]||f.ech)+(o.strength?", about "+o.strength.toLocaleString():"")+
     (s?", "+s.label.toLowerCase():"")+", position grade "+(o.cf||"A")+(o.know==="uncertain"?", reported only":"");
 }
-/* a formation's name in the landscape, which draws no counters: neutral text with the side mark beside it (decision 9) */
-function nameHTML(f,paper){
-  return '<i class="mln-mark" style="background:'+TOKENS.sym.side[sideOfNation(f.nation)].base+';border-color:'+TOKENS.sym.keyline+'"></i>'+esc(nameOf(f));
+/* a formation's name in the landscape, which draws no counters: neutral text with the side mark beside it (decision 9), and since
+   Stage 5B its position grade as the counter's badge: B or C, "?" when reported only, none for A (decision 4; section A.4 item 4).
+   o: {cf, know}, as counterHTML's */
+function nameHTML(f,paper,o){
+  var K=TOKENS.sym.counter[paper?"paper":"dark"], badge=o?(o.know==="uncertain"?"?":(o.cf&&o.cf!=="A"?o.cf:"")):"";
+  return '<i class="mln-mark" style="background:'+TOKENS.sym.side[sideOfNation(f.nation)].base+';border-color:'+TOKENS.sym.keyline+'"></i>'+esc(nameOf(f))+
+    (badge?'<span class="mln-bdg" style="background:'+K.badgePlate+';color:'+K.badgeInk+';border-color:'+TOKENS.sym.keyline+'">'+badge+'</span>':'');
 }

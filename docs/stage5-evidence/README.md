@@ -19,3 +19,15 @@ WebGL on one machine, measured with no other probe running: comparable with one 
 | `eyes-sheet.jpg` | D | `eyes-probe.js --sheet`: the eye at the Zuran at 08:30 toward the Pratzeberg at 1x, 4x and 10.33x (the map layer hidden; the camera floor waived for the probe) |
 | `plans-probe.json` | E | `plans-probe.js --json`: in the landscape views, four at 1x and 10.33x, and the paper map: the Plans overlay as drawn today (both plans) and the plan-ghost prototype, against the view without: routes in view, coverage and contrast, drops, map text, the world pass's time |
 | `plans-sheet.jpg` | E | `plans-probe.js --sheet`: three views with the overlay today and with the ghosts |
+
+**Stage 5B** (spatial confidence, implemented): `report-5b.js` on the Stage 4E build as merged (md5 `e1fac9ea…`, `git show
+9b969e1:austerlitz-command-map.html`, the "before") and on the 5B build.
+
+| file | section | script |
+|---|---|---|
+| `5b-before.json`, `5b-after.json` | I (5B) | `report-5b.js --json`: per harness view at 1600 x 900 at its factor, four at 1x and 10.33x, and the paper-map views: the grades drawn in the free rectangle, the marks' share of the free rectangle as rendered (`measure.js` `confShare`: the view drawn once more without them), solid near-black, mean luminance, the lowest map-text contrast as rendered, drops against `DROP_LIMIT`, the world pass's time (software) |
+| `5b-report.md` | I (5B) | `report-5b.js --from 5b-after.json --before 5b-before.json --md`: the two side by side |
+| `5b-sheet-before.jpg`, `5b-sheet.jpg` | I (5B) | `report-5b.js --sheet`: six views on the 4E build and on the 5B build |
+
+The 5B run measured a build (md5 `7b2bce73…`) that differs from the committed one only in the removal of two functions it no longer
+called (`makeFootprint`, `placeFootprint`, the 2B footprint primitive) and their comments; what is drawn is the same.
