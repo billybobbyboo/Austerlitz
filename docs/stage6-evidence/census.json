@@ -326,13 +326,13 @@
       "kind": "horse",
       "count": 12,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 12,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5597",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -346,7 +346,7 @@
       "kind": "riderFixed",
       "count": 12,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -460,7 +460,7 @@
       "kind": "infCoat",
       "count": 30,
       "group": "deployed",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5496",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -474,7 +474,7 @@
       "kind": "infFixed",
       "count": 30,
       "group": "deployed",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.limber",
@@ -498,7 +498,7 @@
       "kind": "horse",
       "count": 24,
       "group": "limbered",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -569,7 +569,7 @@
       "kind": "infCoat",
       "count": 144,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2D5395",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -583,13 +583,13 @@
       "kind": "infFixed",
       "count": 144,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5497",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -603,19 +603,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5598",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -629,7 +629,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -702,7 +702,7 @@
       "kind": "infCoat",
       "count": 144,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2D5395",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -716,13 +716,13 @@
       "kind": "infFixed",
       "count": 144,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5497",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -736,19 +736,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5598",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -762,7 +762,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -835,7 +835,7 @@
       "kind": "infCoat",
       "count": 144,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2D5395",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -849,13 +849,13 @@
       "kind": "infFixed",
       "count": 144,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5497",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -869,19 +869,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5598",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -895,7 +895,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -993,7 +993,7 @@
       "kind": "infCoat",
       "count": 72,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2D5395",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1007,13 +1007,13 @@
       "kind": "infFixed",
       "count": 72,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5497",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1027,19 +1027,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5598",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1053,7 +1053,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -1126,13 +1126,13 @@
       "kind": "horse",
       "count": 20,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 20,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5496",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1146,7 +1146,7 @@
       "kind": "riderFixed",
       "count": 20,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -1242,7 +1242,7 @@
       "kind": "infCoat",
       "count": 144,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2D5395",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1256,13 +1256,13 @@
       "kind": "infFixed",
       "count": 144,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5497",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1276,19 +1276,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5598",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1302,7 +1302,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -1375,7 +1375,7 @@
       "kind": "infCoat",
       "count": 120,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2D5395",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1389,13 +1389,13 @@
       "kind": "infFixed",
       "count": 120,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5497",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1409,19 +1409,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5598",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1435,7 +1435,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -1508,7 +1508,7 @@
       "kind": "infCoat",
       "count": 48,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2D5395",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1522,13 +1522,13 @@
       "kind": "infFixed",
       "count": 48,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5497",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1542,19 +1542,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5598",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1568,7 +1568,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.barrel",
@@ -1684,13 +1684,13 @@
       "kind": "horse",
       "count": 30,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 30,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5496",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1704,7 +1704,7 @@
       "kind": "riderFixed",
       "count": 30,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -1775,13 +1775,13 @@
       "kind": "horse",
       "count": 20,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 20,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5496",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1795,7 +1795,7 @@
       "kind": "riderFixed",
       "count": 20,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -1866,13 +1866,13 @@
       "kind": "horse",
       "count": 20,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 20,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5496",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1886,7 +1886,7 @@
       "kind": "riderFixed",
       "count": 20,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -1957,13 +1957,13 @@
       "kind": "horse",
       "count": 20,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 20,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5496",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -1977,7 +1977,7 @@
       "kind": "riderFixed",
       "count": 20,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -2073,7 +2073,7 @@
       "kind": "infCoat",
       "count": 120,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2D5395",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2087,13 +2087,13 @@
       "kind": "infFixed",
       "count": 120,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5497",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2107,19 +2107,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5598",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2133,7 +2133,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -2206,7 +2206,7 @@
       "kind": "infCoat",
       "count": 144,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2D5395",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2220,13 +2220,13 @@
       "kind": "infFixed",
       "count": 144,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5497",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2240,19 +2240,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5598",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2266,7 +2266,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -2364,7 +2364,7 @@
       "kind": "infCoat",
       "count": 72,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2D5395",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2378,13 +2378,13 @@
       "kind": "infFixed",
       "count": 72,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5497",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2398,19 +2398,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5598",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2424,7 +2424,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -2497,13 +2497,13 @@
       "kind": "horse",
       "count": 30,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 30,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5496",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2517,7 +2517,7 @@
       "kind": "riderFixed",
       "count": 30,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -2588,7 +2588,7 @@
       "kind": "infCoat",
       "count": 120,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2D5395",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2602,13 +2602,13 @@
       "kind": "infFixed",
       "count": 120,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5497",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2622,19 +2622,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#2E5598",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2648,7 +2648,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -2727,13 +2727,13 @@
       "kind": "horse",
       "count": 12,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 12,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3E6C4B",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2747,7 +2747,7 @@
       "kind": "riderFixed",
       "count": 12,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -2824,13 +2824,13 @@
       "kind": "horse",
       "count": 12,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 12,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3E6C4B",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2844,7 +2844,7 @@
       "kind": "riderFixed",
       "count": 12,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -2915,7 +2915,7 @@
       "kind": "infCoat",
       "count": 144,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#D8D1BE",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2929,13 +2929,13 @@
       "kind": "infFixed",
       "count": 144,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#DAD3C0",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2949,19 +2949,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#DCD5C2",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -2975,19 +2975,19 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 8,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 8,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#DAD3C0",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3001,7 +3001,7 @@
       "kind": "riderFixed",
       "count": 8,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -3075,7 +3075,7 @@
       "kind": "infCoat",
       "count": 168,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3D6A49",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3089,13 +3089,13 @@
       "kind": "infFixed",
       "count": 168,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3E6C4A",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3109,19 +3109,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3F6C4B",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3135,7 +3135,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -3208,7 +3208,7 @@
       "kind": "infCoat",
       "count": 168,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3D6A49",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3222,13 +3222,13 @@
       "kind": "infFixed",
       "count": 168,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3E6C4A",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3242,19 +3242,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3F6C4B",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3268,7 +3268,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -3341,7 +3341,7 @@
       "kind": "infCoat",
       "count": 96,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3D6A49",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3355,13 +3355,13 @@
       "kind": "infFixed",
       "count": 96,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3E6C4A",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3375,19 +3375,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3F6C4B",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3401,7 +3401,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -3474,7 +3474,7 @@
       "kind": "infCoat",
       "count": 168,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3D6A49",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3488,13 +3488,13 @@
       "kind": "infFixed",
       "count": 168,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3E6C4A",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3508,19 +3508,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3F6C4B",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3534,7 +3534,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -3632,7 +3632,7 @@
       "kind": "infCoat",
       "count": 96,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3D6A49",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3646,13 +3646,13 @@
       "kind": "infFixed",
       "count": 96,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3E6C4A",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3666,19 +3666,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3F6C4B",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3692,7 +3692,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -3765,7 +3765,7 @@
       "kind": "infCoat",
       "count": 168,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#D8D1BE",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3779,13 +3779,13 @@
       "kind": "infFixed",
       "count": 168,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#DAD3C0",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3799,19 +3799,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#DCD5C2",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -3825,7 +3825,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -3901,13 +3901,13 @@
       "kind": "horse",
       "count": 60,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 60,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#72866C",
       "instanceHues": 2,
       "instanceHueShares": [
@@ -3925,7 +3925,7 @@
       "kind": "riderFixed",
       "count": 60,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -3996,7 +3996,7 @@
       "kind": "infCoat",
       "count": 168,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3D6A49",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -4010,13 +4010,13 @@
       "kind": "infFixed",
       "count": 168,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3E6C4A",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -4030,19 +4030,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3F6C4B",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -4056,7 +4056,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -4154,7 +4154,7 @@
       "kind": "infCoat",
       "count": 144,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3D6A49",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -4168,13 +4168,13 @@
       "kind": "infFixed",
       "count": 144,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "infCoat",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3E6C4A",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -4188,19 +4188,19 @@
       "kind": "infFixed",
       "count": 16,
       "group": "skirmishers",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "horse",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3F6C4B",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -4214,7 +4214,7 @@
       "kind": "riderFixed",
       "count": 2,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -4287,13 +4287,13 @@
       "kind": "horse",
       "count": 40,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "rider",
       "count": 40,
       "group": "body",
-      "material": "#FEFEFE",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
       "instanceMean": "#3D6A49",
       "instanceHues": 1,
       "instanceHueShares": [
@@ -4307,7 +4307,7 @@
       "kind": "riderFixed",
       "count": 40,
       "group": "body",
-      "material": "#FEFEFE"
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
      },
      {
       "kind": "GEO.pole",
@@ -4405,5 +4405,5 @@
  ],
  "firstRunKey": "Blue is the French army. The Allies are green for Russia and white for Austria, and their movement arrows are drawn in amber. The high ground in the centre is the Pratzen plateau, and it decides the battle.",
  "html": "austerlitz-command-map.html",
- "when": "2026-10-04T21:05:23.881Z"
+ "when": "2026-10-04T22:10:59.481Z"
 }

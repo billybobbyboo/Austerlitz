@@ -567,7 +567,20 @@ declaration with what was, what is and why. If 6B also rewords tour stop 1 (`TOU
 
 ### 6.0 The checks on the build this part was written against (fact)
 
-(SECTION-6.0-PLACEHOLDER)
+All on the unchanged 5G build (md5 `4c12cac6d458b02e3282237f4d1abb92`, 1,528,608 bytes), in this session:
+- `npm run build` (inside `check:baseline` and `npm test`): the bundle 1,458,891 bytes, the HTML 1,528,608 bytes.
+- `npm run check:baseline`: md5 `4c12cac6…`, 1,528,608 bytes; passes (not moved).
+- `npm test`: all 9 suites pass, and the height guard (96 call sites, 0 presentation sites calling `height()`/`hAt()`): `css-test.js`
+  0 errors, 9 of 9 behaviour checks; `test.js` 0 errors, 41 of 41 order-of-battle checks; `geo-test.js` 54 passed; `terrain-test.js` OK;
+  `audit.js` 0 march-rate and 0 terrain violations; `sim-test.js` 0 disagreements; `redteam.js` 0 findings; `runtime-test.js` 0 errors;
+  `binding-test.js` 383 checks, 0 failed. (NPM-TEST-FINAL)
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`.
+- `npm run check:chronology`: 0 errors (69 moves with a timed statement: 65 consistent, 4 early, the unresolved conflicts it names; 20
+  explicit times).
+- `npm run check:contrast`: (CONTRAST-RESULT)
+- `npm run check:visual`: all checks passed (66 min 46 s): 23 views, the self-test 194 of 194, the day's light sweep (0.000% solid
+  near-black in every hour), the valley fog's hours, the horizon (within 4.7 and 5.3 of the sky at 4x and 10.33x), the slider, pacing and
+  key tests by real key presses; 5 console warnings, each Chromium's Canvas2D `willReadFrequently` notice (the known warning).
 
 ### 6.1 6B: the evidence, and the appearance table (a data task)
 
