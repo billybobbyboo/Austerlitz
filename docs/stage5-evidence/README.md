@@ -31,3 +31,12 @@ WebGL on one machine, measured with no other probe running: comparable with one 
 
 The 5B run measured a build (md5 `7b2bce73…`) that differs from the committed one only in the removal of two functions it no longer
 called (`makeFootprint`, `placeFootprint`, the 2B footprint primitive) and their comments; what is drawn is the same.
+
+**Stage 5C** (interval bars and one event clock, implemented; decision 89): `report-5c.js` on the Stage 5B build as merged (md5
+`a8db7a17…`, `git show 5d06c40:austerlitz-command-map.html`, the "before") and on the 5C build.
+
+| file | section | script |
+|---|---|---|
+| `5c-before.json`, `5c-after.json` | I (5C) | `report-5c.js --json`: at 1600 x 900, 1280 x 720 and 1024 x 768 in Study and Watch, the Field vantage: the rail's width, the timebar's height; the bars drawn (number, lanes, the shortest, an edge's largest distance from its window, bars over a numeral, overlaps in a lane, the band they occupy, the lowest contrast against the timebar over black and white); each marker's centre against its event's start; at 1600 x 900 the minutes the next-event key stops at from 04:00 and the counter-march's marker click and theme moment |
+| `5c-report.md` | I (5C) | `report-5c.js --from 5c-after.json --before 5c-before.json --md`: the two side by side |
+| `5c-sheet.jpg` | I (5C) | `report-5c.js --sheet`: the timebar at 1600 x 900 and 1024 x 768, Study and Watch, on the 5C build |

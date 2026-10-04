@@ -1,7 +1,8 @@
 # Evidence made visible: specification (Stage 5, Part A)
 
-**Status: Part A merged (#32); the owner answered questions 1-4 (decisions 85-88, §0.4). 5B (spatial confidence) is implemented, for
-review; what it found is at the end of §I. Sections A-J below still describe the build they were written against.** Written against `main` at `407cda0` (Stage 4E
+**Status: Part A merged (#32); the owner answered questions 1-4 (decisions 85-88, §0.4). 5B (spatial confidence) is merged (#33). The
+owner answered question 6 (decision 89, §0.4); 5C (interval bars, one event clock) is implemented, for review; what 5B and 5C found is
+at the end of §I. Sections A-J below still describe the build they were written against.** Written against `main` at `407cda0` (Stage 4E
 merged as #31; with it Stage 4 is complete), whose build `austerlitz-command-map.html` is 1,416,737 bytes, md5
 `e1fac9ea08a4c2b2eaefe5b78529c843`. On it (the same build throughout: this part changes no source file): `check:baseline` passed; `npm test` (all nine suites and the height
 guard) passed; `check:data` found all 113 declarations identical to `archive/stage4d-9b13adbf.html`; `check:chronology` reported 0
@@ -157,10 +158,10 @@ Each is stated, not resolved.
    `DROP_LIMIT` in 9 of 19 landscape harness views (the Field vantage 16 against 11; `plans-probe.js`, §E.2). No harness case opens the
    Plans tab. Outside Stage 5's scope (the Plans tab is not changed); recorded, with a check proposed (§H.3, 5F).
 
-### 0.4 Owner decisions 85-88 (the answers to §J questions 1-4)
+### 0.4 Owner decisions 85-89 (the answers to §J questions 1-4 and 6)
 
-Part A merged (#32). Before 5B the owner answered the four questions that bind it, each with the recommendation. Questions 5-13
-stay open until the parts they bind.
+Part A merged (#32). Before 5B the owner answered the four questions that bind it, each with the recommendation; before 5C, question 6,
+with the recommendation. Questions 5 and 7-13 stay open until the parts they bind.
 
 | # | question | decision |
 |---|---|---|
@@ -168,6 +169,7 @@ stay open until the parts they bind.
 | 86 | 2, the C zone's size | Its radius the formation's own frontage; stated as a drawn size, not a measured error. (5B) |
 | 87 | 3, grade A | Drawn as the crisp footprint (every formation on the field has a ground mark). (5B) |
 | 88 | 4, between anchors | The grade `confAt` gives (the weaker anchor's); "interpolated" stays the dossier's word, not a fourth look. (5B) |
+| 89 | 6, an interval's marker | At the interval's start: one event clock (the start) for the marker, a click or Enter on it, the previous/next keys, the themes, the tour, the dwell, the dossier's "Go to this moment" and the map layer's names; the bar shows the window. (5C) |
 
 ## A. Spatial confidence: crisp footprint A, soft frontage B, diffuse zone C
 
@@ -827,6 +829,33 @@ most 3.68 lower (pratzen-low, 11.94 to 8.26; the view's lowest is still 8.26); s
 luminance within 3.8; the world pass (software WebGL, 14 views at 4x and 10.33x) 4.4-10.2 ms against 4.4-6.8 ms, on average 5.9
 against 5.2 ms. The self-test has 163 checks (157 before): the
 drape at each factor, the grade and size and colour at 20 clocks, the names' badges, the paper map's cap.
+
+### 5C, as delivered (interval bars, one event clock; decision 89)
+
+Implemented in `app.js` (`evClock`, `evTimeText`; `buildTimeline`'s bars, `EV_BAR`; `paintTimeline`; `eventTimes`; the dossier's "Go to
+this moment"; the map layer's event names; the self-test's checks), `style.css` (`.ev-bar`), as §C.3 proposed, measured by
+`tools/stage5/report-5c.js` (`docs/stage5-evidence/5c-report.md`, `5c-before.json`, `5c-after.json`, `5c-sheet.jpg`; `CHANGELOG.md`,
+Stage 5C):
+- **One event clock, the start** (decision 89): a marker stands at its event's start; its click or Enter, the previous/next event keys,
+  the dossier's "Go to this moment" and the map layer's event names give the start, as the themes, the tour (`momentOf`) and the dwell
+  already did. Before 5C a marker stood up to 210.5 px from its start (the counter-march at 1600 x 900: the marker at 06:07, the theme
+  and the dwell at 04:15); now 0 px for all 25 at every size. Three pairs of events share a start (04:00: `columns-move` and `raigern`; 11:00:
+  `pratzeberg` and `guard-attack`; 11:15: `blasowitz` and `guard-broken`), so the 25 events have 22 starting
+  minutes, each one stop of the event keys: from 04:00 (the first, where the clock already is) they stop at 22 minutes (21 starts and
+  the day's end), where the midpoints gave 24.
+- **Each interval a bar** in the event row, 2 px tall, its lane (packed in start order; a lane free 5 minutes after its last bar ends)
+  1 + 2.5k px from the row's top, in the side's colour, under the diamonds: 11 bars in 4 lanes, in a band 9.5 px deep that ends 3 px
+  above the hour numerals at every size; the shortest 37.4, 29.8 and 23.7 px at 1600, 1280 and 1024 px wide; every edge within 0.03 px of
+  `tlPc` of its window; the timebar's height unchanged (90.5 px in Study, 92.0 in Watch, at every size). The bar is hidden from assistive
+  technology; the marker names the window ("04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (an interval: the hour is
+  not fixed)"). It lights with its marker (`.on`, `.dw`) and with a theme's moments (`.inth`).
+- **The bars' contrast** against the timebar (its scrim at 0.96 over black and over white): 4.86-5.71 in the dark theme, 4.34-5.43 in the
+  paper map's, at least 3:1 (WCAG 1.4.11). It is checked in the self-test, not in `check:contrast` (§C.4 proposed it there): that check
+  reads text only; the self-test reads the bars' computed colours in both themes.
+- **Changed expectations, each a decided rule (decision 89), none looser:** the self-test's marker-name check accepts the window form
+  ("hh:mm to hh:mm, ...") for an interval; the harness's marker Enter compares the clock with the marker's own minute (now the start);
+  `runtime-test.js`'s forward event jumps, which assumed every midpoint distinct (at least 23 hops), now stop exactly once at every distinct
+  start after 04:00 and at the end (22 hops).
 
 ## J. Questions for the owner
 

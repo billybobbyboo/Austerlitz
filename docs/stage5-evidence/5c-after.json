@@ -1,0 +1,191 @@
+{
+ "html": "austerlitz-command-map.html",
+ "when": "2026-10-04T03:51:25.486Z",
+ "views": {
+  "1600x900:study": {
+   "railW": 1572,
+   "timebarH": 90.5,
+   "bars": {
+    "n": 11,
+    "intervals": 11,
+    "lanes": 4,
+    "shortestPx": 37.4,
+    "edgeErrPx": 0.02,
+    "overNumerals": 0,
+    "laneOverlaps": 0,
+    "band": [
+     877,
+     886.5
+    ],
+    "numeralsTop": 889.5,
+    "contrastMin": 4.86
+   },
+   "markers": {
+    "n": 25,
+    "maxFromStartPx": 0,
+    "countermarchFromStartPx": 0,
+    "example": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (an interval: the hour is not fixed)"
+   }
+  },
+  "1600x900:watch": {
+   "railW": 1572,
+   "timebarH": 92,
+   "bars": {
+    "n": 11,
+    "intervals": 11,
+    "lanes": 4,
+    "shortestPx": 37.4,
+    "edgeErrPx": 0.02,
+    "overNumerals": 0,
+    "laneOverlaps": 0,
+    "band": [
+     877,
+     886.5
+    ],
+    "numeralsTop": 889.5,
+    "contrastMin": 4.86
+   },
+   "markers": {
+    "n": 25,
+    "maxFromStartPx": 0,
+    "countermarchFromStartPx": 0,
+    "example": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (an interval: the hour is not fixed)"
+   }
+  },
+  "1280x720:study": {
+   "railW": 1252,
+   "timebarH": 90.5,
+   "bars": {
+    "n": 11,
+    "intervals": 11,
+    "lanes": 4,
+    "shortestPx": 29.8,
+    "edgeErrPx": 0.03,
+    "overNumerals": 0,
+    "laneOverlaps": 0,
+    "band": [
+     697,
+     706.5
+    ],
+    "numeralsTop": 709.5,
+    "contrastMin": 4.86
+   },
+   "markers": {
+    "n": 25,
+    "maxFromStartPx": 0,
+    "countermarchFromStartPx": 0,
+    "example": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (an interval: the hour is not fixed)"
+   }
+  },
+  "1280x720:watch": {
+   "railW": 1252,
+   "timebarH": 92,
+   "bars": {
+    "n": 11,
+    "intervals": 11,
+    "lanes": 4,
+    "shortestPx": 29.8,
+    "edgeErrPx": 0.03,
+    "overNumerals": 0,
+    "laneOverlaps": 0,
+    "band": [
+     697,
+     706.5
+    ],
+    "numeralsTop": 709.5,
+    "contrastMin": 4.86
+   },
+   "markers": {
+    "n": 25,
+    "maxFromStartPx": 0,
+    "countermarchFromStartPx": 0,
+    "example": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (an interval: the hour is not fixed)"
+   }
+  },
+  "1024x768:study": {
+   "railW": 996,
+   "timebarH": 90.5,
+   "bars": {
+    "n": 11,
+    "intervals": 11,
+    "lanes": 4,
+    "shortestPx": 23.7,
+    "edgeErrPx": 0.02,
+    "overNumerals": 0,
+    "laneOverlaps": 0,
+    "band": [
+     745,
+     754.5
+    ],
+    "numeralsTop": 757.5,
+    "contrastMin": 4.86
+   },
+   "markers": {
+    "n": 25,
+    "maxFromStartPx": 0,
+    "countermarchFromStartPx": 0,
+    "example": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (an interval: the hour is not fixed)"
+   }
+  },
+  "1024x768:watch": {
+   "railW": 996,
+   "timebarH": 92,
+   "bars": {
+    "n": 11,
+    "intervals": 11,
+    "lanes": 4,
+    "shortestPx": 23.7,
+    "edgeErrPx": 0.02,
+    "overNumerals": 0,
+    "laneOverlaps": 0,
+    "band": [
+     745,
+     754.5
+    ],
+    "numeralsTop": 757.5,
+    "contrastMin": 4.86
+   },
+   "markers": {
+    "n": 25,
+    "maxFromStartPx": 0,
+    "countermarchFromStartPx": 0,
+    "example": "04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (an interval: the hour is not fixed)"
+   }
+  }
+ },
+ "clock": {
+  "keyStops": [
+   "04:15",
+   "07:00",
+   "07:45",
+   "08:00",
+   "08:25",
+   "08:30",
+   "08:45",
+   "09:00",
+   "09:15",
+   "09:45",
+   "10:30",
+   "11:00",
+   "11:15",
+   "11:40",
+   "12:00",
+   "12:30",
+   "13:00",
+   "14:00",
+   "14:30",
+   "15:00",
+   "16:30",
+   "18:00"
+  ],
+  "distinctStarts": 22,
+  "countermarch": {
+   "window": [
+    "04:15",
+    "08:00"
+   ],
+   "markerClick": "04:15",
+   "themeMoment": "04:15"
+  }
+ }
+}
