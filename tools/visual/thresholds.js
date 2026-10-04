@@ -154,6 +154,12 @@ module.exports.check=function(name,m){
   if(m.smoke&&m.smokePuffs&&!(m.smoke.share<=SMOKE_SHARE)) f.push("smoke covers "+(100*m.smoke.share).toFixed(1)+"% of the free rectangle (limit "+(100*SMOKE_SHARE)+"%)");
   /* Stage 5B (docs/STAGE5_SPEC.md section A.5): the position-confidence marks within their share of the free rectangle; new, on a build with them */
   if(m.confShare){ const lim=CONF_SHARE[m.mode==="staff"?"paper":"land"]; if(!(m.confShare.share<=lim)) f.push("the position-confidence marks cover "+(100*m.confShare.share).toFixed(1)+"% of the free rectangle (limit "+(100*lim).toFixed(0)+"%)"); }
+  /* Stage 5D (docs/STAGE5_SPEC.md section B.4): with the evidence skeleton on (the whole day) the map layer unchanged and its text at AA; new,
+     on a build with the skeleton */
+  if(m.skeleton){ const K=m.skeleton;
+    if(K.items[0]!==K.items[1]||K.dropped[0]!==K.dropped[1]||!K.sameDrops) f.push("with the evidence skeleton on, the map layer changed: items "+K.items.join(" to ")+", drops "+K.dropped.join(" to ")+(K.sameDrops?"":" (other formations dropped)"));
+    if(K.belowAA.length) f.push("with the evidence skeleton on, "+K.belowAA.length+" map texts below AA: "+K.belowAA.slice(0,4).join("; "));
+    if(!(K.anchors>0)) f.push("the evidence skeleton drew no anchor with the whole day on"); }
   if(HEADS_SHOWN.includes(name)&&m.heads&&m.heads.hiddenOverQuarter>0) f.push("arrow heads more than a quarter hidden by a panel or the edge: "+m.heads.list.join(", "));
   if(m.focus!=null&&!(m.focus<=FOCUS_PX)) f.push("the orbit target "+m.focus+" px from the free rectangle's centre (limit "+FOCUS_PX+" px)");
   if(m.focus720!=null&&!(m.focus720<=FOCUS_PX)) f.push("after the resize to 1280 x 720 the orbit target is "+m.focus720+" px from the free rectangle's centre (limit "+FOCUS_PX+" px)");

@@ -127,7 +127,7 @@ function setTween(slot,fn){
   _tw[slot]=fn||null;
   tween=(_tw.scene||_tw.cam)?_runTween:(tween===_runTween?null:tween);
 }
-var layerOn={symbols:true,arrows:true,labels:true,trails:true,contours:true,analysis:false,events:true,confidence:true};   /* confidence: Stage 5B, decision 85 */
+var layerOn={symbols:true,arrows:true,labels:true,trails:true,contours:true,analysis:false,events:true,confidence:true,skeleton:false};   /* confidence: Stage 5B, decision 85; skeleton: Stage 5D, off */
 var goingOn=false;
 var terrainLabels=[];   /* {tl, col, world}: the map layer's terrain-study labels */
 var highlight=null;      /* id -> true, or null for "show everything equally" */
@@ -1295,6 +1295,12 @@ function confPlace(m,g,x,z,yaw,W0,D0,hex,op,cap){
   var key=[g,x.toFixed(3),z.toFixed(3),yaw.toFixed(4),w.toFixed(3),d.toFixed(3),DISPLAY.factor,DISPLAY.flat?1:0].join("|");
   if(U.key===key) return;
   U.key=key;
+  groundPatch(m,U,x,z,yaw,w,d,CONF.LIFT);
+}
+/* the patch of the drawn ground's own cells (GROUND_NX x GROUND_NZ, the same diagonal as groundY) under a w x d rectangle at
+   world (x,z) turned by yaw, every node `lift` above the drawn ground, its uv the rectangle's own frame (the mask's): it lies
+   parallel to the ground everywhere and never cuts under it. Stage 5B's (confPlace), shared since 5D with the skeleton's anchors */
+function groundPatch(m,U,x,z,yaw,w,d,lift){
   var c=Math.cos(yaw), sn=Math.sin(yaw), ex=Math.abs(w/2*c)+Math.abs(d/2*sn), ez=Math.abs(w/2*sn)+Math.abs(d/2*c);
   var cw=GROUND_W/GROUND_NX, cd=GROUND_D/GROUND_NZ;
   var i0=Math.max(0,Math.floor((x-ex+GROUND_W/2)/cw)), i1=Math.min(GROUND_NX,Math.ceil((x+ex+GROUND_W/2)/cw));
@@ -1310,13 +1316,123 @@ function confPlace(m,g,x,z,yaw,W0,D0,hex,op,cap){
   var P=geo.attributes.position.array, UV=geo.attributes.uv.array, n=0;
   for(var j=0;j<=nz;j++) for(var i=0;i<=nx;i++){
     var wx=-GROUND_W/2+(i0+i)*cw, wz=-GROUND_D/2+(j0+j)*cd, dx=wx-x, dz=wz-z;
-    P[n*3]=wx; P[n*3+1]=groundY(wx,wz)+CONF.LIFT; P[n*3+2]=wz;
+    P[n*3]=wx; P[n*3+1]=groundY(wx,wz)+lift; P[n*3+2]=wz;
     UV[n*2]=(dx*c-dz*sn)/w+0.5; UV[n*2+1]=(dx*sn+dz*c)/d+0.5; n++;
   }
   geo.attributes.position.needsUpdate=true; geo.attributes.uv.needsUpdate=true;
   if(geo.computeBoundingSphere) geo.computeBoundingSphere();
 }
 var _cfV=new THREE.Vector3();
+/* ---- the evidence skeleton (Stage 5D; docs/STAGE5_SPEC.md section B.3; owner decision 90) ----
+   The anchors the clock interpolates between (anchorList: the plotted positions) and the legs it draws between them (legPath, the
+   vias included), for the formations in scope, while "Evidence skeleton" is on (off by default). Scope (decision 90): the selected
+   formation's family; with no formation selected, the legs whose window meets the current phase, and their anchors; "Whole day",
+   every formation's anchors and legs, whatever is selected. An anchor is a small ground mark by its grade (stateAt at its phase), by shape and never a dash or a hue: A a
+   filled disc, B a ring, C a small open ring, a tick toward north on one with an explicit time (tm); about SKEL.PX px across at its
+   distance, faded near the eye as the glyphs are (SYM_FADE), a patch of the ground's own cells (groundPatch) above the confidence
+   marks. A leg is a thin solid line in the annotation colour, split wherever it crosses an edge of the drawn ground's triangles,
+   so every piece lies in one triangle at SKEL.LIFT above it, and never under it. The lines are this reconstruction's
+   interpolation, not recorded routes (the legend says so). Ground drawing, not a map-layer item: it adds no item and no drop. Each
+   anchor's clock and grade are on hover and, with the layer on, in the formation dossier's "Plotted positions". */
+var SKEL={PX:9, RING:0.72, LIFT:0.4, MARK_LIFT:0.35, OP:0.9, LINE_OP:0.8, Q:1.12, TEX:64, day:false,
+  grp:null, lines:null, marks:[], key:"", tex:{}, scope:null, shown:{A:false,B:false,C:false,line:false}};
+/* the anchor's mask (alpha): the ring's outer edge at SKEL.RING of the mark's side; the tick from the ring to the top (north) */
+function skelTexture(g,timed){
+  var k=g+(timed?"t":""); if(SKEL.tex[k]) return SKEL.tex[k];
+  var N=SKEL.TEX, cv=document.createElement("canvas"); cv.width=cv.height=N;
+  var x=cv.getContext("2d"), R=N*SKEL.RING/2, ro=g==="C"?R*0.66:R;
+  x.fillStyle=x.strokeStyle="#fff"; x.beginPath();
+  if(g==="A"){ x.arc(N/2,N/2,R,0,Math.PI*2); x.fill(); }
+  else { var lw=g==="C"?N*0.08:N*0.12; x.lineWidth=lw; x.arc(N/2,N/2,ro-lw/2,0,Math.PI*2); x.stroke(); }
+  if(timed) x.fillRect(N/2-N*0.04,N*0.03,N*0.08,N/2-ro-N*0.03+1);
+  x.clearRect(0,0,N,1); x.clearRect(0,N-1,N,1); x.clearRect(0,0,1,N); x.clearRect(N-1,0,1,N);   /* every edge texel transparent */
+  var t=new THREE.CanvasTexture(cv); t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping;
+  SKEL.tex[k]=t; return t;
+}
+/* what is in scope: {sel, whole, ph, legs:[{id,a,b,w}], anchors:[{id,an,cf,timed}]} */
+function skelScope(){
+  var sel=(!SKEL.day&&selection&&selection.kind==="f"&&FORMATIONS[selection.id])?familyOf(selection.id):null, whole=!!sel||SKEL.day;   /* the whole day: every formation, whatever is selected */
+  var ph=curPhase, t0=PHASES[ph].t0, t1=PHASES[ph].t1, legs=[], anchors=[], seen={};
+  function addA(id,an){ var k=id+"@"+an.ph; if(seen[k]) return; seen[k]=1; var st=stateAt(id,an.ph); anchors.push({id:id,an:an,cf:st?st.cf:"B",timed:!!an.tm}); }
+  Object.keys(units).forEach(function(id){
+    if(sel&&!sel[id]) return;
+    var A=anchorList(id);
+    for(var i=0;i<A.length;i++){ var b=A[i], a=A[i-1];
+      if(whole&&b.p!==null) addA(id,b);
+      if(!a||a.p===null||b.p===null) continue;
+      var w=legWindow(a,b); if(!whole&&!(w[1]>=t0&&w[0]<=t1)) continue;
+      legs.push({id:id,a:a,b:b,w:w}); addA(id,a); addA(id,b); }
+  });
+  return {sel:sel?selection.id:null, whole:whole, ph:ph, legs:legs, anchors:anchors};
+}
+/* a world polyline [[x,z],...] laid on the drawn ground: split at every crossing of a cell's edge or diagonal (groundY's own
+   triangles), each piece's ends `lift` above the ground, as line-segment pairs into out */
+function skelDrape(pts,lift,out){
+  var cw=GROUND_W/GROUND_NX, cd=GROUND_D/GROUND_NZ;
+  function cross(ts,f0,df){ if(Math.abs(df)<1e-12) return; var lo=Math.min(f0,f0+df), hi=Math.max(f0,f0+df);
+    for(var k=Math.ceil(lo);k<=Math.floor(hi);k++){ var t=(k-f0)/df; if(t>0&&t<1) ts.push(t); } }
+  for(var i=1;i<pts.length;i++){
+    var A=pts[i-1], B=pts[i], ts=[0,1], fx=(A[0]+GROUND_W/2)/cw, fz=(A[1]+GROUND_D/2)/cd, dx=(B[0]-A[0])/cw, dz=(B[1]-A[1])/cd, prev=null;
+    cross(ts,fx,dx); cross(ts,fz,dz); cross(ts,fx+fz,dx+dz);
+    ts.sort(function(a,b){ return a-b; });
+    for(var j=0;j<ts.length;j++){ if(j&&ts[j]-ts[j-1]<1e-9) continue;
+      var x=A[0]+(B[0]-A[0])*ts[j], z=A[1]+(B[1]-A[1])*ts[j], y=groundY(x,z)+lift;
+      if(prev) out.push(prev[0],prev[1],prev[2],x,y,z); prev=[x,y,z]; }
+  }
+}
+function skelClear(){
+  if(SKEL.grp){ scene.remove(SKEL.grp); SKEL.grp.traverse(function(o){ if(o.geometry) o.geometry.dispose(); if(o.material) o.material.dispose(); }); }
+  SKEL.grp=null; SKEL.lines=null; SKEL.marks=[];
+}
+function skelBuild(sc){
+  skelClear();
+  var g=new THREE.Group(), col=lin(hexNum(TOKENS.sym.label[mode==="staff"?"paper":"dark"].annotation)), pos=[];
+  sc.legs.forEach(function(L){ var n0=pos.length; skelDrape(legPath(L.a,L.b).pts.map(function(q){ return W(q[0],q[1]); }),SKEL.LIFT,pos); L.seg=[n0/6,pos.length/6]; });
+  var geo=new THREE.BufferGeometry(); geo.setAttribute("position",new THREE.Float32BufferAttribute(new Float32Array(pos),3));
+  var ls=new THREE.LineSegments(geo,new THREE.LineBasicMaterial({color:col,transparent:true,opacity:SKEL.LINE_OP,depthWrite:false,fog:false}));
+  ls.renderOrder=16; ls.frustumCulled=false; ls.userData.skel=true; g.add(ls); SKEL.lines=ls;
+  sc.anchors.forEach(function(A){
+    var m=new THREE.Mesh(new THREE.BufferGeometry(),new THREE.MeshBasicMaterial({color:col,map:skelTexture(A.cf,A.timed),transparent:true,opacity:SKEL.OP,
+      depthWrite:false,side:THREE.DoubleSide,fog:false}));
+    var w=W(A.an.p[0],A.an.p[1]);
+    m.renderOrder=17; m.frustumCulled=false; m.userData.skel={id:A.id,ph:A.an.ph,cf:A.cf,timed:A.timed,x:w[0],z:w[1],dims:"",key:"",side:0};
+    g.add(m); SKEL.marks.push(m); });
+  scene.add(g); SKEL.grp=g;
+}
+var _skV=new THREE.Vector3();
+/* each anchor about SKEL.PX px across at its distance (the side quantised in steps of SKEL.Q, so the patch is rebuilt only when
+   the scale moves by more), north up, faded near the eye */
+function skelPlaceMarks(){
+  var yaw=Math.atan2(GEOREF.NORTH[0],GEOREF.NORTH[1]), sh={A:false,B:false,C:false,line:SKEL.lines&&SKEL.lines.geometry.attributes.position.count>0};
+  SKEL.marks.forEach(function(m){
+    var U=m.userData.skel; _skV.set(U.x,groundY(U.x,U.z),U.z);
+    var q=Math.round(Math.log(SKEL.PX/SKEL.RING*worldPerPx(_skV))/Math.log(SKEL.Q)), side=Math.pow(SKEL.Q,q);
+    var key=q+"|"+DISPLAY.factor+"|"+(DISPLAY.flat?1:0);
+    if(U.key!==key){ U.key=key; U.side=side; groundPatch(m,U,U.x,U.z,yaw,side,side,SKEL.MARK_LIFT); }
+    var a=1; if(!camera.isOrthographicCamera){ var d=camera.position.distanceTo(_skV); a=Math.max(0,Math.min(1,(d-SYM_FADE[0])/(SYM_FADE[1]-SYM_FADE[0]))); }
+    m.material.opacity=SKEL.OP*a; m.visible=a>0;
+    _skV.project(camera); if(m.visible&&_skV.z<1&&Math.abs(_skV.x)<=1&&Math.abs(_skV.y)<=1) sh[U.cf]=true;
+  });
+  SKEL.shown=sh;
+}
+function skelUpdate(){
+  if(!layerOn.skeleton||cleanView){ if(SKEL.grp) skelClear(); SKEL.scope=null; SKEL.key=""; SKEL.shown={A:false,B:false,C:false,line:false}; return; }
+  var key=[selection&&selection.kind==="f"?selection.id:"",SKEL.day?1:0,curPhase,mode,DISPLAY.factor,DISPLAY.flat?1:0].join("|");
+  if(key!==SKEL.key){ SKEL.key=key; SKEL.scope=skelScope(); skelBuild(SKEL.scope); }
+  skelPlaceMarks();
+}
+/* an anchor's words: the formation, its clock (reached), its grade, an explicit time */
+function skelAnchorText(id,an,cf,timed){
+  return FORMATIONS[id].name+": plotted at "+fmtClock(an.arr)+", position "+cf+(timed?", with an explicit time":"")+" (evidence skeleton)";
+}
+/* the drawn anchor within r px of a screen point, or null */
+function skelNear(cx,cy,r){
+  if(!SKEL.marks.length) return null;
+  var VW=renderer.domElement.clientWidth||innerWidth, VH=viewH(), best=null, bd=r*r;
+  SKEL.marks.forEach(function(m){ if(!m.visible) return; var U=m.userData.skel; _skV.set(U.x,groundY(U.x,U.z),U.z).project(camera); if(_skV.z>=1) return;
+    var sx=(_skV.x*0.5+0.5)*VW, sy=(-_skV.y*0.5+0.5)*VH, d=(sx-cx)*(sx-cx)+(sy-cy)*(sy-cy); if(d<bd){ bd=d; best=m; } });
+  return best;
+}
 /* true scale (decision 34): at 1x the relief is honest and every symbol would stand taller than it, so the
    figure-scale and landscape-scale layers are not drawn; formations are drawn as their footprints */
 function isTrueScale(){ return DISPLAY.factor===1; }
@@ -3577,7 +3693,9 @@ function paintLegend(){
           mere:true,   /* Stage 2F: the meres are drawn in every view, and their outlines are schematic (decision 27, section I.2) */
           fog:land&&fogCap(fogAmount(clock))>0.01,   /* Stage 4C: while the valley fog is drawn */
           /* Stage 5B: one row per grade drawn on screen, and the sentence on their sizes; the badge also on the landscape's names */
-          "conf-a":!!CONF.shown.A, "conf-b":!!CONF.shown.B, "conf-c":!!CONF.shown.C, conf:!!(CONF.shown.A||CONF.shown.B||CONF.shown.C)};
+          "conf-a":!!CONF.shown.A, "conf-b":!!CONF.shown.B, "conf-c":!!CONF.shown.C, conf:!!(CONF.shown.A||CONF.shown.B||CONF.shown.C),
+          /* Stage 5D: the skeleton's rows, for what it draws on screen */
+          "skel-a":!!SKEL.shown.A, "skel-b":!!SKEL.shown.B, "skel-c":!!SKEL.shown.C, skel:!!(SKEL.shown.line||SKEL.shown.A||SKEL.shown.B||SKEL.shown.C)};
   on.badge=on.badge||(mode==="terrain"&&textOn());
   var key=JSON.stringify(on);
   if(key===_lgKey) return;
@@ -3666,7 +3784,11 @@ function mlHoverAt(cx,cy){
   var cur=(it&&it.pick)||id?"pointer":"";
   if(renderer.domElement.style.cursor!==cur) renderer.domElement.style.cursor=cur;
   if(id!==ML.hover){ ML.hover=id; requestRender(2); }
+  /* Stage 5D: an anchor of the evidence skeleton under the pointer names its clock and grade */
+  var sk=skelNear(cx,cy,7), tt=sk?skelAnchorText(sk.userData.skel.id,anchorOf(sk.userData.skel.id,sk.userData.skel.ph),sk.userData.skel.cf,sk.userData.skel.timed):"";
+  if(renderer.domElement.title!==tt) renderer.domElement.title=tt;
 }
+function anchorOf(id,ph){ var A=anchorList(id); for(var i=0;i<A.length;i++) if(A[i].ph===ph) return A[i]; return null; }
 
 var lodEch="div";
 var smokeT=0;
@@ -3929,6 +4051,7 @@ function updateVisibility(){
   });
   smokePlace();   /* Stage 4E: the puffs placed, the cap on screen applied */
   CONF.shown=confShown;
+  skelUpdate();   /* Stage 5D */
 
   placeLabels.forEach(function(o){
     var major=MAJOR_FEATURES[o.ft.id] || o.ft.kind==="height" || o.ft.kind==="town";
@@ -4497,6 +4620,12 @@ function buildUI(){
 
     });
   });
+  var skd=document.getElementById("skel-day");   /* Stage 5D (decision 90): the skeleton's whole day; choosing it turns the skeleton on */
+  if(skd) skd.addEventListener("click",function(){ SKEL.day=!SKEL.day; skd.setAttribute("aria-pressed",String(SKEL.day));
+    if(SKEL.day&&!layerOn.skeleton){ var sb=document.querySelector('.layer-btn[data-l="skeleton"]'); if(sb) sb.click(); }
+    paintDrawer(); requestRender(2); });
+  var skb=document.querySelector('.layer-btn[data-l="skeleton"]');   /* the dossier's "Plotted positions" follow the layer */
+  if(skb) skb.addEventListener("click",function(){ paintDrawer(); requestRender(2); });
   var dwb=document.getElementById("dwell");   /* Stage 4D (decision 75): pause briefly at events, on by default */
   if(dwb) dwb.addEventListener("click",function(){ DWELL.on=!DWELL.on; dwb.setAttribute("aria-pressed",String(DWELL.on)); if(!DWELL.on) DWELL.st=null; });
   document.getElementById("prev").addEventListener("click",function(){ stopPlay(); setClock(clock-10); });
@@ -5159,6 +5288,10 @@ function dossierFormation(id){
       " &middot; grade "+esc(tt.gr)+" &middot; "+esc(tt.basis));
     whr+=row("Dated by", tt.ev.map(function(q){ return "&ldquo;"+esc(q)+"&rdquo;"; }).join("; ")+'<br><span class="hh">'+esc(tt.note)+'</span>');
   }
+  /* Stage 5D: with the evidence skeleton on, the formation's plotted positions in words (the anchors' clocks and grades) */
+  if(f.track&&layerOn.skeleton){ var pl=anchorList(id).filter(function(an){ return an.p!==null; }).map(function(an){ var sa=stateAt(id,an.ph);
+      return esc(fmtClock(an.arr))+" "+esc(sa?sa.cf:"B")+(an.tm?" (timed)":""); });
+    if(pl.length) whr+=row("Plotted positions", pl.join(" &middot; ")+' <span class="hh">(the grade at each; the lines between them are interpolated)</span>'); }
   wrap.appendChild(sect("Where",whr,true,"recon"));
 
   /* WHEN and WHAT */
@@ -5506,7 +5639,11 @@ function openSources(){
     '<li>'+esc("On the map each formation's grade is drawn on the ground under it: A as its modelled footprint, crisp; B as a soft frontage, twice the "+
       "footprint's width and fading at its ends; C as a diffuse zone whose radius is the formation's own frontage. These are drawn sizes, not measured "+
       "errors: the sources grade a position, they do not give its error. Between two plotted positions a formation is drawn at the weaker grade. "+
-      "Each name and counter also carries its grade's letter.")+'</li></ul>'+
+      "Each name and counter also carries its grade's letter.")+'</li>'+
+    /* Stage 5D: the evidence skeleton */
+    '<li>'+esc("The evidence skeleton (a layer, off at first) draws each formation's plotted positions, the anchors the clock moves between, "+
+      "as small marks by grade (filled: A, ring: B, open ring: C; a tick where the position carries an explicit time), and the lines this "+
+      "reconstruction interpolates between them. The lines are not recorded routes.")+'</li></ul>'+
     '<h3>Basis</h3><ul class="bul">'+SOURCE_NOTE.refs.map(function(r){return '<li>'+esc(r)+'</li>';}).join('')+'</ul>'+
     /* the display (decisions 19, 32, 35, 36): written by the app, so the guarded SOURCE_NOTE stays as it is */
     '<h3>How the ground and the symbols are drawn</h3><ul class="bul">'+
@@ -6636,9 +6773,9 @@ var AUSTERLITZ_DEBUG=(function(){
   function confMarks(){ var L=[]; Object.keys(units).forEach(function(id){ var r=units[id];
     [r.foot,r.conf].forEach(function(m){ if(m&&m.visible&&m.userData.conf&&m.userData.conf.g) L.push({id:id,m:m}); }); }); return L; }
   /* the mark as drawn, sampled every 0.5 units across each of its triangles, against the drawn ground */
-  function confDrape(m){
-    var P=m.geometry.attributes.position, I=m.geometry.index.array, n=0, under=0, worst=1e9, lift=0;
-    for(var v=0;v<P.count;v++) lift=Math.max(lift,Math.abs(P.getY(v)-groundY(P.getX(v),P.getZ(v))-CONF.LIFT));
+  function confDrape(m,L){   /* L: the mark's lift (CONF.LIFT; Stage 5D: the skeleton's anchors, SKEL.MARK_LIFT) */
+    var P=m.geometry.attributes.position, I=m.geometry.index.array, n=0, under=0, worst=1e9, lift=0, LL=L===undefined?CONF.LIFT:L;
+    for(var v=0;v<P.count;v++) lift=Math.max(lift,Math.abs(P.getY(v)-groundY(P.getX(v),P.getZ(v))-LL));
     for(var t=0;t<I.length;t+=3){
       var A=I[t], B=I[t+1], C=I[t+2], e=Math.max(Math.hypot(P.getX(B)-P.getX(A),P.getZ(B)-P.getZ(A)),Math.hypot(P.getX(C)-P.getX(A),P.getZ(C)-P.getZ(A))), k=Math.max(1,Math.ceil(e/0.5));
       for(var i=0;i<=k;i++) for(var j=0;j<=k-i;j++){ var u=i/k, w=j/k, r=1-u-w;
@@ -6691,6 +6828,107 @@ var AUSTERLITZ_DEBUG=(function(){
       ok:pm>0&&capped>0&&!over.length, detail:"close on Sokolnitz at 08:20: "+pm+" B and C marks, "+capped+" held at the cap of "+cap.toFixed(1)+" px or their footprint, the largest "+big.toFixed(1)+" px"+(over.length?"; WRONG: "+over.slice(0,4).join("; "):"")});
     MAPCAM.restore(ms0); if(mode!==md) setMode(md);
     setClock(keep,{instant:true,force:true,camera:false}); finishTween();
+    return out;
+  }
+  /* Stage 5D (docs/STAGE5_SPEC.md section B.4): the evidence skeleton at a display factor, the whole day drawn: every leg's piece in
+     one of the drawn ground's triangles at its lift (sampled every 0.5 units), none under it; every anchor mark's triangles likewise */
+  function skelChecks(ck,fct){
+    var lo=layerOn.skeleton, dy=SKEL.day; layerOn.skeleton=true; SKEL.day=true; settle(4,true);
+    var P=SKEL.lines?SKEL.lines.geometry.attributes.position:null, n=0, under=0, worst=1e9, off=0, where="";
+    if(P) for(var q=0;q<P.count;q+=2){ var ax=P.getX(q), ay=P.getY(q), az=P.getZ(q), bx=P.getX(q+1), by=P.getY(q+1), bz=P.getZ(q+1), k=Math.max(1,Math.ceil(Math.hypot(bx-ax,bz-az)/0.5));
+      for(var i=0;i<=k;i++){ var u=i/k, x=ax+(bx-ax)*u, z=az+(bz-az)*u, gap=ay+(by-ay)*u-groundY(x,z); n++;
+        if(gap<-1e-4) under++; if(gap<worst){ worst=gap; where=x.toFixed(1)+", "+z.toFixed(1); } off=Math.max(off,Math.abs(gap-SKEL.LIFT)); } }
+    ck("evidence skeleton: every leg lies on the drawn ground, each piece inside one of its triangles at the lift, no point under it (section B.4)",
+      !!P&&P.count>0&&!under&&off<1e-3, (P?P.count/2:0)+" pieces of "+(SKEL.scope?SKEL.scope.legs.length:0)+" legs, "+n+" points sampled every 0.5 units: "+under+" under the ground; the lowest "+
+      (worst===1e9?"-":worst.toFixed(4))+" units above it ("+where+"); every point within "+off.toExponential(1)+" of the lift "+SKEL.LIFT);
+    var N=0, S=0, U=0, mw=1e9, ml=0;
+    SKEL.marks.forEach(function(m){ var r=confDrape(m,SKEL.MARK_LIFT); N++; S+=r.n; U+=r.under; mw=Math.min(mw,r.worst); ml=Math.max(ml,r.lift); });
+    ck("evidence skeleton: every anchor mark is a patch of the drawn ground's cells at its lift, no point of it under the ground (section B.4)",
+      N>0&&!U&&ml<1e-3, N+" anchors, "+S+" points sampled every 0.5 units across their triangles: "+U+" under; the lowest "+(mw===1e9?"-":mw.toFixed(3))+" above; vertices within "+ml.toExponential(1)+" of the lift");
+    layerOn.skeleton=lo; SKEL.day=dy; settle(2,true);
+  }
+  /* Stage 5D: the skeleton's scope (decision 90), its binding to the track, its shapes, its size, no map-layer item, the paper map,
+     the hover, the legend and the Clean view */
+  function skelDayChecks(){
+    var out=[], keep=clock, md=mode, lo=layerOn.skeleton, dy=SKEL.day, sk0=selection?{k:selection.kind,id:selection.id}:null, pres=presentation, ms0=MAPCAM.state();
+    if(mode!=="terrain") setMode("terrain");
+    select(null,null); layerOn.skeleton=true; SKEL.day=false;
+    function keysOf(sc){ var L={}, A={}; sc.legs.forEach(function(x){ L[x.id+"@"+x.b.ph]=1; }); SKEL.marks.forEach(function(m){ A[m.userData.skel.id+"@"+m.userData.skel.ph]=1; }); return {L:L,A:A}; }
+    function want(test,whole){ var L={}, A={};
+      Object.keys(units).forEach(function(id){ if(!test(id)) return; var Q=anchorList(id);
+        for(var i=0;i<Q.length;i++){ var b=Q[i], a=Q[i-1]; if(whole===true&&b.p!==null) A[id+"@"+b.ph]=1;
+          if(!a||a.p===null||b.p===null) continue; var w=legWindow(a,b);
+          if(whole===true||whole(w)){ L[id+"@"+b.ph]=1; A[id+"@"+a.ph]=1; A[id+"@"+b.ph]=1; } } });
+      return {L:L,A:A}; }
+    function same(a,b){ var ka=Object.keys(a).sort().join(","), kb=Object.keys(b).sort().join(","); return ka===kb; }
+    var bad=[], per=[];
+    for(var ph=0;ph<PHASES.length;ph++){ setClock(PHASES[ph].t0+1,{instant:true,force:true,camera:false}); finishTween(); settle(2,true);
+      var t0=PHASES[ph].t0, t1=PHASES[ph].t1, W0=want(function(){ return true; },function(w){ return w[1]>=t0&&w[0]<=t1; }), G=keysOf(SKEL.scope);
+      if(!same(W0.L,G.L)||!same(W0.A,G.A)) bad.push("phase "+ph+": "+Object.keys(G.L).length+" legs and "+Object.keys(G.A).length+" anchors drawn, want "+Object.keys(W0.L).length+" and "+Object.keys(W0.A).length);
+      per.push(Object.keys(G.L).length+"/"+Object.keys(G.A).length); }
+    var fid=FORMATIONS.sthilaire&&FORMATIONS.sthilaire.parent?FORMATIONS.sthilaire.parent:"sthilaire";
+    setClock(590,{instant:true,force:true,camera:false}); finishTween(); select("f",fid); settle(2,true);
+    var fam=familyOf(fid), WS=want(function(id){ return !!fam[id]; },true), GS=keysOf(SKEL.scope);
+    if(!same(WS.L,GS.L)||!same(WS.A,GS.A)) bad.push("selection "+fid+": "+Object.keys(GS.L).length+" legs, want "+Object.keys(WS.L).length);
+    var nSel=Object.keys(GS.L).length+"/"+Object.keys(GS.A).length;
+    select(null,null); SKEL.day=true; settle(2,true);
+    var WD=want(function(){ return true; },true), GD=keysOf(SKEL.scope);
+    if(!same(WD.L,GD.L)||!same(WD.A,GD.A)) bad.push("whole day: "+Object.keys(GD.L).length+" legs, want "+Object.keys(WD.L).length);
+    out.push({name:"evidence skeleton: the scope (decision 90): with no selection exactly the legs whose window meets the phase and their anchors; the selected formation's family; the whole day",
+      ok:!bad.length, detail:"legs/anchors by phase "+per.join(", ")+"; "+fid+"'s family "+nSel+"; the whole day "+Object.keys(GD.L).length+"/"+Object.keys(GD.A).length+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):"")});
+    /* bound to the track: every mark an anchorList anchor (position, grade by stateAt, its mask); every leg's pieces on legPath, through
+       every via and both anchors */
+    var b2=[], nv=0, worstOff=0;
+    SKEL.marks.forEach(function(m){ var U=m.userData.skel, an=anchorOf(U.id,U.ph), st=stateAt(U.id,U.ph), w=an&&an.p?W(an.p[0],an.p[1]):null;
+      if(!w){ b2.push(U.id+"@"+U.ph+": no plotted anchor"); return; }
+      if(Math.abs(w[0]-U.x)>1e-6||Math.abs(w[1]-U.z)>1e-6) b2.push(U.id+"@"+U.ph+": off its anchor");
+      if(U.cf!==(st?st.cf:"B")||m.material.map!==skelTexture(U.cf,!!an.tm)||U.timed!==!!an.tm) b2.push(U.id+"@"+U.ph+": grade or mask not its own"); });
+    var Pp=SKEL.lines.geometry.attributes.position;
+    SKEL.scope.legs.forEach(function(L){ var pts=legPath(L.a,L.b).pts.map(function(q){ return W(q[0],q[1]); }), ends=[];
+      for(var q=L.seg[0];q<L.seg[1];q++) [2*q,2*q+1].forEach(function(v){ var x=Pp.getX(v), z=Pp.getZ(v), d=1e9; ends.push([x,z]);
+        for(var i=1;i<pts.length;i++){ var A=pts[i-1], B=pts[i], dx=B[0]-A[0], dz=B[1]-A[1], l2=dx*dx+dz*dz, t=l2?Math.max(0,Math.min(1,((x-A[0])*dx+(z-A[1])*dz)/l2)):0;
+          d=Math.min(d,Math.hypot(x-A[0]-dx*t,z-A[1]-dz*t)); } worstOff=Math.max(worstOff,d); });
+      pts.forEach(function(P0){ nv++; if(!ends.some(function(e){ return Math.hypot(e[0]-P0[0],e[1]-P0[1])<1e-6; })) b2.push(L.id+"@"+L.b.ph+": does not pass through "+P0[0].toFixed(1)+", "+P0[1].toFixed(1)); }); });
+    out.push({name:"evidence skeleton: bound to the track: every mark a plotted anchor at its position, graded by stateAt with its grade's mask; every leg on legPath, through its anchors and every via (section B.4)",
+      ok:!b2.length&&worstOff<0.01&&SKEL.marks.length>0, detail:SKEL.marks.length+" anchors, "+SKEL.scope.legs.length+" legs through "+nv+" anchors and vias; every piece within "+worstOff.toExponential(1)+" units of its leg"+(b2.length?"; WRONG: "+b2.slice(0,4).join("; "):"")});
+    /* the grade by shape (A filled, B ring, C small open ring; a tick toward north when timed); one solid line, no dash (decision 15) */
+    function alphaAt(g,tm,fx,fy){ var c=skelTexture(g,tm).image, d=c.getContext("2d").getImageData(Math.round(fx*(c.width-1)),Math.round(fy*(c.height-1)),1,1).data; return d[3]; }
+    var R=SKEL.RING/2, sh={A:[alphaAt("A",false,0.5,0.5),alphaAt("A",false,0.5+R*0.85,0.5)], B:[alphaAt("B",false,0.5,0.5),alphaAt("B",false,0.5+R*0.9,0.5)],
+      C:[alphaAt("C",false,0.5,0.5),alphaAt("C",false,0.5+R*0.6,0.5),alphaAt("C",false,0.5+R*0.9,0.5)]}, tick=[alphaAt("B",true,0.5,0.06),alphaAt("B",false,0.5,0.06)];
+    var shapeOK=sh.A[0]>200&&sh.A[1]>200&&sh.B[0]===0&&sh.B[1]>200&&sh.C[0]===0&&sh.C[1]>150&&sh.C[2]===0&&tick[0]>200&&tick[1]===0;
+    var lineOK=!!SKEL.lines&&SKEL.lines.isLineSegments&&SKEL.lines.material.type==="LineBasicMaterial"&&!SKEL.lines.geometry.attributes.lineDistance&&SKEL.grp.children.filter(function(o){ return o.isLine; }).length===1;
+    out.push({name:"evidence skeleton: the grade by shape, not hue or dash: A a filled disc, B a ring, C a smaller open ring, a tick toward north for an explicit time; the legs one solid line (decisions 4, 15)",
+      ok:shapeOK&&lineOK, detail:"alpha at the centre and on the ring: A "+sh.A.join("/")+", B "+sh.B.join("/")+", C "+sh.C.join("/")+" (C's outer ring "+sh.C[2]+"); the tick "+tick.join(" timed / untimed ")+"; the legs "+(lineOK?"one LineSegments, undashed":"NOT ONE SOLID LINE")});
+    /* its size on screen: about SKEL.PX px across at its distance (within one quantisation step) */
+    flyTo(VANTAGE.field); finishTween(); settle(4,true);
+    var sz=[], szBad=0; SKEL.marks.forEach(function(m){ if(!m.visible) return; var U=m.userData.skel; _skV.set(U.x,groundY(U.x,U.z),U.z);
+      var px=U.side*SKEL.RING/worldPerPx(_skV); sz.push(px); if(Math.abs(Math.log(px/SKEL.PX))>Math.log(SKEL.Q)/2+1e-6) szBad++; });
+    sz.sort(function(a,b){ return a-b; });
+    out.push({name:"evidence skeleton: every anchor about "+SKEL.PX+" px across at its distance (section B.3)", ok:sz.length>0&&!szBad,
+      detail:sz.length+" anchors drawn from the Field vantage, "+(sz.length?sz[0].toFixed(2)+"-"+sz[sz.length-1].toFixed(2):"-")+" px (steps of "+SKEL.Q+")"+(szBad?"; "+szBad+" OUTSIDE":"")});
+    /* not a map-layer item: the same items and drops with it on and off; the hover names an anchor's clock and grade */
+    mlLayout(); var on1=Object.keys(ML.items).filter(function(k){ return ML.items[k].eFrame===ML.frame; }).length, dr1=ML.stats.dropped;
+    var vm=SKEL.marks.filter(function(m){ var U=m.userData.skel; _skV.set(U.x,groundY(U.x,U.z),U.z).project(camera); return m.visible&&_skV.z<1&&Math.abs(_skV.x)<0.8&&Math.abs(_skV.y)<0.8; })[0], tip="", tipWant="";
+    if(vm){ var U5=vm.userData.skel, an5=anchorOf(U5.id,U5.ph); _skV.set(U5.x,groundY(U5.x,U5.z),U5.z).project(camera);
+      mlHoverAt((_skV.x*0.5+0.5)*(renderer.domElement.clientWidth||innerWidth),(-_skV.y*0.5+0.5)*viewH()); tip=renderer.domElement.title;
+      tipWant=fmtClock(an5.arr)+", position "+U5.cf; ML.hover=null; }
+    var lgOn=(paintLegend(),!document.querySelector('.legend [data-lg="skel"]').hidden);
+    layerOn.skeleton=false; settle(2,true); mlLayout();
+    var on0=Object.keys(ML.items).filter(function(k){ return ML.items[k].eFrame===ML.frame; }).length, dr0=ML.stats.dropped, gone=!SKEL.grp&&!SKEL.marks.length;
+    var lgOff=(paintLegend(),document.querySelector('.legend [data-lg="skel"]').hidden);
+    out.push({name:"evidence skeleton: ground drawing, not a map-layer item: the same items and drops with it on and off; hover names an anchor's clock and grade; the legend's row while it is drawn",
+      ok:on1===on0&&dr1===dr0&&!!vm&&tip.indexOf(tipWant)>=0&&lgOn&&lgOff&&gone,
+      detail:"map-layer items "+on1+" on / "+on0+" off, drops "+dr1+" / "+dr0+"; hover: \u201c"+tip+"\u201d"+(tip.indexOf(tipWant)>=0?"":" (WANT "+tipWant+")")+"; the legend's row "+(lgOn?"shown":"MISSING")+" on, "+(lgOff?"hidden":"SHOWN")+" off; removed when off "+gone});
+    /* the paper map, and the Clean view */
+    layerOn.skeleton=true; setMode("staff"); MAPCAM.frameField(true); settle(4,true);
+    var pc=lin(hexNum(TOKENS.sym.label.paper.annotation)), paperOK=SKEL.marks.length>0&&SKEL.lines.material.color.equals(pc)&&SKEL.marks.every(function(m){ return m.material.color.equals(pc); });
+    var vis=SKEL.marks.filter(function(m){ return m.visible; }).length;
+    setMode("terrain"); setPresentation("map"); settle(2,true); var cleanOK=!SKEL.marks.length&&!SKEL.grp; setPresentation(pres); settle(2,true);
+    out.push({name:"evidence skeleton: drawn on the paper map in its own annotation colour; not drawn in the Clean view",
+      ok:paperOK&&vis>0&&cleanOK, detail:"paper map: "+SKEL.marks.length+" anchors ("+vis+" drawn), colour "+(paperOK?"the paper annotation token":"WRONG")+"; Clean: "+(cleanOK?"none":"DRAWN")});
+    layerOn.skeleton=lo; SKEL.day=dy; MAPCAM.restore(ms0); if(mode!==md) setMode(md);
+    if(sk0) select(sk0.k,sk0.id); else select(null,null);
+    setClock(keep,{instant:true,force:true,camera:false}); finishTween(); settle(2,true);
     return out;
   }
   function smokeDayChecks(){
@@ -6901,6 +7139,7 @@ var AUSTERLITZ_DEBUG=(function(){
       paceChecks(ck,fct);   /* Stage 4D */
       extrasChecks(ck,fct); /* Stage 4E */
       confChecks(ck,fct);   /* Stage 5B */
+      skelChecks(ck,fct);   /* Stage 5D */
     }
     DISPLAY.settings.forEach(atFactor);
     stage2bChecks(bySetting).forEach(function(c){ out.push(c); });
@@ -6910,6 +7149,7 @@ var AUSTERLITZ_DEBUG=(function(){
     paceDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4D */
     smokeDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4E */
     confDayChecks().forEach(function(c){ out.push(c); });   /* Stage 5B */
+    skelDayChecks().forEach(function(c){ out.push(c); });   /* Stage 5D */
     setDisplayFactor(saveFactor);
     /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
     var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });

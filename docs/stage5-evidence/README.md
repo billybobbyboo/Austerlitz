@@ -40,3 +40,12 @@ called (`makeFootprint`, `placeFootprint`, the 2B footprint primitive) and their
 | `5c-before.json`, `5c-after.json` | I (5C) | `report-5c.js --json`: at 1600 x 900, 1280 x 720 and 1024 x 768 in Study and Watch, the Field vantage: the rail's width, the timebar's height; the bars drawn (number, lanes, the shortest, an edge's largest distance from its window, bars over a numeral, overlaps in a lane, the band they occupy, the lowest contrast against the timebar over black and white); each marker's centre against its event's start; at 1600 x 900 the minutes the next-event key stops at from 04:00 and the counter-march's marker click and theme moment |
 | `5c-report.md` | I (5C) | `report-5c.js --from 5c-after.json --before 5c-before.json --md`: the two side by side |
 | `5c-sheet.jpg` | I (5C) | `report-5c.js --sheet`: the timebar at 1600 x 900 and 1024 x 768, Study and Watch, on the 5C build |
+
+**Stage 5D** (the evidence skeleton, implemented; decision 90): `report-5d.js` on the 5D build (md5 `c5c47192…`). The skeleton is off by
+default, so each view is measured three times on the same build: as it opens (off: the "before"), on in its scope, and on for the whole day.
+
+| file | section | script |
+|---|---|---|
+| `5d-report.json` | I (5D) | `report-5d.js --json`: per harness view at 1600 x 900 at its factor, four at 1x and 10.33x, and the paper-map views, off / in scope / the whole day: the scope, anchors and legs drawn and in the free rectangle, the skeleton's share of the free rectangle as rendered (`measure.js` `confShare` against the view without it), the map layer's items and drops, the lowest map-text contrast as rendered and the texts below AA, solid near-black, mean luminance, the world pass's time (software) |
+| `5d-report.md` | I (5D) | `report-5d.js --from 5d-report.json --md`: the three side by side |
+| `5d-sheet.jpg` | I (5D) | `report-5d.js --sheet`: six views in scope and for the whole day |

@@ -164,3 +164,19 @@ if(cerrs) process.exitCode=1;
   console.log("confidence marks: "+(cerr.length?cerr.length+" wrong":"no dash, the side's token colour, on by default"));
   if(cerr.length) process.exitCode=1;
 }
+/* Stage 5D (docs/STAGE5_SPEC.md section B.4; decisions 4, 15, 90): the evidence skeleton draws no dash, its colour is the annotation
+   token's, it is off by default with its "whole day" choice off, and both are in the layers panel */
+{
+  const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), sh=fs.readFileSync('shell.html','utf8'), ast=acorn.parse(src,{ecmaVersion:2020}), kerr=[];
+  const want=["skelTexture","skelScope","skelDrape","skelBuild","skelPlaceMarks","skelUpdate","groundPatch"], seen={};
+  ast.body.forEach(n=>{ if(n.type!=="FunctionDeclaration"||!want.includes(n.id.name)) return; seen[n.id.name]=1;
+    const body=src.slice(n.start,n.end); if(/setLineDash|LineDashed|dashSize|dashRuns|computeLineDistances/i.test(body)) kerr.push(n.id.name+" draws a dash"); });
+  want.forEach(f=>{ if(!seen[f]) kerr.push(f+" missing"); });
+  if(!/col=lin\(hexNum\(TOKENS\.sym\.label\[mode==="staff"\?"paper":"dark"\]\.annotation\)\)/.test(src)) kerr.push("the skeleton's colour is not the annotation token");
+  if(!/layerOn=\{[^}]*skeleton:false/.test(src)) kerr.push("the evidence skeleton is not off by default");
+  if(!/var SKEL=\{[^}]*day:false/.test(src)) kerr.push("the skeleton's whole day is not off by default (decision 90)");
+  if(!/data-l="skeleton" aria-pressed="false"/.test(sh)||!/id="skel-day" aria-pressed="false"/.test(sh)) kerr.push("shell.html: the skeleton's buttons are missing or not off");
+  kerr.forEach(e=>console.log("  ! "+e));
+  console.log("evidence skeleton: "+(kerr.length?kerr.length+" wrong":"no dash, the annotation token's colour, off by default with the whole day off"));
+  if(kerr.length) process.exitCode=1;
+}

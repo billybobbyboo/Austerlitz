@@ -1,8 +1,8 @@
 # Evidence made visible: specification (Stage 5, Part A)
 
 **Status: Part A merged (#32); the owner answered questions 1-4 (decisions 85-88, §0.4). 5B (spatial confidence) is merged (#33). The
-owner answered question 6 (decision 89, §0.4); 5C (interval bars, one event clock) is implemented, for review; what 5B and 5C found is
-at the end of §I. Sections A-J below still describe the build they were written against.** Written against `main` at `407cda0` (Stage 4E
+owner answered question 6 (decision 89, §0.4); 5C (interval bars, one event clock) is merged (#34). The owner answered question 7
+(decision 90, §0.4); 5D (the evidence skeleton) is implemented, for review; what 5B, 5C and 5D found is at the end of §I. Sections A-J below still describe the build they were written against.** Written against `main` at `407cda0` (Stage 4E
 merged as #31; with it Stage 4 is complete), whose build `austerlitz-command-map.html` is 1,416,737 bytes, md5
 `e1fac9ea08a4c2b2eaefe5b78529c843`. On it (the same build throughout: this part changes no source file): `check:baseline` passed; `npm test` (all nine suites and the height
 guard) passed; `check:data` found all 113 declarations identical to `archive/stage4d-9b13adbf.html`; `check:chronology` reported 0
@@ -158,10 +158,10 @@ Each is stated, not resolved.
    `DROP_LIMIT` in 9 of 19 landscape harness views (the Field vantage 16 against 11; `plans-probe.js`, §E.2). No harness case opens the
    Plans tab. Outside Stage 5's scope (the Plans tab is not changed); recorded, with a check proposed (§H.3, 5F).
 
-### 0.4 Owner decisions 85-89 (the answers to §J questions 1-4 and 6)
+### 0.4 Owner decisions 85-90 (the answers to §J questions 1-4, 6 and 7)
 
 Part A merged (#32). Before 5B the owner answered the four questions that bind it, each with the recommendation; before 5C, question 6,
-with the recommendation. Questions 5 and 7-13 stay open until the parts they bind.
+and before 5D, question 7, each with the recommendation. Questions 5 and 8-13 stay open until the parts they bind.
 
 | # | question | decision |
 |---|---|---|
@@ -170,6 +170,7 @@ with the recommendation. Questions 5 and 7-13 stay open until the parts they bin
 | 87 | 3, grade A | Drawn as the crisp footprint (every formation on the field has a ground mark). (5B) |
 | 88 | 4, between anchors | The grade `confAt` gives (the weaker anchor's); "interpolated" stays the dossier's word, not a fourth look. (5B) |
 | 89 | 6, an interval's marker | At the interval's start: one event clock (the start) for the marker, a click or Enter on it, the previous/next keys, the themes, the tour, the dwell, the dossier's "Go to this moment" and the map layer's names; the bar shows the window. (5C) |
+| 90 | 7, the skeleton's scope | The selected formation's family; with no selection, the legs whose window meets the current phase and their anchors; a "whole day" choice draws every anchor and leg. Off by default (§B.3). (5D) |
 
 ## A. Spatial confidence: crisp footprint A, soft frontage B, diffuse zone C
 
@@ -856,6 +857,32 @@ Stage 5C):
   ("hh:mm to hh:mm, ...") for an interval; the harness's marker Enter compares the clock with the marker's own minute (now the start);
   `runtime-test.js`'s forward event jumps, which assumed every midpoint distinct (at least 23 hops), now stop exactly once at every distinct
   start after 04:00 and at the end (22 hops).
+
+### 5D, as delivered (the evidence skeleton; decision 90)
+
+Implemented in `app.js` (`SKEL`, `skelTexture`, `skelScope`, `skelDrape`, `skelBuild`, `skelPlaceMarks`, `skelUpdate`, `skelNear`; the
+ground-cell patch `groundPatch`, taken out of 5B's `confPlace` and shared; the hover; the dossier's "Plotted positions"; the legend's
+rows; the sources sheet's sentence; the self-test's checks), `shell.html` (the "Evidence skeleton" and "Skeleton: whole day" buttons, both
+off; the legend's rows), `style.css` (the rows' swatches), as §B.3 proposed, measured by `tools/stage5/report-5d.js`
+(`docs/stage5-evidence/5d-report.md`, `5d-report.json`, `5d-sheet.jpg`; `CHANGELOG.md`, Stage 5D), with these choices made while building it:
+- **The legs are split on the drawn ground's triangles**, not sampled every 0.5 units as the probe drew them: a piece between two
+  samples could pass under the ground where it bends (5B found that for the marks). Each leg is cut wherever it crosses a cell's edge or
+  diagonal (`groundY`'s own triangles), so every piece lies in one triangle at exactly 0.4 units above it (the self-test: 14,796 points
+  over 5,328 pieces at each factor, 0 under, every one within 1e-5 of the lift).
+- **The anchors are patches of the ground's own cells** (5B's decal, `groundPatch`), about 9 px across at their distance (measured
+  8.50-9.52 px from the Field vantage; the size moves in steps of 12%, so a patch is rebuilt only when the scale moves that far), a tick
+  toward true north on the 20 with an explicit time. 0 of 119,280 sampled points under the ground at each factor.
+- **"Whole day" overrides the selection**: it draws every formation's anchors and legs, as its label says; with it off, a selected
+  formation draws its family's whole day and nothing selected the legs meeting the phase (decision 90).
+- **The text carrier**: on hover the canvas names the anchor (the self-test's: "Imperial Headquarters: plotted at 04:00, position A (evidence skeleton)"); with the layer
+  on, the full dossier lists the formation's plotted positions (clock and grade, "timed" for an explicit time). A per-anchor accessible
+  name on the map would make each anchor a map-layer item (up to 180), which §B.3 item 3 rules out.
+- **Not drawn in Clean**, as the other annotations; drawn on the paper map in the paper's annotation colour.
+
+Per view (fact; `report-5d.js`, 23 views): with the skeleton on, in scope or for the whole day, the map layer's items and drops are the
+views' own in every view, 0 map texts below AA and the lowest contrast unchanged in every view; its share of the free rectangle 0.1-1.2% in
+scope and 0.5-3.9% for the whole day (the probe: up to 1.2% and 3.6%); the world pass at 4x and 10.33x (software WebGL, 14 views) on
+average 5.85 ms off, 5.51 in scope, 6.14 for the whole day, at most 9.0. Off by default, the views as they open are drawn as before.
 
 ## J. Questions for the owner
 

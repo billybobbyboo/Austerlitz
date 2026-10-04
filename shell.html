@@ -125,6 +125,11 @@
     <!-- Stage 5B (docs/STAGE5_SPEC.md section A.4; decision 85) -->
     <button class="lp-row layer-btn" data-l="confidence" aria-pressed="true">
       <b>Position confidence</b><i>Each formation's ground drawn by its position grade: crisp A, soft B, diffuse C</i></button>
+    <!-- Stage 5D (docs/STAGE5_SPEC.md section B.3; decision 90): off by default; the selection, else this phase, or the whole day -->
+    <button class="lp-row layer-btn" data-l="skeleton" aria-pressed="false">
+      <b>Evidence skeleton</b><i>The plotted positions (filled A, ring B, open ring C) and the lines interpolated between them: the selected formation, else this phase</i></button>
+    <button class="lp-row" id="skel-day" aria-pressed="false">
+      <b>Skeleton: whole day</b><i>Every formation's plotted positions and lines over the whole day</i></button>
   </div>
   <div class="lp-sec">
     <p class="lp-lbl">Reading the ground</p>
@@ -195,6 +200,11 @@
     <div class="k" data-lg="conf-b"><span>B: sector documented, frontage approximate</span><span class="cfk cfk-b"></span></div>
     <div class="k" data-lg="conf-c"><span>C: reconstructed, position indicative</span><span class="cfk cfk-c"></span></div>
     <div class="k" data-lg="conf"><span>grade sizes are drawn, not measured errors</span></div>
+    <!-- Stage 5D: the evidence skeleton's anchors by grade (shape, not hue or dash) and its lines; only the rows drawn on screen -->
+    <div class="k" data-lg="skel-a"><span>plotted position, A</span><span class="skk skk-a"></span></div>
+    <div class="k" data-lg="skel-b"><span>plotted position, B</span><span class="skk skk-b"></span></div>
+    <div class="k" data-lg="skel-c"><span>plotted position, C</span><span class="skk skk-c"></span></div>
+    <div class="k" data-lg="skel"><span>interpolated between plotted positions: not a recorded route &middot; a tick: an explicit time</span><span class="skk skk-l"></span></div>
     <div class="k" data-lg="analysis"><span>dashed: valley floor, dead ground</span><span class="dsh"></span></div>
     <div class="k" data-lg="contours"><span>contour interval</span><span class="val" id="contour-val">&asymp; 9 m</span></div>
     <div class="k"><span id="exag-line"></span></div>
