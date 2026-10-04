@@ -99,7 +99,9 @@ const CLASS={
      drawn ground */
   "app.js:eyesViewshed":"model","app.js:eyePlace":"presentation","app.js:eyeEnter":"presentation","app.js:camFloor":"presentation","app.js:clampCamera":"presentation",
   /* Stage 5E: the self-test's eye height and its fog threshold over the viewshed (the rule's own model height) */
-  "app.js:eyesChecks":"test","app.js:eyesDayChecks":"test"
+  "app.js:eyesChecks":"test","app.js:eyesDayChecks":"test",
+  /* Stage 5F: the ordered routes' dashes, clipped to the drawn ground's triangles, at their lift */
+  "app.js:routeDrapePoly > v":"presentation","app.js:routeChecks":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */

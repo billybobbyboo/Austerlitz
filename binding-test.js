@@ -86,7 +86,9 @@ const nArrows=B.rows.length;
 
 /* ---- 2. dashes (static) ---- */
 const DASH=[/LineDashedMaterial/,/computeLineDistances/,/setLineDash/,/\bdashRuns\(/,/\.dash\b/,/\bruns\s*:/];
-const ALLOWED={"app.js":["dashRuns","buildArrow","planStaging","buildPlanLinks","updatePlanLinks","drapedRibbon"],
+/* Stage 5F (docs/STAGE5_SPEC.md section E.4; decision 93): routeBuild, the ordered routes of the two plans, is the one new dashed drawer,
+   and it draws only PLANS' routes (checked below) */
+const ALLOWED={"app.js":["dashRuns","buildArrow","planStaging","buildPlanLinks","updatePlanLinks","drapedRibbon","routeBuild"],
                "world.js":["buildAnalysis"]};
 const dashers={};
 ["app.js","world.js","symbols.js"].forEach(file=>{
@@ -104,6 +106,7 @@ const dashers={};
     const ba=fn("buildArrow");
     ok(/runs\s*:\s*a\.kind==="axis"\?dashRuns\(/.test(ba), "app.js: buildArrow dashes something other than the axis arrows");
     const ps=fn("planStaging"); ok(/dashRuns\(/.test(ps), "app.js: the plan staging outline is no longer dashed");
+    const rb=fn("routeBuild"); ok(/dashRuns\(/.test(rb)&&/PLANS\[sd\]\.cols\[ci\]/.test(rb)&&/c\.route\.map/.test(rb), "app.js: routeBuild dashes something other than a plan column's ordered route");
     /* Stage 4D (docs/STAGE4_SPEC.md section D.4): only an arrow derived from an executed leg draws on with the clock */
     ok((src.match(/DRAWON\.push\(/g)||[]).length===1&&/if\(a\.leg\)\{ var d=\{[^{}]*\}; DRAWON\.push\(/.test(ba), "app.js: an arrow that is not derived (a.leg) draws on with the clock");
     ["buildBoundary","buildLine","buildHalt","buildObjective","planStaging","buildPlanLinks"].forEach(nm=>{ ok(!/DRAWON/.test(fn(nm)), "app.js: "+nm+" draws on with the clock"); });

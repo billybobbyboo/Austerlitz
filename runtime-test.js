@@ -518,6 +518,17 @@ try{
     if(!n||diff||c1!=="fr"||c2!=="al"||c3!=="none") throw new Error("Whose eyes: "+diff+" of "+n+" readings not the rule's at the clock; the cycle "+[c1,c2,c3].join(","));
     console.log("Whose eyes: "+n+" readings at the clock, each the rule's afresh; reasons "+JSON.stringify(why)+"; the control cycles everyone, Napoleon, the Allied headquarters OK"); }
 
+  /* Stage 5F (docs/STAGE5_SPEC.md section E.4; decision 93): the ordered routes, dry run. Off by default; on at 09:30, every column; in
+     phase 0 with the arrows drawn, not the four the axis arrows draw; with Saint-Hilaire selected, his two columns; off, nothing left */
+  { if(layerOn.routes||ROUTES.grp) throw new Error("the ordered routes are not off by default");
+    select(null,null); layerOn.routes=true; setClock(570,{instant:true,force:true,camera:false}); updateVisibility(); const all=ROUTES.grp?ROUTES.grp.children.length:0;
+    setClock(250,{instant:true,force:true,camera:false}); updateVisibility(); const ph0=ROUTES.grp?ROUTES.grp.children.length:0;
+    setClock(570,{instant:true,force:true,camera:false}); select("f","sthilaire"); updateVisibility(); const sel=ROUTES.grp?ROUTES.grp.children.length:0; select(null,null);
+    layerOn.routes=false; updateVisibility();
+    const cols=PLANS.al.cols.length+PLANS.fr.cols.length, ax=Object.keys(routeAxis0()).length;
+    if(all!==cols||ax!==4||ph0>cols-4||sel!==2||ROUTES.grp) throw new Error("ordered routes: "+all+" of "+cols+" at 09:30, "+ph0+" at 04:10 ("+ax+" axis columns), "+sel+" for Saint-Hilaire, left when off "+!!ROUTES.grp);
+    console.log("ordered routes: off by default; "+all+" columns at 09:30, "+ph0+" at 04:10 (the "+ax+" axis arrows' columns left to them), "+sel+" for Saint-Hilaire; none left when switched off OK"); }
+
   /* the armies are ranks of figures now, with national colours on the standards */
   const inf=units.sthilaire.block.userData, cav=units.nansouty.block.userData;
   const infN=inf.figs.reduce((a,f)=>a+f.n,0), cavN=cav.figs.reduce((a,f)=>a+f.n,0);

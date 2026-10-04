@@ -134,6 +134,9 @@
       <b>Evidence skeleton</b><i>The plotted positions (filled A, ring B, open ring C) and the lines interpolated between them: the selected formation, else this phase</i></button>
     <button class="lp-row" id="skel-day" aria-pressed="false">
       <b>Skeleton: whole day</b><i>Every formation's plotted positions and lines over the whole day</i></button>
+    <!-- Stage 5F (docs/STAGE5_SPEC.md section E.3; decision 93): off by default; the plans' lines of march, dashed (decision 15) -->
+    <button class="lp-row layer-btn" data-l="routes" aria-pressed="false">
+      <b>Ordered routes</b><i>Each plan column's line of march, dashed: what was ordered, not what was marched</i></button>
   </div>
   <div class="lp-sec">
     <p class="lp-lbl">Reading the ground</p>
@@ -209,6 +212,8 @@
     <div class="k" data-lg="skel-b"><span>plotted position, B</span><span class="skk skk-b"></span></div>
     <div class="k" data-lg="skel-c"><span>plotted position, C</span><span class="skk skk-c"></span></div>
     <div class="k" data-lg="skel"><span>interpolated between plotted positions: not a recorded route &middot; a tick: an explicit time</span><span class="skk skk-l"></span></div>
+    <!-- Stage 5F: the ordered routes -->
+    <div class="k" data-lg="routes"><span>ordered routes (dashed): the columns' lines of march in the two plans, as the plans set them out; not what was marched</span><span class="dsh"></span></div>
     <div class="k" data-lg="analysis"><span>dashed: valley floor, dead ground</span><span class="dsh"></span></div>
     <div class="k" data-lg="contours"><span>contour interval</span><span class="val" id="contour-val">&asymp; 9 m</span></div>
     <div class="k"><span id="exag-line"></span></div>

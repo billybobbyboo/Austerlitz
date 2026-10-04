@@ -1,8 +1,85 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 5F: the ordered routes, and the Plans tab's harness case (docs/STAGE5_SPEC.md §E, §I; owner decisions 93, 94)
+
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,510,672 bytes, md5 `4c7bb9e436086a824972f5183b838e58`**
+(was 1,492,181 bytes, md5 `b50a087c…`, Stage 5E).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. `PLANS` and
+  `OVERLAYS` are read, not changed; the Plans tab is unchanged. Presentation only.
+- Recorded with this part: Stage 5E merged (#36); the owner's answers to questions 9 and 13, decisions 93 and 94 (`docs/STAGE5_SPEC.md` §0.4).
+
+**Before building (fact).** `main` (c9062c1, 5E merged as #36) matched `check:baseline` (md5 `b50a087c…`, 1,492,181 bytes).
+
+**What changed** (`app.js`, `shell.html`)
+- **"Ordered routes"**, a layer, off by default (decision 93; not called ghosts, since decision 83's faint whole arrow is one): each plan
+  column's route (`PLANS[side].cols[].route`) as a ribbon about 100 m wide, in the side's colour at 30%, **dashed** (decision 15: planned;
+  `dashRuns`, 4-unit dashes at a duty of 0.6), no head, label, staging or objective; depth-tested, so the figures stand on it; nothing dimmed.
+- **Which routes**: with a formation selected, the columns naming its family; else every column while a formation it names is on the field
+  before its last anchor; in phase 0, while the movement arrows are drawn, not the four columns (the 1st to 4th) whose axis arrows `OVERLAYS`
+  already draws, found by distance (each axis arrow's points lie 25-46 m on average from its column's route), so no route is drawn twice.
+- **Each dash clipped to the drawn ground's own triangles**: every point of it 0.3 units above the ground, none under it, at every factor
+  and on the paper map.
+- **Where plan and execution part** (§E.3 item 3), in the formation's dossier while the layer is on, derived: "4th Column: at most 4.8 km
+  from it", the largest distance of the executed track from the column's route, every 10 minutes over the day.
+- **The legend** (the legend's own dash sample: "ordered routes (dashed): the columns' lines of march in the two plans, as the plans set
+  them out; not what was marched") and **the sources sheet** (a sentence written by the app; `SOURCE_NOTE` unchanged).
+- **The Plans tab's harness case** (decision 94): `plans-overview`, both plans at the Overview vantage, Study, 09:30.
+
+**Decisions taken while building it** (`docs/STAGE5_SPEC.md` §I, "5F, as delivered")
+- **Clipped, not vertex-draped**: the Part A prototype draped its ribbon at vertices, which 5B found cuts under the ground at 10.33x.
+- **The phase-0 rule only while the arrows are drawn**: with the movement arrows off, nothing else draws those four routes.
+- **The dossier's distance only with the layer on**, as 5D's plotted positions.
+- **Not drawn at the eye level** (they would stand above a 1x eye) nor in Clean.
+- **The self-test starts without the Plans overlay** and restores it after: the Plans case is the last on its page, and the overlay dims
+  every formation.
+- **The Plans case keeps the rail on its Now tab** (the overlay stays when the visitor leaves the Plans tab): with the Plans tab shown, the
+  3B rule that Study shows the Now tab (decision 55) failed the case in the first full run; the rule is kept, the case changed.
+- `report-5f.js` measured the build before that change (md5 `1ff58879…`), which differs only in how the harness's case opens the Plans
+  overlay (`applyCase`); what the views draw is the same.
+
+**Measured** (`tools/stage5/report-5f.js`; `docs/stage5-evidence/5f-report.md`, `5f-sheet.jpg`; 23 views, off and on)
+- **Drops** unchanged in every view; **map text** 0 below AA, the lowest contrast at most 0.10 lower (overview-field 8.32 to 8.22); **their
+  share** of the free rectangle 0.1-4.4% (Part A's prototype: 0.2-7.1%); **the world pass** (software, 14 views at 4x and 10.33x) on average
+  5.73 ms off and 5.64 ms on.
+- **Where plan and execution part** (derived), reproducing the census of §E.1: Miloradovich 4.80 km, Kollowrath 5.12, Liechtenstein 5.51,
+  Friant 6.46 (against the bait's route, which follows Legrand's stretch of the Goldbach), Vandamme 5.04 (the second axis); Legrand 0.45,
+  Przybyszewski 0.66. Why a column left its route is the narrative's, not this measure's.
+- **The Plans tab at the Overview** drops 11 map items (ten place names and the Allied headquarters' name), as Part A's probe found there for
+  both plans; that is its limit.
+
+**Tests** (none loosened; new)
+- **Self-test** (191 checks, was 185; 6 new): at 1x, 4x and 10.33x every dash's triangles sampled every 0.5 units (31,362 points over 3,934 triangles), 0
+  under the drawn ground, every point within 1e-5 of the lift; once: each route on its column's `PLANS` route (every point within half the
+  ribbon's width), dashed at its duty (0.600 of each route's length), depth-tested in the transparent pass, at 30%, nothing dimmed; the scope
+  phase by phase against an independent computation (10, 14, ..., 13, 0 routes), Saint-Hilaire's two columns, the four axis columns and the
+  rule with the arrows off; the dossier's derived distance, the legend's row, the paper map (14 routes), none in Clean.
+- **Harness**: new, in every view but the eye level the routes on: the map layer's items and drops as without them, text at AA;
+  `plans-overview` with its limit (11).
+- **`binding-test.js`**: `routeBuild` is the one new dashed drawer, allowed because it dashes only a plan column's route (checked).
+- **`css-test.js`**: new, off by default, named "Ordered routes", the side's token colour, the legend's dash sample. **`runtime-test.js`**:
+  new, a dry run (14 columns at 09:30, 10 at 04:10, 2 for Saint-Hilaire, none left when off).
+- **Height guard**: two new call sites classified (`routeDrapePoly` presentation, `routeChecks` test).
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard (`binding-test.js` 383 checks, 0 failed).
+- `npm run check:baseline`: moved to this build (md5 `4c7bb9e4…`, 1,510,672 bytes); passes.
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:contrast`: 4,990 text elements in 31 states (4,985 on 5E), 0 below AA, 0 below 10.5 px.
+- `npm run check:visual`: all checks passed: 23 views (`plans-overview` 11 drops at its limit of 11, 0 map texts below AA); in the 19 views
+  that measure it the routes on left the map layer's items and drops as they were, text at AA, at most 4.8% of the free rectangle; the day's
+  light, the valley fog's hours, the horizon, the key tests; the self-test 191 of 191; the two known Canvas2D warnings. The first full run
+  failed one check, the Plans case with the Plans tab shown (decision 55, above); the run reported here is on the committed build.
+
+**Not done, or open**
+- The Plans tab still drops up to 11 more map items than without it when opened from a moved camera (§0.3 item 14): the fix is a task
+  after Stage 5 (decision 94).
+- On the framed paper map the routes are faint (0.1% of the free rectangle at 28 px per km): by design, a faint mark; for the owner's eye.
+
 ## 2026-10 · Stage 5E: "Whose eyes?" and the eye-level vantage (docs/STAGE5_SPEC.md §D, §I; owner decisions 91, 92)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,492,181 bytes, md5 `b50a087c046a6dd124a66badb068f30d`**
+**Status: merged (#36). `austerlitz-command-map.html`: 1,492,181 bytes, md5 `b50a087c046a6dd124a66badb068f30d`**
 (was 1,466,861 bytes, md5 `c5c47192…`, Stage 5D).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. The knowledge rule

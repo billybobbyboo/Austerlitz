@@ -58,3 +58,13 @@ The "before" of the reading is computed on the same build (the cache keyed by th
 | `5e-report.json` | I (5E) | `report-5e.js --json`: the reading every 10 minutes for both headquarters (the readings the phase's cache would have drawn otherwise, by kind); reported only on screen (both headquarters at 05:00, 08:00 and 10:00, in the landscape, with counters and on the paper map framed: drawn as the C zone, with figures, name or counter drawn, marked "?"); the viewshed from each headquarters' plotted position at each anchor (ground in sight, of it fogged, cells against the rule's threshold, its time, software); the eye-level vantage (Napoleon's headquarters at 08:30, 10:00, 13:00, the Allied at 08:00, 10:00, at 1x, 4x and 10.33x: the eye's height against 3 m scaled, enemy figures drawn and hidden from the headquarters, "not known" drawn, reported zones, drops, solid near-black, mean luminance, the lowest map-text contrast as rendered, the world pass) |
 | `5e-report.md` | I (5E) | `report-5e.js --from 5e-report.json --md` |
 | `5e-sheet.jpg` | I (5E) | `report-5e.js --sheet`: the eye level at five places and factors |
+
+**Stage 5F** (the ordered routes, implemented; decisions 93, 94): `report-5f.js` on a 5F build (md5 `1ff58879…`; the committed build, `4c7bb9e4…`, differs
+only in how the harness's Plans case opens the overlay). The routes are off by
+default, so each view is measured twice on the same build: as it opens (off: the "before") and with the routes on.
+
+| file | section | script |
+|---|---|---|
+| `5f-report.json` | I (5F) | `report-5f.js --json`: per harness view at 1600 x 900 at its factor, four at 1x and 10.33x, and the paper-map views, off and on: routes drawn and in the free rectangle, their share of the free rectangle as rendered, the map layer's items and drops, the lowest map-text contrast as rendered and the texts below AA, solid near-black, the world pass (software); for every formation a column names, the largest distance of its executed position from the column's route (derived, every 10 minutes); the phase-0 axis arrows' columns |
+| `5f-report.md` | I (5F) | `report-5f.js --from 5f-report.json --md` |
+| `5f-sheet.jpg` | I (5F) | `report-5f.js --sheet`: four views with the routes on |
