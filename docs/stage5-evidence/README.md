@@ -68,3 +68,12 @@ default, so each view is measured twice on the same build: as it opens (off: the
 | `5f-report.json` | I (5F) | `report-5f.js --json`: per harness view at 1600 x 900 at its factor, four at 1x and 10.33x, and the paper-map views, off and on: routes drawn and in the free rectangle, their share of the free rectangle as rendered, the map layer's items and drops, the lowest map-text contrast as rendered and the texts below AA, solid near-black, the world pass (software); for every formation a column names, the largest distance of its executed position from the column's route (derived, every 10 minutes); the phase-0 axis arrows' columns |
 | `5f-report.md` | I (5F) | `report-5f.js --from 5f-report.json --md` |
 | `5f-sheet.jpg` | I (5F) | `report-5f.js --sheet`: four views with the routes on |
+
+**Stage 5G** (the day-track inset, implemented; decision 95): `report-5g.js` on a 5G build (md5 `276dc048…`; the committed build, `4c12cac6…`, differs only in the inset's text colour
+attribute), at 09:50.
+
+| file | section | script |
+|---|---|---|
+| `5g-report.json` | I (5G) | `report-5g.js --json`: per leaf formation and IV Corps, anchors and the marks drawn for them, px per km, the scale bar, the shortest leg in inset px, the ordered routes drawn; Saint-Hilaire's full dossier at 1600 x 900, 1280 x 720 (docked) and 1024 x 768 (the card): the inset's size, the dossier's height with and without it, whether it scrolls |
+| `5g-report.md` | I (5G) | `report-5g.js --from 5g-report.json --md` |
+| `5g-sheet.jpg` | I (5G) | `report-5g.js --sheet`: six insets, docked |

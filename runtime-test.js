@@ -529,6 +529,17 @@ try{
     if(all!==cols||ax!==4||ph0>cols-4||sel!==2||ROUTES.grp) throw new Error("ordered routes: "+all+" of "+cols+" at 09:30, "+ph0+" at 04:10 ("+ax+" axis columns), "+sel+" for Saint-Hilaire, left when off "+!!ROUTES.grp);
     console.log("ordered routes: off by default; "+all+" columns at 09:30, "+ph0+" at 04:10 (the "+ax+" axis arrows' columns left to them), "+sel+" for Saint-Hilaire; none left when switched off OK"); }
 
+  /* Stage 5G (docs/STAGE5_SPEC.md section F.4): the day-track's model, dry run: every leaf formation's inset holds its anchors in order,
+     its legs through their vias, its frame inside the inset */
+  { let n=0, bad=[]; setClock(590,{instant:true,force:true,camera:false});
+    Object.keys(units).forEach(id=>{ if(!FORMATIONS[id].track) return; const M=dayTrackModel(id); n++; if(!M){ bad.push(id+" none"); return; }
+      const A=anchorList(id).filter(a=>a.p!==null), flat=[].concat(...M.leaves[0].anchors.map(g=>g.members));
+      if(flat.length!==A.length||flat.some((m,i)=>m.an!==A[i])) bad.push(id+" anchors");
+      if(M.leaves[0].legs.some(l=>l.pts.length!==legPath(l.a,l.b).pts.length)) bad.push(id+" vias");
+      if(!(M.bar.px>0&&M.bar.px<=0.4*DT.W)) bad.push(id+" bar"); });
+    if(!n||bad.length) throw new Error("day-track: "+bad.length+" of "+n+" wrong: "+bad.slice(0,4).join(", "));
+    console.log("day-track: "+n+" formations, each its anchors in order, its legs through their vias, its scale bar within the inset OK"); }
+
   /* the armies are ranks of figures now, with national colours on the standards */
   const inf=units.sthilaire.block.userData, cav=units.nansouty.block.userData;
   const infN=inf.figs.reduce((a,f)=>a+f.n,0), cavN=cav.figs.reduce((a,f)=>a+f.n,0);

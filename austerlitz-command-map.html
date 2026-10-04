@@ -699,6 +699,16 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 .eyecap p{margin:0}
 .eyecap .eyenote{margin-top:4px;color:var(--text-body);font-size:var(--t-small)}
 .eyecap .ltag{margin-right:4px;vertical-align:1px}
+
+/* Stage 5G (docs/STAGE5_SPEC.md section F.3): the day-track inset in the dossier */
+.daytrack{margin:6px 0 4px}
+.daytrack .dt-map{border:1px solid var(--line-2);border-radius:2px;line-height:0}
+.daytrack svg{display:block;width:100%;height:auto}
+.daytrack .dt-a{cursor:pointer;outline:none}
+.daytrack .dt-ring{visibility:hidden}
+.daytrack .dt-a:focus-visible .dt-ring,.daytrack .dt-a:hover .dt-ring{visibility:visible}
+.dt-key{margin:5px 0 0;color:var(--text-body);font-size:var(--t-small);line-height:1.4}
+.dt-note{margin:4px 0 0;color:var(--text-muted);font-size:var(--t-small);line-height:1.4}
 </style>
 </head>
 <body>
@@ -5829,6 +5839,96 @@ function routeDeviation(id){
     if(n) out.push({col:c.n,km:m*KM_PER_MAP}); }); });
   return out;
 }
+/* ---- the day-track (Stage 5G; docs/STAGE5_SPEC.md section F.3; owner decision 95) ----
+   A small north-up map of a formation's day in its full dossier: SVG at one fitted scale (never more than the inset's width per km, so
+   at least 1 km across), north up (GEOREF.NORTH, as the paper map), over the paper map's ground drawn small from the same geography
+   (woods, villages, streams, the meres; no hillshade). It draws, from the data as it is: the anchors (anchorList) as the skeleton's
+   marks by grade (stateAt: A filled, B a ring, C a small ring; a tick toward north for an explicit time), each a keyboard stop in time
+   order whose name and title give its clock and grade, and whose click sets the clock to its arrival, the selection kept; the legs
+   (legPath, through every via) as a thin solid line, the leg in progress in the side's colour; the position at the clock as a dot; the
+   formation's ordered route, where a PLANS column names it, dashed (decision 15: planned; decision 95). Two consecutive anchors closer
+   than DT.MERGE px are one mark listing both clocks; nothing is enlarged out of scale. An aggregate shows its leaves' days together, each
+   leaf's line named on hover; no aggregate track is invented. The side's colours are its deep ones, the only ones at 3:1 against the
+   paper ground. */
+var DT={W:240, H:160, PAD:14, FOOT:14, MERGE:8, R:{A:4.2,B:3.8,C:2.6}};
+/* the inset's projection: world (x,z) to inset px, north up, one scale s (px per world unit) */
+function dtFrame(pts){
+  var N=GEOREF.NORTH, nl=Math.hypot(N[0],N[1]), Nx=N[0]/nl, Nz=N[1]/nl, Ex=-Nz, Ez=Nx;
+  var e=pts.map(function(w){ return w[0]*Ex+w[1]*Ez; }), n=pts.map(function(w){ return w[0]*Nx+w[1]*Nz; });
+  var e0=Math.min.apply(null,e), e1=Math.max.apply(null,e), n0=Math.min.apply(null,n), n1=Math.max.apply(null,n);
+  var aw=DT.W-2*DT.PAD, ah=DT.H-2*DT.PAD-DT.FOOT, s=Math.min(aw/Math.max(1e-9,e1-e0),ah/Math.max(1e-9,n1-n0),aw/GEOREF.UNITS_PER_KM);
+  var tx=DT.PAD+aw/2-s*(e0+e1)/2, ty=DT.PAD+ah/2+s*(n0+n1)/2;
+  return {s:s,Nx:Nx,Nz:Nz,Ex:Ex,Ez:Ez,tx:tx,ty:ty,P:function(w){ return [tx+s*(w[0]*Ex+w[1]*Ez),ty-s*(w[0]*Nx+w[1]*Nz)]; }};
+}
+function dtNum(v){ return (Math.round(v*100)/100).toString(); }
+/* the model of a formation's day-track: {ids, frame, leaves:[{id, anchors:[{an,cf,timed,pt,members}], legs:[{a,b,pts,now}], dot, routes}], bar} */
+function dayTrackModel(id){
+  var f=FORMATIONS[id]; if(!f) return null;
+  var ids=f.track?[id]:leavesOf(id,[]).filter(function(k){ return !!FORMATIONS[k].track; });
+  var all=[];
+  ids.forEach(function(k){ anchorList(k).forEach(function(a){ if(a.p){ all.push(W(a.p[0],a.p[1])); (a.via||[]).forEach(function(v){ all.push(W(v[0],v[1])); }); } }); });
+  if(!all.length) return null;
+  var F=dtFrame(all), out={ids:ids,frame:F,leaves:[]};
+  ids.forEach(function(k){
+    var A=anchorList(k).filter(function(a){ return a.p!==null; }), L={id:k,anchors:[],legs:[],dot:null,routes:[]}, cur=legAt(k,clock);
+    A.forEach(function(a){ var st=stateAt(k,a.ph), pt=F.P(W(a.p[0],a.p[1])), last=L.anchors[L.anchors.length-1];
+      var mk={an:a,cf:st?st.cf:"B",timed:!!a.tm};
+      if(last&&Math.hypot(pt[0]-last.pt[0],pt[1]-last.pt[1])<DT.MERGE){ last.members.push(mk); last.cf=worseGrade(last.cf,mk.cf); last.timed=last.timed||mk.timed; }
+      else L.anchors.push({pt:pt,cf:mk.cf,timed:mk.timed,members:[mk]}); });
+    var AA=anchorList(k);
+    for(var i=1;i<AA.length;i++){ var a=AA[i-1], b=AA[i]; if(!a.p||!b.p) continue;
+      L.legs.push({a:a,b:b,pts:legPath(a,b).pts.map(function(q){ return F.P(W(q[0],q[1])); }),now:!!(cur&&cur.b===b&&cur.u>0&&cur.u<1)}); }
+    var p=posNow(k); if(p) L.dot=F.P(W(p[0],p[1]));
+    ["al","fr"].forEach(function(sd){ PLANS[sd].cols.forEach(function(c){ if(c.forms.indexOf(k)>=0) L.routes.push({col:c.n,pts:c.route.map(function(q){ return F.P(W(q[0],q[1])); })}); }); });
+    out.leaves.push(L); });
+  var kmPx=F.s*GEOREF.UNITS_PER_KM, steps=[0.25,0.5,1,2,3,5], km=steps[0];
+  steps.forEach(function(v){ if(v*kmPx<=0.4*DT.W) km=v; });
+  out.bar={km:km,px:km*kmPx};
+  return out;
+}
+/* the inset as DOM: a figure with the SVG and its key */
+function dayTrackEl(id){
+  var M=dayTrackModel(id); if(!M) return null;
+  var f=FORMATIONS[id], sd=sideOfNation(f.nation), P=TOKENS.sym.paperMap, ink=TOKENS.sym.label.paper.ink, side=TOKENS.sym.side[sd].deep, F=M.frame, leaf=!!f.track;
+  var g='<rect x="0" y="0" width="'+DT.W+'" height="'+DT.H+'" fill="'+P.ground.field+'"/>';
+  /* the ground, in world units under one transform: woods, villages, the meres, the streams */
+  var mtx=[F.s*F.Ex,-F.s*F.Nx,F.s*F.Ez,-F.s*F.Nz,F.tx,F.ty].map(dtNum).join(" ");
+  g+='<g transform="matrix('+mtx+')">';
+  WOODS.forEach(function(w){ var c=W(w.c[0],w.c[1]); g+='<ellipse cx="'+dtNum(c[0])+'" cy="'+dtNum(c[1])+'" rx="'+dtNum(w.rx*0.5)+'" ry="'+dtNum(w.ry*0.5)+'" transform="rotate('+dtNum(w.rot*180/Math.PI)+' '+dtNum(c[0])+' '+dtNum(c[1])+')" fill="'+P.wood.fill+'" stroke="'+P.wood.edge+'" stroke-width="0.6" vector-effect="non-scaling-stroke"/>'; });
+  VILLAGES.forEach(function(v){ var c=W(v[1],v[2]); g+='<circle cx="'+dtNum(c[0])+'" cy="'+dtNum(c[1])+'" r="'+dtNum(v[3]*0.5)+'" fill="'+P.village.fill+'" stroke="'+P.village.edge+'" stroke-width="0.6" vector-effect="non-scaling-stroke"/>'; });
+  [[SATS,28,10.5],[MENI,23,9]].forEach(function(m){ g+='<ellipse cx="'+dtNum(m[0][0])+'" cy="'+dtNum(m[0][1])+'" rx="'+m[1]+'" ry="'+m[2]+'" fill="'+P.ground.water+'"/>'; });
+  [GOLDBACH,LITAVA].concat(BROOKS).forEach(function(l){ g+='<polyline points="'+l.map(function(q){ return dtNum(q[0])+","+dtNum(q[1]); }).join(" ")+'" fill="none" stroke="'+P.marsh+'" stroke-width="0.9" vector-effect="non-scaling-stroke"/>'; });
+  g+='</g>';
+  function pl(pts){ return pts.map(function(q){ return dtNum(q[0])+","+dtNum(q[1]); }).join(" "); }
+  M.leaves.forEach(function(L){ var nm=esc(FORMATIONS[L.id].name);
+    L.routes.forEach(function(r){ g+='<polyline class="dt-route" points="'+pl(r.pts)+'" fill="none" stroke="'+side+'" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.9"><title>'+esc("Ordered route: "+r.col)+'</title></polyline>'; });
+    L.legs.forEach(function(lg){ g+='<polyline class="dt-leg'+(lg.now?' now':'')+'" points="'+pl(lg.pts)+'" fill="none" stroke="'+(lg.now?side:ink)+'" stroke-width="'+(lg.now?2.2:1.3)+'" opacity="0.85"><title>'+nm+': '+esc(fmtClock(lg.b.w?lg.b.w[0]:lg.b.arr))+'-'+esc(fmtClock(lg.b.arr))+', interpolated</title></polyline>'; }); });
+  M.leaves.forEach(function(L){
+    L.anchors.forEach(function(A){ var x=A.pt[0], y=A.pt[1], r=leaf?DT.R[A.cf]:DT.R[A.cf]*0.7;
+      var words=A.members.map(function(m){ return fmtClock(m.an.arr)+", position "+m.cf+(m.timed?", an explicit time":""); }).join("; then ");
+      var lab=(leaf?"":FORMATIONS[L.id].name+": ")+words+" (plotted)";
+      var shape=A.cf==="A"?'<circle cx="'+dtNum(x)+'" cy="'+dtNum(y)+'" r="'+r+'" fill="'+ink+'"/>':'<circle cx="'+dtNum(x)+'" cy="'+dtNum(y)+'" r="'+r+'" fill="none" stroke="'+ink+'" stroke-width="'+(A.cf==="C"?1.2:1.6)+'"/>';
+      if(A.timed) shape+='<line x1="'+dtNum(x)+'" y1="'+dtNum(y-r)+'" x2="'+dtNum(x)+'" y2="'+dtNum(y-r-4)+'" stroke="'+ink+'" stroke-width="1.4"/>';
+      g+=leaf?'<g class="dt-a" tabindex="-1" role="button" aria-label="'+esc(lab)+'" data-t="'+A.members[0].an.arr+'"><title>'+esc(lab)+'</title><circle cx="'+dtNum(x)+'" cy="'+dtNum(y)+'" r="7" fill="transparent"/><circle class="dt-ring" cx="'+dtNum(x)+'" cy="'+dtNum(y)+'" r="6.5" fill="none" stroke="'+ink+'" stroke-width="1.2"/>'+shape+'</g>'
+        :'<g><title>'+esc(lab)+'</title>'+shape+'</g>'; });
+    if(L.dot) g+='<circle class="dt-dot" cx="'+dtNum(L.dot[0])+'" cy="'+dtNum(L.dot[1])+'" r="4" fill="'+side+'" stroke="'+P.ground.field+'" stroke-width="1.2"><title>'+esc(FORMATIONS[L.id].name+" at "+fmtClock(clock))+'</title></circle>'; });
+  /* the scale bar (GEOREF: px per km of this inset) and north */
+  var bx=DT.PAD, by=DT.H-7;
+  g+='<g class="dt-bar"><line x1="'+bx+'" y1="'+by+'" x2="'+dtNum(bx+M.bar.px)+'" y2="'+by+'" stroke="'+ink+'" stroke-width="1.5"/><line x1="'+bx+'" y1="'+(by-3)+'" x2="'+bx+'" y2="'+(by+1)+'" stroke="'+ink+'"/><line x1="'+dtNum(bx+M.bar.px)+'" y1="'+(by-3)+'" x2="'+dtNum(bx+M.bar.px)+'" y2="'+(by+1)+'" stroke="'+ink+'"/>'+
+    '<text x="'+dtNum(bx+M.bar.px+5)+'" y="'+(by+3.5)+'" font-size="11" fill="currentColor">'+M.bar.km+' km</text></g>';
+  g+='<g class="dt-north"><line x1="'+(DT.W-12)+'" y1="20" x2="'+(DT.W-12)+'" y2="8" stroke="'+ink+'" stroke-width="1.4"/><path d="M'+(DT.W-15)+' 11 L'+(DT.W-12)+' 6 L'+(DT.W-9)+' 11 Z" fill="'+ink+'"/><text x="'+(DT.W-24)+'" y="18" font-size="11" fill="currentColor">N</text></g>';
+  var fig=el("figure","daytrack");
+  var name=esc(f.name), hasRoute=M.leaves.some(function(L){ return L.routes.length; });
+  fig.innerHTML='<div class="dt-map" style="background:'+P.ground.field+'"><svg viewBox="0 0 '+DT.W+' '+DT.H+'" style="color:'+ink+'" role="group" aria-label="'+name+': the plotted day, north up, scale bar '+M.bar.km+' km">'+g+'</svg></div>'+
+    '<figcaption class="dt-key">'+(leaf?'Plotted positions (filled A, ring B, small ring C; a tick: an explicit time), the line between them interpolated'+(hasRoute?', the dashed line its ordered route':'')+', the dot where it is at '+esc(fmtClock(clock))+'.'
+      :'Its formations\u2019 plotted days together (no aggregate track is drawn: an aggregate has no positions of its own)'+(hasRoute?'; dashed, their ordered routes':'')+'.')+'</figcaption>';
+  fig.querySelectorAll(".dt-a").forEach(function(b,k){ if(k===0) b.tabIndex=0;
+    function go(){ stopPlay(); setClock(+b.dataset.t); }
+    b.addEventListener("click",go); b.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } }); });
+  rovingGroup(fig.querySelector("svg"),".dt-a");
+  fig._model=M;
+  return fig;
+}
 /* true scale (decision 34): at 1x the relief is honest and every symbol would stand taller than it, so the
    figure-scale and landscape-scale layers are not drawn; formations are drawn as their footprints */
 function isTrueScale(){ return DISPLAY.factor===1; }
@@ -9831,6 +9931,11 @@ function dossierFormation(id){
       return esc(fmtClock(an.arr))+" "+esc(sa?sa.cf:"B")+(an.tm?" (timed)":""); });
     if(pl.length) whr+=row("Plotted positions", pl.join(" &middot; ")+' <span class="hh">(the grade at each; the lines between them are interpolated)</span>'); }
   wrap.appendChild(sect("Where",whr,true,"recon"));
+  /* Stage 5G (section F.3): the formation's day as a small north-up map */
+  var dtk=dayTrackEl(id);
+  if(dtk){ var dsec=sect(f.track?"Its day":"Its formations\u2019 days","",false,"derived"); dsec.appendChild(dtk);
+    var dnote=el("p","dt-note","The formation\u2019s plotted day: anchors graded A/B/C as in the data; the lines between them are this reconstruction\u2019s interpolation, not a recorded route.");
+    dsec.appendChild(dnote); wrap.appendChild(dsec); }
 
   /* WHEN and WHAT */
   if(f.track){
@@ -11639,6 +11744,58 @@ var AUSTERLITZ_DEBUG=(function(){
     setClock(keep,{instant:true,force:true,camera:false}); finishTween(); settle(2,true);
     return out;
   }
+  /* Stage 5G (docs/STAGE5_SPEC.md section F.4; decision 95): the day-track inset, bound to the track, at one scale, north up; its
+     anchors a keyboard group that sets the clock; its marks and text against the paper ground */
+  function dayTrackChecks(){
+    var out=[], keep=clock, sk0=selection?{k:selection.kind,id:selection.id}:null, ex=dossierExpanded;
+    setClock(590,{instant:true,force:true,camera:false}); finishTween();
+    var b1=[], nLeaf=0, nA=0, nMerged=[], worstDot=0, worstN=0, worstBar=0, worstFit=0;
+    Object.keys(units).forEach(function(id){ if(!FORMATIONS[id].track) return; var M=dayTrackModel(id); if(!M){ b1.push(id+": no inset"); return; } nLeaf++;
+      var L=M.leaves[0], F=M.frame, A=anchorList(id).filter(function(a){ return a.p!==null; }), flat=[];
+      L.anchors.forEach(function(g){ g.members.forEach(function(m){ flat.push(m); }); if(g.members.length>1) nMerged.push(id); });
+      nA+=flat.length;
+      if(flat.length!==A.length||flat.some(function(m,i){ var st=stateAt(id,A[i].ph); return m.an!==A[i]||m.cf!==(st?st.cf:"B"); })) b1.push(id+": anchors not its own, in order, with their grades");
+      L.anchors.forEach(function(g,i){ if(i&&Math.hypot(g.pt[0]-L.anchors[i-1].pt[0],g.pt[1]-L.anchors[i-1].pt[1])<DT.MERGE) b1.push(id+": two marks closer than "+DT.MERGE+" px"); });
+      L.legs.forEach(function(lg){ var pts=legPath(lg.a,lg.b).pts; if(lg.pts.length!==pts.length) b1.push(id+": a leg without its vias");
+        pts.forEach(function(q,i){ var P2=F.P(W(q[0],q[1])); if(!lg.pts[i]||Math.hypot(P2[0]-lg.pts[i][0],P2[1]-lg.pts[i][1])>1e-6) b1.push(id+": a leg off a via"); }); });
+      var p=posNow(id); if(p){ var d=F.P(W(p[0],p[1])); worstDot=Math.max(worstDot,L.dot?Math.hypot(d[0]-L.dot[0],d[1]-L.dot[1]):99); }
+      /* north up: a step toward GEOREF.NORTH goes straight up the inset */
+      var w0=W(A[0].p[0],A[0].p[1]), nl=Math.hypot(GEOREF.NORTH[0],GEOREF.NORTH[1]), u0=F.P(w0), u1=F.P([w0[0]+GEOREF.NORTH[0]/nl*10,w0[1]+GEOREF.NORTH[1]/nl*10]);
+      worstN=Math.max(worstN,Math.abs(Math.atan2(u1[0]-u0[0],u0[1]-u1[1])*180/Math.PI));
+      /* the scale bar against GEOREF: px per km from the bar, and from two of its anchors' true distance */
+      var perKm=M.bar.px/M.bar.km; worstBar=Math.max(worstBar,Math.abs(perKm/(F.s*GEOREF.UNITS_PER_KM)-1));
+      if(A.length>1){ var a0=A[0], a1=A[A.length-1], km=GEOREF.kmBetween(a0.p,a1.p); if(km>0.2){ var q0=F.P(W(a0.p[0],a0.p[1])), q1=F.P(W(a1.p[0],a1.p[1])); worstBar=Math.max(worstBar,Math.abs(Math.hypot(q1[0]-q0[0],q1[1]-q0[1])/(km*perKm)-1)); } }
+      L.anchors.forEach(function(g){ var x=g.pt[0], y=g.pt[1]; worstFit=Math.max(worstFit,DT.PAD-x,x-(DT.W-DT.PAD),DT.PAD-y,y-(DT.H-DT.PAD-DT.FOOT)); }); });
+    var agg=dayTrackModel("c_iv"), aggLeaves=leavesOf("c_iv",[]).filter(function(k){ return !!FORMATIONS[k].track; });
+    var aggOK=!!agg&&agg.leaves.map(function(L){ return L.id; }).join()===aggLeaves.join();
+    out.push({name:"day-track: every formation's inset bound to its track (its anchors in order with their grades, its legs through every via, the dot at its position), north up, one scale with its bar to 1%; an aggregate its leaves' days (section F.4; decision 95)",
+      ok:!b1.length&&nLeaf>0&&worstDot<0.5&&worstN<0.5&&worstBar<0.01&&worstFit<=1e-6&&aggOK,
+      detail:nLeaf+" formations, "+nA+" anchors ("+nMerged.length+" marks for two anchors closer than "+DT.MERGE+" px: "+(nMerged.join(", ")||"none")+"); the dot within "+worstDot.toExponential(1)+" px; north "+worstN.toFixed(3)+"\u00b0 from up; the bar within "+(100*worstBar).toFixed(3)+"%; every mark inside the frame; IV Corps "+(aggOK?"its "+aggLeaves.length+" formations":"WRONG")+(b1.length?"; WRONG: "+b1.slice(0,4).join("; "):"")});
+    /* the dossier's inset: a keyboard group, its names, a click setting the clock with the selection kept; the ordered route dashed */
+    select("f","sthilaire"); dossierExpanded=true; paintDrawer();
+    var fig=document.querySelector(".dossier .daytrack"), B=fig?Array.prototype.slice.call(fig.querySelectorAll(".dt-a")):[], M5=fig?fig._model:null;
+    var named=B.every(function(b){ return /^\d\d:\d\d, position [ABC]/.test(b.getAttribute("aria-label")||""); }), tabs=B.map(function(b){ return b.tabIndex; }).join(",");
+    var routes=fig?fig.querySelectorAll(".dt-route").length:0, dashed=fig?Array.prototype.every.call(fig.querySelectorAll(".dt-route"),function(r){ return !!r.getAttribute("stroke-dasharray"); }):false;
+    var legsSolid=fig?Array.prototype.every.call(fig.querySelectorAll(".dt-leg"),function(r){ return !r.getAttribute("stroke-dasharray"); }):false;
+    var want=B.length>1?+B[1].dataset.t:null; if(B[1]) B[1].dispatchEvent(new MouseEvent("click",{bubbles:true}));
+    var clicked=want!==null&&clock===want&&selection&&selection.id==="sthilaire";
+    var fig2=document.querySelector(".dossier .daytrack"), B2=fig2?fig2.querySelectorAll(".dt-a"):[];
+    if(B2[0]){ B2[0].focus(); B2[0].dispatchEvent(new KeyboardEvent("keydown",{key:"ArrowRight",bubbles:true,cancelable:true})); }
+    var roved=!!B2[1]&&document.activeElement===B2[1];
+    out.push({name:"day-track: the anchors a keyboard group in time order, each named by its clock and grade; a click sets the clock to its arrival with the selection kept; the legs solid, the ordered routes dashed (decisions 15, 95)",
+      ok:!!fig&&B.length===(M5?M5.leaves[0].anchors.length:-1)&&named&&/^0(,-1)*$/.test(tabs)&&clicked&&roved&&routes===2&&dashed&&legsSolid,
+      detail:"Saint-Hilaire: "+B.length+" anchor marks, named "+named+", tab stops "+tabs+"; a click on the second: the clock "+fmtClock(clock)+" (its arrival "+(want===null?"-":fmtClock(want))+"), still selected "+!!(selection&&selection.id==="sthilaire")+"; the arrow key moves on "+roved+"; "+routes+" ordered routes dashed "+dashed+", legs solid "+legsSolid});
+    /* the inset's marks at 3:1 and its text at AA against the paper ground */
+    function rgbH(h){ h=h.replace("#",""); return [0,2,4].map(function(i){ return parseInt(h.slice(i,i+2),16); }); }
+    function lum(c){ var v=c.map(function(x){ x/=255; return x<=0.04045?x/12.92:Math.pow((x+0.055)/1.055,2.4); }); return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2]; }
+    function cr(a,b){ var x=lum(rgbH(a)), y=lum(rgbH(b)); return (Math.max(x,y)+0.05)/(Math.min(x,y)+0.05); }
+    var gr=TOKENS.sym.paperMap.ground.field, ink=TOKENS.sym.label.paper.ink, cFr=cr(TOKENS.sym.side.fr.deep,gr), cAl=cr(TOKENS.sym.side.al.deep,gr), cInk=cr(ink,gr);
+    out.push({name:"day-track: its marks at 3:1 or more and its text at AA against the paper ground it is drawn on (WCAG 1.4.11, 1.4.3)",
+      ok:cFr>=3&&cAl>=3&&cInk>=4.5, detail:"the anchors, legs and text (the paper ink) "+cInk.toFixed(2)+"; the French deep "+cFr.toFixed(2)+", the Allied deep "+cAl.toFixed(2)+", against "+gr});
+    dossierExpanded=ex; if(sk0) select(sk0.k,sk0.id); else select(null,null);
+    setClock(keep,{instant:true,force:true,camera:false}); finishTween();
+    return out;
+  }
   function smokeDayChecks(){
     var out=[], keep=clock, bad=[], n=0, full=0, resid=0;
     for(var i=0;i<20;i++){ var t=T_MIN+30+(T_MAX-T_MIN-60)*i/19; setClock(t,{instant:true,force:true,camera:false}); finishTween();
@@ -11865,6 +12022,7 @@ var AUSTERLITZ_DEBUG=(function(){
     skelDayChecks().forEach(function(c){ out.push(c); });   /* Stage 5D */
     eyesDayChecks().forEach(function(c){ out.push(c); });   /* Stage 5E */
     routeDayChecks().forEach(function(c){ out.push(c); });  /* Stage 5F */
+    dayTrackChecks().forEach(function(c){ out.push(c); });  /* Stage 5G */
     setDisplayFactor(saveFactor);
     /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
     var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });

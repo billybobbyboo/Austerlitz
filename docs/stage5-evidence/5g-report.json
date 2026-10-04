@@ -1,0 +1,404 @@
+{
+ "html": "austerlitz-command-map.html",
+ "when": "2026-10-04T14:47:17.221Z",
+ "dossier": {
+  "1600x900": {
+   "docked": true,
+   "inset": [
+    255,
+    240
+   ],
+   "dossierH": 2080,
+   "withoutInset": 1724,
+   "viewH": 774,
+   "scrolls": true
+  },
+  "1280x720": {
+   "docked": true,
+   "inset": [
+    255,
+    240
+   ],
+   "dossierH": 2080,
+   "withoutInset": 1724,
+   "viewH": 594,
+   "scrolls": true
+  },
+  "1024x768": {
+   "docked": false,
+   "inset": [
+    315,
+    280
+   ],
+   "dossierH": 1854,
+   "withoutInset": 1474,
+   "viewH": 733,
+   "scrolls": true
+  }
+ },
+ "formations": [
+  {
+   "id": "gqg",
+   "name": "Imperial Headquarters",
+   "leaves": 1,
+   "anchors": 4,
+   "marks": 4,
+   "pxPerKm": 15.4,
+   "bar": 5,
+   "shortestLegPx": 9.8,
+   "routes": 0
+  },
+  {
+   "id": "heightguns",
+   "name": "French guns on the heights",
+   "leaves": 1,
+   "anchors": 3,
+   "marks": 2,
+   "pxPerKm": 50.1,
+   "bar": 1,
+   "shortestLegPx": 119,
+   "routes": 0
+  },
+  {
+   "id": "sthilaire",
+   "name": "Saint-Hilaire's Division",
+   "leaves": 1,
+   "anchors": 9,
+   "marks": 7,
+   "pxPerKm": 21,
+   "bar": 3,
+   "shortestLegPx": 4.3,
+   "routes": 2
+  },
+  {
+   "id": "vandamme",
+   "name": "Vandamme's Division",
+   "leaves": 1,
+   "anchors": 8,
+   "marks": 6,
+   "pxPerKm": 18.1,
+   "bar": 5,
+   "shortestLegPx": 6.7,
+   "routes": 2
+  },
+  {
+   "id": "legrand",
+   "name": "Legrand's Division",
+   "leaves": 1,
+   "anchors": 7,
+   "marks": 7,
+   "pxPerKm": 44.8,
+   "bar": 2,
+   "shortestLegPx": 17.8,
+   "routes": 1
+  },
+  {
+   "id": "friant",
+   "name": "Friant's Division",
+   "leaves": 1,
+   "anchors": 7,
+   "marks": 6,
+   "pxPerKm": 31.7,
+   "bar": 3,
+   "shortestLegPx": 4.5,
+   "routes": 1
+  },
+  {
+   "id": "bourcier",
+   "name": "Bourcier's Dragoons",
+   "leaves": 1,
+   "anchors": 5,
+   "marks": 5,
+   "pxPerKm": 22.6,
+   "bar": 3,
+   "shortestLegPx": 12.5,
+   "routes": 0
+  },
+  {
+   "id": "caffarelli",
+   "name": "Caffarelli's Division",
+   "leaves": 1,
+   "anchors": 6,
+   "marks": 6,
+   "pxPerKm": 37.2,
+   "bar": 2,
+   "shortestLegPx": 29.5,
+   "routes": 1
+  },
+  {
+   "id": "suchet",
+   "name": "Suchet's Division",
+   "leaves": 1,
+   "anchors": 6,
+   "marks": 6,
+   "pxPerKm": 61.4,
+   "bar": 1,
+   "shortestLegPx": 25.2,
+   "routes": 1
+  },
+  {
+   "id": "santon",
+   "name": "The Santon detachment",
+   "leaves": 1,
+   "anchors": 1,
+   "marks": 1,
+   "pxPerKm": 212,
+   "bar": 0.25,
+   "shortestLegPx": null,
+   "routes": 1
+  },
+  {
+   "id": "kellermann",
+   "name": "Kellermann's Light Cavalry",
+   "leaves": 1,
+   "anchors": 5,
+   "marks": 5,
+   "pxPerKm": 48.1,
+   "bar": 1,
+   "shortestLegPx": 42.8,
+   "routes": 0
+  },
+  {
+   "id": "nansouty",
+   "name": "Nansouty's Cuirassiers",
+   "leaves": 1,
+   "anchors": 5,
+   "marks": 5,
+   "pxPerKm": 43.9,
+   "bar": 2,
+   "shortestLegPx": 42,
+   "routes": 0
+  },
+  {
+   "id": "dhautpoul",
+   "name": "d'Hautpoul's Cuirassiers",
+   "leaves": 1,
+   "anchors": 4,
+   "marks": 4,
+   "pxPerKm": 42.5,
+   "bar": 2,
+   "shortestLegPx": 45.9,
+   "routes": 0
+  },
+  {
+   "id": "walther",
+   "name": "Walther's Dragoons",
+   "leaves": 1,
+   "anchors": 4,
+   "marks": 4,
+   "pxPerKm": 44,
+   "bar": 2,
+   "shortestLegPx": 34.9,
+   "routes": 0
+  },
+  {
+   "id": "rivaud",
+   "name": "Rivaud's Division",
+   "leaves": 1,
+   "anchors": 5,
+   "marks": 5,
+   "pxPerKm": 48.2,
+   "bar": 1,
+   "shortestLegPx": 38.8,
+   "routes": 0
+  },
+  {
+   "id": "drouet",
+   "name": "Drouet d'Erlon's Division",
+   "leaves": 1,
+   "anchors": 5,
+   "marks": 5,
+   "pxPerKm": 47.7,
+   "bar": 2,
+   "shortestLegPx": 30.1,
+   "routes": 1
+  },
+  {
+   "id": "guard_inf",
+   "name": "Guard Infantry",
+   "leaves": 1,
+   "anchors": 4,
+   "marks": 4,
+   "pxPerKm": 29.9,
+   "bar": 3,
+   "shortestLegPx": 16.7,
+   "routes": 1
+  },
+  {
+   "id": "guard_cav",
+   "name": "Guard Cavalry",
+   "leaves": 1,
+   "anchors": 4,
+   "marks": 4,
+   "pxPerKm": 34.2,
+   "bar": 2,
+   "shortestLegPx": 12.1,
+   "routes": 1
+  },
+  {
+   "id": "c_gren",
+   "name": "Grenadier Division",
+   "leaves": 1,
+   "anchors": 5,
+   "marks": 5,
+   "pxPerKm": 16.9,
+   "bar": 5,
+   "shortestLegPx": 9.6,
+   "routes": 1
+  },
+  {
+   "id": "ahq",
+   "name": "Allied Headquarters",
+   "leaves": 1,
+   "anchors": 6,
+   "marks": 6,
+   "pxPerKm": 32.6,
+   "bar": 2,
+   "shortestLegPx": 11.5,
+   "routes": 0
+  },
+  {
+   "id": "buxhowden",
+   "name": "Left Wing Command",
+   "leaves": 1,
+   "anchors": 5,
+   "marks": 5,
+   "pxPerKm": 39.9,
+   "bar": 2,
+   "shortestLegPx": 39.1,
+   "routes": 0
+  },
+  {
+   "id": "kienmayer",
+   "name": "Kienmayer's Advance Guard",
+   "leaves": 1,
+   "anchors": 6,
+   "marks": 6,
+   "pxPerKm": 63,
+   "bar": 1,
+   "shortestLegPx": 29,
+   "routes": 1
+  },
+  {
+   "id": "dok",
+   "name": "First Column",
+   "leaves": 1,
+   "anchors": 6,
+   "marks": 6,
+   "pxPerKm": 44.1,
+   "bar": 2,
+   "shortestLegPx": 12.8,
+   "routes": 1
+  },
+  {
+   "id": "lang",
+   "name": "Second Column",
+   "leaves": 1,
+   "anchors": 7,
+   "marks": 7,
+   "pxPerKm": 57.7,
+   "bar": 1,
+   "shortestLegPx": 33.6,
+   "routes": 1
+  },
+  {
+   "id": "kamensky",
+   "name": "Kamensky's Brigade",
+   "leaves": 1,
+   "anchors": 7,
+   "marks": 7,
+   "pxPerKm": 41.9,
+   "bar": 2,
+   "shortestLegPx": 17.8,
+   "routes": 0
+  },
+  {
+   "id": "prz",
+   "name": "Third Column",
+   "leaves": 1,
+   "anchors": 6,
+   "marks": 6,
+   "pxPerKm": 87.3,
+   "bar": 1,
+   "shortestLegPx": 23.4,
+   "routes": 1
+  },
+  {
+   "id": "milo",
+   "name": "Miloradovich's Russians",
+   "leaves": 1,
+   "anchors": 7,
+   "marks": 7,
+   "pxPerKm": 34.1,
+   "bar": 2,
+   "shortestLegPx": 9.8,
+   "routes": 1
+  },
+  {
+   "id": "kollo",
+   "name": "Kollowrat's Austrians",
+   "leaves": 1,
+   "anchors": 8,
+   "marks": 7,
+   "pxPerKm": 32.2,
+   "bar": 2,
+   "shortestLegPx": 4.2,
+   "routes": 1
+  },
+  {
+   "id": "lich",
+   "name": "Fifth Column (cavalry)",
+   "leaves": 1,
+   "anchors": 8,
+   "marks": 8,
+   "pxPerKm": 32.7,
+   "bar": 2,
+   "shortestLegPx": 23.9,
+   "routes": 1
+  },
+  {
+   "id": "bag",
+   "name": "Advance Guard of the Right",
+   "leaves": 1,
+   "anchors": 6,
+   "marks": 6,
+   "pxPerKm": 58.1,
+   "bar": 1,
+   "shortestLegPx": 41.9,
+   "routes": 1
+  },
+  {
+   "id": "rg_inf",
+   "name": "Guard Infantry",
+   "leaves": 1,
+   "anchors": 6,
+   "marks": 6,
+   "pxPerKm": 43,
+   "bar": 2,
+   "shortestLegPx": 48.2,
+   "routes": 1
+  },
+  {
+   "id": "rg_cav",
+   "name": "Guard Cavalry",
+   "leaves": 1,
+   "anchors": 5,
+   "marks": 5,
+   "pxPerKm": 39.5,
+   "bar": 2,
+   "shortestLegPx": 53.9,
+   "routes": 1
+  },
+  {
+   "id": "c_iv",
+   "name": "IV Corps",
+   "leaves": 4,
+   "anchors": 27,
+   "marks": 20,
+   "pxPerKm": 16.9,
+   "bar": 5,
+   "shortestLegPx": 3.4,
+   "routes": 5
+  }
+ ]
+}

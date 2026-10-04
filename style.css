@@ -693,3 +693,13 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 .eyecap p{margin:0}
 .eyecap .eyenote{margin-top:4px;color:var(--text-body);font-size:var(--t-small)}
 .eyecap .ltag{margin-right:4px;vertical-align:1px}
+
+/* Stage 5G (docs/STAGE5_SPEC.md section F.3): the day-track inset in the dossier */
+.daytrack{margin:6px 0 4px}
+.daytrack .dt-map{border:1px solid var(--line-2);border-radius:2px;line-height:0}
+.daytrack svg{display:block;width:100%;height:auto}
+.daytrack .dt-a{cursor:pointer;outline:none}
+.daytrack .dt-ring{visibility:hidden}
+.daytrack .dt-a:focus-visible .dt-ring,.daytrack .dt-a:hover .dt-ring{visibility:visible}
+.dt-key{margin:5px 0 0;color:var(--text-body);font-size:var(--t-small);line-height:1.4}
+.dt-note{margin:4px 0 0;color:var(--text-muted);font-size:var(--t-small);line-height:1.4}
