@@ -1,0 +1,6037 @@
+{
+ "html": "austerlitz-command-map.html",
+ "when": "2026-10-04T22:11:06.949Z",
+ "views": {
+  "overview-field": {
+   "clock": 570,
+   "factor": 4,
+   "identity": [
+    {
+     "id": "gqg",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 258.8
+    },
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 233.5
+    },
+    {
+     "id": "vandamme",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 268.4
+    },
+    {
+     "id": "suchet",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 285.6
+    },
+    {
+     "id": "santon",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 288.3
+    },
+    {
+     "id": "dhautpoul",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 271.8
+    },
+    {
+     "id": "drouet",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 254.1
+    },
+    {
+     "id": "c_gren",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 250.7
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 258.1
+    },
+    {
+     "id": "buxhowden",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 213.3
+    },
+    {
+     "id": "kienmayer",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 187.5
+    },
+    {
+     "id": "dok",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 188.3
+    },
+    {
+     "id": "lang",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 206.4
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 231.6
+    },
+    {
+     "id": "prz",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 202.4
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 261.3
+    },
+    {
+     "id": "kollo",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 254.9
+    },
+    {
+     "id": "bag",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 329.2
+    }
+   ],
+   "figures": 2923,
+   "base": {
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 55
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 77.2
+    },
+    "worldMs": 7.8,
+    "confShare": {
+     "samples": 176741,
+     "share": 0.0431
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 176741,
+     "changed": 0.0109,
+     "contrastMedian": 1.21,
+     "contrastP90": 1.57,
+     "share3to1": 0.003
+    },
+    "changedPerFigure": 2.64,
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 55
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 77.2
+    },
+    "worldMs": 7.8
+   },
+   "P2": {
+    "diff": {
+     "samples": 176741,
+     "changed": 0.0243,
+     "contrastMedian": 1.25,
+     "contrastP90": 2.24,
+     "share3to1": 0.05
+    },
+    "changedPerFigure": 5.88,
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 55
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 77.4
+    },
+    "worldMs": 14.6,
+    "confShare": {
+     "samples": 176741,
+     "share": 0.0433
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 176741,
+     "changed": 0.0203,
+     "contrastMedian": 1.24,
+     "contrastP90": 1.73,
+     "share3to1": 0.009
+    },
+    "changedPerFigure": 4.91
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 176741,
+     "changed": 0.0195,
+     "contrastMedian": 1.24,
+     "contrastP90": 2.33,
+     "share3to1": 0.057
+    },
+    "changedPerFigure": 4.72
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 176741,
+     "changed": 0.022,
+     "contrastMedian": 1.26,
+     "contrastP90": 2.24,
+     "share3to1": 0.051
+    },
+    "changedPerFigure": 5.32
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 176741,
+     "share": 0.028
+    },
+    "diff": {
+     "samples": 176741,
+     "changed": 0.028,
+     "contrastMedian": 1.69,
+     "contrastP90": 3.02,
+     "share3to1": 0.104
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0158,
+     "px": 11170,
+     "perFigure": 3.82,
+     "contrastMedian": 1.27
+    },
+    "headgear": {
+     "changed": 0.0112,
+     "px": 7918,
+     "perFigure": 2.71,
+     "contrastMedian": 1.22
+    },
+    "flags": {
+     "changed": 0.0028,
+     "px": 1979,
+     "perFigure": 0.68,
+     "contrastMedian": 1.21
+    }
+   },
+   "keys": {
+    "gqg": {
+     "side": "fr",
+     "px": 66,
+     "proto": "#4C5B50",
+     "today": "#4D6088",
+     "labProto": [
+      37.08,
+      -7.93,
+      4.28
+     ],
+     "labToday": [
+      40.72,
+      3.84,
+      -24.57
+     ]
+    },
+    "sthilaire": {
+     "side": "fr",
+     "px": 266,
+     "proto": "#35313D",
+     "today": "#384160",
+     "labProto": [
+      21.3,
+      4.72,
+      -6.96
+     ],
+     "labToday": [
+      28.02,
+      5.37,
+      -19.59
+     ]
+    },
+    "vandamme": {
+     "side": "fr",
+     "px": 113,
+     "proto": "#4A4D5F",
+     "today": "#4D5C7D",
+     "labProto": [
+      33.19,
+      3.12,
+      -10.58
+     ],
+     "labToday": [
+      39.03,
+      3.42,
+      -20.55
+     ]
+    },
+    "suchet": {
+     "side": "fr",
+     "px": 108,
+     "proto": "#4C4D5A",
+     "today": "#4D5974",
+     "labProto": [
+      33.1,
+      2.63,
+      -7.97
+     ],
+     "labToday": [
+      37.76,
+      2.51,
+      -16.65
+     ]
+    },
+    "santon": {
+     "side": "fr",
+     "px": 80,
+     "proto": "#4B4A54",
+     "today": "#4E566C",
+     "labProto": [
+      31.96,
+      2.44,
+      -5.81
+     ],
+     "labToday": [
+      36.51,
+      2.67,
+      -14.02
+     ]
+    },
+    "drouet": {
+     "side": "fr",
+     "px": 192,
+     "proto": "#4A4953",
+     "today": "#4C5671",
+     "labProto": [
+      31.32,
+      2.7,
+      -5.97
+     ],
+     "labToday": [
+      36.85,
+      2.92,
+      -16.42
+     ]
+    },
+    "c_gren": {
+     "side": "fr",
+     "px": 143,
+     "proto": "#44414D",
+     "today": "#47506A",
+     "labProto": [
+      28.29,
+      3.7,
+      -6.62
+     ],
+     "labToday": [
+      34.08,
+      3.58,
+      -16.27
+     ]
+    },
+    "ahq": {
+     "side": "al",
+     "px": 68,
+     "proto": "#564F42",
+     "today": "#5E6750",
+     "labProto": [
+      33.89,
+      0.19,
+      8.88
+     ],
+     "labToday": [
+      42.35,
+      -8,
+      11.83
+     ]
+    },
+    "buxhowden": {
+     "side": "al",
+     "px": 104,
+     "proto": "#4C4B3C",
+     "today": "#536449",
+     "labProto": [
+      31.43,
+      -2.36,
+      9.23
+     ],
+     "labToday": [
+      40.45,
+      -12.02,
+      13.19
+     ]
+    },
+    "kienmayer": {
+     "side": "al",
+     "px": 371,
+     "proto": "#A6A095",
+     "today": "#A29B8D",
+     "labProto": [
+      66,
+      0.31,
+      6.13
+     ],
+     "labToday": [
+      64.13,
+      0.11,
+      8.27
+     ]
+    },
+    "dok": {
+     "side": "al",
+     "px": 734,
+     "proto": "#444338",
+     "today": "#4A5743",
+     "labProto": [
+      28.32,
+      -2.15,
+      6.79
+     ],
+     "labToday": [
+      35.51,
+      -9.51,
+      10.22
+     ]
+    },
+    "lang": {
+     "side": "al",
+     "px": 176,
+     "proto": "#3D362A",
+     "today": "#444B36",
+     "labProto": [
+      22.95,
+      0.68,
+      8.42
+     ],
+     "labToday": [
+      30.72,
+      -7.33,
+      11.38
+     ]
+    },
+    "kamensky": {
+     "side": "al",
+     "px": 390,
+     "proto": "#3B362C",
+     "today": "#424C39",
+     "labProto": [
+      22.88,
+      -0.12,
+      7.35
+     ],
+     "labToday": [
+      31.04,
+      -8.28,
+      10.18
+     ]
+    },
+    "prz": {
+     "side": "al",
+     "px": 392,
+     "proto": "#413E32",
+     "today": "#48533E",
+     "labProto": [
+      26.02,
+      -0.77,
+      7.83
+     ],
+     "labToday": [
+      33.82,
+      -8.59,
+      11.01
+     ]
+    },
+    "milo": {
+     "side": "al",
+     "px": 188,
+     "proto": "#4E4C40",
+     "today": "#555E4A",
+     "labProto": [
+      31.99,
+      -1.39,
+      7.31
+     ],
+     "labToday": [
+      38.61,
+      -7.92,
+      10.57
+     ]
+    },
+    "kollo": {
+     "side": "al",
+     "px": 450,
+     "proto": "#958D82",
+     "today": "#918779",
+     "labProto": [
+      58.91,
+      1.27,
+      6.58
+     ],
+     "labToday": [
+      56.8,
+      1.14,
+      8.65
+     ]
+    },
+    "bag": {
+     "side": "al",
+     "px": 92,
+     "proto": "#595349",
+     "today": "#5E6250",
+     "labProto": [
+      35.42,
+      0.51,
+      6.81
+     ],
+     "labToday": [
+      40.72,
+      -5.06,
+      9.63
+     ]
+    }
+   },
+   "cross": {
+    "today": [
+     [
+      "santon",
+      "bag",
+      21.6
+     ],
+     [
+      "santon",
+      "milo",
+      22.7
+     ],
+     [
+      "santon",
+      "dok",
+      22.8
+     ],
+     [
+      "suchet",
+      "bag",
+      22.9
+     ],
+     [
+      "santon",
+      "kamensky",
+      22.9
+     ],
+     [
+      "drouet",
+      "bag",
+      23
+     ]
+    ],
+    "proto": [
+     [
+      "gqg",
+      "buxhowden",
+      9
+     ],
+     [
+      "gqg",
+      "milo",
+      9.2
+     ],
+     [
+      "gqg",
+      "dok",
+      9.9
+     ],
+     [
+      "gqg",
+      "bag",
+      10.7
+     ],
+     [
+      "gqg",
+      "ahq",
+      11
+     ],
+     [
+      "santon",
+      "bag",
+      12
+     ]
+    ],
+    "pairs": 70
+   },
+   "seconds": 431
+  },
+  "overview-plan": {
+   "clock": 570,
+   "factor": 4,
+   "identity": [
+    {
+     "id": "gqg",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 437
+    },
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 419.7
+    },
+    {
+     "id": "legrand",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 425.1
+    },
+    {
+     "id": "friant",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 426.5
+    },
+    {
+     "id": "bourcier",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 427
+    },
+    {
+     "id": "caffarelli",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 440.8
+    },
+    {
+     "id": "suchet",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 442.1
+    },
+    {
+     "id": "santon",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 441.7
+    },
+    {
+     "id": "kellermann",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 437.7
+    },
+    {
+     "id": "nansouty",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 436.6
+    },
+    {
+     "id": "dhautpoul",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 435.7
+    },
+    {
+     "id": "walther",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 439.7
+    },
+    {
+     "id": "rivaud",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 433.4
+    },
+    {
+     "id": "drouet",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 431.3
+    },
+    {
+     "id": "guard_inf",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 437.4
+    },
+    {
+     "id": "guard_cav",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 436.2
+    },
+    {
+     "id": "c_gren",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 437.1
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 427.6
+    },
+    {
+     "id": "buxhowden",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 425.1
+    },
+    {
+     "id": "kienmayer",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 426.5
+    },
+    {
+     "id": "dok",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 425.9
+    },
+    {
+     "id": "lang",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 424.6
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 419.7
+    },
+    {
+     "id": "prz",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 424.5
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 426.7
+    },
+    {
+     "id": "kollo",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 426.2
+    },
+    {
+     "id": "lich",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 432.4
+    },
+    {
+     "id": "rg_inf",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 435.6
+    }
+   ],
+   "figures": 2940,
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 53.8
+    },
+    "worldMs": 7.7,
+    "confShare": {
+     "samples": 294382,
+     "share": 0.037
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 294382,
+     "changed": 0.002,
+     "contrastMedian": 1.14,
+     "contrastP90": 1.41,
+     "share3to1": 0
+    },
+    "changedPerFigure": 0.8,
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 53.8
+    },
+    "worldMs": 9.8
+   },
+   "P2": {
+    "diff": {
+     "samples": 294382,
+     "changed": 0.0062,
+     "contrastMedian": 1.26,
+     "contrastP90": 2.32,
+     "share3to1": 0.056
+    },
+    "changedPerFigure": 2.48,
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 53.9
+    },
+    "worldMs": 8.6,
+    "confShare": {
+     "samples": 294382,
+     "share": 0.037
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 294382,
+     "changed": 0.0035,
+     "contrastMedian": 1.16,
+     "contrastP90": 1.51,
+     "share3to1": 0.003
+    },
+    "changedPerFigure": 1.4
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 294382,
+     "changed": 0.0058,
+     "contrastMedian": 1.26,
+     "contrastP90": 2.37,
+     "share3to1": 0.059
+    },
+    "changedPerFigure": 2.32
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 294382,
+     "changed": 0.006,
+     "contrastMedian": 1.27,
+     "contrastP90": 2.33,
+     "share3to1": 0.057
+    },
+    "changedPerFigure": 2.4
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 294382,
+     "share": 0.0251
+    },
+    "diff": {
+     "samples": 294382,
+     "changed": 0.0251,
+     "contrastMedian": 2.35,
+     "contrastP90": 3.65,
+     "share3to1": 0.227
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0057,
+     "px": 6712,
+     "perFigure": 2.28,
+     "contrastMedian": 1.3
+    },
+    "headgear": {
+     "changed": 0.001,
+     "px": 1178,
+     "perFigure": 0.4,
+     "contrastMedian": 1.16
+    },
+    "flags": {
+     "changed": 0.0002,
+     "px": 236,
+     "perFigure": 0.08,
+     "contrastMedian": 1.08
+    }
+   },
+   "seconds": 146
+  },
+  "close-sokolnitz": {
+   "clock": 500,
+   "factor": 4,
+   "identity": [
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 110.7
+    },
+    {
+     "id": "vandamme",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 135.7
+    },
+    {
+     "id": "legrand",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 58.8
+    },
+    {
+     "id": "friant",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 40.5
+    },
+    {
+     "id": "dhautpoul",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 153.3
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 131.4
+    },
+    {
+     "id": "buxhowden",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 83.9
+    },
+    {
+     "id": "kienmayer",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 52.2
+    },
+    {
+     "id": "dok",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 56.1
+    },
+    {
+     "id": "lang",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 70.2
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 92.2
+    },
+    {
+     "id": "prz",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 74.5
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 128.4
+    }
+   ],
+   "figures": 1462,
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 28
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 126.5
+    },
+    "worldMs": 7.8,
+    "confShare": {
+     "samples": 294307,
+     "share": 0.0927
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 294307,
+     "changed": 0.013,
+     "contrastMedian": 1.17,
+     "contrastP90": 1.44,
+     "share3to1": 0
+    },
+    "changedPerFigure": 10.47,
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 28
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 126.3
+    },
+    "worldMs": 8.8
+   },
+   "P2": {
+    "diff": {
+     "samples": 294307,
+     "changed": 0.0487,
+     "contrastMedian": 1.26,
+     "contrastP90": 2.94,
+     "share3to1": 0.097
+    },
+    "changedPerFigure": 39.21,
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 28
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 126.7
+    },
+    "worldMs": 9.9,
+    "confShare": {
+     "samples": 294307,
+     "share": 0.0934
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 294307,
+     "changed": 0.0424,
+     "contrastMedian": 1.27,
+     "contrastP90": 2.87,
+     "share3to1": 0.095
+    },
+    "changedPerFigure": 34.14
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 294307,
+     "changed": 0.0317,
+     "contrastMedian": 1.23,
+     "contrastP90": 3.12,
+     "share3to1": 0.106
+    },
+    "changedPerFigure": 25.53
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 294307,
+     "changed": 0.0379,
+     "contrastMedian": 1.23,
+     "contrastP90": 2.32,
+     "share3to1": 0.055
+    },
+    "changedPerFigure": 30.52
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 294307,
+     "share": 0.052
+    },
+    "diff": {
+     "samples": 294307,
+     "changed": 0.052,
+     "contrastMedian": 1.12,
+     "contrastP90": 1.19,
+     "share3to1": 0
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0145,
+     "px": 17070,
+     "perFigure": 11.68,
+     "contrastMedian": 1.2
+    },
+    "headgear": {
+     "changed": 0.0202,
+     "px": 23780,
+     "perFigure": 16.27,
+     "contrastMedian": 1.27
+    },
+    "flags": {
+     "changed": 0.0109,
+     "px": 12832,
+     "perFigure": 8.78,
+     "contrastMedian": 1.44
+    }
+   },
+   "keys": {
+    "sthilaire": {
+     "side": "fr",
+     "px": 47,
+     "proto": "#686C77",
+     "today": "#6A7690",
+     "labProto": [
+      45.58,
+      1.05,
+      -6.89
+     ],
+     "labToday": [
+      49.42,
+      1.93,
+      -15.88
+     ]
+    },
+    "vandamme": {
+     "side": "fr",
+     "px": 138,
+     "proto": "#60646B",
+     "today": "#616A7D",
+     "labProto": [
+      42.12,
+      0.28,
+      -4.95
+     ],
+     "labToday": [
+      44.84,
+      0.86,
+      -11.21
+     ]
+    },
+    "legrand": {
+     "side": "fr",
+     "px": 2260,
+     "proto": "#6A6E7A",
+     "today": "#6E7995",
+     "labProto": [
+      46.38,
+      1.42,
+      -7.1
+     ],
+     "labToday": [
+      50.97,
+      2.26,
+      -16.5
+     ]
+    },
+    "friant": {
+     "side": "fr",
+     "px": 4787,
+     "proto": "#5F6477",
+     "today": "#637397",
+     "labProto": [
+      42.6,
+      2.17,
+      -11.07
+     ],
+     "labToday": [
+      48.33,
+      3.13,
+      -21.42
+     ]
+    },
+    "buxhowden": {
+     "side": "al",
+     "px": 232,
+     "proto": "#878C88",
+     "today": "#8B978E",
+     "labProto": [
+      57.68,
+      -2.27,
+      1.18
+     ],
+     "labToday": [
+      61.4,
+      -6.18,
+      3.16
+     ]
+    },
+    "kienmayer": {
+     "side": "al",
+     "px": 70,
+     "proto": "#B8B9B8",
+     "today": "#B5B5B2",
+     "labProto": [
+      75.16,
+      -0.63,
+      0.35
+     ],
+     "labToday": [
+      73.61,
+      -0.64,
+      1.32
+     ]
+    },
+    "dok": {
+     "side": "al",
+     "px": 1132,
+     "proto": "#939795",
+     "today": "#96A09A",
+     "labProto": [
+      62.06,
+      -1.88,
+      0.47
+     ],
+     "labToday": [
+      64.79,
+      -4.64,
+      1.9
+     ]
+    },
+    "lang": {
+     "side": "al",
+     "px": 874,
+     "proto": "#6C716C",
+     "today": "#738275",
+     "labProto": [
+      47.1,
+      -2.64,
+      1.93
+     ],
+     "labToday": [
+      52.7,
+      -8.03,
+      4.73
+     ]
+    },
+    "kamensky": {
+     "side": "al",
+     "px": 575,
+     "proto": "#40433D",
+     "today": "#475748",
+     "labProto": [
+      27.94,
+      -2.31,
+      3.04
+     ],
+     "labToday": [
+      35.14,
+      -9.38,
+      6.6
+     ]
+    },
+    "prz": {
+     "side": "al",
+     "px": 2137,
+     "proto": "#656965",
+     "today": "#6B796E",
+     "labProto": [
+      44.03,
+      -2.4,
+      1.96
+     ],
+     "labToday": [
+      49.55,
+      -7.7,
+      4.72
+     ]
+    },
+    "milo": {
+     "side": "al",
+     "px": 279,
+     "proto": "#505551",
+     "today": "#586A5D",
+     "labProto": [
+      35.68,
+      -3.19,
+      1.68
+     ],
+     "labToday": [
+      42.97,
+      -9.69,
+      5.21
+     ]
+    }
+   },
+   "cross": {
+    "today": [
+     [
+      "vandamme",
+      "prz",
+      17
+     ],
+     [
+      "vandamme",
+      "milo",
+      17.7
+     ],
+     [
+      "vandamme",
+      "lang",
+      18.3
+     ],
+     [
+      "sthilaire",
+      "prz",
+      19.1
+     ],
+     [
+      "sthilaire",
+      "lang",
+      19.5
+     ],
+     [
+      "legrand",
+      "prz",
+      19.6
+     ]
+    ],
+    "proto": [
+     [
+      "vandamme",
+      "prz",
+      7.6
+     ],
+     [
+      "vandamme",
+      "lang",
+      8.8
+     ],
+     [
+      "sthilaire",
+      "prz",
+      9.2
+     ],
+     [
+      "sthilaire",
+      "lang",
+      9.3
+     ],
+     [
+      "vandamme",
+      "milo",
+      9.5
+     ],
+     [
+      "legrand",
+      "lang",
+      9.6
+     ]
+    ],
+    "pairs": 28
+   },
+   "seconds": 391
+  },
+  "pratzen-low": {
+   "clock": 590,
+   "factor": 4,
+   "identity": [
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 71.5
+    },
+    {
+     "id": "vandamme",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 97.3
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 98
+    },
+    {
+     "id": "buxhowden",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 68.9
+    },
+    {
+     "id": "lang",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 54.6
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 70.8
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 100.6
+    },
+    {
+     "id": "kollo",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 84.9
+    },
+    {
+     "id": "rg_inf",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 132.4
+    }
+   ],
+   "figures": 1077,
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 8.26,
+     "belowAA": 0,
+     "texts": 30
+    },
+    "dark": {
+     "solidBlack": 0.0002,
+     "meanLum": 90.8
+    },
+    "worldMs": 7.8,
+    "confShare": {
+     "samples": 291513,
+     "share": 0.0997
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 291513,
+     "changed": 0.0283,
+     "contrastMedian": 1.43,
+     "contrastP90": 2.02,
+     "share3to1": 0.009
+    },
+    "changedPerFigure": 30.64,
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 8.26,
+     "belowAA": 0,
+     "texts": 30
+    },
+    "dark": {
+     "solidBlack": 0.0002,
+     "meanLum": 90.3
+    },
+    "worldMs": 7.3
+   },
+   "P2": {
+    "diff": {
+     "samples": 291513,
+     "changed": 0.063,
+     "contrastMedian": 1.36,
+     "contrastP90": 2.91,
+     "share3to1": 0.095
+    },
+    "changedPerFigure": 68.21,
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 8.26,
+     "belowAA": 0,
+     "texts": 30
+    },
+    "dark": {
+     "solidBlack": 0.0002,
+     "meanLum": 90.9
+    },
+    "worldMs": 8.3,
+    "confShare": {
+     "samples": 291513,
+     "share": 0.1007
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 291513,
+     "changed": 0.0606,
+     "contrastMedian": 1.38,
+     "contrastP90": 2.28,
+     "share3to1": 0.059
+    },
+    "changedPerFigure": 65.61
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 291513,
+     "changed": 0.0417,
+     "contrastMedian": 1.39,
+     "contrastP90": 3.36,
+     "share3to1": 0.121
+    },
+    "changedPerFigure": 45.15
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 291513,
+     "changed": 0.0534,
+     "contrastMedian": 1.33,
+     "contrastP90": 2.4,
+     "share3to1": 0.065
+    },
+    "changedPerFigure": 57.82
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 291513,
+     "share": 0.0433
+    },
+    "diff": {
+     "samples": 291513,
+     "changed": 0.0433,
+     "contrastMedian": 2.02,
+     "contrastP90": 3.87,
+     "share3to1": 0.233
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0234,
+     "px": 27286,
+     "perFigure": 25.33,
+     "contrastMedian": 1.36
+    },
+    "headgear": {
+     "changed": 0.0269,
+     "px": 31367,
+     "perFigure": 29.12,
+     "contrastMedian": 1.27
+    },
+    "flags": {
+     "changed": 0.0102,
+     "px": 11894,
+     "perFigure": 11.04,
+     "contrastMedian": 1.5
+    }
+   },
+   "keys": {
+    "sthilaire": {
+     "side": "fr",
+     "px": 2120,
+     "proto": "#27263A",
+     "today": "#2C3B65",
+     "labProto": [
+      15.98,
+      5.98,
+      -12.65
+     ],
+     "labToday": [
+      25.52,
+      7.65,
+      -26.59
+     ]
+    },
+    "vandamme": {
+     "side": "fr",
+     "px": 3104,
+     "proto": "#2D334E",
+     "today": "#334A7E",
+     "labProto": [
+      21.74,
+      5.47,
+      -17.48
+     ],
+     "labToday": [
+      31.93,
+      8.37,
+      -32.47
+     ]
+    },
+    "ahq": {
+     "side": "al",
+     "px": 616,
+     "proto": "#343A31",
+     "today": "#3F5A43",
+     "labProto": [
+      23.65,
+      -4.81,
+      4.68
+     ],
+     "labToday": [
+      35.67,
+      -15.5,
+      10.52
+     ]
+    },
+    "buxhowden": {
+     "side": "al",
+     "px": 1091,
+     "proto": "#3C4438",
+     "today": "#49694E",
+     "labProto": [
+      27.78,
+      -6,
+      5.84
+     ],
+     "labToday": [
+      41.18,
+      -17.48,
+      11.59
+     ]
+    },
+    "lang": {
+     "side": "al",
+     "px": 3111,
+     "proto": "#2D3428",
+     "today": "#3B583D",
+     "labProto": [
+      20.56,
+      -5.79,
+      6.59
+     ],
+     "labToday": [
+      34.61,
+      -17.48,
+      12.7
+     ]
+    },
+    "kamensky": {
+     "side": "al",
+     "px": 2256,
+     "proto": "#27291E",
+     "today": "#334930",
+     "labProto": [
+      15.92,
+      -3.04,
+      6.53
+     ],
+     "labToday": [
+      28.42,
+      -14.07,
+      11.76
+     ]
+    },
+    "milo": {
+     "side": "al",
+     "px": 887,
+     "proto": "#4C5146",
+     "today": "#566D56",
+     "labProto": [
+      33.69,
+      -4.01,
+      5.52
+     ],
+     "labToday": [
+      43.5,
+      -13.22,
+      10.21
+     ]
+    },
+    "kollo": {
+     "side": "al",
+     "px": 3254,
+     "proto": "#ABA59C",
+     "today": "#A49D8F",
+     "labProto": [
+      68.05,
+      0.19,
+      5.52
+     ],
+     "labToday": [
+      64.96,
+      0.05,
+      8.32
+     ]
+    },
+    "rg_inf": {
+     "side": "al",
+     "px": 997,
+     "proto": "#575C53",
+     "today": "#607560",
+     "labProto": [
+      38.5,
+      -3.95,
+      4.66
+     ],
+     "labToday": [
+      47.03,
+      -12.18,
+      8.74
+     ]
+    }
+   },
+   "cross": {
+    "today": [
+     [
+      "sthilaire",
+      "kamensky",
+      30.8
+     ],
+     [
+      "sthilaire",
+      "ahq",
+      31.2
+     ],
+     [
+      "vandamme",
+      "ahq",
+      32.1
+     ],
+     [
+      "sthilaire",
+      "lang",
+      32.5
+     ],
+     [
+      "vandamme",
+      "kamensky",
+      32.7
+     ],
+     [
+      "vandamme",
+      "milo",
+      33
+     ]
+    ],
+    "proto": [
+     [
+      "sthilaire",
+      "ahq",
+      19
+     ],
+     [
+      "sthilaire",
+      "kamensky",
+      20.1
+     ],
+     [
+      "vandamme",
+      "ahq",
+      20.1
+     ],
+     [
+      "sthilaire",
+      "lang",
+      20.2
+     ],
+     [
+      "sthilaire",
+      "buxhowden",
+      21.3
+     ],
+     [
+      "vandamme",
+      "kamensky",
+      21.3
+     ]
+    ],
+    "pairs": 14
+   },
+   "seconds": 317
+  },
+  "selected-formation": {
+   "clock": 570,
+   "factor": 4,
+   "identity": [
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 92.3
+    },
+    {
+     "id": "nansouty",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 143.1
+    },
+    {
+     "id": "dhautpoul",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 137.8
+    },
+    {
+     "id": "rivaud",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 126.4
+    },
+    {
+     "id": "drouet",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 119.4
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 115.6
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 90.9
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 117.4
+    },
+    {
+     "id": "kollo",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 111.7
+    }
+   ],
+   "figures": 1054,
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 32
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 64.4
+    },
+    "worldMs": 8,
+    "confShare": {
+     "samples": 186017,
+     "share": 0.1503
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 186017,
+     "changed": 0.0199,
+     "contrastMedian": 1.24,
+     "contrastP90": 1.7,
+     "share3to1": 0.001
+    },
+    "changedPerFigure": 14.05,
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 32
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 64.2
+    },
+    "worldMs": 11.5
+   },
+   "P2": {
+    "diff": {
+     "samples": 186017,
+     "changed": 0.0354,
+     "contrastMedian": 1.35,
+     "contrastP90": 3.18,
+     "share3to1": 0.112
+    },
+    "changedPerFigure": 24.99,
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 32
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 64.7
+    },
+    "worldMs": 8.8,
+    "confShare": {
+     "samples": 186017,
+     "share": 0.1505
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 186017,
+     "changed": 0.0325,
+     "contrastMedian": 1.26,
+     "contrastP90": 1.85,
+     "share3to1": 0.019
+    },
+    "changedPerFigure": 22.94
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 186017,
+     "changed": 0.0271,
+     "contrastMedian": 1.37,
+     "contrastP90": 3.26,
+     "share3to1": 0.118
+    },
+    "changedPerFigure": 19.13
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 186017,
+     "changed": 0.0332,
+     "contrastMedian": 1.35,
+     "contrastP90": 3.19,
+     "share3to1": 0.112
+    },
+    "changedPerFigure": 23.44
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 186017,
+     "share": 0.0909
+    },
+    "diff": {
+     "samples": 186017,
+     "changed": 0.0909,
+     "contrastMedian": 1.32,
+     "contrastP90": 2.12,
+     "share3to1": 0.035
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0229,
+     "px": 17039,
+     "perFigure": 16.17,
+     "contrastMedian": 1.53
+    },
+    "headgear": {
+     "changed": 0.0172,
+     "px": 12798,
+     "perFigure": 12.14,
+     "contrastMedian": 1.27
+    },
+    "flags": {
+     "changed": 0.0026,
+     "px": 1935,
+     "perFigure": 1.84,
+     "contrastMedian": 1.32
+    }
+   },
+   "keys": {
+    "sthilaire": {
+     "side": "fr",
+     "px": 4579,
+     "proto": "#2B2B3F",
+     "today": "#31416B",
+     "labProto": [
+      18.49,
+      5.57,
+      -12.67
+     ],
+     "labToday": [
+      28.14,
+      6.83,
+      -26.5
+     ]
+    },
+    "nansouty": {
+     "side": "fr",
+     "px": 70,
+     "proto": "#3E4051",
+     "today": "#435278",
+     "labProto": [
+      27.53,
+      3.87,
+      -10.81
+     ],
+     "labToday": [
+      35.27,
+      4.45,
+      -23.19
+     ]
+    },
+    "dhautpoul": {
+     "side": "fr",
+     "px": 127,
+     "proto": "#414152",
+     "today": "#445478",
+     "labProto": [
+      28.15,
+      4.01,
+      -10.41
+     ],
+     "labToday": [
+      35.79,
+      4.34,
+      -22.56
+     ]
+    },
+    "rivaud": {
+     "side": "fr",
+     "px": 608,
+     "proto": "#3D3F52",
+     "today": "#425377",
+     "labProto": [
+      27.25,
+      3.79,
+      -11.72
+     ],
+     "labToday": [
+      35.46,
+      3.83,
+      -22.59
+     ]
+    },
+    "drouet": {
+     "side": "fr",
+     "px": 1047,
+     "proto": "#3A3C4E",
+     "today": "#405075",
+     "labProto": [
+      25.84,
+      3.94,
+      -11.4
+     ],
+     "labToday": [
+      34.24,
+      4.13,
+      -22.85
+     ]
+    },
+    "ahq": {
+     "side": "al",
+     "px": 166,
+     "proto": "#413F30",
+     "today": "#506043",
+     "labProto": [
+      26.34,
+      -1.59,
+      9.35
+     ],
+     "labToday": [
+      38.83,
+      -12.19,
+      14.89
+     ]
+    },
+    "kamensky": {
+     "side": "al",
+     "px": 822,
+     "proto": "#2F312D",
+     "today": "#3B5044",
+     "labProto": [
+      19.92,
+      -2.02,
+      2.3
+     ],
+     "labToday": [
+      31.81,
+      -10.9,
+      4.18
+     ]
+    },
+    "milo": {
+     "side": "al",
+     "px": 993,
+     "proto": "#3F4032",
+     "today": "#4C5E43",
+     "labProto": [
+      26.58,
+      -3.09,
+      8.14
+     ],
+     "labToday": [
+      37.61,
+      -12.53,
+      13.13
+     ]
+    },
+    "kollo": {
+     "side": "al",
+     "px": 2634,
+     "proto": "#A6A198",
+     "today": "#A0998B",
+     "labProto": [
+      66.51,
+      0.08,
+      5.57
+     ],
+     "labToday": [
+      63.52,
+      -0.08,
+      8.25
+     ]
+    }
+   },
+   "cross": {
+    "today": [
+     [
+      "rivaud",
+      "kamensky",
+      23.3
+     ],
+     [
+      "drouet",
+      "kamensky",
+      23.4
+     ],
+     [
+      "dhautpoul",
+      "kamensky",
+      23.5
+     ],
+     [
+      "nansouty",
+      "kamensky",
+      23.7
+     ],
+     [
+      "sthilaire",
+      "kamensky",
+      25.3
+     ],
+     [
+      "rivaud",
+      "milo",
+      29.4
+     ]
+    ],
+    "proto": [
+     [
+      "drouet",
+      "kamensky",
+      14
+     ],
+     [
+      "nansouty",
+      "kamensky",
+      14.1
+     ],
+     [
+      "dhautpoul",
+      "kamensky",
+      14.1
+     ],
+     [
+      "rivaud",
+      "kamensky",
+      14.4
+     ],
+     [
+      "sthilaire",
+      "kamensky",
+      14.7
+     ],
+     [
+      "nansouty",
+      "milo",
+      18.1
+     ]
+    ],
+    "pairs": 20
+   },
+   "seconds": 252
+  },
+  "watch-selected": {
+   "clock": 585,
+   "factor": 4,
+   "identity": [
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 87.5
+    },
+    {
+     "id": "vandamme",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 119.3
+    },
+    {
+     "id": "kellermann",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 143.8
+    },
+    {
+     "id": "walther",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 143.2
+    },
+    {
+     "id": "rivaud",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 121.4
+    },
+    {
+     "id": "drouet",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 114.2
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 113.6
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 86.8
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 114.8
+    },
+    {
+     "id": "lich",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 133.5
+    },
+    {
+     "id": "rg_cav",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 135.5
+    }
+   ],
+   "figures": 1271,
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 33
+    },
+    "dark": {
+     "solidBlack": 0.0001,
+     "meanLum": 57.4
+    },
+    "worldMs": 6.6,
+    "confShare": {
+     "samples": 270414,
+     "share": 0.1519
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 270414,
+     "changed": 0.0157,
+     "contrastMedian": 1.23,
+     "contrastP90": 1.81,
+     "share3to1": 0.002
+    },
+    "changedPerFigure": 13.36,
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 33
+    },
+    "dark": {
+     "solidBlack": 0.0001,
+     "meanLum": 57.2
+    },
+    "worldMs": 6.7
+   },
+   "P2": {
+    "diff": {
+     "samples": 270414,
+     "changed": 0.0271,
+     "contrastMedian": 1.33,
+     "contrastP90": 2.57,
+     "share3to1": 0.069
+    },
+    "changedPerFigure": 23.06,
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 33
+    },
+    "dark": {
+     "solidBlack": 0.0001,
+     "meanLum": 57.5
+    },
+    "worldMs": 10,
+    "confShare": {
+     "samples": 270414,
+     "share": 0.1525
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 270414,
+     "changed": 0.0253,
+     "contrastMedian": 1.26,
+     "contrastP90": 2.03,
+     "share3to1": 0.024
+    },
+    "changedPerFigure": 21.53
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 270414,
+     "changed": 0.0206,
+     "contrastMedian": 1.31,
+     "contrastP90": 2.5,
+     "share3to1": 0.063
+    },
+    "changedPerFigure": 17.53
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 270414,
+     "changed": 0.0253,
+     "contrastMedian": 1.33,
+     "contrastP90": 2.54,
+     "share3to1": 0.066
+    },
+    "changedPerFigure": 21.53
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 270414,
+     "share": 0.0778
+    },
+    "diff": {
+     "samples": 270414,
+     "changed": 0.0778,
+     "contrastMedian": 1.34,
+     "contrastP90": 2.36,
+     "share3to1": 0.037
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0156,
+     "px": 16874,
+     "perFigure": 13.28,
+     "contrastMedian": 1.37
+    },
+    "headgear": {
+     "changed": 0.0141,
+     "px": 15251,
+     "perFigure": 12,
+     "contrastMedian": 1.25
+    },
+    "flags": {
+     "changed": 0.002,
+     "px": 2163,
+     "perFigure": 1.7,
+     "contrastMedian": 1.33
+    }
+   },
+   "keys": {
+    "sthilaire": {
+     "side": "fr",
+     "px": 1743,
+     "proto": "#2F2B38",
+     "today": "#343C5A",
+     "labProto": [
+      18.3,
+      5.23,
+      -7.55
+     ],
+     "labToday": [
+      25.78,
+      5.42,
+      -19.03
+     ]
+    },
+    "vandamme": {
+     "side": "fr",
+     "px": 1140,
+     "proto": "#3B3C4D",
+     "today": "#3F4D72",
+     "labProto": [
+      25.75,
+      4,
+      -10.74
+     ],
+     "labToday": [
+      33.18,
+      4.99,
+      -22.64
+     ]
+    },
+    "kellermann": {
+     "side": "fr",
+     "px": 77,
+     "proto": "#3A4638",
+     "today": "#3A4C71",
+     "labProto": [
+      28.32,
+      -8.4,
+      7.08
+     ],
+     "labToday": [
+      32.36,
+      4.16,
+      -23.49
+     ]
+    },
+    "walther": {
+     "side": "fr",
+     "px": 209,
+     "proto": "#3A4436",
+     "today": "#3A4969",
+     "labProto": [
+      27.52,
+      -7.14,
+      6.93
+     ],
+     "labToday": [
+      30.94,
+      3.54,
+      -20.51
+     ]
+    },
+    "rivaud": {
+     "side": "fr",
+     "px": 879,
+     "proto": "#3A3D4F",
+     "today": "#405176",
+     "labProto": [
+      26.14,
+      3.83,
+      -11.63
+     ],
+     "labToday": [
+      34.5,
+      4.05,
+      -23.09
+     ]
+    },
+    "drouet": {
+     "side": "fr",
+     "px": 1155,
+     "proto": "#383A4D",
+     "today": "#3E4F74",
+     "labProto": [
+      25.14,
+      3.89,
+      -11.56
+     ],
+     "labToday": [
+      33.76,
+      4.18,
+      -23.33
+     ]
+    },
+    "ahq": {
+     "side": "al",
+     "px": 387,
+     "proto": "#433F31",
+     "today": "#4E5F43",
+     "labProto": [
+      26.78,
+      -0.94,
+      9.31
+     ],
+     "labToday": [
+      38.29,
+      -12.5,
+      14.22
+     ]
+    },
+    "kamensky": {
+     "side": "al",
+     "px": 2843,
+     "proto": "#2B2E22",
+     "today": "#384E34",
+     "labProto": [
+      18.24,
+      -4.03,
+      7.29
+     ],
+     "labToday": [
+      30.54,
+      -14.24,
+      12.43
+     ]
+    },
+    "milo": {
+     "side": "al",
+     "px": 931,
+     "proto": "#3C3F32",
+     "today": "#4A6145",
+     "labProto": [
+      26.1,
+      -4.18,
+      7.82
+     ],
+     "labToday": [
+      38.69,
+      -14.66,
+      13.38
+     ]
+    },
+    "lich": {
+     "side": "al",
+     "px": 750,
+     "proto": "#5B5F53",
+     "today": "#667B60",
+     "labProto": [
+      39.69,
+      -4.28,
+      6.61
+     ],
+     "labToday": [
+      49.24,
+      -13.15,
+      12.15
+     ]
+    },
+    "rg_cav": {
+     "side": "al",
+     "px": 84,
+     "proto": "#BDBBB5",
+     "today": "#627961",
+     "labProto": [
+      75.81,
+      -0.41,
+      3.13
+     ],
+     "labToday": [
+      48.42,
+      -13.15,
+      10.29
+     ]
+    }
+   },
+   "cross": {
+    "today": [
+     [
+      "walther",
+      "kamensky",
+      28.2
+     ],
+     [
+      "sthilaire",
+      "kamensky",
+      28.3
+     ],
+     [
+      "vandamme",
+      "kamensky",
+      29.4
+     ],
+     [
+      "kellermann",
+      "kamensky",
+      29.5
+     ],
+     [
+      "walther",
+      "milo",
+      29.5
+     ],
+     [
+      "rivaud",
+      "kamensky",
+      29.5
+     ]
+    ],
+    "proto": [
+     [
+      "walther",
+      "milo",
+      3.6
+     ],
+     [
+      "kellermann",
+      "milo",
+      4.9
+     ],
+     [
+      "walther",
+      "kamensky",
+      7.5
+     ],
+     [
+      "walther",
+      "ahq",
+      7.8
+     ],
+     [
+      "kellermann",
+      "kamensky",
+      8.6
+     ],
+     [
+      "kellermann",
+      "ahq",
+      9
+     ]
+    ],
+    "pairs": 30
+   },
+   "seconds": 275
+  },
+  "hybrid-dimmed": {
+   "clock": 600,
+   "factor": 4,
+   "identity": [
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": true,
+     "conf": true,
+     "dist": 100.6
+    },
+    {
+     "id": "drouet",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": true,
+     "conf": true,
+     "dist": 124.9
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": true,
+     "conf": true,
+     "dist": 133.5
+    },
+    {
+     "id": "buxhowden",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 85
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 100.8
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": true,
+     "conf": true,
+     "dist": 134
+    },
+    {
+     "id": "kollo",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 112.7
+    },
+    {
+     "id": "rg_inf",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": true,
+     "conf": true,
+     "dist": 161.7
+    }
+   ],
+   "figures": 1678,
+   "base": {
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 62
+    },
+    "worldMs": 7.4,
+    "confShare": {
+     "samples": 238967,
+     "share": 0.1456
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 238967,
+     "changed": 0.0109,
+     "contrastMedian": 1.23,
+     "contrastP90": 1.69,
+     "share3to1": 0.001
+    },
+    "changedPerFigure": 6.21,
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 61.8
+    },
+    "worldMs": 7.2
+   },
+   "P2": {
+    "diff": {
+     "samples": 238967,
+     "changed": 0.0198,
+     "contrastMedian": 1.3,
+     "contrastP90": 2.52,
+     "share3to1": 0.067
+    },
+    "changedPerFigure": 11.28,
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 62.2
+    },
+    "worldMs": 9.2,
+    "confShare": {
+     "samples": 238967,
+     "share": 0.1459
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 238967,
+     "changed": 0.0181,
+     "contrastMedian": 1.26,
+     "contrastP90": 1.84,
+     "share3to1": 0.012
+    },
+    "changedPerFigure": 10.31
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 238967,
+     "changed": 0.0151,
+     "contrastMedian": 1.3,
+     "contrastP90": 2.63,
+     "share3to1": 0.078
+    },
+    "changedPerFigure": 8.6
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 238967,
+     "changed": 0.0182,
+     "contrastMedian": 1.3,
+     "contrastP90": 2.5,
+     "share3to1": 0.067
+    },
+    "changedPerFigure": 10.37
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 238967,
+     "share": 0.0549
+    },
+    "diff": {
+     "samples": 238967,
+     "changed": 0.0549,
+     "contrastMedian": 1.4,
+     "contrastP90": 2.28,
+     "share3to1": 0.053
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0115,
+     "px": 10992,
+     "perFigure": 6.55,
+     "contrastMedian": 1.35
+    },
+    "headgear": {
+     "changed": 0.0091,
+     "px": 8698,
+     "perFigure": 5.18,
+     "contrastMedian": 1.25
+    },
+    "flags": {
+     "changed": 0.0018,
+     "px": 1721,
+     "perFigure": 1.03,
+     "contrastMedian": 1.3
+    }
+   },
+   "keys": {
+    "sthilaire": {
+     "side": "fr",
+     "px": 1473,
+     "proto": "#2F2C3B",
+     "today": "#343D5E",
+     "labProto": [
+      18.98,
+      5.26,
+      -9.03
+     ],
+     "labToday": [
+      26.44,
+      5.75,
+      -20.76
+     ]
+    },
+    "drouet": {
+     "side": "fr",
+     "px": 456,
+     "proto": "#3A3D50",
+     "today": "#405074",
+     "labProto": [
+      26.2,
+      3.73,
+      -11.7
+     ],
+     "labToday": [
+      34.16,
+      4.14,
+      -22.44
+     ]
+    },
+    "ahq": {
+     "side": "al",
+     "px": 87,
+     "proto": "#494437",
+     "today": "#535F47",
+     "labProto": [
+      29.02,
+      -0.08,
+      8.49
+     ],
+     "labToday": [
+      38.69,
+      -9.79,
+      12.44
+     ]
+    },
+    "buxhowden": {
+     "side": "al",
+     "px": 527,
+     "proto": "#333526",
+     "today": "#405A3B",
+     "labProto": [
+      21.47,
+      -4.02,
+      9.06
+     ],
+     "labToday": [
+      35.58,
+      -16.56,
+      14.77
+     ]
+    },
+    "kamensky": {
+     "side": "al",
+     "px": 728,
+     "proto": "#2F2E26",
+     "today": "#374533",
+     "labProto": [
+      18.95,
+      -1.61,
+      5.75
+     ],
+     "labToday": [
+      27.61,
+      -9.73,
+      9.39
+     ]
+    },
+    "milo": {
+     "side": "al",
+     "px": 244,
+     "proto": "#464639",
+     "today": "#4F6047",
+     "labProto": [
+      29.32,
+      -2.86,
+      7.84
+     ],
+     "labToday": [
+      38.72,
+      -11.44,
+      11.94
+     ]
+    },
+    "kollo": {
+     "side": "al",
+     "px": 1308,
+     "proto": "#AFA79B",
+     "today": "#A9A090",
+     "labProto": [
+      68.75,
+      0.85,
+      6.89
+     ],
+     "labToday": [
+      66.15,
+      0.73,
+      9.34
+     ]
+    },
+    "rg_inf": {
+     "side": "al",
+     "px": 157,
+     "proto": "#494B41",
+     "today": "#52644F",
+     "labProto": [
+      31.29,
+      -2.8,
+      5.33
+     ],
+     "labToday": [
+      40.28,
+      -11.06,
+      9.59
+     ]
+    }
+   },
+   "cross": {
+    "today": [
+     [
+      "sthilaire",
+      "kamensky",
+      26.2
+     ],
+     [
+      "drouet",
+      "kamensky",
+      26.9
+     ],
+     [
+      "drouet",
+      "rg_inf",
+      27.3
+     ],
+     [
+      "drouet",
+      "milo",
+      28.7
+     ],
+     [
+      "sthilaire",
+      "rg_inf",
+      28.8
+     ],
+     [
+      "drouet",
+      "ahq",
+      28.8
+     ]
+    ],
+    "proto": [
+     [
+      "sthilaire",
+      "kamensky",
+      15.9
+     ],
+     [
+      "drouet",
+      "rg_inf",
+      16.7
+     ],
+     [
+      "drouet",
+      "kamensky",
+      17.4
+     ],
+     [
+      "drouet",
+      "ahq",
+      17.8
+     ],
+     [
+      "sthilaire",
+      "ahq",
+      18.2
+     ],
+     [
+      "drouet",
+      "milo",
+      18.4
+     ]
+    ],
+    "pairs": 12
+   },
+   "seconds": 259
+  },
+  "ph8-overview-study": {
+   "clock": 880,
+   "factor": 4,
+   "identity": [
+    {
+     "id": "gqg",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 536.3
+    },
+    {
+     "id": "heightguns",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 536.1
+    },
+    {
+     "id": "vandamme",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 535.1
+    },
+    {
+     "id": "friant",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 537.6
+    },
+    {
+     "id": "bourcier",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 535.1
+    },
+    {
+     "id": "caffarelli",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 554.9
+    },
+    {
+     "id": "suchet",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 558.6
+    },
+    {
+     "id": "santon",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 550.4
+    },
+    {
+     "id": "kellermann",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 551
+    },
+    {
+     "id": "nansouty",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 549.6
+    },
+    {
+     "id": "dhautpoul",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 548.1
+    },
+    {
+     "id": "walther",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 550.4
+    },
+    {
+     "id": "drouet",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 537.9
+    },
+    {
+     "id": "guard_inf",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 538.3
+    },
+    {
+     "id": "guard_cav",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 538.3
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 552.6
+    },
+    {
+     "id": "buxhowden",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 536.8
+    },
+    {
+     "id": "kienmayer",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 535
+    },
+    {
+     "id": "dok",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 535.2
+    },
+    {
+     "id": "lang",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 534.6
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 544.5
+    },
+    {
+     "id": "prz",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 535.2
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 550.6
+    },
+    {
+     "id": "kollo",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 552.2
+    },
+    {
+     "id": "lich",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 555.3
+    },
+    {
+     "id": "bag",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 558
+    },
+    {
+     "id": "rg_cav",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 553.7
+    }
+   ],
+   "figures": 2906,
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.4
+    },
+    "worldMs": 8.2,
+    "confShare": {
+     "samples": 184632,
+     "share": 0.0332
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 184632,
+     "changed": 0.0016,
+     "contrastMedian": 1.16,
+     "contrastP90": 1.47,
+     "share3to1": 0
+    },
+    "changedPerFigure": 0.41,
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.4
+    },
+    "worldMs": 12.2
+   },
+   "P2": {
+    "diff": {
+     "samples": 184632,
+     "changed": 0.0062,
+     "contrastMedian": 1.21,
+     "contrastP90": 1.97,
+     "share3to1": 0.032
+    },
+    "changedPerFigure": 1.58,
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.4
+    },
+    "worldMs": 11.1,
+    "confShare": {
+     "samples": 184632,
+     "share": 0.0333
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 184632,
+     "changed": 0.0029,
+     "contrastMedian": 1.17,
+     "contrastP90": 1.6,
+     "share3to1": 0.004
+    },
+    "changedPerFigure": 0.74
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 184632,
+     "changed": 0.0059,
+     "contrastMedian": 1.2,
+     "contrastP90": 1.96,
+     "share3to1": 0.032
+    },
+    "changedPerFigure": 1.5
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 184632,
+     "changed": 0.0061,
+     "contrastMedian": 1.22,
+     "contrastP90": 1.97,
+     "share3to1": 0.033
+    },
+    "changedPerFigure": 1.55
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 184632,
+     "share": 0.0251
+    },
+    "diff": {
+     "samples": 184632,
+     "changed": 0.0251,
+     "contrastMedian": 2.48,
+     "contrastP90": 3.86,
+     "share3to1": 0.273
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0056,
+     "px": 4136,
+     "perFigure": 1.42,
+     "contrastMedian": 1.23
+    },
+    "headgear": {
+     "changed": 0.0008,
+     "px": 591,
+     "perFigure": 0.2,
+     "contrastMedian": 1.15
+    },
+    "flags": {
+     "changed": 0.0001,
+     "px": 74,
+     "perFigure": 0.03,
+     "contrastMedian": 1.07
+    }
+   },
+   "seconds": 136
+  },
+  "ph8-overview-watch": {
+   "clock": 880,
+   "factor": 4,
+   "identity": [
+    {
+     "id": "gqg",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 426.2
+    },
+    {
+     "id": "heightguns",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 426.1
+    },
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 424.7
+    },
+    {
+     "id": "vandamme",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 424.9
+    },
+    {
+     "id": "bourcier",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 425.4
+    },
+    {
+     "id": "caffarelli",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 446.7
+    },
+    {
+     "id": "suchet",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 450.8
+    },
+    {
+     "id": "santon",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 441.7
+    },
+    {
+     "id": "kellermann",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 442.1
+    },
+    {
+     "id": "nansouty",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 440.5
+    },
+    {
+     "id": "dhautpoul",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 438.7
+    },
+    {
+     "id": "walther",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 441.4
+    },
+    {
+     "id": "rivaud",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 430.3
+    },
+    {
+     "id": "drouet",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 427.7
+    },
+    {
+     "id": "guard_inf",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 427.7
+    },
+    {
+     "id": "guard_cav",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 427.8
+    },
+    {
+     "id": "c_gren",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 424.8
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 444.4
+    },
+    {
+     "id": "buxhowden",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 427
+    },
+    {
+     "id": "kienmayer",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 425.3
+    },
+    {
+     "id": "dok",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 425.7
+    },
+    {
+     "id": "lang",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 424.8
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 435
+    },
+    {
+     "id": "prz",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 424.8
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 442.1
+    },
+    {
+     "id": "kollo",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 444
+    },
+    {
+     "id": "lich",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 447.5
+    },
+    {
+     "id": "bag",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 450.1
+    },
+    {
+     "id": "rg_cav",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 445.8
+    }
+   ],
+   "figures": 2906,
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.17,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.6
+    },
+    "worldMs": 7.9,
+    "confShare": {
+     "samples": 292792,
+     "share": 0.0359
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 292792,
+     "changed": 0.002,
+     "contrastMedian": 1.16,
+     "contrastP90": 1.47,
+     "share3to1": 0.005
+    },
+    "changedPerFigure": 0.81,
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.17,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.6
+    },
+    "worldMs": 6.6
+   },
+   "P2": {
+    "diff": {
+     "samples": 292792,
+     "changed": 0.0064,
+     "contrastMedian": 1.22,
+     "contrastP90": 2.33,
+     "share3to1": 0.062
+    },
+    "changedPerFigure": 2.58,
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.17,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.7
+    },
+    "worldMs": 13.7,
+    "confShare": {
+     "samples": 292792,
+     "share": 0.0358
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 292792,
+     "changed": 0.0035,
+     "contrastMedian": 1.18,
+     "contrastP90": 1.58,
+     "share3to1": 0.009
+    },
+    "changedPerFigure": 1.41
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 292792,
+     "changed": 0.0062,
+     "contrastMedian": 1.22,
+     "contrastP90": 2.35,
+     "share3to1": 0.061
+    },
+    "changedPerFigure": 2.5
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 292792,
+     "changed": 0.0062,
+     "contrastMedian": 1.22,
+     "contrastP90": 2.36,
+     "share3to1": 0.064
+    },
+    "changedPerFigure": 2.5
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 292792,
+     "share": 0.0267
+    },
+    "diff": {
+     "samples": 292792,
+     "changed": 0.0267,
+     "contrastMedian": 2.22,
+     "contrastP90": 3.97,
+     "share3to1": 0.271
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0059,
+     "px": 6910,
+     "perFigure": 2.38,
+     "contrastMedian": 1.24
+    },
+    "headgear": {
+     "changed": 0.0011,
+     "px": 1288,
+     "perFigure": 0.44,
+     "contrastMedian": 1.17
+    },
+    "flags": {
+     "changed": 0.0002,
+     "px": 234,
+     "perFigure": 0.08,
+     "contrastMedian": 1.09
+    }
+   },
+   "seconds": 147
+  },
+  "eye-zuran": {
+   "clock": 510,
+   "factor": 4,
+   "identity": [
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 50.9
+    },
+    {
+     "id": "vandamme",
+     "side": "fr",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 32.8
+    },
+    {
+     "id": "friant",
+     "side": "fr",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 134.5
+    },
+    {
+     "id": "bourcier",
+     "side": "fr",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 142.9
+    },
+    {
+     "id": "rivaud",
+     "side": "fr",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 16.4
+    },
+    {
+     "id": "drouet",
+     "side": "fr",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 39.6
+    },
+    {
+     "id": "c_gren",
+     "side": "fr",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 10.9
+    },
+    {
+     "id": "kienmayer",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": false,
+     "dist": 136.1
+    },
+    {
+     "id": "dok",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": false,
+     "dist": 134.7
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": false,
+     "dist": 95.9
+    }
+   ],
+   "figures": 172,
+   "base": {
+    "layer": {
+     "dropped": 5,
+     "items": 50,
+     "placed": 18
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 117.5
+    },
+    "worldMs": 3.8,
+    "confShare": {
+     "samples": 295512,
+     "share": 0.0004
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 295512,
+     "changed": 0.0002,
+     "contrastMedian": 1.48,
+     "contrastP90": 1.93,
+     "share3to1": 0
+    },
+    "changedPerFigure": 1.37,
+    "layer": {
+     "dropped": 5,
+     "items": 50,
+     "placed": 18
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 117.5
+    },
+    "worldMs": 2.4
+   },
+   "P2": {
+    "diff": {
+     "samples": 295512,
+     "changed": 0.0023,
+     "contrastMedian": 1.12,
+     "contrastP90": 2.16,
+     "share3to1": 0.043
+    },
+    "changedPerFigure": 15.81,
+    "layer": {
+     "dropped": 5,
+     "items": 50,
+     "placed": 18
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 117.5
+    },
+    "worldMs": 2.4,
+    "confShare": {
+     "samples": 295512,
+     "share": 0.0004
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 295512,
+     "changed": 0.0013,
+     "contrastMedian": 1.37,
+     "contrastP90": 2.8,
+     "share3to1": 0.078
+    },
+    "changedPerFigure": 8.93
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 295512,
+     "changed": 0.0019,
+     "contrastMedian": 1.09,
+     "contrastP90": 2.25,
+     "share3to1": 0.044
+    },
+    "changedPerFigure": 13.06
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 295512,
+     "changed": 0.0016,
+     "contrastMedian": 1.06,
+     "contrastP90": 1.49,
+     "share3to1": 0.008
+    },
+    "changedPerFigure": 11
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 295512,
+     "share": 0.0004
+    },
+    "diff": {
+     "samples": 295512,
+     "changed": 0.0004,
+     "contrastMedian": 1.09,
+     "contrastP90": 1.18,
+     "share3to1": 0
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0012,
+     "px": 1418,
+     "perFigure": 8.25,
+     "contrastMedian": 1.04
+    },
+    "headgear": {
+     "changed": 0.0004,
+     "px": 473,
+     "perFigure": 2.75,
+     "contrastMedian": 1.19
+    },
+    "flags": {
+     "changed": 0.0007,
+     "px": 827,
+     "perFigure": 4.81,
+     "contrastMedian": 1.51
+    }
+   },
+   "keys": {},
+   "cross": {
+    "today": [],
+    "proto": [],
+    "pairs": 0
+   },
+   "seconds": 128
+  },
+  "plans-overview": {
+   "clock": 570,
+   "factor": 4,
+   "identity": [
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 530.2
+    },
+    {
+     "id": "vandamme",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 537.8
+    },
+    {
+     "id": "legrand",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 535.4
+    },
+    {
+     "id": "friant",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 535.9
+    },
+    {
+     "id": "bourcier",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 535.9
+    },
+    {
+     "id": "caffarelli",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 550.1
+    },
+    {
+     "id": "suchet",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 551
+    },
+    {
+     "id": "santon",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 550.4
+    },
+    {
+     "id": "kellermann",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 547.3
+    },
+    {
+     "id": "nansouty",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 546.3
+    },
+    {
+     "id": "dhautpoul",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 545.6
+    },
+    {
+     "id": "walther",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 549.2
+    },
+    {
+     "id": "guard_inf",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 546.9
+    },
+    {
+     "id": "guard_cav",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 545.9
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 538
+    },
+    {
+     "id": "buxhowden",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 535.2
+    },
+    {
+     "id": "kienmayer",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 536
+    },
+    {
+     "id": "lang",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 534.9
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 530.3
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 537.1
+    },
+    {
+     "id": "lich",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 542.5
+    },
+    {
+     "id": "bag",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 557.8
+    },
+    {
+     "id": "rg_inf",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 545.1
+    },
+    {
+     "id": "rg_cav",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 543.2
+    }
+   ],
+   "figures": 2940,
+   "base": {
+    "layer": {
+     "dropped": 11,
+     "items": 56,
+     "placed": 45
+    },
+    "contrast": {
+     "min": 8.52,
+     "belowAA": 0,
+     "texts": 47
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 54
+    },
+    "worldMs": 7.6,
+    "confShare": {
+     "samples": 176491,
+     "share": 0.0235
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 176491,
+     "changed": 0.0005,
+     "contrastMedian": 1.12,
+     "contrastP90": 1.33,
+     "share3to1": 0
+    },
+    "changedPerFigure": 0.12,
+    "layer": {
+     "dropped": 11,
+     "items": 56,
+     "placed": 45
+    },
+    "contrast": {
+     "min": 8.52,
+     "belowAA": 0,
+     "texts": 47
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 54
+    },
+    "worldMs": 6.9
+   },
+   "P2": {
+    "diff": {
+     "samples": 176491,
+     "changed": 0.0025,
+     "contrastMedian": 1.21,
+     "contrastP90": 2.28,
+     "share3to1": 0.047
+    },
+    "changedPerFigure": 0.6,
+    "layer": {
+     "dropped": 11,
+     "items": 56,
+     "placed": 45
+    },
+    "contrast": {
+     "min": 8.52,
+     "belowAA": 0,
+     "texts": 47
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 54
+    },
+    "worldMs": 10,
+    "confShare": {
+     "samples": 176491,
+     "share": 0.0235
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 176491,
+     "changed": 0.0009,
+     "contrastMedian": 1.15,
+     "contrastP90": 1.52,
+     "share3to1": 0
+    },
+    "changedPerFigure": 0.22
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 176491,
+     "changed": 0.0024,
+     "contrastMedian": 1.22,
+     "contrastP90": 2.25,
+     "share3to1": 0.052
+    },
+    "changedPerFigure": 0.58
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 176491,
+     "changed": 0.0025,
+     "contrastMedian": 1.22,
+     "contrastP90": 2.29,
+     "share3to1": 0.047
+    },
+    "changedPerFigure": 0.6
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 176491,
+     "share": 0.0154
+    },
+    "diff": {
+     "samples": 176491,
+     "changed": 0.0154,
+     "contrastMedian": 1.44,
+     "contrastP90": 1.85,
+     "share3to1": 0
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0025,
+     "px": 1765,
+     "perFigure": 0.6,
+     "contrastMedian": 1.22
+    },
+    "headgear": {
+     "changed": 0.0003,
+     "px": 212,
+     "perFigure": 0.07,
+     "contrastMedian": 1.18
+    },
+    "flags": {
+     "changed": 0,
+     "px": 0,
+     "perFigure": 0,
+     "contrastMedian": 1.15
+    }
+   },
+   "seconds": 136
+  },
+  "pratzen-orbit-min": {
+   "clock": 590,
+   "factor": 4,
+   "identity": [
+    {
+     "id": "vandamme",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 44.6
+    },
+    {
+     "id": "caffarelli",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 88.6
+    },
+    {
+     "id": "kellermann",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 79.4
+    },
+    {
+     "id": "nansouty",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 74.2
+    },
+    {
+     "id": "dhautpoul",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 70.6
+    },
+    {
+     "id": "walther",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 84.5
+    },
+    {
+     "id": "rivaud",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 58.8
+    },
+    {
+     "id": "drouet",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 49
+    },
+    {
+     "id": "guard_inf",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 86.5
+    },
+    {
+     "id": "guard_cav",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 80.7
+    },
+    {
+     "id": "lich",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 62.9
+    }
+   ],
+   "figures": 1012,
+   "base": {
+    "layer": {
+     "dropped": 1,
+     "items": 61,
+     "placed": 6
+    },
+    "contrast": {
+     "min": 11.72,
+     "belowAA": 0,
+     "texts": 6
+    },
+    "dark": {
+     "solidBlack": 0.0003,
+     "meanLum": 76.5
+    },
+    "worldMs": 6.5,
+    "confShare": {
+     "samples": 301199,
+     "share": 0.0307
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 301199,
+     "changed": 0.0544,
+     "contrastMedian": 1.26,
+     "contrastP90": 1.94,
+     "share3to1": 0
+    },
+    "changedPerFigure": 64.76,
+    "layer": {
+     "dropped": 1,
+     "items": 61,
+     "placed": 6
+    },
+    "contrast": {
+     "min": 11.72,
+     "belowAA": 0,
+     "texts": 6
+    },
+    "dark": {
+     "solidBlack": 0.0003,
+     "meanLum": 75.8
+    },
+    "worldMs": 6.1
+   },
+   "P2": {
+    "diff": {
+     "samples": 301199,
+     "changed": 0.1939,
+     "contrastMedian": 1.31,
+     "contrastP90": 4.4,
+     "share3to1": 0.159
+    },
+    "changedPerFigure": 230.84,
+    "layer": {
+     "dropped": 1,
+     "items": 61,
+     "placed": 6
+    },
+    "contrast": {
+     "min": 11.77,
+     "belowAA": 0,
+     "texts": 6
+    },
+    "dark": {
+     "solidBlack": 0.00228,
+     "meanLum": 77.3
+    },
+    "worldMs": 10.3,
+    "confShare": {
+     "samples": 301199,
+     "share": 0.0309
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 301199,
+     "changed": 0.1857,
+     "contrastMedian": 1.29,
+     "contrastP90": 3.09,
+     "share3to1": 0.102
+    },
+    "changedPerFigure": 221.08
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 301199,
+     "changed": 0.1133,
+     "contrastMedian": 1.41,
+     "contrastP90": 4.87,
+     "share3to1": 0.221
+    },
+    "changedPerFigure": 134.88
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 301199,
+     "changed": 0.1444,
+     "contrastMedian": 1.27,
+     "contrastP90": 3.56,
+     "share3to1": 0.12
+    },
+    "changedPerFigure": 171.91
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 301199,
+     "share": 0.0237
+    },
+    "diff": {
+     "samples": 301199,
+     "changed": 0.0237,
+     "contrastMedian": 1.58,
+     "contrastP90": 3.57,
+     "share3to1": 0.186
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0437,
+     "px": 52650,
+     "perFigure": 52.03,
+     "contrastMedian": 1.79
+    },
+    "headgear": {
+     "changed": 0.0856,
+     "px": 103131,
+     "perFigure": 101.91,
+     "contrastMedian": 1.22
+    },
+    "flags": {
+     "changed": 0.0497,
+     "px": 59878,
+     "perFigure": 59.17,
+     "contrastMedian": 1.41
+    }
+   },
+   "keys": {
+    "vandamme": {
+     "side": "fr",
+     "px": 7226,
+     "proto": "#282D47",
+     "today": "#2E4578",
+     "labProto": [
+      18.97,
+      5.84,
+      -17.27
+     ],
+     "labToday": [
+      29.91,
+      7.94,
+      -31.55
+     ]
+    },
+    "caffarelli": {
+     "side": "fr",
+     "px": 1185,
+     "proto": "#61616C",
+     "today": "#657290",
+     "labProto": [
+      41.48,
+      2.26,
+      -6.2
+     ],
+     "labToday": [
+      48.12,
+      2.23,
+      -17.66
+     ]
+    },
+    "kellermann": {
+     "side": "fr",
+     "px": 238,
+     "proto": "#465642",
+     "today": "#475E8A",
+     "labProto": [
+      34.66,
+      -10.6,
+      9.42
+     ],
+     "labToday": [
+      39.97,
+      4.06,
+      -26.87
+     ]
+    },
+    "nansouty": {
+     "side": "fr",
+     "px": 721,
+     "proto": "#4E5367",
+     "today": "#546991",
+     "labProto": [
+      35.64,
+      3.02,
+      -12.2
+     ],
+     "labToday": [
+      44.3,
+      2.95,
+      -24.14
+     ]
+    },
+    "dhautpoul": {
+     "side": "fr",
+     "px": 707,
+     "proto": "#4E5267",
+     "today": "#536992",
+     "labProto": [
+      35.28,
+      3.33,
+      -12.51
+     ],
+     "labToday": [
+      44.19,
+      3.2,
+      -24.91
+     ]
+    },
+    "walther": {
+     "side": "fr",
+     "px": 408,
+     "proto": "#616D5A",
+     "today": "#627293",
+     "labProto": [
+      44.43,
+      -7.93,
+      8.83
+     ],
+     "labToday": [
+      47.98,
+      2.09,
+      -19.58
+     ]
+    },
+    "rivaud": {
+     "side": "fr",
+     "px": 2110,
+     "proto": "#42455A",
+     "today": "#495E87",
+     "labProto": [
+      29.89,
+      4.02,
+      -12.99
+     ],
+     "labToday": [
+      39.79,
+      3.83,
+      -25.53
+     ]
+    },
+    "drouet": {
+     "side": "fr",
+     "px": 5985,
+     "proto": "#323755",
+     "today": "#3B578D",
+     "labProto": [
+      23.85,
+      6.29,
+      -18.77
+     ],
+     "labToday": [
+      37.34,
+      6.42,
+      -32.84
+     ]
+    },
+    "guard_inf": {
+     "side": "fr",
+     "px": 860,
+     "proto": "#373C51",
+     "today": "#3E5278",
+     "labProto": [
+      25.73,
+      3.44,
+      -13.22
+     ],
+     "labToday": [
+      34.86,
+      3.38,
+      -24.03
+     ]
+    },
+    "guard_cav": {
+     "side": "fr",
+     "px": 1444,
+     "proto": "#3F4459",
+     "today": "#465A81",
+     "labProto": [
+      29.25,
+      3.46,
+      -12.92
+     ],
+     "labToday": [
+      38.29,
+      3.24,
+      -24.23
+     ]
+    },
+    "lich": {
+     "side": "al",
+     "px": 1629,
+     "proto": "#676C60",
+     "today": "#71856C",
+     "labProto": [
+      44.79,
+      -4.35,
+      6.1
+     ],
+     "labToday": [
+      53.19,
+      -12.34,
+      11.11
+     ]
+    }
+   },
+   "cross": {
+    "today": [
+     [
+      "caffarelli",
+      "lich",
+      26.1
+     ],
+     [
+      "walther",
+      "lich",
+      26.9
+     ],
+     [
+      "nansouty",
+      "lich",
+      29.8
+     ],
+     [
+      "dhautpoul",
+      "lich",
+      30.1
+     ],
+     [
+      "rivaud",
+      "lich",
+      31.9
+     ],
+     [
+      "guard_cav",
+      "lich",
+      31.9
+     ]
+    ],
+    "proto": [
+     [
+      "walther",
+      "lich",
+      4
+     ],
+     [
+      "kellermann",
+      "lich",
+      10.8
+     ],
+     [
+      "caffarelli",
+      "lich",
+      13.9
+     ],
+     [
+      "nansouty",
+      "lich",
+      19.3
+     ],
+     [
+      "dhautpoul",
+      "lich",
+      19.6
+     ],
+     [
+      "rivaud",
+      "lich",
+      22.2
+     ]
+    ],
+    "pairs": 10
+   },
+   "seconds": 419
+  },
+  "pratzen-low-1x": {
+   "clock": 590,
+   "factor": 1,
+   "identity": [
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 72.4
+    },
+    {
+     "id": "vandamme",
+     "side": "fr",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 97.7
+    },
+    {
+     "id": "legrand",
+     "side": "fr",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 42.3
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 98.3
+    },
+    {
+     "id": "lang",
+     "side": "al",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 54.2
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 71.8
+    },
+    {
+     "id": "prz",
+     "side": "al",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 49.8
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 100.9
+    },
+    {
+     "id": "kollo",
+     "side": "al",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 85.1
+    },
+    {
+     "id": "rg_inf",
+     "side": "al",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 132.3
+    },
+    {
+     "id": "rg_cav",
+     "side": "al",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 116.5
+    }
+   ],
+   "figures": 0,
+   "base": {
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 31
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 75.3
+    },
+    "worldMs": 1.6
+   },
+   "seconds": 25
+  },
+  "pratzen-low-10x": {
+   "clock": 590,
+   "factor": "model",
+   "identity": [
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 70
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 97.3
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 69.3
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 100
+    },
+    {
+     "id": "kollo",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 84.4
+    },
+    {
+     "id": "rg_inf",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 132.6
+    },
+    {
+     "id": "rg_cav",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 116.5
+    }
+   ],
+   "figures": 878,
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 110.4
+    },
+    "worldMs": 9.2,
+    "confShare": {
+     "samples": 293027,
+     "share": 0.0571
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 293027,
+     "changed": 0.0137,
+     "contrastMedian": 1.28,
+     "contrastP90": 1.71,
+     "share3to1": 0.001
+    },
+    "changedPerFigure": 18.29,
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 110.2
+    },
+    "worldMs": 6.7
+   },
+   "P2": {
+    "diff": {
+     "samples": 293027,
+     "changed": 0.0248,
+     "contrastMedian": 1.35,
+     "contrastP90": 2.74,
+     "share3to1": 0.083
+    },
+    "changedPerFigure": 33.11,
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.94,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 110.5
+    },
+    "worldMs": 7.4,
+    "confShare": {
+     "samples": 293027,
+     "share": 0.0571
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 293027,
+     "changed": 0.0234,
+     "contrastMedian": 1.3,
+     "contrastP90": 1.93,
+     "share3to1": 0.031
+    },
+    "changedPerFigure": 31.24
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 293027,
+     "changed": 0.0182,
+     "contrastMedian": 1.37,
+     "contrastP90": 2.96,
+     "share3to1": 0.097
+    },
+    "changedPerFigure": 24.3
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 293027,
+     "changed": 0.0223,
+     "contrastMedian": 1.33,
+     "contrastP90": 2.63,
+     "share3to1": 0.075
+    },
+    "changedPerFigure": 29.77
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 293027,
+     "share": 0.0323
+    },
+    "diff": {
+     "samples": 293027,
+     "changed": 0.0323,
+     "contrastMedian": 1.55,
+     "contrastP90": 3.13,
+     "share3to1": 0.109
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0106,
+     "px": 12424,
+     "perFigure": 14.15,
+     "contrastMedian": 1.48
+    },
+    "headgear": {
+     "changed": 0.0098,
+     "px": 11487,
+     "perFigure": 13.08,
+     "contrastMedian": 1.26
+    },
+    "flags": {
+     "changed": 0.0026,
+     "px": 3047,
+     "perFigure": 3.47,
+     "contrastMedian": 1.38
+    }
+   },
+   "seconds": 147
+  },
+  "eye-zuran-1x": {
+   "clock": 510,
+   "factor": 1,
+   "identity": [
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 50.6
+    },
+    {
+     "id": "vandamme",
+     "side": "fr",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 32.6
+    },
+    {
+     "id": "friant",
+     "side": "fr",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 134.4
+    },
+    {
+     "id": "bourcier",
+     "side": "fr",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 142.9
+    },
+    {
+     "id": "rivaud",
+     "side": "fr",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 16.2
+    },
+    {
+     "id": "drouet",
+     "side": "fr",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 39.4
+    },
+    {
+     "id": "guard_inf",
+     "side": "fr",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 9
+    },
+    {
+     "id": "c_gren",
+     "side": "fr",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 10.6
+    },
+    {
+     "id": "buxhowden",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": false,
+     "dist": 118.2
+    },
+    {
+     "id": "kienmayer",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": false,
+     "dist": 136
+    },
+    {
+     "id": "dok",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": false,
+     "dist": 134.6
+    },
+    {
+     "id": "lang",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": false,
+     "dist": 110.8
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": false,
+     "dist": 95.9
+    },
+    {
+     "id": "prz",
+     "side": "al",
+     "figures": false,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 105.3
+    }
+   ],
+   "figures": 0,
+   "base": {
+    "layer": {
+     "dropped": 6,
+     "items": 50,
+     "placed": 18
+    },
+    "contrast": {
+     "min": 11.36,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 101.2
+    },
+    "worldMs": 1.1
+   },
+   "seconds": 20
+  },
+  "overview-field@10.33x": {
+   "clock": 570,
+   "factor": "model",
+   "identity": [
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 229.8
+    },
+    {
+     "id": "vandamme",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 266.1
+    },
+    {
+     "id": "friant",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 178.6
+    },
+    {
+     "id": "caffarelli",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 282.1
+    },
+    {
+     "id": "suchet",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 284.3
+    },
+    {
+     "id": "santon",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 286.1
+    },
+    {
+     "id": "drouet",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 253.6
+    },
+    {
+     "id": "c_gren",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 249.8
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 257.1
+    },
+    {
+     "id": "buxhowden",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 213.7
+    },
+    {
+     "id": "kienmayer",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 188.4
+    },
+    {
+     "id": "dok",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 188.8
+    },
+    {
+     "id": "lang",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 206.3
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 227.9
+    },
+    {
+     "id": "prz",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 202.1
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 259.6
+    },
+    {
+     "id": "kollo",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 253.7
+    },
+    {
+     "id": "lich",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 278.2
+    },
+    {
+     "id": "bag",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 328
+    }
+   ],
+   "figures": 2912,
+   "base": {
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 54
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 88.1
+    },
+    "worldMs": 7.4,
+    "confShare": {
+     "samples": 176694,
+     "share": 0.0446
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 176694,
+     "changed": 0.0094,
+     "contrastMedian": 1.19,
+     "contrastP90": 1.52,
+     "share3to1": 0.002
+    },
+    "changedPerFigure": 2.28,
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 54
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 88.1
+    },
+    "worldMs": 6.9
+   },
+   "P2": {
+    "diff": {
+     "samples": 176694,
+     "changed": 0.021,
+     "contrastMedian": 1.26,
+     "contrastP90": 2.27,
+     "share3to1": 0.051
+    },
+    "changedPerFigure": 5.1,
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 54
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 88.3
+    },
+    "worldMs": 11.6,
+    "confShare": {
+     "samples": 176694,
+     "share": 0.0448
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 176694,
+     "changed": 0.0173,
+     "contrastMedian": 1.22,
+     "contrastP90": 1.65,
+     "share3to1": 0.003
+    },
+    "changedPerFigure": 4.2
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 176694,
+     "changed": 0.0172,
+     "contrastMedian": 1.24,
+     "contrastP90": 2.39,
+     "share3to1": 0.058
+    },
+    "changedPerFigure": 4.17
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 176694,
+     "changed": 0.0192,
+     "contrastMedian": 1.26,
+     "contrastP90": 2.28,
+     "share3to1": 0.056
+    },
+    "changedPerFigure": 4.66
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 176694,
+     "share": 0.0309
+    },
+    "diff": {
+     "samples": 176694,
+     "changed": 0.0309,
+     "contrastMedian": 1.61,
+     "contrastP90": 2.96,
+     "share3to1": 0.091
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0144,
+     "px": 10178,
+     "perFigure": 3.5,
+     "contrastMedian": 1.26
+    },
+    "headgear": {
+     "changed": 0.0096,
+     "px": 6785,
+     "perFigure": 2.33,
+     "contrastMedian": 1.22
+    },
+    "flags": {
+     "changed": 0.0025,
+     "px": 1767,
+     "perFigure": 0.61,
+     "contrastMedian": 1.24
+    }
+   },
+   "seconds": 156
+  }
+ }
+}
