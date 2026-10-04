@@ -110,6 +110,11 @@ body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 .legend .k span:first-child{text-align:right}
 .legend .bdg{display:inline-flex;gap:3px}
 .legend .bdg b{display:inline-block;min-width:13px;text-align:center;font-weight:600;color:var(--text-hi);background:var(--ink);border:1px solid var(--text-muted);border-radius:2px;padding:0 3px}
+/* Stage 5B: the grades' shapes on the ground (crisp, soft, diffuse), drawn in the text colour: the side's hue is not the grade's */
+.legend .cfk{display:block;width:20px;height:9px;flex:0 0 auto;opacity:.8}
+.legend .cfk-a{background:var(--text)}
+.legend .cfk-b{background:linear-gradient(90deg,transparent,var(--text) 30%,var(--text) 70%,transparent)}
+.legend .cfk-c{width:14px;height:14px;margin:0 3px;border-radius:50%;background:radial-gradient(circle,var(--text),transparent 72%)}
 .rose{width:26px;height:26px;margin:0;color:var(--text-muted);flex:0 0 auto}
 .rose .rose-ring{stroke:var(--line-2)}
 .rose .rose-n{fill:var(--text)}
@@ -625,6 +630,10 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 .mlt-small{font-size:var(--t-small);line-height:15px}
 .mln{display:flex;align-items:center;gap:5px;font-family:var(--serif)}
 .mln-mark{display:block;width:8px;height:8px;border:1px solid;flex:0 0 auto}
+/* Stage 5B (section A.4 item 4): the name's position-grade badge in the landscape, the counter's badge inline (decision 4), at the
+   name's own size: on a name it is read with the name, so the 12 px floor for what is needed to follow the battle (decision 16) */
+.mln-bdg{display:inline-block;min-width:15px;height:15px;margin-left:1px;padding:0 2px;border:1px solid;border-radius:2px;
+  font-family:var(--sans);font-size:var(--t-ui);font-weight:600;line-height:13px;text-align:center;flex:0 0 auto}
 .mlc{display:flex;align-items:center;gap:9px;padding:13px 0 5px 5px}
 .mlc.mlc-hq{padding-bottom:12px}
 .mlc-frame{position:relative;flex:0 0 40px;width:40px;height:28px;border-radius:3px}

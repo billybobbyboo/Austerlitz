@@ -126,6 +126,14 @@ async function interact(page,it,vp){
     /* Stage 2D: every map-layer text's contrast on the rendered frame (the section E method), and section H's unobstructed
        fraction at 1280 x 720 too (the same page resized, then restored) */
     m.textContrast=await page.evaluate(b=>window.__aus.textContrast?window.__aus.textContrast(b):null,buf.toString("base64"));
+    /* Stage 5B (docs/STAGE5_SPEC.md section A.5): the position-confidence marks' share of the free rectangle, as rendered: the same
+       view drawn once more without them (a build with the marks; not the first-run views, whose card is not a reading) */
+    if(!c.fresh&&await page.evaluate(()=>typeof CONF!=="undefined"&&!!layerOn.confidence)){
+      await page.evaluate(()=>{ layerOn.confidence=false; }); await settle(page);
+      const off=await page.screenshot({timeout:180000});
+      await page.evaluate(()=>{ layerOn.confidence=true; }); await settle(page);
+      m.confShare=await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[buf.toString("base64"),off.toString("base64")]);
+    }
     if(await page.evaluate(()=>!!window.__aus.unobstructed)){
       /* one drawn frame at each size is enough: the panels are DOM, and the legend decides in that frame whether it fits */
       /* headless Chromium delivers a resize event only with a rendered frame, which a page that draws on demand may not

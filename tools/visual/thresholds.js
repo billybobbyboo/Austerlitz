@@ -82,6 +82,10 @@ const SOLID_BLACK=0.0005, LIGHT_SWEEP=[];
 ["overview-field","pratzen-low"].forEach(n=>{ for(let t=480;t<=960;t+=60) LIGHT_SWEEP.push([n,t,4]); });
 ["overview-field","close-sokolnitz","ph8-overview-study"].forEach(n=>{ LIGHT_SWEEP.push([n,null,1]); LIGHT_SWEEP.push([n,null,"model"]); });
 const SMOKE_SHARE=0.25; module.exports.SMOKE_SHARE=SMOKE_SHARE;   /* Stage 4E: the smoke's share of the free rectangle, at most */
+/* Stage 5B (docs/STAGE5_SPEC.md section A.5): the position-confidence marks' share of the free rectangle as rendered (measure.js
+   confShare), at most: on the landscape and on the paper map. Set from the 5B build's harness views (the largest on the landscape
+   19.2%, pratzen-low-1x; on the paper map 15.1%, paper-close: docs/stage5-evidence/5b-after.json), rounded up; never raised */
+const CONF_SHARE={land:0.20, paper:0.16}; module.exports.CONF_SHARE=CONF_SHARE;
 /* Stage 4E (docs/STAGE4_SPEC.md section F.2): the horizon in the low views [case, factor]; where the apron's far edge stands below
    the true horizon, the gap is drawn in the haze's colour: its mean colour per column within HORIZON_DE (0-255, the largest
    channel) of the sky's just above the horizon */
@@ -148,6 +152,8 @@ module.exports.check=function(name,m){
     if(m.phaseLabels720&&m.phaseLabels720.cut.length) f.push("at 1280 x 720 the current phase's label is cut: "+m.phaseLabels720.cut.join(", ")); }
   /* Stage 4E (docs/STAGE4_SPEC.md section E.3): the smoke covers at most a quarter of the free rectangle; new, on a build with puffs */
   if(m.smoke&&m.smokePuffs&&!(m.smoke.share<=SMOKE_SHARE)) f.push("smoke covers "+(100*m.smoke.share).toFixed(1)+"% of the free rectangle (limit "+(100*SMOKE_SHARE)+"%)");
+  /* Stage 5B (docs/STAGE5_SPEC.md section A.5): the position-confidence marks within their share of the free rectangle; new, on a build with them */
+  if(m.confShare){ const lim=CONF_SHARE[m.mode==="staff"?"paper":"land"]; if(!(m.confShare.share<=lim)) f.push("the position-confidence marks cover "+(100*m.confShare.share).toFixed(1)+"% of the free rectangle (limit "+(100*lim).toFixed(0)+"%)"); }
   if(HEADS_SHOWN.includes(name)&&m.heads&&m.heads.hiddenOverQuarter>0) f.push("arrow heads more than a quarter hidden by a panel or the edge: "+m.heads.list.join(", "));
   if(m.focus!=null&&!(m.focus<=FOCUS_PX)) f.push("the orbit target "+m.focus+" px from the free rectangle's centre (limit "+FOCUS_PX+" px)");
   if(m.focus720!=null&&!(m.focus720<=FOCUS_PX)) f.push("after the resize to 1280 x 720 the orbit target is "+m.focus720+" px from the free rectangle's centre (limit "+FOCUS_PX+" px)");

@@ -1,0 +1,397 @@
+{
+ "html": "austerlitz-command-map.html",
+ "when": "2026-10-04T01:38:35.070Z",
+ "views": {
+  "overview-field": {
+   "solidBlack": 0,
+   "meanLum": 77.2,
+   "contrast": {
+    "min": 8.32,
+    "belowAA": 0
+   },
+   "dropped": 6,
+   "worldMs": 6.7,
+   "grades": {
+    "A": 15,
+    "B": 12,
+    "C": 3
+   },
+   "confShare": 0.0431,
+   "dropLimit": 11
+  },
+  "overview-plan": {
+   "solidBlack": 0,
+   "meanLum": 53.8,
+   "contrast": {
+    "min": 8.03,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "worldMs": 8,
+   "grades": {
+    "A": 15,
+    "B": 12,
+    "C": 4
+   },
+   "confShare": 0.037,
+   "dropLimit": 12
+  },
+  "close-sokolnitz": {
+   "solidBlack": 0,
+   "meanLum": 126.5,
+   "contrast": {
+    "min": 7.67,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "worldMs": 5.5,
+   "grades": {
+    "A": 5,
+    "B": 7,
+    "C": 2
+   },
+   "confShare": 0.0927,
+   "dropLimit": 18
+  },
+  "staff-paper": {
+   "solidBlack": 0,
+   "meanLum": 198.6,
+   "contrast": {
+    "min": 4.89,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "worldMs": 0.9,
+   "grades": {
+    "A": 9,
+    "B": 9,
+    "C": 3
+   },
+   "confShare": 0.0737,
+   "dropLimit": 13
+  },
+  "pratzen-low": {
+   "solidBlack": 0.0002,
+   "meanLum": 90.8,
+   "contrast": {
+    "min": 8.26,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "worldMs": 5.9,
+   "grades": {
+    "A": 5,
+    "B": 3,
+    "C": 2
+   },
+   "confShare": 0.0997,
+   "dropLimit": 13
+  },
+  "selected-formation": {
+   "solidBlack": 0,
+   "meanLum": 64.4,
+   "contrast": {
+    "min": 7.57,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "worldMs": 7.4,
+   "grades": {
+    "A": 3,
+    "B": 7,
+    "C": 0
+   },
+   "confShare": 0.1503,
+   "dropLimit": 4
+  },
+  "watch-selected": {
+   "solidBlack": 0.0001,
+   "meanLum": 57.4,
+   "contrast": {
+    "min": 7.59,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "worldMs": 4.7,
+   "grades": {
+    "A": 6,
+    "B": 8,
+    "C": 1
+   },
+   "confShare": 0.1519,
+   "dropLimit": 8
+  },
+  "hybrid-dimmed": {
+   "solidBlack": 0.00005,
+   "meanLum": 62,
+   "contrast": {
+    "min": 6.49,
+    "belowAA": 0
+   },
+   "dropped": 8,
+   "worldMs": 5.2,
+   "grades": {
+    "A": 7,
+    "B": 9,
+    "C": 2
+   },
+   "confShare": 0.1456,
+   "dropLimit": 13
+  },
+  "pratzen-low-1x": {
+   "solidBlack": 0,
+   "meanLum": 75.3,
+   "contrast": {
+    "min": 8.49,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "worldMs": 1.1,
+   "grades": {
+    "A": 6,
+    "B": 4,
+    "C": 2
+   },
+   "confShare": 0.1922,
+   "dropLimit": 12
+  },
+  "pratzen-low-10x": {
+   "solidBlack": 0,
+   "meanLum": 110.4,
+   "contrast": {
+    "min": 8,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "worldMs": 4.9,
+   "grades": {
+    "A": 5,
+    "B": 3,
+    "C": 0
+   },
+   "confShare": 0.0571,
+   "dropLimit": 8
+  },
+  "paper-north-up": {
+   "solidBlack": 0,
+   "meanLum": 145.8,
+   "contrast": {
+    "min": 5.38,
+    "belowAA": 0
+   },
+   "dropped": 12,
+   "worldMs": 0.8,
+   "grades": {
+    "A": 15,
+    "B": 12,
+    "C": 4
+   },
+   "confShare": 0.0086,
+   "dropLimit": 20
+  },
+  "paper-close": {
+   "solidBlack": 0,
+   "meanLum": 192.2,
+   "contrast": {
+    "min": 5.1,
+    "belowAA": 0
+   },
+   "dropped": 1,
+   "worldMs": 0.7,
+   "grades": {
+    "A": 1,
+    "B": 1,
+    "C": 1
+   },
+   "confShare": 0.1508,
+   "dropLimit": 2
+  },
+  "paper-drawer": {
+   "solidBlack": 0,
+   "meanLum": 192,
+   "contrast": {
+    "min": 5.04,
+    "belowAA": 0
+   },
+   "dropped": 1,
+   "worldMs": 1,
+   "grades": {
+    "A": 2,
+    "B": 3,
+    "C": 0
+   },
+   "confShare": 0.0847,
+   "dropLimit": 5
+  },
+  "ph8-overview-study": {
+   "solidBlack": 0,
+   "meanLum": 44.4,
+   "contrast": {
+    "min": 8.27,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "worldMs": 5.1,
+   "grades": {
+    "A": 14,
+    "B": 14,
+    "C": 4
+   },
+   "confShare": 0.0332,
+   "dropLimit": 7
+  },
+  "ph8-overview-watch": {
+   "solidBlack": 0,
+   "meanLum": 44.6,
+   "contrast": {
+    "min": 8.17,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "worldMs": 5.1,
+   "grades": {
+    "A": 14,
+    "B": 14,
+    "C": 4
+   },
+   "confShare": 0.0359,
+   "dropLimit": 7
+  },
+  "overview-field@1x": {
+   "solidBlack": 0,
+   "meanLum": 54.7,
+   "contrast": {
+    "min": 8.27,
+    "belowAA": 0
+   },
+   "dropped": 6,
+   "worldMs": 1.2,
+   "grades": {
+    "A": 15,
+    "B": 12,
+    "C": 3
+   },
+   "confShare": 0.0496,
+   "dropLimit": 11
+  },
+  "close-sokolnitz@1x": {
+   "solidBlack": 0,
+   "meanLum": 117.2,
+   "contrast": {
+    "min": 7.75,
+    "belowAA": 0
+   },
+   "dropped": 5,
+   "worldMs": 1,
+   "grades": {
+    "A": 8,
+    "B": 8,
+    "C": 3
+   },
+   "confShare": 0.2122,
+   "dropLimit": 18
+  },
+  "pratzen-low@1x": {
+   "solidBlack": 0,
+   "meanLum": 75.3,
+   "contrast": {
+    "min": 8.49,
+    "belowAA": 0
+   },
+   "dropped": 4,
+   "worldMs": 0.9,
+   "grades": {
+    "A": 6,
+    "B": 4,
+    "C": 2
+   },
+   "confShare": 0.1922,
+   "dropLimit": 13
+  },
+  "ph8-overview-watch@1x": {
+   "solidBlack": 0.00005,
+   "meanLum": 33.2,
+   "contrast": {
+    "min": 8.22,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "worldMs": 1.1,
+   "grades": {
+    "A": 14,
+    "B": 14,
+    "C": 4
+   },
+   "confShare": 0.0219,
+   "dropLimit": 7
+  },
+  "overview-field@10.33x": {
+   "solidBlack": 0,
+   "meanLum": 88.1,
+   "contrast": {
+    "min": 7.95,
+    "belowAA": 0
+   },
+   "dropped": 7,
+   "worldMs": 10.2,
+   "grades": {
+    "A": 15,
+    "B": 12,
+    "C": 3
+   },
+   "confShare": 0.0446,
+   "dropLimit": 11
+  },
+  "close-sokolnitz@10.33x": {
+   "solidBlack": 0,
+   "meanLum": 145.5,
+   "contrast": {
+    "min": 7.67,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "worldMs": 4.7,
+   "grades": {
+    "A": 4,
+    "B": 5,
+    "C": 2
+   },
+   "confShare": 0.0904,
+   "dropLimit": 18
+  },
+  "pratzen-low@10.33x": {
+   "solidBlack": 0,
+   "meanLum": 110.4,
+   "contrast": {
+    "min": 8,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "worldMs": 4.4,
+   "grades": {
+    "A": 5,
+    "B": 3,
+    "C": 0
+   },
+   "confShare": 0.0571,
+   "dropLimit": 13
+  },
+  "ph8-overview-watch@10.33x": {
+   "solidBlack": 0,
+   "meanLum": 52.7,
+   "contrast": {
+    "min": 8.17,
+    "belowAA": 0
+   },
+   "dropped": 3,
+   "worldMs": 5,
+   "grades": {
+    "A": 14,
+    "B": 14,
+    "C": 4
+   },
+   "confShare": 0.0351,
+   "dropLimit": 7
+  }
+ }
+}

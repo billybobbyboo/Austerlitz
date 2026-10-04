@@ -122,6 +122,9 @@
       <b>Names</b><i>Villages, terrain and formation names</i></button>
     <button class="lp-row layer-btn" data-l="trails" aria-pressed="true">
       <b>Route marched</b><i>The ground each formation has covered</i></button>
+    <!-- Stage 5B (docs/STAGE5_SPEC.md section A.4; decision 85) -->
+    <button class="lp-row layer-btn" data-l="confidence" aria-pressed="true">
+      <b>Position confidence</b><i>Each formation's ground drawn by its position grade: crisp A, soft B, diffuse C</i></button>
   </div>
   <div class="lp-sec">
     <p class="lp-lbl">Reading the ground</p>
@@ -187,6 +190,11 @@
     <!-- Stage 4C (docs/STAGE4_SPEC.md section C.5; decisions 72, 73): shown only while the valley fog is drawn -->
     <div class="k" data-lg="fog"><span>valley fog: the narrative's; depth (238 m) and lifting modelled; drawn see-through</span></div>
     <div class="k" data-lg="badge"><span>position approximate (B, C) &middot; reported only (?)</span><span class="bdg"><b>B</b><b>?</b></span></div>
+    <!-- Stage 5B: the grades drawn on the ground (decisions 85-88); only the rows for the grades on screen are shown -->
+    <div class="k" data-lg="conf-a"><span>A: position documented (its footprint)</span><span class="cfk cfk-a"></span></div>
+    <div class="k" data-lg="conf-b"><span>B: sector documented, frontage approximate</span><span class="cfk cfk-b"></span></div>
+    <div class="k" data-lg="conf-c"><span>C: reconstructed, position indicative</span><span class="cfk cfk-c"></span></div>
+    <div class="k" data-lg="conf"><span>grade sizes are drawn, not measured errors</span></div>
     <div class="k" data-lg="analysis"><span>dashed: valley floor, dead ground</span><span class="dsh"></span></div>
     <div class="k" data-lg="contours"><span>contour interval</span><span class="val" id="contour-val">&asymp; 9 m</span></div>
     <div class="k"><span id="exag-line"></span></div>

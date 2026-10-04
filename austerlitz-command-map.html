@@ -116,6 +116,11 @@ body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 .legend .k span:first-child{text-align:right}
 .legend .bdg{display:inline-flex;gap:3px}
 .legend .bdg b{display:inline-block;min-width:13px;text-align:center;font-weight:600;color:var(--text-hi);background:var(--ink);border:1px solid var(--text-muted);border-radius:2px;padding:0 3px}
+/* Stage 5B: the grades' shapes on the ground (crisp, soft, diffuse), drawn in the text colour: the side's hue is not the grade's */
+.legend .cfk{display:block;width:20px;height:9px;flex:0 0 auto;opacity:.8}
+.legend .cfk-a{background:var(--text)}
+.legend .cfk-b{background:linear-gradient(90deg,transparent,var(--text) 30%,var(--text) 70%,transparent)}
+.legend .cfk-c{width:14px;height:14px;margin:0 3px;border-radius:50%;background:radial-gradient(circle,var(--text),transparent 72%)}
 .rose{width:26px;height:26px;margin:0;color:var(--text-muted);flex:0 0 auto}
 .rose .rose-ring{stroke:var(--line-2)}
 .rose .rose-n{fill:var(--text)}
@@ -631,6 +636,10 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 .mlt-small{font-size:var(--t-small);line-height:15px}
 .mln{display:flex;align-items:center;gap:5px;font-family:var(--serif)}
 .mln-mark{display:block;width:8px;height:8px;border:1px solid;flex:0 0 auto}
+/* Stage 5B (section A.4 item 4): the name's position-grade badge in the landscape, the counter's badge inline (decision 4), at the
+   name's own size: on a name it is read with the name, so the 12 px floor for what is needed to follow the battle (decision 16) */
+.mln-bdg{display:inline-block;min-width:15px;height:15px;margin-left:1px;padding:0 2px;border:1px solid;border-radius:2px;
+  font-family:var(--sans);font-size:var(--t-ui);font-weight:600;line-height:13px;text-align:center;flex:0 0 auto}
 .mlc{display:flex;align-items:center;gap:9px;padding:13px 0 5px 5px}
 .mlc.mlc-hq{padding-bottom:12px}
 .mlc-frame{position:relative;flex:0 0 40px;width:40px;height:28px;border-radius:3px}
@@ -782,6 +791,9 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
       <b>Names</b><i>Villages, terrain and formation names</i></button>
     <button class="lp-row layer-btn" data-l="trails" aria-pressed="true">
       <b>Route marched</b><i>The ground each formation has covered</i></button>
+    <!-- Stage 5B (docs/STAGE5_SPEC.md section A.4; decision 85) -->
+    <button class="lp-row layer-btn" data-l="confidence" aria-pressed="true">
+      <b>Position confidence</b><i>Each formation's ground drawn by its position grade: crisp A, soft B, diffuse C</i></button>
   </div>
   <div class="lp-sec">
     <p class="lp-lbl">Reading the ground</p>
@@ -847,6 +859,11 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
     <!-- Stage 4C (docs/STAGE4_SPEC.md section C.5; decisions 72, 73): shown only while the valley fog is drawn -->
     <div class="k" data-lg="fog"><span>valley fog: the narrative's; depth (238 m) and lifting modelled; drawn see-through</span></div>
     <div class="k" data-lg="badge"><span>position approximate (B, C) &middot; reported only (?)</span><span class="bdg"><b>B</b><b>?</b></span></div>
+    <!-- Stage 5B: the grades drawn on the ground (decisions 85-88); only the rows for the grades on screen are shown -->
+    <div class="k" data-lg="conf-a"><span>A: position documented (its footprint)</span><span class="cfk cfk-a"></span></div>
+    <div class="k" data-lg="conf-b"><span>B: sector documented, frontage approximate</span><span class="cfk cfk-b"></span></div>
+    <div class="k" data-lg="conf-c"><span>C: reconstructed, position indicative</span><span class="cfk cfk-c"></span></div>
+    <div class="k" data-lg="conf"><span>grade sizes are drawn, not measured errors</span></div>
     <div class="k" data-lg="analysis"><span>dashed: valley floor, dead ground</span><span class="dsh"></span></div>
     <div class="k" data-lg="contours"><span>contour interval</span><span class="val" id="contour-val">&asymp; 9 m</span></div>
     <div class="k"><span id="exag-line"></span></div>
@@ -4226,9 +4243,13 @@ function counterLabel(f,o){
   return f.name+", "+(SIDE_WORD[f.nation]||f.nation)+", "+(ECH_WORD[f.ech]||f.ech)+(o.strength?", about "+o.strength.toLocaleString():"")+
     (s?", "+s.label.toLowerCase():"")+", position grade "+(o.cf||"A")+(o.know==="uncertain"?", reported only":"");
 }
-/* a formation's name in the landscape, which draws no counters: neutral text with the side mark beside it (decision 9) */
-function nameHTML(f,paper){
-  return '<i class="mln-mark" style="background:'+TOKENS.sym.side[sideOfNation(f.nation)].base+';border-color:'+TOKENS.sym.keyline+'"></i>'+esc(nameOf(f));
+/* a formation's name in the landscape, which draws no counters: neutral text with the side mark beside it (decision 9), and since
+   Stage 5B its position grade as the counter's badge: B or C, "?" when reported only, none for A (decision 4; section A.4 item 4).
+   o: {cf, know}, as counterHTML's */
+function nameHTML(f,paper,o){
+  var K=TOKENS.sym.counter[paper?"paper":"dark"], badge=o?(o.know==="uncertain"?"?":(o.cf&&o.cf!=="A"?o.cf:"")):"";
+  return '<i class="mln-mark" style="background:'+TOKENS.sym.side[sideOfNation(f.nation)].base+';border-color:'+TOKENS.sym.keyline+'"></i>'+esc(nameOf(f))+
+    (badge?'<span class="mln-bdg" style="background:'+K.badgePlate+';color:'+K.badgeInk+';border-color:'+TOKENS.sym.keyline+'">'+badge+'</span>':'');
 }
 
 /* ============================================================
@@ -4360,7 +4381,7 @@ function setTween(slot,fn){
   _tw[slot]=fn||null;
   tween=(_tw.scene||_tw.cam)?_runTween:(tween===_runTween?null:tween);
 }
-var layerOn={symbols:true,arrows:true,labels:true,trails:true,contours:true,analysis:false,events:true};
+var layerOn={symbols:true,arrows:true,labels:true,trails:true,contours:true,analysis:false,events:true,confidence:true};   /* confidence: Stage 5B, decision 85 */
 var goingOn=false;
 var terrainLabels=[];   /* {tl, col, world}: the map layer's terrain-study labels */
 var highlight=null;      /* id -> true, or null for "show everything equally" */
@@ -5473,24 +5494,83 @@ var _padTex=null;
 var PAD_GEO=(function(){ var g=new THREE.PlaneGeometry(1,1); g.rotateX(-Math.PI/2); return g; })();
 
 /* ---- the footprint (Stage 2B, owner decision 34) ----
-   A formation's modelled ground extent, frontage W0 x sw by depth D0 x sd (the block's own layout, at ground
-   scale), draped on the drawn ground in its side's colour. One primitive: true scale draws formations as
-   footprints now, and Stage 5's spatial-confidence display is meant to reuse it. */
-function makeFootprint(hex,opacity){
-  var g=new THREE.PlaneGeometry(1,1,6,4); g.rotateX(-Math.PI/2);
-  var m=new THREE.Mesh(g,new THREE.MeshBasicMaterial({color:lin(hex),transparent:true,opacity:opacity||0.85,
+   A formation's modelled ground extent, frontage W0 x sw by depth D0 x sd (the block's own layout, at ground scale), draped on the
+   drawn ground in its side's colour. Since Stage 5B it is drawn by confPlace, below, as the A mark (makeFootprint and placeFootprint,
+   the 2B primitive, are gone): at 1x the footprint, by its grade; at every factor the grade's mark. */
+/* ---- spatial confidence (Stage 5B; docs/STAGE5_SPEC.md section A.4; owner decisions 85-88) ----
+   Each leaf formation's position grade, as the app computes it (confAt: between two anchors, the weaker one's; decision 88), drawn
+   on the ground under it from the footprint primitive: A its crisp footprint (frontage W0 x sw by depth D0 x sd, ground scale;
+   decision 87), B a soft frontage (the frontage doubled, its outer halves feathered to nothing, the depth crisp), C a diffuse zone
+   (a disc of radius the formation's own frontage, its alpha falling from the centre; decision 86). The sizes are DESIGN VALUES, a
+   drawn size and not a measured error: the sources grade a position, they do not give its error. No dash and no new hue (decisions
+   1, 4, 15): the side's colour; the sharpness carries the grade. On by default with a toggle (decision 85), at every factor and on
+   the paper map, where B and C are capped on screen. Each mark is a patch of the drawn ground's own cells at LIFT above it, so
+   the drape never cuts under the drawn ground (confPlace). At 1x the A mark is the true-scale footprint itself (decision 34),
+   at its opacity; dimmed formations draw theirs fainter. */
+var CONF={OP:{A:0.62,B:0.55,C:0.45}, OP_TRUE:0.85, DIM:0.45, LIFT:0.25, CAP:0.25, TEX:128, tex:{}, shown:{A:false,B:false,C:false}};
+/* the grade's mask (alpha): A a crisp rectangle, B the frontage feathered over its outer halves, C a disc falling from its centre;
+   every edge texel transparent, so outside the mark (the clamped edge) nothing is drawn */
+function confTexture(g){
+  if(CONF.tex[g]) return CONF.tex[g];
+  var N=CONF.TEX, cv=document.createElement("canvas"); cv.width=cv.height=N;
+  var x=cv.getContext("2d"), im=x.createImageData(N,N), d=im.data;
+  for(var j=0;j<N;j++) for(var i=0;i<N;i++){
+    var u=(i+0.5)/N*2-1, v=(j+0.5)/N*2-1, a=1;
+    if(g==="B"){ var e=Math.abs(u); a=e<0.5?1:Math.max(0,1-(e-0.5)/0.5); a=a*a*(3-2*a); }
+    else if(g==="C"){ var r=Math.hypot(u,v); a=r>=1?0:Math.pow(1-r*r,1.5); }
+    if(i===0||j===0||i===N-1||j===N-1) a=0;
+    var o=(j*N+i)*4; d[o]=d[o+1]=d[o+2]=255; d[o+3]=Math.round(255*a); }
+  x.putImageData(im,0,0);
+  var t=new THREE.CanvasTexture(cv); t.wrapS=t.wrapT=THREE.ClampToEdgeWrapping;
+  CONF.tex[g]=t; return t;
+}
+function makeConfMark(){
+  var m=new THREE.Mesh(new THREE.BufferGeometry(),new THREE.MeshBasicMaterial({color:0xFFFFFF,transparent:true,opacity:0.6,
     depthWrite:false,side:THREE.DoubleSide,fog:false}));
-  m.userData.base=Float32Array.from(g.attributes.position.array); m.renderOrder=4; m.frustumCulled=false;
+  m.renderOrder=4; m.frustumCulled=false; m.userData.conf={dims:"",key:""};
   return m;
 }
-function placeFootprint(m,x,z,yaw,w,d,lift){
-  var P=m.geometry.attributes.position, B=m.userData.base, c=Math.cos(yaw), sn=Math.sin(yaw);
-  for(var i=0;i<P.count;i++){
-    var lx=B[i*3]*w, lz=B[i*3+2]*d, wx=x+lx*c+lz*sn, wz=z-lx*sn+lz*c;
-    P.setXYZ(i,wx,groundY(wx,wz)+lift,wz);
+/* the mark's drawn size, by grade: [width across the front, depth] (world units) */
+function confSize(g,W0,D0){ return g==="A"?[W0,D0]:g==="B"?[2*W0,D0]:[2*W0,2*W0]; }
+/* place mark m for grade g at world (x,z), yaw, frontage W0 and depth D0; op its opacity; cap (px) the largest on screen, or 0.
+   The mark is a patch of the drawn ground's own cells (GROUND_NX x GROUND_NZ, the same diagonal as groundY), every node at LIFT
+   above it, so it lies parallel to the ground everywhere and never cuts under it; the grade's mask, in the mark's own frame
+   (rotated by yaw, as the 2B footprint was), shapes it */
+function confPlace(m,g,x,z,yaw,W0,D0,hex,op,cap){
+  var s=confSize(g,W0,D0), w=s[0], d=s[1];
+  /* the paper map's cap: the uncertain extent (B's frontage, C's zone) at most cap px on screen, never smaller than the footprint */
+  if(cap>0&&g!=="A"){ var capW=cap*worldPerPx(_cfV.set(x,groundY(x,z),z));
+    if(g==="B") w=Math.max(W0,Math.min(w,capW)); else { w=d=Math.max(Math.max(W0,D0),Math.min(w,capW)); } }
+  var U=m.userData.conf, mat=m.material, map=confTexture(g);
+  U.W0=W0; U.D0=D0;
+  if(mat.map!==map){ mat.map=map; mat.needsUpdate=true; }
+  if(U.hex!==hex){ mat.color.copy(lin(hex)); U.hex=hex; }
+  mat.opacity=op; U.g=g; U.w=w; U.d=d;
+  var key=[g,x.toFixed(3),z.toFixed(3),yaw.toFixed(4),w.toFixed(3),d.toFixed(3),DISPLAY.factor,DISPLAY.flat?1:0].join("|");
+  if(U.key===key) return;
+  U.key=key;
+  var c=Math.cos(yaw), sn=Math.sin(yaw), ex=Math.abs(w/2*c)+Math.abs(d/2*sn), ez=Math.abs(w/2*sn)+Math.abs(d/2*c);
+  var cw=GROUND_W/GROUND_NX, cd=GROUND_D/GROUND_NZ;
+  var i0=Math.max(0,Math.floor((x-ex+GROUND_W/2)/cw)), i1=Math.min(GROUND_NX,Math.ceil((x+ex+GROUND_W/2)/cw));
+  var j0=Math.max(0,Math.floor((z-ez+GROUND_D/2)/cd)), j1=Math.min(GROUND_NZ,Math.ceil((z+ez+GROUND_D/2)/cd));
+  var nx=Math.max(1,i1-i0), nz=Math.max(1,j1-j0), X1=nx+1, dims=nx+"x"+nz, geo=m.geometry;
+  if(U.dims!==dims){
+    geo.dispose(); geo=new THREE.BufferGeometry();
+    geo.setAttribute("position",new THREE.Float32BufferAttribute(new Float32Array(X1*(nz+1)*3),3));
+    geo.setAttribute("uv",new THREE.Float32BufferAttribute(new Float32Array(X1*(nz+1)*2),2));
+    var idx=[]; for(var jj=0;jj<nz;jj++) for(var ii=0;ii<nx;ii++){ var a=ii+X1*jj, b=a+X1, dd=a+1, cc=b+1; idx.push(a,b,dd, cc,dd,b); }
+    geo.setIndex(idx); m.geometry=geo; U.dims=dims;
   }
-  P.needsUpdate=true; if(m.geometry.computeBoundingSphere) m.geometry.computeBoundingSphere();
+  var P=geo.attributes.position.array, UV=geo.attributes.uv.array, n=0;
+  for(var j=0;j<=nz;j++) for(var i=0;i<=nx;i++){
+    var wx=-GROUND_W/2+(i0+i)*cw, wz=-GROUND_D/2+(j0+j)*cd, dx=wx-x, dz=wz-z;
+    P[n*3]=wx; P[n*3+1]=groundY(wx,wz)+CONF.LIFT; P[n*3+2]=wz;
+    UV[n*2]=(dx*c-dz*sn)/w+0.5; UV[n*2+1]=(dx*sn+dz*c)/d+0.5; n++;
+  }
+  geo.attributes.position.needsUpdate=true; geo.attributes.uv.needsUpdate=true;
+  if(geo.computeBoundingSphere) geo.computeBoundingSphere();
 }
+var _cfV=new THREE.Vector3();
 /* true scale (decision 34): at 1x the relief is honest and every symbol would stand taller than it, so the
    figure-scale and landscape-scale layers are not drawn; formations are drawn as their footprints */
 function isTrueScale(){ return DISPLAY.factor===1; }
@@ -7504,7 +7584,7 @@ function mlCollect(){
   /* formation names: the landscape, which draws no counters (owner decision 9) */
   Object.keys(units).forEach(function(id){ var r=units[id]; if(!r.nameShow) return;
     var f=FORMATIONS[id], S=fstate(id), it=mlItem("n:"+id,"mlt mln");
-    mlContent(it,["n",id,PL].join("|"),nameHTML(f,false),[PL,LB.ink]);
+    mlContent(it,["n",id,PL,S.cf,S.know].join("|"),nameHTML(f,false,S),[PL,LB.ink]);
     it.world.set(r.block.position.x,r.block.position.y+6.4,r.block.position.z);
     var sel=isSel("f",id), inFam=!!(fam&&fam[id]), hov=(ML.hover===id), fo=(foc===id), base=7+rank(f,S.strength);
     add(it,{cat:"name",pri:sel?0:(hov||fo)?0.5:inFam?1:base,base:base,keep:sel||hov||fo||inFam,fid:id,pick:{kind:"f",id:id},acl:2,
@@ -7744,7 +7824,10 @@ function paintLegend(){
           badge:counters, analysis:!!layerOn.analysis, contours:!!layerOn.contours&&!cleanView,
           wood:!land, village:!land,   /* Stage 2E: the paper map's own symbology */
           mere:true,   /* Stage 2F: the meres are drawn in every view, and their outlines are schematic (decision 27, section I.2) */
-          fog:land&&fogCap(fogAmount(clock))>0.01};   /* Stage 4C: while the valley fog is drawn */
+          fog:land&&fogCap(fogAmount(clock))>0.01,   /* Stage 4C: while the valley fog is drawn */
+          /* Stage 5B: one row per grade drawn on screen, and the sentence on their sizes; the badge also on the landscape's names */
+          "conf-a":!!CONF.shown.A, "conf-b":!!CONF.shown.B, "conf-c":!!CONF.shown.C, conf:!!(CONF.shown.A||CONF.shown.B||CONF.shown.C)};
+  on.badge=on.badge||(mode==="terrain"&&textOn());
   var key=JSON.stringify(on);
   if(key===_lgKey) return;
   _lgKey=key; ML.lgSize=null;
@@ -8011,6 +8094,9 @@ function updateVisibility(){
   var showBlocks = mode!=="staff";
   var labels = textOn();
   lodEch = wantCorps?"corps":"div";
+  /* Stage 5B: which grades are drawn on screen (the legend's rows), and the paper map's cap on a mark's size on screen */
+  var confShown={A:false,B:false,C:false}, confCap=0;
+  if(mode==="staff"&&layerOn.confidence){ var frc=MAPCAM.freeRect(); confCap=CONF.CAP*Math.min(frc[2]-frc[0],frc[3]-frc[1]); }
 
   /* which counter the map layer draws (Stage 2D): its position on the map, or none */
   function placeSprite(rec,mapPos,show){ rec.show=!!(mapPos&&show); rec.p=mapPos; }
@@ -8041,16 +8127,24 @@ function updateVisibility(){
 
     var trueScale=isTrueScale();
     rec.block.visible = showBlocks && !!p && !trueScale;
-    if(showBlocks && p && trueScale){
-      if(!rec.foot){ rec.foot=makeFootprint(hexNum(TOKENS.sym.side[sideOfNation(f.nation)].base)); scene.add(rec.foot); }
-      poseBlock(rec,id,liveStatus(id,curPhase));
-      var fu=rec.block.userData;
-      placeFootprint(rec.foot,wq[0],wq[1],rec.yaw||0,fu.W0*fu.sw,fu.D0*fu.sd,0.25);
-      rec.foot.visible=true;
-    } else if(rec.foot) rec.foot.visible=false;
     var dimmed = highlight && !highlight[id];
     rec.block.scale.setScalar(1.25*(mode==="hybrid"?0.86:1)*(dimmed?0.80:1));
     if(rec.block.visible){ poseBlock(rec,id,liveStatus(id,curPhase)); settleBlock(rec); }
+    /* the ground mark (Stage 5B, section A.4): at 1x on the landscape the true-scale footprint (decision 34), drawn by its position
+       grade while "Position confidence" is on and crisp when it is off; elsewhere (4x, 10.33x, the paper map) the grade's mark under
+       the figures or the counters, while it is on (decision 85). rec.foot is the 1x mark, rec.conf every other */
+    var foot1=showBlocks&&trueScale&&!!p, graded=!!p&&!!layerOn.confidence, mk=foot1?"foot":(graded?"conf":null);
+    if(mk){
+      if(!rec[mk]){ rec[mk]=makeConfMark(); scene.add(rec[mk]); }
+      if(!rec.block.visible) poseBlock(rec,id,liveStatus(id,curPhase));
+      var fu=rec.block.userData, g=graded?confAt(id,clock).cf:"A", side=TOKENS.sym.side[sideOfNation(f.nation)].base;
+      var op=(foot1&&g==="A"?CONF.OP_TRUE:CONF.OP[g])*(dimmed?CONF.DIM:1);
+      confPlace(rec[mk],g,wq[0],wq[1],rec.yaw||0,fu.W0*fu.sw,fu.D0*fu.sd,hexNum(side),op,confCap);
+      rec[mk].visible=true;
+      if(graded&&onScreen(p,0)) confShown[g]=true;
+    }
+    if(rec.foot&&mk!=="foot") rec.foot.visible=false;
+    if(rec.conf&&mk!=="conf") rec.conf.visible=false;
 
     /* the formation's name, in the landscape (the map layer draws it) */
     /* Stage 3D (the owner's answer): once the view shows corps (beyond 250 units), corps and army names are drawn at any distance;
@@ -8083,6 +8177,7 @@ function updateVisibility(){
     if(rec.smoke) smokeWant(rec,id,f,p,dimmed);
   });
   smokePlace();   /* Stage 4E: the puffs placed, the cap on screen applied */
+  CONF.shown=confShown;
 
   placeLabels.forEach(function(o){
     var major=MAJOR_FEATURES[o.ft.id] || o.ft.kind==="height" || o.ft.kind==="town";
@@ -8753,7 +8848,7 @@ function hexOf(n){ return "#"+("000000"+n.toString(16)).slice(-6).toUpperCase();
 var COLOUR_KEY={
   fr:{word:"blue", hex:NATION.fr.fill}, ru:{word:"green", hex:NATION.ru.fill}, at:{word:"white", hex:NATION.at.fill},
   "arrow-fr":{word:"blue", hex:hexOf(SIDE_COL.fr.attack)}, "arrow-al":{word:"amber", hex:hexOf(SIDE_COL.al.attack)},
-  /* true scale draws formations as footprints in the side colour (makeFootprint): the legend says so (2D) */
+  /* true scale draws formations as footprints in the side colour (confPlace, since 5B): the legend says so (2D) */
   "foot-fr":{word:"blue", hex:TOKENS.sym.side.fr.base}, "foot-al":{word:"amber", hex:TOKENS.sym.side.al.base}
 };
 function paintKey(){
@@ -9642,7 +9737,12 @@ function openSources(){
     '<h3>Confidence grades</h3><ul class="bul">'+
     '<li><b>A</b> — '+esc(CONF_TEXT.A)+'</li>'+
     '<li><b>B</b> — '+esc(CONF_TEXT.B)+'</li>'+
-    '<li><b>C</b> — '+esc(CONF_TEXT.C)+'</li></ul>'+
+    '<li><b>C</b> — '+esc(CONF_TEXT.C)+'</li>'+
+    /* Stage 5B (decisions 85-88): how the grade is drawn on the ground; written by the app, so the guarded SOURCE_NOTE stays as it is */
+    '<li>'+esc("On the map each formation's grade is drawn on the ground under it: A as its modelled footprint, crisp; B as a soft frontage, twice the "+
+      "footprint's width and fading at its ends; C as a diffuse zone whose radius is the formation's own frontage. These are drawn sizes, not measured "+
+      "errors: the sources grade a position, they do not give its error. Between two plotted positions a formation is drawn at the weaker grade. "+
+      "Each name and counter also carries its grade's letter.")+'</li></ul>'+
     '<h3>Basis</h3><ul class="bul">'+SOURCE_NOTE.refs.map(function(r){return '<li>'+esc(r)+'</li>';}).join('')+'</ul>'+
     /* the display (decisions 19, 32, 35, 36): written by the app, so the guarded SOURCE_NOTE stays as it is */
     '<h3>How the ground and the symbols are drawn</h3><ul class="bul">'+
@@ -10368,7 +10468,11 @@ var AUSTERLITZ_DEBUG=(function(){
         if(row("analysis")!==!!layerOn.analysis) R.ctx.push(s.n+": the terrain-study row");
         if(row("halt")!==(layerOn.arrows&&(O.arrows||[]).some(function(a){ return a.kind==="halt"; }))) R.ctx.push(s.n+": the halt row");
         if(row("bound")!==(layerOn.arrows&&(O.bounds||[]).length>0)) R.ctx.push(s.n+": the boundary row");
-        if(row("badge")!==(mode!=="terrain"&&layerOn.symbols)) R.ctx.push(s.n+": the badge row");
+        /* Stage 5B (section A.4 item 4): the badge also on the landscape's names, so its row wherever names or counters are drawn */
+        if(row("badge")!==((mode!=="terrain"&&layerOn.symbols)||(mode==="terrain"&&textOn()))) R.ctx.push(s.n+": the badge row");
+        /* Stage 5B: one row per grade drawn on screen, and the sentence on their sizes with any of them */
+        ["A","B","C"].forEach(function(g){ if(row("conf-"+g.toLowerCase())!==!!CONF.shown[g]) R.ctx.push(s.n+": the grade "+g+" row"); });
+        if(row("conf")!==!!(CONF.shown.A||CONF.shown.B||CONF.shown.C)) R.ctx.push(s.n+": the grade sizes' row");
         if(row("foot")!==(mode!=="staff"&&isTrueScale())) R.ctx.push(s.n+": the footprint rows");
         if(row("wood")!==(mode==="staff")||row("village")!==(mode==="staff")) R.ctx.push(s.n+": the paper map's wood and village rows");
         if(!row("mere")) R.ctx.push(s.n+": the meres' row (pond outlines schematic)");
@@ -10763,6 +10867,68 @@ var AUSTERLITZ_DEBUG=(function(){
     setClock(keep,{instant:true,force:true,camera:false}); finishTween();
     landCam.position.copy(cam.p); orbitTarget.copy(cam.t); landCam.lookAt(orbitTarget); freeCam=cam.fc;
   }
+  /* Stage 5B (docs/STAGE5_SPEC.md section A.5): spatial confidence. confChecks runs at each display factor (the drape), confDayChecks
+     once (the grade, the size, the colour; the text carrier; the paper map's cap). */
+  function confMarks(){ var L=[]; Object.keys(units).forEach(function(id){ var r=units[id];
+    [r.foot,r.conf].forEach(function(m){ if(m&&m.visible&&m.userData.conf&&m.userData.conf.g) L.push({id:id,m:m}); }); }); return L; }
+  /* the mark as drawn, sampled every 0.5 units across each of its triangles, against the drawn ground */
+  function confDrape(m){
+    var P=m.geometry.attributes.position, I=m.geometry.index.array, n=0, under=0, worst=1e9, lift=0;
+    for(var v=0;v<P.count;v++) lift=Math.max(lift,Math.abs(P.getY(v)-groundY(P.getX(v),P.getZ(v))-CONF.LIFT));
+    for(var t=0;t<I.length;t+=3){
+      var A=I[t], B=I[t+1], C=I[t+2], e=Math.max(Math.hypot(P.getX(B)-P.getX(A),P.getZ(B)-P.getZ(A)),Math.hypot(P.getX(C)-P.getX(A),P.getZ(C)-P.getZ(A))), k=Math.max(1,Math.ceil(e/0.5));
+      for(var i=0;i<=k;i++) for(var j=0;j<=k-i;j++){ var u=i/k, w=j/k, r=1-u-w;
+        var x=P.getX(A)*r+P.getX(B)*u+P.getX(C)*w, y=P.getY(A)*r+P.getY(B)*u+P.getY(C)*w, z=P.getZ(A)*r+P.getZ(B)*u+P.getZ(C)*w;
+        var gap=y-groundY(x,z); n++; if(gap<-1e-4) under++; if(gap<worst) worst=gap; } }
+    return {n:n,under:under,worst:worst,lift:lift};
+  }
+  function confChecks(ck,fct){
+    var keep=clock, N=0, S=0, U=0, worst=1e9, lift=0, where="";
+    [300,590,880].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); finishTween(); settle(6,true);
+      confMarks().forEach(function(q){ var r=confDrape(q.m); N++; S+=r.n; U+=r.under; lift=Math.max(lift,r.lift); if(r.worst<worst){ worst=r.worst; where=q.id+" ("+q.m.userData.conf.g+") at "+fmtClock(t); } }); });
+    ck("spatial confidence: every grade's mark is draped, each vertex at its lift above the drawn ground and no point of it under the ground (section A.5)",
+      N>0&&U===0&&lift<1e-3,
+      N+" marks at 05:00, 09:50 and 14:40, "+S+" points sampled every 0.5 units across their triangles: "+U+" under the ground; the lowest "+(worst===1e9?"-":worst.toFixed(3))+
+      " units above it ("+where+"); vertices within "+lift.toExponential(1)+" of their lift");
+    setClock(keep,{instant:true,force:true,camera:false}); finishTween();
+  }
+  function confDayChecks(){
+    var out=[], keep=clock, md=mode, bad=[], n=0, by={A:0,B:0,C:0}, ms0=MAPCAM.state();
+    if(mode!=="terrain") setMode("terrain");
+    /* the grade, its size and its colour, at 20 clocks (decisions 86-88) */
+    for(var i=0;i<20;i++){ var t=T_MIN+30+(T_MAX-T_MIN-60)*i/19; setClock(t,{instant:true,force:true,camera:false}); finishTween(); settle(6,true);
+      Object.keys(units).forEach(function(id){ var r=units[id], p=posNow(id); if(!p||knowledgeOf(id)==="unknown") return;
+        var m=isTrueScale()?r.foot:r.conf, U=m&&m.userData.conf; n++;
+        if(!m||!m.visible){ bad.push(id+" at "+fmtClock(t)+": no mark"); return; }
+        var g=confAt(id,clock).cf, fu=r.block.userData, s=confSize(g,fu.W0*fu.sw,fu.D0*fu.sd), hex=lin(hexNum(TOKENS.sym.side[sideOfNation(r.f.nation)].base));
+        by[g]++;
+        if(U.g!==g) bad.push(id+" at "+fmtClock(t)+": drawn "+U.g+", graded "+g);
+        else if(Math.abs(U.w-s[0])>1e-3||Math.abs(U.d-s[1])>1e-3) bad.push(id+" at "+fmtClock(t)+": "+g+" drawn "+U.w.toFixed(2)+" x "+U.d.toFixed(2)+", its size "+s[0].toFixed(2)+" x "+s[1].toFixed(2));
+        else if(Math.abs(m.material.color.r-hex.r)+Math.abs(m.material.color.g-hex.g)+Math.abs(m.material.color.b-hex.b)>1e-4) bad.push(id+": not its side's colour");
+        else if(m.material.map!==confTexture(g)) bad.push(id+": "+g+" drawn with another grade's mask"); }); }
+    out.push({name:"spatial confidence: every formation on the field is drawn at its position grade (confAt: between anchors the weaker one's), A as its footprint, B as its frontage doubled and C as a zone of its frontage's radius, in its side's colour (section A.5; decisions 86-88)",
+      ok:n>0&&!bad.length, detail:"20 clocks, "+n+" formation-samples: A "+by.A+", B "+by.B+", C "+by.C+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):"")});
+    /* the text carrier: in the landscape every drawn name of a B or C formation carries its badge, and no A name does */
+    var nb=0, nn=0, wrong=[];
+    [300,590,880].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); finishTween(); settle(6); mlLayout();
+      Object.keys(ML.items).forEach(function(k){ var it=ML.items[k]; if(!/^n:/.test(k)||it.eFrame!==ML.frame||it.state!=="on") return; var id=k.slice(2), S={cf:aggConf(id,curPhase),know:knowledgeOf(id)}, want=S.know==="uncertain"?"?":(S.cf!=="A"?S.cf:"");
+        var b=it.el.querySelector(".mln-bdg"), got=b?b.textContent:""; nn++; if(got) nb++; if(got!==want) wrong.push(id+" at "+fmtClock(t)+": "+(got||"none")+", grade "+S.cf); }); });
+    out.push({name:"spatial confidence: in the landscape every drawn name carries its position grade's badge (B, C), as the counter does, and an A name none (section A.4 item 4)",
+      ok:nn>0&&!wrong.length, detail:nn+" names drawn at 05:00, 09:50 and 14:40, "+nb+" with a badge"+(wrong.length?"; WRONG: "+wrong.slice(0,4).join("; "):"")});
+    /* the paper map's cap: close on Sokolnitz, no B or C mark larger on screen than a quarter of the free rectangle's shorter side */
+    setMode("staff"); setClock(500,{instant:true,force:true,camera:false}); finishTween();
+    var ws=W(210,362); MAPCAM.centreOn(ws[0],ws[1],0.02,true); settle(6,true);
+    var fr=MAPCAM.freeRect(), cap=CONF.CAP*Math.min(fr[2]-fr[0],fr[3]-fr[1]), big=0, capped=0, pm=0;
+    var over=[], wpp=worldPerPx(null);
+    confMarks().forEach(function(q){ var U=q.m.userData.conf; if(U.g==="A") return; pm++;
+      var px=(U.g==="B"?U.w:Math.max(U.w,U.d))/wpp, foot=(U.g==="B"?U.W0:Math.max(U.W0,U.D0))/wpp, lim=Math.max(cap,foot);
+      big=Math.max(big,px); if(px>=cap-0.5&&px<=lim+0.5) capped++; if(px>lim+0.5||px<foot-0.5) over.push(q.id+" "+U.g+" "+px.toFixed(0)+" px (cap "+cap.toFixed(0)+", footprint "+foot.toFixed(0)+")"); });
+    out.push({name:"spatial confidence: on the paper map no B frontage or C zone is larger on screen than a quarter of the free rectangle's shorter side, unless the footprint itself is, and none smaller than its footprint (section A.4 item 2)",
+      ok:pm>0&&capped>0&&!over.length, detail:"close on Sokolnitz at 08:20: "+pm+" B and C marks, "+capped+" held at the cap of "+cap.toFixed(1)+" px or their footprint, the largest "+big.toFixed(1)+" px"+(over.length?"; WRONG: "+over.slice(0,4).join("; "):"")});
+    MAPCAM.restore(ms0); if(mode!==md) setMode(md);
+    setClock(keep,{instant:true,force:true,camera:false}); finishTween();
+    return out;
+  }
   function smokeDayChecks(){
     var out=[], keep=clock, bad=[], n=0, full=0, resid=0;
     for(var i=0;i<20;i++){ var t=T_MIN+30+(T_MAX-T_MIN-60)*i/19; setClock(t,{instant:true,force:true,camera:false}); finishTween();
@@ -10970,6 +11136,7 @@ var AUSTERLITZ_DEBUG=(function(){
       fogChecks(ck,fct);    /* Stage 4C */
       paceChecks(ck,fct);   /* Stage 4D */
       extrasChecks(ck,fct); /* Stage 4E */
+      confChecks(ck,fct);   /* Stage 5B */
     }
     DISPLAY.settings.forEach(atFactor);
     stage2bChecks(bySetting).forEach(function(c){ out.push(c); });
@@ -10978,6 +11145,7 @@ var AUSTERLITZ_DEBUG=(function(){
     atmoDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4C */
     paceDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4D */
     smokeDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4E */
+    confDayChecks().forEach(function(c){ out.push(c); });   /* Stage 5B */
     setDisplayFactor(saveFactor);
     /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
     var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });

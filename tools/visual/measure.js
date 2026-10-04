@@ -422,6 +422,20 @@
         if(x1>x0&&y1>y0) S+=(x1-x0)*(y1-y0)/A; }); });
     return {sprites:n, share:+S.toFixed(4)};
   }
+  /* Stage 5B (docs/STAGE5_SPEC.md section A.5; the measure of tools/stage5/confidence-probe.js): the share of the free rectangle
+     (outside every panel and map-layer item, sampled every 2 px) whose pixels differ by more than 8 (of 255) between two frames of
+     the same view, one with the position-confidence marks and one without: what the marks cover, as rendered */
+  function confShare(a,b){
+    var fr=(camera.isOrthographicCamera||typeof landFreeRect!=="function")?MAPCAM.freeRect():landFreeRect(), R=panelRects();
+    document.querySelectorAll("#maplayer .ml-item.on").forEach(function(e){ var r=e.getBoundingClientRect(); if(r.width>0) R.push([r.left,r.top,r.right,r.bottom]); });
+    function img(s){ return new Promise(function(res){ var im=new Image(); im.onload=function(){ var cv=document.createElement("canvas"); cv.width=im.width; cv.height=im.height;
+      var x=cv.getContext("2d",{willReadFrequently:true}); x.drawImage(im,0,0); res({w:im.width,d:x.getImageData(0,0,im.width,im.height).data}); }; im.src="data:image/png;base64,"+s; }); }
+    return Promise.all([img(a),img(b)]).then(function(I){ var A=I[0].d, B=I[1].d, W=I[0].w, n=0, ch=0;
+      for(var y=Math.ceil(fr[1]);y<Math.floor(fr[3]);y+=2) for(var x=Math.ceil(fr[0]);x<Math.floor(fr[2]);x+=2){
+        var inP=false; for(var k=0;k<R.length;k++){ var r=R[k]; if(x>=r[0]&&x<r[2]&&y>=r[1]&&y<r[3]){ inP=true; break; } } if(inP) continue;
+        var o=(y*W+x)*4; n++; if(Math.max(Math.abs(A[o]-B[o]),Math.abs(A[o+1]-B[o+1]),Math.abs(A[o+2]-B[o+2]))>8) ch++; }
+      return {samples:n, share:n?+(ch/n).toFixed(4):0}; });
+  }
   /* Stage 3D (docs/STAGE3_SPEC.md section H; the measure of tools/stage3/dock-probe.js): the arrow heads on screen, and those
      more than a quarter hidden, under one panel or off the screen's edge (a box partly off screen counts its off-screen part) */
   function headsHidden(){
@@ -481,5 +495,5 @@
 
   window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures,
                 overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, layerTexts:layerTexts,
-                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, phaseLabels:phaseLabels, headsHidden:headsHidden, focusOffset:focusOffset, smokeShare:smokeShare};
+                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, phaseLabels:phaseLabels, headsHidden:headsHidden, focusOffset:focusOffset, smokeShare:smokeShare, confShare:confShare};
 })();

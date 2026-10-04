@@ -1,6 +1,7 @@
 # Evidence made visible: specification (Stage 5, Part A)
 
-**Status: Part A, for review. Nothing is implemented; no source file changes.** Written against `main` at `407cda0` (Stage 4E
+**Status: Part A merged (#32); the owner answered questions 1-4 (decisions 85-88, §0.4). 5B (spatial confidence) is implemented, for
+review; what it found is at the end of §I. Sections A-J below still describe the build they were written against.** Written against `main` at `407cda0` (Stage 4E
 merged as #31; with it Stage 4 is complete), whose build `austerlitz-command-map.html` is 1,416,737 bytes, md5
 `e1fac9ea08a4c2b2eaefe5b78529c843`. On it (the same build throughout: this part changes no source file): `check:baseline` passed; `npm test` (all nine suites and the height
 guard) passed; `check:data` found all 113 declarations identical to `archive/stage4d-9b13adbf.html`; `check:chronology` reported 0
@@ -155,6 +156,18 @@ Each is stated, not resolved.
    flies to the Overview only while `freeCam` is false, `app.js:2924`), both plans raise the map layer's drops above the view's
    `DROP_LIMIT` in 9 of 19 landscape harness views (the Field vantage 16 against 11; `plans-probe.js`, §E.2). No harness case opens the
    Plans tab. Outside Stage 5's scope (the Plans tab is not changed); recorded, with a check proposed (§H.3, 5F).
+
+### 0.4 Owner decisions 85-88 (the answers to §J questions 1-4)
+
+Part A merged (#32). Before 5B the owner answered the four questions that bind it, each with the recommendation. Questions 5-13
+stay open until the parts they bind.
+
+| # | question | decision |
+|---|---|---|
+| 85 | 1, spatial confidence by default | On by default, at every factor and on the paper map, with a "Position confidence" toggle in the layers panel. (5B) |
+| 86 | 2, the C zone's size | Its radius the formation's own frontage; stated as a drawn size, not a measured error. (5B) |
+| 87 | 3, grade A | Drawn as the crisp footprint (every formation on the field has a ground mark). (5B) |
+| 88 | 4, between anchors | The grade `confAt` gives (the weaker anchor's); "interpolated" stays the dossier's word, not a fourth look. (5B) |
 
 ## A. Spatial confidence: crisp footprint A, soft frontage B, diffuse zone C
 
@@ -779,6 +792,41 @@ Each part passes every check on its own, records what changed and why in `CHANGE
 
 Sequencing (question 12): 5B, 5C, 5D, 5E, 5F, 5G. 5C is independent and small and can go at any point; 5E needs 5B's C encoding
 for "reported only"; 5G reuses 5D's marks.
+
+### 5B, as delivered (spatial confidence; decisions 85-88)
+
+Implemented in `app.js` (`CONF`, `confTexture`, `makeConfMark`, `confSize`, `confPlace`; `updateVisibility`; the legend's rows; the
+sources sheet's sentence; the self-test's confidence checks), `symbols.js` (`nameHTML` with the grade's badge), `shell.html` (the
+"Position confidence" toggle, on; the legend's grade rows), `style.css` (the rows' swatches, the name's badge), as §A.4 proposed (the
+2B footprint's `makeFootprint` and `placeFootprint`, no longer called, removed), with
+these changes found while building it, each measured (`tools/stage5/report-5b.js`, `docs/stage5-evidence/5b-report.md`,
+`5b-before.json`, `5b-after.json`, `5b-sheet.jpg`, `5b-sheet-before.jpg`; `CHANGELOG.md`, Stage 5B):
+- **The drape is a decal.** A plane draped at its vertices, even one vertex per world unit, cut under the ground at 10.33x (the
+  self-test: 46 of 110,313 points, 0.375 units under, on the Zuran): the ground bends between the plane's vertices. Each mark is now a
+  patch of the drawn ground's own cells, with the same diagonal as `groundY`, every node at the lift above the ground, and the
+  grade's mask (in the mark's own frame, every edge texel transparent) shapes it. It lies exactly 0.25 units above the drawn ground at
+  every point (the self-test: 0 of 319,740 points under at each factor, the lowest exactly 0.250).
+- **The paper map's cap keeps the footprint.** A quarter of the free rectangle's shorter side capped B's frontage and C's zone, but at
+  close zoom that made a mark smaller than the formation's own footprint. The cap now holds the uncertain extent between the footprint
+  and the cap: B's frontage between W0 and 2 W0, C's zone between the footprint's larger side and its frontage radius.
+- **The marks cover more than the prototype measured.** As rendered, the marks' share of the free rectangle is 3.3-15.2% in the 4x
+  landscape views (the prototype, G1: 1.8-10.7%), 19.2% in the low Pratzen view at 1x (12.1%), 21.2% close on Sokolnitz at 1x
+  (15.5%), 0.9-15.1% on the paper map (with the cap; the prototype 0.4-39.4% without). Inference, not verified: the prototype's coarse
+  planes sank under the ground between their vertices and were partly hidden by it; the decal is not. The harness's cap (`CONF_SHARE`)
+  is set from the 5B build: 20% on the landscape, 16% on the paper map, never raised.
+- **The badge row** of the legend now shows wherever names or counters are drawn (the landscape's names carry the badge); the
+  self-test's legend check follows that rule (a decided change, not a looser one), and checks the grade rows too.
+- **The name's badge at the name's own size** (12.5 px, not the counter badge's 10.5 px): on a name the harness holds it to the
+  12 px floor of what is needed to follow the battle (decision 16), and at 10.5 px 13 views failed.
+- **At 1x** the A mark is the true-scale footprint at its 0.85 opacity (decision 34's drawing unchanged for A), B and C at their
+  grade's look; with the toggle off the 1x footprint is drawn crisp, as before 5B.
+
+Per view (fact; every harness view at its factor, four at 1x and 10.33x): drops within `DROP_LIMIT` everywhere, one view one higher
+than before (watch-selected 3 to 4, limit 8), one lower (pratzen-low 5 to 4); map text 0 below AA, the lowest contrast in any view at
+most 3.68 lower (pratzen-low, 11.94 to 8.26; the view's lowest is still 8.26); solid near-black unchanged (at most 0.020%); mean
+luminance within 3.8; the world pass (software WebGL, 14 views at 4x and 10.33x) 4.4-10.2 ms against 4.4-6.8 ms, on average 5.9
+against 5.2 ms. The self-test has 163 checks (157 before): the
+drape at each factor, the grade and size and colour at 20 clocks, the names' badges, the paper map's cap.
 
 ## J. Questions for the owner
 

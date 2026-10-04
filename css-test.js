@@ -150,3 +150,17 @@ if(cerrs) process.exitCode=1;
   console.log("palette: "+(perr.length?perr.length+" wrong":"the landscape's colours in their tables (light, sprites, ground, land, water), the paper map's ground in the tokens"));
   if(perr.length) process.exitCode=1;
 }
+/* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by
+   a dash or a dotted line, and their colour is the side's from the tokens */
+{
+  const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), ast=acorn.parse(src,{ecmaVersion:2020}), cerr=[];
+  const want=["confTexture","makeConfMark","confSize","confPlace"], seen={};
+  ast.body.forEach(n=>{ if(n.type!=="FunctionDeclaration"||!want.includes(n.id.name)) return; seen[n.id.name]=1;
+    const body=src.slice(n.start,n.end); if(/setLineDash|LineDashed|dashSize|dashRuns|segment/i.test(body)) cerr.push(n.id.name+" draws a dash"); });
+  want.forEach(f=>{ if(!seen[f]) cerr.push(f+" missing"); });
+  if(!/confPlace\(rec\[mk\],g,wq\[0\],wq\[1\],rec\.yaw\|\|0,fu\.W0\*fu\.sw,fu\.D0\*fu\.sd,hexNum\(side\)/.test(src)||!/side=TOKENS\.sym\.side\[sideOfNation\(f\.nation\)\]\.base/.test(src)) cerr.push("the marks' colour is not the side's token");
+  if(!/layerOn=\{[^}]*confidence:true/.test(src)) cerr.push("position confidence is not on by default (decision 85)");
+  cerr.forEach(e=>console.log("  ! "+e));
+  console.log("confidence marks: "+(cerr.length?cerr.length+" wrong":"no dash, the side's token colour, on by default"));
+  if(cerr.length) process.exitCode=1;
+}

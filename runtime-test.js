@@ -24,7 +24,7 @@ class Col{constructor(h){this.r=1;this.g=1;this.b=1;this.setHex(h===undefined?0x
 class Obj extends REAL.Object3D{}
 function attr(n,item){const a={count:n,array:new Float32Array(n*item),needsUpdate:false,
   getX:i=>a.array[i*item],getY:i=>a.array[i*item+1],getZ:i=>a.array[i*item+2],
-  setY(i,v){a.array[i*item+1]=v},set(x){a.array.set(x)}};return a;}
+  setY(i,v){a.array[i*item+1]=v},setXYZ(i,x,y,z){a.array[i*item]=x;a.array[i*item+1]=y;a.array[i*item+2]=z},set(x){a.array.set(x)}};return a;}
 class Geo{constructor(n=12){this.attributes={position:attr(n,3),normal:attr(n,3),color:attr(n,3)};this.index={};}
  rotateX(){return this}
  toNonIndexed(){ if(!this.index) console.warn("THREE.BufferGeometry.toNonIndexed(): BufferGeometry is already non-indexed."); this.index=null; return this }
@@ -475,6 +475,19 @@ try{
       if(Math.abs(real-L)>2*st||n!==want||back||fast) throw new Error("dwell at "+x+"x: "+real.toFixed(2)+" s against "+L.toFixed(2)+", "+n+" dwells of "+want+", "+back+" backward and "+fast+" too fast steps"); });
     clock=c0; dwellReset();
     console.log("dwell: the day at 0.5x, 1x, 2x and 4x in its computed length, one dwell at each event start, the clock monotone and never faster than its speed OK"); }
+
+  /* Stage 5B (docs/STAGE5_SPEC.md section A.5): spatial confidence, dry run. On by default (decision 85); every formation on the
+     field gets a mark of its confAt grade at the default factor, a patch of the ground's cells; switched off, none is drawn */
+  { if(!layerOn.confidence) throw new Error("position confidence is not on by default");
+    setClock(590,{instant:true,force:true,camera:false}); updateVisibility();
+    let n=0, bad=[]; Object.keys(units).forEach(id=>{ const r=units[id], p=posNow(id); if(!p||knowledgeOf(id)==="unknown") return; n++;
+      const g=confAt(id,clock).cf; if(!r.conf||!r.conf.visible||r.conf.userData.conf.g!==g||!r.conf.geometry.index) bad.push(id); });
+    if(!n||bad.length) throw new Error("spatial confidence: "+bad.length+" of "+n+" formations without their grade's mark: "+bad.slice(0,4).join(", "));
+    layerOn.confidence=false; updateVisibility();
+    const left=Object.keys(units).filter(id=>units[id].conf&&units[id].conf.visible);
+    layerOn.confidence=true; updateVisibility();
+    if(left.length) throw new Error("spatial confidence switched off, still drawn: "+left.join(", "));
+    console.log("spatial confidence: on by default, "+n+" formations at 09:50 each with its grade's mark; none drawn when switched off OK"); }
 
   /* the armies are ranks of figures now, with national colours on the standards */
   const inf=units.sthilaire.block.userData, cav=units.nansouty.block.userData;

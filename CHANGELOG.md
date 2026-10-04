@@ -1,8 +1,89 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 5B: spatial confidence (docs/STAGE5_SPEC.md §A, §I; owner decisions 85-88)
+
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,433,308 bytes, md5 `a8db7a17df01acaed029d5d4010252ff`**
+(was 1,416,737 bytes, md5 `e1fac9ea…`, Stage 4E).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. No data,
+  geography, chronology, order of battle, track, grade, event or `OVERLAYS` change; the grades are read through `confAt`, not changed.
+  Presentation only.
+- Recorded with this part: Stage 5 Part A merged (#32); the owner's answers to questions 1-4, decisions 85-88 (`docs/STAGE5_SPEC.md`
+  §0.4): on by default with a toggle; C's zone of the formation's own frontage; A as its crisp footprint; between anchors the weaker grade.
+
+**Before building (fact).** `main` (9b969e1, Part A merged as #32) matched `check:baseline` (md5 `e1fac9ea…`, 1,416,737 bytes).
+`tools/stage5/report-5b.js` measured it as the "before" (`AUSTERLITZ_HTML`, the same build).
+
+**What changed** (`app.js`, `symbols.js`, `shell.html`, `style.css`)
+- **Each formation's position grade drawn on the ground** (`CONF`, `confPlace`): the grade as the app computes it (`confAt`: between
+  two anchors, the weaker one's; decision 88), from the footprint primitive (decision 34): A its crisp footprint (frontage W0 x sw by
+  depth D0 x sd, ground scale; decision 87), B a soft frontage (the frontage doubled, its outer halves feathered, the depth crisp), C a
+  diffuse zone of radius its own frontage, falling from the centre (decision 86). The side's colour; no dash, no new hue (decisions 1,
+  4, 15). Opacities 0.62, 0.55, 0.45; dimmed formations at 0.45 of them. The sizes are design values, said so in the legend and the
+  sources sheet ("drawn sizes, not measured errors").
+- **Everywhere, on by default** (decision 85): under the figures at 4x and 10.33x, in place of the 1x footprint at true scale (A at the
+  footprint's own 0.85 opacity; with the toggle off the 1x footprint is drawn crisp, as before), and under the counters on the paper map,
+  where B's frontage and C's zone are capped at a quarter of the free rectangle's shorter side, never below the footprint. A "Position
+  confidence" toggle in the layers panel.
+- **Each mark is a patch of the drawn ground's own cells** (the same diagonal as `groundY`), every node 0.25 units above the ground,
+  shaped by the grade's mask: it never cuts under the ground at any factor (a plane draped at its vertices did, at 10.33x).
+- **A text carrier in the landscape** (§A.4 item 4): each formation's name carries its grade's badge (B, C, or "?" when reported only),
+  as the counter does (decision 4); the legend's badge row shows wherever names or counters are drawn.
+- **The legend**: one row per grade drawn on screen (the data's own definitions, a swatch of its shape in the text colour) and the
+  sentence on the sizes. **The sources sheet**: a sentence on how the grade is drawn (written by the app; `SOURCE_NOTE` unchanged).
+
+**Decisions taken while building it** (`docs/STAGE5_SPEC.md` §I, "5B, as delivered")
+- **The drape as a decal**: one vertex per world unit still cut under the ground at 10.33x (the self-test: 46 of 110,313 points, 0.375
+  units under, on the Zuran); the ground-cell patch lies exactly at its lift (0 of 319,740 points under at each factor).
+- **The paper map's cap keeps the footprint**: capping the whole mark at close zoom drew a B or C formation smaller than its footprint.
+- **The name's badge at the name's size** (12.5 px): drawn at the counter badge's 10.5 px, `check:visual` held it to the 12 px floor of a
+  name (decision 16: what is needed to follow the battle), and 13 views failed; on a name the badge is read with the name.
+- **The marks cover more than the prototype measured** (Part A §A.3): as rendered 3.3-15.2% of the free rectangle in the 4x views
+  (prototype 1.8-10.7%), 19.2% in the low Pratzen view at 1x, 0.9-15.1% on the paper map. Inference, not verified: the prototype's coarse
+  planes sank under the ground between their vertices. The harness's cap is set from this build (20% landscape, 16% paper map).
+
+**Per view, before and after** (`tools/stage5/report-5b.js`; `docs/stage5-evidence/5b-report.md`, `5b-sheet-before.jpg`, `5b-sheet.jpg`)
+- **Drops** within `DROP_LIMIT` in every view: watch-selected 3 to 4 (limit 8), pratzen-low 5 to 4, every other unchanged.
+- **Map text** 0 below AA in every view; the lowest contrast in a view at most 3.68 lower (pratzen-low 11.94 to 8.26).
+- **Solid near-black** unchanged (at most 0.020%); **mean luminance** within 3.8; **the world pass** (software WebGL, the 14 views at 4x and
+  10.33x) 4.4-10.2 ms against 4.4-6.8 ms before, on average 5.9 against 5.2 ms: up to 32 more transparent meshes; not measured on a GPU.
+- **The marks' share** of the free rectangle: 3.3-15.2% (4x), 2.2-21.2% (1x), 3.5-9.0% (10.33x), 0.9-15.1% (paper map).
+
+**Tests** (none loosened; new or stricter)
+- **Self-test** (163 checks, was 157), new: at each factor, every mark sampled every 0.5 units across its triangles, none under the drawn
+  ground, its nodes at their lift; once, at 20 clocks, every formation on the field drawn at its `confAt` grade, at its size, in its
+  side's colour, with its grade's mask; in the landscape every drawn name with its grade's badge; on the paper map, close on Sokolnitz,
+  B and C held between the footprint and the cap. Changed, a decided rule (§A.4 item 4): the legend's badge row expected wherever names
+  or counters are drawn (was: counters only), and the grade rows checked against what is drawn.
+- **Harness**: new, in every view the marks' share of the free rectangle as rendered (`measure.js` `confShare`, the view drawn once more
+  without them) at most `CONF_SHARE` (20% landscape, 16% paper map).
+- **`css-test.js`**: new, the marks' functions draw no dash, their colour is the side's token, the toggle on by default.
+- **`runtime-test.js`**: new, a dry run (every formation on the field at 09:50 with its grade's mark; none drawn when switched off); its
+  three.js stand-in's attributes gain `setXYZ`.
+- **Height guard**: four new call sites classified (`confPlace` presentation; `confDrape`, `confChecks`, `confDayChecks` test); the
+  2B footprint's `placeFootprint`, now unused and removed with `makeFootprint`, unclassified.
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard (`binding-test.js` 381 checks, 0 failed).
+- `npm run check:baseline`: moved to this build (md5 `a8db7a17…`, 1,433,308 bytes); passes.
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:contrast`: 4,456 text elements in 28 states (4,250 on 4E: the names' badges and the legend's grade rows), 0 below AA,
+  0 below 10.5 px.
+- `npm run check:visual`: all checks passed: 20 views (the marks' share of the free rectangle in 18 of them, at most 19.2%, pratzen-low-1x,
+  against 20%; on the paper map at most 15.1%, paper-close, against 16%), the day's light, the valley fog's hours, the horizon, the key
+  tests; the self-test 163 of 163; the two known Canvas2D warnings. A first run at 10.5 px badges failed 13 views on the names' 12 px
+  floor (recorded above); the run reported here is on the committed build.
+
+**Not done, or open**
+- The marks' look (their opacities, the zone's falloff, how the near zones dominate the low views) is for the owner's eye.
+- The marks are not drawn for aggregates (each leaf carries its own); "reported only" is drawn at its grade, not as a C zone (§D.5, 5E).
+- Frame cost not measured on a GPU (software WebGL only); the redrape while the clock plays is not timed separately.
+- Historical: nothing. The grades are the data's; their drawn sizes are design values, stated as such.
+
 ## 2026-10 · Stage 5 Part A: evidence made visible, the specification (docs/STAGE5_SPEC.md)
 
-**Status: for review. No source file changed; `austerlitz-command-map.html` is unchanged: 1,416,737 bytes, md5
+**Status: merged (#32). No source file changed; `austerlitz-command-map.html` is unchanged: 1,416,737 bytes, md5
 `e1fac9ea08a4c2b2eaefe5b78529c843` (Stage 4E).** `check:baseline` does not move.
 - Recorded with this part: Stage 4E merged (#31), here, in `CLAUDE.md` and in `docs/STAGE4_SPEC.md`; Stage 4 is complete.
 
