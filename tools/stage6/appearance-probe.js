@@ -242,6 +242,7 @@ const PROBE=function(){
     "`node tools/stage6/appearance-probe.js`. P1: prototype coats; P2: coats, headgear, facings, cuirasses and flags (measurement values, not proposals). "+
     "Solid near-black: the share of 8 x 8 blocks at least 90% near-black outside the panels (Stage 0 limit 0.0005). Map text: the lowest contrast as rendered and the "+
     "number below AA. The confidence marks' share as rendered (`measure.js` `confShare`). Changed: the share of the free rectangle that differs from the view as it is.\n",
+    (out.runs?"Runs: "+out.runs.join("; ")+"\n":""),
     "## Identity today, and the thresholds\n",
     "| view | figures in view | formations with figures | named or countered | with a ground mark | solid black today / P1 / P2 | mean luminance today / P2 | text min today / P2 (below AA) | drops today / P2 | confidence share today / P2 | changed P1 / P2 |","|---|---|---|---|---|---|---|---|---|---|---|"];
   Object.keys(out.views).forEach(k=>{ const r=out.views[k], d=r.identity.filter(q=>q.figures);
@@ -253,6 +254,9 @@ const PROBE=function(){
     "| view | facings px (per figure, contrast) | headgear px (per figure, contrast) | flags px (contrast) | world pass ms today / P2 | a crisp side footprint for every formation: share (median contrast, share at 3:1) |","|---|---|---|---|---|---|");
   Object.keys(out.views).forEach(k=>{ const r=out.views[k]; if(!r.parts) return; const P=r.parts;
     md.push("| "+k+" | "+P.facings.px+" ("+P.facings.perFigure+", "+P.facings.contrastMedian+") | "+P.headgear.px+" ("+P.headgear.perFigure+", "+P.headgear.contrastMedian+") | "+P.flags.px+" ("+P.flags.contrastMedian+") | "+r.base.worldMs+" / "+r.P2.worldMs+" | "+(r.sideMark?r.sideMark.confShare.share+" ("+r.sideMark.diff.contrastMedian+", "+r.sideMark.diff.share3to1+")":"-")+" |"); });
+  const dk=Object.keys(out.views).filter(k=>out.views[k]["P2-hat"]&&out.views[k]["P2-hat"].dark);
+  if(dk.length){ md.push("\n## Which part darkens a view: solid near-black of P2 and of P2 without each part (Stage 0 limit 0.0005)\n","| view | today | P1 | P2 | P2 without the facings | P2 with today's cylinder | P2 with today's flags |","|---|---|---|---|---|---|---|");
+    dk.forEach(k=>{ const r=out.views[k]; md.push("| "+k+" | "+r.base.dark.solidBlack+" | "+r.P1.dark.solidBlack+" | "+r.P2.dark.solidBlack+" | "+r["P2-fac"].dark.solidBlack+" | "+r["P2-hat"].dark.solidBlack+" | "+r["P2-flag"].dark.solidBlack+" |"); }); }
   md.push("\n## Coats as rendered: the closest pairs of formations of opposite sides (CIEDE2000), today and in prototype P1\n","| view | formations keyed | pairs | closest today | closest in P1 |","|---|---|---|---|---|");
   Object.keys(out.views).forEach(k=>{ const r=out.views[k]; if(!r.cross) return; const f=a=>a.slice(0,3).map(p=>p[0]+"-"+p[1]+" "+p[2]).join("; ");
     md.push("| "+k+" | "+Object.keys(r.keys).length+" | "+r.cross.pairs+" | "+f(r.cross.today)+" | "+f(r.cross.proto)+" |"); });

@@ -1,5 +1,84 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 6 Part A: historical appearance, the specification (docs/STAGE6_SPEC.md)
+
+**Status: for review. No source file changed; `austerlitz-command-map.html` is unchanged: 1,528,608 bytes, md5
+`4c12cac6d458b02e3282237f4d1abb92` (Stage 5G).** `check:baseline` does not move; `check:data` does not move.
+- Recorded with this part: Stage 5G merged (#38), here (its entry's status), in `CLAUDE.md` and in `docs/STAGE5_SPEC.md`; Stage 5 is
+  complete.
+
+**Before writing (fact).** `main` (f54fffa, 5G merged as #38) matched `check:baseline` (md5 `4c12cac6…`, 1,528,608 bytes).
+
+**What this part is.** `docs/STAGE6_SPEC.md` specifies the roadmap's Stage 6 line ("Uniforms, headgear, flags, each with a source and a
+grade") and opportunity 3 ("identity decoupled from coat colour"): the decisions and records that bind it, quoted with file and line, and
+where they disagree (§0); what is drawn today, read from the code and the running page (§1); the evidence, as a register of leads (§2);
+what can be drawn, measured in the harness views (§3); identity without the coat, measured (§4); where appearance data should live (§5);
+a design for 6B-6D with tests (§6); and fifteen questions for the owner (§7). Scripts in `tools/stage6/` (not bundled); evidence in
+`docs/stage6-evidence/` (its README lists every file, its section and its script).
+
+**The limit (fact).** No external source could be read in this session. The network policy refuses every host that holds the sources
+(HTTP 403 on CONNECT: Wikipedia, Gallica, archive.org, HathiTrust, Google Books, the Musée de l'Armée, the HGM, the Hermitage, the
+Napoleon Series and others; only package registries answer); the search tool's shared cap (200) was spent, and its summaries are
+machine-written, not a source (decision 42's rule); a few texts reached through copies held in other GitHub repositories are excluded
+(this session may read only its own repository). So §2 is a register of leads, every external item labelled uncertain with the grade it
+would carry if its source confirms it; nothing is graded A or B as verified, nothing is acted on, and both open questions of
+`SOURCE_NOTE` stay open (decision 42: "where a source cannot be read (network policy), that is said, the conflict is left unresolved with
+today's behaviour, and listed").
+
+**Found (fact; each stated in §0.3, none resolved)**
+- **Decision 1 and opportunity 3 cannot both hold**: decision 1 keeps nation colours "as counter fills and figure coats"; opportunity 3
+  (and decision 1's own note) says coats cannot carry nationality once uniforms are accurate. Question 2.
+- **The drawing answers both open questions of `SOURCE_NOTE`**: every Russian standard is "a green colour with a white cross" and
+  Kienmayer's Grenz are drawn in the Austrian white, unlabelled, while `SOURCE_NOTE` keeps both questions "unresolved rather than guessed".
+- **The colour key names coats as nations**: the first-run card, the legend's nation rows and tour stop 1 (`TOUR`, guarded) say the armies
+  are blue, green and white; the self-test pins the words.
+- **The standard's ratio divides by the bayonet's tip** (1.981 units), not the man (1.635 to the hat's top): the drawn pole is 1.94
+  man-heights; a sourced ratio must state its denominator.
+- **One hat, one horse, three flags**: every man and rider wears the same black cylinder (the kit's "shako"), the same legwear, rides the
+  same brown horse; no facings, cuirasses, crests or plumes anywhere; gunners in the infantry kit with musket and pack; every leaf
+  formation carries 1-3 standards of its nation's one pattern, batteries and headquarters included (56 standards on 32 blocks).
+- **Mixed formations wear one coat**: Kienmayer's attached (Russian) Cossacks in the Austrian white.
+- **Leads contradict the brief's premises** (unverified): Russian shako orders of February 1805, not 1807; Russian dragoons and jägers in
+  light green until 1807; Austrian O'Reilly chevaulegers in white; the Austrian cloth 161 x 142 cm, not 175 x 130; Russian hussars without
+  standards from 1797. The leads agree with the audit on the French 1804 lozenge (the vertical tricolour from 1812) and on the Austrian
+  flag (the drawn pattern matches none).
+- **What the drawn scale allows** (measured, `scale-probe.js`): a man is 0.6-1.0 px at the Overview, 10.5 px in the Field vantage,
+  15-17 px in the middle views, 27-38 px in the close views and 49 px (at most 181) in the closest orbit; his headgear reaches 4 px only in
+  the close views; a facing (4% of a man) reaches 1 px only in the close views and 4 px in 51 figures of one view; a standard's cloth is
+  4-6 px at the Overview (edge on), 7.6 px in the Field vantage, 18-37 px close.
+- **What a historical drawing does to the views** (measured, `appearance-probe.js`, prototype values only): prototype historical coats
+  alone move no Stage 0 threshold in any view (solid near-black, map text at AA, drops, the confidence marks' share within 0.001); coats
+  with headgear, facings, cuirasses and repainted flags break the darkness limit in one view, **the closest orbit (solid near-black
+  0.00228-0.00233 against 0.0005; today 0.0003)**, every other view as today. The headgear is the cause (with today's cylinder in its
+  place, 0.0005, at the limit), so 6C must keep every drawn black at or above decision 84's and measure the closest orbit per headgear
+  class (question 7). Facings change 0.6-3.8 px per figure at the Overview and in the Field vantage, at a median contrast of 1.2-1.3: a
+  tint, not a feature.
+- **Coats cannot carry side** (measured as rendered): the closest coats of opposite sides differ today by CIEDE2000 17-31 in the keyed
+  views; with prototype historical coats by 3.6-19, French green against Russian dark green by 3.6-4.9. Every formation drawn as figures
+  has its ground mark today; names and counters cover 3-5 of 24-29 formations at the Overview and none of 11 in the closest orbit.
+
+**Data tasks it would need (not done; §6.1):** 6B, the appearance table (`appearance.js`, guarded) once the sources can be read; tour stop
+1's wording (`TOUR`); the narrative's "45 standards" (`data.js:126`) against the disputed counts; the leads' order-of-battle additions
+(Her Majesty's Life Cuirassiers with Bagration; the Fifth Column's Russian regiments; "Gladkov" unconfirmed).
+
+**Checks on this build (unchanged by this part)**
+All run in this session on the unchanged 5G build (md5 `4c12cac6…`, 1,528,608 bytes):
+- `npm run build`: the bundle 1,458,891 bytes, the HTML 1,528,608 bytes.
+- `npm test`: "ALL 9 SUITES PASSED (and the height guard)": `css-test.js` 0 errors, 9/9; `test.js` 0 errors, 41/41; `geo-test.js` 54
+  passed; `terrain-test.js` OK; `audit.js` 0 march-rate and 0 terrain violations; `sim-test.js` 0 disagreements; `redteam.js` 0 findings;
+  `runtime-test.js` 0 errors; `binding-test.js` 383 checks, 0 failed; the height guard 96 call sites (before writing and on the final tree).
+- `npm run check:baseline`: passes (md5 `4c12cac6d458b02e3282237f4d1abb92`, 1,528,608 bytes; not moved).
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html` (not moved).
+- `npm run check:chronology`: errors 0 (69 timed moves: 65 consistent, 4 early, the named unresolved conflicts; 20 explicit times).
+- `npm run check:contrast`: 5,186 text elements, 0 below AA, 0 below 10.5 px.
+- `npm run check:visual`: all checks passed (66 min 46 s; 23 views, the self-test 194 of 194; run once on this build, before the probes).
+
+**Not done, or open**
+- Nothing is implemented. Every prototype colour, shape and pattern the probe drew is a measurement value, not a proposal.
+- No external source was read; 6B needs a session that reaches them (question 1).
+- Frame times are software WebGL on the harness machine (comparable only with one another); no GPU measurement.
+- Historical: nothing changes. The open questions stay open; the leads that contradict the brief's premises are recorded, not adopted.
+
 ## 2026-10 · Stage 5G: the day-track inset (docs/STAGE5_SPEC.md §F, §I; owner decision 95)
 
 **Status: merged (#38); with it Stage 5 is complete. `austerlitz-command-map.html`: 1,528,608 bytes, md5

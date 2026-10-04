@@ -1,6 +1,12 @@
 {
  "html": "austerlitz-command-map.html",
  "when": "2026-10-04T22:11:06.949Z",
+ "runs": [
+  "run 1 (2026-10-04T22:11:06.949Z): 16 views, cut short by a container restart before close-sokolnitz@10.33x",
+  "run 2 (2026-10-04T23:11:45.587Z): close-sokolnitz@10.33x, ph8-overview-watch@10.33x, paper-north-up and paper-close, and four views again for the sheet (close-sokolnitz, pratzen-low, eye-zuran and pratzen-orbit-min: every threshold measure as in run 1, the parts within 0.0001 of the free rectangle, the world pass within 2.3 ms)",
+  "run 3 (2026-10-04T23:29:24.709Z): pratzen-orbit-min again, with solid near-black for P2 without each part (P2 0.00233 here, 0.00228 in runs 1 and 2: the flags move)",
+  "the views below are run 1's, run 2's four new views and run 3's pratzen-orbit-min (its keyed coats, run 1's: run 3 keyed none)"
+ ],
  "views": {
   "overview-field": {
    "clock": 570,
@@ -4862,7 +4868,7 @@
      "solidBlack": 0.0003,
      "meanLum": 76.5
     },
-    "worldMs": 6.5,
+    "worldMs": 6.7,
     "confShare": {
      "samples": 301199,
      "share": 0.0307
@@ -4891,7 +4897,7 @@
      "solidBlack": 0.0003,
      "meanLum": 75.8
     },
-    "worldMs": 6.1
+    "worldMs": 5.9
    },
    "P2": {
     "diff": {
@@ -4913,10 +4919,10 @@
      "texts": 6
     },
     "dark": {
-     "solidBlack": 0.00228,
+     "solidBlack": 0.00233,
      "meanLum": 77.3
     },
-    "worldMs": 10.3,
+    "worldMs": 12.1,
     "confShare": {
      "samples": 301199,
      "share": 0.0309
@@ -4927,10 +4933,14 @@
      "samples": 301199,
      "changed": 0.1857,
      "contrastMedian": 1.29,
-     "contrastP90": 3.09,
+     "contrastP90": 3.1,
      "share3to1": 0.102
     },
-    "changedPerFigure": 221.08
+    "changedPerFigure": 221.08,
+    "dark": {
+     "solidBlack": 0.00233,
+     "meanLum": 76.6
+    }
    },
    "P2-hat": {
     "diff": {
@@ -4940,7 +4950,11 @@
      "contrastP90": 4.87,
      "share3to1": 0.221
     },
-    "changedPerFigure": 134.88
+    "changedPerFigure": 134.88,
+    "dark": {
+     "solidBlack": 0.0005,
+     "meanLum": 77.2
+    }
    },
    "P2-flag": {
     "diff": {
@@ -4950,7 +4964,11 @@
      "contrastP90": 3.56,
      "share3to1": 0.12
     },
-    "changedPerFigure": 171.91
+    "changedPerFigure": 171.91,
+    "dark": {
+     "solidBlack": 0.00213,
+     "meanLum": 76.4
+    }
    },
    "sideMark": {
     "confShare": {
@@ -4970,7 +4988,7 @@
      "changed": 0.0437,
      "px": 52650,
      "perFigure": 52.03,
-     "contrastMedian": 1.79
+     "contrastMedian": 1.8
     },
     "headgear": {
      "changed": 0.0856,
@@ -4985,6 +5003,7 @@
      "contrastMedian": 1.41
     }
    },
+   "seconds": 233,
    "keys": {
     "vandamme": {
      "side": "fr",
@@ -5229,8 +5248,7 @@
      ]
     ],
     "pairs": 10
-   },
-   "seconds": 419
+   }
   },
   "pratzen-low-1x": {
    "clock": 590,
@@ -6032,6 +6050,825 @@
     }
    },
    "seconds": 156
+  },
+  "close-sokolnitz@10.33x": {
+   "clock": 500,
+   "factor": "model",
+   "identity": [
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 111.1
+    },
+    {
+     "id": "legrand",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 59.4
+    },
+    {
+     "id": "friant",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 40.9
+    },
+    {
+     "id": "drouet",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 131.7
+    },
+    {
+     "id": "buxhowden",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 84.3
+    },
+    {
+     "id": "kienmayer",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 53.3
+    },
+    {
+     "id": "dok",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 56.7
+    },
+    {
+     "id": "lang",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 70.3
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 91.6
+    },
+    {
+     "id": "prz",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 74.4
+    }
+   ],
+   "figures": 1265,
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.5
+    },
+    "worldMs": 8.9,
+    "confShare": {
+     "samples": 294601,
+     "share": 0.0904
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 294601,
+     "changed": 0.0096,
+     "contrastMedian": 1.05,
+     "contrastP90": 1.1,
+     "share3to1": 0
+    },
+    "changedPerFigure": 8.94,
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.4
+    },
+    "worldMs": 4.9
+   },
+   "P2": {
+    "diff": {
+     "samples": 294601,
+     "changed": 0.0319,
+     "contrastMedian": 1.1,
+     "contrastP90": 1.45,
+     "share3to1": 0
+    },
+    "changedPerFigure": 29.72,
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.5
+    },
+    "worldMs": 6.9,
+    "confShare": {
+     "samples": 294601,
+     "share": 0.0909
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 294601,
+     "changed": 0.0259,
+     "contrastMedian": 1.09,
+     "contrastP90": 1.37,
+     "share3to1": 0
+    },
+    "changedPerFigure": 24.13
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 294601,
+     "changed": 0.0238,
+     "contrastMedian": 1.09,
+     "contrastP90": 1.51,
+     "share3to1": 0
+    },
+    "changedPerFigure": 22.17
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 294601,
+     "changed": 0.0245,
+     "contrastMedian": 1.07,
+     "contrastP90": 1.4,
+     "share3to1": 0
+    },
+    "changedPerFigure": 22.82
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 294601,
+     "share": 0.0485
+    },
+    "diff": {
+     "samples": 294601,
+     "changed": 0.0485,
+     "contrastMedian": 1.11,
+     "contrastP90": 1.2,
+     "share3to1": 0
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0116,
+     "px": 13669,
+     "perFigure": 10.81,
+     "contrastMedian": 1.11
+    },
+    "headgear": {
+     "changed": 0.0098,
+     "px": 11548,
+     "perFigure": 9.13,
+     "contrastMedian": 1.11
+    },
+    "flags": {
+     "changed": 0.0075,
+     "px": 8838,
+     "perFigure": 6.99,
+     "contrastMedian": 1.16
+    }
+   },
+   "seconds": 172
+  },
+  "ph8-overview-watch@10.33x": {
+   "clock": 880,
+   "factor": "model",
+   "identity": [
+    {
+     "id": "gqg",
+     "side": "fr",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 432.3
+    },
+    {
+     "id": "heightguns",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 432.1
+    },
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 428.5
+    },
+    {
+     "id": "vandamme",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 429.4
+    },
+    {
+     "id": "bourcier",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 430.2
+    },
+    {
+     "id": "caffarelli",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 448.6
+    },
+    {
+     "id": "suchet",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 450.3
+    },
+    {
+     "id": "santon",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 438.4
+    },
+    {
+     "id": "kellermann",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 443.9
+    },
+    {
+     "id": "nansouty",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 442.7
+    },
+    {
+     "id": "dhautpoul",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 440.9
+    },
+    {
+     "id": "walther",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 442.8
+    },
+    {
+     "id": "drouet",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 425.1
+    },
+    {
+     "id": "guard_inf",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 429.5
+    },
+    {
+     "id": "guard_cav",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 428.7
+    },
+    {
+     "id": "c_gren",
+     "side": "fr",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 428.9
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 449.4
+    },
+    {
+     "id": "buxhowden",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 434
+    },
+    {
+     "id": "kienmayer",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 430
+    },
+    {
+     "id": "dok",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 430.5
+    },
+    {
+     "id": "lang",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 428.9
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 438.5
+    },
+    {
+     "id": "prz",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 427.5
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 447.7
+    },
+    {
+     "id": "kollo",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 449.3
+    },
+    {
+     "id": "lich",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 449.4
+    },
+    {
+     "id": "bag",
+     "side": "al",
+     "figures": true,
+     "name": true,
+     "counter": false,
+     "conf": true,
+     "dist": 449.6
+    },
+    {
+     "id": "rg_cav",
+     "side": "al",
+     "figures": true,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 449
+    }
+   ],
+   "figures": 2906,
+   "base": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.17,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 52.7
+    },
+    "worldMs": 5.3,
+    "confShare": {
+     "samples": 292938,
+     "share": 0.0351
+    }
+   },
+   "P1": {
+    "diff": {
+     "samples": 292938,
+     "changed": 0.0018,
+     "contrastMedian": 1.15,
+     "contrastP90": 1.49,
+     "share3to1": 0.004
+    },
+    "changedPerFigure": 0.73,
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.17,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 52.7
+    },
+    "worldMs": 5.9
+   },
+   "P2": {
+    "diff": {
+     "samples": 292938,
+     "changed": 0.0058,
+     "contrastMedian": 1.23,
+     "contrastP90": 2.64,
+     "share3to1": 0.081
+    },
+    "changedPerFigure": 2.34,
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.17,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 52.8
+    },
+    "worldMs": 6.4,
+    "confShare": {
+     "samples": 292938,
+     "share": 0.035
+    }
+   },
+   "P2-fac": {
+    "diff": {
+     "samples": 292938,
+     "changed": 0.0031,
+     "contrastMedian": 1.17,
+     "contrastP90": 1.65,
+     "share3to1": 0.004
+    },
+    "changedPerFigure": 1.25
+   },
+   "P2-hat": {
+    "diff": {
+     "samples": 292938,
+     "changed": 0.0055,
+     "contrastMedian": 1.23,
+     "contrastP90": 2.69,
+     "share3to1": 0.083
+    },
+    "changedPerFigure": 2.22
+   },
+   "P2-flag": {
+    "diff": {
+     "samples": 292938,
+     "changed": 0.0056,
+     "contrastMedian": 1.25,
+     "contrastP90": 2.67,
+     "share3to1": 0.083
+    },
+    "changedPerFigure": 2.26
+   },
+   "sideMark": {
+    "confShare": {
+     "samples": 292938,
+     "share": 0.0258
+    },
+    "diff": {
+     "samples": 292938,
+     "changed": 0.0258,
+     "contrastMedian": 2.14,
+     "contrastP90": 3.66,
+     "share3to1": 0.242
+    }
+   },
+   "parts": {
+    "facings": {
+     "changed": 0.0052,
+     "px": 6093,
+     "perFigure": 2.1,
+     "contrastMedian": 1.27
+    },
+    "headgear": {
+     "changed": 0.001,
+     "px": 1172,
+     "perFigure": 0.4,
+     "contrastMedian": 1.18
+    },
+    "flags": {
+     "changed": 0.0002,
+     "px": 234,
+     "perFigure": 0.08,
+     "contrastMedian": 1.08
+    }
+   },
+   "seconds": 133
+  },
+  "paper-north-up": {
+   "clock": 570,
+   "factor": 4,
+   "identity": [
+    {
+     "id": "sthilaire",
+     "side": "fr",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 402.7
+    },
+    {
+     "id": "legrand",
+     "side": "fr",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 408.2
+    },
+    {
+     "id": "friant",
+     "side": "fr",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 414.4
+    },
+    {
+     "id": "suchet",
+     "side": "fr",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 415.4
+    },
+    {
+     "id": "santon",
+     "side": "fr",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 416.7
+    },
+    {
+     "id": "kellermann",
+     "side": "fr",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 408.1
+    },
+    {
+     "id": "ahq",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": true,
+     "conf": true,
+     "dist": 401.8
+    },
+    {
+     "id": "kienmayer",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 412.1
+    },
+    {
+     "id": "kamensky",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 402.9
+    },
+    {
+     "id": "milo",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 401.3
+    },
+    {
+     "id": "kollo",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": false,
+     "conf": true,
+     "dist": 401.2
+    },
+    {
+     "id": "bag",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": true,
+     "conf": true,
+     "dist": 415.2
+    }
+   ],
+   "figures": 0,
+   "base": {
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.8
+    },
+    "worldMs": 0.9
+   },
+   "seconds": 24
+  },
+  "paper-close": {
+   "clock": 500,
+   "factor": 4,
+   "identity": [
+    {
+     "id": "legrand",
+     "side": "fr",
+     "figures": false,
+     "name": false,
+     "counter": true,
+     "conf": true,
+     "dist": 400.1
+    },
+    {
+     "id": "lang",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": true,
+     "conf": true,
+     "dist": 400.6
+    },
+    {
+     "id": "prz",
+     "side": "al",
+     "figures": false,
+     "name": false,
+     "counter": true,
+     "conf": true,
+     "dist": 400.8
+    }
+   ],
+   "figures": 0,
+   "base": {
+    "layer": {
+     "dropped": 1,
+     "items": 65,
+     "placed": 5
+    },
+    "contrast": {
+     "min": 5.1,
+     "belowAA": 0,
+     "texts": 19
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 192.2
+    },
+    "worldMs": 0.8
+   },
+   "seconds": 12
   }
  }
 }

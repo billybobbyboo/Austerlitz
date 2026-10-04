@@ -494,24 +494,51 @@ yellow colour with an eagle and flames); and P2 without each of those parts. All
 
 | view (factor) | changed P1 / P2 | solid near-black today / P1 / P2 (limit 0.0005) | mean luminance today / P2 | map text: lowest contrast, below AA | drops today / P2 | confidence marks' share today / P2 | world pass ms today / P2 |
 |---|---|---|---|---|---|---|---|
-(TABLE33)
+| `overview-plan` (4x) | 0.2% / 0.62% | 0 / 0 / 0 | 53.8 / 53.9 | 8.03, 0 / 8.03, 0 | 4 / 4 | 3.7% / 3.7% | 7.7 / 8.6 |
+| `ph8-overview-study` (4x) | 0.16% / 0.62% | 0 / 0 / 0 | 44.4 / 44.4 | 8.27, 0 / 8.27, 0 | 3 / 3 | 3.3% / 3.3% | 8.2 / 11.1 |
+| `ph8-overview-watch` (4x) | 0.2% / 0.64% | 0 / 0 / 0 | 44.6 / 44.7 | 8.17, 0 / 8.17, 0 | 3 / 3 | 3.6% / 3.6% | 7.9 / 13.7 |
+| `plans-overview` (4x) | 0.05% / 0.25% | 0 / 0 / 0 | 54 / 54 | 8.52, 0 / 8.52, 0 | 11 / 11 | 2.4% / 2.4% | 7.6 / 10 |
+| `ph8-overview-watch` (10.33x) | 0.18% / 0.58% | 0 / 0 / 0 | 52.7 / 52.8 | 8.17, 0 / 8.17, 0 | 3 / 3 | 3.5% / 3.5% | 5.3 / 6.4 |
+| `overview-field` (4x) | 1.1% / 2.4% | 0 / 0 / 0 | 77.2 / 77.4 | 8.32, 0 / 8.32, 0 | 6 / 6 | 4.3% / 4.3% | 7.8 / 14.6 |
+| `overview-field` (10.33x) | 0.94% / 2.1% | 0 / 0 / 0 | 88.1 / 88.3 | 7.95, 0 / 7.95, 0 | 7 / 7 | 4.5% / 4.5% | 7.4 / 11.6 |
+| `selected-formation` (4x) | 2% / 3.5% | 0 / 0 / 0 | 64.4 / 64.7 | 7.57, 0 / 7.57, 0 | 4 / 4 | 15% / 15% | 8 / 8.8 |
+| `watch-selected` (4x) | 1.6% / 2.7% | 0.0001 / 0.0001 / 0.0001 | 57.4 / 57.5 | 7.59, 0 / 7.59, 0 | 4 / 4 | 15.2% / 15.3% | 6.6 / 10 |
+| `hybrid-dimmed` (4x) | 1.1% / 2% | 0.00005 / 0.00005 / 0.00005 | 62 / 62.2 | 6.49, 0 / 6.49, 0 | 8 / 8 | 14.6% / 14.6% | 7.4 / 9.2 |
+| `close-sokolnitz` (4x) | 1.3% / 4.9% | 0 / 0 / 0 | 126.5 / 126.7 | 7.67, 0 / 7.67, 0 | 4 / 4 | 9.3% / 9.3% | 7.8 / 9.9 |
+| `close-sokolnitz` (10.33x) | 0.96% / 3.2% | 0 / 0 / 0 | 145.5 / 145.5 | 7.67, 0 / 7.67, 0 | 3 / 3 | 9% / 9.1% | 8.9 / 6.9 |
+| `pratzen-low` (4x) | 2.8% / 6.3% | 0.0002 / 0.0002 / 0.0002 | 90.8 / 90.9 | 8.26, 0 / 8.26, 0 | 4 / 4 | 10% / 10.1% | 7.8 / 8.3 |
+| `pratzen-low` (10.33x) | 1.4% / 2.5% | 0 / 0 / 0 | 110.4 / 110.5 | 8, 0 / 7.94, 0 | 3 / 3 | 5.7% / 5.7% | 9.2 / 7.4 |
+| `eye-zuran` (4x) | 0.02% / 0.23% | 0 / 0 / 0 | 117.5 / 117.5 | 7.57, 0 / 7.57, 0 | 5 / 5 | 0.04% / 0.04% | 3.8 / 2.4 |
+| `pratzen-orbit-min` (4x) | 5.4% / 19.4% | 0.0003 / 0.0003 / **0.00233** | 76.5 / 77.3 | 11.72, 0 / 11.77, 0 | 1 / 1 | 3.1% / 3.1% | 6.7 / 12.1 |
+| `pratzen-low-1x` (1x) | no figures | 0 / - / - | 75.3 / - | 8.49, 0 | 4 / - | - | 1.6 / - |
+| `eye-zuran-1x` (1x) | no figures | 0 / - / - | 101.2 / - | 11.36, 0 | 6 / - | - | 1.1 / - |
+| `paper-north-up` | no figures | 0 / - / - | 145.8 / - | 5.38, 0 | 12 / - | - | 0.9 / - |
+| `paper-close` | no figures | 0 / - / - | 192.2 / - | 5.1, 0 | 1 / - | - | 0.8 / - |
 
 1. **The coats alone (P1) move no threshold in any view**: solid near-black, the map text (its lowest contrast and none below AA), the
-   drops and the confidence marks' share (within 0.001) are as today. The colour masses change (0.05-5.4% of the free rectangle).
-2. **The full kit (P2) breaks the Stage 0 darkness limit in one view, the closest orbit: 0.00228 against the limit's 0.0005** (today
-   0.0003, P1 0.0003). There the figures are 49-181 px and the large black headgear (bicornes, bearskins, crested helmets) forms solid
-   near-black blocks; the prototype's bearskin (`#2A2420`) was darker than decision 84's black. Every other view stays as it is. So 6C
-   must keep every drawn black and dark cloth at or above decision 84's value and measure the closest orbit (question 7).
+   drops and the confidence marks' share (within 0.001) are as today. The colour masses change (0.02-5.4% of the free rectangle).
+2. **The full kit (P2) breaks the Stage 0 darkness limit in one view, the closest orbit: 0.00233 against the limit's 0.0005** (0.00228
+   in the first two runs: the flags move; today 0.0003, P1 0.0003). **The headgear is the cause**: P2 with today's cylinder in place of
+   the prototype's headgear gives 0.0005, at the limit; P2 without the facings 0.00233, unchanged; P2 with today's flags 0.00213. There the
+   figures are 49 px (at most 181), and the prototype's headgear is larger than today's cylinder: bicornes and crested helmets in
+   decision 84's black (`#2E2B27`), bearskins and busbies in a fur darker still (`#2A2420`); which of the two forms the blocks was not
+   separated. The flags' black devices (`#1A1714`, darker than decision 84's) add the rest. Every other view stays as it is. So 6C must
+   keep every drawn black (headgear, devices) at or above decision 84's value and measure the closest orbit with each headgear class
+   (question 7).
 3. **The map layer does not depend on the figures**: drops are unchanged in every view and no map text falls below AA in any variant.
-4. **Facings are a tint, as §3.2 inferred**: as rendered they change 0.6-3.8 px per figure at the Overview and in the Field vantage, 6.6-16
-   in the middle views, 12-25 in the close views and 52 in the closest orbit (with their shadows), at a median contrast of only 1.2-1.8
-   against the figure without them. **Headgear** changes 0.07-0.44 px per figure at the Overview, 2.3-2.7 in the Field vantage, 5-16 in the
-   middle views, 13-29 in the close views and 102 in the closest orbit (median contrast 1.15-1.27). The **flags'** repainting changes
-   0-12,800 px per view (60,000 in the closest orbit), at a median contrast of 1.1-1.5 against today's paintings.
-5. **The world pass** (software WebGL): 3.8-9.2 ms today, 2.4-14.6 ms in P2, which drew the facings as a second mesh per coat mesh (twice
-   the draw calls); an implementation would bake them into the kit's merged geometry. Not measured on a GPU.
+4. **Facings are a tint, as §3.2 inferred**: as rendered they change 0.6-3.8 px per figure at the Overview and in the Field vantage,
+   6.6-16 in the middle views, 8.3-25 in the close views and 52 in the closest orbit (with their shadows), at a median contrast of only
+   1.0-1.8 against the figure without them. **Headgear** changes 0.07-0.44 px per figure at the Overview, 2.3-2.7 in the Field vantage,
+   5.2-12 in the middle views, 9-29 in the close views (2.8 at the eye level, most of whose figures are far) and 102 in the closest orbit
+   (median contrast 1.1-1.27). The **flags'** repainting changes 0-12,832 px per view (59,878 in the closest orbit), at a median contrast
+   of 1.1-1.5 against today's paintings.
+5. **The world pass** (software WebGL): 3.8-9.2 ms today in the views with figures (0.8-1.6 without), 2.4-14.6 ms in P2, which drew the
+   facings as a second mesh per coat mesh (twice the draw calls); an implementation would bake them into the kit's merged geometry. The
+   same view measured in two runs differs by up to 2.3 ms, so differences below that are noise. Not measured on a GPU.
+6. **Repeatability** (fact): the probe ran three times (a container restart cut the first run short; README): four views measured twice
+   gave every threshold measure identical and the parts' changed shares within 0.0001.
 
-`appearance-sheet.jpg`: four views as they are and in P2.
+`appearance-sheet.jpg`: four views as they are and in P2 (`close-sokolnitz`, `pratzen-low`, `eye-zuran`, `pratzen-orbit-min`).
 
 ## 4. Identity decoupled from coat colour
 
@@ -538,22 +565,37 @@ In every landscape view with figures (the two 1x views draw none; the paper map 
 
 | view | formations whose figures are drawn | with a name or counter displayed | with a ground mark | closest coats of opposite sides, CIEDE2000, today | in P1 |
 |---|---|---|---|---|---|
-(TABLE42)
+| `overview-plan` (4x) | 28 | 4 | 28 | not keyed | - |
+| `ph8-overview-study` (4x) | 27 | 5 | 27 | not keyed | - |
+| `ph8-overview-watch` (4x) | 29 | 5 | 29 | not keyed | - |
+| `plans-overview` (4x) | 24 | 3 | 24 | not keyed | - |
+| `ph8-overview-watch` (10.33x) | 28 | 5 | 28 | not keyed | - |
+| `overview-field` (4x) | 18 | 13 | 18 | 21.6 (santon, bag) | 9 (gqg, buxhowden) |
+| `overview-field` (10.33x) | 19 | 15 | 19 | not keyed | - |
+| `selected-formation` (4x) | 9 | 9 | 9 | 23.3 (rivaud, kamensky) | 14 (drouet, kamensky) |
+| `watch-selected` (4x) | 11 | 8 | 11 | 28.2 (walther, kamensky) | 3.6 (walther, milo) |
+| `hybrid-dimmed` (4x) | 8 | 5 | 8 | 26.2 (sthilaire, kamensky) | 15.9 (sthilaire, kamensky) |
+| `close-sokolnitz` (4x) | 13 | 9 | 13 | 17 (vandamme, prz) | 7.6 (vandamme, prz) |
+| `close-sokolnitz` (10.33x) | 10 | 8 | 10 | not keyed | - |
+| `pratzen-low` (4x) | 9 | 9 | 9 | 30.8 (sthilaire, kamensky) | 19 (sthilaire, ahq) |
+| `pratzen-low` (10.33x) | 7 | 7 | 7 | not keyed | - |
+| `eye-zuran` (4x) | 0 | 0 | 0 | not keyed | - |
+| `pratzen-orbit-min` (4x) | 11 | 0 | 11 | 26.1 (caffarelli, lich) | 4 (walther, lich) |
 
 1. **Every formation drawn as figures has its ground mark today** (with "Position confidence" on, its default), in every view.
 2. **Names and counters cover only part of the field**: at the Overview 3-5 of 24-29 formations (beyond the names' range only corps and
-   armies are named); in the Field vantage 13 of 18; in the middle and close views 5-9 of 8-13; and in **the closest orbit none of 11**
-   (no name within 34 units of the eye). There, and at the Overview, the ground mark is the only side cue besides the coat; with "Position
-   confidence" off, the coat is the only one.
+   armies are named); in the Field vantage 13-15 of 18-19; in the middle and close views 5-9 of 7-13; and in **the closest orbit none of
+   11** (no name within 34 units of the eye). There, and for most formations at the Overview, the ground mark is the only side cue on the
+   formation besides the coat; with "Position confidence" off, the coat is the only one.
 3. **Historical coats cannot tell the sides apart, measured**: today the closest pair of formations of opposite sides differs by
-   CIEDE2000 17-31 as rendered (the minimum in each view); with the P1 coats by 3.6-20, and the French green coats (Walther's dragoons,
+   CIEDE2000 17-31 as rendered (the minimum in each view); with the P1 coats by 3.6-19, and the French green coats (Walther's dragoons,
    Kellermann's light cavalry, the escort) against the Russians' dark green by **3.6** (Walther and Miloradovich, `watch-selected`),
    **4.0** (Walther and the Fifth Column, the closest orbit), **4.9** (Kellermann and Miloradovich) and 9.0 (the escort and the Left Wing
-   command, the Field vantage); French dark blue against Russian dark green 7.6-20. A difference of a few units is hard to see even side by
+   command, the Field vantage); French dark blue against Russian dark green 7.6-19 (the closest such pair in each keyed view). A difference of a few units is hard to see even side by
    side: the opportunity's premise holds as rendered.
 4. **A side footprint for every formation** (each ground mark drawn as grade A's crisp footprint whatever its grade, question 12) covers
-   (SIDEMARK)
-   of the free rectangle in the views with figures, against 2.4-15.2% for today's graded marks; its pixels differ from the ground at a
+   1.5-9.1% of the free rectangle in the views with figures (0.04% at the eye level), against 2.4-15.2% for today's graded marks (a C
+   zone is larger than the footprint); its pixels differ from the ground at a
    median contrast of 1.1-2.5 (0-27% of them at 3:1): a quiet mark that keeps a side cue under every formation, while the name's mark and
    the counter carry side legibly where they are drawn.
 5. At the eye level the probe found 172 figures in the free rectangle but no formation whose position projects inside it, so its rows are
@@ -621,12 +663,14 @@ All on the unchanged 5G build (md5 `4c12cac6d458b02e3282237f4d1abb92`, 1,528,608
 - `npm test`: all 9 suites pass, and the height guard (96 call sites, 0 presentation sites calling `height()`/`hAt()`): `css-test.js`
   0 errors, 9 of 9 behaviour checks; `test.js` 0 errors, 41 of 41 order-of-battle checks; `geo-test.js` 54 passed; `terrain-test.js` OK;
   `audit.js` 0 march-rate and 0 terrain violations; `sim-test.js` 0 disagreements; `redteam.js` 0 findings; `runtime-test.js` 0 errors;
-  `binding-test.js` 383 checks, 0 failed. (NPM-TEST-FINAL)
+  `binding-test.js` 383 checks, 0 failed ("ALL 9 SUITES PASSED (and the height guard)", exit 0, 4 min 38 s; run first before writing and
+  again on the final tree, with the same results).
 - `npm run check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`.
 - `npm run check:chronology`: 0 errors (69 moves with a timed statement: 65 consistent, 4 early, the unresolved conflicts it names; 20
   explicit times).
-- `npm run check:contrast`: (CONTRAST-RESULT)
-- `npm run check:visual`: all checks passed (66 min 46 s): 23 views, the self-test 194 of 194, the day's light sweep (0.000% solid
+- `npm run check:contrast`: 5,186 text elements, 105 distinct text/background pairs, 0 below AA, 0 below 10.5 px ("all text meets WCAG
+  AA", exit 0, 5 min 55 s).
+- `npm run check:visual` (run once, before the probes, on the same build: its md5 has not changed since): all checks passed (66 min 46 s): 23 views, the self-test 194 of 194, the day's light sweep (0.000% solid
   near-black in every hour), the valley fog's hours, the horizon (within 4.7 and 5.3 of the sky at 4x and 10.33x), the slider, pacing and
   key tests by real key presses; 5 console warnings, each Chromium's Canvas2D `willReadFrequently` notice (the known warning).
 
@@ -667,8 +711,9 @@ All on the unchanged 5G build (md5 `4c12cac6d458b02e3282237f4d1abb92`, 1,528,608
   legend row, if new), `tools/visual/measure.js` (the float check reads the kit's geometries from the app, not five names: extended, not
   loosened), `css-test.js`, `runtime-test.js`, `CHANGELOG.md`.
 - **Dependencies**: 6B; questions 2, 3, 5-9, 12, 14.
-- **Regression risks** (measured in §3.3 on prototypes): solid near-black where dark coats stand en masse in shade (the closest orbit is
-  the view at risk: 6 solid blocks today against the limit's 0.05%); the confidence marks' share (new silhouettes occlude the marks
+- **Regression risks** (measured in §3.3 on prototypes): solid near-black from large dark headgear (the closest orbit is the view at
+  risk: 6 solid blocks today, 0.0003; the prototype's headgear took it to 0.00233 against the limit's 0.0005, the coats alone left it
+  unchanged, §3.3 item 2); the confidence marks' share (new silhouettes occlude the marks
   differently); the world pass (more vertices per figure); the float and standards' foot checks (new geometries); the self-test's colour
   key (`app.js:7900-7916`) and the legend's contextual rows; `check:contrast` (new text: the dossier's line, the sources sheet, the legend).
 - **Its report must show**, per harness view, before and after on the real build (the appearance probe's measures): solid near-black and
