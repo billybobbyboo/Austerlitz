@@ -1,8 +1,78 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 5G: the day-track inset (docs/STAGE5_SPEC.md §F, §I; owner decision 95)
+
+**Status: implemented, for review; the last part of Stage 5. `austerlitz-command-map.html`: 1,528,608 bytes, md5
+`4c12cac6d458b02e3282237f4d1abb92`** (was 1,510,672 bytes, md5 `4c7bb9e4…`, Stage 5F).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. The inset reads
+  `anchorList`, `legPath`, `stateAt`, `PLANS` and the geography; it changes none. Presentation only.
+- Recorded with this part: Stage 5F merged (#37); the owner's answer to question 10, decision 95 (`docs/STAGE5_SPEC.md` §0.4). Questions
+  11 and 12 were not put: no part needed them (the order was followed as recommended).
+
+**Before building (fact).** `main` (af73330, 5F merged as #37) matched `check:baseline` (md5 `4c7bb9e4…`, 1,510,672 bytes).
+
+**What changed** (`app.js`, `style.css`)
+- **"Its day"**, a section of the full dossier after "Where", tagged derived: a small north-up map (SVG, 240 x 160 units, drawn at the
+  dossier's width: 255 px docked, 315 px as the card) of the formation's day at one fitted scale, never more than the inset's width per km,
+  with a scale bar in km from `GEOREF` and a north arrow. Under it, the paper map's ground drawn small from the same geography (woods,
+  villages, the meres, the Goldbach, the Litava, the brooks), in the paper map's tokens; no hillshade.
+- **What it draws**: the anchors as the skeleton's marks by grade (A filled, B a ring, C a small ring; a tick toward north for an explicit
+  time); the legs through every via, thin and solid (decision 15: executed, not planned), the leg in progress in the side's colour; the
+  position at the clock as a dot; the formation's ordered route, where a `PLANS` column names it, dashed (decision 95; 21 of the 32 leaf
+  formations). Two consecutive anchors closer than 8 px are one mark naming both clocks; nothing is enlarged out of scale.
+- **Interaction**: the anchors are one keyboard stop in time order (a roving group, as the timeline's markers), each named by its clock and
+  grade; a click or Enter sets the clock to its arrival, the selection kept.
+- **Aggregates** (corps, columns, armies) show their formations' days together, each line named on hover; no aggregate track is drawn.
+- **Labelled**: "The formation's plotted day: anchors graded A/B/C as in the data; the lines between them are this reconstruction's
+  interpolation, not a recorded route."
+
+**Decisions taken while building it** (`docs/STAGE5_SPEC.md` §I, "5G, as delivered")
+- **The side's deep colours** (4.70 and 4.13 against the paper ground; the base colours reach only 2.77 and 2.56) and the paper ink (9.06).
+- **A fixed viewBox**, so the inset's px are a fixed fraction of the screen's at both widths and the 8 px rule holds at each.
+- **In the full dossier only**, not the compact card: the harness's selected-formation and paper-drawer views (the card) are unchanged.
+- **The focus ring drawn in the SVG** in the token ink (a first draft hard-coded a colour in the stylesheet; the inset's CSS now carries none).
+- **The inset's text takes its colour from the SVG's `color`** (`fill="currentColor"`, the SVG's colour the paper ink): with only a `fill`, the
+  text's CSS colour stayed the dossier's light text, and the first full run's `check:contrast` measured "3 km" at 1.37 against the inset's
+  ground (what is drawn was the ink; what assistive styling and the check read was not). `report-5g.js` measured the build before this fix
+  (md5 `276dc048…`), which differs only in that attribute.
+
+**Measured** (`tools/stage5/report-5g.js`; `docs/stage5-evidence/5g-report.md`, `5g-sheet.jpg`)
+- **32 formations**: 15.4-212 px per km (the Santon, one anchor, at 1 km across), scale bars 0.25-5 km; 180 anchors in 173 marks; the shortest
+  leg drawn 4.2 px (Kollowrath), 4.3 (Saint-Hilaire), 4.5 (Friant), 6.7 (Vandamme), every other at least 9.6 px; IV Corps 27 anchors in 20
+  marks over its 4 formations.
+- **The dossier**: Saint-Hilaire's full dossier, which already scrolled, grows from 1,724 to 2,080 px docked (1600 x 900 and 1280 x 720) and
+  from 1,474 to 1,854 px as the card (1024 x 768).
+
+**Tests** (none loosened; new)
+- **Self-test** (194 checks, was 191; 3 new): every leaf formation's inset holds its anchors in order with their grades, its legs through every via and the dot
+  at its position; north 0.000 degrees from up; the bar within 0.000% of the scale, also against two anchors' true distance; every mark
+  inside the frame; IV Corps its 4 formations; the anchors a keyboard group named by clock and grade, a click setting the clock to 09:15
+  with Saint-Hilaire still selected, the arrow key moving on; the legs solid and the 2 ordered routes dashed; the marks at 3:1 and the text
+  at AA on the paper ground.
+- **`check:contrast`**: a new state (32), the dossier with its inset, docked.
+- **`css-test.js`**: new, the inset's colours are the tokens', only the ordered route is dashed, its stylesheet carries no colour.
+  **`runtime-test.js`**: new, a dry run of the model for all 32 formations.
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard (`binding-test.js` 383 checks, 0 failed).
+- `npm run check:baseline`: moved to this build (md5 `4c12cac6…`, 1,528,608 bytes); passes.
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:contrast`: 5,186 text elements in 32 states (4,990 in 31 on 5F; the existing expanded-dossier state now holds the inset too),
+  0 below AA, 0 below 10.5 px. The first run failed one text, the inset's "3 km" (above); the run reported here is on the committed build.
+- `npm run check:visual`: all checks passed: 23 views (selected-formation and paper-drawer unchanged: they show the compact card); the day's
+  light, the valley fog's hours, the horizon, the key tests; the self-test 194 of 194; the two known Canvas2D warnings.
+
+**Not done, or open**
+- `check:contrast` reads the inset docked only (its tool has one viewport); the card shares its colours and the self-test holds them.
+- The inset's "N" can sit over a line near the top corner (Friant's); the marks are never hidden by it.
+- With 5G, Stage 5's parts B-G are all built. Open for after Stage 5: the Plans tab's drops from a moved camera (decision 94); the data tasks
+  of §G.3 (question 11).
+
 ## 2026-10 · Stage 5F: the ordered routes, and the Plans tab's harness case (docs/STAGE5_SPEC.md §E, §I; owner decisions 93, 94)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,510,672 bytes, md5 `4c7bb9e436086a824972f5183b838e58`**
+**Status: merged (#37). `austerlitz-command-map.html`: 1,510,672 bytes, md5 `4c7bb9e436086a824972f5183b838e58`**
 (was 1,492,181 bytes, md5 `b50a087c…`, Stage 5E).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. `PLANS` and

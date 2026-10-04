@@ -207,3 +207,17 @@ if(cerrs) process.exitCode=1;
   console.log("ordered routes: "+(rerr.length?rerr.length+" wrong":"off by default, named, the side's token colour, the legend's dash sample"));
   if(rerr.length) process.exitCode=1;
 }
+/* Stage 5G (docs/STAGE5_SPEC.md section F.3; decisions 15, 95): the day-track's colours are the tokens' (the paper map's ground, the paper
+   ink, the side's deep), its legs solid and only the ordered route dashed; its stylesheet carries no colour of its own */
+{
+  const src=fs.readFileSync('app.js','utf8'), css=fs.readFileSync('style.css','utf8'), derr=[];
+  const fn=(()=>{ const i=src.indexOf("function dayTrackEl("), j=src.indexOf("\n}\n",i); return i<0?"":src.slice(i,j); })();
+  if(!fn) derr.push("dayTrackEl missing");
+  if(!/P=TOKENS\.sym\.paperMap, ink=TOKENS\.sym\.label\.paper\.ink, side=TOKENS\.sym\.side\[sd\]\.deep/.test(fn)) derr.push("the inset's colours are not the tokens'");
+  if(/#[0-9A-Fa-f]{3,6}\b/.test(fn)) derr.push("dayTrackEl writes a colour of its own");
+  if((fn.match(/stroke-dasharray/g)||[]).length!==1||!/class="dt-route"[^>]*stroke-dasharray/.test(fn)) derr.push("something but the ordered route is dashed in the inset");
+  const dtCss=(css.split("/* Stage 5G")[1]||""); if(/#[0-9A-Fa-f]{3,6}\b|rgb\(/.test(dtCss)) derr.push("style.css: the inset's rules carry a colour of their own");
+  derr.forEach(e=>console.log("  ! "+e));
+  console.log("day-track: "+(derr.length?derr.length+" wrong":"the tokens' colours, the legs solid and only the ordered route dashed"));
+  if(derr.length) process.exitCode=1;
+}

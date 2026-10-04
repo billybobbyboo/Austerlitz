@@ -19,7 +19,8 @@
    Now tab in the paper theme.
    Stage 3C: Watch on the paper map and on the landscape (the presentation switch in the timeline, at full opacity).
    Stage 3E: the "?" overlay over the landscape and over the paper map.
-   Stage 5E: "Whose eyes?": the dossier's reason, the eye-level vantage's caption, the paper map with a headquarters' reading. */
+   Stage 5E: "Whose eyes?": the dossier's reason, the eye-level vantage's caption, the paper map with a headquarters' reading.
+   Stage 5G: the dossier with its day-track inset. */
 const fs=require("fs"), path=require("path");
 const { chromium } = require("playwright");
 const argv=process.argv.slice(2), html=path.resolve(argv[0]||"austerlitz-command-map.html");
@@ -99,7 +100,12 @@ const STATES=[
     setCommandView("al"); setClock(600,{force:true}); var id=Object.keys(units).filter(k=>knowledgeOf(k)==="unknown")[0];
     dossierExpanded=true; if(id){ select("f",id); paintDrawer(); } updateVisibility(); }],
   ["eye-level", ()=>{ if(typeof eyeEnter!=="function") return; select(null,null); dossierExpanded=false; setCommandView("fr"); setClock(510,{force:true}); eyeEnter(); updateVisibility(); }],
-  ["staff-eyes", ()=>{ if(typeof eyeLeave!=="function") return; eyeLeave(); setMode("staff"); setCommandView("fr"); setClock(300,{force:true}); MAPCAM.frameField(true); updateVisibility(); }]
+  ["staff-eyes", ()=>{ if(typeof eyeLeave!=="function") return; eyeLeave(); setMode("staff"); setCommandView("fr"); setClock(300,{force:true}); MAPCAM.frameField(true); updateVisibility(); }],
+  /* Stage 5G (docs/STAGE5_SPEC.md section F.4): the full dossier with its day-track inset, docked (its scale bar's and north's text on the
+     inset's paper ground, its key and note in the dossier's colours); the card below 1080 px shares the inset's colours, checked in the
+     self-test */
+  ["daytrack", ()=>{ if(typeof dayTrackEl!=="function") return; setCommandView("none"); setMode("terrain"); setPresentation("study"); setClock(590,{force:true});
+    select("f","sthilaire"); dossierExpanded=true; paintDrawer(); var d=document.querySelector(".daytrack"); if(d) d.scrollIntoView(); updateVisibility(); }]
 ];
 function hx(h){ h=h.replace("#",""); return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)); }
 function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); }

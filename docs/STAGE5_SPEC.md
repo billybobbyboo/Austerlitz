@@ -4,7 +4,8 @@
 owner answered question 6 (decision 89, §0.4); 5C (interval bars, one event clock) is merged (#34). The owner answered question 7
 (decision 90, §0.4); 5D (the evidence skeleton) is merged (#35). The owner answered questions 5 and 8 (decisions 91, 92, §0.4); 5E ("Whose
 eyes?" and the eye-level vantage) is merged (#36). The owner answered questions 9 and 13 (decisions 93, 94, §0.4); 5F (the ordered routes,
-and the Plans tab's harness case) is implemented, for review; what 5B to 5F found is at the end of §I. Sections A-J below still describe the build they were written against.** Written against `main` at `407cda0` (Stage 4E
+and the Plans tab's harness case) is merged (#37). The owner answered question 10 (decision 95, §0.4); 5G (the day-track inset), the last
+part of Stage 5, is implemented, for review; what 5B to 5G found is at the end of §I. Sections A-J below still describe the build they were written against.** Written against `main` at `407cda0` (Stage 4E
 merged as #31; with it Stage 4 is complete), whose build `austerlitz-command-map.html` is 1,416,737 bytes, md5
 `e1fac9ea08a4c2b2eaefe5b78529c843`. On it (the same build throughout: this part changes no source file): `check:baseline` passed; `npm test` (all nine suites and the height
 guard) passed; `check:data` found all 113 declarations identical to `archive/stage4d-9b13adbf.html`; `check:chronology` reported 0
@@ -160,11 +161,11 @@ Each is stated, not resolved.
    `DROP_LIMIT` in 9 of 19 landscape harness views (the Field vantage 16 against 11; `plans-probe.js`, §E.2). No harness case opens the
    Plans tab. Outside Stage 5's scope (the Plans tab is not changed); recorded, with a check proposed (§H.3, 5F).
 
-### 0.4 Owner decisions 85-94 (the answers to §J questions 1-9 and 13)
+### 0.4 Owner decisions 85-95 (the answers to §J questions 1-10 and 13)
 
 Part A merged (#32). Before 5B the owner answered the four questions that bind it, each with the recommendation; before 5C, question 6;
-before 5D, question 7; before 5E, questions 5 and 8; before 5F, questions 9 and 13; each with the recommendation. Questions 10-12 stay
-open until the parts they bind.
+before 5D, question 7; before 5E, questions 5 and 8; before 5F, questions 9 and 13; before 5G, question 10; each with the recommendation. Questions 11 (the data tasks of §G.3) and 12
+(the order, followed as recommended) were not put: no part of Stage 5 needed them.
 
 | # | question | decision |
 |---|---|---|
@@ -178,6 +179,7 @@ open until the parts they bind.
 | 92 | 8, the reading at the clock | The Command view's reading at the clock's minute, not the phase's; no data change. (5E) |
 | 93 | 9, plan ghosts | A layer named "Ordered routes", off by default: each plan column's route, faint, dashed (decision 15: planned), depth-tested under the figures, nothing dimmed; in phase 0 not the four columns the axis arrows draw; the dossier's derived distance. The Plans tab unchanged. (5F) |
 | 94 | 13, the Plans tab's drops | A harness case with the Plans tab (both plans) at the Overview, its limit what the 5F build drops there; the moved-camera case a recorded finding; the fix a task after Stage 5. (5F) |
+| 95 | 10, the ordered route in the day-track | Drawn dashed in the inset where a PLANS column names the formation, labelled in the inset's key. (5G) |
 
 ## A. Spatial confidence: crisp footprint A, soft frontage B, diffuse zone C
 
@@ -951,6 +953,27 @@ choices made while building it:
 Per view (fact; `report-5f.js`, 23 views): with the routes on, drops unchanged in every view, 0 map texts below AA, the lowest contrast at
 most 0.10 lower (overview-field 8.32 to 8.22); their share of the free rectangle 0.1-4.4% (close-sokolnitz at 1x the most); the world
 pass within the software renderer's noise.
+
+### 5G, as delivered (the day-track inset; decision 95)
+
+Implemented in `app.js` (`DT`, `dtFrame`, `dayTrackModel`, `dayTrackEl`; the dossier's "Its day" section, tagged derived; the self-test's
+checks) and `style.css` (the inset's layout, no colour of its own), as §F.3 proposed, measured by `tools/stage5/report-5g.js`
+(`docs/stage5-evidence/5g-report.md`, `5g-report.json`, `5g-sheet.jpg`; `CHANGELOG.md`, Stage 5G), with these choices made while building it:
+- **One SVG of 240 x 160 units**, drawn at the dossier's width (255 px docked, 315 px as the card): the inset's px are a fixed fraction of
+  the screen's, so the scale bar and the 8 px merge rule hold at both widths. The scale fits the formation's day and is capped at the
+  inset's width per km (at least 1 km across); the bar is 0.25-5 km, at most 40% of the width.
+- **The paper ground from the paper map's geography**, read: the woods and villages (`WOODS`, `VILLAGES`), the two meres, the Goldbach, the
+  Litava and the brooks, in the paper map's tokens; no hillshade. The inset carries its own ground colour as its background, so
+  `check:contrast` reads its text against it.
+- **The side's deep colours**, the only side colours at 3:1 against the paper ground (4.70 French, 4.13 Allied); the anchors, legs and text
+  in the paper ink (9.06).
+- **Merged marks**: 7 marks stand for two anchors each (heightguns' two at one place; Saint-Hilaire twice, Vandamme twice, Friant,
+  Kollowrath: the three the census found under 8 px, and Vandamme at this inset's scale); their names list both clocks.
+- **Aggregates**: IV Corps shows its 4 formations' days (27 anchors in 20 marks), each line named on hover; its marks are not keyboard
+  stops (a leaf's are).
+- **The day-track is in the full dossier**, not the compact card, so the harness's `selected-formation` and `paper-drawer` views (which show
+  the card) are unchanged; the full dossier, which already scrolled, grows by 356 px docked and 380 px as the card.
+- **`check:contrast`** reads the inset docked (state `daytrack`); the card below 1080 px uses the same colours, checked in the self-test.
 
 ## J. Questions for the owner
 

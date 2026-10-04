@@ -26,7 +26,8 @@ lower one without saying so explicitly.
 ground-cell patch `groundPatch`, shared with 5B), "Whose eyes?" (since 5E: `EYES`, `knowAtClock` (the guarded `knowledgeOf`'s cache
 cleared at each minute, decision 92), `drawnKnow`, `knowReason`, `eyesViewshed`; the eye-level vantage `EYE`, `eyeEnter`/`eyeLeave`, the
 one camera path below the floor), the ordered routes (since 5F: `ROUTES`, `routeScope`, `routeBuild`, `routeDrapePoly`: each plan
-column's route dashed and faint, clipped to the ground's triangles; `routeAxis0`, the phase-0 rule; `routeDeviation`, derived), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 5C its interval bars, `EV_BAR`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
+column's route dashed and faint, clipped to the ground's triangles; `routeAxis0`, the phase-0 rule; `routeDeviation`, derived), the day-track (since 5G: `DT`, `dtFrame`, `dayTrackModel`, `dayTrackEl`: a
+north-up SVG of a formation's day in its full dossier), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 5C its interval bars, `EV_BAR`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2, Stage 3, Stage 4 and Stage 5 measurement scripts (`stage2/`, `stage3/`, `stage4/`, `stage5/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
@@ -72,10 +73,10 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
   explicit anchor time carries evidence found in the sources, a grade and a basis; a derived arrival at the march-rate ceiling
   only for the legs it names (`CEILING_FLAGGED`), every other at the tactical rate (a design value, unsourced).
-- `npm run check:contrast`: every visible text element in 31 interface states (the map layer's plates and the legend among them, map text also
+- `npm run check:contrast`: every visible text element in 32 interface states (the map layer's plates and the legend among them, map text also
   over black and white ground, the paper map as entered and close since 2E; Study as it opens and the Now tab on the paper map since 3B;
   Watch on the paper map and on the landscape since 3C; the "?" overlay over both since 3E; since 5E the dossier's knowledge reason, the eye-level
-  caption, the paper map with a headquarters' reading)
+  caption, the paper map with a headquarters' reading; since 5G the dossier with its day-track inset)
   meets WCAG AA and the 10.5 px floor.
 - `npm run check:visual`: 23 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
   `narrow-1024`, the undocked layout, since 3C the phase-8 Overview in Study and in Watch, since 5E the eye level at the Zuran at 4x
@@ -168,9 +169,14 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   distance, the legend's row, the paper map, none in Clean); `binding-test.js` allows `routeBuild`, the one new dashed drawer, and checks
   it dashes only a plan column's route; `css-test.js` checks it is off by default, named, the side's token colour, the legend's dash
   sample; `runtime-test.js` dry-runs it.
+  Since 5G: the self-test's day-track checks (every leaf formation's inset holds its anchors in order with their grades, its legs through
+  every via, the position dot at `posNow`; north within 0.5 degrees of up; one scale and the bar to 1%, also against two anchors' true
+  distance; every mark inside the frame; an aggregate its leaves' days; the anchors a keyboard group named by clock and grade, a click
+  setting the clock with the selection kept; the legs solid and the ordered route dashed; marks at 3:1 and text at AA on the paper
+  ground); `css-test.js` checks its colours are the tokens' and only the ordered route is dashed; `runtime-test.js` dry-runs its model.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 5F build (md5 `4c7bb9e4...`, 1,510,672 bytes;
-  re-baselined from the Stage 5E build `b50a087c...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 5G build (md5 `4c12cac6...`, 1,528,608 bytes;
+  re-baselined from the Stage 5F build `4c7bb9e4...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -231,4 +237,6 @@ merged (#35). Stage 5E ("Whose eyes?": one control, everyone / Napoleon's headqu
 the timeline, labelled a model reading; the reading at the clock, decision 92; reported only drawn as the C zone without figures; the
 headquarters' viewshed with its fogged ground; the dossier's reasons; the eye-level vantage at the headquarters, decision 91) is
 merged (#36). Stage 5F (the ordered routes: a layer, off by default, drawing each plan column's route faint and dashed under the figures,
-owner decision 93; the Plans tab's harness case at the Overview, decision 94; the Plans tab itself unchanged) is implemented, for review.
+owner decision 93; the Plans tab's harness case at the Overview, decision 94; the Plans tab itself unchanged) is merged (#37). Stage 5G (the
+day-track: each formation's day as a small north-up map in its full dossier, its anchors by grade, the interpolated legs, the position at
+the clock and its ordered route dashed, owner decision 95), the last part of Stage 5, is implemented, for review.
