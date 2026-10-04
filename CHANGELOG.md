@@ -1,8 +1,84 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 5D: the evidence skeleton (docs/STAGE5_SPEC.md §B, §I; owner decision 90)
+
+**Status: implemented, for review. `austerlitz-command-map.html`: 1,466,861 bytes, md5 `c5c47192ec1fbd589af1ce4bbae207f2`**
+(was 1,441,684 bytes, md5 `96b401b3…`, Stage 5C).
+- `check:baseline` moves to this build.
+- `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. No anchor,
+  leg, via, time, grade or `OVERLAYS` change: the skeleton draws `anchorList` and `legPath` as they resolve. Presentation only.
+- Recorded with this part: Stage 5C merged (#34); the owner's answer to question 7, decision 90 (`docs/STAGE5_SPEC.md` §0.4): the
+  selected formation's family, else the legs meeting the current phase, with a "whole day" choice.
+
+**Before building (fact).** `main` (108adaa, 5C merged as #34) matched `check:baseline` (md5 `96b401b3…`, 1,441,684 bytes).
+
+**What changed** (`app.js`, `shell.html`, `style.css`)
+- **"Evidence skeleton"**, a layer, off by default, with "Skeleton: whole day" (off): each formation's plotted positions (the anchors
+  the clock moves between, `anchorList`) and the legs it interpolates between them (`legPath`, through every via). Scope (decision 90):
+  the selected formation's family (its whole day); nothing selected, the legs whose window meets the current phase and their anchors;
+  "whole day", every formation's 180 anchors and 148 legs, whatever is selected.
+- **Anchors by shape, never hue or dash** (decisions 4, 15): A a filled disc, B a ring, C a small open ring, by the grade at the anchor's
+  phase (`stateAt`); a tick toward true north on an anchor with an explicit time (`tm`; 20 of them). About 9 px across at their distance,
+  faded near the eye as the glyphs are, each a patch of the drawn ground's own cells (5B's patch, now `groundPatch`, shared).
+- **Legs** as thin solid lines in the annotation colour (the paper map's own there), split wherever they cross an edge of the drawn
+  ground's triangles, so every piece lies 0.4 units above the ground and never under it.
+- **Ground drawing, not a map-layer item**: it adds no counter, name or drop. Its words: on hover, the anchor's formation, clock and grade;
+  with the layer on, the full dossier's "Plotted positions" (each anchor's clock and grade, "timed" for an explicit time).
+- **The legend**: a row per grade drawn and one for the line ("interpolated between plotted positions: not a recorded route · a tick: an
+  explicit time"). **The sources sheet**: a sentence on the skeleton (written by the app; `SOURCE_NOTE` unchanged). Not drawn in Clean.
+
+**Decisions taken while building it** (`docs/STAGE5_SPEC.md` §I, "5D, as delivered")
+- **The legs split on the ground's triangles**, not sampled every 0.5 units as the Part A probe drew them: between two samples a piece can
+  pass under the ground where it bends (5B found this for the marks).
+- **"Whole day" overrides the selection** (its label says every formation).
+- **No accessible name per anchor on the map**: that would make each a map-layer item (up to 180; §B.3 item 3); the dossier's list and the
+  hover carry the text.
+
+**Measured** (`tools/stage5/report-5d.js`; `docs/stage5-evidence/5d-report.md`, `5d-sheet.jpg`; 23 views, each off as it opens, on in
+scope, on for the whole day)
+- **Drops and items** unchanged in every view and both scopes; **map text** 0 below AA, the lowest contrast unchanged in every view.
+- **Its share of the free rectangle** 0.1-1.2% in scope, 0.5-3.9% for the whole day (Part A's probe: up to 1.2% and 3.6%).
+- **Anchors and legs in the free rectangle**: in scope, e.g. 76 of 77 and 48 of 48 (overview-field, phase 4), 5 of 9 and 6 of 8
+  (Saint-Hilaire's family); for the whole day 15-180 of 180 anchors.
+- **The world pass** (software WebGL, 14 views at 4x and 10.33x): on average 5.85 ms off, 5.51 in scope, 6.14 for the whole day, at most
+  9.0 ms; not measured on a GPU.
+
+**Tests** (none loosened; new)
+- **Self-test** (178 checks, was 166; 12 new): at 1x, 4x and 10.33x every leg's pieces sampled every 0.5 units (14,796 points over 5,328 pieces), 0 under the
+  drawn ground and every point within 1e-5 of the lift; every anchor mark's triangles (119,280 points), 0 under; the scope phase by phase
+  against an independent computation, a corps's family and the whole day; every mark a plotted anchor at its position with its `stateAt`
+  grade and mask, every leg on `legPath` through its anchors and vias; the shapes (alpha at the centre and on the ring) and one undashed
+  line; about 9 px on screen (8.50-9.52); the same map-layer items and drops on and off; the hover's words; the legend's row; the paper
+  map's colour; none in Clean.
+- **Harness**: new, in every view the skeleton on for the whole day: the map layer's items and drops as without it, its text at AA.
+- **`css-test.js`**: new, its functions draw no dash, its colour is the annotation token, it and its whole day are off by default.
+- **`runtime-test.js`**: new, a dry run (off by default; at 09:50 the phase's 48 legs and 77 anchors, each with its grade's mask; the
+  whole day's 148 legs; nothing left when off).
+- **Height guard**: six new call sites classified (`groundPatch`, `skelDrape`, `skelPlaceMarks`, `skelNear` presentation; `skelChecks`,
+  `skelDayChecks` test). **`binding-test.js`**: unchanged; its dash scan finds no dashed or segmented drawing in the skeleton.
+- Two mistakes in my own new test code, fixed before this build: the scope check's helper read a phase filter as "the whole day", and
+  the dash probe named a dashed material (the binding test's dash scan, rightly, flagged the self-test for it).
+
+**Checks on this build**
+- `npm test`: all 9 suites pass, and the height guard (`binding-test.js` 381 checks, 0 failed; `runtime-test.js` and `css-test.js` with
+  their skeleton checks).
+- `npm run check:baseline`: moved to this build (md5 `c5c47192…`, 1,466,861 bytes); passes.
+- `npm run check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`.
+- `npm run check:chronology`: 0 errors.
+- `npm run check:contrast`: 4,465 text elements in 28 states (4,456 on 5C), 0 below AA, 0 below 10.5 px.
+- `npm run check:visual`: all checks passed: 20 views; in the 18 that are not first-run cards the skeleton on for the whole day (180
+  anchors, 148 legs) left the map layer's items and drops as they were, 0 map texts below AA, its share of the free rectangle 0.9-4.7%
+  (narrow-1024 the most); the day's light, the valley fog's hours, the horizon, the key tests; the self-test 178 of 178; the two known
+  Canvas2D warnings.
+
+**Not done, or open**
+- The skeleton's look (the line's 1 px width, its opacity, the marks' 9 px) is for the owner's eye; the lines reach 3:1 against the ground
+  in only part of their pixels (Part A §B.2): the hover and the dossier carry the reading.
+- The 1024 x 768 self-test failures recorded under 5C remain (outside the harness; not caused by 5C or 5D).
+
 ## 2026-10 · Stage 5C: interval events as bars on the timeline, one event clock (docs/STAGE5_SPEC.md §C, §I; owner decision 89)
 
-**Status: implemented, for review. `austerlitz-command-map.html`: 1,441,684 bytes, md5 `96b401b321927f465c97194c113d6969`**
+**Status: merged (#34). `austerlitz-command-map.html`: 1,441,684 bytes, md5 `96b401b321927f465c97194c113d6969`**
 (was 1,433,308 bytes, md5 `a8db7a17…`, Stage 5B).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. No event, time,

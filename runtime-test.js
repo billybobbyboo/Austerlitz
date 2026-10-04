@@ -492,6 +492,20 @@ try{
     if(left.length) throw new Error("spatial confidence switched off, still drawn: "+left.join(", "));
     console.log("spatial confidence: on by default, "+n+" formations at 09:50 each with its grade's mark; none drawn when switched off OK"); }
 
+  /* Stage 5D (docs/STAGE5_SPEC.md section B.4; decision 90): the evidence skeleton, dry run. Off by default; on, at 09:50 with nothing
+     selected, the legs whose window meets the phase and their anchors, each anchor's mask its grade's; the whole day every leg;
+     switched off, nothing left */
+  { if(layerOn.skeleton||SKEL.day||SKEL.grp) throw new Error("the evidence skeleton is not off by default");
+    select(null,null); setClock(590,{instant:true,force:true,camera:false}); layerOn.skeleton=true; updateVisibility();
+    const ph=curPhase, nPh=SKEL.scope?SKEL.scope.legs.length:0, nA=SKEL.marks.length;
+    const wrongLeg=SKEL.scope.legs.filter(L=>!(L.w[1]>=PHASES[ph].t0&&L.w[0]<=PHASES[ph].t1)).length;
+    const wrongMask=SKEL.marks.filter(m=>m.material.map!==skelTexture(m.userData.skel.cf,m.userData.skel.timed)).length;
+    SKEL.day=true; updateVisibility(); const nDay=SKEL.scope.legs.length;
+    let all=0; Object.keys(units).forEach(id=>{ const A=anchorList(id); for(let i=1;i<A.length;i++) if(A[i-1].p!==null&&A[i].p!==null) all++; });
+    layerOn.skeleton=false; SKEL.day=false; updateVisibility();
+    if(!nPh||!nA||wrongLeg||wrongMask||nDay!==all||SKEL.grp||SKEL.marks.length) throw new Error("evidence skeleton: "+nPh+" legs and "+nA+" anchors in the phase ("+wrongLeg+" outside it, "+wrongMask+" with another mask); the whole day "+nDay+" of "+all+" legs; left when off: "+!!SKEL.grp);
+    console.log("evidence skeleton: off by default; at 09:50 "+nPh+" legs of the phase and their "+nA+" anchors; the whole day "+nDay+" legs; none left when switched off OK"); }
+
   /* the armies are ranks of figures now, with national colours on the standards */
   const inf=units.sthilaire.block.userData, cav=units.nansouty.block.userData;
   const infN=inf.figs.reduce((a,f)=>a+f.n,0), cavN=cav.figs.reduce((a,f)=>a+f.n,0);

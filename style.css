@@ -115,6 +115,12 @@ body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 .legend .cfk-a{background:var(--text)}
 .legend .cfk-b{background:linear-gradient(90deg,transparent,var(--text) 30%,var(--text) 70%,transparent)}
 .legend .cfk-c{width:14px;height:14px;margin:0 3px;border-radius:50%;background:radial-gradient(circle,var(--text),transparent 72%)}
+/* Stage 5D: the skeleton's anchors by shape (A filled, B ring, C small open ring) and its line, in the text colour */
+.legend .skk{display:block;flex:0 0 auto;box-sizing:border-box;width:9px;height:9px;margin:0 5px;border-radius:50%;opacity:.9}
+.legend .skk-a{background:var(--text)}
+.legend .skk-b{border:1.5px solid var(--text)}
+.legend .skk-c{width:6px;height:6px;margin:0 6.5px;border:1px solid var(--text)}
+.legend .skk-l{width:20px;height:0;margin:0;border-radius:0;border-top:1px solid var(--text)}
 .rose{width:26px;height:26px;margin:0;color:var(--text-muted);flex:0 0 auto}
 .rose .rose-ring{stroke:var(--line-2)}
 .rose .rose-n{fill:var(--text)}

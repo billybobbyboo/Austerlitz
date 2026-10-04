@@ -88,7 +88,12 @@ const CLASS={
   /* Stage 5B: a confidence mark's size on screen (the paper map's cap) at its drawn ground */
   "app.js:confPlace":"presentation",
   /* Stage 5B: the self-test's drape of the marks against the drawn ground */
-  "app.js:confDrape":"test","app.js:confChecks":"test","app.js:confDayChecks":"test"
+  "app.js:confDrape":"test","app.js:confChecks":"test","app.js:confDayChecks":"test",
+  /* Stage 5D: the ground-cell patch (5B's, now shared), the skeleton's legs split on the drawn ground's triangles, its anchors'
+     size on screen and the hover's projection, at the drawn ground */
+  "app.js:groundPatch":"presentation","app.js:skelDrape":"presentation","app.js:skelPlaceMarks":"presentation","app.js:skelNear":"presentation",
+  /* Stage 5D: the self-test's drape and size of the skeleton against the drawn ground */
+  "app.js:skelChecks":"test","app.js:skelDayChecks":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */

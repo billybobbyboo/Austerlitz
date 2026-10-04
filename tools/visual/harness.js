@@ -134,6 +134,20 @@ async function interact(page,it,vp){
       await page.evaluate(()=>{ layerOn.confidence=true; }); await settle(page);
       m.confShare=await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[buf.toString("base64"),off.toString("base64")]);
     }
+    /* Stage 5D (docs/STAGE5_SPEC.md section B.4): the evidence skeleton on, the whole day (its densest scope): the map layer's items and
+       drops as without it (it is ground drawing, not a map-layer item), map text at AA as rendered; its share of the free rectangle recorded
+       (a build with the skeleton; it is off by default, so every other measure here is taken without it) */
+    if(!c.fresh&&await page.evaluate(()=>typeof SKEL!=="undefined")){
+      const lay=()=>page.evaluate(()=>{ mlLayout(); return {items:ML.stats.items,dropped:ML.stats.dropped,ids:ML.stats.dropped_.slice().sort().join(","),
+        anchors:SKEL.marks.length,legs:SKEL.scope?SKEL.scope.legs.length:0}; });
+      const s0=await lay();
+      await page.evaluate(()=>{ layerOn.skeleton=true; SKEL.day=true; requestRender(3); }); await settle(page);
+      const on=await page.screenshot({timeout:180000}), s1=await lay();
+      const tc=await page.evaluate(b=>window.__aus.textContrast?window.__aus.textContrast(b):null,on.toString("base64"));
+      await page.evaluate(()=>{ layerOn.skeleton=false; SKEL.day=false; requestRender(3); }); await settle(page);
+      m.skeleton={anchors:s1.anchors,legs:s1.legs,items:[s0.items,s1.items],dropped:[s0.dropped,s1.dropped],sameDrops:s0.ids===s1.ids,
+        belowAA:tc?tc.belowAA:[],minContrast:tc?tc.min:null,share:(await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[on.toString("base64"),buf.toString("base64")])).share};
+    }
     if(await page.evaluate(()=>!!window.__aus.unobstructed)){
       /* one drawn frame at each size is enough: the panels are DOM, and the legend decides in that frame whether it fits */
       /* headless Chromium delivers a resize event only with a rendered frame, which a page that draws on demand may not
