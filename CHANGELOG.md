@@ -2,8 +2,8 @@
 
 ## 2026-10 · Stage 5G: the day-track inset (docs/STAGE5_SPEC.md §F, §I; owner decision 95)
 
-**Status: implemented, for review; the last part of Stage 5. `austerlitz-command-map.html`: 1,528,608 bytes, md5
-`4c12cac6d458b02e3282237f4d1abb92`** (was 1,510,672 bytes, md5 `4c7bb9e4…`, Stage 5F).
+**Status: merged (#38); with it Stage 5 is complete. `austerlitz-command-map.html`: 1,528,608 bytes, md5
+`4c12cac6d458b02e3282237f4d1abb92`** (was 1,510,672 bytes, md5 `4c7bb9e4…`, Stage 5F). With it, every part of Stage 5 is built (5B-5G).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage4d-9b13adbf.html`; the reference does not move. The inset reads
   `anchorList`, `legPath`, `stateAt`, `PLANS` and the geography; it changes none. Presentation only.

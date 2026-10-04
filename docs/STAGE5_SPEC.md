@@ -5,7 +5,7 @@ owner answered question 6 (decision 89, §0.4); 5C (interval bars, one event clo
 (decision 90, §0.4); 5D (the evidence skeleton) is merged (#35). The owner answered questions 5 and 8 (decisions 91, 92, §0.4); 5E ("Whose
 eyes?" and the eye-level vantage) is merged (#36). The owner answered questions 9 and 13 (decisions 93, 94, §0.4); 5F (the ordered routes,
 and the Plans tab's harness case) is merged (#37). The owner answered question 10 (decision 95, §0.4); 5G (the day-track inset), the last
-part of Stage 5, is implemented, for review; what 5B to 5G found is at the end of §I. Sections A-J below still describe the build they were written against.** Written against `main` at `407cda0` (Stage 4E
+part of Stage 5, is merged (#38); Stage 5 is complete. What 5B to 5G found is at the end of §I. Sections A-J below still describe the build they were written against.** Written against `main` at `407cda0` (Stage 4E
 merged as #31; with it Stage 4 is complete), whose build `austerlitz-command-map.html` is 1,416,737 bytes, md5
 `e1fac9ea08a4c2b2eaefe5b78529c843`. On it (the same build throughout: this part changes no source file): `check:baseline` passed; `npm test` (all nine suites and the height
 guard) passed; `check:data` found all 113 declarations identical to `archive/stage4d-9b13adbf.html`; `check:chronology` reported 0
