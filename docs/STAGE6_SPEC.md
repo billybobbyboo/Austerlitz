@@ -50,7 +50,7 @@ in `docs/VISUAL_SPEC.md`, 18-46 in `docs/STAGE2_SPEC.md`, 47-67 in `docs/STAGE3_
 |---|---|---|
 | `census.js [--json f] [--md f]` | 1 | from the running page at 09:30: the figure kit's every part (its size and its colour as drawn); per formation (all 41) its nation, arm, echelon and what its block holds (every instanced mesh, its count, its colours; the coat's instance colours and the share in a second nation's; the standards, the pole, the cloth; the counter's and name's colours); the flag textures sampled by area; where nationality is carried today (the legend's nation rows, the first-run key) |
 | `scale-probe.js [--json f] [--md f] [--sheet f] [--only views]` | 3 | in every harness view: each figure on foot and each rider in the free rectangle projected part by part (the figure, its headgear, its coat, a facing at 4% of a man's height) and each standard's cloth: px on screen (median, 90th percentile, largest; counts at or above 1-64 px), per kind and per formation |
-| `appearance-probe.js [--json f] [--sheet f] [--only views] [--keys views]` | 3, 4 | in every harness view: which formations' figures are drawn and whether each carries a name, a counter or a confidence mark (the side's colour); five prototype variants (coats; coats, headgear, facings, cuirasses and flags; that without each part) against the view: the share changed, px per figure, solid near-black, mean luminance, map text contrast as rendered, drops, the world pass, the confidence marks' share; each formation's coats keyed in turn so that their rendered colour is read today and in prototype, and the CIEDE2000 difference between formations of the two sides |
+| `appearance-probe.js [--json f] [--md f] [--sheet f] [--only views] [--keys views] [--from f]` | 3, 4 | in every harness view: which formations' figures are drawn and whether each carries a name, a counter or a confidence mark (the side's colour); five prototype variants (coats; coats, headgear, facings, cuirasses and flags; that without each part) against the view: the share changed, px per figure, solid near-black, mean luminance, map text contrast as rendered, drops, the world pass, the confidence marks' share; each formation's coats keyed in turn so that their rendered colour is read today and in prototype, and the CIEDE2000 difference between formations of the two sides |
 | `lib.js` | - | shared by the page probes: the views, the harness's own pointer path to the closest orbit (copied from `tools/visual/harness.js`), applying a view |
 
 ## 0. The decisions, the records, and where they disagree
@@ -486,7 +486,32 @@ below the drawn scale in every view but the closest orbit: drawing them per regi
 
 ### 3.3 The prototype, measured against the harness's thresholds (fact; `appearance-probe.js`, `appearance-probe.md`, `appearance-sheet.jpg`)
 
-(SECTION-3.3-NUMBERS)
+Five prototype variants against each view as it is (two screenshots each): **P1** the coats only (dark blue for the French line, light
+infantry, cuirassiers and the Guard; a dragoon green for the French dragoons, light cavalry and Napoleon's escort; a dark green for the
+Russians; white for the Austrians and the Russian Guard cavalry); **P2** the coats with headgear (bicorne, shako, bearskin, a crested or
+maned helmet, a busby), facings (collar, lapels, cuffs), cuirasses and the flags repainted (the 1804 lozenge, a cross-and-disc colour, a
+yellow colour with an eagle and flames); and P2 without each of those parts. All are measurement values (§0 header), not proposals.
+
+| view (factor) | changed P1 / P2 | solid near-black today / P1 / P2 (limit 0.0005) | mean luminance today / P2 | map text: lowest contrast, below AA | drops today / P2 | confidence marks' share today / P2 | world pass ms today / P2 |
+|---|---|---|---|---|---|---|---|
+(TABLE33)
+
+1. **The coats alone (P1) move no threshold in any view**: solid near-black, the map text (its lowest contrast and none below AA), the
+   drops and the confidence marks' share (within 0.001) are as today. The colour masses change (0.05-5.4% of the free rectangle).
+2. **The full kit (P2) breaks the Stage 0 darkness limit in one view, the closest orbit: 0.00228 against the limit's 0.0005** (today
+   0.0003, P1 0.0003). There the figures are 49-181 px and the large black headgear (bicornes, bearskins, crested helmets) forms solid
+   near-black blocks; the prototype's bearskin (`#2A2420`) was darker than decision 84's black. Every other view stays as it is. So 6C
+   must keep every drawn black and dark cloth at or above decision 84's value and measure the closest orbit (question 7).
+3. **The map layer does not depend on the figures**: drops are unchanged in every view and no map text falls below AA in any variant.
+4. **Facings are a tint, as §3.2 inferred**: as rendered they change 0.6-3.8 px per figure at the Overview and in the Field vantage, 6.6-16
+   in the middle views, 12-25 in the close views and 52 in the closest orbit (with their shadows), at a median contrast of only 1.2-1.8
+   against the figure without them. **Headgear** changes 0.07-0.44 px per figure at the Overview, 2.3-2.7 in the Field vantage, 5-16 in the
+   middle views, 13-29 in the close views and 102 in the closest orbit (median contrast 1.15-1.27). The **flags'** repainting changes
+   0-12,800 px per view (60,000 in the closest orbit), at a median contrast of 1.1-1.5 against today's paintings.
+5. **The world pass** (software WebGL): 3.8-9.2 ms today, 2.4-14.6 ms in P2, which drew the facings as a second mesh per coat mesh (twice
+   the draw calls); an implementation would bake them into the kit's merged geometry. Not measured on a GPU.
+
+`appearance-sheet.jpg`: four views as they are and in P2.
 
 ## 4. Identity decoupled from coat colour
 
@@ -509,7 +534,30 @@ range** (no name within 34 units of the eye) when it is off; and anywhere it is 
 
 ### 4.2 Measured (fact; `appearance-probe.js`, `appearance-probe.md`)
 
-(SECTION-4.2-NUMBERS)
+In every landscape view with figures (the two 1x views draw none; the paper map none):
+
+| view | formations whose figures are drawn | with a name or counter displayed | with a ground mark | closest coats of opposite sides, CIEDE2000, today | in P1 |
+|---|---|---|---|---|---|
+(TABLE42)
+
+1. **Every formation drawn as figures has its ground mark today** (with "Position confidence" on, its default), in every view.
+2. **Names and counters cover only part of the field**: at the Overview 3-5 of 24-29 formations (beyond the names' range only corps and
+   armies are named); in the Field vantage 13 of 18; in the middle and close views 5-9 of 8-13; and in **the closest orbit none of 11**
+   (no name within 34 units of the eye). There, and at the Overview, the ground mark is the only side cue besides the coat; with "Position
+   confidence" off, the coat is the only one.
+3. **Historical coats cannot tell the sides apart, measured**: today the closest pair of formations of opposite sides differs by
+   CIEDE2000 17-31 as rendered (the minimum in each view); with the P1 coats by 3.6-20, and the French green coats (Walther's dragoons,
+   Kellermann's light cavalry, the escort) against the Russians' dark green by **3.6** (Walther and Miloradovich, `watch-selected`),
+   **4.0** (Walther and the Fifth Column, the closest orbit), **4.9** (Kellermann and Miloradovich) and 9.0 (the escort and the Left Wing
+   command, the Field vantage); French dark blue against Russian dark green 7.6-20. A difference of a few units is hard to see even side by
+   side: the opportunity's premise holds as rendered.
+4. **A side footprint for every formation** (each ground mark drawn as grade A's crisp footprint whatever its grade, question 12) covers
+   (SIDEMARK)
+   of the free rectangle in the views with figures, against 2.4-15.2% for today's graded marks; its pixels differ from the ground at a
+   median contrast of 1.1-2.5 (0-27% of them at 3:1): a quiet mark that keeps a side cue under every formation, while the name's mark and
+   the counter carry side legibly where they are drawn.
+5. At the eye level the probe found 172 figures in the free rectangle but no formation whose position projects inside it, so its rows are
+   empty there (the enemy in sight is drawn by `drawnKnow`'s rule, decision 91).
 
 ### 4.3 Design (recommendation; questions 2, 12, 13)
 
@@ -707,7 +755,8 @@ reading is done. Each part passes every check on its own and moves `check:baseli
    they were.
 8. **Headgear silhouettes?** (binds 6C) *Recommendation:* yes: one low-poly shape per sourced class (bicorne, shako, bearskin, crested
    helmet, grenadier cap, round hat), the generic cap where unsourced or disputed (the Russian line's headgear on the day is disputed,
-   §2.6), with the dispute in the dossier. *Trade-off:* legible only in the close views (§3.1); the shapes add vertices (measured §3.3).
+   §2.6), with the dispute in the dossier. *Trade-off:* legible only in the close views (§3.1); the shapes add vertices (the
+   world pass, §3.3 item 5).
 9. **Facings and lace?** (binds 6C) *Recommendation:* no regimental facings or lace: below the drawn scale in every view but the closest
    orbit (§3.1), and the facing tables themselves are disputed (§2.6); draw only class-level features that are sourced and large (a
    cuirass, if the French cuirassiers' is sourced). *Trade-off:* no regiment can be told from another by its figures; the dossier says

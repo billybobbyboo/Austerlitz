@@ -14,7 +14,8 @@
       P2-fac, P2-hat, P2-flag (P2 without the facings, with today's cylinder, with today's flags): the share of the free rectangle each
       changes, the changed pixels per figure in view, solid near-black and mean luminance (measure.js pixels; the Stage 0 limit 0.05%), the
       map text's contrast as rendered (measure.js textContrast; AA), the map layer's drops, the world pass's time; the position-confidence
-      marks' share as rendered (measure.js confShare) today and with P2;
+      marks' share as rendered (measure.js confShare) today and with P2; for P2-fac, P2-hat and P2-flag also solid near-black (which part
+      darkens a view);
    2b. a side cue on the ground for every formation (question 12): each ground mark drawn as grade A's crisp footprint (confAt overridden in the
       running page for the measurement), its share of the free rectangle and its contrast against the ground;
    3. with --keys (or the default close views): each formation's coats keyed in magenta, one render each, so the pixels where its coats show
@@ -194,6 +195,7 @@ const PROBE=function(){
         const d=await page.evaluate(([a,b])=>__s5.diff(a,b,8),[b0,b]);
         const e={diff:d,changedPerFigure:d.samples?+(d.changed*d.samples*4/r.figures).toFixed(2):0};
         if(k==="P1"||k==="P2"){ e.layer=await page.evaluate(()=>__s5.layer()); e.contrast=await contrastOf(page,b); e.dark=await darkOf(page,b); e.worldMs=await page.evaluate(()=>__s5.frame(3)); }
+        else e.dark=await darkOf(page,b);   /* P2 without one part: which part darkens the view */
         if(k==="P2"){ await page.evaluate(()=>{ layerOn.confidence=false; }); await quick(); const c1=await shot(page); await page.evaluate(()=>{ layerOn.confidence=true; }); await quick();
           e.confShare=await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[b,c1]); }
         r[k]=e; }

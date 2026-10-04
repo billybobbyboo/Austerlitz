@@ -239,4 +239,7 @@ headquarters' viewshed with its fogged ground; the dossier's reasons; the eye-le
 merged (#36). Stage 5F (the ordered routes: a layer, off by default, drawing each plan column's route faint and dashed under the figures,
 owner decision 93; the Plans tab's harness case at the Overview, decision 94; the Plans tab itself unchanged) is merged (#37). Stage 5G (the
 day-track: each formation's day as a small north-up map in its full dossier, its anchors by grade, the interpolated legs, the position at
-the clock and its ordered route dashed, owner decision 95), the last part of Stage 5, is merged (#38); Stage 5 is complete.
+the clock and its ordered route dashed, owner decision 95), the last part of Stage 5, is merged (#38); Stage 5 is complete. Stage 6 Part A (the specification, `docs/STAGE6_SPEC.md`: uniforms,
+headgear, flags and standards, each to carry a source and a grade, and identity decoupled from coat colour; a census and probes in
+`tools/stage6/`; no external source could be read in its session, so its evidence is a register of leads; no source file changed) is
+written, for review.
