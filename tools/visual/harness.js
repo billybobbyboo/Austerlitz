@@ -141,6 +141,19 @@ async function interact(page,it,vp){
     /* Stage 5D (docs/STAGE5_SPEC.md section B.4): the evidence skeleton on, the whole day (its densest scope): the map layer's items and
        drops as without it (it is ground drawing, not a map-layer item), map text at AA as rendered; its share of the free rectangle recorded
        (a build with the skeleton; it is off by default, so every other measure here is taken without it) */
+    /* Stage 5F (docs/STAGE5_SPEC.md section E.4; decision 93): the ordered routes on: the map layer's items and drops as without them
+       (ground drawing), map text at AA as rendered; their share of the free rectangle recorded (off by default: every other measure is
+       taken without them; not at the eye level, where they are not drawn) */
+    if(!c.fresh&&!c.eye&&await page.evaluate(()=>typeof ROUTES!=="undefined")){
+      const lay=()=>page.evaluate(()=>{ mlLayout(); return {items:ML.stats.items,dropped:ML.stats.dropped,ids:ML.stats.dropped_.slice().sort().join(","),routes:ROUTES.grp?ROUTES.grp.children.length:0}; });
+      const s0=await lay();
+      await page.evaluate(()=>{ layerOn.routes=true; requestRender(3); }); await settle(page);
+      const on=await page.screenshot({timeout:180000}), s1=await lay();
+      const tc=await page.evaluate(b=>window.__aus.textContrast?window.__aus.textContrast(b):null,on.toString("base64"));
+      await page.evaluate(()=>{ layerOn.routes=false; requestRender(3); }); await settle(page);
+      m.routes={routes:s1.routes,items:[s0.items,s1.items],dropped:[s0.dropped,s1.dropped],sameDrops:s0.ids===s1.ids,
+        belowAA:tc?tc.belowAA:[],minContrast:tc?tc.min:null,share:(await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[on.toString("base64"),buf.toString("base64")])).share};
+    }
     if(!c.fresh&&!c.eye&&await page.evaluate(()=>typeof SKEL!=="undefined")){   /* not at the eye level: the skeleton is not drawn there (5E) */
       const lay=()=>page.evaluate(()=>{ mlLayout(); return {items:ML.stats.items,dropped:ML.stats.dropped,ids:ML.stats.dropped_.slice().sort().join(","),
         anchors:SKEL.marks.length,legs:SKEL.scope?SKEL.scope.legs.length:0}; });

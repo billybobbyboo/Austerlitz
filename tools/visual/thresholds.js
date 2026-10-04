@@ -36,6 +36,9 @@ DROP_LIMIT["selected-formation"]=4; DROP_LIMIT["narrow-1024"]=6;
 /* Stage 5E (docs/STAGE5_SPEC.md section D.6): the eye-level views are new; their limits are what the 5E build drops there (place names on
    the horizon: Goldbach, Telnitz, Sokolnitz, Satschan, Kobelnitz, and at 1x Menitz), never raised (as decision 62 set the 3D framing's) */
 DROP_LIMIT["eye-zuran"]=5; DROP_LIMIT["eye-zuran-1x"]=6;
+/* Stage 5F (decision 94): the Plans tab, both plans, at the Overview: what the 5F build drops there (ten place names and the Allied
+   headquarters' name), never raised; the Plans tab itself is unchanged (its fix is a task after Stage 5) */
+DROP_LIMIT["plans-overview"]=11;
 /* section H: the unobstructed share of the viewport on the Stage 2C build, at the case's viewport and at 1280 x 720, measured
    by this harness (CSS transitions off, the panels at rest). It must not fall. These equal tools/stage2/map-text.js's values
    in every view but one: selected-formation at 1280 x 720 is 6.97% at rest, where map-text.js reported 15.1% with the
@@ -166,6 +169,10 @@ module.exports.check=function(name,m){
     if(K.items[0]!==K.items[1]||K.dropped[0]!==K.dropped[1]||!K.sameDrops) f.push("with the evidence skeleton on, the map layer changed: items "+K.items.join(" to ")+", drops "+K.dropped.join(" to ")+(K.sameDrops?"":" (other formations dropped)"));
     if(K.belowAA.length) f.push("with the evidence skeleton on, "+K.belowAA.length+" map texts below AA: "+K.belowAA.slice(0,4).join("; "));
     if(!(K.anchors>0)) f.push("the evidence skeleton drew no anchor with the whole day on"); }
+  /* Stage 5F (docs/STAGE5_SPEC.md section E.4): with the ordered routes on, the map layer unchanged and its text at AA; new, on a build with them */
+  if(m.routes){ const R=m.routes;
+    if(R.items[0]!==R.items[1]||R.dropped[0]!==R.dropped[1]||!R.sameDrops) f.push("with the ordered routes on, the map layer changed: items "+R.items.join(" to ")+", drops "+R.dropped.join(" to "));
+    if(R.belowAA.length) f.push("with the ordered routes on, "+R.belowAA.length+" map texts below AA: "+R.belowAA.slice(0,4).join("; ")); }
   if(HEADS_SHOWN.includes(name)&&m.heads&&m.heads.hiddenOverQuarter>0) f.push("arrow heads more than a quarter hidden by a panel or the edge: "+m.heads.list.join(", "));
   if(m.focus!=null&&!(m.focus<=FOCUS_PX)) f.push("the orbit target "+m.focus+" px from the free rectangle's centre (limit "+FOCUS_PX+" px)");
   if(m.focus720!=null&&!(m.focus720<=FOCUS_PX)) f.push("after the resize to 1280 x 720 the orbit target is "+m.focus720+" px from the free rectangle's centre (limit "+FOCUS_PX+" px)");

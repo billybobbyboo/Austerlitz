@@ -194,3 +194,16 @@ if(cerrs) process.exitCode=1;
   console.log("Whose eyes: "+(werr.length?werr.length+" wrong":"one control, labelled a model reading, the eye's vantage hidden until a headquarters is chosen"));
   if(werr.length) process.exitCode=1;
 }
+/* Stage 5F (docs/STAGE5_SPEC.md section E.4; decisions 15, 93): the ordered routes are off by default, in the side's token colour, and
+   their legend row uses the legend's own dash sample; their dash (planned, decision 15) is checked in binding-test.js */
+{
+  const sh=fs.readFileSync('shell.html','utf8'), src=fs.readFileSync('app.js','utf8'), rerr=[];
+  if(!/layerOn=\{[^}]*routes:false/.test(src)) rerr.push("the ordered routes are not off by default (decision 93)");
+  if(!/data-l="routes" aria-pressed="false"/.test(sh)) rerr.push("shell.html: the Ordered routes button is missing or not off");
+  if(!/<b>Ordered routes<\/b>/.test(sh)||/ghost/i.test((sh.match(/data-l="routes"[^]*?<\/button>/)||[""])[0])) rerr.push("the layer is not named \u201cOrdered routes\u201d");
+  if(!/lin\(hexNum\(TOKENS\.sym\.side\[sd\]\.base\)\),transparent:true,opacity:ROUTES\.OP/.test(src)) rerr.push("the routes' colour is not the side's token");
+  if(!/data-lg="routes"><span>[^<]*not what was marched<\/span><span class="dsh"><\/span>/.test(sh)) rerr.push("the legend's routes row is missing, or not the dash sample");
+  rerr.forEach(e=>console.log("  ! "+e));
+  console.log("ordered routes: "+(rerr.length?rerr.length+" wrong":"off by default, named, the side's token colour, the legend's dash sample"));
+  if(rerr.length) process.exitCode=1;
+}

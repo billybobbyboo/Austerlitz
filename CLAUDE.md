@@ -25,7 +25,8 @@ lower one without saying so explicitly.
 `skelScope`, `skelDrape`, `skelUpdate`: the plotted anchors by grade and the interpolated legs, split on the ground's triangles; the
 ground-cell patch `groundPatch`, shared with 5B), "Whose eyes?" (since 5E: `EYES`, `knowAtClock` (the guarded `knowledgeOf`'s cache
 cleared at each minute, decision 92), `drawnKnow`, `knowReason`, `eyesViewshed`; the eye-level vantage `EYE`, `eyeEnter`/`eyeLeave`, the
-one camera path below the floor), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 5C its interval bars, `EV_BAR`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
+one camera path below the floor), the ordered routes (since 5F: `ROUTES`, `routeScope`, `routeBuild`, `routeDrapePoly`: each plan
+column's route dashed and faint, clipped to the ground's triangles; `routeAxis0`, the phase-0 rule; `routeDeviation`, derived), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 5C its interval bars, `EV_BAR`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2, Stage 3, Stage 4 and Stage 5 measurement scripts (`stage2/`, `stage3/`, `stage4/`, `stage5/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
@@ -76,9 +77,9 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   Watch on the paper map and on the landscape since 3C; the "?" overlay over both since 3E; since 5E the dossier's knowledge reason, the eye-level
   caption, the paper map with a headquarters' reading)
   meets WCAG AA and the 10.5 px floor.
-- `npm run check:visual`: 22 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
-  `narrow-1024`, the undocked layout, since 3C the phase-8 Overview in Study and in Watch, and since 5E the eye level at the Zuran at 4x
-  and 1x), Stage 0
+- `npm run check:visual`: 23 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
+  `narrow-1024`, the undocked layout, since 3C the phase-8 Overview in Study and in Watch, since 5E the eye level at the Zuran at 4x
+  and 1x, and since 5F the Plans tab at the Overview, `plans-overview`), Stage 0
   thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()` (its ground, camera, figure, mist, overlay-draping and arrowhead
   checks at 1x, 4x and 10.33x, and since 2D its map-layer checks: no overlap, nothing over a panel or an arrow head, the
   never-dropped items drawn, every dropped formation reachable by hover and keyboard, the legend never over the dispatch).
@@ -159,9 +160,17 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   as the C zone without figures and marked "?" in the landscape, with counters and on the paper map; the viewshed's fogged cells exactly
   those below the rule's threshold; the dossier's reason; the control); `css-test.js` checks the one control, its model-reading label, the
   eye's vantage hidden until a headquarters is chosen; `runtime-test.js` dry-runs the reading at the clock and the reasons.
+  Since 5F: in every view but the eye level, with the ordered routes on, the map layer's items and drops unchanged and its text at AA as
+  rendered; `plans-overview` (the Plans tab, both plans, at the Overview: decision 94) within its drop limit, measured on the 5F build; the
+  self-test starts without the Plans overlay and restores it after; its 5F checks (at 1x, 4x and 10.33x every dash's triangles sampled every
+  0.5 units, none under the drawn ground, every point at its lift; each route on its column's `PLANS` route, dashed at its duty,
+  depth-tested, nothing dimmed; the scope phase by phase, a family, the phase-0 rule against the axis arrows; the dossier's derived
+  distance, the legend's row, the paper map, none in Clean); `binding-test.js` allows `routeBuild`, the one new dashed drawer, and checks
+  it dashes only a plan column's route; `css-test.js` checks it is off by default, named, the side's token colour, the legend's dash
+  sample; `runtime-test.js` dry-runs it.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 5E build (md5 `b50a087c...`, 1,492,181 bytes;
-  re-baselined from the Stage 5D build `c5c47192...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 5F build (md5 `4c7bb9e4...`, 1,510,672 bytes;
+  re-baselined from the Stage 5E build `b50a087c...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -217,8 +226,9 @@ frontage, C a diffuse zone of its frontage's radius, a patch of the ground's own
 row; owner decision 89: one event clock, an event's start, for the marker, its keys, the themes, the tour, the dwell and the dossier) is
 merged (#34). Stage 5D (the evidence skeleton: a layer, off by default, drawing each formation's plotted anchors by grade, filled A, ring
 B, small open ring C, a tick for an explicit time, and the legs the clock interpolates between them as thin solid lines on the drawn
-ground; owner decision 90: the selected formation's family, else the legs meeting the current phase, or the whole day) is implemented,
+ground; owner decision 90: the selected formation's family, else the legs meeting the current phase, or the whole day) is
 merged (#35). Stage 5E ("Whose eyes?": one control, everyone / Napoleon's headquarters / the Allied headquarters, in the Command tab and
 the timeline, labelled a model reading; the reading at the clock, decision 92; reported only drawn as the C zone without figures; the
 headquarters' viewshed with its fogged ground; the dossier's reasons; the eye-level vantage at the headquarters, decision 91) is
-implemented, for review.
+merged (#36). Stage 5F (the ordered routes: a layer, off by default, drawing each plan column's route faint and dashed under the figures,
+owner decision 93; the Plans tab's harness case at the Overview, decision 94; the Plans tab itself unchanged) is implemented, for review.

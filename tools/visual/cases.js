@@ -63,5 +63,10 @@ module.exports = [
   { name:"eye-zuran", viewport:[1600,900], t:510, presentation:"watch", mode:"terrain", eyes:"fr", eye:true, cam:[-195,92,156,-33,4,-2],
     note:"Eye level at Napoleon's headquarters on the Zuran, 08:30, at the 4x default: the Command view's reading, the eye 3 m (scaled) up." },
   { name:"eye-zuran-1x", viewport:[1600,900], t:510, presentation:"watch", mode:"terrain", factor:1, eyes:"fr", eye:true, cam:[-195,92,156,-33,4,-2],
-    note:"The same at true scale (1x): the eye 3 m above the ground as drawn, the relief honest." }
+    note:"The same at true scale (1x): the eye 3 m above the ground as drawn, the relief honest." },
+  /* Stage 5F (docs/STAGE5_SPEC.md section E.4; decision 94): the Plans tab, both plans, at the Overview, where the tab flies while the
+     camera has not been moved (cam is the Overview preset); its drop limit is what the 5F build drops there. The moved-camera case stays
+     a recorded finding (section 0.3 item 14), the fix a task after Stage 5 */
+  { name:"plans-overview", viewport:[1600,900], t:570, presentation:"study", mode:"terrain", plan:"both", cam:[-27,272,41,-27,0,9],
+    note:"The Plans overlay with both plans (chosen in the Plans tab; the rail back on its Now tab), at the Overview vantage, Study, 09:30." }
 ];

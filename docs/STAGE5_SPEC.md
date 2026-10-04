@@ -3,7 +3,8 @@
 **Status: Part A merged (#32); the owner answered questions 1-4 (decisions 85-88, §0.4). 5B (spatial confidence) is merged (#33). The
 owner answered question 6 (decision 89, §0.4); 5C (interval bars, one event clock) is merged (#34). The owner answered question 7
 (decision 90, §0.4); 5D (the evidence skeleton) is merged (#35). The owner answered questions 5 and 8 (decisions 91, 92, §0.4); 5E ("Whose
-eyes?" and the eye-level vantage) is implemented, for review; what 5B to 5E found is at the end of §I. Sections A-J below still describe the build they were written against.** Written against `main` at `407cda0` (Stage 4E
+eyes?" and the eye-level vantage) is merged (#36). The owner answered questions 9 and 13 (decisions 93, 94, §0.4); 5F (the ordered routes,
+and the Plans tab's harness case) is implemented, for review; what 5B to 5F found is at the end of §I. Sections A-J below still describe the build they were written against.** Written against `main` at `407cda0` (Stage 4E
 merged as #31; with it Stage 4 is complete), whose build `austerlitz-command-map.html` is 1,416,737 bytes, md5
 `e1fac9ea08a4c2b2eaefe5b78529c843`. On it (the same build throughout: this part changes no source file): `check:baseline` passed; `npm test` (all nine suites and the height
 guard) passed; `check:data` found all 113 declarations identical to `archive/stage4d-9b13adbf.html`; `check:chronology` reported 0
@@ -159,10 +160,11 @@ Each is stated, not resolved.
    `DROP_LIMIT` in 9 of 19 landscape harness views (the Field vantage 16 against 11; `plans-probe.js`, §E.2). No harness case opens the
    Plans tab. Outside Stage 5's scope (the Plans tab is not changed); recorded, with a check proposed (§H.3, 5F).
 
-### 0.4 Owner decisions 85-92 (the answers to §J questions 1-8)
+### 0.4 Owner decisions 85-94 (the answers to §J questions 1-9 and 13)
 
 Part A merged (#32). Before 5B the owner answered the four questions that bind it, each with the recommendation; before 5C, question 6;
-before 5D, question 7; before 5E, questions 5 and 8; each with the recommendation. Questions 9-13 stay open until the parts they bind.
+before 5D, question 7; before 5E, questions 5 and 8; before 5F, questions 9 and 13; each with the recommendation. Questions 10-12 stay
+open until the parts they bind.
 
 | # | question | decision |
 |---|---|---|
@@ -174,6 +176,8 @@ before 5D, question 7; before 5E, questions 5 and 8; each with the recommendatio
 | 90 | 7, the skeleton's scope | The selected formation's family; with no selection, the legs whose window meets the current phase and their anchors; a "whole day" choice draws every anchor and leg. Off by default (§B.3). (5D) |
 | 91 | 5, "Whose eyes?" and eye-level views | One control (everyone, Napoleon's headquarters, the Allied headquarters) in place of the Command tab's three buttons, also in the timeline's control row; the eye-level vantage at the chosen headquarters, the camera floor waived for it alone, the near plane lowered, the marks laid on the ground there. (5E) |
 | 92 | 8, the reading at the clock | The Command view's reading at the clock's minute, not the phase's; no data change. (5E) |
+| 93 | 9, plan ghosts | A layer named "Ordered routes", off by default: each plan column's route, faint, dashed (decision 15: planned), depth-tested under the figures, nothing dimmed; in phase 0 not the four columns the axis arrows draw; the dossier's derived distance. The Plans tab unchanged. (5F) |
+| 94 | 13, the Plans tab's drops | A harness case with the Plans tab (both plans) at the Overview, its limit what the 5F build drops there; the moved-camera case a recorded finding; the fix a task after Stage 5. (5F) |
 
 ## A. Spatial confidence: crisp footprint A, soft frontage B, diffuse zone C
 
@@ -920,6 +924,33 @@ Per view (fact; `report-5e.js`): at the eye-level vantage, at 1x, 4x and 10.33x,
 1e-4 of 3 m scaled, 0 "not known" drawn, 0 enemy figures the model hides from the headquarters, 0 map texts below AA, solid near-black 0;
 the viewshed from the Zuran at 04:00 39.3% of the modelled ground in sight, 21.6% of it fogged; from Krzenowitz 6.5% and 61.6% (§D.3:
 39.0%, 21.3%; 6.3%, 61.6%).
+
+### 5F, as delivered (the ordered routes, and the Plans tab's harness case; decisions 93, 94)
+
+Implemented in `app.js` (`ROUTES`, `routeAxis0`, `routeScope`, `routeClipTri`, `routeDrapePoly`, `routeBuild`, `routeUpdate`,
+`routeDeviation`; the dossier's "Ordered route" row; the legend's row; the sources sheet's sentence; the self-test's checks),
+`shell.html` (the "Ordered routes" button, off; the legend's row with the legend's own dash sample), as §E.3 proposed, measured by
+`tools/stage5/report-5f.js` (`docs/stage5-evidence/5f-report.md`, `5f-report.json`, `5f-sheet.jpg`; `CHANGELOG.md`, Stage 5F), with these
+choices made while building it:
+- **Each dash is clipped to the drawn ground's triangles**, not draped at its vertices as the probe's ribbon was (5B found that cuts under
+  the ground at 10.33x): every dash is cut into the ground's cells and diagonals, so every point lies exactly 0.3 units above the ground
+  (the self-test: 31,362 points over 3,934 triangles at each factor, 0 under, every one within 1e-5 of the lift). Dashes of 4 units at a
+  duty of 0.6 (`dashRuns`, the one dash; `binding-test.js` allows `routeBuild` and checks it dashes only a plan column's route).
+- **The phase-0 rule finds its columns by distance**: each `OVERLAYS` phase-0 axis arrow's column is the one whose route lies nearest its
+  points (mean 25-46 m: the 1st to 4th Columns, §0.3 item 11's four), and the rule applies only while the movement arrows are drawn (with
+  them off, the four routes are drawn: nothing then draws them).
+- **The dossier's distance** ("at most 4.8 km from it", derived) is shown while the layer is on, as 5D's plotted positions are; it
+  reproduces the census (§E.1): Miloradovich 4.8 km, Kollowrath 5.1, Liechtenstein 5.5, Friant 6.5 (against the bait's route), Vandamme 5.0
+  (the second axis).
+- **Not at the eye level** (its ribbons would stand above a 1x eye) and not in Clean.
+- **The Plans tab's harness case** (decision 94): `plans-overview`, both plans at the Overview in Study at 09:30, the rail back on its Now
+  tab (with the Plans tab shown, decision 55's rule that Study shows the Now tab failed it; the rule is kept); it drops 11 items there
+  (ten place names and the Allied headquarters' name), its limit; the self-test now starts without the Plans overlay (it dims every
+  formation) and restores it after. The moved-camera case stays the finding of §0.3 item 14; the Plans tab is unchanged.
+
+Per view (fact; `report-5f.js`, 23 views): with the routes on, drops unchanged in every view, 0 map texts below AA, the lowest contrast at
+most 0.10 lower (overview-field 8.32 to 8.22); their share of the free rectangle 0.1-4.4% (close-sokolnitz at 1x the most); the world
+pass within the software renderer's noise.
 
 ## J. Questions for the owner
 

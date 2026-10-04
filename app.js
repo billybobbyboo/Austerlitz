@@ -127,7 +127,7 @@ function setTween(slot,fn){
   _tw[slot]=fn||null;
   tween=(_tw.scene||_tw.cam)?_runTween:(tween===_runTween?null:tween);
 }
-var layerOn={symbols:true,arrows:true,labels:true,trails:true,contours:true,analysis:false,events:true,confidence:true,skeleton:false};   /* confidence: Stage 5B, decision 85; skeleton: Stage 5D, off */
+var layerOn={symbols:true,arrows:true,labels:true,trails:true,contours:true,analysis:false,events:true,confidence:true,skeleton:false,routes:false};   /* confidence: Stage 5B, decision 85; skeleton: Stage 5D, off; routes: Stage 5F, off (decision 93) */
 var goingOn=false;
 var terrainLabels=[];   /* {tl, col, world}: the map layer's terrain-study labels */
 var highlight=null;      /* id -> true, or null for "show everything equally" */
@@ -1435,6 +1435,97 @@ function skelNear(cx,cy,r){
   SKEL.marks.forEach(function(m){ if(!m.visible) return; var U=m.userData.skel; _skV.set(U.x,groundY(U.x,U.z),U.z).project(camera); if(_skV.z>=1) return;
     var sx=(_skV.x*0.5+0.5)*VW, sy=(-_skV.y*0.5+0.5)*VH, d=(sx-cx)*(sx-cx)+(sy-cy)*(sy-cy); if(d<bd){ bd=d; best=m; } });
   return best;
+}
+/* ---- ordered routes (Stage 5F; docs/STAGE5_SPEC.md section E.3; owner decision 93) ----
+   Each plan column's ordered route (PLANS[side].cols[].route, read, unchanged) drawn faint under the figures while "Ordered routes" is on
+   (off by default): a ribbon ROUTES.W world units (about 100 m) wide, in the side's colour at ROUTES.OP, DASHED (decision 15: planned;
+   dashRuns, the one dash), no head, label, staging or objective; depth-tested, so the figures stand on it, and nothing is dimmed. Each
+   dash is clipped to the drawn ground's own triangles (groundY's cells and diagonals), so every point of it lies ROUTES.LIFT above the
+   ground and none under it. Which: with a formation selected, the columns naming its family; else every column while a formation it
+   names is on the field and has not reached its last anchor; in phase 0, while the movement arrows are drawn, not the four columns whose
+   axis arrows OVERLAYS already draws (routeAxis0: each axis arrow's nearest column by the mean distance of its points), so no route is
+   drawn twice. The Plans tab is unchanged. These are the plans' lines of march, not what was marched (the legend says so). */
+var ROUTES={W:1.6, LIFT:0.3, OP:0.30, DASH:4, DUTY:0.6, grp:null, key:"", mesh:{}, scope:null, axis0:null, shown:false};
+/* the distance, in map units, from a map point to a map polyline */
+function routeDistMap(p,pts){ var d=1e9; for(var i=1;i<pts.length;i++){ var a=pts[i-1], b=pts[i], vx=b[0]-a[0], vy=b[1]-a[1], l2=vx*vx+vy*vy,
+  t=l2?Math.max(0,Math.min(1,((p[0]-a[0])*vx+(p[1]-a[1])*vy)/l2)):0; d=Math.min(d,Math.hypot(p[0]-a[0]-vx*t,p[1]-a[1]-vy*t)); } return d; }
+function routeAxis0(){
+  if(ROUTES.axis0) return ROUTES.axis0;
+  var out={};
+  ((OVERLAYS[0]||{}).arrows||[]).forEach(function(a){ if(a.kind!=="axis") return; var best=-1, bd=1e9;
+    PLANS[a.side].cols.forEach(function(c,ci){ var d=0; a.pts.forEach(function(q){ d+=routeDistMap(q,c.route); }); d/=a.pts.length; if(d<bd){ bd=d; best=ci; } });
+    if(best>=0) out[a.side+":"+best]={label:a.label,dist:bd}; });
+  ROUTES.axis0=out; return out;
+}
+/* what is in scope now: [{sd, ci, c}] */
+function routeScope(){
+  var sel=(selection&&selection.kind==="f"&&FORMATIONS[selection.id])?familyOf(selection.id):null, ax=routeAxis0(), out=[];
+  ["al","fr"].forEach(function(sd){ PLANS[sd].cols.forEach(function(c,ci){
+    if(curPhase===0&&layerOn.arrows&&ax[sd+":"+ci]) return;
+    if(sel){ if(!c.forms.some(function(id){ return !!sel[id]; })) return; }
+    else if(!c.forms.some(function(id){ if(!units[id]||!posNow(id)) return false; var A=anchorList(id).filter(function(a){ return a.p!==null; }), last=A[A.length-1];
+      return !last||clock<last.arr; })) return;
+    out.push({sd:sd,ci:ci,c:c}); }); });
+  return out;
+}
+/* clip a convex polygon (grid coordinates) by a triangle (Sutherland-Hodgman) */
+function routeClipTri(P,T){
+  var o=(T[1][0]-T[0][0])*(T[2][1]-T[0][1])-(T[1][1]-T[0][1])*(T[2][0]-T[0][0])>0?1:-1, out=P;
+  for(var e=0;e<3&&out.length;e++){ var A=T[e], B=T[(e+1)%3], inp=out; out=[];
+    var side=function(q){ return o*((B[0]-A[0])*(q[1]-A[1])-(B[1]-A[1])*(q[0]-A[0])); };
+    for(var k=0;k<inp.length;k++){ var S=inp[k], E=inp[(k+1)%inp.length], sS=side(S), sE=side(E);
+      if(sE>=0){ if(sS<0){ var t=sS/(sS-sE); out.push([S[0]+(E[0]-S[0])*t,S[1]+(E[1]-S[1])*t]); } out.push(E); }
+      else if(sS>=0){ var t2=sS/(sS-sE); out.push([S[0]+(E[0]-S[0])*t2,S[1]+(E[1]-S[1])*t2]); } } }
+  return out;
+}
+/* a convex world polygon [[x,z],...] laid on the drawn ground: cut into the ground's triangles, each piece's points lift above it,
+   as triangles into out (x,y,z) */
+function routeDrapePoly(Q,lift,out){
+  var cw=GROUND_W/GROUND_NX, cd=GROUND_D/GROUND_NZ, G=Q.map(function(q){ return [(q[0]+GROUND_W/2)/cw,(q[1]+GROUND_D/2)/cd]; });
+  var x0=Math.max(0,Math.floor(Math.min.apply(null,G.map(function(g){ return g[0]; })))), x1=Math.min(GROUND_NX-1,Math.floor(Math.max.apply(null,G.map(function(g){ return g[0]; }))));
+  var z0=Math.max(0,Math.floor(Math.min.apply(null,G.map(function(g){ return g[1]; })))), z1=Math.min(GROUND_NZ-1,Math.floor(Math.max.apply(null,G.map(function(g){ return g[1]; }))));
+  function v(g){ var x=g[0]*cw-GROUND_W/2, z=g[1]*cd-GROUND_D/2; out.push(x,groundY(x,z)+lift,z); }
+  for(var j=z0;j<=z1;j++) for(var i=x0;i<=x1;i++){
+    [[[i,j],[i+1,j],[i,j+1]],[[i+1,j+1],[i,j+1],[i+1,j]]].forEach(function(T){ var P=routeClipTri(G,T);
+      for(var k=1;k+1<P.length;k++){ v(P[0]); v(P[k]); v(P[k+1]); } }); }
+}
+/* one column's route as its dashes (dashRuns over its length), each dash's segments as quads ROUTES.W wide, draped */
+function routeBuild(sd,ci){
+  var c=PLANS[sd].cols[ci], P=c.route.map(function(q){ return W(q[0],q[1]); }), cum=[0];
+  for(var i=1;i<P.length;i++) cum.push(cum[i-1]+Math.hypot(P[i][0]-P[i-1][0],P[i][1]-P[i-1][1]));
+  var L=cum[cum.length-1], runs=dashRuns(Math.max(1,Math.round(L/ROUTES.DASH)),ROUTES.DUTY), pos=[], hw=ROUTES.W/2;
+  function at(s){ var k=1; while(k<cum.length-1&&cum[k]<s) k++; var t=(s-cum[k-1])/((cum[k]-cum[k-1])||1); return [P[k-1][0]+(P[k][0]-P[k-1][0])*t,P[k-1][1]+(P[k][1]-P[k-1][1])*t]; }
+  runs.forEach(function(r){ var s0=r[0]*L, s1=Math.min(1,r[1])*L, pts=[at(s0)];
+    for(var k=1;k<cum.length-1;k++) if(cum[k]>s0&&cum[k]<s1) pts.push(P[k].slice());
+    pts.push(at(s1));
+    for(var q=1;q<pts.length;q++){ var a=pts[q-1], b=pts[q], l=Math.hypot(b[0]-a[0],b[1]-a[1]); if(l<1e-6) continue;
+      var nx=-(b[1]-a[1])/l*hw, nz=(b[0]-a[0])/l*hw;
+      routeDrapePoly([[a[0]+nx,a[1]+nz],[b[0]+nx,b[1]+nz],[b[0]-nx,b[1]-nz],[a[0]-nx,a[1]-nz]],ROUTES.LIFT,pos); } });
+  var geo=new THREE.BufferGeometry(); geo.setAttribute("position",new THREE.Float32BufferAttribute(new Float32Array(pos),3));
+  var m=new THREE.Mesh(geo,new THREE.MeshBasicMaterial({color:lin(hexNum(TOKENS.sym.side[sd].base)),transparent:true,opacity:ROUTES.OP,depthWrite:false,fog:false,side:THREE.DoubleSide}));
+  m.renderOrder=3; m.frustumCulled=false; m.userData.route={sd:sd,ci:ci,runs:runs.length,len:L};
+  return m;
+}
+function routeClear(){ if(ROUTES.grp){ scene.remove(ROUTES.grp); } ROUTES.grp=null; }
+function routeDropCache(){ routeClear(); Object.keys(ROUTES.mesh).forEach(function(k){ var m=ROUTES.mesh[k]; m.geometry.dispose(); m.material.dispose(); }); ROUTES.mesh={}; }
+function routeUpdate(){
+  if(!layerOn.routes||cleanView||EYE.on){ if(ROUTES.grp) routeClear(); ROUTES.scope=null; ROUTES.key=""; ROUTES.shown=false; return; }
+  var sc=routeScope(), fk=DISPLAY.factor+"|"+(DISPLAY.flat?1:0), key=fk+"|"+sc.map(function(r){ return r.sd+r.ci; }).join(",");
+  ROUTES.scope=sc; ROUTES.shown=sc.length>0;
+  if(key===ROUTES.key) return;
+  ROUTES.key=key; routeClear();
+  if(ROUTES.fk!==fk){ routeDropCache(); ROUTES.fk=fk; }   /* the ground moved: every route is draped again */
+  var g=new THREE.Group();
+  sc.forEach(function(r){ var k=r.sd+":"+r.ci; if(!ROUTES.mesh[k]) ROUTES.mesh[k]=routeBuild(r.sd,r.ci); g.add(ROUTES.mesh[k]); });
+  scene.add(g); ROUTES.grp=g; requestRender(2);
+}
+/* derived: the largest distance, over the day every 10 minutes, of the formation's executed position from each route that names it */
+function routeDeviation(id){
+  var out=[];
+  ["al","fr"].forEach(function(sd){ PLANS[sd].cols.forEach(function(c){ if(c.forms.indexOf(id)<0) return; var m=0, n=0;
+    for(var t=T_MIN;t<=T_MAX;t+=10){ var p=posAtClock(id,t); if(!p) continue; n++; m=Math.max(m,routeDistMap(p,c.route)); }
+    if(n) out.push({col:c.n,km:m*KM_PER_MAP}); }); });
+  return out;
 }
 /* true scale (decision 34): at 1x the relief is honest and every symbol would stand taller than it, so the
    figure-scale and landscape-scale layers are not drawn; formations are drawn as their footprints */
@@ -3822,7 +3913,8 @@ function paintLegend(){
           /* Stage 5B: one row per grade drawn on screen, and the sentence on their sizes; the badge also on the landscape's names */
           "conf-a":!!CONF.shown.A, "conf-b":!!CONF.shown.B, "conf-c":!!CONF.shown.C, conf:!!(CONF.shown.A||CONF.shown.B||CONF.shown.C),
           /* Stage 5D: the skeleton's rows, for what it draws on screen */
-          "skel-a":!!SKEL.shown.A, "skel-b":!!SKEL.shown.B, "skel-c":!!SKEL.shown.C, skel:!!(SKEL.shown.line||SKEL.shown.A||SKEL.shown.B||SKEL.shown.C)};
+          "skel-a":!!SKEL.shown.A, "skel-b":!!SKEL.shown.B, "skel-c":!!SKEL.shown.C, skel:!!(SKEL.shown.line||SKEL.shown.A||SKEL.shown.B||SKEL.shown.C),
+          routes:!!ROUTES.shown};   /* Stage 5F: the ordered routes */
   on.badge=on.badge||(mode==="terrain"&&textOn());
   var key=JSON.stringify(on);
   if(key===_lgKey) return;
@@ -4182,6 +4274,7 @@ function updateVisibility(){
   smokePlace();   /* Stage 4E: the puffs placed, the cap on screen applied */
   CONF.shown=confShown;
   skelUpdate();   /* Stage 5D */
+  routeUpdate();  /* Stage 5F */
 
   placeLabels.forEach(function(o){
     var major=MAJOR_FEATURES[o.ft.id] || o.ft.kind==="height" || o.ft.kind==="town";
@@ -4763,6 +4856,8 @@ function buildUI(){
     paintDrawer(); requestRender(2); });
   var skb=document.querySelector('.layer-btn[data-l="skeleton"]');   /* the dossier's "Plotted positions" follow the layer */
   if(skb) skb.addEventListener("click",function(){ paintDrawer(); requestRender(2); });
+  var rtb=document.querySelector('.layer-btn[data-l="routes"]');   /* Stage 5F: the dossier's "Ordered route" follows the layer */
+  if(rtb) rtb.addEventListener("click",function(){ paintDrawer(); requestRender(2); });
   var dwb=document.getElementById("dwell");   /* Stage 4D (decision 75): pause briefly at events, on by default */
   if(dwb) dwb.addEventListener("click",function(){ DWELL.on=!DWELL.on; dwb.setAttribute("aria-pressed",String(DWELL.on)); if(!DWELL.on) DWELL.st=null; });
   document.getElementById("prev").addEventListener("click",function(){ stopPlay(); setClock(clock-10); });
@@ -5425,6 +5520,10 @@ function dossierFormation(id){
       " &middot; grade "+esc(tt.gr)+" &middot; "+esc(tt.basis));
     whr+=row("Dated by", tt.ev.map(function(q){ return "&ldquo;"+esc(q)+"&rdquo;"; }).join("; ")+'<br><span class="hh">'+esc(tt.note)+'</span>');
   }
+  /* Stage 5F (section E.3 item 3): with the ordered routes on, where plan and execution part, as a derived distance */
+  if(f.track&&layerOn.routes){ var dv=routeDeviation(id);
+    if(dv.length) whr+=row("Ordered route", dv.map(function(q){ return esc(q.col.split(" - ")[0])+": at most "+q.km.toFixed(1)+" km from it"; }).join("; ")+
+      ' <span class="ltag derived">'+iconSVG(TOKENS.sym.layer.derived)+'derived</span> <span class="hh">(the largest distance over the day, sampled every 10 minutes; why a column left its route is the narrative\'s)</span>'); }
   /* Stage 5D: with the evidence skeleton on, the formation's plotted positions in words (the anchors' clocks and grades) */
   if(f.track&&layerOn.skeleton){ var pl=anchorList(id).filter(function(an){ return an.p!==null; }).map(function(an){ var sa=stateAt(id,an.ph);
       return esc(fmtClock(an.arr))+" "+esc(sa?sa.cf:"B")+(an.tm?" (timed)":""); });
@@ -5780,7 +5879,10 @@ function openSources(){
     /* Stage 5D: the evidence skeleton */
     '<li>'+esc("The evidence skeleton (a layer, off at first) draws each formation's plotted positions, the anchors the clock moves between, "+
       "as small marks by grade (filled: A, ring: B, open ring: C; a tick where the position carries an explicit time), and the lines this "+
-      "reconstruction interpolates between them. The lines are not recorded routes.")+'</li></ul>'+
+      "reconstruction interpolates between them. The lines are not recorded routes.")+'</li>'+
+    /* Stage 5F: the ordered routes */
+    '<li>'+esc("The ordered routes (a layer, off at first) draw each plan column's line of march, dashed and faint, as the two plans set them out: "+
+      "intentions, not what was marched. A formation's dossier then gives the largest distance of its executed track from its column's route, derived.")+'</li></ul>'+
     '<h3>Basis</h3><ul class="bul">'+SOURCE_NOTE.refs.map(function(r){return '<li>'+esc(r)+'</li>';}).join('')+'</ul>'+
     /* the display (decisions 19, 32, 35, 36): written by the app, so the guarded SOURCE_NOTE stays as it is */
     '<h3>How the ground and the symbols are drawn</h3><ul class="bul">'+
@@ -6349,6 +6451,7 @@ var AUSTERLITZ_DEBUG=(function(){
     if(mode==="staff"&&(spec.paper==="frame"||(!spec.cam&&!spec.aim))){ tween=null; freeCam=true; MAPCAM.frameField(true); }
     else placeCamera(spec.cam||aimOf(spec));
     if(spec.eye) eyeEnter();   /* Stage 5E: the eye-level vantage at the chosen headquarters */
+    if(spec.plan) setPlan(spec.plan);   /* Stage 5F (decision 94): the Plans overlay on, the camera where the case put it; the rail on its Now tab (decision 55: the overlay stays when the visitor leaves the Plans tab) */
     requestRender(3);
     return true;
   }
@@ -7164,6 +7267,76 @@ var AUSTERLITZ_DEBUG=(function(){
     setClock(k0.clock,{instant:true,force:true,camera:false}); finishTween(); settle(2,true);
     return out;
   }
+  /* Stage 5F (docs/STAGE5_SPEC.md section E.4; decision 93): the ordered routes at a display factor, every column drawn (09:30): every
+     triangle of every dash sampled every 0.5 units, none under the drawn ground, every point at its lift */
+  function routeChecks(ck,fct){
+    var lo=layerOn.routes, keep=clock; layerOn.routes=true; select(null,null); setClock(570,{instant:true,force:true,camera:false}); finishTween(); settle(4,true);
+    var n=0, under=0, off=0, tris=0, worst=1e9;
+    (ROUTES.grp?ROUTES.grp.children:[]).forEach(function(m){ var P=m.geometry.attributes.position;
+      for(var t=0;t<P.count;t+=3){ tris++; var A=[P.getX(t),P.getY(t),P.getZ(t)], B=[P.getX(t+1),P.getY(t+1),P.getZ(t+1)], C=[P.getX(t+2),P.getY(t+2),P.getZ(t+2)];
+        var e=Math.max(Math.hypot(B[0]-A[0],B[2]-A[2]),Math.hypot(C[0]-A[0],C[2]-A[2])), k=Math.max(1,Math.ceil(e/0.5));
+        for(var i=0;i<=k;i++) for(var j=0;j<=k-i;j++){ var u=i/k, w=j/k, r=1-u-w, x=A[0]*r+B[0]*u+C[0]*w, y=A[1]*r+B[1]*u+C[1]*w, z=A[2]*r+B[2]*u+C[2]*w, gap=y-groundY(x,z);
+          n++; if(gap<-1e-4) under++; worst=Math.min(worst,gap); off=Math.max(off,Math.abs(gap-ROUTES.LIFT)); } } });
+    ck("ordered routes: every dash lies on the drawn ground, each piece inside one of its triangles at the lift, no point under it (section E.4)",
+      tris>0&&!under&&off<1e-3, (ROUTES.grp?ROUTES.grp.children.length:0)+" routes, "+tris+" triangles, "+n+" points sampled every 0.5 units: "+under+" under the ground; the lowest "+(worst===1e9?"-":worst.toFixed(4))+
+      " units above it; every point within "+off.toExponential(1)+" of the lift "+ROUTES.LIFT);
+    layerOn.routes=lo; setClock(keep,{instant:true,force:true,camera:false}); finishTween(); settle(2,true);
+  }
+  /* Stage 5F: the routes bound to the plans, dashed, depth-tested under the figures, nothing dimmed; the scope and the phase-0 rule;
+     the dossier's derived distance; the legend; the paper map; none in Clean */
+  function routeDayChecks(){
+    var out=[], keep=clock, md=mode, lo=layerOn.routes, la=layerOn.arrows, sk0=selection?{k:selection.kind,id:selection.id}:null, ex=dossierExpanded, pres=presentation, ms0=MAPCAM.state();
+    if(mode!=="terrain") setMode("terrain");
+    select(null,null); var h0=highlight; layerOn.routes=true; setClock(570,{instant:true,force:true,camera:false}); finishTween(); settle(4,true);
+    /* bound to its column's route: every point of every dash within half the ribbon's width of the route; the dashed share of its length */
+    var b1=[], shares=[], hw=ROUTES.W/2;
+    (ROUTES.grp?ROUTES.grp.children:[]).forEach(function(m){ var U=m.userData.route, c=PLANS[U.sd].cols[U.ci], pts=c.route.map(function(q){ return W(q[0],q[1]); }), P=m.geometry.attributes.position, far=0, area=0;
+      for(var v=0;v<P.count;v++){ var x=P.getX(v), z=P.getZ(v), d=1e9; for(var i=1;i<pts.length;i++){ var a=pts[i-1], b=pts[i], vx=b[0]-a[0], vz=b[1]-a[1], l2=vx*vx+vz*vz, t=l2?Math.max(0,Math.min(1,((x-a[0])*vx+(z-a[1])*vz)/l2)):0;
+        d=Math.min(d,Math.hypot(x-a[0]-vx*t,z-a[1]-vz*t)); } far=Math.max(far,d); }
+      for(var t2=0;t2<P.count;t2+=3) area+=Math.abs((P.getX(t2+1)-P.getX(t2))*(P.getZ(t2+2)-P.getZ(t2))-(P.getX(t2+2)-P.getX(t2))*(P.getZ(t2+1)-P.getZ(t2)))/2;
+      var sh=area/(U.len*ROUTES.W); shares.push(sh);
+      if(far>hw+1e-4) b1.push(c.n+": a point "+far.toFixed(3)+" units from its route");
+      if(U.runs<2) b1.push(c.n+": not dashed"); });
+    var smin=Math.min.apply(null,shares), smax=Math.max.apply(null,shares);
+    var mat=ROUTES.grp&&ROUTES.grp.children[0]?ROUTES.grp.children[0].material:null, depthOK=!!mat&&mat.depthTest&&!mat.depthWrite&&mat.transparent&&mat.opacity===ROUTES.OP;
+    var dimmed=highlight!==h0;
+    out.push({name:"ordered routes: each drawn on its column's PLANS route (every point within half its width), dashed, depth-tested in the transparent pass so the figures stand on it, at 30% of the side's colour; nothing dimmed (section E.4; decision 15)",
+      ok:!b1.length&&shares.length===14&&smin>ROUTES.DUTY-0.06&&smax<ROUTES.DUTY+0.06&&depthOK&&!dimmed,
+      detail:shares.length+" routes at 09:30; the dashed share of each one's length "+smin.toFixed(3)+"-"+smax.toFixed(3)+" (duty "+ROUTES.DUTY+", the joints' overlaps and gaps aside); depth-tested "+depthOK+"; the highlight "+(dimmed?"CHANGED":"untouched")+(b1.length?"; WRONG: "+b1.slice(0,4).join("; "):"")});
+    /* the scope (decision 93) and the phase-0 rule: phase by phase, independently; a selection's family; the axis arrows' columns */
+    var ax=routeAxis0(), axk=Object.keys(ax), bad=[], per=[];
+    for(var ph=0;ph<PHASES.length;ph++){ setClock(PHASES[ph].t0+1,{instant:true,force:true,camera:false}); finishTween(); settle(2,true);
+      var want=[]; ["al","fr"].forEach(function(sd){ PLANS[sd].cols.forEach(function(c,ci){ if(ph===0&&layerOn.arrows&&ax[sd+":"+ci]) return;
+        if(c.forms.some(function(id){ if(!units[id]||!posNow(id)) return false; var A=anchorList(id).filter(function(a){ return a.p!==null; }); return clock<A[A.length-1].arr; })) want.push(sd+ci); }); });
+      var got=(ROUTES.scope||[]).map(function(r){ return r.sd+r.ci; }), drawn=(ROUTES.grp?ROUTES.grp.children:[]).map(function(m){ return m.userData.route.sd+m.userData.route.ci; });
+      if(want.join()!==got.join()||got.join()!==drawn.join()) bad.push("phase "+ph+": "+drawn.join(",")+" drawn, want "+want.join(","));
+      per.push(drawn.length); }
+    setClock(250,{instant:true,force:true,camera:false}); layerOn.arrows=false; settle(2,true);
+    var noArrows=(ROUTES.scope||[]).filter(function(r){ return !!ax[r.sd+":"+r.ci]; }).length; layerOn.arrows=la; settle(2,true);
+    var axOK=axk.length===4&&axk.every(function(k){ return ax[k].dist<3; })&&noArrows===4;
+    setClock(570,{instant:true,force:true,camera:false}); select("f","sthilaire"); settle(2,true);
+    var fam=familyOf("sthilaire"), wantS=[]; ["al","fr"].forEach(function(sd){ PLANS[sd].cols.forEach(function(c,ci){ if(c.forms.some(function(id){ return !!fam[id]; })) wantS.push(sd+ci); }); });
+    var gotS=(ROUTES.scope||[]).map(function(r){ return r.sd+r.ci; }).join(",");
+    if(gotS!==wantS.join(",")) bad.push("Saint-Hilaire selected: "+gotS+", want "+wantS.join(","));
+    out.push({name:"ordered routes: the scope (decision 93): a selection's family's columns; else every column while a formation it names is on the field before its last anchor; in phase 0, while the arrows are drawn, not the four columns the axis arrows draw",
+      ok:!bad.length&&axOK, detail:"routes drawn by phase "+per.join(", ")+"; Saint-Hilaire's family "+gotS+"; the axis arrows' columns "+axk.map(function(k){ return k+" ("+ax[k].label+", "+(ax[k].dist*GEOREF.KM_PER_MAP*1000).toFixed(0)+" m)"; }).join(", ")+
+        "; with the arrows off at 04:10 they are drawn: "+noArrows+" of 4"+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):"")});
+    /* the dossier's derived distance, the legend's row, the paper map, Clean */
+    dossierExpanded=true; select("f","milo"); dossierExpanded=true; paintDrawer();
+    var row5=Array.prototype.filter.call(document.querySelectorAll(".dossier .kv"),function(e){ return /^Ordered route/.test(e.textContent); })[0], rowText=row5?row5.textContent:"";
+    var dv=routeDeviation("milo");
+    select(null,null); dossierExpanded=ex; settle(2,true); paintLegend(); var lgOn=!document.querySelector('.legend [data-lg="routes"]').hidden;
+    setMode("staff"); MAPCAM.frameField(true); settle(2,true); var paper=ROUTES.grp?ROUTES.grp.children.length:0;
+    setMode("terrain"); setPresentation("map"); settle(2,true); var clean=!ROUTES.grp; setPresentation(pres);
+    layerOn.routes=false; settle(2,true); paintLegend(); var lgOff=document.querySelector('.legend [data-lg="routes"]').hidden, gone=!ROUTES.grp;
+    out.push({name:"ordered routes: the dossier gives the largest distance from the route, derived; the legend's row while drawn; drawn on the paper map; none in Clean; off removes them",
+      ok:/derived/.test(rowText)&&/km from it/.test(rowText)&&dv.length===1&&lgOn&&lgOff&&paper===14&&clean&&gone,
+      detail:"Miloradovich: \u201c"+rowText.slice(0,90)+"\u2026\u201d ("+dv.map(function(q){ return q.km.toFixed(2)+" km"; }).join(", ")+"); the legend "+lgOn+"/"+lgOff+"; paper map "+paper+" routes; Clean none "+clean+"; off removes them "+gone});
+    layerOn.routes=lo; layerOn.arrows=la; MAPCAM.restore(ms0); if(mode!==md) setMode(md);
+    if(sk0) select(sk0.k,sk0.id); else select(null,null);
+    setClock(keep,{instant:true,force:true,camera:false}); finishTween(); settle(2,true);
+    return out;
+  }
   function smokeDayChecks(){
     var out=[], keep=clock, bad=[], n=0, full=0, resid=0;
     for(var i=0;i<20;i++){ var t=T_MIN+30+(T_MAX-T_MIN-60)*i/19; setClock(t,{instant:true,force:true,camera:false}); finishTween();
@@ -7234,8 +7407,9 @@ var AUSTERLITZ_DEBUG=(function(){
     var out=[], t0=performance.now(), i;
     function ck(name,ok,detail){ out.push({name:name,ok:!!ok,detail:detail}); }
     if(EYE.on) eyeLeave();   /* Stage 5E: the checks run from the omniscient view, off the eye level; the reading is restored after */
-    var save={t:clock,mode:mode,pres:presentation,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,map:MAPCAM.state(),cv:commandView};
+    var save={t:clock,mode:mode,pres:presentation,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,map:MAPCAM.state(),cv:commandView,plan:planSide};
     setCommandView("none");
+    if(planSide) setPlan(planSide);   /* Stage 5F: and without the Plans overlay (it dims every formation); restored after */
     closeFirst(null); stopPlay(); if(tourStep>=0) exitTour();
     if(mode==="staff") setMode("terrain");   /* the checks of the drawn relief run on the landscape (Stage 2E) */
 
@@ -7376,6 +7550,7 @@ var AUSTERLITZ_DEBUG=(function(){
       confChecks(ck,fct);   /* Stage 5B */
       skelChecks(ck,fct);   /* Stage 5D */
       eyesChecks(ck,fct);   /* Stage 5E */
+      routeChecks(ck,fct);  /* Stage 5F */
     }
     DISPLAY.settings.forEach(atFactor);
     stage2bChecks(bySetting).forEach(function(c){ out.push(c); });
@@ -7387,6 +7562,7 @@ var AUSTERLITZ_DEBUG=(function(){
     confDayChecks().forEach(function(c){ out.push(c); });   /* Stage 5B */
     skelDayChecks().forEach(function(c){ out.push(c); });   /* Stage 5D */
     eyesDayChecks().forEach(function(c){ out.push(c); });   /* Stage 5E */
+    routeDayChecks().forEach(function(c){ out.push(c); });  /* Stage 5F */
     setDisplayFactor(saveFactor);
     /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
     var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });
@@ -7652,6 +7828,7 @@ var AUSTERLITZ_DEBUG=(function(){
     landCam.position.copy(save.pos); orbitTarget.copy(save.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=save.fc;
     if(mode==="staff") MAPCAM.restore(save.map);
     setCommandView(save.cv);
+    if(save.plan){ var fc5=freeCam; freeCam=true; setPlan(save.plan); freeCam=fc5; }
     requestRender(3);
     return {ms:Math.round(performance.now()-t0), ok:out.every(function(c){ return c.ok; }), checks:out};
   }
