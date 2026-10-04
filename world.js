@@ -1007,7 +1007,7 @@ var GROUND_FRAG_MAIN=[
   "  gCol=clamp(gLin(bc),0.0,1.0);",
   "  if(uVSOn>0.5){ vec2 q=floor((vWxz-uVSG.xy)/uVSG.zw+0.5); float vis=0.0;",   /* sampleVS: the nearest node of the analysis grid */
   "    if(q.x>=0.0&&q.y>=0.0&&q.x<uVSN.x&&q.y<uVSN.y) vis=texture2D(uVS,(q+0.5)/uVSN).x;",
-  "    gCol=vis>0.5?gCol*vec3(0.86,0.88,0.70)+vec3(0.20,0.17,0.03):gCol*vec3(0.40,0.42,0.52)+vec3(0.035,0.055,0.10); }",
+  "    gCol=vis>0.75?gCol*vec3(0.86,0.88,0.70)+vec3(0.20,0.17,0.03):vis>0.25?gCol*vec3(0.60,0.64,0.70)+vec3(0.14,0.15,0.17):gCol*vec3(0.40,0.42,0.52)+vec3(0.035,0.055,0.10); }",   /* Stage 5E: in sight, in sight under the fog, out of sight */
   "}",
   "float gCell=uMode>0.5?(gCls==0.0?(gCrop==1.0?8.0:gCrop==2.0?9.0:gCrop==3.0?10.0:0.0):gCls):vCover;",
   "float ci=mod(gCell,4.0), cj=floor(gCell/4.0);",
@@ -1035,7 +1035,7 @@ function groundTextures(){
 }
 function viewshedTexture(){
   var t=groundTextures().vs, d=t.image.data;
-  for(var i=0;i<vsMask.length;i++) d[i*4]=vsMask[i]?255:0;
+  for(var i=0;i<vsMask.length;i++) d[i*4]=vsMask[i]===2?128:(vsMask[i]?255:0);   /* Stage 5E: 2, in sight but under the valley fog's top */
   t.needsUpdate=true;
 }
 var _gPal={};

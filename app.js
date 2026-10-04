@@ -1292,10 +1292,13 @@ function confPlace(m,g,x,z,yaw,W0,D0,hex,op,cap){
   if(mat.map!==map){ mat.map=map; mat.needsUpdate=true; }
   if(U.hex!==hex){ mat.color.copy(lin(hex)); U.hex=hex; }
   mat.opacity=op; U.g=g; U.w=w; U.d=d;
-  var key=[g,x.toFixed(3),z.toFixed(3),yaw.toFixed(4),w.toFixed(3),d.toFixed(3),DISPLAY.factor,DISPLAY.flat?1:0].join("|");
+  /* Stage 5E: at the eye-level vantage the mark lies EYE.LIFT above the ground, offset in depth so the ground does not cut it */
+  var lf=EYE.on?EYE.LIFT:CONF.LIFT;
+  if(mat.polygonOffset!==EYE.on){ mat.polygonOffset=EYE.on; mat.polygonOffsetFactor=-2; mat.polygonOffsetUnits=-2; mat.needsUpdate=true; }
+  var key=[g,x.toFixed(3),z.toFixed(3),yaw.toFixed(4),w.toFixed(3),d.toFixed(3),DISPLAY.factor,DISPLAY.flat?1:0,lf].join("|");
   if(U.key===key) return;
   U.key=key;
-  groundPatch(m,U,x,z,yaw,w,d,CONF.LIFT);
+  groundPatch(m,U,x,z,yaw,w,d,lf);
 }
 /* the patch of the drawn ground's own cells (GROUND_NX x GROUND_NZ, the same diagonal as groundY) under a w x d rectangle at
    world (x,z) turned by yaw, every node `lift` above the drawn ground, its uv the rectangle's own frame (the mask's): it lies
@@ -1416,7 +1419,7 @@ function skelPlaceMarks(){
   SKEL.shown=sh;
 }
 function skelUpdate(){
-  if(!layerOn.skeleton||cleanView){ if(SKEL.grp) skelClear(); SKEL.scope=null; SKEL.key=""; SKEL.shown={A:false,B:false,C:false,line:false}; return; }
+  if(!layerOn.skeleton||cleanView||EYE.on){ if(SKEL.grp) skelClear(); SKEL.scope=null; SKEL.key=""; SKEL.shown={A:false,B:false,C:false,line:false}; return; }
   var key=[selection&&selection.kind==="f"?selection.id:"",SKEL.day?1:0,curPhase,mode,DISPLAY.factor,DISPLAY.flat?1:0].join("|");
   if(key!==SKEL.key){ SKEL.key=key; SKEL.scope=skelScope(); skelBuild(SKEL.scope); }
   skelPlaceMarks();
@@ -1436,14 +1439,14 @@ function skelNear(cx,cy,r){
 /* true scale (decision 34): at 1x the relief is honest and every symbol would stand taller than it, so the
    figure-scale and landscape-scale layers are not drawn; formations are drawn as their footprints */
 function isTrueScale(){ return DISPLAY.factor===1; }
-function landscapeVisible(){ return mode!=="staff" && !isTrueScale(); }
+function landscapeVisible(){ return mode!=="staff" && !isTrueScale() && !EYE.on; }   /* Stage 5E: not at the eye level, as at 1x */
 function syncLandscapeLayers(){
   var on=landscapeVisible();
   world.trees.visible=on; world.conifers.visible=on;
   if(world.scrub) world.scrub.visible=on;
   world.roofs.visible=on; world.spires.visible=on;
   if(world.chimneys) world.chimneys.visible=on;
-  world.houses.visible=!isTrueScale()&&mode!=="staff";   /* the paper map draws the villages as flat footprints (Stage 2E) */
+  world.houses.visible=!isTrueScale()&&mode!=="staff"&&!EYE.on;   /* the paper map draws the villages as flat footprints (Stage 2E) */
   if(world.paper) world.paper.visible=(mode==="staff");
 }
 /* ---- the display factor (Stage 2B; owner decisions 19 and 35) ----
@@ -2213,6 +2216,7 @@ function startPhaseTransition(ph,instant,moveCam){
 function setClock(t,opts){
   opts=opts||{};
   clock=clampT(t);
+  knowAtClock();   /* Stage 5E (decision 92): the Command view's reading at the clock */
   var ph=phaseAt(clock);
   if(ph!==curPhase || opts.force){
     curPhase=ph;
@@ -2918,7 +2922,7 @@ function paintCommand(){
   var host=document.getElementById("cmdbody");
   if(!host) return;
   if(commandView==="none"){
-    host.innerHTML='<p class="muted">Choose a headquarters. Enemy formations it could not see are removed from the map; formations known only by report are drawn with a broken outline and a query.</p>';
+    host.innerHTML='<p class="muted">Choose a headquarters. Enemy formations it could not see are removed from the map; formations known only by report are drawn as a diffuse zone without figures, their names and counters marked \u201c?\u201d.</p>';
     return;
   }
   var side=commandView, book=COMMAND[side]||{}, items=null;
@@ -2942,6 +2946,129 @@ function setCommandView(v){
   });
   document.body.classList.toggle("cmd-on", v!=="none");
   paintCommand();
+  eyesSync();   /* Stage 5E */
+}
+
+/* ---- "Whose eyes?" (Stage 5E; docs/STAGE5_SPEC.md section D.5; owner decisions 91, 92) ----
+   One control for the Command view: everyone (the omniscient view), Napoleon's headquarters, the Allied headquarters. The knowledge
+   rule is the guarded knowledgeOf, unchanged; what 5E changes is when it is read and how it is drawn:
+   - the reading follows the clock (decision 92): knowledgeOf caches by the phase; its cache is cleared at every new minute of the
+     clock (knowAtClock), so the drawn reading is the rule's at the clock, the headquarters and the formations where the clock has them;
+   - "reported only" is marked everywhere: the name's and the counter's "?" (5B), and the formation drawn as the C zone of section A
+     with no figures (reported, not seen);
+   - the viewshed from the chosen headquarters, the ground under the valley fog's top inside it drawn fogged while the rule applies;
+   - the eye-level vantage at the headquarters (EYE);
+   - the dossier gives the reason (knowReason), the caption says it is a model reading (EYES.NOTE). */
+var EYES={min:"", vs:null, vsAt:0, VS_MS:500, VS_MOVE:1,
+  NOTE:"A model reading: line of sight over this model's ground from the headquarters' plotted position, the valley fog's rule, and "+
+    "authored limits on what each side knew. Not a record of what was seen.",
+  LABEL:{none:"Everyone", fr:"Napoleon's headquarters", al:"Allied headquarters"}, SHORT:{none:"everyone", fr:"Napoleon", al:"Allied HQ"},
+  HQ:{fr:"gqg", al:"ahq"}};
+/* decision 92: the cache of the guarded knowledgeOf, keyed by the phase, is cleared at each new minute of the clock */
+function knowAtClock(){ var k=commandView+"|"+Math.floor(clock+1e-9); if(EYES.min!==k){ EYES.min=k; knowKey=""; } }
+/* what the drawing shows: the reading, and at the eye-level vantage a known enemy the eye has no line of sight to is drawn as
+   reported (known, not seen from here) */
+function drawnKnow(id){
+  knowAtClock();
+  var k=knowledgeOf(id);
+  if(k==="seen"&&EYE.on){ var hq=posNow(EYES.HQ[commandView]), p=posNow(id); if(hq&&p&&!hasLOS(hq,p)) return "uncertain"; }
+  return k;
+}
+/* which part of the rule decides (the dossier's reason): the authored limit (KNOW_OVERRIDE), the line of sight, the valley fog */
+function knowReason(id){
+  var k=(knowAtClock(),knowledgeOf(id));
+  if(k!=="unknown"&&k!=="uncertain") return null;
+  var ov=KNOW_OVERRIDE[commandView]&&KNOW_OVERRIDE[commandView][id];
+  if(ov) return "authored limit";
+  return k==="unknown"?"no line of sight":"valley fog";
+}
+/* the control's state everywhere it is shown: the Command tab's group, the timeline's button, the eye's vantage button */
+function eyesSync(){
+  var v=commandView, tb=document.getElementById("eyesbtn"), vb=document.querySelector('.van-btn[data-v="eye"]'), go=document.getElementById("eyego"), tg=document.getElementById("eyes-tag");
+  if(tg&&!tg.innerHTML) tg.innerHTML=iconSVG(TOKENS.sym.layer.derived)+"derived";
+  if(go) go.hidden=(v==="none");
+  if(tb){ tb.textContent="Eyes: "+EYES.SHORT[v]; tb.setAttribute("aria-label","Whose eyes? "+EYES.LABEL[v]+" (press to change)"); tb.setAttribute("aria-pressed",String(v!=="none")); }
+  if(vb) vb.hidden=(v==="none");
+  if(v==="none"&&EYE.on) eyeLeave();
+  eyesViewshed(true);
+  requestRender(2);
+}
+function eyesCycle(){ setCommandView(commandView==="none"?"fr":commandView==="fr"?"al":"none"); }
+/* the viewshed from the chosen headquarters (section D.5 item 1): computeViewshed (guarded, unchanged: 900 rays over the model's grid,
+   a 3 m eye) from its plotted position at the clock, recomputed when it has moved more than VS_MOVE world units or the phase changes,
+   at most every VS_MS while the clock plays; drawn as the existing tint. Inside it, the cells under the valley fog's top by the
+   rule's own test (the model's height below ATMO.FOG_TOP_H, -0.8, the 238.2 m the fog is drawn at) are marked fogged (2) while the
+   phase's mist exceeds 0.5, the rule's own condition: in sight of the eye, but in the fog, so reported only. A place's sightlines,
+   asked for in its dossier, are left as they are while shown. */
+function eyesViewshed(force){
+  var v=commandView, mine=!!(vsOrigin&&vsOrigin.hq);
+  if(v==="none"){ if(mine) clearViewshed(); EYES.vs=null; return; }
+  if(vsOrigin&&!mine) return;
+  var p=posNow(EYES.HQ[v]); if(!p){ if(mine) clearViewshed(); EYES.vs=null; return; }
+  var w=W(p[0],p[1]), fog=PHASES[curPhase].mist>0.5, V=EYES.vs, now=performance.now();
+  if(!force&&mine&&V&&V.v===v&&V.fog===fog&&V.ph===curPhase&&Math.hypot(w[0]-V.x,w[1]-V.z)<=EYES.VS_MOVE) return;
+  if(!force&&mine&&playing&&now-EYES.vsAt<EYES.VS_MS) return;
+  computeViewshed(p,EYE_OBSERVER_M); vsOrigin.hq=v;
+  var nf=0;
+  if(fog) for(var j=0;j<G_NZ;j++) for(var i=0;i<G_NX;i++){ var k=j*G_NX+i; if(vsMask[k]&&height(G_X0+i*G_DX,G_Z0+j*G_DZ)<ATMO.FOG_TOP_H){ vsMask[k]=2; nf++; } }
+  if(nf) viewshedTexture();
+  EYES.vs={v:v,x:w[0],z:w[1],fog:fog,ph:curPhase,fogged:nf}; EYES.vsAt=now;
+}
+
+/* the eye-level vantage (section D.5 item 3; decision 91): the eye at the chosen headquarters' plotted position at the clock,
+   EYE_OBSERVER_M above the drawn ground (the metre scaled by the display factor, so the drawn line of sight is the model's), looking
+   toward the phase's authored target, and moving with the headquarters as the clock runs. It is the one camera path below the floor:
+   while the eye stands there, clampCamera and the frame's guard hold it at its own height; the near plane is lowered to EYE.NEAR. Any
+   orbit, pan, zoom, glide or preset leaves it for the ordinary camera at its floor (Follow off, decision 47). While it is there the
+   confidence marks lie EYE.LIFT above the ground with a depth offset (at 1x the eye is 0.05 units up); as at true scale (decision 34),
+   nothing at landscape scale is drawn (trees, houses: symbols many times life size that would wall in a 3 m eye, the village round the
+   chapel of St Anthony) and the observer's own side is drawn as its ground marks, not figures (its standards would stand across the
+   view), none within CLEAR_R (eyeOwnNear); the enemy in sight keeps its figures; the skeleton is not drawn (its marks would stand above the eye), and a known enemy it has no line of sight to is
+   drawn as reported (drawnKnow). The caption says what it is (eyeCaption). */
+var EYE={on:false, NEAR:0.05, NEAR0:1, LIFT:0.02, CLEAR_R:8, pos:new THREE.Vector3(), _d:new THREE.Vector3()};
+/* at the eye, the observer's own side within CLEAR_R world units (about 500 m) is not drawn on the ground (figures and marks): at a 3 m
+   eye they fill the picture (the staff and the Guard round the Zuran); their names and counters stay in the map layer. A design value */
+function eyeOwnNear(id,f,wx,wz){ return EYE.on&&sideOfNation(f.nation)===commandView&&Math.hypot(wx-EYE.pos.x,wz-EYE.pos.z)<EYE.CLEAR_R; }
+function eyeHeight(){ return GEOREF.unitsFromM(EYE_OBSERVER_M)*displayScale(); }
+function eyePlace(){ var p=commandView==="none"?null:posNow(EYES.HQ[commandView]); if(!p) return false;
+  var w=W(p[0],p[1]); EYE.pos.set(w[0],groundY(w[0],w[1])+eyeHeight(),w[1]); return true; }
+function eyeEnter(){
+  if(commandView==="none") return false;
+  if(mode==="staff") setMode("terrain");
+  setTween("cam",null);
+  if(!eyePlace()) return false;
+  var c=PHASES[curPhase].cam, tw=c?[c[3],c[5]]:[orbitTarget.x,orbitTarget.z];
+  EYE.on=true; landCam.near=EYE.NEAR; landCam.updateProjectionMatrix();
+  orbitTarget.set(tw[0],groundY(tw[0],tw[1]),tw[1]); landCam.position.copy(EYE.pos); landCam.lookAt(orbitTarget);
+  freeCam=true; curVantage="eye"; syncLandscapeLayers(); syncFollow(); syncViewOffset(true); eyeCaption(); requestRender(3);
+  return true;
+}
+function eyeLeave(){
+  if(!EYE.on) return;
+  EYE.on=false; landCam.near=EYE.NEAR0; landCam.updateProjectionMatrix();
+  if(curVantage==="eye") curVantage=null;
+  clampCamera(); landCam.lookAt(orbitTarget); syncLandscapeLayers(); syncFollow(); eyeCaption(); requestRender(3);
+}
+/* the eye moves with the headquarters, keeping its direction of view */
+function eyeFollow(){
+  if(!EYE.on) return;
+  if(commandView==="none"||mode==="staff"){ eyeLeave(); return; }
+  EYE._d.copy(orbitTarget).sub(landCam.position);
+  if(!eyePlace()){ eyeLeave(); return; }
+  if(landCam.position.distanceToSquared(EYE.pos)>1e-12){ landCam.position.copy(EYE.pos); orbitTarget.copy(EYE.pos).add(EYE._d); landCam.lookAt(orbitTarget); }
+}
+/* the caption over the view: what the eye is, a model reading; the relief's factor; at the chapel of St Anthony the recorded mismatch */
+function eyeCaption(){
+  var b=document.getElementById("eyecap"); if(!b) return;
+  if(!EYE.on){ if(!b.hidden){ b.hidden=true; b.innerHTML=""; EYE.capH=""; } return; }
+  var hq=EYES.HQ[commandView], A=anchorList(hq).filter(function(a){ return a.p&&a.arr<=clock+1e-9; }).pop(), st=A?stateAt(hq,A.ph):null;
+  var chapel=!!(st&&/chapel of St Anthony/.test(st.act||""));
+  var h='<p><span class="ltag derived">'+iconSVG(TOKENS.sym.layer.derived)+'derived</span> Eye level at '+esc(EYES.LABEL[commandView])+', '+esc(fmtClock(clock))+
+    '. Relief drawn &times;'+esc(fmtFactor(DISPLAY.factor))+'; figures are symbols many times life size.</p><p class="eyenote">'+esc(EYES.NOTE)+'</p>';
+  if(chapel) h+='<p class="eyenote">'+esc("From the chapel of St Anthony the model shows little of the Satschan pond; a source records Napoleon watching the end from there. "+
+    "A documented mismatch between the model and the source: the chapel's position is approximate and the relief stylised.")+'</p>';
+  if(EYE.capH!==h){ EYE.capH=h; b.innerHTML=h; }
+  b.hidden=false;
 }
 
 /* ============================================================
@@ -3429,7 +3556,7 @@ function mlCollect(){
     mlContent(it,[str,col,PL].join("|"),esc(str),[PL,col]);
     it.world.copy(w); o.cat=cat; return add(it,o);
   }
-  function fstate(id){ var f=FORMATIONS[id]; return {st:liveStatus(id,curPhase),cf:aggConf(id,curPhase),know:knowledgeOf(id),strength:f.strength||aggStrength(id)}; }
+  function fstate(id){ var f=FORMATIONS[id]; return {st:liveStatus(id,curPhase),cf:aggConf(id,curPhase),know:drawnKnow(id),strength:f.strength||aggStrength(id)}; }   /* Stage 5E: as drawn */
   function rank(f,s){ var e=ECH_RANK[f.ech]; return (e===undefined?2:e)*0.1-(s||0)/1e7; }
   /* formation counters: the paper map and hybrid */
   function counter(id,rec){
@@ -3960,6 +4087,7 @@ function smokePlace(){
   L.forEach(function(q){ var sp=q.sp, to=q.op-sp.material.opacity; if(Math.abs(to)>0.004) settling=true; sp.material.opacity+=to*ease(0.05); });
 }
 function updateVisibility(){
+  eyeFollow(); eyesViewshed(false); eyeCaption();   /* Stage 5E: the eye with its headquarters; the headquarters' viewshed at the clock */
   var dist=viewDist();   /* the paper map: the distance at which the landscape eye would show the ground at its scale */
   var wantCorps = dist>250;
   var showBde = dist<165;
@@ -3991,7 +4119,7 @@ function updateVisibility(){
        divisions; a brigade detachment does not replace its parent */
     var isParent = !!(f.children && f.children.some(function(c){
       return FORMATIONS[c] && FORMATIONS[c].ech!=="bde"; }));
-    var kn=knowledgeOf(id);
+    var kn=drawnKnow(id), unc=(kn==="uncertain");   /* Stage 5E: reported only: the C zone, no figures */
     if(kn==="unknown") p=null;
     var show = wantCorps
       ? (showSym && !!p && !f.parent)
@@ -3999,18 +4127,20 @@ function updateVisibility(){
     placeSprite(rec,p,show);
 
     var trueScale=isTrueScale();
-    rec.block.visible = showBlocks && !!p && !trueScale;
+    var own5=!!p&&eyeOwnNear(id,f,rec.block.position.x,rec.block.position.z);   /* Stage 5E: at the eye, the observer's own side close by is not drawn */
+    var ownEye=EYE.on&&sideOfNation(f.nation)===commandView;   /* and the rest of it as its ground marks, not figures */
+    rec.block.visible = showBlocks && !!p && !trueScale && !unc && !ownEye;
     var dimmed = highlight && !highlight[id];
     rec.block.scale.setScalar(1.25*(mode==="hybrid"?0.86:1)*(dimmed?0.80:1));
     if(rec.block.visible){ poseBlock(rec,id,liveStatus(id,curPhase)); settleBlock(rec); }
     /* the ground mark (Stage 5B, section A.4): at 1x on the landscape the true-scale footprint (decision 34), drawn by its position
        grade while "Position confidence" is on and crisp when it is off; elsewhere (4x, 10.33x, the paper map) the grade's mark under
        the figures or the counters, while it is on (decision 85). rec.foot is the 1x mark, rec.conf every other */
-    var foot1=showBlocks&&trueScale&&!!p, graded=!!p&&!!layerOn.confidence, mk=foot1?"foot":(graded?"conf":null);
+    var foot1=showBlocks&&trueScale&&!!p&&!unc&&!own5, graded=!!p&&!own5&&(!!layerOn.confidence||unc||ownEye), mk=foot1?"foot":(graded?"conf":null);
     if(mk){
       if(!rec[mk]){ rec[mk]=makeConfMark(); scene.add(rec[mk]); }
       if(!rec.block.visible) poseBlock(rec,id,liveStatus(id,curPhase));
-      var fu=rec.block.userData, g=graded?confAt(id,clock).cf:"A", side=TOKENS.sym.side[sideOfNation(f.nation)].base;
+      var fu=rec.block.userData, g=unc?"C":(graded?confAt(id,clock).cf:"A"), side=TOKENS.sym.side[sideOfNation(f.nation)].base;
       var op=(foot1&&g==="A"?CONF.OP_TRUE:CONF.OP[g])*(dimmed?CONF.DIM:1);
       confPlace(rec[mk],g,wq[0],wq[1],rec.yaw||0,fu.W0*fu.sw,fu.D0*fu.sd,hexNum(side),op,confCap);
       rec[mk].visible=true;
@@ -4034,7 +4164,7 @@ function updateVisibility(){
     if(rec.dust){
       var mrv=f.track?marchRate(id,clock):null;
       var dusty=!!(mrv&&mrv.moving) && (f.arm==="cav"||f.arm==="art"||f.arm==="mixed")
-                && !!p && mode!=="staff" && !dimmed;
+                && !!p && mode!=="staff" && !dimmed && !unc;
       rec.dust.visible=dusty;
       if(dusty){
         var dsc=10+Math.min(9,(f.strength||3000)/700);
@@ -4125,8 +4255,9 @@ function formationTop(x,z){
   }
   return top;
 }
-function camFloor(x,z){ return camGround(x,z)+CAM_CLEAR; }
+function camFloor(x,z){ if(EYE.on) return groundY(x,z)+eyeHeight()-1e-6; return camGround(x,z)+CAM_CLEAR; }   /* Stage 5E: the eye-level vantage, the one exception */
 function clampCamera(){
+  if(EYE.on){ var q=landCam.position, y=groundY(q.x,q.z)+eyeHeight(); if(q.y<y-1e-6){ q.y=y; landCam.lookAt(orbitTarget); } return false; }
   var p=landCam.position, f=camFloor(p.x,p.z);
   if(p.y<f){ p.y=f; landCam.lookAt(orbitTarget); CAM.clamps++; return true; }
   return false;
@@ -4142,6 +4273,7 @@ function orbitPlace(){
    map it becomes a move of the plan (MAPCAM): the target centred in the free part of the screen, at the zoom that shows
    the ground as the landscape eye would at that distance (mapWppAt) */
 function glide(toPos,toTgt,ms,bulge){
+  if(EYE.on) eyeLeave();   /* Stage 5E */
   freeCam=false; curVantage=null;
   if(mode==="staff"){ MAPCAM.glideTo(toTgt.x,toTgt.z,mapWppAt(toPos.distanceTo(toTgt)),ms); return; }
   var arc=setupArc(landCam.position,orbitTarget,toPos,toTgt);
@@ -4286,7 +4418,7 @@ var LANDCAM=(function(){
   function vw(){ return renderer.domElement.clientWidth||window.innerWidth; }
   function ray(sx,sy){ landCam.updateMatrixWorld(); return R.set(sx/vw()*2-1,-(sy/viewH())*2+1,0.5).unproject(landCam).sub(landCam.position).normalize(); }
   function screenOf(p){ landCam.updateMatrixWorld(); V.copy(p).project(landCam); return [(V.x*0.5+0.5)*vw(),(-V.y*0.5+0.5)*viewH()]; }
-  function free(){ freeCam=true; curVantage=null; }
+  function free(){ freeCam=true; curVantage=null; if(EYE.on) eyeLeave(); }   /* Stage 5E: any move leaves the eye for the floor */
   /* the target moved along its own view ray onto the drawn ground: the picture does not move */
   function anchor(){ var t=screenOf(orbitTarget), g=groundAt(t[0],t[1]);
     if(g){ orbitTarget.set(g[0],groundY(g[0],g[1]),g[1]); landCam.lookAt(orbitTarget); } }
@@ -4608,6 +4740,7 @@ function buildUI(){
 
   document.querySelectorAll(".van-btn").forEach(function(b){
     b.addEventListener("click",function(){
+      if(b.dataset.v==="eye"){ eyeEnter(); return; }   /* Stage 5E: the eye-level vantage, with a headquarters chosen */
       document.querySelectorAll(".van-btn").forEach(function(o){o.setAttribute("aria-pressed","false");});
       b.setAttribute("aria-pressed","true");
       flyTo(VANTAGE[b.dataset.v]);
@@ -4620,6 +4753,10 @@ function buildUI(){
 
     });
   });
+  var ebt=document.getElementById("eyesbtn"), ego=document.getElementById("eyego");   /* Stage 5E: "Whose eyes?" from the timeline; the eye level */
+  if(ebt) ebt.addEventListener("click",eyesCycle);
+  if(ego) ego.addEventListener("click",eyeEnter);
+  eyesSync();
   var skd=document.getElementById("skel-day");   /* Stage 5D (decision 90): the skeleton's whole day; choosing it turns the skeleton on */
   if(skd) skd.addEventListener("click",function(){ SKEL.day=!SKEL.day; skd.setAttribute("aria-pressed",String(SKEL.day));
     if(SKEL.day&&!layerOn.skeleton){ var sb=document.querySelector('.layer-btn[data-l="skeleton"]'); if(sb) sb.click(); }
@@ -5249,8 +5386,8 @@ function dossierFormation(id){
   if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
   if(commandView!=="none"){
     var kn=knowledgeOf(id);
-    var KL={own:"Own troops",seen:"In sight",uncertain:"Reported only",unknown:"Not known"};
-    if(KL[kn]) pills+='<span class="pill ghost">'+esc(KL[kn])+'</span>';
+    var KL={own:"Own troops",seen:"In sight",uncertain:"Reported only",unknown:"Not known"}, why=knowReason(id);   /* Stage 5E: which part decides */
+    if(KL[kn]) pills+='<span class="pill ghost">'+esc(KL[kn]+(why?" ("+why+")":""))+'</span>';
   }
   wrap.appendChild(el("div","pillrow",pills));
 
@@ -6208,8 +6345,10 @@ var AUSTERLITZ_DEBUG=(function(){
     select(null,null);
     if(spec.select) select(spec.select[0],spec.select[1]);
     /* Stage 2E: a paper-map case frames the whole field (paper:"frame"), or centres a preset or an aim */
+    if(EYE.on) eyeLeave(); setCommandView(spec.eyes||"none");   /* Stage 5E: "Whose eyes?" (none unless the case names a headquarters) */
     if(mode==="staff"&&(spec.paper==="frame"||(!spec.cam&&!spec.aim))){ tween=null; freeCam=true; MAPCAM.frameField(true); }
     else placeCamera(spec.cam||aimOf(spec));
+    if(spec.eye) eyeEnter();   /* Stage 5E: the eye-level vantage at the chosen headquarters */
     requestRender(3);
     return true;
   }
@@ -6931,6 +7070,100 @@ var AUSTERLITZ_DEBUG=(function(){
     setClock(keep,{instant:true,force:true,camera:false}); finishTween(); settle(2,true);
     return out;
   }
+  /* Stage 5E (docs/STAGE5_SPEC.md section D.6; decision 91): the eye-level vantage at a display factor. Napoleon's headquarters at
+     08:30: the eye at the headquarters' plotted position, 3 m (scaled by the factor) above the drawn ground, the near plane lowered;
+     no "not known" formation drawn, no enemy figures the model hides from the headquarters; the caption shown with the factor; an
+     orbit leaves it for the ordinary camera at its floor */
+  function eyesChecks(ck,fct){
+    var k0={cv:commandView,clock:clock,md:mode,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,viol:CAM.violations};
+    if(mode!=="terrain") setMode("terrain");
+    setCommandView("fr"); setClock(510,{instant:true,force:true,camera:false}); finishTween();
+    var entered=eyeEnter(); settle(4,true); mlLayout();
+    var hq=posNow("gqg"), w=W(hq[0],hq[1]), L=landCam.position, dy=L.y-groundY(L.x,L.z), want=eyeHeight(), atHQ=Math.hypot(L.x-w[0],L.z-w[1])<1e-6;
+    var unkDrawn=[], hidden=[], fig=0, nUnk=0;
+    Object.keys(units).forEach(function(id){ var r=units[id], f=FORMATIONS[id]; if(sideOfNation(f.nation)==="fr") return; var kq=knowledgeOf(id), p=posNow(id); if(!p) return;
+      var it=[ML.items["c:"+id],ML.items["n:"+id]].some(function(q){ return q&&q.eFrame===ML.frame&&q.state==="on"; });
+      if(kq==="unknown"){ nUnk++; if((r.block&&r.block.visible)||(r.conf&&r.conf.visible)||(r.foot&&r.foot.visible)||it) unkDrawn.push(id); }
+      if(r.block&&r.block.visible){ fig++; if(!hasLOS(hq,p)) hidden.push(id); } });
+    var cap=document.getElementById("eyecap"), capOK=!!cap&&!cap.hidden&&cap.textContent.indexOf("\u00d7"+fmtFactor(DISPLAY.factor))>=0&&cap.textContent.indexOf("A model reading")>=0;
+    var nearOK=landCam.near===EYE.NEAR;
+    LANDCAM.orbit(40,0); settle(2,true);
+    var left=!EYE.on, near1=landCam.near===EYE.NEAR0, floor=landCam.position.y>=camFloor(landCam.position.x,landCam.position.z)-1e-6, viol=CAM.violations-k0.viol, capGone=!!cap&&cap.hidden;
+    ck("eye level: the eye at the headquarters' plotted position, 3 m (scaled) above the drawn ground; no formation the reading does not know drawn, no enemy figures the model hides; the caption; an orbit leaves it for the floor (section D.6)",
+      entered&&atHQ&&Math.abs(dy-want)<1e-6&&nearOK&&!unkDrawn.length&&!hidden.length&&capOK&&left&&near1&&floor&&!viol&&capGone,
+      "Napoleon's headquarters at 08:30: the eye "+dy.toFixed(4)+" units above the ground (want "+want.toFixed(4)+", 3 m at \u00d7"+fmtFactor(DISPLAY.factor)+"), at the headquarters "+atHQ+
+      ", near plane "+EYE.NEAR+"; "+nUnk+" enemy formations not known, "+unkDrawn.length+" of them drawn"+(unkDrawn.length?" ("+unkDrawn.join(", ")+")":"")+"; "+fig+" enemy figures drawn, "+hidden.length+
+      " hidden from the headquarters"+(hidden.length?" ("+hidden.join(", ")+")":"")+"; caption "+(capOK?"shown":"MISSING")+"; after an orbit: left "+left+", near "+landCam.near+", at its floor "+floor+", floor violations "+viol);
+    setCommandView(k0.cv); if(mode!==k0.md) setMode(k0.md);
+    setClock(k0.clock,{instant:true,force:true,camera:false}); finishTween();
+    landCam.position.copy(k0.pos); orbitTarget.copy(k0.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=k0.fc; settle(2,true);
+  }
+  /* Stage 5E: the reading at the clock (decision 92), "reported only" marked everywhere, the one fog threshold, the dossier's reason,
+     the control */
+  function eyesDayChecks(){
+    var out=[], k0={cv:commandView,clock:clock,md:mode,sel:selection?{k:selection.kind,id:selection.id}:null,ex:dossierExpanded}, ms0=MAPCAM.state();
+    if(mode!=="terrain") setMode("terrain");
+    select(null,null);
+    /* the reading at the clock: every 10 minutes, as the clock is moved, against the rule evaluated afresh; and what the cache keyed by
+       the phase gave (the reading at the first visited minute of each phase), for the record */
+    var n=0, diff=[], old=0;
+    ["fr","al"].forEach(function(cv){ setCommandView(cv); var firstOf={};
+      for(var t=T_MIN;t<=T_MAX;t+=10){ setClock(t,{instant:true,camera:false});
+        var ids=Object.keys(units).filter(function(id){ return sideOfNation(FORMATIONS[id].nation)!==cv&&!!posNow(id); }), drawn={};
+        ids.forEach(function(id){ drawn[id]=knowledgeOf(id); });
+        knowKey=""; ids.forEach(function(id){ var fresh=knowledgeOf(id); n++; if(fresh!==drawn[id]) diff.push(cv+" "+id+" "+fmtClock(t)+": "+drawn[id]+" / "+fresh);
+          var fk=cv+"|"+curPhase+"|"+id; if(firstOf[fk]===undefined) firstOf[fk]=fresh; else if(firstOf[fk]!==fresh) old++; }); } });
+    out.push({name:"Whose eyes?: the reading follows the clock: every 10 minutes, for both headquarters, the reading drawn is the rule evaluated afresh at that minute (decision 92)",
+      ok:n>0&&!diff.length, detail:n+" enemy readings over the day: "+diff.length+" differ"+(diff.length?" ("+diff.slice(0,4).join("; ")+")":"")+"; the cache keyed by the phase would have drawn "+old+" of them otherwise"});
+    /* reported only, marked everywhere: Napoleon's headquarters at 05:00, in the landscape (names), with counters, on the paper map */
+    setCommandView("fr"); setClock(300,{instant:true,force:true,camera:false}); finishTween();
+    var unc=Object.keys(units).filter(function(id){ return drawnKnow(id)==="uncertain"&&!!posNow(id); }), rows=[], bad=[];
+    [["terrain","n:",".mln-bdg"],["hybrid","c:",".mlc-badge"],["staff","c:",".mlc-badge"]].forEach(function(q){
+      setMode(q[0]); if(q[0]==="staff") MAPCAM.frameField(true); else flyTo(VANTAGE.field); finishTween(); settle(4,true); mlLayout();
+      var drawn=0, marked=0;
+      unc.forEach(function(id){ var it=ML.items[q[1]+id], r=units[id];
+        if(r.block&&r.block.visible) bad.push(q[0]+": "+id+" drawn with figures");
+        if(!(r.conf&&r.conf.visible&&r.conf.userData.conf.g==="C")) bad.push(q[0]+": "+id+" not drawn as the C zone");
+        if(it&&it.eFrame===ML.frame&&it.state==="on"){ drawn++; var b=it.el.querySelector(q[2]); if(b&&b.textContent==="?") marked++; else bad.push(q[0]+": "+id+" without \u201c?\u201d"); } });
+      rows.push(q[0]+" "+marked+"/"+drawn); });
+    setMode("terrain");
+    out.push({name:"Whose eyes?: every formation reported only is drawn as the C zone with no figures, and its name or counter, where drawn, carries the \u201c?\u201d (section D.6)",
+      ok:unc.length>0&&!bad.length, detail:"Napoleon's headquarters at 05:00: "+unc.length+" reported only ("+unc.join(", ")+"); marked / drawn: "+rows.join(", ")+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):"")});
+    /* one fog threshold: the viewshed's fogged cells are exactly its visible cells below ATMO.FOG_TOP_H, the rule's -0.8, while the
+       phase's mist exceeds 0.5; every formation reported only by the fog rule stands on a fogged cell or one the viewshed does not reach */
+    /* at the first minute where the fog rule decides a reading (phases 0-2), for either headquarters */
+    var fogAt=null, CVF=["fr","al"];
+    for(var ci=0;ci<2&&!fogAt;ci++){ setCommandView(CVF[ci]); for(var tF=T_MIN;tF<=600&&!fogAt;tF+=10){ setClock(tF,{instant:true,force:true,camera:false});
+      if(Object.keys(units).some(function(id){ return !!posNow(id)&&knowledgeOf(id)==="uncertain"&&knowReason(id)==="valley fog"; })) fogAt=[CVF[ci],tF]; } }
+    if(fogAt){ setCommandView(fogAt[0]); setClock(fogAt[1],{instant:true,force:true,camera:false}); finishTween(); }
+    eyesViewshed(true); var nf=0, wrong=0, vis=0;
+    for(var j=0;j<G_NZ;j++) for(var i=0;i<G_NX;i++){ var k=j*G_NX+i; if(!vsMask[k]) continue; vis++; var low=height(G_X0+i*G_DX,G_Z0+j*G_DZ)<ATMO.FOG_TOP_H;
+      if(vsMask[k]===2) nf++; if((vsMask[k]===2)!==low) wrong++; }
+    var fogU=Object.keys(units).filter(function(id){ return !!posNow(id)&&knowledgeOf(id)==="uncertain"&&knowReason(id)==="valley fog"; }), onFog=0, edge=[];
+    fogU.forEach(function(id){ var p=posNow(id), wq=W(p[0],p[1]), c=vsMask[Math.round((wq[1]-G_Z0)/G_DZ)*G_NX+Math.round((wq[0]-G_X0)/G_DX)]; if(c===2) onFog++; else if(c) edge.push(id); });
+    setClock(600,{instant:true,force:true,camera:false}); finishTween(); eyesViewshed(true); var nf10=EYES.vs?EYES.vs.fogged:-1;
+    out.push({name:"Whose eyes?: one fog threshold: the headquarters' viewshed marks fogged exactly its visible ground below the valley fog's top (ATMO.FOG_TOP_H, the rule's -0.8, drawn at 238.2 m) while the mist exceeds 0.5 (section D.6)",
+      ok:!!fogAt&&fogU.length>0&&ATMO.FOG_TOP_H===-0.8&&Math.abs(ATMO.FOG_TOP-GEOREF.elevM(-0.8))<1e-9&&nf>0&&!wrong&&!edge.length&&nf10===0,
+      detail:(fogAt?EYES.LABEL[fogAt[0]]+" at "+fmtClock(fogAt[1]):"NO MINUTE where the fog rule decides")+": "+vis+" cells in sight, "+nf+" of them fogged, "+wrong+" against the rule's threshold; "+fogU.length+" formations reported only by the fog rule, "+onFog+" on a fogged cell"+
+        (edge.length?", "+edge.length+" on a cell in sight but not fogged ("+edge.join(", ")+")":"")+"; at 10:00 (mist "+PHASES[curPhase].mist+") "+nf10+" fogged"});
+    /* the dossier's reason, and the control in the timeline and the Command tab */
+    setCommandView("al"); setClock(600,{instant:true,force:true,camera:false}); finishTween();
+    var nos=Object.keys(units).filter(function(id){ return knowledgeOf(id)==="unknown"; }), why={}, pills=[];
+    nos.forEach(function(id){ why[knowReason(id)]=id; });
+    dossierExpanded=true;
+    Object.keys(why).forEach(function(r){ select("f",why[r]); dossierExpanded=true; paintDrawer(); var pl=Array.prototype.map.call(document.querySelectorAll(".pillrow .pill"),function(e){ return e.textContent; }).filter(function(t){ return /^Not known/.test(t); })[0]||"none"; pills.push(pl); });
+    select(null,null); dossierExpanded=k0.ex;
+    var tb=document.getElementById("eyesbtn"), seq=[]; setCommandView("none");
+    for(var c=0;c<3;c++){ tb.click(); seq.push(commandView+":"+tb.textContent+":"+tb.getAttribute("aria-pressed")); }
+    var vb=document.querySelector('.van-btn[data-v="eye"]'), cmd=Array.prototype.map.call(document.querySelectorAll(".cmd-btn"),function(b){ return b.getAttribute("aria-pressed"); }).join("");
+    out.push({name:"Whose eyes?: the dossier names which part decides; the timeline's button cycles everyone, Napoleon, the Allied headquarters, and the Command tab's group and the eye's vantage follow it",
+      ok:pills.length===Object.keys(why).length&&pills.every(function(t){ return /\((no line of sight|authored limit)\)$/.test(t); })&&seq.join(",")==="fr:Eyes: Napoleon:true,al:Eyes: Allied HQ:true,none:Eyes: everyone:false"&&!!vb&&vb.hidden&&cmd==="truefalsefalse",
+      detail:"Allied headquarters at 10:00: "+nos.length+" not known; the pills: "+pills.join(" | ")+"; the button: "+seq.join(", ")+"; the eye's vantage hidden with everyone "+(vb&&vb.hidden)});
+    setCommandView(k0.cv); MAPCAM.restore(ms0); if(mode!==k0.md) setMode(k0.md);
+    if(k0.sel) select(k0.sel.k,k0.sel.id);
+    setClock(k0.clock,{instant:true,force:true,camera:false}); finishTween(); settle(2,true);
+    return out;
+  }
   function smokeDayChecks(){
     var out=[], keep=clock, bad=[], n=0, full=0, resid=0;
     for(var i=0;i<20;i++){ var t=T_MIN+30+(T_MAX-T_MIN-60)*i/19; setClock(t,{instant:true,force:true,camera:false}); finishTween();
@@ -7000,7 +7233,9 @@ var AUSTERLITZ_DEBUG=(function(){
   function selfTest(){
     var out=[], t0=performance.now(), i;
     function ck(name,ok,detail){ out.push({name:name,ok:!!ok,detail:detail}); }
-    var save={t:clock,mode:mode,pres:presentation,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,map:MAPCAM.state()};
+    if(EYE.on) eyeLeave();   /* Stage 5E: the checks run from the omniscient view, off the eye level; the reading is restored after */
+    var save={t:clock,mode:mode,pres:presentation,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,map:MAPCAM.state(),cv:commandView};
+    setCommandView("none");
     closeFirst(null); stopPlay(); if(tourStep>=0) exitTour();
     if(mode==="staff") setMode("terrain");   /* the checks of the drawn relief run on the landscape (Stage 2E) */
 
@@ -7140,6 +7375,7 @@ var AUSTERLITZ_DEBUG=(function(){
       extrasChecks(ck,fct); /* Stage 4E */
       confChecks(ck,fct);   /* Stage 5B */
       skelChecks(ck,fct);   /* Stage 5D */
+      eyesChecks(ck,fct);   /* Stage 5E */
     }
     DISPLAY.settings.forEach(atFactor);
     stage2bChecks(bySetting).forEach(function(c){ out.push(c); });
@@ -7150,6 +7386,7 @@ var AUSTERLITZ_DEBUG=(function(){
     smokeDayChecks().forEach(function(c){ out.push(c); });   /* Stage 4E */
     confDayChecks().forEach(function(c){ out.push(c); });   /* Stage 5B */
     skelDayChecks().forEach(function(c){ out.push(c); });   /* Stage 5D */
+    eyesDayChecks().forEach(function(c){ out.push(c); });   /* Stage 5E */
     setDisplayFactor(saveFactor);
     /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
     var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });
@@ -7414,6 +7651,7 @@ var AUSTERLITZ_DEBUG=(function(){
     setClock(save.t,{instant:true,force:true,camera:false}); finishTween();
     landCam.position.copy(save.pos); orbitTarget.copy(save.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=save.fc;
     if(mode==="staff") MAPCAM.restore(save.map);
+    setCommandView(save.cv);
     requestRender(3);
     return {ms:Math.round(performance.now()-t0), ok:out.every(function(c){ return c.ok; }), checks:out};
   }

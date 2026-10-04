@@ -122,6 +122,10 @@ async function interact(page,it,vp){
     const buf=await page.screenshot({timeout:180000});
     fs.writeFileSync(path.join(out,c.name+".png"),buf);
     const m=await page.evaluate(()=>window.__aus.metrics());
+    /* Stage 5E: an eye-level case, the eye's height above the drawn ground and its place at the headquarters */
+    if(c.eye) m.eyeLevel=await page.evaluate(()=>{ if(typeof EYE==="undefined") return {on:false,dy:null,want:null,atHQ:false};
+      const L=landCam.position, p=posNow(EYES.HQ[commandView]), w=p?W(p[0],p[1]):[NaN,NaN];
+      return {on:EYE.on,dy:+(L.y-groundY(L.x,L.z)).toFixed(6),want:+eyeHeight().toFixed(6),atHQ:Math.hypot(L.x-w[0],L.z-w[1])<1e-6}; });
     m.pixels=await page.evaluate(b=>window.__aus.pixels(b),buf.toString("base64"));
     /* Stage 2D: every map-layer text's contrast on the rendered frame (the section E method), and section H's unobstructed
        fraction at 1280 x 720 too (the same page resized, then restored) */
@@ -137,7 +141,7 @@ async function interact(page,it,vp){
     /* Stage 5D (docs/STAGE5_SPEC.md section B.4): the evidence skeleton on, the whole day (its densest scope): the map layer's items and
        drops as without it (it is ground drawing, not a map-layer item), map text at AA as rendered; its share of the free rectangle recorded
        (a build with the skeleton; it is off by default, so every other measure here is taken without it) */
-    if(!c.fresh&&await page.evaluate(()=>typeof SKEL!=="undefined")){
+    if(!c.fresh&&!c.eye&&await page.evaluate(()=>typeof SKEL!=="undefined")){   /* not at the eye level: the skeleton is not drawn there (5E) */
       const lay=()=>page.evaluate(()=>{ mlLayout(); return {items:ML.stats.items,dropped:ML.stats.dropped,ids:ML.stats.dropped_.slice().sort().join(","),
         anchors:SKEL.marks.length,legs:SKEL.scope?SKEL.scope.legs.length:0}; });
       const s0=await lay();
