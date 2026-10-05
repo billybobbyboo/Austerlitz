@@ -896,7 +896,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
     <div class="k" data-lg="nation"><span>counters: Russian</span><span class="sw" data-key="ru"></span></div>
     <div class="k" data-lg="nation"><span>counters: Austrian</span><span class="sw" data-key="at"></span></div>
     <div class="k" data-lg="figures"><span>figures: dress as sourced (source and grade in the dossier), else the nation's symbol colour and a plain cap</span></div>
-    <div class="k" data-lg="standards"><span>standards: plain cloths in the nation's symbol colour, patterns not yet drawn</span></div>
+    <div class="k" data-lg="standards"><span>standards: painted where the pattern is sourced (French eagles, Austrian colours), else plain in the nation's symbol colour</span></div>
     <div class="k" data-lg="sidemark"><span>beside a name: its side, French or Allied</span><span class="sw" data-key="side-fr"></span><span class="sw" data-key="side-al"></span></div>
     <div class="k" data-lg="foot"><span>French formation, its footprint</span><span class="sw" data-key="foot-fr"></span></div>
     <div class="k" data-lg="foot"><span>Allied formation, its footprint</span><span class="sw" data-key="foot-al"></span></div>
@@ -5803,6 +5803,7 @@ function initBlockGeo(){
   GEO.tent   = new THREE.ConeGeometry(1.75,2.3,4);
   GEO.pole   = new THREE.CylinderGeometry(0.06,0.06,5.2,5);
   GEO.flag   = new THREE.PlaneGeometry(2.4,1.4);
+  GEO.finial = new THREE.ConeGeometry(0.5,1,4);   /* Stage 6D: the eagle or spearhead on the staff, a four-sided point 1 unit high before scaling */
 }
 function shade(hex,k){
   var r=Math.min(255,((hex>>16)&255)*k), g=Math.min(255,((hex>>8)&255)*k), b=Math.min(255,(hex&255)*k);
@@ -5854,7 +5855,20 @@ var KIT={
         "crested helmet":{col:"black"}, "czapka":{col:"black"}, "fur cap":{col:"black"}, "turban":{col:"black"}},
   cuirass:{fr_cuirassier:"metal", at_cuirassier:"black"},
   horse:{brown:0x5A4232, black:0x2E2B27},
-  gear:{barrel:0x35322C, wheel:0x6B563C, trail:0x5A4832, limber:0x6A5741, pole:0x6A5B48, marquee:0xD8D1BC, tent:0xC4BCA6}
+  gear:{barrel:0x35322C, wheel:0x6B563C, trail:0x5A4832, limber:0x6A5741, pole:0x6A5B48, marquee:0xD8D1BC, tent:0xC4BCA6},
+  /* Stage 6D (docs/STAGE6_SPEC.md section 6.3): the standards, as drawn. flag: the painted cloths' colours, each named by a claim it draws
+     (the French 1804 model's "white central lozenge, the four corner triangles alternately red and blue"; the Austrian ordinary colours'
+     "imperial-yellow" silk and "black double eagle"; the finials "gilt"): design values; white, red, blue and gilt the values the
+     patterns drawn before Stage 6 used, the yellow drawn for "kaisergelb", the black decision 84's. paint: the two paintings a claim
+     graded A or B gives, each with the COLOURS_CARRIED entry whose pattern, cloth and finial it draws. carry: per colours entry, its
+     painting (only where its model is a claim graded A or B naming that model), and where the count is disputed but every side shows
+     colours carried, the smallest count any side gives (lower). std: where no source sizes them, the cloth's drop (that of the
+     infantry standard drawn before 6D) and the pole's thickness; the generic cloth's proportion (2.4 : 1.4, as before) */
+  flag:{white:0xE9E2D2, red:0xB3302E, blue:0x2C4C9C, yellow:0xD9B23C, black:0x2E2B27, gilt:0xC8A03A},
+  paint:{lozenge:{from:"fr_eagle_inf"}, ordinary:{from:"at_inf"}},
+  carry:{fr_eagle_inf:{paint:"lozenge"}, fr_guard_eagle:{paint:"lozenge"}, fr_eagle_cav:{paint:"lozenge"}, fr_guard_eagle_cav:{paint:"lozenge"},
+         at_inf:{paint:"ordinary", lower:{n:1, per:"bn"}}, at_grenz:{paint:"ordinary"}, at_cav:{paint:"ordinary"}},
+  std:{drop:0.853, thick:0.61, aspect:2.4/1.4}
 };
 /* a value of appearance.js the drawing follows: a claim (not generic, disputed or "none shown") at grade A or B whose class (k: c a
    colour, h a headgear) is not "generic"; anything else is drawn generic (docs/STAGE6_SPEC.md section 6.6, "For 6C and 6D") */
@@ -6034,7 +6048,7 @@ function makeBlock(f,id){
   var arm=f.arm, str=f.strength||3000, K=figKit();
   /* Stage 6C: the figures by class, from the formation's composition in appearance.js (decision 100); ud.dress lists what is drawn */
   var KB=kitBlock(id);
-  var ud={body:body, std:std, sw:1, sd:1, stdX:[], skirmish:null,
+  var ud={body:body, std:std, sw:1, sd:1, skirmish:null,
           deployed:null, limbered:null, W0:6, D0:4, figs:[], seat:[], lastSw:-1, lastSd:-1, dress:[]};
 
   /* one instanced mesh whose instances are laid out from a base position table,
@@ -6058,6 +6072,18 @@ function makeBlock(f,id){
   /* Stage 6C: figures by class. unitDress[i] is the class of drawn unit i (a battalion, a squadron, or one rider), null for the generic
      appearance; unitPts[i] its men. One mesh set per class, its instances in unit order, so that showBattalions can show the first k
      units; role names what the figures are (ranks, riders, escort) */
+  /* Stage 6D (docs/STAGE6_SPEC.md section 6.3): the standards of a class's units, by its colours entry (kitStdRule: how many per unit;
+     kitStdShape: the staff, the finial, the cloth and its painting); two or more in a unit side by side; a rate below one per unit on
+     every so many units; unit -1 for those not tied to a battalion (always shown) */
+  var stds=[];
+  function unitStd(dress,units,centre,mounted,bat){
+    var d=DRESS[dress], nat=NATION[d.nation]?d.nation:f.nation, R=kitStdRule(d.carry); if(!R.n) return;
+    var S=kitStdShape(d.carry,nat,mounted), tex=S.paint||("plain:"+nat), list=[];
+    if(R.n>=1) units.forEach(function(u){ for(var j=0;j<R.n;j++) list.push([u,j,R.n]); });
+    else { var every=Math.max(1,Math.round(1/R.n)); units.forEach(function(u,i){ if(i%every===0) list.push([u,0,1]); }); }
+    list.forEach(function(q){ var c=centre(q[0]), off=q[2]>1?(q[1]-(q[2]-1)/2)*0.9:0;
+      stds.push({dress:dress, carry:d.carry, unit:bat?q[0]:-1, x:c[0]+off, z:c[1], S:S, tex:tex, rule:R}); });
+  }
   function classMeshes(unitDress,unitPts,mounted,rotJ,role,bat){
     var order=[], by={};
     unitDress.forEach(function(dr,i){ var k=dr===null?"~":dr; if(!by[k]){ by[k]={dr:dr,units:[],pts:[]}; order.push(k); }
@@ -6068,6 +6094,9 @@ function makeBlock(f,id){
                 :[figMesh(K.infCoat,kd.coat,c.pts,rotJ), figMesh(kitGeo("foot",{leg:kd.leg,head:kd.head,gunner:kd.gunner}),0xFFFFFF,c.pts,rotJ)];
       var rec={dress:kd.dress, kd:kd, role:role, mounted:mounted, figures:c.pts.length, units:c.units, meshes:ms};
       ud.dress.push(rec);
+      /* Stage 6D: its standards, by its colours entry, at the centres of its units (a battalion's or squadron's; the riders' always shown) */
+      if(c.dr&&(role==="ranks"||role==="riders"||role==="escort")) unitStd(c.dr,c.units,function(u){ var P=unitPts[u], x=0, z=0;
+        P.forEach(function(q){ x+=q[0]; z+=q[2]; }); return [x/P.length,z/P.length]; },mounted,role==="ranks");
       ms.forEach(function(m,j){ m.userData.kit={dress:kd.dress, role:role, part:mounted?["horse","coat","fixed"][j]:["coat","fixed"][j]};
         if(bat){ var fg=ud.figs[ud.figs.length-ms.length+j]; fg.units=c.units; ud.batFigs.push(fg); } }); });
   }
@@ -6151,7 +6180,7 @@ function makeBlock(f,id){
     /* Stage 6C: each class's mesh holds its own battalions, in order: it shows those among the first k (none: the mesh is hidden) */
     ud.batFigs.forEach(function(fg){ var u=fg.units?fg.units.filter(function(b){ return b<k; }).length:k;
       fg.mesh.count=Math.max(1,u*ud.perBat); fg.mesh.visible=u>0; });
-    ud.shownBat=k;
+    ud.shownBat=k; stdCount(ud);   /* Stage 6D: the standards of the battalions shown */
   };
 
   if(arm==="hq"){
@@ -6173,7 +6202,6 @@ function makeBlock(f,id){
     }
     /* the escort by class (6C): the headquarters' composition, one rider at a time */
     classMeshes(kitAllocate(KB.horse,esc.length),esc.map(function(q){ return [q]; }),true,0.3,"escort",false);
-    ud.stdX=[0];
   }
   else if(arm==="art"){
     var guns=Math.max(3,Math.min(8,Math.round((f.guns||12)/2)));
@@ -6234,7 +6262,6 @@ function makeBlock(f,id){
     team.forEach(function(pt,i){ d.position.set(pt[0],pt[1],pt[2]); d.rotation.set(0,pt[3],0); d.scale.set(1,1,1); d.updateMatrix(); hM.setMatrixAt(i,d.matrix); });
     hM.castShadow=true; lim.add(hM); seatable(hM,false,true);
     lim.visible=false;
-    ud.stdX=[0];
   }
   else {
     var cav=(arm==="cav"), mixed=(arm==="mixed");
@@ -6245,7 +6272,7 @@ function makeBlock(f,id){
     var rowW=function(k){ return k*bw+(k-1)*gap; };
     var W1=rowW(front), W2=back?rowW(back):0;
     ud.W0=Math.max(W1,W2); ud.D0=back?(bd*2+3.4):bd;
-    var stdAt=[], pts=[], batPts=[];
+    var pts=[], batPts=[];
     var files=cav?5:8, ranks=cav?2:3;
     function fill(bcx,bcz){
       var bp=[];
@@ -6259,7 +6286,6 @@ function makeBlock(f,id){
     for(var i=0;i<front;i++){
       var cx2=-W1/2+bw/2+i*(bw+gap);
       fill(cx2, back?1.7:0);
-      if(i%2===0) stdAt.push(cx2);
     }
     for(var j2=0;j2<back;j2++){
       var cx3=-W2/2+bw/2+j2*(bw+gap)+(bw+gap)*0.5;
@@ -6313,42 +6339,50 @@ function makeBlock(f,id){
       for(var q3=0;q3<sq;q3++) hp.push([(q3-(sq-1)/2)*1.15,0,-ud.D0*0.5-2.4,0]);
       classMeshes(kitAllocate(KB.horse,hp.length),hp.map(function(q){ return [q]; }),true,0.1,"riders",false);   /* one rider at a time (6C) */
     }
-    ud.stdX = cav ? [0] : stdAt;
-    ud.mounted = cav;   /* the standard's reference height: the mounted figure */
+    ud.mounted = cav;
   }
   layoutFigs(1,1);
 
-  /* standards: the cloth carries the nation, and never distorts with the deployment */
-  var nStd=Math.max(1,ud.stdX.length);
-  var poles=imesh(GEO.pole,KIT.gear.pole,nStd);
-  var flags=new THREE.InstancedMesh(GEO.flag,
-    matte({map:flagTexture(f.nation),side:THREE.DoubleSide}),nStd);
-  std.add(poles); std.add(flags);
-  ud.poles=poles; ud.flags=flags;
+  /* the standards (Stage 6D): one pole mesh, one cloth mesh per painting, one finial mesh; instances in unit order, so that a detachment's
+     battalions take their standards with them (stdCount). None where the table shows none: headquarters, batteries, and the rest */
+  stds.sort(function(a,b){ return a.unit-b.unit; });
+  ud.stds=stds; ud.poles=null; ud.flags=null; ud.finials=null; ud.flagMeshes={};
+  if(stds.length){
+    ud.poles=imesh(GEO.pole,KIT.gear.pole,stds.length); std.add(ud.poles);
+    var byTex={}; stds.forEach(function(q){ (byTex[q.tex]=byTex[q.tex]||[]).push(q); });
+    Object.keys(byTex).forEach(function(k){ var m=new THREE.InstancedMesh(GEO.flag,matte({map:flagTexture(k),side:THREE.DoubleSide}),byTex[k].length);
+      byTex[k].forEach(function(q,i){ q.fi=i; }); m.userData.tex=k; std.add(m); ud.flagMeshes[k]=m; if(!ud.flags) ud.flags=m; });
+    var nf=0; stds.forEach(function(q){ if(q.S.fin>0) q.ki=nf++; });
+    if(nf){ ud.finials=imesh(GEO.finial,KIT.flag.gilt,nf); std.add(ud.finials); }
+  }
   g.userData=ud;
   placeStandards(g,1);
   return g;
 }
-/* the standards' cloths, painted once per nation. Stage 6C, first commit (docs/STAGE6_SPEC.md section 6.4; owner decision 98): a plain
-   cloth in the nation's symbol colour (NATION's fill, the counters' colour: symbology, not a flag), labelled generic in the legend and
-   the sources sheet, until 6D paints each sourced model. It replaces three patterns the evidence did not give: the French vertical
-   tricolour (the 1804 lozenge was carried in 1805), the Russian "green colour with a white cross" (SOURCE_NOTE keeps the Russian
-   infantry's pattern open) and the Austrian white, gold and black (no read source shows it) */
-var _flagTex={};
-function flagTexture(nation){
-  if(_flagTex[nation]) return _flagTex[nation];
-  var c=document.createElement("canvas"); c.width=128; c.height=64;
-  var x=c.getContext("2d");
-  x.fillStyle=NATION[nation].fill; x.fillRect(0,0,128,64);
-  x.fillStyle="rgba(0,0,0,.12)"; for(var k=0;k<128;k+=4) x.fillRect(k,0,1,64);   /* a little cloth */
-  var t=ctexS(c); _flagTex[nation]=t; return t;
+/* ---- Stage 6D: the standards from the table (docs/STAGE6_SPEC.md section 6.3; owner decisions 98, 105, 106) ----
+   How many: kitStdRule, from the class's colours entry: a count graded A or B, per battalion or squadron; none where the table shows
+   none, gives a count of 0, disputes whether they were in the field, or does not establish how many; where the count is disputed but every
+   side shows colours carried, KIT's lower bound. */
+function kitStdRule(carry){
+  var C=COLOURS_CARRIED[carry], K=KIT.carry[carry]||{}, c=C&&C.count;
+  if(c&&!c.gen&&!c.sides&&c.n===0) return {n:0, why:"the sources give none", detail:c.en||c.v};
+  if(!C||!c||(C.model&&C.model.none)||c.none) return {n:0, why:"no source read shows colours carried"};
+  if(!c.gen&&!c.sides&&typeof c.n==="number"){
+    if(c.gr==="A"||c.gr==="B") return {n:c.n, per:c.per, how:"sourced"};
+    return {n:0, why:"the count is graded C"}; }
+  if(c.sides&&K.lower) return {n:K.lower.n, per:K.lower.per, how:"lower", why:"the count is disputed; the smallest any side gives"};
+  if(c.sides) return {n:0, why:"it is disputed whether they were carried in the field"};
+  return {n:0, why:"how many were carried is not established"};
 }
-/* standards stand on the drawn ground and upright, like the men who carry them. Stage 2B (decisions 26 and 36):
-   they join the figure scale at a PROVISIONAL pole-top-to-figure ratio of 1.6, a design rule, not a historical
-   value: the shortest pole whose cloth, in today's proportions, clears the heads of the ranks (cloth bottom at
-   least 1.05 figure heights). Provisional (Stage 2): to be replaced by a sourced ratio in Stage 6. The pole, its
-   thickness, the cloth and the hanging offsets scale together; cavalry use the mounted figure's height. */
-var STD_RATIO=1.6, STD_POLE=5.2;
+/* The standard's ratio (decision 106): the staff's top, with its finial, over the man's height to his hat's top. MAN_FOOT is the man of
+   the figure kit on foot to the top of the plain cap (1.635 units). Where a nation's staff and stature are both read (STANDARD_MEASURES:
+   Russia, Austria), a standard carried on foot stands at the staff's length over the stature, its finial at its measured length where the
+   finial is read (the Russian spearhead, its socket's overlap not stated: drawn on the staff's end, so the top is the measure's upper
+   bound), and its cloth at its measured size against the staff. Elsewhere (France, whose staff was not read; every mounted standard, whose
+   staff was not read) the PROVISIONAL rule of Stage 2B: the top, finial included, 1.6 times the figure's top (on foot the bayonet's tip,
+   1.981 units: 1.94 times the man; mounted the rider's hat), the cloth at KIT's drop in its sourced proportion (or the painting's source
+   entry's, or the generic one), the finial in its sourced proportion to the cloth. */
+var STD_RATIO=1.6, STD_POLE=5.2, MAN_FOOT=1.635;
 var _figTop={};
 function figureTop(mounted){
   var k=mounted?"m":"f"; if(_figTop[k]) return _figTop[k];
@@ -6356,29 +6390,90 @@ function figureTop(mounted){
   (mounted?[K.horse,K.rider,K.riderFixed]:[K.infCoat,K.infFixed]).forEach(function(g){ if(g.computeBoundingBox) g.computeBoundingBox(); if(g.boundingBox) top=Math.max(top,g.boundingBox.max.y); });
   return (_figTop[k]=top);
 }
+function stdOk(v){ return !!(v&&!v.gen&&!v.none&&!v.sides&&(v.gr==="A"||v.gr==="B")); }
+/* a length in centimetres from a claim's own words ("the gilt eagle, 20 cm high"), or null */
+function apCm(v){ var m=v&&/(\d+(?:\.\d+)?)\s*cm\b/.exec(v.en||v.v||""); return m?+m[1]:null; }
+function kitStdShape(carry,nation,mounted){
+  var C=COLOURS_CARRIED[carry]||{}, M=STANDARD_MEASURES[nation]||{}, K=KIT.carry[carry]||{};
+  var P=K.paint&&stdOk(C.model)?K.paint:null, src=P?COLOURS_CARRIED[KIT.paint[P].from]:null;
+  var cl=stdOk(C.cloth)&&C.cloth.w&&C.cloth.h?C.cloth:(src&&stdOk(src.cloth)&&src.cloth.w?src.cloth:null);
+  var finCm=stdOk(C.finial)?(apCm(C.finial)||(src&&stdOk(src.finial)?apCm(src.finial):null)):null;
+  var S={paint:P, carry:carry, nation:nation, mounted:!!mounted};
+  if(!mounted&&!M.provisional&&M.staff&&M.stature){
+    var st=M.stature.m, staff=M.staff.m*MAN_FOOT/st, fm=stdOk(C.finial)&&M.staff.finial_m?M.staff.finial_m:0;
+    S.len=staff; S.fin=fm*MAN_FOOT/st; S.denom=MAN_FOOT; S.ratio=(M.staff.m+fm)/st; S.provisional=false;
+    if(stdOk(C.cloth)&&C.cloth.w){ S.w=C.cloth.w/100*staff/M.staff.m; S.h=C.cloth.h/100*staff/M.staff.m; S.clothBy="its measure against the staff"; }
+    else { S.h=KIT.std.drop; S.w=S.h*(cl?cl.w/cl.h:KIT.std.aspect); S.clothBy=cl?"its proportion":"generic"; }
+  } else {
+    S.h=KIT.std.drop; S.w=S.h*(cl?cl.w/cl.h:KIT.std.aspect); S.clothBy=cl?"its proportion":"generic";
+    S.fin=(finCm&&cl)?S.h*finCm/cl.h:0;
+    S.denom=figureTop(!!mounted); S.ratio=STD_RATIO; S.len=STD_RATIO*S.denom-S.fin; S.provisional=true;
+  }
+  S.top=S.len+S.fin; return S;
+}
+/* the cloths, painted once per painting: "lozenge" (the French 1804 model: a white lozenge, the corner triangles alternately red and blue;
+   which colour lies at the staff's top is not sourced: drawn blue, a design decision; no number, wreath or inscription), "ordinary" (the
+   Austrian ordinary colour: imperial yellow, the black double eagle, simplified; the flame border not drawn), "plain:<nation>" (a plain cloth
+   in the nation's symbol colour, NATION's fill: symbology, not a flag; decisions 98, 105) */
+var _flagTex={};
+function flagTexture(key){
+  if(_flagTex[key]) return _flagTex[key];
+  var c=document.createElement("canvas"), x, F=KIT.flag;
+  function hx(n){ return "#"+("000000"+n.toString(16)).slice(-6); }
+  if(key==="lozenge"){ c.width=c.height=128; x=c.getContext("2d");
+    x.fillStyle=hx(F.white); x.fillRect(0,0,128,128);
+    function tri(a,b,d,col){ x.fillStyle=hx(col); x.beginPath(); x.moveTo(a[0],a[1]); x.lineTo(b[0],b[1]); x.lineTo(d[0],d[1]); x.closePath(); x.fill(); }
+    tri([0,0],[64,0],[0,64],F.blue); tri([128,128],[64,128],[128,64],F.blue);    /* the staff's top corner and its opposite */
+    tri([128,0],[64,0],[128,64],F.red); tri([0,128],[64,128],[0,64],F.red);
+  } else if(key==="ordinary"){ c.width=128; c.height=113; x=c.getContext("2d");
+    x.fillStyle=hx(F.yellow); x.fillRect(0,0,128,113);
+    /* the double eagle, simplified to one dark silhouette: body, spread wings, two heads on their necks, the tail */
+    x.fillStyle=hx(F.black);
+    function poly(P){ x.beginPath(); x.moveTo(P[0][0],P[0][1]); for(var q=1;q<P.length;q++) x.lineTo(P[q][0],P[q][1]); x.closePath(); x.fill(); }
+    x.beginPath(); x.ellipse(64,58,11,20,0,0,Math.PI*2); x.fill();
+    poly([[58,46],[30,26],[24,46],[30,62],[56,70]]); poly([[70,46],[98,26],[104,46],[98,62],[72,70]]);
+    poly([[59,42],[54,28],[60,26],[64,40]]); poly([[69,42],[74,28],[68,26],[64,40]]);
+    x.beginPath(); x.arc(56,27,5,0,Math.PI*2); x.fill(); x.beginPath(); x.arc(72,27,5,0,Math.PI*2); x.fill();
+    poly([[56,74],[72,74],[78,92],[50,92]]);
+  } else { c.width=128; c.height=64; x=c.getContext("2d");
+    x.fillStyle=NATION[key.split(":")[1]].fill; x.fillRect(0,0,128,64); }
+  x.fillStyle="rgba(0,0,0,.12)"; for(var k=0;k<c.width;k+=4) x.fillRect(k,0,1,c.height);   /* a little cloth */
+  var t=ctexS(c); _flagTex[key]=t; return t;
+}
+/* how many of a block's standards are drawn: those of the battalions shown (a detachment drawn separately takes its standards) */
+function stdCount(ud){
+  if(!ud.stds||!ud.stds.length) return;
+  var kb=ud.shownBat===undefined?Infinity:ud.shownBat, n=0, nf=0, per={};
+  ud.stds.forEach(function(q){ if(q.unit<kb){ n++; per[q.tex]=(per[q.tex]||0)+1; if(q.S.fin>0) nf++; } });
+  ud.poles.count=n; Object.keys(ud.flagMeshes).forEach(function(k){ ud.flagMeshes[k].count=per[k]||0; });
+  if(ud.finials) ud.finials.count=nf;
+}
+/* standards stand on the drawn ground and upright, like the men who carry them, each at its unit's centre; the cloth hangs from the
+   staff's top and dips with the formation (0.95 rad while broken, captured, encircled or repulsed: poseBlock) */
 var _stQ=new THREE.Quaternion(), _stZ=new THREE.Quaternion(), _stP=new THREE.Vector3(), _stO=new THREE.Vector3(),
     _stS=new THREE.Vector3(), _stM=new THREE.Matrix4(), _stAx=new THREE.Vector3(0,0,1), _stG=new THREE.Vector3();
 function placeStandards(g,sw,tilt){
   var ud=g.userData;
   tilt=tilt||0;
-  var tall=(ud.body&&ud.body.children.length&&ud.stdX.length===1&&!ud.skirmish)?1.25:1;
-  var k=STD_RATIO*figureTop(!!ud.mounted)/(STD_POLE*tall);   /* one ratio for every block */
-  ud.stdScale=k; ud.stdTall=tall;
+  if(!ud.stds||!ud.stds.length) return;
   if(ud.seatPrep) ud.seatPrep(); else g.updateMatrixWorld(true);
-  var C=ud.upright?_stQ.copy(ud.upright()):_stQ.identity();
-  for(var i=0;i<ud.stdX.length;i++){
-    var X=ud.stdX[i]*sw;
-    if(ud.seatLocal) ud.seatLocal(X,0,_stG); else _stG.set(X,0,0);
-    _stO.set(0,STD_POLE/2*tall*k,0).applyQuaternion(C);
-    _stP.copy(_stG).add(_stO);
-    _stM.compose(_stP,C,_stS.set(k,tall*k,k)); ud.poles.setMatrixAt(i,_stM);
-    _stO.set(1.25*k*Math.cos(tilt),4.5*tall*k-1.25*k*Math.sin(tilt),0).applyQuaternion(C);
-    _stP.copy(_stG).add(_stO);
+  var C=ud.upright?_stQ.copy(ud.upright()):_stQ.identity(), sd=ud.sd||1, k=KIT.std.thick;
+  ud.stds.forEach(function(q,i){
+    var S=q.S;
+    if(ud.seatLocal) ud.seatLocal(q.x*sw,q.z*sd,_stG); else _stG.set(q.x*sw,0,q.z*sd);
+    _stO.set(0,S.len/2,0).applyQuaternion(C); _stP.copy(_stG).add(_stO);
+    _stM.compose(_stP,C,_stS.set(k,S.len/STD_POLE,k)); ud.poles.setMatrixAt(i,_stM);
+    if(S.fin>0){ _stO.set(0,S.len+S.fin/2,0).applyQuaternion(C); _stP.copy(_stG).add(_stO);
+      _stM.compose(_stP,C,_stS.set(S.fin*0.6,S.fin,S.fin*0.3)); ud.finials.setMatrixAt(q.ki,_stM); }
+    var hx=S.w/2+0.06*k, py=S.len-S.h/2;
+    _stO.set(hx*Math.cos(tilt),py-hx*Math.sin(tilt),0).applyQuaternion(C); _stP.copy(_stG).add(_stO);
     _stZ.setFromAxisAngle(_stAx,-tilt).premultiply(C);
-    _stM.compose(_stP,_stZ,_stS.set(k,k,k)); ud.flags.setMatrixAt(i,_stM);
-  }
+    _stM.compose(_stP,_stZ,_stS.set(S.w/2.4,S.h/1.4,1)); ud.flagMeshes[q.tex].setMatrixAt(q.fi,_stM);
+  });
   ud.poles.instanceMatrix.needsUpdate=true;
-  ud.flags.instanceMatrix.needsUpdate=true;
+  Object.keys(ud.flagMeshes).forEach(function(k2){ ud.flagMeshes[k2].instanceMatrix.needsUpdate=true; });
+  if(ud.finials) ud.finials.instanceMatrix.needsUpdate=true;
+  stdCount(ud);
 }
 /* multiply a canvas's alpha by a round window that is zero at every edge, so whatever overlaps
    inside it the sprite can never show a straight side */
@@ -6437,7 +6532,9 @@ var PAD_GEO=(function(){ var g=new THREE.PlaneGeometry(1,1); g.rotateX(-Math.PI/
    the paper map, where B and C are capped on screen. Each mark is a patch of the drawn ground's own cells at LIFT above it, so
    the drape never cuts under the drawn ground (confPlace). At 1x the A mark is the true-scale footprint itself (decision 34),
    at its opacity; dimmed formations draw theirs fainter. */
-var CONF={OP:{A:0.62,B:0.55,C:0.45}, OP_TRUE:0.85, DIM:0.45, LIFT:0.25, CAP:0.25, TEX:128, tex:{}, shown:{A:false,B:false,C:false}};
+var CONF={OP:{A:0.62,B:0.55,C:0.45}, OP_TRUE:0.85, DIM:0.45, LIFT:0.25, CAP:0.25, TEX:128, tex:{}, shown:{A:false,B:false,C:false},
+  none:false};   /* none: a measurement switch (Stage 6C), never set by the app: no mark but the 1x footprint, so that the harness's frame "without
+                    the marks" stays without them now that decision 107 keeps a side footprint when Position confidence is off */
 /* the grade's mask (alpha): A a crisp rectangle, B the frontage feathered over its outer halves, C a disc falling from its centre;
    every edge texel transparent, so outside the mark (the clamped edge) nothing is drawn */
 function confTexture(g){
@@ -9512,7 +9609,7 @@ function updateVisibility(){
        (grade A's mark, whatever the grade) stays under every formation drawn as figures, in Study, Watch and Clean: once coats follow
        the sources (decision 97) a coat says nothing of side, and the name's mark and the counter are not drawn everywhere */
     var side7=!graded&&!foot1&&rec.block.visible&&!own5;
-    var mk=foot1?"foot":((graded||side7)?"conf":null);
+    var mk=foot1?"foot":((graded||side7)&&!CONF.none?"conf":null);
     rec.sideMark=side7;
     if(mk){
       if(!rec[mk]){ rec[mk]=makeConfMark(); scene.add(rec[mk]); }
@@ -10795,7 +10892,12 @@ function dressSection(id){
   if(A.others.length) h+=row("With it, not drawn", A.others.map(function(o){ var U=DRESS_UNIT[o.unit]||[o.unit,o.unit];
     return esc((o.d?o.d.name.split(" (")[0]:o.dress)+": "+o.n+" "+(o.n===1?U[0]:U[1])); }).join("; ")+
     ' <span class="hh">(another arm: the formation keeps the arm the order of battle gives it)</span>');
-  h+=row("Standards drawn", "plain cloths in the nation's symbol colour; their models are not yet drawn");
+  /* Stage 6D: the standards drawn, per class, with the rule that gives their number */
+  var sd={}; (u&&u.stds||[]).forEach(function(q){ var k=q.dress; sd[k]=sd[k]||{n:0,q:q}; sd[k].n++; });
+  var PN={lozenge:"the French 1804 model", ordinary:"the Austrian ordinary colour"};
+  h+=row("Standards drawn", A.parts.filter(function(p){ return drawn[p.dress]; }).map(function(p){ var R=kitStdRule(p.d.carry), e=sd[p.dress];
+    return esc(p.d.name.split(" (")[0])+": "+(e?esc(e.n+" ("+(R.how==="lower"?"the smallest count either side gives":(R.n<1?"one per "+Math.round(1/R.n)+" ":R.n+" per ")+(R.per==="sqn"?(R.n<1?"squadrons":"squadron"):"battalion")+", as sourced")+"), "+
+      (e.q.S.paint?PN[e.q.S.paint]:"a plain cloth in the nation's symbol colour")+(e.q.S.provisional?", at the provisional height":", at its sourced height")):"none ("+esc(R.why+(R.detail?": "+apText(R.detail):""))+")"); }).join("<br>")||"none");
   var sec=sect("Dress",h,true,"record");
   sec.appendChild(el("p","hh",esc("Drawn where a value graded A or B settles it (A documented for 1805, B for the period and probable for 1805, C reconstructed or disputed); "+
     "otherwise generic: the nation's symbol colour, a plain cap, legwear in one neutral. The drawn colours are design values, not measured shades."+
@@ -11194,8 +11296,23 @@ function troopNotes(){
     "Greatcoats: no read source shows them worn in the fighting, so the coat is drawn; where the sources leave it open, the dossier says greatcoats may have been worn.",
     "Cuirasses are drawn where the table records them: "+(cu.length?cu.join("; "):"none")+". Horses are drawn in one brown"+(hb.length?", except "+hb.join("; "):"")+"; guns and limbers in one colour for every army.",
     "The two mounted officers of each infantry formation are drawn generic; the skirmish screen in the formation's largest class. Troops of another arm attached to a formation (its guns, its cavalry) are listed in its dossier, not drawn: a formation keeps the arm the order of battle gives it.",
-    "The standards are plain cloths in the nation's symbol colour: their patterns are not yet drawn, and the pattern of the Russian infantry's colours is an open question.",
     "Side and nation are carried by the counters, the marks beside the names and the marks on the ground, never by a coat: French dragoons wore green and the Chevalier Guard white. With Position confidence off, a footprint in the side's colour stays under every formation drawn as figures."
+  ];
+}
+/* Stage 6D: the sources sheet's "How the standards are drawn", from COLOURS_CARRIED, STANDARD_MEASURES and the blocks as drawn */
+function standardNotes(){
+  var none={}, n=0, used={};
+  Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u) return; n+=u.stds?u.stds.length:0;
+    (u.dress||[]).forEach(function(r){ if(!r.dress||r.role==="skirmish"||r.role==="officers") return; var c=DRESS[r.dress].carry, R=kitStdRule(c);
+      used[c]=1; if(!R.n) (none[R.why]=none[R.why]||{})[DRESS[r.dress].name.split(" (")[0]]=1; }); });
+  var M=STANDARD_MEASURES, ru=M.ru, at=M.at;
+  return [
+    "Who carried standards and how many follow the appearance table, per battalion or squadron as the sources give it, mapped onto the drawn battalions and squadrons: "+n+" standards on the field. None where "+
+      Object.keys(none).map(function(w){ return w+" ("+Object.keys(none[w]).join(", ")+")"; }).join("; ")+".",
+    "The Austrian infantry's count is disputed, one or two per battalion in 1805: one per battalion is drawn, the smallest either side gives. The white Leib colour, one per regiment, is not drawn apart from the ordinary colours.",
+    "Painted where a source graded A or B gives the pattern: the French 1804 model (a white lozenge, the corners alternately red and blue; which colour lies at the staff's top is not sourced, drawn blue; the eagle on the staff where its size is read) and the Austrian ordinary colour (imperial yellow, the black double eagle, simplified; its flame border not drawn). Every other cloth is plain, in the nation's symbol colour: the pattern of the Russian infantry's colours is an open question; the Russian cavalry's and the Guard's patterns were not settled by the sources read.",
+    "Height, owner decision 106: the staff's top, with its finial, over the man's height to his hat's top. Russian infantry: a staff of "+ru.staff.m.toFixed(2)+" m and a spearhead of "+ru.staff.finial_m.toFixed(3)+" m with its socket (how far the socket overlaps is not stated: drawn on the staff's end, the upper bound) over a recruit of "+ru.stature.m.toFixed(2)+" m, the minimum of 1804. Austrian infantry: a staff of about "+at.staff.m.toFixed(2)+" m over a recruit of "+at.stature.m.toFixed(2)+" m (a minimum of the 1790s; the finial's size not read, not drawn). Both divide by a minimum stature, so the drawn staff is if anything long for the average man (an inference).",
+    "The cloths in their sourced proportions (the French 81 cm square, the Austrian 161 x 142 cm and 71 x 63 cm, the Russian 142 cm square); where the staff and the cloth are both measured (the Russian and Austrian infantry), at their sourced size against the staff, so that the cloth hangs lower among the ranks than the provisional rule drew it. The dip of a broken, captured, encircled or repulsed formation's standards is kept."
   ];
 }
 function arrowNotes(){
@@ -11258,7 +11375,7 @@ function openSources(){
     '<li>'+esc(isTrueScale()?"The relief is drawn at true scale (1\u00d7). Formations are drawn as their modelled footprints; figures, standards, buildings and trees are not drawn."
       :"The relief is drawn "+fmtFactor(DISPLAY.factor)+" times its true height; 1\u00d7 is true scale. The setting is a view, not the model: heights in metres, sightlines and the going classes do not change with it.")+'</li>'+
     '<li>'+esc("Symbols stand on the ground at two named scales: figures and standards about 45\u201370 times life size, buildings and trees about 10\u201315 times.")+'</li>'+
-    '<li>'+esc("The standards' pole-to-figure ratio (1.6) is provisional: a design rule chosen so that the colour clears the ranks, not a sourced ratio, to be replaced in Stage 6.")+'</li>'+
+    '<li>'+esc("The French standards and every mounted standard stand at a provisional 1.6 times the figure's top (on foot the bayonet's tip, about 1.94 times the man to his hat's top; mounted the rider's hat), a design rule: no French staff and no cavalry staff was read. The Russian and Austrian standards carried on foot stand at their sourced ratio (How the standards are drawn, below).")+'</li>'+
     '<li>'+esc("The going layer's slope classes (hard for guns over "+GOING_TRUE_DEG[0].toFixed(2)+"\u00b0, severe over "+GOING_TRUE_DEG[1].toFixed(2)+"\u00b0 of true slope) are unsourced design values, provisional until a data task sources or renames them.")+'</li></ul>'+
     /* the tactical rate (2C precondition, docs/STAGE2_SPEC.md section M.13): design values, stated as such */
     '<h3>Arrivals the map derives</h3><ul class="bul">'+
@@ -11271,6 +11388,7 @@ function openSources(){
     '<h3>How the arrows are drawn</h3><ul class="bul">'+arrowNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
     /* Stage 6C (docs/STAGE6_SPEC.md section 4.3 item 6): how the troops are drawn, counted from appearance.js and KIT */
     '<h3>How the troops are drawn</h3><ul class="bul">'+troopNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
+    '<h3>How the standards are drawn</h3><ul class="bul">'+standardNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
     '<h3>The appearance table\'s sources</h3><ul class="bul">'+Object.keys(APPEARANCE_SOURCES).map(function(k){ var S=APPEARANCE_SOURCES[k];
       return '<li>'+esc(S.au+", "+S.ti+" ("+S.pub+", "+S.d+")")+'</li>'; }).join('')+'</ul>'+
     '<h3>How the light is drawn</h3><ul class="bul">'+lightNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>';
@@ -11858,13 +11976,22 @@ var AUSTERLITZ_DEBUG=(function(){
     o.analytic=displayHeight(P[0],P[1])-displayHeight(S[0],S[1]);
     var g=makeGoingPalette(), h=0; for(var q=0;q<g.length;q+=9) h=(h*31+Math.round(g[q]*4095)+7*Math.round(g[q+1]*4095)+13*Math.round(g[q+2]*4095))%2147483647;
     o.going=h;
-    /* standards: pole top over the figure's height, in the block's own frame */
-    var m=new THREE.Matrix4(), top=new THREE.Vector3(), foot=new THREE.Vector3(), worst=0, n=0;
-    Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u||!u.poles||!u.stdX.length) return;
-      if(u.stdScale===undefined) placeStandards(units[id].block,u.sw||1,u.tilt||0);
-      for(var j=0;j<u.poles.count;j++){ u.poles.getMatrixAt(j,m); top.set(0,STD_POLE/2,0).applyMatrix4(m); foot.set(0,-STD_POLE/2,0).applyMatrix4(m);
-        var r=top.distanceTo(foot)/figureTop(!!u.mounted);   /* the pole's length: it stands upright on a tilted block */ n++; worst=Math.max(worst,Math.abs(r-STD_RATIO)); } });
-    o.std={n:n,worst:worst};
+    /* standards (Stage 6D, decision 106): the top, finial included, over its denominator, in the block's own frame, against the ratio
+       derived here from STANDARD_MEASURES: a standard on foot of a nation whose staff and stature are read, (staff + finial where its
+       colours entry reads one) over the stature, the man to his hat's top (MAN_FOOT) the denominator; every other, the provisional 1.6
+       over the figure's top */
+    var m=new THREE.Matrix4(), top=new THREE.Vector3(), foot=new THREE.Vector3(), worst=0, n=0, sourced=0, worstId="";
+    Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u||!u.poles||!u.stds.length) return;
+      placeStandards(units[id].block,u.sw||1,u.tilt||0);
+      u.stds.forEach(function(q,j){ if(j>=u.poles.count) return;
+        u.poles.getMatrixAt(j,m); top.set(0,STD_POLE/2,0).applyMatrix4(m); foot.set(0,-STD_POLE/2,0).applyMatrix4(m);
+        var len=top.distanceTo(foot), fin=0;   /* the pole's length: it stands upright on a tilted block */
+        if(u.finials&&q.ki!==undefined){ u.finials.getMatrixAt(q.ki,m); fin=new THREE.Vector3().setFromMatrixColumn(m,1).length(); }
+        var d=DRESS[q.dress], M=STANDARD_MEASURES[q.S.nation]||{}, CC=COLOURS_CARRIED[q.carry], want, den;
+        if(!q.S.mounted&&!M.provisional&&M.staff&&M.stature){ want=(M.staff.m+(CC.finial&&!CC.finial.gen&&M.staff.finial_m?M.staff.finial_m:0))/M.stature.m; den=MAN_FOOT; sourced++; }
+        else { want=STD_RATIO; den=figureTop(!!q.S.mounted); }
+        var e=Math.abs((len+fin)/den-want); n++; if(e>worst){ worst=e; worstId=id+" ("+q.carry+")"; } }); });
+    o.std={n:n,worst:worst,sourced:sourced,where:worstId};
     /* the words: legend, the sources sheet, a place dossier's relief caption */
     paintExaggeration();
     o.legend=(document.getElementById("exag-line").textContent||"")+" | "+(document.getElementById("exag-symbols").textContent||"");
@@ -12115,8 +12242,8 @@ var AUSTERLITZ_DEBUG=(function(){
     ck2("going: the going classes (from the model slope) are identical at every factor", !goBad.length,
       "palette checksum "+F.map(function(f){ return fmtFactor(f)+"\u00d7 "+B[f].going; }).join(", ")+"; thresholds "+GOING_TRUE_DEG.map(function(d){ return d.toFixed(2); }).join(" and ")+" true degrees");
     var stBad=F.filter(function(f){ return B[f].std.n===0||B[f].std.worst>0.01; });
-    ck2("standards: pole top / figure height is the provisional ratio "+STD_RATIO+" for every block", !stBad.length,
-      F.map(function(f){ return fmtFactor(f)+"\u00d7 "+B[f].std.n+" standards, worst deviation "+B[f].std.worst.toFixed(4); }).join("; "));
+    ck2("standards: the top over its denominator is the sourced ratio (Russian and Austrian standards on foot: staff and finial over the stature, the man to his hat's top) or the provisional "+STD_RATIO+" (the figure's top) for every standard (decision 106)", !stBad.length,
+      F.map(function(f){ return fmtFactor(f)+"\u00d7 "+B[f].std.n+" standards ("+B[f].std.sourced+" sourced), worst deviation "+B[f].std.worst.toFixed(4)+(B[f].std.where?" ("+B[f].std.where+")":""); }).join("; "));
     var lgBad=F.filter(function(f){ var t=B[f].legend; return f===1 ? !/true scale/.test(t)||!/footprints/.test(t)
       : t.indexOf("\u00d7"+fmtFactor(f))<0||!/true scale/.test(t)||!/45\u201370/.test(t)||!/10\u201315/.test(t); });
     ck2("legend: states the current factor, relative to true scale, and the two named symbol scales", !lgBad.length,
@@ -13295,22 +13422,79 @@ var AUSTERLITZ_DEBUG=(function(){
     lg.querySelectorAll('[data-lg="nation"]').forEach(function(e){ if(!/^counters: /.test(e.textContent.trim())) mism.push('the nation row "'+e.textContent.trim()+'" does not say it colours the counters'); });
     ck("first run: the key names the marks that carry the sides, not coats (decision 108); the legend's swatches are the colours that draw them", mism.length===0,
       mism.length?mism.join("; "):'"'+txt.slice(0,150)+'..."');
-    /* Stage 6C, first commit (docs/STAGE6_SPEC.md section 6.4; decision 98): every standard a plain cloth in its nation's symbol colour,
-       one texture per nation; the legend says what the figures and the standards are wherever figures are drawn */
-    var clothBad=[], nCloth=0, clothCol={};
-    Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u||!u.flags) return; nCloth++;
-      var nat=FORMATIONS[id].nation, t=u.flags.material.map;
-      if(t!==flagTexture(nat)){ clothBad.push(id+": not its nation's cloth"); return; }
-      if(clothCol[nat]===undefined){ var cv=t.image, dd=cv.getContext("2d").getImageData(0,0,cv.width,cv.height).data, seen={};
-        for(var q=0;q<dd.length;q+=4) seen[dd[q]+","+dd[q+1]+","+dd[q+2]]=1;
-        var want=parseInt(NATION[nat].fill.slice(1),16), mid=((cv.height>>1)*cv.width+2)*4;
-        clothCol[nat]=Object.keys(seen).length+" colours";
-        if(Object.keys(seen).length>2||dd[mid]!==((want>>16)&255)||dd[mid+1]!==((want>>8)&255)||dd[mid+2]!==(want&255)) clothBad.push(nat+": the cloth is not plain "+NATION[nat].fill+" ("+clothCol[nat]+")"); } });
-    var lgFig=lg.querySelector('[data-lg="figures"]'), lgStd=lg.querySelector('[data-lg="standards"]');
-    if(!lgFig||!/dress as sourced/.test(lgFig.textContent)||!/symbol colour/.test(lgFig.textContent)||!/plain cap/.test(lgFig.textContent)) clothBad.push("the legend does not say how the figures are dressed");
-    if(!lgStd||!/plain cloths/.test(lgStd.textContent)||!/not yet drawn/.test(lgStd.textContent)) clothBad.push("the legend does not say the standards are generic");
-    ck("standards: plain cloths in the nation's symbol colour, labelled generic in the legend (decision 98)", nCloth>0&&!clothBad.length,
-      nCloth+" blocks' standards; "+Object.keys(clothCol).map(function(k){ return k+" "+NATION[k].fill+" ("+clothCol[k]+": the cloth and its lines)"; }).join(", ")+(clothBad.length?"; WRONG: "+clothBad.slice(0,5).join("; "):""));
+    /* Stage 6D (docs/STAGE6_SPEC.md section 6.3, "What must hold"; decisions 98, 105, 106): the standards from the table. Each expectation is
+       derived here from COLOURS_CARRIED, STANDARD_MEASURES and KIT, not read back from kitStdRule or kitStdShape */
+    function sOk(v){ return !!(v&&!v.gen&&!v.none&&!v.sides&&(v.gr==="A"||v.gr==="B")); }
+    function wantN(carry){ var C=COLOURS_CARRIED[carry], c=C&&C.count, K=KIT.carry[carry]||{};
+      if(!C||!c||(!c.gen&&!c.sides&&c.n===0)||(C.model&&C.model.none)||c.none) return 0;
+      if(!c.gen&&!c.sides&&typeof c.n==="number") return (c.gr==="A"||c.gr==="B")?c.n:0;
+      return c.sides&&K.lower?K.lower.n:0; }
+    var sBad=[], nStd=0, byTex={}, nNone=0, nBlocks=0;
+    Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u) return; nBlocks++;
+      var got={}; (u.stds||[]).forEach(function(q){ got[q.dress]=(got[q.dress]||0)+1; });
+      if((FORMATIONS[id].arm==="hq"||FORMATIONS[id].arm==="art")&&(u.stds||[]).length) sBad.push(id+": a standard on a "+FORMATIONS[id].arm);
+      (u.dress||[]).forEach(function(r){ if(!r.dress||r.role==="skirmish"||r.role==="officers"||r.role==="crew") return;
+        var n=wantN(DRESS[r.dress].carry), units6=r.units.length, w=n>=1?n*units6:Math.ceil(n*units6);
+        if(!w) nNone++;
+        if((got[r.dress]||0)!==w) sBad.push(id+" "+r.dress+": "+(got[r.dress]||0)+" standards, the table's rule gives "+w); });
+      (u.stds||[]).forEach(function(q){ nStd++; var d=DRESS[q.dress], nat=NATION[d.nation]?d.nation:FORMATIONS[id].nation, C=COLOURS_CARRIED[q.carry], K=KIT.carry[q.carry]||{};
+        var key=(K.paint&&sOk(C.model))?K.paint:"plain:"+nat, m=u.flagMeshes[key];
+        byTex[key]=(byTex[key]||0)+1;
+        if(!m||m.material.map!==flagTexture(key)) sBad.push(id+" "+q.dress+": not its cloth ("+key+")"); }); });
+    /* the paintings as painted: the lozenge's white centre and its corners alternately blue and red, the ordinary colour's yellow and black,
+       the plain cloths their nation's symbol colour alone (two colours: the cloth and its lines) */
+    function px(key,x,y){ var cv=flagTexture(key).image, d=cv.getContext("2d").getImageData(x,y,1,1).data; return (d[0]<<16)|(d[1]<<8)|d[2]; }
+    var F=KIT.flag, paintBad=[];
+    [["lozenge",66,62,F.white],["lozenge",10,10,F.blue],["lozenge",118,10,F.red],["lozenge",10,118,F.red],["lozenge",118,118,F.blue],["ordinary",6,6,F.yellow],["ordinary",65,58,F.black]].forEach(function(t){
+      if(byTex[t[0]]&&px(t[0],t[1],t[2])!==t[3]) paintBad.push(t[0]+" at "+t[1]+","+t[2]+" is #"+("00000"+px(t[0],t[1],t[2]).toString(16)).slice(-6)); });
+    Object.keys(byTex).filter(function(k){ return /^plain:/.test(k); }).forEach(function(k){ var cv=flagTexture(k).image, dd=cv.getContext("2d").getImageData(0,0,cv.width,cv.height).data, seen={};
+      for(var q=0;q<dd.length;q+=4) seen[dd[q]+","+dd[q+1]+","+dd[q+2]]=1;
+      if(Object.keys(seen).length>2||px(k,2,cv.height>>1)!==parseInt(NATION[k.split(":")[1]].fill.slice(1),16)) paintBad.push(k+" is not plain "+NATION[k.split(":")[1]].fill); });
+    ck("standards: who carries them and how many as the appearance table rules, per drawn battalion or squadron; none where it shows none, gives none, disputes them in the field or leaves the count open; no standard on a battery or a headquarters (section 6.3)",
+      nStd>0&&!sBad.length, nStd+" standards on "+nBlocks+" blocks; "+nNone+" class sets with none"+(sBad.length?"; WRONG: "+sBad.slice(0,5).join("; "):""));
+    ck("standards: each cloth its colours entry's painting where a claim graded A or B gives it (the French 1804 lozenge, the Austrian ordinary colour), else plain in its nation's symbol colour (decisions 98, 105)",
+      nStd>0&&!paintBad.length&&!sBad.some(function(b){ return /not its cloth/.test(b); }), Object.keys(byTex).map(function(k){ return k+" "+byTex[k]; }).join(", ")+(paintBad.length?"; WRONG: "+paintBad.join("; "):""));
+    /* the cloths' proportions, the finials, and the dip: each standard's cloth in its sourced proportion (its own cloth's, its painting's source
+       entry's, or the generic 2.4 : 1.4), at its sourced size against the staff where both are measured; a finial exactly where a finial is
+       read with a size, on the staff's top; the cloth turned 0.95 rad about the staff while dipped */
+    var pBad=[], nf=0, nSized=0, M4=new THREE.Matrix4(), v1=new THREE.Vector3(), v2=new THREE.Vector3(), v3=new THREE.Vector3(), qq=new THREE.Quaternion(), dipWorst=0;
+    Object.keys(units).forEach(function(id){ var b=units[id].block, u=b&&b.userData; if(!u||!u.stds||!u.stds.length) return;
+      placeStandards(b,u.sw||1,0);
+      u.stds.forEach(function(q,i){ var C=COLOURS_CARRIED[q.carry], K=KIT.carry[q.carry]||{}, src=K.paint&&sOk(C.model)?COLOURS_CARRIED[KIT.paint[K.paint].from]:null;
+        var cl=sOk(C.cloth)&&C.cloth.w?C.cloth:(src&&sOk(src.cloth)&&src.cloth.w?src.cloth:null), asp=cl?cl.w/cl.h:2.4/1.4;
+        u.flagMeshes[q.tex].getMatrixAt(q.fi,M4); M4.decompose(v1,qq,v2); var w=v2.x*2.4, h=v2.y*1.4;
+        u.poles.getMatrixAt(i,M4); M4.decompose(v1,qq,v3); var len=v3.y*STD_POLE, pc=v1.clone();
+        if(Math.abs(w/h/asp-1)>0.01) pBad.push(id+" "+q.carry+": cloth "+w.toFixed(3)+" x "+h.toFixed(3)+", proportion "+asp.toFixed(3));
+        var Mn=STANDARD_MEASURES[q.S.nation]||{};
+        if(!q.S.mounted&&!Mn.provisional&&Mn.staff&&Mn.stature&&sOk(C.cloth)&&C.cloth.w){ nSized++;
+          var staff=Mn.staff.m*MAN_FOOT/Mn.stature.m; if(Math.abs(w/staff-C.cloth.w/100/Mn.staff.m)>0.005) pBad.push(id+" "+q.carry+": cloth not at its measure against the staff"); }
+        var finCm=sOk(C.finial)?(/(\d+(?:\.\d+)?)\s*cm\b/.test(C.finial.en||C.finial.v||"")||(src&&sOk(src.finial)&&/(\d+(?:\.\d+)?)\s*cm\b/.test(src.finial.en||src.finial.v||""))):false;
+        var wantFin=sOk(C.finial)&&((!q.S.mounted&&!Mn.provisional&&Mn.staff&&Mn.staff.finial_m)||(finCm&&!!cl));
+        if(!!wantFin!==(q.ki!==undefined)) pBad.push(id+" "+q.carry+": finial "+(q.ki!==undefined?"drawn":"missing"));
+        if(q.ki!==undefined){ nf++; u.finials.getMatrixAt(q.ki,M4); M4.decompose(v2,qq,v3); if(Math.abs(v2.distanceTo(pc)-(len/2+v3.y/2))>1e-3) pBad.push(id+" "+q.carry+": the finial not on the staff's top"); } });
+      /* the dip: the cloth's turn about the staff's axis while dipped (0.95 rad), measured from the matrices */
+      placeStandards(b,u.sw||1,0.95); var q0=u.stds[0]; u.flagMeshes[q0.tex].getMatrixAt(q0.fi,M4); M4.decompose(v1,qq,v2);
+      var C0=u.upright?u.upright().clone():new THREE.Quaternion(), rel=C0.invert().multiply(qq), ang=2*Math.acos(Math.min(1,Math.abs(rel.w)));
+      dipWorst=Math.max(dipWorst,Math.abs(ang-0.95)); placeStandards(b,u.sw||1,u.tilt||0); });
+    /* and the status that dips them: a formation with standards whose status is broken, captured, encircled or repulsed, its standards eased
+       to 0.95 rad; the first such moment of the day */
+    var dipSt=["broken","captured","encircled","repulsed"], lowered=0, dipAt=null, keepC=clock;
+    for(var ph=0;ph<PHASES.length&&!dipAt;ph++) Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData;
+      if(!dipAt&&u&&u.stds&&u.stds.length&&dipSt.indexOf(liveStatus(id,ph))>=0) dipAt={id:id,ph:ph,st:liveStatus(id,ph)}; });
+    var mdD=mode; if(dipAt&&mode!=="terrain") setMode("terrain");
+    if(dipAt){ setClock(PHASES[dipAt.ph].t0+5,{instant:true,force:true,camera:false}); finishTween(); settle(160,true);
+      var du=units[dipAt.id].block.userData; lowered=units[dipAt.id].block.visible?Math.abs((du.tilt||0)-0.95):-1;
+      if(lowered<0||lowered>0.01) pBad.push(dipAt.id+" ("+dipAt.st+" at "+fmtClock(clock)+"): its standards at "+(du.tilt||0).toFixed(3)+" rad, not 0.95");
+      setClock(keepC,{instant:true,force:true,camera:false}); finishTween(); if(mode!==mdD) setMode(mdD); settle(6,true); }
+    else pBad.push("no formation with standards is ever broken, captured, encircled or repulsed: the dip not exercised");
+    ck("standards: each cloth in its sourced proportion (its sizes against the staff where both are measured); a finial exactly where one is read with its size, on the staff's top; the dip 0.95 rad about the staff (section 6.3)",
+      nStd>0&&!pBad.length&&dipWorst<1e-3, nStd+" cloths, "+nSized+" at their measure against the staff, "+nf+" finials; the dip's turn within "+dipWorst.toExponential(1)+" rad of 0.95"+
+      (dipAt?"; "+dipAt.id+", "+dipAt.st+" in phase "+dipAt.ph+", eased to within "+lowered.toFixed(4)+" rad":"")+(pBad.length?"; WRONG: "+pBad.slice(0,5).join("; "):""));
+    /* the legend says what the figures and the standards are wherever figures are drawn */
+    var lgFig=lg.querySelector('[data-lg="figures"]'), lgStd=lg.querySelector('[data-lg="standards"]'), lgBad2=[];
+    if(!lgFig||!/dress as sourced/.test(lgFig.textContent)||!/symbol colour/.test(lgFig.textContent)||!/plain cap/.test(lgFig.textContent)) lgBad2.push("the figures' row");
+    if(!lgStd||!/painted where the pattern is sourced/.test(lgStd.textContent)||!/plain in the nation's symbol colour/.test(lgStd.textContent)) lgBad2.push("the standards' row");
+    ck("legend: the figures' and the standards' rows say how they are drawn (decisions 98, 103)", !lgBad2.length, lgBad2.length?"WRONG: "+lgBad2.join(", "):'"'+lgStd.textContent+'"');
 
     /* 7. dossiers in metres */
     var bad=[];

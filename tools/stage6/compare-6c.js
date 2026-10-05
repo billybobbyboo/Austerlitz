@@ -12,7 +12,9 @@
    3. in the close and middle views, each formation's coats keyed in magenta (one render each, the instance colours restored after), so the
       pixels where its coats show are found and their rendered colour read; the CIEDE2000 difference between formations of opposite sides
       as rendered (decision 97: once coats follow the sources, a coat cannot carry side; the cue is the symbology's).
-   It also lists every block's classes as drawn on the after build, with their grades (appearanceOf and the block's ud.dress). */
+   It also lists every block's classes as drawn on the after build, with their grades (appearanceOf and the block's ud.dress).
+   Each view's results are saved as it is measured (the JSON, and its frame in --frames, default the system's temporary folder), and a run
+   with --resume skips what is saved: a long run cut short continues where it stopped. */
 const fs=require("fs"), path=require("path");
 const L=require("./lib.js");
 const {launch,open,HELPERS,inject,views,applyView,shot,contrastOf,darkOf,sheet,EVID6,ROOT}=L;
@@ -21,6 +23,8 @@ const BEFORE=opt("--before")||"archive/stage6b-7fc0f6c3.html", AFTER=opt("--afte
 const OUTJ=opt("--json")||path.join(EVID6,"compare-6c.json"), OUTM=opt("--md")||path.join(EVID6,"compare-6c.md"), SHEET=opt("--sheet")||path.join(EVID6,"compare-6c-sheet.jpg");
 const KEYS=["close-sokolnitz","pratzen-low","pratzen-orbit-min","selected-formation","watch-selected","overview-field","hybrid-dimmed"];
 const SHEETV=["close-sokolnitz","pratzen-low","eye-zuran","pratzen-orbit-min"];
+const FRAMES=opt("--frames")||path.join(require("os").tmpdir(),"aus-compare-6c"), RESUME=args.includes("--resume");
+fs.mkdirSync(FRAMES,{recursive:true});
 
 const PROBE=function(){
   var S={};
@@ -77,22 +81,29 @@ const PROBE=function(){
   window.__s6c=S; return true;
 };
 
-async function measure(html,RUN,tiles,label){
+async function measure(html,RUN,label,out){
+  const res=out[label];
+  const todo=RUN.filter(V=>!res.views[V.key]);
+  if(!todo.length&&(label!=="after"||res.blocks)) return;
   const browser=await launch(), page=await open(browser,[1600,900],path.resolve(ROOT,html));
   await inject(page,HELPERS); await inject(page,PROBE);
   const quick=async()=>{ await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(2)); };
-  const res={html:html,views:{}};
-  for(const V of RUN){
+  for(const V of todo){
     const t0=Date.now(); await applyView(page,V);
     const r={figures:0}, b0=await shot(page);
     r.layer=await page.evaluate(()=>__s5.layer()); r.contrast=await contrastOf(page,b0); r.dark=await darkOf(page,b0);
-    r.worldMs=await page.evaluate(()=>__s5.frame(3)); r.smoke=await page.evaluate(()=>{ var s=window.__aus.smokeShare(); return s?s.share:null; });
-    r.b64=b0;
+    r.worldMs=await page.evaluate(()=>__s5.frame(15));
+    r.calls=await page.evaluate(()=>{ renderer.info.autoReset=false; renderer.info.reset(); renderFrame(); var c=renderer.info.render.calls; renderer.info.autoReset=true; return c; }); r.smoke=await page.evaluate(()=>{ var s=window.__aus.smokeShare(); return s?s.share:null; });
+    fs.writeFileSync(path.join(FRAMES,label+"-"+V.key+".png"),Buffer.from(b0,"base64"));
     if(V.c.mode!=="staff"){
       r.figures=await page.evaluate(()=>__s6c.figures()); r.identity=await page.evaluate(()=>__s6c.identity());
-      if(r.figures>0){ await page.evaluate(()=>{ layerOn.confidence=false; }); await quick(); const c0=await shot(page);
+      /* the marks' share against the view with no mark at all (CONF.none, since 6C; on 6B Position confidence off drew none), and on 6C the
+         share of decision 107's side footprint (Position confidence off) against the same */
+      if(r.figures>0){ await page.evaluate(()=>{ layerOn.confidence=false; CONF.none=true; }); await quick(); const c0=await shot(page);
+        await page.evaluate(()=>{ CONF.none=false; }); await quick(); const c1=await shot(page);
         await page.evaluate(()=>{ layerOn.confidence=true; }); await quick();
-        r.confShare=(await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[b0,c0])).share; }
+        r.confShare=(await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[b0,c0])).share;
+        r.sideShare=(await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[c1,c0])).share; }
       if(KEYS.includes(V.key)&&r.figures>0){ r.keys={};
         for(const it of r.identity){ await page.evaluate(id=>__s6c.key(id),it.id); await quick(); const kb=await shot(page); await page.evaluate(()=>__s6c.unkey()); await quick();
           const kc=await page.evaluate(([a,b])=>__s6c.keyColour(a,b),[kb,b0]); if(kc.px>=12) r.keys[it.id]=Object.assign({side:it.side},kc); }
@@ -100,39 +111,41 @@ async function measure(html,RUN,tiles,label){
         for(let i=0;i<ids.length;i++) for(let j=i+1;j<ids.length;j++){ const A=r.keys[ids[i]], B=r.keys[ids[j]]; if(A.side===B.side) continue;
           cross.push([ids[i],ids[j],+(await page.evaluate(([a,b])=>__s6c.de2000(a,b),[A.lab,B.lab])).toFixed(1)]); }
         cross.sort((a,b)=>a[2]-b[2]); r.cross={pairs:cross.length,closest:cross.slice(0,4)}; } }
-    if(SHEETV.includes(V.key)) tiles.push({key:V.key,label,png:Buffer.from(b0,"base64")});
-    r.seconds=Math.round((Date.now()-t0)/1000); res.views[V.key]=r;
+    /* the share of the free rectangle that differs from the before build's frame of the same view */
+    const bf=path.join(FRAMES,"before-"+V.key+".png");
+    if(label==="after"&&fs.existsSync(bf)) r.changed=(await page.evaluate(([x,y])=>__s5.diff(x,y,8),[fs.readFileSync(bf).toString("base64"),b0])).changed;
+    r.seconds=Math.round((Date.now()-t0)/1000); res.views[V.key]=r; res.errors=page._errors.slice(0,5);
+    fs.writeFileSync(OUTJ,JSON.stringify(out,null,1));
     console.log(label.padEnd(7),V.key.padEnd(24),"figs",r.figures,"blk",r.dark.solidBlack,"lum",r.dark.meanLum,"AA-",r.contrast.belowAA,"min",r.contrast.min,"drop",r.layer.dropped,
-      "conf",r.confShare,"smoke",r.smoke,"ms",r.worldMs,r.cross?"cross "+JSON.stringify(r.cross.closest[0]||null):"","|",r.seconds,"s");
+      "conf",r.confShare,"side",r.sideShare,"smoke",r.smoke,"ms",r.worldMs,"calls",r.calls,r.cross?"cross "+JSON.stringify(r.cross.closest[0]||null):"","|",r.seconds,"s");
   }
-  if(label==="after") res.blocks=await page.evaluate(()=>__s6c.blocks());
-  res.errors=page._errors.slice(0,5); res.page=page; res.browser=browser;
-  return res;
+  if(label==="after"){ res.blocks=await page.evaluate(()=>__s6c.blocks()); fs.writeFileSync(OUTJ,JSON.stringify(out,null,1)); }
+  await browser.close();
 }
 
 (async()=>{
-  const ONLY=opt("--only"), RUN=ONLY?views().filter(v=>ONLY.split(",").includes(v.key)):views(), tiles=[];
-  const B=await measure(BEFORE,RUN,tiles,"before"); await B.browser.close();
-  const A=await measure(AFTER,RUN,tiles,"after");
-  /* the share of the free rectangle that differs between the two builds, as rendered */
-  for(const k of Object.keys(A.views)){ const a=A.views[k], b=B.views[k]; if(!b) continue;
-    a.changed=(await A.page.evaluate(([x,y])=>__s5.diff(x,y,8),[b.b64,a.b64])).changed; }
-  if(tiles.length){ const T=[]; SHEETV.forEach(k=>["before","after"].forEach(l=>{ const t=tiles.find(q=>q.key===k&&q.label===l); if(t) T.push({png:t.png,cap:k+": "+(l==="before"?"Stage 6B ("+BEFORE+")":"Stage 6C")}); }));
-    fs.writeFileSync(SHEET,await sheet(A.page,T,2,800,450,"Stage 6C: the figures by class (right) against Stage 6B (left), as rendered")); }
-  await A.browser.close();
-  const strip=R=>{ const o={html:R.html,errors:R.errors,views:{}}; Object.keys(R.views).forEach(k=>{ const v=Object.assign({},R.views[k]); delete v.b64; o.views[k]=v; }); if(R.blocks) o.blocks=R.blocks; return o; };
-  const out={when:new Date().toISOString(),before:strip(B),after:strip(A)};
-  fs.writeFileSync(OUTJ,JSON.stringify(out,null,1));
+  const ONLY=opt("--only"), RUN=ONLY?views().filter(v=>ONLY.split(",").includes(v.key)):views();
+  const out=RESUME&&fs.existsSync(OUTJ)?JSON.parse(fs.readFileSync(OUTJ,"utf8")):{when:new Date().toISOString(),before:{html:BEFORE,views:{},errors:[]},after:{html:AFTER,views:{},errors:[]}};
+  await measure(BEFORE,RUN,"before",out);
+  await measure(AFTER,RUN,"after",out);
+  out.when=new Date().toISOString(); fs.writeFileSync(OUTJ,JSON.stringify(out,null,1));
+  /* the sheet of the close views, before and after, from the saved frames */
+  const T=[]; SHEETV.forEach(k=>["before","after"].forEach(l=>{ const f=path.join(FRAMES,l+"-"+k+".png"); if(fs.existsSync(f)) T.push({png:fs.readFileSync(f),cap:k+": "+(l==="before"?"Stage 6B ("+BEFORE+")":"Stage 6C")}); }));
+  if(T.length){ const browser=await launch(), page=await open(browser,[1600,900],path.resolve(ROOT,AFTER));
+    fs.writeFileSync(SHEET,await sheet(page,T,2,800,450,"Stage 6C: the figures by class (right) against Stage 6B (left), as rendered")); await browser.close(); }
+  const A={views:out.after.views,blocks:out.after.blocks,errors:out.after.errors||[]}, B={views:out.before.views,errors:out.before.errors||[]};
   /* the markdown */
   const md=["# Stage 6C: the figures by class against the build before them\n",
     "`node tools/stage6/compare-6c.js`, run "+out.when.slice(0,10)+". Before: `"+BEFORE+"` (Stage 6B); after: `"+AFTER+"` (Stage 6C). 1600 x 900, software WebGL (the world pass's times compare only with one another). "+
     "Solid near-black: the share of 8 x 8 blocks at least 90% near-black outside the panels (Stage 0 limit 0.0005). Map text: the lowest contrast as rendered and the number below AA. "+
-    "Drops: the map layer's. Smoke and confidence: their shares of the free rectangle (measure.js). Changed: the share of the free rectangle that differs between the builds.\n",
-    "| view | figures | solid black before / after | mean luminance before / after | text min (below AA) before / after | drops before / after | confidence share before / after | smoke share before / after | world pass ms before / after | changed |","|---|---|---|---|---|---|---|---|---|---|"];
+    "Drops: the map layer's. Smoke and confidence: their shares of the free rectangle (measure.js); the confidence marks against the view drawn with no mark (CONF.none on 6C), "+
+    "and on 6C the share of decision 107's side footprint, drawn when Position confidence is off. The world pass: the median of 15 frames, and the draw calls of one frame. "+
+    "Changed: the share of the free rectangle that differs between the builds.\n",
+    "| view | figures | solid black before / after | mean luminance before / after | text min (below AA) before / after | drops before / after | confidence share before / after | side footprint (after) | smoke share before / after | world pass ms before / after | draw calls before / after | changed |","|---|---|---|---|---|---|---|---|---|---|---|---|"];
   Object.keys(A.views).forEach(k=>{ const a=A.views[k], b=B.views[k]||{}; const f=(x,y)=>(x===undefined||x===null?"-":x)+" / "+(y===undefined||y===null?"-":y);
     md.push("| "+k+" | "+a.figures+" | "+f(b.dark&&b.dark.solidBlack,a.dark.solidBlack)+" | "+f(b.dark&&b.dark.meanLum,a.dark.meanLum)+" | "+
       f(b.contrast&&(b.contrast.min+" ("+b.contrast.belowAA+")"),a.contrast.min+" ("+a.contrast.belowAA+")")+" | "+f(b.layer&&b.layer.dropped,a.layer.dropped)+" | "+
-      f(b.confShare,a.confShare)+" | "+f(b.smoke,a.smoke)+" | "+f(b.worldMs,a.worldMs)+" | "+(a.changed===undefined?"-":a.changed)+" |"); });
+      f(b.confShare,a.confShare)+" | "+(a.sideShare===undefined?"-":a.sideShare)+" | "+f(b.smoke,a.smoke)+" | "+f(b.worldMs,a.worldMs)+" | "+f(b.calls,a.calls)+" | "+(a.changed===undefined?"-":a.changed)+" |"); });
   md.push("\n## Coats as rendered: the closest pairs of formations of opposite sides (CIEDE2000)\n",
     "Each formation's coats keyed in magenta (one render each), the pixels where they show read in the plain render. Expected to fall (decision 97): coats follow the sources, and side is carried by the symbology.\n",
     "| view | before: pairs, closest three | after: pairs, closest three |","|---|---|---|");

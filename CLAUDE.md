@@ -30,7 +30,9 @@ one camera path below the floor), the ordered routes (since 5F: `ROUTES`, `route
 column's route dashed and faint, clipped to the ground's triangles; `routeAxis0`, the phase-0 rule; `routeDeviation`, derived), the day-track (since 5G: `DT`, `dtFrame`, `dayTrackModel`, `dayTrackEl`: a
 north-up SVG of a formation's day in its full dossier), the figures by class (since 6C: `KIT`, the drawn appearance, design values only;
 `kitDress`, `kitAllocate`, `kitGeo`/`kitGeos`, `kitHat`; the dossier's Dress `dressSection`; the sources sheet's `troopNotes`; decision 107's side
-footprint in `updateVisibility`), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 5C its interval bars, `EV_BAR`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
+footprint in `updateVisibility`; `CONF.none`, a measurement switch the app never sets), the standards from the table (since 6D: `kitStdRule`,
+`kitStdShape`, `MAN_FOOT`, `flagTexture` by painting, `placeStandards`, `stdCount`; `KIT.flag`, `KIT.paint`, `KIT.carry`, `KIT.std`; the sources
+sheet's `standardNotes`), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 5C its interval bars, `EV_BAR`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2, Stage 3, Stage 4, Stage 5 and Stage 6 measurement scripts (`stage2/`, `stage3/`, `stage4/`, `stage5/`, `stage6/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
@@ -194,9 +196,16 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   `runtime-test.js` dry-runs the kit by class and, with Position confidence off, checks no graded mark and the side footprint under every
   formation drawn as figures; the float checks read every kit geometry (`kitGeos`); `tools/stage6/compare-6c.js` (not in the suite) measures
   the build against the 6B build view by view.
+  Since 6D: the self-test's standards checks (who carries them and how many as `COLOURS_CARRIED` rules per drawn battalion or squadron, none on a
+  battery or a headquarters; each cloth its entry's painting where a claim graded A or B gives it, else plain in its nation's symbol colour; each
+  cloth in its sourced proportion, at its measure against the staff where both are read; a finial exactly where one is read with its size; the
+  dip 0.95 rad, also through a real "broken" status), and its ratio check at 1x, 4x and 10.33x (the top over the man to his hat's top at the
+  sourced ratio for Russian and Austrian standards on foot, decision 106, else the provisional 1.6 over the figure's top); `css-test.js` checks a
+  painting only from claims graded A or B and every flag colour a word of the claim it draws; `runtime-test.js` dry-runs the standards (a
+  detachment's battalions take theirs); `tools/stage6/compare-6d.js` (not in the suite) measures the build against the 6C build.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 6C build (md5 `f0786c38...`, 1,698,615 bytes;
-  re-baselined from the Stage 6B build `7fc0f6c3...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 6D build (md5 `3dd7ca41...`, 1,720,613 bytes;
+  re-baselined from the Stage 6C build `07c61c82...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -267,4 +276,8 @@ tabled: `appearance.js`, guarded, with each leaf formation's dress classes, colo
 its source, locator, grade and label or kept disputed or generic; tour stop 1 reworded, decision 108; nothing drawn changes; what it found
 is `docs/STAGE6_SPEC.md` §6.6) is merged (#40). Stage 6C (the figures by class: `KIT`, each battalion, squadron or rider a class of its
 formation's composition, a value drawn where a claim graded A or B settles it, else generic; the standards plain cloths, decision 98; identity by
-symbology: the legend, the first-run key, decision 107's side footprint, the sources sheet, the dossier's Dress) is written, for review.
+symbology: the legend, the first-run key, decision 107's side footprint, the sources sheet, the dossier's Dress) is merged (#41; its last four
+commits, `CONF.none`, the final baseline and the comparison, come with 6D). Stage 6D (the standards from the table: who carries them and how many,
+the French 1804 lozenge and the Austrian ordinary colour painted, every other cloth plain, decision 106's sourced ratio for Russian and Austrian
+standards on foot and the provisional 1.6 elsewhere, the cloths in their sourced proportions, the finials, the dip kept), the last part of Stage 6,
+is written, for review.

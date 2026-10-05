@@ -1,0 +1,6593 @@
+{
+ "when": "2026-10-05T17:08:45.446Z",
+ "before": {
+  "html": "archive/stage6b-7fc0f6c3.html",
+  "views": {
+   "overview-field": {
+    "figures": 2923,
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 55
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 77.2
+    },
+    "worldMs": 9.5,
+    "calls": 653,
+    "smoke": 0.0853,
+    "identity": [
+     {
+      "id": "gqg",
+      "side": "fr"
+     },
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "suchet",
+      "side": "fr"
+     },
+     {
+      "id": "santon",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "c_gren",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "bag",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0431,
+    "sideShare": 0,
+    "keys": {
+     "gqg": {
+      "side": "fr",
+      "px": 65,
+      "hex": "#4D6088",
+      "lab": [
+       40.83,
+       3.81,
+       -24.66
+      ]
+     },
+     "sthilaire": {
+      "side": "fr",
+      "px": 265,
+      "hex": "#384160",
+      "lab": [
+       27.87,
+       5.25,
+       -19.54
+      ]
+     },
+     "vandamme": {
+      "side": "fr",
+      "px": 112,
+      "hex": "#4C5B7C",
+      "lab": [
+       38.73,
+       3.1,
+       -20.47
+      ]
+     },
+     "suchet": {
+      "side": "fr",
+      "px": 108,
+      "hex": "#4D5974",
+      "lab": [
+       37.76,
+       2.51,
+       -16.65
+      ]
+     },
+     "santon": {
+      "side": "fr",
+      "px": 79,
+      "hex": "#4D556C",
+      "lab": [
+       36.32,
+       2.64,
+       -14.16
+      ]
+     },
+     "drouet": {
+      "side": "fr",
+      "px": 193,
+      "hex": "#4C5671",
+      "lab": [
+       36.8,
+       2.92,
+       -16.4
+      ]
+     },
+     "c_gren": {
+      "side": "fr",
+      "px": 143,
+      "hex": "#48506B",
+      "lab": [
+       34.4,
+       3.55,
+       -16.25
+      ]
+     },
+     "ahq": {
+      "side": "al",
+      "px": 68,
+      "hex": "#5E6751",
+      "lab": [
+       42.43,
+       -7.99,
+       11.55
+      ]
+     },
+     "buxhowden": {
+      "side": "al",
+      "px": 105,
+      "hex": "#536449",
+      "lab": [
+       40.37,
+       -12.06,
+       13.2
+      ]
+     },
+     "kienmayer": {
+      "side": "al",
+      "px": 379,
+      "hex": "#A19A8C",
+      "lab": [
+       63.94,
+       0.13,
+       8.22
+      ]
+     },
+     "dok": {
+      "side": "al",
+      "px": 732,
+      "hex": "#4A5743",
+      "lab": [
+       35.48,
+       -9.49,
+       10.22
+      ]
+     },
+     "lang": {
+      "side": "al",
+      "px": 175,
+      "hex": "#444B37",
+      "lab": [
+       30.82,
+       -7.32,
+       11.44
+      ]
+     },
+     "kamensky": {
+      "side": "al",
+      "px": 388,
+      "hex": "#424C39",
+      "lab": [
+       31.02,
+       -8.35,
+       10.26
+      ]
+     },
+     "prz": {
+      "side": "al",
+      "px": 382,
+      "hex": "#49533D",
+      "lab": [
+       33.86,
+       -8.69,
+       11.42
+      ]
+     },
+     "milo": {
+      "side": "al",
+      "px": 187,
+      "hex": "#555E4A",
+      "lab": [
+       38.77,
+       -7.83,
+       10.69
+      ]
+     },
+     "kollo": {
+      "side": "al",
+      "px": 453,
+      "hex": "#918779",
+      "lab": [
+       56.81,
+       1.14,
+       8.65
+      ]
+     },
+     "bag": {
+      "side": "al",
+      "px": 91,
+      "hex": "#5E6250",
+      "lab": [
+       40.67,
+       -5.1,
+       9.68
+      ]
+     }
+    },
+    "cross": {
+     "pairs": 70,
+     "closest": [
+      [
+       "santon",
+       "bag",
+       21.7
+      ],
+      [
+       "santon",
+       "milo",
+       22.8
+      ],
+      [
+       "suchet",
+       "bag",
+       22.9
+      ],
+      [
+       "santon",
+       "dok",
+       22.9
+      ]
+     ]
+    },
+    "seconds": 530
+   },
+   "overview-plan": {
+    "figures": 2940,
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 53.8
+    },
+    "worldMs": 5.6,
+    "calls": 653,
+    "smoke": 0.0136,
+    "identity": [
+     {
+      "id": "gqg",
+      "side": "fr"
+     },
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "legrand",
+      "side": "fr"
+     },
+     {
+      "id": "friant",
+      "side": "fr"
+     },
+     {
+      "id": "bourcier",
+      "side": "fr"
+     },
+     {
+      "id": "caffarelli",
+      "side": "fr"
+     },
+     {
+      "id": "suchet",
+      "side": "fr"
+     },
+     {
+      "id": "santon",
+      "side": "fr"
+     },
+     {
+      "id": "kellermann",
+      "side": "fr"
+     },
+     {
+      "id": "nansouty",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "walther",
+      "side": "fr"
+     },
+     {
+      "id": "rivaud",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "guard_inf",
+      "side": "fr"
+     },
+     {
+      "id": "guard_cav",
+      "side": "fr"
+     },
+     {
+      "id": "c_gren",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     },
+     {
+      "id": "rg_inf",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.037,
+    "sideShare": 0,
+    "seconds": 89
+   },
+   "close-sokolnitz": {
+    "figures": 1462,
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 28
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 126.5
+    },
+    "worldMs": 6.4,
+    "calls": 614,
+    "smoke": 0.24,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "legrand",
+      "side": "fr"
+     },
+     {
+      "id": "friant",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0927,
+    "sideShare": 0,
+    "keys": {
+     "sthilaire": {
+      "side": "fr",
+      "px": 47,
+      "hex": "#6A7690",
+      "lab": [
+       49.42,
+       1.93,
+       -15.88
+      ]
+     },
+     "vandamme": {
+      "side": "fr",
+      "px": 138,
+      "hex": "#616A7D",
+      "lab": [
+       44.85,
+       0.87,
+       -11.23
+      ]
+     },
+     "legrand": {
+      "side": "fr",
+      "px": 2257,
+      "hex": "#6E7995",
+      "lab": [
+       50.96,
+       2.26,
+       -16.5
+      ]
+     },
+     "friant": {
+      "side": "fr",
+      "px": 4787,
+      "hex": "#637397",
+      "lab": [
+       48.33,
+       3.13,
+       -21.43
+      ]
+     },
+     "buxhowden": {
+      "side": "al",
+      "px": 232,
+      "hex": "#8B978E",
+      "lab": [
+       61.4,
+       -6.18,
+       3.16
+      ]
+     },
+     "kienmayer": {
+      "side": "al",
+      "px": 578,
+      "hex": "#BFBFBB",
+      "lab": [
+       77.2,
+       -0.78,
+       2.06
+      ]
+     },
+     "dok": {
+      "side": "al",
+      "px": 1133,
+      "hex": "#96A09A",
+      "lab": [
+       64.8,
+       -4.64,
+       1.9
+      ]
+     },
+     "lang": {
+      "side": "al",
+      "px": 869,
+      "hex": "#728175",
+      "lab": [
+       52.65,
+       -8.06,
+       4.73
+      ]
+     },
+     "kamensky": {
+      "side": "al",
+      "px": 575,
+      "hex": "#475748",
+      "lab": [
+       35.16,
+       -9.39,
+       6.59
+      ]
+     },
+     "prz": {
+      "side": "al",
+      "px": 2134,
+      "hex": "#6B7A6E",
+      "lab": [
+       49.58,
+       -7.69,
+       4.71
+      ]
+     },
+     "milo": {
+      "side": "al",
+      "px": 279,
+      "hex": "#586A5D",
+      "lab": [
+       42.96,
+       -9.68,
+       5.21
+      ]
+     }
+    },
+    "cross": {
+     "pairs": 28,
+     "closest": [
+      [
+       "vandamme",
+       "prz",
+       17
+      ],
+      [
+       "vandamme",
+       "milo",
+       17.7
+      ],
+      [
+       "vandamme",
+       "lang",
+       18.3
+      ],
+      [
+       "sthilaire",
+       "prz",
+       19.1
+      ]
+     ]
+    },
+    "seconds": 435
+   },
+   "pratzen-low": {
+    "figures": 1077,
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 8.26,
+     "belowAA": 0,
+     "texts": 30
+    },
+    "dark": {
+     "solidBlack": 0.0002,
+     "meanLum": 90.8
+    },
+    "worldMs": 5.4,
+    "calls": 584,
+    "smoke": 0.24,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "rg_inf",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0997,
+    "sideShare": 0,
+    "keys": {
+     "sthilaire": {
+      "side": "fr",
+      "px": 2105,
+      "hex": "#2C3B65",
+      "lab": [
+       25.45,
+       7.7,
+       -26.75
+      ]
+     },
+     "vandamme": {
+      "side": "fr",
+      "px": 3104,
+      "hex": "#334A7E",
+      "lab": [
+       31.93,
+       8.38,
+       -32.47
+      ]
+     },
+     "ahq": {
+      "side": "al",
+      "px": 615,
+      "hex": "#3F5A42",
+      "lab": [
+       35.59,
+       -15.51,
+       10.51
+      ]
+     },
+     "buxhowden": {
+      "side": "al",
+      "px": 1088,
+      "hex": "#49684E",
+      "lab": [
+       41.17,
+       -17.47,
+       11.55
+      ]
+     },
+     "lang": {
+      "side": "al",
+      "px": 3111,
+      "hex": "#3B583D",
+      "lab": [
+       34.57,
+       -17.44,
+       12.67
+      ]
+     },
+     "kamensky": {
+      "side": "al",
+      "px": 2251,
+      "hex": "#334930",
+      "lab": [
+       28.43,
+       -14.11,
+       11.85
+      ]
+     },
+     "milo": {
+      "side": "al",
+      "px": 886,
+      "hex": "#566D56",
+      "lab": [
+       43.52,
+       -13.24,
+       10.21
+      ]
+     },
+     "kollo": {
+      "side": "al",
+      "px": 3269,
+      "hex": "#A49D8F",
+      "lab": [
+       64.87,
+       0.05,
+       8.31
+      ]
+     },
+     "rg_inf": {
+      "side": "al",
+      "px": 997,
+      "hex": "#607560",
+      "lab": [
+       47.03,
+       -12.18,
+       8.74
+      ]
+     }
+    },
+    "cross": {
+     "pairs": 14,
+     "closest": [
+      [
+       "sthilaire",
+       "kamensky",
+       30.9
+      ],
+      [
+       "sthilaire",
+       "ahq",
+       31.2
+      ],
+      [
+       "vandamme",
+       "ahq",
+       32
+      ],
+      [
+       "sthilaire",
+       "lang",
+       32.5
+      ]
+     ]
+    },
+    "seconds": 312
+   },
+   "selected-formation": {
+    "figures": 1054,
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 32
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 64.4
+    },
+    "worldMs": 7.5,
+    "calls": 586,
+    "smoke": 0.0412,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "nansouty",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "rivaud",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.1503,
+    "sideShare": 0,
+    "keys": {
+     "sthilaire": {
+      "side": "fr",
+      "px": 4551,
+      "hex": "#31416B",
+      "lab": [
+       28.12,
+       6.95,
+       -26.68
+      ]
+     },
+     "nansouty": {
+      "side": "fr",
+      "px": 70,
+      "hex": "#435278",
+      "lab": [
+       35.27,
+       4.45,
+       -23.19
+      ]
+     },
+     "dhautpoul": {
+      "side": "fr",
+      "px": 127,
+      "hex": "#445478",
+      "lab": [
+       35.79,
+       4.34,
+       -22.56
+      ]
+     },
+     "rivaud": {
+      "side": "fr",
+      "px": 607,
+      "hex": "#425377",
+      "lab": [
+       35.46,
+       3.84,
+       -22.6
+      ]
+     },
+     "drouet": {
+      "side": "fr",
+      "px": 1045,
+      "hex": "#405075",
+      "lab": [
+       34.23,
+       4.13,
+       -22.88
+      ]
+     },
+     "ahq": {
+      "side": "al",
+      "px": 164,
+      "hex": "#506043",
+      "lab": [
+       38.75,
+       -11.99,
+       14.91
+      ]
+     },
+     "kamensky": {
+      "side": "al",
+      "px": 796,
+      "hex": "#3B5043",
+      "lab": [
+       31.99,
+       -11.22,
+       5.29
+      ]
+     },
+     "milo": {
+      "side": "al",
+      "px": 989,
+      "hex": "#4C5D43",
+      "lab": [
+       37.53,
+       -12.49,
+       13.13
+      ]
+     },
+     "kollo": {
+      "side": "al",
+      "px": 2645,
+      "hex": "#A0998B",
+      "lab": [
+       63.46,
+       -0.08,
+       8.24
+      ]
+     }
+    },
+    "cross": {
+     "pairs": 20,
+     "closest": [
+      [
+       "rivaud",
+       "kamensky",
+       24.1
+      ],
+      [
+       "drouet",
+       "kamensky",
+       24.2
+      ],
+      [
+       "dhautpoul",
+       "kamensky",
+       24.3
+      ],
+      [
+       "nansouty",
+       "kamensky",
+       24.5
+      ]
+     ]
+    },
+    "seconds": 250
+   },
+   "watch-selected": {
+    "figures": 1271,
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 33
+    },
+    "dark": {
+     "solidBlack": 0.0001,
+     "meanLum": 57.4
+    },
+    "worldMs": 6.4,
+    "calls": 566,
+    "smoke": 0.0222,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "kellermann",
+      "side": "fr"
+     },
+     {
+      "id": "walther",
+      "side": "fr"
+     },
+     {
+      "id": "rivaud",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     },
+     {
+      "id": "rg_cav",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.1519,
+    "sideShare": 0,
+    "keys": {
+     "sthilaire": {
+      "side": "fr",
+      "px": 1722,
+      "hex": "#343C5A",
+      "lab": [
+       25.77,
+       5.51,
+       -19.23
+      ]
+     },
+     "vandamme": {
+      "side": "fr",
+      "px": 1140,
+      "hex": "#3F4D72",
+      "lab": [
+       33.17,
+       5,
+       -22.65
+      ]
+     },
+     "kellermann": {
+      "side": "fr",
+      "px": 77,
+      "hex": "#3A4C71",
+      "lab": [
+       32.36,
+       4.16,
+       -23.49
+      ]
+     },
+     "walther": {
+      "side": "fr",
+      "px": 209,
+      "hex": "#3A4969",
+      "lab": [
+       30.94,
+       3.54,
+       -20.51
+      ]
+     },
+     "rivaud": {
+      "side": "fr",
+      "px": 877,
+      "hex": "#405176",
+      "lab": [
+       34.48,
+       4.05,
+       -23.1
+      ]
+     },
+     "drouet": {
+      "side": "fr",
+      "px": 1155,
+      "hex": "#3E4F74",
+      "lab": [
+       33.76,
+       4.18,
+       -23.33
+      ]
+     },
+     "ahq": {
+      "side": "al",
+      "px": 387,
+      "hex": "#4E5F43",
+      "lab": [
+       38.29,
+       -12.5,
+       14.22
+      ]
+     },
+     "kamensky": {
+      "side": "al",
+      "px": 2846,
+      "hex": "#384D34",
+      "lab": [
+       30.5,
+       -14.22,
+       12.43
+      ]
+     },
+     "milo": {
+      "side": "al",
+      "px": 929,
+      "hex": "#4A6145",
+      "lab": [
+       38.67,
+       -14.62,
+       13.37
+      ]
+     },
+     "lich": {
+      "side": "al",
+      "px": 751,
+      "hex": "#667B60",
+      "lab": [
+       49.24,
+       -13.14,
+       12.15
+      ]
+     },
+     "rg_cav": {
+      "side": "al",
+      "px": 87,
+      "hex": "#647A63",
+      "lab": [
+       48.85,
+       -12.9,
+       10.15
+      ]
+     }
+    },
+    "cross": {
+     "pairs": 30,
+     "closest": [
+      [
+       "walther",
+       "kamensky",
+       28.2
+      ],
+      [
+       "sthilaire",
+       "kamensky",
+       28.4
+      ],
+      [
+       "vandamme",
+       "kamensky",
+       29.4
+      ],
+      [
+       "kellermann",
+       "kamensky",
+       29.5
+      ]
+     ]
+    },
+    "seconds": 285
+   },
+   "hybrid-dimmed": {
+    "figures": 1678,
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 62
+    },
+    "worldMs": 8.3,
+    "calls": 566,
+    "smoke": 0.0237,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "rg_inf",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.1456,
+    "sideShare": 0,
+    "keys": {
+     "sthilaire": {
+      "side": "fr",
+      "px": 1475,
+      "hex": "#343D5E",
+      "lab": [
+       26.45,
+       5.74,
+       -20.76
+      ]
+     },
+     "drouet": {
+      "side": "fr",
+      "px": 455,
+      "hex": "#405074",
+      "lab": [
+       34.17,
+       4.15,
+       -22.46
+      ]
+     },
+     "ahq": {
+      "side": "al",
+      "px": 86,
+      "hex": "#535F47",
+      "lab": [
+       38.75,
+       -9.99,
+       12.51
+      ]
+     },
+     "buxhowden": {
+      "side": "al",
+      "px": 527,
+      "hex": "#405A3B",
+      "lab": [
+       35.58,
+       -16.56,
+       14.77
+      ]
+     },
+     "kamensky": {
+      "side": "al",
+      "px": 730,
+      "hex": "#384533",
+      "lab": [
+       27.72,
+       -9.7,
+       9.4
+      ]
+     },
+     "milo": {
+      "side": "al",
+      "px": 244,
+      "hex": "#4F6047",
+      "lab": [
+       38.74,
+       -11.51,
+       11.99
+      ]
+     },
+     "kollo": {
+      "side": "al",
+      "px": 1314,
+      "hex": "#A9A090",
+      "lab": [
+       66.08,
+       0.72,
+       9.33
+      ]
+     },
+     "rg_inf": {
+      "side": "al",
+      "px": 157,
+      "hex": "#52644F",
+      "lab": [
+       40.28,
+       -11.06,
+       9.59
+      ]
+     }
+    },
+    "cross": {
+     "pairs": 12,
+     "closest": [
+      [
+       "sthilaire",
+       "kamensky",
+       26.2
+      ],
+      [
+       "drouet",
+       "kamensky",
+       26.9
+      ],
+      [
+       "drouet",
+       "rg_inf",
+       27.3
+      ],
+      [
+       "drouet",
+       "milo",
+       28.7
+      ]
+     ]
+    },
+    "seconds": 250
+   },
+   "ph8-overview-study": {
+    "figures": 2906,
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.4
+    },
+    "worldMs": 7,
+    "calls": 635,
+    "smoke": 0.0075,
+    "identity": [
+     {
+      "id": "gqg",
+      "side": "fr"
+     },
+     {
+      "id": "heightguns",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "friant",
+      "side": "fr"
+     },
+     {
+      "id": "bourcier",
+      "side": "fr"
+     },
+     {
+      "id": "caffarelli",
+      "side": "fr"
+     },
+     {
+      "id": "suchet",
+      "side": "fr"
+     },
+     {
+      "id": "santon",
+      "side": "fr"
+     },
+     {
+      "id": "kellermann",
+      "side": "fr"
+     },
+     {
+      "id": "nansouty",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "walther",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "guard_inf",
+      "side": "fr"
+     },
+     {
+      "id": "guard_cav",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     },
+     {
+      "id": "bag",
+      "side": "al"
+     },
+     {
+      "id": "rg_cav",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0332,
+    "sideShare": 0,
+    "seconds": 83
+   },
+   "ph8-overview-watch": {
+    "figures": 2906,
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.17,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.6
+    },
+    "worldMs": 9,
+    "calls": 635,
+    "smoke": 0.0077,
+    "identity": [
+     {
+      "id": "gqg",
+      "side": "fr"
+     },
+     {
+      "id": "heightguns",
+      "side": "fr"
+     },
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "bourcier",
+      "side": "fr"
+     },
+     {
+      "id": "caffarelli",
+      "side": "fr"
+     },
+     {
+      "id": "suchet",
+      "side": "fr"
+     },
+     {
+      "id": "santon",
+      "side": "fr"
+     },
+     {
+      "id": "kellermann",
+      "side": "fr"
+     },
+     {
+      "id": "nansouty",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "walther",
+      "side": "fr"
+     },
+     {
+      "id": "rivaud",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "guard_inf",
+      "side": "fr"
+     },
+     {
+      "id": "guard_cav",
+      "side": "fr"
+     },
+     {
+      "id": "c_gren",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     },
+     {
+      "id": "bag",
+      "side": "al"
+     },
+     {
+      "id": "rg_cav",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0359,
+    "sideShare": 0,
+    "seconds": 77
+   },
+   "eye-zuran": {
+    "figures": 172,
+    "layer": {
+     "dropped": 5,
+     "items": 50,
+     "placed": 18
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 117.5
+    },
+    "worldMs": 2.7,
+    "calls": 197,
+    "smoke": 0.051,
+    "identity": [],
+    "confShare": 0.0004,
+    "sideShare": 0,
+    "seconds": 62
+   },
+   "plans-overview": {
+    "figures": 2940,
+    "layer": {
+     "dropped": 11,
+     "items": 56,
+     "placed": 45
+    },
+    "contrast": {
+     "min": 8.52,
+     "belowAA": 0,
+     "texts": 47
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 54
+    },
+    "worldMs": 9.1,
+    "calls": 677,
+    "smoke": 0,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "legrand",
+      "side": "fr"
+     },
+     {
+      "id": "friant",
+      "side": "fr"
+     },
+     {
+      "id": "bourcier",
+      "side": "fr"
+     },
+     {
+      "id": "caffarelli",
+      "side": "fr"
+     },
+     {
+      "id": "suchet",
+      "side": "fr"
+     },
+     {
+      "id": "santon",
+      "side": "fr"
+     },
+     {
+      "id": "kellermann",
+      "side": "fr"
+     },
+     {
+      "id": "nansouty",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "walther",
+      "side": "fr"
+     },
+     {
+      "id": "guard_inf",
+      "side": "fr"
+     },
+     {
+      "id": "guard_cav",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     },
+     {
+      "id": "bag",
+      "side": "al"
+     },
+     {
+      "id": "rg_inf",
+      "side": "al"
+     },
+     {
+      "id": "rg_cav",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0235,
+    "sideShare": 0,
+    "seconds": 75
+   },
+   "pratzen-orbit-min": {
+    "figures": 1012,
+    "layer": {
+     "dropped": 1,
+     "items": 61,
+     "placed": 6
+    },
+    "contrast": {
+     "min": 11.72,
+     "belowAA": 0,
+     "texts": 6
+    },
+    "dark": {
+     "solidBlack": 0.0003,
+     "meanLum": 76.5
+    },
+    "worldMs": 5.3,
+    "calls": 580,
+    "smoke": 0.24,
+    "identity": [
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "caffarelli",
+      "side": "fr"
+     },
+     {
+      "id": "kellermann",
+      "side": "fr"
+     },
+     {
+      "id": "nansouty",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "walther",
+      "side": "fr"
+     },
+     {
+      "id": "rivaud",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "guard_inf",
+      "side": "fr"
+     },
+     {
+      "id": "guard_cav",
+      "side": "fr"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0307,
+    "sideShare": 0,
+    "keys": {
+     "vandamme": {
+      "side": "fr",
+      "px": 7224,
+      "hex": "#2E4578",
+      "lab": [
+       29.91,
+       7.95,
+       -31.56
+      ]
+     },
+     "caffarelli": {
+      "side": "fr",
+      "px": 1185,
+      "hex": "#657290",
+      "lab": [
+       48.12,
+       2.23,
+       -17.66
+      ]
+     },
+     "kellermann": {
+      "side": "fr",
+      "px": 238,
+      "hex": "#475E8A",
+      "lab": [
+       39.97,
+       4.06,
+       -26.87
+      ]
+     },
+     "nansouty": {
+      "side": "fr",
+      "px": 720,
+      "hex": "#546991",
+      "lab": [
+       44.29,
+       2.95,
+       -24.16
+      ]
+     },
+     "dhautpoul": {
+      "side": "fr",
+      "px": 707,
+      "hex": "#536992",
+      "lab": [
+       44.19,
+       3.2,
+       -24.91
+      ]
+     },
+     "walther": {
+      "side": "fr",
+      "px": 408,
+      "hex": "#627293",
+      "lab": [
+       47.98,
+       2.09,
+       -19.58
+      ]
+     },
+     "rivaud": {
+      "side": "fr",
+      "px": 2111,
+      "hex": "#495E87",
+      "lab": [
+       39.77,
+       3.84,
+       -25.53
+      ]
+     },
+     "drouet": {
+      "side": "fr",
+      "px": 5983,
+      "hex": "#3B578D",
+      "lab": [
+       37.34,
+       6.42,
+       -32.84
+      ]
+     },
+     "guard_inf": {
+      "side": "fr",
+      "px": 857,
+      "hex": "#3E5278",
+      "lab": [
+       34.85,
+       3.39,
+       -24.05
+      ]
+     },
+     "guard_cav": {
+      "side": "fr",
+      "px": 1434,
+      "hex": "#455A81",
+      "lab": [
+       38.29,
+       3.25,
+       -24.3
+      ]
+     },
+     "lich": {
+      "side": "al",
+      "px": 1631,
+      "hex": "#71856C",
+      "lab": [
+       53.25,
+       -12.32,
+       11.12
+      ]
+     }
+    },
+    "cross": {
+     "pairs": 10,
+     "closest": [
+      [
+       "caffarelli",
+       "lich",
+       26.1
+      ],
+      [
+       "walther",
+       "lich",
+       26.9
+      ],
+      [
+       "nansouty",
+       "lich",
+       29.8
+      ],
+      [
+       "dhautpoul",
+       "lich",
+       30.2
+      ]
+     ]
+    },
+    "seconds": 476
+   },
+   "pratzen-low-1x": {
+    "figures": 0,
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 31
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 75.3
+    },
+    "worldMs": 1.1,
+    "calls": 160,
+    "smoke": 0.24,
+    "identity": [],
+    "seconds": 36
+   },
+   "pratzen-low-10x": {
+    "figures": 878,
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 8,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 110.4
+    },
+    "worldMs": 5.4,
+    "calls": 585,
+    "smoke": 0.24,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "rg_inf",
+      "side": "al"
+     },
+     {
+      "id": "rg_cav",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0571,
+    "sideShare": 0,
+    "seconds": 122
+   },
+   "eye-zuran-1x": {
+    "figures": 0,
+    "layer": {
+     "dropped": 6,
+     "items": 50,
+     "placed": 18
+    },
+    "contrast": {
+     "min": 11.36,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 101.2
+    },
+    "worldMs": 0.9,
+    "calls": 132,
+    "smoke": 0.051,
+    "identity": [],
+    "seconds": 15
+   },
+   "overview-field@10.33x": {
+    "figures": 2912,
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 54
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 88.1
+    },
+    "worldMs": 5.7,
+    "calls": 653,
+    "smoke": 0.0859,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "friant",
+      "side": "fr"
+     },
+     {
+      "id": "caffarelli",
+      "side": "fr"
+     },
+     {
+      "id": "suchet",
+      "side": "fr"
+     },
+     {
+      "id": "santon",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "c_gren",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     },
+     {
+      "id": "bag",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0446,
+    "sideShare": 0,
+    "seconds": 121
+   },
+   "close-sokolnitz@10.33x": {
+    "figures": 1265,
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.67,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.5
+    },
+    "worldMs": 9.7,
+    "calls": 603,
+    "smoke": 0.24,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "legrand",
+      "side": "fr"
+     },
+     {
+      "id": "friant",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0904,
+    "sideShare": 0,
+    "seconds": 100
+   },
+   "ph8-overview-watch@10.33x": {
+    "figures": 2906,
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.17,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 52.7
+    },
+    "worldMs": 9.5,
+    "calls": 635,
+    "smoke": 0.0076,
+    "identity": [
+     {
+      "id": "gqg",
+      "side": "fr"
+     },
+     {
+      "id": "heightguns",
+      "side": "fr"
+     },
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "bourcier",
+      "side": "fr"
+     },
+     {
+      "id": "caffarelli",
+      "side": "fr"
+     },
+     {
+      "id": "suchet",
+      "side": "fr"
+     },
+     {
+      "id": "santon",
+      "side": "fr"
+     },
+     {
+      "id": "kellermann",
+      "side": "fr"
+     },
+     {
+      "id": "nansouty",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "walther",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "guard_inf",
+      "side": "fr"
+     },
+     {
+      "id": "guard_cav",
+      "side": "fr"
+     },
+     {
+      "id": "c_gren",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     },
+     {
+      "id": "bag",
+      "side": "al"
+     },
+     {
+      "id": "rg_cav",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0351,
+    "sideShare": 0,
+    "seconds": 78
+   },
+   "paper-north-up": {
+    "figures": 0,
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.8
+    },
+    "worldMs": 1,
+    "calls": 155,
+    "smoke": null,
+    "seconds": 14
+   },
+   "paper-close": {
+    "figures": 0,
+    "layer": {
+     "dropped": 1,
+     "items": 65,
+     "placed": 5
+    },
+    "contrast": {
+     "min": 5.1,
+     "belowAA": 0,
+     "texts": 19
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 192.2
+    },
+    "worldMs": 0.8,
+    "calls": 105,
+    "smoke": null,
+    "seconds": 31
+   }
+  },
+  "errors": []
+ },
+ "after": {
+  "html": "austerlitz-command-map.html",
+  "views": {
+   "overview-field": {
+    "figures": 2923,
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 55
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 77.2
+    },
+    "worldMs": 8.9,
+    "calls": 815,
+    "smoke": 0.0853,
+    "identity": [
+     {
+      "id": "gqg",
+      "side": "fr"
+     },
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "suchet",
+      "side": "fr"
+     },
+     {
+      "id": "santon",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "c_gren",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "bag",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0433,
+    "sideShare": 0.0281,
+    "keys": {
+     "gqg": {
+      "side": "fr",
+      "px": 70,
+      "hex": "#3E4662",
+      "lab": [
+       30.04,
+       4.75,
+       -17.53
+      ]
+     },
+     "sthilaire": {
+      "side": "fr",
+      "px": 292,
+      "hex": "#363648",
+      "lab": [
+       23.46,
+       4.63,
+       -11.02
+      ]
+     },
+     "vandamme": {
+      "side": "fr",
+      "px": 111,
+      "hex": "#464E64",
+      "lab": [
+       33.2,
+       2.77,
+       -13.75
+      ]
+     },
+     "suchet": {
+      "side": "fr",
+      "px": 136,
+      "hex": "#4F5160",
+      "lab": [
+       34.66,
+       2.95,
+       -9.47
+      ]
+     },
+     "santon": {
+      "side": "fr",
+      "px": 91,
+      "hex": "#434556",
+      "lab": [
+       29.89,
+       3.23,
+       -10.15
+      ]
+     },
+     "drouet": {
+      "side": "fr",
+      "px": 196,
+      "hex": "#484856",
+      "lab": [
+       31.21,
+       2.98,
+       -8.33
+      ]
+     },
+     "c_gren": {
+      "side": "fr",
+      "px": 132,
+      "hex": "#474F69",
+      "lab": [
+       33.79,
+       3.66,
+       -16.11
+      ]
+     },
+     "ahq": {
+      "side": "al",
+      "px": 67,
+      "hex": "#5D6750",
+      "lab": [
+       42.1,
+       -8.05,
+       11.47
+      ]
+     },
+     "buxhowden": {
+      "side": "al",
+      "px": 103,
+      "hex": "#54654A",
+      "lab": [
+       40.72,
+       -12.17,
+       13.38
+      ]
+     },
+     "kienmayer": {
+      "side": "al",
+      "px": 385,
+      "hex": "#928D87",
+      "lab": [
+       58.79,
+       0.89,
+       3.43
+      ]
+     },
+     "dok": {
+      "side": "al",
+      "px": 741,
+      "hex": "#4B5240",
+      "lab": [
+       33.76,
+       -6.44,
+       9.54
+      ]
+     },
+     "lang": {
+      "side": "al",
+      "px": 190,
+      "hex": "#454733",
+      "lab": [
+       29.49,
+       -5.07,
+       11.86
+      ]
+     },
+     "kamensky": {
+      "side": "al",
+      "px": 402,
+      "hex": "#3E3F32",
+      "lab": [
+       26.18,
+       -2.87,
+       7.74
+      ]
+     },
+     "prz": {
+      "side": "al",
+      "px": 394,
+      "hex": "#454638",
+      "lab": [
+       29.31,
+       -3.15,
+       8.26
+      ]
+     },
+     "milo": {
+      "side": "al",
+      "px": 195,
+      "hex": "#505143",
+      "lab": [
+       33.97,
+       -3.36,
+       8.42
+      ]
+     },
+     "kollo": {
+      "side": "al",
+      "px": 449,
+      "hex": "#948B80",
+      "lab": [
+       58.4,
+       1.25,
+       7.19
+      ]
+     },
+     "bag": {
+      "side": "al",
+      "px": 85,
+      "hex": "#5C5F4B",
+      "lab": [
+       39.67,
+       -5.23,
+       10.98
+      ]
+     }
+    },
+    "cross": {
+     "pairs": 70,
+     "closest": [
+      [
+       "drouet",
+       "kamensky",
+       16.2
+      ],
+      [
+       "drouet",
+       "prz",
+       16.3
+      ],
+      [
+       "drouet",
+       "milo",
+       16.5
+      ],
+      [
+       "suchet",
+       "milo",
+       17.2
+      ]
+     ]
+    },
+    "changed": 0.0184,
+    "seconds": 506
+   },
+   "overview-plan": {
+    "figures": 2940,
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 53.8
+    },
+    "worldMs": 12.3,
+    "calls": 815,
+    "smoke": 0.0136,
+    "identity": [
+     {
+      "id": "gqg",
+      "side": "fr"
+     },
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "legrand",
+      "side": "fr"
+     },
+     {
+      "id": "friant",
+      "side": "fr"
+     },
+     {
+      "id": "bourcier",
+      "side": "fr"
+     },
+     {
+      "id": "caffarelli",
+      "side": "fr"
+     },
+     {
+      "id": "suchet",
+      "side": "fr"
+     },
+     {
+      "id": "santon",
+      "side": "fr"
+     },
+     {
+      "id": "kellermann",
+      "side": "fr"
+     },
+     {
+      "id": "nansouty",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "walther",
+      "side": "fr"
+     },
+     {
+      "id": "rivaud",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "guard_inf",
+      "side": "fr"
+     },
+     {
+      "id": "guard_cav",
+      "side": "fr"
+     },
+     {
+      "id": "c_gren",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     },
+     {
+      "id": "rg_inf",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.037,
+    "sideShare": 0.0252,
+    "changed": 0.0037,
+    "seconds": 89
+   },
+   "close-sokolnitz": {
+    "figures": 1462,
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.68,
+     "belowAA": 0,
+     "texts": 28
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 126.3
+    },
+    "worldMs": 8.3,
+    "calls": 776,
+    "smoke": 0.24,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "legrand",
+      "side": "fr"
+     },
+     {
+      "id": "friant",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0937,
+    "sideShare": 0.0519,
+    "keys": {
+     "sthilaire": {
+      "side": "fr",
+      "px": 47,
+      "hex": "#6A7690",
+      "lab": [
+       49.42,
+       1.93,
+       -15.88
+      ]
+     },
+     "vandamme": {
+      "side": "fr",
+      "px": 140,
+      "hex": "#616670",
+      "lab": [
+       43.05,
+       0.45,
+       -6.47
+      ]
+     },
+     "legrand": {
+      "side": "fr",
+      "px": 2281,
+      "hex": "#6D7384",
+      "lab": [
+       48.59,
+       1.5,
+       -9.93
+      ]
+     },
+     "friant": {
+      "side": "fr",
+      "px": 4758,
+      "hex": "#616980",
+      "lab": [
+       44.37,
+       2.51,
+       -13.9
+      ]
+     },
+     "buxhowden": {
+      "side": "al",
+      "px": 239,
+      "hex": "#8C988F",
+      "lab": [
+       61.59,
+       -6.09,
+       3.11
+      ]
+     },
+     "kienmayer": {
+      "side": "al",
+      "px": 587,
+      "hex": "#B4B5B4",
+      "lab": [
+       73.71,
+       -0.65,
+       0.39
+      ]
+     },
+     "dok": {
+      "side": "al",
+      "px": 1131,
+      "hex": "#979F99",
+      "lab": [
+       64.85,
+       -4.18,
+       2.31
+      ]
+     },
+     "lang": {
+      "side": "al",
+      "px": 861,
+      "hex": "#707A72",
+      "lab": [
+       50.25,
+       -5.36,
+       3.35
+      ]
+     },
+     "kamensky": {
+      "side": "al",
+      "px": 566,
+      "hex": "#454F44",
+      "lab": [
+       32.38,
+       -6.26,
+       4.96
+      ]
+     },
+     "prz": {
+      "side": "al",
+      "px": 2126,
+      "hex": "#676D67",
+      "lab": [
+       45.44,
+       -3.62,
+       2.44
+      ]
+     },
+     "milo": {
+      "side": "al",
+      "px": 271,
+      "hex": "#525B55",
+      "lab": [
+       37.75,
+       -4.82,
+       2.24
+      ]
+     }
+    },
+    "cross": {
+     "pairs": 28,
+     "closest": [
+      [
+       "vandamme",
+       "prz",
+       9.9
+      ],
+      [
+       "vandamme",
+       "milo",
+       11.2
+      ],
+      [
+       "legrand",
+       "prz",
+       12.7
+      ],
+      [
+       "vandamme",
+       "lang",
+       13.3
+      ]
+     ]
+    },
+    "changed": 0.0416,
+    "seconds": 415
+   },
+   "pratzen-low": {
+    "figures": 1077,
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 8.26,
+     "belowAA": 0,
+     "texts": 30
+    },
+    "dark": {
+     "solidBlack": 0.0002,
+     "meanLum": 90.5
+    },
+    "worldMs": 7.9,
+    "calls": 746,
+    "smoke": 0.24,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "rg_inf",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.1009,
+    "sideShare": 0.0437,
+    "keys": {
+     "sthilaire": {
+      "side": "fr",
+      "px": 2411,
+      "hex": "#2B2D45",
+      "lab": [
+       19.13,
+       6.11,
+       -15.58
+      ]
+     },
+     "vandamme": {
+      "side": "fr",
+      "px": 3228,
+      "hex": "#313959",
+      "lab": [
+       24.55,
+       5.96,
+       -20.17
+      ]
+     },
+     "ahq": {
+      "side": "al",
+      "px": 613,
+      "hex": "#405B43",
+      "lab": [
+       35.92,
+       -15.62,
+       10.59
+      ]
+     },
+     "buxhowden": {
+      "side": "al",
+      "px": 1091,
+      "hex": "#49694E",
+      "lab": [
+       41.22,
+       -17.45,
+       11.56
+      ]
+     },
+     "lang": {
+      "side": "al",
+      "px": 3039,
+      "hex": "#3C5037",
+      "lab": [
+       31.72,
+       -13.25,
+       12
+      ]
+     },
+     "kamensky": {
+      "side": "al",
+      "px": 2320,
+      "hex": "#2D3627",
+      "lab": [
+       21.47,
+       -7.69,
+       8.27
+      ]
+     },
+     "milo": {
+      "side": "al",
+      "px": 902,
+      "hex": "#525E4F",
+      "lab": [
+       38.57,
+       -8.1,
+       7.24
+      ]
+     },
+     "kollo": {
+      "side": "al",
+      "px": 3292,
+      "hex": "#A9A398",
+      "lab": [
+       67.13,
+       0.15,
+       6.26
+      ]
+     },
+     "rg_inf": {
+      "side": "al",
+      "px": 1001,
+      "hex": "#5E6A5B",
+      "lab": [
+       43.38,
+       -7.59,
+       6.91
+      ]
+     }
+    },
+    "cross": {
+     "pairs": 14,
+     "closest": [
+      [
+       "sthilaire",
+       "kamensky",
+       23.1
+      ],
+      [
+       "vandamme",
+       "kamensky",
+       24.9
+      ],
+      [
+       "vandamme",
+       "milo",
+       26.6
+      ],
+      [
+       "sthilaire",
+       "milo",
+       27
+      ]
+     ]
+    },
+    "changed": 0.059,
+    "seconds": 306
+   },
+   "selected-formation": {
+    "figures": 1054,
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 32
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 64.3
+    },
+    "worldMs": 10.4,
+    "calls": 748,
+    "smoke": 0.0412,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "nansouty",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "rivaud",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.1509,
+    "sideShare": 0.0914,
+    "keys": {
+     "sthilaire": {
+      "side": "fr",
+      "px": 5045,
+      "hex": "#2F314A",
+      "lab": [
+       21.24,
+       5.81,
+       -15.69
+      ]
+     },
+     "nansouty": {
+      "side": "fr",
+      "px": 60,
+      "hex": "#41537A",
+      "lab": [
+       35.31,
+       4.82,
+       -24.54
+      ]
+     },
+     "dhautpoul": {
+      "side": "fr",
+      "px": 40,
+      "hex": "#5A5964",
+      "lab": [
+       38.4,
+       2.77,
+       -5.97
+      ]
+     },
+     "rivaud": {
+      "side": "fr",
+      "px": 665,
+      "hex": "#444960",
+      "lab": [
+       31.42,
+       3.84,
+       -13.96
+      ]
+     },
+     "drouet": {
+      "side": "fr",
+      "px": 1123,
+      "hex": "#40445A",
+      "lab": [
+       29.15,
+       4.19,
+       -13.81
+      ]
+     },
+     "ahq": {
+      "side": "al",
+      "px": 164,
+      "hex": "#516043",
+      "lab": [
+       38.6,
+       -11.54,
+       14.75
+      ]
+     },
+     "kamensky": {
+      "side": "al",
+      "px": 825,
+      "hex": "#353E36",
+      "lab": [
+       25.3,
+       -5.72,
+       3.64
+      ]
+     },
+     "milo": {
+      "side": "al",
+      "px": 990,
+      "hex": "#444A39",
+      "lab": [
+       30.33,
+       -5.67,
+       9.33
+      ]
+     },
+     "kollo": {
+      "side": "al",
+      "px": 2637,
+      "hex": "#A59F94",
+      "lab": [
+       65.71,
+       0.05,
+       6.3
+      ]
+     }
+    },
+    "cross": {
+     "pairs": 20,
+     "closest": [
+      [
+       "dhautpoul",
+       "kamensky",
+       16.9
+      ],
+      [
+       "dhautpoul",
+       "milo",
+       17.5
+      ],
+      [
+       "drouet",
+       "kamensky",
+       17.9
+      ],
+      [
+       "rivaud",
+       "kamensky",
+       18.1
+      ]
+     ]
+    },
+    "changed": 0.0306,
+    "seconds": 249
+   },
+   "watch-selected": {
+    "figures": 1271,
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 33
+    },
+    "dark": {
+     "solidBlack": 0.0001,
+     "meanLum": 57.4
+    },
+    "worldMs": 9.3,
+    "calls": 728,
+    "smoke": 0.0222,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "kellermann",
+      "side": "fr"
+     },
+     {
+      "id": "walther",
+      "side": "fr"
+     },
+     {
+      "id": "rivaud",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     },
+     {
+      "id": "rg_cav",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.1523,
+    "sideShare": 0.0779,
+    "keys": {
+     "sthilaire": {
+      "side": "fr",
+      "px": 1824,
+      "hex": "#333142",
+      "lab": [
+       21.23,
+       5.18,
+       -10.47
+      ]
+     },
+     "vandamme": {
+      "side": "fr",
+      "px": 1386,
+      "hex": "#3E4055",
+      "lab": [
+       27.81,
+       4.2,
+       -12.75
+      ]
+     },
+     "kellermann": {
+      "side": "fr",
+      "px": 79,
+      "hex": "#58473E",
+      "lab": [
+       31.53,
+       6.03,
+       7.95
+      ]
+     },
+     "walther": {
+      "side": "fr",
+      "px": 181,
+      "hex": "#43573F",
+      "lab": [
+       34.78,
+       -13.02,
+       11.6
+      ]
+     },
+     "rivaud": {
+      "side": "fr",
+      "px": 975,
+      "hex": "#42465D",
+      "lab": [
+       30.38,
+       4.07,
+       -13.96
+      ]
+     },
+     "drouet": {
+      "side": "fr",
+      "px": 1235,
+      "hex": "#3E4259",
+      "lab": [
+       28.64,
+       4.14,
+       -14.12
+      ]
+     },
+     "ahq": {
+      "side": "al",
+      "px": 394,
+      "hex": "#4F5F43",
+      "lab": [
+       38.35,
+       -12.17,
+       14.18
+      ]
+     },
+     "kamensky": {
+      "side": "al",
+      "px": 2954,
+      "hex": "#313A2A",
+      "lab": [
+       23.26,
+       -7.59,
+       8.63
+      ]
+     },
+     "milo": {
+      "side": "al",
+      "px": 929,
+      "hex": "#434C3A",
+      "lab": [
+       30.88,
+       -7.41,
+       9.24
+      ]
+     },
+     "lich": {
+      "side": "al",
+      "px": 736,
+      "hex": "#6F7865",
+      "lab": [
+       49.02,
+       -7.13,
+       9.29
+      ]
+     },
+     "rg_cav": {
+      "side": "al",
+      "px": 86,
+      "hex": "#5E7163",
+      "lab": [
+       45.93,
+       -10.18,
+       5.65
+      ]
+     }
+    },
+    "cross": {
+     "pairs": 30,
+     "closest": [
+      [
+       "walther",
+       "ahq",
+       3.6
+      ],
+      [
+       "walther",
+       "milo",
+       5.7
+      ],
+      [
+       "walther",
+       "kamensky",
+       10
+      ],
+      [
+       "walther",
+       "rg_cav",
+       10.7
+      ]
+     ]
+    },
+    "changed": 0.0241,
+    "seconds": 282
+   },
+   "hybrid-dimmed": {
+    "figures": 1678,
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 61.9
+    },
+    "worldMs": 8.3,
+    "calls": 728,
+    "smoke": 0.0237,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "rg_inf",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.146,
+    "sideShare": 0.0549,
+    "keys": {
+     "sthilaire": {
+      "side": "fr",
+      "px": 1597,
+      "hex": "#343346",
+      "lab": [
+       22.1,
+       5.28,
+       -11.38
+      ]
+     },
+     "drouet": {
+      "side": "fr",
+      "px": 461,
+      "hex": "#3D4158",
+      "lab": [
+       28.1,
+       4.22,
+       -14.4
+      ]
+     },
+     "ahq": {
+      "side": "al",
+      "px": 88,
+      "hex": "#556149",
+      "lab": [
+       39.56,
+       -9.53,
+       12.18
+      ]
+     },
+     "buxhowden": {
+      "side": "al",
+      "px": 534,
+      "hex": "#415B3C",
+      "lab": [
+       35.77,
+       -16.51,
+       14.69
+      ]
+     },
+     "kamensky": {
+      "side": "al",
+      "px": 762,
+      "hex": "#33372B",
+      "lab": [
+       22.35,
+       -4.54,
+       6.88
+      ]
+     },
+     "milo": {
+      "side": "al",
+      "px": 238,
+      "hex": "#4A4F3F",
+      "lab": [
+       32.73,
+       -5.39,
+       8.86
+      ]
+     },
+     "kollo": {
+      "side": "al",
+      "px": 1314,
+      "hex": "#ADA498",
+      "lab": [
+       67.88,
+       0.82,
+       7.52
+      ]
+     },
+     "rg_inf": {
+      "side": "al",
+      "px": 145,
+      "hex": "#5C6E50",
+      "lab": [
+       44.26,
+       -12.8,
+       14.65
+      ]
+     }
+    },
+    "cross": {
+     "pairs": 12,
+     "closest": [
+      [
+       "sthilaire",
+       "kamensky",
+       18.6
+      ],
+      [
+       "drouet",
+       "kamensky",
+       20.2
+      ],
+      [
+       "sthilaire",
+       "milo",
+       21.7
+      ],
+      [
+       "drouet",
+       "milo",
+       21.7
+      ]
+     ]
+    },
+    "changed": 0.0166,
+    "seconds": 238
+   },
+   "ph8-overview-study": {
+    "figures": 2906,
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.4
+    },
+    "worldMs": 11.9,
+    "calls": 797,
+    "smoke": 0.0075,
+    "identity": [
+     {
+      "id": "gqg",
+      "side": "fr"
+     },
+     {
+      "id": "heightguns",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "friant",
+      "side": "fr"
+     },
+     {
+      "id": "bourcier",
+      "side": "fr"
+     },
+     {
+      "id": "caffarelli",
+      "side": "fr"
+     },
+     {
+      "id": "suchet",
+      "side": "fr"
+     },
+     {
+      "id": "santon",
+      "side": "fr"
+     },
+     {
+      "id": "kellermann",
+      "side": "fr"
+     },
+     {
+      "id": "nansouty",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "walther",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "guard_inf",
+      "side": "fr"
+     },
+     {
+      "id": "guard_cav",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     },
+     {
+      "id": "bag",
+      "side": "al"
+     },
+     {
+      "id": "rg_cav",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0333,
+    "sideShare": 0.025,
+    "changed": 0.0033,
+    "seconds": 83
+   },
+   "ph8-overview-watch": {
+    "figures": 2906,
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.17,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.6
+    },
+    "worldMs": 6.3,
+    "calls": 797,
+    "smoke": 0.0077,
+    "identity": [
+     {
+      "id": "gqg",
+      "side": "fr"
+     },
+     {
+      "id": "heightguns",
+      "side": "fr"
+     },
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "bourcier",
+      "side": "fr"
+     },
+     {
+      "id": "caffarelli",
+      "side": "fr"
+     },
+     {
+      "id": "suchet",
+      "side": "fr"
+     },
+     {
+      "id": "santon",
+      "side": "fr"
+     },
+     {
+      "id": "kellermann",
+      "side": "fr"
+     },
+     {
+      "id": "nansouty",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "walther",
+      "side": "fr"
+     },
+     {
+      "id": "rivaud",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "guard_inf",
+      "side": "fr"
+     },
+     {
+      "id": "guard_cav",
+      "side": "fr"
+     },
+     {
+      "id": "c_gren",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     },
+     {
+      "id": "bag",
+      "side": "al"
+     },
+     {
+      "id": "rg_cav",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0359,
+    "sideShare": 0.0267,
+    "changed": 0.0039,
+    "seconds": 77
+   },
+   "eye-zuran": {
+    "figures": 172,
+    "layer": {
+     "dropped": 5,
+     "items": 50,
+     "placed": 18
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 117.5
+    },
+    "worldMs": 1.8,
+    "calls": 205,
+    "smoke": 0.051,
+    "identity": [],
+    "confShare": 0.06,
+    "sideShare": 0.06,
+    "changed": 0.0015,
+    "seconds": 62
+   },
+   "plans-overview": {
+    "figures": 2940,
+    "layer": {
+     "dropped": 11,
+     "items": 56,
+     "placed": 45
+    },
+    "contrast": {
+     "min": 8.52,
+     "belowAA": 0,
+     "texts": 47
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 54
+    },
+    "worldMs": 7.3,
+    "calls": 839,
+    "smoke": 0,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "legrand",
+      "side": "fr"
+     },
+     {
+      "id": "friant",
+      "side": "fr"
+     },
+     {
+      "id": "bourcier",
+      "side": "fr"
+     },
+     {
+      "id": "caffarelli",
+      "side": "fr"
+     },
+     {
+      "id": "suchet",
+      "side": "fr"
+     },
+     {
+      "id": "santon",
+      "side": "fr"
+     },
+     {
+      "id": "kellermann",
+      "side": "fr"
+     },
+     {
+      "id": "nansouty",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "walther",
+      "side": "fr"
+     },
+     {
+      "id": "guard_inf",
+      "side": "fr"
+     },
+     {
+      "id": "guard_cav",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     },
+     {
+      "id": "bag",
+      "side": "al"
+     },
+     {
+      "id": "rg_inf",
+      "side": "al"
+     },
+     {
+      "id": "rg_cav",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0235,
+    "sideShare": 0.0155,
+    "changed": 0.0013,
+    "seconds": 72
+   },
+   "pratzen-orbit-min": {
+    "figures": 1012,
+    "layer": {
+     "dropped": 1,
+     "items": 61,
+     "placed": 6
+    },
+    "contrast": {
+     "min": 11.73,
+     "belowAA": 0,
+     "texts": 6
+    },
+    "dark": {
+     "solidBlack": 0.00015,
+     "meanLum": 75.2
+    },
+    "worldMs": 10.1,
+    "calls": 742,
+    "smoke": 0.24,
+    "identity": [
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "caffarelli",
+      "side": "fr"
+     },
+     {
+      "id": "kellermann",
+      "side": "fr"
+     },
+     {
+      "id": "nansouty",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "walther",
+      "side": "fr"
+     },
+     {
+      "id": "rivaud",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "guard_inf",
+      "side": "fr"
+     },
+     {
+      "id": "guard_cav",
+      "side": "fr"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0325,
+    "sideShare": 0.0252,
+    "keys": {
+     "vandamme": {
+      "side": "fr",
+      "px": 8852,
+      "hex": "#2C3452",
+      "lab": [
+       22.19,
+       6.05,
+       -19.63
+      ]
+     },
+     "caffarelli": {
+      "side": "fr",
+      "px": 1233,
+      "hex": "#646775",
+      "lab": [
+       43.76,
+       2.39,
+       -8.55
+      ]
+     },
+     "kellermann": {
+      "side": "fr",
+      "px": 243,
+      "hex": "#6F5B51",
+      "lab": [
+       40.31,
+       6.56,
+       8.67
+      ]
+     },
+     "nansouty": {
+      "side": "fr",
+      "px": 565,
+      "hex": "#596B8D",
+      "lab": [
+       45.06,
+       2.38,
+       -20.9
+      ]
+     },
+     "dhautpoul": {
+      "side": "fr",
+      "px": 305,
+      "hex": "#666979",
+      "lab": [
+       44.79,
+       2.09,
+       -9.06
+      ]
+     },
+     "walther": {
+      "side": "fr",
+      "px": 433,
+      "hex": "#6A8262",
+      "lab": [
+       51.72,
+       -14.9,
+       14.24
+      ]
+     },
+     "rivaud": {
+      "side": "fr",
+      "px": 2747,
+      "hex": "#474D67",
+      "lab": [
+       33.25,
+       4.1,
+       -15.93
+      ]
+     },
+     "drouet": {
+      "side": "fr",
+      "px": 6351,
+      "hex": "#384265",
+      "lab": [
+       28.54,
+       6.4,
+       -22.12
+      ]
+     },
+     "guard_inf": {
+      "side": "fr",
+      "px": 833,
+      "hex": "#3C455F",
+      "lab": [
+       29.52,
+       3.41,
+       -16.76
+      ]
+     },
+     "guard_cav": {
+      "side": "fr",
+      "px": 1451,
+      "hex": "#465663",
+      "lab": [
+       35.76,
+       -2.96,
+       -9.64
+      ]
+     },
+     "lich": {
+      "side": "al",
+      "px": 1728,
+      "hex": "#7F8C6A",
+      "lab": [
+       56.49,
+       -11.44,
+       16.75
+      ]
+     }
+    },
+    "cross": {
+     "pairs": 10,
+     "closest": [
+      [
+       "walther",
+       "lich",
+       5.7
+      ],
+      [
+       "dhautpoul",
+       "lich",
+       26.4
+      ],
+      [
+       "caffarelli",
+       "lich",
+       26.6
+      ],
+      [
+       "kellermann",
+       "lich",
+       27
+      ]
+     ]
+    },
+    "changed": 0.2045,
+    "seconds": 458
+   },
+   "pratzen-low-1x": {
+    "figures": 0,
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 31
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 75.3
+    },
+    "worldMs": 1.2,
+    "calls": 160,
+    "smoke": 0.24,
+    "identity": [],
+    "changed": 0,
+    "seconds": 36
+   },
+   "pratzen-low-10x": {
+    "figures": 878,
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.68,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 110.3
+    },
+    "worldMs": 8.6,
+    "calls": 747,
+    "smoke": 0.24,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "rg_inf",
+      "side": "al"
+     },
+     {
+      "id": "rg_cav",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0575,
+    "sideShare": 0.0327,
+    "changed": 0.022,
+    "seconds": 122
+   },
+   "eye-zuran-1x": {
+    "figures": 0,
+    "layer": {
+     "dropped": 6,
+     "items": 50,
+     "placed": 18
+    },
+    "contrast": {
+     "min": 11.36,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 101.2
+    },
+    "worldMs": 1.2,
+    "calls": 132,
+    "smoke": 0.051,
+    "identity": [],
+    "changed": 0,
+    "seconds": 14
+   },
+   "overview-field@10.33x": {
+    "figures": 2912,
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 54
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 88.1
+    },
+    "worldMs": 8.4,
+    "calls": 815,
+    "smoke": 0.0859,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "friant",
+      "side": "fr"
+     },
+     {
+      "id": "caffarelli",
+      "side": "fr"
+     },
+     {
+      "id": "suchet",
+      "side": "fr"
+     },
+     {
+      "id": "santon",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "c_gren",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     },
+     {
+      "id": "bag",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0447,
+    "sideShare": 0.0311,
+    "changed": 0.0162,
+    "seconds": 122
+   },
+   "close-sokolnitz@10.33x": {
+    "figures": 1265,
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.69,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.3
+    },
+    "worldMs": 10.2,
+    "calls": 765,
+    "smoke": 0.24,
+    "identity": [
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "legrand",
+      "side": "fr"
+     },
+     {
+      "id": "friant",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.091,
+    "sideShare": 0.0486,
+    "changed": 0.0255,
+    "seconds": 102
+   },
+   "ph8-overview-watch@10.33x": {
+    "figures": 2906,
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.17,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 52.7
+    },
+    "worldMs": 12.6,
+    "calls": 797,
+    "smoke": 0.0076,
+    "identity": [
+     {
+      "id": "gqg",
+      "side": "fr"
+     },
+     {
+      "id": "heightguns",
+      "side": "fr"
+     },
+     {
+      "id": "sthilaire",
+      "side": "fr"
+     },
+     {
+      "id": "vandamme",
+      "side": "fr"
+     },
+     {
+      "id": "bourcier",
+      "side": "fr"
+     },
+     {
+      "id": "caffarelli",
+      "side": "fr"
+     },
+     {
+      "id": "suchet",
+      "side": "fr"
+     },
+     {
+      "id": "santon",
+      "side": "fr"
+     },
+     {
+      "id": "kellermann",
+      "side": "fr"
+     },
+     {
+      "id": "nansouty",
+      "side": "fr"
+     },
+     {
+      "id": "dhautpoul",
+      "side": "fr"
+     },
+     {
+      "id": "walther",
+      "side": "fr"
+     },
+     {
+      "id": "drouet",
+      "side": "fr"
+     },
+     {
+      "id": "guard_inf",
+      "side": "fr"
+     },
+     {
+      "id": "guard_cav",
+      "side": "fr"
+     },
+     {
+      "id": "c_gren",
+      "side": "fr"
+     },
+     {
+      "id": "ahq",
+      "side": "al"
+     },
+     {
+      "id": "buxhowden",
+      "side": "al"
+     },
+     {
+      "id": "kienmayer",
+      "side": "al"
+     },
+     {
+      "id": "dok",
+      "side": "al"
+     },
+     {
+      "id": "lang",
+      "side": "al"
+     },
+     {
+      "id": "kamensky",
+      "side": "al"
+     },
+     {
+      "id": "prz",
+      "side": "al"
+     },
+     {
+      "id": "milo",
+      "side": "al"
+     },
+     {
+      "id": "kollo",
+      "side": "al"
+     },
+     {
+      "id": "lich",
+      "side": "al"
+     },
+     {
+      "id": "bag",
+      "side": "al"
+     },
+     {
+      "id": "rg_cav",
+      "side": "al"
+     }
+    ],
+    "confShare": 0.0351,
+    "sideShare": 0.0259,
+    "changed": 0.0034,
+    "seconds": 79
+   },
+   "paper-north-up": {
+    "figures": 0,
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.8
+    },
+    "worldMs": 1.2,
+    "calls": 155,
+    "smoke": null,
+    "changed": 0,
+    "seconds": 14
+   },
+   "paper-close": {
+    "figures": 0,
+    "layer": {
+     "dropped": 1,
+     "items": 65,
+     "placed": 5
+    },
+    "contrast": {
+     "min": 5.1,
+     "belowAA": 0,
+     "texts": 19
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 192.2
+    },
+    "worldMs": 0.9,
+    "calls": 105,
+    "smoke": null,
+    "changed": 0,
+    "seconds": 32
+   }
+  },
+  "errors": [],
+  "blocks": {
+   "gqg": [
+    {
+     "role": "escort",
+     "dress": "fr_staff",
+     "units": 12,
+     "figures": 12,
+     "coat": "dark blue",
+     "leg": "dark blue",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "A",
+      "leg": "A",
+      "head": "A"
+     }
+    }
+   ],
+   "heightguns": [
+    {
+     "role": "crew",
+     "dress": "fr_foot_art",
+     "units": 1,
+     "figures": 30,
+     "coat": "dark blue",
+     "leg": "dark blue",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "C"
+     }
+    }
+   ],
+   "sthilaire": [
+    {
+     "role": "ranks",
+     "dress": "fr_light",
+     "units": 2,
+     "figures": 48,
+     "coat": "dark blue",
+     "leg": "dark blue",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "fr_line",
+     "units": 4,
+     "figures": 96,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "fr_line",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "vandamme": [
+    {
+     "role": "ranks",
+     "dress": "fr_light",
+     "units": 1,
+     "figures": 24,
+     "coat": "dark blue",
+     "leg": "dark blue",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "fr_line",
+     "units": 5,
+     "figures": 120,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "fr_line",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "legrand": [
+    {
+     "role": "ranks",
+     "dress": "fr_line",
+     "units": 4,
+     "figures": 96,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "fr_light",
+     "units": 2,
+     "figures": 48,
+     "coat": "dark blue",
+     "leg": "dark blue",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "fr_line",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "friant": [
+    {
+     "role": "ranks",
+     "dress": "fr_line",
+     "units": 2,
+     "figures": 48,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "fr_light",
+     "units": 1,
+     "figures": 24,
+     "coat": "dark blue",
+     "leg": "dark blue",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "fr_line",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "bourcier": [
+    {
+     "role": "ranks",
+     "dress": "fr_dragoon",
+     "units": 2,
+     "figures": 20,
+     "coat": "green",
+     "leg": "white",
+     "head": "metal helmet",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    }
+   ],
+   "caffarelli": [
+    {
+     "role": "ranks",
+     "dress": "fr_light",
+     "units": 1,
+     "figures": 24,
+     "coat": "dark blue",
+     "leg": "dark blue",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "fr_line",
+     "units": 5,
+     "figures": 120,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "fr_line",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "suchet": [
+    {
+     "role": "ranks",
+     "dress": "fr_line",
+     "units": 5,
+     "figures": 120,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "fr_line",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "santon": [
+    {
+     "role": "ranks",
+     "dress": "fr_light",
+     "units": 2,
+     "figures": 48,
+     "coat": "dark blue",
+     "leg": "dark blue",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "fr_light",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark blue",
+     "leg": "dark blue",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "kellermann": [
+    {
+     "role": "ranks",
+     "dress": "fr_hussar2",
+     "units": 1,
+     "figures": 10,
+     "coat": "brown",
+     "leg": "sky blue",
+     "head": "shako",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "fr_hussar4",
+     "units": 1,
+     "figures": 10,
+     "coat": "dark blue",
+     "leg": "dark blue",
+     "head": "shako",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "fr_hussar5",
+     "units": 1,
+     "figures": 10,
+     "coat": "sky blue",
+     "leg": "sky blue",
+     "head": "shako",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    }
+   ],
+   "nansouty": [
+    {
+     "role": "ranks",
+     "dress": "fr_carabinier",
+     "units": 1,
+     "figures": 10,
+     "coat": "generic",
+     "leg": "white",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "C",
+      "leg": "B",
+      "head": "C"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "fr_cuirassier",
+     "units": 1,
+     "figures": 10,
+     "coat": "dark blue",
+     "leg": "white",
+     "head": "metal helmet",
+     "cuirass": "metal",
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    }
+   ],
+   "dhautpoul": [
+    {
+     "role": "ranks",
+     "dress": "fr_cuirassier",
+     "units": 2,
+     "figures": 20,
+     "coat": "dark blue",
+     "leg": "white",
+     "head": "metal helmet",
+     "cuirass": "metal",
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    }
+   ],
+   "walther": [
+    {
+     "role": "ranks",
+     "dress": "fr_dragoon",
+     "units": 2,
+     "figures": 20,
+     "coat": "green",
+     "leg": "white",
+     "head": "metal helmet",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    }
+   ],
+   "rivaud": [
+    {
+     "role": "ranks",
+     "dress": "fr_line",
+     "units": 5,
+     "figures": 120,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "fr_line",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "drouet": [
+    {
+     "role": "ranks",
+     "dress": "fr_light",
+     "units": 2,
+     "figures": 48,
+     "coat": "dark blue",
+     "leg": "dark blue",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "fr_line",
+     "units": 4,
+     "figures": 96,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "fr_line",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "A"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "guard_inf": [
+    {
+     "role": "ranks",
+     "dress": "fr_guard_gren",
+     "units": 1,
+     "figures": 24,
+     "coat": "dark blue",
+     "leg": "white",
+     "head": "bearskin",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "fr_guard_chass",
+     "units": 1,
+     "figures": 24,
+     "coat": "dark blue",
+     "leg": "white",
+     "head": "bearskin",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "it_guard",
+     "units": 1,
+     "figures": 24,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "not settled",
+      "leg": "not settled",
+      "head": "not settled"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "fr_guard_gren",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark blue",
+     "leg": "white",
+     "head": "bearskin",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "guard_cav": [
+    {
+     "role": "ranks",
+     "dress": "fr_guard_grencav",
+     "units": 1,
+     "figures": 10,
+     "coat": "dark blue",
+     "leg": "white",
+     "head": "bearskin",
+     "cuirass": null,
+     "horse": "black",
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "fr_guard_chasscav",
+     "units": 1,
+     "figures": 10,
+     "coat": "green",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "C",
+      "head": "C"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "fr_mameluke",
+     "units": 1,
+     "figures": 10,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "turban",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    }
+   ],
+   "c_gren": [
+    {
+     "role": "ranks",
+     "dress": "fr_gren_line",
+     "units": 2,
+     "figures": 48,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "C",
+      "leg": "not settled",
+      "head": "disputed"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "fr_gren_light",
+     "units": 3,
+     "figures": 72,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "C",
+      "leg": "C",
+      "head": "disputed"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "fr_gren_light",
+     "units": 0,
+     "figures": 16,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "C",
+      "leg": "C",
+      "head": "disputed"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "ahq": [
+    {
+     "role": "escort",
+     "dress": "ru_staff",
+     "units": 12,
+     "figures": 12,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "B"
+     }
+    }
+   ],
+   "buxhowden": [
+    {
+     "role": "escort",
+     "dress": "ru_staff",
+     "units": 12,
+     "figures": 12,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "bicorne",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "B"
+     }
+    }
+   ],
+   "kienmayer": [
+    {
+     "role": "ranks",
+     "dress": "at_jager",
+     "units": 1,
+     "figures": 24,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "not settled",
+      "leg": "not settled",
+      "head": "not settled"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "at_grenz",
+     "units": 5,
+     "figures": 120,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "disputed",
+      "leg": "disputed",
+      "head": "disputed"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "at_grenz",
+     "units": 0,
+     "figures": 16,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "disputed",
+      "leg": "disputed",
+      "head": "disputed"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    },
+    {
+     "role": "riders",
+     "dress": "at_chevauleger",
+     "units": 2,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "crested helmet",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "disputed",
+      "leg": "not settled",
+      "head": "B"
+     }
+    },
+    {
+     "role": "riders",
+     "dress": "at_hussar_hh",
+     "units": 2,
+     "figures": 2,
+     "coat": "green",
+     "leg": "red",
+     "head": "shako",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "A",
+      "leg": "A",
+      "head": "A"
+     }
+    },
+    {
+     "role": "riders",
+     "dress": "at_hussar_szekler",
+     "units": 2,
+     "figures": 2,
+     "coat": "blue",
+     "leg": "blue",
+     "head": "shako",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "A",
+      "leg": "A",
+      "head": "A"
+     }
+    },
+    {
+     "role": "riders",
+     "dress": "ru_cossack",
+     "units": 2,
+     "figures": 2,
+     "coat": "dark blue",
+     "leg": "dark blue",
+     "head": "fur cap",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    }
+   ],
+   "dok": [
+    {
+     "role": "ranks",
+     "dress": "ru_jager",
+     "units": 1,
+     "figures": 24,
+     "coat": "light green",
+     "leg": "light green",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "disputed"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_musk",
+     "units": 5,
+     "figures": 120,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "A"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_gren",
+     "units": 1,
+     "figures": 24,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "C"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "ru_musk",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "A"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "lang": [
+    {
+     "role": "ranks",
+     "dress": "ru_jager",
+     "units": 1,
+     "figures": 24,
+     "coat": "light green",
+     "leg": "light green",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "disputed"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_musk",
+     "units": 6,
+     "figures": 144,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "A"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "ru_musk",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "A"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "kamensky": [
+    {
+     "role": "ranks",
+     "dress": "ru_gren",
+     "units": 2,
+     "figures": 48,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "C"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_musk",
+     "units": 2,
+     "figures": 48,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "A"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "ru_gren",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "C"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "prz": [
+    {
+     "role": "ranks",
+     "dress": "ru_musk",
+     "units": 7,
+     "figures": 168,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "A"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "ru_musk",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "A"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "milo": [
+    {
+     "role": "ranks",
+     "dress": "ru_musk",
+     "units": 3,
+     "figures": 72,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "A"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_gren",
+     "units": 1,
+     "figures": 24,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "C"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "ru_musk",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "A"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "kollo": [
+    {
+     "role": "ranks",
+     "dress": "at_line",
+     "units": 7,
+     "figures": 168,
+     "coat": "white",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "C",
+      "head": "disputed"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "at_line",
+     "units": 0,
+     "figures": 16,
+     "coat": "white",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "C",
+      "head": "disputed"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "lich": [
+    {
+     "role": "ranks",
+     "dress": "at_cuirassier",
+     "units": 1,
+     "figures": 10,
+     "coat": "white",
+     "leg": "generic",
+     "head": "crested helmet",
+     "cuirass": "black",
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_cossack",
+     "units": 1,
+     "figures": 10,
+     "coat": "dark blue",
+     "leg": "dark blue",
+     "head": "fur cap",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_uhlan",
+     "units": 1,
+     "figures": 10,
+     "coat": "dark blue",
+     "leg": "dark blue",
+     "head": "czapka",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_dragoon",
+     "units": 2,
+     "figures": 20,
+     "coat": "light green",
+     "leg": "generic",
+     "head": "crested helmet",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_hussar_elisavetgrad",
+     "units": 1,
+     "figures": 10,
+     "coat": "straw",
+     "leg": "white",
+     "head": "shako",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    }
+   ],
+   "bag": [
+    {
+     "role": "ranks",
+     "dress": "ru_jager",
+     "units": 3,
+     "figures": 72,
+     "coat": "light green",
+     "leg": "light green",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "disputed"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_musk",
+     "units": 4,
+     "figures": 96,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "A"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "ru_musk",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "A"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "rg_inf": [
+    {
+     "role": "ranks",
+     "dress": "ru_guard_inf",
+     "units": 3,
+     "figures": 72,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_guard_jager",
+     "units": 1,
+     "figures": 24,
+     "coat": "light green",
+     "leg": "light green",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_gren",
+     "units": 2,
+     "figures": 48,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "generic",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "C"
+     }
+    },
+    {
+     "role": "skirmish",
+     "dress": "ru_guard_inf",
+     "units": 0,
+     "figures": 16,
+     "coat": "dark green",
+     "leg": "white",
+     "head": "shako",
+     "cuirass": null,
+     "horse": null,
+     "gr": {
+      "coat": "B",
+      "leg": "B",
+      "head": "B"
+     }
+    },
+    {
+     "role": "officers",
+     "dress": null,
+     "units": 1,
+     "figures": 2,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": null
+    }
+   ],
+   "rg_cav": [
+    {
+     "role": "ranks",
+     "dress": "ru_chevalier",
+     "units": 1,
+     "figures": 10,
+     "coat": "white",
+     "leg": "generic",
+     "head": "crested helmet",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_guard_horse",
+     "units": 1,
+     "figures": 10,
+     "coat": "white",
+     "leg": "generic",
+     "head": "crested helmet",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_guard_hussar",
+     "units": 1,
+     "figures": 10,
+     "coat": "dark blue",
+     "leg": "generic",
+     "head": "shako",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "B",
+      "leg": "not settled",
+      "head": "B"
+     }
+    },
+    {
+     "role": "ranks",
+     "dress": "ru_guard_cossack",
+     "units": 1,
+     "figures": 10,
+     "coat": "generic",
+     "leg": "generic",
+     "head": "generic",
+     "cuirass": null,
+     "horse": "brown",
+     "gr": {
+      "coat": "C",
+      "leg": "C",
+      "head": "C"
+     }
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,2322 @@
+{
+ "when": "2026-10-05T23:28:25.783Z",
+ "before": {
+  "html": "/tmp/claude-0/-home-user-Austerlitz/ed483132-2905-547b-bee5-e82d38920f18/scratchpad/frames6d/stage6c-07c61c82.html",
+  "views": {
+   "overview-field": {
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 55
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 77.2
+    },
+    "worldMs": 9.1,
+    "calls": 815,
+    "smoke": 0.0853,
+    "cloths": {
+     "n": 55,
+     "w": {
+      "med": 6.3,
+      "max": 13.7
+     },
+     "h": {
+      "med": 5.3,
+      "max": 7.3
+     }
+    },
+    "confShare": 0.0433,
+    "seconds": 96
+   },
+   "overview-plan": {
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 53.8
+    },
+    "worldMs": 8.5,
+    "calls": 815,
+    "smoke": 0.0136,
+    "cloths": {
+     "n": 55,
+     "w": {
+      "med": 5.7,
+      "max": 6
+     },
+     "h": {
+      "med": 0.6,
+      "max": 1.2
+     }
+    },
+    "confShare": 0.037,
+    "seconds": 72
+   },
+   "close-sokolnitz": {
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.68,
+     "belowAA": 0,
+     "texts": 28
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 126.3
+    },
+    "worldMs": 8.7,
+    "calls": 776,
+    "smoke": 0.24,
+    "cloths": {
+     "n": 22,
+     "w": {
+      "med": 35.4,
+      "max": 74.8
+     },
+     "h": {
+      "med": 20.3,
+      "max": 34.6
+     }
+    },
+    "confShare": 0.0937,
+    "seconds": 93
+   },
+   "pratzen-low": {
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 8.26,
+     "belowAA": 0,
+     "texts": 30
+    },
+    "dark": {
+     "solidBlack": 0.0002,
+     "meanLum": 90.5
+    },
+    "worldMs": 6.6,
+    "calls": 746,
+    "smoke": 0.24,
+    "cloths": {
+     "n": 22,
+     "w": {
+      "med": 24.4,
+      "max": 64
+     },
+     "h": {
+      "med": 18.5,
+      "max": 32.7
+     }
+    },
+    "confShare": 0.1009,
+    "seconds": 90
+   },
+   "selected-formation": {
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 32
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 64.3
+    },
+    "worldMs": 7,
+    "calls": 748,
+    "smoke": 0.0412,
+    "cloths": {
+     "n": 16,
+     "w": {
+      "med": 13.5,
+      "max": 27.1
+     },
+     "h": {
+      "med": 8.9,
+      "max": 11.9
+     }
+    },
+    "confShare": 0.1509,
+    "seconds": 71
+   },
+   "watch-selected": {
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 33
+    },
+    "dark": {
+     "solidBlack": 0.0001,
+     "meanLum": 57.4
+    },
+    "worldMs": 8.5,
+    "calls": 728,
+    "smoke": 0.0222,
+    "cloths": {
+     "n": 21,
+     "w": {
+      "med": 12,
+      "max": 28.9
+     },
+     "h": {
+      "med": 9.1,
+      "max": 12.4
+     }
+    },
+    "confShare": 0.1523,
+    "seconds": 68
+   },
+   "hybrid-dimmed": {
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 61.9
+    },
+    "worldMs": 8.1,
+    "calls": 728,
+    "smoke": 0.0237,
+    "cloths": {
+     "n": 33,
+     "w": {
+      "med": 8.4,
+      "max": 22.2
+     },
+     "h": {
+      "med": 7.5,
+      "max": 10.8
+     }
+    },
+    "confShare": 0.146,
+    "seconds": 75
+   },
+   "ph8-overview-study": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.4
+    },
+    "worldMs": 6.7,
+    "calls": 797,
+    "smoke": 0.0075,
+    "cloths": {
+     "n": 56,
+     "w": {
+      "med": 4.6,
+      "max": 4.7
+     },
+     "h": {
+      "med": 0.5,
+      "max": 2.3
+     }
+    },
+    "confShare": 0.0333,
+    "seconds": 67
+   },
+   "ph8-overview-watch": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.17,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.6
+    },
+    "worldMs": 9,
+    "calls": 797,
+    "smoke": 0.0077,
+    "cloths": {
+     "n": 56,
+     "w": {
+      "med": 5.8,
+      "max": 6
+     },
+     "h": {
+      "med": 0.7,
+      "max": 2.8
+     }
+    },
+    "confShare": 0.0359,
+    "seconds": 71
+   },
+   "eye-zuran": {
+    "layer": {
+     "dropped": 5,
+     "items": 50,
+     "placed": 18
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 117.5
+    },
+    "worldMs": 1.7,
+    "calls": 205,
+    "smoke": 0.051,
+    "cloths": {
+     "n": 3,
+     "w": {
+      "med": 18,
+      "max": 20.4
+     },
+     "h": {
+      "med": 13.7,
+      "max": 14.5
+     }
+    },
+    "confShare": 0.06,
+    "seconds": 57
+   },
+   "plans-overview": {
+    "layer": {
+     "dropped": 11,
+     "items": 56,
+     "placed": 45
+    },
+    "contrast": {
+     "min": 8.52,
+     "belowAA": 0,
+     "texts": 47
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 54
+    },
+    "worldMs": 7.8,
+    "calls": 839,
+    "smoke": 0,
+    "cloths": {
+     "n": 55,
+     "w": {
+      "med": 3.6,
+      "max": 3.8
+     },
+     "h": {
+      "med": 0.3,
+      "max": 0.7
+     }
+    },
+    "confShare": 0.0235,
+    "seconds": 69
+   },
+   "pratzen-orbit-min": {
+    "layer": {
+     "dropped": 1,
+     "items": 61,
+     "placed": 6
+    },
+    "contrast": {
+     "min": 11.73,
+     "belowAA": 0,
+     "texts": 6
+    },
+    "dark": {
+     "solidBlack": 0.00015,
+     "meanLum": 75.2
+    },
+    "worldMs": 9.9,
+    "calls": 742,
+    "smoke": 0.24,
+    "cloths": {
+     "n": 12,
+     "w": {
+      "med": 22.8,
+      "max": 250.8
+     },
+     "h": {
+      "med": 30.6,
+      "max": 271.2
+     }
+    },
+    "confShare": 0.0325,
+    "seconds": 125
+   },
+   "pratzen-low-1x": {
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 31
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 75.3
+    },
+    "worldMs": 1.1,
+    "calls": 160,
+    "smoke": 0.24,
+    "cloths": {
+     "n": 0,
+     "w": null,
+     "h": null
+    },
+    "confShare": 0.1922,
+    "seconds": 59
+   },
+   "pratzen-low-10x": {
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.68,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 110.3
+    },
+    "worldMs": 6.9,
+    "calls": 747,
+    "smoke": 0.24,
+    "cloths": {
+     "n": 16,
+     "w": {
+      "med": 24.3,
+      "max": 33.1
+     },
+     "h": {
+      "med": 16.2,
+      "max": 21
+     }
+    },
+    "confShare": 0.0575,
+    "seconds": 80
+   },
+   "eye-zuran-1x": {
+    "layer": {
+     "dropped": 6,
+     "items": 50,
+     "placed": 18
+    },
+    "contrast": {
+     "min": 11.36,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 101.2
+    },
+    "worldMs": 0.8,
+    "calls": 132,
+    "smoke": 0.051,
+    "cloths": {
+     "n": 0,
+     "w": null,
+     "h": null
+    },
+    "confShare": 0,
+    "seconds": 44
+   },
+   "overview-field@10.33x": {
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 54
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 88.1
+    },
+    "worldMs": 9,
+    "calls": 815,
+    "smoke": 0.0859,
+    "cloths": {
+     "n": 55,
+     "w": {
+      "med": 6.3,
+      "max": 13.6
+     },
+     "h": {
+      "med": 5.3,
+      "max": 7.3
+     }
+    },
+    "confShare": 0.0447,
+    "seconds": 86
+   },
+   "close-sokolnitz@10.33x": {
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.69,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.3
+    },
+    "worldMs": 8.4,
+    "calls": 765,
+    "smoke": 0.24,
+    "cloths": {
+     "n": 19,
+     "w": {
+      "med": 37,
+      "max": 73.6
+     },
+     "h": {
+      "med": 22.3,
+      "max": 33.6
+     }
+    },
+    "confShare": 0.091,
+    "seconds": 92
+   },
+   "ph8-overview-watch@10.33x": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.17,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 52.7
+    },
+    "worldMs": 7.4,
+    "calls": 797,
+    "smoke": 0.0076,
+    "cloths": {
+     "n": 56,
+     "w": {
+      "med": 5.7,
+      "max": 5.9
+     },
+     "h": {
+      "med": 0.7,
+      "max": 2.8
+     }
+    },
+    "confShare": 0.0351,
+    "seconds": 73
+   },
+   "paper-north-up": {
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.8
+    },
+    "worldMs": 1,
+    "calls": 155,
+    "smoke": null,
+    "seconds": 13
+   },
+   "paper-close": {
+    "layer": {
+     "dropped": 1,
+     "items": 65,
+     "placed": 5
+    },
+    "contrast": {
+     "min": 5.1,
+     "belowAA": 0,
+     "texts": 19
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 192.2
+    },
+    "worldMs": 0.9,
+    "calls": 105,
+    "smoke": null,
+    "seconds": 31
+   }
+  },
+  "errors": [],
+  "blocks": {
+   "gqg": {
+    "n": 1
+   },
+   "heightguns": {
+    "n": 1
+   },
+   "sthilaire": {
+    "n": 2
+   },
+   "vandamme": {
+    "n": 2
+   },
+   "legrand": {
+    "n": 2
+   },
+   "friant": {
+    "n": 2
+   },
+   "bourcier": {
+    "n": 1
+   },
+   "caffarelli": {
+    "n": 2
+   },
+   "suchet": {
+    "n": 2
+   },
+   "santon": {
+    "n": 1
+   },
+   "kellermann": {
+    "n": 1
+   },
+   "nansouty": {
+    "n": 1
+   },
+   "dhautpoul": {
+    "n": 1
+   },
+   "walther": {
+    "n": 1
+   },
+   "rivaud": {
+    "n": 2
+   },
+   "drouet": {
+    "n": 2
+   },
+   "guard_inf": {
+    "n": 2
+   },
+   "guard_cav": {
+    "n": 1
+   },
+   "c_gren": {
+    "n": 2
+   },
+   "ahq": {
+    "n": 1
+   },
+   "buxhowden": {
+    "n": 1
+   },
+   "kienmayer": {
+    "n": 2
+   },
+   "dok": {
+    "n": 3
+   },
+   "lang": {
+    "n": 3
+   },
+   "kamensky": {
+    "n": 2
+   },
+   "prz": {
+    "n": 3
+   },
+   "milo": {
+    "n": 2
+   },
+   "kollo": {
+    "n": 3
+   },
+   "lich": {
+    "n": 1
+   },
+   "bag": {
+    "n": 3
+   },
+   "rg_inf": {
+    "n": 2
+   },
+   "rg_cav": {
+    "n": 1
+   }
+  }
+ },
+ "after": {
+  "html": "austerlitz-command-map.html",
+  "views": {
+   "overview-field": {
+    "layer": {
+     "dropped": 6,
+     "items": 47,
+     "placed": 41
+    },
+    "contrast": {
+     "min": 8.32,
+     "belowAA": 0,
+     "texts": 55
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 77.2
+    },
+    "worldMs": 9.7,
+    "calls": 839,
+    "smoke": 0.0853,
+    "cloths": {
+     "n": 142,
+     "w": {
+      "med": 5.8,
+      "max": 14.5
+     },
+     "h": {
+      "med": 7.3,
+      "max": 11.9
+     }
+    },
+    "confShare": 0.0417,
+    "changed": 0.0122,
+    "seconds": 95
+   },
+   "overview-plan": {
+    "layer": {
+     "dropped": 4,
+     "items": 26,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.03,
+     "belowAA": 0,
+     "texts": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 53.8
+    },
+    "worldMs": 11.5,
+    "calls": 839,
+    "smoke": 0.0136,
+    "cloths": {
+     "n": 142,
+     "w": {
+      "med": 5.6,
+      "max": 6.5
+     },
+     "h": {
+      "med": 0.6,
+      "max": 2.1
+     }
+    },
+    "confShare": 0.037,
+    "changed": 0.0009,
+    "seconds": 74
+   },
+   "close-sokolnitz": {
+    "layer": {
+     "dropped": 4,
+     "items": 66,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.68,
+     "belowAA": 0,
+     "texts": 28
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 126
+    },
+    "worldMs": 8.8,
+    "calls": 800,
+    "smoke": 0.24,
+    "cloths": {
+     "n": 70,
+     "w": {
+      "med": 31,
+      "max": 59
+     },
+     "h": {
+      "med": 31.9,
+      "max": 45.8
+     }
+    },
+    "confShare": 0.0869,
+    "changed": 0.0436,
+    "seconds": 97
+   },
+   "pratzen-low": {
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 8.26,
+     "belowAA": 0,
+     "texts": 30
+    },
+    "dark": {
+     "solidBlack": 0.0002,
+     "meanLum": 90.2
+    },
+    "worldMs": 8.1,
+    "calls": 770,
+    "smoke": 0.24,
+    "cloths": {
+     "n": 62,
+     "w": {
+      "med": 24.2,
+      "max": 65.9
+     },
+     "h": {
+      "med": 25.6,
+      "max": 55.3
+     }
+    },
+    "confShare": 0.0901,
+    "changed": 0.0424,
+    "seconds": 91
+   },
+   "selected-formation": {
+    "layer": {
+     "dropped": 4,
+     "items": 64,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 32
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 64.3
+    },
+    "worldMs": 8.2,
+    "calls": 772,
+    "smoke": 0.0412,
+    "cloths": {
+     "n": 45,
+     "w": {
+      "med": 13.8,
+      "max": 21.8
+     },
+     "h": {
+      "med": 14,
+      "max": 16.1
+     }
+    },
+    "confShare": 0.1476,
+    "changed": 0.0124,
+    "seconds": 71
+   },
+   "watch-selected": {
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 24
+    },
+    "contrast": {
+     "min": 7.59,
+     "belowAA": 0,
+     "texts": 33
+    },
+    "dark": {
+     "solidBlack": 0.0001,
+     "meanLum": 57.4
+    },
+    "worldMs": 6.7,
+    "calls": 752,
+    "smoke": 0.0222,
+    "cloths": {
+     "n": 57,
+     "w": {
+      "med": 12.9,
+      "max": 29
+     },
+     "h": {
+      "med": 9.5,
+      "max": 21.4
+     }
+    },
+    "confShare": 0.1492,
+    "changed": 0.0104,
+    "seconds": 70
+   },
+   "hybrid-dimmed": {
+    "layer": {
+     "dropped": 8,
+     "items": 63,
+     "placed": 32
+    },
+    "contrast": {
+     "min": 6.49,
+     "belowAA": 0,
+     "texts": 78
+    },
+    "dark": {
+     "solidBlack": 0.00005,
+     "meanLum": 61.9
+    },
+    "worldMs": 8.1,
+    "calls": 752,
+    "smoke": 0.0237,
+    "cloths": {
+     "n": 88,
+     "w": {
+      "med": 8.2,
+      "max": 22.1
+     },
+     "h": {
+      "med": 10.4,
+      "max": 16.1
+     }
+    },
+    "confShare": 0.1441,
+    "changed": 0.0079,
+    "seconds": 77
+   },
+   "ph8-overview-study": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.27,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.4
+    },
+    "worldMs": 8.7,
+    "calls": 818,
+    "smoke": 0.0075,
+    "cloths": {
+     "n": 142,
+     "w": {
+      "med": 2.7,
+      "max": 5.1
+     },
+     "h": {
+      "med": 0.7,
+      "max": 3.8
+     }
+    },
+    "confShare": 0.0332,
+    "changed": 0.0008,
+    "seconds": 69
+   },
+   "ph8-overview-watch": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.17,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 44.6
+    },
+    "worldMs": 8.5,
+    "calls": 818,
+    "smoke": 0.0077,
+    "cloths": {
+     "n": 142,
+     "w": {
+      "med": 3.5,
+      "max": 6.5
+     },
+     "h": {
+      "med": 1,
+      "max": 4.8
+     }
+    },
+    "confShare": 0.0358,
+    "changed": 0.0012,
+    "seconds": 71
+   },
+   "eye-zuran": {
+    "layer": {
+     "dropped": 5,
+     "items": 50,
+     "placed": 18
+    },
+    "contrast": {
+     "min": 7.57,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 117.2
+    },
+    "worldMs": 1.7,
+    "calls": 208,
+    "smoke": 0.051,
+    "cloths": {
+     "n": 14,
+     "w": {
+      "med": 17.8,
+      "max": 20.2
+     },
+     "h": {
+      "med": 23,
+      "max": 24.4
+     }
+    },
+    "confShare": 0.0601,
+    "changed": 0.004,
+    "seconds": 58
+   },
+   "plans-overview": {
+    "layer": {
+     "dropped": 11,
+     "items": 56,
+     "placed": 45
+    },
+    "contrast": {
+     "min": 8.52,
+     "belowAA": 0,
+     "texts": 47
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 54
+    },
+    "worldMs": 8.4,
+    "calls": 863,
+    "smoke": 0,
+    "cloths": {
+     "n": 142,
+     "w": {
+      "med": 3.6,
+      "max": 4.1
+     },
+     "h": {
+      "med": 0.4,
+      "max": 1.1
+     }
+    },
+    "confShare": 0.0235,
+    "changed": 0.0003,
+    "seconds": 68
+   },
+   "pratzen-orbit-min": {
+    "layer": {
+     "dropped": 1,
+     "items": 61,
+     "placed": 6
+    },
+    "contrast": {
+     "min": 12.58,
+     "belowAA": 0,
+     "texts": 6
+    },
+    "dark": {
+     "solidBlack": 0.00015,
+     "meanLum": 73.8
+    },
+    "worldMs": 9.4,
+    "calls": 766,
+    "smoke": 0.24,
+    "cloths": {
+     "n": 36,
+     "w": {
+      "med": 13.2,
+      "max": 1281.3
+     },
+     "h": {
+      "med": 31.4,
+      "max": 1341.4
+     }
+    },
+    "confShare": 0.0171,
+    "changed": 0.4405,
+    "seconds": 133
+   },
+   "pratzen-low-1x": {
+    "layer": {
+     "dropped": 4,
+     "items": 65,
+     "placed": 25
+    },
+    "contrast": {
+     "min": 8.49,
+     "belowAA": 0,
+     "texts": 31
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 75.3
+    },
+    "worldMs": 1.2,
+    "calls": 160,
+    "smoke": 0.24,
+    "cloths": {
+     "n": 0,
+     "w": null,
+     "h": null
+    },
+    "confShare": 0.1922,
+    "changed": 0,
+    "seconds": 61
+   },
+   "pratzen-low-10x": {
+    "layer": {
+     "dropped": 3,
+     "items": 65,
+     "placed": 21
+    },
+    "contrast": {
+     "min": 7.94,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 110.1
+    },
+    "worldMs": 9.2,
+    "calls": 771,
+    "smoke": 0.24,
+    "cloths": {
+     "n": 46,
+     "w": {
+      "med": 20.8,
+      "max": 35.5
+     },
+     "h": {
+      "med": 24.6,
+      "max": 36.2
+     }
+    },
+    "confShare": 0.0559,
+    "changed": 0.0144,
+    "seconds": 86
+   },
+   "eye-zuran-1x": {
+    "layer": {
+     "dropped": 6,
+     "items": 50,
+     "placed": 18
+    },
+    "contrast": {
+     "min": 11.36,
+     "belowAA": 0,
+     "texts": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 101.2
+    },
+    "worldMs": 1,
+    "calls": 132,
+    "smoke": 0.051,
+    "cloths": {
+     "n": 0,
+     "w": null,
+     "h": null
+    },
+    "confShare": 0,
+    "changed": 0,
+    "seconds": 45
+   },
+   "overview-field@10.33x": {
+    "layer": {
+     "dropped": 7,
+     "items": 47,
+     "placed": 40
+    },
+    "contrast": {
+     "min": 7.95,
+     "belowAA": 0,
+     "texts": 54
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 88.1
+    },
+    "worldMs": 13.5,
+    "calls": 839,
+    "smoke": 0.0859,
+    "cloths": {
+     "n": 141,
+     "w": {
+      "med": 5.8,
+      "max": 14.5
+     },
+     "h": {
+      "med": 7.3,
+      "max": 11.9
+     }
+    },
+    "confShare": 0.0429,
+    "changed": 0.0111,
+    "seconds": 89
+   },
+   "close-sokolnitz@10.33x": {
+    "layer": {
+     "dropped": 3,
+     "items": 66,
+     "placed": 20
+    },
+    "contrast": {
+     "min": 7.69,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.4
+    },
+    "worldMs": 8.8,
+    "calls": 789,
+    "smoke": 0.24,
+    "cloths": {
+     "n": 56,
+     "w": {
+      "med": 35.1,
+      "max": 57.8
+     },
+     "h": {
+      "med": 33.7,
+      "max": 44.2
+     }
+    },
+    "confShare": 0.086,
+    "changed": 0.0314,
+    "seconds": 94
+   },
+   "ph8-overview-watch@10.33x": {
+    "layer": {
+     "dropped": 3,
+     "items": 25,
+     "placed": 22
+    },
+    "contrast": {
+     "min": 8.17,
+     "belowAA": 0,
+     "texts": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 52.7
+    },
+    "worldMs": 9.9,
+    "calls": 818,
+    "smoke": 0.0076,
+    "cloths": {
+     "n": 142,
+     "w": {
+      "med": 3.5,
+      "max": 6.4
+     },
+     "h": {
+      "med": 1,
+      "max": 4.8
+     }
+    },
+    "confShare": 0.035,
+    "changed": 0.001,
+    "seconds": 74
+   },
+   "paper-north-up": {
+    "layer": {
+     "dropped": 12,
+     "items": 35,
+     "placed": 23
+    },
+    "contrast": {
+     "min": 5.38,
+     "belowAA": 0,
+     "texts": 60
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 145.8
+    },
+    "worldMs": 1,
+    "calls": 155,
+    "smoke": null,
+    "changed": 0,
+    "seconds": 14
+   },
+   "paper-close": {
+    "layer": {
+     "dropped": 1,
+     "items": 65,
+     "placed": 5
+    },
+    "contrast": {
+     "min": 5.1,
+     "belowAA": 0,
+     "texts": 19
+    },
+    "dark": {
+     "solidBlack": 0,
+     "meanLum": 192.2
+    },
+    "worldMs": 0.8,
+    "calls": 105,
+    "smoke": null,
+    "changed": 0,
+    "seconds": 31
+   }
+  },
+  "errors": [],
+  "blocks": {
+   "gqg": {
+    "n": 0,
+    "classes": [],
+    "none": [
+     {
+      "dress": "fr_staff",
+      "why": "no source read shows colours carried"
+     }
+    ]
+   },
+   "heightguns": {
+    "n": 0,
+    "classes": [],
+    "none": [
+     {
+      "dress": "fr_foot_art",
+      "why": "the sources give none"
+     }
+    ]
+   },
+   "sthilaire": {
+    "n": 6,
+    "classes": [
+     {
+      "dress": "fr_light",
+      "carry": "fr_eagle_inf",
+      "n": 2,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     },
+     {
+      "dress": "fr_line",
+      "carry": "fr_eagle_inf",
+      "n": 4,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": []
+   },
+   "vandamme": {
+    "n": 6,
+    "classes": [
+     {
+      "dress": "fr_light",
+      "carry": "fr_eagle_inf",
+      "n": 1,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     },
+     {
+      "dress": "fr_line",
+      "carry": "fr_eagle_inf",
+      "n": 5,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": []
+   },
+   "legrand": {
+    "n": 6,
+    "classes": [
+     {
+      "dress": "fr_line",
+      "carry": "fr_eagle_inf",
+      "n": 4,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     },
+     {
+      "dress": "fr_light",
+      "carry": "fr_eagle_inf",
+      "n": 2,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": []
+   },
+   "friant": {
+    "n": 3,
+    "classes": [
+     {
+      "dress": "fr_line",
+      "carry": "fr_eagle_inf",
+      "n": 2,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     },
+     {
+      "dress": "fr_light",
+      "carry": "fr_eagle_inf",
+      "n": 1,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": []
+   },
+   "bourcier": {
+    "n": 2,
+    "classes": [
+     {
+      "dress": "fr_dragoon",
+      "carry": "fr_eagle_cav",
+      "n": 2,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "sqn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 2.015,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": []
+   },
+   "caffarelli": {
+    "n": 6,
+    "classes": [
+     {
+      "dress": "fr_light",
+      "carry": "fr_eagle_inf",
+      "n": 1,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     },
+     {
+      "dress": "fr_line",
+      "carry": "fr_eagle_inf",
+      "n": 5,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": []
+   },
+   "suchet": {
+    "n": 5,
+    "classes": [
+     {
+      "dress": "fr_line",
+      "carry": "fr_eagle_inf",
+      "n": 5,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": []
+   },
+   "santon": {
+    "n": 2,
+    "classes": [
+     {
+      "dress": "fr_light",
+      "carry": "fr_eagle_inf",
+      "n": 2,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": []
+   },
+   "kellermann": {
+    "n": 0,
+    "classes": [],
+    "none": [
+     {
+      "dress": "fr_hussar2",
+      "why": "it is disputed whether they were carried in the field"
+     },
+     {
+      "dress": "fr_hussar4",
+      "why": "it is disputed whether they were carried in the field"
+     },
+     {
+      "dress": "fr_hussar5",
+      "why": "it is disputed whether they were carried in the field"
+     }
+    ]
+   },
+   "nansouty": {
+    "n": 2,
+    "classes": [
+     {
+      "dress": "fr_carabinier",
+      "carry": "fr_eagle_cav",
+      "n": 1,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "sqn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 2.015,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     },
+     {
+      "dress": "fr_cuirassier",
+      "carry": "fr_eagle_cav",
+      "n": 1,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "sqn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 2.015,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": []
+   },
+   "dhautpoul": {
+    "n": 2,
+    "classes": [
+     {
+      "dress": "fr_cuirassier",
+      "carry": "fr_eagle_cav",
+      "n": 2,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "sqn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 2.015,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": []
+   },
+   "walther": {
+    "n": 2,
+    "classes": [
+     {
+      "dress": "fr_dragoon",
+      "carry": "fr_eagle_cav",
+      "n": 2,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "sqn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 2.015,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": []
+   },
+   "rivaud": {
+    "n": 5,
+    "classes": [
+     {
+      "dress": "fr_line",
+      "carry": "fr_eagle_inf",
+      "n": 5,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": []
+   },
+   "drouet": {
+    "n": 6,
+    "classes": [
+     {
+      "dress": "fr_light",
+      "carry": "fr_eagle_inf",
+      "n": 2,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     },
+     {
+      "dress": "fr_line",
+      "carry": "fr_eagle_inf",
+      "n": 4,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0.211,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": []
+   },
+   "guard_inf": {
+    "n": 3,
+    "classes": [
+     {
+      "dress": "fr_guard_gren",
+      "carry": "fr_guard_eagle",
+      "n": 1,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0,
+      "cloth": "its proportion"
+     },
+     {
+      "dress": "fr_guard_chass",
+      "carry": "fr_guard_eagle",
+      "n": 1,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0,
+      "cloth": "its proportion"
+     },
+     {
+      "dress": "it_guard",
+      "carry": "it_guard_eagle",
+      "n": 1,
+      "paint": "plain",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 1.981,
+      "w": 1.462,
+      "h": 0.853,
+      "fin": 0,
+      "cloth": "generic"
+     }
+    ],
+    "none": []
+   },
+   "guard_cav": {
+    "n": 2,
+    "classes": [
+     {
+      "dress": "fr_guard_grencav",
+      "carry": "fr_guard_eagle_cav",
+      "n": 1,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "sqn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 2.015,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0,
+      "cloth": "its proportion"
+     },
+     {
+      "dress": "fr_guard_chasscav",
+      "carry": "fr_guard_eagle_cav",
+      "n": 1,
+      "paint": "lozenge",
+      "rule": "sourced",
+      "per": "sqn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 2.015,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": [
+     {
+      "dress": "fr_mameluke",
+      "why": "the sources give none"
+     }
+    ]
+   },
+   "c_gren": {
+    "n": 0,
+    "classes": [],
+    "none": [
+     {
+      "dress": "fr_gren_line",
+      "why": "no source read shows colours carried"
+     },
+     {
+      "dress": "fr_gren_light",
+      "why": "no source read shows colours carried"
+     }
+    ]
+   },
+   "ahq": {
+    "n": 0,
+    "classes": [],
+    "none": [
+     {
+      "dress": "ru_staff",
+      "why": "no source read shows colours carried"
+     }
+    ]
+   },
+   "buxhowden": {
+    "n": 0,
+    "classes": [],
+    "none": [
+     {
+      "dress": "ru_staff",
+      "why": "no source read shows colours carried"
+     }
+    ]
+   },
+   "kienmayer": {
+    "n": 8,
+    "classes": [
+     {
+      "dress": "at_chevauleger",
+      "carry": "at_cav",
+      "n": 1,
+      "paint": "ordinary",
+      "rule": "sourced",
+      "per": "sqn",
+      "rate": 0.5,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 2.015,
+      "w": 0.961,
+      "h": 0.853,
+      "fin": 0,
+      "cloth": "its proportion"
+     },
+     {
+      "dress": "at_hussar_hh",
+      "carry": "at_cav",
+      "n": 1,
+      "paint": "ordinary",
+      "rule": "sourced",
+      "per": "sqn",
+      "rate": 0.5,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 2.015,
+      "w": 0.961,
+      "h": 0.853,
+      "fin": 0,
+      "cloth": "its proportion"
+     },
+     {
+      "dress": "at_hussar_szekler",
+      "carry": "at_cav",
+      "n": 1,
+      "paint": "ordinary",
+      "rule": "sourced",
+      "per": "sqn",
+      "rate": 0.5,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 2.015,
+      "w": 0.961,
+      "h": 0.853,
+      "fin": 0,
+      "cloth": "its proportion"
+     },
+     {
+      "dress": "at_grenz",
+      "carry": "at_grenz",
+      "n": 5,
+      "paint": "ordinary",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 1,
+      "provisional": false,
+      "ratio": 1.7273,
+      "denom": 1.635,
+      "w": 1.595,
+      "h": 1.407,
+      "fin": 0,
+      "cloth": "its measure against the staff"
+     }
+    ],
+    "none": [
+     {
+      "dress": "at_jager",
+      "why": "no source read shows colours carried"
+     },
+     {
+      "dress": "ru_cossack",
+      "why": "no source read shows colours carried"
+     }
+    ]
+   },
+   "dok": {
+    "n": 12,
+    "classes": [
+     {
+      "dress": "ru_musk",
+      "carry": "ru_inf",
+      "n": 10,
+      "paint": "plain",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 2,
+      "provisional": false,
+      "ratio": 2.1525,
+      "denom": 1.635,
+      "w": 1.451,
+      "h": 1.451,
+      "fin": 0.249,
+      "cloth": "its measure against the staff"
+     },
+     {
+      "dress": "ru_gren",
+      "carry": "ru_inf",
+      "n": 2,
+      "paint": "plain",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 2,
+      "provisional": false,
+      "ratio": 2.1525,
+      "denom": 1.635,
+      "w": 1.451,
+      "h": 1.451,
+      "fin": 0.249,
+      "cloth": "its measure against the staff"
+     }
+    ],
+    "none": [
+     {
+      "dress": "ru_jager",
+      "why": "the sources give none"
+     }
+    ]
+   },
+   "lang": {
+    "n": 12,
+    "classes": [
+     {
+      "dress": "ru_musk",
+      "carry": "ru_inf",
+      "n": 12,
+      "paint": "plain",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 2,
+      "provisional": false,
+      "ratio": 2.1525,
+      "denom": 1.635,
+      "w": 1.451,
+      "h": 1.451,
+      "fin": 0.249,
+      "cloth": "its measure against the staff"
+     }
+    ],
+    "none": [
+     {
+      "dress": "ru_jager",
+      "why": "the sources give none"
+     }
+    ]
+   },
+   "kamensky": {
+    "n": 8,
+    "classes": [
+     {
+      "dress": "ru_gren",
+      "carry": "ru_inf",
+      "n": 4,
+      "paint": "plain",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 2,
+      "provisional": false,
+      "ratio": 2.1525,
+      "denom": 1.635,
+      "w": 1.451,
+      "h": 1.451,
+      "fin": 0.249,
+      "cloth": "its measure against the staff"
+     },
+     {
+      "dress": "ru_musk",
+      "carry": "ru_inf",
+      "n": 4,
+      "paint": "plain",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 2,
+      "provisional": false,
+      "ratio": 2.1525,
+      "denom": 1.635,
+      "w": 1.451,
+      "h": 1.451,
+      "fin": 0.249,
+      "cloth": "its measure against the staff"
+     }
+    ],
+    "none": []
+   },
+   "prz": {
+    "n": 14,
+    "classes": [
+     {
+      "dress": "ru_musk",
+      "carry": "ru_inf",
+      "n": 14,
+      "paint": "plain",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 2,
+      "provisional": false,
+      "ratio": 2.1525,
+      "denom": 1.635,
+      "w": 1.451,
+      "h": 1.451,
+      "fin": 0.249,
+      "cloth": "its measure against the staff"
+     }
+    ],
+    "none": []
+   },
+   "milo": {
+    "n": 8,
+    "classes": [
+     {
+      "dress": "ru_musk",
+      "carry": "ru_inf",
+      "n": 6,
+      "paint": "plain",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 2,
+      "provisional": false,
+      "ratio": 2.1525,
+      "denom": 1.635,
+      "w": 1.451,
+      "h": 1.451,
+      "fin": 0.249,
+      "cloth": "its measure against the staff"
+     },
+     {
+      "dress": "ru_gren",
+      "carry": "ru_inf",
+      "n": 2,
+      "paint": "plain",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 2,
+      "provisional": false,
+      "ratio": 2.1525,
+      "denom": 1.635,
+      "w": 1.451,
+      "h": 1.451,
+      "fin": 0.249,
+      "cloth": "its measure against the staff"
+     }
+    ],
+    "none": []
+   },
+   "kollo": {
+    "n": 7,
+    "classes": [
+     {
+      "dress": "at_line",
+      "carry": "at_inf",
+      "n": 7,
+      "paint": "ordinary",
+      "rule": "lower",
+      "per": "bn",
+      "rate": 1,
+      "provisional": false,
+      "ratio": 1.7273,
+      "denom": 1.635,
+      "w": 1.595,
+      "h": 1.407,
+      "fin": 0,
+      "cloth": "its measure against the staff"
+     }
+    ],
+    "none": []
+   },
+   "lich": {
+    "n": 3,
+    "classes": [
+     {
+      "dress": "at_cuirassier",
+      "carry": "at_cav",
+      "n": 1,
+      "paint": "ordinary",
+      "rule": "sourced",
+      "per": "sqn",
+      "rate": 0.5,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 2.015,
+      "w": 0.961,
+      "h": 0.853,
+      "fin": 0,
+      "cloth": "its proportion"
+     },
+     {
+      "dress": "ru_dragoon",
+      "carry": "ru_drag",
+      "n": 2,
+      "paint": "plain",
+      "rule": "sourced",
+      "per": "sqn",
+      "rate": 1,
+      "provisional": true,
+      "ratio": 1.6,
+      "denom": 2.015,
+      "w": 0.853,
+      "h": 0.853,
+      "fin": 0,
+      "cloth": "its proportion"
+     }
+    ],
+    "none": [
+     {
+      "dress": "ru_cossack",
+      "why": "no source read shows colours carried"
+     },
+     {
+      "dress": "ru_uhlan",
+      "why": "no source read shows colours carried"
+     },
+     {
+      "dress": "ru_hussar_elisavetgrad",
+      "why": "the sources give none"
+     }
+    ]
+   },
+   "bag": {
+    "n": 8,
+    "classes": [
+     {
+      "dress": "ru_musk",
+      "carry": "ru_inf",
+      "n": 8,
+      "paint": "plain",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 2,
+      "provisional": false,
+      "ratio": 2.1525,
+      "denom": 1.635,
+      "w": 1.451,
+      "h": 1.451,
+      "fin": 0.249,
+      "cloth": "its measure against the staff"
+     }
+    ],
+    "none": [
+     {
+      "dress": "ru_jager",
+      "why": "the sources give none"
+     }
+    ]
+   },
+   "rg_inf": {
+    "n": 10,
+    "classes": [
+     {
+      "dress": "ru_guard_inf",
+      "carry": "ru_guard_inf",
+      "n": 6,
+      "paint": "plain",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 2,
+      "provisional": false,
+      "ratio": 2,
+      "denom": 1.635,
+      "w": 1.462,
+      "h": 0.853,
+      "fin": 0,
+      "cloth": "generic"
+     },
+     {
+      "dress": "ru_gren",
+      "carry": "ru_inf",
+      "n": 4,
+      "paint": "plain",
+      "rule": "sourced",
+      "per": "bn",
+      "rate": 2,
+      "provisional": false,
+      "ratio": 2.1525,
+      "denom": 1.635,
+      "w": 1.451,
+      "h": 1.451,
+      "fin": 0.249,
+      "cloth": "its measure against the staff"
+     }
+    ],
+    "none": [
+     {
+      "dress": "ru_guard_jager",
+      "why": "the sources give none"
+     }
+    ]
+   },
+   "rg_cav": {
+    "n": 0,
+    "classes": [],
+    "none": [
+     {
+      "dress": "ru_chevalier",
+      "why": "how many were carried is not established"
+     },
+     {
+      "dress": "ru_guard_horse",
+      "why": "how many were carried is not established"
+     },
+     {
+      "dress": "ru_guard_hussar",
+      "why": "the sources give none"
+     },
+     {
+      "dress": "ru_guard_cossack",
+      "why": "how many were carried is not established"
+     }
+    ]
+   }
+  }
+ }
+}

@@ -1,13 +1,104 @@
 # Austerlitz Command Map — Changelog
 
-## 2026-10 · Stage 6C: the figures by class from the appearance table, and identity by symbology (docs/STAGE6_SPEC.md §6.2, §6.4; owner decisions 97-104, 107-110)
+## 2026-10 · Stage 6D: the standards from the appearance table (docs/STAGE6_SPEC.md §6.3; owner decisions 98, 105, 106)
 
 **Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
-`austerlitz-command-map.html`: 1,698,615 bytes, md5 `f0786c385d91bcbd853248bdca588b09` (was 1,661,910 bytes, md5 `7fc0f6c3…`, Stage 6B).**
+`austerlitz-command-map.html`: 1,720,613 bytes, md5 `3dd7ca41f73d0e5ffcfe5fa64adc5f51` (was 1,698,904 bytes, md5 `07c61c82…`, Stage 6C).**
+`check:baseline` moves to this build. With it come 6C's last four commits, which #41 was merged without (see the 6C entry). With 6D, Stage 6
+is complete.
+
+**What changed (presentation; the rules derived from `appearance.js`, the design decisions labelled).**
+- Who carries a standard and how many (`kitStdRule`): each class's colours entry, per drawn battalion or squadron (a drawn unit stands for
+  several real ones; the count is the table's per unit): one French eagle per battalion and squadron, two Russian colours per battalion, one
+  Russian standard per dragoon or cuirassier squadron, one Austrian standard per two squadrons, one Grenz colour per battalion. None where the
+  table shows none or gives none (the batteries, the headquarters and their escorts, Oudinot's grenadiers réunis, the Wiener Jäger, the Russian
+  jägers, hussars, uhlans and Cossacks, the Mamelukes); none where it is disputed whether they were carried in the field (Kellermann's
+  hussars: by regulation sent to headquarters, Morvan saying they were not); none where how many is not established (the Russian Guard
+  cavalry; a note has the Chevalier Guard's left in the town of Austerlitz). The Austrian infantry's count is disputed (one per battalion by
+  the decision of 20 June 1805, Wrede; two until 1808, Dolleczek): one per battalion is drawn, the smallest either side gives (`KIT.carry`,
+  a design decision). 148 standards on the field (6C: 56, every block one to three of its nation's). A detachment's battalions take their
+  standards with them.
+- The cloths (`flagTexture`): painted where a claim graded A or B gives the pattern: the French 1804 model ("a white central lozenge, the four
+  corner triangles alternately red and blue", Regnault, B) for the line, the Guard and the heavy cavalry, whose models name it; the Austrian
+  ordinary colour (imperial yellow, the black double eagle, Dolleczek, B) for the line, the Grenz and the cavalry. Design decisions: which corner
+  colour lies at the staff's top is not sourced, drawn blue; the eagle simplified to one silhouette; no number, wreath or inscription; the
+  Austrian flame border and the white Leib colour (one per regiment) not drawn. Every other cloth is plain in the nation's symbol colour: the
+  Russian infantry's pattern is `SOURCE_NOTE`'s open question (decision 105), the Russian cavalry's (C) and the Guard's (disputed) not settled,
+  the Italian Royal Guard's not found. Counted: 57 lozenges, 16 ordinary colours, 74 plain Russian cloths, 1 plain French.
+- The height (decision 106; `kitStdShape`): the staff's top, with its finial, over the man to his hat's top (`MAN_FOOT`, 1.635 units).
+  Russian standards on foot: a 3.20 m staff and a 0.244 m spearhead over a recruit of 1.60 m (A), drawn 3.270 + 0.249 units, ratio 2.1525
+  with the spearhead (2.000 for the Guard, whose entry reads no finial); the spearhead's socket overlap is not stated, so it is drawn on the
+  staff's end, the upper bound. Austrian standards on foot: 2.85 m over 1.65 m, drawn 2.824 units, ratio 1.7273; the finial's size not read,
+  none drawn. Both divide by a minimum stature (an inference: the drawn staff is if anything long). France (no staff read) and every mounted
+  standard (no cavalry staff read): the provisional 1.6 over the figure's top, finial included, as since 2B, its wording corrected in the
+  sources sheet (the figure's top is the bayonet's tip, about 1.94 times the man; mounted, the rider's hat).
+- The cloth's size: where staff and cloth are both measured (Russian and Austrian infantry), at its measure against the staff: the Russian 1.451
+  units square, its lower edge at 1.82 (above the hats, below the bayonets' tips); the Austrian 1.595 x 1.407, its lower edge at 1.42, among the
+  ranks: the trade-off decision 106 accepted (question 11: the cloth below the bayonets' tips, which the 2B rule had avoided). Elsewhere the
+  cloth's drop of 2B (0.853 units, a design value) in its sourced proportion (the French 81 cm square, also for the Guard's and the cavalry's
+  eagles from the line model; the Austrian cavalry's 71 x 63; the Russian dragoons' and cuirassiers'), else the generic 2.4 : 1.4.
+- The finials: where the entry reads one with its size: the Russian infantry's spearhead (from `STANDARD_MEASURES`), the French infantry's and
+  heavy cavalry's eagle ("the gilt eagle, 20 cm high", in proportion to the 81 cm cloth): 119 finials, gilt, a four-sided point (design).
+- The dip is kept (0.95 rad while broken, captured, encircled or repulsed).
+- The legend's standards row ("painted where the pattern is sourced (French eagles, Austrian colours), else plain in the nation's symbol
+  colour"); the sources sheet's "How the standards are drawn" (counted from the table and the blocks) and its corrected ratio line; the
+  dossier's "Standards drawn" per class: how many and by what rule, the painting, the height rule, or "none" and why.
+
+**Tests.**
+- The self-test (203 checks, was 200): the standards' counts as the table rules, derived in the check; the paintings, sampled on the canvases;
+  the cloths' proportions, their measure against the staff, the finials on the staffs' tops, the dip's 0.95 rad from the matrices and through a
+  real "broken" status (Kamensky, phase 6); the legend's rows. The ratio check of 2B ("pole top / figure height is the provisional ratio 1.6 for
+  every block") is replaced by decision 106's rule at the same tolerance (0.01) at 1x, 4x and 10.33x: the sourced ratio for the Russian and
+  Austrian standards on foot, the provisional 1.6 for the rest (a decided rule, not a weaker check). The first commit of 6C's plain-cloth check
+  is replaced by the painting check.
+- `css-test.js`: a painting only where the model is a claim graded A or B and the painting's source entry gives the pattern at A or B; every
+  `KIT.flag` colour a word of the claim it draws; a lower bound only on a disputed count.
+- `runtime-test.js`: a dry run of the standards (148, none on headquarters or batteries, a detachment's taken with its battalions).
+- The harness's standards' foot check is unchanged (one pole mesh per block, the pole geometry as before).
+
+**Measured against the 6C build** (`tools/stage6/compare-6d.js`; `docs/stage6-evidence/compare-6d.md`, `compare-6d-sheet.jpg`)
+- Solid near-black, mean luminance, map text, drops and the smoke: within the thresholds in all 20 views, as on 6C. Solid near-black unchanged
+  in every view; mean luminance within 0.3, except the closest orbit (75.2 to 73.8); the lowest map text contrast unchanged or higher
+  (`pratzen-low-10x` 7.68 to 7.94, the closest orbit 11.73 to 12.58), none below AA; drops identical; the smoke's shares identical.
+- The standards' cloths in view: 2.5-4.7 times as many (the Overview 55 to 142, `close-sokolnitz` 22 to 70, `pratzen-low` 22 to 62, the eye
+  level 3 to 14). Their size on screen: the median width about as before (the Field vantage 6.3 to 5.8 px, the close views 24-37 to 21-35),
+  taller (heights 5.3 to 7.3 px in the Field vantage, 16.2-22.3 to 24.6-33.7 in the close views): the square French and Russian cloths in place
+  of the 2.4 : 1.4 ones. In the closest orbit a Russian colour stands in front of the eye (1,281 x 1,341 px, the largest), covering much of the
+  view's right side and halving the confidence marks' share there (0.0325 to 0.0171): the harness's thresholds hold, and the camera's floor
+  keeps the eye out of the ground, not out of a standard. A consequence of the sourced counts (two colours per Russian battalion) and heights,
+  stated, not designed away.
+- The confidence marks' share otherwise within 0.011 (fewer marks seen behind the cloths); what changes on screen 0.03-4.4% of the free
+  rectangle (44% in the closest orbit); nothing in the 1x and paper-map views.
+- The world pass (software WebGL, median of 15 frames): 0.8-13.5 ms (6C 0.8-9.9), noisy as before; draw calls +21 to +24 in every view with
+  standards (+3 at the eye level) (one cloth mesh per painting, the finials' mesh).
+- Every block's standards on both builds, per class with its rule, painting, height and cloth: `compare-6d.md`; the sheet: the close views and
+  the closest orbit, before and after.
+
+**Checks on this build**
+- `npm run build`: fresh; the committed HTML is the build.
+- `npm test`: "ALL 9 SUITES PASSED (and the height guard)" (the css-test kit rule with the standards, the runtime dry run among them).
+- `npm run check:visual`: "STAGE0: all checks passed" (52 min 4 s): 23 views, the self-test 203 of 203; solid near-black within the limit in
+  every view (at most 4 blocks, `pratzen-low`, as on 6C); the day's light sweep 0.000% in 18 samples, 0.007-0.014% in 6 (6C: 17 and 7); the
+  standards' foot on the ground in every view; the five known Canvas2D readback warnings.
+- `npm run check:contrast`: 5,354 text elements, 105 pairs, 0 below AA, 0 below 10.5 px (5 min 51 s).
+- `npm run check:data`: all 121 data declarations byte-identical (not moved). `npm run check:chronology`: errors 0.
+- `npm run check:baseline`: passes on the moved baseline.
+
+**Not done, or open**
+- The pattern of the Russian infantry's colours (decision 105); the Russian cavalry's and Guard's patterns; the Austrian flame border and Leib
+  colours; which French corner colour lies at the staff's top; the French and cavalry staffs (the provisional 1.6 stays there).
+- The Russian Guard cavalry's standards: the count is not established, so none are drawn.
+- Historical: the narrative's "45 standards" (Napoleon's claim) and the 6B data questions stay open.
+
+## 2026-10 · Stage 6C: the figures by class from the appearance table, and identity by symbology (docs/STAGE6_SPEC.md §6.2, §6.4; owner decisions 97-104, 107-110)
+
+**Status: merged (#41) at `42fa1ba`; its last four commits (`CONF.none`, the final baseline, the resumable comparison and its results) come
+with 6D (#42). Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
+`austerlitz-command-map.html`: 1,698,904 bytes, md5 `07c61c8212917907cf68d1c35a8b941b` (was 1,661,910 bytes, md5 `7fc0f6c3…`, Stage 6B).**
 `check:baseline` moves to this build.
 
-**In three commits.** First §6.4's honest drawing (decision 110 makes it 6C's first commit), then the figures by class, then identity, as
-§6.2 asks ("Identity changes in the same part, because it is this part that makes the coats stop meaning nations").
+**In order.** First §6.4's honest drawing (decision 110 makes it 6C's first commit), then the figures by class and identity together, as
+§6.2 asks ("Identity changes in the same part, because it is this part that makes the coats stop meaning nations"), then the measurements.
 
 **What changed: the standards (§6.4; decision 98).** Each standard is a plain cloth in its nation's symbol colour (`NATION`'s fill, the
 counters' colour), with the faint lines of the old cloth, one texture per nation (`flagTexture`). It replaces three patterns no read source
@@ -80,9 +171,31 @@ a standard, how many and the 1.6 ratio are unchanged: 6D's.
   formation drawn as figures has the side footprint and nothing else does.
 - The float checks (`tools/visual/measure.js` and the self-test's `figureError`) read every kit geometry from the app (`kitGeos`), not five
   names; `tools/stage2/height-sites.js` classifies the new self-test site (`kitDayChecks`, test).
+- The harness's position-confidence share (Stage 5B): its frame "without the marks" set Position confidence off, which since decision 107
+  still draws the side footprint, so the measured share fell (the marks were compared with footprints) and the limit `CONF_SHARE` would have
+  bounded less than it says. That frame now also sets `CONF.none`, a measurement switch the app never sets, which draws no mark but the 1x
+  footprint: the share is measured as on 6B (found by the comparison below; the first comparison run, with the old frame, gave shares about
+  half of 6B's in every view, e.g. `overview-field` 0.0431 against 0.025).
 
 **Measured against the 6B build** (`tools/stage6/compare-6c.js`; `docs/stage6-evidence/compare-6c.md`, `compare-6c-sheet.jpg`)
-(COMPARE-6C)
+- Solid near-black, mean luminance, map text, drops and the smoke: as on 6B in all 20 views. Solid near-black 0 in 16 views, `pratzen-low`
+  0.0002 as before, `pratzen-orbit-min` 0.00015 (6B 0.0003); mean luminance within 1.3 (the closest orbit 76.5 to 75.2); the lowest map text
+  contrast within 0.32 (`pratzen-low-10x` 8.0 to 7.68), none below AA; drops identical in every view; the smoke's shares identical.
+- The confidence marks' share, against the view with no mark at all: as on 6B within 0.002 in every view (`overview-field` 0.0431 / 0.0433,
+  `selected-formation` 0.1503 / 0.1509), except at the eye level (`eye-zuran` 0.0004 / 0.06): on 6B the observer's own side's marks were
+  drawn in both frames (Position confidence off left them, decision 91), so the old measure missed them; `CONF.none` removes them too, so the
+  share now counts every mark. Decision 107's side footprint, Position confidence off: 0.0155-0.0914 of the free rectangle (0.06 at the eye).
+- What changes on screen: 0.13-5.9% of the free rectangle in the views with figures, 20.5% in the closest orbit (coats, headgear and the
+  cloths); nothing in the 1x and paper-map views.
+- The world pass (software WebGL; the median of 15 frames): 0.9-12.6 ms (6B 0.8-9.7); the median over the views with figures 8.9 ms against
+  7.0. Draw calls 728-839 against 566-677 (+162 in every view with figures: each class is its own mesh set); triangles +1.2% (`overview-plan`
+  2,546,679 against 2,515,371). Not measured on a GPU. A performance cost of the class meshes, accepted here (priority 7) and stated; merging
+  a block's classes into fewer draws is possible later.
+- Coats as rendered, the closest formations of opposite sides (CIEDE2000; decision 97 expects the fall): `overview-field` 21.7 to 16.2,
+  `close-sokolnitz` 17.0 to 9.9, `pratzen-low` 30.9 to 23.1, `selected-formation` 24.1 to 16.9, `watch-selected` 28.2 to 3.6 (Walther's green
+  dragoons against the Allied headquarters' escort, drawn generic in the Russian symbol green), `hybrid-dimmed` 26.2 to 18.6, the closest orbit
+  26.1 to 5.7 (Walther against the Fifth Column). Side is carried by the symbology, as the self-test's side-cue check holds.
+- Every block's classes as drawn, with their grades: `compare-6c.md`. The sheet shows the close views before and after.
 
 **Checks on this build**
 - `npm run build`: fresh; the committed HTML is the build.
@@ -90,11 +203,11 @@ a standard, how many and the 1.6 ratio are unchanged: 6D's.
   appearance checks 588/588, 0 errors; `geo-test.js` 54 passed; `terrain-test.js` OK; `audit.js` 0 and 0; `sim-test.js` 0 disagreements;
   `redteam.js` 0 findings; `runtime-test.js` 0 errors; `binding-test.js` 383 checks, 0 failed (no new dashed drawer); the height guard 97 call
   sites, 0 presentation calls.
-- `npm run check:visual`: "STAGE0: all checks passed" (58 min 53 s): 23 views, the self-test 200 of 200; solid near-black in every view within
+- `npm run check:visual`: "STAGE0: all checks passed" (58 min 12 s, on the final build; 58 min 53 s on the build before `CONF.none`): 23 views, the self-test 200 of 200; solid near-black in every view within
   the limit (at most 4 blocks, `pratzen-low`); the day's light sweep identical to 6B's (0.000% in 17 samples, 0.007-0.014% in 7, as on 6B);
   the valley fog's hours, the dwell, the horizon and the key tests as on 6B; the five known Canvas2D readback warnings.
 - `npm run check:contrast`: 5,349 text elements (5,186 on 6B: the dossier's Dress and the legend's rows), 105 distinct pairs, 0 below AA, 0
-  below 10.5 px (5 min 53 s).
+  below 10.5 px (6 min 57 s).
 - `npm run check:data`: "All 121 DATA declarations are byte-identical" to `archive/stage6b-7fc0f6c3.html` (not moved).
 - `npm run check:chronology`: errors 0 (69 timed moves: 65 consistent, 4 early, the named unresolved conflicts; 20 explicit times).
 - `npm run check:baseline`: passes on the moved baseline.
