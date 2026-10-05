@@ -487,10 +487,16 @@ try{
       const g=confAt(id,clock).cf; if(!r.conf||!r.conf.visible||r.conf.userData.conf.g!==g||!r.conf.geometry.index) bad.push(id); });
     if(!n||bad.length) throw new Error("spatial confidence: "+bad.length+" of "+n+" formations without their grade's mark: "+bad.slice(0,4).join(", "));
     layerOn.confidence=false; updateVisibility();
-    const left=Object.keys(units).filter(id=>units[id].conf&&units[id].conf.visible);
+    /* Stage 6C (owner decision 107; docs/STAGE6_SPEC.md question 12: "the toggle then switches the grade's encoding, not the ground mark"):
+       switched off, no grade is drawn; what stays is the side footprint, grade A's crisp mark in the side's colour, under every formation
+       drawn as figures, and under nothing else */
+    const left=Object.keys(units).filter(id=>{ const r=units[id]; return r.conf&&r.conf.visible&&!(r.sideMark&&r.block.visible&&r.conf.userData.conf.g==="A"); });
+    const under=Object.keys(units).filter(id=>{ const r=units[id]; return r.block.visible; });
+    const bare=under.filter(id=>{ const r=units[id]; return !(r.conf&&r.conf.visible&&r.sideMark); });
     layerOn.confidence=true; updateVisibility();
-    if(left.length) throw new Error("spatial confidence switched off, still drawn: "+left.join(", "));
-    console.log("spatial confidence: on by default, "+n+" formations at 09:50 each with its grade's mark; none drawn when switched off OK"); }
+    if(left.length) throw new Error("spatial confidence switched off, a graded mark still drawn: "+left.join(", "));
+    if(!under.length||bare.length) throw new Error("spatial confidence switched off, no side footprint under: "+bare.join(", "));
+    console.log("spatial confidence: on by default, "+n+" formations at 09:50 each with its grade's mark; switched off no grade drawn, the side footprint under each of "+under.length+" formations drawn as figures (decision 107) OK"); }
 
   /* Stage 5D (docs/STAGE5_SPEC.md section B.4; decision 90): the evidence skeleton, dry run. Off by default; on, at 09:50 with nothing
      selected, the legs whose window meets the phase and their anchors, each anchor's mask its grade's; the whole day every leg;
@@ -540,7 +546,7 @@ try{
     if(!n||bad.length) throw new Error("day-track: "+bad.length+" of "+n+" wrong: "+bad.slice(0,4).join(", "));
     console.log("day-track: "+n+" formations, each its anchors in order, its legs through their vias, its scale bar within the inset OK"); }
 
-  /* the armies are ranks of figures now, with national colours on the standards */
+  /* the armies are ranks of figures now, with cloths on the standards (since 6C plain, in the nation's symbol colour) */
   const inf=units.sthilaire.block.userData, cav=units.nansouty.block.userData;
   const infN=inf.figs.reduce((a,f)=>a+f.n,0), cavN=cav.figs.reduce((a,f)=>a+f.n,0);
   if(inf.figs.length<2||infN<100) throw new Error("infantry is not ranks of figures: "+inf.figs.length+" meshes, "+infN+" men");
@@ -548,6 +554,22 @@ try{
   if(!inf.flags.material.map) throw new Error("standards carry no colours");
   inf.layout(0.4,2.5); inf.layout(1.16,0.82);
   console.log("figures: Saint-Hilaire "+infN+" men in "+inf.figs.length+" draws, Nansouty "+cavN+" horse OK");
+
+  /* Stage 6C (docs/STAGE6_SPEC.md section 6.2): a dry run of the kit by class for every block: its classes from appearance.js, each
+     drawn unit a class (decision 100), every class set with its meshes, generic only where the composition has no class for the group */
+  { let nb=0, nr=0, units6=0; const bad=[];
+    Object.keys(units).forEach(id=>{ const u=units[id].block&&units[id].block.userData; if(!u) return; nb++;
+      const A=appearanceOf(id); if(!A){ bad.push(id+": no composition"); return; }
+      if(!u.dress||!u.dress.length){ bad.push(id+": no class drawn"); return; }
+      u.dress.forEach(r=>{ nr++;
+        if(r.dress!==null&&!DRESS[r.dress]) bad.push(id+": unknown class "+r.dress);
+        if(!r.meshes||r.meshes.length!==(r.mounted?3:2)||r.meshes.some(m=>!m.userData.kit)) bad.push(id+" "+r.role+": its meshes");
+        if(r.dress===null&&r.role!=="officers"&&A.parts.some(p=>p.mount===(r.mounted?"horse":"foot"))) bad.push(id+" "+r.role+": generic beside its classes"); });
+      const ranks=u.dress.filter(r=>r.role==="ranks");
+      if(u.nBat&&ranks.reduce((a,r)=>a+r.units.length,0)!==u.nBat) bad.push(id+": ranks drawn "+ranks.reduce((a,r)=>a+r.units.length,0)+" of "+u.nBat+" units");
+      units6+=ranks.reduce((a,r)=>a+r.units.length,0); });
+    if(nb!==32||bad.length) throw new Error("kit by class: "+nb+" blocks; "+bad.slice(0,4).join("; "));
+    console.log("kit by class: "+nb+" blocks, "+nr+" class sets, "+units6+" battalions and squadrons each a class of their composition OK"); }
 
   /* twelve atlas cells, the three photographs present, fields routed by crop */
   if(_atlasCanvas.height!==1536) throw new Error("atlas is not three rows of cells: "+_atlasCanvas.height);

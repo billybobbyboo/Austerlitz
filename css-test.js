@@ -135,11 +135,12 @@ if(cerrs) process.exitCode=1;
 }
 /* Stage 4E (docs/STAGE4_SPEC.md section G.3; owner decision 79): the landscape's colours live in their tables. Every colour literal
    in world.js is in COVER_COL, LAND_COL or WATER_COL; in app.js in the light's tables (LIGHT, LIGHT_RIG) or the sprite palette
-   (SPRITE_COL), or in the figures, coats and flags, which are Stage 6's (formationAtlas, figKit, makeBlock, flagTexture). White
-   (a vertex-coloured material's neutral base) is not a palette colour. The paper map's ground is TOKENS.sym.paperMap.ground. */
+   (SPRITE_COL). White (a vertex-coloured material's neutral base) is not a palette colour. The paper map's ground is
+   TOKENS.sym.paperMap.ground. Stage 6C (docs/STAGE6_SPEC.md sections 5 and 6.2) ends Stage 4E's exemption of the figures, coats and
+   flags (formationAtlas, figKit, makeBlock, flagTexture): their colours are KIT's, or NATION's for the generic appearance. */
 {
   const acorn=require('acorn'), perr=[];
-  const ALLOW={"world.js":["COVER_COL","LAND_COL","WATER_COL"],"app.js":["LIGHT","LIGHT_RIG","SPRITE_COL","formationAtlas","figKit","makeBlock","flagTexture"]};
+  const ALLOW={"world.js":["COVER_COL","LAND_COL","WATER_COL"],"app.js":["LIGHT","LIGHT_RIG","SPRITE_COL","KIT"]};
   Object.keys(ALLOW).forEach(f=>{ const src=fs.readFileSync(f,'utf8'), ast=acorn.parse(src,{ecmaVersion:2020});
     ast.body.forEach(n=>{ const name=n.type==="FunctionDeclaration"?n.id.name:n.type==="VariableDeclaration"?n.declarations.map(d=>d.id.name).join(","):"("+n.type+")";
       const lit=(src.slice(n.start,n.end).match(/0x[0-9A-Fa-f]{6}\b|#[0-9A-Fa-f]{6}\b/g)||[]).filter(x=>!/^(0x|#)(FFFFFF|ffffff)$/.test(x));
@@ -147,7 +148,44 @@ if(cerrs) process.exitCode=1;
   const T=fs.readFileSync('tokens.js','utf8'), W=fs.readFileSync('world.js','utf8');
   if(!/"ground":\s*\{"field":/.test(T)||!/paper:\s*COVER_KEYS\.map\(function\(k\)\{ return hexNumW\(TOKENS\.sym\.paperMap\.ground\[k\]\); \}\)/.test(W)) perr.push("the paper map's ground colours are not read from TOKENS.sym.paperMap.ground");
   perr.forEach(e=>console.log("  ! "+e));
-  console.log("palette: "+(perr.length?perr.length+" wrong":"the landscape's colours in their tables (light, sprites, ground, land, water), the paper map's ground in the tokens"));
+  console.log("palette: "+(perr.length?perr.length+" wrong":"the landscape's colours in their tables (light, sprites, ground, land, water), the figures' in KIT, the paper map's ground in the tokens"));
+  if(perr.length) process.exitCode=1;
+}
+/* Stage 6C (docs/STAGE6_SPEC.md section 6.2; owner decisions 99, 102-104, 109): KIT draws only what appearance.js names. Every KIT cloth
+   colour is a colour class of APPEARANCE_VOCAB, and every class a settled claim (A or B) uses has a drawn value; every settled headgear
+   class has a shape; a cuirass is drawn for exactly the classes whose claim settles that one was worn; no drawn cloth, black or horse
+   darker than decision 84's black (#2E2B27) */
+{
+  const acorn=require('acorn'), vm=require('vm'), perr=[];
+  const app=fs.readFileSync('app.js','utf8'), ast=acorn.parse(app,{ecmaVersion:2020});
+  const kn=ast.body.find(n=>n.type==="VariableDeclaration"&&n.declarations.some(d=>d.id.name==="KIT"));
+  const ctx={}; vm.createContext(ctx);
+  vm.runInContext(fs.readFileSync('data.js','utf8')+"\n"+fs.readFileSync('appearance.js','utf8')+"\n"+(kn?app.slice(kn.start,kn.end):"var KIT=null;")+
+    "\nthis.X={KIT:KIT,DRESS:DRESS,VOCAB:APPEARANCE_VOCAB};",ctx);
+  const {KIT,DRESS,VOCAB}=ctx.X;
+  if(!KIT) perr.push("app.js: no KIT table");
+  else {
+    const S=(v,k)=>!!(v&&!v.gen&&!v.none&&!v.sides&&(v.gr==="A"||v.gr==="B")&&v[k]&&v[k]!=="generic");
+    const Y=h=>{ const l=c=>{ c/=255; return c<=0.04045?c/12.92:Math.pow((c+0.055)/1.055,2.4); }; return 0.2126*l((h>>16)&255)+0.7152*l((h>>8)&255)+0.0722*l(h&255); };
+    const floor=Y(0x2E2B27);
+    Object.keys(KIT.cloth).forEach(k=>{ if(k==="generic"||VOCAB.colour.indexOf(k)<0) perr.push("KIT.cloth \""+k+"\" is not a colour class of appearance.js");
+      if(Y(KIT.cloth[k])<floor-1e-6) perr.push("KIT.cloth \""+k+"\" is darker than decision 84's black"); });
+    Object.keys(KIT.head).forEach(k=>{ if(VOCAB.head.indexOf(k)<0) perr.push("KIT.head \""+k+"\" is not a headgear class of appearance.js");
+      if(KIT.mat[KIT.head[k].col]===undefined) perr.push("KIT.head \""+k+"\" is drawn in no material of KIT"); });
+    if(KIT.mat.black!==0x2E2B27) perr.push("KIT.mat.black is not decision 84's #2E2B27");
+    Object.keys(KIT.horse).forEach(k=>{ if(Y(KIT.horse[k])<floor-1e-6) perr.push("KIT.horse \""+k+"\" is darker than decision 84's black"); });
+    let used=0;
+    Object.keys(DRESS).forEach(id=>{ const d=DRESS[id];
+      ["coat","legwear"].forEach(a=>{ if(S(d[a],"c")){ used++; if(KIT.cloth[d[a].c]===undefined) perr.push(id+"."+a+": the colour \""+d[a].c+"\" has no drawn value"); } });
+      if(S(d.head,"h")&&!KIT.head[d.head.h]) perr.push(id+".head: the headgear \""+d.head.h+"\" has no shape");
+      if(S(d.horse,"c")&&KIT.horse[d.horse.c]===undefined) perr.push(id+".horse: \""+d.horse.c+"\" has no drawn value");
+      const cu=!!(d.cuirass&&!d.cuirass.gen&&!d.cuirass.sides&&d.cuirass.has===true&&(d.cuirass.gr==="A"||d.cuirass.gr==="B"));
+      if(cu!==(KIT.cuirass[id]!==undefined)) perr.push(id+": a cuirass "+(cu?"recorded but not drawn":"drawn but not recorded"));
+      if(KIT.cuirass[id]!==undefined&&KIT.mat[KIT.cuirass[id]]===undefined) perr.push(id+": its cuirass in no material of KIT"); });
+    perr.forEach(e=>console.log("  ! "+e));
+    console.log("kit: "+(perr.length?perr.length+" wrong":Object.keys(KIT.cloth).length+" cloth colours, all classes of appearance.js and none below decision 84's black; "+used+
+      " settled coat and legwear values drawn; "+Object.keys(KIT.head).length+" headgear shapes; cuirasses for "+Object.keys(KIT.cuirass).join(", ")));
+  }
   if(perr.length) process.exitCode=1;
 }
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by

@@ -1,8 +1,119 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 6C: the figures by class from the appearance table, and identity by symbology (docs/STAGE6_SPEC.md §6.2, §6.4; owner decisions 97-104, 107-110)
+
+**Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
+`austerlitz-command-map.html`: 1,698,615 bytes, md5 `f0786c385d91bcbd853248bdca588b09` (was 1,661,910 bytes, md5 `7fc0f6c3…`, Stage 6B).**
+`check:baseline` moves to this build.
+
+**In three commits.** First §6.4's honest drawing (decision 110 makes it 6C's first commit), then the figures by class, then identity, as
+§6.2 asks ("Identity changes in the same part, because it is this part that makes the coats stop meaning nations").
+
+**What changed: the standards (§6.4; decision 98).** Each standard is a plain cloth in its nation's symbol colour (`NATION`'s fill, the
+counters' colour), with the faint lines of the old cloth, one texture per nation (`flagTexture`). It replaces three patterns no read source
+gave: the French vertical tricolour (the 1804 lozenge was carried in 1805, §6.6), the Russian "green colour with a white cross" (the pattern of
+the Russian infantry's colours is `SOURCE_NOTE`'s open question, decision 105) and the Austrian white, gold border and black disc. Who carries
+a standard, how many and the 1.6 ratio are unchanged: 6D's.
+
+**What changed: the figures by class (decisions 99-104, 109).**
+- `KIT` (`app.js`), the drawn appearance, every value a design decision (decision 102), never a claim: one drawn colour per colour class of
+  `APPEARANCE_VOCAB` (dark blue `#2C3B67`, blue `#3E5C9F`, sky blue `#82A5C8`, dark green `#2F4A37`, green `#3D6B3E`, light green `#6F9A5C`,
+  white `#E3DED0`, red `#A4362D`, brown `#6B4B34`, grey `#8B8880`, straw `#CDB567`, turquoise `#3F9D97`, black `#2E2B27`, buff `#C8AE7D`):
+  a mid value of the colour the class names, no dye measured, none darker than decision 84's black; the materials (skin, the figures' black,
+  wood, metal, leather, the generic legwear's one neutral `#BDB8AC`, all as before); one low-poly shape per headgear class settled at A or B
+  (bicorne worn crosswise, shako with its peak, bearskin, metal helmet with crest and mane, crested helmet, czapka, fur cap, turban), drawn in
+  the figures' black, the metal helmet in metal: a headgear's colour is not classed by the table, so it is not drawn (the dossier gives the
+  source's words, e.g. the Hessen-Homburg hussars' "Hellblaue Csako"); the cuirass for the French cuirassiers (metal) and the Austrian
+  cuirassiers (black, "schwarz lackirte Kürasse"); horses one brown, black only for the Guard horse grenadiers (B, uncertain; decision 109);
+  guns, limbers, tents and poles one colour for every army, as before.
+- Each block's drawn units take classes from `appearanceOf` (decision 100): its battalions or squadrons by the largest-remainder rule on its
+  composition's shares within the mount group, in the composition's order; the headquarters' escorts and Kienmayer's row of riders one rider
+  at a time; the gun crews their class. A value is drawn where a claim graded A or B settles it in a class `KIT` draws; otherwise generic
+  (decisions 98, 103, 105): the coat in the nation's symbol colour, legwear in the one neutral, the plain cap drawn before Stage 6. Of the
+  table's 49 classes, 37 have their coat drawn, 28 their legwear and 34 their headgear.
+- Gunners in their own figure (no musket or pack). Design decisions, not claims: the two mounted officers of each infantry formation generic
+  (no class describes them); the skirmish screen in the formation's largest foot class; a class's battalions side by side in the
+  composition's order (where a regiment stood within its division is not drawn as a claim).
+- Classes too small for one drawn unit are listed in the dossier, not drawn: Legrand's one generic battalion (of 11), the 5e chasseurs in
+  Kellermann's three drawn squadrons (4 regiments), Przybyszewski's jäger battalion (1 of 16, 7 drawn), the Russian cuirassiers of the Fifth
+  Column (500 of 5,600 men, 6 squadrons drawn), and Kienmayer's Merveldt uhlans and other cavalry detachment (0.25 and 0.5 of 32.75
+  squadrons, 8 riders drawn).
+- The Fifth Column's Austrian share is now its composition's: one of its six drawn squadrons in the Austrian cuirassiers' dress (16.7%;
+  composition 19.6% by men), where 6B drew 18.3% of its riders in the Austrian symbol colour from `f.mix` (`data.js`, unchanged and still
+  guarded; the drawing no longer reads it).
+- Removed: `formationAtlas` and `pushBox` (dead since the figure kit) and the seven shared geometries no mesh drew (`GEO.shako`, `bear`,
+  `musket`, `sabre`, `body`, `horse`, `rider`; §1.1).
+- What is drawn, from the table (fact: counted on the build at 09:30 by the self-test): 3,266 figures in 106 class sets, 33 of them generic;
+  headgear by figures: shako 1,174, bicorne 980, the plain cap 884, bearskin 74, metal helmet 70, crested helmet 52, fur cap 12, czapka 10,
+  turban 10.
+
+**What changed: identity by symbology (decisions 97, 107, 108; §4.3).**
+- The legend: the nation rows read "counters: French / Russian / Austrian" and show only where counters are drawn; where figures are drawn,
+  "figures: dress as sourced (source and grade in the dossier), else the nation's symbol colour and a plain cap" and "standards: plain cloths
+  in the nation's symbol colour, patterns not yet drawn"; where the landscape draws names, "beside a name: its side, French or Allied" with
+  the two side swatches; the footprint rows also under decision 107's footprint.
+- The first-run key (decision 108; §4.3 item 4's words): "French formations are marked in blue and the Allies in amber: on their names, their
+  counters and the ground beneath them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, and it decides the
+  battle." Was: "Blue is the French army. The Allies are green for Russia and white for Austria, and their movement arrows are drawn in amber."
+- A side cue always (decision 107): with Position confidence off, the crisp footprint in the side's colour (grade A's mark, whatever the
+  grade) stays under every formation drawn as figures, in Study, Watch and Clean; with it on, the grade's mark as before.
+- The sources sheet: "How the troops are drawn" (counted from the table and `KIT`) and "The appearance table's sources" (its 62 works).
+- The full dossier's "Dress": each class of the composition with how many units it has and how many are drawn, its coat, legwear, headgear,
+  cuirass, greatcoat (decision 101: "may have been worn" where the sources do not settle it), facings (decision 104: described, not drawn),
+  horses and colours carried, each as the source gives it with its grade, label and source, and how it is drawn ("drawn generic" where it is);
+  attached troops of another arm listed, not drawn; the composition's note.
+
+**Tests.**
+- The self-test (200 checks, was 194): figures (every figure as its class's claims say, derived in the check from `appearance.js` and `KIT`:
+  the coat's instance colour `KIT`'s value times the jitter, or the nation's symbol colour where unsettled, never a nation's colour for a
+  sourced coat; legwear, headgear, cuirass, horse and the gunner's figure in the fixed geometry; every settled headgear class has a shape);
+  the composition rule (each class within one unit of its share); the side cue (Study, Watch, Clean, Position confidence on and off, from the
+  Pratzen vantage and close on the Pratzeberg); the legend's rows; the dossier's Dress; the standards' plain cloths. The first-run check's
+  words are the decided ones (decision 108), replacing "Blue is the French army", "green for Russia", "white for Austria": a decided rule, and
+  it now also checks the side swatches and that the nation rows say they colour the counters.
+- `css-test.js`: every `KIT` cloth colour a colour class of `appearance.js`, every settled coat, legwear, headgear and horse class drawn, the
+  cuirasses exactly where recorded, nothing below decision 84's black; Stage 4E's exemption of `formationAtlas`, `figKit`, `makeBlock` and
+  `flagTexture` from the palette rule ended (their colours are `KIT`'s or `NATION`'s).
+- `runtime-test.js`: a dry run of the kit by class for the 32 blocks (106 class sets, 132 battalions and squadrons each a class of their
+  composition). Its Stage 5B assertion "spatial confidence switched off, still drawn" is replaced by decision 107's rule (owner decision; the
+  spec's question 12: "the toggle then switches the grade's encoding, not the ground mark"): switched off, no graded mark is drawn, and every
+  formation drawn as figures has the side footprint and nothing else does.
+- The float checks (`tools/visual/measure.js` and the self-test's `figureError`) read every kit geometry from the app (`kitGeos`), not five
+  names; `tools/stage2/height-sites.js` classifies the new self-test site (`kitDayChecks`, test).
+
+**Measured against the 6B build** (`tools/stage6/compare-6c.js`; `docs/stage6-evidence/compare-6c.md`, `compare-6c-sheet.jpg`)
+(COMPARE-6C)
+
+**Checks on this build**
+- `npm run build`: fresh; the committed HTML is the build.
+- `npm test`: "ALL 9 SUITES PASSED (and the height guard)": `css-test.js` 0 errors (the kit and palette rules among them); `test.js` the
+  appearance checks 588/588, 0 errors; `geo-test.js` 54 passed; `terrain-test.js` OK; `audit.js` 0 and 0; `sim-test.js` 0 disagreements;
+  `redteam.js` 0 findings; `runtime-test.js` 0 errors; `binding-test.js` 383 checks, 0 failed (no new dashed drawer); the height guard 97 call
+  sites, 0 presentation calls.
+- `npm run check:visual`: "STAGE0: all checks passed" (58 min 53 s): 23 views, the self-test 200 of 200; solid near-black in every view within
+  the limit (at most 4 blocks, `pratzen-low`); the day's light sweep identical to 6B's (0.000% in 17 samples, 0.007-0.014% in 7, as on 6B);
+  the valley fog's hours, the dwell, the horizon and the key tests as on 6B; the five known Canvas2D readback warnings.
+- `npm run check:contrast`: 5,349 text elements (5,186 on 6B: the dossier's Dress and the legend's rows), 105 distinct pairs, 0 below AA, 0
+  below 10.5 px (5 min 53 s).
+- `npm run check:data`: "All 121 DATA declarations are byte-identical" to `archive/stage6b-7fc0f6c3.html` (not moved).
+- `npm run check:chronology`: errors 0 (69 timed moves: 65 consistent, 4 early, the named unresolved conflicts; 20 explicit times).
+- `npm run check:baseline`: passes on the moved baseline.
+- The first commit alone: `npm test` passed and the self-test run alone passed 195 of 195; the full harness was run on the final build only.
+
+**Not done, or open**
+- 6D: who carries a standard and how many, each model's cloth, the sourced ratio (Russia, Austria) and France's provisional 1.6.
+- Headgear colours are not drawn (the table classes the shape, not the colour); facings and lace are not drawn (decision 104).
+- What the table leaves generic is drawn generic: among others the French line infantry's legwear, Oudinot's grenadiers réunis, the Italian
+  Royal Guard, the Russian grenadiers' and jägers' headgear, the Austrian line's helmet and legwear, the Grenz (decision 105), the Guard
+  chasseurs à cheval's headgear.
+- The drawn colours are design values: no dye or surviving cloth was measured. The cross-side colour difference falls by design (decision 97);
+  side rests on the symbology.
+- Historical: the 6B data questions stay open (Drouet and Rivaud's numbers, the IV Column's battalions, "Gladkov", the Empress's cuirassiers,
+  Ryazhsk or Ryazan, the grenadier division's artillery, "45 standards").
+
 ## 2026-10 · Stage 6B: the historical appearance read and tabled (docs/STAGE6_SPEC.md §6.1, §6.6; owner decisions 96-110)
 
-**Status: for review. A data task: `appearance.js` (new, guarded) and tour stop 1; nothing drawn changes. `austerlitz-command-map.html`:
+**Status: merged (#40). A data task: `appearance.js` (new, guarded) and tour stop 1; nothing drawn changes. `austerlitz-command-map.html`:
 1,661,910 bytes, md5 `7fc0f6c3023133aeb73d5b65479bc8a8` (was 1,528,608 bytes, md5 `4c12cac6…`, Stage 5G).** `check:baseline` moves to
 this build; `check:data` moves to its copy, `archive/stage6b-7fc0f6c3.html` (from `archive/stage4d-9b13adbf.html`).
 
@@ -57,6 +168,12 @@ a search summary or a GitHub-held copy.
   battalions 12 (Schönhals) against `data.js`'s fourteen; the Empress's cuirassiers with Bagration or the Fifth Column; Ryazhsk or Ryazan;
   the grenadier division's artillery on 26 October; the narrative's "45 standards" (Napoleon's claim of 5 December).
 
+**Files.** New: `appearance.js`, `archive/stage6b-7fc0f6c3.html`, `tools/stage6/verify-quotes.js`, `tools/stage6/quote-check-images.json`,
+`docs/stage6-evidence/quote-check.md` and the seven `readings-*.md`. Changed: `analysis.js` (tour stop 1), `build.py`, `test.js`,
+`runtime-test.js`, `redteam.js`, `tools/run-all.sh`, `tools/stage2/model.js`, `tools/visual/data-invariance.js`, `package.json`
+(`check:data`, `check:baseline`), `docs/STAGE6_SPEC.md` (§0.4, §6.6), `docs/stage6-evidence/README.md`, `CLAUDE.md`, this file and the
+build.
+
 **Tests (added).** `test.js`: the appearance checks (588): every leaf formation resolves to classes whose shares sum to 1 in each mount
 group, one unit per group; every value a claim with source, locator, grade, label and quote, a disputed value keeping each side, or
 generic (colours also "none shown"); grade A only with a source or document dated 1804-1805, or a regulation shown in force; a disputed
@@ -69,7 +186,23 @@ battle, the PSZ cap orders, four Viskovatov pages), 56 not found in damaged OCR 
 read on the page images by the reading pass (`docs/stage6-evidence/quote-check.md`).
 
 **Checks on this build**
-(CHECKS-6B)
+- `npm run build`: fresh; the committed `austerlitz-command-map.html` is the build (1,661,910 bytes, md5 `7fc0f6c3023133aeb73d5b65479bc8a8`).
+- `npm test`: "ALL 9 SUITES PASSED (and the height guard)" (4 min 43 s): `css-test.js` 0 errors, 9/9; `test.js` the appearance checks
+  588/588, 0 errors, 0 warnings, the order of battle 41/41; `geo-test.js` 54 passed; `terrain-test.js` OK; `audit.js` 0 march-rate and 0
+  terrain violations; `sim-test.js` 0 disagreements; `redteam.js` 0 findings, 37 retired phrases across 6 sources none found (its one
+  warning, the cavalry's mean rate, is the unchanged tracks'); `runtime-test.js` 0 errors, the appearance dry run "32 blocks resolve to
+  72 dress parts (4 by their dominant class)" (its one console warning, three.js's "'fog' is not a property" of a line material, is the
+  unchanged `app.js`'s); `binding-test.js` 383 checks, 0 failed; the height guard 96 call sites, 0 presentation
+  calls. The first run failed `runtime-test.js` ("kienmayer: appearance shares sum to 2": its check summed the foot and the mounted shares
+  together); the check now sums each mount group, as `test.js` does, and the run above is on the committed tree.
+- `npm run check:baseline`: passes on the moved baseline (md5 `7fc0f6c3…`, 1,661,910 bytes).
+- `npm run check:data`: "All 121 DATA declarations are byte-identical" to `archive/stage6b-7fc0f6c3.html`; against the old reference
+  (`archive/stage4d-9b13adbf.html`) the data that differ are exactly `TOUR` (changed) and the eight added declarations above.
+- `npm run check:chronology`: errors 0 (69 timed moves: 65 consistent, 4 early, the named unresolved conflicts; 20 explicit times).
+- `npm run check:contrast`: 5,186 text elements, 105 distinct pairs, 0 below AA, 0 below 10.5 px (6 min 1 s).
+- `npm run check:visual`: "STAGE0: all checks passed" (51 min 29 s): 23 views, drops within every limit, the self-test 194 of 194; the
+  day's light, the valley fog, the dwell and the horizon as on 5G; the two known Canvas2D readback warnings (five lines).
+- `node tools/stage6/verify-quotes.js --md docs/stage6-evidence/quote-check.md` (network; not in the suite): 309 quotes, as above.
 
 **Not done, or open**
 - Nothing is drawn differently: the figures, flags and legend wait for 6C and 6D (and §6.4's honest drawing, the first commit of 6C).

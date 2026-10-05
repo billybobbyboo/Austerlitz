@@ -94,6 +94,8 @@ const CLASS={
   "app.js:groundPatch":"presentation","app.js:skelDrape":"presentation","app.js:skelPlaceMarks":"presentation","app.js:skelNear":"presentation",
   /* Stage 5D: the self-test's drape and size of the skeleton against the drawn ground */
   "app.js:skelChecks":"test","app.js:skelDayChecks":"test",
+  /* Stage 6C: the self-test's side cue, a formation's position projected at its drawn ground */
+  "app.js:kitDayChecks":"test",
   /* Stage 5E: the valley fog's rule over the viewshed's cells, read on the model's height exactly as knowledgeOf reads it (a model
      reading: the rule's threshold, ATMO.FOG_TOP_H); the eye at the headquarters, its target, and the camera floor at the eye, on the
      drawn ground */

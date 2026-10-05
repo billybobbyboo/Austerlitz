@@ -318,7 +318,8 @@
   }
 
   /* ---- figures on the ground ---- */
-  function figureGeos(){ var K=(typeof figKit==="function")?figKit():FIG; return [K.infCoat,K.infFixed,K.horse,K.rider,K.riderFixed]; }
+  /* the figure kit's geometries, read from the app: since Stage 6C every class's (kitGeos), before it the five of the one kit */
+  function figureGeos(){ if(typeof kitGeos==="function") return kitGeos(); var K=(typeof figKit==="function")?figKit():FIG; return [K.infCoat,K.infFixed,K.horse,K.rider,K.riderFixed]; }
   function figures(){
     var geos=figureGeos(), m=new M4(), p=new V(), n=0, worst=0, sum=0, bad=0, worstId=null;
     Object.keys(units).forEach(function(id){

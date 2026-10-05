@@ -40,3 +40,10 @@ were read and checked.
 | `readings-composition.md` | 6.6 | none: each formation's regiments and battalions or squadrons (the French returns, Schönhals, Mikhailovsky-Danilevsky, Stutterheim, the Materialien) |
 | `readings-eyewitness.md` | 6.6 | none: what participants say was worn and carried on the day; weather; horses; gun carriages |
 | `quote-check.md` | 6.6 | `verify-quotes.js --md`: every quote of `appearance.js` searched for in its source's text (archive.org OCR, Gallica's page OCR, e-rara's text); found, found with OCR differences, checked on the page image (`quote-check-images.json`), not found, or not checkable here |
+
+## Stage 6C (the figures by class; `KIT` in `app.js`)
+
+| file | section | script |
+|---|---|---|
+| `compare-6c.md`, `compare-6c.json` | 6.2 | `compare-6c.js`: per harness view, the 6C build against the 6B build as rendered (solid near-black, mean luminance, map text at AA, drops, the confidence marks' and the smoke's shares, the world pass, the share changed), the cross-side colour difference of the coats as rendered (CIEDE2000), and every block's classes as drawn with their grades |
+| `compare-6c-sheet.jpg` | 6.2 | `compare-6c.js`: the close views (`close-sokolnitz`, `pratzen-low`, `eye-zuran`, `pratzen-orbit-min`), before and after |
