@@ -1,0 +1,111 @@
+{
+ "when": "2026-10-05T22:39:10.998Z",
+ "before": {
+  "html": "/tmp/claude-0/-home-user-Austerlitz/ed483132-2905-547b-bee5-e82d38920f18/scratchpad/frames6d/stage6c-07c61c82.html",
+  "views": {},
+  "errors": [],
+  "blocks": {
+   "gqg": {
+    "n": 1
+   },
+   "heightguns": {
+    "n": 1
+   },
+   "sthilaire": {
+    "n": 2
+   },
+   "vandamme": {
+    "n": 2
+   },
+   "legrand": {
+    "n": 2
+   },
+   "friant": {
+    "n": 2
+   },
+   "bourcier": {
+    "n": 1
+   },
+   "caffarelli": {
+    "n": 2
+   },
+   "suchet": {
+    "n": 2
+   },
+   "santon": {
+    "n": 1
+   },
+   "kellermann": {
+    "n": 1
+   },
+   "nansouty": {
+    "n": 1
+   },
+   "dhautpoul": {
+    "n": 1
+   },
+   "walther": {
+    "n": 1
+   },
+   "rivaud": {
+    "n": 2
+   },
+   "drouet": {
+    "n": 2
+   },
+   "guard_inf": {
+    "n": 2
+   },
+   "guard_cav": {
+    "n": 1
+   },
+   "c_gren": {
+    "n": 2
+   },
+   "ahq": {
+    "n": 1
+   },
+   "buxhowden": {
+    "n": 1
+   },
+   "kienmayer": {
+    "n": 2
+   },
+   "dok": {
+    "n": 3
+   },
+   "lang": {
+    "n": 3
+   },
+   "kamensky": {
+    "n": 2
+   },
+   "prz": {
+    "n": 3
+   },
+   "milo": {
+    "n": 2
+   },
+   "kollo": {
+    "n": 3
+   },
+   "lich": {
+    "n": 1
+   },
+   "bag": {
+    "n": 3
+   },
+   "rg_inf": {
+    "n": 2
+   },
+   "rg_cav": {
+    "n": 1
+   }
+  }
+ },
+ "after": {
+  "html": "austerlitz-command-map.html",
+  "views": {},
+  "errors": []
+ }
+}
