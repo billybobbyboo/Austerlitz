@@ -47,3 +47,10 @@ were read and checked.
 |---|---|---|
 | `compare-6c.md`, `compare-6c.json` | 6.2 | `compare-6c.js`: per harness view, the 6C build against the 6B build as rendered (solid near-black, mean luminance, map text at AA, drops, the confidence marks' and the smoke's shares, the world pass, the share changed), the cross-side colour difference of the coats as rendered (CIEDE2000), and every block's classes as drawn with their grades |
 | `compare-6c-sheet.jpg` | 6.2 | `compare-6c.js`: the close views (`close-sokolnitz`, `pratzen-low`, `eye-zuran`, `pratzen-orbit-min`), before and after |
+
+## Stage 6D (the standards from the table)
+
+| file | section | script |
+|---|---|---|
+| `compare-6d.md`, `compare-6d.json` | 6.3 | `compare-6d.js`: per harness view, the 6D build against the 6C build as rendered (solid near-black, mean luminance, map text at AA, drops, the confidence marks' and the smoke's shares, the world pass and draw calls, the share changed), the standards' cloths in view and their size on screen in px, and every block's standards on both builds (on 6D per class: colours entry, painting, count rule, height rule and ratio, cloth, finial) |
+| `compare-6d-sheet.jpg` | 6.3 | `compare-6d.js`: the close views and the closest orbit, before and after |
