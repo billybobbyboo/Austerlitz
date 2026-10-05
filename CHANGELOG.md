@@ -1,8 +1,84 @@
 # Austerlitz Command Map — Changelog
 
-## 2026-10 · Stage 6C: the figures by class from the appearance table, and identity by symbology (docs/STAGE6_SPEC.md §6.2, §6.4; owner decisions 97-104, 107-110)
+## 2026-10 · Stage 6D: the standards from the appearance table (docs/STAGE6_SPEC.md §6.3; owner decisions 98, 105, 106)
 
 **Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
+`austerlitz-command-map.html`: 1,720,613 bytes, md5 `3dd7ca41f73d0e5ffcfe5fa64adc5f51` (was 1,698,904 bytes, md5 `07c61c82…`, Stage 6C).**
+`check:baseline` moves to this build. With it come 6C's last four commits, which #41 was merged without (see the 6C entry). With 6D, Stage 6
+is complete.
+
+**What changed (presentation; the rules derived from `appearance.js`, the design decisions labelled).**
+- Who carries a standard and how many (`kitStdRule`): each class's colours entry, per drawn battalion or squadron (a drawn unit stands for
+  several real ones; the count is the table's per unit): one French eagle per battalion and squadron, two Russian colours per battalion, one
+  Russian standard per dragoon or cuirassier squadron, one Austrian standard per two squadrons, one Grenz colour per battalion. None where the
+  table shows none or gives none (the batteries, the headquarters and their escorts, Oudinot's grenadiers réunis, the Wiener Jäger, the Russian
+  jägers, hussars, uhlans and Cossacks, the Mamelukes); none where it is disputed whether they were carried in the field (Kellermann's
+  hussars: by regulation sent to headquarters, Morvan saying they were not); none where how many is not established (the Russian Guard
+  cavalry; a note has the Chevalier Guard's left in the town of Austerlitz). The Austrian infantry's count is disputed (one per battalion by
+  the decision of 20 June 1805, Wrede; two until 1808, Dolleczek): one per battalion is drawn, the smallest either side gives (`KIT.carry`,
+  a design decision). 148 standards on the field (6C: 56, every block one to three of its nation's). A detachment's battalions take their
+  standards with them.
+- The cloths (`flagTexture`): painted where a claim graded A or B gives the pattern: the French 1804 model ("a white central lozenge, the four
+  corner triangles alternately red and blue", Regnault, B) for the line, the Guard and the heavy cavalry, whose models name it; the Austrian
+  ordinary colour (imperial yellow, the black double eagle, Dolleczek, B) for the line, the Grenz and the cavalry. Design decisions: which corner
+  colour lies at the staff's top is not sourced, drawn blue; the eagle simplified to one silhouette; no number, wreath or inscription; the
+  Austrian flame border and the white Leib colour (one per regiment) not drawn. Every other cloth is plain in the nation's symbol colour: the
+  Russian infantry's pattern is `SOURCE_NOTE`'s open question (decision 105), the Russian cavalry's (C) and the Guard's (disputed) not settled,
+  the Italian Royal Guard's not found. Counted: 57 lozenges, 16 ordinary colours, 74 plain Russian cloths, 1 plain French.
+- The height (decision 106; `kitStdShape`): the staff's top, with its finial, over the man to his hat's top (`MAN_FOOT`, 1.635 units).
+  Russian standards on foot: a 3.20 m staff and a 0.244 m spearhead over a recruit of 1.60 m (A), drawn 3.270 + 0.249 units, ratio 2.1525
+  with the spearhead (2.000 for the Guard, whose entry reads no finial); the spearhead's socket overlap is not stated, so it is drawn on the
+  staff's end, the upper bound. Austrian standards on foot: 2.85 m over 1.65 m, drawn 2.824 units, ratio 1.7273; the finial's size not read,
+  none drawn. Both divide by a minimum stature (an inference: the drawn staff is if anything long). France (no staff read) and every mounted
+  standard (no cavalry staff read): the provisional 1.6 over the figure's top, finial included, as since 2B, its wording corrected in the
+  sources sheet (the figure's top is the bayonet's tip, about 1.94 times the man; mounted, the rider's hat).
+- The cloth's size: where staff and cloth are both measured (Russian and Austrian infantry), at its measure against the staff: the Russian 1.451
+  units square, its lower edge at 1.82 (above the hats, below the bayonets' tips); the Austrian 1.595 x 1.407, its lower edge at 1.42, among the
+  ranks: the trade-off decision 106 accepted (question 11: the cloth below the bayonets' tips, which the 2B rule had avoided). Elsewhere the
+  cloth's drop of 2B (0.853 units, a design value) in its sourced proportion (the French 81 cm square, also for the Guard's and the cavalry's
+  eagles from the line model; the Austrian cavalry's 71 x 63; the Russian dragoons' and cuirassiers'), else the generic 2.4 : 1.4.
+- The finials: where the entry reads one with its size: the Russian infantry's spearhead (from `STANDARD_MEASURES`), the French infantry's and
+  heavy cavalry's eagle ("the gilt eagle, 20 cm high", in proportion to the 81 cm cloth): 119 finials, gilt, a four-sided point (design).
+- The dip is kept (0.95 rad while broken, captured, encircled or repulsed).
+- The legend's standards row ("painted where the pattern is sourced (French eagles, Austrian colours), else plain in the nation's symbol
+  colour"); the sources sheet's "How the standards are drawn" (counted from the table and the blocks) and its corrected ratio line; the
+  dossier's "Standards drawn" per class: how many and by what rule, the painting, the height rule, or "none" and why.
+
+**Tests.**
+- The self-test (203 checks, was 200): the standards' counts as the table rules, derived in the check; the paintings, sampled on the canvases;
+  the cloths' proportions, their measure against the staff, the finials on the staffs' tops, the dip's 0.95 rad from the matrices and through a
+  real "broken" status (Kamensky, phase 6); the legend's rows. The ratio check of 2B ("pole top / figure height is the provisional ratio 1.6 for
+  every block") is replaced by decision 106's rule at the same tolerance (0.01) at 1x, 4x and 10.33x: the sourced ratio for the Russian and
+  Austrian standards on foot, the provisional 1.6 for the rest (a decided rule, not a weaker check). The first commit of 6C's plain-cloth check
+  is replaced by the painting check.
+- `css-test.js`: a painting only where the model is a claim graded A or B and the painting's source entry gives the pattern at A or B; every
+  `KIT.flag` colour a word of the claim it draws; a lower bound only on a disputed count.
+- `runtime-test.js`: a dry run of the standards (148, none on headquarters or batteries, a detachment's taken with its battalions).
+- The harness's standards' foot check is unchanged (one pole mesh per block, the pole geometry as before).
+
+**Measured against the 6C build** (`tools/stage6/compare-6d.js`; `docs/stage6-evidence/compare-6d.md`, `compare-6d-sheet.jpg`)
+(COMPARE-6D)
+
+**Checks on this build**
+- `npm run build`: fresh; the committed HTML is the build.
+- `npm test`: "ALL 9 SUITES PASSED (and the height guard)" (the css-test kit rule with the standards, the runtime dry run among them).
+- `npm run check:visual`: "STAGE0: all checks passed" (52 min 4 s): 23 views, the self-test 203 of 203; solid near-black within the limit in
+  every view (at most 4 blocks, `pratzen-low`, as on 6C); the day's light sweep 0.000% in 18 samples, 0.007-0.014% in 6 (6C: 17 and 7); the
+  standards' foot on the ground in every view; the five known Canvas2D readback warnings.
+- `npm run check:contrast`: 5,354 text elements, 105 pairs, 0 below AA, 0 below 10.5 px (5 min 51 s).
+- `npm run check:data`: all 121 data declarations byte-identical (not moved). `npm run check:chronology`: errors 0.
+- `npm run check:baseline`: passes on the moved baseline.
+
+**Not done, or open**
+- The pattern of the Russian infantry's colours (decision 105); the Russian cavalry's and Guard's patterns; the Austrian flame border and Leib
+  colours; which French corner colour lies at the staff's top; the French and cavalry staffs (the provisional 1.6 stays there).
+- The Russian Guard cavalry's standards: the count is not established, so none are drawn.
+- Historical: the narrative's "45 standards" (Napoleon's claim) and the 6B data questions stay open.
+
+## 2026-10 · Stage 6C: the figures by class from the appearance table, and identity by symbology (docs/STAGE6_SPEC.md §6.2, §6.4; owner decisions 97-104, 107-110)
+
+**Status: merged (#41) at `42fa1ba`; its last four commits (`CONF.none`, the final baseline, the resumable comparison and its results) come
+with 6D (#42). Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
 `austerlitz-command-map.html`: 1,698,904 bytes, md5 `07c61c8212917907cf68d1c35a8b941b` (was 1,661,910 bytes, md5 `7fc0f6c3…`, Stage 6B).**
 `check:baseline` moves to this build.
 

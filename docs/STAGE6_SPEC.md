@@ -1,7 +1,8 @@
 # Historical appearance: specification (Stage 6, Part A)
 
 **Status: Part A merged (#39); the owner accepted every recommendation of §7 (decisions 96-110, §0.4). 6B merged (#40): what it found
-is §6.6. 6C (§6.4's honest drawing as its first commit, then §6.2) written, for review: `CHANGELOG.md`, `docs/stage6-evidence/compare-6c.md`.** Part A changed no
+is §6.6. 6C (§6.4's honest drawing as its first commit, then §6.2) merged (#41). 6D (§6.3) written, for review: `CHANGELOG.md`,
+`docs/stage6-evidence/compare-6d.md`.** Part A changed no
 source file, no data and no build. It was written against `main` at `f54fffa` (Stage 5G merged as
 #38; with it Stage 5 is complete), whose build `austerlitz-command-map.html` is 1,528,608 bytes, md5
 `4c12cac6d458b02e3282237f4d1abb92`. On it (the same build throughout: this part changes no source file) the checks were run and their
