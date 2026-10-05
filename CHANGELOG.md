@@ -57,6 +57,12 @@ a search summary or a GitHub-held copy.
   battalions 12 (Schönhals) against `data.js`'s fourteen; the Empress's cuirassiers with Bagration or the Fifth Column; Ryazhsk or Ryazan;
   the grenadier division's artillery on 26 October; the narrative's "45 standards" (Napoleon's claim of 5 December).
 
+**Files.** New: `appearance.js`, `archive/stage6b-7fc0f6c3.html`, `tools/stage6/verify-quotes.js`, `tools/stage6/quote-check-images.json`,
+`docs/stage6-evidence/quote-check.md` and the seven `readings-*.md`. Changed: `analysis.js` (tour stop 1), `build.py`, `test.js`,
+`runtime-test.js`, `redteam.js`, `tools/run-all.sh`, `tools/stage2/model.js`, `tools/visual/data-invariance.js`, `package.json`
+(`check:data`, `check:baseline`), `docs/STAGE6_SPEC.md` (§0.4, §6.6), `docs/stage6-evidence/README.md`, `CLAUDE.md`, this file and the
+build.
+
 **Tests (added).** `test.js`: the appearance checks (588): every leaf formation resolves to classes whose shares sum to 1 in each mount
 group, one unit per group; every value a claim with source, locator, grade, label and quote, a disputed value keeping each side, or
 generic (colours also "none shown"); grade A only with a source or document dated 1804-1805, or a regulation shown in force; a disputed
@@ -69,7 +75,23 @@ battle, the PSZ cap orders, four Viskovatov pages), 56 not found in damaged OCR 
 read on the page images by the reading pass (`docs/stage6-evidence/quote-check.md`).
 
 **Checks on this build**
-(CHECKS-6B)
+- `npm run build`: fresh; the committed `austerlitz-command-map.html` is the build (1,661,910 bytes, md5 `7fc0f6c3023133aeb73d5b65479bc8a8`).
+- `npm test`: "ALL 9 SUITES PASSED (and the height guard)" (4 min 43 s): `css-test.js` 0 errors, 9/9; `test.js` the appearance checks
+  588/588, 0 errors, 0 warnings, the order of battle 41/41; `geo-test.js` 54 passed; `terrain-test.js` OK; `audit.js` 0 march-rate and 0
+  terrain violations; `sim-test.js` 0 disagreements; `redteam.js` 0 findings, 37 retired phrases across 6 sources none found (its one
+  warning, the cavalry's mean rate, is the unchanged tracks'); `runtime-test.js` 0 errors, the appearance dry run "32 blocks resolve to
+  72 dress parts (4 by their dominant class)" (its one console warning, three.js's "'fog' is not a property" of a line material, is the
+  unchanged `app.js`'s); `binding-test.js` 383 checks, 0 failed; the height guard 96 call sites, 0 presentation
+  calls. The first run failed `runtime-test.js` ("kienmayer: appearance shares sum to 2": its check summed the foot and the mounted shares
+  together); the check now sums each mount group, as `test.js` does, and the run above is on the committed tree.
+- `npm run check:baseline`: passes on the moved baseline (md5 `7fc0f6c3…`, 1,661,910 bytes).
+- `npm run check:data`: "All 121 DATA declarations are byte-identical" to `archive/stage6b-7fc0f6c3.html`; against the old reference
+  (`archive/stage4d-9b13adbf.html`) the data that differ are exactly `TOUR` (changed) and the eight added declarations above.
+- `npm run check:chronology`: errors 0 (69 timed moves: 65 consistent, 4 early, the named unresolved conflicts; 20 explicit times).
+- `npm run check:contrast`: 5,186 text elements, 105 distinct pairs, 0 below AA, 0 below 10.5 px (6 min 1 s).
+- `npm run check:visual`: "STAGE0: all checks passed" (51 min 29 s): 23 views, drops within every limit, the self-test 194 of 194; the
+  day's light, the valley fog, the dwell and the horizon as on 5G; the two known Canvas2D readback warnings (five lines).
+- `node tools/stage6/verify-quotes.js --md docs/stage6-evidence/quote-check.md` (network; not in the suite): 309 quotes, as above.
 
 **Not done, or open**
 - Nothing is drawn differently: the figures, flags and legend wait for 6C and 6D (and §6.4's honest drawing, the first commit of 6C).
