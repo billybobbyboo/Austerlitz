@@ -893,6 +893,9 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
     <div class="k" data-lg="nation"><span>French</span><span class="sw" data-key="fr"></span></div>
     <div class="k" data-lg="nation"><span>Russian</span><span class="sw" data-key="ru"></span></div>
     <div class="k" data-lg="nation"><span>Austrian</span><span class="sw" data-key="at"></span></div>
+    <!-- Stage 6C, first commit (docs/STAGE6_SPEC.md section 6.4; decision 98): what the figures and the standards are, where they are drawn -->
+    <div class="k" data-lg="figures"><span>figures: drawn in their nation's symbol colour with a generic cap: not uniforms</span></div>
+    <div class="k" data-lg="standards"><span>standards: plain cloths in the nation's symbol colour: their patterns are not sourced</span></div>
     <div class="k" data-lg="foot"><span>French formation, its footprint</span><span class="sw" data-key="foot-fr"></span></div>
     <div class="k" data-lg="foot"><span>Allied formation, its footprint</span><span class="sw" data-key="foot-al"></span></div>
     <div class="k" data-lg="arrow-fr"><span>French movement</span><span class="ar" data-key="arrow-fr"></span></div>
@@ -6245,22 +6248,17 @@ function makeBlock(f){
   placeStandards(g,1);
   return g;
 }
-/* national colours, painted once per nation */
+/* the standards' cloths, painted once per nation. Stage 6C, first commit (docs/STAGE6_SPEC.md section 6.4; owner decision 98): a plain
+   cloth in the nation's symbol colour (NATION's fill, the counters' colour: symbology, not a flag), labelled generic in the legend and
+   the sources sheet, until 6D paints each sourced model. It replaces three patterns the evidence did not give: the French vertical
+   tricolour (the 1804 lozenge was carried in 1805), the Russian "green colour with a white cross" (SOURCE_NOTE keeps the Russian
+   infantry's pattern open) and the Austrian white, gold and black (no read source shows it) */
 var _flagTex={};
 function flagTexture(nation){
   if(_flagTex[nation]) return _flagTex[nation];
   var c=document.createElement("canvas"); c.width=128; c.height=64;
   var x=c.getContext("2d");
-  if(nation==="fr"){
-    x.fillStyle="#2C4C9C"; x.fillRect(0,0,43,64); x.fillStyle="#E9E2D2"; x.fillRect(43,0,43,64); x.fillStyle="#B3302E"; x.fillRect(86,0,42,64);
-  } else if(nation==="ru"){
-    x.fillStyle="#2E7A48"; x.fillRect(0,0,128,64); x.fillStyle="#E9E2D2";
-    x.fillRect(0,26,128,12); x.fillRect(58,0,12,64);            /* a green colour with a white cross */
-  } else {
-    x.fillStyle="#E9E2D2"; x.fillRect(0,0,128,64);
-    x.fillStyle="#C8A03A"; x.fillRect(0,0,128,10); x.fillRect(0,54,128,10);   /* Austrian: white with a gold border */
-    x.fillStyle="#2A2622"; x.beginPath(); x.arc(64,32,11,0,Math.PI*2); x.fill();
-  }
+  x.fillStyle=NATION[nation].fill; x.fillRect(0,0,128,64);
   x.fillStyle="rgba(0,0,0,.12)"; for(var k=0;k<128;k+=4) x.fillRect(k,0,1,64);   /* a little cloth */
   var t=ctexS(c); _flagTex[nation]=t; return t;
 }
@@ -9109,7 +9107,9 @@ function paintLegend(){
           "conf-a":!!CONF.shown.A, "conf-b":!!CONF.shown.B, "conf-c":!!CONF.shown.C, conf:!!(CONF.shown.A||CONF.shown.B||CONF.shown.C),
           /* Stage 5D: the skeleton's rows, for what it draws on screen */
           "skel-a":!!SKEL.shown.A, "skel-b":!!SKEL.shown.B, "skel-c":!!SKEL.shown.C, skel:!!(SKEL.shown.line||SKEL.shown.A||SKEL.shown.B||SKEL.shown.C),
-          routes:!!ROUTES.shown};   /* Stage 5F: the ordered routes */
+          routes:!!ROUTES.shown,   /* Stage 5F: the ordered routes */
+          /* Stage 6C (section 6.4): what the figures and the standards are, wherever figures are drawn */
+          figures:land&&!isTrueScale(), standards:land&&!isTrueScale()};
   on.badge=on.badge||(mode==="terrain"&&textOn());
   var key=JSON.stringify(on);
   if(key===_lgKey) return;
@@ -11090,6 +11090,8 @@ function openSources(){
       :"The relief is drawn "+fmtFactor(DISPLAY.factor)+" times its true height; 1\u00d7 is true scale. The setting is a view, not the model: heights in metres, sightlines and the going classes do not change with it.")+'</li>'+
     '<li>'+esc("Symbols stand on the ground at two named scales: figures and standards about 45\u201370 times life size, buildings and trees about 10\u201315 times.")+'</li>'+
     '<li>'+esc("The standards' pole-to-figure ratio (1.6) is provisional: a design rule chosen so that the colour clears the ranks, not a sourced ratio, to be replaced in Stage 6.")+'</li>'+
+    /* Stage 6C, first commit (section 6.4; decision 98) */
+    '<li>'+esc("The figures are drawn in their nation's symbol colour, the counters' colour, with a generic cap: they are not uniforms. The standards are plain cloths in the same colour: their patterns are not sourced, and the pattern of the Russian infantry's colours is an open question.")+'</li>'+
     '<li>'+esc("The going layer's slope classes (hard for guns over "+GOING_TRUE_DEG[0].toFixed(2)+"\u00b0, severe over "+GOING_TRUE_DEG[1].toFixed(2)+"\u00b0 of true slope) are unsourced design values, provisional until a data task sources or renames them.")+'</li></ul>'+
     /* the tactical rate (2C precondition, docs/STAGE2_SPEC.md section M.13): design values, stated as such */
     '<h3>Arrivals the map derives</h3><ul class="bul">'+
@@ -13019,6 +13021,22 @@ var AUSTERLITZ_DEBUG=(function(){
       if(!l||getComputedStyle(l).backgroundColor!==rgb(k[1])) mism.push("legend "+k[0]+" is not the drawing colour "+k[1]); });
     ck("first run: the colour key agrees with the legend, and the legend with what is drawn", mism.length===0,
       mism.length?mism.join("; "):'"'+txt.slice(0,150)+'..."');
+    /* Stage 6C, first commit (docs/STAGE6_SPEC.md section 6.4; decision 98): every standard a plain cloth in its nation's symbol colour,
+       one texture per nation; the legend says what the figures and the standards are wherever figures are drawn */
+    var clothBad=[], nCloth=0, clothCol={};
+    Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u||!u.flags) return; nCloth++;
+      var nat=FORMATIONS[id].nation, t=u.flags.material.map;
+      if(t!==flagTexture(nat)){ clothBad.push(id+": not its nation's cloth"); return; }
+      if(clothCol[nat]===undefined){ var cv=t.image, dd=cv.getContext("2d").getImageData(0,0,cv.width,cv.height).data, seen={};
+        for(var q=0;q<dd.length;q+=4) seen[dd[q]+","+dd[q+1]+","+dd[q+2]]=1;
+        var want=parseInt(NATION[nat].fill.slice(1),16), mid=((cv.height>>1)*cv.width+2)*4;
+        clothCol[nat]=Object.keys(seen).length+" colours";
+        if(Object.keys(seen).length>2||dd[mid]!==((want>>16)&255)||dd[mid+1]!==((want>>8)&255)||dd[mid+2]!==(want&255)) clothBad.push(nat+": the cloth is not plain "+NATION[nat].fill+" ("+clothCol[nat]+")"); } });
+    var lgFig=lg.querySelector('[data-lg="figures"]'), lgStd=lg.querySelector('[data-lg="standards"]');
+    if(!lgFig||!/symbol colour/.test(lgFig.textContent)||!/generic cap/.test(lgFig.textContent)) clothBad.push("the legend does not say the figures are generic");
+    if(!lgStd||!/plain cloths/.test(lgStd.textContent)||!/not sourced/.test(lgStd.textContent)) clothBad.push("the legend does not say the standards are generic");
+    ck("standards: plain cloths in the nation's symbol colour, labelled generic in the legend (decision 98)", nCloth>0&&!clothBad.length,
+      nCloth+" blocks' standards; "+Object.keys(clothCol).map(function(k){ return k+" "+NATION[k].fill+" ("+clothCol[k]+": the cloth and its lines)"; }).join(", ")+(clothBad.length?"; WRONG: "+clothBad.slice(0,5).join("; "):""));
 
     /* 7. dossiers in metres */
     var bad=[];
