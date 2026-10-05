@@ -185,12 +185,14 @@
     </svg><span class="lg-name">Key</span>
   </button>
   <div class="lg-rows" id="lg-rows">
-    <div class="k" data-lg="nation"><span>French</span><span class="sw" data-key="fr"></span></div>
-    <div class="k" data-lg="nation"><span>Russian</span><span class="sw" data-key="ru"></span></div>
-    <div class="k" data-lg="nation"><span>Austrian</span><span class="sw" data-key="at"></span></div>
-    <!-- Stage 6C, first commit (docs/STAGE6_SPEC.md section 6.4; decision 98): what the figures and the standards are, where they are drawn -->
-    <div class="k" data-lg="figures"><span>figures: drawn in their nation's symbol colour with a generic cap: not uniforms</span></div>
-    <div class="k" data-lg="standards"><span>standards: plain cloths in the nation's symbol colour: their patterns are not sourced</span></div>
+    <!-- Stage 6C (docs/STAGE6_SPEC.md section 4.3; decisions 97, 98, 107): the nation colours are the counters', shown where counters are drawn;
+         where figures are drawn, what the figures and the standards are; the sides are carried by the marks beside the names and on the ground -->
+    <div class="k" data-lg="nation"><span>counters: French</span><span class="sw" data-key="fr"></span></div>
+    <div class="k" data-lg="nation"><span>counters: Russian</span><span class="sw" data-key="ru"></span></div>
+    <div class="k" data-lg="nation"><span>counters: Austrian</span><span class="sw" data-key="at"></span></div>
+    <div class="k" data-lg="figures"><span>figures: dress as sourced (source and grade in the dossier), else the nation's symbol colour and a plain cap</span></div>
+    <div class="k" data-lg="standards"><span>standards: plain cloths in the nation's symbol colour, patterns not yet drawn</span></div>
+    <div class="k" data-lg="sidemark"><span>beside a name: its side, French or Allied</span><span class="sw" data-key="side-fr"></span><span class="sw" data-key="side-al"></span></div>
     <div class="k" data-lg="foot"><span>French formation, its footprint</span><span class="sw" data-key="foot-fr"></span></div>
     <div class="k" data-lg="foot"><span>Allied formation, its footprint</span><span class="sw" data-key="foot-al"></span></div>
     <div class="k" data-lg="arrow-fr"><span>French movement</span><span class="ar" data-key="arrow-fr"></span></div>
@@ -306,8 +308,8 @@
 <div id="firstrun" role="dialog" aria-labelledby="fr-title">
   <h2 id="fr-title">The Battle of Austerlitz</h2>
   <!-- written at start-up from the same colour key as the legend (COLOUR_KEY), so the two cannot disagree -->
-  <p id="fr-key">Blue is the French army. The Allies are green for Russia and white for Austria, and their
-     movement arrows are drawn in amber. The high ground in the centre is the Pratzen plateau, and it decides the battle.</p>
+  <p id="fr-key">French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath
+     them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, and it decides the battle.</p>
   <p class="fr-hint">Drag to move the map, right-drag to turn it, scroll to zoom, and click any formation to see who it was and what it was doing.</p>
   <div class="fr-act">
     <button class="t" id="fr-tour">Guided tour</button>

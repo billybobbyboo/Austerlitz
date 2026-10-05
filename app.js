@@ -683,14 +683,9 @@ var GEO={}, _smokeTex=null, _dustTex=null;
    ground under a formation (values unchanged from the literals they replace) */
 var SPRITE_COL={smoke:0xA9A69E, dust:0xC6BCA6, pad:0x2A2620};
 
+/* the shared geometries of the guns, the tents and the standards (Stage 6C: the seven built for an earlier figure and drawn by no mesh,
+   GEO.shako, bear, musket, sabre, body, horse and rider, are gone; docs/STAGE6_SPEC.md section 1.1) */
 function initBlockGeo(){
-  GEO.shako  = new THREE.CylinderGeometry(0.16,0.18,0.28,6);
-  GEO.bear   = new THREE.CylinderGeometry(0.18,0.19,0.42,6);
-  GEO.musket = new THREE.BoxGeometry(0.05,1.15,0.05);
-  GEO.sabre  = new THREE.BoxGeometry(0.05,1.05,0.05);
-  GEO.body   = new THREE.BoxGeometry(0.30,0.92,0.22);
-  GEO.horse  = new THREE.BoxGeometry(0.34,0.44,1.05);
-  GEO.rider  = new THREE.BoxGeometry(0.30,0.62,0.26);
   GEO.barrel = new THREE.CylinderGeometry(0.09,0.115,1.50,8);
   GEO.wheel  = new THREE.CylinderGeometry(0.44,0.44,0.10,14);
   GEO.trail  = new THREE.BoxGeometry(0.20,0.18,1.60);
@@ -709,74 +704,6 @@ function imesh(geo,colour,count){
   m.castShadow=true; return m;
 }
 
-/* One atlas per formation: ranked men across the top half, the same body
-   seen from above across the bottom half. No tiling, so no wrap artefacts. */
-function formationAtlas(coat,arm,files){
-  var c=document.createElement("canvas"); c.width=512; c.height=256;
-  var x=c.getContext("2d");
-  /* owner decision 84 (Stage 4E): the figures' black drawn at about 2.7% reflectance (#2E2B27), still black; it was #1B1917, about
-     1%, darker than black cloth, and at the closest orbit it drew solid black blocks once the smoke no longer covered them */
-  var dark=shade(coat,0.50), mid=shade(coat,0.82), hat="#2E2B27", steel="#787C82";
-
-  /* --- upper half: the rank in silhouette --- */
-  x.clearRect(0,0,512,128);
-  var step=512/files;
-  for(var i=0;i<files;i++){
-    var px=i*step+step/2, jy=((i*37)%5)-2, w=Math.max(6,step*0.52);
-    if(arm==="cav"){
-      x.fillStyle=shade(0x4A3A2C,0.70+((i*13)%5)*0.07);
-      x.fillRect(px-w*0.9,58+jy,w*1.8,30);
-      x.fillRect(px+w*0.5,40+jy,w*0.62,24);
-      x.fillRect(px-w*0.8,88+jy,w*0.3,26); x.fillRect(px+w*0.5,88+jy,w*0.3,26);
-      x.fillStyle=mid;  x.fillRect(px-w*0.3,28+jy,w*0.7,34);
-      x.fillStyle=hat;  x.fillRect(px-w*0.3,16+jy,w*0.7,14);
-      x.strokeStyle=steel; x.lineWidth=2;
-      x.beginPath(); x.moveTo(px+w*0.4,32+jy); x.lineTo(px+w*1.1,2+jy); x.stroke();
-    } else {
-      x.fillStyle=dark; x.fillRect(px-w*0.5,50+jy,w,62);
-      x.fillStyle=mid;  x.fillRect(px-w*0.5,50+jy,w,14);
-      x.fillStyle=hat;  x.fillRect(px-w*0.36,24+jy,w*0.72,28);
-      x.strokeStyle=steel; x.lineWidth=1.8;
-      x.beginPath(); x.moveTo(px+w*0.42,56+jy); x.lineTo(px+w*0.95,4+jy); x.stroke();
-    }
-  }
-  /* --- lower half: the same body from above --- */
-  x.fillStyle=shade(coat,0.58); x.fillRect(0,128,512,128);
-  for(var r=0;r<4;r++) for(var k=0;k<files;k++){
-    var qx=k*step+step/2+((r*7)%9)-4, qy=128+r*30+16;
-    x.fillStyle="#1D1B18";
-    x.beginPath();
-    if(arm==="cav") x.ellipse(qx,qy,step*0.20,13,0,0,Math.PI*2);
-    else x.ellipse(qx,qy,Math.min(7,step*0.24),6.4,0,0,Math.PI*2);
-    x.fill();
-  }
-  var t=ctexS(c); t.anisotropy=4;
-  return t;
-}
-/* a box written straight into a shared buffer, UV-mapped to the atlas */
-function pushBox(P,N,U,cx,cy,cz,w,h,dp){
-  var x0=cx-w/2,x1=cx+w/2, y0=cy-h/2,y1=cy+h/2, z0=cz-dp/2,z1=cz+dp/2;
-  var F=[
-   [[x0,y0,z1],[x1,y0,z1],[x1,y1,z1],[x0,y1,z1],[0,0,1],1],   /* front */
-   [[x1,y0,z0],[x0,y0,z0],[x0,y1,z0],[x1,y1,z0],[0,0,-1],1],  /* back  */
-   [[x1,y0,z1],[x1,y0,z0],[x1,y1,z0],[x1,y1,z1],[1,0,0],1],   /* right */
-   [[x0,y0,z0],[x0,y0,z1],[x0,y1,z1],[x0,y1,z0],[-1,0,0],1],  /* left  */
-   [[x0,y1,z1],[x1,y1,z1],[x1,y1,z0],[x0,y1,z0],[0,1,0],0],   /* top   */
-   [[x0,y0,z0],[x1,y0,z0],[x1,y0,z1],[x0,y0,z1],[0,-1,0],0]   /* base  */
-  ];
-  for(var f=0;f<F.length;f++){
-    var q=F[f], n=q[4], upper=q[5];
-    var v0=upper?0.52:0.02, v1=upper?0.98:0.48;
-    var uv=[[0,v0],[1,v0],[1,v1],[0,v1]];
-    var order=[0,1,2, 0,2,3];
-    for(var o=0;o<6;o++){
-      var idx=order[o];
-      P.push(q[idx][0],q[idx][1],q[idx][2]);
-      N.push(n[0],n[1],n[2]);
-      U.push(uv[idx][0],uv[idx][1]);
-    }
-  }
-}
 /* how a formation is subdivided: battalions, or squadrons for horse */
 function subUnits(f){
   var s=f.strength||3000;
@@ -785,91 +712,220 @@ function subUnits(f){
   return Math.max(2,Math.min(7,Math.round(s/1150)));
 }
 
-/* ---- the figure kit: one merged geometry per kind, built once ----
-   Everything is at the same symbolic scale as before (a man is 1.5 world units,
-   the frontage is real). Two meshes per formation: the coats, coloured per
-   instance, and everything else with its colours baked into the vertices. */
-var FIG=null;
+/* ---- Stage 6C: KIT, how the appearance is drawn (docs/STAGE6_SPEC.md sections 5 and 6.2; owner decisions 97-104, 107, 109) ----
+   appearance.js holds the claims: what each class of troops present on 2 December 1805 wore, each value with its source, locator,
+   grade and label. KIT holds only how a claim is drawn. Every value here is a DESIGN DECISION, never a claim about a regiment
+   (decision 102: "the source names the colour; the drawn sRGB is a design decision recorded in KIT with its basis"):
+   - cloth: one drawn value per colour class of APPEARANCE_VOCAB.colour (the class names what the source's words describe; the words
+     stay in appearance.js). Basis of every value: a mid value of the colour the class names, as it reads flat-shaded under the
+     scene's light; no dye or surviving cloth was measured, so these are drawn values, not the shades of 1805. None is darker than
+     decision 84's black (#2E2B27, about 2.7% reflectance), so that dark coats en masse stay within the Stage 0 darkness limit.
+   - mat: the materials, the same for every army and not claims: skin, the figures' black (decision 84), the musket's wood, the
+     metal of bayonets, sabres, helmets and cuirasses, leather; and the one neutral of the generic legwear (the breeches drawn before
+     Stage 6).
+   - head: one low-poly shape per headgear class (decision 103; the shapes in kitHat), drawn in the figures' black, the metal helmet
+     in the kit's metal with a black mane. A headgear's colour is not classed by the table, so it is not drawn: where a source names
+     one (the Hessen-Homburg hussars' light-blue shako, the uhlans' czapkas, the Mamelukes' turbans) the dossier gives its words.
+     Classes no read source settles for a class present at A or B (round hat, grenadier cap, colback) have no shape.
+   - cuirass: drawn only where the table settles that one was worn, at A or B (decision 104): the French heavy cavalry's breast and
+     back plates in the kit's metal; the Austrian cuirassiers' in black ("schwarz lackirte Kürasse", DRESS.at_cuirassier.cuirass).
+   - horse: one brown unless the table grades a horse colour A or B (decision 109: the Guard horse grenadiers' black, B, uncertain).
+   - gear: the guns, limbers, tents and the standards' poles, one colour for every army (decision 109: only the French carriage's
+     colour was read, so no army's is drawn).
+   The generic appearance (decisions 98, 103, 105; section 2.9): a coat the table does not settle at A or B is drawn in its nation's
+   symbol colour (NATION's fill, the counters' colour: symbology, not a cloth), legwear in the one neutral, headgear as the plain cap
+   drawn before Stage 6 (no peak, plume, crest or plate). */
+var KIT={
+  cloth:{"dark blue":0x2C3B67, "blue":0x3E5C9F, "sky blue":0x82A5C8, "dark green":0x2F4A37, "green":0x3D6B3E, "light green":0x6F9A5C,
+         "white":0xE3DED0, "red":0xA4362D, "brown":0x6B4B34, "grey":0x8B8880, "straw":0xCDB567, "turquoise":0x3F9D97,
+         "black":0x2E2B27 /* decision 84's black, the floor */, "buff":0xC8AE7D},
+  mat:{skin:0xC9A98A, black:0x2E2B27 /* decision 84; was 0x1C1A17 */, wood:0x4A3826, metal:0x8A8E92, leather:0x3A2E22, legwear:0xBDB8AC},
+  head:{"generic":{col:"black"}, "bicorne":{col:"black"}, "shako":{col:"black"}, "bearskin":{col:"black"}, "metal helmet":{col:"metal"},
+        "crested helmet":{col:"black"}, "czapka":{col:"black"}, "fur cap":{col:"black"}, "turban":{col:"black"}},
+  cuirass:{fr_cuirassier:"metal", at_cuirassier:"black"},
+  horse:{brown:0x5A4232, black:0x2E2B27},
+  gear:{barrel:0x35322C, wheel:0x6B563C, trail:0x5A4832, limber:0x6A5741, pole:0x6A5B48, marquee:0xD8D1BC, tent:0xC4BCA6}
+};
+/* a value of appearance.js the drawing follows: a claim (not generic, disputed or "none shown") at grade A or B whose class (k: c a
+   colour, h a headgear) is not "generic"; anything else is drawn generic (docs/STAGE6_SPEC.md section 6.6, "For 6C and 6D") */
+function kitSettled(v,k){ return !!(v&&!v.gen&&!v.none&&!v.sides&&(v.gr==="A"||v.gr==="B")&&v[k]&&v[k]!=="generic"); }
+var _kitDress={};
+/* how one dress class is drawn: coat, legwear, headgear, cuirass and horse, each from its claim where settled, else generic */
+function kitDress(dress){
+  if(_kitDress[dress]) return _kitDress[dress];
+  var d=DRESS[dress]; if(!d) return null;
+  var nat=NATION[d.nation]?d.nation:"fr";
+  var coat=kitSettled(d.coat,"c")&&KIT.cloth[d.coat.c]!==undefined?d.coat.c:null;
+  var leg=kitSettled(d.legwear,"c")&&KIT.cloth[d.legwear.c]!==undefined?d.legwear.c:null;
+  var head=kitSettled(d.head,"h")&&KIT.head[d.head.h]?d.head.h:"generic";
+  var cu=d.cuirass&&d.cuirass.has===true&&!d.cuirass.sides&&(d.cuirass.gr==="A"||d.cuirass.gr==="B")?(KIT.cuirass[dress]||null):null;
+  var horse=kitSettled(d.horse,"c")&&KIT.horse[d.horse.c]!==undefined?d.horse.c:"brown";
+  return (_kitDress[dress]={dress:dress, nation:nat, mount:d.mount, coat:coat?KIT.cloth[coat]:hexNum(NATION[nat].fill), coatName:coat||"generic",
+    leg:leg?KIT.cloth[leg]:KIT.mat.legwear, legName:leg||"generic", head:head, cuirass:cu, horse:horse, horseCol:KIT.horse[horse],
+    gunner:d.arm==="art"&&d.mount==="foot"});
+}
+/* the generic appearance of a nation (section 2.9): for whatever has no class (the infantry's mounted officers) */
+function kitGeneric(nation){
+  var k="~"+nation; if(_kitDress[k]) return _kitDress[k];
+  return (_kitDress[k]={dress:null, nation:nation, mount:null, coat:hexNum(NATION[nation].fill), coatName:"generic", leg:KIT.mat.legwear,
+    legName:"generic", head:"generic", cuirass:null, horse:"brown", horseCol:KIT.horse.brown, gunner:false});
+}
+/* decision 100: each drawn unit (battalion, squadron, or a rider where the block draws riders one by one) takes a class in proportion to
+   its formation's sourced composition: the largest-remainder rule on the shares of one mount group, units in the composition's order.
+   A class whose share is too small for one drawn unit is not drawn (its dossier lists it). Where the group has no class, generic. */
+function kitAllocate(parts,n){
+  if(!parts||!parts.length){ var g=[]; for(var z=0;z<n;z++) g.push(null); return g; }
+  var q=parts.map(function(p,i){ var x=p.share*n, k=Math.floor(x+1e-9); return {i:i,d:p.dress,k:k,r:x-k}; });
+  var left=n-q.reduce(function(a,b){ return a+b.k; },0);
+  q.slice().sort(function(a,b){ return b.r-a.r||a.i-b.i; }).slice(0,Math.max(0,left)).forEach(function(e){ e.k++; });
+  var out=[]; q.forEach(function(e){ for(var j=0;j<e.k;j++) out.push(e.d); }); return out;
+}
+/* a leaf formation's classes by mount group, from appearance.js (appearanceOf) */
+function kitBlock(id){
+  var A=(typeof appearanceOf==="function")?appearanceOf(id):null; if(!A) return {A:null,foot:[],horse:[]};
+  return {A:A, foot:A.parts.filter(function(p){ return p.mount==="foot"; }), horse:A.parts.filter(function(p){ return p.mount==="horse"; })};
+}
+/* the foot class with the largest share (the first on a tie): the skirmish screen's (a design decision: which companies skirmished is not
+   drawn as a claim) */
+function kitLead(parts){ var b=null; (parts||[]).forEach(function(p){ if(!b||p.share>b.share) b=p; }); return b?b.dress:null; }
+
+/* ---- the figure kit: merged geometries, built once per class of drawing and shared ----
+   Everything is at the same symbolic scale as before (a man is 1.5 world units, the frontage is real). Per class, two meshes on foot
+   (the coat, coloured per instance; everything else with its colours baked into the vertices) and three mounted (the horse, the coat,
+   the rest). FIG holds the generic kit, which is also the standard's reference height (figureTop, decision 26 until 6D). */
+var FIG=null, KIT_GEO={}, _kitShapes=null;
+function kitBox(w,h,d){ return new THREE.BoxGeometry(w,h,d); }
+function kitPart(geo,p,s,rot,col){ return {geo:geo,p:p,s:s||[1,1,1],rot:rot||[0,0,0],col:col}; }
+/* merges parts into one geometry with vertex colours; colour undefined = white (takes the instance colour) */
+function kitMerge(parts){
+  var P=[],N=[],C=[], m=new THREE.Matrix4(), q=new THREE.Quaternion(), e=new THREE.Euler(), v=new THREE.Vector3(), nrm=new THREE.Vector3();
+  var white=new THREE.Color(1,1,1);
+  parts.forEach(function(pt){
+    var g=pt.geo.index?pt.geo.toNonIndexed():pt.geo;
+    g.computeVertexNormals();
+    e.set(pt.rot[0],pt.rot[1],pt.rot[2]); q.setFromEuler(e);
+    m.compose(new THREE.Vector3(pt.p[0],pt.p[1],pt.p[2]), q, new THREE.Vector3(pt.s[0],pt.s[1],pt.s[2]));
+    var nm=new THREE.Matrix3().getNormalMatrix(m);
+    var pa=g.attributes.position.array, na=g.attributes.normal.array;
+    var col=pt.col?lin(pt.col):white;
+    for(var k=0;k<pa.length;k+=3){
+      v.set(pa[k],pa[k+1],pa[k+2]).applyMatrix4(m); P.push(v.x,v.y,v.z);
+      nrm.set(na[k],na[k+1],na[k+2]).applyMatrix3(nm).normalize(); N.push(nrm.x,nrm.y,nrm.z);
+      C.push(col.r,col.g,col.b);
+    }
+  });
+  var out=new THREE.BufferGeometry();
+  out.setAttribute("position",new THREE.Float32BufferAttribute(P,3));
+  out.setAttribute("normal",new THREE.Float32BufferAttribute(N,3));
+  out.setAttribute("color",new THREE.Float32BufferAttribute(C,3));
+  return out;
+}
+function kitShapes(){
+  if(_kitShapes) return _kitShapes;
+  /* the bicorne seen from the front: a low arch 0.42 wide and 0.15 high (the quadratic through its points, as straight sides) */
+  var bic=new THREE.Shape(); bic.moveTo(-0.21,0);
+  for(var q=1;q<=6;q++){ var t=q/6; bic.lineTo(-0.21+0.42*t,0.30*t*(1-t)); }
+  bic.lineTo(-0.21,0);
+  var bg=new THREE.ExtrudeGeometry(bic,{depth:0.10,bevelEnabled:false,curveSegments:5}); bg.translate(0,0,-0.05);
+  return (_kitShapes={head:new THREE.IcosahedronGeometry(0.115,1), cap:new THREE.CylinderGeometry(0.115,0.13,0.27,7),
+    shako:new THREE.CylinderGeometry(0.13,0.118,0.25,7), bicorne:bg, bear:new THREE.CylinderGeometry(0.15,0.165,0.40,8),
+    dome:new THREE.SphereGeometry(0.13,8,4,0,Math.PI*2,0,Math.PI/2), fur:new THREE.CylinderGeometry(0.135,0.14,0.17,8),
+    turban:new THREE.CylinderGeometry(0.155,0.15,0.11,8), knob:new THREE.SphereGeometry(0.085,7,3,0,Math.PI*2,0,Math.PI/2),
+    skull:new THREE.CylinderGeometry(0.12,0.115,0.12,7)});
+}
+/* the headgear's parts (decision 103), y the foot of the plain cap (where the head's top meets the hat); the figure faces +z */
+function kitHat(h,y){
+  var G=kitShapes(), P=kitPart, B=kitBox, col=KIT.mat[(KIT.head[h]||KIT.head.generic).col];
+  switch(h){
+    case "bicorne": return [P(G.bicorne,[0,y-0.02,0],null,null,col)];                                   /* worn crosswise: wide and low */
+    case "shako": return [P(G.shako,[0,y+0.125,0],null,null,col), P(B(0.20,0.022,0.10),[0,y+0.01,0.115],null,[0.25,0,0],col)];   /* its peak */
+    case "bearskin": return [P(G.bear,[0,y+0.19,0],null,null,col)];
+    case "metal helmet": return [P(G.dome,[0,y,0],null,null,col), P(B(0.04,0.10,0.24),[0,y+0.15,0],null,null,col),
+      P(B(0.04,0.24,0.05),[0,y-0.03,-0.13],null,[0.15,0,0],KIT.mat.black)];                               /* its crest; the mane down the back */
+    case "crested helmet": return [P(G.dome,[0,y,0],null,null,col), P(B(0.07,0.12,0.26),[0,y+0.16,0],null,null,col)];
+    case "czapka": return [P(G.skull,[0,y+0.06,0],null,null,col), P(B(0.20,0.07,0.20),[0,y+0.15,0],null,[0,Math.PI/4,0],col)];
+    case "fur cap": return [P(G.fur,[0,y+0.085,0],null,null,col)];
+    case "turban": return [P(G.turban,[0,y+0.045,0],null,null,col), P(G.knob,[0,y+0.10,0],null,null,col)];
+    default: return [P(G.cap,[0,y+0.135,0],null,null,col)];                                              /* the plain cap: generic */
+  }
+}
+/* a man on foot without his coat: legs in the legwear, head, headgear; pack, musket and bayonet unless a gunner (6C: gunners in their own
+   figure, docs/STAGE6_SPEC.md section 6.2) */
+function kitFootFixed(leg,head,gunner){
+  var G=kitShapes(), M=KIT.mat, P=kitPart, B=kitBox;
+  var parts=[P(B(0.13,0.62,0.18),[-0.09,0.31,0],null,null,leg), P(B(0.13,0.62,0.18),[0.09,0.31,0],null,null,leg),
+    P(G.head,[0,1.30,0],null,null,M.skin)].concat(kitHat(head,1.365));
+  if(!gunner) parts.push(P(B(0.28,0.30,0.14),[0,0.96,-0.20],null,null,M.leather),            /* pack */
+    P(B(0.045,1.25,0.045),[0.27,1.12,0.12],null,[0.18,0,0.10],M.wood),                         /* musket */
+    P(B(0.03,0.32,0.03),[0.33,1.82,0.06],null,[0.18,0,0.10],M.metal));                         /* bayonet */
+  return kitMerge(parts);
+}
+/* a rider without his coat: head, headgear, legs in the legwear, sabre; the cuirass over the coat where drawn */
+function kitRiderFixed(leg,head,cuir){
+  var G=kitShapes(), M=KIT.mat, P=kitPart, B=kitBox;
+  var parts=[P(G.head,[0,1.68,0],null,null,M.skin)].concat(kitHat(head,1.745)).concat([
+    P(B(0.11,0.34,0.14),[-0.14,0.98,0.05],null,[0.5,0,0],leg), P(B(0.11,0.34,0.14),[0.14,0.98,0.05],null,[0.5,0,0],leg),
+    P(B(0.03,0.95,0.03),[0.28,1.55,0.10],null,[-0.55,0,0.15],M.metal)]);                      /* sabre */
+  if(cuir) parts.push(P(B(0.36,0.30,0.25),[0,1.38,0],null,null,M[cuir]));                    /* breast and back over the coat */
+  return kitMerge(parts);
+}
+function kitHorse(col){
+  var M=KIT.mat, P=kitPart, B=kitBox;
+  return kitMerge([
+    P(B(0.38,0.42,1.05),[0,0.78,0],null,null,col),
+    P(B(0.22,0.44,0.24),[0,1.10,0.56],null,[0.5,0,0],col),                                     /* neck */
+    P(B(0.18,0.20,0.36),[0,1.32,0.78],null,null,col),                                          /* head */
+    P(B(0.10,0.62,0.10),[-0.13,0.31,0.40],null,null,col), P(B(0.10,0.62,0.10),[0.13,0.31,0.40],null,null,col),
+    P(B(0.10,0.62,0.10),[-0.13,0.31,-0.40],null,null,col), P(B(0.10,0.62,0.10),[0.13,0.31,-0.40],null,null,col),
+    P(B(0.06,0.34,0.08),[0,0.80,-0.56],null,[0.6,0,0],M.black),                                /* tail */
+    P(B(0.30,0.08,0.44),[0,1.01,0],null,null,M.leather)                                        /* saddle */
+  ]);
+}
+/* one cached geometry per kind and class of drawing: "foot" {leg, head, gunner}, "rider" {leg, head, cuirass}, "horse" {col} */
+function kitGeo(kind,o){
+  var key=kind+"|"+(o.leg||0)+"|"+(o.head||"")+"|"+(o.gunner?1:0)+"|"+(o.cuirass||"")+"|"+(o.col||0);
+  if(KIT_GEO[key]) return KIT_GEO[key];
+  var g=kind==="foot"?kitFootFixed(o.leg,o.head,o.gunner):kind==="rider"?kitRiderFixed(o.leg,o.head,o.cuirass):kitHorse(o.col);
+  g.userData={kit:kind, head:o.head||null, gunner:!!o.gunner, cuirass:o.cuirass||null, col:o.col||null, leg:o.leg||null};
+  return (KIT_GEO[key]=g);
+}
 function figKit(){
   if(FIG) return FIG;
-  function box(w,h,d){ return new THREE.BoxGeometry(w,h,d); }
-  function part(geo,p,s,rot,col){ return {geo:geo,p:p,s:s||[1,1,1],rot:rot||[0,0,0],col:col}; }
-  /* merges parts into one geometry with vertex colours; colour undefined = white (takes the instance colour) */
-  function merge(parts){
-    var P=[],N=[],C=[], m=new THREE.Matrix4(), q=new THREE.Quaternion(), e=new THREE.Euler(), v=new THREE.Vector3(), nrm=new THREE.Vector3();
-    var white=new THREE.Color(1,1,1);
-    parts.forEach(function(pt){
-      var g=pt.geo.index?pt.geo.toNonIndexed():pt.geo;
-      g.computeVertexNormals();
-      e.set(pt.rot[0],pt.rot[1],pt.rot[2]); q.setFromEuler(e);
-      m.compose(new THREE.Vector3(pt.p[0],pt.p[1],pt.p[2]), q, new THREE.Vector3(pt.s[0],pt.s[1],pt.s[2]));
-      var nm=new THREE.Matrix3().getNormalMatrix(m);
-      var pa=g.attributes.position.array, na=g.attributes.normal.array;
-      var col=pt.col?lin(pt.col):white;
-      for(var k=0;k<pa.length;k+=3){
-        v.set(pa[k],pa[k+1],pa[k+2]).applyMatrix4(m); P.push(v.x,v.y,v.z);
-        nrm.set(na[k],na[k+1],na[k+2]).applyMatrix3(nm).normalize(); N.push(nrm.x,nrm.y,nrm.z);
-        C.push(col.r,col.g,col.b);
-      }
-    });
-    var out=new THREE.BufferGeometry();
-    out.setAttribute("position",new THREE.Float32BufferAttribute(P,3));
-    out.setAttribute("normal",new THREE.Float32BufferAttribute(N,3));
-    out.setAttribute("color",new THREE.Float32BufferAttribute(C,3));
-    return out;
-  }
-  var head=new THREE.IcosahedronGeometry(0.115,1), shako=new THREE.CylinderGeometry(0.115,0.13,0.27,7);
-  var SKIN=0xC9A98A, BLACK=0x2E2B27 /* decision 84; was 0x1C1A17 */, WOOD=0x4A3826, STEEL=0x8A8E92, BREECH=0xBDB8AC, HORSE=0x5A4232, LEATHER=0x3A2E22;
+  var P=kitPart, B=kitBox;
   FIG={
-    /* infantry: coat parts take the instance colour */
-    infCoat: merge([
-      part(box(0.36,0.56,0.24),[0,0.90,0]),                    /* torso */
-      part(box(0.10,0.48,0.12),[-0.24,0.86,0.02]),              /* left arm */
-      part(box(0.10,0.48,0.12),[ 0.24,0.88,0.06],[1,1,1],[-0.35,0,0])   /* right arm, holding the musket */
+    /* the coats: they take the instance colour */
+    infCoat: kitMerge([
+      P(B(0.36,0.56,0.24),[0,0.90,0]),                                    /* torso */
+      P(B(0.10,0.48,0.12),[-0.24,0.86,0.02]),                             /* left arm */
+      P(B(0.10,0.48,0.12),[ 0.24,0.88,0.06],[1,1,1],[-0.35,0,0])          /* right arm, holding the musket */
     ]),
-    infFixed: merge([
-      part(box(0.13,0.62,0.18),[-0.09,0.31,0],null,null,BREECH), part(box(0.13,0.62,0.18),[0.09,0.31,0],null,null,BREECH),
-      part(head,[0,1.30,0],null,null,SKIN),
-      part(shako,[0,1.50,0],null,null,BLACK),
-      part(box(0.28,0.30,0.14),[0,0.96,-0.20],null,null,LEATHER),           /* pack */
-      part(box(0.045,1.25,0.045),[0.27,1.12,0.12],null,[0.18,0,0.10],WOOD),  /* musket */
-      part(box(0.03,0.32,0.03),[0.33,1.82,0.06],null,[0.18,0,0.10],STEEL)    /* bayonet */
+    rider: kitMerge([
+      P(B(0.32,0.50,0.22),[0,1.30,0]),                                    /* coat */
+      P(B(0.10,0.40,0.12),[-0.22,1.26,0]), P(B(0.10,0.40,0.12),[0.22,1.28,0.04],null,[-0.4,0,0])
     ]),
-    /* cavalry: the horse is fixed, the rider's coat takes the instance colour */
-    horse: merge([
-      part(box(0.38,0.42,1.05),[0,0.78,0],null,null,HORSE),
-      part(box(0.22,0.44,0.24),[0,1.10,0.56],null,[0.5,0,0],HORSE),          /* neck */
-      part(box(0.18,0.20,0.36),[0,1.32,0.78],null,null,HORSE),               /* head */
-      part(box(0.10,0.62,0.10),[-0.13,0.31,0.40],null,null,HORSE), part(box(0.10,0.62,0.10),[0.13,0.31,0.40],null,null,HORSE),
-      part(box(0.10,0.62,0.10),[-0.13,0.31,-0.40],null,null,HORSE), part(box(0.10,0.62,0.10),[0.13,0.31,-0.40],null,null,HORSE),
-      part(box(0.06,0.34,0.08),[0,0.80,-0.56],null,[0.6,0,0],BLACK),        /* tail */
-      part(box(0.30,0.08,0.44),[0,1.01,0],null,null,LEATHER)                 /* saddle */
-    ]),
-    rider: merge([
-      part(box(0.32,0.50,0.22),[0,1.30,0]),                                  /* coat */
-      part(box(0.10,0.40,0.12),[-0.22,1.26,0]), part(box(0.10,0.40,0.12),[0.22,1.28,0.04],null,[-0.4,0,0])
-    ]),
-    riderFixed: merge([
-      part(head,[0,1.68,0],null,null,SKIN), part(shako,[0,1.88,0],null,null,BLACK),
-      part(box(0.11,0.34,0.14),[-0.14,0.98,0.05],null,[0.5,0,0],BREECH), part(box(0.11,0.34,0.14),[0.14,0.98,0.05],null,[0.5,0,0],BREECH),
-      part(box(0.03,0.95,0.03),[0.28,1.55,0.10],null,[-0.55,0,0.15],STEEL)   /* sabre */
-    ])
+    /* the generic kit: the legwear's neutral, the plain cap, a brown horse */
+    infFixed: kitGeo("foot",{leg:KIT.mat.legwear,head:"generic"}),
+    horse: kitGeo("horse",{col:KIT.horse.brown}),
+    riderFixed: kitGeo("rider",{leg:KIT.mat.legwear,head:"generic"})
   };
   return FIG;
 }
+/* every geometry of the figure kit drawn by any block: the two coats and every cached class (the float checks read it) */
+function kitGeos(){ var K=figKit(); return [K.infCoat,K.rider].concat(Object.keys(KIT_GEO).map(function(k){ return KIT_GEO[k]; })); }
 
 /* how a formation is subdivided: battalions, or squadrons for horse */
 function subUnitsFig(f){ return subUnits(f); }
 
-function makeBlock(f){
+function makeBlock(f,id){
   var g=new THREE.Group();
   var body=new THREE.Group(), std=new THREE.Group();
   g.add(body); g.add(std);
-  var coat=parseInt(NATION[f.nation].fill.slice(1),16);
   var d=new THREE.Object3D();
   var arm=f.arm, str=f.strength||3000, K=figKit();
+  /* Stage 6C: the figures by class, from the formation's composition in appearance.js (decision 100); ud.dress lists what is drawn */
+  var KB=kitBlock(id);
   var ud={body:body, std:std, sw:1, sd:1, stdX:[], skirmish:null,
-          deployed:null, limbered:null, W0:6, D0:4, figs:[], seat:[], lastSw:-1, lastSd:-1};
+          deployed:null, limbered:null, W0:6, D0:4, figs:[], seat:[], lastSw:-1, lastSd:-1, dress:[]};
 
   /* one instanced mesh whose instances are laid out from a base position table,
      so column and line are re-layouts of the same men rather than a stretched box */
@@ -888,6 +944,22 @@ function makeBlock(f){
     body.add(m);
     ud.figs.push({mesh:m,base:base,rots:rots,n:pts.length,src:pts});
     return m;
+  }
+  /* Stage 6C: figures by class. unitDress[i] is the class of drawn unit i (a battalion, a squadron, or one rider), null for the generic
+     appearance; unitPts[i] its men. One mesh set per class, its instances in unit order, so that showBattalions can show the first k
+     units; role names what the figures are (ranks, riders, escort) */
+  function classMeshes(unitDress,unitPts,mounted,rotJ,role,bat){
+    var order=[], by={};
+    unitDress.forEach(function(dr,i){ var k=dr===null?"~":dr; if(!by[k]){ by[k]={dr:dr,units:[],pts:[]}; order.push(k); }
+      by[k].units.push(i); Array.prototype.push.apply(by[k].pts,unitPts[i]); });
+    order.forEach(function(k){ var c=by[k], kd=c.dr?kitDress(c.dr):kitGeneric(f.nation), ms;
+      ms=mounted?[figMesh(kitGeo("horse",{col:kd.horseCol}),0xFFFFFF,c.pts,rotJ), figMesh(K.rider,kd.coat,c.pts,rotJ),
+                  figMesh(kitGeo("rider",{leg:kd.leg,head:kd.head,cuirass:kd.cuirass}),0xFFFFFF,c.pts,rotJ)]
+                :[figMesh(K.infCoat,kd.coat,c.pts,rotJ), figMesh(kitGeo("foot",{leg:kd.leg,head:kd.head,gunner:kd.gunner}),0xFFFFFF,c.pts,rotJ)];
+      var rec={dress:kd.dress, kd:kd, role:role, mounted:mounted, figures:c.pts.length, units:c.units, meshes:ms};
+      ud.dress.push(rec);
+      ms.forEach(function(m,j){ m.userData.kit={dress:kd.dress, role:role, part:mounted?["horse","coat","fixed"][j]:["coat","fixed"][j]};
+        if(bat){ var fg=ud.figs[ud.figs.length-ms.length+j]; fg.units=c.units; ud.batFigs.push(fg); } }); });
   }
   /* anything else that stands on the ground - skirmishers, gun crews, teams, guns, limbers, tents -
      is registered with its designed layout, and re-seated with the men */
@@ -966,15 +1038,17 @@ function makeBlock(f){
   ud.showBattalions=function(k){
     if(!ud.batFigs||!ud.perBat) return;
     k=Math.max(1,Math.min(ud.nBat,k));
-    ud.batFigs.forEach(function(fg){ fg.mesh.count=Math.max(1,k*ud.perBat); });
+    /* Stage 6C: each class's mesh holds its own battalions, in order: it shows those among the first k (none: the mesh is hidden) */
+    ud.batFigs.forEach(function(fg){ var u=fg.units?fg.units.filter(function(b){ return b<k; }).length:k;
+      fg.mesh.count=Math.max(1,u*ud.perBat); fg.mesh.visible=u>0; });
     ud.shownBat=k;
   };
 
   if(arm==="hq"){
     ud.W0=6.0; ud.D0=5.0;
-    var marq=new THREE.Mesh(GEO.tent, matte({color:0xD8D1BC,flatShading:true}));
+    var marq=new THREE.Mesh(GEO.tent, matte({color:KIT.gear.marquee,flatShading:true}));
     marq.position.y=1.28; marq.castShadow=true; body.add(marq);
-    var tents=imesh(GEO.tent,0xC4BCA6,4);
+    var tents=imesh(GEO.tent,KIT.gear.tent,4);
     for(var t0=0;t0<4;t0++){
       var ta=t0/4*Math.PI*2+0.6;
       d.scale.set(0.5,0.5,0.5); d.rotation.set(0,ta,0);
@@ -987,7 +1061,8 @@ function makeBlock(f){
       var a=e/12*Math.PI*2, rr=3.6+srnd(e)*1.0;
       esc.push([Math.cos(a)*rr,0,Math.sin(a)*rr*0.75,a+1.57]);
     }
-    figMesh(K.horse,0xFFFFFF,esc,0.3); figMesh(K.rider,coat,esc,0.3); figMesh(K.riderFixed,0xFFFFFF,esc,0.3);
+    /* the escort by class (6C): the headquarters' composition, one rider at a time */
+    classMeshes(kitAllocate(KB.horse,esc.length),esc.map(function(q){ return [q]; }),true,0.3,"escort",false);
     ud.stdX=[0];
   }
   else if(arm==="art"){
@@ -996,7 +1071,7 @@ function makeBlock(f){
     var dep=new THREE.Group(), lim=new THREE.Group();
     body.add(dep); body.add(lim);
     ud.deployed=dep; ud.limbered=lim;
-    var bar=imesh(GEO.barrel,0x35322C,guns), whl=imesh(GEO.wheel,0x6B563C,guns*2), tra=imesh(GEO.trail,0x5A4832,guns);
+    var bar=imesh(GEO.barrel,KIT.gear.barrel,guns), whl=imesh(GEO.wheel,KIT.gear.wheel,guns*2), tra=imesh(GEO.trail,KIT.gear.trail,guns);
     var nw=0, crew=[];
     for(var q=0;q<guns;q++){
       var gx=(q-(guns-1)/2)*2.7, jz=(srnd(q)-0.5)*0.6;
@@ -1011,10 +1086,13 @@ function makeBlock(f){
     }
     dep.add(bar); dep.add(whl); dep.add(tra);
     seatable(bar,false,false); seatable(whl,false,false); seatable(tra,false,false);
-    /* crews: the same figure kit, parented to the deployed group so they limber up with the guns */
+    /* crews: the gunners' own figure (6C: no musket or pack) in their class, parented to the deployed group so they limber up with the guns */
+    var gk=kitAllocate(KB.foot,1)[0], gd=gk?kitDress(gk):kitGeneric(f.nation);
     var cM=new THREE.InstancedMesh(K.infCoat,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),crew.length);
-    var fM=new THREE.InstancedMesh(K.infFixed,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),crew.length);
-    var cc=new THREE.Color(), tint=lin(coat);
+    var fM=new THREE.InstancedMesh(kitGeo("foot",{leg:gd.leg,head:gd.head,gunner:true}),matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),crew.length);
+    cM.userData.kit={dress:gd.dress,role:"crew",part:"coat"}; fM.userData.kit={dress:gd.dress,role:"crew",part:"fixed"};
+    ud.dress.push({dress:gd.dress, kd:gd, role:"crew", mounted:false, figures:crew.length, units:[0], meshes:[cM,fM]});
+    var cc=new THREE.Color(), tint=lin(gd.coat);
     crew.forEach(function(pt,i){
       d.position.set(pt[0],pt[1],pt[2]); d.rotation.set(0,pt[3],0); d.scale.set(1,1,1); d.updateMatrix();
       cM.setMatrixAt(i,d.matrix); fM.setMatrixAt(i,d.matrix);
@@ -1024,7 +1102,7 @@ function makeBlock(f){
     cM.castShadow=fM.castShadow=true;
     dep.add(cM); dep.add(fM); seatable(cM,false,true); seatable(fM,false,true);
     /* the same battery hitched up and on the move */
-    var lb=imesh(GEO.limber,0x6A5741,guns), lw=imesh(GEO.wheel,0x6B563C,guns*4), lbar=imesh(GEO.barrel,0x35322C,guns);
+    var lb=imesh(GEO.limber,KIT.gear.limber,guns), lw=imesh(GEO.wheel,KIT.gear.wheel,guns*4), lbar=imesh(GEO.barrel,KIT.gear.barrel,guns);
     var mw=0, team=[];
     for(var q2=0;q2<guns;q2++){
       var lx=(q2-(guns-1)/2)*2.7;
@@ -1041,7 +1119,8 @@ function makeBlock(f){
     }
     lim.add(lb); lim.add(lw); lim.add(lbar);
     seatable(lb,false,false); seatable(lw,false,false); seatable(lbar,false,false);
-    var hM=new THREE.InstancedMesh(K.horse,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),team.length);
+    var hM=new THREE.InstancedMesh(K.horse,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),team.length);   /* the teams: one brown (decision 109) */
+    hM.userData.kit={dress:null,role:"team",part:"horse"};
     team.forEach(function(pt,i){ d.position.set(pt[0],pt[1],pt[2]); d.rotation.set(0,pt[3],0); d.scale.set(1,1,1); d.updateMatrix(); hM.setMatrixAt(i,d.matrix); });
     hM.castShadow=true; lim.add(hM); seatable(hM,false,true);
     lim.visible=false;
@@ -1056,14 +1135,16 @@ function makeBlock(f){
     var rowW=function(k){ return k*bw+(k-1)*gap; };
     var W1=rowW(front), W2=back?rowW(back):0;
     ud.W0=Math.max(W1,W2); ud.D0=back?(bd*2+3.4):bd;
-    var stdAt=[], pts=[];
+    var stdAt=[], pts=[], batPts=[];
     var files=cav?5:8, ranks=cav?2:3;
     function fill(bcx,bcz){
+      var bp=[];
       for(var r=0;r<ranks;r++) for(var k3=0;k3<files;k3++){
         var X=bcx-bw/2+bw*(k3+0.5)/files+(srnd(pts.length)-0.5)*0.10;
         var Z=bcz+bd/2-bd*(r+0.5)/ranks+(srnd(pts.length+41)-0.5)*0.08;
-        pts.push([X,0,Z,0]);
+        pts.push([X,0,Z,0]); bp.push(pts[pts.length-1]);
       }
+      batPts.push(bp);
     }
     for(var i=0;i<front;i++){
       var cx2=-W1/2+bw/2+i*(bw+gap);
@@ -1075,23 +1156,21 @@ function makeBlock(f){
       fill(cx3,-1.7);
     }
     ud.perBat=files*ranks; ud.nBat=n; ud.batFigs=[];
+    /* Stage 6C (decision 100): each squadron or battalion takes a class by its formation's composition; a mixed column's second
+       nation is its composition's (the Fifth Column's Austrian cuirassiers), no longer f.mix's share of riders in a nation's colour */
     if(cav){
-      figMesh(K.horse,0xFFFFFF,pts,0.10); var rid=figMesh(K.rider,coat,pts,0.10); figMesh(K.riderFixed,0xFFFFFF,pts,0.10);
-      ud.batFigs=ud.figs.slice(-3);
-      if(f.mix){   /* a mixed column: a share of the riders in the second nation's coat */
-        var mc=lin(parseInt(NATION[f.mix.nation].fill.slice(1),16)), mcc=new THREE.Color();
-        for(var mi=0;mi<pts.length;mi++) if(srnd(mi*11+5)<f.mix.share){ mcc.copy(mc).multiplyScalar(0.86+0.28*srnd(mi*7+3)); rid.setColorAt(mi,mcc); }
-        if(rid.instanceColor) rid.instanceColor.needsUpdate=true;
-      }
+      classMeshes(kitAllocate(KB.horse,n),batPts,true,0.10,"ranks",true);
     } else {
-      figMesh(K.infCoat,coat,pts,0.14); figMesh(K.infFixed,0xFFFFFF,pts,0.14);
-      ud.batFigs=ud.figs.slice(-2);
-      /* voltigeurs thrown out in front when the formation is going forward */
+      classMeshes(kitAllocate(KB.foot,n),batPts,false,0.14,"ranks",true);
+      /* skirmishers thrown out in front when the formation is going forward: the formation's largest foot class (6C) */
       var sk=[];
       for(var v=0;v<16;v++) sk.push([(srnd(v*3)-0.5)*ud.W0*1.06,0,ud.D0*0.5+2.4+srnd(v*5)*3.0,(srnd(v)-0.5)*1.2]);
+      var lk=kitLead(KB.foot), ld=lk?kitDress(lk):kitGeneric(f.nation);
       var skC=new THREE.InstancedMesh(K.infCoat,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),sk.length);
-      var skF=new THREE.InstancedMesh(K.infFixed,matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),sk.length);
-      var cs=new THREE.Color(), ts=lin(coat);
+      var skF=new THREE.InstancedMesh(kitGeo("foot",{leg:ld.leg,head:ld.head,gunner:ld.gunner}),matte({color:0xFFFFFF,vertexColors:true,flatShading:true}),sk.length);
+      skC.userData.kit={dress:ld.dress,role:"skirmish",part:"coat"}; skF.userData.kit={dress:ld.dress,role:"skirmish",part:"fixed"};
+      ud.dress.push({dress:ld.dress, kd:ld, role:"skirmish", mounted:false, figures:sk.length, units:[], meshes:[skC,skF]});
+      var cs=new THREE.Color(), ts=lin(ld.coat);
       sk.forEach(function(pt,i){
         d.position.set(pt[0],pt[1],pt[2]); d.rotation.set(0,pt[3],0); d.scale.set(1,1,1); d.updateMatrix();
         skC.setMatrixAt(i,d.matrix); skF.setMatrixAt(i,d.matrix);
@@ -1102,13 +1181,13 @@ function makeBlock(f){
       var screen=new THREE.Group(); screen.add(skC); screen.add(skF);
       screen.visible=false; body.add(screen); ud.skirmish=screen;
       seatable(skC,false,true); seatable(skF,false,true);
-      /* two mounted officers on the flanks */
+      /* two mounted officers on the flanks: no class of the table describes them, so generic (6C) */
       var off=[[-(ud.W0*0.5+1.5),0,ud.D0*0.5+0.9,0],[ud.W0*0.5+1.5,0,ud.D0*0.5+0.9,0]];
-      figMesh(K.horse,0xFFFFFF,off,0); figMesh(K.rider,coat,off,0); figMesh(K.riderFixed,0xFFFFFF,off,0);
+      classMeshes([null],[off],true,0,"officers",false);
     }
     if(f.battery){   /* an attached battery in front of the infantry (the Santon's eighteen guns) */
       var bg=Math.max(3,Math.min(6,Math.round(f.battery/3)));
-      var bb=imesh(GEO.barrel,0x35322C,bg), bwl=imesh(GEO.wheel,0x6B563C,bg*2), btr=imesh(GEO.trail,0x5A4832,bg), bw2=0;
+      var bb=imesh(GEO.barrel,KIT.gear.barrel,bg), bwl=imesh(GEO.wheel,KIT.gear.wheel,bg*2), btr=imesh(GEO.trail,KIT.gear.trail,bg), bw2=0;
       for(var bq=0;bq<bg;bq++){
         var bx=(bq-(bg-1)/2)*2.4, bz=ud.D0*0.5+1.6;
         d.scale.set(1.35,1.35,1.35);
@@ -1122,7 +1201,7 @@ function makeBlock(f){
     if(mixed){
       var sq=Math.max(5,Math.min(9,Math.round(str/850))), hp=[];
       for(var q3=0;q3<sq;q3++) hp.push([(q3-(sq-1)/2)*1.15,0,-ud.D0*0.5-2.4,0]);
-      figMesh(K.horse,0xFFFFFF,hp,0.1); figMesh(K.rider,coat,hp,0.1); figMesh(K.riderFixed,0xFFFFFF,hp,0.1);
+      classMeshes(kitAllocate(KB.horse,hp.length),hp.map(function(q){ return [q]; }),true,0.1,"riders",false);   /* one rider at a time (6C) */
     }
     ud.stdX = cav ? [0] : stdAt;
     ud.mounted = cav;   /* the standard's reference height: the mounted figure */
@@ -1131,7 +1210,7 @@ function makeBlock(f){
 
   /* standards: the cloth carries the nation, and never distorts with the deployment */
   var nStd=Math.max(1,ud.stdX.length);
-  var poles=imesh(GEO.pole,0x6A5B48,nStd);
+  var poles=imesh(GEO.pole,KIT.gear.pole,nStd);
   var flags=new THREE.InstancedMesh(GEO.flag,
     matte({map:flagTexture(f.nation),side:THREE.DoubleSide}),nStd);
   std.add(poles); std.add(flags);
@@ -1753,7 +1832,7 @@ function buildFormations(){
     var rec={id:id, f:f, leaf:isLeaf, delay:(hsh%100)/100*0.20, trailOn:false};   /* its counter and name are the map layer's (Stage 2D) */
 
     if(isLeaf){
-      var g=makeBlock(f);
+      var g=makeBlock(f,id);
       g.visible=false; scene.add(g);
       rec.block=g;
 
@@ -3989,7 +4068,9 @@ function paintLegend(){
   var O=OVERLAYS[curPhase]||{}, A=layerOn.arrows?(O.arrows||[]):[];
   function side(s){ return A.some(function(a){ return a.side===s&&a.kind!=="halt"; }); }
   var counters=layerOn.symbols&&mode!=="terrain"&&!cleanView, land=mode!=="staff";
-  var on={nation:counters||(land&&!isTrueScale()), foot:land&&isTrueScale(), "arrow-fr":side("fr"), "arrow-al":side("al"),
+  /* Stage 6C (section 4.3): the nation rows colour the counters, so they are shown only where counters are drawn; the footprint rows
+     also where decision 107's side footprint is drawn (Position confidence off) */
+  var on={nation:counters, foot:land&&(isTrueScale()||!!CONF.shown.side), "arrow-fr":side("fr"), "arrow-al":side("al"),
           halt:A.some(function(a){ return a.kind==="halt"; }), bound:layerOn.arrows&&(O.bounds||[]).length>0, plan:!!planSide,
           badge:counters, analysis:!!layerOn.analysis, contours:!!layerOn.contours&&!cleanView,
           wood:!land, village:!land,   /* Stage 2E: the paper map's own symbology */
@@ -4000,8 +4081,9 @@ function paintLegend(){
           /* Stage 5D: the skeleton's rows, for what it draws on screen */
           "skel-a":!!SKEL.shown.A, "skel-b":!!SKEL.shown.B, "skel-c":!!SKEL.shown.C, skel:!!(SKEL.shown.line||SKEL.shown.A||SKEL.shown.B||SKEL.shown.C),
           routes:!!ROUTES.shown,   /* Stage 5F: the ordered routes */
-          /* Stage 6C (section 6.4): what the figures and the standards are, wherever figures are drawn */
-          figures:land&&!isTrueScale(), standards:land&&!isTrueScale()};
+          /* Stage 6C (sections 4.3, 6.4): what the figures and the standards are, wherever figures are drawn; the name's side mark
+             wherever the landscape draws names */
+          figures:land&&!isTrueScale(), standards:land&&!isTrueScale(), sidemark:mode==="terrain"&&textOn()};
   on.badge=on.badge||(mode==="terrain"&&textOn());
   var key=JSON.stringify(on);
   if(key===_lgKey) return;
@@ -4275,7 +4357,7 @@ function updateVisibility(){
   var labels = textOn();
   lodEch = wantCorps?"corps":"div";
   /* Stage 5B: which grades are drawn on screen (the legend's rows), and the paper map's cap on a mark's size on screen */
-  var confShown={A:false,B:false,C:false}, confCap=0;
+  var confShown={A:false,B:false,C:false,side:false}, confCap=0;
   if(mode==="staff"&&layerOn.confidence){ var frc=MAPCAM.freeRect(); confCap=CONF.CAP*Math.min(frc[2]-frc[0],frc[3]-frc[1]); }
 
   /* which counter the map layer draws (Stage 2D): its position on the map, or none */
@@ -4315,15 +4397,22 @@ function updateVisibility(){
     /* the ground mark (Stage 5B, section A.4): at 1x on the landscape the true-scale footprint (decision 34), drawn by its position
        grade while "Position confidence" is on and crisp when it is off; elsewhere (4x, 10.33x, the paper map) the grade's mark under
        the figures or the counters, while it is on (decision 85). rec.foot is the 1x mark, rec.conf every other */
-    var foot1=showBlocks&&trueScale&&!!p&&!unc&&!own5, graded=!!p&&!own5&&(!!layerOn.confidence||unc||ownEye), mk=foot1?"foot":(graded?"conf":null);
+    var foot1=showBlocks&&trueScale&&!!p&&!unc&&!own5, graded=!!p&&!own5&&(!!layerOn.confidence||unc||ownEye);
+    /* Stage 6C (owner decision 107): a side cue always. With "Position confidence" off, a plain crisp footprint in the side's colour
+       (grade A's mark, whatever the grade) stays under every formation drawn as figures, in Study, Watch and Clean: once coats follow
+       the sources (decision 97) a coat says nothing of side, and the name's mark and the counter are not drawn everywhere */
+    var side7=!graded&&!foot1&&rec.block.visible&&!own5;
+    var mk=foot1?"foot":((graded||side7)?"conf":null);
+    rec.sideMark=side7;
     if(mk){
       if(!rec[mk]){ rec[mk]=makeConfMark(); scene.add(rec[mk]); }
       if(!rec.block.visible) poseBlock(rec,id,liveStatus(id,curPhase));
-      var fu=rec.block.userData, g=unc?"C":(graded?confAt(id,clock).cf:"A"), side=TOKENS.sym.side[sideOfNation(f.nation)].base;
+      var fu=rec.block.userData, g=unc?"C":(graded?confAt(id,clock).cf:"A"), side=TOKENS.sym.side[sideOfNation(f.nation)].base;   /* side7: "A", the footprint */
       var op=(foot1&&g==="A"?CONF.OP_TRUE:CONF.OP[g])*(dimmed?CONF.DIM:1);
       confPlace(rec[mk],g,wq[0],wq[1],rec.yaw||0,fu.W0*fu.sw,fu.D0*fu.sd,hexNum(side),op,confCap);
       rec[mk].visible=true;
       if(graded&&onScreen(p,0)) confShown[g]=true;
+      if(side7&&onScreen(p,0)) confShown.side=true;   /* the legend's footprint rows */
     }
     if(rec.foot&&mk!=="foot") rec.foot.visible=false;
     if(rec.conf&&mk!=="conf") rec.conf.visible=false;
@@ -5045,7 +5134,10 @@ function buildUI(){
    (status and claim colours reusing the side hues) are Stage 1. */
 function hexOf(n){ return "#"+("000000"+n.toString(16)).slice(-6).toUpperCase(); }
 var COLOUR_KEY={
+  /* the counters' fills (decision 1's symbology); since Stage 6C no coat is a nation's colour (decision 97) */
   fr:{word:"blue", hex:NATION.fr.fill}, ru:{word:"green", hex:NATION.ru.fill}, at:{word:"white", hex:NATION.at.fill},
+  /* the sides (decision 1): the names' marks, the counters' bands and the ground marks (TOKENS.sym.side) */
+  "side-fr":{word:"blue", hex:TOKENS.sym.side.fr.base}, "side-al":{word:"amber", hex:TOKENS.sym.side.al.base},
   "arrow-fr":{word:"blue", hex:hexOf(SIDE_COL.fr.attack)}, "arrow-al":{word:"amber", hex:hexOf(SIDE_COL.al.attack)},
   /* true scale draws formations as footprints in the side colour (confPlace, since 5B): the legend says so (2D) */
   "foot-fr":{word:"blue", hex:TOKENS.sym.side.fr.base}, "foot-al":{word:"amber", hex:TOKENS.sym.side.al.base}
@@ -5068,9 +5160,10 @@ function paintKey(){
   var K=COLOUR_KEY;
   function sw(k,cls){ return '<i class="'+(cls||"key-sw")+'" data-key="'+k+'" style="background:'+K[k].hex+'" aria-hidden="true"></i>'; }
   function cap(w){ return w.charAt(0).toUpperCase()+w.slice(1); }
-  p.innerHTML=sw("fr")+cap(K.fr.word)+" is the French army. The Allies are "+sw("ru")+K.ru.word+" for Russia and "+
-    sw("at")+K.at.word+" for Austria, and their movement arrows are drawn in "+sw("arrow-al","key-ar")+K["arrow-al"].word+
-    ". The high ground in the centre is the Pratzen plateau, and it decides the battle.";
+  /* Stage 6C (decision 108; section 4.3 item 4): the key names the symbology, not the coats, which follow the sources (decision 97) */
+  p.innerHTML="French formations are marked in "+sw("side-fr")+K["side-fr"].word+" and the Allies in "+sw("side-al")+K["side-al"].word+
+    ": on their names, their counters and the ground beneath them, and on the movement arrows. "+
+    "The high ground in the centre is the Pratzen plateau, and it decides the battle.";
 }
 /* ---- the first view ----
    The whole field from above (the Overview vantage) at 04:00, the first-run card alone near the
@@ -5543,6 +5636,62 @@ function compactCard(id){
   wrap.appendChild(mb);
   return wrap;
 }
+/* ---- Stage 6C (docs/STAGE6_SPEC.md section 4.3 item 7; owner decisions 101, 103, 104): the full dossier's "Dress" ----
+   The formation's classes from the appearance table, in its composition's order: each value as the source gives it (its English
+   rendering where there is one), with its grade, label and source, and how the figures draw it: the class KIT draws, or "generic".
+   Facings are described, never drawn (decision 104); where greatcoats are not settled the dossier says they may have been worn
+   (decision 101); a disputed value keeps every side. */
+var DRESS_UNIT={bn:["battalion","battalions"],sqn:["squadron","squadrons"],regt:["regiment","regiments"],coy:["company","companies"],
+  men:["man","men"],gun:["gun","guns"],bty:["battery","batteries"],staff:["staff","staff"]};
+function apShort(k){ var S=APPEARANCE_SOURCES[k]; return S?String(S.au).split(" (")[0]+" "+S.d:k; }
+function apCite(c){ var S=APPEARANCE_SOURCES[c.src]||{}; return String(S.au||c.src).split(" (")[0]+", "+(S.d||"")+(c.at?", "+c.at:""); }
+/* a note of the table in words: its source keys (e.g. "barres1923") as author and year */
+function apText(t){ return String(t).replace(/\b[a-z][a-z_]*\d[a-z0-9_]*\b/g,function(k){ return APPEARANCE_SOURCES[k]?apShort(k):k; }); }
+function apClaim(c){ return esc(apText(c.en||c.v))+' <span class="hh">('+esc(c.gr)+", "+esc(c.lab)+"; "+esc(apCite(c))+(c.dated?"; dated "+esc(c.dated):"")+')</span>'; }
+function apValue(v){
+  if(!v) return "not recorded";
+  if(v.gen) return "not settled by the sources read";
+  if(v.none) return "none shown by the sources read";
+  if(v.sides) return "disputed: "+v.sides.map(apClaim).join(" / ");
+  return apClaim(v);
+}
+function dressSection(id){
+  var A=(typeof appearanceOf==="function")?appearanceOf(id):null; if(!A) return null;
+  var u=units[id]&&units[id].block&&units[id].block.userData, drawn={}, extra=[];
+  (u&&u.dress||[]).forEach(function(r){ var k=r.dress||"~";
+    if(r.role==="ranks"||r.role==="escort"||r.role==="riders"||r.role==="crew"){
+      var w=r.role==="ranks"?(r.mounted?["squadron","squadrons"]:["battalion","battalions"]):["rider","riders"];
+      drawn[k]=r.role==="crew"?"drawn as the gun crews":r.units.length+" drawn "+(r.units.length===1?w[0]:w[1]); }
+    else if(r.role==="skirmish") extra.push("the skirmishers as "+(r.dress?DRESS[r.dress].name.split(" (")[0]:"the generic appearance"));
+    else if(r.role==="officers") extra.push("the two mounted officers generic (no class describes them)"); });
+  var h='';
+  A.parts.forEach(function(p){ var d=p.d, kd=kitDress(p.dress), U=DRESS_UNIT[p.unit]||[p.unit,p.unit], L=[], on=!!drawn[p.dress];
+    /* how it is drawn; nothing for a class too small for one drawn unit */
+    function as(nm){ return !on?'':nm==="generic"?' <span class="hh">&middot; drawn generic</span>':' <span class="hh">&middot; drawn '+esc(nm)+'</span>'; }
+    L.push((A.dominant?"its dominant class":esc(p.n+" "+(p.n===1?U[0]:U[1])))+(p.regts?' <span class="hh">('+esc(p.regts)+')</span>':'')+
+      " &middot; "+(drawn[p.dress]?esc(drawn[p.dress]):"not drawn: too small a share for one drawn unit"));
+    L.push("<i>Coat</i>: "+apValue(d.coat)+as(kd.coatName));
+    L.push("<i>Legwear</i>: "+apValue(d.legwear)+as(kd.legName));
+    L.push("<i>Headgear</i>: "+apValue(d.head)+as(kd.head==="generic"?"generic":kd.head+" (its shape)"));
+    if(d.cuirass) L.push("<i>Cuirass</i>: "+apValue(d.cuirass)+(kd.cuirass?as("("+kd.cuirass+")"):on?' <span class="hh">&middot; not drawn</span>':''));
+    if(d.greatcoat){ var g=d.greatcoat;
+      L.push("<i>Greatcoat</i>: "+(g.worn===false&&!g.sides&&!g.gen?"not worn in the fighting: "+apClaim(g):g.worn===true?"worn: "+apClaim(g):
+        "may have been worn; the sources read do not settle it"+(g.gen?"":": "+apValue(g)))+(on?' <span class="hh">&middot; the coat is drawn</span>':'')); }
+    if(d.facings&&!d.facings.gen) L.push("<i>Facings</i>: "+apValue(d.facings)+(on?' <span class="hh">&middot; not drawn</span>':''));
+    if(kd.mount==="horse"&&d.horse) L.push("<i>Horses</i>: "+apValue(d.horse)+as(kd.horse));
+    var C=d.carry&&COLOURS_CARRIED[d.carry];
+    if(C&&C.model) L.push("<i>Colours carried</i>: "+apValue(C.model));
+    h+=row(d.name.split(" (")[0], L.join("<br>")); });
+  if(A.others.length) h+=row("With it, not drawn", A.others.map(function(o){ var U=DRESS_UNIT[o.unit]||[o.unit,o.unit];
+    return esc((o.d?o.d.name.split(" (")[0]:o.dress)+": "+o.n+" "+(o.n===1?U[0]:U[1])); }).join("; ")+
+    ' <span class="hh">(another arm: the formation keeps the arm the order of battle gives it)</span>');
+  h+=row("Standards drawn", "plain cloths in the nation's symbol colour; their models are not yet drawn");
+  var sec=sect("Dress",h,true,"record");
+  sec.appendChild(el("p","hh",esc("Drawn where a value graded A or B settles it (A documented for 1805, B for the period and probable for 1805, C reconstructed or disputed); "+
+    "otherwise generic: the nation's symbol colour, a plain cap, legwear in one neutral. The drawn colours are design values, not measured shades."+
+    (extra.length?" Also: "+extra.join("; ")+".":"")+(A.note?" On the composition: "+apText(A.note):""))));
+  return sec;
+}
 function dossierFormation(id){
   var f=FORMATIONS[id];
   var isAgg=!f.track;
@@ -5589,6 +5738,8 @@ function dossierFormation(id){
   if(f.guns) many+=row("Guns", esc(String(f.guns)));
   if(f.strengthNote) many+=row("On the figures", esc(f.strengthNote));
   wrap.appendChild(sect("How many",many,true,"record"));
+  /* Stage 6C: what it wore, and how the figures draw it */
+  var dsx=f.track?dressSection(id):null; if(dsx) wrap.appendChild(dsx);
 
   /* WHERE, and how fast it is moving */
   var absent = f.track ? (notYetAt(id,clock) ? "Not yet on the field in this reconstruction"
@@ -5921,6 +6072,22 @@ function derivedArrivals(){
   return out;
 }
 /* what the sources sheet says about the movement arrows: the rule, and what every other arrow is */
+/* Stage 6C: the sources sheet's "How the troops are drawn", counted from the appearance table and the kit */
+function troopNotes(){
+  var ids=Object.keys(DRESS), n={coat:0,head:0,leg:0}, cu=[], hb=[];
+  ids.forEach(function(k){ var kd=kitDress(k); if(kd.coatName!=="generic") n.coat++; if(kd.head!=="generic") n.head++; if(kd.legName!=="generic") n.leg++;
+    if(kd.cuirass) cu.push(DRESS[k].name.split(" (")[0]); if(kd.mount==="horse"&&kd.horse!=="brown") hb.push(DRESS[k].name.split(" (")[0]+" ("+kd.horse+", "+DRESS[k].horse.gr+")"); });
+  return [
+    "The figures' dress follows the appearance table, a record of what each class of troops present wore, read from the sources with each value's source, page and grade (A documented for 1805; B documented for the period and probable for 1805; C reconstructed or disputed). Each drawn battalion or squadron takes a class in proportion to its formation's recorded composition; a class too small for one drawn unit is listed in the dossier, not drawn.",
+    "Of the table's "+ids.length+" classes, "+n.coat+" have their coat drawn, "+n.leg+" their legwear and "+n.head+" their headgear, where a value graded A or B settles them. Everything else is drawn generic: the coat in the nation's symbol colour (the counters' colour, not a cloth), legwear in one neutral, a plain cap. A disputed value is drawn generic and its sides are in the dossier.",
+    "The drawn colours are design values for the colours the sources name, not measured shades. Headgear is drawn by its shape in one dark colour (the metal helmets in metal); where a source names its colour, the dossier says so. Facings and lace are not drawn: below the figures' scale; the dossier says what was worn.",
+    "Greatcoats: no read source shows them worn in the fighting, so the coat is drawn; where the sources leave it open, the dossier says greatcoats may have been worn.",
+    "Cuirasses are drawn where the table records them: "+(cu.length?cu.join("; "):"none")+". Horses are drawn in one brown"+(hb.length?", except "+hb.join("; "):"")+"; guns and limbers in one colour for every army.",
+    "The two mounted officers of each infantry formation are drawn generic; the skirmish screen in the formation's largest class. Troops of another arm attached to a formation (its guns, its cavalry) are listed in its dossier, not drawn: a formation keeps the arm the order of battle gives it.",
+    "The standards are plain cloths in the nation's symbol colour: their patterns are not yet drawn, and the pattern of the Russian infantry's colours is an open question.",
+    "Side and nation are carried by the counters, the marks beside the names and the marks on the ground, never by a coat: French dragoons wore green and the Chevalier Guard white. With Position confidence off, a footprint in the side's colour stays under every formation drawn as figures."
+  ];
+}
 function arrowNotes(){
   var n=0, d=0, k={}, uns=[];
   Object.keys(OVERLAYS).forEach(function(ph){ (OVERLAYS[ph].arrows||[]).forEach(function(a){ n++;
@@ -5982,8 +6149,6 @@ function openSources(){
       :"The relief is drawn "+fmtFactor(DISPLAY.factor)+" times its true height; 1\u00d7 is true scale. The setting is a view, not the model: heights in metres, sightlines and the going classes do not change with it.")+'</li>'+
     '<li>'+esc("Symbols stand on the ground at two named scales: figures and standards about 45\u201370 times life size, buildings and trees about 10\u201315 times.")+'</li>'+
     '<li>'+esc("The standards' pole-to-figure ratio (1.6) is provisional: a design rule chosen so that the colour clears the ranks, not a sourced ratio, to be replaced in Stage 6.")+'</li>'+
-    /* Stage 6C, first commit (section 6.4; decision 98) */
-    '<li>'+esc("The figures are drawn in their nation's symbol colour, the counters' colour, with a generic cap: they are not uniforms. The standards are plain cloths in the same colour: their patterns are not sourced, and the pattern of the Russian infantry's colours is an open question.")+'</li>'+
     '<li>'+esc("The going layer's slope classes (hard for guns over "+GOING_TRUE_DEG[0].toFixed(2)+"\u00b0, severe over "+GOING_TRUE_DEG[1].toFixed(2)+"\u00b0 of true slope) are unsourced design values, provisional until a data task sources or renames them.")+'</li></ul>'+
     /* the tactical rate (2C precondition, docs/STAGE2_SPEC.md section M.13): design values, stated as such */
     '<h3>Arrivals the map derives</h3><ul class="bul">'+
@@ -5994,6 +6159,10 @@ function openSources(){
       return '<li>'+esc(f.name+" ("+fmtClock(r.b.w[0])+"\u2013"+fmtClock(r.b.w[1])+"): "+arrivalRuleText(r.b)+".")+'</li>'; }).join('')+'</ul>'+
     /* Stage 2C: the arrows (decisions 33 and 37), counted from OVERLAYS */
     '<h3>How the arrows are drawn</h3><ul class="bul">'+arrowNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
+    /* Stage 6C (docs/STAGE6_SPEC.md section 4.3 item 6): how the troops are drawn, counted from appearance.js and KIT */
+    '<h3>How the troops are drawn</h3><ul class="bul">'+troopNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
+    '<h3>The appearance table\'s sources</h3><ul class="bul">'+Object.keys(APPEARANCE_SOURCES).map(function(k){ var S=APPEARANCE_SOURCES[k];
+      return '<li>'+esc(S.au+", "+S.ti+" ("+S.pub+", "+S.d+")")+'</li>'; }).join('')+'</ul>'+
     '<h3>How the light is drawn</h3><ul class="bul">'+lightNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>';
   m.dataset.sources="1";
   m.classList.add("on");
@@ -6552,7 +6721,7 @@ var AUSTERLITZ_DEBUG=(function(){
   function visibleUp(o){ while(o){ if(!o.visible) return false; o=o.parent; } return true; }
   /* every visible man and horse (the figure kit), and the foot of every standard, against groundY */
   function figureError(){
-    var K=figKit(), geos=[K.infCoat,K.infFixed,K.horse,K.rider,K.riderFixed], m=new THREE.Matrix4(), p=new THREE.Vector3();
+    var geos=kitGeos(), m=new THREE.Matrix4(), p=new THREE.Vector3();   /* Stage 6C: every class's geometry */
     var worst=0, where="", n=0;
     Object.keys(units).forEach(function(id){
       var b=units[id].block; if(!b||!visibleUp(b)) return;
@@ -7128,6 +7297,101 @@ var AUSTERLITZ_DEBUG=(function(){
       N+" marks at 05:00, 09:50 and 14:40, "+S+" points sampled every 0.5 units across their triangles: "+U+" under the ground; the lowest "+(worst===1e9?"-":worst.toFixed(3))+
       " units above it ("+where+"); vertices within "+lift.toExponential(1)+" of their lift");
     setClock(keep,{instant:true,force:true,camera:false}); finishTween();
+  }
+  /* Stage 6C (docs/STAGE6_SPEC.md section 6.2, "What must hold"; owner decisions 97-104, 107, 109): the figures by class, the side cue,
+     the legend, the dossier. Each expectation is derived here from appearance.js and KIT, not read back from kitDress */
+  function kitDayChecks(){
+    var out=[], keep=clock, md=mode, pres=presentation, lc=layerOn.confidence, cam={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam};
+    function S(v,k){ return !!(v&&!v.gen&&!v.none&&!v.sides&&(v.gr==="A"||v.gr==="B")&&v[k]&&v[k]!=="generic"); }
+    function want(r,fid){ var d=r.dress?DRESS[r.dress]:null, nat=d&&NATION[d.nation]?d.nation:FORMATIONS[fid].nation, cu=null;
+      if(d&&d.cuirass&&!d.cuirass.gen&&!d.cuirass.sides&&d.cuirass.has===true&&(d.cuirass.gr==="A"||d.cuirass.gr==="B")) cu=KIT.cuirass[r.dress]||"MISSING";
+      return {coat:d&&S(d.coat,"c")?KIT.cloth[d.coat.c]:hexNum(NATION[nat].fill), generic:!(d&&S(d.coat,"c")), leg:d&&S(d.legwear,"c")?KIT.cloth[d.legwear.c]:KIT.mat.legwear,
+        head:d&&S(d.head,"h")&&KIT.head[d.head.h]?d.head.h:"generic", cuirass:cu, horse:d&&S(d.horse,"c")&&KIT.horse[d.horse.c]!==undefined?KIT.horse[d.horse.c]:KIT.horse.brown,
+        gunner:r.role==="crew"||!!(d&&d.arm==="art"&&d.mount==="foot")}; }
+    /* 1. every figure as its class's claims say */
+    var bad=[], nFig=0, nRec=0, nGen=0, heads={}, NATL=Object.keys(NATION).map(function(k){ return lin(hexNum(NATION[k].fill)); });
+    Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u) return;
+      (u.dress||[]).forEach(function(r){ nRec++; var w=want(r,id), M=r.meshes, coat=M[r.mounted?1:0], fix=M[r.mounted?2:1], tw=lin(w.coat), lo=r.role==="skirmish"?0.9:0.86, hi=r.role==="skirmish"?1.1:1.14;
+        if(w.generic) nGen++; heads[w.head]=(heads[w.head]||0)+r.figures;
+        var A=coat.instanceColor&&coat.instanceColor.array, n=A?A.length/3:0;
+        if(!A||n<r.figures) { bad.push(id+" "+(r.dress||"generic")+": no instance colours"); return; }
+        for(var i=0;i<r.figures;i++){ nFig++; var c=[A[i*3],A[i*3+1],A[i*3+2]], j=Math.max(c[0],c[1],c[2])/Math.max(tw.r,tw.g,tw.b);
+          if(j<lo-1e-3||j>hi+1e-3||Math.abs(c[0]-tw.r*j)>2e-4||Math.abs(c[1]-tw.g*j)>2e-4||Math.abs(c[2]-tw.b*j)>2e-4){ bad.push(id+" "+(r.dress||"generic")+" figure "+i+": coat not its class's"); break; }
+          if(!w.generic&&NATL.some(function(L){ var k=Math.max(c[0],c[1],c[2])/Math.max(L.r,L.g,L.b); return Math.abs(c[0]-L.r*k)<2e-4&&Math.abs(c[1]-L.g*k)<2e-4&&Math.abs(c[2]-L.b*k)<2e-4; })){ bad.push(id+": a sourced coat in a nation's symbol colour"); break; } }
+        var U=fix.geometry.userData||{};
+        if(U.kit!==(r.mounted?"rider":"foot")||U.head!==w.head||U.leg!==w.leg) bad.push(id+" "+(r.dress||"generic")+": headgear "+U.head+" (wants "+w.head+"), legwear "+U.leg+" (wants "+w.leg+")");
+        if(r.mounted&&(U.cuirass||null)!==w.cuirass) bad.push(id+" "+(r.dress||"generic")+": cuirass "+U.cuirass+" (wants "+w.cuirass+")");
+        if(!r.mounted&&!!U.gunner!==w.gunner) bad.push(id+" "+(r.dress||"generic")+": gunner "+U.gunner);
+        if(r.mounted&&((M[0].geometry.userData||{}).col!==w.horse)) bad.push(id+" "+(r.dress||"generic")+": its horses not their colour"); }); });
+    var unshaped=Object.keys(DRESS).filter(function(k){ return S(DRESS[k].head,"h")&&!KIT.head[DRESS[k].head.h]; });
+    if(unshaped.length) bad.push("settled headgear without a shape: "+unshaped.join(", "));
+    out.push({name:"figures: every figure drawn as its class's claims say, its coat KIT's colour for the class (times the jitter) or its nation's symbol colour where the table does not settle it; legwear, headgear, cuirass, horse and the gunner's figure likewise (decisions 98, 102-104, 109)",
+      ok:nRec>0&&!bad.length, detail:nFig+" figures in "+nRec+" class sets ("+nGen+" generic); headgear by figures: "+Object.keys(heads).map(function(h){ return h+" "+heads[h]; }).join(", ")+(bad.length?"; WRONG: "+bad.slice(0,5).join("; "):"")});
+    /* 2. decision 100: each drawn unit's class in proportion to the composition (the largest-remainder rule: within one unit of share x units) */
+    var bad2=[], nb=0;
+    Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData, A=appearanceOf(id); if(!u||!A) return;
+      ["ranks","escort","riders","crew"].forEach(function(role){ var R=(u.dress||[]).filter(function(r){ return r.role===role; }); if(!R.length) return; nb++;
+        var mounted=R[0].mounted, parts=A.parts.filter(function(p){ return p.mount===(mounted?"horse":"foot"); }), n=R.reduce(function(a,r){ return a+r.units.length; },0);
+        if(role==="ranks"&&n!==u.nBat) bad2.push(id+": "+n+" units drawn of "+u.nBat);
+        parts.forEach(function(p){ var got=R.filter(function(r){ return r.dress===p.dress; }).reduce(function(a,r){ return a+r.units.length; },0);
+          if(Math.abs(got-p.share*n)>=1) bad2.push(id+" "+role+": "+p.dress+" "+got+" of "+n+" (share "+p.share.toFixed(3)+")"); });
+        if(parts.length&&R.some(function(r){ return !r.dress; })) bad2.push(id+" "+role+": generic units beside its classes"); }); });
+    out.push({name:"figures: each drawn battalion, squadron or rider takes a class in proportion to its formation's recorded composition (decision 100: within one unit of its share)",
+      ok:nb>0&&!bad2.length, detail:nb+" unit groups in "+Object.keys(units).length+" blocks"+(bad2.length?"; WRONG: "+bad2.slice(0,5).join("; "):"")});
+    /* 3. decision 107: a side cue under every formation drawn as figures in the free rectangle, in Study, Watch and Clean, Position confidence
+       on and off: its ground mark, its name's side mark or its counter's band; with it off, the footprint where neither is drawn */
+    var bad3=[], nc=0, v=new THREE.Vector3(), seen={};
+    if(mode!=="terrain") setMode("terrain");
+    var sw=W(285,289), sy=displayHeight(sw[0],sw[1]), near=new THREE.Vector3(-0.55,0.62,0.56).normalize().multiplyScalar(26);
+    var VIEWS=[["the Pratzen vantage",VANTAGE.plateau],["close on the Pratzeberg",[sw[0]+near.x,sy+near.y,sw[1]+near.z,sw[0],sy,sw[1]]]];
+    ["study","watch","map"].forEach(function(pm){ setPresentation(pm);
+      [true,false].forEach(function(cf){ layerOn.confidence=cf;
+        VIEWS.forEach(function(V){ setClock(590,{instant:true,force:true,camera:false}); finishTween(); placeCamera(V[1]); syncViewOffset(true); settle(6); mlLayout();
+          var fr=landFreeRect(), VW=renderer.domElement.clientWidth||innerWidth, VH=viewH(); camera.updateMatrixWorld(true);
+          Object.keys(units).forEach(function(id){ var rec=units[id], p=posNow(id); if(!p||!rec.block.visible) return;
+            var wq=W(p[0],p[1]); v.set(wq[0],groundY(wq[0],wq[1]),wq[1]).project(camera); var sx=(v.x*0.5+0.5)*VW, sy2=(-v.y*0.5+0.5)*VH;
+            if(v.z>1||sx<fr[0]||sx>fr[2]||sy2<fr[1]||sy2>fr[3]) return; nc++; seen[pm+(cf?"+":"-")]=(seen[pm+(cf?"+":"-")]||0)+1;
+            var nm=ML.items["n:"+id], ct=ML.items["c:"+id], text=!!(nm&&nm.state==="on"&&nm.eFrame===ML.frame)||!!(ct&&ct.state==="on"&&ct.eFrame===ML.frame);
+            var ground=!!(rec.conf&&rec.conf.visible)||!!(rec.foot&&rec.foot.visible);
+            if(!ground&&!text) bad3.push(id+" ("+pm+", confidence "+(cf?"on":"off")+", "+V[0]+"): no side cue");
+            else if(!cf&&!text&&!rec.sideMark) bad3.push(id+" ("+pm+", off, "+V[0]+"): its ground mark is not the side footprint"); }); }); }); });
+    layerOn.confidence=lc; setPresentation(pres);
+    out.push({name:"identity: every formation drawn as figures in the free rectangle carries a side cue on screen, in Study, Watch and Clean, with Position confidence on and off (decision 107)",
+      ok:nc>0&&!bad3.length, detail:nc+" formation-views at 09:50 from the Pratzen vantage and close on the Pratzeberg ("+Object.keys(seen).map(function(k){ return k+" "+seen[k]; }).join(", ")+")"+(bad3.length?"; WRONG: "+bad3.slice(0,5).join("; "):"")});
+    /* 4. the legend's rows are what is drawn: the nation rows only with counters, the figures' and standards' rows with figures, the footprint
+       rows with decision 107's footprint */
+    var bad4=[], lg=document.querySelector(".legend");
+    function rows(k){ return [].slice.call(lg.querySelectorAll('[data-lg="'+k+'"]')); }
+    function shown(k){ return rows(k).length>0&&rows(k).every(function(e){ return !e.hidden; }); }
+    function hiddenAll(k){ return rows(k).every(function(e){ return e.hidden; }); }
+    setClock(590,{instant:true,force:true,camera:false}); finishTween(); placeCamera(VANTAGE.plateau); syncViewOffset(true);
+    [["terrain",true],["terrain",false],["hybrid",true]].forEach(function(c){ setMode(c[0]); layerOn.confidence=c[1]; settle(6); _lgKey=""; paintLegend();
+      var tag=c[0]+(c[1]?" +conf":" -conf");
+      if(!shown("figures")||!shown("standards")) bad4.push(tag+": the figures' or the standards' row hidden where figures are drawn");
+      if(c[0]==="terrain"&&!hiddenAll("nation")) bad4.push(tag+": the counters' rows shown without counters");
+      if(c[0]==="hybrid"&&layerOn.symbols&&!shown("nation")) bad4.push(tag+": the counters' rows hidden with counters");
+      if(c[0]==="terrain"&&!c[1]&&!shown("foot")) bad4.push(tag+": the footprint rows hidden under the side footprint");
+      if(c[1]&&!hiddenAll("foot")) bad4.push(tag+": the footprint rows shown at 4x with Position confidence on"); });
+    setMode("staff"); settle(4); _lgKey=""; paintLegend(); if(!hiddenAll("figures")||!hiddenAll("standards")) bad4.push("paper map: the figures' rows shown without figures");
+    setMode("terrain"); layerOn.confidence=lc; settle(4); _lgKey=""; paintLegend();
+    out.push({name:"legend: the rows are what is drawn: the nation colours as the counters' only where counters are drawn; the figures' and the standards' rows where figures are; the footprint rows under decision 107's footprint",
+      ok:!bad4.length, detail:"the landscape with Position confidence on and off, Landscape with counters, the paper map"+(bad4.length?"; WRONG: "+bad4.join("; "):"")});
+    /* 5. the dossier's Dress names every class with its grade or "not settled" / "disputed", and how it is drawn */
+    var bad5=[], nd=0;
+    Object.keys(units).forEach(function(id){ var A=appearanceOf(id); if(!A) return; var sx=dressSection(id); if(!sx){ bad5.push(id+": no Dress"); return; } nd++;
+      var t=sx.textContent, u=units[id].block.userData, on={};
+      (u.dress||[]).forEach(function(r){ if(r.dress&&r.role!=="skirmish"&&r.role!=="officers") on[r.dress]=1; });
+      A.parts.forEach(function(p){ var d=p.d, w=want({dress:p.dress,role:p.d.arm==="art"?"crew":"ranks"},id);
+        if(t.indexOf(d.name.split(" (")[0])<0) bad5.push(id+": "+p.dress+" not named");
+        ["coat","legwear","head"].forEach(function(a){ var v=d[a]; if(v&&!v.gen&&!v.sides&&!/^[ABC]$/.test(v.gr)) bad5.push(id+" "+p.dress+" "+a+": no grade"); });
+        if(on[p.dress]){ var cw=w.generic?"drawn generic":"drawn "+d.coat.c; if(t.indexOf(cw)<0) bad5.push(id+" "+p.dress+": the coat not said as drawn ("+cw+")"); } });
+      if(!/Standards drawn/.test(t)) bad5.push(id+": the standards' line missing"); });
+    out.push({name:"dossier: the full dossier's Dress names each class with its source and grade, or \"not settled\" or \"disputed\", and how its figures are drawn (section 4.3 item 7)",
+      ok:nd>0&&!bad5.length, detail:nd+" formations' Dress"+(bad5.length?"; WRONG: "+bad5.slice(0,5).join("; "):"")});
+    if(mode!==md) setMode(md);
+    setClock(keep,{instant:true,force:true,camera:false}); finishTween();
+    landCam.position.copy(cam.p); orbitTarget.copy(cam.t); landCam.lookAt(orbitTarget); freeCam=cam.fc; syncViewOffset(true);
+    return out;
   }
   function confDayChecks(){
     var out=[], keep=clock, md=mode, bad=[], n=0, by={A:0,B:0,C:0}, ms0=MAPCAM.state();
@@ -7710,6 +7974,7 @@ var AUSTERLITZ_DEBUG=(function(){
     eyesDayChecks().forEach(function(c){ out.push(c); });   /* Stage 5E */
     routeDayChecks().forEach(function(c){ out.push(c); });  /* Stage 5F */
     dayTrackChecks().forEach(function(c){ out.push(c); });  /* Stage 5G */
+    kitDayChecks().forEach(function(c){ out.push(c); });    /* Stage 6C */
     setDisplayFactor(saveFactor);
     /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
     var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });
@@ -7905,13 +8170,20 @@ var AUSTERLITZ_DEBUG=(function(){
       else if(getComputedStyle(e).backgroundColor!==getComputedStyle(l).backgroundColor)
         mism.push(e.dataset.key+": "+getComputedStyle(e).backgroundColor+" against the legend's "+getComputedStyle(l).backgroundColor); });
     var txt=(document.getElementById("fr-key").textContent||"").replace(/\s+/g," ");
-    ["Blue is the French army","green for Russia","white for Austria","drawn in amber"].forEach(function(w){ if(txt.indexOf(w)<0) mism.push('missing "'+w+'"'); });
-    if(/amber is the russian/i.test(fr.textContent)) mism.push("still says amber is the Russian and Austrian army");
+    /* Stage 6C (decision 108; docs/STAGE6_SPEC.md section 4.3 item 4): the decided words, which name the marks that carry the sides, replace
+       the words that named coats as nations ("Blue is the French army", "green for Russia", "white for Austria"): a decided rule */
+    ["French formations are marked in blue and the Allies in amber","on their names, their counters and the ground beneath them","and on the movement arrows",
+     "the Pratzen plateau"].forEach(function(w){ if(txt.indexOf(w)<0) mism.push('missing "'+w+'"'); });
+    if(/green for russia|white for austria|blue is the french army|amber is the russian/i.test(fr.textContent)) mism.push("still names a coat colour as a nation's");
     function rgb(hex){ var n=parseInt(hex.replace("#",""),16); return "rgb("+((n>>16)&255)+", "+((n>>8)&255)+", "+(n&255)+")"; }
-    [["fr",NATION.fr.fill],["ru",NATION.ru.fill],["at",NATION.at.fill],["arrow-fr",hexOf(SIDE_COL.fr.attack)],["arrow-al",hexOf(SIDE_COL.al.attack)]].forEach(function(k){
+    /* the legend's swatches are the colours that draw what they name: the counters' fills (NATION), the sides (TOKENS.sym.side: the names'
+       marks, the bands, the ground marks) and the arrows (SIDE_COL) */
+    [["fr",NATION.fr.fill],["ru",NATION.ru.fill],["at",NATION.at.fill],["side-fr",TOKENS.sym.side.fr.base],["side-al",TOKENS.sym.side.al.base],
+     ["foot-fr",TOKENS.sym.side.fr.base],["foot-al",TOKENS.sym.side.al.base],["arrow-fr",hexOf(SIDE_COL.fr.attack)],["arrow-al",hexOf(SIDE_COL.al.attack)]].forEach(function(k){
       var l=lg.querySelector('[data-key="'+k[0]+'"]');
       if(!l||getComputedStyle(l).backgroundColor!==rgb(k[1])) mism.push("legend "+k[0]+" is not the drawing colour "+k[1]); });
-    ck("first run: the colour key agrees with the legend, and the legend with what is drawn", mism.length===0,
+    lg.querySelectorAll('[data-lg="nation"]').forEach(function(e){ if(!/^counters: /.test(e.textContent.trim())) mism.push('the nation row "'+e.textContent.trim()+'" does not say it colours the counters'); });
+    ck("first run: the key names the marks that carry the sides, not coats (decision 108); the legend's swatches are the colours that draw them", mism.length===0,
       mism.length?mism.join("; "):'"'+txt.slice(0,150)+'..."');
     /* Stage 6C, first commit (docs/STAGE6_SPEC.md section 6.4; decision 98): every standard a plain cloth in its nation's symbol colour,
        one texture per nation; the legend says what the figures and the standards are wherever figures are drawn */
@@ -7925,8 +8197,8 @@ var AUSTERLITZ_DEBUG=(function(){
         clothCol[nat]=Object.keys(seen).length+" colours";
         if(Object.keys(seen).length>2||dd[mid]!==((want>>16)&255)||dd[mid+1]!==((want>>8)&255)||dd[mid+2]!==(want&255)) clothBad.push(nat+": the cloth is not plain "+NATION[nat].fill+" ("+clothCol[nat]+")"); } });
     var lgFig=lg.querySelector('[data-lg="figures"]'), lgStd=lg.querySelector('[data-lg="standards"]');
-    if(!lgFig||!/symbol colour/.test(lgFig.textContent)||!/generic cap/.test(lgFig.textContent)) clothBad.push("the legend does not say the figures are generic");
-    if(!lgStd||!/plain cloths/.test(lgStd.textContent)||!/not sourced/.test(lgStd.textContent)) clothBad.push("the legend does not say the standards are generic");
+    if(!lgFig||!/dress as sourced/.test(lgFig.textContent)||!/symbol colour/.test(lgFig.textContent)||!/plain cap/.test(lgFig.textContent)) clothBad.push("the legend does not say how the figures are dressed");
+    if(!lgStd||!/plain cloths/.test(lgStd.textContent)||!/not yet drawn/.test(lgStd.textContent)) clothBad.push("the legend does not say the standards are generic");
     ck("standards: plain cloths in the nation's symbol colour, labelled generic in the legend (decision 98)", nCloth>0&&!clothBad.length,
       nCloth+" blocks' standards; "+Object.keys(clothCol).map(function(k){ return k+" "+NATION[k].fill+" ("+clothCol[k]+": the cloth and its lines)"; }).join(", ")+(clothBad.length?"; WRONG: "+clothBad.slice(0,5).join("; "):""));
 
