@@ -1,0 +1,41 @@
+{
+ "about": "Quotes whose source text has no usable OCR here (a fold-out table never OCR'd, pre-reform Russian OCR too damaged to match), checked by eye on the page image during 6B. verify-quotes.js marks a claim citing src at a locator beginning with 'at' as checked on that image.",
+ "checked": [
+  {
+   "src": "schoenhals1873",
+   "at": "p. 177",
+   "page": "https://archive.org/download/derkriegindeuts00schgoog/page/n181_w1600.jpg",
+   "what": "the order of battle, Kienmayer and Columns I-IV: every regiment, battalion, squadron and figure quoted in COMPOSITION"
+  },
+  {
+   "src": "schoenhals1873",
+   "at": "p. 178",
+   "page": "https://archive.org/download/derkriegindeuts00schgoog/page/n182_w1600.jpg",
+   "what": "the order of battle, the V Column, Bagration and the Russian Guard: every line quoted in COMPOSITION"
+  },
+  {
+   "src": "psz44_2_1830",
+   "at": "p. 67",
+   "page": "https://archive.org/download/polnoesobraniezakonovrossijskojimperiis27/page/n1051_w1600.jpg",
+   "what": "orders nos. 20,927 (1803), 21,621 (13 February 1805) and 21,969 (23 December 1805)"
+  },
+  {
+   "src": "viskovatov11_1853",
+   "at": "p. 1",
+   "page": "https://archive.org/download/viskovatovaleksandrvasilevich180418512/page/n10_w1200.jpg",
+   "what": "'9-го Августа 1801—состоявшіе въ Кирасирскихъ полкахъ кирасы отмѣнены'"
+  },
+  {
+   "src": "viskovatov10_1900",
+   "at": "p. 196",
+   "page": "https://archive.org/download/istoricheskoeopisanieodezhdyivooruzhenij12/page/n199_w1200.jpg",
+   "what": "'Мундиръ полагался двубортный, изъ темнозеленаго сукна'; the coat's measures 'полагая ростъ человѣка въ 2 арш. 9 вершковъ'"
+  },
+  {
+   "src": "viskovatov11_1853",
+   "at": "p. 83",
+   "page": "https://archive.org/download/viskovatovaleksandrvasilevich180418512/page/n92_w1200.jpg",
+   "what": "the Mariupol Hussars' 1802 colours: 'ментія синяя, дуламанъ бѣлый'"
+  }
+ ]
+}

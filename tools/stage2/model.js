@@ -21,7 +21,7 @@ function appDecls(names){
 }
 function load(extra){
   const ctx={console}; vm.createContext(ctx);
-  const code=[THREE_STUB, read("geo.js"), read("tokens.js"), read("data.js"), read("analysis.js"), read("world.js"),
+  const code=[THREE_STUB, read("geo.js"), read("tokens.js"), read("data.js"), read("appearance.js"), read("analysis.js"), read("world.js"),
     appDecls(["OVERLAYS","T_MIN","KM_PER_MAP","SPEED_CEIL","TACTICAL_RATE","clamp01","phaseAt","anchorList","legPath","pointOnPath","legWindow","legAt","posAtClock","notYetAt","goneAt",
               "leavesOf"].concat(extra||[])),
     "this.X={GEOREF,FORMATIONS,PHASES,OVERLAYS,EVENTS,W,height,hAt,localHeight,anchorList,legPath,pointOnPath,legWindow,legAt,posAtClock,notYetAt,goneAt,leavesOf,"+

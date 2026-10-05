@@ -197,9 +197,9 @@ Object.keys(FORMATIONS).forEach(id=>{scan(id,FORMATIONS[id].role);scan(id,FORMAT
     "can see the whole Allied left","Not visible from the plateau","the fourth, the counter-march","Cut the Brunn road",
     "Emperor Francis I present","Chevalier Guard and Guard cavalry regiments","had stalled because Liechtenstein",
     "Vienna road at Raigern","both emperors in attendance","Guard infantry break two French battalions and carry off"];
-  const src={}; ['data.js','analysis.js','world.js','app.js','shell.html'].forEach(f=>src[f]=fs.readFileSync(f,'utf8'));
+  const src={}; ['data.js','appearance.js','analysis.js','world.js','app.js','shell.html'].forEach(f=>src[f]=fs.readFileSync(f,'utf8'));   /* appearance.js since Stage 6B */
   let n=0; RETIRED.forEach(ph=>Object.keys(src).forEach(f=>{ if(src[f].indexOf(ph)>=0){ fail("retired",`${f} still says "${ph}"`); n++; } }));
-  console.log("retired claims checked: "+RETIRED.length+" phrases across 5 sources, "+n+" found"); }
+  console.log("retired claims checked: "+RETIRED.length+" phrases across "+Object.keys(src).length+" sources, "+n+" found"); }
 
 /* every reconstruction-graded track entry must carry a claim or confidence */
 Object.keys(units).forEach(id=>{

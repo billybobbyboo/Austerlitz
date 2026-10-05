@@ -20,7 +20,7 @@ if [ $code -ne 0 ]; then echo "!!! height guard FAILED (full output in /tmp/out_
 for t in css-test.js test.js geo-test.js terrain-test.js audit.js sim-test.js redteam.js runtime-test.js binding-test.js; do
   timeout 600 node $t > /tmp/out_$t.txt 2>&1; code=$?
   echo "=== $t  exit=$code"
-  grep -E "CSS ERRORS|behaviour checks|^ERRORS|^warnings|order of battle checks|geo-test:|VIOLATIONS \(|disagreements|worst agreement|explicit tolerance|most men on the field|tour stop|^findings|retired claims|^errors:|console.warn unique|  ! |FAIL|BROKEN|FLOATS|DISAGREE|outside|summit ordering|falls downstream|mere:|THROWN|E DRIVE|parent|detachment|command post|^binding|^unsettled|^dashed or segmented" /tmp/out_$t.txt | cut -c1-200
+  grep -E "CSS ERRORS|behaviour checks|^ERRORS|^warnings|order of battle checks|appearance checks|geo-test:|VIOLATIONS \(|disagreements|worst agreement|explicit tolerance|most men on the field|tour stop|^findings|retired claims|^errors:|console.warn unique|  ! |FAIL|BROKEN|FLOATS|DISAGREE|outside|summit ordering|falls downstream|mere:|THROWN|E DRIVE|parent|detachment|command post|^binding|^unsettled|^dashed or segmented" /tmp/out_$t.txt | cut -c1-200
   if [ $code -ne 0 ] || grep -Eq "$FAILS" /tmp/out_$t.txt; then
     echo "!!! $t FAILED (exit=$code; full output in /tmp/out_$t.txt)"
     failed="$failed $t"

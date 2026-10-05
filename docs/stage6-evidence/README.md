@@ -24,3 +24,19 @@ source). Every external row in them is a lead to read in 6B, not evidence.
 | `leads-ru-uniforms.md` | 2.3 | none: Russian dress (the 1802 coat, the 1805 headgear orders and the dispute about practice, jägers and dragoons light green, no cuirasses, hussars) and the order of battle beyond the data |
 | `leads-ru-colours.md` | 2.4, 2.7 | none: Russian colours and standards (the 1797, 1800 and 1803 patterns, numbers, the pole, colours taken at Austerlitz); the rows that rested on copies held in other GitHub repositories are marked EXCLUDED and ungraded |
 | `leads-at.md` | 2.5 | none: the Austrian order of battle, dress (the 1798 regulation, the Grenz question, cuirassiers, chevaulegers, artillery) and colours (the 1792 pattern, Leibfahne and Ordinarfahne, flames, 161 x 142 cm, the decree of 22 June 1805) |
+
+## Stage 6B (the evidence read; `appearance.js`)
+
+Produced while the network reached the libraries (decision 96). The claims themselves are in `appearance.js`; these files are how they
+were read and checked.
+
+| file | section | script |
+|---|---|---|
+| `readings-fr-uniforms.md` | 6.6 | none (the reading pass): French dress class by class, every work read with its quotations, grades, disagreements, not found |
+| `readings-fr-colours.md` | 6.6 | none: French colours, eagles, standards, the 1804 model, the counts carried, the measures behind the ratio |
+| `readings-ru-uniforms.md` | 6.6 | none: Russian dress (Viskovatov, the PSZ orders), headgear on the day, greatcoats, horse colours |
+| `readings-ru-colours.md` | 6.6 | none: Russian colours and standards, the 1802 order, the patterns of 1797-1803, losses, the recruits' stature |
+| `readings-at.md` | 6.6 | none: Austrian dress (the 1805 army list's facings, the Grenz question), colours, stature |
+| `readings-composition.md` | 6.6 | none: each formation's regiments and battalions or squadrons (the French returns, Schönhals, Mikhailovsky-Danilevsky, Stutterheim, the Materialien) |
+| `readings-eyewitness.md` | 6.6 | none: what participants say was worn and carried on the day; weather; horses; gun carriages |
+| `quote-check.md` | 6.6 | `verify-quotes.js --md`: every quote of `appearance.js` searched for in its source's text (archive.org OCR, Gallica's page OCR, e-rara's text); found, found with OCR differences, checked on the page image (`quote-check-images.json`), not found, or not checkable here |

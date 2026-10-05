@@ -1,9 +1,87 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 6B: the historical appearance read and tabled (docs/STAGE6_SPEC.md §6.1, §6.6; owner decisions 96-110)
+
+**Status: for review. A data task: `appearance.js` (new, guarded) and tour stop 1; nothing drawn changes. `austerlitz-command-map.html`:
+1,661,910 bytes, md5 `7fc0f6c3023133aeb73d5b65479bc8a8` (was 1,528,608 bytes, md5 `4c12cac6…`, Stage 5G).** `check:baseline` moves to
+this build; `check:data` moves to its copy, `archive/stage6b-7fc0f6c3.html` (from `archive/stage4d-9b13adbf.html`).
+
+**Decisions (owner, 5 October 2026).** The owner opened the session's network (decision 96) and accepted every recommendation of
+`docs/STAGE6_SPEC.md` §7, recorded as decisions 96-110 (§0.4). Asked for 6B first, so §6.4's honest drawing becomes the first commit of
+6C, as §6.4 allows (decision 110).
+
+**What changed (data; every declaration listed).**
+- Added, under "historical datasets" in `tools/visual/data-invariance.js`: `APPEARANCE_GRADE` (the Stage 6 grades A, B, C),
+  `APPEARANCE_VOCAB` (the colour and headgear classes a value may take, "generic" among them), `APPEARANCE_SOURCES` (62 works read),
+  `DRESS` (49 dress classes: France 21, Russia 18, Austria 10), `COMPOSITION` (the 32 leaf formations' regiments and battalions or
+  squadrons; four by their dominant class: `gqg`, `ahq`, `buxhowden`, `heightguns`), `COLOURS_CARRIED` (24 entries), `STANDARD_MEASURES`
+  (the staff and the stature per nation, decision 106); and, under a new group "historical appearance model (Stage 6B)", `appearanceOf`
+  (a formation's classes and their shares within its foot and mounted groups). Was: nothing; is: the table; why: decisions 99-101, 105, 106.
+- Changed: `TOUR` (stop 1, `analysis.js`), decision 108. Was "The blue army to the west is French; to the east are the Russians in green
+  and the Austrians in white, whose arrows and outlines are drawn in amber." Is "The French army, marked in blue, is to the west; to the
+  east are the Russians and the Austrians, marked in amber." Why: the coats will follow the sources (decision 97); the side is carried by
+  the marks.
+- Unchanged: every other data declaration (`data.js` untouched; `SOURCE_NOTE`'s two open questions stay, decision 105).
+- `build.py` loads `appearance.js` after `data.js`; `test.js` and `tools/stage2/model.js` load it too.
+
+**What was read (fact).** Seven reading passes read the works of the Part A registers and more: the French returns and orders of 1805
+(Alombert and Colin t. IV; the *Correspondance* t. IX-XVI), the regulations in force (Berriat 1812; the generals' regulation of an XII),
+Bardin, Fieffé, Perrot, Martinet's plates, Regnault, Hollander, Morvan; the Russian code of laws (PSZ t. 27, 28, 44/2) and Viskovatov
+(parts 9-18); the Austrian army list for 1805, Teuber, Dolleczek, Wrede, Vaníček; the allied orders of battle (Schönhals 1873,
+Mikhailovsky-Danilevsky 1844 and 1846, Stutterheim 1806, the *Materialien* of 1806); and participants (Thiébault, Barrès, Coignet, Savary,
+Lejeune, Marbot). Their registers, with every quotation and locator: `docs/stage6-evidence/readings-*.md`. Nothing from an encyclopedia,
+a search summary or a GitHub-held copy.
+
+**Found (fact; grades in the table; §6.6)**
+- **The French line infantry wore the hat on the day** ("les chapeaux au bout des baïonnettes", 30th Bulletin of 3 December, A); the
+  shako only from the renewal of 1807 (decree of 25 February 1806). The light infantry wore the shako (B).
+- **French greatcoats are disputed for the day** (none received in Vandamme's division on 30 October; "plus qu'il ne m'en faut" on
+  18 November; still to be made on 14 December, all A); the Guard marched in full dress (B). The coat is drawn (decision 101).
+- **Russian infantry**: dark green with white trousers; the musketeers in black cloth caps since 1803, replaced by the 1805 pattern as the
+  old ones wore out (PSZ no. 21,621, A); not the bicorne, not a shako of 1807. The grenadiers' cap on the day is not established.
+- **Russian jägers and dragoons in light green until 1807; Russian cuirassiers without cuirasses** (abolished 1801), in the black crested
+  helmet of 1803.
+- **Austrian line infantry in white with the 1805 army list's facings** (A); the helmet disputed; the Grenz coat disputed (white by
+  regulation, white and brown seen): the open question stays.
+- **Colours**: the French 1804 lozenge, 81 cm, one eagle per battalion (B; the 4e's 1st battalion eagle lost, A); the Russian infantry two
+  colours per battalion (1802) of Paul I's issues, 142 cm square, pattern still open; Russian jägers and hussars none; the Austrian 1769
+  pattern, 161 x 142 cm, one or two per battalion disputed; no source shows colours with batteries or headquarters.
+- **The ratio's measures**: Russia, staff 3.20 m (spearhead 0.24 m) over a recruit minimum of 1.60 m (A); Austria, about 2.85 m over
+  1.65 m (B); France, no measured staff: 1.6 stays provisional.
+- **One horse colour at B** (the Guard horse grenadiers' black, Coignet, uncertain); French carriages olive with black ironwork (B), the
+  others not found: one colour stays (decision 109).
+- **Leads**: right, the French 1804 lozenge, the Russian cap orders of 1803 and 1805, light-green Russian dragoons and jägers, the Austrian
+  161 x 142 cm cloth, the Russian cuirassiers without cuirasses; not settled, O'Reilly's chevaulegers in white, Russian hussars without
+  standards, the French light cavalry's eagles; not found, "Gladkov".
+- **Data questions, not changed**: Drouet's and Rivaud's division numbers reversed in the 28 October return; the IV Column's Russian
+  battalions 12 (Schönhals) against `data.js`'s fourteen; the Empress's cuirassiers with Bagration or the Fifth Column; Ryazhsk or Ryazan;
+  the grenadier division's artillery on 26 October; the narrative's "45 standards" (Napoleon's claim of 5 December).
+
+**Tests (added).** `test.js`: the appearance checks (588): every leaf formation resolves to classes whose shares sum to 1 in each mount
+group, one unit per group; every value a claim with source, locator, grade, label and quote, a disputed value keeping each side, or
+generic (colours also "none shown"); grade A only with a source or document dated 1804-1805, or a regulation shown in force; a disputed
+headgear or colour drawn generic; every colours entry with a model, a count rule and a cloth; the standard's measures in metres or
+provisional with a reason; every source cited, every source a note names registered; SOURCE_NOTE's two questions kept while the table
+does not settle them. `runtime-test.js`: the table's dry run for all 32 blocks. `redteam.js`: the retired claims also checked in
+`appearance.js` (6 sources). `tools/stage6/verify-quotes.js` (not bundled): every quote searched for in its source's text; 309 quotes:
+103 found whole, 31 with OCR differences, 41 checked on the page images in this part (`quote-check-images.json`: the Schönhals order of
+battle, the PSZ cap orders, four Viskovatov pages), 56 not found in damaged OCR and 78 with no text layer reachable here, all recorded as
+read on the page images by the reading pass (`docs/stage6-evidence/quote-check.md`).
+
+**Checks on this build**
+(CHECKS-6B)
+
+**Not done, or open**
+- Nothing is drawn differently: the figures, flags and legend wait for 6C and 6D (and §6.4's honest drawing, the first commit of 6C).
+- Not reachable online: Malibran, Lienhart and Humbert, Fallou, Charrié, the Otto manuscript, Zvegintsov; Regnault read only to p. 42
+  (Gallica refused part of the day); HathiTrust refused throughout.
+- 134 quotes rest on the reading pass's page-image reading, not on a second check.
+- Historical: the open questions stay open (the Russian infantry colours, the Grenz coat); the disputes are kept, not resolved.
+
 ## 2026-10 · Stage 6 Part A: historical appearance, the specification (docs/STAGE6_SPEC.md)
 
-**Status: for review. No source file changed; `austerlitz-command-map.html` is unchanged: 1,528,608 bytes, md5
-`4c12cac6d458b02e3282237f4d1abb92` (Stage 5G).** `check:baseline` does not move; `check:data` does not move.
+**Status: merged (#39); the owner then accepted every recommendation of §7 (decisions 96-110). No source file changed;
+`austerlitz-command-map.html` was unchanged: 1,528,608 bytes, md5 `4c12cac6d458b02e3282237f4d1abb92` (Stage 5G).** `check:baseline` does not move; `check:data` does not move.
 - Recorded with this part: Stage 5G merged (#38), here (its entry's status), in `CLAUDE.md` and in `docs/STAGE5_SPEC.md`; Stage 5 is
   complete.
 

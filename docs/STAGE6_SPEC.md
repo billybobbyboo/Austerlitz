@@ -1,6 +1,8 @@
 # Historical appearance: specification (Stage 6, Part A)
 
-**Status: Part A, for review. No source file, no data and no build change.** Written against `main` at `f54fffa` (Stage 5G merged as
+**Status: Part A merged (#39); the owner accepted every recommendation of §7 (decisions 96-110, §0.4). 6B written, for review: what it found
+is §6.6.** Part A changed no
+source file, no data and no build. It was written against `main` at `f54fffa` (Stage 5G merged as
 #38; with it Stage 5 is complete), whose build `austerlitz-command-map.html` is 1,528,608 bytes, md5
 `4c12cac6d458b02e3282237f4d1abb92`. On it (the same build throughout: this part changes no source file) the checks were run and their
 results are in §6.0. Line numbers refer to that commit; the code is the source of truth, not the documents.
@@ -152,6 +154,29 @@ Each is stated; none is resolved here.
 9. **The day's colour count.** The data's narrative gives "about 180 guns and 45 standards" (`data.js:126`). The leads give Napoleon's
    own counts as 40 (the proclamation) and 45 (a letter from Brünn), and Russian specialist counts of 29-30 or at most 25 Russian
    colours (§2.4). Out of Stage 6's scope (a narrative figure, not an appearance); recorded for a data task (§6.1).
+
+### 0.4 Owner decisions 96-110 (the answers to §7 questions 1-15)
+
+Part A merged (#39). Before 6B the owner opened the session's network to every host ("full" network access) and accepted the
+recommendation of every question of §7, each as written there:
+
+| # | question | decision |
+|---|---|---|
+| 96 | 1, reaching the sources | 6B runs in a session whose network reaches the sources (the owner set the environment's network access to full). (6B) |
+| 97 | 2, decision 1's "and figure coats" | Ended: figures follow the sources; nation and side are carried only by symbology (the counters' bands and fills, the nation tag, the name's side mark, the ground marks, the arrows, the dossier). (6C, 6D) |
+| 98 | 3, an honest drawing | Yes: the figures labelled as symbol colours with a generic cap where unsourced, and the three flag patterns replaced by plain, labelled cloths until their models are sourced (§6.4). (6C) |
+| 99 | 4, where appearance data lives | A new guarded file, `appearance.js`, for the claims (classes, composition, colours carried, each with source and grade); a presentation table, `KIT`, for the drawn values and shapes (§5). (6B, 6C) |
+| 100 | 5, granularity | Each drawn battalion or squadron takes a class in proportion to its formation's sourced composition, else the formation's dominant class; mixed-arm formations keep the arm the data gives them (no splitting in Stage 6). (6B, 6C) |
+| 101 | 6, greatcoats | Drawn as the read sources show them worn on 2 December, by side and arm; while the evidence is disputed, the regulation coat, with the dossier saying greatcoats may have been worn. (6B, 6C) |
+| 102 | 7, the drawn colour values | The source names the colour; the drawn sRGB is a design decision recorded in `KIT` with its basis; no drawn cloth (or black) darker than decision 84's `#2E2B27`. (6C, 6D) |
+| 103 | 8, headgear silhouettes | One low-poly shape per sourced class; the generic cap where unsourced or disputed, with the dispute in the dossier. (6C) |
+| 104 | 9, facings and lace | No regimental facings or lace drawn; class-level features only where sourced and large (a cuirass); the dossier says what was worn. (6C) |
+| 105 | 10, the open questions of `SOURCE_NOTE` | Both stay open until read sources settle them; the Russian infantry's cloth and the Grenz drawn generic and labelled until then. (6B, 6D) |
+| 106 | 11, the standard's ratio | The staff's top (with its finial or eagle) over the man's height to his hat's top, from a measured staff of the period and a sourced stature, per nation; if 6B finds none, 1.6 kept, labelled provisional, its wording corrected. (6B, 6D) |
+| 107 | 12, a side cue always | With "Position confidence" off, a plain crisp footprint in the side's colour stays under every formation drawn as figures, in Study, Watch and Clean. (6C) |
+| 108 | 13, tour stop 1 and the first-run key | Both reworded to name the symbology, not the coats (§4.3's wording); tour stop 1 in 6B (`TOUR` is guarded data), the first-run card in 6C. (6B, 6C) |
+| 109 | 14, horses and equipment | Horses one brown unless 6B grades a horse colour A or B; gun carriages one colour unless each army's is sourced. (6B, 6C) |
+| 110 | 15, the order | §6.4, then 6B, 6C, 6D, as recommended; the owner, having opened the network, asked for 6B first, so §6.4's honest drawing becomes the first commit of 6C, as §6.4 itself allows ("It could be the first commit of 6C"). (all) |
 
 ## 1. Today (fact; read from the code and from the running page)
 
@@ -765,6 +790,77 @@ measured like 6C; it changes no datum and settles no open question. It could be 
 
 6B (data; needs access), then 6C (figures and identity), then 6D (standards); 6.4 first if the owner wants the drawing honest before the
 reading is done. Each part passes every check on its own and moves `check:baseline` (6B also `check:data`).
+
+### 6.6 What 6B found (the evidence read; `appearance.js`, `docs/stage6-evidence/readings-*.md`, `quote-check.md`)
+
+**How it was read (fact).** With the network open (decision 96), seven reading passes read the works of the registers and more: French
+returns and orders of 1805 (Alombert and Colin's t. IV, the *Correspondance* t. IX-XVI), the regulations in force (Berriat 1812, the
+generals' regulation of an XII), Bardin, Fieffé, Perrot, Martinet's plates, Regnault, Hollander, Morvan; the Russian code of laws (PSZ
+t. 27, 28, 44/2) and Viskovatov (parts 9-18); the Austrian army list for 1805 (*Militär-Schematismus*), Teuber, Dolleczek, Wrede, Vaníček;
+the allied orders of battle (Schönhals 1873, Mikhailovsky-Danilevsky 1844 and 1846, Stutterheim 1806, the *Materialien* of 1806); and
+participants (Thiébault, Barrès, Coignet, Savary, Lejeune, Marbot). 62 works are cited in `APPEARANCE_SOURCES` (38 specialist, 14 primary
+texts, 7 regulations, 2 objects, 1 contemporary image series). Nothing came from an encyclopedia, a search summary or a GitHub-held copy.
+Gallica refused the session for part of the day (HTTP 403), so Regnault was read only to p. 42 and some Gallica texts only through their
+page OCR; HathiTrust refused throughout. Malibran, Lienhart and Humbert, Fallou, Charrié, the Otto manuscript and Zvegintsov were not
+reachable online.
+
+**The table (fact).** 49 dress classes (France 21, Russia 18, Austria 10), every leaf formation's composition (32; four by their dominant
+class: the three headquarters and the plateau's guns), 24 colours entries and the standard's measures per nation. 276 sourced values,
+14 disputed values (31 sides kept), 71 generic values, 26 colours entries "none shown"; grades of the sourced values and sides: A 22, B 261,
+C 38. Of the 49 coats, 39 are settled at A or B, 4 at C, 2 disputed (the Grenz, O'Reilly's chevaulegers), 4 generic (the Italian Royal
+Guard, the Tirailleurs corses, the Wiener Jäger, two Austrian cavalry detachments); of the headgear, 34 settled, 6 at C, 5 disputed, 4
+generic. 309 quotes: 134 found in the sources' OCR text (31 of them with OCR differences), 41 checked on the page images in this part (the
+Schönhals order of battle, whose fold-out tables have no OCR; the PSZ orders on caps; four Viskovatov pages), 56 not found in a damaged OCR
+(above all pre-reform Russian) and 78 with no text layer reachable here; those 134 read only on images rest on the reading pass, which
+records each as image-checked (`quote-check.md`).
+
+**What the evidence settles (fact, with grades in the table).**
+1. **The French line infantry wore the hat on 2 December**: the 30th Bulletin of 3 December, "les chapeaux au bout des baïonnettes" (A);
+   Barrès saw the 1st corps the same (B); the shako only "à dater du renouvellement de 1807" (the decree of 25 February 1806). Today's
+   cylinder on every French infantryman is wrong for the line; the light infantry had the shako (Bardin, B).
+2. **French coats**: national blue for the line (white lapels, red collar) and the light infantry; green for the dragoons; the
+   cuirassiers in the cuirass; the hussars of Kellermann's division each in their own colours (Martinet 1807, B); the Guard in full dress
+   and bearskins (Barrès, Perrot).
+3. **French greatcoats are disputed for the day**: none received in Vandamme's division on 30 October (A), "plus qu'il ne m'en faut" on
+   18 November (A), still to be made on 14 December (A); the Guard marched "en grande tenue" (B). By decision 101 the coat is drawn.
+4. **Russian infantry**: dark green, white trousers (Viskovatov, B; checked on the image); the musketeers' headgear a black cloth cap
+   since August 1803, replaced by the 1805 pattern only as the old caps wore out (PSZ no. 21,621 of 13 February 1805, A, checked on the
+   image): the brief's "1807" for the Russian shako is wrong; the bicorne on Russian privates is wrong. The grenadiers' cap on the day
+   is not established (their 1802 mitre or the new cap).
+5. **Russian jägers and dragoons wore light green until 1807** (Viskovatov, B); the jägers' headgear is disputed three ways. Russian
+   cuirassiers wore no cuirass (abolished 9 August 1801, checked on the image) and the black crested helmet of 1803.
+6. **Austrian line infantry**: white, facings per regiment from the army list of 1805 (A); the helmet disputed (Teuber against himself).
+   The Grenz coat stays disputed (white by regulation, white and brown seen, brown only from 1808): SOURCE_NOTE's question stays open.
+7. **Colours**: the French 1804 model, a white lozenge with red and blue corners, 81 cm square, one eagle per battalion (B; the 4e de
+   ligne's 1st battalion lost its eagle, A); the Russian infantry kept two colours per battalion (1802 order) of Paul I's issues, 2 arshins
+   square on a 4½-arshin staff, their pattern on the day still open (SOURCE_NOTE's question stays open); Russian jägers and hussars carried
+   none (B and C); the Austrian Leib and ordinary colours of the 1769 pattern, 161 x 142 cm, one or two per battalion disputed; batteries
+   and headquarters carried none that any source shows (today 1-3 are drawn on each).
+8. **The ratio (decision 106)**: Russia, staff 3.20 m (its spearhead 0.24 m) over a recruit minimum of 1.60 m (A); Austria, staff about
+   2.85 m over a minimum of 1.65 m (B); France, no measured staff (only Fraser's unreferenced 8 ft): 1.6 stays provisional there.
+9. **Horses**: one horse colour at B, the Guard horse grenadiers' black (Coignet, uncertain); the Russian regulations set no colour before
+   1815; the Life Guard Horse rode mixed colours from 1796 to 1823. French carriages olive with black ironwork (Gassendi, B); the Austrian
+   and Russian carriage colours not found (decision 109: one colour stays).
+
+**Leads that proved wrong or right (fact; §0.3 item 8).** Right: the French 1804 lozenge; the Russian cap orders of 1803 and 1805, not
+1807; Russian dragoons and jägers in light green; the Austrian cloth of 161 x 142 cm, not 175 x 130; Russian cuirassiers without cuirasses.
+Not settled: O'Reilly's chevaulegers in white (disputed; green is likelier for 1805); Russian hussars without standards (only silence);
+the French light cavalry's eagles in the field (disputed). Not found: "Gladkov" in the Fifth Column (the brigades were Shepelev's and
+Penitsky's).
+
+**Data questions it raises (not changed; for a data task).** The 28 October return numbers Drouet's division the 1st of I Corps and
+Rivaud's the 2nd, the reverse of `data.js`; Schönhals gives the IV Column 12 Russian battalions where `data.js` says fourteen; the Fifth
+Column's "Gladkov" is in no source read; the Empress's cuirassiers are with Bagration in Mikhailovsky-Danilevsky and in the Fifth Column in
+Schönhals; Kamensky's musketeer regiment is Ryazhsk or Ryazan; the grenadier division's "No artillery is listed" is contradicted for
+26 October (horse and foot artillery detachments); the narrative's "45 standards" is Napoleon's claim of 5 December (he first said 40;
+Sokolov gives 29 Russian and 16 Austrian by the French count, Andolenko 14-17 complete colours). None of these is changed by 6B.
+
+**For 6C and 6D.** 6C draws coats, legwear and headgear where the table settles them at A or B and generic where it says generic or
+disputed (decisions 98, 103); no greatcoats (none shown worn); the cuirass for the French cuirassiers, the Austrian cuirassiers' black
+cuirass, none for the Russians; facings in the dossier only (decision 104). 6D draws one eagle per French battalion and squadron where the
+table counts them, none for batteries, headquarters, Russian jägers and hussars, Kellermann's regiments (disputed) or Oudinot's battalions
+(not shown); plain labelled cloths where the pattern is generic (the Russian infantry, decision 105); the sourced ratio for Russia and
+Austria, the provisional 1.6 for France, with its denominator stated.
 
 ## 7. Questions for the owner (numbered; each with a recommendation and its trade-off; the next decision number is 96)
 
