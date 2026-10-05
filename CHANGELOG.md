@@ -3,11 +3,11 @@
 ## 2026-10 · Stage 6C: the figures by class from the appearance table, and identity by symbology (docs/STAGE6_SPEC.md §6.2, §6.4; owner decisions 97-104, 107-110)
 
 **Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
-`austerlitz-command-map.html`: 1,698,615 bytes, md5 `f0786c385d91bcbd853248bdca588b09` (was 1,661,910 bytes, md5 `7fc0f6c3…`, Stage 6B).**
+`austerlitz-command-map.html`: 1,698,904 bytes, md5 `07c61c8212917907cf68d1c35a8b941b` (was 1,661,910 bytes, md5 `7fc0f6c3…`, Stage 6B).**
 `check:baseline` moves to this build.
 
-**In three commits.** First §6.4's honest drawing (decision 110 makes it 6C's first commit), then the figures by class, then identity, as
-§6.2 asks ("Identity changes in the same part, because it is this part that makes the coats stop meaning nations").
+**In order.** First §6.4's honest drawing (decision 110 makes it 6C's first commit), then the figures by class and identity together, as
+§6.2 asks ("Identity changes in the same part, because it is this part that makes the coats stop meaning nations"), then the measurements.
 
 **What changed: the standards (§6.4; decision 98).** Each standard is a plain cloth in its nation's symbol colour (`NATION`'s fill, the
 counters' colour), with the faint lines of the old cloth, one texture per nation (`flagTexture`). It replaces three patterns no read source
@@ -80,6 +80,11 @@ a standard, how many and the 1.6 ratio are unchanged: 6D's.
   formation drawn as figures has the side footprint and nothing else does.
 - The float checks (`tools/visual/measure.js` and the self-test's `figureError`) read every kit geometry from the app (`kitGeos`), not five
   names; `tools/stage2/height-sites.js` classifies the new self-test site (`kitDayChecks`, test).
+- The harness's position-confidence share (Stage 5B): its frame "without the marks" set Position confidence off, which since decision 107
+  still draws the side footprint, so the measured share fell (the marks were compared with footprints) and the limit `CONF_SHARE` would have
+  bounded less than it says. That frame now also sets `CONF.none`, a measurement switch the app never sets, which draws no mark but the 1x
+  footprint: the share is measured as on 6B (found by the comparison below; the first comparison run, with the old frame, gave shares about
+  half of 6B's in every view, e.g. `overview-field` 0.0431 against 0.025).
 
 **Measured against the 6B build** (`tools/stage6/compare-6c.js`; `docs/stage6-evidence/compare-6c.md`, `compare-6c-sheet.jpg`)
 (COMPARE-6C)
@@ -90,11 +95,11 @@ a standard, how many and the 1.6 ratio are unchanged: 6D's.
   appearance checks 588/588, 0 errors; `geo-test.js` 54 passed; `terrain-test.js` OK; `audit.js` 0 and 0; `sim-test.js` 0 disagreements;
   `redteam.js` 0 findings; `runtime-test.js` 0 errors; `binding-test.js` 383 checks, 0 failed (no new dashed drawer); the height guard 97 call
   sites, 0 presentation calls.
-- `npm run check:visual`: "STAGE0: all checks passed" (58 min 53 s): 23 views, the self-test 200 of 200; solid near-black in every view within
+- `npm run check:visual`: "STAGE0: all checks passed" (58 min 12 s, on the final build; 58 min 53 s on the build before `CONF.none`): 23 views, the self-test 200 of 200; solid near-black in every view within
   the limit (at most 4 blocks, `pratzen-low`); the day's light sweep identical to 6B's (0.000% in 17 samples, 0.007-0.014% in 7, as on 6B);
   the valley fog's hours, the dwell, the horizon and the key tests as on 6B; the five known Canvas2D readback warnings.
 - `npm run check:contrast`: 5,349 text elements (5,186 on 6B: the dossier's Dress and the legend's rows), 105 distinct pairs, 0 below AA, 0
-  below 10.5 px (5 min 53 s).
+  below 10.5 px (6 min 57 s).
 - `npm run check:data`: "All 121 DATA declarations are byte-identical" to `archive/stage6b-7fc0f6c3.html` (not moved).
 - `npm run check:chronology`: errors 0 (69 timed moves: 65 consistent, 4 early, the named unresolved conflicts; 20 explicit times).
 - `npm run check:baseline`: passes on the moved baseline.

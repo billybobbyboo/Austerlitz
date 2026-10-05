@@ -195,7 +195,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   formation drawn as figures; the float checks read every kit geometry (`kitGeos`); `tools/stage6/compare-6c.js` (not in the suite) measures
   the build against the 6B build view by view.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 6C build (md5 `f0786c38...`, 1,698,615 bytes;
+- `npm run check:baseline` passes only on the unmodified Stage 6C build (md5 `07c61c82...`, 1,698,904 bytes;
   re-baselined from the Stage 6B build `7fc0f6c3...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
