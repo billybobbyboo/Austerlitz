@@ -6437,7 +6437,9 @@ var PAD_GEO=(function(){ var g=new THREE.PlaneGeometry(1,1); g.rotateX(-Math.PI/
    the paper map, where B and C are capped on screen. Each mark is a patch of the drawn ground's own cells at LIFT above it, so
    the drape never cuts under the drawn ground (confPlace). At 1x the A mark is the true-scale footprint itself (decision 34),
    at its opacity; dimmed formations draw theirs fainter. */
-var CONF={OP:{A:0.62,B:0.55,C:0.45}, OP_TRUE:0.85, DIM:0.45, LIFT:0.25, CAP:0.25, TEX:128, tex:{}, shown:{A:false,B:false,C:false}};
+var CONF={OP:{A:0.62,B:0.55,C:0.45}, OP_TRUE:0.85, DIM:0.45, LIFT:0.25, CAP:0.25, TEX:128, tex:{}, shown:{A:false,B:false,C:false},
+  none:false};   /* none: a measurement switch (Stage 6C), never set by the app: no mark but the 1x footprint, so that the harness's frame "without
+                    the marks" stays without them now that decision 107 keeps a side footprint when Position confidence is off */
 /* the grade's mask (alpha): A a crisp rectangle, B the frontage feathered over its outer halves, C a disc falling from its centre;
    every edge texel transparent, so outside the mark (the clamped edge) nothing is drawn */
 function confTexture(g){
@@ -9512,7 +9514,7 @@ function updateVisibility(){
        (grade A's mark, whatever the grade) stays under every formation drawn as figures, in Study, Watch and Clean: once coats follow
        the sources (decision 97) a coat says nothing of side, and the name's mark and the counter are not drawn everywhere */
     var side7=!graded&&!foot1&&rec.block.visible&&!own5;
-    var mk=foot1?"foot":((graded||side7)?"conf":null);
+    var mk=foot1?"foot":((graded||side7)&&!CONF.none?"conf":null);
     rec.sideMark=side7;
     if(mk){
       if(!rec[mk]){ rec[mk]=makeConfMark(); scene.add(rec[mk]); }

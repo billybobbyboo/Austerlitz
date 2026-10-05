@@ -133,9 +133,10 @@ async function interact(page,it,vp){
     /* Stage 5B (docs/STAGE5_SPEC.md section A.5): the position-confidence marks' share of the free rectangle, as rendered: the same
        view drawn once more without them (a build with the marks; not the first-run views, whose card is not a reading) */
     if(!c.fresh&&await page.evaluate(()=>typeof CONF!=="undefined"&&!!layerOn.confidence)){
-      await page.evaluate(()=>{ layerOn.confidence=false; }); await settle(page);
+      /* since Stage 6C (decision 107) Position confidence off keeps a side footprint: the frame without the marks draws none (CONF.none) */
+      await page.evaluate(()=>{ layerOn.confidence=false; CONF.none=true; }); await settle(page);
       const off=await page.screenshot({timeout:180000});
-      await page.evaluate(()=>{ layerOn.confidence=true; }); await settle(page);
+      await page.evaluate(()=>{ layerOn.confidence=true; CONF.none=false; }); await settle(page);
       m.confShare=await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[buf.toString("base64"),off.toString("base64")]);
     }
     /* Stage 5D (docs/STAGE5_SPEC.md section B.4): the evidence skeleton on, the whole day (its densest scope): the map layer's items and
