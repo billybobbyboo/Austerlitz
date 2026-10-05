@@ -87,7 +87,24 @@ a standard, how many and the 1.6 ratio are unchanged: 6D's.
   half of 6B's in every view, e.g. `overview-field` 0.0431 against 0.025).
 
 **Measured against the 6B build** (`tools/stage6/compare-6c.js`; `docs/stage6-evidence/compare-6c.md`, `compare-6c-sheet.jpg`)
-(COMPARE-6C)
+- Solid near-black, mean luminance, map text, drops and the smoke: as on 6B in all 20 views. Solid near-black 0 in 16 views, `pratzen-low`
+  0.0002 as before, `pratzen-orbit-min` 0.00015 (6B 0.0003); mean luminance within 1.3 (the closest orbit 76.5 to 75.2); the lowest map text
+  contrast within 0.32 (`pratzen-low-10x` 8.0 to 7.68), none below AA; drops identical in every view; the smoke's shares identical.
+- The confidence marks' share, against the view with no mark at all: as on 6B within 0.002 in every view (`overview-field` 0.0431 / 0.0433,
+  `selected-formation` 0.1503 / 0.1509), except at the eye level (`eye-zuran` 0.0004 / 0.06): on 6B the observer's own side's marks were
+  drawn in both frames (Position confidence off left them, decision 91), so the old measure missed them; `CONF.none` removes them too, so the
+  share now counts every mark. Decision 107's side footprint, Position confidence off: 0.0155-0.0914 of the free rectangle (0.06 at the eye).
+- What changes on screen: 0.13-5.9% of the free rectangle in the views with figures, 20.5% in the closest orbit (coats, headgear and the
+  cloths); nothing in the 1x and paper-map views.
+- The world pass (software WebGL; the median of 15 frames): 0.9-12.6 ms (6B 0.8-9.7); the median over the views with figures 8.9 ms against
+  7.0. Draw calls 728-839 against 566-677 (+162 in every view with figures: each class is its own mesh set); triangles +1.2% (`overview-plan`
+  2,546,679 against 2,515,371). Not measured on a GPU. A performance cost of the class meshes, accepted here (priority 7) and stated; merging
+  a block's classes into fewer draws is possible later.
+- Coats as rendered, the closest formations of opposite sides (CIEDE2000; decision 97 expects the fall): `overview-field` 21.7 to 16.2,
+  `close-sokolnitz` 17.0 to 9.9, `pratzen-low` 30.9 to 23.1, `selected-formation` 24.1 to 16.9, `watch-selected` 28.2 to 3.6 (Walther's green
+  dragoons against the Allied headquarters' escort, drawn generic in the Russian symbol green), `hybrid-dimmed` 26.2 to 18.6, the closest orbit
+  26.1 to 5.7 (Walther against the Fifth Column). Side is carried by the symbology, as the self-test's side-cue check holds.
+- Every block's classes as drawn, with their grades: `compare-6c.md`. The sheet shows the close views before and after.
 
 **Checks on this build**
 - `npm run build`: fresh; the committed HTML is the build.
