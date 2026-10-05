@@ -1,6 +1,7 @@
 # Historical appearance: specification (Stage 6, Part A)
 
-**Status: Part A, for review. No source file, no data and no build change.** Written against `main` at `f54fffa` (Stage 5G merged as
+**Status: Part A merged (#39); the owner accepted every recommendation of §7 (decisions 96-110, §0.4). 6B in progress.** Part A changed no
+source file, no data and no build. It was written against `main` at `f54fffa` (Stage 5G merged as
 #38; with it Stage 5 is complete), whose build `austerlitz-command-map.html` is 1,528,608 bytes, md5
 `4c12cac6d458b02e3282237f4d1abb92`. On it (the same build throughout: this part changes no source file) the checks were run and their
 results are in §6.0. Line numbers refer to that commit; the code is the source of truth, not the documents.
@@ -152,6 +153,29 @@ Each is stated; none is resolved here.
 9. **The day's colour count.** The data's narrative gives "about 180 guns and 45 standards" (`data.js:126`). The leads give Napoleon's
    own counts as 40 (the proclamation) and 45 (a letter from Brünn), and Russian specialist counts of 29-30 or at most 25 Russian
    colours (§2.4). Out of Stage 6's scope (a narrative figure, not an appearance); recorded for a data task (§6.1).
+
+### 0.4 Owner decisions 96-110 (the answers to §7 questions 1-15)
+
+Part A merged (#39). Before 6B the owner opened the session's network to every host ("full" network access) and accepted the
+recommendation of every question of §7, each as written there:
+
+| # | question | decision |
+|---|---|---|
+| 96 | 1, reaching the sources | 6B runs in a session whose network reaches the sources (the owner set the environment's network access to full). (6B) |
+| 97 | 2, decision 1's "and figure coats" | Ended: figures follow the sources; nation and side are carried only by symbology (the counters' bands and fills, the nation tag, the name's side mark, the ground marks, the arrows, the dossier). (6C, 6D) |
+| 98 | 3, an honest drawing | Yes: the figures labelled as symbol colours with a generic cap where unsourced, and the three flag patterns replaced by plain, labelled cloths until their models are sourced (§6.4). (6C) |
+| 99 | 4, where appearance data lives | A new guarded file, `appearance.js`, for the claims (classes, composition, colours carried, each with source and grade); a presentation table, `KIT`, for the drawn values and shapes (§5). (6B, 6C) |
+| 100 | 5, granularity | Each drawn battalion or squadron takes a class in proportion to its formation's sourced composition, else the formation's dominant class; mixed-arm formations keep the arm the data gives them (no splitting in Stage 6). (6B, 6C) |
+| 101 | 6, greatcoats | Drawn as the read sources show them worn on 2 December, by side and arm; while the evidence is disputed, the regulation coat, with the dossier saying greatcoats may have been worn. (6B, 6C) |
+| 102 | 7, the drawn colour values | The source names the colour; the drawn sRGB is a design decision recorded in `KIT` with its basis; no drawn cloth (or black) darker than decision 84's `#2E2B27`. (6C, 6D) |
+| 103 | 8, headgear silhouettes | One low-poly shape per sourced class; the generic cap where unsourced or disputed, with the dispute in the dossier. (6C) |
+| 104 | 9, facings and lace | No regimental facings or lace drawn; class-level features only where sourced and large (a cuirass); the dossier says what was worn. (6C) |
+| 105 | 10, the open questions of `SOURCE_NOTE` | Both stay open until read sources settle them; the Russian infantry's cloth and the Grenz drawn generic and labelled until then. (6B, 6D) |
+| 106 | 11, the standard's ratio | The staff's top (with its finial or eagle) over the man's height to his hat's top, from a measured staff of the period and a sourced stature, per nation; if 6B finds none, 1.6 kept, labelled provisional, its wording corrected. (6B, 6D) |
+| 107 | 12, a side cue always | With "Position confidence" off, a plain crisp footprint in the side's colour stays under every formation drawn as figures, in Study, Watch and Clean. (6C) |
+| 108 | 13, tour stop 1 and the first-run key | Both reworded to name the symbology, not the coats (§4.3's wording); tour stop 1 in 6B (`TOUR` is guarded data), the first-run card in 6C. (6B, 6C) |
+| 109 | 14, horses and equipment | Horses one brown unless 6B grades a horse colour A or B; gun carriages one colour unless each army's is sourced. (6B, 6C) |
+| 110 | 15, the order | §6.4, then 6B, 6C, 6D, as recommended; the owner, having opened the network, asked for 6B first, so §6.4's honest drawing becomes the first commit of 6C, as §6.4 itself allows ("It could be the first commit of 6C"). (all) |
 
 ## 1. Today (fact; read from the code and from the running page)
 

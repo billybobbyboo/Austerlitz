@@ -9,7 +9,9 @@ let acorn; try{ acorn=require("acorn"); }catch(e){ acorn=require(path.join(__dir
 const [A,B]=process.argv.slice(2).map(p=>path.resolve(p));
 const DATA={
   "historical datasets":["ASSETS","GEOREF","NATION","CLAIM","CLAIM_FROM_CONF","STATUS","PHASES","FORMATIONS","FEATURES","SOURCE_NOTE",
-    "ANALYSIS","COMMAND","KNOW_OVERRIDE","PLANS","ACTS","EVENTS","TOUR","OVERLAYS"],
+    "ANALYSIS","COMMAND","KNOW_OVERRIDE","PLANS","ACTS","EVENTS","TOUR","OVERLAYS",
+    /* Stage 6B: the historical appearance (appearance.js) */
+    "APPEARANCE_GRADE","APPEARANCE_VOCAB","APPEARANCE_SOURCES","DRESS","COMPOSITION","COLOURS_CARRIED","STANDARD_MEASURES"],
   "geography and relief model":["W","M2W","UNITS_PER_KM","GOLDBACH_M","LITAVA_M","BROOKS_M","GOLDBACH,LITAVA,BROOKS","ROADS","WOODS","MARSH",
     "VINEYARD","VILLAGES","CHURCHES","CREST_M","TERRAIN_LINES","hash2","vnoise","dist2","pnoise","segDist","polyDist","smoothstep","bump","ell",
     "CREST","PRAT,VINO,PBERG,SANTON,ZURAN,SATS,MENI,SLAV,SCHLAP","regionalH","_RS,_RM","pondHold","regionalLevel","height","localHeight",
@@ -19,6 +21,7 @@ const DATA={
     "sideOnFieldAt","GRADE_RANK","worseGrade","confAt","liveConf","aggConf","aggInterp","T_MIN,T_MAX","KM_PER_MAP","phaseAt","anchorList",
     "legPath","pointOnPath","legWindow","legAt","posAtClock","notYetAt","goneAt","headingAt","marchRate","posNow","SPEED_CEIL","TACTICAL_RATE,BATTLE_ORDER","wetAt",
     "nearSettlement","crossingProblem","auditMovement"],
+  "historical appearance model (Stage 6B)":["appearanceOf"],
   "derived readings, sight and knowledge":["evWindow","evWeight","liveEvents","actOf","PLATEAU_POLY","onPlateau","plateauStrength","PBERG_NORTHING",
     "SEP_KM","sideCentroid","centreSeparation","EYE_OBSERVER_M,EYE_TARGET_M,LOS_CLEAR_M","hasLOS","knowledgeOf","familyOf","sampleVS","computeViewshed"]
 };

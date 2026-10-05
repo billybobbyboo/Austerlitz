@@ -348,7 +348,7 @@ var EVENTS = [
    2's view does not show). */
 var TOUR = [
 {n:"The battlefield", at:"ph:0",
- x:"Ten kilometres of open Moravian farmland. The blue army to the west is French; to the east are the Russians in green and the Austrians in white, whose arrows and outlines are drawn in amber. Between them runs the Goldbach, a small stream in a marshy bottom, and behind it stands the Pratzen plateau, the high ground in the centre of the field."},
+ x:"Ten kilometres of open Moravian farmland. The French army, marked in blue, is to the west; to the east are the Russians and the Austrians, marked in amber. Between them runs the Goldbach, a small stream in a marshy bottom, and behind it stands the Pratzen plateau, the high ground in the centre of the field."},
 {n:"The Allied plan", at:"ph:0", plan:"al", cam:[-27,262,41,-27,0,9],
  x:"Weyrother's orders send four of the five Allied columns south-west, off the plateau, to turn the French right and cut the road to Vienna. The heavy arrows are the intended lines of march. Note what they all have in common: they lead away from the centre."},
 {n:"The French deception", at:"ph:0", chapter:"deception",

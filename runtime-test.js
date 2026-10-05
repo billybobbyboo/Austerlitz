@@ -604,6 +604,15 @@ try{
   /* the events layer toggles off cleanly */
   layerOn.events=false; updateVisibility(); layerOn.events=true; updateVisibility();
   console.log("40 rounds of rapid switching OK");
+
+  /* Stage 6B: the appearance table's resolution, a dry run for every drawn block (appearance.js; decision 100) */
+  { const ids=Object.keys(units).filter(id=>units[id].block); let parts=0, dom=0;
+    ids.forEach(id=>{ const r=appearanceOf(id);
+      if(!r||!r.parts.length) throw new Error(id+": the appearance table does not resolve");
+      const sum=r.parts.reduce((t,p)=>t+p.share,0); if(Math.abs(sum-1)>1e-9) throw new Error(id+": appearance shares sum to "+sum);
+      r.parts.forEach(p=>{ if(!p.d) throw new Error(id+": dress "+p.dress+" unknown"); if(!p.colours) throw new Error(id+": no colours entry for "+p.dress); });
+      parts+=r.parts.length; if(r.dominant) dom++; });
+    console.log("appearance: "+ids.length+" blocks resolve to "+parts+" dress parts ("+dom+" by their dominant class) OK"); }
 }catch(e){ errs.push("DRIVE: "+e.message+"\n"+(e.stack||"").split("\n").slice(1,4).join("\n")); }
 
 setTimeout(function(){

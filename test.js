@@ -2,6 +2,7 @@ global.GEOREF=require('./geo.js');   /* the single geographic reference */
 const fs=require('fs');
 function load(f){ eval(fs.readFileSync(f,'utf8')); return eval; }
 eval(fs.readFileSync('data.js','utf8'));
+eval(fs.readFileSync('appearance.js','utf8'));   /* Stage 6B: the historical appearance, loaded after data.js as in the build's order */
 eval(fs.readFileSync('tokens.js','utf8'));   /* Stage 4E: world.js reads the paper map's ground colours from TOKENS, as in the build's order */
 eval(fs.readFileSync('world.js','utf8'));
 eval(fs.readFileSync('_state.js','utf8'));
@@ -135,6 +136,74 @@ TOUR.forEach((st,i)=>{
 });
 console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   "| command entries:",Object.keys(COMMAND.fr).length+Object.keys(COMMAND.al).length);
+/* ---- Stage 6B: the historical appearance (appearance.js; docs/STAGE6_SPEC.md §6.1, decisions 99-101, 105, 106, 109) ----
+   Every leaf formation resolves to dress classes whose shares sum to 1; every value names a source, a locator, a grade and a
+   label, or says it is generic; grade A only with a source dated 1804-1805 or a regulation shown in force on the day; every
+   colours entry has a model, a count rule and a cloth (or says it is not sourced); the open questions of SOURCE_NOTE stay
+   while the table does not settle them (decision 105). */
+{ let ap=0, apBad=0; const bad=m=>{ errs.push("appearance: "+m); apBad++; };
+  const LABELS=["fact","disputed","derived","inference","uncertain"], KINDS=["regulation","primary-text","primary-image","object","specialist","modern-web-specialist"];
+  const srcOk=(k)=>!!APPEARANCE_SOURCES[k];
+  Object.entries(APPEARANCE_SOURCES).forEach(([k,S])=>{ ap++;
+    if(!S.au||!S.ti||!(S.d>1700&&S.d<2100)||!KINDS.includes(S.kind)||!S.url) bad("source "+k+" lacks author, title, year, kind or url"); });
+  /* a claim, or {gen:true, why} */
+  function claim(where,c,cls){ ap++;
+    if(!c||typeof c!=="object") return bad(where+": missing");
+    if(c.gen){ if(!c.why) bad(where+": generic without a reason"); return; }
+    if(!c.v||!c.src||!c.at||!c.gr||!c.lab) return bad(where+": lacks v, src, at, gr or lab");
+    if(!srcOk(c.src)) bad(where+": unknown source "+c.src);
+    if(!"ABC".includes(c.gr)||c.gr.length!==1) bad(where+": grade "+c.gr);
+    if(!LABELS.includes(c.lab)) bad(where+": label "+c.lab);
+    if(c.gr==="A"){ const S=APPEARANCE_SOURCES[c.src]||{};
+      const dated=S.d>=1804&&S.d<=1805, reg=S.kind==="regulation"&&c.inForce&&srcOk(c.inForce.src)&&c.inForce.at&&c.inForce.q;
+      if(!dated&&!reg) bad(where+": grade A without a source dated 1804-1805 or a regulation shown in force ("+c.src+", "+S.d+")"); }
+    if(c.inForce&&!(srcOk(c.inForce.src)&&c.inForce.at&&c.inForce.q)) bad(where+": inForce lacks a source, locator or quote");
+    if(cls==="colour"&&!APPEARANCE_VOCAB.colour.includes(c.c)) bad(where+": colour class "+c.c+" not in the vocabulary");
+    if(cls==="head"&&!APPEARANCE_VOCAB.head.includes(c.h)) bad(where+": headgear class "+c.h+" not in the vocabulary"); }
+  const ARMS=["inf","cav","art","hq","guard","mixed"];
+  Object.entries(DRESS).forEach(([k,d])=>{ ap++;
+    if(!NATION[d.nation]) bad("dress "+k+": nation "+d.nation);
+    if(!d.name) bad("dress "+k+": no name");
+    if(!COLOURS_CARRIED[d.carry]) bad("dress "+k+": colours entry "+d.carry+" missing");
+    claim("dress "+k+".coat",d.coat,"colour"); claim("dress "+k+".legwear",d.legwear,"colour"); claim("dress "+k+".head",d.head,"head");
+    claim("dress "+k+".greatcoat",d.greatcoat);
+    ["facings","cuirass","horse","furniture"].forEach(a=>{ if(d[a]!==undefined&&d[a]!==null) claim("dress "+k+"."+a,d[a],a==="horse"?"colour":null); }); });
+  const leaves=Object.keys(FORMATIONS).filter(id=>FORMATIONS[id].track);
+  leaves.forEach(id=>{ ap++; const F=FORMATIONS[id], C=COMPOSITION[id];
+    if(!C){ bad(id+": no composition"); return; }
+    const r=appearanceOf(id), sum=r.parts.reduce((t,p)=>t+p.share,0);
+    if(!r.parts.length||Math.abs(sum-1)>1e-9) bad(id+": shares sum to "+sum);
+    if(C.dominant&&!C.basis) bad(id+": a dominant class without its basis");
+    C.parts.forEach((p,i)=>{ const d=DRESS[p.dress];
+      if(!d) return bad(id+" part "+i+": unknown dress "+p.dress);
+      if(!(p.n>0)) bad(id+" part "+i+": n "+p.n);
+      if(!["bn","sqn","coy","bty","staff","dominant"].includes(p.unit)) bad(id+" part "+i+": unit "+p.unit);
+      const mixOk=F.arm==="mixed"||(F.mix&&F.mix.nation===d.nation);
+      if(d.nation!==F.nation&&!mixOk) bad(id+" part "+i+": "+p.dress+" is "+d.nation+", the formation "+F.nation+" and not mixed");
+      if(!C.dominant) claim(id+" part "+i,p); });
+    /* the regiments' men, where every part gives them, against the data's strength (its range if it has one, else 30%) */
+    if(C.parts.every(p=>p.men>0)&&F.strength){ const men=C.parts.reduce((t,p)=>t+p.men,0), R=F.strengthRange;
+      if(R?(men<R[0]*0.7||men>R[1]*1.3):Math.abs(men-F.strength)/F.strength>0.30) warn.push(id+": composition "+men+" men against the data's "+F.strength); } });
+  Object.keys(COMPOSITION).forEach(id=>{ if(!FORMATIONS[id]||!FORMATIONS[id].track) bad("composition for "+id+", not a leaf formation"); });
+  Object.entries(COLOURS_CARRIED).forEach(([k,c])=>{ ap++;
+    ["model","count","cloth"].forEach(a=>claim("colours "+k+"."+a,c[a]));
+    if(c.count&&!c.count.gen&&!(c.count.n>=0&&c.count.per)) bad("colours "+k+".count: no number per unit");
+    if(c.cloth&&!c.cloth.gen&&!(c.cloth.w>0&&c.cloth.h>0&&c.cloth.unit)) bad("colours "+k+".cloth: no dimensions");
+    ["staff","finial","pattern"].forEach(a=>{ if(c[a]!==undefined) claim("colours "+k+"."+a,c[a]); }); });
+  ["fr","ru","at"].forEach(n=>{ ap++; const M=STANDARD_MEASURES[n];
+    if(!M){ bad("standard measures: "+n+" missing"); return; }
+    if(M.provisional){ if(!M.why) bad("standard measures "+n+": provisional without a reason"); return; }
+    claim("standard measures "+n+".staff",M.staff); claim("standard measures "+n+".stature",M.stature);
+    if(!(M.staff.m>0&&M.stature.m>0)) bad("standard measures "+n+": no metres"); });
+  /* decision 105: an open question of SOURCE_NOTE stays open until the table settles it at grade A or B, undisputed */
+  const note=SOURCE_NOTE.body.join(" "), settled=c=>c&&!c.gen&&"AB".includes(c.gr)&&c.lab==="fact";
+  const grenz=Object.entries(DRESS).filter(([k,d])=>d.grenz).map(([k,d])=>d.coat), ruInf=COLOURS_CARRIED.ru_inf;
+  if(!grenz.length) bad("no Grenz dress class (kienmayer's Grenz)");
+  if(!grenz.every(settled)&&!/whether Grenz infantry wore brown in 1805/.test(note)) bad("the Grenz coat is not settled but SOURCE_NOTE no longer asks");
+  if(!(ruInf&&settled(ruInf.pattern))&&!/the pattern of Russian infantry flags/.test(note)) bad("the Russian infantry colours are not settled but SOURCE_NOTE no longer asks");
+  console.log("appearance checks: "+(ap-apBad)+"/"+ap+" pass ("+Object.keys(DRESS).length+" dress classes, "+Object.keys(APPEARANCE_SOURCES).length+" sources, "+
+    leaves.length+" leaf formations)"); }
+
 console.log("\nERRORS:",errs.length); errs.forEach(e=>console.log("  ! "+e));
 console.log("warnings:",warn.length); warn.forEach(e=>console.log("  ~ "+e));
 

@@ -18,6 +18,7 @@ lower one without saying so explicitly.
 | `tokens.js` | `TOKENS`: the only source of interface and symbology colours and type (`docs/VISUAL_SPEC.md`; since 4E also the paper map's ground, contours and marsh lines, `sym.paperMap`); `python3 build.py --tokens` writes its copy into `style.css`, and the build fails if that copy drifts. Nation colours stay in `NATION` |
 | `geo.js` | `GEOREF`: the only geographic and scale authority (transform, horizontal and vertical scale, ground truth) |
 | `data.js` | historical dataset: phases, order of battle and tracks, features, sources note |
+| `appearance.js` | the historical appearance (since 6B; guarded): the sources read (`APPEARANCE_SOURCES`), the dress classes (`DRESS`), each leaf formation's composition (`COMPOSITION`), the colours carried (`COLOURS_CARRIED`), the standard's two measures per nation (`STANDARD_MEASURES`), each value with source, locator, appearance grade and label; `appearanceOf` resolves a formation's classes and shares. Claims only: the drawn values are presentation (`KIT`, 6C) |
 | `analysis.js` | analysis chapters (themes: each names its moments, `at` and `moments`, since the spine data task), command knowledge, the two plans, acts, events, guided tour (each stop names a moment) |
 | `world.js` | ground: relief model, land cover, water, roads, woods, settlements, `groundY` (since 4C no mist sheets: the fog is the atmosphere's, in `app.js`; since 4E the landscape's colours in `COVER_COL`, `LAND_COL` and `WATER_COL`, the meres' ice and shore ice); the paper map's flat symbology (village footprints, woods) and its own hillshade (since 2E); the ground shader, which draws the land cover per point, and `COVER_ML`/`drawnCover` (since 2F) |
 | `symbols.js` | the map layer's counters and names (HTML/SVG builders, accessible names), event and objective glyphs |
@@ -48,7 +49,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - Never invent historical facts, coordinates, strengths, movements, timings, terrain, uniforms, flags,
   commanders or sources. Label claims as fact, disputed, derived, inference, uncertain, or design
   decision. Where sources disagree, keep the disagreement. Prefer primary and specialist sources.
-- `geo.js`, `data.js`, `analysis.js` and the model declarations guarded by
+- `geo.js`, `data.js`, `appearance.js`, `analysis.js` and the model declarations guarded by
   `tools/visual/data-invariance.js` change only when the task is explicitly about historical or
   geographic data. Then: cite the evidence, record what was, what is, and why, in `CHANGELOG.md`.
 - Do not overwrite an established project decision because another assumption seems plausible. If
