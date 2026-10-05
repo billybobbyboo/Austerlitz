@@ -546,7 +546,7 @@ try{
     if(!n||bad.length) throw new Error("day-track: "+bad.length+" of "+n+" wrong: "+bad.slice(0,4).join(", "));
     console.log("day-track: "+n+" formations, each its anchors in order, its legs through their vias, its scale bar within the inset OK"); }
 
-  /* the armies are ranks of figures now, with national colours on the standards */
+  /* the armies are ranks of figures now, with cloths on the standards (since 6C plain, in the nation's symbol colour) */
   const inf=units.sthilaire.block.userData, cav=units.nansouty.block.userData;
   const infN=inf.figs.reduce((a,f)=>a+f.n,0), cavN=cav.figs.reduce((a,f)=>a+f.n,0);
   if(inf.figs.length<2||infN<100) throw new Error("infantry is not ranks of figures: "+inf.figs.length+" meshes, "+infN+" men");

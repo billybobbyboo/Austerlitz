@@ -120,7 +120,7 @@ module.exports.check=function(name,m){
   if(m.smokeEdgeAlpha) f.push("smoke sprites have a visible edge (alpha "+m.smokeEdgeAlpha+"/255)");
   if(m.dustEdgeAlpha) f.push("dust sprites have a visible edge (alpha "+m.dustEdgeAlpha+"/255)");
   if(m.mist.visible&&m.mist.maxAlphaAtCrossing>0.02) f.push("mist visible where the ground rises through it (alpha "+m.mist.maxAlphaAtCrossing+")");
-  /* black-slope clipping shows as solid near-black regions; small black details (shakos, text, poles) are fine */
+  /* black-slope clipping shows as solid near-black regions; small black details (headgear, text, poles) are fine */
   if(m.pixels.solidBlack>SOLID_BLACK) f.push("solid near-black regions cover "+(100*m.pixels.solidBlack).toFixed(3)+"% of the map ("+m.pixels.solidBlocks+" blocks of 8x8; limit 0.05%)");
   if(m.selection&&!m.drawerVisible&&!m.chipVisible) f.push("selection "+m.selection+" is shown nowhere");
   if(!m.selection&&m.chipVisible) f.push("selection chip shown with nothing selected");
