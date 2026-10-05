@@ -1,0 +1,4409 @@
+{
+ "kit": {
+  "infCoat": {
+   "verts": 108,
+   "top": 1.18,
+   "colours": {
+    "instance": {
+     "verts": 108,
+     "x0": -0.29,
+     "x1": 0.29,
+     "y0": 0.62,
+     "y1": 1.18,
+     "z0": -0.12,
+     "z1": 0.199
+    }
+   }
+  },
+  "infFixed": {
+   "verts": 504,
+   "top": 1.981,
+   "colours": {
+    "#BDB8AC": {
+     "verts": 72,
+     "x0": -0.155,
+     "x1": 0.155,
+     "y0": 0,
+     "y1": 0.62,
+     "z0": -0.09,
+     "z1": 0.09
+    },
+    "#C9A98A": {
+     "verts": 240,
+     "x0": -0.115,
+     "x1": 0.115,
+     "y0": 1.185,
+     "y1": 1.415,
+     "z0": -0.115,
+     "z1": 0.115
+    },
+    "#2E2B27": {
+     "verts": 84,
+     "x0": -0.127,
+     "x1": 0.127,
+     "y0": 1.365,
+     "y1": 1.635,
+     "z0": -0.117,
+     "z1": 0.13
+    },
+    "#3A2E22": {
+     "verts": 36,
+     "x0": -0.14,
+     "x1": 0.14,
+     "y0": 0.81,
+     "y1": 1.11,
+     "z0": -0.27,
+     "z1": -0.13
+    },
+    "#4A3826": {
+     "verts": 36,
+     "x0": 0.185,
+     "x1": 0.355,
+     "y0": 0.502,
+     "y1": 1.738,
+     "z0": -0.014,
+     "z1": 0.254
+    },
+    "#8A8E92": {
+     "verts": 36,
+     "x0": 0.299,
+     "x1": 0.361,
+     "y0": 1.659,
+     "y1": 1.981,
+     "z0": 0.016,
+     "z1": 0.104
+    }
+   }
+  },
+  "horse": {
+   "verts": 324,
+   "top": 1.42,
+   "colours": {
+    "#5A4232": {
+     "verts": 252,
+     "x0": -0.19,
+     "x1": 0.19,
+     "y0": 0,
+     "y1": 1.42,
+     "z0": -0.525,
+     "z1": 0.96
+    },
+    "#2E2B27": {
+     "verts": 36,
+     "x0": -0.03,
+     "x1": 0.03,
+     "y0": 0.637,
+     "y1": 0.963,
+     "z0": -0.689,
+     "z1": -0.431
+    },
+    "#3A2E22": {
+     "verts": 36,
+     "x0": -0.15,
+     "x1": 0.15,
+     "y0": 0.97,
+     "y1": 1.05,
+     "z0": -0.22,
+     "z1": 0.22
+    }
+   }
+  },
+  "rider": {
+   "verts": 108,
+   "top": 1.55,
+   "colours": {
+    "instance": {
+     "verts": 108,
+     "x0": -0.27,
+     "x1": 0.27,
+     "y0": 1.05,
+     "y1": 1.55,
+     "z0": -0.11,
+     "z1": 0.173
+    }
+   }
+  },
+  "riderFixed": {
+   "verts": 432,
+   "top": 2.015,
+   "colours": {
+    "#C9A98A": {
+     "verts": 240,
+     "x0": -0.115,
+     "x1": 0.115,
+     "y0": 1.565,
+     "y1": 1.795,
+     "z0": -0.115,
+     "z1": 0.115
+    },
+    "#2E2B27": {
+     "verts": 84,
+     "x0": -0.127,
+     "x1": 0.127,
+     "y0": 1.745,
+     "y1": 2.015,
+     "z0": -0.117,
+     "z1": 0.13
+    },
+    "#BDB8AC": {
+     "verts": 72,
+     "x0": -0.195,
+     "x1": 0.195,
+     "y0": 0.797,
+     "y1": 1.163,
+     "z0": -0.093,
+     "z1": 0.193
+    },
+    "#8A8E92": {
+     "verts": 36,
+     "x0": 0.194,
+     "x1": 0.366,
+     "y0": 1.14,
+     "y1": 1.96,
+     "z0": -0.159,
+     "z1": 0.359
+    }
+   }
+  }
+ },
+ "figTop": {
+  "foot": 1.981,
+  "mounted": 2.015
+ },
+ "flags": {
+  "fr": {
+   "w": 128,
+   "h": 64,
+   "colours": {
+    "#2C4C9C": {
+     "share": 0.344,
+     "cols": [
+      2,
+      42
+     ],
+     "rows": [
+      2,
+      62
+     ]
+    },
+    "#E9E2D2": {
+     "share": 0.313,
+     "cols": [
+      46,
+      82
+     ],
+     "rows": [
+      2,
+      62
+     ]
+    },
+    "#B3302E": {
+     "share": 0.344,
+     "cols": [
+      86,
+      126
+     ],
+     "rows": [
+      2,
+      62
+     ]
+    }
+   }
+  },
+  "ru": {
+   "w": 128,
+   "h": 64,
+   "colours": {
+    "#2E7A48": {
+     "share": 0.736,
+     "cols": [
+      2,
+      126
+     ],
+     "rows": [
+      2,
+      62
+     ]
+    },
+    "#E9E2D2": {
+     "share": 0.264,
+     "cols": [
+      2,
+      126
+     ],
+     "rows": [
+      2,
+      62
+     ]
+    }
+   }
+  },
+  "at": {
+   "w": 128,
+   "h": 64,
+   "colours": {
+    "#C8A03A": {
+     "share": 0.313,
+     "cols": [
+      2,
+      126
+     ],
+     "rows": [
+      2,
+      62
+     ]
+    },
+    "#E9E2D2": {
+     "share": 0.633,
+     "cols": [
+      2,
+      126
+     ],
+     "rows": [
+      10,
+      50
+     ]
+    },
+    "#2A2622": {
+     "share": 0.039,
+     "cols": [
+      54,
+      70
+     ],
+     "rows": [
+      22,
+      38
+     ]
+    }
+   }
+  }
+ },
+ "rows": [
+  {
+   "id": "gqg",
+   "name": "Imperial Headquarters",
+   "desig": "G.Q.G.",
+   "ech": "army",
+   "nation": "fr",
+   "arm": "hq",
+   "leaf": true,
+   "parent": null,
+   "strength": null,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "Marshal Berthier, chief of staff. Gen. Songis commanding the artillery.",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 6,
+    "D0": 5,
+    "mounted": false,
+    "stdX": 1,
+    "stdScale": 0.4876,
+    "stdTall": 1.25,
+    "poleLen": 3.169,
+    "cloth": [
+     1.17,
+     0.683
+    ],
+    "meshes": [
+     {
+      "kind": "GEO.tent",
+      "count": 4,
+      "group": "body",
+      "material": "#C4BCA6"
+     },
+     {
+      "kind": "horse",
+      "count": 12,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 12,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5597",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 12,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 1,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 1,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 0,
+    "riders": 12,
+    "horses": 12,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2E5597",
+    "hues": [
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "c_iv",
+   "name": "IV Corps",
+   "desig": "IV Corps",
+   "ech": "corps",
+   "nation": "fr",
+   "arm": "inf",
+   "leaf": false,
+   "parent": null,
+   "strength": 23600,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496"
+  },
+  {
+   "id": "heightguns",
+   "name": "French guns on the heights",
+   "desig": "Batteries on the plateau",
+   "ech": "bde",
+   "nation": "fr",
+   "arm": "art",
+   "leaf": true,
+   "parent": "c_iv",
+   "strength": null,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 16.2,
+    "D0": 6,
+    "mounted": false,
+    "stdX": 1,
+    "stdScale": 0.4876,
+    "stdTall": 1.25,
+    "poleLen": 3.169,
+    "cloth": [
+     1.17,
+     0.683
+    ],
+    "meshes": [
+     {
+      "kind": "GEO.barrel",
+      "count": 6,
+      "group": "deployed",
+      "material": "#35322C"
+     },
+     {
+      "kind": "GEO.wheel",
+      "count": 12,
+      "group": "deployed",
+      "material": "#6B563C"
+     },
+     {
+      "kind": "GEO.trail",
+      "count": 6,
+      "group": "deployed",
+      "material": "#5A4832"
+     },
+     {
+      "kind": "infCoat",
+      "count": 30,
+      "group": "deployed",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5496",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 30,
+      "group": "deployed",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.limber",
+      "count": 6,
+      "group": "limbered",
+      "material": "#6A5741"
+     },
+     {
+      "kind": "GEO.wheel",
+      "count": 24,
+      "group": "limbered",
+      "material": "#6B563C"
+     },
+     {
+      "kind": "GEO.barrel",
+      "count": 6,
+      "group": "limbered",
+      "material": "#35322C"
+     },
+     {
+      "kind": "horse",
+      "count": 24,
+      "group": "limbered",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 1,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 1,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 30,
+    "riders": 0,
+    "horses": 24,
+    "barrels": 12
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2E5496",
+    "hues": [
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "sthilaire",
+   "name": "Saint-Hilaire's Division",
+   "desig": "1re Div., IV Corps",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "c_iv",
+   "strength": 6600,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "Brigades: Morand · Thiebault · Vare",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 13.8,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 2,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 144,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2D5395",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 144,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5497",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5598",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 2,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 2,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 160,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2D5395",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "vandamme",
+   "name": "Vandamme's Division",
+   "desig": "2e Div., IV Corps",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "c_iv",
+   "strength": 6700,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "43e and 55e de Ligne attached from Saint-Hilaire",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 13.8,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 2,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 144,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2D5395",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 144,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5497",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5598",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 2,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 2,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 160,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2D5395",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "legrand",
+   "name": "Legrand's Division",
+   "desig": "3e Div., IV Corps",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "c_iv",
+   "strength": 7000,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "Brigades: Merle · Féry · Levasseur. Colonel Schobert's 3e de Ligne and the Tirailleurs du Pô in Telnitz",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 13.8,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 2,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 144,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2D5395",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 144,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5497",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5598",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 2,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 2,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 160,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2D5395",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "c_iii",
+   "name": "III Corps (detachment)",
+   "desig": "III Corps",
+   "ech": "corps",
+   "nation": "fr",
+   "arm": "inf",
+   "leaf": false,
+   "parent": null,
+   "strength": 4300,
+   "guns": 12,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496"
+  },
+  {
+   "id": "friant",
+   "name": "Friant's Division",
+   "desig": "2e Div., III Corps",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "c_iii",
+   "strength": 3470,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "Brigades: Kister · Lochet · Heudelet",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 10.1,
+    "D0": 1.6,
+    "mounted": false,
+    "stdX": 2,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 72,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2D5395",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 72,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5497",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5598",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 2,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 2,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 88,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2D5395",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "bourcier",
+   "name": "Bourcier's Dragoons",
+   "desig": "4e Div. Dragons",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "cav",
+   "leaf": true,
+   "parent": "c_iii",
+   "strength": 830,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 7.4,
+    "D0": 2.3,
+    "mounted": true,
+    "stdX": 1,
+    "stdScale": 0.496,
+    "stdTall": 1.25,
+    "poleLen": 3.224,
+    "cloth": [
+     1.19,
+     0.694
+    ],
+    "meshes": [
+     {
+      "kind": "horse",
+      "count": 20,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 20,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5496",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 20,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 1,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 1,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 0,
+    "riders": 20,
+    "horses": 20,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2E5496",
+    "hues": [
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "c_v",
+   "name": "V Corps",
+   "desig": "V Corps",
+   "ech": "corps",
+   "nation": "fr",
+   "arm": "inf",
+   "leaf": false,
+   "parent": null,
+   "strength": 12700,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496"
+  },
+  {
+   "id": "caffarelli",
+   "name": "Caffarelli's Division",
+   "desig": "1re Div., V Corps",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "c_v",
+   "strength": 6700,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "Attached from III Corps for the battle",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 13.8,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 2,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 144,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2D5395",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 144,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5497",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5598",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 2,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 2,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 160,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2D5395",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "suchet",
+   "name": "Suchet's Division",
+   "desig": "2e Div., V Corps",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "c_v",
+   "strength": 6000,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 10.1,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 2,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 120,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2D5395",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 120,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5497",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5598",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 2,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 2,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 136,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2D5395",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "santon",
+   "name": "The Santon detachment",
+   "desig": "17e Légère with the Santon battery",
+   "ech": "bde",
+   "nation": "fr",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "c_v",
+   "strength": 1600,
+   "guns": 18,
+   "battery": 18,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 6.4,
+    "D0": 1.6,
+    "mounted": false,
+    "stdX": 1,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 48,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2D5395",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 48,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5497",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5598",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.barrel",
+      "count": 6,
+      "group": "body",
+      "material": "#35322C"
+     },
+     {
+      "kind": "GEO.wheel",
+      "count": 12,
+      "group": "body",
+      "material": "#6B563C"
+     },
+     {
+      "kind": "GEO.trail",
+      "count": 6,
+      "group": "body",
+      "material": "#5A4832"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 1,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 1,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 64,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 6
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2D5395",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "c_cav",
+   "name": "Cavalry Reserve",
+   "desig": "Reserve de Cavalerie",
+   "ech": "corps",
+   "nation": "fr",
+   "arm": "cav",
+   "leaf": false,
+   "parent": null,
+   "strength": 7400,
+   "guns": 36,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496"
+  },
+  {
+   "id": "kellermann",
+   "name": "Kellermann's Light Cavalry",
+   "desig": "Div. Cavalerie Legere",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "cav",
+   "leaf": true,
+   "parent": "c_cav",
+   "strength": 2400,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 11.8,
+    "D0": 2.3,
+    "mounted": true,
+    "stdX": 1,
+    "stdScale": 0.496,
+    "stdTall": 1.25,
+    "poleLen": 3.224,
+    "cloth": [
+     1.19,
+     0.694
+    ],
+    "meshes": [
+     {
+      "kind": "horse",
+      "count": 30,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 30,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5496",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 30,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 1,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 1,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 0,
+    "riders": 30,
+    "horses": 30,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2E5496",
+    "hues": [
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "nansouty",
+   "name": "Nansouty's Cuirassiers",
+   "desig": "1re Div. Cuirassiers",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "cav",
+   "leaf": true,
+   "parent": "c_cav",
+   "strength": 1600,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 7.4,
+    "D0": 2.3,
+    "mounted": true,
+    "stdX": 1,
+    "stdScale": 0.496,
+    "stdTall": 1.25,
+    "poleLen": 3.224,
+    "cloth": [
+     1.19,
+     0.694
+    ],
+    "meshes": [
+     {
+      "kind": "horse",
+      "count": 20,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 20,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5496",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 20,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 1,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 1,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 0,
+    "riders": 20,
+    "horses": 20,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2E5496",
+    "hues": [
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "dhautpoul",
+   "name": "d'Hautpoul's Cuirassiers",
+   "desig": "2e Div. Cuirassiers",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "cav",
+   "leaf": true,
+   "parent": "c_cav",
+   "strength": 1300,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 7.4,
+    "D0": 2.3,
+    "mounted": true,
+    "stdX": 1,
+    "stdScale": 0.496,
+    "stdTall": 1.25,
+    "poleLen": 3.224,
+    "cloth": [
+     1.19,
+     0.694
+    ],
+    "meshes": [
+     {
+      "kind": "horse",
+      "count": 20,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 20,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5496",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 20,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 1,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 1,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 0,
+    "riders": 20,
+    "horses": 20,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2E5496",
+    "hues": [
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "walther",
+   "name": "Walther's Dragoons",
+   "desig": "Div. Dragons",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "cav",
+   "leaf": true,
+   "parent": "c_cav",
+   "strength": 1500,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 7.4,
+    "D0": 2.3,
+    "mounted": true,
+    "stdX": 1,
+    "stdScale": 0.496,
+    "stdTall": 1.25,
+    "poleLen": 3.224,
+    "cloth": [
+     1.19,
+     0.694
+    ],
+    "meshes": [
+     {
+      "kind": "horse",
+      "count": 20,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 20,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5496",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 20,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 1,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 1,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 0,
+    "riders": 20,
+    "horses": 20,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2E5496",
+    "hues": [
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "c_i",
+   "name": "I Corps",
+   "desig": "I Corps",
+   "ech": "corps",
+   "nation": "fr",
+   "arm": "inf",
+   "leaf": false,
+   "parent": null,
+   "strength": 13000,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496"
+  },
+  {
+   "id": "rivaud",
+   "name": "Rivaud's Division",
+   "desig": "1re Div., I Corps",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "c_i",
+   "strength": 6000,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 10.1,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 2,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 120,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2D5395",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 120,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5497",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5598",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 2,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 2,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 136,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2D5395",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "drouet",
+   "name": "Drouet d'Erlon's Division",
+   "desig": "2e Div., I Corps",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "c_i",
+   "strength": 7000,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 13.8,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 2,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 144,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2D5395",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 144,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5497",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5598",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 2,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 2,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 160,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2D5395",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "c_gd",
+   "name": "Imperial Guard",
+   "desig": "Garde Imperiale",
+   "ech": "corps",
+   "nation": "fr",
+   "arm": "guard",
+   "leaf": false,
+   "parent": null,
+   "strength": 5500,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496"
+  },
+  {
+   "id": "guard_inf",
+   "name": "Guard Infantry",
+   "desig": "Infanterie de la Garde",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "guard",
+   "leaf": true,
+   "parent": "c_gd",
+   "strength": 3000,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "With the Grenadiers of the Italian Royal Guard",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 10.1,
+    "D0": 1.6,
+    "mounted": false,
+    "stdX": 2,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 72,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2D5395",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 72,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5497",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5598",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 2,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 2,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 88,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2D5395",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "guard_cav",
+   "name": "Guard Cavalry",
+   "desig": "Cavalerie de la Garde",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "cav",
+   "leaf": true,
+   "parent": "c_gd",
+   "strength": 2500,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "Horse Grenadiers, Chasseurs a Cheval, Mamelukes",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 11.8,
+    "D0": 2.3,
+    "mounted": true,
+    "stdX": 1,
+    "stdScale": 0.496,
+    "stdTall": 1.25,
+    "poleLen": 3.224,
+    "cloth": [
+     1.19,
+     0.694
+    ],
+    "meshes": [
+     {
+      "kind": "horse",
+      "count": 30,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 30,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5496",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 30,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 1,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 1,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 0,
+    "riders": 30,
+    "horses": 30,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2E5496",
+    "hues": [
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "c_gren",
+   "name": "Grenadier Division",
+   "desig": "Div. de Grenadiers",
+   "ech": "div",
+   "nation": "fr",
+   "arm": "inf",
+   "leaf": true,
+   "parent": null,
+   "strength": 5700,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "Oudinot was convalescent; effective command fell to Gen. Duroc",
+   "counter": {
+    "fill": "#2E5496",
+    "edge": "#16274A",
+    "ink": "#EAF0FA",
+    "tag": "FR",
+    "sideBand": "#4C86D8",
+    "sideBandPaper": "#2A5FB0"
+   },
+   "nameMark": "#4C86D8",
+   "dossierBar": "#2E5496",
+   "block": {
+    "W0": 10.1,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 2,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 120,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2D5395",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 120,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5497",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#2E5598",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.09,0.29,1.00",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 2,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 2,
+      "group": "standards",
+      "material": "flag texture (fr)"
+     }
+    ],
+    "men": 136,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#2E5496",
+    "mean": "#2D5395",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "ahq",
+   "name": "Allied Headquarters",
+   "desig": "Allied H.Q.",
+   "ech": "army",
+   "nation": "ru",
+   "arm": "hq",
+   "leaf": true,
+   "parent": null,
+   "strength": null,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "Tsar Alexander I and Emperor Francis II (Francis I of Austria) present; plan by Gen. Franz von Weyrother",
+   "counter": {
+    "fill": "#3E6B4A",
+    "edge": "#1C3222",
+    "ink": "#E9F2E9",
+    "tag": "RU",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#3E6B4A",
+   "block": {
+    "W0": 6,
+    "D0": 5,
+    "mounted": false,
+    "stdX": 1,
+    "stdScale": 0.4876,
+    "stdTall": 1.25,
+    "poleLen": 3.169,
+    "cloth": [
+     1.17,
+     0.683
+    ],
+    "meshes": [
+     {
+      "kind": "GEO.tent",
+      "count": 4,
+      "group": "body",
+      "material": "#C4BCA6"
+     },
+     {
+      "kind": "horse",
+      "count": 12,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 12,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3E6C4B",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 12,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 1,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 1,
+      "group": "standards",
+      "material": "flag texture (ru)"
+     }
+    ],
+    "men": 0,
+    "riders": 12,
+    "horses": 12,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#3E6B4A",
+    "mean": "#3E6C4B",
+    "hues": [
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "buxhowden",
+   "name": "Left Wing Command",
+   "desig": "Left Wing",
+   "ech": "corps",
+   "nation": "ru",
+   "arm": "hq",
+   "leaf": true,
+   "parent": null,
+   "strength": 40000,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#3E6B4A",
+    "edge": "#1C3222",
+    "ink": "#E9F2E9",
+    "tag": "RU",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#3E6B4A",
+   "block": {
+    "W0": 6,
+    "D0": 5,
+    "mounted": false,
+    "stdX": 1,
+    "stdScale": 0.4876,
+    "stdTall": 1.25,
+    "poleLen": 3.169,
+    "cloth": [
+     1.17,
+     0.683
+    ],
+    "meshes": [
+     {
+      "kind": "GEO.tent",
+      "count": 4,
+      "group": "body",
+      "material": "#C4BCA6"
+     },
+     {
+      "kind": "horse",
+      "count": 12,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 12,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3E6C4B",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 12,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 1,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 1,
+      "group": "standards",
+      "material": "flag texture (ru)"
+     }
+    ],
+    "men": 0,
+    "riders": 12,
+    "horses": 12,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#3E6B4A",
+    "mean": "#3E6C4B",
+    "hues": [
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "kienmayer",
+   "name": "Kienmayer's Advance Guard",
+   "desig": "Advance Guard, I Column",
+   "ech": "div",
+   "nation": "at",
+   "arm": "mixed",
+   "leaf": true,
+   "parent": "buxhowden",
+   "strength": 6800,
+   "guns": 12,
+   "battery": null,
+   "mix": null,
+   "staff": "Grenz infantry (Broder Nr. 7, 1st and 2nd Szekler Nr. 14 and 15) with chevau-legers, hussars and Cossacks",
+   "counter": {
+    "fill": "#D9D2BF",
+    "edge": "#4A4638",
+    "ink": "#2A2720",
+    "tag": "AT",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#D9D2BF",
+   "block": {
+    "W0": 13.8,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 2,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 144,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#D8D1BE",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "1.00,0.93,0.75",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 144,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#DAD3C0",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "1.00,0.93,0.75",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#DCD5C2",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "1.00,0.93,0.75",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 8,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 8,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#DAD3C0",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "1.00,0.93,0.75",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 8,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 2,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 2,
+      "group": "standards",
+      "material": "flag texture (at)"
+     }
+    ],
+    "men": 160,
+    "riders": 10,
+    "horses": 10,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#D9D2BF",
+    "mean": "#D8D1BE",
+    "hues": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "dok",
+   "name": "First Column",
+   "desig": "I Column",
+   "ech": "div",
+   "nation": "ru",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "buxhowden",
+   "strength": 13490,
+   "guns": 64,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#3E6B4A",
+    "edge": "#1C3222",
+    "ink": "#E9F2E9",
+    "tag": "RU",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#3E6B4A",
+   "block": {
+    "W0": 17.5,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 3,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 168,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3D6A49",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 168,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3E6C4A",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3F6C4B",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 3,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 3,
+      "group": "standards",
+      "material": "flag texture (ru)"
+     }
+    ],
+    "men": 184,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#3E6B4A",
+    "mean": "#3D6A49",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "lang",
+   "name": "Second Column",
+   "desig": "II Column",
+   "ech": "div",
+   "nation": "ru",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "buxhowden",
+   "strength": 11700,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "A French emigre in Russian service",
+   "counter": {
+    "fill": "#3E6B4A",
+    "edge": "#1C3222",
+    "ink": "#E9F2E9",
+    "tag": "RU",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#3E6B4A",
+   "block": {
+    "W0": 17.5,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 3,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 168,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3D6A49",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 168,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3E6C4A",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3F6C4B",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 3,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 3,
+      "group": "standards",
+      "material": "flag texture (ru)"
+     }
+    ],
+    "men": 184,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#3E6B4A",
+    "mean": "#3D6A49",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "kamensky",
+   "name": "Kamensky's Brigade",
+   "desig": "Brigade, II Column",
+   "ech": "bde",
+   "nation": "ru",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "lang",
+   "strength": 4250,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#3E6B4A",
+    "edge": "#1C3222",
+    "ink": "#E9F2E9",
+    "tag": "RU",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#3E6B4A",
+   "block": {
+    "W0": 13.8,
+    "D0": 1.6,
+    "mounted": false,
+    "stdX": 2,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 96,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3D6A49",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 96,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3E6C4A",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3F6C4B",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 2,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 2,
+      "group": "standards",
+      "material": "flag texture (ru)"
+     }
+    ],
+    "men": 112,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#3E6B4A",
+    "mean": "#3D6A49",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "prz",
+   "name": "Third Column",
+   "desig": "III Column",
+   "ech": "div",
+   "nation": "ru",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "buxhowden",
+   "strength": 7700,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#3E6B4A",
+    "edge": "#1C3222",
+    "ink": "#E9F2E9",
+    "tag": "RU",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#3E6B4A",
+   "block": {
+    "W0": 17.5,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 3,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 168,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3D6A49",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 168,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3E6C4A",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3F6C4B",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 3,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 3,
+      "group": "standards",
+      "material": "flag texture (ru)"
+     }
+    ],
+    "men": 184,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#3E6B4A",
+    "mean": "#3D6A49",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "col4",
+   "name": "Fourth Column",
+   "desig": "IV Column",
+   "ech": "corps",
+   "nation": "at",
+   "arm": "inf",
+   "leaf": false,
+   "parent": null,
+   "strength": 13900,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#D9D2BF",
+    "edge": "#4A4638",
+    "ink": "#2A2720",
+    "tag": "AT",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#D9D2BF"
+  },
+  {
+   "id": "milo",
+   "name": "Miloradovich's Russians",
+   "desig": "Russian wing, IV Column",
+   "ech": "div",
+   "nation": "ru",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "col4",
+   "strength": 4800,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#3E6B4A",
+    "edge": "#1C3222",
+    "ink": "#E9F2E9",
+    "tag": "RU",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#3E6B4A",
+   "block": {
+    "W0": 13.8,
+    "D0": 1.6,
+    "mounted": false,
+    "stdX": 2,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 96,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3D6A49",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 96,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3E6C4A",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3F6C4B",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 2,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 2,
+      "group": "standards",
+      "material": "flag texture (ru)"
+     }
+    ],
+    "men": 112,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#3E6B4A",
+    "mean": "#3D6A49",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "kollo",
+   "name": "Kollowrat's Austrians",
+   "desig": "Austrian wing, IV Column",
+   "ech": "div",
+   "nation": "at",
+   "arm": "inf",
+   "leaf": true,
+   "parent": "col4",
+   "strength": 9100,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "Brigades: Jurczek · Rottermund",
+   "counter": {
+    "fill": "#D9D2BF",
+    "edge": "#4A4638",
+    "ink": "#2A2720",
+    "tag": "AT",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#D9D2BF",
+   "block": {
+    "W0": 17.5,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 3,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 168,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#D8D1BE",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "1.00,0.93,0.75",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 168,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#DAD3C0",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "1.00,0.93,0.75",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#DCD5C2",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "1.00,0.93,0.75",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 3,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 3,
+      "group": "standards",
+      "material": "flag texture (at)"
+     }
+    ],
+    "men": 184,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#D9D2BF",
+    "mean": "#D8D1BE",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "lich",
+   "name": "Fifth Column (cavalry)",
+   "desig": "V Column",
+   "ech": "corps",
+   "nation": "ru",
+   "arm": "cav",
+   "leaf": true,
+   "parent": null,
+   "strength": 5400,
+   "guns": 24,
+   "battery": null,
+   "mix": {
+    "nation": "at",
+    "share": 0.2
+   },
+   "staff": "Mixed, mostly Russian: the Austrian cuirassier brigades of Caramelli and Weber (about 1,100) and the Russian brigades of Gladkov and Uvarov (Duffy 1977; Smith 1998)",
+   "counter": {
+    "fill": "#3E6B4A",
+    "edge": "#1C3222",
+    "ink": "#E9F2E9",
+    "tag": "RU",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#3E6B4A",
+   "block": {
+    "W0": 16.2,
+    "D0": 8,
+    "mounted": true,
+    "stdX": 1,
+    "stdScale": 0.496,
+    "stdTall": 1.25,
+    "poleLen": 3.224,
+    "cloth": [
+     1.19,
+     0.694
+    ],
+    "meshes": [
+     {
+      "kind": "horse",
+      "count": 60,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 60,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#72866C",
+      "instanceHues": 2,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        0.817
+       ],
+       [
+        "1.00,0.93,0.75",
+        0.183
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 60,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 1,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 1,
+      "group": "standards",
+      "material": "flag texture (ru)"
+     }
+    ],
+    "men": 0,
+    "riders": 60,
+    "horses": 60,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#3E6B4A",
+    "mean": "#72866C",
+    "hues": [
+     2
+    ],
+    "mixShare": 0.2,
+    "mixBase": "#D9D2BF"
+   }
+  },
+  {
+   "id": "bag",
+   "name": "Advance Guard of the Right",
+   "desig": "Advance Guard",
+   "ech": "corps",
+   "nation": "ru",
+   "arm": "inf",
+   "leaf": true,
+   "parent": null,
+   "strength": 13700,
+   "guns": 42,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#3E6B4A",
+    "edge": "#1C3222",
+    "ink": "#E9F2E9",
+    "tag": "RU",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#3E6B4A",
+   "block": {
+    "W0": 17.5,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 3,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 168,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3D6A49",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 168,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3E6C4A",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3F6C4B",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 3,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 3,
+      "group": "standards",
+      "material": "flag texture (ru)"
+     }
+    ],
+    "men": 184,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#3E6B4A",
+    "mean": "#3D6A49",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "constantine",
+   "name": "Russian Imperial Guard",
+   "desig": "Imperial Guard",
+   "ech": "corps",
+   "nation": "ru",
+   "arm": "guard",
+   "leaf": false,
+   "parent": null,
+   "strength": 10500,
+   "guns": 40,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#3E6B4A",
+    "edge": "#1C3222",
+    "ink": "#E9F2E9",
+    "tag": "RU",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#3E6B4A"
+  },
+  {
+   "id": "rg_inf",
+   "name": "Guard Infantry",
+   "desig": "Guard Infantry",
+   "ech": "div",
+   "nation": "ru",
+   "arm": "guard",
+   "leaf": true,
+   "parent": "constantine",
+   "strength": 6730,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#3E6B4A",
+    "edge": "#1C3222",
+    "ink": "#E9F2E9",
+    "tag": "RU",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#3E6B4A",
+   "block": {
+    "W0": 13.8,
+    "D0": 6.6,
+    "mounted": false,
+    "stdX": 2,
+    "stdScale": 0.6095,
+    "stdTall": 1,
+    "poleLen": 3.169,
+    "cloth": [
+     1.463,
+     0.853
+    ],
+    "meshes": [
+     {
+      "kind": "infCoat",
+      "count": 144,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3D6A49",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 144,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "infCoat",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3E6C4A",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "infFixed",
+      "count": 16,
+      "group": "skirmishers",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "horse",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3F6C4B",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 2,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 2,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 2,
+      "group": "standards",
+      "material": "flag texture (ru)"
+     }
+    ],
+    "men": 160,
+    "riders": 2,
+    "horses": 2,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#3E6B4A",
+    "mean": "#3D6A49",
+    "hues": [
+     1,
+     1,
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  },
+  {
+   "id": "rg_cav",
+   "name": "Guard Cavalry",
+   "desig": "Guard Cavalry",
+   "ech": "div",
+   "nation": "ru",
+   "arm": "cav",
+   "leaf": true,
+   "parent": "constantine",
+   "strength": 3700,
+   "guns": null,
+   "battery": null,
+   "mix": null,
+   "staff": "",
+   "counter": {
+    "fill": "#3E6B4A",
+    "edge": "#1C3222",
+    "ink": "#E9F2E9",
+    "tag": "RU",
+    "sideBand": "#D4703A",
+    "sideBandPaper": "#A8501C"
+   },
+   "nameMark": "#D4703A",
+   "dossierBar": "#3E6B4A",
+   "block": {
+    "W0": 16.2,
+    "D0": 2.3,
+    "mounted": true,
+    "stdX": 1,
+    "stdScale": 0.496,
+    "stdTall": 1.25,
+    "poleLen": 3.224,
+    "cloth": [
+     1.19,
+     0.694
+    ],
+    "meshes": [
+     {
+      "kind": "horse",
+      "count": 40,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "rider",
+      "count": 40,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)",
+      "instanceMean": "#3D6A49",
+      "instanceHues": 1,
+      "instanceHueShares": [
+       [
+        "0.33,1.00,0.47",
+        1
+       ]
+      ]
+     },
+     {
+      "kind": "riderFixed",
+      "count": 40,
+      "group": "body",
+      "material": "vertex colours (the kit's parts; white parts take the instance colour)"
+     },
+     {
+      "kind": "GEO.pole",
+      "count": 1,
+      "group": "standards",
+      "material": "#6A5B48"
+     },
+     {
+      "kind": "GEO.flag",
+      "count": 1,
+      "group": "standards",
+      "material": "flag texture (ru)"
+     }
+    ],
+    "men": 0,
+    "riders": 40,
+    "horses": 40,
+    "barrels": 0
+   },
+   "coat": {
+    "base": "#3E6B4A",
+    "mean": "#3D6A49",
+    "hues": [
+     1
+    ],
+    "mixShare": 0,
+    "mixBase": null
+   }
+  }
+ ],
+ "M_PER_WORLD": 63.19772037002967,
+ "STD_RATIO": 1.6,
+ "STD_POLE": 5.2,
+ "geo": {
+  "pole": {
+   "radiusTop": 0.06,
+   "radiusBottom": 0.06,
+   "height": 5.2,
+   "radialSegments": 5,
+   "heightSegments": 1,
+   "openEnded": false,
+   "thetaStart": 0,
+   "thetaLength": 6.283185307179586
+  },
+  "flag": {
+   "width": 2.4,
+   "height": 1.4,
+   "widthSegments": 1,
+   "heightSegments": 1
+  },
+  "tent": {
+   "radius": 1.75,
+   "height": 2.3,
+   "radialSegments": 4,
+   "heightSegments": 1,
+   "openEnded": false,
+   "thetaStart": 0,
+   "thetaLength": 6.283185307179586
+  },
+  "barrel": {
+   "radiusTop": 0.09,
+   "radiusBottom": 0.115,
+   "height": 1.5,
+   "radialSegments": 8,
+   "heightSegments": 1,
+   "openEnded": false,
+   "thetaStart": 0,
+   "thetaLength": 6.283185307179586
+  },
+  "wheel": {
+   "radiusTop": 0.44,
+   "radiusBottom": 0.44,
+   "height": 0.1,
+   "radialSegments": 14,
+   "heightSegments": 1,
+   "openEnded": false,
+   "thetaStart": 0,
+   "thetaLength": 6.283185307179586
+  }
+ },
+ "unusedGeo": [
+  "shako",
+  "bear",
+  "musket",
+  "sabre",
+  "body",
+  "horse",
+  "rider"
+ ],
+ "atlasDefined": true,
+ "legendNation": [
+  "French rgb(46, 84, 150)",
+  "Russian rgb(62, 107, 74)",
+  "Austrian rgb(217, 210, 191)"
+ ],
+ "firstRunKey": "Blue is the French army. The Allies are green for Russia and white for Austria, and their movement arrows are drawn in amber. The high ground in the centre is the Pratzen plateau, and it decides the battle.",
+ "html": "austerlitz-command-map.html",
+ "when": "2026-10-04T22:10:59.481Z"
+}

@@ -30,9 +30,9 @@ column's route dashed and faint, clipped to the ground's triangles; `routeAxis0`
 north-up SVG of a formation's day in its full dossier), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 5C its interval bars, `EV_BAR`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
-| `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2, Stage 3, Stage 4 and Stage 5 measurement scripts (`stage2/`, `stage3/`, `stage4/`, `stage5/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
+| `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2, Stage 3, Stage 4, Stage 5 and Stage 6 measurement scripts (`stage2/`, `stage3/`, `stage4/`, `stage5/`, `stage6/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
 | `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `stage2c-68ac7721.html` (the 2C build, on which the drop limits are derived), `spine-6b2cccd4.html` (the spine data task's build), `stage4d-9b13adbf.html` (the `check:data` reference, since 4D's one-word data change) |
-| `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE3_SPEC.md` (Stage 3, with `stage3-evidence/`), `STAGE4_SPEC.md` (Stage 4, with `stage4-evidence/`), `STAGE5_SPEC.md` (Stage 5, with `stage5-evidence/`), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
+| `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE3_SPEC.md` (Stage 3, with `stage3-evidence/`), `STAGE4_SPEC.md` (Stage 4, with `stage4-evidence/`), `STAGE5_SPEC.md` (Stage 5, with `stage5-evidence/`), `STAGE6_SPEC.md` (Stage 6 Part A, with `stage6-evidence/`: the census, the probes and the registers of leads), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
 
 The one-off correction-pass tools (`geo-migrate.js`, `geo-anchor.js`, `patch-app.py`, `patch-history.py`, and the
 others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; their results are already in the data.
@@ -187,7 +187,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   separate from implementation choices.
 - Commit `austerlitz-command-map.html` with the sources (CI fails if it differs from a fresh build). Report files changed, checks run with results, and anything not verified.
 
-## Current state (September 2026)
+## Current state (October 2026)
 Stage 0 (trust and baseline) is complete; the source tree and the regression suite are recovered and
 synchronised with it (CHANGELOG.md). Stage 1 (visual language): the specification (`docs/VISUAL_SPEC.md`) and
 its implementation (Part B) are done; colours and type come only from `tokens.js`. Stage 2 Part A (the specification,
@@ -239,4 +239,7 @@ headquarters' viewshed with its fogged ground; the dossier's reasons; the eye-le
 merged (#36). Stage 5F (the ordered routes: a layer, off by default, drawing each plan column's route faint and dashed under the figures,
 owner decision 93; the Plans tab's harness case at the Overview, decision 94; the Plans tab itself unchanged) is merged (#37). Stage 5G (the
 day-track: each formation's day as a small north-up map in its full dossier, its anchors by grade, the interpolated legs, the position at
-the clock and its ordered route dashed, owner decision 95), the last part of Stage 5, is implemented, for review.
+the clock and its ordered route dashed, owner decision 95), the last part of Stage 5, is merged (#38); Stage 5 is complete. Stage 6 Part A (the specification, `docs/STAGE6_SPEC.md`: uniforms,
+headgear, flags and standards, each to carry a source and a grade, and identity decoupled from coat colour; a census and probes in
+`tools/stage6/`; no external source could be read in its session, so its evidence is a register of leads; no source file changed) is
+written, for review.
