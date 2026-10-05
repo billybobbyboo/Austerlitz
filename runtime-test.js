@@ -571,6 +571,21 @@ try{
     if(nb!==32||bad.length) throw new Error("kit by class: "+nb+" blocks; "+bad.slice(0,4).join("; "));
     console.log("kit by class: "+nb+" blocks, "+nr+" class sets, "+units6+" battalions and squadrons each a class of their composition OK"); }
 
+  /* Stage 6D (docs/STAGE6_SPEC.md section 6.3): a dry run of the standards: each block's as its classes' colours entries rule (kitStdRule per
+     drawn unit), none on a headquarters or a battery, one pole per standard, and a detachment's battalions take their standards with them */
+  { let n=0; const bad=[];
+    Object.keys(units).forEach(id=>{ const u=units[id].block&&units[id].block.userData; if(!u) return; const S=u.stds||[]; n+=S.length;
+      if((FORMATIONS[id].arm==="hq"||FORMATIONS[id].arm==="art")&&S.length) bad.push(id+": standards on a "+FORMATIONS[id].arm);
+      (u.dress||[]).filter(r=>r.dress&&(r.role==="ranks"||r.role==="riders")).forEach(r=>{ const R=kitStdRule(DRESS[r.dress].carry), w=R.n>=1?R.n*r.units.length:Math.ceil(R.n*r.units.length);
+        const got=S.filter(q=>q.dress===r.dress).length; if(got!==w) bad.push(id+" "+r.dress+": "+got+" of "+w); });
+      const kb=u.shownBat===undefined?Infinity:u.shownBat, shownS=S.filter(q=>q.unit<kb).length;
+      if(S.length&&u.poles.count!==shownS) bad.push(id+": "+u.poles.count+" poles for the "+shownS+" standards of its battalions shown");
+      if(u.showBattalions&&u.nBat>1&&S.some(q=>q.unit>0)){ const keep=u.shownBat; u.showBattalions(1);
+        const shown=u.poles.count, want=S.filter(q=>q.unit<1).length; u.showBattalions(keep===undefined?u.nBat:keep);
+        if(shown!==want) bad.push(id+": "+shown+" standards with one battalion shown, "+want+" belong to it"); } });
+    if(!n||bad.length) throw new Error("standards: "+bad.slice(0,4).join("; "));
+    console.log("standards: "+n+" on the blocks as their colours entries rule, none on headquarters or batteries, a detachment's taken with its battalions OK"); }
+
   /* twelve atlas cells, the three photographs present, fields routed by crop */
   if(_atlasCanvas.height!==1536) throw new Error("atlas is not three rows of cells: "+_atlasCanvas.height);
   for(const k of ["mud","grass","litter"]) if(!ASSETS[k]||!ASSETS[k].diff||!ASSETS[k].nor) throw new Error("asset missing: "+k);

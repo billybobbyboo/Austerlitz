@@ -161,7 +161,7 @@ if(cerrs) process.exitCode=1;
   const kn=ast.body.find(n=>n.type==="VariableDeclaration"&&n.declarations.some(d=>d.id.name==="KIT"));
   const ctx={}; vm.createContext(ctx);
   vm.runInContext(fs.readFileSync('data.js','utf8')+"\n"+fs.readFileSync('appearance.js','utf8')+"\n"+(kn?app.slice(kn.start,kn.end):"var KIT=null;")+
-    "\nthis.X={KIT:KIT,DRESS:DRESS,VOCAB:APPEARANCE_VOCAB};",ctx);
+    "\nthis.X={KIT:KIT,DRESS:DRESS,VOCAB:APPEARANCE_VOCAB,CC:COLOURS_CARRIED};",ctx);
   const {KIT,DRESS,VOCAB}=ctx.X;
   if(!KIT) perr.push("app.js: no KIT table");
   else {
@@ -182,9 +182,22 @@ if(cerrs) process.exitCode=1;
       const cu=!!(d.cuirass&&!d.cuirass.gen&&!d.cuirass.sides&&d.cuirass.has===true&&(d.cuirass.gr==="A"||d.cuirass.gr==="B"));
       if(cu!==(KIT.cuirass[id]!==undefined)) perr.push(id+": a cuirass "+(cu?"recorded but not drawn":"drawn but not recorded"));
       if(KIT.cuirass[id]!==undefined&&KIT.mat[KIT.cuirass[id]]===undefined) perr.push(id+": its cuirass in no material of KIT"); });
+    /* Stage 6D: the standards' paintings and colours. A painting only where the colours entry's model is a claim graded A or B and the
+       painting's source entry gives the pattern at A or B; every flag colour a word of the claims it draws; a lower bound only on a
+       disputed count */
+    const C6=ctx.X.CC, ok6=v=>!!(v&&!v.gen&&!v.none&&!v.sides&&(v.gr==="A"||v.gr==="B"));
+    Object.keys(KIT.paint||{}).forEach(p=>{ const E=C6[KIT.paint[p].from]; if(!E||!ok6(E.pattern)) perr.push("KIT.paint."+p+": its source entry gives no pattern at A or B"); });
+    Object.keys(KIT.carry||{}).forEach(k=>{ const E=C6[k], K=KIT.carry[k];
+      if(!E) perr.push("KIT.carry."+k+": no such colours entry");
+      else { if(K.paint&&(!KIT.paint[K.paint]||!ok6(E.model))) perr.push("KIT.carry."+k+": painted without a model graded A or B");
+        if(K.lower&&!(E.count&&E.count.sides)) perr.push("KIT.carry."+k+": a lower bound on a count that is not disputed"); } });
+    const words={white:["fr_eagle_inf","pattern"], red:["fr_eagle_inf","pattern"], blue:["fr_eagle_inf","pattern"], yellow:["at_inf","model"], black:["at_inf","pattern"], gilt:["fr_eagle_inf","finial"]};
+    Object.keys(KIT.flag||{}).forEach(k=>{ const w=words[k], E=w&&C6[w[0]]&&C6[w[0]][w[1]];
+      if(!E||(E.en||"").toLowerCase().indexOf(k)<0) perr.push("KIT.flag."+k+": not a word of the claim it draws"); });
     perr.forEach(e=>console.log("  ! "+e));
     console.log("kit: "+(perr.length?perr.length+" wrong":Object.keys(KIT.cloth).length+" cloth colours, all classes of appearance.js and none below decision 84's black; "+used+
-      " settled coat and legwear values drawn; "+Object.keys(KIT.head).length+" headgear shapes; cuirasses for "+Object.keys(KIT.cuirass).join(", ")));
+      " settled coat and legwear values drawn; "+Object.keys(KIT.head).length+" headgear shapes; cuirasses for "+Object.keys(KIT.cuirass).join(", ")+
+      "; "+Object.keys(KIT.paint).length+" standard paintings for "+Object.keys(KIT.carry).filter(k=>KIT.carry[k].paint).length+" colours entries, their "+Object.keys(KIT.flag).length+" colours words of their claims"));
   }
   if(perr.length) process.exitCode=1;
 }
