@@ -62,7 +62,7 @@ is complete.
   (`pratzen-low-10x` 7.68 to 7.94, the closest orbit 11.73 to 12.58), none below AA; drops identical; the smoke's shares identical.
 - The standards' cloths in view: 2.5-4.7 times as many (the Overview 55 to 142, `close-sokolnitz` 22 to 70, `pratzen-low` 22 to 62, the eye
   level 3 to 14). Their size on screen: the median width about as before (the Field vantage 6.3 to 5.8 px, the close views 24-37 to 21-35),
-  taller (heights 5.3 to 7.3 px in the Field vantage, 18.5-22.3 to 25.6-33.7 in the close views): the square French and Russian cloths in place
+  taller (heights 5.3 to 7.3 px in the Field vantage, 16.2-22.3 to 24.6-33.7 in the close views): the square French and Russian cloths in place
   of the 2.4 : 1.4 ones. In the closest orbit a Russian colour stands in front of the eye (1,281 x 1,341 px, the largest), covering much of the
   view's right side and halving the confidence marks' share there (0.0325 to 0.0171): the harness's thresholds hold, and the camera's floor
   keeps the eye out of the ground, not out of a standard. A consequence of the sourced counts (two colours per Russian battalion) and heights,
@@ -70,7 +70,7 @@ is complete.
 - The confidence marks' share otherwise within 0.011 (fewer marks seen behind the cloths); what changes on screen 0.03-4.4% of the free
   rectangle (44% in the closest orbit); nothing in the 1x and paper-map views.
 - The world pass (software WebGL, median of 15 frames): 0.8-13.5 ms (6C 0.8-9.9), noisy as before; draw calls +21 to +24 in every view with
-  standards (one cloth mesh per painting, the finials' mesh).
+  standards (+3 at the eye level) (one cloth mesh per painting, the finials' mesh).
 - Every block's standards on both builds, per class with its rule, painting, height and cloth: `compare-6d.md`; the sheet: the close views and
   the closest orbit, before and after.
 
