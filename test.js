@@ -136,73 +136,100 @@ TOUR.forEach((st,i)=>{
 });
 console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   "| command entries:",Object.keys(COMMAND.fr).length+Object.keys(COMMAND.al).length);
-/* ---- Stage 6B: the historical appearance (appearance.js; docs/STAGE6_SPEC.md §6.1, decisions 99-101, 105, 106, 109) ----
-   Every leaf formation resolves to dress classes whose shares sum to 1; every value names a source, a locator, a grade and a
-   label, or says it is generic; grade A only with a source dated 1804-1805 or a regulation shown in force on the day; every
-   colours entry has a model, a count rule and a cloth (or says it is not sourced); the open questions of SOURCE_NOTE stay
-   while the table does not settle them (decision 105). */
+/* ---- Stage 6B: the historical appearance (appearance.js; docs/STAGE6_SPEC.md §6.1, decisions 99-101, 103, 105, 106, 109) ----
+   Every leaf formation resolves to dress classes whose shares sum to 1 in each mount group; every value names a source, a
+   locator, a grade, a label and a verbatim quote, or is a disputed value keeping each side, or says it is generic (or, for
+   colours, that none is shown); grade A only with a source dated 1804-1805 or a regulation shown in force on the day; every
+   colours entry has a model, a count rule and a cloth (or says it is generic or not shown); the open questions of
+   SOURCE_NOTE stay while the table does not settle them (decision 105). */
 { let ap=0, apBad=0; const bad=m=>{ errs.push("appearance: "+m); apBad++; };
   const LABELS=["fact","disputed","derived","inference","uncertain"], KINDS=["regulation","primary-text","primary-image","object","specialist","modern-web-specialist"];
-  const srcOk=(k)=>!!APPEARANCE_SOURCES[k];
+  const srcOk=k=>!!APPEARANCE_SOURCES[k], used=new Set();
   Object.entries(APPEARANCE_SOURCES).forEach(([k,S])=>{ ap++;
-    if(!S.au||!S.ti||!(S.d>1700&&S.d<2100)||!KINDS.includes(S.kind)||!S.url) bad("source "+k+" lacks author, title, year, kind or url"); });
-  /* a claim, or {gen:true, why} */
-  function claim(where,c,cls){ ap++;
+    if(!S.au||!S.ti||!S.pub||!(S.d>1700&&S.d<2100)||!KINDS.includes(S.kind)||!S.url) bad("source "+k+" lacks author, title, publisher, year, kind or url"); });
+  const year=d=>{ const m=/^(\d{4})/.exec(String(d||"")); return m?+m[1]:null; };
+  /* a claim; or a disputed value with its sides; or {gen:true, why}; or, where allowNone, {none:true, why} */
+  function claim(where,c,cls,allowNone){ ap++;
     if(!c||typeof c!=="object") return bad(where+": missing");
     if(c.gen){ if(!c.why) bad(where+": generic without a reason"); return; }
-    if(!c.v||!c.src||!c.at||!c.gr||!c.lab) return bad(where+": lacks v, src, at, gr or lab");
-    if(!srcOk(c.src)) bad(where+": unknown source "+c.src);
+    if(c.none){ if(!allowNone) bad(where+": 'none' is allowed only for colours"); else if(!c.why) bad(where+": none without a reason"); return; }
+    if(!c.v||!c.gr||!c.lab) return bad(where+": lacks v, gr or lab");
     if(!"ABC".includes(c.gr)||c.gr.length!==1) bad(where+": grade "+c.gr);
     if(!LABELS.includes(c.lab)) bad(where+": label "+c.lab);
-    if(c.gr==="A"){ const S=APPEARANCE_SOURCES[c.src]||{};
-      const dated=S.d>=1804&&S.d<=1805, reg=S.kind==="regulation"&&c.inForce&&srcOk(c.inForce.src)&&c.inForce.at&&c.inForce.q;
-      if(!dated&&!reg) bad(where+": grade A without a source dated 1804-1805 or a regulation shown in force ("+c.src+", "+S.d+")"); }
-    if(c.inForce&&!(srcOk(c.inForce.src)&&c.inForce.at&&c.inForce.q)) bad(where+": inForce lacks a source, locator or quote");
     if(cls==="colour"&&!APPEARANCE_VOCAB.colour.includes(c.c)) bad(where+": colour class "+c.c+" not in the vocabulary");
-    if(cls==="head"&&!APPEARANCE_VOCAB.head.includes(c.h)) bad(where+": headgear class "+c.h+" not in the vocabulary"); }
-  const ARMS=["inf","cav","art","hq","guard","mixed"];
+    if(cls==="head"&&!APPEARANCE_VOCAB.head.includes(c.h)) bad(where+": headgear class "+c.h+" not in the vocabulary");
+    if(c.lab==="disputed"){
+      if(c.gr!=="C") bad(where+": a disputed value graded "+c.gr+" (disputed is grade C)");
+      if(!Array.isArray(c.sides)||c.sides.length<2) return bad(where+": disputed without two sides");
+      if(cls==="colour"&&c.c!=="generic"||cls==="head"&&c.h!=="generic") bad(where+": a disputed value must be drawn generic (decision 103)");
+      c.sides.forEach((x,i)=>claim(where+" side "+i,x)); return; }
+    if(!c.src||!c.at||!c.q) return bad(where+": lacks src, at or q");
+    if(!srcOk(c.src)) bad(where+": unknown source "+c.src); else used.add(c.src);
+    if(c.gr==="A"){ const S=APPEARANCE_SOURCES[c.src]||{}, dy=year(c.dated);
+      const dated=(S.d>=1804&&S.d<=1805)||(dy>=1804&&dy<=1805), reg=S.kind==="regulation"&&c.inForce&&srcOk(c.inForce.src)&&c.inForce.at&&c.inForce.q;
+      if(!dated&&!reg) bad(where+": grade A without a source dated 1804-1805 or a regulation shown in force ("+c.src+", "+(c.dated||S.d)+")"); }
+    if(c.inForce){ if(!(srcOk(c.inForce.src)&&c.inForce.at&&c.inForce.q)) bad(where+": inForce lacks a source, locator or quote"); else used.add(c.inForce.src); } }
   Object.entries(DRESS).forEach(([k,d])=>{ ap++;
     if(!NATION[d.nation]) bad("dress "+k+": nation "+d.nation);
     if(!d.name) bad("dress "+k+": no name");
+    if(!["foot","horse"].includes(d.mount)) bad("dress "+k+": mount "+d.mount);
     if(!COLOURS_CARRIED[d.carry]) bad("dress "+k+": colours entry "+d.carry+" missing");
     claim("dress "+k+".coat",d.coat,"colour"); claim("dress "+k+".legwear",d.legwear,"colour"); claim("dress "+k+".head",d.head,"head");
     claim("dress "+k+".greatcoat",d.greatcoat);
-    ["facings","cuirass","horse","furniture"].forEach(a=>{ if(d[a]!==undefined&&d[a]!==null) claim("dress "+k+"."+a,d[a],a==="horse"?"colour":null); }); });
-  const leaves=Object.keys(FORMATIONS).filter(id=>FORMATIONS[id].track);
+    if(d.greatcoat&&!d.greatcoat.gen&&![true,false,null].includes(d.greatcoat.worn)) bad("dress "+k+".greatcoat: worn must be true, false or null (decision 101)");
+    if(d.cuirass){ claim("dress "+k+".cuirass",d.cuirass); if(![true,false,null].includes(d.cuirass.has)) bad("dress "+k+".cuirass: has must be true, false or null"); }
+    ["facings","furniture"].forEach(a=>{ if(d[a]) claim("dress "+k+"."+a,d[a]); });
+    if(d.horse) claim("dress "+k+".horse",d.horse,"colour"); });
+  const leaves=Object.keys(FORMATIONS).filter(id=>FORMATIONS[id].track), usedDress=new Set();
   leaves.forEach(id=>{ ap++; const F=FORMATIONS[id], C=COMPOSITION[id];
     if(!C){ bad(id+": no composition"); return; }
-    const r=appearanceOf(id), sum=r.parts.reduce((t,p)=>t+p.share,0);
-    if(!r.parts.length||Math.abs(sum-1)>1e-9) bad(id+": shares sum to "+sum);
-    if(C.dominant&&!C.basis) bad(id+": a dominant class without its basis");
+    const r=appearanceOf(id);
+    if(!r.parts.length) return bad(id+": no parts");
+    const groups={}; r.parts.forEach(p=>{ (groups[p.mount]=groups[p.mount]||[]).push(p); });
+    Object.entries(groups).forEach(([g,ps])=>{ const sum=ps.reduce((t,p)=>t+p.share,0), units=new Set(ps.map(p=>p.unit));
+      if(Math.abs(sum-1)>1e-9) bad(id+": the "+g+" shares sum to "+sum);
+      if(units.size>1) bad(id+": the "+g+" parts mix units ("+[...units].join(", ")+")"); });
+    if(C.dominant&&(!C.basis||C.parts.length!==1)) bad(id+": a dominant class needs its basis and one part");
+    const kind=p=>{ const d=DRESS[p.dress]; return d?d.nation:null; };
+    const mixOk=n=>n===F.nation||F.arm==="mixed"||(F.mix&&F.mix.nation===n);
     C.parts.forEach((p,i)=>{ const d=DRESS[p.dress];
       if(!d) return bad(id+" part "+i+": unknown dress "+p.dress);
+      usedDress.add(p.dress);
       if(!(p.n>0)) bad(id+" part "+i+": n "+p.n);
-      if(!["bn","sqn","coy","bty","staff","dominant"].includes(p.unit)) bad(id+" part "+i+": unit "+p.unit);
-      const mixOk=F.arm==="mixed"||(F.mix&&F.mix.nation===d.nation);
-      if(d.nation!==F.nation&&!mixOk) bad(id+" part "+i+": "+p.dress+" is "+d.nation+", the formation "+F.nation+" and not mixed");
+      if(!["bn","sqn","regt","coy","men","staff","dominant"].includes(p.unit)) bad(id+" part "+i+": unit "+p.unit);
+      if(!mixOk(kind(p))) bad(id+" part "+i+": "+p.dress+" is "+kind(p)+", the formation "+F.nation+" and not mixed");
       if(!C.dominant) claim(id+" part "+i,p); });
-    /* the regiments' men, where every part gives them, against the data's strength (its range if it has one, else 30%) */
-    if(C.parts.every(p=>p.men>0)&&F.strength){ const men=C.parts.reduce((t,p)=>t+p.men,0), R=F.strengthRange;
+    (C.others||[]).forEach((p,i)=>{ if(!DRESS[p.dress]) bad(id+" other "+i+": unknown dress "+p.dress); else usedDress.add(p.dress); claim(id+" other "+i,p); });
+    /* the regiments' men, where every part gives them in men, against the data's strength (its range if it has one, else 30%) */
+    if(C.parts.every(p=>p.unit==="men")&&F.strength){ const men=C.parts.reduce((t,p)=>t+p.n,0), R=F.strengthRange;
       if(R?(men<R[0]*0.7||men>R[1]*1.3):Math.abs(men-F.strength)/F.strength>0.30) warn.push(id+": composition "+men+" men against the data's "+F.strength); } });
   Object.keys(COMPOSITION).forEach(id=>{ if(!FORMATIONS[id]||!FORMATIONS[id].track) bad("composition for "+id+", not a leaf formation"); });
+  Object.keys(DRESS).forEach(k=>{ if(!usedDress.has(k)) warn.push("appearance: dress "+k+" is used by no composition"); });
   Object.entries(COLOURS_CARRIED).forEach(([k,c])=>{ ap++;
-    ["model","count","cloth"].forEach(a=>claim("colours "+k+"."+a,c[a]));
-    if(c.count&&!c.count.gen&&!(c.count.n>=0&&c.count.per)) bad("colours "+k+".count: no number per unit");
-    if(c.cloth&&!c.cloth.gen&&!(c.cloth.w>0&&c.cloth.h>0&&c.cloth.unit)) bad("colours "+k+".cloth: no dimensions");
-    ["staff","finial","pattern"].forEach(a=>{ if(c[a]!==undefined) claim("colours "+k+"."+a,c[a]); }); });
+    ["model","count","cloth"].forEach(a=>claim("colours "+k+"."+a,c[a],null,true));
+    const plain=x=>x&&!x.gen&&!x.none&&x.lab!=="disputed";
+    if(plain(c.count)&&!(c.count.n>=0&&c.count.per)) bad("colours "+k+".count: no number per unit");
+    if(plain(c.cloth)&&!(c.cloth.w>0&&c.cloth.h>0&&c.cloth.unit)) bad("colours "+k+".cloth: no dimensions");
+    ["staff","finial","pattern"].forEach(a=>{ if(c[a]!==undefined) claim("colours "+k+"."+a,c[a],null,true); });
+    if(plain(c.staff)&&!(c.staff.m>0)) bad("colours "+k+".staff: no metres"); });
   ["fr","ru","at"].forEach(n=>{ ap++; const M=STANDARD_MEASURES[n];
     if(!M){ bad("standard measures: "+n+" missing"); return; }
     if(M.provisional){ if(!M.why) bad("standard measures "+n+": provisional without a reason"); return; }
     claim("standard measures "+n+".staff",M.staff); claim("standard measures "+n+".stature",M.stature);
-    if(!(M.staff.m>0&&M.stature.m>0)) bad("standard measures "+n+": no metres"); });
+    if(!(M.staff&&M.staff.m>0&&M.stature&&M.stature.m>0)) bad("standard measures "+n+": no metres"); });
+  /* a source a note names counts as cited; a token in a note that looks like a source key must be one */
+  const notes=[]; (function walk(o){ if(!o||typeof o!=="object") return; for(const [k,v] of Object.entries(o)){
+    if(typeof v==="string"&&["note","why","basis"].includes(k)) notes.push(v); else if(typeof v==="object") walk(v); } })([DRESS,COMPOSITION,COLOURS_CARRIED,STANDARD_MEASURES]);
+  notes.forEach(t=>(t.match(/\b[a-z][a-z0-9_]*\d{4}[a-z]{0,3}\b/g)||[]).forEach(k=>{ if(srcOk(k)) used.add(k); else bad("a note names an unknown source '"+k+"'"); }));
+  Object.keys(APPEARANCE_SOURCES).forEach(k=>{ if(!used.has(k)&&!notes.some(t=>t.indexOf(k)>=0)) warn.push("appearance: source "+k+" is cited nowhere"); else used.add(k); });
   /* decision 105: an open question of SOURCE_NOTE stays open until the table settles it at grade A or B, undisputed */
-  const note=SOURCE_NOTE.body.join(" "), settled=c=>c&&!c.gen&&"AB".includes(c.gr)&&c.lab==="fact";
-  const grenz=Object.entries(DRESS).filter(([k,d])=>d.grenz).map(([k,d])=>d.coat), ruInf=COLOURS_CARRIED.ru_inf;
+  const note=SOURCE_NOTE.body.join(" "), settled=c=>c&&!c.gen&&!c.none&&"AB".includes(c.gr)&&c.lab==="fact";
+  const grenz=Object.values(DRESS).filter(d=>d.grenz).map(d=>d.coat), ruInf=COLOURS_CARRIED.ru_inf;
   if(!grenz.length) bad("no Grenz dress class (kienmayer's Grenz)");
   if(!grenz.every(settled)&&!/whether Grenz infantry wore brown in 1805/.test(note)) bad("the Grenz coat is not settled but SOURCE_NOTE no longer asks");
   if(!(ruInf&&settled(ruInf.pattern))&&!/the pattern of Russian infantry flags/.test(note)) bad("the Russian infantry colours are not settled but SOURCE_NOTE no longer asks");
   console.log("appearance checks: "+(ap-apBad)+"/"+ap+" pass ("+Object.keys(DRESS).length+" dress classes, "+Object.keys(APPEARANCE_SOURCES).length+" sources, "+
-    leaves.length+" leaf formations)"); }
+    leaves.length+" leaf formations, "+Object.keys(COLOURS_CARRIED).length+" colours entries)"); }
 
 console.log("\nERRORS:",errs.length); errs.forEach(e=>console.log("  ! "+e));
 console.log("warnings:",warn.length); warn.forEach(e=>console.log("  ~ "+e));

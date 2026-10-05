@@ -32,8 +32,8 @@ north-up SVG of a formation's day in its full dossier), overlays (`OVERLAYS` is 
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2, Stage 3, Stage 4, Stage 5 and Stage 6 measurement scripts (`stage2/`, `stage3/`, `stage4/`, `stage5/`, `stage6/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
-| `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `stage2c-68ac7721.html` (the 2C build, on which the drop limits are derived), `spine-6b2cccd4.html` (the spine data task's build), `stage4d-9b13adbf.html` (the `check:data` reference, since 4D's one-word data change) |
-| `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE3_SPEC.md` (Stage 3, with `stage3-evidence/`), `STAGE4_SPEC.md` (Stage 4, with `stage4-evidence/`), `STAGE5_SPEC.md` (Stage 5, with `stage5-evidence/`), `STAGE6_SPEC.md` (Stage 6 Part A, with `stage6-evidence/`: the census, the probes and the registers of leads), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
+| `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `stage2c-68ac7721.html` (the 2C build, on which the drop limits are derived), `spine-6b2cccd4.html` (the spine data task's build), `stage4d-9b13adbf.html` (the 4D build, 4D's one-word data change), `stage6b-7fc0f6c3.html` (the `check:data` reference, since 6B's appearance table) |
+| `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE3_SPEC.md` (Stage 3, with `stage3-evidence/`), `STAGE4_SPEC.md` (Stage 4, with `stage4-evidence/`), `STAGE5_SPEC.md` (Stage 5, with `stage5-evidence/`), `STAGE6_SPEC.md` (Stage 6, with `stage6-evidence/`: the census, the probes and the registers of leads (Part A); the readings and the quote check (6B)), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
 
 The one-off correction-pass tools (`geo-migrate.js`, `geo-anchor.js`, `patch-app.py`, `patch-history.py`, and the
 others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; their results are already in the data.
@@ -69,8 +69,9 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   the failed suites, if any suite exits non-zero or prints an error summary. It also runs the Stage 2B height guard
   (`tools/stage2/height-sites.js --check`): no presentation code may read `height()`/`hAt()`; draw on `displayHeight()`
   or `groundY()`, and classify any new call site.
-- `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/stage4d-9b13adbf.html`
-  (the 4D build, whose `SOURCE_NOTE` says "1×" for "normal speed", decision 76; before it, `archive/spine-6b2cccd4.html`); a data task that changes it lists every changed declaration in `CHANGELOG.md` and moves the reference.
+- `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/stage6b-7fc0f6c3.html`
+  (the 6B build, with the appearance table and tour stop 1 reworded, decision 108; before it, `archive/stage4d-9b13adbf.html`, the 4D build,
+  whose `SOURCE_NOTE` says "1×" for "normal speed", decision 76); a data task that changes it lists every changed declaration in `CHANGELOG.md` and moves the reference.
 - `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
   explicit anchor time carries evidence found in the sources, a grade and a basis; a derived arrival at the march-rate ceiling
   only for the legs it names (`CEILING_FLAGGED`), every other at the tactical rate (a design value, unsourced).
@@ -175,9 +176,16 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   distance; every mark inside the frame; an aggregate its leaves' days; the anchors a keyboard group named by clock and grade, a click
   setting the clock with the selection kept; the legs solid and the ordered route dashed; marks at 3:1 and text at AA on the paper
   ground); `css-test.js` checks its colours are the tokens' and only the ordered route is dashed; `runtime-test.js` dry-runs its model.
+  Since 6B: `test.js`'s appearance checks (every leaf formation resolves to dress classes whose shares sum to 1 in each mount group, one
+  unit per group; every value a claim with source, locator, grade, label and quote, a disputed value keeping each side and drawn generic,
+  or generic with a reason; grade A only with a source or document dated 1804-1805 or a regulation shown in force; every colours entry
+  with a model, a count rule and a cloth; the standard's measures in metres or provisional; every source cited and registered;
+  `SOURCE_NOTE`'s open questions kept while the table does not settle them, decision 105); `runtime-test.js` dry-runs `appearanceOf`;
+  `redteam.js` checks the retired claims in `appearance.js` too; `tools/stage6/verify-quotes.js` (not in the suite; network) checks every
+  quote against its source's text.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 5G build (md5 `4c12cac6...`, 1,528,608 bytes;
-  re-baselined from the Stage 5F build `4c7bb9e4...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 6B build (md5 `7fc0f6c3...`, 1,661,910 bytes;
+  re-baselined from the Stage 5G build `4c12cac6...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -243,4 +251,7 @@ day-track: each formation's day as a small north-up map in its full dossier, its
 the clock and its ordered route dashed, owner decision 95), the last part of Stage 5, is merged (#38); Stage 5 is complete. Stage 6 Part A (the specification, `docs/STAGE6_SPEC.md`: uniforms,
 headgear, flags and standards, each to carry a source and a grade, and identity decoupled from coat colour; a census and probes in
 `tools/stage6/`; no external source could be read in its session, so its evidence is a register of leads; no source file changed) is
-written, for review.
+merged (#39); the owner opened the network and accepted every recommendation (decisions 96-110, §0.4). Stage 6B (the sources read and
+tabled: `appearance.js`, guarded, with each leaf formation's dress classes, colours carried and the standard's measures, every value with
+its source, locator, grade and label or kept disputed or generic; tour stop 1 reworded, decision 108; nothing drawn changes; what it found
+is `docs/STAGE6_SPEC.md` §6.6) is written, for review.
