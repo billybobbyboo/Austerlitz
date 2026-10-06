@@ -45,6 +45,9 @@ const STEP=()=>{
     strings:want?{tested:shown.every(function(v,i){ return v===want[i]; }),shown:shown.map(function(v){ return v.length>48?v.slice(0,48)+"…":v; })}:null};
 };
 const LIMIT=n=>L.TH.DROP_LIMIT[n]!==undefined?L.TH.DROP_LIMIT[n]:null;
+/* a press waits for the page: under software WebGL one frame after a state change can take over 10 s (shader compilation), which
+   Playwright's 30 s default once exceeded; the harness's screenshots wait 180 s */
+const CLICK={timeout:180000};
 
 (async()=>{
   const browser=await L.launch();
@@ -53,9 +56,9 @@ const LIMIT=n=>L.TH.DROP_LIMIT[n]!==undefined?L.TH.DROP_LIMIT[n]:null;
     for(const [vk,vp,cases] of [["1600x900",[1600,900],["opening-1","opening-2","opening-3","opening-4","opening-end"]],["1280x720",[1280,720],["opening-1-laptop",null,null,null,null]]]){
       const page=await L.open(browser,vp); await page.evaluate(HOOK);
       const out=[];
-      await page.click("#fr-tour");
+      await page.click("#fr-tour",CLICK);
       for(let k=0;k<5;k++){
-        if(k>0) await page.click("#tour-next");
+        if(k>0) await page.click("#tour-next",CLICK);
         const st=await page.evaluate(STEP), f=await L.frame(page,LIMIT(cases[k]||""));
         out.push(Object.assign(st,{frame:L.strip(f)}));
         tiles.push({png:f.png,cap:vk+(st.on?" step "+st.step+" (tour stop "+st.stop+", "+st.clock+")":" after Finish ("+st.clock+")")+": free "+(100*f.unobstructed).toFixed(1)+"%, drops "+f.layer.dropped});
@@ -68,13 +71,13 @@ const LIMIT=n=>L.TH.DROP_LIMIT[n]!==undefined?L.TH.DROP_LIMIT[n]:null;
   if(ONLY.includes("ways")){
     res.ways={};
     const page=await L.open(browser,[1600,900]); await page.evaluate(HOOK);
-    await page.click("#fr-close");
-    const go=async k=>{ await page.click("#openingbtn"); await page.evaluate(()=>__fin()); for(let i=0;i<k;i++){ await page.click("#tour-next"); await page.evaluate(()=>__fin()); } };
+    await page.click("#fr-close",CLICK);
+    const go=async k=>{ await page.click("#openingbtn",CLICK); await page.evaluate(()=>__fin()); for(let i=0;i<k;i++){ await page.click("#tour-next",CLICK); await page.evaluate(()=>__fin()); } };
     const state=()=>page.evaluate(()=>{ __fin(); var a=document.activeElement; return {on:OPENING.on,stop:tourStep,clock:fmtClock(clock),presentation:presentation,mode:mode,tab:tabNow,follow:!freeCam,vantage:curVantage,
       chapter:chapter,dispatchHidden:hideDispatch,focus:a&&a!==document.body?(a.id||a.tagName):"body",live:document.getElementById("live-phase").textContent,
       camera:landCam.position.toArray().map(function(v){ return +v.toFixed(1); })}; });
     for(let k=0;k<4;k++){
-      await go(k); await page.click("#tour-exit"); res.ways["Skip at step "+(k+1)]=await state();
+      await go(k); await page.click("#tour-exit",CLICK); res.ways["Skip at step "+(k+1)]=await state();
       await go(k); await page.keyboard.press("Escape"); res.ways["Esc at step "+(k+1)]=await state();
       console.log("step",k+1,"Skip",JSON.stringify(res.ways["Skip at step "+(k+1)]),"Esc",JSON.stringify(res.ways["Esc at step "+(k+1)]));
     }
@@ -88,13 +91,13 @@ const LIMIT=n=>L.TH.DROP_LIMIT[n]!==undefined?L.TH.DROP_LIMIT[n]:null;
   if(ONLY.includes("rm")){
     const page=await L.open(browser,[1600,900],{rm:true});
     const R={rm:await page.evaluate(()=>RM),steps:[]};
-    await page.click("#fr-tour");
+    await page.click("#fr-tour",CLICK);
     for(let k=0;k<4;k++){
-      if(k>0) await page.click("#tour-next");
+      if(k>0) await page.click("#tour-next",CLICK);
       R.steps.push(await page.evaluate(()=>{ var t=performance.now(); if(tween) tween(t+5); var s=TOUR[tourStep], v=presetFrame(stopCam(s));
         var at=landCam.position.distanceTo(new THREE.Vector3(v[0],v[1],v[2]))<1e-3; __fin(); return {step:OPENING.k+1,clock:fmtClock(clock),atFrameWithin5ms:at,playing:playing}; }));
     }
-    await page.click("#tour-exit");
+    await page.click("#tour-exit",CLICK);
     R.end=await page.evaluate(()=>{ var t=performance.now(); if(tween) tween(t+5); var v=presetFrame(VANTAGE.plan);
       var at=landCam.position.distanceTo(new THREE.Vector3(v[0],v[1],v[2]))<1e-3; __fin(); var a=document.activeElement;
       return {on:OPENING.on,clock:fmtClock(clock),overviewWithin5ms:at,focus:a&&a!==document.body?a.id:"body",playing:playing}; });
