@@ -844,7 +844,7 @@ under reduced motion.
   unaffected; run and shown.
 
 **7C, as delivered (fact; `CHANGELOG.md`, Stage 7C).** Built as above under decisions 111, 112, 114-116, 118 and 121: `OPENING` holds stops 1, 6,
-7 and 8 by index, each applied by `applyTour` in the tour's bar, begun by the card's primary action ("Begin (about a minute)") or the tools'
+7 and 8 by index, each applied by `applyTour` in the tour's bar, begun by the card's primary action ("Begin (a minute)") or the tools'
 "Begin the opening", ended at 04:00 in Study on the Now tab at the Overview with Play focused (Finish, Skip, Esc) or where it is (a key, a press
 outside the bar, the camera taken). One recommendation of this specification was not followed, stated for the owner: §4.1's Skip focused when
 the opening starts; built, focus on Next (the visitor has just pressed the primary action to begin it, and with Skip focused the next Enter

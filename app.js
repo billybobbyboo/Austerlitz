@@ -4940,9 +4940,9 @@ var LABELS={
   },
   layers:{button:"Layers\u2026", heading:"Layers", aria:"Layers and ground", ground:"Ground", shows:"What is drawn"},
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
-     its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with four glides of
-     1.6 s; docs/STAGE7_SPEC.md section 3.4) */
-  firstRun:{primary:"Begin (about a minute)", primaryTitle:"Begin the opening: a short path through the guided tour, in its own words; Next moves on, Esc skips it",
+     its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, 50 to 71 s with the five
+     glides; docs/STAGE7_SPEC.md section 3.4). "about a minute" wrapped the button to two lines at 390 px, and the card grew 12 px */
+  firstRun:{primary:"Begin (a minute)", primaryTitle:"Begin the opening: a short path through the guided tour, in its own words; Next moves on, Esc skips it",
     stay:"Explore on my own", stayTitle:"Close this card and stay here (Esc)"},
   /* Stage 7C (decisions 115, 118): the opening's interface words, no claim: no clock time, figure, name or quotation (css-test.js). %k and
      %n are the step and the count, %t the stop's own title (TOUR), %c a clock the app formats */

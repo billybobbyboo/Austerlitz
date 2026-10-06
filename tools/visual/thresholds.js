@@ -42,6 +42,12 @@ DROP_LIMIT["plans-overview"]=11;
 /* Stage 7B (owner decision 122): narrow-390, the first screen at 390 x 844, is new; its limit is what the 7B build drops there (the Allied
    headquarters' and the Fifth Column's names, Pratzen, Stare Vinohrady, Santon, Zuran), never raised */
 DROP_LIMIT["narrow-390"]=6;
+/* Stage 7C (owner decision 121): the opening's cases are new; each limit is what the 7C build drops there (decision 62's method), never raised:
+   step 1 the place names the Overview's distance drops at 04:00 (Pratzen, Stare Vinohrady, the Pratzeberg, Zuran, the Goldbach, Telnitz,
+   Sokolnitz, Augezd; at 1280 x 720 also Santon and Austerlitz), step 2 seven names around the plateau, step 3 three, step 4 four, the end state
+   the first screen's seven */
+DROP_LIMIT["opening-1"]=8; DROP_LIMIT["opening-2"]=7; DROP_LIMIT["opening-3"]=3; DROP_LIMIT["opening-4"]=4; DROP_LIMIT["opening-end"]=7;
+DROP_LIMIT["opening-1-laptop"]=10;
 /* section H: the unobstructed share of the viewport on the Stage 2C build, at the case's viewport and at 1280 x 720, measured
    by this harness (CSS transitions off, the panels at rest). It must not fall. These equal tools/stage2/map-text.js's values
    in every view but one: selected-formation at 1280 x 720 is 6.97% at rest, where map-text.js reported 15.1% with the
@@ -69,6 +75,10 @@ const UNOBSTRUCTED={"first-run":[0.614,0.49],"first-run-laptop":[0.531,0.49],"ov
    later part can give the gain back: they were .614/.49 and .531/.49 (3C). narrow-390 is new, its baselines the 7B build's (at 1280 x 720
    the resized page docks, as every case's second measure does) */
 UNOBSTRUCTED["first-run"]=[0.634,0.520]; UNOBSTRUCTED["first-run-laptop"]=[0.558,0.520]; UNOBSTRUCTED["narrow-390"]=[0.468,0.520];
+/* Stage 7C (owner decision 121): the opening's cases, what the 7C build measures there (the tour's bar over the map, 164-187 px tall), rounded down
+   to 0.1 point; the end state is Study's view (the Study baselines .703/.628, met) */
+UNOBSTRUCTED["opening-1"]=[0.632,0.516]; UNOBSTRUCTED["opening-2"]=[0.639,0.529]; UNOBSTRUCTED["opening-3"]=[0.639,0.529];
+UNOBSTRUCTED["opening-4"]=[0.639,0.529]; UNOBSTRUCTED["opening-end"]=[0.703,0.628]; UNOBSTRUCTED["opening-1-laptop"]=[0.516,0.516];
 const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harness machine */
 /* Stage 2E (section J, 2E): every paper-map view is a true north-up plan: GEOREF.NORTH within 0.5 degrees of up; screen pixels
    per true km at four places equal to 1% (on the 2D build's tilted staff map they differ by 6.0% and north is 17.8 degrees
