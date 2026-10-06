@@ -79,11 +79,11 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
   explicit anchor time carries evidence found in the sources, a grade and a basis; a derived arrival at the march-rate ceiling
   only for the legs it names (`CEILING_FLAGGED`), every other at the tactical rate (a design value, unsourced).
-- `npm run check:contrast`: every visible text element in 34 interface states (the map layer's plates and the legend among them, map text also
+- `npm run check:contrast`: every visible text element in 35 interface states (the map layer's plates and the legend among them, map text also
   over black and white ground, the paper map as entered and close since 2E; Study as it opens and the Now tab on the paper map since 3B;
   Watch on the paper map and on the landscape since 3C; the "?" overlay over both since 3E; since 5E the dossier's knowledge reason, the eye-level
   caption, the paper map with a headquarters' reading; since 5G the dossier with its day-track inset; since 7C the opening's bar at a step and the
-  screen it ends on) meets WCAG AA and the 10.5 px floor.
+  screen it ends on; since 7D its bar while the clock plays between steps, paused) meets WCAG AA and the 10.5 px floor.
 - `npm run check:visual`: 30 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
   `narrow-1024`, the undocked layout, since 3C the phase-8 Overview in Study and in Watch, since 5E the eye level at the Zuran at 4x
   and 1x, since 5F the Plans tab at the Overview, `plans-overview`, since 7B the first screen at 390 x 844, `narrow-390`, and since 7C the
@@ -224,6 +224,15 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   "?" over it; under reduced motion each step at its frame within 5 ms) and, at 1x, 4x and 10.33x, the opening's glides above the floor;
   `css-test.js` checks its words (no figure, clock, name or quotation), its stops 1, 6, 7, 8 (decision 114), the bar a named region, Esc's skip
   and the folded announcement; `runtime-test.js` dry-runs it forward, back, finished and ended by every way from every step, then the tour.
+  Since 7D (decision 123): Next on a step plays the clock to the next one at 4x (`OPENING.SPEED`); the harness's opening cases reach each step by
+  Next and Next again, which goes straight there (under software WebGL a played stretch takes many minutes of real time), and on `opening-2`, by
+  real key presses, Enter on Next plays it at 4x, Space off a button pauses (the clock still for 1.5 s, the heading "paused") and resumes it,
+  Enter again goes straight to step 2 with the visitor's half speed back; the self-test's played-stretch check (Next plays at 4x with the
+  theme cleared; the bar its own words or the dwell's event names; one message as it starts and one at the step, no phase announcement besides;
+  Pause and Space stop and resume it; Next, Back, Skip and a key while it plays; the speed put back) and, at 1x, 4x and 10.33x, the stretches
+  sampled (never under the floor, the target within 150 px/s, drops every ten clock minutes at most 19, each ending at its stop after a glide
+  above the floor with no lift); `css-test.js` checks `OPENING.SPEED` 4, Play still at half speed, the Play/Pause button's pause and the folded
+  announcements; `runtime-test.js` dry-runs the stretches, every way out while one plays, Next and Back while it plays and reduced motion's cuts.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
 - `npm run check:baseline` passes only on the unmodified Stage 7C build (md5 `bebcfff6...`, 1,748,568 bytes;
   re-baselined from the Stage 7B build `82337dd4...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.

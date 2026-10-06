@@ -8780,7 +8780,8 @@ function applyTour(){
    8), each step applied by the tour's own applyTour (its clock, theme, plan, feature and camera, Follow on, the dispatch hidden) and
    shown in the tour's bar with the stop's own title and text (decision 115: whole stops; every string shown a TOUR field or a LABELS
    entry). Started by the first-run card's primary action (decision 112: offered, not forced) or the tools' button. Nothing advances
-   by itself (section 4.5); no clock is played between the stops (decision 116); under reduced motion the glides are cuts (RM).
+   by itself (section 4.5); since 7D the clock plays between the steps when Next is pressed (decision 123, below); under reduced motion
+   the steps are cuts (RM).
    How it ends (decision 118; section 4.1):
    - "end" (Finish on the last step) and "skip" (Skip, Esc): the day's start, Study on the Now tab, the Overview with Follow on, and
      Play focused as the single next action, named by one live message;
@@ -8789,7 +8790,7 @@ function applyTour(){
      stop's theme and plan cleared as leaving the tour clears them; focus moved only off the hidden bar (to Play after a key).
    While a step is applied, the phase announcement it causes is folded into the step's own message (section 4.3). tourStep is the
    stop's index while a step shows (the tour's machinery reads it) and -1 once the opening has ended. */
-var OPENING={stops:[0,5,6,7], on:false, k:-1, applying:false, tourWords:null};
+var OPENING={stops:[0,5,6,7], on:false, k:-1, applying:false, tourWords:null, SPEED:4, play:null};
 function openingSay(s){ var lv=document.getElementById("live-phase"); if(lv) lv.textContent=s; }
 function openingFill(s,k){ return s.replace("%k",String(k+1)).replace("%n",String(OPENING.stops.length)); }
 function openingBar(on){   /* the bar's two words that differ: the opening's from LABELS, or the tour's own (shell.html) put back */
@@ -8809,6 +8810,7 @@ function openingStart(){
 }
 function openingApply(k){
   var L=LABELS.opening, n=OPENING.stops.length;
+  openingHalt();
   OPENING.k=k; OPENING.applying=true;
   tourStep=OPENING.stops[k]; applyTour();
   OPENING.applying=false;
@@ -8822,13 +8824,57 @@ function openingApply(k){
 function openingWatch(){ if(OPENING.on&&freeCam) openingEnd("camera"); }   /* every animation frame (loop) */
 function openingGo(d){
   if(!OPENING.on) return;
+  if(OPENING.play){ if(d>0) openingArrive(); else openingApply(OPENING.k); return; }   /* 7D: Next goes straight there, Back returns */
   var k=OPENING.k+d;
   if(k<0) return;
   if(k>=OPENING.stops.length){ openingEnd("end"); return; }
-  openingApply(k);
+  if(d>0&&!RM&&stopClock(TOUR[OPENING.stops[k]])>clock+1e-6) openingStretch(k); else openingApply(k);
+}
+/* ---- Stage 7D (docs/STAGE7_SPEC.md sections 3.5, 4.3-4.5 and 6, 7D; owner decision 123): the clock played between the steps ----
+   Next on a step but the last plays the clock from that stop's clock to the next stop's at OPENING.SPEED (4x, the opening's own speed, a
+   design value; the visitor's Play stays at the speed it had, half speed by default, decision 74), as Play plays it: Follow (decision 78),
+   the dwell at each event start (decision 75), the derived arrows drawn on (decision 83). The stop's theme is cleared while it plays; the
+   bar shows the next step's title and, in its text, the event or events each dwell stops for (EVENTS[].n, the timeline caption's words, no
+   other sentence). When the clock reaches the next stop's clock that stop is applied as in 7C (its theme, and its camera by the tour's
+   glide), so every step's frame is the stop's own. While it plays: the Play/Pause button and Space (off a button) pause and resume it
+   (WCAG 2.2.2); Next goes straight to the next step; Back returns to the stop it started from; Skip, Esc and every other way end the
+   opening as in 7C, the clock stopped and the visitor's speed put back. Under reduced motion there is none: Next is 7C's cut (section
+   4.4). One live message when it starts and one at the step it reaches; the phase announcements it crosses are folded (section 4.3). */
+function openingStretch(k){   /* k: the step it plays to */
+  var L=LABELS.opening, st=TOUR[OPENING.stops[k]];
+  stopPlay(); clearOverlays(); select(null,null);
+  OPENING.play={to:k, target:stopClock(st), speed0:speed, ev:""};
+  freeCam=false; setSpeed(OPENING.SPEED);
+  togglePlay();   /* playing: the dwell reset at the clock, Follow taken up from where the camera stands */
+  document.getElementById("tour-n").textContent=openingFill(L.playing,k);
+  document.getElementById("tour-t").textContent=st.n;
+  document.getElementById("tour-x").textContent=L.playText;
+  document.getElementById("tour-next").textContent=L.next;
+  var pv=document.getElementById("tour-prev"); pv.disabled=false; pv.style.opacity=1;
+  openingSay(openingFill(L.saidPlay,k).replace("%c",fmtClock(OPENING.play.target)));
+}
+/* every animation frame, after the clock's tick: the arrival, the dwell's event names in the bar, the heading playing or paused */
+function openingPlayWatch(){
+  var P=OPENING.play; if(!P||!OPENING.on) return;
+  if(clock>=P.target-1e-6){ openingArrive(); return; }
+  var dw=dwellEvents(), names=(dw&&dw.length)?dw.map(function(e){ return e.n; }).join("; "):"";
+  if(names&&names!==P.ev){ P.ev=names; document.getElementById("tour-x").textContent=names; }
+  openingHead();
+}
+/* the heading, playing or paused: also on the press that pauses or resumes it (a paused page draws no frame) */
+function openingHead(){
+  var P=OPENING.play; if(!P) return;
+  var hn=document.getElementById("tour-n"), head=openingFill(playing?LABELS.opening.playing:LABELS.opening.paused,P.to);
+  if(hn&&hn.textContent!==head) hn.textContent=head;
+}
+function openingArrive(){ var P=OPENING.play; if(!P) return; openingApply(P.to); }
+function openingHalt(){   /* the stretch stopped, the visitor's speed put back */
+  var P=OPENING.play; if(!P) return;
+  OPENING.play=null; stopPlay(); setSpeed(P.speed0);
 }
 function openingEnd(how){
   if(!OPENING.on) return;
+  openingHalt();
   var bar=document.getElementById("tourbar"), a=document.activeElement, had=!!(bar&&a&&bar.contains&&bar.contains(a));
   OPENING.on=false; OPENING.k=-1;
   tourStep=-1; paintTimeline();
@@ -10056,15 +10102,21 @@ var LABELS={
   },
   layers:{button:"Layers\u2026", heading:"Layers", aria:"Layers and ground", ground:"Ground", shows:"What is drawn"},
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
-     its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, 50 to 71 s with the five
-     glides; docs/STAGE7_SPEC.md section 3.4). "about a minute" wrapped the button to two lines at 390 px, and the card grew 12 px */
-  firstRun:{primary:"Begin (a minute)", primaryTitle:"Begin the opening: a short path through the guided tour, in its own words; Next moves on, Esc skips it",
+     its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with the five glides of
+     1.6 s and, since 7D, the clock played between them at 4x, about 50 s: 100 to 121 s; docs/STAGE7_SPEC.md sections 3.4, 3.5). At 390 px the
+     row holds 308 px beside "Explore on my own" (150): "Begin (two minutes)" (155) and 7C's first "about a minute" wrapped the button and
+     made the card 12 px taller; "Begin (two min)" is 128 */
+  firstRun:{primary:"Begin (two min)", primaryTitle:"Begin the opening: four stops of the guided tour in its own words, the clock played between them; Next moves on, Esc skips it",
     stay:"Explore on my own", stayTitle:"Close this card and stay here (Esc)"},
   /* Stage 7C (decisions 115, 118): the opening's interface words, no claim: no clock time, figure, name or quotation (css-test.js). %k and
      %n are the step and the count, %t the stop's own title (TOUR), %c a clock the app formats */
-  opening:{button:"Begin the opening", buttonTitle:"A short path through the guided tour, in its own words",
+  opening:{button:"Begin the opening", buttonTitle:"Four stops of the guided tour in its own words, the clock played between them",
     head:"Opening, step %k of %n", back:"Back", next:"Next", finish:"Finish", skip:"Skip", skipTitle:"End the opening at the start of the day (Esc)",
-    said:"Step %k of %n: %t, %c.", ended:"The opening has ended. Play runs the day from %c.", left:"The opening has ended here."}
+    said:"Step %k of %n: %t, %c.", ended:"The opening has ended. Play runs the day from %c.", left:"The opening has ended here.",
+    /* Stage 7D (decision 123): the clock played between the steps */
+    playing:"Opening, step %k of %n: the clock plays", paused:"Opening, step %k of %n: paused",
+    playText:"The day plays on to this step. Pause or Space stops it; Next goes straight there.",
+    saidPlay:"The clock plays on to step %k of %n, %c. Pause stops it; Next goes straight there."}
 };
 function applyLabels(){
   document.querySelectorAll(".vm-btn").forEach(function(b){ var L=LABELS.presentation[b.dataset.vm]; if(!L) return;
@@ -10375,13 +10427,17 @@ function buildUI(){
      before the key or the press does its own action (Esc is its own row: to the start of the day) */
   window.addEventListener("keydown",function(e){
     if(!OPENING.on||helpOpen()||KEYS_DRY||e.ctrlKey||e.metaKey||e.altKey) return;
-    var k=e.key, bar=document.getElementById("tourbar"), inBar=!!(bar&&e.target&&bar.contains(e.target));
+    var k=e.key, t=e.target, bar=document.getElementById("tourbar"), inBar=!!(bar&&t&&bar.contains(t));
     if(k==="Tab"||k==="Shift"||k==="Escape"||k==="?"||k==="`") return;
     if(inBar&&(k==="Enter"||k===" "||ARROWS.indexOf(k)>=0)) return;
+    /* Stage 7D: while the clock plays between steps, Space off a button and Space or Enter on the Play/Pause button pause it */
+    if(OPENING.play){ var ctl=!!(t&&t.closest&&t.closest("button,a[href],input,select,textarea,summary,[role='button'],[role='tab']"));
+      if((k===" "&&!ctl)||((k===" "||k==="Enter")&&t&&t.id==="play")) return; }
     openingEnd("key"); },{capture:true});
   window.addEventListener("pointerdown",function(e){
     if(!OPENING.on) return; var t=e.target;
     if(t&&t.closest&&t.closest("#tourbar,#help,#helpbtn")) return;
+    if(OPENING.play&&t&&t.closest&&t.closest("#play")) return;   /* Stage 7D: Play/Pause pauses the played stretch */
     openingEnd("pointer"); },{capture:true});
   paintKey(); bindExaggeration();
   /* the legend's head opens and closes it; where it would lie over the dispatch it stays closed (its title says why) */
@@ -10863,8 +10919,9 @@ function paintDispatch(ph){
   paintChanges(ph.id);
   /* Stage 3B: one polite announcement per phase change, whichever tab is shown (the dispatch itself is no longer a live
      region: in a hidden tab it would not be read) */
-  /* Stage 7C (section 4.3): while the opening applies a step, the step's own message says it (one message per step) */
-  var lv=document.getElementById("live-phase"); if(lv&&!OPENING.applying){ lv.textContent=ph.clock+". "+actOf(ph.id).n+": "+ph.title+"."; PHASE_SAID++; }
+  /* Stage 7C (section 4.3): while the opening applies a step, the step's own message says it (one message per step); Stage 7D: while the
+     clock plays between steps, the stretch's message and the step's say it */
+  var lv=document.getElementById("live-phase"); if(lv&&!OPENING.applying&&!OPENING.play){ lv.textContent=ph.clock+". "+actOf(ph.id).n+": "+ph.title+"."; PHASE_SAID++; }
 }
 
 /* ---- a formation's text during a delayed move (owner decision 46) ----
@@ -11551,6 +11608,7 @@ function stopPlay(){
   var b=document.getElementById("play");
   if(b){ b.textContent="Play"; b.setAttribute("aria-pressed","false"); }
   paintExaggeration();
+  openingHead();   /* Stage 7D */
 }
 function togglePlay(){
   if(playing){ stopPlay(); return; }
@@ -11559,6 +11617,7 @@ function togglePlay(){
   var b=document.getElementById("play");
   if(b){ b.textContent="Pause"; b.setAttribute("aria-pressed","true"); }
   paintExaggeration();
+  openingHead();   /* Stage 7D */
 }
 function setSpeed(x){
   speed=x;
@@ -11796,6 +11855,7 @@ function loop(){
   if(tween) tween(now);
   tickClock(dt);
   followStep(dt);   /* Stage 4D: Follow while the clock plays */
+  openingPlayWatch();   /* Stage 7D: the opening's played stretch reaches its step */
   setProg((clock-T_MIN)/(T_MAX-T_MIN));
   var tu=performance.now(); updateVisibility(); DEV.tUpdate=performance.now()-tu;
   syncViewOffset(false);   /* Stage 3D: the landscape's focus eased to the free rectangle's centre */
@@ -12576,6 +12636,35 @@ var AUSTERLITZ_DEBUG=(function(){
     ck("Follow while playing: the day at \u00bd\u00d7 never under the floor, every live event in the free rectangle in at least 80% of its minutes, the ground's speed across the screen within "+FOLLOW.CAP+" px/s, drops never above 19 (section D.4)",
       !R.below&&share>=0.8&&R.spd<=FOLLOW.CAP+1e-6&&R.drops<=19,
       "played in "+sec.toFixed(1)+" s; "+R.below+" steps under the floor; every live event inside in "+(100*share).toFixed(1)+"% of "+R.min+" minutes; the target's largest speed "+R.spd.toFixed(1)+" px/s; drops at most "+R.drops+(R.dropAt?" ("+R.dropAt+")":""));
+    /* Stage 7D (docs/STAGE7_SPEC.md section 6, 7D; decision 123): the opening's played stretches at this factor, run by the app's own tick
+       in 100 ms steps from the reopened card: never under the floor, the target's speed across the screen within FOLLOW.CAP, drops every ten
+       clock minutes no more than Follow's 19; each stretch ending at its stop's clock with the stop's camera after the tour's glide from
+       Follow's view, that glide sampled above the floor with no lift */
+    (function(){
+      var O={below:0,spd:0,drops:0,dropAt:"",lastM:-1,steps:0,glides:0,gMin:1e9,lifts:0,arr:[]}, pT=new THREE.Vector3(), pW=1, fr0=document.getElementById("firstrun"), sp=speed;
+      if(presentation!=="study") setPresentation("study"); if(tourStep>=0) exitTour(); select(null,null); setSpeed(0.5);
+      setClock(T_MIN,{instant:true,force:true,camera:false}); finishTween();
+      fr0.hidden=false; openFirstRun(); document.getElementById("fr-tour").click(); finishTween();
+      for(var k=1;k<OPENING.stops.length;k++){ document.getElementById("tour-next").click();
+        var g=0;
+        while(OPENING.play&&g++<200000){ pT.copy(orbitTarget); pW=worldPerPx(orbitTarget);
+          tickClock(100); followStep(100);
+          if(clock>=OPENING.play.target-1e-6){ var c0=CAM.clamps; openingPlayWatch(); var fn=_tw.cam, t0=performance.now();
+            if(fn) for(var j=0;j<=24;j++){ fn(t0+j*1600/24); var q=landCam.position, cl=q.y-camGround(q.x,q.z); O.glides++; if(cl<O.gMin) O.gMin=cl; }
+            O.lifts+=CAM.clamps-c0; break; }
+          O.steps++;
+          var p=landCam.position; if(p.y<camFloor(p.x,p.z)-1e-6) O.below++;
+          O.spd=Math.max(O.spd,Math.hypot(orbitTarget.x-pT.x,orbitTarget.z-pT.z)/pW/0.1);
+          var m=Math.floor(clock); if(m!==O.lastM&&m%10===0){ O.lastM=m; for(var i=0;i<12;i++){ settling=false; updateVisibility(); } mlLayout(); if(ML.stats.dropped>O.drops){ O.drops=ML.stats.dropped; O.dropAt=fmtClock(m); } }
+          openingPlayWatch(); }
+        finishTween(); var s=TOUR[OPENING.stops[k]], v=presetFrame(stopCam(s));
+        O.arr.push(OPENING.k===k&&clock===stopClock(s)&&landCam.position.distanceTo(new THREE.Vector3(v[0],v[1],v[2]))<1e-3); }
+      openingEnd("skip"); finishTween(); setSpeed(sp);
+      ck("the opening's played stretches at "+OPENING.SPEED+"x never under the floor, the target's speed across the screen within "+FOLLOW.CAP+" px/s, drops never above 19; each ends at its stop, the glide from Follow's view above the floor with no lift (decision 123)",
+        O.steps>0&&!O.below&&O.spd<=FOLLOW.CAP+1e-6&&O.drops<=19&&O.arr.length===OPENING.stops.length-1&&O.arr.every(Boolean)&&O.glides>0&&O.gMin>=CAM_CLEAR-1e-6&&!O.lifts,
+        O.steps+" steps of 100 ms; "+O.below+" under the floor; the target's largest speed "+O.spd.toFixed(1)+" px/s; drops at most "+O.drops+(O.dropAt?" ("+O.dropAt+")":"")+
+        "; arrivals at their stops: "+O.arr.join(", ")+"; the arrival glides: "+O.glides+" positions, lowest clearance "+O.gMin.toFixed(2)+" units, "+O.lifts+" lifts");
+    })();
     /* draw-on: at 20 clocks inside each derived arrow's legs, its drawn tip on the formation's path at its progress */
     var nA=0, nT=0, worst=0, where="", bad=[];
     for(var ph=0;ph<PHASES.length;ph++){ rebuildOverlays(ph,true);
@@ -13638,7 +13727,9 @@ var AUSTERLITZ_DEBUG=(function(){
       function live(){ return document.getElementById("live-phase").textContent; }
       function camAt(v){ return landCam.position.distanceTo(new THREE.Vector3(v[0],v[1],v[2]))<1e-3&&orbitTarget.distanceTo(new THREE.Vector3(v[3],v[4],v[5]))<1e-3; }
       function begin(){ fr.hidden=false; openFirstRun(); document.getElementById("fr-tour").click(); finishTween(); }
-      function to(k){ while(OPENING.k<k){ document.getElementById("tour-next").click(); finishTween(); } }
+      /* Stage 7D: Next plays the clock to the next step; the stretch is run to its arrival by the app's own tick, in 100 ms steps */
+      function run(){ var g=0; while(OPENING.play&&g++<200000){ tickClock(100); followStep(100); openingPlayWatch(); } finishTween(); }
+      function to(k){ while(OPENING.k<k){ document.getElementById("tour-next").click(); run(); } }
       function step(k,w){ var s=TOUR[OPENING.stops[k]], at=w+" (step "+(k+1)+")";
         if(!OPENING.on||OPENING.k!==k||tourStep!==OPENING.stops[k]) bad.push(at+": not at tour stop "+(OPENING.stops[k]+1));
         if(clock!==stopClock(s)) bad.push(at+": the clock "+fmtClock(clock)+", not the stop's "+fmtClock(stopClock(s)));
@@ -13667,7 +13758,7 @@ var AUSTERLITZ_DEBUG=(function(){
       for(var k=0;k<N;k++){ to(k); step(k,"Next"); msgs.push(live()); walked++; }
       if(PHASE_SAID!==P0) bad.push((PHASE_SAID-P0)+" phase announcement(s) besides the steps' messages");
       KEYS_DRY=[]; key("ArrowLeft"); key("ArrowRight"); var dry=KEYS_DRY.join(","); KEYS_DRY=null; if(dry!=="opening,opening") bad.push("the bar's arrows reached "+dry);
-      key("ArrowLeft"); finishTween(); step(N-2,"←"); key("ArrowRight"); finishTween(); step(N-1,"→");
+      key("ArrowLeft"); finishTween(); step(N-2,"←"); key("ArrowRight"); run(); step(N-1,"→");
       document.getElementById("tour-next").click(); finishTween(); end("Finish");
       /* Skip and Esc from every step */
       for(k=0;k<N;k++){ begin(); to(k); document.getElementById("tour-exit").click(); finishTween(); end(L.skip+" at step "+(k+1));
@@ -13697,6 +13788,68 @@ var AUSTERLITZ_DEBUG=(function(){
       ck("the opening: each step its tour stop, its words a TOUR field or a LABELS entry, one live message each; Finish, Skip and Esc from every step to 04:00, Study, the Overview, Play focused; a drag, a zoom and a key end it where it is (decisions 114, 115, 118)",
         !bad.length, bad.length?bad.slice(0,8).join("; ")+(bad.length>8?"; and "+(bad.length-8)+" more":""):
         walked+" steps (tour stops "+OPENING.stops.map(function(i){ return i+1; }).join(", ")+"): "+msgs.join(" | ")+"; "+ends+" ways out checked; the bar's arrows: "+dry+"; reduced motion: at each frame within 5 ms");
+    })();
+    /* Stage 7D (docs/STAGE7_SPEC.md section 6, 7D; decision 123): the clock played between the opening's steps. From the reopened card at
+       04:00 in Study on the landscape: Next starts it at OPENING.SPEED with Follow on and the stop's theme cleared; while it plays the bar
+       shows the next stop's title and, in its text, its own words or the names of the events a dwell stops for (EVENTS[].n), nothing else;
+       one live message as it starts and one at the step, no phase announcement besides; Pause (the Play button's toggle) and Space off a
+       button stop and resume it, the clock standing still while paused; Next goes straight to the step, Back returns to the stop it started
+       from; Skip ends it at the end state, a key where it is (the clock where it stood); after every way the visitor's speed is back and
+       nothing plays. Run by the app's own tick in 100 ms steps; the state restored after. */
+    (function(){
+      var bad=[], fr=document.getElementById("firstrun"), L=LABELS.opening, N=OPENING.stops.length, bar=document.getElementById("tourbar"),
+        K0={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,c:clock,pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,sel:selection,sp:speed},
+        names={}, seen={}, P0, msgs=[];
+      EVENTS.forEach(function(e){ names[e.n]=1; });
+      if(presentation!=="study") setPresentation("study"); if(mode!=="terrain") setMode("terrain"); if(tourStep>=0) exitTour(); select(null,null);
+      setClock(T_MIN,{instant:true,force:true,camera:false}); finishTween(); tabChosen=false; setSpeed(0.5);
+      function key(k,on){ (on||document.body).dispatchEvent(new KeyboardEvent("keydown",{key:k,bubbles:true,cancelable:true})); }
+      function txt(id){ return document.getElementById(id).textContent; }
+      function live(){ return document.getElementById("live-phase").textContent; }
+      function begin(){ fr.hidden=false; openFirstRun(); document.getElementById("fr-tour").click(); finishTween(); }
+      function next(){ document.getElementById("tour-next").click(); }
+      function tick(n,w){ for(var i=0;i<n&&OPENING.play;i++){ tickClock(100); followStep(100); openingPlayWatch();
+        if(!OPENING.play) break;
+        var x=txt("tour-x"); if(x!==L.playText&&!x.split("; ").every(function(q){ return names[q]; })) bad.push(w+": the bar shows \u201c"+x.slice(0,50)+"\u201d"); else if(x!==L.playText) seen[x]=1;
+        if(freeCam) bad.push(w+": Follow went off"); } }
+      function quiet(w){ if(OPENING.play||playing||speed!==0.5) bad.push(w+": "+(OPENING.play?"the stretch still on":playing?"the clock still plays":"the speed is "+speed+", not the visitor's \u00bd")); }
+      /* a whole run: every stretch to its step by itself */
+      P0=PHASE_SAID; begin();
+      for(var k=1;k<N;k++){ var s=TOUR[OPENING.stops[k]]; next();
+        if(!OPENING.play||!playing||speed!==OPENING.SPEED||OPENING.play.to!==k) bad.push("Next at step "+k+" did not start the clock at "+OPENING.SPEED+"x to step "+(k+1));
+        if(chapter) bad.push("the stop's theme kept while the clock plays to step "+(k+1));
+        if(txt("tour-t")!==s.n||txt("tour-n")!==L.playing.replace("%k",k+1).replace("%n",N)) bad.push("the bar while playing to step "+(k+1)+": "+txt("tour-n")+" / "+txt("tour-t"));
+        msgs.push(live()); if(live()!==L.saidPlay.replace("%k",k+1).replace("%n",N).replace("%c",fmtClock(stopClock(s)))) bad.push("playing to step "+(k+1)+": the live region says \u201c"+live()+"\u201d");
+        tick(200000,"playing to step "+(k+1)); finishTween();
+        if(OPENING.k!==k||clock!==stopClock(s)||(s.chapter||null)!==chapter||speed!==0.5||playing) bad.push("the stretch to step "+(k+1)+" ended at step "+(OPENING.k+1)+", "+fmtClock(clock)+", speed "+speed);
+        msgs.push(live()); }
+      if(PHASE_SAID!==P0) bad.push((PHASE_SAID-P0)+" phase announcement(s) while the clock played");
+      if(!Object.keys(seen).length) bad.push("no dwell's event named in the bar");
+      openingEnd("skip"); finishTween();
+      /* pause and resume: the toggle, then Space off a button */
+      begin(); next(); tick(30,"before the pause"); var c1=clock;
+      togglePlay(); var head=txt("tour-n"); tick(20,"paused");
+      if(playing||!OPENING.play||clock!==c1||head!==L.paused.replace("%k",2).replace("%n",N)) bad.push("Pause: playing "+playing+", the clock "+fmtClock(c1)+" to "+fmtClock(clock)+", the heading \u201c"+head+"\u201d");
+      if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+      key(" "); var res=playing&&!!OPENING.play; tick(10,"resumed"); if(!res||!(clock>c1)) bad.push("Space off a button did not resume the clock");
+      key(" "); if(playing||!OPENING.play) bad.push("Space off a button did not pause it");
+      key(" ");
+      /* Next goes straight there; Back returns */
+      next(); finishTween(); if(OPENING.play||OPENING.k!==1||clock!==stopClock(TOUR[OPENING.stops[1]])) bad.push("Next while playing: at step "+(OPENING.k+1)+", "+fmtClock(clock)); quiet("Next while playing");
+      next(); tick(30,"to step 3"); document.getElementById("tour-prev").click(); finishTween();
+      if(OPENING.play||OPENING.k!==1||clock!==stopClock(TOUR[OPENING.stops[1]])) bad.push("Back while playing: at step "+(OPENING.k+1)+", "+fmtClock(clock)); quiet("Back while playing");
+      /* the ways out while it plays */
+      next(); tick(30,"to step 3, then Skip"); document.getElementById("tour-exit").click(); finishTween();
+      if(OPENING.on||clock!==T_MIN||curVantage!=="plan") bad.push("Skip while playing: not the end state"); quiet("Skip while playing");
+      begin(); next(); tick(30,"then a key"); var c2=clock; key("1"); finishTween();
+      if(OPENING.on||Math.abs(clock-c2)>1e-9) bad.push("the key 1 while playing: on "+OPENING.on+", the clock "+fmtClock(c2)+" to "+fmtClock(clock)); quiet("the key 1 while playing");
+      if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+      setSpeed(K0.sp); setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
+      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv;
+      tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id);
+      ck("the opening's played stretches: Next plays the clock at "+OPENING.SPEED+"x to the next step and that stop is applied; the bar its own words or the dwell's event names; one message as it starts and one at the step; Pause and Space stop it; Next, Back, Skip and a key; the visitor's speed back (decision 123)",
+        !bad.length, bad.length?bad.slice(0,8).join("; ")+(bad.length>8?"; and "+(bad.length-8)+" more":""):
+        (N-1)+" stretches, each to its stop's clock with its theme; "+Object.keys(seen).length+" dwell captions in the bar; messages: "+msgs.join(" | "));
     })();
     /* Stage 6D (docs/STAGE6_SPEC.md section 6.3, "What must hold"; decisions 98, 105, 106): the standards from the table. Each expectation is
        derived here from COLOURS_CARRIED, STANDARD_MEASURES and KIT, not read back from kitStdRule or kitStdShape */

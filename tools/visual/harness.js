@@ -121,9 +121,13 @@ async function interact(page,it,vp){
     else await settle(page);
     /* Stage 7C: an opening case is reached as a visitor reaches it, by real clicks on the card's primary action and the bar's Next */
     const opening=c.fresh&&c.opening!==undefined&&await page.evaluate(()=>typeof OPENING!=="undefined");
-    if(opening){ await page.click("#fr-tour"); await settle(page);
+    /* Stage 7D (decision 123): Next on a step plays the clock to the next one; a second Next goes straight there, as a visitor may (under
+       software WebGL a played stretch takes minutes of real time; it is sampled in the self-test and tools/stage7/opening-7d-probe.js) */
+    if(opening){ await page.click("#fr-tour",{timeout:180000}); await settle(page);
       const n=c.opening==="end"?await page.evaluate(()=>OPENING.stops.length):c.opening;
-      for(let i=0;i<n;i++){ await page.click("#tour-next"); await settle(page); }
+      for(let i=0;i<n;i++){ await page.click("#tour-next",{timeout:180000});
+        if(await page.evaluate(()=>!!OPENING.play)) await page.click("#tour-next",{timeout:180000});
+        await settle(page); }
       m0opening=await page.evaluate(()=>({on:OPENING.on,k:OPENING.k,stop:tourStep,clock:clock})); }
     const buf=await page.screenshot({timeout:180000});
     fs.writeFileSync(path.join(out,c.name+".png"),buf);
@@ -201,15 +205,23 @@ async function interact(page,it,vp){
       await page.evaluate(()=>{ if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
     }
     /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decision 118): on the opening-2 page, after every measure above, real key presses: Esc
-       from step 2 (the end state: 04:00, Study, Play focused); the tools' button by a real click, then Enter on the focused Next (step 2), then
-       Tab to Skip and Space (the end state again) */
+       from step 2 (the end state: 04:00, Study, Play focused); the tools' button by a real click, then Enter on the focused Next (since 7D the
+       clock plays toward step 2, paused and resumed by Space, and Enter again goes straight there), then Tab to Skip and Space (the end state) */
     if(TEST&&opening&&c.name==="opening-2"){
       const st=()=>page.evaluate(()=>{ const a=document.activeElement;
         return {id:a&&a!==document.body?(a.id||a.tagName):"body",on:OPENING.on,k:OPENING.k,stop:tourStep,clock:clock,pres:presentation,tab:tabNow,follow:!freeCam,vantage:curVantage,bar:!document.getElementById("tourbar").hidden}; });
       const keys={};
       await page.keyboard.press("Escape"); await settle(page); keys.esc=await st();
-      await page.click("#openingbtn"); await settle(page); keys.begun=await st();
-      await page.keyboard.press("Enter"); await settle(page); keys.enter=await st();
+      await page.click("#openingbtn",{timeout:180000}); await settle(page); keys.begun=await st();
+      /* Stage 7D: Enter on the focused Next plays the clock toward step 2; a press on the bar's text leaves focus on nothing, where Space
+         pauses it and Space resumes it; Enter on Next again goes straight to step 2 */
+      await page.keyboard.press("Enter"); keys.played=await page.evaluate(()=>({play:!!OPENING.play,to:OPENING.play?OPENING.play.to:null,playing:playing,speed:speed}));
+      await page.click("#tour-x",{timeout:180000}); await page.keyboard.press("Space");
+      const c0=await page.evaluate(()=>clock); await page.waitForTimeout(1500);
+      keys.paused=await page.evaluate(c=>({play:!!OPENING.play,playing:playing,still:clock===c,head:document.getElementById("tour-n").textContent}),c0);
+      await page.keyboard.press("Space"); keys.resumed=await page.evaluate(()=>({play:!!OPENING.play,playing:playing}));
+      await page.focus("#tour-next"); await page.keyboard.press("Enter"); await settle(page); keys.enter=await st();
+      keys.speedAfter=await page.evaluate(()=>speed);
       await page.keyboard.press("Tab"); keys.tab=(await st()).id;
       await page.keyboard.press("Space"); await settle(page); keys.space=await st();
       m.openingKeys=keys;
