@@ -124,6 +124,16 @@ const S=[
        const kids=Object.keys(units).filter(u=>{ let f=FORMATIONS[u]; while(f&&f.parent){ if(f.parent===id) return true; f=FORMATIONS[f.parent]; } return false; });
        out[id]={drawn:!!a.show,leaves:kids.map(u=>u+":"+drawnKnow(u))}; }); return out; }),
    expect:(s,x)=>[!Object.values(x).some(a=>a.drawn&&a.leaves.every(l=>/:unknown$/.test(l))),"no enemy corps counter drawn whose every formation the reading does not know"]},
+  {id:"dwell-toggle-across", what:"Play from 06:30; the dwell turned off in the Layers panel, 10 s of play (across the 07:00 event start), then on again",
+   steps:[["Esc closes the card",p=>p.keyboard.press("Escape")],["clock 06:30 (setClock)",p=>p.evaluate(()=>setClock(390,{instant:true,force:true}))],
+          ["click Play",p=>p.click("#play",{timeout:180000})],["click Layers",p=>p.click("#layersbtn",{timeout:180000})],
+          ["click Pause briefly at events (off)",p=>p.click("#dwell",{timeout:180000})],["tick 10 s",p=>tick(p,100)],
+          ["click Pause briefly at events (on)",p=>p.click("#dwell",{timeout:180000})],["tick 0.1 s",p=>tick(p,1)],["tick 1 s",p=>tick(p,10)]],
+   expect:s=>{ const a=s[5], z=s[s.length-1]; return [s[7].clock>=a.clock&&z.clock>=a.clock,"the clock never goes back when the dwell is turned on again (it was "+a.clock+")"]; }},
+  {id:"sources-esc-chapter", what:"A theme chosen in the Analysis tab, the sources sheet opened, then Esc",
+   steps:[["Esc closes the card",p=>p.keyboard.press("Escape")],["click the Analysis tab",p=>p.click("#tab-analysis",{timeout:180000})],
+          ["click the first theme",p=>p.click("#chapters button >> nth=0",{timeout:180000})],["click Sources",p=>p.click("#srcbtn",{timeout:180000})],["Esc",p=>p.keyboard.press("Escape")]],
+   expect:s=>{ const a=s[3], z=s[s.length-1]; return [a.sources&&!z.sources&&z.chapter===a.chapter,"Esc closes the sheet and keeps the theme ("+a.chapter+")"]; }},
   {id:"rm-live", what:"prefers-reduced-motion switched on after load (emulated), then Begin and Next",
    steps:[["emulate reduce",p=>p.emulateMedia({reducedMotion:"reduce"})],["click Begin",p=>p.click("#fr-tour",{timeout:180000})],["click Next",p=>p.click("#tour-next",{timeout:180000})]],
    expect:s=>{ const z=s[s.length-1]; return [!z.stretch,"a preference changed after load is honoured (Next cuts, no stretch)"]; }}

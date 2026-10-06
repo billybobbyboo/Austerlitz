@@ -1,0 +1,249 @@
+[
+ {
+  "name": "Event, 04:00 to 07:00: The Allied columns begin to leave the plateau (an interval: the hour is not fixed)",
+  "display": "block",
+  "visibility": "visible",
+  "box": [
+   990,
+   423,
+   239,
+   17
+  ],
+  "inView": true,
+  "underPanel": false
+ },
+ {
+  "name": "Event, 04:00 to 04:45: Friant's division at Raigern since the night (an interval: the hour is not fixed)",
+  "display": "block",
+  "visibility": "visible",
+  "box": [
+   491,
+   740,
+   221,
+   17
+  ],
+  "inView": true,
+  "underPanel": false
+ },
+ {
+  "name": "Imperial Headquarters, French, army, observing, position grade A",
+  "display": "flex",
+  "visibility": "visible",
+  "box": [
+   763,
+   235,
+   135,
+   17
+  ],
+  "inView": true,
+  "underPanel": false
+ },
+ {
+  "name": "Allied Headquarters, Allied, Russian, army, observing, position grade B",
+  "display": "flex",
+  "visibility": "visible",
+  "box": [
+   1075,
+   324,
+   145,
+   17
+  ],
+  "inView": true,
+  "underPanel": false
+ },
+ {
+  "name": "Left Wing Command, Allied, Russian, corps, about 40,000, forming up, position grade C",
+  "display": "flex",
+  "visibility": "visible",
+  "box": [
+   1009,
+   496,
+   150,
+   17
+  ],
+  "inView": true,
+  "underPanel": false
+ },
+ {
+  "name": "Advance Guard of the Right, Allied, Russian, corps, about 13,700, holding, position grade B",
+  "display": "flex",
+  "visibility": "visible",
+  "box": [
+   932,
+   124,
+   186,
+   17
+  ],
+  "inView": true,
+  "underPanel": false
+ },
+ {
+  "name": "Fifth Column (cavalry), Allied, Russian, corps, about 5,400, forming up, position grade B",
+  "display": "flex",
+  "visibility": "visible",
+  "box": [
+   832,
+   385,
+   160,
+   17
+  ],
+  "inView": true,
+  "underPanel": false
+ },
+ {
+  "name": "Place: Pratzen Heights",
+  "display": "block",
+  "visibility": "visible",
+  "box": [
+   1010,
+   404,
+   96,
+   16
+  ],
+  "inView": true,
+  "underPanel": false
+ },
+ {
+  "name": "Place: Stare Vinohrady",
+  "display": "block",
+  "visibility": "visible",
+  "box": [
+   0,
+   0,
+   97,
+   16
+  ],
+  "inView": true,
+  "underPanel": true
+ },
+ {
+  "name": "Place: Pratzeberg",
+  "display": "block",
+  "visibility": "visible",
+  "box": [
+   0,
+   0,
+   70,
+   16
+  ],
+  "inView": true,
+  "underPanel": true
+ },
+ {
+  "name": "Place: The Santon",
+  "display": "block",
+  "visibility": "visible",
+  "box": [
+   900,
+   184,
+   72,
+   16
+  ],
+  "inView": true,
+  "underPanel": false
+ },
+ {
+  "name": "Place: Zuran mound",
+  "display": "block",
+  "visibility": "visible",
+  "box": [
+   0,
+   0,
+   82,
+   16
+  ],
+  "inView": true,
+  "underPanel": true
+ },
+ {
+  "name": "Place: Goldbach stream",
+  "display": "block",
+  "visibility": "visible",
+  "box": [
+   0,
+   0,
+   103,
+   16
+  ],
+  "inView": true,
+  "underPanel": true
+ },
+ {
+  "name": "Place: Litava river",
+  "display": "block",
+  "visibility": "visible",
+  "box": [
+   1195,
+   363,
+   70,
+   16
+  ],
+  "inView": true,
+  "underPanel": false
+ },
+ {
+  "name": "Place: Telnitz",
+  "display": "block",
+  "visibility": "visible",
+  "box": [
+   0,
+   0,
+   46,
+   16
+  ],
+  "inView": true,
+  "underPanel": true
+ },
+ {
+  "name": "Place: Sokolnitz",
+  "display": "block",
+  "visibility": "visible",
+  "box": [
+   0,
+   0,
+   60,
+   16
+  ],
+  "inView": true,
+  "underPanel": true
+ },
+ {
+  "name": "Place: Augezd",
+  "display": "block",
+  "visibility": "visible",
+  "box": [
+   1003,
+   575,
+   52,
+   16
+  ],
+  "inView": true,
+  "underPanel": false
+ },
+ {
+  "name": "Place: Satschan mere",
+  "display": "block",
+  "visibility": "visible",
+  "box": [
+   963,
+   644,
+   91,
+   16
+  ],
+  "inView": true,
+  "underPanel": false
+ },
+ {
+  "name": "Place: Austerlitz",
+  "display": "block",
+  "visibility": "visible",
+  "box": [
+   1286,
+   240,
+   61,
+   16
+  ],
+  "inView": true,
+  "underPanel": false
+ }
+]

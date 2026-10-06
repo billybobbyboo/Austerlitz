@@ -48,7 +48,7 @@ const INPAGE=function(){
           var nx=Math.max(q.r.left,Math.min(o.cx,q.r.right)), ny=Math.max(q.r.top,Math.min(o.cy,q.r.bottom));
           if(Math.hypot(nx-o.cx,ny-o.cy)<12) { saved=false; break; }
           var qs=q.r.width<24||q.r.height<24; if(qs&&Math.hypot(q.cx-o.cx,q.cy-o.cy)<24){ saved=false; break; } } }
-      out.push({el:desc(o.e),name:nameOf(o.e),w:+o.r.width.toFixed(1),h:+o.r.height.toFixed(1),x:Math.round(o.r.left),y:Math.round(o.r.top),
+      out.push({el:desc(o.e),uid:uid(o.e),name:nameOf(o.e),w:+o.r.width.toFixed(1),h:+o.r.height.toFixed(1),x:Math.round(o.r.left),y:Math.round(o.r.top),
         small:small,spacingOk:saved,role:o.e.getAttribute("role")||o.e.tagName.toLowerCase(),tabindex:o.e.getAttribute("tabindex"),
         outside:o.r.right>innerWidth+0.5||o.r.bottom>innerHeight+0.5||o.r.left<-0.5||o.r.top<-0.5});
     });
@@ -75,13 +75,18 @@ const INPAGE=function(){
     Object.keys(S).forEach(function(k){ var e=document.querySelector(S[k]); if(!e||!vis(e)){ o[k]=null; return; } var r=e.getBoundingClientRect();
       o[k]={x:Math.round(r.left),y:Math.round(r.top),w:Math.round(r.width),h:Math.round(r.height),outside:r.right>innerWidth+0.5||r.bottom>innerHeight+0.5||r.left<-0.5||r.top<-0.5}; });
     return o; };
-  A.focus=function(){ var e=document.activeElement; if(!e||e===document.body) return {el:"body"};
+  var _ids=new WeakMap(), _n=0; function uid(e){ if(!_ids.has(e)) _ids.set(e,++_n); return _ids.get(e); }
+  var PANELS=[".rail",".drawer",".timebar","#firstrun",".legend",".tools","#viewmode",".dispatch","#tourbar","#layerpop","#help","#modal","#selchip"];
+  A.focus=function(){ var e=document.activeElement; if(!e||e===document.body) return {el:"body",uid:0};
     var r=e.getBoundingClientRect(), cs=getComputedStyle(e), cx=(r.left+r.right)/2, cy=(r.top+r.bottom)/2;
-    var top=document.elementFromPoint(Math.max(0,Math.min(innerWidth-1,cx)),Math.max(0,Math.min(innerHeight-1,cy)));
-    var obscured=!!top&&top!==e&&!e.contains(top)&&!top.contains(e);
+    /* obscured: the topmost element at its centre belongs to an interface panel that does not contain it (2.4.11); the map's own
+       canvas under a click-through map item does not count */
+    var top=document.elementFromPoint(Math.max(0,Math.min(innerWidth-1,cx)),Math.max(0,Math.min(innerHeight-1,cy))), pan=null;
+    if(top&&top!==e&&!e.contains(top)) for(var i=0;i<PANELS.length;i++){ var P=top.closest&&top.closest(PANELS[i]); if(P&&!P.contains(e)){ pan=P; break; } }
+    var obscured=!!pan;
     var ind=(cs.outlineStyle!=="none"&&parseFloat(cs.outlineWidth)>0)||(cs.boxShadow&&cs.boxShadow!=="none");
     return {el:desc(e),name:nameOf(e).slice(0,60),visible:vis(e),inView:r.right>0&&r.bottom>0&&r.left<innerWidth&&r.top<innerHeight,indicator:ind,
-      outline:cs.outlineStyle+" "+cs.outlineWidth+" "+cs.outlineColor,shadow:cs.boxShadow==="none"?"":cs.boxShadow.slice(0,40),obscuredBy:obscured?desc(top):null}; };
+      outline:cs.outlineStyle+" "+cs.outlineWidth+" "+cs.outlineColor,shadow:cs.boxShadow==="none"?"":cs.boxShadow.slice(0,40),obscuredBy:obscured?desc(pan)+" ("+desc(top)+")":null,uid:uid(e)}; };
   window.__a11y=A; return true;
 };
 
@@ -108,15 +113,15 @@ const INPAGE=function(){
     const png2=await page.screenshot({timeout:180000}); tiles.push({png:png2,cap:key+" after Esc"});
     r.targetsAfter=await page.evaluate(()=>window.__a11y.targets());
     /* the page's Tab order, from Play (where Esc leaves focus) */
-    const seen=new Set(), order=[]; let loops=0;
-    for(let i=0;i<120;i++){ await page.keyboard.press("Tab"); const f=await page.evaluate(()=>window.__a11y.focus()); order.push(f);
-      const k=f.el; if(seen.has(k)){ if(++loops>3) break; } seen.add(k); }
+    const order=[], start=(await page.evaluate(()=>window.__a11y.focus())).uid;
+    for(let i=0;i<160;i++){ await page.keyboard.press("Tab"); const f=await page.evaluate(()=>window.__a11y.focus()); if(f.uid===start) break; order.push(f); }
+    r.tabCycleClosed=order.length<160;
     r.tabOrder=order;
     r.tabNoIndicator=order.filter(f=>f.el!=="body"&&!f.indicator).map(f=>f.el);
     r.tabHidden=order.filter(f=>f.el!=="body"&&(!f.visible||!f.inView)).map(f=>f.el);
     r.tabObscured=order.filter(f=>f.obscuredBy).map(f=>f.el+" under "+f.obscuredBy);
-    const reached=new Set(order.map(f=>f.el));
-    r.neverTabbed=r.targetsAfter.filter(t=>!reached.has(t.el)).map(t=>t.el+(t.tabindex!==null?" [tabindex="+t.tabindex+"]":"")+" '"+t.name.slice(0,30)+"'");
+    const reached=new Set(order.map(f=>f.uid).concat([r.afterEsc.focus.uid]));
+    r.neverTabbed=r.targetsAfter.filter(t=>!reached.has(t.uid)).map(t=>t.el+(t.tabindex!==null?" [tabindex="+t.tabindex+"]":"")+" '"+t.name.slice(0,30)+"'");
     r.console=logs; r.pageErrors=page._errors.slice();
     res.sizes[key]=r;
     console.log("load",r.loadMs,"ms; unobstructed",r.metrics.unobstructed,"; targets",r.targets.length,"small",r.targetsSmall.length,"failing 2.5.8",r.targetsFailing.length,

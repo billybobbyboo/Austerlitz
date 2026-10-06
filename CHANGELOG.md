@@ -1,5 +1,83 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build
+
+**Status: for review. No source file, no data and no build changed:** `austerlitz-command-map.html` is the Stage 7D build, 1,764,002 bytes,
+md5 `46773462faa1e1b9f4a4010e450e110a`; `npm run check:baseline` passes at the start and at the end; `check:data`'s reference is not moved.
+The first commit records 7D (#47) as merged: Stage 7 is complete. The next owner decision is 125.
+
+**What was written.**
+- `docs/FINAL_AUDIT.md`. A one-page summary. Then the findings by dimension in `CLAUDE.md`'s priority order: historical, data, geographic
+  and simulation integrity, software correctness, the tests, visual and UX quality with accessibility, performance, polish and the records.
+  Then the comparison with `docs/VISUAL_AUDIT.md`, item by item; what was not verified and why; owner questions 125-141, each with a
+  recommendation and its trade-off; and a proposed roadmap.
+- `tools/audit/` (not bundled), the audit's scripts:
+  - `size.js`, `scan-gaps.js`, `sheet.py`: no page.
+  - `a11y-probe.js`, `perf-probe.js`, `state-probe.js`, `boot-probe.js`, `font-probe.js`, `mlfocus-probe.js`, `mlfocus-shot.js`: page probes, opened as the harness opens the page (`tools/stage7/lib.js`).
+- `docs/audit-evidence/`: their outputs and every check's output, with a README.
+- The code was read in six passes. Five were read-only reviewers; every finding kept was re-checked against the code, and those marked
+  "measured" were reproduced in the page.
+
+**Found (75 findings: 1 blocker, 21 major, 41 minor, 12 polish; each with evidence, reproduction and a proposed fix; none fixed).**
+- **The blocker (H-1).** `SOURCE_NOTE` keeps three hours unresolved: Dokhturov's descent, Kamensky's turn and Rapp's counter-charge. On the
+  day's main path they are shown as settled. The Kamensky event reads "Fact · Timing A · about 09:45", while his own A-graded record turns
+  him at 08:45.
+- **Majors, history.**
+  - Drouet's reserve is drawn ahead of the assault at 08:45 (H-2).
+  - The plateau label has no "derived" mark, and in phase 7 there is none anywhere (H-3, decision 119 (b)).
+  - The first claim a visitor reads is an unlabelled interpretation (H-4).
+  - The claim pill is the position's grade (H-5).
+  - The narrative has no per-statement sources (H-6).
+  - Soult's "twenty minutes" is graded three ways (H-7).
+  - The overclaim scan reads 124 of 1,764 prose strings, and two of its own banned words are live outside it (H-8).
+- **Majors, data and simulation.**
+  - `check:chronology` judges a hand-typed table (D-1).
+  - The grade check skips 30 of 32 formations (D-2).
+  - "Whose eyes?" leaves enemy corps counters drawn (S-1).
+  - Turning the dwell off and on while playing sends the clock back: 07:22 to 07:00, measured (S-2).
+- **Majors, software.**
+  - No message when three.js or WebGL fails, and no integrity attribute on the CDN script (SW-1).
+  - Below 1080 px the rail can stand over the dispatch card (SW-2).
+  - Off-screen panels stay in the Tab order: 42 tab stops in the hidden rail at 1024 px (SW-3).
+  - The sources sheet is a modal without a modal's focus, and Esc ends the tour first (SW-4).
+- **Majors, the tests.**
+  - `check:visual` fails on the unchanged build on this machine: `narrow-390` measures 46.0% against its 46.8% baseline. The system fonts
+    draw the timeline 2 px taller (Inter here; DejaVu Sans gives 46.89%) (T-0).
+  - Page errors never fail a check (T-1).
+  - The meres' check is a tautology (T-2).
+- **Majors, accessibility.**
+  - Single-key shortcuts with no off switch (A-1, WCAG 2.1.4).
+  - Focus lands on 6 invisible map items in the first view (A-2, 2.4.7).
+  - The timeline's targets are 11-22 px (A-3, 2.5.8).
+- **Against `docs/VISUAL_AUDIT.md`:** of 26 items, 20 are resolved, 4 partly (the meres' outlines, the soft particles and ice marks, the
+  scale bar's note, the serif) and 2 open (figure level of detail; the event glyphs and native tooltips). Every "should not change" item
+  still holds, with the gaps named.
+
+**Checks on this build (fresh container: 4 cores, headless Chromium with SwiftShader).**
+- `npm run build`: the committed HTML equals the fresh build. `npm run check:baseline`: passes, at the start and at the end (md5
+  `46773462…`, 1,764,002 bytes).
+- `npm test`: "ALL 9 SUITES PASSED (and the height guard)" (5 min 2 s). `test.js` 588/588 appearance and 41/41 order-of-battle checks;
+  `geo-test` 54 passed; `binding-test` 383 checks, 0 failed; `redteam.js` 0 findings, 1 standing warning; `runtime-test.js` 0 errors,
+  "console.warn unique: 1" (its stub's false positive, T-1).
+- `npm run check:data`: all 121 guarded declarations byte-identical to `archive/stage6b-7fc0f6c3.html`.
+- `npm run check:chronology`: errors 0. There are 69 moves with a timed statement: 65 are consistent, and the four named conflicts are
+  allowed.
+- `npm run check:contrast`: 5,990 text elements, 105 pairs, 0 below AA, 0 below 10.5 px (6 min 58 s).
+- `npm run check:visual`: **"STAGE0 FAILURES: 1"** (72 min 22 s). The failure is "narrow-390: unobstructed map 46.0%, below the baseline
+  46.8%", and it reproduces alone at 46.03% (T-0).
+  - The other 29 views meet every threshold, drop limit and baseline. The self-test passed 212 of 212, and so did every real-key check.
+  - Nine console warnings, all Chromium's Canvas2D readback warning.
+  - The 7D session passed the same build at 46.9%; the difference is the fonts installed on the machine, not the build.
+- `node tools/stage6/verify-quotes.js` (network, not in the suite): 311 quotes. 107 were found whole, 32 with OCR differences, 41 on page
+  images, 56 not found and 75 with no text layer.
+
+**Not done, or open.**
+- Nothing is fixed, by the brief. The findings wait on the owner's answers to questions 125-141.
+- Not verified: a screen reader; a GPU (every frame cost is software WebGL); Firefox and Safari; real touch; forced colours; the historical
+  claims against a library (the findings marked INFERENCE name the source that would settle them).
+- Historical: nothing changes. The audit lists where each open question the records carry surfaces on screen, and whether it is marked
+  there (`docs/FINAL_AUDIT.md` §2.1).
+
 ## 2026-10 · Stage 7D: the clock played between the opening's steps (docs/STAGE7_SPEC.md §3.5, §4.3-§4.5, §6; owner decisions 123, 124)
 
 **Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
