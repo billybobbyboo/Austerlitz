@@ -39,6 +39,9 @@ DROP_LIMIT["eye-zuran"]=5; DROP_LIMIT["eye-zuran-1x"]=6;
 /* Stage 5F (decision 94): the Plans tab, both plans, at the Overview: what the 5F build drops there (ten place names and the Allied
    headquarters' name), never raised; the Plans tab itself is unchanged (its fix is a task after Stage 5) */
 DROP_LIMIT["plans-overview"]=11;
+/* Stage 7B (owner decision 122): narrow-390, the first screen at 390 x 844, is new; its limit is what the 7B build drops there (the Allied
+   headquarters' and the Fifth Column's names, Pratzen, Stare Vinohrady, Santon, Zuran), never raised */
+DROP_LIMIT["narrow-390"]=6;
 /* section H: the unobstructed share of the viewport on the Stage 2C build, at the case's viewport and at 1280 x 720, measured
    by this harness (CSS transitions off, the panels at rest). It must not fall. These equal tools/stage2/map-text.js's values
    in every view but one: selected-formation at 1280 x 720 is 6.97% at rest, where map-text.js reported 15.1% with the
@@ -61,6 +64,11 @@ const UNOBSTRUCTED={"first-run":[0.614,0.49],"first-run-laptop":[0.531,0.49],"ov
   "selected-formation":[0.703,0.628],"watch-selected":[0.879,0.833],"hybrid-dimmed":[0.881,0.847],"pratzen-low-1x":[0.897,0.872],
   "pratzen-low-10x":[0.897,0.872],"paper-north-up":[0.703,0.628],"paper-close":[0.703,0.628],"paper-drawer":[0.703,0.628],"paper-laptop":[0.628,0.628],
   "narrow-1024":[0.535,0.628],"ph8-overview-study":[0.703,0.628],"ph8-overview-watch":[0.897,0.872]};
+/* Stage 7B (docs/STAGE7_SPEC.md section 6; decisions 111, 120, 122): the first-run card without its hint and "Watch the battle" is 49 px
+   shorter. first-run and first-run-laptop are raised to what the 7B build measures, rounded down to 0.1 point (the 3B and 3C method), so no
+   later part can give the gain back: they were .614/.49 and .531/.49 (3C). narrow-390 is new, its baselines the 7B build's (at 1280 x 720
+   the resized page docks, as every case's second measure does) */
+UNOBSTRUCTED["first-run"]=[0.634,0.520]; UNOBSTRUCTED["first-run-laptop"]=[0.558,0.520]; UNOBSTRUCTED["narrow-390"]=[0.468,0.520];
 const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harness machine */
 /* Stage 2E (section J, 2E): every paper-map view is a true north-up plan: GEOREF.NORTH within 0.5 degrees of up; screen pixels
    per true km at four places equal to 1% (on the 2D build's tilted staff map they differ by 6.0% and north is 17.8 degrees

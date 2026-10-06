@@ -793,6 +793,13 @@ key presses, Esc and the outside click; the 390 x 844 screen recorded (question 
   the self-test holds the card's colours at 1366 x 768, as 5G's inset.
 - `binding-test.js`, `check:chronology`, `check:data`: unaffected (no arrow, no data); run and shown.
 
+**7B, as delivered (fact; `CHANGELOG.md`, Stage 7B).** Built as above under decisions 111-113, 117-120 and 122, with three things the plan
+did not settle: (1) the primary action starts the guided tour until 7C (§0.5); (2) with focus on the primary, Space and Enter press it and
+← → do nothing (before, nothing had focus, so Space played and the arrows closed the card and stepped the clock); (3) the replaced Stage 0
+check keeps its message and fails when the boxes meet, which below 1080 px they still do (214 x 192 px at 1024 x 768). Measured: the map
+63.4% / 52.1% unobstructed on the first screen at 1600 x 900 / 1280 x 720 (61.5% / 49.0% before), 55.8% at 1366 x 768 (53.2%), 46.9% at
+390 x 844 (38.3%); drops within every limit (one or two more below 1600 x 900: ground the taller card covered now competes for room).
+
 ### 7C: the opening, stills from the tour (questions 111, 114-116, 118)
 
 **What.** `OPENING`, a presentation table in `app.js`: a list of indices into `TOUR` (recommended: stops 1, 6, 7, 8 [114]), and the end
