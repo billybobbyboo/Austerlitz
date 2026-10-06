@@ -1,5 +1,105 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 7D: the clock played between the opening's steps (docs/STAGE7_SPEC.md §3.5, §4.3-§4.5, §6; owner decisions 123, 124)
+
+**Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
+`austerlitz-command-map.html`: 1,764,002 bytes, md5 `46773462faa1e1b9f4a4010e450e110a` (was 1,748,568 bytes, md5 `bebcfff6…`, Stage 7C).**
+`check:baseline` moves to this build. The first commit records 7B (#45) and 7C (#46) as merged, and the owner's decisions 123 and 124.
+
+**The decisions (§0.6).** After #46 the owner wrote: "Merged. Proceed with 7D and your recommendations." Decision 123 supersedes decision
+116's "none in Stage 7": the clock plays between the opening's steps at **4x, the opening's own speed** (question 116's recommendation if
+played stretches were wanted, a design value); the visitor's Play stays at the speed it had, ½× by default (decision 74). Decision 124: focus
+on Next when the opening begins, as 7C built it (§4.1 had recommended Skip).
+
+**Before building (fact).** `main` (`50db83c`, #46 merged) matched `check:baseline` (the 7C build, md5 `bebcfff6…`). The "before" of each step is
+7C's `docs/stage7-evidence/7c-opening-probe.json`; Part A's played prototype (`opening-probe.json`, `played`; §3.5) is the "before" of the
+stretches; `tools/stage7/opening-7d-probe.js` measured the "after" (`7d-opening-probe.json`, `7d-opening-sheet.jpg`).
+
+**What changed** (`app.js`)
+- **Next on a step but the last plays the clock** from that stop's clock to the next stop's at `OPENING.SPEED` (4x), as Play plays it: Follow
+  (decision 78), the dwell at each event start (decision 75), the derived arrows drawn on (decision 83); the relief control as while Play plays
+  (decision 56: disabled where a relief change is slow). The stop's theme is cleared while it plays. **When the clock reaches the next stop's clock that stop is
+  applied as in 7C** (its theme, and its camera by the tour's 1.6 s glide from Follow's view), so every step's frame is still the stop's own and
+  7C's limits hold. Stops 6, 7 and 8 are event starts (08:45, 11:00, 14:30), so each stretch dwells to a stop at its step.
+- **While it plays**: the bar is headed "Opening, step k of n: the clock plays" (or "paused"), shows the next stop's title and, in its text,
+  first "The day plays on to this step. Pause or Space stops it; Next goes straight there.", then the names of the events each dwell stops
+  for (`EVENTS[].n`, the words the timeline caption shows, joined as it joins them; no other sentence). The Play/Pause button, and Space when
+  no button has focus, pause and resume it (WCAG 2.2.2); **Next goes straight to the step**; Back returns to the stop it started from; Skip,
+  Esc and every other way end the opening as in 7C, the clock stopped and the visitor's speed put back. A press on Play/Pause, and Space or
+  Enter on it, no longer end the opening while it plays.
+- **Announcements** (§4.3): one polite message as a stretch starts ("The clock plays on to step 2 of 4, 08:45. Pause stops it; Next goes
+  straight there.") and one at the step, as in 7C; the phase announcements it crosses are folded (none is said while it plays).
+- **Reduced motion** (§4.4): no stretch; Next is 7C's cut.
+- **The card's primary reads "Begin (two min)"**, its title naming the played clock: the four stops' 168 words read in 42.4-63.0 s, the
+  stretches take 44.8 s at 4x with 19 dwells, and five glides 8.0 s: 95.2, 103.2 and 115.8 s at 238, 200 and 160 words a minute. At 390 px
+  "Begin (two minutes)" wraps inside its button (155 px beside "Explore on my own", 150, in a 308 px row) and would make the card 12 px
+  taller, as 7C's first wording did; "Begin (two min)" is 128 px.
+
+**Choices the plan did not settle (stated):** the step after a stretch is the tour stop's frame (Part A's prototype held Follow's view
+instead); Next while it plays goes straight to the step rather than pausing (Space on a focused button presses it, the 3E rule; the
+Play/Pause button and Space off a button pause); the bar's text names the dwell's events (the plan's "the dwell's caption in the bar").
+
+**The stretches as built** (`tools/stage7/opening-7d-probe.js`: each begun by a real click on Next, run by the app's own tick in 50 ms steps;
+a frame paused mid-stretch by the Play/Pause button's own toggle; Stage 0's thresholds on every frame)
+| stretch (clock) | size | length at 4x (dwells) | lowest clearance / lifts | target speed, largest | drops, most (at) | phase announcements | mid-stretch frame: unobstructed / drops / map text, lowest / smoke / confidence / draw calls | arrival glide, lowest | the step after it: unobstructed / drops |
+|---|---|---|---|---|---|---|---|---|---|
+| to step 2 (04:00 to 08:45) | 1600 x 900 | 18.1 s (7) | 86.14 / 0 | 150 px/s | 11 (08:30) | 0 | 65.7% / 9 / 8.24 / 0.0% / 3.0% / 787 (paused at 06:31) | 46.19 | 64.0% / 7 |
+| to step 3 (08:45 to 11:00) | 1600 x 900 | 11.2 s (5) | 47.42 / 0 | 150 px/s | 9 (09:20) | 0 | 65.7% / 8 / 8.63 / 9.6% / 5.6% / 837 (paused at 10:00) | 38.72 | 64.0% / 3 |
+| to step 4 (11:00 to 14:30) | 1600 x 900 | 15.5 s (7) | 34.25 / 0 | 150 px/s | 14 (11:20) | 0 | 65.7% / 7 / 8.57 / 6.7% / 5.0% / 846 (paused at 13:00) | 94.49 | 64.0% / 4 |
+| to step 2 (04:00 to 08:45) | 1280 x 720 | 18.2 s (7) | 86.17 / 0 | 150 px/s | 14 (08:40) | 0 | 55.6% / 11 / 12.06 / 0.0% / 4.7% / 787 (paused at 06:31) | 46.19 | 52.9% / 7 |
+| to step 3 (08:45 to 11:00) | 1280 x 720 | 11.2 s (5) | 44.81 / 0 | 150 px/s | 10 (09:00) | 0 | 55.6% / 9 / 8.20 / 12.0% / 7.7% / 838 (paused at 10:05) | 38.72 | 52.9% / 3 |
+| to step 4 (11:00 to 14:30) | 1280 x 720 | 15.4 s (7) | 34.17 / 0 | 150 px/s | 16 (11:20) | 0 | 55.6% / 9 / 8.62 / 8.3% / 5.2% / 846 (paused at 13:00) | 94.49 | 52.9% / 3 |
+
+- Every mid-stretch frame and every step meets the Stage 0 thresholds the harness applies (darkness, map text at AA as rendered, smoke under
+  25%, confidence marks under 20%). The steps after a stretch are 7C's frames: 64.0% / 52.9% unobstructed, drops 7, 3, 4 and 7, 3, 3.
+- Part A's prototype (§3.5) took 18.2 s, 13.0 s and 19.1 s at 4x with the dwell at each stretch's end held whole; here each stretch ends as its
+  last dwell begins (the step is applied there): 18.1, 11.2 and 15.5 s.
+- **By real clicks and keys** (1600 x 900): Next plays at 4x toward step 2 (focus stays on Next); Space off a button pauses it (the clock still
+  for 2 s, the heading "paused") and resumes it; the Play/Pause button likewise; Next while it plays goes straight to step 2 (08:45, ½× back);
+  Back while it plays returns to step 2; Esc while it plays ends at 04:00, the Overview, Play focused, ½× back.
+- **Reduced motion**: each Next a cut to its step, at its frame within 5 ms, nothing played.
+- Under software WebGL a stretch takes many minutes of real time (one frame can take seconds); the harness therefore reaches each step by
+  Next and Next again (straight there), and the stretches are measured by the app's own tick (the self-test, the probe, `runtime-test.js`).
+
+**Tests** (none loosened; new or stricter)
+- **Self-test** (212 checks, was 208): new, the played stretches (Next plays at 4x with the theme cleared; the bar's heading and title; its
+  text its own words or one dwell's joined event names; one message as it starts and one at the step, no phase announcement besides; Pause by
+  the toggle and Space off a button, the clock still while paused; Next, Back, Skip and a key while it plays; the visitor's speed back after
+  every way); new at 1x, 4x and 10.33x, the stretches sampled (never under the floor, the target within 150 px/s, drops every ten clock minutes
+  at most 19, each ending at its stop after a glide above the floor with no lift: 467 steps, drops at most 12). Stricter: the 7C opening check
+  now runs each stretch to its arrival before it checks the step.
+- **Harness**: the opening cases reach each step by Next and Next again (the frames, limits and baselines are 7C's); on `opening-2`, by real
+  key presses, Enter on Next plays at 4x toward step 2, Space off a button pauses (the clock still for 1.5 s, the heading "paused") and resumes
+  it, Enter again goes straight to step 2 with ½× back.
+- **`runtime-test.js`**: the stretches run to their arrival (8,410 ticks of 100 ms), every way out while one plays (the clock stopped, ½×
+  back, in place where it stood), Next and Back while it plays, reduced motion's cuts.
+- **`css-test.js`**: `OPENING.SPEED` 4 (decision 123); Play still at ½× (decision 74); the Play/Pause button's pause while it plays; the
+  folded announcements; the new words (no figure, clock, name or quotation).
+- **`check:contrast`**: new state "opening-playing" (the bar while it plays, paused).
+
+**Checks on this build**
+- `npm run build`: fresh; the committed HTML is the build. `npm run check:baseline`: passes on this build (md5 `46773462…`, 1,764,002 bytes),
+  moved from the 7C build.
+- `npm test`: "ALL 9 SUITES PASSED (and the height guard)" (6 min 55 s); `binding-test`: 383 checks, 0 failed (no arrow drawer changed).
+- `npm run check:data`: all 121 data declarations byte-identical (the reference not moved). `npm run check:chronology`: errors 0 (69 moves
+  with a timed statement, 65 consistent, the four named conflicts allowed).
+- `npm run check:contrast`: 5,975 text elements (was 5,747: the new state), 105 pairs, 0 below AA, 0 below 10.5 px (9 min 16 s).
+- `npm run check:visual`: "STAGE0: all checks passed" (101 min 10 s): 30 views, the self-test 212 of 212; every opening case at its 7C
+  values (63.2%, 64.0%, 64.0%, 64.0% and 70.4% unobstructed, drops 8, 7, 3, 4 and 7; 51.7% and 10 at 1280 x 720), `first-run` 63.4%,
+  `narrow-390` 46.9%; on `opening-2` by real keys, Enter played at 4x toward step 2, Space paused it (the clock still, "paused") and resumed it,
+  and ½× was back after Enter went straight to step 2.
+- GitHub's checks on the pushed head: green.
+
+**Not done, or open**
+- The harness has no case mid-stretch: under software WebGL a played frame's clock depends on wall time; the probe's paused frames stand in.
+- No screen reader was used; no GPU (the 4x stretches' real-time length on a visitor's machine is the simulated 44.8 s only where frames keep
+  up: the tick caps each frame at 120 ms).
+- Historical: nothing changes, and no new sentence is shown: the stretches put the dwell's event names in the bar as the timeline caption shows
+  them. Among them, as Part A §3.5 recorded: 09:45 "Kamensky turns his brigade about and drives the French off the crest" (the unresolved
+  `kamensky@3`, `kamensky@4`) and the interval "The Russian Guard takes the eagle of the 4th Line", whose hour is not established (`data.js`;
+  decision 64): shown without their `why`, as in Play; the ice (15:00) is not reached. Stop 6's words still sit on the ceiling-flagged legs
+  (`sthilaire@3`, `vandamme@3`).
+
 ## 2026-10 · Stage 7C: the opening, stills from the tour (docs/STAGE7_SPEC.md §3.4, §4, §5, §6; owner decisions 111, 112, 114-116, 118, 121)
 
 **Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
