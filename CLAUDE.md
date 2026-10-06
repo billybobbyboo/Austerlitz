@@ -324,4 +324,4 @@ for the owner) is merged (#46). The owner then asked for 7D with the recommendat
 opening's steps at 4x, the opening's own speed, superseding decision 116; focus on Next when it begins). Stage 7D (Next on a step plays
 the clock to the next stop at 4x with Follow, the dwell and the draw-on, the stop applied on arrival as in 7C; Pause and Space off a button
 pause it; Next goes straight there, Back returns; the visitor's ½× put back after every way; under reduced motion 7C's cuts; the card's "Begin
-(two min)") is written, for review (#47).
+(two min)") is merged (#47); Stage 7 is complete.
