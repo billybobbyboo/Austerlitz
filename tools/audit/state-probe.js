@@ -116,6 +116,14 @@ const S=[
   {id:"layers-watch", what:"The Layers panel opened in Study, then the key 2 (Watch)",
    steps:[["Esc closes the card",p=>p.keyboard.press("Escape")],["click Layers",p=>p.click("#layersbtn",{timeout:180000})],["2",p=>p.keyboard.press("2")]],
    expect:s=>{ const z=s[s.length-1]; return [!z.layers,"the panel closes with its opener hidden in Watch"]; }},
+  {id:"eyes-corps", what:"Whose eyes: the Allied headquarters, on the paper map at 05:00: which French counters are drawn, and the leaves' readings",
+   steps:[["Esc closes the card",p=>p.keyboard.press("Escape")],["Whose eyes: the Allies (setCommandView)",p=>p.evaluate(()=>setCommandView("al"))],
+          ["clock 05:00 (setClock)",p=>p.evaluate(()=>setClock(300,{instant:true,force:true}))],["M (the paper map)",p=>p.keyboard.press("m")],
+          ["draw",p=>p.evaluate(()=>{ window.__fin(); AUSTERLITZ_DEBUG.settle(4); })]],
+   probe:p=>p.evaluate(()=>{ const out={}; ["c_gd","c_iv","c_i","c_cav"].forEach(id=>{ const a=aggregates[id]; if(!a) return;
+       const kids=Object.keys(units).filter(u=>{ let f=FORMATIONS[u]; while(f&&f.parent){ if(f.parent===id) return true; f=FORMATIONS[f.parent]; } return false; });
+       out[id]={drawn:!!a.show,leaves:kids.map(u=>u+":"+drawnKnow(u))}; }); return out; }),
+   expect:(s,x)=>[!Object.values(x).some(a=>a.drawn&&a.leaves.every(l=>/:unknown$/.test(l))),"no enemy corps counter drawn whose every formation the reading does not know"]},
   {id:"rm-live", what:"prefers-reduced-motion switched on after load (emulated), then Begin and Next",
    steps:[["emulate reduce",p=>p.emulateMedia({reducedMotion:"reduce"})],["click Begin",p=>p.click("#fr-tour",{timeout:180000})],["click Next",p=>p.click("#tour-next",{timeout:180000})]],
    expect:s=>{ const z=s[s.length-1]; return [!z.stretch,"a preference changed after load is honoured (Next cuts, no stretch)"]; }}
@@ -127,11 +135,12 @@ const S=[
     const snaps=[], steps=[];
     for(const [label,fn] of sc.steps){ let err=null; try{ await fn(page); }catch(e){ err=e.message.split("\n")[0]; } await page.waitForTimeout(150);
       const s=await page.evaluate(SNAP); s.step=label; if(err) s.error=err; snaps.push(s); steps.push(label); }
-    const [ok,want]=sc.expect(snaps);
-    const r={id:sc.id,what:sc.what,expected:want,ok:!!ok,snapshots:snaps,pageErrors:page._errors.slice()};
+    const extra=sc.probe?await sc.probe(page):null;
+    const [ok,want]=sc.expect(snaps,extra);
+    const r={id:sc.id,what:sc.what,expected:want,ok:!!ok,snapshots:snaps,probe:extra,pageErrors:page._errors.slice()};
     res.scenarios.push(r);
     console.log((ok?"ok                ":"NOT AS EXPECTED   ")+sc.id.padEnd(24)+" "+sc.what);
-    if(!ok) console.log("   expected: "+want+"\n   last: "+JSON.stringify(snaps[snaps.length-1]));
+    if(!ok) console.log("   expected: "+want+"\n   last: "+JSON.stringify(snaps[snaps.length-1])+(extra?"\n   probe: "+JSON.stringify(extra):""));
     if(r.pageErrors.length) console.log("   page errors: "+r.pageErrors.join(" | "));
     await page.close();
   }
