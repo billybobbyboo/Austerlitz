@@ -134,7 +134,7 @@ const S=[
     const page=await L.open(browser,sc.vp||[1600,900]);
     const snaps=[], steps=[];
     for(const [label,fn] of sc.steps){ let err=null; try{ await fn(page); }catch(e){ err=e.message.split("\n")[0]; } await page.waitForTimeout(150);
-      const s=await page.evaluate(SNAP); s.step=label; if(err) s.error=err; snaps.push(s); steps.push(label); }
+      const s=await page.evaluate(SNAP); s.at=label; if(err) s.error=err; snaps.push(s); steps.push(label); }
     const extra=sc.probe?await sc.probe(page):null;
     const [ok,want]=sc.expect(snaps,extra);
     const r={id:sc.id,what:sc.what,expected:want,ok:!!ok,snapshots:snaps,probe:extra,pageErrors:page._errors.slice()};

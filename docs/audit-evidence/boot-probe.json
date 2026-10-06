@@ -1,0 +1,32 @@
+[
+ {
+  "case": "no-three",
+  "pageErrors": [
+   "THREE is not defined"
+  ],
+  "console": [
+   "error: Failed to load resource: net::ERR_FAILED"
+  ],
+  "bootPresent": true,
+  "bootText": "Surveying the ground between the Goldbach and the Litava…",
+  "bootOpacity": "1",
+  "canvas": false,
+  "threeLoaded": false,
+  "initRan": false
+ },
+ {
+  "case": "no-webgl",
+  "pageErrors": [
+   "Error creating WebGL context."
+  ],
+  "console": [
+   "error: THREE.WebGLRenderer: Error creating WebGL context."
+  ],
+  "bootPresent": true,
+  "bootText": "Surveying the ground between the Goldbach and the Litava…",
+  "bootOpacity": "1",
+  "canvas": false,
+  "threeLoaded": true,
+  "initRan": false
+ }
+]
