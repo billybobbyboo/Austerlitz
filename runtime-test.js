@@ -293,16 +293,30 @@ try{
      tour runs as before */
   { const N=OPENING.stops.length, ways=["end","skip","key","pointer","camera"];
     if(N!==4||OPENING.stops.join(",")!=="0,5,6,7") throw new Error("the opening's stops are "+OPENING.stops.join(",")+", not the tour's 1, 6, 7, 8 (decision 114)");
-    openingStart(); for(let k=1;k<N;k++){ openingGo(1); updateVisibility(); if(OPENING.k!==k||clock!==stopClock(TOUR[OPENING.stops[k]])) throw new Error("opening step "+(k+1)+" is not its tour stop"); }
+    /* Stage 7D (decision 123): Next on a step plays the clock to the next one; run here by the app's own tick to its arrival */
+    let ticks=0;
+    const run=(n)=>{ let g=0; while(OPENING.play&&g++<(n||200000)){ tickClock(100); followStep(100); openingPlayWatch(); ticks++; } };
+    const fwd=()=>{ openingGo(1); if(OPENING.play){ if(!playing||speed!==OPENING.SPEED) throw new Error("opening: Next did not play the clock at "+OPENING.SPEED+"x"); run(); } };
+    setSpeed(0.5);
+    openingStart(); for(let k=1;k<N;k++){ fwd(); updateVisibility(); if(OPENING.k!==k||clock!==stopClock(TOUR[OPENING.stops[k]])||speed!==0.5||playing) throw new Error("opening step "+(k+1)+" is not its tour stop, or the speed not put back"); }
     for(let k=N-2;k>=0;k--){ openingGo(-1); if(OPENING.k!==k) throw new Error("opening: back to step "+(k+1)+" failed"); }
     openingGo(-1); if(OPENING.k!==0) throw new Error("opening: back from the first step moved it");
-    for(let k=0;k<N;k++) openingGo(1);
+    for(let k=0;k<N;k++) fwd();
     if(OPENING.on||tourStep!==-1||clock!==T_MIN||presentation!=="study"||freeCam) throw new Error("opening: Finish did not land on the end state");
-    for(let k=0;k<N;k++) ways.forEach(how=>{ openingStart(); for(let i=0;i<k;i++) openingGo(1); const c0=clock; openingEnd(how); updateVisibility();
+    for(let k=0;k<N;k++) ways.forEach(how=>{ openingStart(); for(let i=0;i<k;i++) fwd(); const c0=clock; openingEnd(how); updateVisibility();
       if(OPENING.on||tourStep!==-1) throw new Error("opening: "+how+" at step "+(k+1)+" left it on");
       if((how==="end"||how==="skip")?(clock!==T_MIN||freeCam):clock!==c0) throw new Error("opening: "+how+" at step "+(k+1)+" left the clock at "+clock); });
+    /* each way while the clock plays between steps: the clock stopped, the visitor's speed back; in place where it stood */
+    for(let k=0;k<N-1;k++) ways.forEach(how=>{ openingStart(); for(let i=0;i<k;i++) fwd(); openingGo(1); run(20); const c0=clock; openingEnd(how); updateVisibility();
+      if(OPENING.on||OPENING.play||playing||speed!==0.5) throw new Error("opening: "+how+" while playing to step "+(k+2)+" left it on, playing or at speed "+speed);
+      if((how==="end"||how==="skip")?(clock!==T_MIN||freeCam):clock!==c0) throw new Error("opening: "+how+" while playing to step "+(k+2)+" left the clock at "+clock); });
+    /* Next while it plays goes straight there; Back returns to the stop it started from; reduced motion keeps 7C's cuts */
+    openingStart(); openingGo(1); run(20); openingGo(1); if(OPENING.play||OPENING.k!==1||clock!==stopClock(TOUR[OPENING.stops[1]])) throw new Error("opening: Next while playing did not go straight to step 2");
+    openingGo(1); run(20); openingGo(-1); if(OPENING.play||OPENING.k!==1||clock!==stopClock(TOUR[OPENING.stops[1]])) throw new Error("opening: Back while playing did not return to step 2");
+    const rm=RM; RM=true; openingGo(1); if(OPENING.play||OPENING.k!==2) throw new Error("opening: under reduced motion Next did not cut to step 3"); RM=rm;
+    openingEnd("skip");
     startTour(); for(let i=0;i<TOUR.length;i++) tourGo(1); if(tourStep!==-1) throw new Error("the tour after the opening did not finish");
-    console.log("opening: "+N+" steps forward, back, finished, and ended by "+ways.length+" ways from every step; the tour after it OK"); }
+    console.log("opening: "+N+" steps forward (the clock played between them, "+ticks+" ticks), back, finished, and ended by "+ways.length+" ways from every step and while playing; Next and Back while playing; reduced motion's cuts; the tour after it OK"); }
 
   /* jumping between events must reach both ends and never stall */
   setClock(T_MIN,{force:true});

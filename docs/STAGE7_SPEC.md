@@ -1,7 +1,7 @@
 # First run and opening sequence: specification (Stage 7, Part A)
 
-**Status: Part A written (#43); the owner accepted every recommendation of §7 (decisions 111-122, §0.5). 7B (§6) written (#44, merged
-into the Part A branch; #45 brings it to `main`); 7C (§6) written, for review: `CHANGELOG.md`; 7D not built (decision 116). Part A itself changed no source file, no data and no build:** `check:baseline` passes on the unchanged Stage 6D
+**Status: Part A written (#43); the owner accepted every recommendation of §7 (decisions 111-122, §0.5). 7B (§6) merged (#44 into the Part A
+branch, #45 into `main`); 7C (§6) merged (#46); 7D (§6) written under decisions 123-124 (§0.6), for review: `CHANGELOG.md`. Part A itself changed no source file, no data and no build:** `check:baseline` passes on the unchanged Stage 6D
 build (`austerlitz-command-map.html`, 1,720,613 bytes, md5 `3dd7ca41f73d0e5ffcfe5fa64adc5f51`) before and after it. Written against `main` at
 `b1cb13f` (Stage 6D merged as #42; with it Stage 6 is complete); `check:data`'s reference is `archive/stage6b-7fc0f6c3.html`. Line numbers
 refer to that commit; the code is the source of truth, not the documents. The next owner decision is 111 (§7). On this build every check
@@ -171,6 +171,16 @@ question's order; §7 keeps the trade-offs.
 **How 7B applies 111 before 7C exists.** The card's primary action is the opening, which is 7C. Until 7C is built the primary button starts
 the guided tour (the existing nine stops, the tour's own words), the one way in the card already offered that is built from the tested text;
 7C points the same button at the opening and keeps the guided tour in the tools. This is sequencing, not a new decision.
+
+### 0.6 Owner decisions 123-124 (after 7C)
+
+After 7C was merged (#46) the owner wrote: "Merged. Proceed with 7D and your recommendations." Two decisions follow from the
+recommendations this specification and 7C's report made; the first changes an earlier one, which is kept above as it was decided.
+
+| # | question | decision |
+|---|---|---|
+| 123 | played stretches (supersedes 116's "none in Stage 7") | Built, as 7D: between the opening's steps the clock plays from one stop's clock to the next at **4x, the opening's own speed** (question 116's recommendation if D were wanted); the visitor's Play stays ½× (decision 74); under reduced motion the steps stay 7C's cuts (§4.4). (7D) |
+| 124 | focus when the opening begins | On **Next**, as 7C built it and its report recommended (§4.1 had recommended Skip; with Skip focused, the next Enter ends the opening the visitor has just begun). (7C, 7D) |
 
 ## 1. Today (fact; read from the code and measured in the harness's page)
 
@@ -862,6 +872,17 @@ the ice's (the opening of §3.5 ends at 11:00; one that reached 15:00 would show
 without its correction, which opportunity 4 forbids suggesting); five phase announcements in 31 s (§4.3); the relief control disabled while
 it plays (decision 56). **Report and tests** as 7C, with the played path sampled (clearance, floor lifts, screen speed under 150 px/s, drops
 every 10 minutes no more than Follow's 19) and the pause by Space.
+
+**7D, as delivered (fact; `CHANGELOG.md`, Stage 7D).** Built under decision 123 (§0.6), which supersedes 116: Next on a step plays the clock
+to the next stop at 4x, the opening's own speed, with Follow, the dwell and the draw-on, the stop's theme cleared; the bar shows the next stop's
+title and the dwell's event names (`EVENTS[].n`, as the timeline caption shows them); one live message as it starts and one at the step, the
+phase announcements folded; the Play/Pause button and Space off a button pause it; Next while it plays goes straight to the step, Back returns;
+every other way ends the opening as 7C does, the visitor's speed put back; under reduced motion 7C's cuts. Three things the plan did not
+settle: the step reached is the tour stop's frame (applied with the tour's glide from Follow's view; Part A's prototype held Follow's view), so
+7C's limits hold; Next while it plays goes straight there (Space on a focused button presses it, the 3E rule); the card's primary reads "Begin
+(two min)" ("two minutes" wraps at 390 px). Measured with `tools/stage7/opening-7d-probe.js`, the stretches run by the app's own tick: 18.1,
+11.2 and 15.5 s at 4x (19 dwells), never under the floor (lowest 34.2 units, no lift), the target within 150 px/s, drops at most 14 at
+1600 x 900 and 16 at 1280 x 720 (Follow's limit 19), no phase announcement while it plays; the opening 95-116 s at 238 to 160 words a minute.
 
 ### What the records still leave open after Stage 7 (listed, not proposed)
 

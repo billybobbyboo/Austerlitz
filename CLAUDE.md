@@ -79,11 +79,11 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
   explicit anchor time carries evidence found in the sources, a grade and a basis; a derived arrival at the march-rate ceiling
   only for the legs it names (`CEILING_FLAGGED`), every other at the tactical rate (a design value, unsourced).
-- `npm run check:contrast`: every visible text element in 34 interface states (the map layer's plates and the legend among them, map text also
+- `npm run check:contrast`: every visible text element in 35 interface states (the map layer's plates and the legend among them, map text also
   over black and white ground, the paper map as entered and close since 2E; Study as it opens and the Now tab on the paper map since 3B;
   Watch on the paper map and on the landscape since 3C; the "?" overlay over both since 3E; since 5E the dossier's knowledge reason, the eye-level
   caption, the paper map with a headquarters' reading; since 5G the dossier with its day-track inset; since 7C the opening's bar at a step and the
-  screen it ends on) meets WCAG AA and the 10.5 px floor.
+  screen it ends on; since 7D its bar while the clock plays between steps, paused) meets WCAG AA and the 10.5 px floor.
 - `npm run check:visual`: 30 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
   `narrow-1024`, the undocked layout, since 3C the phase-8 Overview in Study and in Watch, since 5E the eye level at the Zuran at 4x
   and 1x, since 5F the Plans tab at the Overview, `plans-overview`, since 7B the first screen at 390 x 844, `narrow-390`, and since 7C the
@@ -224,9 +224,18 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   "?" over it; under reduced motion each step at its frame within 5 ms) and, at 1x, 4x and 10.33x, the opening's glides above the floor;
   `css-test.js` checks its words (no figure, clock, name or quotation), its stops 1, 6, 7, 8 (decision 114), the bar a named region, Esc's skip
   and the folded announcement; `runtime-test.js` dry-runs it forward, back, finished and ended by every way from every step, then the tour.
+  Since 7D (decision 123): Next on a step plays the clock to the next one at 4x (`OPENING.SPEED`); the harness's opening cases reach each step by
+  Next and Next again, which goes straight there (under software WebGL a played stretch takes many minutes of real time), and on `opening-2`, by
+  real key presses, Enter on Next plays it at 4x, Space off a button pauses (the clock still for 1.5 s, the heading "paused") and resumes it,
+  Enter again goes straight to step 2 with the visitor's half speed back; the self-test's played-stretch check (Next plays at 4x with the
+  theme cleared; the bar its own words or the dwell's event names; one message as it starts and one at the step, no phase announcement besides;
+  Pause and Space stop and resume it; Next, Back, Skip and a key while it plays; the speed put back) and, at 1x, 4x and 10.33x, the stretches
+  sampled (never under the floor, the target within 150 px/s, drops every ten clock minutes at most 19, each ending at its stop after a glide
+  above the floor with no lift); `css-test.js` checks `OPENING.SPEED` 4, Play still at half speed, the Play/Pause button's pause and the folded
+  announcements; `runtime-test.js` dry-runs the stretches, every way out while one plays, Next and Back while it plays and reduced motion's cuts.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 7C build (md5 `bebcfff6...`, 1,748,568 bytes;
-  re-baselined from the Stage 7B build `82337dd4...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 7D build (md5 `46773462...`, 1,764,002 bytes;
+  re-baselined from the Stage 7C build `bebcfff6...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -307,8 +316,12 @@ the next owner decision is 111) is written (#43, for review); the owner accepted
 first screen: the first-run card a modal dialog with one primary action, the guided tour until 7C's opening, and "Explore on my own", which,
 like Esc, a key or a press outside, closes it where it stands with focus on Play; the hint and "Watch the battle" off the card; the Now tab
 and its dispatch under it from 1080 px, decision 113, with the plateau reading's "derived" tag on screen; the `narrow-390` case, decision 122)
-is written (#44, merged into the Part A branch, not `main`; #45 brings it to `main`). Stage 7C (the opening: tour stops 1, 6, 7 and 8 by index
+is merged (#44 into the Part A branch, #45 into `main`). Stage 7C (the opening: tour stops 1, 6, 7 and 8 by index
 in the tour's bar, `OPENING`, decisions 114-115; begun by the card's "Begin (a minute)" or the tools' "Begin the opening", decision 112; Finish,
 Skip and Esc end it at 04:00 in Study on the Now tab at the Overview with Play focused, decision 118, any other key, a press outside the bar or
 the camera taken where it is; the six `opening` cases, decision 121; focus on Next when it begins, not on Skip as §4.1 recommended, stated
-for the owner) is written, for review (#46, on the 7B branch).
+for the owner) is merged (#46). The owner then asked for 7D with the recommendations (decisions 123-124, §0.6: the clock played between the
+opening's steps at 4x, the opening's own speed, superseding decision 116; focus on Next when it begins). Stage 7D (Next on a step plays
+the clock to the next stop at 4x with Follow, the dwell and the draw-on, the stop applied on arrival as in 7C; Pause and Space off a button
+pause it; Next goes straight there, Back returns; the visitor's ½× put back after every way; under reduced motion 7C's cuts; the card's "Begin
+(two min)") is written, for review (#47).

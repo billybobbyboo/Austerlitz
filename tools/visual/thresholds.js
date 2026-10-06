@@ -165,7 +165,13 @@ module.exports.check=function(name,m){
   if(m.openingKeys){ const K=m.openingKeys, endOk=q=>!q.on&&q.stop===-1&&q.clock===240&&q.pres==="study"&&q.follow&&q.vantage==="plan"&&q.id==="play"&&!q.bar&&(!m.viewport||m.viewport[0]<1080||q.tab==="now");
     if(!endOk(K.esc)) f.push("Esc at the opening's step 2 did not land on the end state: "+JSON.stringify(K.esc));
     if(!(K.begun.on&&K.begun.k===0&&K.begun.id==="tour-next")) f.push("the tools' button did not begin the opening with focus on its Next: "+JSON.stringify(K.begun));
-    if(!(K.enter.on&&K.enter.k===1&&K.enter.id==="tour-next")) f.push("Enter on the opening's Next did not step to step 2: "+JSON.stringify(K.enter));
+    /* Stage 7D (decision 123): Enter on Next plays the clock at 4x toward step 2; Space off a button pauses it (the clock still for 1.5 s) and
+       resumes it; Enter on Next again goes straight to step 2, the visitor's half speed back */
+    if(K.played&&!(K.played.play&&K.played.to===1&&K.played.playing&&K.played.speed===4)) f.push("Enter on the opening's Next did not play the clock at 4x toward step 2: "+JSON.stringify(K.played));
+    if(K.paused&&!(K.paused.play&&!K.paused.playing&&K.paused.still&&/paused$/.test(K.paused.head))) f.push("Space did not pause the opening's played stretch: "+JSON.stringify(K.paused));
+    if(K.resumed&&!(K.resumed.play&&K.resumed.playing)) f.push("Space did not resume the opening's played stretch: "+JSON.stringify(K.resumed));
+    if(K.speedAfter!==undefined&&K.speedAfter!==0.5) f.push("after the played stretch the speed is "+K.speedAfter+", not the visitor's half speed");
+    if(!(K.enter.on&&K.enter.k===1&&K.enter.id==="tour-next")) f.push("Enter on the opening's Next did not reach step 2: "+JSON.stringify(K.enter));
     if(K.tab!=="tour-exit") f.push("Tab from the opening's Next went to "+K.tab+", not Skip");
     if(!endOk(K.space)) f.push("Space on Skip did not land on the end state: "+JSON.stringify(K.space)); }
   if(m.stats&&m.stats.camera&&m.stats.camera.violations) f.push("a camera path bypassed the floor ("+m.stats.camera.violations+")");

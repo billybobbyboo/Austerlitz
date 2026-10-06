@@ -306,7 +306,7 @@ if(cerrs) process.exitCode=1;
   const ctx={}; vm.createContext(ctx);
   vm.runInContext(fs.readFileSync('data.js','utf8')+"\n"+(ln?app.slice(ln.start,ln.end):"var LABELS={};")+"\nthis.X={L:LABELS,F:FORMATIONS,FE:FEATURES};",ctx);
   const {L,F,FE}=ctx.X, O=L.opening;
-  const keys=["button","buttonTitle","head","back","next","finish","skip","skipTitle","said","ended","left"];
+  const keys=["button","buttonTitle","head","back","next","finish","skip","skipTitle","said","ended","left","playing","paused","playText","saidPlay"];
   if(!O) oerr.push("app.js: LABELS.opening (the opening's words) is missing");
   else {
     const names=new Set();
@@ -323,6 +323,11 @@ if(cerrs) process.exitCode=1;
   }
   const on=ast.body.find(n=>n.type==="VariableDeclaration"&&n.declarations.some(d=>d.id.name==="OPENING"));
   if(!on||!/stops:\[0,5,6,7\]/.test(app.slice(on.start,on.end))) oerr.push("app.js: OPENING's stops are not the tour's 1, 6, 7 and 8 (decision 114)");
+  /* Stage 7D (decision 123): the clock played between the steps at 4x, the opening's own speed; the visitor's Play still starts at half speed (decision 74) */
+  if(!on||!/SPEED:4\b/.test(app.slice(on.start,on.end))) oerr.push("app.js: OPENING.SPEED is not 4x (decision 123)");
+  if(!/var playing=false, playRAF=0, speed=0\.5,/.test(app)) oerr.push("app.js: Play no longer starts at half speed (decision 74)");
+  if(!/if\(OPENING\.play&&t&&t\.closest&&t\.closest\("#play"\)\) return;/.test(app)) oerr.push("app.js: the Play/Pause button does not pause the opening's played stretch");
+  if(!/lv&&!OPENING\.applying&&!OPENING\.play/.test(app)) oerr.push("app.js: the phase announcements are not folded while the clock plays between steps");
   if(!/closeFirst\("open"\)/.test(app)||!/how==="open"\)\{ openingStart\(\)/.test(app)) oerr.push("app.js: the card's primary action does not begin the opening");
   const tb=(sh.match(/<div id="tourbar"[^>]*>/)||[""])[0];
   if(!/role="region"/.test(tb)||!/aria-labelledby="tour-n tour-t"/.test(tb)) oerr.push("shell.html: the bar is not a region named by its count and title: "+tb);
@@ -333,6 +338,6 @@ if(cerrs) process.exitCode=1;
   if(!/if\(OPENING\.on\)\{ openingEnd\("skip"\); return; \}/.test(app)) oerr.push("app.js: Esc does not skip the opening");
   if(!/lv&&!OPENING\.applying/.test(app)) oerr.push("app.js: a step's phase announcement is not folded into its own message");
   oerr.forEach(e=>console.log("  ! "+e));
-  console.log("opening: "+(oerr.length?oerr.length+" wrong":keys.length+" words in LABELS with no figure, clock, name or quotation; the tour's stops 1, 6, 7, 8; begun by the card's primary; the bar a named region; Esc skips; one message a step"));
+  console.log("opening: "+(oerr.length?oerr.length+" wrong":keys.length+" words in LABELS with no figure, clock, name or quotation; the tour's stops 1, 6, 7, 8; the clock played between them at 4x, Play still at half speed; begun by the card's primary; the bar a named region; Esc skips; one message a step"));
   if(oerr.length) process.exitCode=1;
 }
