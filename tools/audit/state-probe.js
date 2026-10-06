@@ -22,6 +22,11 @@ const SNAP=()=>{
     presentation:presentation, mode:mode, eye:typeof EYE!=="undefined"?EYE.on:null, follow:!freeCam, tab:typeof tabNow!=="undefined"?tabNow:null,
     hideDispatch:hideDispatch,
     focus:a&&a!==document.body?(a.id?"#"+a.id:a.tagName.toLowerCase()+"."+String(a.className).split(" ")[0]):"body", focusVisible:a===document.body?null:vis(a),
+    focusInView:a===document.body?null:(function(){ var r=a.getBoundingClientRect(); return r.right>0&&r.bottom>0&&r.left<innerWidth&&r.top<innerHeight; })(),
+    dwellOn:DWELL.on, railHidden:document.body.classList.contains("rail-hidden"), docked:docked,
+    railBox:(function(){ var e=document.querySelector(".rail"), r=e.getBoundingClientRect(); return [Math.round(r.left),Math.round(r.right)]; })(),
+    dispatchBox:(function(){ var e=document.querySelector(".dispatch"); if(!e||!vis(e)) return null; var r=e.getBoundingClientRect(); return [Math.round(r.left),Math.round(r.right)]; })(),
+    curVantage:typeof curVantage!=="undefined"?curVantage:null, fx:FX.on, textures:renderer.info.memory.textures, geometries:renderer.info.memory.geometries,
     focusInModal:!!(md.classList.contains("on")&&a&&md.contains(a))};
 };
 const tick=(page,n)=>page.evaluate(n=>{ for(let i=0;i<n;i++) tickClock(100); },n);
@@ -78,6 +83,39 @@ const S=[
   {id:"watch-card", what:"The key 2 (Watch) with the card open, then Esc",
    steps:[["2",p=>p.keyboard.press("2")],["Esc",p=>p.keyboard.press("Escape")]],
    expect:s=>[!s[0].card&&s[0].presentation==="watch"&&s[1].presentation==="study","2 closes the card and switches to Watch; Esc back to Study"]},
+  {id:"dwell-toggle", what:"Play from 05:30; the dwell turned off in the Layers panel, 10 s of play, then on again",
+   steps:[["Esc closes the card",p=>p.keyboard.press("Escape")],["clock 05:30 (setClock)",p=>p.evaluate(()=>setClock(330,{instant:true,force:true}))],
+          ["click Play",p=>p.click("#play",{timeout:180000})],["click Layers",p=>p.click("#layersbtn",{timeout:180000})],
+          ["click Pause briefly at events (off)",p=>p.click("#dwell",{timeout:180000})],["tick 10 s",p=>tick(p,100)],
+          ["click Pause briefly at events (on)",p=>p.click("#dwell",{timeout:180000})],["tick 0.1 s",p=>tick(p,1)]],
+   expect:s=>{ const a=s[5], z=s[s.length-1]; return [z.clock>=a.clock,"the clock never goes back when the dwell is turned on again (it was "+a.clock+")"]; }},
+  {id:"narrow-resize", what:"Study at 1280 x 800, the card closed, the window narrowed to 1000 x 800; then 2 and Esc",
+   vp:[1280,800],
+   steps:[["Esc closes the card",p=>p.keyboard.press("Escape")],
+          ["resize 1000 x 800",async p=>{ await p.setViewportSize({width:1000,height:800}); await p.evaluate(()=>{ window.dispatchEvent(new Event("resize")); AUSTERLITZ_DEBUG.settle(3); }); }],
+          ["2",p=>p.keyboard.press("2")],["Esc",p=>p.keyboard.press("Escape")]],
+   expect:s=>{ const ov=x=>x.dispatchBox&&!x.railHidden&&x.railBox[1]>0&&x.dispatchBox[0]<x.railBox[1]; return [!ov(s[1])&&!ov(s[3]),"below 1080 px the rail never stands over the dispatch card (after the resize, and after 2 then Esc)"]; }},
+  {id:"drawer-focus", what:"A formation's dossier: a real click on its close button, then Tab",
+   steps:[["Esc closes the card",p=>p.keyboard.press("Escape")],["select Saint-Hilaire (the app's select)",p=>p.evaluate(()=>{ select("f","sthilaire"); })],
+          ["click the dossier's close",p=>p.click("#drawer-close",{timeout:180000})],["Tab",p=>p.keyboard.press("Tab")],["Tab",p=>p.keyboard.press("Tab")]],
+   expect:s=>[s.slice(2).every(x=>x.focus==="body"||(x.focusVisible&&x.focusInView)),"after the dossier closes, focus is never on an off-screen control"]},
+  {id:"eye-phase", what:"The eye level at Napoleon's headquarters, then a real click on a phase on the timeline",
+   steps:[["Esc closes the card",p=>p.keyboard.press("Escape")],["Whose eyes: the French (setCommandView)",p=>p.evaluate(()=>setCommandView("fr"))],
+          ["eye level (eyeEnter)",p=>p.evaluate(()=>eyeEnter())],["click the fifth phase",p=>p.click("#phases .step >> nth=4",{timeout:180000})],["finish the glide",p=>p.evaluate(()=>window.__fin())]],
+   expect:s=>{ const z=s[s.length-1]; return [!(z.eye&&z.follow),"a phase's camera leaves the eye level (not the eye pinned with Follow on)"]; }},
+  {id:"help-click-esc", what:"The \"?\" overlay, a click on its heading (not focusable), then Esc",
+   steps:[["Esc closes the card",p=>p.keyboard.press("Escape")],["?",p=>p.keyboard.press("?")],["click its heading",p=>p.click("#help-t",{timeout:180000})],["Esc",p=>p.keyboard.press("Escape")]],
+   expect:s=>{ const z=s[s.length-1]; return [!z.help,"Esc closes the overlay wherever the click left focus"]; }},
+  {id:"fx-toggle", what:"Visual effects off and on (F, F), four times: the GPU textures counted",
+   steps:[["Esc closes the card",p=>p.keyboard.press("Escape")],["draw",p=>p.evaluate(()=>{ renderFrame(); })]].concat(
+          [1,2,3,4].map(i=>["F, F, draw ("+i+")",async p=>{ await p.keyboard.press("f"); await p.keyboard.press("f"); await p.evaluate(()=>{ renderFrame(); }); }])),
+   expect:s=>[s[s.length-1].textures<=s[1].textures,"textures after four off-on toggles not above the count before ("+s[1].textures+")"]},
+  {id:"wheel-card", what:"The mouse wheel over the map while the first-run card is open",
+   steps:[["wheel at the map's centre",async p=>{ await p.mouse.move(900,250); await p.mouse.wheel(0,-240); }]],
+   expect:s=>[!s[0].card,"anything done outside the card closes it (the wheel too)"]},
+  {id:"layers-watch", what:"The Layers panel opened in Study, then the key 2 (Watch)",
+   steps:[["Esc closes the card",p=>p.keyboard.press("Escape")],["click Layers",p=>p.click("#layersbtn",{timeout:180000})],["2",p=>p.keyboard.press("2")]],
+   expect:s=>{ const z=s[s.length-1]; return [!z.layers,"the panel closes with its opener hidden in Watch"]; }},
   {id:"rm-live", what:"prefers-reduced-motion switched on after load (emulated), then Begin and Next",
    steps:[["emulate reduce",p=>p.emulateMedia({reducedMotion:"reduce"})],["click Begin",p=>p.click("#fr-tour",{timeout:180000})],["click Next",p=>p.click("#tour-next",{timeout:180000})]],
    expect:s=>{ const z=s[s.length-1]; return [!z.stretch,"a preference changed after load is honoured (Next cuts, no stretch)"]; }}
@@ -85,7 +123,7 @@ const S=[
 (async()=>{
   const browser=await L.launch(), res={scenarios:[]};
   for(const sc of S.filter(x=>!ONLY||ONLY.split(",").includes(x.id))){
-    const page=await L.open(browser,[1600,900]);
+    const page=await L.open(browser,sc.vp||[1600,900]);
     const snaps=[], steps=[];
     for(const [label,fn] of sc.steps){ let err=null; try{ await fn(page); }catch(e){ err=e.message.split("\n")[0]; } await page.waitForTimeout(150);
       const s=await page.evaluate(SNAP); s.step=label; if(err) s.error=err; snaps.push(s); steps.push(label); }
