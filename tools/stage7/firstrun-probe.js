@@ -114,6 +114,9 @@ const COUNT=()=>{
     for(const [k,fn] of W){
       if(res.ways[k]&&!argv.includes("--redo")) continue;
       const page=await L.open(browser,[1600,900]);
+      /* a button the card no longer has (7B removed "Watch the battle") is recorded as absent */
+      const bid=(k.startsWith("button: ")?{"button: Guided tour":"#fr-tour","button: Watch the battle":"#fr-watch","button: Explore":"#fr-close"}[k]:null);
+      if(bid&&!await page.$(bid)){ res.ways[k]={absent:true}; console.log(k,"-> absent"); save(); await page.close(); continue; }
       const before=await page.evaluate(STATE);
       const extra=await fn(page);
       await page.waitForTimeout(300);

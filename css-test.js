@@ -272,3 +272,26 @@ if(cerrs) process.exitCode=1;
   console.log("day-track: "+(derr.length?derr.length+" wrong":"the tokens' colours, the legs solid and only the ordered route dashed"));
   if(derr.length) process.exitCode=1;
 }
+
+/* Stage 7B (docs/STAGE7_SPEC.md section 6, 7B; owner decisions 111-113, 120): the first-run card is a modal dialog described by its key, with
+   two buttons whose words come from LABELS (the primary and the stay), no hint and no "Watch the battle"; its buttons at least 24 px high
+   (WCAG 2.2, 2.5.8); the docked dispatch is no longer hidden under it (decision 113), the undocked one still is (decision 58) */
+{
+  const sh=fs.readFileSync('shell.html','utf8'), app=fs.readFileSync('app.js','utf8'), ferr=[];
+  const tag=(sh.match(/<div id="firstrun"[^>]*>/)||[""])[0];
+  if(!/role="dialog"/.test(tag)||!/aria-modal="true"/.test(tag)||!/aria-labelledby="fr-title"/.test(tag)||!/aria-describedby="fr-key"/.test(tag))
+    ferr.push("shell.html: the first-run card is not a modal dialog labelled by its title and described by its key: "+tag);
+  const card=sh.slice(sh.indexOf('<div id="firstrun"'),sh.indexOf('<div id="toast"'));
+  const ids=[...card.matchAll(/<button[^>]*id="([^"]+)"/g)].map(m=>m[1]);
+  if(ids.join(",")!=="fr-tour,fr-close") ferr.push("shell.html: the first-run card's buttons are "+ids.join(", ")+", not the primary and the stay");
+  if(/fr-hint|fr-watch/.test(card)) ferr.push("shell.html: the first-run card still carries the hint or \"Watch the battle\" (decision 120, decision 111)");
+  if(!/firstRun:\{primary:"[^"]+", primaryTitle:"[^"]+",\s*stay:"[^"]+", stayTitle:"[^"]+"\}/.test(app)) ferr.push("app.js: LABELS.firstRun (the card's words) is missing");
+  if(!/fp\.textContent=F\.primary/.test(app)||!/fs\.textContent=F\.stay/.test(app)) ferr.push("app.js: applyLabels does not write the card's words from LABELS");
+  const mh=decls("#firstrun .fr-act .t"), px=mh&&/min-height:(\d+)px/.exec(mh.body.replace(/\s/g,""));
+  if(!px||+px[1]<24) ferr.push("style.css: the first-run card's buttons are not at least 24 px high");
+  if(decls("body.firstrun-on .dispatch")) ferr.push("style.css: the dispatch is hidden under the first-run card in every layout (decision 113)");
+  if(!decls("body.firstrun-on:not(.docked) .dispatch")) ferr.push("style.css: the undocked dispatch card is not hidden under the first-run card (decision 58)");
+  ferr.forEach(e=>console.log("  ! "+e));
+  console.log("first run: "+(ferr.length?ferr.length+" wrong":"a modal dialog described by its key, the primary and the stay from LABELS, buttons at least 24 px, the docked dispatch shown under it"));
+  if(ferr.length) process.exitCode=1;
+}
