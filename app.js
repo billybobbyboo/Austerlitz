@@ -8684,7 +8684,9 @@ var AUSTERLITZ_DEBUG=(function(){
       var bad=[], fr=document.getElementById("firstrun"), L=LABELS.opening, N=OPENING.stops.length, bar=document.getElementById("tourbar"),
         K0={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,c:clock,pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,sel:selection,sp:speed},
         names={}, seen={}, P0, msgs=[];
-      EVENTS.forEach(function(e){ names[e.n]=1; });
+      /* what a dwell may put in the bar: the names of the events starting at one dwell's minute, joined as the app joins them (one event's
+         name may itself hold "; ", so the joined strings are compared whole) */
+      dwellStarts().forEach(function(E){ names[EVENTS.filter(function(e){ return evWindow(e)[0]===E; }).map(function(e){ return e.n; }).join("; ")]=1; });
       if(presentation!=="study") setPresentation("study"); if(mode!=="terrain") setMode("terrain"); if(tourStep>=0) exitTour(); select(null,null);
       setClock(T_MIN,{instant:true,force:true,camera:false}); finishTween(); tabChosen=false; setSpeed(0.5);
       function key(k,on){ (on||document.body).dispatchEvent(new KeyboardEvent("keydown",{key:k,bubbles:true,cancelable:true})); }
@@ -8694,7 +8696,7 @@ var AUSTERLITZ_DEBUG=(function(){
       function next(){ document.getElementById("tour-next").click(); }
       function tick(n,w){ for(var i=0;i<n&&OPENING.play;i++){ tickClock(100); followStep(100); openingPlayWatch();
         if(!OPENING.play) break;
-        var x=txt("tour-x"); if(x!==L.playText&&!x.split("; ").every(function(q){ return names[q]; })) bad.push(w+": the bar shows \u201c"+x.slice(0,50)+"\u201d"); else if(x!==L.playText) seen[x]=1;
+        var x=txt("tour-x"); if(x!==L.playText&&!names[x]) bad.push(w+": the bar shows \u201c"+x.slice(0,50)+"\u201d"); else if(x!==L.playText) seen[x]=1;
         if(freeCam) bad.push(w+": Follow went off"); } }
       function quiet(w){ if(OPENING.play||playing||speed!==0.5) bad.push(w+": "+(OPENING.play?"the stretch still on":playing?"the clock still plays":"the speed is "+speed+", not the visitor's \u00bd")); }
       /* a whole run: every stretch to its step by itself */
