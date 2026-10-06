@@ -1,5 +1,130 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 7C: the opening, stills from the tour (docs/STAGE7_SPEC.md §3.4, §4, §5, §6; owner decisions 111, 112, 114-116, 118, 121)
+
+**Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
+`austerlitz-command-map.html`: 1,748,568 bytes, md5 `bebcfff6ce5e85f9b13f9b5c3709d20e` (was 1,729,495 bytes, md5 `82337dd4…`, Stage 7B).**
+`check:baseline` moves to this build. Built on the 7B branch: 7B (#44) was merged into the Part A branch, not `main`, and #45 brings its four
+commits to `main`; until #45 is merged this part's pull request shows them too.
+
+**Before building (fact).** The 7B branch (`f76cab9`) matched `check:baseline` (the 7B build, md5 `82337dd4…`). The "before" of each step is
+Part A's `docs/stage7-evidence/opening-probe.json` (the same tour stops, applied by the tour's own `applyTour` in the probe's page); the
+"after" is `tools/stage7/opening-7c-probe.js` on the built opening, driven by real clicks (`7c-opening-probe.json`, `7c-opening-sheet.jpg`).
+
+**What changed** (`app.js`, `shell.html`, `style.css`)
+- **`OPENING`, four tour stops by index** (decisions 114, 115): stops 1, 6, 7 and 8 (`OPENING.stops=[0,5,6,7]`). Each step is the tour's own
+  `applyTour` for that stop (its clock, theme, camera, Follow on, the dispatch hidden), shown in the tour's bar with the stop's own title
+  and text. A short path through the tour, not a second mechanism: the frames equal Part A's prototype of the same stops (below). The
+  nine-stop tour is unchanged and stays in the tools.
+- **Begun by the visitor** (decision 112): the first-run card's primary action now reads "Begin (a minute)" and begins it; a tools
+  button, "Begin the opening", begins it again on a later visit (hidden while the card is open, whose primary action it is: at 390 px it
+  would wrap the tools' row, 94 to 127 px). The length is a design value: the four stops' 168 words read in 42.4, 50.4 and 63.0 s at 238,
+  200 and 160 words a minute, with five glides of 1.6 s (four steps and the end): 50.4, 58.4 and 71.0 s. The first wording, "Begin (about a
+  minute)", wrapped inside its button at 390 x 844 and made the card 12.5 px taller: `narrow-390` fell to 45.6% unobstructed, below its
+  46.8% baseline, and failed `check:visual`; the shorter words keep the card at 238 px there, as in 7B.
+- **The bar**: headed "Opening, step k of n", with Back, Next ("Finish" on the last step) and Skip; its words in `LABELS.opening`
+  (no clock, figure, name or quotation; `css-test.js`); a `role="region"` named by its count and the stop's title (the tour's bar too). No
+  step advances by itself (§4.5); no clock is played between steps (decision 116); under reduced motion each glide is a cut.
+- **How it ends** (decision 118; §4.1): Finish, Skip and Esc land on the end state: 04:00, Study on the Now tab, the Overview with Follow
+  on, Play focused as the single next action, and the live message "The opening has ended. Play runs the day from 04:00." Any other key
+  (which then does its own action; not Tab, Shift, "?" or \`), a press anywhere outside the bar and the "?" overlay, and the camera taken by
+  a pan, orbit or zoom end it where it is: the clock and the camera kept, the stop's theme and plan cleared as leaving the tour clears them,
+  focus moved only off the hidden bar (to Play after a key), and "The opening has ended here." "?" opens the overlay over the opening; Esc
+  then closes the overlay, not the opening. `tourStep` is -1 after every end.
+- **Keys and the live region** (§4.3, §4.6): the bar's ← and → step it (a row of `KEYS`, scope "bar", in the "?" overlay); Enter and Space
+  press its focused button; Esc's row names the opening in its order. Each step says one polite message ("Step 2 of 4: The French strike,
+  08:45."); the phase announcement a step causes is folded into it.
+
+**One recommendation not followed, and why (stated for the owner).** §4.1 recommended the Skip button focused when the opening starts.
+Built: focus on **Next**. Decision 112 made the opening something the visitor starts by pressing the card's primary action; with Skip
+focused, the next Enter (the natural "go on") ends the opening the visitor has just asked for, and 7B already put focus on the tour's Next for
+the same press. Skip is the next Tab stop and Esc skips from anywhere, from the first frame. Reversing it is one word in two places
+(`focusId("tour-next")` in `closeFirst` and the tools' handler). Smaller choices the plan did not settle: a press outside the bar ends it
+in place wherever it lands (Play, the tabs, the tools), not only on the map; the in-place ends clear the stop's theme as leaving the tour
+does; the spine mark on the timeline names the tour stop during the opening.
+
+**Per step, the opening as built** (`tools/stage7/opening-7c-probe.js`, fresh pages, real clicks; the harness's limits and baselines, set on
+this build, decision 121)
+| step (tour stop, clock) | size | unobstructed (case baseline) | drops (case limit) | map text, lowest ratio | solid black | smoke | confidence marks | draw calls / world pass | the bar (px) | glide, lowest clearance |
+|---|---|---|---|---|---|---|---|---|---|---|
+| step 1 (1, 04:00) | 1600 x 900 | 63.2% (63.2%) | 8 (8) | 8.50 | 0.000% | 0.0% | 3.5% | 753 / 20.4 ms | 187 tall, whole | 135.28, 0 lifts |
+| step 2 (6, 08:45) | 1600 x 900 | 64.0% (63.9%) | 7 (7) | 7.48 | 0.000% | 2.6% | 4.4% | 736 / 15.2 ms | 164 tall, whole | 46.19, 0 lifts |
+| step 3 (7, 11:00) | 1600 x 900 | 64.0% (63.9%) | 3 (3) | 8.48 | 0.000% | 3.9% | 3.5% | 713 / 50.9 ms | 164 tall, whole | 38.72, 0 lifts |
+| step 4 (8, 14:30) | 1600 x 900 | 64.0% (63.9%) | 4 (4) | 8.27 | 0.000% | 4.1% | 6.4% | 763 / 43.9 ms | 164 tall, whole | 38.72, 0 lifts |
+| after Finish (04:00, the Overview) | 1600 x 900 | 70.4% (70.3%) | 7 (7) | 8.28 | 0.000% | 0.0% | 2.8% | 756 / 17.9 ms | closed | 94.49, 0 lifts |
+| step 1 (1, 04:00) | 1280 x 720 | 51.7% (51.6%) | 10 (10) | 8.50 | 0.000% | 0.0% | 4.5% | 755 / 30.9 ms | 187 tall, whole | 135.28, 0 lifts |
+| step 2 (6, 08:45) | 1280 x 720 | 52.9% | 7 | 7.48 | 0.000% | 0.6% | 4.6% | 736 / 32.4 ms | 164 tall, whole | 46.19, 0 lifts |
+| step 3 (7, 11:00) | 1280 x 720 | 52.9% | 3 | 13.33 | 0.000% | 1.2% | 4.5% | 720 / 40.1 ms | 164 tall, whole | 38.72, 0 lifts |
+| step 4 (8, 14:30) | 1280 x 720 | 52.9% | 3 | 12.16 | 0.000% | 3.5% | 6.1% | 764 / 54.6 ms | 164 tall, whole | 38.72, 0 lifts |
+| after Finish (04:00, the Overview) | 1280 x 720 | 62.9% | 10 | 8.50 | 0.000% | 0.0% | 2.4% | 756 / 17.2 ms | closed | 94.49, 0 lifts |
+
+At 1280 x 720 the rows without a case of their own are held by the 1600 x 900 cases' second measure (the page resized, as for every case):
+52.9% at steps 2-4 and 62.8% at the end. "Map text, lowest ratio" is the lowest contrast of any map text as rendered (AA needs 4.5).
+
+- **Equal to Part A's prototype**: at both sizes every step's unobstructed share, drops and bar box are those of the same tour stop in
+  `opening-probe.json` (1600 x 900: 63.2%, 64.0%, 64.0%, 64.0%; drops 8, 7, 3, 4; the bar 187 px tall at step 1, 164 after), and the draw
+  calls identical (753, 736, 713, 763). World passes (15-55 ms) are software WebGL, comparable only within a run: step 4's was 114 ms in an earlier run of
+  the same probe and 63 ms in Part A. In that earlier run one frame after a state change took 13 s (SwiftShader compiling), and a real click
+  waited past Playwright's 30 s default; the presses' handlers take 10-28 ms, and the probe now waits as the harness does (180 s).
+- **Glides**: 51 samples each, lowest clearance 38.72 units (into steps 3 and 4), no floor lift; the self-test samples every glide of the
+  opening, both ways and to the end, at 1x, 4x and 10.33x (lowest 38.21, no lift).
+- **The bar's text is whole** at every step and both sizes (nothing scrolled); every string shown is the stop's `TOUR` title and text or a
+  `LABELS.opening` entry.
+- **The ways out** (1600 x 900, real clicks and keys): Skip and Esc from each of the four steps land on 04:00, Study, the Now tab, the
+  Overview with Follow on, focus on Play, the end message. A drag on the map at step 2 ends it in place
+  (08:45 kept, Follow off, focus on the body); the key M at step 2 ends it in place and switches to the paper map (08:45 kept, focus on Play).
+- **Reduced motion**: each step's camera at its frame within 5 ms of the press, nothing playing; Skip to the Overview within 5 ms, focus on
+  Play.
+- Phase 3's toast ("The sun of Austerlitz", `data.js`) shows at step 2, as at tour stop 6 (data; unchanged; checked on a page with its
+  transitions on).
+
+**Tests** (none loosened; new or stricter)
+- **Self-test** (208 checks, was 204): new, the opening from the reopened card: each step its tour stop's clock, theme and camera
+  (`stopClock`, `presetFrame(stopCam)`), Follow on, nothing playing; every string shown a `TOUR` field or a `LABELS` entry; one live message
+  per step and no phase announcement besides; the bar's arrows reach the "opening" row (a dry run) and step it; Finish, Skip and Esc from every
+  step to the end state; a drag on the map, a zoom and the key 1 end it where it is; "?" over it and Esc closing only the overlay; under
+  reduced motion each step at its frame within 5 ms. New at 1x, 4x and 10.33x: the opening's glides (step to step both ways, every step to the
+  Overview) above the floor. Stricter: the first-run check's primary action now begins the opening with focus on its Next.
+- **Harness**: six new fresh cases, each reached by real clicks: `opening-1` to `opening-4` and `opening-end` at 1600 x 900, `opening-1-laptop`
+  at 1280 x 720; Stage 0 thresholds; the confidence, skeleton and routes measures taken there as in every reading view (the first-run views
+  stay exempt); each case's clicks must reach its step (or, after Finish, the end state). Their drop limits and unobstructed baselines are what
+  this build measures there (decision 121; decision 62's method), never raised, never lowered: drops 8, 7, 3, 4 and 7 at 1600 x 900 and 10 for
+  step 1 at 1280 x 720; unobstructed .632/.516, .639/.529 (steps 2-4), .703/.628 (the end, Study's own baselines) and .516/.516. By real key presses on the
+  `opening-2` page: Esc from step 2 to the end state; the tools' button and Enter on the focused Next to step 2; Tab to Skip and Space to the
+  end state.
+- **`runtime-test.js`**: new, the opening forward, back (not past step 1), finished, and ended by each of five ways from every step (the end
+  state or the clock kept, `tourStep` -1), then the tour; the first-run dry run's primary now begins the opening.
+- **`css-test.js`**: new, the opening's eleven words in `LABELS` with no figure, clock time, quotation mark or name of a formation, commander
+  or place; the card's primary words likewise; `OPENING.stops` the tour's 1, 6, 7, 8; the card's primary begins it; the bar a region named by
+  its count and title, with its Skip; the bar's Next from the tokens; the tools' button standing down under the card; the arrows a row of
+  `KEYS`; Esc's skip; the folded announcement.
+- **`check:contrast`**: new states "opening" (the bar at step 2) and "opening-end".
+
+**Checks on this build**
+- `npm run build`: fresh; the committed HTML is the build. `npm run check:baseline`: passes on this build (md5 `bebcfff6…`, 1,748,568 bytes),
+  moved from the 7B build.
+- `npm test`: "ALL 9 SUITES PASSED (and the height guard)" (6 min 48 s); `binding-test`: 383 checks, 0 failed (no arrow drawer changed).
+- `npm run check:data`: all 121 data declarations byte-identical (the reference not moved). `npm run check:chronology`: errors 0 (69 moves
+  with a timed statement, 65 consistent, the four named conflicts allowed).
+- `npm run check:contrast`: 5,747 text elements (was 5,253: the two new states), 105 pairs, 0 below AA, 0 below 10.5 px (9 min 41 s).
+- `npm run check:visual`: "STAGE0: all checks passed" (102 min 50 s): 30 views, the self-test 208 of 208; `first-run` 63.4% / 52.1%,
+  `first-run-laptop` 55.8% / 52.1%, `narrow-390` 46.9% / 52.1% unobstructed, all at or above their 7B baselines. Nine console warnings,
+  the known Canvas2D readback warning among them. The first run on the "about a minute" wording failed one check (`narrow-390` 45.6%,
+  above); the run reported is the one on this build.
+
+**Not done, or open**
+- §4.1's Skip focus (above): built as focus on Next; the owner may reverse it.
+- The rail's note while the bar shows ("During the guided tour, its text is in the tour bar", `shell.html`) does not name the opening; true
+  of it (the opening is a path through the tour), left unchanged.
+- 7D (played stretches) is not built (decision 116). Decision 119 (b), a "derived" mark on the plateau label in every view, stays open. The
+  URL fragment of decision 117 is not built.
+- No screen reader was used: the region, the live messages and the focus are measured from the DOM and by real key presses in Chromium.
+- At 390 x 844 the opening was not measured as a harness case (decision 122 records the first screen only); Part A measured tour stop 1
+  there (the bar 227 px tall).
+- Historical: nothing changes. The opening shows only `TOUR`'s tested text. Stop 6's words ("At about a quarter to nine Saint-Hilaire and
+  Vandamme climb") sit on the legs `check:chronology` flags at the march-rate ceiling (`sthilaire@3`, `vandamme@3`; Part A §0.4 item 9):
+  shown, unchanged, still open.
+
 ## 2026-10 · Stage 7B: the first screen (docs/STAGE7_SPEC.md §4, §5, §6; owner decisions 111-113, 117-120, 122)
 
 **Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
