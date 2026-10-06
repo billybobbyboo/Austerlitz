@@ -617,6 +617,8 @@ body.rail-hidden #firstrun{left:50%;width:min(540px,calc(100vw - 32px))}
 #firstrun .fr-act .t.fr-primary{background:var(--text);color:var(--on-accent);border-color:var(--text)}
 body.firstrun-on:not(.docked) .dispatch,body.firstrun-on .legend,body.firstrun-on .drawer,
 body.firstrun-on #vsbadge,body.firstrun-on #tourbar,body.firstrun-on #selchip{display:none !important}
+/* Stage 7C: the tools' "Begin the opening" stands down while the card, whose primary action it is, is open (at 390 px it would wrap the tools' row) */
+body.firstrun-on #openingbtn{display:none}
 .legend .ar{width:20px;height:5px;border-radius:2px}
 /* Stage 2C: the heads as drawn (decision 20): French the plain triangle, Allied the notched chevron */
 .legend .ar{position:relative;margin-right:8px;border-radius:2px 0 0 2px}
@@ -795,6 +797,8 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 
 <div class="tools">
   <div class="grp">
+    <!-- Stage 7C: the opening again, for a later visit (hidden while the first-run card, whose primary action it is, stands open) -->
+    <button class="t" id="openingbtn" type="button">Begin the opening</button>
     <button class="t" id="tourbtn">Guided tour</button>
     <button class="t" id="layersbtn" aria-expanded="false">Layers&hellip;</button>
   </div>
@@ -1001,7 +1005,8 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 </div>
 
 <button id="restore" type="button" title="Back to Study (Esc)">Show interface</button>
-<div id="tourbar" hidden>
+<!-- the guided tour's bar, and the opening's (Stage 7C): a region named by its count and the stop's title; not modal (the map stays live) -->
+<div id="tourbar" role="region" aria-labelledby="tour-n tour-t" hidden>
   <div class="tb-step"><span id="tour-n"></span><b id="tour-t"></b></div>
   <p id="tour-x"></p>
   <div class="tour-act">
@@ -8770,6 +8775,85 @@ function applyTour(){
     (tourStep===TOUR.length-1) ? "Finish" : "Next";
 }
 
+/* ---------------- the opening (Stage 7C; docs/STAGE7_SPEC.md sections 3.4, 4, 5 and 6; owner decisions 111, 112, 114-116, 118) ----------------
+   A short path through the guided tour, not a second mechanism: OPENING.stops are indices into TOUR (decision 114: stops 1, 6, 7 and
+   8), each step applied by the tour's own applyTour (its clock, theme, plan, feature and camera, Follow on, the dispatch hidden) and
+   shown in the tour's bar with the stop's own title and text (decision 115: whole stops; every string shown a TOUR field or a LABELS
+   entry). Started by the first-run card's primary action (decision 112: offered, not forced) or the tools' button. Nothing advances
+   by itself (section 4.5); no clock is played between the stops (decision 116); under reduced motion the glides are cuts (RM).
+   How it ends (decision 118; section 4.1):
+   - "end" (Finish on the last step) and "skip" (Skip, Esc): the day's start, Study on the Now tab, the Overview with Follow on, and
+     Play focused as the single next action, named by one live message;
+   - "key" (any other key, which then does its own action; not Tab, Shift, Esc, "?" or `), "pointer" (a press outside the bar and the
+     "?" overlay) and "camera" (the camera taken by a pan, orbit or zoom, Follow off): where it is, the clock and the camera kept, the
+     stop's theme and plan cleared as leaving the tour clears them; focus moved only off the hidden bar (to Play after a key).
+   While a step is applied, the phase announcement it causes is folded into the step's own message (section 4.3). tourStep is the
+   stop's index while a step shows (the tour's machinery reads it) and -1 once the opening has ended. */
+var OPENING={stops:[0,5,6,7], on:false, k:-1, applying:false, tourWords:null};
+function openingSay(s){ var lv=document.getElementById("live-phase"); if(lv) lv.textContent=s; }
+function openingFill(s,k){ return s.replace("%k",String(k+1)).replace("%n",String(OPENING.stops.length)); }
+function openingBar(on){   /* the bar's two words that differ: the opening's from LABELS, or the tour's own (shell.html) put back */
+  var x=document.getElementById("tour-exit"), p=document.getElementById("tour-prev"), L=LABELS.opening;
+  if(!x||!p) return;
+  if(!OPENING.tourWords) OPENING.tourWords={exit:x.textContent, exitTitle:x.title||"", prev:p.textContent};
+  var W=OPENING.tourWords;
+  x.textContent=on?L.skip:W.exit; x.title=on?L.skipTitle:W.exitTitle; p.textContent=on?L.back:W.prev;
+}
+function openingStart(){
+  closeFirst(null);
+  if(tourStep>=0&&!OPENING.on) exitTour();
+  OPENING.on=true;
+  hideDispatch=true; syncVis();
+  openingBar(true);
+  openingApply(0);
+}
+function openingApply(k){
+  var L=LABELS.opening, n=OPENING.stops.length;
+  OPENING.k=k; OPENING.applying=true;
+  tourStep=OPENING.stops[k]; applyTour();
+  OPENING.applying=false;
+  var st=TOUR[tourStep], pv=document.getElementById("tour-prev");
+  document.getElementById("tour-n").textContent=openingFill(L.head,k);
+  if(k===0&&document.activeElement===pv) focusId("tour-next");   /* never on a button that becomes disabled */
+  pv.disabled=(k===0); pv.style.opacity=k===0?0.4:1;
+  document.getElementById("tour-next").textContent=(k===n-1)?L.finish:L.next;
+  openingSay(openingFill(L.said,k).replace("%t",st.n).replace("%c",fmtClock(stopClock(st))));
+}
+function openingWatch(){ if(OPENING.on&&freeCam) openingEnd("camera"); }   /* every animation frame (loop) */
+function openingGo(d){
+  if(!OPENING.on) return;
+  var k=OPENING.k+d;
+  if(k<0) return;
+  if(k>=OPENING.stops.length){ openingEnd("end"); return; }
+  openingApply(k);
+}
+function openingEnd(how){
+  if(!OPENING.on) return;
+  var bar=document.getElementById("tourbar"), a=document.activeElement, had=!!(bar&&a&&bar.contains&&bar.contains(a));
+  OPENING.on=false; OPENING.k=-1;
+  tourStep=-1; paintTimeline();
+  if(bar) bar.hidden=true;
+  openingBar(false);
+  clearOverlays();
+  hideDispatch=false;
+  if(how==="end"||how==="skip"){
+    OPENING.applying=true;
+    stopPlay(); select(null,null);
+    if(presentation!=="study") setPresentation("study"); else syncVis();
+    setClock(T_MIN,{force:true,camera:false});
+    freeCam=false; flyTo(VANTAGE.plan);
+    if(docked) selectTab("now");
+    OPENING.applying=false;
+    openingSay(LABELS.opening.ended.replace("%c",fmtClock(T_MIN)));
+    focusId("play");
+  } else {
+    syncVis();
+    openingSay(LABELS.opening.left);
+    if(had){ if(how==="key") focusId("play"); else if(a.blur) a.blur(); }
+  }
+  requestRender(3);
+}
+
 /* ---------------- view modes ---------------- */
 function setMode(m){
   var was=mode;
@@ -9971,10 +10055,16 @@ var LABELS={
     hybrid:{label:"Landscape with counters", title:"The ground in relief, with the paper map's counters"}
   },
   layers:{button:"Layers\u2026", heading:"Layers", aria:"Layers and ground", ground:"Ground", shows:"What is drawn"},
-  /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. The primary starts the guided tour until
-     7C's opening takes it */
-  firstRun:{primary:"Guided tour", primaryTitle:"The guided tour through the day, in the tour's own words",
-    stay:"Explore on my own", stayTitle:"Close this card and stay here (Esc)"}
+  /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
+     its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with four glides of
+     1.6 s; docs/STAGE7_SPEC.md section 3.4) */
+  firstRun:{primary:"Begin (about a minute)", primaryTitle:"Begin the opening: a short path through the guided tour, in its own words; Next moves on, Esc skips it",
+    stay:"Explore on my own", stayTitle:"Close this card and stay here (Esc)"},
+  /* Stage 7C (decisions 115, 118): the opening's interface words, no claim: no clock time, figure, name or quotation (css-test.js). %k and
+     %n are the step and the count, %t the stop's own title (TOUR), %c a clock the app formats */
+  opening:{button:"Begin the opening", buttonTitle:"A short path through the guided tour, in its own words",
+    head:"Opening, step %k of %n", back:"Back", next:"Next", finish:"Finish", skip:"Skip", skipTitle:"End the opening at the start of the day (Esc)",
+    said:"Step %k of %n: %t, %c.", ended:"The opening has ended. Play runs the day from %c.", left:"The opening has ended here."}
 };
 function applyLabels(){
   document.querySelectorAll(".vm-btn").forEach(function(b){ var L=LABELS.presentation[b.dataset.vm]; if(!L) return;
@@ -9983,6 +10073,7 @@ function applyLabels(){
   var lb=document.getElementById("layersbtn"); if(lb) lb.textContent=LABELS.layers.button;
   var F=LABELS.firstRun, fp=document.getElementById("fr-tour"), fs=document.getElementById("fr-close");   /* Stage 7B */
   if(fp){ fp.textContent=F.primary; fp.title=F.primaryTitle; } if(fs){ fs.textContent=F.stay; fs.title=F.stayTitle; }
+  var ob=document.getElementById("openingbtn"); if(ob){ ob.textContent=LABELS.opening.button; ob.title=LABELS.opening.buttonTitle; }   /* Stage 7C */
   var lp=document.getElementById("layerpop"); if(lp){ lp.setAttribute("aria-label",LABELS.layers.aria);
     var h=lp.querySelector(".lp-head span"); if(h) h.textContent=LABELS.layers.heading;
     var g=lp.querySelector(".modes"); if(g) g.setAttribute("aria-label",LABELS.layers.ground); }
@@ -10002,6 +10093,9 @@ var KEYS=[
     run:function(e){ e.preventDefault(); togglePlay(); }},
   {id:"nextev", scope:"window", group:"Time", keys:["."], show:["."], text:"The next event", run:function(){ jumpEvent(1); }},
   {id:"prevev", scope:"window", group:"Time", keys:[","], show:[","], text:"The previous event", run:function(){ jumpEvent(-1); }},
+  /* Stage 7C (section 4.6): the opening's bar has its own arrows, as the time rail has; Enter or Space presses its focused button */
+  {id:"opening", scope:"bar", group:"Time", keys:["ArrowLeft","ArrowRight"], show:["←","→"], text:"In the opening's bar: the step before or after (Enter or Space presses the focused button; Esc skips to the start of the day; any other key or a press on the map ends the opening where it is)",
+    run:function(e){ openingGo(e.key==="ArrowRight"?1:-1); }},
   {id:"study", scope:"window", group:"View and ground", keys:["1"], show:["1"], text:function(){ return presLine("study"); },
     run:function(){ setPresentation("study"); }},
   {id:"watch", scope:"window", group:"View and ground", keys:["2"], show:["2"], text:function(){ return presLine("watch"); },
@@ -10014,10 +10108,11 @@ var KEYS=[
     run:function(){ setPresentation(presentation==="study"?"watch":"study"); }},
   {id:"m", scope:"window", group:"View and ground", keys:["m","M"], show:["M"], text:function(){ var G=LABELS.ground; return "The ground: "+G.terrain.label+", "+G.staff.label+", "+G.hybrid.label+", in turn"; },
     run:function(){ setMode(mode==="terrain"?"staff":(mode==="staff"?"hybrid":"terrain")); }},
-  {id:"esc", scope:"window", group:"View and ground", keys:["Escape"], show:["Esc"], text:"Back: close the first card where it stands, the layers panel or the tour; else everything shown in Study, and the chapter, the selection and the sources sheet cleared",
+  {id:"esc", scope:"window", group:"View and ground", keys:["Escape"], show:["Esc"], text:"Back: close the first card where it stands, the layers panel, the opening (to the start of the day) or the tour; else everything shown in Study, and the chapter, the selection and the sources sheet cleared",
     run:function(){
       if(firstRunOpen){ closeFirst("explore"); return; }
       if(!document.getElementById("layerpop").hidden){ window.__setPop(false); return; }
+      if(OPENING.on){ openingEnd("skip"); return; }   /* Stage 7C */
       if(tourStep>=0){ exitTour(); return; }
       if(presentation!=="study"||hideDispatch) showEverything();
       if(chapter) setChapter(null);
@@ -10268,16 +10363,33 @@ function buildUI(){
   document.getElementById("tourbtn").addEventListener("click",function(){
     if(tourStep>=0) exitTour(); else startTour();
   });
-  document.getElementById("tour-prev").addEventListener("click",function(){ tourGo(-1); });
-  document.getElementById("tour-next").addEventListener("click",function(){ tourGo(1); });
-  document.getElementById("tour-exit").addEventListener("click",exitTour);
+  /* the tour's bar serves the opening too (Stage 7C): its buttons step whichever is showing */
+  document.getElementById("tour-prev").addEventListener("click",function(){ if(OPENING.on) openingGo(-1); else tourGo(-1); });
+  document.getElementById("tour-next").addEventListener("click",function(){ if(OPENING.on) openingGo(1); else tourGo(1); });
+  document.getElementById("tour-exit").addEventListener("click",function(){ if(OPENING.on) openingEnd("skip"); else exitTour(); });
+  document.getElementById("openingbtn").addEventListener("click",function(){ openingStart(); focusId("tour-next"); });
+  document.getElementById("tourbar").addEventListener("keydown",function(e){
+    if(!OPENING.on) return; var r=keyRow(e,"bar"); if(!r) return;
+    e.preventDefault(); e.stopPropagation(); if(KEYS_DRY){ KEYS_DRY.push(r.id); return; } r.run(e); });
+  /* Stage 7C (section 4.1): any other key, and a press anywhere outside the bar and the "?" overlay, ends the opening where it is,
+     before the key or the press does its own action (Esc is its own row: to the start of the day) */
+  window.addEventListener("keydown",function(e){
+    if(!OPENING.on||helpOpen()||KEYS_DRY||e.ctrlKey||e.metaKey||e.altKey) return;
+    var k=e.key, bar=document.getElementById("tourbar"), inBar=!!(bar&&e.target&&bar.contains(e.target));
+    if(k==="Tab"||k==="Shift"||k==="Escape"||k==="?"||k==="`") return;
+    if(inBar&&(k==="Enter"||k===" "||ARROWS.indexOf(k)>=0)) return;
+    openingEnd("key"); },{capture:true});
+  window.addEventListener("pointerdown",function(e){
+    if(!OPENING.on) return; var t=e.target;
+    if(t&&t.closest&&t.closest("#tourbar,#help,#helpbtn")) return;
+    openingEnd("pointer"); },{capture:true});
   paintKey(); bindExaggeration();
   /* the legend's head opens and closes it; where it would lie over the dispatch it stays closed (its title says why) */
   document.getElementById("lg-toggle").addEventListener("click",function(){
     if(document.querySelector(".legend").classList.contains("squeezed")) return;
     ML.legendOpen=!ML.legendOpen; requestRender(2); });
   document.getElementById("fr-close").addEventListener("click",function(){ closeFirst("explore"); });
-  document.getElementById("fr-tour").addEventListener("click",function(){ closeFirst("tour"); });
+  document.getElementById("fr-tour").addEventListener("click",function(){ closeFirst("open"); });   /* the id stays (the harness's); it begins the opening (7C) */
   /* Stage 7B: Tab and Shift+Tab stay inside the card while it is open, as in the "?" overlay (bindHelp) */
   document.getElementById("firstrun").addEventListener("keydown",function(e){
     if(e.key!=="Tab"||!firstRunOpen) return;
@@ -10413,8 +10525,8 @@ function openFirstRun(){
   focusId("fr-tour");                           /* Stage 7B: the dialog takes focus, on its primary action */
   requestRender(3);
 }
-/* how: "tour" (the primary action), "explore" (stay: the button, Esc, or a key that then does its own action), or null (a click
-   outside, or the app closing it). Focus never stays on the hidden card: after "tour" it is on the tour bar's Next, after "explore" on
+/* how: "open" (the primary action: the opening, Stage 7C), "explore" (stay: the button, Esc, or a key that then does its own action), or null (a click
+   outside, or the app closing it). Focus never stays on the hidden card: after "open" it is on the opening bar's Next, after "explore" on
    Play, the single next action (decision 118's rule), after a click outside it is released where the pointer went. */
 function closeFirst(how){
   if(!firstRunOpen) return;
@@ -10423,7 +10535,7 @@ function closeFirst(how){
   var fr=document.getElementById("firstrun"); if(fr) fr.hidden=true;
   document.body.classList.remove("firstrun-on");
   if(docked&&!tabChosen) selectTab("now");      /* Stage 3B (decision 55): Study opens on the Now tab */
-  if(how==="tour"){ startTour(); focusId("tour-next"); }
+  if(how==="open"){ openingStart(); focusId("tour-next"); }   /* Stage 7C: the opening, focus on its Next (the visitor asked for it) */
   else if(how==="explore"){ if(had||!document.activeElement||document.activeElement===document.body) focusId("play"); }
   else if(had&&document.activeElement&&document.activeElement.blur) document.activeElement.blur();
   syncSelChip(); requestRender(3);
@@ -10751,7 +10863,8 @@ function paintDispatch(ph){
   paintChanges(ph.id);
   /* Stage 3B: one polite announcement per phase change, whichever tab is shown (the dispatch itself is no longer a live
      region: in a hidden tab it would not be read) */
-  var lv=document.getElementById("live-phase"); if(lv){ lv.textContent=ph.clock+". "+actOf(ph.id).n+": "+ph.title+"."; PHASE_SAID++; }
+  /* Stage 7C (section 4.3): while the opening applies a step, the step's own message says it (one message per step) */
+  var lv=document.getElementById("live-phase"); if(lv&&!OPENING.applying){ lv.textContent=ph.clock+". "+actOf(ph.id).n+": "+ph.title+"."; PHASE_SAID++; }
 }
 
 /* ---- a formation's text during a delayed move (owner decision 46) ----
@@ -11670,6 +11783,7 @@ function frameState(now){
 function loop(){
   requestAnimationFrame(loop);
   syncFollow();   /* Stage 3D: the Follow button and the vantages' pressed state, every animation frame */
+  openingWatch();   /* Stage 7C: a pan, orbit or zoom took the camera (Follow off): the opening ends where it is */
   var now=performance.now(), state=frameState(now);
   paintDevStats(now);
   if(state==="idle"||state==="waiting"){ DEV.skipped++; if(state==="idle") DEV.state="idle"; return; }
@@ -11955,7 +12069,7 @@ var AUSTERLITZ_DEBUG=(function(){
   }
   function applyCase(spec,aimOf){
     closeFirst(null);
-    stopPlay(); if(tourStep>=0) exitTour();
+    stopPlay(); if(OPENING.on) openingEnd("camera"); if(tourStep>=0) exitTour();
     if(planSide) setPlan(planSide); if(chapter) setChapter(null);
     freeCam=true;
     setPresentation(spec.presentation||"study");
@@ -13085,7 +13199,7 @@ var AUSTERLITZ_DEBUG=(function(){
     var save={t:clock,mode:mode,pres:presentation,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,map:MAPCAM.state(),cv:commandView,plan:planSide};
     setCommandView("none");
     if(planSide) setPlan(planSide);   /* Stage 5F: and without the Plans overlay (it dims every formation); restored after */
-    closeFirst(null); stopPlay(); if(tourStep>=0) exitTour();
+    closeFirst(null); stopPlay(); if(OPENING.on) openingEnd("camera"); if(tourStep>=0) exitTour();
     if(mode==="staff") setMode("terrain");   /* the checks of the drawn relief run on the landscape (Stage 2E) */
 
     /* 1-5, the mist and the derived readings, at each display factor (Stage 2B: 1x, the default, GEOREF.EXAG).
@@ -13142,6 +13256,12 @@ var AUSTERLITZ_DEBUG=(function(){
       var vk=Object.keys(VANTAGE);
       vk.forEach(function(a){ vk.forEach(function(b){ if(a!==b) arcCheck(VANTAGE[a],VANTAGE[b],0.12); }); });
       ck("camera: glides between tour stops, phases, chapters and vantages stay above the ground", arcsBad===0,
+        arcsN+" positions sampled; lowest clearance "+arcsMin.toFixed(2)+" units; the floor lifted "+(CAM.clamps-c0)+" of them");
+      /* Stage 7C: the opening's glides, step to step both ways and every step to its end, the fitted Overview */
+      arcsN=0; arcsMin=1e9; arcsBad=0; c0=CAM.clamps;
+      OPENING.stops.forEach(function(s,k){ var a=stopCam(TOUR[s]); if(k+1<OPENING.stops.length){ var b=stopCam(TOUR[OPENING.stops[k+1]]); arcCheck(a,b,0.12); arcCheck(b,a,0.12); }
+        arcCheck(a,presetFrame(VANTAGE.plan),0.12); });
+      ck("camera: the opening's glides (step to step, both ways, and every step to the Overview) stay above the ground", arcsBad===0&&arcsN>0,
         arcsN+" positions sampled; lowest clearance "+arcsMin.toFixed(2)+" units; the floor lifted "+(CAM.clamps-c0)+" of them");
 
       /* 4. orbit extremes, through the placement the pointer handlers use */
@@ -13454,7 +13574,7 @@ var AUSTERLITZ_DEBUG=(function(){
        Study on the landscape: its attributes; focus on the primary action; Tab and Shift+Tab kept inside; docked, the Now tab under it with
        the dispatch shown, beside it (not under it) and a "derived" tag on screen; Esc, "Explore on my own" and a press outside close it
        where it stands (camera and clock unmoved), focus on Play after Esc and the button and on no hidden element after a press outside;
-       the primary starts the tour with focus on its Next. Keys are dispatched as the browser delivers them; the state is restored after. */
+       the primary begins the opening (Stage 7C) with focus on its Next. Keys are dispatched as the browser delivers them; the state is restored after. */
     (function(){
       var bad=[], fr=document.getElementById("firstrun"), K0={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,c:clock,
         pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,sel:selection};
@@ -13488,15 +13608,95 @@ var AUSTERLITZ_DEBUG=(function(){
       open(); document.body.dispatchEvent(new PointerEvent("pointerdown",{bubbles:true,cancelable:true,pointerId:1}));
       still("a press outside"); if(fr.contains(document.activeElement)) bad.push("focus left on the hidden card after a press outside");
       open(); document.getElementById("fr-close").click(); still("\u201c"+LABELS.firstRun.stay+"\u201d"); if(aid()!=="play") bad.push("focus on "+aid()+" after the stay button, not Play");
-      open(); document.getElementById("fr-tour").click(); var ts=tourStep, fa=aid(); finishTween();
-      if(ts!==0) bad.push("the primary action started tour stop "+ts); if(fa!=="tour-next") bad.push("focus on "+fa+" after the primary action, not the tour's Next");
-      if(tourStep>=0) exitTour();
+      open(); document.getElementById("fr-tour").click(); var ts=tourStep, ok7=OPENING.on&&OPENING.k===0, fa=aid(); finishTween();
+      if(!ok7||ts!==OPENING.stops[0]) bad.push("the primary action did not begin the opening at its first step (tour stop "+(ts+1)+")"); if(fa!=="tour-next") bad.push("focus on "+fa+" after the primary action, not the opening's Next");
+      if(OPENING.on) openingEnd("camera"); if(tourStep>=0) exitTour();
       if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
       setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
       landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv;
       tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id);
       ck("first run: a modal dialog (focus on its primary action, Tab kept inside); docked, the Now tab and its derived tag beside it; Esc, the stay button and a press outside close it in place, focus on Play (decisions 111-113, 118-120)",
-        !bad.length, bad.length?bad.join("; "):"Tab, Tab, Shift+Tab: "+said.join(", ")+"; "+(docked?"the Now tab, "+der+" derived tag(s) on screen; ":"undocked; ")+"after Esc, the button and the primary: Play, Play, the tour's Next");
+        !bad.length, bad.length?bad.join("; "):"Tab, Tab, Shift+Tab: "+said.join(", ")+"; "+(docked?"the Now tab, "+der+" derived tag(s) on screen; ":"undocked; ")+"after Esc, the button and the primary: Play, Play, the opening's Next");
+    })();
+    /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decisions 111, 112, 114-116, 118): the opening, begun from the reopened card's primary
+       action at 04:00 in Study on the landscape. Every step is its tour stop (the clock stopClock, the theme, the camera presetFrame(stopCam),
+       Follow on, nothing playing); every string shown is a TOUR field or a LABELS entry (decision 115); one live message per step and no phase
+       announcement besides (section 4.3); the bar's arrows reach the "opening" row and step it; Finish, Skip and Esc from every step land on
+       the end state (decision 118: 04:00, Study, the Now tab when docked, the Overview with Follow on, Play focused, tourStep -1); a press on
+       the map with a drag, a zoom (Follow off) and a key end it where it is (the clock and the camera kept); "?" opens the overlay over it
+       and Esc then closes the overlay, not the opening; under reduced motion each step is at its frame within 5 ms. Restored after. */
+    (function(){
+      var bad=[], fr=document.getElementById("firstrun"), L=LABELS.opening, N=OPENING.stops.length, bar=document.getElementById("tourbar"),
+        K0={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,c:clock,pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,sel:selection,rm:RM},
+        el=renderer.domElement, spc=el.setPointerCapture, msgs=[], walked=0, ends=0, P0;
+      if(presentation!=="study") setPresentation("study"); if(mode!=="terrain") setMode("terrain"); if(tourStep>=0) exitTour(); select(null,null);
+      setClock(T_MIN,{instant:true,force:true,camera:false}); finishTween(); tabChosen=false;
+      function key(k,shift){ var on=document.activeElement&&document.activeElement!==document.body?document.activeElement:window;
+        on.dispatchEvent(new KeyboardEvent("keydown",{key:k,shiftKey:!!shift,bubbles:true,cancelable:true})); }
+      function aid(){ var a=document.activeElement; return a&&a!==document.body?(a.id||a.tagName):"body"; }
+      function txt(id){ return document.getElementById(id).textContent; }
+      function live(){ return document.getElementById("live-phase").textContent; }
+      function camAt(v){ return landCam.position.distanceTo(new THREE.Vector3(v[0],v[1],v[2]))<1e-3&&orbitTarget.distanceTo(new THREE.Vector3(v[3],v[4],v[5]))<1e-3; }
+      function begin(){ fr.hidden=false; openFirstRun(); document.getElementById("fr-tour").click(); finishTween(); }
+      function to(k){ while(OPENING.k<k){ document.getElementById("tour-next").click(); finishTween(); } }
+      function step(k,w){ var s=TOUR[OPENING.stops[k]], at=w+" (step "+(k+1)+")";
+        if(!OPENING.on||OPENING.k!==k||tourStep!==OPENING.stops[k]) bad.push(at+": not at tour stop "+(OPENING.stops[k]+1));
+        if(clock!==stopClock(s)) bad.push(at+": the clock "+fmtClock(clock)+", not the stop's "+fmtClock(stopClock(s)));
+        if((s.chapter||null)!==chapter) bad.push(at+": the theme "+chapter+", not the stop's "+s.chapter);
+        if(!camAt(presetFrame(stopCam(s)))) bad.push(at+": the camera is not the stop's");
+        if(freeCam||playing||bar.hidden||!hideDispatch) bad.push(at+": Follow "+(freeCam?"off":"on")+", playing "+playing+", the bar "+(bar.hidden?"hidden":"shown")+", the dispatch "+(hideDispatch?"hidden":"shown"));
+        var want=[L.head.replace("%k",k+1).replace("%n",N),s.n,s.x,L.back,k===N-1?L.finish:L.next,L.skip], got=["tour-n","tour-t","tour-x","tour-prev","tour-next","tour-exit"].map(txt);
+        want.forEach(function(x,i){ if(got[i]!==x) bad.push(at+": shows “"+got[i].slice(0,40)+"”, not “"+x.slice(0,40)+"”"); });
+        if(document.getElementById("tour-prev").disabled!==(k===0)) bad.push(at+": Back "+(k===0?"enabled on the first step":"disabled"));
+        var m=L.said.replace("%k",k+1).replace("%n",N).replace("%t",s.n).replace("%c",fmtClock(stopClock(s))); if(live()!==m) bad.push(at+": the live region says “"+live()+"”"); }
+      function end(w){ ends++;
+        if(OPENING.on||tourStep!==-1||!bar.hidden) bad.push(w+": the opening is still on (tourStep "+tourStep+")");
+        if(clock!==T_MIN) bad.push(w+": the clock "+fmtClock(clock)); if(presentation!=="study") bad.push(w+": "+presentation);
+        if(docked&&tabNow!=="now") bad.push(w+": the "+tabNow+" tab"); if(chapter||planSide||selection||hideDispatch) bad.push(w+": the stop's theme, plan or selection kept, or the dispatch hidden");
+        if(freeCam||curVantage!=="plan"||!camAt(presetFrame(VANTAGE.plan))) bad.push(w+": not the Overview with Follow on");
+        if(aid()!=="play") bad.push(w+": focus on "+aid()+", not Play");
+        if(live()!==L.ended.replace("%c",fmtClock(T_MIN))) bad.push(w+": the live region says “"+live()+"”"); }
+      function inPlace(w,c,k){ ends++;
+        if(OPENING.on||tourStep!==-1||!bar.hidden) bad.push(w+": the opening is still on");
+        if(clock!==c) bad.push(w+": the clock moved to "+fmtClock(clock)); if(k&&!camAt(k)) bad.push(w+": the camera moved");
+        if(chapter||hideDispatch) bad.push(w+": the stop's theme kept or the dispatch hidden"); if(bar.contains(document.activeElement)) bad.push(w+": focus left on the hidden bar");
+        if(live()!==L.left) bad.push(w+": the live region says “"+live()+"”"); }
+      /* forward through every step, then the bar's arrows (a dry run, then pressed), then Finish */
+      P0=PHASE_SAID;   /* after the setup's own clock change */
+      begin(); if(aid()!=="tour-next") bad.push("focus on "+aid()+" when the opening begins, not its Next");
+      for(var k=0;k<N;k++){ to(k); step(k,"Next"); msgs.push(live()); walked++; }
+      if(PHASE_SAID!==P0) bad.push((PHASE_SAID-P0)+" phase announcement(s) besides the steps' messages");
+      KEYS_DRY=[]; key("ArrowLeft"); key("ArrowRight"); var dry=KEYS_DRY.join(","); KEYS_DRY=null; if(dry!=="opening,opening") bad.push("the bar's arrows reached "+dry);
+      key("ArrowLeft"); finishTween(); step(N-2,"←"); key("ArrowRight"); finishTween(); step(N-1,"→");
+      document.getElementById("tour-next").click(); finishTween(); end("Finish");
+      /* Skip and Esc from every step */
+      for(k=0;k<N;k++){ begin(); to(k); document.getElementById("tour-exit").click(); finishTween(); end(L.skip+" at step "+(k+1));
+        begin(); to(k); key("Escape"); finishTween(); end("Esc at step "+(k+1)); }
+      /* where it is: a drag on the map, a zoom (Follow off), a key; "?" over it */
+      el.setPointerCapture=function(){};
+      begin(); to(1); var fc=landFreeRect(), cx=Math.round((fc[0]+fc[2])/2), cy=Math.round((fc[1]+fc[3])/2);
+      function pe(t,x,y,b){ return new PointerEvent(t,{pointerId:1,isPrimary:true,pointerType:"mouse",clientX:x,clientY:y,buttons:b,button:0,bubbles:true,cancelable:true}); }
+      el.dispatchEvent(pe("pointerdown",cx,cy,1)); el.dispatchEvent(pe("pointermove",cx+30,cy+12,1)); el.dispatchEvent(pe("pointermove",cx+60,cy+24,1)); window.dispatchEvent(pe("pointerup",cx+60,cy+24,0));
+      inPlace("a drag on the map",stopClock(TOUR[OPENING.stops[1]]),null); if(!freeCam) bad.push("a drag on the map: Follow still on");
+      begin(); to(2); LANDCAM.zoomAt(cx,cy,0.8); var kz=[landCam.position.x,landCam.position.y,landCam.position.z,orbitTarget.x,orbitTarget.y,orbitTarget.z]; openingWatch();
+      inPlace("a zoom",stopClock(TOUR[OPENING.stops[2]]),kz);
+      begin(); to(1); var kk=[landCam.position.x,landCam.position.y,landCam.position.z,orbitTarget.x,orbitTarget.y,orbitTarget.z]; key("1"); finishTween();
+      inPlace("the key 1",stopClock(TOUR[OPENING.stops[1]]),kk); if(aid()!=="play") bad.push("the key 1 with focus on the bar: focus on "+aid()+", not Play");
+      begin(); to(1); key("?",true); var hOn=helpOpen()&&OPENING.on; key("Escape"); var hOff=!helpOpen()&&OPENING.on; if(!hOn||!hOff) bad.push("“?” over the opening: opened "+hOn+", Esc closed the overlay and kept the opening "+hOff);
+      document.getElementById("tour-exit").click(); finishTween(); end("Skip after the overlay");
+      /* reduced motion: each step at its frame within 5 ms, nothing played */
+      RM=true; begin(); var rmOk=true;
+      for(k=1;k<N;k++){ document.getElementById("tour-next").click(); var t0=performance.now(); if(tween) tween(t0+5); if(!camAt(presetFrame(stopCam(TOUR[OPENING.stops[k]])))||playing) rmOk=false; finishTween(); }
+      if(!rmOk) bad.push("under reduced motion a step is not at its frame within 5 ms, or the clock plays");
+      openingEnd("skip"); finishTween(); RM=K0.rm;
+      el.setPointerCapture=spc;
+      if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+      setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
+      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv;
+      tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id);
+      ck("the opening: each step its tour stop, its words a TOUR field or a LABELS entry, one live message each; Finish, Skip and Esc from every step to 04:00, Study, the Overview, Play focused; a drag, a zoom and a key end it where it is (decisions 114, 115, 118)",
+        !bad.length, bad.length?bad.slice(0,8).join("; ")+(bad.length>8?"; and "+(bad.length-8)+" more":""):
+        walked+" steps (tour stops "+OPENING.stops.map(function(i){ return i+1; }).join(", ")+"): "+msgs.join(" | ")+"; "+ends+" ways out checked; the bar's arrows: "+dry+"; reduced motion: at each frame within 5 ms");
     })();
     /* Stage 6D (docs/STAGE6_SPEC.md section 6.3, "What must hold"; decisions 98, 105, 106): the standards from the table. Each expectation is
        derived here from COLOURS_CARRIED, STANDARD_MEASURES and KIT, not read back from kitStdRule or kitStdShape */

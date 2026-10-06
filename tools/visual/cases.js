@@ -6,6 +6,15 @@
 module.exports = [
   { name:"first-run", viewport:[1600,900], fresh:true,
     note:"What a first-time visitor sees, untouched." },
+  /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; owner decisions 114, 118, 121): the opening, each step on a fresh page reached as a visitor
+     reaches it, by real clicks on the card's primary action and the bar's Next (opening: the step's index, or "end" for Finish pressed on the
+     last step); their limits and baselines are what the 7C build measures there. Listed with the fresh 1600 x 900 cases, which run first */
+  { name:"opening-1", viewport:[1600,900], fresh:true, opening:0, note:"The opening's first step (tour stop 1, 04:00), by a click on the card's primary action." },
+  { name:"opening-2", viewport:[1600,900], fresh:true, opening:1, note:"The opening's second step (tour stop 6, 08:45); then real keys: Esc, Enter on Next, Space on Skip." },
+  { name:"opening-3", viewport:[1600,900], fresh:true, opening:2, note:"The opening's third step (tour stop 7, 11:00)." },
+  { name:"opening-4", viewport:[1600,900], fresh:true, opening:3, note:"The opening's last step (tour stop 8, 14:30)." },
+  { name:"opening-end", viewport:[1600,900], fresh:true, opening:"end", note:"Where the opening leaves the visitor: 04:00, Study on the Now tab, the Overview, Play focused (decision 118)." },
+  { name:"opening-1-laptop", viewport:[1280,720], fresh:true, opening:0, note:"The opening's first step at 1280 x 720." },
   /* Stage 7B (owner decision 122): the first screen on a phone-sized window, recorded (its timeline is not held to 92 px). Listed before
      first-run-laptop so that the harness's last page, on which the self-test runs, stays the 1366 x 768 one */
   { name:"narrow-390", viewport:[390,844], fresh:true,

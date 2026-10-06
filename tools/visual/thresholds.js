@@ -148,6 +148,16 @@ module.exports.check=function(name,m){
     if(K.focus0!=="fr-tour") f.push("the first-run card does not take focus on its primary action ("+K.focus0+")");
     if(!K.tabs.every(x=>x.inCard)) f.push("Tab leaves the first-run card: "+K.tabs.map(x=>x.id).join(", "));
     if(K.open||!K.camSame||K.focus1!=="play") f.push("Esc on the first-run card: open "+K.open+", camera unmoved "+K.camSame+", focus "+K.focus1+" (want closed, unmoved, Play)"); }
+  /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decisions 114, 118): an opening case shows the step its clicks reached (or, after Finish, the end
+     state at 04:00); on the opening-2 page, by real key presses, Esc from step 2, Enter on the focused Next and Space on Skip do what they say */
+  if(m.opening){ const O=m.opening;
+    if(O.want==="end"?(O.on||O.stop!==-1||O.clock!==240):(!O.on||O.k!==O.want)) f.push("the opening's clicks reached "+(O.on?"step "+(O.k+1):"no step")+" (tour stop "+(O.stop+1)+", clock "+O.clock+"), not "+(O.want==="end"?"the end state":"step "+(O.want+1))); }
+  if(m.openingKeys){ const K=m.openingKeys, endOk=q=>!q.on&&q.stop===-1&&q.clock===240&&q.pres==="study"&&q.follow&&q.vantage==="plan"&&q.id==="play"&&!q.bar&&(!m.viewport||m.viewport[0]<1080||q.tab==="now");
+    if(!endOk(K.esc)) f.push("Esc at the opening's step 2 did not land on the end state: "+JSON.stringify(K.esc));
+    if(!(K.begun.on&&K.begun.k===0&&K.begun.id==="tour-next")) f.push("the tools' button did not begin the opening with focus on its Next: "+JSON.stringify(K.begun));
+    if(!(K.enter.on&&K.enter.k===1&&K.enter.id==="tour-next")) f.push("Enter on the opening's Next did not step to step 2: "+JSON.stringify(K.enter));
+    if(K.tab!=="tour-exit") f.push("Tab from the opening's Next went to "+K.tab+", not Skip");
+    if(!endOk(K.space)) f.push("Space on Skip did not land on the end state: "+JSON.stringify(K.space)); }
   if(m.stats&&m.stats.camera&&m.stats.camera.violations) f.push("a camera path bypassed the floor ("+m.stats.camera.violations+")");
   /* Stage 2D: the map layer. The overlap test above reads its rendered boxes and is stricter (any shared pixel) */
   const L=m.layer;

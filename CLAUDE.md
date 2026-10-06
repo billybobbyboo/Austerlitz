@@ -32,7 +32,7 @@ north-up SVG of a formation's day in its full dossier), the figures by class (si
 `kitDress`, `kitAllocate`, `kitGeo`/`kitGeos`, `kitHat`; the dossier's Dress `dressSection`; the sources sheet's `troopNotes`; decision 107's side
 footprint in `updateVisibility`; `CONF.none`, a measurement switch the app never sets), the standards from the table (since 6D: `kitStdRule`,
 `kitStdShape`, `MAN_FOOT`, `flagTexture` by painting, `placeStandards`, `stdCount`; `KIT.flag`, `KIT.paint`, `KIT.carry`, `KIT.std`; the sources
-sheet's `standardNotes`), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 5C its interval bars, `EV_BAR`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`), runtime checks |
+sheet's `standardNotes`), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 5C its interval bars, `EV_BAR`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`; since 7B the first-run card a modal dialog, `openFirstRun`/`closeFirst`; since 7C the opening, `OPENING`: four tour stops by index in the tour's bar, `openingStart`, `openingGo`, `openingEnd`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2 to Stage 7 measurement scripts (`stage2/`, `stage3/`, `stage4/`, `stage5/`, `stage6/`, `stage7/`, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
@@ -79,14 +79,15 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
   explicit anchor time carries evidence found in the sources, a grade and a basis; a derived arrival at the march-rate ceiling
   only for the legs it names (`CEILING_FLAGGED`), every other at the tactical rate (a design value, unsourced).
-- `npm run check:contrast`: every visible text element in 32 interface states (the map layer's plates and the legend among them, map text also
+- `npm run check:contrast`: every visible text element in 34 interface states (the map layer's plates and the legend among them, map text also
   over black and white ground, the paper map as entered and close since 2E; Study as it opens and the Now tab on the paper map since 3B;
   Watch on the paper map and on the landscape since 3C; the "?" overlay over both since 3E; since 5E the dossier's knowledge reason, the eye-level
-  caption, the paper map with a headquarters' reading; since 5G the dossier with its day-track inset)
-  meets WCAG AA and the 10.5 px floor.
-- `npm run check:visual`: 24 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
+  caption, the paper map with a headquarters' reading; since 5G the dossier with its day-track inset; since 7C the opening's bar at a step and the
+  screen it ends on) meets WCAG AA and the 10.5 px floor.
+- `npm run check:visual`: 30 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
   `narrow-1024`, the undocked layout, since 3C the phase-8 Overview in Study and in Watch, since 5E the eye level at the Zuran at 4x
-  and 1x, since 5F the Plans tab at the Overview, `plans-overview`, and since 7B the first screen at 390 x 844, `narrow-390`), Stage 0
+  and 1x, since 5F the Plans tab at the Overview, `plans-overview`, since 7B the first screen at 390 x 844, `narrow-390`, and since 7C the
+  opening's four steps and its end at 1600 x 900 and its first step at 1280 x 720, each on a fresh page reached by real clicks), Stage 0
   thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()` (its ground, camera, figure, mist, overlay-draping and arrowhead
   checks at 1x, 4x and 10.33x, and since 2D its map-layer checks: no overlap, nothing over a panel or an arrow head, the
   never-dropped items drawn, every dropped formation reachable by hover and keyboard, the legend never over the dispatch).
@@ -205,13 +206,24 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   detachment's battalions take theirs); `tools/stage6/compare-6d.js` (not in the suite) measures the build against the 6C build.
   Since 7B: the first-run card a modal dialog (the self-test: its attributes, focus on its primary action, Tab and Shift+Tab kept inside;
   docked, the Now tab and its dispatch beside the card with a "derived" tag on screen, decision 113; Esc, the stay button and a press outside
-  close it where it stands, camera and clock unmoved, focus on Play, decision 118's rule; the primary starts the tour with focus on its Next);
+  close it where it stands, camera and clock unmoved, focus on Play, decision 118's rule; the primary begins the opening, since 7C, with focus on
+  its Next);
   the harness's Stage 0 check "first-run card stacked on the dispatch card" is an overlap test of the two boxes (the docked dispatch is the
   rail's Now tab, which the card cannot stand over); Study shows the Now tab also while the card is open; by real key presses on the fresh
   `first-run` page, focus on the primary at load, four Tabs inside the card, Esc closing it in place with focus on Play; `narrow-390` (decision
   122) with its timeline's height recorded, not held to 92 px; `css-test.js` checks the card's dialog attributes, its two buttons and their
   words from `LABELS`, no hint and no "Watch the battle", buttons at least 24 px, the docked dispatch not hidden under it; `runtime-test.js`
   dry-runs each way out.
+  Since 7C: the opening (`opening-1` to `opening-4`, `opening-end`, `opening-1-laptop`; decision 121: their drop limits and unobstructed
+  baselines what the 7C build measures there, never raised or lowered; the confidence, skeleton and routes measures taken there as in every
+  reading view; each case's clicks reach its step, or after Finish the end state); by real key presses on the `opening-2` page, Esc from step 2
+  to the end state (04:00, Study, the Now tab, the Overview with Follow on, focus on Play, decision 118), the tools' button and Enter on the
+  focused Next to step 2, Tab to Skip and Space to the end state; the self-test's opening checks (each step its tour stop's clock, theme and
+  camera, Follow on; every string shown a `TOUR` field or a `LABELS` entry, decision 115; one live message per step and no phase announcement
+  besides; the bar's arrows a row of `KEYS`; Finish, Skip and Esc from every step to the end state; a drag, a zoom and a key end it where it is;
+  "?" over it; under reduced motion each step at its frame within 5 ms) and, at 1x, 4x and 10.33x, the opening's glides above the floor;
+  `css-test.js` checks its words (no figure, clock, name or quotation), its stops 1, 6, 7, 8 (decision 114), the bar a named region, Esc's skip
+  and the folded announcement; `runtime-test.js` dry-runs it forward, back, finished and ended by every way from every step, then the tour.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
 - `npm run check:baseline` passes only on the unmodified Stage 7B build (md5 `82337dd4...`, 1,729,495 bytes;
   re-baselined from the Stage 6D build `3dd7ca41...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.

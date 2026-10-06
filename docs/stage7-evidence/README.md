@@ -29,3 +29,11 @@ world-pass times are not comparable with the first run's (no other measure depen
 |---|---|---|
 | `7b-firstrun-probe.json` | the first screen at the same five sizes, under reduced motion and on a visitor's page; each way out (the absent "Watch the battle" recorded as absent); reload; the counts; the dispatch card's box below 1080 px and what each first screen names (`CHANGELOG.md`, Stage 7B) | `node tools/stage7/firstrun-probe.js --json docs/stage7-evidence/7b-firstrun-probe.json --sheet docs/stage7-evidence/7b-firstrun-sheet.jpg --title "Stage 7B: the first screen (fresh pages)"`, then `--only narrow` with the same `--json` |
 | `7b-firstrun-sheet.jpg` | the seven first screens on the 7B build | the same run (the `screens` part) |
+
+**Stage 7C** (on the 7C build; the "before" of each step is Part A's `opening-probe.json`, the same tour stops applied by the tour's own `applyTour`
+in the probe's page):
+
+| file | what | script |
+|---|---|---|
+| `7c-opening-probe.json` | the opening as built, on fresh pages driven by real clicks and key presses: each step and the end state at 1600 x 900 and 1280 x 720 (the glide that reached it, the bar's box and whether its text is whole, every string shown against `TOUR` and `LABELS`, one frame's measures as the harness takes them); Skip and Esc from every step, a drag on the map and the key M at step 2; reduced motion; the length at 160, 200 and 238 words a minute (`CHANGELOG.md`, Stage 7C) | `node tools/stage7/opening-7c-probe.js` |
+| `7c-opening-sheet.jpg` | the eleven frames of the `steps` part | the same run |
