@@ -1,0 +1,58 @@
+
+> test
+> sh tools/run-all.sh
+
+BUILD OK: bytes: 1755727  bundle 1692425 bytes, html 1764002 bytes
+=== height guard  exit=0
+height-function call sites: 97  {"localHeight":5,"regionalLevel":3,"height":11,"groundY":73,"hAt":5}  {"model":18,"presentation":43,"test":36}
+presentation sites calling height()/hAt(): 0
+=== css-test.js  exit=0
+CSS ERRORS: 0
+behaviour checks: 9/9 pass
+=== test.js  exit=0
+appearance checks: 588/588 pass (49 dress classes, 62 sources, 32 leaf formations, 24 colours entries)
+ERRORS: 0
+warnings: 0
+order of battle checks: 41/41 pass
+=== geo-test.js  exit=0
+geo-test: 54 passed, 0 failed
+=== terrain-test.js  exit=0
+  tour stop 5 quotes 73% and under 3%; live readings 73.4% and 2.1%: agree
+  summit ordering (Pratzeberg > Santon/Vinohrady/Zuran > col > Pratzen village > Goldbach): OK
+  the Goldbach falls downstream (Kobelnitz >= Sokolnitz >= Telnitz): OK  (210 > 207 > 196 m)
+  Satschan mere: water -10.61, lowest ground at its edge -10.56  OK
+  Menitz mere: water -7.82, lowest ground at its edge -7.45  OK
+=== audit.js  exit=0
+=== MARCH RATE VIOLATIONS (0) ===
+=== TERRAIN VIOLATIONS (0) ===
+=== sim-test.js  exit=0
+  25 events checked against formation positions (true distance, 1 km default): 0 disagreements
+  worst agreement under the default tolerance: telnitz 0.82 km
+  explicit tolerance: pratzen-village 1.21 km (allowed 1.5): Thiebault’s brigade is not plotted separately: the marker is the village it cleared, and at about 09:00 the division’s plotted centre i
+  explicit tolerance: blasowitz 1.16 km (allowed 1.3): division-level: the marker is the village; Caffarelli’s plotted centre lies about 1.2 km from it, within the division’s frontage
+  explicit tolerance: ice 1.17 km (allowed 1.5): the marker is the target of a bombardment: the guns fire from the chapel height about 2 km away, and the retreating columns are converging on the ice
+  most men on the field at once: Allied 83120 of 85400, French 69900 of 73000 (naive sum of tracked Allied strengths would be 127370)
+  tour stop 4 quotes 39000 and 19000; live figures 38700 at 04:00 and 19300 before the attack: agree
+ERRORS: 0 
+warnings: 0
+=== redteam.js  exit=0
+retired claims checked: 37 phrases across 6 sources, 0 found
+findings: 0
+warnings: 1
+=== runtime-test.js  exit=0
+9 tour stops forward and back OK
+first run: opened and closed by each way out (the opening, in place, a press outside) OK
+standards: 148 on the blocks as their colours entries rule, none on headquarters or batteries, a detachment's taken with its battalions OK
+parent/child: buxhowden (command post), lang (column, own battalions only); 57 moments: no command renders troops, no detachment drawn twice, every drawn block on the field, totals within both armies 
+console.warn unique: 1
+errors: 0
+=== binding-test.js  exit=0
+binding: 36 arrows, 17 derived from the leg executed in their phase, 4 route, 3 objective, 5 group, 4 unmodelled, 1 halt, 2 unsettled (interpretive)
+unsettled, hand-authored and listed (decision 37): phase 1 "I Column descends" (the unresolved Dokhturov conflict (dok@1)); phase 4 "Kamensky turns about" (the unresolved Kamensky conflict (kamensky@3
+dashed or segmented drawers: app.js: routeBuild, dashRuns, buildArrow, planStaging, buildPlanLinks, updatePlanLinks; world.js: buildAnalysis; boundaries, lines, halt bars and the trail solid
+binding-test: 383 checks, 0 failed
+ALL 9 SUITES PASSED (and the height guard)
+
+real	5m1.688s
+user	5m2.568s
+sys	0m2.140s

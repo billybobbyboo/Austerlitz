@@ -1,0 +1,5 @@
+binding: 36 arrows, 17 derived from the leg executed in their phase, 4 route, 3 objective, 5 group, 4 unmodelled, 1 halt, 2 unsettled (interpretive)
+draw-on: only the derived arrows (a.leg) draw on with the clock; interpretive arrows, lines, boundaries, halt bars and plans keep the phase's fade
+unsettled, hand-authored and listed (decision 37): phase 1 "I Column descends" (the unresolved Dokhturov conflict (dok@1)); phase 4 "Kamensky turns about" (the unresolved Kamensky conflict (kamensky@3, kamensky@4))
+dashed or segmented drawers: app.js: routeBuild, dashRuns, buildArrow, planStaging, buildPlanLinks, updatePlanLinks; world.js: buildAnalysis; boundaries, lines, halt bars and the trail solid
+binding-test: 383 checks, 0 failed

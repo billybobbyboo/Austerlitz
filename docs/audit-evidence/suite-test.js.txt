@@ -1,0 +1,36 @@
+formations: 40 | phases: 10 | features: 24
+
+-- relief (m) --
+Pratzeberg                     324
+Stare Vinohrady                294
+col south of Stare Vinohrady   272
+Santon                         296
+Zuran                          290
+Bosenitz                       258
+Pratzen                        245
+Kobelnitz                      210
+Sokolnitz                      207
+Telnitz                        196
+Augezd                         190
+Blasowitz                      246
+Krzenowitz                     216
+Austerlitz                     227
+
+-- counters on the field by phase --
+ 0 04:00 - 07:00  fr:18 allied:12
+ 1 07:00 - 08:00  fr:18 allied:12
+ 2 08:00 - 08:45  fr:18 allied:13
+ 3 08:45 - 09:30  fr:18 allied:13
+ 4 09:30 - 10:30  fr:18 allied:13
+ 5 10:30 - 11:15  fr:18 allied:13
+ 6 11:15 - 12:45  fr:18 allied:13
+ 7 12:45 - 14:30  fr:19 allied:13
+ 8 14:30 - 17:00  fr:19 allied:13
+ 9 After dark     fr:19 allied:12
+
+phases: 10 | chapters: 10 | command entries: 18
+appearance checks: 588/588 pass (49 dress classes, 62 sources, 32 leaf formations, 24 colours entries)
+
+ERRORS: 0
+warnings: 0
+order of battle checks: 41/41 pass

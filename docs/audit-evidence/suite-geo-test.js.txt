@@ -1,0 +1,63 @@
+-- transform --
+  ok   the audited map positions are reproduced by the transform  (worst 17 m, rounding only)
+  ok   geo -> map -> geo round trip is exact  (0.0e+0 m)
+  ok   scale: 31.65 map units per true km (0.0316 km per unit)  (0.03160 km/unit)
+  ok   frame rotation 17.4 degrees  (17.42 deg)
+  ok   true north vector matches the rotation
+  ok   true bearing Pratzen -> Pratzeberg is south (186 deg)  (186 deg)
+  ok   Pratzeberg is about 1.46 km from Pratzen village  (1.47 km)
+-- one scale --
+  ok   world.js takes UNITS_PER_KM from GEOREF
+  ok   app.js takes KM_PER_MAP from GEOREF
+  ok   no hard-coded legacy scale constants anywhere
+  ok   the sources text derives the exaggeration, never types it
+  ok   vertical exaggeration derived from the two scales  (10.3x)
+  ok   the location descriptor uses true distance and true bearing
+  ok   the compass rose is driven by true north
+-- places --
+  ok   every surveyed village within 0.5 km of ground truth  (worst Blasowitz 20 m)
+  ok   Raigern, Rausnitz and Kowalowitz are not drawn inside the frame
+  ok   Hostieradek and the Posoritz post house are present
+  ok   feature markers of named places within 0.5 km of ground truth  (worst blasowitz 20 m)
+  ok   Raigern and Rausnitz are shown as markers at the frame edge  ([18,500] [393,6])
+-- water --
+  ok   the Litava passes Augezd (within 0.1 km)  (2 m)
+  ok   the Litava passes Satschan (within 0.1 km)  (7 m)
+  ok   the Litava passes Hostieradek (within 0.5 km)  (291 m)
+  ok   the Litava runs along the southern edge of Austerlitz (0.2-0.8 km from the centre)  (400 m)
+  ok   Krzenowitz stands on the Rakovec, not the Litava  (Rakovec 15 m, Litava 1001 m)
+  ok   the Goldbach passes Puntowitz (within 0.5 km)  (60 m)
+  ok   the Goldbach passes Kobelnitz (within 0.5 km)  (68 m)
+  ok   the Goldbach passes Sokolnitz (within 0.5 km)  (103 m)
+  ok   the Goldbach passes Telnitz (within 0.5 km)  (36 m)
+-- roads --
+  ok   the Olmutz highway passes the Santon's southern foot (0.2-0.6 km from the summit)  (276 m)
+  ok   the highway runs through the Posoritz post house
+  ok   the highway leaves the frame north-east, toward Rausnitz  (true bearing 80 deg)
+  ok   Holubitz lies well south of the highway (> 1.5 km)  (1.72 km)
+  ok   no "Vienna post road" inside the frame
+  ok   the Raigern-Telnitz road runs from the frame edge to Telnitz
+-- terrain anchors (m) --
+  ok   Pratzeberg 324 m (within 5)  (324 m)
+  ok   Stare Vinohrady 294 m (within 6)  (294 m)
+  ok   Santon 296 m (within 6)  (296 m)
+  ok   Zuran 290 m (within 6)  (290 m)
+  ok   Bosenitz 257 m (within 8)  (258 m)
+  ok   Kobelnitz 211 m (within 6)  (210 m)
+  ok   Sokolnitz 207 m (within 6)  (207 m)
+  ok   Telnitz 195 m (within 8)  (196 m)
+  ok   Augezd 195 m (within 8)  (190 m)
+  ok   Krzenowitz 210 m (within 8)  (216 m)
+  ok   Austerlitz within its sourced 200-237 m range  (227 m)
+  ok   the Pratzeberg is the highest ground, 25+ m above Santon, Stare Vinohrady and Zuran
+  ok   Pratzen village lies below the crest it sits beside
+-- re-anchored positions --
+  ok   Napoleon starts on the Zuran  (14 m)
+  ok   Napoleon moves to Stare Vinohrady (no chapel there)  (143 m)
+  ok   Napoleon ends at the St Anthony chapel above Augezd  (107 m)
+  ok   the Allied HQ is at Krzenowitz at 04:00  (245 m)
+  ok   Friant starts at the frame edge on the road from Raigern
+  ok   Suchet and Bagration are plotted on the corrected highway
+  ok   no Allied formation stands in Pratzen village after the French cleared it (09:00)
+
+geo-test: 54 passed, 0 failed

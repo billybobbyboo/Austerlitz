@@ -1,0 +1,48 @@
+buildCover 1156ms   buildGrid 1916ms
+terrain sample 2475ms
+
+-- land cover --
+  open field    83.7%
+  meadow         5.8%
+  track          2.5%
+  water          2.3%
+  village        2.0%
+  wood           1.9%
+  marsh          1.6%
+  vineyard       0.2%
+
+contours: 13 levels, 8,626 segments in 572ms | index lines: 2,291
+
+-- sightlines (share of the field visible from a 3 m eye) --
+  Pratzeberg               73.4%
+  Stare Vinohrady          64.4%
+  Santon                   41.9%
+  Zuran                    38.7%
+  Puntowitz (valley)       2.1%
+  Sokolnitz (valley)       0.7%
+  Augezd                   4.8%
+
+From the Pratzeberg:  Sokolnitz is dead ground,  Telnitz is dead ground,  Kobelnitz is dead ground
+From Puntowitz:       the Pratzeberg is dead ground,  Stare Vinohrady is dead ground
+  tour stop 5 quotes 73% and under 3%; live readings 73.4% and 2.1%: agree
+
+-- relief (m, model | verified) --
+  Pratzeberg                     324 | 324 ±5
+  Stare Vinohrady                294 | 294 ±6
+  Santon                         296 | 296 ±6
+  Zuran                          290 | 290 ±6
+  Bosenitz                       258 | 257 ±8
+  Kobelnitz                      210 | 211 ±6
+  Sokolnitz                      207 | 207 ±6
+  Pratzen                        245 | 245 ±12
+  col south of Stare Vinohrady   272 | 273 ±10
+  Telnitz                        196 | 195 ±8
+  Augezd                         190 | 195 ±8
+  Krzenowitz                     216 | 210 ±8
+  Austerlitz                     227 | 218.5 ±18.5
+  summit ordering (Pratzeberg > Santon/Vinohrady/Zuran > col > Pratzen village > Goldbach): OK
+  the Goldbach falls downstream (Kobelnitz >= Sokolnitz >= Telnitz): OK  (210 > 207 > 196 m)
+  Satschan mere: water -10.61, lowest ground at its edge -10.56  OK
+  Menitz mere: water -7.82, lowest ground at its edge -7.45  OK
+  vertical exaggeration (derived): 10.3x
+crop distribution (stubble/plough/pasture/sowing): 49/26/14/11 %

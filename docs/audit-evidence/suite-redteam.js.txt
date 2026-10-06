@@ -1,0 +1,8 @@
+explicit-time rules: 5 of 5 invalid timings rejected; a valid delayed move holds until 09:45 and arrives 09:49
+retired claims checked: 37 phrases across 6 sources, 0 found
+=== RED TEAM ===
+findings: 0
+warnings: 1
+  ~ movement: cavalry mean rate 0.82 is not above infantry 1.23
+
+mean march rates  infantry 1.23  cavalry 0.82  artillery 3.17 km/h
