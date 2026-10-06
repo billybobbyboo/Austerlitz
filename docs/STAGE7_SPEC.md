@@ -873,6 +873,17 @@ without its correction, which opportunity 4 forbids suggesting); five phase anno
 it plays (decision 56). **Report and tests** as 7C, with the played path sampled (clearance, floor lifts, screen speed under 150 px/s, drops
 every 10 minutes no more than Follow's 19) and the pause by Space.
 
+**7D, as delivered (fact; `CHANGELOG.md`, Stage 7D).** Built under decision 123 (§0.6), which supersedes 116: Next on a step plays the clock
+to the next stop at 4x, the opening's own speed, with Follow, the dwell and the draw-on, the stop's theme cleared; the bar shows the next stop's
+title and the dwell's event names (`EVENTS[].n`, as the timeline caption shows them); one live message as it starts and one at the step, the
+phase announcements folded; the Play/Pause button and Space off a button pause it; Next while it plays goes straight to the step, Back returns;
+every other way ends the opening as 7C does, the visitor's speed put back; under reduced motion 7C's cuts. Three things the plan did not
+settle: the step reached is the tour stop's frame (applied with the tour's glide from Follow's view; Part A's prototype held Follow's view), so
+7C's limits hold; Next while it plays goes straight there (Space on a focused button presses it, the 3E rule); the card's primary reads "Begin
+(two min)" ("two minutes" wraps at 390 px). Measured with `tools/stage7/opening-7d-probe.js`, the stretches run by the app's own tick: 18.1,
+11.2 and 15.5 s at 4x (19 dwells), never under the floor (lowest 34.2 units, no lift), the target within 150 px/s, drops at most 14 at
+1600 x 900 and 16 at 1280 x 720 (Follow's limit 19), no phase announcement while it plays; the opening 95-116 s at 238 to 160 words a minute.
+
 ### What the records still leave open after Stage 7 (listed, not proposed)
 
 Stage 7 is the roadmap's last line (`docs/VISUAL_AUDIT.md:163`). After it, the records leave open:

@@ -37,3 +37,11 @@ in the probe's page):
 |---|---|---|
 | `7c-opening-probe.json` | the opening as built, on fresh pages driven by real clicks and key presses: each step and the end state at 1600 x 900 and 1280 x 720 (the glide that reached it, the bar's box and whether its text is whole, every string shown against `TOUR` and `LABELS`, one frame's measures as the harness takes them); Skip and Esc from every step, a drag on the map and the key M at step 2; reduced motion; the length at 160, 200 and 238 words a minute (`CHANGELOG.md`, Stage 7C) | `node tools/stage7/opening-7c-probe.js` |
 | `7c-opening-sheet.jpg` | the eleven frames of the `steps` part | the same run |
+
+**Stage 7D** (on the 7D build; decision 123; the holds' "before" is 7C's `7c-opening-probe.json`, Part A's played prototype is
+`opening-probe.json`'s `played` part):
+
+| file | what | script |
+|---|---|---|
+| `7d-opening-probe.json` | the clock played between the opening's steps at 1600 x 900 and 1280 x 720: each stretch begun by a real click on Next and run by the app's own tick in 50 ms steps (its length with the dwells, the lowest clearance, the floor's lifts, the target's speed across the screen, the drops every ten clock minutes, the bar's words, the phase announcements), a frame paused mid-stretch, the arrival glide and the step's frame after it; by real clicks and key presses, Space and the Play/Pause button pausing and resuming, Next, Back and Esc while it plays; reduced motion (`CHANGELOG.md`, Stage 7D) | `node tools/stage7/opening-7d-probe.js` |
+| `7d-opening-sheet.jpg` | the six mid-stretch frames | the same run |

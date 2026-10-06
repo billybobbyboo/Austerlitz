@@ -1,0 +1,1275 @@
+{
+ "path": {
+  "1600x900": {
+   "stretches": [
+    {
+     "to": 2,
+     "start": {
+      "on": true,
+      "step": 1,
+      "play": true,
+      "to": 2,
+      "playing": true,
+      "speed": 4,
+      "clock": "04:00",
+      "head": "Opening, step 2 of 4: the clock plays",
+      "live": "The clock plays on to step 2 of 4, 08:45. Pause stops it; Next goes straight there.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true
+     },
+     "mid": {
+      "on": true,
+      "step": 1,
+      "play": true,
+      "to": 2,
+      "playing": false,
+      "speed": 4,
+      "clock": "06:31",
+      "head": "Opening, step 2 of 4: paused",
+      "live": "The clock plays on to step 2 of 4, 08:45. Pause stops it; Next goes straight there.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true,
+      "frame": {
+       "unobstructed": 0.6569,
+       "clearance": 105.976,
+       "layer": {
+        "items": 53,
+        "placed": 42,
+        "underPanel": 2,
+        "dropped": 9,
+        "droppedIds": [
+         "t:pratzen",
+         "t:vinohrady",
+         "t:pratzeberg",
+         "t:santon",
+         "t:zuran",
+         "t:goldbach",
+         "t:telnitz",
+         "t:sokolnitz",
+         "t:satschan"
+        ],
+        "ms": 2.8,
+        "minPx": 11.5,
+        "limit": 19,
+        "overLimit": false
+       },
+       "text": {
+        "min": 8.24,
+        "belowAA": 0,
+        "n": 51
+       },
+       "dark": {
+        "solidBlack": 0,
+        "solidBlocks": 0,
+        "nearBlack": 0.0004,
+        "meanLum": 73.5,
+        "overLimit": false
+       },
+       "smoke": 0,
+       "smokeOver": false,
+       "conf": 0.0299,
+       "confOver": false,
+       "cost": {
+        "calls": 787,
+        "tris": 2499977,
+        "worldMs": 17.9
+       },
+       "firstRunVisible": false,
+       "dispatchVisible": false,
+       "docking": {
+        "hasNowTab": true,
+        "dispatchInRail": true,
+        "docked": true,
+        "legendOpen": false,
+        "tab": "now"
+       },
+       "presentation": "study",
+       "mode": "terrain",
+       "stage0": []
+      }
+     },
+     "run": {
+      "secs": 18.1,
+      "steps": 362,
+      "dwells": 7,
+      "lowest": 86.14,
+      "lifts": 0,
+      "spd": 150,
+      "drops": 11,
+      "dropAt": "08:30",
+      "words": {
+       "The day plays on to this step. Pause or Space stops it; Next goes straight there.": 3,
+       "Liechtenstein counter-marches across the 4th Column": 117,
+       "Kienmayer attacks Telnitz": 63,
+       "Friant's leading brigade reaches the Goldbach": 45,
+       "Langeron and Przybyszewski attack Sokolnitz": 53,
+       "Napoleon releases Soult against the heights": 35,
+       "Friant retakes Telnitz, then withdraws behind the stream": 37,
+       "Saint-Hilaire and Vandamme climb the slope": 8
+      },
+      "msgs": [],
+      "phaseSaid": 0
+     },
+     "arrivalGlide": {
+      "samples": 51,
+      "lowest": 46.19,
+      "lifts": 0
+     },
+     "arrived": {
+      "on": true,
+      "step": 2,
+      "play": false,
+      "to": null,
+      "playing": false,
+      "speed": 0.5,
+      "clock": "08:45",
+      "head": "Opening, step 2 of 4",
+      "live": "Step 2 of 4: The French strike, 08:45.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true
+     }
+    },
+    {
+     "to": 3,
+     "start": {
+      "on": true,
+      "step": 2,
+      "play": true,
+      "to": 3,
+      "playing": true,
+      "speed": 4,
+      "clock": "08:52",
+      "head": "Opening, step 3 of 4: the clock plays",
+      "live": "The clock plays on to step 3 of 4, 11:00. Pause stops it; Next goes straight there.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true
+     },
+     "mid": {
+      "on": true,
+      "step": 2,
+      "play": true,
+      "to": 3,
+      "playing": false,
+      "speed": 4,
+      "clock": "10:00",
+      "head": "Opening, step 3 of 4: paused",
+      "live": "The clock plays on to step 3 of 4, 11:00. Pause stops it; Next goes straight there.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true,
+      "frame": {
+       "unobstructed": 0.6569,
+       "clearance": 76.001,
+       "layer": {
+        "items": 47,
+        "placed": 39,
+        "underPanel": 0,
+        "dropped": 8,
+        "droppedIds": [
+         "t:pratzen",
+         "t:vinohrady",
+         "t:pratzeberg",
+         "t:santon",
+         "t:zuran",
+         "t:litava",
+         "t:satschan",
+         "t:austerlitz"
+        ],
+        "ms": 1.4,
+        "minPx": 11.5,
+        "limit": 19,
+        "overLimit": false
+       },
+       "text": {
+        "min": 8.63,
+        "belowAA": 0,
+        "n": 54
+       },
+       "dark": {
+        "solidBlack": 0,
+        "solidBlocks": 0,
+        "nearBlack": 0.0008,
+        "meanLum": 77.8,
+        "overLimit": false
+       },
+       "smoke": 0.0963,
+       "smokeOver": false,
+       "conf": 0.0556,
+       "confOver": false,
+       "cost": {
+        "calls": 837,
+        "tris": 2526969,
+        "worldMs": 45.1
+       },
+       "firstRunVisible": false,
+       "dispatchVisible": false,
+       "docking": {
+        "hasNowTab": true,
+        "dispatchInRail": true,
+        "docked": true,
+        "legendOpen": false,
+        "tab": "now"
+       },
+       "presentation": "study",
+       "mode": "terrain",
+       "stage0": []
+      }
+     },
+     "run": {
+      "secs": 11.2,
+      "steps": 223,
+      "dwells": 5,
+      "lowest": 47.42,
+      "lifts": 0,
+      "spd": 150,
+      "drops": 9,
+      "dropAt": "09:20",
+      "words": {
+       "Thiebault's brigade clears Pratzen village": 45,
+       "Kutuzov orders the 4th Column to face about": 51,
+       "Kamensky turns his brigade about and drives the French off the crest": 62,
+       "Langeron's reinforcements arrive as the crest is lost": 57,
+       "The Pratzeberg is firmly in French hands; The Russian Guard takes the eagle of the 4th Line": 7
+      },
+      "msgs": [],
+      "phaseSaid": 0
+     },
+     "arrivalGlide": {
+      "samples": 51,
+      "lowest": 38.72,
+      "lifts": 0
+     },
+     "arrived": {
+      "on": true,
+      "step": 3,
+      "play": false,
+      "to": null,
+      "playing": false,
+      "speed": 0.5,
+      "clock": "11:00",
+      "head": "Opening, step 3 of 4",
+      "live": "Step 3 of 4: The army divided, 11:00.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true
+     }
+    },
+    {
+     "to": 4,
+     "start": {
+      "on": true,
+      "step": 3,
+      "play": true,
+      "to": 4,
+      "playing": true,
+      "speed": 4,
+      "clock": "11:07",
+      "head": "Opening, step 4 of 4: the clock plays",
+      "live": "The clock plays on to step 4 of 4, 14:30. Pause stops it; Next goes straight there.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true
+     },
+     "mid": {
+      "on": true,
+      "step": 3,
+      "play": true,
+      "to": 4,
+      "playing": false,
+      "speed": 4,
+      "clock": "13:00",
+      "head": "Opening, step 4 of 4: paused",
+      "live": "The clock plays on to step 4 of 4, 14:30. Pause stops it; Next goes straight there.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true,
+      "frame": {
+       "unobstructed": 0.6569,
+       "clearance": 89.498,
+       "layer": {
+        "items": 48,
+        "placed": 41,
+        "underPanel": 0,
+        "dropped": 7,
+        "droppedIds": [
+         "t:pratzen",
+         "t:vinohrady",
+         "t:pratzeberg",
+         "t:litava",
+         "t:telnitz",
+         "t:sokolnitz",
+         "t:satschan"
+        ],
+        "ms": 1,
+        "minPx": 11.5,
+        "limit": 19,
+        "overLimit": false
+       },
+       "text": {
+        "min": 8.57,
+        "belowAA": 0,
+        "n": 53
+       },
+       "dark": {
+        "solidBlack": 0,
+        "solidBlocks": 0,
+        "nearBlack": 0.0004,
+        "meanLum": 67.4,
+        "overLimit": false
+       },
+       "smoke": 0.0674,
+       "smokeOver": false,
+       "conf": 0.0504,
+       "confOver": false,
+       "cost": {
+        "calls": 846,
+        "tris": 2573163,
+        "worldMs": 43.2
+       },
+       "firstRunVisible": false,
+       "dispatchVisible": false,
+       "docking": {
+        "hasNowTab": true,
+        "dispatchInRail": true,
+        "docked": true,
+        "legendOpen": false,
+        "tab": "now"
+       },
+       "presentation": "study",
+       "mode": "terrain",
+       "stage0": []
+      }
+     },
+     "run": {
+      "secs": 15.5,
+      "steps": 309,
+      "dwells": 7,
+      "lowest": 34.25,
+      "lifts": 0,
+      "spd": 150,
+      "drops": 14,
+      "dropAt": "11:20",
+      "words": {
+       "Blasowitz falls and Bagration is levered off the army; Rapp's counter-charge breaks the Chevalier Guard": 48,
+       "Buxhowden does not yet know the centre is gone": 50,
+       "Napoleon moves forward to Stare Vinohrady": 55,
+       "Davout resumes the offensive": 55,
+       "The French centre turns south": 35,
+       "Sokolnitz falls; Przybyszewski's column is surrounded": 55,
+       "Vandamme takes the height above the Augezd defile": 10
+      },
+      "msgs": [],
+      "phaseSaid": 0
+     },
+     "arrivalGlide": {
+      "samples": 51,
+      "lowest": 94.49,
+      "lifts": 0
+     },
+     "arrived": {
+      "on": true,
+      "step": 4,
+      "play": false,
+      "to": null,
+      "playing": false,
+      "speed": 0.5,
+      "clock": "14:30",
+      "head": "Opening, step 4 of 4",
+      "live": "Step 4 of 4: The collapse, 14:30.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true
+     }
+    }
+   ],
+   "holds": [
+    {
+     "step": 2,
+     "clock": "08:45",
+     "frame": {
+      "unobstructed": 0.6398,
+      "clearance": 46.196,
+      "layer": {
+       "items": 62,
+       "placed": 25,
+       "underPanel": 11,
+       "dropped": 7,
+       "droppedIds": [
+        "t:pratzen",
+        "t:vinohrady",
+        "t:pratzenv",
+        "t:girzikowitz",
+        "t:blasowitz",
+        "t:krzenowitz",
+        "t:chapel"
+       ],
+       "ms": 2.9,
+       "minPx": 11.5,
+       "limit": 7,
+       "overLimit": false
+      },
+      "text": {
+       "min": 7.48,
+       "belowAA": 0,
+       "n": 32
+      },
+      "dark": {
+       "solidBlack": 0,
+       "solidBlocks": 0,
+       "nearBlack": 0.0001,
+       "meanLum": 135.8,
+       "overLimit": false
+      },
+      "smoke": 0.0257,
+      "smokeOver": false,
+      "conf": 0.0436,
+      "confOver": false,
+      "cost": {
+       "calls": 736,
+       "tris": 2536751,
+       "worldMs": 19.4
+      },
+      "firstRunVisible": false,
+      "dispatchVisible": false,
+      "docking": {
+       "hasNowTab": true,
+       "dispatchInRail": true,
+       "docked": true,
+       "legendOpen": false,
+       "tab": "now"
+      },
+      "presentation": "study",
+      "mode": "terrain",
+      "stage0": []
+     }
+    },
+    {
+     "step": 3,
+     "clock": "11:00",
+     "frame": {
+      "unobstructed": 0.6398,
+      "clearance": 38.729,
+      "layer": {
+       "items": 62,
+       "placed": 12,
+       "underPanel": 6,
+       "dropped": 3,
+       "droppedIds": [
+        "t:vinohrady",
+        "t:pratzeberg",
+        "t:krzenowitz"
+       ],
+       "ms": 1.1,
+       "minPx": 11.5,
+       "limit": 3,
+       "overLimit": false
+      },
+      "text": {
+       "min": 8.48,
+       "belowAA": 0,
+       "n": 16
+      },
+      "dark": {
+       "solidBlack": 0,
+       "solidBlocks": 0,
+       "nearBlack": 0.0006,
+       "meanLum": 73.4,
+       "overLimit": false
+      },
+      "smoke": 0.0386,
+      "smokeOver": false,
+      "conf": 0.0352,
+      "confOver": false,
+      "cost": {
+       "calls": 713,
+       "tris": 2522727,
+       "worldMs": 18.1
+      },
+      "firstRunVisible": false,
+      "dispatchVisible": false,
+      "docking": {
+       "hasNowTab": true,
+       "dispatchInRail": true,
+       "docked": true,
+       "legendOpen": false,
+       "tab": "now"
+      },
+      "presentation": "study",
+      "mode": "terrain",
+      "stage0": []
+     }
+    },
+    {
+     "step": 4,
+     "clock": "14:30",
+     "frame": {
+      "unobstructed": 0.6398,
+      "clearance": 94.489,
+      "layer": {
+       "items": 64,
+       "placed": 24,
+       "underPanel": 8,
+       "dropped": 4,
+       "droppedIds": [
+        "t:telnitz",
+        "t:augezd",
+        "t:satschan",
+        "t:chapel"
+       ],
+       "ms": 1.1,
+       "minPx": 11.5,
+       "limit": 4,
+       "overLimit": false
+      },
+      "text": {
+       "min": 8.27,
+       "belowAA": 0,
+       "n": 32
+      },
+      "dark": {
+       "solidBlack": 0,
+       "solidBlocks": 0,
+       "nearBlack": 0.002,
+       "meanLum": 54.7,
+       "overLimit": false
+      },
+      "smoke": 0.0408,
+      "smokeOver": false,
+      "conf": 0.064,
+      "confOver": false,
+      "cost": {
+       "calls": 763,
+       "tris": 2557933,
+       "worldMs": 50.2
+      },
+      "firstRunVisible": false,
+      "dispatchVisible": false,
+      "docking": {
+       "hasNowTab": true,
+       "dispatchInRail": true,
+       "docked": true,
+       "legendOpen": false,
+       "tab": "now"
+      },
+      "presentation": "study",
+      "mode": "terrain",
+      "stage0": []
+     }
+    }
+   ]
+  },
+  "1280x720": {
+   "stretches": [
+    {
+     "to": 2,
+     "start": {
+      "on": true,
+      "step": 1,
+      "play": true,
+      "to": 2,
+      "playing": true,
+      "speed": 4,
+      "clock": "04:00",
+      "head": "Opening, step 2 of 4: the clock plays",
+      "live": "The clock plays on to step 2 of 4, 08:45. Pause stops it; Next goes straight there.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true
+     },
+     "mid": {
+      "on": true,
+      "step": 1,
+      "play": true,
+      "to": 2,
+      "playing": false,
+      "speed": 4,
+      "clock": "06:31",
+      "head": "Opening, step 2 of 4: paused",
+      "live": "The clock plays on to step 2 of 4, 08:45. Pause stops it; Next goes straight there.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true,
+      "frame": {
+       "unobstructed": 0.5558,
+       "clearance": 105.98,
+       "layer": {
+        "items": 53,
+        "placed": 40,
+        "underPanel": 2,
+        "dropped": 11,
+        "droppedIds": [
+         "t:pratzen",
+         "t:vinohrady",
+         "t:pratzeberg",
+         "t:santon",
+         "t:zuran",
+         "t:goldbach",
+         "t:litava",
+         "t:telnitz",
+         "t:sokolnitz",
+         "t:augezd",
+         "t:satschan"
+        ],
+        "ms": 2.1,
+        "minPx": 11.5,
+        "limit": 19,
+        "overLimit": false
+       },
+       "text": {
+        "min": 12.06,
+        "belowAA": 0,
+        "n": 49
+       },
+       "dark": {
+        "solidBlack": 0,
+        "solidBlocks": 0,
+        "nearBlack": 0.0004,
+        "meanLum": 71.6,
+        "overLimit": false
+       },
+       "smoke": 0,
+       "smokeOver": false,
+       "conf": 0.0468,
+       "confOver": false,
+       "cost": {
+        "calls": 787,
+        "tris": 2499977,
+        "worldMs": 32.4
+       },
+       "firstRunVisible": false,
+       "dispatchVisible": false,
+       "docking": {
+        "hasNowTab": true,
+        "dispatchInRail": true,
+        "docked": true,
+        "legendOpen": false,
+        "tab": "now"
+       },
+       "presentation": "study",
+       "mode": "terrain",
+       "stage0": []
+      }
+     },
+     "run": {
+      "secs": 18.2,
+      "steps": 364,
+      "dwells": 7,
+      "lowest": 86.17,
+      "lifts": 0,
+      "spd": 150,
+      "drops": 14,
+      "dropAt": "08:40",
+      "words": {
+       "The day plays on to this step. Pause or Space stops it; Next goes straight there.": 3,
+       "Liechtenstein counter-marches across the 4th Column": 119,
+       "Kienmayer attacks Telnitz": 64,
+       "Friant's leading brigade reaches the Goldbach": 45,
+       "Langeron and Przybyszewski attack Sokolnitz": 52,
+       "Napoleon releases Soult against the heights": 35,
+       "Friant retakes Telnitz, then withdraws behind the stream": 38,
+       "Saint-Hilaire and Vandamme climb the slope": 7
+      },
+      "msgs": [],
+      "phaseSaid": 0
+     },
+     "arrivalGlide": {
+      "samples": 51,
+      "lowest": 46.19,
+      "lifts": 0
+     },
+     "arrived": {
+      "on": true,
+      "step": 2,
+      "play": false,
+      "to": null,
+      "playing": false,
+      "speed": 0.5,
+      "clock": "08:45",
+      "head": "Opening, step 2 of 4",
+      "live": "Step 2 of 4: The French strike, 08:45.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true
+     }
+    },
+    {
+     "to": 3,
+     "start": {
+      "on": true,
+      "step": 2,
+      "play": true,
+      "to": 3,
+      "playing": true,
+      "speed": 4,
+      "clock": "08:45",
+      "head": "Opening, step 3 of 4: the clock plays",
+      "live": "The clock plays on to step 3 of 4, 11:00. Pause stops it; Next goes straight there.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true
+     },
+     "mid": {
+      "on": true,
+      "step": 2,
+      "play": true,
+      "to": 3,
+      "playing": false,
+      "speed": 4,
+      "clock": "10:05",
+      "head": "Opening, step 3 of 4: paused",
+      "live": "The clock plays on to step 3 of 4, 11:00. Pause stops it; Next goes straight there.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true,
+      "frame": {
+       "unobstructed": 0.5558,
+       "clearance": 76.199,
+       "layer": {
+        "items": 47,
+        "placed": 38,
+        "underPanel": 0,
+        "dropped": 9,
+        "droppedIds": [
+         "t:pratzen",
+         "t:vinohrady",
+         "t:pratzeberg",
+         "t:santon",
+         "t:zuran",
+         "t:litava",
+         "t:augezd",
+         "t:satschan",
+         "t:austerlitz"
+        ],
+        "ms": 1.3,
+        "minPx": 11.5,
+        "limit": 19,
+        "overLimit": false
+       },
+       "text": {
+        "min": 8.2,
+        "belowAA": 0,
+        "n": 53
+       },
+       "dark": {
+        "solidBlack": 0,
+        "solidBlocks": 0,
+        "nearBlack": 0.0004,
+        "meanLum": 74.8,
+        "overLimit": false
+       },
+       "smoke": 0.1197,
+       "smokeOver": false,
+       "conf": 0.0773,
+       "confOver": false,
+       "cost": {
+        "calls": 838,
+        "tris": 2527219,
+        "worldMs": 30.8
+       },
+       "firstRunVisible": false,
+       "dispatchVisible": false,
+       "docking": {
+        "hasNowTab": true,
+        "dispatchInRail": true,
+        "docked": true,
+        "legendOpen": false,
+        "tab": "now"
+       },
+       "presentation": "study",
+       "mode": "terrain",
+       "stage0": []
+      }
+     },
+     "run": {
+      "secs": 11.2,
+      "steps": 224,
+      "dwells": 5,
+      "lowest": 44.81,
+      "lifts": 0,
+      "spd": 150,
+      "drops": 10,
+      "dropAt": "09:00",
+      "words": {
+       "The day plays on to this step. Pause or Space stops it; Next goes straight there.": 3,
+       "Thiebault's brigade clears Pratzen village": 45,
+       "Kutuzov orders the 4th Column to face about": 51,
+       "Kamensky turns his brigade about and drives the French off the crest": 61,
+       "Langeron's reinforcements arrive as the crest is lost": 56,
+       "The Pratzeberg is firmly in French hands; The Russian Guard takes the eagle of the 4th Line": 7
+      },
+      "msgs": [],
+      "phaseSaid": 0
+     },
+     "arrivalGlide": {
+      "samples": 51,
+      "lowest": 38.72,
+      "lifts": 0
+     },
+     "arrived": {
+      "on": true,
+      "step": 3,
+      "play": false,
+      "to": null,
+      "playing": false,
+      "speed": 0.5,
+      "clock": "11:00",
+      "head": "Opening, step 3 of 4",
+      "live": "Step 3 of 4: The army divided, 11:00.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true
+     }
+    },
+    {
+     "to": 4,
+     "start": {
+      "on": true,
+      "step": 3,
+      "play": true,
+      "to": 4,
+      "playing": true,
+      "speed": 4,
+      "clock": "11:06",
+      "head": "Opening, step 4 of 4: the clock plays",
+      "live": "The clock plays on to step 4 of 4, 14:30. Pause stops it; Next goes straight there.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true
+     },
+     "mid": {
+      "on": true,
+      "step": 3,
+      "play": true,
+      "to": 4,
+      "playing": false,
+      "speed": 4,
+      "clock": "13:00",
+      "head": "Opening, step 4 of 4: paused",
+      "live": "The clock plays on to step 4 of 4, 14:30. Pause stops it; Next goes straight there.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true,
+      "frame": {
+       "unobstructed": 0.5558,
+       "clearance": 90.807,
+       "layer": {
+        "items": 48,
+        "placed": 38,
+        "underPanel": 1,
+        "dropped": 9,
+        "droppedIds": [
+         "t:pratzen",
+         "t:vinohrady",
+         "t:pratzeberg",
+         "t:litava",
+         "t:telnitz",
+         "t:sokolnitz",
+         "t:augezd",
+         "t:satschan",
+         "t:austerlitz"
+        ],
+        "ms": 1.2,
+        "minPx": 11.5,
+        "limit": 19,
+        "overLimit": false
+       },
+       "text": {
+        "min": 8.62,
+        "belowAA": 0,
+        "n": 49
+       },
+       "dark": {
+        "solidBlack": 0,
+        "solidBlocks": 0,
+        "nearBlack": 0.0003,
+        "meanLum": 64.6,
+        "overLimit": false
+       },
+       "smoke": 0.0835,
+       "smokeOver": false,
+       "conf": 0.0522,
+       "confOver": false,
+       "cost": {
+        "calls": 846,
+        "tris": 2573185,
+        "worldMs": 33.2
+       },
+       "firstRunVisible": false,
+       "dispatchVisible": false,
+       "docking": {
+        "hasNowTab": true,
+        "dispatchInRail": true,
+        "docked": true,
+        "legendOpen": false,
+        "tab": "now"
+       },
+       "presentation": "study",
+       "mode": "terrain",
+       "stage0": []
+      }
+     },
+     "run": {
+      "secs": 15.4,
+      "steps": 308,
+      "dwells": 7,
+      "lowest": 34.17,
+      "lifts": 0,
+      "spd": 150,
+      "drops": 16,
+      "dropAt": "11:20",
+      "words": {
+       "Blasowitz falls and Bagration is levered off the army; Rapp's counter-charge breaks the Chevalier Guard": 49,
+       "Buxhowden does not yet know the centre is gone": 50,
+       "Napoleon moves forward to Stare Vinohrady": 55,
+       "Davout resumes the offensive": 55,
+       "The French centre turns south": 33,
+       "Sokolnitz falls; Przybyszewski's column is surrounded": 55,
+       "Vandamme takes the height above the Augezd defile": 10
+      },
+      "msgs": [],
+      "phaseSaid": 0
+     },
+     "arrivalGlide": {
+      "samples": 51,
+      "lowest": 94.49,
+      "lifts": 0
+     },
+     "arrived": {
+      "on": true,
+      "step": 4,
+      "play": false,
+      "to": null,
+      "playing": false,
+      "speed": 0.5,
+      "clock": "14:30",
+      "head": "Opening, step 4 of 4",
+      "live": "Step 4 of 4: The collapse, 14:30.",
+      "focus": "tour-next",
+      "vantage": null,
+      "follow": true
+     }
+    }
+   ],
+   "holds": [
+    {
+     "step": 2,
+     "clock": "08:45",
+     "frame": {
+      "unobstructed": 0.5291,
+      "clearance": 46.196,
+      "layer": {
+       "items": 62,
+       "placed": 21,
+       "underPanel": 15,
+       "dropped": 7,
+       "droppedIds": [
+        "t:pratzen",
+        "t:vinohrady",
+        "t:austerlitz",
+        "t:pratzenv",
+        "t:blasowitz",
+        "t:krzenowitz",
+        "t:chapel"
+       ],
+       "ms": 1,
+       "minPx": 11.5,
+       "limit": null,
+       "overLimit": false
+      },
+      "text": {
+       "min": 7.48,
+       "belowAA": 0,
+       "n": 25
+      },
+      "dark": {
+       "solidBlack": 0,
+       "solidBlocks": 0,
+       "nearBlack": 0.0001,
+       "meanLum": 131.9,
+       "overLimit": false
+      },
+      "smoke": 0.0058,
+      "smokeOver": false,
+      "conf": 0.0457,
+      "confOver": false,
+      "cost": {
+       "calls": 736,
+       "tris": 2536741,
+       "worldMs": 40.5
+      },
+      "firstRunVisible": false,
+      "dispatchVisible": false,
+      "docking": {
+       "hasNowTab": true,
+       "dispatchInRail": true,
+       "docked": true,
+       "legendOpen": false,
+       "tab": "now"
+      },
+      "presentation": "study",
+      "mode": "terrain",
+      "stage0": []
+     }
+    },
+    {
+     "step": 3,
+     "clock": "11:00",
+     "frame": {
+      "unobstructed": 0.5291,
+      "clearance": 38.729,
+      "layer": {
+       "items": 62,
+       "placed": 7,
+       "underPanel": 11,
+       "dropped": 3,
+       "droppedIds": [
+        "t:litava",
+        "t:pratzenv",
+        "t:krzenowitz"
+       ],
+       "ms": 0.8,
+       "minPx": 11.5,
+       "limit": null,
+       "overLimit": false
+      },
+      "text": {
+       "min": 13.33,
+       "belowAA": 0,
+       "n": 11
+      },
+      "dark": {
+       "solidBlack": 0,
+       "solidBlocks": 0,
+       "nearBlack": 0.0003,
+       "meanLum": 71.6,
+       "overLimit": false
+      },
+      "smoke": 0.0125,
+      "smokeOver": false,
+      "conf": 0.0447,
+      "confOver": false,
+      "cost": {
+       "calls": 720,
+       "tris": 2523767,
+       "worldMs": 20.8
+      },
+      "firstRunVisible": false,
+      "dispatchVisible": false,
+      "docking": {
+       "hasNowTab": true,
+       "dispatchInRail": true,
+       "docked": true,
+       "legendOpen": false,
+       "tab": "now"
+      },
+      "presentation": "study",
+      "mode": "terrain",
+      "stage0": []
+     }
+    },
+    {
+     "step": 4,
+     "clock": "14:30",
+     "frame": {
+      "unobstructed": 0.5291,
+      "clearance": 94.489,
+      "layer": {
+       "items": 64,
+       "placed": 21,
+       "underPanel": 12,
+       "dropped": 3,
+       "droppedIds": [
+        "t:augezd",
+        "t:satschan",
+        "t:chapel"
+       ],
+       "ms": 2.3,
+       "minPx": 11.5,
+       "limit": null,
+       "overLimit": false
+      },
+      "text": {
+       "min": 12.16,
+       "belowAA": 0,
+       "n": 28
+      },
+      "dark": {
+       "solidBlack": 0,
+       "solidBlocks": 0,
+       "nearBlack": 0.0014,
+       "meanLum": 54.5,
+       "overLimit": false
+      },
+      "smoke": 0.0352,
+      "smokeOver": false,
+      "conf": 0.0611,
+      "confOver": false,
+      "cost": {
+       "calls": 764,
+       "tris": 2557945,
+       "worldMs": 41.8
+      },
+      "firstRunVisible": false,
+      "dispatchVisible": false,
+      "docking": {
+       "hasNowTab": true,
+       "dispatchInRail": true,
+       "docked": true,
+       "legendOpen": false,
+       "tab": "now"
+      },
+      "presentation": "study",
+      "mode": "terrain",
+      "stage0": []
+     }
+    }
+   ]
+  }
+ },
+ "keys": {
+  "next": {
+   "on": true,
+   "step": 1,
+   "play": true,
+   "to": 2,
+   "playing": true,
+   "speed": 4,
+   "clock": "04:00",
+   "head": "Opening, step 2 of 4: the clock plays",
+   "live": "The clock plays on to step 2 of 4, 08:45. Pause stops it; Next goes straight there.",
+   "focus": "tour-next",
+   "vantage": null,
+   "follow": true
+  },
+  "spacePause": {
+   "on": true,
+   "step": 1,
+   "play": true,
+   "to": 2,
+   "playing": false,
+   "speed": 4,
+   "clock": "04:15",
+   "head": "Opening, step 2 of 4: paused",
+   "live": "The clock plays on to step 2 of 4, 08:45. Pause stops it; Next goes straight there.",
+   "focus": "body",
+   "vantage": null,
+   "follow": true,
+   "still": true
+  },
+  "spaceResume": {
+   "on": true,
+   "step": 1,
+   "play": true,
+   "to": 2,
+   "playing": true,
+   "speed": 4,
+   "clock": "04:15",
+   "head": "Opening, step 2 of 4: the clock plays",
+   "live": "The clock plays on to step 2 of 4, 08:45. Pause stops it; Next goes straight there.",
+   "focus": "body",
+   "vantage": null,
+   "follow": true
+  },
+  "buttonPause": {
+   "on": true,
+   "step": 1,
+   "play": true,
+   "to": 2,
+   "playing": false,
+   "speed": 4,
+   "clock": "04:24",
+   "head": "Opening, step 2 of 4: paused",
+   "live": "The clock plays on to step 2 of 4, 08:45. Pause stops it; Next goes straight there.",
+   "focus": "play",
+   "vantage": null,
+   "follow": true,
+   "still": true
+  },
+  "buttonResume": {
+   "on": true,
+   "step": 1,
+   "play": true,
+   "to": 2,
+   "playing": true,
+   "speed": 4,
+   "clock": "04:24",
+   "head": "Opening, step 2 of 4: the clock plays",
+   "live": "The clock plays on to step 2 of 4, 08:45. Pause stops it; Next goes straight there.",
+   "focus": "play",
+   "vantage": null,
+   "follow": true
+  },
+  "nextWhilePlaying": {
+   "on": true,
+   "step": 2,
+   "play": false,
+   "to": null,
+   "playing": false,
+   "speed": 0.5,
+   "clock": "08:45",
+   "head": "Opening, step 2 of 4",
+   "live": "Step 2 of 4: The French strike, 08:45.",
+   "focus": "tour-next",
+   "vantage": null,
+   "follow": true
+  },
+  "backWhilePlaying": {
+   "on": true,
+   "step": 2,
+   "play": false,
+   "to": null,
+   "playing": false,
+   "speed": 0.5,
+   "clock": "08:45",
+   "head": "Opening, step 2 of 4",
+   "live": "Step 2 of 4: The French strike, 08:45.",
+   "focus": "tour-prev",
+   "vantage": null,
+   "follow": true
+  },
+  "escWhilePlaying": {
+   "on": false,
+   "step": 0,
+   "play": false,
+   "to": null,
+   "playing": false,
+   "speed": 0.5,
+   "clock": "04:00",
+   "head": "Opening, step 3 of 4: the clock plays",
+   "live": "The opening has ended. Play runs the day from 04:00.",
+   "focus": "play",
+   "vantage": "plan",
+   "follow": true
+  }
+ },
+ "rm": {
+  "rm": true,
+  "steps": [
+   {
+    "step": 2,
+    "clock": "08:45",
+    "played": false,
+    "playing": false,
+    "atFrameWithin5ms": true
+   },
+   {
+    "step": 3,
+    "clock": "11:00",
+    "played": false,
+    "playing": false,
+    "atFrameWithin5ms": true
+   },
+   {
+    "step": 4,
+    "clock": "14:30",
+    "played": false,
+    "playing": false,
+    "atFrameWithin5ms": true
+   }
+  ]
+ }
+}

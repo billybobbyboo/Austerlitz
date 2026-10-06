@@ -234,8 +234,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   above the floor with no lift); `css-test.js` checks `OPENING.SPEED` 4, Play still at half speed, the Play/Pause button's pause and the folded
   announcements; `runtime-test.js` dry-runs the stretches, every way out while one plays, Next and Back while it plays and reduced motion's cuts.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 7C build (md5 `bebcfff6...`, 1,748,568 bytes;
-  re-baselined from the Stage 7B build `82337dd4...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 7D build (md5 `46773462...`, 1,764,002 bytes;
+  re-baselined from the Stage 7C build `bebcfff6...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -321,4 +321,7 @@ in the tour's bar, `OPENING`, decisions 114-115; begun by the card's "Begin (a m
 Skip and Esc end it at 04:00 in Study on the Now tab at the Overview with Play focused, decision 118, any other key, a press outside the bar or
 the camera taken where it is; the six `opening` cases, decision 121; focus on Next when it begins, not on Skip as §4.1 recommended, stated
 for the owner) is merged (#46). The owner then asked for 7D with the recommendations (decisions 123-124, §0.6: the clock played between the
-opening's steps at 4x, the opening's own speed, superseding decision 116; focus on Next when it begins).
+opening's steps at 4x, the opening's own speed, superseding decision 116; focus on Next when it begins). Stage 7D (Next on a step plays
+the clock to the next stop at 4x with Follow, the dwell and the draw-on, the stop applied on arrival as in 7C; Pause and Space off a button
+pause it; Next goes straight there, Back returns; the visitor's ½× put back after every way; under reduced motion 7C's cuts; the card's "Begin
+(two min)") is written, for review (#47).
