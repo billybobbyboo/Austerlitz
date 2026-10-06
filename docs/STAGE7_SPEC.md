@@ -3,7 +3,10 @@
 **Status: Part A written, for review. It changes no source file, no data and no build:** `check:baseline` passes on the unchanged Stage 6D
 build (`austerlitz-command-map.html`, 1,720,613 bytes, md5 `3dd7ca41f73d0e5ffcfe5fa64adc5f51`) before and after it. Written against `main` at
 `b1cb13f` (Stage 6D merged as #42; with it Stage 6 is complete); `check:data`'s reference is `archive/stage6b-7fc0f6c3.html`. Line numbers
-refer to that commit; the code is the source of truth, not the documents. The next owner decision is 111 (§7).
+refer to that commit; the code is the source of truth, not the documents. The next owner decision is 111 (§7). On this build every check
+was run: `npm test` (all nine suites and the height guard), `check:data` (121 declarations identical), `check:chronology` (errors 0),
+`check:contrast` (5,354 elements, 0 below AA, 0 below 10.5 px) and `check:visual` ("STAGE0: all checks passed", 23 views, the self-test 203
+of 203); details in `CHANGELOG.md`.
 
 Scope: the Stage 7 line of `docs/VISUAL_AUDIT.md` ("Stage 7, first run and opening sequence", `:163`), which carries high-impact problem 3
 ("The first screen", `:43-47`: "later a short skippable opening built only from tested tour text") and the pacing rule of opportunity 4
@@ -768,7 +771,7 @@ key presses, Esc and the outside click; the 390 x 844 screen recorded (question 
 ### 7C: the opening, stills from the tour (questions 111, 114-116, 118)
 
 **What.** `OPENING`, a presentation table in `app.js`: a list of indices into `TOUR` (recommended: stops 1, 6, 7, 8 [114]), and the end
-state [118]. Started only by the card's "Begin" (and by a "Begin the opening" row in the tools' tour menu for a later visit). Each step is
+state [118]. Started by the card's "Begin", and by a "Begin the opening" button beside "Guided tour" in the tools for a later visit. Each step is
 the tour's own `applyTour` for that stop (its clock, chapter, plan, feature, camera, Follow on; the dispatch hidden as the tour hides it):
 the opening is a short path through the tour, not a second mechanism. Its bar is the tour bar (its place, type and buttons), headed "Opening,
 step k of n", with Skip, Back and Next; its text `TOUR[i].x`, its title `TOUR[i].n`. Nothing advances by itself (§4.5). The steps are joined
@@ -777,7 +780,7 @@ it at the same end state; a pan, orbit or zoom (Follow off) or a selection ends 
 `KEYS` gains its rows (§4.6). The full nine-stop tour is unchanged.
 
 **Files.** `app.js` (`OPENING`, `openingGo`, `openingEnd`, the tour bar's heading for the opening, `KEYS`, `LABELS`, `#live-phase`'s
-message), `shell.html` (the bar's Skip button, its `role="region"` and label), `style.css` (the Skip button, from the tokens), the self-test,
+message), `shell.html` (the bar's Skip button, its `role="region"` and label; the tools' button), `style.css` (the Skip button, from the tokens), the self-test,
 `tools/visual/cases.js` and `thresholds.js` (new cases), `contrast.js`, `runtime-test.js`, `css-test.js`.
 
 **Depends on.** 7B (the card's "Begin" starts it; the end state is 7B's first screen after the card).
