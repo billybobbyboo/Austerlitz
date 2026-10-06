@@ -225,8 +225,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   `css-test.js` checks its words (no figure, clock, name or quotation), its stops 1, 6, 7, 8 (decision 114), the bar a named region, Esc's skip
   and the folded announcement; `runtime-test.js` dry-runs it forward, back, finished and ended by every way from every step, then the tour.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 7B build (md5 `82337dd4...`, 1,729,495 bytes;
-  re-baselined from the Stage 6D build `3dd7ca41...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 7C build (md5 `bebcfff6...`, 1,748,568 bytes;
+  re-baselined from the Stage 7B build `82337dd4...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -307,4 +307,8 @@ the next owner decision is 111) is written (#43, for review); the owner accepted
 first screen: the first-run card a modal dialog with one primary action, the guided tour until 7C's opening, and "Explore on my own", which,
 like Esc, a key or a press outside, closes it where it stands with focus on Play; the hint and "Watch the battle" off the card; the Now tab
 and its dispatch under it from 1080 px, decision 113, with the plateau reading's "derived" tag on screen; the `narrow-390` case, decision 122)
-is written, for review.
+is written (#44, merged into the Part A branch, not `main`; #45 brings it to `main`). Stage 7C (the opening: tour stops 1, 6, 7 and 8 by index
+in the tour's bar, `OPENING`, decisions 114-115; begun by the card's "Begin (a minute)" or the tools' "Begin the opening", decision 112; Finish,
+Skip and Esc end it at 04:00 in Study on the Now tab at the Overview with Play focused, decision 118, any other key, a press outside the bar or
+the camera taken where it is; the six `opening` cases, decision 121; focus on Next when it begins, not on Skip as §4.1 recommended, stated
+for the owner) is written, for review (#46, on the 7B branch).

@@ -73,9 +73,9 @@
        "t:sokolnitz",
        "t:augezd"
       ],
-      "ms": 1.6,
+      "ms": 0.9,
       "minPx": 11.5,
-      "limit": null,
+      "limit": 8,
       "overLimit": false
      },
      "text": {
@@ -97,7 +97,7 @@
      "cost": {
       "calls": 753,
       "tris": 2500335,
-      "worldMs": 21.7
+      "worldMs": 20.4
      },
      "firstRunVisible": false,
      "dispatchVisible": false,
@@ -184,9 +184,9 @@
        "t:krzenowitz",
        "t:chapel"
       ],
-      "ms": 0.9,
+      "ms": 1.1,
       "minPx": 11.5,
-      "limit": null,
+      "limit": 7,
       "overLimit": false
      },
      "text": {
@@ -208,7 +208,7 @@
      "cost": {
       "calls": 736,
       "tris": 2536751,
-      "worldMs": 20
+      "worldMs": 15.2
      },
      "firstRunVisible": false,
      "dispatchVisible": false,
@@ -291,9 +291,9 @@
        "t:pratzeberg",
        "t:krzenowitz"
       ],
-      "ms": 1,
+      "ms": 0.8,
       "minPx": 11.5,
-      "limit": null,
+      "limit": 3,
       "overLimit": false
      },
      "text": {
@@ -315,7 +315,7 @@
      "cost": {
       "calls": 713,
       "tris": 2522727,
-      "worldMs": 17.3
+      "worldMs": 50.9
      },
      "firstRunVisible": false,
      "dispatchVisible": false,
@@ -401,7 +401,7 @@
       ],
       "ms": 1,
       "minPx": 11.5,
-      "limit": null,
+      "limit": 4,
       "overLimit": false
      },
      "text": {
@@ -423,7 +423,7 @@
      "cost": {
       "calls": 763,
       "tris": 2557933,
-      "worldMs": 114.3
+      "worldMs": 43.9
      },
      "firstRunVisible": false,
      "dispatchVisible": false,
@@ -491,9 +491,9 @@
        "t:telnitz",
        "t:sokolnitz"
       ],
-      "ms": 0.7,
+      "ms": 0.9,
       "minPx": 11.5,
-      "limit": null,
+      "limit": 7,
       "overLimit": false
      },
      "text": {
@@ -515,7 +515,7 @@
      "cost": {
       "calls": 756,
       "tris": 2500341,
-      "worldMs": 14.9
+      "worldMs": 17.9
      },
      "firstRunVisible": false,
      "dispatchVisible": true,
@@ -607,9 +607,9 @@
        "t:augezd",
        "t:austerlitz"
       ],
-      "ms": 1,
+      "ms": 1.7,
       "minPx": 11.5,
-      "limit": null,
+      "limit": 10,
       "overLimit": false
      },
      "text": {
@@ -631,7 +631,7 @@
      "cost": {
       "calls": 755,
       "tris": 2500339,
-      "worldMs": 32.3
+      "worldMs": 30.9
      },
      "firstRunVisible": false,
      "dispatchVisible": false,
@@ -718,7 +718,7 @@
        "t:krzenowitz",
        "t:chapel"
       ],
-      "ms": 0.9,
+      "ms": 1,
       "minPx": 11.5,
       "limit": null,
       "overLimit": false
@@ -742,7 +742,7 @@
      "cost": {
       "calls": 736,
       "tris": 2536741,
-      "worldMs": 33.6
+      "worldMs": 32.4
      },
      "firstRunVisible": false,
      "dispatchVisible": false,
@@ -825,7 +825,7 @@
        "t:pratzenv",
        "t:krzenowitz"
       ],
-      "ms": 0.8,
+      "ms": 1.6,
       "minPx": 11.5,
       "limit": null,
       "overLimit": false
@@ -849,7 +849,7 @@
      "cost": {
       "calls": 720,
       "tris": 2523767,
-      "worldMs": 28.2
+      "worldMs": 40.1
      },
      "firstRunVisible": false,
      "dispatchVisible": false,
@@ -932,7 +932,7 @@
        "t:satschan",
        "t:chapel"
       ],
-      "ms": 1,
+      "ms": 1.7,
       "minPx": 11.5,
       "limit": null,
       "overLimit": false
@@ -956,7 +956,7 @@
      "cost": {
       "calls": 764,
       "tris": 2557945,
-      "worldMs": 39.8
+      "worldMs": 54.6
      },
      "firstRunVisible": false,
      "dispatchVisible": false,
@@ -1027,7 +1027,7 @@
        "t:sokolnitz",
        "t:augezd"
       ],
-      "ms": 1.2,
+      "ms": 0.9,
       "minPx": 11.5,
       "limit": null,
       "overLimit": false
@@ -1051,7 +1051,7 @@
      "cost": {
       "calls": 756,
       "tris": 2500341,
-      "worldMs": 31.5
+      "worldMs": 17.2
      },
      "firstRunVisible": false,
      "dispatchVisible": true,
@@ -1236,9 +1236,9 @@
    "focus": "body",
    "live": "The opening has ended here.",
    "camera": [
-    -120.9,
+    -162.3,
     46.1,
-    15.1
+    30.9
    ],
    "before": {
     "clock": "08:45",
