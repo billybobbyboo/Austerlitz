@@ -181,6 +181,18 @@ async function interact(page,it,vp){
       if(["overview-field","overview-plan"].includes(c.name)) m.phaseLabels720=await page.evaluate(()=>window.__aus.phaseLabels?window.__aus.phaseLabels():null);
       await page.setViewportSize(vp0); await frame();
     }
+    /* Stage 7B (docs/STAGE7_SPEC.md section 6, 7B; decisions 111, 118): on the fresh first-run page, after every measure above, real key
+       presses: where focus is when the page has loaded, four Tabs (each must stay in the card), then Esc (the card closes where it stands,
+       focus on Play). The card is then closed on this page, as every later case closes it (applyCase); focus is released after */
+    if(TEST&&c.name==="first-run"&&await page.evaluate(()=>typeof frButtons==="function")){
+      const st=()=>page.evaluate(()=>{ const a=document.activeElement, fr=document.getElementById("firstrun");
+        return {id:a&&a!==document.body?(a.id||a.tagName):"body",inCard:!!(fr&&a&&fr.contains(a)),open:firstRunOpen,cam:landCam.position.toArray().concat(orbitTarget.toArray())}; });
+      const s0=await st(), tabs=[];
+      for(let i=0;i<4;i++){ await page.keyboard.press(i===3?"Shift+Tab":"Tab"); const q=await st(); tabs.push({id:q.id,inCard:q.inCard}); }
+      await page.keyboard.press("Escape"); const s1=await st();
+      m.firstRunKeys={focus0:s0.id,tabs,open:s1.open,camSame:s1.cam.every((v,i)=>Math.abs(v-s0.cam[i])<1e-6),focus1:s1.id};
+      await page.evaluate(()=>{ if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+    }
     m.ms=Date.now()-t0; m.note=c.note;
     if(c.interact) m.intended=await page.evaluate(()=>window.__intended||null);
     report.cases[c.name]=m;

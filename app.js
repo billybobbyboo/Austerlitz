@@ -3611,7 +3611,7 @@ function paintPlanText(){
 }
 
 /* ============================================================
-   GUIDED TOUR — eight stops through the existing material
+   GUIDED TOUR — nine stops through the existing material
    ============================================================ */
 function clearOverlays(){
   if(planSide) setPlan(planSide);
@@ -4859,13 +4859,19 @@ var LABELS={
     staff:{label:"Paper map", title:"A north-up plan on flat ground, with counters"},
     hybrid:{label:"Landscape with counters", title:"The ground in relief, with the paper map's counters"}
   },
-  layers:{button:"Layers\u2026", heading:"Layers", aria:"Layers and ground", ground:"Ground", shows:"What is drawn"}
+  layers:{button:"Layers\u2026", heading:"Layers", aria:"Layers and ground", ground:"Ground", shows:"What is drawn"},
+  /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. The primary starts the guided tour until
+     7C's opening takes it */
+  firstRun:{primary:"Guided tour", primaryTitle:"The guided tour through the day, in the tour's own words",
+    stay:"Explore on my own", stayTitle:"Close this card and stay here (Esc)"}
 };
 function applyLabels(){
   document.querySelectorAll(".vm-btn").forEach(function(b){ var L=LABELS.presentation[b.dataset.vm]; if(!L) return;
     b.textContent=L.label; b.title=L.title+" (key "+L.key+")"; });
   document.querySelectorAll(".mode-btn").forEach(function(b){ var L=LABELS.ground[b.dataset.m]; if(!L) return; b.textContent=L.label; b.title=L.title+" (M cycles)"; });
   var lb=document.getElementById("layersbtn"); if(lb) lb.textContent=LABELS.layers.button;
+  var F=LABELS.firstRun, fp=document.getElementById("fr-tour"), fs=document.getElementById("fr-close");   /* Stage 7B */
+  if(fp){ fp.textContent=F.primary; fp.title=F.primaryTitle; } if(fs){ fs.textContent=F.stay; fs.title=F.stayTitle; }
   var lp=document.getElementById("layerpop"); if(lp){ lp.setAttribute("aria-label",LABELS.layers.aria);
     var h=lp.querySelector(".lp-head span"); if(h) h.textContent=LABELS.layers.heading;
     var g=lp.querySelector(".modes"); if(g) g.setAttribute("aria-label",LABELS.layers.ground); }
@@ -4897,9 +4903,9 @@ var KEYS=[
     run:function(){ setPresentation(presentation==="study"?"watch":"study"); }},
   {id:"m", scope:"window", group:"View and ground", keys:["m","M"], show:["M"], text:function(){ var G=LABELS.ground; return "The ground: "+G.terrain.label+", "+G.staff.label+", "+G.hybrid.label+", in turn"; },
     run:function(){ setMode(mode==="terrain"?"staff":(mode==="staff"?"hybrid":"terrain")); }},
-  {id:"esc", scope:"window", group:"View and ground", keys:["Escape"], show:["Esc"], text:"Back: close the first card, the layers panel or the tour; else everything shown in Study, and the chapter, the selection and the sources sheet cleared",
+  {id:"esc", scope:"window", group:"View and ground", keys:["Escape"], show:["Esc"], text:"Back: close the first card where it stands, the layers panel or the tour; else everything shown in Study, and the chapter, the selection and the sources sheet cleared",
     run:function(){
-      if(firstRunOpen){ closeFirst(null); return; }
+      if(firstRunOpen){ closeFirst("explore"); return; }
       if(!document.getElementById("layerpop").hidden){ window.__setPop(false); return; }
       if(tourStep>=0){ exitTour(); return; }
       if(presentation!=="study"||hideDispatch) showEverything();
@@ -4999,7 +5005,10 @@ function onWindowKey(e){
   if((e.key==="ArrowLeft"||e.key==="ArrowRight")&&ctl) return;
   var r=keyRow(e,"window");
   if(KEYS_DRY){ KEYS_DRY.push(r?r.id:null); return; }
-  if(firstRunOpen && e.key!=="Escape" && e.key!=="Tab" && e.key!=="Shift" && e.key!=="`" && !(t&&t.closest&&t.closest("#firstrun"))) closeFirst(null);
+  /* Stage 7B: Tab from outside the open card (focus had left it) goes back into it; any other key but Esc (its own row), Shift and \`
+     closes the card where it stands, then does its own action (Space and Enter on the card's focused button pressed it, above) */
+  if(firstRunOpen && e.key==="Tab"){ if(!frHasFocus()){ e.preventDefault(); focusId("fr-tour"); } return; }
+  if(firstRunOpen && e.key!=="Escape" && e.key!=="Shift" && e.key!=="`") closeFirst("explore");
   if(r) r.run(e);
 }
 
@@ -5157,8 +5166,13 @@ function buildUI(){
     if(document.querySelector(".legend").classList.contains("squeezed")) return;
     ML.legendOpen=!ML.legendOpen; requestRender(2); });
   document.getElementById("fr-close").addEventListener("click",function(){ closeFirst("explore"); });
-  document.getElementById("fr-watch").addEventListener("click",function(){ closeFirst("watch"); });
   document.getElementById("fr-tour").addEventListener("click",function(){ closeFirst("tour"); });
+  /* Stage 7B: Tab and Shift+Tab stay inside the card while it is open, as in the "?" overlay (bindHelp) */
+  document.getElementById("firstrun").addEventListener("keydown",function(e){
+    if(e.key!=="Tab"||!firstRunOpen) return;
+    var B=frButtons(); if(!B.length) return;
+    var i=B.indexOf(document.activeElement); e.preventDefault(); e.stopPropagation();
+    B[(i<0?0:(i+(e.shiftKey?B.length-1:1))%B.length)].focus({preventScroll:true}); });
   /* anything done outside the card is Explore, in place */
   window.addEventListener("pointerdown",function(e){
     if(firstRunOpen && !e.target.closest("#firstrun")) closeFirst(null); },{capture:true});
@@ -5263,31 +5277,44 @@ function paintKey(){
     "The high ground in the centre is the Pratzen plateau, and it decides the battle.";
 }
 /* ---- the first view ----
-   The whole field from above (the Overview vantage) at 04:00, the first-run card alone near the
-   foot of the map, the dispatch and legend held back until the visitor chooses a way in. Any
-   click or key outside the card counts as Explore, without moving the camera. */
+   The whole field from above (the Overview vantage) at 04:00, the first-run card near the foot of the map, the legend held back
+   until the visitor chooses a way in. Stage 7B (docs/STAGE7_SPEC.md sections 4.2 and 6; owner decisions 111-113, 118-120): the card is
+   a modal dialog with one primary action (the guided tour, until 7C's opening takes the button) and one way to stay, "Explore on my
+   own"; it takes focus when it opens and keeps Tab inside it. Esc, "Explore on my own", a click outside it and any other key close it
+   where it stands: the camera, the clock and the Overview stay (before 7B the Explore button moved the camera to phase 0's view, Part A
+   section 0.4 item 3). From 1080 px the rail shows the Now tab under it, the dispatch and its derived readings with their tags
+   (decision 113 makes decision 55 hold here too; below 1080 px the dispatch is a card the first-run card would stand over, kept hidden). */
 var firstRunOpen=false;
+function frButtons(){ var fr=document.getElementById("firstrun"); if(!fr||!fr.querySelectorAll) return [];
+  return [].filter.call(fr.querySelectorAll("button"),function(b){ return !b.hidden&&!b.disabled; }); }
+function frHasFocus(){ var fr=document.getElementById("firstrun"), a=document.activeElement; return !!(fr&&a&&fr.contains&&fr.contains(a)); }
+function focusId(id){ var e=document.getElementById(id); if(e&&e.focus) e.focus({preventScroll:true}); }
 function openFirstRun(){
   var fr=document.getElementById("firstrun"); if(!fr||fr.hidden) return;
   firstRunOpen=true;
   document.body.classList.add("firstrun-on");
-  if(docked) selectTab("oob");                  /* Stage 3B: the rail as before while the card is open */
+  if(docked) selectTab("now");                  /* Stage 7B (decision 113): the Now tab under the card, as decision 55 has Study open */
   var v=presetFrame(VANTAGE.plan);              /* Stage 3D: the field fitted into the free rectangle above the card */
   camArc=null;                                  /* the start-up phase transition keeps its light, not its camera */
   landCam.position.set(v[0],v[1],v[2]); orbitTarget.set(v[3],v[4],v[5]); landCam.lookAt(orbitTarget);
   clampCamera();
   curVantage="plan"; syncFollow();
+  focusId("fr-tour");                           /* Stage 7B: the dialog takes focus, on its primary action */
   requestRender(3);
 }
+/* how: "tour" (the primary action), "explore" (stay: the button, Esc, or a key that then does its own action), or null (a click
+   outside, or the app closing it). Focus never stays on the hidden card: after "tour" it is on the tour bar's Next, after "explore" on
+   Play, the single next action (decision 118's rule), after a click outside it is released where the pointer went. */
 function closeFirst(how){
   if(!firstRunOpen) return;
+  var had=frHasFocus();
   firstRunOpen=false;
   var fr=document.getElementById("firstrun"); if(fr) fr.hidden=true;
   document.body.classList.remove("firstrun-on");
   if(docked&&!tabChosen) selectTab("now");      /* Stage 3B (decision 55): Study opens on the Now tab */
-  if(how==="tour") startTour();
-  else if(how==="watch"){ setPresentation("watch"); setPhase(0); if(!playing) togglePlay(); }
-  else if(how==="explore") setPhase(0);
+  if(how==="tour"){ startTour(); focusId("tour-next"); }
+  else if(how==="explore"){ if(had||!document.activeElement||document.activeElement===document.body) focusId("play"); }
+  else if(had&&document.activeElement&&document.activeElement.blur) document.activeElement.blur();
   syncSelChip(); requestRender(3);
 }
 /* ---- the selection chip ----
@@ -6445,8 +6472,8 @@ function setPresentation(m){
 /* ---- Stage 3B: the docked layout (docs/STAGE3_SPEC.md section B.2; owner decisions 49, 54, 55, 58) ----
    From 1080 px wide (DOCK_MIN) the dispatch is the rail's first tab, "Now", and Study opens on it; the dossier opens in the
    rail's column (style.css, body.docked). Below 1080 px, where the rail starts hidden, the dispatch stays a card where it
-   stood before (#dispatch-home) and the Now tab is hidden. While the first-run card is open the rail shows the order of
-   battle, as before (the first run is Stage 7's); closing the card opens the Now tab unless a tab was chosen meanwhile. */
+   stood before (#dispatch-home) and the Now tab is hidden. Since Stage 7B (decision 113) the rail shows the Now tab while the first-run
+   card is open too; before, it showed the order of battle there. */
 var DOCK_MIN=1080, docked=null, tabNow="now", tabChosen=false, PHASE_SAID=0;
 function syncDock(){
   var want=window.innerWidth>=DOCK_MIN;
@@ -6458,7 +6485,7 @@ function syncDock(){
   var nb=document.getElementById("tab-now"); if(nb) nb.hidden=!want;
   if(want&&presentation==="study") document.body.classList.remove("rail-hidden");
   if(!want&&tabNow==="now") selectTab("oob");
-  else if(want&&!tabChosen&&!firstRunOpen) selectTab("now");
+  else if(want&&!tabChosen) selectTab("now");
 }
 function selectTab(t,focus){
   var ok=false;
@@ -8312,6 +8339,54 @@ var AUSTERLITZ_DEBUG=(function(){
     lg.querySelectorAll('[data-lg="nation"]').forEach(function(e){ if(!/^counters: /.test(e.textContent.trim())) mism.push('the nation row "'+e.textContent.trim()+'" does not say it colours the counters'); });
     ck("first run: the key names the marks that carry the sides, not coats (decision 108); the legend's swatches are the colours that draw them", mism.length===0,
       mism.length?mism.join("; "):'"'+txt.slice(0,150)+'..."');
+    /* Stage 7B (docs/STAGE7_SPEC.md section 6, 7B; decisions 111-113, 118-120): the first-run card a modal dialog. Reopened at 04:00 in
+       Study on the landscape: its attributes; focus on the primary action; Tab and Shift+Tab kept inside; docked, the Now tab under it with
+       the dispatch shown, beside it (not under it) and a "derived" tag on screen; Esc, "Explore on my own" and a press outside close it
+       where it stands (camera and clock unmoved), focus on Play after Esc and the button and on no hidden element after a press outside;
+       the primary starts the tour with focus on its Next. Keys are dispatched as the browser delivers them; the state is restored after. */
+    (function(){
+      var bad=[], fr=document.getElementById("firstrun"), K0={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,c:clock,
+        pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,sel:selection};
+      if(presentation!=="study") setPresentation("study"); if(mode!=="terrain") setMode("terrain"); if(tourStep>=0) exitTour(); select(null,null);
+      setClock(T_MIN,{instant:true,force:true,camera:false}); finishTween(); tabChosen=false;
+      var K1=null, said=[];
+      function open(){ fr.hidden=false; openFirstRun(); K1={p:landCam.position.clone(),t:orbitTarget.clone()}; }
+      function key(k,shift){ var on=document.activeElement&&document.activeElement!==document.body?document.activeElement:window;
+        on.dispatchEvent(new KeyboardEvent("keydown",{key:k,shiftKey:!!shift,bubbles:true,cancelable:true})); }
+      function aid(){ var a=document.activeElement; return a&&a!==document.body?(a.id||a.tagName):"body"; }
+      function still(w){ if(firstRunOpen||!fr.hidden) bad.push(w+": the card is still open");
+        if(!(landCam.position.distanceTo(K1.p)<1e-6&&orbitTarget.distanceTo(K1.t)<1e-6)) bad.push(w+": the camera moved");
+        if(clock!==T_MIN) bad.push(w+": the clock moved to "+fmtClock(clock)); }
+      function box(e){ var r=e.getBoundingClientRect(); return [r.left,r.top,r.right,r.bottom]; }
+      open();
+      [["role","dialog"],["aria-modal","true"],["aria-labelledby","fr-title"],["aria-describedby","fr-key"]].forEach(function(a){
+        if(fr.getAttribute(a[0])!==a[1]) bad.push("the card's "+a[0]+" is "+fr.getAttribute(a[0])); });
+      var B=frButtons().map(function(b){ return b.textContent; });
+      if(B.join("|")!==LABELS.firstRun.primary+"|"+LABELS.firstRun.stay) bad.push("the card's buttons are "+B.join(", "));
+      if(aid()!=="fr-tour") bad.push("focus on "+aid()+" when the card opens, not its primary action");
+      key("Tab"); said.push(aid()); key("Tab"); said.push(aid()); key("Tab",true); said.push(aid());
+      if(said.join(",")!=="fr-close,fr-tour,fr-close") bad.push("Tab, Tab, Shift+Tab went to "+said.join(", "));
+      var der=[].filter.call(document.querySelectorAll("small"),function(e){ return /derived/.test(e.textContent)&&e.getBoundingClientRect().width>0&&!(e.closest&&e.closest("#maplayer")); }).length;
+      if(docked){ var dp=document.querySelector(".dispatch"), rl=document.querySelector(".rail"), db=box(dp), cb=box(fr), rb=box(rl);
+        if(tabNow!=="now") bad.push("the rail shows the "+tabNow+" tab under the card (decision 113)");
+        if(getComputedStyle(dp).display==="none") bad.push("the dispatch is hidden under the card");
+        if(db[0]<rb[0]-0.5||db[2]>rb[2]+0.5) bad.push("the dispatch is not in the rail");
+        if(Math.min(db[2],cb[2])-Math.max(db[0],cb[0])>0&&Math.min(db[3],cb[3])-Math.max(db[1],cb[1])>0) bad.push("the card stands over the dispatch");
+        if(!der) bad.push("no derived tag on screen while the plateau reading is drawn (decision 119)"); }
+      key("Escape"); still("Esc"); if(aid()!=="play") bad.push("focus on "+aid()+" after Esc, not Play");
+      open(); document.body.dispatchEvent(new PointerEvent("pointerdown",{bubbles:true,cancelable:true,pointerId:1}));
+      still("a press outside"); if(fr.contains(document.activeElement)) bad.push("focus left on the hidden card after a press outside");
+      open(); document.getElementById("fr-close").click(); still("\u201c"+LABELS.firstRun.stay+"\u201d"); if(aid()!=="play") bad.push("focus on "+aid()+" after the stay button, not Play");
+      open(); document.getElementById("fr-tour").click(); var ts=tourStep, fa=aid(); finishTween();
+      if(ts!==0) bad.push("the primary action started tour stop "+ts); if(fa!=="tour-next") bad.push("focus on "+fa+" after the primary action, not the tour's Next");
+      if(tourStep>=0) exitTour();
+      if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+      setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
+      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv;
+      tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id);
+      ck("first run: a modal dialog (focus on its primary action, Tab kept inside); docked, the Now tab and its derived tag beside it; Esc, the stay button and a press outside close it in place, focus on Play (decisions 111-113, 118-120)",
+        !bad.length, bad.length?bad.join("; "):"Tab, Tab, Shift+Tab: "+said.join(", ")+"; "+(docked?"the Now tab, "+der+" derived tag(s) on screen; ":"undocked; ")+"after Esc, the button and the primary: Play, Play, the tour's Next");
+    })();
     /* Stage 6D (docs/STAGE6_SPEC.md section 6.3, "What must hold"; decisions 98, 105, 106): the standards from the table. Each expectation is
        derived here from COLOURS_CARRIED, STANDARD_MEASURES and KIT, not read back from kitStdRule or kitStdShape */
     function sOk(v){ return !!(v&&!v.gen&&!v.none&&!v.sides&&(v.gr==="A"||v.gr==="B")); }

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /* Stage 7 Part A (docs/STAGE7_SPEC.md section 1): what a first-time visitor meets today, read from the running page.
-   node tools/stage7/firstrun-probe.js [--json f] [--sheet f] [--only screens,ways,count]
+   node tools/stage7/firstrun-probe.js [--json f] [--sheet f] [--title t] [--only screens,ways,count,narrow]
    screens  a fresh page at 1600 x 900, 1366 x 768, 1280 x 720, 1024 x 768 and 390 x 844, and at 1600 x 900 under reduced motion and
             without ?harness=1 (a visitor's page): the clock, the computed sun, the light, the valley fog and the smoke at that clock; the
             camera; the card (its text, buttons, ARIA, focus); what is shown and hidden; the unobstructed fraction; drops, map text as
@@ -88,7 +88,7 @@ const COUNT=()=>{
       save(); await page.close();
     }
     const pg=await L.open(browser,[1600,900]);
-    fs.writeFileSync(SHEET,await L.sheet(pg,tiles,4,400,250,"Stage 7 Part A: the first screen today (fresh pages)",true));
+    fs.writeFileSync(SHEET,await L.sheet(pg,tiles,4,400,250,opt("--title")||"Stage 7 Part A: the first screen today (fresh pages)",true));
     await pg.close();
   }
   if(ONLY.includes("count")){
@@ -114,6 +114,9 @@ const COUNT=()=>{
     for(const [k,fn] of W){
       if(res.ways[k]&&!argv.includes("--redo")) continue;
       const page=await L.open(browser,[1600,900]);
+      /* a button the card no longer has (7B removed "Watch the battle") is recorded as absent */
+      const bid=(k.startsWith("button: ")?{"button: Guided tour":"#fr-tour","button: Watch the battle":"#fr-watch","button: Explore":"#fr-close"}[k]:null);
+      if(bid&&!await page.$(bid)){ res.ways[k]={absent:true}; console.log(k,"-> absent"); save(); await page.close(); continue; }
       const before=await page.evaluate(STATE);
       const extra=await fn(page);
       await page.waitForTimeout(300);

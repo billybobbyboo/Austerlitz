@@ -490,8 +490,6 @@ body.pm-map #restore{display:block}
 #firstrun p{font-family:var(--serif);font-size:var(--t-prose);line-height:1.65;color:var(--text-body);margin:0 0 11px}
 #firstrun b.fr{color:var(--side-fr-text);font-weight:400}
 #firstrun b.al{color:var(--side-al-text);font-weight:400}
-#firstrun .fr-hint{font-family:var(--sans);font-size:var(--t-ui);color:var(--text-muted);line-height:1.6}
-#firstrun .fr-hint b{color:var(--text);font-weight:400}
 .fr-act{display:flex;gap:7px;margin-top:16px}
 #fr-tour{background:var(--text);color:var(--on-accent);border-color:var(--text)}
 
@@ -608,7 +606,10 @@ body.rail-hidden #firstrun{left:50%;width:min(540px,calc(100vw - 32px))}
   margin:0 5px 0 1px;vertical-align:-1px}
 #firstrun .key-ar{display:inline-block;width:18px;height:5px;border-radius:2px;margin:0 5px 0 1px;vertical-align:2px}
 #firstrun .fr-act .t{min-height:34px;padding:7px 14px;font-size:var(--t-ui)}
-body.firstrun-on .dispatch,body.firstrun-on .legend,body.firstrun-on .drawer,
+/* Stage 7B (decisions 111, 113): the card's one primary action, drawn as a pressed button is; the dispatch stays hidden under the card only
+   below 1080 px, where it is a card the first-run card would stand over (decision 58); docked it is the rail's Now tab, shown */
+#firstrun .fr-act .t.fr-primary{background:var(--text);color:var(--on-accent);border-color:var(--text)}
+body.firstrun-on:not(.docked) .dispatch,body.firstrun-on .legend,body.firstrun-on .drawer,
 body.firstrun-on #vsbadge,body.firstrun-on #tourbar,body.firstrun-on #selchip{display:none !important}
 .legend .ar{width:20px;height:5px;border-radius:2px}
 /* Stage 2C: the heads as drawn (decision 20): French the plain triangle, Allied the notched chevron */

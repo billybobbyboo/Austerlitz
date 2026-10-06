@@ -6,6 +6,10 @@
 module.exports = [
   { name:"first-run", viewport:[1600,900], fresh:true,
     note:"What a first-time visitor sees, untouched." },
+  /* Stage 7B (owner decision 122): the first screen on a phone-sized window, recorded (its timeline is not held to 92 px). Listed before
+     first-run-laptop so that the harness's last page, on which the self-test runs, stays the 1366 x 768 one */
+  { name:"narrow-390", viewport:[390,844], fresh:true,
+    note:"The first screen at 390 x 844, undocked: recorded, not a supported layout (decision 122)." },
   { name:"first-run-laptop", viewport:[1366,768], fresh:true,
     note:"The same on a common laptop viewport." },
   { name:"overview-field", viewport:[1600,900], t:570, presentation:"study", mode:"terrain",

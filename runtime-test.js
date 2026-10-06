@@ -277,6 +277,17 @@ try{
   if(tourStep!==-1) throw new Error("tour did not exit");
   console.log(TOUR.length+" tour stops forward and back OK");
 
+  /* Stage 7B (docs/STAGE7_SPEC.md section 6; decisions 111, 113): the first-run card opened and closed by each way out; the primary action
+     starts the tour; "explore" (the stay button, Esc, a key) and a press outside (null) leave the camera and the clock where they stand */
+  { const fr=document.getElementById("firstrun");
+    setClock(T_MIN,{force:true});
+    ["tour","explore",null].forEach(how=>{ fr.hidden=false; openFirstRun(); if(!firstRunOpen) throw new Error("the first-run card did not open");
+      const p0=landCam.position.clone(), c0=clock; closeFirst(how);
+      if(firstRunOpen||!fr.hidden) throw new Error("the first-run card did not close ("+how+")");
+      if(how==="tour"){ if(tourStep!==0) throw new Error("the first-run card's primary action did not start the tour"); exitTour(); }
+      else if(landCam.position.distanceTo(p0)>1e-9||clock!==c0) throw new Error("closing the first-run card ("+how+") moved the camera or the clock"); });
+    console.log("first run: opened and closed by each way out (the tour, in place, a press outside) OK"); }
+
   /* jumping between events must reach both ends and never stall */
   setClock(T_MIN,{force:true});
   let hops=0, last=-1;

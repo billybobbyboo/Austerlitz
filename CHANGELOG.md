@@ -1,5 +1,104 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 7B: the first screen (docs/STAGE7_SPEC.md §4, §5, §6; owner decisions 111-113, 117-120, 122)
+
+**Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
+`austerlitz-command-map.html`: 1,729,495 bytes, md5 `82337dd43a45c7ee6e502605b667549d` (was 1,720,613 bytes, md5 `3dd7ca41…`, Stage 6D).**
+`check:baseline` moves to this build. Built on the Part A branch (#43, not yet merged); its first commit records the owner's decisions 111-122
+in the specification (§0.5: every recommendation of §7 accepted).
+
+**Before building (fact).** The Part A branch (`ac14bfd`) matched `check:baseline` (the 6D build, md5 `3dd7ca41…`); Part A's
+`docs/stage7-evidence/firstrun-probe.json` is the "before" of every table below, and `tools/stage7/firstrun-probe.js` measured the "after"
+the same way (`7b-firstrun-probe.json`).
+
+**What changed** (`shell.html`, `style.css`, `app.js`)
+- **The card has one primary action and one way to stay** (decisions 111, 120): "Guided tour", drawn as a pressed button is, and "Explore on
+  my own". The primary starts the guided tour (the nine stops, the tour's own words) until 7C's opening takes the button; 7C keeps the tour
+  in the tools (sequencing, §0.5, not a new decision). "Watch the battle" is off the card (Watch is key 2 and the presentation switch, Play is
+  Space and the Play button). The hint is off the card: the "?" overlay's "Pointer and touch" rows and the legend's control line already carry
+  the same controls. The words are in `LABELS.firstRun` (3E's label table). The key (decision 108's words) is unchanged.
+- **A modal dialog** (§4.2): `aria-modal="true"`, `aria-describedby` its key; focus on the primary action when it opens; Tab and Shift+Tab
+  kept inside it (as the "?" overlay keeps them); Tab from outside it goes back in.
+- **Closed where it stands** (§0.4 item 3, resolved): Esc, "Explore on my own", any other key (which then does its own action) and a press
+  outside close the card with the camera, the clock and the Overview kept. Before, the Explore button called `setPhase(0)` and glided from the
+  Overview (491 units) to phase 0's view (321). Focus after: Play, the single next action (decision 118's rule), after Esc, the stay button or
+  a key; the tour's Next after the primary; released (not left on the hidden card) after a press outside.
+- **Two keys behave as a dialog's**: with focus on the primary, Space and Enter press it (before 7B nothing was focused at load, so Space
+  played the clock), and ← → do nothing (before, they closed the card and stepped the clock ten minutes; the Stage 3 rule that the arrows on a
+  focused button leave the clock now applies to the card's buttons).
+- **The Now tab under the card** (decision 113; §0.4 items 1 and 10, resolved): the rail shows the Now tab, not the order of battle, while
+  the card is open; from 1080 px the dispatch shows there beside the card, with the plateau reading's "derived" tag on screen (decision 119
+  (a)). Below 1080 px the dispatch is a card the first-run card would stand over (decision 58), and it stays hidden while the card is open
+  (`body.firstrun-on:not(.docked) .dispatch`). `syncDock` no longer holds the Now tab back while the card is open. The legend stays hidden
+  under the card, as before.
+- No storage (decision 117): the card returns on every load; the URL fragment the recommendation left optional is not built.
+- A comment corrected: "GUIDED TOUR — nine stops" (`app.js`; §0.4 item 4).
+
+**Per first screen, before (6D) and after** (`tools/stage7/firstrun-probe.js`; `docs/stage7-evidence/firstrun-probe.json`,
+`7b-firstrun-probe.json`, `7b-firstrun-sheet.jpg`)
+| size | the card (x, y, w x h) | unobstructed | drops (limit) | map text, lowest | focus at load | the rail's tab |
+|---|---|---|---|---|---|---|
+| 1600 x 900 | 680, 550, 540 x 241 → 680, 599, 540 x 192 | 61.5% → 63.4% | 5 → 5 (12) | 8.64 → 8.64 | the body → the primary | Order of battle → Now |
+| 1366 x 768 | 563, 418 → 563, 467; 241 → 192 tall | 53.2% → 55.8% | 4 → 5 (16) | 8.64 → 8.64 | the body → the primary | Order of battle → Now |
+| 1280 x 720 | 520, 370 → 520, 419; 241 → 192 tall | 49.0% → 52.1% | 4 → 6 (16) | 11.98 → 11.98 | the body → the primary | Order of battle → Now |
+| 1024 x 768 | 242, 418 → 242, 467; 241 → 192 tall | 67.9% → 71.4% | 4 → 5 (16, stated) | 8.65 → 8.65 | the body → the primary | (rail hidden) |
+| 390 x 844 | 16, 335, 358 x 319 → 16, 416, 358 x 238 | 38.3% → 46.9% | 2 → 6 (no limit before 7B) | 12.36 → 8.04 | the body → the primary | (rail hidden) |
+
+- **Drops** rise by one or two below 1600 x 900 (1366: the Pratzeberg; 1280: the Pratzeberg and the Goldbach; 1024: the Pratzeberg; 390: the
+  Allied headquarters, the Fifth Column, Pratzen and Stare Vinohrady, where Santon and Zuran were dropped before): places and names the
+  taller card covered, which the layer counts as under a panel, neither placed nor dropped, now compete for room (the effect 3C recorded for
+  its smaller timebar). Within every limit. At 390 x 844 the plateau reading is now drawn ("THE PRATZEN · Allied ≈ 38,700"; Part A: the plateau
+  was not named there at all).
+- **The ways out** (each on a fresh page at 1600 x 900 by a real click or key press): the primary starts the tour (focus on its Next); the stay
+  button, Esc and the key 2 close the card in place (the camera at the Overview, 491.4 units), focus on Play; a click on the map closes it in
+  place, focus released; "?" opens the overlay over the closed card (focus on its close button); Space presses the focused primary; → and Tab
+  leave the card open (Tab cycles its two buttons); a reload brings the card back, nothing stored.
+- Under reduced motion and on a visitor's page (no `?harness=1`) every measure is the 1600 x 900 one.
+
+**Tests** (none loosened; new or stricter)
+- **Self-test** (204 checks, was 203), new: the first-run card reopened at 04:00 in Study: its dialog attributes; focus on the primary; Tab,
+  Tab, Shift+Tab inside it; docked, the Now tab, the dispatch shown in the rail and not under the card, a "derived" tag on screen; Esc, the
+  stay button and a press outside close it with the camera and the clock unmoved, focus on Play after Esc and the button and on no hidden
+  element after the press; the primary starts tour stop 1 with focus on its Next; the state restored after.
+- **Harness**: the Stage 0 check "first-run card stacked on the dispatch card" is an overlap test of the two boxes (`measure.js` gives them),
+  its reason in `thresholds.js`: written when the dispatch floated, it now fails when the card stands over the dispatch, which below 1080 px
+  (the card centred over the dispatch card's place, overlapping by 214 x 192 px at 1024 x 768) it still does, as before; with the boxes
+  missing it fails as before. Stricter: Study shows the Now tab also while the card is open (the first-run views were exempt). New: by real key
+  presses on the fresh `first-run` page, focus on the primary at load, three Tabs and a Shift+Tab inside the card, Esc closing it in place with
+  focus on Play. New case `narrow-390` (decision 122): the first screen at 390 x 844, its timeline's height recorded, not held to 92 px
+  (`TIMELINE_RECORDED`); its drop limit and unobstructed baselines are what this build measures there (decision 62's method), never raised.
+  `first-run` and `first-run-laptop` are kept as they were; their unobstructed baselines are raised to this build's, rounded down to 0.1
+  point (the 3B/3C method), so no later part can give back the smaller card's gain.
+- **`runtime-test.js`**: new, a dry run of each way out (the tour; in place; a press outside): the card closes, the primary starts the tour,
+  the in-place ways leave the camera and the clock.
+- **`css-test.js`**: new, the card a modal dialog described by its key; its two buttons, the primary and the stay, with their words from
+  `LABELS`; no hint and no "Watch the battle"; its buttons at least 24 px high (WCAG 2.2, 2.5.8); the docked dispatch not hidden under it, the
+  undocked one hidden.
+- **`check:contrast`**: unchanged states; its first state now reads the Now tab and the dispatch under the card (5,253 elements, was 5,354:
+  the order of battle's rows are no longer read in it).
+
+**Checks on this build**
+- `npm run build`: fresh; the committed HTML is the build. `npm run check:baseline`: moved to this build; passes.
+- `npm test`: "ALL 9 SUITES PASSED (and the height guard)" (runtime-test: "first run: opened and closed by each way out ... OK"; css-test's
+  first-run checks pass).
+- `npm run check:data`: all 121 data declarations byte-identical (not moved). `npm run check:chronology`: errors 0.
+- `npm run check:contrast`: 5,253 text elements, 105 pairs, 0 below AA, 0 below 10.5 px (8 min 41 s).
+- `npm run check:visual`: "STAGE0: all checks passed", 24 views, the self-test 204 of 204, run twice: first without limits for
+  `narrow-390` (68 min 43 s), which set them and the raised first-run baselines from its report (`check:report` then passed on that report),
+  then again with the committed thresholds (70 min 1 s). `first-run`: 63.4% / 52.1% unobstructed, 5 drops, the real-key test (focus on the
+  primary; Tab, Tab, Tab, Shift+Tab: the stay button, the primary, the stay button, the primary; Esc: closed, the camera unmoved, focus on
+  Play); `first-run-laptop`: 55.8% / 52.1%, 5 drops; `narrow-390`: 46.9% / 52.1%, 6 drops, its timeline 172 px (recorded). Nine console
+  warnings; the six printed are the known Canvas2D readback warning, as on 6D.
+
+**Not done, or open**
+- 7C, the opening (decisions 114-116, 118, 121): the primary's action, the bar, its keys and live messages, its harness cases. Until then the
+  primary starts the nine-stop tour.
+- Decision 119 (b), a "derived" mark on the plateau label itself in every view, stays open (Part A §6).
+- The URL fragment of decision 117 is not built.
+- No screen reader was used: the dialog's behaviour is measured from the DOM and by real key presses in Chromium.
+- At 390 x 844 the timeline still wraps to 172 px (recorded, decision 122).
+- Historical: nothing. The card's key is decision 108's words; the opening's text is 7C's, from `TOUR` by index.
+
 ## 2026-10 · Stage 7 Part A: first run and opening sequence, the specification (docs/STAGE7_SPEC.md); no change to the build
 
 **Status: for review. No source file, no data and no build changed:** `austerlitz-command-map.html` is the Stage 6D build, 1,720,613 bytes,

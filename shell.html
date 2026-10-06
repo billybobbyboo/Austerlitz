@@ -305,16 +305,16 @@
   </div>
 </div>
 
-<div id="firstrun" role="dialog" aria-labelledby="fr-title">
+<!-- Stage 7B (docs/STAGE7_SPEC.md section 6; owner decisions 111-113, 120): a modal dialog with one primary action and one way to stay;
+     its focus is managed by app.js (openFirstRun, closeFirst); the controls' hint is in the "?" overlay and the legend's control line -->
+<div id="firstrun" role="dialog" aria-modal="true" aria-labelledby="fr-title" aria-describedby="fr-key">
   <h2 id="fr-title">The Battle of Austerlitz</h2>
   <!-- written at start-up from the same colour key as the legend (COLOUR_KEY), so the two cannot disagree -->
   <p id="fr-key">French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath
      them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, and it decides the battle.</p>
-  <p class="fr-hint">Drag to move the map, right-drag to turn it, scroll to zoom, and click any formation to see who it was and what it was doing.</p>
   <div class="fr-act">
-    <button class="t" id="fr-tour">Guided tour</button>
-    <button class="t" id="fr-watch">Watch the battle</button>
-    <button class="t" id="fr-close">Explore</button>
+    <button class="t fr-primary" id="fr-tour" type="button">Guided tour</button>
+    <button class="t" id="fr-close" type="button">Explore on my own</button>
   </div>
 </div>
 
