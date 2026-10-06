@@ -1,8 +1,68 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 7 Part A: first run and opening sequence, the specification (docs/STAGE7_SPEC.md); no change to the build
+
+**Status: for review. No source file, no data and no build changed:** `austerlitz-command-map.html` is the Stage 6D build, 1,720,613 bytes,
+md5 `3dd7ca41f73d0e5ffcfe5fa64adc5f51` (`check:baseline` passes); `check:data` passes against `archive/stage6b-7fc0f6c3.html` (not moved).
+The first commit records Stage 6D as merged (#42): Stage 6 is complete. The next owner decision is 111.
+
+**What was written.**
+- `docs/STAGE7_SPEC.md`: the decisions that bind Stage 7 and the records' statements about it, quoted (§0); today's first screen, read
+  from the code and measured at five sizes, under reduced motion and on a visitor's page, with every way out of the card, the ways into
+  the day counted and every test that touches the first run (§1); the text an opening could use, with file, line, reading time and the
+  suites that read it, and a definition of "tested" (§2); four openings prototyped with the app's own machinery and measured (§3);
+  accessibility and control (§4); the first screen after the opening or the card (§5); a design in parts 7B-7D with their tests, and what
+  the records leave open after Stage 7 (§6); twelve questions, 111-122 (§7).
+- `tools/stage7/` (not bundled): `text-inventory.js`, `firstrun-probe.js`, `opening-probe.js`, `lib.js`. `docs/stage7-evidence/`: their
+  outputs and a README.
+
+**Found (fact; each stated in §0.4 or §1, none resolved).**
+- **Decision 55 does not hold on the first screen**: while the card is open the rail shows the Order of battle (`app.js:5274`), which 3B
+  kept so that the Stage 0 check could stay; and **the check no longer describes what it tests**: from 1080 px it fails on the Now tab's
+  dispatch in the rail, which cannot lie under the card (measured: with the dispatch shown it fails, the boxes 380 px apart).
+- **"Explore" is two things**: the record (`CHANGELOG.md:3568`) says a click or key outside the card is an Explore that does not move the
+  camera; the Explore button itself calls `setPhase(0)` and glides from the Overview (491 units) to phase 0's view (321).
+- **The card is a dialog without a dialog's focus**: no `aria-modal`, no `aria-describedby`, focus never moved into it; eight Tabs from a fresh page
+  reach the presentation switch and the rail's rows, never the card; after any way out but "?" focus is on the body.
+- **Every load is a first run**: nothing is stored anywhere in the sources; the card returns on reload.
+- **A derived figure with no "derived" tag on screen**: the first screen names the plateau only by its derived reading ("THE PRATZEN ·
+  Allied ≈ 38,700"); the place names Pratzen, Pratzeberg and Stare Vinohrady are dropped at the Overview's distance, card or no card; while
+  the card is open every "derived" tag is hidden (`style.css:611`, `:317`), against the audit's "should not change" item.
+- **The card stands over the battle's south**: decision 61 frames the battle without it, so it covers Kienmayer, Dokhturov, Telnitz,
+  Sokolnitz, Augezd and the meres at 1600 x 900, eight formations and nine places at 1280 x 720.
+- **Tour stop 4 drops 14 map items at 1600 x 900 (20 at 1280 x 720)**, above the first-run limits; no harness case holds a tour stop's frame.
+- **The records' counts**: `app.js:3615` still says the tour has eight stops (Stage 3 Part A found it); `analysis.js:341`'s "about twelve
+  minutes" is not measured (the nine texts read in 2 min 17 s at 200 words a minute).
+- **The key's last clause** ("and it decides the battle") is an interpretation no overclaim scan reads.
+- At 390 x 844 the timeline wraps to 172 px and the plateau is not named on the map; no harness case is narrower than 1024 px.
+
+**Measured (the openings; design values for the measurement).** All nine tour stops meet every Stage 0 threshold but stop 4's drops; every
+glide between them stays at least 38.7 units above the drawn ground with no floor lift; stills through stops 1, 6, 7 take 42.9 s at 200 words a
+minute (1, 6, 7, 8: 56.8 s); the clock played from 04:00 to 11:00 under Follow with the dwell takes 106.3 s at ½× (31.2 s at 4x); the end
+states meet the 3C baselines (Study 70.4% / 62.9%, Watch 89.8% / 87.2%). Details: `docs/STAGE7_SPEC.md` §1, §3, §5.
+
+**Checks on this build (unchanged).**
+- `npm run build`: fresh; the committed HTML is the build, unchanged. `npm run check:baseline`: passes (md5 `3dd7ca41…`, 1,720,613 bytes),
+  at the start and after the last commit.
+- `npm test`: "ALL 9 SUITES PASSED (and the height guard)" (3 min 55 s; tour stop 4's figures 39,000 and 19,000 against the live 38,700 and
+  19,300, stop 5's 73% and 3% against 73.4% and 2.1%: agree).
+- `npm run check:data`: all 121 data declarations byte-identical (the reference not moved). `npm run check:chronology`: errors 0 (69 moves
+  with a timed statement, 65 consistent, the four named conflicts allowed).
+- `npm run check:contrast`: 5,354 text elements, 105 pairs, 0 below AA, 0 below 10.5 px (7 min 19 s).
+- `npm run check:visual`: "STAGE0: all checks passed" (46 min 26 s): 23 views, the self-test 203 of 203; the first-run views as measured
+  in §1 (61.5% and 53.2% unobstructed, 5 and 4 drops). Nine console warnings; the six printed are the known Canvas2D readback warning.
+  A first run was stopped by the session's 30-minute background limit after the probes, running beside it, had slowed it; the run reported
+  is the second, alone.
+
+**Not done, or open.**
+- Nothing is implemented; the prototypes' durations, speeds and reading rates are design values for the measurement.
+- Frame costs are software WebGL only; no GPU, no device, no screen reader was used (the ARIA findings are read from the DOM).
+- Historical: nothing changes. The opening proposed shows only `TOUR`'s tested text; the disputes under two of its moments (§0.4 item 9) stay
+  open.
+
 ## 2026-10 · Stage 6D: the standards from the appearance table (docs/STAGE6_SPEC.md §6.3; owner decisions 98, 105, 106)
 
-**Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
+**Status: merged (#42) at `b1cb13f`; with it Stage 6 is complete. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
 `austerlitz-command-map.html`: 1,720,613 bytes, md5 `3dd7ca41f73d0e5ffcfe5fa64adc5f51` (was 1,698,904 bytes, md5 `07c61c82…`, Stage 6C).**
 `check:baseline` moves to this build. With it come 6C's last four commits, which #41 was merged without (see the 6C entry). With 6D, Stage 6
 is complete.

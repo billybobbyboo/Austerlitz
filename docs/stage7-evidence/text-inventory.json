@@ -1,0 +1,3024 @@
+{
+ "wpm": [
+  160,
+  200,
+  238
+ ],
+ "rows": [
+  {
+   "kind": "tour stop",
+   "id": "1 The battlefield",
+   "file": "analysis.js",
+   "line": 351,
+   "words": 56,
+   "secs": {
+    "160": 21,
+    "200": 16.8,
+    "238": 14.1
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "Ten"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine",
+    "runtime"
+   ],
+   "text": "Ten kilometres of open Moravian farmland. The French army, marked in blue, is to the west; to the east are the Russians and the Austrians, marked in amber. Between them runs the Goldbach, a small stream in a marshy bottom, and behind it stands the Pratzen plateau, the high ground in the centre of the field.",
+   "at": "ph:0",
+   "chapter": null,
+   "plan": null,
+   "feature": null,
+   "cam": false,
+   "title": "The battlefield",
+   "titleLine": 350,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "tour stop",
+   "id": "2 The Allied plan",
+   "file": "analysis.js",
+   "line": 353,
+   "words": 46,
+   "secs": {
+    "160": 17.3,
+    "200": 13.8,
+    "238": 11.6
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "four",
+     "five"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine",
+    "runtime"
+   ],
+   "text": "Weyrother's orders send four of the five Allied columns south-west, off the plateau, to turn the French right and cut the road to Vienna. The heavy arrows are the intended lines of march. Note what they all have in common: they lead away from the centre.",
+   "at": "ph:0",
+   "chapter": null,
+   "plan": "al",
+   "feature": null,
+   "cam": true,
+   "title": "The Allied plan",
+   "titleLine": 12,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "tour stop",
+   "id": "3 The French deception",
+   "file": "analysis.js",
+   "line": 355,
+   "words": 37,
+   "secs": {
+    "160": 13.9,
+    "200": 11.1,
+    "238": 9.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "five"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine",
+    "runtime"
+   ],
+   "text": "Napoleon gave up the plateau on 1 December and camped behind the Goldbach, leaving his right so thin that a single division held five kilometres of stream. The weakness was real, which is what made it convincing.",
+   "at": "ph:0",
+   "chapter": "deception",
+   "plan": null,
+   "feature": null,
+   "cam": false,
+   "title": "The French deception",
+   "titleLine": 17,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "tour stop",
+   "id": "4 The Allied advance",
+   "file": "analysis.js",
+   "line": 357,
+   "words": 62,
+   "secs": {
+    "160": 23.3,
+    "200": 18.6,
+    "238": 15.6
+   },
+   "states": {
+    "times": [
+     "seven o'clock",
+     "04:00",
+     "07:15"
+    ],
+    "figures": [
+     "39,000",
+     "19,000"
+    ],
+    "numberWords": [
+     "seven"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine",
+    "runtime",
+    "sim4"
+   ],
+   "text": "From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 39,000 at 04:00 to about 19,000 by 07:15, half of it gone before a shot is fired at the plateau.",
+   "at": "ph:1",
+   "t": 445,
+   "chapter": "commitment",
+   "plan": null,
+   "feature": null,
+   "cam": false,
+   "title": "The Allied advance",
+   "titleLine": 356,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "tour stop",
+   "id": "5 Why the Pratzen matters",
+   "file": "analysis.js",
+   "line": 359,
+   "words": 72,
+   "secs": {
+    "160": 27,
+    "200": 21.6,
+    "238": 18.2
+   },
+   "states": {
+    "times": [],
+    "figures": [
+     "73",
+     "3"
+    ],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine",
+    "runtime",
+    "terr5"
+   ],
+   "text": "In this model's terrain an observer on the Pratzeberg summit can see about 73 per cent of the field, and one on the valley floor at Puntowitz under 3 per cent. That is a reading from the model, not a record of what anyone saw: on the morning of the battle the valley lay in fog, and it was the fog that hid Soult's divisions forming at the foot of the slope.",
+   "at": "ph:2",
+   "chapter": null,
+   "plan": null,
+   "feature": "pratzen",
+   "cam": true,
+   "title": "Why the Pratzen matters",
+   "titleLine": 358,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "tour stop",
+   "id": "6 The French strike",
+   "file": "analysis.js",
+   "line": 361,
+   "words": 34,
+   "secs": {
+    "160": 12.8,
+    "200": 10.2,
+    "238": 8.6
+   },
+   "states": {
+    "times": [
+     "a quarter to nine"
+    ],
+    "figures": [],
+    "numberWords": [
+     "nine",
+     "Two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine",
+    "runtime"
+   ],
+   "text": "At about a quarter to nine Saint-Hilaire and Vandamme climb out of the fog onto ground the Allies have just left. Two divisions, no reserve committed, against a column still filing off the heights.",
+   "at": "ev:soult",
+   "chapter": "pratzen",
+   "plan": null,
+   "feature": null,
+   "cam": false,
+   "title": "The French strike",
+   "titleLine": 360,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "tour stop",
+   "id": "7 The army divided",
+   "file": "analysis.js",
+   "line": 363,
+   "words": 37,
+   "secs": {
+    "160": 13.9,
+    "200": 11.1,
+    "238": 9.3
+   },
+   "states": {
+    "times": [
+     "about noon"
+    ],
+    "figures": [],
+    "numberWords": [
+     "two",
+     "forty",
+     "thousand"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine",
+    "runtime"
+   ],
+   "text": "With the plateau gone the Allied army is in two halves that can no longer help one another. Buxhowden's forty thousand are still attacking westward and will not learn what has happened behind them until about noon.",
+   "at": "ev:pratzeberg",
+   "chapter": "cut",
+   "plan": null,
+   "feature": null,
+   "cam": false,
+   "title": "The army divided",
+   "titleLine": 362,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "tour stop",
+   "id": "8 The collapse",
+   "file": "analysis.js",
+   "line": 365,
+   "words": 41,
+   "secs": {
+    "160": 15.4,
+    "200": 12.3,
+    "238": 10.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "ninety"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine",
+    "runtime"
+   ],
+   "text": "The French centre turns ninety degrees and comes down off the heights into the rear of the Allied left. The only ordered way out is the neck of dry ground at Augezd, under guns on ground the Allies held at dawn.",
+   "at": "ev:augezd",
+   "chapter": "collapse",
+   "plan": null,
+   "feature": null,
+   "cam": false,
+   "title": "The collapse",
+   "titleLine": 364,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "tour stop",
+   "id": "9 What it cost",
+   "file": "analysis.js",
+   "line": 367,
+   "words": 70,
+   "secs": {
+    "160": 26.3,
+    "200": 21,
+    "238": 17.6
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "fifteen",
+     "sixteen",
+     "thousand",
+     "twelve",
+     "thousand",
+     "hundred",
+     "eighty",
+     "nine",
+     "thousand",
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine",
+    "runtime"
+   ],
+   "text": "Allied losses are usually given as fifteen to sixteen thousand killed and wounded and twelve thousand or more taken, with about a hundred and eighty guns. French losses were near nine thousand. Everything you have watched today is a reconstruction: positions are graded A, B or C, strengths carry their ranges, and two figures on the situation line are computed rather than recorded. The sources panel says which is which.",
+   "at": "ph:9",
+   "chapter": null,
+   "plan": null,
+   "feature": null,
+   "cam": false,
+   "title": "What it cost",
+   "titleLine": 366,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "theme",
+   "id": "plan The Allied plan",
+   "file": "analysis.js",
+   "line": 15,
+   "words": 62,
+   "secs": {
+    "160": 23.3,
+    "200": 18.6,
+    "238": 15.6
+   },
+   "states": {
+    "times": [],
+    "figures": [
+     "60,000"
+    ],
+    "numberWords": [
+     "four",
+     "five",
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine"
+   ],
+   "text": "Weyrother's dispositions send four of the five Allied columns south-west off the Pratzen plateau to turn the French right and cut the road to Vienna. Bagration holds the highway in the north, Liechtenstein's cavalry links the two, and the Russian Guard stands in reserve behind Krzenowitz. The plan assumes the French will stand still while roughly 60,000 men march across their front.",
+   "at": "ph:0",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "theme",
+   "id": "deception The French deception",
+   "file": "analysis.js",
+   "line": 20,
+   "words": 60,
+   "secs": {
+    "160": 22.5,
+    "200": 18,
+    "238": 15.1
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine"
+   ],
+   "text": "Napoleon abandoned the Pratzen plateau on 1 December and camped his army west of it, behind the Goldbach. He asked for an armistice interview and let his outposts be pushed in. The intention, stated in his orders to the army, was to invite an attack on his right so that the enemy would leave the high ground in the centre.",
+   "at": "ph:0",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "theme",
+   "id": "weakness The apparent weakness on the right",
+   "file": "analysis.js",
+   "line": 25,
+   "words": 69,
+   "secs": {
+    "160": 25.9,
+    "200": 20.7,
+    "238": 17.4
+   },
+   "states": {
+    "times": [],
+    "figures": [
+     "4,300",
+     "40,000"
+    ],
+    "numberWords": [
+     "five"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine"
+   ],
+   "text": "Legrand's single division held roughly five kilometres of the lower Goldbach on its own. Davout's III Corps detachment, some 4,300 men by Duffy's and Smith's count, reached Raigern only on the night of 1 December after a forced march from Vienna, 8 km from the villages it had to hold. Against them the Allies committed nearly 40,000. The weakness was real, not simulated, which is what made it convincing.",
+   "at": "ev:telnitz",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "theme",
+   "id": "commitment The commitment of the Allied left",
+   "file": "analysis.js",
+   "line": 30,
+   "words": 57,
+   "secs": {
+    "160": 21.4,
+    "200": 17.1,
+    "238": 14.4
+   },
+   "states": {
+    "times": [
+     "07:00",
+     "09:00"
+    ],
+    "figures": [],
+    "numberWords": [
+     "three",
+     "four"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine"
+   ],
+   "text": "Between 07:00 and 09:00 the three left-hand columns and Kienmayer's advance guard descended into the Goldbach villages and fed themselves into a fight for four hamlets. Each column that went down was a column no longer on the plateau. By the time Soult moved, the centre of the Allied position had been emptied by the Allies themselves.",
+   "at": "ph:1",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "theme",
+   "id": "pratzen The attack on the Pratzen",
+   "file": "analysis.js",
+   "line": 35,
+   "words": 89,
+   "secs": {
+    "160": 33.4,
+    "200": 26.7,
+    "238": 22.4
+   },
+   "states": {
+    "times": [
+     "08:45",
+     "11:00"
+    ],
+    "figures": [],
+    "numberWords": [
+     "two",
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine"
+   ],
+   "text": "Saint-Hilaire and Vandamme had been standing in fog in the Goldbach valley, invisible from the heights. At about 08:45 they climbed the western slope and struck the 4th Column, which was still on the plateau. It had started about two hours late: held up by Liechtenstein's cavalry crossing its line of march and, in Russian accounts, chiefly by Kutuzov's reluctance to leave the heights until the Tsar ordered it forward. The fight for the two summits lasted until about 11:00, when the plateau was French from end to end.",
+   "at": "ev:soult",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "theme",
+   "id": "cut The cutting of the Allied army",
+   "file": "analysis.js",
+   "line": 40,
+   "words": 63,
+   "secs": {
+    "160": 23.6,
+    "200": 18.9,
+    "238": 15.9
+   },
+   "states": {
+    "times": [
+     "about noon"
+    ],
+    "figures": [
+     "40,000"
+    ],
+    "numberWords": [
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine"
+   ],
+   "text": "With the plateau taken, the Allied army was in two halves that could no longer support one another. Buxhowden's 40,000 were west and south of the heights; Bagration and the Guard were north and east of them. Buxhowden did not learn that the centre had gone until about noon. From this point the French hold the interior lines on their enemy's own battlefield.",
+   "at": "ev:pratzeberg",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "theme",
+   "id": "guard The Russian Guard counterattack",
+   "file": "analysis.js",
+   "line": 45,
+   "words": 64,
+   "secs": {
+    "160": 24,
+    "200": 19.2,
+    "238": 16.1
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine"
+   ],
+   "text": "Grand Duke Constantine threw the last Allied reserve at Vandamme on the Old Vineyards. The Guard infantry broke two French battalions and the Guard cavalry took the eagle of the 4th Line, the only one lost that day. Bessieres brought up the Guard cavalry and Rapp charged with the chasseurs and Mamelukes; Drouet's division formed line across the plateau. Prince Repnin was taken prisoner.",
+   "at": "ph:6",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "theme",
+   "id": "north Lannes, Murat and Bagration",
+   "file": "analysis.js",
+   "line": 50,
+   "words": 64,
+   "secs": {
+    "160": 24,
+    "200": 19.2,
+    "238": 16.1
+   },
+   "states": {
+    "times": [
+     "11:15"
+    ],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine"
+   ],
+   "text": "The northern battle was a holding action that Lannes turned into an advance. The Santon, scarped and carrying eighteen guns, made the flank unturnable, so Bagration could not get past it. When Liechtenstein's and Uvarov's horse charged, Murat answered with Nansouty's and d'Hautpoul's cuirassiers. Blasowitz fell about 11:15 and Bagration was levered off the rest of the army, withdrawing on Rausnitz in good order.",
+   "at": "ph:5",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "theme",
+   "id": "wheel The French wheel",
+   "file": "analysis.js",
+   "line": 55,
+   "words": 53,
+   "secs": {
+    "160": 19.9,
+    "200": 15.9,
+    "238": 13.4
+   },
+   "states": {
+    "times": [
+     "13:00",
+     "14:00"
+    ],
+    "figures": [],
+    "numberWords": [
+     "ninety"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine"
+   ],
+   "text": "Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau onto the back of Buxhowden's columns, while Davout attacked from the west. Przybyszewski's column was surrounded in Sokolnitz and largely captured. The Allied left was now being attacked from the direction of its own rear.",
+   "at": "ev:wheel",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "theme",
+   "id": "collapse The destruction of the Allied left",
+   "file": "analysis.js",
+   "line": 60,
+   "words": 69,
+   "secs": {
+    "160": 25.9,
+    "200": 20.7,
+    "238": 17.4
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "two",
+     "twenty",
+     "thousand",
+     "thirty",
+     "eight",
+     "hundred",
+     "thirty",
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron",
+    "testMoment",
+    "spine"
+   ],
+   "text": "The only ordered way out was the neck of dry ground at Augezd between the two meres, with French guns on the height above it. Some formations broke south across the frozen water. The 30th Bulletin claimed twenty thousand drowned; when the meres were drained the recovery was thirty-eight guns, about a hundred and thirty horses and two men. The catastrophe was real, but it was encirclement, not drowning.",
+   "at": "ev:augezd",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase lede",
+   "id": "0 Dispositions in the dark",
+   "file": "data.js",
+   "line": 52,
+   "words": 66,
+   "secs": {
+    "160": 24.8,
+    "200": 19.8,
+    "238": 16.6
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "four",
+     "five",
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Napoleon has deliberately given up the Pratzen plateau and left his right, along the lower Goldbach, looking thin enough to invite attack. Weyrother's Allied orders, read out at Krzenowitz after midnight to commanders who largely did not understand them, send four of five columns south-west across the French front. Fog fills the Goldbach valley. Soult's two assault divisions are standing in it, invisible from the heights.",
+   "t0": 240,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "0 c. 01:00",
+   "file": "data.js",
+   "line": 54,
+   "words": 11,
+   "secs": {
+    "160": 4.1,
+    "200": 3.3,
+    "238": 2.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Weyrother reads the dispositions at Allied headquarters, Krzenowitz. Kutuzov reportedly dozes.",
+   "label": "c. 01:00",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "0 c. 04:00",
+   "file": "data.js",
+   "line": 55,
+   "words": 24,
+   "secs": {
+    "160": 9,
+    "200": 7.2,
+    "238": 6.1
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Allied columns begin to move off the plateau. Liechtenstein's cavalry, misplaced on the left, must counter-march north across the front of the 4th Column.",
+   "label": "c. 04:00",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "0 c. 06:00",
+   "file": "data.js",
+   "line": 56,
+   "words": 13,
+   "secs": {
+    "160": 4.9,
+    "200": 3.9,
+    "238": 3.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Napoleon takes post on the Zuran mound with Berthier and the corps commanders.",
+   "label": "c. 06:00",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase lede",
+   "id": "1 The Allied left opens the battle",
+   "file": "data.js",
+   "line": 60,
+   "words": 45,
+   "secs": {
+    "160": 16.9,
+    "200": 13.5,
+    "238": 11.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Kienmayer's Austrian advance guard attacks Telnitz, the southernmost village on the Goldbach. Legrand's thin line holds the buildings and the vineyard bank above them, and the village changes hands repeatedly. Behind Kienmayer, Dokhturov's I Column is coming down off the southern end of the plateau.",
+   "t0": 420,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "1 c. 07:00",
+   "file": "data.js",
+   "line": 62,
+   "words": 15,
+   "secs": {
+    "160": 5.6,
+    "200": 4.5,
+    "238": 3.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Kienmayer's advance guard attacks Telnitz. The fighting here is among the hardest of the day.",
+   "label": "c. 07:00",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "1 c. 07:30",
+   "file": "data.js",
+   "line": 63,
+   "words": 8,
+   "secs": {
+    "160": 3,
+    "200": 2.4,
+    "238": 2
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Dokhturov's I Column begins descending toward the Goldbach.",
+   "label": "c. 07:30",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "1 c. 08:00",
+   "file": "data.js",
+   "line": 64,
+   "words": 27,
+   "secs": {
+    "160": 10.1,
+    "200": 8.1,
+    "238": 6.8
+   },
+   "states": {
+    "times": [],
+    "figures": [
+     "113"
+    ],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Friant's leading brigade comes up to the Goldbach near Telnitz. The division had reached Raigern overnight after about 113 km from Vienna in 40-46 hours (sources vary).",
+   "label": "c. 08:00",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase lede",
+   "id": "2 Sokolnitz, the castle and the pheasantry",
+   "file": "data.js",
+   "line": 68,
+   "words": 63,
+   "secs": {
+    "160": 23.6,
+    "200": 18.9,
+    "238": 15.9
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Langeron and Przybyszewski attack Sokolnitz village, its walled castle and the pheasantry enclosure beyond. Friant's leading brigade retakes Telnitz briefly, then withdraws behind the stream. On the plateau the 4th Column, which was meant to replace the troops leaving the heights, is still standing still: Liechtenstein's cavalry has cut across its line of march. A gap opens between it and the 3rd Column.",
+   "t0": 480,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "2 c. 08:00",
+   "file": "data.js",
+   "line": 70,
+   "words": 10,
+   "secs": {
+    "160": 3.8,
+    "200": 3,
+    "238": 2.5
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Langeron attacks Sokolnitz; Przybyszewski goes for the castle and pheasantry.",
+   "label": "c. 08:00",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "2 c. 08:30",
+   "file": "data.js",
+   "line": 71,
+   "words": 11,
+   "secs": {
+    "160": 4.1,
+    "200": 3.3,
+    "238": 2.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Friant's leading troops retake Telnitz, then fall back over the Goldbach.",
+   "label": "c. 08:30",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "2 c. 08:30",
+   "file": "data.js",
+   "line": 72,
+   "words": 23,
+   "secs": {
+    "160": 8.6,
+    "200": 6.9,
+    "238": 5.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "Twenty"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Napoleon asks Soult how long he needs to reach the heights. Twenty minutes, Soult answers. Napoleon waits a further quarter of an hour.",
+   "label": "c. 08:30",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase lede",
+   "id": "3 Soult storms the heights",
+   "file": "data.js",
+   "line": 76,
+   "words": 68,
+   "secs": {
+    "160": 25.5,
+    "200": 20.4,
+    "238": 17.1
+   },
+   "states": {
+    "times": [
+     "11:00"
+    ],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Saint-Hilaire and Vandamme climb out of the fog into sunlight on ground the Allies have just vacated. St-Hilaire makes for the Pratzeberg south of Pratzen village, Vandamme for Stare Vinohrady, the 'old vineyards', north-east of the village. Kutuzov, riding with the 4th Column, sees the danger and begins pulling troops back. The Allied centre is being broken, but the plateau will not be firmly French until about 11:00.",
+   "t0": 525,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "3 c. 08:45",
+   "file": "data.js",
+   "line": 78,
+   "words": 9,
+   "secs": {
+    "160": 3.4,
+    "200": 2.7,
+    "238": 2.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Soult's divisions advance. The mist lifts off the heights.",
+   "label": "c. 08:45",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "3 c. 09:00",
+   "file": "data.js",
+   "line": 79,
+   "words": 13,
+   "secs": {
+    "160": 4.9,
+    "200": 3.9,
+    "238": 3.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Thiebault's brigade clears Pratzen village; the 10e Legere pushes on for the Pratzeberg.",
+   "label": "c. 09:00",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "3 c. 09:15",
+   "file": "data.js",
+   "line": 80,
+   "words": 15,
+   "secs": {
+    "160": 5.6,
+    "200": 4.5,
+    "238": 3.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Kutuzov orders the 4th Column to face about and recalls part of the II Column.",
+   "label": "c. 09:15",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase lede",
+   "id": "4 The crisis on the Pratzeberg",
+   "file": "data.js",
+   "line": 84,
+   "words": 58,
+   "secs": {
+    "160": 21.8,
+    "200": 17.4,
+    "238": 14.6
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "The hardest fighting for the plateau. Kamensky's brigade, marching for Sokolnitz at the tail of Langeron's column, sees the French on the height behind it, turns about and attacks. Jurczek's Austrians join in and Saint-Hilaire is pushed back toward the crest. In the same hour, and independently, Lannes begins his advance astride the Olmutz highway in the north.",
+   "t0": 570,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "4 c. 09:30",
+   "file": "data.js",
+   "line": 86,
+   "words": 14,
+   "secs": {
+    "160": 5.3,
+    "200": 4.2,
+    "238": 3.5
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Lannes advances along the highway. Bagration counter-attacks. The two battles now run in parallel.",
+   "label": "c. 09:30",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "4 c. 09:45",
+   "file": "data.js",
+   "line": 87,
+   "words": 13,
+   "secs": {
+    "160": 4.9,
+    "200": 3.9,
+    "238": 3.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Kamensky turns his brigade about and drives the 10e Legere off the crest.",
+   "label": "c. 09:45",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "4 c. 10:15",
+   "file": "data.js",
+   "line": 88,
+   "words": 13,
+   "secs": {
+    "160": 4.9,
+    "200": 3.9,
+    "238": 3.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Jurczek's Austrians attack the Pratzeberg; French and Austrians briefly mistake each other's identity.",
+   "label": "c. 10:15",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "4 c. 10:30",
+   "file": "data.js",
+   "line": 89,
+   "words": 23,
+   "secs": {
+    "160": 8.6,
+    "200": 6.9,
+    "238": 5.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Langeron rides back and sends reinforcements up the slope; they arrive as the position is lost. Their regiment and losses are not established.",
+   "label": "c. 10:30",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase lede",
+   "id": "5 The northern battle decided",
+   "file": "data.js",
+   "line": 93,
+   "words": 58,
+   "secs": {
+    "160": 21.8,
+    "200": 17.4,
+    "238": 14.6
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Liechtenstein's and Uvarov's horse charge the French cavalry screen and Murat answers with Nansouty's and d'Hautpoul's cuirassiers. The Santon and its eighteen guns hold the flank, Blasowitz falls, and Bagration is levered away from the rest of the Allied army. On the plateau in the same minutes, Saint-Hilaire's bayonet charge and Levasseur's arrival settle the Pratzeberg for good.",
+   "t0": 630,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "5 c. 10:40",
+   "file": "data.js",
+   "line": 95,
+   "words": 14,
+   "secs": {
+    "160": 5.3,
+    "200": 4.2,
+    "238": 3.5
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "The cavalry collision west of Blasowitz. Kellermann falls back through his infantry and reforms.",
+   "label": "c. 10:40",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "5 c. 11:00",
+   "file": "data.js",
+   "line": 96,
+   "words": 7,
+   "secs": {
+    "160": 2.6,
+    "200": 2.1,
+    "238": 1.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "The Pratzeberg is firmly in French hands.",
+   "label": "c. 11:00",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "5 c. 11:15",
+   "file": "data.js",
+   "line": 97,
+   "words": 11,
+   "secs": {
+    "160": 4.1,
+    "200": 3.3,
+    "238": 2.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Blasowitz falls. Bagration begins falling back toward Rausnitz in good order.",
+   "label": "c. 11:15",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase lede",
+   "id": "6 The Russian Guard at Stare Vinohrady",
+   "file": "data.js",
+   "line": 101,
+   "words": 71,
+   "secs": {
+    "160": 26.6,
+    "200": 21.3,
+    "238": 17.9
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Grand Duke Constantine commits the last Allied reserve against Vandamme on the Old Vineyards. The Guard infantry breaks two French battalions and the Guard cavalry carries off the eagle of the 4th Line - traditionally credited to the Life Guard Horse Regiment - the only one Napoleon lost that day. Bessieres brings up the Guard cavalry, Rapp charges with the chasseurs and Mamelukes, and Drouet's division forms line across the plateau.",
+   "t0": 675,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "6 after 11:00",
+   "file": "data.js",
+   "line": 103,
+   "words": 16,
+   "secs": {
+    "160": 6,
+    "200": 4.8,
+    "238": 4
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "The Russian Guard attacks Vandamme; the 4th Line loses its eagle. The hour is not established.",
+   "label": "after 11:00",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "6 c. 11:45",
+   "file": "data.js",
+   "line": 104,
+   "words": 12,
+   "secs": {
+    "160": 4.5,
+    "200": 3.6,
+    "238": 3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Bessieres and Rapp counter-charge. The Chevalier Guard is broken; Prince Repnin captured.",
+   "label": "c. 11:45",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "6 c. 12:00",
+   "file": "data.js",
+   "line": 105,
+   "words": 9,
+   "secs": {
+    "160": 3.4,
+    "200": 2.7,
+    "238": 2.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Napoleon moves forward from the Zuran to Stare Vinohrady.",
+   "label": "c. 12:00",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "6 c. 12:00",
+   "file": "data.js",
+   "line": 106,
+   "words": 13,
+   "secs": {
+    "160": 4.9,
+    "200": 3.9,
+    "238": 3.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Buxhowden, on the Allied left, is still unaware of the collapse behind him.",
+   "label": "c. 12:00",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "6 c. 12:30",
+   "file": "data.js",
+   "line": 107,
+   "words": 10,
+   "secs": {
+    "160": 3.8,
+    "200": 3,
+    "238": 2.5
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Davout regroups and attacks; Langeron is forced back toward Sokolnitz.",
+   "label": "c. 12:30",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase lede",
+   "id": "7 The centre turns south",
+   "file": "data.js",
+   "line": 111,
+   "words": 58,
+   "secs": {
+    "160": 21.8,
+    "200": 17.4,
+    "238": 14.6
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "ninety",
+     "three"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "With the plateau secure and the Allied right pushed back beyond Blasowitz, Napoleon turns his centre ninety degrees. Saint-Hilaire and Vandamme come down off the heights onto the back of Buxhowden's three columns, supported by the Guard and the grenadier division, while Davout resumes the offensive from the west. Przybyszewski's column, caught between them in Sokolnitz, is surrounded.",
+   "t0": 765,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "7 c. 13:00-14:00",
+   "file": "data.js",
+   "line": 113,
+   "words": 11,
+   "secs": {
+    "160": 4.1,
+    "200": 3.3,
+    "238": 2.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Soult and Davout launch the converging assault on the Allied left.",
+   "label": "c. 13:00-14:00",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "7 c. 14:00",
+   "file": "data.js",
+   "line": 114,
+   "words": 10,
+   "secs": {
+    "160": 3.8,
+    "200": 3,
+    "238": 2.5
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Sokolnitz falls. Przybyszewski's column is broken up and largely captured.",
+   "label": "c. 14:00",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase lede",
+   "id": "8 Augezd, the ponds and the ice",
+   "file": "data.js",
+   "line": 118,
+   "words": 75,
+   "secs": {
+    "160": 28.1,
+    "200": 22.5,
+    "238": 18.9
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "twenty",
+     "thousand",
+     "thirty",
+     "eight",
+     "hundred",
+     "thirty",
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "The only way out for the Allied left is south over the defile at Augezd and the frozen meres beyond. French guns on the heights fire down on the ice. The 30th Bulletin claimed twenty thousand Russians drowned here; when the ponds were drained, thirty-eight guns and about a hundred and thirty horses came out of them, and two men - figures as usually given. Napoleon watches from the chapel of St Anthony above Augezd.",
+   "t0": 870,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "8 c. 14:30",
+   "file": "data.js",
+   "line": 120,
+   "words": 11,
+   "secs": {
+    "160": 4.1,
+    "200": 3.3,
+    "238": 2.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Vandamme takes the height above Augezd; the causeway comes under fire.",
+   "label": "c. 14:30",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "8 c. 15:00",
+   "file": "data.js",
+   "line": 121,
+   "words": 10,
+   "secs": {
+    "160": 3.8,
+    "200": 3,
+    "238": 2.5
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "French artillery fires on the ice of the Satschan mere.",
+   "label": "c. 15:00",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "8 c. 16:30",
+   "file": "data.js",
+   "line": 122,
+   "words": 11,
+   "secs": {
+    "160": 4.1,
+    "200": 3.3,
+    "238": 2.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Organised resistance ends. Bagration withdraws on Rausnitz, the Guard on Austerlitz.",
+   "label": "c. 16:30",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase lede",
+   "id": "9 The reckoning",
+   "file": "data.js",
+   "line": 126,
+   "words": 65,
+   "secs": {
+    "160": 24.4,
+    "200": 19.5,
+    "238": 16.4
+   },
+   "states": {
+    "times": [],
+    "figures": [
+     "15,000",
+     "16,000",
+     "12,000",
+     "180",
+     "1,300",
+     "7,000",
+     "600",
+     "1806"
+    ],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Allied losses are usually given as 15,000-16,000 killed and wounded and 12,000 or more prisoners, with about 180 guns and 45 standards; French losses at roughly 1,300 dead, 7,000 wounded and 600 missing. Austria signs at Pressburg on 26 December. The Confederation of the Rhine follows in July, and on 6 August 1806 Francis II lays down the imperial crown, ending the Holy Roman Empire.",
+   "t0": 1020,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "9 2 Dec",
+   "file": "data.js",
+   "line": 128,
+   "words": 12,
+   "secs": {
+    "160": 4.5,
+    "200": 3.6,
+    "238": 3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Allied army effectively destroyed as a field force; Russia begins withdrawing east.",
+   "label": "2 Dec",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "9 26 Dec",
+   "file": "data.js",
+   "line": 129,
+   "words": 11,
+   "secs": {
+    "160": 4.1,
+    "200": 3.3,
+    "238": 2.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Treaty of Pressburg: Austria cedes Venetia, Istria, Dalmatia, Tyrol and Vorarlberg.",
+   "label": "26 Dec",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "phase timeline line",
+   "id": "9 6 Aug 1806",
+   "file": "data.js",
+   "line": 130,
+   "words": 7,
+   "secs": {
+    "160": 2.6,
+    "200": 2.1,
+    "238": 1.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "chron"
+   ],
+   "text": "Francis II abdicates as Holy Roman Emperor.",
+   "label": "6 Aug 1806",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "act line",
+   "id": "deception The Deception",
+   "file": "analysis.js",
+   "line": 222,
+   "words": 17,
+   "secs": {
+    "160": 6.4,
+    "200": 5.1,
+    "238": 4.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "sim3"
+   ],
+   "text": "Napoleon has given up the plateau and left his right thin. The Allies form to attack it.",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "act line",
+   "id": "advance The Allied Advance",
+   "file": "analysis.js",
+   "line": 224,
+   "words": 17,
+   "secs": {
+    "160": 6.4,
+    "200": 5.1,
+    "238": 4.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "Four"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "sim3"
+   ],
+   "text": "Four columns go down into the Goldbach villages. The centre of the Allied position empties behind them.",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "act line",
+   "id": "strike The Pratzen Strike",
+   "file": "analysis.js",
+   "line": 226,
+   "words": 20,
+   "secs": {
+    "160": 7.5,
+    "200": 6,
+    "238": 5
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "sim3"
+   ],
+   "text": "Soult climbs out of the fog onto ground the Allies have just left, and holds it against everything sent back.",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "act line",
+   "id": "divided The Army Divided",
+   "file": "analysis.js",
+   "line": 228,
+   "words": 21,
+   "secs": {
+    "160": 7.9,
+    "200": 6.3,
+    "238": 5.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "sim3"
+   ],
+   "text": "With the plateau lost the Allied army is in two halves. The last reserve is spent trying to take it back.",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "act line",
+   "id": "collapse The Collapse",
+   "file": "analysis.js",
+   "line": 230,
+   "words": 17,
+   "secs": {
+    "160": 6.4,
+    "200": 5.1,
+    "238": 4.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "sim3"
+   ],
+   "text": "The French centre turns south onto the rear of an Allied left that is still attacking westward.",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "columns-move The Allied columns begin to leave the plateau",
+   "file": "analysis.js",
+   "line": 242,
+   "words": 16,
+   "secs": {
+    "160": 6,
+    "200": 4.8,
+    "238": 4
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Every column that goes down into the valley is a column no longer holding the centre.",
+   "t": [
+    240,
+    420
+   ],
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "counter-march Liechtenstein counter-marches across the 4th Column",
+   "file": "analysis.js",
+   "line": 246,
+   "words": 39,
+   "secs": {
+    "160": 14.6,
+    "200": 11.7,
+    "238": 9.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "The cavalry column had been posted on the wrong flank overnight; crossing the line of march contributed to the 4th Column starting about two hours late. Russian accounts put the delay chiefly on Kutuzov's reluctance to leave the heights.",
+   "t": [
+    255,
+    480
+   ],
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "telnitz Kienmayer attacks Telnitz",
+   "file": "analysis.js",
+   "line": 250,
+   "words": 14,
+   "secs": {
+    "160": 5.3,
+    "200": 4.2,
+    "238": 3.5
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "The first shot of the battle, and the beginning of the attack Napoleon wanted.",
+   "t": 420,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "raigern Friant's division at Raigern since the night",
+   "file": "analysis.js",
+   "line": 254,
+   "words": 31,
+   "secs": {
+    "160": 11.6,
+    "200": 9.3,
+    "238": 7.8
+   },
+   "states": {
+    "times": [],
+    "figures": [
+     "113"
+    ],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Davout and Friant reached Raigern on the night of 1 December after about 113 km from Vienna in 40-46 hours (sources vary). Raigern lies just beyond this corner of the map.",
+   "t": [
+    240,
+    285
+   ],
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "davout Friant's leading brigade reaches the Goldbach",
+   "file": "analysis.js",
+   "line": 257,
+   "words": 14,
+   "secs": {
+    "160": 5.3,
+    "200": 4.2,
+    "238": 3.5
+   },
+   "states": {
+    "times": [
+     "08:00"
+    ],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "About 08:00, near Telnitz. Without it the French right does not survive the morning.",
+   "t": [
+    465,
+    495
+   ],
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "sokolnitz Langeron and Przybyszewski attack Sokolnitz",
+   "file": "analysis.js",
+   "line": 261,
+   "words": 21,
+   "secs": {
+    "160": 7.9,
+    "200": 6.3,
+    "238": 5.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "The castle and the pheasantry are the strongest ground on the lower Goldbach, and the fight for them absorbs two columns.",
+   "t": 480,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "telnitz-retaken Friant retakes Telnitz, then withdraws behind the stream",
+   "file": "analysis.js",
+   "line": 265,
+   "words": 20,
+   "secs": {
+    "160": 7.5,
+    "200": 6,
+    "238": 5
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "A counterstroke straight off the march, and then a deliberate step back. The right is to be held, not won.",
+   "t": 510,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "decision Napoleon releases Soult against the heights",
+   "file": "analysis.js",
+   "line": 269,
+   "words": 39,
+   "secs": {
+    "160": 14.6,
+    "200": 11.7,
+    "238": 9.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "twenty"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Asked how long he needed, Soult is reported to have answered under twenty minutes, and Napoleon to have waited a further quarter of an hour to let more of the enemy get down into the valley. A memoir anecdote.",
+   "t": [
+    505,
+    525
+   ],
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "soult Saint-Hilaire and Vandamme climb the slope",
+   "file": "analysis.js",
+   "line": 273,
+   "words": 21,
+   "secs": {
+    "160": 7.9,
+    "200": 6.3,
+    "238": 5.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "Two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Two divisions that had been standing in fog, invisible from the crest, arrive on the plateau the Allies have just vacated.",
+   "t": [
+    525,
+    555
+   ],
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "pratzen-village Thiebault's brigade clears Pratzen village",
+   "file": "analysis.js",
+   "line": 277,
+   "words": 17,
+   "secs": {
+    "160": 6.4,
+    "200": 5.1,
+    "238": 4.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Opens the way to the Pratzeberg. The hour is documented; the exact sequence within it is not.",
+   "t": 540,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "face-about Kutuzov orders the 4th Column to face about",
+   "file": "analysis.js",
+   "line": 281,
+   "words": 15,
+   "secs": {
+    "160": 5.6,
+    "200": 4.5,
+    "238": 3.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "The Allied commander-in-chief, riding with the column, is the first to see what has happened.",
+   "t": 555,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "kamensky Kamensky turns his brigade about and drives the French off the crest",
+   "file": "analysis.js",
+   "line": 285,
+   "words": 18,
+   "secs": {
+    "160": 6.8,
+    "200": 5.4,
+    "238": 4.5
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "The one piece of Allied initiative on the plateau, taken by a brigade commander on his own judgement.",
+   "t": 585,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "kursk Langeron's reinforcements arrive as the crest is lost",
+   "file": "analysis.js",
+   "line": 289,
+   "words": 30,
+   "secs": {
+    "160": 11.3,
+    "200": 9,
+    "238": 7.6
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Langeron rode back and sent troops up toward Kamensky; one account has two battalions arriving just as the position was abandoned. Which regiment, and what it lost, are not established.",
+   "t": 630,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "pratzeberg The Pratzeberg is firmly in French hands",
+   "file": "analysis.js",
+   "line": 293,
+   "words": 28,
+   "secs": {
+    "160": 10.5,
+    "200": 8.4,
+    "238": 7.1
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "From here the French centre holds the high ground above the Goldbach valley and, in time, comes down into the back of the Allied columns fighting in it.",
+   "t": 660,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "blasowitz Blasowitz falls and Bagration is levered off the army",
+   "file": "analysis.js",
+   "line": 297,
+   "words": 15,
+   "secs": {
+    "160": 5.6,
+    "200": 4.5,
+    "238": 3.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "The Allied right is separated from the centre and withdraws on Rausnitz in good order.",
+   "t": 675,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "guard-attack The Russian Guard takes the eagle of the 4th Line",
+   "file": "analysis.js",
+   "line": 301,
+   "words": 12,
+   "secs": {
+    "160": 4.5,
+    "200": 3.6,
+    "238": 3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "The last Allied reserve, and the only eagle Napoleon lost that day.",
+   "t": [
+    660,
+    780
+   ],
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "guard-broken Rapp's counter-charge breaks the Chevalier Guard",
+   "file": "analysis.js",
+   "line": 305,
+   "words": 15,
+   "secs": {
+    "160": 5.6,
+    "200": 4.5,
+    "238": 3.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Prince Repnin is taken prisoner. With the reserve spent, nothing remains to retake the plateau.",
+   "t": [
+    675,
+    795
+   ],
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "hq-forward Napoleon moves forward to Stare Vinohrady",
+   "file": "analysis.js",
+   "line": 309,
+   "words": 40,
+   "secs": {
+    "160": 15,
+    "200": 12,
+    "238": 10.1
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "From Stare Vinohrady he directs the centre while the Allied left is still fighting westward on the Goldbach with its rear open. Later he moves again, to the chapel of St Anthony above Augezd, from which he watches the end.",
+   "t": [
+    720,
+    760
+   ],
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "buxhowden-blind Buxhowden does not yet know the centre is gone",
+   "file": "analysis.js",
+   "line": 313,
+   "words": 20,
+   "secs": {
+    "160": 7.5,
+    "200": 6,
+    "238": 5
+   },
+   "states": {
+    "times": [
+     "about noon"
+    ],
+    "figures": [],
+    "numberWords": [
+     "Three"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Contemporaries put it about noon. Three columns go on attacking westward while the army behind them is being taken apart.",
+   "t": [
+    700,
+    760
+   ],
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "davout-resumes Davout resumes the offensive",
+   "file": "analysis.js",
+   "line": 317,
+   "words": 14,
+   "secs": {
+    "160": 5.3,
+    "200": 4.2,
+    "238": 3.5
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "The anvil becomes a hammer. Langeron is pushed back onto Sokolnitz from the west.",
+   "t": 750,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "wheel The French centre turns south",
+   "file": "analysis.js",
+   "line": 321,
+   "words": 12,
+   "secs": {
+    "160": 4.5,
+    "200": 3.6,
+    "238": 3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "Ninety",
+     "three"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Ninety degrees, off the heights, into the rear of Buxhowden's three columns.",
+   "t": [
+    780,
+    840
+   ],
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "sokolnitz-falls Sokolnitz falls; Przybyszewski's column is surrounded",
+   "file": "analysis.js",
+   "line": 325,
+   "words": 14,
+   "secs": {
+    "160": 5.3,
+    "200": 4.2,
+    "238": 3.5
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "The column tries to break out toward Kobelnitz, comes apart, and surrenders almost entire.",
+   "t": 840,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "augezd Vandamme takes the height above the Augezd defile",
+   "file": "analysis.js",
+   "line": 329,
+   "words": 14,
+   "secs": {
+    "160": 5.3,
+    "200": 4.2,
+    "238": 3.5
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "The only ordered way out for the Allied left now lies under French guns.",
+   "t": 870,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "ice French artillery fires on the ice of the Satschan mere",
+   "file": "analysis.js",
+   "line": 60,
+   "words": 29,
+   "secs": {
+    "160": 10.9,
+    "200": 8.7,
+    "238": 7.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "twenty",
+     "thousand",
+     "thirty",
+     "eight",
+     "hundred",
+     "thirty",
+     "two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "The 30th Bulletin claimed twenty thousand drowned. The drained ponds gave up thirty-eight guns, about a hundred and thirty horses and two men. The catastrophe was encirclement, not drowning.",
+   "t": 900,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "event why",
+   "id": "end Organised resistance ends",
+   "file": "analysis.js",
+   "line": 337,
+   "words": 19,
+   "secs": {
+    "160": 7.1,
+    "200": 5.7,
+    "238": 4.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "redteam",
+    "chron"
+   ],
+   "text": "Bagration withdraws on Rausnitz, the Guard on Austerlitz, and the Allied left has ceased to exist as a formation.",
+   "t": 990,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "SOURCE_NOTE body",
+   "id": "1",
+   "file": "data.js",
+   "line": 759,
+   "words": 51,
+   "secs": {
+    "160": 19.1,
+    "200": 15.3,
+    "238": 12.9
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard"
+   ],
+   "text": "Positions here are reconstructed from standard accounts of the battle. Village-level locations, the sequence of attacks and the hours given are well documented. Exact frontages, the spacing between formations and the precise placement of cavalry reserves are not — a Napoleonic corps occupied a shifting area of ground, not a point.",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "SOURCE_NOTE body",
+   "id": "2",
+   "file": "data.js",
+   "line": 760,
+   "words": 43,
+   "secs": {
+    "160": 16.1,
+    "200": 12.9,
+    "238": 10.8
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard"
+   ],
+   "text": "Every formation marker therefore carries a confidence grade. A means the position is documented; B means the sector is documented but the frontage shown is an approximation; C means the position is reconstructed from the narrative and should be treated as indicative only.",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "SOURCE_NOTE body",
+   "id": "3",
+   "file": "data.js",
+   "line": 761,
+   "words": 47,
+   "secs": {
+    "160": 17.6,
+    "200": 14.1,
+    "238": 11.8
+   },
+   "states": {
+    "times": [],
+    "figures": [
+     "7,750",
+     "14,200"
+    ],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard"
+   ],
+   "text": "Strengths are the hardest figures of all. The Allied column organisation split and intermingled regiments, and reputable orders of battle disagree substantially — Dokhturov's I Column is given as anything from 7,750 to 14,200 men. Where sources conflict, the dossier shows a working figure and the range.",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "SOURCE_NOTE body",
+   "id": "4",
+   "file": "data.js",
+   "line": 762,
+   "words": 104,
+   "secs": {
+    "160": 39,
+    "200": 31.2,
+    "238": 26.2
+   },
+   "states": {
+    "times": [],
+    "figures": [
+     "115",
+     "2.5",
+     "1.2",
+     "4.8"
+    ],
+    "numberWords": [
+     "four"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard"
+   ],
+   "text": "Terrain relief is exaggerated about {EXAG} times: one map unit is {M_PER_UNIT} m on the ground, and heights follow a separate vertical scale fitted to surveyed elevations. At true scale the Pratzen plateau reads as a gentle rise, about 115 m from the Goldbach to the Pratzeberg over some 2.5 km. The relief setting cannot be changed while the battle plays, because redrawing the ground can take longer than a frame; the ground switch (Landscape, Paper map, Landscape with counters) can, and a slow frame while it redraws advances the battle clock by at most 1.2 minutes at 1× (4.8 at four times speed).",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "SOURCE_NOTE body",
+   "id": "5",
+   "file": "data.js",
+   "line": 763,
+   "words": 53,
+   "secs": {
+    "160": 19.9,
+    "200": 15.9,
+    "238": 13.4
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "guard"
+   ],
+   "text": "Villages are placed from the Czech municipality register and summits from terrain-model data; the map keeps its historical frame, which lies about {ROT} degrees off true north. The compass rose shows true north for the current view. Raigern, Rausnitz and Kowalowitz lie beyond the frame and are shown as markers at its edge.",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "SOURCE_NOTE body",
+   "id": "6",
+   "file": "data.js",
+   "line": 764,
+   "words": 279,
+   "secs": {
+    "160": 104.6,
+    "200": 83.7,
+    "238": 70.3
+   },
+   "states": {
+    "times": [
+     "07:30",
+     "07:00",
+     "04:00",
+     "09:45",
+     "08:45",
+     "11:45",
+     "11:15"
+    ],
+    "figures": [
+     "1805",
+     "1805",
+     "1977",
+     "1998"
+    ],
+    "numberWords": [
+     "three",
+     "three",
+     "Two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard",
+    "test105"
+   ],
+   "text": "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; the exact place of the Posoritz post house; the true position of Turas; Kologrivov's command, which rests on one source; and three hours on which this reconstruction's own texts disagree and which the published accounts it follows have not yet been checked against: when Dokhturov's I Column began its descent (c. 07:30 in the 07:00 timeline, but from 04:00 in the event and on the map), when Kamensky turned his brigade about (c. 09:45 in the timeline, but in the 08:45 phase in his own record), and when Rapp's counter-charge went in (c. 11:45 in the timeline, but from 11:15 in the event). The map keeps its earlier timing for all three. Each would be settled from Duffy (1977): his account of the Allied left columns coming down toward Telnitz, of Kamensky's counter-attack on the Pratzeberg (with Thiebault's memoirs, on which this map's account of that fight draws) and of the Guard cavalry fight at Stare Vinohrady. Smith (1998) is cited here for strengths; whether it dates these moves is not known. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Napoleon is recorded watching the end from there.",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "SOURCE_NOTE body",
+   "id": "7",
+   "file": "data.js",
+   "line": 765,
+   "words": 112,
+   "secs": {
+    "160": 42,
+    "200": 33.6,
+    "238": 28.2
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [
+     "Two"
+    ],
+    "quotes": []
+   },
+   "reads": [
+    "guard"
+   ],
+   "text": "Two figures on the situation line are computed from the plotted reconstruction rather than taken from a source. The holding on the heights is the sum of the strengths of formations whose plotted positions fall inside the plateau outline; because the reconstruction plots formations and not losses, a figure that does not change does not mean the fighting there has stopped. Centre separation is a spatial test, not a historical statistic: it reports whether a French formation stands across the line joining the Allied groups north and south of the plateau. When it stops being reported the geometry no longer holds, which is not the same as the Allied army having reunited.",
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "first-run key",
+   "id": "the card's key",
+   "file": "app.js",
+   "line": 5261,
+   "words": 41,
+   "secs": {
+    "160": 15.4,
+    "200": 12.3,
+    "238": 10.3
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [
+    "fr108"
+   ],
+   "text": "French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, and it decides the battle.",
+   "shellLine": 311,
+   "retiredFound": [],
+   "overclaim": null
+  },
+  {
+   "kind": "first-run hint",
+   "id": "the card's hint",
+   "file": "shell.html",
+   "line": 313,
+   "words": 26,
+   "secs": {
+    "160": 9.8,
+    "200": 7.8,
+    "238": 6.6
+   },
+   "states": {
+    "times": [],
+    "figures": [],
+    "numberWords": [],
+    "quotes": []
+   },
+   "reads": [],
+   "text": "Drag to move the map, right-drag to turn it, scroll to zoom, and click any formation to see who it was and what it was doing.",
+   "retiredFound": [],
+   "overclaim": null
+  }
+ ],
+ "subsets": [
+  {
+   "stops": "all nine",
+   "words": 455,
+   "secs": {
+    "160": 170.6,
+    "200": 136.5,
+    "238": 114.7
+   }
+  },
+  {
+   "stops": "1, 6, 7",
+   "words": 127,
+   "secs": {
+    "160": 47.6,
+    "200": 38.1,
+    "238": 32
+   }
+  },
+  {
+   "stops": "1, 6, 7, 8",
+   "words": 168,
+   "secs": {
+    "160": 63,
+    "200": 50.4,
+    "238": 42.4
+   }
+  },
+  {
+   "stops": "1, 4, 6, 7, 8",
+   "words": 230,
+   "secs": {
+    "160": 86.3,
+    "200": 69,
+    "238": 58
+   }
+  },
+  {
+   "stops": "1, 3, 6, 7",
+   "words": 164,
+   "secs": {
+    "160": 61.5,
+    "200": 49.2,
+    "238": 41.3
+   }
+  }
+ ],
+ "retired": 37,
+ "readers": {
+  "guard": "check:data (tools/visual/data-invariance.js): the declaration byte-identical to archive/stage6b-7fc0f6c3.html",
+  "redteam": "redteam.js section 6: overclaim scan (no certainty words; causal language warned) and section 6b: the 37 retired phrases absent",
+  "chron": "check:chronology (tools/stage2/chronology.js): its clock times read as timed statements and audited against the engine",
+  "testMoment": "test.js: the moment resolves to a phase or an event, the clock on the day, the chapter exists, only stop 4 keeps its own clock",
+  "spine": "the self-test's spine checks (app.js): every theme and stop resolves to its moments; stop 7 follows its theme",
+  "runtime": "runtime-test.js: every stop applied forward and back, and the tour finished",
+  "sim4": "sim-test.js 2b: stop 4's two figures (about 39,000 and about 19,000) recomputed from the plateau reading, within 600",
+  "terr5": "terrain-test.js: stop 5's two shares (about 73 per cent, under 3 per cent) recomputed from the viewshed",
+  "fr108": "the self-test's first-run check (app.js, decision 108): four phrases pinned, the swatches the drawing colours, no coat named as a nation's",
+  "test105": "test.js (decision 105): SOURCE_NOTE's open questions kept while the appearance table does not settle them",
+  "sim3": "sim-test.js 3: the acts cover every phase, contiguously and in order (the act's phases, not its line)"
+ }
+}

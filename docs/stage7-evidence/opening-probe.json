@@ -1,0 +1,4155 @@
+{
+ "tour": [
+  {
+   "stop": 1,
+   "n": "The battlefield",
+   "at": "ph:0",
+   "clock": "04:00",
+   "phase": 0,
+   "chapter": null,
+   "plan": null,
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 135.28,
+    "lifts": 0,
+    "from": [
+     -38.8,
+     488.7,
+     61.3
+    ]
+   },
+   "camera": {
+    "pos": [
+     -230,
+     134.8,
+     211
+    ],
+    "tgt": [
+     -28,
+     -0.6,
+     1
+    ],
+    "dist": 321.3
+   },
+   "bar": {
+    "box": [
+     520,
+     606,
+     560,
+     187
+    ],
+    "count": "1 OF 9",
+    "words": 56,
+    "scroll": false
+   },
+   "sun": -35.9,
+   "fog": 1,
+   "frame": {
+    "unobstructed": 0.632,
+    "clearance": 136.487,
+    "layer": {
+     "items": 32,
+     "placed": 23,
+     "underPanel": 0,
+     "dropped": 8,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd"
+     ],
+     "ms": 0.5,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.5,
+     "belowAA": 0,
+     "n": 27
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0004,
+     "meanLum": 49.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0346,
+    "confOver": false,
+    "cost": {
+     "calls": 753,
+     "tris": 2500335,
+     "worldMs": 22.7
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  {
+   "stop": 2,
+   "n": "The Allied plan",
+   "at": "ph:0",
+   "clock": "04:00",
+   "phase": 0,
+   "chapter": null,
+   "plan": "al",
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 134.83,
+    "lifts": 0,
+    "from": [
+     -230,
+     134.8,
+     211
+    ]
+   },
+   "camera": {
+    "pos": [
+     -27,
+     264.4,
+     41.4
+    ],
+    "tgt": [
+     -27,
+     -1.8,
+     9
+    ],
+    "dist": 268.1
+   },
+   "bar": {
+    "box": [
+     520,
+     629,
+     560,
+     164
+    ],
+    "count": "2 OF 9",
+    "words": 46,
+    "scroll": false
+   },
+   "sun": -35.9,
+   "fog": 1,
+   "frame": {
+    "unobstructed": 0.6398,
+    "clearance": 265.458,
+    "layer": {
+     "items": 72,
+     "placed": 46,
+     "underPanel": 8,
+     "dropped": 9,
+     "droppedIds": [
+      "n:walther",
+      "n:dhautpoul",
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach",
+      "t:sokolnitz",
+      "t:austerlitz"
+     ],
+     "ms": 2.1,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.54,
+     "belowAA": 0,
+     "n": 52
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0034,
+     "meanLum": 43,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0519,
+    "confOver": false,
+    "cost": {
+     "calls": 788,
+     "tris": 2501247,
+     "worldMs": 13.5
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  {
+   "stop": 3,
+   "n": "The French deception",
+   "at": "ph:0",
+   "clock": "04:00",
+   "phase": 0,
+   "chapter": "deception",
+   "plan": null,
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 43.79,
+    "lifts": 0,
+    "from": [
+     -27,
+     264.2,
+     41
+    ]
+   },
+   "camera": {
+    "pos": [
+     -129,
+     43.9,
+     27
+    ],
+    "tgt": [
+     -7,
+     4.4,
+     -5
+    ],
+    "dist": 132.2
+   },
+   "bar": {
+    "box": [
+     520,
+     629,
+     560,
+     164
+    ],
+    "count": "3 OF 9",
+    "words": 37,
+    "scroll": false
+   },
+   "sun": -35.9,
+   "fog": 1,
+   "frame": {
+    "unobstructed": 0.6398,
+    "clearance": 43.794,
+    "layer": {
+     "items": 69,
+     "placed": 22,
+     "underPanel": 17,
+     "dropped": 5,
+     "droppedIds": [
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:litava",
+      "t:pratzenv",
+      "t:krzenowitz"
+     ],
+     "ms": 2.5,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 12.03,
+     "belowAA": 0,
+     "n": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0039,
+     "meanLum": 55.4,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0531,
+    "confOver": false,
+    "cost": {
+     "calls": 728,
+     "tris": 2492987,
+     "worldMs": 11.3
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  {
+   "stop": 4,
+   "n": "The Allied advance",
+   "at": "ph:1",
+   "clock": "07:25",
+   "phase": 1,
+   "chapter": "commitment",
+   "plan": null,
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 43.79,
+    "lifts": 0,
+    "from": [
+     -129,
+     43.9,
+     27
+    ]
+   },
+   "camera": {
+    "pos": [
+     -167,
+     64.4,
+     162
+    ],
+    "tgt": [
+     -55,
+     5.8,
+     62
+    ],
+    "dist": 161.2
+   },
+   "bar": {
+    "box": [
+     520,
+     606,
+     560,
+     187
+    ],
+    "count": "4 OF 9",
+    "words": 62,
+    "scroll": false
+   },
+   "sun": -3.6,
+   "fog": 0.98,
+   "frame": {
+    "unobstructed": 0.632,
+    "clearance": 65.874,
+    "layer": {
+     "items": 61,
+     "placed": 44,
+     "underPanel": 2,
+     "dropped": 14,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:telnitz",
+      "t:kobelnitz",
+      "t:pratzenv",
+      "t:puntowitz",
+      "t:girzikowitz",
+      "t:krzenowitz",
+      "t:olmutzroad",
+      "t:chapel",
+      "t:posthouse",
+      "t:rausnitz"
+     ],
+     "ms": 1,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": true
+    },
+    "text": {
+     "min": 7.91,
+     "belowAA": 0,
+     "n": 57
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0012,
+     "meanLum": 105.2,
+     "overLimit": false
+    },
+    "smoke": 0.0188,
+    "smokeOver": false,
+    "conf": 0.0335,
+    "confOver": false,
+    "cost": {
+     "calls": 751,
+     "tris": 2518831,
+     "worldMs": 19.2
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  {
+   "stop": 5,
+   "n": "Why the Pratzen matters",
+   "at": "ph:2",
+   "clock": "08:00",
+   "phase": 2,
+   "chapter": null,
+   "plan": null,
+   "selection": "t:pratzen",
+   "glide": {
+    "samples": 51,
+    "lowest": 46.19,
+    "lifts": 0,
+    "from": [
+     -167,
+     64.4,
+     162
+    ]
+   },
+   "camera": {
+    "pos": [
+     -136,
+     46.1,
+     31
+    ],
+    "tgt": [
+     -6,
+     4.6,
+     -3
+    ],
+    "dist": 140.7
+   },
+   "bar": {
+    "box": [
+     520,
+     606,
+     560,
+     187
+    ],
+    "count": "5 OF 9",
+    "words": 72,
+    "scroll": false
+   },
+   "sun": 1.5,
+   "fog": 0.98,
+   "frame": {
+    "unobstructed": 0.632,
+    "clearance": 46.196,
+    "layer": {
+     "items": 67,
+     "placed": 24,
+     "underPanel": 16,
+     "dropped": 4,
+     "droppedIds": [
+      "t:vinohrady",
+      "t:austerlitz",
+      "t:girzikowitz",
+      "t:krzenowitz"
+     ],
+     "ms": 0.8,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 7.67,
+     "belowAA": 0,
+     "n": 28
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0004,
+     "meanLum": 117.1,
+     "overLimit": false
+    },
+    "smoke": 0.0711,
+    "smokeOver": false,
+    "conf": 0.0228,
+    "confOver": false,
+    "cost": {
+     "calls": 769,
+     "tris": 2535399,
+     "worldMs": 11.4
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  {
+   "stop": 6,
+   "n": "The French strike",
+   "at": "ev:soult",
+   "clock": "08:45",
+   "phase": 3,
+   "chapter": "pratzen",
+   "plan": null,
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 46.19,
+    "lifts": 0,
+    "from": [
+     -136,
+     46.1,
+     31
+    ]
+   },
+   "camera": {
+    "pos": [
+     -136,
+     46.1,
+     31
+    ],
+    "tgt": [
+     -6,
+     4.6,
+     -3
+    ],
+    "dist": 140.7
+   },
+   "bar": {
+    "box": [
+     520,
+     629,
+     560,
+     164
+    ],
+    "count": "6 OF 9",
+    "words": 34,
+    "scroll": false
+   },
+   "sun": 6.9,
+   "fog": 0.9,
+   "frame": {
+    "unobstructed": 0.6398,
+    "clearance": 46.196,
+    "layer": {
+     "items": 62,
+     "placed": 25,
+     "underPanel": 11,
+     "dropped": 7,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzenv",
+      "t:girzikowitz",
+      "t:blasowitz",
+      "t:krzenowitz",
+      "t:chapel"
+     ],
+     "ms": 0.6,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 7.48,
+     "belowAA": 0,
+     "n": 32
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0001,
+     "meanLum": 135.8,
+     "overLimit": false
+    },
+    "smoke": 0.0257,
+    "smokeOver": false,
+    "conf": 0.0436,
+    "confOver": false,
+    "cost": {
+     "calls": 736,
+     "tris": 2536751,
+     "worldMs": 14.4
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  {
+   "stop": 7,
+   "n": "The army divided",
+   "at": "ev:pratzeberg",
+   "clock": "11:00",
+   "phase": 5,
+   "chapter": "cut",
+   "plan": null,
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 38.72,
+    "lifts": 0,
+    "from": [
+     -136,
+     46.1,
+     31
+    ]
+   },
+   "camera": {
+    "pos": [
+     -75,
+     38.6,
+     42
+    ],
+    "tgt": [
+     7,
+     10,
+     12
+    ],
+    "dist": 91.9
+   },
+   "bar": {
+    "box": [
+     520,
+     629,
+     560,
+     164
+    ],
+    "count": "7 OF 9",
+    "words": 37,
+    "scroll": false
+   },
+   "sun": 17.7,
+   "fog": 0,
+   "frame": {
+    "unobstructed": 0.6398,
+    "clearance": 38.729,
+    "layer": {
+     "items": 62,
+     "placed": 12,
+     "underPanel": 6,
+     "dropped": 3,
+     "droppedIds": [
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:krzenowitz"
+     ],
+     "ms": 0.8,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.48,
+     "belowAA": 0,
+     "n": 16
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0006,
+     "meanLum": 73.5,
+     "overLimit": false
+    },
+    "smoke": 0.0386,
+    "smokeOver": false,
+    "conf": 0.0352,
+    "confOver": false,
+    "cost": {
+     "calls": 713,
+     "tris": 2522727,
+     "worldMs": 14.8
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  {
+   "stop": 8,
+   "n": "The collapse",
+   "at": "ev:augezd",
+   "clock": "14:30",
+   "phase": 8,
+   "chapter": "collapse",
+   "plan": null,
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 38.72,
+    "lifts": 0,
+    "from": [
+     -75,
+     38.6,
+     42
+    ]
+   },
+   "camera": {
+    "pos": [
+     -122,
+     95.1,
+     2
+    ],
+    "tgt": [
+     -18,
+     4.2,
+     68
+    ],
+    "dist": 153
+   },
+   "bar": {
+    "box": [
+     520,
+     629,
+     560,
+     164
+    ],
+    "count": "8 OF 9",
+    "words": 41,
+    "scroll": false
+   },
+   "sun": 11.5,
+   "fog": 0,
+   "frame": {
+    "unobstructed": 0.6398,
+    "clearance": 94.489,
+    "layer": {
+     "items": 64,
+     "placed": 24,
+     "underPanel": 8,
+     "dropped": 4,
+     "droppedIds": [
+      "t:telnitz",
+      "t:augezd",
+      "t:satschan",
+      "t:chapel"
+     ],
+     "ms": 0.8,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.27,
+     "belowAA": 0,
+     "n": 32
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.002,
+     "meanLum": 54.7,
+     "overLimit": false
+    },
+    "smoke": 0.0408,
+    "smokeOver": false,
+    "conf": 0.064,
+    "confOver": false,
+    "cost": {
+     "calls": 763,
+     "tris": 2557933,
+     "worldMs": 63.2
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  {
+   "stop": 9,
+   "n": "What it cost",
+   "at": "ph:9",
+   "clock": "17:00",
+   "phase": 9,
+   "chapter": null,
+   "plan": null,
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 94.49,
+    "lifts": 0,
+    "from": [
+     -122,
+     95.1,
+     2
+    ]
+   },
+   "camera": {
+    "pos": [
+     -220,
+     160.9,
+     206
+    ],
+    "tgt": [
+     -28,
+     -1.1,
+     6
+    ],
+    "dist": 321.1
+   },
+   "bar": {
+    "box": [
+     520,
+     584,
+     560,
+     209
+    ],
+    "count": "9 OF 9",
+    "words": 70,
+    "scroll": false
+   },
+   "sun": -7.2,
+   "fog": 0.22,
+   "frame": {
+    "unobstructed": 0.6227,
+    "clearance": 162.745,
+    "layer": {
+     "items": 18,
+     "placed": 17,
+     "underPanel": 0,
+     "dropped": 1,
+     "droppedIds": [
+      "t:austerlitz"
+     ],
+     "ms": 0.2,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.26,
+     "belowAA": 0,
+     "n": 21
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0013,
+     "meanLum": 41.6,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0434,
+    "confOver": false,
+    "cost": {
+     "calls": 733,
+     "tris": 2459907,
+     "worldMs": 19.3
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  }
+ ],
+ "glides": {
+  "1,6,7": {
+   "legs": [
+    {
+     "to": 1,
+     "clock": "04:00",
+     "lowest": 135.28,
+     "lifts": 0,
+     "dist": 321.3
+    },
+    {
+     "to": 6,
+     "clock": "08:45",
+     "lowest": 46.19,
+     "lifts": 0,
+     "dist": 140.7
+    },
+    {
+     "to": 7,
+     "clock": "11:00",
+     "lowest": 38.72,
+     "lifts": 0,
+     "dist": 91.9
+    }
+   ],
+   "lowest": 38.72,
+   "lifts": 0
+  },
+  "1,6,7,8": {
+   "legs": [
+    {
+     "to": 1,
+     "clock": "04:00",
+     "lowest": 135.28,
+     "lifts": 0,
+     "dist": 321.3
+    },
+    {
+     "to": 6,
+     "clock": "08:45",
+     "lowest": 46.19,
+     "lifts": 0,
+     "dist": 140.7
+    },
+    {
+     "to": 7,
+     "clock": "11:00",
+     "lowest": 38.72,
+     "lifts": 0,
+     "dist": 91.9
+    },
+    {
+     "to": 8,
+     "clock": "14:30",
+     "lowest": 38.72,
+     "lifts": 0,
+     "dist": 153
+    }
+   ],
+   "lowest": 38.72,
+   "lifts": 0
+  },
+  "1,4,6,7,8": {
+   "legs": [
+    {
+     "to": 1,
+     "clock": "04:00",
+     "lowest": 135.28,
+     "lifts": 0,
+     "dist": 321.3
+    },
+    {
+     "to": 4,
+     "clock": "07:25",
+     "lowest": 64.67,
+     "lifts": 0,
+     "dist": 161.2
+    },
+    {
+     "to": 6,
+     "clock": "08:45",
+     "lowest": 46.19,
+     "lifts": 0,
+     "dist": 140.7
+    },
+    {
+     "to": 7,
+     "clock": "11:00",
+     "lowest": 38.72,
+     "lifts": 0,
+     "dist": 91.9
+    },
+    {
+     "to": 8,
+     "clock": "14:30",
+     "lowest": 38.72,
+     "lifts": 0,
+     "dist": 153
+    }
+   ],
+   "lowest": 38.72,
+   "lifts": 0
+  },
+  "all nine": {
+   "legs": [
+    {
+     "to": 1,
+     "clock": "04:00",
+     "lowest": 135.28,
+     "lifts": 0,
+     "dist": 321.3
+    },
+    {
+     "to": 2,
+     "clock": "04:00",
+     "lowest": 135.28,
+     "lifts": 0,
+     "dist": 267.9
+    },
+    {
+     "to": 3,
+     "clock": "04:00",
+     "lowest": 43.79,
+     "lifts": 0,
+     "dist": 132.2
+    },
+    {
+     "to": 4,
+     "clock": "07:25",
+     "lowest": 43.79,
+     "lifts": 0,
+     "dist": 161.2
+    },
+    {
+     "to": 5,
+     "clock": "08:00",
+     "lowest": 46.19,
+     "lifts": 0,
+     "dist": 140.7
+    },
+    {
+     "to": 6,
+     "clock": "08:45",
+     "lowest": 46.19,
+     "lifts": 0,
+     "dist": 140.7
+    },
+    {
+     "to": 7,
+     "clock": "11:00",
+     "lowest": 38.72,
+     "lifts": 0,
+     "dist": 91.9
+    },
+    {
+     "to": 8,
+     "clock": "14:30",
+     "lowest": 38.72,
+     "lifts": 0,
+     "dist": 153
+    },
+    {
+     "to": 9,
+     "clock": "17:00",
+     "lowest": 94.49,
+     "lifts": 0,
+     "dist": 321.1
+    }
+   ],
+   "lowest": 38.72,
+   "lifts": 0
+  }
+ },
+ "small": {
+  "1280x720 stop 1": {
+   "stop": 1,
+   "n": "The battlefield",
+   "at": "ph:0",
+   "clock": "04:00",
+   "phase": 0,
+   "chapter": null,
+   "plan": null,
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 135.28,
+    "lifts": 0,
+    "from": [
+     -38.8,
+     521.3,
+     64.8
+    ]
+   },
+   "camera": {
+    "pos": [
+     -230,
+     134.8,
+     211
+    ],
+    "tgt": [
+     -28,
+     -0.6,
+     1
+    ],
+    "dist": 321.3
+   },
+   "bar": {
+    "box": [
+     360,
+     426,
+     560,
+     187
+    ],
+    "count": "1 OF 9",
+    "words": 56,
+    "scroll": false
+   },
+   "sun": -35.9,
+   "fog": 1,
+   "frame": {
+    "unobstructed": 0.5169,
+    "clearance": 136.487,
+    "layer": {
+     "items": 32,
+     "placed": 21,
+     "underPanel": 0,
+     "dropped": 10,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran",
+      "t:goldbach",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd",
+      "t:austerlitz"
+     ],
+     "ms": 0.7,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.5,
+     "belowAA": 0,
+     "n": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0004,
+     "meanLum": 49.2,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0449,
+    "confOver": false,
+    "cost": {
+     "calls": 755,
+     "tris": 2500339,
+     "worldMs": 17.7
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1280x720 stop 4": {
+   "stop": 4,
+   "n": "The Allied advance",
+   "at": "ph:1",
+   "clock": "07:25",
+   "phase": 1,
+   "chapter": "commitment",
+   "plan": null,
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 64.67,
+    "lifts": 0,
+    "from": [
+     -230,
+     134.8,
+     211
+    ]
+   },
+   "camera": {
+    "pos": [
+     -167,
+     64.4,
+     162
+    ],
+    "tgt": [
+     -55,
+     5.8,
+     62
+    ],
+    "dist": 161.2
+   },
+   "bar": {
+    "box": [
+     360,
+     426,
+     560,
+     187
+    ],
+    "count": "4 OF 9",
+    "words": 62,
+    "scroll": false
+   },
+   "sun": -3.6,
+   "fog": 0.98,
+   "frame": {
+    "unobstructed": 0.5169,
+    "clearance": 65.874,
+    "layer": {
+     "items": 61,
+     "placed": 36,
+     "underPanel": 4,
+     "dropped": 20,
+     "droppedIds": [
+      "n:santon",
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:goldbach",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd",
+      "t:austerlitz",
+      "t:kobelnitz",
+      "t:pratzenv",
+      "t:puntowitz",
+      "t:girzikowitz",
+      "t:blasowitz",
+      "t:krzenowitz",
+      "t:olmutzroad",
+      "t:chapel",
+      "t:posthouse",
+      "t:rausnitz"
+     ],
+     "ms": 1,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": true
+    },
+    "text": {
+     "min": 7.91,
+     "belowAA": 0,
+     "n": 48
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0007,
+     "meanLum": 101.5,
+     "overLimit": false
+    },
+    "smoke": 0.025,
+    "smokeOver": false,
+    "conf": 0.0388,
+    "confOver": false,
+    "cost": {
+     "calls": 751,
+     "tris": 2518831,
+     "worldMs": 15.4
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1280x720 stop 6": {
+   "stop": 6,
+   "n": "The French strike",
+   "at": "ev:soult",
+   "clock": "08:45",
+   "phase": 3,
+   "chapter": "pratzen",
+   "plan": null,
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 46.19,
+    "lifts": 0,
+    "from": [
+     -167,
+     64.4,
+     162
+    ]
+   },
+   "camera": {
+    "pos": [
+     -136,
+     46.1,
+     31
+    ],
+    "tgt": [
+     -6,
+     4.6,
+     -3
+    ],
+    "dist": 140.7
+   },
+   "bar": {
+    "box": [
+     360,
+     449,
+     560,
+     164
+    ],
+    "count": "6 OF 9",
+    "words": 34,
+    "scroll": false
+   },
+   "sun": 6.9,
+   "fog": 0.9,
+   "frame": {
+    "unobstructed": 0.5291,
+    "clearance": 46.196,
+    "layer": {
+     "items": 62,
+     "placed": 21,
+     "underPanel": 15,
+     "dropped": 7,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:austerlitz",
+      "t:pratzenv",
+      "t:blasowitz",
+      "t:krzenowitz",
+      "t:chapel"
+     ],
+     "ms": 1,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 7.48,
+     "belowAA": 0,
+     "n": 25
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0001,
+     "meanLum": 131.9,
+     "overLimit": false
+    },
+    "smoke": 0.0058,
+    "smokeOver": false,
+    "conf": 0.0457,
+    "confOver": false,
+    "cost": {
+     "calls": 736,
+     "tris": 2536741,
+     "worldMs": 12.8
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1280x720 stop 7": {
+   "stop": 7,
+   "n": "The army divided",
+   "at": "ev:pratzeberg",
+   "clock": "11:00",
+   "phase": 5,
+   "chapter": "cut",
+   "plan": null,
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 38.72,
+    "lifts": 0,
+    "from": [
+     -136,
+     46.1,
+     31
+    ]
+   },
+   "camera": {
+    "pos": [
+     -75,
+     38.6,
+     42
+    ],
+    "tgt": [
+     7,
+     10,
+     12
+    ],
+    "dist": 91.9
+   },
+   "bar": {
+    "box": [
+     360,
+     449,
+     560,
+     164
+    ],
+    "count": "7 OF 9",
+    "words": 37,
+    "scroll": false
+   },
+   "sun": 17.7,
+   "fog": 0,
+   "frame": {
+    "unobstructed": 0.5291,
+    "clearance": 38.729,
+    "layer": {
+     "items": 62,
+     "placed": 7,
+     "underPanel": 11,
+     "dropped": 3,
+     "droppedIds": [
+      "t:litava",
+      "t:pratzenv",
+      "t:krzenowitz"
+     ],
+     "ms": 0.5,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 13.33,
+     "belowAA": 0,
+     "n": 11
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0003,
+     "meanLum": 71.7,
+     "overLimit": false
+    },
+    "smoke": 0.0125,
+    "smokeOver": false,
+    "conf": 0.0447,
+    "confOver": false,
+    "cost": {
+     "calls": 720,
+     "tris": 2523767,
+     "worldMs": 12.4
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1280x720 stop 8": {
+   "stop": 8,
+   "n": "The collapse",
+   "at": "ev:augezd",
+   "clock": "14:30",
+   "phase": 8,
+   "chapter": "collapse",
+   "plan": null,
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 38.72,
+    "lifts": 0,
+    "from": [
+     -75,
+     38.6,
+     42
+    ]
+   },
+   "camera": {
+    "pos": [
+     -122,
+     95.1,
+     2
+    ],
+    "tgt": [
+     -18,
+     4.2,
+     68
+    ],
+    "dist": 153
+   },
+   "bar": {
+    "box": [
+     360,
+     449,
+     560,
+     164
+    ],
+    "count": "8 OF 9",
+    "words": 41,
+    "scroll": false
+   },
+   "sun": 11.5,
+   "fog": 0,
+   "frame": {
+    "unobstructed": 0.5291,
+    "clearance": 94.489,
+    "layer": {
+     "items": 64,
+     "placed": 21,
+     "underPanel": 12,
+     "dropped": 3,
+     "droppedIds": [
+      "t:augezd",
+      "t:satschan",
+      "t:chapel"
+     ],
+     "ms": 0.7,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 12.16,
+     "belowAA": 0,
+     "n": 28
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0014,
+     "meanLum": 54.5,
+     "overLimit": false
+    },
+    "smoke": 0.0352,
+    "smokeOver": false,
+    "conf": 0.0611,
+    "confOver": false,
+    "cost": {
+     "calls": 764,
+     "tris": 2557945,
+     "worldMs": 11.4
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1024x768 stop 1": {
+   "stop": 1,
+   "n": "The battlefield",
+   "at": "ph:0",
+   "clock": "04:00",
+   "phase": 0,
+   "chapter": null,
+   "plan": null,
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 135.28,
+    "lifts": 0,
+    "from": [
+     -38.8,
+     530.8,
+     65.9
+    ]
+   },
+   "camera": {
+    "pos": [
+     -230,
+     134.8,
+     211
+    ],
+    "tgt": [
+     -28,
+     -0.6,
+     1
+    ],
+    "dist": 321.3
+   },
+   "bar": {
+    "box": [
+     232,
+     474,
+     560,
+     187
+    ],
+    "count": "1 OF 9",
+    "words": 56,
+    "scroll": false
+   },
+   "sun": -35.9,
+   "fog": 1,
+   "frame": {
+    "unobstructed": 0.7151,
+    "clearance": 136.487,
+    "layer": {
+     "items": 32,
+     "placed": 23,
+     "underPanel": 0,
+     "dropped": 8,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd"
+     ],
+     "ms": 0.8,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.5,
+     "belowAA": 0,
+     "n": 27
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0012,
+     "meanLum": 47.8,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0453,
+    "confOver": false,
+    "cost": {
+     "calls": 754,
+     "tris": 2500337,
+     "worldMs": 14.4
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": false,
+     "docked": false,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "390x844 stop 1": {
+   "stop": 1,
+   "n": "The battlefield",
+   "at": "ph:0",
+   "clock": "04:00",
+   "phase": 0,
+   "chapter": null,
+   "plan": null,
+   "selection": null,
+   "glide": {
+    "samples": 51,
+    "lowest": 135.28,
+    "lifts": 0,
+    "from": [
+     -38.8,
+     863.4,
+     103.3
+    ]
+   },
+   "camera": {
+    "pos": [
+     -230,
+     134.8,
+     211
+    ],
+    "tgt": [
+     -28,
+     -0.6,
+     1
+    ],
+    "dist": 321.3
+   },
+   "bar": {
+    "box": [
+     10,
+     435,
+     370,
+     227
+    ],
+    "count": "1 OF 9",
+    "words": 56,
+    "scroll": false
+   },
+   "sun": -35.9,
+   "fog": 1,
+   "frame": {
+    "unobstructed": 0.471,
+    "clearance": 136.487,
+    "layer": {
+     "items": 32,
+     "placed": 12,
+     "underPanel": 3,
+     "dropped": 9,
+     "droppedIds": [
+      "n:buxhowden",
+      "n:bag",
+      "n:lich",
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:goldbach",
+      "t:litava",
+      "t:sokolnitz"
+     ],
+     "ms": 0.9,
+     "minPx": 12.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 12.05,
+     "belowAA": 0,
+     "n": 13
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0026,
+     "meanLum": 49.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.1116,
+    "confOver": false,
+    "cost": {
+     "calls": 740,
+     "tris": 2500305,
+     "worldMs": 14.7
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": false,
+     "docked": false,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": [
+     "the timeline is 172 px tall (at most 92)"
+    ]
+   }
+  }
+ },
+ "card": {
+  "1600x900 today": {
+   "box": [
+    680,
+    550,
+    540,
+    241
+   ],
+   "under": {
+    "forms": [
+     "kienmayer",
+     "dok"
+    ],
+    "places": [
+     "telnitz",
+     "sokolnitz",
+     "augezd",
+     "satschan",
+     "menitz",
+     "chapel"
+    ],
+    "n": 54,
+    "placed": [
+     "n:gqg",
+     "n:ahq",
+     "n:buxhowden",
+     "n:lich",
+     "n:bag",
+     "e:columns-move",
+     "e:raigern",
+     "p:plateau",
+     "o:French line on the Goldbach",
+     "o:Allied columns on the plateau",
+     "o:V Corps · IV Corps",
+     "o:Soult's assault · Legrand",
+     "o:III Column → the castle",
+     "o:IV Column → Kobelnitz",
+     "o:V Column counter-marches north",
+     "o:Kobelnitz",
+     "t:santon",
+     "t:litava",
+     "t:austerlitz"
+    ],
+    "dropped": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:zuran",
+     "t:goldbach"
+    ]
+   },
+   "frame": {
+    "unobstructed": 0.6149,
+    "clearance": 490.297,
+    "layer": {
+     "items": 32,
+     "placed": 19,
+     "underPanel": 8,
+     "dropped": 5,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach"
+     ],
+     "ms": 0.6,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.64,
+     "belowAA": 0,
+     "n": 23
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0027,
+     "meanLum": 35.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": null,
+    "confOver": null,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 6.9
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1600x900 without the hint": {
+   "box": [
+    680,
+    599,
+    540,
+    192
+   ],
+   "under": {
+    "forms": [
+     "kienmayer"
+    ],
+    "places": [
+     "telnitz",
+     "sokolnitz",
+     "augezd",
+     "satschan",
+     "menitz"
+    ],
+    "n": 54,
+    "placed": [
+     "n:gqg",
+     "n:ahq",
+     "n:buxhowden",
+     "n:lich",
+     "n:bag",
+     "e:columns-move",
+     "e:raigern",
+     "p:plateau",
+     "o:French line on the Goldbach",
+     "o:Allied columns on the plateau",
+     "o:V Corps · IV Corps",
+     "o:Soult's assault · Legrand",
+     "o:II Column → Sokolnitz",
+     "o:III Column → the castle",
+     "o:IV Column → Kobelnitz",
+     "o:V Column counter-marches north",
+     "o:Kobelnitz",
+     "t:santon",
+     "t:litava",
+     "t:austerlitz"
+    ],
+    "dropped": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:zuran",
+     "t:goldbach"
+    ]
+   },
+   "frame": {
+    "unobstructed": 0.6344,
+    "clearance": 490.297,
+    "layer": {
+     "items": 32,
+     "placed": 20,
+     "underPanel": 7,
+     "dropped": 5,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach"
+     ],
+     "ms": 0.5,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.64,
+     "belowAA": 0,
+     "n": 24
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0026,
+     "meanLum": 35.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": null,
+    "confOver": null,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 7.8
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1600x900 one primary action": {
+   "box": [
+    680,
+    599,
+    540,
+    192
+   ],
+   "under": {
+    "forms": [
+     "kienmayer"
+    ],
+    "places": [
+     "telnitz",
+     "sokolnitz",
+     "augezd",
+     "satschan",
+     "menitz"
+    ],
+    "n": 54,
+    "placed": [
+     "n:gqg",
+     "n:ahq",
+     "n:buxhowden",
+     "n:lich",
+     "n:bag",
+     "e:columns-move",
+     "e:raigern",
+     "p:plateau",
+     "o:French line on the Goldbach",
+     "o:Allied columns on the plateau",
+     "o:V Corps · IV Corps",
+     "o:Soult's assault · Legrand",
+     "o:II Column → Sokolnitz",
+     "o:III Column → the castle",
+     "o:IV Column → Kobelnitz",
+     "o:V Column counter-marches north",
+     "o:Kobelnitz",
+     "t:santon",
+     "t:litava",
+     "t:austerlitz"
+    ],
+    "dropped": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:zuran",
+     "t:goldbach"
+    ]
+   },
+   "frame": {
+    "unobstructed": 0.6344,
+    "clearance": 490.297,
+    "layer": {
+     "items": 32,
+     "placed": 20,
+     "underPanel": 7,
+     "dropped": 5,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach"
+     ],
+     "ms": 0.5,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.64,
+     "belowAA": 0,
+     "n": 24
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0026,
+     "meanLum": 35.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": null,
+    "confOver": null,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 7.5
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1600x900 the Now tab under it": {
+   "box": [
+    680,
+    550,
+    540,
+    241
+   ],
+   "under": {
+    "forms": [
+     "kienmayer",
+     "dok"
+    ],
+    "places": [
+     "telnitz",
+     "sokolnitz",
+     "augezd",
+     "satschan",
+     "menitz",
+     "chapel"
+    ],
+    "n": 54,
+    "placed": [
+     "n:gqg",
+     "n:ahq",
+     "n:buxhowden",
+     "n:lich",
+     "n:bag",
+     "e:columns-move",
+     "e:raigern",
+     "p:plateau",
+     "o:French line on the Goldbach",
+     "o:Allied columns on the plateau",
+     "o:V Corps · IV Corps",
+     "o:Soult's assault · Legrand",
+     "o:III Column → the castle",
+     "o:IV Column → Kobelnitz",
+     "o:V Column counter-marches north",
+     "o:Kobelnitz",
+     "t:santon",
+     "t:litava",
+     "t:austerlitz"
+    ],
+    "dropped": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:zuran",
+     "t:goldbach"
+    ]
+   },
+   "frame": {
+    "unobstructed": 0.6149,
+    "clearance": 490.297,
+    "layer": {
+     "items": 32,
+     "placed": 19,
+     "underPanel": 8,
+     "dropped": 5,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach"
+     ],
+     "ms": 0.6,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.64,
+     "belowAA": 0,
+     "n": 23
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0027,
+     "meanLum": 35.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": null,
+    "confOver": null,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 14
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1280x720 today": {
+   "box": [
+    520,
+    370,
+    540,
+    241
+   ],
+   "under": {
+    "forms": [
+     "legrand",
+     "friant",
+     "bourcier",
+     "buxhowden",
+     "kienmayer",
+     "dok",
+     "lang",
+     "prz"
+    ],
+    "places": [
+     "pratzeberg",
+     "goldbach",
+     "telnitz",
+     "sokolnitz",
+     "kobelnitz",
+     "augezd",
+     "satschan",
+     "menitz",
+     "chapel"
+    ],
+    "n": 54,
+    "placed": [
+     "n:gqg",
+     "n:ahq",
+     "n:lich",
+     "n:bag",
+     "e:raigern",
+     "p:plateau",
+     "o:French line on the Goldbach",
+     "o:Allied columns on the plateau",
+     "o:V Corps · IV Corps",
+     "o:Soult's assault · Legrand",
+     "o:IV Column → Kobelnitz",
+     "o:V Column counter-marches north",
+     "t:santon",
+     "t:austerlitz"
+    ],
+    "dropped": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:zuran",
+     "t:litava"
+    ]
+   },
+   "frame": {
+    "unobstructed": 0.4902,
+    "clearance": 522.972,
+    "layer": {
+     "items": 32,
+     "placed": 14,
+     "underPanel": 14,
+     "dropped": 4,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:zuran",
+      "t:litava"
+     ],
+     "ms": 0.5,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 11.98,
+     "belowAA": 0,
+     "n": 17
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0023,
+     "meanLum": 34.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": null,
+    "confOver": null,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 7.7
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1280x720 without the hint": {
+   "box": [
+    520,
+    419,
+    540,
+    192
+   ],
+   "under": {
+    "forms": [
+     "friant",
+     "bourcier",
+     "buxhowden",
+     "kienmayer",
+     "dok"
+    ],
+    "places": [
+     "telnitz",
+     "sokolnitz",
+     "augezd",
+     "satschan",
+     "menitz",
+     "chapel"
+    ],
+    "n": 54,
+    "placed": [
+     "n:gqg",
+     "n:ahq",
+     "n:lich",
+     "n:bag",
+     "e:columns-move",
+     "e:raigern",
+     "p:plateau",
+     "o:French line on the Goldbach",
+     "o:Allied columns on the plateau",
+     "o:V Corps · IV Corps",
+     "o:Soult's assault · Legrand",
+     "o:III Column → the castle",
+     "o:IV Column → Kobelnitz",
+     "o:V Column counter-marches north",
+     "o:Kobelnitz",
+     "t:santon",
+     "t:austerlitz"
+    ],
+    "dropped": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:zuran",
+     "t:goldbach",
+     "t:litava"
+    ]
+   },
+   "frame": {
+    "unobstructed": 0.5206,
+    "clearance": 522.972,
+    "layer": {
+     "items": 32,
+     "placed": 17,
+     "underPanel": 9,
+     "dropped": 6,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach",
+      "t:litava"
+     ],
+     "ms": 0.4,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 11.98,
+     "belowAA": 0,
+     "n": 20
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0022,
+     "meanLum": 34.9,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": null,
+    "confOver": null,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 8.9
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1280x720 one primary action": {
+   "box": [
+    520,
+    419,
+    540,
+    192
+   ],
+   "under": {
+    "forms": [
+     "friant",
+     "bourcier",
+     "buxhowden",
+     "kienmayer",
+     "dok"
+    ],
+    "places": [
+     "telnitz",
+     "sokolnitz",
+     "augezd",
+     "satschan",
+     "menitz",
+     "chapel"
+    ],
+    "n": 54,
+    "placed": [
+     "n:gqg",
+     "n:ahq",
+     "n:lich",
+     "n:bag",
+     "e:columns-move",
+     "e:raigern",
+     "p:plateau",
+     "o:French line on the Goldbach",
+     "o:Allied columns on the plateau",
+     "o:V Corps · IV Corps",
+     "o:Soult's assault · Legrand",
+     "o:III Column → the castle",
+     "o:IV Column → Kobelnitz",
+     "o:V Column counter-marches north",
+     "o:Kobelnitz",
+     "t:santon",
+     "t:austerlitz"
+    ],
+    "dropped": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:zuran",
+     "t:goldbach",
+     "t:litava"
+    ]
+   },
+   "frame": {
+    "unobstructed": 0.5206,
+    "clearance": 522.972,
+    "layer": {
+     "items": 32,
+     "placed": 17,
+     "underPanel": 9,
+     "dropped": 6,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach",
+      "t:litava"
+     ],
+     "ms": 0.8,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 11.98,
+     "belowAA": 0,
+     "n": 20
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0022,
+     "meanLum": 34.9,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": null,
+    "confOver": null,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 7
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1280x720 the Now tab under it": {
+   "box": [
+    520,
+    370,
+    540,
+    241
+   ],
+   "under": {
+    "forms": [
+     "legrand",
+     "friant",
+     "bourcier",
+     "buxhowden",
+     "kienmayer",
+     "dok",
+     "lang",
+     "prz"
+    ],
+    "places": [
+     "pratzeberg",
+     "goldbach",
+     "telnitz",
+     "sokolnitz",
+     "kobelnitz",
+     "augezd",
+     "satschan",
+     "menitz",
+     "chapel"
+    ],
+    "n": 54,
+    "placed": [
+     "n:gqg",
+     "n:ahq",
+     "n:lich",
+     "n:bag",
+     "e:raigern",
+     "p:plateau",
+     "o:French line on the Goldbach",
+     "o:Allied columns on the plateau",
+     "o:V Corps · IV Corps",
+     "o:Soult's assault · Legrand",
+     "o:IV Column → Kobelnitz",
+     "o:V Column counter-marches north",
+     "t:santon",
+     "t:austerlitz"
+    ],
+    "dropped": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:zuran",
+     "t:litava"
+    ]
+   },
+   "frame": {
+    "unobstructed": 0.4902,
+    "clearance": 522.972,
+    "layer": {
+     "items": 32,
+     "placed": 14,
+     "underPanel": 14,
+     "dropped": 4,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:zuran",
+      "t:litava"
+     ],
+     "ms": 0.4,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 11.98,
+     "belowAA": 0,
+     "n": 17
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0023,
+     "meanLum": 34.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": null,
+    "confOver": null,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 7.8
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1600x900 the Now tab with its dispatch under it": {
+   "box": [
+    680,
+    550,
+    540,
+    241
+   ],
+   "under": {
+    "forms": [
+     "kienmayer",
+     "dok"
+    ],
+    "places": [
+     "telnitz",
+     "sokolnitz",
+     "augezd",
+     "satschan",
+     "menitz",
+     "chapel"
+    ],
+    "n": 54,
+    "placed": [
+     "n:gqg",
+     "n:ahq",
+     "n:buxhowden",
+     "n:lich",
+     "n:bag",
+     "e:columns-move",
+     "e:raigern",
+     "p:plateau",
+     "o:French line on the Goldbach",
+     "o:Allied columns on the plateau",
+     "o:V Corps · IV Corps",
+     "o:Soult's assault · Legrand",
+     "o:III Column → the castle",
+     "o:IV Column → Kobelnitz",
+     "o:V Column counter-marches north",
+     "o:Kobelnitz",
+     "t:santon",
+     "t:litava",
+     "t:austerlitz"
+    ],
+    "dropped": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:zuran",
+     "t:goldbach"
+    ]
+   },
+   "frame": {
+    "unobstructed": 0.6149,
+    "clearance": 490.297,
+    "layer": {
+     "items": 32,
+     "placed": 19,
+     "underPanel": 8,
+     "dropped": 5,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach"
+     ],
+     "ms": 0.4,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.64,
+     "belowAA": 0,
+     "n": 23
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0027,
+     "meanLum": 35.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": null,
+    "confOver": null,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 8.1
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": true,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": [
+     "first-run card stacked on the dispatch card"
+    ]
+   }
+  },
+  "1280x720 the Now tab with its dispatch under it": {
+   "box": [
+    520,
+    370,
+    540,
+    241
+   ],
+   "under": {
+    "forms": [
+     "legrand",
+     "friant",
+     "bourcier",
+     "buxhowden",
+     "kienmayer",
+     "dok",
+     "lang",
+     "prz"
+    ],
+    "places": [
+     "pratzeberg",
+     "goldbach",
+     "telnitz",
+     "sokolnitz",
+     "kobelnitz",
+     "augezd",
+     "satschan",
+     "menitz",
+     "chapel"
+    ],
+    "n": 54,
+    "placed": [
+     "n:gqg",
+     "n:ahq",
+     "n:lich",
+     "n:bag",
+     "e:raigern",
+     "p:plateau",
+     "o:French line on the Goldbach",
+     "o:Allied columns on the plateau",
+     "o:V Corps · IV Corps",
+     "o:Soult's assault · Legrand",
+     "o:IV Column → Kobelnitz",
+     "o:V Column counter-marches north",
+     "t:santon",
+     "t:austerlitz"
+    ],
+    "dropped": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:zuran",
+     "t:litava"
+    ]
+   },
+   "frame": {
+    "unobstructed": 0.4902,
+    "clearance": 522.972,
+    "layer": {
+     "items": 32,
+     "placed": 14,
+     "underPanel": 14,
+     "dropped": 4,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:zuran",
+      "t:litava"
+     ],
+     "ms": 2.4,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 11.98,
+     "belowAA": 0,
+     "n": 17
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0023,
+     "meanLum": 34.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": null,
+    "confOver": null,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 10.5
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": true,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": [
+     "first-run card stacked on the dispatch card"
+    ]
+   }
+  }
+ },
+ "ends": {
+  "1600x900 Study, Now tab, at the last stop's clock (11:00), Follow on": {
+   "placed": [
+    "n:ahq",
+    "t:pratzen",
+    "t:litava",
+    "t:austerlitz",
+    "n:sthilaire",
+    "n:kamensky",
+    "n:milo",
+    "n:kollo",
+    "n:rg_inf",
+    "n:rg_cav",
+    "e:pratzeberg",
+    "e:guard-attack",
+    "t:pratzenv"
+   ],
+   "clock": "11:00",
+   "presentation": "study",
+   "tab": "now",
+   "follow": true,
+   "legendOpen": false,
+   "focus": "BODY",
+   "frame": {
+    "unobstructed": 0.7036,
+    "clearance": 38.729,
+    "layer": {
+     "items": 62,
+     "placed": 13,
+     "underPanel": 5,
+     "dropped": 3,
+     "droppedIds": [
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:krzenowitz"
+     ],
+     "ms": 0.8,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.42,
+     "belowAA": 0,
+     "n": 17
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0008,
+     "meanLum": 80.7,
+     "overLimit": false
+    },
+    "smoke": 0.1321,
+    "smokeOver": false,
+    "conf": 0.0345,
+    "confOver": false,
+    "cost": {
+     "calls": 745,
+     "tris": 2522757,
+     "worldMs": 102.7
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": true,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1600x900 Study, Now tab, 04:00, the Overview": {
+   "placed": [
+    "n:gqg",
+    "n:ahq",
+    "n:buxhowden",
+    "n:lich",
+    "n:bag",
+    "e:columns-move",
+    "e:raigern",
+    "p:plateau",
+    "o:French line on the Goldbach",
+    "o:Allied columns on the plateau",
+    "o:V Corps · IV Corps",
+    "o:Soult's assault · Legrand",
+    "o:I Column → Telnitz",
+    "o:II Column → Sokolnitz",
+    "o:III Column → the castle",
+    "o:IV Column → Kobelnitz",
+    "o:V Column counter-marches north",
+    "o:Telnitz",
+    "o:Sokolnitz",
+    "o:Kobelnitz",
+    "t:santon",
+    "t:litava",
+    "t:augezd",
+    "t:satschan",
+    "t:austerlitz"
+   ],
+   "clock": "04:00",
+   "presentation": "study",
+   "tab": "now",
+   "follow": true,
+   "legendOpen": false,
+   "focus": "BODY",
+   "frame": {
+    "unobstructed": 0.7036,
+    "clearance": 534.859,
+    "layer": {
+     "items": 32,
+     "placed": 25,
+     "underPanel": 0,
+     "dropped": 7,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach",
+      "t:telnitz",
+      "t:sokolnitz"
+     ],
+     "ms": 0.5,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.28,
+     "belowAA": 0,
+     "n": 29
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.002,
+     "meanLum": 37.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0279,
+    "confOver": false,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 17.3
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": true,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1600x900 Watch, paused at 11:00, the stop's camera": {
+   "placed": [
+    "n:ahq",
+    "p:plateau",
+    "t:pratzen",
+    "t:litava",
+    "t:austerlitz",
+    "n:sthilaire",
+    "n:vandamme",
+    "n:kamensky",
+    "n:milo",
+    "n:kollo",
+    "n:rg_inf",
+    "n:rg_cav",
+    "e:pratzeberg",
+    "e:guard-attack",
+    "t:pratzenv"
+   ],
+   "clock": "11:00",
+   "presentation": "watch",
+   "tab": "now",
+   "follow": true,
+   "legendOpen": false,
+   "focus": "BODY",
+   "frame": {
+    "unobstructed": 0.8978,
+    "clearance": 38.729,
+    "layer": {
+     "items": 62,
+     "placed": 15,
+     "underPanel": 0,
+     "dropped": 3,
+     "droppedIds": [
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:krzenowitz"
+     ],
+     "ms": 0.8,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.47,
+     "belowAA": 0,
+     "n": 19
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0009,
+     "meanLum": 79,
+     "overLimit": false
+    },
+    "smoke": 0.0914,
+    "smokeOver": false,
+    "conf": 0.0354,
+    "confOver": false,
+    "cost": {
+     "calls": 734,
+     "tris": 2522641,
+     "worldMs": 11
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "watch",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1280x720 Study, Now tab, at the last stop's clock (11:00), Follow on": {
+   "placed": [
+    "n:ahq",
+    "t:pratzen",
+    "t:austerlitz",
+    "n:sthilaire",
+    "n:kamensky",
+    "n:milo",
+    "n:kollo",
+    "n:rg_inf",
+    "e:pratzeberg",
+    "t:pratzenv"
+   ],
+   "clock": "11:00",
+   "presentation": "study",
+   "tab": "now",
+   "follow": true,
+   "legendOpen": false,
+   "focus": "BODY",
+   "frame": {
+    "unobstructed": 0.6288,
+    "clearance": 38.729,
+    "layer": {
+     "items": 62,
+     "placed": 10,
+     "underPanel": 8,
+     "dropped": 3,
+     "droppedIds": [
+      "t:pratzeberg",
+      "t:litava",
+      "t:krzenowitz"
+     ],
+     "ms": 1.1,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 12.67,
+     "belowAA": 0,
+     "n": 14
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0007,
+     "meanLum": 79.5,
+     "overLimit": false
+    },
+    "smoke": 0.1473,
+    "smokeOver": false,
+    "conf": 0.0356,
+    "confOver": false,
+    "cost": {
+     "calls": 754,
+     "tris": 2523801,
+     "worldMs": 23.5
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": true,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1280x720 Study, Now tab, 04:00, the Overview": {
+   "placed": [
+    "n:gqg",
+    "n:ahq",
+    "n:buxhowden",
+    "n:lich",
+    "n:bag",
+    "e:columns-move",
+    "e:raigern",
+    "p:plateau",
+    "o:French line on the Goldbach",
+    "o:Allied columns on the plateau",
+    "o:V Corps · IV Corps",
+    "o:Soult's assault · Legrand",
+    "o:I Column → Telnitz",
+    "o:II Column → Sokolnitz",
+    "o:III Column → the castle",
+    "o:IV Column → Kobelnitz",
+    "o:V Column counter-marches north",
+    "o:Telnitz",
+    "o:Sokolnitz",
+    "o:Kobelnitz",
+    "t:satschan",
+    "t:austerlitz"
+   ],
+   "clock": "04:00",
+   "presentation": "study",
+   "tab": "now",
+   "follow": true,
+   "legendOpen": false,
+   "focus": "BODY",
+   "frame": {
+    "unobstructed": 0.6288,
+    "clearance": 588.566,
+    "layer": {
+     "items": 32,
+     "placed": 22,
+     "underPanel": 0,
+     "dropped": 10,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran",
+      "t:goldbach",
+      "t:litava",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd"
+     ],
+     "ms": 1,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.5,
+     "belowAA": 0,
+     "n": 26
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0016,
+     "meanLum": 37.6,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0241,
+    "confOver": false,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 42.5
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": true,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1280x720 Watch, paused at 11:00, the stop's camera": {
+   "placed": [
+    "n:ahq",
+    "p:plateau",
+    "t:pratzen",
+    "t:austerlitz",
+    "n:sthilaire",
+    "n:vandamme",
+    "n:kamensky",
+    "n:milo",
+    "n:kollo",
+    "n:rg_inf",
+    "n:rg_cav",
+    "e:pratzeberg",
+    "e:guard-attack",
+    "t:pratzenv"
+   ],
+   "clock": "11:00",
+   "presentation": "watch",
+   "tab": "now",
+   "follow": true,
+   "legendOpen": false,
+   "focus": "BODY",
+   "frame": {
+    "unobstructed": 0.8722,
+    "clearance": 38.729,
+    "layer": {
+     "items": 62,
+     "placed": 14,
+     "underPanel": 0,
+     "dropped": 4,
+     "droppedIds": [
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:litava",
+      "t:krzenowitz"
+     ],
+     "ms": 0.9,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 11.5,
+     "belowAA": 0,
+     "n": 18
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0006,
+     "meanLum": 78.2,
+     "overLimit": false
+    },
+    "smoke": 0.0948,
+    "smokeOver": false,
+    "conf": 0.0364,
+    "confOver": false,
+    "cost": {
+     "calls": 735,
+     "tris": 2522643,
+     "worldMs": 23.3
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "watch",
+    "mode": "terrain",
+    "stage0": []
+   }
+  }
+ },
+ "played": {
+  "lengths": [
+   {
+    "from": "04:00",
+    "to": "08:45",
+    "speed": 0.5,
+    "seconds": 69.3,
+    "dwells": 7,
+    "lowest": 84.1,
+    "lifts": 0,
+    "screenSpeedMax": 150,
+    "camera": {
+     "dist": 263.6
+    }
+   },
+   {
+    "from": "04:00",
+    "to": "11:00",
+    "speed": 0.5,
+    "seconds": 106.3,
+    "dwells": 12,
+    "lowest": 57.3,
+    "lifts": 0,
+    "screenSpeedMax": 150,
+    "camera": {
+     "dist": 230
+    }
+   },
+   {
+    "from": "04:00",
+    "to": "14:30",
+    "speed": 0.5,
+    "seconds": 162.3,
+    "dwells": 19,
+    "lowest": 57,
+    "lifts": 0,
+    "screenSpeedMax": 150,
+    "camera": {
+     "dist": 230
+    }
+   },
+   {
+    "from": "04:00",
+    "to": "08:45",
+    "speed": 1,
+    "seconds": 40.8,
+    "dwells": 7,
+    "lowest": 84.8,
+    "lifts": 0,
+    "screenSpeedMax": 150,
+    "camera": {
+     "dist": 270.2
+    }
+   },
+   {
+    "from": "04:00",
+    "to": "11:00",
+    "speed": 1,
+    "seconds": 64.3,
+    "dwells": 12,
+    "lowest": 58.4,
+    "lifts": 0,
+    "screenSpeedMax": 150,
+    "camera": {
+     "dist": 230
+    }
+   },
+   {
+    "from": "04:00",
+    "to": "14:30",
+    "speed": 1,
+    "seconds": 99.3,
+    "dwells": 19,
+    "lowest": 57.2,
+    "lifts": 0,
+    "screenSpeedMax": 150,
+    "camera": {
+     "dist": 230
+    }
+   },
+   {
+    "from": "04:00",
+    "to": "08:45",
+    "speed": 2,
+    "seconds": 26,
+    "dwells": 7,
+    "lowest": 85.6,
+    "lifts": 0,
+    "screenSpeedMax": 150,
+    "camera": {
+     "dist": 274
+    }
+   },
+   {
+    "from": "04:00",
+    "to": "11:00",
+    "speed": 2,
+    "seconds": 42.8,
+    "dwells": 12,
+    "lowest": 61.2,
+    "lifts": 0,
+    "screenSpeedMax": 150,
+    "camera": {
+     "dist": 230
+    }
+   },
+   {
+    "from": "04:00",
+    "to": "14:30",
+    "speed": 2,
+    "seconds": 67.3,
+    "dwells": 19,
+    "lowest": 57.6,
+    "lifts": 0,
+    "screenSpeedMax": 150,
+    "camera": {
+     "dist": 230
+    }
+   },
+   {
+    "from": "04:00",
+    "to": "08:45",
+    "speed": 4,
+    "seconds": 18.2,
+    "dwells": 7,
+    "lowest": 86.2,
+    "lifts": 0,
+    "screenSpeedMax": 147,
+    "camera": {
+     "dist": 276.6
+    }
+   },
+   {
+    "from": "04:00",
+    "to": "11:00",
+    "speed": 4,
+    "seconds": 31.2,
+    "dwells": 12,
+    "lowest": 64.3,
+    "lifts": 0,
+    "screenSpeedMax": 147,
+    "camera": {
+     "dist": 230
+    }
+   },
+   {
+    "from": "04:00",
+    "to": "14:30",
+    "speed": 4,
+    "seconds": 50.3,
+    "dwells": 19,
+    "lowest": 58.1,
+    "lifts": 0,
+    "screenSpeedMax": 147,
+    "camera": {
+     "dist": 230.1
+    }
+   }
+  ],
+  "frames": {
+   "04:00 (stop 1's hold)": {
+    "clock": "04:00",
+    "dist": 425.4,
+    "bar": [
+     520,
+     605,
+     560,
+     187
+    ],
+    "unobstructed": 0.8247,
+    "clearance": 424.665,
+    "layer": {
+     "items": 32,
+     "placed": 24,
+     "underPanel": 0,
+     "dropped": 7,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach",
+      "t:telnitz",
+      "t:sokolnitz"
+     ],
+     "ms": 0.8,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.5,
+     "belowAA": 0,
+     "n": 27
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0028,
+     "meanLum": 40.1,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0345,
+    "confOver": false,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 10.1
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "watch",
+    "mode": "terrain",
+    "stage0": []
+   },
+   "06:30, playing": {
+    "clock": "06:30",
+    "dist": 247.8,
+    "bar": null,
+    "unobstructed": 0.8978,
+    "clearance": 112.981,
+    "layer": {
+     "items": 53,
+     "placed": 42,
+     "underPanel": 1,
+     "dropped": 10,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran",
+      "t:goldbach",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:satschan",
+      "t:austerlitz"
+     ],
+     "ms": 1.5,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.24,
+     "belowAA": 0,
+     "n": 52
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0002,
+     "meanLum": 72.4,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0186,
+    "confOver": false,
+    "cost": {
+     "calls": 787,
+     "tris": 2499879,
+     "worldMs": 15.5
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "watch",
+    "mode": "terrain",
+    "stage0": []
+   },
+   "08:45 (stop 6's hold)": {
+    "clock": "08:45",
+    "dist": 276.1,
+    "bar": [
+     520,
+     628,
+     560,
+     164
+    ],
+    "unobstructed": 0.834,
+    "clearance": 100.414,
+    "layer": {
+     "items": 48,
+     "placed": 38,
+     "underPanel": 0,
+     "dropped": 10,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran",
+      "t:goldbach",
+      "t:litava",
+      "t:telnitz",
+      "t:augezd",
+      "t:satschan"
+     ],
+     "ms": 0.8,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 11.48,
+     "belowAA": 0,
+     "n": 51
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0,
+     "meanLum": 124.3,
+     "overLimit": false
+    },
+    "smoke": 0.0391,
+    "smokeOver": false,
+    "conf": 0.012,
+    "confOver": false,
+    "cost": {
+     "calls": 794,
+     "tris": 2544055,
+     "worldMs": 42
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "watch",
+    "mode": "terrain",
+    "stage0": []
+   },
+   "10:00, playing": {
+    "clock": "10:00",
+    "dist": 230.3,
+    "bar": null,
+    "unobstructed": 0.8978,
+    "clearance": 76.409,
+    "layer": {
+     "items": 47,
+     "placed": 39,
+     "underPanel": 0,
+     "dropped": 8,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran",
+      "t:litava",
+      "t:satschan",
+      "t:austerlitz"
+     ],
+     "ms": 0.8,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.62,
+     "belowAA": 0,
+     "n": 54
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0004,
+     "meanLum": 80.1,
+     "overLimit": false
+    },
+    "smoke": 0.0534,
+    "smokeOver": false,
+    "conf": 0.0278,
+    "confOver": false,
+    "cost": {
+     "calls": 837,
+     "tris": 2526807,
+     "worldMs": 358.3
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "watch",
+    "mode": "terrain",
+    "stage0": []
+   },
+   "11:00 (stop 7's hold)": {
+    "clock": "11:00",
+    "dist": 230,
+    "bar": [
+     520,
+     628,
+     560,
+     164
+    ],
+    "unobstructed": 0.834,
+    "clearance": 65.524,
+    "layer": {
+     "items": 45,
+     "placed": 38,
+     "underPanel": 0,
+     "dropped": 7,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:litava",
+      "t:augezd",
+      "t:satschan"
+     ],
+     "ms": 0.7,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.18,
+     "belowAA": 0,
+     "n": 51
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0006,
+     "meanLum": 74.8,
+     "overLimit": false
+    },
+    "smoke": 0.0908,
+    "smokeOver": false,
+    "conf": 0.0344,
+    "confOver": false,
+    "cost": {
+     "calls": 831,
+     "tris": 2537295,
+     "worldMs": 17.6
+    },
+    "firstRunVisible": false,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "now"
+    },
+    "presentation": "watch",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "path to 06:30, playing": {
+   "from": "04:00",
+   "to": "06:30",
+   "speed": 4,
+   "seconds": 5.7,
+   "dwells": 1,
+   "lowest": 111.8,
+   "lifts": 0,
+   "screenSpeedMax": 147,
+   "camera": {
+    "dist": 247.8
+   }
+  },
+  "path to 08:45 (stop 6's hold)": {
+   "from": "06:30",
+   "to": "08:45",
+   "speed": 4,
+   "seconds": 12.6,
+   "dwells": 6,
+   "lowest": 86.2,
+   "lifts": 0,
+   "screenSpeedMax": 101,
+   "camera": {
+    "dist": 276.1
+   }
+  },
+  "path to 10:00, playing": {
+   "from": "08:45",
+   "to": "10:00",
+   "speed": 4,
+   "seconds": 7.7,
+   "dwells": 3,
+   "lowest": 68.8,
+   "lifts": 0,
+   "screenSpeedMax": 77,
+   "camera": {
+    "dist": 230.3
+   }
+  },
+  "path to 11:00 (stop 7's hold)": {
+   "from": "10:00",
+   "to": "11:00",
+   "speed": 4,
+   "seconds": 3.7,
+   "dwells": 2,
+   "lowest": 64.3,
+   "lifts": 0,
+   "screenSpeedMax": 75,
+   "camera": {
+    "dist": 230
+   }
+  }
+ },
+ "names": {
+  "1600x900 stop 1": {
+   "placed": [
+    "n:gqg",
+    "n:ahq",
+    "n:buxhowden",
+    "n:lich",
+    "n:bag",
+    "e:columns-move",
+    "p:plateau",
+    "o:French line on the Goldbach",
+    "o:Allied columns on the plateau",
+    "o:V Corps · IV Corps",
+    "o:Soult's assault · Legrand",
+    "o:I Column → Telnitz",
+    "o:II Column → Sokolnitz",
+    "o:III Column → the castle",
+    "o:IV Column → Kobelnitz",
+    "o:V Column counter-marches north",
+    "o:Telnitz",
+    "o:Sokolnitz",
+    "o:Kobelnitz",
+    "t:santon",
+    "t:litava",
+    "t:satschan",
+    "t:austerlitz"
+   ],
+   "dropped": [
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:zuran",
+    "t:goldbach",
+    "t:telnitz",
+    "t:sokolnitz",
+    "t:augezd"
+   ],
+   "plateau": "THE PRATZEN · Allied ≈ 38,700"
+  },
+  "1600x900 stop 6": {
+   "placed": [
+    "n:ahq",
+    "n:buxhowden",
+    "n:lich",
+    "p:plateau",
+    "t:pratzeberg",
+    "t:litava",
+    "t:austerlitz",
+    "n:vandamme",
+    "n:legrand",
+    "n:kellermann",
+    "n:nansouty",
+    "n:dhautpoul",
+    "n:drouet",
+    "n:lang",
+    "n:kamensky",
+    "n:prz",
+    "n:milo",
+    "n:kollo",
+    "n:rg_inf",
+    "n:rg_cav",
+    "e:soult",
+    "o:Saint-Hilaire",
+    "o:Vandamme",
+    "o:Pratzeberg",
+    "o:Stare Vinohrady"
+   ],
+   "dropped": [
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzenv",
+    "t:girzikowitz",
+    "t:blasowitz",
+    "t:krzenowitz",
+    "t:chapel"
+   ],
+   "plateau": "THE PRATZEN · Allied ≈ 23,550"
+  },
+  "1600x900 stop 7": {
+   "placed": [
+    "n:ahq",
+    "t:pratzen",
+    "t:litava",
+    "t:austerlitz",
+    "n:sthilaire",
+    "n:kamensky",
+    "n:milo",
+    "n:kollo",
+    "n:rg_inf",
+    "n:rg_cav",
+    "t:pratzenv",
+    "e:guard-attack"
+   ],
+   "dropped": [
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:krzenowitz"
+   ],
+   "plateau": null
+  },
+  "1600x900 stop 8": {
+   "placed": [
+    "n:gqg",
+    "n:buxhowden",
+    "t:pratzen",
+    "t:pratzeberg",
+    "t:sokolnitz",
+    "n:sthilaire",
+    "n:vandamme",
+    "n:legrand",
+    "n:friant",
+    "n:bourcier",
+    "n:c_gren",
+    "n:kienmayer",
+    "n:dok",
+    "n:lang",
+    "t:pratzenv",
+    "t:menitz",
+    "n:heightguns",
+    "e:augezd",
+    "o:I Column to the defile",
+    "o:Over the Satschan mere",
+    "o:Across the Menitz mere",
+    "o:Vandamme takes the height",
+    "o:Legrand and Friant",
+    "o:The Augezd defile"
+   ],
+   "dropped": [
+    "t:telnitz",
+    "t:augezd",
+    "t:satschan",
+    "t:chapel"
+   ],
+   "plateau": null
+  },
+  "1280x720 stop 1": {
+   "placed": [
+    "n:gqg",
+    "n:ahq",
+    "n:buxhowden",
+    "n:lich",
+    "n:bag",
+    "e:columns-move",
+    "p:plateau",
+    "o:French line on the Goldbach",
+    "o:Allied columns on the plateau",
+    "o:V Corps · IV Corps",
+    "o:Soult's assault · Legrand",
+    "o:I Column → Telnitz",
+    "o:II Column → Sokolnitz",
+    "o:III Column → the castle",
+    "o:IV Column → Kobelnitz",
+    "o:V Column counter-marches north",
+    "o:Telnitz",
+    "o:Sokolnitz",
+    "o:Kobelnitz",
+    "t:litava",
+    "t:satschan"
+   ],
+   "dropped": [
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:santon",
+    "t:zuran",
+    "t:goldbach",
+    "t:telnitz",
+    "t:sokolnitz",
+    "t:augezd",
+    "t:austerlitz"
+   ],
+   "plateau": "THE PRATZEN · Allied ≈ 38,700"
+  },
+  "1280x720 stop 6": {
+   "placed": [
+    "n:ahq",
+    "n:buxhowden",
+    "n:lich",
+    "p:plateau",
+    "t:pratzeberg",
+    "t:litava",
+    "n:vandamme",
+    "n:legrand",
+    "n:drouet",
+    "n:lang",
+    "n:kamensky",
+    "n:prz",
+    "n:milo",
+    "n:kollo",
+    "n:rg_inf",
+    "n:rg_cav",
+    "e:soult",
+    "o:Saint-Hilaire",
+    "o:Vandamme",
+    "o:Pratzeberg",
+    "o:Stare Vinohrady"
+   ],
+   "dropped": [
+    "t:pratzen",
+    "t:vinohrady",
+    "t:austerlitz",
+    "t:pratzenv",
+    "t:blasowitz",
+    "t:krzenowitz",
+    "t:chapel"
+   ],
+   "plateau": "THE PRATZEN · Allied ≈ 23,550"
+  },
+  "1280x720 stop 7": {
+   "placed": [
+    "n:ahq",
+    "t:pratzen",
+    "t:austerlitz",
+    "n:kamensky",
+    "n:milo",
+    "n:kollo",
+    "n:rg_inf"
+   ],
+   "dropped": [
+    "t:litava",
+    "t:pratzenv",
+    "t:krzenowitz"
+   ],
+   "plateau": null
+  },
+  "1280x720 stop 8": {
+   "placed": [
+    "n:gqg",
+    "n:buxhowden",
+    "t:pratzeberg",
+    "t:telnitz",
+    "t:sokolnitz",
+    "n:vandamme",
+    "n:legrand",
+    "n:friant",
+    "n:bourcier",
+    "n:c_gren",
+    "n:kienmayer",
+    "n:dok",
+    "n:lang",
+    "n:heightguns",
+    "e:augezd",
+    "o:I Column to the defile",
+    "o:Over the Satschan mere",
+    "o:Across the Menitz mere",
+    "o:Vandamme takes the height",
+    "o:Legrand and Friant",
+    "o:The Augezd defile"
+   ],
+   "dropped": [
+    "t:augezd",
+    "t:satschan",
+    "t:chapel"
+   ],
+   "plateau": null
+  }
+ }
+}

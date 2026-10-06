@@ -1,0 +1,2879 @@
+{
+ "screens": {
+  "1600x900": {
+   "vp": [
+    1600,
+    900
+   ],
+   "loadMs": 27415,
+   "errors": [],
+   "clock": 240,
+   "clockText": "04:00",
+   "phase": 0,
+   "playing": false,
+   "speed": 0.5,
+   "presentation": "study",
+   "mode": "terrain",
+   "factor": 4,
+   "rm": false,
+   "harness": true,
+   "sun": {
+    "alt": -35.85,
+    "geo": -35.85,
+    "az": 82.4,
+    "twilight": 0,
+    "disc": 0,
+    "discShown": false,
+    "row": "predawn",
+    "sunrise": "07:45"
+   },
+   "fog": {
+    "amount": 1,
+    "cap": 0.55,
+    "top": 238.2,
+    "mist": 1
+   },
+   "smoke": {
+    "fighting": 0,
+    "ids": [],
+    "share": 0
+   },
+   "camera": {
+    "pos": [
+     -38.8,
+     488.7,
+     61.3
+    ],
+    "tgt": [
+     -38.8,
+     0.5,
+     4.7
+    ],
+    "dist": 491.4,
+    "clearance": 490.3,
+    "vantage": "plan",
+    "freeCam": false,
+    "follow": true,
+    "haze": 1
+   },
+   "card": {
+    "open": true,
+    "hidden": false,
+    "box": [
+     680,
+     550,
+     540,
+     241
+    ],
+    "role": "dialog",
+    "labelledby": "fr-title",
+    "describedby": null,
+    "modal": null,
+    "tabindex": null,
+    "title": "The Battle of Austerlitz",
+    "key": "French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, and it decides the battle.",
+    "hint": "Drag to move the map, right-drag to turn it, scroll to zoom, and click any formation to see who it was and what it was doing.",
+    "buttons": [
+     {
+      "id": "fr-tour",
+      "text": "Guided tour",
+      "h": 34,
+      "w": 104
+     },
+     {
+      "id": "fr-watch",
+      "text": "Watch the battle",
+      "h": 34,
+      "w": 134
+     },
+     {
+      "id": "fr-close",
+      "text": "Explore",
+      "h": 34,
+      "w": 77
+     }
+    ]
+   },
+   "focus": "body.docked",
+   "focusInCard": false,
+   "shown": {
+    "rail": true,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "drawer": false,
+    "tools": true,
+    "viewmode": true,
+    "timebar": true,
+    "tourbar": false,
+    "selchip": false,
+    "vsbadge": false,
+    "help": false,
+    "tab": "oob",
+    "docked": true,
+    "railHidden": false,
+    "bodyClasses": "docked pm-study firstrun-on"
+   },
+   "boxes": {
+    "rail": [
+     0,
+     0,
+     300,
+     809
+    ],
+    "timebar": [
+     0,
+     810,
+     1600,
+     91
+    ],
+    "tools": [
+     1258,
+     20,
+     320,
+     86
+    ],
+    "viewmode": [
+     712,
+     14,
+     176,
+     34
+    ],
+    "legend": null,
+    "dispatch": null,
+    "tourbar": null
+   },
+   "live": {
+    "text": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "aria": "polite"
+   },
+   "tourStep": -1,
+   "chapter": null,
+   "plan": null,
+   "selection": null,
+   "storage": {
+    "local": [],
+    "session": []
+   },
+   "frame": {
+    "unobstructed": 0.6149,
+    "clearance": 490.297,
+    "layer": {
+     "placed": 19,
+     "dropped": 5,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach"
+     ],
+     "ms": 0.9,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.64,
+     "belowAA": 0,
+     "n": 23
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0027,
+     "meanLum": 35.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0368,
+    "confOver": false,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 9.4
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1366x768": {
+   "vp": [
+    1366,
+    768
+   ],
+   "loadMs": 15630,
+   "errors": [],
+   "clock": 240,
+   "clockText": "04:00",
+   "phase": 0,
+   "playing": false,
+   "speed": 0.5,
+   "presentation": "study",
+   "mode": "terrain",
+   "factor": 4,
+   "rm": false,
+   "harness": true,
+   "sun": {
+    "alt": -35.85,
+    "geo": -35.85,
+    "az": 82.4,
+    "twilight": 0,
+    "disc": 0,
+    "discShown": false,
+    "row": "predawn",
+    "sunrise": "07:45"
+   },
+   "fog": {
+    "amount": 1,
+    "cap": 0.55,
+    "top": 238.2,
+    "mist": 1
+   },
+   "smoke": {
+    "fighting": 0,
+    "ids": [],
+    "share": 0
+   },
+   "camera": {
+    "pos": [
+     -38.8,
+     507.7,
+     63.4
+    ],
+    "tgt": [
+     -38.8,
+     0.5,
+     4.6
+    ],
+    "dist": 510.6,
+    "clearance": 509.3,
+    "vantage": "plan",
+    "freeCam": false,
+    "follow": true,
+    "haze": 1
+   },
+   "card": {
+    "open": true,
+    "hidden": false,
+    "box": [
+     563,
+     418,
+     540,
+     241
+    ],
+    "role": "dialog",
+    "labelledby": "fr-title",
+    "describedby": null,
+    "modal": null,
+    "tabindex": null,
+    "title": "The Battle of Austerlitz",
+    "key": "French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, and it decides the battle.",
+    "hint": "Drag to move the map, right-drag to turn it, scroll to zoom, and click any formation to see who it was and what it was doing.",
+    "buttons": [
+     {
+      "id": "fr-tour",
+      "text": "Guided tour",
+      "h": 34,
+      "w": 104
+     },
+     {
+      "id": "fr-watch",
+      "text": "Watch the battle",
+      "h": 34,
+      "w": 134
+     },
+     {
+      "id": "fr-close",
+      "text": "Explore",
+      "h": 34,
+      "w": 77
+     }
+    ]
+   },
+   "focus": "body.docked",
+   "focusInCard": false,
+   "shown": {
+    "rail": true,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "drawer": false,
+    "tools": true,
+    "viewmode": true,
+    "timebar": true,
+    "tourbar": false,
+    "selchip": false,
+    "vsbadge": false,
+    "help": false,
+    "tab": "oob",
+    "docked": true,
+    "railHidden": false,
+    "bodyClasses": "docked pm-study firstrun-on"
+   },
+   "boxes": {
+    "rail": [
+     0,
+     0,
+     300,
+     677
+    ],
+    "timebar": [
+     0,
+     678,
+     1366,
+     91
+    ],
+    "tools": [
+     1024,
+     20,
+     320,
+     82
+    ],
+    "viewmode": [
+     595,
+     14,
+     176,
+     34
+    ],
+    "legend": null,
+    "dispatch": null,
+    "tourbar": null
+   },
+   "live": {
+    "text": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "aria": "polite"
+   },
+   "tourStep": -1,
+   "chapter": null,
+   "plan": null,
+   "selection": null,
+   "storage": {
+    "local": [],
+    "session": []
+   },
+   "frame": {
+    "unobstructed": 0.5317,
+    "clearance": 509.335,
+    "layer": {
+     "placed": 17,
+     "dropped": 4,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:zuran",
+      "t:goldbach"
+     ],
+     "ms": 0.5,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.64,
+     "belowAA": 0,
+     "n": 20
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0025,
+     "meanLum": 34.9,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0334,
+    "confOver": false,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 17.3
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1280x720": {
+   "vp": [
+    1280,
+    720
+   ],
+   "loadMs": 15405,
+   "errors": [],
+   "clock": 240,
+   "clockText": "04:00",
+   "phase": 0,
+   "playing": false,
+   "speed": 0.5,
+   "presentation": "study",
+   "mode": "terrain",
+   "factor": 4,
+   "rm": false,
+   "harness": true,
+   "sun": {
+    "alt": -35.85,
+    "geo": -35.85,
+    "az": 82.4,
+    "twilight": 0,
+    "disc": 0,
+    "discShown": false,
+    "row": "predawn",
+    "sunrise": "07:45"
+   },
+   "fog": {
+    "amount": 1,
+    "cap": 0.55,
+    "top": 238.2,
+    "mist": 1
+   },
+   "smoke": {
+    "fighting": 0,
+    "ids": [],
+    "share": 0
+   },
+   "camera": {
+    "pos": [
+     -38.8,
+     521.3,
+     64.8
+    ],
+    "tgt": [
+     -38.8,
+     0.5,
+     4.5
+    ],
+    "dist": 524.3,
+    "clearance": 523,
+    "vantage": "plan",
+    "freeCam": false,
+    "follow": true,
+    "haze": 1
+   },
+   "card": {
+    "open": true,
+    "hidden": false,
+    "box": [
+     520,
+     370,
+     540,
+     241
+    ],
+    "role": "dialog",
+    "labelledby": "fr-title",
+    "describedby": null,
+    "modal": null,
+    "tabindex": null,
+    "title": "The Battle of Austerlitz",
+    "key": "French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, and it decides the battle.",
+    "hint": "Drag to move the map, right-drag to turn it, scroll to zoom, and click any formation to see who it was and what it was doing.",
+    "buttons": [
+     {
+      "id": "fr-tour",
+      "text": "Guided tour",
+      "h": 34,
+      "w": 104
+     },
+     {
+      "id": "fr-watch",
+      "text": "Watch the battle",
+      "h": 34,
+      "w": 134
+     },
+     {
+      "id": "fr-close",
+      "text": "Explore",
+      "h": 34,
+      "w": 77
+     }
+    ]
+   },
+   "focus": "body.docked",
+   "focusInCard": false,
+   "shown": {
+    "rail": true,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "drawer": false,
+    "tools": true,
+    "viewmode": true,
+    "timebar": true,
+    "tourbar": false,
+    "selchip": false,
+    "vsbadge": false,
+    "help": false,
+    "tab": "oob",
+    "docked": true,
+    "railHidden": false,
+    "bodyClasses": "docked pm-study firstrun-on"
+   },
+   "boxes": {
+    "rail": [
+     0,
+     0,
+     300,
+     629
+    ],
+    "timebar": [
+     0,
+     630,
+     1280,
+     91
+    ],
+    "tools": [
+     938,
+     20,
+     320,
+     82
+    ],
+    "viewmode": [
+     552,
+     14,
+     176,
+     34
+    ],
+    "legend": null,
+    "dispatch": null,
+    "tourbar": null
+   },
+   "live": {
+    "text": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "aria": "polite"
+   },
+   "tourStep": -1,
+   "chapter": null,
+   "plan": null,
+   "selection": null,
+   "storage": {
+    "local": [],
+    "session": []
+   },
+   "frame": {
+    "unobstructed": 0.4902,
+    "clearance": 522.972,
+    "layer": {
+     "placed": 14,
+     "dropped": 4,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:zuran",
+      "t:litava"
+     ],
+     "ms": 0.9,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 11.98,
+     "belowAA": 0,
+     "n": 17
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0023,
+     "meanLum": 34.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0307,
+    "confOver": false,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 8.4
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1024x768": {
+   "vp": [
+    1024,
+    768
+   ],
+   "loadMs": 14745,
+   "errors": [],
+   "clock": 240,
+   "clockText": "04:00",
+   "phase": 0,
+   "playing": false,
+   "speed": 0.5,
+   "presentation": "study",
+   "mode": "terrain",
+   "factor": 4,
+   "rm": false,
+   "harness": true,
+   "sun": {
+    "alt": -35.85,
+    "geo": -35.85,
+    "az": 82.4,
+    "twilight": 0,
+    "disc": 0,
+    "discShown": false,
+    "row": "predawn",
+    "sunrise": "07:45"
+   },
+   "fog": {
+    "amount": 1,
+    "cap": 0.55,
+    "top": 238.2,
+    "mist": 1
+   },
+   "smoke": {
+    "fighting": 0,
+    "ids": [],
+    "share": 0
+   },
+   "camera": {
+    "pos": [
+     -38.8,
+     530.8,
+     65.9
+    ],
+    "tgt": [
+     -38.8,
+     0.5,
+     4.4
+    ],
+    "dist": 533.8,
+    "clearance": 532.5,
+    "vantage": "plan",
+    "freeCam": false,
+    "follow": true,
+    "haze": 1
+   },
+   "card": {
+    "open": true,
+    "hidden": false,
+    "box": [
+     242,
+     418,
+     540,
+     241
+    ],
+    "role": "dialog",
+    "labelledby": "fr-title",
+    "describedby": null,
+    "modal": null,
+    "tabindex": null,
+    "title": "The Battle of Austerlitz",
+    "key": "French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, and it decides the battle.",
+    "hint": "Drag to move the map, right-drag to turn it, scroll to zoom, and click any formation to see who it was and what it was doing.",
+    "buttons": [
+     {
+      "id": "fr-tour",
+      "text": "Guided tour",
+      "h": 34,
+      "w": 104
+     },
+     {
+      "id": "fr-watch",
+      "text": "Watch the battle",
+      "h": 34,
+      "w": 134
+     },
+     {
+      "id": "fr-close",
+      "text": "Explore",
+      "h": 34,
+      "w": 77
+     }
+    ]
+   },
+   "focus": "body.rail-hidden",
+   "focusInCard": false,
+   "shown": {
+    "rail": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "drawer": false,
+    "tools": true,
+    "viewmode": true,
+    "timebar": true,
+    "tourbar": false,
+    "selchip": false,
+    "vsbadge": false,
+    "help": false,
+    "tab": "oob",
+    "docked": false,
+    "railHidden": true,
+    "bodyClasses": "rail-hidden pm-study firstrun-on"
+   },
+   "boxes": {
+    "rail": null,
+    "timebar": [
+     0,
+     678,
+     1024,
+     91
+    ],
+    "tools": [
+     690,
+     56,
+     320,
+     63
+    ],
+    "viewmode": [
+     424,
+     14,
+     176,
+     34
+    ],
+    "legend": null,
+    "dispatch": null,
+    "tourbar": null
+   },
+   "live": {
+    "text": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "aria": "polite"
+   },
+   "tourStep": -1,
+   "chapter": null,
+   "plan": null,
+   "selection": null,
+   "storage": {
+    "local": [],
+    "session": []
+   },
+   "frame": {
+    "unobstructed": 0.6786,
+    "clearance": 532.478,
+    "layer": {
+     "placed": 16,
+     "dropped": 4,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:zuran",
+      "t:goldbach"
+     ],
+     "ms": 1.3,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.65,
+     "belowAA": 0,
+     "n": 19
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0031,
+     "meanLum": 33.4,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0336,
+    "confOver": false,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 14.3
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": false,
+     "docked": false,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "390x844": {
+   "vp": [
+    390,
+    844
+   ],
+   "loadMs": 11921,
+   "errors": [],
+   "clock": 240,
+   "clockText": "04:00",
+   "phase": 0,
+   "playing": false,
+   "speed": 0.5,
+   "presentation": "study",
+   "mode": "terrain",
+   "factor": 4,
+   "rm": false,
+   "harness": true,
+   "sun": {
+    "alt": -35.85,
+    "geo": -35.85,
+    "az": 82.4,
+    "twilight": 0,
+    "disc": 0,
+    "discShown": false,
+    "row": "predawn",
+    "sunrise": "07:45"
+   },
+   "fog": {
+    "amount": 1,
+    "cap": 0.55,
+    "top": 238.2,
+    "mist": 1
+   },
+   "smoke": {
+    "fighting": 0,
+    "ids": [],
+    "share": 0
+   },
+   "camera": {
+    "pos": [
+     -38.8,
+     863.4,
+     103.3
+    ],
+    "tgt": [
+     -38.8,
+     0.5,
+     3.3
+    ],
+    "dist": 868.7,
+    "clearance": 866.8,
+    "vantage": "plan",
+    "freeCam": false,
+    "follow": true,
+    "haze": 1
+   },
+   "card": {
+    "open": true,
+    "hidden": false,
+    "box": [
+     16,
+     335,
+     358,
+     319
+    ],
+    "role": "dialog",
+    "labelledby": "fr-title",
+    "describedby": null,
+    "modal": null,
+    "tabindex": null,
+    "title": "The Battle of Austerlitz",
+    "key": "French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, and it decides the battle.",
+    "hint": "Drag to move the map, right-drag to turn it, scroll to zoom, and click any formation to see who it was and what it was doing.",
+    "buttons": [
+     {
+      "id": "fr-tour",
+      "text": "Guided tour",
+      "h": 46,
+      "w": 95
+     },
+     {
+      "id": "fr-watch",
+      "text": "Watch the battle",
+      "h": 46,
+      "w": 122
+     },
+     {
+      "id": "fr-close",
+      "text": "Explore",
+      "h": 46,
+      "w": 77
+     }
+    ]
+   },
+   "focus": "body.rail-hidden",
+   "focusInCard": false,
+   "shown": {
+    "rail": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "drawer": false,
+    "tools": true,
+    "viewmode": true,
+    "timebar": true,
+    "tourbar": false,
+    "selchip": false,
+    "vsbadge": false,
+    "help": false,
+    "tab": "oob",
+    "docked": false,
+    "railHidden": true,
+    "bodyClasses": "rail-hidden pm-study firstrun-on"
+   },
+   "boxes": {
+    "rail": null,
+    "timebar": [
+     0,
+     672,
+     390,
+     172
+    ],
+    "tools": [
+     173,
+     56,
+     203,
+     94
+    ],
+    "viewmode": [
+     109,
+     10,
+     172,
+     34
+    ],
+    "legend": null,
+    "dispatch": null,
+    "tourbar": null
+   },
+   "live": {
+    "text": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "aria": "polite"
+   },
+   "tourStep": -1,
+   "chapter": null,
+   "plan": null,
+   "selection": null,
+   "storage": {
+    "local": [],
+    "session": []
+   },
+   "frame": {
+    "unobstructed": 0.3828,
+    "clearance": 866.776,
+    "layer": {
+     "placed": 6,
+     "dropped": 2,
+     "droppedIds": [
+      "t:santon",
+      "t:zuran"
+     ],
+     "ms": 0.5,
+     "minPx": 11.5,
+     "limit": 16,
+     "overLimit": false
+    },
+    "text": {
+     "min": 12.36,
+     "belowAA": 0,
+     "n": 7
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0194,
+     "meanLum": 28.1,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0535,
+    "confOver": false,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 18
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": false,
+     "docked": false,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": [
+     "the timeline is 172 px tall (at most 92)"
+    ]
+   }
+  },
+  "1600x900-rm": {
+   "vp": [
+    1600,
+    900
+   ],
+   "loadMs": 17268,
+   "errors": [],
+   "clock": 240,
+   "clockText": "04:00",
+   "phase": 0,
+   "playing": false,
+   "speed": 0.5,
+   "presentation": "study",
+   "mode": "terrain",
+   "factor": 4,
+   "rm": true,
+   "harness": true,
+   "sun": {
+    "alt": -35.85,
+    "geo": -35.85,
+    "az": 82.4,
+    "twilight": 0,
+    "disc": 0,
+    "discShown": false,
+    "row": "predawn",
+    "sunrise": "07:45"
+   },
+   "fog": {
+    "amount": 1,
+    "cap": 0.55,
+    "top": 238.2,
+    "mist": 1
+   },
+   "smoke": {
+    "fighting": 0,
+    "ids": [],
+    "share": 0
+   },
+   "camera": {
+    "pos": [
+     -38.8,
+     488.7,
+     61.3
+    ],
+    "tgt": [
+     -38.8,
+     0.5,
+     4.7
+    ],
+    "dist": 491.4,
+    "clearance": 490.3,
+    "vantage": "plan",
+    "freeCam": false,
+    "follow": true,
+    "haze": 1
+   },
+   "card": {
+    "open": true,
+    "hidden": false,
+    "box": [
+     680,
+     550,
+     540,
+     241
+    ],
+    "role": "dialog",
+    "labelledby": "fr-title",
+    "describedby": null,
+    "modal": null,
+    "tabindex": null,
+    "title": "The Battle of Austerlitz",
+    "key": "French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, and it decides the battle.",
+    "hint": "Drag to move the map, right-drag to turn it, scroll to zoom, and click any formation to see who it was and what it was doing.",
+    "buttons": [
+     {
+      "id": "fr-tour",
+      "text": "Guided tour",
+      "h": 34,
+      "w": 104
+     },
+     {
+      "id": "fr-watch",
+      "text": "Watch the battle",
+      "h": 34,
+      "w": 134
+     },
+     {
+      "id": "fr-close",
+      "text": "Explore",
+      "h": 34,
+      "w": 77
+     }
+    ]
+   },
+   "focus": "body.docked",
+   "focusInCard": false,
+   "shown": {
+    "rail": true,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "drawer": false,
+    "tools": true,
+    "viewmode": true,
+    "timebar": true,
+    "tourbar": false,
+    "selchip": false,
+    "vsbadge": false,
+    "help": false,
+    "tab": "oob",
+    "docked": true,
+    "railHidden": false,
+    "bodyClasses": "docked pm-study firstrun-on"
+   },
+   "boxes": {
+    "rail": [
+     0,
+     0,
+     300,
+     809
+    ],
+    "timebar": [
+     0,
+     810,
+     1600,
+     91
+    ],
+    "tools": [
+     1258,
+     20,
+     320,
+     86
+    ],
+    "viewmode": [
+     712,
+     14,
+     176,
+     34
+    ],
+    "legend": null,
+    "dispatch": null,
+    "tourbar": null
+   },
+   "live": {
+    "text": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "aria": "polite"
+   },
+   "tourStep": -1,
+   "chapter": null,
+   "plan": null,
+   "selection": null,
+   "storage": {
+    "local": [],
+    "session": []
+   },
+   "frame": {
+    "unobstructed": 0.6149,
+    "clearance": 490.297,
+    "layer": {
+     "placed": 19,
+     "dropped": 5,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach"
+     ],
+     "ms": 1,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.64,
+     "belowAA": 0,
+     "n": 23
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0027,
+     "meanLum": 35.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": 0.0367,
+    "confOver": false,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 18.3
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  },
+  "1600x900-visitor": {
+   "vp": [
+    1600,
+    900
+   ],
+   "loadMs": 16636,
+   "errors": [],
+   "clock": 240,
+   "clockText": "04:00",
+   "phase": 0,
+   "playing": false,
+   "speed": 0.5,
+   "presentation": "study",
+   "mode": "terrain",
+   "factor": 4,
+   "rm": false,
+   "harness": false,
+   "sun": {
+    "alt": -35.85,
+    "geo": -35.85,
+    "az": 82.4,
+    "twilight": 0,
+    "disc": 0,
+    "discShown": false,
+    "row": "predawn",
+    "sunrise": "07:45"
+   },
+   "fog": {
+    "amount": 1,
+    "cap": 0.55,
+    "top": 238.2,
+    "mist": 1
+   },
+   "smoke": {
+    "fighting": 0,
+    "ids": [],
+    "share": 0
+   },
+   "camera": {
+    "pos": [
+     -38.8,
+     488.7,
+     61.3
+    ],
+    "tgt": [
+     -38.8,
+     0.5,
+     4.7
+    ],
+    "dist": 491.4,
+    "clearance": 490.3,
+    "vantage": "plan",
+    "freeCam": false,
+    "follow": true,
+    "haze": 1
+   },
+   "card": {
+    "open": true,
+    "hidden": false,
+    "box": [
+     680,
+     550,
+     540,
+     241
+    ],
+    "role": "dialog",
+    "labelledby": "fr-title",
+    "describedby": null,
+    "modal": null,
+    "tabindex": null,
+    "title": "The Battle of Austerlitz",
+    "key": "French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, and it decides the battle.",
+    "hint": "Drag to move the map, right-drag to turn it, scroll to zoom, and click any formation to see who it was and what it was doing.",
+    "buttons": [
+     {
+      "id": "fr-tour",
+      "text": "Guided tour",
+      "h": 34,
+      "w": 104
+     },
+     {
+      "id": "fr-watch",
+      "text": "Watch the battle",
+      "h": 34,
+      "w": 134
+     },
+     {
+      "id": "fr-close",
+      "text": "Explore",
+      "h": 34,
+      "w": 77
+     }
+    ]
+   },
+   "focus": "body.docked",
+   "focusInCard": false,
+   "shown": {
+    "rail": true,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "drawer": false,
+    "tools": true,
+    "viewmode": true,
+    "timebar": true,
+    "tourbar": false,
+    "selchip": false,
+    "vsbadge": false,
+    "help": false,
+    "tab": "oob",
+    "docked": true,
+    "railHidden": false,
+    "bodyClasses": "docked pm-study firstrun-on"
+   },
+   "boxes": {
+    "rail": [
+     0,
+     0,
+     300,
+     809
+    ],
+    "timebar": [
+     0,
+     810,
+     1600,
+     91
+    ],
+    "tools": [
+     1258,
+     20,
+     320,
+     86
+    ],
+    "viewmode": [
+     712,
+     14,
+     176,
+     34
+    ],
+    "legend": null,
+    "dispatch": null,
+    "tourbar": null
+   },
+   "live": {
+    "text": "04:00 - 07:00. The Deception: Dispositions in the dark.",
+    "aria": "polite"
+   },
+   "tourStep": -1,
+   "chapter": null,
+   "plan": null,
+   "selection": null,
+   "storage": {
+    "local": [],
+    "session": []
+   },
+   "frame": {
+    "unobstructed": 0.6149,
+    "clearance": 490.297,
+    "layer": {
+     "placed": 19,
+     "dropped": 5,
+     "droppedIds": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach"
+     ],
+     "ms": 0.9,
+     "minPx": 11.5,
+     "limit": 12,
+     "overLimit": false
+    },
+    "text": {
+     "min": 8.64,
+     "belowAA": 0,
+     "n": 23
+    },
+    "dark": {
+     "solidBlack": 0,
+     "solidBlocks": 0,
+     "nearBlack": 0.0026,
+     "meanLum": 35.5,
+     "overLimit": false
+    },
+    "smoke": 0,
+    "smokeOver": false,
+    "conf": null,
+    "confOver": null,
+    "cost": {
+     "calls": 756,
+     "tris": 2500341,
+     "worldMs": 6.4
+    },
+    "firstRunVisible": true,
+    "dispatchVisible": false,
+    "docking": {
+     "hasNowTab": true,
+     "dispatchInRail": true,
+     "docked": true,
+     "legendOpen": false,
+     "tab": "oob"
+    },
+    "presentation": "study",
+    "mode": "terrain",
+    "stage0": []
+   }
+  }
+ },
+ "count": {
+  "tourStops": 9,
+  "play": 1,
+  "speeds": 4,
+  "phases": 10,
+  "acts": 5,
+  "events": 25,
+  "eventMarkers": 25,
+  "intervalBars": 11,
+  "distinctStarts": 22,
+  "themes": 10,
+  "vantages": 5,
+  "vantageButtons": [
+   "field",
+   "zuran",
+   "plateau",
+   "allied",
+   "plan (pressed)",
+   "eye (hidden)"
+  ],
+  "presentations": 3,
+  "grounds": 3,
+  "railTabs": [
+   "now",
+   "oob",
+   "analysis",
+   "command",
+   "plans"
+  ],
+  "keysRows": 29,
+  "keyGroups": [
+   "Time",
+   "View and ground",
+   "Layers and panels",
+   "The map, when it has focus (Tab to it)",
+   "The timeline",
+   "Pointer and touch",
+   "Developer"
+  ],
+  "plans": 3,
+  "follow": true,
+  "eyes": 6,
+  "focusable": 128
+ },
+ "ways": {
+  "button: Guided tour": {
+   "before": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "oob",
+    "cardOpen": true,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "after": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": true,
+    "legendOpen": false,
+    "tourbar": true,
+    "help": false,
+    "rail": true,
+    "tourStep": 0,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": null,
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "later": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": true,
+    "legendOpen": false,
+    "tourbar": true,
+    "help": false,
+    "rail": true,
+    "tourStep": 0,
+    "camera": {
+     "pos": [
+      -230,
+      134.8,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.6,
+      1
+     ],
+     "dist": 321.3,
+     "clearance": 135.3,
+     "vantage": null,
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "extra": null,
+   "errors": []
+  },
+  "button: Watch the battle": {
+   "before": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "oob",
+    "cardOpen": true,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "after": {
+    "clock": "04:00",
+    "playing": true,
+    "speed": 0.5,
+    "presentation": "watch",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": false,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": null,
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "later": {
+    "clock": "04:01",
+    "playing": true,
+    "speed": 0.5,
+    "presentation": "watch",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": false,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -234.2,
+      134.8,
+      215.4
+     ],
+     "tgt": [
+      -34.2,
+      0.8,
+      7.5
+     ],
+     "dist": 318,
+     "clearance": 135.2,
+     "vantage": null,
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "extra": null,
+   "errors": []
+  },
+  "button: Explore": {
+   "before": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "oob",
+    "cardOpen": true,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "after": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": true,
+    "legend": true,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": null,
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "later": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": true,
+    "legend": true,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -230,
+      134.8,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.6,
+      1
+     ],
+     "dist": 321.3,
+     "clearance": 135.3,
+     "vantage": null,
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "extra": null,
+   "errors": []
+  },
+  "a click on the map": {
+   "before": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "oob",
+    "cardOpen": true,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "after": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": true,
+    "legend": true,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "later": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": true,
+    "legend": true,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "extra": null,
+   "errors": []
+  },
+  "key 2": {
+   "before": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "oob",
+    "cardOpen": true,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "after": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "watch",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": false,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "later": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "watch",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": false,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "extra": null,
+   "errors": []
+  },
+  "key Space": {
+   "before": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "oob",
+    "cardOpen": true,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "after": {
+    "clock": "04:00",
+    "playing": true,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": true,
+    "legend": true,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "later": {
+    "clock": "04:00",
+    "playing": true,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": true,
+    "legend": true,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "extra": null,
+   "errors": []
+  },
+  "key ?": {
+   "before": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "oob",
+    "cardOpen": true,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "after": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "help-close",
+    "focusInCard": false,
+    "dispatch": true,
+    "legend": true,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": true,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "later": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "help-close",
+    "focusInCard": false,
+    "dispatch": true,
+    "legend": true,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": true,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "extra": null,
+   "errors": []
+  },
+  "key Esc": {
+   "before": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "oob",
+    "cardOpen": true,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "after": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": true,
+    "legend": true,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "later": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": true,
+    "legend": true,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "extra": null,
+   "errors": []
+  },
+  "key ArrowRight": {
+   "before": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "oob",
+    "cardOpen": true,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "after": {
+    "clock": "04:10",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": true,
+    "legend": true,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "later": {
+    "clock": "04:10",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "now",
+    "cardOpen": false,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": true,
+    "legend": true,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "extra": null,
+   "errors": []
+  },
+  "Tab x8": {
+   "before": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "oob",
+    "cardOpen": true,
+    "focus": "body.docked",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "after": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "oob",
+    "cardOpen": true,
+    "focus": "button.oob-row",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "later": {
+    "clock": "04:00",
+    "playing": false,
+    "speed": 0.5,
+    "presentation": "study",
+    "tab": "oob",
+    "cardOpen": true,
+    "focus": "button.oob-row",
+    "focusInCard": false,
+    "dispatch": false,
+    "legend": false,
+    "legendOpen": false,
+    "tourbar": false,
+    "help": false,
+    "rail": true,
+    "tourStep": -1,
+    "camera": {
+     "pos": [
+      -38.8,
+      488.7,
+      61.3
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.7
+     ],
+     "dist": 491.4,
+     "clearance": 490.3,
+     "vantage": "plan",
+     "freeCam": false,
+     "follow": true,
+     "haze": 1
+    },
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "extra": [
+    "button.vm-btn",
+    "button.vm-btn",
+    "button.vm-btn",
+    "tab-oob",
+    "button.oob-row",
+    "button.oob-row",
+    "button.oob-row",
+    "button.oob-row"
+   ],
+   "errors": []
+  },
+  "reload": {
+   "beforeReload": {
+    "cardOpen": false,
+    "storage": {
+     "local": [],
+     "session": []
+    }
+   },
+   "afterReload": {
+    "cardOpen": true,
+    "storage": {
+     "local": [],
+     "session": []
+    },
+    "clock": "04:00"
+   }
+  }
+ },
+ "narrow": {
+  "vp": [
+   1024,
+   768
+  ],
+  "docked": false,
+  "card": [
+   242,
+   418,
+   540,
+   241
+  ],
+  "dispatch": [
+   16,
+   108,
+   440,
+   557
+  ],
+  "overlap": [
+   214,
+   241
+  ]
+ },
+ "names": {
+  "1600x900": {
+   "placed": [
+    "n:gqg: Imperial Headquarters",
+    "n:ahq: Allied HeadquartersB",
+    "n:buxhowden: Left Wing CommandC",
+    "n:lich: Fifth Column (cavalry)B",
+    "n:bag: Advance Guard of the RightB",
+    "e:columns-move: The Allied columns begin to leave the plateau",
+    "e:raigern: Friant's division at Raigern since the night",
+    "p:plateau: THE PRATZEN · Allied ≈ 38,700",
+    "o:French line on the Goldbach: French line on the Goldbach",
+    "o:Allied columns on the plateau: Allied columns on the plateau",
+    "o:V Corps · IV Corps: V Corps · IV Corps",
+    "o:Soult's assault · Legrand: Soult's assault · Legrand",
+    "o:III Column → the castle: III Column → the castle",
+    "o:IV Column → Kobelnitz: IV Column → Kobelnitz",
+    "o:V Column counter-marches north: V Column counter-marches north",
+    "o:Kobelnitz: Kobelnitz",
+    "t:santon: The Santon",
+    "t:litava: Litava river",
+    "t:austerlitz: Austerlitz"
+   ],
+   "dropped": [
+    "t:pratzen",
+    "t:vinohrady",
+    "t:pratzeberg",
+    "t:zuran",
+    "t:goldbach"
+   ],
+   "plateau": "THE PRATZEN · Allied ≈ 38,700"
+  },
+  "1366x768": {
+   "placed": [
+    "n:gqg: Imperial Headquarters",
+    "n:ahq: Allied HeadquartersB",
+    "n:lich: Fifth Column (cavalry)B",
+    "n:bag: Advance Guard of the RightB",
+    "e:columns-move: The Allied columns begin to leave the plateau",
+    "e:raigern: Friant's division at Raigern since the night",
+    "p:plateau: THE PRATZEN · Allied ≈ 38,700",
+    "o:French line on the Goldbach: French line on the Goldbach",
+    "o:Allied columns on the plateau: Allied columns on the plateau",
+    "o:V Corps · IV Corps: V Corps · IV Corps",
+    "o:Soult's assault · Legrand: Soult's assault · Legrand",
+    "o:IV Column → Kobelnitz: IV Column → Kobelnitz",
+    "o:V Column counter-marches north: V Column counter-marches north",
+    "o:Kobelnitz: Kobelnitz",
+    "t:santon: The Santon",
+    "t:litava: Litava river",
+    "t:austerlitz: Austerlitz"
+   ],
+   "dropped": [
+    "t:pratzen",
+    "t:vinohrady",
+    "t:zuran",
+    "t:goldbach"
+   ],
+   "plateau": "THE PRATZEN · Allied ≈ 38,700"
+  },
+  "1280x720": {
+   "placed": [
+    "n:gqg: Imperial Headquarters",
+    "n:ahq: Allied HeadquartersB",
+    "n:lich: Fifth Column (cavalry)B",
+    "n:bag: Advance Guard of the RightB",
+    "e:raigern: Friant's division at Raigern since the night",
+    "p:plateau: THE PRATZEN · Allied ≈ 38,700",
+    "o:French line on the Goldbach: French line on the Goldbach",
+    "o:Allied columns on the plateau: Allied columns on the plateau",
+    "o:V Corps · IV Corps: V Corps · IV Corps",
+    "o:Soult's assault · Legrand: Soult's assault · Legrand",
+    "o:IV Column → Kobelnitz: IV Column → Kobelnitz",
+    "o:V Column counter-marches north: V Column counter-marches north",
+    "t:santon: The Santon",
+    "t:austerlitz: Austerlitz"
+   ],
+   "dropped": [
+    "t:pratzen",
+    "t:vinohrady",
+    "t:zuran",
+    "t:litava"
+   ],
+   "plateau": "THE PRATZEN · Allied ≈ 38,700"
+  },
+  "1024x768": {
+   "placed": [
+    "n:gqg: Imperial Headquarters",
+    "n:ahq: Allied HeadquartersB",
+    "n:lich: Fifth Column (cavalry)B",
+    "n:bag: Advance Guard of the RightB",
+    "e:columns-move: The Allied columns begin to leave the plateau",
+    "e:raigern: Friant's division at Raigern since the night",
+    "p:plateau: THE PRATZEN · Allied ≈ 38,700",
+    "o:French line on the Goldbach: French line on the Goldbach",
+    "o:Allied columns on the plateau: Allied columns on the plateau",
+    "o:V Corps · IV Corps: V Corps · IV Corps",
+    "o:Soult's assault · Legrand: Soult's assault · Legrand",
+    "o:IV Column → Kobelnitz: IV Column → Kobelnitz",
+    "o:V Column counter-marches north: V Column counter-marches north",
+    "t:santon: The Santon",
+    "t:litava: Litava river",
+    "t:austerlitz: Austerlitz"
+   ],
+   "dropped": [
+    "t:pratzen",
+    "t:vinohrady",
+    "t:zuran",
+    "t:goldbach"
+   ],
+   "plateau": "THE PRATZEN · Allied ≈ 38,700"
+  },
+  "390x844": {
+   "placed": [
+    "n:gqg: Imperial Headquarters",
+    "n:bag: Advance Guard of the RightB",
+    "e:raigern: Friant's division at Raigern since the night",
+    "o:French line on the Goldbach: French line on the Goldbach",
+    "o:V Corps · IV Corps: V Corps · IV Corps",
+    "t:austerlitz: Austerlitz"
+   ],
+   "dropped": [
+    "t:santon",
+    "t:zuran"
+   ],
+   "plateau": null
+  }
+ }
+}
