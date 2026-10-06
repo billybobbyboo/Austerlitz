@@ -39,6 +39,9 @@ DROP_LIMIT["eye-zuran"]=5; DROP_LIMIT["eye-zuran-1x"]=6;
 /* Stage 5F (decision 94): the Plans tab, both plans, at the Overview: what the 5F build drops there (ten place names and the Allied
    headquarters' name), never raised; the Plans tab itself is unchanged (its fix is a task after Stage 5) */
 DROP_LIMIT["plans-overview"]=11;
+/* Stage 7B (owner decision 122): narrow-390, the first screen at 390 x 844, is new; its limit is what the 7B build drops there (the Allied
+   headquarters' and the Fifth Column's names, Pratzen, Stare Vinohrady, Santon, Zuran), never raised */
+DROP_LIMIT["narrow-390"]=6;
 /* section H: the unobstructed share of the viewport on the Stage 2C build, at the case's viewport and at 1280 x 720, measured
    by this harness (CSS transitions off, the panels at rest). It must not fall. These equal tools/stage2/map-text.js's values
    in every view but one: selected-formation at 1280 x 720 is 6.97% at rest, where map-text.js reported 15.1% with the
@@ -61,6 +64,11 @@ const UNOBSTRUCTED={"first-run":[0.614,0.49],"first-run-laptop":[0.531,0.49],"ov
   "selected-formation":[0.703,0.628],"watch-selected":[0.879,0.833],"hybrid-dimmed":[0.881,0.847],"pratzen-low-1x":[0.897,0.872],
   "pratzen-low-10x":[0.897,0.872],"paper-north-up":[0.703,0.628],"paper-close":[0.703,0.628],"paper-drawer":[0.703,0.628],"paper-laptop":[0.628,0.628],
   "narrow-1024":[0.535,0.628],"ph8-overview-study":[0.703,0.628],"ph8-overview-watch":[0.897,0.872]};
+/* Stage 7B (docs/STAGE7_SPEC.md section 6; decisions 111, 120, 122): the first-run card without its hint and "Watch the battle" is 49 px
+   shorter. first-run and first-run-laptop are raised to what the 7B build measures, rounded down to 0.1 point (the 3B and 3C method), so no
+   later part can give the gain back: they were .614/.49 and .531/.49 (3C). narrow-390 is new, its baselines the 7B build's (at 1280 x 720
+   the resized page docks, as every case's second measure does) */
+UNOBSTRUCTED["first-run"]=[0.634,0.520]; UNOBSTRUCTED["first-run-laptop"]=[0.558,0.520]; UNOBSTRUCTED["narrow-390"]=[0.468,0.520];
 const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harness machine */
 /* Stage 2E (section J, 2E): every paper-map view is a true north-up plan: GEOREF.NORTH within 0.5 degrees of up; screen pixels
    per true km at four places equal to 1% (on the 2D build's tilted staff map they differ by 6.0% and north is 17.8 degrees
@@ -76,6 +84,9 @@ const PAPER_MIN_PXKM={"paper-north-up":28,"paper-laptop":21};
 /* Stage 3C (section H): the one timeline's height, at every viewport (before 3C: 170 px at 1600 x 900, 139 at 1366 x 768 and
    1280 x 720). New */
 const TIMELINE_MAX=92;
+/* Stage 7B (owner decision 122): narrow-390, the first screen at 390 x 844, is a new case whose timeline wraps (172 px on the 6D build); its
+   height is recorded in the report, not held to TIMELINE_MAX, until the project takes up a phone layout. Every other view is held as before */
+const TIMELINE_RECORDED=["narrow-390"];
 /* Stage 3D (section H): in the phase-8 Overview views no arrow head more than a quarter hidden by a panel or the screen's edge
    (4 of 5 Allied arrows in Part A; 2 of 5 still wholly under the 90 px timeline before the Overview was fitted); in every
    landscape view on a build with the view offset, the orbit target at the free rectangle's centre within 1 px. New */
@@ -124,7 +135,19 @@ module.exports.check=function(name,m){
   if(m.pixels.solidBlack>SOLID_BLACK) f.push("solid near-black regions cover "+(100*m.pixels.solidBlack).toFixed(3)+"% of the map ("+m.pixels.solidBlocks+" blocks of 8x8; limit 0.05%)");
   if(m.selection&&!m.drawerVisible&&!m.chipVisible) f.push("selection "+m.selection+" is shown nowhere");
   if(!m.selection&&m.chipVisible) f.push("selection chip shown with nothing selected");
-  if(m.firstRunVisible&&m.dispatchVisible) f.push("first-run card stacked on the dispatch card");
+  /* Stage 7B (docs/STAGE7_SPEC.md sections 0.4 item 2 and 6; owner decision 113): Stage 0's "first-run card stacked on the dispatch card"
+     failed whenever both were visible. Written when the dispatch was a floating card, it meant the card over the dispatch; since 3B the
+     dispatch from 1080 px is the rail's Now tab, which the card cannot stand over, and decision 113 shows it there under the card. The test
+     is now what the message says: the two boxes may not meet. Below 1080 px, where the dispatch is a card again (decision 58), it still
+     fails as before (the boxes overlap there, Part A section 6). Without the boxes (a build measured by an older harness) it fails as before. */
+  if(m.firstRunVisible&&m.dispatchVisible){ const a=m.firstRunBox, b=m.dispatchBox;
+    if(!a||!b||(Math.min(a[2],b[2])-Math.max(a[0],b[0])>0&&Math.min(a[3],b[3])-Math.max(a[1],b[1])>0)) f.push("first-run card stacked on the dispatch card"); }
+  /* Stage 7B (docs/STAGE7_SPEC.md section 6, 7B; decisions 111, 118): on the fresh first-run page, by real key presses, the card has focus
+     on its primary action, Tab stays inside it, and Esc closes it where it stands with focus on Play */
+  if(m.firstRunKeys){ const K=m.firstRunKeys;
+    if(K.focus0!=="fr-tour") f.push("the first-run card does not take focus on its primary action ("+K.focus0+")");
+    if(!K.tabs.every(x=>x.inCard)) f.push("Tab leaves the first-run card: "+K.tabs.map(x=>x.id).join(", "));
+    if(K.open||!K.camSame||K.focus1!=="play") f.push("Esc on the first-run card: open "+K.open+", camera unmoved "+K.camSame+", focus "+K.focus1+" (want closed, unmoved, Play)"); }
   if(m.stats&&m.stats.camera&&m.stats.camera.violations) f.push("a camera path bypassed the floor ("+m.stats.camera.violations+")");
   /* Stage 2D: the map layer. The overlap test above reads its rendered boxes and is stricter (any shared pixel) */
   const L=m.layer;
@@ -149,13 +172,14 @@ module.exports.check=function(name,m){
     if(Dk.docked!==wide) f.push("docked is "+Dk.docked+" at "+m.viewport[0]+" px wide (docked from 1080 px)");
     if(m.presentation==="study"&&m.dispatchVisible&&Dk.dispatchInRail!==wide)
       f.push(wide?"the dispatch is a card over the map at "+m.viewport[0]+" px (from 1080 px it is the rail's Now tab)":"the dispatch is in the rail at "+m.viewport[0]+" px (below 1080 px it stays a card)");
-    if(m.presentation==="study"&&wide&&!m.firstRunVisible&&Dk.tab!=="now") f.push("Study shows the "+Dk.tab+" tab, not the Now tab (decision 55)");
+    /* Stage 7B (decision 113): also while the first-run card is open (before 7B it showed the order of battle there, exempt) */
+    if(m.presentation==="study"&&wide&&Dk.tab!=="now") f.push("Study shows the "+Dk.tab+" tab, not the Now tab (decision 55"+(m.firstRunVisible?", 113":"")+")");
     if(m.presentation==="study"&&!m.firstRunVisible&&Dk.legendOpen) f.push("the legend is open though nobody opened it (it opens closed, decision 49)"); }
   /* Stage 3C (docs/STAGE3_SPEC.md sections D, G.2 and H; owner decisions 53, 60). All new; run only on a build with the timeline's
      control row (#tb-vm) */
   const TL=m.timeline;
   if(TL&&TL.hasRow){
-    if(TL.height!==null&&TL.height>TIMELINE_MAX) f.push("the timeline is "+TL.height+" px tall (at most "+TIMELINE_MAX+")");
+    if(TL.height!==null&&TL.height>TIMELINE_MAX&&!TIMELINE_RECORDED.includes(name)) f.push("the timeline is "+TL.height+" px tall (at most "+TIMELINE_MAX+")");
     if(m.presentation==="watch"&&!(TL.switchInRow&&TL.switchOpacity===1)) f.push("Watch: the presentation switch is not in the timeline's control row at full opacity ("+TL.switchOpacity+")");
     if(m.presentation==="watch"&&TL.capDerived===false) f.push("Watch: the caption's derived reading is not shown");
     if(m.phaseLabels720&&m.phaseLabels720.cut.length) f.push("at 1280 x 720 the current phase's label is cut: "+m.phaseLabels720.cut.join(", ")); }

@@ -84,9 +84,9 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   Watch on the paper map and on the landscape since 3C; the "?" overlay over both since 3E; since 5E the dossier's knowledge reason, the eye-level
   caption, the paper map with a headquarters' reading; since 5G the dossier with its day-track inset)
   meets WCAG AA and the 10.5 px floor.
-- `npm run check:visual`: 23 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
+- `npm run check:visual`: 24 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
   `narrow-1024`, the undocked layout, since 3C the phase-8 Overview in Study and in Watch, since 5E the eye level at the Zuran at 4x
-  and 1x, and since 5F the Plans tab at the Overview, `plans-overview`), Stage 0
+  and 1x, since 5F the Plans tab at the Overview, `plans-overview`, and since 7B the first screen at 390 x 844, `narrow-390`), Stage 0
   thresholds and the in-app `AUSTERLITZ_DEBUG.selfTest()` (its ground, camera, figure, mist, overlay-draping and arrowhead
   checks at 1x, 4x and 10.33x, and since 2D its map-layer checks: no overlap, nothing over a panel or an arrow head, the
   never-dropped items drawn, every dropped formation reachable by hover and keyboard, the legend never over the dispatch).
@@ -203,9 +203,18 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   sourced ratio for Russian and Austrian standards on foot, decision 106, else the provisional 1.6 over the figure's top); `css-test.js` checks a
   painting only from claims graded A or B and every flag colour a word of the claim it draws; `runtime-test.js` dry-runs the standards (a
   detachment's battalions take theirs); `tools/stage6/compare-6d.js` (not in the suite) measures the build against the 6C build.
+  Since 7B: the first-run card a modal dialog (the self-test: its attributes, focus on its primary action, Tab and Shift+Tab kept inside;
+  docked, the Now tab and its dispatch beside the card with a "derived" tag on screen, decision 113; Esc, the stay button and a press outside
+  close it where it stands, camera and clock unmoved, focus on Play, decision 118's rule; the primary starts the tour with focus on its Next);
+  the harness's Stage 0 check "first-run card stacked on the dispatch card" is an overlap test of the two boxes (the docked dispatch is the
+  rail's Now tab, which the card cannot stand over); Study shows the Now tab also while the card is open; by real key presses on the fresh
+  `first-run` page, focus on the primary at load, four Tabs inside the card, Esc closing it in place with focus on Play; `narrow-390` (decision
+  122) with its timeline's height recorded, not held to 92 px; `css-test.js` checks the card's dialog attributes, its two buttons and their
+  words from `LABELS`, no hint and no "Watch the battle", buttons at least 24 px, the docked dispatch not hidden under it; `runtime-test.js`
+  dry-runs each way out.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified Stage 6D build (md5 `3dd7ca41...`, 1,720,613 bytes;
-  re-baselined from the Stage 6C build `07c61c82...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified Stage 7B build (md5 `82337dd4...`, 1,729,495 bytes;
+  re-baselined from the Stage 6D build `3dd7ca41...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -282,4 +291,8 @@ the French 1804 lozenge and the Austrian ordinary colour painted, every other cl
 standards on foot and the provisional 1.6 elsewhere, the cloths in their sourced proportions, the finials, the dip kept), the last part of Stage 6,
 is merged (#42); Stage 6 is complete. Stage 7 Part A (the specification, `docs/STAGE7_SPEC.md`: what a first-time visitor meets today, measured;
 the text an opening could use, traced to the dataset; the openings prototyped and measured; probes in `tools/stage7/`; no source file changed;
-the next owner decision is 111) is written, for review.
+the next owner decision is 111) is written (#43, for review); the owner accepted every recommendation (decisions 111-122, §0.5). Stage 7B (the
+first screen: the first-run card a modal dialog with one primary action, the guided tour until 7C's opening, and "Explore on my own", which,
+like Esc, a key or a press outside, closes it where it stands with focus on Play; the hint and "Watch the battle" off the card; the Now tab
+and its dispatch under it from 1080 px, decision 113, with the plateau reading's "derived" tag on screen; the `narrow-390` case, decision 122)
+is written, for review.

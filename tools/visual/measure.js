@@ -402,6 +402,9 @@
       chipVisible:(function(){ var d=document.getElementById("selchip"); if(!d) return null; return !d.hidden&&getComputedStyle(d).display!=="none"; })(),
       firstRunVisible:(function(){ var d=document.getElementById("firstrun"); return !!d&&!d.hidden; })(),
       dispatchVisible:(function(){ var d=document.querySelector(".dispatch"); return !!d&&getComputedStyle(d).display!=="none"&&d.getBoundingClientRect().width>0; })(),
+      /* Stage 7B: the two boxes, for the overlap test that replaces "first-run card stacked on the dispatch card" (thresholds.js) */
+      firstRunBox:(function(){ var d=document.getElementById("firstrun"); if(!d||d.hidden) return null; var r=d.getBoundingClientRect(); return [r.left,r.top,r.right,r.bottom]; })(),
+      dispatchBox:(function(){ var d=document.querySelector(".dispatch"); if(!d||getComputedStyle(d).display==="none") return null; var r=d.getBoundingClientRect(); return [r.left,r.top,r.right,r.bottom]; })(),
       stats:(D()&&D().stats)?D().stats():null,
       layer:layer(), unobstructed:unobstructed(), legendOverDispatch:legendOverDispatch(), paper:paperMap(),
       legendOverPanels:legendOverPanels(), docking:docking(), viewport:[window.innerWidth,window.innerHeight], timeline:timeline(),

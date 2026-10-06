@@ -1,6 +1,7 @@
 # First run and opening sequence: specification (Stage 7, Part A)
 
-**Status: Part A written, for review. It changes no source file, no data and no build:** `check:baseline` passes on the unchanged Stage 6D
+**Status: Part A written (#43); the owner accepted every recommendation of §7 (decisions 111-122, §0.5). 7B (§6) written, for review:
+`CHANGELOG.md`. Part A itself changed no source file, no data and no build:** `check:baseline` passes on the unchanged Stage 6D
 build (`austerlitz-command-map.html`, 1,720,613 bytes, md5 `3dd7ca41f73d0e5ffcfe5fa64adc5f51`) before and after it. Written against `main` at
 `b1cb13f` (Stage 6D merged as #42; with it Stage 6 is complete); `check:data`'s reference is `archive/stage6b-7fc0f6c3.html`. Line numbers
 refer to that commit; the code is the source of truth, not the documents. The next owner decision is 111 (§7). On this build every check
@@ -146,6 +147,30 @@ still true: the card offers three, and §1.7 counts 128 focusable controls on th
    labelling" (`docs/VISUAL_AUDIT.md:138-139`). The first screen shows the plateau's derived reading ("THE PRATZEN · Allied ≈ 38,700") and,
    while the card is open, no "derived" tag anywhere (§1.1): the tags are in the Now tab's dispatch and the timeline caption, both hidden in
    this state (`style.css:611`, `:317`).
+
+### 0.5 Owner decisions 111-122 (the answers to §7)
+
+The owner accepted every recommendation of §7 ("We will go with your recommendations for all"). Each is recorded as a decision, in the
+question's order; §7 keeps the trade-offs.
+
+| # | question | decision |
+|---|---|---|
+| 111 | the opening | C, stills through a subset of the tour by the tour's own machinery, entered from B, the card refined. (7B, 7C) |
+| 112 | auto-start | No: the card's primary button starts it; offered, not forced. (7B, 7C) |
+| 113 | the rail's tab on the first screen | The Now tab (decision 55 holds on the first screen too); the Stage 0 check replaced by an overlap test, its reason stated. (7B) |
+| 114 | the stops | 1, 6, 7, 8. (7C) |
+| 115 | "tested" | §2.1's definition; whole stops only, shown from `TOUR` by index; every string shown `===` a `TOUR` field or a `LABELS` entry. (7C) |
+| 116 | played stretches | None in Stage 7. (7D not built) |
+| 117 | "seen it" | No storage; the URL fragment left optional and not built. (7B) |
+| 118 | the end | 04:00, Study on the Now tab, the Overview, Play focused as the single next action. (7C; 7B applies the same focus rule to the card) |
+| 119 | the derived figure on the first screen | (a): the Now tab under the card shows the reading with its "derived" tag; (b), the tag on the map label in every view, stays open. (7B) |
+| 120 | the card's hint | Off the card: the "?" overlay's pointer rows and the legend's control line carry it. (7B) |
+| 121 | the harness cases | `first-run` and `first-run-laptop` kept; the opening's cases with 7C, their limits measured on its build; the Stage 0 check's test replaced. (7B, 7C) |
+| 122 | below 1024 px | Recorded, not fixed: a `narrow-390` case for the first screen, its timeline's height recorded, not held to 92 px. (7B) |
+
+**How 7B applies 111 before 7C exists.** The card's primary action is the opening, which is 7C. Until 7C is built the primary button starts
+the guided tour (the existing nine stops, the tour's own words), the one way in the card already offered that is built from the tested text;
+7C points the same button at the opening and keeps the guided tour in the tools. This is sequencing, not a new decision.
 
 ## 1. Today (fact; read from the code and measured in the harness's page)
 
@@ -767,6 +792,13 @@ key presses, Esc and the outside click; the 390 x 844 screen recorded (question 
 - `check:contrast`: the "first-run" state with the Now tab; a new "first-run-narrow" state is not possible (the tool has one viewport):
   the self-test holds the card's colours at 1366 x 768, as 5G's inset.
 - `binding-test.js`, `check:chronology`, `check:data`: unaffected (no arrow, no data); run and shown.
+
+**7B, as delivered (fact; `CHANGELOG.md`, Stage 7B).** Built as above under decisions 111-113, 117-120 and 122, with three things the plan
+did not settle: (1) the primary action starts the guided tour until 7C (§0.5); (2) with focus on the primary, Space and Enter press it and
+← → do nothing (before, nothing had focus, so Space played and the arrows closed the card and stepped the clock); (3) the replaced Stage 0
+check keeps its message and fails when the boxes meet, which below 1080 px they still do (214 x 192 px at 1024 x 768). Measured: the map
+63.4% / 52.1% unobstructed on the first screen at 1600 x 900 / 1280 x 720 (61.5% / 49.0% before), 55.8% at 1366 x 768 (53.2%), 46.9% at
+390 x 844 (38.3%); drops within every limit (one or two more below 1600 x 900: ground the taller card covered now competes for room).
 
 ### 7C: the opening, stills from the tour (questions 111, 114-116, 118)
 

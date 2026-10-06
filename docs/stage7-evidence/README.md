@@ -22,3 +22,10 @@ one another; draw calls are counted for one whole frame as `tools/stage6/compare
 minute) are design values for the measurement.
 The second `opening-probe.js` run and `firstrun-probe.js --only narrow` ran while `npm run check:visual` ran on the same machine: their
 world-pass times are not comparable with the first run's (no other measure depends on time).
+
+**Stage 7B** (on the 7B build, md5 `82337dd4…`, 1,729,495 bytes; the "before" is Part A's `firstrun-probe.json`, the 6D build):
+
+| file | what | script |
+|---|---|---|
+| `7b-firstrun-probe.json` | the first screen at the same five sizes, under reduced motion and on a visitor's page; each way out (the absent "Watch the battle" recorded as absent); reload; the counts; the dispatch card's box below 1080 px and what each first screen names (`CHANGELOG.md`, Stage 7B) | `node tools/stage7/firstrun-probe.js --json docs/stage7-evidence/7b-firstrun-probe.json --sheet docs/stage7-evidence/7b-firstrun-sheet.jpg --title "Stage 7B: the first screen (fresh pages)"`, then `--only narrow` with the same `--json` |
+| `7b-firstrun-sheet.jpg` | the seven first screens on the 7B build | the same run (the `screens` part) |
