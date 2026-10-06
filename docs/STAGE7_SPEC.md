@@ -1,7 +1,7 @@
 # First run and opening sequence: specification (Stage 7, Part A)
 
-**Status: Part A written (#43); the owner accepted every recommendation of §7 (decisions 111-122, §0.5). 7B (§6) written (#44, merged
-into the Part A branch; #45 brings it to `main`); 7C (§6) written, for review: `CHANGELOG.md`; 7D not built (decision 116). Part A itself changed no source file, no data and no build:** `check:baseline` passes on the unchanged Stage 6D
+**Status: Part A written (#43); the owner accepted every recommendation of §7 (decisions 111-122, §0.5). 7B (§6) merged (#44 into the Part A
+branch, #45 into `main`); 7C (§6) merged (#46); 7D (§6) written under decisions 123-124 (§0.6), for review: `CHANGELOG.md`. Part A itself changed no source file, no data and no build:** `check:baseline` passes on the unchanged Stage 6D
 build (`austerlitz-command-map.html`, 1,720,613 bytes, md5 `3dd7ca41f73d0e5ffcfe5fa64adc5f51`) before and after it. Written against `main` at
 `b1cb13f` (Stage 6D merged as #42; with it Stage 6 is complete); `check:data`'s reference is `archive/stage6b-7fc0f6c3.html`. Line numbers
 refer to that commit; the code is the source of truth, not the documents. The next owner decision is 111 (§7). On this build every check
@@ -171,6 +171,16 @@ question's order; §7 keeps the trade-offs.
 **How 7B applies 111 before 7C exists.** The card's primary action is the opening, which is 7C. Until 7C is built the primary button starts
 the guided tour (the existing nine stops, the tour's own words), the one way in the card already offered that is built from the tested text;
 7C points the same button at the opening and keeps the guided tour in the tools. This is sequencing, not a new decision.
+
+### 0.6 Owner decisions 123-124 (after 7C)
+
+After 7C was merged (#46) the owner wrote: "Merged. Proceed with 7D and your recommendations." Two decisions follow from the
+recommendations this specification and 7C's report made; the first changes an earlier one, which is kept above as it was decided.
+
+| # | question | decision |
+|---|---|---|
+| 123 | played stretches (supersedes 116's "none in Stage 7") | Built, as 7D: between the opening's steps the clock plays from one stop's clock to the next at **4x, the opening's own speed** (question 116's recommendation if D were wanted); the visitor's Play stays ½× (decision 74); under reduced motion the steps stay 7C's cuts (§4.4). (7D) |
+| 124 | focus when the opening begins | On **Next**, as 7C built it and its report recommended (§4.1 had recommended Skip; with Skip focused, the next Enter ends the opening the visitor has just begun). (7C, 7D) |
 
 ## 1. Today (fact; read from the code and measured in the harness's page)
 

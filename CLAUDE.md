@@ -307,8 +307,9 @@ the next owner decision is 111) is written (#43, for review); the owner accepted
 first screen: the first-run card a modal dialog with one primary action, the guided tour until 7C's opening, and "Explore on my own", which,
 like Esc, a key or a press outside, closes it where it stands with focus on Play; the hint and "Watch the battle" off the card; the Now tab
 and its dispatch under it from 1080 px, decision 113, with the plateau reading's "derived" tag on screen; the `narrow-390` case, decision 122)
-is written (#44, merged into the Part A branch, not `main`; #45 brings it to `main`). Stage 7C (the opening: tour stops 1, 6, 7 and 8 by index
+is merged (#44 into the Part A branch, #45 into `main`). Stage 7C (the opening: tour stops 1, 6, 7 and 8 by index
 in the tour's bar, `OPENING`, decisions 114-115; begun by the card's "Begin (a minute)" or the tools' "Begin the opening", decision 112; Finish,
 Skip and Esc end it at 04:00 in Study on the Now tab at the Overview with Play focused, decision 118, any other key, a press outside the bar or
 the camera taken where it is; the six `opening` cases, decision 121; focus on Next when it begins, not on Skip as §4.1 recommended, stated
-for the owner) is written, for review (#46, on the 7B branch).
+for the owner) is merged (#46). The owner then asked for 7D with the recommendations (decisions 123-124, §0.6: the clock played between the
+opening's steps at 4x, the opening's own speed, superseding decision 116; focus on Next when it begins).
