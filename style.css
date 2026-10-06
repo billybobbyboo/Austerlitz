@@ -611,6 +611,8 @@ body.rail-hidden #firstrun{left:50%;width:min(540px,calc(100vw - 32px))}
 #firstrun .fr-act .t.fr-primary{background:var(--text);color:var(--on-accent);border-color:var(--text)}
 body.firstrun-on:not(.docked) .dispatch,body.firstrun-on .legend,body.firstrun-on .drawer,
 body.firstrun-on #vsbadge,body.firstrun-on #tourbar,body.firstrun-on #selchip{display:none !important}
+/* Stage 7C: the tools' "Begin the opening" stands down while the card, whose primary action it is, is open (at 390 px it would wrap the tools' row) */
+body.firstrun-on #openingbtn{display:none}
 .legend .ar{width:20px;height:5px;border-radius:2px}
 /* Stage 2C: the heads as drawn (decision 20): French the plain triangle, Allied the notched chevron */
 .legend .ar{position:relative;margin-right:8px;border-radius:2px 0 0 2px}

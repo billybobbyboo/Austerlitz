@@ -115,13 +115,20 @@ async function interact(page,it,vp){
     const reuse=(key===currentKey)||(currentKey&&currentKey.startsWith(c.viewport.join("x")+":")&&!c.fresh&&currentKey.split(":")[0]===c.viewport.join("x"));
     if(!reuse){ if(current&&current!==pages.keep) await current.close(); current=await openPage(browser,c.viewport); }
     currentKey=key; const page=current; pages.last=page;
-    const t0=Date.now();
+    const t0=Date.now(); let m0opening=null;
     if(!c.fresh){ await page.evaluate(s=>window.__aus.apply(s),c); await settle(page);
       if(c.interact){ await interact(page,c.interact,c.viewport); await settle(page); } }
     else await settle(page);
+    /* Stage 7C: an opening case is reached as a visitor reaches it, by real clicks on the card's primary action and the bar's Next */
+    const opening=c.fresh&&c.opening!==undefined&&await page.evaluate(()=>typeof OPENING!=="undefined");
+    if(opening){ await page.click("#fr-tour"); await settle(page);
+      const n=c.opening==="end"?await page.evaluate(()=>OPENING.stops.length):c.opening;
+      for(let i=0;i<n;i++){ await page.click("#tour-next"); await settle(page); }
+      m0opening=await page.evaluate(()=>({on:OPENING.on,k:OPENING.k,stop:tourStep,clock:clock})); }
     const buf=await page.screenshot({timeout:180000});
     fs.writeFileSync(path.join(out,c.name+".png"),buf);
     const m=await page.evaluate(()=>window.__aus.metrics());
+    if(m0opening) m.opening=Object.assign({want:c.opening},m0opening);
     /* Stage 5E: an eye-level case, the eye's height above the drawn ground and its place at the headquarters */
     if(c.eye) m.eyeLevel=await page.evaluate(()=>{ if(typeof EYE==="undefined") return {on:false,dy:null,want:null,atHQ:false};
       const L=landCam.position, p=posNow(EYES.HQ[commandView]), w=p?W(p[0],p[1]):[NaN,NaN];
@@ -131,8 +138,8 @@ async function interact(page,it,vp){
        fraction at 1280 x 720 too (the same page resized, then restored) */
     m.textContrast=await page.evaluate(b=>window.__aus.textContrast?window.__aus.textContrast(b):null,buf.toString("base64"));
     /* Stage 5B (docs/STAGE5_SPEC.md section A.5): the position-confidence marks' share of the free rectangle, as rendered: the same
-       view drawn once more without them (a build with the marks; not the first-run views, whose card is not a reading) */
-    if(!c.fresh&&await page.evaluate(()=>typeof CONF!=="undefined"&&!!layerOn.confidence)){
+       view drawn once more without them (a build with the marks; not the first-run views, whose card is not a reading; the opening's are) */
+    if((!c.fresh||opening)&&await page.evaluate(()=>typeof CONF!=="undefined"&&!!layerOn.confidence)){
       /* since Stage 6C (decision 107) Position confidence off keeps a side footprint: the frame without the marks draws none (CONF.none) */
       await page.evaluate(()=>{ layerOn.confidence=false; CONF.none=true; }); await settle(page);
       const off=await page.screenshot({timeout:180000});
@@ -145,7 +152,7 @@ async function interact(page,it,vp){
     /* Stage 5F (docs/STAGE5_SPEC.md section E.4; decision 93): the ordered routes on: the map layer's items and drops as without them
        (ground drawing), map text at AA as rendered; their share of the free rectangle recorded (off by default: every other measure is
        taken without them; not at the eye level, where they are not drawn) */
-    if(!c.fresh&&!c.eye&&await page.evaluate(()=>typeof ROUTES!=="undefined")){
+    if((!c.fresh||opening)&&!c.eye&&await page.evaluate(()=>typeof ROUTES!=="undefined")){
       const lay=()=>page.evaluate(()=>{ mlLayout(); return {items:ML.stats.items,dropped:ML.stats.dropped,ids:ML.stats.dropped_.slice().sort().join(","),routes:ROUTES.grp?ROUTES.grp.children.length:0}; });
       const s0=await lay();
       await page.evaluate(()=>{ layerOn.routes=true; requestRender(3); }); await settle(page);
@@ -155,7 +162,7 @@ async function interact(page,it,vp){
       m.routes={routes:s1.routes,items:[s0.items,s1.items],dropped:[s0.dropped,s1.dropped],sameDrops:s0.ids===s1.ids,
         belowAA:tc?tc.belowAA:[],minContrast:tc?tc.min:null,share:(await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[on.toString("base64"),buf.toString("base64")])).share};
     }
-    if(!c.fresh&&!c.eye&&await page.evaluate(()=>typeof SKEL!=="undefined")){   /* not at the eye level: the skeleton is not drawn there (5E) */
+    if((!c.fresh||opening)&&!c.eye&&await page.evaluate(()=>typeof SKEL!=="undefined")){   /* not at the eye level: the skeleton is not drawn there (5E) */
       const lay=()=>page.evaluate(()=>{ mlLayout(); return {items:ML.stats.items,dropped:ML.stats.dropped,ids:ML.stats.dropped_.slice().sort().join(","),
         anchors:SKEL.marks.length,legs:SKEL.scope?SKEL.scope.legs.length:0}; });
       const s0=await lay();
@@ -191,6 +198,21 @@ async function interact(page,it,vp){
       for(let i=0;i<4;i++){ await page.keyboard.press(i===3?"Shift+Tab":"Tab"); const q=await st(); tabs.push({id:q.id,inCard:q.inCard}); }
       await page.keyboard.press("Escape"); const s1=await st();
       m.firstRunKeys={focus0:s0.id,tabs,open:s1.open,camSame:s1.cam.every((v,i)=>Math.abs(v-s0.cam[i])<1e-6),focus1:s1.id};
+      await page.evaluate(()=>{ if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+    }
+    /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decision 118): on the opening-2 page, after every measure above, real key presses: Esc
+       from step 2 (the end state: 04:00, Study, Play focused); the tools' button by a real click, then Enter on the focused Next (step 2), then
+       Tab to Skip and Space (the end state again) */
+    if(TEST&&opening&&c.name==="opening-2"){
+      const st=()=>page.evaluate(()=>{ const a=document.activeElement;
+        return {id:a&&a!==document.body?(a.id||a.tagName):"body",on:OPENING.on,k:OPENING.k,stop:tourStep,clock:clock,pres:presentation,tab:tabNow,follow:!freeCam,vantage:curVantage,bar:!document.getElementById("tourbar").hidden}; });
+      const keys={};
+      await page.keyboard.press("Escape"); await settle(page); keys.esc=await st();
+      await page.click("#openingbtn"); await settle(page); keys.begun=await st();
+      await page.keyboard.press("Enter"); await settle(page); keys.enter=await st();
+      await page.keyboard.press("Tab"); keys.tab=(await st()).id;
+      await page.keyboard.press("Space"); await settle(page); keys.space=await st();
+      m.openingKeys=keys;
       await page.evaluate(()=>{ if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
     }
     m.ms=Date.now()-t0; m.note=c.note;

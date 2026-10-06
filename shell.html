@@ -89,6 +89,8 @@
 
 <div class="tools">
   <div class="grp">
+    <!-- Stage 7C: the opening again, for a later visit (hidden while the first-run card, whose primary action it is, stands open) -->
+    <button class="t" id="openingbtn" type="button">Begin the opening</button>
     <button class="t" id="tourbtn">Guided tour</button>
     <button class="t" id="layersbtn" aria-expanded="false">Layers&hellip;</button>
   </div>
@@ -295,7 +297,8 @@
 </div>
 
 <button id="restore" type="button" title="Back to Study (Esc)">Show interface</button>
-<div id="tourbar" hidden>
+<!-- the guided tour's bar, and the opening's (Stage 7C): a region named by its count and the stop's title; not modal (the map stays live) -->
+<div id="tourbar" role="region" aria-labelledby="tour-n tour-t" hidden>
   <div class="tb-step"><span id="tour-n"></span><b id="tour-t"></b></div>
   <p id="tour-x"></p>
   <div class="tour-act">

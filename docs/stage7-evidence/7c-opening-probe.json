@@ -1,0 +1,1342 @@
+{
+ "steps": {
+  "1600x900": [
+   {
+    "on": true,
+    "step": 1,
+    "stop": 1,
+    "n": "The battlefield",
+    "clock": "04:00",
+    "chapter": null,
+    "plan": null,
+    "presentation": "study",
+    "tab": "now",
+    "follow": true,
+    "vantage": null,
+    "focus": "tour-next",
+    "live": "Step 1 of 4: The battlefield, 04:00.",
+    "glide": {
+     "samples": 51,
+     "lowest": 135.28,
+     "lifts": 0
+    },
+    "camera": {
+     "pos": [
+      -230,
+      134.8,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.6,
+      1
+     ],
+     "dist": 321.3,
+     "atStop": true
+    },
+    "bar": {
+     "box": [
+      520,
+      606,
+      560,
+      187
+     ],
+     "whole": true,
+     "words": 56
+    },
+    "strings": {
+     "tested": true,
+     "shown": [
+      "Opening, step 1 of 4",
+      "The battlefield",
+      "Ten kilometres of open Moravian farmland. The Fr…",
+      "Back",
+      "Next",
+      "Skip"
+     ]
+    },
+    "frame": {
+     "unobstructed": 0.632,
+     "clearance": 136.487,
+     "layer": {
+      "items": 32,
+      "placed": 23,
+      "underPanel": 0,
+      "dropped": 8,
+      "droppedIds": [
+       "t:pratzen",
+       "t:vinohrady",
+       "t:pratzeberg",
+       "t:zuran",
+       "t:goldbach",
+       "t:telnitz",
+       "t:sokolnitz",
+       "t:augezd"
+      ],
+      "ms": 0.9,
+      "minPx": 11.5,
+      "limit": 8,
+      "overLimit": false
+     },
+     "text": {
+      "min": 8.5,
+      "belowAA": 0,
+      "n": 27
+     },
+     "dark": {
+      "solidBlack": 0,
+      "solidBlocks": 0,
+      "nearBlack": 0.0004,
+      "meanLum": 49.5,
+      "overLimit": false
+     },
+     "smoke": 0,
+     "smokeOver": false,
+     "conf": 0.0346,
+     "confOver": false,
+     "cost": {
+      "calls": 753,
+      "tris": 2500335,
+      "worldMs": 20.4
+     },
+     "firstRunVisible": false,
+     "dispatchVisible": false,
+     "docking": {
+      "hasNowTab": true,
+      "dispatchInRail": true,
+      "docked": true,
+      "legendOpen": false,
+      "tab": "now"
+     },
+     "presentation": "study",
+     "mode": "terrain",
+     "stage0": []
+    }
+   },
+   {
+    "on": true,
+    "step": 2,
+    "stop": 6,
+    "n": "The French strike",
+    "clock": "08:45",
+    "chapter": "pratzen",
+    "plan": null,
+    "presentation": "study",
+    "tab": "now",
+    "follow": true,
+    "vantage": null,
+    "focus": "tour-next",
+    "live": "Step 2 of 4: The French strike, 08:45.",
+    "glide": {
+     "samples": 51,
+     "lowest": 46.19,
+     "lifts": 0
+    },
+    "camera": {
+     "pos": [
+      -136,
+      46.1,
+      31
+     ],
+     "tgt": [
+      -6,
+      4.6,
+      -3
+     ],
+     "dist": 140.7,
+     "atStop": true
+    },
+    "bar": {
+     "box": [
+      520,
+      629,
+      560,
+      164
+     ],
+     "whole": true,
+     "words": 34
+    },
+    "strings": {
+     "tested": true,
+     "shown": [
+      "Opening, step 2 of 4",
+      "The French strike",
+      "At about a quarter to nine Saint-Hilaire and Van…",
+      "Back",
+      "Next",
+      "Skip"
+     ]
+    },
+    "frame": {
+     "unobstructed": 0.6398,
+     "clearance": 46.196,
+     "layer": {
+      "items": 62,
+      "placed": 25,
+      "underPanel": 11,
+      "dropped": 7,
+      "droppedIds": [
+       "t:pratzen",
+       "t:vinohrady",
+       "t:pratzenv",
+       "t:girzikowitz",
+       "t:blasowitz",
+       "t:krzenowitz",
+       "t:chapel"
+      ],
+      "ms": 1.1,
+      "minPx": 11.5,
+      "limit": 7,
+      "overLimit": false
+     },
+     "text": {
+      "min": 7.48,
+      "belowAA": 0,
+      "n": 32
+     },
+     "dark": {
+      "solidBlack": 0,
+      "solidBlocks": 0,
+      "nearBlack": 0.0001,
+      "meanLum": 135.8,
+      "overLimit": false
+     },
+     "smoke": 0.0257,
+     "smokeOver": false,
+     "conf": 0.0436,
+     "confOver": false,
+     "cost": {
+      "calls": 736,
+      "tris": 2536751,
+      "worldMs": 15.2
+     },
+     "firstRunVisible": false,
+     "dispatchVisible": false,
+     "docking": {
+      "hasNowTab": true,
+      "dispatchInRail": true,
+      "docked": true,
+      "legendOpen": false,
+      "tab": "now"
+     },
+     "presentation": "study",
+     "mode": "terrain",
+     "stage0": []
+    }
+   },
+   {
+    "on": true,
+    "step": 3,
+    "stop": 7,
+    "n": "The army divided",
+    "clock": "11:00",
+    "chapter": "cut",
+    "plan": null,
+    "presentation": "study",
+    "tab": "now",
+    "follow": true,
+    "vantage": null,
+    "focus": "tour-next",
+    "live": "Step 3 of 4: The army divided, 11:00.",
+    "glide": {
+     "samples": 51,
+     "lowest": 38.72,
+     "lifts": 0
+    },
+    "camera": {
+     "pos": [
+      -75,
+      38.6,
+      42
+     ],
+     "tgt": [
+      7,
+      10,
+      12
+     ],
+     "dist": 91.9,
+     "atStop": true
+    },
+    "bar": {
+     "box": [
+      520,
+      629,
+      560,
+      164
+     ],
+     "whole": true,
+     "words": 37
+    },
+    "strings": {
+     "tested": true,
+     "shown": [
+      "Opening, step 3 of 4",
+      "The army divided",
+      "With the plateau gone the Allied army is in two …",
+      "Back",
+      "Next",
+      "Skip"
+     ]
+    },
+    "frame": {
+     "unobstructed": 0.6398,
+     "clearance": 38.729,
+     "layer": {
+      "items": 62,
+      "placed": 12,
+      "underPanel": 6,
+      "dropped": 3,
+      "droppedIds": [
+       "t:vinohrady",
+       "t:pratzeberg",
+       "t:krzenowitz"
+      ],
+      "ms": 0.8,
+      "minPx": 11.5,
+      "limit": 3,
+      "overLimit": false
+     },
+     "text": {
+      "min": 8.48,
+      "belowAA": 0,
+      "n": 16
+     },
+     "dark": {
+      "solidBlack": 0,
+      "solidBlocks": 0,
+      "nearBlack": 0.0006,
+      "meanLum": 73.5,
+      "overLimit": false
+     },
+     "smoke": 0.0386,
+     "smokeOver": false,
+     "conf": 0.0352,
+     "confOver": false,
+     "cost": {
+      "calls": 713,
+      "tris": 2522727,
+      "worldMs": 50.9
+     },
+     "firstRunVisible": false,
+     "dispatchVisible": false,
+     "docking": {
+      "hasNowTab": true,
+      "dispatchInRail": true,
+      "docked": true,
+      "legendOpen": false,
+      "tab": "now"
+     },
+     "presentation": "study",
+     "mode": "terrain",
+     "stage0": []
+    }
+   },
+   {
+    "on": true,
+    "step": 4,
+    "stop": 8,
+    "n": "The collapse",
+    "clock": "14:30",
+    "chapter": "collapse",
+    "plan": null,
+    "presentation": "study",
+    "tab": "now",
+    "follow": true,
+    "vantage": null,
+    "focus": "tour-next",
+    "live": "Step 4 of 4: The collapse, 14:30.",
+    "glide": {
+     "samples": 51,
+     "lowest": 38.72,
+     "lifts": 0
+    },
+    "camera": {
+     "pos": [
+      -122,
+      95.1,
+      2
+     ],
+     "tgt": [
+      -18,
+      4.2,
+      68
+     ],
+     "dist": 153,
+     "atStop": true
+    },
+    "bar": {
+     "box": [
+      520,
+      629,
+      560,
+      164
+     ],
+     "whole": true,
+     "words": 41
+    },
+    "strings": {
+     "tested": true,
+     "shown": [
+      "Opening, step 4 of 4",
+      "The collapse",
+      "The French centre turns ninety degrees and comes…",
+      "Back",
+      "Finish",
+      "Skip"
+     ]
+    },
+    "frame": {
+     "unobstructed": 0.6398,
+     "clearance": 94.489,
+     "layer": {
+      "items": 64,
+      "placed": 24,
+      "underPanel": 8,
+      "dropped": 4,
+      "droppedIds": [
+       "t:telnitz",
+       "t:augezd",
+       "t:satschan",
+       "t:chapel"
+      ],
+      "ms": 1,
+      "minPx": 11.5,
+      "limit": 4,
+      "overLimit": false
+     },
+     "text": {
+      "min": 8.27,
+      "belowAA": 0,
+      "n": 32
+     },
+     "dark": {
+      "solidBlack": 0,
+      "solidBlocks": 0,
+      "nearBlack": 0.002,
+      "meanLum": 54.7,
+      "overLimit": false
+     },
+     "smoke": 0.0408,
+     "smokeOver": false,
+     "conf": 0.064,
+     "confOver": false,
+     "cost": {
+      "calls": 763,
+      "tris": 2557933,
+      "worldMs": 43.9
+     },
+     "firstRunVisible": false,
+     "dispatchVisible": false,
+     "docking": {
+      "hasNowTab": true,
+      "dispatchInRail": true,
+      "docked": true,
+      "legendOpen": false,
+      "tab": "now"
+     },
+     "presentation": "study",
+     "mode": "terrain",
+     "stage0": []
+    }
+   },
+   {
+    "on": false,
+    "step": null,
+    "stop": null,
+    "n": null,
+    "clock": "04:00",
+    "chapter": null,
+    "plan": null,
+    "presentation": "study",
+    "tab": "now",
+    "follow": true,
+    "vantage": "plan",
+    "focus": "play",
+    "live": "The opening has ended. Play runs the day from 04:00.",
+    "glide": {
+     "samples": 51,
+     "lowest": 94.49,
+     "lifts": 0
+    },
+    "camera": {
+     "pos": [
+      -38.8,
+      533.1,
+      66.2
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.4
+     ],
+     "dist": 536.2,
+     "atStop": null
+    },
+    "bar": null,
+    "strings": null,
+    "frame": {
+     "unobstructed": 0.7036,
+     "clearance": 534.859,
+     "layer": {
+      "items": 32,
+      "placed": 25,
+      "underPanel": 0,
+      "dropped": 7,
+      "droppedIds": [
+       "t:pratzen",
+       "t:vinohrady",
+       "t:pratzeberg",
+       "t:zuran",
+       "t:goldbach",
+       "t:telnitz",
+       "t:sokolnitz"
+      ],
+      "ms": 0.9,
+      "minPx": 11.5,
+      "limit": 7,
+      "overLimit": false
+     },
+     "text": {
+      "min": 8.28,
+      "belowAA": 0,
+      "n": 29
+     },
+     "dark": {
+      "solidBlack": 0,
+      "solidBlocks": 0,
+      "nearBlack": 0.002,
+      "meanLum": 37.5,
+      "overLimit": false
+     },
+     "smoke": 0,
+     "smokeOver": false,
+     "conf": 0.0279,
+     "confOver": false,
+     "cost": {
+      "calls": 756,
+      "tris": 2500341,
+      "worldMs": 17.9
+     },
+     "firstRunVisible": false,
+     "dispatchVisible": true,
+     "docking": {
+      "hasNowTab": true,
+      "dispatchInRail": true,
+      "docked": true,
+      "legendOpen": false,
+      "tab": "now"
+     },
+     "presentation": "study",
+     "mode": "terrain",
+     "stage0": []
+    }
+   }
+  ],
+  "1280x720": [
+   {
+    "on": true,
+    "step": 1,
+    "stop": 1,
+    "n": "The battlefield",
+    "clock": "04:00",
+    "chapter": null,
+    "plan": null,
+    "presentation": "study",
+    "tab": "now",
+    "follow": true,
+    "vantage": null,
+    "focus": "tour-next",
+    "live": "Step 1 of 4: The battlefield, 04:00.",
+    "glide": {
+     "samples": 51,
+     "lowest": 135.28,
+     "lifts": 0
+    },
+    "camera": {
+     "pos": [
+      -230,
+      134.8,
+      211
+     ],
+     "tgt": [
+      -28,
+      -0.6,
+      1
+     ],
+     "dist": 321.3,
+     "atStop": true
+    },
+    "bar": {
+     "box": [
+      360,
+      426,
+      560,
+      187
+     ],
+     "whole": true,
+     "words": 56
+    },
+    "strings": {
+     "tested": true,
+     "shown": [
+      "Opening, step 1 of 4",
+      "The battlefield",
+      "Ten kilometres of open Moravian farmland. The Fr…",
+      "Back",
+      "Next",
+      "Skip"
+     ]
+    },
+    "frame": {
+     "unobstructed": 0.5169,
+     "clearance": 136.487,
+     "layer": {
+      "items": 32,
+      "placed": 21,
+      "underPanel": 0,
+      "dropped": 10,
+      "droppedIds": [
+       "t:pratzen",
+       "t:vinohrady",
+       "t:pratzeberg",
+       "t:santon",
+       "t:zuran",
+       "t:goldbach",
+       "t:telnitz",
+       "t:sokolnitz",
+       "t:augezd",
+       "t:austerlitz"
+      ],
+      "ms": 1.7,
+      "minPx": 11.5,
+      "limit": 10,
+      "overLimit": false
+     },
+     "text": {
+      "min": 8.5,
+      "belowAA": 0,
+      "n": 25
+     },
+     "dark": {
+      "solidBlack": 0,
+      "solidBlocks": 0,
+      "nearBlack": 0.0004,
+      "meanLum": 49.2,
+      "overLimit": false
+     },
+     "smoke": 0,
+     "smokeOver": false,
+     "conf": 0.0449,
+     "confOver": false,
+     "cost": {
+      "calls": 755,
+      "tris": 2500339,
+      "worldMs": 30.9
+     },
+     "firstRunVisible": false,
+     "dispatchVisible": false,
+     "docking": {
+      "hasNowTab": true,
+      "dispatchInRail": true,
+      "docked": true,
+      "legendOpen": false,
+      "tab": "now"
+     },
+     "presentation": "study",
+     "mode": "terrain",
+     "stage0": []
+    }
+   },
+   {
+    "on": true,
+    "step": 2,
+    "stop": 6,
+    "n": "The French strike",
+    "clock": "08:45",
+    "chapter": "pratzen",
+    "plan": null,
+    "presentation": "study",
+    "tab": "now",
+    "follow": true,
+    "vantage": null,
+    "focus": "tour-next",
+    "live": "Step 2 of 4: The French strike, 08:45.",
+    "glide": {
+     "samples": 51,
+     "lowest": 46.19,
+     "lifts": 0
+    },
+    "camera": {
+     "pos": [
+      -136,
+      46.1,
+      31
+     ],
+     "tgt": [
+      -6,
+      4.6,
+      -3
+     ],
+     "dist": 140.7,
+     "atStop": true
+    },
+    "bar": {
+     "box": [
+      360,
+      449,
+      560,
+      164
+     ],
+     "whole": true,
+     "words": 34
+    },
+    "strings": {
+     "tested": true,
+     "shown": [
+      "Opening, step 2 of 4",
+      "The French strike",
+      "At about a quarter to nine Saint-Hilaire and Van…",
+      "Back",
+      "Next",
+      "Skip"
+     ]
+    },
+    "frame": {
+     "unobstructed": 0.5291,
+     "clearance": 46.196,
+     "layer": {
+      "items": 62,
+      "placed": 21,
+      "underPanel": 15,
+      "dropped": 7,
+      "droppedIds": [
+       "t:pratzen",
+       "t:vinohrady",
+       "t:austerlitz",
+       "t:pratzenv",
+       "t:blasowitz",
+       "t:krzenowitz",
+       "t:chapel"
+      ],
+      "ms": 1,
+      "minPx": 11.5,
+      "limit": null,
+      "overLimit": false
+     },
+     "text": {
+      "min": 7.48,
+      "belowAA": 0,
+      "n": 25
+     },
+     "dark": {
+      "solidBlack": 0,
+      "solidBlocks": 0,
+      "nearBlack": 0.0001,
+      "meanLum": 131.9,
+      "overLimit": false
+     },
+     "smoke": 0.0058,
+     "smokeOver": false,
+     "conf": 0.0458,
+     "confOver": false,
+     "cost": {
+      "calls": 736,
+      "tris": 2536741,
+      "worldMs": 32.4
+     },
+     "firstRunVisible": false,
+     "dispatchVisible": false,
+     "docking": {
+      "hasNowTab": true,
+      "dispatchInRail": true,
+      "docked": true,
+      "legendOpen": false,
+      "tab": "now"
+     },
+     "presentation": "study",
+     "mode": "terrain",
+     "stage0": []
+    }
+   },
+   {
+    "on": true,
+    "step": 3,
+    "stop": 7,
+    "n": "The army divided",
+    "clock": "11:00",
+    "chapter": "cut",
+    "plan": null,
+    "presentation": "study",
+    "tab": "now",
+    "follow": true,
+    "vantage": null,
+    "focus": "tour-next",
+    "live": "Step 3 of 4: The army divided, 11:00.",
+    "glide": {
+     "samples": 51,
+     "lowest": 38.72,
+     "lifts": 0
+    },
+    "camera": {
+     "pos": [
+      -75,
+      38.6,
+      42
+     ],
+     "tgt": [
+      7,
+      10,
+      12
+     ],
+     "dist": 91.9,
+     "atStop": true
+    },
+    "bar": {
+     "box": [
+      360,
+      449,
+      560,
+      164
+     ],
+     "whole": true,
+     "words": 37
+    },
+    "strings": {
+     "tested": true,
+     "shown": [
+      "Opening, step 3 of 4",
+      "The army divided",
+      "With the plateau gone the Allied army is in two …",
+      "Back",
+      "Next",
+      "Skip"
+     ]
+    },
+    "frame": {
+     "unobstructed": 0.5291,
+     "clearance": 38.729,
+     "layer": {
+      "items": 62,
+      "placed": 7,
+      "underPanel": 11,
+      "dropped": 3,
+      "droppedIds": [
+       "t:litava",
+       "t:pratzenv",
+       "t:krzenowitz"
+      ],
+      "ms": 1.6,
+      "minPx": 11.5,
+      "limit": null,
+      "overLimit": false
+     },
+     "text": {
+      "min": 13.33,
+      "belowAA": 0,
+      "n": 11
+     },
+     "dark": {
+      "solidBlack": 0,
+      "solidBlocks": 0,
+      "nearBlack": 0.0003,
+      "meanLum": 71.7,
+      "overLimit": false
+     },
+     "smoke": 0.0125,
+     "smokeOver": false,
+     "conf": 0.0447,
+     "confOver": false,
+     "cost": {
+      "calls": 720,
+      "tris": 2523767,
+      "worldMs": 40.1
+     },
+     "firstRunVisible": false,
+     "dispatchVisible": false,
+     "docking": {
+      "hasNowTab": true,
+      "dispatchInRail": true,
+      "docked": true,
+      "legendOpen": false,
+      "tab": "now"
+     },
+     "presentation": "study",
+     "mode": "terrain",
+     "stage0": []
+    }
+   },
+   {
+    "on": true,
+    "step": 4,
+    "stop": 8,
+    "n": "The collapse",
+    "clock": "14:30",
+    "chapter": "collapse",
+    "plan": null,
+    "presentation": "study",
+    "tab": "now",
+    "follow": true,
+    "vantage": null,
+    "focus": "tour-next",
+    "live": "Step 4 of 4: The collapse, 14:30.",
+    "glide": {
+     "samples": 51,
+     "lowest": 38.72,
+     "lifts": 0
+    },
+    "camera": {
+     "pos": [
+      -122,
+      95.1,
+      2
+     ],
+     "tgt": [
+      -18,
+      4.2,
+      68
+     ],
+     "dist": 153,
+     "atStop": true
+    },
+    "bar": {
+     "box": [
+      360,
+      449,
+      560,
+      164
+     ],
+     "whole": true,
+     "words": 41
+    },
+    "strings": {
+     "tested": true,
+     "shown": [
+      "Opening, step 4 of 4",
+      "The collapse",
+      "The French centre turns ninety degrees and comes…",
+      "Back",
+      "Finish",
+      "Skip"
+     ]
+    },
+    "frame": {
+     "unobstructed": 0.5291,
+     "clearance": 94.489,
+     "layer": {
+      "items": 64,
+      "placed": 21,
+      "underPanel": 12,
+      "dropped": 3,
+      "droppedIds": [
+       "t:augezd",
+       "t:satschan",
+       "t:chapel"
+      ],
+      "ms": 1.7,
+      "minPx": 11.5,
+      "limit": null,
+      "overLimit": false
+     },
+     "text": {
+      "min": 12.16,
+      "belowAA": 0,
+      "n": 28
+     },
+     "dark": {
+      "solidBlack": 0,
+      "solidBlocks": 0,
+      "nearBlack": 0.0014,
+      "meanLum": 54.5,
+      "overLimit": false
+     },
+     "smoke": 0.0352,
+     "smokeOver": false,
+     "conf": 0.0611,
+     "confOver": false,
+     "cost": {
+      "calls": 764,
+      "tris": 2557945,
+      "worldMs": 54.6
+     },
+     "firstRunVisible": false,
+     "dispatchVisible": false,
+     "docking": {
+      "hasNowTab": true,
+      "dispatchInRail": true,
+      "docked": true,
+      "legendOpen": false,
+      "tab": "now"
+     },
+     "presentation": "study",
+     "mode": "terrain",
+     "stage0": []
+    }
+   },
+   {
+    "on": false,
+    "step": null,
+    "stop": null,
+    "n": null,
+    "clock": "04:00",
+    "chapter": null,
+    "plan": null,
+    "presentation": "study",
+    "tab": "now",
+    "follow": true,
+    "vantage": "plan",
+    "focus": "play",
+    "live": "The opening has ended. Play runs the day from 04:00.",
+    "glide": {
+     "samples": 51,
+     "lowest": 94.49,
+     "lifts": 0
+    },
+    "camera": {
+     "pos": [
+      -38.8,
+      586.5,
+      72.1
+     ],
+     "tgt": [
+      -38.8,
+      0.5,
+      4.1
+     ],
+     "dist": 589.9,
+     "atStop": null
+    },
+    "bar": null,
+    "strings": null,
+    "frame": {
+     "unobstructed": 0.6288,
+     "clearance": 588.566,
+     "layer": {
+      "items": 32,
+      "placed": 22,
+      "underPanel": 0,
+      "dropped": 10,
+      "droppedIds": [
+       "t:pratzen",
+       "t:vinohrady",
+       "t:pratzeberg",
+       "t:santon",
+       "t:zuran",
+       "t:goldbach",
+       "t:litava",
+       "t:telnitz",
+       "t:sokolnitz",
+       "t:augezd"
+      ],
+      "ms": 0.9,
+      "minPx": 11.5,
+      "limit": null,
+      "overLimit": false
+     },
+     "text": {
+      "min": 8.5,
+      "belowAA": 0,
+      "n": 26
+     },
+     "dark": {
+      "solidBlack": 0,
+      "solidBlocks": 0,
+      "nearBlack": 0.0016,
+      "meanLum": 37.6,
+      "overLimit": false
+     },
+     "smoke": 0,
+     "smokeOver": false,
+     "conf": 0.0241,
+     "confOver": false,
+     "cost": {
+      "calls": 756,
+      "tris": 2500341,
+      "worldMs": 17.2
+     },
+     "firstRunVisible": false,
+     "dispatchVisible": true,
+     "docking": {
+      "hasNowTab": true,
+      "dispatchInRail": true,
+      "docked": true,
+      "legendOpen": false,
+      "tab": "now"
+     },
+     "presentation": "study",
+     "mode": "terrain",
+     "stage0": []
+    }
+   }
+  ]
+ },
+ "ways": {
+  "Skip at step 1": {
+   "on": false,
+   "stop": -1,
+   "clock": "04:00",
+   "presentation": "study",
+   "mode": "terrain",
+   "tab": "now",
+   "follow": true,
+   "vantage": "plan",
+   "chapter": null,
+   "dispatchHidden": false,
+   "focus": "play",
+   "live": "The opening has ended. Play runs the day from 04:00.",
+   "camera": [
+    -38.8,
+    533.1,
+    66.2
+   ]
+  },
+  "Esc at step 1": {
+   "on": false,
+   "stop": -1,
+   "clock": "04:00",
+   "presentation": "study",
+   "mode": "terrain",
+   "tab": "now",
+   "follow": true,
+   "vantage": "plan",
+   "chapter": null,
+   "dispatchHidden": false,
+   "focus": "play",
+   "live": "The opening has ended. Play runs the day from 04:00.",
+   "camera": [
+    -38.8,
+    533.1,
+    66.2
+   ]
+  },
+  "Skip at step 2": {
+   "on": false,
+   "stop": -1,
+   "clock": "04:00",
+   "presentation": "study",
+   "mode": "terrain",
+   "tab": "now",
+   "follow": true,
+   "vantage": "plan",
+   "chapter": null,
+   "dispatchHidden": false,
+   "focus": "play",
+   "live": "The opening has ended. Play runs the day from 04:00.",
+   "camera": [
+    -38.8,
+    533.1,
+    66.2
+   ]
+  },
+  "Esc at step 2": {
+   "on": false,
+   "stop": -1,
+   "clock": "04:00",
+   "presentation": "study",
+   "mode": "terrain",
+   "tab": "now",
+   "follow": true,
+   "vantage": "plan",
+   "chapter": null,
+   "dispatchHidden": false,
+   "focus": "play",
+   "live": "The opening has ended. Play runs the day from 04:00.",
+   "camera": [
+    -38.8,
+    533.1,
+    66.2
+   ]
+  },
+  "Skip at step 3": {
+   "on": false,
+   "stop": -1,
+   "clock": "04:00",
+   "presentation": "study",
+   "mode": "terrain",
+   "tab": "now",
+   "follow": true,
+   "vantage": "plan",
+   "chapter": null,
+   "dispatchHidden": false,
+   "focus": "play",
+   "live": "The opening has ended. Play runs the day from 04:00.",
+   "camera": [
+    -38.8,
+    533.1,
+    66.2
+   ]
+  },
+  "Esc at step 3": {
+   "on": false,
+   "stop": -1,
+   "clock": "04:00",
+   "presentation": "study",
+   "mode": "terrain",
+   "tab": "now",
+   "follow": true,
+   "vantage": "plan",
+   "chapter": null,
+   "dispatchHidden": false,
+   "focus": "play",
+   "live": "The opening has ended. Play runs the day from 04:00.",
+   "camera": [
+    -38.8,
+    533.1,
+    66.2
+   ]
+  },
+  "Skip at step 4": {
+   "on": false,
+   "stop": -1,
+   "clock": "04:00",
+   "presentation": "study",
+   "mode": "terrain",
+   "tab": "now",
+   "follow": true,
+   "vantage": "plan",
+   "chapter": null,
+   "dispatchHidden": false,
+   "focus": "play",
+   "live": "The opening has ended. Play runs the day from 04:00.",
+   "camera": [
+    -38.8,
+    533.1,
+    66.2
+   ]
+  },
+  "Esc at step 4": {
+   "on": false,
+   "stop": -1,
+   "clock": "04:00",
+   "presentation": "study",
+   "mode": "terrain",
+   "tab": "now",
+   "follow": true,
+   "vantage": "plan",
+   "chapter": null,
+   "dispatchHidden": false,
+   "focus": "play",
+   "live": "The opening has ended. Play runs the day from 04:00.",
+   "camera": [
+    -38.8,
+    533.1,
+    66.2
+   ]
+  },
+  "a drag on the map at step 2": {
+   "on": false,
+   "stop": -1,
+   "clock": "08:45",
+   "presentation": "study",
+   "mode": "terrain",
+   "tab": "now",
+   "follow": false,
+   "vantage": null,
+   "chapter": null,
+   "dispatchHidden": false,
+   "focus": "body",
+   "live": "The opening has ended here.",
+   "camera": [
+    -162.3,
+    46.1,
+    30.9
+   ],
+   "before": {
+    "clock": "08:45",
+    "camera": [
+     -136,
+     46.1,
+     31
+    ]
+   }
+  },
+  "the key M at step 2": {
+   "on": false,
+   "stop": -1,
+   "clock": "08:45",
+   "presentation": "study",
+   "mode": "staff",
+   "tab": "now",
+   "follow": true,
+   "vantage": null,
+   "chapter": null,
+   "dispatchHidden": false,
+   "focus": "play",
+   "live": "The opening has ended here.",
+   "camera": [
+    -136,
+    46.2,
+    31
+   ]
+  }
+ },
+ "rm": {
+  "rm": true,
+  "steps": [
+   {
+    "step": 1,
+    "clock": "04:00",
+    "atFrameWithin5ms": true,
+    "playing": false
+   },
+   {
+    "step": 2,
+    "clock": "08:45",
+    "atFrameWithin5ms": true,
+    "playing": false
+   },
+   {
+    "step": 3,
+    "clock": "11:00",
+    "atFrameWithin5ms": true,
+    "playing": false
+   },
+   {
+    "step": 4,
+    "clock": "14:30",
+    "atFrameWithin5ms": true,
+    "playing": false
+   }
+  ],
+  "end": {
+   "on": false,
+   "clock": "04:00",
+   "overviewWithin5ms": true,
+   "focus": "play",
+   "playing": false
+  }
+ },
+ "length": {
+  "stops": [
+   1,
+   6,
+   7,
+   8
+  ],
+  "textWords": [
+   56,
+   34,
+   37,
+   41
+  ],
+  "withTitles": [
+   58,
+   37,
+   40,
+   43
+  ],
+  "words": 168,
+  "glides": 8,
+  "at160": {
+   "reading": 63,
+   "total": 71
+  },
+  "at200": {
+   "reading": 50.4,
+   "total": 58.4
+  },
+  "at238": {
+   "reading": 42.4,
+   "total": 50.4
+  }
+ }
+}

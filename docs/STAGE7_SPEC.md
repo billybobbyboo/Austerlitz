@@ -1,7 +1,7 @@
 # First run and opening sequence: specification (Stage 7, Part A)
 
-**Status: Part A written (#43); the owner accepted every recommendation of §7 (decisions 111-122, §0.5). 7B (§6) written, for review:
-`CHANGELOG.md`. Part A itself changed no source file, no data and no build:** `check:baseline` passes on the unchanged Stage 6D
+**Status: Part A written (#43); the owner accepted every recommendation of §7 (decisions 111-122, §0.5). 7B (§6) written (#44, merged
+into the Part A branch; #45 brings it to `main`); 7C (§6) written, for review: `CHANGELOG.md`; 7D not built (decision 116). Part A itself changed no source file, no data and no build:** `check:baseline` passes on the unchanged Stage 6D
 build (`austerlitz-command-map.html`, 1,720,613 bytes, md5 `3dd7ca41f73d0e5ffcfe5fa64adc5f51`) before and after it. Written against `main` at
 `b1cb13f` (Stage 6D merged as #42; with it Stage 6 is complete); `check:data`'s reference is `archive/stage6b-7fc0f6c3.html`. Line numbers
 refer to that commit; the code is the source of truth, not the documents. The next owner decision is 111 (§7). On this build every check
@@ -842,6 +842,16 @@ under reduced motion.
 - `check:contrast`: new states "opening" (a step in the dark theme) and "opening-end".
 - `binding-test.js` (no arrow drawer changes; its list of dashed drawers is unchanged), `check:chronology` and `check:data` (no data):
   unaffected; run and shown.
+
+**7C, as delivered (fact; `CHANGELOG.md`, Stage 7C).** Built as above under decisions 111, 112, 114-116, 118 and 121: `OPENING` holds stops 1, 6,
+7 and 8 by index, each applied by `applyTour` in the tour's bar, begun by the card's primary action ("Begin (a minute)") or the tools'
+"Begin the opening", ended at 04:00 in Study on the Now tab at the Overview with Play focused (Finish, Skip, Esc) or where it is (a key, a press
+outside the bar, the camera taken). One recommendation of this specification was not followed, stated for the owner: §4.1's Skip focused when
+the opening starts; built, focus on Next (the visitor has just pressed the primary action to begin it, and with Skip focused the next Enter
+would end it; Esc skips from anywhere and Skip is the next Tab stop). Measured with `tools/stage7/opening-7c-probe.js` on fresh pages driven
+by real clicks: every step equals Part A's prototype of the same stop (§3.4; 63.2-64.0% unobstructed at 1600 x 900, 51.7-52.9% at 1280 x 720;
+drops 8, 7, 3, 4 and 10, 7, 3, 3), every glide at least 38.72 units above the drawn ground with no floor lift, the bar's text whole, the end
+state 70.4% / 62.9% unobstructed (the Study baselines 70.3% / 62.8%).
 
 ### 7D (only if the owner chooses played stretches, question 116)
 

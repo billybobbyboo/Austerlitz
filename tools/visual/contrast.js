@@ -105,7 +105,12 @@ const STATES=[
      inset's paper ground, its key and note in the dossier's colours); the card below 1080 px shares the inset's colours, checked in the
      self-test */
   ["daytrack", ()=>{ if(typeof dayTrackEl!=="function") return; setCommandView("none"); setMode("terrain"); setPresentation("study"); setClock(590,{force:true});
-    select("f","sthilaire"); dossierExpanded=true; paintDrawer(); var d=document.querySelector(".daytrack"); if(d) d.scrollIntoView(); updateVisibility(); }]
+    select("f","sthilaire"); dossierExpanded=true; paintDrawer(); var d=document.querySelector(".daytrack"); if(d) d.scrollIntoView(); updateVisibility(); }],
+  /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C): the opening's bar at its second step (its heading, the stop's title and text, Back, Next and
+     Skip, in the dark theme), and where the opening leaves the visitor (04:00, Study on the Now tab, the Overview) */
+  ["opening", ()=>{ if(typeof openingStart!=="function") return; select(null,null); dossierExpanded=false; setMode("terrain"); setPresentation("study");
+    openingStart(); openingGo(1); updateVisibility(); }],
+  ["opening-end", ()=>{ if(typeof openingEnd!=="function") return; openingEnd("skip"); updateVisibility(); }]
 ];
 function hx(h){ h=h.replace("#",""); return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)); }
 function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); }

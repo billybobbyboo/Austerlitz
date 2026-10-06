@@ -278,15 +278,31 @@ try{
   console.log(TOUR.length+" tour stops forward and back OK");
 
   /* Stage 7B (docs/STAGE7_SPEC.md section 6; decisions 111, 113): the first-run card opened and closed by each way out; the primary action
-     starts the tour; "explore" (the stay button, Esc, a key) and a press outside (null) leave the camera and the clock where they stand */
+     begins the opening (Stage 7C); "explore" (the stay button, Esc, a key) and a press outside (null) leave the camera and the clock where they stand */
   { const fr=document.getElementById("firstrun");
     setClock(T_MIN,{force:true});
-    ["tour","explore",null].forEach(how=>{ fr.hidden=false; openFirstRun(); if(!firstRunOpen) throw new Error("the first-run card did not open");
+    ["open","explore",null].forEach(how=>{ fr.hidden=false; openFirstRun(); if(!firstRunOpen) throw new Error("the first-run card did not open");
       const p0=landCam.position.clone(), c0=clock; closeFirst(how);
       if(firstRunOpen||!fr.hidden) throw new Error("the first-run card did not close ("+how+")");
-      if(how==="tour"){ if(tourStep!==0) throw new Error("the first-run card's primary action did not start the tour"); exitTour(); }
+      if(how==="open"){ if(!OPENING.on||tourStep!==OPENING.stops[0]) throw new Error("the first-run card's primary action did not begin the opening"); openingEnd("skip"); }
       else if(landCam.position.distanceTo(p0)>1e-9||clock!==c0) throw new Error("closing the first-run card ("+how+") moved the camera or the clock"); });
-    console.log("first run: opened and closed by each way out (the tour, in place, a press outside) OK"); }
+    console.log("first run: opened and closed by each way out (the opening, in place, a press outside) OK"); }
+
+  /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decisions 114, 118): the opening forward, back and skipped from every step, and ended in place
+     by each other way; each step at its tour stop's clock; every end leaves tourStep at -1; the end state at the day's start in Study; then the
+     tour runs as before */
+  { const N=OPENING.stops.length, ways=["end","skip","key","pointer","camera"];
+    if(N!==4||OPENING.stops.join(",")!=="0,5,6,7") throw new Error("the opening's stops are "+OPENING.stops.join(",")+", not the tour's 1, 6, 7, 8 (decision 114)");
+    openingStart(); for(let k=1;k<N;k++){ openingGo(1); updateVisibility(); if(OPENING.k!==k||clock!==stopClock(TOUR[OPENING.stops[k]])) throw new Error("opening step "+(k+1)+" is not its tour stop"); }
+    for(let k=N-2;k>=0;k--){ openingGo(-1); if(OPENING.k!==k) throw new Error("opening: back to step "+(k+1)+" failed"); }
+    openingGo(-1); if(OPENING.k!==0) throw new Error("opening: back from the first step moved it");
+    for(let k=0;k<N;k++) openingGo(1);
+    if(OPENING.on||tourStep!==-1||clock!==T_MIN||presentation!=="study"||freeCam) throw new Error("opening: Finish did not land on the end state");
+    for(let k=0;k<N;k++) ways.forEach(how=>{ openingStart(); for(let i=0;i<k;i++) openingGo(1); const c0=clock; openingEnd(how); updateVisibility();
+      if(OPENING.on||tourStep!==-1) throw new Error("opening: "+how+" at step "+(k+1)+" left it on");
+      if((how==="end"||how==="skip")?(clock!==T_MIN||freeCam):clock!==c0) throw new Error("opening: "+how+" at step "+(k+1)+" left the clock at "+clock); });
+    startTour(); for(let i=0;i<TOUR.length;i++) tourGo(1); if(tourStep!==-1) throw new Error("the tour after the opening did not finish");
+    console.log("opening: "+N+" steps forward, back, finished, and ended by "+ways.length+" ways from every step; the tour after it OK"); }
 
   /* jumping between events must reach both ends and never stall */
   setClock(T_MIN,{force:true});

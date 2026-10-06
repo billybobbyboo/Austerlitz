@@ -295,3 +295,44 @@ if(cerrs) process.exitCode=1;
   console.log("first run: "+(ferr.length?ferr.length+" wrong":"a modal dialog described by its key, the primary and the stay from LABELS, buttons at least 24 px, the docked dispatch shown under it"));
   if(ferr.length) process.exitCode=1;
 }
+
+/* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decisions 115, 118): the opening's words are LABELS entries with no clock time, figure, proper
+   name or quotation mark (the tour's text, TOUR, carries every claim it shows); the card's primary begins it; the bar is a region named by its
+   count and title; the Skip button is the bar's own (its colours the tour bar's, from the tokens); the tools' button stands down while the
+   card is open; the bar's arrows are a row of the key table */
+{
+  const acorn=require('acorn'), vm=require('vm'), app=fs.readFileSync('app.js','utf8'), sh=fs.readFileSync('shell.html','utf8'), oerr=[];
+  const ast=acorn.parse(app,{ecmaVersion:2020}), ln=ast.body.find(n=>n.type==="VariableDeclaration"&&n.declarations.some(d=>d.id.name==="LABELS"));
+  const ctx={}; vm.createContext(ctx);
+  vm.runInContext(fs.readFileSync('data.js','utf8')+"\n"+(ln?app.slice(ln.start,ln.end):"var LABELS={};")+"\nthis.X={L:LABELS,F:FORMATIONS,FE:FEATURES};",ctx);
+  const {L,F,FE}=ctx.X, O=L.opening;
+  const keys=["button","buttonTitle","head","back","next","finish","skip","skipTitle","said","ended","left"];
+  if(!O) oerr.push("app.js: LABELS.opening (the opening's words) is missing");
+  else {
+    const names=new Set();
+    Object.keys(F).forEach(id=>[F[id].name,F[id].commander].forEach(n=>String(n||"").split(/[^A-Za-z\u00C0-\u017F]+/).forEach(w=>{ if(w.length>2&&/^[A-Z]/.test(w)) names.add(w); })));
+    FE.forEach(f=>String(f.name||"").split(/[^A-Za-z\u00C0-\u017F]+/).forEach(w=>{ if(w.length>2&&/^[A-Z]/.test(w)) names.add(w); }));
+    ["The","General","Marshal","Prince","Emperor","Count","First","Second","Third","Fourth","Fifth","Imperial","Guard","Column","Corps","Division","Brigade","Headquarters","Army"].forEach(w=>names.delete(w));
+    keys.forEach(k=>{ const v=O[k];
+      if(typeof v!=="string"||!v) { oerr.push("LABELS.opening."+k+" is missing"); return; }
+      if(/\d/.test(v)) oerr.push("LABELS.opening."+k+" carries a figure or a clock time: "+v);
+      if(/["'\u2018\u2019\u201c\u201d\u00ab\u00bb]/.test(v)) oerr.push("LABELS.opening."+k+" carries a quotation mark: "+v);
+      v.split(/[^A-Za-z\u00C0-\u017F]+/).forEach(w=>{ if(names.has(w)) oerr.push("LABELS.opening."+k+" names \""+w+"\" (a formation, a commander or a place)"); }); });
+    [L.firstRun.primary,L.firstRun.primaryTitle].forEach(v=>{ if(/\d|["\u201c\u201d]/.test(v)) oerr.push("LABELS.firstRun's primary words carry a figure or a quotation: "+v); });
+    if(!/%k/.test(O.head)||!/%n/.test(O.head)||!/%t/.test(O.said)||!/%c/.test(O.ended)) oerr.push("LABELS.opening: the heading, the step's message or the end's message lost its placeholder");
+  }
+  const on=ast.body.find(n=>n.type==="VariableDeclaration"&&n.declarations.some(d=>d.id.name==="OPENING"));
+  if(!on||!/stops:\[0,5,6,7\]/.test(app.slice(on.start,on.end))) oerr.push("app.js: OPENING's stops are not the tour's 1, 6, 7 and 8 (decision 114)");
+  if(!/closeFirst\("open"\)/.test(app)||!/how==="open"\)\{ openingStart\(\)/.test(app)) oerr.push("app.js: the card's primary action does not begin the opening");
+  const tb=(sh.match(/<div id="tourbar"[^>]*>/)||[""])[0];
+  if(!/role="region"/.test(tb)||!/aria-labelledby="tour-n tour-t"/.test(tb)) oerr.push("shell.html: the bar is not a region named by its count and title: "+tb);
+  if(!/<div class="tour-act">[\s\S]*?id="tour-exit"/.test(sh)) oerr.push("shell.html: the bar's Skip (tour-exit) is missing");
+  const nx=decls("#tour-next"); if(!nx||!/var\(--text\)/.test(nx.body)||!/var\(--on-accent\)/.test(nx.body)) oerr.push("style.css: the bar's Next is not drawn from the tokens");
+  if(!decls("body.firstrun-on #openingbtn")) oerr.push("style.css: the tools' opening button does not stand down under the first-run card");
+  if(!/\{id:"opening", scope:"bar", group:"Time", keys:\["ArrowLeft","ArrowRight"\]/.test(app)) oerr.push("app.js: the bar's arrows are not a row of the key table");
+  if(!/if\(OPENING\.on\)\{ openingEnd\("skip"\); return; \}/.test(app)) oerr.push("app.js: Esc does not skip the opening");
+  if(!/lv&&!OPENING\.applying/.test(app)) oerr.push("app.js: a step's phase announcement is not folded into its own message");
+  oerr.forEach(e=>console.log("  ! "+e));
+  console.log("opening: "+(oerr.length?oerr.length+" wrong":keys.length+" words in LABELS with no figure, clock, name or quotation; the tour's stops 1, 6, 7, 8; begun by the card's primary; the bar a named region; Esc skips; one message a step"));
+  if(oerr.length) process.exitCode=1;
+}
