@@ -280,4 +280,4 @@ symbology: the legend, the first-run key, decision 107's side footprint, the sou
 commits, `CONF.none`, the final baseline and the comparison, come with 6D). Stage 6D (the standards from the table: who carries them and how many,
 the French 1804 lozenge and the Austrian ordinary colour painted, every other cloth plain, decision 106's sourced ratio for Russian and Austrian
 standards on foot and the provisional 1.6 elsewhere, the cloths in their sourced proportions, the finials, the dip kept), the last part of Stage 6,
-is written, for review.
+is merged (#42); Stage 6 is complete.

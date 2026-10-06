@@ -2,7 +2,7 @@
 
 ## 2026-10 · Stage 6D: the standards from the appearance table (docs/STAGE6_SPEC.md §6.3; owner decisions 98, 105, 106)
 
-**Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
+**Status: merged (#42) at `b1cb13f`; with it Stage 6 is complete. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
 `austerlitz-command-map.html`: 1,720,613 bytes, md5 `3dd7ca41f73d0e5ffcfe5fa64adc5f51` (was 1,698,904 bytes, md5 `07c61c82…`, Stage 6C).**
 `check:baseline` moves to this build. With it come 6C's last four commits, which #41 was merged without (see the 6C entry). With 6D, Stage 6
 is complete.
