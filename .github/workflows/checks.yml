@@ -1,11 +1,20 @@
 # Automated checks on every push and pull request (docs/HANDOFF.md, task 4): build, the committed HTML
 # matches that build, the regression suite
-# (tools/run-all.sh exits non-zero if any suite fails), the data-invariance proof and the chronology regression. The visual harness
-# (npm run check:visual) is not run here: it needs Chromium and about ten minutes of software rendering.
+# (tools/run-all.sh exits non-zero if any suite fails), the data-invariance proof and the chronology regression.
+# Since roadmap step 1 (owner decision 132, docs/FINAL_AUDIT.md section 6.0): check:contrast and the one-page in-app self-test
+# (npm run check:selftest) run in a browser job on every push, in parallel with the checks job (each about 8-15 minutes of software
+# rendering on the runner); the full visual harness (npm run check:visual, 30 views, about 100 minutes) runs only on demand: Actions,
+# "checks", "Run workflow", with "visual" ticked. The type is embedded in the file (decision 141), so the runner's fonts do not matter.
 name: checks
 on:
   push:
   pull_request:
+  workflow_dispatch:
+    inputs:
+      visual:
+        description: "Also run the full visual harness (npm run check:visual, about 100 minutes)"
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -25,5 +34,55 @@ jobs:
       - run: git diff --exit-code --stat austerlitz-command-map.html
       - run: npm test
       - run: npm run check:data
-      # the chronology regression (owner decisions 40-46): no early or late move but the named unresolved conflicts
+      # the chronology regression: every live timed statement cited or allowed by name, the named conflicts, the arrival rules, the
+      # movement audit (roadmap step 1, D-1)
       - run: npm run check:chronology
+  # decision 132: the two browser checks a push can afford, in parallel (headless Chromium from Playwright, software WebGL)
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        check: [contrast, selftest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - run: git diff --exit-code --stat austerlitz-command-map.html
+      - run: npm run check:${{ matrix.check }}
+      - if: always() && matrix.check == 'selftest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: selftest-report
+          path: tools/visual/out-selftest/report.json
+          if-no-files-found: ignore
+  # the full harness, on demand only (decision 132)
+  visual:
+    if: github.event_name == 'workflow_dispatch' && inputs.visual
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - run: git diff --exit-code --stat austerlitz-command-map.html
+      - run: npm run check:visual
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-report
+          path: tools/visual/out/
+          if-no-files-found: ignore
