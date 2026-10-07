@@ -1,9 +1,10 @@
 # Final audit of the Austerlitz command map (after Stage 7)
 
-**Status: written for the owner's review; nothing is fixed.** This audit reports, measures and recommends. It changed no source file,
+**Status: merged (#48); the owner accepted every recommendation of §6 (decisions 125-141, §6.0); roadmap step 1 begun (`docs/ROADMAP.md`).**
+This audit reports, measures and recommends; nothing in it is fixed. It changed no source file,
 no data and no build: `npm run check:baseline` passes on the Stage 7D build (`austerlitz-command-map.html`, 1,764,002 bytes, md5
 `46773462faa1e1b9f4a4010e450e110a`) at the start and at the end. Written against `main` at `fb2b616` (#47 merged; Stage 7 complete).
-Line numbers refer to that commit. The current code is the source of truth, not the documents. The next owner decision is **125** (§6).
+Line numbers refer to that commit. The current code is the source of truth, not the documents. The next owner decision is **142**.
 
 Every number here comes from a script run on this build: the project's own checks, and the audit's scripts in `tools/audit/` (not bundled),
 whose outputs are in `docs/audit-evidence/` (listed in its README). The code was read in six passes: five by read-only reviewers (history;
@@ -811,6 +812,31 @@ none of its timing thresholds failed. No page probe ran beside it.
 ## 6. Questions for the owner (from 125)
 
 Each with a recommendation and its trade-off. Nothing is built until they are answered.
+
+### 6.0 Owner decisions 125-141 (the answers)
+
+After #48 was merged the owner wrote: "Merged. Let's start with 1. And we will go with your recommendations on all questions." Each question below
+is therefore decided as recommended; the trade-offs stay in the questions as written.
+
+| # | question | decision | where |
+|---|---|---|---|
+| 125 | the three disputed hours (H-1) | (a) now: the Kamensky and column events graded "disputed" with both hours, the three phase lines marked, the arrows' "unsettled" note shown where the arrow is read, the map's timing kept (decision 42); then (b): settle them from the sources | roadmap step 2 (data task and presentation), then step 4 |
+| 126 | the plateau label (H-3; decision 119 (b)) | the label marked "derived" in every view (text and accessible name), shown in phases 0-6 only, as the tagged reading | step 2 (presentation) |
+| 127 | the first claim (H-4) | (b): labelled ("…the Pratzen plateau, which this map reads as deciding the battle"); the Pratzen vantage retitled "The Pratzen plateau" | step 2 (presentation; decision 108's wording changes) |
+| 128 | the claim pill (H-5) | (a) now: reworded as the position's ("Position: documented / estimated / reconstructed"); (b) per-statement claims within the sourcing stage | step 2, then step 4 |
+| 129 | one data task for the screen's contradictions | yes: H-2, H-7, H-11, H-12, H-13, H-14, D-3, D-4 in that order, each change cited and recorded, after the suite is hardened | step 2 |
+| 130 | a sourcing stage (H-6) | yes, the next stage after the integrity fixes, with a Part A inventory and a register of readings | step 4 |
+| 131 | harden the suite first | yes, before any data task: T-1, T-2, D-1, D-2, H-8, T-4, T-5 (with T-3, T-6) | step 1 |
+| 132 | CI | add `check:contrast` and a one-page self-test run to `.github/workflows/checks.yml`; the full `check:visual` stays on demand | step 1 |
+| 133 | start-up (SW-1) | (a): three.js stays on cdnjs with `integrity` and `crossorigin`, and a plain failure message | step 3 |
+| 134 | single-key shortcuts (A-1) | (a): a "single-key shortcuts" switch in the "?" overlay, on by default, for the session (no storage) | step 3 |
+| 135 | vines (H-10) | the vineyard cover labelled "presumed" in the legend and the going key (`VINEYARD` unchanged) | step 2 (presentation) |
+| 136 | the appearance quotes read once (H-17) | a human second reading of the A-graded quotes among the 131, recorded in `docs/stage6-evidence/` | step 4 |
+| 137 | phones | a phone layout after the accessibility work, as its own stage | after step 3 |
+| 138 | figure level of detail | decided after question 139's measurement: built if an ordinary integrated GPU drops frames, else the item retired | after 139 |
+| 139 | measure on real hardware | one measured pass on two ordinary machines (an integrated-GPU laptop and a phone) before any performance work | when the owner's machines are available |
+| 140 | the self-test in the product | kept in the file (the harness tests the file that ships) | (no change) |
+| 141 | the fonts (T-0) | (a): one open sans and one open serif embedded (WOFF2, base64) and named first in the tokens; each harness case's drops and baselines re-measured once (decision 62's method), every change recorded | step 1, first |
 
 125. **The three disputed hours (H-1).** (a) Mark them disputed on screen now: the Kamensky and column events graded "disputed" with both
      hours, the three phase lines marked, the arrows' "unsettled" note shown where the arrow is read; the map keeps its timing (decision 42);
