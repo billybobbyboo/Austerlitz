@@ -9,12 +9,36 @@ from the code, the approach proposed, the work done conservatively, checked, rec
 
 | step | what | findings (`docs/FINAL_AUDIT.md`) | decisions | status |
 |---|---|---|---|---|
-| 1 | **Suite hardening**: the fonts embedded first (so `check:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | begun |
+| 1 | **Suite hardening**: the fonts embedded first (so `check:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | done, for review (`CHANGELOG.md`, #49) |
 | 2 | **Integrity on screen**: one data task and a presentation part, decided together: the disputed hours marked, the plateau label tagged, the first claim labelled, the claim pill reworded, the contradictions fixed, the vines labelled | H-1 to H-5, H-7, H-9 to H-16, D-3 to D-6 | 125-129, 135 | after step 1 |
 | 3 | **Accessibility and robustness**: the shortcuts switch, hidden panels inert, the sources sheet a proper dialog, focus returned, reduced motion live and in CSS, the timeline's targets, focused map items drawn; the start-up message and the CDN integrity; "Whose eyes?" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134 | after step 2 |
 | 4 | **The sourcing stage**: Part A, an inventory of every narrative statement and a register of readings (as Stage 6 did for dress); per-statement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136 | after step 3 |
 | 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note) | | open |
 | 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139 | open |
+
+### What step 1 handed on (fact, from its commits; `CHANGELOG.md`)
+
+- **To step 2 (the data task and its presentation part):** each fix removes its own allow-list entry in the same commit, or the stricter
+  checks fail on the stale entry: `redteam.js` `LANG_ALLOW` (9 entries; 8 are removed by step 2: the c_iv, c_gd and c_cav roles, the
+  Satschan story's "certainly", `SOURCE_NOTE`'s "always marked derived", the first-run key, the Pratzen vantage's title, the card's static
+  copy; the ninth, "decisive" in the Allied plan's stated assumptions, is attributed and stays), and
+  `tools/stage2/chronology.js` `ALLOW_TIMED` (12 entries, among them H-12's) and `REVIEW_CITES` follow any retimed or reworded sentence; a
+  changed march rate re-acknowledges `redteam.js`'s one `KNOWN_WARN` entry; the self-test asserts the plateau's 38,700 at 04:00
+  (`PLATEAU_04_RECORDED`). Two items step 1 found that the audit did not name: c_cav's role, "decides the cavalry battle in the north"
+  (`data.js:311`), is a verdict of H-4's class; H-14's superlatives ("the single most consequential mistake", "The most famous thing") match
+  no pattern (a `SUPERLATIVE` pattern can come with their fix).
+- **To step 3:** leaving the eye level puts the eye under the camera floor for one frame, and the app warns (allowed by name in
+  `CONSOLE_ALLOW` as `eye-leave-floor` until the fix; it sits with S-3); the hover fix of step 1 runs `pickFormation` on every pointer move
+  (its frame cost not measured); the S-1 check (no enemy corps counter drawn when all its formations are unknown) is to be added to the
+  self-test with S-1's fix (it fails today).
+- **To step 5:** T-9's (b) `audit.js` continuity and coverage only print, (d) re-implementations of model code (`terrain-test.js`'s crops,
+  `redteam.js`'s `wet()`), (e) map constants typed by hand (680 x 500, `*2+340`); `css-test.js`'s duplicate-rule checks read only the base
+  rules before the first `@media` (four selectors are declared twice: `#firstrun`, `#firstrun h2`, `#firstrun p`, `.legend .ar`); the
+  GLSL colour literals outside the palette rule; `KIT.weave` lays 12% black over every cloth (a black cloth falls under decision 84's floor
+  between its threads); `tools/audit/size.js` is 10 bytes off since the `/*FONTS*/` marker; `tools/lang-scan.js` and `css-test.js`'s glyph
+  walker duplicate one another; the chronology ledger matches a statement by its reference and time, so a reword that keeps both passes.
+- **The type:** Safari is believed to ignore the faces' metric overrides (an inference; the harness is Chromium only); no italic face is
+  embedded (the dossier's few `<i>` are drawn as a synthesized italic).
 
 ## Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)
 

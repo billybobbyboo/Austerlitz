@@ -1,46 +1,49 @@
-# Visual regression harness (Stage 0)
+# The visual harness and its checks
 
-Fixed, reproducible views of the Austerlitz command map, with measurements that catch the faults
-Stage 0 fixed. The same harness runs against the pre-Stage-0 build and later builds, so any later
-visual change can be compared with the Stage 0 baseline.
+Fixed, reproducible views of the Austerlitz command map, measured and held to thresholds, plus the in-app self-test. Written for Stage 0
+and extended by every stage since; rewritten in roadmap step 1 (`docs/ROADMAP.md`; owner decisions 131, 132 and 141), when the harness was
+made to assert everything it measures. `CLAUDE.md`'s "Checks" section says, stage by stage, what each check holds the build to.
 
-## Requirements
-Node 18+ and Playwright with Chromium (`npm i playwright acorn && npx playwright install chromium`).
-Rendering is forced to software WebGL (SwiftShader) so frames are reproducible on one machine. three.js
-is fetched from cdnjs as in production; if `three.min.js` sits in this folder (or `AUSTERLITZ_THREE`
-points at one) the CDN request is answered locally.
+## Requirements and the reference machine
+Node 22 and Playwright 1.56.0 with its Chromium (`npm install`, then `npx playwright install chromium`). Rendering is forced to software
+WebGL (SwiftShader), so frames are reproducible on one machine, and three.js is served from `node_modules/three` when it is installed (the
+page loads it from cdnjs in production). Since step 1 the type is embedded in the file (`fonts.css`, decision 141), so the measures no longer
+depend on the fonts a machine has installed (`node tools/fonts/accept-probe.js` proves it: the same numbers under this machine's fonts and a
+DejaVu-only configuration). The reference platform for the limits is Linux, Chromium 141.0.7390.37 (Playwright's build 1194), 4 cores; every
+report records its platform, Chromium and Playwright (`report.env`), and `remeasure.js` refuses two runs from different environments.
 
 ## Scripts
 | script | what it does |
 |---|---|
-| `harness.js <build.html> <outdir> [--test] [--only a,b] [--compare <dir>]` | loads `build.html?harness=1`, drives it into each case in `cases.js`, writes `<case>.png` and `report.json`; `--test` also runs the in-app self-test and applies `thresholds.js` (exit 1 on failure); `--compare` reports per-case pixel differences against another run |
-| `check-report.js <outdir>` | re-applies `thresholds.js` and the stored self-test to a finished `report.json` without rendering |
-| `data-invariance.js <original.html> <patched.html>` | parses both builds (acorn) and compares every top-level declaration; the historical, geographic and model declarations (DATA) must be byte-identical (exit 1 otherwise) |
-| `darkness-study.js <patched.html> <original.html> <outdir>` | the low Pratzen view in five builds that add the Stage 0 grade changes one at a time, then attributes the remaining dark pixels to labels, formations and woods |
-| `measure.js` | the in-page driver and measurements, injected by the scripts above |
+| `harness.js <build.html> <outdir> [--test] [--only a,b] [--legacy] [--selftest-only] [--compare <dir>]` | loads `build.html?harness=1`, drives it into each case of `cases.js`, writes `<case>.png` and `report.json`; `--test` also runs the in-app self-test and the real-key and live checks and judges everything (exit 1 on any failure). `npm run check:visual` is the full `--test` run (about 100 minutes). `--selftest-only` (`npm run check:selftest`, the CI job): no case; one fresh 1366 x 768 page, the self-test, the slider, Play and the 3E keys (about 13 minutes). `--legacy`: an archived build; the feature gates of the older harness are kept, what is skipped is listed, and the run never reports "all checks passed". `--compare <dir>`: per-case pixel differences against another run |
+| `check-report.js <outdir or report.json> [--html file] [--legacy] [--write-manifest]` | judges a finished report again without rendering (`npm run check:report`): the build's md5, every case of `cases.js` present, each case's spec and state, the live blocks from their raw numbers, the self-test against `selftest-manifest.json`, every page's console messages, and the failures the run recorded. `--write-manifest` writes the manifest from a report whose self-test passed, printing the names added and removed (record them in `CHANGELOG.md`) |
+| `remeasure.js <run1> <run2> [--bounds keep or tight] [--emit] [--accept-loosening 141]` | decision 141's one re-measure after the embedded fonts (`npm run check:remeasure`): reads two identical full runs of the same build in the same environment and proposes the font-dependent limits (`DROP_LIMIT`, `UNOBSTRUCTED`, `PAPER_MIN_PXKM`); `keep` (the default) changes a limit only where the measure is past it; it never edits `thresholds.js`, `--emit` prints the block and the CHANGELOG table, and it exits 1 on any loosening unless `--accept-loosening 141` |
+| `contrast.js <build.html>` | `npm run check:contrast`: every visible text element in 35 interface states at WCAG AA and the 10.5 px floor, drawn in the embedded faces (each element's platform fonts read over the Chrome DevTools Protocol), every state reached, every console message judged |
+| `data-invariance.js <original.html> <patched.html>` | `npm run check:data`: parses both builds (acorn) and compares every top-level declaration; the historical, geographic and model declarations (DATA) must be byte-identical |
+| `thresholds.js` | every limit and the judging functions shared by the harness, `check-report.js` and `remeasure.js`: `DROP_LIMIT`, `UNOBSTRUCTED`, `PAPER_MIN_PXKM`, `TIMELINE_MAX`, `LAYER_MS`, `SOLID_BLACK`, `SMOKE_SHARE`, `CONF_SHARE`, `CONSOLE_ALLOW` (each allowed message named, with its reason and what removes it), `REQUIRED_FEATURES`, `expectState` and `CAM_TOL`, `GROUND_SELF_TOL`, `judgeReport` |
+| `cases.js` | the 30 cases (below) |
+| `measure.js` | the in-page driver and measures, injected by the scripts above; it reads app canvases through a canvas of its own (`readCanvas`), so measuring raises no browser warning |
+| `selftest-manifest.json` | the self-test's 214 check names, generated by `check-report.js --write-manifest` from a passing run; regenerate it, and record the change, in any commit that adds, removes or renames a self-test check |
+| `darkness-study.js`, `compare-gallery.js` | Stage 0's darkness attribution study, and a before/after gallery of two runs |
 
 ## Cases (`cases.js`)
-first-run, first-run-laptop (1366x768), overview-field, overview-plan, close-sokolnitz, staff-paper,
-pratzen-low, pratzen-orbit-min (zoom fully in and drag to the lowest pitch through the real wheel and
-pointer handlers), selected-formation, watch-selected, hybrid-dimmed. Each fixes clock, presentation,
-ground style, camera and selection.
+Fresh pages reached by real clicks: `first-run`, `opening-1` to `opening-4`, `opening-end`, `opening-1-laptop`, `narrow-390`,
+`first-run-laptop`. Fixed views: `overview-field`, `overview-plan`, `close-sokolnitz`, `staff-paper`, `pratzen-low`, `pratzen-orbit-min` (real
+wheel and pointer input), `selected-formation`, `watch-selected`, `hybrid-dimmed`, `pratzen-low-1x`, `pratzen-low-10x`, `paper-north-up`,
+`paper-close`, `paper-drawer`, `paper-laptop`, `narrow-1024`, `ph8-overview-study`, `ph8-overview-watch`, `eye-zuran`, `eye-zuran-1x`,
+`plans-overview`. Each fixes its clock, presentation, ground, factor, camera and any selection; since step 1 the harness checks the page
+stood in that state before and after the case's measures.
 
-## Measurements (per case, `report.json`)
-- `figures.maxErr`: largest distance, in world units, between any visible man or horse and the drawn
-  terrain under him (read from the ground mesh's own vertex buffer, independent of the app's helpers).
-- `standards.maxErr`: the same for the foot of every standard.
-- `camera.clearance`: eye height above the highest drawn ground within 1.6 units.
-- `labels.pairs`: overlapping labels and counters on screen, by category, using each sprite's inked
-  extent; overlaps wholly under an opaque interface panel are not counted.
-- `smokeEdgeAlpha`, `dustEdgeAlpha`: largest alpha on the border of the sprite textures (0 = no card edge).
-- `mist.maxAlphaAtCrossing`: largest visible mist alpha where the ground is within 0.45 units of the sheet.
-- `pixels.nearBlack`: share of map pixels (outside panels, every second pixel) whose brightest channel
-  is below 16/255. Includes legitimately black details (shakos, text halos, poles, dark conifers).
-- `pixels.solidBlocks` / `solidBlack`: 8x8 blocks at least 90% near-black: how a slope clipped to black
-  shows. This, not `nearBlack`, is the black-slope test.
+## What a report holds (`report.json`)
+Per case: the camera's clearance, the figures' and standards' seating error, darkness (`pixels`), the map layer (placed, dropped, its pass
+time, every text at its floor and at AA as rendered), the unobstructed fraction at the case's size and at 1280 x 720, the timeline, the
+smoke's and the confidence marks' shares, the skeleton's and the routes' measures, `state` and `stateAfter`, the ground reader's
+`groundSelfCheck`, and the case's own console messages. For the run: `report.live` (the dwell view, the light through the day, the valley
+fog's hours, the horizon, the slider, the real-key checks, each as raw numbers), `report.selfTest`, `report.console` (every page, labelled by
+page and block), `report.skipped`, `report.features`, `report.pages`, `report.mode` and `report.env`, and `failures`, all decided by
+`thresholds.js judgeReport`.
 
 ## Timing
-On one CPU with software rendering a page load is about 45 s and a case about 25 s; the pre-Stage-0
-build is slower because it draws every frame. Run long sets in batches with `--only`; reports merge
-while the build's md5 is unchanged. A GPU-backed browser is much faster but frames then depend on the GPU:
-keep one machine and one browser for any baseline you compare against.
+On 4 cores with software rendering: a full `check:visual` about 75-110 minutes (a fresh page loads in 15-20 s, a case takes 1-4 minutes, the
+self-test about 13), `check:selftest` about 13 minutes, `check:contrast` 7-12 minutes. Never run a page probe beside `check:visual`: its
+timing limits (the map layer's 8 ms, the self-test's 2 ms move) assume the machine is not shared.
