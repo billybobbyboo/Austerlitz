@@ -1,0 +1,16 @@
+top-level rules: 336 | custom properties: 34
+CSS ERRORS: 0
+behaviour checks: 9/9 pass
+names: the presentations, the ground and the layers as decision 50 names them
+light: no shadow toe, no baked hillshade on the landscape, the light from the computed sun and its table
+atmosphere: the fog chunks and applyAtmo, no recession, no mist sheets, the fog's top the knowledge model's, its legend row
+pacing: half speed by default, its button pressed; the dwell's toggle on; no phase glide while playing
+palette: the landscape's colours in their tables (light, sprites, ground, land, water), the figures' in KIT, the paper map's ground in the tokens
+kit: 14 cloth colours, all classes of appearance.js and none below decision 84's black; 65 settled coat and legwear values drawn; 9 headgear shapes; cuirasses for fr_cuirassier, at_cuirassier; 2 standard paintings for 7 colours entries, their 6 colours words of their claims
+confidence marks: no dash, the side's token colour, on by default
+evidence skeleton: no dash, the annotation token's colour, off by default with the whole day off
+Whose eyes: one control, labelled a model reading, the eye's vantage hidden until a headquarters is chosen
+ordered routes: off by default, named, the side's token colour, the legend's dash sample
+day-track: the tokens' colours, the legs solid and only the ordered route dashed
+first run: a modal dialog described by its key, the primary and the stay from LABELS, buttons at least 24 px, the docked dispatch shown under it
+opening: 15 words in LABELS with no figure, clock, name or quotation; the tour's stops 1, 6, 7, 8; the clock played between them at 4x, Play still at half speed; begun by the card's primary; the bar a named region; Esc skips; one message a step

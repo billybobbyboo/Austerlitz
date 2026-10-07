@@ -1,0 +1,54 @@
+3 modes x 10 phases OK
+map layer: 30 passes in 3 modes and 10 phases, every item counted once OK
+clock swept 04:00->18:00 in 281 steps OK
+10 analysis chapters OK
+command views OK
+dossiers: 40 formations, 24 features, 9 terrain lines OK
+visibility levels and plan overlay OK
+event layer + situation strip over 102 sampled minutes OK
+plan divergence links OK
+derived readings finite across the battle OK
+9 tour stops forward and back OK
+first run: opened and closed by each way out (the opening, in place, a press outside) OK
+opening: 4 steps forward (the clock played between them, 8410 ticks), back, finished, and ended by 5 ways from every step and while playing; Next and Back while playing; reduced motion's cuts; the tour after it OK
+event jumping reached both ends in 22 hops OK
+compact card then full dossier OK
+acts row covers all 10 phases OK
+selection ring OK
+event jump camera behaviour OK
+plan link density OK
+derived reading wording OK
+sky and sun disc through 10 lighting states OK
+ground grain swaps with the map mode OK
+9-stop tour finishes cleanly OK
+terrain atlas shader and cover attribute OK
+render order: rt rt rt rt rt rt rt screen screen OK, background restored
+post chain through 10 hours, bloom 0.22-0.35 OK
+label layer: 30 map symbols on it; the counters and map text in the map layer OK
+apron: 12688 faces, all facing up OK
+mist tinted by the hour OK
+frame path: FX failure falls back to the standard path and recovers OK
+vegetation: 4 bare deciduous habits, 2 conifers, scrub OK
+contact pads under all 32 formations OK
+atmosphere: cool air in every state, readable nights OK
+light table: two branches to the day's highest sun, finite and from above at every minute OK
+dwell: the day at 0.5x, 1x, 2x and 4x in its computed length, one dwell at each event start, the clock monotone and never faster than its speed OK
+spatial confidence: on by default, 31 formations at 09:50 each with its grade's mark; switched off no grade drawn, the side footprint under each of 31 formations drawn as figures (decision 107) OK
+evidence skeleton: off by default; at 09:50 48 legs of the phase and their 77 anchors; the whole day 148 legs; none left when switched off OK
+Whose eyes: 899 readings at the clock, each the rule's afresh; reasons {"no line of sight":419,"authored limit":179,"valley fog":3}; the control cycles everyone, Napoleon, the Allied headquarters OK
+ordered routes: off by default; 14 columns at 09:30, 10 at 04:10 (the 4 axis arrows' columns left to them), 2 for Saint-Hilaire; none left when switched off OK
+day-track: 32 formations, each its anchors in order, its legs through their vias, its scale bar within the inset OK
+figures: Saint-Hilaire 294 men in 7 draws, Nansouty 60 horse OK
+kit by class: 32 blocks, 106 class sets, 132 battalions and squadrons each a class of their composition OK
+standards: 148 on the blocks as their colours entries rule, none on headquarters or batteries, a detachment's taken with its battalions OK
+ground: 12-cell atlas, 3 photographs embedded OK
+figures re-seat on the ground when the block moves OK
+villages: extruded gables, textured walls OK
+parent/child: buxhowden (command post), lang (column, own battalions only); 57 moments: no command renders troops, no detachment drawn twice, every drawn block on the field, totals within both armies OK
+40 rounds of rapid switching OK
+appearance: 32 blocks resolve to 72 dress parts (4 by their dominant class) OK
+
+console.warn unique: 1
+  W THREE.LineBasicMaterial: 'fog' is not a property of this material.
+errors: 0
+photo atlas: photograph painted under the land cells OK

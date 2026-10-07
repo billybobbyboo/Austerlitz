@@ -1,0 +1,32 @@
+built file: 1764002 bytes; parts (sources + css + shell): 1763994
+  assets.js          666201 bytes  37.8%   comments     198 0%
+  tokens.js            6173 bytes   0.3%   comments    1291 21%
+  geo.js               8228 bytes   0.5%   comments    2144 26%
+  data.js             70073 bytes   4.0%   comments    1802 3%
+  appearance.js      133336 bytes   7.6%   comments    5319 4%
+  analysis.js         33732 bytes   1.9%   comments    2704 8%
+  world.js           104621 bytes   5.9%   comments   25146 24%
+  symbols.js           7201 bytes   0.4%   comments    2375 33%
+  app.js             662852 bytes  37.6%   comments  137779 21%
+  style.css           48263 bytes
+  shell.html          23314 bytes (without the two markers)
+embedded textures (assets.js):
+   mud.diff           image/jpeg  113675
+   mud.nor            image/jpeg  84759
+   grass.diff         image/jpeg  96923
+   grass.nor          image/jpeg  159815
+   litter.diff        image/jpeg  86859
+   litter.nor         image/jpeg  123879
+app.js: the ten largest top-level statements:
+    225445 line  6759 AUSTERLITZ_DEBUG
+     19336 line   933 makeBlock
+     12059 line  5214 buildUI
+      8112 line  5989 dossierFormation
+      7365 line  2626 initFX
+      7051 line  4572 updateVisibility
+      6975 line  5025 KEYS
+      6634 line    20 OVERLAYS
+      5691 line  1749 dayTrackEl
+      5644 line  3858 MAPCAM
+the in-app self-test and debug API (AUSTERLITZ_DEBUG, app.js:6759): 225445 bytes, 12.8% of the built file
+comments in the bundled scripts: 178758 bytes, 10.1% of the built file

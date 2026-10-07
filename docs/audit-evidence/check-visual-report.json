@@ -1,0 +1,7376 @@
+{
+ "html": "austerlitz-command-map.html",
+ "md5": "46773462faa1e1b9f4a4010e450e110a",
+ "when": "2026-10-06T21:01:45.976Z",
+ "cases": {
+  "first-run": {
+   "clock": "04:00",
+   "phase": 0,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -38.81,
+     488.71,
+     61.27
+    ],
+    "clearance": 490.297
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 5958,
+    "maxErr": 0.0001,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "lang sinks 0.00"
+   },
+   "standards": {
+    "count": 140,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 20,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 10
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": true,
+   "dispatchVisible": true,
+   "firstRunBox": [
+    680,
+    598.71875,
+    1220,
+    791
+   ],
+   "dispatchBox": [
+    18,
+    136.84375,
+    277,
+    1383.171875
+   ],
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 744,
+     "triangles": 2500324,
+     "points": 0,
+     "lines": 10586
+    },
+    "total": {
+     "calls": 756,
+     "triangles": 2500341,
+     "points": 0,
+     "lines": 10586
+    },
+    "layer": {
+     "items": 32,
+     "placed": 20,
+     "leaders": 3,
+     "dropped": 5,
+     "occluded": 0,
+     "offscreen": 0,
+     "underPanel": 7,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach"
+     ],
+     "ms": 0.8000000000465661,
+     "nodes": 48
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 828
+    },
+    "memory": {
+     "geometries": 205,
+     "textures": 31
+    }
+   },
+   "layer": {
+    "items": 32,
+    "placed": 20,
+    "leaders": 3,
+    "dropped": 5,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:zuran",
+     "t:goldbach"
+    ],
+    "occluded": 0,
+    "offscreen": 0,
+    "underPanel": 7,
+    "keepMissing": [],
+    "nodes": 48,
+    "ms": 0.7,
+    "texts": 24,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.6344,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false
+   },
+   "heads": {
+    "heads": 10,
+    "hiddenOverQuarter": 2,
+    "list": [
+     "casing head 100% hidden",
+     "al head 100% hidden"
+    ]
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 0,
+    "share": 0
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 229065,
+    "nearBlack": 0.0026,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 35.5
+   },
+   "textContrast": {
+    "texts": 24,
+    "min": 8.64,
+    "belowAA": [],
+    "rawSectionE": 5.39
+   },
+   "unobstructed720": 0.5207,
+   "focus720": 0,
+   "firstRunKeys": {
+    "focus0": "fr-tour",
+    "tabs": [
+     {
+      "id": "fr-close",
+      "inCard": true
+     },
+     {
+      "id": "fr-tour",
+      "inCard": true
+     },
+     {
+      "id": "fr-close",
+      "inCard": true
+     },
+     {
+      "id": "fr-tour",
+      "inCard": true
+     }
+    ],
+    "open": false,
+    "camSame": true,
+    "focus1": "play"
+   },
+   "ms": 27120,
+   "note": "What a first-time visitor sees, untouched."
+  },
+  "opening-1": {
+   "clock": "04:00",
+   "phase": 0,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -230,
+     134.78,
+     211
+    ],
+    "clearance": 136.487
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 5958,
+    "maxErr": 0.0001,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "lang sinks 0.00"
+   },
+   "standards": {
+    "count": 140,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 23,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 10
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 742,
+     "triangles": 2500320,
+     "points": 0,
+     "lines": 10586
+    },
+    "total": {
+     "calls": 753,
+     "triangles": 2500335,
+     "points": 0,
+     "lines": 10586
+    },
+    "layer": {
+     "items": 32,
+     "placed": 23,
+     "leaders": 3,
+     "dropped": 8,
+     "occluded": 0,
+     "offscreen": 1,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd"
+     ],
+     "ms": 0.8999999999068677,
+     "nodes": 55
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 826
+    },
+    "memory": {
+     "geometries": 205,
+     "textures": 31
+    }
+   },
+   "layer": {
+    "items": 32,
+    "placed": 23,
+    "leaders": 3,
+    "dropped": 8,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:zuran",
+     "t:goldbach",
+     "t:telnitz",
+     "t:sokolnitz",
+     "t:augezd"
+    ],
+    "occluded": 0,
+    "offscreen": 1,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 55,
+    "ms": 0.6,
+    "texts": 27,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.6321,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 10,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 0,
+    "share": 0
+   },
+   "smokePuffs": true,
+   "opening": {
+    "want": 0,
+    "on": true,
+    "k": 0,
+    "stop": 0,
+    "clock": 240
+   },
+   "pixels": {
+    "samples": 227979,
+    "nearBlack": 0.0004,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 49.4
+   },
+   "textContrast": {
+    "texts": 27,
+    "min": 8.5,
+    "belowAA": [],
+    "rawSectionE": 5.25
+   },
+   "confShare": {
+    "samples": 137828,
+    "share": 0.0345
+   },
+   "routes": {
+    "routes": 10,
+    "items": [
+     32,
+     32
+    ],
+    "dropped": [
+     8,
+     8
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.5,
+    "share": 0.005
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     32,
+     32
+    ],
+    "dropped": [
+     8,
+     8
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.5,
+    "share": 0.0273
+   },
+   "unobstructed720": 0.517,
+   "focus720": 0,
+   "ms": 123576,
+   "note": "The opening's first step (tour stop 1, 04:00), by a click on the card's primary action."
+  },
+  "opening-2": {
+   "clock": "08:45",
+   "phase": 3,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -136,
+     46.15,
+     31
+    ],
+    "clearance": 46.196
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6172,
+    "maxErr": 0.0001,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "kienmayer floats 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 25,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 4
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": true,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 726,
+     "triangles": 2536738,
+     "points": 0,
+     "lines": 10579
+    },
+    "total": {
+     "calls": 736,
+     "triangles": 2536751,
+     "points": 0,
+     "lines": 10579
+    },
+    "layer": {
+     "items": 62,
+     "placed": 25,
+     "leaders": 0,
+     "dropped": 7,
+     "occluded": 0,
+     "offscreen": 19,
+     "underPanel": 11,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzenv",
+      "t:girzikowitz",
+      "t:blasowitz",
+      "t:krzenowitz",
+      "t:chapel"
+     ],
+     "ms": 1,
+     "nodes": 60
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 1397
+    },
+    "memory": {
+     "geometries": 177,
+     "textures": 34
+    }
+   },
+   "layer": {
+    "items": 62,
+    "placed": 25,
+    "leaders": 0,
+    "dropped": 7,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzenv",
+     "t:girzikowitz",
+     "t:blasowitz",
+     "t:krzenowitz",
+     "t:chapel"
+    ],
+    "occluded": 0,
+    "offscreen": 19,
+    "underPanel": 11,
+    "keepMissing": [],
+    "nodes": 60,
+    "ms": 0.6,
+    "texts": 32,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.6398,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 4,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 9,
+    "share": 0.0257
+   },
+   "smokePuffs": true,
+   "opening": {
+    "want": 1,
+    "on": true,
+    "k": 1,
+    "stop": 5,
+    "clock": 525
+   },
+   "pixels": {
+    "samples": 231059,
+    "nearBlack": 0.0001,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 135.8
+   },
+   "textContrast": {
+    "texts": 32,
+    "min": 7.48,
+    "belowAA": [],
+    "rawSectionE": 4.5
+   },
+   "confShare": {
+    "samples": 146205,
+    "share": 0.0436
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     62,
+     62
+    ],
+    "dropped": [
+     7,
+     7
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 7.48,
+    "share": 0.0279
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     62,
+     62
+    ],
+    "dropped": [
+     7,
+     7
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 7.48,
+    "share": 0.0333
+   },
+   "unobstructed720": 0.5291,
+   "focus720": 0,
+   "openingKeys": {
+    "esc": {
+     "id": "play",
+     "on": false,
+     "k": -1,
+     "stop": -1,
+     "clock": 240,
+     "pres": "study",
+     "tab": "now",
+     "follow": true,
+     "vantage": "plan",
+     "bar": false
+    },
+    "begun": {
+     "id": "tour-next",
+     "on": true,
+     "k": 0,
+     "stop": 0,
+     "clock": 240,
+     "pres": "study",
+     "tab": "now",
+     "follow": true,
+     "vantage": null,
+     "bar": true
+    },
+    "played": {
+     "play": true,
+     "to": 1,
+     "playing": true,
+     "speed": 4
+    },
+    "paused": {
+     "play": true,
+     "playing": false,
+     "still": true,
+     "head": "Opening, step 2 of 4: paused"
+    },
+    "resumed": {
+     "play": true,
+     "playing": true
+    },
+    "enter": {
+     "id": "tour-next",
+     "on": true,
+     "k": 1,
+     "stop": 5,
+     "clock": 525,
+     "pres": "study",
+     "tab": "now",
+     "follow": true,
+     "vantage": null,
+     "bar": true
+    },
+    "speedAfter": 0.5,
+    "tab": "tour-exit",
+    "space": {
+     "id": "play",
+     "on": false,
+     "k": -1,
+     "stop": -1,
+     "clock": 240,
+     "pres": "study",
+     "tab": "now",
+     "follow": true,
+     "vantage": "plan",
+     "bar": false
+    }
+   },
+   "ms": 212501,
+   "note": "The opening's second step (tour stop 6, 08:45); then real keys: Esc, Enter on Next, Space on Skip."
+  },
+  "opening-3": {
+   "clock": "11:00",
+   "phase": 5,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -75,
+     38.59,
+     42
+    ],
+    "clearance": 38.729
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6140,
+    "maxErr": 0.0001,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "sthilaire sinks 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 12,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 2
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": true,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 704,
+     "triangles": 2522716,
+     "points": 0,
+     "lines": 10786
+    },
+    "total": {
+     "calls": 713,
+     "triangles": 2522727,
+     "points": 0,
+     "lines": 10786
+    },
+    "layer": {
+     "items": 62,
+     "placed": 12,
+     "leaders": 0,
+     "dropped": 3,
+     "occluded": 0,
+     "offscreen": 41,
+     "underPanel": 6,
+     "keepMissing": [],
+     "dropped_": [
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:krzenowitz"
+     ],
+     "ms": 0.8999999999068677,
+     "nodes": 32
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 2056
+    },
+    "memory": {
+     "geometries": 177,
+     "textures": 36
+    }
+   },
+   "layer": {
+    "items": 62,
+    "placed": 12,
+    "leaders": 0,
+    "dropped": 3,
+    "droppedIds": [
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:krzenowitz"
+    ],
+    "occluded": 0,
+    "offscreen": 41,
+    "underPanel": 6,
+    "keepMissing": [],
+    "nodes": 32,
+    "ms": 0.5,
+    "texts": 16,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.6398,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 2,
+    "hiddenOverQuarter": 2,
+    "list": [
+     "casing head 100% hidden",
+     "al head 100% hidden"
+    ]
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 21,
+    "share": 0.0386
+   },
+   "smokePuffs": true,
+   "opening": {
+    "want": 2,
+    "on": true,
+    "k": 2,
+    "stop": 6,
+    "clock": 660
+   },
+   "pixels": {
+    "samples": 231059,
+    "nearBlack": 0.0006,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 73.5
+   },
+   "textContrast": {
+    "texts": 16,
+    "min": 8.48,
+    "belowAA": [],
+    "rawSectionE": 4.98
+   },
+   "confShare": {
+    "samples": 152042,
+    "share": 0.0352
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     62,
+     62
+    ],
+    "dropped": [
+     3,
+     3
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.48,
+    "share": 0.0088
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     62,
+     62
+    ],
+    "dropped": [
+     3,
+     3
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.48,
+    "share": 0.0193
+   },
+   "unobstructed720": 0.5291,
+   "focus720": 0,
+   "ms": 188425,
+   "note": "The opening's third step (tour stop 7, 11:00)."
+  },
+  "opening-4": {
+   "clock": "14:30",
+   "phase": 8,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -122,
+     95.08,
+     2
+    ],
+    "clearance": 94.489
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6264,
+    "maxErr": 0.0001,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "dok floats 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 24,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 10
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": true,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 754,
+     "triangles": 2557922,
+     "points": 0,
+     "lines": 10476
+    },
+    "total": {
+     "calls": 763,
+     "triangles": 2557933,
+     "points": 0,
+     "lines": 10476
+    },
+    "layer": {
+     "items": 64,
+     "placed": 24,
+     "leaders": 10,
+     "dropped": 4,
+     "occluded": 0,
+     "offscreen": 28,
+     "underPanel": 8,
+     "keepMissing": [],
+     "dropped_": [
+      "t:telnitz",
+      "t:augezd",
+      "t:satschan",
+      "t:chapel"
+     ],
+     "ms": 0.8000000000465661,
+     "nodes": 85
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 2854
+    },
+    "memory": {
+     "geometries": 198,
+     "textures": 40
+    }
+   },
+   "layer": {
+    "items": 64,
+    "placed": 24,
+    "leaders": 10,
+    "dropped": 4,
+    "droppedIds": [
+     "t:telnitz",
+     "t:augezd",
+     "t:satschan",
+     "t:chapel"
+    ],
+    "occluded": 0,
+    "offscreen": 28,
+    "underPanel": 8,
+    "keepMissing": [],
+    "nodes": 85,
+    "ms": 1.2,
+    "texts": 32,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.6398,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 10,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 12,
+    "share": 0.0408
+   },
+   "smokePuffs": true,
+   "opening": {
+    "want": 3,
+    "on": true,
+    "k": 3,
+    "stop": 7,
+    "clock": 870
+   },
+   "pixels": {
+    "samples": 231059,
+    "nearBlack": 0.002,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 54.7
+   },
+   "textContrast": {
+    "texts": 32,
+    "min": 8.27,
+    "belowAA": [],
+    "rawSectionE": 5.48
+   },
+   "confShare": {
+    "samples": 146526,
+    "share": 0.064
+   },
+   "routes": {
+    "routes": 13,
+    "items": [
+     64,
+     64
+    ],
+    "dropped": [
+     4,
+     4
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.27,
+    "share": 0.0105
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     64,
+     64
+    ],
+    "dropped": [
+     4,
+     4
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.27,
+    "share": 0.0187
+   },
+   "unobstructed720": 0.5291,
+   "focus720": 0,
+   "ms": 208330,
+   "note": "The opening's last step (tour stop 8, 14:30)."
+  },
+  "opening-end": {
+   "clock": "04:00",
+   "phase": 0,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -38.81,
+     533.15,
+     66.16
+    ],
+    "clearance": 534.859
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 5958,
+    "maxErr": 0.0001,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "lang sinks 0.00"
+   },
+   "standards": {
+    "count": 140,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 25,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 10
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": true,
+   "firstRunBox": null,
+   "dispatchBox": [
+    18,
+    136.84375,
+    277,
+    1383.171875
+   ],
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 744,
+     "triangles": 2500324,
+     "points": 0,
+     "lines": 10586
+    },
+    "total": {
+     "calls": 756,
+     "triangles": 2500341,
+     "points": 0,
+     "lines": 10586
+    },
+    "layer": {
+     "items": 32,
+     "placed": 25,
+     "leaders": 3,
+     "dropped": 7,
+     "occluded": 0,
+     "offscreen": 0,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach",
+      "t:telnitz",
+      "t:sokolnitz"
+     ],
+     "ms": 0.6000000000931323,
+     "nodes": 57
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 3524
+    },
+    "memory": {
+     "geometries": 236,
+     "textures": 42
+    }
+   },
+   "layer": {
+    "items": 32,
+    "placed": 25,
+    "leaders": 3,
+    "dropped": 7,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:zuran",
+     "t:goldbach",
+     "t:telnitz",
+     "t:sokolnitz"
+    ],
+    "occluded": 0,
+    "offscreen": 0,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 57,
+    "ms": 0.6,
+    "texts": 29,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.7036,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false
+   },
+   "heads": {
+    "heads": 10,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 0,
+    "share": 0
+   },
+   "smokePuffs": true,
+   "opening": {
+    "want": "end",
+    "on": false,
+    "k": -1,
+    "stop": -1,
+    "clock": 240
+   },
+   "pixels": {
+    "samples": 254019,
+    "nearBlack": 0.002,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 37.5
+   },
+   "textContrast": {
+    "texts": 29,
+    "min": 8.28,
+    "belowAA": [],
+    "rawSectionE": 5.41
+   },
+   "confShare": {
+    "samples": 182319,
+    "share": 0.0279
+   },
+   "routes": {
+    "routes": 10,
+    "items": [
+     32,
+     32
+    ],
+    "dropped": [
+     7,
+     7
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.28,
+    "share": 0.0032
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     32,
+     32
+    ],
+    "dropped": [
+     7,
+     7
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.27,
+    "share": 0.0273
+   },
+   "unobstructed720": 0.6288,
+   "focus720": 0,
+   "ms": 208017,
+   "note": "Where the opening leaves the visitor: 04:00, Study on the Now tab, the Overview, Play focused (decision 118)."
+  },
+  "overview-field": {
+   "clock": "09:30",
+   "phase": 4,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -195,
+     94.11,
+     156
+    ],
+    "clearance": 95.413
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6204,
+    "maxErr": 0.0001,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "kienmayer sinks 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 41,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 12
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": true,
+   "firstRunBox": null,
+   "dispatchBox": [
+    18,
+    136.84375,
+    277,
+    1532.828125
+   ],
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 829,
+     "triangles": 2553032,
+     "points": 0,
+     "lines": 10939
+    },
+    "total": {
+     "calls": 839,
+     "triangles": 2553045,
+     "points": 0,
+     "lines": 10939
+    },
+    "layer": {
+     "items": 47,
+     "placed": 41,
+     "leaders": 17,
+     "dropped": 6,
+     "occluded": 0,
+     "offscreen": 0,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:telnitz",
+      "t:satschan"
+     ],
+     "ms": 0.9000000001396984,
+     "nodes": 146
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 4147
+    },
+    "memory": {
+     "geometries": 229,
+     "textures": 47
+    }
+   },
+   "layer": {
+    "items": 47,
+    "placed": 41,
+    "leaders": 17,
+    "dropped": 6,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:santon",
+     "t:telnitz",
+     "t:satschan"
+    ],
+    "occluded": 0,
+    "offscreen": 0,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 146,
+    "ms": 0.9,
+    "texts": 55,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.7036,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false
+   },
+   "heads": {
+    "heads": 12,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 33,
+    "share": 0.0853
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 254019,
+    "nearBlack": 0.0001,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 77.2
+   },
+   "textContrast": {
+    "texts": 55,
+    "min": 8.32,
+    "belowAA": [],
+    "rawSectionE": 5.08
+   },
+   "confShare": {
+    "samples": 176855,
+    "share": 0.0418
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     47,
+     47
+    ],
+    "dropped": [
+     6,
+     6
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.22,
+    "share": 0.0081
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     47,
+     47
+    ],
+    "dropped": [
+     6,
+     6
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.32,
+    "share": 0.0206
+   },
+   "unobstructed720": 0.6288,
+   "focus720": 0,
+   "phaseLabels720": {
+    "width": 1280,
+    "cut": []
+   },
+   "ms": 143145,
+   "note": "Full battlefield from the west at 09:30 (Field vantage)."
+  },
+  "overview-plan": {
+   "clock": "09:30",
+   "phase": 4,
+   "mode": "terrain",
+   "presentation": "watch",
+   "camera": {
+    "pos": [
+     -38.83,
+     423.18,
+     54.16
+    ],
+    "clearance": 424.665
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6204,
+    "maxErr": 0.0001,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "kienmayer sinks 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 22,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 12
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 829,
+     "triangles": 2553032,
+     "points": 0,
+     "lines": 10939
+    },
+    "total": {
+     "calls": 839,
+     "triangles": 2553045,
+     "points": 0,
+     "lines": 10939
+    },
+    "layer": {
+     "items": 26,
+     "placed": 22,
+     "leaders": 3,
+     "dropped": 4,
+     "occluded": 0,
+     "offscreen": 0,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran"
+     ],
+     "ms": 0.5,
+     "nodes": 53
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 4147
+    },
+    "memory": {
+     "geometries": 233,
+     "textures": 47
+    }
+   },
+   "layer": {
+    "items": 26,
+    "placed": 22,
+    "leaders": 3,
+    "dropped": 4,
+    "droppedIds": [
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:santon",
+     "t:zuran"
+    ],
+    "occluded": 0,
+    "offscreen": 0,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 53,
+    "ms": 0.3,
+    "texts": 25,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.8978,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 92,
+    "hasRow": true,
+    "switchInRow": true,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 12,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 33,
+    "share": 0.0136
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 323200,
+    "nearBlack": 0.0004,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 53.8
+   },
+   "textContrast": {
+    "texts": 25,
+    "min": 8.03,
+    "belowAA": [],
+    "rawSectionE": 5.3
+   },
+   "confShare": {
+    "samples": 294494,
+    "share": 0.037
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     26,
+     26
+    ],
+    "dropped": [
+     4,
+     4
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.03,
+    "share": 0.0048
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     26,
+     26
+    ],
+    "dropped": [
+     4,
+     4
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.03,
+    "share": 0.0233
+   },
+   "unobstructed720": 0.8722,
+   "focus720": 0,
+   "phaseLabels720": {
+    "width": 1280,
+    "cut": []
+   },
+   "ms": 113607,
+   "note": "Operational overview from above (Overview vantage), Watch mode."
+  },
+  "close-sokolnitz": {
+   "clock": "08:20",
+   "phase": 2,
+   "mode": "terrain",
+   "presentation": "watch",
+   "camera": {
+    "pos": [
+     -100.86,
+     22.69,
+     93.02
+    ],
+    "clearance": 23.585
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6012,
+    "maxErr": 0.0001,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "sthilaire sinks 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 21,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 6
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 788,
+     "triangles": 2513126,
+     "points": 0,
+     "lines": 11031
+    },
+    "total": {
+     "calls": 800,
+     "triangles": 2513143,
+     "points": 0,
+     "lines": 11031
+    },
+    "layer": {
+     "items": 66,
+     "placed": 21,
+     "leaders": 2,
+     "dropped": 4,
+     "occluded": 0,
+     "offscreen": 41,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "o:Friant retakes Telnitz",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:kobelnitz"
+     ],
+     "ms": 0.8999999999068677,
+     "nodes": 55
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 4573
+    },
+    "memory": {
+     "geometries": 228,
+     "textures": 51
+    }
+   },
+   "layer": {
+    "items": 66,
+    "placed": 21,
+    "leaders": 2,
+    "dropped": 4,
+    "droppedIds": [
+     "o:Friant retakes Telnitz",
+     "t:telnitz",
+     "t:sokolnitz",
+     "t:kobelnitz"
+    ],
+    "occluded": 0,
+    "offscreen": 41,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 55,
+    "ms": 0.7,
+    "texts": 28,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.8978,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 92,
+    "hasRow": true,
+    "switchInRow": true,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 6,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 21,
+    "share": 0.24
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 323200,
+    "nearBlack": 0,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 125.9
+   },
+   "textContrast": {
+    "texts": 28,
+    "min": 7.68,
+    "belowAA": [],
+    "rawSectionE": 4.56
+   },
+   "confShare": {
+    "samples": 294382,
+    "share": 0.087
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     66,
+     66
+    ],
+    "dropped": [
+     4,
+     4
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 7.68,
+    "share": 0.0192
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     66,
+     66
+    ],
+    "dropped": [
+     4,
+     4
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 7.68,
+    "share": 0.0085
+   },
+   "unobstructed720": 0.8722,
+   "focus720": 0,
+   "ms": 139937,
+   "note": "Close view of Sokolnitz and the lower Goldbach, 08:20."
+  },
+  "staff-paper": {
+   "clock": "09:30",
+   "phase": 4,
+   "mode": "staff",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -54.41,
+     400,
+     22.3
+    ],
+    "clearance": 400
+   },
+   "groundSelfCheck": 0,
+   "figures": {
+    "count": 0,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": null
+   },
+   "standards": {
+    "count": 0,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 25,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 8
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": true,
+   "firstRunBox": null,
+   "dispatchBox": [
+    18,
+    136.84375,
+    277,
+    1532.828125
+   ],
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 137,
+     "triangles": 238658,
+     "points": 0,
+     "lines": 14195
+    },
+    "total": {
+     "calls": 147,
+     "triangles": 238671,
+     "points": 0,
+     "lines": 14195
+    },
+    "layer": {
+     "items": 35,
+     "placed": 25,
+     "leaders": 7,
+     "dropped": 3,
+     "occluded": 0,
+     "offscreen": 5,
+     "underPanel": 2,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg"
+     ],
+     "ms": 2,
+     "nodes": 248
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 4573
+    },
+    "memory": {
+     "geometries": 230,
+     "textures": 51
+    }
+   },
+   "layer": {
+    "items": 35,
+    "placed": 25,
+    "leaders": 7,
+    "dropped": 3,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg"
+    ],
+    "occluded": 0,
+    "offscreen": 5,
+    "underPanel": 2,
+    "keepMissing": [],
+    "nodes": 248,
+    "ms": 0.9,
+    "texts": 55,
+    "belowFloor": [],
+    "minPx": 10.5
+   },
+   "unobstructed": 0.7036,
+   "legendOverDispatch": 0,
+   "paper": {
+    "camera": "orthographic",
+    "northBearing": 0,
+    "pxPerKm": {
+     "pratzeberg": 77.684,
+     "sokolnitz": 77.662,
+     "santon": 77.779,
+     "satschan": 77.622
+    },
+    "spread": 0.00202,
+    "scaleBar": {
+     "label": "1 km",
+     "px": 78,
+     "want": 77.7,
+     "err": 0.00403
+    },
+    "frameOnScreen": 0.4637,
+    "frameInFree": 0.3564,
+    "hidden": [],
+    "drawn": {
+     "hillshade": true,
+     "contours": true,
+     "villageFootprints": true,
+     "woods": true,
+     "water": true,
+     "drapedArrows": true,
+     "counters": true
+    },
+    "groundMaxY": 0,
+    "hillshade": 6
+   },
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false
+   },
+   "heads": {
+    "heads": 8,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": null,
+   "smoke": null,
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 254019,
+    "nearBlack": 0,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 198.5
+   },
+   "textContrast": {
+    "texts": 55,
+    "min": 4.89,
+    "belowAA": [],
+    "rawSectionE": 2.87
+   },
+   "confShare": {
+    "samples": 169331,
+    "share": 0.0735
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     35,
+     35
+    ],
+    "dropped": [
+     3,
+     3
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 4.89,
+    "share": 0.0139
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     35,
+     35
+    ],
+    "dropped": [
+     3,
+     3
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 4.89,
+    "share": 0.0301
+   },
+   "unobstructed720": 0.6288,
+   "focus720": null,
+   "ms": 73637,
+   "note": "Staff (paper) map, Overview vantage, 09:30."
+  },
+  "pratzen-low": {
+   "clock": "09:50",
+   "phase": 4,
+   "mode": "terrain",
+   "presentation": "watch",
+   "camera": {
+    "pos": [
+     -95.84,
+     21.93,
+     31.8
+    ],
+    "clearance": 21.802
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6076,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "sthilaire floats 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 24,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 6
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 761,
+     "triangles": 2515906,
+     "points": 0,
+     "lines": 11146
+    },
+    "total": {
+     "calls": 770,
+     "triangles": 2515917,
+     "points": 0,
+     "lines": 11146
+    },
+    "layer": {
+     "items": 65,
+     "placed": 24,
+     "leaders": 6,
+     "dropped": 4,
+     "occluded": 0,
+     "offscreen": 37,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:austerlitz",
+      "t:krzenowitz"
+     ],
+     "ms": 0.900000000372529,
+     "nodes": 71
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 4891
+    },
+    "memory": {
+     "geometries": 227,
+     "textures": 52
+    }
+   },
+   "layer": {
+    "items": 65,
+    "placed": 24,
+    "leaders": 6,
+    "dropped": 4,
+    "droppedIds": [
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:austerlitz",
+     "t:krzenowitz"
+    ],
+    "occluded": 0,
+    "offscreen": 37,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 71,
+    "ms": 0.8,
+    "texts": 30,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.8978,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 92,
+    "hasRow": true,
+    "switchInRow": true,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 6,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 33,
+    "share": 0.24
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 323200,
+    "nearBlack": 0.005,
+    "solidBlack": 0.0002,
+    "solidBlocks": 4,
+    "meanLum": 90.2
+   },
+   "textContrast": {
+    "texts": 30,
+    "min": 8.26,
+    "belowAA": [],
+    "rawSectionE": 5.07
+   },
+   "confShare": {
+    "samples": 291601,
+    "share": 0.09
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     65,
+     65
+    ],
+    "dropped": [
+     4,
+     4
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.26,
+    "share": 0.0286
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     65,
+     65
+    ],
+    "dropped": [
+     4,
+     4
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.26,
+    "share": 0.0214
+   },
+   "unobstructed720": 0.8722,
+   "focus720": 0,
+   "ms": 125616,
+   "note": "Low angle from the Goldbach up the west face of the Pratzeberg, 09:50."
+  },
+  "pratzen-orbit-min": {
+   "clock": "09:50",
+   "phase": 4,
+   "mode": "terrain",
+   "presentation": "watch",
+   "camera": {
+    "pos": [
+     -28.57,
+     9.41,
+     20.91
+    ],
+    "clearance": 4.235
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6076,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "sthilaire floats 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 6,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 4
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 755,
+     "triangles": 2512784,
+     "points": 0,
+     "lines": 11031
+    },
+    "total": {
+     "calls": 764,
+     "triangles": 2512795,
+     "points": 0,
+     "lines": 11031
+    },
+    "layer": {
+     "items": 61,
+     "placed": 6,
+     "leaders": 0,
+     "dropped": 1,
+     "occluded": 0,
+     "offscreen": 54,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:blasowitz"
+     ],
+     "ms": 1.1000000000931323,
+     "nodes": 11
+    },
+    "camera": {
+     "clamps": 22,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 4891
+    },
+    "memory": {
+     "geometries": 245,
+     "textures": 52
+    }
+   },
+   "layer": {
+    "items": 61,
+    "placed": 6,
+    "leaders": 0,
+    "dropped": 1,
+    "droppedIds": [
+     "t:blasowitz"
+    ],
+    "occluded": 0,
+    "offscreen": 54,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 11,
+    "ms": 0.5,
+    "texts": 6,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.8978,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 92,
+    "hasRow": true,
+    "switchInRow": true,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 4,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 13,
+    "share": 0.24
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 323200,
+    "nearBlack": 0.002,
+    "solidBlack": 0.00015,
+    "solidBlocks": 3,
+    "meanLum": 73.8
+   },
+   "textContrast": {
+    "texts": 6,
+    "min": 12.58,
+    "belowAA": [],
+    "rawSectionE": 6.37
+   },
+   "confShare": {
+    "samples": 301231,
+    "share": 0.0171
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     61,
+     61
+    ],
+    "dropped": [
+     1,
+     1
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 12.58,
+    "share": 0.0274
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     61,
+     61
+    ],
+    "dropped": [
+     1,
+     1
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 12.56,
+    "share": 0.0114
+   },
+   "unobstructed720": 0.8722,
+   "focus720": 0,
+   "ms": 203593,
+   "note": "Centre (as a click on a name does) on the place or formation from which the closest, lowest orbit reaches furthest into the ground, zoom fully in, drag to the lowest pitch and turn toward the hill: the path that put the eye inside it.",
+   "intended": {
+    "depthBelowGround": 4.31,
+    "bearing": 0.14,
+    "target": "place pratzenv"
+   }
+  },
+  "selected-formation": {
+   "clock": "09:30",
+   "phase": 4,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -75.79,
+     68.19,
+     66.65
+    ],
+    "clearance": 69.012
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6204,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "kamensky sinks 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 24,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 10
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": "f:sthilaire",
+   "highlightOn": true,
+   "drawerVisible": true,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": true,
+   "firstRunBox": null,
+   "dispatchBox": [
+    18,
+    136.84375,
+    277,
+    1532.828125
+   ],
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 762,
+     "triangles": 2547472,
+     "points": 0,
+     "lines": 10635
+    },
+    "total": {
+     "calls": 772,
+     "triangles": 2547485,
+     "points": 0,
+     "lines": 10635
+    },
+    "layer": {
+     "items": 64,
+     "placed": 24,
+     "leaders": 7,
+     "dropped": 4,
+     "occluded": 0,
+     "offscreen": 26,
+     "underPanel": 10,
+     "keepMissing": [],
+     "dropped_": [
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:augezd",
+      "t:kobelnitz"
+     ],
+     "ms": 1.3000000002793968,
+     "nodes": 76
+    },
+    "camera": {
+     "clamps": 22,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 5210
+    },
+    "memory": {
+     "geometries": 240,
+     "textures": 52
+    }
+   },
+   "layer": {
+    "items": 64,
+    "placed": 24,
+    "leaders": 7,
+    "dropped": 4,
+    "droppedIds": [
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:augezd",
+     "t:kobelnitz"
+    ],
+    "occluded": 0,
+    "offscreen": 26,
+    "underPanel": 10,
+    "keepMissing": [],
+    "nodes": 76,
+    "ms": 0.8,
+    "texts": 32,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.7036,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false
+   },
+   "heads": {
+    "heads": 10,
+    "hiddenOverQuarter": 2,
+    "list": [
+     "casing head 100% hidden",
+     "fr head 100% hidden"
+    ]
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 3,
+    "share": 0.0412
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 254019,
+    "nearBlack": 0.0008,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 64.3
+   },
+   "textContrast": {
+    "texts": 32,
+    "min": 7.57,
+    "belowAA": [],
+    "rawSectionE": 4.93
+   },
+   "confShare": {
+    "samples": 186081,
+    "share": 0.1477
+   },
+   "routes": {
+    "routes": 2,
+    "items": [
+     64,
+     64
+    ],
+    "dropped": [
+     4,
+     4
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 7.57,
+    "share": 0.0149
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     64,
+     64
+    ],
+    "dropped": [
+     4,
+     4
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 7.57,
+    "share": 0.0325
+   },
+   "unobstructed720": 0.6288,
+   "focus720": 0,
+   "ms": 111388,
+   "note": "Saint-Hilaire's division selected in Study: dossier card open, family highlighted."
+  },
+  "watch-selected": {
+   "clock": "09:45",
+   "phase": 4,
+   "mode": "terrain",
+   "presentation": "watch",
+   "camera": {
+    "pos": [
+     -72.99,
+     65.08,
+     63.04
+    ],
+    "clearance": 66.209
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6076,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "kamensky floats 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 24,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 6
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": "f:kamensky",
+   "highlightOn": true,
+   "drawerVisible": false,
+   "chipVisible": true,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 743,
+     "triangles": 2519316,
+     "points": 0,
+     "lines": 10704
+    },
+    "total": {
+     "calls": 752,
+     "triangles": 2519327,
+     "points": 0,
+     "lines": 10704
+    },
+    "layer": {
+     "items": 65,
+     "placed": 24,
+     "leaders": 6,
+     "dropped": 4,
+     "occluded": 0,
+     "offscreen": 34,
+     "underPanel": 3,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:kobelnitz"
+     ],
+     "ms": 1,
+     "nodes": 75
+    },
+    "camera": {
+     "clamps": 22,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 5524
+    },
+    "memory": {
+     "geometries": 236,
+     "textures": 52
+    }
+   },
+   "layer": {
+    "items": 65,
+    "placed": 24,
+    "leaders": 6,
+    "dropped": 4,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:kobelnitz"
+    ],
+    "occluded": 0,
+    "offscreen": 34,
+    "underPanel": 3,
+    "keepMissing": [],
+    "nodes": 75,
+    "ms": 0.6,
+    "texts": 33,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.8804,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 92,
+    "hasRow": true,
+    "switchInRow": true,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 6,
+    "hiddenOverQuarter": 2,
+    "list": [
+     "casing head 25% hidden",
+     "fr head 26% hidden"
+    ]
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 9,
+    "share": 0.0222
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 316669,
+    "nearBlack": 0.002,
+    "solidBlack": 0.0001,
+    "solidBlocks": 2,
+    "meanLum": 57.4
+   },
+   "textContrast": {
+    "texts": 33,
+    "min": 7.59,
+    "belowAA": [],
+    "rawSectionE": 5
+   },
+   "confShare": {
+    "samples": 270522,
+    "share": 0.1492
+   },
+   "routes": {
+    "routes": 1,
+    "items": [
+     65,
+     65
+    ],
+    "dropped": [
+     4,
+     4
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 7.59,
+    "share": 0.0046
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     65,
+     65
+    ],
+    "dropped": [
+     4,
+     4
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 7.59,
+    "share": 0.0308
+   },
+   "unobstructed720": 0.8451,
+   "focus720": 0,
+   "ms": 106484,
+   "note": "A formation selected while in Watch mode."
+  },
+  "hybrid-dimmed": {
+   "clock": "10:00",
+   "phase": 4,
+   "mode": "hybrid",
+   "presentation": "watch",
+   "camera": {
+    "pos": [
+     -94.17,
+     56.99,
+     71.88
+    ],
+    "clearance": 57.511
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6076,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "gqg floats 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 33,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 10
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": "f:c_iv",
+   "highlightOn": true,
+   "drawerVisible": false,
+   "chipVisible": true,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 743,
+     "triangles": 2520982,
+     "points": 0,
+     "lines": 10617
+    },
+    "total": {
+     "calls": 752,
+     "triangles": 2520993,
+     "points": 0,
+     "lines": 10617
+    },
+    "layer": {
+     "items": 63,
+     "placed": 33,
+     "leaders": 19,
+     "dropped": 7,
+     "occluded": 0,
+     "offscreen": 21,
+     "underPanel": 2,
+     "keepMissing": [],
+     "dropped_": [
+      "c:kollo",
+      "c:kamensky",
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:kobelnitz",
+      "t:blasowitz"
+     ],
+     "ms": 1.3999999999068677,
+     "nodes": 400
+    },
+    "camera": {
+     "clamps": 22,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 5630
+    },
+    "memory": {
+     "geometries": 240,
+     "textures": 52
+    }
+   },
+   "layer": {
+    "items": 63,
+    "placed": 33,
+    "leaders": 19,
+    "dropped": 7,
+    "droppedIds": [
+     "c:kollo",
+     "c:kamensky",
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:kobelnitz",
+     "t:blasowitz"
+    ],
+    "occluded": 0,
+    "offscreen": 21,
+    "underPanel": 2,
+    "keepMissing": [],
+    "nodes": 400,
+    "ms": 1,
+    "texts": 79,
+    "belowFloor": [],
+    "minPx": 10.5
+   },
+   "unobstructed": 0.8827,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 92,
+    "hasRow": true,
+    "switchInRow": true,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 10,
+    "hiddenOverQuarter": 2,
+    "list": [
+     "casing head 45% hidden",
+     "al head 53% hidden"
+    ]
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 3,
+    "share": 0.0237
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 317467,
+    "nearBlack": 0.0028,
+    "solidBlack": 0.00005,
+    "solidBlocks": 1,
+    "meanLum": 61.9
+   },
+   "textContrast": {
+    "texts": 79,
+    "min": 6.49,
+    "belowAA": [],
+    "rawSectionE": 2.73
+   },
+   "confShare": {
+    "samples": 240057,
+    "share": 0.1452
+   },
+   "routes": {
+    "routes": 4,
+    "items": [
+     63,
+     63
+    ],
+    "dropped": [
+     7,
+     7
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 6.49,
+    "share": 0.0135
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     63,
+     63
+    ],
+    "dropped": [
+     7,
+     7
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 6.49,
+    "share": 0.0308
+   },
+   "unobstructed720": 0.8486,
+   "focus720": 0,
+   "ms": 109378,
+   "note": "Hybrid mode with a corps highlighted, so most blocks are drawn at the dimmed scale."
+  },
+  "pratzen-low-1x": {
+   "clock": "09:50",
+   "phase": 4,
+   "mode": "terrain",
+   "presentation": "watch",
+   "camera": {
+    "pos": [
+     -95.84,
+     21.84,
+     31.8
+    ],
+    "clearance": 21.81
+   },
+   "groundSelfCheck": 0,
+   "figures": {
+    "count": 0,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": null
+   },
+   "standards": {
+    "count": 0,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 25,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 6
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 151,
+     "triangles": 227638,
+     "points": 0,
+     "lines": 11146
+    },
+    "total": {
+     "calls": 160,
+     "triangles": 227649,
+     "points": 0,
+     "lines": 11146
+    },
+    "layer": {
+     "items": 65,
+     "placed": 25,
+     "leaders": 5,
+     "dropped": 4,
+     "occluded": 0,
+     "offscreen": 36,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:pratzenv",
+      "t:krzenowitz"
+     ],
+     "ms": 1,
+     "nodes": 70
+    },
+    "camera": {
+     "clamps": 22,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 5630
+    },
+    "memory": {
+     "geometries": 259,
+     "textures": 52
+    }
+   },
+   "layer": {
+    "items": 65,
+    "placed": 25,
+    "leaders": 5,
+    "dropped": 4,
+    "droppedIds": [
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:pratzenv",
+     "t:krzenowitz"
+    ],
+    "occluded": 0,
+    "offscreen": 36,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 70,
+    "ms": 0.8,
+    "texts": 31,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.8978,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 92,
+    "hasRow": true,
+    "switchInRow": true,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 6,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 33,
+    "share": 0.24
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 323200,
+    "nearBlack": 0.0091,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 75.3
+   },
+   "textContrast": {
+    "texts": 31,
+    "min": 8.49,
+    "belowAA": [],
+    "rawSectionE": 5.24
+   },
+   "confShare": {
+    "samples": 291359,
+    "share": 0.1922
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     65,
+     65
+    ],
+    "dropped": [
+     4,
+     4
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.49,
+    "share": 0.039
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     65,
+     65
+    ],
+    "dropped": [
+     4,
+     4
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.49,
+    "share": 0.0387
+   },
+   "unobstructed720": 0.8722,
+   "focus720": 0,
+   "ms": 91626,
+   "note": "The low Pratzen view at true scale: formations drawn as footprints."
+  },
+  "pratzen-low-10x": {
+   "clock": "09:50",
+   "phase": 4,
+   "mode": "terrain",
+   "presentation": "watch",
+   "camera": {
+    "pos": [
+     -95.84,
+     22.12,
+     31.8
+    ],
+    "clearance": 21.785
+   },
+   "groundSelfCheck": 0.000003,
+   "figures": {
+    "count": 6076,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "kamensky sinks 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 21,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 6
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 762,
+     "triangles": 2515908,
+     "points": 0,
+     "lines": 11146
+    },
+    "total": {
+     "calls": 771,
+     "triangles": 2515919,
+     "points": 0,
+     "lines": 11146
+    },
+    "layer": {
+     "items": 65,
+     "placed": 21,
+     "leaders": 3,
+     "dropped": 3,
+     "occluded": 0,
+     "offscreen": 39,
+     "underPanel": 2,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg"
+     ],
+     "ms": 2.3999999999068677,
+     "nodes": 55
+    },
+    "camera": {
+     "clamps": 22,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 5661
+    },
+    "memory": {
+     "geometries": 259,
+     "textures": 52
+    }
+   },
+   "layer": {
+    "items": 65,
+    "placed": 21,
+    "leaders": 3,
+    "dropped": 3,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg"
+    ],
+    "occluded": 0,
+    "offscreen": 39,
+    "underPanel": 2,
+    "keepMissing": [],
+    "nodes": 55,
+    "ms": 0.8,
+    "texts": 26,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.8978,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 92,
+    "hasRow": true,
+    "switchInRow": true,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 6,
+    "hiddenOverQuarter": 2,
+    "list": [
+     "casing head 63% hidden",
+     "fr head 56% hidden"
+    ]
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 33,
+    "share": 0.24
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 323200,
+    "nearBlack": 0.0016,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 110.1
+   },
+   "textContrast": {
+    "texts": 26,
+    "min": 7.94,
+    "belowAA": [],
+    "rawSectionE": 5.15
+   },
+   "confShare": {
+    "samples": 293115,
+    "share": 0.0559
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     65,
+     65
+    ],
+    "dropped": [
+     3,
+     3
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 7.94,
+    "share": 0.0277
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     65,
+     65
+    ],
+    "dropped": [
+     3,
+     3
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 7.75,
+    "share": 0.0196
+   },
+   "unobstructed720": 0.8722,
+   "focus720": 0,
+   "ms": 115831,
+   "note": "The low Pratzen view at the model's own vertical scale (GEOREF.EXAG, the drawing before 2B)."
+  },
+  "paper-north-up": {
+   "clock": "09:30",
+   "phase": 4,
+   "mode": "staff",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     12.11,
+     400,
+     8.98
+    ],
+    "clearance": 400
+   },
+   "groundSelfCheck": 0,
+   "figures": {
+    "count": 0,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": null
+   },
+   "standards": {
+    "count": 0,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 23,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 12
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": true,
+   "firstRunBox": null,
+   "dispatchBox": [
+    18,
+    136.84375,
+    277,
+    1532.828125
+   ],
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 145,
+     "triangles": 240872,
+     "points": 0,
+     "lines": 14195
+    },
+    "total": {
+     "calls": 155,
+     "triangles": 240885,
+     "points": 0,
+     "lines": 14195
+    },
+    "layer": {
+     "items": 35,
+     "placed": 23,
+     "leaders": 22,
+     "dropped": 12,
+     "occluded": 0,
+     "offscreen": 0,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran",
+      "t:goldbach",
+      "t:litava",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd",
+      "t:satschan",
+      "t:austerlitz"
+     ],
+     "ms": 1,
+     "nodes": 330
+    },
+    "camera": {
+     "clamps": 22,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 5661
+    },
+    "memory": {
+     "geometries": 271,
+     "textures": 52
+    }
+   },
+   "layer": {
+    "items": 35,
+    "placed": 23,
+    "leaders": 22,
+    "dropped": 12,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:santon",
+     "t:zuran",
+     "t:goldbach",
+     "t:litava",
+     "t:telnitz",
+     "t:sokolnitz",
+     "t:augezd",
+     "t:satschan",
+     "t:austerlitz"
+    ],
+    "occluded": 0,
+    "offscreen": 0,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 330,
+    "ms": 1,
+    "texts": 60,
+    "belowFloor": [],
+    "minPx": 10.5
+   },
+   "unobstructed": 0.7036,
+   "legendOverDispatch": 0,
+   "paper": {
+    "camera": "orthographic",
+    "northBearing": 0,
+    "pxPerKm": {
+     "pratzeberg": 28.537,
+     "sokolnitz": 28.529,
+     "santon": 28.572,
+     "satschan": 28.514
+    },
+    "spread": 0.00203,
+    "scaleBar": {
+     "label": "5 km",
+     "px": 143,
+     "want": 142.7,
+     "err": 0.00217
+    },
+    "frameOnScreen": 1,
+    "frameInFree": 1,
+    "hidden": [],
+    "drawn": {
+     "hillshade": true,
+     "contours": true,
+     "villageFootprints": true,
+     "woods": true,
+     "water": true,
+     "drapedArrows": true,
+     "counters": true
+    },
+    "groundMaxY": 0,
+    "hillshade": 6
+   },
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false
+   },
+   "heads": {
+    "heads": 12,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": null,
+   "smoke": null,
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 254019,
+    "nearBlack": 0,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 145.7
+   },
+   "textContrast": {
+    "texts": 60,
+    "min": 5.38,
+    "belowAA": [],
+    "rawSectionE": 2.87
+   },
+   "confShare": {
+    "samples": 162521,
+    "share": 0.009
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     35,
+     35
+    ],
+    "dropped": [
+     12,
+     12
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 5.38,
+    "share": 0.0012
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     35,
+     35
+    ],
+    "dropped": [
+     12,
+     12
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 5.38,
+    "share": 0.0093
+   },
+   "unobstructed720": 0.6288,
+   "focus720": null,
+   "ms": 69064,
+   "note": "The paper map as entered: north up, the whole field framed clear of the panels, Study, 09:30."
+  },
+  "paper-close": {
+   "clock": "08:20",
+   "phase": 2,
+   "mode": "staff",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -70.81,
+     400,
+     58.82
+    ],
+    "clearance": 400
+   },
+   "groundSelfCheck": 0,
+   "figures": {
+    "count": 0,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": null
+   },
+   "standards": {
+    "count": 0,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 5,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 6
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": true,
+   "firstRunBox": null,
+   "dispatchBox": [
+    18,
+    136.84375,
+    277,
+    1213.4375
+   ],
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 90,
+     "triangles": 202504,
+     "points": 0,
+     "lines": 13910
+    },
+    "total": {
+     "calls": 101,
+     "triangles": 202519,
+     "points": 0,
+     "lines": 13910
+    },
+    "layer": {
+     "items": 65,
+     "placed": 5,
+     "leaders": 4,
+     "dropped": 1,
+     "occluded": 0,
+     "offscreen": 54,
+     "underPanel": 5,
+     "keepMissing": [],
+     "dropped_": [
+      "t:sokolnitz"
+     ],
+     "ms": 1.6999999997206032,
+     "nodes": 74
+    },
+    "camera": {
+     "clamps": 22,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 5661
+    },
+    "memory": {
+     "geometries": 252,
+     "textures": 52
+    }
+   },
+   "layer": {
+    "items": 65,
+    "placed": 5,
+    "leaders": 4,
+    "dropped": 1,
+    "droppedIds": [
+     "t:sokolnitz"
+    ],
+    "occluded": 0,
+    "offscreen": 54,
+    "underPanel": 5,
+    "keepMissing": [],
+    "nodes": 74,
+    "ms": 0.8,
+    "texts": 19,
+    "belowFloor": [],
+    "minPx": 10.5
+   },
+   "unobstructed": 0.7036,
+   "legendOverDispatch": 0,
+   "paper": {
+    "camera": "orthographic",
+    "northBearing": 0,
+    "pxPerKm": {
+     "pratzeberg": 366.824,
+     "sokolnitz": 366.721,
+     "santon": 367.271,
+     "satschan": 366.529
+    },
+    "spread": 0.00202,
+    "scaleBar": {
+     "label": "250 m",
+     "px": 92,
+     "want": 91.7,
+     "err": 0.00317
+    },
+    "frameOnScreen": 0.0228,
+    "frameInFree": 0.016,
+    "hidden": [],
+    "drawn": {
+     "hillshade": true,
+     "contours": true,
+     "villageFootprints": true,
+     "woods": true,
+     "water": true,
+     "drapedArrows": true,
+     "counters": true
+    },
+    "groundMaxY": 0,
+    "hillshade": 6
+   },
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false
+   },
+   "heads": {
+    "heads": 6,
+    "hiddenOverQuarter": 3,
+    "list": [
+     "casing head 35% hidden",
+     "casing head 54% hidden",
+     "fr head 57% hidden"
+    ]
+   },
+   "focus": null,
+   "smoke": null,
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 254019,
+    "nearBlack": 0,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 192.1
+   },
+   "textContrast": {
+    "texts": 19,
+    "min": 5.1,
+    "belowAA": [],
+    "rawSectionE": 2.87
+   },
+   "confShare": {
+    "samples": 185654,
+    "share": 0.1514
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     65,
+     65
+    ],
+    "dropped": [
+     1,
+     1
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 5.1,
+    "share": 0.0396
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     65,
+     65
+    ],
+    "dropped": [
+     1,
+     1
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 5.1,
+    "share": 0.0107
+   },
+   "unobstructed720": 0.6288,
+   "focus720": null,
+   "ms": 46976,
+   "note": "The paper map close on Sokolnitz and the lower Goldbach, Study, 08:20."
+  },
+  "paper-drawer": {
+   "clock": "09:30",
+   "phase": 4,
+   "mode": "staff",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -37.11,
+     400,
+     22.68
+    ],
+    "clearance": 400
+   },
+   "groundSelfCheck": 0,
+   "figures": {
+    "count": 0,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": null
+   },
+   "standards": {
+    "count": 0,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 16,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 6
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": "f:sthilaire",
+   "highlightOn": true,
+   "drawerVisible": true,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": true,
+   "firstRunBox": null,
+   "dispatchBox": [
+    18,
+    136.84375,
+    277,
+    1532.828125
+   ],
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 100,
+     "triangles": 226518,
+     "points": 0,
+     "lines": 13824
+    },
+    "total": {
+     "calls": 110,
+     "triangles": 226531,
+     "points": 0,
+     "lines": 13824
+    },
+    "layer": {
+     "items": 63,
+     "placed": 16,
+     "leaders": 8,
+     "dropped": 1,
+     "occluded": 0,
+     "offscreen": 45,
+     "underPanel": 1,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzeberg"
+     ],
+     "ms": 1.6000000000931323,
+     "nodes": 183
+    },
+    "camera": {
+     "clamps": 22,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 5661
+    },
+    "memory": {
+     "geometries": 256,
+     "textures": 52
+    }
+   },
+   "layer": {
+    "items": 63,
+    "placed": 16,
+    "leaders": 8,
+    "dropped": 1,
+    "droppedIds": [
+     "t:pratzeberg"
+    ],
+    "occluded": 0,
+    "offscreen": 45,
+    "underPanel": 1,
+    "keepMissing": [],
+    "nodes": 183,
+    "ms": 0.9,
+    "texts": 39,
+    "belowFloor": [],
+    "minPx": 10.5
+   },
+   "unobstructed": 0.7036,
+   "legendOverDispatch": 0,
+   "paper": {
+    "camera": "orthographic",
+    "northBearing": 0,
+    "pxPerKm": {
+     "pratzeberg": 247.393,
+     "sokolnitz": 247.323,
+     "santon": 247.694,
+     "satschan": 247.194
+    },
+    "spread": 0.00202,
+    "scaleBar": {
+     "label": "500 m",
+     "px": 124,
+     "want": 123.7,
+     "err": 0.00242
+    },
+    "frameOnScreen": 0.049,
+    "frameInFree": 0.0355,
+    "hidden": [],
+    "drawn": {
+     "hillshade": true,
+     "contours": true,
+     "villageFootprints": true,
+     "woods": true,
+     "water": true,
+     "drapedArrows": true,
+     "counters": true
+    },
+    "groundMaxY": 0,
+    "hillshade": 6
+   },
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false
+   },
+   "heads": {
+    "heads": 6,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": null,
+   "smoke": null,
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 254019,
+    "nearBlack": 0,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 191.9
+   },
+   "textContrast": {
+    "texts": 39,
+    "min": 5.04,
+    "belowAA": [],
+    "rawSectionE": 2.91
+   },
+   "confShare": {
+    "samples": 175903,
+    "share": 0.0801
+   },
+   "routes": {
+    "routes": 2,
+    "items": [
+     63,
+     63
+    ],
+    "dropped": [
+     1,
+     1
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 5.04,
+    "share": 0.0143
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     63,
+     63
+    ],
+    "dropped": [
+     1,
+     1
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 5.04,
+    "share": 0.0162
+   },
+   "unobstructed720": 0.6288,
+   "focus720": null,
+   "ms": 45967,
+   "note": "The paper map with Saint-Hilaire's division selected: dossier open, family highlighted."
+  },
+  "paper-laptop": {
+   "clock": "09:30",
+   "phase": 4,
+   "mode": "staff",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     15.54,
+     400,
+     10.45
+    ],
+    "clearance": 400
+   },
+   "groundSelfCheck": 0,
+   "figures": {
+    "count": 0,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": null
+   },
+   "standards": {
+    "count": 0,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 23,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 12
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": true,
+   "firstRunBox": null,
+   "dispatchBox": [
+    18,
+    136.84375,
+    277,
+    1532.828125
+   ],
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 145,
+     "triangles": 240872,
+     "points": 0,
+     "lines": 14195
+    },
+    "total": {
+     "calls": 155,
+     "triangles": 240885,
+     "points": 0,
+     "lines": 14195
+    },
+    "layer": {
+     "items": 35,
+     "placed": 23,
+     "leaders": 22,
+     "dropped": 12,
+     "occluded": 0,
+     "offscreen": 0,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran",
+      "t:goldbach",
+      "t:litava",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd",
+      "t:satschan",
+      "t:austerlitz"
+     ],
+     "ms": 2.2999999998137355,
+     "nodes": 330
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 242
+    },
+    "memory": {
+     "geometries": 210,
+     "textures": 32
+    }
+   },
+   "layer": {
+    "items": 35,
+    "placed": 23,
+    "leaders": 22,
+    "dropped": 12,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:santon",
+     "t:zuran",
+     "t:goldbach",
+     "t:litava",
+     "t:telnitz",
+     "t:sokolnitz",
+     "t:augezd",
+     "t:satschan",
+     "t:austerlitz"
+    ],
+    "occluded": 0,
+    "offscreen": 0,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 330,
+    "ms": 1.4,
+    "texts": 60,
+    "belowFloor": [],
+    "minPx": 10.5
+   },
+   "unobstructed": 0.6288,
+   "legendOverDispatch": 0,
+   "paper": {
+    "camera": "orthographic",
+    "northBearing": 0,
+    "pxPerKm": {
+     "pratzeberg": 21.638,
+     "sokolnitz": 21.632,
+     "santon": 21.664,
+     "satschan": 21.62
+    },
+    "spread": 0.00203,
+    "scaleBar": {
+     "label": "5 km",
+     "px": 108,
+     "want": 108.2,
+     "err": 0.00178
+    },
+    "frameOnScreen": 1,
+    "frameInFree": 1,
+    "hidden": [],
+    "drawn": {
+     "hillshade": true,
+     "contours": true,
+     "villageFootprints": true,
+     "woods": true,
+     "water": true,
+     "drapedArrows": true,
+     "counters": true
+    },
+    "groundMaxY": 0,
+    "hillshade": 6
+   },
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1280,
+    720
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false
+   },
+   "heads": {
+    "heads": 12,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": null,
+   "smoke": null,
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 145429,
+    "nearBlack": 0,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 145.9
+   },
+   "textContrast": {
+    "texts": 60,
+    "min": 5.38,
+    "belowAA": [],
+    "rawSectionE": 2.87
+   },
+   "confShare": {
+    "samples": 74084,
+    "share": 0.0186
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     35,
+     35
+    ],
+    "dropped": [
+     12,
+     12
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 5.38,
+    "share": 0.0022
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     35,
+     35
+    ],
+    "dropped": [
+     12,
+     12
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 5.38,
+    "share": 0.0239
+   },
+   "unobstructed720": 0.6288,
+   "focus720": null,
+   "ms": 41575,
+   "note": "The paper map as entered, on a 1280 x 720 screen."
+  },
+  "narrow-1024": {
+   "clock": "09:30",
+   "phase": 4,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -195,
+     94.11,
+     156
+    ],
+    "clearance": 95.413
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6204,
+    "maxErr": 0.0001,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "kienmayer sinks 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 34,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 12
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": true,
+   "firstRunBox": null,
+   "dispatchBox": [
+    16,
+    108,
+    456,
+    665
+   ],
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 829,
+     "triangles": 2553032,
+     "points": 0,
+     "lines": 10939
+    },
+    "total": {
+     "calls": 839,
+     "triangles": 2553045,
+     "points": 0,
+     "lines": 10939
+    },
+    "layer": {
+     "items": 47,
+     "placed": 34,
+     "leaders": 14,
+     "dropped": 5,
+     "occluded": 0,
+     "offscreen": 2,
+     "underPanel": 6,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:sokolnitz",
+      "t:austerlitz"
+     ],
+     "ms": 0.8999999999068677,
+     "nodes": 122
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 908
+    },
+    "memory": {
+     "geometries": 205,
+     "textures": 33
+    }
+   },
+   "layer": {
+    "items": 47,
+    "placed": 34,
+    "leaders": 14,
+    "dropped": 5,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:sokolnitz",
+     "t:austerlitz"
+    ],
+    "occluded": 0,
+    "offscreen": 2,
+    "underPanel": 6,
+    "keepMissing": [],
+    "nodes": 122,
+    "ms": 1.4,
+    "texts": 47,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.5364,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": false,
+    "docked": false,
+    "legendOpen": false,
+    "tab": "oob"
+   },
+   "viewport": [
+    1024,
+    768
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false
+   },
+   "heads": {
+    "heads": 12,
+    "hiddenOverQuarter": 2,
+    "list": [
+     "casing head 64% hidden",
+     "fr head 66% hidden"
+    ]
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 33,
+    "share": 0.155
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 105783,
+    "nearBlack": 0,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 81.8
+   },
+   "textContrast": {
+    "texts": 47,
+    "min": 8.08,
+    "belowAA": [],
+    "rawSectionE": 5.09
+   },
+   "confShare": {
+    "samples": 54146,
+    "share": 0.0909
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     47,
+     47
+    ],
+    "dropped": [
+     5,
+     5
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.08,
+    "share": 0.014
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     47,
+     47
+    ],
+    "dropped": [
+     5,
+     5
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.08,
+    "share": 0.0464
+   },
+   "unobstructed720": 0.6288,
+   "focus720": 0,
+   "ms": 75075,
+   "note": "Study at 1024 x 768: below 1080 px the dispatch stays a card (Stage 3B, decision 58)."
+  },
+  "ph8-overview-study": {
+   "clock": "14:40",
+   "phase": 8,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -38.81,
+     533.15,
+     66.16
+    ],
+    "clearance": 534.859
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6136,
+    "maxErr": 0.0003,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "kienmayer sinks 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 22,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 12
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": true,
+   "firstRunBox": null,
+   "dispatchBox": [
+    18,
+    136.84375,
+    277,
+    1221.921875
+   ],
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 809,
+     "triangles": 2536902,
+     "points": 0,
+     "lines": 11097
+    },
+    "total": {
+     "calls": 818,
+     "triangles": 2536913,
+     "points": 0,
+     "lines": 11097
+    },
+    "layer": {
+     "items": 25,
+     "placed": 22,
+     "leaders": 7,
+     "dropped": 3,
+     "occluded": 0,
+     "offscreen": 0,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzeberg",
+      "t:augezd",
+      "t:satschan"
+     ],
+     "ms": 1.1000000000931323,
+     "nodes": 66
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 973
+    },
+    "memory": {
+     "geometries": 203,
+     "textures": 32
+    }
+   },
+   "layer": {
+    "items": 25,
+    "placed": 22,
+    "leaders": 7,
+    "dropped": 3,
+    "droppedIds": [
+     "t:pratzeberg",
+     "t:augezd",
+     "t:satschan"
+    ],
+    "occluded": 0,
+    "offscreen": 0,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 66,
+    "ms": 0.9,
+    "texts": 26,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.7036,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false
+   },
+   "heads": {
+    "heads": 12,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 21,
+    "share": 0.0075
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 254019,
+    "nearBlack": 0.0004,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 44.3
+   },
+   "textContrast": {
+    "texts": 26,
+    "min": 8.17,
+    "belowAA": [],
+    "rawSectionE": 5.32
+   },
+   "confShare": {
+    "samples": 184792,
+    "share": 0.0333
+   },
+   "routes": {
+    "routes": 13,
+    "items": [
+     25,
+     25
+    ],
+    "dropped": [
+     3,
+     3
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.17,
+    "share": 0.0059
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     25,
+     25
+    ],
+    "dropped": [
+     3,
+     3
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.17,
+    "share": 0.0313
+   },
+   "unobstructed720": 0.6288,
+   "focus720": 0,
+   "ms": 93396,
+   "note": "Phase 8 (14:40), the Overview vantage, Study."
+  },
+  "ph8-overview-watch": {
+   "clock": "14:40",
+   "phase": 8,
+   "mode": "terrain",
+   "presentation": "watch",
+   "camera": {
+    "pos": [
+     -38.83,
+     423.18,
+     54.16
+    ],
+    "clearance": 424.665
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6136,
+    "maxErr": 0.0003,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "kienmayer sinks 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 22,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 12
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 809,
+     "triangles": 2536902,
+     "points": 0,
+     "lines": 11097
+    },
+    "total": {
+     "calls": 818,
+     "triangles": 2536913,
+     "points": 0,
+     "lines": 11097
+    },
+    "layer": {
+     "items": 25,
+     "placed": 22,
+     "leaders": 5,
+     "dropped": 3,
+     "occluded": 0,
+     "offscreen": 0,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:telnitz",
+      "t:augezd",
+      "t:satschan"
+     ],
+     "ms": 0.6000000000931323,
+     "nodes": 60
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 973
+    },
+    "memory": {
+     "geometries": 216,
+     "textures": 38
+    }
+   },
+   "layer": {
+    "items": 25,
+    "placed": 22,
+    "leaders": 5,
+    "dropped": 3,
+    "droppedIds": [
+     "t:telnitz",
+     "t:augezd",
+     "t:satschan"
+    ],
+    "occluded": 0,
+    "offscreen": 0,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 60,
+    "ms": 1,
+    "texts": 26,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.8978,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 92,
+    "hasRow": true,
+    "switchInRow": true,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 12,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 21,
+    "share": 0.0077
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 323200,
+    "nearBlack": 0.0006,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 44.5
+   },
+   "textContrast": {
+    "texts": 26,
+    "min": 8.17,
+    "belowAA": [],
+    "rawSectionE": 5.31
+   },
+   "confShare": {
+    "samples": 292961,
+    "share": 0.0358
+   },
+   "routes": {
+    "routes": 13,
+    "items": [
+     25,
+     25
+    ],
+    "dropped": [
+     3,
+     3
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.17,
+    "share": 0.0058
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     25,
+     25
+    ],
+    "dropped": [
+     3,
+     3
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.17,
+    "share": 0.0255
+   },
+   "unobstructed720": 0.8722,
+   "focus720": 0,
+   "ms": 99070,
+   "note": "Phase 8 (14:40), the Overview vantage, Watch."
+  },
+  "eye-zuran": {
+   "clock": "08:30",
+   "phase": 2,
+   "mode": "terrain",
+   "presentation": "watch",
+   "camera": {
+    "pos": [
+     -81.5,
+     3.13,
+     -58
+    ],
+    "clearance": 0.136
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 1260,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "kollo sinks 0.00"
+   },
+   "standards": {
+    "count": 37,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 18,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 6
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 191,
+     "triangles": 492556,
+     "points": 0,
+     "lines": 10640
+    },
+    "total": {
+     "calls": 202,
+     "triangles": 492571,
+     "points": 0,
+     "lines": 10640
+    },
+    "layer": {
+     "items": 50,
+     "placed": 18,
+     "leaders": 3,
+     "dropped": 5,
+     "occluded": 1,
+     "offscreen": 26,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:goldbach",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:satschan",
+      "t:kobelnitz"
+     ],
+     "ms": 0.7999999998137355,
+     "nodes": 49
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 1102
+    },
+    "memory": {
+     "geometries": 220,
+     "textures": 41
+    }
+   },
+   "layer": {
+    "items": 50,
+    "placed": 18,
+    "leaders": 3,
+    "dropped": 5,
+    "droppedIds": [
+     "t:goldbach",
+     "t:telnitz",
+     "t:sokolnitz",
+     "t:satschan",
+     "t:kobelnitz"
+    ],
+    "occluded": 1,
+    "offscreen": 26,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 49,
+    "ms": 1.7,
+    "texts": 21,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.8978,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 92,
+    "hasRow": true,
+    "switchInRow": true,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 6,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 9,
+    "share": 0.051
+   },
+   "smokePuffs": true,
+   "eyeLevel": {
+    "on": true,
+    "dy": 0.18988,
+    "want": 0.18988,
+    "atHQ": true
+   },
+   "pixels": {
+    "samples": 323200,
+    "nearBlack": 0,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 118.1
+   },
+   "textContrast": {
+    "texts": 21,
+    "min": 7.57,
+    "belowAA": [],
+    "rawSectionE": 4.93
+   },
+   "confShare": {
+    "samples": 295600,
+    "share": 0.0601
+   },
+   "unobstructed720": 0.8722,
+   "focus720": 0,
+   "ms": 41490,
+   "note": "Eye level at Napoleon's headquarters on the Zuran, 08:30, at the 4x default: the Command view's reading, the eye 3 m (scaled) up."
+  },
+  "eye-zuran-1x": {
+   "clock": "08:30",
+   "phase": 2,
+   "mode": "terrain",
+   "presentation": "watch",
+   "camera": {
+    "pos": [
+     -81.5,
+     0.78,
+     -58
+    ],
+    "clearance": 0.034
+   },
+   "groundSelfCheck": 0,
+   "figures": {
+    "count": 0,
+    "maxErr": 0,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": null
+   },
+   "standards": {
+    "count": 0,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 18,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 6
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 113,
+     "triangles": 225880,
+     "points": 0,
+     "lines": 10640
+    },
+    "total": {
+     "calls": 124,
+     "triangles": 225895,
+     "points": 0,
+     "lines": 10640
+    },
+    "layer": {
+     "items": 50,
+     "placed": 18,
+     "leaders": 5,
+     "dropped": 6,
+     "occluded": 0,
+     "offscreen": 26,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:goldbach",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:satschan",
+      "t:kobelnitz",
+      "t:menitz"
+     ],
+     "ms": 1.1000000000931323,
+     "nodes": 55
+    },
+    "camera": {
+     "clamps": 1,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 1102
+    },
+    "memory": {
+     "geometries": 242,
+     "textures": 41
+    }
+   },
+   "layer": {
+    "items": 50,
+    "placed": 18,
+    "leaders": 5,
+    "dropped": 6,
+    "droppedIds": [
+     "t:goldbach",
+     "t:telnitz",
+     "t:sokolnitz",
+     "t:satschan",
+     "t:kobelnitz",
+     "t:menitz"
+    ],
+    "occluded": 0,
+    "offscreen": 26,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 55,
+    "ms": 0.8,
+    "texts": 21,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.8978,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 92,
+    "hasRow": true,
+    "switchInRow": true,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 6,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 9,
+    "share": 0.051
+   },
+   "smokePuffs": true,
+   "eyeLevel": {
+    "on": true,
+    "dy": 0.04747,
+    "want": 0.04747,
+    "atHQ": true
+   },
+   "pixels": {
+    "samples": 323200,
+    "nearBlack": 0,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 102
+   },
+   "textContrast": {
+    "texts": 21,
+    "min": 11.36,
+    "belowAA": [],
+    "rawSectionE": 5.2
+   },
+   "confShare": {
+    "samples": 295598,
+    "share": 0
+   },
+   "unobstructed720": 0.8722,
+   "focus720": 0,
+   "ms": 32931,
+   "note": "The same at true scale (1x): the eye 3 m above the ground as drawn, the relief honest."
+  },
+  "plans-overview": {
+   "clock": "09:30",
+   "phase": 4,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -38.81,
+     533.15,
+     66.16
+    ],
+    "clearance": 534.859
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 6204,
+    "maxErr": 0.0001,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "kienmayer sinks 0.00"
+   },
+   "standards": {
+    "count": 142,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 45,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 12
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": true,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": true,
+   "firstRunBox": null,
+   "dispatchBox": [
+    18,
+    136.84375,
+    277,
+    1532.828125
+   ],
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 845,
+     "triangles": 2556514,
+     "points": 0,
+     "lines": 10722
+    },
+    "total": {
+     "calls": 863,
+     "triangles": 2556543,
+     "points": 0,
+     "lines": 10722
+    },
+    "layer": {
+     "items": 56,
+     "placed": 45,
+     "leaders": 30,
+     "dropped": 11,
+     "occluded": 0,
+     "offscreen": 0,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "n:ahq",
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran",
+      "t:goldbach",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd",
+      "t:satschan"
+     ],
+     "ms": 1.400000000372529,
+     "nodes": 158
+    },
+    "camera": {
+     "clamps": 2,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 1612
+    },
+    "memory": {
+     "geometries": 327,
+     "textures": 50
+    }
+   },
+   "layer": {
+    "items": 56,
+    "placed": 45,
+    "leaders": 30,
+    "dropped": 11,
+    "droppedIds": [
+     "n:ahq",
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:santon",
+     "t:zuran",
+     "t:goldbach",
+     "t:telnitz",
+     "t:sokolnitz",
+     "t:augezd",
+     "t:satschan"
+    ],
+    "occluded": 0,
+    "offscreen": 0,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 158,
+    "ms": 1.4,
+    "texts": 47,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.7036,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1600,
+    900
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false
+   },
+   "heads": {
+    "heads": 12,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 0,
+    "share": 0
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 254019,
+    "nearBlack": 0.0002,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 53.9
+   },
+   "textContrast": {
+    "texts": 47,
+    "min": 8.46,
+    "belowAA": [],
+    "rawSectionE": 5.34
+   },
+   "confShare": {
+    "samples": 176531,
+    "share": 0.0235
+   },
+   "routes": {
+    "routes": 14,
+    "items": [
+     56,
+     56
+    ],
+    "dropped": [
+     11,
+     11
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.46,
+    "share": 0
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     56,
+     56
+    ],
+    "dropped": [
+     11,
+     11
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.46,
+    "share": 0.0273
+   },
+   "unobstructed720": 0.6288,
+   "focus720": 0,
+   "ms": 98823,
+   "note": "The Plans overlay with both plans (chosen in the Plans tab; the rail back on its Now tab), at the Overview vantage, Study, 09:30."
+  },
+  "opening-1-laptop": {
+   "clock": "04:00",
+   "phase": 0,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -230,
+     134.78,
+     211
+    ],
+    "clearance": 136.487
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 5958,
+    "maxErr": 0.0001,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "lang sinks 0.00"
+   },
+   "standards": {
+    "count": 140,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 21,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 10
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": false,
+   "dispatchVisible": false,
+   "firstRunBox": null,
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 744,
+     "triangles": 2500324,
+     "points": 0,
+     "lines": 10586
+    },
+    "total": {
+     "calls": 755,
+     "triangles": 2500339,
+     "points": 0,
+     "lines": 10586
+    },
+    "layer": {
+     "items": 32,
+     "placed": 21,
+     "leaders": 4,
+     "dropped": 10,
+     "occluded": 0,
+     "offscreen": 1,
+     "underPanel": 0,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:santon",
+      "t:zuran",
+      "t:goldbach",
+      "t:telnitz",
+      "t:sokolnitz",
+      "t:augezd",
+      "t:austerlitz"
+     ],
+     "ms": 4.7000000001862645,
+     "nodes": 56
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 831
+    },
+    "memory": {
+     "geometries": 205,
+     "textures": 31
+    }
+   },
+   "layer": {
+    "items": 32,
+    "placed": 21,
+    "leaders": 4,
+    "dropped": 10,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:santon",
+     "t:zuran",
+     "t:goldbach",
+     "t:telnitz",
+     "t:sokolnitz",
+     "t:augezd",
+     "t:austerlitz"
+    ],
+    "occluded": 0,
+    "offscreen": 1,
+    "underPanel": 0,
+    "keepMissing": [],
+    "nodes": 56,
+    "ms": 0.9,
+    "texts": 25,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.517,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1280,
+    720
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": true
+   },
+   "heads": {
+    "heads": 10,
+    "hiddenOverQuarter": 0,
+    "list": []
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 0,
+    "share": 0
+   },
+   "smokePuffs": true,
+   "opening": {
+    "want": 0,
+    "on": true,
+    "k": 0,
+    "stop": 0,
+    "clock": 240
+   },
+   "pixels": {
+    "samples": 119389,
+    "nearBlack": 0.0004,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 49.3
+   },
+   "textContrast": {
+    "texts": 25,
+    "min": 8.5,
+    "belowAA": [],
+    "rawSectionE": 5.31
+   },
+   "confShare": {
+    "samples": 59197,
+    "share": 0.0456
+   },
+   "routes": {
+    "routes": 10,
+    "items": [
+     32,
+     32
+    ],
+    "dropped": [
+     10,
+     10
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.5,
+    "share": 0.0058
+   },
+   "skeleton": {
+    "anchors": 180,
+    "legs": 148,
+    "items": [
+     32,
+     32
+    ],
+    "dropped": [
+     10,
+     10
+    ],
+    "sameDrops": true,
+    "belowAA": [],
+    "minContrast": 8.5,
+    "share": 0.0441
+   },
+   "unobstructed720": 0.517,
+   "focus720": 0,
+   "ms": 71968,
+   "note": "The opening's first step at 1280 x 720."
+  },
+  "narrow-390": {
+   "clock": "04:00",
+   "phase": 0,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -38.79,
+     863.39,
+     103.33
+    ],
+    "clearance": 866.776
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 5958,
+    "maxErr": 0.0001,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "lang sinks 0.00"
+   },
+   "standards": {
+    "count": 140,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 12,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 10
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": true,
+   "dispatchVisible": false,
+   "firstRunBox": [
+    16,
+    413.53125,
+    374,
+    652
+   ],
+   "dispatchBox": null,
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 744,
+     "triangles": 2500324,
+     "points": 0,
+     "lines": 10586
+    },
+    "total": {
+     "calls": 756,
+     "triangles": 2500341,
+     "points": 0,
+     "lines": 10586
+    },
+    "layer": {
+     "items": 32,
+     "placed": 12,
+     "leaders": 9,
+     "dropped": 6,
+     "occluded": 0,
+     "offscreen": 0,
+     "underPanel": 14,
+     "keepMissing": [],
+     "dropped_": [
+      "o:IV Column → Kobelnitz",
+      "o:V Column counter-marches north",
+      "t:pratzen",
+      "t:vinohrady",
+      "t:santon",
+      "t:zuran"
+     ],
+     "ms": 1.7000000001862645,
+     "nodes": 56
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 810
+    },
+    "memory": {
+     "geometries": 205,
+     "textures": 31
+    }
+   },
+   "layer": {
+    "items": 32,
+    "placed": 12,
+    "leaders": 9,
+    "dropped": 6,
+    "droppedIds": [
+     "o:IV Column → Kobelnitz",
+     "o:V Column counter-marches north",
+     "t:pratzen",
+     "t:vinohrady",
+     "t:santon",
+     "t:zuran"
+    ],
+    "occluded": 0,
+    "offscreen": 0,
+    "underPanel": 14,
+    "keepMissing": [],
+    "nodes": 56,
+    "ms": 0.7,
+    "texts": 15,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.4603,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": false,
+    "docked": false,
+    "legendOpen": false,
+    "tab": "oob"
+   },
+   "viewport": [
+    390,
+    844
+   ],
+   "timeline": {
+    "height": 174,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false
+   },
+   "heads": {
+    "heads": 10,
+    "hiddenOverQuarter": 8,
+    "list": [
+     "casing head 100% hidden",
+     "al head 100% hidden",
+     "casing head 100% hidden",
+     "al head 100% hidden",
+     "casing head 100% hidden",
+     "al head 100% hidden",
+     "casing head 86% hidden",
+     "al head 100% hidden"
+    ]
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 0,
+    "share": 0
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 37849,
+    "nearBlack": 0.0148,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 30.1
+   },
+   "textContrast": {
+    "texts": 15,
+    "min": 7.98,
+    "belowAA": [],
+    "rawSectionE": 5.32
+   },
+   "unobstructed720": 0.5207,
+   "focus720": 0,
+   "ms": 8961,
+   "note": "The first screen at 390 x 844, undocked: recorded, not a supported layout (decision 122)."
+  },
+  "first-run-laptop": {
+   "clock": "04:00",
+   "phase": 0,
+   "mode": "terrain",
+   "presentation": "study",
+   "camera": {
+    "pos": [
+     -38.81,
+     515.16,
+     64.17
+    ],
+    "clearance": 516.821
+   },
+   "groundSelfCheck": 0.000001,
+   "figures": {
+    "count": 5958,
+    "maxErr": 0.0001,
+    "meanErr": 0,
+    "over005": 0,
+    "worst": "lang sinks 0.00"
+   },
+   "standards": {
+    "count": 140,
+    "maxErr": 0
+   },
+   "labels": {
+    "visible": 19,
+    "pairs": {},
+    "examples": [],
+    "overPanel": [],
+    "overHead": [],
+    "heads": 10
+   },
+   "smokeEdgeAlpha": 0,
+   "dustEdgeAlpha": 0,
+   "mist": {
+    "visible": false
+   },
+   "selection": null,
+   "highlightOn": false,
+   "drawerVisible": false,
+   "chipVisible": false,
+   "firstRunVisible": true,
+   "dispatchVisible": true,
+   "firstRunBox": [
+    563,
+    466.71875,
+    1103,
+    659
+   ],
+   "dispatchBox": [
+    18,
+    136.84375,
+    277,
+    1383.171875
+   ],
+   "stats": {
+    "state": "idle",
+    "world": {
+     "calls": 744,
+     "triangles": 2500324,
+     "points": 0,
+     "lines": 10586
+    },
+    "total": {
+     "calls": 756,
+     "triangles": 2500341,
+     "points": 0,
+     "lines": 10586
+    },
+    "layer": {
+     "items": 32,
+     "placed": 19,
+     "leaders": 3,
+     "dropped": 5,
+     "occluded": 0,
+     "offscreen": 0,
+     "underPanel": 8,
+     "keepMissing": [],
+     "dropped_": [
+      "t:pratzen",
+      "t:vinohrady",
+      "t:pratzeberg",
+      "t:zuran",
+      "t:goldbach"
+     ],
+     "ms": 0.7000000001862645,
+     "nodes": 47
+    },
+    "camera": {
+     "clamps": 0,
+     "violations": 0
+    },
+    "seating": {
+     "blocks": 829
+    },
+    "memory": {
+     "geometries": 205,
+     "textures": 31
+    }
+   },
+   "layer": {
+    "items": 32,
+    "placed": 19,
+    "leaders": 3,
+    "dropped": 5,
+    "droppedIds": [
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:zuran",
+     "t:goldbach"
+    ],
+    "occluded": 0,
+    "offscreen": 0,
+    "underPanel": 8,
+    "keepMissing": [],
+    "nodes": 47,
+    "ms": 0.5,
+    "texts": 23,
+    "belowFloor": [],
+    "minPx": 11.5
+   },
+   "unobstructed": 0.558,
+   "legendOverDispatch": 0,
+   "paper": null,
+   "legendOverPanels": 0,
+   "docking": {
+    "hasNowTab": true,
+    "dispatchInRail": true,
+    "docked": true,
+    "legendOpen": false,
+    "tab": "now"
+   },
+   "viewport": [
+    1366,
+    768
+   ],
+   "timeline": {
+    "height": 90.5,
+    "hasRow": true,
+    "switchInRow": false,
+    "switchOpacity": 1,
+    "capDerived": false
+   },
+   "heads": {
+    "heads": 10,
+    "hiddenOverQuarter": 4,
+    "list": [
+     "casing head 100% hidden",
+     "al head 100% hidden",
+     "casing head 100% hidden",
+     "al head 100% hidden"
+    ]
+   },
+   "focus": 0,
+   "smoke": {
+    "sprites": 0,
+    "share": 0
+   },
+   "smokePuffs": true,
+   "pixels": {
+    "samples": 146795,
+    "nearBlack": 0.0023,
+    "solidBlack": 0,
+    "solidBlocks": 0,
+    "meanLum": 34.8
+   },
+   "textContrast": {
+    "texts": 23,
+    "min": 8.65,
+    "belowAA": [],
+    "rawSectionE": 5.41
+   },
+   "unobstructed720": 0.5207,
+   "focus720": 0,
+   "ms": 21312,
+   "note": "The same on a common laptop viewport."
+  }
+ },
+ "failures": [
+  "narrow-390: unobstructed map 46.0%, below the baseline 46.8%"
+ ],
+ "selfTest": {
+  "ms": 503356,
+  "ok": true,
+  "checks": [
+   {
+    "name": "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
+    "ok": true,
+    "detail": "largest |groundY - displayHeight| at mesh vertices 4.7e-7"
+   },
+   {
+    "name": "camera: every fixed and computed view is above the ground (at 1×)",
+    "ok": true,
+    "detail": "35 fixed views (vantages, phases, chapters, tour stops, the paper map's preset), lowest 19.2 units at vantage zuran; 473 centring views, lowest 46.1 at centring on rg_inf at 07:30"
+   },
+   {
+    "name": "camera: glides between tour stops, phases, chapters and vantages stay above the ground (at 1×)",
+    "ok": true,
+    "detail": "1150 positions sampled; lowest clearance 19.22 units; the floor lifted 0 of them"
+   },
+   {
+    "name": "camera: the opening's glides (step to step, both ways, and every step to the Overview) stay above the ground (at 1×)",
+    "ok": true,
+    "detail": "250 positions sampled; lowest clearance 38.90 units; the floor lifted 0 of them"
+   },
+   {
+    "name": "camera: orbiting at the lowest pitch and closest zoom never enters the ground (at 1×)",
+    "ok": true,
+    "detail": "840 orbit positions around 35 targets; lowest clearance 1.80 units"
+   },
+   {
+    "name": "camera controls: a left-drag pans (the grabbed ground point within 1 px of the pointer during and after), the wheel zooms toward the cursor (within 1 px, a step the floor shortens included), a double-click centres the point in the free rectangle (within 2 px), a right-drag orbits; the eye at or above the floor after every step (at 1×)",
+    "ok": true,
+    "detail": "5 vantages: pan worst 0.001 px during (50 steps; 0 the floor lifted, counted apart), 0.000 px after; wheel worst 0.006 px over 60 steps (0 shortened by the floor); double-click 0.000 px from the free centre; right-drag orbits 5 of 5; below the floor 0; a pan move 0.012 ms on average over 59 (budget 2 ms)"
+   },
+   {
+    "name": "camera controls: the keys on the focused map layer pan, zoom and turn without stepping the clock; one finger pans, two pinch and twist (at 1×)",
+    "ok": true,
+    "detail": "the right arrow moves the target 22 units; + brings the eye to 0.8 of its distance; Shift + left arrow turns 15°; clock unchanged; one-finger pan 0 px; a pinch apart brings the eye to 0.472 of its distance and the twist turns 17.19°"
+   },
+   {
+    "name": "camera: no path placed the eye below the floor before a frame (at 1×)",
+    "ok": true,
+    "detail": "render-time guard count 0"
+   },
+   {
+    "name": "figures: every visible man, horse and standard stands on the drawn ground (at 1×)",
+    "ok": true,
+    "detail": "78 states (10 phases and 3 marching moments; terrain and hybrid; no highlight and two highlight families), 0 figure placements; worst 0.0000 units"
+   },
+   {
+    "name": "derived readings unchanged: the plateau at 04:00, both army totals, the movement audit (at 1×)",
+    "ok": true,
+    "detail": "Allied on the plateau at 04:00 = 38,700 (changelog 38,700); totals within 85,400 and 73,000 at 57 moments; movement audit 0 findings"
+   },
+   {
+    "name": "overlays: every arrow, line and boundary vertex stands at its lift above the drawn ground (at 1×)",
+    "ok": true,
+    "detail": "18556 vertices in 316 draped meshes over the 10 phases; worst |y - groundY - lift| 0.0000 (shaft in phase 4)"
+   },
+   {
+    "name": "heads: every Allied arrow head is the notched chevron, every French head the plain triangle (at 1×)",
+    "ok": true,
+    "detail": "35 heads (20 Allied chevrons, notch 0.38 of the head's length ahead of its base; 15 French plain)"
+   },
+   {
+    "name": "cover: along each class's edge the drawn cover changes within 20 m of the model's edge (at 1×)",
+    "ok": true,
+    "detail": "field 3.9 m, meadow 7.2 m, marsh 3.9 m, water 3.9 m, wood 3.9 m, village 3.9 m, vineyard 3.9 m, track 3.9 m (pixels disagreeing: 948 of 7142400)"
+   },
+   {
+    "name": "roads and streams: every vertex stands at its lift above the drawn ground, and no edge cuts under it (at 1×)",
+    "ok": true,
+    "detail": "43932 vertices in 44 road and stream meshes; worst |y - groundY - lift| 5.9e-8 (bank); 0 of 223302 edge midpoints under the ground"
+   },
+   {
+    "name": "map layer: 0 overlaps, and nothing over an interface panel or an arrow head (at 1×)",
+    "ok": true,
+    "detail": "224 items drawn in 9 states (the first-run card, the paper map and a tour stop on each map among them), against 96 arrow heads"
+   },
+   {
+    "name": "map layer: the selection, the highlighted family and the labels of live events are never dropped (at 1×)",
+    "ok": true,
+    "detail": "17 such items in view, all drawn"
+   },
+   {
+    "name": "map layer: every formation on the map is focusable and named (name, side, echelon, strength, status, grade); Enter selects it (at 1×)",
+    "ok": true,
+    "detail": "104 formation items; Enter on n:ahq selects it"
+   },
+   {
+    "name": "map layer: every dropped formation is reachable from the keyboard and by hovering its position (at 1×)",
+    "ok": true,
+    "detail": "6 dropped formations tested"
+   },
+   {
+    "name": "map layer: lays out only in a drawn frame (render on demand) (at 1×)",
+    "ok": true,
+    "detail": "no pass without a frame; one pass per frame, in 9 states"
+   },
+   {
+    "name": "legend: never over the dispatch, and its rows are what the view draws (at 1×)",
+    "ok": true,
+    "detail": "9 states"
+   },
+   {
+    "name": "paper map: the ground is drawn flat and hillshaded at its own factor, whatever the setting (at 1×)",
+    "ok": true,
+    "detail": "largest |drawn height| 0; hillshade ×6 (palette checksum 1482362186); the setting kept for the landscape: ×1"
+   },
+   {
+    "name": "paper map: true north is up (within 0.5°) (at 1×)",
+    "ok": true,
+    "detail": "GEOREF.NORTH on screen 0.000° from up (the frame is rotated 17.42°)"
+   },
+   {
+    "name": "paper map: one scale across the view (four places within 1%), and the scale bar correct to 1% (at 1×)",
+    "ok": true,
+    "detail": "px per true km at the Pratzeberg, Sokolnitz, the Santon, Satschan: 23.52, 23.51, 23.55, 23.50 (spread 0.202%); scale bar 5 km = 118.0 px against 117.6 (error 0.34%)"
+   },
+   {
+    "name": "paper map: the whole field is framed inside the part of the screen no panel covers (at 1×)",
+    "ok": true,
+    "detail": "1184 of 1184 points of the modelled ground on screen and clear of every panel; 23.5 px per km in the free rectangle 312,120,1352,608"
+   },
+   {
+    "name": "cover: along each class's edge the drawn cover changes within 20 m of the model's edge (the paper map's ground) (at 1×)",
+    "ok": true,
+    "detail": "field 3.9 m, meadow 7.2 m, marsh 3.9 m, water 3.9 m, wood 3.9 m, village 3.9 m, vineyard 3.9 m, track 3.9 m (pixels disagreeing: 948 of 7142400)"
+   },
+   {
+    "name": "cover: on the paper map, with its woods and village footprints, every class's drawn edge within 20 m of its edge (at 1×)",
+    "ok": true,
+    "detail": "field 3.9 m, meadow 7.2 m, marsh 3.9 m, water 3.9 m, wood 3.9 m, village 3.9 m, vineyard 3.9 m, track 3.9 m (pixels disagreeing: 1026 of 7142400); the village footprints are the model's cover disc (owner decision): 12.29 km², of which the model classes water 1.94, marsh 1.31 km² (drawn under them on the landscape)"
+   },
+   {
+    "name": "paper map: roads and streams draped on the flat sheet, every vertex at its lift (at 1×)",
+    "ok": true,
+    "detail": "43932 vertices in 44 meshes; worst |y - groundY - lift| 9.5e-9; 0 of 223302 edge midpoints under the sheet"
+   },
+   {
+    "name": "paper map: no figures, roofs, chimneys, houses or 3D trees drawn; hillshade, contours, village footprints, water, woods, draped arrows and counters drawn (at 1×)",
+    "ok": true,
+    "detail": "20 village footprints, 12 woods, 35 draped overlay meshes, 21 counters"
+   },
+   {
+    "name": "paper map: a drag pans, the wheel zooms toward the cursor (the ground under it within 1 px), the keys pan; nothing orbits (at 1×)",
+    "ok": true,
+    "detail": "drag 139 px: the ground point under the pointer ends 0.000 px from it; three wheel steps (1.327 times closer): 0.196 px; the right arrow key pans 92 px, clock unchanged; north still 0.000° from up; the landscape eye moved 0.000000"
+   },
+   {
+    "name": "paper map: leaving it redraws the relief at the setting (at 1×)",
+    "ok": true,
+    "detail": "|groundY - displayHeight| at mesh vertices 4.7e-7 at ×1"
+   },
+   {
+    "name": "light: the drawn sun is the computed sun, its altitude corrected to the display factor (decision 68) (at 1×)",
+    "ok": true,
+    "detail": "23 of 40 clocks with the sun up: worst azimuth 0.000 deg, worst altitude against tan(alt) x 1 0.000 deg, the shadow-casting light against it 0.000 deg; at 1x against the true altitude 0.000 deg"
+   },
+   {
+    "name": "light: the shadow map covers the drawn ground under the free rectangle from every vantage (at 1×)",
+    "ok": true,
+    "detail": "254 ground points in 5 vantages, box 560 units at the last"
+   },
+   {
+    "name": "valley fog: its top drawn at the knowledge model's 238.2 m (hAt -0.8) while the mist is whole, at its cap below and clear above (section C.6) (at 1×)",
+    "ok": true,
+    "detail": "at 08:00, 08:30 and 08:44: the top at 238.2 m; 1 m under it the cap (0.55), 20 m over it at most a quarter of it"
+   },
+   {
+    "name": "haze: none at the orbit target from every vantage; the fitted Overview's ground at most 0.45 (section B.4) (at 1×)",
+    "ok": true,
+    "detail": "the fitted Overview at 09:30: mean haze over its ground 0.014"
+   },
+   {
+    "name": "Follow while playing: the day at ½× never under the floor, every live event in the free rectangle in at least 80% of its minutes, the ground's speed across the screen within 150 px/s, drops never above 19 (section D.4) (at 1×)",
+    "ok": true,
+    "detail": "played in 210.0 s; 0 steps under the floor; every live event inside in 92.7% of 841 minutes; the target's largest speed 150.0 px/s; drops at most 13 (08:40)"
+   },
+   {
+    "name": "the opening's played stretches at 4x never under the floor, the target's speed across the screen within 150 px/s, drops never above 19; each ends at its stop, the glide from Follow's view above the floor with no lift (decision 123) (at 1×)",
+    "ok": true,
+    "detail": "467 steps of 100 ms; 0 under the floor; the target's largest speed 150.0 px/s; drops at most 12 (08:40); arrivals at their stops: true, true, true; the arrival glides: 75 positions, lowest clearance 38.90 units, 0 lifts"
+   },
+   {
+    "name": "draw-on: a derived arrow's marched part ends on its formation's path at the formation's progress, within 0.5 units, without a head, over the whole arrow drawn faint; at full strength once its leg is complete (section D.4; decision 83) (at 1×)",
+    "ok": true,
+    "detail": "17 derived arrows, 340 clocks inside their legs: the tip at most 0.086 units from the formation (Saint-Hilaire at 08:49)"
+   },
+   {
+    "name": "ice: the meres and their shore ice lie under the lowest drawn ground on their own edge (section F.1) (at 1×)",
+    "ok": true,
+    "detail": "the highest, the shore ice at -76.5,103.5: -0.030 units against the edge's lowest ground"
+   },
+   {
+    "name": "smoke: every puff's lower edge stands above the drawn ground across its width (section E.3) (at 1×)",
+    "ok": true,
+    "detail": "54 puffs in two views (the Pratzen vantage at 09:50, Sokolnitz at 08:20): 0 under the ground; the lowest 1.08 units above it"
+   },
+   {
+    "name": "spatial confidence: every grade's mark is draped, each vertex at its lift above the drawn ground and no point of it under the ground (section A.5) (at 1×)",
+    "ok": true,
+    "detail": "93 marks at 05:00, 09:50 and 14:40, 319240 points sampled every 0.5 units across their triangles: 0 under the ground; the lowest 0.250 units above it (gqg (A) at 05:00); vertices within 7.4e-7 of their lift"
+   },
+   {
+    "name": "evidence skeleton: every leg lies on the drawn ground, each piece inside one of its triangles at the lift, no point under it (section B.4) (at 1×)",
+    "ok": true,
+    "detail": "5328 pieces of 148 legs, 14796 points sampled every 0.5 units: 0 under the ground; the lowest 0.4000 units above it (-77.0, -55.7); every point within 8.6e-7 of the lift 0.4"
+   },
+   {
+    "name": "evidence skeleton: every anchor mark is a patch of the drawn ground's cells at its lift, no point of it under the ground (section B.4) (at 1×)",
+    "ok": true,
+    "detail": "180 anchors, 174720 points sampled every 0.5 units across their triangles: 0 under; the lowest 0.350 above; vertices within 7.1e-7 of the lift"
+   },
+   {
+    "name": "eye level: the eye at the headquarters' plotted position, 3 m (scaled) above the drawn ground; no formation the reading does not know drawn, no enemy figures the model hides; the caption; an orbit leaves it for the floor (section D.6) (at 1×)",
+    "ok": true,
+    "detail": "Napoleon's headquarters at 08:30: the eye 0.0475 units above the ground (want 0.0475, 3 m at ×1), at the headquarters true, near plane 0.05; 6 enemy formations not known, 0 of them drawn; 0 enemy figures drawn, 0 hidden from the headquarters; caption shown; after an orbit: left true, near 1, at its floor true, floor violations 0"
+   },
+   {
+    "name": "ordered routes: every dash lies on the drawn ground, each piece inside one of its triangles at the lift, no point under it (section E.4) (at 1×)",
+    "ok": true,
+    "detail": "14 routes, 3934 triangles, 31362 points sampled every 0.5 units: 0 under the ground; the lowest 0.3000 units above it; every point within 6.5e-7 of the lift 0.3"
+   },
+   {
+    "name": "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 4×)",
+    "ok": true,
+    "detail": "largest |groundY - displayHeight| at mesh vertices 1.9e-6"
+   },
+   {
+    "name": "camera: every fixed and computed view is above the ground (at 4×)",
+    "ok": true,
+    "detail": "35 fixed views (vantages, phases, chapters, tour stops, the paper map's preset), lowest 23.2 units at vantage zuran; 473 centring views, lowest 47.6 at place menitz"
+   },
+   {
+    "name": "camera: glides between tour stops, phases, chapters and vantages stay above the ground (at 4×)",
+    "ok": true,
+    "detail": "1150 positions sampled; lowest clearance 22.37 units; the floor lifted 0 of them"
+   },
+   {
+    "name": "camera: the opening's glides (step to step, both ways, and every step to the Overview) stay above the ground (at 4×)",
+    "ok": true,
+    "detail": "250 positions sampled; lowest clearance 38.72 units; the floor lifted 0 of them"
+   },
+   {
+    "name": "camera: orbiting at the lowest pitch and closest zoom never enters the ground (at 4×)",
+    "ok": true,
+    "detail": "840 orbit positions around 35 targets; lowest clearance 1.80 units"
+   },
+   {
+    "name": "camera controls: a left-drag pans (the grabbed ground point within 1 px of the pointer during and after), the wheel zooms toward the cursor (within 1 px, a step the floor shortens included), a double-click centres the point in the free rectangle (within 2 px), a right-drag orbits; the eye at or above the floor after every step (at 4×)",
+    "ok": true,
+    "detail": "5 vantages: pan worst 0.000 px during (50 steps; 0 the floor lifted, counted apart), 0.000 px after; wheel worst 0.005 px over 60 steps (0 shortened by the floor); double-click 0.000 px from the free centre; right-drag orbits 5 of 5; below the floor 0; a pan move 0.008 ms on average over 59 (budget 2 ms)"
+   },
+   {
+    "name": "camera controls: the keys on the focused map layer pan, zoom and turn without stepping the clock; one finger pans, two pinch and twist (at 4×)",
+    "ok": true,
+    "detail": "the right arrow moves the target 20.94 units; + brings the eye to 0.8 of its distance; Shift + left arrow turns 15°; clock unchanged; one-finger pan 0 px; a pinch apart brings the eye to 0.473 of its distance and the twist turns 17.19°"
+   },
+   {
+    "name": "camera: no path placed the eye below the floor before a frame (at 4×)",
+    "ok": true,
+    "detail": "render-time guard count 0"
+   },
+   {
+    "name": "figures: every visible man, horse and standard stands on the drawn ground (at 4×)",
+    "ok": true,
+    "detail": "78 states (10 phases and 3 marching moments; terrain and hybrid; no highlight and two highlight families), 474948 figure placements; worst 0.0002 units (dok at 13:38, terrain)"
+   },
+   {
+    "name": "derived readings unchanged: the plateau at 04:00, both army totals, the movement audit (at 4×)",
+    "ok": true,
+    "detail": "Allied on the plateau at 04:00 = 38,700 (changelog 38,700); totals within 85,400 and 73,000 at 57 moments; movement audit 0 findings"
+   },
+   {
+    "name": "overlays: every arrow, line and boundary vertex stands at its lift above the drawn ground (at 4×)",
+    "ok": true,
+    "detail": "18556 vertices in 316 draped meshes over the 10 phases; worst |y - groundY - lift| 0.0000 (shaft in phase 4)"
+   },
+   {
+    "name": "heads: every Allied arrow head is the notched chevron, every French head the plain triangle (at 4×)",
+    "ok": true,
+    "detail": "35 heads (20 Allied chevrons, notch 0.38 of the head's length ahead of its base; 15 French plain)"
+   },
+   {
+    "name": "cover: along each class's edge the drawn cover changes within 20 m of the model's edge (at 4×)",
+    "ok": true,
+    "detail": "field 3.9 m, meadow 7.2 m, marsh 3.9 m, water 3.9 m, wood 3.9 m, village 3.9 m, vineyard 3.9 m, track 3.9 m (pixels disagreeing: 948 of 7142400)"
+   },
+   {
+    "name": "roads and streams: every vertex stands at its lift above the drawn ground, and no edge cuts under it (at 4×)",
+    "ok": true,
+    "detail": "43932 vertices in 44 road and stream meshes; worst |y - groundY - lift| 2.4e-7 (stream); 0 of 223302 edge midpoints under the ground"
+   },
+   {
+    "name": "map layer: 0 overlaps, and nothing over an interface panel or an arrow head (at 4×)",
+    "ok": true,
+    "detail": "227 items drawn in 9 states (the first-run card, the paper map and a tour stop on each map among them), against 96 arrow heads"
+   },
+   {
+    "name": "map layer: the selection, the highlighted family and the labels of live events are never dropped (at 4×)",
+    "ok": true,
+    "detail": "17 such items in view, all drawn"
+   },
+   {
+    "name": "map layer: every formation on the map is focusable and named (name, side, echelon, strength, status, grade); Enter selects it (at 4×)",
+    "ok": true,
+    "detail": "106 formation items; Enter on n:ahq selects it"
+   },
+   {
+    "name": "map layer: every dropped formation is reachable from the keyboard and by hovering its position (at 4×)",
+    "ok": true,
+    "detail": "5 dropped formations tested"
+   },
+   {
+    "name": "map layer: lays out only in a drawn frame (render on demand) (at 4×)",
+    "ok": true,
+    "detail": "no pass without a frame; one pass per frame, in 9 states"
+   },
+   {
+    "name": "legend: never over the dispatch, and its rows are what the view draws (at 4×)",
+    "ok": true,
+    "detail": "9 states"
+   },
+   {
+    "name": "paper map: the ground is drawn flat and hillshaded at its own factor, whatever the setting (at 4×)",
+    "ok": true,
+    "detail": "largest |drawn height| 0; hillshade ×6 (palette checksum 1482362186); the setting kept for the landscape: ×4"
+   },
+   {
+    "name": "paper map: true north is up (within 0.5°) (at 4×)",
+    "ok": true,
+    "detail": "GEOREF.NORTH on screen 0.000° from up (the frame is rotated 17.42°)"
+   },
+   {
+    "name": "paper map: one scale across the view (four places within 1%), and the scale bar correct to 1% (at 4×)",
+    "ok": true,
+    "detail": "px per true km at the Pratzeberg, Sokolnitz, the Santon, Satschan: 23.52, 23.51, 23.55, 23.50 (spread 0.202%); scale bar 5 km = 118.0 px against 117.6 (error 0.34%)"
+   },
+   {
+    "name": "paper map: the whole field is framed inside the part of the screen no panel covers (at 4×)",
+    "ok": true,
+    "detail": "1184 of 1184 points of the modelled ground on screen and clear of every panel; 23.5 px per km in the free rectangle 312,120,1352,608"
+   },
+   {
+    "name": "cover: along each class's edge the drawn cover changes within 20 m of the model's edge (the paper map's ground) (at 4×)",
+    "ok": true,
+    "detail": "field 3.9 m, meadow 7.2 m, marsh 3.9 m, water 3.9 m, wood 3.9 m, village 3.9 m, vineyard 3.9 m, track 3.9 m (pixels disagreeing: 948 of 7142400)"
+   },
+   {
+    "name": "cover: on the paper map, with its woods and village footprints, every class's drawn edge within 20 m of its edge (at 4×)",
+    "ok": true,
+    "detail": "field 3.9 m, meadow 7.2 m, marsh 3.9 m, water 3.9 m, wood 3.9 m, village 3.9 m, vineyard 3.9 m, track 3.9 m (pixels disagreeing: 1026 of 7142400); the village footprints are the model's cover disc (owner decision): 12.29 km², of which the model classes water 1.94, marsh 1.31 km² (drawn under them on the landscape)"
+   },
+   {
+    "name": "paper map: roads and streams draped on the flat sheet, every vertex at its lift (at 4×)",
+    "ok": true,
+    "detail": "43932 vertices in 44 meshes; worst |y - groundY - lift| 9.5e-9; 0 of 223302 edge midpoints under the sheet"
+   },
+   {
+    "name": "paper map: no figures, roofs, chimneys, houses or 3D trees drawn; hillshade, contours, village footprints, water, woods, draped arrows and counters drawn (at 4×)",
+    "ok": true,
+    "detail": "20 village footprints, 12 woods, 35 draped overlay meshes, 21 counters"
+   },
+   {
+    "name": "paper map: a drag pans, the wheel zooms toward the cursor (the ground under it within 1 px), the keys pan; nothing orbits (at 4×)",
+    "ok": true,
+    "detail": "drag 139 px: the ground point under the pointer ends 0.000 px from it; three wheel steps (1.327 times closer): 0.196 px; the right arrow key pans 92 px, clock unchanged; north still 0.000° from up; the landscape eye moved 0.000000"
+   },
+   {
+    "name": "paper map: leaving it redraws the relief at the setting (at 4×)",
+    "ok": true,
+    "detail": "|groundY - displayHeight| at mesh vertices 1.9e-6 at ×4"
+   },
+   {
+    "name": "light: the drawn sun is the computed sun, its altitude corrected to the display factor (decision 68) (at 4×)",
+    "ok": true,
+    "detail": "23 of 40 clocks with the sun up: worst azimuth 0.000 deg, worst altitude against tan(alt) x 4 0.000 deg, the shadow-casting light against it 0.000 deg"
+   },
+   {
+    "name": "light: the shadow map covers the drawn ground under the free rectangle from every vantage (at 4×)",
+    "ok": true,
+    "detail": "252 ground points in 5 vantages, box 560 units at the last"
+   },
+   {
+    "name": "valley fog: its top drawn at the knowledge model's 238.2 m (hAt -0.8) while the mist is whole, at its cap below and clear above (section C.6) (at 4×)",
+    "ok": true,
+    "detail": "at 08:00, 08:30 and 08:44: the top at 238.2 m; 1 m under it the cap (0.55), 20 m over it at most a quarter of it"
+   },
+   {
+    "name": "haze: none at the orbit target from every vantage; the fitted Overview's ground at most 0.25 (section B.4) (at 4×)",
+    "ok": true,
+    "detail": "the fitted Overview at 09:30: mean haze over its ground 0.018"
+   },
+   {
+    "name": "Follow while playing: the day at ½× never under the floor, every live event in the free rectangle in at least 80% of its minutes, the ground's speed across the screen within 150 px/s, drops never above 19 (section D.4) (at 4×)",
+    "ok": true,
+    "detail": "played in 210.0 s; 0 steps under the floor; every live event inside in 92.2% of 841 minutes; the target's largest speed 150.0 px/s; drops at most 12 (07:50)"
+   },
+   {
+    "name": "the opening's played stretches at 4x never under the floor, the target's speed across the screen within 150 px/s, drops never above 19; each ends at its stop, the glide from Follow's view above the floor with no lift (decision 123) (at 4×)",
+    "ok": true,
+    "detail": "467 steps of 100 ms; 0 under the floor; the target's largest speed 150.0 px/s; drops at most 12 (08:30); arrivals at their stops: true, true, true; the arrival glides: 75 positions, lowest clearance 38.72 units, 0 lifts"
+   },
+   {
+    "name": "draw-on: a derived arrow's marched part ends on its formation's path at the formation's progress, within 0.5 units, without a head, over the whole arrow drawn faint; at full strength once its leg is complete (section D.4; decision 83) (at 4×)",
+    "ok": true,
+    "detail": "17 derived arrows, 340 clocks inside their legs: the tip at most 0.086 units from the formation (Saint-Hilaire at 08:49)"
+   },
+   {
+    "name": "ice: the meres and their shore ice lie under the lowest drawn ground on their own edge (section F.1) (at 4×)",
+    "ok": true,
+    "detail": "the highest, the shore ice at -36,85.5: -0.047 units against the edge's lowest ground"
+   },
+   {
+    "name": "smoke: every puff's lower edge stands above the drawn ground across its width (section E.3) (at 4×)",
+    "ok": true,
+    "detail": "54 puffs in two views (the Pratzen vantage at 09:50, Sokolnitz at 08:20): 0 under the ground; the lowest 0.20 units above it"
+   },
+   {
+    "name": "spatial confidence: every grade's mark is draped, each vertex at its lift above the drawn ground and no point of it under the ground (section A.5) (at 4×)",
+    "ok": true,
+    "detail": "93 marks at 05:00, 09:50 and 14:40, 319240 points sampled every 0.5 units across their triangles: 0 under the ground; the lowest 0.250 units above it (gqg (A) at 05:00); vertices within 3.0e-6 of their lift"
+   },
+   {
+    "name": "evidence skeleton: every leg lies on the drawn ground, each piece inside one of its triangles at the lift, no point under it (section B.4) (at 4×)",
+    "ok": true,
+    "detail": "5328 pieces of 148 legs, 14796 points sampled every 0.5 units: 0 under the ground; the lowest 0.4000 units above it (-77.0, -55.7); every point within 3.4e-6 of the lift 0.4"
+   },
+   {
+    "name": "evidence skeleton: every anchor mark is a patch of the drawn ground's cells at its lift, no point of it under the ground (section B.4) (at 4×)",
+    "ok": true,
+    "detail": "180 anchors, 174720 points sampled every 0.5 units across their triangles: 0 under; the lowest 0.350 above; vertices within 2.9e-6 of the lift"
+   },
+   {
+    "name": "eye level: the eye at the headquarters' plotted position, 3 m (scaled) above the drawn ground; no formation the reading does not know drawn, no enemy figures the model hides; the caption; an orbit leaves it for the floor (section D.6) (at 4×)",
+    "ok": true,
+    "detail": "Napoleon's headquarters at 08:30: the eye 0.1899 units above the ground (want 0.1899, 3 m at ×4), at the headquarters true, near plane 0.05; 6 enemy formations not known, 0 of them drawn; 5 enemy figures drawn, 0 hidden from the headquarters; caption shown; after an orbit: left true, near 1, at its floor true, floor violations 0"
+   },
+   {
+    "name": "ordered routes: every dash lies on the drawn ground, each piece inside one of its triangles at the lift, no point under it (section E.4) (at 4×)",
+    "ok": true,
+    "detail": "14 routes, 3934 triangles, 31362 points sampled every 0.5 units: 0 under the ground; the lowest 0.3000 units above it; every point within 2.7e-6 of the lift 0.3"
+   },
+   {
+    "name": "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 10.33×)",
+    "ok": true,
+    "detail": "largest |groundY - displayHeight| at mesh vertices 4.9e-6"
+   },
+   {
+    "name": "camera: every fixed and computed view is above the ground (at 10.33×)",
+    "ok": true,
+    "detail": "35 fixed views (vantages, phases, chapters, tour stops, the paper map's preset), lowest 20.6 units at vantage zuran; 473 centring views, lowest 38.7 at centring on constantine at 07:30"
+   },
+   {
+    "name": "camera: glides between tour stops, phases, chapters and vantages stay above the ground (at 10.33×)",
+    "ok": true,
+    "detail": "1150 positions sampled; lowest clearance 18.67 units; the floor lifted 0 of them"
+   },
+   {
+    "name": "camera: the opening's glides (step to step, both ways, and every step to the Overview) stay above the ground (at 10.33×)",
+    "ok": true,
+    "detail": "250 positions sampled; lowest clearance 38.21 units; the floor lifted 0 of them"
+   },
+   {
+    "name": "camera: orbiting at the lowest pitch and closest zoom never enters the ground (at 10.33×)",
+    "ok": true,
+    "detail": "840 orbit positions around 35 targets; lowest clearance 1.80 units"
+   },
+   {
+    "name": "camera controls: a left-drag pans (the grabbed ground point within 1 px of the pointer during and after), the wheel zooms toward the cursor (within 1 px, a step the floor shortens included), a double-click centres the point in the free rectangle (within 2 px), a right-drag orbits; the eye at or above the floor after every step (at 10.33×)",
+    "ok": true,
+    "detail": "5 vantages: pan worst 0.001 px during (50 steps; 0 the floor lifted, counted apart), 0.001 px after; wheel worst 0.015 px over 60 steps (2 shortened by the floor); double-click 0.000 px from the free centre; right-drag orbits 5 of 5; below the floor 0; a pan move 0.007 ms on average over 59 (budget 2 ms)"
+   },
+   {
+    "name": "camera controls: the keys on the focused map layer pan, zoom and turn without stepping the clock; one finger pans, two pinch and twist (at 10.33×)",
+    "ok": true,
+    "detail": "the right arrow moves the target 26.86 units; + brings the eye to 0.8 of its distance; Shift + left arrow turns 15°; clock unchanged; one-finger pan 0 px; a pinch apart brings the eye to 0.474 of its distance and the twist turns 17.19°"
+   },
+   {
+    "name": "camera: no path placed the eye below the floor before a frame (at 10.33×)",
+    "ok": true,
+    "detail": "render-time guard count 0"
+   },
+   {
+    "name": "figures: every visible man, horse and standard stands on the drawn ground (at 10.33×)",
+    "ok": true,
+    "detail": "78 states (10 phases and 3 marching moments; terrain and hybrid; no highlight and two highlight families), 474948 figure placements; worst 0.0005 units (kollo at 10:53, terrain)"
+   },
+   {
+    "name": "derived readings unchanged: the plateau at 04:00, both army totals, the movement audit (at 10.33×)",
+    "ok": true,
+    "detail": "Allied on the plateau at 04:00 = 38,700 (changelog 38,700); totals within 85,400 and 73,000 at 57 moments; movement audit 0 findings"
+   },
+   {
+    "name": "overlays: every arrow, line and boundary vertex stands at its lift above the drawn ground (at 10.33×)",
+    "ok": true,
+    "detail": "18556 vertices in 316 draped meshes over the 10 phases; worst |y - groundY - lift| 0.0000 (shaft in phase 4)"
+   },
+   {
+    "name": "heads: every Allied arrow head is the notched chevron, every French head the plain triangle (at 10.33×)",
+    "ok": true,
+    "detail": "35 heads (20 Allied chevrons, notch 0.38 of the head's length ahead of its base; 15 French plain)"
+   },
+   {
+    "name": "cover: along each class's edge the drawn cover changes within 20 m of the model's edge (at 10.33×)",
+    "ok": true,
+    "detail": "field 3.9 m, meadow 7.2 m, marsh 3.9 m, water 3.9 m, wood 3.9 m, village 3.9 m, vineyard 3.9 m, track 3.9 m (pixels disagreeing: 948 of 7142400)"
+   },
+   {
+    "name": "roads and streams: every vertex stands at its lift above the drawn ground, and no edge cuts under it (at 10.33×)",
+    "ok": true,
+    "detail": "43932 vertices in 44 road and stream meshes; worst |y - groundY - lift| 4.8e-7 (bank); 0 of 223302 edge midpoints under the ground"
+   },
+   {
+    "name": "map layer: 0 overlaps, and nothing over an interface panel or an arrow head (at 10.33×)",
+    "ok": true,
+    "detail": "233 items drawn in 9 states (the first-run card, the paper map and a tour stop on each map among them), against 96 arrow heads"
+   },
+   {
+    "name": "map layer: the selection, the highlighted family and the labels of live events are never dropped (at 10.33×)",
+    "ok": true,
+    "detail": "16 such items in view, all drawn"
+   },
+   {
+    "name": "map layer: every formation on the map is focusable and named (name, side, echelon, strength, status, grade); Enter selects it (at 10.33×)",
+    "ok": true,
+    "detail": "106 formation items; Enter on n:ahq selects it"
+   },
+   {
+    "name": "map layer: every dropped formation is reachable from the keyboard and by hovering its position (at 10.33×)",
+    "ok": true,
+    "detail": "7 dropped formations tested"
+   },
+   {
+    "name": "map layer: lays out only in a drawn frame (render on demand) (at 10.33×)",
+    "ok": true,
+    "detail": "no pass without a frame; one pass per frame, in 9 states"
+   },
+   {
+    "name": "legend: never over the dispatch, and its rows are what the view draws (at 10.33×)",
+    "ok": true,
+    "detail": "9 states"
+   },
+   {
+    "name": "paper map: the ground is drawn flat and hillshaded at its own factor, whatever the setting (at 10.33×)",
+    "ok": true,
+    "detail": "largest |drawn height| 0; hillshade ×6 (palette checksum 1482362186); the setting kept for the landscape: ×10.33"
+   },
+   {
+    "name": "paper map: true north is up (within 0.5°) (at 10.33×)",
+    "ok": true,
+    "detail": "GEOREF.NORTH on screen 0.000° from up (the frame is rotated 17.42°)"
+   },
+   {
+    "name": "paper map: one scale across the view (four places within 1%), and the scale bar correct to 1% (at 10.33×)",
+    "ok": true,
+    "detail": "px per true km at the Pratzeberg, Sokolnitz, the Santon, Satschan: 23.52, 23.51, 23.55, 23.50 (spread 0.202%); scale bar 5 km = 118.0 px against 117.6 (error 0.34%)"
+   },
+   {
+    "name": "paper map: the whole field is framed inside the part of the screen no panel covers (at 10.33×)",
+    "ok": true,
+    "detail": "1184 of 1184 points of the modelled ground on screen and clear of every panel; 23.5 px per km in the free rectangle 312,120,1352,608"
+   },
+   {
+    "name": "cover: along each class's edge the drawn cover changes within 20 m of the model's edge (the paper map's ground) (at 10.33×)",
+    "ok": true,
+    "detail": "field 3.9 m, meadow 7.2 m, marsh 3.9 m, water 3.9 m, wood 3.9 m, village 3.9 m, vineyard 3.9 m, track 3.9 m (pixels disagreeing: 948 of 7142400)"
+   },
+   {
+    "name": "cover: on the paper map, with its woods and village footprints, every class's drawn edge within 20 m of its edge (at 10.33×)",
+    "ok": true,
+    "detail": "field 3.9 m, meadow 7.2 m, marsh 3.9 m, water 3.9 m, wood 3.9 m, village 3.9 m, vineyard 3.9 m, track 3.9 m (pixels disagreeing: 1026 of 7142400); the village footprints are the model's cover disc (owner decision): 12.29 km², of which the model classes water 1.94, marsh 1.31 km² (drawn under them on the landscape)"
+   },
+   {
+    "name": "paper map: roads and streams draped on the flat sheet, every vertex at its lift (at 10.33×)",
+    "ok": true,
+    "detail": "43932 vertices in 44 meshes; worst |y - groundY - lift| 9.5e-9; 0 of 223302 edge midpoints under the sheet"
+   },
+   {
+    "name": "paper map: no figures, roofs, chimneys, houses or 3D trees drawn; hillshade, contours, village footprints, water, woods, draped arrows and counters drawn (at 10.33×)",
+    "ok": true,
+    "detail": "20 village footprints, 12 woods, 35 draped overlay meshes, 21 counters"
+   },
+   {
+    "name": "paper map: a drag pans, the wheel zooms toward the cursor (the ground under it within 1 px), the keys pan; nothing orbits (at 10.33×)",
+    "ok": true,
+    "detail": "drag 139 px: the ground point under the pointer ends 0.000 px from it; three wheel steps (1.327 times closer): 0.196 px; the right arrow key pans 92 px, clock unchanged; north still 0.000° from up; the landscape eye moved 0.000000"
+   },
+   {
+    "name": "paper map: leaving it redraws the relief at the setting (at 10.33×)",
+    "ok": true,
+    "detail": "|groundY - displayHeight| at mesh vertices 4.9e-6 at ×10.33"
+   },
+   {
+    "name": "light: the drawn sun is the computed sun, its altitude corrected to the display factor (decision 68) (at 10.33×)",
+    "ok": true,
+    "detail": "23 of 40 clocks with the sun up: worst azimuth 0.000 deg, worst altitude against tan(alt) x 10.33 0.000 deg, the shadow-casting light against it 0.000 deg"
+   },
+   {
+    "name": "light: the shadow map covers the drawn ground under the free rectangle from every vantage (at 10.33×)",
+    "ok": true,
+    "detail": "247 ground points in 5 vantages, box 576 units at the last"
+   },
+   {
+    "name": "valley fog: its top drawn at the knowledge model's 238.2 m (hAt -0.8) while the mist is whole, at its cap below and clear above (section C.6) (at 10.33×)",
+    "ok": true,
+    "detail": "at 08:00, 08:30 and 08:44: the top at 238.2 m; 1 m under it the cap (0.55), 20 m over it at most a quarter of it"
+   },
+   {
+    "name": "haze: none at the orbit target from every vantage; the fitted Overview's ground at most 0.45 (section B.4) (at 10.33×)",
+    "ok": true,
+    "detail": "the fitted Overview at 09:30: mean haze over its ground 0.023"
+   },
+   {
+    "name": "Follow while playing: the day at ½× never under the floor, every live event in the free rectangle in at least 80% of its minutes, the ground's speed across the screen within 150 px/s, drops never above 19 (section D.4) (at 10.33×)",
+    "ok": true,
+    "detail": "played in 210.0 s; 0 steps under the floor; every live event inside in 91.4% of 841 minutes; the target's largest speed 150.0 px/s; drops at most 12 (05:00)"
+   },
+   {
+    "name": "the opening's played stretches at 4x never under the floor, the target's speed across the screen within 150 px/s, drops never above 19; each ends at its stop, the glide from Follow's view above the floor with no lift (decision 123) (at 10.33×)",
+    "ok": true,
+    "detail": "467 steps of 100 ms; 0 under the floor; the target's largest speed 150.0 px/s; drops at most 12 (08:40); arrivals at their stops: true, true, true; the arrival glides: 75 positions, lowest clearance 38.21 units, 0 lifts"
+   },
+   {
+    "name": "draw-on: a derived arrow's marched part ends on its formation's path at the formation's progress, within 0.5 units, without a head, over the whole arrow drawn faint; at full strength once its leg is complete (section D.4; decision 83) (at 10.33×)",
+    "ok": true,
+    "detail": "17 derived arrows, 340 clocks inside their legs: the tip at most 0.086 units from the formation (Saint-Hilaire at 08:49)"
+   },
+   {
+    "name": "ice: the meres and their shore ice lie under the lowest drawn ground on their own edge (section F.1) (at 10.33×)",
+    "ok": true,
+    "detail": "the highest, the shore ice at -36,85.5: -0.075 units against the edge's lowest ground"
+   },
+   {
+    "name": "smoke: every puff's lower edge stands above the drawn ground across its width (section E.3) (at 10.33×)",
+    "ok": true,
+    "detail": "54 puffs in two views (the Pratzen vantage at 09:50, Sokolnitz at 08:20): 0 under the ground; the lowest 0.18 units above it"
+   },
+   {
+    "name": "spatial confidence: every grade's mark is draped, each vertex at its lift above the drawn ground and no point of it under the ground (section A.5) (at 10.33×)",
+    "ok": true,
+    "detail": "93 marks at 05:00, 09:50 and 14:40, 319240 points sampled every 0.5 units across their triangles: 0 under the ground; the lowest 0.250 units above it (gqg (A) at 05:00); vertices within 7.5e-6 of their lift"
+   },
+   {
+    "name": "evidence skeleton: every leg lies on the drawn ground, each piece inside one of its triangles at the lift, no point under it (section B.4) (at 10.33×)",
+    "ok": true,
+    "detail": "5328 pieces of 148 legs, 14796 points sampled every 0.5 units: 0 under the ground; the lowest 0.4000 units above it (-77.0, -55.7); every point within 8.8e-6 of the lift 0.4"
+   },
+   {
+    "name": "evidence skeleton: every anchor mark is a patch of the drawn ground's cells at its lift, no point of it under the ground (section B.4) (at 10.33×)",
+    "ok": true,
+    "detail": "180 anchors, 174720 points sampled every 0.5 units across their triangles: 0 under; the lowest 0.350 above; vertices within 7.6e-6 of the lift"
+   },
+   {
+    "name": "eye level: the eye at the headquarters' plotted position, 3 m (scaled) above the drawn ground; no formation the reading does not know drawn, no enemy figures the model hides; the caption; an orbit leaves it for the floor (section D.6) (at 10.33×)",
+    "ok": true,
+    "detail": "Napoleon's headquarters at 08:30: the eye 0.4902 units above the ground (want 0.4902, 3 m at ×10.33), at the headquarters true, near plane 0.05; 6 enemy formations not known, 0 of them drawn; 5 enemy figures drawn, 0 hidden from the headquarters; caption shown; after an orbit: left true, near 1, at its floor true, floor violations 0"
+   },
+   {
+    "name": "ordered routes: every dash lies on the drawn ground, each piece inside one of its triangles at the lift, no point under it (section E.4) (at 10.33×)",
+    "ok": true,
+    "detail": "14 routes, 3934 triangles, 31362 points sampled every 0.5 units: 0 under the ground; the lowest 0.3000 units above it; every point within 7.1e-6 of the lift 0.3"
+   },
+   {
+    "name": "relief: the drawn Pratzeberg-Sokolnitz relief is s times the model's at every factor",
+    "ok": true,
+    "detail": "1× 1.853 (s x model 1.853; analytic 1.861); 4× 7.413 (s x model 7.413; analytic 7.444); 10.33× 19.138 (s x model 19.138; analytic 19.216) units"
+   },
+   {
+    "name": "going: the going classes (from the model slope) are identical at every factor",
+    "ok": true,
+    "detail": "palette checksum 1× 1124006188, 4× 1124006188, 10.33× 1124006188; thresholds 0.88 and 1.70 true degrees"
+   },
+   {
+    "name": "standards: the top over its denominator is the sourced ratio (Russian and Austrian standards on foot: staff and finial over the stature, the man to his hat's top) or the provisional 1.6 (the figure's top) for every standard (decision 106)",
+    "ok": true,
+    "detail": "1× 142 standards (78 sourced), worst deviation 0.0000 (kienmayer (at_grenz)); 4× 142 standards (78 sourced), worst deviation 0.0000 (dok (ru_inf)); 10.33× 142 standards (78 sourced), worst deviation 0.0000 (bag (ru_inf))"
+   },
+   {
+    "name": "legend: states the current factor, relative to true scale, and the two named symbol scales",
+    "ok": true,
+    "detail": "1×: \"relief at true scale: formations drawn as their footprints | counters and names at symbol scale\"; 4×: \"relief drawn ×4 vertically (1× is true scale) | symbols: figures and standards about 45–70× life, buildings and trees about 10–15×\"; 10.33×: \"relief drawn ×10.33 vertically (1× is true scale) | symbols: figures and standards about 45–70× life, buildings and trees about 10–15×\""
+   },
+   {
+    "name": "no stale exaggeration: the sources sheet, place dossier and legend state the display factor, never GEOREF.EXAG as drawn",
+    "ok": true,
+    "detail": "checked at 1, 4, 10.33 (the model's own 10.32642489706367 appears only when it is the display factor)"
+   },
+   {
+    "name": "true scale: at 1× no figure, standard, building, tree or scrub is drawn, and every formation on the field has its footprint",
+    "ok": true,
+    "detail": "31 formations on the field at 09:07, 31 footprints, 0 figure blocks, 0 landscape layers drawn"
+   },
+   {
+    "name": "paper map: identical at every relief setting (flat ground, the same hillshade, the same draped overlays and the same cover; decision 19)",
+    "ok": true,
+    "detail": "1×: hillshade 1482362186, overlays 1965885051, cover 1949641029, 23.520 px/km; 4×: hillshade 1482362186, overlays 1965885051, cover 1949641029, 23.520 px/km; 10.33×: hillshade 1482362186, overlays 1965885051, cover 1949641029, 23.520 px/km"
+   },
+   {
+    "name": "light: the sun disc is drawn exactly while the sun's upper limb is above the horizon, at its true altitude",
+    "ok": true,
+    "detail": "every 5 minutes 04:00-18:00: drawn from 07:45 to 16:10 (sunrise and sunset, apparent time: 07:45, 16:15)"
+   },
+   {
+    "name": "light: continuous in the clock, no step at a phase boundary",
+    "ok": true,
+    "detail": "largest one-minute change at a phase boundary 0.0194 (08:00), elsewhere 0.2244"
+   },
+   {
+    "name": "light: no shadow toe in the grade, no baked hillshade on the landscape (decision 70)",
+    "ok": true,
+    "detail": "composite without the toe; the ground shader colours the landscape as the flat ground"
+   },
+   {
+    "name": "valley fog: the Command view's 'uncertain' is exactly the enemy in sight under the drawn fog's top (phases 0-2)",
+    "ok": true,
+    "detail": "75 formation readings from both headquarters"
+   },
+   {
+    "name": "valley fog: its amount follows PHASES[].mist continuously, whole while the mist exceeds 0.5",
+    "ok": true,
+    "detail": "largest one-minute change 0.055"
+   },
+   {
+    "name": "atmosphere: none on the paper map; the fog's recession (fogShift) gone",
+    "ok": true,
+    "detail": "on the paper map haze 0, valley fog 0; fogShift undefined"
+   },
+   {
+    "name": "dwell: the day plays in its computed length at every speed, one dwell at each event start after 04:00 (section D.4)",
+    "ok": true,
+    "detail": "0.5× 210.0 s (computed 210.0, 21 dwells); 1× 126.0 s (computed 126.0, 21 dwells); 2× 83.5 s (computed 83.5, 21 dwells); 4× 61.2 s (computed 61.3, 21 dwells); 21 starts after 04:00 (22 in all); at ½× 3 min 30 s"
+   },
+   {
+    "name": "dwell: scrubbing never dwells (a move of the clock while playing, the time keys)",
+    "ok": true,
+    "detail": "a move past 14:30 while playing: no dwell; the → key stops the clock"
+   },
+   {
+    "name": "reduced motion: the dwell kept, the camera moved only at event starts, every arrow whole (section D.4)",
+    "ok": true,
+    "detail": "21 dwells over the day; 08:00-11:00 at ½×: 8 camera moves, 8 at an event start; 1 arrows of the phase whole"
+   },
+   {
+    "name": "smoke: a formation smokes only with a fighting phase status, and at full amount only inside a naming event's window (section E.3; decision 77)",
+    "ok": true,
+    "detail": "20 clocks: 134 smoking formation-samples, 22 at full, 87 at the residue 0.25"
+   },
+   {
+    "name": "spatial confidence: every formation on the field is drawn at its position grade (confAt: between anchors the weaker one's), A as its footprint, B as its frontage doubled and C as a zone of its frontage's radius, in its side's colour (section A.5; decisions 86-88)",
+    "ok": true,
+    "detail": "20 clocks, 620 formation-samples: A 312, B 227, C 81"
+   },
+   {
+    "name": "spatial confidence: in the landscape every drawn name carries its position grade's badge (B, C), as the counter does, and an A name none (section A.4 item 4)",
+    "ok": true,
+    "detail": "15 names drawn at 05:00, 09:50 and 14:40, 11 with a badge"
+   },
+   {
+    "name": "spatial confidence: on the paper map no B frontage or C zone is larger on screen than a quarter of the free rectangle's shorter side, unless the footprint itself is, and none smaller than its footprint (section A.4 item 2)",
+    "ok": true,
+    "detail": "close on Sokolnitz at 08:20: 16 B and C marks, 16 held at the cap of 122.0 px or their footprint, the largest 997.4 px"
+   },
+   {
+    "name": "evidence skeleton: the scope (decision 90): with no selection exactly the legs whose window meets the phase and their anchors; the selected formation's family; the whole day",
+    "ok": true,
+    "detail": "legs/anchors by phase 27/48, 38/60, 43/66, 42/68, 48/77, 55/83, 63/92, 73/104, 51/82, 28/56; c_iv's family 23/27; the whole day 148/180"
+   },
+   {
+    "name": "evidence skeleton: bound to the track: every mark a plotted anchor at its position, graded by stateAt with its grade's mask; every leg on legPath, through its anchors and every via (section B.4)",
+    "ok": true,
+    "detail": "180 anchors, 148 legs through 327 anchors and vias; every piece within 5.9e-6 units of its leg"
+   },
+   {
+    "name": "evidence skeleton: the grade by shape, not hue or dash: A a filled disc, B a ring, C a smaller open ring, a tick toward north for an explicit time; the legs one solid line (decisions 4, 15)",
+    "ok": true,
+    "detail": "alpha at the centre and on the ring: A 255/255, B 0/255, C 0/255/0 (C's outer ring 0); the tick 255 timed / untimed 0; the legs one LineSegments, undashed"
+   },
+   {
+    "name": "evidence skeleton: every anchor about 9 px across at its distance (section B.3)",
+    "ok": true,
+    "detail": "180 anchors drawn from the Field vantage, 8.50-9.52 px (steps of 1.12)"
+   },
+   {
+    "name": "evidence skeleton: ground drawing, not a map-layer item: the same items and drops with it on and off; hover names an anchor's clock and grade; the legend's row while it is drawn",
+    "ok": true,
+    "detail": "map-layer items 48 on / 48 off, drops 7 / 7; hover: “Imperial Headquarters: plotted at 04:00, position A (evidence skeleton)”; the legend's row shown on, hidden off; removed when off true"
+   },
+   {
+    "name": "evidence skeleton: drawn on the paper map in its own annotation colour; not drawn in the Clean view",
+    "ok": true,
+    "detail": "paper map: 180 anchors (180 drawn), colour the paper annotation token; Clean: none"
+   },
+   {
+    "name": "Whose eyes?: the reading follows the clock: every 10 minutes, for both headquarters, the reading drawn is the rule evaluated afresh at that minute (decision 92)",
+    "ok": true,
+    "detail": "2636 enemy readings over the day: 0 differ; the cache keyed by the phase would have drawn 115 of them otherwise"
+   },
+   {
+    "name": "Whose eyes?: every formation reported only is drawn as the C zone with no figures, and its name or counter, where drawn, carries the “?” (section D.6)",
+    "ok": true,
+    "detail": "Napoleon's headquarters at 05:00: 3 reported only (prz, rg_inf, rg_cav); marked / drawn: terrain 3/3, hybrid 3/3, staff 0/0"
+   },
+   {
+    "name": "Whose eyes?: one fog threshold: the headquarters' viewshed marks fogged exactly its visible ground below the valley fog's top (ATMO.FOG_TOP_H, the rule's -0.8, drawn at 238.2 m) while the mist exceeds 0.5 (section D.6)",
+    "ok": true,
+    "detail": "Napoleon's headquarters at 07:00: 30419 cells in sight, 6472 of them fogged, 0 against the rule's threshold; 1 formations reported only by the fog rule, 0 on a fogged cell; at 10:00 (mist 0.05) 0 fogged"
+   },
+   {
+    "name": "Whose eyes?: the dossier names which part decides; the timeline's button cycles everyone, Napoleon, the Allied headquarters, and the Command tab's group and the eye's vantage follow it",
+    "ok": true,
+    "detail": "Allied headquarters at 10:00: 14 not known; the pills: Not known (no line of sight) | Not known (authored limit); the button: fr:Eyes: Napoleon:true, al:Eyes: Allied HQ:true, none:Eyes: everyone:false; the eye's vantage hidden with everyone true"
+   },
+   {
+    "name": "ordered routes: each drawn on its column's PLANS route (every point within half its width), dashed, depth-tested in the transparent pass so the figures stand on it, at 30% of the side's colour; nothing dimmed (section E.4; decision 15)",
+    "ok": true,
+    "detail": "14 routes at 09:30; the dashed share of each one's length 0.600-0.600 (duty 0.6, the joints' overlaps and gaps aside); depth-tested true; the highlight untouched"
+   },
+   {
+    "name": "ordered routes: the scope (decision 93): a selection's family's columns; else every column while a formation it names is on the field before its last anchor; in phase 0, while the arrows are drawn, not the four columns the axis arrows draw",
+    "ok": true,
+    "detail": "routes drawn by phase 10, 14, 14, 14, 14, 14, 14, 14, 13, 0; Saint-Hilaire's family fr1,fr5; the axis arrows' columns al:1 (I Column → Telnitz, 25 m), al:2 (II Column → Sokolnitz, 45 m), al:3 (III Column → the castle, 45 m), al:4 (IV Column → Kobelnitz, 46 m); with the arrows off at 04:10 they are drawn: 4 of 4"
+   },
+   {
+    "name": "ordered routes: the dossier gives the largest distance from the route, derived; the legend's row while drawn; drawn on the paper map; none in Clean; off removes them",
+    "ok": true,
+    "detail": "Miloradovich: “Ordered route4th Column: at most 4.8 km from it derived (the largest distance over the day…” (4.80 km); the legend true/true; paper map 14 routes; Clean none true; off removes them true"
+   },
+   {
+    "name": "day-track: every formation's inset bound to its track (its anchors in order with their grades, its legs through every via, the dot at its position), north up, one scale with its bar to 1%; an aggregate its leaves' days (section F.4; decision 95)",
+    "ok": true,
+    "detail": "32 formations, 180 anchors (7 marks for two anchors closer than 8 px: heightguns, sthilaire, sthilaire, vandamme, vandamme, friant, kollo); the dot within 0.0e+0 px; north 0.000° from up; the bar within 0.000%; every mark inside the frame; IV Corps its 4 formations"
+   },
+   {
+    "name": "day-track: the anchors a keyboard group in time order, each named by its clock and grade; a click sets the clock to its arrival with the selection kept; the legs solid, the ordered routes dashed (decisions 15, 95)",
+    "ok": true,
+    "detail": "Saint-Hilaire: 7 anchor marks, named true, tab stops 0,-1,-1,-1,-1,-1,-1; a click on the second: the clock 09:15 (its arrival 09:15), still selected true; the arrow key moves on true; 2 ordered routes dashed true, legs solid true"
+   },
+   {
+    "name": "day-track: its marks at 3:1 or more and its text at AA against the paper ground it is drawn on (WCAG 1.4.11, 1.4.3)",
+    "ok": true,
+    "detail": "the anchors, legs and text (the paper ink) 9.06; the French deep 4.70, the Allied deep 4.13, against #E8DFC6"
+   },
+   {
+    "name": "figures: every figure drawn as its class's claims say, its coat KIT's colour for the class (times the jitter) or its nation's symbol colour where the table does not settle it; legwear, headgear, cuirass, horse and the gunner's figure likewise (decisions 98, 102-104, 109)",
+    "ok": true,
+    "detail": "3266 figures in 106 class sets (33 generic); headgear by figures: bicorne 980, generic 884, shako 1174, metal helmet 70, bearskin 74, turban 10, crested helmet 52, fur cap 12, czapka 10"
+   },
+   {
+    "name": "figures: each drawn battalion, squadron or rider takes a class in proportion to its formation's recorded composition (decision 100: within one unit of its share)",
+    "ok": true,
+    "detail": "33 unit groups in 32 blocks"
+   },
+   {
+    "name": "identity: every formation drawn as figures in the free rectangle carries a side cue on screen, in Study, Watch and Clean, with Position confidence on and off (decision 107)",
+    "ok": true,
+    "detail": "158 formation-views at 09:50 from the Pratzen vantage and close on the Pratzeberg (study+ 25, study- 25, watch+ 27, watch- 27, map+ 27, map- 27)"
+   },
+   {
+    "name": "legend: the rows are what is drawn: the nation colours as the counters' only where counters are drawn; the figures' and the standards' rows where figures are; the footprint rows under decision 107's footprint",
+    "ok": true,
+    "detail": "the landscape with Position confidence on and off, Landscape with counters, the paper map"
+   },
+   {
+    "name": "dossier: the full dossier's Dress names each class with its source and grade, or \"not settled\" or \"disputed\", and how its figures are drawn (section 4.3 item 7)",
+    "ok": true,
+    "detail": "32 formations' Dress"
+   },
+   {
+    "name": "cover: the drawn classes are the same at every relief setting and on the paper map",
+    "ok": true,
+    "detail": "1× 514156805 (paper map 514156805); 4× 514156805 (paper map 514156805); 10.33× 514156805 (paper map 514156805)"
+   },
+   {
+    "name": "docked layout: from 1080 px the dispatch is the rail's Now tab; below it a card, and the Now tab hidden",
+    "ok": true,
+    "detail": "1366 px wide: docked true, the dispatch in the rail, the Now tab shown"
+   },
+   {
+    "name": "rail tabs: a tablist; the arrow keys, Home and End move between the tabs shown without stepping the clock",
+    "ok": true,
+    "detail": "5 tabs, every key as expected"
+   },
+   {
+    "name": "a phase change is announced once by the polite live region, whichever tab is shown",
+    "ok": true,
+    "detail": "1 announcement: \"09:30 - 10:30. The Pratzen Strike: The crisis on the Pratzeberg.\" (the dispatch is not a live region)"
+   },
+   {
+    "name": "the dossier opens in the rail's column, down to the timebar; the tools and the legend do not move",
+    "ok": true,
+    "detail": "dossier 0,0,300,677, rail 0,0,300,677, timebar top 678"
+   },
+   {
+    "name": "paper map: the field is framed in the free rectangle where it is drawn largest",
+    "ok": true,
+    "detail": "23.5 px per km in 704 x 600 px; the largest free rectangle, 1040 x 488 px, gives 19.1"
+   },
+   {
+    "name": "timeline: at most 92 px; the act bands and phase ticks at their share of one time axis; their labels at 12 px or more",
+    "ok": true,
+    "detail": "90.5 px tall at 1366 x 768; 5 acts and 10 phases placed"
+   },
+   {
+    "name": "timeline: the hour numerals clear of the event markers and of one another, inside the timebar",
+    "ok": true,
+    "detail": "8 numerals, 25 event markers: 0 overlaps with a marker, 0 with one another, 0 below the timebar"
+   },
+   {
+    "name": "timeline: the current phase's label is always whole (decision 53)",
+    "ok": true,
+    "detail": "1366 px wide, each phase made current in turn; shortened while not current: The Pratzen, Olmutz road"
+   },
+   {
+    "name": "timeline: the slider's keys (arrows 10 min, Shift 60, PageUp and PageDown the phase starts, Home, End), one step each, and its value exposed",
+    "ok": true,
+    "detail": "8 keys from 10:00, each as expected; aria-valuenow and aria-valuetext current"
+   },
+   {
+    "name": "timeline: acts, phases and events are each one keyboard stop, the arrows stay in them; events named by clock and title; Play pressed while playing",
+    "ok": true,
+    "detail": "25 event markers in time order, each named; the clock unmoved by the groups' keys"
+   },
+   {
+    "name": "Watch: the presentation switch stands in the timeline's control row at full opacity; the caption carries the derived plateau reading (decision 60)",
+    "ok": true,
+    "detail": "in Watch: in the control row true, opacity 1, the derived reading shown; in Study: the switch back true, the caption's reading left to the Now tab"
+   },
+   {
+    "name": "spine: acts > phases > events built from the data; the chosen chapter's place marked on the axis",
+    "ok": true,
+    "detail": "25 events, 10 chapters, 9 tour stops placed in 10 phases; the chapter “cut” marked at 50.000% (its clock 50.000%; within 0.01, the style's own precision) (cleared after)"
+   },
+   {
+    "name": "spine: every theme and tour stop names its moments (phases or events); a theme opens on its principal moment and marks the others; stop 7 follows its theme (decision 52)",
+    "ok": true,
+    "detail": "10 themes naming 26 moments, 9 stops; the theme “cut” at 11:00, marking buxhowden-blind,pratzeberg; “guard” at 11:15; marks cleared after: true; stop 7 at 11:00 (its theme 11:00); 1 stop with its own clock (stop 4)"
+   },
+   {
+    "name": "timeline: each interval a bar from its start to its end (decision 89), none for an instant; at most four lanes, none overlapping in a lane, none over an hour numeral; the timebar's height unchanged",
+    "ok": true,
+    "detail": "11 bars for 11 intervals (14 instants without), edges within 1 px of their window; 4 lanes, 0 overlaps in a lane, 0 over a numeral; the timebar 90.5 px (90.5 before)"
+   },
+   {
+    "name": "timeline: the interval bars at 3:1 or more against the timebar, in the dark and the paper themes (WCAG 1.4.11, non-text contrast)",
+    "ok": true,
+    "detail": "dark fr over black 5.28, dark fr over white 4.86, dark al over black 5.71, dark al over white 5.26, paper fr over black 4.94, paper fr over white 5.43, paper al over black 4.34, paper al over white 4.77"
+   },
+   {
+    "name": "events: one event clock, the start, for the marker, the event keys, the themes' moments, the dwell and the dossier (decision 89)",
+    "ok": true,
+    "detail": "25 markers each at its start within 1 px; the dossier of columns-move goes to 04:00"
+   },
+   {
+    "name": "camera: the orbit target at the free rectangle's centre after each panel change (setViewOffset, eased as the loop does)",
+    "ok": true,
+    "detail": "Study, the Now tab 0.00 px (0 frames); a formation selected (the dossier in the rail) 0.00 px (0 frames); the dossier closed 0.00 px (0 frames); the legend opened 0.00 px (3 frames); the legend closed 0.00 px (3 frames); Watch 0.00 px (3 frames); Clean 0.00 px (2 frames); Study again 0.00 px (3 frames); the offset now (-149.0, 20.0) px"
+   },
+   {
+    "name": "camera: picking and the ground through the offset (a click on a counter's box selects it; groundAt's round trip within 1 px)",
+    "ok": true,
+    "detail": "the counter of gqg clicked at its box's centre: selected f:gqg; round trip worst 0.001 px over 31 points of the modelled ground (9 beyond it, on the apron, not counted)"
+   },
+   {
+    "name": "camera: Follow shows !freeCam after every camera path, as decision 47 sets it; a vantage's button is released when the eye leaves it",
+    "ok": true,
+    "detail": "14 paths (a vantage on, a pan off, Follow pressed on, the wheel off, a phase button on, a right-drag orbit off, an act button on, a double-click off, a chapter on, a centring from the order of battle off, a tour stop on, the keys on the map layer off, Follow pressed again on, Follow released off); the Field vantage pressed true, after a pan false"
+   },
+   {
+    "name": "camera: every vantage's target at the free rectangle's centre; the Overview fits the day's battle into the free rectangle and names its corps and armies (section B.4, as settled in 3D)",
+    "ok": true,
+    "detail": "field 0.00, zuran 0.00, plateau 0.00, allied 0.00, plan 0.00 px; the Overview: 8 of 8 points of the battle's extent (-161.0, -122.0, 83.5, 125.0) inside the free rectangle, at 578 units, naming 5 formations (gqg, ahq, buxhowden, lich, bag)"
+   },
+   {
+    "name": "camera: one tween chain: a centring made during a phase change is kept with Follow off; with Follow on the phase's view wins",
+    "ok": true,
+    "detail": "Follow off: the double-click's point ends 0.0e+0 units from the target; Follow on (a vantage glide in flight): the phase's view ends 0.0e+0 from its preset"
+   },
+   {
+    "name": "keys: every key the window and the map layer bind is a row of the key table and every row's keys reach it; other keys, keys with Ctrl, Meta or Alt, and Space and the arrows on a button reach none",
+    "ok": true,
+    "detail": "30 rows (20 bound by the two handlers, the rest by their own widgets or the pointer); 66 key presses reached their rows; unbound keys reaching a row: none; with a modifier: 0 of 4; Space, → and Shift+← on a focused button: no row (Space presses the button)"
+   },
+   {
+    "name": "keys: the “?” overlay lists every row of the key table in its groups; a modal dialog, focus moved in, kept in by Tab, and returned when Esc or “?” closes it",
+    "ok": true,
+    "detail": "30 rows listed of 30; opened by ? on the focused tour button: true, focus on its close button: true; Tab: help-body, then help-close; the arrow key inside it left the clock unchanged; Esc closed it: true, focus back on the tour button: true; the ? button opened it: true, ? closed it: true, focus back on that button: true"
+   },
+   {
+    "name": "names: the presentations, the ground and the layers labelled from one table (decision 50); identifiers unchanged",
+    "ok": true,
+    "detail": "study=Study, watch=Watch, map=Clean; terrain=Landscape, staff=Paper map, hybrid=Landscape with counters; the layers button “Layers…”, its panel “Layers and ground”"
+   },
+   {
+    "name": "symbols: event glyphs and objective markers at most 192 px on screen, and faded within 4 units of the eye (decision 57); drawn as before where smaller",
+    "ok": true,
+    "detail": "the eye 1.8 units from the live glyph “kamensky”: the largest symbol drawn 192.0 px; 1 of 1 glyphs within 4 units faded out; from the Field vantage every glyph at its authored size: true"
+   },
+   {
+    "name": "woods: every tree and every scrub of a wood stands inside the wood as the land cover has it",
+    "ok": true,
+    "detail": "1010 trees and 354 edge scrub of the woods, all where the drawn cover is wood (0 where the model's own class is not); not woods, and not tested: 184 trees round the villages, 202 bank scrub along the streams"
+   },
+   {
+    "name": "first run: the key names the marks that carry the sides, not coats (decision 108); the legend's swatches are the colours that draw them",
+    "ok": true,
+    "detail": "\"French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath them, and on the movement arrows. ...\""
+   },
+   {
+    "name": "first run: a modal dialog (focus on its primary action, Tab kept inside); docked, the Now tab and its derived tag beside it; Esc, the stay button and a press outside close it in place, focus on Play (decisions 111-113, 118-120)",
+    "ok": true,
+    "detail": "Tab, Tab, Shift+Tab: fr-close, fr-tour, fr-close; the Now tab, 1 derived tag(s) on screen; after Esc, the button and the primary: Play, Play, the opening's Next"
+   },
+   {
+    "name": "the opening: each step its tour stop, its words a TOUR field or a LABELS entry, one live message each; Finish, Skip and Esc from every step to 04:00, Study, the Overview, Play focused; a drag, a zoom and a key end it where it is (decisions 114, 115, 118)",
+    "ok": true,
+    "detail": "4 steps (tour stops 1, 6, 7, 8): Step 1 of 4: The battlefield, 04:00. | Step 2 of 4: The French strike, 08:45. | Step 3 of 4: The army divided, 11:00. | Step 4 of 4: The collapse, 14:30.; 13 ways out checked; the bar's arrows: opening,opening; reduced motion: at each frame within 5 ms"
+   },
+   {
+    "name": "the opening's played stretches: Next plays the clock at 4x to the next step and that stop is applied; the bar its own words or the dwell's event names; one message as it starts and one at the step; Pause and Space stop it; Next, Back, Skip and a key; the visitor's speed back (decision 123)",
+    "ok": true,
+    "detail": "3 stretches, each to its stop's clock with its theme; 19 dwell captions in the bar; messages: The clock plays on to step 2 of 4, 08:45. Pause stops it; Next goes straight there. | Step 2 of 4: The French strike, 08:45. | The clock plays on to step 3 of 4, 11:00. Pause stops it; Next goes straight there. | Step 3 of 4: The army divided, 11:00. | The clock plays on to step 4 of 4, 14:30. Pause stops it; Next goes straight there. | Step 4 of 4: The collapse, 14:30."
+   },
+   {
+    "name": "standards: who carries them and how many as the appearance table rules, per drawn battalion or squadron; none where it shows none, gives none, disputes them in the field or leaves the count open; no standard on a battery or a headquarters (section 6.3)",
+    "ok": true,
+    "detail": "148 standards on 32 blocks; 22 class sets with none"
+   },
+   {
+    "name": "standards: each cloth its colours entry's painting where a claim graded A or B gives it (the French 1804 lozenge, the Austrian ordinary colour), else plain in its nation's symbol colour (decisions 98, 105)",
+    "ok": true,
+    "detail": "lozenge 57, plain:fr 1, ordinary 16, plain:ru 74"
+   },
+   {
+    "name": "standards: each cloth in its sourced proportion (its sizes against the staff where both are measured); a finial exactly where one is read with its size, on the staff's top; the dip 0.95 rad about the staff (section 6.3)",
+    "ok": true,
+    "detail": "148 cloths, 78 at their measure against the staff, 119 finials; the dip's turn within 1.9e-8 rad of 0.95; kamensky, broken in phase 6, eased to within 0.0000 rad"
+   },
+   {
+    "name": "legend: the figures' and the standards' rows say how they are drawn (decisions 98, 103)",
+    "ok": true,
+    "detail": "\"standards: painted where the pattern is sourced (French eagles, Austrian colours), else plain in the nation's symbol colour\""
+   },
+   {
+    "name": "dossiers: elevations are metres through GEOREF, never model units",
+    "ok": true,
+    "detail": "24 place dossiers and 9 terrain-study dossiers"
+   },
+   {
+    "name": "watch mode: a selection is always shown, and clearing it clears the dimming",
+    "ok": true,
+    "detail": "Watch, formation selected: chip shown, dossier hidden, family highlighted; chip opens the dossier in Study, selection kept; entering Watch clears selection, chip and dimming; Watch, event selected: chip shown; chip clears the selection; clean map view, selection: chip shown; nothing selected: no chip, no dimming; Study, selection: dossier shown, no chip"
+   },
+   {
+    "name": "sprites: smoke and dust fade to nothing at every edge",
+    "ok": true,
+    "detail": "largest edge alpha: smoke 0, dust 0 of 255"
+   },
+   {
+    "name": "render on demand: a view at rest draws nothing; slow drift alone draws at the ambient rate",
+    "ok": true,
+    "detail": "paper map at rest: idle; landscape at 04:10 with mist: idle (drift is off in harness or reduced-motion mode)"
+   }
+  ]
+ },
+ "sliderKeys": [
+  "ArrowRight 610",
+  "Shift+ArrowRight 670",
+  "ArrowLeft 660",
+  "PageUp 630",
+  "PageUp 570",
+  "PageDown 630",
+  "Home 240",
+  "End 1080",
+  "event marker Enter: 04:15 to 08:00, Liechtenstein counter-marches across the 4th Column (an interval: the hour is not fixed) → clock 255, e:counter-march"
+ ],
+ "pacing": [
+  "Space: playing true at 0.5x (pressed 0.5), clock 12:10 -> 730.60; Space again: playing false",
+  "Watch held in the dwell at 9:00 (pratzen-village): solid 0.000%, below AA 0, drops 3 (limit 13), caption \"Thiebault's brigade clears Pratzen village\", 1 marker lit"
+ ],
+ "keys3E": [
+  "Space on 2x: speed 2, playing false",
+  "Enter on 4x: speed 4, playing false",
+  "arrows on the focused Play button: clock 600",
+  "Ctrl+C: contours true -> true",
+  "? on the tour button: open true, focus help-close; Tab help-body, Tab help-close; Esc: open false, focus tourbtn"
+ ],
+ "lightSweep": [
+  "overview-field at 08:00 at 4x 0.000%",
+  "overview-field at 09:00 at 4x 0.000%",
+  "overview-field at 10:00 at 4x 0.000%",
+  "overview-field at 11:00 at 4x 0.000%",
+  "overview-field at 12:00 at 4x 0.000%",
+  "overview-field at 13:00 at 4x 0.000%",
+  "overview-field at 14:00 at 4x 0.000%",
+  "overview-field at 15:00 at 4x 0.000%",
+  "overview-field at 16:00 at 4x 0.000%",
+  "pratzen-low at 08:00 at 4x 0.000%",
+  "pratzen-low at 09:00 at 4x 0.000%",
+  "pratzen-low at 10:00 at 4x 0.007%",
+  "pratzen-low at 11:00 at 4x 0.007%",
+  "pratzen-low at 12:00 at 4x 0.007%",
+  "pratzen-low at 13:00 at 4x 0.007%",
+  "pratzen-low at 14:00 at 4x 0.014%",
+  "pratzen-low at 15:00 at 4x 0.000%",
+  "pratzen-low at 16:00 at 4x 0.000%",
+  "overview-field at 1x 0.000%",
+  "overview-field at 10.33x 0.000%",
+  "close-sokolnitz at 1x 0.000%",
+  "close-sokolnitz at 10.33x 0.000%",
+  "ph8-overview-study at 1x 0.000%",
+  "ph8-overview-study at 10.33x 0.000%"
+ ],
+ "fogViews": [
+  "overview-field at 08:00: solid 0.000%, below AA 0, drops 10, 15 formations drawn under the fog, fog at most 0.550 (cap 0.55)",
+  "pratzen-low at 08:30: solid 0.000%, below AA 0, drops 3, 15 formations drawn under the fog, fog at most 0.550 (cap 0.55)"
+ ],
+ "horizon": [
+  "pratzen-low at 1x: 0 columns, 0 with a gap under the horizon, the gap within 0 of the sky above it",
+  "pratzen-low at 4x: 32 columns, 32 with a gap under the horizon, the gap within 4.7 of the sky above it",
+  "pratzen-low at 10.33x: 32 columns, 32 with a gap under the horizon, the gap within 5.3 of the sky above it"
+ ],
+ "consoleWarnings": [
+  "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+  "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+  "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+  "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+  "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+  "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+  "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+  "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently",
+  "warning: Canvas2D: Multiple readback operations using getImageData are faster with the willReadFrequently attribute set to true. See: https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-will-read-frequently"
+ ]
+}

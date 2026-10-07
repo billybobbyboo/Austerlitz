@@ -1,0 +1,99 @@
+height-function call sites: 97  {"localHeight":5,"regionalLevel":3,"height":11,"groundY":73,"hAt":5}  {"model":18,"presentation":43,"test":36}
+world.js:211	model	localHeight	height	function height(x,z){ return localHeight(x,z) + 1.2*regionalLevel(x,z); }
+world.js:211	model	regionalLevel	height	function height(x,z){ return localHeight(x,z) + 1.2*regionalLevel(x,z); }
+world.js:256	model	height	hAt	function hAt(mx,my){ var w=W(mx,my); return height(w[0],w[1]); }
+world.js:316	model	height	buildGrid	gridH[j*G_NX+i]=height(G_X0+i*G_DX, G_Z0+j*G_DZ);
+world.js:347	model	localHeight	buildCoverMl > exact	function exact(i,j){ n++; return localHeight(M.x0+i*M.step,M.z0+j*M.step); }
+world.js:391	model	height	displayHeight	function displayHeight(x,z){ return displayY(height(x,z)); }
+world.js:395	model	height	authoredLift	function authoredLift(x,z){ var h=height(x,z); return displayY(h)-h; }
+world.js:483	model	height	buildWorld	for(var i=0;i<pos.count;i++) pos.setY(i, height(pos.getX(i),pos.getZ(i)));
+world.js:613	model	regionalLevel	buildFaceFacts	var ml=mh-1.2*regionalLevel(mx,mz);   /* local relief: what the land-cover thresholds were calibrated on */
+world.js:1149	presentation	groundY	ribbon	for(var k=0;k<=m;k++){ var f=-1+2*k/m, x=pts[i][0]+nx*f, z=pts[i][1]+nz*f; v.push(x,groundY(x,z)+yoff,z); }
+world.js:1162	presentation	groundY	drape	for(var i=0;i<P.count;i++) P.setY(i,groundY(P.getX(i),P.getZ(i))+lift);
+world.js:1180	presentation	regionalLevel	mereLevel	return Math.min(displayY(base+1.2*regionalLevel(cc[0],cc[1])), lo-0.05);
+world.js:1545	model	height	apronGeometry > push	var mid=s?(a[1]+b[1]+c[1])/3/s:height((a[0]+b[0]+c[0])/3,(a[2]+b[2]+c[2])/3);
+world.js:1648	model	localHeight	buildMarshSymbols	var h=displayHeight(x,z), hl=localHeight(x,z);   /* where: the model's local relief; drawn on the display ground */
+app.js:1020	presentation	groundY	makeBlock > seatLocal	_wp.y=groundY(_wp.x,_wp.z);
+app.js:1382	presentation	groundY	spriteFloor	var m=groundY(x,z);
+app.js:1383	presentation	groundY	spriteFloor	for(var k=-2;k<=2;k++){ if(k) m=Math.max(m,groundY(x+_sfR.x*half*k/2,z+_sfR.z*half*k/2)); }
+app.js:1459	presentation	groundY	confPlace	if(cap>0&&g!=="A"){ var capW=cap*worldPerPx(_cfV.set(x,groundY(x,z),z));
+app.js:1493	presentation	groundY	groundPatch	P[n*3]=wx; P[n*3+1]=groundY(wx,wz)+lift; P[n*3+2]=wz;
+app.js:1553	presentation	groundY	skelDrape	var x=A[0]+(B[0]-A[0])*ts[j], z=A[1]+(B[1]-A[1])*ts[j], y=groundY(x,z)+lift;
+app.js:1582	presentation	groundY	skelPlaceMarks	var U=m.userData.skel; _skV.set(U.x,groundY(U.x,U.z),U.z);
+app.js:1606	presentation	groundY	skelNear	SKEL.marks.forEach(function(m){ if(!m.visible) return; var U=m.userData.skel; _skV.set(U.x,groundY(U.x,U.z),U.z).project(camera); if(_skV.z>
+app.js:1658	presentation	groundY	routeDrapePoly > v	function v(g){ var x=g[0]*cw-GROUND_W/2, z=g[1]*cd-GROUND_D/2; out.push(x,groundY(x,z)+lift,z); }
+app.js:2050	presentation	groundY	drapeTri	v.push(x,groundY(x,z)+lift,z); } }
+app.js:2076	presentation	groundY	drapedRibbon	for(var k=0;k<=m;k++){ var f=-1+2*k/m, x=pt.x+nx*hw*f, z=pt.z+nz*hw*f; v.push(x,groundY(x,z)+ly,z); }
+app.js:2101	presentation	groundY	shaftEnd	for(var j=0;j<=m;j++){ var f=-1+2*j/m, x=pt.x+nx*hw*f, z=pt.z+nz*hw*f, o=row*per+j*3; A.array[o]=x; A.array[o+1]=groundY(x,z)+lay.ly; A.arra
+app.js:2131	presentation	groundY	buildArrow	if(a.label) addOverlayLabel(a.label,new THREE.Vector3(mid.x,groundY(mid.x,mid.z)+2.4,mid.z));
+app.js:2148	presentation	groundY	buildHalt	if(a.label) addOverlayLabel(a.label,new THREE.Vector3(e[0],groundY(e[0],e[1])+2.4,e[1]));
+app.js:2156	presentation	groundY	buildLine	var g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(p.x,groundY(p.x,p.z)+1.9,p.z),new THREE.Vector3(qx,groundY(qx,qz)+1.9,qz)]
+app.js:2156	presentation	groundY	buildLine	var g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(p.x,groundY(p.x,p.z)+1.9,p.z),new THREE.Vector3(qx,groundY(qx,qz)+1.9,qz)]
+app.js:2162	presentation	groundY	buildLine	if(l.label) addOverlayLabel(l.label,new THREE.Vector3(q.x,groundY(q.x,q.z)+1.9,q.z));
+app.js:2169	presentation	groundY	buildBoundary	if(b.label) addOverlayLabel(b.label,new THREE.Vector3(q.x,groundY(q.x,q.z)+1.6,q.z));
+app.js:3165	model	height	hasLOS	var ha=height(wa[0],wa[1])+(eyeA||GEOREF.unitsFromM(EYE_OBSERVER_M)), hb=height(wb[0],wb[1])+(eyeB||GEOREF.unitsFromM(EYE_TARGET_M));
+app.js:3165	model	height	hasLOS	var ha=height(wa[0],wa[1])+(eyeA||GEOREF.unitsFromM(EYE_OBSERVER_M)), hb=height(wb[0],wb[1])+(eyeB||GEOREF.unitsFromM(EYE_TARGET_M));
+app.js:3172	model	height	hasLOS	if(height(wa[0]+dx*t, wa[1]+dz*t) > ha+(hb-ha)*t+GEOREF.unitsFromM(LOS_CLEAR_M)) return false;
+app.js:3193	model	hAt	knowledgeOf	else if(PHASES[curPhase].mist>0.5 && hAt(p[0],p[1])<-0.8) r="uncertain";
+app.js:3365	model	height	eyesViewshed	if(fog) for(var j=0;j<G_NZ;j++) for(var i=0;i<G_NX;i++){ var k=j*G_NX+i; if(vsMask[k]&&height(G_X0+i*G_DX,G_Z0+j*G_DZ)<ATMO.FOG_TOP_H){ vsMa
+app.js:3386	presentation	groundY	eyePlace	var w=W(p[0],p[1]); EYE.pos.set(w[0],groundY(w[0],w[1])+eyeHeight(),w[1]); return true; }
+app.js:3394	presentation	groundY	eyeEnter	orbitTarget.set(tw[0],groundY(tw[0],tw[1]),tw[1]); landCam.position.copy(EYE.pos); landCam.lookAt(orbitTarget);
+app.js:4131	presentation	groundY	mlOccluded	for(var i=0;i<=n;i++){ var t=t0+(t1-t0)*i/n; if(groundY(E.x+dx*t,E.z+dz*t)>E.y+dy*t+0.005) return true; }
+app.js:4348	presentation	groundY	groundAt	if(E.y+_gRay.y*s<=groundY(x,z)){
+app.js:4350	presentation	groundY	groundAt	for(var i=0;i<12;i++){ var m=(a+b)/2; if(E.y+_gRay.y*m<=groundY(E.x+_gRay.x*m,E.z+_gRay.z*m)) b=m; else a=m; }
+app.js:4442	presentation	groundY	settleBlock	var hx=(groundY(p.x+e,p.z)-groundY(p.x-e,p.z))/(2*e);
+app.js:4442	presentation	groundY	settleBlock	var hx=(groundY(p.x+e,p.z)-groundY(p.x-e,p.z))/(2*e);
+app.js:4443	presentation	groundY	settleBlock	var hz=(groundY(p.x,p.z+e)-groundY(p.x,p.z-e))/(2*e);
+app.js:4443	presentation	groundY	settleBlock	var hz=(groundY(p.x,p.z+e)-groundY(p.x,p.z-e))/(2*e);
+app.js:4599	presentation	groundY	updateVisibility	rec.block.position.set(wq[0],groundY(wq[0],wq[1]),wq[1]);   /* settled below, after pose and scale */
+app.js:4730	presentation	groundY	camGround	var m=groundY(x,z);
+app.js:4731	presentation	groundY	camGround	for(var k=0;k<8;k++){ var a=k*Math.PI/4; m=Math.max(m,groundY(x+Math.cos(a)*CAM_R,z+Math.sin(a)*CAM_R)); }
+app.js:4749	presentation	groundY	camFloor	function camFloor(x,z){ if(EYE.on) return groundY(x,z)+eyeHeight()-1e-6; return camGround(x,z)+CAM_CLEAR; }   /* Stage 5E: the eye-level van
+app.js:4751	presentation	groundY	clampCamera	if(EYE.on){ var q=landCam.position, y=groundY(q.x,q.z)+eyeHeight(); if(q.y<y-1e-6){ q.y=y; landCam.lookAt(orbitTarget); } return false; }
+app.js:4858	presentation	groundY	fitOverview	[[a,X[1]],[a,X[3]],[X[0],b],[X[2],b]].forEach(function(q){ S.push(new THREE.Vector3(q[0],groundY(q[0],q[1]),q[1])); }); }
+app.js:4872	presentation	groundY	fitOverview	T.x+=g0[0]-g1[0]; T.z+=g0[1]-g1[1]; T.y=groundY(T.x,T.z);
+app.js:4915	presentation	groundY	anchor	if(g){ orbitTarget.set(g[0],groundY(g[0],g[1]),g[1]); landCam.lookAt(orbitTarget); } }
+app.js:4918	presentation	groundY	panStart	var gy=Math.min(groundY(g[0],g[1]),E.y-0.5), r=ray(sx,sy);
+app.js:4934	presentation	groundY	zoomAt	var P=g?new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]):T.clone();
+app.js:4952	presentation	groundY	focusAt	var P=new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]), d=landCam.position.clone().sub(orbitTarget), r=Math.min(d.length(),86);
+app.js:6188	model	hAt	dossierFeature	var elM=GEOREF.elevM(hAt(ft.p[0],ft.p[1])), gtk=FEATURE_GT[ft.id], gt=gtk&&GEOREF.GT[gtk];
+app.js:6306	model	hAt	dossierAnalysis	var hs=tl.p.map(function(q){ return hAt(q[0],q[1]); });
+app.js:6590	presentation	groundY	followGoal	return {T:new THREE.Vector3(cx,groundY(cx,cz),cz),dist:Math.max(FOLLOW.DMIN,Math.min(FOLLOW.DMAX,FOLLOW.K*rad+FOLLOW.D0)),dir:dir};
+app.js:6609	presentation	groundY	followStep	FOLLOW.T.y=groundY(FOLLOW.T.x,FOLLOW.T.z);
+app.js:6795	test	groundY	landControls	if(g){ var gp=new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]), cl=CAM.clamps;
+app.js:6806	test	groundY	landControls	if(g1){ var gp1=new THREE.Vector3(g1[0],groundY(g1[0],g1[1]),g1[1]);
+app.js:6822	test	groundY	landControls	if(g2){ var gp2=new THREE.Vector3(g2[0],groundY(g2[0],g2[1]),g2[1]);
+app.js:6846	test	groundY	landKeysTouch	var g=groundAt(c[0]-40,c[1]+40), gp=new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]);
+app.js:6897	test	groundY	cameraChecks3D	var p=new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]); q=LANDCAM.screenOf(p); rt=Math.max(rt,Math.hypot(q[0]-sx,q[1]-sy)); rn++; }
+app.js:6933	test	groundY	cameraChecks3D	[[X[0],X[1]],[X[2],X[1]],[X[2],X[3]],[X[0],X[3]],[mx,X[1]],[mx,X[3]],[X[0],mz],[X[2],mz]].forEach(function(c){ var s2=LANDCAM.screenOf(new T
+app.js:6939	test	groundY	cameraChecks3D	var c3=freeC(), g3=groundAt(c3[0]+60,c3[1]+30), keep=new THREE.Vector3(g3[0],groundY(g3[0],g3[1]),g3[1]);
+app.js:7047	test	groundY	figureError	var e=Math.abs(p.y-groundY(p.x,p.z)); n++; if(e>worst){ worst=e; where=id; }
+app.js:7053	test	groundY	figureError	var e2=Math.abs(p.y-groundY(p.x,p.z)); if(e2>worst){ worst=e2; where=id+" (standard)"; }
+app.js:7061	test	groundY	factorFacts	o.relief=groundY(P[0],P[1])-groundY(S[0],S[1]);                 /* drawn Pratzeberg-Sokolnitz relief */
+app.js:7061	test	groundY	factorFacts	o.relief=groundY(P[0],P[1])-groundY(S[0],S[1]);                 /* drawn Pratzeberg-Sokolnitz relief */
+app.js:7105	test	groundY	overlayDrape	var e=Math.abs(v.y-groundY(v.x,v.z)-d.lift); n++; if(e>worst){ worst=e; where=d.kind+" in phase "+ph; } }
+app.js:7238	test	groundY	paperChecks > scr	function scr(mp){ var w=W(mp[0],mp[1]); _lv3.set(w[0],groundY(w[0],w[1]),w[1]).project(camera); return [(_lv3.x*0.5+0.5)*VW,(-_lv3.y*0.5+0.5
+app.js:7309	test	groundY	paperChecks	gw=Math.max(gw,Math.abs(groundY(gx,gz)-displayHeight(gx,gz))); }
+app.js:7364	test	localHeight	coverTruth	for(var j=0;j<g.nz;j++){ var z=g.z0+(j+0.5)*COVER_H; for(var i=0;i<g.nx;i++){ var x=g.x0+(i+0.5)*COVER_H; T[j*g.nx+i]=coverClass(x,z,localHe
+app.js:7429	test	groundY	roadDrape	var e=Math.abs(v.y-groundY(v.x,v.z)-d.lift); n++; if(e>worst){ worst=e; where=d.kind; } }
+app.js:7431	test	groundY	roadDrape	mids++; if((v.y+w.y)/2<groundY((v.x+w.x)/2,(v.z+w.z)/2)) under++; } });
+app.js:7441	test	localHeight	woodPlacement	if(coverClass(p.x,p.z,localHeight(p.x,p.z))!==4) R.notModel++; } });
+app.js:7465	test	groundY	lightChecks	q.set(g[0],groundY(g[0],g[1]),g[1]).applyMatrix4(sun.shadow.matrix);
+app.js:7516	test	groundY	paceChecks	var live=liveEvents(clock).filter(function(o){ return o.w>=0.5; }), ok=live.every(function(o){ var w=W(o.e.p[0],o.e.p[1]); return onFreeRect
+app.js:7610	test	groundY	extrasChecks	for(var a=0;a<96;a++){ var t=a/96*Math.PI*2; lo=Math.min(lo,groundY(cc[0]+Math.cos(t)*q[1],cc[1]+Math.sin(t)*q[2])); }
+app.js:7621	test	groundY	extrasChecks	var top=-1e9; for(var k=-4;k<=4;k++) top=Math.max(top,groundY(sp.position.x+R.x*half*k/4,sp.position.z+R.z*half*k/4));
+app.js:7635	test	groundY	confDrape	for(var v=0;v<P.count;v++) lift=Math.max(lift,Math.abs(P.getY(v)-groundY(P.getX(v),P.getZ(v))-LL));
+app.js:7640	test	groundY	confDrape	var gap=y-groundY(x,z); n++; if(gap<-1e-4) under++; if(gap<worst) worst=gap; } }
+app.js:7704	test	groundY	kitDayChecks	var wq=W(p[0],p[1]); v.set(wq[0],groundY(wq[0],wq[1]),wq[1]).project(camera); var sx=(v.x*0.5+0.5)*VW, sy2=(-v.y*0.5+0.5)*VH;
+app.js:7791	test	groundY	skelChecks	for(var i=0;i<=k;i++){ var u=i/k, x=ax+(bx-ax)*u, z=az+(bz-az)*u, gap=ay+(by-ay)*u-groundY(x,z); n++;
+app.js:7856	test	groundY	skelDayChecks	var sz=[], szBad=0; SKEL.marks.forEach(function(m){ if(!m.visible) return; var U=m.userData.skel; _skV.set(U.x,groundY(U.x,U.z),U.z);
+app.js:7863	test	groundY	skelDayChecks	var vm=SKEL.marks.filter(function(m){ var U=m.userData.skel; _skV.set(U.x,groundY(U.x,U.z),U.z).project(camera); return m.visible&&_skV.z<1&
+app.js:7864	test	groundY	skelDayChecks	if(vm){ var U5=vm.userData.skel, an5=anchorOf(U5.id,U5.ph); _skV.set(U5.x,groundY(U5.x,U5.z),U5.z).project(camera);
+app.js:7895	test	groundY	eyesChecks	var hq=posNow("gqg"), w=W(hq[0],hq[1]), L=landCam.position, dy=L.y-groundY(L.x,L.z), want=eyeHeight(), atHQ=Math.hypot(L.x-w[0],L.z-w[1])<1e
+app.js:7953	test	height	eyesDayChecks	for(var j=0;j<G_NZ;j++) for(var i=0;i<G_NX;i++){ var k=j*G_NX+i; if(!vsMask[k]) continue; vis++; var low=height(G_X0+i*G_DX,G_Z0+j*G_DZ)<ATM
+app.js:7988	test	groundY	routeChecks	for(var i=0;i<=k;i++) for(var j=0;j<=k-i;j++){ var u=i/k, w=j/k, r=1-u-w, x=A[0]*r+B[0]*u+C[0]*w, y=A[1]*r+B[1]*u+C[1]*w, z=A[2]*r+B[2]*u+C[
+app.js:8134	test	groundY	fogChecks	m+=atmoAt(landCam.position,new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]))[0]; n++; } ov=n?m/n:null; } });
+app.js:8149	test	hAt	atmoDayChecks	var want=hasLOS(hq,p)&&GEOREF.elevM(hAt(p[0],p[1]))<top, got=knowledgeOf(id)==="uncertain";
+app.js:8189	test	groundY	selfTest > atFactor	gw=Math.max(gw,Math.abs(groundY(gx,gz)-displayHeight(gx,gz))); }
+app.js:8816	test	hAt	selfTest	FEATURES.forEach(function(ft){ var t=dossierFeature(ft.id).textContent, want=Math.round(GEOREF.elevM(hAt(ft.p[0],ft.p[1])));
+presentation sites calling height()/hAt(): 0

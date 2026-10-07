@@ -1,0 +1,10 @@
+
+> check:contrast
+> node tools/visual/contrast.js austerlitz-command-map.html
+
+text elements 5990, distinct text/background pairs 105, below AA 0, text below 10.5 px 0
+CONTRAST: all text meets WCAG AA
+
+real	6m58.296s
+user	0m3.617s
+sys	0m0.627s

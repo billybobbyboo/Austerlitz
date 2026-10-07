@@ -1,0 +1,6 @@
+
+> check:baseline
+> python3 build.py && node -e "const b=require('fs').readFileSync('austerlitz-command-map.html'),h=require('crypto').createHash('md5').update(b).digest('hex');console.log(h,b.length);process.exit(h==='46773462faa1e1b9f4a4010e450e110a'&&b.length===1764002?0:1)"
+
+bytes: 1755727
+46773462faa1e1b9f4a4010e450e110a 1764002

@@ -1,0 +1,15 @@
+battle clock: 04:00 to 18:00 (840 minutes across 10 phases)
+
+=== MARCH RATE VIOLATIONS (0) ===
+
+=== TERRAIN VIOLATIONS (0) ===
+
+=== CONTINUITY (max displacement in any 5-minute step) ===
+  gqg            635 m per 5 min at 12:45 = 7.6 km/h
+  sthilaire      414 m per 5 min at 09:10 = 5.0 km/h
+  vandamme       413 m per 5 min at 09:00 = 5.0 km/h
+  c_gren         411 m per 5 min at 14:25 = 4.9 km/h
+  kollo          405 m per 5 min at 10:25 = 4.9 km/h
+  guard_cav      405 m per 5 min at 11:05 = 4.9 km/h
+
+formations with tracks: 32  moving: 31

@@ -1,0 +1,118 @@
+{
+ "banned": "/\\b(certainly|undoubtedly|proves|proven|definitely|always|never doubted|obviously)\\b/i",
+ "causal": "/\\b(caused|because of this|as a result of which|therefore proves)\\b/i",
+ "perDeclaration": {
+  "PHASES": {
+   "strings": 115,
+   "read": 20,
+   "prose": 52,
+   "proseRead": 19
+  },
+  "FORMATIONS": {
+   "strings": 910,
+   "read": 32,
+   "prose": 376,
+   "proseRead": 32
+  },
+  "FEATURES": {
+   "strings": 238,
+   "read": 0,
+   "prose": 113,
+   "proseRead": 0
+  },
+  "SOURCE_NOTE": {
+   "strings": 17,
+   "read": 0,
+   "prose": 14,
+   "proseRead": 0
+  },
+  "EVENTS": {
+   "strings": 241,
+   "read": 50,
+   "prose": 53,
+   "proseRead": 50
+  },
+  "ANALYSIS": {
+   "strings": 175,
+   "read": 10,
+   "prose": 18,
+   "proseRead": 10
+  },
+  "COMMAND": {
+   "strings": 138,
+   "read": 0,
+   "prose": 46,
+   "proseRead": 0
+  },
+  "PLANS": {
+   "strings": 81,
+   "read": 4,
+   "prose": 49,
+   "proseRead": 4
+  },
+  "TOUR": {
+   "strings": 34,
+   "read": 9,
+   "prose": 11,
+   "proseRead": 9
+  },
+  "ACTS": {
+   "strings": 15,
+   "read": 0,
+   "prose": 5,
+   "proseRead": 0
+  },
+  "CLAIM": {
+   "strings": 6,
+   "read": 0,
+   "prose": 3,
+   "proseRead": 0
+  },
+  "APPEARANCE_SOURCES": {
+   "strings": 356,
+   "read": 0,
+   "prose": 114,
+   "proseRead": 0
+  },
+  "DRESS": {
+   "strings": 1697,
+   "read": 0,
+   "prose": 564,
+   "proseRead": 0
+  },
+  "COMPOSITION": {
+   "strings": 683,
+   "read": 0,
+   "prose": 152,
+   "proseRead": 0
+  },
+  "COLOURS_CARRIED": {
+   "strings": 422,
+   "read": 0,
+   "prose": 177,
+   "proseRead": 0
+  },
+  "STANDARD_MEASURES": {
+   "strings": 33,
+   "read": 0,
+   "prose": 17,
+   "proseRead": 0
+  }
+ },
+ "hits": [
+  {
+   "kind": "certainty",
+   "word": "certainly",
+   "path": "FEATURES[15].story",
+   "scanned": false,
+   "text": "t did not happen at Austerlitz. French gunners did fire on the ice and some men certainly died, but the mass drowning is propaganda that Tolstoy later made perm"
+  },
+  {
+   "kind": "certainty",
+   "word": "always",
+   "path": "SOURCE_NOTE.layers[2][1]",
+   "scanned": false,
+   "text": "he holding on the heights or the centre-separation test. Never a source figure; always marked derived."
+  }
+ ]
+}

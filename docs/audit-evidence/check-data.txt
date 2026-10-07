@@ -1,0 +1,20 @@
+
+> check:data
+> node tools/visual/data-invariance.js archive/stage6b-7fc0f6c3.html austerlitz-command-map.html
+
+original stage6b-7fc0f6c3.html: 739 top-level statements;  patched austerlitz-command-map.html: 786
+
+DATA (must be byte-identical):
+  identical historical datasets: 25 declarations, 899,037 bytes
+  identical geography and relief model: 43 declarations, 14,260 bytes
+  identical movement, strength and confidence model: 35 declarations, 11,077 bytes
+  identical historical appearance model (Stage 6B): 1 declarations, 630 bytes
+  identical derived readings, sight and knowledge: 17 declarations, 5,056 bytes
+
+Rendering and interface declarations changed (26): initBlockGeo, figKit, makeBlock, flagTexture, placeStandards, CONF, buildFormations, paintLegend, updateVisibility, LABELS, applyLabels, KEYS, onWindowKey, buildUI, COLOUR_KEY, paintKey, openFirstRun, closeFirst, paintDispatch, dossierFormation, openSources, stopPlay, togglePlay, syncDock, loop, AUSTERLITZ_DEBUG
+Added (51): KIT, kitSettled, _kitDress, kitDress, kitGeneric, kitAllocate, kitBlock, kitLead, FIG,KIT_GEO,_kitShapes, kitBox, kitPart, kitMerge, kitShapes, kitHat, kitFootFixed, kitRiderFixed, kitHorse, kitGeo, kitGeos, kitStdRule, STD_RATIO,STD_POLE,MAN_FOOT, stdOk, apCm, kitStdShape, stdCount, OPENING, openingSay, openingFill, openingBar, openingStart, openingApply, openingWatch, openingGo, openingStretch, openingPlayWatch, openingHead, openingArrive, openingHalt, openingEnd, frButtons, frHasFocus, focusId, DRESS_UNIT, apShort, apCite, apText, apClaim, apValue, dressSection, troopNotes, standardNotes
+Removed (4): formationAtlas, pushBox, FIG, STD_RATIO,STD_POLE
+
+Outside the script: CSS changed (+421 bytes; the original rules are edited); markup changed; closing identical
+
+All 121 DATA declarations are byte-identical to the original build.

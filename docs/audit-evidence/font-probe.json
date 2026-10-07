@@ -1,0 +1,60 @@
+{
+ "used": {
+  "timelineCaption": [
+   "Inter (88)"
+  ],
+  "play": [
+   "Inter (4)"
+  ],
+  "phaseStep": [
+   "Inter (10)"
+  ],
+  "cardTitle": [
+   "Liberation Serif (24)"
+  ],
+  "cardKey": [
+   "Liberation Serif (226)"
+  ],
+  "cardPrimary": [
+   "Inter (15)"
+  ]
+ },
+ "asOpened": {
+  "timeline": 174,
+  "unobstructed": 0.4603,
+  "card": [
+   413.5,
+   238.5
+  ],
+  "sans": "ui-sans-serif,system-ui,-apple-system,\"S"
+ },
+ "withSans": {
+  "DejaVu Sans": {
+   "timeline": 172,
+   "unobstructed": 0.4689,
+   "card": [
+    415.5,
+    238.5
+   ],
+   "sans": "\"DejaVu Sans\",sans-serif"
+  },
+  "Liberation Sans": {
+   "timeline": 174,
+   "unobstructed": 0.4637,
+   "card": [
+    413.5,
+    238.5
+   ],
+   "sans": "\"Liberation Sans\",sans-serif"
+  },
+  "FreeSans": {
+   "timeline": 174,
+   "unobstructed": 0.4637,
+   "card": [
+    413.5,
+    238.5
+   ],
+   "sans": "\"FreeSans\",sans-serif"
+  }
+ }
+}
