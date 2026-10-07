@@ -53,7 +53,9 @@ jobs:
       - run: npm install
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
-      - run: npx playwright install --with-deps chromium
+      # the install's apt step can stall on the runner's package mirror (once for 45 minutes, 7 October 2026): each try is bounded
+      # (timeout ends the whole process group), up to three; a test step is never retried
+      - run: for i in 1 2 3; do timeout -k 30 600 npx playwright install --with-deps chromium && exit 0; echo "playwright install, try $i, failed or timed out"; done; exit 1
       - run: npm run build
       - run: git diff --exit-code --stat austerlitz-command-map.html
       - run: npm run check:${{ matrix.check }}
@@ -76,7 +78,9 @@ jobs:
       - run: npm install
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
-      - run: npx playwright install --with-deps chromium
+      # the install's apt step can stall on the runner's package mirror (once for 45 minutes, 7 October 2026): each try is bounded
+      # (timeout ends the whole process group), up to three; a test step is never retried
+      - run: for i in 1 2 3; do timeout -k 30 600 npx playwright install --with-deps chromium && exit 0; echo "playwright install, try $i, failed or timed out"; done; exit 1
       - run: npm run build
       - run: git diff --exit-code --stat austerlitz-command-map.html
       - run: npm run check:visual
