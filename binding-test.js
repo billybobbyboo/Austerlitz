@@ -6,7 +6,8 @@
       interpretive marker of a known kind, consistent with what it shows; no axis arrow describes a halt; the arrows that
       could not be settled are listed here by name, each with its CHANGELOG.md entry; any other mismatch fails.
    2. dashes (static): dashed or segmented drawing only in the allowed drawers (axis arrows, plan links, plan staging
-      outlines, valley and dead-ground lines); boundaries, lines, halt bars and the movement trail solid.
+      outlines, valley and dead-ground lines, the ordered routes, and in SVG the day-track's ordered route); boundaries, lines,
+      halt bars and the movement trail solid.
    node binding-test.js      (exit 1 on any error) */
 const fs=require("fs"), path=require("path"), acorn=require("acorn");
 const B=require("./tools/stage2/arrow-binding.js");
@@ -85,10 +86,14 @@ B.rows.forEach(r=>{ if(r.marker==="derived"||r.marker==="objective"||r.marker===
 const nArrows=B.rows.length;
 
 /* ---- 2. dashes (static) ---- */
-const DASH=[/LineDashedMaterial/,/computeLineDistances/,/setLineDash/,/\bdashRuns\(/,/\.dash\b/,/\bruns\s*:/];
+const DASH=[/LineDashedMaterial/,/computeLineDistances/,/setLineDash/,/\bdashRuns\(/,/\.dash\b/,/\bruns\s*:/,
+  /* SVG's dash, every way of writing it (roadmap step 1, docs/FINAL_AUDIT.md T-9: until step 1 only three.js and canvas dashes were read):
+     an attribute in markup, setAttribute(NS), the style property, a style declaration; a read (getAttribute) draws nothing */
+  /stroke-dasharray\s*=\s*\\?["']/,/setAttribute(?:NS)?\(\s*(?:null\s*,\s*)?["']stroke-dasharray/,/\.strokeDasharray\s*=/,/stroke-dasharray\s*:/,/setProperty\(\s*["']stroke-dasharray/];
 /* Stage 5F (docs/STAGE5_SPEC.md section E.4; decision 93): routeBuild, the ordered routes of the two plans, is the one new dashed drawer,
-   and it draws only PLANS' routes (checked below) */
-const ALLOWED={"app.js":["dashRuns","buildArrow","planStaging","buildPlanLinks","updatePlanLinks","drapedRibbon","routeBuild"],
+   and it draws only PLANS' routes (checked below). Stage 5G (section F.3; decision 95): dayTrackEl, the dossier's day-track inset, dashes in
+   SVG its formation's ordered route and nothing else (checked below; read since roadmap step 1) */
+const ALLOWED={"app.js":["dashRuns","buildArrow","planStaging","buildPlanLinks","updatePlanLinks","drapedRibbon","routeBuild","dayTrackEl"],
                "world.js":["buildAnalysis"]};
 const dashers={};
 ["app.js","world.js","symbols.js"].forEach(file=>{
@@ -107,6 +112,8 @@ const dashers={};
     ok(/runs\s*:\s*a\.kind==="axis"\?dashRuns\(/.test(ba), "app.js: buildArrow dashes something other than the axis arrows");
     const ps=fn("planStaging"); ok(/dashRuns\(/.test(ps), "app.js: the plan staging outline is no longer dashed");
     const rb=fn("routeBuild"); ok(/dashRuns\(/.test(rb)&&/PLANS\[sd\]\.cols\[ci\]/.test(rb)&&/c\.route\.map/.test(rb), "app.js: routeBuild dashes something other than a plan column's ordered route");
+    const dt=fn("dayTrackEl"); ok(dt.length>0&&(dt.match(/stroke-dasharray/g)||[]).length===1&&/<polyline class="dt-route"[^>]*stroke-dasharray/.test(dt)&&/L\.routes\.forEach/.test(dt),
+      "app.js: dayTrackEl dashes something other than the ordered route (one stroke-dasharray, on the dt-route polyline drawn from the routes)");
     /* Stage 4D (docs/STAGE4_SPEC.md section D.4): only an arrow derived from an executed leg draws on with the clock */
     ok((src.match(/DRAWON\.push\(/g)||[]).length===1&&/if\(a\.leg\)\{ var d=\{[^{}]*\}; DRAWON\.push\(/.test(ba), "app.js: an arrow that is not derived (a.leg) draws on with the clock");
     ["buildBoundary","buildLine","buildHalt","buildObjective","planStaging","buildPlanLinks"].forEach(nm=>{ ok(!/DRAWON/.test(fn(nm)), "app.js: "+nm+" draws on with the clock"); });
@@ -117,8 +124,11 @@ const dashers={};
     ok(JSON.stringify(dashed.sort())===JSON.stringify(["dead","valley"]), "world.js: dashed terrain lines are "+dashed.join(", ")+", not valley and dead ground");
   }
 });
-const css=fs.readFileSync(path.join(__dirname,"style.css"),"utf8"), cssDash=(css.match(/[^{}]*\{[^}]*dashed[^}]*\}/g)||[]).map(r=>r.split("{")[0].trim());
-ok(cssDash.length&&cssDash.every(sel=>/^\.legend \.(dsh|stg)$/.test(sel)), "style.css: dashed borders outside the legend's dash samples: "+cssDash.join("; "));
+const css=fs.readFileSync(path.join(__dirname,"style.css"),"utf8"), cssDash=(css.match(/[^{}]*\{[^}]*(?:dashed|stroke-dasharray)[^}]*\}/g)||[]).map(r=>r.split("{")[0].trim());
+ok(cssDash.length&&cssDash.every(sel=>/^\.legend \.(dsh|stg)$/.test(sel)), "style.css: dashed borders or SVG dashes outside the legend's dash samples: "+cssDash.join("; "));
+/* shell.html's markup (its inline SVG, the compass rose among it) dashes nothing (roadmap step 1) */
+const shell=fs.readFileSync(path.join(__dirname,"shell.html"),"utf8").replace(/<!--[\s\S]*?-->/g,"");
+ok(!/stroke-dasharray/.test(shell)&&!/style\s*=\s*"[^"]*dashed/.test(shell), "shell.html: its markup draws a dash");
 
 /* ---- report ---- */
 console.log("binding: "+nArrows+" arrows, "+counts.derived+" derived from the leg executed in their phase, "+

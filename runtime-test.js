@@ -157,6 +157,10 @@ global.navigator={};
 global.location={search:"",hash:"",href:"about:blank"};   /* Stage 0 reads location.search (the ?harness and ?stats switches); a plain page load has neither */
 
 const fs=require('fs');
+/* roadmap step 1 (docs/FINAL_AUDIT.md T-9): bundle.js must be the build of the live sources (tools/fresh.js); a stale one stops the suite at
+   once, rather than driving old code for minutes. The suite does not rebuild it: build.py also writes the committed page. */
+{ const stale=require('./tools/fresh.js').bundleStale();
+  if(stale){ console.warn=origWarn; console.error=origErr; console.log("errors: 1\n  E "+stale); process.exit(1); } }
 try{
   eval(fs.readFileSync('bundle.js','utf8'));
 }catch(e){ errs.push("THROWN: "+e.message+"\n"+(e.stack||"").split("\n").slice(1,4).join("\n")); }

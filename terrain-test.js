@@ -74,10 +74,13 @@ Object.keys(TARGET).forEach(k=>{ const m=G.elevM(hAt(P(k)[0],P(k)[1])), t=TARGET
   const ok=Math.abs(m-t[0])<=t[1]; if(!ok) reliefBad++;
   console.log("  "+G.GT[k].n.padEnd(30)+m.toFixed(0).padStart(4)+" | "+t[0]+" \u00b1"+t[1]+(ok?"":"   <-- outside")); });
 const mAt=k=>G.elevM(hAt(P(k)[0],P(k)[1]));
-const order=[mAt('pratzeberg')>Math.max(mAt('santon'),mAt('vinohrady'),mAt('zuran'))+20,
+/* the Pratzeberg's margin is geo-test.js's, 25 m (roadmap step 1, docs/FINAL_AUDIT.md T-9: until step 1 this check asked for 20 m, the two
+   checks of one fact disagreeing; the stricter kept) */
+const order=[mAt('pratzeberg')-Math.max(mAt('santon'),mAt('vinohrady'),mAt('zuran'))>=25,
              Math.min(mAt('santon'),mAt('vinohrady'),mAt('zuran'))>mAt('vinocol'),
              mAt('vinocol')>mAt('pratzen'), mAt('pratzen')>Math.max(mAt('kobelnitz'),mAt('sokolnitz'))];
-console.log("  summit ordering (Pratzeberg > Santon/Vinohrady/Zuran > col > Pratzen village > Goldbach): "+(order.every(x=>x)?"OK":"BROKEN "+order));
+console.log("  summit ordering (Pratzeberg 25+ m above Santon/Vinohrady/Zuran > col > Pratzen village > Goldbach): "+(order.every(x=>x)?"OK":"BROKEN "+order)+
+  "  (the Pratzeberg "+(mAt('pratzeberg')-Math.max(mAt('santon'),mAt('vinohrady'),mAt('zuran'))).toFixed(1)+" m above the highest of the three)");
 const down=mAt('kobelnitz')>=mAt('sokolnitz') && mAt('sokolnitz')>=mAt('telnitz');
 console.log("  the Goldbach falls downstream (Kobelnitz >= Sokolnitz >= Telnitz): "+(down?"OK":"BROKEN")+"  ("+['kobelnitz','sokolnitz','telnitz'].map(k=>mAt(k).toFixed(0)).join(" > ")+" m)");
 /* the meres: no edge of the water may hang above the ground */

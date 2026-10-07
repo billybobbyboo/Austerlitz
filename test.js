@@ -1,5 +1,6 @@
 global.GEOREF=require('./geo.js');   /* the single geographic reference */
 const fs=require('fs');
+require('./tools/fresh.js').regen('helpers');   /* roadmap step 1 (docs/FINAL_AUDIT.md T-9): the generated modules read below are regenerated from the live sources first, also when this suite runs on its own */
 function load(f){ eval(fs.readFileSync(f,'utf8')); return eval; }
 eval(fs.readFileSync('data.js','utf8'));
 eval(fs.readFileSync('appearance.js','utf8'));   /* Stage 6B: the historical appearance, loaded after data.js as in the build's order */

@@ -1,6 +1,7 @@
 /* RED TEAM — actively try to break the reconstruction.
    Not a confirmation of the existing suites; a hunt for errors they miss. */
 const fs=require('fs');
+require('./tools/fresh.js').regen('world','helpers');   /* roadmap step 1 (docs/FINAL_AUDIT.md T-9): the generated modules read below are regenerated from the live sources first, also when this suite runs on its own */
 const M=require('./_world_mod.js');
 global.W=M.W; global.height=M.height; global.hAt=M.hAt; global.smoothstep=M.smoothstep;
 global.covAt=M.covAt; global.SATS=M.SATS; global.MENI=M.MENI; global.VILLAGES=M.VILLAGES;
