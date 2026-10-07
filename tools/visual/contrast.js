@@ -20,7 +20,16 @@
    Stage 3C: Watch on the paper map and on the landscape (the presentation switch in the timeline, at full opacity).
    Stage 3E: the "?" overlay over the landscape and over the paper map.
    Stage 5E: "Whose eyes?": the dossier's reason, the eye-level vantage's caption, the paper map with a headquarters' reading.
-   Stage 5G: the dossier with its day-track inset. */
+   Stage 5G: the dossier with its day-track inset.
+   Decision 141 (roadmap step 1, docs/FINAL_AUDIT.md T-0): the type is embedded (fonts.css), and no visible text may be drawn in any other
+   face. Which fonts draw a text depends only on its computed font (the family list, weight, style, stretch, variant and synthesis), its
+   text-transform, its language and its characters. So every text element read here, in every state, adds its characters to the set kept
+   for its computed font; after the last state, each set is drawn once into a probe element set in that font, on the same page, and the
+   Chrome DevTools Protocol is asked which platform fonts drew it (CSS.getPlatformFontsForNode, as tools/audit/font-probe.js asks). A
+   font that is not one of the embedded faces ("Austerlitz Sans", "Austerlitz Serif", web fonts) is a failure, reported by character with
+   the first element that showed it, unless the element is in FONT_ALLOW with its reason. (Asking the elements themselves, state by state,
+   gave the same verdict and took 23 minutes instead of 9: each first question in a state forces the page to be drawn again.) This is the
+   run-time proof behind css-test.js's coverage check and its SERIF_EXEMPT list. */
 const fs=require("fs"), path=require("path");
 const { chromium } = require("playwright");
 const argv=process.argv.slice(2), html=path.resolve(argv[0]||"austerlitz-command-map.html");
@@ -28,8 +37,14 @@ const jsonOut=argv.indexOf("--json")>=0?argv[argv.indexOf("--json")+1]:null;
 const THREE_LOCAL=[process.env.AUSTERLITZ_THREE, path.join(__dirname,"three.min.js"),
   path.resolve("node_modules/three/build/three.min.js")].find(p=>p&&fs.existsSync(p));
 
+/* decision 141: the faces a visible text may be drawn in, and the elements that may use another, with the reason */
+const EMBEDDED=new Set(["Austerlitz Sans","Austerlitz Serif"]);
+const FONT_ALLOW=[["#devstats","the developer readout (aria-hidden, hidden unless the ` key or ?stats): a monospace stack is its purpose"]];
+/* each element read adds its characters to window.__cxFonts, by its computed font (the font check, decision 141), with the first element that
+   showed each character */
 const COLLECT=`(function(state){
   function rgba(s){ var m=/rgba?\\(([^)]+)\\)/.exec(s); if(!m) return null; var p=m[1].split(",").map(parseFloat); return [p[0],p[1],p[2],p.length>3?p[3]:1]; }
+  var FA=window.__cxFonts=window.__cxFonts||{};
   var out=[], all=document.querySelectorAll("body *");
   for(var i=0;i<all.length;i++){
     var e=all[i], own="";
@@ -45,6 +60,10 @@ const COLLECT=`(function(state){
     }
     if(hid||op<0.02) continue;
     var sel=e.id?"#"+e.id:(e.tagName.toLowerCase()+(typeof e.className==="string"&&e.className?"."+e.className.trim().split(/\\s+/).join("."):""));
+    var font={family:cs.fontFamily,weight:cs.fontWeight,style:cs.fontStyle,stretch:cs.fontStretch,variant:cs.fontVariant,synthesis:cs.fontSynthesis||"",
+      transform:cs.textTransform,lang:(e.closest&&e.closest("[lang]")||document.documentElement).getAttribute("lang")||""};
+    var fk=JSON.stringify(font), F=FA[fk]||(FA[fk]={font:font,chars:{}});
+    for(var c of own) if(c!==" "&&!F.chars[c]) F.chars[c]=state+": "+sel+" \\""+own.slice(0,40)+"\\"";
     out.push({state:state, sel:sel, text:own.slice(0,40), color:rgba(cs.color), size:parseFloat(cs.fontSize), weight:cs.fontWeight, opacity:op, bgs:bgs,
       map:!!(e.closest&&e.closest("#maplayer"))});
   }
@@ -129,10 +148,46 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
   await page.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:180000});
   await page.waitForFunction(()=>!document.getElementById("boot")&&typeof window.camera!=="undefined",null,{timeout:240000,polling:500});
   await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});
+  /* decision 141: which platform fonts draw each computed font's characters (the CDP, once, after the last state; see the header) */
+  async function fontCheck(){
+    const keys=await page.evaluate(()=>{ const F=window.__cxFonts||{}, K=Object.keys(F); document.querySelectorAll("[data-cxp]").forEach(e=>e.remove());
+      K.forEach((k,i)=>{ const f=F[k].font, p=document.createElement("span"); p.setAttribute("data-cxp",String(i)); if(f.lang) p.lang=f.lang;
+        p.style.cssText="position:fixed;left:0;top:0;opacity:0;pointer-events:none;white-space:pre";
+        Object.assign(p.style,{fontFamily:f.family,fontWeight:f.weight,fontStyle:f.style,fontStretch:f.stretch,fontVariant:f.variant,textTransform:f.transform});
+        if(f.synthesis) p.style.fontSynthesis=f.synthesis;
+        p.textContent=Object.keys(F[k].chars).join(""); document.body.appendChild(p); });
+      document.querySelectorAll("[data-cxp]").forEach(e=>e.getBoundingClientRect());   /* laid out before the CDP asks (a node not laid out reports no font) */
+      return K.map(k=>({font:F[k].font,chars:F[k].chars})); });
+    const frames=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+    await frames();
+    const cdp=await page.context().newCDPSession(page); await cdp.send("DOM.enable"); await cdp.send("CSS.enable");
+    const doc=await cdp.send("DOM.getDocument",{depth:0}), ask=async sel=>{ const q=await cdp.send("DOM.querySelectorAll",{nodeId:doc.root.nodeId,selector:sel}), out={};
+      for(const id of q.nodeIds){ const at=(await cdp.send("DOM.getAttributes",{nodeId:id})).attributes; out[at[at.indexOf(sel.slice(1,-1))+1]]=(await cdp.send("CSS.getPlatformFontsForNode",{nodeId:id})).fonts; }
+      return out; };
+    const bad=f=>!f.isCustomFont||!EMBEDDED.has(f.familyName), got=await ask("[data-cxp]"), fails=[];
+    let nChars=0; keys.forEach(k=>{ nChars+=Object.keys(k.chars).length; });
+    for(let i=0;i<keys.length;i++){ const fonts=got[String(i)]||[];
+      if(!Object.keys(keys[i].chars).length||(fonts.length&&!fonts.some(bad))) continue;
+      /* a set drawn in another face: ask its characters one by one, to name each and the first element that showed it */
+      const cs=Object.keys(keys[i].chars);
+      await page.evaluate(([i,cs])=>{ const p=document.querySelector('[data-cxp="'+i+'"]'); cs.forEach((c,j)=>{ const q=p.cloneNode(false); q.removeAttribute("data-cxp");
+        q.setAttribute("data-cxc",String(j)); q.textContent=c; document.body.appendChild(q); });
+        document.querySelectorAll("[data-cxc]").forEach(e=>e.getBoundingClientRect()); },[i,cs]);
+      await frames();
+      const one=await ask("[data-cxc]");
+      await page.evaluate(()=>document.querySelectorAll("[data-cxc]").forEach(e=>e.remove()));
+      cs.forEach((c,j)=>{ const f=one[String(j)]||[], at=keys[i].chars[c]; if(f.length&&!f.some(bad)) return;
+        if(FONT_ALLOW.some(a=>at.indexOf(": "+a[0]+" ")>0)) return;
+        fails.push("U+"+c.codePointAt(0).toString(16).toUpperCase().padStart(4,"0")+" "+c+" in "+keys[i].font.family.split(",")[0]+" "+keys[i].font.weight+" "+keys[i].font.style+
+          " drawn in "+(f.length?f.filter(bad).map(x=>x.familyName+(x.isCustomFont?"":" (a system font)")).join(", "):"no font")+"; first shown by "+at); }); }
+    await cdp.send("CSS.disable"); await cdp.send("DOM.disable"); await cdp.detach();
+    return {fails,fonts:keys.length,chars:nChars};
+  }
   const rows=[...await page.evaluate(COLLECT+'("first-run")')];
   for(const [name,fn] of STATES){ await page.evaluate(fn);
     await page.evaluate(()=>{ if(window.AUSTERLITZ_DEBUG) AUSTERLITZ_DEBUG.settle(3); });   /* a drawn frame: the map layer lays out in it */
     await page.waitForTimeout(300); rows.push(...await page.evaluate(COLLECT+"("+JSON.stringify(name)+")")); }
+  const FC=await fontCheck(), fontFails=FC.fails;
   await browser.close();
   const pairs=new Map(); let small=0;
   rows.forEach(r=>{
@@ -150,7 +205,9 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
   const all=[...pairs.values()], fails=all.filter(p=>p.ratio<p.need).sort((a,b)=>a.ratio-b.ratio);
   console.log("text elements "+rows.length+", distinct text/background pairs "+all.length+", below AA "+fails.length+", text below 10.5 px "+small);
   fails.slice(0,40).forEach(p=>console.log("  ! "+p.ratio.toFixed(2)+" < "+p.need+"  "+p.theme+" "+p.size+"px "+p.sel+" ["+p.state+'] "'+p.text+'"'));
+  console.log("font failures: "+fontFails.length+" ("+FC.chars+" characters in "+FC.fonts+" computed fonts, from the "+rows.length+" text elements read, asked which faces drew them; decision 141: only the embedded faces)");
+  fontFails.slice(0,40).forEach(f=>console.log("  ! font: "+f));
   if(jsonOut) fs.writeFileSync(jsonOut,JSON.stringify(all,null,1));
-  console.log(fails.length||small?"CONTRAST: FAILED":"CONTRAST: all text meets WCAG AA");
-  process.exitCode=(fails.length||small)?1:0;
+  console.log(fails.length||small||fontFails.length?"CONTRAST: FAILED":"CONTRAST: all text meets WCAG AA, drawn in the embedded faces");
+  process.exitCode=(fails.length||small||fontFails.length)?1:0;
 })();

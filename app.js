@@ -499,6 +499,49 @@ function buildSunDisc(){
 }
 var sunDir=new THREE.Vector3(-60,80,-160), fillLight=null;
 
+/* ---- the embedded type (decision 141; roadmap step 1, docs/FINAL_AUDIT.md T-0) ----
+   fonts.css (tools/fonts/build-fonts.py; build.py puts it in the stylesheet) declares three faces as WOFF2 data URLs: "Austerlitz Sans"
+   (from Inter, with DejaVu Sans' U+2502 as a second face) and "Austerlitz Serif" (from TeX Gyre Pagella), which the type tokens name
+   first. init lifts the boot screen only once every one of them has loaded, or after FONTS.TIMEOUT, when a face that failed falls back
+   to the system stacks behind it rather than hold the page: no visitor sees the interface in a fallback face, and the harness measures
+   what ships. FontFace.load() is used, not document.fonts.check(), which is true for a family that does not exist. A face that was not
+   yet loaded when init asked (late) lays the interface out again (relayoutAfterFonts). There is no canvas text to wait for. */
+var FONTS={FAMILIES:["Austerlitz Sans","Austerlitz Serif"],TIMEOUT:3000,state:null,ready:null};
+function fontFamilyOf(f){ return String(f.family).replace(/["']/g,""); }
+function fontFaces(){ var o=[];
+  if(typeof document!=="undefined"&&document.fonts&&document.fonts.forEach)
+    document.fonts.forEach(function(f){ if(FONTS.FAMILIES.indexOf(fontFamilyOf(f))>=0) o.push(f); });
+  return o; }
+/* resolves, never rejects: {loaded, failed (each "family weight range status"), ms, late, timedOut, none (no face declared)} */
+function fontsReady(ms){
+  var t0=performance.now(), F=fontFaces();
+  if(!F.length) return Promise.resolve({loaded:[],failed:[],ms:0,late:false,timedOut:false,none:true});
+  var late=F.some(function(f){ return f.status!=="loaded"; });
+  return new Promise(function(resolve){
+    var done=false, timer=setTimeout(finish,ms), threw=[];
+    /* timedOut: some face neither loaded, nor errored, nor threw from load() (a face that throws has failed, not timed out) */
+    function finish(){ if(done) return; done=true; clearTimeout(timer);
+      var L=[],X=[];
+      F.forEach(function(f){ var n=fontFamilyOf(f)+" "+f.weight+" "+String(f.unicodeRange||"").slice(0,14); if(f.status==="loaded") L.push(n); else X.push(n+" ("+(threw.indexOf(f)>=0?"threw":f.status)+")"); });
+      resolve({loaded:L,failed:X,ms:Math.round(performance.now()-t0),late:late,
+        timedOut:F.some(function(f){ return f.status!=="loaded"&&f.status!=="error"&&threw.indexOf(f)<0; }),none:false}); }
+    Promise.all(F.map(function(f){ try{ return Promise.resolve(f.load()).catch(function(){}); }catch(e){ threw.push(f); return null; } })).then(finish,finish);
+  });
+}
+/* a face that arrived after the first layout changes text sizes: the map layer measures every item again, the timeline's height, the view
+   offset and, while the first-run card is open, the first view's framing (fitted above the card) are taken again */
+function relayoutAfterFonts(){
+  for(var k in ML.items) ML.items[k].dirty=true;
+  syncTimebarHeight(); syncDock(); syncViewOffset(true);
+  if(firstRunOpen) frameFirstView();
+  requestRender(3);
+}
+function liftBoot(){
+  var b=document.getElementById("boot"); if(!b) return;
+  requestAnimationFrame(function(){ b.style.opacity="0"; });
+  setTimeout(function(){ if(b.parentNode) b.parentNode.removeChild(b); },900);
+}
+
 function init(){
   scene=new THREE.Scene();
   scene.background=lin(LIGHT_RIG.bg0);
@@ -564,9 +607,9 @@ function init(){
   }
   loop();
 
-  var b=document.getElementById("boot");
-  requestAnimationFrame(function(){ b.style.opacity="0"; });
-  setTimeout(function(){ if(b.parentNode) b.parentNode.removeChild(b); },900);
+  /* decision 141: the boot screen lifts once the embedded faces have loaded (fontsReady); a fault after it still lifts the screen, and is thrown */
+  FONTS.ready=fontsReady(FONTS.TIMEOUT).then(function(st){ FONTS.state=st; if(st.late) relayoutAfterFonts(); })
+    .then(liftBoot,function(e){ liftBoot(); throw e; });
 }
 
 /* ---------------- formation state ---------------- */
@@ -3957,7 +4000,7 @@ var ECH_RANK={army:0,corps:1,div:2,bde:3};
      segment from the eye to the anchor is marched over the drawn ground (groundY), only where it is low enough to meet
      it (section F.3 measured rays against the mesh at 84-205 ms a pass); what is never dropped is not occluded.
    ============================================================ */
-var ML={root:null, lines:null, items:{}, frame:0, hover:null, focus:null,
+var ML={root:null, lines:null, items:{}, frame:0, hover:null, hoverDrop:null, focus:null,
         order:"", maxG:{}, stats:{items:0,placed:0,leaders:0,dropped:0,occluded:0,offscreen:0,underPanel:0,keepMissing:[],dropped_:[],ms:0,nodes:0},
         taken:[], svg:"", legendOpen:false, lgSize:null};   /* Stage 3B (decision 49): the legend opens closed to its head; the visitor's choice then holds */
 var ML_FULL_DIST=70;   /* a counter nearer the eye than this (world units; about 4.4 km) is drawn full (section F.1) */
@@ -4386,11 +4429,30 @@ function mlNearAnchor(cx,cy,r2,dropped){
     var d=(it.sx-cx)*(it.sx-cx)+(it.sy-cy)*(it.sy-cy); if(d<bd){ bd=d; best=it.fid; } }
   return best;
 }
+/* a formation's counter or name dropped in the frame laid out last */
+function mlDroppedNow(fid){
+  var n=ML.items["n:"+fid], c=ML.items["c:"+fid];
+  return !!((n&&n.eFrame===ML.frame&&n.state==="dropped")||(c&&c.eFrame===ML.frame&&c.state==="dropped"));
+}
+/* the point within sqrt(r2) px of this formation's counter or name anchor */
+function mlAnchorWithin(fid,cx,cy,r2){
+  return ["n:","c:"].some(function(p){ var it=ML.items[p+fid];
+    return !!it&&it.eFrame===ML.frame&&it.state!=="occluded"&&(it.sx-cx)*(it.sx-cx)+(it.sy-cy)*(it.sy-cy)<r2; });
+}
 /* the pointer over a counter, a name or a formation's position: that formation is shown, full and never dropped */
 function mlHoverAt(cx,cy){
   /* a dropped formation's own position (within 6 px) comes first, even under another item's box: Stage 2E found a dropped
-     counter on the small framed paper map whose anchor lay under a neighbour's counter, reachable only from the keyboard */
-  var it=mlHit(cx,cy), id=mlNearAnchor(cx,cy,36,true)||(it&&it.fid)||pickFormation(cx,cy)||mlNearAnchor(cx,cy);   /* a place or arrow label is no formation: look under it */
+     counter on the small framed paper map whose anchor lay under a neighbour's counter, reachable only from the keyboard.
+     Then a dropped formation's footprint under the pointer, also under another item's box: with the embedded serif (decision
+     141) d'Hautpoul's name is dropped in the self-test's "a plan, going and terrain study" state at 4x and his whole footprint
+     lies under Drouet's placed name, so a label hit first made him reachable only from the keyboard.
+     Hovering a dropped formation draws it, which can drop a neighbour at the same place: the formation so reached keeps the
+     hover while the pointer stays on its position (its footprint, or within 6 px of its anchor), else the two take turns at
+     every move of the pointer (measured with the embedded serif at 4x: Legrand's Division and the Third Column, at two points) */
+  var it=mlHit(cx,cy), pf=pickFormation(cx,cy), pa=mlNearAnchor(cx,cy,36,true), pd=pf&&mlDroppedNow(pf)?pf:null, hk=ML.hoverDrop;
+  var keep=hk&&ML.hover===hk&&(pf===hk||mlAnchorWithin(hk,cx,cy,36))?hk:null;
+  var id=keep||pa||pd||(it&&it.fid)||pf||mlNearAnchor(cx,cy);   /* a place or arrow label is no formation: look under it */
+  ML.hoverDrop=id&&(id===keep||id===pa||id===pd)?id:null;
   var cur=(it&&it.pick)||id?"pointer":"";
   if(renderer.domElement.style.cursor!==cur) renderer.domElement.style.cursor=cur;
   if(id!==ML.hover){ ML.hover=id; requestRender(2); }
@@ -5457,13 +5519,17 @@ function openFirstRun(){
   firstRunOpen=true;
   document.body.classList.add("firstrun-on");
   if(docked) selectTab("now");                  /* Stage 7B (decision 113): the Now tab under the card, as decision 55 has Study open */
+  frameFirstView();
+  focusId("fr-tour");                           /* Stage 7B: the dialog takes focus, on its primary action */
+  requestRender(3);
+}
+/* the first view's framing, also taken again when an embedded face arrives late (relayoutAfterFonts, decision 141) */
+function frameFirstView(){
   var v=presetFrame(VANTAGE.plan);              /* Stage 3D: the field fitted into the free rectangle above the card */
   camArc=null;                                  /* the start-up phase transition keeps its light, not its camera */
   landCam.position.set(v[0],v[1],v[2]); orbitTarget.set(v[3],v[4],v[5]); landCam.lookAt(orbitTarget);
   clampCamera();
   curVantage="plan"; syncFollow();
-  focusId("fr-tour");                           /* Stage 7B: the dialog takes focus, on its primary action */
-  requestRender(3);
 }
 /* how: "open" (the primary action: the opening, Stage 7C), "explore" (stay: the button, Esc, or a key that then does its own action), or null (a click
    outside, or the app closing it). Focus never stays on the hidden card: after "open" it is on the opening bar's Next, after "explore" on
@@ -8854,6 +8920,30 @@ var AUSTERLITZ_DEBUG=(function(){
       return mx; }
     var se=edge(smokeTexture()), de=edge(dustTexture());
     ck("sprites: smoke and dust fade to nothing at every edge", se===0&&de===0, "largest edge alpha: smoke "+se+", dust "+de+" of 255");
+
+    /* 12. the embedded type (decision 141; roadmap step 1, T-0): every face fonts.css declares has loaded, before the boot screen lifted (init
+       waits on fontsReady), none failed and none timed out; and the interface is set in them as the tokens say: the first family of the
+       computed font-family of the page, the timeline's caption and its icon buttons, the brand's title, the first-run card's title (required:
+       it is in the page whether the card is shown or not) and a formation's name in the map layer is the token's embedded face */
+    (function(){
+      var F=fontFaces(), by={}, bad=[], st=FONTS.state;
+      F.forEach(function(f){ var n=fontFamilyOf(f); by[n]=(by[n]||0)+1; if(f.status!=="loaded") bad.push(n+" "+f.weight+" "+f.status); });
+      ck("the embedded type: three faces (two Austerlitz Sans, one Austerlitz Serif) loaded before the boot screen lifted, none failed (decision 141)",
+        F.length===3&&by["Austerlitz Sans"]===2&&by["Austerlitz Serif"]===1&&!bad.length&&!!st&&!st.none&&st.loaded.length===3&&!st.failed.length&&!st.timedOut,
+        F.length+" faces "+JSON.stringify(by)+(bad.length?"; not loaded: "+bad.join(", "):"")+
+        (st?"; when the boot screen lifted "+st.loaded.length+" loaded, "+st.failed.length+" failed"+(st.failed.length?" ("+st.failed.join(", ")+")":"")+", "+st.ms+" ms"+
+          (st.late?", late (laid out again)":", none late")+(st.timedOut?", TIMED OUT":""):"; no record from the boot"));
+    })();
+    (function(){
+      function first(ff){ var m=/^\s*(?:"([^"]+)"|'([^']+)'|([^,]+))/.exec(ff||""); return m?(m[1]||m[2]||m[3]).trim():""; }
+      var want={sans:first(TOKENS.type.sans),serif:first(TOKENS.type.serif)}, bad=[], seen=[];
+      if(want.sans!=="Austerlitz Sans"||want.serif!=="Austerlitz Serif") bad.push("the tokens name "+want.sans+" and "+want.serif+" first");
+      [["body","sans"],["#tb-cap","sans"],[".tb-icon","sans"],[".brand h1","serif"],["#fr-title","serif"],["#maplayer .mln","serif"]].forEach(function(p){
+        var e=document.querySelector(p[0]); if(!e){ bad.push(p[0]+" is not in the page"); return; }
+        var f=first(getComputedStyle(e).fontFamily); seen.push(p[0]+" "+f);
+        if(f!==want[p[1]]) bad.push(p[0]+" is set in "+f+", not "+want[p[1]]); });
+      ck("the embedded type: the interface is set in the embedded faces, as the tokens say (decision 141)", !bad.length, bad.length?bad.join("; "):seen.join("; "));
+    })();
 
     /* 11. render on demand */
     setMode("staff"); setClock(600,{instant:true,force:true,camera:false}); finishTween(); settle(40,true);

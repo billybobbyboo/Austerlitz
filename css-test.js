@@ -32,6 +32,111 @@ const declared=new Set([...c.matchAll(/(--[\w-]+)\s*:/g)].map(m=>m[1]));
 const undecl=[...used].filter(v=>!declared.has(v));
 if(undecl.length) errs.push("undeclared custom properties: "+undecl.join(", "));
 
+/* The embedded type (decision 141; roadmap step 1, docs/FINAL_AUDIT.md T-0). fonts.css, written by tools/fonts/build-fonts.py and committed,
+   is read as it ships: each face's WOFF2 decoded with Node's own brotli (tools/fonts/woff2.js). The type tokens name an embedded face first;
+   every face is an embedded WOFF2 whose bytes and fonts.css's are the ones tools/fonts/manifest.json records (no hand edit), renamed (no
+   source name, Bitstream or Vera in its names), carrying its copyright, its licence record and a note of its changes, with no OpenType
+   feature outside FONT_FEATURES (calt would draw " x " as a multiplication sign and "->" as an arrow, altering quoted words), with
+   font-display:swap, the three metric overrides and no size-adjust (so CSS px sizes and the 10.5 px floor stay what they say), and a
+   unicode-range it has every code point of; the three licences in the header, and the build carrying fonts.css verbatim. Every glyph a
+   visitor can be shown (every string and template in the scripts, with escapes and entities decoded, shell.html's text and attributes,
+   style.css's content values) is in the sans faces, and in the serif unless SERIF_EXEMPT gives the reason and every source that can show
+   it is the one file that reason names (check:contrast proves at run time that no visible text is drawn in any other face). No font-family or font shorthand outside the tokens, in style.css (base rules
+   and every @media), shell.html or the presentation scripts. */
+const TYPE_ERRS=[];
+{
+  const acorn=require("acorn"), W2=require("./tools/fonts/woff2.js"), crypto=require("crypto");
+  const FAM={sans:"Austerlitz Sans",serif:"Austerlitz Serif"};
+  const FONT_FEATURES=new Set(["kern","liga","ccmp","locl","mark","mkmk","rlig","clig","tnum"]);
+  /* glyphs the serif may lack, each with its reason and the one source file the reason holds for: a code point is exempt only
+     while every source that can show it is that file (a Cyrillic letter in analysis.js, whose text the serif draws, is an error) */
+  const SERIF_EXEMPT=[[0x0400,0x045F,"appearance.js","Cyrillic: only in appearance.js (the sources' titles and quoted words), drawn in the sans (the sources sheet's lists, the dossier's Dress rows)"],
+    [0x0462,0x0463,"appearance.js","the same: pre-reform Cyrillic in appearance.js, drawn in the sans"],[0x0472,0x0475,"appearance.js","the same"],
+    [0x2502,0x2502,"shell.html","the timeline's event buttons (.tb-icon, sans; the glyph from DejaVu Sans)"],[0x25BA,0x25BA,"shell.html","the timeline's buttons (.tb-icon, sans)"],
+    [0x25C4,0x25C4,"shell.html","the timeline's buttons (.tb-icon, sans)"]];
+  /* where a font-family may be set outside the tokens, with the reason */
+  const FONT_ALLOW=[["#devstats","the developer readout (aria-hidden, hidden unless the ` key or ?stats): a monospace stack is its purpose"]];
+  const ENT={middot:"·",times:"×",asymp:"≈",ndash:"–",mdash:"—",hellip:"…",rdquo:"”",ldquo:"“",rsquo:"’",
+    lsquo:"‘",minus:"−",lt:"<",gt:">",amp:"&",lsaquo:"‹",rsaquo:"›",laquo:"«",raquo:"»",frac12:"½",nbsp:" ",
+    quot:'"',apos:"'",rarr:"→",larr:"←",uarr:"↑",darr:"↓",deg:"°",sect:"§",copy:"©"};
+  const rd=f=>fs.readFileSync(f,"utf8");
+  const first=v=>{ const m=/^\s*(?:"([^"]+)"|'([^']+)'|([^,]+))/.exec(v||""); return m?(m[1]||m[2]||m[3]).trim():""; };
+  /* 1. the tokens name an embedded face first */
+  const tok=JSON.parse(/\/\*TOKENS:BEGIN\*\/([\s\S]*)\/\*TOKENS:END\*\//.exec(rd("tokens.js"))[1]);
+  for(const r of ["sans","serif"]) if(first(tok.type[r])!==FAM[r]) TYPE_ERRS.push(`tokens.js: the ${r} stack names ${first(tok.type[r])} first, not the embedded "${FAM[r]}"`);
+  /* 2. fonts.css: the faces as they ship */
+  const faces=[];
+  if(!fs.existsSync("fonts.css")) TYPE_ERRS.push("fonts.css is missing (tools/fonts/build-fonts.py writes it)");
+  else {
+    const css=rd("fonts.css"), man=JSON.parse(rd("tools/fonts/manifest.json")), sha=b=>crypto.createHash("sha256").update(b).digest("hex");
+    if(sha(Buffer.from(css,"utf8"))!==man.fonts_css.sha256) TYPE_ERRS.push("fonts.css is not the file tools/fonts/build-fonts.py wrote (its sha256 is not the manifest's): never edit it by hand");
+    const blocks=[...css.matchAll(/@font-face\{([^}]*)\}/g)].map(m=>m[1]);
+    if(blocks.length!==man.faces.length) TYPE_ERRS.push(`fonts.css has ${blocks.length} faces, the manifest ${man.faces.length}`);
+    if(/src:url\((?!data:font\/woff2;base64,)/.test(css)||/@import|url\((?!data:)/.test(css)) TYPE_ERRS.push("fonts.css loads something that is not an embedded WOFF2");
+    blocks.forEach((b,i)=>{
+      const fam=(/font-family:"([^"]+)"/.exec(b)||[])[1], d=/src:url\(data:font\/woff2;base64,([A-Za-z0-9+\/=]+)\) format\("woff2"\)/.exec(b);
+      if(!d){ TYPE_ERRS.push(`fonts.css: face ${i+1} (${fam}) is not an embedded WOFF2`); return; }
+      const buf=Buffer.from(d[1],"base64"), m=man.faces[i]||{};
+      if(sha(buf)!==m.woff2_sha256) TYPE_ERRS.push(`fonts.css: face ${i+1}'s WOFF2 is not the manifest's`);
+      let names, cm, feats;
+      try{ names=W2.nameRecords(buf); cm=W2.cmapCodepoints(buf); feats=W2.featureTags(buf,"GSUB").concat(W2.featureTags(buf,"GPOS")); }
+      catch(e){ TYPE_ERRS.push(`fonts.css: face ${i+1} (${fam}) does not decode: ${e.message}`); return; }
+      const ps=names[6]||"face "+(i+1);
+      if(fam!==FAM.sans&&fam!==FAM.serif) TYPE_ERRS.push(`fonts.css: ${ps} declares the family "${fam}", which no token names`);
+      if(names[1]!==fam||names[4]!==fam) TYPE_ERRS.push(`fonts.css: ${ps} calls itself "${names[1]}" / "${names[4]}", not "${fam}" (renamed: the GUST Font License's request, the Bitstream Vera licence, OFL practice)`);
+      [1,3,4,6].forEach(id=>{ if(/Inter\b|Pagella|TeX Gyre|DejaVu|Bitstream|Vera\b/.test(names[id]||"")) TYPE_ERRS.push(`fonts.css: ${ps}'s name ${id} "${names[id]}" keeps a source's or a reserved name`); });
+      if(!names[0]) TYPE_ERRS.push(`fonts.css: ${ps} carries no copyright record (name 0)`);
+      if(!names[13]) TYPE_ERRS.push(`fonts.css: ${ps} carries no licence record (name 13)`);
+      if(!/^Modified version of /.test(names[10]||"")) TYPE_ERRS.push(`fonts.css: ${ps} does not state its changes in name 10 (the LPPL's clause 6)`);
+      feats.forEach(t=>{ if(!FONT_FEATURES.has(t)) TYPE_ERRS.push(`fonts.css: ${ps} keeps the OpenType feature ${t} (only ${[...FONT_FEATURES].join(" ")})`); });
+      const ur=(/unicode-range:([^;}]+)/.exec(b)||[])[1]||"", range=[];
+      if(!ur) TYPE_ERRS.push(`fonts.css: ${ps} declares no unicode-range`);
+      ur.split(",").forEach(p=>{ const [a,z]=p.trim().slice(2).split("-"); const A=parseInt(a,16), Z=z?parseInt(z,16):A; for(let c=A;c<=Z;c++) range.push(c); });
+      const notIn=range.filter(c=>!cm.has(c)); if(notIn.length) TYPE_ERRS.push(`fonts.css: ${ps} declares ${notIn.length} code points it lacks (U+${notIn[0].toString(16).toUpperCase()}...)`);
+      if(!/font-display:swap/.test(b)) TYPE_ERRS.push(`fonts.css: ${ps} without font-display:swap (the boot line must never be invisible)`);
+      ["ascent-override","descent-override","line-gap-override"].forEach(k=>{ if(!new RegExp(k+":[0-9.]+%").test(b)) TYPE_ERRS.push(`fonts.css: ${ps} without ${k} (the layout-compatibility metrics)`); });
+      if(/size-adjust/.test(b)) TYPE_ERRS.push(`fonts.css: ${ps} sets size-adjust (CSS px sizes and the 10.5 px floor would no longer be what they say)`);
+      faces.push({fam,cm:new Set(range.filter(c=>cm.has(c))),ps});
+    });
+    for(const r of ["sans","serif"]) if(!faces.some(f=>f.fam===FAM[r])) TYPE_ERRS.push(`fonts.css: no face of "${FAM[r]}"`);
+    for(const [k,txt] of [["SIL Open Font License 1.1","SIL OPEN FONT LICENSE Version 1.1"],["GUST Font License","GUST Font License"],["Bitstream Vera licence","Bitstream Vera Fonts Copyright"],
+      ["LaTeX Project Public License","LaTeX Project Public License"],["unmodified original's location","https://ctan.org/pkg/tex-gyre-pagella"]])
+      if(!css.includes(txt)) TYPE_ERRS.push(`fonts.css: the ${k} text is not in its header`);
+    if(fs.existsSync("austerlitz-command-map.html")&&!rd("austerlitz-command-map.html").includes(css)) TYPE_ERRS.push("austerlitz-command-map.html does not carry fonts.css verbatim (python3 build.py)");
+  }
+  /* 3. coverage: every glyph a visitor can be shown */
+  const dec=s=>s.replace(/&#x([0-9a-f]+);/gi,(m,h)=>String.fromCodePoint(parseInt(h,16))).replace(/&#([0-9]+);/g,(m,n)=>String.fromCodePoint(+n))
+    .replace(/&([a-z]+[0-9]*);/gi,(m,n)=>ENT[n]!=null?ENT[n]:(TYPE_ERRS.push("glyph scan: the entity &"+n+"; is not in css-test.js's table"),m));
+  /* every code point a visitor can be shown, with every source file it comes from */
+  const vis=new Map(), add=(s,where)=>{ for(const ch of s){ const c=ch.codePointAt(0); if(c>=0x20&&c!==0x7F&&!(c>=0x80&&c<0xA0)){ if(!vis.has(c)) vis.set(c,new Set()); vis.get(c).add(where); } } };
+  const exempt=c=>SERIF_EXEMPT.some(([a,z,only])=>c>=a&&c<=z&&[...vis.get(c)].every(w=>w===only));
+  for(const f of ["tokens.js","geo.js","data.js","appearance.js","analysis.js","world.js","symbols.js","app.js"])
+    for(const t of acorn.tokenizer(rd(f),{ecmaVersion:2022})) if(t.type.label==="string"||t.type.label==="template") add(dec(String(t.value)),f);
+  add(dec(rd("shell.html").replace(/<!--[\s\S]*?-->/g,"")),"shell.html");
+  for(const m of clean.matchAll(/(?<![-\w])content:\s*"((?:[^"\\]|\\.)*)"/g)) add(m[1].replace(/\\([0-9a-fA-F]{1,6})\s?/g,(x,h)=>String.fromCodePoint(parseInt(h,16))),"style.css");
+  for(const r of ["sans","serif"]){
+    const F=faces.filter(f=>f.fam===FAM[r]); if(!F.length) continue;
+    const miss=[...vis.keys()].filter(c=>!F.some(f=>f.cm.has(c))&&!(r==="serif"&&exempt(c)));
+    if(miss.length) TYPE_ERRS.push(`coverage: ${miss.length} glyph(s) a visitor can be shown are not in "${FAM[r]}": `+
+      miss.slice(0,12).map(c=>"U+"+c.toString(16).toUpperCase().padStart(4,"0")+" "+String.fromCodePoint(c)+" ("+[...vis.get(c)].join(", ")+")").join(", ")+(miss.length>12?" ...":""));
+  }
+  /* 4. no font set outside the tokens: style.css's rules with their @media context (base rules and every @media), shell.html, the scripts */
+  { const re=/@media([^{]*)\{|([^{}]+)\{([^{}]*)\}|\}/g; let m, media=null, n=0;
+    while((m=re.exec(clean))!==null){
+      if(m[1]!==undefined){ media=m[1].trim(); continue; }
+      if(m[2]===undefined){ media=null; continue; }
+      n++; const sel=m[2].trim().replace(/\s+/g," "), body=m[3], where=sel+(media?" (@media "+media+")":"");
+      if(FONT_ALLOW.some(a=>sel===a[0])) continue;
+      for(const d of body.matchAll(/(?:^|;)\s*font-family\s*:([^;]+)/g)) if(!/^\s*var\(--(sans|serif)\)\s*$/.test(d[1])) TYPE_ERRS.push(`style.css: ${where} sets font-family:${d[1].trim()} outside the tokens`);
+      for(const d of body.matchAll(/(?:^|;)\s*font\s*:([^;]+)/g)) if(!/^\s*inherit\s*$/.test(d[1])) TYPE_ERRS.push(`style.css: ${where} sets the font shorthand ${d[1].trim()} outside the tokens`);
+    }
+    if(n<400) TYPE_ERRS.push("the type scan read only "+n+" rules of style.css (the parse is broken)"); }
+  { const sh=rd("shell.html"); for(const m of sh.matchAll(/font-family\s*=|style="[^"]*font(?:-family)?\s*:/g)) TYPE_ERRS.push(`shell.html:${sh.slice(0,m.index).split("\n").length}: a font set outside the tokens`); }
+  for(const f of ["app.js","symbols.js","world.js"]){ const s=rd(f); for(const m of s.matchAll(/font-family\s*[:=]|fontFamily\s*=|\.font\s*=|\bfont\s*:/g)) TYPE_ERRS.push(`${f}:${s.slice(0,m.index).split("\n").length}: a font set outside the tokens`); }
+  console.log("embedded type: "+faces.length+" faces, "+vis.size+" distinct glyphs a visitor can be shown, "+TYPE_ERRS.length+" errors");
+  TYPE_ERRS.forEach(e=>errs.push("type: "+e));
+}
+
 console.log("top-level rules:",rules.length,"| custom properties:",declared.size);
 console.log("CSS ERRORS:",errs.length);
 errs.forEach(e=>console.log("  ! "+e));

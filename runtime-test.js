@@ -705,10 +705,50 @@ if(process.env.DUMP_FX){
     fsx.writeFileSync('/tmp/tcheck/fx/'+k+'.frag','precision highp float;\n'+FX[k].fragmentShader);
   console.log('dumped 4 post shaders');
 }
+/* Decision 141 (roadmap step 1, docs/FINAL_AUDIT.md T-0): the embedded type's loader, dry runs, before the report. The stub document has
+   no document.fonts, so init took the "none" path; its FONTS.ready must have resolved (a fault there is an E line, not a late rejection).
+   Then fontsReady is driven over stub FontFaceSets: every face loads; one rejects (the promise still resolves, the face listed failed);
+   one never settles (the timeout resolves it, timed out); load() throws; every face already loaded (not late); a face of another family
+   ignored; no document.fonts. And relayoutAfterFonts runs, with the first-run card open and closed. */
+async function fontDryRuns(){
+  const st0=await FONTS.ready;
+  if(!FONTS.state||FONTS.state.none!==true) throw new Error("init's fontsReady without document.fonts did not record the 'none' path");
+  function face(family,how,status){ const f={family:family,weight:"400",unicodeRange:"U+0020-007E",status:status||"unloaded"};
+    f.load=()=>{ if(how==="throw") throw new Error("stub: load throws");
+      if(how==="hang"){ f.status="loading"; return new Promise(()=>{}); }
+      if(how==="reject"){ f.status="loading"; return Promise.reject(new Error("stub: bad font")).catch(e=>{ f.status="error"; throw e; }); }
+      f.status="loaded"; return Promise.resolve(f); };
+    return f; }
+  function set(list){ global.document.fonts={forEach:cb=>list.forEach(cb)}; }
+  const three=how=>[face('"Austerlitz Sans"',"ok"),face('"Austerlitz Sans"',"ok"),face("Austerlitz Serif",how||"ok")];
+  const cases=[
+    ["every face loads", three(), r=>r.loaded.length===3&&!r.failed.length&&r.late&&!r.timedOut&&!r.none],
+    ["one face rejects", three("reject"), r=>r.loaded.length===2&&r.failed.length===1&&/error/.test(r.failed[0])&&!r.timedOut],
+    ["one face never settles", three("hang"), r=>r.loaded.length===2&&r.failed.length===1&&r.timedOut],
+    ["load() throws", three("throw"), r=>r.loaded.length===2&&r.failed.length===1&&/threw/.test(r.failed[0])&&!r.timedOut],
+    ["every face already loaded", [face("Austerlitz Sans","ok","loaded"),face("Austerlitz Sans","ok","loaded"),face("Austerlitz Serif","ok","loaded")],
+      r=>r.loaded.length===3&&!r.late&&!r.timedOut],
+    ["a face of another family is not counted", three().concat([face("Georgia","hang")]), r=>r.loaded.length===3&&!r.failed.length&&!r.timedOut]];
+  for(const [name,list,ok] of cases){ set(list); const t0=Date.now(), r=await fontsReady(50);
+    if(!ok(r)) throw new Error("fontsReady, "+name+": "+JSON.stringify(r)); if(Date.now()-t0>2000) throw new Error("fontsReady, "+name+": took "+(Date.now()-t0)+" ms"); }
+  delete global.document.fonts;
+  const none=await fontsReady(50); if(!none.none) throw new Error("fontsReady without document.fonts: "+JSON.stringify(none));
+  const fr=firstRunOpen; firstRunOpen=true; relayoutAfterFonts(); firstRunOpen=false; relayoutAfterFonts(); firstRunOpen=fr;
+  console.log("embedded type: init's loader took the no-fonts path ("+JSON.stringify(st0===undefined?FONTS.state:st0)+"); fontsReady over "+cases.length+
+    " stub face sets (loaded, rejected, never settled, throwing, already loaded, another family) and none; relayoutAfterFonts with the card open and closed OK");
+}
+let reported=false;
+function report(){
+if(reported) return; reported=true;
 console.warn=origWarn; console.error=origErr;
 const uniq=[...new Set(warns)];
 console.log("\nconsole.warn unique:",uniq.length);
 uniq.slice(0,12).forEach(w=>console.log("  W "+w));
 console.log("errors:",errs.length);
 errs.forEach(e=>console.log("  E "+e));
+}
+/* a dry run that never settles must not skip the report: a watchdog, and a last word on exit */
+const fontWatch=setTimeout(()=>{ errs.push("FONTS: the dry runs did not finish within 30 s"); report(); },30000);
+process.on("exit",()=>{ if(!reported){ console.log("  E FONTS: the dry runs never settled, so the report was not reached"); process.exitCode=1; } });
+fontDryRuns().catch(e=>errs.push("FONTS: "+e.message+"\n"+(e.stack||"").split("\n").slice(1,4).join("\n"))).then(()=>{ clearTimeout(fontWatch); report(); });
 
