@@ -3,30 +3,68 @@
    node tools/stage2/chronology.js [--md out.md] [--json out.json] [--evidence] [--times] [--check]
    --times  every explicit anchor time (tm, owner decisions 40-41): window, grade, basis, and each evidence quote resolved
             to its current file:line;
-   --check  the regression (npm run check:chronology): exits 1 if any move with a timed statement is early or late, other
-            than the unresolved conflicts named in CONFLICTS; if any explicit time lacks evidence, grade or basis, or quotes
-            text that is not in the sources; or if the movement audit reports a timing or march-rate finding.
+   --check  the regression (npm run check:chronology; since roadmap step 1, finding D-1 of docs/FINAL_AUDIT.md). It reads the
+            live text, not only the hand-typed table, and exits 1 on any of these:
+     verdicts  a move with a timed statement early or late (REVIEW, judged against the live engine window), other than the
+               unresolved conflicts named in CONFLICTS (decision 42), each of which must be an anchor;
+     times     an explicit anchor time without evidence, grade or basis, or quoting text that is not in the sources (--times);
+     L1  a timed string literal or comment of data.js or analysis.js that the extractor below does not read and that no class of
+         EXCLUDED_PATHS covers (an acorn inventory, by path); a class that covers nothing; an inventory path whose literal is not
+         the model's value there;
+     L2  a timed statement (one statement and one of its times) that no REVIEW row cites (REVIEW_CITES) and ALLOW_TIMED does
+         not name; an ALLOW_TIMED entry that a row also cites;
+     L3  a cite or an ALLOW_TIMED entry that does not resolve to exactly one live statement still carrying that time: a retimed
+         sentence, a moved or renamed source (a new path, phase or id), or a free-text ref reworded within the beginning its
+         cite names, fails here until its row (or its entry) is reviewed; a reword that keeps the time and the cited beginning
+         is not detected (the ledger is by ref and time, not by full text);
+     L4  a REVIEW row with a kind whose text times (from, and to when set) are not times of the statements it cites; (L4b) a
+         cite outside its row's text times;
+     L5  a REVIEW or REVIEW_CITES key that is not a movement anchor, or a row of one table missing from the other;
+     L6  a phase whose clock string is not its t0 - t1;
+     (L7, the themes' and tour stops' moments and the one stop that keeps its own clock, is test.js's: not repeated here;)
+     L8  a named conflict whose row does not cite SOURCE_NOTE's open question at its own time (the conflict stays disclosed);
+     D1  a derived arrival other than at the tactical rate (a design value, unsourced), at the ceiling (flagged, and named in
+         CEILING_FLAGGED) or at its own moveMin (named in MOVEMIN_DERIVED); a named leg whose arrival has another rule;
+     F1  the dated legs forced to 80% of their ceiling or more by a following default not exactly FORCED_DATED;
+     F2  a leg at 80% of its ceiling or more named in none of CEILING_FLAGGED, FORCED_DATED and NEAR_CEILING, or a
+         NEAR_CEILING leg no longer there (80% is section M.13's line);
+     M1  any finding of the movement audit (app.js auditMovement: a leg over its arm's ceiling, a crossing of open water or of
+         the marshy bottom, an explicit time out of order or outside the day), run here on world.js's cover.
+
+   The statements (the extractor; since step 1 one statement per string, each with a stable reference, "ref"):
+     timeline <ph>: <text>       PHASES[].events, timed by the label (and by any time in the line's text)
+     lede <ph> | phase <ph> title|label
+     event <id> | event <id> n|why   EVENTS[]: t (the event's window), its name's and its reason's times (tolWhy excluded)
+     formation <id> name|commander|staff|role|note|strengthNote|mixedNote
+     anchor <id>@<ph> act|obj   the anchors' texts (tm, the engine's own timing input, is --times's and the movement audit's)
+     chapter <id> text|n | tour <k> x|n | act <id> n|line
+     feature <id> name|sub|story|why <i>|fact <label>
+     command <sd>@<ph>: <text>   the Command tab's knowledge rows
+     plan <path> | source-note <path>   every string of PLANS and SOURCE_NOTE
+     comment data.js: <text>     comments in data.js
+   Times in text: "08:45", "13:00-14:00", "after 11:00", "a quarter to nine", "seven o'clock", and since step 1 "noon" or
+   "midday" (12:00). A chapter's or a stop's clock (its moment's, app.js momentOf) is kept as a weak statement for --evidence only.
+   A cite is "<ref, or its beginning past the ': '> @HH:MM[-HH:MM][+]" ("+": "after"). REVIEW's evidence column (file:line
+   when section M was written) is history; REVIEW_CITES is the live link.
 
    For every anchor (a track entry with a position) of every formation:
    - the engine's movement window: legWindow(previous anchor, anchor) (app.js), i.e. from the previous anchor's phase start
      (or moveMin before the anchor's phase start) to the anchor's phase start, PHASES[ph].t0, when the anchor is reached;
-   - every timed statement about the formation in the app's own data: phase timelines ("c. 11:45 ...") and ledes, EVENTS
-     (by their forms list and by names), the anchors' act / obj text, formation notes, analysis chapters (their text and the
-     clock each chapter sets), tour stops (text and clock), features, the command-knowledge text, and comments in data.js;
      since the chronology data task an anchor may carry its own time (tm.at, tm.dep), and legWindow returns the real window;
-   - a statement is attached to the anchor whose phase contains its time (the reading that an anchor's text describes its
-     phase); REVIEW below records, by hand, for each attached statement whether it describes the anchor's action, and the
-     verdict with its evidence.
-   Verdicts: consistent (the text's time falls in the engine's window, +-5 min); early (the engine arrives before the text
+   - REVIEW below records, by hand, what the timed statements it cites date for this anchor's move (its kind and text
+     times); the verdict is computed against the live window.
+   Verdicts: consistent (the text's time falls in the engine's window, +-15 min); early (the engine arrives before the text
    says the movement or action happens; size = text time - arrival); late (the engine is still moving after the text says it
    arrived); undetermined (no timed statement about this action). Sizes in minutes. */
-const {load}=require("./model.js"), fs=require("fs"), path=require("path");
-const X=load(), F=X.FORMATIONS, P=X.PHASES;
+const {load}=require("./model.js"), fs=require("fs"), path=require("path"), acorn=require("acorn");
+const MODEL_EXTRA=["wetAt","nearSettlement","crossingProblem","auditMovement","fmtClock","momentOf","evWindow","SPEED_CEIL"];
+const X=load(MODEL_EXTRA), F=X.FORMATIONS, P=X.PHASES;
 const ROOT=path.resolve(__dirname,"..","..");
 const SRC={}; ["data.js","analysis.js","app.js"].forEach(f=>SRC[f]=fs.readFileSync(path.join(ROOT,f),"utf8").split("\n"));
-function lineOf(text,files){ const probe=String(text).slice(0,60); for(const f of files||["data.js","analysis.js"]){ const i=SRC[f].findIndex(l=>l.includes(probe)); if(i>=0) return f+":"+(i+1); } return "?"; }
+function lineOf(text,files){ const raw=String(text).slice(0,60), esc=JSON.stringify(String(text)).slice(1,61);
+  for(const f of files||["data.js","analysis.js"]){ const i=SRC[f].findIndex(l=>l.includes(raw)||l.includes(esc)); if(i>=0) return f+":"+(i+1); } return "?"; }
 const hm=t=>{ const h=Math.floor(t/60), m=Math.round(t%60); return (h<10?"0":"")+h+":"+(m<10?"0":"")+m; };
-const leaves=id=>X.leavesOf(id,[]);
+const leavesIn=M=>id=>M.leavesOf(id,[]);
 /* names a text can use for a formation (leaf ids); aggregates resolve to their tracked leaves */
 const NAMES=[
  ["Napoleon",["gqg"]],["Emperor",["gqg"]],["Berthier",["gqg"]],
@@ -49,7 +87,7 @@ const NAMES=[
  ["Guard cavalry",["rg_cav"]]
 ];
 function namesIn(text){ const s=new Set(); NAMES.forEach(([k,ids])=>{ if(new RegExp("(^|[^A-Za-z])"+k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"($|[^A-Za-z])").test(text)) ids.forEach(i=>s.add(i)); }); return s; }
-/* times in free text: "08:45", "13:00-14:00", "about 08:30-09:00", "a quarter to nine", "seven o'clock", "after 11:00" */
+/* times in free text: "08:45", "13:00-14:00", "about 08:30-09:00", "a quarter to nine", "seven o'clock", "after 11:00", "noon" */
 const WORD={one:1,two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12};
 const hr=h=>h<4?h+12:h;   /* the day runs 04:00-18:00 */
 function timesIn(text){
@@ -60,37 +98,93 @@ function timesIn(text){
   const reQ=/(a quarter to|quarter to|a quarter past|quarter past|half past)\s+(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)/gi;
   while((m=reQ.exec(t))){ const h=hr(WORD[m[2].toLowerCase()]), k=m[1].toLowerCase(); const v=/to/.test(k)?h*60-15:/half/.test(k)?h*60+30:h*60+15; out.push({a:v,b:v,words:m[0]}); }
   const reO=/(one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve) o'clock/gi; while((m=reO.exec(t))){ const v=hr(WORD[m[1].toLowerCase()])*60; out.push({a:v,b:v,words:m[0]}); }
+  const reN=/\b(noon|midday)\b/gi; while((m=reN.exec(t))) out.push({a:720,b:720,words:m[0]});   /* since step 1 (D-1) */
   return out.filter(x=>x.a>=180&&x.a<=1140);
 }
-/* ---- the statements ---- */
-const ST=[];
-function add(src,where,text,times,forms,extra){ times.forEach(t=>ST.push(Object.assign({src,where,text:String(text).slice(0,220),a:t.a,b:t.b,after:!!t.after,forms:[...forms]},extra||{}))); }
-P.forEach((ph,i)=>{
-  (ph.events||[]).forEach(([lab,txt])=>{ let tt=[]; const m=/^(after\s+)?(\d{1,2}):(\d{2})(?:\s*[-–]\s*(\d{1,2}):(\d{2}))?/.exec(lab.replace(/^c\.\s*/,""));
-    if(m){ const a=+m[2]*60+ +m[3]; tt=[m[1]?{a,b:null,after:true}:{a,b:m[4]?+m[4]*60+ +m[5]:a}]; }
-    add("phase "+i+" timeline",lineOf(txt),lab+" "+txt,tt,namesIn(txt)); });
-  add("phase "+i+" lede",lineOf(ph.lede),ph.lede,timesIn(ph.lede),namesIn(ph.lede));
-});
-X.EVENTS.forEach(e=>{ const f=new Set((e.forms||[]).flatMap(leaves)); namesIn(e.n+" "+(e.why||"")).forEach(i=>f.add(i));
-  const t=Array.isArray(e.t)?{a:e.t[0],b:e.t[1]}:{a:e.t,b:e.t}; add("event "+e.id,lineOf('id:"'+e.id+'"',["analysis.js"]),e.n,[t],f,{kind:e.kind}); });
-Object.entries(F).forEach(([id,f])=>{
-  ["note","role","strengthNote"].forEach(k=>{ if(f[k]) add("formation "+id+" "+k,lineOf(f[k].slice(0,50)),f[k],timesIn(f[k]),new Set([...leaves(id),...namesIn(f[k])])); });
-  if(f.track) Object.entries(f.track).forEach(([ph,e])=>{ ["act","obj"].forEach(k=>{ if(e[k]) add("anchor "+id+"@"+ph+" "+k,lineOf(e[k].slice(0,50)),e[k],timesIn(e[k]),new Set([id])); }); });
-});
-X.ANALYSIS.forEach(c=>{ const f=new Set((c.forms||[]).flatMap(leaves)); add("chapter "+c.id+" (clock)",lineOf('id:"'+c.id+'"',["analysis.js"]),c.n,[{a:c.t,b:c.t}],f,{weak:true});
-  add("chapter "+c.id+" text",lineOf((c.text||"").slice(0,50),["analysis.js"]),c.text||"",timesIn(c.text||""),namesIn(c.text||"")); });
-X.TOUR.forEach((s,k)=>{ add("tour stop "+(k+1)+" (clock)",lineOf(s.x.slice(0,50),["analysis.js"]),s.n,[{a:s.t,b:s.t}],namesIn(s.x),{weak:true});
-  add("tour stop "+(k+1)+" text",lineOf(s.x.slice(0,50),["analysis.js"]),s.x,timesIn(s.x),namesIn(s.x)); });
-X.FEATURES.forEach(ft=>{ const txt=[ft.sub,ft.story,...(ft.why||[]),...(ft.facts||[]).map(q=>q.join(": "))].join(" "); add("feature "+ft.id,lineOf('id:"'+ft.id+'"'),txt,timesIn(txt),namesIn(txt)); });
-Object.entries(X.COMMAND).forEach(([sd,byPh])=>Object.entries(byPh).forEach(([ph,rows])=>rows.forEach(r=>add("command "+sd+"@"+ph,lineOf(r[2].slice(0,50),["analysis.js"]),r[2],timesIn(r[2]),namesIn(r[2])))));
-SRC["data.js"].forEach((l,i)=>{ const c=/\/\*(.*?)\*\//.exec(l); if(c&&/track|timing|\d{1,2}:\d{2}/.test(c[1])&&/\d{1,2}:\d{2}/.test(c[1])){ const idm=/^\s*(\w+):\{/.exec(l); add("comment data.js:"+(i+1),"data.js:"+(i+1),c[1],timesIn(c[1]),namesIn(c[1])); } });
-/* the comment on Przybyszewski's phase-8 anchor names no formation: attach it to prz by its line */
-ST.filter(s=>s.src==="comment data.js:496").forEach(s=>s.forms=["prz"]);
-module.exports={ST,X,hm,lineOf,namesIn,timesIn};
+const tstr=s=>hm(s.a)+(s.b!=null&&s.b!==s.a?"-"+hm(s.b):"")+(s.after?"+":"");
+const norm=t=>String(t).replace(/\s+/g," ").trim();
+const short=(t,n)=>{ t=norm(t); n=n||72; return t.length>n?t.slice(0,n-1)+"…":t; };
+
+/* ---- the inventory (rule L1): every string literal and comment of data.js and analysis.js, by its path in the model
+   (PHASES.6.events.2.0, FORMATIONS.gqg.track.6.act; a comment "(comment) data.js:517") and its line ---- */
+let INV_CACHE=null;
+function inventory(){
+  if(INV_CACHE) return INV_CACHE;
+  const items=[], lines=new Map();
+  ["data.js","analysis.js"].forEach(f=>{
+    const src=SRC[f].join("\n"), cm=[];
+    const ast=acorn.parse(src,{ecmaVersion:2020,locations:true,onComment:cm});
+    (function walk(n,keys){
+      if(!n||typeof n!=="object") return;
+      if(Array.isArray(n)){ n.forEach(x=>walk(x,keys)); return; }
+      const k=keys.join(".");
+      if(n.type&&keys.length&&!lines.has(k)) lines.set(k,f+":"+n.loc.start.line);
+      if(n.type==="Literal"){ if(typeof n.value==="string") items.push({path:k,f,line:n.loc.start.line,where:f+":"+n.loc.start.line,value:n.value}); return; }
+      if(n.type==="ArrayExpression"){ n.elements.forEach((x,i)=>walk(x,keys.concat(i))); return; }
+      if(n.type==="ObjectExpression"){ n.properties.forEach(p=>walk(p.value,keys.concat(p.key.type==="Identifier"?p.key.name:p.key.value))); return; }
+      if(n.type==="VariableDeclarator"){ walk(n.init,[n.id.name]); return; }
+      for(const q in n){ if(q==="loc") continue; const v=n[q]; if(v&&typeof v==="object") walk(v,keys); }
+    })(ast,[]);
+    cm.forEach(c=>items.push({path:"(comment) "+f+":"+c.loc.start.line,f,line:c.loc.start.line,where:f+":"+c.loc.start.line,value:c.value,comment:true}));
+  });
+  INV_CACHE={items,lines};
+  return INV_CACHE;
+}
+/* ---- the statements (the extractor, v2 since step 1) ---- */
+function extract(M){
+  const S=[], refUnit=new Map(), INV=inventory(), leaves=leavesIn(M);
+  const whereOf=p=>INV.lines.get(p)||"?";
+  /* one statement per string; a ref already taken by another string gets " #2", " #3" */
+  function refFor(ref,unit){ let r=ref, n=1; while(refUnit.has(r)&&refUnit.get(r)!==unit) r=ref+" #"+(++n); refUnit.set(r,unit); return r; }
+  function add(ref,unit,p,text,times,forms,extra){ if(!times.length) return; const r=refFor(ref,unit);
+    times.forEach(t=>S.push(Object.assign({ref:r,src:r,path:p,where:p&&p[0]==="("?p.slice(10):whereOf(p),text:String(text),a:t.a,b:t.b,after:!!t.after,forms:[...forms]},extra||{}))); }
+  const str=(o,k)=>typeof o[k]==="string"?o[k]:null;
+  M.PHASES.forEach((ph,i)=>{
+    (ph.events||[]).forEach(([lab,txt],j)=>{ const u="PHASES."+i+".events."+j, ref="timeline "+i+": "+norm(txt), f=namesIn(txt);
+      const m=/^(after\s+)?(\d{1,2}):(\d{2})(?:\s*[-–]\s*(\d{1,2}):(\d{2}))?/.exec(String(lab).replace(/^c\.\s*/,""));
+      let tt=timesIn(lab); if(m){ const a=+m[2]*60+ +m[3]; tt=[m[1]?{a,b:null,after:true}:{a,b:m[4]?+m[4]*60+ +m[5]:a}]; }
+      add(ref,u,u+".0",lab+" "+txt,tt,f); add(ref,u,u+".1",lab+" "+txt,timesIn(txt),f); });
+    if(str(ph,"lede")) add("lede "+i,"PHASES."+i+".lede","PHASES."+i+".lede",ph.lede,timesIn(ph.lede),namesIn(ph.lede));
+    ["title","label"].forEach(k=>{ if(str(ph,k)) add("phase "+i+" "+k,"PHASES."+i+"."+k,"PHASES."+i+"."+k,ph[k],timesIn(ph[k]),namesIn(ph[k])); });
+  });
+  M.EVENTS.forEach((e,i)=>{ const f=new Set((e.forms||[]).flatMap(leaves)); namesIn(e.n+" "+(e.why||"")).forEach(x=>f.add(x));
+    const w=Array.isArray(e.t)?{a:e.t[0],b:e.t[1]}:{a:e.t,b:e.t}, u="EVENTS."+i;
+    add("event "+e.id,u+".t",u+".t",e.n,[w],f,{kind:e.kind});
+    ["n","why"].forEach(k=>{ if(str(e,k)) add("event "+e.id+" "+k,u+"."+k,u+"."+k,e[k],timesIn(e[k]),f); }); });
+  Object.entries(M.FORMATIONS).forEach(([id,fm])=>{
+    ["name","commander","staff","role","note","strengthNote","mixedNote"].forEach(k=>{ if(str(fm,k)){ const p="FORMATIONS."+id+"."+k;
+      add("formation "+id+" "+k,p,p,fm[k],timesIn(fm[k]),new Set([...leaves(id),...namesIn(fm[k])])); } });
+    if(fm.track) Object.entries(fm.track).forEach(([ph,e])=>["act","obj"].forEach(k=>{ if(str(e,k)){ const p="FORMATIONS."+id+".track."+ph+"."+k;
+      add("anchor "+id+"@"+ph+" "+k,p,p,e[k],timesIn(e[k]),new Set([id])); } }));
+  });
+  M.ANALYSIS.forEach((c,i)=>{ const f=new Set((c.forms||[]).flatMap(leaves)), mo=M.momentOf(c.at);
+    if(mo) add("chapter "+c.id+" (clock)","ANALYSIS."+i+".at",null,c.n,[{a:mo.t,b:mo.t}],f,{weak:true,where:whereOf("ANALYSIS."+i+".at")});
+    ["text","n"].forEach(k=>{ if(str(c,k)) add("chapter "+c.id+" "+k,"ANALYSIS."+i+"."+k,"ANALYSIS."+i+"."+k,c[k],timesIn(c[k]),namesIn(c[k])); }); });
+  M.TOUR.forEach((s,k)=>{ const mo=M.momentOf(s.at), t=s.t!==undefined?s.t:mo?mo.t:null, f=namesIn(s.x||"");
+    if(t!=null) add("tour "+(k+1)+" (clock)","TOUR."+k+".at",null,s.n,[{a:t,b:t}],f,{weak:true,where:whereOf("TOUR."+k+(s.t!==undefined?".t":".at"))});
+    ["x","n"].forEach(q=>{ if(str(s,q)) add("tour "+(k+1)+" "+q,"TOUR."+k+"."+q,"TOUR."+k+"."+q,s[q],timesIn(s[q]),namesIn(s[q])); }); });
+  M.ACTS.forEach((a,i)=>["n","line"].forEach(k=>{ if(str(a,k)) add("act "+a.id+" "+k,"ACTS."+i+"."+k,"ACTS."+i+"."+k,a[k],timesIn(a[k]),namesIn(a[k])); }));
+  M.FEATURES.forEach((ft,i)=>{ const u="FEATURES."+i;
+    ["name","sub","story"].forEach(k=>{ if(str(ft,k)) add("feature "+ft.id+" "+k,u+"."+k,u+"."+k,ft[k],timesIn(ft[k]),namesIn(ft[k])); });
+    (ft.why||[]).forEach((w,j)=>{ if(typeof w==="string") add("feature "+ft.id+" why "+j,u+".why."+j,u+".why."+j,w,timesIn(w),namesIn(w)); });
+    (ft.facts||[]).forEach((q,j)=>{ const txt=q.join(": "), ref="feature "+ft.id+" fact "+norm(q[0]), uu=u+".facts."+j;
+      q.forEach((part,z)=>{ if(typeof part==="string") add(ref,uu,uu+"."+z,txt,timesIn(part),namesIn(txt)); }); }); });
+  Object.entries(M.COMMAND).forEach(([sd,byPh])=>Object.entries(byPh).forEach(([ph,rows])=>rows.forEach((r,j)=>{ const p="COMMAND."+sd+"."+ph+"."+j+".2";
+    if(typeof r[2]==="string") add("command "+sd+"@"+ph+": "+norm(r[2]),p,p,r[2],timesIn(r[2]),namesIn(r[2])); })));
+  [["plan","PLANS",M.PLANS],["source-note","SOURCE_NOTE",M.SOURCE_NOTE]].forEach(([name,root,obj])=>(function walk(o,keys){
+    if(typeof o==="string"){ const p=[root].concat(keys).join("."); add(name+" "+keys.join("."),p,p,o,timesIn(o),namesIn(o)); return; }
+    if(o&&typeof o==="object") Object.entries(o).forEach(([k,v])=>walk(v,keys.concat(k))); })(obj,[]));
+  INV.items.filter(it=>it.comment&&it.f==="data.js").forEach(it=>{ const t=norm(it.value);
+    /* the comment on Przybyszewski's phase-8 anchor names no formation: attach it to prz by its content */
+    add("comment data.js: "+t,it.path,it.path,it.value,timesIn(it.value),/holds at Sokolnitz until it is surrounded/.test(t)?new Set(["prz"]):namesIn(t)); });
+  return S;
+}
+const ST=extract(X);
+module.exports={ST,X,hm,lineOf,namesIn,timesIn,extract,inventory};
 
 /* ---- the review: what each timed statement dates, recorded by hand (docs/STAGE2_SPEC.md section M) ----
    [the verdict section M recorded (frozen, for comparison), kind, text time from, text time to (minutes; null = open),
-    evidence (file:line when section M was written), note, flag].
+    evidence (file:line when section M was written: history; the live link is REVIEW_CITES below), note, flag].
    kind says what the statement dates for THIS anchor's move; the verdict is then COMPUTED against the live engine window
    [start, arrival] (legWindow), so re-running the audit after a timing change re-derives every verdict:
      start    the move's beginning:    early if start <= from - 15;  late if start >= to + 15
@@ -137,7 +231,7 @@ const REVIEW={
  "drouet@6":["consistent","during",T(11),null,"data.js:103; analysis.js:299","the Guard attack after 11:00; the engine forms the line by 11:15"],
  "guard_inf@6":["consistent","during",T(11),null,"data.js:103; analysis.js:295","committed as the Russian Guard attacks, after 11:00; the engine arrives 11:15"],
  "guard_inf@7":["early","span",T(13),T(14),"analysis.js:315","the wheel (which names the Guard infantry) is 13:00-14:00; the engine moves 11:15-12:45"],
- "guard_cav@6":["early","during",T(11,45),T(11,45),"data.js:104; analysis.js:299; analysis.js:38","Rapp's counter-charge c. 11:45; the engine arrives 11:15. The texts disagree: the event's window starts 11:15 (analysis.js:299) and the chapter's clock is 11:20 (analysis.js:38)"],
+ "guard_cav@6":["early","during",T(11,45),T(11,45),"data.js:104; analysis.js:299; analysis.js:38","Rapp's counter-charge c. 11:45; the engine arrives 11:15. The texts disagree: the event's window starts 11:15 (analysis.js:299); the chapter's clock was 11:20 (analysis.js:38) until the spine data task, and the theme now opens at phase 6, 11:15"],
  "c_gren@7":["early","span",T(13),T(14),"analysis.js:315","the wheel (which names the grenadiers) is 13:00-14:00; the engine moves 11:15-12:45"],
  "c_gren@8":["consistent","during",T(13),T(14),"analysis.js:315","the wheel 13:00-14:00 inside the engine's 12:45-14:30"],
  "ahq@3":["consistent","during",T(8,30),T(9),"data.js:411; data.js:412; analysis.js:96","the emperors join the column about 08:30-09:00; the engine arrives 08:45; but the headquarters is 'at Krzenowitz' in phase 0 and the engine moves it from 04:00","creep"],
@@ -161,7 +255,7 @@ const REVIEW={
  "kamensky@7":["consistent","during",T(11,15),null,"data.js:483","the act: its route 'after 11:15'"],
  "prz@1":["consistent","during",T(4),T(7),"analysis.js:236","the columns leave the plateau 04:00-07:00"],
  "prz@2":["consistent","arrival",T(8),T(8),"data.js:70; analysis.js:255","goes for the castle c. 08:00"],
- "prz@8":["consistent","during",T(14),T(14,30),"data.js:496; analysis.js:319","written for the engine's rule: holds until surrounded c. 14:00, then 14:10-14:30"],
+ "prz@8":["consistent","during",T(14),T(14),"data.js:496; analysis.js:319","written for the engine's rule: holds until surrounded c. 14:00, then 14:10-14:30. Its text time was typed 14:00-14:30 until roadmap step 1: 14:30 is the phase's start, not a time of any text (rule L4)"],
  "milo@2":["consistent","during",T(4,15),T(8),"analysis.js:240","held up by the counter-march 04:15-08:00"],
  "milo@3":["consistent","arrival",T(8,45),T(8,45),"data.js:78","caught as Soult appears c. 08:45; the engine arrives 08:45"],
  "milo@4":["consistent","during",T(9,15),T(9,15),"data.js:80; analysis.js:275","faces about c. 09:15, inside 08:45-09:30"],
@@ -180,16 +274,134 @@ const REVIEW={
  "rg_cav@6":["consistent","during",T(11),null,"data.js:103","takes the eagle after 11:00; the engine arrives 11:15","creep"],
  "rg_cav@7":["consistent","during",T(11,15),T(13,15),"analysis.js:299","inside the event's window"]
 };
+/* ---- the cites (rules L2-L5, L8; since roadmap step 1): for each REVIEW row, the live statements it reviewed, each at the
+   time(s) the row transcribes, "<ref, or its beginning past the ': '> @HH:MM[-HH:MM][+]". A row without a kind cites the
+   statements it judged not to date its move. 136 cites are REVIEW's evidence column resolved to today's statements (file:line
+   as of 4b5f14a, else 4d631bf or d91b9a4; two did not resolve: guard_cav@6's analysis.js:38, the old chapter clock 11:20, and
+   ahq@6's data.js:414, an untimed act); 36 were added in step 1, each a sentence already in the sources at a time its row
+   already records. A sentence retimed, a source moved or renamed (a new path, phase or id), or a free-text ref reworded
+   within the beginning its cite names fails L3 until its row is reviewed again; a reword that keeps the time and the cited
+   beginning is not detected (the ledger is by ref and time, not by full text). */
+const REVIEW_CITES={
+ "gqg@6":["timeline 6: Napoleon moves forward from the @12:00","event hq-forward @12:00-12:40","feature vinohrady fact Also @12:00","feature zuran fact Vacated @12:00"],
+ "gqg@7":["chapter wheel text @13:00","chapter wheel text @14:00"],
+ "heightguns@8":["timeline 8: Vandamme takes the height above @14:30","event augezd @14:30","event ice @15:00","timeline 8: French artillery fires on the @15:00"],
+ "sthilaire@2":["timeline 2: Napoleon asks Soult how long @08:30","event decision @08:25-08:45"],
+ "sthilaire@3":["timeline 3: Soult's divisions advance. The mist @08:45","timeline 3: Thiebault's brigade clears Pratzen village; @09:00","event pratzen-village @09:00","event soult @08:45-09:15","chapter pratzen text @08:45","tour 6 x @08:45","feature pratzenv fact Cleared by @09:00"],
+ "sthilaire@4":["timeline 3: Thiebault's brigade clears Pratzen village; @09:00","event pratzen-village @09:00","timeline 4: Kamensky turns his brigade about @09:45","event kamensky @09:45","feature pratzenv fact Cleared by @09:00"],
+ "sthilaire@7":["timeline 7: Soult and Davout launch the @13:00-14:00","event wheel @13:00-14:00","chapter wheel text @13:00","chapter wheel text @14:00"],
+ "sthilaire@8":["timeline 7: Soult and Davout launch the @13:00-14:00","event sokolnitz-falls @14:00","timeline 7: Sokolnitz falls @14:00"],
+ "vandamme@3":["timeline 3: Soult's divisions advance. The mist @08:45","event soult @08:45-09:15","chapter pratzen text @08:45","tour 6 x @08:45","timeline 3: Thiebault's brigade clears Pratzen village @09:00"],
+ "vandamme@6":["timeline 6: The Russian Guard attacks Vandamme; @11:00+","event guard-attack @11:00-13:00","formation constantine role @11:00","feature vinohrady fact Contested by @11:00"],
+ "vandamme@7":["timeline 7: Soult and Davout launch the @13:00-14:00","event wheel @13:00-14:00","chapter wheel text @13:00","chapter wheel text @14:00"],
+ "vandamme@8":["timeline 8: Vandamme takes the height above @14:30","event augezd @14:30"],
+ "legrand@1":["timeline 1: Kienmayer's advance guard attacks Telnitz. @07:00","event telnitz @07:00","feature telnitz fact Changed hands @07:00"],
+ "legrand@2":["timeline 2: Langeron attacks Sokolnitz; Przybyszewski goes @08:00","event sokolnitz @08:00"],
+ "legrand@7":["timeline 7: Soult and Davout launch the @13:00-14:00","chapter wheel text @13:00","chapter wheel text @14:00"],
+ "legrand@8":["feature telnitz fact Changed hands @15:00"],
+ "friant@1":["timeline 1: Friant's leading brigade comes up @08:00","event davout @07:45-08:15","event raigern @04:00-04:45","event davout why @08:00"],
+ "friant@2":["timeline 2: Friant's leading troops retake Telnitz, @08:30","event telnitz-retaken @08:30"],
+ "friant@7":["anchor friant@7 act @12:30","timeline 6: Davout regroups and attacks; Langeron @12:30","event davout-resumes @12:30"],
+ "friant@8":["event sokolnitz-falls @14:00","timeline 7: Sokolnitz falls @14:00"],
+ "bourcier@7":["event davout-resumes @12:30"],
+ "caffarelli@5":["timeline 4: Lannes advances along the highway. @09:30","timeline 5: The cavalry collision west of @10:40"],
+ "caffarelli@6":["event blasowitz @11:15","chapter north text @11:15"],
+ "suchet@5":["timeline 4: Lannes advances along the highway. @09:30","timeline 5: The cavalry collision west of Blasowitz @10:40"],
+ "suchet@6":["event blasowitz @11:15","chapter north text @11:15"],
+ "kellermann@5":["timeline 5: The cavalry collision west of @10:40"],
+ "nansouty@5":["timeline 5: The cavalry collision west of @10:40"],
+ "dhautpoul@5":["timeline 5: The cavalry collision west of @10:40"],
+ "rivaud@3":["timeline 3: Soult's divisions advance. The mist @08:45"],
+ "drouet@6":["timeline 6: The Russian Guard attacks Vandamme; @11:00+","event guard-broken @11:15-13:15"],
+ "guard_inf@6":["timeline 6: The Russian Guard attacks Vandamme; @11:00+","event guard-attack @11:00-13:00"],
+ "guard_inf@7":["event wheel @13:00-14:00"],
+ "guard_cav@6":["timeline 6: Bessieres and Rapp counter-charge. The @11:45","source-note body.5 @11:45"],
+ "c_gren@7":["event wheel @13:00-14:00"],
+ "c_gren@8":["event wheel @13:00-14:00"],
+ "ahq@3":["anchor ahq@0 act @08:30-09:00","anchor ahq@3 act @08:45","command al@2: That the 4th Column was @08:45"],
+ "ahq@6":[],
+ "buxhowden@7":["timeline 6: Buxhowden, on the Allied left, @12:00","event buxhowden-blind @11:40-12:40","event buxhowden-blind why @12:00","formation buxhowden role @12:00","chapter cut text @12:00","tour 7 x @12:00"],
+ "kienmayer@1":["timeline 1: Kienmayer's advance guard attacks Telnitz. @07:00","event telnitz @07:00","feature telnitz fact Changed hands @07:00"],
+ "kienmayer@8":["timeline 8: Vandamme takes the height above @14:30","timeline 8: French artillery fires on the @15:00","event ice @15:00"],
+ "kienmayer@9":["event ice @15:00","timeline 8: French artillery fires on the @15:00"],
+ "dok@1":["timeline 1: Dokhturov's I Column begins descending @07:30","source-note body.5 @07:30"],
+ "dok@2":["chapter commitment text @07:00","chapter commitment text @09:00","tour 4 x @07:00"],
+ "dok@8":["timeline 8: Vandamme takes the height above @14:30","event ice @15:00","timeline 8: French artillery fires on the @15:00"],
+ "dok@9":["event ice @15:00","timeline 8: French artillery fires on the @15:00"],
+ "lang@1":["event columns-move @04:00-07:00","timeline 0: Allied columns begin to move off the plateau @04:00"],
+ "lang@2":["timeline 2: Langeron attacks Sokolnitz; Przybyszewski goes @08:00","event sokolnitz @08:00"],
+ "lang@4":["timeline 4: Langeron rides back and sends @10:30","event kursk @10:30"],
+ "lang@7":["anchor lang@7 act @12:30","timeline 6: Davout regroups and attacks; Langeron @12:30"],
+ "kamensky@3":["timeline 4: Kamensky turns his brigade about @09:45","event kamensky @09:45","source-note body.5 @09:45"],
+ "kamensky@4":["timeline 4: Kamensky turns his brigade about @09:45","event kamensky @09:45","source-note body.5 @09:45"],
+ "kamensky@5":["timeline 4: Jurczek's Austrians attack the Pratzeberg; @10:15"],
+ "kamensky@6":["event kursk @10:30","event pratzeberg @11:00","timeline 5: The Pratzeberg is firmly in @11:00","lede 3 @11:00","chapter pratzen text @11:00","feature pratzen story @11:00","feature vinohrady fact Taken by @11:00","feature pratzeberg fact Secure by @11:00"],
+ "kamensky@7":["anchor kamensky@7 act @11:15+"],
+ "prz@1":["event columns-move @04:00-07:00","timeline 0: Allied columns begin to move off the plateau @04:00"],
+ "prz@2":["timeline 2: Langeron attacks Sokolnitz; Przybyszewski goes @08:00","event sokolnitz @08:00"],
+ "prz@8":["comment data.js: timing inferred: holds at Sokolnitz @14:00","event sokolnitz-falls @14:00","timeline 7: Sokolnitz falls @14:00"],
+ "milo@2":["event counter-march @04:15-08:00"],
+ "milo@3":["timeline 3: Soult's divisions advance. The mist @08:45"],
+ "milo@4":["timeline 3: Kutuzov orders the 4th Column @09:15","event face-about @09:15"],
+ "kollo@2":["event counter-march @04:15-08:00"],
+ "kollo@4":["timeline 4: Jurczek's Austrians attack the Pratzeberg; @10:15"],
+ "kollo@5":["timeline 4: Jurczek's Austrians attack the Pratzeberg; @10:15","event pratzeberg @11:00","timeline 5: The Pratzeberg is firmly in @11:00"],
+ "lich@2":["event counter-march @04:15-08:00"],
+ "lich@5":["timeline 5: The cavalry collision west of @10:40"],
+ "lich@6":["event blasowitz @11:15","chapter north text @11:15"],
+ "bag@5":["timeline 4: Lannes advances along the highway. @09:30"],
+ "bag@6":["timeline 5: Blasowitz falls. Bagration begins falling @11:15"],
+ "bag@7":["timeline 5: Blasowitz falls. Bagration begins falling @11:15"],
+ "bag@8":["timeline 8: Organised resistance ends. Bagration withdraws @16:30","event end @16:30"],
+ "rg_inf@6":["formation constantine role @11:00","timeline 6: The Russian Guard attacks Vandamme; @11:00+","feature vinohrady fact Contested by @11:00"],
+ "rg_inf@7":["timeline 6: Bessieres and Rapp counter-charge. The @11:45","event guard-broken @11:15-13:15"],
+ "rg_cav@6":["timeline 6: The Russian Guard attacks Vandamme; @11:00+","feature vinohrady fact Contested by @11:00"],
+ "rg_cav@7":["event guard-broken @11:15-13:15"]
+};
+/* ---- the timed statements not judged against a move (rule L2), each with its reason; an entry no longer in the text fails
+   L3. The first four wait on the step-2 data task (docs/FINAL_AUDIT.md H-12, question 129). ---- */
+const ALLOW_TIMED={
+ "timeline 0: Weyrother reads the dispositions @01:00":"before the clock's day (04:00), at the Allied headquarters' first anchor: there is no move to date",
+ "timeline 0: Napoleon takes post on the Zuran @06:00":"the headquarters' first anchor (on the Zuran from 04:00): there is no move to date. 06:00 against 04:00 is H-12's contradiction; the step-2 data task (question 129) settles it",
+ "feature zuran fact Occupied by @06:00":"as the 06:00 timeline line: the first anchor, no move; H-12, question 129",
+ "feature blasowitz fact Fell @11:00":"contradicts 11:15 in the event, the phase line and the theme (H-12); as an arrival it would make caffarelli@6, suchet@6 and lich@6 late by 15 minutes. The step-2 data task (question 129) settles which time is right; until then it is not judged",
+ "tour 4 x @04:00":"the plateau reading's clock (a derived reading that sim-test.js checks), not a movement",
+ "tour 4 x @07:15":"the plateau reading's clock (a derived reading that sim-test.js checks), not a movement",
+ "command al@7: From about noon @12:00":"the Allied command's knowledge (the Command view), not a movement",
+ "plan fr.cost @09:00":"a counterfactual (\"if Legrand had broken before nine o'clock\"), not a dated movement",
+ "source-note body.5 @04:00":"the other side of the named conflict dok@1 (decision 42): the event's time, restated; the conflict's own time (07:30) is cited by its row (L8)",
+ "source-note body.5 @07:00":"the other side of the named conflict dok@1 (decision 42): the phase's clock, restated",
+ "source-note body.5 @08:45":"the other side of the named conflicts kamensky@3 and kamensky@4 (decision 42): the phase's clock, restated",
+ "source-note body.5 @11:15":"the other side of the named conflict guard_cav@6 (decision 42): the event's time, restated"
+};
+/* ---- the timed strings the extractor does not read, by class (rule L1); a class that covers nothing fails ---- */
+const EXCLUDED_PATHS=[   /* [name, path class, reason] */
+ ["tm",/^FORMATIONS\.[^.]+\.track\.\d+\.tm\./,"the engine's own timing input and its evidence: --times (each quote resolved) and the movement audit judge it"],
+ ["phase clocks",/^PHASES\.\d+\.clock$/,"the phase's window: rule L6 asserts it equals t0 - t1"],
+ ["phase light keys",/^PHASES\.\d+\.light$/,"a light key without a reader since 4B (docs/FINAL_AUDIT.md D-4), not text; this class fails once the step-2 data task removes it"],
+ ["tolWhy",/^EVENTS\.\d+\.tolWhy$/,"the suite's tolerance reason (sim-test.js), never shown"],
+ ["analysis.js comments",/^\(comment\) analysis\.js:/,"code documentation in analysis.js, never shown"]
+];
 /* the three internal disagreements of section M (owner decision 42): settled against the sources, or left unresolved,
    keeping today's timing, when the sources could not be read. Kamensky's drive off the crest (kamensky@4) is dated by the
-   same timeline entry as his turn, so it stays with that conflict. */
+   same timeline entry as his turn, so it stays with that conflict. Each must cite SOURCE_NOTE's open question (L8). */
 const CONFLICTS=["dok@1","guard_cav@6","kamensky@3","kamensky@4"];
-/* 2C precondition (docs/STAGE2_SPEC.md section M.13): derived arrivals that keep the march-rate ceiling, flagged, by name.
-   The two climbs and Bagration's withdrawal are a dating question (the Kamensky passage; nightfall), not a rate one:
-   they wait on the sources. The dated legs forced near the ceiling by a following default stay open too. Any other
-   derived arrival at the ceiling, or one of these moving off it, fails --check. */
+/* 2C precondition (docs/STAGE2_SPEC.md section M.13), rules D1, F1 and F2: a derived arrival (dated departure, no dated
+   arrival) is at the tactical rate (a design value, unsourced), or at the ceiling only for the legs named here, flagged, or at
+   its own moveMin only for the legs named in MOVEMIN_DERIVED. The two climbs and Bagration's withdrawal are a dating question
+   (the Kamensky passage; nightfall), not a rate one: they wait on the sources. The dated legs forced to 80% of the ceiling or
+   more by a following default stay open too (FORCED_DATED, computed and asserted), and every other leg at 80% or more is named
+   with its reason (NEAR_CEILING). Any other rule, a named leg moving off its rule, or an unnamed leg reaching 80% fails --check. */
 const CEILING_FLAGGED=["sthilaire@3","vandamme@3","bag@8"];
 const FORCED_DATED=["c_gren@8","kollo@5"];
+const MOVEMIN_DERIVED={
+ "gqg@6":"a headquarters has no tactical rate (app.js TACTICAL_RATE); its own moveMin of 40 is slower than the ceiling's 23.8 minutes, so anchorList takes the moveMin. Decided in docs/STAGE2_SPEC.md section M.13 (the derived legs, :1340; the decided table, :1393: \"its own moveMin (headquarters: no tactical rate)\"); data.js's gqg@6 note says so"
+};
+const NEAR_CEILING={
+ "bag@9":"from bag@8's flagged derived arrival (16:45) to the phase-9 default (17:00): it follows from bag@8 and waits on the same sources (docs/STAGE2_SPEC.md section M.13, :1343)",
+ "guard_inf@6":"its own moveMin of 60, unchanged since Stage 1B (docs/STAGE2_SPEC.md section M.13, :1344)"
+};
+const NEAR_SHARE=0.8;
 const TOL=15;
 function judge(kind,from,to,w){
   const s=w[0], e=w[1], hi=to==null?Infinity:to;
@@ -202,11 +414,11 @@ function judge(kind,from,to,w){
   throw new Error("unknown kind "+kind);
 }
 const MOTION=/\b(march|marches|marching|climbs|advances|falls back|retreats|escapes|pursues|moves|crosses|wheels|comes down|withdraws|follows|attacks|charges|presses|closes|breaks|retakes|seizes|turns)\b/i;
-function audit(){
-  const rows=[];
-  Object.entries(F).forEach(([id,f])=>{ if(!f.track) return; const A=X.anchorList(id);
-    A.forEach((b,k)=>{ if(k===0||!b.p||!A[k-1].p) return; const a=A[k-1], w=X.legWindow(a,b);
-      const m=Math.hypot(b.p[0]-a.p[0],b.p[1]-a.p[1])*X.GEOREF.KM_PER_MAP*1000, e=f.track[b.ph], key=id+"@"+b.ph, r=REVIEW[key];
+function audit(M){
+  M=M||X; const rows=[];
+  Object.entries(M.FORMATIONS).forEach(([id,f])=>{ if(!f.track) return; const A=M.anchorList(id);
+    A.forEach((b,k)=>{ if(k===0||!b.p||!A[k-1].p) return; const a=A[k-1], w=M.legWindow(a,b);
+      const m=Math.hypot(b.p[0]-a.p[0],b.p[1]-a.p[1])*M.GEOREF.KM_PER_MAP*1000, e=f.track[b.ph], key=id+"@"+b.ph, r=REVIEW[key];
       let v,from=null,to=null,size=null,ev="",note="",flag="",was=null,kind=null;
       if(r){ [was,kind,from,to,ev,note,flag]=r; [v,size]=judge(kind,from,to,w); }
       else if(m<250){ v="minor"; note="under 250 m of movement"; }
@@ -220,7 +432,7 @@ function audit(){
     }); });
   return rows;
 }
-module.exports.audit=audit; module.exports.REVIEW=REVIEW; module.exports.CONFLICTS=CONFLICTS; module.exports.CEILING_FLAGGED=CEILING_FLAGGED;
+Object.assign(module.exports,{audit,REVIEW,REVIEW_CITES,ALLOW_TIMED,EXCLUDED_PATHS,CONFLICTS,CEILING_FLAGGED,FORCED_DATED,MOVEMIN_DERIVED,NEAR_CEILING});
 if(require.main===module&&!["--evidence","--times","--check"].some(a=>process.argv.includes(a))){
   const rows=audit(), cnt=(f)=>rows.filter(f).length, V=["consistent","early","late","undetermined","minor","nightfall"];
   console.log("movement anchors: "+rows.length);
@@ -242,14 +454,13 @@ if(require.main===module&&!["--evidence","--times","--check"].some(a=>process.ar
 }
 
 if(require.main===module&&process.argv.includes("--evidence")){
-  const anchorsOut=[];
   Object.entries(F).forEach(([id,f])=>{ if(!f.track) return; const A=X.anchorList(id);
     A.forEach((b,k)=>{ if(k===0||!b.p||!A[k-1].p) return; const a=A[k-1], w=X.legWindow(a,b), t0=P[b.ph].t0, t1=P[b.ph].t1;
       const mine=ST.filter(s=>s.forms.includes(id)&&s.a>=t0&&s.a<t1);
       const inWin=ST.filter(s=>s.forms.includes(id)&&s.a>=w[0]&&s.a<t0);
       console.log(id+"@"+b.ph+"  move "+hm(w[0])+"-"+hm(w[1])+"  | "+(f.track[b.ph].act||"").slice(0,90));
-      mine.forEach(s=>console.log("   in phase: "+hm(s.a)+(s.b&&s.b!==s.a?"-"+hm(s.b):"")+(s.after?"+":"")+" ["+s.src+" "+s.where+"] "+s.text.slice(0,110)));
-      inWin.forEach(s=>console.log("   in window: "+hm(s.a)+(s.b&&s.b!==s.a?"-"+hm(s.b):"")+" ["+s.src+" "+s.where+"] "+s.text.slice(0,110)));
+      mine.forEach(s=>console.log("   in phase: "+hm(s.a)+(s.b&&s.b!==s.a?"-"+hm(s.b):"")+(s.after?"+":"")+" ["+short(s.src,60)+" "+s.where+"] "+s.text.slice(0,110)));
+      inWin.forEach(s=>console.log("   in window: "+hm(s.a)+(s.b&&s.b!==s.a?"-"+hm(s.b):"")+" ["+short(s.src,60)+" "+s.where+"] "+s.text.slice(0,110)));
     }); });
 }
 
@@ -257,9 +468,9 @@ if(require.main===module&&process.argv.includes("--evidence")){
 function quoteAt(q){   /* the statement itself, never the tm entry that quotes it */
   for(const f of ["data.js","analysis.js"]){ const i=SRC[f].findIndex(l=>l.includes(q)&&!l.includes("tm:{")); if(i>=0) return f+":"+(i+1); }
   return null; }
-function times(){
-  const out=[];
-  Object.entries(F).forEach(([id,f])=>{ if(!f.track) return; X.anchorList(id).forEach((b,k,A)=>{ if(!b.tm) return; const tm=b.tm;
+function times(M){
+  M=M||X; const out=[];
+  Object.entries(M.FORMATIONS).forEach(([id,f])=>{ if(!f.track) return; M.anchorList(id).forEach((b,k,A)=>{ if(!b.tm) return; const tm=b.tm;
     const ev=(tm.ev||[]).map(q=>({q,at:quoteAt(q)}));
     const bad=[]; if(!ev.length) bad.push("no evidence"); ev.forEach(e=>{ if(!e.at) bad.push("evidence not found in the sources: "+e.q); });
     if(!/^[ABC]$/.test(tm.gr||"")) bad.push("no timing grade"); if(!/^(source|app narrative, unsourced)$/.test(tm.basis||"")) bad.push("no basis");
@@ -273,26 +484,108 @@ if(require.main===module&&process.argv.includes("--times")){
     t.ev.forEach(e=>console.log("    "+(e.at||"NOT FOUND")+"  \""+e.q+"\""));
     t.bad.forEach(x=>console.log("    ! "+x)); });
 }
-if(require.main===module&&process.argv.includes("--check")){
-  const rows=audit(), bad=[];
+
+/* ---- the regression (--check): every rule named in the header, on a loaded model (the live one, or a copy under test) ---- */
+function parseCite(c){ const m=/^(.*\S) @(\d\d):(\d\d)(?:-(\d\d):(\d\d))?(\+)?$/.exec(String(c)); if(!m) return null;
+  const a=+m[2]*60+ +m[3], b=m[4]!==undefined?+m[4]*60+ +m[5]:(m[6]?null:a); return {ref:m[1],a,b,after:!!m[6]}; }
+function citeTimes(q){ return q.b!=null&&q.b!==q.a?[q.a,q.b]:[q.a]; }
+function resolve(L,c){
+  const q=parseCite(c); if(!q) return {err:"malformed cite \""+c+"\" (\"<ref> @HH:MM[-HH:MM][+]\")"};
+  const refs=[...new Set(L.filter(s=>s.ref.startsWith(q.ref)).map(s=>s.ref))];
+  let ref=refs.includes(q.ref)?q.ref:null;
+  if(!ref){ const free=refs.filter(r=>{ const i=r.indexOf(": "); return i>=0&&q.ref.length>i+2; });
+    if(!free.length) return {err:"no live statement is \""+q.ref+"\""+(q.ref.indexOf(": ")>=0?" or begins so":"")};
+    if(free.length>1) return {err:"\""+q.ref+"\" is ambiguous: it begins "+free.length+" statements"};
+    ref=free[0]; }
+  const hits=L.filter(s=>s.ref===ref), s=hits.find(s=>s.a===q.a&&s.b===q.b&&s.after===q.after);
+  if(!s) return {err:"\""+short(ref,60)+"\" ("+hits[0].where+") no longer carries "+tstr(q)+" (it carries "+[...new Set(hits.map(tstr))].join(", ")+")"};
+  return {s,q};
+}
+function valueAt(M,p){ let v=M; for(const k of p.split(".")){ if(v==null) return undefined; v=v[k]; } return v; }
+function checkModel(M){
+  M=M||X; const bad=[], out=[], rows=audit(M), S=extract(M), L=S.filter(s=>!s.weak), INV=inventory();
+  const key=s=>s.ref+" @"+tstr(s);
+  /* the verdicts, the explicit times and the conflicts (since section M) */
   rows.filter(r=>(r.verdict==="early"||r.verdict==="late")&&!r.conflict).forEach(r=>bad.push(r.key+" is "+r.verdict+" by "+Math.abs(r.size)+" min (engine "+hm(r.start)+"-"+hm(r.end)+")"));
-  times().forEach(t=>t.bad.forEach(x=>bad.push(t.key+": "+x)));
+  const T=times(M); T.forEach(t=>t.bad.forEach(x=>bad.push(t.key+": "+x)));
   CONFLICTS.forEach(k=>{ if(!rows.find(r=>r.key===k)) bad.push("named conflict "+k+" is not an anchor"); });
-  const ids=Object.keys(F).filter(id=>F[id].track);
-  /* derived arrivals: the tactical rate (a design value) or the ceiling, flagged by name */
-  const derived=[]; ids.forEach(id=>X.anchorList(id).forEach(b=>{ if(b.arrDerived) derived.push({key:id+"@"+b.ph,b}); }));
-  derived.forEach(d=>{ const flagged=CEILING_FLAGGED.includes(d.key);
-    if(d.b.arrRule==="ceiling"&&!flagged) bad.push(d.key+": derived arrival at the ceiling, not named in CEILING_FLAGGED");
-    if(d.b.arrRule==="ceiling"&&!d.b.arrFlag) bad.push(d.key+": at the ceiling without a flag");
-    if(flagged&&d.b.arrRule!=="ceiling") bad.push(d.key+": named in CEILING_FLAGGED but its arrival is "+d.b.arrRule); });
+  /* L1: every timed string literal and comment of data.js and analysis.js is read, or excluded by a class */
+  const readPaths=new Set(S.map(s=>s.path).filter(Boolean)), classN=EXCLUDED_PATHS.map(()=>0); let timedN=0, readN=0;
+  INV.items.forEach(it=>{ if(!timesIn(it.value).length) return; timedN++;
+    if(!it.comment&&valueAt(M,it.path)!==it.value) bad.push("L1 "+it.where+" "+(it.path||"(no path)")+": the inventory's literal is not the model's value at that path: \""+short(it.value,50)+"\"");
+    const c=EXCLUDED_PATHS.findIndex(([,re])=>re.test(it.path)); if(c>=0){ classN[c]++; return; }
+    if(readPaths.has(it.path)) readN++; else bad.push("L1 "+it.where+" "+(it.path||"(no path)")+": a timed string the check does not read: \""+short(it.value,60)+"\""); });
+  EXCLUDED_PATHS.forEach(([name,re,why],c)=>{ if(!classN[c]) bad.push("L1 the exclusion class \""+name+"\" ("+re+") covers no timed string: remove it"); if(!why) bad.push("L1 the exclusion class \""+name+"\" gives no reason"); });
+  /* L3 and L5: every cite resolves; the two tables name the same movement anchors */
+  const anchors=new Set(); Object.keys(M.FORMATIONS).filter(id=>M.FORMATIONS[id].track).forEach(id=>M.anchorList(id).forEach((b,k,A)=>{ if(k>0&&b.p&&A[k-1].p) anchors.add(id+"@"+b.ph); }));
+  Object.keys(REVIEW).forEach(k=>{ if(!anchors.has(k)) bad.push("L5 REVIEW row "+k+" is not a movement anchor"); if(!REVIEW_CITES[k]) bad.push("L5 REVIEW row "+k+" has no REVIEW_CITES entry"); });
+  Object.keys(REVIEW_CITES).forEach(k=>{ if(!REVIEW[k]) bad.push("L5 REVIEW_CITES names "+k+", which has no REVIEW row"); });
+  const cited=new Map(), allowed=new Map(); let nCites=0;
+  Object.entries(REVIEW_CITES).forEach(([k,a])=>a.forEach(c=>{ nCites++; const r=resolve(L,c); if(r.err) bad.push("L3 "+k+": "+r.err); else { const kk=key(r.s); cited.set(kk,(cited.get(kk)||[]).concat(k)); } }));
+  Object.entries(ALLOW_TIMED).forEach(([c,why])=>{ if(!why) bad.push("L3 ALLOW_TIMED \""+c+"\" gives no reason");
+    const r=resolve(L,c); if(r.err) bad.push("L3 ALLOW_TIMED: "+r.err+": remove or update the entry"); else allowed.set(key(r.s),c); });
+  /* L2: every live timed statement is cited or allow-listed, not both */
+  const live=new Map(); L.forEach(s=>{ if(!live.has(key(s))) live.set(key(s),s); });
+  live.forEach((s,kk)=>{ if(!cited.has(kk)&&!allowed.has(kk)) bad.push("L2 "+s.where+" \""+short(s.ref,70)+"\" @"+tstr(s)+": a timed statement no REVIEW row cites (REVIEW_CITES) and ALLOW_TIMED does not name");
+    if(cited.has(kk)&&allowed.has(kk)) bad.push("L2 \""+allowed.get(kk)+"\" is allow-listed but cited by "+cited.get(kk).join(", ")+": remove the ALLOW_TIMED entry"); });
+  /* L4: a row's text times are times of what it cites; L4b: every cite inside its row's text times */
+  Object.entries(REVIEW).forEach(([k,r])=>{ const kind=r[1], from=r[2], to=r[3]; if(!kind) return;
+    const qs=(REVIEW_CITES[k]||[]).map(parseCite).filter(Boolean), ts=new Set(qs.flatMap(citeTimes));
+    if(!ts.has(from)) bad.push("L4 "+k+": its text time "+hm(from)+" is not a time of the statements it cites");
+    if(to!=null&&to!==from&&!ts.has(to)) bad.push("L4 "+k+": its text time "+hm(to)+" is not a time of the statements it cites");
+    qs.forEach(q=>{ const qb=q.b==null?Infinity:q.b; if(qb<from||(to!=null&&q.a>to)) bad.push("L4b "+k+": cites \""+q.ref+"\" @"+tstr(q)+", outside its text times "+hm(from)+(to!=null?(to!==from?"-"+hm(to):""):" onward")); }); });
+  /* L6: the phase clocks */
+  M.PHASES.forEach((p,i)=>{ if(/\d/.test(p.clock||"")&&p.clock!==hm(p.t0)+" - "+hm(p.t1)) bad.push("L6 phase "+i+": its clock \""+p.clock+"\" is not "+hm(p.t0)+" - "+hm(p.t1)); });
+  /* L8: each named conflict stays disclosed */
+  CONFLICTS.forEach(k=>{ const r=REVIEW[k]; if(!r){ bad.push("L8 named conflict "+k+" has no REVIEW row"); return; }
+    if(!(REVIEW_CITES[k]||[]).some(c=>{ const q=parseCite(c); return q&&q.ref.startsWith("source-note ")&&q.a===r[2]; })) bad.push("L8 named conflict "+k+": its row does not cite SOURCE_NOTE at its own time "+hm(r[2])); });
+  /* D1: the derived arrivals, by rule and by name */
+  const ids=Object.keys(M.FORMATIONS).filter(id=>M.FORMATIONS[id].track);
+  const derived=[]; ids.forEach(id=>M.anchorList(id).forEach(b=>{ if(b.arrDerived) derived.push({key:id+"@"+b.ph,b}); }));
+  derived.forEach(d=>{ const rule=d.b.arrRule, flagged=CEILING_FLAGGED.includes(d.key);
+    if(rule==="ceiling"&&!flagged) bad.push(d.key+": derived arrival at the ceiling, not named in CEILING_FLAGGED");
+    if(rule==="ceiling"&&!d.b.arrFlag) bad.push(d.key+": at the ceiling without a flag");
+    if(flagged&&rule!=="ceiling") bad.push(d.key+": named in CEILING_FLAGGED but its arrival is "+rule);
+    if(rule==="moveMin"&&!MOVEMIN_DERIVED[d.key]) bad.push("D1 "+d.key+": derived arrival at its own moveMin, not named in MOVEMIN_DERIVED (a derived arrival is at the tactical rate unless named)");
+    if(!["tactical","ceiling","moveMin"].includes(rule)) bad.push("D1 "+d.key+": derived arrival by an unknown rule "+rule); });
   CEILING_FLAGGED.forEach(k=>{ if(!derived.find(d=>d.key===k)) bad.push("flagged leg "+k+" has no derived arrival"); });
-  /* the movement audit, as the suites run it, is checked by audit.js and selfTest; here only the explicit-time rules */
+  Object.entries(MOVEMIN_DERIVED).forEach(([k,why])=>{ const d=derived.find(d=>d.key===k);
+    if(!why) bad.push("D1 MOVEMIN_DERIVED "+k+" gives no reason");
+    if(!d||d.b.arrRule!=="moveMin") bad.push("D1 "+k+": named in MOVEMIN_DERIVED but its arrival is "+(d?d.b.arrRule:"not derived")); });
+  /* F1 and F2: the legs at 80% of their ceiling or more */
+  const forced=[], near=[];
+  ids.forEach(id=>{ const f=M.FORMATIONS[id], A=M.anchorList(id), ceil=M.SPEED_CEIL[f.arm]||5.0;
+    A.forEach((b,k)=>{ if(!k||!b.p||!A[k-1].p) return; const a=A[k-1], w=M.legWindow(a,b);
+      const km=M.legPath(a,b).len*M.GEOREF.KM_PER_MAP, min=w[1]-w[0], share=min>0?km/(min/60)/ceil:Infinity, kk=id+"@"+b.ph;
+      if(share>=NEAR_SHARE){ near.push({key:kk,share}); if(!b.arrDerived&&a.tm&&a.tm.at!=null) forced.push(kk); } }); });
+  forced.filter(k=>!FORCED_DATED.includes(k)).forEach(k=>bad.push("F1 "+k+": a dated leg forced to 80% of its ceiling or more, not named in FORCED_DATED"));
+  FORCED_DATED.filter(k=>!forced.includes(k)).forEach(k=>bad.push("F1 "+k+": named in FORCED_DATED but no longer a dated leg at 80% of its ceiling or more"));
+  near.filter(n=>!CEILING_FLAGGED.includes(n.key)&&!FORCED_DATED.includes(n.key)&&!NEAR_CEILING[n.key]).forEach(n=>bad.push("F2 "+n.key+": at "+Math.round(n.share*100)+"% of its ceiling, named nowhere (CEILING_FLAGGED, FORCED_DATED, NEAR_CEILING)"));
+  Object.entries(NEAR_CEILING).forEach(([k,why])=>{ if(!why) bad.push("F2 NEAR_CEILING "+k+" gives no reason");
+    if(!near.find(n=>n.key===k)) bad.push("F2 "+k+": named in NEAR_CEILING but below 80% of its ceiling");
+    if(CEILING_FLAGGED.includes(k)||FORCED_DATED.includes(k)) bad.push("F2 "+k+": named in NEAR_CEILING and in CEILING_FLAGGED or FORCED_DATED"); });
+  /* M1: the movement audit, on world.js's cover (built once per model) */
+  if(!M.__coverBuilt){ M.buildCover(); M.__coverBuilt=true; }
+  const mv=M.auditMovement(); mv.forEach(p=>bad.push("M1 movement audit: "+p.id+" "+p.leg+" "+p.why+(p.why==="rate"?" ("+p.kmh.toFixed(2)+" km/h over "+p.ceil+")":"")));
+  /* the report */
   const early=rows.filter(r=>r.verdict==="early"), late=rows.filter(r=>r.verdict==="late"), withText=rows.filter(r=>r.kind);
-  console.log("chronology: "+withText.length+" moves with a timed statement: "+rows.filter(r=>r.kind&&r.verdict==="consistent").length+" consistent, "+
+  out.push("chronology: "+withText.length+" moves with a timed statement: "+rows.filter(r=>r.kind&&r.verdict==="consistent").length+" consistent, "+
     early.length+" early, "+late.length+" late; unresolved conflicts (decision 42, allowed by name): "+CONFLICTS.map(k=>{ const r=rows.find(q=>q.key===k); return k+" "+(r?r.verdict:"?"); }).join(", ")+
-    "; explicit times "+times().length);
-  console.log("derived arrivals: "+derived.map(d=>d.key+" "+hm(d.b.w[0])+"-"+hm(d.b.w[1])+" "+d.b.arrRule+(d.b.arrFlag?" (flagged: "+d.b.arrFlag+")":"")).join("; "));
-  console.log("still open (a dating question, waiting on the sources): the ceiling-flagged legs "+CEILING_FLAGGED.join(", ")+"; the dated legs forced near the ceiling "+FORCED_DATED.join(", ")+"; the unresolved conflicts "+CONFLICTS.join(", "));
+    "; explicit times "+T.length);
+  const rowsCiting=Object.values(REVIEW_CITES).filter(a=>a.length).length, nCited=[...live.keys()].filter(k=>cited.has(k)).length, nAllowed=[...live.keys()].filter(k=>allowed.has(k)).length;
+  out.push("timed statements: "+live.size+" (data.js and analysis.js; "+timedN+" timed strings and comments, "+readN+" read, "+classN.reduce((a,b)=>a+b,0)+" excluded by class: "+
+    EXCLUDED_PATHS.map(([name],c)=>classN[c]+" "+name).join(", ")+")");
+  out.push("  cited "+nCited+" by "+rowsCiting+" of "+Object.keys(REVIEW).length+" REVIEW rows ("+nCites+" cites), allow-listed "+nAllowed+" (ALLOW_TIMED, "+Object.keys(ALLOW_TIMED).length+" entries)");
+  out.push("derived arrivals: "+derived.map(d=>d.key+" "+hm(d.b.w[0])+"-"+hm(d.b.w[1])+" "+d.b.arrRule+(d.b.arrFlag?" (flagged: "+d.b.arrFlag+")":"")+(MOVEMIN_DERIVED[d.key]?" (named in MOVEMIN_DERIVED)":"")).join("; "));
+  out.push("forced dated legs: "+forced.join(", ")+"; at 80% of the ceiling or more: "+near.length+" ("+near.map(n=>n.key+" "+Math.round(n.share*1000)/10+"%").join(", ")+")"+(bad.some(x=>/^F[12] /.test(x))?"":", each named"));
+  out.push("movement audit (auditMovement: rate, crossings, explicit times): "+mv.length+" findings");
+  out.push("still open (a dating question, waiting on the sources): the ceiling-flagged legs "+CEILING_FLAGGED.join(", ")+"; the dated legs forced near the ceiling "+FORCED_DATED.join(", ")+"; the unresolved conflicts "+CONFLICTS.join(", "));
+  return {bad,out};
+}
+module.exports.checkModel=checkModel; module.exports.MODEL_EXTRA=MODEL_EXTRA;
+if(require.main===module&&process.argv.includes("--check")){
+  const {bad,out}=checkModel(X);
+  out.forEach(l=>console.log(l));
   console.log("errors: "+bad.length); bad.forEach(x=>console.log("  ! "+x));
   process.exitCode=bad.length?1:0;
 }
