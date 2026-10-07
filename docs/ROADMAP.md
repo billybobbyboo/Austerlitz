@@ -29,16 +29,17 @@ from the code, the approach proposed, the work done conservatively, checked, rec
   no pattern (a `SUPERLATIVE` pattern can come with their fix).
 - **To step 3:** leaving the eye level puts the eye under the camera floor for one frame, and the app warns (allowed by name in
   `CONSOLE_ALLOW` as `eye-leave-floor` until the fix; it sits with S-3); the hover fix of step 1 runs `pickFormation` on every pointer move
-  (its frame cost not measured); the S-1 check (no enemy corps counter drawn when all its formations are unknown) is to be added to the
+  (its frame cost not measured; a click selects what that hover shows); the S-1 check (no enemy corps counter drawn when all its formations are unknown) is to be added to the
   self-test with S-1's fix (it fails today).
 - **To step 5:** T-9's (b) `audit.js` continuity and coverage only print, (d) re-implementations of model code (`terrain-test.js`'s crops,
   `redteam.js`'s `wet()`), (e) map constants typed by hand (680 x 500, `*2+340`); `css-test.js`'s duplicate-rule checks read only the base
   rules before the first `@media` (four selectors are declared twice: `#firstrun`, `#firstrun h2`, `#firstrun p`, `.legend .ar`); the
   GLSL colour literals outside the palette rule; `KIT.weave` lays 12% black over every cloth (a black cloth falls under decision 84's floor
-  between its threads); `tools/audit/size.js` is 10 bytes off since the `/*FONTS*/` marker; `tools/lang-scan.js` and `css-test.js`'s glyph
+  between its threads); `tools/audit/size.js` does not count `fonts.css` (its parts fall 96,642 bytes short of the build: the 96,643-byte file less the 9-byte
+  `/*FONTS*/` marker it counts in `shell.html`); `tools/lang-scan.js` and `css-test.js`'s glyph
   walker duplicate one another; the chronology ledger matches a statement by its reference and time, so a reword that keeps both passes.
 - **The type:** Safari is believed to ignore the faces' metric overrides (an inference; the harness is Chromium only); no italic face is
-  embedded (the dossier's few `<i>` are drawn as a synthesized italic).
+  embedded, so every italic is synthesized (the dossier's Dress labels and the INFERRED source tags, `.src.inf`).
 
 ## Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)
 

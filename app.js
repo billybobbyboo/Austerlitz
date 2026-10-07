@@ -4763,6 +4763,10 @@ function updateVisibility(){
    by its footprint (pickFormation); else a corps counter, an event glyph or a place within 34 px of its anchor. */
 var v3=new THREE.Vector3();
 function pickAt(cx,cy){
+  /* a click selects what the hover shows: a dropped formation reached by hovering its position (mlHoverAt's first three rules,
+     ML.hoverDrop) while the pointer stays there, even under another item's box (the diff review of roadmap step 1: before, the
+     hover drew the dropped formation and a click selected the label over it) */
+  var hd=ML.hoverDrop; if(hd&&ML.hover===hd&&(pickFormation(cx,cy)===hd||mlAnchorWithin(hd,cx,cy,36))) return {kind:"f",id:hd};
   var hit=mlHit(cx,cy); if(hit&&hit.pick) return {kind:hit.pick.kind,id:hit.pick.id};
   var fid=pickFormation(cx,cy); if(fid) return {kind:"f",id:fid};
   var best=null, bestD=34;
@@ -7218,7 +7222,7 @@ var AUSTERLITZ_DEBUG=(function(){
       {n:"the guided tour, its third stop",m:"terrain",p:"study",t:240,sel:null,tour:3},
       {n:"the guided tour on the paper map, its third stop",m:"staff",p:"study",t:240,sel:null,tour:3}
     ];
-    var R={overlaps:[],panel:[],head:[],keep:[],a11y:[],legend:[],ctx:[],names:0,heads:0,placed:0,keepN:0,reachKey:[],reachHover:[],dropTested:0,enter:"",idle:true};
+    var R={overlaps:[],panel:[],head:[],keep:[],a11y:[],legend:[],ctx:[],names:0,heads:0,placed:0,keepN:0,reachKey:[],reachHover:[],reachClick:[],clickTested:0,dropTested:0,enter:"",idle:true};
     function cross(a,b){ return Math.min(a[2],b[2])-Math.max(a[0],b[0])>0.5&&Math.min(a[3],b[3])-Math.max(a[1],b[1])>0.5; }
     function box(e){ var b=e.getBoundingClientRect(); return [b.left,b.top,b.right,b.bottom]; }
     function shown(e){ if(!e) return false; var cs=getComputedStyle(e); return cs.display!=="none"&&cs.visibility!=="hidden"&&e.getBoundingClientRect().width>0; }
@@ -7273,9 +7277,12 @@ var AUSTERLITZ_DEBUG=(function(){
         else pts.push([it.world.x,it.world.z]);   /* a corps counter has no footprint: its anchor */
         for(var k=0;k<pts.length&&!hit;k++){ _lv3.set(pts[k][0],displayHeight(pts[k][0],pts[k][1]),pts[k][1]).project(camera);
           if(_lv3.z>1) continue;
-          mlHoverAt((_lv3.x*0.5+0.5)*innerWidth,(-_lv3.y*0.5+0.5)*innerHeight);
-          if(ML.hover===f){ mlLayout(); hit=ML.items[it.key].state==="on"; } }
-        ML.hover=null; mlLayout();
+          var hx=(_lv3.x*0.5+0.5)*innerWidth, hy=(-_lv3.y*0.5+0.5)*innerHeight;
+          mlHoverAt(hx,hy);
+          if(ML.hover===f){ mlLayout(); hit=ML.items[it.key].state==="on";
+            /* and a click there selects it, as the hover shows it */
+            if(hit){ R.clickTested++; var pk=pickAt(hx,hy); if(!(pk&&pk.kind==="f"&&pk.id===f)) R.reachClick.push(s.n+": "+it.key+" (a click picks "+(pk?pk.kind+":"+pk.id:"nothing")+")"); } } }
+        ML.hover=null; ML.hoverDrop=null; mlLayout();
         if(!hit) R.reachHover.push(s.n+": "+it.key);
       });
       /* the legend: never over the dispatch; its rows are what is drawn */
@@ -7311,6 +7318,8 @@ var AUSTERLITZ_DEBUG=(function(){
       !R.a11y.length&&R.names>0&&/^Enter/.test(R.enter), R.names+" formation items; "+R.enter+(R.a11y.length?"; BAD: "+R.a11y.slice(0,3).join(", "):""));
     ck("map layer: every dropped formation is reachable from the keyboard and by hovering its position", R.dropTested>0&&!R.reachKey.length&&!R.reachHover.length,
       R.dropTested+" dropped formations tested"+(R.reachKey.length?"; NOT BY KEYBOARD: "+R.reachKey.join(", "):"")+(R.reachHover.length?"; NOT BY HOVER: "+R.reachHover.join(", "):""));
+    ck("map layer: a click selects the formation the hover shows, also a dropped one reached by hovering its position", R.clickTested>0&&!R.reachClick.length,
+      R.clickTested+" dropped formations clicked where the hover reached them"+(R.reachClick.length?"; NOT SELECTED: "+R.reachClick.join(", "):": each selected"));
     ck("map layer: lays out only in a drawn frame (render on demand)", R.idle, R.idle?"no pass without a frame; one pass per frame, in "+S.length+" states":"a pass ran outside a drawn frame, or none in one");
     ck("legend: never over the dispatch, and its rows are what the view draws", !R.legend.length&&!R.ctx.length,
       S.length+" states"+(R.legend.length?"; OVER THE DISPATCH: "+R.legend.join(", "):"")+(R.ctx.length?"; WRONG ROWS: "+R.ctx.join(", "):""));

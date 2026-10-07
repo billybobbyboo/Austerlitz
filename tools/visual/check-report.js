@@ -83,8 +83,12 @@ derived.forEach(x=>out.push(x));
 /* 7 */
 const dset=new Set(derived), notDerived=(r.failures||[]).filter(f=>!dset.has(f));
 const REMEASURED=[/: \d+ items dropped, over the limit of \d+/, /: unobstructed map (at 1280 x 720 )?[\d.]+%, below the baseline [\d.]+%$/,
-  /: paper map as entered: [\d.]+ px per true km, below \d+$/, /^the valley fog: .*: \d+ items dropped, over \d+$/, /^the Watch view in a dwell: /];
-notDerived.forEach(f=>{ if(r.mode&&REMEASURED.some(re=>re.test(f))) console.log("NOTE recorded by the run under a limit changed since (remeasure.js), not derived now from its numbers: "+f);
+  /: paper map as entered: [\d.]+ px per true km, below \d+$/, /^the valley fog: .*: \d+ items dropped, over \d+$/];
+/* the Watch dwell's one message carries six conditions; it is a note only while its raw numbers meet every condition but the drop
+   limit, judged here again (the diff review of roadmap step 1: the pattern alone waved through a darkness, AA or caption failure) */
+const DW=r.live&&r.live.dwell, dwellOnlyDrops=!!DW&&DW.E===540&&DW.solid<=T.SOLID_BLACK&&!(DW.belowAA||[]).length&&!!DW.cap&&DW.lit>=1;
+const remeasured=f=>REMEASURED.some(re=>re.test(f))||(/^the Watch view in a dwell: /.test(f)&&dwellOnlyDrops);
+notDerived.forEach(f=>{ if(r.mode&&remeasured(f)) console.log("NOTE recorded by the run under a limit changed since (remeasure.js), not derived now from its numbers: "+f);
   else { console.log("FAIL (recorded by the run, not derived now) "+f); out.push("(recorded by the run) "+f); } });
 console.log(out.length?("FAILURES: "+out.length):"all checks pass for this report"+(so?" (a --selftest-only run: the self-test, the slider, Play and the 3E keys)":""));
 process.exit(out.length?1:0);

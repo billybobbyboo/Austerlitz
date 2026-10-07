@@ -359,7 +359,7 @@ const REVIEW_CITES={
  "rg_cav@7":["event guard-broken @11:15-13:15"]
 };
 /* ---- the timed statements not judged against a move (rule L2), each with its reason; an entry no longer in the text fails
-   L3. The first four wait on the step-2 data task (docs/FINAL_AUDIT.md H-12, question 129). ---- */
+   L3. Entries two to four (H-12) wait on the step-2 data task (docs/FINAL_AUDIT.md H-12, question 129). ---- */
 const ALLOW_TIMED={
  "timeline 0: Weyrother reads the dispositions @01:00":"before the clock's day (04:00), at the Allied headquarters' first anchor: there is no move to date",
  "timeline 0: Napoleon takes post on the Zuran @06:00":"the headquarters' first anchor (on the Zuran from 04:00): there is no move to date. 06:00 against 04:00 is H-12's contradiction; the step-2 data task (question 129) settles it",

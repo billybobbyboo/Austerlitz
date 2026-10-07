@@ -318,7 +318,7 @@ const KNOWN_WARN=[
   {w:"movement: cavalry mean rate 0.82 is not above infantry 1.23",
    why:"a model property kept on purpose since the chronology data task: the dated moves are shorter and faster, and the cavalry's slow "+
        "legs are the undated creeping moves of decision 45; a warning, not a finding, and not changed",
-   see:"docs/STAGE2_SPEC.md §M.10 and its tables at :1303 and :1407; CHANGELOG.md, the chronology data task and the Stage 2C "+
+   see:"docs/STAGE2_SPEC.md §M.12 (:1303) and §M.13 (:1407), on the creeping moves of §M.10; CHANGELOG.md, the chronology data task and the Stage 2C "+
        "precondition (the march rates)"}];
 { const uw=[...new Set(W_)];
   uw.filter(w=>!KNOWN_WARN.some(k=>k.w===w)).forEach(w=>fail("warning",`not acknowledged in KNOWN_WARN: ${w}`));

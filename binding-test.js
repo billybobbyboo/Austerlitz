@@ -112,8 +112,11 @@ const dashers={};
     ok(/runs\s*:\s*a\.kind==="axis"\?dashRuns\(/.test(ba), "app.js: buildArrow dashes something other than the axis arrows");
     const ps=fn("planStaging"); ok(/dashRuns\(/.test(ps), "app.js: the plan staging outline is no longer dashed");
     const rb=fn("routeBuild"); ok(/dashRuns\(/.test(rb)&&/PLANS\[sd\]\.cols\[ci\]/.test(rb)&&/c\.route\.map/.test(rb), "app.js: routeBuild dashes something other than a plan column's ordered route");
-    const dt=fn("dayTrackEl"); ok(dt.length>0&&(dt.match(/stroke-dasharray/g)||[]).length===1&&/<polyline class="dt-route"[^>]*stroke-dasharray/.test(dt)&&/L\.routes\.forEach/.test(dt),
-      "app.js: dayTrackEl dashes something other than the ordered route (one stroke-dasharray, on the dt-route polyline drawn from the routes)");
+    /* dayTrackEl is allowed the SVG attribute in markup only (DASH[6]): every other way of dashing, three.js, canvas, dashRuns and the
+       other SVG forms, fails as it did before it was allowed (the diff review of roadmap step 1) */
+    const dt=fn("dayTrackEl"); ok(dt.length>0&&!DASH.some((re,i)=>i!==6&&re.test(dt))&&(dt.match(/stroke-?dasharray/gi)||[]).length===1&&
+      /<polyline class="dt-route"[^>]*stroke-dasharray/.test(dt)&&/L\.routes\.forEach/.test(dt),
+      "app.js: dayTrackEl dashes something other than the ordered route (one stroke-dasharray, on the dt-route polyline drawn from the routes, and no other way of dashing)");
     /* Stage 4D (docs/STAGE4_SPEC.md section D.4): only an arrow derived from an executed leg draws on with the clock */
     ok((src.match(/DRAWON\.push\(/g)||[]).length===1&&/if\(a\.leg\)\{ var d=\{[^{}]*\}; DRAWON\.push\(/.test(ba), "app.js: an arrow that is not derived (a.leg) draws on with the clock");
     ["buildBoundary","buildLine","buildHalt","buildObjective","planStaging","buildPlanLinks"].forEach(nm=>{ ok(!/DRAWON/.test(fn(nm)), "app.js: "+nm+" draws on with the clock"); });

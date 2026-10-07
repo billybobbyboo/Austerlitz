@@ -1,5 +1,5 @@
 {
-  "about": "The pinned sources of the embedded type (decision 141; docs/FINAL_AUDIT.md T-0). tools/fonts/build-fonts.py downloads each file once into its cache, refuses any whose sha256 differs, and builds fonts.css from them. Each entry was fetched and hashed when this file was written (7 October 2026).",
+  "about": "The pinned sources of the embedded type (decision 141; docs/FINAL_AUDIT.md T-0). tools/fonts/build-fonts.py downloads each file once into its cache, refuses any whose sha256 differs, and builds fonts.css from them. Each entry was fetched and hashed when this file was written (7 October 2026). The three TeX Gyre Pagella URLs are CTAN's mirror redirector, a moving address that serves the package's current file: the sha256 is the pin, and if CTAN replaces a file the build refuses it, and the pinned bytes must be found elsewhere (no immutable copy is recorded here).",
   "requirements": { "fonttools": "4.66.1", "brotli": "1.2.0" },
   "files": {
     "inter": {
