@@ -262,11 +262,13 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   Follow's 80% counted over the minutes that have a live event (a departure from `docs/STAGE4_SPEC.md` §D.4's "of its minutes", recorded);
   the confidence marks against decisions 86-88 written in the test, not read from `confSize`; the meres' ice against the exact drawn edge,
   one disc and one ring per mere; the eye level with an unknown formation required; the derived readings from the data; app canvases read
-  through canvases of the test's own. The font-dependent limits are re-measured once (decision 141, by `remeasure.js --bounds keep`: a limit
-  changes only where the embedded fonts moved the measure past it; every change listed in `CHANGELOG.md`; until that commit, step 1's
-  check:visual fails on those limits only).
+  through canvases of the test's own. The font-dependent limits were re-measured once (decision 141, by `remeasure.js --bounds keep` over two
+  identical full runs of the step-1 build: a limit changed only where the embedded fonts moved the measure past it): six loosened under
+  decision 141, the unobstructed baselines of `first-run`, `first-run-laptop` and `narrow-390` and the drop limits of `narrow-390`,
+  `eye-zuran` and `plans-overview`, each listed in `CHANGELOG.md`; every other kept. Since the diff review of step 1, a click selects the
+  formation the hover shows (`pickAt`), held by the self-test at each factor.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified roadmap step 1 build (md5 `1aa3ada1...`, 1,882,671 bytes; re-baselined from the
+- `npm run check:baseline` passes only on the unmodified roadmap step 1 build (md5 `7a86548c...`, 1,883,794 bytes; re-baselined from the
   Stage 7D build `46773462...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
@@ -360,4 +362,6 @@ pause it; Next goes straight there, Back returns; the visitor's ½× put back af
 `docs/audit-evidence/`; no source file, no data and no build changed; 75 findings, owner questions 125-141 and a proposed roadmap) is
 merged (#48); the owner accepted every recommendation (decisions 125-141, `docs/FINAL_AUDIT.md` §6.0) and asked to start with roadmap step 1
 (`docs/ROADMAP.md`: suite hardening, the fonts embedded first, decision 141); the owner's notes for later (appearance and motion) are in
-`docs/ROADMAP.md`. The next owner decision is 142.
+`docs/ROADMAP.md`. Roadmap step 1 (the type embedded, decision 141; the checks that could not fail made strict, decision 131; CI runs
+`check:contrast` and the self-test, decision 132; the one re-measure; the diff review's fixes) is done, for review (#49). The next owner
+decision is 142.
