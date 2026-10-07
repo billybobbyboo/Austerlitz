@@ -233,7 +233,11 @@ function drawnAltitude(alt){ return Math.atan(DISPLAY.factor*Math.tan(alt*Math.P
    sky and ground, the fill light, the sun, background, fog and sky before the first applyLight, and the environment map's ground
    (values unchanged from the literals they replace) */
 var LIGHT_RIG={hemiSky:0xA9BBCC, hemiGround:0x3E3A30, fill:0x9AA8B8, sun0:0xA5B2BE, bg0:0x121A22, fog0:0x3E4A58,
-  sky0:[0x0F1A26,0x2B3A48,0x6E7A82], envGround:0x2A2A24};
+  sky0:[0x0F1A26,0x2B3A48,0x6E7A82], envGround:0x2A2A24,
+  /* roadmap step 1 (docs/FINAL_AUDIT.md T-6): two more of the light's fixed colours, until step 1 literals where they are used (values
+     unchanged): the haze's colour before the first applyAtmo (ATMO's uAtmoV, linear r, g, b) and the sun disc's radial gradient (its stops) */
+  atmo0:[0.7,0.72,0.74],
+  sunDisc:[[0,"rgba(255,244,214,1)"],[0.18,"rgba(255,222,160,.95)"],[0.42,"rgba(255,190,110,.35)"],[1,"rgba(255,170,90,0)"]]};
 var LIGHT_FILL={predawn:0.16,dawn:0.22,dusk:0.16,staff:0.16}, LIGHT_FILL_DAY=0.52, LIGHT_SKY_LIFT={predawn:0,dawn:0.04,dusk:0,staff:0};
 /* Stage 4C: the haze's strength for each preset's hour, as the visibility (km) at the valley floor that would give it. A depth cue
    counted beyond the orbit target (decision 81), not the day's air: physical visibilities (10-25 km) hazed the ground behind the
@@ -367,7 +371,7 @@ function placeLights(){
 var ATMO={HS:400, M0:200, EDGE:6, FOG_EASE:20, FOG_SINK:20, FOG_VIS_KM:0.2, CAP:0.55,
   FOG_TOP_H:-0.8,   /* the knowledge model's threshold (knowledgeOf: hAt(p) < -0.8), model units */
   u:{uAtmoA:{value:new THREE.Vector4(4,243.1,63.2,0)}, uAtmoB:{value:new THREE.Vector4(0,400,200,0)},
-     uAtmoC:{value:new THREE.Vector4(238.2,15,0,0)}, uAtmoV:{value:new THREE.Color(0.7,0.72,0.74)}}};
+     uAtmoC:{value:new THREE.Vector4(238.2,15,0,0)}, uAtmoV:{value:new THREE.Color(LIGHT_RIG.atmo0[0],LIGHT_RIG.atmo0[1],LIGHT_RIG.atmo0[2])}}};
 ATMO.FOG_TOP=GEOREF.elevM(ATMO.FOG_TOP_H);
 /* sigma, the extinction per world unit for a meteorological visibility in km (Koschmieder: 3.912 / V) */
 function atmoSigma(km){ return 3.912/km*GEOREF.M_PER_WORLD/1000; }
@@ -489,8 +493,7 @@ function buildSunDisc(){
   var c=document.createElement("canvas"); c.width=c.height=128;
   var x=c.getContext("2d");
   var gr=x.createRadialGradient(64,64,4,64,64,64);
-  gr.addColorStop(0,"rgba(255,244,214,1)"); gr.addColorStop(0.18,"rgba(255,222,160,.95)");
-  gr.addColorStop(0.42,"rgba(255,190,110,.35)"); gr.addColorStop(1,"rgba(255,170,90,0)");
+  LIGHT_RIG.sunDisc.forEach(function(q){ gr.addColorStop(q[0],q[1]); });
   x.fillStyle=gr; x.fillRect(0,0,128,128);
   sunDisc=new THREE.Sprite(new THREE.SpriteMaterial({map:ctexS(c),transparent:true,opacity:0,
     depthWrite:false,fog:false}));
@@ -801,7 +804,10 @@ var KIT={
   paint:{lozenge:{from:"fr_eagle_inf"}, ordinary:{from:"at_inf"}},
   carry:{fr_eagle_inf:{paint:"lozenge"}, fr_guard_eagle:{paint:"lozenge"}, fr_eagle_cav:{paint:"lozenge"}, fr_guard_eagle_cav:{paint:"lozenge"},
          at_inf:{paint:"ordinary", lower:{n:1, per:"bn"}}, at_grenz:{paint:"ordinary"}, at_cav:{paint:"ordinary"}},
-  std:{drop:0.853, thick:0.61, aspect:2.4/1.4}
+  std:{drop:0.853, thick:0.61, aspect:2.4/1.4},
+  /* the cloth's weave, the faint dark threads every painted or plain cloth carries (flagTexture): a design value, no claim (roadmap step 1,
+     docs/FINAL_AUDIT.md T-6: until step 1 a literal in flagTexture, text unchanged) */
+  weave:"rgba(0,0,0,.12)"
 };
 /* a value of appearance.js the drawing follows: a claim (not generic, disputed or "none shown") at grade A or B whose class (k: c a
    colour, h a headgear) is not "generic"; anything else is drawn generic (docs/STAGE6_SPEC.md section 6.6, "For 6C and 6D") */
@@ -1370,7 +1376,7 @@ function flagTexture(key){
     poly([[56,74],[72,74],[78,92],[50,92]]);
   } else { c.width=128; c.height=64; x=c.getContext("2d");
     x.fillStyle=NATION[key.split(":")[1]].fill; x.fillRect(0,0,128,64); }
-  x.fillStyle="rgba(0,0,0,.12)"; for(var k=0;k<c.width;k+=4) x.fillRect(k,0,1,c.height);   /* a little cloth */
+  x.fillStyle=KIT.weave; for(var k=0;k<c.width;k+=4) x.fillRect(k,0,1,c.height);   /* a little cloth */
   var t=ctexS(c); _flagTex[key]=t; return t;
 }
 /* how many of a block's standards are drawn: those of the battalions shown (a detachment drawn separately takes its standards) */

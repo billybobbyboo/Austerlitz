@@ -40,8 +40,9 @@ const CLASS={
   "world.js:height":"model","world.js:hAt":"model","world.js:buildGrid":"model","world.js:buildFaceFacts":"model",
   /* Stage 2B: the display height is defined from the model height; the camera presets, authored over the model
      ground, are re-framed from it; the ground mesh is built on the model surface (land cover, the elevation tint and
-     the going classes are read from it) and then drawn at the display factor by scaleGround */
-  "world.js:displayHeight":"model","world.js:authoredLift":"model","world.js:buildWorld":"model",
+     the going classes are read from it) and then drawn at the display factor by scaleGround. Since roadmap step 1 (T-2)
+     those lines are groundGeometry, which buildWorld calls (the same site, moved unchanged) */
+  "world.js:displayHeight":"model","world.js:authoredLift":"model","world.js:groundGeometry":"model",
   "world.js:groundY":"presentation","world.js:ribbon":"presentation","world.js:mereLevel":"presentation",
   "world.js:buildSettlements":"presentation","world.js:buildWoods":"presentation",
   "world.js:buildApron > v":"presentation","world.js:buildMarshSymbols":"presentation","world.js:buildAnalysis":"presentation",

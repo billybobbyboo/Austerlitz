@@ -1,7 +1,8 @@
 global.GEOREF=require('./geo.js');   /* the single geographic reference */
-/* Exercise the real terrain functions with only THREE.Color stubbed. */
-global.THREE={ Color:class{constructor(h){this.setHex(h||0xffffff)}
-  setHex(h){this.r=((h>>16)&255)/255;this.g=((h>>8)&255)/255;this.b=(h&255)/255;return this} } };
+/* Exercise the real terrain functions on the real three r128 (the devDependency the build's own version): the drawn ground is its
+   PlaneGeometry and the meres its CircleGeometry and RingGeometry (roadmap step 1, docs/FINAL_AUDIT.md T-2: until step 1 only THREE.Color,
+   stubbed) */
+global.THREE=require('three');
 const fs=require('fs');
 eval(fs.readFileSync('data.js','utf8'));
 eval(fs.readFileSync('tokens.js','utf8'));   /* Stage 4E: world.js reads the paper map's ground colours from TOKENS, as in the build's order */
@@ -83,13 +84,70 @@ console.log("  summit ordering (Pratzeberg 25+ m above Santon/Vinohrady/Zuran > 
   "  (the Pratzeberg "+(mAt('pratzeberg')-Math.max(mAt('santon'),mAt('vinohrady'),mAt('zuran'))).toFixed(1)+" m above the highest of the three)");
 const down=mAt('kobelnitz')>=mAt('sokolnitz') && mAt('sokolnitz')>=mAt('telnitz');
 console.log("  the Goldbach falls downstream (Kobelnitz >= Sokolnitz >= Telnitz): "+(down?"OK":"BROKEN")+"  ("+['kobelnitz','sokolnitz','telnitz'].map(k=>mAt(k).toFixed(0)).join(" > ")+" m)");
-/* the meres: no edge of the water may hang above the ground */
+/* the meres: no edge of the ice, nor of its shore ice, may hang above the DRAWN ground (docs/STAGE4_SPEC.md section F.1; roadmap step 1,
+   docs/FINAL_AUDIT.md T-2: until step 1 this block computed a level with its own copy of mereLevel's rule, on the model height, and
+   compared it with the same model height, which holds by construction). Now every part is the live code's: the meres as buildWater
+   makes them (read, not typed again), each at rescaleWorld's level (mereLevel plus its lift), on the ground groundGeometry builds and
+   scaleGround draws at each factor, read by groundY. The edge is the drawn one: the mesh's 48 outer vertices under its own matrix.
+   groundY is linear on each ground triangle, so its lowest value along a chord of that edge lies at an end or where the chord crosses a
+   grid line or a cell's diagonal: found exactly there, and on 2,000 points around the edge as a cross-check. One ice disc and one ring
+   of shore ice per mere, two meres, at 1x, 4x and 10.33x: 12 surfaces. Then the check is shown not vacuous: every surface lifted a
+   further 0.05 units (mereLevel's own margin), at least one must float. */
 let floatBad=0;
-[["Satschan",SATS,28,10.5,-3.85],["Menitz",MENI,23,9,-3.95]].forEach(([n,c,rx,rz,base])=>{
-  let lo=1e9; for(let a=0;a<96;a++){ const t=a/96*Math.PI*2; lo=Math.min(lo,height(c[0]+Math.cos(t)*rx,c[1]+Math.sin(t)*rz)); }
-  const wl=Math.min(base+1.2*regionalLevel(c[0],c[1]),lo-0.05);
-  const ok=wl<=lo; if(!ok) floatBad++;
-  console.log("  "+n+" mere: water "+wl.toFixed(2)+", lowest ground at its edge "+lo.toFixed(2)+(ok?"  OK":"  FLOATS")); });
+{ groundMesh={geometry:groundGeometry()};   /* buildWorld's ground: groundY reads it */
+  const MERES=[], scene={add(o){ if(o.userData&&o.userData.mere) MERES.push(o); }};
+  waterMeshes.length=0; iceRims.length=0; buildWater(scene);
+  const cw=GROUND_W/GROUND_NX, cd=GROUND_D/GROUND_NZ;
+  const nameOf=c=>c===SATS?"Satschan":c===MENI?"Menitz":"the mere at "+c.map(v=>v.toFixed(1)).join(",");
+  /* the lowest drawn ground on the segment a-b (x, z): every crossing of a grid line in x or z and of a cell's diagonal (fx+fz an
+     integer, groundY's split), each read just either side, and the ends */
+  function chordLow(a,b){
+    const fx=t=>(a[0]+(b[0]-a[0])*t+GROUND_W/2)/cw, fz=t=>(a[1]+(b[1]-a[1])*t+GROUND_D/2)/cd, ts=[0,1];
+    [[fx(0),fx(1)],[fz(0),fz(1)],[fx(0)+fz(0),fx(1)+fz(1)]].forEach(([p,q])=>{ if(p===q) return;
+      for(let k=Math.ceil(Math.min(p,q));k<=Math.floor(Math.max(p,q));k++) ts.push((k-p)/(q-p)); });
+    let lo=1e9; ts.forEach(t=>[t-1e-9,t,t+1e-9].forEach(u=>{ u=Math.max(0,Math.min(1,u));
+      lo=Math.min(lo,groundY(a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u)); }));
+    return lo;
+  }
+  /* the drawn edge: the vertices at local radius 1 under the mesh's matrix, each once (the ring closes on its first vertex), in order */
+  function drawnEdge(m){
+    const P=m.geometry.attributes.position, v=new THREE.Vector3(), c=m.userData.mere[0], E=new Map();
+    for(let i=0;i<P.count;i++){ v.fromBufferAttribute(P,i); if(Math.abs(Math.hypot(v.x,v.y)-1)>1e-6) continue;
+      v.applyMatrix4(m.matrixWorld); E.set(v.x.toFixed(6)+","+v.z.toFixed(6),[v.x,v.z,Math.atan2(v.z-c[1],v.x-c[0])]); }
+    return [...E.values()].sort((p,q)=>p[2]-q[2]);
+  }
+  /* every surface at every factor, each lifted by extra above rescaleWorld's level */
+  function measure(extra){
+    const out=[];
+    for(const f of DISPLAY.settings){
+      DISPLAY.factor=f; DISPLAY.flat=false; scaleGround(groundMesh.geometry);
+      MERES.forEach(m=>{ const q=m.userData.mere, y=mereLevel.apply(null,q)+(m.userData.mereLift||0)+extra;   /* rescaleWorld's rule */
+        m.position.y=y; m.updateMatrixWorld(true);
+        const E=drawnEdge(m); let lo=1e9, dense=1e9;
+        for(let i=0;i<E.length;i++) lo=Math.min(lo,chordLow(E[i],E[(i+1)%E.length]));
+        for(let k=0;k<2000;k++){ const s=k/2000*E.length, i=Math.floor(s), u=s-i, a=E[i], b=E[(i+1)%E.length];
+          dense=Math.min(dense,groundY(a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u)); }
+        out.push({name:nameOf(q[0])+" "+(m.userData.mereLift?"shore ice":"ice"), f:f, y:y, n:E.length, lo:lo, dense:dense,
+          ok:E.length===48&&lo>=y&&dense>=y}); }); }
+    DISPLAY.factor=DISPLAY.defaultFactor; scaleGround(groundMesh.geometry);
+    MERES.forEach(m=>{ m.position.y=mereLevel.apply(null,m.userData.mere)+(m.userData.mereLift||0); });
+    return out;
+  }
+  /* one ice disc (in waterMeshes) and one ring of shore ice (in iceRims, lifted) for each of two meres */
+  const per={}; MERES.forEach(m=>{ const k=nameOf(m.userData.mere[0]), r=per[k]=per[k]||{ice:0,rim:0};
+    if(m.userData.mereLift>0&&iceRims.includes(m)) r.rim++; else if(!m.userData.mereLift&&waterMeshes.includes(m)) r.ice++; });
+  const shape=Object.keys(per).length===2&&Object.values(per).every(r=>r.ice===1&&r.rim===1)&&MERES.length===4;
+  if(!shape){ console.log("  ! the meres drawn are not two, each one ice disc and one ring of shore ice: "+JSON.stringify(per)); floatBad++; }
+  const R=measure(0);
+  R.forEach(r=>{ if(!r.ok) floatBad++;
+    console.log("  mere: "+r.name+" at "+(+r.f.toFixed(2))+"x: level "+r.y.toFixed(3)+", drawn edge "+r.n+" vertices, its lowest drawn ground "+
+      r.lo.toFixed(3)+" (2,000 points "+r.dense.toFixed(3)+"), margin "+(r.lo-r.y).toFixed(4)+(r.ok?"  OK":"  FLOATS")); });
+  if(R.length!==12){ console.log("  ! "+R.length+" mere surfaces checked, want 12 (two meres and their shore ice at three factors)"); floatBad++; }
+  const C=measure(0.05), nC=C.filter(r=>!r.ok).length;
+  console.log("  mere: the check is not vacuous: lifted a further 0.05, "+nC+" of "+C.length+" surfaces would float (want at least 1)");
+  if(!nC){ console.log("  ! the mere check cannot fail: lifted a further 0.05, no surface floats"); floatBad++; }
+  groundMesh=null;   /* the rest of the suite reads the model, as before */
+}
 if(reliefBad||!order.every(x=>x)||!down||floatBad) process.exitCode=1;
 console.log("  vertical exaggeration (derived): "+G.EXAG.toFixed(1)+"x");
 

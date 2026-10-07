@@ -257,18 +257,43 @@ if(cerrs) process.exitCode=1;
    in world.js is in COVER_COL, LAND_COL or WATER_COL; in app.js in the light's tables (LIGHT, LIGHT_RIG) or the sprite palette
    (SPRITE_COL). White (a vertex-coloured material's neutral base) is not a palette colour. The paper map's ground is
    TOKENS.sym.paperMap.ground. Stage 6C (docs/STAGE6_SPEC.md sections 5 and 6.2) ends Stage 4E's exemption of the figures, coats and
-   flags (formationAtlas, figKit, makeBlock, flagTexture): their colours are KIT's, or NATION's for the generic appearance. */
+   flags (formationAtlas, figKit, makeBlock, flagTexture): their colours are KIT's, or NATION's for the generic appearance.
+   Every spelling of a colour is read (roadmap step 1, docs/FINAL_AUDIT.md T-6: until step 1 only 0xRRGGBB and #RRGGBB, so eleven
+   literals in five declarations went unseen, now in LAND_COL, LIGHT_RIG and KIT; symbols.js was not read, and has no table): 0xRRGGBB;
+   #RGB, #RGBA, #RRGGBB, #RRGGBBAA; an rgb() or rgba() triple of numbers (the alpha may be computed); hsl() and hsla(); THREE.Color,
+   .setRGB and .setHSL with three numbers. Not palette colours: white (the neutral base a material, an instance colour or a sprite's mask
+   multiplies), and black where the canvas is compositing "destination-in" (the last globalCompositeOperation set before it in its
+   declaration), an alpha mask, where only the alpha counts; the six-digit hex keeps the rule's exemption before step 1 (white written
+   FFFFFF or ffffff, nothing else), so nothing that rule flagged passes now. GLSL's vec3 literals (the ground shader's frost and
+   viewshed tints, the post chain's luma weights) are not read: shader source, not a canvas or material colour. */
 {
   const acorn=require('acorn'), perr=[];
-  const ALLOW={"world.js":["COVER_COL","LAND_COL","WATER_COL"],"app.js":["LIGHT","LIGHT_RIG","SPRITE_COL","KIT"]};
+  const ALLOW={"world.js":["COVER_COL","LAND_COL","WATER_COL"],"app.js":["LIGHT","LIGHT_RIG","SPRITE_COL","KIT"],"symbols.js":[]};
+  const LIT=/0x[0-9A-Fa-f]{6}\b|#(?:[0-9A-Fa-f]{8}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3,4})\b|rgba?\(\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?|hsla?\(\s*\d|THREE\.Color\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*\)|\.set(?:RGB|HSL)\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*\)/g;
+  /* a literal's r, g, b (0-255), or null where it is not read (hsl, setHSL: never exempt) */
+  const rgbOf=x=>{ let m;
+    if((m=/^(?:0x|#)([0-9A-Fa-f]{6})(?:[0-9A-Fa-f]{2})?$/.exec(x))) return [0,2,4].map(i=>parseInt(m[1].substr(i,2),16));
+    if((m=/^#([0-9A-Fa-f]{3,4})$/.exec(x))) return [0,1,2].map(i=>parseInt(m[1][i]+m[1][i],16));
+    if((m=/^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/.exec(x))) return [m[1],m[2],m[3]].map(Number);
+    if((m=/^(?:THREE\.Color|\.setRGB)\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/.exec(x))) return [m[1],m[2],m[3]].map(v=>Math.round(+v*255));
+    return null; };
+  let nLit=0, nWhite=0, nMask=0;
   Object.keys(ALLOW).forEach(f=>{ const src=fs.readFileSync(f,'utf8'), ast=acorn.parse(src,{ecmaVersion:2020});
     ast.body.forEach(n=>{ const name=n.type==="FunctionDeclaration"?n.id.name:n.type==="VariableDeclaration"?n.declarations.map(d=>d.id.name).join(","):"("+n.type+")";
-      const lit=(src.slice(n.start,n.end).match(/0x[0-9A-Fa-f]{6}\b|#[0-9A-Fa-f]{6}\b/g)||[]).filter(x=>!/^(0x|#)(FFFFFF|ffffff)$/.test(x));
+      const body=src.slice(n.start,n.end), lit=[]; let m; LIT.lastIndex=0;
+      while((m=LIT.exec(body))){ nLit++; const c=rgbOf(m[0]);
+        /* the six-digit hex: the exemption before step 1 only; the other spellings: white, or black in an alpha mask */
+        if(/^(0x|#)[0-9A-Fa-f]{6}$/.test(m[0])){ if(/^(0x|#)(FFFFFF|ffffff)$/.test(m[0])){ nWhite++; continue; } }
+        else if(c&&c.every(v=>v===255)){ nWhite++; continue; }
+        else if(c&&c.every(v=>v===0)){ const ops=[...body.slice(0,m.index).matchAll(/globalCompositeOperation\s*=\s*"([a-z-]+)"/g)];
+          if(ops.length&&ops[ops.length-1][1]==="destination-in"){ nMask++; continue; } }
+        lit.push(m[0]+" (line "+src.slice(0,n.start+m.index).split("\n").length+")"); }
       if(lit.length&&!ALLOW[f].includes(name)) perr.push(f+": "+name+" has colour literals outside the palette tables ("+lit.slice(0,3).join(", ")+")"); }); });
   const T=fs.readFileSync('tokens.js','utf8'), W=fs.readFileSync('world.js','utf8');
   if(!/"ground":\s*\{"field":/.test(T)||!/paper:\s*COVER_KEYS\.map\(function\(k\)\{ return hexNumW\(TOKENS\.sym\.paperMap\.ground\[k\]\); \}\)/.test(W)) perr.push("the paper map's ground colours are not read from TOKENS.sym.paperMap.ground");
   perr.forEach(e=>console.log("  ! "+e));
-  console.log("palette: "+(perr.length?perr.length+" wrong":"the landscape's colours in their tables (light, sprites, ground, land, water), the figures' in KIT, the paper map's ground in the tokens"));
+  console.log("palette: "+(perr.length?perr.length+" wrong":"0 colour literals outside the tables ("+nLit+" read in "+Object.keys(ALLOW).join(", ")+"; "+nWhite+" white and "+nMask+
+    " alpha-mask black exempt); the landscape's colours in their tables (light, sprites, ground, land, water), the figures' in KIT, the paper map's ground in the tokens"));
   if(perr.length) process.exitCode=1;
 }
 /* Stage 6C (docs/STAGE6_SPEC.md section 6.2; owner decisions 99, 102-104, 109): KIT draws only what appearance.js names. Every KIT cloth
