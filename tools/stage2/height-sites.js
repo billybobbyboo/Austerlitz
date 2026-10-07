@@ -84,8 +84,9 @@ const CLASS={
   "app.js:followGoal":"presentation","app.js:followStep":"presentation",
   /* Stage 4D: a drawn-on arrow's end, draped like the rest of its shaft; the self-test's day under Follow */
   "app.js:shaftEnd":"presentation","app.js:paceChecks":"test",
-  /* Stage 4E: the self-test's ice and smoke checks against the drawn ground */
-  "app.js:extrasChecks":"test",
+  /* Stage 4E: the self-test's ice and smoke checks against the drawn ground; since roadmap step 1 (T-2) the ice's drawn edge read
+     exactly along each chord (chordLow: the drawn ground at every crossing of a grid line or a cell's diagonal) */
+  "app.js:extrasChecks":"test","app.js:extrasChecks > chordLow":"test",
   /* Stage 5B: a confidence mark's size on screen (the paper map's cap) at its drawn ground */
   "app.js:confPlace":"presentation",
   /* Stage 5B: the self-test's drape of the marks against the drawn ground */
