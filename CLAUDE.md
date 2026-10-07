@@ -363,5 +363,5 @@ pause it; Next goes straight there, Back returns; the visitor's ½× put back af
 merged (#48); the owner accepted every recommendation (decisions 125-141, `docs/FINAL_AUDIT.md` §6.0) and asked to start with roadmap step 1
 (`docs/ROADMAP.md`: suite hardening, the fonts embedded first, decision 141); the owner's notes for later (appearance and motion) are in
 `docs/ROADMAP.md`. Roadmap step 1 (the type embedded, decision 141; the checks that could not fail made strict, decision 131; CI runs
-`check:contrast` and the self-test, decision 132; the one re-measure; the diff review's fixes) is done, for review (#49). The next owner
-decision is 142.
+`check:contrast` and the self-test, decision 132; the one re-measure; the diff review's fixes) is merged (#49). Roadmap step 2 (integrity
+on screen: decisions 125 (a), 126, 127 (b), 128 (a), 129, 135, with H-9, H-15, H-16, D-5, D-6) is in progress. The next owner decision is 142.
