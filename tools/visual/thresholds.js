@@ -82,9 +82,17 @@ UNOBSTRUCTED["opening-4"]=[0.639,0.529]; UNOBSTRUCTED["opening-end"]=[0.703,0.62
 /* Roadmap step 1 (T-5; docs/FINAL_AUDIT.md section 2.6, decision 131): the three views measured since 5E and 5F had no baseline, and their
    unobstructed checks were skipped without a word (if(U&&...)). Their baselines are what the 7D build measures there
    (docs/audit-evidence/check-visual-report.json: 89.78% / 87.22% at both eye levels, 70.36% / 62.88% with the Plans overlay), rounded down
-   to 0.1 point (the 3B and 3C method): Watch's and Study's own values. Provisional: the one re-measure after the embedded fonts (decision
-   141, tools/visual/remeasure.js) takes them up with the rest */
+   to 0.1 point (the 3B and 3C method): Watch's and Study's own values. Provisional until the one re-measure after the embedded fonts
+   (decision 141, tools/visual/remeasure.js), which met all three as they stand (89.78% / 87.22% and 70.45% / 63.01%): kept */
 UNOBSTRUCTED["eye-zuran"]=[0.897,0.872]; UNOBSTRUCTED["eye-zuran-1x"]=[0.897,0.872]; UNOBSTRUCTED["plans-overview"]=[0.703,0.628];
+/* Decision 141 (the embedded fonts, roadmap step 1): every case re-measured once on the 1aa3ada14130b3d27fc0817b41f8537b build, two identical runs (linux, Chromium 141.0.7390.37, Playwright 1.56.0), by tools/visual/remeasure.js --bounds keep (decision 62's method; a bound kept where the build still meets it, changed only where the fonts moved the measure past it). Each value: was, is and why, in
+   CHANGELOG.md; loosened under decision 141: UNOBSTRUCTED["first-run"], DROP_LIMIT["narrow-390"], UNOBSTRUCTED["narrow-390"], UNOBSTRUCTED["first-run-laptop"], DROP_LIMIT["eye-zuran"], DROP_LIMIT["plans-overview"] */
+UNOBSTRUCTED["first-run"]=[0.626,0.507];   /* was [0.634,0.52]; loosened (decision 141) */
+DROP_LIMIT["narrow-390"]=7;   /* was 6; loosened (decision 141) */
+UNOBSTRUCTED["narrow-390"]=[0.46,0.507];   /* was [0.468,0.52]; loosened (decision 141) */
+UNOBSTRUCTED["first-run-laptop"]=[0.546,0.507];   /* was [0.558,0.52]; loosened (decision 141) */
+DROP_LIMIT["eye-zuran"]=6;   /* was 5; loosened (decision 141) */
+DROP_LIMIT["plans-overview"]=12;   /* was 11; loosened (decision 141) */
 const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harness machine */
 /* Stage 2E (section J, 2E): every paper-map view is a true north-up plan: GEOREF.NORTH within 0.5 degrees of up; screen pixels
    per true km at four places equal to 1% (on the 2D build's tilted staff map they differ by 6.0% and north is 17.8 degrees
