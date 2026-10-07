@@ -1,5 +1,5 @@
 /* tokens:begin — generated from tokens.js by `python3 build.py --tokens`; do not edit */
-:root{--ink:#0C1116;--ink-rgb:12,17,22;--panel:#131A21;--panel-rgb:19,26,33;--scrim-rgb:10,14,19;--line-rgb:199,189,165;--line:rgba(199,189,165,.16);--line-2:rgba(199,189,165,.30);--text-hi:#E7DFCC;--text:#CABFA8;--text-body:#B4AC99;--text-muted:#9BA3A9;--accent:#EFE4C8;--accent-rgb:239,228,200;--on-accent:#101720;--plate:#2A3038;--plate-ink:#E7DFCC;--side-fr:#4C86D8;--side-al:#D4703A;--side-fr-text:#7FB0F0;--side-al-text:#EC9A5E;--keyline:#0A0E12;--t-micro:10.5px;--t-small:11.5px;--t-ui:12.5px;--t-prose:14px;--t-h3:17px;--t-h2:21px;--t-display:25px;--serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;--sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;}
+:root{--ink:#0C1116;--ink-rgb:12,17,22;--panel:#131A21;--panel-rgb:19,26,33;--scrim-rgb:10,14,19;--line-rgb:199,189,165;--line:rgba(199,189,165,.16);--line-2:rgba(199,189,165,.30);--text-hi:#E7DFCC;--text:#CABFA8;--text-body:#B4AC99;--text-muted:#9BA3A9;--accent:#EFE4C8;--accent-rgb:239,228,200;--on-accent:#101720;--plate:#2A3038;--plate-ink:#E7DFCC;--side-fr:#4C86D8;--side-al:#D4703A;--side-fr-text:#7FB0F0;--side-al-text:#EC9A5E;--keyline:#0A0E12;--t-micro:10.5px;--t-small:11.5px;--t-ui:12.5px;--t-prose:14px;--t-h3:17px;--t-h2:21px;--t-display:25px;--serif:"Austerlitz Serif","Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;--sans:"Austerlitz Sans",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,sans-serif;}
 body.mode-staff{--ink:#F3EEE2;--ink-rgb:243,238,226;--panel:#F5F1E6;--panel-rgb:245,241,230;--scrim-rgb:243,238,226;--line-rgb:40,36,28;--line:rgba(40,36,28,.14);--line-2:rgba(40,36,28,.25);--text-hi:#14120C;--text:#33301F;--text-body:#3A362B;--text-muted:#45412F;--accent:#4E3F1E;--accent-rgb:78,63,30;--on-accent:#F2EEE2;--plate:#E3DDCD;--plate-ink:#14120C;--side-fr:#2A5FB0;--side-al:#A8501C;--side-fr-text:#2A5FB0;--side-al-text:#A8501C;--keyline:#0A0E12;}
 /* tokens:end */
 html{--rail:300px;--draw:376px;--tb:108px}
@@ -125,6 +125,7 @@ body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 .rose .rose-ring{stroke:var(--line-2)}
 .rose .rose-n{fill:var(--text)}
 .rose .rose-s{fill:var(--text-muted)}
+.legend .rose text{font-family:var(--serif)}   /* the rose's N, in the embedded serif (decision 141; it named Georgia in shell.html) */
 
 /* ---------- drawer ---------- */
 .drawer{position:fixed;right:0;top:0;bottom:0;width:var(--draw);z-index:30;background:var(--panel);

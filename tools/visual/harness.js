@@ -1,40 +1,77 @@
 #!/usr/bin/env node
 /* Stage 0 visual baseline harness.
-   node tools/visual/harness.js <app.html> <outdir> [--test] [--compare <baselineDir>] [--only a,b]
+   node tools/visual/harness.js <app.html> <outdir> [--test] [--legacy] [--selftest-only] [--compare <baselineDir>] [--only a,b]
    Loads the built page in headless Chromium with software WebGL (SwiftShader) so frames are
    reproducible on one machine, drives it into the fixed cases in cases.js, saves a PNG and a
    metrics record per case, and with --test enforces the Stage 0 guarantees (exit code 1 on failure).
    three.js is loaded from cdnjs as in production; if AUSTERLITZ_THREE (or ./three.min.js, or
-   node_modules/three) is present the CDN request is answered locally, e.g. offline. */
+   node_modules/three) is present the CDN request is answered locally, e.g. offline.
+   Roadmap step 1 (decision 131; docs/FINAL_AUDIT.md T-1, T-4, T-5, T-6): the harness asserts what it measures.
+   - Every page's console warnings and errors, failed console.asserts, page errors, crashes and failed requests are recorded for the
+     whole run (report.console, and each case's own in its record), labelled by page and by the block that was running, and judged against
+     thresholds.js CONSOLE_ALLOW (each entry named, with its reason and what removes it): before step 1 only the last page's were kept,
+     and printed.
+   - What the build has is read from the page (measure.js features(); report.features) and a --test run fails on a missing feature
+     (thresholds.js REQUIRED_FEATURES); a check the build cannot run is listed in report.skipped, never skipped without a word. --legacy
+     (an archived build) keeps the gates and lists what it skipped, and never prints "all checks passed".
+   - Each case's state (measure.js state(): clock, presentation, ground, factor, selection, "Whose eyes?", eye, plan, tour, opening, card,
+     playing, glide, camera, layers) is recorded before the screenshot (m.state) and after the case's own measures (m.stateAfter) and held
+     to what the case asks (thresholds.js expectState); the ground reader's self-check is asserted (GROUND_SELF_TOL).
+   - The live blocks after the cases record raw numbers (report.live) and every failure is decided by thresholds.js judgeReport, the same
+     function check-report.js applies to the report again (the self-test against tools/visual/selftest-manifest.json).
+   - --selftest-only (npm run check:selftest; decision 132, the CI job): no case; one fresh page at 1366 x 768 (the viewport the full run's
+     self-test uses), the self-test, the slider, Play and the 3E keys; the rendered sweeps (the dwell view, the light, the fog, the horizon)
+     stay in check:visual. */
 const fs=require("fs"), path=require("path"), crypto=require("crypto");
 const { chromium } = require("playwright");
+const T=require("./thresholds.js");
 const argv=process.argv.slice(2), flag=f=>argv.includes(f), opt=f=>{ const i=argv.indexOf(f); return i>=0?argv[i+1]:null; };
 const html=path.resolve(argv[0]||"austerlitz-command-map.html");
 const out=path.resolve(argv[1]||path.join(__dirname,"out"));
-const TEST=flag("--test"), CMP=opt("--compare"), ONLY=opt("--only");
+const SELFTEST_ONLY=flag("--selftest-only"), TEST=flag("--test")||SELFTEST_ONLY, LEGACY=flag("--legacy"), CMP=opt("--compare"), ONLY=opt("--only");
 const THREE_LOCAL=[process.env.AUSTERLITZ_THREE, path.join(__dirname,"three.min.js"),
   path.resolve("node_modules/three/build/three.min.js")].find(p=>p&&fs.existsSync(p));
-const CASES=require("./cases.js").filter(c=>!ONLY||ONLY.split(",").includes(c.name));
+const ALL_CASES=require("./cases.js");
+const CASES=SELFTEST_ONLY?[]:ALL_CASES.filter(c=>!ONLY||ONLY.split(",").includes(c.name));
 const MEASURE=fs.readFileSync(path.join(__dirname,"measure.js"),"utf8");
+const MANIFEST_PATH=path.join(__dirname,"selftest-manifest.json");
 const md5=f=>crypto.createHash("md5").update(fs.readFileSync(f)).digest("hex");
+const RUN=new Date().toISOString();
 
-async function openPage(browser,vp){
+/* T-1: every page's messages, for the whole run; AT names the block running (a case's name, "self-test", "slider keys", ...) */
+const LOG=[], SKIPPED=[], PAGES=[]; let AT="load", BUILD_FEATURES=null;
+async function openPage(browser,vp,label){
   const page=await browser.newPage({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:1});
-  const logs=[];
-  page.on("console",m=>{ if(m.type()==="warning"||m.type()==="error") logs.push(m.type()+": "+m.text()); });
-  page.on("pageerror",e=>logs.push("PAGEERROR: "+e.message));
+  label=label||vp.join("x");
+  const rec=(type,text)=>LOG.push({page:label,at:AT,type:type,text:String(text).slice(0,400)});
+  page.on("console",m=>{ const t=m.type(); if(t==="warning"||t==="error"||t==="assert") rec(t,m.text()); });
+  page.on("pageerror",e=>rec("pageerror",e.message+" | "+String(e.stack||"").split("\n")[1]));
+  page.on("crash",()=>rec("crash","the page crashed"));
+  page.on("requestfailed",q=>rec("requestfailed",q.url().slice(0,160)+" "+((q.failure()||{}).errorText||"")));
   if(THREE_LOCAL) await page.route(/three(\.min)?\.js$/,r=>r.fulfill({path:THREE_LOCAL,contentType:"application/javascript"}));
   await page.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:180000});
   await page.waitForFunction(()=>!document.getElementById("boot")&&typeof window.camera!=="undefined",null,{timeout:240000,polling:500});
+  /* decision 141: the embedded faces loaded before anything is measured (the boot screen already waits for them, app.js fontsReady) */
+  const fonts=await page.evaluate(()=>document.fonts?document.fonts.ready.then(()=>document.fonts.status):"no document.fonts");
   await page.evaluate(MEASURE);
   /* Stage 2D: CSS transitions off, as check:contrast has them. In headless Chromium a transition does not advance while the
      page draws nothing (render on demand), so a view reached from Watch was measured with the dossier, tools and legend
      frozen at the start of their .32 s slide (selected-formation: the drawer off screen). Each state now stands where the
      panels come to rest. */
   await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});
-  page._logs=logs;
+  /* T-5: what the build has, read from the page */
+  const feats=await page.evaluate(()=>window.__aus.features());
+  if(!BUILD_FEATURES) BUILD_FEATURES=feats;
+  PAGES.push({label:label,viewport:vp,fonts:fonts,at:AT});
   return page;
 }
+/* T-5: a block that needs a feature the build lacks is skipped and listed (a --test run fails on it in thresholds.js judgeReport) */
+async function has(page,feat,where){
+  const ok=await page.evaluate(n=>!!window.__aus.features()[n],feat);
+  if(!ok) SKIPPED.push({at:AT,what:where+": the build has no "+feat+" ("+(T.REQUIRED_FEATURES[feat]||"?")+")"});
+  return ok;
+}
+const stateOf=(page,c)=>page.evaluate(s=>window.__aus.state(s),c);
 async function settle(page){
   const has=await page.evaluate(()=>!!(window.AUSTERLITZ_DEBUG&&AUSTERLITZ_DEBUG.settle));
   if(has){ await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(90));
@@ -103,24 +140,31 @@ async function interact(page,it,vp){
   const browser=await chromium.launch({executablePath:process.env.AUSTERLITZ_CHROME||undefined,
     args:["--use-angle=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"]});
   const rp=path.join(out,"report.json");
-  let report={html:path.basename(html), md5:md5(html), when:new Date().toISOString(), cases:{}, failures:[]};
-  if(fs.existsSync(rp)){ try{ const old=JSON.parse(fs.readFileSync(rp,"utf8")); if(old.md5===report.md5){ report.cases=old.cases||{}; if(old.selfTest) report.selfTest=old.selfTest; } }catch(e){} }
+  let report={html:path.basename(html), md5:md5(html), when:RUN, run:RUN, cases:{}, failures:[],
+    mode:{test:TEST, legacy:LEGACY, selftestOnly:SELFTEST_ONLY, only:ONLY?ONLY.split(","):null},
+    env:{platform:process.platform, arch:process.arch, chromium:browser.version(), playwright:require("playwright/package.json").version,
+      executable:process.env.AUSTERLITZ_CHROME?"AUSTERLITZ_CHROME":"playwright"}};
+  /* an earlier run's cases of the same build are kept (--only runs add up), if it was made by this harness in the same mode */
+  if(fs.existsSync(rp)&&!SELFTEST_ONLY){ try{ const old=JSON.parse(fs.readFileSync(rp,"utf8"));
+    if(old.md5===report.md5&&old.mode&&!old.mode.selftestOnly&&!!old.mode.legacy===LEGACY){ report.cases=old.cases||{}; if(old.selfTest) report.selfTest=old.selfTest; } }catch(e){} }
+  const LIVE={};
   const pages={}; let current=null, currentKey=null;
   /* fresh cases get their own page; the rest share one page per viewport. A page that is no longer
      needed is closed at once: the pre-Stage-0 build renders every frame, and a hidden page still
      competes for the CPU under software rendering. */
   const ordered=CASES.filter(c=>c.fresh&&c.viewport[0]===1600).concat(CASES.filter(c=>!c.fresh),CASES.filter(c=>c.fresh&&c.viewport[0]!==1600));
   for(const c of ordered){
+    AT=c.name;
     const key=c.viewport.join("x")+(c.fresh?":"+c.name:"");
     const reuse=(key===currentKey)||(currentKey&&currentKey.startsWith(c.viewport.join("x")+":")&&!c.fresh&&currentKey.split(":")[0]===c.viewport.join("x"));
-    if(!reuse){ if(current&&current!==pages.keep) await current.close(); current=await openPage(browser,c.viewport); }
+    if(!reuse){ if(current&&current!==pages.keep) await current.close(); current=await openPage(browser,c.viewport,c.viewport.join("x")+(c.fresh?" "+c.name:"")); }
     currentKey=key; const page=current; pages.last=page;
     const t0=Date.now(); let m0opening=null;
     if(!c.fresh){ await page.evaluate(s=>window.__aus.apply(s),c); await settle(page);
       if(c.interact){ await interact(page,c.interact,c.viewport); await settle(page); } }
     else await settle(page);
     /* Stage 7C: an opening case is reached as a visitor reaches it, by real clicks on the card's primary action and the bar's Next */
-    const opening=c.fresh&&c.opening!==undefined&&await page.evaluate(()=>typeof OPENING!=="undefined");
+    const opening=c.fresh&&c.opening!==undefined&&await has(page,"OPENING","the opening's clicks");
     /* Stage 7D (decision 123): Next on a step plays the clock to the next one; a second Next goes straight there, as a visitor may (under
        software WebGL a played stretch takes minutes of real time; it is sampled in the self-test and tools/stage7/opening-7d-probe.js) */
     if(opening){ await page.click("#fr-tour",{timeout:180000}); await settle(page);
@@ -129,12 +173,15 @@ async function interact(page,it,vp){
         if(await page.evaluate(()=>!!OPENING.play)) await page.click("#tour-next",{timeout:180000});
         await settle(page); }
       m0opening=await page.evaluate(()=>({on:OPENING.on,k:OPENING.k,stop:tourStep,clock:clock})); }
+    /* roadmap step 1 (T-6): the state the case stands in, before anything is measured */
+    const st0=await stateOf(page,c);
     const buf=await page.screenshot({timeout:180000});
     fs.writeFileSync(path.join(out,c.name+".png"),buf);
     const m=await page.evaluate(()=>window.__aus.metrics());
+    m.state=st0; m.run=RUN;
     if(m0opening) m.opening=Object.assign({want:c.opening},m0opening);
     /* Stage 5E: an eye-level case, the eye's height above the drawn ground and its place at the headquarters */
-    if(c.eye) m.eyeLevel=await page.evaluate(()=>{ if(typeof EYE==="undefined") return {on:false,dy:null,want:null,atHQ:false};
+    if(c.eye&&await has(page,"EYE","the eye-level measure")) m.eyeLevel=await page.evaluate(()=>{ if(typeof EYE==="undefined") return {on:false,dy:null,want:null,atHQ:false};
       const L=landCam.position, p=posNow(EYES.HQ[commandView]), w=p?W(p[0],p[1]):[NaN,NaN];
       return {on:EYE.on,dy:+(L.y-groundY(L.x,L.z)).toFixed(6),want:+eyeHeight().toFixed(6),atHQ:Math.hypot(L.x-w[0],L.z-w[1])<1e-6}; });
     m.pixels=await page.evaluate(b=>window.__aus.pixels(b),buf.toString("base64"));
@@ -143,7 +190,8 @@ async function interact(page,it,vp){
     m.textContrast=await page.evaluate(b=>window.__aus.textContrast?window.__aus.textContrast(b):null,buf.toString("base64"));
     /* Stage 5B (docs/STAGE5_SPEC.md section A.5): the position-confidence marks' share of the free rectangle, as rendered: the same
        view drawn once more without them (a build with the marks; not the first-run views, whose card is not a reading; the opening's are) */
-    if((!c.fresh||opening)&&await page.evaluate(()=>typeof CONF!=="undefined"&&!!layerOn.confidence)){
+    /* (a reading with Position confidence off fails in thresholds.js expectState: decision 85 has it on by default) */
+    if((!c.fresh||opening)&&await has(page,"CONF","the position-confidence share")&&await page.evaluate(()=>!!layerOn.confidence)){
       /* since Stage 6C (decision 107) Position confidence off keeps a side footprint: the frame without the marks draws none (CONF.none) */
       await page.evaluate(()=>{ layerOn.confidence=false; CONF.none=true; }); await settle(page);
       const off=await page.screenshot({timeout:180000});
@@ -156,7 +204,7 @@ async function interact(page,it,vp){
     /* Stage 5F (docs/STAGE5_SPEC.md section E.4; decision 93): the ordered routes on: the map layer's items and drops as without them
        (ground drawing), map text at AA as rendered; their share of the free rectangle recorded (off by default: every other measure is
        taken without them; not at the eye level, where they are not drawn) */
-    if((!c.fresh||opening)&&!c.eye&&await page.evaluate(()=>typeof ROUTES!=="undefined")){
+    if((!c.fresh||opening)&&!c.eye&&await has(page,"ROUTES","the ordered routes' measure")){
       const lay=()=>page.evaluate(()=>{ mlLayout(); return {items:ML.stats.items,dropped:ML.stats.dropped,ids:ML.stats.dropped_.slice().sort().join(","),routes:ROUTES.grp?ROUTES.grp.children.length:0}; });
       const s0=await lay();
       await page.evaluate(()=>{ layerOn.routes=true; requestRender(3); }); await settle(page);
@@ -166,7 +214,7 @@ async function interact(page,it,vp){
       m.routes={routes:s1.routes,items:[s0.items,s1.items],dropped:[s0.dropped,s1.dropped],sameDrops:s0.ids===s1.ids,
         belowAA:tc?tc.belowAA:[],minContrast:tc?tc.min:null,share:(await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[on.toString("base64"),buf.toString("base64")])).share};
     }
-    if((!c.fresh||opening)&&!c.eye&&await page.evaluate(()=>typeof SKEL!=="undefined")){   /* not at the eye level: the skeleton is not drawn there (5E) */
+    if((!c.fresh||opening)&&!c.eye&&await has(page,"SKEL","the evidence skeleton's measure")){   /* not at the eye level: the skeleton is not drawn there (5E) */
       const lay=()=>page.evaluate(()=>{ mlLayout(); return {items:ML.stats.items,dropped:ML.stats.dropped,ids:ML.stats.dropped_.slice().sort().join(","),
         anchors:SKEL.marks.length,legs:SKEL.scope?SKEL.scope.legs.length:0}; });
       const s0=await lay();
@@ -192,10 +240,12 @@ async function interact(page,it,vp){
       if(["overview-field","overview-plan"].includes(c.name)) m.phaseLabels720=await page.evaluate(()=>window.__aus.phaseLabels?window.__aus.phaseLabels():null);
       await page.setViewportSize(vp0); await frame();
     }
+    /* roadmap step 1 (T-6): the page given back after the case's own measures (the layers at their defaults, the case's viewport) */
+    m.stateAfter=await stateOf(page,c);
     /* Stage 7B (docs/STAGE7_SPEC.md section 6, 7B; decisions 111, 118): on the fresh first-run page, after every measure above, real key
        presses: where focus is when the page has loaded, four Tabs (each must stay in the card), then Esc (the card closes where it stands,
        focus on Play). The card is then closed on this page, as every later case closes it (applyCase); focus is released after */
-    if(TEST&&c.name==="first-run"&&await page.evaluate(()=>typeof frButtons==="function")){
+    if(TEST&&c.name==="first-run"&&await has(page,"frButtons","the first-run card by real key presses")){
       const st=()=>page.evaluate(()=>{ const a=document.activeElement, fr=document.getElementById("firstrun");
         return {id:a&&a!==document.body?(a.id||a.tagName):"body",inCard:!!(fr&&a&&fr.contains(a)),open:firstRunOpen,cam:landCam.position.toArray().concat(orbitTarget.toArray())}; });
       const s0=await st(), tabs=[];
@@ -229,6 +279,8 @@ async function interact(page,it,vp){
     }
     m.ms=Date.now()-t0; m.note=c.note;
     if(c.interact) m.intended=await page.evaluate(()=>window.__intended||null);
+    /* T-1, T-5: the case's own messages and skips, kept with its record (a later --only run of the same build keeps them) */
+    m.console=LOG.filter(e=>e.at===c.name); m.skipped=SKIPPED.filter(e=>e.at===c.name);
     report.cases[c.name]=m;
     fs.writeFileSync(rp,JSON.stringify(report,null,1));
     console.log(c.name.padEnd(20)," cam clr",String(m.camera.clearance).padStart(8)," fig max",String(m.figures.maxErr).padStart(7),
@@ -238,21 +290,23 @@ async function interact(page,it,vp){
       m.layer?(" | layer placed "+m.layer.placed+" dropped "+m.layer.dropped+" leaders "+m.layer.leaders+" occluded "+m.layer.occluded+" "+m.layer.ms+" ms "+m.layer.nodes+" nodes"+
         " min "+m.layer.minPx+" px, contrast min "+(m.textContrast&&m.textContrast.min)+" | free "+m.unobstructed+" / "+m.unobstructed720):"");
   }
-  if(!pages.last||pages.last.isClosed()) pages.last=current=await openPage(browser,[1600,900]);
+  /* --selftest-only: one fresh page at 1366 x 768, settled as a fresh case's is (the full run's self-test runs on first-run-laptop's page) */
+  if(SELFTEST_ONLY){ AT="self-test page"; pages.last=current=await openPage(browser,[1366,768],"1366x768 self-test"); await settle(current); }
+  if(!pages.last||pages.last.isClosed()){ AT="self-test page"; pages.last=current=await openPage(browser,[1600,900],"1600x900 self-test"); }
   const first=pages.last;
   if(TEST&&first){
+    AT="self-test";
     const st=await first.evaluate(()=>window.AUSTERLITZ_DEBUG&&AUSTERLITZ_DEBUG.selfTest?AUSTERLITZ_DEBUG.selfTest():null);
     report.selfTest=st;
-    if(!st) report.failures.push("build exposes no AUSTERLITZ_DEBUG.selfTest");
-    else st.checks.forEach(ch=>{ console.log((ch.ok?"PASS ":"FAIL ")+ch.name+"  "+ch.detail); if(!ch.ok) report.failures.push(ch.name+": "+ch.detail); });
+    if(st) st.checks.forEach(ch=>console.log((ch.ok?"PASS ":"FAIL ")+ch.name+"  "+ch.detail));
     /* Stage 3C (docs/STAGE3_SPEC.md section H): the slider by real key presses, from 10:00 (a build with the one timeline) */
-    if(await first.evaluate(()=>!!document.getElementById("tb-vm"))){
+    AT="slider keys";
+    if(await has(first,"timelineRow","the slider and an event marker by real key presses")){
       await first.evaluate(()=>{ setPresentation("study"); setClock(600,{instant:true,force:true,camera:false}); });
-      await first.focus("#timerail"); const seq=[["ArrowRight",610],["Shift+ArrowRight",670],["ArrowLeft",660],["PageUp",630],["PageUp",570],["PageDown",630],["Home",240],["End",1080]], got=[];
+      await first.focus("#timerail"); const seq=[["ArrowRight",610],["Shift+ArrowRight",670],["ArrowLeft",660],["PageUp",630],["PageUp",570],["PageDown",630],["Home",240],["End",1080]], got=[], keys=[];
       for(const [k,want] of seq){ await first.keyboard.press(k); const r=await first.evaluate(()=>({c:clock,v:document.getElementById("timerail").getAttribute("aria-valuenow")}));
-        got.push(k+" "+r.c); if(Math.abs(r.c-want)>1e-6||r.v!==String(Math.round(r.c))) report.failures.push("the slider by real key presses: "+k+" gave "+r.c+" (want "+want+"), aria-valuenow "+r.v); }
+        got.push(k+" "+r.c); keys.push({key:k,want:want,clock:r.c,aria:r.v}); }
       const vt=await first.evaluate(()=>{ const r=document.getElementById("timerail"); return {t:r.getAttribute("aria-valuetext"),want:tlText(clock)}; });
-      if(vt.t!==vt.want) report.failures.push("the slider's aria-valuetext "+JSON.stringify(vt.t)+", want "+JSON.stringify(vt.want));
       /* an event marker by keyboard: focus the group, step to the third marker, Enter selects it and moves the clock to it (the marker's
          minute: since Stage 5C an event's start, decision 89; before it, an interval's midpoint) */
       await first.evaluate(()=>{ setClock(240,{instant:true,force:true,camera:false}); select(null,null); });
@@ -260,97 +314,97 @@ async function interact(page,it,vp){
       const ev=await first.evaluate(()=>{ const a=document.activeElement, o=_evTicks.find(x=>x.el===a);
         return {name:a&&a.getAttribute("aria-label"), mid:o&&(o.t!==undefined?o.t:o.mid), id:o&&o.e.id, clock:clock, sel:selection?selection.kind+":"+selection.id:null}; });
       got.push("event marker Enter: "+ev.name+" → clock "+ev.clock+", "+ev.sel);
-      if(!ev.id||Math.abs(ev.clock-ev.mid)>1e-6||ev.sel!=="e:"+ev.id) report.failures.push("an event marker by real key presses: "+JSON.stringify(ev));
+      LIVE.slider={keys:keys,valuetext:vt,marker:ev};
       report.sliderKeys=got; console.log("slider by real key presses: "+got.join(", ")); }
     /* Stage 4D (docs/STAGE4_SPEC.md section D.4; decisions 74, 75): Play by a real key press runs at half speed, its button
        pressed; and the Watch view of the low Pratzen case held in a dwell at the phase-3 event start 09:00 keeps every threshold
        of its view (the darkness limit, map text at AA as rendered, drops within its limit), its event lit and named */
-    if(await first.evaluate(()=>typeof DWELL!=="undefined")){
-      const pr=[], T=require("./thresholds.js");
+    AT="pacing";
+    if(await has(first,"DWELL","Play by a real key press and the Watch view in a dwell")){
+      const pr=[];
       await first.evaluate(()=>{ setPresentation("study"); stopPlay(); setClock(730,{instant:true,force:true,camera:false}); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
       await first.keyboard.press(" "); await first.waitForFunction(()=>clock>730,null,{timeout:20000}).catch(()=>{});   /* a frame or two (software WebGL) */
       const pl=await first.evaluate(()=>({playing:playing,speed:speed,clock:clock,pressed:[].filter.call(document.querySelectorAll(".spd-btn"),b=>b.getAttribute("aria-pressed")==="true").map(b=>b.dataset.s)}));
       await first.keyboard.press(" "); const pl2=await first.evaluate(()=>playing);
       pr.push("Space: playing "+pl.playing+" at "+pl.speed+"x (pressed "+pl.pressed.join(",")+"), clock 12:10 -> "+pl.clock.toFixed(2)+"; Space again: playing "+pl2);
-      if(!pl.playing||pl.speed!==0.5||pl.pressed.join()!=="0.5"||!(pl.clock>730)||pl2) report.failures.push("Play by a real key press: "+pr[0]);
-      const c=require("./cases.js").find(x=>x.name==="pratzen-low");
-      await first.evaluate(s=>window.__aus.apply(s),Object.assign({},c,{t:538})); await settle(first);
-      const dw=await first.evaluate(()=>{ DWELL.HOLD=1e9; playing=true; dwellReset(); DWELL.expect=clock; var n=0; while(!(DWELL.st&&DWELL.st.stage==="hold")&&n++<400) tickClock(50);
-        return {E:DWELL.st&&DWELL.st.E,clock:clock,ev:(dwellEvents()||[]).map(e=>e.id)}; });
-      await settle(first);
-      const buf=await first.screenshot({timeout:180000}), b64=buf.toString("base64");
-      const px=await first.evaluate(b=>window.__aus.pixels(b),b64), tc=await first.evaluate(b=>window.__aus.textContrast(b),b64);
-      const st=await first.evaluate(()=>{ mlLayout(); var cap=document.querySelector("#tb-cap .ev.dwell"), lit=document.querySelectorAll("#evmarks .ev-mark.dw").length;
-        var r={dropped:ML.stats.dropped,cap:cap?cap.textContent:null,lit:lit}; DWELL.HOLD=1.5; stopPlay(); return r; });
-      pr.push("Watch held in the dwell at "+(dw.E!==null?Math.floor(dw.E/60)+":"+String(dw.E%60).padStart(2,"0"):"-")+" ("+dw.ev.join(", ")+"): solid "+(100*px.solidBlack).toFixed(3)+"%, below AA "+tc.belowAA.length+", drops "+st.dropped+" (limit "+T.DROP_LIMIT["pratzen-low"]+"), caption \""+st.cap+"\", "+st.lit+" marker lit");
-      if(dw.E!==540||px.solidBlack>T.SOLID_BLACK||tc.belowAA.length||st.dropped>T.DROP_LIMIT["pratzen-low"]||!st.cap||st.lit<1) report.failures.push("the Watch view in a dwell: "+pr[1]);
+      LIVE.play={playing:pl.playing,speed:pl.speed,pressed:pl.pressed.join(","),clock:pl.clock,after:pl2};
+      if(!SELFTEST_ONLY){
+        const c=require("./cases.js").find(x=>x.name==="pratzen-low");
+        await first.evaluate(s=>window.__aus.apply(s),Object.assign({},c,{t:538})); await settle(first);
+        const dw=await first.evaluate(()=>{ DWELL.HOLD=1e9; playing=true; dwellReset(); DWELL.expect=clock; var n=0; while(!(DWELL.st&&DWELL.st.stage==="hold")&&n++<400) tickClock(50);
+          return {E:DWELL.st&&DWELL.st.E,clock:clock,ev:(dwellEvents()||[]).map(e=>e.id)}; });
+        await settle(first);
+        const buf=await first.screenshot({timeout:180000}), b64=buf.toString("base64");
+        const px=await first.evaluate(b=>window.__aus.pixels(b),b64), tc=await first.evaluate(b=>window.__aus.textContrast(b),b64);
+        const st2=await first.evaluate(()=>{ mlLayout(); var cap=document.querySelector("#tb-cap .ev.dwell"), lit=document.querySelectorAll("#evmarks .ev-mark.dw").length;
+          var r={dropped:ML.stats.dropped,cap:cap?cap.textContent:null,lit:lit}; DWELL.HOLD=1.5; stopPlay(); return r; });
+        LIVE.dwell={E:dw.E!==undefined?dw.E:null,clock:dw.clock,ev:dw.ev,solid:px.solidBlack,blocks:px.solidBlocks,belowAA:tc.belowAA,minContrast:tc.min,dropped:st2.dropped,cap:st2.cap,lit:st2.lit};
+        pr.push("Watch held in the dwell at "+(dw.E!==null&&dw.E!==undefined?Math.floor(dw.E/60)+":"+String(dw.E%60).padStart(2,"0"):"-")+" ("+dw.ev.join(", ")+"): solid "+(100*px.solidBlack).toFixed(3)+"%, below AA "+tc.belowAA.length+", drops "+st2.dropped+" (limit "+T.DROP_LIMIT["pratzen-low"]+"), caption \""+st2.cap+"\", "+st2.lit+" marker lit"); }
       report.pacing=pr; console.log("pacing: "+pr.join("; ")); }
     /* Stage 3E (docs/STAGE3_SPEC.md section H): by real key presses, Space and Enter on a focused button press it and do not
        toggle play; a key with Ctrl does nothing; "?" opens the overlay, Tab stays in it, Esc closes it and focus returns */
-    if(await first.evaluate(()=>typeof KEYS!=="undefined")){
-      const kr=[], bad=[];
+    AT="keys 3E";
+    if(await has(first,"KEYS","Space, Enter, the arrows, Ctrl+C and the \"?\" overlay by real key presses")){
+      const kr=[], K={};
       await first.evaluate(()=>{ setPresentation("study"); stopPlay(); setSpeed(1); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
       await first.focus('.spd-btn[data-s="2"]'); await first.keyboard.press(" ");
-      let st=await first.evaluate(()=>({speed:speed,playing:playing})); kr.push("Space on 2x: speed "+st.speed+", playing "+st.playing); if(st.speed!==2||st.playing) bad.push("Space on a speed button: "+JSON.stringify(st));
+      let st3=await first.evaluate(()=>({speed:speed,playing:playing})); kr.push("Space on 2x: speed "+st3.speed+", playing "+st3.playing); K.space2=st3;
       await first.focus('.spd-btn[data-s="4"]'); await first.keyboard.press("Enter");
-      st=await first.evaluate(()=>({speed:speed,playing:playing})); kr.push("Enter on 4x: speed "+st.speed+", playing "+st.playing); if(st.speed!==4||st.playing) bad.push("Enter on a speed button: "+JSON.stringify(st));
+      st3=await first.evaluate(()=>({speed:speed,playing:playing})); kr.push("Enter on 4x: speed "+st3.speed+", playing "+st3.playing); K.enter4=st3;
       await first.evaluate(()=>{ setSpeed(1); setClock(600,{instant:true,force:true,camera:false}); });
       await first.focus("#play"); await first.keyboard.press("ArrowRight"); await first.keyboard.press("Shift+ArrowLeft");
-      st=await first.evaluate(()=>({clock:clock,playing:playing})); kr.push("arrows on the focused Play button: clock "+st.clock); if(st.clock!==600) bad.push("the arrows on a focused button stepped the clock to "+st.clock);
+      st3=await first.evaluate(()=>({clock:clock,playing:playing})); kr.push("arrows on the focused Play button: clock "+st3.clock); K.arrows=st3;
       await first.evaluate(()=>{ document.activeElement.blur(); });
       const c0=await first.evaluate(()=>layerOn.contours); await first.keyboard.press("Control+c"); const c1=await first.evaluate(()=>layerOn.contours);
-      kr.push("Ctrl+C: contours "+c0+" -> "+c1); if(c0!==c1) bad.push("Ctrl+C toggled the contours");
+      kr.push("Ctrl+C: contours "+c0+" -> "+c1); K.ctrlC={c0:c0,c1:c1};
       await first.focus("#tourbtn"); await first.keyboard.press("?");
       const h1=await first.evaluate(()=>({open:!document.getElementById("help").hidden,focus:document.activeElement&&document.activeElement.id}));
       await first.keyboard.press("Tab"); const h2=await first.evaluate(()=>document.activeElement&&document.activeElement.id);
       await first.keyboard.press("Tab"); const h3=await first.evaluate(()=>document.activeElement&&document.activeElement.id);
       await first.keyboard.press("Escape"); const h4=await first.evaluate(()=>({open:!document.getElementById("help").hidden,focus:document.activeElement&&document.activeElement.id}));
       kr.push("? on the tour button: open "+h1.open+", focus "+h1.focus+"; Tab "+h2+", Tab "+h3+"; Esc: open "+h4.open+", focus "+h4.focus);
-      if(!h1.open||h1.focus!=="help-close"||h2!=="help-body"||h3!=="help-close"||h4.open||h4.focus!=="tourbtn") bad.push("the overlay's focus: "+kr[kr.length-1]);
+      K.help={h1:h1,h2:h2,h3:h3,h4:h4};
       await first.evaluate(()=>document.activeElement&&document.activeElement.blur());
-      report.keys3E=kr; console.log("keys by real key presses: "+kr.join("; "));
-      bad.forEach(b=>report.failures.push("keys by real key presses: "+b)); }
+      LIVE.keys3E=K; report.keys3E=kr; console.log("keys by real key presses: "+kr.join("; ")); }
     /* Stage 4B (docs/STAGE4_SPEC.md section A.6): the light through the day, without the shadow toe. The Field vantage and the low
        Pratzen view at 4x every hour 08:00-16:00, and three more views at 1x and 10.33x (the low Pratzen view has its own cases):
        solid near-black within the Stage 0 limit in each (a build with the computed sun) */
-    const T=require("./thresholds.js");
-    if(await first.evaluate(()=>typeof SUN_DAY!=="undefined")){
-      const sw=[];
+    AT="light";
+    if(!SELFTEST_ONLY&&await has(first,"SUN_DAY","the day's light")){
+      const sw=[]; LIVE.light=[];
       for(const [name,t,f] of T.LIGHT_SWEEP){
         const c=require("./cases.js").find(x=>x.name===name), spec=Object.assign({},c,t!==null?{t}:{},f!==null?{factor:f}:{});
         await first.evaluate(s=>window.__aus.apply(s),spec); await settle(first);
         const buf=await first.screenshot({timeout:180000}), px=await first.evaluate(b=>window.__aus.pixels(b),buf.toString("base64"));
         const tag=name+(t!==null?" at "+String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0"):"")+(f!==null?" at "+(f==="model"?"10.33":f)+"x":"");
         sw.push(tag+" "+(100*px.solidBlack).toFixed(3)+"%");
-        if(px.solidBlack>T.SOLID_BLACK) report.failures.push("the day's light: "+tag+": solid near-black regions cover "+(100*px.solidBlack).toFixed(3)+"% of the map ("+px.solidBlocks+" blocks; limit 0.05%)"); }
+        LIVE.light.push({name:name,t:t,factor:f,tag:tag,solid:px.solidBlack,blocks:px.solidBlocks}); }
       report.lightSweep=sw; console.log("the day's light (solid near-black): "+sw.join("; ")); }
     /* Stage 4C (docs/STAGE4_SPEC.md section C.6): the valley fog's hours, the Field vantage at 08:00 and the low Pratzen view at 08:30
        at 4x: within the darkness limit, every map text at AA as rendered, drops within the case's limit, the figures under the fog
        still drawn, and the fog at most its cap over the ground (a build with the atmosphere) */
-    if(await first.evaluate(()=>typeof ATMO!=="undefined")){
-      const fw=[];
+    AT="fog";
+    if(!SELFTEST_ONLY&&await has(first,"ATMO","the valley fog's hours")){
+      const fw=[]; LIVE.fog=[];
       for(const [name,t] of T.FOG_VIEWS){
         const c=require("./cases.js").find(x=>x.name===name);
         await first.evaluate(s=>window.__aus.apply(s),Object.assign({},c,{t,factor:4})); await settle(first);
         const buf=await first.screenshot({timeout:180000}), b64=buf.toString("base64");
         const px=await first.evaluate(b=>window.__aus.pixels(b),b64), tc=await first.evaluate(b=>window.__aus.textContrast(b),b64);
-        const st=await first.evaluate(()=>{ mlLayout(); applyAtmo(); var C=ATMO.u.uAtmoC.value, fr=landFreeRect(), worst=0, n=0;
+        const st4=await first.evaluate(()=>{ mlLayout(); applyAtmo(); var C=ATMO.u.uAtmoC.value, fr=landFreeRect(), worst=0, n=0;
           for(var j=0;j<=6;j++) for(var i=0;i<=8;i++){ var g=groundAt(fr[0]+(fr[2]-fr[0])*i/8,fr[1]+(fr[3]-fr[1])*j/6); if(!g) continue; n++;
             worst=Math.max(worst,atmoAt(landCam.position,new THREE.Vector3(g[0],groundY(g[0],g[1]),g[1]))[1]); }
           var under=0; Object.keys(units).forEach(function(id){ var r=units[id]; if(r.block&&r.block.visible){ var m=GEOREF.DATUM_M+r.block.position.y/DISPLAY.factor*GEOREF.M_PER_WORLD; if(m<C.x) under++; } });
           return {dropped:ML.stats.dropped,cap:C.w,worst:worst,samples:n,under:under}; });
         const tag=name+" at "+String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0");
-        fw.push(tag+": solid "+(100*px.solidBlack).toFixed(3)+"%, below AA "+tc.belowAA.length+", drops "+st.dropped+", "+st.under+" formations drawn under the fog, fog at most "+st.worst.toFixed(3)+" (cap "+st.cap.toFixed(2)+")");
-        if(px.solidBlack>T.SOLID_BLACK) report.failures.push("the valley fog: "+tag+": solid near-black "+(100*px.solidBlack).toFixed(3)+"%");
-        if(tc.belowAA.length) report.failures.push("the valley fog: "+tag+": "+tc.belowAA.length+" map texts below AA: "+tc.belowAA.slice(0,3).join("; "));
-        if(st.dropped>T.DROP_LIMIT[name]) report.failures.push("the valley fog: "+tag+": "+st.dropped+" items dropped, over "+T.DROP_LIMIT[name]);
-        if(!(st.under>0)) report.failures.push("the valley fog: "+tag+": no formation drawn under the fog");
-        if(!(st.worst<=st.cap+1e-9)||!(st.cap>0)) report.failures.push("the valley fog: "+tag+": the fog "+st.worst.toFixed(3)+" against its cap "+st.cap); }
+        fw.push(tag+": solid "+(100*px.solidBlack).toFixed(3)+"%, below AA "+tc.belowAA.length+", drops "+st4.dropped+", "+st4.under+" formations drawn under the fog, fog at most "+st4.worst.toFixed(3)+" (cap "+st4.cap.toFixed(2)+")");
+        LIVE.fog.push({name:name,t:t,tag:tag,solid:px.solidBlack,belowAA:tc.belowAA,minContrast:tc.min,dropped:st4.dropped,under:st4.under,worst:st4.worst,cap:st4.cap,samples:st4.samples}); }
       report.fogViews=fw; console.log("the valley fog: "+fw.join("; ")); }
     /* Stage 4E (docs/STAGE4_SPEC.md section F.2): in the low views the gap, if any, between the apron's far edge and the true
        horizon is drawn in the haze's colour (a pixel test along the horizon, in 32 columns of the free rectangle) */
-    if(await first.evaluate(()=>typeof SMOKE!=="undefined")){
-      const hv=[];
+    AT="horizon";
+    if(!SELFTEST_ONLY&&await has(first,"SMOKE","the horizon in the low views")){
+      const hv=[]; LIVE.horizon=[];
       for(const [name,fk] of T.HORIZON_VIEWS){
         const c=require("./cases.js").find(x=>x.name===name);
         await first.evaluate(s=>window.__aus.apply(s),Object.assign({},c,{factor:fk})); await settle(first);
@@ -372,10 +426,11 @@ async function interact(page,it,vp){
           res({columns:cols.length,gaps:gaps,worst:+worst.toFixed(1)}); }; im.src="data:image/png;base64,"+b; }),[b64,cols]);
         const tag=name+" at "+(fk==="model"?"10.33":fk)+"x";
         hv.push(tag+": "+r.columns+" columns, "+r.gaps+" with a gap under the horizon, the gap within "+r.worst+" of the sky above it");
-        if(r.gaps&&!(r.worst<=T.HORIZON_DE)) report.failures.push("the horizon: "+tag+": the gap under the horizon differs from the sky by "+r.worst+" (limit "+T.HORIZON_DE+")"); }
+        LIVE.horizon.push({name:name,factor:fk,tag:tag,columns:r.columns,gaps:r.gaps,worst:r.worst}); }
       report.horizon=hv; console.log("the horizon: "+hv.join("; ")); }
-    for(const [name,m] of Object.entries(report.cases)) T.check(name,m).forEach(f=>{ console.log("FAIL "+name+": "+f); report.failures.push(name+": "+f); });
+    report.live=LIVE;
   }
+  AT="compare";
   if(CMP){
     report.compare={};
     for(const c of CASES){
@@ -385,7 +440,8 @@ async function interact(page,it,vp){
         const load=s=>new Promise(r=>{ const i=new Image(); i.onload=()=>r(i); i.src="data:image/png;base64,"+s; });
         const [ia,ib]=await Promise.all([load(A),load(B)]);
         if(ia.width!==ib.width||ia.height!==ib.height) return {sizeMismatch:true};
-        const cv=document.createElement("canvas"); cv.width=ia.width; cv.height=ia.height; const x=cv.getContext("2d");
+        /* read twice: {willReadFrequently:true}, or the run would warn on its own canvas (T-1) */
+        const cv=document.createElement("canvas"); cv.width=ia.width; cv.height=ia.height; const x=cv.getContext("2d",{willReadFrequently:true});
         x.drawImage(ia,0,0); const da=x.getImageData(0,0,cv.width,cv.height).data;
         x.drawImage(ib,0,0); const db=x.getImageData(0,0,cv.width,cv.height).data;
         let sum=0,big=0; for(let i=0;i<da.length;i+=4){ const d=(Math.abs(da[i]-db[i])+Math.abs(da[i+1]-db[i+1])+Math.abs(da[i+2]-db[i+2]))/3; sum+=d; if(d>16) big++; }
@@ -394,9 +450,22 @@ async function interact(page,it,vp){
       console.log("compare",c.name.padEnd(20),JSON.stringify(report.compare[c.name]));
     }
   }
-  if(first&&first._logs&&first._logs.length) report.consoleWarnings=first._logs.slice(0,20);
-  fs.writeFileSync(path.join(out,"report.json"),JSON.stringify(report,null,1));
-  if(report.consoleWarnings) console.log("console warnings/errors:",report.consoleWarnings.length,report.consoleWarnings.slice(0,6));
   await browser.close();
-  if(TEST){ console.log(report.failures.length?("STAGE0 FAILURES: "+report.failures.length):"STAGE0: all checks passed"); process.exit(report.failures.length?1:0); }
+  /* T-1, T-5: the run's messages, skips, pages and features; then (--test) every failure decided by thresholds.js judgeReport, as
+     check-report.js decides it again */
+  report.console=LOG; report.skipped=SKIPPED; report.pages=PAGES; report.features=BUILD_FEATURES;
+  if(LOG.length) console.log("console messages: "+LOG.length+"; "+LOG.slice(0,6).map(T.consoleLine).join(" || "));
+  if(SKIPPED.length) console.log("skipped (the build lacks what they need): "+SKIPPED.map(x=>x.at+": "+x.what).join("; "));
+  if(TEST){
+    let MAN=null; try{ MAN=JSON.parse(fs.readFileSync(MANIFEST_PATH,"utf8")); }catch(e){}
+    report.failures=T.judgeReport(report,{cases:CASES, allCases:ALL_CASES, manifest:MAN, legacy:LEGACY});
+    report.failures.forEach(f=>console.log("FAIL "+f));
+    const cu=T.judgeConsole(T.consoleEntries(report)).used;
+    if(Object.keys(cu).length) console.log("console messages allowed by name (thresholds.js CONSOLE_ALLOW): "+Object.entries(cu).map(([k,n])=>k+" "+n).join(", "));
+  }
+  fs.writeFileSync(path.join(out,"report.json"),JSON.stringify(report,null,1));
+  if(TEST){
+    if(LEGACY) console.log("LEGACY RUN: "+SKIPPED.length+" checks skipped; "+report.failures.length+" failures (an archived build: its gated checks only)");
+    else console.log(report.failures.length?("STAGE0 FAILURES: "+report.failures.length):"STAGE0: all checks passed"+(SELFTEST_ONLY?" (the self-test only: npm run check:selftest)":""));
+    process.exit(report.failures.length?1:0); }
 })().catch(e=>{ console.error(e); process.exit(2); });

@@ -460,20 +460,10 @@ function paperShade(){
 var groundPalette="natural", vsMask=null, vsOrigin=null;
 
 /* ---------------- build ---------------- */
-function buildWorld(scene){
-  buildCover();
-  buildGrid();
-  buildCoverMl();
-
-  var sc=document.createElement("canvas"); sc.width=4; sc.height=256;
-  var sctx=sc.getContext("2d");
-  var g=sctx.createLinearGradient(0,0,0,256);
-  LAND_COL.skyInit.forEach(function(q){ g.addColorStop(q[0],hexCss(q[1])); });   /* the dome's first texture; the light table repaints it (paintSky) */
-  sctx.fillStyle=g; sctx.fillRect(0,0,4,256);
-  domeMesh=new THREE.Mesh(new THREE.SphereGeometry(1400,32,20),   /* beyond the apron and the fog */
-    new THREE.MeshBasicMaterial({map:ctex(sc),side:THREE.BackSide,fog:false,depthWrite:false}));
-  scene.add(domeMesh);
-
+/* the ground's geometry: built on the model surface, then drawn at the display factor. buildWorld's, and terrain-test.js's, which reads
+   the drawn ground through groundY over it (roadmap step 1, docs/FINAL_AUDIT.md T-2: until step 1 these lines stood inside buildWorld,
+   unchanged, and the suite checked the meres against a ground of its own). Needs buildCover and buildGrid first; sets FACE */
+function groundGeometry(){
   var geo=new THREE.PlaneGeometry(GROUND_W,GROUND_D,GROUND_NX,GROUND_NZ);   /* groundY() reads this layout */
   geo.rotateX(-Math.PI/2);
   /* the ground is first built on the MODEL surface (the drawing before 2B): land cover, the elevation tint
@@ -496,6 +486,23 @@ function buildWorld(scene){
   FACE.gslope=Float32Array.from(FACE.slope); FACE.gshade=Float32Array.from(FACE.shade);   /* model slope: the going classes */
   groundVertexFacts(geo);
   scaleGround(geo);
+  return geo;
+}
+function buildWorld(scene){
+  buildCover();
+  buildGrid();
+  buildCoverMl();
+
+  var sc=document.createElement("canvas"); sc.width=4; sc.height=256;
+  var sctx=sc.getContext("2d");
+  var g=sctx.createLinearGradient(0,0,0,256);
+  LAND_COL.skyInit.forEach(function(q){ g.addColorStop(q[0],hexCss(q[1])); });   /* the dome's first texture; the light table repaints it (paintSky) */
+  sctx.fillStyle=g; sctx.fillRect(0,0,4,256);
+  domeMesh=new THREE.Mesh(new THREE.SphereGeometry(1400,32,20),   /* beyond the apron and the fog */
+    new THREE.MeshBasicMaterial({map:ctex(sc),side:THREE.BackSide,fog:false,depthWrite:false}));
+  scene.add(domeMesh);
+
+  var geo=groundGeometry();
   (function(){
     var cov=new Float32Array(FACE.n*3);
     for(var f=0;f<FACE.n;f++){
@@ -655,8 +662,12 @@ var COVER_COL={
 var LAND_COL={
   skyInit:[[0,0x18242E],[0.55,0x47575F],[0.83,0x959E9C],[1,0xC6B9A0]],
   road:{highway:0x9C9078, post:0x857A63, track:0x736A58, edge:0x554C3E},
-  wallTex:{plaster:0xD9D2C2, plinth:0x8E8474, window:0x2E2A26, frame:0xB9B2A2, door:0x5A4C3E, doorway:0x3A3028},
+  wallTex:{plaster:0xD9D2C2, plinth:0x8E8474, window:0x2E2A26, frame:0xB9B2A2, door:0x5A4C3E, doorway:0x3A3028,
+    /* the canvas's translucent strokes (roadmap step 1, docs/FINAL_AUDIT.md T-6: until step 1 literals in wallTexture, text unchanged):
+       the plaster's mottle (its rgb; the alpha varies per mark), the band above the plinth, the eave's shadow (top, bottom) */
+    mottle:"120,110,95", band:"rgba(70,62,52,.35)", eave:["rgba(0,0,0,.42)","rgba(0,0,0,0)"]},
   roofTex:0xC8C0B0, chimney:0x4A3E36, spire:0x4E4136,
+  roofCourse:"60,40,30",   /* the roof texture's tile courses, their rgb (the alpha alternates per course; until step 1 a literal in roofTexture) */
   walls:[0xC9BFAA,0xBDB39F,0xD1C7B2,0xB2A894],
   roofs:[0x8A4A38,0x7C4536,0x6E4C3E,0x93553F,0x5F4E42],
   bare:[0x45423C,0x4A4741,0x403E39,0x4E4A43,0x474540],
@@ -1232,14 +1243,14 @@ function wallTexture(){
   var x=c.getContext("2d");
   var WC=LAND_COL.wallTex;
   x.fillStyle=hexCss(WC.plaster); x.fillRect(0,0,256,128);
-  for(var i=0;i<900;i++){ x.fillStyle="rgba(120,110,95,"+(0.03+hash2(i,7)*0.05)+")";
+  for(var i=0;i<900;i++){ x.fillStyle="rgba("+WC.mottle+","+(0.03+hash2(i,7)*0.05)+")";
     x.fillRect(hash2(i,1)*256,hash2(i,2)*128,2+hash2(i,3)*6,2+hash2(i,4)*4); }
   x.fillStyle=hexCss(WC.plinth); x.fillRect(0,104,256,24);
-  x.fillStyle="rgba(70,62,52,.35)"; x.fillRect(0,100,256,6);
+  x.fillStyle=WC.band; x.fillRect(0,100,256,6);
   x.fillStyle=hexCss(WC.window); x.fillRect(52,40,26,30); x.fillRect(178,40,26,30);
   x.fillStyle=hexCss(WC.frame); x.fillRect(64,40,2,30); x.fillRect(52,54,26,2); x.fillRect(190,40,2,30); x.fillRect(178,54,26,2);
   x.fillStyle=hexCss(WC.door); x.fillRect(114,58,26,46); x.fillStyle=hexCss(WC.doorway); x.fillRect(116,60,22,42);
-  var g=x.createLinearGradient(0,0,0,18); g.addColorStop(0,"rgba(0,0,0,.42)"); g.addColorStop(1,"rgba(0,0,0,0)");
+  var g=x.createLinearGradient(0,0,0,18); g.addColorStop(0,WC.eave[0]); g.addColorStop(1,WC.eave[1]);
   x.fillStyle=g; x.fillRect(0,0,256,18);
   _wallTex=ctexS(c); return _wallTex;
 }
@@ -1249,7 +1260,7 @@ function roofTexture(){
   var x=c.getContext("2d");
   x.fillStyle=hexCss(LAND_COL.roofTex); x.fillRect(0,0,128,128);
   for(var r=0;r<16;r++){
-    x.fillStyle="rgba(60,40,30,"+(0.18+(r%2)*0.06)+")"; x.fillRect(0,r*8,128,2);
+    x.fillStyle="rgba("+LAND_COL.roofCourse+","+(0.18+(r%2)*0.06)+")"; x.fillRect(0,r*8,128,2);
     for(var k=0;k<16;k++){ x.fillStyle="rgba(255,255,255,"+(hash2(r,k)*0.08)+")"; x.fillRect(k*8+(r%2)*4,r*8+2,7,5); }
   }
   _roofTex=ctexS(c); return _roofTex;

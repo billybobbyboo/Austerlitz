@@ -1,5 +1,6 @@
 global.GEOREF=require('./geo.js');   /* the single geographic reference */
 const fs=require('fs');
+require('./tools/fresh.js').regen('helpers');   /* roadmap step 1 (docs/FINAL_AUDIT.md T-9): the generated modules read below are regenerated from the live sources first, also when this suite runs on its own */
 function load(f){ eval(fs.readFileSync(f,'utf8')); return eval; }
 eval(fs.readFileSync('data.js','utf8'));
 eval(fs.readFileSync('appearance.js','utf8'));   /* Stage 6B: the historical appearance, loaded after data.js as in the build's order */
@@ -43,6 +44,14 @@ ids.forEach(id=>{
     if(e.cf && !"ABC".includes(e.cf)) errs.push(id+" ph"+k+": bad confidence");
   });
   if(!NATION[f.nation]) errs.push(id+": bad nation");
+});
+/* D-2 (docs/FINAL_AUDIT.md; question 131): every tracked formation's first positioned anchor declares its grade. A grade carries
+   forward to the later anchors, and where none has been declared stateAt (app.js) draws the formation at its default "B" without a
+   word. Checked on every tracked formation, the 30 whose first anchor is at phase 0 included (redteam.js's old rule skipped phase 0). */
+ids.forEach(id=>{ const tr=FORMATIONS[id].track; if(!tr) return;
+  const keys=Object.keys(tr).map(Number).sort((a,b)=>a-b), k0=keys.find(k=>"p" in tr[k]&&tr[k].p);
+  if(k0===undefined){ errs.push(id+": no positioned anchor, so no grade (D-2)"); return; }
+  if(!tr[k0].cf) errs.push(id+" ph"+k0+": the first positioned anchor declares no grade (D-2: stateAt would draw it at its default B)");
 });
 
 // every formation resolves a position somewhere
@@ -134,6 +143,52 @@ TOUR.forEach((st,i)=>{
     });
   });
 });
+/* T-6 (docs/FINAL_AUDIT.md): the events validated. Each has a unique kebab-case id; a clock (a minute, or a window [t0,t1] with t0<t1)
+   inside the day; a point on the map; a side; a kind the dossier names (its KIND table, read from app.js: if it cannot be read the check
+   fails, it does not skip); a timing grade; a claim class; a title and a reason; known formations, each named once and each with a tracked
+   formation to stand for it; a tolerance only with its written reason and never above sim-test.js's 2 km cap; no other field. An event may
+   name no formation only where EV_NO_FORMS says why. */
+{ const EV_FIELDS=["id","t","n","side","kind","p","forms","cf","claim","why","tolKm","tolWhy"], EV_TOL_CAP=2.0;
+  const EV_NO_FORMS={ end:"'Organised resistance ends' is army-wide: its own text (analysis.js) speaks of Bagration, the Guard and the Allied "+
+    "left together, not of one formation; sim-test.js reports it as naming no plotted formation (not tested)." };
+  const km=/var KIND=\{decision:[^}]*\}/.exec(fs.readFileSync('app.js','utf8'));
+  let KIND=null; if(km){ try{ KIND=eval("("+km[0].replace(/^var KIND=/,"")+")"); }catch(x){ KIND=null; } }
+  if(!KIND||typeof KIND!=="object") errs.push("events: the dossier's KIND table (app.js, dossierEvent) cannot be read, so no event's kind can be checked");
+  const T0=PHASES[0].t0, T1=PHASES[PHASES.length-1].t1, num=x=>typeof x==="number"&&isFinite(x), str=x=>typeof x==="string"&&x.trim()!=="";
+  const evIds=new Set(); let evN=0;
+  EVENTS.forEach((e,i)=>{ evN++; const w="event "+(e&&e.id?e.id:"#"+i)+": ", bad=m=>errs.push(w+m);
+    if(!e||typeof e!=="object") return bad("not an object");
+    Object.keys(e).forEach(k=>{ if(!EV_FIELDS.includes(k)) bad("unknown field "+k); });
+    if(!str(e.id)||!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(e.id)) bad("id is not a kebab-case name");
+    else if(evIds.has(e.id)) bad("id used twice"); else evIds.add(e.id);
+    const tw=Array.isArray(e.t)?e.t:[e.t,e.t];
+    if(Array.isArray(e.t)&&!(e.t.length===2&&num(e.t[0])&&num(e.t[1])&&e.t[0]<e.t[1])) bad("window "+JSON.stringify(e.t)+" is not [t0,t1] with t0<t1");
+    else if(!num(tw[0])||!num(tw[1])) bad("no clock");
+    else if(tw[0]<T0||tw[1]>T1) bad("clock "+JSON.stringify(e.t)+" outside the day ("+T0+"-"+T1+")");
+    if(!Array.isArray(e.p)||e.p.length!==2||!num(e.p[0])||!num(e.p[1])) bad("no point");
+    else if(e.p[0]<0||e.p[0]>680||e.p[1]<0||e.p[1]>500) bad("point off map "+e.p);
+    if(!["fr","al"].includes(e.side)) bad("bad side "+e.side);
+    if(KIND&&!Object.prototype.hasOwnProperty.call(KIND,e.kind)) bad("kind "+e.kind+" is not one the dossier names ("+Object.keys(KIND).join(", ")+")");
+    if(typeof e.cf!=="string"||e.cf.length!==1||!"ABC".includes(e.cf)) bad("timing grade "+e.cf+" is not A, B or C");
+    if(!Object.prototype.hasOwnProperty.call(CLAIM,e.claim)) bad("unknown claim class "+e.claim);
+    if(!str(e.n)) bad("no title"); if(!str(e.why)) bad("no reason (why)");
+    if(!Array.isArray(e.forms)) bad("forms is not a list");
+    else {
+      if(!e.forms.length&&!EV_NO_FORMS[e.id]) bad("names no formation, and EV_NO_FORMS does not say why");
+      e.forms.forEach((f,j)=>{
+        if(e.forms.indexOf(f)!==j) bad("names "+f+" twice");
+        if(!FORMATIONS[f]) bad("names "+f+", which is not a formation");
+        else if(!leavesOf(f,[]).length) bad("names "+f+", which has no tracked formation to stand for it");
+      });
+    }
+    if(e.tolKm!==undefined){ if(!num(e.tolKm)||!(e.tolKm>0)) bad("tolKm "+e.tolKm+" is not a positive number");
+      else if(e.tolKm>EV_TOL_CAP) bad("tolKm "+e.tolKm+" exceeds the "+EV_TOL_CAP+" km cap");
+      if(!str(e.tolWhy)) bad("tolKm without a written reason (tolWhy)"); }
+    else if(e.tolWhy!==undefined) bad("tolWhy without a tolKm");
+  });
+  Object.keys(EV_NO_FORMS).forEach(id=>{ const e=EVENTS.find(x=>x&&x.id===id);
+    if(!e||!Array.isArray(e.forms)||e.forms.length) errs.push("events: EV_NO_FORMS names "+id+", which is no longer an event naming no formation (remove the entry)"); });
+  console.log("events validated: "+evN+" ("+Object.keys(EV_NO_FORMS).length+" naming no formation, acknowledged: "+Object.keys(EV_NO_FORMS).join(", ")+")"); }
 console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   "| command entries:",Object.keys(COMMAND.fr).length+Object.keys(COMMAND.al).length);
 /* ---- Stage 6B: the historical appearance (appearance.js; docs/STAGE6_SPEC.md §6.1, decisions 99-101, 103, 105, 106, 109) ----
@@ -221,7 +276,8 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   const notes=[]; (function walk(o){ if(!o||typeof o!=="object") return; for(const [k,v] of Object.entries(o)){
     if(typeof v==="string"&&["note","why","basis"].includes(k)) notes.push(v); else if(typeof v==="object") walk(v); } })([DRESS,COMPOSITION,COLOURS_CARRIED,STANDARD_MEASURES]);
   notes.forEach(t=>(t.match(/\b[a-z][a-z0-9_]*\d{4}[a-z]{0,3}\b/g)||[]).forEach(k=>{ if(srcOk(k)) used.add(k); else bad("a note names an unknown source '"+k+"'"); }));
-  Object.keys(APPEARANCE_SOURCES).forEach(k=>{ if(!used.has(k)&&!notes.some(t=>t.indexOf(k)>=0)) warn.push("appearance: source "+k+" is cited nowhere"); else used.add(k); });
+  /* T-3: an error, not a warning (CLAUDE.md, 6B: "every source cited and registered") */
+  Object.keys(APPEARANCE_SOURCES).forEach(k=>{ if(!used.has(k)&&!notes.some(t=>t.indexOf(k)>=0)) bad("source "+k+" is cited nowhere (every source cited and registered, 6B)"); else used.add(k); });
   /* decision 105: an open question of SOURCE_NOTE stays open until the table settles it at grade A or B, undisputed */
   const note=SOURCE_NOTE.body.join(" "), settled=c=>c&&!c.gen&&!c.none&&"AB".includes(c.gr)&&c.lab==="fact";
   const grenz=Object.values(DRESS).filter(d=>d.grenz).map(d=>d.coat), ruInf=COLOURS_CARRIED.ru_inf;
@@ -231,8 +287,17 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   console.log("appearance checks: "+(ap-apBad)+"/"+ap+" pass ("+Object.keys(DRESS).length+" dress classes, "+Object.keys(APPEARANCE_SOURCES).length+" sources, "+
     leaves.length+" leaf formations, "+Object.keys(COLOURS_CARRIED).length+" colours entries)"); }
 
+/* T-3 (docs/FINAL_AUDIT.md): a warning fails unless it is acknowledged here by its exact text, with the reason it stands and where that is
+   recorded ({w, why, see}); an acknowledged warning that is no longer raised fails too, until its entry is removed. None today. */
+const KNOWN_WARN=[];
+{ const uw=[...new Set(warn)];
+  uw.filter(w=>!KNOWN_WARN.some(k=>k.w===w)).forEach(w=>errs.push("warning not acknowledged in KNOWN_WARN: "+w));
+  KNOWN_WARN.filter(k=>!uw.includes(k.w)).forEach(k=>errs.push("acknowledged warning no longer raised (remove it from KNOWN_WARN): "+k.w));
+  KNOWN_WARN.forEach(k=>{ if(!k.why||!k.see) errs.push("KNOWN_WARN entry without its reason or its record: "+k.w); }); }
+
 console.log("\nERRORS:",errs.length); errs.forEach(e=>console.log("  ! "+e));
-console.log("warnings:",warn.length); warn.forEach(e=>console.log("  ~ "+e));
+console.log("warnings:",warn.length,"("+KNOWN_WARN.length+" acknowledged)");
+warn.forEach(e=>{ const k=KNOWN_WARN.find(x=>x.w===e); console.log("  ~ "+e+(k?"  [acknowledged: "+k.why+"]":"")); });
 
 /* --- order of battle: figures that were corrected against the published returns.
    Pinned so a failed patch can never silently revert them again. --- */

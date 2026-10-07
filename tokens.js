@@ -9,6 +9,11 @@
    sym.paperMap (Stage 2E) is the paper map's own symbology: woods (a tint, the tree marks and the outline) and the flat
    village footprints. Symbols on the map, not text. Since Stage 4E also its ground (the cover classes' colours, in
    coverClass's order through COVER_KEYS), its contours and its marsh lines (owner decision 79; values unchanged).
+   type.sans and type.serif (decision 141, roadmap step 1): the type is embedded. Each stack names first a face that fonts.css
+   carries in the file ("Austerlitz Sans", from Inter, and "Austerlitz Serif", from TeX Gyre Pagella; tools/fonts/build-fonts.py),
+   so the page is drawn in the same faces on every machine; the system faces behind it are a per-glyph fallback, drawn only for a
+   code point outside a face's unicode-range or if a face failed to load. build.py and css-test.js fail if a stack does not name
+   an embedded face first.
    ============================================================ */
 var TOKENS = /*TOKENS:BEGIN*/{
   "theme": {
@@ -42,8 +47,8 @@ var TOKENS = /*TOKENS:BEGIN*/{
   "type": {
     "t-micro": "10.5px", "t-small": "11.5px", "t-ui": "12.5px", "t-prose": "14px",
     "t-h3": "17px", "t-h2": "21px", "t-display": "25px",
-    "serif": "\"Iowan Old Style\",\"Palatino Linotype\",Palatino,\"Book Antiqua\",Georgia,serif",
-    "sans": "ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,sans-serif"
+    "serif": "\"Austerlitz Serif\",\"Iowan Old Style\",\"Palatino Linotype\",Palatino,\"Book Antiqua\",Georgia,serif",
+    "sans": "\"Austerlitz Sans\",ui-sans-serif,system-ui,-apple-system,\"Segoe UI\",Roboto,Helvetica,sans-serif"
   },
   "sym": {
     "side": {

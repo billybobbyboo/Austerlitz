@@ -1,0 +1,41 @@
+{
+  "about": "The pinned sources of the embedded type (decision 141; docs/FINAL_AUDIT.md T-0). tools/fonts/build-fonts.py downloads each file once into its cache, refuses any whose sha256 differs, and builds fonts.css from them. Each entry was fetched and hashed when this file was written (7 October 2026). The three TeX Gyre Pagella URLs are CTAN's mirror redirector, a moving address that serves the package's current file: the sha256 is the pin, and if CTAN replaces a file the build refuses it, and the pinned bytes must be found elsewhere (no immutable copy is recorded here).",
+  "requirements": { "fonttools": "4.66.1", "brotli": "1.2.0" },
+  "files": {
+    "inter": {
+      "url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/inter/Inter%5Bopsz%2Cwght%5D.ttf",
+      "sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+      "what": "Inter 4.001 (\"Version 4.001;git-66647c0bb\"), the variable font (axes opsz 14-32, wght 100-900), from google/fonts at commit 7085eb89; SIL Open Font License 1.1, no Reserved Font Name"
+    },
+    "inter-licence": {
+      "url": "https://raw.githubusercontent.com/google/fonts/7085eb89a950e85db5b166b7a58d414544b4140c/ofl/inter/OFL.txt",
+      "sha256": "5b9321a4298cfeb6b34354164a1c3afc3db114569984c502b9b35d988fd58c57",
+      "what": "Inter's copyright notice and the SIL Open Font License 1.1, at the same commit"
+    },
+    "pagella": {
+      "url": "https://mirrors.ctan.org/fonts/tex-gyre/opentype/texgyrepagella-regular.otf",
+      "sha256": "44e64260716d8f2bbe412baa1ee99b7c995190ac4573177c24def0b9200438c7",
+      "what": "TeX Gyre Pagella 2.501 (8 May 2018), regular, OpenType (CFF), from CTAN; GUST Font License (an instance of the LaTeX Project Public License 1.3c)"
+    },
+    "pagella-licence": {
+      "url": "https://mirrors.ctan.org/fonts/tex-gyre/doc/GUST-FONT-LICENSE.txt",
+      "sha256": "2bd69affc3da00715116f713f57eab9707e96daf3562ad0215987b15b9c16f73",
+      "what": "the GUST Font License as distributed with TeX Gyre (CTAN fonts/tex-gyre/doc)"
+    },
+    "pagella-readme": {
+      "url": "https://mirrors.ctan.org/fonts/tex-gyre/doc/README-TeX-Gyre-Pagella.txt",
+      "sha256": "6fc4c72a8754f7e04ffbbec99167a568c0a3d21e231318ed624b58ddfeb1f896",
+      "what": "TeX Gyre Pagella's README: its copyright notice and licence statement, and that it is based on URW Palladio L released by URW++ under the GFL"
+    },
+    "dejavu": {
+      "url": "https://cdn.jsdelivr.net/npm/dejavu-fonts-ttf@2.37.3/ttf/DejaVuSans.ttf",
+      "sha256": "7da195a74c55bef988d0d48f9508bd5d849425c1770dba5d7bfc6ce9ed848954",
+      "what": "DejaVu Sans 2.37 (npm dejavu-fonts-ttf 2.37.3), of which one glyph is used: U+2502, the timeline's event buttons"
+    },
+    "dejavu-licence": {
+      "url": "https://cdn.jsdelivr.net/npm/dejavu-fonts-ttf@2.37.3/LICENSE",
+      "sha256": "7a083b136e64d064794c3419751e5c7dd10d2f64c108fe5ba161eae5e5958a93",
+      "what": "DejaVu's licence: the Bitstream Vera Fonts licence, the Arev Fonts licence; the DejaVu changes in the public domain"
+    }
+  }
+}

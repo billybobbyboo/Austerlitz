@@ -5,10 +5,12 @@
   "scripts": {
     "build": "python3 build.py",
     "test": "sh tools/run-all.sh",
-    "check:baseline": "python3 build.py && node -e \"const b=require('fs').readFileSync('austerlitz-command-map.html'),h=require('crypto').createHash('md5').update(b).digest('hex');console.log(h,b.length);process.exit(h==='46773462faa1e1b9f4a4010e450e110a'&&b.length===1764002?0:1)\"",
+    "check:baseline": "python3 build.py && node -e \"const b=require('fs').readFileSync('austerlitz-command-map.html'),h=require('crypto').createHash('md5').update(b).digest('hex');console.log(h,b.length);process.exit(h==='7a86548c5e394853571f28f9e1640a74'&&b.length===1883794?0:1)\"",
     "check:data": "node tools/visual/data-invariance.js archive/stage6b-7fc0f6c3.html austerlitz-command-map.html",
     "check:visual": "node tools/visual/harness.js austerlitz-command-map.html tools/visual/out --test",
     "check:report": "node tools/visual/check-report.js tools/visual/out",
+    "check:selftest": "node tools/visual/harness.js austerlitz-command-map.html tools/visual/out-selftest --test --selftest-only",
+    "check:remeasure": "node tools/visual/remeasure.js",
     "check:contrast": "node tools/visual/contrast.js austerlitz-command-map.html",
     "check:chronology": "node tools/stage2/chronology.js --check"
   },

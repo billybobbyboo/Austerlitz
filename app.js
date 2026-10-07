@@ -233,7 +233,11 @@ function drawnAltitude(alt){ return Math.atan(DISPLAY.factor*Math.tan(alt*Math.P
    sky and ground, the fill light, the sun, background, fog and sky before the first applyLight, and the environment map's ground
    (values unchanged from the literals they replace) */
 var LIGHT_RIG={hemiSky:0xA9BBCC, hemiGround:0x3E3A30, fill:0x9AA8B8, sun0:0xA5B2BE, bg0:0x121A22, fog0:0x3E4A58,
-  sky0:[0x0F1A26,0x2B3A48,0x6E7A82], envGround:0x2A2A24};
+  sky0:[0x0F1A26,0x2B3A48,0x6E7A82], envGround:0x2A2A24,
+  /* roadmap step 1 (docs/FINAL_AUDIT.md T-6): two more of the light's fixed colours, until step 1 literals where they are used (values
+     unchanged): the haze's colour before the first applyAtmo (ATMO's uAtmoV, linear r, g, b) and the sun disc's radial gradient (its stops) */
+  atmo0:[0.7,0.72,0.74],
+  sunDisc:[[0,"rgba(255,244,214,1)"],[0.18,"rgba(255,222,160,.95)"],[0.42,"rgba(255,190,110,.35)"],[1,"rgba(255,170,90,0)"]]};
 var LIGHT_FILL={predawn:0.16,dawn:0.22,dusk:0.16,staff:0.16}, LIGHT_FILL_DAY=0.52, LIGHT_SKY_LIFT={predawn:0,dawn:0.04,dusk:0,staff:0};
 /* Stage 4C: the haze's strength for each preset's hour, as the visibility (km) at the valley floor that would give it. A depth cue
    counted beyond the orbit target (decision 81), not the day's air: physical visibilities (10-25 km) hazed the ground behind the
@@ -367,7 +371,7 @@ function placeLights(){
 var ATMO={HS:400, M0:200, EDGE:6, FOG_EASE:20, FOG_SINK:20, FOG_VIS_KM:0.2, CAP:0.55,
   FOG_TOP_H:-0.8,   /* the knowledge model's threshold (knowledgeOf: hAt(p) < -0.8), model units */
   u:{uAtmoA:{value:new THREE.Vector4(4,243.1,63.2,0)}, uAtmoB:{value:new THREE.Vector4(0,400,200,0)},
-     uAtmoC:{value:new THREE.Vector4(238.2,15,0,0)}, uAtmoV:{value:new THREE.Color(0.7,0.72,0.74)}}};
+     uAtmoC:{value:new THREE.Vector4(238.2,15,0,0)}, uAtmoV:{value:new THREE.Color(LIGHT_RIG.atmo0[0],LIGHT_RIG.atmo0[1],LIGHT_RIG.atmo0[2])}}};
 ATMO.FOG_TOP=GEOREF.elevM(ATMO.FOG_TOP_H);
 /* sigma, the extinction per world unit for a meteorological visibility in km (Koschmieder: 3.912 / V) */
 function atmoSigma(km){ return 3.912/km*GEOREF.M_PER_WORLD/1000; }
@@ -489,8 +493,7 @@ function buildSunDisc(){
   var c=document.createElement("canvas"); c.width=c.height=128;
   var x=c.getContext("2d");
   var gr=x.createRadialGradient(64,64,4,64,64,64);
-  gr.addColorStop(0,"rgba(255,244,214,1)"); gr.addColorStop(0.18,"rgba(255,222,160,.95)");
-  gr.addColorStop(0.42,"rgba(255,190,110,.35)"); gr.addColorStop(1,"rgba(255,170,90,0)");
+  LIGHT_RIG.sunDisc.forEach(function(q){ gr.addColorStop(q[0],q[1]); });
   x.fillStyle=gr; x.fillRect(0,0,128,128);
   sunDisc=new THREE.Sprite(new THREE.SpriteMaterial({map:ctexS(c),transparent:true,opacity:0,
     depthWrite:false,fog:false}));
@@ -498,6 +501,49 @@ function buildSunDisc(){
   scene.add(sunDisc);
 }
 var sunDir=new THREE.Vector3(-60,80,-160), fillLight=null;
+
+/* ---- the embedded type (decision 141; roadmap step 1, docs/FINAL_AUDIT.md T-0) ----
+   fonts.css (tools/fonts/build-fonts.py; build.py puts it in the stylesheet) declares three faces as WOFF2 data URLs: "Austerlitz Sans"
+   (from Inter, with DejaVu Sans' U+2502 as a second face) and "Austerlitz Serif" (from TeX Gyre Pagella), which the type tokens name
+   first. init lifts the boot screen only once every one of them has loaded, or after FONTS.TIMEOUT, when a face that failed falls back
+   to the system stacks behind it rather than hold the page: no visitor sees the interface in a fallback face, and the harness measures
+   what ships. FontFace.load() is used, not document.fonts.check(), which is true for a family that does not exist. A face that was not
+   yet loaded when init asked (late) lays the interface out again (relayoutAfterFonts). There is no canvas text to wait for. */
+var FONTS={FAMILIES:["Austerlitz Sans","Austerlitz Serif"],TIMEOUT:3000,state:null,ready:null};
+function fontFamilyOf(f){ return String(f.family).replace(/["']/g,""); }
+function fontFaces(){ var o=[];
+  if(typeof document!=="undefined"&&document.fonts&&document.fonts.forEach)
+    document.fonts.forEach(function(f){ if(FONTS.FAMILIES.indexOf(fontFamilyOf(f))>=0) o.push(f); });
+  return o; }
+/* resolves, never rejects: {loaded, failed (each "family weight range status"), ms, late, timedOut, none (no face declared)} */
+function fontsReady(ms){
+  var t0=performance.now(), F=fontFaces();
+  if(!F.length) return Promise.resolve({loaded:[],failed:[],ms:0,late:false,timedOut:false,none:true});
+  var late=F.some(function(f){ return f.status!=="loaded"; });
+  return new Promise(function(resolve){
+    var done=false, timer=setTimeout(finish,ms), threw=[];
+    /* timedOut: some face neither loaded, nor errored, nor threw from load() (a face that throws has failed, not timed out) */
+    function finish(){ if(done) return; done=true; clearTimeout(timer);
+      var L=[],X=[];
+      F.forEach(function(f){ var n=fontFamilyOf(f)+" "+f.weight+" "+String(f.unicodeRange||"").slice(0,14); if(f.status==="loaded") L.push(n); else X.push(n+" ("+(threw.indexOf(f)>=0?"threw":f.status)+")"); });
+      resolve({loaded:L,failed:X,ms:Math.round(performance.now()-t0),late:late,
+        timedOut:F.some(function(f){ return f.status!=="loaded"&&f.status!=="error"&&threw.indexOf(f)<0; }),none:false}); }
+    Promise.all(F.map(function(f){ try{ return Promise.resolve(f.load()).catch(function(){}); }catch(e){ threw.push(f); return null; } })).then(finish,finish);
+  });
+}
+/* a face that arrived after the first layout changes text sizes: the map layer measures every item again, the timeline's height, the view
+   offset and, while the first-run card is open, the first view's framing (fitted above the card) are taken again */
+function relayoutAfterFonts(){
+  for(var k in ML.items) ML.items[k].dirty=true;
+  syncTimebarHeight(); syncDock(); syncViewOffset(true);
+  if(firstRunOpen) frameFirstView();
+  requestRender(3);
+}
+function liftBoot(){
+  var b=document.getElementById("boot"); if(!b) return;
+  requestAnimationFrame(function(){ b.style.opacity="0"; });
+  setTimeout(function(){ if(b.parentNode) b.parentNode.removeChild(b); },900);
+}
 
 function init(){
   scene=new THREE.Scene();
@@ -564,9 +610,9 @@ function init(){
   }
   loop();
 
-  var b=document.getElementById("boot");
-  requestAnimationFrame(function(){ b.style.opacity="0"; });
-  setTimeout(function(){ if(b.parentNode) b.parentNode.removeChild(b); },900);
+  /* decision 141: the boot screen lifts once the embedded faces have loaded (fontsReady); a fault after it still lifts the screen, and is thrown */
+  FONTS.ready=fontsReady(FONTS.TIMEOUT).then(function(st){ FONTS.state=st; if(st.late) relayoutAfterFonts(); })
+    .then(liftBoot,function(e){ liftBoot(); throw e; });
 }
 
 /* ---------------- formation state ---------------- */
@@ -758,7 +804,10 @@ var KIT={
   paint:{lozenge:{from:"fr_eagle_inf"}, ordinary:{from:"at_inf"}},
   carry:{fr_eagle_inf:{paint:"lozenge"}, fr_guard_eagle:{paint:"lozenge"}, fr_eagle_cav:{paint:"lozenge"}, fr_guard_eagle_cav:{paint:"lozenge"},
          at_inf:{paint:"ordinary", lower:{n:1, per:"bn"}}, at_grenz:{paint:"ordinary"}, at_cav:{paint:"ordinary"}},
-  std:{drop:0.853, thick:0.61, aspect:2.4/1.4}
+  std:{drop:0.853, thick:0.61, aspect:2.4/1.4},
+  /* the cloth's weave, the faint dark threads every painted or plain cloth carries (flagTexture): a design value, no claim (roadmap step 1,
+     docs/FINAL_AUDIT.md T-6: until step 1 a literal in flagTexture, text unchanged) */
+  weave:"rgba(0,0,0,.12)"
 };
 /* a value of appearance.js the drawing follows: a claim (not generic, disputed or "none shown") at grade A or B whose class (k: c a
    colour, h a headgear) is not "generic"; anything else is drawn generic (docs/STAGE6_SPEC.md section 6.6, "For 6C and 6D") */
@@ -1327,7 +1376,7 @@ function flagTexture(key){
     poly([[56,74],[72,74],[78,92],[50,92]]);
   } else { c.width=128; c.height=64; x=c.getContext("2d");
     x.fillStyle=NATION[key.split(":")[1]].fill; x.fillRect(0,0,128,64); }
-  x.fillStyle="rgba(0,0,0,.12)"; for(var k=0;k<c.width;k+=4) x.fillRect(k,0,1,c.height);   /* a little cloth */
+  x.fillStyle=KIT.weave; for(var k=0;k<c.width;k+=4) x.fillRect(k,0,1,c.height);   /* a little cloth */
   var t=ctexS(c); _flagTex[key]=t; return t;
 }
 /* how many of a block's standards are drawn: those of the battalions shown (a detachment drawn separately takes its standards) */
@@ -3957,7 +4006,7 @@ var ECH_RANK={army:0,corps:1,div:2,bde:3};
      segment from the eye to the anchor is marched over the drawn ground (groundY), only where it is low enough to meet
      it (section F.3 measured rays against the mesh at 84-205 ms a pass); what is never dropped is not occluded.
    ============================================================ */
-var ML={root:null, lines:null, items:{}, frame:0, hover:null, focus:null,
+var ML={root:null, lines:null, items:{}, frame:0, hover:null, hoverDrop:null, focus:null,
         order:"", maxG:{}, stats:{items:0,placed:0,leaders:0,dropped:0,occluded:0,offscreen:0,underPanel:0,keepMissing:[],dropped_:[],ms:0,nodes:0},
         taken:[], svg:"", legendOpen:false, lgSize:null};   /* Stage 3B (decision 49): the legend opens closed to its head; the visitor's choice then holds */
 var ML_FULL_DIST=70;   /* a counter nearer the eye than this (world units; about 4.4 km) is drawn full (section F.1) */
@@ -4386,11 +4435,30 @@ function mlNearAnchor(cx,cy,r2,dropped){
     var d=(it.sx-cx)*(it.sx-cx)+(it.sy-cy)*(it.sy-cy); if(d<bd){ bd=d; best=it.fid; } }
   return best;
 }
+/* a formation's counter or name dropped in the frame laid out last */
+function mlDroppedNow(fid){
+  var n=ML.items["n:"+fid], c=ML.items["c:"+fid];
+  return !!((n&&n.eFrame===ML.frame&&n.state==="dropped")||(c&&c.eFrame===ML.frame&&c.state==="dropped"));
+}
+/* the point within sqrt(r2) px of this formation's counter or name anchor */
+function mlAnchorWithin(fid,cx,cy,r2){
+  return ["n:","c:"].some(function(p){ var it=ML.items[p+fid];
+    return !!it&&it.eFrame===ML.frame&&it.state!=="occluded"&&(it.sx-cx)*(it.sx-cx)+(it.sy-cy)*(it.sy-cy)<r2; });
+}
 /* the pointer over a counter, a name or a formation's position: that formation is shown, full and never dropped */
 function mlHoverAt(cx,cy){
   /* a dropped formation's own position (within 6 px) comes first, even under another item's box: Stage 2E found a dropped
-     counter on the small framed paper map whose anchor lay under a neighbour's counter, reachable only from the keyboard */
-  var it=mlHit(cx,cy), id=mlNearAnchor(cx,cy,36,true)||(it&&it.fid)||pickFormation(cx,cy)||mlNearAnchor(cx,cy);   /* a place or arrow label is no formation: look under it */
+     counter on the small framed paper map whose anchor lay under a neighbour's counter, reachable only from the keyboard.
+     Then a dropped formation's footprint under the pointer, also under another item's box: with the embedded serif (decision
+     141) d'Hautpoul's name is dropped in the self-test's "a plan, going and terrain study" state at 4x and his whole footprint
+     lies under Drouet's placed name, so a label hit first made him reachable only from the keyboard.
+     Hovering a dropped formation draws it, which can drop a neighbour at the same place: the formation so reached keeps the
+     hover while the pointer stays on its position (its footprint, or within 6 px of its anchor), else the two take turns at
+     every move of the pointer (measured with the embedded serif at 4x: Legrand's Division and the Third Column, at two points) */
+  var it=mlHit(cx,cy), pf=pickFormation(cx,cy), pa=mlNearAnchor(cx,cy,36,true), pd=pf&&mlDroppedNow(pf)?pf:null, hk=ML.hoverDrop;
+  var keep=hk&&ML.hover===hk&&(pf===hk||mlAnchorWithin(hk,cx,cy,36))?hk:null;
+  var id=keep||pa||pd||(it&&it.fid)||pf||mlNearAnchor(cx,cy);   /* a place or arrow label is no formation: look under it */
+  ML.hoverDrop=id&&(id===keep||id===pa||id===pd)?id:null;
   var cur=(it&&it.pick)||id?"pointer":"";
   if(renderer.domElement.style.cursor!==cur) renderer.domElement.style.cursor=cur;
   if(id!==ML.hover){ ML.hover=id; requestRender(2); }
@@ -4695,6 +4763,10 @@ function updateVisibility(){
    by its footprint (pickFormation); else a corps counter, an event glyph or a place within 34 px of its anchor. */
 var v3=new THREE.Vector3();
 function pickAt(cx,cy){
+  /* a click selects what the hover shows: a dropped formation reached by hovering its position (mlHoverAt's first three rules,
+     ML.hoverDrop) while the pointer stays there, even under another item's box (the diff review of roadmap step 1: before, the
+     hover drew the dropped formation and a click selected the label over it) */
+  var hd=ML.hoverDrop; if(hd&&ML.hover===hd&&(pickFormation(cx,cy)===hd||mlAnchorWithin(hd,cx,cy,36))) return {kind:"f",id:hd};
   var hit=mlHit(cx,cy); if(hit&&hit.pick) return {kind:hit.pick.kind,id:hit.pick.id};
   var fid=pickFormation(cx,cy); if(fid) return {kind:"f",id:fid};
   var best=null, bestD=34;
@@ -5457,13 +5529,17 @@ function openFirstRun(){
   firstRunOpen=true;
   document.body.classList.add("firstrun-on");
   if(docked) selectTab("now");                  /* Stage 7B (decision 113): the Now tab under the card, as decision 55 has Study open */
+  frameFirstView();
+  focusId("fr-tour");                           /* Stage 7B: the dialog takes focus, on its primary action */
+  requestRender(3);
+}
+/* the first view's framing, also taken again when an embedded face arrives late (relayoutAfterFonts, decision 141) */
+function frameFirstView(){
   var v=presetFrame(VANTAGE.plan);              /* Stage 3D: the field fitted into the free rectangle above the card */
   camArc=null;                                  /* the start-up phase transition keeps its light, not its camera */
   landCam.position.set(v[0],v[1],v[2]); orbitTarget.set(v[3],v[4],v[5]); landCam.lookAt(orbitTarget);
   clampCamera();
   curVantage="plan"; syncFollow();
-  focusId("fr-tour");                           /* Stage 7B: the dialog takes focus, on its primary action */
-  requestRender(3);
 }
 /* how: "open" (the primary action: the opening, Stage 7C), "explore" (stay: the button, Esc, or a key that then does its own action), or null (a click
    outside, or the app closing it). Focus never stays on the hidden card: after "open" it is on the opening bar's Next, after "explore" on
@@ -6577,7 +6653,8 @@ function dwellDayLength(t0,x){
    the paper map nothing follows (its plan shows the whole field). */
 /* the distance: section D.2's candidate held 86-274 units (2.4 x the spread + 70); between about 140 and 200, where the map layer
    shows every brigade, its drops reached 19-20 over the day (the limit 19). 230-300 (2.4 x the spread + 130) keeps them at 11-12
-   and every live event in the free rectangle in 92-93% of minutes (tools/stage4/report-4d.js): the action framed wider than
+   and every live event in the free rectangle in 92-93% of minutes (tools/stage4/report-4d.js, counting every minute; since roadmap
+   step 1 the self-test counts only the minutes with a live event, and its detail gives that share and count): the action framed wider than
    most phase views (92-212 units in phases 1-8); a zoom turns Follow off for a closer look. */
 var FOLLOW={TAU:1.5, CAP:150, K:2.4, D0:130, DMIN:230, DMAX:300, T:null, dist:0, dir:null, ev:null};
 function followGoal(){
@@ -6705,10 +6782,13 @@ var lastFrame=0;
    wall-clock speed at any frame rate. */
 var needFrames=3, lastInput=0, lastAmbient=0, settling=false, FK=1;
 var AMBIENT_MS=90, INPUT_HOLD_MS=450;
+/* AMBIENT_TEST: a measurement switch the app never sets: under ?harness=1 drift is off (deterministic frames); the self-test sets it
+   for its one render-on-demand check, so that "slow drift draws at the ambient rate" is measured, and clears it before it returns */
+var AMBIENT_TEST=false;
 function requestRender(n){ needFrames=Math.max(needFrames,n||2); }
 function ease(r){ return 1-Math.pow(1-r,FK); }
 function ambientNow(){
-  if(RM||HARNESS) return false;
+  if(RM||(HARNESS&&!AMBIENT_TEST)) return false;
   for(var id in units){
     var r=units[id];
     if((r.smoke&&r.smoke.visible)||(r.dust&&r.dust.visible)) return true;
@@ -6757,6 +6837,20 @@ function loop(){
    applyCase() and settle() let the harness put the app into a fixed, fully settled state.
    ============================================================ */
 var AUSTERLITZ_DEBUG=(function(){
+  /* roadmap step 1 (T-1): the self-test reads an app canvas's pixels (a texture's mask, a cloth, a puff's edge) only through texData: the
+     canvas copied once into a scratch canvas the test code owns ({willReadFrequently:true}, so its reads warn of nothing) and read back
+     there, the copy kept for the run (selfTest clears it as it starts). The app's own contexts are never read back: before step 1 the
+     self-test called getImageData on them again and again, and Chromium warned at each ("Canvas2D: Multiple readback operations ...").
+     Every texture canvas read here is painted once, when its builder first makes it (flagTexture, skelTexture, confTexture,
+     smokeTexture, dustTexture cache it), so the copy is the drawn texture */
+  var _rbc=null, _rbm=new Map();
+  function texData(cv){
+    if(_rbm.has(cv)) return _rbm.get(cv);
+    if(!_rbc) _rbc=document.createElement("canvas");
+    _rbc.width=cv.width; _rbc.height=cv.height;
+    var x=_rbc.getContext("2d",{willReadFrequently:true}); x.clearRect(0,0,cv.width,cv.height); x.drawImage(cv,0,0);
+    var d=x.getImageData(0,0,cv.width,cv.height); _rbm.set(cv,d); return d;
+  }
   function finishTween(){ var n=0; while(tween&&n<4){ tween(performance.now()+1e7); n++; } }
   function settle(n,noRender){
     finishTween(); syncViewOffset(true);
@@ -7128,7 +7222,7 @@ var AUSTERLITZ_DEBUG=(function(){
       {n:"the guided tour, its third stop",m:"terrain",p:"study",t:240,sel:null,tour:3},
       {n:"the guided tour on the paper map, its third stop",m:"staff",p:"study",t:240,sel:null,tour:3}
     ];
-    var R={overlaps:[],panel:[],head:[],keep:[],a11y:[],legend:[],ctx:[],names:0,heads:0,placed:0,keepN:0,reachKey:[],reachHover:[],dropTested:0,enter:"",idle:true};
+    var R={overlaps:[],panel:[],head:[],keep:[],a11y:[],legend:[],ctx:[],names:0,heads:0,placed:0,keepN:0,reachKey:[],reachHover:[],reachClick:[],clickTested:0,dropTested:0,enter:"",idle:true};
     function cross(a,b){ return Math.min(a[2],b[2])-Math.max(a[0],b[0])>0.5&&Math.min(a[3],b[3])-Math.max(a[1],b[1])>0.5; }
     function box(e){ var b=e.getBoundingClientRect(); return [b.left,b.top,b.right,b.bottom]; }
     function shown(e){ if(!e) return false; var cs=getComputedStyle(e); return cs.display!=="none"&&cs.visibility!=="hidden"&&e.getBoundingClientRect().width>0; }
@@ -7183,9 +7277,12 @@ var AUSTERLITZ_DEBUG=(function(){
         else pts.push([it.world.x,it.world.z]);   /* a corps counter has no footprint: its anchor */
         for(var k=0;k<pts.length&&!hit;k++){ _lv3.set(pts[k][0],displayHeight(pts[k][0],pts[k][1]),pts[k][1]).project(camera);
           if(_lv3.z>1) continue;
-          mlHoverAt((_lv3.x*0.5+0.5)*innerWidth,(-_lv3.y*0.5+0.5)*innerHeight);
-          if(ML.hover===f){ mlLayout(); hit=ML.items[it.key].state==="on"; } }
-        ML.hover=null; mlLayout();
+          var hx=(_lv3.x*0.5+0.5)*innerWidth, hy=(-_lv3.y*0.5+0.5)*innerHeight;
+          mlHoverAt(hx,hy);
+          if(ML.hover===f){ mlLayout(); hit=ML.items[it.key].state==="on";
+            /* and a click there selects it, as the hover shows it */
+            if(hit){ R.clickTested++; var pk=pickAt(hx,hy); if(!(pk&&pk.kind==="f"&&pk.id===f)) R.reachClick.push(s.n+": "+it.key+" (a click picks "+(pk?pk.kind+":"+pk.id:"nothing")+")"); } } }
+        ML.hover=null; ML.hoverDrop=null; mlLayout();
         if(!hit) R.reachHover.push(s.n+": "+it.key);
       });
       /* the legend: never over the dispatch; its rows are what is drawn */
@@ -7221,6 +7318,8 @@ var AUSTERLITZ_DEBUG=(function(){
       !R.a11y.length&&R.names>0&&/^Enter/.test(R.enter), R.names+" formation items; "+R.enter+(R.a11y.length?"; BAD: "+R.a11y.slice(0,3).join(", "):""));
     ck("map layer: every dropped formation is reachable from the keyboard and by hovering its position", R.dropTested>0&&!R.reachKey.length&&!R.reachHover.length,
       R.dropTested+" dropped formations tested"+(R.reachKey.length?"; NOT BY KEYBOARD: "+R.reachKey.join(", "):"")+(R.reachHover.length?"; NOT BY HOVER: "+R.reachHover.join(", "):""));
+    ck("map layer: a click selects the formation the hover shows, also a dropped one reached by hovering its position", R.clickTested>0&&!R.reachClick.length,
+      R.clickTested+" dropped formations clicked where the hover reached them"+(R.reachClick.length?"; NOT SELECTED: "+R.reachClick.join(", "):": each selected"));
     ck("map layer: lays out only in a drawn frame (render on demand)", R.idle, R.idle?"no pass without a frame; one pass per frame, in "+S.length+" states":"a pass ran outside a drawn frame, or none in one");
     ck("legend: never over the dispatch, and its rows are what the view draws", !R.legend.length&&!R.ctx.length,
       S.length+" states"+(R.legend.length?"; OVER THE DISPATCH: "+R.legend.join(", "):"")+(R.ctx.length?"; WRONG ROWS: "+R.ctx.join(", "):""));
@@ -7507,19 +7606,19 @@ var AUSTERLITZ_DEBUG=(function(){
   function paceChecks(ck,fct){
     var keep=clock, cam={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam};
     /* the day under Follow at half speed: the floor, the live events in the free rectangle, the screen speed, the drops */
-    var fr=landFreeRect(), R={min:0,inn:0,below:0,spd:0,drops:0,dropAt:"",lastMin:-1}, pT=new THREE.Vector3(), pW=1;
+    var fr=landFreeRect(), R={min:0,ev:0,inn:0,below:0,spd:0,drops:0,dropAt:"",lastMin:-1}, pT=new THREE.Vector3(), pW=1;
     var sec=playDay(0.5,T_MIN,T_MAX,100,function(){ pT.copy(orbitTarget); pW=worldPerPx(orbitTarget); },function(){
       var p=landCam.position; if(p.y<camFloor(p.x,p.z)-1e-6) R.below++;
       R.spd=Math.max(R.spd,Math.hypot(orbitTarget.x-pT.x,orbitTarget.z-pT.z)/pW/0.1);
       var m=Math.floor(clock); if(m===R.lastMin) return; R.lastMin=m; R.min++;
       landCam.updateMatrixWorld(true);
       var live=liveEvents(clock).filter(function(o){ return o.w>=0.5; }), ok=live.every(function(o){ var w=W(o.e.p[0],o.e.p[1]); return onFreeRect([w[0],groundY(w[0],w[1]),w[1]],fr); });
-      if(ok) R.inn++;
+      if(live.length){ R.ev++; if(ok) R.inn++; }   /* a minute with no live event is no evidence either way (T-6) */
       if(m%10===0){ for(var k=0;k<12;k++){ settling=false; updateVisibility(); } mlLayout(); if(ML.stats.dropped>R.drops){ R.drops=ML.stats.dropped; R.dropAt=fmtClock(m); } } });
-    var share=R.inn/Math.max(1,R.min);
+    var share=R.ev>0?R.inn/R.ev:0, whole=R.min===T_MAX-T_MIN+1;
     ck("Follow while playing: the day at \u00bd\u00d7 never under the floor, every live event in the free rectangle in at least 80% of its minutes, the ground's speed across the screen within "+FOLLOW.CAP+" px/s, drops never above 19 (section D.4)",
-      !R.below&&share>=0.8&&R.spd<=FOLLOW.CAP+1e-6&&R.drops<=19,
-      "played in "+sec.toFixed(1)+" s; "+R.below+" steps under the floor; every live event inside in "+(100*share).toFixed(1)+"% of "+R.min+" minutes; the target's largest speed "+R.spd.toFixed(1)+" px/s; drops at most "+R.drops+(R.dropAt?" ("+R.dropAt+")":""));
+      whole&&R.ev>0&&!R.below&&share>=0.8&&R.spd<=FOLLOW.CAP+1e-6&&R.drops<=19,
+      "played in "+sec.toFixed(1)+" s; "+R.below+" steps under the floor; every live event inside in "+(100*share).toFixed(1)+"% of the "+R.ev+" minutes with a live event ("+(R.min-R.ev)+" of the day's "+R.min+" minutes have none"+(whole?"":", NOT THE WHOLE DAY")+"); the target's largest speed "+R.spd.toFixed(1)+" px/s; drops at most "+R.drops+(R.dropAt?" ("+R.dropAt+")":""));
     /* Stage 7D (docs/STAGE7_SPEC.md section 6, 7D; decision 123): the opening's played stretches at this factor, run by the app's own tick
        in 100 ms steps from the reopened card: never under the floor, the target's speed across the screen within FOLLOW.CAP, drops every ten
        clock minutes no more than Follow's 19; each stretch ending at its stop's clock with the stop's camera after the tour's glide from
@@ -7604,13 +7703,37 @@ var AUSTERLITZ_DEBUG=(function(){
   /* Stage 4E (docs/STAGE4_SPEC.md sections E.3 and F.1): smoke and ice. extrasChecks runs at each display factor, smokeDayChecks once. */
   function extrasChecks(ck,fct){
     var keep=clock, cam={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam};
-    /* the meres' ice, and its shore rim, under the lowest drawn ground on their own edge */
-    var worst=-1e9, where="";
-    world.water.concat(world.iceRims||[]).forEach(function(m){ var q=m.userData.mere; if(!q) return; var cc=q[0], lo=1e9;
-      for(var a=0;a<96;a++){ var t=a/96*Math.PI*2; lo=Math.min(lo,groundY(cc[0]+Math.cos(t)*q[1],cc[1]+Math.sin(t)*q[2])); }
-      var e=m.position.y-lo; if(e>worst){ worst=e; where=(m.userData.mereLift?"the shore ice":"the ice")+" at "+cc.join(","); } });
-    ck("ice: the meres and their shore ice lie under the lowest drawn ground on their own edge (section F.1)", worst<0,
-      "the highest, "+where+": "+worst.toFixed(3)+" units against the edge's lowest ground");
+    /* the meres' ice, and its shore rim, under the lowest drawn ground along their own drawn edge (section F.1; roadmap step 1, T-2: the
+       rule terrain-test.js applies in node). Until step 1 this check read 96 points of the analytic ellipse and counted no meshes. Now the
+       edge is the mesh's own: its 48 outer vertices (local radius 1) under its matrixWorld, each once, in order. Along each chord between
+       two of them the drawn ground (groundY, linear on each of its triangles) less the mesh's drawn height (linear along the chord) is
+       lowest at an end or where the chord crosses a grid line or a cell's diagonal (groundY's split): chordLow reads it exactly there, just
+       either side of each crossing. One ice disc (world.water, no lift) and one ring of shore ice (world.iceRims, lifted) for each of the
+       two meres, SATS and MENI (read, not changed); the margin is strict, as before */
+    var worst=-1e9, where="", nAll=0, nIce=0, nRim=0, reads=0, edges=[], perMere=[[SATS,0,0],[MENI,0,0]], ev=new THREE.Vector3(), gcw=GROUND_W/GROUND_NX, gcd=GROUND_D/GROUND_NZ;
+    function chordLow(A,B){
+      var ax=(A.x+GROUND_W/2)/gcw, az=(A.z+GROUND_D/2)/gcd, bx=(B.x+GROUND_W/2)/gcw, bz=(B.z+GROUND_D/2)/gcd, ts=[0,1], lo={g:1e9,x:0,z:0};
+      [[ax,bx],[az,bz],[ax+az,bx+bz]].forEach(function(pq){ var p=pq[0], q=pq[1]; if(p===q) return;
+        for(var k=Math.ceil(Math.min(p,q));k<=Math.floor(Math.max(p,q));k++) ts.push((k-p)/(q-p)); });
+      ts.forEach(function(t){ [t-1e-9,t,t+1e-9].forEach(function(u){ u=Math.max(0,Math.min(1,u)); reads++;
+        var x=A.x+(B.x-A.x)*u, z=A.z+(B.z-A.z)*u, g=groundY(x,z)-(A.y+(B.y-A.y)*u); if(g<lo.g){ lo.g=g; lo.x=x; lo.z=z; } }); });
+      return lo; }
+    world.water.concat(world.iceRims||[]).forEach(function(m){ var q=m.userData.mere; if(!q) return;
+      var rim=m.userData.mereLift>0&&(world.iceRims||[]).indexOf(m)>=0, ice=!m.userData.mereLift&&world.water.indexOf(m)>=0, what=rim?"the shore ice":"the ice";
+      nAll++; if(rim) nRim++; else if(ice) nIce++; perMere.forEach(function(r){ if(r[0]===q[0]){ if(rim) r[2]++; else if(ice) r[1]++; } });
+      m.updateMatrixWorld(true);
+      var P=m.geometry.attributes.position, seen={}, E=[], lo={g:1e9,x:0,z:0};
+      for(var k=0;k<P.count;k++){ var lx=P.getX(k), ly=P.getY(k); if(Math.abs(Math.hypot(lx,ly)-1)>1e-6) continue;
+        var w=ev.set(lx,ly,P.getZ(k)).applyMatrix4(m.matrixWorld).clone(), key=w.x.toFixed(6)+","+w.z.toFixed(6);
+        if(!seen[key]){ seen[key]=1; E.push({a:Math.atan2(w.z-q[0][1],w.x-q[0][0]),p:w}); } }
+      E.sort(function(x,y){ return x.a-y.a; }); edges.push(E.length);
+      for(var e=0;e<E.length;e++){ var c=chordLow(E[e].p,E[(e+1)%E.length].p); if(c.g<lo.g) lo=c; }
+      if(E.length!==48){ worst=1e9; where=what+" at "+q[0].join(",")+": its drawn edge has "+E.length+" vertices, not 48"; return; }
+      if(-lo.g>worst){ worst=-lo.g; where=what+" at "+lo.x.toFixed(1)+","+lo.z.toFixed(1); } });
+    var meresOK=nAll===2*perMere.length&&nIce===perMere.length&&nRim===perMere.length&&perMere.every(function(r){ return r[1]===1&&r[2]===1; });
+    ck("ice: the meres and their shore ice lie under the lowest drawn ground on their own edge (section F.1)", meresOK&&reads>0&&worst<0,
+      nIce+" ice discs and "+nRim+" shore-ice rings (one each for the Satschan and Menitz meres: "+(meresOK?"yes":"NO")+"), drawn edges of "+edges.join(", ")+
+      " vertices, the drawn ground read exactly along every chord ("+reads+" reads); the highest, "+where+": "+(worst===-1e9?"-":worst.toFixed(4))+" units against the drawn ground under it");
     /* every smoke puff's lower edge above the drawn ground across its width, in the two views where smoke is thickest, at 09:50 */
     var bad=0, n=0, low=1e9;
     var sw=W(210,362), sy=displayHeight(sw[0],sw[1]), sd=new THREE.Vector3(-0.62,0.46,0.64).normalize().multiplyScalar(58);   /* the harness's close-sokolnitz aim */
@@ -7745,6 +7868,30 @@ var AUSTERLITZ_DEBUG=(function(){
     landCam.position.copy(cam.p); orbitTarget.copy(cam.t); landCam.lookAt(orbitTarget); freeCam=cam.fc; syncViewOffset(true);
     return out;
   }
+  /* Stage 5B's sizes measured, not recomputed (T-6): the drawn frame of a ground patch (groundPatch: its uv is the w x d rectangle's own
+     frame, u=(dx c - dz s)/w+0.5), from its corner nodes: |grad u| = 1/w, |grad v| = 1/d, the centre where u=v=0.5 */
+  function drawnFrame(m){ var P=m.geometry.attributes.position, UV=m.geometry.attributes.uv, X1=+String(m.userData.conf.dims).split("x")[0]+1, a=0, b=X1-1, c=P.count-X1;
+    var dx=P.getX(b)-P.getX(a), dz=P.getZ(c)-P.getZ(a), ux=(UV.getX(b)-UV.getX(a))/dx, uz=(UV.getX(c)-UV.getX(a))/dz, vx=(UV.getY(b)-UV.getY(a))/dx, vz=(UV.getY(c)-UV.getY(a))/dz;
+    var du=0.5-UV.getX(a), dv=0.5-UV.getY(a), det=ux*vz-uz*vx;
+    return {w:1/Math.hypot(ux,uz), d:1/Math.hypot(vx,vz), x:P.getX(a)+(du*vz-dv*uz)/det, z:P.getZ(a)+(dv*ux-du*vx)/det}; }
+  /* decisions 86-88 and section A.4 item 1, written here and not read from confSize: on the footprint F x D (the block's modelled frontage
+     and depth at ground scale), A the footprint, crisp; B the frontage doubled, solid over the middle F and feathered to nothing at its ends,
+     the depth crisp; C a disc of radius F, its alpha falling from the centre. The masks are read texel by texel: every edge texel
+     transparent (the texture is clamped, so outside the mark nothing is drawn); inside, A opaque; B opaque over the middle half of its
+     width, the same in every row, and not rising outward from there to its ends, the last texel at most 5%; C nothing at r >= 1, something
+     wherever r < 1 - 2/N, and not rising outward from the centre along the middle row */
+  var CONF_RULE={A:function(F,D){ return [F,D]; }, B:function(F,D){ return [2*F,D]; }, C:function(F){ return [2*F,2*F]; }};
+  function maskByRule(g){ var N=CONF.TEX, im=texData(confTexture(g).image).data, bad=0, mid=N>>1, i, j;
+    function al(i,j){ return im[(j*N+i)*4+3]; }
+    for(j=0;j<N;j++) for(i=0;i<N;i++){ var u=(i+0.5)/N*2-1, v=(j+0.5)/N*2-1, r=Math.hypot(u,v), a=al(i,j);
+      if(i===0||j===0||i===N-1||j===N-1){ if(a!==0) bad++; continue; }
+      if(g==="A"&&a!==255) bad++;
+      if(g==="B"&&((Math.abs(u)<0.5&&a!==255)||a!==al(i,mid))) bad++;
+      if(g==="C"&&((r>=1&&a!==0)||(r<1-2/N&&a===0))) bad++; }
+    if(g==="B"){ for(i=mid;i<N-2;i++) if(al(i+1,mid)>al(i,mid)) bad++; for(i=mid-1;i>1;i--) if(al(i-1,mid)>al(i,mid)) bad++;
+      if(al(1,mid)>0.05*255||al(N-2,mid)>0.05*255) bad++; }
+    if(g==="C"){ for(i=mid;i<N-2;i++) if(al(i+1,mid)>al(i,mid)) bad++; for(i=mid-1;i>1;i--) if(al(i-1,mid)>al(i,mid)) bad++; }
+    return bad; }
   function confDayChecks(){
     var out=[], keep=clock, md=mode, bad=[], n=0, by={A:0,B:0,C:0}, ms0=MAPCAM.state();
     if(mode!=="terrain") setMode("terrain");
@@ -7753,14 +7900,17 @@ var AUSTERLITZ_DEBUG=(function(){
       Object.keys(units).forEach(function(id){ var r=units[id], p=posNow(id); if(!p||knowledgeOf(id)==="unknown") return;
         var m=isTrueScale()?r.foot:r.conf, U=m&&m.userData.conf; n++;
         if(!m||!m.visible){ bad.push(id+" at "+fmtClock(t)+": no mark"); return; }
-        var g=confAt(id,clock).cf, fu=r.block.userData, s=confSize(g,fu.W0*fu.sw,fu.D0*fu.sd), hex=lin(hexNum(TOKENS.sym.side[sideOfNation(r.f.nation)].base));
+        var g=confAt(id,clock).cf, fu=r.block.userData, F=fu.W0*fu.sw, D=fu.D0*fu.sd, s=CONF_RULE[g](F,D), dr=drawnFrame(m), wq=W(p[0],p[1]), hex=lin(hexNum(TOKENS.sym.side[sideOfNation(r.f.nation)].base));
         by[g]++;
         if(U.g!==g) bad.push(id+" at "+fmtClock(t)+": drawn "+U.g+", graded "+g);
-        else if(Math.abs(U.w-s[0])>1e-3||Math.abs(U.d-s[1])>1e-3) bad.push(id+" at "+fmtClock(t)+": "+g+" drawn "+U.w.toFixed(2)+" x "+U.d.toFixed(2)+", its size "+s[0].toFixed(2)+" x "+s[1].toFixed(2));
+        else if(Math.abs(dr.w-s[0])>1e-3*Math.max(1,s[0])||Math.abs(dr.d-s[1])>1e-3*Math.max(1,s[1])) bad.push(id+" at "+fmtClock(t)+": "+g+" drawn "+dr.w.toFixed(2)+" x "+dr.d.toFixed(2)+", the rule's "+s[0].toFixed(2)+" x "+s[1].toFixed(2));
+        else if(Math.hypot(dr.x-wq[0],dr.z-wq[1])>1e-3) bad.push(id+" at "+fmtClock(t)+": the mark centred "+Math.hypot(dr.x-wq[0],dr.z-wq[1]).toFixed(3)+" units off its position");
         else if(Math.abs(m.material.color.r-hex.r)+Math.abs(m.material.color.g-hex.g)+Math.abs(m.material.color.b-hex.b)>1e-4) bad.push(id+": not its side's colour");
         else if(m.material.map!==confTexture(g)) bad.push(id+": "+g+" drawn with another grade's mask"); }); }
+    var maskBad={A:maskByRule("A"),B:maskByRule("B"),C:maskByRule("C")};
+    ["A","B","C"].forEach(function(g){ if(maskBad[g]) bad.push("the "+g+" mask: "+maskBad[g]+" texels against the rule"); });
     out.push({name:"spatial confidence: every formation on the field is drawn at its position grade (confAt: between anchors the weaker one's), A as its footprint, B as its frontage doubled and C as a zone of its frontage's radius, in its side's colour (section A.5; decisions 86-88)",
-      ok:n>0&&!bad.length, detail:"20 clocks, "+n+" formation-samples: A "+by.A+", B "+by.B+", C "+by.C+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):"")});
+      ok:n>0&&by.A>0&&by.B>0&&by.C>0&&!bad.length, detail:"20 clocks, "+n+" formation-samples: A "+by.A+", B "+by.B+", C "+by.C+"; each mark's frame measured from its geometry against the rule (decisions 86-88), its mask read texel by texel"+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):"")});
     /* the text carrier: in the landscape every drawn name of a B or C formation carries its badge, and no A name does */
     var nb=0, nn=0, wrong=[];
     [300,590,880].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); finishTween(); settle(6); mlLayout();
@@ -7844,7 +7994,7 @@ var AUSTERLITZ_DEBUG=(function(){
     out.push({name:"evidence skeleton: bound to the track: every mark a plotted anchor at its position, graded by stateAt with its grade's mask; every leg on legPath, through its anchors and every via (section B.4)",
       ok:!b2.length&&worstOff<0.01&&SKEL.marks.length>0, detail:SKEL.marks.length+" anchors, "+SKEL.scope.legs.length+" legs through "+nv+" anchors and vias; every piece within "+worstOff.toExponential(1)+" units of its leg"+(b2.length?"; WRONG: "+b2.slice(0,4).join("; "):"")});
     /* the grade by shape (A filled, B ring, C small open ring; a tick toward north when timed); one solid line, no dash (decision 15) */
-    function alphaAt(g,tm,fx,fy){ var c=skelTexture(g,tm).image, d=c.getContext("2d").getImageData(Math.round(fx*(c.width-1)),Math.round(fy*(c.height-1)),1,1).data; return d[3]; }
+    function alphaAt(g,tm,fx,fy){ var c=skelTexture(g,tm).image, d=texData(c).data, X=Math.round(fx*(c.width-1)), Y=Math.round(fy*(c.height-1)); return d[(Y*c.width+X)*4+3]; }
     var R=SKEL.RING/2, sh={A:[alphaAt("A",false,0.5,0.5),alphaAt("A",false,0.5+R*0.85,0.5)], B:[alphaAt("B",false,0.5,0.5),alphaAt("B",false,0.5+R*0.9,0.5)],
       C:[alphaAt("C",false,0.5,0.5),alphaAt("C",false,0.5+R*0.6,0.5),alphaAt("C",false,0.5+R*0.9,0.5)]}, tick=[alphaAt("B",true,0.5,0.06),alphaAt("B",false,0.5,0.06)];
     var shapeOK=sh.A[0]>200&&sh.A[1]>200&&sh.B[0]===0&&sh.B[1]>200&&sh.C[0]===0&&sh.C[1]>150&&sh.C[2]===0&&tick[0]>200&&tick[1]===0;
@@ -7893,6 +8043,8 @@ var AUSTERLITZ_DEBUG=(function(){
     setCommandView("fr"); setClock(510,{instant:true,force:true,camera:false}); finishTween();
     var entered=eyeEnter(); settle(4,true); mlLayout();
     var hq=posNow("gqg"), w=W(hq[0],hq[1]), L=landCam.position, dy=L.y-groundY(L.x,L.z), want=eyeHeight(), atHQ=Math.hypot(L.x-w[0],L.z-w[1])<1e-6;
+    /* not vacuous (roadmap step 1, T-6): at 08:30 the reading must leave some enemy formation unknown (else "none drawn" proves nothing),
+       and enemy figures must be drawn, except at 1x, where every formation is its footprint (decision 34) and none may be a figure */
     var unkDrawn=[], hidden=[], fig=0, nUnk=0;
     Object.keys(units).forEach(function(id){ var r=units[id], f=FORMATIONS[id]; if(sideOfNation(f.nation)==="fr") return; var kq=knowledgeOf(id), p=posNow(id); if(!p) return;
       var it=[ML.items["c:"+id],ML.items["n:"+id]].some(function(q){ return q&&q.eFrame===ML.frame&&q.state==="on"; });
@@ -7903,7 +8055,7 @@ var AUSTERLITZ_DEBUG=(function(){
     LANDCAM.orbit(40,0); settle(2,true);
     var left=!EYE.on, near1=landCam.near===EYE.NEAR0, floor=landCam.position.y>=camFloor(landCam.position.x,landCam.position.z)-1e-6, viol=CAM.violations-k0.viol, capGone=!!cap&&cap.hidden;
     ck("eye level: the eye at the headquarters' plotted position, 3 m (scaled) above the drawn ground; no formation the reading does not know drawn, no enemy figures the model hides; the caption; an orbit leaves it for the floor (section D.6)",
-      entered&&atHQ&&Math.abs(dy-want)<1e-6&&nearOK&&!unkDrawn.length&&!hidden.length&&capOK&&left&&near1&&floor&&!viol&&capGone,
+      entered&&atHQ&&Math.abs(dy-want)<1e-6&&nearOK&&nUnk>0&&!unkDrawn.length&&(isTrueScale()?fig===0:fig>0)&&!hidden.length&&capOK&&left&&near1&&floor&&!viol&&capGone,
       "Napoleon's headquarters at 08:30: the eye "+dy.toFixed(4)+" units above the ground (want "+want.toFixed(4)+", 3 m at \u00d7"+fmtFactor(DISPLAY.factor)+"), at the headquarters "+atHQ+
       ", near plane "+EYE.NEAR+"; "+nUnk+" enemy formations not known, "+unkDrawn.length+" of them drawn"+(unkDrawn.length?" ("+unkDrawn.join(", ")+")":"")+"; "+fig+" enemy figures drawn, "+hidden.length+
       " hidden from the headquarters"+(hidden.length?" ("+hidden.join(", ")+")":"")+"; caption "+(capOK?"shown":"MISSING")+"; after an orbit: left "+left+", near "+landCam.near+", at its floor "+floor+", floor violations "+viol);
@@ -8167,6 +8319,7 @@ var AUSTERLITZ_DEBUG=(function(){
   }
   function selfTest(){
     var out=[], t0=performance.now(), i;
+    _rbm.clear();   /* texData's copies are this run's */
     function ck(name,ok,detail){ out.push({name:name,ok:!!ok,detail:detail}); }
     if(EYE.on) eyeLeave();   /* Stage 5E: the checks run from the omniscient view, off the eye level; the reading is restored after */
     var save={t:clock,mode:mode,pres:presentation,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,map:MAPCAM.state(),cv:commandView,plan:planSide};
@@ -8277,20 +8430,39 @@ var AUSTERLITZ_DEBUG=(function(){
         });
       });
       select(null,null);
-      ck("figures: every visible man, horse and standard stands on the drawn ground", fw.worst<=0.02,
+      var fig1=isTrueScale();   /* at 1x the formations are their footprints (decision 34): no figure may be drawn */
+      ck("figures: every visible man, horse and standard stands on the drawn ground", fig1?(fw.n===0&&fw.worst===0):(fw.n>0&&fw.worst<=0.02),
         cases+" states (10 phases and 3 marching moments; terrain and hybrid; no highlight and two highlight families), "+
-        fw.n+" figure placements; worst "+fw.worst.toFixed(4)+" units"+(fw.where?" ("+fw.where+")":""));
+        fw.n+" figure placements"+(fig1?" (at 1\u00d7 the formations are drawn as footprints, decision 34; none may be a figure)":"")+"; worst "+fw.worst.toFixed(4)+" units"+(fw.where?" ("+fw.where+")":""));
 
       /* Stage 4C: the mist sheets are gone, and their edge check with them; the valley fog and the haze: fogChecks, below */
-      /* 10. derived readings: rendering changes must not move them */
-      keepClock=clock; clock=240;   /* model readings: the same at every display factor */
+      /* 10. derived readings: rendering changes must not move them. What they are held to is read from the data, not typed here (step 1):
+         each army's total from its headquarters' army.men (data.js gqg, ahq; as sim-test.js reads them); the plateau at 04:00 re-derived from
+         FORMATIONS (strengths, phase-0 anchors) and PLATEAU_POLY without plateauStrength, ownStrengthAt, posNow or onPlateau (a winding-number
+         test, onPlateau's is even-odd), and the tour's own figure for it ("about 39,000 at 04:00", the stop with the plateau outline). The
+         recorded reading stays as the reference a data task moves and records (CHANGELOG.md, the plateau statistic: 38,700) */
+      function armyMen(side){ var v=[]; Object.keys(FORMATIONS).forEach(function(id){ var f=FORMATIONS[id]; if(f.ech==='army'&&f.army&&(sideOfNation(f.nation)==='fr')===(side==='fr')) v.push(+String(f.army.men).replace(/[^\d]/g,'')); });
+        return v.length===1&&v[0]>0?v[0]:NaN; }
+      function plateau04FromData(){
+        function first(f){ var ks=Object.keys(f.track||{}).map(Number).sort(function(x,y){ return x-y; }); for(var k=0;k<ks.length;k++) if('p' in f.track[ks[k]]) return {ph:ks[k],p:f.track[ks[k]].p}; return null; }
+        function on04(id){ var a0=first(FORMATIONS[id]); return !!a0&&a0.ph===0&&a0.p!==null; }
+        function under(id,o){ (FORMATIONS[id].children||[]).forEach(function(k){ if(FORMATIONS[k].track) o.push(k); under(k,o); }); return o; }
+        function inside(pt){ var P=PLATEAU_POLY, wn=0; for(var i=0;i<P.length;i++){ var A=P[i], B=P[(i+1)%P.length], cr=(B[0]-A[0])*(pt[1]-A[1])-(pt[0]-A[0])*(B[1]-A[1]);
+          if(A[1]<=pt[1]){ if(B[1]>pt[1]&&cr>0) wn++; } else if(B[1]<=pt[1]&&cr<0) wn--; } return wn!==0; }
+        var tot=0; Object.keys(FORMATIONS).forEach(function(id){ var f=FORMATIONS[id]; if(sideOfNation(f.nation)==='fr'||!f.track||f.arm==='hq'||!on04(id)) return;
+          var s=f.strength||0; under(id,[]).forEach(function(k){ if(on04(k)) s-=FORMATIONS[k].strength||0; }); if(s>0&&inside(first(f).p)) tot+=s; });
+        return tot; }
+      var AL=armyMen('al'), FR=armyMen('fr'), p04d=plateau04FromData(), PLATEAU_04_RECORDED=38700;
+      var stop4=TOUR.filter(function(s){ return /plateau outline/.test(s.x); })[0], q4=stop4&&/about ([\d,]+) at 04:00/.exec(stop4.x), tour04=q4?+q4[1].replace(/,/g,''):NaN;
+      keepClock=clock; clock=T_MIN;   /* model readings: the same at every display factor */
       var p04=plateauStrength("al");
       clock=keepClock;
-      var over=[]; for(var tm=240;tm<=1080;tm+=15){ if(sideOnFieldAt("al",tm)>85400||sideOnFieldAt("fr",tm)>73000) over.push(fmtClock(tm)); }
+      var over=[], nMom=0; for(var tm=T_MIN;tm<=T_MAX;tm+=15){ nMom++; if(sideOnFieldAt("al",tm)>AL||sideOnFieldAt("fr",tm)>FR) over.push(fmtClock(tm)); }
       var aud=auditMovement();
-      ck("derived readings unchanged: the plateau at 04:00, both army totals, the movement audit", p04===38700&&!over.length&&!aud.length,
-        "Allied on the plateau at 04:00 = "+p04.toLocaleString()+" (changelog 38,700); "+
-        (over.length?"totals exceed an army at "+over.join(","):"totals within 85,400 and 73,000 at 57 moments")+"; movement audit "+aud.length+" findings");
+      ck("derived readings unchanged: the plateau at 04:00, both army totals, the movement audit",
+        AL>0&&FR>0&&p04>0&&p04===p04d&&p04===PLATEAU_04_RECORDED&&Math.abs(p04-tour04)<=500&&!over.length&&!aud.length,
+        "Allied on the plateau at 04:00 = "+p04.toLocaleString()+" (from the data alone "+p04d.toLocaleString()+"; recorded 38,700; the tour's \u201cabout "+(isNaN(tour04)?"?":tour04.toLocaleString())+"\u201d); "+
+        (over.length?"totals exceed an army at "+over.join(","):"totals within the data's armies, "+AL.toLocaleString()+" Allied and "+FR.toLocaleString()+" French, at "+nMom+" moments")+"; movement audit "+aud.length+" findings");
 
 
       /* 12. Stage 2C: every overlay arrow, line and boundary vertex at its lift above the drawn ground, in every phase;
@@ -8398,8 +8570,9 @@ var AUSTERLITZ_DEBUG=(function(){
       document.querySelectorAll(".act-btn").forEach(function(b,i){ var r=b.getBoundingClientRect(), a=ACTS[i], fs=parseFloat(getComputedStyle(b).fontSize);
         if(Math.abs(pcAt(r.left)-tlPc(PHASES[a.phases[0]].t0))>0.15||Math.abs(pcAt(r.right)-tlPc(PHASES[a.phases[a.phases.length-1]].t1))>0.15) bad.push("act "+a.id+" not on its phases");
         if(fs<12) bad.push("act "+a.id+" label "+fs+" px"); });
+      var nSt=document.querySelectorAll("#phases .step").length, nAc=document.querySelectorAll(".act-btn").length;
       ck("timeline: at most 92 px; the act bands and phase ticks at their share of one time axis; their labels at 12 px or more",
-        H<=92&&!bad.length, Math.round(H*10)/10+" px tall at "+window.innerWidth+" x "+window.innerHeight+(bad.length?"; "+bad.slice(0,4).join("; "):"; 5 acts and 10 phases placed"));
+        H<=92&&nSt===PHASES.length&&nAc===ACTS.length&&!bad.length, Math.round(H*10)/10+" px tall at "+window.innerWidth+" x "+window.innerHeight+"; "+nAc+" of "+ACTS.length+" acts and "+nSt+" of "+PHASES.length+" phases placed"+(bad.length?"; "+bad.slice(0,4).join("; "):""));
       /* the even hours' numerals (section D.2: placed under the rail, their overlap measured): clear of every event marker's box and
          of one another, inside the timebar */
       var NR=Array.prototype.map.call(document.querySelectorAll("#railticks b"),function(b){ return b.getBoundingClientRect(); }),
@@ -8758,11 +8931,11 @@ var AUSTERLITZ_DEBUG=(function(){
         if(!m||m.material.map!==flagTexture(key)) sBad.push(id+" "+q.dress+": not its cloth ("+key+")"); }); });
     /* the paintings as painted: the lozenge's white centre and its corners alternately blue and red, the ordinary colour's yellow and black,
        the plain cloths their nation's symbol colour alone (two colours: the cloth and its lines) */
-    function px(key,x,y){ var cv=flagTexture(key).image, d=cv.getContext("2d").getImageData(x,y,1,1).data; return (d[0]<<16)|(d[1]<<8)|d[2]; }
+    function px(key,x,y){ var cv=flagTexture(key).image, d=texData(cv).data, o=(y*cv.width+x)*4; return (d[o]<<16)|(d[o+1]<<8)|d[o+2]; }
     var F=KIT.flag, paintBad=[];
     [["lozenge",66,62,F.white],["lozenge",10,10,F.blue],["lozenge",118,10,F.red],["lozenge",10,118,F.red],["lozenge",118,118,F.blue],["ordinary",6,6,F.yellow],["ordinary",65,58,F.black]].forEach(function(t){
       if(byTex[t[0]]&&px(t[0],t[1],t[2])!==t[3]) paintBad.push(t[0]+" at "+t[1]+","+t[2]+" is #"+("00000"+px(t[0],t[1],t[2]).toString(16)).slice(-6)); });
-    Object.keys(byTex).filter(function(k){ return /^plain:/.test(k); }).forEach(function(k){ var cv=flagTexture(k).image, dd=cv.getContext("2d").getImageData(0,0,cv.width,cv.height).data, seen={};
+    Object.keys(byTex).filter(function(k){ return /^plain:/.test(k); }).forEach(function(k){ var cv=flagTexture(k).image, dd=texData(cv).data, seen={};
       for(var q=0;q<dd.length;q+=4) seen[dd[q]+","+dd[q+1]+","+dd[q+2]]=1;
       if(Object.keys(seen).length>2||px(k,2,cv.height>>1)!==parseInt(NATION[k.split(":")[1]].fill.slice(1),16)) paintBad.push(k+" is not plain "+NATION[k.split(":")[1]].fill); });
     ck("standards: who carries them and how many as the appearance table rules, per drawn battalion or squadron; none where it shows none, gives none, disputes them in the field or leaves the count open; no standard on a battery or a headquarters (section 6.3)",
@@ -8848,23 +9021,56 @@ var AUSTERLITZ_DEBUG=(function(){
     ck("watch mode: a selection is always shown, and clearing it clears the dimming", okAll, steps.join("; "));
 
     /* 9. sprite edges and mist edges */
-    function edge(t){ var c=t.image,w=c.width,h=c.height,d=c.getContext("2d").getImageData(0,0,w,h).data,mx=0,x,y;
+    function edge(t){ var c=t.image,w=c.width,h=c.height,d=texData(c).data,mx=0,x,y;
       for(x=0;x<w;x++) mx=Math.max(mx,d[x*4+3],d[((h-1)*w+x)*4+3]);
       for(y=0;y<h;y++) mx=Math.max(mx,d[y*w*4+3],d[(y*w+w-1)*4+3]);
       return mx; }
     var se=edge(smokeTexture()), de=edge(dustTexture());
     ck("sprites: smoke and dust fade to nothing at every edge", se===0&&de===0, "largest edge alpha: smoke "+se+", dust "+de+" of 255");
 
+    /* 12. the embedded type (decision 141; roadmap step 1, T-0): every face fonts.css declares has loaded, before the boot screen lifted (init
+       waits on fontsReady), none failed and none timed out; and the interface is set in them as the tokens say: the first family of the
+       computed font-family of the page, the timeline's caption and its icon buttons, the brand's title, the first-run card's title (required:
+       it is in the page whether the card is shown or not) and a formation's name in the map layer is the token's embedded face */
+    (function(){
+      var F=fontFaces(), by={}, bad=[], st=FONTS.state;
+      F.forEach(function(f){ var n=fontFamilyOf(f); by[n]=(by[n]||0)+1; if(f.status!=="loaded") bad.push(n+" "+f.weight+" "+f.status); });
+      ck("the embedded type: three faces (two Austerlitz Sans, one Austerlitz Serif) loaded before the boot screen lifted, none failed (decision 141)",
+        F.length===3&&by["Austerlitz Sans"]===2&&by["Austerlitz Serif"]===1&&!bad.length&&!!st&&!st.none&&st.loaded.length===3&&!st.failed.length&&!st.timedOut,
+        F.length+" faces "+JSON.stringify(by)+(bad.length?"; not loaded: "+bad.join(", "):"")+
+        (st?"; when the boot screen lifted "+st.loaded.length+" loaded, "+st.failed.length+" failed"+(st.failed.length?" ("+st.failed.join(", ")+")":"")+", "+st.ms+" ms"+
+          (st.late?", late (laid out again)":", none late")+(st.timedOut?", TIMED OUT":""):"; no record from the boot"));
+    })();
+    (function(){
+      function first(ff){ var m=/^\s*(?:"([^"]+)"|'([^']+)'|([^,]+))/.exec(ff||""); return m?(m[1]||m[2]||m[3]).trim():""; }
+      var want={sans:first(TOKENS.type.sans),serif:first(TOKENS.type.serif)}, bad=[], seen=[];
+      if(want.sans!=="Austerlitz Sans"||want.serif!=="Austerlitz Serif") bad.push("the tokens name "+want.sans+" and "+want.serif+" first");
+      [["body","sans"],["#tb-cap","sans"],[".tb-icon","sans"],[".brand h1","serif"],["#fr-title","serif"],["#maplayer .mln","serif"]].forEach(function(p){
+        var e=document.querySelector(p[0]); if(!e){ bad.push(p[0]+" is not in the page"); return; }
+        var f=first(getComputedStyle(e).fontFamily); seen.push(p[0]+" "+f);
+        if(f!==want[p[1]]) bad.push(p[0]+" is set in "+f+", not "+want[p[1]]); });
+      ck("the embedded type: the interface is set in the embedded faces, as the tokens say (decision 141)", !bad.length, bad.length?bad.join("; "):seen.join("; "));
+    })();
+
     /* 11. render on demand */
     setMode("staff"); setClock(600,{instant:true,force:true,camera:false}); finishTween(); settle(40,true);
     needFrames=0; lastInput=-1e9; settling=false;
     var sIdle=frameState(performance.now());
+    var f0=DISPLAY.factor; if(isTrueScale()) setDisplayFactor(DISPLAY.defaultFactor);   /* dust is not drawn at 1x */
     setMode("terrain"); setClock(250,{instant:true,force:true,camera:false}); finishTween(); settle(40,true);
-    needFrames=0; lastInput=-1e9; settling=false;
-    var sMist=frameState(performance.now()+1000);
+    needFrames=0; lastInput=-1e9; settling=false; panelMoveUntil=0;
+    var sOff=frameState(performance.now()+1000), keepRM=RM, src=0, sWait, sAmb, sRM;
+    try{ AMBIENT_TEST=true; RM=false;   /* this check only: drift as a visitor's page has it (see AMBIENT_TEST) */
+      for(var did in units){ var ur=units[did]; if((ur.smoke&&ur.smoke.visible)||(ur.dust&&ur.dust.visible)||(ur.block&&ur.block.visible&&LOOSE[liveStatus(did,curPhase)])) src++; }
+      var tA=performance.now(); lastAmbient=tA;
+      sWait=frameState(tA+AMBIENT_MS*0.5); sAmb=frameState(tA+AMBIENT_MS);
+      RM=true; sRM=frameState(tA+AMBIENT_MS);
+    } finally { AMBIENT_TEST=false; RM=keepRM; }
+    if(DISPLAY.factor!==f0) setDisplayFactor(f0);
     ck("render on demand: a view at rest draws nothing; slow drift alone draws at the ambient rate",
-      sIdle==="idle"&&(HARNESS||RM?sMist==="idle":sMist==="ambient"),
-      "paper map at rest: "+sIdle+"; landscape at 04:10 with mist: "+sMist+((HARNESS||RM)?" (drift is off in harness or reduced-motion mode)":""));
+      sIdle==="idle"&&src>0&&sWait==="waiting"&&sAmb==="ambient"&&sRM==="idle"&&(!HARNESS||sOff==="idle"),
+      "paper map at rest: "+sIdle+"; landscape at 04:10, "+src+" formations drifting (dust, smoke or a broken formation's sway): "+sWait+" "+(AMBIENT_MS/2)+" ms after an ambient frame, "+sAmb+" at "+AMBIENT_MS+" ms; under reduced motion "+sRM+
+      (HARNESS?"; the harness's own frames "+sOff+" (drift off under ?harness=1; AMBIENT_TEST turned it on for this check only)":""));
 
     if(mode!==save.mode) setMode(save.mode);
     setPresentation(save.pres);

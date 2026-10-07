@@ -3,13 +3,28 @@
 const fs=require('fs');
 const c=fs.readFileSync('style.css','utf8');
 let errs=[];
-if(c.count===undefined){}
 const open=(c.match(/{/g)||[]).length, close=(c.match(/}/g)||[]).length;
 if(open!==close) errs.push(`unbalanced braces: ${open} open, ${close} close`);
 
 const clean=c.replace(/\/\*[\s\S]*?\*\//g,"");
 const firstMedia=clean.indexOf("@media");
 const base=firstMedia<0?clean:clean.slice(0,firstMedia);
+
+/* Every rule with its @media context, media null for a base rule (roadmap step 1, docs/FINAL_AUDIT.md T-9 and the critic's violation 1:
+   until step 1 the targeted checks below read every @media body merged with the base rules). One parse for every check of the rules: a
+   check that a rule holds reads the base rules (a rule only inside an @media does not hold in every layout), a check that a rule is absent
+   reads the base and every @media, and the type scan reads both. The parse reads @media one level deep: another at-rule or an @media
+   inside an @media is an error, not a misread. */
+const allRules=[];
+{ const re=/@media([^{]*)\{|([^{}]+)\{([^{}]*)\}|\}/g; let m, media=null;
+  for(const a of clean.matchAll(/@(?!media\b)[A-Za-z-]+/g)) errs.push("style.css: the at-rule "+a[0]+", which the rule parse does not read");
+  while((m=re.exec(clean))!==null){
+    if(m[1]!==undefined){ if(media!==null) errs.push("style.css: @media "+m[1].trim()+" inside @media "+media+", which the rule parse does not read"); media=m[1].trim(); continue; }
+    if(m[2]===undefined){ media=null; continue; }
+    const sel=m[2].trim().replace(/\s+/g," ");
+    allRules.push({sel:sel, sels:sel.split(",").map(x=>x.trim()).filter(Boolean), body:m[3], media:media});
+  }
+}
 
 /* top-level selectors only: a selector list starting at column 0 */
 const rules=[...base.matchAll(/^([^@\s][^{}]*?)\{/gm)].map(m=>m[1].trim().replace(/\s+/g," "));
@@ -32,27 +47,128 @@ const declared=new Set([...c.matchAll(/(--[\w-]+)\s*:/g)].map(m=>m[1]));
 const undecl=[...used].filter(v=>!declared.has(v));
 if(undecl.length) errs.push("undeclared custom properties: "+undecl.join(", "));
 
+/* The embedded type (decision 141; roadmap step 1, docs/FINAL_AUDIT.md T-0). fonts.css, written by tools/fonts/build-fonts.py and committed,
+   is read as it ships: each face's WOFF2 decoded with Node's own brotli (tools/fonts/woff2.js). The type tokens name an embedded face first;
+   every face is an embedded WOFF2 whose bytes and fonts.css's are the ones tools/fonts/manifest.json records (no hand edit), renamed (no
+   source name, Bitstream or Vera in its names), carrying its copyright, its licence record and a note of its changes, with no OpenType
+   feature outside FONT_FEATURES (calt would draw " x " as a multiplication sign and "->" as an arrow, altering quoted words), with
+   font-display:swap, the three metric overrides and no size-adjust (so CSS px sizes and the 10.5 px floor stay what they say), and a
+   unicode-range it has every code point of; the three licences in the header, and the build carrying fonts.css verbatim. Every glyph a
+   visitor can be shown (every string and template in the scripts, with escapes and entities decoded, shell.html's text and attributes,
+   style.css's content values) is in the sans faces, and in the serif unless SERIF_EXEMPT gives the reason and every source that can show
+   it is the one file that reason names (check:contrast proves at run time that no visible text is drawn in any other face). No font-family or font shorthand outside the tokens, in style.css (base rules
+   and every @media), shell.html or the presentation scripts. */
+const TYPE_ERRS=[];
+{
+  const acorn=require("acorn"), W2=require("./tools/fonts/woff2.js"), crypto=require("crypto");
+  const FAM={sans:"Austerlitz Sans",serif:"Austerlitz Serif"};
+  const FONT_FEATURES=new Set(["kern","liga","ccmp","locl","mark","mkmk","rlig","clig","tnum"]);
+  /* glyphs the serif may lack, each with its reason and the one source file the reason holds for: a code point is exempt only
+     while every source that can show it is that file (a Cyrillic letter in analysis.js, whose text the serif draws, is an error) */
+  const SERIF_EXEMPT=[[0x0400,0x045F,"appearance.js","Cyrillic: only in appearance.js (the sources' titles and quoted words), drawn in the sans (the sources sheet's lists, the dossier's Dress rows)"],
+    [0x0462,0x0463,"appearance.js","the same: pre-reform Cyrillic in appearance.js, drawn in the sans"],[0x0472,0x0475,"appearance.js","the same"],
+    [0x2502,0x2502,"shell.html","the timeline's event buttons (.tb-icon, sans; the glyph from DejaVu Sans)"],[0x25BA,0x25BA,"shell.html","the timeline's buttons (.tb-icon, sans)"],
+    [0x25C4,0x25C4,"shell.html","the timeline's buttons (.tb-icon, sans)"]];
+  /* where a font-family may be set outside the tokens, with the reason */
+  const FONT_ALLOW=[["#devstats","the developer readout (aria-hidden, hidden unless the ` key or ?stats): a monospace stack is its purpose"]];
+  const ENT={middot:"·",times:"×",asymp:"≈",ndash:"–",mdash:"—",hellip:"…",rdquo:"”",ldquo:"“",rsquo:"’",
+    lsquo:"‘",minus:"−",lt:"<",gt:">",amp:"&",lsaquo:"‹",rsaquo:"›",laquo:"«",raquo:"»",frac12:"½",nbsp:" ",
+    quot:'"',apos:"'",rarr:"→",larr:"←",uarr:"↑",darr:"↓",deg:"°",sect:"§",copy:"©"};
+  const rd=f=>fs.readFileSync(f,"utf8");
+  const first=v=>{ const m=/^\s*(?:"([^"]+)"|'([^']+)'|([^,]+))/.exec(v||""); return m?(m[1]||m[2]||m[3]).trim():""; };
+  /* 1. the tokens name an embedded face first */
+  const tok=JSON.parse(/\/\*TOKENS:BEGIN\*\/([\s\S]*)\/\*TOKENS:END\*\//.exec(rd("tokens.js"))[1]);
+  for(const r of ["sans","serif"]) if(first(tok.type[r])!==FAM[r]) TYPE_ERRS.push(`tokens.js: the ${r} stack names ${first(tok.type[r])} first, not the embedded "${FAM[r]}"`);
+  /* 2. fonts.css: the faces as they ship */
+  const faces=[];
+  if(!fs.existsSync("fonts.css")) TYPE_ERRS.push("fonts.css is missing (tools/fonts/build-fonts.py writes it)");
+  else {
+    const css=rd("fonts.css"), man=JSON.parse(rd("tools/fonts/manifest.json")), sha=b=>crypto.createHash("sha256").update(b).digest("hex");
+    if(sha(Buffer.from(css,"utf8"))!==man.fonts_css.sha256) TYPE_ERRS.push("fonts.css is not the file tools/fonts/build-fonts.py wrote (its sha256 is not the manifest's): never edit it by hand");
+    const blocks=[...css.matchAll(/@font-face\{([^}]*)\}/g)].map(m=>m[1]);
+    if(blocks.length!==man.faces.length) TYPE_ERRS.push(`fonts.css has ${blocks.length} faces, the manifest ${man.faces.length}`);
+    if(/src:url\((?!data:font\/woff2;base64,)/.test(css)||/@import|url\((?!data:)/.test(css)) TYPE_ERRS.push("fonts.css loads something that is not an embedded WOFF2");
+    blocks.forEach((b,i)=>{
+      const fam=(/font-family:"([^"]+)"/.exec(b)||[])[1], d=/src:url\(data:font\/woff2;base64,([A-Za-z0-9+\/=]+)\) format\("woff2"\)/.exec(b);
+      if(!d){ TYPE_ERRS.push(`fonts.css: face ${i+1} (${fam}) is not an embedded WOFF2`); return; }
+      const buf=Buffer.from(d[1],"base64"), m=man.faces[i]||{};
+      if(sha(buf)!==m.woff2_sha256) TYPE_ERRS.push(`fonts.css: face ${i+1}'s WOFF2 is not the manifest's`);
+      let names, cm, feats;
+      try{ names=W2.nameRecords(buf); cm=W2.cmapCodepoints(buf); feats=W2.featureTags(buf,"GSUB").concat(W2.featureTags(buf,"GPOS")); }
+      catch(e){ TYPE_ERRS.push(`fonts.css: face ${i+1} (${fam}) does not decode: ${e.message}`); return; }
+      const ps=names[6]||"face "+(i+1);
+      if(fam!==FAM.sans&&fam!==FAM.serif) TYPE_ERRS.push(`fonts.css: ${ps} declares the family "${fam}", which no token names`);
+      if(names[1]!==fam||names[4]!==fam) TYPE_ERRS.push(`fonts.css: ${ps} calls itself "${names[1]}" / "${names[4]}", not "${fam}" (renamed: the GUST Font License's request, the Bitstream Vera licence, OFL practice)`);
+      [1,3,4,6].forEach(id=>{ if(/Inter\b|Pagella|TeX Gyre|DejaVu|Bitstream|Vera\b/.test(names[id]||"")) TYPE_ERRS.push(`fonts.css: ${ps}'s name ${id} "${names[id]}" keeps a source's or a reserved name`); });
+      if(!names[0]) TYPE_ERRS.push(`fonts.css: ${ps} carries no copyright record (name 0)`);
+      if(!names[13]) TYPE_ERRS.push(`fonts.css: ${ps} carries no licence record (name 13)`);
+      if(!/^Modified version of /.test(names[10]||"")) TYPE_ERRS.push(`fonts.css: ${ps} does not state its changes in name 10 (the LPPL's clause 6)`);
+      feats.forEach(t=>{ if(!FONT_FEATURES.has(t)) TYPE_ERRS.push(`fonts.css: ${ps} keeps the OpenType feature ${t} (only ${[...FONT_FEATURES].join(" ")})`); });
+      const ur=(/unicode-range:([^;}]+)/.exec(b)||[])[1]||"", range=[];
+      if(!ur) TYPE_ERRS.push(`fonts.css: ${ps} declares no unicode-range`);
+      ur.split(",").forEach(p=>{ const [a,z]=p.trim().slice(2).split("-"); const A=parseInt(a,16), Z=z?parseInt(z,16):A; for(let c=A;c<=Z;c++) range.push(c); });
+      const notIn=range.filter(c=>!cm.has(c)); if(notIn.length) TYPE_ERRS.push(`fonts.css: ${ps} declares ${notIn.length} code points it lacks (U+${notIn[0].toString(16).toUpperCase()}...)`);
+      if(!/font-display:swap/.test(b)) TYPE_ERRS.push(`fonts.css: ${ps} without font-display:swap (the boot line must never be invisible)`);
+      ["ascent-override","descent-override","line-gap-override"].forEach(k=>{ if(!new RegExp(k+":[0-9.]+%").test(b)) TYPE_ERRS.push(`fonts.css: ${ps} without ${k} (the layout-compatibility metrics)`); });
+      if(/size-adjust/.test(b)) TYPE_ERRS.push(`fonts.css: ${ps} sets size-adjust (CSS px sizes and the 10.5 px floor would no longer be what they say)`);
+      faces.push({fam,cm:new Set(range.filter(c=>cm.has(c))),ps});
+    });
+    for(const r of ["sans","serif"]) if(!faces.some(f=>f.fam===FAM[r])) TYPE_ERRS.push(`fonts.css: no face of "${FAM[r]}"`);
+    for(const [k,txt] of [["SIL Open Font License 1.1","SIL OPEN FONT LICENSE Version 1.1"],["GUST Font License","GUST Font License"],["Bitstream Vera licence","Bitstream Vera Fonts Copyright"],
+      ["LaTeX Project Public License","LaTeX Project Public License"],["unmodified original's location","https://ctan.org/pkg/tex-gyre-pagella"]])
+      if(!css.includes(txt)) TYPE_ERRS.push(`fonts.css: the ${k} text is not in its header`);
+    if(fs.existsSync("austerlitz-command-map.html")&&!rd("austerlitz-command-map.html").includes(css)) TYPE_ERRS.push("austerlitz-command-map.html does not carry fonts.css verbatim (python3 build.py)");
+  }
+  /* 3. coverage: every glyph a visitor can be shown */
+  const dec=s=>s.replace(/&#x([0-9a-f]+);/gi,(m,h)=>String.fromCodePoint(parseInt(h,16))).replace(/&#([0-9]+);/g,(m,n)=>String.fromCodePoint(+n))
+    .replace(/&([a-z]+[0-9]*);/gi,(m,n)=>ENT[n]!=null?ENT[n]:(TYPE_ERRS.push("glyph scan: the entity &"+n+"; is not in css-test.js's table"),m));
+  /* every code point a visitor can be shown, with every source file it comes from */
+  const vis=new Map(), add=(s,where)=>{ for(const ch of s){ const c=ch.codePointAt(0); if(c>=0x20&&c!==0x7F&&!(c>=0x80&&c<0xA0)){ if(!vis.has(c)) vis.set(c,new Set()); vis.get(c).add(where); } } };
+  const exempt=c=>SERIF_EXEMPT.some(([a,z,only])=>c>=a&&c<=z&&[...vis.get(c)].every(w=>w===only));
+  for(const f of ["tokens.js","geo.js","data.js","appearance.js","analysis.js","world.js","symbols.js","app.js"])
+    for(const t of acorn.tokenizer(rd(f),{ecmaVersion:2022})) if(t.type.label==="string"||t.type.label==="template") add(dec(String(t.value)),f);
+  add(dec(rd("shell.html").replace(/<!--[\s\S]*?-->/g,"")),"shell.html");
+  for(const m of clean.matchAll(/(?<![-\w])content:\s*"((?:[^"\\]|\\.)*)"/g)) add(m[1].replace(/\\([0-9a-fA-F]{1,6})\s?/g,(x,h)=>String.fromCodePoint(parseInt(h,16))),"style.css");
+  for(const r of ["sans","serif"]){
+    const F=faces.filter(f=>f.fam===FAM[r]); if(!F.length) continue;
+    const miss=[...vis.keys()].filter(c=>!F.some(f=>f.cm.has(c))&&!(r==="serif"&&exempt(c)));
+    if(miss.length) TYPE_ERRS.push(`coverage: ${miss.length} glyph(s) a visitor can be shown are not in "${FAM[r]}": `+
+      miss.slice(0,12).map(c=>"U+"+c.toString(16).toUpperCase().padStart(4,"0")+" "+String.fromCodePoint(c)+" ("+[...vis.get(c)].join(", ")+")").join(", ")+(miss.length>12?" ...":""));
+  }
+  /* 4. no font set outside the tokens: style.css's rules with their @media context (base rules and every @media), shell.html, the scripts */
+  { let n=0;
+    for(const r of allRules){
+      n++; const sel=r.sel, body=r.body, where=sel+(r.media?" (@media "+r.media+")":"");
+      if(FONT_ALLOW.some(a=>sel===a[0])) continue;
+      for(const d of body.matchAll(/(?:^|;)\s*font-family\s*:([^;]+)/g)) if(!/^\s*var\(--(sans|serif)\)\s*$/.test(d[1])) TYPE_ERRS.push(`style.css: ${where} sets font-family:${d[1].trim()} outside the tokens`);
+      for(const d of body.matchAll(/(?:^|;)\s*font\s*:([^;]+)/g)) if(!/^\s*inherit\s*$/.test(d[1])) TYPE_ERRS.push(`style.css: ${where} sets the font shorthand ${d[1].trim()} outside the tokens`);
+    }
+    if(n<400) TYPE_ERRS.push("the type scan read only "+n+" rules of style.css (the parse is broken)"); }
+  { const sh=rd("shell.html"); for(const m of sh.matchAll(/font-family\s*=|style="[^"]*font(?:-family)?\s*:/g)) TYPE_ERRS.push(`shell.html:${sh.slice(0,m.index).split("\n").length}: a font set outside the tokens`); }
+  for(const f of ["app.js","symbols.js","world.js"]){ const s=rd(f); for(const m of s.matchAll(/font-family\s*[:=]|fontFamily\s*=|\.font\s*=|\bfont\s*:/g)) TYPE_ERRS.push(`${f}:${s.slice(0,m.index).split("\n").length}: a font set outside the tokens`); }
+  console.log("embedded type: "+faces.length+" faces, "+vis.size+" distinct glyphs a visitor can be shown, "+TYPE_ERRS.length+" errors");
+  TYPE_ERRS.forEach(e=>errs.push("type: "+e));
+}
+
 console.log("top-level rules:",rules.length,"| custom properties:",declared.size);
 console.log("CSS ERRORS:",errs.length);
 errs.forEach(e=>console.log("  ! "+e));
 process.exitCode = errs.length?1:0;
 
 /* --- targeted checks for the symptoms reported against the previous build --- */
-/* collect every rule as {selectors:[...], body} so lookups are exact */
-const allRules=[];
-{
-  const re=/([^{}]+)\{([^{}]*)\}/g; let m;
-  const flat=clean.replace(/@media[^{]*\{/g,"");
-  while((m=re.exec(flat))!==null){
-    const sels=m[1].split(",").map(x=>x.trim().replace(/\s+/g," ")).filter(Boolean);
-    allRules.push({sels:sels, body:m[2]});
-  }
-}
+/* lookups by exact selector in allRules (above). decls(sel): the base rules naming sel, their bodies joined (a rule that must hold);
+   declsAll(sel): every rule naming sel, base and @media, each {media, body} (a rule that must be absent, a value that must hold in every
+   layout); null if none */
 function decls(sel){
   let body=null;
-  allRules.forEach(r=>{ if(r.sels.indexOf(sel)>=0) body=(body||"")+r.body; });
+  allRules.forEach(r=>{ if(r.media===null&&r.sels.indexOf(sel)>=0) body=(body||"")+r.body; });
   return body===null?null:{body:body};
 }
+function declsAll(sel){
+  const out=allRules.filter(r=>r.sels.indexOf(sel)>=0).map(r=>({media:r.media, body:r.body}));
+  return out.length?out:null;
+}
+const declsOf=body=>[...body.matchAll(/(?:^|;)\s*([-\w]+)\s*:([^;]*)/g)].map(m=>[m[1],m[2].replace(/\s/g,"")]);
 const checks=[
  ["body.pm-map .dispatch","display:none","Clean (the presentation map) must hide the dispatch text"],
  ["body.pm-map .timebar","display:none","Clean (the presentation map) must hide the timeline"],
@@ -65,12 +181,16 @@ const checks=[
  [".vm-btn","cursor:pointer","the presentation control must be clickable"]
 ];
 let cerrs=0;
+/* each in the base rules (since roadmap step 1 not satisfied by an @media), and set otherwise by no rule for that selector, base or @media */
 checks.forEach(([sel,need,why])=>{
   const d=decls(sel);
-  if(!d){ console.log("  ! no rule for "+sel+" — "+why); cerrs++; return; }
+  if(!d){ console.log("  ! no base rule for "+sel+" — "+why); cerrs++; return; }
   if(d.body.replace(/\s/g,"").indexOf(need.replace(/\s/g,""))<0){
-    console.log("  ! "+sel+" lacks "+need+" — "+why); cerrs++;
+    console.log("  ! "+sel+" lacks "+need+" in its base rules — "+why); cerrs++; return;
   }
+  const prop=need.split(":")[0], val=need.slice(prop.length+1).replace(/\s/g,"");
+  const other=(declsAll(sel)||[]).flatMap(r=>declsOf(r.body).filter(([p,v])=>p===prop&&v.replace(/!important$/,"")!==val).map(([p,v])=>p+":"+v+(r.media?" (@media "+r.media+")":" (a base rule)")));
+  if(other.length){ console.log("  ! "+sel+" sets "+other.join(", ")+", not "+need+" — "+why); cerrs++; }
 });
 console.log("behaviour checks:",checks.length-cerrs+"/"+checks.length+" pass");
 if(cerrs) process.exitCode=1;
@@ -137,18 +257,43 @@ if(cerrs) process.exitCode=1;
    in world.js is in COVER_COL, LAND_COL or WATER_COL; in app.js in the light's tables (LIGHT, LIGHT_RIG) or the sprite palette
    (SPRITE_COL). White (a vertex-coloured material's neutral base) is not a palette colour. The paper map's ground is
    TOKENS.sym.paperMap.ground. Stage 6C (docs/STAGE6_SPEC.md sections 5 and 6.2) ends Stage 4E's exemption of the figures, coats and
-   flags (formationAtlas, figKit, makeBlock, flagTexture): their colours are KIT's, or NATION's for the generic appearance. */
+   flags (formationAtlas, figKit, makeBlock, flagTexture): their colours are KIT's, or NATION's for the generic appearance.
+   Every spelling of a colour is read (roadmap step 1, docs/FINAL_AUDIT.md T-6: until step 1 only 0xRRGGBB and #RRGGBB, so eleven
+   literals in five declarations went unseen, now in LAND_COL, LIGHT_RIG and KIT; symbols.js was not read, and has no table): 0xRRGGBB;
+   #RGB, #RGBA, #RRGGBB, #RRGGBBAA; an rgb() or rgba() triple of numbers (the alpha may be computed); hsl() and hsla(); THREE.Color,
+   .setRGB and .setHSL with three numbers. Not palette colours: white (the neutral base a material, an instance colour or a sprite's mask
+   multiplies), and black where the canvas is compositing "destination-in" (the last globalCompositeOperation set before it in its
+   declaration), an alpha mask, where only the alpha counts; the six-digit hex keeps the rule's exemption before step 1 (white written
+   FFFFFF or ffffff, nothing else), so nothing that rule flagged passes now. GLSL's vec3 literals (the ground shader's frost and
+   viewshed tints, the post chain's luma weights) are not read: shader source, not a canvas or material colour. */
 {
   const acorn=require('acorn'), perr=[];
-  const ALLOW={"world.js":["COVER_COL","LAND_COL","WATER_COL"],"app.js":["LIGHT","LIGHT_RIG","SPRITE_COL","KIT"]};
+  const ALLOW={"world.js":["COVER_COL","LAND_COL","WATER_COL"],"app.js":["LIGHT","LIGHT_RIG","SPRITE_COL","KIT"],"symbols.js":[]};
+  const LIT=/0x[0-9A-Fa-f]{6}\b|#(?:[0-9A-Fa-f]{8}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3,4})\b|rgba?\(\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?|hsla?\(\s*\d|THREE\.Color\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*\)|\.set(?:RGB|HSL)\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*\)/g;
+  /* a literal's r, g, b (0-255), or null where it is not read (hsl, setHSL: never exempt) */
+  const rgbOf=x=>{ let m;
+    if((m=/^(?:0x|#)([0-9A-Fa-f]{6})(?:[0-9A-Fa-f]{2})?$/.exec(x))) return [0,2,4].map(i=>parseInt(m[1].substr(i,2),16));
+    if((m=/^#([0-9A-Fa-f]{3,4})$/.exec(x))) return [0,1,2].map(i=>parseInt(m[1][i]+m[1][i],16));
+    if((m=/^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/.exec(x))) return [m[1],m[2],m[3]].map(Number);
+    if((m=/^(?:THREE\.Color|\.setRGB)\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/.exec(x))) return [m[1],m[2],m[3]].map(v=>Math.round(+v*255));
+    return null; };
+  let nLit=0, nWhite=0, nMask=0;
   Object.keys(ALLOW).forEach(f=>{ const src=fs.readFileSync(f,'utf8'), ast=acorn.parse(src,{ecmaVersion:2020});
     ast.body.forEach(n=>{ const name=n.type==="FunctionDeclaration"?n.id.name:n.type==="VariableDeclaration"?n.declarations.map(d=>d.id.name).join(","):"("+n.type+")";
-      const lit=(src.slice(n.start,n.end).match(/0x[0-9A-Fa-f]{6}\b|#[0-9A-Fa-f]{6}\b/g)||[]).filter(x=>!/^(0x|#)(FFFFFF|ffffff)$/.test(x));
+      const body=src.slice(n.start,n.end), lit=[]; let m; LIT.lastIndex=0;
+      while((m=LIT.exec(body))){ nLit++; const c=rgbOf(m[0]);
+        /* the six-digit hex: the exemption before step 1 only; the other spellings: white, or black in an alpha mask */
+        if(/^(0x|#)[0-9A-Fa-f]{6}$/.test(m[0])){ if(/^(0x|#)(FFFFFF|ffffff)$/.test(m[0])){ nWhite++; continue; } }
+        else if(c&&c.every(v=>v===255)){ nWhite++; continue; }
+        else if(c&&c.every(v=>v===0)){ const ops=[...body.slice(0,m.index).matchAll(/globalCompositeOperation\s*=\s*"([a-z-]+)"/g)];
+          if(ops.length&&ops[ops.length-1][1]==="destination-in"){ nMask++; continue; } }
+        lit.push(m[0]+" (line "+src.slice(0,n.start+m.index).split("\n").length+")"); }
       if(lit.length&&!ALLOW[f].includes(name)) perr.push(f+": "+name+" has colour literals outside the palette tables ("+lit.slice(0,3).join(", ")+")"); }); });
   const T=fs.readFileSync('tokens.js','utf8'), W=fs.readFileSync('world.js','utf8');
   if(!/"ground":\s*\{"field":/.test(T)||!/paper:\s*COVER_KEYS\.map\(function\(k\)\{ return hexNumW\(TOKENS\.sym\.paperMap\.ground\[k\]\); \}\)/.test(W)) perr.push("the paper map's ground colours are not read from TOKENS.sym.paperMap.ground");
   perr.forEach(e=>console.log("  ! "+e));
-  console.log("palette: "+(perr.length?perr.length+" wrong":"the landscape's colours in their tables (light, sprites, ground, land, water), the figures' in KIT, the paper map's ground in the tokens"));
+  console.log("palette: "+(perr.length?perr.length+" wrong":"0 colour literals outside the tables ("+nLit+" read in "+Object.keys(ALLOW).join(", ")+"; "+nWhite+" white and "+nMask+
+    " alpha-mask black exempt); the landscape's colours in their tables (light, sprites, ground, land, water), the figures' in KIT, the paper map's ground in the tokens"));
   if(perr.length) process.exitCode=1;
 }
 /* Stage 6C (docs/STAGE6_SPEC.md section 6.2; owner decisions 99, 102-104, 109): KIT draws only what appearance.js names. Every KIT cloth
@@ -193,7 +338,7 @@ if(cerrs) process.exitCode=1;
         if(K.lower&&!(E.count&&E.count.sides)) perr.push("KIT.carry."+k+": a lower bound on a count that is not disputed"); } });
     const words={white:["fr_eagle_inf","pattern"], red:["fr_eagle_inf","pattern"], blue:["fr_eagle_inf","pattern"], yellow:["at_inf","model"], black:["at_inf","pattern"], gilt:["fr_eagle_inf","finial"]};
     Object.keys(KIT.flag||{}).forEach(k=>{ const w=words[k], E=w&&C6[w[0]]&&C6[w[0]][w[1]];
-      if(!E||(E.en||"").toLowerCase().indexOf(k)<0) perr.push("KIT.flag."+k+": not a word of the claim it draws"); });
+      if(!E||!new RegExp("\\b"+k+"\\b").test((E.en||"").toLowerCase())) perr.push("KIT.flag."+k+": not a word of the claim it draws"); });   /* a whole word (roadmap step 1, T-9: until step 1 a substring, "red" in "bordered") */
     perr.forEach(e=>console.log("  ! "+e));
     console.log("kit: "+(perr.length?perr.length+" wrong":Object.keys(KIT.cloth).length+" cloth colours, all classes of appearance.js and none below decision 84's black; "+used+
       " settled coat and legwear values drawn; "+Object.keys(KIT.head).length+" headgear shapes; cuirasses for "+Object.keys(KIT.cuirass).join(", ")+
@@ -287,10 +432,19 @@ if(cerrs) process.exitCode=1;
   if(/fr-hint|fr-watch/.test(card)) ferr.push("shell.html: the first-run card still carries the hint or \"Watch the battle\" (decision 120, decision 111)");
   if(!/firstRun:\{primary:"[^"]+", primaryTitle:"[^"]+",\s*stay:"[^"]+", stayTitle:"[^"]+"\}/.test(app)) ferr.push("app.js: LABELS.firstRun (the card's words) is missing");
   if(!/fp\.textContent=F\.primary/.test(app)||!/fs\.textContent=F\.stay/.test(app)) ferr.push("app.js: applyLabels does not write the card's words from LABELS");
-  const mh=decls("#firstrun .fr-act .t"), px=mh&&/min-height:(\d+)px/.exec(mh.body.replace(/\s/g,""));
-  if(!px||+px[1]<24) ferr.push("style.css: the first-run card's buttons are not at least 24 px high");
-  if(decls("body.firstrun-on .dispatch")) ferr.push("style.css: the dispatch is hidden under the first-run card in every layout (decision 113)");
-  if(!decls("body.firstrun-on:not(.docked) .dispatch")) ferr.push("style.css: the undocked dispatch card is not hidden under the first-run card (decision 58)");
+  /* the buttons' height in every layout (roadmap step 1, T-9: until step 1 the first min-height found, @media bodies merged): a base
+     min-height for the card's buttons, and every height a rule naming them sets, base or @media, at least 24 px (a height auto and a
+     max-height none set no limit) */
+  const btnSel=s=>/\.fr-act \.t\b|#fr-tour\b|#fr-close\b/.test(s);
+  const hs=allRules.filter(r=>r.sels.some(btnSel)).flatMap(r=>declsOf(r.body).filter(([p])=>/^(min-height|height|max-height)$/.test(p)).map(([p,v])=>({p:p,v:v,media:r.media,sel:r.sel})));
+  const px=x=>{ const q=/^(\d+(?:\.\d+)?)px(?:!important)?$/.exec(x.v); return q?+q[1]:NaN; };
+  const low=hs.filter(x=>!(px(x)>=24||(x.p==="height"&&/^auto(!important)?$/.test(x.v))||(x.p==="max-height"&&/^none(!important)?$/.test(x.v))));
+  if(!hs.some(x=>x.p==="min-height"&&x.media===null&&x.sel==="#firstrun .fr-act .t"&&px(x)>=24)||low.length)
+    ferr.push("style.css: the first-run card's buttons are not at least 24 px high in every layout: "+(low.length?low.map(x=>x.sel+"{"+x.p+":"+x.v+"}"+(x.media?" (@media "+x.media+")":"")).join(", "):"no base min-height for #firstrun .fr-act .t"));
+  const hid=declsAll("body.firstrun-on .dispatch");
+  if(hid) ferr.push("style.css: the dispatch is hidden under the first-run card ("+hid.map(r=>r.media?"@media "+r.media:"every layout").join(", ")+"; decision 113)");
+  const und=decls("body.firstrun-on:not(.docked) .dispatch");
+  if(!und||!/display:none/.test(und.body.replace(/\s/g,""))) ferr.push("style.css: the undocked dispatch card is not hidden under the first-run card (decision 58)");
   ferr.forEach(e=>console.log("  ! "+e));
   console.log("first run: "+(ferr.length?ferr.length+" wrong":"a modal dialog described by its key, the primary and the stay from LABELS, buttons at least 24 px, the docked dispatch shown under it"));
   if(ferr.length) process.exitCode=1;
@@ -333,7 +487,7 @@ if(cerrs) process.exitCode=1;
   if(!/role="region"/.test(tb)||!/aria-labelledby="tour-n tour-t"/.test(tb)) oerr.push("shell.html: the bar is not a region named by its count and title: "+tb);
   if(!/<div class="tour-act">[\s\S]*?id="tour-exit"/.test(sh)) oerr.push("shell.html: the bar's Skip (tour-exit) is missing");
   const nx=decls("#tour-next"); if(!nx||!/var\(--text\)/.test(nx.body)||!/var\(--on-accent\)/.test(nx.body)) oerr.push("style.css: the bar's Next is not drawn from the tokens");
-  if(!decls("body.firstrun-on #openingbtn")) oerr.push("style.css: the tools' opening button does not stand down under the first-run card");
+  const ob=decls("body.firstrun-on #openingbtn"); if(!ob||!/display:none/.test(ob.body.replace(/\s/g,""))) oerr.push("style.css: the tools' opening button does not stand down under the first-run card");
   if(!/\{id:"opening", scope:"bar", group:"Time", keys:\["ArrowLeft","ArrowRight"\]/.test(app)) oerr.push("app.js: the bar's arrows are not a row of the key table");
   if(!/if\(OPENING\.on\)\{ openingEnd\("skip"\); return; \}/.test(app)) oerr.push("app.js: Esc does not skip the opening");
   if(!/lv&&!OPENING\.applying/.test(app)) oerr.push("app.js: a step's phase announcement is not folded into its own message");

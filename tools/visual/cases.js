@@ -4,7 +4,9 @@
    camera r units from the ground point under a map coordinate, along dir.
    interact: real pointer input, applied after the camera is placed (exercises bindCanvas). */
 module.exports = [
-  { name:"first-run", viewport:[1600,900], fresh:true,
+  /* roadmap step 1 (T-6): expect, the state a fresh page must stand in: 04:00, Study, the landscape, the first-run card open (decision 113);
+     thresholds.js expectState holds every case to it (the other cases' expected state comes from their own fields) */
+  { name:"first-run", viewport:[1600,900], fresh:true, expect:{t:240},
     note:"What a first-time visitor sees, untouched." },
   /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; owner decisions 114, 118, 121): the opening, each step on a fresh page reached as a visitor
      reaches it, by real clicks on the card's primary action and the bar's Next (opening: the step's index, or "end" for Finish pressed on the
@@ -17,9 +19,9 @@ module.exports = [
   { name:"opening-1-laptop", viewport:[1280,720], fresh:true, opening:0, note:"The opening's first step at 1280 x 720." },
   /* Stage 7B (owner decision 122): the first screen on a phone-sized window, recorded (its timeline is not held to 92 px). Listed before
      first-run-laptop so that the harness's last page, on which the self-test runs, stays the 1366 x 768 one */
-  { name:"narrow-390", viewport:[390,844], fresh:true,
+  { name:"narrow-390", viewport:[390,844], fresh:true, expect:{t:240},
     note:"The first screen at 390 x 844, undocked: recorded, not a supported layout (decision 122)." },
-  { name:"first-run-laptop", viewport:[1366,768], fresh:true,
+  { name:"first-run-laptop", viewport:[1366,768], fresh:true, expect:{t:240},
     note:"The same on a common laptop viewport." },
   { name:"overview-field", viewport:[1600,900], t:570, presentation:"study", mode:"terrain",
     cam:[-195,92,156,-33,4,-2], note:"Full battlefield from the west at 09:30 (Field vantage)." },

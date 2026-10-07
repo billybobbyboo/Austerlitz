@@ -9,7 +9,8 @@ console.error=(...a)=>errs.push(a.join(" "));
    Euler angles, spherical coordinates, and Object3D's transforms (position, rotation, quaternion, scale,
    matrix, matrixWorld, lookAt) and the cameras' projection. Stage 0 seats every figure through world
    matrices and places labels through the camera's projection, which token maths cannot exercise.
-   Rendering stays stubbed: renderer, render targets, textures, materials, geometries, Color. */
+   Rendering stays stubbed: renderer, render targets, textures, materials, geometries, Color; but every
+   material's parameters are checked by a real r128 material (T-1, below). */
 const REAL=require('three');
 class Col{constructor(h){this.r=1;this.g=1;this.b=1;this.setHex(h===undefined?0xffffff:h)}
  setHex(h){this.hex=h;this.r=((h>>16)&255)/255;this.g=((h>>8)&255)/255;this.b=(h&255)/255;return this}
@@ -54,7 +55,8 @@ const stub={
  WebGLRenderTarget:class{constructor(w,h,o){this.width=w;this.height=h;
    this.texture={generateMipmaps:true};Object.assign(this,o||{})}
    setSize(w,h){this.width=w;this.height=h} dispose(){}},
- ShaderMaterial:function(o){Object.assign(this,o||{});this.uniforms=o&&o.uniforms||{};
+ ShaderMaterial:function(o){new REAL.ShaderMaterial(o);   /* r128 checks the parameters (T-1, below) */
+   Object.assign(this,o||{});this.uniforms=o&&o.uniforms||{};
    this.dispose=()=>{};this.userData={}},
  OrthographicCamera:REAL.OrthographicCamera,
  PMREMGenerator:class{constructor(){}compileEquirectangularShader(){}
@@ -98,19 +100,16 @@ const stub={
  PCFSoftShadowMap:1,sRGBEncoding:1,ACESFilmicToneMapping:1,BackSide:1,DoubleSide:2,
  LinearFilter:1,ClampToEdgeWrapping:1,
 };
+/* T-1 (docs/FINAL_AUDIT.md; roadmap step 1, decision 131): a material's parameters are checked by three.js r128 itself. Each stub
+   constructor first builds the real r128 material from the same parameters, whose constructor runs r128's Material.setValues
+   (node_modules/three/src/materials/Material.js): an undefined value, the removed 'shading' and a key that is not a property of that
+   material each warn, word for word as in the browser, and the warning fails the suite (tools/run-all.sh). The stub keeps the values
+   the app reads back. Until step 1 this was a hand list per material, each a strict subset of r128's: it warned falsely on
+   LineBasicMaterial's 'fog' (every r128 material has fog, Material.js:16) and ShaderMaterial was not checked at all. */
 const matNames=["MeshBasicMaterial","MeshPhongMaterial","MeshLambertMaterial","MeshStandardMaterial",
   "SpriteMaterial","LineBasicMaterial","LineDashedMaterial"];
-const ALLOWED={MeshPhongMaterial:new Set(["color","vertexColors","flatShading","shininess","specular","side","transparent","opacity","map","depthTest","depthWrite","fog"]),
- MeshLambertMaterial:new Set(["color","vertexColors","side","transparent","opacity","map","depthTest","depthWrite","fog"]),
- MeshStandardMaterial:new Set(["color","vertexColors","flatShading","roughness","metalness","side",
-   "transparent","opacity","map","normalMap","normalScale","envMap","envMapIntensity","depthTest","depthWrite","fog"]),
- MeshBasicMaterial:new Set(["color","transparent","opacity","fog","depthWrite","depthTest","map","side","vertexColors"]),
- SpriteMaterial:new Set(["map","transparent","opacity","depthTest","fog","color","depthWrite"]),
- LineBasicMaterial:new Set(["color","transparent","opacity","depthTest","depthWrite","linewidth"]),
- LineDashedMaterial:new Set(["color","dashSize","gapSize","transparent","opacity","depthTest","scale","depthWrite"])};
-matNames.forEach(n=>{ stub[n]=function(o){ o=o||{};
-  Object.keys(o).forEach(k=>{ if(ALLOWED[n]&&!ALLOWED[n].has(k))
-    console.warn("THREE."+n+": '"+k+"' is not a property of this material."); });
+matNames.forEach(n=>{ if(typeof REAL[n]!=="function") throw new Error("three r128 has no "+n);
+  stub[n]=function(o){ new REAL[n](o); o=o||{};
   Object.assign(this,o); this.userData={}; this.opacity=o.opacity!==undefined?o.opacity:1;
   this.color=new Col(o.color); this.needsUpdate=false; this.dispose=()=>{}; }; });
 global.THREE=stub;
@@ -158,6 +157,10 @@ global.navigator={};
 global.location={search:"",hash:"",href:"about:blank"};   /* Stage 0 reads location.search (the ?harness and ?stats switches); a plain page load has neither */
 
 const fs=require('fs');
+/* roadmap step 1 (docs/FINAL_AUDIT.md T-9): bundle.js must be the build of the live sources (tools/fresh.js); a stale one stops the suite at
+   once, rather than driving old code for minutes. The suite does not rebuild it: build.py also writes the committed page. */
+{ const stale=require('./tools/fresh.js').bundleStale();
+  if(stale){ console.warn=origWarn; console.error=origErr; console.log("errors: 1\n  E "+stale); process.exit(1); } }
 try{
   eval(fs.readFileSync('bundle.js','utf8'));
 }catch(e){ errs.push("THROWN: "+e.message+"\n"+(e.stack||"").split("\n").slice(1,4).join("\n")); }
@@ -213,17 +216,27 @@ try{
   select(null,null);
   console.log("dossiers: "+nf+" formations, "+FEATURES.length+" features, "+TERRAIN_LINES.length+" terrain lines OK");
 
-  /* abuse: rapid switching, jumping, toggling */
+  /* abuse: rapid switching, jumping, toggling. T-6 (roadmap step 1): after each round the state is the last calls' (the mode, the
+     selection, the chapter, the clock and its phase), and play is off after stopPlay; until step 1 nothing here was asserted and its
+     "OK" was printed after an unrelated toggle */
   for(let i=0;i<40;i++){
-    setPhase(i%PHASES.length,true);
-    setMode(["terrain","staff","hybrid"][i%3]);
-    select(i%2?"f":"t", i%2?"sthilaire":"pratzen");
-    setChapter(i%3===0?ANALYSIS[i%ANALYSIS.length].id:null);
-    setClock(T_MIN+(i*37)%(T_MAX-T_MIN));
+    const ph=i%PHASES.length, m=["terrain","staff","hybrid"][i%3], sk=i%2?"f":"t", sid=i%2?"sthilaire":"pratzen",
+          ch=i%3===0?ANALYSIS[i%ANALYSIS.length].id:null, t=T_MIN+(i*37)%(T_MAX-T_MIN);
+    setPhase(ph,true);
+    setMode(m);
+    select(sk,sid);
+    setChapter(ch);
+    setClock(t);
     togglePlay();
     updateVisibility();
+    if(mode!==m||!selection||selection.kind!==sk||selection.id!==sid||chapter!==ch||clock!==t||curPhase!==phaseAt(clock))
+      throw new Error("rapid switching, round "+(i+1)+": the state is not the last calls' (want "+JSON.stringify({m,sel:sk+":"+sid,ch,t})+
+        ", got "+JSON.stringify({mode,sel:selection?selection.kind+":"+selection.id:null,chapter,clock,curPhase,phaseAt:phaseAt(clock)})+")");
   }
-  stopPlay(); setChapter(null); select(null,null); setCommandView("none");
+  stopPlay();
+  if(playing) throw new Error("rapid switching: still playing after stopPlay");
+  console.log("40 rounds of rapid switching: after each the mode, the selection, the chapter, the clock and its phase the last calls'; play off after stopPlay OK");
+  setChapter(null); select(null,null); setCommandView("none");
   setPresentation('map'); updateVisibility(); setPresentation('study');
   setSpeed(4); setSpeed(1);
   openSources();
@@ -242,14 +255,26 @@ try{
   setPresentation("study"); setMode("terrain");
   EVENTS.forEach(e=>{ select("e",e.id); paintDrawer(); updateVisibility(); });
   select(null,null);
-  let evSeen=0, sitSeen=0;
+  /* T-6 (roadmap step 1): what the situation paints is read back at every sampled minute (until step 1 it was counted, never read):
+     the caption names the act and the phase; where an event is live it names it (or, in a dwell, the dwell's events) and the Now
+     tab's strip gives its reason; where none is, the strip gives the act's line */
+  let evSeen=0, sitSeen=0, capOk=0, named=0, whyOk=0, lineOk=0;
   for(let t=T_MIN;t<=T_MAX;t+=7){
     setClock(t); updateVisibility();
-    if(liveEvents(t).length) evSeen++;
-    paintSituation();
-    if(_sitKey) sitSeen++;
+    _sitKey=""; paintSituation(); sitSeen++;
+    const cap=document.getElementById("tb-cap").innerHTML, host=document.getElementById("situation").innerHTML;
+    const act=actOf(curPhase), live=liveEvents(clock), top=live.length?live[0].e:null, dw=dwellEvents();
+    if(cap.indexOf(esc(act.n.toUpperCase()))>=0&&cap.indexOf(esc(PHASES[curPhase].title))>=0) capOk++;
+    if(top){ evSeen++;
+      if(dw&&dw.length?dw.every(e=>cap.indexOf(esc(e.n))>=0):cap.indexOf(esc(top.n))>=0) named++;
+      if(host.indexOf(esc(top.why))>=0) whyOk++; }
+    else if(host.indexOf(esc(act.line))>=0) lineOk++;
   }
-  console.log("event layer + situation strip over "+evSeen+" sampled minutes OK");
+  if(capOk!==sitSeen||!evSeen||evSeen===sitSeen||named!==evSeen||whyOk!==evSeen||lineOk!==sitSeen-evSeen)
+    throw new Error("situation: of "+sitSeen+" minutes the caption names the act and phase at "+capOk+"; of "+evSeen+" with a live event it names it at "+
+      named+", the strip its reason at "+whyOk+"; of "+(sitSeen-evSeen)+" without, the strip the act's line at "+lineOk);
+  console.log("event layer + situation strip over "+sitSeen+" sampled minutes: the act and phase named at each; at the "+evSeen+
+    " with a live event the event named and its reason given, at the "+(sitSeen-evSeen)+" without the act's line OK");
 
   /* plan links must track the clock without leaking geometry */
   ["al","fr","both"].forEach(p=>{
@@ -354,28 +379,73 @@ try{
   if(selRing.visible) throw new Error("ring outlived the selection");
   console.log("selection ring OK");
 
-  /* event jumping must not drag the camera when the moment is already in view */
-  setClock(T_MIN,{force:true});
-  const camBefore=camera.position.clone();
-  freeCam=false;
-  jumpEvent(1); jumpEvent(1); jumpEvent(-1);
-  if(!isFinite(camera.position.x)) throw new Error("camera left the world");
-  console.log("event jump camera behaviour OK");
+  /* event jumping must not drag the camera when the moment is already in view, and centres it when it is not (goToEventAt).
+     T-6 (roadmap step 1): until step 1 the camera's position was kept and never compared, and all three jumps here centred, so the
+     in-view case never arose. Now, at every distinct event start after the day's first minute, from the start before it, the landscape
+     camera is framed as centreOnMap frames (its offset and distance 86) on the event the jump will reach, then on a point far from it:
+     framed on it, the jump reaches its start without a centring and Follow stays on; framed away, it centres once and Follow is off. A
+     centring is a glide, so the camera's position cannot tell the cases apart synchronously: the evidence is the centreOnMap calls
+     and freeCam. */
+  { const realC=centreOnMap; let calls=0; centreOnMap=function(p,r){ calls++; return realC(p,r); };
+    const finish=()=>{ let g=0; while(tween&&g<4){ tween(performance.now()+1e7); g++; } };   /* as the self-test's finishTween */
+    const S=[...new Set(eventTimes().filter(t=>t>T_MIN+1.5))], bad=[]; let inOk=0, offOk=0;
+    const aim=(p,away)=>{ const w=W(p[0],p[1]); orbitTarget.set(w[0],displayHeight(w[0],w[1]),w[1]);
+      if(away){ orbitTarget.x=-orbitTarget.x+(orbitTarget.x>0?-120:120); orbitTarget.z=-orbitTarget.z; }
+      camera.position.copy(orbitTarget).add(new THREE.Vector3(-0.55,0.62,0.56).normalize().multiplyScalar(86));
+      camera.lookAt(orbitTarget); camera.updateMatrixWorld(true); };
+    try{
+      setMode("terrain");
+      S.forEach((s,k)=>{ const L=liveEvents(s); if(!L.length){ bad.push(fmtClock(s)+": no live event at its own start"); return; } const e=L[0].e;
+        [false,true].forEach(away=>{ const how=e.id+" at "+fmtClock(s)+(away?" framed away":" framed on it");
+          setClock(k?S[k-1]:T_MIN,{instant:true,force:true,camera:false}); finish(); freeCam=false; aim(e.p,away);
+          if(onScreen(e.p)===away){ bad.push(how+": the set-up did not frame it "+(away?"out of":"in")+" view"); return; }
+          const p0=camera.position.clone(), q0=orbitTarget.clone(), c0=calls; jumpEvent(1); const n=calls-c0;
+          if(clock!==s) bad.push(how+": the jump reached "+fmtClock(clock));
+          else if(!away&&(n||freeCam||camera.position.distanceTo(p0)>1e-9||orbitTarget.distanceTo(q0)>1e-9)) bad.push(how+": "+n+" centrings, Follow "+(freeCam?"off":"on"));
+          else if(away&&(n!==1||!freeCam)) bad.push(how+": "+n+" centrings, Follow "+(freeCam?"off":"on"));
+          else if(away) offOk++; else inOk++; }); });
+    } finally { centreOnMap=realC; }
+    if(!S.length||bad.length||inOk!==S.length||offOk!==S.length) throw new Error("event jump camera: "+inOk+" and "+offOk+" of "+S.length+" starts; "+bad.slice(0,4).join("; "));
+    /* then as before step 1: from the day's start, two jumps forward and one back, the camera finite */
+    setClock(T_MIN,{force:true});
+    freeCam=false;
+    jumpEvent(1); jumpEvent(1); jumpEvent(-1);
+    if(!isFinite(camera.position.x)) throw new Error("camera left the world");
+    console.log("event jump camera: at each of "+S.length+" event starts, framed on its event no centring and Follow kept, framed away one centring and Follow off OK"); }
 
-  /* plan links thin out at distance and fill in on approach */
+  /* plan links thin out at distance and fill in on approach. T-6 (roadmap step 1): the links drawn are counted (until step 1 the pairs
+     were, a constant): far (from 190 units, updatePlanLinks) the leading formation of each column on the field, near every one on it */
   setPlan("al");
-  orbitTarget.set(0,0,14); camera.position.set(-196,132,226);
-  updateVisibility();
-  const farCount=planLinks?planLinks.userData.pairs.length:0;
-  camera.position.set(-60,40,60); updateVisibility();
-  if(!farCount) throw new Error("plan links never built");
-  setPlan(planSide);
-  console.log("plan link density OK");
+  if(!planLinks) throw new Error("plan links never built");
+  { const drawnLinks=()=>{ const a=planLinks.geometry.attributes.position.array; let n=0;
+      for(let k=0;k<a.length;k+=6) if(a[k]||a[k+1]||a[k+2]||a[k+3]||a[k+4]||a[k+5]) n++; return n; };
+    const P=planLinks.userData.pairs, lead=P.filter(q=>q[2]&&posNow(q[0])).length, all=P.filter(q=>posNow(q[0])).length;
+    orbitTarget.set(0,0,14); camera.position.set(-196,132,226);
+    updateVisibility();
+    const farD=viewDist(), far=drawnLinks();
+    camera.position.set(-60,40,60); updateVisibility();
+    const nearD=viewDist(), near=drawnLinks();
+    setPlan(planSide);
+    if(selection||!(farD>=190)||!(nearD<190)||far!==lead||near!==all||!(all>lead))
+      throw new Error("plan link density: far ("+farD.toFixed(1)+" units) "+far+" drawn, want the "+lead+" leading; near ("+nearD.toFixed(1)+") "+near+", want all "+all+
+        (selection?"; a selection is set":""));
+    console.log("plan link density: far ("+farD.toFixed(0)+" units) "+far+" links, the leading formations on the field; near ("+nearD.toFixed(0)+") all "+near+" OK"); }
 
-  /* the derived readings must use the measured wording */
+  /* the derived readings must use the measured wording. T-6 (roadmap step 1): read back at seven clocks (until step 1 painted at one,
+     never read): the plateau reading ("derived", its figure, its note) in the Now tab's strip and the caption exactly where the Allied
+     hold the heights up to phase 6; the centre separation ("derived", its note) exactly where it is detected; each seen shown and not */
   if(typeof centreSeparation!=="function") throw new Error("centreSeparation missing");
-  setClock(660); paintSituation();
-  console.log("derived reading wording OK");
+  { const seen={heights:0,noHeights:0,cut:0,noCut:0}, bad=[];
+    [T_MIN,525,600,660,700,764,800].forEach(t=>{ setClock(t); _sitKey=""; paintSituation();
+      const host=document.getElementById("situation").innerHTML, cap=document.getElementById("tb-cap").innerHTML;
+      const onH=plateauStrength("al"), want=curPhase<=6&&onH>0, cut=!!centreSeparation();
+      const tag='<small>derived</small> on the heights: Allied &asymp; '+onH.toLocaleString(), cutTag='<small>derived</small> centre separation detected';
+      if((host.indexOf(tag)>=0&&host.indexOf(esc(FLAT_NOTE))>=0)!==want||(cap.indexOf(tag)>=0)!==want) bad.push(fmtClock(t)+": the plateau reading "+(want?"not shown":"shown"));
+      if((host.indexOf(cutTag)>=0&&host.indexOf(esc(SEP_NOTE))>=0)!==cut||(cap.indexOf(cutTag)>=0)!==cut) bad.push(fmtClock(t)+": the separation "+(cut?"not shown":"shown"));
+      seen[want?"heights":"noHeights"]++; seen[cut?"cut":"noCut"]++; });
+    if(bad.length||!seen.heights||!seen.noHeights||!seen.cut||!seen.noCut) throw new Error("derived reading wording: "+bad.join("; ")+" (seen "+JSON.stringify(seen)+")");
+    console.log("derived reading wording: the plateau reading shown at "+seen.heights+" of 7 clocks and not at "+seen.noHeights+
+      ", the centre separation at "+seen.cut+" and not at "+seen.noCut+", each with \"derived\" and its note OK"); }
 
   /* the sky must repaint through every lighting state without a NaN */
   for(let ph=0;ph<PHASES.length;ph++){
@@ -641,10 +711,13 @@ try{
   rec.block.userData.layout=origLayout;
   console.log("figures re-seat on the ground when the block moves OK");
 
-  /* villages: chimneys and extruded gables */
-  let chimneys=0; scene.traverse(o=>{ if(o.geometry&&o.geometry.constructor&&o.material===undefined) return; });
+  /* villages: chimneys and extruded gables. T-6 (roadmap step 1): until step 1 a traverse here did nothing and only the gables were
+     checked; now the houses, the chimneys in the scene and the textures of walls and roofs too */
   if(!(world.roofs.geometry instanceof THREE.ExtrudeGeometry)) throw new Error("roofs are not extruded gables");
-  console.log("villages: extruded gables, textured walls OK");
+  if(!world.houses||!(world.houses.count>0)||!world.houses.parent) throw new Error("villages: no houses drawn");
+  if(!world.chimneys||!(world.chimneys.count>0)||!world.chimneys.parent) throw new Error("villages: no chimneys drawn");
+  if(!world.houses.material.map||!world.roofs.material.map) throw new Error("villages: walls or roofs untextured");
+  console.log("villages: "+world.houses.count+" houses with textured walls, extruded textured gables, "+world.chimneys.count+" chimneys OK");
 
   /* parent/child rendering and accounting, driven through the real frame path across the whole battle:
      a command never renders troops; a column never draws a detached brigade twice; every visible
@@ -679,9 +752,12 @@ try{
   console.log("parent/child: "+parents.map(id=>id+(FORMATIONS[id].arm==="hq"?" (command post)":" (column, own battalions only)")).join(", ")+
     "; "+samples+" moments: no command renders troops, no detachment drawn twice, every drawn block on the field, totals within both armies OK");
 
-  /* the events layer toggles off cleanly */
-  layerOn.events=false; updateVisibility(); layerOn.events=true; updateVisibility();
-  console.log("40 rounds of rapid switching OK");
+  /* the events layer toggles off and on cleanly. T-6 (roadmap step 1): its visibility is read back (until step 1 it was not, and this
+     printed the rapid switching's "OK", which now prints after its own rounds) */
+  { layerOn.events=false; updateVisibility(); const off=eventGroup.visible;
+    layerOn.events=true; updateVisibility(); const on=eventGroup.visible;
+    if(off||!on||on!==!cleanViewHidesEvents()) throw new Error("events layer: hidden "+!off+" when off, shown "+on+" when on, in "+presentation);
+    console.log("events layer: off hides it, on shows it again ("+presentation+") OK"); }
 
   /* Stage 6B: the appearance table's resolution, a dry run for every drawn block (appearance.js; decision 100) */
   { const ids=Object.keys(units).filter(id=>units[id].block); let parts=0, dom=0;
@@ -694,21 +770,73 @@ try{
     console.log("appearance: "+ids.length+" blocks resolve to "+parts+" dress parts ("+dom+" by their dominant class) OK"); }
 }catch(e){ errs.push("DRIVE: "+e.message+"\n"+(e.stack||"").split("\n").slice(1,4).join("\n")); }
 
-setTimeout(function(){
-  if(!_atlasCanvas) console.log("  E photo atlas: no canvas");
-  else if(_atlas.needsUpdate!==true) console.log("  E photo atlas: photograph never painted (needsUpdate not set)");
+/* the photograph is painted into the atlas when its image loads (a microtask in this stub): checked after the dry runs, before the report.
+   T-1 (roadmap step 1): until step 1 its "E" lines were printed outside the report and set no exit code */
+function atlasCheck(){
+  if(typeof _atlasCanvas==="undefined"||!_atlasCanvas) errs.push("photo atlas: no canvas");
+  else if(_atlas.needsUpdate!==true) errs.push("photo atlas: photograph never painted (needsUpdate not set)");
   else console.log("photo atlas: photograph painted under the land cells OK");
-},0);
+}
 if(process.env.DUMP_FX){
   const fsx=require('fs'); fsx.mkdirSync('/tmp/tcheck/fx',{recursive:true});
   for(const k of ['matBright','matBlur','matComp','matFXAA'])
     fsx.writeFileSync('/tmp/tcheck/fx/'+k+'.frag','precision highp float;\n'+FX[k].fragmentShader);
   console.log('dumped 4 post shaders');
 }
+/* Decision 141 (roadmap step 1, docs/FINAL_AUDIT.md T-0): the embedded type's loader, dry runs, before the report. The stub document has
+   no document.fonts, so init took the "none" path; its FONTS.ready must have resolved (a fault there is an E line, not a late rejection).
+   Then fontsReady is driven over stub FontFaceSets: every face loads; one rejects (the promise still resolves, the face listed failed);
+   one never settles (the timeout resolves it, timed out); load() throws; every face already loaded (not late); a face of another family
+   ignored; no document.fonts. And relayoutAfterFonts runs, with the first-run card open and closed. */
+async function fontDryRuns(){
+  const st0=await FONTS.ready;
+  if(!FONTS.state||FONTS.state.none!==true) throw new Error("init's fontsReady without document.fonts did not record the 'none' path");
+  function face(family,how,status){ const f={family:family,weight:"400",unicodeRange:"U+0020-007E",status:status||"unloaded"};
+    f.load=()=>{ if(how==="throw") throw new Error("stub: load throws");
+      if(how==="hang"){ f.status="loading"; return new Promise(()=>{}); }
+      if(how==="reject"){ f.status="loading"; return Promise.reject(new Error("stub: bad font")).catch(e=>{ f.status="error"; throw e; }); }
+      f.status="loaded"; return Promise.resolve(f); };
+    return f; }
+  function set(list){ global.document.fonts={forEach:cb=>list.forEach(cb)}; }
+  const three=how=>[face('"Austerlitz Sans"',"ok"),face('"Austerlitz Sans"',"ok"),face("Austerlitz Serif",how||"ok")];
+  const cases=[
+    ["every face loads", three(), r=>r.loaded.length===3&&!r.failed.length&&r.late&&!r.timedOut&&!r.none],
+    ["one face rejects", three("reject"), r=>r.loaded.length===2&&r.failed.length===1&&/error/.test(r.failed[0])&&!r.timedOut],
+    ["one face never settles", three("hang"), r=>r.loaded.length===2&&r.failed.length===1&&r.timedOut],
+    ["load() throws", three("throw"), r=>r.loaded.length===2&&r.failed.length===1&&/threw/.test(r.failed[0])&&!r.timedOut],
+    ["every face already loaded", [face("Austerlitz Sans","ok","loaded"),face("Austerlitz Sans","ok","loaded"),face("Austerlitz Serif","ok","loaded")],
+      r=>r.loaded.length===3&&!r.late&&!r.timedOut],
+    ["a face of another family is not counted", three().concat([face("Georgia","hang")]), r=>r.loaded.length===3&&!r.failed.length&&!r.timedOut]];
+  for(const [name,list,ok] of cases){ set(list); const t0=Date.now(), r=await fontsReady(50);
+    if(!ok(r)) throw new Error("fontsReady, "+name+": "+JSON.stringify(r)); if(Date.now()-t0>2000) throw new Error("fontsReady, "+name+": took "+(Date.now()-t0)+" ms"); }
+  delete global.document.fonts;
+  const none=await fontsReady(50); if(!none.none) throw new Error("fontsReady without document.fonts: "+JSON.stringify(none));
+  const fr=firstRunOpen; firstRunOpen=true; relayoutAfterFonts(); firstRunOpen=false; relayoutAfterFonts(); firstRunOpen=fr;
+  console.log("embedded type: init's loader took the no-fonts path ("+JSON.stringify(st0===undefined?FONTS.state:st0)+"); fontsReady over "+cases.length+
+    " stub face sets (loaded, rejected, never settled, throwing, already loaded, another family) and none; relayoutAfterFonts with the card open and closed OK");
+}
+let reported=false;
+function report(){
+if(reported) return; reported=true;
 console.warn=origWarn; console.error=origErr;
 const uniq=[...new Set(warns)];
 console.log("\nconsole.warn unique:",uniq.length);
-uniq.slice(0,12).forEach(w=>console.log("  W "+w));
+uniq.forEach(w=>console.log("  W "+w));   /* every one (until step 1 the first 12) */
 console.log("errors:",errs.length);
 errs.forEach(e=>console.log("  E "+e));
+/* T-1 (roadmap step 1): a warning or an error fails this suite by its exit code too (until step 1 only by run-all's patterns, and a
+   warning by none) */
+if(uniq.length||errs.length) process.exitCode=1;
+}
+/* a dry run that never settles must not skip the report: a watchdog, and a last word on exit */
+const fontWatch=setTimeout(()=>{ errs.push("FONTS: the dry runs did not finish within 30 s"); report(); },30000);
+process.on("exit",()=>{ if(!reported){ console.log("  E FONTS: the dry runs never settled, so the report was not reached"); process.exitCode=1; } });
+/* a promise rejected with no handler (the app's or a dry run's) is a named error of this suite, not a late crash past the report
+   (roadmap step 1, the critic's conflict 10); one after the report is printed and fails the exit code */
+process.on("unhandledRejection",e=>{ const m="UNHANDLED REJECTION: "+(e&&e.message||String(e))+"\n"+((e&&e.stack)||"").split("\n").slice(1,4).join("\n");
+  if(reported){ console.log("  E "+m); process.exitCode=1; } else errs.push(m); });
+fontDryRuns().catch(e=>errs.push("FONTS: "+e.message+"\n"+(e.stack||"").split("\n").slice(1,4).join("\n")))
+  .then(()=>new Promise(r=>setTimeout(r,0)))
+  .then(()=>{ try{ atlasCheck(); }catch(e){ errs.push("photo atlas: "+e.message); } })
+  .then(()=>{ clearTimeout(fontWatch); report(); });
 

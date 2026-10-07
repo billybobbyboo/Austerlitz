@@ -1,0 +1,55 @@
+{
+ "about": "written by tools/fonts/build-fonts.py with fonts.css; do not edit",
+ "tools": {
+  "fonttools": "4.66.1",
+  "brotli": "1.2.0"
+ },
+ "fonts_css": {
+  "bytes": 96643,
+  "sha256": "02e23301f6ae6767d9fcd4c80c1bad635b5040647fc02db196413c0fa6be7e26",
+  "licence_header_bytes": 17463
+ },
+ "features": [
+  "kern",
+  "liga",
+  "ccmp",
+  "locl",
+  "mark",
+  "mkmk",
+  "rlig",
+  "clig",
+  "tnum"
+ ],
+ "faces": [
+  {
+   "family": "Austerlitz Sans",
+   "face": "AusterlitzSans",
+   "source": "inter",
+   "source_sha256": "29160a80ff49ddcab2c97711247e08b1fab27a484a329ce8b813d820dc559031",
+   "codepoints": 462,
+   "unicode_range": "U+0020-007E,U+00A0-00AC,U+00AE-0148,U+014A-017F,U+0400-045F,U+0462-0463,U+0472-0475,U+2010-2027,U+2030-203A,U+2190-2193,U+2212,U+2248,U+25BA,U+25C4",
+   "woff2_bytes": 34552,
+   "woff2_sha256": "e19bcf31d0221c6b0163799aee1c772dbc870579398a1b4f4e09de12ac658009"
+  },
+  {
+   "family": "Austerlitz Sans",
+   "face": "AusterlitzSans-BoxLine",
+   "source": "dejavu",
+   "source_sha256": "7da195a74c55bef988d0d48f9508bd5d849425c1770dba5d7bfc6ce9ed848954",
+   "codepoints": 1,
+   "unicode_range": "U+2502",
+   "woff2_bytes": 2304,
+   "woff2_sha256": "6bfc476331825761279fcb57c5143323534e16b3b38194889eb2cc0d52f8242e"
+  },
+  {
+   "family": "Austerlitz Serif",
+   "face": "AusterlitzSerif",
+   "source": "pagella",
+   "source_sha256": "44e64260716d8f2bbe412baa1ee99b7c995190ac4573177c24def0b9200438c7",
+   "codepoints": 349,
+   "unicode_range": "U+0020-007E,U+00A0-0137,U+0139-0148,U+014A-0165,U+0168-017F,U+2010-201A,U+201C-201E,U+2020-2022,U+2026,U+2030-2037,U+2039-203A,U+2190-2193,U+2212,U+2248",
+   "woff2_bytes": 21784,
+   "woff2_sha256": "1ace54987e96b902a300cc129d771b32af684a77c903ab8401557b7d9cafb67b"
+  }
+ ]
+}

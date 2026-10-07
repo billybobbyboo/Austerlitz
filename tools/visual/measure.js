@@ -45,7 +45,9 @@
   function apply(spec){
     var dbg=D();
     if(spec.factor==="model") spec=Object.assign({},spec,{factor:GEOREF.EXAG});
-    if(dbg&&dbg.applyCase) return dbg.applyCase(spec, aimOf);
+    /* roadmap step 1 (T-6): any glide applyCase began (eyeEnter's) finished, then the camera snapshot the case's state is held to
+       (thresholds.js expectState: the camera after the harness's own settling within CAM_TOL of it) */
+    if(dbg&&dbg.applyCase){ var ok=dbg.applyCase(spec, aimOf); if(dbg.settle) dbg.settle(1,true); window.__applied=camState(); return ok; }
     /* pre-Stage-0 build: set the same state through its globals */
     var fr=document.getElementById("firstrun"); if(fr) fr.hidden=true;
     if(typeof stopPlay==="function") stopPlay();
@@ -58,7 +60,66 @@
     var c=spec.cam||aimOf(spec);
     freeCam=true; tween=null;
     camera.position.set(c[0],c[1],c[2]); orbitTarget.set(c[3],c[4],c[5]); camera.lookAt(orbitTarget);
+    window.__applied=camState();
     return true;
+  }
+
+  /* ---- roadmap step 1 (T-6): the state a case stands in, and (T-5) what the build has ---- */
+  function g(f,d){ try{ var v=f(); return v===undefined?d:v; }catch(e){ return d; } }
+  /* the camera: on the paper map the plan camera's centre and scale, on the landscape the eye and the orbit target */
+  function camState(){
+    if(g(function(){ return mode; },null)==="staff"&&typeof MAPCAM!=="undefined"){ var q=MAPCAM.state(); return {kind:"map",x:q.x,z:q.z,wpp:q.wpp}; }
+    var L=(typeof landCam!=="undefined"&&landCam)?landCam:camera;
+    return {kind:"land",pos:L.position.toArray(),tgt:orbitTarget.toArray()};
+  }
+  /* where the case's cam or aim puts the camera, [eye x, y, z, target x, y, z] (reframing and the floor move only the heights) */
+  function wantCam(spec){ return spec.cam||aimOf(spec); }
+  function state(spec){
+    spec=spec||{};
+    var land=g(function(){ return mode; },null)!=="staff", aimErr=null, paperFocus=null;
+    /* on the landscape: a case with a cam or an aim, not the Overview (fitted into the free rectangle, Stage 3D), not the eye level (it stands at
+       the headquarters, 5E), not the interaction case (real input moves it on purpose), not a fresh page */
+    if(land&&!spec.fresh&&!spec.eye&&!spec.interact&&(spec.cam||spec.aim)&&!(spec.cam&&typeof isOverview==="function"&&isOverview(spec.cam))){
+      var c=wantCam(spec), L=(typeof landCam!=="undefined"&&landCam)?landCam:camera;
+      aimErr=+Math.max(Math.abs(L.position.x-c[0]),Math.abs(L.position.z-c[2]),Math.abs(orbitTarget.x-c[3]),Math.abs(orbitTarget.z-c[5])).toFixed(6); }
+    /* on the paper map: a case centred on a cam or an aim (not framed): the point at the free rectangle's centre (px) */
+    if(!land&&!spec.fresh&&spec.paper!=="frame"&&(spec.cam||spec.aim)&&typeof MAPCAM!=="undefined"&&MAPCAM.toScreen){
+      var c2=wantCam(spec), p=MAPCAM.toScreen(c2[3],c2[5]), fr=MAPCAM.freeRect();
+      paperFocus=+Math.hypot(p[0]-(fr[0]+fr[2])/2,p[1]-(fr[1]+fr[3])/2).toFixed(3); }
+    return {clock:g(function(){ return clock; },null), presentation:g(function(){ return presentation; },null), mode:g(function(){ return mode; },null),
+      factor:g(function(){ return DISPLAY.factor; },null), defaultFactor:g(function(){ return DISPLAY.defaultFactor; },null), exag:g(function(){ return GEOREF.EXAG; },null),
+      selection:g(function(){ return selection?selection.kind+":"+selection.id:null; },null), commandView:g(function(){ return commandView; },null),
+      plan:g(function(){ return planSide; },null), eye:g(function(){ return EYE.on; },null), tour:g(function(){ return tourStep; },null),
+      opening:g(function(){ return OPENING.on; },null), openingPlay:g(function(){ return !!OPENING.play; },null), firstRun:g(function(){ return firstRunOpen; },null),
+      playing:g(function(){ return playing; },null), freeCam:g(function(){ return freeCam; },null), tween:g(function(){ return !!tween; },null),
+      cam:camState(), applied:window.__applied||null, aimErr:aimErr, paperFocus:paperFocus,
+      layers:g(function(){ return {confidence:layerOn.confidence, routes:layerOn.routes, skeleton:layerOn.skeleton}; },{}),
+      confNone:g(function(){ return !!CONF.none; },null), skelDay:g(function(){ return !!SKEL.day; },null),
+      viewport:[window.innerWidth,window.innerHeight],
+      /* the vertex layout rg() reads: 280 x 240 cells, two triangles each, 18 floats */
+      groundLayout:g(function(){ return groundMesh.geometry.attributes.position.array.length===280*240*18&&!groundMesh.geometry.index; },false)};
+  }
+  /* read-only: what the build has (thresholds.js REQUIRED_FEATURES); safe on any build */
+  function features(){
+    var d=D()||{};
+    return {LANDCAM:typeof LANDCAM!=="undefined", syncViewOffset:typeof syncViewOffset==="function", displayHeight:typeof displayHeight==="function",
+      ML:hasLayer(), MAPCAM:typeof MAPCAM!=="undefined", OPENING:typeof OPENING!=="undefined", CONF:typeof CONF!=="undefined",
+      ROUTES:typeof ROUTES!=="undefined", SKEL:typeof SKEL!=="undefined", EYE:typeof EYE!=="undefined", frButtons:typeof frButtons==="function",
+      timelineRow:!!document.getElementById("tb-vm"), nowTab:!!document.getElementById("tab-now"), DWELL:typeof DWELL!=="undefined",
+      KEYS:typeof KEYS!=="undefined", SUN_DAY:typeof SUN_DAY!=="undefined", ATMO:typeof ATMO!=="undefined", SMOKE:typeof SMOKE!=="undefined",
+      settle:!!d.settle, applyCase:!!d.applyCase, selfTest:!!d.selfTest};
+  }
+
+  /* ---- roadmap step 1 (T-1): an app canvas's pixels are read through a canvas the harness owns ----
+     getImageData on a canvas the app created (a sprite's texture) read it again at every case, and Chromium warned at each read after the first
+     ("Canvas2D: Multiple readback operations ..."); asking the app's canvas for {willReadFrequently:true} returns its existing context, so the
+     option would be ignored. The canvas is copied same-size at integer offsets, so alpha and opaque colour come back exactly */
+  var _rb=null;
+  function readCanvas(src){
+    if(!_rb) _rb=document.createElement("canvas");
+    _rb.width=src.width; _rb.height=src.height;
+    var x=_rb.getContext("2d",{willReadFrequently:true}); x.clearRect(0,0,src.width,src.height); x.drawImage(src,0,0);
+    return x.getImageData(0,0,src.width,src.height).data;
   }
 
   /* ---- sprites on screen ---- */
@@ -66,7 +127,7 @@
   function inkBox(tex){
     if(!tex||!tex.image||!tex.image.getContext) return [0,0,1,1];
     var cv=tex.image; if(inkCache.has(cv)) return inkCache.get(cv);
-    var w=cv.width,h=cv.height,d=cv.getContext("2d").getImageData(0,0,w,h).data;
+    var w=cv.width,h=cv.height,d=readCanvas(cv);
     var x0=w,y0=h,x1=-1,y1=-1;
     for(var y=0;y<h;y++) for(var x=0;x<w;x++){ if(d[(y*w+x)*4+3]>24){ if(x<x0)x0=x; if(x>x1)x1=x; if(y<y0)y0=y; if(y>y1)y1=y; } }
     var r = x1<0 ? [0.5,0.5,0.5,0.5] : [x0/w,y0/h,(x1+1)/w,(y1+1)/h];
@@ -354,7 +415,7 @@
   /* ---- sprite textures and mist ---- */
   function edgeAlpha(tex){
     if(!tex||!tex.image||!tex.image.getContext) return null;
-    var c=tex.image, w=c.width, h=c.height, d=c.getContext("2d").getImageData(0,0,w,h).data, mx=0;
+    var c=tex.image, w=c.width, h=c.height, d=readCanvas(c), mx=0;
     for(var x=0;x<w;x++){ mx=Math.max(mx,d[(x)*4+3],d[((h-1)*w+x)*4+3]); }
     for(var y=0;y<h;y++){ mx=Math.max(mx,d[(y*w)*4+3],d[(y*w+w-1)*4+3]); }
     return mx;
@@ -474,7 +535,7 @@
       var im=new Image();
       im.onload=function(){
         var cv=document.createElement("canvas"); cv.width=im.width; cv.height=im.height;
-        var x=cv.getContext("2d"); x.drawImage(im,0,0);
+        var x=cv.getContext("2d",{willReadFrequently:true}); x.drawImage(im,0,0);
         var d=x.getImageData(0,0,cv.width,cv.height).data, R=panelRects(), n=0, blk=0, lum=0;
         function inUI(xx,y){ for(var k=0;k<R.length;k++){ var r=R[k]; if(xx>=r[0]&&xx<r[2]&&y>=r[1]&&y<r[3]) return true; } return false; }
         for(var y=0;y<cv.height;y+=2) for(var xx=0;xx<cv.width;xx+=2){
@@ -499,5 +560,6 @@
 
   window.__aus={apply:apply, metrics:metrics, pixels:pixels, rg:rg, groundMax:groundMax, figures:figures,
                 overlaps:overlaps, aimOf:aimOf, effVisible:effVisible, unobstructed:unobstructed, textContrast:textContrast, layerTexts:layerTexts,
-                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, phaseLabels:phaseLabels, headsHidden:headsHidden, focusOffset:focusOffset, smokeShare:smokeShare, confShare:confShare};
+                legendOverDispatch:legendOverDispatch, headRects:headRects, paperMap:paperMap, legendOverPanels:legendOverPanels, docking:docking, timeline:timeline, phaseLabels:phaseLabels, headsHidden:headsHidden, focusOffset:focusOffset, smokeShare:smokeShare, confShare:confShare,
+                state:state, features:features, camState:camState, readCanvas:readCanvas};
 })();
