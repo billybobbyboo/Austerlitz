@@ -47,14 +47,19 @@ PREREQ.forEach(([after,before])=>{
   if(!a||!b){ fail("temporal",`prerequisite pair ${after}/${before} references a missing event`); return; }
   if(a[0]<b[0]) fail("temporal",`"${after}" starts before its prerequisite "${before}"`);
 });
-/* every event's named formations must actually be on the field then */
+/* every event's named formations must actually be on the field then. T-6 (docs/FINAL_AUDIT.md): an unknown id fails (it was skipped);
+   an aggregate is on the field when one of its tracked formations is, and fails if it has none */
 EVENTS.forEach(e=>{
   const w=Array.isArray(e.t)?e.t:[e.t,e.t];
   clock=(w[0]+w[1])/2;
   e.forms.forEach(fid=>{
-    if(!FORMATIONS[fid]) return;
-    if(!FORMATIONS[fid].track) return;
-    if(!posNow(fid)) fail("temporal",`event "${e.id}" names ${fid}, which is not on the field at ${fmtClock(clock)}`);
+    if(!FORMATIONS[fid]){ fail("temporal",`event "${e.id}" names ${fid}, which is not a formation`); return; }
+    if(FORMATIONS[fid].track){
+      if(!posNow(fid)) fail("temporal",`event "${e.id}" names ${fid}, which is not on the field at ${fmtClock(clock)}`);
+      return; }
+    const lv=leavesOf(fid,[]);
+    if(!lv.length) fail("temporal",`event "${e.id}" names ${fid}, an aggregate with no tracked formation`);
+    else if(!lv.some(id=>posNow(id))) fail("temporal",`event "${e.id}" names ${fid}, none of whose formations (${lv.join(", ")}) is on the field at ${fmtClock(clock)}`);
   });
 });
 
@@ -201,23 +206,33 @@ Object.keys(FORMATIONS).forEach(id=>{scan(id,FORMATIONS[id].role);scan(id,FORMAT
   let n=0; RETIRED.forEach(ph=>Object.keys(src).forEach(f=>{ if(src[f].indexOf(ph)>=0){ fail("retired",`${f} still says "${ph}"`); n++; } }));
   console.log("retired claims checked: "+RETIRED.length+" phrases across "+Object.keys(src).length+" sources, "+n+" found"); }
 
-/* every reconstruction-graded track entry must carry a claim or confidence */
+/* D-2 (docs/FINAL_AUDIT.md; question 131): every tracked formation's first positioned anchor declares its grade. The grade carries
+   forward, so the later anchors need none; where none has been declared stateAt (app.js) draws the formation at its default "B" without
+   a word. The old rule here skipped an anchor at phase 0, the first anchor of 30 of the 32 tracked formations. */
 Object.keys(units).forEach(id=>{
-  const tr=FORMATIONS[id].track;
-  Object.keys(tr).forEach(k=>{
-    const e=tr[k];
-    if("p" in e && e.p && !e.cf && k!=="0"){
-      /* confidence carries forward, so only the first anchor must declare one */
-      const keys=Object.keys(tr).map(Number).sort((a,b)=>a-b);
-      if(+k===keys[0]) fail("language",`${id} first anchor at phase ${k} declares no confidence`);
-    }
-  });
+  const tr=FORMATIONS[id].track, keys=Object.keys(tr).map(Number).sort((a,b)=>a-b), k0=keys.find(k=>"p" in tr[k]&&tr[k].p);
+  if(k0===undefined){ fail("grade",`${id} has no positioned anchor`); return; }
+  if(!tr[k0].cf) fail("grade",`${id} first positioned anchor at phase ${k0} declares no grade (D-2: stateAt would draw it at its default B)`);
 });
+
+/* T-3 (docs/FINAL_AUDIT.md): a warning is a finding unless it is acknowledged here by its exact text, with the reason it stands and
+   where that is recorded ({w, why, see}); an acknowledged warning that is no longer raised is a finding too, until its entry is removed.
+   This block stays after every warn() and before the report. */
+const KNOWN_WARN=[
+  {w:"movement: cavalry mean rate 0.82 is not above infantry 1.23",
+   why:"a model property kept on purpose since the chronology data task: the dated moves are shorter and faster, and the cavalry's slow "+
+       "legs are the undated creeping moves of decision 45; a warning, not a finding, and not changed",
+   see:"docs/STAGE2_SPEC.md §M.10 and its tables at :1303 and :1407; CHANGELOG.md, the chronology data task and the Stage 2C "+
+       "precondition (the march rates)"}];
+{ const uw=[...new Set(W_)];
+  uw.filter(w=>!KNOWN_WARN.some(k=>k.w===w)).forEach(w=>fail("warning",`not acknowledged in KNOWN_WARN: ${w}`));
+  KNOWN_WARN.filter(k=>!uw.includes(k.w)).forEach(k=>fail("warning",`acknowledged but no longer raised (remove it from KNOWN_WARN): ${k.w}`));
+  KNOWN_WARN.forEach(k=>{ if(!k.why||!k.see) fail("warning",`KNOWN_WARN entry without its reason or its record: ${k.w}`); }); }
 
 console.log("=== RED TEAM ===");
 console.log("findings:",F.length);
 [...new Set(F)].forEach(f=>console.log("  ✗ "+f));
-console.log("warnings:",W_.length);
-[...new Set(W_)].slice(0,14).forEach(w=>console.log("  ~ "+w));
+console.log("warnings:",W_.length,"("+KNOWN_WARN.length+" acknowledged)");
+[...new Set(W_)].forEach(w=>{ const k=KNOWN_WARN.find(x=>x.w===w); console.log("  ~ "+w+(k?"  [acknowledged: "+k.why+"]":"")); });
 console.log("\nmean march rates  infantry "+infM.toFixed(2)+"  cavalry "+cavM.toFixed(2)+"  artillery "+artM.toFixed(2)+" km/h");
 process.exitCode=F.length?1:0;

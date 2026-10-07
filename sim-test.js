@@ -58,9 +58,15 @@ EVENTS.forEach(e=>{
   if(e.tolKm!==undefined && !e.tolWhy){ errs.push(`event "${e.id}": tolKm without a written reason`); }
   if(e.tolKm!==undefined && e.tolKm>EV_TOL_CAP){ errs.push(`event "${e.id}": tolerance ${e.tolKm} km exceeds the ${EV_TOL_CAP} km cap`); }
   const tol=e.tolKm!==undefined?Math.min(e.tolKm,EV_TOL_CAP):EV_TOL_KM;
+  /* T-6 (docs/FINAL_AUDIT.md): an unknown id fails (it was skipped). The candidates stay the named tracked formations; an aggregate's
+     tracked formations stand in only for an event that names no tracked formation (none today), so no event's existing test is
+     weakened by extra candidates (the step-1 critic's violation 2) */
+  e.forms.filter(f=>!FORMATIONS[f]).forEach(f=>errs.push(`event "${e.id}": names ${f}, which is not a formation`));
+  const named=e.forms.filter(f=>FORMATIONS[f]&&FORMATIONS[f].track);
+  const cand=named.length?named:[...new Set([].concat(...e.forms.filter(f=>FORMATIONS[f]).map(f=>leavesOf(f,[]))))];
   let best=null;
   for(let t=w[0];t<=w[1];t+=2){ clock=t;
-    e.forms.forEach(fid=>{ if(!FORMATIONS[fid]||!FORMATIONS[fid].track) return; const p=posNow(fid); if(!p) return;
+    cand.forEach(fid=>{ const p=posNow(fid); if(!p) return;
       const km=Math.hypot(p[0]-e.p[0],p[1]-e.p[1])*KM_PER_MAP; if(!best||km<best.km) best={km,fid,t}; }); }
   if(!best){ unplotted.push(e.id); return; }
   if(best.km>tol){ errs.push(`event "${e.id}": nearest named formation (${best.fid}) is ${best.km.toFixed(2)} km from its marker (tolerance ${tol} km)`); far++; }
@@ -126,8 +132,18 @@ if(centreSeparation()) errs.push("the army is reported cut in two before the bat
 const cutEver=series.some(s=>s.cut);
 if(!cutEver) warns.push("the derived reading never reports the Allied army as cut in two");
 
+/* T-3 (docs/FINAL_AUDIT.md): a warning is an error unless it is acknowledged here by its exact text, with the reason it stands and where
+   that is recorded ({w, why, see}); an acknowledged warning that is no longer raised is an error too, until its entry is removed. None
+   today. */
+const KNOWN_WARN=[];
+{ const uw=[...new Set(warns)];
+  uw.filter(w=>!KNOWN_WARN.some(k=>k.w===w)).forEach(w=>errs.push("warning not acknowledged in KNOWN_WARN: "+w));
+  KNOWN_WARN.filter(k=>!uw.includes(k.w)).forEach(k=>errs.push("acknowledged warning no longer raised (remove it from KNOWN_WARN): "+k.w));
+  KNOWN_WARN.forEach(k=>{ if(!k.why||!k.see) errs.push("KNOWN_WARN entry without its reason or its record: "+k.w); }); }
+
 const uniq=[...new Set(errs)];
 console.log("\nERRORS:",errs.length,uniq.length<errs.length?"("+uniq.length+" distinct)":"");
 uniq.slice(0,12).forEach(e=>console.log("  ! "+e));
-console.log("warnings:",warns.length); warns.forEach(w=>console.log("  ~ "+w));
+console.log("warnings:",warns.length,"("+KNOWN_WARN.length+" acknowledged)");
+warns.forEach(w=>{ const k=KNOWN_WARN.find(x=>x.w===w); console.log("  ~ "+w+(k?"  [acknowledged: "+k.why+"]":"")); });
 process.exitCode=errs.length?1:0;
