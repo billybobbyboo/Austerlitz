@@ -9,6 +9,8 @@
     "check:data": "node tools/visual/data-invariance.js archive/stage6b-7fc0f6c3.html austerlitz-command-map.html",
     "check:visual": "node tools/visual/harness.js austerlitz-command-map.html tools/visual/out --test",
     "check:report": "node tools/visual/check-report.js tools/visual/out",
+    "check:selftest": "node tools/visual/harness.js austerlitz-command-map.html tools/visual/out-selftest --test --selftest-only",
+    "check:remeasure": "node tools/visual/remeasure.js",
     "check:contrast": "node tools/visual/contrast.js austerlitz-command-map.html",
     "check:chronology": "node tools/stage2/chronology.js --check"
   },
