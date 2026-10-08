@@ -236,9 +236,6 @@ const LANG_ALLOW=[
   {where:"shell.html p#fr-key text", phrase:"and it decides the battle", kind:"verdict",
    until:"roadmap step 2, the presentation part (question 127 (b))",
    why:"H-4: the same sentence in the #fr-key paragraph, shown before start-up repaints it; 127 must change both places"},
-  {where:"shell.html button[data-v=plateau]@title", phrase:"The ground that decided the battle", kind:"verdict",
-   until:"roadmap step 2, the presentation part (question 127 (b))",
-   why:"H-4: the Pratzen vantage's title; 127 (b) retitles it 'The Pratzen plateau'"},
   /* superlatives the SUPERLATIVE pattern found when it was added (roadmap step 2, H-14) and the audit did not name: judgements of the
      fighting, the ground and a march that no record here attributes. The sourcing stage (question 130) attributes each to the account
      that makes it, or drops it; each fix removes its own entry */
@@ -267,7 +264,7 @@ const LANG_ALLOW=[
 /* the entries step 1 left, written before an entry named what found it (place and phrase); each task that removes an entry removes it
    here too, so the list cannot let a removed entry come back unnamed */
 const LANG_STEP1=["paintKey|and it decides the battle",
-  "shell.html p#fr-key text|and it decides the battle","shell.html button[data-v=plateau]@title|The ground that decided the battle",
+  "shell.html p#fr-key text|and it decides the battle",
   "PLANS.al.assumed[1]|the decisive ground was the French right"];
 /* each kind's pattern and the step that added it to 6a: a new entry names that pattern and that step, so the list grows only with a
    new pattern (BANNED, CAUSAL and VERDICT were applied to every visitor string in step 1, which allowed their hits by LANG_STEP1) */
