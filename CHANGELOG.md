@@ -344,7 +344,11 @@ comment ("when its last commit lands").
     fonts); 35 of 35 states reached; 1 console message, allowed (`eye-leave-floor`).
   - `npm run check:selftest`: 221 of 221, named as the manifest names them; "STAGE0: all checks passed (the self-test only)".
   - `npm run check:baseline`: passes at `af98f586…`, 1,927,346 bytes.
-- <<VF: the lead's final check:visual>>
+- `npm run check:visual`, full, on the final build (`af98f586…`; 54 min): "STAGE0: all checks passed"; the self-test 221 of 221; 0
+  console messages, 0 skipped; `check-report.js` on its report: "all checks pass for this report". Against step 1's final run every case's
+  drops and unobstructed shares are identical but two: `hybrid-dimmed` drops 8 (was 7; limit 13), and `narrow-390` drops 4 (was 7) at
+  43.88% / 50.79% unobstructed (was 46.03% / 50.79%; decision 146's re-measure, above). An earlier full run on the data-task build (C14,
+  55 min) also passed 30 of 30, self-test 217 of 217.
 
 **Uncertain, or not verified**
 - Historical: every reading is one reader's, "not yet second-read (H-17)" (but §6.8); Duffy 1977 and Smith 1998 could not be read, so the
