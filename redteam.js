@@ -229,13 +229,6 @@ const COUNTERFACTUAL=/\b(?:would(?: not)? have (?:been|[a-z]+(?:ed|en|wn|ung|ost
 ["had not been told that the centre was gone","the true ground would have under the true sun"]
   .forEach(t=>{ if(COUNTERFACTUAL.test(t)) fail("language",`COUNTERFACTUAL catches a record or a model sentence: "${t}"`); });
 const LANG_ALLOW=[
-  /* the first claim (H-4): decision 108's words, written twice; question 127 (b) labels them and retitles the vantage */
-  {where:"paintKey", phrase:"and it decides the battle", kind:"verdict",
-   until:"roadmap step 2, the presentation part (question 127 (b))",
-   why:"H-4: decision 108's words, an unlabelled interpretation and the first claim a visitor reads (the first-run key)"},
-  {where:"shell.html p#fr-key text", phrase:"and it decides the battle", kind:"verdict",
-   until:"roadmap step 2, the presentation part (question 127 (b))",
-   why:"H-4: the same sentence in the #fr-key paragraph, shown before start-up repaints it; 127 must change both places"},
   /* superlatives the SUPERLATIVE pattern found when it was added (roadmap step 2, H-14) and the audit did not name: judgements of the
      fighting, the ground and a march that no record here attributes. The sourcing stage (question 130) attributes each to the account
      that makes it, or drops it; each fix removes its own entry */
@@ -263,9 +256,7 @@ const LANG_ALLOW=[
 ];
 /* the entries step 1 left, written before an entry named what found it (place and phrase); each task that removes an entry removes it
    here too, so the list cannot let a removed entry come back unnamed */
-const LANG_STEP1=["paintKey|and it decides the battle",
-  "shell.html p#fr-key text|and it decides the battle",
-  "PLANS.al.assumed[1]|the decisive ground was the French right"];
+const LANG_STEP1=["PLANS.al.assumed[1]|the decisive ground was the French right"];
 /* each kind's pattern and the step that added it to 6a: a new entry names that pattern and that step, so the list grows only with a
    new pattern (BANNED, CAUSAL and VERDICT were applied to every visitor string in step 1, which allowed their hits by LANG_STEP1) */
 const KIND_PATTERN={certainty:"BANNED",causal:"CAUSAL",verdict:"VERDICT",superlative:"SUPERLATIVE",counterfactual:"COUNTERFACTUAL"};

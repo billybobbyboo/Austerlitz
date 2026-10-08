@@ -5538,10 +5538,11 @@ function paintKey(){
   var K=COLOUR_KEY;
   function sw(k,cls){ return '<i class="'+(cls||"key-sw")+'" data-key="'+k+'" style="background:'+K[k].hex+'" aria-hidden="true"></i>'; }
   function cap(w){ return w.charAt(0).toUpperCase()+w.slice(1); }
-  /* Stage 6C (decision 108; section 4.3 item 4): the key names the symbology, not the coats, which follow the sources (decision 97) */
+  /* Stage 6C (decision 108; section 4.3 item 4): the key names the symbology, not the coats, which follow the sources (decision 97);
+     roadmap step 2 (decision 127 (b); docs/FINAL_AUDIT.md H-4): its verdict on the plateau labelled as this map's reading */
   p.innerHTML="French formations are marked in "+sw("side-fr")+K["side-fr"].word+" and the Allies in "+sw("side-al")+K["side-al"].word+
     ": on their names, their counters and the ground beneath them, and on the movement arrows. "+
-    "The high ground in the centre is the Pratzen plateau, and it decides the battle.";
+    "The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.";
 }
 /* ---- the first view ----
    The whole field from above (the Overview vantage) at 04:00, the first-run card near the foot of the map, the legend held back
@@ -8940,9 +8941,11 @@ var AUSTERLITZ_DEBUG=(function(){
         mism.push(e.dataset.key+": "+getComputedStyle(e).backgroundColor+" against the legend's "+getComputedStyle(l).backgroundColor); });
     var txt=(document.getElementById("fr-key").textContent||"").replace(/\s+/g," ");
     /* Stage 6C (decision 108; docs/STAGE6_SPEC.md section 4.3 item 4): the decided words, which name the marks that carry the sides, replace
-       the words that named coats as nations ("Blue is the French army", "green for Russia", "white for Austria"): a decided rule */
+       the words that named coats as nations ("Blue is the French army", "green for Russia", "white for Austria"): a decided rule. Roadmap
+       step 2 (decision 127 (b)): the plateau's sentence labelled as this map's reading, whole; the unlabelled verdict gone */
     ["French formations are marked in blue and the Allies in amber","on their names, their counters and the ground beneath them","and on the movement arrows",
-     "the Pratzen plateau"].forEach(function(w){ if(txt.indexOf(w)<0) mism.push('missing "'+w+'"'); });
+     "The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle."].forEach(function(w){ if(txt.indexOf(w)<0) mism.push('missing "'+w+'"'); });
+    if(/and it decides the battle/i.test(txt)) mism.push('still gives the unlabelled verdict "and it decides the battle" (decision 127 (b))');
     if(/green for russia|white for austria|blue is the french army|amber is the russian/i.test(fr.textContent)) mism.push("still names a coat colour as a nation's");
     function rgb(hex){ var n=parseInt(hex.replace("#",""),16); return "rgb("+((n>>16)&255)+", "+((n>>8)&255)+", "+(n&255)+")"; }
     /* the legend's swatches are the colours that draw what they name: the counters' fills (NATION), the sides (TOKENS.sym.side: the names'

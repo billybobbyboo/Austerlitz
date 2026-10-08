@@ -454,6 +454,14 @@ if(cerrs) process.exitCode=1;
   const ids=[...card.matchAll(/<button[^>]*id="([^"]+)"/g)].map(m=>m[1]);
   if(ids.join(",")!=="fr-tour,fr-close") ferr.push("shell.html: the first-run card's buttons are "+ids.join(", ")+", not the primary and the stay");
   if(/fr-hint|fr-watch/.test(card)) ferr.push("shell.html: the first-run card still carries the hint or \"Watch the battle\" (decision 120, decision 111)");
+  /* roadmap step 2 (decision 127 (b); decision 108's decided words): the key's plateau sentence, written twice (shell.html's #fr-key, shown
+     before start-up repaints it, and paintKey), labelled as this map's reading in both, the unlabelled verdict in neither */
+  { const KEY127="The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.";
+    const frKey=((card.match(/<p id="fr-key">([\s\S]*?)<\/p>/)||[])[1]||"").replace(/\s+/g," ");
+    const pk=(app.match(/function paintKey\(\)\{[\s\S]*?\n\}/)||[""])[0];
+    if(frKey.indexOf(KEY127)<0) ferr.push("shell.html: #fr-key does not carry decision 127 (b)'s labelled sentence: "+frKey.slice(-120));
+    if(pk.indexOf(JSON.stringify(KEY127))<0) ferr.push("app.js: paintKey does not write decision 127 (b)'s labelled sentence");
+    if(/and it decides the battle/i.test(frKey+pk)) ferr.push("the first-run key still gives the unlabelled verdict \"and it decides the battle\" (decision 127 (b))"); }
   if(!/firstRun:\{primary:"[^"]+", primaryTitle:"[^"]+",\s*stay:"[^"]+", stayTitle:"[^"]+"\}/.test(app)) ferr.push("app.js: LABELS.firstRun (the card's words) is missing");
   if(!/fp\.textContent=F\.primary/.test(app)||!/fs\.textContent=F\.stay/.test(app)) ferr.push("app.js: applyLabels does not write the card's words from LABELS");
   /* the buttons' height in every layout (roadmap step 1, T-9: until step 1 the first min-height found, @media bodies merged): a base

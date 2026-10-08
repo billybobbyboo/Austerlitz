@@ -93,6 +93,14 @@ UNOBSTRUCTED["narrow-390"]=[0.46,0.507];   /* was [0.468,0.52]; loosened (decisi
 UNOBSTRUCTED["first-run-laptop"]=[0.546,0.507];   /* was [0.558,0.52]; loosened (decision 141) */
 DROP_LIMIT["eye-zuran"]=6;   /* was 5; loosened (decision 141) */
 DROP_LIMIT["plans-overview"]=12;   /* was 11; loosened (decision 141) */
+/* Decision 146 (roadmap step 2, the owner's answer (a)): narrow-390 re-measured once under decision 127 (b)'s words (the first-run key's
+   plateau sentence labelled "which this map reads as deciding the battle", one line taller at 390 px), by decision 62's method as
+   tools/visual/remeasure.js applies it with --bounds keep: two identical --only runs of the b6da3d47b18c4b9ea40fed7e7a18f96d build (linux,
+   Chromium 141.0.7390.37, Playwright 1.56.0), each measuring 4 drops (n:ahq, t:vinohrady, t:santon, t:zuran) and an unobstructed share of
+   43.88% at 390 x 844 and 50.79% at 1280 x 720. The drop limit 7 is met and kept; the 1280 x 720 baseline .507 is met and kept; the case
+   viewport's baseline, which the measure falls below, is lowered to it rounded down to 0.1 point. first-run and first-run-laptop met their
+   limits unchanged (question 145 not needed). Each value: was, is and why, in CHANGELOG.md */
+UNOBSTRUCTED["narrow-390"]=[0.438,0.507];   /* decision 146 (roadmap step 2, the owner's answer (a)): narrow-390 re-measured once under decision 127 (b)'s words; was [0.46,0.507], is [0.438,0.507] */
 const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harness machine */
 /* Stage 2E (section J, 2E): every paper-map view is a true north-up plan: GEOREF.NORTH within 0.5 degrees of up; screen pixels
    per true km at four places equal to 1% (on the 2D build's tilted staff map they differ by 6.0% and north is 17.8 degrees
