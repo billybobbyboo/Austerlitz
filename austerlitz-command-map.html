@@ -11505,7 +11505,7 @@ function compactCard(id){
   var f=FORMATIONS[id];
   var st=liveStatus(id,curPhase), cf=aggConf(id,curPhase), cl=claimOf(id,cf);
   var s2=f.track?stateAt(id,textPhase(id,clock)):null, wt=f.track?waitingFor(id,clock):null, tmg=timingNow(id);
-  var pos=posNow(id), nat=NATION[f.nation];
+  var nat=NATION[f.nation];
   var wrap=el("div","dossier card-compact");
   var head=el("div","dh");
   head.innerHTML='<div class="dh-bar" style="background:'+nat.fill+'"></div><div class="dh-tx">'+
@@ -11530,7 +11530,7 @@ function compactCard(id){
   if(s2&&s2.act) body+=row("Doing now", esc(s2.act));
   if(wt&&f.track[wt.ph].act) body+=row("From "+esc(fmtClock(wt.w[0])), esc(f.track[wt.ph].act));
   if(s2&&s2.obj) body+=row("Objective", esc(s2.obj));
-  body+=row("Where", pos? esc(nearestFeature(pos)) : "Not on the field at this hour");
+  body+=posRow(id,true);   /* roadmap step 2 (D-6): an aggregate's midpoint, tagged derived */
   wrap.appendChild(el("dl","kvs",body));
   var mb=el("button","more-btn","Full dossier: role, movement, sources");
   mb.addEventListener("click",function(){ dossierExpanded=true; paintDrawer(); });
@@ -11600,12 +11600,32 @@ function dressSection(id){
     (extra.length?" Also: "+extra.join("; ")+".":"")+(A.note?" On the composition: "+apText(A.note):""))));
   return sec;
 }
+/* roadmap step 2 (docs/FINAL_AUDIT.md D-6): the dossier's place and march rows. A formation's place is its plotted position; an aggregate's
+   is the mean of its formations' plotted positions (posNow), a derived reading that may fall where none of them stands: named their
+   midpoint, tagged derived, with how many it averages ("Midpoint", not "Centre", a tactical word throughout the narrative). The march row's
+   distance, time and rate are computed from the plotted leg and its time window (marchRate): derived (where the leg's arrival is itself
+   derived, the Timing row below names its rule) */
+function derivedTag(){ return '<span class="ltag derived">'+iconSVG(TOKENS.sym.layer.derived)+'derived</span>'; }
+function posRow(id,card){
+  var f=FORMATIONS[id], pos=posNow(id);
+  if(f.track) return card ? row("Where", pos? esc(nearestFeature(pos)) : "Not on the field at this hour")
+    : row("Position at "+esc(fmtClock(clock)), pos? esc(nearestFeature(pos)) : esc(notYetAt(id,clock)?"Not yet on the field in this reconstruction":"No longer on the field"));
+  var n=leavesOf(id,[]).filter(function(k){ return !!posNow(k); }).length;
+  if(card) return '<div class="kv"><dt>Midpoint '+derivedTag()+'</dt><dd>'+(pos? esc(nearestFeature(pos)) : "Not on the field at this hour")+'</dd></div>';
+  return row("Midpoint at "+esc(fmtClock(clock)), pos? esc(nearestFeature(pos))+" "+derivedTag()+' <span class="hh">('+
+    (n===1?"its one formation on the field":"the mean of its "+n+" formations\u2019 plotted positions; it need not be where any of them stands")+')</span>' : "\u2014");
+}
+function marchRow(id){
+  var mr=FORMATIONS[id].track?marchRate(id,clock):null; if(!mr) return "";
+  return row(mr.moving?"Marching":"Next move",
+    mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h"+
+    (mr.ice?' <span class="hh">over the frozen mere</span>':'')+" "+derivedTag()+' <span class="hh">(the plotted leg\u2019s length over its time window)</span>');
+}
 function dossierFormation(id){
   var f=FORMATIONS[id];
   var isAgg=!f.track;
   var s=f.track?stateAt(id,textPhase(id,clock)):null, wt=f.track?waitingFor(id,clock):null, tmg=timingNow(id);
   var st=liveStatus(id,curPhase), cf=aggConf(id,curPhase);
-  var pos=posNow(id);
   var wrap=el("div","dossier");
   var nat=NATION[f.nation];
 
@@ -11649,16 +11669,8 @@ function dossierFormation(id){
   /* Stage 6C: what it wore, and how the figures draw it */
   var dsx=f.track?dressSection(id):null; if(dsx) wrap.appendChild(dsx);
 
-  /* WHERE, and how fast it is moving */
-  var absent = f.track ? (notYetAt(id,clock) ? "Not yet on the field in this reconstruction"
-                                             : "No longer on the field") : "\u2014";
-  var whr=row("Position at "+esc(fmtClock(clock)), pos? esc(nearestFeature(pos)) : esc(absent));
-  var mr=f.track?marchRate(id,clock):null;
-  if(mr){
-    whr+=row(mr.moving?"Marching":"Next move",
-      mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h"+
-      (mr.ice?' <span class="hh">over the frozen mere</span>':''));
-  }
+  /* WHERE, and how fast it is moving (roadmap step 2, D-6: posRow and marchRow tag the derived) */
+  var whr=posRow(id,false)+marchRow(id);
   if(tmg){
     var tw=tmg.w, tt=tmg.tm;
     whr+=row("Timing", (tw[0]<clock&&tw[1]<=clock?"Reached ":"Moves ")+esc(fmtClock(tw[0]))+"&ndash;"+esc(fmtClock(tw[1]))+
@@ -13806,6 +13818,32 @@ var AUSTERLITZ_DEBUG=(function(){
   }
   /* Stage 5G (docs/STAGE5_SPEC.md section F.4; decision 95): the day-track inset, bound to the track, at one scale, north up; its
      anchors a keyboard group that sets the clock; its marks and text against the paper ground */
+  /* roadmap step 2 (docs/FINAL_AUDIT.md D-6): the derived readings carry their tag. Every formation's march row (Marching, Next move) and
+     every aggregate's midpoint (the mean of its formations on the field, their number named) tagged derived in the full dossier and the
+     card, at four clocks; no aggregate named as a position */
+  function derivedTagChecks(){
+    var out=[], keep=clock, sk0=selection?{k:selection.kind,id:selection.id}:null, bad=[], nM=0, nA=0;
+    function rowsOf(node){ return Array.prototype.slice.call(node.querySelectorAll(".kv")); }
+    function dt(r){ var e=r.querySelector("dt"); return e?e.textContent:""; }
+    [T_MIN,480,600,780].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false});
+      Object.keys(FORMATIONS).forEach(function(id){ var f=FORMATIONS[id], full=rowsOf(dossierFormation(id)), card=rowsOf(compactCard(id));
+        if(f.track){ var mr=marchRate(id,clock), m=full.filter(function(r){ return /^(Marching|Next move)$/.test(dt(r)); })[0];
+          if(mr){ nM++; if(!m||!m.querySelector(".ltag.derived")) bad.push(id+" at "+fmtClock(t)+": the march row untagged"); }
+          else if(m) bad.push(id+" at "+fmtClock(t)+": a march row with no leg");
+          return; }
+        if(full.concat(card).some(function(r){ return /^(Position at|Where)\b/.test(dt(r)); })) bad.push(id+" at "+fmtClock(t)+": an aggregate named as a position");
+        var c=full.filter(function(r){ return /^Midpoint at /.test(dt(r)); })[0], c2=card.filter(function(r){ return /^Midpoint\b/.test(dt(r)); })[0];
+        if(!c||!c2){ bad.push(id+" at "+fmtClock(t)+": no midpoint row"); return; }
+        if(!posNow(id)) return;
+        var n=leavesOf(id,[]).filter(function(k){ return !!posNow(k); }).length; nA++;
+        if(!c.querySelector(".ltag.derived")||!c2.querySelector(".ltag.derived")) bad.push(id+" at "+fmtClock(t)+": the midpoint untagged");
+        if(n>1&&c.textContent.indexOf("the mean of its "+n+" formations")<0) bad.push(id+" at "+fmtClock(t)+": the midpoint does not name its "+n+" formations"); }); });
+    out.push({name:"derived readings tagged: every formation's march row (Marching, Next move) and every aggregate's midpoint (the mean of its formations on the field, their number named) carry the derived tag, in the full dossier and the card; no aggregate named as a position (docs/FINAL_AUDIT.md D-6)",
+      ok:!bad.length&&nM>0&&nA>0, detail:nM+" march rows and "+nA+" aggregate midpoints at 04:00, 08:00, 10:00 and 13:00"+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):"")});
+    if(sk0) select(sk0.k,sk0.id); else select(null,null);
+    setClock(keep,{instant:true,force:true,camera:false}); finishTween(); settle(2,true);
+    return out;
+  }
   function dayTrackChecks(){
     var out=[], keep=clock, sk0=selection?{k:selection.kind,id:selection.id}:null, ex=dossierExpanded;
     setClock(590,{instant:true,force:true,camera:false}); finishTween();
@@ -14110,6 +14148,7 @@ var AUSTERLITZ_DEBUG=(function(){
     routeDayChecks().forEach(function(c){ out.push(c); });  /* Stage 5F */
     dayTrackChecks().forEach(function(c){ out.push(c); });  /* Stage 5G */
     kitDayChecks().forEach(function(c){ out.push(c); });    /* Stage 6C */
+    derivedTagChecks().forEach(function(c){ out.push(c); });   /* roadmap step 2, D-6 */
     plateauDayChecks().forEach(function(c){ out.push(c); }); /* roadmap step 2: decision 126 */
     setDisplayFactor(saveFactor);
     /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */

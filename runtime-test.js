@@ -542,6 +542,26 @@ try{
     if(bad.length) throw new Error("notes from the table: "+bad.join("; "));
     console.log("notes from the table: the standards' and the troops' notes follow 9 changed values of the appearance table, and the light's local-time shift is SUN_DAY's ("+eot+" min) OK"); }
 
+  /* roadmap step 2 (docs/FINAL_AUDIT.md D-6): the derived readings carry their tag. At every half hour, every formation's march row
+     (marchRow) tagged derived exactly where marchRate gives a leg; every aggregate's place (posRow) named its formations' midpoint, tagged,
+     with the number of its formations on the field; none named a position, and no tracked formation named a midpoint */
+  { const bad=[]; let nM=0, nA=0;
+    for(let t=T_MIN;t<=T_MAX;t+=30){ setClock(t);
+      Object.keys(FORMATIONS).forEach(id=>{ const f=FORMATIONS[id];
+        if(f.track){ const mr=marchRate(id,clock), r=marchRow(id);
+          if(!!mr!==!!r) bad.push(id+" at "+fmtClock(t)+": a march row "+(mr?"missing":"with no leg"));
+          if(r){ nM++; if(r.indexOf('<span class="ltag derived">')<0) bad.push(id+" at "+fmtClock(t)+": the march row untagged"); }
+          if(/<dt>Midpoint/.test(posRow(id,false)+posRow(id,true))) bad.push(id+" at "+fmtClock(t)+": a tracked formation named a midpoint");
+          return; }
+        const full=posRow(id,false), card=posRow(id,true), n=leavesOf(id,[]).filter(k=>!!posNow(k)).length;
+        if(!/^<div class="kv"><dt>Midpoint at /.test(full)||!/^<div class="kv"><dt>Midpoint <span class="ltag derived">/.test(card)) bad.push(id+" at "+fmtClock(t)+": not named its formations' midpoint");
+        if(/<dt>(Position at|Where)\b/.test(full+card)) bad.push(id+" at "+fmtClock(t)+": an aggregate named as a position");
+        if(posNow(id)){ nA++;
+          if(full.indexOf('<span class="ltag derived">')<0) bad.push(id+" at "+fmtClock(t)+": the midpoint untagged");
+          if(n>1&&full.indexOf("the mean of its "+n+" formations")<0) bad.push(id+" at "+fmtClock(t)+": the midpoint does not name its "+n+" formations"); } }); }
+    if(bad.length||!nM||!nA) throw new Error("derived tags: "+bad.slice(0,6).join("; ")+" ("+nM+" march rows, "+nA+" midpoints)");
+    console.log("derived tags: "+nM+" march rows tagged derived and "+nA+" aggregate midpoints tagged with their formations' number, at every half hour OK"); }
+
   /* the sky must repaint through every lighting state without a NaN */
   for(let ph=0;ph<PHASES.length;ph++){
     setPhase(ph,false);
