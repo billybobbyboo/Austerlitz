@@ -6233,7 +6233,7 @@ function dossierFormation(id){
   }
 
   if(f.note) wrap.appendChild(el("p","note",esc(f.note)));
-  wrap.appendChild(el("p","conf",(cl!==CLAIM_FROM_CONF[cf]?esc(CLAIM[cl].note)+" ":"")+esc(CONF_TEXT[cf]||"")+(aggInterp(id,curPhase)?" "+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));   /* decision 128 (a): the position's grade text; CLAIM's note only where a track entry names its own claim (heightguns@7-9 "recon"), which is that entry's hedge */
+  wrap.appendChild(el("p","conf",(cl!==CLAIM_FROM_CONF[cf]?esc(CLAIM[cl].note)+" ":"")+esc(CONF_TEXT[cf]||"")+(aggInterp(id,curPhase)?" "+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));   /* decision 128 (a): the position's grade text; CLAIM's note only where a track entry names its own claim (heightguns@8-9, where the entry's claim "recon" differs from its grade B), which is that entry's hedge */
 
   var act=el("div","dact");
   var btn=el("button","t","Centre the map here");

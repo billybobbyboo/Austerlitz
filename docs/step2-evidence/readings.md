@@ -27,6 +27,9 @@
   defence of Blasowitz), §6.8 (the second reading of Mikhailovsky-Danilevsky 1844 for question 153, the footnote's day on p. 187 among
   it) and §7.6 (Alombert and Colin p. 69, Caffarelli in Bisson's place) added; §6.5, §6.7 and §12 changed. Each page added was read on
   its image that day.
+- Revised again: 8 October 2026, after the review of C14a-C18 (step 2, "C14a-C18, review fixes"): §8.4 (Marbot pp. 259-260, Lannes
+  driving the enemy back to Blasiowitz) added, read on its images n278-n279 that day; §4.7 and §4.8 (the Guard that had no shot to fire
+  and took no part, against the map's c_gd and guard_inf@6) and §12 changed; §13 F14 added.
 - Transcription: as printed, with the source's own spelling, accents and capitals (Thiébault, Riajsk, Blasowitz, Girschikowitz,
   "étoit"); the German Fraktur's long s is written s; Russian in the pre-1918 spelling as printed (ъ, ѣ, і); "[...]" marks a cut and
   "/" a page turn inside a quotation. The translations are this register's own.
@@ -495,8 +498,10 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   by the 1st division of Marshal Bernadotte's corps, arrived in his turn on the heights of Pratzen, where all the cavalry, the Imperial
   Guard and the grenadier reserve also went (which had not one shot to fire)."
 - **grade**: B. **label**: fact (what Thiébault says); which division is "the 1st" of I Corps is uncertain (the returns of 26 and 28
-  October number Rivaud's and Drouet's divisions differently, §7.2, §7.5).
-- **settles**: in Thiébault, one I Corps division (his "1re") reached the Pratzen with Lannes late in the day.
+  October number Rivaud's and Drouet's divisions differently, §7.2, §7.5); the Imperial Guard "qui n'eurent pas un coup de fusil à
+  tirer" disputed against the map's guard_inf@6 ("Committed onto the plateau as the Russian Guard attacks") and c_gd's role (§13 F14).
+- **settles**: in Thiébault, one I Corps division (his "1re") reached the Pratzen with Lannes late in the day; in Thiébault, the Guard and
+  the grenadier reserve went onto the Pratzen heights without firing a shot.
 - **does not settle**: whether that is Drouet's or Rivaud's division.
 - **status**: p. 463 read on the page image, p. 464 in the OCR; not yet second-read (H-17).
 
@@ -512,7 +517,8 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   first corps, which took no part in the fighting. [...] to print, in 1806 in Paris, corrective observations".
 - **grade**: B (a participant's memoir, published 1894; he was wounded about three in the afternoon beyond Sokolnitz, p. 465, so the ice is
   not his own observation: inference). **label**: disputed (the drowned: the Bulletin's 20,000, §1.6; Marbot's thousands, §8.3; the
-  drained count); I Corps' 2nd division disputed against the Bulletin p. 451 (§1.5) and the map's drouet@6.
+  drained count); I Corps' 2nd division disputed against the Bulletin p. 451 (§1.5) and the map's drouet@6; the Imperial Guard "qui ne
+  prirent aucune part à la lutte" disputed against the map's guard_inf@6 and c_gd's role (§13 F14).
 - **settles**: Thiébault's "trois à quatre mille" drowned and his 24 pieces of the Guard breaking the ice (C10, C11); his 2nd division of
   I Corps that took no part (§13 F11's I Corps lead; question 157).
 - **does not settle**: where the 24 pieces stood (he does not place them at a chapel); which division is "the 2nd".
@@ -989,6 +995,26 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
   stood.
 - **status**: p. 263 read on the page image; not yet second-read (H-17).
 
+### 8.4 `marbot.p259-260.blasiowitz`: Lannes drives the enemy back across the Olmütz road "jusqu'à Blasiowitz" (pp. 259-260)
+- **source**: pp. 259-260; images n278 (p. 259, its last line) and n279 (p. 260, its first lines)
+  (https://archive.org/download/mmoiresdugn01marbuoft/page/n278.jpg, .../page/n279.jpg). The sentence stands just before the passage of
+  §8.2. (The review of C14a-C18, item 5.)
+- **quote**: "Mais à notre gauche, le maréchal Lannes non seulement / repoussa toutes les attaques des ennemis contre le Santon, mais il
+  les rejeta de l'autre côté de la route d'Olmütz jusqu'à Blasiowitz, où le terrain, devenant plus uni, permit à la cavalerie de Murat
+  d'exécuter plusieurs charges brillantes, dont le résultat fut immense, car les Russes furent menés tambour battant jusqu'au village
+  d'Austerlitz."
+- **translation**: "But on our left Marshal Lannes not only repulsed all the enemy's attacks on the Santon, but threw them back across the
+  Olmütz road as far as Blasiowitz, where the ground, becoming more level, allowed Murat's cavalry to make several brilliant charges,
+  whose result was immense, for the Russians were driven at the double as far as the village of Austerlitz."
+- **grade**: B (a participant's memoir, published 1891). **label**: fact (what Marbot says); it bears on the disputed attackers at
+  Blasowitz (question 158: Lannes's V Corps in Thiébault p. 462, §4.6; Bernadotte's corps in Stutterheim p. 68, §2.5; both in
+  Mikhailovsky-Danilevsky 1846 p. 255, §5.6).
+- **settles**: Marbot's Lannes drives the enemy back to Blasiowitz, and Murat's cavalry charges there: a fourth account read that sends
+  Lannes toward Blasowitz.
+- **does not settle**: who held or took the village (Marbot names no defenders, so the defenders' "three accounts read", §2.7, §5.7,
+  stand); a clock hour.
+- **status**: read on the page images; not yet second-read (H-17).
+
 ## 9. `tolstoy_maude`: War and Peace, Book Three, chapter XVIII
 
 ### 9.1 `tolstoy.b3c18.forty`: "some forty men" (Book Three: 1805, chapter XVIII)
@@ -1033,7 +1059,8 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 | question 153 (Ryazhsk) | §3.2, §3.4, §2.6, §5.5, §5.6, §6.2, §6.4, §6.5, §6.6, §6.7, §4.10, §4.11 (Thiébault pp. 474, 504); §6.8 (the second reading; C14a) |
 | question 155 (division numbers, the grenadiers' artillery) | §7.2-§7.5; §7.6 (Caffarelli; C14a) |
 | question 157 (I Corps: reserve or centre) | §1.3, §2.1, §5.4, §8.2; §4.7, §4.8, §4.10; §1.1, §1.2 (§13 F11) |
-| question 158 (Blasowitz) | §2.5, §4.6, §5.6; §2.4 (Liechtenstein); §2.7, §5.7 (the Guard's defenders; Liechtenstein's arrival; C14a) |
+| question 158 (Blasowitz) | §2.5, §4.6, §5.6; §2.4 (Liechtenstein); §2.7, §5.7 (the Guard's defenders; Liechtenstein's arrival; C14a); §8.2, §8.4 (Marbot's Lannes to Blasiowitz; handed on to step 4 with the event's forms) |
+| question 147 (H-4's roles; c_gd) | §4.7, §4.8 (Thiébault: the Guard had no shot to fire and took no part; §13 F14, handed on to step 4) |
 | step 4 (125 (b), the disputed hours) | §2.2, §5.4, §5.5, §6.3, §6.4, §4.9, §4.10 |
 
 ## 13. Found in this reading: what bears on step 2's planned texts
@@ -1098,3 +1125,10 @@ Each is recorded for the commit named; none changes a text in this commit (recor
   kamensky.why for C3 ("Allied initiative on the plateau, taken by a brigade commander on his own judgement") and kamensky.role (C9) rest
   on Mikhailovsky-Danilevsky's side; Kutuzov's report should be weighed before "on his own judgement" is written (for the lead or the
   owner).
+- **F14 (C15's c_gd role, question 147; step 4; found in the review of C14a-C18).** c_gd's role ("then its cavalry charges the Russian
+  Guard and its infantry is committed onto the plateau") restates guard_inf@6's act ("Committed onto the plateau as the Russian Guard
+  attacks"), as question 147 decided (record-only). Thiébault has the Guard and the grenadier reserve go onto the Pratzen heights
+  "qui n'eurent pas un coup de fusil à tirer" (p. 463, §4.7) and counts the Imperial Guard among those "qui ne prirent aucune part à la
+  lutte" (p. 466, §4.8); "committed" can be read as "sent into action". The record is not changed here (it does not say the Guard's
+  infantry fought); the disagreement is handed to step 4 with "whether Drouet's division fought" (the same pages), where "moved onto the
+  plateau" may be weighed for both texts.

@@ -285,7 +285,7 @@ caffarelli:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., III Corps, with
     8:{p:[392,105],st:"pursuing"},
     9:{p:[423,96],st:"holding"}}},
 
-suchet:{ ech:"div", nation:"fr", arm:"inf", desig:"2e or 3e Div., V Corps",
+suchet:{ ech:"div", nation:"fr", arm:"inf", desig:"3e or 2e Div., V Corps",
   name:"Suchet's Division", commander:"Gen. de division Louis-Gabriel Suchet", parent:"c_v",
   note:"Its number in V Corps: this map has had it the 2nd, without a source read for it; the two French returns of October 1805 read, neither of 2 December, number it the 3rd: the situation of V Corps of 26 October and the situation of 28 October (Alombert and Colin, t. IV, pp. 756 and 732).",
   strength:6000, strengthNote:"about 6,000, including the detachment on the Santon: the 17e Légère, of this division (numbered there the 3rd of V Corps) in the French situation of 28 October 1805 (Alombert and Colin, t. IV, p. 732)",
@@ -415,7 +415,7 @@ guard_cav:{ ech:"div", nation:"fr", arm:"cav", desig:"Cavalerie de la Garde",
 c_gren:{ ech:"div", nation:"fr", arm:"inf", desig:"Div. de Grenadiers",
   name:"Grenadier Division", commander:"Gen. de division Nicolas Oudinot",
   staff:"Oudinot was convalescent; effective command fell to Gen. Duroc", parent:null,
-  strength:5700, strengthNote:"about 5,500 to 5,700; elite companies drawn from regiments on garrison duty. No artillery is listed for the division in the orders of battle checked; the situation of V Corps of 26 October 1805, not a return of 2 December, lists horse and foot artillery with the grenadier division (Alombert and Colin, t. IV, p. 755)",
+  strength:5700, strengthNote:"about 5,500 to 5,700; elite companies drawn from regiments on garrison duty. No artillery is listed for the division in the orders of battle of 2 December checked; the situation of V Corps of 26 October 1805 lists horse and foot artillery with the grenadier division (Alombert and Colin, t. IV, p. 755)",
   role:"General reserve; joins the wheel south in the afternoon.",
   track:{
     0:{p:[175,155],st:"reserve",cf:"B",obj:"Remain in general reserve",act:"Formed near the Zuran with the Guard"},

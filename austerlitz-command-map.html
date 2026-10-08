@@ -1925,7 +1925,7 @@ caffarelli:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., III Corps, with
     8:{p:[392,105],st:"pursuing"},
     9:{p:[423,96],st:"holding"}}},
 
-suchet:{ ech:"div", nation:"fr", arm:"inf", desig:"2e or 3e Div., V Corps",
+suchet:{ ech:"div", nation:"fr", arm:"inf", desig:"3e or 2e Div., V Corps",
   name:"Suchet's Division", commander:"Gen. de division Louis-Gabriel Suchet", parent:"c_v",
   note:"Its number in V Corps: this map has had it the 2nd, without a source read for it; the two French returns of October 1805 read, neither of 2 December, number it the 3rd: the situation of V Corps of 26 October and the situation of 28 October (Alombert and Colin, t. IV, pp. 756 and 732).",
   strength:6000, strengthNote:"about 6,000, including the detachment on the Santon: the 17e Légère, of this division (numbered there the 3rd of V Corps) in the French situation of 28 October 1805 (Alombert and Colin, t. IV, p. 732)",
@@ -2055,7 +2055,7 @@ guard_cav:{ ech:"div", nation:"fr", arm:"cav", desig:"Cavalerie de la Garde",
 c_gren:{ ech:"div", nation:"fr", arm:"inf", desig:"Div. de Grenadiers",
   name:"Grenadier Division", commander:"Gen. de division Nicolas Oudinot",
   staff:"Oudinot was convalescent; effective command fell to Gen. Duroc", parent:null,
-  strength:5700, strengthNote:"about 5,500 to 5,700; elite companies drawn from regiments on garrison duty. No artillery is listed for the division in the orders of battle checked; the situation of V Corps of 26 October 1805, not a return of 2 December, lists horse and foot artillery with the grenadier division (Alombert and Colin, t. IV, p. 755)",
+  strength:5700, strengthNote:"about 5,500 to 5,700; elite companies drawn from regiments on garrison duty. No artillery is listed for the division in the orders of battle of 2 December checked; the situation of V Corps of 26 October 1805 lists horse and foot artillery with the grenadier division (Alombert and Colin, t. IV, p. 755)",
   role:"General reserve; joins the wheel south in the afternoon.",
   track:{
     0:{p:[175,155],st:"reserve",cf:"B",obj:"Remain in general reserve",act:"Formed near the Zuran with the Guard"},
@@ -3016,7 +3016,7 @@ var COMPOSITION = {
     parts:[
       {dress:"ru_jager", n:2, unit:"bn", v:"8. Jäger-Regiment ... 2 — — 670", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"8. Jäger-Regiment"},
       {dress:"ru_musk", n:9, unit:"bn", v:"Wiborskoy ... 3; Permskoy ... 3; Kurskoy ... 3", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Kurskoy"}]},
-  kamensky: {note:"the musketeer regiment is Ryazhsk: 'Ряжскій' in the Russian original (mikhailovsky1844, pp. 167, 179, 187), 'Riajsk' in its French edition (mikhailovsky1846, pp. 241-242), which puts the Ryazan regiment in Tolstoy's corps in Swedish Pomerania (mikhailovsky1844, p. 257); 'Riasky' (schoenhals1873) and 'Rhiasky' (stutterheim1806fr, p. 90) settle neither name; the Materialien print 'Rjäsan', Ryazan (materialien1806, p. 99), kept as the other reading; Stutterheim has the two regiments sent to reinforce Kamensky's brigade",
+  kamensky: {note:"the musketeer regiment is Ryazhsk: 'Ряжскій' in the Russian original (mikhailovsky1844, pp. 167, 179, 187), 'Riajsk' in its French edition (mikhailovsky1846, pp. 241-242); the Russian original puts the Ryazan regiment in Tolstoy's corps in Swedish Pomerania (mikhailovsky1844, p. 257); 'Riasky' (schoenhals1873) and 'Rhiasky' (stutterheim1806fr, p. 90) settle neither name; the Materialien print 'Rjäsan', Ryazan (materialien1806, p. 99), kept as the other reading; Stutterheim has the two regiments sent to reinforce Kamensky's brigade",
     parts:[
       {dress:"ru_gren", n:3, unit:"bn", v:"Tanagorisky [sic] ... 3 2000", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Tanagorisky"},
       {dress:"ru_musk", n:3, unit:"bn", v:"Riasky ... 3 2000", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Riasky"}]},
@@ -11737,7 +11737,7 @@ function dossierFormation(id){
   }
 
   if(f.note) wrap.appendChild(el("p","note",esc(f.note)));
-  wrap.appendChild(el("p","conf",(cl!==CLAIM_FROM_CONF[cf]?esc(CLAIM[cl].note)+" ":"")+esc(CONF_TEXT[cf]||"")+(aggInterp(id,curPhase)?" "+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));   /* decision 128 (a): the position's grade text; CLAIM's note only where a track entry names its own claim (heightguns@7-9 "recon"), which is that entry's hedge */
+  wrap.appendChild(el("p","conf",(cl!==CLAIM_FROM_CONF[cf]?esc(CLAIM[cl].note)+" ":"")+esc(CONF_TEXT[cf]||"")+(aggInterp(id,curPhase)?" "+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));   /* decision 128 (a): the position's grade text; CLAIM's note only where a track entry names its own claim (heightguns@8-9, where the entry's claim "recon" differs from its grade B), which is that entry's hedge */
 
   var act=el("div","dact");
   var btn=el("button","t","Centre the map here");

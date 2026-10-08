@@ -518,7 +518,7 @@ try{
             nP++; byCl[cl]=(byCl[cl]||0)+1; }); }); });
     } finally { document.createElement=mk; }
     if(!nP||Object.keys(byCl).length<3) throw new Error("position pills: "+nP+" pills read in "+nV+" views, classes "+JSON.stringify(byCl)+" (want all three)");
-    console.log("position pills: "+nP+" claim pills in "+nV+" cards and dossiers at five clocks, each POS_CLAIM's words for its grade ("+
+    console.log("position pills: "+nP+" claim pills in "+nV+" cards and dossiers at five clocks, each POS_CLAIM's words for its claim (claimOf) ("+
       Object.keys(byCl).map(k=>k+" "+byCl[k]).join(", ")+"), none CLAIM's OK"); }
 
   /* the sky must repaint through every lighting state without a NaN */
