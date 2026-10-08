@@ -169,7 +169,7 @@ c_iv:{ ech:"corps", nation:"fr", arm:"inf", desig:"IV Corps",
 heightguns:{ ech:"bde", nation:"fr", arm:"art", desig:"Batteries on the plateau",
   name:"French guns on the heights", commander:"Corps and Guard artillery", parent:"c_iv",
   strength:null, guns:null,
-  strengthNote:"The number of pieces brought onto the plateau in the wheel is not recorded. For the guns that fired on the ice at the end the accounts differ: 24 guns of the Guard and IV Corps by the chapel of St Anthony (Újezd local history); 24 pieces of the Guard that broke the ice (Thiebault's memoirs); twenty guns with which the Emperor went against the corps backed against a lake (the 30th Bulletin). Neither of the last two places its guns at the chapel. Soult's corps had 35 guns and the Guard 24",
+  strengthNote:"The number of pieces brought onto the plateau in the wheel is not recorded. For the guns turned on the Allied left at the meres at the end the accounts differ: 24 guns of the Guard and IV Corps by the chapel of St Anthony (Újezd local history); 24 pieces of the Guard that broke the ice (Thiebault's memoirs); twenty guns with which the Emperor went against the corps backed against a lake (the 30th Bulletin). Neither of the last two places its guns at the chapel. Soult's corps had 35 guns and the Guard 24",
   role:"Fires from the captured plateau into the rear of the Allied left, and later onto the Augezd defile and the ice.",
   note:"That French artillery fired from the heights into the retreating Allied left, and onto the ice of the Satschan mere, is documented. The battery positions drawn here are reconstructed and should not be read as surveyed.",
   track:{
