@@ -349,7 +349,8 @@ if(cerrs) process.exitCode=1;
 /* roadmap step 2 (docs/FINAL_AUDIT.md D-5, D-6): what the presentation must not type or keep. (a) The sources sheet's notes on the troops
    and the standards, and the dossier's Dress, type no measure and no appearance grade's definition: every centimetre, metre and cloth size
    and the grades' words are read from appearance.js (runtime-test.js changes the table and reads them follow it); the light's note types no
-   minutes (SUN_DAY's equation of time). (b) The dossier's place and march rows are built by posRow and marchRow, which tag the derived */
+   minutes (SUN_DAY's equation of time). (b) The dossier's place and march rows are built by posRow and marchRow, which tag the derived;
+   paintSituation keeps no clock of its own for the plateau's note */
 { const acorn=require('acorn'), app=fs.readFileSync('app.js','utf8'), ast=acorn.parse(app,{ecmaVersion:2020}), derr=[];
   const fn=name=>ast.body.find(s=>s.type==="FunctionDeclaration"&&s.id.name===name);
   const lits=node=>{ const o=[]; (function w(x){ if(!x||typeof x.type!=="string") return;
@@ -360,12 +361,14 @@ if(cerrs) process.exitCode=1;
       if(/documented for/.test(s)) derr.push(name+": a typed grade definition \u201c"+s.slice(0,60)+"\u201d (read APPEARANCE_GRADE)");
       if(name==="lightNotes"&&/\d+ minutes/.test(s)) derr.push("lightNotes: typed minutes \u201c"+s.slice(0,60)+"\u201d (read SUN_DAY)"); }); });
   const src=n=>n?app.slice(n.start,n.end):"";
-  const dF=src(fn("dossierFormation")), cC=src(fn("compactCard")), pR=src(fn("posRow")), mR=src(fn("marchRow"));
+  const dF=src(fn("dossierFormation")), cC=src(fn("compactCard")), pR=src(fn("posRow")), mR=src(fn("marchRow")), pS=src(fn("paintSituation"));
   if(!/posRow\(id,false\)/.test(dF)||!/marchRow\(id\)/.test(dF)||/Position at|Next move/.test(dF)) derr.push("dossierFormation: its place and march rows not built by posRow and marchRow");
   if(!/posRow\(id,true\)/.test(cC)||/row\("Where"/.test(cC)) derr.push("compactCard: its place row not built by posRow");
   if(!/derivedTag\(\)/.test(mR)||(pR.match(/derivedTag\(\)/g)||[]).length<2) derr.push("posRow/marchRow: the aggregate's midpoint or the march row without the derived tag");
+  if(!pS) derr.push("app.js: no paintSituation");
+  if(/(^|[^=!<>])=\s*clock\b/.test(pS)) derr.push("paintSituation: keeps a clock of its own (the plateau's note must follow the clock alone, plateauFlatFor)");
   derr.forEach(e=>console.log("  ! "+e));
-  console.log("typed data and derived tags: "+(derr.length?derr.length+" wrong":"the troops' and the standards' notes and the Dress type no measure or grade definition, the light no minutes; the place and march rows tagged by posRow and marchRow"));
+  console.log("typed data and derived tags: "+(derr.length?derr.length+" wrong":"the troops' and the standards' notes and the Dress type no measure or grade definition, the light no minutes; the place and march rows tagged by posRow and marchRow; paintSituation keeps no clock"));
   if(derr.length) process.exitCode=1; }
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by
    a dash or a dotted line, and their colour is the side's from the tokens */

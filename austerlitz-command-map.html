@@ -11178,7 +11178,23 @@ function focusOn(id){
   centreOnMap(p,86);
 }
 
-var _sitKey="", _plLastVal=-1, _plLastT=0;
+var _sitKey="";
+/* roadmap step 2 (docs/FINAL_AUDIT.md D-6): the plotted holding over the day, sampled once a minute from the model (plateauStrength at each
+   minute, the clock put back, as the self-test reads the plateau at 04:00), built once when first needed; plateauFlatFor: for how many
+   minutes before the clock t the holding has been onH. The note "plotted strength unchanged" then depends on the clock alone, not on when
+   the clock was last moved */
+var _plDay=null;
+function plateauDay(){
+  if(_plDay) return _plDay;
+  var keep=clock, v=[];
+  try{ for(var t=T_MIN;t<=T_MAX;t++){ clock=t; v.push(plateauStrength("al")); } } finally { clock=keep; }
+  return (_plDay=v);
+}
+function plateauFlatFor(onH,t){
+  var d=plateauDay(), i=Math.min(d.length-1,Math.floor(t-T_MIN));
+  while(i>=0&&d[i]===onH) i--;
+  return t-(T_MIN+i+1);
+}
 var SEP_NOTE="Derived from the plotted formations: a French formation stands across the line joining the Allied groups north and south of the plateau. A spatial reading, not a casualty figure.";
 var FLAT_NOTE="The reconstruction plots formations, not losses. A holding that does not change does not mean the fighting there has stopped.";
 /* Stage 3C (docs/STAGE3_SPEC.md section D.2): the situation is split. The timeline's caption carries the act, the phase and the
@@ -11190,8 +11206,8 @@ function paintSituation(){
   var live=liveEvents(clock), top=live.length?live[0].e:null;
   var act=actOf(curPhase);
   var onH=plateauStrength("al"), cut=centreSeparation();
-  if(onH!==_plLastVal){ _plLastVal=onH; _plLastT=clock; }
-  var flatFor=clock-_plLastT;
+  /* D-6: from the model alone (plateauFlatFor); before 05:00 it cannot reach the hour, and it is asked only where the reading is shown */
+  var flatFor=(curPhase<=PLATEAU_LAST&&onH>0&&clock-T_MIN>=60)?plateauFlatFor(onH,clock):0;
   var dw=dwellEvents();   /* Stage 4D: during a dwell the caption names the event(s) the clock stopped for */
   var key=[act.id,curPhase,top?top.id:"-",Math.round(onH/1000),cut?1:0,
            flatFor>=60?1:0,playing?1:0,dw?dw.map(function(e){ return e.id; }).join(","):"-"].join("|");
@@ -13818,9 +13834,12 @@ var AUSTERLITZ_DEBUG=(function(){
   }
   /* Stage 5G (docs/STAGE5_SPEC.md section F.4; decision 95): the day-track inset, bound to the track, at one scale, north up; its
      anchors a keyboard group that sets the clock; its marks and text against the paper ground */
-  /* roadmap step 2 (docs/FINAL_AUDIT.md D-6): the derived readings carry their tag. Every formation's march row (Marching, Next move) and
-     every aggregate's midpoint (the mean of its formations on the field, their number named) tagged derived in the full dossier and the
-     card, at four clocks; no aggregate named as a position */
+  /* roadmap step 2 (docs/FINAL_AUDIT.md D-6): the derived readings carry their tag, and the plateau's note follows the clock alone.
+     Every formation's march row (Marching, Next move) and every aggregate's midpoint (the mean of its formations on the field, their number
+     named) tagged derived in the full dossier and the card, at four clocks; no aggregate named as a position. Then "plotted strength
+     unchanged" at a clock in the day's first run of the plotted holding of 70 minutes or more (the note) and one in its first run of 50 or
+     fewer (none), each chosen where the clock it tests is in a phase that shows the reading, and each reached by a jump from 04:00, a jump
+     from 18:00 and played a minute at a time from the run's start: the same each way */
   function derivedTagChecks(){
     var out=[], keep=clock, sk0=selection?{k:selection.kind,id:selection.id}:null, bad=[], nM=0, nA=0;
     function rowsOf(node){ return Array.prototype.slice.call(node.querySelectorAll(".kv")); }
@@ -13840,6 +13859,21 @@ var AUSTERLITZ_DEBUG=(function(){
         if(n>1&&c.textContent.indexOf("the mean of its "+n+" formations")<0) bad.push(id+" at "+fmtClock(t)+": the midpoint does not name its "+n+" formations"); }); });
     out.push({name:"derived readings tagged: every formation's march row (Marching, Next move) and every aggregate's midpoint (the mean of its formations on the field, their number named) carry the derived tag, in the full dossier and the card; no aggregate named as a position (docs/FINAL_AUDIT.md D-6)",
       ok:!bad.length&&nM>0&&nA>0, detail:nM+" march rows and "+nA+" aggregate midpoints at 04:00, 08:00, 10:00 and 13:00"+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):"")});
+    var d=plateauDay(), runs=[], s=0, i, bad2=[], seen=[];
+    for(i=1;i<=d.length;i++) if(i===d.length||d[i]!==d[s]){ runs.push({a:T_MIN+s,b:T_MIN+i,v:d[s]}); s=i; }
+    function shown(r){ return r.v>0&&r.a>T_MIN&&phaseAt(r.a)<=6; }
+    var L=runs.filter(function(r){ return shown(r)&&r.b-r.a>=70&&phaseAt(r.a+65)<=6; })[0], S=runs.filter(function(r){ return shown(r)&&r.b-r.a<=50&&phaseAt(r.a+Math.floor((r.b-r.a)/2))<=6; })[0];
+    function note(){ _sitKey=""; paintSituation(); var h=document.getElementById("situation"), c=document.getElementById("tb-cap");
+      return (/plotted strength unchanged/.test(h?h.innerHTML:""))+"/"+(/plotted strength unchanged/.test(c?c.innerHTML:"")); }
+    function jump(t,from){ setClock(from,{instant:true,force:true,camera:false}); setClock(t,{instant:true,force:true,camera:false}); return note(); }
+    function played(t,from){ for(var m=from;m<=t;m++){ setClock(m,{instant:true,force:true,camera:false}); paintSituation(); } return note(); }
+    [L?{t:L.a+65,r:L,want:"true/true"}:null,S?{t:S.a+Math.floor((S.b-S.a)/2),r:S,want:"false/false"}:null].forEach(function(q){
+      if(!q){ bad2.push("no run of the plotted holding found to test"); return; }
+      var w=[jump(q.t,T_MIN),jump(q.t,T_MAX),played(q.t,q.r.a)];
+      seen.push(fmtClock(q.t)+" (the holding unchanged since "+fmtClock(q.r.a)+"): "+w.join(", "));
+      if(w.some(function(x){ return x!==q.want; })) bad2.push(fmtClock(q.t)+": "+w.join(", ")+", want "+q.want+" each way"); });
+    out.push({name:"derived readings: the plateau's \u201cplotted strength unchanged\u201d follows the plotted holding alone (unchanged for 60 minutes or more before the clock), the same after a jump from 04:00, a jump from 18:00 or played (docs/FINAL_AUDIT.md D-6)",
+      ok:!bad2.length, detail:"the strip/the caption: "+seen.join("; ")+(bad2.length?"; WRONG: "+bad2.join("; "):"")});
     if(sk0) select(sk0.k,sk0.id); else select(null,null);
     setClock(keep,{instant:true,force:true,camera:false}); finishTween(); settle(2,true);
     return out;

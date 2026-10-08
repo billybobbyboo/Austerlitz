@@ -562,6 +562,24 @@ try{
     if(bad.length||!nM||!nA) throw new Error("derived tags: "+bad.slice(0,6).join("; ")+" ("+nM+" march rows, "+nA+" midpoints)");
     console.log("derived tags: "+nM+" march rows tagged derived and "+nA+" aggregate midpoints tagged with their formations' number, at every half hour OK"); }
 
+  /* roadmap step 2 (docs/FINAL_AUDIT.md D-6): "plotted strength unchanged" follows the clock alone. The plotted holding is sampled here once
+     a minute up to phase 7, where the reading ends (plateauStrength, read by this test, not plateauDay); at every 7th minute the caption and
+     the Now tab's strip are the same after a jump from 04:00, a jump from 18:00 and the morning played a minute at a time from 04:00, and
+     carry the note exactly where the holding shown has not changed for 60 minutes or more */
+  { const T7=PHASES[7].t0, v=[]; for(let t=T_MIN;t<=T7;t++){ clock=t; v.push(plateauStrength("al")); }   /* the reading is shown up to phase 6 */
+    const flat=t=>{ const x=v[t-T_MIN]; let i=t-T_MIN; while(i>=0&&v[i]===x) i--; return t-(T_MIN+i+1); };
+    const paint=()=>{ _sitKey=""; paintSituation(); return document.getElementById("tb-cap").innerHTML+"|"+document.getElementById("situation").innerHTML; };
+    const played={}; for(let t=T_MIN;t<=T7;t++){ setClock(t); paintSituation(); if((t-T_MIN)%7===0) played[t]=paint(); }
+    const bad=[]; let shown=0, hidden=0;
+    for(let t=T_MIN;t<=T7;t+=7){
+      setClock(T_MIN); paint(); setClock(t); const a=paint(); setClock(T_MAX); paint(); setClock(t); const b=paint();
+      const want=phaseAt(t)<=6&&v[t-T_MIN]>0&&flat(t)>=60, has=a.indexOf("plotted strength unchanged")>=0;
+      if(a!==b||a!==played[t]) bad.push(fmtClock(t)+": the caption or the strip depends on where the clock came from");
+      if(has!==want) bad.push(fmtClock(t)+": the note "+(want?"missing":"shown")+" (the holding unchanged for "+flat(t)+" min)");
+      if(want) shown++; else hidden++; }
+    if(bad.length||!shown||!hidden) throw new Error("plateau note: "+bad.slice(0,6).join("; ")+" (shown at "+shown+", not at "+hidden+")");
+    console.log("plateau note: the same after a jump either way and played, at "+(shown+hidden)+" sampled minutes; shown at the "+shown+" where the holding has not changed for an hour, at no other OK"); }
+
   /* the sky must repaint through every lighting state without a NaN */
   for(let ph=0;ph<PHASES.length;ph++){
     setPhase(ph,false);
