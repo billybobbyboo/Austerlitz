@@ -287,6 +287,25 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   console.log("appearance checks: "+(ap-apBad)+"/"+ap+" pass ("+Object.keys(DRESS).length+" dress classes, "+Object.keys(APPEARANCE_SOURCES).length+" sources, "+
     leaves.length+" leaf formations, "+Object.keys(COLOURS_CARRIED).length+" colours entries)"); }
 
+/* roadmap step 2 (docs/FINAL_AUDIT.md D-5): the guard's reach. Every top-level declaration of the four data files, and the data that live
+   in app.js (the sun's date, place and clock basis; which places a dossier quotes as surveyed; the timing and position grades a visitor is
+   told), are in check:data's lists (tools/visual/data-invariance.js DATA, read from that file as tools/lang-scan.js reads it), so a new
+   declaration cannot sit outside the guard unseen */
+{ const acorn=require('acorn'), di=fs.readFileSync('tools/visual/data-invariance.js','utf8'), dm=di.match(/const DATA=(\{[\s\S]*?\n\});/);
+  const G=new Set(dm?[].concat(...Object.values(Function("return ("+dm[1]+")")())):[]);
+  if(!dm) errs.push("guard: DATA not found in tools/visual/data-invariance.js");
+  let n=0, out=0;
+  const keyOf=s=>s.type==="FunctionDeclaration"?s.id.name:(s.type==="VariableDeclaration"?s.declarations.map(d=>d.id.name).join(","):null);
+  ["geo.js","data.js","analysis.js","appearance.js"].forEach(f=>acorn.parse(fs.readFileSync(f,'utf8'),{ecmaVersion:2020}).body.forEach(s=>{
+    const k=keyOf(s); if(k===null) return; n++;
+    if(!G.has(k)){ out++; errs.push("guard: "+f+"'s "+k+" is not in check:data's lists (tools/visual/data-invariance.js)"); } }));
+  const APP_DATA=["SUN_DAY","FEATURE_GT","TIMING_TEXT","CONF_TEXT","CONF_INTERP"];
+  /* each is app.js's own top-level declaration under that name alone, the key check:data compares it by (else it reports "not found") */
+  const appKeys=new Set(acorn.parse(fs.readFileSync('app.js','utf8'),{ecmaVersion:2020}).body.map(keyOf).filter(k=>k!==null));
+  APP_DATA.forEach(k=>{ if(!G.has(k)){ out++; errs.push("guard: app.js's "+k+" is not in check:data's lists (D-5)"); }
+    if(!appKeys.has(k)) errs.push("guard: app.js declares no top-level "+k+" of its own (D-5)"); });
+  console.log("guard: the "+n+" declarations of the four data files and app.js's "+APP_DATA.length+" data declarations "+
+    (out?"are not all in check:data's lists ("+out+" outside)":"are in check:data's lists")+" ("+G.size+" names)"); }
 /* T-3 (docs/FINAL_AUDIT.md): a warning fails unless it is acknowledged here by its exact text, with the reason it stands and where that is
    recorded ({w, why, see}); an acknowledged warning that is no longer raised fails too, until its entry is removed. None today. */
 const KNOWN_WARN=[];

@@ -57,6 +57,9 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - `geo.js`, `data.js`, `appearance.js`, `analysis.js` and the model declarations guarded by
   `tools/visual/data-invariance.js` change only when the task is explicitly about historical or
   geographic data. Then: cite the evidence, record what was, what is, and why, in `CHANGELOG.md`.
+  Since roadmap step 2 (D-5) the guard also holds the data that live in `app.js` (its group "data in app.js": `SUN_DAY`'s date,
+  place and clock reading, `FEATURE_GT`, and the grade texts a visitor is told, `TIMING_TEXT`, `CONF_TEXT` and `CONF_INTERP`), under
+  the same rule; `test.js` fails on any top-level declaration of the four data files, or any of those five, outside check:data's lists.
 - Do not overwrite an established project decision because another assumption seems plausible. If
   evidence contradicts it: state the contradiction and what would need to change; do not change it silently.
 - Keep data, simulation and presentation separate. Never fix a data problem by changing only the display.
