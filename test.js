@@ -287,7 +287,7 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   console.log("appearance checks: "+(ap-apBad)+"/"+ap+" pass ("+Object.keys(DRESS).length+" dress classes, "+Object.keys(APPEARANCE_SOURCES).length+" sources, "+
     leaves.length+" leaf formations, "+Object.keys(COLOURS_CARRIED).length+" colours entries)"); }
 
-/* roadmap step 2 (docs/FINAL_AUDIT.md D-5): the guard's reach. Every top-level declaration of the four data files, and the data that live
+/* roadmap step 2 (docs/FINAL_AUDIT.md D-5): the guard's reach. Every top-level declaration of the four data files, and five data declarations
    in app.js (the sun's date, place and clock basis; which places a dossier quotes as surveyed; the timing and position grades a visitor is
    told), are in check:data's lists (tools/visual/data-invariance.js DATA, read from that file as tools/lang-scan.js reads it), so a new
    declaration cannot sit outside the guard unseen */

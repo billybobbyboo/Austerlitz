@@ -24,10 +24,11 @@ const DATA={
   "historical appearance model (Stage 6B)":["appearanceOf"],
   "derived readings, sight and knowledge":["evWindow","evWeight","liveEvents","actOf","PLATEAU_POLY","onPlateau","plateauStrength","PBERG_NORTHING",
     "SEP_KM","sideCentroid","centreSeparation","EYE_OBSERVER_M,EYE_TARGET_M,LOS_CLEAR_M","hasLOS","knowledgeOf","familyOf","sampleVS","computeViewshed"],
-  /* roadmap step 2 (docs/FINAL_AUDIT.md D-5): data that live in app.js. SUN_DAY: the sun's date (2 December 1805), place (the field's
-     centre) and the clock read as local apparent time (decision 69: a reading, not a finding; the clock basis of the sources' hours is
-     not established); FEATURE_GT: which surveyed place (GEOREF.GT) a place's dossier quotes as "surveyed X m"; TIMING_TEXT, CONF_TEXT
-     and CONF_INTERP: the timing and position grades as a visitor is told them */
+  /* roadmap step 2 (docs/FINAL_AUDIT.md D-5): five data declarations in app.js (the values typed into standardNotes and troopNotes are
+     D-5 (b)). SUN_DAY: the sun's date (2 December 1805), place (the field's centre) and the clock read as local apparent time (decision
+     69: a reading, not a finding; the clock basis of the sources' hours is not established); FEATURE_GT: which surveyed place
+     (GEOREF.GT) a place's dossier quotes as "surveyed X m"; TIMING_TEXT, CONF_TEXT and CONF_INTERP: the timing and position grades as a
+     visitor is told them */
   "data in app.js (roadmap step 2, D-5)":["SUN_DAY","FEATURE_GT","TIMING_TEXT","CONF_TEXT","CONF_INTERP"]
 };
 function split(file){
