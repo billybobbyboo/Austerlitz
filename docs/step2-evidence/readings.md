@@ -34,6 +34,9 @@
   it settles) and §13 F1 (what the sources sheet's light note now says) changed. Thiébault pp. 456, 461 and 504 and Marbot p. 260 were
   checked again that day in archive.org's text layers (`mmoires03thieuoft`, `mmoiresdugn01marbuoft`): Marbot's sentence on the sun stands
   whole on p. 260 (p. 259 ends with "Mais à notre gauche, le maréchal Lannes non seulement").
+- Revised again: 8 October 2026, after the review of C24-C26 (step 2, "C24-C26, review fixes"): §4.7's status (p. 464 read on its image
+  n475 in that review) and §13 F14 (the Guard's "pas un coup de fusil à tirer" on p. 464, not p. 463); §7.4 (p. 755's "2e division aux
+  ordres du général Gazan", read on image n760 in that review; the text layer's "Gazon" checked in archive.org's text layer).
 - Transcription: as printed, with the source's own spelling, accents and capitals (Thiébault, Riajsk, Blasowitz, Girschikowitz,
   "étoit"); the German Fraktur's long s is written s; Russian in the pre-1918 spelling as printed (ъ, ѣ, і); "[...]" marks a cut and
   "/" a page turn inside a quotation. The translations are this register's own.
@@ -513,7 +516,9 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
 - **settles**: in Thiébault, one I Corps division (his "1re") reached the Pratzen with Lannes late in the day; in Thiébault, the Guard and
   the grenadier reserve went onto the Pratzen heights without firing a shot.
 - **does not settle**: whether that is Drouet's or Rivaud's division.
-- **status**: p. 463 read on the page image, p. 464 in the OCR; not yet second-read (H-17).
+- **status**: p. 463 read on the page image, p. 464 in the OCR; p. 464 read on its image n475 (headed "464") in the review of C24-C26,
+  8 October 2026: the page turn falls at "maré- / chal", so the Guard's "qui n'eurent pas un coup de fusil à tirer" is on p. 464; not yet
+  second-read (H-17).
 
 ### 4.8 `thieb.p466.ice`: "trois à quatre mille" drowned; 24 pieces of the Guard; I Corps' 2nd division took no part (p. 466)
 - **source**: p. 466; image n477.
@@ -910,15 +915,18 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **source**: pp. 755-756; images n760-n761.
 - **quote**: (p. 755) "Situation des divisions composant le 5e corps de la Grande Armée à l'époque du 4 brumaire an XIV (26 octobre 1805).
   [...] Division de grenadiers. 6e régiment d'artillerie à cheval [...] 1er — à pied [...] 5e bataillon bis du train [...] 2e comp. du 2e
-  bataillon de sapeurs" (p. 756) "3e division aux ordres du général Suchet. [...] 17e rég. d'inf. légère [...] A Landshut, le 4 brumaire, an
-  XIV."
+  bataillon de sapeurs [...] 2e division aux ordres du général Gazan." (p. 756) "3e division aux ordres du général Suchet. [...] 17e
+  rég. d'inf. légère [...] A Landshut, le 4 brumaire, an XIV."
 - **translation**: "Situation of the divisions forming V Corps of the Grande Armée as at 4 brumaire year XIV (26 October 1805). [...]
   Grenadier division: 6th horse artillery regiment, 1st foot artillery, 5th bis train battalion, 2nd company of the 2nd sapper battalion
-  [...]. 3rd division under General Suchet: [...] 17th light infantry regiment [...]. At Landshut, 4 brumaire year XIV."
+  [...]. 2nd division under General Gazan. [...] 3rd division under General Suchet: [...] 17th light infantry regiment [...]. At
+  Landshut, 4 brumaire year XIV."
 - **grade**: A for 26 October 1805; B for 2 December. **label**: fact.
 - **settles**: on 26 October the grenadier division is listed with horse and foot artillery (question 155), and Suchet's division is the
-  3rd, with the 17e légère.
-- **does not settle**: the artillery with the grenadiers on 2 December.
+  3rd, with the 17e légère; on 26 October the 2nd division of V Corps is Gazan's (p. 755; the text layer reads "Gazon", the image
+  "Gazan", read in the review of C24-C26), so the map's former "2e" for Suchet has no support in this return.
+- **does not settle**: the artillery with the grenadiers on 2 December; the division numbers on 2 December (Gazan's later detachment to
+  Mortier is not read here, so the number of Suchet's division on 2 December stays open).
 - **status**: read on the page images; not yet second-read (H-17).
 
 ### 7.5 `alo.p762.i-corps`: I Corps on 26 October: Pacthod's 1st division, Drouet's 2nd, Kellermann's advance guard with the 27e légère (p. 762)
@@ -1141,7 +1149,7 @@ Each is recorded for the commit named; none changes a text in this commit (recor
 - **F14 (C15's c_gd role, question 147; step 4; found in the review of C14a-C18).** c_gd's role ("then its cavalry charges the Russian
   Guard and its infantry is committed onto the plateau") restates guard_inf@6's act ("Committed onto the plateau as the Russian Guard
   attacks"), as question 147 decided (record-only). Thiébault has the Guard and the grenadier reserve go onto the Pratzen heights
-  "qui n'eurent pas un coup de fusil à tirer" (p. 463, §4.7) and counts the Imperial Guard among those "qui ne prirent aucune part à la
+  "qui n'eurent pas un coup de fusil à tirer" (p. 464, §4.7) and counts the Imperial Guard among those "qui ne prirent aucune part à la
   lutte" (p. 466, §4.8); "committed" can be read as "sent into action". The record is not changed here (it does not say the Guard's
   infantry fought); the disagreement is handed to step 4 with "whether Drouet's division fought" (the same pages), where "moved onto the
   plateau" may be weighed for both texts.

@@ -261,6 +261,14 @@ const LANG_STEP1=["PLANS.al.assumed[1]|the decisive ground was the French right"
    new pattern (BANNED, CAUSAL and VERDICT were applied to every visitor string in step 1, which allowed their hits by LANG_STEP1) */
 const KIND_PATTERN={certainty:"BANNED",causal:"CAUSAL",verdict:"VERDICT",superlative:"SUPERLATIVE",counterfactual:"COUNTERFACTUAL"};
 const PATTERN_STEP={BANNED:"roadmap step 1",CAUSAL:"roadmap step 1",VERDICT:"roadmap step 1",SUPERLATIVE:"roadmap step 2",COUNTERFACTUAL:"roadmap step 2"};
+/* the review of C12 (roadmap step 2): LANG_STEP1 can only shrink (one entry left at the end of step 2), an entry without found can only be
+   a BANNED, CAUSAL or VERDICT hit that step 1 left, and each found tag holds at most the hits its pattern found the day it was added
+   (SUPERLATIVE: seven until step 4 and one permanent; COUNTERFACTUAL: none, H-14's two were reworded), so a later step cannot add an entry
+   under an earlier pattern's tag */
+const LANG_STEP1_MAX=1, FOUND_MAX={"SUPERLATIVE, roadmap step 2":8,"COUNTERFACTUAL, roadmap step 2":0};
+if(LANG_STEP1.length>LANG_STEP1_MAX) fail("language",`LANG_STEP1 can only shrink (${LANG_STEP1_MAX} at the end of roadmap step 2), it holds ${LANG_STEP1.length}`);
+Object.keys(FOUND_MAX).forEach(tag=>{ const k=LANG_ALLOW.filter(a=>a.found===tag).length;
+  if(k>FOUND_MAX[tag]) fail("language",`LANG_ALLOW holds ${k} entries found by "${tag}", more than the ${FOUND_MAX[tag]} that pattern found the day it was added`); });
 { const LS=require(path.join(__dirname,"tools","lang-scan.js"))(__dirname);
   if(LS.missing.length) fail("language",`the overclaim scan cannot find the guarded declarations ${LS.missing.join(", ")}`);
   const whereOf=r=>r.file==="shell.html"?"shell.html "+r.path:r.path;
@@ -271,7 +279,8 @@ const PATTERN_STEP={BANNED:"roadmap step 1",CAUSAL:"roadmap step 1",VERDICT:"roa
   LANG_ALLOW.forEach(a=>{ if(!a.where||!a.phrase||!/^(certainty|verdict|causal|superlative|counterfactual)$/.test(a.kind)||!a.why||a.until===undefined||(a.until===null&&!a.perm))
     fail("language",`LANG_ALLOW entry without its place, phrase, kind, reason or task: ${JSON.stringify(a)}`); });
   LANG_ALLOW.forEach(a=>{ const key=a.where+"|"+a.phrase;
-    if(a.found===undefined){ if(!LANG_STEP1.includes(key)) fail("language",`LANG_ALLOW entry "${a.phrase}" at ${a.where} does not name the pattern and step that found it (found), and step 1 did not leave it`); return; }
+    if(a.found===undefined){ if(PATTERN_STEP[KIND_PATTERN[a.kind]]!=="roadmap step 1") fail("language",`LANG_ALLOW entry "${a.phrase}" at ${a.where} has no found tag, and its kind's pattern (${KIND_PATTERN[a.kind]}) was not applied in step 1`);
+      if(!LANG_STEP1.includes(key)) fail("language",`LANG_ALLOW entry "${a.phrase}" at ${a.where} does not name the pattern and step that found it (found), and step 1 did not leave it`); return; }
     const f=/^([A-Z]+), (roadmap step \d+)$/.exec(a.found);
     if(!f||f[1]!==KIND_PATTERN[a.kind]||PATTERN_STEP[f[1]]!==f[2])
       fail("language",`LANG_ALLOW entry "${a.phrase}" at ${a.where}: found "${a.found}" must name its kind's pattern (${KIND_PATTERN[a.kind]}) and the step that added it (${PATTERN_STEP[KIND_PATTERN[a.kind]]}): the list grows only with a new pattern`); });

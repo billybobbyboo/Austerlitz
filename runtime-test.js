@@ -534,13 +534,32 @@ try{
     trial("the Austrian model's period",standardNotes,()=>{ ai.model.en="a test model (the 1700s)"; },()=>{ ai.model.en=e0; },"a test model;","1700s");
     trial("the Russian stature's date",standardNotes,()=>{ SM.ru.stature.dated="1799-01"; },()=>{ SM.ru.stature.dated=rd; },"the minimum of 1799","the minimum of 1804");
     trial("the Austrian stature's period",standardNotes,()=>{ SM.at.stature.en="a test minimum, 1.65 m (the 1770s)"; },()=>{ SM.at.stature.en=ae; },"a minimum of the 1770s","1790s");
+    /* the review of C24-C26 (items 3 and 5): the cloths drawn in the generic proportion are named, and follow the table: given a cloth, the
+       Russian Guard infantry's colours leave the clause (their shape recomputed as the drawing would, then put back) */
+    { const gi=CC.ru_guard_inf, g0=gi.cloth, ST=[]; Object.keys(units).forEach(id=>{ const u=units[id].block&&units[id].block.userData; (u&&u.stds||[]).forEach(q=>{ if(q.S.carry==="ru_guard_inf") ST.push(q); }); });
+      const base=standardNotes().join(" "), gc=/where neither a cloth size nor a painting is read \(([^)]*)\), one generic proportion, a design value/.exec(base);
+      if(!ST.length) bad.push("the generic cloths: no Russian Guard infantry standard drawn to try");
+      if(!gc||gc[1].indexOf("the Russian Guard infantry")<0||gc[1].indexOf("the Royal Guard of the Kingdom of Italy")<0) bad.push("the generic cloths: not named ("+(gc?gc[1]:"no clause")+")");
+      const S0=ST.map(q=>q.S);
+      trial("a generic cloth given a size",standardNotes,()=>{ gi.cloth={v:"test",en:"100 x 80 cm",w:100,h:80,unit:"cm",src:"viskovatov9_1850",gr:"B",lab:"fact"};
+          ST.forEach(q=>{ q.S=kitStdShape(q.S.carry,q.S.nation,q.S.mounted); }); },
+        ()=>{ gi.cloth=g0; ST.forEach((q,i)=>{ q.S=S0[i]; }); },"100 x 80 cm","the Russian Guard infantry"); }
+    /* the painted patterns' description is typed (it describes the drawing, KIT.paint); each of its words must stand in the item and in the
+       table's text it describes (a hyphen read as a space), so a change of the table's model or pattern fails here */
+    { const PW=[["1804","fr_eagle_inf","model"],["white","fr_eagle_inf","pattern"],["lozenge","fr_eagle_inf","pattern"],["red and blue","fr_eagle_inf","pattern"],
+        ["imperial yellow","at_inf","model"],["black double eagle","at_inf","pattern"],["flame","at_inf","pattern"],["border","at_inf","pattern"]];
+      const item=standardNotes().filter(t=>/^Painted where/.test(t))[0]||"", nh=t=>String(t||"").replace(/-/g," ");
+      PW.forEach(([w,k,f])=>{ const c=CC[k]&&CC[k][f];
+        if(item.indexOf(w)<0) bad.push("the painted item no longer says \u201c"+w+"\u201d (update this list with it)");
+        if(!c||!(c.gr==="A"||c.gr==="B")||nh(c.en).indexOf(w)<0) bad.push("the painted item's \u201c"+w+"\u201d is not in "+k+"."+f+" graded A or B ("+(c?nh(c.en):"none")+")"); });
+      if(!(CC.ru_inf.pattern&&CC.ru_inf.pattern.gen)) bad.push("the painted item calls the Russian infantry's pattern an open question; the table settles it"); }
     trial("the appearance grades",troopNotes,()=>{ APPEARANCE_GRADE.B="a test grade"; },()=>{ APPEARANCE_GRADE.B=gB; },"B a test grade;");
     trial("a settled coat",troopNotes,()=>{ dc.c="blue"; },()=>{ dc.c=c0; },"the French dragoons wore blue","wore green");
     trial("an unsettled coat",troopNotes,()=>{ dc.gr="C"; },()=>{ dc.gr=gr0; },"never by a coat: the Russian","French dragoons");
     const eot=Math.round(SUN_DAY.at(720).eot);
     if(lightNotes().join(" ").indexOf("about "+eot+" minutes earlier")<0) bad.push("the light: local mean time's shift not SUN_DAY's equation of time ("+eot+" min)");
     if(bad.length) throw new Error("notes from the table: "+bad.join("; "));
-    console.log("notes from the table: the standards' and the troops' notes follow 9 changed values of the appearance table, and the light's local-time shift is SUN_DAY's ("+eot+" min) OK"); }
+    console.log("notes from the table: the standards' and the troops' notes follow 10 changed values of the appearance table (a generic cloth given a size among them), the cloths drawn generic are named, the painted item's 8 typed words stand in the table's model and pattern, and the light's local-time shift is SUN_DAY's ("+eot+" min) OK"); }
 
   /* roadmap step 2 (docs/FINAL_AUDIT.md D-6): the derived readings carry their tag. At every half hour, every formation's march row
      (marchRow) tagged derived exactly where marchRate gives a leg; every aggregate's place (posRow) named its formations' midpoint, tagged,
@@ -554,13 +573,23 @@ try{
           if(/<dt>Midpoint/.test(posRow(id,false)+posRow(id,true))) bad.push(id+" at "+fmtClock(t)+": a tracked formation named a midpoint");
           return; }
         const full=posRow(id,false), card=posRow(id,true), n=leavesOf(id,[]).filter(k=>!!posNow(k)).length;
-        if(!/^<div class="kv"><dt>Midpoint at /.test(full)||!/^<div class="kv"><dt>Midpoint <span class="ltag derived">/.test(card)) bad.push(id+" at "+fmtClock(t)+": not named its formations' midpoint");
+        if(!/^<div class="kv"><dt>Midpoint at /.test(full)||!(posNow(id)?/^<div class="kv"><dt>Midpoint <span class="ltag derived">/:/^<div class="kv"><dt>Midpoint<\/dt>/).test(card)) bad.push(id+" at "+fmtClock(t)+": not named its formations' midpoint");
+        if(!posNow(id)&&(full+card).indexOf('<span class="ltag derived">')>=0) bad.push(id+" at "+fmtClock(t)+": an absent midpoint tagged derived");
         if(/<dt>(Position at|Where)\b/.test(full+card)) bad.push(id+" at "+fmtClock(t)+": an aggregate named as a position");
         if(posNow(id)){ nA++;
           if(full.indexOf('<span class="ltag derived">')<0) bad.push(id+" at "+fmtClock(t)+": the midpoint untagged");
           if(n>1&&full.indexOf("the mean of its "+n+" formations")<0) bad.push(id+" at "+fmtClock(t)+": the midpoint does not name its "+n+" formations"); } }); }
+    /* the review of C24-C26 (item 6): no aggregate is off the field at a half hour in the data, so the absent reading is tried: with no
+       formation placed (posNow stubbed for one call each), every aggregate's card and full row carry no derived tag */
+    { const realP=posNow; let nO=0;
+      try{ posNow=function(){ return null; };
+        Object.keys(FORMATIONS).filter(id=>!FORMATIONS[id].track).forEach(id=>{ const full=posRow(id,false), card=posRow(id,true); nO++;
+          if((full+card).indexOf('<span class="ltag derived">')>=0||!/^<div class="kv"><dt>Midpoint<\/dt><dd>Not on the field at this hour</.test(card))
+            bad.push(id+": with none of its formations on the field, a derived tag or no absent reading ("+card.slice(0,80)+")"); });
+      } finally { posNow=realP; }
+      if(!nO) bad.push("no aggregate to try off the field"); }
     if(bad.length||!nM||!nA) throw new Error("derived tags: "+bad.slice(0,6).join("; ")+" ("+nM+" march rows, "+nA+" midpoints)");
-    console.log("derived tags: "+nM+" march rows tagged derived and "+nA+" aggregate midpoints tagged with their formations' number, at every half hour OK"); }
+    console.log("derived tags: "+nM+" march rows tagged derived and "+nA+" aggregate midpoints tagged with their formations' number, at every half hour; no tag on an aggregate with none of its formations on the field OK"); }
 
   /* roadmap step 2 (docs/FINAL_AUDIT.md D-6): "plotted strength unchanged" follows the clock alone. The plotted holding is sampled here once
      a minute up to phase 7, where the reading ends (plateauStrength, read by this test, not plateauDay); at every 7th minute the caption and

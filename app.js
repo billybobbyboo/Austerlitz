@@ -6125,7 +6125,7 @@ function posRow(id,card){
   if(f.track) return card ? row("Where", pos? esc(nearestFeature(pos)) : "Not on the field at this hour")
     : row("Position at "+esc(fmtClock(clock)), pos? esc(nearestFeature(pos)) : esc(notYetAt(id,clock)?"Not yet on the field in this reconstruction":"No longer on the field"));
   var n=leavesOf(id,[]).filter(function(k){ return !!posNow(k); }).length;
-  if(card) return '<div class="kv"><dt>Midpoint '+derivedTag()+'</dt><dd>'+(pos? esc(nearestFeature(pos)) : "Not on the field at this hour")+'</dd></div>';
+  if(card) return '<div class="kv"><dt>Midpoint'+(pos?' '+derivedTag():'')+'</dt><dd>'+(pos? esc(nearestFeature(pos)) : "Not on the field at this hour")+'</dd></div>';   /* no tag on an absent reading, as the full row */
   return row("Midpoint at "+esc(fmtClock(clock)), pos? esc(nearestFeature(pos))+" "+derivedTag()+' <span class="hh">('+
     (n===1?"its one formation on the field":"the mean of its "+n+" formations\u2019 plotted positions; it need not be where any of them stands")+')</span>' : "\u2014");
 }
@@ -6535,14 +6535,20 @@ function troopNotes(){
 /* Stage 6D: the sources sheet's "How the standards are drawn", from COLOURS_CARRIED, STANDARD_MEASURES and the blocks as drawn. Roadmap
    step 2 (docs/FINAL_AUDIT.md D-5): its historical values are read, not typed: the Austrian infantry's disputed count and its model (with
    its source, without a trailing period claim), the statures' dates, and the cloths of the standards as drawn (kitStdShape's S.cloth: the
-   entry's own measured cloth or its painting's; a cloth drawn for a standard whose own size was not read is named as such) */
+   entry's own measured cloth or its painting's; a cloth drawn for a standard whose own size was not read is named as such; a standard
+   drawn in the generic proportion, KIT.std.aspect, a design value, is named by its class). The painted patterns' description describes
+   the drawing (KIT.paint, a design simplification) and stays typed: runtime-test.js checks each of its words against the table's
+   model and pattern texts. The cloths' figures are written as drawn, the first along the fly and the second along the staff (the w and
+   h of the table's cloth), which is the drawing's convention, not the sources' */
 function standardNotes(){
-  var none={}, n=0, used={}, cl={fr:[],at:[],ru:[]}, both={}, lent={};
+  var none={}, n=0, used={}, cl={fr:[],at:[],ru:[]}, both={}, lent={}, gen={}, oblong={};
   Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u) return; n+=u.stds?u.stds.length:0;
     (u.dress||[]).forEach(function(r){ if(!r.dress||r.role==="skirmish"||r.role==="officers") return; var c=DRESS[r.dress].carry, R=kitStdRule(c);
       used[c]=1; if(!R.n) (none[R.why]=none[R.why]||{})[DRESS[r.dress].name.split(" (")[0]]=1; });
-    (u.stds||[]).forEach(function(q){ var c=q.S.cloth, L=cl[q.S.nation], t; if(!c||!L) return;
-      t=c.w===c.h?c.w+" cm square":c.w+" x "+c.h+" cm";
+    (u.stds||[]).forEach(function(q){ var c=q.S.cloth, L=cl[q.S.nation], t;
+      if(!c&&q.S.clothBy==="generic"&&DRESS[q.dress]) gen[DRESS[q.dress].name.split(" (")[0]]=1;
+      if(!c||!L) return;
+      t=c.w===c.h?c.w+" cm square":c.w+" x "+c.h+" cm"; if(c.w!==c.h&&c.src) oblong[c.src]=1;
       if(c!==(COLOURS_CARRIED[q.S.carry]||{}).cloth) lent[q.S.nation+"|"+t]=1;
       if(L.indexOf(t)<0) L.push(t);
       if(!q.S.provisional&&q.S.clothBy==="its measure against the staff") both[q.S.nation]=1; }); });
@@ -6551,7 +6557,7 @@ function standardNotes(){
   function list(a){ return a.length<2?a.join(""):a.slice(0,-1).join(", ")+" and "+a[a.length-1]; }
   var cls=["fr","at","ru"].filter(function(k){ return cl[k].length; }).map(function(k){ return "the "+ADJ[k]+" "+
         list(cl[k].map(function(t){ return lent[k+"|"+t]?t+" (also drawn for standards whose own size was not read)":t; })); }),
-      bm=["ru","at"].filter(function(k){ return both[k]; }).map(function(k){ return ADJ[k]; });
+      bm=["ru","at"].filter(function(k){ return both[k]; }).map(function(k){ return ADJ[k]; }), gn=Object.keys(gen).map(function(k){ return "the "+k; });
   return [
     "Who carried standards and how many follow the appearance table, per battalion or squadron as the sources give it, mapped onto the drawn battalions and squadrons: "+n+" standards on the field. None where "+
       Object.keys(none).map(function(w){ return w+" ("+Object.keys(none[w]).join(", ")+")"; }).join("; ")+".",
@@ -6560,7 +6566,9 @@ function standardNotes(){
       AI.model.en.replace(/\s*\([^()]*\)\s*$/,"")+"; the Leib colour is not drawn apart from the ordinary colours.",
     "Painted where a source graded A or B gives the pattern: the French 1804 model (a white lozenge, the corners alternately red and blue; which colour lies at the staff's top is not sourced, drawn blue; the eagle on the staff where its size is read) and the Austrian ordinary colour (imperial yellow, the black double eagle, simplified; its flame border not drawn). Every other cloth is plain, in the nation's symbol colour: the pattern of the Russian infantry's colours is an open question; the Russian cavalry's and the Guard's patterns were not settled by the sources read.",
     "Height, owner decision 106: the staff's top, with its finial, over the man's height to his hat's top. Russian infantry: a staff of "+ru.staff.m.toFixed(2)+" m and a spearhead of "+ru.staff.finial_m.toFixed(3)+" m with its socket (how far the socket overlaps is not stated: drawn on the staff's end, the upper bound) over a recruit of "+ru.stature.m.toFixed(2)+" m, the minimum of "+String(ru.stature.dated).slice(0,4)+". Austrian infantry: a staff of about "+at.staff.m.toFixed(2)+" m over a recruit of "+at.stature.m.toFixed(2)+" m (a minimum"+(atWhen?" of "+atWhen:"")+(at.staff.finial_m?"":"; the finial's size not read, not drawn")+"). Both divide by a minimum stature, so the drawn staff is if anything long for the average man (an inference).",
-    "The cloths in their sourced proportions, width by height"+(cls.length?" ("+cls.join("; ")+")":"")+(bm.length?"; where the staff and the cloth are both measured (the "+list(bm)+" infantry), at their sourced size against the staff, so that the cloth hangs lower among the ranks than the provisional rule drew it":"")+". The dip of a broken, captured, encircled or repulsed formation's standards is kept."
+    "The cloths in their sourced proportions"+(cls.length?" ("+cls.join("; ")+"), the first figure along the fly and the second along the staff, as drawn"+
+      (oblong.dolleczek1896?" ("+String(APPEARANCE_SOURCES.dolleczek1896.au).split(" (")[0].split(" ").pop()+"'s ratios do not say which side is the staff's)":""):"")+(bm.length?"; where the staff and the cloth are both measured (the "+list(bm)+" infantry), at their sourced size against the staff, so that the cloth hangs lower among the ranks than the provisional rule drew it":"")+
+      (gn.length?"; where neither a cloth size nor a painting is read ("+list(gn)+"), one generic proportion, a design value":"")+". The dip of a broken, captured, encircled or repulsed formation's standards is kept."
   ];
 }
 function arrowNotes(){
@@ -8353,7 +8361,7 @@ var AUSTERLITZ_DEBUG=(function(){
         if(full.concat(card).some(function(r){ return /^(Position at|Where)\b/.test(dt(r)); })) bad.push(id+" at "+fmtClock(t)+": an aggregate named as a position");
         var c=full.filter(function(r){ return /^Midpoint at /.test(dt(r)); })[0], c2=card.filter(function(r){ return /^Midpoint\b/.test(dt(r)); })[0];
         if(!c||!c2){ bad.push(id+" at "+fmtClock(t)+": no midpoint row"); return; }
-        if(!posNow(id)) return;
+        if(!posNow(id)){ if(c.querySelector(".ltag.derived")||c2.querySelector(".ltag.derived")) bad.push(id+" at "+fmtClock(t)+": an absent midpoint tagged derived"); return; }
         var n=leavesOf(id,[]).filter(function(k){ return !!posNow(k); }).length; nA++;
         if(!c.querySelector(".ltag.derived")||!c2.querySelector(".ltag.derived")) bad.push(id+" at "+fmtClock(t)+": the midpoint untagged");
         if(n>1&&c.textContent.indexOf("the mean of its "+n+" formations")<0) bad.push(id+" at "+fmtClock(t)+": the midpoint does not name its "+n+" formations"); }); });
