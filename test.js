@@ -177,7 +177,8 @@ TOUR.forEach((st,i)=>{
        who gives each is the text's, not checked); a dispute stands only on a disputed claim */
     if(e.claim==="disputed"){ const hrs=new Set(String(e.dispute||"").match(/\b\d\d:\d\d\b/g)||[]);
       if(!str(e.dispute)) bad("claim disputed without its dispute (decision 125)");
-      else if(hrs.size<2) bad("its dispute names "+hrs.size+" clock time(s), not both hours (decision 125)"); }
+      else if(hrs.size<2) bad("its dispute names "+hrs.size+" clock time(s), not both hours (decision 125)");
+      if(e.cf==="A") bad("a disputed hour graded A (Timing A is dated in a cited source, TIMING_TEXT; question 143)"); }
     else if(e.dispute!==undefined) bad("a dispute on a claim that is not disputed");
     if(!str(e.n)) bad("no title"); if(!str(e.why)) bad("no reason (why)");
     if(!Array.isArray(e.forms)) bad("forms is not a list");
