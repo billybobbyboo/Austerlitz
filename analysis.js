@@ -1,7 +1,7 @@
 /* ============================================================
    ANALYSIS — the nine things that decided Austerlitz,
    the two command views, and documented limits on what was known.
-   src: "doc" = attested decision or report · "inf" = labelled inference
+   src: "doc" = attested decision or report · "inf" = labelled inference · "anec" = a memoir anecdote, its teller named in the text (roadmap step 2, H-7)
    ============================================================ */
 
 /* The spine data task (docs/STAGE3_SPEC.md sections C.2-C.3; owner decisions 52, 59, 64-67): a chapter is a theme. It names the
@@ -72,8 +72,8 @@ fr:{
     ["knew","doc","That Davout's detachment had reached Raigern overnight and would come up to the Goldbach during the morning."],
     ["ordered","doc","The right to give ground slowly and hold the villages."]],
  2:[["saw","doc","Allied columns descending off the plateau in strength."],
-    ["knew","doc","Soult's answer that he needed under twenty minutes to reach the heights."],
-    ["ordered","doc","A further quarter of an hour's delay before releasing the attack, to let more of the enemy get down into the valley."]],
+    ["knew","anec","Soult's answer that his troops needed twenty minutes at most to reach the heights: a memoir anecdote, as Thiebault tells it."],
+    ["ordered","anec","A further quarter of an hour's delay before releasing the attack, the signal given only once an aide reported the heights abandoned (a little prematurely, Thiebault adds): the same memoir anecdote."]],
  3:[["saw","doc","The crest of the Pratzen, once the mist lifted, and the 4th Column still on it."],
     ["didnt","inf","How strong the force still on the plateau was. Inferred: the attack went in with two divisions and no reserve committed."],
     ["ordered","doc","Soult to take the Pratzeberg and Stare Vinohrady."]],
@@ -269,7 +269,7 @@ var EVENTS = [
 
 {id:"decision", t:[505,525], n:"Napoleon releases Soult against the heights", side:"fr", kind:"decision",
  p:[177,134], forms:["gqg","c_iv","sthilaire","vandamme"], cf:"B", claim:"est",
- why:"Asked how long he needed, Soult is reported to have answered under twenty minutes, and Napoleon to have waited a further quarter of an hour to let more of the enemy get down into the valley. A memoir anecdote."},
+ why:"Asked how long his troops needed to crown the plateau, Soult is reported to have answered twenty minutes at most, and Napoleon to have waited a further quarter of an hour, giving the signal only once an aide reported the heights abandoned (a little prematurely, Thiebault adds). A memoir anecdote, as Thiebault tells it."},
 
 {id:"soult", t:[525,555], n:"Saint-Hilaire and Vandamme climb the slope", side:"fr", kind:"attack",
  p:[262,262], forms:["sthilaire","vandamme"], cf:"A", claim:"fact",

@@ -70,7 +70,7 @@ var PHASES = [
   events:[
     ["c. 08:00","Langeron attacks Sokolnitz; Przybyszewski goes for the castle and pheasantry."],
     ["c. 08:30","Friant's leading troops retake Telnitz, then fall back over the Goldbach."],
-    ["c. 08:30","Napoleon asks Soult how long he needs to reach the heights. Twenty minutes, Soult answers. Napoleon waits a further quarter of an hour."]],
+    ["c. 08:30","Napoleon asks Soult how long he needs to reach the heights. Twenty minutes at most, Soult answers, and Napoleon waits a further quarter of an hour. A memoir anecdote, as Thiebault tells it; the hour is this map's."]],
   cam:[-144,52,130,-56,4,46], light:"mist", mist:0.90 },
 
 { id:3, t0:525, t1:570, clock:"08:45 - 09:30", label:"The Pratzen", title:"Soult storms the heights",
@@ -154,7 +154,7 @@ gqg:{ ech:"army", nation:"fr", arm:"hq", desig:"G.Q.G.",
   note:"Duffy (1977) and Smith (1998) give about 73,000 French of all arms with 139 guns - an army total, not the headquarters' own. Other accounts range from 65,000 to 75,000.",
   track:{
     0:{p:[177,134],st:"observing",cf:"A",obj:"Hold the right; break the Allied centre once it has committed",act:"On the Zuran mound with the corps commanders, waiting for the Allied columns to clear the plateau"},
-    3:{st:"observing",act:"Releases Soult against the heights after a deliberate fifteen-minute pause"},
+    3:{st:"observing",act:"Releases Soult against the heights; a memoir anecdote, as Thiebault tells it, has him wait a further quarter of an hour first"},
     6:{tm:{dep:720,gr:"B",basis:"app narrative, unsourced",ev:["Napoleon moves forward from the Zuran to Stare Vinohrady.","About noon, for Stare Vinohrady"],note:"dated c. 12:00, and the Zuran is vacated about noon: a departure. The arrival follows the existing 40-minute march (moveMin)"},
        p:[309,207],cf:"A",via:[[215,154],[236,165]],moveMin:40,act:"Moves forward from the Zuran to Stare Vinohrady"},
     7:{p:[307,227],act:"Orders the centre to wheel south onto Buxhowden's rear"},
@@ -647,7 +647,7 @@ var FEATURES = [
  sub:"Low prehistoric barrow west of the Goldbach",
  facts:[["Occupied by","Napoleon and Berthier from about 06:00"],["Vacated","About noon, for Stare Vinohrady"]],
  why:["Gives a view across the whole French front and the western face of the plateau"],
- story:"Napoleon watched the Allied columns march off the Pratzen from here, is said to have waited a further quarter of an hour after Soult said how long he needed, and then released the attack."},
+ story:"Napoleon watched the Allied columns march off the Pratzen from here and then released the attack; a memoir anecdote, as Thiebault tells it, has him wait a further quarter of an hour after Soult said he needed twenty minutes at most."},
 
 {id:"goldbach", p:[201,273], kind:"water", name:"Goldbach stream",
  sub:"Small stream in a marshy valley, the armies' dividing line",
@@ -771,5 +771,6 @@ var SOURCE_NOTE = {
   ["Derived reading","What the engine computes from the plot, such as the holding on the heights or the centre-separation test. Never a source figure; always marked derived."]],
  refs:["Order-of-battle figures follow Duffy (1977) and Smith (1998) unless a range is given; a range names its sources in the formation's note.",
        "Narrative of the fight for the Pratzeberg follows accounts drawing on Thiebault's memoirs and Duffy.",
-       "Figures for the meres follow the record of the ponds being drained after the battle."]
+       "Figures for the meres follow the record of the ponds being drained after the battle.",
+       "Soult's 'twenty minutes at most' and Napoleon's further quarter of an hour are a memoir anecdote, told here as Thiebault's memoirs tell it (vol. III, 1894, pp. 456-458), who sets it at daybreak; the hour this map gives it is its own."]
 };

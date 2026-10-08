@@ -286,7 +286,7 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
 .cmdrow dd{font-size:var(--t-ui);color:var(--text-body);margin:0;line-height:1.5}
 .src{display:inline-block;font-size:var(--t-micro);letter-spacing:.06em;padding:1px 5px;border-radius:2px;
   vertical-align:1px;margin-left:3px}
-.src.doc,.src.inf{background:var(--plate);color:var(--plate-ink)}
+.src.doc,.src.inf,.src.anec{background:var(--plate);color:var(--plate-ink)}
 .src.inf{font-style:italic}
 
 /* ---------- claim pills ---------- */

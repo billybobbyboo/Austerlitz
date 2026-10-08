@@ -3320,6 +3320,10 @@ function paintChapterText(){
     b.addEventListener("click",function(){ select("t",b.dataset.feat); });
   });
 }
+/* the Command tab's source tags (analysis.js COMMAND rows): roadmap step 2 (H-7) adds "anec", a memoir anecdote whose teller the row names,
+   graded as the event that tells it (claim est, "A memoir anecdote"); any other kind is drawn as INFERRED, as before */
+var SRC_LABEL={doc:"DOCUMENTED",inf:"INFERRED",anec:"ANECDOTE"};
+function srcKind(k){ return SRC_LABEL.hasOwnProperty(k)?k:"inf"; }
 function paintCommand(){
   var host=document.getElementById("cmdbody");
   if(!host) return;
@@ -3335,8 +3339,8 @@ function paintCommand(){
   if(!items) h+='<p class="muted">Nothing recorded for this hour.</p>';
   else h+='<dl class="cmdlist">'+items.map(function(it){
     return '<div class="cmdrow"><dt>'+esc(KIND[it[0]]||it[0])+
-      '</dt><dd>'+esc(it[2])+' <span class="src '+(it[1]==="doc"?"doc":"inf")+'">'+
-      iconSVG(TOKENS.sym.source[it[1]==="doc"?"doc":"inf"])+(it[1]==="doc"?"DOCUMENTED":"INFERRED")+'</span></dd></div>';
+      '</dt><dd>'+esc(it[2])+' <span class="src '+srcKind(it[1])+'">'+
+      iconSVG(TOKENS.sym.source[srcKind(it[1])])+SRC_LABEL[srcKind(it[1])]+'</span></dd></div>';
   }).join("")+'</dl>';
   host.innerHTML=h;
 }

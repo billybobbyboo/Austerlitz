@@ -292,7 +292,7 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
 .cmdrow dd{font-size:var(--t-ui);color:var(--text-body);margin:0;line-height:1.5}
 .src{display:inline-block;font-size:var(--t-micro);letter-spacing:.06em;padding:1px 5px;border-radius:2px;
   vertical-align:1px;margin-left:3px}
-.src.doc,.src.inf{background:var(--plate);color:var(--plate-ink)}
+.src.doc,.src.inf,.src.anec{background:var(--plate);color:var(--plate-ink)}
 .src.inf{font-style:italic}
 
 /* ---------- claim pills ---------- */
@@ -1506,7 +1506,7 @@ var TOKENS = /*TOKENS:BEGIN*/{
     },
     "claim": {"fact": "full", "est": "half", "recon": "open", "disputed": "split"},
     "layer": {"record": "full", "recon": "open", "derived": "diamond"},
-    "source": {"doc": "full", "inf": "open"}
+    "source": {"doc": "full", "inf": "open", "anec": "half"}
   }
 }/*TOKENS:END*/;
 
@@ -1708,7 +1708,7 @@ var PHASES = [
   events:[
     ["c. 08:00","Langeron attacks Sokolnitz; Przybyszewski goes for the castle and pheasantry."],
     ["c. 08:30","Friant's leading troops retake Telnitz, then fall back over the Goldbach."],
-    ["c. 08:30","Napoleon asks Soult how long he needs to reach the heights. Twenty minutes, Soult answers. Napoleon waits a further quarter of an hour."]],
+    ["c. 08:30","Napoleon asks Soult how long he needs to reach the heights. Twenty minutes at most, Soult answers, and Napoleon waits a further quarter of an hour. A memoir anecdote, as Thiebault tells it; the hour is this map's."]],
   cam:[-144,52,130,-56,4,46], light:"mist", mist:0.90 },
 
 { id:3, t0:525, t1:570, clock:"08:45 - 09:30", label:"The Pratzen", title:"Soult storms the heights",
@@ -1792,7 +1792,7 @@ gqg:{ ech:"army", nation:"fr", arm:"hq", desig:"G.Q.G.",
   note:"Duffy (1977) and Smith (1998) give about 73,000 French of all arms with 139 guns - an army total, not the headquarters' own. Other accounts range from 65,000 to 75,000.",
   track:{
     0:{p:[177,134],st:"observing",cf:"A",obj:"Hold the right; break the Allied centre once it has committed",act:"On the Zuran mound with the corps commanders, waiting for the Allied columns to clear the plateau"},
-    3:{st:"observing",act:"Releases Soult against the heights after a deliberate fifteen-minute pause"},
+    3:{st:"observing",act:"Releases Soult against the heights; a memoir anecdote, as Thiebault tells it, has him wait a further quarter of an hour first"},
     6:{tm:{dep:720,gr:"B",basis:"app narrative, unsourced",ev:["Napoleon moves forward from the Zuran to Stare Vinohrady.","About noon, for Stare Vinohrady"],note:"dated c. 12:00, and the Zuran is vacated about noon: a departure. The arrival follows the existing 40-minute march (moveMin)"},
        p:[309,207],cf:"A",via:[[215,154],[236,165]],moveMin:40,act:"Moves forward from the Zuran to Stare Vinohrady"},
     7:{p:[307,227],act:"Orders the centre to wheel south onto Buxhowden's rear"},
@@ -2285,7 +2285,7 @@ var FEATURES = [
  sub:"Low prehistoric barrow west of the Goldbach",
  facts:[["Occupied by","Napoleon and Berthier from about 06:00"],["Vacated","About noon, for Stare Vinohrady"]],
  why:["Gives a view across the whole French front and the western face of the plateau"],
- story:"Napoleon watched the Allied columns march off the Pratzen from here, is said to have waited a further quarter of an hour after Soult said how long he needed, and then released the attack."},
+ story:"Napoleon watched the Allied columns march off the Pratzen from here and then released the attack; a memoir anecdote, as Thiebault tells it, has him wait a further quarter of an hour after Soult said he needed twenty minutes at most."},
 
 {id:"goldbach", p:[201,273], kind:"water", name:"Goldbach stream",
  sub:"Small stream in a marshy valley, the armies' dividing line",
@@ -2409,7 +2409,8 @@ var SOURCE_NOTE = {
   ["Derived reading","What the engine computes from the plot, such as the holding on the heights or the centre-separation test. Never a source figure; always marked derived."]],
  refs:["Order-of-battle figures follow Duffy (1977) and Smith (1998) unless a range is given; a range names its sources in the formation's note.",
        "Narrative of the fight for the Pratzeberg follows accounts drawing on Thiebault's memoirs and Duffy.",
-       "Figures for the meres follow the record of the ponds being drained after the battle."]
+       "Figures for the meres follow the record of the ponds being drained after the battle.",
+       "Soult's 'twenty minutes at most' and Napoleon's further quarter of an hour are a memoir anecdote, told here as Thiebault's memoirs tell it (vol. III, 1894, pp. 456-458), who sets it at daybreak; the hour this map gives it is its own."]
 };
 
 /* ============================================================
@@ -3208,7 +3209,7 @@ function appearanceOf(id){
 /* ============================================================
    ANALYSIS — the nine things that decided Austerlitz,
    the two command views, and documented limits on what was known.
-   src: "doc" = attested decision or report · "inf" = labelled inference
+   src: "doc" = attested decision or report · "inf" = labelled inference · "anec" = a memoir anecdote, its teller named in the text (roadmap step 2, H-7)
    ============================================================ */
 
 /* The spine data task (docs/STAGE3_SPEC.md sections C.2-C.3; owner decisions 52, 59, 64-67): a chapter is a theme. It names the
@@ -3279,8 +3280,8 @@ fr:{
     ["knew","doc","That Davout's detachment had reached Raigern overnight and would come up to the Goldbach during the morning."],
     ["ordered","doc","The right to give ground slowly and hold the villages."]],
  2:[["saw","doc","Allied columns descending off the plateau in strength."],
-    ["knew","doc","Soult's answer that he needed under twenty minutes to reach the heights."],
-    ["ordered","doc","A further quarter of an hour's delay before releasing the attack, to let more of the enemy get down into the valley."]],
+    ["knew","anec","Soult's answer that his troops needed twenty minutes at most to reach the heights: a memoir anecdote, as Thiebault tells it."],
+    ["ordered","anec","A further quarter of an hour's delay before releasing the attack, the signal given only once an aide reported the heights abandoned (a little prematurely, Thiebault adds): the same memoir anecdote."]],
  3:[["saw","doc","The crest of the Pratzen, once the mist lifted, and the 4th Column still on it."],
     ["didnt","inf","How strong the force still on the plateau was. Inferred: the attack went in with two divisions and no reserve committed."],
     ["ordered","doc","Soult to take the Pratzeberg and Stare Vinohrady."]],
@@ -3476,7 +3477,7 @@ var EVENTS = [
 
 {id:"decision", t:[505,525], n:"Napoleon releases Soult against the heights", side:"fr", kind:"decision",
  p:[177,134], forms:["gqg","c_iv","sthilaire","vandamme"], cf:"B", claim:"est",
- why:"Asked how long he needed, Soult is reported to have answered under twenty minutes, and Napoleon to have waited a further quarter of an hour to let more of the enemy get down into the valley. A memoir anecdote."},
+ why:"Asked how long his troops needed to crown the plateau, Soult is reported to have answered twenty minutes at most, and Napoleon to have waited a further quarter of an hour, giving the signal only once an aide reported the heights abandoned (a little prematurely, Thiebault adds). A memoir anecdote, as Thiebault tells it."},
 
 {id:"soult", t:[525,555], n:"Saint-Hilaire and Vandamme climb the slope", side:"fr", kind:"attack",
  p:[262,262], forms:["sthilaire","vandamme"], cf:"A", claim:"fact",
@@ -8813,6 +8814,10 @@ function paintChapterText(){
     b.addEventListener("click",function(){ select("t",b.dataset.feat); });
   });
 }
+/* the Command tab's source tags (analysis.js COMMAND rows): roadmap step 2 (H-7) adds "anec", a memoir anecdote whose teller the row names,
+   graded as the event that tells it (claim est, "A memoir anecdote"); any other kind is drawn as INFERRED, as before */
+var SRC_LABEL={doc:"DOCUMENTED",inf:"INFERRED",anec:"ANECDOTE"};
+function srcKind(k){ return SRC_LABEL.hasOwnProperty(k)?k:"inf"; }
 function paintCommand(){
   var host=document.getElementById("cmdbody");
   if(!host) return;
@@ -8828,8 +8833,8 @@ function paintCommand(){
   if(!items) h+='<p class="muted">Nothing recorded for this hour.</p>';
   else h+='<dl class="cmdlist">'+items.map(function(it){
     return '<div class="cmdrow"><dt>'+esc(KIND[it[0]]||it[0])+
-      '</dt><dd>'+esc(it[2])+' <span class="src '+(it[1]==="doc"?"doc":"inf")+'">'+
-      iconSVG(TOKENS.sym.source[it[1]==="doc"?"doc":"inf"])+(it[1]==="doc"?"DOCUMENTED":"INFERRED")+'</span></dd></div>';
+      '</dt><dd>'+esc(it[2])+' <span class="src '+srcKind(it[1])+'">'+
+      iconSVG(TOKENS.sym.source[srcKind(it[1])])+SRC_LABEL[srcKind(it[1])]+'</span></dd></div>';
   }).join("")+'</dl>';
   host.innerHTML=h;
 }

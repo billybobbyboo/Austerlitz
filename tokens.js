@@ -104,7 +104,7 @@ var TOKENS = /*TOKENS:BEGIN*/{
     },
     "claim": {"fact": "full", "est": "half", "recon": "open", "disputed": "split"},
     "layer": {"record": "full", "recon": "open", "derived": "diamond"},
-    "source": {"doc": "full", "inf": "open"}
+    "source": {"doc": "full", "inf": "open", "anec": "half"}
   }
 }/*TOKENS:END*/;
 

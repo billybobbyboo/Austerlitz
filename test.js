@@ -134,7 +134,9 @@ TOUR.forEach((st,i)=>{
     if(+ph<0||+ph>=PHASES.length) errs.push("COMMAND."+sd+": phase "+ph+" out of range");
     COMMAND[sd][ph].forEach(it=>{
       if(["saw","knew","didnt","ordered","expected"].indexOf(it[0])<0) errs.push("COMMAND."+sd+" ph"+ph+": bad kind "+it[0]);
-      if(it[1]!=="doc"&&it[1]!=="inf") errs.push("COMMAND."+sd+" ph"+ph+": source must be doc or inf");
+      if(["doc","inf","anec"].indexOf(it[1])<0) errs.push("COMMAND."+sd+" ph"+ph+": source must be doc, inf or anec");
+      if(it[1]==="anec"&&!/memoir anecdote/.test(it[2])) errs.push("COMMAND."+sd+" ph"+ph+": an anecdote row must say it is a memoir anecdote (H-7)");
+      if(it[1]!=="anec"&&/memoir anecdote/.test(it[2])) errs.push("COMMAND."+sd+" ph"+ph+": a row that tells a memoir anecdote must carry the anec tag, not "+it[1]+" (H-7)");
     });
   });
   Object.keys(KNOW_OVERRIDE[sd]).forEach(id=>{
