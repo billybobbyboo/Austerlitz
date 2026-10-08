@@ -57,7 +57,7 @@ var ANALYSIS = [
 { id:"collapse", n:"The destruction of the Allied left", at:"ev:augezd", moments:["ev:augezd","ev:ice","ev:end"],
   forms:["dok","kienmayer","lang","buxhowden","vandamme","sthilaire","heightguns"],
   feats:["augezd","satschan","menitz","telnitz"],
-  text:"The only ordered way out was the neck of dry ground at Augezd between the two meres, with French guns on the height above it. Some formations broke south across the frozen water. The 30th Bulletin claimed twenty thousand drowned; when the meres were drained the recovery was thirty-eight guns, about a hundred and thirty horses and two men. The catastrophe was real, but it was encirclement, not drowning."}
+  text:"The only ordered way out was the neck of dry ground at Augezd between the two meres, with French guns on the height above it. Some formations broke south across the frozen water. The 30th Bulletin claimed twenty thousand drowned; when the meres were drained the recovery was thirty-eight guns, about a hundred and thirty horses and two men, figures as usually given. The catastrophe was real; this map reads it as encirclement rather than drowning, an interpretation."}
 ];
 
 /* ---- what each headquarters knew, saw, ordered and expected ---- */
@@ -334,7 +334,7 @@ var EVENTS = [
 
 {id:"ice", t:900, n:"French artillery fires on the ice of the Satschan mere", side:"fr", kind:"collapse",
  p:[268,421], forms:["heightguns","dok","kienmayer"], tolKm:1.5, tolWhy:"the marker is the target of a bombardment: the guns fire from the chapel height about 2 km away, and the retreating columns are converging on the ice", cf:"A", claim:"fact",
- why:"The 30th Bulletin claimed twenty thousand drowned. The drained ponds gave up thirty-eight guns, about a hundred and thirty horses and two men. The catastrophe was encirclement, not drowning."},
+ why:"The 30th Bulletin claimed twenty thousand drowned. The drained ponds gave up thirty-eight guns, about a hundred and thirty horses and two men, figures as usually given and, by inference, a lower bound, not the toll. This map reads the catastrophe as encirclement rather than drowning, an interpretation."},
 
 {id:"end", t:990, n:"Organised resistance ends", side:"fr", kind:"collapse",
  p:[290,366], forms:[], cf:"A", claim:"fact",

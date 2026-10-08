@@ -715,7 +715,7 @@ var FEATURES = [
  sub:"Large shallow fishpond, frozen on 2 December",
  facts:[["The claim","The 30th Bulletin: twenty thousand Russians drowned"],["Recovered when drained","38 guns, about 130 horses, and two men (figures as usually given)"]],
  why:["Closes the southern escape route and forms the anvil of the French envelopment"],
- story:"The most famous thing that did not happen at Austerlitz. French gunners did fire on the ice and some men certainly died, but the mass drowning is propaganda that Tolstoy later made permanent."},
+ story:"French gunners did fire on the ice, and some men died there. The mass drowning is the 30th Bulletin's claim, and Marbot's and Thiebault's memoirs tell of thousands drowned; the count from the drained mere, as usually given, is far below it, though by inference that count is a lower bound, not the toll. This map reads the Bulletin's figure as propaganda and the catastrophe as encirclement rather than drowning: an interpretation."},
 
 {id:"menitz", p:[187,457], kind:"water", name:"Menitz mere",
  sub:"The western of the two meres",
@@ -774,5 +774,6 @@ var SOURCE_NOTE = {
  refs:["Order-of-battle figures follow Duffy (1977) and Smith (1998) unless a range is given; a range names its sources in the formation's note.",
        "Narrative of the fight for the Pratzeberg follows accounts drawing on Thiebault's memoirs and Duffy.",
        "Figures for the meres follow the record of the ponds being drained after the battle.",
-       "Soult's 'twenty minutes at most' and Napoleon's further quarter of an hour are a memoir anecdote, told here as Thiebault's memoirs tell it (vol. III, 1894, pp. 456-458), who sets it at daybreak; the hour this map gives it is its own."]
+       "Soult's 'twenty minutes at most' and Napoleon's further quarter of an hour are a memoir anecdote, told here as Thiebault's memoirs tell it (vol. III, 1894, pp. 456-458), who sets it at daybreak; the hour this map gives it is its own.",
+       "Marbot's and Thiebault's memoirs tell of thousands drowned when the Guard's guns broke the ice of the Satschan mere (Marbot, vol. I, pp. 262-263, in the 27th edition read, first published 1891; Thiebault, vol. III, 1894, p. 466), against the count from the drained ponds."]
 };

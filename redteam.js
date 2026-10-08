@@ -209,10 +209,6 @@ const VERDICT=/\b(decisive(?:ly)?|decid(?:e|es|ed|ing) (?:it\b(?! (?:was|is|woul
 const LABELLED=/\b(this map reads|reads (?:it |them )?as|interpretation|interpretive|inference|inferred|disputed|derived)\b/i;
 const LANG_ALLOW=[
   /* guarded data that step 1 cannot change: roadmap step 2's data task (question 129) removes them */
-  {where:"FEATURES[#satschan].story", phrase:"some men certainly died", kind:"certainty",
-   until:"roadmap step 2, the data task (question 129: H-13)",
-   why:"H-13, the debunking told as fact (data.js:714): the count drained from the meres is a lower bound; to be labelled as interpretation, "+
-       "keeping the hedge"},
   {where:"FORMATIONS.c_iv.role", phrase:"The decisive centre assault", kind:"verdict",
    until:"roadmap step 2, the data task (question 129; H-4's roles, question 127)",
    why:"H-4: an interpretation shown under the dossier's 'record' tag (data.js:165)"},
