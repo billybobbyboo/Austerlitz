@@ -296,7 +296,7 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
 .src.inf{font-style:italic}
 
 /* ---------- claim pills ---------- */
-.pill.claim-fact,.pill.claim-est,.pill.claim-recon{background:var(--plate);color:var(--plate-ink)}
+.pill.claim-fact,.pill.claim-est,.pill.claim-recon,.pill.claim-disputed{background:var(--plate);color:var(--plate-ink)}
 .pill.st-active,.pill.st-warn,.pill.st-bad{font-weight:500}
 
 /* ---------- clock, scrub rail, playback speed ---------- */
@@ -1504,7 +1504,7 @@ var TOKENS = /*TOKENS:BEGIN*/{
       "bad":    {"icon": "down",     "weight": 500},
       "gone":   {"icon": "cross",    "weight": 400}
     },
-    "claim": {"fact": "full", "est": "half", "recon": "open"},
+    "claim": {"fact": "full", "est": "half", "recon": "open", "disputed": "split"},
     "layer": {"record": "full", "recon": "open", "derived": "diamond"},
     "source": {"doc": "full", "inf": "open"}
   }
@@ -1654,7 +1654,8 @@ var NATION = {
 var CLAIM = {
   fact:  {label:"Fact",          note:"Attested in the standard accounts of the battle."},
   est:   {label:"Estimate",      note:"The event is attested; the figure or frontage shown is an estimate."},
-  recon: {label:"Reconstruction",note:"Inferred from the narrative. Treat as indicative, not as evidence."}
+  recon: {label:"Reconstruction",note:"Inferred from the narrative. Treat as indicative, not as evidence."},
+  disputed:{label:"Disputed",    note:"The event is attested, but this reconstruction's own texts give different hours for it, or for part of it: both are shown, and the map keeps its earlier timing until they are checked against the published accounts."}
 };
 var CLAIM_FROM_CONF = {A:"fact", B:"est", C:"recon"};
 
@@ -1698,7 +1699,7 @@ var PHASES = [
   lede:"Kienmayer's Austrian advance guard attacks Telnitz, the southernmost village on the Goldbach. Legrand's thin line holds the buildings and the vineyard bank above them, and the village changes hands repeatedly. Behind Kienmayer, Dokhturov's I Column is coming down off the southern end of the plateau.",
   events:[
     ["c. 07:00","Kienmayer's advance guard attacks Telnitz. The fighting here is among the hardest of the day."],
-    ["c. 07:30","Dokhturov's I Column begins descending toward the Goldbach."],
+    ["c. 07:30","Dokhturov's I Column begins descending toward the Goldbach. The hour is disputed: the event of the columns leaving the plateau, and the map, have the descent from 04:00."],
     ["c. 08:00","Friant's leading brigade comes up to the Goldbach near Telnitz. The division had reached Raigern overnight after about 113 km from Vienna in 40-46 hours (sources vary)."]],
   cam:[-167,62,162,-55,4,62], light:"dawn", mist:0.98 },
 
@@ -1722,7 +1723,7 @@ var PHASES = [
   lede:"The hardest fighting for the plateau. Kamensky's brigade, marching for Sokolnitz at the tail of Langeron's column, sees the French on the height behind it, turns about and attacks. Jurczek's Austrians join in and Saint-Hilaire is pushed back toward the crest. In the same hour, and independently, Lannes begins his advance astride the Olmutz highway in the north.",
   events:[
     ["c. 09:30","Lannes advances along the highway. Bagration counter-attacks. The two battles now run in parallel."],
-    ["c. 09:45","Kamensky turns his brigade about and drives the 10e Legere off the crest."],
+    ["c. 09:45","Kamensky turns his brigade about and drives the 10e Legere off the crest. The hour of the turn is disputed: his brigade's record on this map puts it in the 08:45 phase."],
     ["c. 10:15","Jurczek's Austrians attack the Pratzeberg; French and Austrians briefly mistake each other's identity."],
     ["c. 10:30","Langeron rides back and sends reinforcements up the slope; they arrive as the position is lost. Their regiment and losses are not established."]],
   cam:[-75,38,42,7,8,12], light:"morning", mist:0.05 },
@@ -1739,7 +1740,7 @@ var PHASES = [
   lede:"Grand Duke Constantine commits the last Allied reserve against Vandamme on the Old Vineyards. The Guard infantry breaks two French battalions and the Guard cavalry carries off the eagle of the 4th Line - traditionally credited to the Life Guard Horse Regiment - the only one Napoleon lost that day. Bessieres brings up the Guard cavalry, Rapp charges with the chasseurs and Mamelukes, and Drouet's division forms line across the plateau.",
   events:[
     ["after 11:00","The Russian Guard attacks Vandamme; the 4th Line loses its eagle. The hour is not established."],
-    ["c. 11:45","Bessieres and Rapp counter-charge. The Chevalier Guard is broken; Prince Repnin captured."],
+    ["c. 11:45","Bessieres and Rapp counter-charge. The Chevalier Guard is broken; Prince Repnin captured. The hour is disputed: the event of Rapp's counter-charge has it from 11:15."],
     ["c. 12:00","Napoleon moves forward from the Zuran to Stare Vinohrady."],
     ["c. 12:00","Buxhowden, on the Allied left, is still unaware of the collapse behind him."],
     ["c. 12:30","Davout regroups and attacks; Langeron is forced back toward Sokolnitz."]],
@@ -3438,13 +3439,16 @@ var ACTS = [
 /* ============================================================
    EVENTS — what happened, when, and what followed from it.
    t may be a single minute or an interval where the hour is not fixed.
+   claim "disputed" (roadmap step 2, decision 125 (a)): this reconstruction's own texts give different hours; dispute then says what,
+   who gives each, and that neither is yet settled. t keeps the event's existing clock; the tracks keep the map's timing (decision 42).
    kind: decision | attack | capture | arrival | engagement | movement |
          withdrawal | collapse
    ============================================================ */
 var EVENTS = [
 {id:"columns-move", t:[240,420], n:"The Allied columns begin to leave the plateau", side:"al", kind:"movement",
- p:[291,276], forms:["kienmayer","dok","lang","prz"], cf:"A", claim:"fact",
- why:"Every column that goes down into the valley is a column no longer holding the centre."},
+ p:[291,276], forms:["kienmayer","dok","lang","prz"], cf:"A", claim:"disputed",
+ why:"Every column that goes down into the valley is a column no longer holding the centre.",
+ dispute:"When Dokhturov's I Column began its descent: from 04:00 in this event and on the map, but at about 07:30 in the Telnitz phase's text. This reconstruction has not yet settled it from the published accounts."},
 
 {id:"counter-march", t:[255,480], n:"Liechtenstein counter-marches across the 4th Column", side:"al", kind:"movement",
  p:[311,227], forms:["lich","milo","kollo"], cf:"A", claim:"fact",
@@ -3483,11 +3487,12 @@ var EVENTS = [
 
 {id:"face-about", t:555, n:"Kutuzov orders the 4th Column to face about", side:"al", kind:"decision",
  p:[290,237], forms:["ahq","milo","kollo"], cf:"A", claim:"fact",
- why:"The Allied commander-in-chief, riding with the column, is the first to see what has happened."},
+ why:"The Allied commander-in-chief, riding with the column, sees what has happened."},
 
 {id:"kamensky", t:585, n:"Kamensky turns his brigade about and drives the French off the crest", side:"al", kind:"engagement",
- p:[285,289], forms:["kamensky","sthilaire","lang"], cf:"A", claim:"fact",
- why:"The one piece of Allied initiative on the plateau, taken by a brigade commander on his own judgement."},
+ p:[285,289], forms:["kamensky","sthilaire","lang"], cf:"A", claim:"disputed",
+ why:"Allied initiative on the plateau, taken by a brigade commander on his own judgement.",
+ dispute:"When Kamensky turned his brigade about: at about 09:45 in this event and in the Pratzeberg phase's text, but in the 08:45 phase in his brigade's record on this map, whose timing the map keeps. This reconstruction has not yet settled it from the published accounts."},
 
 {id:"kursk", t:630, n:"Langeron's reinforcements arrive as the crest is lost", side:"al", kind:"engagement",
  p:[290,282], forms:["lang","kamensky"], cf:"C", claim:"recon",
@@ -5413,6 +5418,7 @@ var ICON_SVG={
   full:'<circle cx="6" cy="6" r="4.2" stroke="none"/>',
   half:'<circle cx="6" cy="6" r="4.2" fill="none" stroke-width="1.4"/><path d="M6 1.8 A4.2 4.2 0 0 0 6 10.2 Z" stroke="none"/>',
   open:'<circle cx="6" cy="6" r="4.2" fill="none" stroke-width="1.4"/>',
+  split:'<circle cx="6" cy="6" r="4.2" fill="none" stroke-width="1.4"/><path d="M6 1.2 L6 10.8" fill="none" stroke-width="1.4"/>',   /* roadmap step 2: the disputed claim, two sides of one circle */
   diamond:'<path d="M6 1.2 L10.8 6 L6 10.8 L1.2 6 Z" fill="none" stroke-width="1.4"/>'
 };
 function iconSVG(kind){ return '<svg class="ic" viewBox="0 0 12 12" aria-hidden="true">'+(ICON_SVG[kind]||"")+'</svg>'; }

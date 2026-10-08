@@ -290,7 +290,7 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
 .src.inf{font-style:italic}
 
 /* ---------- claim pills ---------- */
-.pill.claim-fact,.pill.claim-est,.pill.claim-recon{background:var(--plate);color:var(--plate-ink)}
+.pill.claim-fact,.pill.claim-est,.pill.claim-recon,.pill.claim-disputed{background:var(--plate);color:var(--plate-ink)}
 .pill.st-active,.pill.st-warn,.pill.st-bad{font-weight:500}
 
 /* ---------- clock, scrub rail, playback speed ---------- */

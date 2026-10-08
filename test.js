@@ -145,10 +145,11 @@ TOUR.forEach((st,i)=>{
 });
 /* T-6 (docs/FINAL_AUDIT.md): the events validated. Each has a unique kebab-case id; a clock (a minute, or a window [t0,t1] with t0<t1)
    inside the day; a point on the map; a side; a kind the dossier names (its KIND table, read from app.js: if it cannot be read the check
-   fails, it does not skip); a timing grade; a claim class; a title and a reason; known formations, each named once and each with a tracked
+   fails, it does not skip); a timing grade; a claim class (a disputed one with its dispute naming both hours: roadmap step 2, decision
+   125 (a)); a title and a reason; known formations, each named once and each with a tracked
    formation to stand for it; a tolerance only with its written reason and never above sim-test.js's 2 km cap; no other field. An event may
    name no formation only where EV_NO_FORMS says why. */
-{ const EV_FIELDS=["id","t","n","side","kind","p","forms","cf","claim","why","tolKm","tolWhy"], EV_TOL_CAP=2.0;
+{ const EV_FIELDS=["id","t","n","side","kind","p","forms","cf","claim","why","dispute","tolKm","tolWhy"], EV_TOL_CAP=2.0;
   const EV_NO_FORMS={ end:"'Organised resistance ends' is army-wide: its own text (analysis.js) speaks of Bagration, the Guard and the Allied "+
     "left together, not of one formation; sim-test.js reports it as naming no plotted formation (not tested)." };
   const km=/var KIND=\{decision:[^}]*\}/.exec(fs.readFileSync('app.js','utf8'));
@@ -171,6 +172,12 @@ TOUR.forEach((st,i)=>{
     if(KIND&&!Object.prototype.hasOwnProperty.call(KIND,e.kind)) bad("kind "+e.kind+" is not one the dossier names ("+Object.keys(KIND).join(", ")+")");
     if(typeof e.cf!=="string"||e.cf.length!==1||!"ABC".includes(e.cf)) bad("timing grade "+e.cf+" is not A, B or C");
     if(!Object.prototype.hasOwnProperty.call(CLAIM,e.claim)) bad("unknown claim class "+e.claim);
+    /* roadmap step 2 (decision 125 (a)): a disputed claim carries its dispute, naming both hours (two clock times) and who gives each;
+       a dispute stands only on a disputed claim */
+    if(e.claim==="disputed"){ const hrs=new Set(String(e.dispute||"").match(/\b\d\d:\d\d\b/g)||[]);
+      if(!str(e.dispute)) bad("claim disputed without its dispute (decision 125)");
+      else if(hrs.size<2) bad("its dispute names "+hrs.size+" clock time(s), not both hours (decision 125)"); }
+    else if(e.dispute!==undefined) bad("a dispute on a claim that is not disputed");
     if(!str(e.n)) bad("no title"); if(!str(e.why)) bad("no reason (why)");
     if(!Array.isArray(e.forms)) bad("forms is not a list");
     else {

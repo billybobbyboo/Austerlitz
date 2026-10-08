@@ -33,7 +33,7 @@ rules.forEach(r=>{ if(seen[r]) dupes.push(r); seen[r]=1; });
 if(dupes.length) errs.push("duplicated rules: "+[...new Set(dupes)].join(" | "));
 
 const required=[
- ".tab-btn",".chap",".cmdrow",".planblock",".pill.claim-fact",
+ ".tab-btn",".chap",".cmdrow",".planblock",".pill.claim-fact",".pill.claim-disputed",
  "#viewmode",".vm-btn","#restore",".clockbox",".timerail",".rail-ticks b",".speeds",
  ".tb-trackwrap",".step",".timebar",".dispatch",".legend",".tools",".drawer",
  "body.pm-watch .rail","body.pm-map .rail","body.no-dispatch .dispatch"

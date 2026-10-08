@@ -233,13 +233,16 @@ var ACTS = [
 /* ============================================================
    EVENTS — what happened, when, and what followed from it.
    t may be a single minute or an interval where the hour is not fixed.
+   claim "disputed" (roadmap step 2, decision 125 (a)): this reconstruction's own texts give different hours; dispute then says what,
+   who gives each, and that neither is yet settled. t keeps the event's existing clock; the tracks keep the map's timing (decision 42).
    kind: decision | attack | capture | arrival | engagement | movement |
          withdrawal | collapse
    ============================================================ */
 var EVENTS = [
 {id:"columns-move", t:[240,420], n:"The Allied columns begin to leave the plateau", side:"al", kind:"movement",
- p:[291,276], forms:["kienmayer","dok","lang","prz"], cf:"A", claim:"fact",
- why:"Every column that goes down into the valley is a column no longer holding the centre."},
+ p:[291,276], forms:["kienmayer","dok","lang","prz"], cf:"A", claim:"disputed",
+ why:"Every column that goes down into the valley is a column no longer holding the centre.",
+ dispute:"When Dokhturov's I Column began its descent: from 04:00 in this event and on the map, but at about 07:30 in the Telnitz phase's text. This reconstruction has not yet settled it from the published accounts."},
 
 {id:"counter-march", t:[255,480], n:"Liechtenstein counter-marches across the 4th Column", side:"al", kind:"movement",
  p:[311,227], forms:["lich","milo","kollo"], cf:"A", claim:"fact",
@@ -278,11 +281,12 @@ var EVENTS = [
 
 {id:"face-about", t:555, n:"Kutuzov orders the 4th Column to face about", side:"al", kind:"decision",
  p:[290,237], forms:["ahq","milo","kollo"], cf:"A", claim:"fact",
- why:"The Allied commander-in-chief, riding with the column, is the first to see what has happened."},
+ why:"The Allied commander-in-chief, riding with the column, sees what has happened."},
 
 {id:"kamensky", t:585, n:"Kamensky turns his brigade about and drives the French off the crest", side:"al", kind:"engagement",
- p:[285,289], forms:["kamensky","sthilaire","lang"], cf:"A", claim:"fact",
- why:"The one piece of Allied initiative on the plateau, taken by a brigade commander on his own judgement."},
+ p:[285,289], forms:["kamensky","sthilaire","lang"], cf:"A", claim:"disputed",
+ why:"Allied initiative on the plateau, taken by a brigade commander on his own judgement.",
+ dispute:"When Kamensky turned his brigade about: at about 09:45 in this event and in the Pratzeberg phase's text, but in the 08:45 phase in his brigade's record on this map, whose timing the map keeps. This reconstruction has not yet settled it from the published accounts."},
 
 {id:"kursk", t:630, n:"Langeron's reinforcements arrive as the crest is lost", side:"al", kind:"engagement",
  p:[290,282], forms:["lang","kamensky"], cf:"C", claim:"recon",

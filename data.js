@@ -16,7 +16,8 @@ var NATION = {
 var CLAIM = {
   fact:  {label:"Fact",          note:"Attested in the standard accounts of the battle."},
   est:   {label:"Estimate",      note:"The event is attested; the figure or frontage shown is an estimate."},
-  recon: {label:"Reconstruction",note:"Inferred from the narrative. Treat as indicative, not as evidence."}
+  recon: {label:"Reconstruction",note:"Inferred from the narrative. Treat as indicative, not as evidence."},
+  disputed:{label:"Disputed",    note:"The event is attested, but this reconstruction's own texts give different hours for it, or for part of it: both are shown, and the map keeps its earlier timing until they are checked against the published accounts."}
 };
 var CLAIM_FROM_CONF = {A:"fact", B:"est", C:"recon"};
 
@@ -60,7 +61,7 @@ var PHASES = [
   lede:"Kienmayer's Austrian advance guard attacks Telnitz, the southernmost village on the Goldbach. Legrand's thin line holds the buildings and the vineyard bank above them, and the village changes hands repeatedly. Behind Kienmayer, Dokhturov's I Column is coming down off the southern end of the plateau.",
   events:[
     ["c. 07:00","Kienmayer's advance guard attacks Telnitz. The fighting here is among the hardest of the day."],
-    ["c. 07:30","Dokhturov's I Column begins descending toward the Goldbach."],
+    ["c. 07:30","Dokhturov's I Column begins descending toward the Goldbach. The hour is disputed: the event of the columns leaving the plateau, and the map, have the descent from 04:00."],
     ["c. 08:00","Friant's leading brigade comes up to the Goldbach near Telnitz. The division had reached Raigern overnight after about 113 km from Vienna in 40-46 hours (sources vary)."]],
   cam:[-167,62,162,-55,4,62], light:"dawn", mist:0.98 },
 
@@ -84,7 +85,7 @@ var PHASES = [
   lede:"The hardest fighting for the plateau. Kamensky's brigade, marching for Sokolnitz at the tail of Langeron's column, sees the French on the height behind it, turns about and attacks. Jurczek's Austrians join in and Saint-Hilaire is pushed back toward the crest. In the same hour, and independently, Lannes begins his advance astride the Olmutz highway in the north.",
   events:[
     ["c. 09:30","Lannes advances along the highway. Bagration counter-attacks. The two battles now run in parallel."],
-    ["c. 09:45","Kamensky turns his brigade about and drives the 10e Legere off the crest."],
+    ["c. 09:45","Kamensky turns his brigade about and drives the 10e Legere off the crest. The hour of the turn is disputed: his brigade's record on this map puts it in the 08:45 phase."],
     ["c. 10:15","Jurczek's Austrians attack the Pratzeberg; French and Austrians briefly mistake each other's identity."],
     ["c. 10:30","Langeron rides back and sends reinforcements up the slope; they arrive as the position is lost. Their regiment and losses are not established."]],
   cam:[-75,38,42,7,8,12], light:"morning", mist:0.05 },
@@ -101,7 +102,7 @@ var PHASES = [
   lede:"Grand Duke Constantine commits the last Allied reserve against Vandamme on the Old Vineyards. The Guard infantry breaks two French battalions and the Guard cavalry carries off the eagle of the 4th Line - traditionally credited to the Life Guard Horse Regiment - the only one Napoleon lost that day. Bessieres brings up the Guard cavalry, Rapp charges with the chasseurs and Mamelukes, and Drouet's division forms line across the plateau.",
   events:[
     ["after 11:00","The Russian Guard attacks Vandamme; the 4th Line loses its eagle. The hour is not established."],
-    ["c. 11:45","Bessieres and Rapp counter-charge. The Chevalier Guard is broken; Prince Repnin captured."],
+    ["c. 11:45","Bessieres and Rapp counter-charge. The Chevalier Guard is broken; Prince Repnin captured. The hour is disputed: the event of Rapp's counter-charge has it from 11:15."],
     ["c. 12:00","Napoleon moves forward from the Zuran to Stare Vinohrady."],
     ["c. 12:00","Buxhowden, on the Allied left, is still unaware of the collapse behind him."],
     ["c. 12:30","Davout regroups and attacks; Langeron is forced back toward Sokolnitz."]],

@@ -34,7 +34,8 @@
    The statements (the extractor; since step 1 one statement per string, each with a stable reference, "ref"):
      timeline <ph>: <text>       PHASES[].events, timed by the label (and by any time in the line's text)
      lede <ph> | phase <ph> title|label
-     event <id> | event <id> n|why   EVENTS[]: t (the event's window), its name's and its reason's times (tolWhy excluded)
+     event <id> | event <id> n|why|dispute   EVENTS[]: t (the event's window), its name's, its reason's and its dispute's times (tolWhy
+                                 excluded; dispute since roadmap step 2, decision 125 (a))
      formation <id> name|commander|staff|role|note|strengthNote|mixedNote
      anchor <id>@<ph> act|obj   the anchors' texts (tm, the engine's own timing input, is --times's and the movement audit's)
      chapter <id> text|n | tour <k> x|n | act <id> n|line
@@ -150,7 +151,7 @@ function extract(M){
   M.EVENTS.forEach((e,i)=>{ const f=new Set((e.forms||[]).flatMap(leaves)); namesIn(e.n+" "+(e.why||"")).forEach(x=>f.add(x));
     const w=Array.isArray(e.t)?{a:e.t[0],b:e.t[1]}:{a:e.t,b:e.t}, u="EVENTS."+i;
     add("event "+e.id,u+".t",u+".t",e.n,[w],f,{kind:e.kind});
-    ["n","why"].forEach(k=>{ if(str(e,k)) add("event "+e.id+" "+k,u+"."+k,u+"."+k,e[k],timesIn(e[k]),f); }); });
+    ["n","why","dispute"].forEach(k=>{ if(str(e,k)) add("event "+e.id+" "+k,u+"."+k,u+"."+k,e[k],timesIn(e[k]),f); }); });   /* dispute: roadmap step 2, decision 125 (a) */
   Object.entries(M.FORMATIONS).forEach(([id,fm])=>{
     ["name","commander","staff","role","note","strengthNote","mixedNote"].forEach(k=>{ if(str(fm,k)){ const p="FORMATIONS."+id+"."+k;
       add("formation "+id+" "+k,p,p,fm[k],timesIn(fm[k]),new Set([...leaves(id),...namesIn(fm[k])])); } });
@@ -324,7 +325,7 @@ const REVIEW_CITES={
  "kienmayer@1":["timeline 1: Kienmayer's advance guard attacks Telnitz. @07:00","event telnitz @07:00","feature telnitz fact Changed hands @07:00"],
  "kienmayer@8":["timeline 8: Vandamme takes the height above @14:30","timeline 8: French artillery fires on the @15:00","event ice @15:00"],
  "kienmayer@9":["event ice @15:00","timeline 8: French artillery fires on the @15:00"],
- "dok@1":["timeline 1: Dokhturov's I Column begins descending @07:30","source-note body.5 @07:30"],
+ "dok@1":["timeline 1: Dokhturov's I Column begins descending @07:30","source-note body.5 @07:30","event columns-move dispute @07:30"],
  "dok@2":["chapter commitment text @07:00","chapter commitment text @09:00","tour 4 x @07:00"],
  "dok@8":["timeline 8: Vandamme takes the height above @14:30","event ice @15:00","timeline 8: French artillery fires on the @15:00"],
  "dok@9":["event ice @15:00","timeline 8: French artillery fires on the @15:00"],
@@ -332,7 +333,7 @@ const REVIEW_CITES={
  "lang@2":["timeline 2: Langeron attacks Sokolnitz; Przybyszewski goes @08:00","event sokolnitz @08:00"],
  "lang@4":["timeline 4: Langeron rides back and sends @10:30","event kursk @10:30"],
  "lang@7":["anchor lang@7 act @12:30","timeline 6: Davout regroups and attacks; Langeron @12:30"],
- "kamensky@3":["timeline 4: Kamensky turns his brigade about @09:45","event kamensky @09:45","source-note body.5 @09:45"],
+ "kamensky@3":["timeline 4: Kamensky turns his brigade about @09:45","event kamensky @09:45","source-note body.5 @09:45","event kamensky dispute @09:45"],
  "kamensky@4":["timeline 4: Kamensky turns his brigade about @09:45","event kamensky @09:45","source-note body.5 @09:45"],
  "kamensky@5":["timeline 4: Jurczek's Austrians attack the Pratzeberg; @10:15"],
  "kamensky@6":["event kursk @10:30","event pratzeberg @11:00","timeline 5: The Pratzeberg is firmly in @11:00","lede 3 @11:00","chapter pratzen text @11:00","feature pratzen story @11:00","feature vinohrady fact Taken by @11:00","feature pratzeberg fact Secure by @11:00"],
@@ -372,7 +373,16 @@ const ALLOW_TIMED={
  "source-note body.5 @04:00":"the other side of the named conflict dok@1 (decision 42): the event's time, restated; the conflict's own time (07:30) is cited by its row (L8)",
  "source-note body.5 @07:00":"the other side of the named conflict dok@1 (decision 42): the phase's clock, restated",
  "source-note body.5 @08:45":"the other side of the named conflicts kamensky@3 and kamensky@4 (decision 42): the phase's clock, restated",
- "source-note body.5 @11:15":"the other side of the named conflict guard_cav@6 (decision 42): the event's time, restated"
+ "source-note body.5 @11:15":"the other side of the named conflict guard_cav@6 (decision 42): the event's time, restated",
+ /* roadmap step 2 (decision 125 (a)): the other sides restated where the disputed hours are now marked (the two events' dispute, the three
+    phase lines); each conflict's own time is cited by its row. They follow the body.5 entries above rather than being cited by the conflict
+    rows: a REVIEW row judges one side, its text time (L4b keeps every cite inside it), and the side restated here is the engine's own
+    timing, which the move keeps (decision 42); citing it would mean changing the row's time and so its verdict */
+ "event columns-move dispute @04:00":"the other side of the named conflict dok@1 (decision 42), restated in the event's dispute: the event's own time, where dok@1's leg starts. Not cited by dok@1 (as body.5 @04:00): that row judges the 07:30 side from 07:30 onward, and L4b keeps its cites inside it",
+ "event kamensky dispute @08:45":"the other side of the named conflicts kamensky@3 and kamensky@4 (decision 42), restated in the event's dispute: the phase's clock, where kamensky@3 arrives. Not cited by kamensky@3 (as body.5 @08:45): that row judges the 09:45 side at 09:45, and L4b keeps its cites inside it",
+ "timeline 1: Dokhturov's I Column begins descending @04:00":"the other side of the named conflict dok@1 (decision 42), restated in the phase line's mark: the event's time, where dok@1's leg starts. Not cited by dok@1 (as body.5 @04:00): that row judges the line's own 07:30 from 07:30 onward, and L4b keeps its cites inside it",
+ "timeline 4: Kamensky turns his brigade about @08:45":"the other side of the named conflicts kamensky@3 and kamensky@4 (decision 42), restated in the phase line's mark: the phase's clock, where kamensky@3 arrives. Not cited by kamensky@3 (as body.5 @08:45): that row judges the line's own 09:45 at 09:45, and L4b keeps its cites inside it",
+ "timeline 6: Bessieres and Rapp counter-charge. The @11:15":"the other side of the named conflict guard_cav@6 (decision 42), restated in the phase line's mark: the event's time, where guard_cav@6 arrives. Not cited by guard_cav@6 (as body.5 @11:15): that row judges the line's own 11:45 at 11:45, and L4b keeps its cites inside it"
 };
 /* ---- the timed strings the extractor does not read, by class (rule L1); a class that covers nothing fails ---- */
 const EXCLUDED_PATHS=[   /* [name, path class, reason] */

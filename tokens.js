@@ -102,7 +102,7 @@ var TOKENS = /*TOKENS:BEGIN*/{
       "bad":    {"icon": "down",     "weight": 500},
       "gone":   {"icon": "cross",    "weight": 400}
     },
-    "claim": {"fact": "full", "est": "half", "recon": "open"},
+    "claim": {"fact": "full", "est": "half", "recon": "open", "disputed": "split"},
     "layer": {"record": "full", "recon": "open", "derived": "diamond"},
     "source": {"doc": "full", "inf": "open"}
   }
