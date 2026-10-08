@@ -79,7 +79,7 @@ var PHASES = [
     ["c. 08:45","Soult's divisions advance. The mist lifts off the heights."],
     ["c. 09:00","Thiebault's brigade clears Pratzen village; the 10e Legere pushes on for the Pratzeberg."],
     ["c. 09:15","Kutuzov orders the 4th Column to face about and recalls part of the II Column."]],
-  cam:[-136,46,31,-6,8,-3], mist:0.16, flash:"The sun of Austerlitz" },
+  cam:[-136,46,31,-6,8,-3], mist:0.16, flash:"The sun of Austerlitz, as memoirs call it" },
 
 { id:4, t0:570, t1:630, clock:"09:30 - 10:30", label:"Pratzeberg", title:"The crisis on the Pratzeberg",
   lede:"The hardest fighting for the plateau. Kamensky's brigade, marching for Sokolnitz at the tail of Langeron's column, sees the French on the height behind it, turns about and attacks. Jurczek's Austrians join in and Saint-Hilaire is pushed back toward the crest. In the same hour, and independently, Lannes begins his advance astride the Olmutz highway in the north.",
@@ -779,5 +779,6 @@ var SOURCE_NOTE = {
        "Narrative of the fight for the Pratzeberg follows accounts drawing on Thiebault's memoirs and Duffy.",
        "Figures for the meres follow the record of the ponds being drained after the battle.",
        "Soult's 'twenty minutes at most' and Napoleon's further quarter of an hour are a memoir anecdote, told here as Thiebault's memoirs tell it (vol. III, 1894, pp. 456-458), who sets it at daybreak; the hour this map gives it is its own.",
-       "Marbot's and Thiebault's memoirs tell of thousands drowned when the Guard's guns broke the ice of the Satschan mere (Marbot, vol. I, pp. 262-263, in the 27th edition read, first published 1891; Thiebault, vol. III, 1894, p. 466), against the count from the drained ponds."]
+       "Marbot's and Thiebault's memoirs tell of thousands drowned when the Guard's guns broke the ice of the Satschan mere (Marbot, vol. I, pp. 262-263, in the 27th edition read, first published 1891; Thiebault, vol. III, 1894, p. 466), against the count from the drained ponds.",
+       "'The sun of Austerlitz' is a phrase the memoirs use: Thiebault puts it in quotation marks (vol. III, 1894, p. 461) and Marbot calls it the sun Napoleon so liked to recall (vol. I, p. 260); both have it light the climb onto the Pratzen, and neither gives that climb a clock hour."]
 };
