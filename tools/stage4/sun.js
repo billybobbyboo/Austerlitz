@@ -12,7 +12,10 @@
    2. The light today (fact, read from the sources): each phase's LIGHT preset (app.js) as a true azimuth and altitude (the
       preset's sun vector p, from the orbit target toward the sun, in world axes; true north is GEOREF.NORTH in the map's x,y,
       which W() carries to world x,z unchanged), its intensity and its sun disc, against the computed sun at the phase's start,
-      middle and end.
+      middle and end. Since roadmap step 2 (docs/FINAL_AUDIT.md D-4) the phases name no preset: PHASES[].light, without a reader
+      since 4B, was removed from data.js. This part runs only on a source tree in which every phase names one (before step 2; its
+      reading is docs/stage4-evidence/sun.md); on one in which none does it is left out and the script says so, and on one in which
+      some do it stops (a partial table would read as the whole day).
    3. The display factor (derived): a slope of true gradient s is drawn with gradient k*s at factor k. The ground's lit side
       (the sign of N.L) and its cast shadows are the true ground's under the true sun exactly when the light's vertical
       component is scaled by k as well: tan(alt_k) = k tan(alt). For each factor (1, 4, GEOREF.EXAG) the altitude that would
@@ -50,7 +53,12 @@ const N=G.NORTH, E=[-N[1],N[0]];   /* true north and east in the map's x,y = wor
 function presetSun(L){ const p=L.p, h=Math.hypot(p[0],p[2]);
   const n=p[0]*N[0]+p[2]*N[1], e=p[0]*E[0]+p[2]*E[1];
   return {az:r1((Math.atan2(e,n)*R2D+360)%360), alt:r1(Math.atan2(p[1],h)*R2D), i:L.i, disc:L.disc, hemi:L.hemi, fogN:L.fogN, fogF:L.fogF}; }
-const today=X.PHASES.map(ph=>{ const L=X.LIGHT[ph.light], s=presetSun(L), mid=(ph.t0+ph.t1)/2;
+const named=X.PHASES.filter(ph=>ph.light!==undefined);
+if(named.length&&named.length!==X.PHASES.length) throw new Error("sun.js: "+named.length+" of "+X.PHASES.length+" phases name a light preset; part 2 needs every phase or none");
+named.forEach(ph=>{ if(!X.LIGHT[ph.light]) throw new Error("sun.js: phase "+ph.id+" names the light preset \""+ph.light+"\", which app.js's LIGHT does not have"); });
+const PRESETS=named.length>0;
+const NO_PRESETS="The phases name no light preset (roadmap step 2, docs/FINAL_AUDIT.md D-4: PHASES[].light, without a reader since 4B, removed); the presets' rows are left out. Their reading on the build before step 2 is docs/stage4-evidence/sun.md.";
+const today=named.map(ph=>{ const L=X.LIGHT[ph.light], s=presetSun(L), mid=(ph.t0+ph.t1)/2;
   const at=t=>{ const a=sunAtClock(t,"apparent"), m=sunAtClock(t,"mean"); return {apparent:{alt:r1(a.alt),az:r1(a.az)},mean:{alt:r1(m.alt),az:r1(m.az)}}; };
   return {phase:ph.id, label:ph.label, clock:hm(ph.t0)+"-"+hm(ph.t1), light:ph.light, mist:ph.mist, preset:s,
     computed:{start:at(ph.t0), mid:at(mid), end:at(ph.t1)}}; });
@@ -119,7 +127,8 @@ md.push("| | the clock read as local apparent (solar) time | the clock read as l
  ["nautical dawn (-12 deg)","nauticalDawn"],["civil dawn (-6 deg)","civilDawn"],["sunrise (upper limb)","sunrise"],["sunset","sunset"],["civil dusk","civilDusk"],["nautical dusk","nauticalDusk"]]
  .forEach(([l,k])=>md.push("| "+l+" | "+A[k]+" | "+Mn[k]+" |"));
 md.push("\n## Each phase's light today against the computed sun (apparent time; mean time in brackets)\n");
-md.push("| phase | clock | preset | preset sun: azimuth, altitude (deg) | disc | intensity | computed at start | at middle | at end |\n|---|---|---|---|---|---|---|---|---|");
+if(!PRESETS) md.push(NO_PRESETS+"\n");
+else md.push("| phase | clock | preset | preset sun: azimuth, altitude (deg) | disc | intensity | computed at start | at middle | at end |\n|---|---|---|---|---|---|---|---|---|");
 today.forEach(p=>{ const f=o=>o.apparent.az+", "+o.apparent.alt+" ("+o.mean.alt+")";
   md.push("| "+p.phase+" "+p.label+" | "+p.clock+" | "+p.light+" | "+p.preset.az+", "+p.preset.alt+" | "+p.preset.disc+" | "+p.preset.i+" | "+f(p.computed.start)+" | "+f(p.computed.mid)+" | "+f(p.computed.end)+" |"); });
 md.push("\nThe paper map's preset (staff): azimuth "+staff.az+", altitude "+staff.alt+". The baked hillshade's light: azimuth "+bakedSun.az+", altitude "+bakedSun.alt+".\n");
@@ -132,13 +141,15 @@ away.forEach(r=>md.push("| "+r.t+" | "+r.alt+" | "+factors.map(k=>r["true@"+fmtK
 md.push("\n## The modelled ground in the terrain's cast shadow, % of lattice points (every 2 units)\n");
 md.push("| clock | altitude | true sun at 1x | at 4x | at "+fmtK(G.EXAG)+" | corrected sun at 1x | at 4x | at "+fmtK(G.EXAG)+" |\n|---|---|---|---|---|---|---|---|");
 away.forEach(r=>md.push("| "+r.t+" | "+r.alt+" | "+factors.map(k=>r["shadow@"+fmtK(k)]).join(" | ")+" | "+factors.map(k=>r["shadowCorr@"+fmtK(k)]).join(" | ")+" |"));
-md.push("\nThe presets as drawn today, the same measures (facing away; in cast shadow):\n\n| phase | preset | altitude | away at 1x | at 4x | at "+fmtK(G.EXAG)+" | shadow at 1x | at 4x | at "+fmtK(G.EXAG)+" |\n|---|---|---|---|---|---|---|---|---|");
+if(!PRESETS) md.push("\nThe presets as drawn today, the same measures: left out (the phases name no light preset; see the section on each phase's light above).");
+else md.push("\nThe presets as drawn today, the same measures (facing away; in cast shadow):\n\n| phase | preset | altitude | away at 1x | at 4x | at "+fmtK(G.EXAG)+" | shadow at 1x | at 4x | at "+fmtK(G.EXAG)+" |\n|---|---|---|---|---|---|---|---|---|");
 awayToday.forEach(r=>md.push("| "+r.phase+" | "+r.light+" | "+r.alt+" | "+factors.map(k=>r["@"+fmtK(k)]).join(" | ")+" | "+factors.map(k=>r["shadow@"+fmtK(k)]).join(" | ")+" |"));
 md.push("\nThe model's slopes at true scale (degrees, on the lattice): median "+slopeTrue.p50+", 90th percentile "+slopeTrue.p90+", 99th "+slopeTrue.p99+", steepest "+slopeTrue.max+
   ". Drawn: "+factors.map(k=>fmtK(k)+" "+JSON.stringify(slopeAt(k))).join("; ")+".\n");
 if(opt("--md")) fs.writeFileSync(opt("--md"),md.join("\n")+"\n");
 console.log("apparent:",JSON.stringify(Object.fromEntries(Object.entries(A).filter(([k])=>k!=="table"))));
 console.log("mean:    ",JSON.stringify(Object.fromEntries(Object.entries(Mn).filter(([k])=>k!=="table"))));
+if(!PRESETS) console.log(NO_PRESETS);
 today.forEach(p=>console.log("phase",p.phase,p.light.padEnd(9),"preset az/alt",p.preset.az,p.preset.alt,"disc",p.preset.disc," computed mid (apparent) az/alt",p.computed.mid.apparent.az,p.computed.mid.apparent.alt));
 console.log("staff",JSON.stringify(staff),"baked",JSON.stringify(bakedSun));
 corrected.forEach(c=>console.log("corrected",c.t,c.alt,c.altAt.join(" / ")));

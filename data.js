@@ -55,7 +55,7 @@ var PHASES = [
     ["c. 01:00","Weyrother reads the dispositions at Allied headquarters, Krzenowitz. Kutuzov reportedly dozes."],
     ["c. 04:00","Allied columns begin to move off the plateau. Liechtenstein's cavalry, misplaced on the left, must counter-march north across the front of the 4th Column."],
     ["before dawn","Napoleon is on the Zuran mound with Berthier; his marshals have been ordered to join him for the morning's orders. The map places him there from 04:00; the hour he took post is not established."]],
-  cam:[-230,132,211,-28,0,1], light:"predawn", mist:1.0 },
+  cam:[-230,132,211,-28,0,1], mist:1.0 },
 
 { id:1, t0:420, t1:480, clock:"07:00 - 08:00", label:"Telnitz", title:"The Allied left opens the battle",
   lede:"Kienmayer's Austrian advance guard attacks Telnitz, the southernmost village on the Goldbach. Legrand's thin line holds the buildings and the vineyard bank above them, and the village changes hands repeatedly. Behind Kienmayer, Dokhturov's I Column is coming down off the southern end of the plateau.",
@@ -63,7 +63,7 @@ var PHASES = [
     ["c. 07:00","Kienmayer's advance guard attacks Telnitz. The fighting here is among the hardest of the day."],
     ["c. 07:30","Dokhturov's I Column begins descending toward the Goldbach. The hour is disputed: the event of the columns leaving the plateau, and the map, have the descent from 04:00."],
     ["c. 08:00","Friant's leading brigade comes up to the Goldbach near Telnitz. The division had reached Raigern overnight after about 113 km from Vienna in 40-46 hours (sources vary)."]],
-  cam:[-167,62,162,-55,4,62], light:"dawn", mist:0.98 },
+  cam:[-167,62,162,-55,4,62], mist:0.98 },
 
 { id:2, t0:480, t1:525, clock:"08:00 - 08:45", label:"Sokolnitz", title:"Sokolnitz, the castle and the pheasantry",
   lede:"Langeron and Przybyszewski attack Sokolnitz village, its walled castle and the pheasantry enclosure beyond. Friant's leading brigade retakes Telnitz briefly, then withdraws behind the stream. On the plateau the 4th Column, which was meant to replace the troops leaving the heights, is still standing still: Liechtenstein's cavalry has cut across its line of march. A gap opens between it and the 3rd Column.",
@@ -71,7 +71,7 @@ var PHASES = [
     ["c. 08:00","Langeron attacks Sokolnitz; Przybyszewski goes for the castle and pheasantry."],
     ["c. 08:30","Friant's leading troops retake Telnitz, then fall back over the Goldbach."],
     ["c. 08:30","Napoleon asks Soult how long he needs to reach the heights. Twenty minutes at most, Soult answers, and Napoleon waits a further quarter of an hour. A memoir anecdote, as Thiebault tells it; the hour is this map's."]],
-  cam:[-144,52,130,-56,4,46], light:"mist", mist:0.90 },
+  cam:[-144,52,130,-56,4,46], mist:0.90 },
 
 { id:3, t0:525, t1:570, clock:"08:45 - 09:30", label:"The Pratzen", title:"Soult storms the heights",
   lede:"Saint-Hilaire and Vandamme climb out of the fog into sunlight on ground the Allies have just vacated. St-Hilaire makes for the Pratzeberg south of Pratzen village, Vandamme for Stare Vinohrady, the 'old vineyards', north-east of the village. Kutuzov, riding with the 4th Column, sees the danger and begins pulling troops back. The Allied centre is being broken, but the plateau will not be firmly French until about 11:00.",
@@ -79,7 +79,7 @@ var PHASES = [
     ["c. 08:45","Soult's divisions advance. The mist lifts off the heights."],
     ["c. 09:00","Thiebault's brigade clears Pratzen village; the 10e Legere pushes on for the Pratzeberg."],
     ["c. 09:15","Kutuzov orders the 4th Column to face about and recalls part of the II Column."]],
-  cam:[-136,46,31,-6,8,-3], light:"sunburst", mist:0.16, flash:"The sun of Austerlitz" },
+  cam:[-136,46,31,-6,8,-3], mist:0.16, flash:"The sun of Austerlitz" },
 
 { id:4, t0:570, t1:630, clock:"09:30 - 10:30", label:"Pratzeberg", title:"The crisis on the Pratzeberg",
   lede:"The hardest fighting for the plateau. Kamensky's brigade, marching for Sokolnitz at the tail of Langeron's column, sees the French on the height behind it, turns about and attacks. Jurczek's Austrians join in and Saint-Hilaire is pushed back toward the crest. In the same hour, and independently, Lannes begins his advance astride the Olmutz highway in the north.",
@@ -88,7 +88,7 @@ var PHASES = [
     ["c. 09:45","Kamensky turns his brigade about and drives the 10e Legere off the crest. The hour of the turn is disputed: his brigade's record on this map puts it in the 08:45 phase."],
     ["c. 10:15","Jurczek's Austrians attack the Pratzeberg; French and Austrians briefly mistake each other's identity."],
     ["c. 10:30","Langeron rides back and sends reinforcements up the slope; they arrive as the position is lost. Their regiment and losses are not established."]],
-  cam:[-75,38,42,7,8,12], light:"morning", mist:0.05 },
+  cam:[-75,38,42,7,8,12], mist:0.05 },
 
 { id:5, t0:630, t1:675, clock:"10:30 - 11:15", label:"Olmutz road", title:"The northern battle decided",
   lede:"Liechtenstein's and Uvarov's horse charge the French cavalry screen and Murat answers with Nansouty's and d'Hautpoul's cuirassiers. The Santon and its eighteen guns hold the flank, Blasowitz falls, and Bagration is levered away from the rest of the Allied army. On the plateau in the same minutes, Saint-Hilaire's bayonet charge and Levasseur's arrival settle the Pratzeberg for good.",
@@ -96,7 +96,7 @@ var PHASES = [
     ["c. 10:40","The cavalry collision west of Blasowitz. Kellermann falls back through his infantry and reforms."],
     ["c. 11:00","The Pratzeberg is firmly in French hands."],
     ["c. 11:15","Blasowitz falls. Bagration begins falling back toward Rausnitz in good order."]],
-  cam:[-120,58,-150,34,6,-66], light:"morning", mist:0.0 },
+  cam:[-120,58,-150,34,6,-66], mist:0.0 },
 
 { id:6, t0:675, t1:765, clock:"11:15 - 12:45", label:"The Guard", title:"The Russian Guard at Stare Vinohrady",
   lede:"Grand Duke Constantine commits the last Allied reserve against Vandamme on the Old Vineyards. The Guard infantry breaks two French battalions and the Guard cavalry carries off the eagle of the 4th Line - traditionally credited to the Life Guard Horse Regiment - the only one Napoleon lost that day. Bessieres brings up the Guard cavalry, Rapp charges with the chasseurs and Mamelukes, and Drouet's division forms line across the plateau.",
@@ -106,14 +106,14 @@ var PHASES = [
     ["c. 12:00","Napoleon moves forward from the Zuran to Stare Vinohrady."],
     ["c. 12:00","Buxhowden, on the Allied left, is still unaware of the collapse behind him."],
     ["c. 12:30","Davout regroups and attacks; Langeron is forced back toward Sokolnitz."]],
-  cam:[-76,36,-1,26,6,-31], light:"midday", mist:0.0 },
+  cam:[-76,36,-1,26,6,-31], mist:0.0 },
 
 { id:7, t0:765, t1:870, clock:"12:45 - 14:30", label:"The wheel", title:"The centre turns south",
   lede:"With the plateau secure and the Allied right pushed back beyond Blasowitz, Napoleon turns his centre ninety degrees. Saint-Hilaire and Vandamme come down off the heights onto the back of Buxhowden's three columns, supported by the Guard and the grenadier division, while Davout resumes the offensive from the west. Przybyszewski's column, caught between them in Sokolnitz, is surrounded.",
   events:[
     ["c. 13:00-14:00","Soult and Davout launch the converging assault on the Allied left."],
     ["c. 14:00","Sokolnitz falls. Przybyszewski's column is broken up and largely captured."]],
-  cam:[-160,112,-55,-20,0,59], light:"afternoon", mist:0.0 },
+  cam:[-160,112,-55,-20,0,59], mist:0.0 },
 
 { id:8, t0:870, t1:1020, clock:"14:30 - 17:00", label:"The ponds", title:"Augezd, the ponds and the ice",
   lede:"The only way out for the Allied left is south over the defile at Augezd and the frozen meres beyond. French guns on the heights fire down on the ice. The 30th Bulletin claimed twenty thousand Russians drowned here; when the ponds were drained, thirty-eight guns and about a hundred and thirty horses came out of them, and two men - figures as usually given. Napoleon watches from the chapel of St Anthony above Augezd.",
@@ -121,7 +121,7 @@ var PHASES = [
     ["c. 14:30","Vandamme takes the height above Augezd; the causeway comes under fire."],
     ["c. 15:00","French artillery fires on the ice of the Satschan mere."],
     ["c. 16:30","Organised resistance ends. Bagration withdraws on Rausnitz, the Guard on Austerlitz."]],
-  cam:[-122,96,2,-18,0,68], light:"late", mist:0.22 },
+  cam:[-122,96,2,-18,0,68], mist:0.22 },
 
 { id:9, t0:1020, t1:1080, clock:"After dark", label:"Reckoning", title:"The reckoning",
   lede:"Allied losses are usually given as 15,000-16,000 killed and wounded and 12,000 or more prisoners, with about 180 guns and 45 standards; French losses at roughly 1,300 dead, 7,000 wounded and 600 missing. Austria signs at Pressburg on 26 December. The Confederation of the Rhine follows in July, and on 6 August 1806 Francis II lays down the imperial crown, ending the Holy Roman Empire.",
@@ -129,7 +129,7 @@ var PHASES = [
     ["2 Dec","Allied army effectively destroyed as a field force; Russia begins withdrawing east."],
     ["26 Dec","Treaty of Pressburg: Austria cedes Venetia, Istria, Dalmatia, Tyrol and Vorarlberg."],
     ["6 Aug 1806","Francis II abdicates as Holy Roman Emperor."]],
-  cam:[-220,158,206,-28,0,6], light:"dusk", mist:0.30 }
+  cam:[-220,158,206,-28,0,6], mist:0.30 }
 ];
 
 /* ---------------- formations ----------------
@@ -173,10 +173,10 @@ heightguns:{ ech:"bde", nation:"fr", arm:"art", desig:"Batteries on the plateau"
   role:"Fires from the captured plateau into the rear of the Allied left, and later onto the Augezd defile and the ice.",
   note:"That French artillery fired from the heights into the retreating Allied left, and onto the ice of the Satschan mere, is documented. The battery positions drawn here are reconstructed and should not be read as surveyed.",
   track:{
-    7:{p:[275,283],st:"holding",cf:"C",claim:"recon",moveMin:30,
+    7:{p:[275,283],st:"holding",cf:"C",claim:"recon",
        obj:"Beat the ground behind Buxhowden's columns",
        act:"Unlimbers on the southern shoulder of the plateau as the centre wheels"},
-    8:{p:[288,357],st:"attacking",cf:"C",claim:"recon",moveMin:45,
+    8:{p:[288,357],st:"attacking",claim:"recon",moveMin:45,
        obj:"Command the Augezd defile and the meres",
        cf:"B",act:"A battery placed by the chapel of St Anthony (Újezd local history: 24 guns of the Guard and IV Corps) fires down onto the causeway and the frozen mere; Thiebault's memoirs have 24 pieces of the Guard break the ice of the Satschan mere, without saying where they stood"},
     9:{p:[288,357],st:"holding",act:"Ceases fire at nightfall"}}},

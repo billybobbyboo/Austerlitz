@@ -71,6 +71,17 @@ Object.keys(FORMATIONS).filter(id=>FORMATIONS[id].children).forEach(id=>{
   if(f.strength && sum>f.strength) errs.push(id+": its formations ("+sum+") exceed its declared strength ("+f.strength+"): a detachment counted beside its parent, not under it (docs/FINAL_AUDIT.md D-3)");
   if(f.strength && Math.abs(f.strength-sum)/f.strength>0.30) warn.push(id+": declared "+f.strength+" vs children "+sum);
 });
+/* D-4 (docs/FINAL_AUDIT.md; roadmap step 2): a key declared twice in one object literal of the guarded sources (the later silently wins:
+   heightguns@8 declared cf "C" and then "B" until step 2), and a moveMin on a formation's first positioned anchor, where no leg runs into
+   it (anchorList never reads it: heightguns@7's 30 until step 2) */
+{ const acorn=require("acorn"), dup=[];
+  ["geo.js","data.js","appearance.js","analysis.js"].forEach(f=>{ (function walk(n){ if(!n||typeof n.type!=="string") return;
+      if(n.type==="ObjectExpression"){ const seen=new Set(); n.properties.forEach(p=>{ if(p.type!=="Property"||p.computed) return;
+        const k=p.key.type==="Identifier"?p.key.name:String(p.key.value); if(seen.has(k)) dup.push(f+":"+p.loc.start.line+" "+k); seen.add(k); }); }
+      for(const k in n){ const v=n[k]; if(Array.isArray(v)) v.forEach(walk); else if(v&&typeof v.type==="string") walk(v); } })(acorn.parse(fs.readFileSync(f,"utf8"),{ecmaVersion:2020,locations:true})); });
+  dup.forEach(d=>errs.push("a key declared twice in one object literal (the later wins): "+d));
+  ids.forEach(id=>{ const tr=FORMATIONS[id].track; if(!tr) return; const k0=Object.keys(tr).map(Number).sort((a,b)=>a-b).find(k=>"p" in tr[k]);
+    if(k0!==undefined&&tr[k0].moveMin!==undefined) errs.push(id+"@"+k0+": a moveMin on the first positioned anchor, where no leg runs into it (anchorList never reads it)"); }); }
 
 // overlays
 for(let i=0;i<PHASES.length;i++){

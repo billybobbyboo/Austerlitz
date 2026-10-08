@@ -393,7 +393,6 @@ const ALLOW_TIMED={
 const EXCLUDED_PATHS=[   /* [name, path class, reason] */
  ["tm",/^FORMATIONS\.[^.]+\.track\.\d+\.tm\./,"the engine's own timing input and its evidence: --times (each quote resolved) and the movement audit judge it"],
  ["phase clocks",/^PHASES\.\d+\.clock$/,"the phase's window: rule L6 asserts it equals t0 - t1"],
- ["phase light keys",/^PHASES\.\d+\.light$/,"a light key without a reader since 4B (docs/FINAL_AUDIT.md D-4), not text; this class fails once the step-2 data task removes it"],
  ["tolWhy",/^EVENTS\.\d+\.tolWhy$/,"the suite's tolerance reason (sim-test.js), never shown"],
  ["analysis.js comments",/^\(comment\) analysis\.js:/,"code documentation in analysis.js, never shown"]
 ];

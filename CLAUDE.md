@@ -93,8 +93,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   only for the legs it names (`CEILING_FLAGGED`), at a headquarters' own moveMin only for the leg it names (`MOVEMIN_DERIVED`: gqg@6, the
   headquarters has no tactical rate, `docs/STAGE2_SPEC.md` §M.13; this sentence said "every other at the tactical rate" until step 1, which
   was inaccurate), every other at the tactical rate (a design value, unsourced). Since step 1 (D-1) it reads the live text: every timed
-  statement in `data.js` and `analysis.js` is cited by a `REVIEW` row (`REVIEW_CITES`) or allowed by name with a reason (`ALLOW_TIMED`), but for five classes excluded by path
-  with their reasons (`EXCLUDED_PATHS`: the tracks' `tm` timings, which `--times` and the movement audit judge, the phase clocks and light keys,
+  statement in `data.js` and `analysis.js` is cited by a `REVIEW` row (`REVIEW_CITES`) or allowed by name with a reason (`ALLOW_TIMED`), but for four classes excluded by path
+  with their reasons (`EXCLUDED_PATHS`: the tracks' `tm` timings, which `--times` and the movement audit judge, the phase clocks,
   `tolWhy` and `analysis.js`'s comments), and a cite or allowance no longer live fails (a retimed, moved or renamed statement); the dated legs near the ceiling are asserted
   (`FORCED_DATED`, `NEAR_CEILING`); the movement audit runs inside it.
 - `npm run check:contrast`: every visible text element in 35 interface states (the map layer's plates and the legend among them, map text also
