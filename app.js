@@ -5999,7 +5999,7 @@ function compactCard(id){
   wrap.appendChild(head);
   var pills='';
   if(st) pills+=statusPill(st);
-  pills+=claimPill(cl);
+  pills+=posClaimPill(cl);
   pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
   if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
   wrap.appendChild(el("div","pillrow",pills));
@@ -6103,7 +6103,7 @@ function dossierFormation(id){
   var pills='';
   if(st) pills+=statusPill(st);
   var cl=claimOf(id,cf);
-  pills+=claimPill(cl);
+  pills+=posClaimPill(cl);
   pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
   if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
   if(commandView!=="none"){
@@ -6222,7 +6222,7 @@ function dossierFormation(id){
   }
 
   if(f.note) wrap.appendChild(el("p","note",esc(f.note)));
-  wrap.appendChild(el("p","conf",esc(CLAIM[cl].note)+" "+esc(CONF_TEXT[cf]||"")+(aggInterp(id,curPhase)?" "+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));
+  wrap.appendChild(el("p","conf",(cl!==CLAIM_FROM_CONF[cf]?esc(CLAIM[cl].note)+" ":"")+esc(CONF_TEXT[cf]||"")+(aggInterp(id,curPhase)?" "+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));   /* decision 128 (a): the position's grade text; CLAIM's note only where a track entry names its own claim (heightguns@7-9 "recon"), which is that entry's hedge */
 
   var act=el("div","dact");
   var btn=el("button","t","Centre the map here");
@@ -6240,6 +6240,11 @@ var LAYER_TAG={record:"record",recon:"reconstruction",derived:"derived"};
 function statusPill(st){ var t=STATUS[st].tone, ic=TOKENS.sym.status[t];
   return '<span class="pill st-'+t+'">'+iconSVG(ic.icon)+esc(STATUS[st].label)+'</span>'; }
 function claimPill(cl){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS.sym.claim[cl])+esc(CLAIM[cl].label)+'</span>'; }
+/* owner decision 128 (a) (docs/FINAL_AUDIT.md H-5): a formation's pill is its position's claim, worded as the position's. claimOf gives it
+   (a track entry's own claim, else CLAIM_FROM_CONF of the position's grade); it says nothing of the act, the role or the notes, whose own
+   claims are the sourcing stage's (128 (b)). An event's pill keeps CLAIM's words (claimPill) */
+var POS_CLAIM={fact:"Position: documented", est:"Position: estimated", recon:"Position: reconstructed"};
+function posClaimPill(cl){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS.sym.claim[cl])+esc(POS_CLAIM[cl]||CLAIM[cl].label)+'</span>'; }
 function sect(title,html,isDl,layer){
   var d=el("div","sect");
   d.innerHTML='<h3>'+esc(title)+(layer?' <span class="ltag '+layer+'">'+iconSVG(TOKENS.sym.layer[layer])+esc(LAYER_TAG[layer])+'</span>':'')+'</h3>'+
