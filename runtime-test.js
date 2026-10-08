@@ -447,6 +447,35 @@ try{
     console.log("derived reading wording: the plateau reading shown at "+seen.heights+" of 7 clocks and not at "+seen.noHeights+
       ", the centre separation at "+seen.cut+" and not at "+seen.noCut+", each with \"derived\" and its note OK"); }
 
+  /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): an arrow the data marks unsettled carries its mark on its label in its phase,
+     and no other arrow does; the sources sheet's arrow note names the mark. A disputed event's dossier carries the mark after its clock and
+     its dispute in a section of its own, and the interval sentence ("not fixed in the sources") is not added under a dispute; every other
+     interval event keeps it. Each count must be above zero (the check reads something) */
+  { const MARK=" ("+LABELS.arrow.unsettled+")"; let nA=0, nPh=0;
+    Object.keys(OVERLAYS).forEach(ph=>{ const uns=(OVERLAYS[ph].arrows||[]).filter(a=>/^unsettled:/.test(a.interp||""));
+      rebuildOverlays(+ph,true); nPh++;
+      uns.forEach(a=>{ nA++; if(!ovText.some(q=>q.text===a.label+MARK)) throw new Error("unsettled arrow \""+a.label+"\": its label lacks its mark"); });
+      const marked=ovText.filter(q=>q.text.endsWith(MARK)).length;
+      if(marked!==uns.length) throw new Error("phase "+ph+": "+marked+" map labels carry the mark"+MARK+", but "+uns.length+" arrows are unsettled"); });
+    rebuildOverlays(curPhase,true);
+    if(arrowNotes()[2].indexOf("each label carries the mark"+MARK+":")<0) throw new Error("the sources sheet's arrow note does not name the mark"+MARK);
+    const mk=document.createElement; let made=[], nD=0, nDI=0, nI=0;
+    try{
+      document.createElement=t=>{ const x=mk(t); made.push(x); return x; };
+      EVENTS.forEach(e=>{ made=[]; dossierEvent(e.id);
+        const h=made.map(x=>x.innerHTML).join("\n"), w=evWindow(e), iv=w[0]!==w[1], dis=e.claim==="disputed";
+        const cm=h.match(/<p class="dh-cmd">([^<]*)<\/p>/), clk=cm?cm[1]:"";
+        const sect='<h3>When it happened: disputed</h3><p class="ev-why">'+esc(e.dispute)+'</p>', sent=h.indexOf("The hour is not fixed in the sources")>=0;
+        if(!cm) throw new Error("event "+e.id+": its dossier has no clock line");
+        if(clk.endsWith(esc(" ("+LABELS.event.disputed+")"))!==dis) throw new Error("event "+e.id+": the clock line \""+clk+"\" "+(dis?"lacks":"carries")+" the disputed mark");
+        if((h.indexOf(sect)>=0)!==!!e.dispute) throw new Error("event "+e.id+": its dispute section "+(e.dispute?"missing":"shown without a dispute"));
+        if(sent!==(iv&&!e.dispute)) throw new Error("event "+e.id+": the interval sentence "+(sent?"shown":"missing")+(e.dispute?" under a dispute":""));
+        if(dis){ nD++; if(iv) nDI++; } else if(iv) nI++; });
+    } finally { document.createElement=mk; }
+    if(!nA||!nD||!nDI||!nI) throw new Error("the disputed hours: "+nA+" unsettled arrows, "+nD+" disputed events ("+nDI+" intervals), "+nI+" other intervals (the check reads nothing)");
+    console.log("the disputed hours: "+nA+" unsettled arrows carry their mark, no other arrow in "+nPh+" phases; "+nD+" events graded disputed show it after "+
+      "their clock with their dispute, the interval sentence on none of them ("+nDI+" an interval) and on the "+nI+" other intervals OK"); }
+
   /* the sky must repaint through every lighting state without a NaN */
   for(let ph=0;ph<PHASES.length;ph++){
     setPhase(ph,false);

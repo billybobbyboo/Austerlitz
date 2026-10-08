@@ -7669,7 +7669,8 @@ function buildArrow(a){
     dense:a.leg?2:0,   /* Stage 4D: a derived arrow kept to its path (its drawn-on part follows the formation) */
     col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
   var mid=r.curve.getPointAt(0.5);
-  if(a.label) addOverlayLabel(a.label,new THREE.Vector3(mid.x,groundY(mid.x,mid.z)+2.4,mid.z));
+  /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): an arrow the data marks unsettled (OVERLAYS' interp) carries its mark where its label is read */
+  if(a.label) addOverlayLabel(a.label+(/^unsettled:/.test(a.interp||"")?" ("+LABELS.arrow.unsettled+")":""),new THREE.Vector3(mid.x,groundY(mid.x,mid.z)+2.4,mid.z));
   if(a.leg){ var d={a:a,ghost:r,r:drawOnRibbon(pts,w,col,S,r),s:-1}; DRAWON.push(d); }   /* Stage 4D: the part marched, drawn on with the clock */
 }
 /* "IV Column halted" (decision 23, section C.3): a column stopped short of its objective is not a route. A solid bar
@@ -10549,6 +10550,10 @@ var LABELS={
     hybrid:{label:"Landscape with counters", title:"The ground in relief, with the paper map's counters"}
   },
   layers:{button:"Layers\u2026", heading:"Layers", aria:"Layers and ground", ground:"Ground", shows:"What is drawn"},
+  /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): the note an event carries where it is named, and the mark on the label of
+     an arrow the data calls unsettled: marks of what the data says (EVENTS[].claim, OVERLAYS' interp), no claim of their own */
+  event:{disputed:"the hour is disputed"},
+  arrow:{unsettled:"hour disputed"},
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
      its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with the five glides of
      1.6 s and, since 7D, the clock played between them at 4x, about 50 s: 100 to 121 s; docs/STAGE7_SPEC.md sections 3.4, 3.5). At 390 px the
@@ -11828,7 +11833,7 @@ function dossierEvent(eid){
   head.innerHTML='<div class="dh-bar" style="background:'+col+'"></div><div class="dh-tx">'+
     '<p class="dh-sub">'+esc(KIND[e.kind]||e.kind)+' &middot; '+
       (e.side==="fr"?"French":"Allied")+'</p><h2>'+esc(e.n)+'</h2>'+
-    '<p class="dh-cmd">'+esc(exact?("about "+fmtClock(w[0])):(fmtClock(w[0])+" to "+fmtClock(w[1])))+'</p></div>';
+    '<p class="dh-cmd">'+esc((exact?("about "+fmtClock(w[0])):(fmtClock(w[0])+" to "+fmtClock(w[1])))+(e.claim==="disputed"?" ("+LABELS.event.disputed+")":""))+'</p></div>';
   wrap.appendChild(head);
   wrap.appendChild(el("div","pillrow",
     claimPill(e.claim)+
@@ -11837,6 +11842,8 @@ function dossierEvent(eid){
   var s2=el("div","sect");
   s2.innerHTML='<h3>Why it matters</h3><p class="ev-why">'+esc(e.why)+'</p>';
   wrap.appendChild(s2);
+  /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): a disputed event gives both hours and who gives each (EVENTS[].dispute) */
+  if(e.dispute){ var sD=el("div","sect"); sD.innerHTML='<h3>When it happened: disputed</h3><p class="ev-why">'+esc(e.dispute)+'</p>'; wrap.appendChild(sD); }
   if(e.forms.length){
     var s3=el("div","sect");
     s3.innerHTML='<h3>Formations concerned</h3>';
@@ -11851,7 +11858,7 @@ function dossierEvent(eid){
     s3.appendChild(ul); wrap.appendChild(s3);
   }
   wrap.appendChild(el("p","conf",esc(CLAIM[e.claim].note)+
-    (exact?"":" The hour is not fixed in the sources, so this is shown as an interval rather than a timestamp.")));
+    (exact||e.dispute?"":" The hour is not fixed in the sources, so this is shown as an interval rather than a timestamp.")));
   var act=el("div","dact");
   var b1=el("button","t","Go to this moment");
   b1.addEventListener("click",function(){ stopPlay(); setClock(evClock(e)); centreOnMap(e.p,96); });
@@ -11973,7 +11980,7 @@ function arrowNotes(){
   return ["An arrow drawn for a phase shows the movement the model makes during that phase. "+d+" of the "+n+" arrows are drawn from the formation's own modelled route, so their ends are its modelled positions; they move with the model.",
     "The others are interpretive and marked as such in the data: "+(k.route||0)+" ordered routes (dashed), "+(k.objective||0)+" that point at a place or objective rather than a modelled position, "+
       (k.group||0)+" that stand for several formations, "+(k.unmodelled||0)+" for bodies the map does not track, and "+(k.halt||0)+" halt bar, a column stopped short of its objective.",
-    "Hand-authored, because this map's own texts disagree about the hour and the sources have not been checked: "+uns.join("; ")+"."];
+    "Hand-authored, because this map's own texts disagree about the hour and the sources have not been checked; each label carries the mark ("+LABELS.arrow.unsettled+"): "+uns.join("; ")+"."];
 }
 /* Stage 4B (docs/STAGE4_SPEC.md section A.5; decisions 68-71): how the light is drawn, a presentation note of the sources sheet
    (not SOURCE_NOTE): derived from astronomy and the app's clock, with what it is not */
