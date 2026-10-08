@@ -4363,6 +4363,7 @@ function paintLegend(){
           badge:counters, analysis:!!layerOn.analysis, contours:!!layerOn.contours&&!cleanView,
           wood:!land, village:!land,   /* Stage 2E: the paper map's own symbology */
           mere:true,   /* Stage 2F: the meres are drawn in every view, and their outlines are schematic (decision 27, section I.2) */
+          vine:true,   /* roadmap step 2 (decision 135): the vineyard cover is drawn in every view; whether vines stood there in 1805 is open */
           fog:land&&fogCap(fogAmount(clock))>0.01,   /* Stage 4C: while the valley fog is drawn */
           /* Stage 5B: one row per grade drawn on screen, and the sentence on their sizes; the badge also on the landscape's names */
           "conf-a":!!CONF.shown.A, "conf-b":!!CONF.shown.B, "conf-c":!!CONF.shown.C, conf:!!(CONF.shown.A||CONF.shown.B||CONF.shown.C),
@@ -7330,6 +7331,7 @@ var AUSTERLITZ_DEBUG=(function(){
         if(row("foot")!==(mode!=="staff"&&isTrueScale())) R.ctx.push(s.n+": the footprint rows");
         if(row("wood")!==(mode==="staff")||row("village")!==(mode==="staff")) R.ctx.push(s.n+": the paper map's wood and village rows");
         if(!row("mere")) R.ctx.push(s.n+": the meres' row (pond outlines schematic)");
+        if(!row("vine")) R.ctx.push(s.n+": the vineyard row (presumed)");   /* roadmap step 2 (decision 135) */
         if((getComputedStyle(document.getElementById("goingkey")).display!=="none")!==goingOn) R.ctx.push(s.n+": the going rows"); }
       if(s.layers){ setPlan(planSide); if(goingOn) toggle("#going"); if(layerOn.analysis) toggle('.layer-btn[data-l="analysis"]'); }
       if(s.first) closeFirst(null);

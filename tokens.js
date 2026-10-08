@@ -90,7 +90,7 @@ var TOKENS = /*TOKENS:BEGIN*/{
       {"key": "good",   "label": "good going",    "hex": "#6E8A5A"},
       {"key": "hard",   "label": "hard for guns", "hex": "#8C7A9A"},
       {"key": "severe", "label": "severe slope",  "hex": "#8E4436"},
-      {"key": "vine",   "label": "vineyards",     "hex": "#ADCCBF"},
+      {"key": "vine",   "label": "vineyards (presumed)", "hex": "#ADCCBF"},
       {"key": "marsh",  "label": "marsh",         "hex": "#6B5A3E"},
       {"key": "water",  "label": "water",         "hex": "#36505E"}
     ],
