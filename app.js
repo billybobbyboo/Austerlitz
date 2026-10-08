@@ -2988,15 +2988,16 @@ function evWindow(e){ return Array.isArray(e.t)?e.t:[e.t,e.t]; }
    (momentOf) and the dwell (decision 75); an interval's window is drawn as a bar from its start */
 function evClock(e){ return evWindow(e)[0]; }
 function evTimeText(e){ var w=evWindow(e); return w[0]===w[1]?fmtClock(w[0]):fmtClock(w[0])+" to "+fmtClock(w[1]); }
-/* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1, H-15): the note an event carries wherever it is named outside its dossier
-   (its marker's name and title, its map label's name, the Now tab's strip, the opening's bar, a formation's dossier): its hour disputed
+/* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1, H-15): the note an event carries where it is named outside its dossier
+   (its marker's name and title, its map label's accessible name, the Now tab's strip, the opening's bar, a formation's dossier, the
+   selection chip; the map label's drawn words are unchanged, handed to roadmap step 3): its hour disputed
    (claim "disputed"), else an interval (not a timestamp: decision 44, a process or an unfixed hour), and a reconstruction (claim
    "recon"); in the one-line caption, where a trailing note would be cut by the ellipsis, a short tag before the name (evTag) */
 function evNoteParts(e,L){ var w=evWindow(e), n=[];
   if(e.claim==="disputed") n.push(L.disputed); else if(w[0]!==w[1]) n.push(L.interval);
   if(e.claim==="recon") n.push(L.recon); return n; }
 function evNote(e){ var n=evNoteParts(e,LABELS.event); return n.length?" ("+n.join("; ")+")":""; }
-function evTag(e){ var n=evNoteParts(e,LABELS.event.tag); return n.length?'<small class="evn">'+esc(n.join("; "))+'</small>':""; }
+function evTag(e){ var n=evNoteParts(e,LABELS.event.tag); return n.length?'<small class="evn">'+esc(n.join("; "))+'</small> ':""; }
 function evWeight(e,t){
   var w=evWindow(e), lead=14, tail=26;
   if(t>=w[0]&&t<=w[1]) return 1;
@@ -5600,7 +5601,7 @@ function syncSelChip(){
   if(selection.kind==="f"&&FORMATIONS[selection.id]){
     n=FORMATIONS[selection.id].name; var s1=liveStatus(selection.id,curPhase); st=(s1&&STATUS[s1])?STATUS[s1].label:"";
     if(highlight) k="Selected, with its chain of command";
-  } else if(selection.kind==="e"){ k="Event"; EVENTS.forEach(function(e){ if(e.id===selection.id) n=e.n; }); }
+  } else if(selection.kind==="e"){ k="Event"; EVENTS.forEach(function(e){ if(e.id===selection.id) n=e.n+evNote(e); }); }   /* roadmap step 2 (H-15): with its note */
   else if(selection.kind==="t"){ k="Place"; FEATURES.forEach(function(x){ if(x.id===selection.id) n=x.name; }); }
   else { k="Terrain"; n=selection.id; }
   chip.querySelector(".sc-k").textContent=k;
@@ -6582,8 +6583,10 @@ function lightNotes(){
       "ground would have under the true sun. The sun's disc stands at its true height, so where the relief is exaggerated the light seems to come from higher than the disc.",
     "Before dawn the field is lit by a design light, not by a moon; nothing about the night's sky is claimed. The weather of the day (the fog in the valley, "+
       "the sun on the heights at about 08:45) is drawn as the phases' texts give it. Thiebault's and Marbot's memoirs have the fog hiding the French in the "+
-      "valley and the 'sun of Austerlitz' lighting the climb onto the Pratzen (the sources sheet's Basis), but give the climb no clock hour: the hours are "+
-      "the narrative's, and this reconstruction cites no source for them.",
+      "valley and the 'sun of Austerlitz' lighting the climb onto the Pratzen (the sources sheet's Basis), but give the climb itself no clock hour. "+
+      "Thiebault writes that day came only at eight (vol. III, 1894, p. 456), and that an aide-de-camp came at half past eight to report that the last "+
+      "enemy corps had left the Pratzen heights, a report he says misled Napoleon (p. 504). The hours drawn are the narrative's, and this reconstruction "+
+      "cites no source for them.",
     "The valley fog is drawn from the narrative: in the Goldbach valley until about 08:45, off the heights first. Its top is drawn at "+Math.round(ATMO.FOG_TOP)+
       " m, the height below which the Command view treats ground as fogged while the mist lies; its depth and its lifting are modelled, not recorded, "+
       "and it is drawn see-through so the formations in it stay visible. The thin mist drawn in the late afternoon is modelled too: no text mentions it.",
@@ -8859,10 +8862,15 @@ var AUSTERLITZ_DEBUG=(function(){
         !c5.length, _evTicks.length+" markers each at its start within 1 px; the dossier of "+iv.id+" goes to "+fmtClock(evWindow(iv)[0])+(c5.length?"; "+c5.slice(0,4).join("; "):""));
       /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1, H-15): an event named outside its dossier carries its note, written here from
          its claim and window, not read from evNote or evTag: its marker's name and title, the event links of the dossier of a formation it
-         names (at its start), and, in the one-line caption at its start where it leads, its tag before its name, inside the caption's box (the
-         ellipsis cannot cut it; an event without a note has no tag); a disputed event's dossier its pill and its dispute with two clock times;
-         an arrow the data marks unsettled carries its mark on its label */
-      var c6=[], LE=LABELS.event, nN=0, nD=0, nA=0, nC=0, nCT=0, nF=0, nFN=0, capEl=document.getElementById("tb-cap");
+         names (at its start), the selection chip with the drawer closed (in Watch), and, in the one-line caption at its start where it leads,
+         its tag before its name, the tag and the name's first glyph inside the caption's box and, where the line overflows, clear of the
+         ellipsis's width in the caption's own font (layout rects ignore the "\u2026" painted over the line's end); every kind of tag the events
+         carry read there at least once (an event without a note has no tag); a disputed event's dossier its pill and its dispute with two
+         clock times; an arrow the data marks unsettled carries its mark on its label */
+      var c6=[], LE=LABELS.event, nN=0, nD=0, nA=0, nC=0, nCT=0, nF=0, nFN=0, nS=0, kinds6={}, read6={}, capEl=document.getElementById("tb-cap");
+      var sp6=document.createElement("span"); sp6.textContent="\u2026"; sp6.style.position="absolute"; sp6.style.whiteSpace="pre";   /* in the caption's own font, inherited */
+      capEl.appendChild(sp6); var ell6=sp6.getBoundingClientRect().width; capEl.removeChild(sp6);
+      EVENTS.forEach(function(e){ parts6(e,LE.tag).forEach(function(k){ kinds6[k]=1; }); });
       function parts6(e,L){ var w=evWindow(e), n=[]; if(e.claim==="disputed") n.push(L.disputed); else if(w[1]>w[0]) n.push(L.interval);
         if(e.claim==="recon") n.push(L.recon); return n; }
       function note6(e){ var n=parts6(e,LE); return n.length?" ("+n.join("; ")+")":""; }
@@ -8878,9 +8886,14 @@ var AUSTERLITZ_DEBUG=(function(){
           if(!evs) c6.push(e.id+": the caption names no event");
           else if(tw){ nCT++;
             if(!tg||tg.textContent!==tw) c6.push(e.id+": the caption's tag reads '"+(tg?tg.textContent:"(none)")+"', want '"+tw+"'");
-            else { var tr=tg.getBoundingClientRect();
-              if(!(cr.width>0)||tr.left<cr.left-0.5||tr.right>cr.right+0.5) c6.push(e.id+": the caption's tag at "+tr.left.toFixed(1)+"-"+tr.right.toFixed(1)+" px, outside the caption's box "+cr.left.toFixed(1)+"-"+cr.right.toFixed(1)); }
-            if(evs.textContent!==tw+e.n) c6.push(e.id+": the caption reads '"+evs.textContent.slice(0,80)+"'"); }
+            else { var tr=tg.getBoundingClientRect(), over=capEl.scrollWidth>capEl.clientWidth, rMax=cr.right-(over?ell6:0)+0.5;
+              parts6(e,LE.tag).forEach(function(k){ read6[k]=1; });
+              if(!(cr.width>0)||tr.left<cr.left-0.5||tr.right>rMax) c6.push(e.id+": the caption's tag at "+tr.left.toFixed(1)+"-"+tr.right.toFixed(1)+" px, outside the caption's box "+cr.left.toFixed(1)+"-"+cr.right.toFixed(1)+(over?" less the ellipsis's "+ell6.toFixed(1)+" px":""));
+              var tn=tg.nextSibling, i6=tn&&tn.nodeType===3?tn.data.search(/\S/):-1;
+              if(i6<0) c6.push(e.id+": no name after the caption's tag");
+              else { var rg=document.createRange(); rg.setStart(tn,i6); rg.setEnd(tn,i6+1); var gr=rg.getBoundingClientRect();
+                if(gr.left<cr.left-0.5||gr.right>rMax) c6.push(e.id+": the name's first glyph at "+gr.left.toFixed(1)+"-"+gr.right.toFixed(1)+" px, outside the caption's box "+cr.left.toFixed(1)+"-"+cr.right.toFixed(1)+(over?" less the ellipsis's "+ell6.toFixed(1)+" px":"")); } }
+            if(evs.textContent!==tw+" "+e.n) c6.push(e.id+": the caption reads '"+evs.textContent.slice(0,80)+"'"); }
           else if(tg||evs.textContent!==e.n) c6.push(e.id+": the caption reads '"+evs.textContent.slice(0,80)+"' (a tag without a note)"); }
         var fid=(e.forms||[]).filter(function(f){ return FORMATIONS[f]; })[0];
         if(fid){ var mine6=lv.filter(function(x){ return x.e.forms.indexOf(fid)>=0; }).slice(0,3).map(function(x){ return x.e.n+note6(x.e); }),
@@ -8895,12 +8908,18 @@ var AUSTERLITZ_DEBUG=(function(){
           if(!e.dispute||tx.indexOf(e.dispute)<0) c6.push(e.id+": its dossier does not give its dispute");
           if(Object.keys(hrs).length<2) c6.push(e.id+": its dispute names "+Object.keys(hrs).length+" clock time(s)");
           select(null,null); } });
+      Object.keys(kinds6).forEach(function(k){ if(!read6[k]) c6.push("no event leading the caption at its start carries the tag '"+k+"'"); });
+      var pm6=presentation; setPresentation("watch");
+      EVENTS.forEach(function(e){ if(!note6(e)) return; select("e",e.id); var ch=document.getElementById("selchip"), sn=ch.querySelector(".sc-n");
+        if(ch.hidden||drawerShown()) c6.push(e.id+": no selection chip with the drawer closed");
+        else if(sn.textContent!==e.n+note6(e)) c6.push(e.id+": the selection chip names '"+sn.textContent.slice(0,80)+"'"); else nS++; });
+      select(null,null); setPresentation(pm6);
       Object.keys(OVERLAYS).forEach(function(ph){ (OVERLAYS[ph].arrows||[]).forEach(function(a){ if(!/^unsettled:/.test(a.interp||"")) return; nA++;
         rebuildOverlays(+ph,true);
         if(!ovText.some(function(t){ return t.text===a.label+" ("+LABELS.arrow.unsettled+")"; })) c6.push("the arrow '"+a.label+"' (phase "+ph+"): no mark on its label"); }); });
       rebuildOverlays(curPhase,true);
       ck("events: a disputed hour, an interval or a reconstruction named with its note by its marker and a formation's dossier, and tagged in the caption inside its box; a disputed event's dossier its pill and both hours; an unsettled arrow's label its mark (decision 125, H-1, H-15)",
-        !c6.length&&nN>0&&nD>0&&nA>0&&nCT>0&&nFN>0, nN+" events with a note, "+nD+" disputed, "+nA+" unsettled arrows; the caption read at "+nC+" starts ("+nCT+" with a tag), a formation's dossier at "+nF+" ("+nFN+" linking the event with its note)"+(c6.length?"; "+c6.slice(0,4).join("; "):""));
+        !c6.length&&nN>0&&nD>0&&nA>0&&nCT>0&&nFN>0&&nS>0, nN+" events with a note, "+nD+" disputed, "+nA+" unsettled arrows; the caption read at "+nC+" starts ("+nCT+" with a tag; the tags read: "+Object.keys(read6).join(", ")+"; the ellipsis "+ell6.toFixed(1)+" px), a formation's dossier at "+nF+" ("+nFN+" linking the event with its note), the selection chip naming "+nS+" with its note"+(c6.length?"; "+c6.slice(0,4).join("; "):""));
       if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
       document.body.classList.remove("st-still"); if(pl0) togglePlay();
     })();

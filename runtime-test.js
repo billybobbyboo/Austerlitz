@@ -266,7 +266,7 @@ try{
     if(e.claim==="recon") n.push(L.recon); return n; };
   const noteRT=e=>{ const n=partsRT(e,LABELS.event); return n.length?" ("+n.join("; ")+")":""; };
   const tagRT=e=>partsRT(e,LABELS.event.tag).join("; ");
-  const capRT=e=>tagRT(e)?'<small class="evn">'+esc(tagRT(e))+'</small>'+esc(e.n):esc(e.n);
+  const capRT=e=>tagRT(e)?'<small class="evn">'+esc(tagRT(e))+'</small> '+esc(e.n):esc(e.n);
   for(let t=T_MIN;t<=T_MAX;t+=7){
     setClock(t); updateVisibility();
     _sitKey=""; paintSituation(); sitSeen++;

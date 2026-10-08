@@ -30,6 +30,10 @@
 - Revised again: 8 October 2026, after the review of C14a-C18 (step 2, "C14a-C18, review fixes"): §8.4 (Marbot pp. 259-260, Lannes
   driving the enemy back to Blasiowitz) added, read on its images n278-n279 that day; §4.7 and §4.8 (the Guard that had no shot to fire
   and took no part, against the map's c_gd and guard_inf@6) and §12 changed; §13 F14 added.
+- Revised again: 8 October 2026, after the review of C19-C23 (step 2, "C19-C23, review fixes"): §4.4 (the words its quote cuts, and what
+  it settles) and §13 F1 (what the sources sheet's light note now says) changed. Thiébault pp. 456, 461 and 504 and Marbot p. 260 were
+  checked again that day in archive.org's text layers (`mmoires03thieuoft`, `mmoiresdugn01marbuoft`): Marbot's sentence on the sun stands
+  whole on p. 260 (p. 259 ends with "Mais à notre gauche, le maréchal Lannes non seulement").
 - Transcription: as printed, with the source's own spelling, accents and capitals (Thiébault, Riajsk, Blasowitz, Girschikowitz,
   "étoit"); the German Fraktur's long s is written s; Russian in the pre-1918 spelling as printed (ъ, ѣ, і); "[...]" marks a cut and
   "/" a page turn inside a quotation. The translations are this register's own.
@@ -468,7 +472,13 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   first three Russian columns [...]. The same sun lit the offensive march of the Saint-Hilaire and Vandamme divisions climbing the heights
   of Pratzen." (1) "They had to deal with the 1st and 2nd corps of the Allies and the 3rd, less Kamensky's brigade."
 - **grade**: B (a participant's memoir, published 1894). **label**: fact (what Thiébault says: he puts the phrase in quotation marks).
-- **settles**: Thiébault's use of the phrase, in quotation marks, and his sun lighting the climb onto the Pratzen (H-9, C22).
+- **the cut** (checked in the text layer, OCR, 8 October 2026, after the review of C19-C23): "[...] que la quatrième même devait suivre ;
+  il éclaira le mouvement rétrograde des généraux Legrand et Friant, qui, ne pouvant résister aux masses des assaillants, se retirèrent
+  [...]": "which the fourth was itself to follow; it lit the withdrawal of Generals Legrand and Friant, who, unable to resist the masses of
+  the attackers, fell back [...]".
+- **settles**: Thiébault's use of the phrase, in quotation marks, for the rising sun, which in his telling greets the attack on Telnitz
+  and Sokolnitz, lights Legrand's and Friant's withdrawal and then ("Ce même soleil") the climb onto the Pratzen (H-9, C22; the Basis
+  entry's wording since the review of C19-C23).
 - **does not settle**: a clock hour for the climb; who first used the phrase.
 - **status**: read on the page image; not yet second-read (H-17).
 
@@ -1073,7 +1083,10 @@ Each is recorded for the commit named; none changes a text in this commit (recor
   (p. 458, "(un peu prématurément)", §4.2); Thiébault says Napoleon was misled by it ("il avait été trompé"). The exchange itself he sets
   "au jour naissant" (p. 456), with day at eight. The plan's C8 texts say "the hour is this map's" and "the hour this map gives it is its
   own" for the c. 08:30 line: Thiébault's half past eight should be weighed before those words are written. If C8 rests a visitor text on
-  it, it attributes the hour to Thiébault's p. 504 and marks the link to the twenty-minutes exchange as an inference.
+  it, it attributes the hour to Thiébault's p. 504 and marks the link to the twenty-minutes exchange as an inference. Since the review of
+  C19-C23 the sources sheet's light note (app.js `lightNotes`) gives Thiébault's two hours as his (day only at eight, p. 456; the aide's
+  report at half past eight that the last enemy corps had left the Pratzen heights, which he says misled Napoleon, p. 504), without the
+  identification, beside the drawn 08:45 sun; the drawn hours and the c. 08:30 line are weighed against them in step 4 (125 (b)).
 - **F2 (C9, question 153).** Thiébault spells the regiment "Riajski" (pp. 474, 504), a witness to the name Ryazhsk (the reading of the
   spelling as Ряжскій is an inference), but has the Fanagoria and Ryazhsk regiments reinforce Kamensky's brigade (p. 474, §4.11), as
   Stutterheim does (p. 64, §2.6); Mikhailovsky-Danilevsky forms the brigade of them (1844 p. 187; 1846 p. 251). Keep this disagreement on
