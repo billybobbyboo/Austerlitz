@@ -22,6 +22,11 @@
   beside, not in, Kamensky's brigade; the aide's identity an inference; the boast as Thiébault frames it), §8.2 (the page URL), §12 and
   §13 F1, F2, F11 changed; §2.6 (Stutterheim's "Rhiasky"), §3.4 (Kutuzov's report in the Materialien), §4.11 (Thiébault p. 474) and §13
   F13 added. Every quote added was read on its page image that day.
+- Revised again: 8 October 2026, for the owner's answers to questions 153, 155, 157 and 158 (step 2, C14a): §2.7 (Stutterheim p. 56, the
+  Guard's jäger battalion in Blasowitz and Liechtenstein's arrival), §5.7 (Mikhailovsky-Danilevsky 1846 pp. 256-257, the Guard's
+  defence of Blasowitz), §6.8 (the second reading of Mikhailovsky-Danilevsky 1844 for question 153, the footnote's day on p. 187 among
+  it) and §7.6 (Alombert and Colin p. 69, Caffarelli in Bisson's place) added; §6.5, §6.7 and §12 changed. Each page added was read on
+  its image that day.
 - Transcription: as printed, with the source's own spelling, accents and capitals (Thiébault, Riajsk, Blasowitz, Girschikowitz,
   "étoit"); the German Fraktur's long s is written s; Russian in the pre-1918 spelling as printed (ъ, ѣ, і); "[...]" marks a cut and
   "/" a page turn inside a quotation. The translations are this register's own.
@@ -279,6 +284,32 @@ is a translation of the French original of the same year (its title page: "Aus d
   readings-composition.md al.kamensky.units.stutterheim); what Kamensky's brigade itself was made of; who turned it against the French
   (§13 F13); a clock hour.
 - **status**: read on the page images (both editions); not yet second-read (H-17).
+
+### 2.7 `stut.p56-57.blasowitz-guard`: the Grand Duke has Blasowitz occupied by the Guard's jäger battalion; Liechtenstein arrives "in dem nähmlichen Augenblicke" (pp. 56-57)
+- **source**: stutterheim1806de, pp. 56-57, images n59-n60 (https://archive.org/download/11344011bsb/page/n59.jpg,
+  https://archive.org/download/11344011bsb/page/n60.jpg). Read on the images for C14a (question 158).
+- **quote** (p. 56): "Der Großfürst Constantin, welcher mit dem Corps der Garden die Reserve des rechten Flügels zu formiren hatte,
+  verließ zur bestimmten Stunde die Anhöhen vor Austerlitz, um auf die Anhöhen bey Blasowitz und Krug vorzurücken. Kaum war er auf
+  diesem Puncte angelangt, als er sogleich auf die Plänkler von der Division Rivaud und von der leichten Cavallerie des Fürsten Murat
+  unter Commando des General Kellermann stieß, und mit ihnen ins Gefecht verwickelt war. Der Großfürst ließ eilig das Dorf Blasowitz durch
+  das Jäger-Bataillon der Garde besetzen. In dem nähmlichen Augenblicke kam auch der Fürst Johann Liechtenstein mit seiner Cavallerie."
+  (p. 57): "Als der Fürst Liechtenstein beym linken Flügel des Großfürsten anlangte, fand er den Feind den Russischen Garden gegen über:
+  dieß war die Cavallerie des General Kellermann, unterstützt von der Infanterie des linken Flügels des Marschall Bernadotte und jener
+  des rechten Flügels des Marschall Lannes."
+- **translation**: (p. 56) "The Grand Duke Constantine, who with the corps of the Guards was to form the reserve of the right wing, left
+  the heights before Austerlitz at the appointed hour to advance onto the heights by Blasowitz and Krug. Hardly had he arrived at this
+  point when he at once came upon the skirmishers of Rivaud's division and of Prince Murat's light cavalry under General Kellermann, and
+  was engaged with them. The Grand Duke hastily had the village of Blasowitz occupied by the Guard's jäger battalion. At the same moment
+  Prince Johann Liechtenstein also came up with his cavalry." (p. 57) "When Prince Liechtenstein reached the Grand Duke's left wing, he
+  found the enemy facing the Russian Guards: General Kellermann's cavalry, supported by the infantry of Marshal Bernadotte's left wing
+  and that of Marshal Lannes's right wing."
+- **grade**: A (an officer present on the Allied side, printed 1806). **label**: fact (what Stutterheim says); Blasowitz's attackers
+  disputed (§2.5, §4.6, §5.6, §5.7); Liechtenstein's arrival disputed (Mikhailovsky-Danilevsky 1846 p. 257: only once the village was
+  lost, §5.7).
+- **settles**: in Stutterheim, the defenders of Blasowitz are the Russian Guard's (its jäger battalion; "er" of p. 68, §2.5, is the
+  Grand Duke); Liechtenstein arrives as the village is occupied (question 158).
+- **does not settle**: a clock hour ("zur bestimmten Stunde" names none).
+- **status**: read on the page images; not yet second-read (H-17).
 
 ## 3. `materialien1806`: the German translation with the editor's additions, 1806
 
@@ -659,6 +690,31 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
 - **does not settle**: any clock hour for Kamensky's turn; who took Blasowitz (p. 257 says "les Français").
 - **status**: pp. 251, 253-255, 257 read on the page images; not yet second-read (H-17).
 
+### 5.7 `md1846.p256-257.blasowitz-guard`: the Guard's jäger battalion in Blasowitz, reinforced by a Semenovsky battalion; Liechtenstein only after the village was lost (pp. 256-257)
+- **source**: pp. 256-257; images n282 (p. 256) and n283 (p. 257) (https://archive.org/download/relationdelacam00dangoog/page/n282.jpg,
+  https://archive.org/download/relationdelacam00dangoog/page/n283.jpg). Read on the images for C14a (question 158); §5.6 had p. 256 in the
+  OCR only.
+- **quote** (p. 256): "Le grand-duc ordonna au bataillon des chasseurs de la garde, sous le commandement du comte de Saint-Priest, tué en
+  1814 à Reims, d'occuper le village de Blasowitz, et fit aussitôt prévenir de cette attaque inattendue le prince Bagration, son / (p. 257)
+  compagnon de gloire dans la campagne d'Italie. Bagration répondit à Son Altesse qu'elle avait pris la meilleure résolution, celle de
+  défendre Blasowitz, et que tout ce qu'elle pouvait faire de mieux était de s'y maintenir jusqu'à ce qu'on connût le motif de l'absence du
+  prince de Lichtenstein. Le grand-duc dépêcha, comme renfort, aux chasseurs à pied, un bataillon des gardes de Séménowski." (p. 257,
+  further down, quoted in §5.6): "Les Français forcèrent nos troupes d'évacuer Blasowitz; leurs batteries firent feu sur la garde. Ce fut
+  seulement à ce moment que parut le prince de Lichtenstein".
+- **translation**: "The Grand Duke ordered the Guard's jäger battalion, under the command of Count Saint-Priest, killed in 1814 at Reims,
+  to occupy the village of Blasowitz, and at once informed Prince Bagration, his companion in glory in the Italian campaign, of this
+  unexpected attack. Bagration answered His Highness that he had taken the best resolution, that of defending Blasowitz, and that the best
+  he could do was to hold there until the reason for Prince Liechtenstein's absence was known. The Grand Duke sent a battalion of the
+  Semenovsky Guards to reinforce the jägers." "The French forced our troops to evacuate Blasowitz; their batteries fired on the Guard.
+  Only at that moment did Prince Liechtenstein appear".
+- **grade**: B. **label**: fact (what it says); the attackers disputed (§2.5, §2.7, §4.6); Liechtenstein's arrival disputed (Stutterheim
+  p. 56: at the same moment as the occupation, §2.7).
+- **settles**: in Mikhailovsky-Danilevsky, the defenders of Blasowitz are the Russian Guard's (the jäger battalion and a Semenovsky
+  battalion), Bagration being only informed; Liechtenstein appears only after the village is lost (question 158).
+- **does not settle**: which French troops took the village (p. 257: "les Français"; p. 255 has Napoleon order part of Rivaud's division
+  and Lannes's Caffarelli and Kellermann toward it, §5.6); a clock hour.
+- **status**: read on the page images; not yet second-read (H-17).
+
 ## 6. `mikhailovsky1844`: the Russian original, 1844
 
 Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was used only to find pages and words.
@@ -727,7 +783,10 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
   says); Ryazhsk disputed (§3.2, §3.4); the brigade's make-up and who turned it disputed (§2.6, §3.4, §4.11; §13 F13).
 - **settles**: the original's Ryazhsk, citing Langeron's report no. 867; the sequence (Kamensky sees the climb, warns Langeron, attacks).
 - **does not settle**: a clock hour; the footnote's day is printed in a bold numeral read as 23 (it could be read 25; the 1846 translation,
-  §5.6, has 23).
+  §5.6, has 23). **Corrected by the second reading (§6.8):** the second digit has a flat top with a hooked left end, like the
+  footnote-size "5" in "5-й ... егерскіе" on p. 144 and unlike the round-topped "3" of "30-го Ноября" in p. 188's footnote; the hOCR reads
+  "25". The second reader reads "отъ 25-го Ноября", 25 November (old style), with moderate confidence; the day is not settled (23 in the
+  1846 translation), and it does not bear on question 153.
 - **status**: read on the page images; not yet second-read (H-17).
 
 ### 6.6 `md1844.p256-257.tolstoy-corps`: the Ryazan regiment with Tolstoy's corps in Swedish Pomerania (pp. 256-257, k = 269-270)
@@ -752,7 +811,51 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
   September) and p. 275 (k = 288: a Flügel-Adjutant Shepelev bringing news of Austerlitz); not in the battle chapter. OCR only.
 - "Уваров" occurs on pp. 174, 196, 197, 205, 221 (OCR); p. 174 is read in §6.3.
 - "Гладков" (Gladkov) is not found in the OCR of the whole volume (a negative in a text layer: a word the OCR misread would be missed).
-- **status**: OCR only; not yet second-read (H-17).
+- **status**: OCR only; not yet second-read (H-17). The "Ряжск" pages 144, 188, 189, 198 and 205 have since been read on their images in
+  the second reading (§6.8).
+
+### 6.8 `md1844.second-reading`: Ryazhsk with Kamensky, a second reading of the page images (question 153)
+- **source**: the same and only archive.org scan, `1805-.-bmk-brz` (archive.org advancedsearch finds no other copy of the 1844 work), its
+  page images read through the BookReader image API
+  (`https://ia600806.us.archive.org/BookReader/BookReaderImages.php?zip=/16/items/1805-.-bmk-brz/<name>_jp2.zip&file=<name>_jp2/<name>_NNNN.jp2&scale=2`;
+  leaf NNNN = the k of §6.2-§6.6), each page cropped and read by eye at full resolution, by a second reader on 8 October 2026 (H-17's
+  practice; owner decision on question 153). An OCR search of the whole volume (hOCR, the patterns "Ряж", "Ряз", "яжс", "язан", "азанск")
+  found the name on leaves 152, 176, 190, 198, 199, 200, 209, 217 (Ryazhsk) and 270 (Ryazan), each then read on its image.
+- **readings** (as printed, read on the images):
+  - pp. 143-144 (k = 151-152): the footnote on Buxhoeveden's corps lists "... Фанагорійскій гренадерскій, / Ряжскій, Архангелогородскій,
+    Псковской, Пермскій, Староингерманландскій, Выборгскій и Курскій мушкетерскіе, 5-й и 7-й егерскіе ..." ("... the Fanagoria
+    grenadiers, Ryazhsk, Arkhangelogorod, Pskov, Perm, Old Ingermanland, Vyborg and Kursk musketeers, the 5th and 7th jägers ..."): Ryazhsk
+    came with Buxhoeveden's corps, beside Fanagoria (not the battle itself).
+  - p. 167 (k = 176): as §6.2, word for word. The column's numeral is **2** ("2-я колонна, Графа Ланжерона"); the hOCR reads "3-я", but
+    the image's 2 differs from the 3 that heads "3-я колонна, Пржибышевскаго" on p. 168 (k = 177), which has neither Fanagoria nor Ryazhsk.
+  - p. 179 (k = 190): as §6.4.
+  - p. 187 (k = 198): as §6.5 on the regiments ("полки Фанагорійскій и Ряжскій"); the footnote's day, below.
+  - p. 188 (k = 199): "Дѣйствія Фанагорійскаго и Ряжскаго полковъ въ правый флангъ непріятелей удерживали довольно долго часть Сультова
+    корпуса" ("The Fanagoria and Ryazhsk regiments' action against the enemy's right flank held part of Soult's corps for a fairly long
+    time"); its footnote, quoting Kutuzov's report to the Emperor of 30 November: "...къ собранію людей Фанагорійскаго и Ряжскаго полковъ,
+    съ которыми и могъ я въ нѣкоторомъ порядкѣ ретироваться" ("... in rallying the men of the Fanagoria and Ryazhsk regiments, with whom I
+    was able to retire in some order").
+  - p. 189 (k = 200): "...онъ остановилъ полки Фанагорійскій и Ряжскій, и не можетъ идти съ ними къ Сокольницу за второю колонною" ("...
+    he had halted the Fanagoria and Ryazhsk regiments and could not go on with them to Sokolnitz after the second column").
+  - p. 198 (k = 209): "Графъ Ланжеронъ, лишенный содѣйствія пошедшихъ съ Кутузовымъ полковъ Ряжскаго и Фанагорійскаго" ("Count Langeron,
+    deprived of the support of the Ryazhsk and Fanagoria regiments, which had gone with Kutuzov").
+  - p. 205 (k = 217): "Кутузовъ и Князь Волконской шли съ Фанагорійскимъ и Ряжскимъ полками на дорогу въ Венгрію" ("Kutuzov and Prince
+    Volkonsky went with the Fanagoria and Ryazhsk regiments onto the road to Hungary").
+  - p. 257 (k = 270): as §6.6 (Рязанскій in Tolstoy's corps); p. 256 was not viewed as an image in the second reading.
+- **the footnote's day on p. 187**: the first reading (§6.5) gives "отъ 23-го Ноября"; the second reads **25** ("отъ 25-го Ноября", 25
+  November old style), with moderate confidence (the digit's flat, hooked top matches the footnote "5" on p. 144, not the round "3" on
+  p. 188; the hOCR reads "25"). Not settled; the 1846 translation prints 23 (§5.6). It does not bear on question 153.
+- **grade**: B (as §6.2-§6.6). **label**: fact (what the book prints): no page of it names Ryazan (Рязанскій) in Kamensky's brigade, in
+  Langeron's column or anywhere in Moravia; the book's only Рязанскій is in Tolstoy's corps (p. 257; leaves without an OCR hit were not
+  read by eye). Against other witnesses the regiment's name stays disputed: the Materialien of 1806 print "Rjäsan" (p. 99, §3.2) and
+  "Rjäsansche" in their translation of Kutuzov's report (p. 112, §3.4), and Duffy is cited in `data.js` for Ryazan (not read, §11).
+- **settles**: what Mikhailovsky-Danilevsky prints: Ryazhsk (Ряжскій) is the musketeer regiment of Count Kamensky I's brigade at
+  Austerlitz, with Fanagoria every time (pp. 167, 179, 187, 188, 189, 198, 205), the second reading agreeing with the first on every page
+  the first cites. On the owner's answer to question 153 (8 October 2026), the map now names the regiment Ryazhsk and keeps Ryazan as the
+  Materialien's and Duffy's reading (`data.js` kamensky.strengthNote; `appearance.js` COMPOSITION.kamensky).
+- **does not settle**: the historical question against the other witnesses; this is a second reading of the same and only scan, not of a
+  second copy.
+- **status**: second-read on the page images (H-17's practice), 8 October 2026; the working notes are outside the repository.
 
 ## 7. `alombert4_1908`: the French returns of October 1805
 
@@ -822,6 +925,22 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **settles**: on 26 October Drouet's division is the 2nd, with the 94e, 95e and two hussar regiments; the 27e légère is in Kellermann's
   advance-guard division; the 1st division (the 8e and 45e, the 54e detached) is under Pacthod (C9's Rivaud and Drouet notes).
 - **does not settle**: the numbers on 2 December.
+- **status**: read on the page image; not yet second-read (H-17).
+
+### 7.6 `alo.p69.caffarelli`: Caffarelli replaces the wounded Bisson at the head of his division (p. 69)
+- **source**: p. 69 (Introduction, chapter IX, "Journée du 2 novembre", which begins on p. 68); image n78
+  (https://archive.org/download/la-campagne-de-1805-en-allemagne-vol.-4/page/n78.jpg). Read on the image for C14a (question 155). The
+  division's number is the situation of 28 October, pp. 723-724: "1re division du 3e corps. Général de division... Bisson", read in
+  `docs/stage6-evidence/readings-composition.md` (fr.caffarelli.regiments; `appearance.js` COMPOSITION.caffarelli).
+- **quote**: "La blessure du général Bisson l'obligeant à garder le repos pendant quelque temps, il est remplacé par le général Caffarelli,
+  aide de camp de l'Empereur, qui commandera la division jusqu'à la fin de la campagne."
+- **translation**: "General Bisson's wound obliging him to rest for some time, he is replaced by General Caffarelli, aide-de-camp to the
+  Emperor, who will command the division until the end of the campaign."
+- **grade**: B (the historical section's narrative, 1908, written from the archives). **label**: fact (what it says).
+- **settles**: that the division Caffarelli led is Bisson's, the 1st of III Corps in the situation of 28 October (question 155: the
+  number the map's "1re Div., V Corps" left unsaid).
+- **does not settle**: the division's number or attachment on 2 December (the map's "with V Corps" is its staff line's "Attached from III
+  Corps for the battle").
 - **status**: read on the page image; not yet second-read (H-17).
 
 ## 8. `marbot1891`: an aide-de-camp's memoir, published 1891 (the 27th edition read)
@@ -911,10 +1030,10 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 | C12 (H-14) | §4.3 (Legrand's "40 ou 50,000"), §5.2 (no Allied estimate) |
 | C13 (D-3, the Santon under Suchet) | §1.1, §1.3, §3.3, §7.3, §7.4; §2.5 (Stutterheim's 27th) |
 | C22 (H-9, the sun) | §8.2, §4.4, §4.5, §1.4; §8.1 and §13 F7, F8 |
-| question 153 (Ryazhsk) | §3.2, §3.4, §2.6, §5.5, §5.6, §6.2, §6.4, §6.5, §6.6, §6.7, §4.10, §4.11 (Thiébault pp. 474, 504) |
-| question 155 (division numbers, the grenadiers' artillery) | §7.2-§7.5 |
+| question 153 (Ryazhsk) | §3.2, §3.4, §2.6, §5.5, §5.6, §6.2, §6.4, §6.5, §6.6, §6.7, §4.10, §4.11 (Thiébault pp. 474, 504); §6.8 (the second reading; C14a) |
+| question 155 (division numbers, the grenadiers' artillery) | §7.2-§7.5; §7.6 (Caffarelli; C14a) |
 | question 157 (I Corps: reserve or centre) | §1.3, §2.1, §5.4, §8.2; §4.7, §4.8, §4.10; §1.1, §1.2 (§13 F11) |
-| question 158 (Blasowitz) | §2.5, §4.6, §5.6; §2.4 (Liechtenstein) |
+| question 158 (Blasowitz) | §2.5, §4.6, §5.6; §2.4 (Liechtenstein); §2.7, §5.7 (the Guard's defenders; Liechtenstein's arrival; C14a) |
 | step 4 (125 (b), the disputed hours) | §2.2, §5.4, §5.5, §6.3, §6.4, §4.9, §4.10 |
 
 ## 13. Found in this reading: what bears on step 2's planned texts

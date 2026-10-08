@@ -591,7 +591,7 @@ var COMPOSITION = {
     parts:[
       {dress:"ru_jager", n:2, unit:"bn", v:"8. Jäger-Regiment ... 2 — — 670", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"8. Jäger-Regiment"},
       {dress:"ru_musk", n:9, unit:"bn", v:"Wiborskoy ... 3; Permskoy ... 3; Kurskoy ... 3", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Kurskoy"}]},
-  kamensky: {note:"the musketeer regiment is 'Riajsk' (mikhailovsky1846, pp. 241-242) or 'Riasky' (schoenhals1873) or 'Rhiasky' (stutterheim1806fr, p. 90): Ryazhsk or Ryazan, unresolved, the Materialien printing 'Rjäsan', Ryazan (materialien1806, p. 99); Stutterheim has the two regiments sent to reinforce Kamensky's brigade",
+  kamensky: {note:"the musketeer regiment is Ryazhsk: 'Ряжскій' in the Russian original (mikhailovsky1844, pp. 167, 179, 187), 'Riajsk' in its French edition (mikhailovsky1846, pp. 241-242), which puts the Ryazan regiment in Tolstoy's corps in Swedish Pomerania (mikhailovsky1844, p. 257); 'Riasky' (schoenhals1873) and 'Rhiasky' (stutterheim1806fr, p. 90) settle neither name; the Materialien print 'Rjäsan', Ryazan (materialien1806, p. 99), kept as the other reading; Stutterheim has the two regiments sent to reinforce Kamensky's brigade",
     parts:[
       {dress:"ru_gren", n:3, unit:"bn", v:"Tanagorisky [sic] ... 3 2000", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Tanagorisky"},
       {dress:"ru_musk", n:3, unit:"bn", v:"Riasky ... 3 2000", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Riasky"}]},

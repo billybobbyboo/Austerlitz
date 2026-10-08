@@ -271,9 +271,10 @@ c_v:{ ech:"corps", nation:"fr", arm:"inf", desig:"V Corps",
   role:"Holds and then advances along the Brünn–Olmütz highway; forbidden to press too hard early.",
   children:["caffarelli","suchet"]},
 
-caffarelli:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., V Corps",
+caffarelli:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., III Corps, with V Corps",
   name:"Caffarelli's Division", commander:"Gen. de division Marie-François de Caffarelli du Falga",
   staff:"Attached from III Corps for the battle", parent:"c_v",
+  note:"Its number: the 1st division of III Corps in the situation of 28 October 1805, then under Bisson (Alombert and Colin, t. IV, pp. 723-724); in the same work, in its account of 2 November, Caffarelli replaces the wounded Bisson and commands the division to the end of the campaign (p. 69). Neither is a return of 2 December; this map draws the division with Lannes's V Corps, as its staff line says.",
   strength:6700, strengthNote:"about 6,700",
   track:{
     0:{p:[240,115],st:"holding",cf:"A",obj:"Hold south of the highway; do not press",act:"Formed on the right of V Corps, linking toward Bernadotte"},
@@ -284,8 +285,9 @@ caffarelli:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., V Corps",
     8:{p:[392,105],st:"pursuing"},
     9:{p:[423,96],st:"holding"}}},
 
-suchet:{ ech:"div", nation:"fr", arm:"inf", desig:"2e Div., V Corps",
+suchet:{ ech:"div", nation:"fr", arm:"inf", desig:"2e or 3e Div., V Corps",
   name:"Suchet's Division", commander:"Gen. de division Louis-Gabriel Suchet", parent:"c_v",
+  note:"Its number in V Corps: this map has had it the 2nd, without a source read for it; the two French returns of October 1805 read, neither of 2 December, number it the 3rd: the situation of V Corps of 26 October and the situation of 28 October (Alombert and Colin, t. IV, pp. 756 and 732).",
   strength:6000, strengthNote:"about 6,000, including the detachment on the Santon: the 17e Légère, of this division (numbered there the 3rd of V Corps) in the French situation of 28 October 1805 (Alombert and Colin, t. IV, p. 732)",
   children:["santon"],
   track:{
@@ -356,6 +358,7 @@ c_i:{ ech:"corps", nation:"fr", arm:"inf", desig:"I Corps",
   name:"I Corps", commander:"Marshal Jean-Baptiste Bernadotte", parent:null,
   strength:13000, strengthNote:"about 11,000 to 13,000",
   role:"General reserve behind Soult; feeds Drouet onto the plateau at the crisis.",
+  note:"Its place in the line is read two ways. This map has the corps as the general reserve behind Soult. The 30th Bulletin gives Bernadotte the command of the centre, with Rivaud's division on his left and Drouet's on his right (p. 449); Stutterheim (1806), an Austrian officer present at the battle, writes that the corps formed the centre of the French army (p. 41); Mikhailovsky-Danilevsky has Napoleon order Bernadotte and Soult together to seize the heights of Pratzen (1846, pp. 238-239); Marbot's memoirs have the centre formed by the troops of Soult and Bernadotte (vol. I, p. 260). Thiebault's memoirs count the 2nd division of I Corps, with the Guard and the reserve, among the troops that took no part in the fighting (vol. III, p. 466; the reserve is the grenadiers' on p. 504, in a boast he imputes to Napoleon).",
   children:["rivaud","drouet"]},
 
 rivaud:{ ech:"div", nation:"fr", arm:"inf", desig:"1re or 2e Div., I Corps",
@@ -412,7 +415,7 @@ guard_cav:{ ech:"div", nation:"fr", arm:"cav", desig:"Cavalerie de la Garde",
 c_gren:{ ech:"div", nation:"fr", arm:"inf", desig:"Div. de Grenadiers",
   name:"Grenadier Division", commander:"Gen. de division Nicolas Oudinot",
   staff:"Oudinot was convalescent; effective command fell to Gen. Duroc", parent:null,
-  strength:5700, strengthNote:"about 5,500 to 5,700; elite companies drawn from regiments on garrison duty. No artillery is listed for the division in the orders of battle checked",
+  strength:5700, strengthNote:"about 5,500 to 5,700; elite companies drawn from regiments on garrison duty. No artillery is listed for the division in the orders of battle checked; the situation of V Corps of 26 October 1805, not a return of 2 December, lists horse and foot artillery with the grenadier division (Alombert and Colin, t. IV, p. 755)",
   role:"General reserve; joins the wheel south in the afternoon.",
   track:{
     0:{p:[175,155],st:"reserve",cf:"B",obj:"Remain in general reserve",act:"Formed near the Zuran with the Guard"},
@@ -498,7 +501,7 @@ lang:{ ech:"div", nation:"ru", arm:"inf", desig:"II Column",
 
 kamensky:{ ech:"bde", nation:"ru", arm:"inf", desig:"Brigade, II Column",
   name:"Kamensky's Brigade", commander:"Maj.-Gen. Sergey Kamensky", parent:"lang",
-  strength:4250, strengthRange:[4000,4500], strengthNote:"the Fanagoria Grenadiers and a musketeer regiment: Ryazhsk in Mikhailovsky-Danilevsky (1844, citing Langeron's report to Kutuzov; its French translation of 1846 the same), or Ryazan in the Materialien of 1806 (its list of the columns and its translation of Kutuzov's report; its translation of Stutterheim prints 'Rhiäsky') and as cited here from Duffy (disputed). Mikhailovsky-Danilevsky forms the brigade of these two regiments; Stutterheim (1806) and Thiébault have them reinforce it (disputed). About 2,000 each, with dragoons, Cossacks and pioneers attached (Duffy, via the Langeron column return)",
+  strength:4250, strengthRange:[4000,4500], strengthNote:"the Fanagoria Grenadier and Ryazhsk Musketeer regiments, as Mikhailovsky-Danilevsky names them (1844, pp. 167, 179, 187-189, 198, 205, p. 187 citing Langeron's report to Kutuzov; its French translation of 1846 the same), who places the Ryazan regiment in Tolstoy's corps sent to Swedish Pomerania (1844, p. 257). The other reading, kept: Ryazan in the Materialien of 1806 (its list of the columns and its translation of Kutuzov's report; its translation of Stutterheim prints 'Rhiäsky') and as cited here from Duffy. Mikhailovsky-Danilevsky forms the brigade of these two regiments; Stutterheim (1806) and Thiébault have them reinforce it (disputed). About 2,000 each, with dragoons, Cossacks and pioneers attached (Duffy, via the Langeron column return)",
   role:"Allied initiative on the plateau, but whose is disputed: turned about on its own commander's judgement in Mikhailovsky-Danilevsky, citing Langeron's report; ordered onto the ridge by Kutuzov in Kutuzov's official report.",
   track:{
     2:{p:[259,316],st:"march",cf:"B",obj:"Follow the II Column to Sokolnitz",act:"Marching at the rear of Langeron's column"},
@@ -702,7 +705,7 @@ var FEATURES = [
 
 {id:"blasowitz", p:[296,147], kind:"village", name:"Blasowitz",
  sub:"Village between the plateau and the Olmütz road",
- facts:[["Contested by","Lannes' corps against Bagration and Liechtenstein"],["Fell","About 11:00-11:15; the hour is not established"]],
+ facts:[["Contested by","The Russian Guard held it in the three accounts read; its attackers are disputed: Lannes's V Corps in Thiebault's memoirs (vol. III, p. 462), Bernadotte's I Corps in Stutterheim (1806, p. 68), troops of both ordered onto it in Mikhailovsky-Danilevsky (1846, p. 255). Liechtenstein's part is disputed too: his cavalry arrives as the Guard occupies the village in Stutterheim (p. 56), only once the village is lost in Mikhailovsky-Danilevsky (p. 257)"],["Fell","About 11:00-11:15; the hour is not established"]],
  why:["Hinges the Allied right onto the centre; its loss separates Bagration from the plateau"], story:""},
 
 {id:"augezd", p:[297,372], kind:"village", name:"Augezd",
