@@ -521,6 +521,27 @@ try{
     console.log("position pills: "+nP+" claim pills in "+nV+" cards and dossiers at five clocks, each POS_CLAIM's words for its claim (claimOf) ("+
       Object.keys(byCl).map(k=>k+" "+byCl[k]).join(", ")+"), none CLAIM's OK"); }
 
+  /* roadmap step 2 (docs/FINAL_AUDIT.md D-5): the sources sheet's notes read the appearance table and the computed sun, not typed values.
+     Each value they name is changed in the table for one call and the note must follow it; the table is put back (and the kit's cache). The
+     Austrian model is printed with its source and without a trailing parenthesis (its period claim, an inference in the reading) */
+  { const bad=[], CC=COLOURS_CARRIED, SM=STANDARD_MEASURES;
+    const trial=(what,fn,set,undo,want,not)=>{ set(); _kitDress={}; let s; try{ s=fn().join(" "); } finally { undo(); _kitDress={}; }
+      if(s.indexOf(want)<0||(not&&s.indexOf(not)>=0)) bad.push(what+": the note does not follow the table (want \u201c"+want+"\u201d"+(not?", not \u201c"+not+"\u201d":"")+")"); };
+    const fc=CC.fr_eagle_inf.cloth, w0=fc.w, h0=fc.h, ai=CC.at_inf, v0=ai.count.v, e0=ai.model.en, rd=SM.ru.stature.dated, ae=SM.at.stature.en, gB=APPEARANCE_GRADE.B, dc=DRESS.fr_dragoon.coat, c0=dc.c, gr0=dc.gr;
+    trial("the French cloth",standardNotes,()=>{ fc.w=fc.h=79; },()=>{ fc.w=w0; fc.h=h0; },"the French 79 cm square","81 cm");
+    trial("the Austrian count",standardNotes,()=>{ ai.count.v="one to three per battalion"; },()=>{ ai.count.v=v0; },"disputed, one to three per battalion");
+    trial("the Austrian model",standardNotes,()=>{ ai.model.en="a test model"; },()=>{ ai.model.en=e0; },"Its model ("+apShort(ai.model.src)+"): a test model;","Leib colour per regiment");
+    trial("the Austrian model's period",standardNotes,()=>{ ai.model.en="a test model (the 1700s)"; },()=>{ ai.model.en=e0; },"a test model;","1700s");
+    trial("the Russian stature's date",standardNotes,()=>{ SM.ru.stature.dated="1799-01"; },()=>{ SM.ru.stature.dated=rd; },"the minimum of 1799","the minimum of 1804");
+    trial("the Austrian stature's period",standardNotes,()=>{ SM.at.stature.en="a test minimum, 1.65 m (the 1770s)"; },()=>{ SM.at.stature.en=ae; },"a minimum of the 1770s","1790s");
+    trial("the appearance grades",troopNotes,()=>{ APPEARANCE_GRADE.B="a test grade"; },()=>{ APPEARANCE_GRADE.B=gB; },"B a test grade;");
+    trial("a settled coat",troopNotes,()=>{ dc.c="blue"; },()=>{ dc.c=c0; },"the French dragoons wore blue","wore green");
+    trial("an unsettled coat",troopNotes,()=>{ dc.gr="C"; },()=>{ dc.gr=gr0; },"never by a coat: the Russian","French dragoons");
+    const eot=Math.round(SUN_DAY.at(720).eot);
+    if(lightNotes().join(" ").indexOf("about "+eot+" minutes earlier")<0) bad.push("the light: local mean time's shift not SUN_DAY's equation of time ("+eot+" min)");
+    if(bad.length) throw new Error("notes from the table: "+bad.join("; "));
+    console.log("notes from the table: the standards' and the troops' notes follow 9 changed values of the appearance table, and the light's local-time shift is SUN_DAY's ("+eot+" min) OK"); }
+
   /* the sky must repaint through every lighting state without a NaN */
   for(let ph=0;ph<PHASES.length;ph++){
     setPhase(ph,false);

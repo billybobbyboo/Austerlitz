@@ -1337,7 +1337,7 @@ function kitStdShape(carry,nation,mounted){
   var P=K.paint&&stdOk(C.model)?K.paint:null, src=P?COLOURS_CARRIED[KIT.paint[P].from]:null;
   var cl=stdOk(C.cloth)&&C.cloth.w&&C.cloth.h?C.cloth:(src&&stdOk(src.cloth)&&src.cloth.w?src.cloth:null);
   var finCm=stdOk(C.finial)?(apCm(C.finial)||(src&&stdOk(src.finial)?apCm(src.finial):null)):null;
-  var S={paint:P, carry:carry, nation:nation, mounted:!!mounted};
+  var S={paint:P, carry:carry, nation:nation, mounted:!!mounted, cloth:cl};   /* cloth: the entry it is drawn from (roadmap step 2, D-5: the sources sheet reads it) */
   if(!mounted&&!M.provisional&&M.staff&&M.stature){
     var st=M.stature.m, staff=M.staff.m*MAN_FOOT/st, fm=stdOk(C.finial)&&M.staff.finial_m?M.staff.finial_m:0;
     S.len=staff; S.fin=fm*MAN_FOOT/st; S.denom=MAN_FOOT; S.ratio=(M.staff.m+fm)/st; S.provisional=false;
@@ -6044,6 +6044,8 @@ function apShort(k){ var S=APPEARANCE_SOURCES[k]; return S?String(S.au).split(" 
 function apCite(c){ var S=APPEARANCE_SOURCES[c.src]||{}; return String(S.au||c.src).split(" (")[0]+", "+(S.d||"")+(c.at?", "+c.at:""); }
 /* a note of the table in words: its source keys (e.g. "barres1923") as author and year */
 function apText(t){ return String(t).replace(/\b[a-z][a-z_]*\d[a-z0-9_]*\b/g,function(k){ return APPEARANCE_SOURCES[k]?apShort(k):k; }); }
+/* roadmap step 2 (docs/FINAL_AUDIT.md D-5): the appearance grades as the table defines them (APPEARANCE_GRADE), never typed */
+function apGrades(){ return ["A","B","C"].map(function(g){ return g+" "+APPEARANCE_GRADE[g]; }).join("; "); }
 function apClaim(c){ return esc(apText(c.en||c.v))+' <span class="hh">('+esc(c.gr)+", "+esc(c.lab)+"; "+esc(apCite(c))+(c.dated?"; dated "+esc(c.dated):"")+')</span>'; }
 function apValue(v){
   if(!v) return "not recorded";
@@ -6089,7 +6091,7 @@ function dressSection(id){
     return esc(p.d.name.split(" (")[0])+": "+(e?esc(e.n+" ("+(R.how==="lower"?"the smallest count either side gives":(R.n<1?"one per "+Math.round(1/R.n)+" ":R.n+" per ")+(R.per==="sqn"?(R.n<1?"squadrons":"squadron"):"battalion")+", as sourced")+"), "+
       (e.q.S.paint?PN[e.q.S.paint]:"a plain cloth in the nation's symbol colour")+(e.q.S.provisional?", at the provisional height":", at its sourced height")):"none ("+esc(R.why+(R.detail?": "+apText(R.detail):""))+")"); }).join("<br>")||"none");
   var sec=sect("Dress",h,true,"record");
-  sec.appendChild(el("p","hh",esc("Drawn where a value graded A or B settles it (A documented for 1805, B for the period and probable for 1805, C reconstructed or disputed); "+
+  sec.appendChild(el("p","hh",esc("Drawn where a value graded A or B settles it ("+apGrades()+"); "+
     "otherwise generic: the nation's symbol colour, a plain cap, legwear in one neutral. The drawn colours are design values, not measured shades."+
     (extra.length?" Also: "+extra.join("; ")+".":"")+(A.note?" On the composition: "+apText(A.note):""))));
   return sec;
@@ -6486,30 +6488,49 @@ function troopNotes(){
   var ids=Object.keys(DRESS), n={coat:0,head:0,leg:0}, cu=[], hb=[];
   ids.forEach(function(k){ var kd=kitDress(k); if(kd.coatName!=="generic") n.coat++; if(kd.head!=="generic") n.head++; if(kd.legName!=="generic") n.leg++;
     if(kd.cuirass) cu.push(DRESS[k].name.split(" (")[0]); if(kd.mount==="horse"&&kd.horse!=="brown") hb.push(DRESS[k].name.split(" (")[0]+" ("+kd.horse+", "+DRESS[k].horse.gr+")"); });
+  /* roadmap step 2 (docs/FINAL_AUDIT.md D-5): two coats that are not their side's symbol colour, as the table settles them and the figures
+     draw them (kitDress); a class the table does not settle is not named */
+  var ex=["fr_dragoon","ru_chevalier"].filter(function(k){ return DRESS[k]&&kitDress(k).coatName!=="generic"; })
+    .map(function(k){ return "the "+DRESS[k].name.split(" (")[0]+" wore "+kitDress(k).coatName; });
   return [
-    "The figures' dress follows the appearance table, a record of what each class of troops present wore, read from the sources with each value's source, page and grade (A documented for 1805; B documented for the period and probable for 1805; C reconstructed or disputed). Each drawn battalion or squadron takes a class in proportion to its formation's recorded composition; a class too small for one drawn unit is listed in the dossier, not drawn.",
+    "The figures' dress follows the appearance table, a record of what each class of troops present wore, read from the sources with each value's source, page and grade ("+apGrades()+"). Each drawn battalion or squadron takes a class in proportion to its formation's recorded composition; a class too small for one drawn unit is listed in the dossier, not drawn.",
     "Of the table's "+ids.length+" classes, "+n.coat+" have their coat drawn, "+n.leg+" their legwear and "+n.head+" their headgear, where a value graded A or B settles them. Everything else is drawn generic: the coat in the nation's symbol colour (the counters' colour, not a cloth), legwear in one neutral, a plain cap. A disputed value is drawn generic and its sides are in the dossier.",
     "The drawn colours are design values for the colours the sources name, not measured shades. Headgear is drawn by its shape in one dark colour (the metal helmets in metal); where a source names its colour, the dossier says so. Facings and lace are not drawn: below the figures' scale; the dossier says what was worn.",
     "Greatcoats: no read source shows them worn in the fighting, so the coat is drawn; where the sources leave it open, the dossier says greatcoats may have been worn.",
     "Cuirasses are drawn where the table records them: "+(cu.length?cu.join("; "):"none")+". Horses are drawn in one brown"+(hb.length?", except "+hb.join("; "):"")+"; guns and limbers in one colour for every army.",
     "The two mounted officers of each infantry formation are drawn generic; the skirmish screen in the formation's largest class. Troops of another arm attached to a formation (its guns, its cavalry) are listed in its dossier, not drawn: a formation keeps the arm the order of battle gives it.",
-    "Side and nation are carried by the counters, the marks beside the names and the marks on the ground, never by a coat: French dragoons wore green and the Chevalier Guard white. With Position confidence off, a footprint in the side's colour stays under every formation drawn as figures."
+    "Side and nation are carried by the counters, the marks beside the names and the marks on the ground, never by a coat"+(ex.length?": "+ex.join(" and "):"")+". With Position confidence off, a footprint in the side's colour stays under every formation drawn as figures."
   ];
 }
-/* Stage 6D: the sources sheet's "How the standards are drawn", from COLOURS_CARRIED, STANDARD_MEASURES and the blocks as drawn */
+/* Stage 6D: the sources sheet's "How the standards are drawn", from COLOURS_CARRIED, STANDARD_MEASURES and the blocks as drawn. Roadmap
+   step 2 (docs/FINAL_AUDIT.md D-5): its historical values are read, not typed: the Austrian infantry's disputed count and its model (with
+   its source, without a trailing period claim), the statures' dates, and the cloths of the standards as drawn (kitStdShape's S.cloth: the
+   entry's own measured cloth or its painting's; a cloth drawn for a standard whose own size was not read is named as such) */
 function standardNotes(){
-  var none={}, n=0, used={};
+  var none={}, n=0, used={}, cl={fr:[],at:[],ru:[]}, both={}, lent={};
   Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u) return; n+=u.stds?u.stds.length:0;
     (u.dress||[]).forEach(function(r){ if(!r.dress||r.role==="skirmish"||r.role==="officers") return; var c=DRESS[r.dress].carry, R=kitStdRule(c);
-      used[c]=1; if(!R.n) (none[R.why]=none[R.why]||{})[DRESS[r.dress].name.split(" (")[0]]=1; }); });
-  var M=STANDARD_MEASURES, ru=M.ru, at=M.at;
+      used[c]=1; if(!R.n) (none[R.why]=none[R.why]||{})[DRESS[r.dress].name.split(" (")[0]]=1; });
+    (u.stds||[]).forEach(function(q){ var c=q.S.cloth, L=cl[q.S.nation], t; if(!c||!L) return;
+      t=c.w===c.h?c.w+" cm square":c.w+" x "+c.h+" cm";
+      if(c!==(COLOURS_CARRIED[q.S.carry]||{}).cloth) lent[q.S.nation+"|"+t]=1;
+      if(L.indexOf(t)<0) L.push(t);
+      if(!q.S.provisional&&q.S.clothBy==="its measure against the staff") both[q.S.nation]=1; }); });
+  var M=STANDARD_MEASURES, ru=M.ru, at=M.at, ADJ={fr:"French",at:"Austrian",ru:"Russian"};
+  var AI=COLOURS_CARRIED.at_inf, lo=KIT.carry.at_inf&&KIT.carry.at_inf.lower, atWhen=(/\(([^()]+)\)\s*$/.exec(at.stature.en||"")||[])[1];
+  function list(a){ return a.length<2?a.join(""):a.slice(0,-1).join(", ")+" and "+a[a.length-1]; }
+  var cls=["fr","at","ru"].filter(function(k){ return cl[k].length; }).map(function(k){ return "the "+ADJ[k]+" "+
+        list(cl[k].map(function(t){ return lent[k+"|"+t]?t+" (also drawn for standards whose own size was not read)":t; })); }),
+      bm=["ru","at"].filter(function(k){ return both[k]; }).map(function(k){ return ADJ[k]; });
   return [
     "Who carried standards and how many follow the appearance table, per battalion or squadron as the sources give it, mapped onto the drawn battalions and squadrons: "+n+" standards on the field. None where "+
       Object.keys(none).map(function(w){ return w+" ("+Object.keys(none[w]).join(", ")+")"; }).join("; ")+".",
-    "The Austrian infantry's count is disputed, one or two per battalion in 1805: one per battalion is drawn, the smallest either side gives. The white Leib colour, one per regiment, is not drawn apart from the ordinary colours.",
+    "The Austrian infantry's "+(AI.count&&AI.count.sides&&lo?"count is disputed, "+AI.count.v+" in 1805: "+(lo.n===1?"one":String(lo.n))+" per "+DRESS_UNIT[lo.per][0]+
+      " is drawn, the smallest either side gives. Its model ("+apShort(AI.model.src)+"): ":"model ("+apShort(AI.model.src)+"): ")+
+      AI.model.en.replace(/\s*\([^()]*\)\s*$/,"")+"; the Leib colour is not drawn apart from the ordinary colours.",
     "Painted where a source graded A or B gives the pattern: the French 1804 model (a white lozenge, the corners alternately red and blue; which colour lies at the staff's top is not sourced, drawn blue; the eagle on the staff where its size is read) and the Austrian ordinary colour (imperial yellow, the black double eagle, simplified; its flame border not drawn). Every other cloth is plain, in the nation's symbol colour: the pattern of the Russian infantry's colours is an open question; the Russian cavalry's and the Guard's patterns were not settled by the sources read.",
-    "Height, owner decision 106: the staff's top, with its finial, over the man's height to his hat's top. Russian infantry: a staff of "+ru.staff.m.toFixed(2)+" m and a spearhead of "+ru.staff.finial_m.toFixed(3)+" m with its socket (how far the socket overlaps is not stated: drawn on the staff's end, the upper bound) over a recruit of "+ru.stature.m.toFixed(2)+" m, the minimum of 1804. Austrian infantry: a staff of about "+at.staff.m.toFixed(2)+" m over a recruit of "+at.stature.m.toFixed(2)+" m (a minimum of the 1790s; the finial's size not read, not drawn). Both divide by a minimum stature, so the drawn staff is if anything long for the average man (an inference).",
-    "The cloths in their sourced proportions (the French 81 cm square, the Austrian 161 x 142 cm and 71 x 63 cm, the Russian 142 cm square); where the staff and the cloth are both measured (the Russian and Austrian infantry), at their sourced size against the staff, so that the cloth hangs lower among the ranks than the provisional rule drew it. The dip of a broken, captured, encircled or repulsed formation's standards is kept."
+    "Height, owner decision 106: the staff's top, with its finial, over the man's height to his hat's top. Russian infantry: a staff of "+ru.staff.m.toFixed(2)+" m and a spearhead of "+ru.staff.finial_m.toFixed(3)+" m with its socket (how far the socket overlaps is not stated: drawn on the staff's end, the upper bound) over a recruit of "+ru.stature.m.toFixed(2)+" m, the minimum of "+String(ru.stature.dated).slice(0,4)+". Austrian infantry: a staff of about "+at.staff.m.toFixed(2)+" m over a recruit of "+at.stature.m.toFixed(2)+" m (a minimum"+(atWhen?" of "+atWhen:"")+(at.staff.finial_m?"":"; the finial's size not read, not drawn")+"). Both divide by a minimum stature, so the drawn staff is if anything long for the average man (an inference).",
+    "The cloths in their sourced proportions, width by height"+(cls.length?" ("+cls.join("; ")+")":"")+(bm.length?"; where the staff and the cloth are both measured (the "+list(bm)+" infantry), at their sourced size against the staff, so that the cloth hangs lower among the ranks than the provisional rule drew it":"")+". The dip of a broken, captured, encircled or repulsed formation's standards is kept."
   ];
 }
 function arrowNotes(){
@@ -6528,7 +6549,7 @@ function lightNotes(){
   var hm=fmtClock, rise=null, set=null; for(var t=T_MIN;t<=T_MAX;t+=1){ var g=SUN_DAY.at(t).geo>-0.833; if(g&&rise===null) rise=t; if(!g&&rise!==null&&set===null) set=t; }
   return ["The sun is computed, not recorded: its position over the field on 2 December 1805, with the map's clock read as local solar time "+
       "(the sun due south at 12:00). On that reading it rises at "+hm(rise)+" and sets at "+hm(set)+", and is never more than "+Math.round(SUN_DAY.noonAlt)+
-      " degrees above the horizon. Which time the sources' hours keep is not established; local mean time would move every sun event about 10 minutes earlier.",
+      " degrees above the horizon. Which time the sources' hours keep is not established; local mean time would move every sun event about "+Math.round(SUN_DAY.at(720).eot)+" minutes earlier.",
     "The relief is drawn exaggerated, so the light is steepened by the same factor: the ground's lit and shaded sides, and its shadows, are those the true "+
       "ground would have under the true sun. The sun's disc stands at its true height, so where the relief is exaggerated the light seems to come from higher than the disc.",
     "Before dawn the field is lit by a design light, not by a moon; nothing about the night's sky is claimed. The weather of the day (the fog in the valley, "+

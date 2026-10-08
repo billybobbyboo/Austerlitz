@@ -346,6 +346,22 @@ if(cerrs) process.exitCode=1;
   }
   if(perr.length) process.exitCode=1;
 }
+/* roadmap step 2 (docs/FINAL_AUDIT.md D-5): what the presentation must not type. The sources sheet's notes on the troops and the standards,
+   and the dossier's Dress, type no measure and no appearance grade's definition: every centimetre, metre and cloth size and the grades'
+   words are read from appearance.js (runtime-test.js changes the table and reads them follow it); the light's note types no minutes
+   (SUN_DAY's equation of time) */
+{ const acorn=require('acorn'), app=fs.readFileSync('app.js','utf8'), ast=acorn.parse(app,{ecmaVersion:2020}), derr=[];
+  const fn=name=>ast.body.find(s=>s.type==="FunctionDeclaration"&&s.id.name===name);
+  const lits=node=>{ const o=[]; (function w(x){ if(!x||typeof x.type!=="string") return;
+    if(x.type==="Literal"&&typeof x.value==="string") o.push(x.value); else if(x.type==="TemplateLiteral") x.quasis.forEach(q=>o.push(q.value.cooked));
+    for(const k in x){ if(k==="type"||k==="start"||k==="end") continue; const v=x[k]; if(Array.isArray(v)) v.forEach(w); else if(v&&typeof v.type==="string") w(v); } })(node); return o; };
+  ["troopNotes","standardNotes","dressSection","lightNotes"].forEach(name=>{ const n=fn(name); if(!n){ derr.push("app.js: no "+name); return; }
+    lits(n).forEach(s=>{ if(/\d\s*(cm|m)\b|\d\s*x\s*\d/.test(s)) derr.push(name+": a typed measure \u201c"+s.slice(0,60)+"\u201d (read it from appearance.js)");
+      if(/documented for/.test(s)) derr.push(name+": a typed grade definition \u201c"+s.slice(0,60)+"\u201d (read APPEARANCE_GRADE)");
+      if(name==="lightNotes"&&/\d+ minutes/.test(s)) derr.push("lightNotes: typed minutes \u201c"+s.slice(0,60)+"\u201d (read SUN_DAY)"); }); });
+  derr.forEach(e=>console.log("  ! "+e));
+  console.log("typed data: "+(derr.length?derr.length+" wrong":"the troops' and the standards' notes and the Dress type no measure or grade definition, the light no minutes"));
+  if(derr.length) process.exitCode=1; }
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by
    a dash or a dotted line, and their colour is the side's from the tokens */
 {
