@@ -229,16 +229,6 @@ const COUNTERFACTUAL=/\b(?:would(?: not)? have (?:been|[a-z]+(?:ed|en|wn|ung|ost
 ["had not been told that the centre was gone","the true ground would have under the true sun"]
   .forEach(t=>{ if(COUNTERFACTUAL.test(t)) fail("language",`COUNTERFACTUAL catches a record or a model sentence: "${t}"`); });
 const LANG_ALLOW=[
-  /* guarded data that step 1 cannot change: roadmap step 2's data task (question 129) removes them */
-  {where:"FORMATIONS.c_iv.role", phrase:"The decisive centre assault", kind:"verdict",
-   until:"roadmap step 2, the data task (question 129; H-4's roles, question 127)",
-   why:"H-4: an interpretation shown under the dossier's 'record' tag (data.js:165)"},
-  {where:"FORMATIONS.c_gd.role", phrase:"then decides it", kind:"verdict",
-   until:"roadmap step 2, the data task (question 129; H-4's roles, question 127)",
-   why:"H-4: an interpretation shown under the dossier's 'record' tag (data.js:383)"},
-  {where:"FORMATIONS.c_cav.role", phrase:"decides the cavalry battle", kind:"verdict",
-   until:"roadmap step 2, the data task (question 129; H-4's roles, question 127)",
-   why:"the same class as H-4's roles (data.js:311), found by this scan and not named in the audit; an open point for the owner"},
   /* a claim about the app itself, false today (H-3): question 126 marks the plateau label "derived"; the entry may then stay only
      with the check that backs the claim named in its reason, else the data task rewords the sentence */
   {where:"SOURCE_NOTE.layers[2][1]", phrase:"always marked derived", kind:"certainty",
@@ -281,8 +271,7 @@ const LANG_ALLOW=[
 ];
 /* the entries step 1 left, written before an entry named what found it (place and phrase); each task that removes an entry removes it
    here too, so the list cannot let a removed entry come back unnamed */
-const LANG_STEP1=["FORMATIONS.c_iv.role|The decisive centre assault","FORMATIONS.c_gd.role|then decides it",
-  "FORMATIONS.c_cav.role|decides the cavalry battle","SOURCE_NOTE.layers[2][1]|always marked derived","paintKey|and it decides the battle",
+const LANG_STEP1=["SOURCE_NOTE.layers[2][1]|always marked derived","paintKey|and it decides the battle",
   "shell.html p#fr-key text|and it decides the battle","shell.html button[data-v=plateau]@title|The ground that decided the battle",
   "PLANS.al.assumed[1]|the decisive ground was the French right"];
 /* each kind's pattern and the step that added it to 6a: a new entry names that pattern and that step, so the list grows only with a
