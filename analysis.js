@@ -12,7 +12,7 @@ var ANALYSIS = [
 { id:"plan", n:"The Allied plan", at:"ph:0", moments:["ph:0"], cam:[-27,262,41,-27,0,9],
   forms:["kienmayer","dok","lang","prz","col4","milo","kollo","lich","bag","constantine"],
   feats:["pratzen","goldbach","telnitz","sokolnitz","kobelnitz"],
-  text:"Weyrother's dispositions send four of the five Allied columns south-west off the Pratzen plateau to turn the French right and cut the road to Vienna. Bagration holds the highway in the north, Liechtenstein's cavalry links the two, and the Russian Guard stands in reserve behind Krzenowitz. The plan assumes the French will stand still while roughly 60,000 men march across their front."},
+  text:"Weyrother's dispositions send four of the five Allied columns south-west off the Pratzen plateau to turn the French right and cut the road to Vienna. Bagration holds the highway in the north, Liechtenstein's cavalry links the two, and the Russian Guard stands in reserve behind Krzenowitz. The plan assumes the French will stand still while those four columns march across their front."},
 
 { id:"deception", n:"The French deception", at:"ph:0", moments:["ph:0"], cam:[-129,44,27,-7,8,-5],
   forms:["gqg","legrand","sthilaire","vandamme","c_gd","c_gren"],
@@ -22,7 +22,7 @@ var ANALYSIS = [
 { id:"weakness", n:"The apparent weakness on the right", at:"ev:telnitz", moments:["ev:raigern","ev:davout","ev:telnitz"], cam:[-160,58,157,-56,4,59],
   forms:["legrand","friant","bourcier","c_iii"],
   feats:["telnitz","sokolnitz","goldbach","viennaroad"],
-  text:"Legrand's single division held roughly five kilometres of the lower Goldbach on its own. Davout's III Corps detachment, some 4,300 men by Duffy's and Smith's count, reached Raigern only on the night of 1 December after a forced march from Vienna, 8 km from the villages it had to hold. Against them the Allies committed nearly 40,000. The weakness was real, not simulated, which is what made it convincing."},
+  text:"Legrand's single division held roughly five kilometres of the lower Goldbach on its own. Davout's III Corps detachment, some 4,300 men by Duffy's and Smith's count, reached Raigern only on the night of 1 December after a forced march from Vienna, 8 km from the villages it had to hold. Against them the Allies committed roughly 33,000 to 40,000. The weakness was real, not simulated, which is what made it convincing."},
 
 { id:"commitment", n:"The commitment of the Allied left", at:"ph:1", moments:["ev:telnitz","ev:sokolnitz","ev:telnitz-retaken"],
   forms:["buxhowden","kienmayer","dok","lang","prz"],
@@ -37,7 +37,7 @@ var ANALYSIS = [
 { id:"cut", n:"The cutting of the Allied army", at:"ev:pratzeberg", moments:["ev:pratzeberg","ev:buxhowden-blind"], cam:[-75,38,42,7,8,12],
   forms:["sthilaire","vandamme","buxhowden","dok","lang","prz","constantine","bag"],
   feats:["pratzen","pratzeberg","goldbach"],
-  text:"With the plateau taken, the Allied army was in two halves that could no longer support one another. Buxhowden's 40,000 were west and south of the heights; Bagration and the Guard were north and east of them. Buxhowden did not learn that the centre had gone until about noon. From this point the French hold the interior lines on their enemy's own battlefield."},
+  text:"With the plateau taken, the Allied army was in two halves that could no longer support one another. Buxhowden's columns, roughly 33,000 to 40,000 men, were west and south of the heights; Bagration and the Guard were north and east of them. Buxhowden did not learn that the centre had gone until about noon. From this point the French hold the interior lines on their enemy's own battlefield."},
 
 { id:"guard", n:"The Russian Guard counterattack", at:"ph:6", moments:["ev:guard-attack","ev:guard-broken","ev:hq-forward"],
   forms:["constantine","rg_inf","rg_cav","vandamme","guard_cav","guard_inf","drouet"],
@@ -150,7 +150,7 @@ al:{
   author:"Drafted by Gen. Franz von Weyrother, Quartermaster-General. Read aloud at Krzenowitz after midnight, in German, to an audience largely of Russian officers, with no time to copy it out.",
   intent:"Turn the French right with overwhelming weight, force the Goldbach at the southern villages, then wheel the left wing north-west to envelop the French as they fall back toward Brünn - severing their line to Vienna - and roll them up against the hills. The centre is to follow the attack, not hold the plateau.",
   assumed:[
-   "That the French, about 50,000 by the Allied estimate, were retreating and would not stand.",
+   "That the French were retreating and would not stand.",
    "That the Pratzen plateau could safely be vacated because the decisive ground was the French right.",
    "That five columns could cross one another's lines of march in darkness and arrive in order."],
   cost:"All three assumptions were wrong. Execution compounded them: the 4th Column started about two hours late - delayed by the cavalry column's counter-march and, in Russian accounts, chiefly by Kutuzov's reluctance to leave the heights - and was still on the plateau when Soult arrived.",
@@ -188,7 +188,7 @@ fr:{
    "That the Allies would read the abandoned plateau and the withdrawn outposts as weakness.",
    "That Davout could reach the lower Goldbach from Vienna in time to keep the right alive.",
    "That Legrand could hold roughly five kilometres of stream on his own for several hours."],
-  cost:"The risk was carried entirely on the right. If Davout had not arrived, or if Legrand had broken before nine o'clock, the bait would have been swallowed with the army behind it.",
+  cost:"The risk was carried entirely on the right. In this map's interpretation, a counterfactual: if Davout had not arrived, or if Legrand had broken before nine o'clock, the bait would have been swallowed with the army behind it.",
   staging:[
    {n:"Soult concealed in the Goldbach valley", c:[210,205], rx:40, ry:66},
    {n:"Reserve behind the Zuran", c:[189,161], rx:50, ry:40},
@@ -257,7 +257,7 @@ var EVENTS = [
  why:"Davout and Friant reached Raigern on the night of 1 December after about 113 km from Vienna in 40-46 hours (sources vary). Raigern lies just beyond this corner of the map."},
 {id:"davout", t:[465,495], n:"Friant's leading brigade reaches the Goldbach", side:"fr", kind:"arrival",
  p:[198,402], forms:["friant"], cf:"B", claim:"est",
- why:"About 08:00, near Telnitz. Without it the French right does not survive the morning."},
+ why:"About 08:00, near Telnitz. In this map's interpretation, a counterfactual: without it the French right does not survive the morning."},
 
 {id:"sokolnitz", t:480, n:"Langeron and Przybyszewski attack Sokolnitz", side:"al", kind:"attack",
  p:[208,365], forms:["lang","prz","legrand"], cf:"A", claim:"fact",
@@ -364,7 +364,7 @@ var TOUR = [
 {n:"The French strike", at:"ev:soult", chapter:"pratzen",
  x:"At about a quarter to nine Saint-Hilaire and Vandamme climb out of the fog onto ground the Allies have just left. Two divisions, no reserve committed, against a column still filing off the heights."},
 {n:"The army divided", at:"ev:pratzeberg", chapter:"cut",
- x:"With the plateau gone the Allied army is in two halves that can no longer help one another. Buxhowden's forty thousand are still attacking westward and will not learn what has happened behind them until about noon."},
+ x:"With the plateau gone the Allied army is in two halves that can no longer help one another. Buxhowden's columns are still attacking westward and will not learn what has happened behind them until about noon."},
 {n:"The collapse", at:"ev:augezd", chapter:"collapse",
  x:"The French centre turns ninety degrees and comes down off the heights into the rear of the Allied left. The only ordered way out is the neck of dry ground at Augezd, under guns on ground the Allies held at dawn."},
 {n:"What it cost", at:"ph:9", chapter:null,

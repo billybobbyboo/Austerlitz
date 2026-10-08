@@ -527,7 +527,7 @@ col4:{ ech:"corps", nation:"at", arm:"inf", desig:"IV Column",
   strengthNote:"13,900 infantry with 52 light and 24 heavy guns (Duffy 1977; Smith 1998), used here. Other figures: about 12,000 with fourteen Russian battalions (WarHistory; Stutterheim 1806 and Schönhals 1873 count twelve); 17,000 (Napoleon-Empire); 23,900 (Chandler, and an older revision of the same order of battle)",
   role:"Should have replaced the troops leaving the plateau. Delayed, then caught in the open by Soult.",
   children:["milo","kollo"],
-  note:"Its objective was Kobelnitz. Liechtenstein's cavalry, misplaced on the left, crossed its line of march riding north-west and held it up — the single most consequential mistake of the Allied plan."},
+  note:"Its objective was Kobelnitz. Liechtenstein's cavalry, misplaced on the left, crossed its line of march riding north-west and held it up; Russian accounts put the delay chiefly on Kutuzov's reluctance to leave the heights."},
 
 milo:{ ech:"div", nation:"ru", arm:"inf", desig:"Russian wing, IV Column",
   name:"Miloradovich's Russians", commander:"Lt.-Gen. Mikhail Miloradovich", parent:"col4",
@@ -629,7 +629,7 @@ var FEATURES = [
  sub:"The Old Vineyards — northern high point of the plateau",
  facts:[["Taken by","Vandamme's division in the course of the morning; the plateau was French from end to end by about 11:00"],["Contested by","Russian Imperial Guard, after about 11:00 (the hour is not established)"],["Also","Napoleon's second command post, from about noon"]],
  why:["Northern shoulder of the plateau, linking the centre to the Olmütz road sector",
-      "Losing it would have reopened the Allied army's severed halves"],
+      "In this map's interpretation, a counterfactual: losing it would have reopened the Allied army's severed halves"],
  story:"The Russian Guard's counterattack here broke two of Vandamme's battalions, and its cavalry took the eagle of the 4th Line — the only eagle Napoleon lost at Austerlitz. Rapp's counter-charge with the Guard cavalry ended it."},
 
 {id:"pratzeberg", p:[285,289], kind:"height", name:"Pratzeberg",
