@@ -537,7 +537,7 @@ Shapes are drawn, not font glyphs (font coverage of symbols differs by system).
 
 ### 10.4 Claim, layer, source and events (decisions 1-3)
 
-- **Claim** (`CLAIM`, guarded, unchanged): fact = filled circle, estimate = half-filled circle,
+- **Claim** (`CLAIM`, guarded; unchanged by Stage 1): fact = filled circle, estimate = half-filled circle,
   reconstruction = hollow circle, on `plate`, with the label. `.pill.claim-fact` and its siblings stay
   (required by `css-test.js`). Since roadmap step 2 (decision 125 (a)): disputed = `split`, a circle divided
   by a bar (`TOKENS.sym.claim.disputed`, `ICON_SVG.split`), for an event whose hour this reconstruction's own

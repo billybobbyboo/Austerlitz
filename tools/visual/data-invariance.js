@@ -24,8 +24,8 @@ const DATA={
   "historical appearance model (Stage 6B)":["appearanceOf"],
   "derived readings, sight and knowledge":["evWindow","evWeight","liveEvents","actOf","PLATEAU_POLY","onPlateau","plateauStrength","PBERG_NORTHING",
     "SEP_KM","sideCentroid","centreSeparation","EYE_OBSERVER_M,EYE_TARGET_M,LOS_CLEAR_M","hasLOS","knowledgeOf","familyOf","sampleVS","computeViewshed"],
-  /* roadmap step 2 (docs/FINAL_AUDIT.md D-5): seven data declarations in app.js, five since C1 and two since C28 (the values typed into standardNotes and troopNotes are
-     D-5 (b)). SUN_DAY: the sun's date (2 December 1805), place (the field's centre) and the clock read as local apparent time (decision
+  /* roadmap step 2 (docs/FINAL_AUDIT.md D-5): seven data declarations in app.js, five since C1 and two since C28 (the values once typed into standardNotes and troopNotes are
+     read from the table since D-5 (b); the painted patterns' typed words are checked against it by runtime-test.js). SUN_DAY: the sun's date (2 December 1805), place (the field's centre) and the clock read as local apparent time (decision
      69: a reading, not a finding; the clock basis of the sources' hours is not established); FEATURE_GT: which surveyed place
      (GEOREF.GT) a place's dossier quotes as "surveyed X m"; TIMING_TEXT, CONF_TEXT and CONF_INTERP: the timing and position grades as a
      visitor is told them. Since C28 (the completeness critic's item 6, after the reference moved to the step-2 build): POS_CLAIM, a

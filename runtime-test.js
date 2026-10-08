@@ -553,13 +553,26 @@ try{
         if(item.indexOf(w)<0) bad.push("the painted item no longer says \u201c"+w+"\u201d (update this list with it)");
         if(!c||!(c.gr==="A"||c.gr==="B")||nh(c.en).indexOf(w)<0) bad.push("the painted item's \u201c"+w+"\u201d is not in "+k+"."+f+" graded A or B ("+(c?nh(c.en):"none")+")"); });
       if(!(CC.ru_inf.pattern&&CC.ru_inf.pattern.gen)) bad.push("the painted item calls the Russian infantry's pattern an open question; the table settles it"); }
+    /* the review of C28 (issue 1): 25cc972's committed build printed "(A.'s ratios ...)", an initial for the author, and nothing caught it.
+       Whenever an oblong cloth whose size is Dolleczek's is drawn, the cloths' item names him by surname (the last word of the source's
+       author), never by an initial; when none is drawn, the parenthesis is absent */
+    let dolN=0, dolSur="";
+    { const sur=String(APPEARANCE_SOURCES.dolleczek1896.au).split(" (")[0].split(" ").pop(), item=standardNotes().filter(t=>/^The cloths in their sourced proportions/.test(t))[0]||"";
+      let dol=0; Object.keys(units).forEach(id=>{ const u=units[id].block&&units[id].block.userData;
+        (u&&u.stds||[]).forEach(q=>{ const c=q.S.cloth; if(c&&c.w!==c.h&&c.src==="dolleczek1896") dol++; }); });
+      if(!item) bad.push("the cloths' item: not found");
+      if(/^[A-Z]\.?$/.test(sur)) bad.push("the cloths' item: Dolleczek's surname read as “"+sur+"”");
+      if(/\([A-Z]\.'s ratios/.test(item)) bad.push("the cloths' item names the ratios' author by an initial");
+      if(dol&&item.indexOf("("+sur+"'s ratios")<0) bad.push("the cloths' item: "+dol+" oblong cloths of Dolleczek's size drawn, but no “("+sur+"'s ratios”");
+      if(!dol&&/'s ratios/.test(item)) bad.push("the cloths' item names whose ratios with no oblong cloth of Dolleczek's size drawn");
+      dolN=dol; dolSur=sur; }
     trial("the appearance grades",troopNotes,()=>{ APPEARANCE_GRADE.B="a test grade"; },()=>{ APPEARANCE_GRADE.B=gB; },"B a test grade;");
     trial("a settled coat",troopNotes,()=>{ dc.c="blue"; },()=>{ dc.c=c0; },"the French dragoons wore blue","wore green");
     trial("an unsettled coat",troopNotes,()=>{ dc.gr="C"; },()=>{ dc.gr=gr0; },"never by a coat: the Russian","French dragoons");
     const eot=Math.round(SUN_DAY.at(720).eot);
     if(lightNotes().join(" ").indexOf("about "+eot+" minutes earlier")<0) bad.push("the light: local mean time's shift not SUN_DAY's equation of time ("+eot+" min)");
     if(bad.length) throw new Error("notes from the table: "+bad.join("; "));
-    console.log("notes from the table: the standards' and the troops' notes follow 10 changed values of the appearance table (a generic cloth given a size among them), the cloths drawn generic are named, the painted item's 8 typed words stand in the table's model and pattern, and the light's local-time shift is SUN_DAY's ("+eot+" min) OK"); }
+    console.log("notes from the table: the standards' and the troops' notes follow 10 changed values of the appearance table (a generic cloth given a size among them), the cloths drawn generic are named, the painted item's 8 typed words stand in the table's model and pattern, the cloths' item names \u201c("+dolSur+"'s ratios\u201d by surname ("+dolN+" oblong cloths of his size drawn), and the light's local-time shift is SUN_DAY's ("+eot+" min) OK"); }
 
   /* roadmap step 2 (docs/FINAL_AUDIT.md D-6): the derived readings carry their tag. At every half hour, every formation's march row
      (marchRow) tagged derived exactly where marchRate gives a leg; every aggregate's place (posRow) named its formations' midpoint, tagged,

@@ -2,18 +2,20 @@
 
 ## 2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decisions 142-161)
 
-**Status: for review (#50). The build changed: `austerlitz-command-map.html` 1,927,272 bytes, md5 `f7e1c622fd5d9846a7a12dbab904b467`
+**Status: for review (#50). The build changed: `austerlitz-command-map.html` 1,927,346 bytes, md5 `af98f58641a29cb4934ca9d28bf86071`
 (was the step-1 build, 1,883,794 bytes, md5 `7a86548c5e394853571f28f9e1640a74`).** `check:baseline` moves to this build. `check:data`'s
-reference moves to it too, archived as `archive/step2-f7e1c622.html`: step 2 is a data task, and every guarded declaration it changed is
+reference moves to it too, archived as `archive/step2-af98f586.html`: step 2 is a data task, and every guarded declaration it changed is
 listed below with was, is and why (12 changed against the 6B reference: `CLAIM`, `PHASES`, `FORMATIONS`, `FEATURES`, `SOURCE_NOTE`,
-`ANALYSIS`, `COMMAND`, `PLANS`, `EVENTS`, `TOUR`, `COMPOSITION`; `TERRAIN_LINES`; against the new reference all 128 identical). The
+`ANALYSIS`, `COMMAND`, `PLANS`, `EVENTS`, `TOUR`, `COMPOSITION`; `TERRAIN_LINES`; with today's lists the command prints "DATA CHANGED:
+14", also `POS_CLAIM` and `SRC_LABEL`, which are absent from the 6B build; against the new reference all 128 identical). The
 next owner decision is 162. The plan is the step's implementation plan (six cluster designs and twelve reviews combined, with a
 completeness critic; not committed); the commits, in order: C1 `8e53d90` (review
 fixes `8e8ff0c`), C2 `fe32f9c` (`712ee03`), C3 `cd74a81` (`a5139c6`), C4 `db78d7e`, C5 `6fb3a81`, C6 `9df7b11`, C7 `46c1c92`, C8
 `0698201`, C9 `dce7211` (`edfe878`), C10 `f2285da` (`b2a5529`), C11 `fc63ab7`, C12 `1c8dfab`, C13 `7663788`, C14 `78745d4`, C14a
 `8feaa14` (the owner's answers), C15 `0d2e9a2`, C16 `76851e6`, C17 `6f88053`, C18 `c09a407`, C19 `21d6c52`, C20 `2a7b812`, C21 `2b775c1`,
 C22 `57f5f89`, C23 `e439a04`, the review fixes of C14a-C18 `4fb58c9`, C24 `94662a0`, C25 `16e4f43`, C26 `a8aa34a`, the review fixes of
-C19-C23 `574f372`, C27 `83a7e45`, the review fixes of C24-C26 `25cc972`, and C28 (the records and references, this entry). The commits
+C19-C23 `574f372`, C27 `83a7e45`, the review fixes of C24-C26 `25cc972`, C28 `38ee85f` (the records and references, this entry), and
+the review fixes of C28 (records, a test, and two corrections to `SOURCE_NOTE.body[5]`). The commits
 were reviewed in segments; each review's issues are fixed in its "review fixes" commit or recorded here, and the commits' own notes give
 each run.
 
@@ -145,7 +147,7 @@ mark); 146 landed with C27.
   it." -> "...; then its cavalry charges the Russian Guard and its infantry is committed onto the plateau."; c_cav "decides the cavalry
   battle in the north" -> "fights the cavalry battle in the north".
 - **H-19, taken early (C16, question 156).** Six `COMPOSITION` Dress notes no longer name the project's files or ids (sthilaire, legrand,
-  friant, caffarelli, suchet, bourcier; wording only).
+  friant, bourcier: wording only; caffarelli and suchet also cite Alombert and Colin p. 69 (register §7.6) and p. 732 (§7.3)).
 - **126 and 128 (a) in `SOURCE_NOTE.layers` (C17, C18).** layers[2][1]: "...; always marked derived." -> "...; the holding on the heights
   and the centre-separation test are marked derived wherever they are shown." (backed by the new self-test check, below); layers[0][1]
   "Marked as fact in the dossiers." -> "Marked as fact in an event's dossier."; layers[1][1] "... marked estimate or reconstruction." ->
@@ -166,6 +168,17 @@ mark); 146 landed with C27.
   other reading." Why: step 2 put these open questions on screen, and this sentence is the visitor's index of them (the critic's item 7;
   each from the records above: H-12's hours, the chapel battery, H-13, H-11 and questions 153 and 155). No clock time, so
   `check:chronology` gains no statement (108 timed statements, as before). Decision 105's tested phrases kept (`test.js` 588/588).
+  The review fixes of C28 (the review's issues 2 and 3) correct two of its clauses. Was "the numbers of Suchet's and Caffarelli's divisions
+  on the day (the October returns give Suchet's the 3rd of V Corps, Gazan's the 2nd, and Caffarelli's the 1st of III Corps)"; is "how
+  Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd
+  on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps)". Why: "the October returns" generalised what one return
+  each gives: Gazan's 2nd is the return of 26 October alone (p. 755, register §7.4), and the 1st division of III Corps is Bisson's in the
+  return of 28 October (pp. 723-724), Caffarelli's only by p. 69's narrative (§7.6), as `COMPOSITION.caffarelli`'s note says; and "the
+  numbers" could be read as strengths. Was "the Materialien of 1806 and Duffy give Ryazan, which is kept as the other reading"; is "the
+  Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading". Why: Duffy 1977 was not read
+  in step 2, so the sentence stated as checked what an unread source says; Ryazan from Duffy is this map's earlier citation, as
+  `FORMATIONS.kamensky.strengthNote` words it ("as cited here from Duffy"). No new claim and no clock time (108 timed statements, as
+  before); the build, `check:baseline` and `check:data`'s reference move with it (below).
 
 **The sources read (the register).** `docs/step2-evidence/readings.md` (new, C2; revised with every review): every passage step 2's
 sourced texts rest on, read on 8 October 2026 from the scans (archive.org page images and text layers; Mikhailovsky-Danilevsky 1844
@@ -274,24 +287,43 @@ and kept. Why: decision 127 (b)'s words make the first-run key one line taller a
 limit 7 is kept (4 measured: n:ahq, t:vinohrady, t:santon, t:zuran). `first-run` and `first-run-laptop` met their limits unchanged; no
 opening case moved (decision 121); no other limit changed in step 2.
 
-**Records and references (C28).** The final build archived as `archive/step2-f7e1c622.html`; `package.json`'s `check:data` compares
-against it (was `archive/stage6b-7fc0f6c3.html`) and `check:baseline` takes its md5 and size (was `7a86548c…`, 1,883,794 bytes). The size,
-+43,478 bytes (+2.3%). `CLAUDE.md`: the layout table (the archive, `docs/step2-evidence/`, the app.js additions), the guard's seven
+**Records and references (C28, its review fixes).** The final build archived as `archive/step2-af98f586.html`; `package.json`'s
+`check:data` compares against it (was `archive/stage6b-7fc0f6c3.html`) and `check:baseline` takes its md5 and size (was `7a86548c…`,
+1,883,794 bytes). C28 archived its own build; the review fixes of C28 changed `SOURCE_NOTE.body[5]` (above), so the archive (renamed
+with `git mv` and overwritten with this build, byte for byte), `check:data`'s path and `check:baseline`'s md5 and size moved to this
+build, and every mention of them in `CLAUDE.md`, `README.md` and this entry. The size, +43,552 bytes (+2.3%) against step 1.
+`CLAUDE.md`: the layout table (the archive, `docs/step2-evidence/`, the app.js additions), the guard's seven
 declarations in `app.js`, the `LANG_ALLOW` sentences (9 entries: seven superlatives until step 4, two permanent with their kinds;
 `LANG_STEP1`, `DONE_STEPS`), 6C's "decided words, decision 108, labelled under decision 127 (b)", the `check:data` and `check:baseline`
 sentences, decision 146's re-measure, the current state. `README.md`: the `check:data` reference. `docs/ROADMAP.md`: step 2 "in review
 (#50)", the owner decisions 142-161 as a table, and "What step 2 handed on" (with the critic's items 4 and 12). `docs/VISUAL_SPEC.md`
 §10.4: the claim icon `split` (Disputed), the position pill, and the source tag ANECDOTE (`half`). The open minors of the first segment's
-review (C4, C7, C12, C13, C14) are fixed in `25cc972` or recorded above.
+review (C4, C7, C12, C13, C14) are fixed in `25cc972` or recorded above. The review of `25cc972` and C28 (eight minors and four nits,
+no blocker or major) is fixed in the review fixes of C28: issues 2 and 3 in `SOURCE_NOTE.body[5]` (above); issue 1 a line under Verified
+and a `runtime-test.js` assertion (below); issues 4, 5 and 6 and nits 1 and 3 in this entry; issue 7 `tools/visual/data-invariance.js`'s
+comment on the app.js group ("the values once typed into standardNotes and troopNotes are read from the table since D-5 (b)"); issue 8
+`docs/VISUAL_SPEC.md` §10.4's "(`CLAIM`, guarded; unchanged by Stage 1)"; nit 2 `CLAUDE.md` names `FOUND_MAX`; nit 4 `DONE_STEPS`'s
+comment ("when its last commit lands").
 
 **Verified** (4 cores, headless Chromium 141.0.7390.37 with SwiftShader, Playwright 1.56.0)
-- Per commit, as each commit's notes give it: T on every commit; K on every data commit; D failing by design from C3, its list of changed
-  declarations as the plan gave it; C and S where the commit changed text or a check; targeted `--only` harness runs after the commits
-  that could move map text or a panel (C4, C7, C12, C14a, C17, C18, C22, C23, C25, C26, C27), each case's drops, dropped ids and
-  unobstructed shares compared with the data-task full run.
+- Per commit, as each commit's notes give it: T on every commit but C2 and its review fixes (records only: the build and
+  check:baseline); K on C3-C14, C14a, C22 and C27, on the review fixes of C3, C9, C10, C14a-C18, C19-C23 and C24-C26, and on C28, so on
+  every data commit but C15-C18 (no clock time changed; K ran on their tree in `4fb58c9`); D on every commit but C2, its review fixes and
+  the review fixes of C24-C26, failing by design from C3 to C27, its list of changed declarations as the plan gave it; C on C3's review
+  fixes, C4, C8, C14a, C16, C17, C18, C21, C23, C25, C26, the review fixes of C19-C23, C27, the review fixes of C24-C26 and C28; S on
+  C3's review fixes, C4, C7, C13, C17, C18, C21, C23, C25, C26, the review fixes of C19-C23, C27, the review fixes of C24-C26 and C28
+  (so C10, C12, C15, C19, C20, C22 and C24 changed visitor text without a check:contrast run; C12 and C22 ran `--only` harness
+  runs, which include the self-test); targeted `--only` harness runs after the commits that could move map text or a panel (C4, C7, C12,
+  C14a, C17, C18, C22, C23, C25, C26, C27), each case's drops, dropped ids and unobstructed shares compared with the data-task full run.
+  Every check (T, D, K, C, S and check:baseline) ran on the final tree, below; nothing at the tip rests on a per-commit run alone.
+- `25cc972`'s committed build (`dceb4536…`, 1,926,373 bytes) predates the last edit of standardNotes and printed "A.'s ratios"; a fresh
+  build of that commit is `fb9fa8e3…`, 1,926,410 bytes; `38ee85f`'s build is fresh. `runtime-test.js` now asserts that the cloths' item
+  names Dolleczek by surname ("(Dolleczek's ratios", the last word of `APPEARANCE_SOURCES.dolleczek1896.au`) and never by an initial
+  whenever an oblong cloth of his size is drawn (16 drawn), and has no such parenthesis when none is; with 25cc972's expression put back
+  in a scratch copy, it fails ("names the ratios' author by an initial").
 - The data-task full `check:visual` (the lead's, on the C14 build `6c051bc8…`): 30 of 30 cases pass, "STAGE0: all checks passed", the
   self-test 217 of 217; against step 1 only `hybrid-dimmed` dropped 8 instead of 7 (t:girzikowitz, Drouet's new place; limit 13).
-- **On the final tree** (build `f7e1c622…`, 1,927,272 bytes)
+- **On the final tree** (the review fixes of C28; build `af98f586…`, 1,927,346 bytes)
   - `npm test`: "ALL 9 SUITES PASSED (and the height guard)". Height guard 97 sites, 0 presentation calls of `height()`/`hAt()`;
     `css-test` CSS ERRORS 0, behaviour 9/9; `test.js` ERRORS 0, warnings 0, appearance 588/588, order of battle 42/42, events validated 25,
     "guard: the 24 declarations of the four data files and app.js's 7 data declarations are in check:data's lists (128 names)"; `geo-test`
@@ -299,24 +331,26 @@ review (C4, C7, C12, C13, C14) are fixed in `25cc972` or recorded above.
     `audit` 0 march-rate and 0 terrain violations; `sim-test` ERRORS 0, 25 events 0 disagreements, worst telnitz 0.82 km, most on the field
     at once Allied 83,120 of 85,400, French 68,300 of 73,000; `redteam` findings 0, warnings 1 (1 acknowledged), the overclaim scan 7,465
     strings judged (1,902 prose; not judged: 618 the sources' own words, 2,106 developer, 924 in code positions), 9 allowed (`LANG_ALLOW`, 9
-    entries), 0 notes, retired claims 37 phrases, 0 found; `runtime-test` console.warn unique 0, errors 0; `binding-test` 386 checks, 0
-    failed.
-  - `npm run check:data`: "All 128 DATA declarations are byte-identical to the original build" (against `archive/step2-f7e1c622.html`;
-    against the 6B reference before the move, "DATA CHANGED: 12", the list above).
+    entries), 0 notes, retired claims 37 phrases, 0 found; `runtime-test` console.warn unique 0, errors 0, the cloths' item naming
+    "(Dolleczek's ratios" (16 oblong cloths of his size drawn); `binding-test` 386 checks, 0 failed.
+  - `npm run check:data`: "All 128 DATA declarations are byte-identical to the original build" (against `archive/step2-af98f586.html`;
+    against the 6B reference before the move, "DATA CHANGED: 12", the list above; with today's lists, 14, `POS_CLAIM` and `SRC_LABEL`
+    "not found" in the 6B build).
   - `npm run check:chronology`: errors 0; 70 moves with a timed statement, 66 consistent, 4 early (the named conflicts dok@1, guard_cav@6,
-    kamensky@3, kamensky@4), 0 late; explicit times 21; 108 timed statements (68 read, 38 excluded by class: 26 tm, 9 phase clocks, 1
-    tolWhy, 2 comments), 93 cited by 74 of 75 `REVIEW` rows (181 cites), 15 allowed; the movement audit 0 findings.
+    kamensky@3, kamensky@4), 0 late; explicit times 21; 108 timed statements (106 timed strings and comments: 68 read, 38 excluded
+    by class: 26 tm, 9 phase clocks, 1 tolWhy, 2 comments), 93 cited by 74 of 75 `REVIEW` rows (181 cites), 15 allowed; the movement
+    audit 0 findings.
   - `npm run check:contrast`: 6,260 text elements, 114 pairs, 0 below AA, 0 below 10.5 px, 0 font failures (369 characters in 8 computed
     fonts); 35 of 35 states reached; 1 console message, allowed (`eye-leave-floor`).
   - `npm run check:selftest`: 221 of 221, named as the manifest names them; "STAGE0: all checks passed (the self-test only)".
-  - `npm run check:baseline`: passes at `f7e1c622…`, 1,927,272 bytes.
+  - `npm run check:baseline`: passes at `af98f586…`, 1,927,346 bytes.
 - <<VF: the lead's final check:visual>>
 
 **Uncertain, or not verified**
 - Historical: every reading is one reader's, "not yet second-read (H-17)" (but §6.8); Duffy 1977 and Smith 1998 could not be read, so the
-  figures cited from them are cited, not checked. The three disputed hours are marked, not settled (125 (b)). Suchet's division number on
-  2 December is open ("3e or 2e": the 2nd has no source read, and on 26 October it is Gazan's); Gladkov is unconfirmed; Uvarov's
-  regiments disputed; the Kursk regiment's part (F5) and who turned Kamensky's brigade (F13) disputed; `COMMAND.al[4]` still says "on his
+  figures and names cited from them (Kamensky's Ryazan among them) are cited, not checked. The three disputed hours are marked, not
+  settled (125 (b)). Suchet's division number on 2 December is open ("3e or 2e": the 2nd has no source read, and on 26 October it is
+  Gazan's); Gladkov is unconfirmed; Uvarov's regiments disputed; the Kursk regiment's part (F5) and who turned Kamensky's brigade (F13) disputed; `COMMAND.al[4]` still says "on his
   own judgement" under DOCUMENTED. Thiébault's Guard "had not one shot to fire" and "took no part" (pp. 464, 466) stand against the map's
   guard_inf@6 "Committed onto the plateau" and c_gd's role (F14). The chapel battery's guns and place and the drowning toll stay
   three-sided. `COLOURS_CARRIED.at_inf.model` is labelled "fact" while its 1805 use is an inference in the 6B reading (the sources sheet now
@@ -330,7 +364,7 @@ review (C4, C7, C12, C13, C14) are fixed in `25cc972` or recorded above.
   off the field at a half hour in the data). `REVIEW`'s other file:line locators written before C3 may point one or more lines off
   (records; no check reads them). Not done: a screen reader on the new names and marks, a GPU, Firefox or Safari.
 
-**Handed on.** `docs/ROADMAP.md`, "What step 2 hands on", lists what each later step inherits (step 3: the caption's clipped reading,
+**Handed on.** `docs/ROADMAP.md`, "What step 2 handed on", lists what each later step inherits (step 3: the caption's clipped reading,
 question 159; the screen reader on the label and the marks; the drawn map label's note. Step 4: the disputed hours and the other hours,
 Drouet and I Corps, the Guard's part (Thiébault pp. 464, 466), the Zuran and gqg@0's grade (160), the strengths, the chapel battery and
 heightguns@8 (154), the ice, the seven superlatives, H-11's open numbers and names, the claims per statement and H-5's interpolated
