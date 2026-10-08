@@ -106,7 +106,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   allowed another), every state must be reached (a state whose set-up does nothing fails), and every console message is judged against
   `tools/visual/thresholds.js CONSOLE_ALLOW` (one entry today, the eye level's floor warning, removed by the app fix in roadmap step 3).
 - `npm run check:selftest` (since step 1, decision 132; the CI job): the in-app self-test on one fresh 1366 x 768 page, every check by name
-  against `tools/visual/selftest-manifest.json` (218), with the slider, Play and the 3E keys by real key presses, and every console message
+  against `tools/visual/selftest-manifest.json` (219), with the slider, Play and the 3E keys by real key presses, and every console message
   judged; about 13 minutes. `npm run check:report` judges a finished `check:visual` report again without rendering; `npm run
   check:remeasure` is decision 141's one re-measure tool (`tools/visual/remeasure.js`).
 - `npm run check:visual`: 30 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B

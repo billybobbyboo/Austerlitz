@@ -314,7 +314,7 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
 .tb-cap .act{color:var(--text-hi);letter-spacing:.05em}
 .tb-cap .ev{color:var(--text-hi)}
 .tb-cap .sep{padding:0 7px}
-.tb-cap .der small{font-size:var(--t-micro);letter-spacing:.07em;margin-right:4px;border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px}
+.tb-cap .der small,.tb-cap .ev small.evn{font-size:var(--t-micro);letter-spacing:.07em;margin-right:4px;border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px}
 body.pm-study:not(.no-dispatch) .tb-cap .der,body.pm-study:not(.no-dispatch) .tb-cap .der-sep{display:none}
 /* Watch's presentation switch, in the control row at full opacity (decision 60) */
 .tb-vm{display:none;flex:0 0 auto}

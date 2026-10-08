@@ -259,6 +259,14 @@ try{
      the caption names the act and the phase; where an event is live it names it (or, in a dwell, the dwell's events) and the Now
      tab's strip gives its reason; where none is, the strip gives the act's line */
   let evSeen=0, sitSeen=0, capOk=0, named=0, whyOk=0, lineOk=0;
+  /* roadmap step 2 (H-15; decision 125 (a)): an event is named with its note, written here from its claim and window (its hour disputed;
+     else an interval; and a reconstruction), not read from evNote or evTag: in the Now tab's strip after its name, in the one-line caption
+     as a tag before it */
+  const partsRT=(e,L)=>{ const w=evWindow(e), n=[]; if(e.claim==="disputed") n.push(L.disputed); else if(w[1]>w[0]) n.push(L.interval);
+    if(e.claim==="recon") n.push(L.recon); return n; };
+  const noteRT=e=>{ const n=partsRT(e,LABELS.event); return n.length?" ("+n.join("; ")+")":""; };
+  const tagRT=e=>partsRT(e,LABELS.event.tag).join("; ");
+  const capRT=e=>tagRT(e)?'<small class="evn">'+esc(tagRT(e))+'</small>'+esc(e.n):esc(e.n);
   for(let t=T_MIN;t<=T_MAX;t+=7){
     setClock(t); updateVisibility();
     _sitKey=""; paintSituation(); sitSeen++;
@@ -266,8 +274,8 @@ try{
     const act=actOf(curPhase), live=liveEvents(clock), top=live.length?live[0].e:null, dw=dwellEvents();
     if(cap.indexOf(esc(act.n.toUpperCase()))>=0&&cap.indexOf(esc(PHASES[curPhase].title))>=0) capOk++;
     if(top){ evSeen++;
-      if(dw&&dw.length?dw.every(e=>cap.indexOf(esc(e.n))>=0):cap.indexOf(esc(top.n))>=0) named++;
-      if(host.indexOf(esc(top.why))>=0) whyOk++; }
+      if(dw&&dw.length?dw.every(e=>cap.indexOf(capRT(e))>=0):cap.indexOf(capRT(top))>=0) named++;
+      if(host.indexOf(esc(top.n+noteRT(top)))>=0&&host.indexOf(esc(top.why))>=0) whyOk++; }
     else if(host.indexOf(esc(act.line))>=0) lineOk++;
   }
   if(capOk!==sitSeen||!evSeen||evSeen===sitSeen||named!==evSeen||whyOk!==evSeen||lineOk!==sitSeen-evSeen)

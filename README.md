@@ -18,7 +18,7 @@ Rules for Claude Code: `CLAUDE.md`. State and history: `CHANGELOG.md`. The plan:
 | `npm run check:data` | the historical, geographic and model declarations are byte-identical to the reference build (`archive/stage6b-7fc0f6c3.html`) |
 | `npm run check:chronology` | every live timed statement cited or allowed by name (four classes excluded by path, each with its reason), no move early or late but the named conflicts, the arrival rules, the movement audit |
 | `npm run check:contrast` | every visible text in 35 interface states meets WCAG AA and the 10.5 px floor, drawn in the embedded faces |
-| `npm run check:selftest` | the in-app self-test (218 checks) on one page, with the slider and key checks (about 13 minutes; CI runs it) |
+| `npm run check:selftest` | the in-app self-test (219 checks) on one page, with the slider and key checks (about 13 minutes; CI runs it) |
 | `npm run check:visual` | 30 fixed views held to their thresholds, every page's console, the live checks and the self-test (about 100 minutes; on demand) |
 | `npm run check:report` | a finished `check:visual` report judged again without rendering |
 | `npm run check:baseline` | the build is exactly the last recorded one (`CHANGELOG.md` names it); a task that changes the build moves it |

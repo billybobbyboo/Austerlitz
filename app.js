@@ -2988,6 +2988,15 @@ function evWindow(e){ return Array.isArray(e.t)?e.t:[e.t,e.t]; }
    (momentOf) and the dwell (decision 75); an interval's window is drawn as a bar from its start */
 function evClock(e){ return evWindow(e)[0]; }
 function evTimeText(e){ var w=evWindow(e); return w[0]===w[1]?fmtClock(w[0]):fmtClock(w[0])+" to "+fmtClock(w[1]); }
+/* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1, H-15): the note an event carries wherever it is named outside its dossier
+   (its marker's name and title, its map label's name, the Now tab's strip, the opening's bar, a formation's dossier): its hour disputed
+   (claim "disputed"), else an interval (not a timestamp: decision 44, a process or an unfixed hour), and a reconstruction (claim
+   "recon"); in the one-line caption, where a trailing note would be cut by the ellipsis, a short tag before the name (evTag) */
+function evNoteParts(e,L){ var w=evWindow(e), n=[];
+  if(e.claim==="disputed") n.push(L.disputed); else if(w[0]!==w[1]) n.push(L.interval);
+  if(e.claim==="recon") n.push(L.recon); return n; }
+function evNote(e){ var n=evNoteParts(e,LABELS.event); return n.length?" ("+n.join("; ")+")":""; }
+function evTag(e){ var n=evNoteParts(e,LABELS.event.tag); return n.length?'<small class="evn">'+esc(n.join("; "))+'</small>':""; }
 function evWeight(e,t){
   var w=evWindow(e), lead=14, tail=26;
   if(t>=w[0]&&t<=w[1]) return 1;
@@ -3775,7 +3784,7 @@ function openingGo(d){
    Next on a step but the last plays the clock from that stop's clock to the next stop's at OPENING.SPEED (4x, the opening's own speed, a
    design value; the visitor's Play stays at the speed it had, half speed by default, decision 74), as Play plays it: Follow (decision 78),
    the dwell at each event start (decision 75), the derived arrows drawn on (decision 83). The stop's theme is cleared while it plays; the
-   bar shows the next step's title and, in its text, the event or events each dwell stops for (EVENTS[].n, the timeline caption's words, no
+   bar shows the next step's title and, in its text, the event or events each dwell stops for (EVENTS[].n with its note, evNote, the timeline caption's words, no
    other sentence). When the clock reaches the next stop's clock that stop is applied as in 7C (its theme, and its camera by the tour's
    glide), so every step's frame is the stop's own. While it plays: the Play/Pause button and Space (off a button) pause and resume it
    (WCAG 2.2.2); Next goes straight to the next step; Back returns to the stop it started from; Skip, Esc and every other way end the
@@ -3798,7 +3807,7 @@ function openingStretch(k){   /* k: the step it plays to */
 function openingPlayWatch(){
   var P=OPENING.play; if(!P||!OPENING.on) return;
   if(clock>=P.target-1e-6){ openingArrive(); return; }
-  var dw=dwellEvents(), names=(dw&&dw.length)?dw.map(function(e){ return e.n; }).join("; "):"";
+  var dw=dwellEvents(), names=(dw&&dw.length)?dw.map(function(e){ return e.n+evNote(e); }).join("; "):"";   /* roadmap step 2 (H-15): each with its note */
   if(names&&names!==P.ev){ P.ev=names; document.getElementById("tour-x").textContent=names; }
   openingHead();
 }
@@ -4126,9 +4135,9 @@ function mlCollect(){
   });
   /* the moments of the battle: every live event's label is kept (decision 39) */
   if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(!k.labelOn) return;
-    var sel=isSel("e",k.e.id), w=evWindow(k.e);
+    var sel=isSel("e",k.e.id);
     text("e:"+k.e.id,"event","mlt-serif",k.e.n,LB.annotation,k.world,{pri:sel?0:4+(1-evWeight(k.e,clock))*0.5,base:4,keep:true,r:2.1,acl:3,
-      pick:{kind:"e",id:k.e.id},aria:"Event, "+evTimeText(k.e)+": "+k.e.n+(w[0]===w[1]?"":" (an interval: the hour is not fixed)")});
+      pick:{kind:"e",id:k.e.id},aria:"Event, "+evTimeText(k.e)+": "+k.e.n+evNote(k.e)});   /* roadmap step 2: the note in its name; its drawn words unchanged (no layout change) */
   });
   /* the plateau reading, over the northern part of its outline: a derived reading, marked "derived" in its words and its name in every
      view, drawn in the phases the tagged reading is (0-6; owner decision 126, docs/FINAL_AUDIT.md H-3) */
@@ -5077,7 +5086,7 @@ var LABELS={
   layers:{button:"Layers\u2026", heading:"Layers", aria:"Layers and ground", ground:"Ground", shows:"What is drawn"},
   /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): the note an event carries where it is named, and the mark on the label of
      an arrow the data calls unsettled: marks of what the data says (EVENTS[].claim, OVERLAYS' interp), no claim of their own */
-  event:{disputed:"the hour is disputed"},
+  event:{disputed:"the hour is disputed", interval:"an interval, not a timestamp", recon:"a reconstruction", tag:{disputed:"hour disputed", interval:"interval", recon:"reconstruction"}},
   arrow:{unsettled:"disputed"},   /* owner decision 145 (question 145, 8 October 2026): the shorter form, so the 07:00 place name Augezd is drawn again */
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
      its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with the five glides of
@@ -5688,12 +5697,13 @@ function paintSituation(){
       onH.toLocaleString()+(flatFor>=60?' <em>plotted strength unchanged</em>':'')+'</span>':"";
   var cutH=cut?'<span class="cut der" title="'+esc(SEP_NOTE)+'"><small>derived</small> centre separation detected</span>':"";
   var c='<span class="act">'+esc(act.n.toUpperCase())+'</span><span class="sep">&middot;</span><span>'+esc(PHASES[curPhase].title)+'</span>';
-  if(dw&&dw.length) c+='<span class="sep">&middot;</span><span class="ev dwell">'+esc(dw.map(function(e){ return e.n; }).join("; "))+'</span>';
-  else if(top) c+='<span class="sep">&middot;</span><span class="ev">'+esc(top.n)+'</span>';
+  /* roadmap step 2 (docs/FINAL_AUDIT.md H-15; decision 125 (a)): each event named with its note's tag before the name, where the caption's ellipsis cannot cut it */
+  if(dw&&dw.length) c+='<span class="sep">&middot;</span><span class="ev dwell">'+dw.map(function(e){ return evTag(e)+esc(e.n); }).join("; ")+'</span>';
+  else if(top) c+='<span class="sep">&middot;</span><span class="ev">'+evTag(top)+esc(top.n)+'</span>';
   if(der) c+='<span class="sep der-sep">&middot;</span>'+der;
   if(cutH) c+='<span class="sep der-sep">&middot;</span>'+cutH;
   if(cap){ cap.innerHTML=c; cap.title=cap.textContent; }
-  if(host) host.innerHTML=der+cutH+(top?'<span class="ev">'+esc(top.n)+'</span>':'')+'<span class="why">'+esc(top?top.why:act.line)+'</span>';
+  if(host) host.innerHTML=der+cutH+(top?'<span class="ev">'+esc(top.n+evNote(top))+'</span>':'')+'<span class="why">'+esc(top?top.why:act.line)+'</span>';
 }
 /* ---- Stage 3C: one timeline (docs/STAGE3_SPEC.md section D; owner decisions 53, 60) ----
    One axis, proportional to time from 04:00 to 18:00 (decision 53): the act bands, the phase ticks with their labels and the
@@ -5746,8 +5756,8 @@ function buildTimeline(){
     EV_BAR.lanes=lanes.length;
     evs.forEach(function(o,k){
       var e=o.e, b=el("button","ev-mark "+(e.kind==="decision"?"dec ":"")+(e.side==="fr"?"fr":"al")); b.type="button";
-      var lab=evTimeText(e)+", "+e.n+(o.t1>o.t?" (an interval: the hour is not fixed)":"");
-      b.style.left=tlPc(o.t)+"%"; b.title=evTimeText(e)+"  "+e.n; b.setAttribute("aria-label",lab); b.tabIndex=k===0?0:-1;
+      var lab=evTimeText(e)+", "+e.n+evNote(e);   /* roadmap step 2 (H-1, H-15): its note, disputed, an interval or a reconstruction */
+      b.style.left=tlPc(o.t)+"%"; b.title=evTimeText(e)+"  "+e.n+evNote(e); b.setAttribute("aria-label",lab); b.tabIndex=k===0?0:-1;
       b.addEventListener("click",function(){ stopPlay(); setClock(o.t); select("e",e.id); });
       evh.appendChild(b); _evTicks.push({el:b,bar:o.bar||null,e:e,t:o.t}); });
     rovingGroup(evh,".ev-mark"); }
@@ -6196,7 +6206,7 @@ function dossierFormation(id){
     var ule=el("ul","links");
     mine.slice(0,3).forEach(function(x){
       var li=el("li");
-      var b=el("button","linkb",esc(x.e.n));
+      var b=el("button","linkb",esc(x.e.n+evNote(x.e)));   /* roadmap step 2 (H-15): with its note */
       b.addEventListener("click",function(){ select("e",x.e.id); });
       li.appendChild(b); ule.appendChild(li);
     });
@@ -8753,6 +8763,50 @@ var AUSTERLITZ_DEBUG=(function(){
       select(null,null);
       ck("events: one event clock, the start, for the marker, the event keys, the themes' moments, the dwell and the dossier (decision 89)",
         !c5.length, _evTicks.length+" markers each at its start within 1 px; the dossier of "+iv.id+" goes to "+fmtClock(evWindow(iv)[0])+(c5.length?"; "+c5.slice(0,4).join("; "):""));
+      /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1, H-15): an event named outside its dossier carries its note, written here from
+         its claim and window, not read from evNote or evTag: its marker's name and title, the event links of the dossier of a formation it
+         names (at its start), and, in the one-line caption at its start where it leads, its tag before its name, inside the caption's box (the
+         ellipsis cannot cut it; an event without a note has no tag); a disputed event's dossier its pill and its dispute with two clock times;
+         an arrow the data marks unsettled carries its mark on its label */
+      var c6=[], LE=LABELS.event, nN=0, nD=0, nA=0, nC=0, nCT=0, nF=0, nFN=0, capEl=document.getElementById("tb-cap");
+      function parts6(e,L){ var w=evWindow(e), n=[]; if(e.claim==="disputed") n.push(L.disputed); else if(w[1]>w[0]) n.push(L.interval);
+        if(e.claim==="recon") n.push(L.recon); return n; }
+      function note6(e){ var n=parts6(e,LE); return n.length?" ("+n.join("; ")+")":""; }
+      function tag6(e){ return parts6(e,LE.tag).join("; "); }
+      _evTicks.forEach(function(o){ var e=o.e, want=e.n+note6(e), a=o.el.getAttribute("aria-label");
+        if(note6(e)) nN++;
+        if(a!==evTimeText(e)+", "+want) c6.push(e.id+": its marker is named '"+String(a).slice(0,80)+"'");
+        if(o.el.title!==evTimeText(e)+"  "+want) c6.push(e.id+": its marker's title '"+String(o.el.title).slice(0,80)+"'");
+        setClock(evWindow(e)[0],{instant:true,force:true,camera:false}); _sitKey=""; paintSituation();
+        var lv=liveEvents(clock), dw=dwellEvents();
+        if(!(dw&&dw.length)&&lv.length&&lv[0].e===e){ nC++;
+          var evs=capEl.querySelector(".ev"), tg=evs?evs.querySelector("small.evn"):null, tw=tag6(e), cr=capEl.getBoundingClientRect();
+          if(!evs) c6.push(e.id+": the caption names no event");
+          else if(tw){ nCT++;
+            if(!tg||tg.textContent!==tw) c6.push(e.id+": the caption's tag reads '"+(tg?tg.textContent:"(none)")+"', want '"+tw+"'");
+            else { var tr=tg.getBoundingClientRect();
+              if(!(cr.width>0)||tr.left<cr.left-0.5||tr.right>cr.right+0.5) c6.push(e.id+": the caption's tag at "+tr.left.toFixed(1)+"-"+tr.right.toFixed(1)+" px, outside the caption's box "+cr.left.toFixed(1)+"-"+cr.right.toFixed(1)); }
+            if(evs.textContent!==tw+e.n) c6.push(e.id+": the caption reads '"+evs.textContent.slice(0,80)+"'"); }
+          else if(tg||evs.textContent!==e.n) c6.push(e.id+": the caption reads '"+evs.textContent.slice(0,80)+"' (a tag without a note)"); }
+        var fid=(e.forms||[]).filter(function(f){ return FORMATIONS[f]; })[0];
+        if(fid){ var mine6=lv.filter(function(x){ return x.e.forms.indexOf(fid)>=0; }).slice(0,3).map(function(x){ return x.e.n+note6(x.e); }),
+            dfn=dossierFormation(fid), sec=Array.prototype.filter.call(dfn.querySelectorAll(".sect"),function(s){ var h=s.querySelector("h3"); return h&&h.textContent==="Historical event"; })[0],
+            got=sec?Array.prototype.map.call(sec.querySelectorAll("button.linkb"),function(b){ return b.textContent; }):[];
+          nF++; if(mine6.indexOf(want)>=0&&note6(e)) nFN++;
+          if(got.join("|")!==mine6.join("|")) c6.push(e.id+": "+fid+"'s dossier links '"+got.join("; ").slice(0,90)+"', want '"+mine6.join("; ").slice(0,90)+"'"); }
+        if(e.claim==="disputed"){ nD++; select("e",e.id);
+          var dd=document.querySelector("#drawer-body .dossier"), tx=dd?dd.textContent:"", hrs={};
+          (String(e.dispute||"").match(/\b\d\d:\d\d\b/g)||[]).forEach(function(h){ hrs[h]=1; });
+          if(!dd||!dd.querySelector(".pill.claim-disputed")) c6.push(e.id+": no Disputed pill in its dossier");
+          if(!e.dispute||tx.indexOf(e.dispute)<0) c6.push(e.id+": its dossier does not give its dispute");
+          if(Object.keys(hrs).length<2) c6.push(e.id+": its dispute names "+Object.keys(hrs).length+" clock time(s)");
+          select(null,null); } });
+      Object.keys(OVERLAYS).forEach(function(ph){ (OVERLAYS[ph].arrows||[]).forEach(function(a){ if(!/^unsettled:/.test(a.interp||"")) return; nA++;
+        rebuildOverlays(+ph,true);
+        if(!ovText.some(function(t){ return t.text===a.label+" ("+LABELS.arrow.unsettled+")"; })) c6.push("the arrow '"+a.label+"' (phase "+ph+"): no mark on its label"); }); });
+      rebuildOverlays(curPhase,true);
+      ck("events: a disputed hour, an interval or a reconstruction named with its note by its marker and a formation's dossier, and tagged in the caption inside its box; a disputed event's dossier its pill and both hours; an unsettled arrow's label its mark (decision 125, H-1, H-15)",
+        !c6.length&&nN>0&&nD>0&&nA>0&&nCT>0&&nFN>0, nN+" events with a note, "+nD+" disputed, "+nA+" unsettled arrows; the caption read at "+nC+" starts ("+nCT+" with a tag), a formation's dossier at "+nF+" ("+nFN+" linking the event with its note)"+(c6.length?"; "+c6.slice(0,4).join("; "):""));
       if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
       document.body.classList.remove("st-still"); if(pl0) togglePlay();
     })();
@@ -8930,7 +8984,11 @@ var AUSTERLITZ_DEBUG=(function(){
         names={}, seen={}, P0, msgs=[];
       /* what a dwell may put in the bar: the names of the events starting at one dwell's minute, joined as the app joins them (one event's
          name may itself hold "; ", so the joined strings are compared whole) */
-      dwellStarts().forEach(function(E){ names[EVENTS.filter(function(e){ return evWindow(e)[0]===E; }).map(function(e){ return e.n; }).join("; ")]=1; });
+      /* roadmap step 2 (docs/FINAL_AUDIT.md H-15): each name with its note, written here from its claim and window (its hour disputed; else an
+         interval; and a reconstruction), not read from evNote */
+      function note7(e){ var w=evWindow(e), n=[]; if(e.claim==="disputed") n.push(LABELS.event.disputed); else if(w[1]>w[0]) n.push(LABELS.event.interval);
+        if(e.claim==="recon") n.push(LABELS.event.recon); return n.length?" ("+n.join("; ")+")":""; }
+      dwellStarts().forEach(function(E){ names[EVENTS.filter(function(e){ return evWindow(e)[0]===E; }).map(function(e){ return e.n+note7(e); }).join("; ")]=1; });
       if(presentation!=="study") setPresentation("study"); if(mode!=="terrain") setMode("terrain"); if(tourStep>=0) exitTour(); select(null,null);
       setClock(T_MIN,{instant:true,force:true,camera:false}); finishTween(); tabChosen=false; setSpeed(0.5);
       function key(k,on){ (on||document.body).dispatchEvent(new KeyboardEvent("keydown",{key:k,bubbles:true,cancelable:true})); }

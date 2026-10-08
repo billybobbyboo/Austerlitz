@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 068d353d942dc826b2f635aaf446a023 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "068d353d942dc826b2f635aaf446a023",
- "count": 218,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 7e080a386e5064c28ebf349107d061ca (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "7e080a386e5064c28ebf349107d061ca",
+ "count": 219,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -197,6 +197,7 @@
   "timeline: each interval a bar from its start to its end (decision 89), none for an instant; at most four lanes, none overlapping in a lane, none over an hour numeral; the timebar's height unchanged",
   "timeline: the interval bars at 3:1 or more against the timebar, in the dark and the paper themes (WCAG 1.4.11, non-text contrast)",
   "events: one event clock, the start, for the marker, the event keys, the themes' moments, the dwell and the dossier (decision 89)",
+  "events: a disputed hour, an interval or a reconstruction named with its note by its marker and a formation's dossier, and tagged in the caption inside its box; a disputed event's dossier its pill and both hours; an unsettled arrow's label its mark (decision 125, H-1, H-15)",
   "camera: the orbit target at the free rectangle's centre after each panel change (setViewOffset, eased as the loop does)",
   "camera: picking and the ground through the offset (a click on a counter's box selects it; groundAt's round trip within 1 px)",
   "camera: Follow shows !freeCam after every camera path, as decision 47 sets it; a vantage's button is released when the eye leaves it",
