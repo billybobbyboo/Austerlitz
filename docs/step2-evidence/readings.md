@@ -17,6 +17,11 @@
 - Compiled: 8 October 2026 (roadmap step 2, commit C2). The design session's own reading of the same pages (the plan's list) was
   repeated here from the scans, not copied: every page was fetched again from archive.org (Stutterheim's French original from
   Gallica's IIIF image service, Tolstoy from Project Gutenberg) and read on its image.
+- Revised: 8 October 2026, after a review of this register (step 2, C2's review fixes): §1.1 (the order to Bernadotte restored), §2.3
+  (the Blasowitz heights against Stare Vinohrady labelled an inference; the page URLs), §3.2, §4.2, §4.10 (Thiébault's two regiments
+  beside, not in, Kamensky's brigade; the aide's identity an inference; the boast as Thiébault frames it), §8.2 (the page URL), §12 and
+  §13 F1, F2, F11 changed; §2.6 (Stutterheim's "Rhiasky"), §3.4 (Kutuzov's report in the Materialien), §4.11 (Thiébault p. 474) and §13
+  F13 added. Every quote added was read on its page image that day.
 - Transcription: as printed, with the source's own spelling, accents and capitals (Thiébault, Riajsk, Blasowitz, Girschikowitz,
   "étoit"); the German Fraktur's long s is written s; Russian in the pre-1918 spelling as printed (ъ, ѣ, і); "[...]" marks a cut and
   "/" a page turn inside a quotation. The translations are this register's own.
@@ -38,8 +43,8 @@
 | corr11_1863 | Napoléon Ier (Commission) | Correspondance de Napoléon Ier, t. XI | Paris, Imprimerie impériale, 1863 | primary-text (orders and bulletins dated 1805) | https://archive.org/details/correspondancede11napouoft (images: page n = printed page + 9 for pp. 441-452) |
 | stutterheim1806de | K. von Stutterheim | Die Schlacht bey Austerlitz, am 2. December 1805. Von einem Officier und Augenzeugen. Aus dem Französischen | Hamburg, 1806 | primary-text (an account by an Austrian officer present, translated from the French original of the same year) | https://archive.org/details/11344011bsb (images: page n = printed page + 3) |
 | stutterheim1806fr | K. von Stutterheim | La bataille d'Austerlitz, par un militaire témoin de la journée du 2 décembre 1805 | Hambourg, 1806 | primary-text (the French original) | https://gallica.bnf.fr/ark:/12148/bpt6k6497274t (IIIF views f = printed page + 4) |
-| materialien1806 | anonymous ("gesammelt von einem Militär") | Materialien zu der Geschichte der Schlacht bei Austerlitz | Weimar, Landes-Industrie-Comptoir, 1806 | primary-text (a German translation of Stutterheim with the editor's additions, "Zusätze") | https://archive.org/details/10807964bsb (images: page n = printed page + 9) |
-| thiebault3_1894 | P. Thiébault (ed. F. Calmettes) | Mémoires du général baron Thiébault, t. III (1799-1806) | Paris, Plon, Nourrit, 1894 | primary-text (the memoir of a brigade commander in Saint-Hilaire's division on the Pratzen, published long after) | https://archive.org/details/mmoires03thieuoft (images: page n = printed page + 11 for pp. 449-469; p. 504 = n517) |
+| materialien1806 | anonymous ("gesammelt von einem Militär") | Materialien zu der Geschichte der Schlacht bei Austerlitz | Weimar, Landes-Industrie-Comptoir, 1806 | primary-text (a German translation of Stutterheim with the editor's additions, "Zusätze", among them a translation of Kutuzov's official report, Zusatz 11) | https://archive.org/details/10807964bsb (images: page n = printed page + 9) |
+| thiebault3_1894 | P. Thiébault (ed. F. Calmettes) | Mémoires du général baron Thiébault, t. III (1799-1806) | Paris, Plon, Nourrit, 1894 | primary-text (the memoir of a brigade commander in Saint-Hilaire's division on the Pratzen, published long after) | https://archive.org/details/mmoires03thieuoft (images: page n = printed page + 11 for pp. 449-474; p. 504 = n517) |
 | mikhailovsky1846 | A. I. Mikhailovsky-Danilevsky (tr. L. Narischkine) | Relation de la campagne de 1805 (Austerlitz) | Paris, Dumaine, 1846 | specialist (the French translation of the 1844 official history) | https://archive.org/details/relationdelacam00dangoog (images: page n = printed page + 24 for pp. 227-238, + 26 from p. 239, after the plate no. 7) |
 | mikhailovsky1844 | А. И. Михайловскій-Данилевскій | Описаніе первой войны Императора Александра съ Наполеономъ, въ 1805-мъ году | Санктпетербургъ, 1844 | specialist (official history written by imperial order from the archives; its author was not a participant in 1805) | https://archive.org/details/1805-.-bmk-brz (IIIF, k = hOCR page index; the title page k = 1) |
 | alombert4_1908 | P.-C. Alombert and J. Colin (Section historique de l'État-major de l'armée) | La campagne de 1805 en Allemagne, t. IV | Paris, Chapelot, 1908 | specialist (prints the French returns of October 1805, each with its date) | https://archive.org/details/la-campagne-de-1805-en-allemagne-vol.-4 (images: pp. 716-732 n = page + 8; pp. 755-756 n760-n761; p. 762 n766) |
@@ -49,15 +54,20 @@
 ## 1. `corr11_1863`: the orders of 1 December and the 30th Bulletin
 
 ### 1.1 `corr11.9534.butte`: the orders of 1 December (no. 9534, p. 441)
-- **source**: no. 9534, "Ordres", "Au bivouac en avant de Brünn, 10 frimaire an XIV (1er décembre 1805)", p. 441; image n450.
-- **quote**: "Ordre aux grenadiers de se porter en avant de la butte, sur la droite de la route. [...] Ordre au 17e régiment d'infanterie
-  légère de prendre position au Santon. Ordre au quartier général de se transporter à la butte."
-- **translation**: "Order to the grenadiers to move in front of the mound, on the right of the road. [...] Order to the 17th light
-  infantry regiment to take position at the Santon. Order to headquarters to move to the mound."
+- **source**: no. 9534, "Ordres", "Au bivouac en avant de Brünn, 10 frimaire an XIV (1er décembre 1805)", p. 441; image n450
+  (https://archive.org/download/correspondancede11napouoft/page/n450.jpg).
+- **quote**: "Ordre au maréchal Bernadotte de prendre la position du bivouac du général Caffarelli. Ordre au général Caffarelli de
+  prendre le bivouac de la division de grenadiers. Ordre aux grenadiers de se porter en avant de la butte, sur la droite de la route.
+  [...] Ordre au 17e régiment d'infanterie légère de prendre position au Santon. Ordre au quartier général de se transporter à la butte."
+- **translation**: "Order to Marshal Bernadotte to take the position of General Caffarelli's bivouac. Order to General Caffarelli to
+  take the bivouac of the grenadier division. Order to the grenadiers to move in front of the mound, on the right of the road. [...]
+  Order to the 17th light infantry regiment to take position at the Santon. Order to headquarters to move to the mound."
 - **grade**: A (orders dated 1 December 1805, printed from the Dépôt de la guerre's text). **label**: fact.
-- **settles**: on 1 December headquarters was ordered to "la butte", and the 17e légère to the Santon.
-- **does not settle**: which mound "la butte" is: that it is the Zuran is an inference, not stated here; nothing about the hour on
-  2 December.
+- **settles**: on 1 December headquarters was ordered to "la butte", the 17e légère to the Santon, and Bernadotte to the position of
+  Caffarelli's bivouac (Caffarelli to the grenadiers' bivouac, the grenadiers in front of the mound).
+- **does not settle**: which mound "la butte" is: that it is the Zuran is an inference, not stated here; where Caffarelli's bivouac
+  was, and whether it is the ground no. 9535 gives Bernadotte for 07:00 on 2 December (§1.2; §13 F11); no hour for the moves; nothing
+  about the hour on 2 December.
 - **status**: read on the page image; not yet second-read (H-17).
 
 ### 1.2 `corr11.9535.dispositions`: the dispositions for 2 December (no. 9535, pp. 442-443)
@@ -181,7 +191,9 @@ is a translation of the French original of the same year (its title page: "Aus d
 - **status**: read on the page image; not yet second-read (H-17).
 
 ### 2.3 `stut.p55-56.crossing`: Bernadotte crosses at the same time as Soult's attack, toward the Blasowitz heights (pp. 55-56)
-- **source**: stutterheim1806de, pp. 55-56, images n58-n59; the French original, stutterheim1806fr, pp. 77-78, Gallica views f81-f82.
+- **source**: stutterheim1806de, pp. 55-56, images n58-n59 (https://archive.org/download/11344011bsb/page/n58.jpg,
+  https://archive.org/download/11344011bsb/page/n59.jpg); the French original, stutterheim1806fr, pp. 77-78, Gallica views f81-f82
+  (https://gallica.bnf.fr/ark:/12148/bpt6k6497274t/f81.item, https://gallica.bnf.fr/ark:/12148/bpt6k6497274t/f82.item).
 - **quote** (German, pp. 55-56): "Der Marschall Soult, welcher mit den zwey Divisionen St. Hilaire und Vandamme während der Nacht in das
   Thal bey Kobelnitz war postirt worden, ging mit denselben durch Kobelnitz und Puntowitz, um seinen Angriff auf die Anhöhen und das
   Dorf Pratzen zu richten. Zu gleicher Zeit ging der Marschall Bernadotte über eine schlechte kleine Brücke, auf einige Flintenschüsse
@@ -198,8 +210,9 @@ is a translation of the French original of the same year (its title page: "Aus d
   Stutterheim says); disputed against Mikhailovsky-Danilevsky 1846 p. 229 (the crossing at nightfall, §5.1) and the 30th Bulletin p. 451
   (the centre advancing as the Russian Guard is routed, §1.5).
 - **settles**: in Stutterheim, I Corps crosses at the same time as Soult's attack (the sequence, the basis of drouet@3's departure with
-  Soult's advance, C7), and takes its direction toward the heights by Blasowitz (the plan's completeness critic, item 1): not toward
-  Stare Vinohrady, where the map's drawn route goes.
+  Soult's advance, C7), and takes its direction toward the heights by Blasowitz (the plan's completeness critic, item 1). That these are
+  not the Stare Vinohrady height, where the map's drawn route goes (data.js: Blasowitz [296,147], Stare Vinohrady [313,205]), is this
+  register's inference; Stutterheim names no other height.
 - **does not settle**: a clock hour (none on the page); the route drawn, which is this reconstruction's.
 - **status**: read on the page images (both editions); not yet second-read (H-17).
 
@@ -241,6 +254,32 @@ is a translation of the French original of the same year (its title page: "Aus d
 - **does not settle**: any clock hour; the Santon's regiment (the dated order of 1 December names the 17e légère).
 - **status**: read on the page images; not yet second-read (H-17).
 
+### 2.6 `stut.p64.rhiasky`: the Fanagoria and "Rhiasky" regiments sent to reinforce Kamensky's brigade (p. 64)
+- **source**: stutterheim1806de, p. 64, image n67 (https://archive.org/download/11344011bsb/page/n67.jpg); the French original,
+  stutterheim1806fr, p. 90, Gallica view f94 (https://gallica.bnf.fr/ark:/12148/bpt6k6497274t/f94.item), the page `appearance.js`
+  COMPOSITION.kamensky cites.
+- **quote** (German, p. 64): "Zwey Russische Regimenter von der 2ten Colonne, Fanagorisky Grenadiers und Rhiasky Musketiers, welche als
+  Reserve auf der Anhöhe standen, wo diese Colonne die Nacht über zugebracht hatte, kamen auf Befehl des General en Chef, um die Brigade
+  des General Kamensky zu verstärken."
+- **quote** (French original, p. 90): "Deux régimens russes de la seconde colonne, celui de Fanagorisky grenadiers et Rhiasky
+  mousquetaires, qui étoient en réserve sur la hauteur que cette colonne avoit occupée pendant la nuit, vinrent, par ordre du général en
+  chef, renforcer la brigade du général Kamensky."
+- **translation**: "Two Russian regiments of the 2nd column, the Fanagorisky grenadiers and the Rhiasky musketeers, which stood in
+  reserve on the height where this column had spent the night, came by order of the General en Chef to reinforce General Kamensky's
+  brigade." (The French: "Two Russian regiments of the second column, the Fanagorisky grenadiers and the Rhiasky musketeers, which were
+  in reserve on the height this column had occupied during the night, came, by order of the commander-in-chief, to reinforce General
+  Kamensky's brigade.")
+- **grade**: A (as §2.1: printed 1806 by an officer present; `docs/stage6-evidence/readings-composition.md`
+  al.kamensky.units.stutterheim and al.lang.regiments.md grade the French page A). **label**: disputed (Rjäsan in the Materialien's list,
+  §3.2, and in its translation of Kutuzov's report, §3.4; the brigade formed of these regiments in Mikhailovsky-Danilevsky, §5.6, §6.5;
+  Kutuzov's report has him re-form the two regiments and give them to Kamensky, §3.4).
+- **settles**: the 1806 eyewitness's spelling, "Rhiasky" (both editions); in his account the two regiments, of the 2nd column's reserve,
+  were sent by the commander-in-chief's order to reinforce Kamensky's brigade: they are not the brigade's own regiments.
+- **does not settle**: whether "Rhiasky" renders Ряжскій (Ryazhsk) or Рязанскій (Ryazan): the spelling settles neither (inference; as
+  readings-composition.md al.kamensky.units.stutterheim); what Kamensky's brigade itself was made of; who turned it against the French
+  (§13 F13); a clock hour.
+- **status**: read on the page images (both editions); not yet second-read (H-17).
+
 ## 3. `materialien1806`: the German translation with the editor's additions, 1806
 
 ### 3.1 `mat.p50-51.crossing`: the same crossing in the Materialien's translation (pp. 50-51)
@@ -256,7 +295,9 @@ is a translation of the French original of the same year (its title page: "Aus d
 - **status**: read on the page image; not yet second-read (H-17).
 
 ### 3.2 `mat.p99.ryazan`: Langeron's column list, "Rjäsan" (p. 99)
-- **source**: materialien1806, p. 99 (the editor's list of the Russian regiments by column); image n108.
+- **source**: materialien1806, p. 99 (the editor's list of the Russian regiments by column); image n108
+  (https://archive.org/download/10807964bsb/page/n108.jpg); and pp. 58-59 (its translation of Stutterheim's p. 64, §2.6), images
+  n67-n68 (https://archive.org/download/10807964bsb/page/n67.jpg, https://archive.org/download/10807964bsb/page/n68.jpg).
 - **quote**: "Zweite Colonne, unter General-Lieutenant Graf Langeron. [...] 1 Grenadier-Regiment von Fanagorsk / 1 Regim. Musket. von
   Fanagorsk / 1 Regim. Musket. von Rjäsan / 1 Regim. Musket. von Kursk / 1 Regim. Musket. von Perm / 1 Regim. Musket. von Wiburg"
   (the slashes here separate the list's lines).
@@ -264,11 +305,16 @@ is a translation of the French original of the same year (its title page: "Aus d
   of Fanagoria; 1 musketeer regiment of Ryazan; 1 musketeer regiment of Kursk; 1 musketeer regiment of Perm; 1 musketeer regiment of
   Vyborg".
 - **grade**: B (an 1806 editor's list of unstated origin). **label**: disputed (Ryazan here; Ryazhsk in Mikhailovsky-Danilevsky 1844
-  and 1846, §5.3, §6.2-§6.4, and in Thiébault p. 504, §4.10).
-- **settles**: the Materialien's reading, "Rjäsan", in Langeron's column.
+  and 1846, §5.5, §5.6, §6.2, §6.4, §6.5, and in Thiébault pp. 474, 504, §4.10, §4.11; Stutterheim's "Rhiasky", §2.6, settles neither).
+- **settles**: the Materialien's editor's list reads "Rjäsan" (p. 99), while its translated text reads "Rhiäsky" (p. 58); its
+  translation of Kutuzov's report reads "Rjäsansche" (p. 112, §3.4).
 - **does not settle**: which regiment marched with Kamensky (the list names no brigade); the list also has a "Musket." regiment of
-  Fanagoria beside the grenadiers, as printed.
-- **status**: read on the page image; not yet second-read (H-17).
+  Fanagoria beside the grenadiers, as printed. The same book's translation of Stutterheim prints "Musquetierregiment Rhiäsky" (p. 58,
+  read on images n67-n68: "Zwei russische Regimenter von der zweiten Colonne, nämlich das Grenadierregiment Fanagorisky und
+  Musquetierregiment Rhiäsky, die als Reserve auf der Anhöhe geblieben waren, auf welcher diese Co- / lonne die Nacht zugebracht hatte,
+  erhielten von dem Obergeneral den Befehl die Brigade des Generals Kamensky zu verstärken.", pp. 58-59): the Materialien gives both
+  spellings.
+- **status**: p. 99 read on image n108 and pp. 58-59 on images n67-n68; not yet second-read (H-17).
 
 ### 3.3 `mat.p100-101.santon`: the editor's note on the Santon, the 17th (Zusatz 6, pp. 100-101)
 - **source**: materialien1806, Zusatz 6, pp. 100-101; image n110 (p. 101); p. 100 OCR.
@@ -285,6 +331,35 @@ is a translation of the French original of the same year (its title page: "Aus d
 - **does not settle**: the note is anchored at Suchet's division in the translation (p. 35, OCR: "mit den Divisionen Suchet 6)"), while
   the translation itself keeps Stutterheim's "27sten Infanterie-Regiments" at the Santon (p. 65, OCR); see §13 F12.
 - **status**: p. 101 read on the page image, p. 100 in the OCR; not yet second-read (H-17).
+
+### 3.4 `mat.p110-112.kutuzov`: Kutuzov's official report, translated: "das Fanagorskische und Rjäsansche Regiment" given to Kamensky (Zusatz 11, pp. 110-112)
+- **source**: materialien1806, Zusatz 11, pp. 110-112; images n119 (p. 110, https://archive.org/download/10807964bsb/page/n119.jpg) and
+  n121 (p. 112, https://archive.org/download/10807964bsb/page/n121.jpg); the report's text runs from p. 110 to p. 112 (p. 111 not
+  quoted). Found while checking §3.2 for the review of this register (8 October 2026); not in the plan's list.
+- **quote**: (p. 110) "Zur Vergleichung mit diesem Berichte über den Antheil der vierten Colonne an der Schlacht, kann des General
+  Kutusof's officieller Bericht in der St. Petersburger Hofzeitung (welcher nachdem in dem Moniteur mit Gegenbemerkungen erschien) dienen,
+  da General Kutusof sich während der Schlacht bei dieser Colonne selbst befand." (p. 112) "Auf der Anhöhe fand ich das Fanagorskische
+  und Rjäsansche Regiment von der zweiten Colonne abgeschnitten. Nachdem ich diese Regimenter wieder geordnet hatte, befahl ich dem
+  General-Major, Grafen Kamensky, mit denselben alsogleich den Bergrücken zu besetzen, an dessen Seiten sich der Feind vorbei zog. Diese
+  Regimenter verursachten dem Feinde einen starken Verlust, allein gezwungen der Ueberlegenheit zu weichen, verließen sie den Berg,
+  deployirten am Fuße desselben und blieben im Angesichte des Feindes bis um halb 4 Uhr."
+- **translation**: (p. 110) "For comparison with this account of the fourth column's part in the battle, General Kutuzov's official
+  report in the St Petersburg Court Gazette (which afterwards appeared in the Moniteur with counter-remarks) may serve, since General
+  Kutuzov was himself with this column during the battle." (p. 112) "On the height I found the Fanagoria and Ryazan ('Rjäsansche')
+  regiments of the second column cut off. Having put these regiments in order again, I ordered Major-General Count Kamensky to occupy
+  with them at once the ridge along whose sides the enemy was passing. These regiments caused the enemy a heavy loss but, forced to yield
+  to superior numbers, left the hill, deployed at its foot and remained facing the enemy until half past three."
+- **grade**: A for what the report says (the commander-in-chief's own account, printed in 1806; read here only in the Materialien's
+  German translation of the gazette's text, whose Russian wording and date were not read, so the spelling "Rjäsansche" is the
+  translation's). **label**: fact (what the translated report says); the regiment's name disputed (Ryazhsk in Mikhailovsky-Danilevsky,
+  §5.5, §5.6, §6.2, §6.4, §6.5, and Thiébault's "Riajski", §4.10, §4.11; Stutterheim's "Rhiasky", §2.6); who gave Kamensky the two
+  regiments, and who turned them, disputed (§13 F13).
+- **settles**: in the report as translated, Kutuzov found the Fanagoria and "Rjäsansche" regiments of the second column cut off on the
+  height, re-formed them and ordered Major-General Count Kamensky to occupy the ridge with them; they held at its foot until half past
+  three (the report's hour).
+- **does not settle**: the Russian text's spelling (Ряжскій or Рязанскій); what Kamensky's brigade was before Kutuzov's order; the hour
+  of the order.
+- **status**: pp. 110 and 112 read on the page images; not yet second-read (H-17).
 
 ## 4. `thiebault3_1894`: a brigade commander's memoir, published 1894
 
@@ -327,8 +402,8 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   Thiébault says); the exchange is a memoir anecdote (H-7).
 - **settles**: the anecdote's words as Thiébault gives them: "au plus vingt minutes", "nous attendrons encore un quart d'heure", the signal
   only when an aide reported the heights abandoned, "(un peu prématurément)"; he sets it "au jour naissant", with day at eight (p. 456).
-- **does not settle**: a clock hour for the exchange on these pages; but see §4.10 (p. 504: the aide's report at half past eight) and
-  §13 F1.
+- **does not settle**: a clock hour for the exchange on these pages; but see §4.10 (p. 504: an aide's report at half past eight, which
+  this register identifies with this one by inference) and §13 F1.
 - **status**: read on the page images; not yet second-read (H-17).
 
 ### 4.3 `thieb.p460.friant-legrand`: Friant at about nine; "40 ou 50,000 Russes" (p. 460)
@@ -427,22 +502,51 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   09:45; settling it is step 4's).
 - **status**: read on the page image; not yet second-read (H-17).
 
-### 4.10 `thieb.p504.half-past-eight`: the aide-de-camp at half past eight; "Fanagorski et Riajski"; the 2nd division of I Corps (p. 504)
-- **source**: p. 504; image n517.
+### 4.10 `thieb.p504.half-past-eight`: an aide-de-camp at half past eight; the Fanagoria and "Riajski" regiments beside Kamensky's brigade; the boast of the 2nd division of I Corps (p. 504)
+- **source**: p. 504; image n517 (https://archive.org/download/mmoires03thieuoft/page/n517.jpg).
 - **quote**: "Sans doute, il avait été trompé par l'aide de camp qui, à huit heures et demie du matin, vint lui dire que les derniers corps
   de l'ennemi avaient quitté les hauteurs de Pratzen, alors que la brigade Kamenski, les régiments Fanagorski et Riajski et la quatrième
-  colonne qui devait suivre le mouvement des trois premières s'y trouvaient encore en entier". Further down (OCR): "je n'ai eu besoin, dans
-  cette bataille, ni de la deuxième division du premier corps, ni de ma réserve de grenadiers, ni de ma garde."
+  colonne qui devait suivre le mouvement des trois premières s'y trouvaient encore en entier". Further down: "Ne fût-ce donc que pour
+  cette raison, Napoléon devait nous faire soutenir par une réserve." "J'ai toujours été convaincu que, s'il ne le fit pas, ce fut afin
+  de pouvoir dire : « Par la puissance de mon génie (nous n'en étions pas encore à l'étoile), je n'ai eu besoin, dans cette bataille, ni
+  de la deuxième division du premier corps, ni de ma réserve de grenadiers, ni de ma garde. » Et ce fut cette forfanterie qui l'empêcha
+  de prendre 15,000 hommes de plus".
 - **translation**: "No doubt he had been misled by the aide-de-camp who at half past eight in the morning came to tell him that the last
-  enemy corps had left the heights of Pratzen, while Kamensky's brigade, the Fanagoria and Ryazhsk regiments, and the fourth column that
-  was to follow the movement of the first three were still there in full". "[...] I needed in this battle neither the second division of
-  the first corps, nor my grenadier reserve, nor my guard" (the words Thiébault puts in Napoleon's mouth).
+  enemy corps had left the heights of Pratzen, while Kamensky's brigade, the Fanagoria and Ryazhsk ("Riajski") regiments, and the fourth
+  column that was to follow the movement of the first three were still there in full". "For that reason alone, then, Napoleon ought to
+  have had us supported by a reserve." "I have always been convinced that if he did not, it was so as to be able to say: 'By the power of
+  my genius (we had not yet come to the star), I needed in this battle neither the second division of the first corps, nor my grenadier
+  reserve, nor my guard.' And it was this bragging that kept him from taking 15,000 more men".
 - **grade**: B (a participant's memoir, published 1894). **label**: fact (what Thiébault says); Ryazhsk disputed (Ryazan in the
-  Materialien, §3.2).
-- **settles**: Thiébault gives a clock hour, half past eight, for the aide-de-camp's report that released the attack (§4.2); he names
-  Kamensky's regiments "Fanagorski et Riajski"; he repeats that I Corps' 2nd division was not needed.
-- **does not settle**: the clock's basis; the hour of the twenty-minutes exchange itself ("au jour naissant", p. 456). See §13 F1, F2.
-- **status**: the first sentence read on the page image, the second in the OCR; not yet second-read (H-17).
+  Materialien, §3.2, §3.4); the two regiments' relation to Kamensky's brigade disputed (Mikhailovsky-Danilevsky 1844 p. 187 and 1846
+  p. 251: the brigade formed of them, §5.6, §6.5); the identification of this aide with p. 458's is an inference (below).
+- **settles**: Thiébault gives a clock hour, half past eight, for an aide-de-camp's report that the heights had been abandoned, which
+  this register identifies (inference, from the same words) with the report on which the signal was given (p. 458, "(un peu
+  prématurément)", §4.2); Thiébault says Napoleon was misled by it ("il avait été trompé"). He names the Fanagoria and Ryazhsk regiments
+  ("les régiments Fanagorski et Riajski") on the heights, listed apart from Kamensky's brigade (p. 504) and, on p. 474, as reinforcing it
+  (§4.11); he does not make them the brigade's regiments, and his framing is Stutterheim's (p. 64, §2.6), whom he cites on p. 469 (§4.9)
+  (inference: not an independent witness to the brigade's make-up). He repeats that I Corps' 2nd division was not engaged, in a boast he
+  imputes to Napoleon ("afin de pouvoir dire"; a "forfanterie"), while arguing that a reserve should have supported his brigade.
+- **does not settle**: the clock's basis; the hour of the twenty-minutes exchange itself ("au jour naissant", p. 456); that the aide of
+  p. 504 and the aide of p. 458 are one (no page states it); whether "Riajski" renders Ряжскій (Ryazhsk: the reading of the spelling is an
+  inference). See §13 F1, F2.
+- **status**: read on the page image (both passages; the boast was read in the OCR at first and on image n517 for the review of this
+  register); not yet second-read (H-17).
+
+### 4.11 `thieb.p474.reinforced`: Kamensky's brigade "renforcée par les régiments de Fanagorski et Riajski" (p. 474)
+- **source**: p. 474; image n485 (https://archive.org/download/mmoires03thieuoft/page/n485.jpg).
+- **quote**: "Une fois hors de la portée de notre canon, les débris des régiments repoussés avaient été promptement reformés, et, lorsque
+  la brigade Kamenski, renforcée par les régiments de Fanagorski et Riajski, eut rétabli le combat contre nous, elle s'était trouvée
+  rejointe par ces débris reformés."
+- **translation**: "Once out of range of our guns, the remnants of the regiments driven back had been quickly re-formed, and, when
+  Kamensky's brigade, reinforced by the Fanagoria and Ryazhsk ("Riajski") regiments, had restored the fight against us, it had been
+  joined by these re-formed remnants."
+- **grade**: B (a participant's memoir, published 1894; his own sector). **label**: disputed (Mikhailovsky-Danilevsky 1844 p. 187 and
+  1846 p. 251: the brigade formed of these two regiments, §5.6, §6.5); it agrees with Stutterheim (§2.6) and the Materialien's
+  translation of him (p. 58, §3.2).
+- **settles**: in Thiébault, the two regiments reinforce Kamensky's brigade; they are not its own regiments.
+- **does not settle**: what the brigade itself was made of; a clock hour; whether "Riajski" renders Ряжскій (inference, as §4.10).
+- **status**: read on the page image; not yet second-read (H-17).
 
 ## 5. `mikhailovsky1846`: the official Russian history in French, 1846
 
@@ -547,7 +651,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   "The French forced our troops to evacuate Blasowitz; their batteries fired on the Guard. Only at that moment did Prince Liechtenstein
   appear".
 - **grade**: B. **label**: fact (what it says); Kamensky's hour is not given here (a sequence); Blasowitz's attackers disputed (§2.5, §4.6);
-  the Kursk loss uncertain (one history; §13 F5).
+  the Kursk loss uncertain (one history; §13 F5); the brigade's make-up and who turned it disputed (§2.6, §3.4, §4.11; §13 F13).
 - **settles**: Kamensky turned on seeing the French climb, before Kutuzov arrived (the critic's item 2: "the first to see" was the
   event's side, not this account's); "Riajsk" with Fanagoria, citing Langeron's report; Napoleon's order sending part of Rivaud's division
   and Lannes's Caffarelli and Kellermann toward Blasowitz (p. 255; the plan's question 158 has "p. 256"); Langeron's reinforcement as the
@@ -620,7 +724,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
   brigade, formed it perpendicular against the French right wing, and attacked, wishing to help the 4th column." (Footnote: "Count
   Langeron's report to Kutuzov of 23 November, no. 867.")
 - **grade**: B (citing a report of 23 November old style, 5 December new style: the conversion is derived). **label**: fact (what it
-  says); Ryazhsk disputed (§3.2).
+  says); Ryazhsk disputed (§3.2, §3.4); the brigade's make-up and who turned it disputed (§2.6, §3.4, §4.11; §13 F13).
 - **settles**: the original's Ryazhsk, citing Langeron's report no. 867; the sequence (Kamensky sees the climb, warns Langeron, attacks).
 - **does not settle**: a clock hour; the footnote's day is printed in a bold numeral read as 23 (it could be read 25; the 1846 translation,
   §5.6, has 23).
@@ -732,7 +836,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **status**: OCR; not yet second-read (H-17).
 
 ### 8.2 `marbot.p260.centre-sun`: "le centre, formé par les troupes des maréchaux Soult et Bernadotte"; "ce brillant soleil d'Austerlitz" (p. 260)
-- **source**: p. 260; image n279. (The critic's item 1.)
+- **source**: p. 260; image n279 (https://archive.org/download/mmoiresdugn01marbuoft/page/n279.jpg). (The critic's item 1.)
 - **quote**: "Pendant que notre gauche remportait cet éclatant succès, le centre, formé par les troupes des maréchaux Soult et Bernadotte,
   placé par l'Empereur au fond du ravin de Goldbach où il était caché par un épais brouillard, s'élançait vers le coteau sur lequel est situé
   le village de Pratzen. Ce fut à ce moment que parut dans tout son éclat ce brillant soleil d'Austerlitz, dont Napoléon se plaisait tant à
@@ -798,17 +902,18 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 
 | commit / question | entries |
 |---|---|
+| C3 (125 (a): the kamensky event's text; with C9, kamensky.role) | §2.6, §3.4, §5.6, §6.5, §4.11 (who turned the brigade; §13 F13) |
 | C7 (H-2, Drouet's departure) | §2.1, §2.3 (with the French original), §3.1, §5.1, §1.5; the critic's item 1: §2.3's "nahm seine Richtung nach den Anhöhen bey Blasowitz" |
 | C8 (H-7, the twenty minutes) | §4.2; §4.10 and §13 F1 |
-| C9 (H-11) | §7.2, §7.5 (Rivaud, Drouet); §7.3 (Suchet); §3.2, §5.5, §5.6, §6.2, §6.4, §6.5, §6.6, §4.10 (Ryazhsk or Ryazan); §5.3, §6.3 (Uvarov); §6.7 (Gladkov, Shepelev) |
+| C9 (H-11) | §7.2, §7.5 (Rivaud, Drouet); §7.3 (Suchet); §3.2, §3.4, §2.6, §5.5, §5.6, §6.2, §6.4, §6.5, §6.6, §4.10, §4.11 (Ryazhsk or Ryazan; the brigade's make-up, §13 F2, F13); §5.3, §6.3 (Uvarov); §6.7 (Gladkov, Shepelev) |
 | C10 (H-12) | §1.1, §1.2, §1.4 (the Zuran and the marshals); §5.4, §6.3 (§13 F3, F4); §1.6, §4.8 (the chapel battery's accounts); §5.6 and §13 F5 (Langeron, Kursk) |
 | C11 (H-13, the ice) | §1.6, §4.8, §8.3, §9.1 |
 | C12 (H-14) | §4.3 (Legrand's "40 ou 50,000"), §5.2 (no Allied estimate) |
 | C13 (D-3, the Santon under Suchet) | §1.1, §1.3, §3.3, §7.3, §7.4; §2.5 (Stutterheim's 27th) |
 | C22 (H-9, the sun) | §8.2, §4.4, §4.5, §1.4; §8.1 and §13 F7, F8 |
-| question 153 (Ryazhsk) | §3.2, §5.5, §5.6, §6.2, §6.4, §6.5, §6.6, §6.7, §4.10 |
+| question 153 (Ryazhsk) | §3.2, §3.4, §2.6, §5.5, §5.6, §6.2, §6.4, §6.5, §6.6, §6.7, §4.10, §4.11 (Thiébault pp. 474, 504) |
 | question 155 (division numbers, the grenadiers' artillery) | §7.2-§7.5 |
-| question 157 (I Corps: reserve or centre) | §1.3, §2.1, §5.4, §8.2; §4.7, §4.8, §4.10 |
+| question 157 (I Corps: reserve or centre) | §1.3, §2.1, §5.4, §8.2; §4.7, §4.8, §4.10; §1.1, §1.2 (§13 F11) |
 | question 158 (Blasowitz) | §2.5, §4.6, §5.6; §2.4 (Liechtenstein) |
 | step 4 (125 (b), the disputed hours) | §2.2, §5.4, §5.5, §6.3, §6.4, §4.9, §4.10 |
 
@@ -816,12 +921,21 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 
 Each is recorded for the commit named; none changes a text in this commit (records only).
 
-- **F1 (C8).** Thiébault gives a clock hour for the report that released the attack: "l'aide de camp qui, à huit heures et demie du matin,
-  vint lui dire que les derniers corps de l'ennemi avaient quitté les hauteurs de Pratzen" (p. 504, §4.10). The exchange itself he sets "au
-  jour naissant" (p. 456), with day at eight. The plan's C8 texts say "the hour is this map's" and "the hour this map gives it is its own"
-  for the c. 08:30 line: Thiébault's half past eight, for the aide's report, should be weighed before those words are written.
-- **F2 (C9, question 153).** Thiébault, a participant, names Kamensky's regiments "Fanagorski et Riajski" (p. 504): a witness for Ryazhsk
-  beside Mikhailovsky-Danilevsky, not named in the plan's kamensky strengthNote or question 153.
+- **F1 (C8).** Thiébault gives a clock hour, half past eight, for an aide-de-camp's report that the heights had been abandoned:
+  "l'aide de camp qui, à huit heures et demie du matin, vint lui dire que les derniers corps de l'ennemi avaient quitté les hauteurs de
+  Pratzen" (p. 504, §4.10), which this register identifies (inference, from the same words) with the report on which the signal was given
+  (p. 458, "(un peu prématurément)", §4.2); Thiébault says Napoleon was misled by it ("il avait été trompé"). The exchange itself he sets
+  "au jour naissant" (p. 456), with day at eight. The plan's C8 texts say "the hour is this map's" and "the hour this map gives it is its
+  own" for the c. 08:30 line: Thiébault's half past eight should be weighed before those words are written. If C8 rests a visitor text on
+  it, it attributes the hour to Thiébault's p. 504 and marks the link to the twenty-minutes exchange as an inference.
+- **F2 (C9, question 153).** Thiébault spells the regiment "Riajski" (pp. 474, 504), a witness to the name Ryazhsk (the reading of the
+  spelling as Ряжскій is an inference), but has the Fanagoria and Ryazhsk regiments reinforce Kamensky's brigade (p. 474, §4.11), as
+  Stutterheim does (p. 64, §2.6); Mikhailovsky-Danilevsky forms the brigade of them (1844 p. 187; 1846 p. 251). Keep this disagreement on
+  the brigade's make-up in C9's kamensky texts and in question 153. The 1806 eyewitness, Stutterheim, spells it "Rhiasky" (German p. 64;
+  the French original p. 90; §2.6), a spelling that settles neither name. The Materialien gives both spellings: "Rhiäsky" in its
+  translation of Stutterheim (p. 58) and "Rjäsan" in its editor's list (p. 99, §3.2), and its translation of Kutuzov's official report has
+  "das Fanagorskische und Rjäsansche Regiment" (p. 112, §3.4). The plan's kamensky strengthNote ("Ryazan in the Materialien of 1806")
+  should name which of the Materialien's texts it means.
 - **F3 (step 4; the dok@1 dispute).** The Russian original reads "въ 8-мъ часу утра" (p. 177, §6.3), the hour between seven and eight;
   the 1846 translation has "à huit heures du matin" (p. 238). The plan's §5 lead cites the translation ("at eight"); the original is the
   reading to weigh in step 4.
@@ -845,10 +959,23 @@ Each is recorded for the commit named; none changes a text in this commit (recor
   the 1846 translation (p. 224, OCR), which `appearance.js` COMPOSITION.kienmayer's note quotes.
 - **F10 (step 4).** Mikhailovsky-Danilevsky 1844 p. 179's half past eight has no footnote of its own (the page's one note, Buxhowden's
   report, is anchored to the Telnitz sentence).
-- **F11 (step 4: drouet@0; question 157).** I Corps' position before the attack has four readings: the dispositions order it for 07:00
-  onto Caffarelli's position of 1 December, the left behind the Santon, in column by regiment (no. 9535, p. 442); Stutterheim places it in
-  the night behind Girschikowitz (p. 41); Mikhailovsky-Danilevsky across the brook at nightfall, in front of Girzikowitz (1846 p. 229);
-  Thiébault, after the retreat of 29 November, one division at Girzikowitz and the other at Schlapanitz (p. 449).
+- **F11 (step 4: drouet@0; question 157).** I Corps' position before the attack has five readings, two orders and three accounts. The
+  orders of 1 December send Bernadotte to "la position du bivouac du général Caffarelli" (no. 9534, p. 441, §1.1; no hour; the same
+  orders move Caffarelli to the grenadiers' bivouac), and the dispositions order his two divisions for 07:00 on 2 December onto "la même
+  position qu'occupe, aujourd'hui 10, la division du général Caffarelli", the left behind the Santon, in column by regiment (no. 9535,
+  p. 442, §1.2): no. 9534 (1 December) and no. 9535 (for 07:00 on 2 December) both put I Corps on Caffarelli's ground (whether they mean
+  the same ground the pages do not say). Stutterheim places it in the night behind Girschikowitz (p. 41); Mikhailovsky-Danilevsky across
+  the brook at nightfall, in front of Girzikowitz (1846 p. 229); Thiébault, after the retreat of 29 November, one division at Girzikowitz
+  and the other at Schlapanitz (p. 449).
 - **F12 (C13).** The Materialien keeps Stutterheim's 27th at the Santon in its translation (p. 65, OCR) and gives the 17th in its editor's
   Zusatz 6 (pp. 100-101), anchored at Suchet's division (p. 35, OCR); the dated order of 1 December (no. 9534) and the Bulletin (p. 449)
   name the 17e légère.
+- **F13 (C3 and C9: who turned Kamensky's brigade; found in the review of this register).** The accounts read here differ.
+  Mikhailovsky-Danilevsky has Kamensky see the French climbing, warn Langeron, halt his brigade and attack (1844 pp. 186-187, citing
+  Langeron's report no. 867; 1846 p. 251; §5.6, §6.5). Stutterheim has the Fanagoria and "Rhiasky" regiments sent "auf Befehl des General
+  en Chef" to reinforce Kamensky's brigade (p. 64; the French p. 90; §2.6), and Thiébault has the brigade reinforced by them (p. 474,
+  §4.11); neither says who turned the brigade. Kutuzov's official report, in the Materialien's translation, has Kutuzov find the two
+  regiments cut off on the height, re-form them and order Kamensky to occupy the ridge with them (p. 112, §3.4). The critic's planned
+  kamensky.why for C3 ("Allied initiative on the plateau, taken by a brigade commander on his own judgement") and kamensky.role (C9) rest
+  on Mikhailovsky-Danilevsky's side; Kutuzov's report should be weighed before "on his own judgement" is written (for the lead or the
+  owner).
