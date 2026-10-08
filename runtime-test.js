@@ -476,6 +476,21 @@ try{
     console.log("the disputed hours: "+nA+" unsettled arrows carry their mark, no other arrow in "+nPh+" phases; "+nD+" events graded disputed show it after "+
       "their clock with their dispute, the interval sentence on none of them ("+nDI+" an interval) and on the "+nI+" other intervals OK"); }
 
+  /* owner decision 126 (docs/FINAL_AUDIT.md H-3): the plateau's map label is a derived reading marked so, in its words and its name, drawn
+     in the phases the tagged reading is (0-6) and in none after, its Allied figure the reading's. Read back at the seven clocks above, the
+     outline eased to rest first (it fades). The phase rule is written here, not read from PLATEAU_LAST */
+  { const seen={on:0,off:0}, bad=[];
+    setPresentation("study"); setMode("terrain");
+    [T_MIN,525,600,660,700,764,800].forEach(t=>{ setClock(t); for(let i=0;i<200;i++) updateEventLayer(); updateVisibility(); mlLayout();
+      const it=ML.items["p:plateau"], drawn=!!it&&it.frame===ML.frame, want=curPhase<=6;
+      if(drawn!==want) bad.push(fmtClock(t)+": the label "+(want?"not drawn":"drawn")+" in phase "+curPhase);
+      if(drawn){ if(!/derived/.test(it.el.innerHTML)) bad.push(fmtClock(t)+': its words without "derived"');
+        if(!/derived/.test(it.aria||"")) bad.push(fmtClock(t)+': its name without "derived"');
+        if(it.el.innerHTML.indexOf(plateauStrength("al").toLocaleString())<0) bad.push(fmtClock(t)+": its figure is not the reading"); }
+      seen[want?"on":"off"]++; });
+    if(bad.length||!seen.on||!seen.off) throw new Error("plateau label: "+bad.join("; ")+" (seen "+JSON.stringify(seen)+")");
+    console.log("plateau label: drawn and marked derived, words and name, at "+seen.on+" of 7 clocks (phases 0-6); not drawn at "+seen.off+" OK"); }
+
   /* the sky must repaint through every lighting state without a NaN */
   for(let ph=0;ph<PHASES.length;ph++){
     setPhase(ph,false);

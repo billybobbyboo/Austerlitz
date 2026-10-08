@@ -774,7 +774,7 @@ var SOURCE_NOTE = {
  layers:[
   ["Historical record","What the sources attest: who was there, roughly how many, which villages were attacked and when. Marked as fact in the dossiers."],
   ["Reconstruction","How this map represents the record: a plotted position, a route between anchors, a frontage. Graded A, B or C for confidence and marked estimate or reconstruction."],
-  ["Derived reading","What the engine computes from the plot, such as the holding on the heights or the centre-separation test. Never a source figure; always marked derived."]],
+  ["Derived reading","What the engine computes from the plot, such as the holding on the heights or the centre-separation test. Never a source figure; the holding on the heights and the centre-separation test are marked derived wherever they are shown."]],
  refs:["Order-of-battle figures follow Duffy (1977) and Smith (1998) unless a range is given; a range names its sources in the formation's note.",
        "Narrative of the fight for the Pratzeberg follows accounts drawing on Thiebault's memoirs and Duffy.",
        "Figures for the meres follow the record of the ponds being drained after the battle.",

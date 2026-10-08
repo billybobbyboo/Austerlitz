@@ -3027,6 +3027,9 @@ function eventGlyph(side,kind){
    Empty ground shows nothing, so the plateau is surveyed on the map and the
    holding read off the plotted formations. */
 var plateauRing=null;
+/* owner decision 126 (docs/FINAL_AUDIT.md H-3): the plateau reading is shown in phases 0-6 only: in the Now tab and the caption (tagged), on
+   the map (its label, marked derived in its words and its name) and its outline; from phase 7 (12:45) nowhere */
+var PLATEAU_LAST=6;
 function buildPlateauRing(){
   var pts=[], P=PLATEAU_POLY.concat([PLATEAU_POLY[0]]);
   for(var a=0;a<P.length-1;a++) for(var k=0;k<8;k++){
@@ -3044,7 +3047,7 @@ function buildPlateauRing(){
 }
 function updatePlateauRing(){
   if(!plateauRing) return;
-  var show = curPhase<=7 && presentation!=="map";
+  var show = curPhase<=PLATEAU_LAST && presentation!=="map";   /* the outline goes with its reading (decision 126) */
   var tgt = show?0.5:0;
   var pro=tgt-plateauRing.material.opacity; if(Math.abs(pro)>0.004) settling=true;
   plateauRing.material.opacity += pro*ease(0.06);
@@ -4070,6 +4073,12 @@ function mlAria(it,label){
   if(!it.focusable){ it.el.setAttribute("tabindex","0"); it.el.setAttribute("role","button"); it.focusable=true; }
   it.el.setAttribute("aria-label",label); it.aria=label;
 }
+/* owner decision 126: a name for an item that is read, not pressed (the plateau reading): no keyboard stop and no control's role. Role img
+   names the label as one whole, "derived" in it */
+function mlName(it,label){
+  if(!label||it.aria===label) return;
+  it.el.setAttribute("role","img"); it.el.setAttribute("aria-label",label); it.aria=label;
+}
 /* the items this frame, from the level of detail updateVisibility decided (rec.show, rec.nameShow, o.show, k.labelOn) */
 function mlCollect(){
   var out=[], paper=(mode==="staff"), labels=textOn(), K=paper?"paper":"dark";
@@ -4080,7 +4089,7 @@ function mlCollect(){
   function add(it,o){
     it.cat=o.cat; it.pri=o.pri; it.base=o.base===undefined?o.pri:o.base; it.keep=!!o.keep; it.occl=o.occl!==false; it.acl=o.acl||4;
     it.r=o.r||0; it.mode=o.mode||"label"; it.fid=o.fid||null; it.pick=o.pick||null; it.ground=o.ground||null; it.op=o.op===undefined?1:o.op;
-    it.mk=o.mk||null; mlAria(it,o.aria); out.push(it); return it;
+    it.mk=o.mk||null; mlAria(it,o.aria); if(o.name) mlName(it,o.name); out.push(it); return it;
   }
   function text(key,cat,cls,str,col,w,o){
     var it=mlItem(key,"mlt "+cls);
@@ -4121,10 +4130,11 @@ function mlCollect(){
     text("e:"+k.e.id,"event","mlt-serif",k.e.n,LB.annotation,k.world,{pri:sel?0:4+(1-evWeight(k.e,clock))*0.5,base:4,keep:true,r:2.1,acl:3,
       pick:{kind:"e",id:k.e.id},aria:"Event, "+evTimeText(k.e)+": "+k.e.n+(w[0]===w[1]?"":" (an interval: the hour is not fixed)")});
   });
-  /* the plateau reading, over the northern part of its outline */
-  if(eventGroup&&eventGroup.visible&&plateauRing&&plateauRing.visible){
+  /* the plateau reading, over the northern part of its outline: a derived reading, marked "derived" in its words and its name in every
+     view, drawn in the phases the tagged reading is (0-6; owner decision 126, docs/FINAL_AUDIT.md H-3) */
+  if(eventGroup&&eventGroup.visible&&plateauRing&&plateauRing.visible&&curPhase<=PLATEAU_LAST){
     var pc=W(298,196); _mlR.set(pc[0],displayHeight(pc[0],pc[1])+1.6,pc[1]);
-    text("p:plateau","plateau","mlt-serif",plateauText(),LB.annotation,_mlR,{pri:5,acl:5});
+    text("p:plateau","plateau","mlt-serif",plateauText(),LB.annotation,_mlR,{pri:5,acl:5,name:plateauText(true)});
   }
   /* movement, line, boundary, halt and objective labels, and the plans' */
   var seen={};
@@ -4148,9 +4158,11 @@ function mlCollect(){
   });
   return out;
 }
-function plateauText(){
+/* the label's words and, spoken, its accessible name: both say "derived" (owner decision 126) */
+function plateauText(spoken){
   var al=plateauStrength("al"), fr=plateauStrength("fr");
-  return "THE PRATZEN  ·  Allied ≈ "+al.toLocaleString()+(fr>500?("   French ≈ "+fr.toLocaleString()):"");
+  if(spoken) return "The Pratzen plateau, a derived reading: Allied about "+al.toLocaleString()+(fr>500?(", French about "+fr.toLocaleString()):"");
+  return "THE PRATZEN  ·  derived: Allied ≈ "+al.toLocaleString()+(fr>500?("   French ≈ "+fr.toLocaleString()):"");
 }
 /* the interface panels over the map, read as rectangles once per pass */
 var ML_PANELS=[".rail",".dispatch",".legend",".drawer",".timebar",".tools","#viewmode","#tourbar","#firstrun","#selchip","#layerpop","#vsbadge","#restore"];
@@ -5671,7 +5683,7 @@ function paintSituation(){
            flatFor>=60?1:0,playing?1:0,dw?dw.map(function(e){ return e.id; }).join(","):"-"].join("|");
   if(key===_sitKey) return;
   _sitKey=key;
-  var der=(curPhase<=6&&onH>0)?'<span class="der" title="'+esc(FLAT_NOTE)+'"><small>derived</small> on the heights: Allied &asymp; '+
+  var der=(curPhase<=PLATEAU_LAST&&onH>0)?'<span class="der" title="'+esc(FLAT_NOTE)+'"><small>derived</small> on the heights: Allied &asymp; '+
       onH.toLocaleString()+(flatFor>=60?' <em>plotted strength unchanged</em>':'')+'</span>':"";
   var cutH=cut?'<span class="cut der" title="'+esc(SEP_NOTE)+'"><small>derived</small> centre separation detected</span>':"";
   var c='<span class="act">'+esc(act.n.toUpperCase())+'</span><span class="sep">&middot;</span><span>'+esc(PHASES[curPhase].title)+'</span>';
@@ -7784,6 +7796,44 @@ var AUSTERLITZ_DEBUG=(function(){
       " units above it ("+where+"); vertices within "+lift.toExponential(1)+" of their lift");
     setClock(keep,{instant:true,force:true,camera:false}); finishTween();
   }
+  /* roadmap step 2 (owner decision 126, docs/FINAL_AUDIT.md H-3; the implementation plan's completeness critic, item 5): the check behind
+     SOURCE_NOTE.layers[2][1] ("the holding on the heights and the centre-separation test are marked derived wherever they are shown").
+     At every relief setting, on the landscape, the paper map and the landscape with counters, at a clock in each phase and at 12:44 and
+     12:45: in phases 0-6 the plateau label is drawn, its words and its accessible name say "derived", and it is named as an image, not a
+     control or a keyboard stop; from phase 7 neither the label nor its outline is drawn; in the Now tab and the caption every derived
+     reading drawn carries its "derived" tag, no reading's words stand outside a tagged span, and the holding is not shown from phase 7.
+     The phase rule is written here (6), not read from PLATEAU_LAST */
+  function plateauDayChecks(){
+    var keep=clock, md=mode, pres=presentation, f0=DISPLAY.factor, ms0=MAPCAM.state(), bad=[], n={on:0,off:0,tab:0,cap:0}, runs=0;
+    var T=PHASES.map(function(ph){ return Math.round((ph.t0+ph.t1)/2); }).concat([764,765]);
+    var RE=[/on the heights: Allied/,/centre separation detected/];
+    setPresentation("study");
+    DISPLAY.settings.forEach(function(fct){ setDisplayFactor(fct);
+      ["terrain","staff","hybrid"].forEach(function(m){ if(mode!==m) setMode(m); if(m==="staff") MAPCAM.frameField(true);
+        T.forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); finishTween(); runs++;
+          for(var i=0;i<200;i++) updateEventLayer(); updateVisibility(); mlLayout();
+          var tag=fmtFactor(fct)+"\u00d7 "+m+" "+fmtClock(t), want=curPhase<=6, it=ML.items["p:plateau"], drawn=!!it&&it.frame===ML.frame;   /* collected this pass (it may then lie off screen or under a panel) */
+          if(drawn!==want) bad.push(tag+": the label "+(want?"not drawn":"drawn")+" in phase "+curPhase);
+          if(!want&&plateauRing&&plateauRing.visible) bad.push(tag+": the outline drawn in phase "+curPhase);
+          if(drawn){ n.on++; var nm=it.el.getAttribute("aria-label")||"";
+            if(!/\bderived\b/.test(it.el.textContent)) bad.push(tag+': its words without "derived"');
+            if(!/\bderived\b/.test(nm)) bad.push(tag+': its accessible name without "derived"');
+            if(it.el.getAttribute("role")!=="img"||it.el.hasAttribute("tabindex")) bad.push(tag+": named as a control or a keyboard stop"); }
+          else n.off++;
+          _sitKey=""; paintSituation();
+          [["situation","tab"],["tb-cap","cap"]].forEach(function(q){ var el=document.getElementById(q[0]); if(!el) return;
+            Array.prototype.forEach.call(el.querySelectorAll(".der"),function(d){ var s=d.querySelector("small");
+              if(!s||s.textContent!=="derived") bad.push(tag+": a reading in "+q[0]+" without its tag"); else n[q[1]]++; });
+            var bare=el.cloneNode(true); Array.prototype.forEach.call(bare.querySelectorAll(".der"),function(d){ d.remove(); });
+            RE.forEach(function(re){ if(re.test(bare.textContent)) bad.push(tag+": a derived reading's words in "+q[0]+" outside its tagged span"); });
+            if(!want&&RE[0].test(el.textContent)) bad.push(tag+": the holding shown in "+q[0]+" in phase "+curPhase); });
+        }); }); });
+    setDisplayFactor(f0); if(mode!=="staff") setMode("staff"); MAPCAM.restore(ms0); if(mode!==md) setMode(md);
+    setPresentation(pres); setClock(keep,{instant:true,force:true,camera:false}); finishTween(); _sitKey=""; paintSituation();
+    return [{name:"derived readings (decision 126): at 1x, 4x and 10.33x, on the landscape, the paper map and with counters, the plateau label is drawn in phases 0-6 with \"derived\" in its words and its name (an image, no keyboard stop), and from phase 7 neither it nor its outline; the Now tab's and the caption's readings carry their tag wherever drawn",
+      ok:n.on>0&&n.off>0&&n.tab>0&&n.cap>0&&!bad.length,
+      detail:runs+" views ("+DISPLAY.settings.length+" relief settings x the landscape, the paper map and with counters x "+T.length+" clocks): the label drawn and marked in "+n.on+", not drawn in "+n.off+"; tagged readings "+n.tab+" in the Now tab, "+n.cap+" in the caption"+(bad.length?"; WRONG: "+bad.slice(0,6).join("; "):"")}];
+  }
   /* Stage 6C (docs/STAGE6_SPEC.md section 6.2, "What must hold"; owner decisions 97-104, 107, 109): the figures by class, the side cue,
      the legend, the dossier. Each expectation is derived here from appearance.js and KIT, not read back from kitDress */
   function kitDayChecks(){
@@ -8516,6 +8566,7 @@ var AUSTERLITZ_DEBUG=(function(){
     routeDayChecks().forEach(function(c){ out.push(c); });  /* Stage 5F */
     dayTrackChecks().forEach(function(c){ out.push(c); });  /* Stage 5G */
     kitDayChecks().forEach(function(c){ out.push(c); });    /* Stage 6C */
+    plateauDayChecks().forEach(function(c){ out.push(c); }); /* roadmap step 2: decision 126 */
     setDisplayFactor(saveFactor);
     /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
     var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });
