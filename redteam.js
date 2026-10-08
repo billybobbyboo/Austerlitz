@@ -266,6 +266,12 @@ const PATTERN_STEP={BANNED:"roadmap step 1",CAUSAL:"roadmap step 1",VERDICT:"roa
    (SUPERLATIVE: seven until step 4 and one permanent; COUNTERFACTUAL: none, H-14's two were reworded), so a later step cannot add an entry
    under an earlier pattern's tag */
 const LANG_STEP1_MAX=1, FOUND_MAX={"SUPERLATIVE, roadmap step 2":8,"COUNTERFACTUAL, roadmap step 2":0};
+/* roadmap step 2, C28 (the implementation plan's completeness critic, item 3): an entry's until is checkable. The steps done are named
+   here; an entry whose until begins with one of them is a finding (its task has landed, so the hit it allows must be gone, or the entry
+   is stale), whether or not it still matches. Add a step here when it is recorded complete */
+const DONE_STEPS=["roadmap step 1","roadmap step 2"];
+LANG_ALLOW.forEach(a=>{ if(typeof a.until==="string"&&DONE_STEPS.some(d=>a.until===d||a.until.startsWith(d+",")||a.until.startsWith(d+" ")))
+  fail("language",`LANG_ALLOW entry "${a.phrase}" at ${a.where} is allowed until "${a.until}", a step already done (DONE_STEPS): fix the text or record why it stays`); });
 if(LANG_STEP1.length>LANG_STEP1_MAX) fail("language",`LANG_STEP1 can only shrink (${LANG_STEP1_MAX} at the end of roadmap step 2), it holds ${LANG_STEP1.length}`);
 Object.keys(FOUND_MAX).forEach(tag=>{ const k=LANG_ALLOW.filter(a=>a.found===tag).length;
   if(k>FOUND_MAX[tag]) fail("language",`LANG_ALLOW holds ${k} entries found by "${tag}", more than the ${FOUND_MAX[tag]} that pattern found the day it was added`); });

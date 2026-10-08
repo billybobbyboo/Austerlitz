@@ -539,11 +539,17 @@ Shapes are drawn, not font glyphs (font coverage of symbols differs by system).
 
 - **Claim** (`CLAIM`, guarded, unchanged): fact = filled circle, estimate = half-filled circle,
   reconstruction = hollow circle, on `plate`, with the label. `.pill.claim-fact` and its siblings stay
-  (required by `css-test.js`).
+  (required by `css-test.js`). Since roadmap step 2 (decision 125 (a)): disputed = `split`, a circle divided
+  by a bar (`TOKENS.sym.claim.disputed`, `ICON_SVG.split`), for an event whose hour this reconstruction's own
+  texts give differently; `.pill.claim-disputed` on the claim pills' plate and ink (required by `css-test.js`).
+  A formation's pill words the claim as its position's (`POS_CLAIM`, decision 128 (a)): "Position: documented
+  / estimated / reconstructed", with the same icons.
 - **Evidence layer tags** (record / reconstruction / derived): the same circle family, and a diamond for
   derived; `text-muted` on `plate`.
 - **Source tags** (documented / inference, owner decision 10): neutral `plate`; documented with a filled
-  circle, inference with a hollow circle and in italic, each with its word.
+  circle, inference with a hollow circle and in italic, each with its word. Since roadmap step 2 (question
+  148): a third, ANECDOTE (`SRC_LABEL.anec`), with a half-filled circle (`TOKENS.sym.source.anec`, `half`), for
+  a Command-tab row that tells a memoir anecdote; `.src.anec` on the same plate as the other two, upright.
 - **Event markers:** side colour (decision 1) for every event, including decisions, which keep their own glyph
   shape instead of gold. The dossier header bar uses the side colour, not `NATION.ru.fill` (`app.js:3796`).
 

@@ -15,7 +15,7 @@ Rules for Claude Code: `CLAUDE.md`. State and history: `CHANGELOG.md`. The plan:
 |---|---|
 | `npm install`, then `npx playwright install chromium` | one-time setup |
 | `npm test` | the regression suite (`tools/run-all.sh`): nine suites (CSS and type, data and order of battle, geography, terrain, movement, events, the overclaim scan and retired claims, the runtime against real three.js materials, the arrows bound to the tracks) and the height guard; any error, any unacknowledged warning or any runtime warning fails it |
-| `npm run check:data` | the historical, geographic and model declarations are byte-identical to the reference build (`archive/stage6b-7fc0f6c3.html`) |
+| `npm run check:data` | the historical, geographic and model declarations are byte-identical to the reference build (`archive/step2-f7e1c622.html`, since roadmap step 2) |
 | `npm run check:chronology` | every live timed statement cited or allowed by name (four classes excluded by path, each with its reason), no move early or late but the named conflicts, the arrival rules, the movement audit |
 | `npm run check:contrast` | every visible text in 35 interface states meets WCAG AA and the 10.5 px floor, drawn in the embedded faces |
 | `npm run check:selftest` | the in-app self-test (221 checks) on one page, with the slider and key checks (about 13 minutes; CI runs it) |

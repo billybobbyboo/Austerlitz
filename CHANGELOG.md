@@ -1,5 +1,342 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decisions 142-161)
+
+**Status: for review (#50). The build changed: `austerlitz-command-map.html` 1,927,272 bytes, md5 `f7e1c622fd5d9846a7a12dbab904b467`
+(was the step-1 build, 1,883,794 bytes, md5 `7a86548c5e394853571f28f9e1640a74`).** `check:baseline` moves to this build. `check:data`'s
+reference moves to it too, archived as `archive/step2-f7e1c622.html`: step 2 is a data task, and every guarded declaration it changed is
+listed below with was, is and why (12 changed against the 6B reference: `CLAIM`, `PHASES`, `FORMATIONS`, `FEATURES`, `SOURCE_NOTE`,
+`ANALYSIS`, `COMMAND`, `PLANS`, `EVENTS`, `TOUR`, `COMPOSITION`; `TERRAIN_LINES`; against the new reference all 128 identical). The
+next owner decision is 162. The plan is the step's implementation plan (six cluster designs and twelve reviews combined, with a
+completeness critic; not committed); the commits, in order: C1 `8e53d90` (review
+fixes `8e8ff0c`), C2 `fe32f9c` (`712ee03`), C3 `cd74a81` (`a5139c6`), C4 `db78d7e`, C5 `6fb3a81`, C6 `9df7b11`, C7 `46c1c92`, C8
+`0698201`, C9 `dce7211` (`edfe878`), C10 `f2285da` (`b2a5529`), C11 `fc63ab7`, C12 `1c8dfab`, C13 `7663788`, C14 `78745d4`, C14a
+`8feaa14` (the owner's answers), C15 `0d2e9a2`, C16 `76851e6`, C17 `6f88053`, C18 `c09a407`, C19 `21d6c52`, C20 `2a7b812`, C21 `2b775c1`,
+C22 `57f5f89`, C23 `e439a04`, the review fixes of C14a-C18 `4fb58c9`, C24 `94662a0`, C25 `16e4f43`, C26 `a8aa34a`, the review fixes of
+C19-C23 `574f372`, C27 `83a7e45`, the review fixes of C24-C26 `25cc972`, and C28 (the records and references, this entry). The commits
+were reviewed in segments; each review's issues are fixed in its "review fixes" commit or recorded here, and the commits' own notes give
+each run.
+
+**Owner decisions (142-161).** The plan put twenty questions to the owner (142-159 from the plan, 160 and 161 from its completeness critic,
+items 8 and 10), each default implemented meanwhile in a commit that could be reverted on its own. On 8 October 2026 the owner wrote:
+"Lets go with your recommendations for all." Each is decided as recommended; `docs/ROADMAP.md` (step 2) records them as a table (number,
+question, decision, where). Where the recommendation differed from the default already committed, C14a applied it: 153 (Ryazhsk settled),
+155 (the division numbers marked), 157 (I Corps' two readings marked), 158 (Blasowitz's attackers marked), and 145 (the arrows' shorter
+mark); 146 landed with C27.
+
+**Data changed (guarded declarations: was, is, why), by finding.** Basis letters as in the plan: S a source read and registered
+(`docs/step2-evidence/readings.md`, by section), R a repository record, M a marking that asserts less.
+- **125 (a), H-1: the three disputed hours (C3, C5, C6).**
+  - `CLAIM`: was fact, est, recon; is + `disputed` ("Disputed"; note: "The event is attested, but this reconstruction's own texts give
+    different hours for it, or for part of it: both are shown, and the map keeps its earlier timing until they are checked against the
+    published accounts."). Why: 125 (a); its basis `SOURCE_NOTE` body[5]. The label is a marking class, its wording a design decision.
+  - `EVENTS` columns-move and kamensky: was claim fact, Timing A; is claim disputed, `cf` B, and a `dispute` naming both hours and who
+    gives each ("from 04:00 in this event and on the map, but at about 07:30 in the Telnitz phase's text"; "at about 09:45 in this event
+    and in the Pratzeberg phase's text, but in the 08:45 phase in his brigade's record on this map, whose timing the map keeps"), each
+    ending "This reconstruction has not yet settled it from the published accounts." `t` unchanged (decision 42; question 142). B because
+    Timing A is "dated in a cited source", which neither hour is (question 143).
+  - `EVENTS` kamensky.why: was "The one piece of Allied initiative on the plateau, taken by a brigade commander on his own judgement."; is
+    "Allied initiative on the plateau, but whose is disputed: Mikhailovsky-Danilevsky, citing Langeron's report, has Kamensky see the French
+    climbing, warn Langeron and turn his brigade against them; Kutuzov's official report has Kutuzov re-form two regiments he found cut off
+    on the height and order Kamensky to occupy the ridge." face-about.why: was "... is the first to see what has happened."; is "... sees
+    what has happened." Why: each exclusivity took the event's side of the disputed hour, and the app's own kursk event has Langeron send
+    troops up toward Kamensky (the critic's item 2); who turned the brigade is disputed (S: register §3.4, §5.6, §6.5, §13 F13).
+  - `PHASES`: the c. 07:30, c. 09:45 and c. 11:45 lines each carry the other side ("The hour is disputed: the event of the columns leaving
+    the plateau, and the map, have the descent from 04:00."; "The hour of the turn is disputed: his brigade's record on this map puts it in
+    the 08:45 phase."; "The hour is disputed: the event of Rapp's counter-charge has it from 11:15.").
+  - `FORMATIONS` dok@1, kamensky@3, guard_cav@6 acts: each names the other hour (question 144). The phase-4 lede and tour stop 4 are
+    unchanged: tour stop 4 dates the arrival in the villages, matching the telnitz event at 07:00, so it takes neither side (the critic's
+    item 4; the reason beside its cite in `chronology.js`).
+- **H-2: Drouet's departure (C7).** `FORMATIONS` drouet@3: was undated, creeping from 04:00 to stand 0.5 km ahead of Vandamme at 08:45;
+  is held at its dawn position, departing at 08:45 (`tm.dep` 525, grade C, "app narrative, unsourced"), arriving 09:26 (derived, tactical
+  rate), with a note: Stutterheim (pp. 55-56: I Corps crosses at Girzikowitz with Soult's attack, toward the heights by Blasowitz; the
+  route drawn, toward Stare Vinohrady, is this reconstruction's), Mikhailovsky-Danilevsky's crossing the evening before (1846, p. 229)
+  and the 30th Bulletin (p. 451) kept; "the accounts are not reconciled here". S: register §2.3, §5.3, §1.5.
+- **H-7: Soult's "twenty minutes", one grade (C8).** `PHASES[2]`'s c. 08:30 line, `EVENTS` decision.why, `COMMAND.fr[2]` (two rows),
+  `FEATURES` zuran.story, `FORMATIONS` gqg@3's act, `SOURCE_NOTE.refs` (+1): was graded three ways (plain fact in the Now tab, DOCUMENTED
+  in the Command tab, "a memoir anecdote" in the event, "is said" at the Zuran), with a motive ("to let more of the enemy get down into the
+  valley") and a "deliberate fifteen-minute pause" no record gives; is the event's one grade (est, B), attributed to Thiebault with his
+  words ("twenty minutes at most"; the signal once an aide reported the heights abandoned, "a little prematurely", Thiebault adds), the
+  c. 08:30 hour the map's (Thiebault sets the exchange at daybreak). S: Thiebault t. III pp. 456-458 (§4.2).
+- **H-11: data.js against appearance.js (C9, its review fixes, C14a).**
+  - `FORMATIONS.lich.staff`: was "... the Russian brigades of Gladkov and Uvarov (Duffy 1977; Smith 1998)"; is Shepelev's under Essen and
+    Penitsky's under Uvarov (Schönhals 1873, p. 178), Uvarov's three regiments sent to Bagration's left the evening before in
+    Mikhailovsky-Danilevsky (disputed), and "a brigade of Gladkov" cited from Duffy and Smith "not checked against them: no Gladkov appears
+    in any source read, so that name is unconfirmed".
+  - `FORMATIONS.kamensky.strengthNote`: was "the Ryazan and Fanagoria regiments, about 2,000 each, ..."; is "the Fanagoria Grenadier and
+    Ryazhsk Musketeer regiments, as Mikhailovsky-Danilevsky names them (1844, pp. 167, 179, 187-189, 198, 205, p. 187 citing Langeron's
+    report to Kutuzov; its French translation of 1846 the same), who places the Ryazan regiment in Tolstoy's corps sent to Swedish
+    Pomerania (1844, p. 257). The other reading, kept: Ryazan in the Materialien of 1806 (...) and as cited here from Duffy." with the
+    brigade's make-up disputed (Mikhailovsky-Danilevsky forms it of the two regiments; Stutterheim and Thiébault have them reinforce it).
+    Question 153 (yes, after a second reading of the 1844 page images, register §6.8). `mikhailovsky1844` was already registered in
+    `APPEARANCE_SOURCES` (6B); `COMPOSITION.kamensky`'s note now cites it ("the Russian original puts the Ryazan regiment in Tolstoy's
+    corps", the review of C14a-C18).
+  - `FORMATIONS.kamensky.role`: was "The one piece of Allied initiative on the plateau. Turned about on its own commander's judgement."; is
+    "Allied initiative on the plateau, but whose is disputed: turned about on its own commander's judgement in Mikhailovsky-Danilevsky,
+    citing Langeron's report; ordered onto the ridge by Kutuzov in Kutuzov's official report." (F13; as `EVENTS` kamensky.why).
+  - `FORMATIONS.col4` mixedNote and strengthNote, `milo.strengthNote`: Miloradovich's Russian battalions twelve (Stutterheim 1806;
+    Schönhals 1873, 6,965 men including two pioneer companies and two squadrons of Austrian dragoons) against fourteen (WarHistory); the
+    range [4800,7000] unchanged.
+  - `FORMATIONS` rivaud and drouet desig: was "1re Div., I Corps" / "2e Div., I Corps"; is "1re or 2e" / "2e or 1re", each with a note
+    naming the returns of 26 October (p. 762) and 28 October (pp. 716-717), "neither of 2 December" (S: §7.2, §7.5).
+  - `FORMATIONS.santon.strengthNote`: + Stutterheim's 27th, which the Materialien keep in their translation but give as the 17th light
+    infantry in an editor's note (Zusatz 6, pp. 100-101), listed in Suchet's division on 28 October (Alombert and Colin p. 732). The
+    Santon's desig and `FEATURES` facts stay "17e" unmarked: the order of 1 December (no. 9534, p. 441) and the 30th Bulletin (p. 449) name
+    the 17e légère for the Santon (the critic's item 11, reason restated in C9's review fixes).
+  - `FORMATIONS.suchet.desig`: was "2e Div., V Corps"; C14a "2e or 3e Div., V Corps" with a note; the review of C14a-C18 "3e or 2e Div., V
+    Corps", the sourced reading first: both returns read give the 3rd (pp. 732, 756), and the 2nd on 26 October is Gazan's (p. 755, read
+    in the review of C24-C26); "or 2e" is the map's former reading, kept without a source (question 155: no date claimed for 2 December).
+    `caffarelli` desig "1re Div., III Corps, with V Corps" with a note (28 October, pp. 723-724; p. 69, Caffarelli in the wounded Bisson's
+    place, §7.6); `c_gren.strengthNote`: "No artillery is listed for the division in the orders of battle of 2 December checked; the
+    situation of V Corps of 26 October 1805 lists horse and foot artillery with the grenadier division (Alombert and Colin, t. IV, p. 755)".
+  - `FORMATIONS.c_i`: a new note with both readings, the map's general reserve and the centre in the 30th Bulletin (p. 449), Stutterheim
+    (p. 41), Mikhailovsky-Danilevsky (pp. 238-239) and Marbot (t. I p. 260); Thiebault counts the 2nd division of I Corps among the troops
+    that took no part (pp. 466, 504). Question 157; role and plan column step 4.
+  - `FEATURES.blasowitz.facts` "Contested by": was "Lannes' corps against Bagration and Liechtenstein"; is the Russian Guard the
+    defenders in all three accounts read, the attackers disputed (Lannes's V Corps, Thiebault p. 462; Bernadotte's I Corps, Stutterheim
+    p. 68; both, Mikhailovsky-Danilevsky p. 255), Liechtenstein's arrival disputed (Stutterheim p. 56; Mikhailovsky-Danilevsky p. 257).
+    Question 158; the event's forms step 4.
+  - `COMPOSITION` rivaud, drouet, kamensky, milo, lich notes: no longer "a data question, not changed here"; each names its return or
+    source and page. No grade, value, share or quote changed (appearance 588/588).
+- **H-12: the other silent contradictions (C10, its review fixes).**
+  - `FEATURES.blasowitz.facts` Fell: was "About 11:00"; is "About 11:00-11:15; the hour is not established".
+  - `FORMATIONS.constantine.role`: was "... at around 11:00."; is "... after 11:00; the hour is not established."
+  - `FORMATIONS.lang.role`: was "Langeron was the only Allied commander on the left to react to the loss of the plateau."; is "Warned by
+    Kamensky in Mikhailovsky-Danilevsky's account (citing Langeron's report), Langeron rode back and sent reinforcements up the slope
+    toward him; which regiment, and what it lost, are not established."
+  - The Zuran: `PHASES[0]`'s "c. 06:00 / Napoleon takes post on the Zuran mound ..." is "before dawn / Napoleon is on the Zuran mound
+    with Berthier; his marshals have been ordered to join him for the morning's orders. The map places him there from 04:00; the hour he
+    took post is not established." (the critic's item 8, question 160); `FEATURES.zuran.facts` "from about 06:00" -> "on the morning of the
+    battle; the hour they took post is not established"; gqg@0's act without "the corps commanders". S: no. 9535 p. 443, the 30th Bulletin
+    p. 450, Mikhailovsky-Danilevsky 1844 p. 177. gqg@0's grade A kept (question 160: step 4).
+  - `EVENTS.telnitz.why`: was "The first shot of the battle, ..."; is "The battle opens here, on the Allied left, after a night of outpost
+    contact along the Goldbach: ..." (against Legrand's night skirmishing, R).
+  - `TERRAIN_LINES` (world.js) Western escarpment: was "Steep enough to hide a division at the foot of it."; is "At true scale the plateau is
+    a gentle rise, about 115 m from the Goldbach to the Pratzeberg over some 2.5 km; on the morning of the battle it was the fog in the
+    valley at its foot that hid his divisions." (SOURCE_NOTE's words); Goldbach bottom and `FEATURES.goldbach.why[1]` brought into
+    agreement (an obstacle to guns and formed cavalry, which cross at the villages).
+  - `FORMATIONS.kienmayer.strengthNote` (+ the two halves sum to 6,880, not the 6,800 used, not settled) and `c_iv.strengthNote` (+ the
+    three plotted divisions sum to 20,300, derived; the difference not stated): strengths unchanged.
+  - The chapel battery (`heightguns` track[8].act, strengthNote, `FEATURES.chapel.facts[0]`): was "A battery of 24 guns of the Guard and IV
+    Corps, placed by the chapel"; is three accounts each in its place: 24 guns by the chapel (the Újezd local history), 24 pieces of the
+    Guard that broke the ice (Thiebault p. 466, not placed), twenty guns against a corps backed against a lake (the 30th Bulletin pp.
+    451-452, not placed); the lead-in "For the guns turned on the Allied left at the meres at the end the accounts differ" (C10's review:
+    the Bulletin does not mention ice).
+- **H-13: the ice (C11).** `FEATURES.satschan.story`, `EVENTS.ice.why`, `ANALYSIS` collapse: was "some men certainly died", "The most
+  famous thing that did not happen at Austerlitz", "propaganda that Tolstoy later made permanent", "The catastrophe was encirclement, not
+  drowning"; is the debunking labelled ("This map reads the Bulletin's figure as propaganda and the catastrophe as encirclement rather than
+  drowning: an interpretation"), "some men died there", the drained count "as usually given" and, by inference, a lower bound, and Marbot's
+  and Thiebault's thousands drowned as the other side (question 150). Tolstoy has "some forty men" (Book Three ch. XVIII), so the
+  attribution to him is removed. `SOURCE_NOTE.refs` + the two memoirs. S: §8.3, §4.8, §9.1.
+- **H-14: superlatives, counterfactuals, rounded figures (C12).** `FORMATIONS.col4.note`: "— the single most consequential mistake of the
+  Allied plan" -> "; Russian accounts put the delay chiefly on Kutuzov's reluctance to leave the heights" (R). `FEATURES.vinohrady.why[1]`,
+  `PLANS.fr.cost`, `EVENTS.davout.why`: each counterfactual prefixed "In this map's interpretation, a counterfactual:". `ANALYSIS` plan:
+  "roughly 60,000 men" -> "those four columns"; `PLANS.al.assumed[0]`: "about 50,000 by the Allied estimate" removed (question 151; no
+  record gives either). `ANALYSIS` weakness and cut, `TOUR[6].x`: "nearly 40,000", "Buxhowden's 40,000", "Buxhowden's forty thousand" ->
+  the record's "roughly 33,000 to 40,000", and on tour stop 7 (the opening's step 3) "Buxhowden's columns".
+- **D-3: the Santon under Suchet (C13).** `FORMATIONS.c_v.children`, `suchet` (strengthNote, children), `santon.parent`: was the Santon a
+  sibling of Suchet, so V Corps' formations summed to 14,300 against its 12,700 and the 1,600 were drawn twice; is the Santon Suchet's
+  child, the sums match (6,700 + 6,000), Suchet draws its own battalions only (4 of 5). Strengths and counters unchanged; sim-test's French
+  most on the field at once 69,900 -> 68,300 of 73,000.
+- **D-4: the duplicate key, the dead field, the light keys (C14).** heightguns track[8]: cf "C" then "B" in one object, the later winning;
+  is B only (nothing drawn changes; C's evidence recorded for question 154). heightguns track[7]: a moveMin on a first anchor, never read,
+  removed. `PHASES[0..9].light`: unread since 4B, removed.
+- **H-4's roles (C15, question 147: record-only).** c_iv "The decisive centre assault." -> "The centre assault."; c_gd "..., then decides
+  it." -> "...; then its cavalry charges the Russian Guard and its infantry is committed onto the plateau."; c_cav "decides the cavalry
+  battle in the north" -> "fights the cavalry battle in the north".
+- **H-19, taken early (C16, question 156).** Six `COMPOSITION` Dress notes no longer name the project's files or ids (sthilaire, legrand,
+  friant, caffarelli, suchet, bourcier; wording only).
+- **126 and 128 (a) in `SOURCE_NOTE.layers` (C17, C18).** layers[2][1]: "...; always marked derived." -> "...; the holding on the heights
+  and the centre-separation test are marked derived wherever they are shown." (backed by the new self-test check, below); layers[0][1]
+  "Marked as fact in the dossiers." -> "Marked as fact in an event's dossier."; layers[1][1] "... marked estimate or reconstruction." ->
+  "...; a formation's dossier names the grade as its position's: documented, estimated or reconstructed."
+- **H-9: the sun of Austerlitz (C22, the review fixes of C19-C23).** `PHASES[3].flash`: "The sun of Austerlitz" -> "The sun of Austerlitz,
+  as memoirs call it" (question 149). `SOURCE_NOTE.refs` + "'The sun of Austerlitz' is a phrase the memoirs use: Thiebault puts it in
+  quotation marks for the rising sun, which in his telling greets the attack on Telnitz and Sokolnitz and then lights the climb onto the
+  Pratzen (vol. III, 1894, p. 461); Marbot has it appear in all its brilliance as the centre climbs toward Pratzen, and calls it the sun
+  Napoleon so liked to recall (vol. I, p. 260, the 27th edition); neither gives that climb a clock hour." (§4.4, §8.2).
+- **The open questions (C28; the critic's item 7).** `SOURCE_NOTE.body[5]`: the list of open questions gains, without clock times,
+  after "Kologrivov's command, which rests on one source;": "when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's
+  corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned
+  in the meres; the numbers of Suchet's and Caffarelli's divisions on the day (the October returns give Suchet's the 3rd of V Corps,
+  Gazan's the 2nd, and Caffarelli's the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names;
+  whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and
+  Drouet's divisions in I Corps, which the October returns give differently;", and after the Smith sentence: "Kamensky's musketeer
+  regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 and Duffy give Ryazan, which is kept as the
+  other reading." Why: step 2 put these open questions on screen, and this sentence is the visitor's index of them (the critic's item 7;
+  each from the records above: H-12's hours, the chapel battery, H-13, H-11 and questions 153 and 155). No clock time, so
+  `check:chronology` gains no statement (108 timed statements, as before). Decision 105's tested phrases kept (`test.js` 588/588).
+
+**The sources read (the register).** `docs/step2-evidence/readings.md` (new, C2; revised with every review): every passage step 2's
+sourced texts rest on, read on 8 October 2026 from the scans (archive.org page images and text layers; Mikhailovsky-Danilevsky 1844
+through archive.org's IIIF service; Stutterheim's French original on Gallica's images; Tolstoy from Project Gutenberg), each with the quote
+as printed, a translation, the locator and image, a grade, a label, what it settles and what it does not, and "not yet second-read
+(H-17)" (but §6.8, the second reading for question 153). Sources: the Correspondance t. XI (nos. 9534, 9535, the 30th Bulletin),
+Stutterheim 1806 (German, and the French original), the Materialien 1806, Thiébault t. III, Mikhailovsky-Danilevsky 1844 and 1846,
+Alombert and Colin t. IV (the returns of 26 and 28 October; p. 69), Marbot t. I (27th edition), War and Peace (Maude). Searched and not
+found: "soleil d'Austerlitz" in two Ségur volumes; an Allied estimate of the French strength; "Гладков". Not readable: Duffy 1977, Smith
+1998. Corrected in the reviews: Thiébault's Guard "qui n'eurent pas un coup de fusil à tirer" is on p. 464, not p. 463 (§4.7, §13 F14;
+image n475, read in the review of C24-C26; the commit message of `4fb58c9` and its notes said "pp. 463, 466"); §7.4 records p. 755's
+"2e division aux ordres du général Gazan"; Marbot's Blasiowitz sentence spans pp. 259-260 (§8.4), his sun sentence stands on p. 260.
+
+**Presentation changes** (not guarded; `app.js` unless named)
+- **125 (a), C3, C4, C14a.** The event dossier shows a disputed event's pill, "(the hour is disputed)" after its clock and a section "When it
+  happened: disputed" with its `dispute`; the columns-move dossier no longer adds "The hour is not fixed in the sources, so this is shown as
+  an interval rather than a timestamp." under it, although its dispute covers only Dokhturov's I Column of the four columns (its
+  "Interval, not a timestamp" pill and `CLAIM.disputed`'s "or for part of it" stay; recorded from the review of C4). The two "unsettled"
+  arrows ("I Column descends", phase 1; "Kamensky turns about", phase 4) carry "(disputed)" (`LABELS.arrow.unsettled`; "(hour disputed)"
+  in C4, shortened under question 145 so that Augezd is drawn again at 07:00). The claim icon `split` (Disputed; tokens.js, symbols.js,
+  style.css).
+- **H-7, C8.** A third Command-tab source tag, ANECDOTE (`SRC_LABEL`, `TOKENS.sym.source.anec` "half", `.src.anec`; question 148).
+- **D-3, C13.** The order-of-battle list shows the Santon detachment at the third level, under Suchet's Division, with its strength but
+  without its commander (`buildOOB`'s sub2 rows print no commander; Claparède stays in its dossier). Recorded from the review of C13.
+- **126, C17.** The plateau label "THE PRATZEN  ·  derived: Allied ≈ N   French ≈ M", accessible name "The Pratzen plateau, a derived
+  reading: ..." (an image, no keyboard stop), drawn in phases 0-6; one constant, `PLATEAU_LAST`, governs the label, its outline (a design
+  decision beyond 126: the outline leaves with its reading), the Now tab and the caption.
+- **128 (a), C18.** A formation's pill reads `POS_CLAIM` ("Position: documented / estimated / reconstructed") in the card and the dossier;
+  `CLAIM`'s note is kept only where a track entry names its own claim (heightguns@8-9). The event dossier keeps `CLAIM`'s words.
+- **127 (b), C19, C27.** The Pratzen vantage's title (`shell.html`) "The ground that decided the battle" -> "The Pratzen plateau"; the first-run key's sentence
+  (`paintKey` and `shell.html` `#fr-key`): "The high ground in the centre is the Pratzen plateau, and it decides the battle." -> "... the
+  Pratzen plateau, which this map reads as deciding the battle." (decision 108's words labelled).
+- **H-16, C20.** The Zuran and Allied vantages' titles (`shell.html`): "Napoleon's command post: what he could see" -> "Towards the plateau from near the Zuran
+  mound, Napoleon's first command post: a preset view, not what he saw"; "The field as the Allied staff saw it" -> "Towards the plateau from
+  the east, the Allied side: a preset view, not what the Allied staff saw".
+- **135, C21.** The going key's "vineyards (presumed)" (`TOKENS.sym.going`) and a legend row (`shell.html`) "vineyard at Stare Vinohrady: presumed (whether vines stood there
+  in 1805 is not established)"; `VINEYARD` and the classes unchanged.
+- **H-9, C22, the review fixes of C19-C23.** `lightNotes` attributes the fog and the sun on the climb to the two memoirs and gives
+  Thiebault's hours as his (day only at eight, p. 456; the aide at half past eight, p. 504); the hours drawn stay the narrative's.
+- **H-15, C23, the review fixes of C19-C23.** One helper (`evNote`) gives an event's note wherever it is named outside its dossier: "the
+  hour is disputed" (columns-move, kamensky), "an interval, not a timestamp" (the 10 other windows), "a reconstruction" (kursk): its
+  marker's name and title, its map label's accessible name, the Now tab's strip, the opening's bar, a formation's dossier links and the
+  selection chip; the one-line caption carries it as a tag before the name, followed by a space, where its ellipsis cannot cut it. A
+  departure from H-15's fix sentence ("an interval: the hour is not fixed"), recorded: decision 44 makes soult and counter-march fact-A
+  processes; the eagle's and the Russian Guard's "not established" stays in the phase line, at Stare Vinohrady and in the dossier.
+- **D-5 (b), C24, the review fixes of C24-C26.** The sources sheet's notes read the table: the measures, the Austrian count and model (with
+  its source, without its trailing period claim), the statures' dates, the cloths drawn (a borrowed cloth named) and the grades are read
+  from `APPEARANCE_GRADE`, `DRESS` (`kitDress`), `COLOURS_CARRIED`, `STANDARD_MEASURES`, `KIT.carry` and `SUN_DAY`; the painted patterns'
+  description, which describes the drawing (`KIT.paint`, a design simplification), stays typed and is checked against the table's model
+  and pattern texts (C24's note line "Is: read from" overclaimed for those words). The cloths' "width by height" (C24) is now "the first
+  figure along the fly and the second along the staff, as drawn (Dolleczek's ratios do not say which side is the staff's)"; the cloths
+  drawn in the generic proportion (`KIT.std.aspect`, a design value) are named ("where neither a cloth size nor a painting is read (the
+  Royal Guard of the Kingdom of Italy and the Russian Guard infantry), one generic proportion, a design value").
+- **D-6, C25, C26, the review fixes of C24-C26.** The march row tagged derived ("the plotted leg's length over its time window"); an
+  aggregate's place "Midpoint", tagged derived, with the number of formations averaged ("Midpoint", not "Centre", a tactical word in the
+  narrative); no tag on an aggregate's card when none of its formations is on the field. The plateau's "plotted strength unchanged"
+  follows the plotted holding alone (`plateauDay`, `plateauFlatFor`), not where the clock came from.
+
+**Tests** (no assertion loosened; each new rule shown failing by mutation in the commit's notes)
+- `test.js`: the guard's reach (C1: every top-level declaration of the four data files and app.js's data declarations in check:data's
+  lists); `EV_FIELDS` + `dispute`, a disputed claim without two clock times fails, a dispute on another claim fails, a disputed track
+  entry fails (C3), a disputed hour graded A fails (C5); the Command tab's kinds doc, inf or anec, an anec row saying "memoir anecdote" and
+  a row saying it carrying anec (C8); a parent without its own troops whose formations exceed its strength fails, the pin `santon.parent`
+  (C13: order of battle 42/42); a key declared twice in one object literal of the data files, a moveMin on a first anchor (C14); a Dress
+  note naming `data.js`, "the data", "not changed here" or a formation id fails (C16).
+- `redteam.js` 6a: `SUPERLATIVE` (with `ATTRIBUTED`) and `COUNTERFACTUAL`, with canaries (C12); every entry added since step 1 names the
+  pattern and step that found it (`found`, `KIND_PATTERN`, `PATTERN_STEP`), else it is one step 1 left (`LANG_STEP1`) (C12, a relaxation of
+  step 1's "can only shrink", recorded and made checkable); `LANG_STEP1` can only shrink (one entry), an entry without `found` only for a
+  BANNED, CAUSAL or VERDICT hit, and each `found` tag at most the hits its pattern found the day it was added (`FOUND_MAX`; the review of
+  C12, in the fixes of C24-C26); `DONE_STEPS` (C28; the critic's item 3): an entry whose `until` begins with a done step fails.
+  `LANG_ALLOW` 9 -> 8 (C11) -> 16 (C12) -> 13 (C15) -> 12 (C17) -> 11 (C19) -> 9 (C27): seven superlatives until step 4 and two
+  permanent, each naming its kind ("a statement of method", "attributed words"); `LANG_STEP1` 8 -> 1. `KNOWN_WARN`: "cavalry mean rate 0.82
+  is not above infantry 1.26" (was 1.23; C7).
+- `tools/stage2/chronology.js`: the extractor reads `dispute`; `ALLOW_TIMED` 12 -> 15 (C3 +5 for the other sides, C10 -3 for H-12's and
+  +1 for the phase-0 line's 04:00); `REVIEW` 74 -> 75 rows (drouet@3), `REVIEW_CITES` 172 -> 181; `EXCLUDED_PATHS` 5 -> 4 classes (the light
+  keys gone, C14); four rows' `data.js:78` (the Soult-advance line until C3 inserted a line above it) corrected to `data.js:79`, and
+  sthilaire@3's pair to `data.js:79; data.js:80` (a reference correction from the review of C7; no check reads these locators).
+- `runtime-test.js`: the disputed hours and the arrows' mark (C4); the plateau label at seven clocks (C17); every formation's pill
+  `POS_CLAIM`'s for its claim, none `CLAIM`'s (C18); the event notes and the caption (C23); the notes from the table, 10 table changes
+  followed, the generic cloths named and the painted item's 8 typed words in the table (C24, the fixes of C24-C26); the derived tags at
+  every half hour and an aggregate off the field untagged (C25, the fixes); the plateau note from the clock alone (C26).
+- `css-test.js`: the disputed pill's rule (C3); no measure, grade definition or minutes typed in the notes (C24); the place and march rows
+  built by `posRow` and `marchRow`, `paintSituation` keeping no clock (C25, C26); both copies of the first-run key labelled (C27).
+- The self-test: 217 -> 221 checks (the manifest regenerated in each commit that added one); the four names added: C17 "derived readings
+  (decision 126): at 1x, 4x and 10.33x, on the landscape, the paper map and with counters, the plateau label is drawn in phases 0-6 with
+  "derived" in its words and its name (an image, no keyboard stop), and from phase 7 neither it nor its outline; the Now tab's and the
+  caption's readings carry their tag wherever drawn" (the check behind `SOURCE_NOTE.layers[2][1]`); C23 "events: a disputed hour, an
+  interval or a reconstruction named with its note by its marker and a formation's dossier, and tagged in the caption inside its box; a
+  disputed event's dossier its pill and both hours; an unsettled arrow's label its mark (decision 125, H-1, H-15)"; C25 "derived readings
+  tagged: every formation's march row (Marching, Next move) and every aggregate's midpoint (the mean of its formations on the field, their
+  number named) carry the derived tag, in the full dossier and the card; no aggregate named as a position (docs/FINAL_AUDIT.md D-6)"; C26
+  "derived readings: the plateau's “plotted strength unchanged” follows the plotted holding alone (unchanged for 60 minutes or more before
+  the clock), the same after a jump from 04:00, a jump from 18:00 or played (docs/FINAL_AUDIT.md D-6)". None removed or renamed. Also: the
+  legend check's vine row (C21); the first-run key check pins the whole labelled sentence and forbids the unlabelled verdict (C27); the
+  event-note check allows for the caption's ellipsis and reads the selection chip (the fixes of C19-C23); the derived-tag check fails an
+  absent midpoint tagged (the fixes of C24-C26).
+- `tools/visual/data-invariance.js`: a sixth group, "data in app.js (roadmap step 2, D-5)" (C1: `SUN_DAY`, `FEATURE_GT`, `TIMING_TEXT`,
+  `CONF_TEXT`, `CONF_INTERP`); C28 adds `POS_CLAIM` (the position grades as a visitor is told them, the class of `CONF_TEXT`; the critic's
+  item 6) and `SRC_LABEL` (the Command tab's source grades, ANECDOTE among them, the same class), after the reference moved, so both are
+  compared against this build from now on; `test.js`'s guard names them too.
+
+**Thresholds: one re-measure (decision 146).** `UNOBSTRUCTED["narrow-390"]`: was [0.46, 0.507], is [0.438, 0.507]. Measured .4388 at
+390 x 844 and .5079 at 1280 x 720 in two identical `--only` runs of build `b6da3d47` (C27), by decision 62's rules as `remeasure.js
+--bounds keep` applies them, by hand (the tool refuses `--only` runs): the case's value rounded down to 0.1 point, the 1280 x 720 value met
+and kept. Why: decision 127 (b)'s words make the first-run key one line taller at 390 px (question 146, the owner's answer (a)). Its drop
+limit 7 is kept (4 measured: n:ahq, t:vinohrady, t:santon, t:zuran). `first-run` and `first-run-laptop` met their limits unchanged; no
+opening case moved (decision 121); no other limit changed in step 2.
+
+**Records and references (C28).** The final build archived as `archive/step2-f7e1c622.html`; `package.json`'s `check:data` compares
+against it (was `archive/stage6b-7fc0f6c3.html`) and `check:baseline` takes its md5 and size (was `7a86548c…`, 1,883,794 bytes). The size,
++43,478 bytes (+2.3%). `CLAUDE.md`: the layout table (the archive, `docs/step2-evidence/`, the app.js additions), the guard's seven
+declarations in `app.js`, the `LANG_ALLOW` sentences (9 entries: seven superlatives until step 4, two permanent with their kinds;
+`LANG_STEP1`, `DONE_STEPS`), 6C's "decided words, decision 108, labelled under decision 127 (b)", the `check:data` and `check:baseline`
+sentences, decision 146's re-measure, the current state. `README.md`: the `check:data` reference. `docs/ROADMAP.md`: step 2 "in review
+(#50)", the owner decisions 142-161 as a table, and "What step 2 handed on" (with the critic's items 4 and 12). `docs/VISUAL_SPEC.md`
+§10.4: the claim icon `split` (Disputed), the position pill, and the source tag ANECDOTE (`half`). The open minors of the first segment's
+review (C4, C7, C12, C13, C14) are fixed in `25cc972` or recorded above.
+
+**Verified** (4 cores, headless Chromium 141.0.7390.37 with SwiftShader, Playwright 1.56.0)
+- Per commit, as each commit's notes give it: T on every commit; K on every data commit; D failing by design from C3, its list of changed
+  declarations as the plan gave it; C and S where the commit changed text or a check; targeted `--only` harness runs after the commits
+  that could move map text or a panel (C4, C7, C12, C14a, C17, C18, C22, C23, C25, C26, C27), each case's drops, dropped ids and
+  unobstructed shares compared with the data-task full run.
+- The data-task full `check:visual` (the lead's, on the C14 build `6c051bc8…`): 30 of 30 cases pass, "STAGE0: all checks passed", the
+  self-test 217 of 217; against step 1 only `hybrid-dimmed` dropped 8 instead of 7 (t:girzikowitz, Drouet's new place; limit 13).
+- **On the final tree** (build `f7e1c622…`, 1,927,272 bytes)
+  - `npm test`: "ALL 9 SUITES PASSED (and the height guard)". Height guard 97 sites, 0 presentation calls of `height()`/`hAt()`;
+    `css-test` CSS ERRORS 0, behaviour 9/9; `test.js` ERRORS 0, warnings 0, appearance 588/588, order of battle 42/42, events validated 25,
+    "guard: the 24 declarations of the four data files and app.js's 7 data declarations are in check:data's lists (128 names)"; `geo-test`
+    59 passed, 0 failed; `terrain-test` the meres OK at 1x, 4x and 10.33x (smallest margin 0.0225, as in step 1), the canary 8 of 12;
+    `audit` 0 march-rate and 0 terrain violations; `sim-test` ERRORS 0, 25 events 0 disagreements, worst telnitz 0.82 km, most on the field
+    at once Allied 83,120 of 85,400, French 68,300 of 73,000; `redteam` findings 0, warnings 1 (1 acknowledged), the overclaim scan 7,465
+    strings judged (1,902 prose; not judged: 618 the sources' own words, 2,106 developer, 924 in code positions), 9 allowed (`LANG_ALLOW`, 9
+    entries), 0 notes, retired claims 37 phrases, 0 found; `runtime-test` console.warn unique 0, errors 0; `binding-test` 386 checks, 0
+    failed.
+  - `npm run check:data`: "All 128 DATA declarations are byte-identical to the original build" (against `archive/step2-f7e1c622.html`;
+    against the 6B reference before the move, "DATA CHANGED: 12", the list above).
+  - `npm run check:chronology`: errors 0; 70 moves with a timed statement, 66 consistent, 4 early (the named conflicts dok@1, guard_cav@6,
+    kamensky@3, kamensky@4), 0 late; explicit times 21; 108 timed statements (68 read, 38 excluded by class: 26 tm, 9 phase clocks, 1
+    tolWhy, 2 comments), 93 cited by 74 of 75 `REVIEW` rows (181 cites), 15 allowed; the movement audit 0 findings.
+  - `npm run check:contrast`: 6,260 text elements, 114 pairs, 0 below AA, 0 below 10.5 px, 0 font failures (369 characters in 8 computed
+    fonts); 35 of 35 states reached; 1 console message, allowed (`eye-leave-floor`).
+  - `npm run check:selftest`: 221 of 221, named as the manifest names them; "STAGE0: all checks passed (the self-test only)".
+  - `npm run check:baseline`: passes at `f7e1c622…`, 1,927,272 bytes.
+- <<VF: the lead's final check:visual>>
+
+**Uncertain, or not verified**
+- Historical: every reading is one reader's, "not yet second-read (H-17)" (but §6.8); Duffy 1977 and Smith 1998 could not be read, so the
+  figures cited from them are cited, not checked. The three disputed hours are marked, not settled (125 (b)). Suchet's division number on
+  2 December is open ("3e or 2e": the 2nd has no source read, and on 26 October it is Gazan's); Gladkov is unconfirmed; Uvarov's
+  regiments disputed; the Kursk regiment's part (F5) and who turned Kamensky's brigade (F13) disputed; `COMMAND.al[4]` still says "on his
+  own judgement" under DOCUMENTED. Thiébault's Guard "had not one shot to fire" and "took no part" (pp. 464, 466) stand against the map's
+  guard_inf@6 "Committed onto the plateau" and c_gd's role (F14). The chapel battery's guns and place and the drowning toll stay
+  three-sided. `COLOURS_CARRIED.at_inf.model` is labelled "fact" while its 1805 use is an inference in the 6B reading (the sources sheet now
+  prints it without the period claim).
+- Implementation: the plateau label reads "Allied ≈ 0", marked derived, from 12:27 to 12:44 (the decided phase rule). heightguns@8-9 read
+  "Position: reconstructed" beside "Position B" (the entry's own claim; question 154), where `SOURCE_NOTE.layers[1][1]`'s "a formation's
+  dossier names the grade as its position's" does not hold. An interpolated position between two A anchors reads "Position: documented"
+  (H-5 counts 31.7% of formation-samples; 128 (b)). guard-broken's caption tag is "interval" beside the phase line's "The hour is
+  disputed" (question 161); blasowitz carries no note beside `FEATURES`' "not established". The event's drawn map label keeps its words
+  without its note (its accessible name carries it). The aggregate's untagged absent reading is tried by stubbing `posNow` (no aggregate is
+  off the field at a half hour in the data). `REVIEW`'s other file:line locators written before C3 may point one or more lines off
+  (records; no check reads them). Not done: a screen reader on the new names and marks, a GPU, Firefox or Safari.
+
+**Handed on.** `docs/ROADMAP.md`, "What step 2 hands on", lists what each later step inherits (step 3: the caption's clipped reading,
+question 159; the screen reader on the label and the marks; the drawn map label's note. Step 4: the disputed hours and the other hours,
+Drouet and I Corps, the Guard's part (Thiébault pp. 464, 466), the Zuran and gqg@0's grade (160), the strengths, the chapel battery and
+heightguns@8 (154), the ice, the seven superlatives, H-11's open numbers and names, the claims per statement and H-5's interpolated
+positions (128 (b)), Blasowitz (158, with Marbot pp. 259-260), guard-broken (161), Turas, Posoritz, Kologrivov and the ceiling-derived
+climbs. Step 5: H-19's spelling, H-18, the labels' cost to `pickFormation`, `buildOOB`'s commander, `REVIEW`'s locators).
+
 ## 2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)
 
 **Status: for review (#49). The build changed: `austerlitz-command-map.html` 1,883,794 bytes, md5 `7a86548c5e394853571f28f9e1640a74` (was
