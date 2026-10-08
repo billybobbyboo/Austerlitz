@@ -1936,7 +1936,7 @@ suchet:{ ech:"div", nation:"fr", arm:"inf", desig:"2e Div., V Corps",
 
 santon:{ ech:"bde", nation:"fr", arm:"inf", desig:"17e Légère with the Santon battery", battery:18, guns:18,
   name:"The Santon detachment", commander:"Gen. de brigade Michel Claparède", parent:"c_v",
-  strength:1600, strengthNote:"about 1,600 infantry of the 17e Légère with 18 guns (Duffy/Smith; Tvarožná municipal history)",
+  strength:1600, strengthNote:"about 1,600 infantry of the 17e Légère with 18 guns (Duffy/Smith; Tvarožná municipal history). Stutterheim (1806), an officer of the Allied army present on the day, names the 27th; the Materialien of 1806 correct him to the 17th light infantry, which the French situation of 28 October lists in Suchet's division (Alombert and Colin, t. IV, p. 732)",
   role:"The anchor of the French left. Its slopes were scarped and the crest entrenched before the battle; which face was scarped is not established in the sources checked.",
   track:{
     0:{p:[222,87],st:"fortifying",cf:"A",obj:"Anchor the army's left; the position is not to be given up",act:"Holding the fortified hill north of the highway with eighteen guns"},
@@ -1995,9 +1995,10 @@ c_i:{ ech:"corps", nation:"fr", arm:"inf", desig:"I Corps",
   role:"General reserve behind Soult; feeds Drouet onto the plateau at the crisis.",
   children:["rivaud","drouet"]},
 
-rivaud:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., I Corps",
+rivaud:{ ech:"div", nation:"fr", arm:"inf", desig:"1re or 2e Div., I Corps",
   name:"Rivaud's Division", commander:"Gen. de division Olivier Rivaud", parent:"c_i",
   strength:6000,
+  note:"Its number in I Corps differs between two French returns of October 1805, neither of 2 December: the situation of 28 October numbers Rivaud's division the 2nd (Alombert and Colin, t. IV, p. 717); the force return of 26 October numbers its regiments (the 8e and 45e de ligne, the 54e detached, then under Pacthod) the 1st division, which this map reads as Rivaud's (an inference from its regiments and its brigade general). The two group the corps differently: on 26 October it also had an advance-guard division under Kellermann.",
   track:{
     0:{p:[189,164],st:"reserve",cf:"B",obj:"Close up behind Vandamme",act:"Moving up toward Girzikowitz"},
     3:{tm:{dep:525,gr:"C",basis:"app narrative, unsourced",ev:["Follows Soult onto the plateau","Soult's divisions advance. The mist lifts off the heights."],note:"following Soult, it cannot start before Soult's advance c. 08:45; the arrival is derived"},
@@ -2006,9 +2007,10 @@ rivaud:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., I Corps",
     7:{p:[317,205],st:"holding"},
     9:{p:[334,186],st:"holding"}}},
 
-drouet:{ ech:"div", nation:"fr", arm:"inf", desig:"2e Div., I Corps",
+drouet:{ ech:"div", nation:"fr", arm:"inf", desig:"2e or 1re Div., I Corps",
   name:"Drouet d'Erlon's Division", commander:"Gen. de division Jean-Baptiste Drouet d'Erlon", parent:"c_i",
   strength:7000,
+  note:"Its number in I Corps differs between two French returns of October 1805, neither of 2 December: the 2nd division in the force return of 26 October (the 94e and 95e de ligne with two hussar regiments; the 27e légère then in Kellermann's advance-guard division), the 1st in the situation of 28 October (the 27e légère, 94e and 95e; Alombert and Colin, t. IV, pp. 762 and 716-717).",
   track:{
     0:{p:[179,177],st:"reserve",cf:"B"},
     3:{tm:{dep:525,gr:"C",basis:"app narrative, unsourced",ev:["Soult's divisions advance. The mist lifts off the heights."],note:"this map holds the division at its dawn position until Soult's advance. Stutterheim (1806), an Austrian officer present at the battle, has Bernadotte cross the brook at Girzikowitz at the same time as Soult's attack, Rivaud on the left and Drouet on the right, and has the corps take its direction toward the heights by Blasowitz; Mikhailovsky-Danilevsky (1846) instead has Soult and Bernadotte across the brook from the evening before. The hour is this map's for Soult's advance, c. 08:45, the arrival is derived and the route drawn, toward Stare Vinohrady, is this reconstruction's. The 30th Bulletin has Bernadotte's centre advance at the moment the Russian Guard was routed; the accounts are not reconciled here"},
@@ -2133,8 +2135,8 @@ lang:{ ech:"div", nation:"ru", arm:"inf", desig:"II Column",
 
 kamensky:{ ech:"bde", nation:"ru", arm:"inf", desig:"Brigade, II Column",
   name:"Kamensky's Brigade", commander:"Maj.-Gen. Sergey Kamensky", parent:"lang",
-  strength:4250, strengthRange:[4000,4500], strengthNote:"the Ryazan and Fanagoria regiments, about 2,000 each, with dragoons, Cossacks and pioneers attached (Duffy, via the Langeron column return)",
-  role:"The one piece of Allied initiative on the plateau. Turned about on its own commander's judgement.",
+  strength:4250, strengthRange:[4000,4500], strengthNote:"the Fanagoria Grenadiers and a musketeer regiment: Ryazhsk in Mikhailovsky-Danilevsky (1844, citing Langeron's report to Kutuzov; its French translation of 1846 the same), or Ryazan in the Materialien of 1806 and as cited here from Duffy (disputed); about 2,000 each, with dragoons, Cossacks and pioneers attached (Duffy, via the Langeron column return)",
+  role:"Allied initiative on the plateau. Turned about on its own commander's judgement.",
   track:{
     2:{p:[259,316],st:"march",cf:"B",obj:"Follow the II Column to Sokolnitz",act:"Marching at the rear of Langeron's column"},
     3:{p:[269,298],st:"countermarch",cf:"A",obj:"Retake the Pratzeberg",act:"Kamensky sees the French on the height behind him, sends word to Langeron and turns his brigade about (the hour is disputed: about 09:45 in the event and in the Pratzeberg phase's text)"},
@@ -2159,8 +2161,8 @@ prz:{ ech:"div", nation:"ru", arm:"inf", desig:"III Column",
 
 col4:{ ech:"corps", nation:"at", arm:"inf", desig:"IV Column",
   name:"Fourth Column", commander:"FZM Johann Kollowrat and Lt.-Gen. Mikhail Miloradovich", parent:null,
-  strength:13900, strengthRange:[12000,23900], mixedNote:"Austrian and Russian: fifteen Austrian battalions and fourteen Russian",
-  strengthNote:"13,900 infantry with 52 light and 24 heavy guns (Duffy 1977; Smith 1998), used here. Other figures: about 12,000 with fourteen Russian battalions (WarHistory); 17,000 (Napoleon-Empire); 23,900 (Chandler, and an older revision of the same order of battle)",
+  strength:13900, strengthRange:[12000,23900], mixedNote:"Austrian and Russian: fifteen Austrian battalions and twelve Russian (Stutterheim 1806; Schönhals 1873), or fourteen Russian (WarHistory)",
+  strengthNote:"13,900 infantry with 52 light and 24 heavy guns (Duffy 1977; Smith 1998), used here. Other figures: about 12,000 with fourteen Russian battalions (WarHistory; Stutterheim 1806 and Schönhals 1873 count twelve); 17,000 (Napoleon-Empire); 23,900 (Chandler, and an older revision of the same order of battle)",
   role:"Should have replaced the troops leaving the plateau. Delayed, then caught in the open by Soult.",
   children:["milo","kollo"],
   note:"Its objective was Kobelnitz. Liechtenstein's cavalry, misplaced on the left, crossed its line of march riding north-west and held it up — the single most consequential mistake of the Allied plan."},
@@ -2168,7 +2170,7 @@ col4:{ ech:"corps", nation:"at", arm:"inf", desig:"IV Column",
 milo:{ ech:"div", nation:"ru", arm:"inf", desig:"Russian wing, IV Column",
   name:"Miloradovich's Russians", commander:"Lt.-Gen. Mikhail Miloradovich", parent:"col4",
   strength:4800, strengthRange:[4800,7000],
-  strengthNote:"Duffy and Smith imply about 4,800 (13,900 less the Austrian brigades' 9,100); fourteen battalions at 350-500 men would give 4,900-7,000. The earlier 10,000 had no source",
+  strengthNote:"Duffy and Smith imply about 4,800 (13,900 less the Austrian brigades' 9,100); Schönhals (1873) gives the Russian wing twelve battalions and 6,965 men, including two pioneer companies and two squadrons of Austrian dragoons (Smolensk's figures not printed), and Stutterheim (1806) twelve battalions; WarHistory has fourteen, which at 350-500 men would give 4,900-7,000. The earlier 10,000 had no source",
   track:{
     0:{p:[325,230],st:"forming",cf:"A",obj:"Advance on Kobelnitz",act:"Formed on the plateau near Pratzen village"},
     2:{p:[299,238],st:"delayed",cf:"A",obj:"Advance on Kobelnitz",act:"Held up while Liechtenstein's cavalry crosses its front from left to right"},
@@ -2195,7 +2197,7 @@ kollo:{ ech:"div", nation:"at", arm:"inf", desig:"Austrian wing, IV Column",
 
 lich:{ ech:"corps", nation:"ru", arm:"cav", desig:"V Column", mix:{nation:"at", share:0.2},
   name:"Fifth Column (cavalry)", commander:"FML Prince Johann von Liechtenstein",
-  staff:"Mixed, mostly Russian: the Austrian cuirassier brigades of Caramelli and Weber (about 1,100) and the Russian brigades of Gladkov and Uvarov (Duffy 1977; Smith 1998)", parent:null,
+  staff:"Mixed, mostly Russian: the Austrian cuirassier brigades of Caramelli and Weber (about 1,100; Schönhals 1873; Duffy 1977; Smith 1998) and the Russian brigades of Shepelev, under Lt.-Gen. Essen, and Penitsky, under Lt.-Gen. Uvarov (Schönhals 1873); Mikhailovsky-Danilevsky has Uvarov's three regiments sent to Bagration's left the evening before (disputed). Duffy and Smith are cited here for a brigade of Gladkov, not checked against them: no Gladkov appears in any source read, so that name is unconfirmed", parent:null,
   strength:5400, strengthNote:"about 4,600 to 5,400; orders of battle that count Uvarov's Russian horse within the column give up to 7,000, with 24 guns", guns:24,
   role:"Deployed on the wrong flank overnight; its counter-march across the 4th Column's front contributed to that column's late start.",
   track:{
@@ -2957,10 +2959,10 @@ var COMPOSITION = {
   bourcier: {note:"six regiments on 28 October; Martinien records officer casualties at Austerlitz for the 15e, 17e, 18e and 19e only (martinien1899), consistent with the data's 'only a fraction reached the field'",
     parts:[
       {dress:"fr_dragoon", n:6, unit:"regt", v:"15e, 17e, 27e, 18e, 19e, 25e dragons", src:"alombert4_1908", at:"p. 743", gr:"B", lab:"fact", q:"15e, 17e, 27e, 18e, 19e, 25e dragons"}]},
-  rivaud: {note:"labelled the 2nd division of I Corps on 28 October, where data.js has Rivaud's as the 1st (a data question, not changed here); battalion counts not printed",
+  rivaud: {note:"labelled the 2nd division of I Corps in the situation of 28 October (alombert4_1908, p. 717); the force return of 26 October (p. 762) numbers its regiments the 1st division, then under Pacthod (that this is Rivaud's division is an inference from the regiments): the number is disputed; battalion counts not printed",
     parts:[
       {dress:"fr_line", n:3, unit:"regt", v:"8e de ligne ; 45e de ligne ; 54e de ligne", src:"alombert4_1908", at:"p. 717", gr:"B", lab:"fact", q:"8e de ligne ; 45e de ligne ; 54e de ligne"}]},
-  drouet: {note:"labelled the 1st division of I Corps on 28 October, where data.js has Drouet's as the 2nd (a data question, not changed here); battalion counts not printed",
+  drouet: {note:"labelled the 1st division of I Corps in the situation of 28 October (alombert4_1908, pp. 716-717) and the 2nd in the force return of 26 October (p. 762; the 27e légère then with Kellermann's advance guard): the number is disputed; battalion counts not printed",
     parts:[
       {dress:"fr_light", n:1, unit:"regt", v:"27e légère", src:"alombert4_1908", at:"pp. 716-717", gr:"B", lab:"fact", q:"27e légère ; 94e de ligne ; 95e de ligne"},
       {dress:"fr_line", n:2, unit:"regt", v:"94e de ligne ; 95e de ligne", src:"alombert4_1908", at:"p. 717", gr:"B", lab:"fact", q:"27e légère ; 94e de ligne ; 95e de ligne"}]},
@@ -3006,7 +3008,7 @@ var COMPOSITION = {
     parts:[
       {dress:"ru_jager", n:2, unit:"bn", v:"8. Jäger-Regiment ... 2 — — 670", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"8. Jäger-Regiment"},
       {dress:"ru_musk", n:9, unit:"bn", v:"Wiborskoy ... 3; Permskoy ... 3; Kurskoy ... 3", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Kurskoy"}]},
-  kamensky: {note:"the musketeer regiment is 'Riajsk' (mikhailovsky1846, pp. 241-242) or 'Riasky' (schoenhals1873) or 'Rhiasky' (stutterheim1806fr, p. 90): Ryazhsk or Ryazan, unresolved (the data says Ryazan); Stutterheim has the two regiments sent to reinforce Kamensky's brigade",
+  kamensky: {note:"the musketeer regiment is 'Riajsk' (mikhailovsky1846, pp. 241-242) or 'Riasky' (schoenhals1873) or 'Rhiasky' (stutterheim1806fr, p. 90): Ryazhsk or Ryazan, unresolved, the Materialien printing 'Rjäsan', Ryazan (materialien1806, p. 99); Stutterheim has the two regiments sent to reinforce Kamensky's brigade",
     parts:[
       {dress:"ru_gren", n:3, unit:"bn", v:"Tanagorisky [sic] ... 3 2000", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Tanagorisky"},
       {dress:"ru_musk", n:3, unit:"bn", v:"Riasky ... 3 2000", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Riasky"}]},
@@ -3015,7 +3017,7 @@ var COMPOSITION = {
     parts:[
       {dress:"ru_jager", n:1, unit:"bn", v:"8. Jäger-Regiment ... 1 — — 1300", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"8. Jäger-Regiment"},
       {dress:"ru_musk", n:15, unit:"bn", v:"Gallizi ... 3; Budiersky ... 3; Podolsky ... 3; Norwa ... 3; Asow ... 3", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Gallizi"}]},
-  milo: {note:"Schönhals's Russian total is 12 battalions (Smolensk printed without figures: 3, derived); data.js says fourteen Russian battalions (col4.mixedNote): a data question, not changed here",
+  milo: {note:"Schönhals's Russian total is 12 battalions (Smolensk printed without figures: 3, derived), as Stutterheim's 'douze bataillons russes' (stutterheim1806fr, p. 51); this reconstruction keeps WarHistory's fourteen beside them: the count is disputed",
     others:[{dress:"at_gen_cav", n:2, unit:"sqn", v:"Erzherzog Johann-Dragoner ... — — 2 125", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Erzherzog Johann-Dragoner"}],
     parts:[
       {dress:"ru_musk", n:9, unit:"bn", v:"Novogrolsky ... 3; Apscheronsky ... 3; Sonolenskoy", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"derived", q:"Apscheronsky"},
@@ -3024,7 +3026,7 @@ var COMPOSITION = {
     parts:[
       {dress:"at_line", n:15, unit:"bn", v:"Salzburg ... 6; Kaunitz ... 1; Auersperg ... 1; Kaiser ... 1; Czartorisky ... 1; Reuss-Greutz ... 1; Württemberg ... 1; Beaulieu ... 1; Kerpen ... 1; Lindenau ... 1", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Salzburg",
         note:"the same ten regiments in the 1806 Materialien's list of 27 November (materialien1806, pp. 22-23) and in the German edition of Stutterheim (stutterheim1806de, pp. 28-29)"}]},
-  lich: {note:"Mikhailovsky-Danilevsky puts the Empress's cuirassiers and the St Petersburg dragoons with Bagration (mikhailovsky1846, p. 226) and has Uvarov's three regiments sent to Bagration's left on the evening before (p. 233): disputed. No 'Gladkov' appears in any source read; the Russian brigades are Shepelev's and Penitsky's. Shares by men, as the data's mix (Austrians 1,100 of 5,600)",
+  lich: {note:"Mikhailovsky-Danilevsky puts the Empress's cuirassiers and the St Petersburg dragoons with Bagration (mikhailovsky1846, p. 226) and has Uvarov's three regiments sent to Bagration's left on the evening before (p. 233): disputed. No 'Gladkov' appears in any source read; in Schönhals the Russian brigades are Shepelev's ('Czepelow', under Essen) and Penitsky's ('Penitzky', under Uvarov) (schoenhals1873, p. 178). Shares by men (the Austrians 1,100 of 5,600)",
     parts:[
       {dress:"at_cuirassier", n:1100, unit:"men", v:"Nassau-Cürassier — — 8 300; Lothringen-Cürassier — — 8 300; Kaiser-Cürassier — — 8 500", src:"schoenhals1873", at:"p. 178", gr:"B", lab:"fact", q:"Lothringen-Cürassier",
         note:"Lorraine and Nassau also named by Stutterheim, present (stutterheim1806fr, p. 94)"},

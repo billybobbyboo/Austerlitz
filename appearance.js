@@ -542,10 +542,10 @@ var COMPOSITION = {
   bourcier: {note:"six regiments on 28 October; Martinien records officer casualties at Austerlitz for the 15e, 17e, 18e and 19e only (martinien1899), consistent with the data's 'only a fraction reached the field'",
     parts:[
       {dress:"fr_dragoon", n:6, unit:"regt", v:"15e, 17e, 27e, 18e, 19e, 25e dragons", src:"alombert4_1908", at:"p. 743", gr:"B", lab:"fact", q:"15e, 17e, 27e, 18e, 19e, 25e dragons"}]},
-  rivaud: {note:"labelled the 2nd division of I Corps on 28 October, where data.js has Rivaud's as the 1st (a data question, not changed here); battalion counts not printed",
+  rivaud: {note:"labelled the 2nd division of I Corps in the situation of 28 October (alombert4_1908, p. 717); the force return of 26 October (p. 762) numbers its regiments the 1st division, then under Pacthod (that this is Rivaud's division is an inference from the regiments): the number is disputed; battalion counts not printed",
     parts:[
       {dress:"fr_line", n:3, unit:"regt", v:"8e de ligne ; 45e de ligne ; 54e de ligne", src:"alombert4_1908", at:"p. 717", gr:"B", lab:"fact", q:"8e de ligne ; 45e de ligne ; 54e de ligne"}]},
-  drouet: {note:"labelled the 1st division of I Corps on 28 October, where data.js has Drouet's as the 2nd (a data question, not changed here); battalion counts not printed",
+  drouet: {note:"labelled the 1st division of I Corps in the situation of 28 October (alombert4_1908, pp. 716-717) and the 2nd in the force return of 26 October (p. 762; the 27e légère then with Kellermann's advance guard): the number is disputed; battalion counts not printed",
     parts:[
       {dress:"fr_light", n:1, unit:"regt", v:"27e légère", src:"alombert4_1908", at:"pp. 716-717", gr:"B", lab:"fact", q:"27e légère ; 94e de ligne ; 95e de ligne"},
       {dress:"fr_line", n:2, unit:"regt", v:"94e de ligne ; 95e de ligne", src:"alombert4_1908", at:"p. 717", gr:"B", lab:"fact", q:"27e légère ; 94e de ligne ; 95e de ligne"}]},
@@ -591,7 +591,7 @@ var COMPOSITION = {
     parts:[
       {dress:"ru_jager", n:2, unit:"bn", v:"8. Jäger-Regiment ... 2 — — 670", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"8. Jäger-Regiment"},
       {dress:"ru_musk", n:9, unit:"bn", v:"Wiborskoy ... 3; Permskoy ... 3; Kurskoy ... 3", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Kurskoy"}]},
-  kamensky: {note:"the musketeer regiment is 'Riajsk' (mikhailovsky1846, pp. 241-242) or 'Riasky' (schoenhals1873) or 'Rhiasky' (stutterheim1806fr, p. 90): Ryazhsk or Ryazan, unresolved (the data says Ryazan); Stutterheim has the two regiments sent to reinforce Kamensky's brigade",
+  kamensky: {note:"the musketeer regiment is 'Riajsk' (mikhailovsky1846, pp. 241-242) or 'Riasky' (schoenhals1873) or 'Rhiasky' (stutterheim1806fr, p. 90): Ryazhsk or Ryazan, unresolved, the Materialien printing 'Rjäsan', Ryazan (materialien1806, p. 99); Stutterheim has the two regiments sent to reinforce Kamensky's brigade",
     parts:[
       {dress:"ru_gren", n:3, unit:"bn", v:"Tanagorisky [sic] ... 3 2000", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Tanagorisky"},
       {dress:"ru_musk", n:3, unit:"bn", v:"Riasky ... 3 2000", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Riasky"}]},
@@ -600,7 +600,7 @@ var COMPOSITION = {
     parts:[
       {dress:"ru_jager", n:1, unit:"bn", v:"8. Jäger-Regiment ... 1 — — 1300", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"8. Jäger-Regiment"},
       {dress:"ru_musk", n:15, unit:"bn", v:"Gallizi ... 3; Budiersky ... 3; Podolsky ... 3; Norwa ... 3; Asow ... 3", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Gallizi"}]},
-  milo: {note:"Schönhals's Russian total is 12 battalions (Smolensk printed without figures: 3, derived); data.js says fourteen Russian battalions (col4.mixedNote): a data question, not changed here",
+  milo: {note:"Schönhals's Russian total is 12 battalions (Smolensk printed without figures: 3, derived), as Stutterheim's 'douze bataillons russes' (stutterheim1806fr, p. 51); this reconstruction keeps WarHistory's fourteen beside them: the count is disputed",
     others:[{dress:"at_gen_cav", n:2, unit:"sqn", v:"Erzherzog Johann-Dragoner ... — — 2 125", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Erzherzog Johann-Dragoner"}],
     parts:[
       {dress:"ru_musk", n:9, unit:"bn", v:"Novogrolsky ... 3; Apscheronsky ... 3; Sonolenskoy", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"derived", q:"Apscheronsky"},
@@ -609,7 +609,7 @@ var COMPOSITION = {
     parts:[
       {dress:"at_line", n:15, unit:"bn", v:"Salzburg ... 6; Kaunitz ... 1; Auersperg ... 1; Kaiser ... 1; Czartorisky ... 1; Reuss-Greutz ... 1; Württemberg ... 1; Beaulieu ... 1; Kerpen ... 1; Lindenau ... 1", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Salzburg",
         note:"the same ten regiments in the 1806 Materialien's list of 27 November (materialien1806, pp. 22-23) and in the German edition of Stutterheim (stutterheim1806de, pp. 28-29)"}]},
-  lich: {note:"Mikhailovsky-Danilevsky puts the Empress's cuirassiers and the St Petersburg dragoons with Bagration (mikhailovsky1846, p. 226) and has Uvarov's three regiments sent to Bagration's left on the evening before (p. 233): disputed. No 'Gladkov' appears in any source read; the Russian brigades are Shepelev's and Penitsky's. Shares by men, as the data's mix (Austrians 1,100 of 5,600)",
+  lich: {note:"Mikhailovsky-Danilevsky puts the Empress's cuirassiers and the St Petersburg dragoons with Bagration (mikhailovsky1846, p. 226) and has Uvarov's three regiments sent to Bagration's left on the evening before (p. 233): disputed. No 'Gladkov' appears in any source read; in Schönhals the Russian brigades are Shepelev's ('Czepelow', under Essen) and Penitsky's ('Penitzky', under Uvarov) (schoenhals1873, p. 178). Shares by men (the Austrians 1,100 of 5,600)",
     parts:[
       {dress:"at_cuirassier", n:1100, unit:"men", v:"Nassau-Cürassier — — 8 300; Lothringen-Cürassier — — 8 300; Kaiser-Cürassier — — 8 500", src:"schoenhals1873", at:"p. 178", gr:"B", lab:"fact", q:"Lothringen-Cürassier",
         note:"Lorraine and Nassau also named by Stutterheim, present (stutterheim1806fr, p. 94)"},
