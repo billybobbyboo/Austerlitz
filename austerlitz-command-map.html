@@ -1907,7 +1907,7 @@ c_v:{ ech:"corps", nation:"fr", arm:"inf", desig:"V Corps",
   name:"V Corps", commander:"Marshal Jean Lannes", parent:null,
   strength:12700, strengthNote:"about 12,700 with 20 guns",
   role:"Holds and then advances along the Brünn–Olmütz highway; forbidden to press too hard early.",
-  children:["caffarelli","suchet","santon"]},
+  children:["caffarelli","suchet"]},
 
 caffarelli:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., V Corps",
   name:"Caffarelli's Division", commander:"Gen. de division Marie-François de Caffarelli du Falga",
@@ -1924,7 +1924,8 @@ caffarelli:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., V Corps",
 
 suchet:{ ech:"div", nation:"fr", arm:"inf", desig:"2e Div., V Corps",
   name:"Suchet's Division", commander:"Gen. de division Louis-Gabriel Suchet", parent:"c_v",
-  strength:6000, strengthNote:"about 6,000, including the detachment on the Santon",
+  strength:6000, strengthNote:"about 6,000, including the detachment on the Santon: the 17e Légère, of this division (numbered there the 3rd of V Corps) in the French situation of 28 October 1805 (Alombert and Colin, t. IV, p. 732)",
+  children:["santon"],
   track:{
     0:{p:[225,97],st:"holding",cf:"A",obj:"Hold the highway on the Santon's flank",act:"Formed astride the road under the fortified hill"},
     5:{tm:{dep:570,gr:"B",basis:"app narrative, unsourced",ev:["Lannes advances along the highway. Bagration counter-attacks."],note:"Lannes's advance is dated c. 09:30; before it the division holds"},
@@ -1935,7 +1936,7 @@ suchet:{ ech:"div", nation:"fr", arm:"inf", desig:"2e Div., V Corps",
     9:{p:[321,38],st:"holding"}}},
 
 santon:{ ech:"bde", nation:"fr", arm:"inf", desig:"17e Légère with the Santon battery", battery:18, guns:18,
-  name:"The Santon detachment", commander:"Gen. de brigade Michel Claparède", parent:"c_v",
+  name:"The Santon detachment", commander:"Gen. de brigade Michel Claparède", parent:"suchet",
   strength:1600, strengthNote:"about 1,600 infantry of the 17e Légère with 18 guns (Duffy/Smith; Tvarožná municipal history). Stutterheim (1806), an officer of the Allied army present on the day, names the 27th; the Materialien of 1806 keep his 27th in their translation but give the 17th light infantry in an editor's note (Zusatz 6, pp. 100-101), which the French situation of 28 October lists in Suchet's division (Alombert and Colin, t. IV, p. 732)",
   role:"The anchor of the French left. Its slopes were scarped and the crest entrenched before the battle; which face was scarped is not established in the sources checked.",
   track:{

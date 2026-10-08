@@ -68,6 +68,7 @@ Object.keys(FORMATIONS).filter(id=>FORMATIONS[id].children).forEach(id=>{
   const f=FORMATIONS[id], sum=f.children.reduce((t,k)=>t+aggOf(k),0);
   const ownTroops=!!f.track && f.arm!=="hq";          /* a column that also has a detachment, like Langeron's */
   if(ownTroops){ if(sum>f.strength) errs.push(id+": detachments ("+sum+") exceed the parent ("+f.strength+")"); return; }
+  if(f.strength && sum>f.strength) errs.push(id+": its formations ("+sum+") exceed its declared strength ("+f.strength+"): a detachment counted beside its parent, not under it (docs/FINAL_AUDIT.md D-3)");
   if(f.strength && Math.abs(f.strength-sum)/f.strength>0.30) warn.push(id+": declared "+f.strength+" vs children "+sum);
 });
 
@@ -341,7 +342,7 @@ const OOB=[
  ["rg_inf","strength",6730],["rg_cav","strength",3700],
  ["c_gren","guns",undefined],["c_cav","guns",36],["gqg","guns",undefined],
  ["col4","strength",13900],["milo","strength",4800],["kamensky","strength",4250],["nansouty","strength",1600],
- ["santon","arm","inf"],["santon","battery",18],["buxhowden","arm","hq"]
+ ["santon","arm","inf"],["santon","battery",18],["santon","parent","suchet"],["buxhowden","arm","hq"]
 ];
 
 let oobBad=0, oobBadPin=0;
