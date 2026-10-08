@@ -271,7 +271,7 @@ const REVIEW={
  "bag@6":["early","start",T(11,15),null,"data.js:97","'begins falling back' c. 11:15; the engine moves 10:30-11:15 (start 45 min early)"],
  "bag@7":["consistent","during",T(11,15),null,"data.js:97","falling back from 11:15"],
  "bag@8":["early","during",T(16,30),T(16,30),"data.js:122","'withdraws on Rausnitz' c. 16:30; the engine completes the move by 14:30"],
- "rg_inf@6":["consistent","during",T(11),null,"data.js:564; data.js:103","committed around 11:00; the engine arrives 11:15"],
+ "rg_inf@6":["consistent","during",T(11),null,"data.js:564; data.js:103","committed after 11:00 (the hour is not established, since roadmap step 2 also in the corps' role); the engine arrives 11:15"],
  "rg_inf@7":["consistent","during",T(11,45),T(13,15),"data.js:104; analysis.js:299","driven off after Rapp's charge, inside 11:15-12:45"],
  "rg_cav@6":["consistent","during",T(11),null,"data.js:103","takes the eagle after 11:00; the engine arrives 11:15","creep"],
  "rg_cav@7":["consistent","during",T(11,15),T(13,15),"analysis.js:299","inside the event's window"]
@@ -294,7 +294,7 @@ const REVIEW_CITES={
  "sthilaire@7":["timeline 7: Soult and Davout launch the @13:00-14:00","event wheel @13:00-14:00","chapter wheel text @13:00","chapter wheel text @14:00"],
  "sthilaire@8":["timeline 7: Soult and Davout launch the @13:00-14:00","event sokolnitz-falls @14:00","timeline 7: Sokolnitz falls @14:00"],
  "vandamme@3":["timeline 3: Soult's divisions advance. The mist @08:45","event soult @08:45-09:15","chapter pratzen text @08:45","tour 6 x @08:45","timeline 3: Thiebault's brigade clears Pratzen village @09:00"],
- "vandamme@6":["timeline 6: The Russian Guard attacks Vandamme; @11:00+","event guard-attack @11:00-13:00","formation constantine role @11:00","feature vinohrady fact Contested by @11:00"],
+ "vandamme@6":["timeline 6: The Russian Guard attacks Vandamme; @11:00+","event guard-attack @11:00-13:00","formation constantine role @11:00+","feature vinohrady fact Contested by @11:00"],
  "vandamme@7":["timeline 7: Soult and Davout launch the @13:00-14:00","event wheel @13:00-14:00","chapter wheel text @13:00","chapter wheel text @14:00"],
  "vandamme@8":["timeline 8: Vandamme takes the height above @14:30","event augezd @14:30"],
  "legrand@1":["timeline 1: Kienmayer's advance guard attacks Telnitz. @07:00","event telnitz @07:00","feature telnitz fact Changed hands @07:00"],
@@ -307,9 +307,9 @@ const REVIEW_CITES={
  "friant@8":["event sokolnitz-falls @14:00","timeline 7: Sokolnitz falls @14:00"],
  "bourcier@7":["event davout-resumes @12:30"],
  "caffarelli@5":["timeline 4: Lannes advances along the highway. @09:30","timeline 5: The cavalry collision west of @10:40"],
- "caffarelli@6":["event blasowitz @11:15","chapter north text @11:15"],
+ "caffarelli@6":["event blasowitz @11:15","chapter north text @11:15","feature blasowitz fact Fell @11:00-11:15"],
  "suchet@5":["timeline 4: Lannes advances along the highway. @09:30","timeline 5: The cavalry collision west of Blasowitz @10:40"],
- "suchet@6":["event blasowitz @11:15","chapter north text @11:15"],
+ "suchet@6":["event blasowitz @11:15","chapter north text @11:15","feature blasowitz fact Fell @11:00-11:15"],
  "kellermann@5":["timeline 5: The cavalry collision west of @10:40"],
  "nansouty@5":["timeline 5: The cavalry collision west of @10:40"],
  "dhautpoul@5":["timeline 5: The cavalry collision west of @10:40"],
@@ -354,23 +354,23 @@ const REVIEW_CITES={
  "kollo@5":["timeline 4: Jurczek's Austrians attack the Pratzeberg; @10:15","event pratzeberg @11:00","timeline 5: The Pratzeberg is firmly in @11:00"],
  "lich@2":["event counter-march @04:15-08:00"],
  "lich@5":["timeline 5: The cavalry collision west of @10:40"],
- "lich@6":["event blasowitz @11:15","chapter north text @11:15"],
+ "lich@6":["event blasowitz @11:15","chapter north text @11:15","feature blasowitz fact Fell @11:00-11:15"],
  "bag@5":["timeline 4: Lannes advances along the highway. @09:30"],
  "bag@6":["timeline 5: Blasowitz falls. Bagration begins falling @11:15"],
  "bag@7":["timeline 5: Blasowitz falls. Bagration begins falling @11:15"],
  "bag@8":["timeline 8: Organised resistance ends. Bagration withdraws @16:30","event end @16:30"],
- "rg_inf@6":["formation constantine role @11:00","timeline 6: The Russian Guard attacks Vandamme; @11:00+","feature vinohrady fact Contested by @11:00"],
+ "rg_inf@6":["formation constantine role @11:00+","timeline 6: The Russian Guard attacks Vandamme; @11:00+","feature vinohrady fact Contested by @11:00"],
  "rg_inf@7":["timeline 6: Bessieres and Rapp counter-charge. The @11:45","event guard-broken @11:15-13:15"],
  "rg_cav@6":["timeline 6: The Russian Guard attacks Vandamme; @11:00+","feature vinohrady fact Contested by @11:00"],
  "rg_cav@7":["event guard-broken @11:15-13:15"]
 };
 /* ---- the timed statements not judged against a move (rule L2), each with its reason; an entry no longer in the text fails
-   L3. Entries two to four (H-12) wait on the step-2 data task (docs/FINAL_AUDIT.md H-12, question 129). ---- */
+   L3. The three H-12 entries (the Zuran's 06:00 twice, Blasowitz's 11:00) left with the step-2 data task (question 129): the Zuran's
+   hour is marked not established and carries no time but the map's own 04:00 (the second entry, question 160), and Blasowitz's is a
+   range cited by caffarelli@6, suchet@6 and lich@6. ---- */
 const ALLOW_TIMED={
  "timeline 0: Weyrother reads the dispositions @01:00":"before the clock's day (04:00), at the Allied headquarters' first anchor: there is no move to date",
- "timeline 0: Napoleon takes post on the Zuran @06:00":"the headquarters' first anchor (on the Zuran from 04:00): there is no move to date. 06:00 against 04:00 is H-12's contradiction; the step-2 data task (question 129) settles it",
- "feature zuran fact Occupied by @06:00":"as the 06:00 timeline line: the first anchor, no move; H-12, question 129",
- "feature blasowitz fact Fell @11:00":"contradicts 11:15 in the event, the phase line and the theme (H-12); as an arrival it would make caffarelli@6, suchet@6 and lich@6 late by 15 minutes. The step-2 data task (question 129) settles which time is right; until then it is not judged",
+ "timeline 0: Napoleon is on the Zuran mound @04:00":"the headquarters' first anchor (gqg@0, on the Zuran from 04:00), restated as the map's own placing beside \"the hour he took post is not established\" (roadmap step 2, H-12; question 160): there is no move to date",
  "tour 4 x @04:00":"the plateau reading's clock (a derived reading that sim-test.js checks), not a movement",
  "tour 4 x @07:15":"the plateau reading's clock (a derived reading that sim-test.js checks), not a movement",
  "command al@7: From about noon @12:00":"the Allied command's knowledge (the Command view), not a movement",

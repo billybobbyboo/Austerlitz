@@ -54,7 +54,7 @@ var PHASES = [
   events:[
     ["c. 01:00","Weyrother reads the dispositions at Allied headquarters, Krzenowitz. Kutuzov reportedly dozes."],
     ["c. 04:00","Allied columns begin to move off the plateau. Liechtenstein's cavalry, misplaced on the left, must counter-march north across the front of the 4th Column."],
-    ["c. 06:00","Napoleon takes post on the Zuran mound with Berthier and the corps commanders."]],
+    ["before dawn","Napoleon is on the Zuran mound with Berthier; his marshals have been ordered to join him for the morning's orders. The map places him there from 04:00; the hour he took post is not established."]],
   cam:[-230,132,211,-28,0,1], light:"predawn", mist:1.0 },
 
 { id:1, t0:420, t1:480, clock:"07:00 - 08:00", label:"Telnitz", title:"The Allied left opens the battle",
@@ -153,7 +153,7 @@ gqg:{ ech:"army", nation:"fr", arm:"hq", desig:"G.Q.G.",
   role:"Direction of the army. Napoleon directed the battle from the Zuran, then from Stare Vinohrady, and in the last phase from the chapel of St Anthony above Augezd.",
   note:"Duffy (1977) and Smith (1998) give about 73,000 French of all arms with 139 guns - an army total, not the headquarters' own. Other accounts range from 65,000 to 75,000.",
   track:{
-    0:{p:[177,134],st:"observing",cf:"A",obj:"Hold the right; break the Allied centre once it has committed",act:"On the Zuran mound with the corps commanders, waiting for the Allied columns to clear the plateau"},
+    0:{p:[177,134],st:"observing",cf:"A",obj:"Hold the right; break the Allied centre once it has committed",act:"On the Zuran mound, waiting for the Allied columns to clear the plateau; his marshals are to join him for the morning's orders"},
     3:{st:"observing",act:"Releases Soult against the heights; a memoir anecdote, as Thiebault tells it, has him wait a further quarter of an hour first"},
     6:{tm:{dep:720,gr:"B",basis:"app narrative, unsourced",ev:["Napoleon moves forward from the Zuran to Stare Vinohrady.","About noon, for Stare Vinohrady"],note:"dated c. 12:00, and the Zuran is vacated about noon: a departure. The arrival follows the existing 40-minute march (moveMin)"},
        p:[309,207],cf:"A",via:[[215,154],[236,165]],moveMin:40,act:"Moves forward from the Zuran to Stare Vinohrady"},
@@ -162,14 +162,14 @@ gqg:{ ech:"army", nation:"fr", arm:"hq", desig:"G.Q.G.",
 
 c_iv:{ ech:"corps", nation:"fr", arm:"inf", desig:"IV Corps",
   name:"IV Corps", commander:"Marshal Nicolas Soult", parent:null,
-  strength:23600, strengthNote:"23,600–24,000 with about 35 guns",
+  strength:23600, strengthNote:"23,600–24,000 with about 35 guns; the three plotted divisions' figures sum to 20,300 (derived); what makes up the difference is not stated here",
   role:"The decisive centre assault. Two divisions storm the Pratzen; the third holds the lower Goldbach.",
   children:["sthilaire","vandamme","legrand","heightguns"]},
 
 heightguns:{ ech:"bde", nation:"fr", arm:"art", desig:"Batteries on the plateau",
   name:"French guns on the heights", commander:"Corps and Guard artillery", parent:"c_iv",
   strength:null, guns:null,
-  strengthNote:"The number of pieces brought onto the plateau is not recorded. Soult's corps had 35 guns and the Guard 24",
+  strengthNote:"The number of pieces brought onto the plateau in the wheel is not recorded. For the guns that fired on the ice at the end the accounts differ: 24 guns of the Guard and IV Corps by the chapel of St Anthony (Újezd local history); 24 pieces of the Guard that broke the ice (Thiebault's memoirs); twenty guns with which the Emperor went against the corps backed against a lake (the 30th Bulletin). Neither of the last two places its guns at the chapel. Soult's corps had 35 guns and the Guard 24",
   role:"Fires from the captured plateau into the rear of the Allied left, and later onto the Augezd defile and the ice.",
   note:"That French artillery fired from the heights into the retreating Allied left, and onto the ice of the Satschan mere, is documented. The battery positions drawn here are reconstructed and should not be read as surveyed.",
   track:{
@@ -178,7 +178,7 @@ heightguns:{ ech:"bde", nation:"fr", arm:"art", desig:"Batteries on the plateau"
        act:"Unlimbers on the southern shoulder of the plateau as the centre wheels"},
     8:{p:[288,357],st:"attacking",cf:"C",claim:"recon",moveMin:45,
        obj:"Command the Augezd defile and the meres",
-       cf:"B",act:"A battery of 24 guns of the Guard and IV Corps, placed by the chapel of St Anthony (Újezd local history), fires down onto the causeway and the frozen mere"},
+       cf:"B",act:"A battery placed by the chapel of St Anthony (Újezd local history: 24 guns of the Guard and IV Corps) fires down onto the causeway and the frozen mere; Thiebault's memoirs have 24 pieces of the Guard break the ice of the Satschan mere, without saying where they stood"},
     9:{p:[288,357],st:"holding",act:"Ceases fire at nightfall"}}},
 
 sthilaire:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., IV Corps",
@@ -452,7 +452,7 @@ buxhowden:{ ech:"corps", nation:"ru", arm:"hq", desig:"Left Wing",
 kienmayer:{ ech:"div", nation:"at", arm:"mixed", desig:"Advance Guard, I Column",
   name:"Kienmayer's Advance Guard", commander:"Feldmarschall-Leutnant Michael von Kienmayer",
   staff:"Grenz infantry (Broder Nr. 7, 1st and 2nd Szekler Nr. 14 and 15) with chevau-legers, hussars and Cossacks", parent:"buxhowden",
-  strength:6800, strengthNote:"3,440 infantry and 3,440 horse with 12 light guns (Duffy/Smith); other returns give about 4,700", guns:12,
+  strength:6800, strengthNote:"3,440 infantry and 3,440 horse with 12 light guns (Duffy/Smith, as transcribed here); the two sum to 6,880, not the 6,800 used, and the discrepancy is not settled; other returns give about 4,700", guns:12,
   role:"Opens the battle. The Allied extreme left.",
   track:{
     0:{p:[291,367],st:"forming",cf:"A",obj:"Take Telnitz and turn the French right",act:"Formed near Augezd before first light"},
@@ -483,7 +483,7 @@ lang:{ ech:"div", nation:"ru", arm:"inf", desig:"II Column",
   name:"Second Column", commander:"Lt.-Gen. Louis de Langeron",
   staff:"A French emigre in Russian service", parent:"buxhowden",
   strength:11700, strengthNote:"about 9,900–12,000 with 30 guns",
-  role:"Attacks Sokolnitz. Langeron was the only Allied commander on the left to react to the loss of the plateau.",
+  role:"Attacks Sokolnitz. Warned by Kamensky in Mikhailovsky-Danilevsky's account (citing Langeron's report), Langeron rode back and sent reinforcements up the slope toward him; which regiment, and what it lost, are not established.",
   children:["kamensky"],
   track:{
     0:{p:[291,308],st:"forming",cf:"A",obj:"Take Sokolnitz",act:"Formed on the plateau behind Dokhturov"},
@@ -590,7 +590,7 @@ bag:{ ech:"corps", nation:"ru", arm:"inf", desig:"Advance Guard",
 constantine:{ ech:"corps", nation:"ru", arm:"guard", desig:"Imperial Guard",
   name:"Russian Imperial Guard", commander:"Grand Duke Constantine Pavlovich", parent:null,
   strength:10500, strengthNote:"Duffy and Smith give 6,730 infantry, 3,700 horse, 100 pioneers and 40 guns. Narrative accounts often give about 8,500", guns:40,
-  role:"The only Allied reserve. Committed against Vandamme at around 11:00.",
+  role:"The only Allied reserve. Committed against Vandamme after 11:00; the hour is not established.",
   children:["rg_inf","rg_cav"]},
 
 rg_inf:{ ech:"div", nation:"ru", arm:"guard", desig:"Guard Infantry",
@@ -647,7 +647,7 @@ var FEATURES = [
 
 {id:"zuran", p:[177,134], kind:"height", name:"Zuran mound",
  sub:"Low prehistoric barrow west of the Goldbach",
- facts:[["Occupied by","Napoleon and Berthier from about 06:00"],["Vacated","About noon, for Stare Vinohrady"]],
+ facts:[["Occupied by","Napoleon and Berthier on the morning of the battle; the hour they took post is not established"],["Vacated","About noon, for Stare Vinohrady"]],
  why:["Gives a view across the whole French front and the western face of the plateau"],
  story:"Napoleon watched the Allied columns march off the Pratzen from here and then released the attack; a memoir anecdote, as Thiebault tells it, has him wait a further quarter of an hour after Soult said he needed twenty minutes at most."},
 
@@ -655,7 +655,7 @@ var FEATURES = [
  sub:"Small stream in a marshy valley, the armies' dividing line",
  facts:[["Course","North to south past Puntowitz, Kobelnitz, Sokolnitz and Telnitz"],["Obstacle value","Trivial for infantry, difficult for guns and horse in December mud"]],
  why:["Its valley held the fog that hid Soult's two divisions until they stepped onto the plateau",
-      "Its villages are the only practical crossings, so the whole southern battle is a fight for four hamlets"],
+      "Its villages hold the crossings for guns and formed cavalry, so the whole southern battle is a fight for four hamlets"],
  story:"The Allies spent the morning forcing crossings that led nowhere while the battle was decided on the high ground behind them."},
 
 {id:"litava", p:[439,217], kind:"water", name:"Litava river",
@@ -701,7 +701,7 @@ var FEATURES = [
 
 {id:"blasowitz", p:[296,147], kind:"village", name:"Blasowitz",
  sub:"Village between the plateau and the Olmütz road",
- facts:[["Contested by","Lannes' corps against Bagration and Liechtenstein"],["Fell","About 11:00"]],
+ facts:[["Contested by","Lannes' corps against Bagration and Liechtenstein"],["Fell","About 11:00-11:15; the hour is not established"]],
  why:["Hinges the Allied right onto the centre; its loss separates Bagration from the plateau"], story:""},
 
 {id:"augezd", p:[297,372], kind:"village", name:"Augezd",
@@ -746,7 +746,7 @@ var FEATURES = [
  story:"One of the most celebrated forced marches of the period."},
 {id:"chapel", p:[291,354], kind:"landmark", name:"Chapel of St Anthony",
  sub:"On the hill at the northern edge of Augezd (Újezd u Brna); position approximate",
- facts:[["In 1805","Napoleon's command post for the last phase; a French battery of 24 guns of the Guard and IV Corps stood here"],["The chapel","First built 1703; burned in the battle; rebuilt 1863"]],
+ facts:[["In 1805","Napoleon's command post for the last phase; a French battery stood here, 24 guns of the Guard and IV Corps in Újezd local history (Thiebault's memoirs have 24 pieces of the Guard breaking the ice, without placing them)"],["The chapel","First built 1703; burned in the battle; rebuilt 1863"]],
  why:["The view from here covers the defile and the meres the Allied left had to cross"], story:""},
 {id:"posthouse", p:[324,36], kind:"landmark", name:"Posoritz post house",
  sub:"Post station on the Olmutz highway north of Holubitz; position approximate (about 1 km)",
