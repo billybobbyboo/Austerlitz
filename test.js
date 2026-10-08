@@ -268,6 +268,9 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
       if(Math.abs(sum-1)>1e-9) bad(id+": the "+g+" shares sum to "+sum);
       if(units.size>1) bad(id+": the "+g+" parts mix units ("+[...units].join(", ")+")"); });
     if(C.dominant&&(!C.basis||C.parts.length!==1)) bad(id+": a dominant class needs its basis and one part");
+    /* roadmap step 2 (docs/FINAL_AUDIT.md H-11, H-19): the note is shown in the dossier's Dress; it names no file, field or formation id */
+    if(C.note&&[/\bdata\.js\b/,/\bthe data(?:'s)?\b/i,/not changed here/,new RegExp("\\((?:"+Object.keys(FORMATIONS).join("|")+")(?:\\.\\w+)?\\)")].some(re=>re.test(C.note)))
+      bad(id+": its note, shown in the dossier's Dress, names the project's files, fields or ids: "+C.note);
     const kind=p=>{ const d=DRESS[p.dress]; return d?d.nation:null; };
     const mixOk=n=>n===F.nation||F.arm==="mixed"||(F.mix&&F.mix.nation===n);
     C.parts.forEach((p,i)=>{ const d=DRESS[p.dress];
