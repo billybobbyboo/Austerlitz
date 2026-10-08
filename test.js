@@ -32,6 +32,7 @@ ids.forEach(id=>{
   if(f.track) Object.keys(f.track).forEach(k=>{
     const e0=f.track[k];
     if(e0.claim && !CLAIM[e0.claim]) errs.push(id+" ph"+k+": unknown claim class "+e0.claim);
+    else if(e0.claim==="disputed") errs.push(id+" ph"+k+": claim disputed is an event's, with its dispute (roadmap step 2, decision 125 (a)); a track entry marks a disputed hour in its act");
     if(e0.via) e0.via.forEach(v=>{ if(v[0]<0||v[0]>680||v[1]<0||v[1]>500)
       errs.push(id+" ph"+k+": via point off map "+v); });
     if(e0.moveMin!==undefined && !(e0.moveMin>0)) errs.push(id+" ph"+k+": bad moveMin");
@@ -172,8 +173,8 @@ TOUR.forEach((st,i)=>{
     if(KIND&&!Object.prototype.hasOwnProperty.call(KIND,e.kind)) bad("kind "+e.kind+" is not one the dossier names ("+Object.keys(KIND).join(", ")+")");
     if(typeof e.cf!=="string"||e.cf.length!==1||!"ABC".includes(e.cf)) bad("timing grade "+e.cf+" is not A, B or C");
     if(!Object.prototype.hasOwnProperty.call(CLAIM,e.claim)) bad("unknown claim class "+e.claim);
-    /* roadmap step 2 (decision 125 (a)): a disputed claim carries its dispute, naming both hours (two clock times) and who gives each;
-       a dispute stands only on a disputed claim */
+    /* roadmap step 2 (decision 125 (a)): a disputed claim carries its dispute, naming both hours (checked: two distinct clock times;
+       who gives each is the text's, not checked); a dispute stands only on a disputed claim */
     if(e.claim==="disputed"){ const hrs=new Set(String(e.dispute||"").match(/\b\d\d:\d\d\b/g)||[]);
       if(!str(e.dispute)) bad("claim disputed without its dispute (decision 125)");
       else if(hrs.size<2) bad("its dispute names "+hrs.size+" clock time(s), not both hours (decision 125)"); }
