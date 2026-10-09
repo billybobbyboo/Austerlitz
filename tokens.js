@@ -90,7 +90,7 @@ var TOKENS = /*TOKENS:BEGIN*/{
       {"key": "good",   "label": "good going",    "hex": "#6E8A5A"},
       {"key": "hard",   "label": "hard for guns", "hex": "#8C7A9A"},
       {"key": "severe", "label": "severe slope",  "hex": "#8E4436"},
-      {"key": "vine",   "label": "vineyards",     "hex": "#ADCCBF"},
+      {"key": "vine",   "label": "vineyards (presumed)", "hex": "#ADCCBF"},
       {"key": "marsh",  "label": "marsh",         "hex": "#6B5A3E"},
       {"key": "water",  "label": "water",         "hex": "#36505E"}
     ],
@@ -102,9 +102,9 @@ var TOKENS = /*TOKENS:BEGIN*/{
       "bad":    {"icon": "down",     "weight": 500},
       "gone":   {"icon": "cross",    "weight": 400}
     },
-    "claim": {"fact": "full", "est": "half", "recon": "open"},
+    "claim": {"fact": "full", "est": "half", "recon": "open", "disputed": "split"},
     "layer": {"record": "full", "recon": "open", "derived": "diamond"},
-    "source": {"doc": "full", "inf": "open"}
+    "source": {"doc": "full", "inf": "open", "anec": "half"}
   }
 }/*TOKENS:END*/;
 

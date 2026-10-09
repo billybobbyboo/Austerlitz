@@ -17,6 +17,7 @@ var ICON_SVG={
   full:'<circle cx="6" cy="6" r="4.2" stroke="none"/>',
   half:'<circle cx="6" cy="6" r="4.2" fill="none" stroke-width="1.4"/><path d="M6 1.8 A4.2 4.2 0 0 0 6 10.2 Z" stroke="none"/>',
   open:'<circle cx="6" cy="6" r="4.2" fill="none" stroke-width="1.4"/>',
+  split:'<circle cx="6" cy="6" r="4.2" fill="none" stroke-width="1.4"/><path d="M6 1.2 L6 10.8" fill="none" stroke-width="1.4"/>',   /* roadmap step 2: the disputed claim, two sides of one circle */
   diamond:'<path d="M6 1.2 L10.8 6 L6 10.8 L1.2 6 Z" fill="none" stroke-width="1.4"/>'
 };
 function iconSVG(kind){ return '<svg class="ic" viewBox="0 0 12 12" aria-hidden="true">'+(ICON_SVG[kind]||"")+'</svg>'; }

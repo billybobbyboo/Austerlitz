@@ -34,7 +34,8 @@
    The statements (the extractor; since step 1 one statement per string, each with a stable reference, "ref"):
      timeline <ph>: <text>       PHASES[].events, timed by the label (and by any time in the line's text)
      lede <ph> | phase <ph> title|label
-     event <id> | event <id> n|why   EVENTS[]: t (the event's window), its name's and its reason's times (tolWhy excluded)
+     event <id> | event <id> n|why|dispute   EVENTS[]: t (the event's window), its name's, its reason's and its dispute's times (tolWhy
+                                 excluded; dispute since roadmap step 2, decision 125 (a))
      formation <id> name|commander|staff|role|note|strengthNote|mixedNote
      anchor <id>@<ph> act|obj   the anchors' texts (tm, the engine's own timing input, is --times's and the movement audit's)
      chapter <id> text|n | tour <k> x|n | act <id> n|line
@@ -150,7 +151,7 @@ function extract(M){
   M.EVENTS.forEach((e,i)=>{ const f=new Set((e.forms||[]).flatMap(leaves)); namesIn(e.n+" "+(e.why||"")).forEach(x=>f.add(x));
     const w=Array.isArray(e.t)?{a:e.t[0],b:e.t[1]}:{a:e.t,b:e.t}, u="EVENTS."+i;
     add("event "+e.id,u+".t",u+".t",e.n,[w],f,{kind:e.kind});
-    ["n","why"].forEach(k=>{ if(str(e,k)) add("event "+e.id+" "+k,u+"."+k,u+"."+k,e[k],timesIn(e[k]),f); }); });
+    ["n","why","dispute"].forEach(k=>{ if(str(e,k)) add("event "+e.id+" "+k,u+"."+k,u+"."+k,e[k],timesIn(e[k]),f); }); });   /* dispute: roadmap step 2, decision 125 (a) */
   Object.entries(M.FORMATIONS).forEach(([id,fm])=>{
     ["name","commander","staff","role","note","strengthNote","mixedNote"].forEach(k=>{ if(str(fm,k)){ const p="FORMATIONS."+id+"."+k;
       add("formation "+id+" "+k,p,p,fm[k],timesIn(fm[k]),new Set([...leaves(id),...namesIn(fm[k])])); } });
@@ -203,11 +204,11 @@ const REVIEW={
  "gqg@7":["undetermined",null,null,null,"analysis.js:51","the order to wheel is untimed; the wheel itself is 13:00-14:00"],
  "heightguns@8":["consistent","during",T(14,30),T(15),"data.js:120; analysis.js:323; analysis.js:327","the causeway under fire from c. 14:30; the engine's battery arrives 14:30"],
  "sthilaire@2":["undetermined",null,null,null,"data.js:72; analysis.js:263","the crossing is untimed; the release is 08:25-08:45"],
- "sthilaire@3":["early","start",T(8,45),T(9),"data.js:78; data.js:79; analysis.js:267; analysis.js:271; analysis.js:31; analysis.js:353","the climb starts c. 08:45 and Pratzen village is cleared c. 09:00; the engine climbs 08:00-08:45 (start 45 min early, arrival at least 15)"],
+ "sthilaire@3":["early","start",T(8,45),T(9),"data.js:79; data.js:80; analysis.js:267; analysis.js:271; analysis.js:31; analysis.js:353","the climb starts c. 08:45 and Pratzen village is cleared c. 09:00; the engine climbs 08:00-08:45 (start 45 min early, arrival at least 15)"],
  "sthilaire@4":["consistent","during",T(9),T(9,45),"data.js:79; data.js:87","the 10e Legere pushes for the summit from c. 09:00 and is on the crest before 09:45; the engine arrives 09:30"],
  "sthilaire@7":["early","span",T(13),T(14),"data.js:113; analysis.js:315; analysis.js:51","the wheel is 13:00-14:00; the engine wheels 11:15-12:45 (arrival 75 min before the text's end, start 105 min before its start)"],
  "sthilaire@8":["consistent","during",T(13),T(14),"data.js:113; analysis.js:319","Sokolnitz falls c. 14:00, inside the engine's 12:45-14:30; note the act, shown in phase 8 (from 14:30), describes 13:00-14:00"],
- "vandamme@3":["early","start",T(8,45),T(9),"data.js:78; analysis.js:267; analysis.js:31; analysis.js:353","as Saint-Hilaire: the climb starts c. 08:45; the engine climbs 08:00-08:45"],
+ "vandamme@3":["early","start",T(8,45),T(9),"data.js:79; analysis.js:267; analysis.js:31; analysis.js:353","as Saint-Hilaire: the climb starts c. 08:45; the engine climbs 08:00-08:45"],
  "vandamme@6":["consistent","during",T(11),null,"data.js:103; analysis.js:295; data.js:564","the Guard attacks after 11:00 (hour not established); the engine arrives 11:15"],
  "vandamme@7":["early","start",T(13),T(14),"data.js:113; analysis.js:315; analysis.js:51","as Saint-Hilaire: the wheel is 13:00-14:00"],
  "vandamme@8":["consistent","arrival",T(14,30),T(14,30),"data.js:120; analysis.js:323","takes the height above Augezd c. 14:30; the engine arrives 14:30"],
@@ -227,7 +228,8 @@ const REVIEW={
  "kellermann@5":["consistent","during",T(10,40),T(10,40),"data.js:95","the collision c. 10:40; the engine arrives 10:30","creep"],
  "nansouty@5":["consistent","during",T(10,40),T(10,40),"data.js:95","the collision c. 10:40","creep"],
  "dhautpoul@5":["consistent","during",T(10,40),T(10,40),"data.js:95","the collision c. 10:40","creep"],
- "rivaud@3":["early","start",T(8,45),null,"data.js:78","the act (phase 3) 'Follows Soult onto the plateau'; Soult advances c. 08:45; the engine arrives 08:45 (at least 15 min early)","creep"],
+ "rivaud@3":["early","start",T(8,45),null,"data.js:79","the act (phase 3) 'Follows Soult onto the plateau'; Soult advances c. 08:45; the engine arrives 08:45 (at least 15 min early)","creep"],
+ "drouet@3":["undetermined","start",T(8,45),null,"data.js:79","Bernadotte's corps crosses the brook at Girzikowitz at the same time as Soult's attack and takes its direction toward the heights by Blasowitz (Stutterheim 1806, pp. 55-56; read in roadmap step 2; the route drawn, toward Stare Vinohrady, is this reconstruction's), though Mikhailovsky-Danilevsky (1846, p. 229) has it across the evening before; Soult advances c. 08:45; the engine departs 08:45 (tm.dep since step 2, docs/FINAL_AUDIT.md H-2). Section M found no timed statement for it: the move crept from 04:00 and stood ahead of Vandamme at 08:45","creep"],
  "drouet@6":["consistent","during",T(11),null,"data.js:103; analysis.js:299","the Guard attack after 11:00; the engine forms the line by 11:15"],
  "guard_inf@6":["consistent","during",T(11),null,"data.js:103; analysis.js:295","committed as the Russian Guard attacks, after 11:00; the engine arrives 11:15"],
  "guard_inf@7":["early","span",T(13),T(14),"analysis.js:315","the wheel (which names the Guard infantry) is 13:00-14:00; the engine moves 11:15-12:45"],
@@ -257,7 +259,7 @@ const REVIEW={
  "prz@2":["consistent","arrival",T(8),T(8),"data.js:70; analysis.js:255","goes for the castle c. 08:00"],
  "prz@8":["consistent","during",T(14),T(14),"data.js:496; analysis.js:319","written for the engine's rule: holds until surrounded c. 14:00, then 14:10-14:30. Its text time was typed 14:00-14:30 until roadmap step 1: 14:30 is the phase's start, not a time of any text (rule L4)"],
  "milo@2":["consistent","during",T(4,15),T(8),"analysis.js:240","held up by the counter-march 04:15-08:00"],
- "milo@3":["consistent","arrival",T(8,45),T(8,45),"data.js:78","caught as Soult appears c. 08:45; the engine arrives 08:45"],
+ "milo@3":["consistent","arrival",T(8,45),T(8,45),"data.js:79","caught as Soult appears c. 08:45; the engine arrives 08:45"],
  "milo@4":["consistent","during",T(9,15),T(9,15),"data.js:80; analysis.js:275","faces about c. 09:15, inside 08:45-09:30"],
  "kollo@2":["consistent","during",T(4,15),T(8),"analysis.js:240","held up by the counter-march 04:15-08:00"],
  "kollo@4":["early","arrival",T(10,15),T(10,15),"data.js:88","Jurczek attacks the Pratzeberg c. 10:15; the engine arrives 09:30"],
@@ -269,7 +271,7 @@ const REVIEW={
  "bag@6":["early","start",T(11,15),null,"data.js:97","'begins falling back' c. 11:15; the engine moves 10:30-11:15 (start 45 min early)"],
  "bag@7":["consistent","during",T(11,15),null,"data.js:97","falling back from 11:15"],
  "bag@8":["early","during",T(16,30),T(16,30),"data.js:122","'withdraws on Rausnitz' c. 16:30; the engine completes the move by 14:30"],
- "rg_inf@6":["consistent","during",T(11),null,"data.js:564; data.js:103","committed around 11:00; the engine arrives 11:15"],
+ "rg_inf@6":["consistent","during",T(11),null,"data.js:564; data.js:103","committed after 11:00 (the hour is not established, since roadmap step 2 also in the corps' role); the engine arrives 11:15"],
  "rg_inf@7":["consistent","during",T(11,45),T(13,15),"data.js:104; analysis.js:299","driven off after Rapp's charge, inside 11:15-12:45"],
  "rg_cav@6":["consistent","during",T(11),null,"data.js:103","takes the eagle after 11:00; the engine arrives 11:15","creep"],
  "rg_cav@7":["consistent","during",T(11,15),T(13,15),"analysis.js:299","inside the event's window"]
@@ -292,7 +294,7 @@ const REVIEW_CITES={
  "sthilaire@7":["timeline 7: Soult and Davout launch the @13:00-14:00","event wheel @13:00-14:00","chapter wheel text @13:00","chapter wheel text @14:00"],
  "sthilaire@8":["timeline 7: Soult and Davout launch the @13:00-14:00","event sokolnitz-falls @14:00","timeline 7: Sokolnitz falls @14:00"],
  "vandamme@3":["timeline 3: Soult's divisions advance. The mist @08:45","event soult @08:45-09:15","chapter pratzen text @08:45","tour 6 x @08:45","timeline 3: Thiebault's brigade clears Pratzen village @09:00"],
- "vandamme@6":["timeline 6: The Russian Guard attacks Vandamme; @11:00+","event guard-attack @11:00-13:00","formation constantine role @11:00","feature vinohrady fact Contested by @11:00"],
+ "vandamme@6":["timeline 6: The Russian Guard attacks Vandamme; @11:00+","event guard-attack @11:00-13:00","formation constantine role @11:00+","feature vinohrady fact Contested by @11:00"],
  "vandamme@7":["timeline 7: Soult and Davout launch the @13:00-14:00","event wheel @13:00-14:00","chapter wheel text @13:00","chapter wheel text @14:00"],
  "vandamme@8":["timeline 8: Vandamme takes the height above @14:30","event augezd @14:30"],
  "legrand@1":["timeline 1: Kienmayer's advance guard attacks Telnitz. @07:00","event telnitz @07:00","feature telnitz fact Changed hands @07:00"],
@@ -305,17 +307,18 @@ const REVIEW_CITES={
  "friant@8":["event sokolnitz-falls @14:00","timeline 7: Sokolnitz falls @14:00"],
  "bourcier@7":["event davout-resumes @12:30"],
  "caffarelli@5":["timeline 4: Lannes advances along the highway. @09:30","timeline 5: The cavalry collision west of @10:40"],
- "caffarelli@6":["event blasowitz @11:15","chapter north text @11:15"],
+ "caffarelli@6":["event blasowitz @11:15","chapter north text @11:15","feature blasowitz fact Fell @11:00-11:15"],
  "suchet@5":["timeline 4: Lannes advances along the highway. @09:30","timeline 5: The cavalry collision west of Blasowitz @10:40"],
- "suchet@6":["event blasowitz @11:15","chapter north text @11:15"],
+ "suchet@6":["event blasowitz @11:15","chapter north text @11:15","feature blasowitz fact Fell @11:00-11:15"],
  "kellermann@5":["timeline 5: The cavalry collision west of @10:40"],
  "nansouty@5":["timeline 5: The cavalry collision west of @10:40"],
  "dhautpoul@5":["timeline 5: The cavalry collision west of @10:40"],
  "rivaud@3":["timeline 3: Soult's divisions advance. The mist @08:45"],
+ "drouet@3":["timeline 3: Soult's divisions advance. The mist @08:45"],
  "drouet@6":["timeline 6: The Russian Guard attacks Vandamme; @11:00+","event guard-broken @11:15-13:15"],
  "guard_inf@6":["timeline 6: The Russian Guard attacks Vandamme; @11:00+","event guard-attack @11:00-13:00"],
  "guard_inf@7":["event wheel @13:00-14:00"],
- "guard_cav@6":["timeline 6: Bessieres and Rapp counter-charge. The @11:45","source-note body.5 @11:45"],
+ "guard_cav@6":["timeline 6: Bessieres and Rapp counter-charge. The @11:45","source-note body.5 @11:45","anchor guard_cav@6 act @11:45"],
  "c_gren@7":["event wheel @13:00-14:00"],
  "c_gren@8":["event wheel @13:00-14:00"],
  "ahq@3":["anchor ahq@0 act @08:30-09:00","anchor ahq@3 act @08:45","command al@2: That the 4th Column was @08:45"],
@@ -324,15 +327,18 @@ const REVIEW_CITES={
  "kienmayer@1":["timeline 1: Kienmayer's advance guard attacks Telnitz. @07:00","event telnitz @07:00","feature telnitz fact Changed hands @07:00"],
  "kienmayer@8":["timeline 8: Vandamme takes the height above @14:30","timeline 8: French artillery fires on the @15:00","event ice @15:00"],
  "kienmayer@9":["event ice @15:00","timeline 8: French artillery fires on the @15:00"],
- "dok@1":["timeline 1: Dokhturov's I Column begins descending @07:30","source-note body.5 @07:30"],
+ "dok@1":["timeline 1: Dokhturov's I Column begins descending @07:30","source-note body.5 @07:30","event columns-move dispute @07:30","anchor dok@1 act @07:30"],
  "dok@2":["chapter commitment text @07:00","chapter commitment text @09:00","tour 4 x @07:00"],
+   /* tour 4 x @07:00 ("From seven o'clock the Allied left goes down into the villages") is left unmarked in roadmap step 2 (C6,
+      question 144): it dates the arrival in the villages (this row; the telnitz event at 07:00), not the start of dok@1's disputed
+      descent (04:00 in the event and on the map, c. 07:30 in the Telnitz phase's text), so it takes neither side */
  "dok@8":["timeline 8: Vandamme takes the height above @14:30","event ice @15:00","timeline 8: French artillery fires on the @15:00"],
  "dok@9":["event ice @15:00","timeline 8: French artillery fires on the @15:00"],
  "lang@1":["event columns-move @04:00-07:00","timeline 0: Allied columns begin to move off the plateau @04:00"],
  "lang@2":["timeline 2: Langeron attacks Sokolnitz; Przybyszewski goes @08:00","event sokolnitz @08:00"],
  "lang@4":["timeline 4: Langeron rides back and sends @10:30","event kursk @10:30"],
  "lang@7":["anchor lang@7 act @12:30","timeline 6: Davout regroups and attacks; Langeron @12:30"],
- "kamensky@3":["timeline 4: Kamensky turns his brigade about @09:45","event kamensky @09:45","source-note body.5 @09:45"],
+ "kamensky@3":["timeline 4: Kamensky turns his brigade about @09:45","event kamensky @09:45","source-note body.5 @09:45","event kamensky dispute @09:45","anchor kamensky@3 act @09:45"],
  "kamensky@4":["timeline 4: Kamensky turns his brigade about @09:45","event kamensky @09:45","source-note body.5 @09:45"],
  "kamensky@5":["timeline 4: Jurczek's Austrians attack the Pratzeberg; @10:15"],
  "kamensky@6":["event kursk @10:30","event pratzeberg @11:00","timeline 5: The Pratzeberg is firmly in @11:00","lede 3 @11:00","chapter pratzen text @11:00","feature pratzen story @11:00","feature vinohrady fact Taken by @11:00","feature pratzeberg fact Secure by @11:00"],
@@ -348,23 +354,23 @@ const REVIEW_CITES={
  "kollo@5":["timeline 4: Jurczek's Austrians attack the Pratzeberg; @10:15","event pratzeberg @11:00","timeline 5: The Pratzeberg is firmly in @11:00"],
  "lich@2":["event counter-march @04:15-08:00"],
  "lich@5":["timeline 5: The cavalry collision west of @10:40"],
- "lich@6":["event blasowitz @11:15","chapter north text @11:15"],
+ "lich@6":["event blasowitz @11:15","chapter north text @11:15","feature blasowitz fact Fell @11:00-11:15"],
  "bag@5":["timeline 4: Lannes advances along the highway. @09:30"],
  "bag@6":["timeline 5: Blasowitz falls. Bagration begins falling @11:15"],
  "bag@7":["timeline 5: Blasowitz falls. Bagration begins falling @11:15"],
  "bag@8":["timeline 8: Organised resistance ends. Bagration withdraws @16:30","event end @16:30"],
- "rg_inf@6":["formation constantine role @11:00","timeline 6: The Russian Guard attacks Vandamme; @11:00+","feature vinohrady fact Contested by @11:00"],
+ "rg_inf@6":["formation constantine role @11:00+","timeline 6: The Russian Guard attacks Vandamme; @11:00+","feature vinohrady fact Contested by @11:00"],
  "rg_inf@7":["timeline 6: Bessieres and Rapp counter-charge. The @11:45","event guard-broken @11:15-13:15"],
  "rg_cav@6":["timeline 6: The Russian Guard attacks Vandamme; @11:00+","feature vinohrady fact Contested by @11:00"],
  "rg_cav@7":["event guard-broken @11:15-13:15"]
 };
 /* ---- the timed statements not judged against a move (rule L2), each with its reason; an entry no longer in the text fails
-   L3. Entries two to four (H-12) wait on the step-2 data task (docs/FINAL_AUDIT.md H-12, question 129). ---- */
+   L3. The three H-12 entries (the Zuran's 06:00 twice, Blasowitz's 11:00) left with the step-2 data task (question 129): the Zuran's
+   hour is marked not established and carries no time but the map's own 04:00 (the second entry, question 160), and Blasowitz's is a
+   range cited by caffarelli@6, suchet@6 and lich@6. ---- */
 const ALLOW_TIMED={
  "timeline 0: Weyrother reads the dispositions @01:00":"before the clock's day (04:00), at the Allied headquarters' first anchor: there is no move to date",
- "timeline 0: Napoleon takes post on the Zuran @06:00":"the headquarters' first anchor (on the Zuran from 04:00): there is no move to date. 06:00 against 04:00 is H-12's contradiction; the step-2 data task (question 129) settles it",
- "feature zuran fact Occupied by @06:00":"as the 06:00 timeline line: the first anchor, no move; H-12, question 129",
- "feature blasowitz fact Fell @11:00":"contradicts 11:15 in the event, the phase line and the theme (H-12); as an arrival it would make caffarelli@6, suchet@6 and lich@6 late by 15 minutes. The step-2 data task (question 129) settles which time is right; until then it is not judged",
+ "timeline 0: Napoleon is on the Zuran mound @04:00":"the headquarters' first anchor (gqg@0, on the Zuran from 04:00), restated as the map's own placing beside \"the hour he took post is not established\" (roadmap step 2, H-12; question 160): there is no move to date",
  "tour 4 x @04:00":"the plateau reading's clock (a derived reading that sim-test.js checks), not a movement",
  "tour 4 x @07:15":"the plateau reading's clock (a derived reading that sim-test.js checks), not a movement",
  "command al@7: From about noon @12:00":"the Allied command's knowledge (the Command view), not a movement",
@@ -372,13 +378,21 @@ const ALLOW_TIMED={
  "source-note body.5 @04:00":"the other side of the named conflict dok@1 (decision 42): the event's time, restated; the conflict's own time (07:30) is cited by its row (L8)",
  "source-note body.5 @07:00":"the other side of the named conflict dok@1 (decision 42): the phase's clock, restated",
  "source-note body.5 @08:45":"the other side of the named conflicts kamensky@3 and kamensky@4 (decision 42): the phase's clock, restated",
- "source-note body.5 @11:15":"the other side of the named conflict guard_cav@6 (decision 42): the event's time, restated"
+ "source-note body.5 @11:15":"the other side of the named conflict guard_cav@6 (decision 42): the event's time, restated",
+ /* roadmap step 2 (decision 125 (a)): the other sides restated where the disputed hours are now marked (the two events' dispute, the three
+    phase lines); each conflict's own time is cited by its row. They follow the body.5 entries above rather than being cited by the conflict
+    rows: a REVIEW row judges one side, its text time (L4b keeps every cite inside it), and the side restated here is the engine's own
+    timing, which the move keeps (decision 42); citing it would mean changing the row's time and so its verdict */
+ "event columns-move dispute @04:00":"the other side of the named conflict dok@1 (decision 42), restated in the event's dispute: the event's own time, where dok@1's leg starts. Not cited by dok@1 (as body.5 @04:00): that row judges the 07:30 side from 07:30 onward, and L4b keeps its cites inside it",
+ "event kamensky dispute @08:45":"the other side of the named conflicts kamensky@3 and kamensky@4 (decision 42), restated in the event's dispute: the phase's clock, where kamensky@3 arrives. Not cited by kamensky@3 (as body.5 @08:45): that row judges the 09:45 side at 09:45, and L4b keeps its cites inside it",
+ "timeline 1: Dokhturov's I Column begins descending @04:00":"the other side of the named conflict dok@1 (decision 42), restated in the phase line's mark: the event's time, where dok@1's leg starts. Not cited by dok@1 (as body.5 @04:00): that row judges the line's own 07:30 from 07:30 onward, and L4b keeps its cites inside it",
+ "timeline 4: Kamensky turns his brigade about @08:45":"the other side of the named conflicts kamensky@3 and kamensky@4 (decision 42), restated in the phase line's mark: the phase's clock, where kamensky@3 arrives. Not cited by kamensky@3 (as body.5 @08:45): that row judges the line's own 09:45 at 09:45, and L4b keeps its cites inside it",
+ "timeline 6: Bessieres and Rapp counter-charge. The @11:15":"the other side of the named conflict guard_cav@6 (decision 42), restated in the phase line's mark: the event's time, where guard_cav@6 arrives. Not cited by guard_cav@6 (as body.5 @11:15): that row judges the line's own 11:45 at 11:45, and L4b keeps its cites inside it"
 };
 /* ---- the timed strings the extractor does not read, by class (rule L1); a class that covers nothing fails ---- */
 const EXCLUDED_PATHS=[   /* [name, path class, reason] */
  ["tm",/^FORMATIONS\.[^.]+\.track\.\d+\.tm\./,"the engine's own timing input and its evidence: --times (each quote resolved) and the movement audit judge it"],
  ["phase clocks",/^PHASES\.\d+\.clock$/,"the phase's window: rule L6 asserts it equals t0 - t1"],
- ["phase light keys",/^PHASES\.\d+\.light$/,"a light key without a reader since 4B (docs/FINAL_AUDIT.md D-4), not text; this class fails once the step-2 data task removes it"],
  ["tolWhy",/^EVENTS\.\d+\.tolWhy$/,"the suite's tolerance reason (sim-test.js), never shown"],
  ["analysis.js comments",/^\(comment\) analysis\.js:/,"code documentation in analysis.js, never shown"]
 ];

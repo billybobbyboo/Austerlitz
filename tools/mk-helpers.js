@@ -37,7 +37,7 @@ const HELPERS={
                'nearSettlement','crossingProblem','auditMovement'],
   '_derived.js':['trackedDescendants','activeAt','ownStrengthAt','sideOnFieldAt','PLATEAU_POLY','onPlateau','plateauStrength',
                  'PBERG_NORTHING','SEP_KM','sideCentroid','centreSeparation'],
-  '_events.js':['eventGroup','evWindow','evWeight','liveEvents','actOf','eventGlyph','plateauRing','buildPlateauRing','updatePlateauRing'],
+  '_events.js':['eventGroup','evWindow','evWeight','liveEvents','actOf','eventGlyph','plateauRing','PLATEAU_LAST','buildPlateauRing','updatePlateauRing'],
   '_state.js':['stateAt','leavesOf','posOf','aggStrength','aggStatus','GRADE_RANK','worseGrade','confAt','liveConf','aggConf','aggInterp'],
   '_ov.js':['OVERLAYS']
 };

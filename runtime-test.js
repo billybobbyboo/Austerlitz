@@ -259,6 +259,14 @@ try{
      the caption names the act and the phase; where an event is live it names it (or, in a dwell, the dwell's events) and the Now
      tab's strip gives its reason; where none is, the strip gives the act's line */
   let evSeen=0, sitSeen=0, capOk=0, named=0, whyOk=0, lineOk=0;
+  /* roadmap step 2 (H-15; decision 125 (a)): an event is named with its note, written here from its claim and window (its hour disputed;
+     else an interval; and a reconstruction), not read from evNote or evTag: in the Now tab's strip after its name, in the one-line caption
+     as a tag before it */
+  const partsRT=(e,L)=>{ const w=evWindow(e), n=[]; if(e.claim==="disputed") n.push(L.disputed); else if(w[1]>w[0]) n.push(L.interval);
+    if(e.claim==="recon") n.push(L.recon); return n; };
+  const noteRT=e=>{ const n=partsRT(e,LABELS.event); return n.length?" ("+n.join("; ")+")":""; };
+  const tagRT=e=>partsRT(e,LABELS.event.tag).join("; ");
+  const capRT=e=>tagRT(e)?'<small class="evn">'+esc(tagRT(e))+'</small> '+esc(e.n):esc(e.n);
   for(let t=T_MIN;t<=T_MAX;t+=7){
     setClock(t); updateVisibility();
     _sitKey=""; paintSituation(); sitSeen++;
@@ -266,8 +274,8 @@ try{
     const act=actOf(curPhase), live=liveEvents(clock), top=live.length?live[0].e:null, dw=dwellEvents();
     if(cap.indexOf(esc(act.n.toUpperCase()))>=0&&cap.indexOf(esc(PHASES[curPhase].title))>=0) capOk++;
     if(top){ evSeen++;
-      if(dw&&dw.length?dw.every(e=>cap.indexOf(esc(e.n))>=0):cap.indexOf(esc(top.n))>=0) named++;
-      if(host.indexOf(esc(top.why))>=0) whyOk++; }
+      if(dw&&dw.length?dw.every(e=>cap.indexOf(capRT(e))>=0):cap.indexOf(capRT(top))>=0) named++;
+      if(host.indexOf(esc(top.n+noteRT(top)))>=0&&host.indexOf(esc(top.why))>=0) whyOk++; }
     else if(host.indexOf(esc(act.line))>=0) lineOk++;
   }
   if(capOk!==sitSeen||!evSeen||evSeen===sitSeen||named!==evSeen||whyOk!==evSeen||lineOk!==sitSeen-evSeen)
@@ -446,6 +454,173 @@ try{
     if(bad.length||!seen.heights||!seen.noHeights||!seen.cut||!seen.noCut) throw new Error("derived reading wording: "+bad.join("; ")+" (seen "+JSON.stringify(seen)+")");
     console.log("derived reading wording: the plateau reading shown at "+seen.heights+" of 7 clocks and not at "+seen.noHeights+
       ", the centre separation at "+seen.cut+" and not at "+seen.noCut+", each with \"derived\" and its note OK"); }
+
+  /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): an arrow the data marks unsettled carries its mark on its label in its phase,
+     and no other arrow does; the sources sheet's arrow note names the mark. A disputed event's dossier carries the mark after its clock and
+     its dispute in a section of its own, and the interval sentence ("not fixed in the sources") is not added under a dispute; every other
+     interval event keeps it. Each count must be above zero (the check reads something) */
+  { const MARK=" ("+LABELS.arrow.unsettled+")"; let nA=0, nPh=0;
+    Object.keys(OVERLAYS).forEach(ph=>{ const uns=(OVERLAYS[ph].arrows||[]).filter(a=>/^unsettled:/.test(a.interp||""));
+      rebuildOverlays(+ph,true); nPh++;
+      uns.forEach(a=>{ nA++; if(!ovText.some(q=>q.text===a.label+MARK)) throw new Error("unsettled arrow \""+a.label+"\": its label lacks its mark"); });
+      const marked=ovText.filter(q=>q.text.endsWith(MARK)).length;
+      if(marked!==uns.length) throw new Error("phase "+ph+": "+marked+" map labels carry the mark"+MARK+", but "+uns.length+" arrows are unsettled"); });
+    rebuildOverlays(curPhase,true);
+    if(arrowNotes()[2].indexOf("each label carries the mark"+MARK+":")<0) throw new Error("the sources sheet's arrow note does not name the mark"+MARK);
+    const mk=document.createElement; let made=[], nD=0, nDI=0, nI=0;
+    try{
+      document.createElement=t=>{ const x=mk(t); made.push(x); return x; };
+      EVENTS.forEach(e=>{ made=[]; dossierEvent(e.id);
+        const h=made.map(x=>x.innerHTML).join("\n"), w=evWindow(e), iv=w[0]!==w[1], dis=e.claim==="disputed";
+        const cm=h.match(/<p class="dh-cmd">([^<]*)<\/p>/), clk=cm?cm[1]:"";
+        const sect='<h3>When it happened: disputed</h3><p class="ev-why">'+esc(e.dispute)+'</p>', sent=h.indexOf("The hour is not fixed in the sources")>=0;
+        if(!cm) throw new Error("event "+e.id+": its dossier has no clock line");
+        if(clk.endsWith(esc(" ("+LABELS.event.disputed+")"))!==dis) throw new Error("event "+e.id+": the clock line \""+clk+"\" "+(dis?"lacks":"carries")+" the disputed mark");
+        if((h.indexOf(sect)>=0)!==!!e.dispute) throw new Error("event "+e.id+": its dispute section "+(e.dispute?"missing":"shown without a dispute"));
+        if(sent!==(iv&&!e.dispute)) throw new Error("event "+e.id+": the interval sentence "+(sent?"shown":"missing")+(e.dispute?" under a dispute":""));
+        if(dis){ nD++; if(iv) nDI++; } else if(iv) nI++; });
+    } finally { document.createElement=mk; }
+    if(!nA||!nD||!nDI||!nI) throw new Error("the disputed hours: "+nA+" unsettled arrows, "+nD+" disputed events ("+nDI+" intervals), "+nI+" other intervals (the check reads nothing)");
+    console.log("the disputed hours: "+nA+" unsettled arrows carry their mark, no other arrow in "+nPh+" phases; "+nD+" events graded disputed show it after "+
+      "their clock with their dispute, the interval sentence on none of them ("+nDI+" an interval) and on the "+nI+" other intervals OK"); }
+
+  /* owner decision 126 (docs/FINAL_AUDIT.md H-3): the plateau's map label is a derived reading marked so, in its words and its name, drawn
+     in the phases the tagged reading is (0-6) and in none after, its Allied figure the reading's. Read back at the seven clocks above, the
+     outline eased to rest first (it fades). The phase rule is written here, not read from PLATEAU_LAST */
+  { const seen={on:0,off:0}, bad=[];
+    setPresentation("study"); setMode("terrain");
+    [T_MIN,525,600,660,700,764,800].forEach(t=>{ setClock(t); for(let i=0;i<200;i++) updateEventLayer(); updateVisibility(); mlLayout();
+      const it=ML.items["p:plateau"], drawn=!!it&&it.frame===ML.frame, want=curPhase<=6;
+      if(drawn!==want) bad.push(fmtClock(t)+": the label "+(want?"not drawn":"drawn")+" in phase "+curPhase);
+      if(drawn){ if(!/derived/.test(it.el.innerHTML)) bad.push(fmtClock(t)+': its words without "derived"');
+        if(!/derived/.test(it.aria||"")) bad.push(fmtClock(t)+': its name without "derived"');
+        if(it.el.innerHTML.indexOf(plateauStrength("al").toLocaleString())<0) bad.push(fmtClock(t)+": its figure is not the reading"); }
+      seen[want?"on":"off"]++; });
+    if(bad.length||!seen.on||!seen.off) throw new Error("plateau label: "+bad.join("; ")+" (seen "+JSON.stringify(seen)+")");
+    console.log("plateau label: drawn and marked derived, words and name, at "+seen.on+" of 7 clocks (phases 0-6); not drawn at "+seen.off+" OK"); }
+
+  /* owner decision 128 (a) (docs/FINAL_AUDIT.md H-5; the implementation plan's completeness critic, item 5): a formation's claim pill is its
+     position's, in the compact card and the full dossier: each reads POS_CLAIM for the claim claimOf gives at that clock (the class kept), and
+     none carries CLAIM's own words ("Fact", "Estimate", "Reconstruction"), so a return to the blanket pill fails. Every formation at five
+     clocks; each count above zero */
+  { const mk=document.createElement, CL=Object.keys(CLAIM).map(k=>CLAIM[k].label), byCl={}; let made=[], nP=0, nV=0;
+    try{
+      document.createElement=t=>{ const x=mk(t); made.push(x); return x; };
+      [T_MIN,525,600,700,880].forEach(t=>{ setClock(t);
+        Object.keys(FORMATIONS).forEach(id=>{ const want=claimOf(id,aggConf(id,curPhase));
+          [["card",compactCard],["dossier",dossierFormation]].forEach(([w,fn])=>{ made=[]; fn(id); nV++;
+            const h=made.map(x=>x.innerHTML||"").join("\n"), P=[...h.matchAll(/<span class="pill claim-(\w+)">([\s\S]*?)<\/span>/g)];
+            if(P.length!==1) throw new Error(id+" ("+w+") at "+fmtClock(t)+": "+P.length+" claim pills, want one");
+            const cl=P[0][1], txt=P[0][2].replace(/<svg[\s\S]*?<\/svg>/g,"");
+            if(cl!==want) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill's class "+cl+", claimOf gives "+want);
+            if(txt!==esc(POS_CLAIM[cl]||"")) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill reads \""+txt+"\", want POS_CLAIM's \""+POS_CLAIM[cl]+"\"");
+            if(CL.indexOf(txt)>=0) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill carries CLAIM's words \""+txt+"\"");
+            nP++; byCl[cl]=(byCl[cl]||0)+1; }); }); });
+    } finally { document.createElement=mk; }
+    if(!nP||Object.keys(byCl).length<3) throw new Error("position pills: "+nP+" pills read in "+nV+" views, classes "+JSON.stringify(byCl)+" (want all three)");
+    console.log("position pills: "+nP+" claim pills in "+nV+" cards and dossiers at five clocks, each POS_CLAIM's words for its claim (claimOf) ("+
+      Object.keys(byCl).map(k=>k+" "+byCl[k]).join(", ")+"), none CLAIM's OK"); }
+
+  /* roadmap step 2 (docs/FINAL_AUDIT.md D-5): the sources sheet's notes read the appearance table and the computed sun, not typed values.
+     Each value they name is changed in the table for one call and the note must follow it; the table is put back (and the kit's cache). The
+     Austrian model is printed with its source and without a trailing parenthesis (its period claim, an inference in the reading) */
+  { const bad=[], CC=COLOURS_CARRIED, SM=STANDARD_MEASURES;
+    const trial=(what,fn,set,undo,want,not)=>{ set(); _kitDress={}; let s; try{ s=fn().join(" "); } finally { undo(); _kitDress={}; }
+      if(s.indexOf(want)<0||(not&&s.indexOf(not)>=0)) bad.push(what+": the note does not follow the table (want \u201c"+want+"\u201d"+(not?", not \u201c"+not+"\u201d":"")+")"); };
+    const fc=CC.fr_eagle_inf.cloth, w0=fc.w, h0=fc.h, ai=CC.at_inf, v0=ai.count.v, e0=ai.model.en, rd=SM.ru.stature.dated, ae=SM.at.stature.en, gB=APPEARANCE_GRADE.B, dc=DRESS.fr_dragoon.coat, c0=dc.c, gr0=dc.gr;
+    trial("the French cloth",standardNotes,()=>{ fc.w=fc.h=79; },()=>{ fc.w=w0; fc.h=h0; },"the French 79 cm square","81 cm");
+    trial("the Austrian count",standardNotes,()=>{ ai.count.v="one to three per battalion"; },()=>{ ai.count.v=v0; },"disputed, one to three per battalion");
+    trial("the Austrian model",standardNotes,()=>{ ai.model.en="a test model"; },()=>{ ai.model.en=e0; },"Its model ("+apShort(ai.model.src)+"): a test model;","Leib colour per regiment");
+    trial("the Austrian model's period",standardNotes,()=>{ ai.model.en="a test model (the 1700s)"; },()=>{ ai.model.en=e0; },"a test model;","1700s");
+    trial("the Russian stature's date",standardNotes,()=>{ SM.ru.stature.dated="1799-01"; },()=>{ SM.ru.stature.dated=rd; },"the minimum of 1799","the minimum of 1804");
+    trial("the Austrian stature's period",standardNotes,()=>{ SM.at.stature.en="a test minimum, 1.65 m (the 1770s)"; },()=>{ SM.at.stature.en=ae; },"a minimum of the 1770s","1790s");
+    /* the review of C24-C26 (items 3 and 5): the cloths drawn in the generic proportion are named, and follow the table: given a cloth, the
+       Russian Guard infantry's colours leave the clause (their shape recomputed as the drawing would, then put back) */
+    { const gi=CC.ru_guard_inf, g0=gi.cloth, ST=[]; Object.keys(units).forEach(id=>{ const u=units[id].block&&units[id].block.userData; (u&&u.stds||[]).forEach(q=>{ if(q.S.carry==="ru_guard_inf") ST.push(q); }); });
+      const base=standardNotes().join(" "), gc=/where neither a cloth size nor a painting is read \(([^)]*)\), one generic proportion, a design value/.exec(base);
+      if(!ST.length) bad.push("the generic cloths: no Russian Guard infantry standard drawn to try");
+      if(!gc||gc[1].indexOf("the Russian Guard infantry")<0||gc[1].indexOf("the Royal Guard of the Kingdom of Italy")<0) bad.push("the generic cloths: not named ("+(gc?gc[1]:"no clause")+")");
+      const S0=ST.map(q=>q.S);
+      trial("a generic cloth given a size",standardNotes,()=>{ gi.cloth={v:"test",en:"100 x 80 cm",w:100,h:80,unit:"cm",src:"viskovatov9_1850",gr:"B",lab:"fact"};
+          ST.forEach(q=>{ q.S=kitStdShape(q.S.carry,q.S.nation,q.S.mounted); }); },
+        ()=>{ gi.cloth=g0; ST.forEach((q,i)=>{ q.S=S0[i]; }); },"100 x 80 cm","the Russian Guard infantry"); }
+    /* the painted patterns' description is typed (it describes the drawing, KIT.paint); each of its words must stand in the item and in the
+       table's text it describes (a hyphen read as a space), so a change of the table's model or pattern fails here */
+    { const PW=[["1804","fr_eagle_inf","model"],["white","fr_eagle_inf","pattern"],["lozenge","fr_eagle_inf","pattern"],["red and blue","fr_eagle_inf","pattern"],
+        ["imperial yellow","at_inf","model"],["black double eagle","at_inf","pattern"],["flame","at_inf","pattern"],["border","at_inf","pattern"]];
+      const item=standardNotes().filter(t=>/^Painted where/.test(t))[0]||"", nh=t=>String(t||"").replace(/-/g," ");
+      PW.forEach(([w,k,f])=>{ const c=CC[k]&&CC[k][f];
+        if(item.indexOf(w)<0) bad.push("the painted item no longer says \u201c"+w+"\u201d (update this list with it)");
+        if(!c||!(c.gr==="A"||c.gr==="B")||nh(c.en).indexOf(w)<0) bad.push("the painted item's \u201c"+w+"\u201d is not in "+k+"."+f+" graded A or B ("+(c?nh(c.en):"none")+")"); });
+      if(!(CC.ru_inf.pattern&&CC.ru_inf.pattern.gen)) bad.push("the painted item calls the Russian infantry's pattern an open question; the table settles it"); }
+    /* the review of C28 (issue 1): 25cc972's committed build printed "(A.'s ratios ...)", an initial for the author, and nothing caught it.
+       Whenever an oblong cloth whose size is Dolleczek's is drawn, the cloths' item names him by surname (the last word of the source's
+       author), never by an initial; when none is drawn, the parenthesis is absent */
+    let dolN=0, dolSur="";
+    { const sur=String(APPEARANCE_SOURCES.dolleczek1896.au).split(" (")[0].split(" ").pop(), item=standardNotes().filter(t=>/^The cloths in their sourced proportions/.test(t))[0]||"";
+      let dol=0; Object.keys(units).forEach(id=>{ const u=units[id].block&&units[id].block.userData;
+        (u&&u.stds||[]).forEach(q=>{ const c=q.S.cloth; if(c&&c.w!==c.h&&c.src==="dolleczek1896") dol++; }); });
+      if(!item) bad.push("the cloths' item: not found");
+      if(/^[A-Z]\.?$/.test(sur)) bad.push("the cloths' item: Dolleczek's surname read as “"+sur+"”");
+      if(/\([A-Z]\.'s ratios/.test(item)) bad.push("the cloths' item names the ratios' author by an initial");
+      if(dol&&item.indexOf("("+sur+"'s ratios")<0) bad.push("the cloths' item: "+dol+" oblong cloths of Dolleczek's size drawn, but no “("+sur+"'s ratios”");
+      if(!dol&&/'s ratios/.test(item)) bad.push("the cloths' item names whose ratios with no oblong cloth of Dolleczek's size drawn");
+      dolN=dol; dolSur=sur; }
+    trial("the appearance grades",troopNotes,()=>{ APPEARANCE_GRADE.B="a test grade"; },()=>{ APPEARANCE_GRADE.B=gB; },"B a test grade;");
+    trial("a settled coat",troopNotes,()=>{ dc.c="blue"; },()=>{ dc.c=c0; },"the French dragoons wore blue","wore green");
+    trial("an unsettled coat",troopNotes,()=>{ dc.gr="C"; },()=>{ dc.gr=gr0; },"never by a coat: the Russian","French dragoons");
+    const eot=Math.round(SUN_DAY.at(720).eot);
+    if(lightNotes().join(" ").indexOf("about "+eot+" minutes earlier")<0) bad.push("the light: local mean time's shift not SUN_DAY's equation of time ("+eot+" min)");
+    if(bad.length) throw new Error("notes from the table: "+bad.join("; "));
+    console.log("notes from the table: the standards' and the troops' notes follow 10 changed values of the appearance table (a generic cloth given a size among them), the cloths drawn generic are named, the painted item's 8 typed words stand in the table's model and pattern, the cloths' item names \u201c("+dolSur+"'s ratios\u201d by surname ("+dolN+" oblong cloths of his size drawn), and the light's local-time shift is SUN_DAY's ("+eot+" min) OK"); }
+
+  /* roadmap step 2 (docs/FINAL_AUDIT.md D-6): the derived readings carry their tag. At every half hour, every formation's march row
+     (marchRow) tagged derived exactly where marchRate gives a leg; every aggregate's place (posRow) named its formations' midpoint, tagged,
+     with the number of its formations on the field; none named a position, and no tracked formation named a midpoint */
+  { const bad=[]; let nM=0, nA=0;
+    for(let t=T_MIN;t<=T_MAX;t+=30){ setClock(t);
+      Object.keys(FORMATIONS).forEach(id=>{ const f=FORMATIONS[id];
+        if(f.track){ const mr=marchRate(id,clock), r=marchRow(id);
+          if(!!mr!==!!r) bad.push(id+" at "+fmtClock(t)+": a march row "+(mr?"missing":"with no leg"));
+          if(r){ nM++; if(r.indexOf('<span class="ltag derived">')<0) bad.push(id+" at "+fmtClock(t)+": the march row untagged"); }
+          if(/<dt>Midpoint/.test(posRow(id,false)+posRow(id,true))) bad.push(id+" at "+fmtClock(t)+": a tracked formation named a midpoint");
+          return; }
+        const full=posRow(id,false), card=posRow(id,true), n=leavesOf(id,[]).filter(k=>!!posNow(k)).length;
+        if(!/^<div class="kv"><dt>Midpoint at /.test(full)||!(posNow(id)?/^<div class="kv"><dt>Midpoint <span class="ltag derived">/:/^<div class="kv"><dt>Midpoint<\/dt>/).test(card)) bad.push(id+" at "+fmtClock(t)+": not named its formations' midpoint");
+        if(!posNow(id)&&(full+card).indexOf('<span class="ltag derived">')>=0) bad.push(id+" at "+fmtClock(t)+": an absent midpoint tagged derived");
+        if(/<dt>(Position at|Where)\b/.test(full+card)) bad.push(id+" at "+fmtClock(t)+": an aggregate named as a position");
+        if(posNow(id)){ nA++;
+          if(full.indexOf('<span class="ltag derived">')<0) bad.push(id+" at "+fmtClock(t)+": the midpoint untagged");
+          if(n>1&&full.indexOf("the mean of its "+n+" formations")<0) bad.push(id+" at "+fmtClock(t)+": the midpoint does not name its "+n+" formations"); } }); }
+    /* the review of C24-C26 (item 6): no aggregate is off the field at a half hour in the data, so the absent reading is tried: with no
+       formation placed (posNow stubbed for one call each), every aggregate's card and full row carry no derived tag */
+    { const realP=posNow; let nO=0;
+      try{ posNow=function(){ return null; };
+        Object.keys(FORMATIONS).filter(id=>!FORMATIONS[id].track).forEach(id=>{ const full=posRow(id,false), card=posRow(id,true); nO++;
+          if((full+card).indexOf('<span class="ltag derived">')>=0||!/^<div class="kv"><dt>Midpoint<\/dt><dd>Not on the field at this hour</.test(card))
+            bad.push(id+": with none of its formations on the field, a derived tag or no absent reading ("+card.slice(0,80)+")"); });
+      } finally { posNow=realP; }
+      if(!nO) bad.push("no aggregate to try off the field"); }
+    if(bad.length||!nM||!nA) throw new Error("derived tags: "+bad.slice(0,6).join("; ")+" ("+nM+" march rows, "+nA+" midpoints)");
+    console.log("derived tags: "+nM+" march rows tagged derived and "+nA+" aggregate midpoints tagged with their formations' number, at every half hour; no tag on an aggregate with none of its formations on the field OK"); }
+
+  /* roadmap step 2 (docs/FINAL_AUDIT.md D-6): "plotted strength unchanged" follows the clock alone. The plotted holding is sampled here once
+     a minute up to phase 7, where the reading ends (plateauStrength, read by this test, not plateauDay); at every 7th minute the caption and
+     the Now tab's strip are the same after a jump from 04:00, a jump from 18:00 and the morning played a minute at a time from 04:00, and
+     carry the note exactly where the holding shown has not changed for 60 minutes or more */
+  { const T7=PHASES[7].t0, v=[]; for(let t=T_MIN;t<=T7;t++){ clock=t; v.push(plateauStrength("al")); }   /* the reading is shown up to phase 6 */
+    const flat=t=>{ const x=v[t-T_MIN]; let i=t-T_MIN; while(i>=0&&v[i]===x) i--; return t-(T_MIN+i+1); };
+    const paint=()=>{ _sitKey=""; paintSituation(); return document.getElementById("tb-cap").innerHTML+"|"+document.getElementById("situation").innerHTML; };
+    const played={}; for(let t=T_MIN;t<=T7;t++){ setClock(t); paintSituation(); if((t-T_MIN)%7===0) played[t]=paint(); }
+    const bad=[]; let shown=0, hidden=0;
+    for(let t=T_MIN;t<=T7;t+=7){
+      setClock(T_MIN); paint(); setClock(t); const a=paint(); setClock(T_MAX); paint(); setClock(t); const b=paint();
+      const want=phaseAt(t)<=6&&v[t-T_MIN]>0&&flat(t)>=60, has=a.indexOf("plotted strength unchanged")>=0;
+      if(a!==b||a!==played[t]) bad.push(fmtClock(t)+": the caption or the strip depends on where the clock came from");
+      if(has!==want) bad.push(fmtClock(t)+": the note "+(want?"missing":"shown")+" (the holding unchanged for "+flat(t)+" min)");
+      if(want) shown++; else hidden++; }
+    if(bad.length||!shown||!hidden) throw new Error("plateau note: "+bad.slice(0,6).join("; ")+" (shown at "+shown+", not at "+hidden+")");
+    console.log("plateau note: the same after a jump either way and played, at "+(shown+hidden)+" sampled minutes; shown at the "+shown+" where the holding has not changed for an hour, at no other OK"); }
 
   /* the sky must repaint through every lighting state without a NaN */
   for(let ph=0;ph<PHASES.length;ph++){
@@ -749,7 +924,7 @@ try{
     ["al","fr"].forEach(sd=>{ const n=sideOnFieldAt(sd,clock); if(n>caps[sd]) throw new Error(sd+" has "+n+" men on the field at "+fmtClock(clock)+", more than its army ("+caps[sd]+")"); });
   }
   if(!detachedSeen||!fullSeen) throw new Error("the detachment case was not exercised (detached "+detachedSeen+", whole "+fullSeen+")");
-  console.log("parent/child: "+parents.map(id=>id+(FORMATIONS[id].arm==="hq"?" (command post)":" (column, own battalions only)")).join(", ")+
+  console.log("parent/child: "+parents.map(id=>id+(FORMATIONS[id].arm==="hq"?" (command post)":" (own battalions only)")).join(", ")+
     "; "+samples+" moments: no command renders troops, no detachment drawn twice, every drawn block on the field, totals within both armies OK");
 
   /* the events layer toggles off and on cleanly. T-6 (roadmap step 1): its visibility is read back (until step 1 it was not, and this

@@ -195,52 +195,86 @@ Object.keys(FORMATIONS).forEach(id=>{scan(id,FORMATIONS[id].role);scan(id,FORMAT
 
 /* ---------- 6a. LANGUAGE, every visitor string (H-8, docs/FINAL_AUDIT.md; owner decision 131, roadmap step 1) ----------
    Section 6 above is kept as it was, so no allow-list can ever excuse a hit in the fields it reads. This section applies its BANNED
-   and CAUSAL, and VERDICT below, to every string a visitor can be shown, collected by tools/lang-scan.js: every guarded declaration
-   (tools/visual/data-invariance.js), the presentation code of every file build.py joins, tokens.js and shell.html. Not judged: strings
-   in code positions, the self-test and console text (developer), and appearance.js's q and v inside a claim (the source's own words, as
-   printed; a hit there is listed as a note, never a finding). Every occurrence is reported, not only the first. A hit is a finding (a
-   causal one a warning, so KNOWN_WARN's rule below applies) unless a LANG_ALLOW entry names it: its place, its exact phrase, its kind,
-   why it stands and the task that removes it. An entry that matches nothing is a finding, so the list can only shrink as those tasks
-   land; each allowed hit is printed in every run, so none passes silently. Allow a causal hit here too (kind "causal"), not in
-   KNOWN_WARN: its warning names a line, which moves. */
+   and CAUSAL, and VERDICT, SUPERLATIVE and COUNTERFACTUAL below, to every string a visitor can be shown, collected by
+   tools/lang-scan.js: every guarded declaration (tools/visual/data-invariance.js), the presentation code of every file build.py joins,
+   tokens.js and shell.html. Not judged: strings in code positions, the self-test and console text (developer), and appearance.js's q
+   and v inside a claim (the source's own words, as printed; a hit there is listed as a note, never a finding). Every occurrence is
+   reported, not only the first. A hit is a finding (a causal one a warning, so KNOWN_WARN's rule below applies) unless a LANG_ALLOW
+   entry names it: its place, its exact phrase, its kind, why it stands and the task that removes it. An entry that matches nothing is
+   a finding, so the list shrinks as those tasks land and grows only with a new pattern, by the hits it finds that day (roadmap step 2,
+   H-14). So that this holds, every entry added since step 1 names the pattern and the step that found it (found:"SUPERLATIVE, roadmap
+   step 2"): the pattern its kind's, the step the one that added the pattern (PATTERN_STEP); an entry without it must be one step 1
+   left (LANG_STEP1, which loses each entry as its task removes it). Each allowed hit is printed in every run, so none passes silently.
+   Allow a causal hit here too (kind "causal"), not in KNOWN_WARN: its warning names a line, which moves. */
 /* a verdict on the battle (H-4): a finding unless its own sentence carries a label (CLAUDE.md's words, or question 127's "this map
    reads ... as") or LANG_ALLOW names it. The label exempts a verdict only, never a certainty word. */
 const VERDICT=/\b(decisive(?:ly)?|decid(?:e|es|ed|ing) (?:it\b(?! (?:was|is|would|could|should|had|has|must|might|best|better|wise|necessary|prudent|safer|time))|(?:the|this) (?:\w+ )?(?:battle|day|campaign|war|fight|action|outcome|issue))|turning[- ]point|won the (?:battle|day)|lost the (?:battle|day)|sealed (?:the|its|their) fate)\b/i;
 const LABELLED=/\b(this map reads|reads (?:it |them )?as|interpretation|interpretive|inference|inferred|disputed|derived)\b/i;
+/* a superlative of judgement (H-14, docs/FINAL_AUDIT.md; roadmap step 2): a finding unless its own sentence carries a label (LABELLED) or
+   names whose judgement it is (ATTRIBUTED), or LANG_ALLOW names it (kind "superlative"). A measure ("the largest distance", "the smallest
+   count either side gives") is not a judgement and is not in the list; "the most of", "most likely" and "most probably" are not
+   superlatives. As with VERDICT, a label or an attribution exempts a superlative only, never a certainty word. */
+const SUPERLATIVE=/\b(?:(?:the|its|his|their|one of the|among the)\s+(?:(?:single|very)\s+)?(?:most|least)\s+(?!(?:of|part|likely|probably)\b)[a-z]+|(?:the|its|his|their|one of the|among the)\s+(?:(?:single|very)\s+)?(?:hardest|fiercest|bloodiest|greatest|finest|worst|best|strongest|boldest|bravest|costliest|deadliest|grandest|noblest|weakest)|most[- ](?:famous|celebrated|consequential|important|brilliant|remarkable|decisive))\b/i;
+const ATTRIBUTED=/\b(?:is said|are said|was said|said to|reportedly|(?:is|are|was|were) reported|traditionally|as usually given|according to|in (?:the )?(?:Russian|French|Austrian|Soviet|Allied)(?: and Soviet)? accounts|(?:accounts|memoirs?|the Bulletin) (?:put|give|gives|hold|holds|call|calls|say|says|tell|tells)|as \w+ tells it)\b/i;
+/* the pattern's own canaries: it must catch the forms H-14 names and pass the measures and idioms beside them */
+["the single most consequential mistake","The most famous thing","One of the most celebrated forced marches","among the hardest of the day","the strongest ground"]
+  .forEach(t=>{ if(!SUPERLATIVE.test(t)) fail("language",`SUPERLATIVE no longer catches "${t}"`); });
+["the largest distance over the day","the smallest count either side gives","for most of the morning","most probably the Paul-era issues","made the most of it"]
+  .forEach(t=>{ if(SUPERLATIVE.test(t)) fail("language",`SUPERLATIVE catches a measure or an idiom: "${t}"`); });
+/* a counterfactual (H-14): a finding unless its own sentence carries a label (LABELLED; this map's "interpretation, a counterfactual") or
+   LANG_ALLOW names it (kind "counterfactual"). The pluperfect of a record ("had not been told") is not one: only a conditional's forms are */
+const COUNTERFACTUAL=/\b(?:would(?: not)? have (?:been|[a-z]+(?:ed|en|wn|ung|ost|ept))|could(?: not)? have (?:been|[a-z]+(?:ed|en))|if \w+(?: \w+)? had (?:not )?[a-z]+(?:ed|en|wn)|had \w+ not (?:arrived|held|come|broken)|without (?:it|them|him|her)\b[^.]*\b(?:does|do|did|would|could) not)\b/i;
+["would have reopened the severed halves","if Legrand had broken before nine","Without it the French right does not survive"]
+  .forEach(t=>{ if(!COUNTERFACTUAL.test(t)) fail("language",`COUNTERFACTUAL no longer catches "${t}"`); });
+["had not been told that the centre was gone","the true ground would have under the true sun"]
+  .forEach(t=>{ if(COUNTERFACTUAL.test(t)) fail("language",`COUNTERFACTUAL catches a record or a model sentence: "${t}"`); });
 const LANG_ALLOW=[
-  /* guarded data that step 1 cannot change: roadmap step 2's data task (question 129) removes them */
-  {where:"FEATURES[#satschan].story", phrase:"some men certainly died", kind:"certainty",
-   until:"roadmap step 2, the data task (question 129: H-13)",
-   why:"H-13, the debunking told as fact (data.js:714): the count drained from the meres is a lower bound; to be labelled as interpretation, "+
-       "keeping the hedge"},
-  {where:"FORMATIONS.c_iv.role", phrase:"The decisive centre assault", kind:"verdict",
-   until:"roadmap step 2, the data task (question 129; H-4's roles, question 127)",
-   why:"H-4: an interpretation shown under the dossier's 'record' tag (data.js:165)"},
-  {where:"FORMATIONS.c_gd.role", phrase:"then decides it", kind:"verdict",
-   until:"roadmap step 2, the data task (question 129; H-4's roles, question 127)",
-   why:"H-4: an interpretation shown under the dossier's 'record' tag (data.js:383)"},
-  {where:"FORMATIONS.c_cav.role", phrase:"decides the cavalry battle", kind:"verdict",
-   until:"roadmap step 2, the data task (question 129; H-4's roles, question 127)",
-   why:"the same class as H-4's roles (data.js:311), found by this scan and not named in the audit; an open point for the owner"},
-  /* a claim about the app itself, false today (H-3): question 126 marks the plateau label "derived"; the entry may then stay only
-     with the check that backs the claim named in its reason, else the data task rewords the sentence */
-  {where:"SOURCE_NOTE.layers[2][1]", phrase:"always marked derived", kind:"certainty",
-   until:"roadmap step 2, the presentation part (question 126: H-3)",
-   why:"the plateau label carries no 'derived' mark, and from 12:45 none is on screen (H-3; data.js:769)"},
-  /* the first claim (H-4): decision 108's words, written twice; question 127 (b) labels them and retitles the vantage */
-  {where:"paintKey", phrase:"and it decides the battle", kind:"verdict",
-   until:"roadmap step 2, the presentation part (question 127 (b))",
-   why:"H-4: decision 108's words, an unlabelled interpretation and the first claim a visitor reads (the first-run key)"},
-  {where:"shell.html p#fr-key text", phrase:"and it decides the battle", kind:"verdict",
-   until:"roadmap step 2, the presentation part (question 127 (b))",
-   why:"H-4: the same sentence in the #fr-key paragraph, shown before start-up repaints it; 127 must change both places"},
-  {where:"shell.html button[data-v=plateau]@title", phrase:"The ground that decided the battle", kind:"verdict",
-   until:"roadmap step 2, the presentation part (question 127 (b))",
-   why:"H-4: the Pratzen vantage's title; 127 (b) retitles it 'The Pratzen plateau'"},
+  /* superlatives the SUPERLATIVE pattern found when it was added (roadmap step 2, H-14) and the audit did not name: judgements of the
+     fighting, the ground and a march that no record here attributes. The sourcing stage (question 130) attributes each to the account
+     that makes it, or drops it; each fix removes its own entry */
+  {where:"PHASES[#1].events[0][1]", phrase:"among the hardest of the day", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
+   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:63): a judgement of the fighting at Telnitz, unattributed"},
+  {where:"PHASES[#4].lede", phrase:"The hardest fighting for the plateau", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
+   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:85): a judgement of the fighting on the Pratzeberg, unattributed"},
+  {where:"FEATURES[#pratzeberg].story", phrase:"The hardest fighting on the plateau", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
+   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:639): the same judgement as the phase-4 lede"},
+  {where:"FEATURES[#telnitz].story", phrase:"arguably the fiercest of the day", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
+   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:672): hedged ('arguably') but not attributed, and set against the phase-4 lede's 'hardest'"},
+  {where:"FEATURES[#sokolnitz].why[0]", phrase:"The strongest defensible position on the lower Goldbach", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
+   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:677): a judgement of the ground, unattributed"},
+  {where:"EVENTS[#sokolnitz].why", phrase:"the strongest ground on the lower Goldbach", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
+   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (analysis.js:264): the same judgement of the ground"},
+  {where:"FEATURES[#viennaroad].story", phrase:"One of the most celebrated forced marches of the period", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
+   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:746): a claim of reputation; by whom is not said"},
+  /* permanent: a statement of this map's own method, not a judgement of the battle */
+  {where:"SOURCE_NOTE.body[2]", phrase:"the hardest figures of all", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
+   until:null, perm:"a statement of method",
+   why:"about the evidence, not the battle: why the strengths carry ranges (the sources sheet); allowed by its exact phrase"},
   /* permanent: attributed words, not the map's own verdict */
-  {where:"PLANS.al.assumed[1]", phrase:"the decisive ground was the French right", kind:"verdict", until:null,
+  {where:"PLANS.al.assumed[1]", phrase:"the decisive ground was the French right", kind:"verdict", until:null, perm:"attributed words",
    why:"attributed: an assumption of the Allied plan, shown as one in the Plans tab; allowed by its exact phrase, not by exempting the field"}
 ];
+/* the entries step 1 left, written before an entry named what found it (place and phrase); each task that removes an entry removes it
+   here too, so the list cannot let a removed entry come back unnamed */
+const LANG_STEP1=["PLANS.al.assumed[1]|the decisive ground was the French right"];
+/* each kind's pattern and the step that added it to 6a: a new entry names that pattern and that step, so the list grows only with a
+   new pattern (BANNED, CAUSAL and VERDICT were applied to every visitor string in step 1, which allowed their hits by LANG_STEP1) */
+const KIND_PATTERN={certainty:"BANNED",causal:"CAUSAL",verdict:"VERDICT",superlative:"SUPERLATIVE",counterfactual:"COUNTERFACTUAL"};
+const PATTERN_STEP={BANNED:"roadmap step 1",CAUSAL:"roadmap step 1",VERDICT:"roadmap step 1",SUPERLATIVE:"roadmap step 2",COUNTERFACTUAL:"roadmap step 2"};
+/* the review of C12 (roadmap step 2): LANG_STEP1 can only shrink (one entry left at the end of step 2), an entry without found can only be
+   a BANNED, CAUSAL or VERDICT hit that step 1 left, and each found tag holds at most the hits its pattern found the day it was added
+   (SUPERLATIVE: seven until step 4 and one permanent; COUNTERFACTUAL: none, H-14's two were reworded), so a later step cannot add an entry
+   under an earlier pattern's tag */
+const LANG_STEP1_MAX=1, FOUND_MAX={"SUPERLATIVE, roadmap step 2":8,"COUNTERFACTUAL, roadmap step 2":0};
+/* roadmap step 2, C28 (the implementation plan's completeness critic, item 3): an entry's until is checkable. The steps done are named
+   here; an entry whose until begins with one of them is a finding (its task has landed, so the hit it allows must be gone, or the entry
+   is stale), whether or not it still matches. Add a step here when its last commit lands */
+const DONE_STEPS=["roadmap step 1","roadmap step 2"];
+LANG_ALLOW.forEach(a=>{ if(typeof a.until==="string"&&DONE_STEPS.some(d=>a.until===d||a.until.startsWith(d+",")||a.until.startsWith(d+" ")))
+  fail("language",`LANG_ALLOW entry "${a.phrase}" at ${a.where} is allowed until "${a.until}", a step already done (DONE_STEPS): fix the text or record why it stays`); });
+if(LANG_STEP1.length>LANG_STEP1_MAX) fail("language",`LANG_STEP1 can only shrink (${LANG_STEP1_MAX} at the end of roadmap step 2), it holds ${LANG_STEP1.length}`);
+Object.keys(FOUND_MAX).forEach(tag=>{ const k=LANG_ALLOW.filter(a=>a.found===tag).length;
+  if(k>FOUND_MAX[tag]) fail("language",`LANG_ALLOW holds ${k} entries found by "${tag}", more than the ${FOUND_MAX[tag]} that pattern found the day it was added`); });
 { const LS=require(path.join(__dirname,"tools","lang-scan.js"))(__dirname);
   if(LS.missing.length) fail("language",`the overclaim scan cannot find the guarded declarations ${LS.missing.join(", ")}`);
   const whereOf=r=>r.file==="shell.html"?"shell.html "+r.path:r.path;
@@ -248,24 +282,36 @@ const LANG_ALLOW=[
   let judged=0, prose=0; const notJudged={code:0,developer:0,verbatim:0};
   const all=(re,t)=>{ const g=new RegExp(re.source,"gi"), o=[]; let m; while((m=g.exec(t))) o.push(m); return o; };
   const sentence=(t,i)=>{ const a=t.lastIndexOf(". ",i), b=t.indexOf(". ",i); return t.slice(a<0?0:a+2,b<0?t.length:b+1); };
-  LANG_ALLOW.forEach(a=>{ if(!a.where||!a.phrase||!/^(certainty|verdict|causal)$/.test(a.kind)||!a.why||a.until===undefined)
+  LANG_ALLOW.forEach(a=>{ if(!a.where||!a.phrase||!/^(certainty|verdict|causal|superlative|counterfactual)$/.test(a.kind)||!a.why||a.until===undefined||(a.until===null&&!a.perm))
     fail("language",`LANG_ALLOW entry without its place, phrase, kind, reason or task: ${JSON.stringify(a)}`); });
+  LANG_ALLOW.forEach(a=>{ const key=a.where+"|"+a.phrase;
+    if(a.found===undefined){ if(PATTERN_STEP[KIND_PATTERN[a.kind]]!=="roadmap step 1") fail("language",`LANG_ALLOW entry "${a.phrase}" at ${a.where} has no found tag, and its kind's pattern (${KIND_PATTERN[a.kind]}) was not applied in step 1`);
+      if(!LANG_STEP1.includes(key)) fail("language",`LANG_ALLOW entry "${a.phrase}" at ${a.where} does not name the pattern and step that found it (found), and step 1 did not leave it`); return; }
+    const f=/^([A-Z]+), (roadmap step \d+)$/.exec(a.found);
+    if(!f||f[1]!==KIND_PATTERN[a.kind]||PATTERN_STEP[f[1]]!==f[2])
+      fail("language",`LANG_ALLOW entry "${a.phrase}" at ${a.where}: found "${a.found}" must name its kind's pattern (${KIND_PATTERN[a.kind]}) and the step that added it (${PATTERN_STEP[KIND_PATTERN[a.kind]]}): the list grows only with a new pattern`); });
+  LANG_STEP1.forEach(key=>{ if(!LANG_ALLOW.some(a=>a.found===undefined&&a.where+"|"+a.phrase===key))
+    fail("language",`LANG_STEP1 names "${key}", which LANG_ALLOW no longer holds unnamed: remove it from LANG_STEP1`); });
   LS.records.forEach(r=>{
     if(r.skip){ notJudged[r.skip]++;
-      if(r.skip==="verbatim") [BANNED,CAUSAL,VERDICT].forEach(re=>all(re,r.text).forEach(m=>notes.push(`${r.path}: "${m[0]}" (the source's own words, not judged)`)));
+      if(r.skip==="verbatim") [BANNED,CAUSAL,VERDICT,SUPERLATIVE,COUNTERFACTUAL].forEach(re=>all(re,r.text).forEach(m=>notes.push(`${r.path}: "${m[0]}" (the source's own words, not judged)`)));
       return; }
     judged++; if(/\s/.test(r.text)&&r.text.length>=20) prose++;
     const hits=[];
     all(BANNED,r.text).forEach(m=>hits.push(["certainty",m]));
     all(VERDICT,r.text).forEach(m=>{ if(!LABELLED.test(sentence(r.text,m.index))) hits.push(["verdict",m]); });
+    all(SUPERLATIVE,r.text).forEach(m=>{ const s=sentence(r.text,m.index); if(!LABELLED.test(s)&&!ATTRIBUTED.test(s)) hits.push(["superlative",m]); });
+    all(COUNTERFACTUAL,r.text).forEach(m=>{ if(!LABELLED.test(sentence(r.text,m.index))) hits.push(["counterfactual",m]); });
     all(CAUSAL,r.text).forEach(m=>hits.push(["causal",m]));
     hits.forEach(([kind,m])=>{
       const w=whereOf(r);
       const k=LANG_ALLOW.findIndex(a=>a.kind===kind&&a.where===w&&(()=>{ const i=r.text.indexOf(a.phrase); return i>=0&&m.index>=i&&m.index<i+a.phrase.length; })());
-      if(k>=0){ used[k]++; allowed.push(`${kind} "${m[0]}" at ${w}`+(LANG_ALLOW[k].until?` until ${LANG_ALLOW[k].until}`:" (attributed; permanent)")); return; }
+      if(k>=0){ used[k]++; allowed.push(`${kind} "${m[0]}" at ${w}`+(LANG_ALLOW[k].until?` until ${LANG_ALLOW[k].until}`:` (${LANG_ALLOW[k].perm}; permanent)`)); return; }
       const at=`${w} (${r.file}:${r.line})`;
       if(kind==="certainty") fail("language",`${at} asserts certainty: "${m[0]}"`);
       else if(kind==="verdict") fail("language",`${at} gives an unlabelled verdict: "${m[0]}"`);
+      else if(kind==="superlative") fail("language",`${at} gives an unlabelled superlative: "${m[0]}"`);
+      else if(kind==="counterfactual") fail("language",`${at} gives an unlabelled counterfactual: "${m[0]}"`);
       else warn("language",`${at} uses strong causal language: "${m[0]}"`);
     });
   });
@@ -315,11 +361,12 @@ Object.keys(units).forEach(id=>{
    where that is recorded ({w, why, see}); an acknowledged warning that is no longer raised is a finding too, until its entry is removed.
    This block stays after every warn() and before the report. */
 const KNOWN_WARN=[
-  {w:"movement: cavalry mean rate 0.82 is not above infantry 1.23",
+  {w:"movement: cavalry mean rate 0.82 is not above infantry 1.26",
    why:"a model property kept on purpose since the chronology data task: the dated moves are shorter and faster, and the cavalry's slow "+
-       "legs are the undated creeping moves of decision 45; a warning, not a finding, and not changed",
+       "legs are the undated creeping moves of decision 45; a warning, not a finding, and not changed. The infantry mean was 1.23 until "+
+       "roadmap step 2 dated drouet@3's departure at Soult's advance (08:45, H-2): its leg no longer creeps from 04:00, so it is faster",
    see:"docs/STAGE2_SPEC.md §M.12 (:1303) and §M.13 (:1407), on the creeping moves of §M.10; CHANGELOG.md, the chronology data task and the Stage 2C "+
-       "precondition (the march rates)"}];
+       "precondition (the march rates), and roadmap step 2 (H-2, Drouet's departure)"}];
 { const uw=[...new Set(W_)];
   uw.filter(w=>!KNOWN_WARN.some(k=>k.w===w)).forEach(w=>fail("warning",`not acknowledged in KNOWN_WARN: ${w}`));
   KNOWN_WARN.filter(k=>!uw.includes(k.w)).forEach(k=>fail("warning",`acknowledged but no longer raised (remove it from KNOWN_WARN): ${k.w}`));

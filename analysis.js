@@ -1,7 +1,7 @@
 /* ============================================================
    ANALYSIS — the nine things that decided Austerlitz,
    the two command views, and documented limits on what was known.
-   src: "doc" = attested decision or report · "inf" = labelled inference
+   src: "doc" = attested decision or report · "inf" = labelled inference · "anec" = a memoir anecdote, its teller named in the text (roadmap step 2, H-7)
    ============================================================ */
 
 /* The spine data task (docs/STAGE3_SPEC.md sections C.2-C.3; owner decisions 52, 59, 64-67): a chapter is a theme. It names the
@@ -12,7 +12,7 @@ var ANALYSIS = [
 { id:"plan", n:"The Allied plan", at:"ph:0", moments:["ph:0"], cam:[-27,262,41,-27,0,9],
   forms:["kienmayer","dok","lang","prz","col4","milo","kollo","lich","bag","constantine"],
   feats:["pratzen","goldbach","telnitz","sokolnitz","kobelnitz"],
-  text:"Weyrother's dispositions send four of the five Allied columns south-west off the Pratzen plateau to turn the French right and cut the road to Vienna. Bagration holds the highway in the north, Liechtenstein's cavalry links the two, and the Russian Guard stands in reserve behind Krzenowitz. The plan assumes the French will stand still while roughly 60,000 men march across their front."},
+  text:"Weyrother's dispositions send four of the five Allied columns south-west off the Pratzen plateau to turn the French right and cut the road to Vienna. Bagration holds the highway in the north, Liechtenstein's cavalry links the two, and the Russian Guard stands in reserve behind Krzenowitz. The plan assumes the French will stand still while those four columns march across their front."},
 
 { id:"deception", n:"The French deception", at:"ph:0", moments:["ph:0"], cam:[-129,44,27,-7,8,-5],
   forms:["gqg","legrand","sthilaire","vandamme","c_gd","c_gren"],
@@ -22,7 +22,7 @@ var ANALYSIS = [
 { id:"weakness", n:"The apparent weakness on the right", at:"ev:telnitz", moments:["ev:raigern","ev:davout","ev:telnitz"], cam:[-160,58,157,-56,4,59],
   forms:["legrand","friant","bourcier","c_iii"],
   feats:["telnitz","sokolnitz","goldbach","viennaroad"],
-  text:"Legrand's single division held roughly five kilometres of the lower Goldbach on its own. Davout's III Corps detachment, some 4,300 men by Duffy's and Smith's count, reached Raigern only on the night of 1 December after a forced march from Vienna, 8 km from the villages it had to hold. Against them the Allies committed nearly 40,000. The weakness was real, not simulated, which is what made it convincing."},
+  text:"Legrand's single division held roughly five kilometres of the lower Goldbach on its own. Davout's III Corps detachment, some 4,300 men by Duffy's and Smith's count, reached Raigern only on the night of 1 December after a forced march from Vienna, 8 km from the villages it had to hold. Against them the Allies committed roughly 33,000 to 40,000. The weakness was real, not simulated, which is what made it convincing."},
 
 { id:"commitment", n:"The commitment of the Allied left", at:"ph:1", moments:["ev:telnitz","ev:sokolnitz","ev:telnitz-retaken"],
   forms:["buxhowden","kienmayer","dok","lang","prz"],
@@ -37,7 +37,7 @@ var ANALYSIS = [
 { id:"cut", n:"The cutting of the Allied army", at:"ev:pratzeberg", moments:["ev:pratzeberg","ev:buxhowden-blind"], cam:[-75,38,42,7,8,12],
   forms:["sthilaire","vandamme","buxhowden","dok","lang","prz","constantine","bag"],
   feats:["pratzen","pratzeberg","goldbach"],
-  text:"With the plateau taken, the Allied army was in two halves that could no longer support one another. Buxhowden's 40,000 were west and south of the heights; Bagration and the Guard were north and east of them. Buxhowden did not learn that the centre had gone until about noon. From this point the French hold the interior lines on their enemy's own battlefield."},
+  text:"With the plateau taken, the Allied army was in two halves that could no longer support one another. Buxhowden's columns, roughly 33,000 to 40,000 men, were west and south of the heights; Bagration and the Guard were north and east of them. Buxhowden did not learn that the centre had gone until about noon. From this point the French hold the interior lines on their enemy's own battlefield."},
 
 { id:"guard", n:"The Russian Guard counterattack", at:"ph:6", moments:["ev:guard-attack","ev:guard-broken","ev:hq-forward"],
   forms:["constantine","rg_inf","rg_cav","vandamme","guard_cav","guard_inf","drouet"],
@@ -57,7 +57,7 @@ var ANALYSIS = [
 { id:"collapse", n:"The destruction of the Allied left", at:"ev:augezd", moments:["ev:augezd","ev:ice","ev:end"],
   forms:["dok","kienmayer","lang","buxhowden","vandamme","sthilaire","heightguns"],
   feats:["augezd","satschan","menitz","telnitz"],
-  text:"The only ordered way out was the neck of dry ground at Augezd between the two meres, with French guns on the height above it. Some formations broke south across the frozen water. The 30th Bulletin claimed twenty thousand drowned; when the meres were drained the recovery was thirty-eight guns, about a hundred and thirty horses and two men. The catastrophe was real, but it was encirclement, not drowning."}
+  text:"The only ordered way out was the neck of dry ground at Augezd between the two meres, with French guns on the height above it. Some formations broke south across the frozen water. The 30th Bulletin claimed twenty thousand drowned; when the meres were drained the recovery was thirty-eight guns, about a hundred and thirty horses and two men, figures as usually given. The catastrophe was real; this map reads it as encirclement rather than drowning, an interpretation."}
 ];
 
 /* ---- what each headquarters knew, saw, ordered and expected ---- */
@@ -72,8 +72,8 @@ fr:{
     ["knew","doc","That Davout's detachment had reached Raigern overnight and would come up to the Goldbach during the morning."],
     ["ordered","doc","The right to give ground slowly and hold the villages."]],
  2:[["saw","doc","Allied columns descending off the plateau in strength."],
-    ["knew","doc","Soult's answer that he needed under twenty minutes to reach the heights."],
-    ["ordered","doc","A further quarter of an hour's delay before releasing the attack, to let more of the enemy get down into the valley."]],
+    ["knew","anec","Soult's answer that his troops needed twenty minutes at most to reach the heights: a memoir anecdote, as Thiebault tells it."],
+    ["ordered","anec","A further quarter of an hour's delay before releasing the attack, the signal given only once an aide reported the heights abandoned (a little prematurely, Thiebault adds): the same memoir anecdote."]],
  3:[["saw","doc","The crest of the Pratzen, once the mist lifted, and the 4th Column still on it."],
     ["didnt","inf","How strong the force still on the plateau was. Inferred: the attack went in with two divisions and no reserve committed."],
     ["ordered","doc","Soult to take the Pratzeberg and Stare Vinohrady."]],
@@ -150,7 +150,7 @@ al:{
   author:"Drafted by Gen. Franz von Weyrother, Quartermaster-General. Read aloud at Krzenowitz after midnight, in German, to an audience largely of Russian officers, with no time to copy it out.",
   intent:"Turn the French right with overwhelming weight, force the Goldbach at the southern villages, then wheel the left wing north-west to envelop the French as they fall back toward Brünn - severing their line to Vienna - and roll them up against the hills. The centre is to follow the attack, not hold the plateau.",
   assumed:[
-   "That the French, about 50,000 by the Allied estimate, were retreating and would not stand.",
+   "That the French were retreating and would not stand.",
    "That the Pratzen plateau could safely be vacated because the decisive ground was the French right.",
    "That five columns could cross one another's lines of march in darkness and arrive in order."],
   cost:"All three assumptions were wrong. Execution compounded them: the 4th Column started about two hours late - delayed by the cavalry column's counter-march and, in Russian accounts, chiefly by Kutuzov's reluctance to leave the heights - and was still on the plateau when Soult arrived.",
@@ -188,7 +188,7 @@ fr:{
    "That the Allies would read the abandoned plateau and the withdrawn outposts as weakness.",
    "That Davout could reach the lower Goldbach from Vienna in time to keep the right alive.",
    "That Legrand could hold roughly five kilometres of stream on his own for several hours."],
-  cost:"The risk was carried entirely on the right. If Davout had not arrived, or if Legrand had broken before nine o'clock, the bait would have been swallowed with the army behind it.",
+  cost:"The risk was carried entirely on the right. In this map's interpretation, a counterfactual: if Davout had not arrived, or if Legrand had broken before nine o'clock, the bait would have been swallowed with the army behind it.",
   staging:[
    {n:"Soult concealed in the Goldbach valley", c:[210,205], rx:40, ry:66},
    {n:"Reserve behind the Zuran", c:[189,161], rx:50, ry:40},
@@ -233,13 +233,16 @@ var ACTS = [
 /* ============================================================
    EVENTS — what happened, when, and what followed from it.
    t may be a single minute or an interval where the hour is not fixed.
+   claim "disputed" (roadmap step 2, decision 125 (a)): this reconstruction's own texts give different hours; dispute then says what,
+   who gives each, and that neither is yet settled. t keeps the event's existing clock; the tracks keep the map's timing (decision 42).
    kind: decision | attack | capture | arrival | engagement | movement |
          withdrawal | collapse
    ============================================================ */
 var EVENTS = [
 {id:"columns-move", t:[240,420], n:"The Allied columns begin to leave the plateau", side:"al", kind:"movement",
- p:[291,276], forms:["kienmayer","dok","lang","prz"], cf:"A", claim:"fact",
- why:"Every column that goes down into the valley is a column no longer holding the centre."},
+ p:[291,276], forms:["kienmayer","dok","lang","prz"], cf:"B", claim:"disputed",
+ why:"Every column that goes down into the valley is a column no longer holding the centre.",
+ dispute:"When Dokhturov's I Column began its descent: from 04:00 in this event and on the map, but at about 07:30 in the Telnitz phase's text. This reconstruction has not yet settled it from the published accounts."},
 
 {id:"counter-march", t:[255,480], n:"Liechtenstein counter-marches across the 4th Column", side:"al", kind:"movement",
  p:[311,227], forms:["lich","milo","kollo"], cf:"A", claim:"fact",
@@ -247,14 +250,14 @@ var EVENTS = [
 
 {id:"telnitz", t:420, n:"Kienmayer attacks Telnitz", side:"al", kind:"attack",
  p:[212,408], forms:["kienmayer","legrand"], cf:"A", claim:"fact",
- why:"The first shot of the battle, and the beginning of the attack Napoleon wanted."},
+ why:"The battle opens here, on the Allied left, after a night of outpost contact along the Goldbach: the beginning of the attack Napoleon wanted."},
 
 {id:"raigern", t:[240,285], n:"Friant's division at Raigern since the night", side:"fr", kind:"arrival",
  p:[18,500], forms:["friant","bourcier"], cf:"B", claim:"est",
  why:"Davout and Friant reached Raigern on the night of 1 December after about 113 km from Vienna in 40-46 hours (sources vary). Raigern lies just beyond this corner of the map."},
 {id:"davout", t:[465,495], n:"Friant's leading brigade reaches the Goldbach", side:"fr", kind:"arrival",
  p:[198,402], forms:["friant"], cf:"B", claim:"est",
- why:"About 08:00, near Telnitz. Without it the French right does not survive the morning."},
+ why:"About 08:00, near Telnitz. In this map's interpretation, a counterfactual: without it the French right does not survive the morning."},
 
 {id:"sokolnitz", t:480, n:"Langeron and Przybyszewski attack Sokolnitz", side:"al", kind:"attack",
  p:[208,365], forms:["lang","prz","legrand"], cf:"A", claim:"fact",
@@ -266,7 +269,7 @@ var EVENTS = [
 
 {id:"decision", t:[505,525], n:"Napoleon releases Soult against the heights", side:"fr", kind:"decision",
  p:[177,134], forms:["gqg","c_iv","sthilaire","vandamme"], cf:"B", claim:"est",
- why:"Asked how long he needed, Soult is reported to have answered under twenty minutes, and Napoleon to have waited a further quarter of an hour to let more of the enemy get down into the valley. A memoir anecdote."},
+ why:"Asked how long his troops needed to crown the plateau, Soult is reported to have answered twenty minutes at most, and Napoleon to have waited a further quarter of an hour, giving the signal only once an aide reported the heights abandoned (a little prematurely, Thiebault adds). A memoir anecdote, as Thiebault tells it."},
 
 {id:"soult", t:[525,555], n:"Saint-Hilaire and Vandamme climb the slope", side:"fr", kind:"attack",
  p:[262,262], forms:["sthilaire","vandamme"], cf:"A", claim:"fact",
@@ -278,11 +281,12 @@ var EVENTS = [
 
 {id:"face-about", t:555, n:"Kutuzov orders the 4th Column to face about", side:"al", kind:"decision",
  p:[290,237], forms:["ahq","milo","kollo"], cf:"A", claim:"fact",
- why:"The Allied commander-in-chief, riding with the column, is the first to see what has happened."},
+ why:"The Allied commander-in-chief, riding with the column, sees what has happened."},
 
 {id:"kamensky", t:585, n:"Kamensky turns his brigade about and drives the French off the crest", side:"al", kind:"engagement",
- p:[285,289], forms:["kamensky","sthilaire","lang"], cf:"A", claim:"fact",
- why:"The one piece of Allied initiative on the plateau, taken by a brigade commander on his own judgement."},
+ p:[285,289], forms:["kamensky","sthilaire","lang"], cf:"B", claim:"disputed",
+ why:"Allied initiative on the plateau, but whose is disputed: Mikhailovsky-Danilevsky, citing Langeron's report, has Kamensky see the French climbing, warn Langeron and turn his brigade against them; Kutuzov's official report has Kutuzov re-form two regiments he found cut off on the height and order Kamensky to occupy the ridge.",
+ dispute:"When Kamensky turned his brigade about: at about 09:45 in this event and in the Pratzeberg phase's text, but in the 08:45 phase in his brigade's record on this map, whose timing the map keeps. This reconstruction has not yet settled it from the published accounts."},
 
 {id:"kursk", t:630, n:"Langeron's reinforcements arrive as the crest is lost", side:"al", kind:"engagement",
  p:[290,282], forms:["lang","kamensky"], cf:"C", claim:"recon",
@@ -330,7 +334,7 @@ var EVENTS = [
 
 {id:"ice", t:900, n:"French artillery fires on the ice of the Satschan mere", side:"fr", kind:"collapse",
  p:[268,421], forms:["heightguns","dok","kienmayer"], tolKm:1.5, tolWhy:"the marker is the target of a bombardment: the guns fire from the chapel height about 2 km away, and the retreating columns are converging on the ice", cf:"A", claim:"fact",
- why:"The 30th Bulletin claimed twenty thousand drowned. The drained ponds gave up thirty-eight guns, about a hundred and thirty horses and two men. The catastrophe was encirclement, not drowning."},
+ why:"The 30th Bulletin claimed twenty thousand drowned. The drained ponds gave up thirty-eight guns, about a hundred and thirty horses and two men, figures as usually given and, by inference, a lower bound, not the toll. This map reads the catastrophe as encirclement rather than drowning, an interpretation."},
 
 {id:"end", t:990, n:"Organised resistance ends", side:"fr", kind:"collapse",
  p:[290,366], forms:[], cf:"A", claim:"fact",
@@ -360,7 +364,7 @@ var TOUR = [
 {n:"The French strike", at:"ev:soult", chapter:"pratzen",
  x:"At about a quarter to nine Saint-Hilaire and Vandamme climb out of the fog onto ground the Allies have just left. Two divisions, no reserve committed, against a column still filing off the heights."},
 {n:"The army divided", at:"ev:pratzeberg", chapter:"cut",
- x:"With the plateau gone the Allied army is in two halves that can no longer help one another. Buxhowden's forty thousand are still attacking westward and will not learn what has happened behind them until about noon."},
+ x:"With the plateau gone the Allied army is in two halves that can no longer help one another. Buxhowden's columns are still attacking westward and will not learn what has happened behind them until about noon."},
 {n:"The collapse", at:"ev:augezd", chapter:"collapse",
  x:"The French centre turns ninety degrees and comes down off the heights into the rear of the Allied left. The only ordered way out is the neck of dry ground at Augezd, under guns on ground the Allies held at dawn."},
 {n:"What it cost", at:"ph:9", chapter:null,

@@ -98,9 +98,9 @@
   <div class="tlabel">Vantage</div>
   <div class="grp" id="vantages">
     <button class="t van-btn" data-v="field" aria-pressed="true" title="The whole field from the west">Field</button>
-    <button class="t van-btn" data-v="zuran" title="Napoleon's command post: what he could see">Zuran</button>
-    <button class="t van-btn" data-v="plateau" title="The ground that decided the battle">Pratzen</button>
-    <button class="t van-btn" data-v="allied" title="The field as the Allied staff saw it">Allied</button>
+    <button class="t van-btn" data-v="zuran" title="Towards the plateau from near the Zuran mound, Napoleon's first command post: a preset view, not what he saw">Zuran</button>
+    <button class="t van-btn" data-v="plateau" title="The Pratzen plateau">Pratzen</button>
+    <button class="t van-btn" data-v="allied" title="Towards the plateau from the east, the Allied side: a preset view, not what the Allied staff saw">Allied</button>
     <button class="t van-btn" data-v="plan" title="Operational overview from directly above">Overview</button>
     <button class="t van-btn" data-v="eye" hidden title="Eye level at the chosen headquarters (Whose eyes?)">Eye level</button>
   </div>
@@ -207,6 +207,8 @@
     <div class="k" data-lg="village"><span>village (its extent in the model)</span><span class="sw psym" data-sym="village"></span></div>
     <!-- Stage 2F (decision 27; docs/STAGE2_SPEC.md section I.2): no georeferenced outline of the meres is adopted -->
     <div class="k" data-lg="mere"><span>meres: pond outlines schematic</span></div>
+    <!-- roadmap step 2 (decision 135; docs/FINAL_AUDIT.md H-10): the vineyard cover is drawn in every view; whether vines stood there in 1805 is not established -->
+    <div class="k" data-lg="vine"><span>vineyard at Stare Vinohrady: presumed (whether vines stood there in 1805 is not established)</span></div>
     <!-- Stage 4C (docs/STAGE4_SPEC.md section C.5; decisions 72, 73): shown only while the valley fog is drawn -->
     <div class="k" data-lg="fog"><span>valley fog: the narrative's; depth (238 m) and lifting modelled; drawn see-through</span></div>
     <div class="k" data-lg="badge"><span>position approximate (B, C) &middot; reported only (?)</span><span class="bdg"><b>B</b><b>?</b></span></div>
@@ -315,7 +317,7 @@
   <h2 id="fr-title">The Battle of Austerlitz</h2>
   <!-- written at start-up from the same colour key as the legend (COLOUR_KEY), so the two cannot disagree -->
   <p id="fr-key">French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath
-     them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, and it decides the battle.</p>
+     them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.</p>
   <div class="fr-act">
     <button class="t fr-primary" id="fr-tour" type="button">Guided tour</button>
     <button class="t" id="fr-close" type="button">Explore on my own</button>

@@ -491,7 +491,7 @@ var COMPOSITION = {
   heightguns: {dominant:true, basis:"the IV Corps' foot artillery (5e régiment: eight companies on 28 October, alombert4_1908, p. 729) is the corps artillery the data names; the Guard's 24 pieces that broke the ice at the end (thiebault3_1894, p. 466) are noted, their share of the drawn guns not sourced",
     parts:[{dress:"fr_foot_art", n:1, unit:"dominant"}],
     others:[{dress:"fr_guard_art", n:24, unit:"gun", v:"vingt-quatre pièces d'artillerie de la garde impériale brisèrent la glace", src:"thiebault3_1894", at:"p. 466 (leaf n477)", gr:"B", lab:"fact", q:"vingt-quatre pièces d'artillerie de la garde impériale"}]},
-  sthilaire: {note:"the 43e and 55e de ligne (Varé's brigade) followed Vandamme on the day (Thiébault) and are drawn with him, as data.js has it",
+  sthilaire: {note:"the 43e and 55e de ligne (Varé's brigade) followed Vandamme on the day (Thiébault) and are drawn with him, as this reconstruction's order of battle has it",
     parts:[
       {dress:"fr_light", n:2, unit:"bn", v:"10e légère (2 bataillons)", src:"alombert4_1908", at:"p. 727 (situation of 28 October 1805)", gr:"B", lab:"fact", q:"10e légère (2 bataillons)"},
       {dress:"fr_line", n:4, unit:"bn", v:"14e de ligne (2 bataillons) ; 36e de ligne (2 bataillons)", src:"alombert4_1908", at:"p. 727", gr:"B", lab:"fact", q:"14e de ligne (2 bataillons) ; 36e de ligne (2 bataillons)",
@@ -502,21 +502,21 @@ var COMPOSITION = {
       {dress:"fr_line", n:12, unit:"bn", v:"4e de ligne (2 bataillons) ; 28e de ligne (2 bataillons) ; 46e de ligne (2 bataillons) ; 57e de ligne (2 bataillons); with Varé's 43e and 55e", src:"alombert4_1908", at:"pp. 727-728", gr:"B", lab:"inference",
         q:"4e de ligne (2 bataillons) ; 28e de ligne (2 bataillons) ; 46e de ligne (2 bataillons) ; 57e de ligne (2 bataillons)",
         note:"Varé's brigade 'de suivre le mouvement du général Vandamme et de recevoir ses ordres' (thiebault3_1894, p. 467); that it was the 43e and 55e (2 battalions each) is data.js's statement, after Duffy and Smith"}]},
-  legrand: {note:"Telnitz was held by the 3e de ligne and the Tirailleurs du Pô (data.js)",
+  legrand: {note:"Telnitz was held by the 3e de ligne and the Tirailleurs du Pô (this reconstruction's order of battle)",
     parts:[
       {dress:"fr_line", n:7, unit:"bn", v:"3e de ligne (3 bataillons) ; 75e de ligne (2 bataillons) ; 18e de ligne (2 bataillons)", src:"alombert4_1908", at:"pp. 728-729", gr:"B", lab:"fact", q:"3e de ligne (3 bataillons) ; 75e de ligne (2 bataillons) ; 18e de ligne (2 bataillons)"},
       {dress:"fr_light", n:3, unit:"bn", v:"Tirailleurs du Pô (1 bataillon) ; 26e légère (2 bataillons)", src:"alombert4_1908", at:"p. 729", gr:"B", lab:"fact", q:"Tirailleurs du Pô (1 bataillon) ; 26e légère (2 bataillons)",
         note:"the Tirailleurs du Pô wore 'Celui d'un bataillon d'infanterie légère' (fieffe2_1854, t. II, pp. 28-29)"},
       {dress:"fr_gen_inf", n:1, unit:"bn", v:"Tirailleurs corses (1 bataillon)", src:"alombert4_1908", at:"p. 729", gr:"B", lab:"fact", q:"Tirailleurs corses (1 bataillon)"}]},
-  friant: {note:"data.js gives about 3,470 present (Duffy, Smith): only part of the division reached the field; its classes are the division's",
+  friant: {note:"this reconstruction gives about 3,470 present (Duffy, Smith): only part of the division reached the field; its classes are the division's",
     parts:[
       {dress:"fr_line", n:8, unit:"bn", v:"33e de ligne (2 bataillons) 48e de ligne (2 bataillons) ; 108e de ligne (2 bataillons) ; 111e de ligne (2 bataillons)", src:"alombert4_1908", at:"p. 724", gr:"B", lab:"fact", q:"108e de ligne (2 bataillons) ; 111e de ligne (2 bataillons)"},
       {dress:"fr_light", n:2, unit:"bn", v:"15e légère (2 bataillons)", src:"alombert4_1908", at:"p. 724", gr:"B", lab:"fact", q:"15e légère (2 bataillons)"}]},
-  caffarelli: {note:"the 1st division of III Corps, under Bisson on 28 October; that it is the division Caffarelli led at Austerlitz is data.js's statement",
+  caffarelli: {note:"the 1st division of III Corps, under Bisson on 28 October; that Caffarelli led it at Austerlitz rests on the same work's narrative, in which he replaces the wounded Bisson at its head and commands it to the end of the campaign (alombert4_1908, p. 69)",
     parts:[
       {dress:"fr_light", n:2, unit:"bn", v:"13e légère (2 bataillons)", src:"alombert4_1908", at:"pp. 723-724", gr:"B", lab:"fact", q:"13e légère (2 bataillons)"},
       {dress:"fr_line", n:8, unit:"bn", v:"17e de ligne (2 bataillons) ; 30e de ligne (2 bataillons) ; 51e de ligne (2 bataillons) ; 61e de ligne (2 bataillons)", src:"alombert4_1908", at:"p. 724", gr:"B", lab:"fact", q:"17e de ligne (2 bataillons) ; 30e de ligne (2 bataillons)"}]},
-  suchet: {note:"the division's 17e légère held the Santon and is drawn there (santon); battalion counts not printed",
+  suchet: {note:"the division's 17e légère (alombert4_1908, p. 732) held the Santon and is drawn there, as the Santon detachment; battalion counts not printed",
     parts:[
       {dress:"fr_line", n:4, unit:"regt", v:"34e de ligne ; 40e de ligne ; 64e de ligne ; 88e de ligne", src:"alombert4_1908", at:"p. 732", gr:"B", lab:"fact", q:"34e de ligne ; 40e de ligne ; 64e de ligne ; 88e de ligne"}]},
   santon: {others:[{dress:"fr_foot_art", n:18, unit:"gun", v:"18 Kanonen", src:"materialien1806", at:"Zusatz 6, pp. 100-101", gr:"B", lab:"fact", q:"mit 18 Kanonen"}],
@@ -539,13 +539,13 @@ var COMPOSITION = {
   walther: {
     parts:[
       {dress:"fr_dragoon", n:6, unit:"regt", v:"10e, 13e, 22e, 3e, 6e et 11e dragons", src:"alombert4_1908", at:"p. 742", gr:"B", lab:"fact", q:"10e, 13e, 22e, 3e, 6e et 11e dragons"}]},
-  bourcier: {note:"six regiments on 28 October; Martinien records officer casualties at Austerlitz for the 15e, 17e, 18e and 19e only (martinien1899), consistent with the data's 'only a fraction reached the field'",
+  bourcier: {note:"six regiments on 28 October; Martinien records officer casualties at Austerlitz for the 15e, 17e, 18e and 19e only (martinien1899), consistent with this reconstruction's 'Only a fraction of the division reached the field'",
     parts:[
       {dress:"fr_dragoon", n:6, unit:"regt", v:"15e, 17e, 27e, 18e, 19e, 25e dragons", src:"alombert4_1908", at:"p. 743", gr:"B", lab:"fact", q:"15e, 17e, 27e, 18e, 19e, 25e dragons"}]},
-  rivaud: {note:"labelled the 2nd division of I Corps on 28 October, where data.js has Rivaud's as the 1st (a data question, not changed here); battalion counts not printed",
+  rivaud: {note:"labelled the 2nd division of I Corps in the situation of 28 October (alombert4_1908, p. 717); the force return of 26 October (p. 762) numbers its regiments the 1st division, then under Pacthod (that this is Rivaud's division is an inference from the regiments): the number is disputed; battalion counts not printed",
     parts:[
       {dress:"fr_line", n:3, unit:"regt", v:"8e de ligne ; 45e de ligne ; 54e de ligne", src:"alombert4_1908", at:"p. 717", gr:"B", lab:"fact", q:"8e de ligne ; 45e de ligne ; 54e de ligne"}]},
-  drouet: {note:"labelled the 1st division of I Corps on 28 October, where data.js has Drouet's as the 2nd (a data question, not changed here); battalion counts not printed",
+  drouet: {note:"labelled the 1st division of I Corps in the situation of 28 October (alombert4_1908, pp. 716-717) and the 2nd in the force return of 26 October (p. 762; the 27e légère then with Kellermann's advance guard): the number is disputed; battalion counts not printed",
     parts:[
       {dress:"fr_light", n:1, unit:"regt", v:"27e légère", src:"alombert4_1908", at:"pp. 716-717", gr:"B", lab:"fact", q:"27e légère ; 94e de ligne ; 95e de ligne"},
       {dress:"fr_line", n:2, unit:"regt", v:"94e de ligne ; 95e de ligne", src:"alombert4_1908", at:"p. 717", gr:"B", lab:"fact", q:"27e légère ; 94e de ligne ; 95e de ligne"}]},
@@ -591,7 +591,7 @@ var COMPOSITION = {
     parts:[
       {dress:"ru_jager", n:2, unit:"bn", v:"8. Jäger-Regiment ... 2 — — 670", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"8. Jäger-Regiment"},
       {dress:"ru_musk", n:9, unit:"bn", v:"Wiborskoy ... 3; Permskoy ... 3; Kurskoy ... 3", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Kurskoy"}]},
-  kamensky: {note:"the musketeer regiment is 'Riajsk' (mikhailovsky1846, pp. 241-242) or 'Riasky' (schoenhals1873) or 'Rhiasky' (stutterheim1806fr, p. 90): Ryazhsk or Ryazan, unresolved (the data says Ryazan); Stutterheim has the two regiments sent to reinforce Kamensky's brigade",
+  kamensky: {note:"the musketeer regiment is Ryazhsk: 'Ряжскій' in the Russian original (mikhailovsky1844, pp. 167, 179, 187), 'Riajsk' in its French edition (mikhailovsky1846, pp. 241-242); the Russian original puts the Ryazan regiment in Tolstoy's corps in Swedish Pomerania (mikhailovsky1844, p. 257); 'Riasky' (schoenhals1873) and 'Rhiasky' (stutterheim1806fr, p. 90) settle neither name; the Materialien print 'Rjäsan', Ryazan (materialien1806, p. 99), kept as the other reading; Stutterheim has the two regiments sent to reinforce Kamensky's brigade",
     parts:[
       {dress:"ru_gren", n:3, unit:"bn", v:"Tanagorisky [sic] ... 3 2000", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Tanagorisky"},
       {dress:"ru_musk", n:3, unit:"bn", v:"Riasky ... 3 2000", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Riasky"}]},
@@ -600,7 +600,7 @@ var COMPOSITION = {
     parts:[
       {dress:"ru_jager", n:1, unit:"bn", v:"8. Jäger-Regiment ... 1 — — 1300", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"8. Jäger-Regiment"},
       {dress:"ru_musk", n:15, unit:"bn", v:"Gallizi ... 3; Budiersky ... 3; Podolsky ... 3; Norwa ... 3; Asow ... 3", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Gallizi"}]},
-  milo: {note:"Schönhals's Russian total is 12 battalions (Smolensk printed without figures: 3, derived); data.js says fourteen Russian battalions (col4.mixedNote): a data question, not changed here",
+  milo: {note:"Schönhals's Russian total is 12 battalions (Smolensk printed without figures: 3, derived), as Stutterheim's 'douze bataillons russes' (stutterheim1806fr, p. 51); this reconstruction keeps WarHistory's fourteen beside them: the count is disputed",
     others:[{dress:"at_gen_cav", n:2, unit:"sqn", v:"Erzherzog Johann-Dragoner ... — — 2 125", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Erzherzog Johann-Dragoner"}],
     parts:[
       {dress:"ru_musk", n:9, unit:"bn", v:"Novogrolsky ... 3; Apscheronsky ... 3; Sonolenskoy", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"derived", q:"Apscheronsky"},
@@ -609,7 +609,7 @@ var COMPOSITION = {
     parts:[
       {dress:"at_line", n:15, unit:"bn", v:"Salzburg ... 6; Kaunitz ... 1; Auersperg ... 1; Kaiser ... 1; Czartorisky ... 1; Reuss-Greutz ... 1; Württemberg ... 1; Beaulieu ... 1; Kerpen ... 1; Lindenau ... 1", src:"schoenhals1873", at:"p. 177", gr:"B", lab:"fact", q:"Salzburg",
         note:"the same ten regiments in the 1806 Materialien's list of 27 November (materialien1806, pp. 22-23) and in the German edition of Stutterheim (stutterheim1806de, pp. 28-29)"}]},
-  lich: {note:"Mikhailovsky-Danilevsky puts the Empress's cuirassiers and the St Petersburg dragoons with Bagration (mikhailovsky1846, p. 226) and has Uvarov's three regiments sent to Bagration's left on the evening before (p. 233): disputed. No 'Gladkov' appears in any source read; the Russian brigades are Shepelev's and Penitsky's. Shares by men, as the data's mix (Austrians 1,100 of 5,600)",
+  lich: {note:"Mikhailovsky-Danilevsky puts the Empress's cuirassiers and the St Petersburg dragoons with Bagration (mikhailovsky1846, p. 226) and has Uvarov's three regiments sent to Bagration's left on the evening before (p. 233): disputed. No 'Gladkov' appears in any source read; in Schönhals the Russian brigades are Shepelev's ('Czepelow', under Essen) and Penitsky's ('Penitzky', under Uvarov) (schoenhals1873, p. 178). Shares by men (the Austrians 1,100 of 5,600)",
     parts:[
       {dress:"at_cuirassier", n:1100, unit:"men", v:"Nassau-Cürassier — — 8 300; Lothringen-Cürassier — — 8 300; Kaiser-Cürassier — — 8 500", src:"schoenhals1873", at:"p. 178", gr:"B", lab:"fact", q:"Lothringen-Cürassier",
         note:"Lorraine and Nassau also named by Stutterheim, present (stutterheim1806fr, p. 94)"},

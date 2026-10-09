@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 7a86548c5e394853571f28f9e1640a74 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "7a86548c5e394853571f28f9e1640a74",
- "count": 217,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build e807228bce49bfa740f78da26da2b00b (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "e807228bce49bfa740f78da26da2b00b",
+ "count": 221,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -179,6 +179,9 @@
   "identity: every formation drawn as figures in the free rectangle carries a side cue on screen, in Study, Watch and Clean, with Position confidence on and off (decision 107)",
   "legend: the rows are what is drawn: the nation colours as the counters' only where counters are drawn; the figures' and the standards' rows where figures are; the footprint rows under decision 107's footprint",
   "dossier: the full dossier's Dress names each class with its source and grade, or \"not settled\" or \"disputed\", and how its figures are drawn (section 4.3 item 7)",
+  "derived readings tagged: every formation's march row (Marching, Next move) and every aggregate's midpoint (the mean of its formations on the field, their number named) carry the derived tag, in the full dossier and the card; no aggregate named as a position (docs/FINAL_AUDIT.md D-6)",
+  "derived readings: the plateau's “plotted strength unchanged” follows the plotted holding alone (unchanged for 60 minutes or more before the clock), the same after a jump from 04:00, a jump from 18:00 or played (docs/FINAL_AUDIT.md D-6)",
+  "derived readings (decision 126): at 1x, 4x and 10.33x, on the landscape, the paper map and with counters, the plateau label is drawn in phases 0-6 with \"derived\" in its words and its name (an image, no keyboard stop), and from phase 7 neither it nor its outline; the Now tab's and the caption's readings carry their tag wherever drawn",
   "cover: the drawn classes are the same at every relief setting and on the paper map",
   "docked layout: from 1080 px the dispatch is the rail's Now tab; below it a card, and the Now tab hidden",
   "rail tabs: a tablist; the arrow keys, Home and End move between the tabs shown without stepping the clock",
@@ -196,6 +199,7 @@
   "timeline: each interval a bar from its start to its end (decision 89), none for an instant; at most four lanes, none overlapping in a lane, none over an hour numeral; the timebar's height unchanged",
   "timeline: the interval bars at 3:1 or more against the timebar, in the dark and the paper themes (WCAG 1.4.11, non-text contrast)",
   "events: one event clock, the start, for the marker, the event keys, the themes' moments, the dwell and the dossier (decision 89)",
+  "events: a disputed hour, an interval or a reconstruction named with its note by its marker and a formation's dossier, and tagged in the caption inside its box; a disputed event's dossier its pill and both hours; an unsettled arrow's label its mark (decision 125, H-1, H-15)",
   "camera: the orbit target at the free rectangle's centre after each panel change (setViewOffset, eased as the loop does)",
   "camera: picking and the ground through the offset (a click on a counter's box selects it; groundAt's round trip within 1 px)",
   "camera: Follow shows !freeCam after every camera path, as decision 47 sets it; a vantage's button is released when the eye leaves it",

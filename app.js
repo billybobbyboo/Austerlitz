@@ -1337,7 +1337,7 @@ function kitStdShape(carry,nation,mounted){
   var P=K.paint&&stdOk(C.model)?K.paint:null, src=P?COLOURS_CARRIED[KIT.paint[P].from]:null;
   var cl=stdOk(C.cloth)&&C.cloth.w&&C.cloth.h?C.cloth:(src&&stdOk(src.cloth)&&src.cloth.w?src.cloth:null);
   var finCm=stdOk(C.finial)?(apCm(C.finial)||(src&&stdOk(src.finial)?apCm(src.finial):null)):null;
-  var S={paint:P, carry:carry, nation:nation, mounted:!!mounted};
+  var S={paint:P, carry:carry, nation:nation, mounted:!!mounted, cloth:cl};   /* cloth: the entry it is drawn from (roadmap step 2, D-5: the sources sheet reads it) */
   if(!mounted&&!M.provisional&&M.staff&&M.stature){
     var st=M.stature.m, staff=M.staff.m*MAN_FOOT/st, fm=stdOk(C.finial)&&M.staff.finial_m?M.staff.finial_m:0;
     S.len=staff; S.fin=fm*MAN_FOOT/st; S.denom=MAN_FOOT; S.ratio=(M.staff.m+fm)/st; S.provisional=false;
@@ -2177,7 +2177,8 @@ function buildArrow(a){
     dense:a.leg?2:0,   /* Stage 4D: a derived arrow kept to its path (its drawn-on part follows the formation) */
     col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
   var mid=r.curve.getPointAt(0.5);
-  if(a.label) addOverlayLabel(a.label,new THREE.Vector3(mid.x,groundY(mid.x,mid.z)+2.4,mid.z));
+  /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): an arrow the data marks unsettled (OVERLAYS' interp) carries its mark where its label is read */
+  if(a.label) addOverlayLabel(a.label+(/^unsettled:/.test(a.interp||"")?" ("+LABELS.arrow.unsettled+")":""),new THREE.Vector3(mid.x,groundY(mid.x,mid.z)+2.4,mid.z));
   if(a.leg){ var d={a:a,ghost:r,r:drawOnRibbon(pts,w,col,S,r),s:-1}; DRAWON.push(d); }   /* Stage 4D: the part marched, drawn on with the clock */
 }
 /* "IV Column halted" (decision 23, section C.3): a column stopped short of its objective is not a route. A solid bar
@@ -2987,6 +2988,16 @@ function evWindow(e){ return Array.isArray(e.t)?e.t:[e.t,e.t]; }
    (momentOf) and the dwell (decision 75); an interval's window is drawn as a bar from its start */
 function evClock(e){ return evWindow(e)[0]; }
 function evTimeText(e){ var w=evWindow(e); return w[0]===w[1]?fmtClock(w[0]):fmtClock(w[0])+" to "+fmtClock(w[1]); }
+/* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1, H-15): the note an event carries where it is named outside its dossier
+   (its marker's name and title, its map label's accessible name, the Now tab's strip, the opening's bar, a formation's dossier, the
+   selection chip; the map label's drawn words are unchanged, handed to roadmap step 3): its hour disputed
+   (claim "disputed"), else an interval (not a timestamp: decision 44, a process or an unfixed hour), and a reconstruction (claim
+   "recon"); in the one-line caption, where a trailing note would be cut by the ellipsis, a short tag before the name (evTag) */
+function evNoteParts(e,L){ var w=evWindow(e), n=[];
+  if(e.claim==="disputed") n.push(L.disputed); else if(w[0]!==w[1]) n.push(L.interval);
+  if(e.claim==="recon") n.push(L.recon); return n; }
+function evNote(e){ var n=evNoteParts(e,LABELS.event); return n.length?" ("+n.join("; ")+")":""; }
+function evTag(e){ var n=evNoteParts(e,LABELS.event.tag); return n.length?'<small class="evn">'+esc(n.join("; "))+'</small> ':""; }
 function evWeight(e,t){
   var w=evWindow(e), lead=14, tail=26;
   if(t>=w[0]&&t<=w[1]) return 1;
@@ -3026,6 +3037,9 @@ function eventGlyph(side,kind){
    Empty ground shows nothing, so the plateau is surveyed on the map and the
    holding read off the plotted formations. */
 var plateauRing=null;
+/* owner decision 126 (docs/FINAL_AUDIT.md H-3): the plateau reading is shown in phases 0-6 only: in the Now tab and the caption (tagged), on
+   the map (its label, marked derived in its words and its name) and its outline; from phase 7 (12:45) nowhere */
+var PLATEAU_LAST=6;
 function buildPlateauRing(){
   var pts=[], P=PLATEAU_POLY.concat([PLATEAU_POLY[0]]);
   for(var a=0;a<P.length-1;a++) for(var k=0;k<8;k++){
@@ -3043,7 +3057,7 @@ function buildPlateauRing(){
 }
 function updatePlateauRing(){
   if(!plateauRing) return;
-  var show = curPhase<=7 && presentation!=="map";
+  var show = curPhase<=PLATEAU_LAST && presentation!=="map";   /* the outline goes with its reading (decision 126) */
   var tgt = show?0.5:0;
   var pro=tgt-plateauRing.material.opacity; if(Math.abs(pro)>0.004) settling=true;
   plateauRing.material.opacity += pro*ease(0.06);
@@ -3319,6 +3333,10 @@ function paintChapterText(){
     b.addEventListener("click",function(){ select("t",b.dataset.feat); });
   });
 }
+/* the Command tab's source tags (analysis.js COMMAND rows): roadmap step 2 (H-7) adds "anec", a memoir anecdote whose teller the row names,
+   graded as the event that tells it (claim est, "A memoir anecdote"); any other kind is drawn as INFERRED, as before */
+var SRC_LABEL={doc:"DOCUMENTED",inf:"INFERRED",anec:"ANECDOTE"};
+function srcKind(k){ return SRC_LABEL.hasOwnProperty(k)?k:"inf"; }
 function paintCommand(){
   var host=document.getElementById("cmdbody");
   if(!host) return;
@@ -3334,8 +3352,8 @@ function paintCommand(){
   if(!items) h+='<p class="muted">Nothing recorded for this hour.</p>';
   else h+='<dl class="cmdlist">'+items.map(function(it){
     return '<div class="cmdrow"><dt>'+esc(KIND[it[0]]||it[0])+
-      '</dt><dd>'+esc(it[2])+' <span class="src '+(it[1]==="doc"?"doc":"inf")+'">'+
-      iconSVG(TOKENS.sym.source[it[1]==="doc"?"doc":"inf"])+(it[1]==="doc"?"DOCUMENTED":"INFERRED")+'</span></dd></div>';
+      '</dt><dd>'+esc(it[2])+' <span class="src '+srcKind(it[1])+'">'+
+      iconSVG(TOKENS.sym.source[srcKind(it[1])])+SRC_LABEL[srcKind(it[1])]+'</span></dd></div>';
   }).join("")+'</dl>';
   host.innerHTML=h;
 }
@@ -3767,7 +3785,7 @@ function openingGo(d){
    Next on a step but the last plays the clock from that stop's clock to the next stop's at OPENING.SPEED (4x, the opening's own speed, a
    design value; the visitor's Play stays at the speed it had, half speed by default, decision 74), as Play plays it: Follow (decision 78),
    the dwell at each event start (decision 75), the derived arrows drawn on (decision 83). The stop's theme is cleared while it plays; the
-   bar shows the next step's title and, in its text, the event or events each dwell stops for (EVENTS[].n, the timeline caption's words, no
+   bar shows the next step's title and, in its text, the event or events each dwell stops for (EVENTS[].n with its note, evNote, the timeline caption's words, no
    other sentence). When the clock reaches the next stop's clock that stop is applied as in 7C (its theme, and its camera by the tour's
    glide), so every step's frame is the stop's own. While it plays: the Play/Pause button and Space (off a button) pause and resume it
    (WCAG 2.2.2); Next goes straight to the next step; Back returns to the stop it started from; Skip, Esc and every other way end the
@@ -3790,7 +3808,7 @@ function openingStretch(k){   /* k: the step it plays to */
 function openingPlayWatch(){
   var P=OPENING.play; if(!P||!OPENING.on) return;
   if(clock>=P.target-1e-6){ openingArrive(); return; }
-  var dw=dwellEvents(), names=(dw&&dw.length)?dw.map(function(e){ return e.n; }).join("; "):"";
+  var dw=dwellEvents(), names=(dw&&dw.length)?dw.map(function(e){ return e.n+evNote(e); }).join("; "):"";   /* roadmap step 2 (H-15): each with its note */
   if(names&&names!==P.ev){ P.ev=names; document.getElementById("tour-x").textContent=names; }
   openingHead();
 }
@@ -4065,6 +4083,12 @@ function mlAria(it,label){
   if(!it.focusable){ it.el.setAttribute("tabindex","0"); it.el.setAttribute("role","button"); it.focusable=true; }
   it.el.setAttribute("aria-label",label); it.aria=label;
 }
+/* owner decision 126: a name for an item that is read, not pressed (the plateau reading): no keyboard stop and no control's role. Role img
+   names the label as one whole, "derived" in it */
+function mlName(it,label){
+  if(!label||it.aria===label) return;
+  it.el.setAttribute("role","img"); it.el.setAttribute("aria-label",label); it.aria=label;
+}
 /* the items this frame, from the level of detail updateVisibility decided (rec.show, rec.nameShow, o.show, k.labelOn) */
 function mlCollect(){
   var out=[], paper=(mode==="staff"), labels=textOn(), K=paper?"paper":"dark";
@@ -4075,7 +4099,7 @@ function mlCollect(){
   function add(it,o){
     it.cat=o.cat; it.pri=o.pri; it.base=o.base===undefined?o.pri:o.base; it.keep=!!o.keep; it.occl=o.occl!==false; it.acl=o.acl||4;
     it.r=o.r||0; it.mode=o.mode||"label"; it.fid=o.fid||null; it.pick=o.pick||null; it.ground=o.ground||null; it.op=o.op===undefined?1:o.op;
-    it.mk=o.mk||null; mlAria(it,o.aria); out.push(it); return it;
+    it.mk=o.mk||null; mlAria(it,o.aria); if(o.name) mlName(it,o.name); out.push(it); return it;
   }
   function text(key,cat,cls,str,col,w,o){
     var it=mlItem(key,"mlt "+cls);
@@ -4112,14 +4136,15 @@ function mlCollect(){
   });
   /* the moments of the battle: every live event's label is kept (decision 39) */
   if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(!k.labelOn) return;
-    var sel=isSel("e",k.e.id), w=evWindow(k.e);
+    var sel=isSel("e",k.e.id);
     text("e:"+k.e.id,"event","mlt-serif",k.e.n,LB.annotation,k.world,{pri:sel?0:4+(1-evWeight(k.e,clock))*0.5,base:4,keep:true,r:2.1,acl:3,
-      pick:{kind:"e",id:k.e.id},aria:"Event, "+evTimeText(k.e)+": "+k.e.n+(w[0]===w[1]?"":" (an interval: the hour is not fixed)")});
+      pick:{kind:"e",id:k.e.id},aria:"Event, "+evTimeText(k.e)+": "+k.e.n+evNote(k.e)});   /* roadmap step 2: the note in its name; its drawn words unchanged (no layout change) */
   });
-  /* the plateau reading, over the northern part of its outline */
-  if(eventGroup&&eventGroup.visible&&plateauRing&&plateauRing.visible){
+  /* the plateau reading, over the northern part of its outline: a derived reading, marked "derived" in its words and its name in every
+     view, drawn in the phases the tagged reading is (0-6; owner decision 126, docs/FINAL_AUDIT.md H-3) */
+  if(eventGroup&&eventGroup.visible&&plateauRing&&plateauRing.visible&&curPhase<=PLATEAU_LAST){
     var pc=W(298,196); _mlR.set(pc[0],displayHeight(pc[0],pc[1])+1.6,pc[1]);
-    text("p:plateau","plateau","mlt-serif",plateauText(),LB.annotation,_mlR,{pri:5,acl:5});
+    text("p:plateau","plateau","mlt-serif",plateauText(),LB.annotation,_mlR,{pri:5,acl:5,name:plateauText(true)});
   }
   /* movement, line, boundary, halt and objective labels, and the plans' */
   var seen={};
@@ -4143,9 +4168,11 @@ function mlCollect(){
   });
   return out;
 }
-function plateauText(){
+/* the label's words and, spoken, its accessible name: both say "derived" (owner decision 126) */
+function plateauText(spoken){
   var al=plateauStrength("al"), fr=plateauStrength("fr");
-  return "THE PRATZEN  ·  Allied ≈ "+al.toLocaleString()+(fr>500?("   French ≈ "+fr.toLocaleString()):"");
+  if(spoken) return "The Pratzen plateau, a derived reading: Allied about "+al.toLocaleString()+(fr>500?(", French about "+fr.toLocaleString()):"");
+  return "THE PRATZEN  ·  derived: Allied ≈ "+al.toLocaleString()+(fr>500?("   French ≈ "+fr.toLocaleString()):"");
 }
 /* the interface panels over the map, read as rectangles once per pass */
 var ML_PANELS=[".rail",".dispatch",".legend",".drawer",".timebar",".tools","#viewmode","#tourbar","#firstrun","#selchip","#layerpop","#vsbadge","#restore"];
@@ -4346,6 +4373,7 @@ function paintLegend(){
           badge:counters, analysis:!!layerOn.analysis, contours:!!layerOn.contours&&!cleanView,
           wood:!land, village:!land,   /* Stage 2E: the paper map's own symbology */
           mere:true,   /* Stage 2F: the meres are drawn in every view, and their outlines are schematic (decision 27, section I.2) */
+          vine:true,   /* roadmap step 2 (decision 135): the vineyard cover is drawn in every view; whether vines stood there in 1805 is open */
           fog:land&&fogCap(fogAmount(clock))>0.01,   /* Stage 4C: while the valley fog is drawn */
           /* Stage 5B: one row per grade drawn on screen, and the sentence on their sizes; the badge also on the landscape's names */
           "conf-a":!!CONF.shown.A, "conf-b":!!CONF.shown.B, "conf-c":!!CONF.shown.C, conf:!!(CONF.shown.A||CONF.shown.B||CONF.shown.C),
@@ -5057,6 +5085,10 @@ var LABELS={
     hybrid:{label:"Landscape with counters", title:"The ground in relief, with the paper map's counters"}
   },
   layers:{button:"Layers\u2026", heading:"Layers", aria:"Layers and ground", ground:"Ground", shows:"What is drawn"},
+  /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): the note an event carries where it is named, and the mark on the label of
+     an arrow the data calls unsettled: marks of what the data says (EVENTS[].claim, OVERLAYS' interp), no claim of their own */
+  event:{disputed:"the hour is disputed", interval:"an interval, not a timestamp", recon:"a reconstruction", tag:{disputed:"hour disputed", interval:"interval", recon:"reconstruction"}},
+  arrow:{unsettled:"disputed"},   /* owner decision 145 (question 145, 8 October 2026): the shorter form, so the 07:00 place name Augezd is drawn again */
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
      its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with the five glides of
      1.6 s and, since 7D, the clock played between them at 4x, about 50 s: 100 to 121 s; docs/STAGE7_SPEC.md sections 3.4, 3.5). At 390 px the
@@ -5506,10 +5538,11 @@ function paintKey(){
   var K=COLOUR_KEY;
   function sw(k,cls){ return '<i class="'+(cls||"key-sw")+'" data-key="'+k+'" style="background:'+K[k].hex+'" aria-hidden="true"></i>'; }
   function cap(w){ return w.charAt(0).toUpperCase()+w.slice(1); }
-  /* Stage 6C (decision 108; section 4.3 item 4): the key names the symbology, not the coats, which follow the sources (decision 97) */
+  /* Stage 6C (decision 108; section 4.3 item 4): the key names the symbology, not the coats, which follow the sources (decision 97);
+     roadmap step 2 (decision 127 (b); docs/FINAL_AUDIT.md H-4): its verdict on the plateau labelled as this map's reading */
   p.innerHTML="French formations are marked in "+sw("side-fr")+K["side-fr"].word+" and the Allies in "+sw("side-al")+K["side-al"].word+
     ": on their names, their counters and the ground beneath them, and on the movement arrows. "+
-    "The high ground in the centre is the Pratzen plateau, and it decides the battle.";
+    "The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.";
 }
 /* ---- the first view ----
    The whole field from above (the Overview vantage) at 04:00, the first-run card near the foot of the map, the legend held back
@@ -5569,7 +5602,7 @@ function syncSelChip(){
   if(selection.kind==="f"&&FORMATIONS[selection.id]){
     n=FORMATIONS[selection.id].name; var s1=liveStatus(selection.id,curPhase); st=(s1&&STATUS[s1])?STATUS[s1].label:"";
     if(highlight) k="Selected, with its chain of command";
-  } else if(selection.kind==="e"){ k="Event"; EVENTS.forEach(function(e){ if(e.id===selection.id) n=e.n; }); }
+  } else if(selection.kind==="e"){ k="Event"; EVENTS.forEach(function(e){ if(e.id===selection.id) n=e.n+evNote(e); }); }   /* roadmap step 2 (H-15): with its note */
   else if(selection.kind==="t"){ k="Place"; FEATURES.forEach(function(x){ if(x.id===selection.id) n=x.name; }); }
   else { k="Terrain"; n=selection.id; }
   chip.querySelector(".sc-k").textContent=k;
@@ -5643,7 +5676,23 @@ function focusOn(id){
   centreOnMap(p,86);
 }
 
-var _sitKey="", _plLastVal=-1, _plLastT=0;
+var _sitKey="";
+/* roadmap step 2 (docs/FINAL_AUDIT.md D-6): the plotted holding over the day, sampled once a minute from the model (plateauStrength at each
+   minute, the clock put back, as the self-test reads the plateau at 04:00), built once when first needed; plateauFlatFor: for how many
+   minutes before the clock t the holding has been onH. The note "plotted strength unchanged" then depends on the clock alone, not on when
+   the clock was last moved */
+var _plDay=null;
+function plateauDay(){
+  if(_plDay) return _plDay;
+  var keep=clock, v=[];
+  try{ for(var t=T_MIN;t<=T_MAX;t++){ clock=t; v.push(plateauStrength("al")); } } finally { clock=keep; }
+  return (_plDay=v);
+}
+function plateauFlatFor(onH,t){
+  var d=plateauDay(), i=Math.min(d.length-1,Math.floor(t-T_MIN));
+  while(i>=0&&d[i]===onH) i--;
+  return t-(T_MIN+i+1);
+}
 var SEP_NOTE="Derived from the plotted formations: a French formation stands across the line joining the Allied groups north and south of the plateau. A spatial reading, not a casualty figure.";
 var FLAT_NOTE="The reconstruction plots formations, not losses. A holding that does not change does not mean the fighting there has stopped.";
 /* Stage 3C (docs/STAGE3_SPEC.md section D.2): the situation is split. The timeline's caption carries the act, the phase and the
@@ -5655,23 +5704,24 @@ function paintSituation(){
   var live=liveEvents(clock), top=live.length?live[0].e:null;
   var act=actOf(curPhase);
   var onH=plateauStrength("al"), cut=centreSeparation();
-  if(onH!==_plLastVal){ _plLastVal=onH; _plLastT=clock; }
-  var flatFor=clock-_plLastT;
+  /* D-6: from the model alone (plateauFlatFor); before 05:00 it cannot reach the hour, and it is asked only where the reading is shown */
+  var flatFor=(curPhase<=PLATEAU_LAST&&onH>0&&clock-T_MIN>=60)?plateauFlatFor(onH,clock):0;
   var dw=dwellEvents();   /* Stage 4D: during a dwell the caption names the event(s) the clock stopped for */
   var key=[act.id,curPhase,top?top.id:"-",Math.round(onH/1000),cut?1:0,
            flatFor>=60?1:0,playing?1:0,dw?dw.map(function(e){ return e.id; }).join(","):"-"].join("|");
   if(key===_sitKey) return;
   _sitKey=key;
-  var der=(curPhase<=6&&onH>0)?'<span class="der" title="'+esc(FLAT_NOTE)+'"><small>derived</small> on the heights: Allied &asymp; '+
+  var der=(curPhase<=PLATEAU_LAST&&onH>0)?'<span class="der" title="'+esc(FLAT_NOTE)+'"><small>derived</small> on the heights: Allied &asymp; '+
       onH.toLocaleString()+(flatFor>=60?' <em>plotted strength unchanged</em>':'')+'</span>':"";
   var cutH=cut?'<span class="cut der" title="'+esc(SEP_NOTE)+'"><small>derived</small> centre separation detected</span>':"";
   var c='<span class="act">'+esc(act.n.toUpperCase())+'</span><span class="sep">&middot;</span><span>'+esc(PHASES[curPhase].title)+'</span>';
-  if(dw&&dw.length) c+='<span class="sep">&middot;</span><span class="ev dwell">'+esc(dw.map(function(e){ return e.n; }).join("; "))+'</span>';
-  else if(top) c+='<span class="sep">&middot;</span><span class="ev">'+esc(top.n)+'</span>';
+  /* roadmap step 2 (docs/FINAL_AUDIT.md H-15; decision 125 (a)): each event named with its note's tag before the name, where the caption's ellipsis cannot cut it */
+  if(dw&&dw.length) c+='<span class="sep">&middot;</span><span class="ev dwell">'+dw.map(function(e){ return evTag(e)+esc(e.n); }).join("; ")+'</span>';
+  else if(top) c+='<span class="sep">&middot;</span><span class="ev">'+evTag(top)+esc(top.n)+'</span>';
   if(der) c+='<span class="sep der-sep">&middot;</span>'+der;
   if(cutH) c+='<span class="sep der-sep">&middot;</span>'+cutH;
   if(cap){ cap.innerHTML=c; cap.title=cap.textContent; }
-  if(host) host.innerHTML=der+cutH+(top?'<span class="ev">'+esc(top.n)+'</span>':'')+'<span class="why">'+esc(top?top.why:act.line)+'</span>';
+  if(host) host.innerHTML=der+cutH+(top?'<span class="ev">'+esc(top.n+evNote(top))+'</span>':'')+'<span class="why">'+esc(top?top.why:act.line)+'</span>';
 }
 /* ---- Stage 3C: one timeline (docs/STAGE3_SPEC.md section D; owner decisions 53, 60) ----
    One axis, proportional to time from 04:00 to 18:00 (decision 53): the act bands, the phase ticks with their labels and the
@@ -5724,8 +5774,8 @@ function buildTimeline(){
     EV_BAR.lanes=lanes.length;
     evs.forEach(function(o,k){
       var e=o.e, b=el("button","ev-mark "+(e.kind==="decision"?"dec ":"")+(e.side==="fr"?"fr":"al")); b.type="button";
-      var lab=evTimeText(e)+", "+e.n+(o.t1>o.t?" (an interval: the hour is not fixed)":"");
-      b.style.left=tlPc(o.t)+"%"; b.title=evTimeText(e)+"  "+e.n; b.setAttribute("aria-label",lab); b.tabIndex=k===0?0:-1;
+      var lab=evTimeText(e)+", "+e.n+evNote(e);   /* roadmap step 2 (H-1, H-15): its note, disputed, an interval or a reconstruction */
+      b.style.left=tlPc(o.t)+"%"; b.title=evTimeText(e)+"  "+e.n+evNote(e); b.setAttribute("aria-label",lab); b.tabIndex=k===0?0:-1;
       b.addEventListener("click",function(){ stopPlay(); setClock(o.t); select("e",e.id); });
       evh.appendChild(b); _evTicks.push({el:b,bar:o.bar||null,e:e,t:o.t}); });
     rovingGroup(evh,".ev-mark"); }
@@ -5969,7 +6019,7 @@ function compactCard(id){
   var f=FORMATIONS[id];
   var st=liveStatus(id,curPhase), cf=aggConf(id,curPhase), cl=claimOf(id,cf);
   var s2=f.track?stateAt(id,textPhase(id,clock)):null, wt=f.track?waitingFor(id,clock):null, tmg=timingNow(id);
-  var pos=posNow(id), nat=NATION[f.nation];
+  var nat=NATION[f.nation];
   var wrap=el("div","dossier card-compact");
   var head=el("div","dh");
   head.innerHTML='<div class="dh-bar" style="background:'+nat.fill+'"></div><div class="dh-tx">'+
@@ -5978,7 +6028,7 @@ function compactCard(id){
   wrap.appendChild(head);
   var pills='';
   if(st) pills+=statusPill(st);
-  pills+=claimPill(cl);
+  pills+=posClaimPill(cl);
   pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
   if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
   wrap.appendChild(el("div","pillrow",pills));
@@ -5994,7 +6044,7 @@ function compactCard(id){
   if(s2&&s2.act) body+=row("Doing now", esc(s2.act));
   if(wt&&f.track[wt.ph].act) body+=row("From "+esc(fmtClock(wt.w[0])), esc(f.track[wt.ph].act));
   if(s2&&s2.obj) body+=row("Objective", esc(s2.obj));
-  body+=row("Where", pos? esc(nearestFeature(pos)) : "Not on the field at this hour");
+  body+=posRow(id,true);   /* roadmap step 2 (D-6): an aggregate's midpoint, tagged derived */
   wrap.appendChild(el("dl","kvs",body));
   var mb=el("button","more-btn","Full dossier: role, movement, sources");
   mb.addEventListener("click",function(){ dossierExpanded=true; paintDrawer(); });
@@ -6012,6 +6062,8 @@ function apShort(k){ var S=APPEARANCE_SOURCES[k]; return S?String(S.au).split(" 
 function apCite(c){ var S=APPEARANCE_SOURCES[c.src]||{}; return String(S.au||c.src).split(" (")[0]+", "+(S.d||"")+(c.at?", "+c.at:""); }
 /* a note of the table in words: its source keys (e.g. "barres1923") as author and year */
 function apText(t){ return String(t).replace(/\b[a-z][a-z_]*\d[a-z0-9_]*\b/g,function(k){ return APPEARANCE_SOURCES[k]?apShort(k):k; }); }
+/* roadmap step 2 (docs/FINAL_AUDIT.md D-5): the appearance grades as the table defines them (APPEARANCE_GRADE), never typed */
+function apGrades(){ return ["A","B","C"].map(function(g){ return g+" "+APPEARANCE_GRADE[g]; }).join("; "); }
 function apClaim(c){ return esc(apText(c.en||c.v))+' <span class="hh">('+esc(c.gr)+", "+esc(c.lab)+"; "+esc(apCite(c))+(c.dated?"; dated "+esc(c.dated):"")+')</span>'; }
 function apValue(v){
   if(!v) return "not recorded";
@@ -6057,17 +6109,37 @@ function dressSection(id){
     return esc(p.d.name.split(" (")[0])+": "+(e?esc(e.n+" ("+(R.how==="lower"?"the smallest count either side gives":(R.n<1?"one per "+Math.round(1/R.n)+" ":R.n+" per ")+(R.per==="sqn"?(R.n<1?"squadrons":"squadron"):"battalion")+", as sourced")+"), "+
       (e.q.S.paint?PN[e.q.S.paint]:"a plain cloth in the nation's symbol colour")+(e.q.S.provisional?", at the provisional height":", at its sourced height")):"none ("+esc(R.why+(R.detail?": "+apText(R.detail):""))+")"); }).join("<br>")||"none");
   var sec=sect("Dress",h,true,"record");
-  sec.appendChild(el("p","hh",esc("Drawn where a value graded A or B settles it (A documented for 1805, B for the period and probable for 1805, C reconstructed or disputed); "+
+  sec.appendChild(el("p","hh",esc("Drawn where a value graded A or B settles it ("+apGrades()+"); "+
     "otherwise generic: the nation's symbol colour, a plain cap, legwear in one neutral. The drawn colours are design values, not measured shades."+
     (extra.length?" Also: "+extra.join("; ")+".":"")+(A.note?" On the composition: "+apText(A.note):""))));
   return sec;
+}
+/* roadmap step 2 (docs/FINAL_AUDIT.md D-6): the dossier's place and march rows. A formation's place is its plotted position; an aggregate's
+   is the mean of its formations' plotted positions (posNow), a derived reading that may fall where none of them stands: named their
+   midpoint, tagged derived, with how many it averages ("Midpoint", not "Centre", a tactical word throughout the narrative). The march row's
+   distance, time and rate are computed from the plotted leg and its time window (marchRate): derived (where the leg's arrival is itself
+   derived, the Timing row below names its rule) */
+function derivedTag(){ return '<span class="ltag derived">'+iconSVG(TOKENS.sym.layer.derived)+'derived</span>'; }
+function posRow(id,card){
+  var f=FORMATIONS[id], pos=posNow(id);
+  if(f.track) return card ? row("Where", pos? esc(nearestFeature(pos)) : "Not on the field at this hour")
+    : row("Position at "+esc(fmtClock(clock)), pos? esc(nearestFeature(pos)) : esc(notYetAt(id,clock)?"Not yet on the field in this reconstruction":"No longer on the field"));
+  var n=leavesOf(id,[]).filter(function(k){ return !!posNow(k); }).length;
+  if(card) return '<div class="kv"><dt>Midpoint'+(pos?' '+derivedTag():'')+'</dt><dd>'+(pos? esc(nearestFeature(pos)) : "Not on the field at this hour")+'</dd></div>';   /* no tag on an absent reading, as the full row */
+  return row("Midpoint at "+esc(fmtClock(clock)), pos? esc(nearestFeature(pos))+" "+derivedTag()+' <span class="hh">('+
+    (n===1?"its one formation on the field":"the mean of its "+n+" formations\u2019 plotted positions; it need not be where any of them stands")+')</span>' : "\u2014");
+}
+function marchRow(id){
+  var mr=FORMATIONS[id].track?marchRate(id,clock):null; if(!mr) return "";
+  return row(mr.moving?"Marching":"Next move",
+    mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h"+
+    (mr.ice?' <span class="hh">over the frozen mere</span>':'')+" "+derivedTag()+' <span class="hh">(the plotted leg\u2019s length over its time window)</span>');
 }
 function dossierFormation(id){
   var f=FORMATIONS[id];
   var isAgg=!f.track;
   var s=f.track?stateAt(id,textPhase(id,clock)):null, wt=f.track?waitingFor(id,clock):null, tmg=timingNow(id);
   var st=liveStatus(id,curPhase), cf=aggConf(id,curPhase);
-  var pos=posNow(id);
   var wrap=el("div","dossier");
   var nat=NATION[f.nation];
 
@@ -6082,7 +6154,7 @@ function dossierFormation(id){
   var pills='';
   if(st) pills+=statusPill(st);
   var cl=claimOf(id,cf);
-  pills+=claimPill(cl);
+  pills+=posClaimPill(cl);
   pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
   if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
   if(commandView!=="none"){
@@ -6111,16 +6183,8 @@ function dossierFormation(id){
   /* Stage 6C: what it wore, and how the figures draw it */
   var dsx=f.track?dressSection(id):null; if(dsx) wrap.appendChild(dsx);
 
-  /* WHERE, and how fast it is moving */
-  var absent = f.track ? (notYetAt(id,clock) ? "Not yet on the field in this reconstruction"
-                                             : "No longer on the field") : "\u2014";
-  var whr=row("Position at "+esc(fmtClock(clock)), pos? esc(nearestFeature(pos)) : esc(absent));
-  var mr=f.track?marchRate(id,clock):null;
-  if(mr){
-    whr+=row(mr.moving?"Marching":"Next move",
-      mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h"+
-      (mr.ice?' <span class="hh">over the frozen mere</span>':''));
-  }
+  /* WHERE, and how fast it is moving (roadmap step 2, D-6: posRow and marchRow tag the derived) */
+  var whr=posRow(id,false)+marchRow(id);
   if(tmg){
     var tw=tmg.w, tt=tmg.tm;
     whr+=row("Timing", (tw[0]<clock&&tw[1]<=clock?"Reached ":"Moves ")+esc(fmtClock(tw[0]))+"&ndash;"+esc(fmtClock(tw[1]))+
@@ -6174,7 +6238,7 @@ function dossierFormation(id){
     var ule=el("ul","links");
     mine.slice(0,3).forEach(function(x){
       var li=el("li");
-      var b=el("button","linkb",esc(x.e.n));
+      var b=el("button","linkb",esc(x.e.n+evNote(x.e)));   /* roadmap step 2 (H-15): with its note */
       b.addEventListener("click",function(){ select("e",x.e.id); });
       li.appendChild(b); ule.appendChild(li);
     });
@@ -6201,7 +6265,7 @@ function dossierFormation(id){
   }
 
   if(f.note) wrap.appendChild(el("p","note",esc(f.note)));
-  wrap.appendChild(el("p","conf",esc(CLAIM[cl].note)+" "+esc(CONF_TEXT[cf]||"")+(aggInterp(id,curPhase)?" "+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));
+  wrap.appendChild(el("p","conf",(cl!==CLAIM_FROM_CONF[cf]?esc(CLAIM[cl].note)+" ":"")+esc(CONF_TEXT[cf]||"")+(aggInterp(id,curPhase)?" "+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));   /* decision 128 (a): the position's grade text; CLAIM's note only where a track entry names its own claim (heightguns@8-9, where the entry's claim "recon" differs from its grade B), which is that entry's hedge */
 
   var act=el("div","dact");
   var btn=el("button","t","Centre the map here");
@@ -6219,6 +6283,11 @@ var LAYER_TAG={record:"record",recon:"reconstruction",derived:"derived"};
 function statusPill(st){ var t=STATUS[st].tone, ic=TOKENS.sym.status[t];
   return '<span class="pill st-'+t+'">'+iconSVG(ic.icon)+esc(STATUS[st].label)+'</span>'; }
 function claimPill(cl){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS.sym.claim[cl])+esc(CLAIM[cl].label)+'</span>'; }
+/* owner decision 128 (a) (docs/FINAL_AUDIT.md H-5): a formation's pill is its position's claim, worded as the position's. claimOf gives it
+   (a track entry's own claim, else CLAIM_FROM_CONF of the position's grade); it says nothing of the act, the role or the notes, whose own
+   claims are the sourcing stage's (128 (b)). An event's pill keeps CLAIM's words (claimPill) */
+var POS_CLAIM={fact:"Position: documented", est:"Position: estimated", recon:"Position: reconstructed"};
+function posClaimPill(cl){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS.sym.claim[cl])+esc(POS_CLAIM[cl]||CLAIM[cl].label)+'</span>'; }
 function sect(title,html,isDl,layer){
   var d=el("div","sect");
   d.innerHTML='<h3>'+esc(title)+(layer?' <span class="ltag '+layer+'">'+iconSVG(TOKENS.sym.layer[layer])+esc(LAYER_TAG[layer])+'</span>':'')+'</h3>'+
@@ -6336,7 +6405,7 @@ function dossierEvent(eid){
   head.innerHTML='<div class="dh-bar" style="background:'+col+'"></div><div class="dh-tx">'+
     '<p class="dh-sub">'+esc(KIND[e.kind]||e.kind)+' &middot; '+
       (e.side==="fr"?"French":"Allied")+'</p><h2>'+esc(e.n)+'</h2>'+
-    '<p class="dh-cmd">'+esc(exact?("about "+fmtClock(w[0])):(fmtClock(w[0])+" to "+fmtClock(w[1])))+'</p></div>';
+    '<p class="dh-cmd">'+esc((exact?("about "+fmtClock(w[0])):(fmtClock(w[0])+" to "+fmtClock(w[1])))+(e.claim==="disputed"?" ("+LABELS.event.disputed+")":""))+'</p></div>';
   wrap.appendChild(head);
   wrap.appendChild(el("div","pillrow",
     claimPill(e.claim)+
@@ -6345,6 +6414,8 @@ function dossierEvent(eid){
   var s2=el("div","sect");
   s2.innerHTML='<h3>Why it matters</h3><p class="ev-why">'+esc(e.why)+'</p>';
   wrap.appendChild(s2);
+  /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): a disputed event gives both hours and who gives each (EVENTS[].dispute) */
+  if(e.dispute){ var sD=el("div","sect"); sD.innerHTML='<h3>When it happened: disputed</h3><p class="ev-why">'+esc(e.dispute)+'</p>'; wrap.appendChild(sD); }
   if(e.forms.length){
     var s3=el("div","sect");
     s3.innerHTML='<h3>Formations concerned</h3>';
@@ -6359,7 +6430,7 @@ function dossierEvent(eid){
     s3.appendChild(ul); wrap.appendChild(s3);
   }
   wrap.appendChild(el("p","conf",esc(CLAIM[e.claim].note)+
-    (exact?"":" The hour is not fixed in the sources, so this is shown as an interval rather than a timestamp.")));
+    (exact||e.dispute?"":" The hour is not fixed in the sources, so this is shown as an interval rather than a timestamp.")));
   var act=el("div","dact");
   var b1=el("button","t","Go to this moment");
   b1.addEventListener("click",function(){ stopPlay(); setClock(evClock(e)); centreOnMap(e.p,96); });
@@ -6447,30 +6518,57 @@ function troopNotes(){
   var ids=Object.keys(DRESS), n={coat:0,head:0,leg:0}, cu=[], hb=[];
   ids.forEach(function(k){ var kd=kitDress(k); if(kd.coatName!=="generic") n.coat++; if(kd.head!=="generic") n.head++; if(kd.legName!=="generic") n.leg++;
     if(kd.cuirass) cu.push(DRESS[k].name.split(" (")[0]); if(kd.mount==="horse"&&kd.horse!=="brown") hb.push(DRESS[k].name.split(" (")[0]+" ("+kd.horse+", "+DRESS[k].horse.gr+")"); });
+  /* roadmap step 2 (docs/FINAL_AUDIT.md D-5): two coats that are not their side's symbol colour, as the table settles them and the figures
+     draw them (kitDress); a class the table does not settle is not named */
+  var ex=["fr_dragoon","ru_chevalier"].filter(function(k){ return DRESS[k]&&kitDress(k).coatName!=="generic"; })
+    .map(function(k){ return "the "+DRESS[k].name.split(" (")[0]+" wore "+kitDress(k).coatName; });
   return [
-    "The figures' dress follows the appearance table, a record of what each class of troops present wore, read from the sources with each value's source, page and grade (A documented for 1805; B documented for the period and probable for 1805; C reconstructed or disputed). Each drawn battalion or squadron takes a class in proportion to its formation's recorded composition; a class too small for one drawn unit is listed in the dossier, not drawn.",
+    "The figures' dress follows the appearance table, a record of what each class of troops present wore, read from the sources with each value's source, page and grade ("+apGrades()+"). Each drawn battalion or squadron takes a class in proportion to its formation's recorded composition; a class too small for one drawn unit is listed in the dossier, not drawn.",
     "Of the table's "+ids.length+" classes, "+n.coat+" have their coat drawn, "+n.leg+" their legwear and "+n.head+" their headgear, where a value graded A or B settles them. Everything else is drawn generic: the coat in the nation's symbol colour (the counters' colour, not a cloth), legwear in one neutral, a plain cap. A disputed value is drawn generic and its sides are in the dossier.",
     "The drawn colours are design values for the colours the sources name, not measured shades. Headgear is drawn by its shape in one dark colour (the metal helmets in metal); where a source names its colour, the dossier says so. Facings and lace are not drawn: below the figures' scale; the dossier says what was worn.",
     "Greatcoats: no read source shows them worn in the fighting, so the coat is drawn; where the sources leave it open, the dossier says greatcoats may have been worn.",
     "Cuirasses are drawn where the table records them: "+(cu.length?cu.join("; "):"none")+". Horses are drawn in one brown"+(hb.length?", except "+hb.join("; "):"")+"; guns and limbers in one colour for every army.",
     "The two mounted officers of each infantry formation are drawn generic; the skirmish screen in the formation's largest class. Troops of another arm attached to a formation (its guns, its cavalry) are listed in its dossier, not drawn: a formation keeps the arm the order of battle gives it.",
-    "Side and nation are carried by the counters, the marks beside the names and the marks on the ground, never by a coat: French dragoons wore green and the Chevalier Guard white. With Position confidence off, a footprint in the side's colour stays under every formation drawn as figures."
+    "Side and nation are carried by the counters, the marks beside the names and the marks on the ground, never by a coat"+(ex.length?": "+ex.join(" and "):"")+". With Position confidence off, a footprint in the side's colour stays under every formation drawn as figures."
   ];
 }
-/* Stage 6D: the sources sheet's "How the standards are drawn", from COLOURS_CARRIED, STANDARD_MEASURES and the blocks as drawn */
+/* Stage 6D: the sources sheet's "How the standards are drawn", from COLOURS_CARRIED, STANDARD_MEASURES and the blocks as drawn. Roadmap
+   step 2 (docs/FINAL_AUDIT.md D-5): its historical values are read, not typed: the Austrian infantry's disputed count and its model (with
+   its source, without a trailing period claim), the statures' dates, and the cloths of the standards as drawn (kitStdShape's S.cloth: the
+   entry's own measured cloth or its painting's; a cloth drawn for a standard whose own size was not read is named as such; a standard
+   drawn in the generic proportion, KIT.std.aspect, a design value, is named by its class). The painted patterns' description describes
+   the drawing (KIT.paint, a design simplification) and stays typed: runtime-test.js checks each of its words against the table's
+   model and pattern texts. The cloths' figures are written as drawn, the first along the fly and the second along the staff (the w and
+   h of the table's cloth), which is the drawing's convention, not the sources' */
 function standardNotes(){
-  var none={}, n=0, used={};
+  var none={}, n=0, used={}, cl={fr:[],at:[],ru:[]}, both={}, lent={}, gen={}, oblong={};
   Object.keys(units).forEach(function(id){ var u=units[id].block&&units[id].block.userData; if(!u) return; n+=u.stds?u.stds.length:0;
     (u.dress||[]).forEach(function(r){ if(!r.dress||r.role==="skirmish"||r.role==="officers") return; var c=DRESS[r.dress].carry, R=kitStdRule(c);
-      used[c]=1; if(!R.n) (none[R.why]=none[R.why]||{})[DRESS[r.dress].name.split(" (")[0]]=1; }); });
-  var M=STANDARD_MEASURES, ru=M.ru, at=M.at;
+      used[c]=1; if(!R.n) (none[R.why]=none[R.why]||{})[DRESS[r.dress].name.split(" (")[0]]=1; });
+    (u.stds||[]).forEach(function(q){ var c=q.S.cloth, L=cl[q.S.nation], t;
+      if(!c&&q.S.clothBy==="generic"&&DRESS[q.dress]) gen[DRESS[q.dress].name.split(" (")[0]]=1;
+      if(!c||!L) return;
+      t=c.w===c.h?c.w+" cm square":c.w+" x "+c.h+" cm"; if(c.w!==c.h&&c.src) oblong[c.src]=1;
+      if(c!==(COLOURS_CARRIED[q.S.carry]||{}).cloth) lent[q.S.nation+"|"+t]=1;
+      if(L.indexOf(t)<0) L.push(t);
+      if(!q.S.provisional&&q.S.clothBy==="its measure against the staff") both[q.S.nation]=1; }); });
+  var M=STANDARD_MEASURES, ru=M.ru, at=M.at, ADJ={fr:"French",at:"Austrian",ru:"Russian"};
+  var AI=COLOURS_CARRIED.at_inf, lo=KIT.carry.at_inf&&KIT.carry.at_inf.lower, atWhen=(/\(([^()]+)\)\s*$/.exec(at.stature.en||"")||[])[1];
+  function list(a){ return a.length<2?a.join(""):a.slice(0,-1).join(", ")+" and "+a[a.length-1]; }
+  var cls=["fr","at","ru"].filter(function(k){ return cl[k].length; }).map(function(k){ return "the "+ADJ[k]+" "+
+        list(cl[k].map(function(t){ return lent[k+"|"+t]?t+" (also drawn for standards whose own size was not read)":t; })); }),
+      bm=["ru","at"].filter(function(k){ return both[k]; }).map(function(k){ return ADJ[k]; }), gn=Object.keys(gen).map(function(k){ return "the "+k; });
   return [
     "Who carried standards and how many follow the appearance table, per battalion or squadron as the sources give it, mapped onto the drawn battalions and squadrons: "+n+" standards on the field. None where "+
       Object.keys(none).map(function(w){ return w+" ("+Object.keys(none[w]).join(", ")+")"; }).join("; ")+".",
-    "The Austrian infantry's count is disputed, one or two per battalion in 1805: one per battalion is drawn, the smallest either side gives. The white Leib colour, one per regiment, is not drawn apart from the ordinary colours.",
+    "The Austrian infantry's "+(AI.count&&AI.count.sides&&lo?"count is disputed, "+AI.count.v+" in 1805: "+(lo.n===1?"one":String(lo.n))+" per "+DRESS_UNIT[lo.per][0]+
+      " is drawn, the smallest either side gives. Its model ("+apShort(AI.model.src)+"): ":"model ("+apShort(AI.model.src)+"): ")+
+      AI.model.en.replace(/\s*\([^()]*\)\s*$/,"")+"; the Leib colour is not drawn apart from the ordinary colours.",
     "Painted where a source graded A or B gives the pattern: the French 1804 model (a white lozenge, the corners alternately red and blue; which colour lies at the staff's top is not sourced, drawn blue; the eagle on the staff where its size is read) and the Austrian ordinary colour (imperial yellow, the black double eagle, simplified; its flame border not drawn). Every other cloth is plain, in the nation's symbol colour: the pattern of the Russian infantry's colours is an open question; the Russian cavalry's and the Guard's patterns were not settled by the sources read.",
-    "Height, owner decision 106: the staff's top, with its finial, over the man's height to his hat's top. Russian infantry: a staff of "+ru.staff.m.toFixed(2)+" m and a spearhead of "+ru.staff.finial_m.toFixed(3)+" m with its socket (how far the socket overlaps is not stated: drawn on the staff's end, the upper bound) over a recruit of "+ru.stature.m.toFixed(2)+" m, the minimum of 1804. Austrian infantry: a staff of about "+at.staff.m.toFixed(2)+" m over a recruit of "+at.stature.m.toFixed(2)+" m (a minimum of the 1790s; the finial's size not read, not drawn). Both divide by a minimum stature, so the drawn staff is if anything long for the average man (an inference).",
-    "The cloths in their sourced proportions (the French 81 cm square, the Austrian 161 x 142 cm and 71 x 63 cm, the Russian 142 cm square); where the staff and the cloth are both measured (the Russian and Austrian infantry), at their sourced size against the staff, so that the cloth hangs lower among the ranks than the provisional rule drew it. The dip of a broken, captured, encircled or repulsed formation's standards is kept."
+    "Height, owner decision 106: the staff's top, with its finial, over the man's height to his hat's top. Russian infantry: a staff of "+ru.staff.m.toFixed(2)+" m and a spearhead of "+ru.staff.finial_m.toFixed(3)+" m with its socket (how far the socket overlaps is not stated: drawn on the staff's end, the upper bound) over a recruit of "+ru.stature.m.toFixed(2)+" m, the minimum of "+String(ru.stature.dated).slice(0,4)+". Austrian infantry: a staff of about "+at.staff.m.toFixed(2)+" m over a recruit of "+at.stature.m.toFixed(2)+" m (a minimum"+(atWhen?" of "+atWhen:"")+(at.staff.finial_m?"":"; the finial's size not read, not drawn")+"). Both divide by a minimum stature, so the drawn staff is if anything long for the average man (an inference).",
+    "The cloths in their sourced proportions"+(cls.length?" ("+cls.join("; ")+"), the first figure along the fly and the second along the staff, as drawn"+
+      (oblong.dolleczek1896?" ("+String(APPEARANCE_SOURCES.dolleczek1896.au).split(" (")[0].split(" ").pop()+"'s ratios do not say which side is the staff's)":""):"")+(bm.length?"; where the staff and the cloth are both measured (the "+list(bm)+" infantry), at their sourced size against the staff, so that the cloth hangs lower among the ranks than the provisional rule drew it":"")+
+      (gn.length?"; where neither a cloth size nor a painting is read ("+list(gn)+"), one generic proportion, a design value":"")+". The dip of a broken, captured, encircled or repulsed formation's standards is kept."
   ];
 }
 function arrowNotes(){
@@ -6481,7 +6579,7 @@ function arrowNotes(){
   return ["An arrow drawn for a phase shows the movement the model makes during that phase. "+d+" of the "+n+" arrows are drawn from the formation's own modelled route, so their ends are its modelled positions; they move with the model.",
     "The others are interpretive and marked as such in the data: "+(k.route||0)+" ordered routes (dashed), "+(k.objective||0)+" that point at a place or objective rather than a modelled position, "+
       (k.group||0)+" that stand for several formations, "+(k.unmodelled||0)+" for bodies the map does not track, and "+(k.halt||0)+" halt bar, a column stopped short of its objective.",
-    "Hand-authored, because this map's own texts disagree about the hour and the sources have not been checked: "+uns.join("; ")+"."];
+    "Hand-authored, because this map's own texts disagree about the hour and the sources have not been checked; each label carries the mark ("+LABELS.arrow.unsettled+"): "+uns.join("; ")+"."];
 }
 /* Stage 4B (docs/STAGE4_SPEC.md section A.5; decisions 68-71): how the light is drawn, a presentation note of the sources sheet
    (not SOURCE_NOTE): derived from astronomy and the app's clock, with what it is not */
@@ -6489,11 +6587,15 @@ function lightNotes(){
   var hm=fmtClock, rise=null, set=null; for(var t=T_MIN;t<=T_MAX;t+=1){ var g=SUN_DAY.at(t).geo>-0.833; if(g&&rise===null) rise=t; if(!g&&rise!==null&&set===null) set=t; }
   return ["The sun is computed, not recorded: its position over the field on 2 December 1805, with the map's clock read as local solar time "+
       "(the sun due south at 12:00). On that reading it rises at "+hm(rise)+" and sets at "+hm(set)+", and is never more than "+Math.round(SUN_DAY.noonAlt)+
-      " degrees above the horizon. Which time the sources' hours keep is not established; local mean time would move every sun event about 10 minutes earlier.",
+      " degrees above the horizon. Which time the sources' hours keep is not established; local mean time would move every sun event about "+Math.round(SUN_DAY.at(720).eot)+" minutes earlier.",
     "The relief is drawn exaggerated, so the light is steepened by the same factor: the ground's lit and shaded sides, and its shadows, are those the true "+
       "ground would have under the true sun. The sun's disc stands at its true height, so where the relief is exaggerated the light seems to come from higher than the disc.",
     "Before dawn the field is lit by a design light, not by a moon; nothing about the night's sky is claimed. The weather of the day (the fog in the valley, "+
-      "the sun on the heights at about 08:45) is the narrative's, as the phases' texts give it; this reconstruction cites no source for it.",
+      "the sun on the heights at about 08:45) is drawn as the phases' texts give it. Thiebault's and Marbot's memoirs have the fog hiding the French in the "+
+      "valley and the 'sun of Austerlitz' lighting the climb onto the Pratzen (the sources sheet's Basis), but give the climb itself no clock hour. "+
+      "Thiebault writes that day came only at eight (vol. III, 1894, p. 456), and that an aide-de-camp came at half past eight to report that the last "+
+      "enemy corps had left the Pratzen heights, a report he says misled Napoleon (p. 504). The hours drawn are the narrative's, and this reconstruction "+
+      "cites no source for them.",
     "The valley fog is drawn from the narrative: in the Goldbach valley until about 08:45, off the heights first. Its top is drawn at "+Math.round(ATMO.FOG_TOP)+
       " m, the height below which the Command view treats ground as fogged while the mist lies; its depth and its lifting are modelled, not recorded, "+
       "and it is drawn see-through so the formations in it stay visible. The thin mist drawn in the late afternoon is modelled too: no text mentions it.",
@@ -7302,6 +7404,7 @@ var AUSTERLITZ_DEBUG=(function(){
         if(row("foot")!==(mode!=="staff"&&isTrueScale())) R.ctx.push(s.n+": the footprint rows");
         if(row("wood")!==(mode==="staff")||row("village")!==(mode==="staff")) R.ctx.push(s.n+": the paper map's wood and village rows");
         if(!row("mere")) R.ctx.push(s.n+": the meres' row (pond outlines schematic)");
+        if(!row("vine")) R.ctx.push(s.n+": the vineyard row (presumed)");   /* roadmap step 2 (decision 135) */
         if((getComputedStyle(document.getElementById("goingkey")).display!=="none")!==goingOn) R.ctx.push(s.n+": the going rows"); }
       if(s.layers){ setPlan(planSide); if(goingOn) toggle("#going"); if(layerOn.analysis) toggle('.layer-btn[data-l="analysis"]'); }
       if(s.first) closeFirst(null);
@@ -7773,6 +7876,44 @@ var AUSTERLITZ_DEBUG=(function(){
       " units above it ("+where+"); vertices within "+lift.toExponential(1)+" of their lift");
     setClock(keep,{instant:true,force:true,camera:false}); finishTween();
   }
+  /* roadmap step 2 (owner decision 126, docs/FINAL_AUDIT.md H-3; the implementation plan's completeness critic, item 5): the check behind
+     SOURCE_NOTE.layers[2][1] ("the holding on the heights and the centre-separation test are marked derived wherever they are shown").
+     At every relief setting, on the landscape, the paper map and the landscape with counters, at a clock in each phase and at 12:44 and
+     12:45: in phases 0-6 the plateau label is drawn, its words and its accessible name say "derived", and it is named as an image, not a
+     control or a keyboard stop; from phase 7 neither the label nor its outline is drawn; in the Now tab and the caption every derived
+     reading drawn carries its "derived" tag, no reading's words stand outside a tagged span, and the holding is not shown from phase 7.
+     The phase rule is written here (6), not read from PLATEAU_LAST */
+  function plateauDayChecks(){
+    var keep=clock, md=mode, pres=presentation, f0=DISPLAY.factor, ms0=MAPCAM.state(), bad=[], n={on:0,off:0,tab:0,cap:0}, runs=0;
+    var T=PHASES.map(function(ph){ return Math.round((ph.t0+ph.t1)/2); }).concat([764,765]);
+    var RE=[/on the heights: Allied/,/centre separation detected/];
+    setPresentation("study");
+    DISPLAY.settings.forEach(function(fct){ setDisplayFactor(fct);
+      ["terrain","staff","hybrid"].forEach(function(m){ if(mode!==m) setMode(m); if(m==="staff") MAPCAM.frameField(true);
+        T.forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); finishTween(); runs++;
+          for(var i=0;i<200;i++) updateEventLayer(); updateVisibility(); mlLayout();
+          var tag=fmtFactor(fct)+"\u00d7 "+m+" "+fmtClock(t), want=curPhase<=6, it=ML.items["p:plateau"], drawn=!!it&&it.frame===ML.frame;   /* collected this pass (it may then lie off screen or under a panel) */
+          if(drawn!==want) bad.push(tag+": the label "+(want?"not drawn":"drawn")+" in phase "+curPhase);
+          if(!want&&plateauRing&&plateauRing.visible) bad.push(tag+": the outline drawn in phase "+curPhase);
+          if(drawn){ n.on++; var nm=it.el.getAttribute("aria-label")||"";
+            if(!/\bderived\b/.test(it.el.textContent)) bad.push(tag+': its words without "derived"');
+            if(!/\bderived\b/.test(nm)) bad.push(tag+': its accessible name without "derived"');
+            if(it.el.getAttribute("role")!=="img"||it.el.hasAttribute("tabindex")) bad.push(tag+": named as a control or a keyboard stop"); }
+          else n.off++;
+          _sitKey=""; paintSituation();
+          [["situation","tab"],["tb-cap","cap"]].forEach(function(q){ var el=document.getElementById(q[0]); if(!el) return;
+            Array.prototype.forEach.call(el.querySelectorAll(".der"),function(d){ var s=d.querySelector("small");
+              if(!s||s.textContent!=="derived") bad.push(tag+": a reading in "+q[0]+" without its tag"); else n[q[1]]++; });
+            var bare=el.cloneNode(true); Array.prototype.forEach.call(bare.querySelectorAll(".der"),function(d){ d.remove(); });
+            RE.forEach(function(re){ if(re.test(bare.textContent)) bad.push(tag+": a derived reading's words in "+q[0]+" outside its tagged span"); });
+            if(!want&&RE[0].test(el.textContent)) bad.push(tag+": the holding shown in "+q[0]+" in phase "+curPhase); });
+        }); }); });
+    setDisplayFactor(f0); if(mode!=="staff") setMode("staff"); MAPCAM.restore(ms0); if(mode!==md) setMode(md);
+    setPresentation(pres); setClock(keep,{instant:true,force:true,camera:false}); finishTween(); _sitKey=""; paintSituation();
+    return [{name:"derived readings (decision 126): at 1x, 4x and 10.33x, on the landscape, the paper map and with counters, the plateau label is drawn in phases 0-6 with \"derived\" in its words and its name (an image, no keyboard stop), and from phase 7 neither it nor its outline; the Now tab's and the caption's readings carry their tag wherever drawn",
+      ok:n.on>0&&n.off>0&&n.tab>0&&n.cap>0&&!bad.length,
+      detail:runs+" views ("+DISPLAY.settings.length+" relief settings x the landscape, the paper map and with counters x "+T.length+" clocks): the label drawn and marked in "+n.on+", not drawn in "+n.off+"; tagged readings "+n.tab+" in the Now tab, "+n.cap+" in the caption"+(bad.length?"; WRONG: "+bad.slice(0,6).join("; "):"")}];
+  }
   /* Stage 6C (docs/STAGE6_SPEC.md section 6.2, "What must hold"; owner decisions 97-104, 107, 109): the figures by class, the side cue,
      the legend, the dossier. Each expectation is derived here from appearance.js and KIT, not read back from kitDress */
   function kitDayChecks(){
@@ -8201,6 +8342,50 @@ var AUSTERLITZ_DEBUG=(function(){
   }
   /* Stage 5G (docs/STAGE5_SPEC.md section F.4; decision 95): the day-track inset, bound to the track, at one scale, north up; its
      anchors a keyboard group that sets the clock; its marks and text against the paper ground */
+  /* roadmap step 2 (docs/FINAL_AUDIT.md D-6): the derived readings carry their tag, and the plateau's note follows the clock alone.
+     Every formation's march row (Marching, Next move) and every aggregate's midpoint (the mean of its formations on the field, their number
+     named) tagged derived in the full dossier and the card, at four clocks; no aggregate named as a position. Then "plotted strength
+     unchanged" at a clock in the day's first run of the plotted holding of 70 minutes or more (the note) and one in its first run of 50 or
+     fewer (none), each chosen where the clock it tests is in a phase that shows the reading, and each reached by a jump from 04:00, a jump
+     from 18:00 and played a minute at a time from the run's start: the same each way */
+  function derivedTagChecks(){
+    var out=[], keep=clock, sk0=selection?{k:selection.kind,id:selection.id}:null, bad=[], nM=0, nA=0;
+    function rowsOf(node){ return Array.prototype.slice.call(node.querySelectorAll(".kv")); }
+    function dt(r){ var e=r.querySelector("dt"); return e?e.textContent:""; }
+    [T_MIN,480,600,780].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false});
+      Object.keys(FORMATIONS).forEach(function(id){ var f=FORMATIONS[id], full=rowsOf(dossierFormation(id)), card=rowsOf(compactCard(id));
+        if(f.track){ var mr=marchRate(id,clock), m=full.filter(function(r){ return /^(Marching|Next move)$/.test(dt(r)); })[0];
+          if(mr){ nM++; if(!m||!m.querySelector(".ltag.derived")) bad.push(id+" at "+fmtClock(t)+": the march row untagged"); }
+          else if(m) bad.push(id+" at "+fmtClock(t)+": a march row with no leg");
+          return; }
+        if(full.concat(card).some(function(r){ return /^(Position at|Where)\b/.test(dt(r)); })) bad.push(id+" at "+fmtClock(t)+": an aggregate named as a position");
+        var c=full.filter(function(r){ return /^Midpoint at /.test(dt(r)); })[0], c2=card.filter(function(r){ return /^Midpoint\b/.test(dt(r)); })[0];
+        if(!c||!c2){ bad.push(id+" at "+fmtClock(t)+": no midpoint row"); return; }
+        if(!posNow(id)){ if(c.querySelector(".ltag.derived")||c2.querySelector(".ltag.derived")) bad.push(id+" at "+fmtClock(t)+": an absent midpoint tagged derived"); return; }
+        var n=leavesOf(id,[]).filter(function(k){ return !!posNow(k); }).length; nA++;
+        if(!c.querySelector(".ltag.derived")||!c2.querySelector(".ltag.derived")) bad.push(id+" at "+fmtClock(t)+": the midpoint untagged");
+        if(n>1&&c.textContent.indexOf("the mean of its "+n+" formations")<0) bad.push(id+" at "+fmtClock(t)+": the midpoint does not name its "+n+" formations"); }); });
+    out.push({name:"derived readings tagged: every formation's march row (Marching, Next move) and every aggregate's midpoint (the mean of its formations on the field, their number named) carry the derived tag, in the full dossier and the card; no aggregate named as a position (docs/FINAL_AUDIT.md D-6)",
+      ok:!bad.length&&nM>0&&nA>0, detail:nM+" march rows and "+nA+" aggregate midpoints at 04:00, 08:00, 10:00 and 13:00"+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):"")});
+    var d=plateauDay(), runs=[], s=0, i, bad2=[], seen=[];
+    for(i=1;i<=d.length;i++) if(i===d.length||d[i]!==d[s]){ runs.push({a:T_MIN+s,b:T_MIN+i,v:d[s]}); s=i; }
+    function shown(r){ return r.v>0&&r.a>T_MIN&&phaseAt(r.a)<=6; }
+    var L=runs.filter(function(r){ return shown(r)&&r.b-r.a>=70&&phaseAt(r.a+65)<=6; })[0], S=runs.filter(function(r){ return shown(r)&&r.b-r.a<=50&&phaseAt(r.a+Math.floor((r.b-r.a)/2))<=6; })[0];
+    function note(){ _sitKey=""; paintSituation(); var h=document.getElementById("situation"), c=document.getElementById("tb-cap");
+      return (/plotted strength unchanged/.test(h?h.innerHTML:""))+"/"+(/plotted strength unchanged/.test(c?c.innerHTML:"")); }
+    function jump(t,from){ setClock(from,{instant:true,force:true,camera:false}); setClock(t,{instant:true,force:true,camera:false}); return note(); }
+    function played(t,from){ for(var m=from;m<=t;m++){ setClock(m,{instant:true,force:true,camera:false}); paintSituation(); } return note(); }
+    [L?{t:L.a+65,r:L,want:"true/true"}:null,S?{t:S.a+Math.floor((S.b-S.a)/2),r:S,want:"false/false"}:null].forEach(function(q){
+      if(!q){ bad2.push("no run of the plotted holding found to test"); return; }
+      var w=[jump(q.t,T_MIN),jump(q.t,T_MAX),played(q.t,q.r.a)];
+      seen.push(fmtClock(q.t)+" (the holding unchanged since "+fmtClock(q.r.a)+"): "+w.join(", "));
+      if(w.some(function(x){ return x!==q.want; })) bad2.push(fmtClock(q.t)+": "+w.join(", ")+", want "+q.want+" each way"); });
+    out.push({name:"derived readings: the plateau's \u201cplotted strength unchanged\u201d follows the plotted holding alone (unchanged for 60 minutes or more before the clock), the same after a jump from 04:00, a jump from 18:00 or played (docs/FINAL_AUDIT.md D-6)",
+      ok:!bad2.length, detail:"the strip/the caption: "+seen.join("; ")+(bad2.length?"; WRONG: "+bad2.join("; "):"")});
+    if(sk0) select(sk0.k,sk0.id); else select(null,null);
+    setClock(keep,{instant:true,force:true,camera:false}); finishTween(); settle(2,true);
+    return out;
+  }
   function dayTrackChecks(){
     var out=[], keep=clock, sk0=selection?{k:selection.kind,id:selection.id}:null, ex=dossierExpanded;
     setClock(590,{instant:true,force:true,camera:false}); finishTween();
@@ -8505,6 +8690,8 @@ var AUSTERLITZ_DEBUG=(function(){
     routeDayChecks().forEach(function(c){ out.push(c); });  /* Stage 5F */
     dayTrackChecks().forEach(function(c){ out.push(c); });  /* Stage 5G */
     kitDayChecks().forEach(function(c){ out.push(c); });    /* Stage 6C */
+    derivedTagChecks().forEach(function(c){ out.push(c); });   /* roadmap step 2, D-6 */
+    plateauDayChecks().forEach(function(c){ out.push(c); }); /* roadmap step 2: decision 126 */
     setDisplayFactor(saveFactor);
     /* Stage 2F: one set of drawn classes, whatever the setting, on the landscape and the paper map; the woods' trees and scrub */
     var cvF=DISPLAY.settings, cvBad=cvF.filter(function(f){ return coverBy[f]!==coverBy[cvF[0]]||paperBy[f].cover!==coverBy[cvF[0]]; });
@@ -8682,6 +8869,66 @@ var AUSTERLITZ_DEBUG=(function(){
       select(null,null);
       ck("events: one event clock, the start, for the marker, the event keys, the themes' moments, the dwell and the dossier (decision 89)",
         !c5.length, _evTicks.length+" markers each at its start within 1 px; the dossier of "+iv.id+" goes to "+fmtClock(evWindow(iv)[0])+(c5.length?"; "+c5.slice(0,4).join("; "):""));
+      /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1, H-15): an event named outside its dossier carries its note, written here from
+         its claim and window, not read from evNote or evTag: its marker's name and title, the event links of the dossier of a formation it
+         names (at its start), the selection chip with the drawer closed (in Watch), and, in the one-line caption at its start where it leads,
+         its tag before its name, the tag and the name's first glyph inside the caption's box and, where the line overflows, clear of the
+         ellipsis's width in the caption's own font (layout rects ignore the "\u2026" painted over the line's end); every kind of tag the events
+         carry read there at least once (an event without a note has no tag); a disputed event's dossier its pill and its dispute with two
+         clock times; an arrow the data marks unsettled carries its mark on its label */
+      var c6=[], LE=LABELS.event, nN=0, nD=0, nA=0, nC=0, nCT=0, nF=0, nFN=0, nS=0, kinds6={}, read6={}, capEl=document.getElementById("tb-cap");
+      var sp6=document.createElement("span"); sp6.textContent="\u2026"; sp6.style.position="absolute"; sp6.style.whiteSpace="pre";   /* in the caption's own font, inherited */
+      capEl.appendChild(sp6); var ell6=sp6.getBoundingClientRect().width; capEl.removeChild(sp6);
+      EVENTS.forEach(function(e){ parts6(e,LE.tag).forEach(function(k){ kinds6[k]=1; }); });
+      function parts6(e,L){ var w=evWindow(e), n=[]; if(e.claim==="disputed") n.push(L.disputed); else if(w[1]>w[0]) n.push(L.interval);
+        if(e.claim==="recon") n.push(L.recon); return n; }
+      function note6(e){ var n=parts6(e,LE); return n.length?" ("+n.join("; ")+")":""; }
+      function tag6(e){ return parts6(e,LE.tag).join("; "); }
+      _evTicks.forEach(function(o){ var e=o.e, want=e.n+note6(e), a=o.el.getAttribute("aria-label");
+        if(note6(e)) nN++;
+        if(a!==evTimeText(e)+", "+want) c6.push(e.id+": its marker is named '"+String(a).slice(0,80)+"'");
+        if(o.el.title!==evTimeText(e)+"  "+want) c6.push(e.id+": its marker's title '"+String(o.el.title).slice(0,80)+"'");
+        setClock(evWindow(e)[0],{instant:true,force:true,camera:false}); _sitKey=""; paintSituation();
+        var lv=liveEvents(clock), dw=dwellEvents();
+        if(!(dw&&dw.length)&&lv.length&&lv[0].e===e){ nC++;
+          var evs=capEl.querySelector(".ev"), tg=evs?evs.querySelector("small.evn"):null, tw=tag6(e), cr=capEl.getBoundingClientRect();
+          if(!evs) c6.push(e.id+": the caption names no event");
+          else if(tw){ nCT++;
+            if(!tg||tg.textContent!==tw) c6.push(e.id+": the caption's tag reads '"+(tg?tg.textContent:"(none)")+"', want '"+tw+"'");
+            else { var tr=tg.getBoundingClientRect(), over=capEl.scrollWidth>capEl.clientWidth, rMax=cr.right-(over?ell6:0)+0.5;
+              parts6(e,LE.tag).forEach(function(k){ read6[k]=1; });
+              if(!(cr.width>0)||tr.left<cr.left-0.5||tr.right>rMax) c6.push(e.id+": the caption's tag at "+tr.left.toFixed(1)+"-"+tr.right.toFixed(1)+" px, outside the caption's box "+cr.left.toFixed(1)+"-"+cr.right.toFixed(1)+(over?" less the ellipsis's "+ell6.toFixed(1)+" px":""));
+              var tn=tg.nextSibling, i6=tn&&tn.nodeType===3?tn.data.search(/\S/):-1;
+              if(i6<0) c6.push(e.id+": no name after the caption's tag");
+              else { var rg=document.createRange(); rg.setStart(tn,i6); rg.setEnd(tn,i6+1); var gr=rg.getBoundingClientRect();
+                if(gr.left<cr.left-0.5||gr.right>rMax) c6.push(e.id+": the name's first glyph at "+gr.left.toFixed(1)+"-"+gr.right.toFixed(1)+" px, outside the caption's box "+cr.left.toFixed(1)+"-"+cr.right.toFixed(1)+(over?" less the ellipsis's "+ell6.toFixed(1)+" px":"")); } }
+            if(evs.textContent!==tw+" "+e.n) c6.push(e.id+": the caption reads '"+evs.textContent.slice(0,80)+"'"); }
+          else if(tg||evs.textContent!==e.n) c6.push(e.id+": the caption reads '"+evs.textContent.slice(0,80)+"' (a tag without a note)"); }
+        var fid=(e.forms||[]).filter(function(f){ return FORMATIONS[f]; })[0];
+        if(fid){ var mine6=lv.filter(function(x){ return x.e.forms.indexOf(fid)>=0; }).slice(0,3).map(function(x){ return x.e.n+note6(x.e); }),
+            dfn=dossierFormation(fid), sec=Array.prototype.filter.call(dfn.querySelectorAll(".sect"),function(s){ var h=s.querySelector("h3"); return h&&h.textContent==="Historical event"; })[0],
+            got=sec?Array.prototype.map.call(sec.querySelectorAll("button.linkb"),function(b){ return b.textContent; }):[];
+          nF++; if(mine6.indexOf(want)>=0&&note6(e)) nFN++;
+          if(got.join("|")!==mine6.join("|")) c6.push(e.id+": "+fid+"'s dossier links '"+got.join("; ").slice(0,90)+"', want '"+mine6.join("; ").slice(0,90)+"'"); }
+        if(e.claim==="disputed"){ nD++; select("e",e.id);
+          var dd=document.querySelector("#drawer-body .dossier"), tx=dd?dd.textContent:"", hrs={};
+          (String(e.dispute||"").match(/\b\d\d:\d\d\b/g)||[]).forEach(function(h){ hrs[h]=1; });
+          if(!dd||!dd.querySelector(".pill.claim-disputed")) c6.push(e.id+": no Disputed pill in its dossier");
+          if(!e.dispute||tx.indexOf(e.dispute)<0) c6.push(e.id+": its dossier does not give its dispute");
+          if(Object.keys(hrs).length<2) c6.push(e.id+": its dispute names "+Object.keys(hrs).length+" clock time(s)");
+          select(null,null); } });
+      Object.keys(kinds6).forEach(function(k){ if(!read6[k]) c6.push("no event leading the caption at its start carries the tag '"+k+"'"); });
+      var pm6=presentation; setPresentation("watch");
+      EVENTS.forEach(function(e){ if(!note6(e)) return; select("e",e.id); var ch=document.getElementById("selchip"), sn=ch.querySelector(".sc-n");
+        if(ch.hidden||drawerShown()) c6.push(e.id+": no selection chip with the drawer closed");
+        else if(sn.textContent!==e.n+note6(e)) c6.push(e.id+": the selection chip names '"+sn.textContent.slice(0,80)+"'"); else nS++; });
+      select(null,null); setPresentation(pm6);
+      Object.keys(OVERLAYS).forEach(function(ph){ (OVERLAYS[ph].arrows||[]).forEach(function(a){ if(!/^unsettled:/.test(a.interp||"")) return; nA++;
+        rebuildOverlays(+ph,true);
+        if(!ovText.some(function(t){ return t.text===a.label+" ("+LABELS.arrow.unsettled+")"; })) c6.push("the arrow '"+a.label+"' (phase "+ph+"): no mark on its label"); }); });
+      rebuildOverlays(curPhase,true);
+      ck("events: a disputed hour, an interval or a reconstruction named with its note by its marker and a formation's dossier, and tagged in the caption inside its box; a disputed event's dossier its pill and both hours; an unsettled arrow's label its mark (decision 125, H-1, H-15)",
+        !c6.length&&nN>0&&nD>0&&nA>0&&nCT>0&&nFN>0&&nS>0, nN+" events with a note, "+nD+" disputed, "+nA+" unsettled arrows; the caption read at "+nC+" starts ("+nCT+" with a tag; the tags read: "+Object.keys(read6).join(", ")+"; the ellipsis "+ell6.toFixed(1)+" px), a formation's dossier at "+nF+" ("+nFN+" linking the event with its note), the selection chip naming "+nS+" with its note"+(c6.length?"; "+c6.slice(0,4).join("; "):""));
       if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
       document.body.classList.remove("st-still"); if(pl0) togglePlay();
     })();
@@ -8702,9 +8949,11 @@ var AUSTERLITZ_DEBUG=(function(){
         mism.push(e.dataset.key+": "+getComputedStyle(e).backgroundColor+" against the legend's "+getComputedStyle(l).backgroundColor); });
     var txt=(document.getElementById("fr-key").textContent||"").replace(/\s+/g," ");
     /* Stage 6C (decision 108; docs/STAGE6_SPEC.md section 4.3 item 4): the decided words, which name the marks that carry the sides, replace
-       the words that named coats as nations ("Blue is the French army", "green for Russia", "white for Austria"): a decided rule */
+       the words that named coats as nations ("Blue is the French army", "green for Russia", "white for Austria"): a decided rule. Roadmap
+       step 2 (decision 127 (b)): the plateau's sentence labelled as this map's reading, whole; the unlabelled verdict gone */
     ["French formations are marked in blue and the Allies in amber","on their names, their counters and the ground beneath them","and on the movement arrows",
-     "the Pratzen plateau"].forEach(function(w){ if(txt.indexOf(w)<0) mism.push('missing "'+w+'"'); });
+     "The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle."].forEach(function(w){ if(txt.indexOf(w)<0) mism.push('missing "'+w+'"'); });
+    if(/and it decides the battle/i.test(txt)) mism.push('still gives the unlabelled verdict "and it decides the battle" (decision 127 (b))');
     if(/green for russia|white for austria|blue is the french army|amber is the russian/i.test(fr.textContent)) mism.push("still names a coat colour as a nation's");
     function rgb(hex){ var n=parseInt(hex.replace("#",""),16); return "rgb("+((n>>16)&255)+", "+((n>>8)&255)+", "+(n&255)+")"; }
     /* the legend's swatches are the colours that draw what they name: the counters' fills (NATION), the sides (TOKENS.sym.side: the names'
@@ -8859,7 +9108,11 @@ var AUSTERLITZ_DEBUG=(function(){
         names={}, seen={}, P0, msgs=[];
       /* what a dwell may put in the bar: the names of the events starting at one dwell's minute, joined as the app joins them (one event's
          name may itself hold "; ", so the joined strings are compared whole) */
-      dwellStarts().forEach(function(E){ names[EVENTS.filter(function(e){ return evWindow(e)[0]===E; }).map(function(e){ return e.n; }).join("; ")]=1; });
+      /* roadmap step 2 (docs/FINAL_AUDIT.md H-15): each name with its note, written here from its claim and window (its hour disputed; else an
+         interval; and a reconstruction), not read from evNote */
+      function note7(e){ var w=evWindow(e), n=[]; if(e.claim==="disputed") n.push(LABELS.event.disputed); else if(w[1]>w[0]) n.push(LABELS.event.interval);
+        if(e.claim==="recon") n.push(LABELS.event.recon); return n.length?" ("+n.join("; ")+")":""; }
+      dwellStarts().forEach(function(E){ names[EVENTS.filter(function(e){ return evWindow(e)[0]===E; }).map(function(e){ return e.n+note7(e); }).join("; ")]=1; });
       if(presentation!=="study") setPresentation("study"); if(mode!=="terrain") setMode("terrain"); if(tourStep>=0) exitTour(); select(null,null);
       setClock(T_MIN,{instant:true,force:true,camera:false}); finishTween(); tabChosen=false; setSpeed(0.5);
       function key(k,on){ (on||document.body).dispatchEvent(new KeyboardEvent("keydown",{key:k,bubbles:true,cancelable:true})); }

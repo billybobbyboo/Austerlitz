@@ -33,7 +33,7 @@ rules.forEach(r=>{ if(seen[r]) dupes.push(r); seen[r]=1; });
 if(dupes.length) errs.push("duplicated rules: "+[...new Set(dupes)].join(" | "));
 
 const required=[
- ".tab-btn",".chap",".cmdrow",".planblock",".pill.claim-fact",
+ ".tab-btn",".chap",".cmdrow",".planblock",".pill.claim-fact",".pill.claim-disputed",
  "#viewmode",".vm-btn","#restore",".clockbox",".timerail",".rail-ticks b",".speeds",
  ".tb-trackwrap",".step",".timebar",".dispatch",".legend",".tools",".drawer",
  "body.pm-watch .rail","body.pm-map .rail","body.no-dispatch .dispatch"
@@ -346,6 +346,30 @@ if(cerrs) process.exitCode=1;
   }
   if(perr.length) process.exitCode=1;
 }
+/* roadmap step 2 (docs/FINAL_AUDIT.md D-5, D-6): what the presentation must not type or keep. (a) The sources sheet's notes on the troops
+   and the standards, and the dossier's Dress, type no measure and no appearance grade's definition: every centimetre, metre and cloth size
+   and the grades' words are read from appearance.js (runtime-test.js changes the table and reads them follow it); the light's note types no
+   minutes (SUN_DAY's equation of time). (b) The dossier's place and march rows are built by posRow and marchRow, which tag the derived;
+   paintSituation keeps no clock of its own for the plateau's note */
+{ const acorn=require('acorn'), app=fs.readFileSync('app.js','utf8'), ast=acorn.parse(app,{ecmaVersion:2020}), derr=[];
+  const fn=name=>ast.body.find(s=>s.type==="FunctionDeclaration"&&s.id.name===name);
+  const lits=node=>{ const o=[]; (function w(x){ if(!x||typeof x.type!=="string") return;
+    if(x.type==="Literal"&&typeof x.value==="string") o.push(x.value); else if(x.type==="TemplateLiteral") x.quasis.forEach(q=>o.push(q.value.cooked));
+    for(const k in x){ if(k==="type"||k==="start"||k==="end") continue; const v=x[k]; if(Array.isArray(v)) v.forEach(w); else if(v&&typeof v.type==="string") w(v); } })(node); return o; };
+  ["troopNotes","standardNotes","dressSection","lightNotes"].forEach(name=>{ const n=fn(name); if(!n){ derr.push("app.js: no "+name); return; }
+    lits(n).forEach(s=>{ if(/\d\s*(cm|m)\b|\d\s*x\s*\d/.test(s)) derr.push(name+": a typed measure \u201c"+s.slice(0,60)+"\u201d (read it from appearance.js)");
+      if(/documented for/.test(s)) derr.push(name+": a typed grade definition \u201c"+s.slice(0,60)+"\u201d (read APPEARANCE_GRADE)");
+      if(name==="lightNotes"&&/\d+ minutes/.test(s)) derr.push("lightNotes: typed minutes \u201c"+s.slice(0,60)+"\u201d (read SUN_DAY)"); }); });
+  const src=n=>n?app.slice(n.start,n.end):"";
+  const dF=src(fn("dossierFormation")), cC=src(fn("compactCard")), pR=src(fn("posRow")), mR=src(fn("marchRow")), pS=src(fn("paintSituation"));
+  if(!/posRow\(id,false\)/.test(dF)||!/marchRow\(id\)/.test(dF)||/Position at|Next move/.test(dF)) derr.push("dossierFormation: its place and march rows not built by posRow and marchRow");
+  if(!/posRow\(id,true\)/.test(cC)||/row\("Where"/.test(cC)) derr.push("compactCard: its place row not built by posRow");
+  if(!/derivedTag\(\)/.test(mR)||(pR.match(/derivedTag\(\)/g)||[]).length<2) derr.push("posRow/marchRow: the aggregate's midpoint or the march row without the derived tag");
+  if(!pS) derr.push("app.js: no paintSituation");
+  if(/(^|[^=!<>])=\s*clock\b/.test(pS)) derr.push("paintSituation: keeps a clock of its own (the plateau's note must follow the clock alone, plateauFlatFor)");
+  derr.forEach(e=>console.log("  ! "+e));
+  console.log("typed data and derived tags: "+(derr.length?derr.length+" wrong":"the troops' and the standards' notes and the Dress type no measure or grade definition, the light no minutes; the place and march rows tagged by posRow and marchRow; paintSituation keeps no clock"));
+  if(derr.length) process.exitCode=1; }
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by
    a dash or a dotted line, and their colour is the side's from the tokens */
 {
@@ -430,6 +454,14 @@ if(cerrs) process.exitCode=1;
   const ids=[...card.matchAll(/<button[^>]*id="([^"]+)"/g)].map(m=>m[1]);
   if(ids.join(",")!=="fr-tour,fr-close") ferr.push("shell.html: the first-run card's buttons are "+ids.join(", ")+", not the primary and the stay");
   if(/fr-hint|fr-watch/.test(card)) ferr.push("shell.html: the first-run card still carries the hint or \"Watch the battle\" (decision 120, decision 111)");
+  /* roadmap step 2 (decision 127 (b); decision 108's decided words): the key's plateau sentence, written twice (shell.html's #fr-key, shown
+     before start-up repaints it, and paintKey), labelled as this map's reading in both, the unlabelled verdict in neither */
+  { const KEY127="The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.";
+    const frKey=((card.match(/<p id="fr-key">([\s\S]*?)<\/p>/)||[])[1]||"").replace(/\s+/g," ");
+    const pk=(app.match(/function paintKey\(\)\{[\s\S]*?\n\}/)||[""])[0];
+    if(frKey.indexOf(KEY127)<0) ferr.push("shell.html: #fr-key does not carry decision 127 (b)'s labelled sentence: "+frKey.slice(-120));
+    if(pk.indexOf(JSON.stringify(KEY127))<0) ferr.push("app.js: paintKey does not write decision 127 (b)'s labelled sentence");
+    if(/and it decides the battle/i.test(frKey+pk)) ferr.push("the first-run key still gives the unlabelled verdict \"and it decides the battle\" (decision 127 (b))"); }
   if(!/firstRun:\{primary:"[^"]+", primaryTitle:"[^"]+",\s*stay:"[^"]+", stayTitle:"[^"]+"\}/.test(app)) ferr.push("app.js: LABELS.firstRun (the card's words) is missing");
   if(!/fp\.textContent=F\.primary/.test(app)||!/fs\.textContent=F\.stay/.test(app)) ferr.push("app.js: applyLabels does not write the card's words from LABELS");
   /* the buttons' height in every layout (roadmap step 1, T-9: until step 1 the first min-height found, @media bodies merged): a base

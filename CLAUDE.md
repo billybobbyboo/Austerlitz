@@ -33,12 +33,12 @@ north-up SVG of a formation's day in its full dossier), the figures by class (si
 `kitDress`, `kitAllocate`, `kitGeo`/`kitGeos`, `kitHat`; the dossier's Dress `dressSection`; the sources sheet's `troopNotes`; decision 107's side
 footprint in `updateVisibility`; `CONF.none`, a measurement switch the app never sets), the standards from the table (since 6D: `kitStdRule`,
 `kitStdShape`, `MAN_FOOT`, `flagTexture` by painting, `placeStandards`, `stdCount`; `KIT.flag`, `KIT.paint`, `KIT.carry`, `KIT.std`; the sources
-sheet's `standardNotes`), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 5C its interval bars, `EV_BAR`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`; since 7B the first-run card a modal dialog, `openFirstRun`/`closeFirst`; since 7C the opening, `OPENING`: four tour stops by index in the tour's bar, `openingStart`, `openingGo`, `openingEnd`), runtime checks |
+sheet's `standardNotes`), overlays (`OVERLAYS` is historical interpretation data), formations, clock and movement model, derived readings, line of sight, command knowledge, post-processing, the map layer, the paper map's plan camera (`MAPCAM`) and the projection helper `worldPerPx` (since 2E), interface (since 3E the label table `LABELS` and the key table `KEYS`; since 3B the docked layout: `syncDock`, `selectTab`; since 3C the one timeline: `buildTimeline`, `tlPc`, the spine index `SPINE`; since 5C its interval bars, `EV_BAR`; since 3D the landscape camera: `LANDCAM`, `bindCanvas`, the view offset `syncViewOffset`, `presetFrame`/`fitOverview`, Follow `syncFollow`, the tween slots `setTween`; since 7B the first-run card a modal dialog, `openFirstRun`/`closeFirst`; since 7C the opening, `OPENING`: four tour stops by index in the tour's bar, `openingStart`, `openingGo`, `openingEnd`), the integrity marks (since roadmap step 2: an event's note wherever it is named, `evNote`/`evTag`, and `LABELS.event`, `LABELS.arrow`; the plateau reading's last phase `PLATEAU_LAST` and its holding by the clock alone, `plateauDay`/`plateauFlatFor`; a formation's pill as its position's, `POS_CLAIM`; the dossier's derived rows, `posRow`, `marchRow`, `derivedTag`; the Command tab's ANECDOTE in `SRC_LABEL`; the sources sheet's notes read from the table, `apGrades`), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
-| `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it. Since step 1: `redteam.js` section 6a judges every string a visitor can be shown (`tools/lang-scan.js`; `LANG_ALLOW` names each allowed hit with its reason and the step-2 question that removes it, but for attributed words, allowed permanently: one entry, the Allied plan's stated assumption); a warning fails unless acknowledged by its exact text (`KNOWN_WARN` in `test.js`, `redteam.js`, `sim-test.js`); `runtime-test.js` checks every material against real three r128 and fails on any warning; each suite regenerates the generated modules it reads (`tools/fresh.js`) |
+| `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it. Since step 1: `redteam.js` section 6a judges every string a visitor can be shown (`tools/lang-scan.js`; `LANG_ALLOW` names each allowed hit with its kind, its reason and the task that removes it: since roadmap step 2, 9 entries, seven superlatives until roadmap step 4 and two permanent, each naming its kind, "a statement of method" (`SOURCE_NOTE`'s "the hardest figures of all") and "attributed words" (the Allied plan's stated assumption); an entry added since step 1 names the pattern and step that found it, `LANG_STEP1` (one entry) can only shrink, and an entry whose `until` names a done step, `DONE_STEPS`, fails); a warning fails unless acknowledged by its exact text (`KNOWN_WARN` in `test.js`, `redteam.js`, `sim-test.js`); `runtime-test.js` checks every material against real three r128 and fails on any warning; each suite regenerates the generated modules it reads (`tools/fresh.js`) |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2 to Stage 7 measurement scripts (`stage2/`, `stage3/`, `stage4/`, `stage5/`, `stage6/`, `stage7/`, not bundled), the final audit's scripts (`audit/`, not bundled), the type's generator and checks (`fonts/`: `build-fonts.py`, `sources.json`, `manifest.json`, `woff2.js`, `accept-probe.js`; since step 1), `lang-scan.js` and `fresh.js` (since step 1), and history (see `docs/SUITE_RECOVERY.md`) |
-| `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `stage2c-68ac7721.html` (the 2C build, on which the drop limits are derived), `spine-6b2cccd4.html` (the spine data task's build), `stage4d-9b13adbf.html` (the 4D build, 4D's one-word data change), `stage6b-7fc0f6c3.html` (the `check:data` reference, since 6B's appearance table) |
-| `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE3_SPEC.md` (Stage 3, with `stage3-evidence/`), `STAGE4_SPEC.md` (Stage 4, with `stage4-evidence/`), `STAGE5_SPEC.md` (Stage 5, with `stage5-evidence/`), `STAGE6_SPEC.md` (Stage 6, with `stage6-evidence/`: the census, the probes and the registers of leads (Part A); the readings and the quote check (6B)), `STAGE7_SPEC.md` (Stage 7, with `stage7-evidence/`), `FINAL_AUDIT.md` (the audit after Stage 7, with `audit-evidence/`; owner decisions 125-141 in its §6.0), `ROADMAP.md` (the living plan after the audit, the owner's notes for later, other battles), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
+| `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `stage2c-68ac7721.html` (the 2C build, on which the drop limits are derived), `spine-6b2cccd4.html` (the spine data task's build), `stage4d-9b13adbf.html` (the 4D build, 4D's one-word data change), `stage6b-7fc0f6c3.html` (the `check:data` reference from 6B's appearance table to roadmap step 2), `step2-af98f586.html` (the `check:data` reference, since roadmap step 2's data task) |
+| `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE3_SPEC.md` (Stage 3, with `stage3-evidence/`), `STAGE4_SPEC.md` (Stage 4, with `stage4-evidence/`), `STAGE5_SPEC.md` (Stage 5, with `stage5-evidence/`), `STAGE6_SPEC.md` (Stage 6, with `stage6-evidence/`: the census, the probes and the registers of leads (Part A); the readings and the quote check (6B)), `STAGE7_SPEC.md` (Stage 7, with `stage7-evidence/`), `FINAL_AUDIT.md` (the audit after Stage 7, with `audit-evidence/`; owner decisions 125-141 in its §6.0), `ROADMAP.md` (the living plan after the audit, owner decisions 142-161 and what each step hands on, the owner's notes for later, other battles), `step2-evidence/` (roadmap step 2's register of readings, `readings.md`), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
 
 The one-off correction-pass tools (`geo-migrate.js`, `geo-anchor.js`, `patch-app.py`, `patch-history.py`, and the
 others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; their results are already in the data.
@@ -57,6 +57,11 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
 - `geo.js`, `data.js`, `appearance.js`, `analysis.js` and the model declarations guarded by
   `tools/visual/data-invariance.js` change only when the task is explicitly about historical or
   geographic data. Then: cite the evidence, record what was, what is, and why, in `CHANGELOG.md`.
+  Since roadmap step 2 (D-5) the guard also holds seven data declarations in `app.js` (its group "data in app.js": `SUN_DAY`'s date,
+  place and clock reading, `FEATURE_GT`, and the grade texts a visitor is told, `TIMING_TEXT`, `CONF_TEXT`, `CONF_INTERP`, and since C28
+  `POS_CLAIM` and `SRC_LABEL`), under the same rule; `test.js` fails on any top-level declaration of the four data files, or any of those
+  seven, outside check:data's lists, and on any of the seven that is not `app.js`'s own top-level declaration under its name; the
+  sources sheet's notes read the historical values from the table (D-5 (b)), and the painted patterns' typed words are checked against it.
 - Do not overwrite an established project decision because another assumption seems plausible. If
   evidence contradicts it: state the contradiction and what would need to change; do not change it silently.
 - Keep data, simulation and presentation separate. Never fix a data problem by changing only the display.
@@ -76,20 +81,24 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   or `groundY()`, and classify any new call site. Since roadmap step 1 (decision 131) it also fails on any warning a suite does not
   acknowledge by its exact text (`KNOWN_WARN`), on any runtime-test warning ("console.warn unique" above 0; materials checked against real
   three r128), on a formation whose first positioned anchor declares no grade (`test.js`, `redteam.js`: D-2), on an invalid event or an
-  unknown formation id, and on an overclaim hit in any visitor string not allow-listed by name (`redteam.js` 6a, `LANG_ALLOW`: 8 of its 9 entries
-  removed by the step-2 task their `until` names; the ninth, the Allied plan's attributed assumption, permanent); `css-test.js` checks the embedded type (the faces, their licences, every visitor glyph
+  unknown formation id, and on an overclaim hit in any visitor string not allow-listed by name (`redteam.js` 6a, `LANG_ALLOW`, 9 entries since roadmap step 2:
+  seven superlatives until roadmap step 4 and two permanent, "a statement of method" and "attributed words"; the patterns BANNED, CAUSAL,
+  VERDICT, and since step 2 SUPERLATIVE and COUNTERFACTUAL; an entry without `found` only one step 1 left, `LANG_STEP1`, which can only
+  shrink; each `found` tag capped at the hits its pattern found that day, `FOUND_MAX`; an entry whose `until` begins with a done step
+  fails, `DONE_STEPS`); `css-test.js` checks the embedded type (the faces, their licences, every visitor glyph
   covered, no family outside the tokens) and the colour literals in every form; `terrain-test.js` checks the meres' ice and shore ice against
   the drawn ground's exact edge at 1x, 4x and 10.33x; the suites write their output to a private temporary directory.
-- `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/stage6b-7fc0f6c3.html`
-  (the 6B build, with the appearance table and tour stop 1 reworded, decision 108; before it, `archive/stage4d-9b13adbf.html`, the 4D build,
-  whose `SOURCE_NOTE` says "1×" for "normal speed", decision 76); a data task that changes it lists every changed declaration in `CHANGELOG.md` and moves the reference.
+- `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/step2-af98f586.html`
+  (the roadmap step 2 build, its data task: 12 declarations changed, each in `CHANGELOG.md`; 128 identical; before it,
+  `archive/stage6b-7fc0f6c3.html`, the 6B build, with the appearance table and tour stop 1 reworded, decision 108; before that,
+  `archive/stage4d-9b13adbf.html`, the 4D build, whose `SOURCE_NOTE` says "1×" for "normal speed", decision 76); a data task that changes it lists every changed declaration in `CHANGELOG.md` and moves the reference.
 - `npm run check:chronology`: no move with a timed statement is early or late except the unresolved conflicts it names; every
   explicit anchor time carries evidence found in the sources, a grade and a basis; a derived arrival at the march-rate ceiling
   only for the legs it names (`CEILING_FLAGGED`), at a headquarters' own moveMin only for the leg it names (`MOVEMIN_DERIVED`: gqg@6, the
   headquarters has no tactical rate, `docs/STAGE2_SPEC.md` §M.13; this sentence said "every other at the tactical rate" until step 1, which
   was inaccurate), every other at the tactical rate (a design value, unsourced). Since step 1 (D-1) it reads the live text: every timed
-  statement in `data.js` and `analysis.js` is cited by a `REVIEW` row (`REVIEW_CITES`) or allowed by name with a reason (`ALLOW_TIMED`), but for five classes excluded by path
-  with their reasons (`EXCLUDED_PATHS`: the tracks' `tm` timings, which `--times` and the movement audit judge, the phase clocks and light keys,
+  statement in `data.js` and `analysis.js` is cited by a `REVIEW` row (`REVIEW_CITES`) or allowed by name with a reason (`ALLOW_TIMED`), but for four classes excluded by path
+  with their reasons (`EXCLUDED_PATHS`: the tracks' `tm` timings, which `--times` and the movement audit judge, the phase clocks,
   `tolWhy` and `analysis.js`'s comments), and a cite or allowance no longer live fails (a retimed, moved or renamed statement); the dated legs near the ceiling are asserted
   (`FORCED_DATED`, `NEAR_CEILING`); the movement audit runs inside it.
 - `npm run check:contrast`: every visible text element in 35 interface states (the map layer's plates and the legend among them, map text also
@@ -101,7 +110,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   allowed another), every state must be reached (a state whose set-up does nothing fails), and every console message is judged against
   `tools/visual/thresholds.js CONSOLE_ALLOW` (one entry today, the eye level's floor warning, removed by the app fix in roadmap step 3).
 - `npm run check:selftest` (since step 1, decision 132; the CI job): the in-app self-test on one fresh 1366 x 768 page, every check by name
-  against `tools/visual/selftest-manifest.json` (217), with the slider, Play and the 3E keys by real key presses, and every console message
+  against `tools/visual/selftest-manifest.json` (221), with the slider, Play and the 3E keys by real key presses, and every console message
   judged; about 13 minutes. `npm run check:report` judges a finished `check:visual` report again without rendering; `npm run
   check:remeasure` is decision 141's one re-measure tool (`tools/visual/remeasure.js`).
 - `npm run check:visual`: 30 fixed views (11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
@@ -211,7 +220,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   Since 6C: the self-test's figure checks (every figure as its class's claims say: the coat KIT's colour for the class times the jitter, or its
   nation's symbol colour where the table does not settle it; legwear, headgear, cuirass, horse and the gunner's figure likewise; each drawn unit's
   class within one unit of its share, decision 100; a side cue under every formation drawn as figures in Study, Watch and Clean with Position
-  confidence on and off, decision 107; the legend's rows what is drawn; the dossier's Dress; the first-run key's decided words, decision 108;
+  confidence on and off, decision 107; the legend's rows what is drawn; the dossier's Dress; the first-run key's decided words, decision 108, labelled under decision 127 (b) since roadmap step 2;
   the standards plain cloths, decision 98); `css-test.js` checks every KIT cloth colour is a class of `appearance.js`, every settled class has a
   drawn value or shape, cuirasses exactly where recorded, nothing below decision 84's black (the figures' palette exemption ended);
   `runtime-test.js` dry-runs the kit by class and, with Position confidence off, checks no graded mark and the side footprint under every
@@ -265,11 +274,13 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   through canvases of the test's own. The font-dependent limits were re-measured once (decision 141, by `remeasure.js --bounds keep` over two
   identical full runs of the step-1 build: a limit changed only where the embedded fonts moved the measure past it): six loosened under
   decision 141, the unobstructed baselines of `first-run`, `first-run-laptop` and `narrow-390` and the drop limits of `narrow-390`,
-  `eye-zuran` and `plans-overview`, each listed in `CHANGELOG.md`; every other kept. Since the diff review of step 1, a click selects the
+  `eye-zuran` and `plans-overview`, each listed in `CHANGELOG.md`; every other kept. Since roadmap step 2, `narrow-390`'s unobstructed baseline
+  was re-measured once more, under decision 146 (the first-run key's labelled sentence takes a sixth line at 390 px): [0.46, 0.507] to
+  [0.438, 0.507], its drop limit 7 kept, recorded in `CHANGELOG.md`; no other limit moved in step 2. Since the diff review of step 1, a click selects the
   formation the hover shows (`pickAt`), held by the self-test at each factor.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified roadmap step 1 build (md5 `7a86548c...`, 1,883,794 bytes; re-baselined from the
-  Stage 7D build `46773462...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified roadmap step 2 build (md5 `af98f586...`, 1,927,346 bytes; re-baselined from the
+  roadmap step 1 build `7a86548c...`, 1,883,794 bytes, itself from the Stage 7D build `46773462...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -363,5 +374,7 @@ pause it; Next goes straight there, Back returns; the visitor's ½× put back af
 merged (#48); the owner accepted every recommendation (decisions 125-141, `docs/FINAL_AUDIT.md` §6.0) and asked to start with roadmap step 1
 (`docs/ROADMAP.md`: suite hardening, the fonts embedded first, decision 141); the owner's notes for later (appearance and motion) are in
 `docs/ROADMAP.md`. Roadmap step 1 (the type embedded, decision 141; the checks that could not fail made strict, decision 131; CI runs
-`check:contrast` and the self-test, decision 132; the one re-measure; the diff review's fixes) is done, for review (#49). The next owner
-decision is 142.
+`check:contrast` and the self-test, decision 132; the one re-measure; the diff review's fixes) is merged (#49). Roadmap step 2 (integrity
+on screen: decisions 125 (a), 126, 127 (b), 128 (a), 129, 135, with H-9, H-15, H-16, D-5, D-6; one data task and its presentation part; the
+owner decided questions 142-161 as recommended, `docs/ROADMAP.md`; the register of readings in `docs/step2-evidence/`; narrow-390 re-measured
+once, decision 146; the `check:data` reference moved to its build) is in review (#50). The next owner decision is 162.

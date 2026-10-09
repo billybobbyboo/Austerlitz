@@ -32,6 +32,7 @@ ids.forEach(id=>{
   if(f.track) Object.keys(f.track).forEach(k=>{
     const e0=f.track[k];
     if(e0.claim && !CLAIM[e0.claim]) errs.push(id+" ph"+k+": unknown claim class "+e0.claim);
+    else if(e0.claim==="disputed") errs.push(id+" ph"+k+": claim disputed is an event's, with its dispute (roadmap step 2, decision 125 (a)); a track entry marks a disputed hour in its act");
     if(e0.via) e0.via.forEach(v=>{ if(v[0]<0||v[0]>680||v[1]<0||v[1]>500)
       errs.push(id+" ph"+k+": via point off map "+v); });
     if(e0.moveMin!==undefined && !(e0.moveMin>0)) errs.push(id+" ph"+k+": bad moveMin");
@@ -67,8 +68,20 @@ Object.keys(FORMATIONS).filter(id=>FORMATIONS[id].children).forEach(id=>{
   const f=FORMATIONS[id], sum=f.children.reduce((t,k)=>t+aggOf(k),0);
   const ownTroops=!!f.track && f.arm!=="hq";          /* a column that also has a detachment, like Langeron's */
   if(ownTroops){ if(sum>f.strength) errs.push(id+": detachments ("+sum+") exceed the parent ("+f.strength+")"); return; }
+  if(f.strength && sum>f.strength) errs.push(id+": its formations ("+sum+") exceed its declared strength ("+f.strength+"): a detachment counted beside its parent, not under it (docs/FINAL_AUDIT.md D-3)");
   if(f.strength && Math.abs(f.strength-sum)/f.strength>0.30) warn.push(id+": declared "+f.strength+" vs children "+sum);
 });
+/* D-4 (docs/FINAL_AUDIT.md; roadmap step 2): a key declared twice in one object literal of the guarded sources (the later silently wins:
+   heightguns@8 declared cf "C" and then "B" until step 2), and a moveMin on a formation's first positioned anchor, where no leg runs into
+   it (anchorList never reads it: heightguns@7's 30 until step 2) */
+{ const acorn=require("acorn"), dup=[];
+  ["geo.js","data.js","appearance.js","analysis.js"].forEach(f=>{ (function walk(n){ if(!n||typeof n.type!=="string") return;
+      if(n.type==="ObjectExpression"){ const seen=new Set(); n.properties.forEach(p=>{ if(p.type!=="Property"||p.computed) return;
+        const k=p.key.type==="Identifier"?p.key.name:String(p.key.value); if(seen.has(k)) dup.push(f+":"+p.loc.start.line+" "+k); seen.add(k); }); }
+      for(const k in n){ const v=n[k]; if(Array.isArray(v)) v.forEach(walk); else if(v&&typeof v.type==="string") walk(v); } })(acorn.parse(fs.readFileSync(f,"utf8"),{ecmaVersion:2020,locations:true})); });
+  dup.forEach(d=>errs.push("a key declared twice in one object literal (the later wins): "+d));
+  ids.forEach(id=>{ const tr=FORMATIONS[id].track; if(!tr) return; const k0=Object.keys(tr).map(Number).sort((a,b)=>a-b).find(k=>"p" in tr[k]);
+    if(k0!==undefined&&tr[k0].moveMin!==undefined) errs.push(id+"@"+k0+": a moveMin on the first positioned anchor, where no leg runs into it (anchorList never reads it)"); }); }
 
 // overlays
 for(let i=0;i<PHASES.length;i++){
@@ -133,7 +146,9 @@ TOUR.forEach((st,i)=>{
     if(+ph<0||+ph>=PHASES.length) errs.push("COMMAND."+sd+": phase "+ph+" out of range");
     COMMAND[sd][ph].forEach(it=>{
       if(["saw","knew","didnt","ordered","expected"].indexOf(it[0])<0) errs.push("COMMAND."+sd+" ph"+ph+": bad kind "+it[0]);
-      if(it[1]!=="doc"&&it[1]!=="inf") errs.push("COMMAND."+sd+" ph"+ph+": source must be doc or inf");
+      if(["doc","inf","anec"].indexOf(it[1])<0) errs.push("COMMAND."+sd+" ph"+ph+": source must be doc, inf or anec");
+      if(it[1]==="anec"&&!/memoir anecdote/.test(it[2])) errs.push("COMMAND."+sd+" ph"+ph+": an anecdote row must say it is a memoir anecdote (H-7)");
+      if(it[1]!=="anec"&&/memoir anecdote/.test(it[2])) errs.push("COMMAND."+sd+" ph"+ph+": a row that tells a memoir anecdote must carry the anec tag, not "+it[1]+" (H-7)");
     });
   });
   Object.keys(KNOW_OVERRIDE[sd]).forEach(id=>{
@@ -145,10 +160,11 @@ TOUR.forEach((st,i)=>{
 });
 /* T-6 (docs/FINAL_AUDIT.md): the events validated. Each has a unique kebab-case id; a clock (a minute, or a window [t0,t1] with t0<t1)
    inside the day; a point on the map; a side; a kind the dossier names (its KIND table, read from app.js: if it cannot be read the check
-   fails, it does not skip); a timing grade; a claim class; a title and a reason; known formations, each named once and each with a tracked
+   fails, it does not skip); a timing grade; a claim class (a disputed one with its dispute naming both hours: roadmap step 2, decision
+   125 (a)); a title and a reason; known formations, each named once and each with a tracked
    formation to stand for it; a tolerance only with its written reason and never above sim-test.js's 2 km cap; no other field. An event may
    name no formation only where EV_NO_FORMS says why. */
-{ const EV_FIELDS=["id","t","n","side","kind","p","forms","cf","claim","why","tolKm","tolWhy"], EV_TOL_CAP=2.0;
+{ const EV_FIELDS=["id","t","n","side","kind","p","forms","cf","claim","why","dispute","tolKm","tolWhy"], EV_TOL_CAP=2.0;
   const EV_NO_FORMS={ end:"'Organised resistance ends' is army-wide: its own text (analysis.js) speaks of Bagration, the Guard and the Allied "+
     "left together, not of one formation; sim-test.js reports it as naming no plotted formation (not tested)." };
   const km=/var KIND=\{decision:[^}]*\}/.exec(fs.readFileSync('app.js','utf8'));
@@ -171,6 +187,13 @@ TOUR.forEach((st,i)=>{
     if(KIND&&!Object.prototype.hasOwnProperty.call(KIND,e.kind)) bad("kind "+e.kind+" is not one the dossier names ("+Object.keys(KIND).join(", ")+")");
     if(typeof e.cf!=="string"||e.cf.length!==1||!"ABC".includes(e.cf)) bad("timing grade "+e.cf+" is not A, B or C");
     if(!Object.prototype.hasOwnProperty.call(CLAIM,e.claim)) bad("unknown claim class "+e.claim);
+    /* roadmap step 2 (decision 125 (a)): a disputed claim carries its dispute, naming both hours (checked: two distinct clock times;
+       who gives each is the text's, not checked); a dispute stands only on a disputed claim */
+    if(e.claim==="disputed"){ const hrs=new Set(String(e.dispute||"").match(/\b\d\d:\d\d\b/g)||[]);
+      if(!str(e.dispute)) bad("claim disputed without its dispute (decision 125)");
+      else if(hrs.size<2) bad("its dispute names "+hrs.size+" clock time(s), not both hours (decision 125)");
+      if(e.cf==="A") bad("a disputed hour graded A (Timing A is dated in a cited source, TIMING_TEXT; question 143)"); }
+    else if(e.dispute!==undefined) bad("a dispute on a claim that is not disputed");
     if(!str(e.n)) bad("no title"); if(!str(e.why)) bad("no reason (why)");
     if(!Array.isArray(e.forms)) bad("forms is not a list");
     else {
@@ -245,6 +268,9 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
       if(Math.abs(sum-1)>1e-9) bad(id+": the "+g+" shares sum to "+sum);
       if(units.size>1) bad(id+": the "+g+" parts mix units ("+[...units].join(", ")+")"); });
     if(C.dominant&&(!C.basis||C.parts.length!==1)) bad(id+": a dominant class needs its basis and one part");
+    /* roadmap step 2 (docs/FINAL_AUDIT.md H-11, H-19): the note is shown in the dossier's Dress; it names no file, field or formation id */
+    if(C.note&&[/\bdata\.js\b/,/\bthe data(?:'s)?\b/i,/not changed here/,new RegExp("\\((?:"+Object.keys(FORMATIONS).join("|")+")(?:\\.\\w+)?\\)")].some(re=>re.test(C.note)))
+      bad(id+": its note, shown in the dossier's Dress, names the project's files, fields or ids: "+C.note);
     const kind=p=>{ const d=DRESS[p.dress]; return d?d.nation:null; };
     const mixOk=n=>n===F.nation||F.arm==="mixed"||(F.mix&&F.mix.nation===n);
     C.parts.forEach((p,i)=>{ const d=DRESS[p.dress];
@@ -287,6 +313,25 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   console.log("appearance checks: "+(ap-apBad)+"/"+ap+" pass ("+Object.keys(DRESS).length+" dress classes, "+Object.keys(APPEARANCE_SOURCES).length+" sources, "+
     leaves.length+" leaf formations, "+Object.keys(COLOURS_CARRIED).length+" colours entries)"); }
 
+/* roadmap step 2 (docs/FINAL_AUDIT.md D-5): the guard's reach. Every top-level declaration of the four data files, and seven data declarations
+   in app.js (the sun's date, place and clock basis; which places a dossier quotes as surveyed; the timing and position grades a visitor is
+   told; since C28 the position pill's words and the Command tab's source grades), are in check:data's lists (tools/visual/data-invariance.js DATA, read from that file as tools/lang-scan.js reads it), so a new
+   declaration cannot sit outside the guard unseen */
+{ const acorn=require('acorn'), di=fs.readFileSync('tools/visual/data-invariance.js','utf8'), dm=di.match(/const DATA=(\{[\s\S]*?\n\});/);
+  const G=new Set(dm?[].concat(...Object.values(Function("return ("+dm[1]+")")())):[]);
+  if(!dm) errs.push("guard: DATA not found in tools/visual/data-invariance.js");
+  let n=0, out=0;
+  const keyOf=s=>s.type==="FunctionDeclaration"?s.id.name:(s.type==="VariableDeclaration"?s.declarations.map(d=>d.id.name).join(","):null);
+  ["geo.js","data.js","analysis.js","appearance.js"].forEach(f=>acorn.parse(fs.readFileSync(f,'utf8'),{ecmaVersion:2020}).body.forEach(s=>{
+    const k=keyOf(s); if(k===null) return; n++;
+    if(!G.has(k)){ out++; errs.push("guard: "+f+"'s "+k+" is not in check:data's lists (tools/visual/data-invariance.js)"); } }));
+  const APP_DATA=["SUN_DAY","FEATURE_GT","TIMING_TEXT","CONF_TEXT","CONF_INTERP","POS_CLAIM","SRC_LABEL"];   /* POS_CLAIM and SRC_LABEL since C28 (the critic's item 6) */
+  /* each is app.js's own top-level declaration under that name alone, the key check:data compares it by (else it reports "not found") */
+  const appKeys=new Set(acorn.parse(fs.readFileSync('app.js','utf8'),{ecmaVersion:2020}).body.map(keyOf).filter(k=>k!==null));
+  APP_DATA.forEach(k=>{ if(!G.has(k)){ out++; errs.push("guard: app.js's "+k+" is not in check:data's lists (D-5)"); }
+    if(!appKeys.has(k)) errs.push("guard: app.js declares no top-level "+k+" of its own (D-5)"); });
+  console.log("guard: the "+n+" declarations of the four data files and app.js's "+APP_DATA.length+" data declarations "+
+    (out?"are not all in check:data's lists ("+out+" outside)":"are in check:data's lists")+" ("+G.size+" names)"); }
 /* T-3 (docs/FINAL_AUDIT.md): a warning fails unless it is acknowledged here by its exact text, with the reason it stands and where that is
    recorded ({w, why, see}); an acknowledged warning that is no longer raised fails too, until its entry is removed. None today. */
 const KNOWN_WARN=[];
@@ -311,7 +356,7 @@ const OOB=[
  ["rg_inf","strength",6730],["rg_cav","strength",3700],
  ["c_gren","guns",undefined],["c_cav","guns",36],["gqg","guns",undefined],
  ["col4","strength",13900],["milo","strength",4800],["kamensky","strength",4250],["nansouty","strength",1600],
- ["santon","arm","inf"],["santon","battery",18],["buxhowden","arm","hq"]
+ ["santon","arm","inf"],["santon","battery",18],["santon","parent","suchet"],["buxhowden","arm","hq"]
 ];
 
 let oobBad=0, oobBadPin=0;
