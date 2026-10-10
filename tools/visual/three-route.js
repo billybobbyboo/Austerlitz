@@ -17,11 +17,12 @@ function integrityOf(html){
   const t=fs.readFileSync(html,"utf8"), m=/<script\b[^>]*\bsrc="[^"]*three(?:\.min)?\.js"[^>]*>/.exec(t);
   if(!m) return null; const i=/\bintegrity="([^"]+)"/.exec(m[0]); return i?i[1]:null;
 }
-function hashAs(sri,file){ const alg=sri.split("-")[0]; return alg+"-"+crypto.createHash(alg).update(fs.readFileSync(file)).digest("base64"); }
+function hashAs(tok,file){ const alg=tok.split("-")[0]; return alg+"-"+crypto.createHash(alg).update(fs.readFileSync(file)).digest("base64"); }
+/* an integrity value may list several hashes (whitespace separated): the copy passes when one of them matches, as in the browser */
 function checkIntegrity(html){
   const sri=integrityOf(html); if(!sri||!THREE_LOCAL) return {sri:sri,local:THREE_LOCAL,ok:true};
-  const got=hashAs(sri,THREE_LOCAL);
-  if(got!==sri) throw new Error("three.js: the page's integrity "+sri+" does not match "+THREE_LOCAL+" ("+got+"): the routed copy would be blocked");
+  const toks=sri.trim().split(/\s+/), got=toks.map(t=>hashAs(t,THREE_LOCAL));
+  if(!toks.some((t,i)=>got[i]===t)) throw new Error("three.js: the page's integrity "+sri+" does not match "+THREE_LOCAL+" ("+got.join(" ")+"): the routed copy would be blocked");
   return {sri:sri,local:THREE_LOCAL,ok:true};
 }
 async function routeThree(page){
@@ -29,9 +30,9 @@ async function routeThree(page){
   await page.route(THREE_RE,r=>r.fulfill({path:THREE_LOCAL,contentType:"application/javascript",headers:{"access-control-allow-origin":"*"}}));
   return true;
 }
-async function waitBoot(page,timeout){
+async function waitBoot(page,timeout,polling){
   const h=await page.waitForFunction(()=>(!document.getElementById("boot")&&typeof window.camera!=="undefined")||
-    (window.AUS_BOOT&&window.AUS_BOOT.failed?{failed:window.AUS_BOOT.failed}:false),null,{timeout:timeout||240000,polling:500});
+    (window.AUS_BOOT&&window.AUS_BOOT.failed?{failed:window.AUS_BOOT.failed}:false),null,{timeout:timeout||240000,polling:polling||500});
   const v=await h.jsonValue();
   if(v&&v.failed) throw new Error("the page could not start: "+JSON.stringify(v.failed));
   return true;

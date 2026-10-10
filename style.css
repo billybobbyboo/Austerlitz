@@ -15,7 +15,7 @@ button{font:inherit;color:inherit}
   background:var(--ink);transition:opacity .8s ease}
 #boot .boot-line{font-family:var(--serif);font-size:var(--t-h3);color:var(--text-muted);letter-spacing:.01em}
 /* roadmap step 3 (decision 133 (a); docs/FINAL_AUDIT.md SW-1): the slow start's status line and the failure dialog */
-#boot-status{font-family:var(--sans);font-size:var(--t-ui);color:var(--text-muted);margin-top:10px;min-height:1.4em}
+#boot-status{position:absolute;left:16px;right:16px;bottom:22%;text-align:center;font-family:var(--sans);font-size:var(--t-ui);color:var(--text-muted)}   /* out of the flow: the boot line stays centred */
 #boot.failed .boot-line,#boot.failed #boot-status{display:none}
 #boot-fail{max-width:min(36rem,100%);margin:auto;font-family:var(--sans);color:var(--text)}
 #boot-fail h2{font-family:var(--serif);font-size:var(--t-h2);color:var(--text-hi);margin:0 0 10px}

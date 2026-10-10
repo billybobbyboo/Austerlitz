@@ -550,7 +550,7 @@ if(cerrs) process.exitCode=1;
   if(!/<div id="glnotice" role="alert"><\/div>/.test(sh)) berr.push("shell.html: the context-loss notice is not an empty alert");
   if(/localStorage|sessionStorage/.test(sh.slice(gi,ti))) berr.push("shell.html: the guard stores something");
   if(!/\nboot\(\);\s*$/.test(app)) berr.push("app.js: the bundle does not start through boot()");
-  if(!/function boot\(\)\{\n  try\{ init\(\); \}\n  catch\(e\)\{ if\(typeof AUS_BOOT!=="undefined"&&AUS_BOOT\) AUS_BOOT\.fail\(e\.ausKind\|\|"error",e\); throw e; \}\n\}/.test(app)) berr.push("app.js: boot() does not report to the guard and rethrow");
+  if(!/function boot\(\)\{\n  try\{ init\(\); \}\n  catch\(e\)\{ if\(typeof AUS_BOOT!=="undefined"&&AUS_BOOT\) AUS_BOOT\.fail\(e\.ausKind\|\|"error",e\); throw e; \}\n  if\(typeof AUS_BOOT!=="undefined"&&AUS_BOOT\) AUS_BOOT\.ok\(\);[^\n]*\n\}/.test(app)) berr.push("app.js: boot() does not report to the guard and rethrow");
   if(!/function loop\(\)\{\n  if\(bootFailed\(\)\) return;/.test(app)) berr.push("app.js: the loop does not stop after a failed start");
   if(!/catch\(e\)\{ e\.ausKind="webgl"; throw e; \}/.test(app)) berr.push("app.js: the renderer's failure is not told apart (webgl)");
   berr.forEach(e=>console.log("  ! "+e));

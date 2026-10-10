@@ -20,7 +20,7 @@ async function open(browser,vp,o){
   await TR.routeThree(page);
   const t0=Date.now();
   await page.goto("file://"+path.resolve(process.env.AUSTERLITZ_HTML||path.join(ROOT,"austerlitz-command-map.html"))+(o.harness===false?"":"?harness=1"),{waitUntil:"commit",timeout:180000});
-  await TR.waitBoot(page);
+  await TR.waitBoot(page,240000,250);
   page._loadMs=Date.now()-t0;
   await page.evaluate(MEASURE);
   if(!o.transitions) await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});

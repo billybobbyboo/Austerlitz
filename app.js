@@ -566,6 +566,7 @@ function bindContextLoss(cv){
 function boot(){
   try{ init(); }
   catch(e){ if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT) AUS_BOOT.fail(e.ausKind||"error",e); throw e; }
+  if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT) AUS_BOOT.ok();   /* started: the guard's watch ends here at the latest */
 }
 function init(){
   scene=new THREE.Scene();
@@ -4820,6 +4821,7 @@ function updateVisibility(){
     o.show = labels && (major || dist<210);
   });
 
+  if(eyeAbove&&eyeQ.y<camFloor(eyeQ.x,eyeQ.z)-1e-6) clampCamera();   /* the world moved under the eye: the floor with it (before the sizes and rings that read the eye) */
   world.contours.visible=layerOn.contours && !cleanView;
   world.marsh.visible=layerOn.contours && !cleanView;
   world.analysis.visible=layerOn.analysis;
@@ -4829,7 +4831,6 @@ function updateVisibility(){
   symbolSizes();   /* Stage 3E: event glyphs and objective markers capped on screen, faded near the eye */
   updateSelRing();
   updatePlanLinks();   /* the map layer lays out in the drawn frame (mlLayout), not here */
-  if(eyeAbove&&eyeQ.y<camFloor(eyeQ.x,eyeQ.z)-1e-6) clampCamera();   /* the world moved under the eye: the floor with it */
 }
 
 /* ---------------- picking ----------------

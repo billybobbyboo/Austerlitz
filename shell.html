@@ -368,7 +368,7 @@ var AUS_BOOT=(function(){
     B.failed={kind:kind,message:String((err&&err.message)||err||"")};
     clearTimeout(B.timer);
     try{
-      var boot=el("boot"), kids=document.body.children, i;
+      var boot=el("boot"), kids=document.body.children, i; if(!boot) return;
       var fr=el("firstrun"); if(fr) fr.hidden=true;
       for(i=0;i<kids.length;i++){ var k=kids[i]; if(k!==boot&&k.tagName!=="SCRIPT"){ if("inert" in k) k.inert=true; else k.style.display="none"; } }
       var rs=boot.querySelectorAll("[data-boot]");
@@ -388,11 +388,16 @@ var AUS_BOOT=(function(){
     if(t&&t.tagName==="SCRIPT"&&/three(\.min)?\.js/.test(t.src||"")) B.fail("three","three.js did not load: "+t.src);
     else if(window.ErrorEvent&&e instanceof ErrorEvent) B.fail(typeof THREE==="undefined"?"three":"error",e.error||e.message);
   },true);
-  /* once failed, nothing behind the dialog acts: keys and presses outside it stop here (the app's own handlers come later) */
-  ["keydown","pointerdown","wheel","click"].forEach(function(t){
+  /* once failed, nothing behind the dialog acts (the app's own handlers come later): Tab and Shift+Tab keep the focus on Reload from
+     anywhere, and no key reaches a handler of the app (the browser's own action stays: Enter and Space press the focused Reload);
+     presses outside the dialog stop here */
+  window.addEventListener("keydown",function(e){
+    if(!B.failed) return;
+    if(e.key==="Tab"){ e.preventDefault(); el("boot-reload").focus(); }
+    e.stopImmediatePropagation();
+  },true);
+  ["pointerdown","wheel","click"].forEach(function(t){
     window.addEventListener(t,function(e){ if(!B.failed) return; var x=e.target; if(x&&x.closest&&x.closest("#boot-fail")) return; e.stopImmediatePropagation(); },true); });
-  /* the dialog's one control keeps the focus: Tab and Shift+Tab stay on Reload */
-  window.addEventListener("keydown",function(e){ if(B.failed&&e.key==="Tab"){ e.preventDefault(); el("boot-reload").focus(); } },true);
   el("boot-reload").addEventListener("click",function(){ location.reload(); });
   B.timer=setTimeout(function(){ if(!B.done&&!B.failed){ var s=el("boot-status"); if(s) s.textContent=s.getAttribute("data-slow"); } },20000);
   return B;
