@@ -146,9 +146,11 @@ body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 
 /* ---------- drawer ---------- */
 .drawer{position:fixed;right:0;top:0;bottom:0;width:var(--draw);z-index:30;background:var(--panel);
-  border-left:1px solid var(--line-2);transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);
-  display:flex;flex-direction:column}
-.drawer.on{transform:translateX(0)}
+  border-left:1px solid var(--line-2);transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s linear .32s;
+  display:flex;flex-direction:column;visibility:hidden}
+.drawer.on{transform:translateX(0);visibility:visible;transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s}
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-3): closed, the dossier is hidden once it has slid away (and inert at once, app.js syncInert), so its
+   buttons are no tab stops and not in the accessibility tree */
 .drawer .dbar{display:flex;justify-content:flex-end;padding:10px 12px 0}
 #drawer-close{background:none;border:0;color:var(--text-muted);cursor:pointer;font-size:var(--t-h3);line-height:1;padding:4px 6px}
 #drawer-close:hover{color:var(--text)}
@@ -10440,7 +10442,13 @@ function pickAt(cx,cy){
   if(!best) for(var ei=0;ei<eventMarks.length;ei++) if(eventGroup.visible&&eventMarks[ei].sp.visible) test(eventMarks[ei].sp.position,"e",eventMarks[ei].e.id);
   return best;
 }
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-3, SW-5): the dossier's focus. Its opener is the control outside it that last selected something; a
+   dossier opened over its opener (the docked dossier over a rail row: the rail is inert under it) takes the focus on its Back button; when it
+   closes with focus inside (its x, Back, Esc), focus goes back to the opener, else the rail's current tab, Play or Show interface. A
+   ground click leaves focus where the pointer left it */
+var PANEL={opener:null};
 function select(kind,id){
+  var a=focusedEl(), dr=document.getElementById("drawer"), inDr=!!(a&&dr&&dr.contains&&dr.contains(a));
   var prev=selection;
   if(!prev||prev.kind!==kind||prev.id!==id) dossierExpanded=false;
   selection=(kind&&id)?{kind:kind,id:id}:null;
@@ -10449,6 +10457,8 @@ function select(kind,id){
     else setHighlight(null);
   }
   paintDrawer(); paintOOB();
+  if(selection){ if(a&&!inDr) PANEL.opener=a; if(a&&!inDr&&!shown(a)) focusTo(["drawer-back","drawer-close"]); }
+  else { if(inDr) focusTo([PANEL.opener,docked?"tab-"+tabNow:null,"play","restore"]); PANEL.opener=null; }
 }
 
 /* ---------------- camera ---------------- */
@@ -10882,12 +10892,15 @@ function sheetTab(id,back){
   if(!F.length) return; var n=F.length; F[i<0?(back?n-1:0):(i+(back?n-1:1))%n].focus({preventScroll:true});
 }
 /* the inert regions, from their reasons (one writer): while a sheet is open, every child of the body but the sheet, the phase announcement,
-   the toast and the graphics notice. A failed start keeps the start-up guard's own (shell.html) */
+   the toast and the graphics notice; the dossier while it is closed (roadmap step 3, SW-3: it slides off screen, and its buttons stayed tab
+   stops); the rail while the docked dossier stands over it (the dossier takes the rail's column). A failed start keeps the start-up guard's
+   own (shell.html) */
 function syncInert(){
   if(bootFailed()||typeof document==="undefined"||!document.body||!document.body.children) return;
-  var top=sheetTop(), keep=top?document.getElementById(top):null, kids=document.body.children;
+  var top=sheetTop(), keep=top?document.getElementById(top):null, kids=document.body.children, dr=document.getElementById("drawer"), dOn=drawerShown();
   for(var i=0;i<kids.length;i++){ var k=kids[i]; if(!k||k.tagName==="SCRIPT"||k.id==="boot") continue;
-    var want=!!keep&&k!==keep&&!/^(live-phase|toast|glnotice)$/.test(k.id);
+    var want=(!!keep&&k!==keep&&!/^(live-phase|toast|glnotice)$/.test(k.id))||(k===dr&&!dOn)||
+      (!!(k.classList&&k.classList.contains("rail"))&&!!docked&&dOn);
     if(!!k.inert!==want) k.inert=want; }
 }
 function helpOpen(){ return sheetIsOpen("help"); }
@@ -11289,6 +11302,7 @@ function openFirstRun(){
   var fr=document.getElementById("firstrun"); if(!fr||fr.hidden) return;
   firstRunOpen=true;
   document.body.classList.add("firstrun-on");
+  syncInert();
   if(docked) selectTab("now");                  /* Stage 7B (decision 113): the Now tab under the card, as decision 55 has Study open */
   frameFirstView();
   focusId("fr-tour");                           /* Stage 7B: the dialog takes focus, on its primary action */
@@ -11312,6 +11326,7 @@ function closeFirst(how){
   var fr=document.getElementById("firstrun"); if(fr) fr.hidden=true;
   document.body.classList.remove("firstrun-on");
   if(docked&&!tabChosen) selectTab("now");      /* Stage 3B (decision 55): Study opens on the Now tab */
+  syncInert();   /* roadmap step 3: the dossier, hidden under the card, is shown again */
   if(how==="open"){ openingStart(); focusId("tour-next"); }   /* Stage 7C: the opening, focus on its Next (the visitor asked for it) */
   else if(how==="explore"){ if(had||!document.activeElement||document.activeElement===document.body) focusId("play"); }
   else if(had&&document.activeElement&&document.activeElement.blur) document.activeElement.blur();
@@ -11320,7 +11335,7 @@ function closeFirst(how){
 /* ---- the selection chip ----
    Whenever something is selected but its dossier is not on screen (Watch, the clean Map view),
    this says what is selected, why the rest is dimmed, and offers the dossier or a way out. */
-function drawerShown(){ var d=document.getElementById("drawer"); return !!d&&d.classList.contains("on")&&getComputedStyle(d).display!=="none"; }
+function drawerShown(){ var d=document.getElementById("drawer"); return !!d&&!!d.classList&&d.classList.contains("on")&&(typeof getComputedStyle!=="function"||getComputedStyle(d).display!=="none"); }
 function syncSelChip(){
   var chip=document.getElementById("selchip"); if(!chip) return;
   var show=!!selection && !drawerShown() && !firstRunOpen;
@@ -11708,17 +11723,28 @@ var CONF_TEXT={A:"Position documented in the sources.",
                C:"Reconstructed from the narrative — treat as indicative only."};
 
 function paintDrawer(){ _drawerKey=drawerKey(); paintDrawerBody(); syncSelChip(); }
+var _drawerClear=0;
 function paintDrawerBody(){
-  var dr=document.getElementById("drawer");
-  if(!selection){ dr.classList.remove("on"); document.body.classList.remove("drawer-open"); return; }
+  var dr=document.getElementById("drawer"), body=document.getElementById("drawer-body");
+  if(!selection){ dr.classList.remove("on"); document.body.classList.remove("drawer-open"); syncInert();
+    /* SW-3: the closed dossier's buttons go with it, once it has slid away (at once when nothing slides) */
+    clearTimeout(_drawerClear);
+    if(RM||document.body.classList.contains("st-still")) body.innerHTML="";
+    else _drawerClear=setTimeout(function(){ if(!selection) body.innerHTML=""; },360);
+    return; }
+  clearTimeout(_drawerClear);
   dr.classList.add("on");
   document.body.classList.add("drawer-open");
-  var body=document.getElementById("drawer-body");
+  /* SW-5: a rebuild with focus inside (Full dossier, a link, the clock moving) keeps the focus on the same control, else the dossier's heading */
+  var fa=focusedEl(), fk=(fa&&body.contains&&body.contains(fa))?[fa.tagName,(fa.textContent||"").trim()]:null;
   body.innerHTML="";
   if(selection.kind==="f") body.appendChild(dossierExpanded?dossierFormation(selection.id):compactCard(selection.id));
   else if(selection.kind==="e") body.appendChild(dossierEvent(selection.id));
   else if(selection.kind==="a") body.appendChild(dossierAnalysis(selection.id));
   else body.appendChild(dossierFeature(selection.id));
+  syncInert();
+  if(fk&&body.querySelectorAll){ var same=[].filter.call(body.querySelectorAll(fk[0]),function(x){ return (x.textContent||"").trim()===fk[1]; })[0];
+    if(!(same&&focusTo([same]))){ var h=body.querySelector("h2,h3"); if(h){ h.setAttribute("tabindex","-1"); focusTo([h]); } } }
 }
 
 function row(k,v){ return '<div class="kv"><dt>'+esc(k)+'</dt><dd>'+v+'</dd></div>'; }
@@ -12570,6 +12596,7 @@ function syncDock(){
   document.body.classList.toggle("docked",want);
   if(dp&&pane&&home&&home.parentNode&&home.parentNode.insertBefore){ if(want) pane.appendChild(dp); else home.parentNode.insertBefore(dp,home); }
   var nb=document.getElementById("tab-now"); if(nb) nb.hidden=!want;
+  syncInert();   /* roadmap step 3: docked or not, the rail's reason changes */
   if(want&&presentation==="study") document.body.classList.remove("rail-hidden");
   if(!want&&tabNow==="now") selectTab("oob");
   else if(want&&!tabChosen) selectTab("now");
@@ -14993,6 +15020,45 @@ var AUSTERLITZ_DEBUG=(function(){
       landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv; tabChosen=K0.ch; if(docked) selectTab(K0.tab); syncFollow();
       ck("sheets: the sources sheet a modal dialog (focus to its close, Tab kept inside, the rest inert but the phase announcement, no key acting behind it, closed by Esc, \u00d7 and the scrim with focus back on its opener, a repaint keeping focus); after a click on its text a sheet keeps Esc, \u201c?\u201d, Tab and its modality; Esc closes the topmost sheet first, the tour, the opening, the chapter and the selection kept (docs/FINAL_AUDIT.md SW-4, SW-6)",
         !bad.length, bad.length?bad.join("; "):"opened from its button: focus on its close, Tab, Tab, Shift+Tab inside, Space and the rail's arrow inert behind it, Esc, \u00d7 and the scrim back to the button; both sheets after a click on their text; Esc over the tour, a selection and the opening closed the sheet only");
+    })();
+    /* roadmap step 3 (docs/FINAL_AUDIT.md SW-3, SW-5): the dossier. Closed, it is inert, hidden once still and its body cleared, so none of its
+       buttons is a tab stop; closed with focus inside by its x, Back or Esc, focus goes to its opener (the control that selected), else a named
+       successor, never into the hidden dossier or to the page; docked and opened from a rail row it covers, focus moves to its Back and the
+       rail is inert, and the rail is given back before focus returns to the row; a rebuild with focus inside keeps the focus on the same
+       control (Full dossier) or the dossier's heading. Restored after */
+    (function(){
+      var bad=[], dr=document.getElementById("drawer"), K0={c:clock,pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,sel:selection,p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage};
+      function aid(){ var a=document.activeElement; return a&&a!==document.body?(a.id||a.tagName+":"+(a.textContent||"").trim().slice(0,24)):"body"; }
+      function closedOK(w){ if(!dr.inert) bad.push(w+": the closed dossier is not inert"); if(getComputedStyle(dr).visibility!=="hidden") bad.push(w+": the closed dossier is not hidden");
+        if(document.getElementById("drawer-body").children.length) bad.push(w+": the closed dossier's body is not cleared"); if(dr.contains(document.activeElement)) bad.push(w+": focus left in the closed dossier"); }
+      function key(k){ var on=document.activeElement&&document.activeElement!==document.body?document.activeElement:window; on.dispatchEvent(new KeyboardEvent("keydown",{key:k,bubbles:true,cancelable:true})); }
+      document.body.classList.add("st-still"); if(mode!=="terrain") setMode("terrain"); setPresentation("study"); select(null,null); setClock(570,{instant:true,force:true,camera:false}); finishTween();
+      closedOK("at rest");
+      var opener=document.getElementById("play");
+      [["\u00d7",function(){ focusId("drawer-close"); document.getElementById("drawer-close").click(); }],
+       ["Esc",function(){ focusId("drawer-close"); key("Escape"); }]].concat(docked?[["Back",function(){ focusId("drawer-back"); document.getElementById("drawer-back").click(); }]]:[]).forEach(function(w){
+        opener.focus({preventScroll:true}); select("f","sthilaire"); if(dr.inert||!drawerShown()) bad.push(w[0]+": the open dossier is inert or not shown");
+        if(document.activeElement!==opener) bad.push(w[0]+": opening the dossier moved the focus off its opener (shown)");
+        w[1](); closedOK(w[0]); if(document.activeElement!==opener) bad.push(w[0]+": focus on "+aid()+", not the opener (Play)"); });
+      opener.focus({preventScroll:true}); select("f","sthilaire"); focusId("drawer-close"); document.activeElement.blur(); select(null,null); closedOK("a ground click (the press took the focus to the page)");
+      if(docked){ selectTab("oob"); var row=document.querySelector('.oob-row[data-id="sthilaire"]')||document.querySelector(".oob-row");
+        row.focus({preventScroll:true}); row.click();
+        var rail=document.querySelector(".rail");
+        if(!rail.inert) bad.push("docked: the rail under the dossier is not inert"); if(aid()!=="drawer-back") bad.push("docked: focus on "+aid()+" when the dossier covered its row, not Back");
+        document.getElementById("drawer-back").click(); if(rail.inert) bad.push("docked: the rail still inert after Back");
+        if(document.activeElement!==row) bad.push("docked: focus on "+aid()+" after Back, not the row that opened it"); closedOK("docked Back"); selectTab(K0.tab); }
+      /* a rebuild with focus inside: Full dossier */
+      select("f","sthilaire"); dossierExpanded=false; paintDrawer();
+      var full=[].filter.call(document.querySelectorAll("#drawer-body button"),function(b){ return /full dossier/i.test(b.textContent); })[0];
+      if(!full) bad.push("no Full dossier button");
+      else { full.focus({preventScroll:true}); full.click(); var fa=document.activeElement;
+        if(!dr.contains(fa)||fa===document.body) bad.push("Full dossier: focus left the dossier ("+aid()+")");
+        setClock(clock+60,{instant:true,camera:false}); paintDrawer(); if(!dr.contains(document.activeElement)) bad.push("a repaint as the clock moved: focus left the dossier ("+aid()+")"); }
+      select(null,null); document.body.classList.remove("st-still"); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+      setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
+      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv; tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id); syncFollow();
+      ck("panels: a closed dossier is inert, hidden and emptied; closed by \u00d7, Esc, Back or a ground click, focus on its opener, never in the hidden dossier; docked and opened from the rail, focus on its Back with the rail inert, given back before focus returns; a rebuild keeps focus in it (docs/FINAL_AUDIT.md SW-3, SW-5)",
+        !bad.length, bad.length?bad.join("; "):"each way out to the opener; the closed dossier inert, hidden and empty; Full dossier and a repaint kept focus inside"+(docked?"":" (undocked: no Back, no rail under the dossier)"));
     })();
     /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decisions 111, 112, 114-116, 118): the opening, begun from the reopened card's primary
        action at 04:00 in Study on the landscape. Every step is its tour stop (the clock stopClock, the theme, the camera presetFrame(stopCam),

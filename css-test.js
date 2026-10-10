@@ -579,3 +579,15 @@ if(cerrs) process.exitCode=1;
   console.log("shortcuts switch: "+(kerr.length?kerr.length+" wrong":"a toggle button in the overlay outside its list, on by default, nothing stored, its words in LABELS, a typed character muted when off"));
   if(kerr.length) process.exitCode=1;
 }
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-3): the closed dossier hidden once it has slid away (visibility, delayed by the slide), shown at once
+   when it opens; app.js's syncInert makes it inert while closed. Its behaviour is the self-test's */
+{
+  const css=fs.readFileSync('style.css','utf8'), derr=[];
+  const base=(css.match(/\n\.drawer\{[^}]*\}/)||[""])[0], on=(css.match(/\n\.drawer\.on\{[^}]*\}/)||[""])[0];
+  if(!/visibility:hidden/.test(base)||!/visibility 0s linear \.32s/.test(base)) derr.push("style.css: the closed .drawer is not hidden after its .32 s slide: "+base.trim());
+  if(!/visibility:visible/.test(on)||!/visibility 0s\}/.test(on.replace(/;?\s*\}$/,"}"))) derr.push("style.css: the open .drawer is not shown at once: "+on.trim());
+  if(!/k===dr&&!dOn/.test(fs.readFileSync('app.js','utf8'))) derr.push("app.js: syncInert does not make the closed dossier inert");
+  derr.forEach(e=>console.log("  ! "+e));
+  console.log("dossier hidden when closed: "+(derr.length?derr.length+" wrong":"hidden after its slide, shown at once, inert while closed"));
+  if(derr.length) process.exitCode=1;
+}

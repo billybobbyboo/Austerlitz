@@ -140,9 +140,11 @@ body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 
 /* ---------- drawer ---------- */
 .drawer{position:fixed;right:0;top:0;bottom:0;width:var(--draw);z-index:30;background:var(--panel);
-  border-left:1px solid var(--line-2);transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);
-  display:flex;flex-direction:column}
-.drawer.on{transform:translateX(0)}
+  border-left:1px solid var(--line-2);transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s linear .32s;
+  display:flex;flex-direction:column;visibility:hidden}
+.drawer.on{transform:translateX(0);visibility:visible;transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s}
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-3): closed, the dossier is hidden once it has slid away (and inert at once, app.js syncInert), so its
+   buttons are no tab stops and not in the accessibility tree */
 .drawer .dbar{display:flex;justify-content:flex-end;padding:10px 12px 0}
 #drawer-close{background:none;border:0;color:var(--text-muted);cursor:pointer;font-size:var(--t-h3);line-height:1;padding:4px 6px}
 #drawer-close:hover{color:var(--text)}
