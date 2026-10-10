@@ -244,6 +244,7 @@ module.exports.check=function(name,m,spec,opts){
     /* roadmap step 1 (T-6): strict, the reading must be shown (true); before step 1 only false failed, and a caption with no derived reading
        at all (null) passed. CAP_DERIVED_NONE names a case exempt, with its reason (none) */
     if(m.presentation==="watch"&&(strict?(TL.capDerived!==true&&!CAP_DERIVED_NONE.includes(name)):TL.capDerived===false)) f.push("Watch: the caption's derived reading is not shown ("+TL.capDerived+")");
+    if(TL.capTag===false) f.push("the caption: an event's tag drawn cut (roadmap step 3, the narrow layout's event tag)");
     if(m.phaseLabels720&&m.phaseLabels720.cut.length) f.push("at 1280 x 720 the current phase's label is cut: "+m.phaseLabels720.cut.join(", ")); }
   /* Stage 4E (docs/STAGE4_SPEC.md section E.3): the smoke covers at most a quarter of the free rectangle; new, on a build with puffs */
   if(m.smoke&&m.smokePuffs&&!(m.smoke.share<=SMOKE_SHARE)) f.push("smoke covers "+(100*m.smoke.share).toFixed(1)+"% of the free rectangle (limit "+(100*SMOKE_SHARE)+"%)");
