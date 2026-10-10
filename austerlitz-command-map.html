@@ -8156,7 +8156,7 @@ function setPhase(n,instant){
    ============================================================ */
 var lowTier=false;
 var LAYER_WORLD=0, LAYER_LABEL=1;
-var FX={on:false, scale:1, rtScene:null, rtA:null, rtB:null, rtC:null, rtD:null, rtFinal:null, matFXAA:null,
+var FX={on:false, built:false, scale:1, rtScene:null, rtA:null, rtB:null, rtC:null, rtD:null, rtFinal:null, matFXAA:null,
         quadScene:null, quadCam:null, quad:null,
         matBright:null, matBlur:null, matComp:null};
 
@@ -8177,145 +8177,157 @@ function makeRT(w,h,half){
   rt.texture.generateMipmaps=false;
   return rt;
 }
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-7): the targets, materials and quad are made once and kept while the effects are off; turning them
+   on again reuses them (sizeFX takes up a resize made meanwhile). A set that failed to build, or failed in a frame, is disposed (disposeFX) */
 function initFX(){
-  var half = renderer.capabilities.isWebGL2 ||
-             !!renderer.extensions.get("OES_texture_half_float");
-  FX.scale = lowTier?1.0:1.3;
-  var s=new THREE.Vector2(); renderer.getDrawingBufferSize(s);
-  var w=s.x*FX.scale, h=s.y*FX.scale;
-  FX.rtScene=makeRT(w,h,half);
-  FX.rtA=makeRT(w/2,h/2,half); FX.rtB=makeRT(w/2,h/2,half);
-  FX.rtC=makeRT(w/4,h/4,half); FX.rtD=makeRT(w/4,h/4,half);
-  FX.rtFinal=makeRT(s.x,s.y,false);          /* the graded frame at screen size, sRGB */
-  FX.rtFinal.depthBuffer=false;
+  if(!FX.built){
+    try{
+      var half = renderer.capabilities.isWebGL2 ||
+                 !!renderer.extensions.get("OES_texture_half_float");
+      FX.scale = lowTier?1.0:1.3;
+      var s=new THREE.Vector2(); renderer.getDrawingBufferSize(s);
+      var w=s.x*FX.scale, h=s.y*FX.scale;
+      FX.rtScene=makeRT(w,h,half);
+      FX.rtA=makeRT(w/2,h/2,half); FX.rtB=makeRT(w/2,h/2,half);
+      FX.rtC=makeRT(w/4,h/4,half); FX.rtD=makeRT(w/4,h/4,half);
+      FX.rtFinal=makeRT(s.x,s.y,false);          /* the graded frame at screen size, sRGB */
+      FX.rtFinal.depthBuffer=false;
 
-  /* FXAA: edge-directed blur along the luma gradient, on the finished sRGB frame */
-  FX.matFXAA=new THREE.ShaderMaterial({
-    uniforms:{tDiffuse:{value:null},texel:{value:new THREE.Vector2(1/1024,1/1024)}},
-    vertexShader:"varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }",
-    fragmentShader:[
-      "uniform sampler2D tDiffuse; uniform vec2 texel; varying vec2 vUv;",
-      "float luma(vec3 c){ return dot(c,vec3(0.299,0.587,0.114)); }",
-      "void main(){",
-      "  vec3 rgbM =texture2D(tDiffuse,vUv).rgb;",
-      "  vec3 rgbNW=texture2D(tDiffuse,vUv+vec2(-1.0,-1.0)*texel).rgb;",
-      "  vec3 rgbNE=texture2D(tDiffuse,vUv+vec2( 1.0,-1.0)*texel).rgb;",
-      "  vec3 rgbSW=texture2D(tDiffuse,vUv+vec2(-1.0, 1.0)*texel).rgb;",
-      "  vec3 rgbSE=texture2D(tDiffuse,vUv+vec2( 1.0, 1.0)*texel).rgb;",
-      "  float lM=luma(rgbM), lNW=luma(rgbNW), lNE=luma(rgbNE), lSW=luma(rgbSW), lSE=luma(rgbSE);",
-      "  float lMin=min(lM,min(min(lNW,lNE),min(lSW,lSE)));",
-      "  float lMax=max(lM,max(max(lNW,lNE),max(lSW,lSE)));",
-      "  vec2 dir=vec2(-((lNW+lNE)-(lSW+lSE)), ((lNW+lSW)-(lNE+lSE)));",
-      "  float dirReduce=max((lNW+lNE+lSW+lSE)*0.03125, 0.0078125);",
-      "  float rcpDirMin=1.0/(min(abs(dir.x),abs(dir.y))+dirReduce);",
-      "  dir=min(vec2(8.0),max(vec2(-8.0),dir*rcpDirMin))*texel;",
-      "  vec3 rgbA=0.5*(texture2D(tDiffuse,vUv+dir*(1.0/3.0-0.5)).rgb+texture2D(tDiffuse,vUv+dir*(2.0/3.0-0.5)).rgb);",
-      "  vec3 rgbB=rgbA*0.5+0.25*(texture2D(tDiffuse,vUv+dir*-0.5).rgb+texture2D(tDiffuse,vUv+dir*0.5).rgb);",
-      "  float lB=luma(rgbB);",
-      "  gl_FragColor=vec4((lB<lMin||lB>lMax)?rgbA:rgbB,1.0);",
-      "}"].join("\n"),
-    depthTest:false,depthWrite:false});
+      /* FXAA: edge-directed blur along the luma gradient, on the finished sRGB frame */
+      FX.matFXAA=new THREE.ShaderMaterial({
+        uniforms:{tDiffuse:{value:null},texel:{value:new THREE.Vector2(1/1024,1/1024)}},
+        vertexShader:"varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }",
+        fragmentShader:[
+          "uniform sampler2D tDiffuse; uniform vec2 texel; varying vec2 vUv;",
+          "float luma(vec3 c){ return dot(c,vec3(0.299,0.587,0.114)); }",
+          "void main(){",
+          "  vec3 rgbM =texture2D(tDiffuse,vUv).rgb;",
+          "  vec3 rgbNW=texture2D(tDiffuse,vUv+vec2(-1.0,-1.0)*texel).rgb;",
+          "  vec3 rgbNE=texture2D(tDiffuse,vUv+vec2( 1.0,-1.0)*texel).rgb;",
+          "  vec3 rgbSW=texture2D(tDiffuse,vUv+vec2(-1.0, 1.0)*texel).rgb;",
+          "  vec3 rgbSE=texture2D(tDiffuse,vUv+vec2( 1.0, 1.0)*texel).rgb;",
+          "  float lM=luma(rgbM), lNW=luma(rgbNW), lNE=luma(rgbNE), lSW=luma(rgbSW), lSE=luma(rgbSE);",
+          "  float lMin=min(lM,min(min(lNW,lNE),min(lSW,lSE)));",
+          "  float lMax=max(lM,max(max(lNW,lNE),max(lSW,lSE)));",
+          "  vec2 dir=vec2(-((lNW+lNE)-(lSW+lSE)), ((lNW+lSW)-(lNE+lSE)));",
+          "  float dirReduce=max((lNW+lNE+lSW+lSE)*0.03125, 0.0078125);",
+          "  float rcpDirMin=1.0/(min(abs(dir.x),abs(dir.y))+dirReduce);",
+          "  dir=min(vec2(8.0),max(vec2(-8.0),dir*rcpDirMin))*texel;",
+          "  vec3 rgbA=0.5*(texture2D(tDiffuse,vUv+dir*(1.0/3.0-0.5)).rgb+texture2D(tDiffuse,vUv+dir*(2.0/3.0-0.5)).rgb);",
+          "  vec3 rgbB=rgbA*0.5+0.25*(texture2D(tDiffuse,vUv+dir*-0.5).rgb+texture2D(tDiffuse,vUv+dir*0.5).rgb);",
+          "  float lB=luma(rgbB);",
+          "  gl_FragColor=vec4((lB<lMin||lB>lMax)?rgbA:rgbB,1.0);",
+          "}"].join("\n"),
+        depthTest:false,depthWrite:false});
 
-  FX.matBright=new THREE.ShaderMaterial({
-    uniforms:{tDiffuse:{value:null},threshold:{value:0.82},knee:{value:0.45}},
-    vertexShader:"varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }",
-    fragmentShader:[
-      "uniform sampler2D tDiffuse; uniform float threshold; uniform float knee;",
-      "varying vec2 vUv;",
-      "void main(){",
-      "  vec3 c=texture2D(tDiffuse,vUv).rgb;",
-      "  float l=dot(c,vec3(0.2126,0.7152,0.0722));",
-      "  float s=smoothstep(threshold,threshold+knee,l);",
-      "  gl_FragColor=vec4(c*s,1.0);",
-      "}"].join("\n"),
-    depthTest:false,depthWrite:false});
+      FX.matBright=new THREE.ShaderMaterial({
+        uniforms:{tDiffuse:{value:null},threshold:{value:0.82},knee:{value:0.45}},
+        vertexShader:"varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }",
+        fragmentShader:[
+          "uniform sampler2D tDiffuse; uniform float threshold; uniform float knee;",
+          "varying vec2 vUv;",
+          "void main(){",
+          "  vec3 c=texture2D(tDiffuse,vUv).rgb;",
+          "  float l=dot(c,vec3(0.2126,0.7152,0.0722));",
+          "  float s=smoothstep(threshold,threshold+knee,l);",
+          "  gl_FragColor=vec4(c*s,1.0);",
+          "}"].join("\n"),
+        depthTest:false,depthWrite:false});
 
-  FX.matBlur=new THREE.ShaderMaterial({
-    uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},
-              texel:{value:new THREE.Vector2(1/512,1/512)}},
-    vertexShader:"varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }",
-    fragmentShader:[
-      "uniform sampler2D tDiffuse; uniform vec2 dir; uniform vec2 texel;",
-      "varying vec2 vUv;",
-      /* nine-tap gaussian, linear-sampled */
-      "void main(){",
-      "  vec2 o=dir*texel;",
-      "  vec3 c=texture2D(tDiffuse,vUv).rgb*0.2270270270;",
-      "  c+=texture2D(tDiffuse,vUv+o*1.3846153846).rgb*0.3162162162;",
-      "  c+=texture2D(tDiffuse,vUv-o*1.3846153846).rgb*0.3162162162;",
-      "  c+=texture2D(tDiffuse,vUv+o*3.2307692308).rgb*0.0702702703;",
-      "  c+=texture2D(tDiffuse,vUv-o*3.2307692308).rgb*0.0702702703;",
-      "  gl_FragColor=vec4(c,1.0);",
-      "}"].join("\n"),
-    depthTest:false,depthWrite:false});
+      FX.matBlur=new THREE.ShaderMaterial({
+        uniforms:{tDiffuse:{value:null},dir:{value:new THREE.Vector2(1,0)},
+                  texel:{value:new THREE.Vector2(1/512,1/512)}},
+        vertexShader:"varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }",
+        fragmentShader:[
+          "uniform sampler2D tDiffuse; uniform vec2 dir; uniform vec2 texel;",
+          "varying vec2 vUv;",
+          /* nine-tap gaussian, linear-sampled */
+          "void main(){",
+          "  vec2 o=dir*texel;",
+          "  vec3 c=texture2D(tDiffuse,vUv).rgb*0.2270270270;",
+          "  c+=texture2D(tDiffuse,vUv+o*1.3846153846).rgb*0.3162162162;",
+          "  c+=texture2D(tDiffuse,vUv-o*1.3846153846).rgb*0.3162162162;",
+          "  c+=texture2D(tDiffuse,vUv+o*3.2307692308).rgb*0.0702702703;",
+          "  c+=texture2D(tDiffuse,vUv-o*3.2307692308).rgb*0.0702702703;",
+          "  gl_FragColor=vec4(c,1.0);",
+          "}"].join("\n"),
+        depthTest:false,depthWrite:false});
 
-  FX.matComp=new THREE.ShaderMaterial({
-    uniforms:{
-      tDiffuse:{value:null}, tBloomA:{value:null}, tBloomB:{value:null},
-      texel:{value:new THREE.Vector2(1/1024,1/1024)},
-      bloom:{value:0.42}, exposure:{value:1.05},
-      lift:{value:new THREE.Vector3(0,0,0)}, gain:{value:new THREE.Vector3(1,1,1)},
-      sat:{value:1.04}, contrast:{value:1.06},
-      vignette:{value:0.26}, grain:{value:0.011}, sharpen:{value:0.22},
-      time:{value:0}
-    },
-    vertexShader:"varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }",
-    fragmentShader:[
-      "uniform sampler2D tDiffuse; uniform sampler2D tBloomA; uniform sampler2D tBloomB;",
-      "uniform vec2 texel; uniform float bloom, exposure, sat, contrast, vignette, grain, sharpen, time;",
-      "uniform vec3 lift, gain;",
-      "varying vec2 vUv;",
-      /* ACES filmic, Narkowicz's fit */
-      "vec3 aces(vec3 x){",
-      "  return clamp((x*(2.51*x+0.03))/(x*(2.43*x+0.59)+0.14),0.0,1.0);",
-      "}",
-      "void main(){",
-      "  vec3 c=texture2D(tDiffuse,vUv).rgb;",
-      /* unsharp mask against a four-tap neighbourhood, recovering the
-         softness that supersampling costs */
-      "  vec3 b=texture2D(tDiffuse,vUv+vec2(texel.x,0.0)).rgb",
-      "        +texture2D(tDiffuse,vUv-vec2(texel.x,0.0)).rgb",
-      "        +texture2D(tDiffuse,vUv+vec2(0.0,texel.y)).rgb",
-      "        +texture2D(tDiffuse,vUv-vec2(0.0,texel.y)).rgb;",
-      "  c+=(c-b*0.25)*sharpen;",
-      "  c=max(c,vec3(0.0));",
-      "  c+=(texture2D(tBloomA,vUv).rgb+texture2D(tBloomB,vUv).rgb*1.3)*bloom;",
-      "  c*=exposure;",
-      "  c=aces(c);",
-      /* lift and gain, then saturation and contrast about mid grey */
-      "  c=clamp(c*gain+lift,0.0,1.0);",
-      "  float l=dot(c,vec3(0.2126,0.7152,0.0722));",
-      "  c=clamp(mix(vec3(l),c,sat),0.0,1.0);",
-      /* contrast about mid-grey in perceptual (gamma 2.2) space. Done in linear light, a pivot at
-         0.5 sent every value below 0.5(1-1/k) - 0.02 to 0.04 for these presets - to pure black,
-         which is what turned slopes in shade into black silhouettes. Here the clip point is
-         below one code value, so shade keeps its texture while mid-tones keep the same curve. */
-      "  vec3 pc=clamp(pow(max(c,vec3(0.0)),vec3(1.0/2.2)),0.0,1.0);",
-      /* pinned at black and white, so the curve can steepen the middle but never clip an end */
-      "  vec3 pk=pow(pc,vec3(contrast)), qk=pow(vec3(1.0)-pc,vec3(contrast));",
-      "  c=pow(pk/max(pk+qk,vec3(1e-6)),vec3(2.2));",
-      /* a quiet frame, and fine grain so flat sky does not band */
-      "  vec2 q=vUv-0.5;",
-      "  c*=1.0-vignette*dot(q,q)*1.6;",
-      "  float n=fract(sin(dot(vUv*vec2(1.0,1.3)+time,vec2(12.9898,78.233)))*43758.5453);",
-      "  c+=(n-0.5)*grain;",
-      /* linear to sRGB */
-      "  c=clamp(c,0.0,1.0);",
-      "  vec3 srgb=mix(c*12.92, 1.055*pow(max(c,vec3(0.0031308)),vec3(1.0/2.4))-0.055,",
-      "                step(vec3(0.0031308),c));",
-      /* Stage 4B (decision 70): no shadow toe. Stage 0 lifted values below 0.2 here; the light now keeps shade off black where
-         the shade is made, by the sun's altitude corrected to the display factor and a fill opposite the sun */
-      "  gl_FragColor=vec4(srgb,1.0);",
-      "}"].join("\n"),
-    depthTest:false,depthWrite:false});
+      FX.matComp=new THREE.ShaderMaterial({
+        uniforms:{
+          tDiffuse:{value:null}, tBloomA:{value:null}, tBloomB:{value:null},
+          texel:{value:new THREE.Vector2(1/1024,1/1024)},
+          bloom:{value:0.42}, exposure:{value:1.05},
+          lift:{value:new THREE.Vector3(0,0,0)}, gain:{value:new THREE.Vector3(1,1,1)},
+          sat:{value:1.04}, contrast:{value:1.06},
+          vignette:{value:0.26}, grain:{value:0.011}, sharpen:{value:0.22},
+          time:{value:0}
+        },
+        vertexShader:"varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }",
+        fragmentShader:[
+          "uniform sampler2D tDiffuse; uniform sampler2D tBloomA; uniform sampler2D tBloomB;",
+          "uniform vec2 texel; uniform float bloom, exposure, sat, contrast, vignette, grain, sharpen, time;",
+          "uniform vec3 lift, gain;",
+          "varying vec2 vUv;",
+          /* ACES filmic, Narkowicz's fit */
+          "vec3 aces(vec3 x){",
+          "  return clamp((x*(2.51*x+0.03))/(x*(2.43*x+0.59)+0.14),0.0,1.0);",
+          "}",
+          "void main(){",
+          "  vec3 c=texture2D(tDiffuse,vUv).rgb;",
+          /* unsharp mask against a four-tap neighbourhood, recovering the
+             softness that supersampling costs */
+          "  vec3 b=texture2D(tDiffuse,vUv+vec2(texel.x,0.0)).rgb",
+          "        +texture2D(tDiffuse,vUv-vec2(texel.x,0.0)).rgb",
+          "        +texture2D(tDiffuse,vUv+vec2(0.0,texel.y)).rgb",
+          "        +texture2D(tDiffuse,vUv-vec2(0.0,texel.y)).rgb;",
+          "  c+=(c-b*0.25)*sharpen;",
+          "  c=max(c,vec3(0.0));",
+          "  c+=(texture2D(tBloomA,vUv).rgb+texture2D(tBloomB,vUv).rgb*1.3)*bloom;",
+          "  c*=exposure;",
+          "  c=aces(c);",
+          /* lift and gain, then saturation and contrast about mid grey */
+          "  c=clamp(c*gain+lift,0.0,1.0);",
+          "  float l=dot(c,vec3(0.2126,0.7152,0.0722));",
+          "  c=clamp(mix(vec3(l),c,sat),0.0,1.0);",
+          /* contrast about mid-grey in perceptual (gamma 2.2) space. Done in linear light, a pivot at
+             0.5 sent every value below 0.5(1-1/k) - 0.02 to 0.04 for these presets - to pure black,
+             which is what turned slopes in shade into black silhouettes. Here the clip point is
+             below one code value, so shade keeps its texture while mid-tones keep the same curve. */
+          "  vec3 pc=clamp(pow(max(c,vec3(0.0)),vec3(1.0/2.2)),0.0,1.0);",
+          /* pinned at black and white, so the curve can steepen the middle but never clip an end */
+          "  vec3 pk=pow(pc,vec3(contrast)), qk=pow(vec3(1.0)-pc,vec3(contrast));",
+          "  c=pow(pk/max(pk+qk,vec3(1e-6)),vec3(2.2));",
+          /* a quiet frame, and fine grain so flat sky does not band */
+          "  vec2 q=vUv-0.5;",
+          "  c*=1.0-vignette*dot(q,q)*1.6;",
+          "  float n=fract(sin(dot(vUv*vec2(1.0,1.3)+time,vec2(12.9898,78.233)))*43758.5453);",
+          "  c+=(n-0.5)*grain;",
+          /* linear to sRGB */
+          "  c=clamp(c,0.0,1.0);",
+          "  vec3 srgb=mix(c*12.92, 1.055*pow(max(c,vec3(0.0031308)),vec3(1.0/2.4))-0.055,",
+          "                step(vec3(0.0031308),c));",
+          /* Stage 4B (decision 70): no shadow toe. Stage 0 lifted values below 0.2 here; the light now keeps shade off black where
+             the shade is made, by the sun's altitude corrected to the display factor and a fill opposite the sun */
+          "  gl_FragColor=vec4(srgb,1.0);",
+          "}"].join("\n"),
+        depthTest:false,depthWrite:false});
 
-  FX.quadCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
-  FX.quadScene=new THREE.Scene();
-  FX.quad=fsQuad(FX.matBright);
-  FX.quad.frustumCulled=false;
-  FX.quadScene.add(FX.quad);
+      FX.quadCam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+      FX.quadScene=new THREE.Scene();
+      FX.quad=fsQuad(FX.matBright);
+      FX.quad.frustumCulled=false;
+      FX.quadScene.add(FX.quad);
+      FX.built=true;
+    } catch(err){ disposeFX(); throw err; }
+  }
   FX.on=true;
   sizeFX();
+}
+function disposeFX(){
+  ["rtScene","rtA","rtB","rtC","rtD","rtFinal","matFXAA","matBright","matBlur","matComp"].forEach(function(k){ var o=FX[k]; if(o&&o.dispose) o.dispose(); FX[k]=null; });
+  if(FX.quad&&FX.quad.geometry&&FX.quad.geometry.dispose) FX.quad.geometry.dispose();
+  FX.quad=FX.quadScene=FX.quadCam=null; FX.built=false;
 }
 function sizeFX(){
   if(!FX.on) return;
@@ -8432,7 +8444,7 @@ function renderFrameNow(){
   if(!FX.on){ var t0=performance.now(); renderStandard(); DEV.world=DEV.total=devMark(); DEV.tWorld=performance.now()-t0; DEV.tPost=DEV.tLabels=0; DEV.frames++; return; }
   try{ renderFX(); }
   catch(err){
-    setFXEnabled(false);
+    setFXEnabled(false); disposeFX();   /* SW-7: a set that failed in a frame is not reused */
     renderStandard();
   }
   DEV.frames++;
@@ -14828,6 +14840,23 @@ var AUSTERLITZ_DEBUG=(function(){
         var f=first(getComputedStyle(e).fontFamily); seen.push(p[0]+" "+f);
         if(f!==want[p[1]]) bad.push(p[0]+" is set in "+f+", not "+want[p[1]]); });
       ck("the embedded type: the interface is set in the embedded faces, as the tokens say (decision 141)", !bad.length, bad.length?bad.join("; "):seen.join("; "));
+    })();
+
+    /* roadmap step 3 (docs/FINAL_AUDIT.md SW-7): the visual effects off and on again reuse their targets and materials. One warm cycle with a
+       frame after each toggle (renderer.info.memory counts what was uploaded), then two more: nothing added, the same objects */
+    (function(){
+      var bad=[], wasOn=FX.on;
+      if(!wasOn) bad.push("the effects were not on");
+      function cycle(){ setFXEnabled(false); renderFrame(); setFXEnabled(true); renderFrame(); }
+      cycle();
+      var m=renderer.info.memory, tx0=m.textures, gm0=m.geometries, rt0=FX.rtScene, mc0=FX.matComp, q0=FX.quad;
+      cycle(); cycle();
+      if(renderer.info.memory.textures!==tx0) bad.push("textures "+tx0+" -> "+renderer.info.memory.textures);
+      if(renderer.info.memory.geometries!==gm0) bad.push("geometries "+gm0+" -> "+renderer.info.memory.geometries);
+      if(FX.rtScene!==rt0||FX.matComp!==mc0||FX.quad!==q0) bad.push("a target, material or quad made again");
+      if(!FX.on||!FX.built) bad.push("the effects not on and built after the cycles");
+      ck("visual effects: off and on again reuses their render targets, materials and quad; no texture or geometry added (docs/FINAL_AUDIT.md SW-7)", !bad.length,
+        bad.length?bad.join("; "):"two off-on cycles after a warm one: "+tx0+" textures and "+gm0+" geometries before and after, the same scene target, composite material and quad");
     })();
 
     /* 11. render on demand */

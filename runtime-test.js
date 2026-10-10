@@ -722,7 +722,15 @@ try{
   setFXEnabled(true);
   if(!FX.on||renderer.outputEncoding!==THREE.LinearEncoding) throw new Error("could not re-enable FX");
   renderFrame();
-  console.log("frame path: FX failure falls back to the standard path and recovers OK");
+  /* roadmap step 3 (SW-7): a failed set is disposed, not reused; off and on again reuses the targets and materials */
+  { const rt0=FX.rtScene, m0=FX.matComp, q0=FX.quad;
+    setFXEnabled(false); if(!FX.built) throw new Error("FX: the targets were dropped when the effects were turned off");
+    setFXEnabled(true); renderFrame();
+    if(FX.rtScene!==rt0||FX.matComp!==m0||FX.quad!==q0) throw new Error("FX: off and on again made new targets or materials (SW-7)");
+    renderFX=function(){ throw new Error("simulated post-processing failure"); }; renderFrame(); renderFX=realFX;
+    if(FX.built||FX.rtScene) throw new Error("FX: a set that failed in a frame is kept (SW-7)");
+    setFXEnabled(true); renderFrame(); if(!FX.on||!FX.built||FX.rtScene===rt0) throw new Error("FX: not rebuilt after a failure"); }
+  console.log("frame path: FX failure falls back to the standard path and recovers; off and on again reuses its targets OK");
 
   /* the vegetation kit and the settlements */
   const broadVariants=world.trees.children.length, conVariants=world.conifers.children.length;
