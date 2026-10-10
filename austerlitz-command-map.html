@@ -15402,7 +15402,8 @@ var AUSTERLITZ_DEBUG=(function(){
           if(document.activeElement!==it.el) bad.push(st[0]+" "+k+": the focus did not stay on it");
           else if(it.state!=="on"||op<0.999||r.width<=0) bad.push(st[0]+" "+k+": focused but not drawn ("+it.state+", opacity "+op+")");
           else if(r.left<0||r.top<0||r.right>vw||r.bottom>vh) bad.push(st[0]+" "+k+": focused, drawn outside the screen");
-          else { var tp=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);   /* topmost at its centre (the ce64ed0 review; WCAG 2.4.11) */
+          else { var pe=it.el.style.pointerEvents; it.el.style.pointerEvents="auto";   /* the layer takes no pointer events: hit-testable for this reading only */
+            var tp=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2); it.el.style.pointerEvents=pe;   /* topmost at its centre (the ce64ed0 review; WCAG 2.4.11) */
             if(!(tp===it.el||it.el.contains(tp))){ if(it.forced&&!it.clear) under.push(st[0]+" "+k); else bad.push(st[0]+" "+k+": focused, covered at its centre by "+(tp?(tp.id||tp.className||tp.tagName):"nothing")); } }
           var others=Object.keys(ML.items).filter(function(q){ return q!==k&&ML.items[q].eFrame===ML.frame; }).map(function(q){ return q+":"+ML.items[q].state+":"+(ML.items[q].state==="on"?(ML.items[q].rect||[]).map(Math.round).join(","):""); });
           var b0=before.split("|").filter(function(x){ return x.indexOf(k+":")!==0; }).join("|");
