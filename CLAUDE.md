@@ -377,4 +377,5 @@ merged (#48); the owner accepted every recommendation (decisions 125-141, `docs/
 `check:contrast` and the self-test, decision 132; the one re-measure; the diff review's fixes) is merged (#49). Roadmap step 2 (integrity
 on screen: decisions 125 (a), 126, 127 (b), 128 (a), 129, 135, with H-9, H-15, H-16, D-5, D-6; one data task and its presentation part; the
 owner decided questions 142-161 as recommended, `docs/ROADMAP.md`; the register of readings in `docs/step2-evidence/`; narrow-390 re-measured
-once, decision 146; the `check:data` reference moved to its build) is in review (#50). The next owner decision is 162.
+once, decision 146; the `check:data` reference moved to its build) is merged (#50). Roadmap step 3 (accessibility and robustness:
+decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6) is in progress. The next owner decision is 162.

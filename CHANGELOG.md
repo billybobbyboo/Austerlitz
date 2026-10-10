@@ -2,7 +2,7 @@
 
 ## 2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decisions 142-161)
 
-**Status: for review (#50). The build changed: `austerlitz-command-map.html` 1,927,346 bytes, md5 `af98f58641a29cb4934ca9d28bf86071`
+**Status: merged (#50). The build changed: `austerlitz-command-map.html` 1,927,346 bytes, md5 `af98f58641a29cb4934ca9d28bf86071`
 (was the step-1 build, 1,883,794 bytes, md5 `7a86548c5e394853571f28f9e1640a74`).** `check:baseline` moves to this build. `check:data`'s
 reference moves to it too, archived as `archive/step2-af98f586.html`: step 2 is a data task, and every guarded declaration it changed is
 listed below with was, is and why (12 changed against the 6B reference: `CLAIM`, `PHASES`, `FORMATIONS`, `FEATURES`, `SOURCE_NOTE`,
