@@ -185,6 +185,8 @@ module.exports.check=function(name,m,spec,opts){
     if(!a||!b||(Math.min(a[2],b[2])-Math.max(a[0],b[0])>0&&Math.min(a[3],b[3])-Math.max(a[1],b[1])>0)) f.push("first-run card stacked on the dispatch card"); }
   /* Stage 7B (docs/STAGE7_SPEC.md section 6, 7B; decisions 111, 118): on the fresh first-run page, by real key presses, the card has focus
      on its primary action, Tab stays inside it, and Esc closes it where it stands with focus on Play */
+  /* roadmap step 3 (SW-8): a mostly sideways wheel leaves Follow on and the card open; a vertical wheel over the map closes it and zooms */
+  if(m.wheel){ const W=m.wheel; if(!(W.sideOpen===true&&W.sideFollow===true&&W.overOpen===false&&W.zoomed===true)) f.push("the real wheel over the map: "+JSON.stringify(W)); }
   if(m.firstRunKeys){ const K=m.firstRunKeys;
     if(K.focus0!=="fr-tour") f.push("the first-run card does not take focus on its primary action ("+K.focus0+")");
     if(!K.tabs.every(x=>x.inCard)) f.push("Tab leaves the first-run card: "+K.tabs.map(x=>x.id).join(", "));
@@ -242,6 +244,7 @@ module.exports.check=function(name,m,spec,opts){
     /* roadmap step 1 (T-6): strict, the reading must be shown (true); before step 1 only false failed, and a caption with no derived reading
        at all (null) passed. CAP_DERIVED_NONE names a case exempt, with its reason (none) */
     if(m.presentation==="watch"&&(strict?(TL.capDerived!==true&&!CAP_DERIVED_NONE.includes(name)):TL.capDerived===false)) f.push("Watch: the caption's derived reading is not shown ("+TL.capDerived+")");
+    if(TL.capTag===false) f.push("the caption: an event's tag drawn cut (roadmap step 3, the narrow layout's event tag)");
     if(m.phaseLabels720&&m.phaseLabels720.cut.length) f.push("at 1280 x 720 the current phase's label is cut: "+m.phaseLabels720.cut.join(", ")); }
   /* Stage 4E (docs/STAGE4_SPEC.md section E.3): the smoke covers at most a quarter of the free rectangle; new, on a build with puffs */
   if(m.smoke&&m.smokePuffs&&!(m.smoke.share<=SMOKE_SHARE)) f.push("smoke covers "+(100*m.smoke.share).toFixed(1)+"% of the free rectangle (limit "+(100*SMOKE_SHARE)+"%)");
@@ -293,21 +296,14 @@ module.exports.limits=limits;
 /* T-1: a console warning or error (or a failed console.assert), a page error, a crash or a failed request on any page the harness or
    check:contrast opens is a failure unless an entry here names it: {id, type ("warning", "error", "assert", "pageerror", "crash",
    "requestfailed"), text: an anchored RegExp of the message, at: a RegExp of the blocks it may come from (optional), max: at most how many
-   per run, why: why it is harmless, until: what removes it}. One entry, below; every other message fails. (Before step 1 the harness kept
+   per run, why: why it is harmless, until: what removes it}. No entry since roadmap step 3: every message fails. (Before step 1 the harness kept
    only the last page's messages, and printed them; the 7D run's nine Canvas2D readback warnings came from test code reading the app's
    texture canvases, fixed in step 1 by reading through test-owned canvases: app.js texData, measure.js readCanvas.) */
-const CONSOLE_ALLOW=[
-  /* Found by step 1's check:contrast (the first run that listens): leaving the eye level clamps the eye to the floor before the observer's
-     own formations near it are drawn again (eyeLeave calls clampCamera, then the next updateVisibility shows the blocks eyeOwnNear hid,
-     and formationTop raises the floor above the eye); the render-time guard (renderFrameNow) corrects it before the frame, so nothing is
-     drawn below the floor, counts CAM.violations and warns once per page. check:contrast's "staff-eyes" state leaves the eye level and its
-     "daytrack" state draws the landscape there again. A visitor leaving the eye level near a headquarters triggers it (INFERENCE from the
-     code and a probe: Napoleon's headquarters, 08:30, the floor raised from 4.80 to 7.22 units). The harness never draws a frame between
-     applyCase's eyeLeave and its placeCamera. Harmless to what is drawn; the fix is in the app (clamp after the blocks are shown again),
-     a robustness item for roadmap step 3, not a tools commit's: remove this entry with it. */
-  {id:"eye-leave-floor", type:"warning", text:/^Austerlitz runtime check: a camera path bypassed the ground floor$/, at:/^(staff-eyes|daytrack)$/, max:1,
-    why:"the render-time guard corrected the eye before the frame (nothing drawn below the floor); it warns that eyeLeave clamped before the eye's own formations were shown again",
-    until:"the app fix in roadmap step 3 (eyeLeave clamps after the blocks near the eye are drawn again)"}];
+/* Roadmap step 3 removed its one entry, "eye-leave-floor" (step 1's check:contrast found that leaving the eye level clamped the eye before the
+   observer's own formations near it were drawn again, and the render-time guard corrected it and warned): updateVisibility now lifts an eye
+   that stood at or above its floor with the floor when it shows formations again (app.js), and the self-test checks every way out of the
+   eye level with no render-time correction. A new entry needs its reason and what removes it, as before. */
+const CONSOLE_ALLOW=[];
 function judgeConsole(log){
   const used={}, bad=[];
   (log||[]).forEach(e=>{ const a=CONSOLE_ALLOW.find(x=>x.type===e.type&&x.text.test(e.text)&&(!x.at||x.at.test(e.at||"")));
@@ -326,7 +322,7 @@ const REQUIRED_FEATURES={LANDCAM:"Stage 3D: the landscape camera, the real-input
   EYE:"Stage 5E: the eye-level vantage", frButtons:"Stage 7B: the first-run dialog", timelineRow:"Stage 3C: the timeline's control row",
   nowTab:"Stage 3B: the rail's Now tab", DWELL:"Stage 4D: the dwell", KEYS:"Stage 3E: the key table", SUN_DAY:"Stage 4B: the computed sun",
   ATMO:"Stage 4C: the atmosphere", SMOKE:"Stage 4E: smoke in puffs", settle:"Stage 0: AUSTERLITZ_DEBUG.settle",
-  applyCase:"Stage 0: AUSTERLITZ_DEBUG.applyCase", selfTest:"Stage 0: AUSTERLITZ_DEBUG.selfTest"};
+  applyCase:"Stage 0: AUSTERLITZ_DEBUG.applyCase", selfTest:"Stage 0: AUSTERLITZ_DEBUG.selfTest", SHORTCUTS:"roadmap step 3: the single-key shortcuts switch (decision 134)"};
 module.exports.REQUIRED_FEATURES=REQUIRED_FEATURES;
 
 /* T-6: the vacuous edges. Watch's caption must show its derived reading (capDerived true) and the ordered routes must draw a route, in every
@@ -367,6 +363,7 @@ function requirements(name,m,spec,LIM){
   if(spec.opening!==undefined) need(!!m.opening,"the opening's step (Stage 7C)");
   if(name==="overview-field"||name==="overview-plan") need(!!m.phaseLabels720,"every phase's label at 1280 x 720 (Stage 3C)");
   if(name==="first-run") need(!!m.firstRunKeys,"the first-run card by real key presses (Stage 7B)");
+  if(name==="first-run") need(!!m.wheel,"the real wheel over the map with the first card open (roadmap step 3, SW-8)");   /* (requirements apply to strict, non-legacy runs only) */
   if(name==="opening-2") need(!!m.openingKeys,"the opening by real key presses (Stage 7C, 7D)");
   if(spec.interact) need(!!m.intended,"the interaction's intended move (Stage 0)");
   /* (the vertex layout is part of the case's state; a report without a state fails in expectState) */
@@ -450,8 +447,24 @@ function checkLive(live,opts){
     if(!(K.enter4&&K.enter4.speed===4&&!K.enter4.playing)) f.push("keys by real key presses: Enter on a speed button: "+JSON.stringify(K.enter4));
     if(!(K.arrows&&K.arrows.clock===600)) f.push("keys by real key presses: the arrows on a focused button stepped the clock to "+(K.arrows&&K.arrows.clock));
     if(!(K.ctrlC&&K.ctrlC.c0===K.ctrlC.c1)) f.push("keys by real key presses: Ctrl+C toggled the contours");
-    const H=K.help||{}; if(!(H.h1&&H.h1.open&&H.h1.focus==="help-close"&&H.h2==="help-body"&&H.h3==="help-close"&&H.h4&&!H.h4.open&&H.h4.focus==="tourbtn"))
+    /* roadmap step 3 (decision 134): the shortcuts switch is the overlay's second stop: Tab from its close reaches the switch, the list, and the close */
+    /* an archived build (--legacy) without the switch keeps the two-stop cycle */
+    const H=K.help||{}, sw=!!live.shortcuts||!legacy, seqOK=sw?(H.h2==="help-keys"&&H.h3==="help-body"&&H.h3b==="help-close"):(H.h2==="help-body"&&H.h3==="help-close");
+    if(!(H.h1&&H.h1.open&&H.h1.focus==="help-close"&&seqOK&&H.h4&&!H.h4.open&&H.h4.focus==="tourbtn"))
       f.push("keys by real key presses: the overlay's focus: "+JSON.stringify(H)); }
+  if(req("narrow","the window narrowed below 1080 px, then 2 and Esc by real key presses (roadmap step 3, SW-2, SW-3)")){ const N=live.narrow, by={};
+    (N||[]).forEach(r=>{ by[r.at]=r; if(r.over) f.push("narrow layout: the rail over the dispatch card ("+r.at+", "+r.w+" px)"); });
+    const n1=by["narrowed to 1000"], n2=by["2, Esc"], n3=by["700"], nw=by["widened back to 1280"];
+    if(!nw||!nw.docked||!nw.railShown||nw.railInert) f.push("narrow layout: widened back to 1280 px the docked rail is not shown and usable: "+JSON.stringify(nw));
+    if(!n1||n1.docked||n1.railShown||!n1.railInert||!n1.dispatchShown) f.push("narrow layout: narrowed to 1000 px the rail is not hidden and inert with the card shown: "+JSON.stringify(n1));
+    if(!n2||!n2.railShown||n2.railInert||!n2.dispatchShown) f.push("narrow layout: after 2 and Esc the rail and the card are not both shown: "+JSON.stringify(n2));
+    if(!n3||!n3.railShown||n3.dispatchShown) f.push("narrow layout: at 700 px the card did not give way to the shown rail: "+JSON.stringify(n3)); }
+  if(req("rmLive","the reduced-motion preference turned on and off while the page is open (roadmap step 3, S-6)")){ const R=live.rmLive;
+    const z=d=>String(d||"").split(",").every(x=>/^\s*0s\s*$/.test(x));
+    if(!(R.on&&R.on.rm===true&&z(R.on.rail)&&R.off&&R.off.rm===false&&!z(R.off.rail))) f.push("reduced motion while the page is open: "+JSON.stringify(R)); }
+  if(req("shortcuts","the single-key shortcuts switch by real key presses (roadmap step 3, decision 134)")){ const S=live.shortcuts;
+    if(!(S.onSwitch==="help-keys"&&S.off&&S.off.on===false&&S.off.pressed==="false"&&S.closed&&!S.closed.open&&S.closed.focus==="helpbtn"&&S.same===true&&S.space===true))
+      f.push("the shortcuts switch by real key presses: "+JSON.stringify(S)); }
   if(so) return f;
   if(req("dwell","the Watch view held in a dwell (Stage 4D)")){ const D=live.dwell, lim=LIM.DROP_LIMIT["pratzen-low"];
     if(D.E!==540||!(D.solid<=SOLID_BLACK)||(D.belowAA||[]).length||!(D.dropped<=lim)||!D.cap||!(D.lit>=1))

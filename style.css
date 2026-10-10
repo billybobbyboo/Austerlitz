@@ -11,15 +11,28 @@ canvas{display:block;touch-action:none}   /* Stage 3D: the landscape takes one-f
 button{font:inherit;color:inherit}
 :focus-visible{outline:1px solid var(--accent);outline-offset:2px}
 
-#boot{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;
+#boot{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:auto;padding:16px;
   background:var(--ink);transition:opacity .8s ease}
-#boot p{font-family:var(--serif);font-size:var(--t-h3);color:var(--text-muted);letter-spacing:.01em}
+#boot .boot-line{font-family:var(--serif);font-size:var(--t-h3);color:var(--text-muted);letter-spacing:.01em}
+/* roadmap step 3 (decision 133 (a); docs/FINAL_AUDIT.md SW-1): the slow start's status line and the failure dialog */
+#boot-status{position:absolute;left:16px;right:16px;bottom:22%;text-align:center;font-family:var(--sans);font-size:var(--t-ui);color:var(--text-muted)}   /* out of the flow: the boot line stays centred */
+#boot.failed .boot-line,#boot.failed #boot-status{display:none}
+#boot-fail{max-width:min(36rem,100%);margin:auto;font-family:var(--sans);color:var(--text)}
+#boot-fail h2{font-family:var(--serif);font-size:var(--t-h2);color:var(--text-hi);margin:0 0 10px}
+#boot-fail p{font-size:var(--t-prose);line-height:1.5;margin:0 0 8px}
+#boot-reload{margin-top:8px;min-height:32px;padding:4px 16px;border:1px solid var(--accent);border-radius:3px;background:var(--accent);color:var(--on-accent);cursor:pointer}
+#glnotice:empty{display:none}
+#glnotice{position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:58;max-width:min(36rem,calc(100vw - 32px));padding:10px 14px;
+  font-family:var(--sans);font-size:var(--t-prose);color:var(--text);background:var(--ink);border:1px solid var(--accent);border-radius:3px}
+#glnotice button{margin-left:10px;min-height:24px;padding:2px 10px;border:1px solid var(--accent);border-radius:3px;background:var(--accent);color:var(--on-accent);cursor:pointer}
 
 /* ---------- left rail ---------- */
 .rail{position:fixed;left:0;top:0;bottom:var(--tb);width:var(--rail);z-index:20;display:flex;flex-direction:column;
   background:rgba(var(--scrim-rgb),.93);border-right:1px solid var(--line);backdrop-filter:blur(10px);
-  padding:16px 18px 14px;transform:translateX(0);transition:transform .32s cubic-bezier(.4,0,.2,1)}
-body.rail-hidden .rail{transform:translateX(-101%)}
+  padding:16px 18px 14px;transform:translateX(0);transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s;visibility:visible}
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-3): the hidden rail is hidden once it has slid away (and inert at once, app.js syncInert), so its tab,
+   its order-of-battle rows and the Sources button are no tab stops while it is off screen */
+body.rail-hidden .rail{transform:translateX(-101%);visibility:hidden;transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s linear .32s}
 .brand h1{font-family:var(--serif);font-weight:400;font-size:var(--t-h2);line-height:1.1;margin:0;color:var(--text-hi)}
 .brand p{font-size:var(--t-ui);color:var(--text-muted);margin:5px 0 0;letter-spacing:.02em}
 .modes{display:flex;margin:16px 0 4px;border:1px solid var(--line-2);border-radius:2px;overflow:hidden}
@@ -50,7 +63,7 @@ body.rail-hidden .rail{transform:translateX(-101%)}
 .oob-str{font-size:var(--t-ui);color:var(--text-muted);font-variant-numeric:tabular-nums}
 
 .railfoot{padding-top:10px;border-top:1px solid var(--line);margin-top:8px}
-#srcbtn{background:none;border:0;padding:0;color:var(--text-muted);font-size:var(--t-small);cursor:pointer;text-decoration:underline;
+#srcbtn{background:none;border:0;padding:4px 0;min-height:24px;color:var(--text-muted);font-size:var(--t-small);cursor:pointer;text-decoration:underline;
   text-underline-offset:3px;text-decoration-color:var(--line-2)}
 #srcbtn:hover{color:var(--text)}
 
@@ -82,7 +95,7 @@ body.docked .drawer{left:0;right:auto;width:var(--rail);bottom:var(--tb);border-
   transform:translateX(-101%)}
 body.docked .drawer.on{transform:translateX(0)}
 body.docked.drawer-open .tools,body.docked.drawer-open .legend{transform:none}
-#drawer-back{display:none;margin-right:auto;background:none;border:0;padding:4px 2px;color:var(--text-muted);font-size:var(--t-small);cursor:pointer}
+#drawer-back{display:none;margin-right:auto;background:none;border:0;padding:4px 2px;color:var(--text-muted);font-size:var(--t-small);cursor:pointer;min-height:24px}
 body.docked #drawer-back{display:block}
 #drawer-back:hover{color:var(--text)}
 
@@ -129,11 +142,13 @@ body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 
 /* ---------- drawer ---------- */
 .drawer{position:fixed;right:0;top:0;bottom:0;width:var(--draw);z-index:30;background:var(--panel);
-  border-left:1px solid var(--line-2);transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);
-  display:flex;flex-direction:column}
-.drawer.on{transform:translateX(0)}
+  border-left:1px solid var(--line-2);transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s linear .32s;
+  display:flex;flex-direction:column;visibility:hidden}
+.drawer.on{transform:translateX(0);visibility:visible;transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s}
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-3): closed, the dossier is hidden once it has slid away (and inert at once, app.js syncInert), so its
+   buttons are no tab stops and not in the accessibility tree */
 .drawer .dbar{display:flex;justify-content:flex-end;padding:10px 12px 0}
-#drawer-close{background:none;border:0;color:var(--text-muted);cursor:pointer;font-size:var(--t-h3);line-height:1;padding:4px 6px}
+#drawer-close{background:none;border:0;color:var(--text-muted);cursor:pointer;font-size:var(--t-h3);line-height:1;padding:4px 6px;min-width:24px;min-height:24px}
 #drawer-close:hover{color:var(--text)}
 #drawer-body{overflow-y:auto;padding:4px 22px 28px}
 #drawer-body::-webkit-scrollbar{width:6px}
@@ -186,19 +201,23 @@ p.conf{font-size:var(--t-small);color:var(--text-muted);line-height:1.5;margin:0
 /* ---------- modal ---------- */
 #modal{position:fixed;inset:0;z-index:50;background:rgba(var(--scrim-rgb),.72);display:none;align-items:center;justify-content:center;padding:24px}
 #modal.on{display:flex}
+.sheet:focus:not(:focus-visible){outline:none}   /* roadmap step 3: a sheet focused by a click on its text draws no ring */
 .sheet{background:var(--panel);border:1px solid var(--line-2);max-width:620px;width:100%;max-height:82vh;
   overflow-y:auto;padding:26px 30px 30px;position:relative}
 .sheet h2{font-family:var(--serif);font-weight:400;font-size:var(--t-h2);margin:0 0 14px;color:var(--text-hi)}
 .sheet h3{font-size:var(--t-small);color:var(--text-muted);letter-spacing:.06em;margin:20px 0 8px;font-weight:400;
   border-bottom:1px solid var(--line);padding-bottom:5px}
 .sheet p{font-family:var(--serif);font-size:var(--t-prose);line-height:1.66;color:var(--text-body);margin:0 0 12px}
-#modal-close{position:absolute;right:14px;top:12px;background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);cursor:pointer}
+#modal-close{position:absolute;right:14px;top:12px;background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);cursor:pointer;min-width:24px;min-height:24px}
 /* Stage 3E: the "?" overlay, a sheet like the sources' */
 #help{position:fixed;inset:0;z-index:52;background:rgba(var(--scrim-rgb),.72);display:flex;align-items:center;justify-content:center;padding:24px}
 #help[hidden]{display:none}
-#help-close{position:absolute;right:14px;top:12px;background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);cursor:pointer}
+#help-close{position:absolute;right:14px;top:12px;background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);cursor:pointer;min-width:24px;min-height:24px}
 .help-sheet{max-width:720px}
-#help-body:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+#help-body:focus-visible,#modal-body:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+/* roadmap step 3 (decision 134 (a)): the shortcuts switch, the layers panel's toggle row; its note in the interface face */
+#help-keys{margin:0 0 4px;width:100%}
+.sheet p.help-note{font-family:var(--sans);font-size:var(--t-small);line-height:1.45;color:var(--text-muted);margin:0 0 10px}
 .hp-row{display:grid;grid-template-columns:minmax(132px,max-content) 1fr;gap:4px 16px;padding:5px 0;border-bottom:1px solid var(--line);
   font-size:var(--t-ui);line-height:1.45;color:var(--text-body)}
 .hp-row:last-child{border-bottom:0}
@@ -220,7 +239,7 @@ p.conf{font-size:var(--t-small);color:var(--text-muted);line-height:1.5;margin:0
 .tb-ctrl{display:flex;gap:5px;flex:0 0 auto}
 /* Stage 3C (docs/STAGE3_SPEC.md section D.2; decision 53): one time axis, proportional to time, for the act bands, the
    phase ticks and the rail; app.js buildTimeline places each band and tick at its share of 04:00-18:00 */
-.tb-trackwrap{position:relative;flex:0 0 auto;height:53px;margin:0 14px 2px}
+.tb-trackwrap{position:relative;flex:0 0 auto;height:55px;margin:0 14px}   /* roadmap step 3 (A-3): the rail 24 px, the 2 px margin given to it */
 .tb-track{position:absolute;left:0;right:0;top:15px;height:16px}
 .tb-scale{flex:0 0 auto;display:flex;flex-direction:column;align-items:flex-start;gap:3px;padding-left:6px;
   border-left:1px solid var(--line);min-width:96px;transition:opacity .2s}
@@ -297,31 +316,42 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
 .clockbox{display:flex;flex-direction:column;line-height:1;gap:1px;flex:0 0 auto}
 #clockread{font-size:var(--t-h2);color:var(--text-hi);font-variant-numeric:tabular-nums}
 .clockbox small{font-size:var(--t-micro);color:var(--text-muted);white-space:nowrap}
-.timerail{position:absolute;left:0;right:0;top:31px;height:22px;cursor:pointer;touch-action:none}
+.timerail{position:absolute;left:0;right:0;top:31px;height:24px;cursor:pointer;touch-action:none}   /* a 24 px target (WCAG 2.5.8; roadmap step 3, A-3) */
 .rail-ticks{position:absolute;left:0;right:0;top:5px;height:3px;background:rgba(var(--line-rgb),.16)}
 .rail-ticks i{position:absolute;top:-3px;width:1px;height:9px;background:rgba(var(--line-rgb),.30)}
 .rail-ticks i.hr{height:11px;top:-4px;background:rgba(var(--line-rgb),.46)}
 .rail-ticks b{position:absolute;top:8.5px;font-size:var(--t-micro);font-weight:400;color:var(--text-muted);
   transform:translateX(-50%);font-variant-numeric:tabular-nums;line-height:10px}
-.playhead{position:absolute;top:-31px;width:2px;height:53px;background:var(--accent);
+.playhead{position:absolute;top:-31px;width:2px;height:55px;background:var(--accent);
   box-shadow:0 0 6px rgba(var(--accent-rgb),.7);pointer-events:none;transform:translateX(-1px);z-index:3}
 /* the place of the chosen chapter (theme) or tour stop on the axis (the spine index, Stage 3C) */
 .spinemark{position:absolute;top:0;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;
   border-top:7px solid var(--text);transform:translateX(-50%);pointer-events:none}
 .spinemark[hidden]{display:none}
 /* the caption: the act, the phase and the live event (and, where no Now tab is shown, the derived readings) */
-.tb-cap{flex:1 1 160px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:var(--t-ui);color:var(--text-muted)}
-.tb-cap .act{color:var(--text-hi);letter-spacing:.05em}
-.tb-cap .ev{color:var(--text-hi)}
+.tb-cap{flex:1 1 160px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:var(--t-ui);color:var(--text-muted);
+  display:flex;align-items:baseline}
+/* roadmap step 3 (decision 159): the caption's parts as boxes, which give up their room in order: the phase's title first, then the events'
+   names; the act, the separators, the events' tags and the derived readings (before the names where the caption shows them) keep theirs */
+.tb-cap>span{flex:none}
+.tb-cap .cap-ph{flex:0 1000 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.tb-cap .act{flex:0 100 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;color:var(--text-hi);letter-spacing:.05em}   /* the act shrinks after the phase (both are drawn whole on the track) */
+.tb-cap .ev{flex:0 1 auto;min-width:0;display:inline-flex;align-items:baseline;overflow:hidden;color:var(--text-hi)}
+.tb-cap .fit-off,.tb-cap .ev.fit-off{display:none}   /* given way whole (app.js fitCaption); after .ev, which it overrides */
+.tb-cap .evt{flex:0 1 auto;min-width:1.5em;overflow:hidden;text-overflow:ellipsis}
+.tb-cap .evs{flex:none;white-space:pre}
+
 .tb-cap .sep{padding:0 7px}
-.tb-cap .der small,.tb-cap .ev small.evn{font-size:var(--t-micro);letter-spacing:.07em;margin-right:4px;border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px}
+.tb-cap .der small{font-size:var(--t-micro);letter-spacing:.07em;margin-right:4px;border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px}
+/* the event's tag: its own box, which never shrinks; 7 px for the space its trailing space gave before the name had a box (roadmap step 3) */
+.tb-cap .ev small.evn{flex:none;font-size:var(--t-micro);letter-spacing:.07em;margin-right:7px;border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px}
 body.pm-study:not(.no-dispatch) .tb-cap .der,body.pm-study:not(.no-dispatch) .tb-cap .der-sep{display:none}
 /* Watch's presentation switch, in the control row at full opacity (decision 60) */
 .tb-vm{display:none;flex:0 0 auto}
 body.pm-watch .tb-vm{display:block}
 body.pm-watch .tb-vm #viewmode{position:static;transform:none;opacity:1;backdrop-filter:none}
 /* the event markers: one keyboard group over the rail (app.js buildTimeline) */
-.evmarks{position:absolute;left:0;right:0;top:31px;height:22px;pointer-events:none;z-index:2}
+.evmarks{position:absolute;left:0;right:0;top:31px;height:24px;pointer-events:none;z-index:2}
 .ev-mark{position:absolute;top:2px;width:8px;height:8px;margin:0;padding:0;border:0;transform:translateX(-50%) rotate(45deg);
   opacity:.75;cursor:pointer;pointer-events:auto;transition:transform .14s ease,opacity .14s ease}
 .ev-mark::after{content:"";position:absolute;inset:-6px;display:block}
@@ -384,6 +414,11 @@ body.no-dispatch .dispatch{display:none !important}
 .vm-btn[aria-pressed="true"]{background:var(--text);color:var(--on-accent)}
 body.pm-watch #viewmode,body.pm-map #viewmode{opacity:.24}
 body.pm-watch #viewmode:hover,body.pm-map #viewmode:hover{opacity:1}
+/* roadmap step 3 (the C7-C14 review): the switch with the keyboard's focus in it is drawn whole (WCAG 2.4.7, 1.4.11), and its ring inside the
+   button (#viewmode clips what stands outside it) */
+body.pm-map #viewmode:has(:focus-visible){opacity:1}
+.vm-btn:focus-visible{outline-offset:-3px}
+.vm-btn[aria-pressed="true"]:focus-visible{outline-color:var(--on-accent)}   /* inside the pressed button, on var(--text): the ring at 3:1 (WCAG 1.4.11) */
 
 #restore{position:fixed;left:14px;bottom:14px;z-index:40;display:none;
   background:rgba(var(--scrim-rgb),.86);border:1px solid rgba(var(--line-rgb),.28);color:var(--text-muted);
@@ -437,7 +472,7 @@ body.pm-map #restore{display:block}
 #layerpop[hidden]{display:none}
 .lp-head{display:flex;align-items:center;justify-content:space-between;padding:11px 14px 9px;
   border-bottom:1px solid var(--line);font-size:var(--t-small);color:var(--text-muted);letter-spacing:.06em}
-#layerclose{background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);cursor:pointer;line-height:1;padding:2px 4px}
+#layerclose{background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);cursor:pointer;line-height:1;padding:2px 4px;min-width:24px;min-height:24px}
 #layerclose:hover{color:var(--text)}
 .lp-sec{padding:11px 12px;border-bottom:1px solid var(--line)}
 .lp-sec:last-child{border-bottom:0}
@@ -516,11 +551,15 @@ body.pm-map #restore{display:block}
 #vignette{position:fixed;inset:0;pointer-events:none;z-index:4;
   background:radial-gradient(ellipse 78% 70% at 50% 46%, rgba(0,0,0,0) 62%, rgba(5,8,11,.30) 100%)}
 body.mode-staff #vignette{display:none}
-@media (max-width:1080px){
+@media (max-width:1079.98px){   /* roadmap step 3 (docs/FINAL_AUDIT.md SW-10): the complement of app.js's DOCK_MIN (innerWidth>=1080 docks) */
   :root{--rail:272px;--draw:min(360px,90vw)}
   .rail{box-shadow:12px 0 40px rgba(0,0,0,.45)}
   .dispatch{left:16px;width:min(420px,calc(100vw - 32px));bottom:calc(var(--tb) + 12px)}
   body.rail-hidden .dispatch{left:16px}
+  /* roadmap step 3 (docs/FINAL_AUDIT.md SW-2): below 1080 px the rail shown (Esc after Watch or Clean) never stands over the dispatch card:
+     the card moves beside it, and gives way to an open dossier */
+  body:not(.rail-hidden):not(.docked) .dispatch{left:calc(var(--rail) + 14px);width:min(420px,calc(100vw - var(--rail) - 28px))}
+  body.drawer-open:not(.rail-hidden):not(.docked) .dispatch{display:none}
   .legend{display:none}
   .tools{top:56px;right:14px;gap:5px}
   .tlabel{display:none}
@@ -532,20 +571,19 @@ body.mode-staff #vignette{display:none}
   #tourbar{width:calc(100vw - 20px);bottom:calc(var(--tb) + 10px);padding:13px 15px 11px}
   #tour-t{font-size:var(--t-h3)}
   #tour-x{font-size:var(--t-prose)}
-  #firstrun{padding:20px 20px 17px}
-  #firstrun h2{font-size:var(--t-h2)}
   .tb-icon{min-width:42px;min-height:38px}
   .tb-play{min-width:66px;min-height:38px}
   .tb-follow{min-height:38px}
   .tb-sit{font-size:var(--t-ui);padding:0 10px 6px}
   .tb-sit .der{display:none}
   .dispatch{left:10px;right:10px;width:auto;bottom:calc(var(--tb) + 10px);padding:12px 14px 10px}
+  body:not(.rail-hidden) .dispatch{display:none}   /* SW-2: no room beside the rail at this width: the rail first, the card when it is hidden */
   .dispatch h2{font-size:var(--t-h3)}
   .dispatch ol{display:none}
   .dispatch p.lede{font-size:var(--t-prose);max-height:26vh;overflow:auto}
   .tools .grp{max-width:52vw}
   .tb-top{gap:8px;padding:2px 10px 0;flex-wrap:wrap}
-  .tb-trackwrap{margin:0 10px 2px}
+  .tb-trackwrap{margin:0 10px}   /* roadmap step 3 (A-3): the 2 px given to the rail, as in the base rule */
   .clockbox small{display:none}
   #clockread{font-size:var(--t-h3)}
   .speeds{order:4;margin-left:auto}
@@ -570,14 +608,7 @@ body.mode-staff #vignette{display:none}
   .tb-sit .why{display:none}
   #tourbar{bottom:calc(var(--tb) + 8px);padding:11px 14px 9px}
   #tour-x{font-size:var(--t-prose);max-height:20vh;overflow-y:auto}
-  #firstrun{padding:18px 20px 15px}
-  #firstrun h2{font-size:var(--t-h3);margin-bottom:8px}
-  #firstrun p{font-size:var(--t-prose);margin-bottom:8px}
   .legend{display:none}
-}
-@media (max-height:360px){
-  .tb-sit{display:none}
-  #layerpop{max-height:78vh;top:56px}
 }
 
 
@@ -614,6 +645,19 @@ body.firstrun-on:not(.docked) .dispatch,body.firstrun-on .legend,body.firstrun-o
 body.firstrun-on #vsbadge,body.firstrun-on #tourbar,body.firstrun-on #selchip{display:none !important}
 /* Stage 7C: the tools' "Begin the opening" stands down while the card, whose primary action it is, is open (at 390 px it would wrap the tools' row) */
 body.firstrun-on #openingbtn{display:none}
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-10): rules that came before the rules they were meant to override, so they never applied, now come
+   after them: the first-run card on short landscape screens (they stood in the 430 px block before the card's own rules above), the layers
+   panel on the shortest (it stood before the 820 px block's top). No view the harness measures is 430 px tall or less. The 720 px block's two
+   #firstrun declarations that the card's own rules repeated or overrode are removed (they never applied) */
+@media (max-height:430px){
+  #firstrun{padding:18px 20px 15px}
+  #firstrun h2{font-size:var(--t-h3);margin-bottom:8px}
+  #firstrun p{font-size:var(--t-prose);margin-bottom:8px}
+}
+@media (max-height:360px){
+  .tb-sit{display:none}
+  #layerpop{max-height:78vh;top:56px}
+}
 .legend .ar{width:20px;height:5px;border-radius:2px}
 /* Stage 2C: the heads as drawn (decision 20): French the plain triangle, Allied the notched chevron */
 .legend .ar{position:relative;margin-right:8px;border-radius:2px 0 0 2px}
@@ -637,12 +681,18 @@ body.firstrun-on #openingbtn{display:none}
    script; every text is on a plate. The .mlc paddings are mirrored in mlPlaceItem (the frame's foot). ---------- */
 #maplayer{position:fixed;inset:0;z-index:6;pointer-events:none;overflow:hidden}
 body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!important}   /* the self-test holds the panels' slides still */
+/* roadmap step 3 (docs/FINAL_AUDIT.md S-6): reduced motion in the stylesheet too: the panels' slides, the toast's and the boot screen's fades */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
 .ml-lines{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
 .ml-item{position:absolute;left:0;top:0;opacity:0;white-space:nowrap;font-family:var(--sans);font-weight:400;border-radius:2px}
 .ml-item.on{opacity:1}
 .ml-item.ml-wrap{white-space:normal}
 .ml-item:focus{outline:none}
 .ml-item:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ml-item.ml-forced{z-index:1}   /* roadmap step 3 (A-2): the focused item, drawn over the others where no room was free */
+#maplayer:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}   /* the layer's own ring inside the screen */
 .mlt{font-size:var(--t-ui);line-height:16px;padding:0 5px 1px}
 .mlt-serif{font-family:var(--serif)}
 .mlt-small{font-size:var(--t-small);line-height:15px}
@@ -677,7 +727,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 #selchip .sc-k{color:var(--text-muted);font-size:var(--t-small)}
 #selchip .sc-n{font-weight:400;color:var(--text-hi);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:46vw}
 #selchip .sc-s{color:var(--text-muted)}
-#sc-clear{background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);line-height:1;cursor:pointer;padding:2px 5px}
+#sc-clear{background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);line-height:1;cursor:pointer;padding:2px 5px;min-width:24px;min-height:24px}
 #sc-clear:hover{color:var(--text)}
 
 /* ---------- Stage 0: development readout (the ` key, or ?stats in the address) ---------- */

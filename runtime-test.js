@@ -266,7 +266,8 @@ try{
     if(e.claim==="recon") n.push(L.recon); return n; };
   const noteRT=e=>{ const n=partsRT(e,LABELS.event); return n.length?" ("+n.join("; ")+")":""; };
   const tagRT=e=>partsRT(e,LABELS.event.tag).join("; ");
-  const capRT=e=>tagRT(e)?'<small class="evn">'+esc(tagRT(e))+'</small> '+esc(e.n):esc(e.n);
+  /* roadmap step 3 (decision 159): the tag and the name each a box, the name in .evt */
+  const capRT=e=>(tagRT(e)?'<small class="evn">'+esc(tagRT(e))+'</small>':'')+'<span class="evt">'+esc(e.n)+'</span>';
   for(let t=T_MIN;t<=T_MAX;t+=7){
     setClock(t); updateVisibility();
     _sitKey=""; paintSituation(); sitSeen++;
@@ -722,7 +723,32 @@ try{
   setFXEnabled(true);
   if(!FX.on||renderer.outputEncoding!==THREE.LinearEncoding) throw new Error("could not re-enable FX");
   renderFrame();
-  console.log("frame path: FX failure falls back to the standard path and recovers OK");
+  /* roadmap step 3 (SW-7): a failed set is disposed, not reused; off and on again reuses the targets and materials */
+  { const rt0=FX.rtScene, m0=FX.matComp, q0=FX.quad;
+    setFXEnabled(false); if(!FX.built) throw new Error("FX: the targets were dropped when the effects were turned off");
+    setFXEnabled(true); renderFrame();
+    if(FX.rtScene!==rt0||FX.matComp!==m0||FX.quad!==q0) throw new Error("FX: off and on again made new targets or materials (SW-7)");
+    renderFX=function(){ throw new Error("simulated post-processing failure"); }; renderFrame(); renderFX=realFX;
+    if(FX.built||FX.rtScene) throw new Error("FX: a set that failed in a frame is kept (SW-7)");
+    setFXEnabled(true); renderFrame(); if(!FX.on||!FX.built||FX.rtScene===rt0) throw new Error("FX: not rebuilt after a failure");
+    /* a resize while the effects are off is taken up when they come back */
+    const gd=renderer.getDrawingBufferSize; setFXEnabled(false); renderer.getDrawingBufferSize=function(v){ v.x=1200; v.y=700; return v; };
+    setFXEnabled(true); const ww=Math.max(2,(1200*FX.scale)|0);
+    if(FX.rtScene.width!==ww||FX.rtFinal.width!==1200||FX.rtFinal.height!==700) throw new Error("FX: a resize while off not taken up ("+FX.rtScene.width+" against "+ww+")");
+    renderer.getDrawingBufferSize=gd; sizeFX(); }
+  console.log("frame path: FX failure falls back to the standard path and recovers; off and on again reuses its targets OK");
+  /* roadmap step 3 (SW-1): boot() reports a start-up error to the guard with its kind and rethrows it; no guard, it only rethrows; a lost
+     graphics context stops the frames and fills the notice, a restored one clears it */
+  { const init0=init, calls=[]; let thrown=null;
+    global.AUS_BOOT={fail:function(k,e){ calls.push(k+":"+e.message); }};
+    init=function(){ const e=new Error("no context"); e.ausKind="webgl"; throw e; };
+    try{ boot(); }catch(e){ thrown=e.message; }
+    init=function(){ throw new Error("other"); }; try{ boot(); }catch(e){ thrown+=","+e.message; }
+    delete global.AUS_BOOT; init=function(){ throw new Error("bare"); }; try{ boot(); }catch(e){ thrown+=","+e.message; }
+    init=init0;
+    if(calls.join()!=="webgl:no context,error:other"||thrown!=="no context,other,bare") throw new Error("boot(): reported ["+calls.join()+"], thrown "+thrown);
+    if(GL.lost) throw new Error("GL.lost set at start"); }
+  console.log("start-up: boot() reports to the guard with its kind and rethrows; without a guard it rethrows OK");
 
   /* the vegetation kit and the settlements */
   const broadVariants=world.trees.children.length, conVariants=world.conifers.children.length;
@@ -762,8 +788,17 @@ try{
         clock=nt; real+=st; if(DWELL.st&&DWELL.st.E!==was){ n++; was=DWELL.st.E; } }
       const L=dwellDayLength(T_MIN,x), want=dwellStarts().filter(t=>t>T_MIN).length;
       if(Math.abs(real-L)>2*st||n!==want||back||fast) throw new Error("dwell at "+x+"x: "+real.toFixed(2)+" s against "+L.toFixed(2)+", "+n+" dwells of "+want+", "+back+" backward and "+fast+" too fast steps"); });
+    /* roadmap step 3 (S-2): the toggle mid-day through dwellSet: off across a start, on again; the clock never goes back, the start it
+       passed is not dwelt, and every start ahead dwells once */
+    { const S=dwellStarts(), E1=S.filter(t=>t>=420)[0], v=MIN_PER_SEC*0.5; let back=0, seen=[];
+      clock=E1-30; dwellReset(); dwellSet(false);
+      while(clock<=E1+2){ const nt=dwellAdvance(1/60,v); if(nt<clock-1e-9) back++; clock=nt; if(DWELL.st) seen.push(DWELL.st.E); }
+      dwellSet(true);
+      while(clock<T_MAX){ const nt=Math.min(T_MAX,dwellAdvance(1/60,v)); if(nt<clock-1e-9) back++; clock=nt; if(DWELL.st&&seen[seen.length-1]!==DWELL.st.E) seen.push(DWELL.st.E); }
+      const want=S.filter(t=>t>E1+2);
+      if(back||!DWELL.on||seen.join()!==want.join()) throw new Error("dwell toggle: "+back+" backward steps, dwelt at ["+seen.join()+"] against ["+want.join()+"]"); }
     clock=c0; dwellReset();
-    console.log("dwell: the day at 0.5x, 1x, 2x and 4x in its computed length, one dwell at each event start, the clock monotone and never faster than its speed OK"); }
+    console.log("dwell: the day at 0.5x, 1x, 2x and 4x in its computed length, one dwell at each event start, the clock monotone and never faster than its speed; the toggle mid-day never sends it back OK"); }
 
   /* Stage 5B (docs/STAGE5_SPEC.md section A.5): spatial confidence, dry run. On by default (decision 85); every formation on the
      field gets a mark of its confAt grade at the default factor, a patch of the ground's cells; switched off, none is drawn */

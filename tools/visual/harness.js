@@ -29,8 +29,8 @@ const argv=process.argv.slice(2), flag=f=>argv.includes(f), opt=f=>{ const i=arg
 const html=path.resolve(argv[0]||"austerlitz-command-map.html");
 const out=path.resolve(argv[1]||path.join(__dirname,"out"));
 const SELFTEST_ONLY=flag("--selftest-only"), TEST=flag("--test")||SELFTEST_ONLY, LEGACY=flag("--legacy"), CMP=opt("--compare"), ONLY=opt("--only");
-const THREE_LOCAL=[process.env.AUSTERLITZ_THREE, path.join(__dirname,"three.min.js"),
-  path.resolve("node_modules/three/build/three.min.js")].find(p=>p&&fs.existsSync(p));
+const TR=require("./three-route.js"), THREE_LOCAL=TR.THREE_LOCAL;   /* roadmap step 3: one route for three.js (decision 133) */
+TR.checkIntegrity(html);   /* the page's integrity hash against the routed copy: a mismatch stops here, not as a blocked script */
 const ALL_CASES=require("./cases.js");
 const CASES=SELFTEST_ONLY?[]:ALL_CASES.filter(c=>!ONLY||ONLY.split(",").includes(c.name));
 const MEASURE=fs.readFileSync(path.join(__dirname,"measure.js"),"utf8");
@@ -48,9 +48,9 @@ async function openPage(browser,vp,label){
   page.on("pageerror",e=>rec("pageerror",e.message+" | "+String(e.stack||"").split("\n")[1]));
   page.on("crash",()=>rec("crash","the page crashed"));
   page.on("requestfailed",q=>rec("requestfailed",q.url().slice(0,160)+" "+((q.failure()||{}).errorText||"")));
-  if(THREE_LOCAL) await page.route(/three(\.min)?\.js$/,r=>r.fulfill({path:THREE_LOCAL,contentType:"application/javascript"}));
+  await TR.routeThree(page);
   await page.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:180000});
-  await page.waitForFunction(()=>!document.getElementById("boot")&&typeof window.camera!=="undefined",null,{timeout:240000,polling:500});
+  await TR.waitBoot(page);
   /* decision 141: the embedded faces loaded before anything is measured (the boot screen already waits for them, app.js fontsReady) */
   const fonts=await page.evaluate(()=>document.fonts?document.fonts.ready.then(()=>document.fonts.status):"no document.fonts");
   await page.evaluate(MEASURE);
@@ -59,6 +59,7 @@ async function openPage(browser,vp,label){
      frozen at the start of their .32 s slide (selected-formation: the drawer off screen). Each state now stands where the
      panels come to rest. */
   await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});
+  await page.evaluate(()=>{ const st=document.querySelectorAll("style"); st[st.length-1].id="harness-still"; });   /* roadmap step 3: named, so the reduced-motion block can lift it */
   /* T-5: what the build has, read from the page */
   const feats=await page.evaluate(()=>window.__aus.features());
   if(!BUILD_FEATURES) BUILD_FEATURES=feats;
@@ -246,6 +247,7 @@ async function interact(page,it,vp){
        presses: where focus is when the page has loaded, four Tabs (each must stay in the card), then Esc (the card closes where it stands,
        focus on Play). The card is then closed on this page, as every later case closes it (applyCase); focus is released after */
     if(TEST&&c.name==="first-run"&&await has(page,"frButtons","the first-run card by real key presses")){
+      const step3=await page.evaluate(()=>typeof SHORTCUTS!=="undefined");   /* the wheel steps below are a roadmap step 3 build's (the C7-C14 review's item 8) */
       const st=()=>page.evaluate(()=>{ const a=document.activeElement, fr=document.getElementById("firstrun");
         return {id:a&&a!==document.body?(a.id||a.tagName):"body",inCard:!!(fr&&a&&fr.contains(a)),open:firstRunOpen,cam:landCam.position.toArray().concat(orbitTarget.toArray())}; });
       const s0=await st(), tabs=[];
@@ -253,6 +255,16 @@ async function interact(page,it,vp){
       await page.keyboard.press("Escape"); const s1=await st();
       m.firstRunKeys={focus0:s0.id,tabs,open:s1.open,camSame:s1.cam.every((v,i)=>Math.abs(v-s0.cam[i])<1e-6),focus1:s1.id};
       await page.evaluate(()=>{ if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+      /* roadmap step 3 (docs/FINAL_AUDIT.md SW-8): the real wheel over the map: the card opened again, a mostly sideways wheel (Follow stays
+         on, the card stays open), then a vertical one (the card closes where it stands, and the map zooms) */
+      if(step3){
+      const wq=await page.evaluate(()=>{ const fr=document.getElementById("firstrun"); fr.hidden=false; openFirstRun(); freeCam=false; const c=freeCentre();
+        return {x:c[0],y:c[1],d:landCam.position.distanceTo(orbitTarget)}; });
+      await page.mouse.move(wq.x,wq.y); await page.mouse.wheel(120,8); await page.waitForTimeout(150);
+      const w1=await page.evaluate(()=>({open:firstRunOpen,follow:!freeCam}));
+      await page.mouse.wheel(0,-120); await page.waitForTimeout(150);
+      const w2=await page.evaluate(()=>({open:firstRunOpen,d:landCam.position.distanceTo(orbitTarget)}));
+      m.wheel={sideOpen:w1.open,sideFollow:w1.follow,overOpen:w2.open,zoomed:w2.d<wq.d-1e-6}; }
     }
     /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decision 118): on the opening-2 page, after every measure above, real key presses: Esc
        from step 2 (the end state: 04:00, Study, Play focused); the tools' button by a real click, then Enter on the focused Next (since 7D the
@@ -361,11 +373,62 @@ async function interact(page,it,vp){
       const h1=await first.evaluate(()=>({open:!document.getElementById("help").hidden,focus:document.activeElement&&document.activeElement.id}));
       await first.keyboard.press("Tab"); const h2=await first.evaluate(()=>document.activeElement&&document.activeElement.id);
       await first.keyboard.press("Tab"); const h3=await first.evaluate(()=>document.activeElement&&document.activeElement.id);
+      await first.keyboard.press("Tab"); const h3b=await first.evaluate(()=>document.activeElement&&document.activeElement.id);   /* roadmap step 3: the switch is a stop */
       await first.keyboard.press("Escape"); const h4=await first.evaluate(()=>({open:!document.getElementById("help").hidden,focus:document.activeElement&&document.activeElement.id}));
-      kr.push("? on the tour button: open "+h1.open+", focus "+h1.focus+"; Tab "+h2+", Tab "+h3+"; Esc: open "+h4.open+", focus "+h4.focus);
-      K.help={h1:h1,h2:h2,h3:h3,h4:h4};
+      kr.push("? on the tour button: open "+h1.open+", focus "+h1.focus+"; Tab "+h2+", Tab "+h3+", Tab "+h3b+"; Esc: open "+h4.open+", focus "+h4.focus);
+      K.help={h1:h1,h2:h2,h3:h3,h3b:h3b,h4:h4};
       await first.evaluate(()=>document.activeElement&&document.activeElement.blur());
       LIVE.keys3E=K; report.keys3E=kr; console.log("keys by real key presses: "+kr.join("; ")); }
+    /* roadmap step 3 (decision 134 (a); docs/FINAL_AUDIT.md A-1, WCAG 2.1.4): the single-key shortcuts switch by real key presses: the "?"
+       button, Tab to the switch, Space (off), Esc; then 2, M, ? and . from the page change nothing; Space still plays; the switch on again */
+    AT="shortcuts";
+    if(await has(first,"SHORTCUTS","the single-key shortcuts switch by real key presses")){
+      const S={};
+      await first.evaluate(()=>{ setPresentation("study"); stopPlay(); setClock(600,{instant:true,force:true,camera:false}); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+      await first.focus("#helpbtn"); await first.keyboard.press("Enter");
+      await first.keyboard.press("Tab"); S.onSwitch=await first.evaluate(()=>document.activeElement&&document.activeElement.id);
+      await first.keyboard.press(" "); S.off=await first.evaluate(()=>({on:SHORTCUTS.on,pressed:document.getElementById("help-keys").getAttribute("aria-pressed")}));
+      await first.keyboard.press("Escape"); S.closed=await first.evaluate(()=>({open:helpOpen(),focus:document.activeElement&&document.activeElement.id}));
+      await first.evaluate(()=>document.activeElement&&document.activeElement.blur());
+      const before=await first.evaluate(()=>[presentation,mode,layerOn.contours,clock,helpOpen(),playing].join("|"));
+      for(const k of ["2","m","Shift+?",".","c","1"]) await first.keyboard.press(k);
+      S.same=before===await first.evaluate(()=>[presentation,mode,layerOn.contours,clock,helpOpen(),playing].join("|"));
+      await first.keyboard.press(" "); S.space=await first.evaluate(()=>playing); await first.evaluate(()=>stopPlay());
+      await first.evaluate(()=>{ setShortcuts(true); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+      LIVE.shortcuts=S;
+      /* roadmap step 3 (docs/FINAL_AUDIT.md SW-2, SW-3): the window narrowed below 1080 px in Study: the rail hidden (and inert), never over the
+         dispatch card; 2 then Esc by real key presses: the rail shown beside the card, not over it; at 700 px the card gives way to the rail;
+         the page then given back its size */
+      AT="narrow";
+      const vp0=first.viewportSize(), NR=[];
+      const look=()=>first.evaluate(()=>{ const r=document.querySelector(".rail"), d=document.querySelector(".dispatch"), a=r.getBoundingClientRect(), b=d.getBoundingClientRect();
+        const rs=getComputedStyle(r).visibility!=="hidden"&&a.right>0, ds=getComputedStyle(d).display!=="none"&&b.width>0;
+        /* docked, the dispatch is the rail's Now tab, inside it: not "over" */
+        return {w:innerWidth,docked:docked,railShown:rs,railInert:!!r.inert,dispatchShown:ds,over:rs&&ds&&!r.contains(d)&&Math.min(a.right,b.right)>Math.max(a.left,b.left)&&Math.min(a.bottom,b.bottom)>Math.max(a.top,b.top)}; });
+      const size=async(w,h)=>{ await first.setViewportSize({width:w,height:h}); await first.evaluate(()=>window.dispatchEvent(new Event("resize"))); await first.waitForTimeout(700); };
+      await first.evaluate(()=>{ closeFirst(null); setPresentation("study"); select(null,null); showEverything(); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+      await size(1280,800); NR.push(Object.assign({at:"1280 Study"},await look()));
+      await size(1000,800); NR.push(Object.assign({at:"narrowed to 1000"},await look()));
+      await size(1280,800); NR.push(Object.assign({at:"widened back to 1280"},await look()));   /* the C7-C14 review's item 3: the docked rail shown and not inert */
+      await size(1000,800);
+      await first.keyboard.press("2"); await first.keyboard.press("Escape"); await first.waitForTimeout(700); NR.push(Object.assign({at:"2, Esc"},await look()));
+      await size(700,800); NR.push(Object.assign({at:"700"},await look()));
+      await size(vp0.width,vp0.height); await first.evaluate(()=>{ setPresentation("study"); select(null,null); });
+      LIVE.narrow=NR;
+      /* roadmap step 3 (docs/FINAL_AUDIT.md S-6): the reduced-motion preference turned on and off while the page is open (the audit's rm-live):
+         the app follows it (RM) and the panels' slides stop (the rail's transition-duration) */
+      AT="reduced motion";
+      /* the harness's own "no transitions" style is lifted for this block (it would make every duration 0 s whatever the preference) */
+      const rmS=()=>first.evaluate(()=>({rm:RM,rail:getComputedStyle(document.querySelector(".rail")).transitionDuration}));
+      await first.evaluate(()=>{ const s=document.getElementById("harness-still"); if(s) s.disabled=true; });
+      /* a media query's change is reported in a rendering update: one frame is asked for after each change (the page draws on demand) */
+      const tick=()=>first.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(()=>r()))));
+      await first.emulateMedia({reducedMotion:"reduce"}); await tick(); await first.waitForTimeout(300); const rm1=await rmS();
+      await first.emulateMedia({reducedMotion:"no-preference"}); await tick(); await first.waitForTimeout(300); const rm0=await rmS();
+      await first.evaluate(()=>{ const s=document.getElementById("harness-still"); if(s) s.disabled=false; });
+      LIVE.rmLive={on:rm1,off:rm0}; console.log("reduced motion while open: on "+JSON.stringify(rm1)+", off "+JSON.stringify(rm0));
+      console.log("narrow layout: "+NR.map(r=>r.at+": rail "+(r.railShown?"shown":"hidden")+(r.railInert?" inert":"")+", card "+(r.dispatchShown?"shown":"hidden")+", over "+r.over).join("; "));
+      console.log("shortcuts by real key presses: the switch "+S.onSwitch+", pressed "+S.off.pressed+"; Esc: open "+S.closed.open+", focus "+S.closed.focus+"; 2, M, ?, ., C, 1 changed nothing: "+S.same+"; Space played: "+S.space); }
     /* Stage 4B (docs/STAGE4_SPEC.md section A.6): the light through the day, without the shadow toe. The Field vantage and the low
        Pratzen view at 4x every hour 08:00-16:00, and three more views at 1x and 10.33x (the low Pratzen view has its own cases):
        solid near-black within the Stage 0 limit in each (a build with the computed sun) */

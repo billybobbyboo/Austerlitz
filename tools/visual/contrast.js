@@ -42,8 +42,8 @@ const TH=require("./thresholds.js");
 const argv=process.argv.slice(2), html=path.resolve(argv.filter((a,i)=>!a.startsWith("--")&&argv[i-1]!=="--json")[0]||"austerlitz-command-map.html");
 const jsonOut=argv.indexOf("--json")>=0?argv[argv.indexOf("--json")+1]:null;
 const LEGACY=argv.includes("--legacy");
-const THREE_LOCAL=[process.env.AUSTERLITZ_THREE, path.join(__dirname,"three.min.js"),
-  path.resolve("node_modules/three/build/three.min.js")].find(p=>p&&fs.existsSync(p));
+const TR=require("./three-route.js"), THREE_LOCAL=TR.THREE_LOCAL;   /* roadmap step 3: one route for three.js (decision 133) */
+TR.checkIntegrity(html);   /* the page's integrity hash against the routed copy: a mismatch stops here, not as a blocked script */
 
 /* decision 141: the faces a visible text may be drawn in, and the elements that may use another, with the reason */
 const EMBEDDED=new Set(["Austerlitz Sans","Austerlitz Serif"]);
@@ -191,9 +191,9 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
   page.on("pageerror",e=>rec("pageerror",e.message+" | "+String(e.stack||"").split("\n")[1]));
   page.on("crash",()=>rec("crash","the page crashed"));
   page.on("requestfailed",q=>rec("requestfailed",q.url().slice(0,160)+" "+((q.failure()||{}).errorText||"")));
-  if(THREE_LOCAL) await page.route(/three(\.min)?\.js$/,r=>r.fulfill({path:THREE_LOCAL,contentType:"application/javascript"}));
+  await TR.routeThree(page);
   await page.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:180000});
-  await page.waitForFunction(()=>!document.getElementById("boot")&&typeof window.camera!=="undefined",null,{timeout:240000,polling:500});
+  await TR.waitBoot(page);
   const fontsStatus=await page.evaluate(()=>document.fonts?document.fonts.ready.then(()=>document.fonts.status):"no document.fonts");
   await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});
   /* decision 141: which platform fonts draw each computed font's characters (the CDP, once, after the last state; see the header) */
@@ -280,7 +280,13 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
   stateFails.forEach(f=>console.log("  ! "+f));
   con.slice(0,40).forEach(e=>console.log("  ! "+TH.consoleLine(e)));
   if(jsonOut) fs.writeFileSync(jsonOut,JSON.stringify(all,null,1));
-  const bad=fails.length||small||fontFails.length||stateFails.length||(!LEGACY&&con.length);
+  /* roadmap step 3 (decision 133 (a); docs/FINAL_AUDIT.md SW-1): the start-up failures and the lost context, each on its own browser
+     (tools/visual/boot-check.js); an archived build without the start-up guard (--legacy) lists them as skipped */
+  let bootBad=0;
+  if(LEGACY&&!/var AUS_BOOT=/.test(fs.readFileSync(html,"utf8"))) console.log("boot cases: skipped (--legacy: the build has no start-up guard)");
+  else { const BR=await require("./boot-check.js").runBootCases(html); BR.forEach(r=>console.log((r.ok?"  boot ok ":"  ! boot ")+r.line));
+    bootBad=BR.filter(r=>!r.ok).length; console.log("boot cases: "+(BR.length-bootBad)+" of "+BR.length+" pass"); }
+  const bad=fails.length||small||fontFails.length||stateFails.length||(!LEGACY&&con.length)||bootBad;
   console.log(bad?"CONTRAST: FAILED":(LEGACY?"CONTRAST (legacy run, "+skipped.length+" states skipped): every text read meets WCAG AA":"CONTRAST: all text meets WCAG AA, drawn in the embedded faces, in every state reached"));
   process.exitCode=bad?1:0;
 })().catch(e=>{ console.error(e); process.exit(2); });

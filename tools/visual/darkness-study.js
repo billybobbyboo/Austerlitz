@@ -9,7 +9,7 @@
 const fs=require("fs"), path=require("path"), os=require("os");
 const {chromium}=require("playwright");
 const [patched,original,out]=process.argv.slice(2).map(p=>path.resolve(p));
-const THREE_LOCAL=[process.env.AUSTERLITZ_THREE,path.join(__dirname,"three.min.js")].find(p=>p&&fs.existsSync(p));
+const TR=require("./three-route.js"), THREE_LOCAL=TR.THREE_LOCAL;   /* roadmap step 3: one route for three.js (decision 133) */
 const MEASURE=fs.readFileSync(path.join(__dirname,"measure.js"),"utf8");
 const CASE=require("./cases.js").find(c=>c.name==="pratzen-low");
 fs.mkdirSync(out,{recursive:true});
@@ -33,9 +33,9 @@ const V=[["A original build",original],["B original grade+palette, Stage 0 seati
   for(const [label,file,text] of V){
     let f=file; if(!f){ f=path.join(tmp,label[0]+".html"); fs.writeFileSync(f,text); }
     const page=await browser.newPage({viewport:{width:1600,height:900},deviceScaleFactor:1});
-    if(THREE_LOCAL) await page.route(/three(\.min)?\.js$/,r=>r.fulfill({path:THREE_LOCAL,contentType:"application/javascript"}));
+    await TR.routeThree(page);
     await page.goto("file://"+f+"?harness=1",{waitUntil:"commit",timeout:180000});
-    await page.waitForFunction(()=>!document.getElementById("boot")&&typeof window.camera!=="undefined",null,{timeout:240000,polling:500});
+    await TR.waitBoot(page);
     await page.evaluate(MEASURE);
     await page.evaluate(s=>window.__aus.apply(s),CASE);
     if(await page.evaluate(()=>!!window.AUSTERLITZ_DEBUG)) await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(90)); else await page.waitForTimeout(3200);

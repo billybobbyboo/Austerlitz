@@ -5,7 +5,10 @@
    - "no three.js": the cdnjs request for three.min.js aborted, as when offline or the CDN is blocked;
    - "no WebGL": Chromium launched with --disable-3d-apis (three.js loads; WebGL cannot be created).
    After 20 s each records whether the boot screen (#boot) is still there, its text, what else is visible, the page errors and the
-   console errors, and a screenshot (docs/audit-evidence/boot-*.png when --shots is given). Never run it beside `npm run check:visual`. */
+   console errors, and a screenshot (docs/audit-evidence/boot-*.png when --shots is given). Never run it beside `npm run check:visual`.
+   Kept as the audit's evidence: it reproduces builds before roadmap step 3. Since step 3 the page's three.js tag carries crossorigin, which
+   this probe's route answers without the header the harness's tools send (tools/visual/three-route.js), and the start-up failures are
+   checked by tools/visual/boot-check.js (run by check:contrast). */
 const fs=require("fs"), path=require("path");
 const { chromium } = require("playwright");
 const ROOT=path.resolve(__dirname,"..","..");

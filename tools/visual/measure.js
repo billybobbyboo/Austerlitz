@@ -107,7 +107,7 @@
       ROUTES:typeof ROUTES!=="undefined", SKEL:typeof SKEL!=="undefined", EYE:typeof EYE!=="undefined", frButtons:typeof frButtons==="function",
       timelineRow:!!document.getElementById("tb-vm"), nowTab:!!document.getElementById("tab-now"), DWELL:typeof DWELL!=="undefined",
       KEYS:typeof KEYS!=="undefined", SUN_DAY:typeof SUN_DAY!=="undefined", ATMO:typeof ATMO!=="undefined", SMOKE:typeof SMOKE!=="undefined",
-      settle:!!d.settle, applyCase:!!d.applyCase, selfTest:!!d.selfTest};
+      settle:!!d.settle, applyCase:!!d.applyCase, selfTest:!!d.selfTest, SHORTCUTS:typeof SHORTCUTS!=="undefined"};
   }
 
   /* ---- roadmap step 1 (T-1): an app canvas's pixels are read through a canvas the harness owns ----
@@ -286,7 +286,14 @@
     var shown=function(e){ if(!e) return false; var cs=getComputedStyle(e); return cs.display!=="none"&&cs.visibility!=="hidden"&&e.getBoundingClientRect().width>0; };
     return {height:shown(tb)?+tb.getBoundingClientRect().height.toFixed(1):null, hasRow:!!document.getElementById("tb-vm"),
       switchInRow:!!(vm&&vm.closest&&vm.closest(".tb-top")), switchOpacity:vm?+getComputedStyle(vm).opacity:null,
-      capDerived:d?shown(d):null};
+      /* roadmap step 3 (decision 159): shown and not cut: inside the caption's box and whole (no ellipsis of its own) */
+      capDerived:d?(shown(d)&&(function(){ var c=document.getElementById("tb-cap").getBoundingClientRect(), r=d.getBoundingClientRect();
+        return r.left>=c.left-0.5&&r.right<=c.right+0.5&&d.scrollWidth<=d.clientWidth+1; })()):null,
+      /* roadmap step 3 (handed on by step 2: the narrow layout's event tag): every event tag shown in the caption whole, inside the caption's
+         box and its event's (null where none is shown) */
+      capTag:(function(){ var c=document.getElementById("tb-cap"), G=c?[].filter.call(c.querySelectorAll("small.evn"),shown):[]; if(!G.length) return null;
+        var cr=c.getBoundingClientRect(); return G.every(function(g){ var r=g.getBoundingClientRect(), e=g.parentNode.getBoundingClientRect();
+          return r.left>=cr.left-0.5&&r.right<=cr.right+0.5&&r.right<=e.right+0.5; }); })()};
   }
   function phaseLabels(){
     if(!document.getElementById("tb-vm")||typeof setClock!=="function") return null;

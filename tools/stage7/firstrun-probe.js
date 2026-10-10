@@ -135,7 +135,7 @@ const COUNT=()=>{
       await page.click("#fr-close"); await page.waitForTimeout(300);
       const st0=await page.evaluate(STATE);
       await page.reload({waitUntil:"commit"});
-      await page.waitForFunction(()=>!document.getElementById("boot")&&typeof window.camera!=="undefined",null,{timeout:240000,polling:250});
+      await require("../visual/three-route.js").waitBoot(page,240000,250);   /* roadmap step 3: a failed start reported at once */
       const st1=await page.evaluate(STATE);
       res.ways.reload={beforeReload:{cardOpen:st0.card.open,storage:st0.storage},afterReload:{cardOpen:st1.card.open,storage:st1.storage,clock:st1.clockText}};
       console.log("reload",JSON.stringify(res.ways.reload)); save(); await page.close();
