@@ -5,7 +5,7 @@
   "scripts": {
     "build": "python3 build.py",
     "test": "sh tools/run-all.sh",
-    "check:baseline": "python3 build.py && node -e \"const b=require('fs').readFileSync('austerlitz-command-map.html'),h=require('crypto').createHash('md5').update(b).digest('hex');console.log(h,b.length);process.exit(h==='61bd7258820f878c0a52eceba8ad502d'&&b.length===2035968?0:1)\"",
+    "check:baseline": "python3 build.py && node -e \"const b=require('fs').readFileSync('austerlitz-command-map.html'),h=require('crypto').createHash('md5').update(b).digest('hex');console.log(h,b.length);process.exit(h==='b10dc72cb9af5900f7cb0b57e3488e91'&&b.length===2037511?0:1)\"",
     "check:data": "node tools/visual/data-invariance.js archive/step2-af98f586.html austerlitz-command-map.html",
     "check:visual": "node tools/visual/harness.js austerlitz-command-map.html tools/visual/out --test",
     "check:report": "node tools/visual/check-report.js tools/visual/out",

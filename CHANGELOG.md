@@ -1,5 +1,188 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6)
+
+**Status: for review (#51). The build changed: `austerlitz-command-map.html` 2,037,511 bytes, md5 `b10dc72cb9af5900f7cb0b57e3488e91` (was the step-2 build, 1,927,346
+bytes, md5 `af98f58641a29cb4934ca9d28bf86071`).** `check:baseline` moves to this build. `check:data`'s reference is not moved: step 3 is
+presentation and software only, and no guarded declaration changed (all 128 identical to `archive/step2-af98f586.html`, run after every
+code commit). The next owner decision is 176: this step puts questions 162-175 to the owner (below), each with the conservative default
+implemented meanwhile.
+
+**How it was done.** The step's plan (not committed): the current state read from the code, then a design workflow (one designer per
+cluster, each proposal challenged by an implementation skeptic and an accessibility skeptic, then a synthesizer and a completeness critic).
+The commits, in order: the records `a054554`; C1 `118a288`, C2 `64e70dd`, C3 `864c3d3`, their review fixes `390bfbc`; C4 `f96fc6d`, C5
+`cdb932d`, C6 `6e5f571`, C7 `e20bb53`, C8 `4869db5`, C9 `e6d313b`, C10 `a491fca`, C11 `443b657`, the review fixes of C4-C6 `656cf7d`; C12
+`ad3c596`, C13 `450cbe5`, C14 `0dc8963`, the report-diff tool `60612c2`; the review fixes of C7-C14 `5593ceb`; C15-C16 `d5a28f3`, C18
+`146453d`, C19 and C22 `ce64ed0`, C20-C21 `a3662c9`, C23 `c9facbe`; the review fixes of those five `7736731`; the caption's tag measure
+`11d10c5`; the review fix of the map layer's topmost probe `99733eb`; the manifest `fd3d9b1`; the records, part 1, `652a4f8`; the review fixes of `7736731`-`fd3d9b1` `191ab98`; the manifest again `0e2b348`; the records, part 2 (this entry). Each segment was reviewed by independent reviewers before the next; every finding is fixed in its "review fixes"
+commit or recorded here. The plan's C17 (the phases taking the acts' clicks) waits on question 166 and was not built.
+
+**What changed, by finding.**
+- **SW-1, decision 133 (a): three.js and the start (C5, C6).** three.js stays on cdnjs r128; its tag carries
+  `integrity="sha512-dLxUel…"`, `crossorigin="anonymous"` and `referrerpolicy="no-referrer"` (cdnjs's own form; `node_modules/three`
+  0.128.0 is byte-identical to cdnjs's file: 603,445 bytes, the same sha384 and sha512, fetched and compared in this session). An inline
+  start-up guard (`AUS_BOOT`, ES5, before the tag): until the first frame, a failed or mismatched three.js, no WebGL, or any uncaught error
+  shows `#boot-fail`, an alert dialog with its reason, focus on Reload kept there, everything else inert, no key reaching the app; after 20 s
+  without a frame a status line, "Still loading the 3D view…" (never a failure). A lost graphics context shows `#glnotice` (an alert with
+  Reload) and stops the frames; restored, they go on. The words are question 162's; the raw error goes to the console only. The tools serve
+  three.js one way (`tools/visual/three-route.js`), check the page's integrity against the routed copy, and report a failed start at once.
+- **SW-2, SW-3: the narrow layout and the hidden panels (C11, C12).** The closed dossier is `visibility:hidden` after its slide and inert;
+  the hidden rail too; one writer of `inert` from its reasons (`syncInert`). Below 1080 px a rail shown (Esc after Watch or Clean) stands
+  beside the dispatch card, never over it; at 720 px and below the card gives way to it. A departure from the audit's fix sentence, stated:
+  it also had `showEverything` show the rail only from 1080 px, which would leave the order of battle, the analysis, command and plans tabs
+  and the only Sources button out of reach below 1080 px (question 164 asks for a visible control instead).
+- **SW-4, SW-6: the two sheets as modal dialogs (C9).** The sources sheet and the "?" overlay (`SHEETS`): focus moved in, kept in by Tab,
+  returned to the opener; the rest inert but the live regions; no key acting behind; Esc closes the topmost sheet first and no longer clears
+  the chapter and the selection; the scrim closes the sources sheet; a click on the text keeps the keys (SW-6).
+- **SW-5, SW-9, SW-12: focus where a control disappears (C7, C8, C11, C19).** `shown()` and `focusTo()`: the tour's ways out, the Layers
+  panel, the chip, the sightlines' Clear, the presentation switch, the dossier (focus to its opener; a rebuild keeps it), a map item that
+  leaves the map (the next stop, else the layer). The Layers panel closes with Watch and Clean (SW-9). A click alone (a screen reader's,
+  speech input's) ends the opening and closes the first card as a press does (SW-12, generalised).
+- **SW-7: the effects (C2).** `initFX` builds its targets and materials once (`FX.built`); off and on again reuses them (the audit measured
+  6 textures added per cycle); a set that fails is disposed.
+- **SW-8: the wheel (C3).** A mostly sideways wheel changes nothing; a wheel over the map closes the first card, then zooms.
+- **SW-10: layout seams (C13).** The narrow layout at `max-width:1079.98px` (exactly 1080 px was both); the pixel ratio followed on
+  resize and on a change of screen density; the `@media` rules that never applied (the 430 px-tall block's three `#firstrun` rules and
+  the 360 px-tall block's) moved after the rules they override, the 720 px block's two redundant `#firstrun` declarations removed.
+- **SW-11: the reading during the opening and the tour (C21).** Both set the visitor's "Whose eyes?" reading aside (everyone's) and give it
+  back on every way out, unless the visitor chose one meanwhile (`TOURCV`). Silently: question 171.
+- **S-1: corps counters under "Whose eyes?" (C20; handed on by step 1).** A corps or column counter is its formations' reading
+  (`aggReading`): not drawn when none of its formations on the field is known; else at the mean of the known ones, "reported only" when none
+  is seen, its grade the worst of theirs, no strength while only some are known (question 170 (a)).
+- **S-2: the dwell toggle (C1).** Off and on while the clock plays never sends it back (`dwellSet`, `dwellReset`).
+- **S-3 and the eye-level floor (C4; handed on by step 1).** A phase's camera leaves the eye level; leaving it lifts the eye with the floor
+  before any frame, so the render-time guard no longer corrects and warns. `CONSOLE_ALLOW` is empty (its one entry, `eye-leave-floor`, was
+  removed in the same commit).
+- **S-6: reduced motion (C14).** `RM` follows its media query live (what moves stops where it would end); the stylesheet turns every
+  transition and animation off under the preference.
+- **A-1, decision 134 (a): single-key shortcuts (C10).** A "Single-key shortcuts" switch in the "?" overlay, on by default, for the session
+  only (nothing stored, decision 117); off, no key that types one character acts outside text fields, ends the opening or closes the card;
+  Space, the arrows, Esc, Tab and Enter keep their rules (question 169).
+- **A-2: a focused map item always drawn (C19).** The keyboard focus takes no part in the layout: the focused item keeps its place, or,
+  dropped or behind the ground, is drawn over the others at its anchor, clear of the panels where a place beside it is free. Recorded: a
+  focused counter keeps its compact form (the full one is the selection's and the hover's; its accessible name carries what the full one
+  shows), so that nothing else moves when the focus does. A click alone on an item selects it.
+- **A-3: target sizes (C15, C16).** The time rail and the event markers' row 24 px (the track 53 to 55 px; the timeline's height
+  unchanged), the panels' close and back buttons, the Sources button, the Layers close and the scope's clear at least 24 px. Events that
+  start at the same minute list one another in their dossiers ("Starting at the same minute"), so each has a pointer path. **Not done:** the
+  acts (15 px) and the phases (16 px) stay below 24 px, pending question 166 (the self-test holds them at those heights meanwhile); the event
+  markers (8 px drawn, a 20 px hit area) are proposed as 2.5.8's essential exception, question 167.
+- **Decision 159: the Watch caption (C18; handed on by step 2).** Measured against `#tb-cap`'s box: where the caption shows the derived
+  readings (Watch, and Study with the dispatch hidden) they stand before the event names; the act, the phase's title and the event names
+  shrink first, and what still cannot fit gives way whole (`fitCaption`: the reading's emphasis, then the later reading, then the events)
+  instead of an ellipsis through a reading. The order and the fit follow the presentation, the dispatch and the "Eyes" button at once.
+  `measure.js` `capDerived` is now "shown, inside the box and not ellipsized".
+- **The narrow layout's event tag (handed on by step 2).** The caption's tag never shrinks (its name does; the event gives way whole where
+  even its tag cannot stand); `measure.js` `capTag`, judged in every view.
+- **An event's map label carries its note (C22; handed on by step 2).** "(hour disputed)", "(interval)", "(reconstruction)", in the
+  caption tag's short words (`evMapText`, `LABELS.event.map`; "hour disputed", not the arrows' bare "(disputed)": the class disputes an
+  hour, not the event); its accessible name begins with its drawn words (WCAG 2.5.3).
+- **`pickFormation` on every pointer move (C23; handed on by step 1).** Measured, `tools/step3/hover-cost.js`, rule set before measuring:
+  a fix only if a move's p95 exceeds 2 ms. On the build of `99733eb` (the hover's path is unchanged since), at 1600 x 900 under software WebGL, 400 moves over the free part of the screen in each of five views (`overview-field`, `close-sokolnitz`, `hybrid-dimmed`, `paper-north-up`, `pratzen-low-10x`), with the evidence skeleton off and on, each timed three times: the median at most 0.1 ms, the worst p95 0.4 ms (`pratzen-low-10x`, skeleton on), the worst move 1.0 ms. No fix is called for. (Chromium rounds `performance.now()` to 0.1 ms, so the medians are at its resolution.)
+
+**Owner questions (162-175).** Each default is in the build; none changes a guarded declaration or a limit.
+
+| # | question | recommendation | default meanwhile |
+|---|---|---|---|
+| 162 | The start-up failure's words (decision 133 (a) left them open): "The map cannot start"; three.js: "Its 3D library, three.js, could not be loaded from cdnjs.cloudflare.com, or it did not match the copy this page was built with. The map needs a network connection that can reach that address."; WebGL: "This browser could not start WebGL, the 3D graphics the map is drawn with. WebGL may be turned off, or not supported by this device or its graphics driver."; an error: "Something stopped the map while it was starting."; then "Reload the page to try again." and Reload; after 20 s "Still loading the 3D view…"; a lost context: "The 3D view has stopped: the browser lost its graphics context. It comes back if the browser restores it; if it does not, reload the page." The raw error goes to the console, never the screen | keep them | as written (C6) |
+| 163 | Where the start-up cases run: inside `check:contrast` (so in CI, decision 132), or a separate `check:boot` (a change to CI beyond decision 132) | inside `check:contrast` | inside `check:contrast` (C6) |
+| 164 | Below 1080 px the rail is reached only through Watch or Clean and back (Esc, Show interface), as before step 3; the hidden rail is now inert. Add a visible "Panels" control in the tools that opens and closes it (its words in `LABELS`; `narrow-1024`'s tools row may wrap, so measured first, and no limit moved without your word)? | yes, measured first | no new control; the card yields beside a shown rail (C12) |
+| 165 | Below 1080 px the undocked dossier reaches the bottom of the window, over the timeline (a control there can be focused under it: WCAG 2.4.11). Stop it above the timeline (`bottom:var(--tb)`; no harness view opens a dossier below 1080 px)? | yes | unchanged (C11) |
+| 166 | A-3, the acts (15 px) and phases (16 px): (a) the act bands stop taking clicks, so the phase under the pointer takes them (a 31 px target; an act stays a keyboard button, its click made its first phase's); (b) the two rows at 24 px, which makes the timeline about 108 px, over `TIMELINE_MAX` (92) and moving every unobstructed baseline, the opening cases' among them (decision 121); (c) leave them | (a) | (c): unchanged; the self-test holds them at their 15 and 16 px meanwhile (C15, its review fix) |
+| 167 | The event markers (8 px drawn, a 20 px hit area): the essential exception of WCAG 2.5.8 (their place on the time axis is the information), with the markers that coincide reached through the coinciding event's dossier ("Starting at the same minute") | yes | as recommended (C15, C16) |
+| 168 | Starting the guided tour: focus on its Next (as the opening's, decision 124) and each stop announced in the polite region ("Stop k of n: title", words in `LABELS`)? | both | unchanged: focus stays on the Guided tour button, no announcement (C7) |
+| 169 | Single-key shortcuts off (decision 134): a typed character also does not end the opening or close the first card (decision 118's "a key closes it" applies to the keys that act); Space, which dictation types, keeps playing the clock | as built | as built (C10) |
+| 170 | S-1's details: (a) a corps' strength is not drawn while only some of its formations are known (as built); (b) the plan links and the selection ring still draw true positions under a reading (the same class of leak); (c) S-4 (at eye level the dossier's pill says "In sight" where the drawing shows "reported only") | (a) as built; (b) and (c) in step 5, recorded | (a) as built; (b), (c) unchanged (C20) |
+| 171 | SW-11: the visitor's reading is given back silently when the opening or the tour ends. Say so in the end message (new words in `LABELS`, decision 115)? | yes | silent (C21) |
+| 172 | The map layer: when a focused item leaves the map, a polite message ("Telnitz has left the map"); and the map items' focus ring drawn against its own plate so it meets 3:1 on any ground (WCAG 1.4.11), measured in a Tab walk | both, in step 5 | focus moves to the next stop or the layer, silently; the ring unchanged (C19) |
+| 173 | The timeline's "Whose eyes?" button shows "Eyes: everyone" but is named "Whose eyes? Everyone (press to change)" (WCAG 2.5.3, level A: the name should begin with the visible words), and a three-way cycle is announced as a toggle (aria-pressed) | rename so the name begins with its visible words, and drop aria-pressed (the name carries the state), with the 5E check's assertions replaced equally strictly | unchanged |
+| 174 | At 720 px and below in Study the plateau's derived reading is hidden in the dispatch card (`.tb-sit .der`) and in the caption (shown there only where the card is hidden): show it in the caption there? | yes | unchanged |
+| 175 | The screen-reader session (`docs/step3-evidence/sr-session.md`): who runs it, with NVDA and Chrome and VoiceOver and Safari; and does step 3 stay "in progress" until it is recorded? | the owner or a tester; step 3 done when it is recorded | not run; recorded as not verified |
+
+**Tests added or made strict** (no assertion loosened; an assertion of old behaviour replaced by an equally strict one on the new: the
+"?" overlay's Tab cycle has three stops, the focus check's Clean expectation is the pressed switch drawn whole, the step-2 caption check
+reads the name's own box, `capRT` in `runtime-test.js` builds the new markup):
+- the self-test: 241 checks, every one passing (221 after step 2). The manifest was written twice from passing `check:selftest` runs by
+  `check-report.js --write-manifest`: at 224 in `390bfbc` (C1-C3), then at 241 in `fd3d9b1` from the run of `99733eb` (md5 61bd7258), where
+  C2's name, "visual effects: off and on again reuses their render targets, materials and quad; no texture or geometry added (docs/FINAL_AUDIT.md SW-7)", was renamed when the check stopped
+  drawing frames; and once more in `0e2b348` from the run of `191ab98` (md5 b10dc72c), where the caption check was renamed (it also holds a
+  dwell at each shared start); the names are listed below;
+- the self-test names added since step 2 (20; none removed against the step-2 manifest):
+  - eye level: every way out (an orbit, a glide, a phase's button, “Whose eyes?” to everyone, the paper map and back, with the clock moved) leaves it, the near plane restored and the eye at or above its floor before any frame; no render-time correction (docs/FINAL_AUDIT.md S-3) (at 1×)
+  - eye level: every way out (an orbit, a glide, a phase's button, “Whose eyes?” to everyone, the paper map and back, with the clock moved) leaves it, the near plane restored and the eye at or above its floor before any frame; no render-time correction (docs/FINAL_AUDIT.md S-3) (at 4×)
+  - eye level: every way out (an orbit, a glide, a phase's button, “Whose eyes?” to everyone, the paper map and back, with the clock moved) leaves it, the near plane restored and the eye at or above its floor before any frame; no render-time correction (docs/FINAL_AUDIT.md S-3) (at 10.33×)
+  - dwell: its toggle while the clock plays never sends the clock back; off, no dwell; on again, the next start ahead dwells (docs/FINAL_AUDIT.md S-2)
+  - Whose eyes?: a corps or column counter is its formations' reading: none drawn when every one of its formations on the field is unknown, else at the mean of those known, reported only exactly when none is seen, its grade theirs, and no strength while only some are known (docs/FINAL_AUDIT.md S-1)
+  - keys: with single-key shortcuts off, no key that types one character reaches a window row; Space, the arrows and Esc reach theirs, and the map's keys the focused map; on again, every row as before (decision 134)
+  - keys: the “?” overlay holds the single-key shortcuts switch (a toggle button named from LABELS, on by default); off, the rows it mutes say so, and no printable key from the page or a focused button changes anything, ends the opening or closes the first card, while Space plays and Esc skips (decision 134, WCAG 2.1.4)
+  - pointer: a mostly sideways wheel leaves the camera, Follow, the opening and the paper map as they are; a wheel over the map closes the first card where it stands, then zooms (docs/FINAL_AUDIT.md SW-8)
+  - focus: each way a focused control disappears leaves it on a named, shown successor: Leave the tour and Finish (Guided tour), the tour's Back at stop 1 (Next), the Layers × and Esc (Layers), Watch and Clean with the panel open (closed), the chip's × (Play) and Open the dossier (Back), the sightlines' Clear (Play), Watch's switch moved and Clean's (the pressed button), 3 and H (Show interface); the Guided tour button during the opening ends it and begins the tour (docs/FINAL_AUDIT.md SW-5, SW-9, SW-12)
+  - opening and card: a click alone (as a screen reader or speech input sends it) on a control outside them ends the opening or closes the card where it stands, as a press does; Play during a played stretch pauses it (docs/FINAL_AUDIT.md SW-12)
+  - sheets: the sources sheet a modal dialog (focus to its close, Tab kept inside, the rest inert but the phase announcement, no key acting behind it, closed by Esc, × and the scrim with focus back on its opener, a repaint keeping focus); after a click on its text a sheet keeps Esc, “?”, Tab and its modality; Esc closes the topmost sheet first, the tour, the opening, the chapter and the selection kept (docs/FINAL_AUDIT.md SW-4, SW-6)
+  - panels: a closed dossier is inert, hidden and emptied; closed by ×, Esc, Back or a ground click, focus on its opener, never in the hidden dossier; docked and opened from the rail, focus on its Back with the rail inert, given back before focus returns; a rebuild keeps focus in it (docs/FINAL_AUDIT.md SW-3, SW-5)
+  - reduced motion followed live: turned on mid-stretch the opening is at its step, nothing playing, ½× back; mid-glide the glide is at its end; turned off, motion again (docs/FINAL_AUDIT.md S-6)
+  - opening and tour: shown under everyone's reading; the visitor's reading given back on every way out (skip, finish, the camera, a key, a press, leaving the tour), unless the visitor chose a reading meanwhile (docs/FINAL_AUDIT.md SW-11)
+  - map layer: an event's drawn label carries its note's word ((hour disputed), (interval), (reconstruction)) exactly when it has one, and its accessible name begins with its drawn words, then the note in full (handed on by roadmap step 2; WCAG 2.5.3)
+  - caption (decision 159): in Watch the derived readings stand before the event names, each shown whole and inside the caption's box, the plateau's whenever it is due, every 5 minutes of the day, in a dwell at each shared start and at once when Study turns to Watch; every shown event's tag inside it and whole (handed on by roadmap step 2)
+  - target size (WCAG 2.5.8): every target of the timeline's control row and its rail, the rail's tabs and Sources button, the dossier's bar, the selection chip and the sheets' and the layers panel's close buttons at least 24 x 24 px and topmost at its centre; not yet: the acts and the phases (question 166) and the event markers (question 167), held at their heights (docs/FINAL_AUDIT.md A-3)
+  - map layer: every keyboard stop, focused, is drawn on screen at full opacity and topmost (clear of the panels wherever a place beside it is free) while every other item keeps its place, and the layout is as before when it leaves; an item leaving the map hands the focus on; a click alone selects (docs/FINAL_AUDIT.md A-2; WCAG 2.4.7, 2.4.11)
+  - events: every event has a pointer path, its own marker or the dossier of an event starting at the same minute whose marker a press reaches (docs/FINAL_AUDIT.md A-3)
+  - visual effects: off and on again builds nothing: the same render targets, materials and quad (docs/FINAL_AUDIT.md SW-7)
+- the harness: live blocks `shortcuts` (real keys), `narrow` (a real resize: 1280, 1000, back to 1280, 2 and Esc, 700), `rmLive` (the
+  real preference turned on and off) and, on `first-run`, the real wheel; the feature `SHORTCUTS` required; `capTag` in every view;
+- `check:contrast` runs the six start-up cases (`tools/visual/boot-check.js`: no three.js, a failing integrity, no WebGL, an error after
+  the interface is built, a start slowed past 20 s, the context lost and restored), each on its own browser (question 163);
+- `css-test.js`: the script tag and its integrity, the guard, the dialog's markup, the switch, the narrow layout at `DOCK_MIN`'s
+  complement, no `@media` declaration shadowed by a later base rule, the reduced-motion rule; `runtime-test.js`: boot reporting, the dwell
+  toggle, the effects' reuse.
+
+**A finding of the step, recorded.** Under software WebGL (the harness's SwiftShader), turning the effects off and on recompiles every
+shader at the next frame and the frames after it slow to about 9 s each; the same happens on the step-2 build. The first SW-7 check drew a
+frame after each toggle and so stalled the real-key checks after it; it now counts the builds and the render targets made (`FX.builds`,
+`FX.rts`) without drawing. Whether a GPU shows the stall is not measured.
+
+**Checks run** (each on a clean checkout of the commit named, never two heavy checks at once):
+On the final build (`191ab98`, md5 `b10dc72c…`; `0e2b348` adds only the manifest and the records commits only records):
+- `npm test`: all 9 suites pass, and the height guard (6 min 53 s).
+- `npm run check:data`: all 128 declarations byte-identical to `archive/step2-af98f586.html`.
+- `npm run check:chronology`: 0 errors; the movement audit 0 findings; still open, as before, the ceiling-flagged legs sthilaire@3,
+  vandamme@3, bag@8, the forced dated legs c_gren@8, kollo@5 and the unresolved conflicts dok@1, guard_cav@6, kamensky@3, kamensky@4.
+- `npm run check:contrast`: 35 states of 35 reached, 5,517 text elements, 112 distinct text/background pairs, 0 below AA, 0 below 10.5 px,
+  0 font failures, 0 console messages (`CONSOLE_ALLOW` empty); the six boot cases pass (the context-loss case: 24 foreign-context warnings,
+  bound 40).
+- `npm run check:selftest`: 241 checks, every one passing (15 min 11 s); the live blocks `shortcuts`, `narrow` and `rmLive` pass. Its one
+  failure was the caption check's new name, missing from the manifest; the manifest was then regenerated from this run (`0e2b348`).
+- `npm run check:visual` (on `0e2b348`, compared case by case with the step-2 reference run by `tools/step3/report-diff.js`): **running when this entry was written; its result follows in the next records commit.**
+- `npm run check:baseline`: passes on the final build (moved in `652a4f8` and again in the records).
+- `tools/step3/hover-cost.js`: above (the worst p95 0.4 ms).
+
+Before it, on each segment's snapshot (in order; each failure fixed in the commit named):
+- C1-C3: the manifest written at 224 from a passing `check:selftest` (`390bfbc`).
+- C4-C14: checked on snapshots as they were made (C6's note: the boot cases 5 of 5, before the sixth was added); not every intermediate
+  number is recorded here. Then the working tree with C15-C22 still uncommitted (a snapshot): the self-test failed the event markers' pointer path at
+  "decision", the narrow block counting the docked dispatch (inside the rail) as under it, and `rmLive` (the media change not reported
+  without a frame); fixed in `5593ceb` and `d5a28f3` (and the hit area read at nine points).
+- The five commits `5593ceb`-`a3662c9` (build `42518fad`): `npm test` 9 of 9; `check:data` 128 identical; `check:contrast` pass, boot 6 of
+  6; the self-test 240 of 241 (the caption: an event's tag outside it at 04:00-04:25 in Watch, the `.fit-off` rule that lost to `.ev`, which
+  the review also found) and the 17 new names not in the manifest.
+- `7736731` (build `2af867cf`): `npm test` 9 of 9; `check:data` 128 identical; `check:contrast` pass, boot 6 of 6; the self-test 240 of 241
+  (the new topmost probe hit the canvas: the layer takes no pointer events), fixed in `99733eb`.
+- `99733eb` (build `61bd7258`): the self-test 241 of 241; the manifest written (`fd3d9b1`); `check:chronology` 0 errors; the hover's cost
+  measured. A full `check:visual` begun on it was stopped after 3 views when the last review's fixes changed the build.
+
+**What remains uncertain or not verified.**
+- **The screen-reader session** (`docs/ROADMAP.md` step 3's last item) needs a person: `docs/step3-evidence/sr-session.md` is the script
+  (23 items, NVDA with Chrome and VoiceOver with Safari); **not run, not verified** (question 175). What a screen reader speaks for the
+  dialogs, the switch, the map layer and the live regions is read from the DOM only.
+- Only Chromium (the harness's engine, software WebGL) was run: Firefox and Safari (`inert`, `aria-modal`, `:focus-within`, the
+  density query) and a GPU are not verified.
+- The context-loss case's count of three r128's "object does not belong to this context" warnings varies by run (24 and 20 measured); its
+  bound is 40.
+- Not in step 3 (recorded, with their questions): the acts' and phases' size (166); the plan links and the selection ring under a reading,
+  and S-4 (170 (b), (c), step 5); the focus ring's contrast on any ground and a message when a focused item leaves the map (172, step 5);
+  the Eyes button's name (173); the plateau reading at 720 px and below in Study (174); the ceiling-derived climbs in the opening's bar
+  (step 4, with their dating).
+
 ## 2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decisions 142-161)
 
 **Status: merged (#50). The build changed: `austerlitz-command-map.html` 1,927,346 bytes, md5 `af98f58641a29cb4934ca9d28bf86071`

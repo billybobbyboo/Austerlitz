@@ -294,7 +294,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   among them the A-3 target-size check, which holds the acts (15 px) and the phases (16 px) at their heights pending question 166. No limit
   moved in step 3.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified roadmap step 3 build (md5 `61bd7258...`, 2,035,968 bytes; re-baselined from the
+- `npm run check:baseline` passes only on the unmodified roadmap step 3 build (md5 `b10dc72c...`, 2,037,511 bytes; re-baselined from the
   roadmap step 2 build `af98f586...`, 1,927,346 bytes, itself from the step 1 build `7a86548c...` and the Stage 7D build `46773462...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
