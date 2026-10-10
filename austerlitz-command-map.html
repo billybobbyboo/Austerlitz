@@ -9306,8 +9306,9 @@ function startTour(){
 }
 function exitTour(){
   tourStep=-1; paintTimeline();
-  var b=document.getElementById("tourbar");
+  var b=document.getElementById("tourbar"), a=focusedEl(), had=!!(b&&a&&b.contains&&b.contains(a));
   if(b) b.hidden=true;
+  if(had) focusTo(["tourbtn","play","restore"]);   /* roadmap step 3 (SW-5): Leave the tour and Finish hid the bar with focus on it */
   clearOverlays();
   select(null,null);
   hideDispatch=false; syncVis();
@@ -9334,6 +9335,7 @@ function applyTour(){
   document.getElementById("tour-t").textContent=st.n;
   document.getElementById("tour-x").textContent=st.x;
   var pv=document.getElementById("tour-prev");
+  if(tourStep===0&&document.activeElement===pv) focusId("tour-next");   /* roadmap step 3 (SW-5): never on a button that becomes disabled */
   pv.disabled=(tourStep===0);
   pv.style.opacity=tourStep===0?0.4:1;
   document.getElementById("tour-next").textContent =
@@ -11030,6 +11032,7 @@ function buildUI(){
 
   document.getElementById("restore").addEventListener("click",showEverything);
   document.getElementById("tourbtn").addEventListener("click",function(){
+    if(OPENING.on) openingEnd("pointer");   /* roadmap step 3 (docs/FINAL_AUDIT.md SW-12): a click alone (a screen reader's) ends the opening first, as a press does */
     if(tourStep>=0) exitTour(); else startTour();
   });
   /* the tour's bar serves the opening too (Stage 7C): its buttons step whichever is showing */
@@ -11072,8 +11075,8 @@ function buildUI(){
   /* anything done outside the card is Explore, in place */
   window.addEventListener("pointerdown",function(e){
     if(firstRunOpen && !e.target.closest("#firstrun")) closeFirst(null); },{capture:true});
-  document.getElementById("sc-open").addEventListener("click",function(){ setPresentation("study"); paintDrawer(); });
-  document.getElementById("sc-clear").addEventListener("click",function(){ select(null,null); });
+  document.getElementById("sc-open").addEventListener("click",function(){ setPresentation("study"); paintDrawer(); focusTo(["drawer-back","play","restore"]); });
+  document.getElementById("sc-clear").addEventListener("click",function(){ select(null,null); if(!shown(document.activeElement)) focusTo(["play","restore"]); });   /* SW-5: the chip is gone */
   document.querySelectorAll(".plan-btn").forEach(function(b){
     b.addEventListener("click",function(){ setPlan(b.dataset.p); });
   });
@@ -11090,8 +11093,10 @@ function buildUI(){
 
   var pop=document.getElementById("layerpop"), popBtn=document.getElementById("layersbtn");
   function setPop(open){
+    var a=focusedEl(), had=!open&&!!(a&&pop.contains(a));
     pop.hidden=!open;
     popBtn.setAttribute("aria-expanded",String(open));
+    if(had) focusTo(["layersbtn","play","restore"]);   /* roadmap step 3 (SW-5): its x, Esc, Watch or Clean closed it with focus inside */
   }
   popBtn.addEventListener("click",function(e){ e.stopPropagation(); setPop(pop.hidden); });
   document.getElementById("layerclose").addEventListener("click",function(){ setPop(false); });
@@ -11106,6 +11111,7 @@ function buildUI(){
   });
   document.getElementById("vsclear").addEventListener("click",function(){
     clearViewshed(); syncViewBadge(); if(selection) paintDrawer();
+    if(!shown(document.activeElement)) focusTo(["play","restore"]);   /* SW-5: the badge is gone */
   });
   document.getElementById("drawer-close").addEventListener("click",function(){ select(null,null); });
   document.getElementById("srcbtn").addEventListener("click",function(){ openSources(); });
@@ -11186,6 +11192,25 @@ function frButtons(){ var fr=document.getElementById("firstrun"); if(!fr||!fr.qu
   return [].filter.call(fr.querySelectorAll("button"),function(b){ return !b.hidden&&!b.disabled; }); }
 function frHasFocus(){ var fr=document.getElementById("firstrun"), a=document.activeElement; return !!(fr&&a&&fr.contains&&fr.contains(a)); }
 function focusId(id){ var e=document.getElementById(id); if(e&&e.focus) e.focus({preventScroll:true}); }
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-5): where a focused control disappears (a panel closed, a bar hidden, a presentation that hides it),
+   focus goes to a named successor that is shown: shown(e) is true of an element connected, enabled, not inside anything hidden, inert, the
+   hidden rail or a closed dossier, visible and on screen; focusTo(list) focuses the first of the list (ids or elements) that is shown and
+   takes the focus, and returns it (else null, and focus stays where it was) */
+function shown(e){
+  if(!e||e.isConnected===false||e.disabled||typeof e.getBoundingClientRect!=="function") return false;
+  if(e.closest&&(e.closest("[hidden]")||e.closest("[inert]")||e.closest("body.rail-hidden .rail")||e.closest(".drawer:not(.on)"))) return false;
+  if(e.checkVisibility&&!e.checkVisibility({checkOpacity:true,checkVisibilityCSS:true})) return false;
+  var r=e.getBoundingClientRect(); if(!(r.width>0||r.height>0)) return false;
+  return r.right>0&&r.bottom>0&&r.left<window.innerWidth&&r.top<window.innerHeight;
+}
+function focusTo(list){
+  for(var i=0;i<list.length;i++){ var e=typeof list[i]==="string"?document.getElementById(list[i]):list[i];
+    if(!shown(e)||typeof e.focus!=="function") continue;
+    e.focus({preventScroll:true}); if(document.activeElement===e) return e; }
+  return null;
+}
+/* the focused element, when focus is on a control and not on the page */
+function focusedEl(){ var a=document.activeElement; return a&&a!==document.body&&a!==document.documentElement?a:null; }
 function openFirstRun(){
   var fr=document.getElementById("firstrun"); if(!fr||fr.hidden) return;
   firstRunOpen=true;
@@ -12432,6 +12457,8 @@ var PRESENT={
 function setPresentation(m){
   closeFirst(null);
   if(!PRESENT[m]) m="study";
+  var a=focusedEl(), vmb=!!(a&&a.classList&&a.classList.contains("vm-btn"));   /* roadmap step 3 (SW-5): read before anything is hidden */
+  if(m!=="study"&&window.__setPop) window.__setPop(false);   /* roadmap step 3 (docs/FINAL_AUDIT.md SW-9): the Layers panel closes with its opener */
   presentation=m;
   var b=document.body;
   b.classList.remove("pm-study","pm-watch","pm-map");
@@ -12446,6 +12473,11 @@ function setPresentation(m){
   syncViewmode();
   syncVis();
   syncSelChip();
+  /* SW-5: Watch's switch moved in the DOM drops the focus: back on the pressed button; a control the presentation hides (Clean hides the
+     timeline and Play) hands focus to what is shown */
+  if(vmb) focusTo([document.querySelector('.vm-btn[data-vm="'+m+'"]'),"restore","play"]);
+  else if(a&&a!==focusedEl()) focusTo([a,"play","restore"]);
+  else if(a&&!shown(a)) focusTo(["play","restore"]);
   if(typeof requestRender==="function") requestRender(2);
 }
 /* ---- Stage 3B: the docked layout (docs/STAGE3_SPEC.md section B.2; owner decisions 49, 54, 55, 58) ----
@@ -14717,6 +14749,44 @@ var AUSTERLITZ_DEBUG=(function(){
       tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id); syncFollow();
       ck("pointer: a mostly sideways wheel leaves the camera, Follow, the opening and the paper map as they are; a wheel over the map closes the first card where it stands, then zooms (docs/FINAL_AUDIT.md SW-8)",
         !bad.length, bad.length?bad.join("; "):side.length+" sideways wheels on the landscape, in the opening and on the paper map: nothing moved; the card closed by a wheel over the map, which zoomed"+(docked?"; a wheel over the Now tab left it open":""));
+    })();
+    /* roadmap step 3 (docs/FINAL_AUDIT.md SW-5, SW-9, SW-12): wherever a focused control disappears, focus goes to a named successor that is
+       shown, never left on a hidden element or dropped to the page; the Layers panel closes with Watch and Clean; the Guided tour button's
+       click alone ends the opening and begins the tour. Restored after */
+    (function(){
+      var bad=[], fr=document.getElementById("firstrun"), K0={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,c:clock,pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,sel:selection};
+      function aid(){ var a=document.activeElement; return a&&a!==document.body?(a.id||(a.dataset&&a.dataset.vm?"vm:"+a.dataset.vm:a.tagName)):"body"; }
+      function want(w,id){ var a=document.activeElement; if(aid()!==id||!shown(a)) bad.push(w+": focus on "+aid()+(shown(a)?"":" (not shown)")+", not "+id); }
+      function key(k){ var on=document.activeElement&&document.activeElement!==document.body?document.activeElement:window;
+        on.dispatchEvent(new KeyboardEvent("keydown",{key:k,bubbles:true,cancelable:true})); }
+      function fresh(){ if(OPENING.on) openingEnd("camera"); if(tourStep>=0) exitTour(); if(!document.getElementById("layerpop").hidden) window.__setPop(false);
+        setPresentation("study"); select(null,null); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); }
+      if(mode!=="terrain") setMode("terrain"); fresh();
+      startTour(); focusId("tour-exit"); document.getElementById("tour-exit").click(); want("Leave the tour","tourbtn");
+      fresh(); startTour(); tourGo(TOUR.length-1); finishTween(); focusId("tour-next"); document.getElementById("tour-next").click(); finishTween();
+      if(tourStep>=0) bad.push("Finish left the tour on"); want("the tour's Finish","tourbtn");
+      fresh(); startTour(); tourGo(1); finishTween(); focusId("tour-prev"); document.getElementById("tour-prev").click(); finishTween();
+      if(tourStep!==0) bad.push("Back did not return to stop 1"); want("the tour's Back to stop 1","tour-next");
+      fresh(); document.getElementById("layersbtn").click(); focusId("layerclose"); document.getElementById("layerclose").click(); want("the Layers panel's \u00d7","layersbtn");
+      document.getElementById("layersbtn").click(); document.getElementById("dwell").focus({preventScroll:true}); key("Escape");
+      if(!document.getElementById("layerpop").hidden) bad.push("Esc left the Layers panel open"); want("Esc in the Layers panel","layersbtn");
+      ["watch","map"].forEach(function(m){ fresh(); document.getElementById("layersbtn").click(); document.getElementById("dwell").focus({preventScroll:true}); setPresentation(m);
+        if(!document.getElementById("layerpop").hidden||document.getElementById("layersbtn").getAttribute("aria-expanded")!=="false") bad.push(LABELS.presentation[m].label+" left the Layers panel open (SW-9)");
+        want(LABELS.presentation[m].label+" with focus in the Layers panel",m==="map"?"restore":"play"); });
+      fresh(); setPresentation("watch"); select("f","sthilaire"); focusId("sc-clear"); document.getElementById("sc-clear").click(); want("the selection chip's \u00d7","play");
+      fresh(); setPresentation("watch"); select("f","sthilaire"); focusId("sc-open"); document.getElementById("sc-open").click(); want("the selection chip's Open the dossier","drawer-back");
+      fresh(); computeViewshed(FEATURES[0].p,EYE_OBSERVER_M); syncViewBadge(); focusId("vsclear"); document.getElementById("vsclear").click(); want("the sightlines' Clear","play");
+      fresh(); var wb=document.querySelector('.vm-btn[data-vm="watch"]'); wb.focus({preventScroll:true}); wb.click(); want("Watch's switch moved into the timeline","vm:watch");
+      var cb=document.querySelector('.vm-btn[data-vm="map"]'); cb.focus({preventScroll:true}); cb.click(); want("Clean from its own button","restore");
+      fresh(); fr.hidden=false; openFirstRun(); key("3"); if(presentation!=="map") bad.push("3 from the card is "+presentation); want("3 from the first card","restore");
+      fresh(); fr.hidden=false; openFirstRun(); key("h"); want("H from the first card","restore");
+      fresh(); openingStart(); finishTween(); document.getElementById("tourbtn").click(); finishTween();
+      if(OPENING.on||OPENING.play||tourStep!==0||speed!==0.5) bad.push("the Guided tour button's click during the opening: opening "+OPENING.on+", tour stop "+(tourStep+1)+", speed "+speed+" (SW-12)");
+      fresh(); setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
+      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv;
+      tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id); syncFollow();
+      ck("focus: each way a focused control disappears leaves it on a named, shown successor: Leave the tour and Finish (Guided tour), the tour's Back at stop 1 (Next), the Layers \u00d7 and Esc (Layers), Watch and Clean with the panel open (closed), the chip's \u00d7 (Play) and Open the dossier (Back), the sightlines' Clear (Play), Watch's switch moved (the pressed button), Clean, 3 and H (Show interface); the Guided tour button during the opening ends it and begins the tour (docs/FINAL_AUDIT.md SW-5, SW-9, SW-12)",
+        !bad.length, bad.length?bad.join("; "):"17 ways, each on its successor");
     })();
     /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decisions 111, 112, 114-116, 118): the opening, begun from the reopened card's primary
        action at 04:00 in Study on the landscape. Every step is its tour stop (the clock stopClock, the theme, the camera presetFrame(stopCam),
