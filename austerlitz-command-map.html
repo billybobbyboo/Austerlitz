@@ -692,6 +692,8 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 .ml-item.ml-wrap{white-space:normal}
 .ml-item:focus{outline:none}
 .ml-item:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ml-item.ml-forced{z-index:1}   /* roadmap step 3 (A-2): the focused item, drawn over the others where no room was free */
+#maplayer:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}   /* the layer's own ring inside the screen */
 .mlt{font-size:var(--t-ui);line-height:16px;padding:0 5px 1px}
 .mlt-serif{font-family:var(--serif)}
 .mlt-small{font-size:var(--t-small);line-height:15px}
@@ -8670,6 +8672,9 @@ function evNoteParts(e,L){ var w=evWindow(e), n=[];
   if(e.claim==="recon") n.push(L.recon); return n; }
 function evNote(e){ var n=evNoteParts(e,LABELS.event); return n.length?" ("+n.join("; ")+")":""; }
 function evTag(e){ var n=evNoteParts(e,LABELS.event.tag); return n.length?'<small class="evn">'+esc(n.join("; "))+'</small>':""; }
+/* roadmap step 3 (handed on by step 2): an event's drawn map label carries its note too, in the shortest form (decision 145's order: the
+   arrows' "(disputed)" first), so a sighted reader sees what its accessible name says */
+function evMapText(e){ var n=evNoteParts(e,LABELS.event.map); return e.n+(n.length?" ("+n.join("; ")+")":""); }
 function evWeight(e,t){
   var w=evWindow(e), lead=14, tail=26;
   if(t>=w[0]&&t<=w[1]) return 1;
@@ -9742,6 +9747,8 @@ function mlItem(key,cls){
     e.addEventListener("keydown",function(ev){
       if((ev.key==="Enter"||ev.key===" ")&&it.pick){ ev.preventDefault(); ev.stopPropagation(); select(it.pick.kind,it.pick.id); }
     });
+    /* roadmap step 3 (A-2): a click alone (a screen reader's or speech input's activation; the pointer never reaches the layer) selects too */
+    e.addEventListener("click",function(){ if(it.pick) select(it.pick.kind,it.pick.id); });
   }
   it.frame=ML.frame;
   return it;
@@ -9768,7 +9775,9 @@ function mlCollect(){
   var out=[], paper=(mode==="staff"), labels=textOn(), K=paper?"paper":"dark";
   var PL=TOKENS.sym.plate[K], LB=TOKENS.sym.label[K], PC=TOKENS.sym.place[K];
   var fam=(highlight&&Object.keys(highlight).length)?highlight:null;
-  var foc=(ML.focus&&ML.items[ML.focus])?ML.items[ML.focus].fid:null;
+  /* roadmap step 3 (A-2): the keyboard's focus no longer brings an item forward in the layout (it took room from the others, and was still
+     dropped where none was free); mlLayout draws the focused item last, over the others, wherever the layout leaves it */
+  var foc=null;
   function isSel(k,id){ return !!(selection&&selection.kind===k&&selection.id===id); }
   function add(it,o){
     it.cat=o.cat; it.pri=o.pri; it.base=o.base===undefined?o.pri:o.base; it.keep=!!o.keep; it.occl=o.occl!==false; it.acl=o.acl||4;
@@ -9811,8 +9820,8 @@ function mlCollect(){
   /* the moments of the battle: every live event's label is kept (decision 39) */
   if(eventGroup&&eventGroup.visible) eventMarks.forEach(function(k){ if(!k.labelOn) return;
     var sel=isSel("e",k.e.id);
-    text("e:"+k.e.id,"event","mlt-serif",k.e.n,LB.annotation,k.world,{pri:sel?0:4+(1-evWeight(k.e,clock))*0.5,base:4,keep:true,r:2.1,acl:3,
-      pick:{kind:"e",id:k.e.id},aria:"Event, "+evTimeText(k.e)+": "+k.e.n+evNote(k.e)});   /* roadmap step 2: the note in its name; its drawn words unchanged (no layout change) */
+    text("e:"+k.e.id,"event","mlt-serif",evMapText(k.e),LB.annotation,k.world,{pri:sel?0:4+(1-evWeight(k.e,clock))*0.5,base:4,keep:true,r:2.1,acl:3,
+      pick:{kind:"e",id:k.e.id},aria:"Event, "+evTimeText(k.e)+": "+evMapText(k.e)+(evNoteParts(k.e,LABELS.event).length?", "+evNoteParts(k.e,LABELS.event).join("; "):"")});   /* roadmap step 2: the note in its name; step 3: its drawn words carry the short note too (WCAG 2.5.3: the name begins with them) */
   });
   /* the plateau reading, over the northern part of its outline: a derived reading, marked "derived" in its words and its name in every
      view, drawn in the phases the tagged reading is (0-6; owner decision 126, docs/FINAL_AUDIT.md H-3) */
@@ -9989,7 +9998,10 @@ function mlLayout(){
     if(it.wrapped){ it.el.classList.remove("ml-wrap"); it.el.style.maxWidth=""; it.wrapped=false; it.dirty=true; }   /* each pass tries it whole first */
     if(it.dirty) dirty.push(it);
   });
-  for(var k in ML.items){ var q=ML.items[k]; if(q.eFrame!==ML.frame&&q.disp){ q.el.style.display="none"; q.disp=false; q.on=false; q.el.classList.remove("on"); q.tx=null; } }
+  /* roadmap step 3 (docs/FINAL_AUDIT.md A-2, SW-5): an item that leaves the map with the focus on it hands the focus to the next stop in the
+     layer's order that is still on the map, else to the layer itself, never to the page */
+  var lostFocus=null;
+  for(var k in ML.items){ var q=ML.items[k]; if(q.eFrame!==ML.frame&&q.disp){ if(document.activeElement===q.el) lostFocus=q; q.el.style.display="none"; q.disp=false; q.on=false; q.el.classList.remove("on"); q.tx=null; } }
   dirty.forEach(function(it){ var r=it.el.getBoundingClientRect(); it.w=Math.ceil(r.width||0); it.h=Math.ceil(r.height||0); it.dirty=false; });
   var maxG=mlMaxG(), obst=mlObstacles(VW,VH);
   elig.forEach(function(it){ it.occ=!it.keep&&it.occl&&mlOccluded(it.world,maxG); if(it.occ){ it.state="occluded"; st.occluded++; } });
@@ -9999,6 +10011,19 @@ function mlLayout(){
     if(mlPlaceItem(it,VW,VH,panels,obst)||(it.keep&&mlWrapPlace(it,VW,VH,panels,obst))){ st.placed++; if(it.lead) st.leaders++; }
     else { it.state="dropped"; st.dropped++; st.dropped_.push(it.key); if(it.keep) st.keepMissing.push(it.key); }
   });
+  /* roadmap step 3 (docs/FINAL_AUDIT.md A-2; WCAG 2.4.7, 2.4.11): the item with the keyboard focus is always drawn. Laid out last, so that
+     nothing else moves: dropped (no free room) or behind the ground, it is drawn over the others at its anchor, above it or below it as a panel
+     allows, inside the screen, with a leader; the measures count the layout as it was (st) */
+  var fa=document.activeElement, fit=null;
+  if(fa&&fa.parentNode===ML.root) for(var fk in ML.items){ if(ML.items[fk].el===fa){ fit=ML.items[fk]; break; } }
+  elig.forEach(function(it){ if(it.forced){ it.forced=false; it.el.classList.remove("ml-forced"); } });
+  if(fit&&fit.eFrame===ML.frame&&fit.state!=="on"){
+    var fw=fit.w||40, fh=fit.h||16, cands=[[fit.sx-fw/2,fit.sy-fh-10],[fit.sx-fw/2,fit.sy+10],[fit.sx+10,fit.sy-fh/2],[fit.sx-fw-10,fit.sy-fh/2]], pick=null;
+    cands.forEach(function(c){ if(pick) return; var x=Math.max(4,Math.min(VW-fw-4,c[0])), y=Math.max(4,Math.min(VH-fh-4,c[1])), r=[x,y,x+fw,y+fh];
+      if(!panels.some(function(q){ return r[0]<q[2]&&r[2]>q[0]&&r[1]<q[3]&&r[3]>q[1]; })) pick=r; });
+    if(!pick){ var x0=Math.max(4,Math.min(VW-fw-4,cands[0][0])), y0=Math.max(4,Math.min(VH-fh-4,cands[0][1])); pick=[x0,y0,x0+fw,y0+fh]; }
+    fit.rect=pick; fit.state="on"; fit.lead=true; fit.forced=true; fit.el.classList.add("ml-forced");
+  }
   /* write: positions, visibility, the leader lines and markers */
   var K=mode==="staff"?"paper":"dark", C={cs:TOKENS.sym.plate[K],co:TOKENS.sym.label[K].annotation}, s=[];
   elig.forEach(function(it){
@@ -10025,6 +10050,8 @@ function mlLayout(){
     var act=document.activeElement, back=act&&ML.root.contains&&ML.root.contains(act)?act:null;
     fo.forEach(function(it){ ML.root.appendChild(it.el); });
     if(back&&document.activeElement!==back&&back.focus) back.focus({preventScroll:true}); }
+  if(lostFocus){ var nxt=fo.filter(function(it){ return it.base>=lostFocus.base; })[0]||fo[0];
+    if(nxt&&nxt.el.focus) nxt.el.focus({preventScroll:true}); else if(ML.root.focus) ML.root.focus({preventScroll:true}); }
   st.ms=performance.now()-t0;
   /* nodes drawn now: the layer, its lines and every item displayed (a hidden item is display:none and inert) */
   st.nodes=2+(ML.lines&&ML.lines.childNodes?ML.lines.childNodes.length:0);
@@ -10782,6 +10809,7 @@ var LABELS={
   /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): the note an event carries where it is named, and the mark on the label of
      an arrow the data calls unsettled: marks of what the data says (EVENTS[].claim, OVERLAYS' interp), no claim of their own */
   event:{disputed:"the hour is disputed", interval:"an interval, not a timestamp", recon:"a reconstruction", tag:{disputed:"hour disputed", interval:"interval", recon:"reconstruction"},
+    map:{disputed:"disputed", interval:"interval", recon:"reconstruction"},   /* roadmap step 3: the drawn map label's note (evMapText) */
     sameStart:"Starting at the same minute"},   /* roadmap step 3 (A-3): the events sharing a marker's place on the timeline (dossierEvent) */
   arrow:{unsettled:"disputed"},   /* owner decision 145 (question 145, 8 October 2026): the shorter form, so the 07:00 place name Augezd is drawn again */
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
@@ -15176,6 +15204,23 @@ var AUSTERLITZ_DEBUG=(function(){
       ck("reduced motion followed live: turned on mid-stretch the opening is at its step, nothing playing, \u00bd\u00d7 back; mid-glide the glide is at its end; turned off, motion again (docs/FINAL_AUDIT.md S-6)",
         !bad.length, bad.length?bad.join("; "):"the stretch to step 2 cut at its step; the glide to the Allied vantage ended at its end; RM followed both ways");
     })();
+    /* roadmap step 3 (handed on by step 2): an event's drawn map label carries its note's word ("(disputed)", "(interval)", "(reconstruction)")
+       exactly when it has one, and its accessible name begins with its drawn words (WCAG 2.5.3), then the note in full. At each event's start,
+       on the landscape at the Overview, the label read whatever its placement */
+    (function(){
+      var bad=[], n=0, noted=0, keep=clock, md=mode;
+      if(mode!=="terrain") setMode("terrain");
+      EVENTS.forEach(function(e){ setClock(evWindow(e)[0],{instant:true,camera:false}); updateVisibility(); mlLayout();
+        var it=ML.items["e:"+e.id]; if(!it||!it.el||it.eFrame!==ML.frame) return; n++;
+        var parts=evNoteParts(e,LABELS.event.map), txt=it.el.textContent, want=e.n+(parts.length?" ("+parts.join("; ")+")":""), aria=it.el.getAttribute("aria-label")||"";
+        if(parts.length) noted++;
+        if(txt!==want) bad.push(e.id+": drawn \u201c"+txt+"\u201d, not \u201c"+want+"\u201d");
+        if(aria.indexOf("Event, "+evTimeText(e)+": "+txt)!==0) bad.push(e.id+": its name does not begin with its drawn words ("+aria+")");
+        var longP=evNoteParts(e,LABELS.event); if(longP.length&&aria.indexOf(longP.join("; "))<0) bad.push(e.id+": its name lacks the note in full"); });
+      setClock(keep,{instant:true,force:true,camera:false}); finishTween(); if(mode!==md) setMode(md);
+      ck("map layer: an event's drawn label carries its note's word ((disputed), (interval), (reconstruction)) exactly when it has one, and its accessible name begins with its drawn words, then the note in full (handed on by roadmap step 2; WCAG 2.5.3)",
+        !bad.length&&n>0&&noted>0, bad.length?bad.slice(0,6).join("; "):n+" event labels at their starts, "+noted+" with a note");
+    })();
     /* roadmap step 3 (decision 159; handed on by step 2): in Watch the caption's derived readings stand before the event names and are never cut:
        every 5 minutes of the day, each reading shown lies inside #tb-cap's box, whole (no ellipsis of its own) and before the names; every
        event's tag inside the box too. Restored after */
@@ -15223,6 +15268,43 @@ var AUSTERLITZ_DEBUG=(function(){
       setPresentation(K0.pres); tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id);
       ck("target size (WCAG 2.5.8): every target of the timeline's control row and its rail, the rail's tabs and Sources button, the dossier's bar, the selection chip and the sheets' and the layers panel's close buttons at least 24 x 24 px and topmost at its centre; the acts, the phases and the event markers named exceptions (docs/FINAL_AUDIT.md A-3)",
         !bad.length&&n>0, (bad.length?"WRONG: "+bad.join("; ")+"; ":"")+n+" targets measured at "+window.innerWidth+" x "+window.innerHeight+"; exceptions: "+ex.join(", "));
+    })();
+    /* roadmap step 3 (docs/FINAL_AUDIT.md A-2): every keyboard stop of the map layer, focused, is drawn: on, at full opacity, its box inside the
+       screen and clear of the panels where the screen allows; every other item keeps its place while it has focus; blurred, the layout is as
+       before; an item leaving the map with the focus hands it to the next stop or the layer, never the page; a click alone on an item selects
+       it. At 04:00 on the landscape at the Overview and on the paper map. Restored after */
+    (function(){
+      var bad=[], n=0, forced=0, K0={c:clock,mode:mode,p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,sel:selection,ms:MAPCAM.state()};
+      select(null,null);
+      [["terrain",function(){ setMode("terrain"); setClock(T_MIN,{instant:true,force:true,camera:false}); placeCamera(VANTAGE.plan); }],
+       ["staff",function(){ setMode("staff"); setClock(T_MIN,{instant:true,force:true,camera:false}); MAPCAM.frameField(true); }]].forEach(function(st){
+        st[1](); updateVisibility(); mlLayout();
+        var before=Object.keys(ML.items).filter(function(k){ return ML.items[k].eFrame===ML.frame; }).map(function(k){ return k+":"+ML.items[k].state+":"+(ML.items[k].state==="on"?(ML.items[k].rect||[]).map(Math.round).join(","):""); }).join("|");
+        var stops=Object.keys(ML.items).filter(function(k){ var it=ML.items[k]; return it.focusable&&it.eFrame===ML.frame; });
+        stops.forEach(function(k){ var it=ML.items[k]; it.el.focus({preventScroll:true}); mlLayout(); n++; if(it.forced) forced++;
+          var r=it.el.getBoundingClientRect(), op=+getComputedStyle(it.el).opacity, vw=renderer.domElement.clientWidth||innerWidth, vh=renderer.domElement.clientHeight||innerHeight;
+          if(document.activeElement!==it.el) bad.push(st[0]+" "+k+": the focus did not stay on it");
+          else if(it.state!=="on"||op<0.999||r.width<=0) bad.push(st[0]+" "+k+": focused but not drawn ("+it.state+", opacity "+op+")");
+          else if(r.left<0||r.top<0||r.right>vw||r.bottom>vh) bad.push(st[0]+" "+k+": focused, drawn outside the screen");
+          var others=Object.keys(ML.items).filter(function(q){ return q!==k&&ML.items[q].eFrame===ML.frame; }).map(function(q){ return q+":"+ML.items[q].state+":"+(ML.items[q].state==="on"?(ML.items[q].rect||[]).map(Math.round).join(","):""); });
+          var b0=before.split("|").filter(function(x){ return x.indexOf(k+":")!==0; }).join("|");
+          if(others.join("|")!==b0) bad.push(st[0]+" "+k+": another item moved while it had focus"); });
+        if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); mlLayout();
+        var after=Object.keys(ML.items).filter(function(k){ return ML.items[k].eFrame===ML.frame; }).map(function(k){ return k+":"+ML.items[k].state+":"+(ML.items[k].state==="on"?(ML.items[k].rect||[]).map(Math.round).join(","):""); }).join("|");
+        if(after!==before) bad.push(st[0]+": the layout after the focus left is not as before"); });
+      /* an item that leaves the map with the focus: the clock moved past an event's window */
+      setMode("terrain"); setClock(T_MIN,{instant:true,force:true,camera:false}); placeCamera(VANTAGE.plan); updateVisibility(); mlLayout();
+      var ek=Object.keys(ML.items).filter(function(k){ return /^e:/.test(k)&&ML.items[k].focusable&&ML.items[k].eFrame===ML.frame; })[0];
+      if(ek){ ML.items[ek].el.focus({preventScroll:true}); setClock(T_MAX,{instant:true,camera:false}); updateVisibility(); mlLayout();
+        var a=document.activeElement; if(!a||a===document.body||!(a===ML.root||ML.root.contains(a))) bad.push("an event label leaving the map dropped the focus to the page"); }
+      else bad.push("no event label on the map at 04:00");
+      var ck0=Object.keys(ML.items).filter(function(k){ return /^c:|^n:/.test(k)&&ML.items[k].pick&&ML.items[k].eFrame===ML.frame; })[0];
+      if(ck0){ select(null,null); ML.items[ck0].el.click(); if(!selection||selection.id!==ML.items[ck0].pick.id) bad.push(ck0+": a click alone did not select it"); }
+      if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); select(null,null);
+      if(mode!==K0.mode) setMode(K0.mode); if(mode==="staff") MAPCAM.restore(K0.ms); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
+      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv; if(K0.sel) select(K0.sel.kind,K0.sel.id); syncFollow();
+      ck("map layer: every keyboard stop, focused, is drawn on screen at full opacity while every other item keeps its place, and the layout is as before when it leaves; an item leaving the map hands the focus on; a click alone selects (docs/FINAL_AUDIT.md A-2; WCAG 2.4.7, 2.4.11)",
+        !bad.length&&n>0, bad.length?bad.slice(0,6).join("; "):n+" stops focused on the landscape and the paper map, "+forced+" of them dropped and drawn over the others while focused");
     })();
     /* roadmap step 3 (docs/FINAL_AUDIT.md A-3): every event has a pointer path: its marker is the topmost element at its centre, or the dossier
        of an event that starts at the same minute names it with a button that selects it */

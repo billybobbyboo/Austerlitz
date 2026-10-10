@@ -686,6 +686,8 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 .ml-item.ml-wrap{white-space:normal}
 .ml-item:focus{outline:none}
 .ml-item:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ml-item.ml-forced{z-index:1}   /* roadmap step 3 (A-2): the focused item, drawn over the others where no room was free */
+#maplayer:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}   /* the layer's own ring inside the screen */
 .mlt{font-size:var(--t-ui);line-height:16px;padding:0 5px 1px}
 .mlt-serif{font-family:var(--serif)}
 .mlt-small{font-size:var(--t-small);line-height:15px}
