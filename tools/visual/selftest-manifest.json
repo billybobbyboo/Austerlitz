@@ -1,6 +1,6 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 61bd7258820f878c0a52eceba8ad502d (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "61bd7258820f878c0a52eceba8ad502d",
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build b10dc72cb9af5900f7cb0b57e3488e91 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "b10dc72cb9af5900f7cb0b57e3488e91",
  "count": 241,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
@@ -227,7 +227,7 @@
   "reduced motion followed live: turned on mid-stretch the opening is at its step, nothing playing, ½× back; mid-glide the glide is at its end; turned off, motion again (docs/FINAL_AUDIT.md S-6)",
   "opening and tour: shown under everyone's reading; the visitor's reading given back on every way out (skip, finish, the camera, a key, a press, leaving the tour), unless the visitor chose a reading meanwhile (docs/FINAL_AUDIT.md SW-11)",
   "map layer: an event's drawn label carries its note's word ((hour disputed), (interval), (reconstruction)) exactly when it has one, and its accessible name begins with its drawn words, then the note in full (handed on by roadmap step 2; WCAG 2.5.3)",
-  "caption (decision 159): in Watch the derived readings stand before the event names, each shown whole and inside the caption's box, the plateau's whenever it is due, every 5 minutes of the day and at once when Study turns to Watch; a shown event's tag inside it and whole (handed on by roadmap step 2)",
+  "caption (decision 159): in Watch the derived readings stand before the event names, each shown whole and inside the caption's box, the plateau's whenever it is due, every 5 minutes of the day, in a dwell at each shared start and at once when Study turns to Watch; every shown event's tag inside it and whole (handed on by roadmap step 2)",
   "target size (WCAG 2.5.8): every target of the timeline's control row and its rail, the rail's tabs and Sources button, the dossier's bar, the selection chip and the sheets' and the layers panel's close buttons at least 24 x 24 px and topmost at its centre; not yet: the acts and the phases (question 166) and the event markers (question 167), held at their heights (docs/FINAL_AUDIT.md A-3)",
   "map layer: every keyboard stop, focused, is drawn on screen at full opacity and topmost (clear of the panels wherever a place beside it is free) while every other item keeps its place, and the layout is as before when it leaves; an item leaving the map hands the focus on; a click alone selects (docs/FINAL_AUDIT.md A-2; WCAG 2.4.7, 2.4.11)",
   "events: every event has a pointer path, its own marker or the dossier of an event starting at the same minute whose marker a press reaches (docs/FINAL_AUDIT.md A-3)",
