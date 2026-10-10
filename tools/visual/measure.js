@@ -286,7 +286,9 @@
     var shown=function(e){ if(!e) return false; var cs=getComputedStyle(e); return cs.display!=="none"&&cs.visibility!=="hidden"&&e.getBoundingClientRect().width>0; };
     return {height:shown(tb)?+tb.getBoundingClientRect().height.toFixed(1):null, hasRow:!!document.getElementById("tb-vm"),
       switchInRow:!!(vm&&vm.closest&&vm.closest(".tb-top")), switchOpacity:vm?+getComputedStyle(vm).opacity:null,
-      capDerived:d?shown(d):null};
+      /* roadmap step 3 (decision 159): shown and not cut: inside the caption's box and whole (no ellipsis of its own) */
+      capDerived:d?(shown(d)&&(function(){ var c=document.getElementById("tb-cap").getBoundingClientRect(), r=d.getBoundingClientRect();
+        return r.left>=c.left-0.5&&r.right<=c.right+0.5&&d.scrollWidth<=d.clientWidth+1; })()):null};
   }
   function phaseLabels(){
     if(!document.getElementById("tb-vm")||typeof setClock!=="function") return null;

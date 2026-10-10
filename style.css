@@ -329,11 +329,22 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
   border-top:7px solid var(--text);transform:translateX(-50%);pointer-events:none}
 .spinemark[hidden]{display:none}
 /* the caption: the act, the phase and the live event (and, where no Now tab is shown, the derived readings) */
-.tb-cap{flex:1 1 160px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:var(--t-ui);color:var(--text-muted)}
-.tb-cap .act{color:var(--text-hi);letter-spacing:.05em}
-.tb-cap .ev{color:var(--text-hi)}
+.tb-cap{flex:1 1 160px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:var(--t-ui);color:var(--text-muted);
+  display:flex;align-items:baseline}
+/* roadmap step 3 (decision 159): the caption's parts as boxes, which give up their room in order: the phase's title first, then the events'
+   names; the act, the separators, the events' tags and the derived readings (before the names where the caption shows them) keep theirs */
+.tb-cap>span{flex:none}
+.tb-cap .cap-ph{flex:0 1000 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.tb-cap .act{flex:0 100 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;color:var(--text-hi);letter-spacing:.05em}   /* the act shrinks after the phase (both are drawn whole on the track) */
+.tb-cap .fit-off{display:none}   /* given way whole (app.js fitCaption) */
+.tb-cap .ev{flex:0 1 auto;min-width:0;display:inline-flex;align-items:baseline;overflow:hidden;color:var(--text-hi)}
+.tb-cap .evt{flex:0 1 auto;min-width:1.5em;overflow:hidden;text-overflow:ellipsis}
+.tb-cap .evs{flex:none;white-space:pre}
+
 .tb-cap .sep{padding:0 7px}
-.tb-cap .der small,.tb-cap .ev small.evn{font-size:var(--t-micro);letter-spacing:.07em;margin-right:4px;border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px}
+.tb-cap .der small{font-size:var(--t-micro);letter-spacing:.07em;margin-right:4px;border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px}
+/* the event's tag: its own box, which never shrinks; 7 px for the space its trailing space gave before the name had a box (roadmap step 3) */
+.tb-cap .ev small.evn{flex:none;font-size:var(--t-micro);letter-spacing:.07em;margin-right:7px;border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px}
 body.pm-study:not(.no-dispatch) .tb-cap .der,body.pm-study:not(.no-dispatch) .tb-cap .der-sep{display:none}
 /* Watch's presentation switch, in the control row at full opacity (decision 60) */
 .tb-vm{display:none;flex:0 0 auto}

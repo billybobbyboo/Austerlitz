@@ -335,11 +335,22 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
   border-top:7px solid var(--text);transform:translateX(-50%);pointer-events:none}
 .spinemark[hidden]{display:none}
 /* the caption: the act, the phase and the live event (and, where no Now tab is shown, the derived readings) */
-.tb-cap{flex:1 1 160px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:var(--t-ui);color:var(--text-muted)}
-.tb-cap .act{color:var(--text-hi);letter-spacing:.05em}
-.tb-cap .ev{color:var(--text-hi)}
+.tb-cap{flex:1 1 160px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:var(--t-ui);color:var(--text-muted);
+  display:flex;align-items:baseline}
+/* roadmap step 3 (decision 159): the caption's parts as boxes, which give up their room in order: the phase's title first, then the events'
+   names; the act, the separators, the events' tags and the derived readings (before the names where the caption shows them) keep theirs */
+.tb-cap>span{flex:none}
+.tb-cap .cap-ph{flex:0 1000 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.tb-cap .act{flex:0 100 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;color:var(--text-hi);letter-spacing:.05em}   /* the act shrinks after the phase (both are drawn whole on the track) */
+.tb-cap .fit-off{display:none}   /* given way whole (app.js fitCaption) */
+.tb-cap .ev{flex:0 1 auto;min-width:0;display:inline-flex;align-items:baseline;overflow:hidden;color:var(--text-hi)}
+.tb-cap .evt{flex:0 1 auto;min-width:1.5em;overflow:hidden;text-overflow:ellipsis}
+.tb-cap .evs{flex:none;white-space:pre}
+
 .tb-cap .sep{padding:0 7px}
-.tb-cap .der small,.tb-cap .ev small.evn{font-size:var(--t-micro);letter-spacing:.07em;margin-right:4px;border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px}
+.tb-cap .der small{font-size:var(--t-micro);letter-spacing:.07em;margin-right:4px;border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px}
+/* the event's tag: its own box, which never shrinks; 7 px for the space its trailing space gave before the name had a box (roadmap step 3) */
+.tb-cap .ev small.evn{flex:none;font-size:var(--t-micro);letter-spacing:.07em;margin-right:7px;border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px}
 body.pm-study:not(.no-dispatch) .tb-cap .der,body.pm-study:not(.no-dispatch) .tb-cap .der-sep{display:none}
 /* Watch's presentation switch, in the control row at full opacity (decision 60) */
 .tb-vm{display:none;flex:0 0 auto}
@@ -8658,7 +8669,7 @@ function evNoteParts(e,L){ var w=evWindow(e), n=[];
   if(e.claim==="disputed") n.push(L.disputed); else if(w[0]!==w[1]) n.push(L.interval);
   if(e.claim==="recon") n.push(L.recon); return n; }
 function evNote(e){ var n=evNoteParts(e,LABELS.event); return n.length?" ("+n.join("; ")+")":""; }
-function evTag(e){ var n=evNoteParts(e,LABELS.event.tag); return n.length?'<small class="evn">'+esc(n.join("; "))+'</small> ':""; }
+function evTag(e){ var n=evNoteParts(e,LABELS.event.tag); return n.length?'<small class="evn">'+esc(n.join("; "))+'</small>':""; }
 function evWeight(e,t){
   var w=evWindow(e), lead=14, tail=26;
   if(t>=w[0]&&t<=w[1]) return 1;
@@ -11256,6 +11267,7 @@ function buildUI(){
     landCam.aspect=window.innerWidth/window.innerHeight;
     landCam.updateProjectionMatrix();
     renderer.setPixelRatio(pxRatio());   /* roadmap step 3 (SW-10): a window moved to a screen of another density */
+    fitCaption();   /* roadmap step 3 (decision 159): the caption's room changed */
     renderer.setSize(window.innerWidth,window.innerHeight);
     sizeFX();
     syncViewOffset(true);   /* Stage 3D: the focus at the new free rectangle's centre at once */
@@ -11496,21 +11508,44 @@ function paintSituation(){
   /* D-6: from the model alone (plateauFlatFor); before 05:00 it cannot reach the hour, and it is asked only where the reading is shown */
   var flatFor=(curPhase<=PLATEAU_LAST&&onH>0&&clock-T_MIN>=60)?plateauFlatFor(onH,clock):0;
   var dw=dwellEvents();   /* Stage 4D: during a dwell the caption names the event(s) the clock stopped for */
+  /* roadmap step 3 (decision 159): where the caption shows the derived readings (Watch, and Study with the dispatch hidden: the tour, D), they
+     stand before the event names, so the caption's room runs out on the phase's title and the names, never on a reading */
+  var derFirst=presentation!=="study"||!!hideDispatch;
   var key=[act.id,curPhase,top?top.id:"-",Math.round(onH/1000),cut?1:0,
-           flatFor>=60?1:0,playing?1:0,dw?dw.map(function(e){ return e.id; }).join(","):"-"].join("|");
+           flatFor>=60?1:0,playing?1:0,dw?dw.map(function(e){ return e.id; }).join(","):"-",derFirst?1:0].join("|");
   if(key===_sitKey) return;
   _sitKey=key;
   var der=(curPhase<=PLATEAU_LAST&&onH>0)?'<span class="der" title="'+esc(FLAT_NOTE)+'"><small>derived</small> on the heights: Allied &asymp; '+
       onH.toLocaleString()+(flatFor>=60?' <em>plotted strength unchanged</em>':'')+'</span>':"";
   var cutH=cut?'<span class="cut der" title="'+esc(SEP_NOTE)+'"><small>derived</small> centre separation detected</span>':"";
-  var c='<span class="act">'+esc(act.n.toUpperCase())+'</span><span class="sep">&middot;</span><span>'+esc(PHASES[curPhase].title)+'</span>';
-  /* roadmap step 2 (docs/FINAL_AUDIT.md H-15; decision 125 (a)): each event named with its note's tag before the name, where the caption's ellipsis cannot cut it */
-  if(dw&&dw.length) c+='<span class="sep">&middot;</span><span class="ev dwell">'+dw.map(function(e){ return evTag(e)+esc(e.n); }).join("; ")+'</span>';
-  else if(top) c+='<span class="sep">&middot;</span><span class="ev">'+evTag(top)+esc(top.n)+'</span>';
-  if(der) c+='<span class="sep der-sep">&middot;</span>'+der;
-  if(cutH) c+='<span class="sep der-sep">&middot;</span>'+cutH;
-  if(cap){ cap.innerHTML=c; cap.title=cap.textContent; }
+  var c='<span class="act">'+esc(act.n.toUpperCase())+'</span><span class="sep">&middot;</span><span class="cap-ph">'+esc(PHASES[curPhase].title)+'</span>';
+  /* roadmap step 2 (docs/FINAL_AUDIT.md H-15; decision 125 (a)): each event named with its note's tag before the name, where the caption's ellipsis cannot cut it;
+     roadmap step 3: the tag and the name each a box of their own (style.css: the name shortens, the tag does not) */
+  var evH="";
+  if(dw&&dw.length) evH='<span class="sep">&middot;</span><span class="ev dwell">'+dw.map(function(e){ return evTag(e)+'<span class="evt">'+esc(e.n)+'</span>'; }).join('<span class="evs">; </span>')+'</span>';
+  else if(top) evH='<span class="sep">&middot;</span><span class="ev">'+evTag(top)+'<span class="evt">'+esc(top.n)+'</span></span>';
+  var derH=(der?'<span class="sep der-sep">&middot;</span>'+der:"")+(cutH?'<span class="sep der-sep">&middot;</span>'+cutH:"");
+  c+=derFirst?derH+evH:evH+derH;
+  if(cap){ cap.innerHTML=c; cap.title=cap.textContent; fitCaption(); }
   if(host) host.innerHTML=der+cutH+(top?'<span class="ev">'+esc(top.n+evNote(top))+'</span>':'')+'<span class="why">'+esc(top?top.why:act.line)+'</span>';
+}
+/* roadmap step 3 (decision 159): where the caption shows the derived readings, none is ever drawn cut. The phase's title, then the act, then the
+   events' names shrink first (style.css); if the parts that do not shrink still overflow the caption's box, they give way whole, in this
+   order: the plateau reading's "plotted strength unchanged", the second reading (the centre separation), then the events with their tags;
+   the first reading always stands whole. What is hidden stays in the caption's title, and in the Now tab. Called after a paint and a resize */
+function fitCaption(){
+  var cap=document.getElementById("tb-cap"); if(!cap||!cap.querySelectorAll||typeof cap.getBoundingClientRect!=="function") return;
+  var gone=cap.querySelectorAll(".fit-off"); for(var i=0;i<gone.length;i++) gone[i].classList.remove("fit-off");
+  function over(){ var cr=cap.getBoundingClientRect(), last=null, k=cap.children;
+    for(var j=k.length-1;j>=0;j--){ if(getComputedStyle(k[j]).display!=="none"){ last=k[j]; break; } }
+    return !!last&&cr.width>0&&last.getBoundingClientRect().right>cr.right+0.5; }
+  if(!over()) return;
+  function off(e){ if(e) e.classList.add("fit-off"); }
+  var D=[].filter.call(cap.querySelectorAll(".der"),function(d){ return getComputedStyle(d).display!=="none"; });
+  if(D.length) off(D[0].querySelector("em")); if(!over()) return;
+  for(var n=D.length-1;n>=1&&over();n--){ off(D[n]); off(D[n].previousElementSibling); }
+  if(!over()) return;
+  var ev=cap.querySelector(".ev"); if(ev){ off(ev); off(ev.previousElementSibling); }
 }
 /* ---- Stage 3C: one timeline (docs/STAGE3_SPEC.md section D; owner decisions 53, 60) ----
    One axis, proportional to time from 04:00 to 18:00 (decision 53): the act bands, the phase ticks with their labels and the
@@ -14821,12 +14856,13 @@ var AUSTERLITZ_DEBUG=(function(){
             else { var tr=tg.getBoundingClientRect(), over=capEl.scrollWidth>capEl.clientWidth, rMax=cr.right-(over?ell6:0)+0.5;
               parts6(e,LE.tag).forEach(function(k){ read6[k]=1; });
               if(!(cr.width>0)||tr.left<cr.left-0.5||tr.right>rMax) c6.push(e.id+": the caption's tag at "+tr.left.toFixed(1)+"-"+tr.right.toFixed(1)+" px, outside the caption's box "+cr.left.toFixed(1)+"-"+cr.right.toFixed(1)+(over?" less the ellipsis's "+ell6.toFixed(1)+" px":""));
-              var tn=tg.nextSibling, i6=tn&&tn.nodeType===3?tn.data.search(/\S/):-1;
+              var tb6=tg.nextSibling, tn=tb6&&tb6.classList&&tb6.classList.contains("evt")?tb6.firstChild:null, i6=tn&&tn.nodeType===3?tn.data.search(/\S/):-1;   /* step 3: the name in its own box, .evt */
               if(i6<0) c6.push(e.id+": no name after the caption's tag");
               else { var rg=document.createRange(); rg.setStart(tn,i6); rg.setEnd(tn,i6+1); var gr=rg.getBoundingClientRect();
                 if(gr.left<cr.left-0.5||gr.right>rMax) c6.push(e.id+": the name's first glyph at "+gr.left.toFixed(1)+"-"+gr.right.toFixed(1)+" px, outside the caption's box "+cr.left.toFixed(1)+"-"+cr.right.toFixed(1)+(over?" less the ellipsis's "+ell6.toFixed(1)+" px":"")); } }
-            if(evs.textContent!==tw+" "+e.n) c6.push(e.id+": the caption reads '"+evs.textContent.slice(0,80)+"'"); }
-          else if(tg||evs.textContent!==e.n) c6.push(e.id+": the caption reads '"+evs.textContent.slice(0,80)+"' (a tag without a note)"); }
+            /* roadmap step 3: the tag and the name are two boxes (the tag, then .evt), no space between them in the text */
+            var evtB=evs.querySelector(".evt"); if(evs.children.length!==2||!evtB||evs.firstElementChild!==tg||evtB.textContent!==e.n) c6.push(e.id+": the caption reads '"+evs.textContent.slice(0,80)+"'"); }
+          else if(tg||evs.textContent!==e.n||!evs.querySelector(".evt")) c6.push(e.id+": the caption reads '"+evs.textContent.slice(0,80)+"' (a tag without a note)"); }
         var fid=(e.forms||[]).filter(function(f){ return FORMATIONS[f]; })[0];
         if(fid){ var mine6=lv.filter(function(x){ return x.e.forms.indexOf(fid)>=0; }).slice(0,3).map(function(x){ return x.e.n+note6(x.e); }),
             dfn=dossierFormation(fid), sec=Array.prototype.filter.call(dfn.querySelectorAll(".sect"),function(s){ var h=s.querySelector("h3"); return h&&h.textContent==="Historical event"; })[0],
@@ -15139,6 +15175,25 @@ var AUSTERLITZ_DEBUG=(function(){
       landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv; tabChosen=K0.ch; if(docked) selectTab(K0.tab); syncFollow();
       ck("reduced motion followed live: turned on mid-stretch the opening is at its step, nothing playing, \u00bd\u00d7 back; mid-glide the glide is at its end; turned off, motion again (docs/FINAL_AUDIT.md S-6)",
         !bad.length, bad.length?bad.join("; "):"the stretch to step 2 cut at its step; the glide to the Allied vantage ended at its end; RM followed both ways");
+    })();
+    /* roadmap step 3 (decision 159; handed on by step 2): in Watch the caption's derived readings stand before the event names and are never cut:
+       every 5 minutes of the day, each reading shown lies inside #tb-cap's box, whole (no ellipsis of its own) and before the names; every
+       event's tag inside the box too. Restored after */
+    (function(){
+      var bad=[], n=0, nb=0, keep=clock, pres=presentation, cap=document.getElementById("tb-cap");
+      setPresentation("watch");
+      for(var t=T_MIN;t<=T_MAX;t+=5){ setClock(t,{instant:true,camera:false}); _sitKey=""; paintSituation();
+        var cr=cap.getBoundingClientRect(), D=[].filter.call(cap.querySelectorAll(".der"),function(d){ return d.getClientRects().length>0; }), ev=cap.querySelector(".ev");
+        if(ev&&!ev.getClientRects().length) ev=null;
+        var due=curPhase<=PLATEAU_LAST&&plateauStrength("al")>0; if(due&&!D.some(function(d){ return !d.classList.contains("cut"); })) bad.push(fmtClock(t)+": the plateau reading not shown");
+        D.forEach(function(d){ n++; var r=d.getBoundingClientRect();
+          if(r.left<cr.left-0.5||r.right>cr.right+0.5) bad.push(fmtClock(t)+": “"+d.textContent.slice(0,40)+"” at "+r.left.toFixed(0)+"-"+r.right.toFixed(0)+" px, outside the caption's "+cr.left.toFixed(0)+"-"+cr.right.toFixed(0));
+          if(d.scrollWidth>d.clientWidth+1) bad.push(fmtClock(t)+": “"+d.textContent.slice(0,40)+"” cut by its own ellipsis");
+          if(ev){ nb++; if(d.compareDocumentPosition(ev)&Node.DOCUMENT_POSITION_PRECEDING) bad.push(fmtClock(t)+": a derived reading after the event names"); } });
+        [].forEach.call(cap.querySelectorAll("small.evn"),function(g){ if(!g.getClientRects().length) return; var r=g.getBoundingClientRect(); if(r.left<cr.left-0.5||r.right>cr.right+0.5) bad.push(fmtClock(t)+": an event's tag outside the caption"); }); }
+      setPresentation(pres); setClock(keep,{instant:true,force:true,camera:false}); finishTween(); _sitKey=""; paintSituation();
+      ck("caption (decision 159): in Watch the derived readings stand before the event names, each shown whole and inside the caption's box, the plateau's whenever it is due, every 5 minutes of the day; a shown event's tag inside it too (handed on by roadmap step 2)",
+        !bad.length&&n>0&&nb>0, bad.length?bad.slice(0,6).join("; "):n+" readings shown over the day at "+Math.round(cr.width)+" px of caption, "+nb+" of them beside an event's name, each whole and before it");
     })();
     /* roadmap step 3 (docs/FINAL_AUDIT.md A-3, WCAG 2.5.8): every pointer target of the timeline's control row and its rail, the rail's tabs
        and Sources button, the dossier's bar, the selection chip, and the sheets' and the layers panel's close buttons is at least 24 x 24 px
