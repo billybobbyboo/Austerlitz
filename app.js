@@ -5163,7 +5163,8 @@ var LABELS={
     note:"Off, keys that type one character (letters, digits, punctuation, ?) do nothing; Space, the arrows, Esc, Tab and Enter still work, and + and \u2212 on the focused map. For this visit only; the ? button opens this list."},
   /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): the note an event carries where it is named, and the mark on the label of
      an arrow the data calls unsettled: marks of what the data says (EVENTS[].claim, OVERLAYS' interp), no claim of their own */
-  event:{disputed:"the hour is disputed", interval:"an interval, not a timestamp", recon:"a reconstruction", tag:{disputed:"hour disputed", interval:"interval", recon:"reconstruction"}},
+  event:{disputed:"the hour is disputed", interval:"an interval, not a timestamp", recon:"a reconstruction", tag:{disputed:"hour disputed", interval:"interval", recon:"reconstruction"},
+    sameStart:"Starting at the same minute"},   /* roadmap step 3 (A-3): the events sharing a marker's place on the timeline (dossierEvent) */
   arrow:{unsettled:"disputed"},   /* owner decision 145 (question 145, 8 October 2026): the shorter form, so the 07:00 place name Augezd is drawn again */
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
      its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with the five glides of
@@ -6625,6 +6626,12 @@ function dossierEvent(eid){
     });
     s3.appendChild(ul); wrap.appendChild(s3);
   }
+  /* roadmap step 3 (docs/FINAL_AUDIT.md A-3): events that start at the same minute share one place on the timeline, where only the upper
+     marker takes a press; each names the others here, so every event has a pointer path (and the dossier says that they coincide) */
+  var same=EVENTS.filter(function(x){ return x!==e&&evWindow(x)[0]===evWindow(e)[0]; });
+  if(same.length){ var sS=el("div","sect"); sS.innerHTML='<h3>'+esc(LABELS.event.sameStart)+'</h3>'; var ulS=el("ul","links");
+    same.forEach(function(x){ var li=el("li"), b=el("button","linkb",esc(x.n+evNote(x))); b.addEventListener("click",function(){ select("e",x.id); }); li.appendChild(b); ulS.appendChild(li); });
+    sS.appendChild(ulS); wrap.appendChild(sS); }
   wrap.appendChild(el("p","conf",esc(CLAIM[e.claim].note)+
     (exact||e.dispute?"":" The hour is not fixed in the sources, so this is shown as an interval rather than a timestamp.")));
   var act=el("div","dact");
@@ -9525,6 +9532,51 @@ var AUSTERLITZ_DEBUG=(function(){
       landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv; tabChosen=K0.ch; if(docked) selectTab(K0.tab); syncFollow();
       ck("reduced motion followed live: turned on mid-stretch the opening is at its step, nothing playing, \u00bd\u00d7 back; mid-glide the glide is at its end; turned off, motion again (docs/FINAL_AUDIT.md S-6)",
         !bad.length, bad.length?bad.join("; "):"the stretch to step 2 cut at its step; the glide to the Allied vantage ended at its end; RM followed both ways");
+    })();
+    /* roadmap step 3 (docs/FINAL_AUDIT.md A-3, WCAG 2.5.8): every pointer target of the timeline's control row and its rail, the rail's tabs
+       and Sources button, the dossier's bar, the selection chip, and the sheets' and the layers panel's close buttons is at least 24 x 24 px
+       and the topmost element at its centre; the acts, the phases and the event markers are named exceptions here (owner questions) and
+       measured in the detail. Each in a state that shows it; restored after */
+    (function(){
+      var bad=[], n=0, ex=[], K0={pres:presentation,sel:selection,tab:tabNow,ch:tabChosen};
+      document.body.classList.add("st-still");
+      function chk(where,el){ if(!el||!shown(el)) return; n++; var r=el.getBoundingClientRect(), cx=(r.left+r.right)/2, cy=(r.top+r.bottom)/2, top=document.elementFromPoint(cx,cy);
+        /* a target many times 24 px wide (the time rail, under the event markers) is topmost somewhere along it, sampled every 24 px */
+        if(r.width>=72&&!(top===el||el.contains(top))) for(var sx=r.left+12;sx<r.right-12;sx+=24){ var t2=document.elementFromPoint(sx,cy); if(t2===el||el.contains(t2)){ top=t2; break; } }
+        if(r.width<24-0.01||r.height<24-0.01) bad.push(where+" "+(el.id||el.textContent.trim().slice(0,16))+" "+r.width.toFixed(1)+" x "+r.height.toFixed(1)+" px");
+        else if(!top||!(top===el||el.contains(top))) bad.push(where+" "+(el.id||el.textContent.trim().slice(0,16))+" covered at its centre by "+(top?(top.id||top.className||top.tagName):"nothing")); }
+      function all(where,q){ [].forEach.call(document.querySelectorAll(q),function(e){ chk(where,e); }); }
+      setPresentation("study"); select(null,null);
+      all("timeline",".tb-top button"); chk("timeline",document.getElementById("timerail"));
+      all("rail",".tab-btn"); chk("rail",document.getElementById("srcbtn"));
+      select("f","sthilaire"); chk("dossier",document.getElementById("drawer-back")); chk("dossier",document.getElementById("drawer-close")); select(null,null);
+      openSources(); chk("sources",document.getElementById("modal-close")); closeSources();
+      setHelp(true); chk("keys",document.getElementById("help-close")); chk("keys",document.getElementById("help-keys")); setHelp(false);
+      window.__setPop(true); chk("layers",document.getElementById("layerclose")); window.__setPop(false);
+      setPresentation("watch"); select("f","sthilaire"); all("timeline (Watch)",".tb-top button"); all("chip","#selchip button"); select(null,null);
+      setPresentation("study");
+      [["acts",".act-btn"],["phases","#phases .step"],["event markers",".ev-mark"]].forEach(function(q){ var hs=[].map.call(document.querySelectorAll(q[1]),function(e){ return e.getBoundingClientRect().height; });
+        ex.push(q[0]+" "+hs.length+" at "+(hs.length?Math.min.apply(null,hs).toFixed(1)+"-"+Math.max.apply(null,hs).toFixed(1):"-")+" px tall"); });
+      document.body.classList.remove("st-still");
+      setPresentation(K0.pres); tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id);
+      ck("target size (WCAG 2.5.8): every target of the timeline's control row and its rail, the rail's tabs and Sources button, the dossier's bar, the selection chip and the sheets' and the layers panel's close buttons at least 24 x 24 px and topmost at its centre; the acts, the phases and the event markers named exceptions (docs/FINAL_AUDIT.md A-3)",
+        !bad.length&&n>0, (bad.length?"WRONG: "+bad.join("; ")+"; ":"")+n+" targets measured at "+window.innerWidth+" x "+window.innerHeight+"; exceptions: "+ex.join(", "));
+    })();
+    /* roadmap step 3 (docs/FINAL_AUDIT.md A-3): every event has a pointer path: its marker is the topmost element at its centre, or the dossier
+       of an event that starts at the same minute names it with a button that selects it */
+    (function(){
+      var bad=[], viaD=0, K0={sel:selection,pres:presentation}; setPresentation("study");
+      _evTicks.forEach(function(o){ var e=o.e, r=o.el.getBoundingClientRect(), cx=(r.left+r.right)/2, cy=(r.top+r.bottom)/2, reach=false;
+        /* its hit area (20 x 20 px about its centre): reached if the marker is topmost at any of nine points of it */
+        for(var dx=-7;dx<=7&&!reach;dx+=7) for(var dy=-7;dy<=7&&!reach;dy+=7){ var top=document.elementFromPoint(cx+dx,cy+dy); if(top===o.el||o.el.contains(top)) reach=true; }
+        if(reach) return;
+        var ok=false; EVENTS.forEach(function(x){ if(ok||x===e||evWindow(x)[0]!==evWindow(e)[0]) return; select("e",x.id);
+          var b=[].filter.call(document.querySelectorAll("#drawer-body .linkb"),function(q){ return q.textContent===e.n+evNote(e); })[0];
+          if(b){ b.click(); ok=!!selection&&selection.kind==="e"&&selection.id===e.id; } });
+        if(ok) viaD++; else bad.push(e.id+": its marker is covered and no dossier of an event at its start reaches it"); });
+      select(null,null); setPresentation(K0.pres); if(K0.sel) select(K0.sel.kind,K0.sel.id);
+      ck("events: every event has a pointer path, its own marker or the dossier of an event starting at the same minute (docs/FINAL_AUDIT.md A-3)",
+        !bad.length&&_evTicks.length>0, bad.length?bad.join("; "):_evTicks.length+" markers: "+(_evTicks.length-viaD)+" by their own marker, "+viaD+" through a coinciding event's dossier");
     })();
     /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decisions 111, 112, 114-116, 118): the opening, begun from the reopened card's primary
        action at 04:00 in Study on the landscape. Every step is its tour stop (the clock stopClock, the theme, the camera presetFrame(stopCam),
