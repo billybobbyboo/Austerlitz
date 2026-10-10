@@ -108,7 +108,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   screen it ends on; since 7D its bar while the clock plays between steps, paused) meets WCAG AA and the 10.5 px floor. Since step 1: every
   such element is drawn in the embedded faces (its platform fonts read over the Chrome DevTools Protocol; only the developer readout is
   allowed another), every state must be reached (a state whose set-up does nothing fails), and every console message is judged against
-  `tools/visual/thresholds.js CONSOLE_ALLOW` (one entry today, the eye level's floor warning, removed by the app fix in roadmap step 3).
+  `tools/visual/thresholds.js CONSOLE_ALLOW` (empty since roadmap step 3, whose app fix removed its one entry, the eye level's floor warning).
 - `npm run check:selftest` (since step 1, decision 132; the CI job): the in-app self-test on one fresh 1366 x 768 page, every check by name
   against `tools/visual/selftest-manifest.json` (221), with the slider, Play and the 3E keys by real key presses, and every console message
   judged; about 13 minutes. `npm run check:report` judges a finished `check:visual` report again without rendering; `npm run

@@ -293,21 +293,14 @@ module.exports.limits=limits;
 /* T-1: a console warning or error (or a failed console.assert), a page error, a crash or a failed request on any page the harness or
    check:contrast opens is a failure unless an entry here names it: {id, type ("warning", "error", "assert", "pageerror", "crash",
    "requestfailed"), text: an anchored RegExp of the message, at: a RegExp of the blocks it may come from (optional), max: at most how many
-   per run, why: why it is harmless, until: what removes it}. One entry, below; every other message fails. (Before step 1 the harness kept
+   per run, why: why it is harmless, until: what removes it}. No entry since roadmap step 3: every message fails. (Before step 1 the harness kept
    only the last page's messages, and printed them; the 7D run's nine Canvas2D readback warnings came from test code reading the app's
    texture canvases, fixed in step 1 by reading through test-owned canvases: app.js texData, measure.js readCanvas.) */
-const CONSOLE_ALLOW=[
-  /* Found by step 1's check:contrast (the first run that listens): leaving the eye level clamps the eye to the floor before the observer's
-     own formations near it are drawn again (eyeLeave calls clampCamera, then the next updateVisibility shows the blocks eyeOwnNear hid,
-     and formationTop raises the floor above the eye); the render-time guard (renderFrameNow) corrects it before the frame, so nothing is
-     drawn below the floor, counts CAM.violations and warns once per page. check:contrast's "staff-eyes" state leaves the eye level and its
-     "daytrack" state draws the landscape there again. A visitor leaving the eye level near a headquarters triggers it (INFERENCE from the
-     code and a probe: Napoleon's headquarters, 08:30, the floor raised from 4.80 to 7.22 units). The harness never draws a frame between
-     applyCase's eyeLeave and its placeCamera. Harmless to what is drawn; the fix is in the app (clamp after the blocks are shown again),
-     a robustness item for roadmap step 3, not a tools commit's: remove this entry with it. */
-  {id:"eye-leave-floor", type:"warning", text:/^Austerlitz runtime check: a camera path bypassed the ground floor$/, at:/^(staff-eyes|daytrack)$/, max:1,
-    why:"the render-time guard corrected the eye before the frame (nothing drawn below the floor); it warns that eyeLeave clamped before the eye's own formations were shown again",
-    until:"the app fix in roadmap step 3 (eyeLeave clamps after the blocks near the eye are drawn again)"}];
+/* Roadmap step 3 removed its one entry, "eye-leave-floor" (step 1's check:contrast found that leaving the eye level clamped the eye before the
+   observer's own formations near it were drawn again, and the render-time guard corrected it and warned): updateVisibility now lifts an eye
+   that stood at or above its floor with the floor when it shows formations again (app.js), and the self-test checks every way out of the
+   eye level with no render-time correction. A new entry needs its reason and what removes it, as before. */
+const CONSOLE_ALLOW=[];
 function judgeConsole(log){
   const used={}, bad=[];
   (log||[]).forEach(e=>{ const a=CONSOLE_ALLOW.find(x=>x.type===e.type&&x.text.test(e.text)&&(!x.at||x.at.test(e.at||"")));

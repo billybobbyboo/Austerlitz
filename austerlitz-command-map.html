@@ -8104,6 +8104,7 @@ function startPhaseTransition(ph,instant,moveCam){
      instead (Stage 4D, followStep) */
   var camMove=moveCam && !freeCam && mode!=="staff" && !playing;
   if(camMove){
+    if(EYE.on) eyeLeave();   /* roadmap step 3 (docs/FINAL_AUDIT.md S-3): a phase's camera leaves the eye level, as a glide does */
     var pc=presetFrame(ph.cam);
     camArc=setupArc(landCam.position,orbitTarget,new THREE.Vector3(pc[0],pc[1],pc[2]),new THREE.Vector3(pc[3],pc[4],pc[5]));
   }
@@ -10184,6 +10185,11 @@ function smokePlace(){
 }
 function updateVisibility(){
   eyeFollow(); eyesViewshed(false); eyeCaption();   /* Stage 5E: the eye with its headquarters; the headquarters' viewshed at the clock */
+  /* roadmap step 3 (the eye-level floor handed on by step 1): the floor clears the drawn men (formationTop), so it rises where this pass
+     shows a formation again under a parked eye (the observer's own, hidden near the eye until eyeLeave) or brings one under it. An eye that
+     was at or above its floor before this pass is lifted with the floor after it; one that was already below stays for the render-time guard,
+     which counts any camera path that bypassed clampCamera (CAM.violations) */
+  var eyeQ=landCam.position, eyeAbove=eyeQ.y>=camFloor(eyeQ.x,eyeQ.z)-1e-6;
   var dist=viewDist();   /* the paper map: the distance at which the landscape eye would show the ground at its scale */
   var wantCorps = dist>250;
   var showBde = dist<165;
@@ -10301,6 +10307,7 @@ function updateVisibility(){
   symbolSizes();   /* Stage 3E: event glyphs and objective markers capped on screen, faded near the eye */
   updateSelRing();
   updatePlanLinks();   /* the map layer lays out in the drawn frame (mlLayout), not here */
+  if(eyeAbove&&eyeQ.y<camFloor(eyeQ.x,eyeQ.z)-1e-6) clampCamera();   /* the world moved under the eye: the floor with it */
 }
 
 /* ---------------- picking ----------------
@@ -13744,6 +13751,27 @@ var AUSTERLITZ_DEBUG=(function(){
       "Napoleon's headquarters at 08:30: the eye "+dy.toFixed(4)+" units above the ground (want "+want.toFixed(4)+", 3 m at \u00d7"+fmtFactor(DISPLAY.factor)+"), at the headquarters "+atHQ+
       ", near plane "+EYE.NEAR+"; "+nUnk+" enemy formations not known, "+unkDrawn.length+" of them drawn"+(unkDrawn.length?" ("+unkDrawn.join(", ")+")":"")+"; "+fig+" enemy figures drawn, "+hidden.length+
       " hidden from the headquarters"+(hidden.length?" ("+hidden.join(", ")+")":"")+"; caption "+(capOK?"shown":"MISSING")+"; after an orbit: left "+left+", near "+landCam.near+", at its floor "+floor+", floor violations "+viol);
+    /* roadmap step 3 (docs/FINAL_AUDIT.md S-3; the eye-level floor handed on by step 1): every way out of the eye level leaves it, with the
+       near plane restored, and the eye at or above its floor once the formations hidden near it are drawn again (updateVisibility), before
+       any frame: the render-time guard corrects nothing. Each from Napoleon's headquarters at 08:30 */
+    var outs=[["an orbit",function(){ LANDCAM.orbit(40,0); }],
+      ["a glide (the Field vantage)",function(){ flyTo(VANTAGE.field); finishTween(); }],
+      ["a phase's button",function(){ stopPlay(); freeCam=false; setPhase(curPhase); finishTween(); }],
+      ["“Whose eyes?” to everyone",function(){ setCommandView("none"); }],
+      ["the paper map and back",function(){ setMode("staff"); updateVisibility(); setMode("terrain"); }],
+      ["the paper map, the clock to 09:50, and back",function(){ setMode("staff"); updateVisibility(); setClock(590,{instant:true,camera:false}); setMode("terrain"); }]], wb=[];
+    outs.forEach(function(o){
+      if(mode!=="terrain") setMode("terrain"); setCommandView("fr"); setClock(510,{instant:true,force:true,camera:false}); finishTween();
+      if(!eyeEnter()){ wb.push(o[0]+": the eye level not entered"); return; } settle(2,true);
+      var v0=CAM.violations; o[1](); updateVisibility();
+      var q=landCam.position, fl=camFloor(q.x,q.z);
+      if(EYE.on) wb.push(o[0]+": still at eye level"); if(landCam.near!==EYE.NEAR0) wb.push(o[0]+": near plane "+landCam.near);
+      if(q.y<fl-1e-6) wb.push(o[0]+": the eye "+(fl-q.y).toFixed(3)+" under its floor before the frame");
+      if(o[0]==="a phase's button"&&(freeCam||curVantage)) wb.push(o[0]+": Follow "+(freeCam?"off":"on")+", vantage "+curVantage);
+      renderFrameNow(); if(CAM.violations!==v0) wb.push(o[0]+": the render-time guard corrected the eye");
+    });
+    ck("eye level: every way out (an orbit, a glide, a phase's button, “Whose eyes?” to everyone, the paper map and back, with the clock moved) leaves it, the near plane restored and the eye at or above its floor before any frame; no render-time correction (docs/FINAL_AUDIT.md S-3)",
+      !wb.length, wb.length?wb.join("; "):outs.length+" ways out from Napoleon's headquarters at 08:30: each left the eye level above its floor with no render-time correction"+(isTrueScale()?" (at 1x no figures are drawn near the eye, so the floor does not rise)":""));
     setCommandView(k0.cv); if(mode!==k0.md) setMode(k0.md);
     setClock(k0.clock,{instant:true,force:true,camera:false}); finishTween();
     landCam.position.copy(k0.pos); orbitTarget.copy(k0.tgt); landCam.lookAt(orbitTarget); clampCamera(); freeCam=k0.fc; settle(2,true);
