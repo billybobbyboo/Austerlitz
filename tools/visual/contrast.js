@@ -42,8 +42,8 @@ const TH=require("./thresholds.js");
 const argv=process.argv.slice(2), html=path.resolve(argv.filter((a,i)=>!a.startsWith("--")&&argv[i-1]!=="--json")[0]||"austerlitz-command-map.html");
 const jsonOut=argv.indexOf("--json")>=0?argv[argv.indexOf("--json")+1]:null;
 const LEGACY=argv.includes("--legacy");
-const THREE_LOCAL=[process.env.AUSTERLITZ_THREE, path.join(__dirname,"three.min.js"),
-  path.resolve("node_modules/three/build/three.min.js")].find(p=>p&&fs.existsSync(p));
+const TR=require("./three-route.js"), THREE_LOCAL=TR.THREE_LOCAL;   /* roadmap step 3: one route for three.js (decision 133) */
+TR.checkIntegrity(html);   /* the page's integrity hash against the routed copy: a mismatch stops here, not as a blocked script */
 
 /* decision 141: the faces a visible text may be drawn in, and the elements that may use another, with the reason */
 const EMBEDDED=new Set(["Austerlitz Sans","Austerlitz Serif"]);
@@ -191,9 +191,9 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
   page.on("pageerror",e=>rec("pageerror",e.message+" | "+String(e.stack||"").split("\n")[1]));
   page.on("crash",()=>rec("crash","the page crashed"));
   page.on("requestfailed",q=>rec("requestfailed",q.url().slice(0,160)+" "+((q.failure()||{}).errorText||"")));
-  if(THREE_LOCAL) await page.route(/three(\.min)?\.js$/,r=>r.fulfill({path:THREE_LOCAL,contentType:"application/javascript"}));
+  await TR.routeThree(page);
   await page.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:180000});
-  await page.waitForFunction(()=>!document.getElementById("boot")&&typeof window.camera!=="undefined",null,{timeout:240000,polling:500});
+  await TR.waitBoot(page);
   const fontsStatus=await page.evaluate(()=>document.fonts?document.fonts.ready.then(()=>document.fonts.status):"no document.fonts");
   await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});
   /* decision 141: which platform fonts draw each computed font's characters (the CDP, once, after the last state; see the header) */

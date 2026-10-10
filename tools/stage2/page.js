@@ -4,8 +4,7 @@
 const fs=require("fs"), path=require("path");
 const { chromium } = require("playwright");
 const ROOT=path.resolve(__dirname,"..","..");
-const THREE_LOCAL=[process.env.AUSTERLITZ_THREE, path.join(ROOT,"tools","visual","three.min.js"),
-  path.join(ROOT,"node_modules","three","build","three.min.js")].find(p=>p&&fs.existsSync(p));
+const TR=require("../visual/three-route.js"), THREE_LOCAL=TR.THREE_LOCAL;   /* roadmap step 3: one route for three.js (decision 133) */
 const MEASURE=fs.readFileSync(path.join(ROOT,"tools","visual","measure.js"),"utf8");
 const CASES=require(path.join(ROOT,"tools","visual","cases.js"));
 async function launch(){
@@ -15,10 +14,10 @@ async function open(browser,vp,html,init,query){   /* query: more of the page's 
   const page=await browser.newPage({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:1});
   if(init) await page.addInitScript(init);
   page._errors=[]; page.on("pageerror",e=>page._errors.push(e.message));
-  if(THREE_LOCAL) await page.route(/three(\.min)?\.js$/,r=>r.fulfill({path:THREE_LOCAL,contentType:"application/javascript"}));
+  await TR.routeThree(page);
   /* AUSTERLITZ_HTML measures a fixed build (e.g. an archived one) while the sources are being edited */
   await page.goto("file://"+path.resolve(html||process.env.AUSTERLITZ_HTML||path.join(ROOT,"austerlitz-command-map.html"))+"?harness=1"+(query||""),{waitUntil:"commit",timeout:180000});
-  await page.waitForFunction(()=>!document.getElementById("boot")&&typeof window.camera!=="undefined",null,{timeout:240000,polling:500});
+  await TR.waitBoot(page);
   await page.evaluate(MEASURE);
   /* CSS transitions off (Stage 2D), as in the harness: headless Chromium does not advance them while the page draws nothing */
   await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});

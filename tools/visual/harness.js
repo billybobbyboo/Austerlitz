@@ -29,8 +29,8 @@ const argv=process.argv.slice(2), flag=f=>argv.includes(f), opt=f=>{ const i=arg
 const html=path.resolve(argv[0]||"austerlitz-command-map.html");
 const out=path.resolve(argv[1]||path.join(__dirname,"out"));
 const SELFTEST_ONLY=flag("--selftest-only"), TEST=flag("--test")||SELFTEST_ONLY, LEGACY=flag("--legacy"), CMP=opt("--compare"), ONLY=opt("--only");
-const THREE_LOCAL=[process.env.AUSTERLITZ_THREE, path.join(__dirname,"three.min.js"),
-  path.resolve("node_modules/three/build/three.min.js")].find(p=>p&&fs.existsSync(p));
+const TR=require("./three-route.js"), THREE_LOCAL=TR.THREE_LOCAL;   /* roadmap step 3: one route for three.js (decision 133) */
+TR.checkIntegrity(html);   /* the page's integrity hash against the routed copy: a mismatch stops here, not as a blocked script */
 const ALL_CASES=require("./cases.js");
 const CASES=SELFTEST_ONLY?[]:ALL_CASES.filter(c=>!ONLY||ONLY.split(",").includes(c.name));
 const MEASURE=fs.readFileSync(path.join(__dirname,"measure.js"),"utf8");
@@ -48,9 +48,9 @@ async function openPage(browser,vp,label){
   page.on("pageerror",e=>rec("pageerror",e.message+" | "+String(e.stack||"").split("\n")[1]));
   page.on("crash",()=>rec("crash","the page crashed"));
   page.on("requestfailed",q=>rec("requestfailed",q.url().slice(0,160)+" "+((q.failure()||{}).errorText||"")));
-  if(THREE_LOCAL) await page.route(/three(\.min)?\.js$/,r=>r.fulfill({path:THREE_LOCAL,contentType:"application/javascript"}));
+  await TR.routeThree(page);
   await page.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:180000});
-  await page.waitForFunction(()=>!document.getElementById("boot")&&typeof window.camera!=="undefined",null,{timeout:240000,polling:500});
+  await TR.waitBoot(page);
   /* decision 141: the embedded faces loaded before anything is measured (the boot screen already waits for them, app.js fontsReady) */
   const fonts=await page.evaluate(()=>document.fonts?document.fonts.ready.then(()=>document.fonts.status):"no document.fonts");
   await page.evaluate(MEASURE);
