@@ -591,3 +591,24 @@ if(cerrs) process.exitCode=1;
   console.log("dossier hidden when closed: "+(derr.length?derr.length+" wrong":"hidden after its slide, shown at once, inert while closed"));
   if(derr.length) process.exitCode=1;
 }
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-10): the layout seams. The narrow layout's breakpoint is the complement of app.js's DOCK_MIN (a docked
+   layout at exactly 1080 px also took the narrow rules); the resize handler sets the drawing buffer's density before its size; and no
+   declaration inside an @media is overridden by a later base rule with the same selector and property (such a rule never applies) */
+{
+  const app=fs.readFileSync('app.js','utf8'), serr=[];
+  const dock=+((/var DOCK_MIN=(\d+)/.exec(app)||[])[1]);
+  const widths=[...clean.matchAll(/@media \(max-width:([\d.]+)px\)/g)].map(m=>+m[1]);
+  if(!(dock>0)) serr.push("app.js: DOCK_MIN not found");
+  if(widths.indexOf(dock)>=0) serr.push("style.css: @media (max-width:"+dock+"px) also applies to the docked layout at exactly "+dock+" px");
+  if(widths.indexOf(dock-0.02)<0) serr.push("style.css: no narrow layout at (max-width:"+(dock-0.02)+"px), DOCK_MIN's complement");
+  const rs=/function onResize\(\)\{[\s\S]*?\n  \}/.exec(app);
+  if(!rs||!/setPixelRatio\(pxRatio\(\)\);[\s\S]*setSize\(/.test(rs[0])) serr.push("app.js: the resize handler does not set the density before the size");
+  const dl=b=>b.split(";").map(x=>x.trim()).filter(Boolean).map(x=>{ const i=x.indexOf(":"); return [x.slice(0,i).trim(),x.slice(i+1).trim()]; });
+  allRules.forEach((r,i)=>{ if(r.media===null) return;
+    dl(r.body).forEach(([p,v])=>{ if(/!important$/.test(v)) return;
+      r.sels.forEach(sel=>{ const later=allRules.slice(i+1).find(q=>q.media===null&&q.sels.indexOf(sel)>=0&&dl(q.body).some(([p2])=>p2===p));
+        if(later) serr.push("style.css: "+sel+"{"+p+"} in @media "+r.media+" is overridden by a later base rule ("+later.sel+"), so it never applies"); }); }); });
+  serr.forEach(e=>console.log("  ! "+e));
+  console.log("layout seams: "+(serr.length?serr.length+" wrong":"the narrow layout below "+dock+" px only, the density set on resize, no @media declaration shadowed by a later base rule"));
+  if(serr.length) process.exitCode=1;
+}

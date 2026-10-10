@@ -563,6 +563,8 @@ function bindContextLoss(cv){
     var n=document.getElementById("glnotice"); if(n) n.innerHTML="";
     requestRender(3); });
 }
+/* the drawing buffer's density: the screen's, at most 2 (1.5 on a low tier); read at start and on every resize (roadmap step 3, SW-10) */
+function pxRatio(){ return Math.min(window.devicePixelRatio||1, lowTier?1.5:2); }
 function boot(){
   try{ init(); }
   catch(e){ if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT) AUS_BOOT.fail(e.ausKind||"error",e); throw e; }
@@ -577,7 +579,7 @@ function init(){
   catch(e){ e.ausKind="webgl"; throw e; }   /* roadmap step 3 (SW-1): no WebGL; boot() shows the start-up guard's message */
   lowTier = (window.innerWidth*window.innerHeight < 900*700) ||
              /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent||"");
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, lowTier?1.5:2));
+  renderer.setPixelRatio(pxRatio());
   renderer.setSize(window.innerWidth,window.innerHeight);
   renderer.shadowMap.enabled=true;
   renderer.shadowMap.type=THREE.PCFSoftShadowMap;
@@ -5627,17 +5629,23 @@ function buildUI(){
   /* a panel sliding in or out (the drawer, the rail, the legend): draw until it has stopped, and once more after */
   ["transitionrun","transitionstart"].forEach(function(ev){ document.addEventListener(ev,function(){ panelMoveUntil=performance.now()+450; }); });
   document.addEventListener("transitionend",function(){ requestRender(2); });
-  window.addEventListener("resize",function(){
+  function onResize(){
     requestRender(3);
     syncDock();
     landCam.aspect=window.innerWidth/window.innerHeight;
     landCam.updateProjectionMatrix();
+    renderer.setPixelRatio(pxRatio());   /* roadmap step 3 (SW-10): a window moved to a screen of another density */
     renderer.setSize(window.innerWidth,window.innerHeight);
     sizeFX();
     syncViewOffset(true);   /* Stage 3D: the focus at the new free rectangle's centre at once */
     /* the paper map: the field framed anew if that is what it shows, else the plan keeps its centre and scale */
     if(mode==="staff"){ if(MAPCAM.framed()) MAPCAM.frameField(true); else MAPCAM.apply(); }
-  });
+  }
+  window.addEventListener("resize",onResize);
+  /* the density can change without a resize (a window dragged to another screen): one query for the current density, made again each time */
+  (function watchDensity(){ if(!window.matchMedia) return; var q=window.matchMedia("(resolution: "+(window.devicePixelRatio||1)+"dppx)");
+    function ch(){ if(q.removeEventListener) q.removeEventListener("change",ch); else if(q.removeListener) q.removeListener(ch); onResize(); watchDensity(); }
+    if(q.addEventListener) q.addEventListener("change",ch); else if(q.addListener) q.addListener(ch); })();
   buildOOB();
 }
 

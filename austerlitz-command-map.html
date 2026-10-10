@@ -541,7 +541,7 @@ body.pm-map #restore{display:block}
 #vignette{position:fixed;inset:0;pointer-events:none;z-index:4;
   background:radial-gradient(ellipse 78% 70% at 50% 46%, rgba(0,0,0,0) 62%, rgba(5,8,11,.30) 100%)}
 body.mode-staff #vignette{display:none}
-@media (max-width:1080px){
+@media (max-width:1079.98px){   /* roadmap step 3 (docs/FINAL_AUDIT.md SW-10): the complement of app.js's DOCK_MIN (innerWidth>=1080 docks) */
   :root{--rail:272px;--draw:min(360px,90vw)}
   .rail{box-shadow:12px 0 40px rgba(0,0,0,.45)}
   .dispatch{left:16px;width:min(420px,calc(100vw - 32px));bottom:calc(var(--tb) + 12px)}
@@ -561,15 +561,13 @@ body.mode-staff #vignette{display:none}
   #tourbar{width:calc(100vw - 20px);bottom:calc(var(--tb) + 10px);padding:13px 15px 11px}
   #tour-t{font-size:var(--t-h3)}
   #tour-x{font-size:var(--t-prose)}
-  #firstrun{padding:20px 20px 17px}
-  #firstrun h2{font-size:var(--t-h2)}
   .tb-icon{min-width:42px;min-height:38px}
   .tb-play{min-width:66px;min-height:38px}
   .tb-follow{min-height:38px}
   .tb-sit{font-size:var(--t-ui);padding:0 10px 6px}
-  body:not(.rail-hidden) .dispatch{display:none}   /* SW-2: no room beside the rail at this width: the rail first, the card when it is hidden */
   .tb-sit .der{display:none}
   .dispatch{left:10px;right:10px;width:auto;bottom:calc(var(--tb) + 10px);padding:12px 14px 10px}
+  body:not(.rail-hidden) .dispatch{display:none}   /* SW-2: no room beside the rail at this width: the rail first, the card when it is hidden */
   .dispatch h2{font-size:var(--t-h3)}
   .dispatch ol{display:none}
   .dispatch p.lede{font-size:var(--t-prose);max-height:26vh;overflow:auto}
@@ -600,14 +598,7 @@ body.mode-staff #vignette{display:none}
   .tb-sit .why{display:none}
   #tourbar{bottom:calc(var(--tb) + 8px);padding:11px 14px 9px}
   #tour-x{font-size:var(--t-prose);max-height:20vh;overflow-y:auto}
-  #firstrun{padding:18px 20px 15px}
-  #firstrun h2{font-size:var(--t-h3);margin-bottom:8px}
-  #firstrun p{font-size:var(--t-prose);margin-bottom:8px}
   .legend{display:none}
-}
-@media (max-height:360px){
-  .tb-sit{display:none}
-  #layerpop{max-height:78vh;top:56px}
 }
 
 
@@ -644,6 +635,19 @@ body.firstrun-on:not(.docked) .dispatch,body.firstrun-on .legend,body.firstrun-o
 body.firstrun-on #vsbadge,body.firstrun-on #tourbar,body.firstrun-on #selchip{display:none !important}
 /* Stage 7C: the tools' "Begin the opening" stands down while the card, whose primary action it is, is open (at 390 px it would wrap the tools' row) */
 body.firstrun-on #openingbtn{display:none}
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-10): rules that came before the rules they were meant to override, so they never applied, now come
+   after them: the first-run card on short landscape screens (they stood in the 430 px block before the card's own rules above), the layers
+   panel on the shortest (it stood before the 820 px block's top). No view the harness measures is 430 px tall or less. The 720 px block's two
+   #firstrun declarations that the card's own rules repeated or overrode are removed (they never applied) */
+@media (max-height:430px){
+  #firstrun{padding:18px 20px 15px}
+  #firstrun h2{font-size:var(--t-h3);margin-bottom:8px}
+  #firstrun p{font-size:var(--t-prose);margin-bottom:8px}
+}
+@media (max-height:360px){
+  .tb-sit{display:none}
+  #layerpop{max-height:78vh;top:56px}
+}
 .legend .ar{width:20px;height:5px;border-radius:2px}
 /* Stage 2C: the heads as drawn (decision 20): French the plain triangle, Allied the notched chevron */
 .legend .ar{position:relative;margin-right:8px;border-radius:2px 0 0 2px}
@@ -6162,6 +6166,8 @@ function bindContextLoss(cv){
     var n=document.getElementById("glnotice"); if(n) n.innerHTML="";
     requestRender(3); });
 }
+/* the drawing buffer's density: the screen's, at most 2 (1.5 on a low tier); read at start and on every resize (roadmap step 3, SW-10) */
+function pxRatio(){ return Math.min(window.devicePixelRatio||1, lowTier?1.5:2); }
 function boot(){
   try{ init(); }
   catch(e){ if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT) AUS_BOOT.fail(e.ausKind||"error",e); throw e; }
@@ -6176,7 +6182,7 @@ function init(){
   catch(e){ e.ausKind="webgl"; throw e; }   /* roadmap step 3 (SW-1): no WebGL; boot() shows the start-up guard's message */
   lowTier = (window.innerWidth*window.innerHeight < 900*700) ||
              /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent||"");
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, lowTier?1.5:2));
+  renderer.setPixelRatio(pxRatio());
   renderer.setSize(window.innerWidth,window.innerHeight);
   renderer.shadowMap.enabled=true;
   renderer.shadowMap.type=THREE.PCFSoftShadowMap;
@@ -11226,17 +11232,23 @@ function buildUI(){
   /* a panel sliding in or out (the drawer, the rail, the legend): draw until it has stopped, and once more after */
   ["transitionrun","transitionstart"].forEach(function(ev){ document.addEventListener(ev,function(){ panelMoveUntil=performance.now()+450; }); });
   document.addEventListener("transitionend",function(){ requestRender(2); });
-  window.addEventListener("resize",function(){
+  function onResize(){
     requestRender(3);
     syncDock();
     landCam.aspect=window.innerWidth/window.innerHeight;
     landCam.updateProjectionMatrix();
+    renderer.setPixelRatio(pxRatio());   /* roadmap step 3 (SW-10): a window moved to a screen of another density */
     renderer.setSize(window.innerWidth,window.innerHeight);
     sizeFX();
     syncViewOffset(true);   /* Stage 3D: the focus at the new free rectangle's centre at once */
     /* the paper map: the field framed anew if that is what it shows, else the plan keeps its centre and scale */
     if(mode==="staff"){ if(MAPCAM.framed()) MAPCAM.frameField(true); else MAPCAM.apply(); }
-  });
+  }
+  window.addEventListener("resize",onResize);
+  /* the density can change without a resize (a window dragged to another screen): one query for the current density, made again each time */
+  (function watchDensity(){ if(!window.matchMedia) return; var q=window.matchMedia("(resolution: "+(window.devicePixelRatio||1)+"dppx)");
+    function ch(){ if(q.removeEventListener) q.removeEventListener("change",ch); else if(q.removeListener) q.removeListener(ch); onResize(); watchDensity(); }
+    if(q.addEventListener) q.addEventListener("change",ch); else if(q.addListener) q.addListener(ch); })();
   buildOOB();
 }
 
