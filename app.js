@@ -5134,6 +5134,9 @@ var LABELS={
   /* roadmap step 3 (SW-1): the notice when the browser takes the graphics context away; interface words, no claim */
   glLost:"The 3D view has stopped: the browser lost its graphics context. It comes back if the browser restores it; if it does not, reload the page.",
   reload:"Reload",
+  /* roadmap step 3 (decision 134 (a)): the single-key shortcuts switch in the "?" overlay; interface words, no claim */
+  keys:{single:"Single-key shortcuts", on:"on", off:"off", offRow:"(off)",
+    note:"Off, keys that type one character (letters, digits, punctuation, ?) do nothing; Space, the arrows, Esc, Tab and Enter still work, and + and \u2212 on the focused map. For this visit only; the ? button opens this list."},
   /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): the note an event carries where it is named, and the mark on the label of
      an arrow the data calls unsettled: marks of what the data says (EVENTS[].claim, OVERLAYS' interp), no claim of their own */
   event:{disputed:"the hour is disputed", interval:"an interval, not a timestamp", recon:"a reconstruction", tag:{disputed:"hour disputed", interval:"interval", recon:"reconstruction"}},
@@ -5243,6 +5246,13 @@ function keyRow(e,scope){
   return null;
 }
 var KEYS_DRY=null;   /* the self-test's dry run: the rows reached are recorded, not run */
+/* roadmap step 3 (decision 134 (a); docs/FINAL_AUDIT.md A-1, WCAG 2.1.4): the single-key shortcuts switch, in the "?" overlay, on by default and
+   for this visit only (nothing stored, decision 117). Off, a key that types one character (a letter, a digit, punctuation; not Space) reaches
+   no row of the window, does not end the opening and does not close the first card; Space, the arrows, Esc, Tab and Enter keep their rules,
+   and the map's own keys (+ and - included) act only while the map has focus, as before */
+var SHORTCUTS={on:true};
+function charKey(k){ return typeof k==="string"&&k.length===1&&k!==" "; }
+function shortcutMuted(e){ return !SHORTCUTS.on&&charKey(e.key); }
 /* the map layer's keys: the paper map pans and zooms (Stage 2E), the landscape (LANDCAM, Stage 3D) also turns and tilts */
 function mapKey(e){
   if(mode!=="staff") return LANDCAM.key(e);
@@ -5262,8 +5272,10 @@ function buildHelp(){
   var html="";
   HELP_GROUPS.forEach(function(g){ var rows=KEYS.filter(function(r){ return r.group===g; }); if(!rows.length) return;
     html+='<h3>'+esc(g)+'</h3>';
-    rows.forEach(function(r){ html+='<div class="hp-row" data-key="'+r.id+'"><kbd>'+r.show.map(function(k){ return "<b>"+esc(k)+"</b>"; }).join("")+'</kbd><span>'+esc(keyText(r))+'</span></div>'; }); });
+    rows.forEach(function(r){ var off=!SHORTCUTS.on&&r.scope==="window"&&r.keys.length&&r.keys.every(charKey);
+      html+='<div class="hp-row'+(off?' off':'')+'" data-key="'+r.id+'"><kbd>'+r.show.map(function(k){ return "<b>"+esc(k)+"</b>"; }).join("")+'</kbd><span>'+esc(keyText(r))+(off?" "+esc(LABELS.keys.offRow):"")+'</span></div>'; }); });
   host.innerHTML=html;
+  paintShortcuts();
 }
 /* roadmap step 3 (docs/FINAL_AUDIT.md SW-4, SW-6): the two sheets, the "?" overlay (#help) and the sources sheet (#modal), are modal dialogs
    by one mechanism: opened, the opener is remembered, the rest of the page is inert (syncInert; the phase announcement stays live) and focus
@@ -5271,7 +5283,7 @@ function buildHelp(){
    Tab inside the topmost sheet, closes it with Esc (and the overlay with "?"), and lets no key act behind it; closed by its button, Esc or
    a press on its scrim, focus returns to the opener (or the page, when it was opened from the page). The overlay is over the sheet when
    both are open (z-index 52 over 50) */
-var SHEETS={help:{tab:["help-close","help-body"],from:null}, modal:{tab:["modal-close","modal-body"],from:null}};
+var SHEETS={help:{tab:["help-close","help-keys","help-body"],from:null}, modal:{tab:["modal-close","modal-body"],from:null}};
 function sheetIsOpen(id){ var e=document.getElementById(id); if(!e) return false; return id==="help"?!e.hidden:!!(e.classList&&e.classList.contains("on")); }
 function sheetTop(){ return sheetIsOpen("help")?"help":(sheetIsOpen("modal")?"modal":null); }
 function sheetOpened(id){ var S=SHEETS[id]; S.from=focusedEl(); syncInert(); focusTo([S.tab[0]]); }
@@ -5294,6 +5306,14 @@ function syncInert(){
     if(!!k.inert!==want) k.inert=want; }
 }
 function helpOpen(){ return sheetIsOpen("help"); }
+/* the switch's button and its note (decision 134): the name constant, the state in aria-pressed, the visible on or off hidden from the name */
+function paintShortcuts(){
+  var b=document.getElementById("help-keys"), d=document.getElementById("help-keys-d"), L=LABELS.keys; if(!b) return;
+  b.setAttribute("aria-pressed",String(SHORTCUTS.on));
+  var nb=b.querySelector("b"), ni=b.querySelector("i"); if(nb) nb.textContent=L.single; if(ni) ni.textContent=SHORTCUTS.on?L.on:L.off;
+  if(d) d.textContent=L.note;
+}
+function setShortcuts(on){ SHORTCUTS.on=!!on; if(helpOpen()) buildHelp(); else paintShortcuts(); }
 function setHelp(open){
   var h=document.getElementById("help"); if(!h) return;
   if(open===helpOpen()) return;
@@ -5310,6 +5330,7 @@ function bindHelp(){
   var h=document.getElementById("help"); if(!h) return;
   ["helpbtn"].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener("click",function(e){ e.stopPropagation(); setHelp(true); }); });
   document.getElementById("help-close").addEventListener("click",function(){ setHelp(false); });
+  var hk=document.getElementById("help-keys"); if(hk) hk.addEventListener("click",function(){ setShortcuts(!SHORTCUTS.on); });
   h.addEventListener("click",function(e){ if(e.target===h) setHelp(false); });   /* the scrim around the sheet */
   var m=document.getElementById("modal");
   document.getElementById("modal-close").addEventListener("click",closeSources);
@@ -5319,7 +5340,7 @@ function bindSheetKeys(){
   window.addEventListener("keydown",function(e){
     var top=sheetTop(); if(!top||KEYS_DRY||e.ctrlKey||e.metaKey||e.altKey) return;
     var S=document.getElementById(top), inS=!!(e.target&&S&&S.contains&&S.contains(e.target));
-    if(e.key==="Escape"||(top==="help"&&e.key==="?")){ e.preventDefault(); e.stopImmediatePropagation(); if(top==="help") setHelp(false); else closeSources(); return; }
+    if(e.key==="Escape"||(top==="help"&&e.key==="?"&&(SHORTCUTS.on||inS))){ e.preventDefault(); e.stopImmediatePropagation(); if(top==="help") setHelp(false); else closeSources(); return; }
     if(e.key==="Tab"){ e.preventDefault(); e.stopImmediatePropagation(); sheetTab(top,e.shiftKey); return; }
     if(!inS){ e.preventDefault(); e.stopImmediatePropagation(); }   /* nothing acts behind a sheet */
   },{capture:true});
@@ -5333,8 +5354,9 @@ function onWindowKey(e){
   /* a Stage 3 leftover (section G.6): ← and → on a focused button, link or tab no longer step the clock; they step it from the
      map, the page, or nothing focused (the time rail and the roving groups have their own arrow keys) */
   if((e.key==="ArrowLeft"||e.key==="ArrowRight")&&ctl) return;
-  var r=keyRow(e,"window");
-  if(KEYS_DRY){ KEYS_DRY.push(r?r.id:null); return; }
+  var r=keyRow(e,"window"), muted=shortcutMuted(e);
+  if(KEYS_DRY){ KEYS_DRY.push(r&&!muted?r.id:null); return; }
+  if(muted) return;   /* decision 134: single-key shortcuts off */
   /* Stage 7B: Tab from outside the open card (focus had left it) goes back into it; any other key but Esc (its own row), Shift and \`
      closes the card where it stands, then does its own action (Space and Enter on the card's focused button pressed it, above) */
   if(firstRunOpen && e.key==="Tab"){ if(!frHasFocus()){ e.preventDefault(); focusId("fr-tour"); } return; }
@@ -5509,6 +5531,7 @@ function buildUI(){
     if(!OPENING.on||sheetTop()||KEYS_DRY||e.ctrlKey||e.metaKey||e.altKey) return;
     var k=e.key, t=e.target, bar=document.getElementById("tourbar"), inBar=!!(bar&&t&&bar.contains(t));
     if(k==="Tab"||k==="Shift"||k==="Escape"||k==="?"||k==="`") return;
+    if(shortcutMuted(e)) return;   /* decision 134: a typed character off does nothing, here too */
     if(inBar&&(k==="Enter"||k===" "||ARROWS.indexOf(k)>=0)) return;
     /* Stage 7D: while the clock plays between steps, Space off a button and Space or Enter on the Play/Pause button pause it */
     if(OPENING.play){ var ctl=!!(t&&t.closest&&t.closest("button,a[href],input,select,textarea,summary,[role='button'],[role='tab']"));
@@ -7308,21 +7331,77 @@ var AUSTERLITZ_DEBUG=(function(){
       !wrong.length&&!hit.length&&!mods&&!spaceOnButton&&n>0,
       KEYS.length+" rows ("+bound+" bound by the two handlers, the rest by their own widgets or the pointer); "+n+" key presses reached their rows"+(wrong.length?"; WRONG: "+wrong.slice(0,6).join("; "):"")+
       "; unbound keys reaching a row: "+(hit.length?hit.join(", "):"none")+"; with a modifier: "+mods+" of 4; Space, \u2192 and Shift+\u2190 on a focused button: "+(spaceOnButton?"REACHED A ROW":"no row (Space presses the button)"));
+    /* roadmap step 3 (decision 134 (a)): the same dry run with single-key shortcuts off: no key that types one character reaches a window row;
+       Space, the arrows and Esc reach theirs; the map's keys (+ and - included) still reach the map while it has focus */
+    var offWrong=[], offN=0; SHORTCUTS.on=false; KEYS_DRY=[];
+    KEYS.forEach(function(r){
+      if(r.scope!=="window"&&r.scope!=="map") return;
+      r.keys.forEach(function(k){ (r.shift===undefined?[false,true]:[r.shift]).forEach(function(sh){
+        KEYS_DRY.length=0;
+        if(r.scope==="map"){ ML.root.focus({preventScroll:true}); kd(ML.root,k,{shift:sh}); ML.root.blur(); }
+        else kd(document.body,k,{shift:sh});
+        var want=r.scope==="map"?"map:"+r.id:(charKey(k)?null:r.id); offN++;
+        if((KEYS_DRY[0]||null)!==want) offWrong.push((sh?"Shift+":"")+(k===" "?"Space":k)+" reached "+KEYS_DRY[0]+", not "+want); }); }); });
+    KEYS_DRY=null; SHORTCUTS.on=true;
+    ck("keys: with single-key shortcuts off, no key that types one character reaches a window row; Space, the arrows and Esc reach theirs, and the map's keys the focused map; on again, every row as before (decision 134)",
+      !offWrong.length&&offN===n, offN+" key presses: "+(offWrong.length?"WRONG: "+offWrong.slice(0,6).join("; "):"each where the switch sends it"));
     /* 2. the overlay lists every row, in its groups; opening and closing return focus; Tab stays inside */
     tb.focus({preventScroll:true}); kd(tb,"?",{shift:true});
     var hp=document.getElementById("help"), open1=!hp.hidden, inFocus=document.activeElement===document.getElementById("help-close");
     var rows=hp.querySelectorAll(".hp-row"), listed=Array.prototype.map.call(rows,function(e){ return e.dataset.key; });
     var missing=KEYS.filter(function(r){ return listed.indexOf(r.id)<0; }).map(function(r){ return r.id; }), ungrouped=KEYS.filter(function(r){ return HELP_GROUPS.indexOf(r.group)<0; }).map(function(r){ return r.id; });
     kd(document.activeElement,"Tab"); var t1=document.activeElement&&document.activeElement.id; kd(document.activeElement,"Tab"); var t2=document.activeElement&&document.activeElement.id;
+    kd(document.activeElement,"Tab"); var t3=document.activeElement&&document.activeElement.id;   /* roadmap step 3: the shortcuts switch is the second stop */
     var clk=clock; kd(document.activeElement,"ArrowRight"); var modal=clock===clk;
     kd(document.activeElement,"Escape"); var closed=hp.hidden, back=document.activeElement===tb;
     document.getElementById("helpbtn").focus({preventScroll:true}); document.getElementById("helpbtn").click(); var byBtn=!hp.hidden; kd(document.activeElement,"?"); var closed2=hp.hidden, back2=document.activeElement===document.getElementById("helpbtn");
     if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
     ck("keys: the “?” overlay lists every row of the key table in its groups; a modal dialog, focus moved in, kept in by Tab, and returned when Esc or “?” closes it",
-      open1&&inFocus&&rows.length===KEYS.length&&!missing.length&&!ungrouped.length&&t1==="help-body"&&t2==="help-close"&&modal&&closed&&back&&byBtn&&closed2&&back2,
+      open1&&inFocus&&rows.length===KEYS.length&&!missing.length&&!ungrouped.length&&t1==="help-keys"&&t2==="help-body"&&t3==="help-close"&&modal&&closed&&back&&byBtn&&closed2&&back2,
       rows.length+" rows listed of "+KEYS.length+(missing.length?"; MISSING: "+missing.join(", "):"")+(ungrouped.length?"; NO GROUP: "+ungrouped.join(", "):"")+"; opened by ? on the focused tour button: "+open1+
-      ", focus on its close button: "+inFocus+"; Tab: "+t1+", then "+t2+"; the arrow key inside it left the clock "+(modal?"unchanged":"MOVED")+"; Esc closed it: "+closed+", focus back on the tour button: "+back+
+      ", focus on its close button: "+inFocus+"; Tab: "+t1+", then "+t2+", then "+t3+"; the arrow key inside it left the clock "+(modal?"unchanged":"MOVED")+"; Esc closed it: "+closed+", focus back on the tour button: "+back+
       "; the ? button opened it: "+byBtn+", ? closed it: "+closed2+", focus back on that button: "+back2);
+    /* roadmap step 3 (decision 134 (a); WCAG 2.1.4): the switch in the overlay, and the keys live with it off. The overlay holds a toggle button
+       named from LABELS, pressed (on) by default; pressed off, the rows of the keys it mutes say so; then every printable key U+0021-U+007E,
+       from the page and from a focused button, changes nothing (the clock, the presentation, the ground, the layers, the effects, the readout,
+       the dispatch, the overlay), ends no opening and closes no first card; Space still plays and Esc still skips the opening. Restored after */
+    (function(){
+      var bad=[], hb=document.getElementById("helpbtn"), hk=document.getElementById("help-keys"), fr=document.getElementById("firstrun"),
+        K0={c:clock,pres:presentation,mode:mode,p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,tab:tabNow,ch:tabChosen};
+      if(!hk) bad.push("no switch in the overlay");
+      else {
+        if(SHORTCUTS.on!==true) bad.push("the switch is not on by default");
+        hb.focus({preventScroll:true}); hb.click();
+        var nm=(hk.querySelector("b")||{}).textContent, ih=hk.querySelector("i");
+        if(hk.getAttribute("type")!=="button"||hk.getAttribute("aria-pressed")!=="true"||nm!==LABELS.keys.single||!ih||ih.getAttribute("aria-hidden")!=="true"||ih.textContent!==LABELS.keys.on) bad.push("the switch: "+hk.outerHTML.slice(0,160));
+        if(document.getElementById("help-body").contains(hk)||hk.classList.contains("hp-row")) bad.push("the switch is inside the key list");
+        hk.focus({preventScroll:true}); hk.click();
+        var muted=KEYS.filter(function(r){ return r.scope==="window"&&r.keys.length&&r.keys.every(charKey); }).map(function(r){ return r.id; }),
+          marked=[].filter.call(document.querySelectorAll("#help-body .hp-row"),function(e){ return / \(off\)$/.test(e.textContent); }).map(function(e){ return e.dataset.key; });
+        if(SHORTCUTS.on||hk.getAttribute("aria-pressed")!=="false"||(ih&&ih.textContent!==LABELS.keys.off)) bad.push("pressed, the switch is not off");
+        if(marked.join()!==muted.join()) bad.push("the rows marked off ["+marked.join()+"] are not the muted rows ["+muted.join()+"]");
+        if(document.activeElement!==hk) bad.push("focus left the switch when it was pressed");
+        setHelp(false);
+        setPresentation("study"); select(null,null); stopPlay(); setClock(600,{instant:true,force:true,camera:false}); finishTween();
+        function snap(){ return [clock,presentation,mode,layerOn.contours,layerOn.analysis,FX.on,devOn,hideDispatch,helpOpen(),playing,!!selection].join("|"); }
+        var s0=snap(), keys=[]; for(var c=0x21;c<=0x7E;c++) keys.push(String.fromCharCode(c));
+        function kd2(on,k){ on.dispatchEvent(new KeyboardEvent("keydown",{key:k,shiftKey:/[A-Z!-+:<>?^_{|}~"]/.test(k),bubbles:true,cancelable:true})); }
+        keys.forEach(function(k){ kd2(document.body,k); }); if(snap()!==s0) bad.push("keys from the page changed "+s0+" to "+snap());
+        var tbn=document.getElementById("tourbtn"); tbn.focus({preventScroll:true}); keys.forEach(function(k){ kd2(tbn,k); }); tbn.blur();
+        if(snap()!==s0) bad.push("keys on a focused button changed "+s0+" to "+snap());
+        openingStart(); finishTween(); ["m","1","?","h","."].forEach(function(k){ kd2(document.body,k); });
+        if(!OPENING.on) bad.push("a typed character ended the opening"); kd2(document.body,"Escape"); if(OPENING.on) bad.push("Esc did not skip the opening");
+        fr.hidden=false; openFirstRun(); ["2","m","?"].forEach(function(k){ kd2(document.body,k); }); if(!firstRunOpen) bad.push("a typed character closed the first card");
+        kd2(document.body,"Escape"); if(firstRunOpen) bad.push("Esc did not close the first card");
+        if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+        kd2(document.body," "); if(!playing) bad.push("Space did not play"); stopPlay();
+        setShortcuts(true); if(hk.getAttribute("aria-pressed")!=="true") bad.push("on again: aria-pressed not true");
+        setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
+        landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv; tabChosen=K0.ch; if(docked) selectTab(K0.tab); syncFollow();
+      }
+      ck("keys: the \u201c?\u201d overlay holds the single-key shortcuts switch (a toggle button named from LABELS, on by default); off, the rows it mutes say so, and no printable key from the page or a focused button changes anything, ends the opening or closes the first card, while Space plays and Esc skips (decision 134, WCAG 2.1.4)",
+        !bad.length, bad.length?bad.join("; "):"the switch on by default; off: "+KEYS.filter(function(r){ return r.scope==="window"&&r.keys.length&&r.keys.every(charKey); }).length+" rows marked, 94 printable keys twice changed nothing, the opening and the card kept; Space played, Esc skipped");
+    })();
     /* 3. the names (decision 50): no presentation labelled "Map", no ground labelled "Staff map"; the identifiers unchanged */
     var vm=Array.prototype.map.call(document.querySelectorAll(".vm-btn"),function(b){ return b.dataset.vm+"="+b.textContent.trim(); }),
       gm=Array.prototype.map.call(document.querySelectorAll(".mode-btn"),function(b){ return b.dataset.m+"="+b.textContent.trim(); });

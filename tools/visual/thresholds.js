@@ -185,6 +185,8 @@ module.exports.check=function(name,m,spec,opts){
     if(!a||!b||(Math.min(a[2],b[2])-Math.max(a[0],b[0])>0&&Math.min(a[3],b[3])-Math.max(a[1],b[1])>0)) f.push("first-run card stacked on the dispatch card"); }
   /* Stage 7B (docs/STAGE7_SPEC.md section 6, 7B; decisions 111, 118): on the fresh first-run page, by real key presses, the card has focus
      on its primary action, Tab stays inside it, and Esc closes it where it stands with focus on Play */
+  /* roadmap step 3 (SW-8): a mostly sideways wheel leaves Follow on and the card open; a vertical wheel over the map closes it and zooms */
+  if(m.wheel){ const W=m.wheel; if(!(W.sideOpen===true&&W.sideFollow===true&&W.overOpen===false&&W.zoomed===true)) f.push("the real wheel over the map: "+JSON.stringify(W)); }
   if(m.firstRunKeys){ const K=m.firstRunKeys;
     if(K.focus0!=="fr-tour") f.push("the first-run card does not take focus on its primary action ("+K.focus0+")");
     if(!K.tabs.every(x=>x.inCard)) f.push("Tab leaves the first-run card: "+K.tabs.map(x=>x.id).join(", "));
@@ -319,7 +321,7 @@ const REQUIRED_FEATURES={LANDCAM:"Stage 3D: the landscape camera, the real-input
   EYE:"Stage 5E: the eye-level vantage", frButtons:"Stage 7B: the first-run dialog", timelineRow:"Stage 3C: the timeline's control row",
   nowTab:"Stage 3B: the rail's Now tab", DWELL:"Stage 4D: the dwell", KEYS:"Stage 3E: the key table", SUN_DAY:"Stage 4B: the computed sun",
   ATMO:"Stage 4C: the atmosphere", SMOKE:"Stage 4E: smoke in puffs", settle:"Stage 0: AUSTERLITZ_DEBUG.settle",
-  applyCase:"Stage 0: AUSTERLITZ_DEBUG.applyCase", selfTest:"Stage 0: AUSTERLITZ_DEBUG.selfTest"};
+  applyCase:"Stage 0: AUSTERLITZ_DEBUG.applyCase", selfTest:"Stage 0: AUSTERLITZ_DEBUG.selfTest", SHORTCUTS:"roadmap step 3: the single-key shortcuts switch (decision 134)"};
 module.exports.REQUIRED_FEATURES=REQUIRED_FEATURES;
 
 /* T-6: the vacuous edges. Watch's caption must show its derived reading (capDerived true) and the ordered routes must draw a route, in every
@@ -360,6 +362,7 @@ function requirements(name,m,spec,LIM){
   if(spec.opening!==undefined) need(!!m.opening,"the opening's step (Stage 7C)");
   if(name==="overview-field"||name==="overview-plan") need(!!m.phaseLabels720,"every phase's label at 1280 x 720 (Stage 3C)");
   if(name==="first-run") need(!!m.firstRunKeys,"the first-run card by real key presses (Stage 7B)");
+  if(name==="first-run") need(!!m.wheel,"the real wheel over the map with the first card open (roadmap step 3, SW-8)");
   if(name==="opening-2") need(!!m.openingKeys,"the opening by real key presses (Stage 7C, 7D)");
   if(spec.interact) need(!!m.intended,"the interaction's intended move (Stage 0)");
   /* (the vertex layout is part of the case's state; a report without a state fails in expectState) */
@@ -443,8 +446,12 @@ function checkLive(live,opts){
     if(!(K.enter4&&K.enter4.speed===4&&!K.enter4.playing)) f.push("keys by real key presses: Enter on a speed button: "+JSON.stringify(K.enter4));
     if(!(K.arrows&&K.arrows.clock===600)) f.push("keys by real key presses: the arrows on a focused button stepped the clock to "+(K.arrows&&K.arrows.clock));
     if(!(K.ctrlC&&K.ctrlC.c0===K.ctrlC.c1)) f.push("keys by real key presses: Ctrl+C toggled the contours");
-    const H=K.help||{}; if(!(H.h1&&H.h1.open&&H.h1.focus==="help-close"&&H.h2==="help-body"&&H.h3==="help-close"&&H.h4&&!H.h4.open&&H.h4.focus==="tourbtn"))
+    /* roadmap step 3 (decision 134): the shortcuts switch is the overlay's second stop: Tab from its close reaches the switch, the list, and the close */
+    const H=K.help||{}; if(!(H.h1&&H.h1.open&&H.h1.focus==="help-close"&&H.h2==="help-keys"&&H.h3==="help-body"&&H.h3b==="help-close"&&H.h4&&!H.h4.open&&H.h4.focus==="tourbtn"))
       f.push("keys by real key presses: the overlay's focus: "+JSON.stringify(H)); }
+  if(req("shortcuts","the single-key shortcuts switch by real key presses (roadmap step 3, decision 134)")){ const S=live.shortcuts;
+    if(!(S.onSwitch==="help-keys"&&S.off&&S.off.on===false&&S.off.pressed==="false"&&S.closed&&!S.closed.open&&S.closed.focus==="helpbtn"&&S.same===true&&S.space===true))
+      f.push("the shortcuts switch by real key presses: "+JSON.stringify(S)); }
   if(so) return f;
   if(req("dwell","the Watch view held in a dwell (Stage 4D)")){ const D=live.dwell, lim=LIM.DROP_LIMIT["pratzen-low"];
     if(D.E!==540||!(D.solid<=SOLID_BLACK)||(D.belowAA||[]).length||!(D.dropped<=lim)||!D.cap||!(D.lit>=1))

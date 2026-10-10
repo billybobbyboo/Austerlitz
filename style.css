@@ -211,6 +211,9 @@ p.conf{font-size:var(--t-small);color:var(--text-muted);line-height:1.5;margin:0
 #help-close{position:absolute;right:14px;top:12px;background:none;border:0;color:var(--text-muted);font-size:var(--t-h3);cursor:pointer}
 .help-sheet{max-width:720px}
 #help-body:focus-visible,#modal-body:focus-visible{outline:1px solid var(--accent);outline-offset:4px}
+/* roadmap step 3 (decision 134 (a)): the shortcuts switch, the layers panel's toggle row; its note in the interface face */
+#help-keys{margin:0 0 4px;width:100%}
+.sheet p.help-note{font-family:var(--sans);font-size:var(--t-small);line-height:1.45;color:var(--text-muted);margin:0 0 10px}
 .hp-row{display:grid;grid-template-columns:minmax(132px,max-content) 1fr;gap:4px 16px;padding:5px 0;border-bottom:1px solid var(--line);
   font-size:var(--t-ui);line-height:1.45;color:var(--text-body)}
 .hp-row:last-child{border-bottom:0}

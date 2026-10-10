@@ -253,6 +253,15 @@ async function interact(page,it,vp){
       await page.keyboard.press("Escape"); const s1=await st();
       m.firstRunKeys={focus0:s0.id,tabs,open:s1.open,camSame:s1.cam.every((v,i)=>Math.abs(v-s0.cam[i])<1e-6),focus1:s1.id};
       await page.evaluate(()=>{ if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+      /* roadmap step 3 (docs/FINAL_AUDIT.md SW-8): the real wheel over the map: the card opened again, a mostly sideways wheel (Follow stays
+         on, the card stays open), then a vertical one (the card closes where it stands, and the map zooms) */
+      const wq=await page.evaluate(()=>{ const fr=document.getElementById("firstrun"); fr.hidden=false; openFirstRun(); freeCam=false; const c=freeCentre();
+        return {x:c[0],y:c[1],d:landCam.position.distanceTo(orbitTarget)}; });
+      await page.mouse.move(wq.x,wq.y); await page.mouse.wheel(120,8); await page.waitForTimeout(150);
+      const w1=await page.evaluate(()=>({open:firstRunOpen,follow:!freeCam}));
+      await page.mouse.wheel(0,-120); await page.waitForTimeout(150);
+      const w2=await page.evaluate(()=>({open:firstRunOpen,d:landCam.position.distanceTo(orbitTarget)}));
+      m.wheel={sideOpen:w1.open,sideFollow:w1.follow,overOpen:w2.open,zoomed:w2.d<wq.d-1e-6};
     }
     /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decision 118): on the opening-2 page, after every measure above, real key presses: Esc
        from step 2 (the end state: 04:00, Study, Play focused); the tools' button by a real click, then Enter on the focused Next (since 7D the
@@ -361,11 +370,29 @@ async function interact(page,it,vp){
       const h1=await first.evaluate(()=>({open:!document.getElementById("help").hidden,focus:document.activeElement&&document.activeElement.id}));
       await first.keyboard.press("Tab"); const h2=await first.evaluate(()=>document.activeElement&&document.activeElement.id);
       await first.keyboard.press("Tab"); const h3=await first.evaluate(()=>document.activeElement&&document.activeElement.id);
+      await first.keyboard.press("Tab"); const h3b=await first.evaluate(()=>document.activeElement&&document.activeElement.id);   /* roadmap step 3: the switch is a stop */
       await first.keyboard.press("Escape"); const h4=await first.evaluate(()=>({open:!document.getElementById("help").hidden,focus:document.activeElement&&document.activeElement.id}));
-      kr.push("? on the tour button: open "+h1.open+", focus "+h1.focus+"; Tab "+h2+", Tab "+h3+"; Esc: open "+h4.open+", focus "+h4.focus);
-      K.help={h1:h1,h2:h2,h3:h3,h4:h4};
+      kr.push("? on the tour button: open "+h1.open+", focus "+h1.focus+"; Tab "+h2+", Tab "+h3+", Tab "+h3b+"; Esc: open "+h4.open+", focus "+h4.focus);
+      K.help={h1:h1,h2:h2,h3:h3,h3b:h3b,h4:h4};
       await first.evaluate(()=>document.activeElement&&document.activeElement.blur());
       LIVE.keys3E=K; report.keys3E=kr; console.log("keys by real key presses: "+kr.join("; ")); }
+    /* roadmap step 3 (decision 134 (a); docs/FINAL_AUDIT.md A-1, WCAG 2.1.4): the single-key shortcuts switch by real key presses: the "?"
+       button, Tab to the switch, Space (off), Esc; then 2, M, ? and . from the page change nothing; Space still plays; the switch on again */
+    AT="shortcuts";
+    if(await has(first,"SHORTCUTS","the single-key shortcuts switch by real key presses")){
+      const S={};
+      await first.evaluate(()=>{ setPresentation("study"); stopPlay(); setClock(600,{instant:true,force:true,camera:false}); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+      await first.focus("#helpbtn"); await first.keyboard.press("Enter");
+      await first.keyboard.press("Tab"); S.onSwitch=await first.evaluate(()=>document.activeElement&&document.activeElement.id);
+      await first.keyboard.press(" "); S.off=await first.evaluate(()=>({on:SHORTCUTS.on,pressed:document.getElementById("help-keys").getAttribute("aria-pressed")}));
+      await first.keyboard.press("Escape"); S.closed=await first.evaluate(()=>({open:helpOpen(),focus:document.activeElement&&document.activeElement.id}));
+      await first.evaluate(()=>document.activeElement&&document.activeElement.blur());
+      const before=await first.evaluate(()=>[presentation,mode,layerOn.contours,clock,helpOpen(),playing].join("|"));
+      for(const k of ["2","m","Shift+?",".","c","1"]) await first.keyboard.press(k);
+      S.same=before===await first.evaluate(()=>[presentation,mode,layerOn.contours,clock,helpOpen(),playing].join("|"));
+      await first.keyboard.press(" "); S.space=await first.evaluate(()=>playing); await first.evaluate(()=>stopPlay());
+      await first.evaluate(()=>{ setShortcuts(true); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+      LIVE.shortcuts=S; console.log("shortcuts by real key presses: the switch "+S.onSwitch+", pressed "+S.off.pressed+"; Esc: open "+S.closed.open+", focus "+S.closed.focus+"; 2, M, ?, ., C, 1 changed nothing: "+S.same+"; Space played: "+S.space); }
     /* Stage 4B (docs/STAGE4_SPEC.md section A.6): the light through the day, without the shadow toe. The Field vantage and the low
        Pratzen view at 4x every hour 08:00-16:00, and three more views at 1x and 10.33x (the low Pratzen view has its own cases):
        solid near-black within the Stage 0 limit in each (a build with the computed sun) */

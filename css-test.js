@@ -557,3 +557,25 @@ if(cerrs) process.exitCode=1;
   console.log("start-up: "+(berr.length?berr.length+" wrong":"three.js from cdnjs r128 with its sha512 and crossorigin, the guard before it, the failure dialog, boot() reporting and rethrowing, the loop stopped on a failure, the context-loss notice"));
   if(berr.length) process.exitCode=1;
 }
+/* roadmap step 3 (decision 134 (a); docs/FINAL_AUDIT.md A-1): the single-key shortcuts switch: a toggle button in the "?" overlay, outside the
+   list the app writes, on by default, nothing stored (decision 117), its words from LABELS; the window's handler and the opening's mute a
+   typed character when it is off. Its behaviour is the self-test's and the harness's (real key presses) */
+{
+  const sh=fs.readFileSync('shell.html','utf8'), app=fs.readFileSync('app.js','utf8'), kerr=[];
+  const hk=(sh.match(/<button id="help-keys"[^>]*>/)||[""])[0];
+  if(!/type="button"/.test(hk)||!/aria-pressed="true"/.test(hk)) kerr.push("shell.html: #help-keys is not a toggle button, pressed by default: "+hk);
+  const hs=sh.indexOf('<div id="help"'), hki=sh.indexOf('id="help-keys"'), hbi=sh.indexOf('<div id="help-body"');
+  if(!(hs>=0&&hki>hs&&hki<hbi)) kerr.push("shell.html: the switch is not in the overlay before (outside) its key list");
+  if(/class="[^"]*hp-row/.test(hk)) kerr.push("shell.html: the switch carries .hp-row (the overlay's check counts those as rows)");
+  if(!/<i aria-hidden="true">/.test(sh.slice(hki,hki+200))) kerr.push("shell.html: the switch's on/off word is not hidden from its name");
+  if(!/var SHORTCUTS=\{on:true\};/.test(app)) kerr.push("app.js: SHORTCUTS is not declared on by default");
+  const fn=(n)=>{ const i=app.indexOf("function "+n+"("); return i<0?"":app.slice(i,app.indexOf("\n}",i)); };
+  ["setShortcuts","paintShortcuts","onWindowKey"].forEach(n=>{ const b=fn(n); if(!b) kerr.push("app.js: "+n+" is missing"); else if(/localStorage|sessionStorage|indexedDB|document\.cookie/.test(b)) kerr.push("app.js: "+n+" stores something (decision 117)"); });
+  if(/localStorage|sessionStorage|indexedDB/.test(app)) kerr.push("app.js: browser storage is used (decision 117: nothing stored)");
+  if(!/if\(muted\) return;/.test(fn("onWindowKey"))) kerr.push("app.js: onWindowKey does not mute a typed character with the switch off");
+  if(!/if\(shortcutMuted\(e\)\) return;/.test(app)) kerr.push("app.js: the opening's key listener does not mute a typed character with the switch off");
+  if(!/keys:\{single:"Single-key shortcuts"/.test(app)) kerr.push("app.js: the switch's words are not in LABELS.keys");
+  kerr.forEach(e=>console.log("  ! "+e));
+  console.log("shortcuts switch: "+(kerr.length?kerr.length+" wrong":"a toggle button in the overlay outside its list, on by default, nothing stored, its words in LABELS, a typed character muted when off"));
+  if(kerr.length) process.exitCode=1;
+}
