@@ -671,6 +671,10 @@ body.firstrun-on #openingbtn{display:none}
    script; every text is on a plate. The .mlc paddings are mirrored in mlPlaceItem (the frame's foot). ---------- */
 #maplayer{position:fixed;inset:0;z-index:6;pointer-events:none;overflow:hidden}
 body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!important}   /* the self-test holds the panels' slides still */
+/* roadmap step 3 (docs/FINAL_AUDIT.md S-6): reduced motion in the stylesheet too: the panels' slides, the toast's and the boot screen's fades */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
 .ml-lines{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
 .ml-item{position:absolute;left:0;top:0;opacity:0;white-space:nowrap;font-family:var(--sans);font-weight:400;border-radius:2px}
 .ml-item.on{opacity:1}
@@ -5604,7 +5608,10 @@ function nameHTML(f,paper,o){
 /* ============================================================
    COMMAND MAP — application
    ============================================================ */
-var RM = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+/* reduced motion: the visitor's preference, followed live since roadmap step 3 (docs/FINAL_AUDIT.md S-6; rmChange, bound in buildUI): it was
+   read once at load. The self-test forces RM for some checks and gives back RM_MQ's value after */
+var RM_MQ = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+var RM = !!(RM_MQ && RM_MQ.matches);
 /* ?harness=1: deterministic frames for the visual regression harness (no drift, no grain animation) */
 var HARNESS = /[?&]harness=1\b/.test(location.search);
 
@@ -6145,6 +6152,7 @@ function relayoutAfterFonts(){
 function liftBoot(){
   if(bootFailed()) return;   /* roadmap step 3 (SW-1): a failed start keeps its message */
   var b=document.getElementById("boot"); if(!b) return;
+  if(RM){ if(b.parentNode) b.parentNode.removeChild(b); return; }   /* roadmap step 3 (S-6): no fade under reduced motion */
   requestAnimationFrame(function(){ b.style.opacity="0"; });
   setTimeout(function(){ if(b.parentNode) b.parentNode.removeChild(b); },900);
 }
@@ -6166,6 +6174,15 @@ function bindContextLoss(cv){
     var n=document.getElementById("glnotice"); if(n) n.innerHTML="";
     requestRender(3); });
 }
+/* roadmap step 3 (S-6): the preference changed while the page is open. Turned on, what is moving stops where it would end: the opening's played
+   stretch arrives at its step (7D's cut), a glide or a phase's tween ends, the view offset jumps; Follow then moves only at event starts and
+   arrows are drawn whole, as under reduced motion from the start (both read RM each frame). Turned off, motion comes back from the next move */
+function rmChange(e){
+  RM=!!(e&&e.matches);
+  if(RM){ if(OPENING.play) openingArrive(); endTweens(); syncViewOffset(true); drawOnArrows(); }
+  requestRender(3);
+}
+function endTweens(){ var n=0; while(tween&&n<4){ tween(performance.now()+1e7); n++; } }
 /* the drawing buffer's density: the screen's, at most 2 (1.5 on a low tier); read at start and on every resize (roadmap step 3, SW-10) */
 function pxRatio(){ return Math.min(window.devicePixelRatio||1, lowTier?1.5:2); }
 function boot(){
@@ -10580,7 +10597,7 @@ function syncViewOffset(instant){
   for(var i=0;i<P.length;i++) key+=";"+Math.round(P[i][0])+","+Math.round(P[i][1])+","+Math.round(P[i][2])+","+Math.round(P[i][3]);
   if(key!==VOFF.key){ VOFF.key=key; var c=freeCentre(); VOFF.tx=W/2-c[0]; VOFF.ty=H/2-c[1]; }
   var done=true;
-  if(instant||W!==VOFF.W||H!==VOFF.H){ VOFF.x=VOFF.tx; VOFF.y=VOFF.ty; }
+  if(instant||RM||W!==VOFF.W||H!==VOFF.H){ VOFF.x=VOFF.tx; VOFF.y=VOFF.ty; }   /* roadmap step 3: no easing under reduced motion */
   else if(VOFF.x!==VOFF.tx||VOFF.y!==VOFF.ty){
     var r=ease(0.28); VOFF.x+=(VOFF.tx-VOFF.x)*r; VOFF.y+=(VOFF.ty-VOFF.y)*r;
     if(Math.abs(VOFF.tx-VOFF.x)<0.05&&Math.abs(VOFF.ty-VOFF.y)<0.05){ VOFF.x=VOFF.tx; VOFF.y=VOFF.ty; } else { done=false; settling=true; } }
@@ -11245,6 +11262,7 @@ function buildUI(){
     if(mode==="staff"){ if(MAPCAM.framed()) MAPCAM.frameField(true); else MAPCAM.apply(); }
   }
   window.addEventListener("resize",onResize);
+  if(RM_MQ){ if(RM_MQ.addEventListener) RM_MQ.addEventListener("change",rmChange); else if(RM_MQ.addListener) RM_MQ.addListener(rmChange); }   /* roadmap step 3 (S-6) */
   /* the density can change without a resize (a window dragged to another screen): one query for the current density, made again each time */
   (function watchDensity(){ if(!window.matchMedia) return; var q=window.matchMedia("(resolution: "+(window.devicePixelRatio||1)+"dppx)");
     function ch(){ if(q.removeEventListener) q.removeEventListener("change",ch); else if(q.removeListener) q.removeListener(ch); onResize(); watchDensity(); }
@@ -15086,6 +15104,27 @@ var AUSTERLITZ_DEBUG=(function(){
       landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv; tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id); syncFollow();
       ck("panels: a closed dossier is inert, hidden and emptied; closed by \u00d7, Esc, Back or a ground click, focus on its opener, never in the hidden dossier; docked and opened from the rail, focus on its Back with the rail inert, given back before focus returns; a rebuild keeps focus in it (docs/FINAL_AUDIT.md SW-3, SW-5)",
         !bad.length, bad.length?bad.join("; "):"each way out to the opener; the closed dossier inert, hidden and empty; Full dossier and a repaint kept focus inside"+(docked?"":" (undocked: no Back, no rail under the dossier)"));
+    })();
+    /* roadmap step 3 (docs/FINAL_AUDIT.md S-6): reduced motion followed live. The preference turned on (rmChange, as its media query's change
+       event calls it) mid-stretch: the opening at its step, nothing playing, the visitor's speed back; mid-glide: the glide ended at its end;
+       the view offset at its target; turned off, RM follows. The harness turns the real preference on and off (emulateMedia). Restored after */
+    (function(){
+      var bad=[], keep=RM, K0={c:clock,pres:presentation,mode:mode,p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,tab:tabNow,ch:tabChosen};
+      if(mode!=="terrain") setMode("terrain"); setPresentation("study"); select(null,null); RM=false;
+      openingStart(); finishTween(); openingGo(1);
+      if(!OPENING.play) bad.push("Next did not play to step 2");
+      else { rmChange({matches:true}); if(!RM) bad.push("RM not on"); if(OPENING.play||playing||speed!==0.5) bad.push("mid-stretch: still playing ("+!!OPENING.play+", "+playing+", "+speed+"x)");
+        if(OPENING.k!==1||Math.abs(clock-stopClock(TOUR[OPENING.stops[1]]))>1e-6) bad.push("mid-stretch: not at step 2 ("+(OPENING.k+1)+", "+fmtClock(clock)+")"); }
+      openingEnd("camera"); if(tourStep>=0) exitTour();
+      rmChange({matches:false}); if(RM) bad.push("RM still on after the preference was turned off");
+      var pf=presetFrame(VANTAGE.allied); flyTo(VANTAGE.allied); if(!tween) bad.push("no glide started");
+      rmChange({matches:true}); var dEnd=Math.hypot(orbitTarget.x-pf[3],orbitTarget.z-pf[5]);
+      if(tween||dEnd>1e-3) bad.push("mid-glide: the glide "+(tween?"still running":"ended")+" "+dEnd.toFixed(4)+" units from its end");
+      if(VOFF.x!==VOFF.tx||VOFF.y!==VOFF.ty) bad.push("the view offset not at its target");
+      RM=keep; setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
+      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv; tabChosen=K0.ch; if(docked) selectTab(K0.tab); syncFollow();
+      ck("reduced motion followed live: turned on mid-stretch the opening is at its step, nothing playing, \u00bd\u00d7 back; mid-glide the glide is at its end; turned off, motion again (docs/FINAL_AUDIT.md S-6)",
+        !bad.length, bad.length?bad.join("; "):"the stretch to step 2 cut at its step; the glide to the Allied vantage ended at its end; RM followed both ways");
     })();
     /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decisions 111, 112, 114-116, 118): the opening, begun from the reopened card's primary
        action at 04:00 in Study on the landscape. Every step is its tour stop (the clock stopClock, the theme, the camera presetFrame(stopCam),

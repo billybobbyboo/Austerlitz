@@ -612,3 +612,14 @@ if(cerrs) process.exitCode=1;
   console.log("layout seams: "+(serr.length?serr.length+" wrong":"the narrow layout below "+dock+" px only, the density set on resize, no @media declaration shadowed by a later base rule"));
   if(serr.length) process.exitCode=1;
 }
+/* roadmap step 3 (docs/FINAL_AUDIT.md S-6): reduced motion in the stylesheet (every transition and animation off under the preference) and
+   followed live by the app (its media query's change event). Its behaviour is the self-test's and the harness's (emulateMedia) */
+{
+  const app=fs.readFileSync('app.js','utf8'), rerr=[];
+  const rm=allRules.find(r=>r.media&&/prefers-reduced-motion:\s*reduce/.test(r.media)&&r.sels.indexOf("*")>=0);
+  if(!rm||!/transition:none!important/.test(rm.body.replace(/\s/g,""))||!/animation:none!important/.test(rm.body.replace(/\s/g,""))) rerr.push("style.css: no rule turning every transition and animation off under prefers-reduced-motion");
+  if(!/RM_MQ\.addEventListener\("change",rmChange\)/.test(app)) rerr.push("app.js: the reduced-motion preference is not followed live (rmChange)");
+  rerr.forEach(e=>console.log("  ! "+e));
+  console.log("reduced motion: "+(rerr.length?rerr.length+" wrong":"every transition and animation off in the stylesheet under the preference; the app follows it live"));
+  if(rerr.length) process.exitCode=1;
+}

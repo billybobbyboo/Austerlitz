@@ -665,6 +665,10 @@ body.firstrun-on #openingbtn{display:none}
    script; every text is on a plate. The .mlc paddings are mirrored in mlPlaceItem (the frame's foot). ---------- */
 #maplayer{position:fixed;inset:0;z-index:6;pointer-events:none;overflow:hidden}
 body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!important}   /* the self-test holds the panels' slides still */
+/* roadmap step 3 (docs/FINAL_AUDIT.md S-6): reduced motion in the stylesheet too: the panels' slides, the toast's and the boot screen's fades */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
 .ml-lines{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
 .ml-item{position:absolute;left:0;top:0;opacity:0;white-space:nowrap;font-family:var(--sans);font-weight:400;border-radius:2px}
 .ml-item.on{opacity:1}

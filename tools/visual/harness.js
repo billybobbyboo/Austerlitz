@@ -409,6 +409,13 @@ async function interact(page,it,vp){
       await size(700,800); NR.push(Object.assign({at:"700"},await look()));
       await size(vp0.width,vp0.height); await first.evaluate(()=>{ setPresentation("study"); select(null,null); });
       LIVE.narrow=NR;
+      /* roadmap step 3 (docs/FINAL_AUDIT.md S-6): the reduced-motion preference turned on and off while the page is open (the audit's rm-live):
+         the app follows it (RM) and the panels' slides stop (the rail's transition-duration) */
+      AT="reduced motion";
+      const rmS=()=>first.evaluate(()=>({rm:RM,rail:getComputedStyle(document.querySelector(".rail")).transitionDuration}));
+      await first.emulateMedia({reducedMotion:"reduce"}); await first.waitForTimeout(300); const rm1=await rmS();
+      await first.emulateMedia({reducedMotion:"no-preference"}); await first.waitForTimeout(300); const rm0=await rmS();
+      LIVE.rmLive={on:rm1,off:rm0}; console.log("reduced motion while open: on "+JSON.stringify(rm1)+", off "+JSON.stringify(rm0));
       console.log("narrow layout: "+NR.map(r=>r.at+": rail "+(r.railShown?"shown":"hidden")+(r.railInert?" inert":"")+", card "+(r.dispatchShown?"shown":"hidden")+", over "+r.over).join("; "));
       console.log("shortcuts by real key presses: the switch "+S.onSwitch+", pressed "+S.off.pressed+"; Esc: open "+S.closed.open+", focus "+S.closed.focus+"; 2, M, ?, ., C, 1 changed nothing: "+S.same+"; Space played: "+S.space); }
     /* Stage 4B (docs/STAGE4_SPEC.md section A.6): the light through the day, without the shadow toe. The Field vantage and the low

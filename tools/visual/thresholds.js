@@ -455,6 +455,9 @@ function checkLive(live,opts){
     if(!n1||n1.docked||n1.railShown||!n1.railInert||!n1.dispatchShown) f.push("narrow layout: narrowed to 1000 px the rail is not hidden and inert with the card shown: "+JSON.stringify(n1));
     if(!n2||!n2.railShown||n2.railInert||!n2.dispatchShown) f.push("narrow layout: after 2 and Esc the rail and the card are not both shown: "+JSON.stringify(n2));
     if(!n3||!n3.railShown||n3.dispatchShown) f.push("narrow layout: at 700 px the card did not give way to the shown rail: "+JSON.stringify(n3)); }
+  if(req("rmLive","the reduced-motion preference turned on and off while the page is open (roadmap step 3, S-6)")){ const R=live.rmLive;
+    const z=d=>String(d||"").split(",").every(x=>/^\s*0s\s*$/.test(x));
+    if(!(R.on&&R.on.rm===true&&z(R.on.rail)&&R.off&&R.off.rm===false&&!z(R.off.rail))) f.push("reduced motion while the page is open: "+JSON.stringify(R)); }
   if(req("shortcuts","the single-key shortcuts switch by real key presses (roadmap step 3, decision 134)")){ const S=live.shortcuts;
     if(!(S.onSwitch==="help-keys"&&S.off&&S.off.on===false&&S.off.pressed==="false"&&S.closed&&!S.closed.open&&S.closed.focus==="helpbtn"&&S.same===true&&S.space===true))
       f.push("the shortcuts switch by real key presses: "+JSON.stringify(S)); }
