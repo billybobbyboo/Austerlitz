@@ -3450,6 +3450,21 @@ function drawnKnow(id){
   if(k==="seen"&&EYE.on){ var hq=posNow(EYES.HQ[commandView]), p=posNow(id); if(hq&&p&&!hasLOS(hq,p)) return "uncertain"; }
   return k;
 }
+/* roadmap step 3 (docs/FINAL_AUDIT.md S-1): an aggregate's counter (a corps or a column, which has no track of its own) under "Whose eyes?" is
+   its formations' reading, not its own: of its formations on the field, those the reading knows (drawnKnow not "unknown"); none known, it is
+   not drawn; else at the mean of the known ones' positions, "seen" if any of them is, else reported only ("?"), its grade the worst of the
+   known ones', and no strength while only some are known (the counter would tell the strength of formations the reading does not know).
+   Everyone's reading and the observer's own side: unchanged (the mean of all on the field) */
+function aggReading(id){
+  var L=leavesOf(id,[]).filter(function(k){ return !!posNow(k); }), n=L.length, f=FORMATIONS[id];
+  if(!n) return {p:null,know:"unknown",n:0,k:0};
+  if(commandView==="none"||sideOfNation(f.nation)===commandView) return {p:posNow(id),know:knowledgeOf(id),n:n,k:n,cf:null,strength:null,whole:true};
+  var K=L.filter(function(k){ return drawnKnow(k)!=="unknown"; });
+  if(!K.length) return {p:null,know:"unknown",n:n,k:0};
+  var sx=0, sy=0, cf="A", seen=false;
+  K.forEach(function(k){ var q=posNow(k); sx+=q[0]; sy+=q[1]; cf=worseGrade(cf,liveConf(k,curPhase).cf); if(drawnKnow(k)==="seen") seen=true; });
+  return {p:[sx/K.length,sy/K.length],know:seen?"seen":"uncertain",n:n,k:K.length,cf:cf,whole:K.length===n};
+}
 /* which part of the rule decides (the dossier's reason): the authored limit (KNOW_OVERRIDE), the line of sight, the valley fog */
 function knowReason(id){
   var k=(knowAtClock(),knowledgeOf(id));
@@ -3741,8 +3756,15 @@ function clearOverlays(){
   if(planSide) setPlan(planSide);
   if(chapter) setChapter(null);
 }
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-11): the tour and the opening tell the whole field, so they are shown under everyone's reading: a
+   visitor's "Whose eyes?" reading is set aside when either begins (TOURCV) and given back when it ends, unless the visitor chose a reading
+   meanwhile (the reading's buttons clear TOURCV). The eye level, which needs a reading, is left, not given back */
+var TOURCV=null;
+function readingAside(){ if(TOURCV===null&&commandView!=="none"){ TOURCV=commandView; setCommandView("none"); } }
+function readingBack(){ if(TOURCV!==null){ var v=TOURCV; TOURCV=null; setCommandView(v); } }
 function startTour(){
   closeFirst(null);
+  readingAside();
   tourStep=0;
   hideDispatch=true; syncVis();
   applyTour();
@@ -3752,6 +3774,7 @@ function exitTour(){
   var b=document.getElementById("tourbar"), a=focusedEl(), had=!!(b&&a&&b.contains&&b.contains(a));
   if(b) b.hidden=true;
   if(had) focusTo(["tourbtn","play","restore"]);   /* roadmap step 3 (SW-5): Leave the tour and Finish hid the bar with focus on it */
+  readingBack();   /* SW-11 */
   clearOverlays();
   select(null,null);
   hideDispatch=false; syncVis();
@@ -3813,6 +3836,7 @@ function openingBar(on){   /* the bar's two words that differ: the opening's fro
 function openingStart(){
   closeFirst(null);
   if(tourStep>=0&&!OPENING.on) exitTour();
+  readingAside();   /* roadmap step 3 (SW-11) */
   OPENING.on=true;
   hideDispatch=true; syncVis();
   openingBar(true);
@@ -3888,6 +3912,7 @@ function openingEnd(how){
   var bar=document.getElementById("tourbar"), a=document.activeElement, had=!!(bar&&a&&bar.contains&&bar.contains(a));
   OPENING.on=false; OPENING.k=-1;
   tourStep=-1; paintTimeline();
+  readingBack();   /* roadmap step 3 (SW-11) */
   if(bar) bar.hidden=true;
   openingBar(false);
   clearOverlays();
@@ -4169,7 +4194,10 @@ function mlCollect(){
     mlContent(it,[str,col,PL].join("|"),esc(str),[PL,col]);
     it.world.copy(w); o.cat=cat; return add(it,o);
   }
-  function fstate(id){ var f=FORMATIONS[id]; return {st:liveStatus(id,curPhase),cf:aggConf(id,curPhase),know:drawnKnow(id),strength:f.strength||aggStrength(id)}; }   /* Stage 5E: as drawn */
+  function fstate(id){ var f=FORMATIONS[id], rd=aggregates[id]&&aggregates[id].rd;   /* Stage 5E: as drawn; an aggregate as its formations' reading (S-1) */
+    if(rd&&rd.p&&!rd.whole) return {st:liveStatus(id,curPhase),cf:rd.cf,know:rd.know,strength:null};
+    if(rd&&rd.p&&commandView!=="none"&&rd.know!=="own") return {st:liveStatus(id,curPhase),cf:rd.cf||aggConf(id,curPhase),know:rd.know,strength:f.strength||aggStrength(id)};
+    return {st:liveStatus(id,curPhase),cf:aggConf(id,curPhase),know:drawnKnow(id),strength:f.strength||aggStrength(id)}; }
   function rank(f,s){ var e=ECH_RANK[f.ech]; return (e===undefined?2:e)*0.1-(s||0)/1e7; }
   /* formation counters: the paper map and hybrid */
   function counter(id,rec){
@@ -4768,9 +4796,9 @@ function updateVisibility(){
   function placeSprite(rec,mapPos,show){ rec.show=!!(mapPos&&show); rec.p=mapPos; }
 
   Object.keys(aggregates).forEach(function(id){
-    var rec=aggregates[id];
-    var p=posOf(id,curPhase);
-    placeSprite(rec,p,showSym && wantCorps && !!p);
+    var rec=aggregates[id], rd=aggReading(id);   /* roadmap step 3 (S-1): the reading of its formations */
+    rec.rd=rd;
+    placeSprite(rec,rd.p,showSym && wantCorps && !!rd.p);
   });
 
   Object.keys(units).forEach(function(id){
@@ -5519,7 +5547,7 @@ function buildUI(){
   paintChapterText();
 
   document.querySelectorAll(".cmd-btn").forEach(function(b){
-    b.addEventListener("click",function(){ setCommandView(b.dataset.cv); });
+    b.addEventListener("click",function(){ TOURCV=null; setCommandView(b.dataset.cv); });   /* the visitor's choice stands (SW-11) */
   });
   document.querySelectorAll(".spd-btn").forEach(function(b){
     b.addEventListener("click",function(){ setSpeed(+b.dataset.s); });
@@ -5541,7 +5569,7 @@ function buildUI(){
     });
   });
   var ebt=document.getElementById("eyesbtn"), ego=document.getElementById("eyego");   /* Stage 5E: "Whose eyes?" from the timeline; the eye level */
-  if(ebt) ebt.addEventListener("click",eyesCycle);
+  if(ebt) ebt.addEventListener("click",function(){ TOURCV=null; eyesCycle(); });   /* roadmap step 3 (SW-11): the visitor's choice stands */
   if(ego) ego.addEventListener("click",eyeEnter);
   eyesSync();
   var skd=document.getElementById("skel-day");   /* Stage 5D (decision 90): the skeleton's whole day; choosing it turns the skeleton on */
@@ -7536,7 +7564,7 @@ var AUSTERLITZ_DEBUG=(function(){
       "the eye 1.8 units from the live glyph “kamensky”: the largest symbol drawn "+big.toFixed(1)+" px; "+faded+" of "+near+" glyphs within "+SYM_FADE[0]+" units faded out; from the Field vantage every glyph at its authored size: "+same);
   }
   function applyCase(spec,aimOf){
-    closeFirst(null);
+    closeFirst(null); TOURCV=null;   /* roadmap step 3: a case sets its own reading */
     stopPlay(); if(OPENING.on) openingEnd("camera"); if(tourStep>=0) exitTour();
     if(planSide) setPlan(planSide); if(chapter) setChapter(null);
     freeCam=true;
@@ -8574,8 +8602,33 @@ var AUSTERLITZ_DEBUG=(function(){
      the control */
   function eyesDayChecks(){
     var out=[], k0={cv:commandView,clock:clock,md:mode,sel:selection?{k:selection.kind,id:selection.id}:null,ex:dossierExpanded}, ms0=MAPCAM.state();
-    if(mode!=="terrain") setMode("terrain");
     select(null,null);
+    /* roadmap step 3 (docs/FINAL_AUDIT.md S-1): on the paper map at its whole-field framing (counters at corps level), for both headquarters
+       every 10 minutes, every aggregate's counter is what its formations' readings give, computed here from each formation's drawnKnow (not
+       through aggReading): not drawn when none of its formations on the field is known; else at the mean of the known ones, "?" (reported
+       only) exactly when none of them is seen, its grade the worst of theirs, and no strength while only some are known */
+    (function(){
+      var bad=[], n=0, hid=0, part=0, unc=0, at05=[];
+      setMode("staff"); MAPCAM.frameField(true);
+      ["fr","al"].forEach(function(cv){ setCommandView(cv);
+        for(var t=T_MIN;t<=T_MAX;t+=10){ setClock(t,{instant:true,camera:false}); updateVisibility(); mlLayout();
+          if(lodEch!=="corps"){ bad.push("the paper map's framing does not draw corps counters at "+fmtClock(t)); return; }
+          Object.keys(aggregates).forEach(function(id){ var f=FORMATIONS[id]; if(sideOfNation(f.nation)===cv) return;
+            var L=leavesOf(id,[]).filter(function(k){ return !!posNow(k); }); if(!L.length) return; n++;
+            var K=L.filter(function(k){ return drawnKnow(k)!=="unknown"; }), rec=aggregates[id], it=ML.items["c:"+id], on=!!(it&&it.eFrame===ML.frame), w=cv+" "+id+" "+fmtClock(t);
+            if(!K.length){ hid++; if(rec.show||on) bad.push(w+": drawn while none of its "+L.length+" formations is known"); if(t===300&&cv==="al") at05.push(id); return; }
+            var mx=0, mz=0, cf="A", seen=false; K.forEach(function(k){ var q=posNow(k); mx+=q[0]/K.length; mz+=q[1]/K.length; cf=worseGrade(cf,liveConf(k,curPhase).cf); if(drawnKnow(k)==="seen") seen=true; });
+            if(!rec.show||!rec.p||Math.hypot(rec.p[0]-mx,rec.p[1]-mz)>1e-9) bad.push(w+": not at the mean of its "+K.length+" known formations");
+            if(K.length<L.length) part++; if(!seen) unc++;
+            var lab=it&&it.el?(it.el.getAttribute("aria-label")||""):"";
+            if(on&&(/reported only/.test(lab)!==!seen)) bad.push(w+": its name says "+(seen?"reported only although one is seen":"nothing of a reading with none seen"));
+            if(on&&K.length<L.length&&/about [0-9]/.test(lab)) bad.push(w+": a strength drawn while "+K.length+" of "+L.length+" formations are known");
+            if(on&&lab.indexOf("position grade "+cf)<0) bad.push(w+": its grade is not "+cf+" ("+lab+")"); }); } });
+      setCommandView("none"); MAPCAM.restore(ms0); if(mode!=="terrain") setMode("terrain");
+      out.push({name:"Whose eyes?: a corps or column counter is its formations' reading: none drawn when every one of its formations on the field is unknown, else at the mean of those known, reported only exactly when none is seen, its grade theirs, and no strength while only some are known (docs/FINAL_AUDIT.md S-1)",
+        ok:!bad.length&&n>0&&hid>0, detail:(bad.length?"WRONG: "+bad.slice(0,6).join("; ")+"; ":"")+n+" enemy aggregates on the field over both readings every 10 minutes: "+hid+" hidden (none known), "+part+" partly known, "+unc+" reported only; at 05:00 for the Allied headquarters hidden: "+(at05.join(", ")||"none")});
+    })();
+    if(mode!=="terrain") setMode("terrain");
     /* the reading at the clock: every 10 minutes, as the clock is moved, against the rule evaluated afresh; and what the cache keyed by
        the phase gave (the reading at the first visited minute of each phase), for the record */
     var n=0, diff=[], old=0;
@@ -8873,6 +8926,7 @@ var AUSTERLITZ_DEBUG=(function(){
     _rbm.clear();   /* texData's copies are this run's */
     function ck(name,ok,detail){ out.push({name:name,ok:!!ok,detail:detail}); }
     if(EYE.on) eyeLeave();   /* Stage 5E: the checks run from the omniscient view, off the eye level; the reading is restored after */
+    TOURCV=null;   /* roadmap step 3: the reading shown is the one restored after */
     var save={t:clock,mode:mode,pres:presentation,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,map:MAPCAM.state(),cv:commandView,plan:planSide};
     setCommandView("none");
     if(planSide) setPlan(planSide);   /* Stage 5F: and without the Plans overlay (it dims every formation); restored after */
@@ -9583,6 +9637,28 @@ var AUSTERLITZ_DEBUG=(function(){
       landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv; tabChosen=K0.ch; if(docked) selectTab(K0.tab); syncFollow();
       ck("reduced motion followed live: turned on mid-stretch the opening is at its step, nothing playing, \u00bd\u00d7 back; mid-glide the glide is at its end; turned off, motion again (docs/FINAL_AUDIT.md S-6)",
         !bad.length, bad.length?bad.join("; "):"the stretch to step 2 cut at its step; the glide to the Allied vantage ended at its end; RM followed both ways");
+    })();
+    /* roadmap step 3 (docs/FINAL_AUDIT.md SW-11): the opening and the tour under everyone's reading, the visitor's reading given back on every
+       way out, unless the visitor chose a reading meanwhile. Restored after */
+    (function(){
+      var bad=[], K0={c:clock,pres:presentation,mode:mode,cv:commandView,p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv2:curVantage,tab:tabNow,ch:tabChosen};
+      if(mode!=="terrain") setMode("terrain"); setPresentation("study"); select(null,null);
+      ["fr","al"].forEach(function(cv){
+        ["skip","end","camera","key","pointer"].forEach(function(how){
+          setCommandView(cv); openingStart(); finishTween();
+          if(commandView!=="none") bad.push(cv+": the opening under "+commandView);
+          if(how==="end"){ for(var q=0;q<OPENING.stops.length&&OPENING.on;q++){ openingGo(1); if(OPENING.play) openingArrive(); finishTween(); } if(OPENING.on) openingGo(1); }
+          else openingEnd(how);
+          if(commandView!==cv) bad.push(cv+": after the opening ended ("+how+") the reading is "+commandView); });
+        setCommandView(cv); startTour(); finishTween(); if(commandView!=="none") bad.push(cv+": the tour under "+commandView);
+        tourGo(1); finishTween(); if(commandView!=="none") bad.push(cv+": the tour's next stop under "+commandView);
+        exitTour(); if(commandView!==cv) bad.push(cv+": after the tour the reading is "+commandView);
+        setCommandView(cv); startTour(); finishTween(); document.getElementById("eyesbtn").click(); var chose=commandView; exitTour();
+        if(commandView!==chose) bad.push(cv+": the visitor's reading chosen in the tour ("+chose+") was not kept ("+commandView+")"); });
+      setCommandView(K0.cv); setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
+      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv2; tabChosen=K0.ch; if(docked) selectTab(K0.tab); syncFollow();
+      ck("opening and tour: shown under everyone's reading; the visitor's reading given back on every way out (skip, finish, the camera, a key, a press, leaving the tour), unless the visitor chose a reading meanwhile (docs/FINAL_AUDIT.md SW-11)",
+        !bad.length, bad.length?bad.join("; "):"both headquarters' readings set aside and given back on 5 ways out of the opening and out of the tour; a reading chosen in the tour kept");
     })();
     /* roadmap step 3 (handed on by step 2): an event's drawn map label carries its note's word ("(disputed)", "(interval)", "(reconstruction)")
        exactly when it has one, and its accessible name begins with its drawn words (WCAG 2.5.3), then the note in full. At each event's start,
