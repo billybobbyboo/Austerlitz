@@ -10821,7 +10821,13 @@ function bindCanvas(){
   el.addEventListener("pointerleave",function(){ if(ML.hover){ ML.hover=null; el.style.cursor=""; requestRender(2); } });
   el.addEventListener("dblclick",function(e){ if(mode!=="staff"){ e.preventDefault(); LANDCAM.focusAt(e.clientX,e.clientY); } });
   el.addEventListener("wheel",function(e){
-    e.preventDefault(); freeCam=true; curVantage=null;
+    e.preventDefault();
+    /* roadmap step 3 (docs/FINAL_AUDIT.md SW-8): a wheel that is mostly sideways (a horizontal swipe, Shift and the wheel) does not zoom,
+       so it changes nothing: Follow, the opening and the paper map stay as they are. Over the map it closes the first card where it stands,
+       as a press outside does (decision 118), then zooms */
+    if(Math.abs(e.deltaY)<=Math.abs(e.deltaX)) return;
+    if(firstRunOpen) closeFirst(null);
+    freeCam=true; curVantage=null;
     if(mode==="staff"){ MAPCAM.zoomAt(e.clientX,e.clientY,1+Math.sign(e.deltaY)*0.09); return; }   /* toward the cursor */
     LANDCAM.zoomAt(e.clientX,e.clientY,1+Math.sign(e.deltaY)*0.09);
   },{passive:false});
@@ -14549,6 +14555,35 @@ var AUSTERLITZ_DEBUG=(function(){
       tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id);
       ck("first run: a modal dialog (focus on its primary action, Tab kept inside); docked, the Now tab and its derived tag beside it; Esc, the stay button and a press outside close it in place, focus on Play (decisions 111-113, 118-120)",
         !bad.length, bad.length?bad.join("; "):"Tab, Tab, Shift+Tab: "+said.join(", ")+"; "+(docked?"the Now tab, "+der+" derived tag(s) on screen; ":"undocked; ")+"after Esc, the button and the primary: Play, Play, the opening's Next");
+    })();
+    /* roadmap step 3 (docs/FINAL_AUDIT.md SW-8): a wheel that is mostly sideways (a horizontal swipe, a small vertical part, Shift and the
+       wheel) changes nothing: the camera, Follow, the opening and the paper map stay; a wheel over the map closes the first card where it
+       stands and zooms; a wheel over the docked Now tab beside the card leaves it open. Restored after */
+    (function(){
+      var bad=[], el=renderer.domElement, fr=document.getElementById("firstrun"),
+        K0={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,c:clock,pres:presentation,mode:mode};
+      if(presentation!=="study") setPresentation("study"); if(mode!=="terrain") setMode("terrain"); if(tourStep>=0) exitTour(); select(null,null);
+      setClock(T_MIN,{instant:true,force:true,camera:false}); finishTween(); freeCam=false;
+      var fc=freeCentre(), side=[{deltaX:120,deltaY:0},{deltaX:120,deltaY:8},{deltaX:-120,deltaY:0,shiftKey:true}];
+      function wh(o,on){ (on||el).dispatchEvent(new WheelEvent("wheel",Object.assign({clientX:fc[0],clientY:fc[1],bubbles:true,cancelable:true},o))); }
+      function kept(w,P,T){ if(freeCam) bad.push(w+": Follow turned off"); if(landCam.position.distanceTo(P)>1e-9||orbitTarget.distanceTo(T)>1e-9) bad.push(w+": the camera moved"); }
+      side.forEach(function(o){ var P=landCam.position.clone(), T=orbitTarget.clone(); wh(o); kept("the wheel "+JSON.stringify(o),P,T); });
+      openingStart(); finishTween(); var P1=landCam.position.clone(), T1=orbitTarget.clone();
+      side.forEach(function(o){ wh(o); }); openingWatch(); if(!OPENING.on) bad.push("a sideways wheel ended the opening"); kept("in the opening",P1,T1);
+      openingEnd("camera"); if(tourStep>=0) exitTour();
+      setMode("staff"); var M0=JSON.stringify(MAPCAM.state()); side.forEach(function(o){ wh(o); });
+      if(JSON.stringify(MAPCAM.state())!==M0) bad.push("a sideways wheel moved the paper map"); setMode("terrain");
+      fr.hidden=false; openFirstRun(); freeCam=false;
+      if(docked){ wh({deltaY:-120},document.getElementById("now")); if(!firstRunOpen) bad.push("a wheel over the Now tab closed the card"); }
+      var d0=landCam.position.distanceTo(orbitTarget); wh({deltaY:-120});
+      if(firstRunOpen||!fr.hidden) bad.push("a wheel over the map left the card open"); if(fr.contains(document.activeElement)) bad.push("focus left on the hidden card");
+      if(!(landCam.position.distanceTo(orbitTarget)<d0-1e-6)) bad.push("the wheel over the map did not zoom");
+      if(clock!==T_MIN) bad.push("the clock moved");
+      closeFirst(null); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+      setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
+      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv;
+      ck("pointer: a mostly sideways wheel leaves the camera, Follow, the opening and the paper map as they are; a wheel over the map closes the first card where it stands, then zooms (docs/FINAL_AUDIT.md SW-8)",
+        !bad.length, bad.length?bad.join("; "):side.length+" sideways wheels on the landscape, in the opening and on the paper map: nothing moved; the card closed by a wheel over the map, which zoomed"+(docked?"; a wheel over the Now tab left it open":""));
     })();
     /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decisions 111, 112, 114-116, 118): the opening, begun from the reopened card's primary
        action at 04:00 in Study on the landscape. Every step is its tour stop (the clock stopClock, the theme, the camera presetFrame(stopCam),
