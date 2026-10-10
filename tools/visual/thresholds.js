@@ -449,6 +449,12 @@ function checkLive(live,opts){
     /* roadmap step 3 (decision 134): the shortcuts switch is the overlay's second stop: Tab from its close reaches the switch, the list, and the close */
     const H=K.help||{}; if(!(H.h1&&H.h1.open&&H.h1.focus==="help-close"&&H.h2==="help-keys"&&H.h3==="help-body"&&H.h3b==="help-close"&&H.h4&&!H.h4.open&&H.h4.focus==="tourbtn"))
       f.push("keys by real key presses: the overlay's focus: "+JSON.stringify(H)); }
+  if(req("narrow","the window narrowed below 1080 px, then 2 and Esc by real key presses (roadmap step 3, SW-2, SW-3)")){ const N=live.narrow, by={};
+    (N||[]).forEach(r=>{ by[r.at]=r; if(r.over) f.push("narrow layout: the rail over the dispatch card ("+r.at+", "+r.w+" px)"); });
+    const n1=by["narrowed to 1000"], n2=by["2, Esc"], n3=by["700"];
+    if(!n1||n1.docked||n1.railShown||!n1.railInert||!n1.dispatchShown) f.push("narrow layout: narrowed to 1000 px the rail is not hidden and inert with the card shown: "+JSON.stringify(n1));
+    if(!n2||!n2.railShown||n2.railInert||!n2.dispatchShown) f.push("narrow layout: after 2 and Esc the rail and the card are not both shown: "+JSON.stringify(n2));
+    if(!n3||!n3.railShown||n3.dispatchShown) f.push("narrow layout: at 700 px the card did not give way to the shown rail: "+JSON.stringify(n3)); }
   if(req("shortcuts","the single-key shortcuts switch by real key presses (roadmap step 3, decision 134)")){ const S=live.shortcuts;
     if(!(S.onSwitch==="help-keys"&&S.off&&S.off.on===false&&S.off.pressed==="false"&&S.closed&&!S.closed.open&&S.closed.focus==="helpbtn"&&S.same===true&&S.space===true))
       f.push("the shortcuts switch by real key presses: "+JSON.stringify(S)); }

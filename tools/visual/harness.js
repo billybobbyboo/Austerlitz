@@ -392,7 +392,25 @@ async function interact(page,it,vp){
       S.same=before===await first.evaluate(()=>[presentation,mode,layerOn.contours,clock,helpOpen(),playing].join("|"));
       await first.keyboard.press(" "); S.space=await first.evaluate(()=>playing); await first.evaluate(()=>stopPlay());
       await first.evaluate(()=>{ setShortcuts(true); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
-      LIVE.shortcuts=S; console.log("shortcuts by real key presses: the switch "+S.onSwitch+", pressed "+S.off.pressed+"; Esc: open "+S.closed.open+", focus "+S.closed.focus+"; 2, M, ?, ., C, 1 changed nothing: "+S.same+"; Space played: "+S.space); }
+      LIVE.shortcuts=S;
+      /* roadmap step 3 (docs/FINAL_AUDIT.md SW-2, SW-3): the window narrowed below 1080 px in Study: the rail hidden (and inert), never over the
+         dispatch card; 2 then Esc by real key presses: the rail shown beside the card, not over it; at 700 px the card gives way to the rail;
+         the page then given back its size */
+      AT="narrow";
+      const vp0=first.viewportSize(), NR=[];
+      const look=()=>first.evaluate(()=>{ const r=document.querySelector(".rail"), d=document.querySelector(".dispatch"), a=r.getBoundingClientRect(), b=d.getBoundingClientRect();
+        const rs=getComputedStyle(r).visibility!=="hidden"&&a.right>0, ds=getComputedStyle(d).display!=="none"&&b.width>0;
+        return {w:innerWidth,docked:docked,railShown:rs,railInert:!!r.inert,dispatchShown:ds,over:rs&&ds&&Math.min(a.right,b.right)>Math.max(a.left,b.left)&&Math.min(a.bottom,b.bottom)>Math.max(a.top,b.top)}; });
+      const size=async(w,h)=>{ await first.setViewportSize({width:w,height:h}); await first.evaluate(()=>window.dispatchEvent(new Event("resize"))); await first.waitForTimeout(700); };
+      await first.evaluate(()=>{ closeFirst(null); setPresentation("study"); select(null,null); showEverything(); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+      await size(1280,800); NR.push(Object.assign({at:"1280 Study"},await look()));
+      await size(1000,800); NR.push(Object.assign({at:"narrowed to 1000"},await look()));
+      await first.keyboard.press("2"); await first.keyboard.press("Escape"); await first.waitForTimeout(700); NR.push(Object.assign({at:"2, Esc"},await look()));
+      await size(700,800); NR.push(Object.assign({at:"700"},await look()));
+      await size(vp0.width,vp0.height); await first.evaluate(()=>{ setPresentation("study"); select(null,null); });
+      LIVE.narrow=NR;
+      console.log("narrow layout: "+NR.map(r=>r.at+": rail "+(r.railShown?"shown":"hidden")+(r.railInert?" inert":"")+", card "+(r.dispatchShown?"shown":"hidden")+", over "+r.over).join("; "));
+      console.log("shortcuts by real key presses: the switch "+S.onSwitch+", pressed "+S.off.pressed+"; Esc: open "+S.closed.open+", focus "+S.closed.focus+"; 2, M, ?, ., C, 1 changed nothing: "+S.same+"; Space played: "+S.space); }
     /* Stage 4B (docs/STAGE4_SPEC.md section A.6): the light through the day, without the shadow toe. The Field vantage and the low
        Pratzen view at 4x every hour 08:00-16:00, and three more views at 1x and 10.33x (the low Pratzen view has its own cases):
        solid near-black within the Stage 0 limit in each (a build with the computed sun) */

@@ -5307,14 +5307,14 @@ function sheetTab(id,back){
 }
 /* the inert regions, from their reasons (one writer): while a sheet is open, every child of the body but the sheet, the phase announcement,
    the toast and the graphics notice; the dossier while it is closed (roadmap step 3, SW-3: it slides off screen, and its buttons stayed tab
-   stops); the rail while the docked dossier stands over it (the dossier takes the rail's column). A failed start keeps the start-up guard's
+   stops); the rail while it is hidden (the same) or the docked dossier stands over it (the dossier takes the rail's column). A failed start keeps the start-up guard's
    own (shell.html) */
 function syncInert(){
   if(bootFailed()||typeof document==="undefined"||!document.body||!document.body.children) return;
   var top=sheetTop(), keep=top?document.getElementById(top):null, kids=document.body.children, dr=document.getElementById("drawer"), dOn=drawerShown();
   for(var i=0;i<kids.length;i++){ var k=kids[i]; if(!k||k.tagName==="SCRIPT"||k.id==="boot") continue;
     var want=(!!keep&&k!==keep&&!/^(live-phase|toast|glnotice)$/.test(k.id))||(k===dr&&!dOn)||
-      (!!(k.classList&&k.classList.contains("rail"))&&!!docked&&dOn);
+      (!!(k.classList&&k.classList.contains("rail"))&&((!!docked&&dOn)||document.body.classList.contains("rail-hidden")));
     if(!!k.inert!==want) k.inert=want; }
 }
 function helpOpen(){ return sheetIsOpen("help"); }
@@ -6994,6 +6994,7 @@ function setPresentation(m){
   if(vmb) focusTo([document.querySelector('.vm-btn[data-vm="'+m+'"]'),"restore","play"]);
   else if(a&&a!==focusedEl()) focusTo([a,"play","restore"]);
   else if(a&&!shown(a)) focusTo(["play","restore"]);
+  syncInert();   /* roadmap step 3: the rail hidden or shown */
   if(typeof requestRender==="function") requestRender(2);
 }
 /* ---- Stage 3B: the docked layout (docs/STAGE3_SPEC.md section B.2; owner decisions 49, 54, 55, 58) ----
@@ -7010,6 +7011,7 @@ function syncDock(){
   document.body.classList.toggle("docked",want);
   if(dp&&pane&&home&&home.parentNode&&home.parentNode.insertBefore){ if(want) pane.appendChild(dp); else home.parentNode.insertBefore(dp,home); }
   var nb=document.getElementById("tab-now"); if(nb) nb.hidden=!want;
+  if(!want) document.body.classList.add("rail-hidden");   /* roadmap step 3 (docs/FINAL_AUDIT.md SW-2): undocked, the rail starts hidden, as at load */
   syncInert();   /* roadmap step 3: docked or not, the rail's reason changes */
   if(want&&presentation==="study") document.body.classList.remove("rail-hidden");
   if(!want&&tabNow==="now") selectTab("oob");

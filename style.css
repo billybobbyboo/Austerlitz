@@ -29,8 +29,10 @@ button{font:inherit;color:inherit}
 /* ---------- left rail ---------- */
 .rail{position:fixed;left:0;top:0;bottom:var(--tb);width:var(--rail);z-index:20;display:flex;flex-direction:column;
   background:rgba(var(--scrim-rgb),.93);border-right:1px solid var(--line);backdrop-filter:blur(10px);
-  padding:16px 18px 14px;transform:translateX(0);transition:transform .32s cubic-bezier(.4,0,.2,1)}
-body.rail-hidden .rail{transform:translateX(-101%)}
+  padding:16px 18px 14px;transform:translateX(0);transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s;visibility:visible}
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-3): the hidden rail is hidden once it has slid away (and inert at once, app.js syncInert), so its tab,
+   its order-of-battle rows and the Sources button are no tab stops while it is off screen */
+body.rail-hidden .rail{transform:translateX(-101%);visibility:hidden;transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s linear .32s}
 .brand h1{font-family:var(--serif);font-weight:400;font-size:var(--t-h2);line-height:1.1;margin:0;color:var(--text-hi)}
 .brand p{font-size:var(--t-ui);color:var(--text-muted);margin:5px 0 0;letter-spacing:.02em}
 .modes{display:flex;margin:16px 0 4px;border:1px solid var(--line-2);border-radius:2px;overflow:hidden}
@@ -538,6 +540,10 @@ body.mode-staff #vignette{display:none}
   .rail{box-shadow:12px 0 40px rgba(0,0,0,.45)}
   .dispatch{left:16px;width:min(420px,calc(100vw - 32px));bottom:calc(var(--tb) + 12px)}
   body.rail-hidden .dispatch{left:16px}
+  /* roadmap step 3 (docs/FINAL_AUDIT.md SW-2): below 1080 px the rail shown (Esc after Watch or Clean) never stands over the dispatch card:
+     the card moves beside it, and gives way to an open dossier */
+  body:not(.rail-hidden):not(.docked) .dispatch{left:calc(var(--rail) + 14px);width:min(420px,calc(100vw - var(--rail) - 28px))}
+  body.drawer-open:not(.rail-hidden):not(.docked) .dispatch{display:none}
   .legend{display:none}
   .tools{top:56px;right:14px;gap:5px}
   .tlabel{display:none}
@@ -555,6 +561,7 @@ body.mode-staff #vignette{display:none}
   .tb-play{min-width:66px;min-height:38px}
   .tb-follow{min-height:38px}
   .tb-sit{font-size:var(--t-ui);padding:0 10px 6px}
+  body:not(.rail-hidden) .dispatch{display:none}   /* SW-2: no room beside the rail at this width: the rail first, the card when it is hidden */
   .tb-sit .der{display:none}
   .dispatch{left:10px;right:10px;width:auto;bottom:calc(var(--tb) + 10px);padding:12px 14px 10px}
   .dispatch h2{font-size:var(--t-h3)}
