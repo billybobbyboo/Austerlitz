@@ -301,16 +301,18 @@
 <!-- Stage 3E (docs/STAGE3_SPEC.md section F; owner decisions 50, 51): every key and pointer control, written from the one key
      table (app.js KEYS), which the key handlers read too. "?" opens it; Esc or "?" closes it and focus returns. -->
 <div id="help" role="dialog" aria-modal="true" aria-labelledby="help-t" hidden>
-  <div class="sheet help-sheet">
+  <div class="sheet help-sheet" tabindex="-1">
     <button id="help-close" type="button" aria-label="Close (Esc)">&times;</button>
     <h2 id="help-t">Keys and controls</h2>
-    <div id="help-body" tabindex="0" aria-label="The keys and controls, by group"></div>
+    <div id="help-body" tabindex="0" role="region" aria-label="The keys and controls, by group"></div>
   </div>
 </div>
+<!-- roadmap step 3 (docs/FINAL_AUDIT.md SW-4, SW-6): both sheets modal by one mechanism (app.js SHEETS); a sheet takes the focus a click on its text
+     gives it (tabindex -1), so its keys stay with it; the sources' text is a focusable region, so the keyboard can scroll it -->
 <div id="modal" role="dialog" aria-modal="true" aria-label="Accuracy and sources">
-  <div class="sheet">
-    <button id="modal-close" type="button" aria-label="Close">&times;</button>
-    <div id="modal-body"></div>
+  <div class="sheet" tabindex="-1">
+    <button id="modal-close" type="button" aria-label="Close (Esc)">&times;</button>
+    <div id="modal-body" tabindex="0" role="region" aria-label="Accuracy, sources and confidence grades: the text"></div>
   </div>
 </div>
 

@@ -1907,7 +1907,7 @@ function redrawGround(change){
   syncLandscapeLayers();
   paintExaggeration();
   if(selection) paintDrawer();
-  var md=document.getElementById("modal"); if(md&&md.classList.contains("on")&&md.dataset.sources) openSources();
+  var md=document.getElementById("modal"); if(md&&md.classList.contains("on")&&md.dataset.sources) openSources({repaint:true});
   requestRender(4);
   DISPLAY.lastMs=performance.now()-t0;
   return DISPLAY.lastMs;
@@ -5197,16 +5197,16 @@ var KEYS=[
     run:function(){ setPresentation(presentation==="study"?"watch":"study"); }},
   {id:"m", scope:"window", group:"View and ground", keys:["m","M"], show:["M"], text:function(){ var G=LABELS.ground; return "The ground: "+G.terrain.label+", "+G.staff.label+", "+G.hybrid.label+", in turn"; },
     run:function(){ setMode(mode==="terrain"?"staff":(mode==="staff"?"hybrid":"terrain")); }},
-  {id:"esc", scope:"window", group:"View and ground", keys:["Escape"], show:["Esc"], text:"Back: close the first card where it stands, the layers panel, the opening (to the start of the day) or the tour; else everything shown in Study, and the chapter, the selection and the sources sheet cleared",
+  {id:"esc", scope:"window", group:"View and ground", keys:["Escape"], show:["Esc"], text:"Back: close the sources sheet; else the first card where it stands, the layers panel, the opening (to the start of the day) or the tour; else everything shown in Study, and the chapter and the selection cleared",
     run:function(){
+      if(sheetTop()){ if(sheetTop()==="help") setHelp(false); else closeSources(); return; }   /* roadmap step 3 (SW-4): the topmost sheet first */
       if(firstRunOpen){ closeFirst("explore"); return; }
       if(!document.getElementById("layerpop").hidden){ window.__setPop(false); return; }
       if(OPENING.on){ openingEnd("skip"); return; }   /* Stage 7C */
       if(tourStep>=0){ exitTour(); return; }
       if(presentation!=="study"||hideDispatch) showEverything();
       if(chapter) setChapter(null);
-      select(null,null);
-      document.getElementById("modal").classList.remove("on"); delete document.getElementById("modal").dataset.sources; }},
+      select(null,null); }},
   {id:"d", scope:"window", group:"Layers and panels", keys:["d","D"], show:["D"], text:"Show or hide the dispatch's text", run:function(){ setDispatchVisible(hideDispatch); }},
   {id:"c", scope:"window", group:"Layers and panels", keys:["c","C"], show:["C"], text:"Contours on or off",
     run:function(){ var cb=document.querySelector('.layer-btn[data-l="contours"]'); if(cb) cb.click(); }},
@@ -5265,33 +5265,68 @@ function buildHelp(){
     rows.forEach(function(r){ html+='<div class="hp-row" data-key="'+r.id+'"><kbd>'+r.show.map(function(k){ return "<b>"+esc(k)+"</b>"; }).join("")+'</kbd><span>'+esc(keyText(r))+'</span></div>'; }); });
   host.innerHTML=html;
 }
-var _helpFrom=null;
-function helpOpen(){ var h=document.getElementById("help"); return !!h&&!h.hidden; }
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-4, SW-6): the two sheets, the "?" overlay (#help) and the sources sheet (#modal), are modal dialogs
+   by one mechanism: opened, the opener is remembered, the rest of the page is inert (syncInert; the phase announcement stays live) and focus
+   moves to the sheet's close button; one capturing key listener (bound before the opening's, so it runs first whatever has focus) keeps
+   Tab inside the topmost sheet, closes it with Esc (and the overlay with "?"), and lets no key act behind it; closed by its button, Esc or
+   a press on its scrim, focus returns to the opener (or the page, when it was opened from the page). The overlay is over the sheet when
+   both are open (z-index 52 over 50) */
+var SHEETS={help:{tab:["help-close","help-body"],from:null}, modal:{tab:["modal-close","modal-body"],from:null}};
+function sheetIsOpen(id){ var e=document.getElementById(id); if(!e) return false; return id==="help"?!e.hidden:!!(e.classList&&e.classList.contains("on")); }
+function sheetTop(){ return sheetIsOpen("help")?"help":(sheetIsOpen("modal")?"modal":null); }
+function sheetOpened(id){ var S=SHEETS[id]; S.from=focusedEl(); syncInert(); focusTo([S.tab[0]]); }
+function sheetClosed(id){
+  var S=SHEETS[id], f=S.from; S.from=null; syncInert();
+  if(f&&focusTo([f])) return;
+  var a=focusedEl(), e=document.getElementById(id); if(a&&e&&e.contains&&e.contains(a)&&a.blur) a.blur();
+}
+function sheetTab(id,back){
+  var F=SHEETS[id].tab.map(function(x){ return document.getElementById(x); }).filter(function(x){ return !!x; }), i=F.indexOf(document.activeElement);
+  if(!F.length) return; var n=F.length; F[i<0?(back?n-1:0):(i+(back?n-1:1))%n].focus({preventScroll:true});
+}
+/* the inert regions, from their reasons (one writer): while a sheet is open, every child of the body but the sheet, the phase announcement,
+   the toast and the graphics notice. A failed start keeps the start-up guard's own (shell.html) */
+function syncInert(){
+  if(bootFailed()||typeof document==="undefined"||!document.body||!document.body.children) return;
+  var top=sheetTop(), keep=top?document.getElementById(top):null, kids=document.body.children;
+  for(var i=0;i<kids.length;i++){ var k=kids[i]; if(!k||k.tagName==="SCRIPT"||k.id==="boot") continue;
+    var want=!!keep&&k!==keep&&!/^(live-phase|toast|glnotice)$/.test(k.id);
+    if(!!k.inert!==want) k.inert=want; }
+}
+function helpOpen(){ return sheetIsOpen("help"); }
 function setHelp(open){
   var h=document.getElementById("help"); if(!h) return;
   if(open===helpOpen()) return;
-  if(open){ _helpFrom=document.activeElement; buildHelp(); h.hidden=false; document.getElementById("help-close").focus({preventScroll:true}); }
-  else { h.hidden=true; var f=_helpFrom; _helpFrom=null;
-    if(f&&f.focus&&document.contains(f)&&f!==document.body) f.focus({preventScroll:true}); else if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); }
+  if(open){ buildHelp(); h.hidden=false; sheetOpened("help"); }
+  else { h.hidden=true; sheetClosed("help"); }
   ["helpbtn"].forEach(function(id){ var b=document.getElementById(id); if(b) b.setAttribute("aria-expanded",String(open)); });
   requestRender(2);
+}
+function closeSources(){
+  var m=document.getElementById("modal"); if(!m||!m.classList.contains("on")) return;
+  m.classList.remove("on"); delete m.dataset.sources; sheetClosed("modal");
 }
 function bindHelp(){
   var h=document.getElementById("help"); if(!h) return;
   ["helpbtn"].forEach(function(id){ var b=document.getElementById(id); if(b) b.addEventListener("click",function(e){ e.stopPropagation(); setHelp(true); }); });
   document.getElementById("help-close").addEventListener("click",function(){ setHelp(false); });
   h.addEventListener("click",function(e){ if(e.target===h) setHelp(false); });   /* the scrim around the sheet */
-  h.addEventListener("keydown",function(e){
-    if(e.key==="Escape"||e.key==="?"){ e.preventDefault(); e.stopPropagation(); setHelp(false); return; }
-    if(e.key==="Tab"){   /* focus stays in the dialog: the close button and the scrolling list */
-      var F=[document.getElementById("help-close"),document.getElementById("help-body")], i=F.indexOf(document.activeElement);
-      e.preventDefault(); F[(i+(e.shiftKey?F.length-1:1))%F.length].focus({preventScroll:true}); return; }
-    e.stopPropagation();   /* modal: no other key acts while it is open */
-  });
+  var m=document.getElementById("modal");
+  document.getElementById("modal-close").addEventListener("click",closeSources);
+  if(m) m.addEventListener("click",function(e){ if(e.target===m) closeSources(); });   /* SW-4: the scrim closes the sources sheet too */
+}
+function bindSheetKeys(){
+  window.addEventListener("keydown",function(e){
+    var top=sheetTop(); if(!top||KEYS_DRY||e.ctrlKey||e.metaKey||e.altKey) return;
+    var S=document.getElementById(top), inS=!!(e.target&&S&&S.contains&&S.contains(e.target));
+    if(e.key==="Escape"||(top==="help"&&e.key==="?")){ e.preventDefault(); e.stopImmediatePropagation(); if(top==="help") setHelp(false); else closeSources(); return; }
+    if(e.key==="Tab"){ e.preventDefault(); e.stopImmediatePropagation(); sheetTab(top,e.shiftKey); return; }
+    if(!inS){ e.preventDefault(); e.stopImmediatePropagation(); }   /* nothing acts behind a sheet */
+  },{capture:true});
 }
 /* the window's keys. Space and Enter on a focused button, link or tab do what the platform does (press it), not play */
 function onWindowKey(e){
-  if(helpOpen()) return;   /* the dialog has the keys (bindHelp) */
+  if(sheetTop()) return;   /* a sheet has the keys (bindSheetKeys) */
   if(e.ctrlKey||e.metaKey||e.altKey) return;
   var t=e.target, ctl=t&&t.closest&&t.closest("button,a[href],input,select,textarea,summary,[role='button'],[role='tab']");
   if((e.key===" "||e.key==="Enter")&&ctl) return;
@@ -5467,10 +5502,11 @@ function buildUI(){
   document.getElementById("tourbar").addEventListener("keydown",function(e){
     if(!OPENING.on) return; var r=keyRow(e,"bar"); if(!r) return;
     e.preventDefault(); e.stopPropagation(); if(KEYS_DRY){ KEYS_DRY.push(r.id); return; } r.run(e); });
+  bindSheetKeys();   /* roadmap step 3: bound before the opening's own (below), so a sheet takes its keys first */
   /* Stage 7C (section 4.1): any other key, and a press anywhere outside the bar and the "?" overlay, ends the opening where it is,
      before the key or the press does its own action (Esc is its own row: to the start of the day) */
   window.addEventListener("keydown",function(e){
-    if(!OPENING.on||helpOpen()||KEYS_DRY||e.ctrlKey||e.metaKey||e.altKey) return;
+    if(!OPENING.on||sheetTop()||KEYS_DRY||e.ctrlKey||e.metaKey||e.altKey) return;
     var k=e.key, t=e.target, bar=document.getElementById("tourbar"), inBar=!!(bar&&t&&bar.contains(t));
     if(k==="Tab"||k==="Shift"||k==="Escape"||k==="?"||k==="`") return;
     if(inBar&&(k==="Enter"||k===" "||ARROWS.indexOf(k)>=0)) return;
@@ -5480,7 +5516,7 @@ function buildUI(){
     openingEnd("key"); },{capture:true});
   window.addEventListener("pointerdown",function(e){
     if(!OPENING.on) return; var t=e.target;
-    if(t&&t.closest&&t.closest("#tourbar,#help,#helpbtn")) return;
+    if(t&&t.closest&&t.closest("#tourbar,#help,#helpbtn,#modal")) return;
     if(OPENING.play&&t&&t.closest&&t.closest("#play")) return;   /* Stage 7D: Play/Pause pauses the played stretch */
     openingEnd("pointer"); },{capture:true});
   /* roadmap step 3 (docs/FINAL_AUDIT.md SW-12, generalised): a click with no press or key before it (a screen reader's or speech input's
@@ -5546,7 +5582,6 @@ function buildUI(){
   });
   document.getElementById("drawer-close").addEventListener("click",function(){ select(null,null); });
   document.getElementById("srcbtn").addEventListener("click",function(){ openSources(); });
-  document.getElementById("modal-close").addEventListener("click",function(){ var md=document.getElementById("modal"); md.classList.remove("on"); delete md.dataset.sources; });
 
   window.addEventListener("keydown",onWindowKey);   /* Stage 3E: the key table (KEYS) */
   bindHelp();
@@ -6691,9 +6726,9 @@ function geoText(p){
   return String(p).replace(/\{EXAG\}/g,fmtFactor(DISPLAY.factor)).replace(/\{M_PER_UNIT\}/g,(GEOREF.KM_PER_MAP*1000).toFixed(0))
     .replace(/\{ROT\}/g,GEOREF.ROT_DEG.toFixed(0)).replace(/\{CONTOUR_M\}/g,(CONTOUR_INTERVAL*GEOREF.V_M_PER_UNIT).toFixed(0));
 }
-function openSources(){
+function openSources(o){
   var m=document.getElementById("modal");
-  var b=document.getElementById("modal-body");
+  var b=document.getElementById("modal-body"), was=!!(m.classList&&m.classList.contains("on")), top=b.scrollTop||0;
   b.innerHTML='<h2>'+esc(SOURCE_NOTE.title)+'</h2>'+
     SOURCE_NOTE.body.map(function(p){return '<p>'+esc(geoText(p))+'</p>';}).join('')+
     '<h3>Three layers</h3><dl class="kvs">'+SOURCE_NOTE.layers.map(function(l){
@@ -6739,6 +6774,8 @@ function openSources(){
     '<h3>How the light is drawn</h3><ul class="bul">'+lightNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>';
   m.dataset.sources="1";
   m.classList.add("on");
+  if(o&&o.repaint&&was) b.scrollTop=top;   /* a repaint (another display factor) keeps its place and its focus */
+  else if(!was) sheetOpened("modal");     /* roadmap step 3 (SW-4): a modal dialog: focus in, the rest inert */
 }
 
 function flash(msg){
@@ -7377,7 +7414,7 @@ var AUSTERLITZ_DEBUG=(function(){
     paintExaggeration();
     o.legend=(document.getElementById("exag-line").textContent||"")+" | "+(document.getElementById("exag-symbols").textContent||"");
     openSources(); o.sources=document.getElementById("modal-body").textContent||"";
-    var md=document.getElementById("modal"); md.classList.remove("on"); delete md.dataset.sources;
+    closeSources();
     o.dossier=dossierFeature("pratzeberg").textContent||"";
     /* true scale: nothing at figure or landscape scale drawn; every formation on the field has its footprint */
     o.landscape=[world.trees,world.conifers,world.scrub,world.houses,world.roofs,world.spires,world.chimneys].filter(function(x){ return x&&x.visible; }).length;
@@ -9224,7 +9261,7 @@ var AUSTERLITZ_DEBUG=(function(){
        plays between steps, Play pauses it and leaves the opening on (7D). Restored after */
     (function(){
       var bad=[], fr=document.getElementById("firstrun"), md=document.getElementById("modal"), K0={c:clock,pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage};
-      function reset(){ if(OPENING.on) openingEnd("camera"); if(tourStep>=0) exitTour(); stopPlay(); setPresentation("study"); select(null,null); md.classList.remove("on"); delete md.dataset.sources; }
+      function reset(){ if(OPENING.on) openingEnd("camera"); if(tourStep>=0) exitTour(); stopPlay(); setPresentation("study"); select(null,null); closeSources(); }
       if(mode!=="terrain") setMode("terrain");
       var ctl=[["Play","#play"],["Watch",'.vm-btn[data-vm="watch"]'],["Sources","#srcbtn"],["Layers","#layersbtn"],["a tab",'.tab-btn[data-t="oob"]'],["a phase","#phases .step"]];
       ctl.forEach(function(c){ reset(); openingStart(); finishTween(); var e=document.querySelector(c[1]); if(!e){ bad.push(c[0]+" not found"); return; }
@@ -9240,6 +9277,58 @@ var AUSTERLITZ_DEBUG=(function(){
       landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv; tabChosen=K0.ch; if(docked) selectTab(K0.tab); syncFollow();
       ck("opening and card: a click alone (as a screen reader or speech input sends it) on a control outside them ends the opening or closes the card where it stands, as a press does; Play during a played stretch pauses it (docs/FINAL_AUDIT.md SW-12)",
         !bad.length, bad.length?bad.join("; "):ctl.length+" controls each ended the opening; Play paused the played stretch and Watch then ended it at \u00bd\u00d7; the Sources button and Watch closed the first card");
+    })();
+    /* roadmap step 3 (docs/FINAL_AUDIT.md SW-4, SW-6): the sources sheet and the "?" overlay as modal dialogs. Opened from its button, focus on
+       its close; Tab and Shift+Tab kept inside; every other child of the body inert but the phase announcement; no key acts behind it, even
+       with focus put behind it by script (Space does not play, the time rail's arrow does not move the clock); Esc, the x and the scrim each
+       close it, focus back on the opener; a repaint at another display factor keeps focus and place; Esc closes the topmost sheet first,
+       leaving the tour, the opening, the chapter and the selection as they were; after a click on a sheet's text (focus on the sheet, SW-6)
+       Esc, "?" and Tab still act on it. Restored after */
+    (function(){
+      var bad=[], md=document.getElementById("modal"), hp=document.getElementById("help"), sb=document.getElementById("srcbtn"),
+        K0={c:clock,pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,f:DISPLAY.factor};
+      function key(k,sh,on){ on=on||(document.activeElement&&document.activeElement!==document.body?document.activeElement:window);
+        on.dispatchEvent(new KeyboardEvent("keydown",{key:k,shiftKey:!!sh,bubbles:true,cancelable:true})); }
+      function aid(){ var a=document.activeElement; return a&&a!==document.body?a.id||a.tagName:"body"; }
+      function openS(){ if(!docked&&document.body.classList.contains("rail-hidden")) showEverything(); sb.focus({preventScroll:true}); sb.click(); }
+      function inertOK(w){ var notInert=[].filter.call(document.body.children,function(k){ return k.tagName!=="SCRIPT"&&k.id!=="boot"&&k!==md&&!/^(live-phase|toast|glnotice)$/.test(k.id)&&!k.inert; }).map(function(k){ return k.id||k.className; });
+        if(notInert.length) bad.push(w+": not inert behind the sheet: "+notInert.join(", ")); if(document.getElementById("live-phase").inert) bad.push(w+": the phase announcement inert"); }
+      if(mode!=="terrain") setMode("terrain"); setPresentation("study"); select(null,null); stopPlay();
+      openS(); if(!md.classList.contains("on")) bad.push("the Sources button did not open the sheet");
+      if(aid()!=="modal-close") bad.push("focus on "+aid()+" when the sheet opened, not its close");
+      inertOK("open");
+      var seq=[]; key("Tab"); seq.push(aid()); key("Tab"); seq.push(aid()); key("Tab",true); seq.push(aid());
+      if(seq.join()!=="modal-body,modal-close,modal-body") bad.push("Tab, Tab, Shift+Tab went to "+seq.join(", "));
+      var c0=clock; key(" "); if(playing) bad.push("Space behind the sheet played the clock");
+      document.getElementById("timerail").focus({preventScroll:true}); key("ArrowRight",false,document.getElementById("timerail"));
+      if(clock!==c0) bad.push("the time rail's arrow behind the sheet moved the clock"); if(document.activeElement===document.getElementById("timerail")) bad.push("the time rail took the focus behind the sheet");
+      focusId("modal-close"); setDisplayFactor(DISPLAY.factor===1?DISPLAY.defaultFactor:1);
+      if(!md.classList.contains("on")||aid()!=="modal-close") bad.push("a repaint at another factor: open "+md.classList.contains("on")+", focus on "+aid());
+      setDisplayFactor(K0.f);
+      key("Escape"); if(md.classList.contains("on")) bad.push("Esc left the sheet open"); if(aid()!=="srcbtn") bad.push("focus on "+aid()+" after Esc, not the Sources button");
+      if(document.querySelector("body > [inert]:not(#boot)")) bad.push("something stayed inert after the sheet closed");
+      openS(); document.getElementById("modal-close").click(); if(md.classList.contains("on")||aid()!=="srcbtn") bad.push("the \u00d7: open "+md.classList.contains("on")+", focus on "+aid());
+      openS(); md.dispatchEvent(new MouseEvent("click",{bubbles:true,cancelable:true})); if(md.classList.contains("on")||aid()!=="srcbtn") bad.push("the scrim: open "+md.classList.contains("on")+", focus on "+aid());
+      /* SW-6: after a click on the text (focus on the sheet itself) */
+      [["the sources sheet",md,openS],["the \u201c?\u201d overlay",hp,function(){ document.getElementById("helpbtn").focus({preventScroll:true}); document.getElementById("helpbtn").click(); }]].forEach(function(q){
+        q[2](); var sh=q[1].querySelector(".sheet"); sh.focus({preventScroll:true});
+        key("Tab"); if(!q[1].contains(document.activeElement)) bad.push(q[0]+": Tab after a click on its text left it");
+        sh.focus({preventScroll:true}); key(" "); if(playing) bad.push(q[0]+": Space after a click on its text played the clock");
+        key("Escape"); if(q[1]===hp?!hp.hidden:md.classList.contains("on")) bad.push(q[0]+": Esc after a click on its text left it open"); });
+      document.getElementById("helpbtn").click(); document.querySelector("#help .sheet").focus({preventScroll:true}); key("?"); if(!hp.hidden) bad.push("? after a click on the overlay's text left it open");
+      /* Esc: the topmost sheet first */
+      var tc=TOUR.findIndex(function(t){ return !!t.chapter; });
+      startTour(); tourGo(tc); finishTween(); var ch=chapter; openSources(); key("Escape");
+      if(md.classList.contains("on")||tourStep!==tc||chapter!==ch) bad.push("Esc with the sheet over the tour: sheet "+md.classList.contains("on")+", tour stop "+(tourStep+1)+", chapter "+chapter);
+      key("Escape"); if(tourStep>=0) bad.push("a second Esc did not end the tour"); 
+      setPresentation("study"); select("f","sthilaire"); openSources(); key("Escape"); if(!selection||selection.id!=="sthilaire") bad.push("Esc on the sheet cleared the selection"); select(null,null);
+      openingStart(); finishTween(); openSources(); key("Escape"); if(md.classList.contains("on")||!OPENING.on) bad.push("Esc with the sheet over the opening: sheet "+md.classList.contains("on")+", opening "+OPENING.on);
+      if(OPENING.on) openingEnd("camera"); if(tourStep>=0) exitTour(); closeSources(); setHelp(false);
+      if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+      setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
+      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv; tabChosen=K0.ch; if(docked) selectTab(K0.tab); syncFollow();
+      ck("sheets: the sources sheet a modal dialog (focus to its close, Tab kept inside, the rest inert but the phase announcement, no key acting behind it, closed by Esc, \u00d7 and the scrim with focus back on its opener, a repaint keeping focus); after a click on its text a sheet keeps Esc, \u201c?\u201d, Tab and its modality; Esc closes the topmost sheet first, the tour, the opening, the chapter and the selection kept (docs/FINAL_AUDIT.md SW-4, SW-6)",
+        !bad.length, bad.length?bad.join("; "):"opened from its button: focus on its close, Tab, Tab, Shift+Tab inside, Space and the rail's arrow inert behind it, Esc, \u00d7 and the scrim back to the button; both sheets after a click on their text; Esc over the tour, a selection and the opening closed the sheet only");
     })();
     /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decisions 111, 112, 114-116, 118): the opening, begun from the reopened card's primary
        action at 04:00 in Study on the landscape. Every step is its tour stop (the clock stopClock, the theme, the camera presetFrame(stopCam),
