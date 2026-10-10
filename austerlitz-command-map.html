@@ -17,9 +17,20 @@ canvas{display:block;touch-action:none}   /* Stage 3D: the landscape takes one-f
 button{font:inherit;color:inherit}
 :focus-visible{outline:1px solid var(--accent);outline-offset:2px}
 
-#boot{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;
+#boot{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:auto;padding:16px;
   background:var(--ink);transition:opacity .8s ease}
-#boot p{font-family:var(--serif);font-size:var(--t-h3);color:var(--text-muted);letter-spacing:.01em}
+#boot .boot-line{font-family:var(--serif);font-size:var(--t-h3);color:var(--text-muted);letter-spacing:.01em}
+/* roadmap step 3 (decision 133 (a); docs/FINAL_AUDIT.md SW-1): the slow start's status line and the failure dialog */
+#boot-status{font-family:var(--sans);font-size:var(--t-ui);color:var(--text-muted);margin-top:10px;min-height:1.4em}
+#boot.failed .boot-line,#boot.failed #boot-status{display:none}
+#boot-fail{max-width:min(36rem,100%);margin:auto;font-family:var(--sans);color:var(--text)}
+#boot-fail h2{font-family:var(--serif);font-size:var(--t-h2);color:var(--text-hi);margin:0 0 10px}
+#boot-fail p{font-size:var(--t-prose);line-height:1.5;margin:0 0 8px}
+#boot-reload{margin-top:8px;min-height:32px;padding:4px 16px;border:1px solid var(--accent);border-radius:3px;background:var(--accent);color:var(--on-accent);cursor:pointer}
+#glnotice:empty{display:none}
+#glnotice{position:fixed;left:50%;top:16px;transform:translateX(-50%);z-index:58;max-width:min(36rem,calc(100vw - 32px));padding:10px 14px;
+  font-family:var(--sans);font-size:var(--t-prose);color:var(--text);background:var(--ink);border:1px solid var(--accent);border-radius:3px}
+#glnotice button{margin-left:10px;min-height:24px;padding:2px 10px;border:1px solid var(--accent);border-radius:3px;background:var(--accent);color:var(--on-accent);cursor:pointer}
 
 /* ---------- left rail ---------- */
 .rail{position:fixed;left:0;top:0;bottom:var(--tb);width:var(--rail);z-index:20;display:flex;flex-direction:column;
@@ -1079,7 +1090,22 @@ $Id$
 </div>
 <div id="viewmode-home" hidden><!-- the presentation switch's place outside Watch (app.js syncViewmode) --></div>
 
-<div id="boot"><p>Surveying the ground between the Goldbach and the Litava&hellip;</p></div>
+<div id="boot">
+  <p class="boot-line">Surveying the ground between the Goldbach and the Litava&hellip;</p>
+  <!-- roadmap step 3 (decision 133 (a); docs/FINAL_AUDIT.md SW-1): a slow start said after 20 s, and the failure dialog (AUS_BOOT, below) -->
+  <p id="boot-status" role="status" data-slow="Still loading the 3D view&hellip;"></p>
+  <div id="boot-fail" role="alertdialog" aria-modal="true" aria-labelledby="boot-h" aria-describedby="boot-why" hidden>
+    <h2 id="boot-h">The map cannot start</h2>
+    <div id="boot-why">
+      <p data-boot="three" hidden>Its 3D library, three.js, could not be loaded from cdnjs.cloudflare.com, or it did not match the copy this page was built with. The map needs a network connection that can reach that address.</p>
+      <p data-boot="webgl" hidden>This browser could not start WebGL, the 3D graphics the map is drawn with. WebGL may be turned off, or not supported by this device or its graphics driver.</p>
+      <p data-boot="error" hidden>Something stopped the map while it was starting.</p>
+      <p>Reload the page to try again.</p>
+    </div>
+    <button id="boot-reload" type="button">Reload</button>
+  </div>
+  <noscript><p class="boot-line">This map needs JavaScript and WebGL.</p></noscript>
+</div>
 
 <nav class="rail" aria-label="Army and map controls">
   <div class="brand">
@@ -1386,6 +1412,8 @@ $Id$
 </div>
 
 <div id="toast"></div>
+<!-- roadmap step 3 (docs/FINAL_AUDIT.md SW-1): the notice when the browser takes the 3D view's graphics context away (empty until then) -->
+<div id="glnotice" role="alert"></div>
 
 <!-- Stage 2D: the map layer, every counter and all map text, laid out by app.js (THE MAP LAYER). It is drawn over the
      canvas and under every panel by its z-index; it comes last so that Tab reaches the interface first, then the map -->
@@ -1393,7 +1421,51 @@ $Id$
 <!-- Stage 5E: the eye-level vantage's caption (a model reading; the relief's factor; at the chapel of St Anthony the recorded mismatch) -->
 <div id="eyecap" class="eyecap" hidden></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<!-- roadmap step 3 (decision 133 (a); docs/FINAL_AUDIT.md SW-1): the start-up guard, before three.js and the bundle. It names AUS_BOOT; a
+     failure before the first frame is drawn (three.js not loaded or not matching its integrity hash, WebGL not available, an error while
+     starting) shows #boot-fail, an alert dialog with focus on Reload, and makes the rest of the page inert; the first failure wins. After
+     20 s without a frame a status line says so (never a failure). app.js marks the first frame (AUS_BOOT.ok) and stops on a failure. ES5. -->
+<script>
+var AUS_BOOT=(function(){
+  var B={done:false,failed:null,timer:null};
+  function el(id){ return document.getElementById(id); }
+  B.ok=function(){ if(B.done||B.failed) return; B.done=true; clearTimeout(B.timer); var s=el("boot-status"); if(s) s.textContent=""; };
+  B.fail=function(kind,err){
+    if(B.done||B.failed) return;
+    B.failed={kind:kind,message:String((err&&err.message)||err||"")};
+    clearTimeout(B.timer);
+    try{
+      var boot=el("boot"), kids=document.body.children, i;
+      var fr=el("firstrun"); if(fr) fr.hidden=true;
+      for(i=0;i<kids.length;i++){ var k=kids[i]; if(k!==boot&&k.tagName!=="SCRIPT"){ if("inert" in k) k.inert=true; else k.style.display="none"; } }
+      var rs=boot.querySelectorAll("[data-boot]");
+      for(i=0;i<rs.length;i++) rs[i].hidden=(rs[i].getAttribute("data-boot")!==kind);
+      el("boot-status").textContent="";
+      boot.className="failed"; boot.style.opacity="1";
+      el("boot-fail").hidden=false;
+      document.title=el("boot-h").textContent+" · "+document.title;
+      el("boot-reload").focus();
+    }catch(e){}
+    if(window.console&&console.error) console.error("Austerlitz: start-up failed ("+kind+"): "+B.failed.message);
+  };
+  /* until the first frame: the three.js script failing to load (offline, blocked, or its integrity not matching), and any uncaught error */
+  window.addEventListener("error",function(e){
+    if(B.done||B.failed) return;
+    var t=e.target;
+    if(t&&t.tagName==="SCRIPT"&&/three(\.min)?\.js/.test(t.src||"")) B.fail("three","three.js did not load: "+t.src);
+    else if(window.ErrorEvent&&e instanceof ErrorEvent) B.fail(typeof THREE==="undefined"?"three":"error",e.error||e.message);
+  },true);
+  /* once failed, nothing behind the dialog acts: keys and presses outside it stop here (the app's own handlers come later) */
+  ["keydown","pointerdown","wheel","click"].forEach(function(t){
+    window.addEventListener(t,function(e){ if(!B.failed) return; var x=e.target; if(x&&x.closest&&x.closest("#boot-fail")) return; e.stopImmediatePropagation(); },true); });
+  /* the dialog's one control keeps the focus: Tab and Shift+Tab stay on Reload */
+  window.addEventListener("keydown",function(e){ if(B.failed&&e.key==="Tab"){ e.preventDefault(); el("boot-reload").focus(); } },true);
+  el("boot-reload").addEventListener("click",function(){ location.reload(); });
+  B.timer=setTimeout(function(){ if(!B.done&&!B.failed){ var s=el("boot-status"); if(s) s.textContent=s.getAttribute("data-slow"); } },20000);
+  return B;
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>/* Embedded ground textures, CC0 from Poly Haven (brown_mud_03, sparse_grass, forest_ground_06),
    decimated to 512 for a 512-pixel atlas cell; normals derived from the packs' displacement maps. */
 var ASSETS={
@@ -6044,17 +6116,40 @@ function relayoutAfterFonts(){
   requestRender(3);
 }
 function liftBoot(){
+  if(bootFailed()) return;   /* roadmap step 3 (SW-1): a failed start keeps its message */
   var b=document.getElementById("boot"); if(!b) return;
   requestAnimationFrame(function(){ b.style.opacity="0"; });
   setTimeout(function(){ if(b.parentNode) b.parentNode.removeChild(b); },900);
 }
 
+/* ---- roadmap step 3 (decision 133 (a); docs/FINAL_AUDIT.md SW-1): start-up and the graphics context ----
+   shell.html's guard (AUS_BOOT, before three.js) reports a failure before the first frame: three.js not loaded or not matching its
+   integrity hash, no WebGL (init tags the renderer's error), or any error while starting (boot()). The first frame drawn ends the guard's
+   watch (AUS_BOOT.ok, in loop); after a failure the loop stops. Later, a lost context stops the frames and says so (#glnotice, an alert,
+   with Reload); restored, the frames go on (three r128 makes its GL objects again as they are next used). */
+function bootFailed(){ return typeof AUS_BOOT!=="undefined"&&!!AUS_BOOT&&!!AUS_BOOT.failed; }
+var GL={lost:false};
+function bindContextLoss(cv){
+  if(!cv||!cv.addEventListener) return;
+  cv.addEventListener("webglcontextlost",function(e){ e.preventDefault(); GL.lost=true;
+    var n=document.getElementById("glnotice"); if(!n) return;
+    n.innerHTML=""; var p=document.createElement("span"); p.textContent=LABELS.glLost; n.appendChild(p);
+    var b=document.createElement("button"); b.type="button"; b.textContent=LABELS.reload; b.addEventListener("click",function(){ location.reload(); }); n.appendChild(b); });
+  cv.addEventListener("webglcontextrestored",function(){ GL.lost=false;
+    var n=document.getElementById("glnotice"); if(n) n.innerHTML="";
+    requestRender(3); });
+}
+function boot(){
+  try{ init(); }
+  catch(e){ if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT) AUS_BOOT.fail(e.ausKind||"error",e); throw e; }
+}
 function init(){
   scene=new THREE.Scene();
   scene.background=lin(LIGHT_RIG.bg0);
   scene.fog=new THREE.Fog(lin(LIGHT_RIG.fog0),90,560);
 
-  renderer=new THREE.WebGLRenderer({antialias:true});
+  try{ renderer=new THREE.WebGLRenderer({antialias:true}); }
+  catch(e){ e.ausKind="webgl"; throw e; }   /* roadmap step 3 (SW-1): no WebGL; boot() shows the start-up guard's message */
   lowTier = (window.innerWidth*window.innerHeight < 900*700) ||
              /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent||"");
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, lowTier?1.5:2));
@@ -6065,6 +6160,7 @@ function init(){
   renderer.outputEncoding=THREE.LinearEncoding;
   renderer.toneMapping=THREE.NoToneMapping;
   document.getElementById("stage").appendChild(renderer.domElement);
+  bindContextLoss(renderer.domElement);
 
   camera=landCam=new THREE.PerspectiveCamera(37,window.innerWidth/window.innerHeight,1,1900);
   camera.position.set(-196,132,226);
@@ -10609,6 +10705,9 @@ var LABELS={
     hybrid:{label:"Landscape with counters", title:"The ground in relief, with the paper map's counters"}
   },
   layers:{button:"Layers\u2026", heading:"Layers", aria:"Layers and ground", ground:"Ground", shows:"What is drawn"},
+  /* roadmap step 3 (SW-1): the notice when the browser takes the graphics context away; interface words, no claim */
+  glLost:"The 3D view has stopped: the browser lost its graphics context. It comes back if the browser restores it; if it does not, reload the page.",
+  reload:"Reload",
   /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): the note an event carries where it is named, and the mark on the label of
      an arrow the data calls unsettled: marks of what the data says (EVENTS[].claim, OVERLAYS' interp), no claim of their own */
   event:{disputed:"the hour is disputed", interval:"an interval, not a timestamp", recon:"a reconstruction", tag:{disputed:"hour disputed", interval:"interval", recon:"reconstruction"}},
@@ -12440,7 +12539,9 @@ function frameState(now){
   return "idle";
 }
 function loop(){
+  if(bootFailed()) return;   /* roadmap step 3 (SW-1): nothing runs behind the start-up guard's message */
   requestAnimationFrame(loop);
+  if(GL.lost){ DEV.skipped++; return; }   /* no graphics context: nothing to draw until it is restored */
   syncFollow();   /* Stage 3D: the Follow button and the vantages' pressed state, every animation frame */
   openingWatch();   /* Stage 7C: a pan, orbit or zoom took the camera (Follow off): the opening ends where it is */
   var now=performance.now(), state=frameState(now);
@@ -12461,6 +12562,7 @@ function loop(){
   syncViewOffset(false);   /* Stage 3D: the landscape's focus eased to the free rectangle's centre */
   smokeT=HARNESS?0:now*0.001;
   renderFrame();
+  if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT&&!AUS_BOOT.done) AUS_BOOT.ok();   /* the first frame drawn: the start-up guard's watch ends */
   loop._n=(loop._n||0)+1;
   if(devOn&&loop._n%120===0){ var fe=AUSTERLITZ_DEBUG.figureError();   /* with the readout on: a periodic check of the seating */
     if(fe.worst>0.02&&!loop._warned){ loop._warned=true; console.warn("Austerlitz runtime check: a figure is "+fe.worst.toFixed(3)+" units off the drawn ground ("+fe.where+")"); } }
@@ -14970,7 +15072,7 @@ var AUSTERLITZ_DEBUG=(function(){
           cover:{grid:coverGrid, truth:coverTruth, render:coverRender, error:coverError, paperTruth:paperTruth, checks:coverChecks, roads:roadDrape, woods:woodPlacement}};
 })();
 
-init();
+boot();
 </script>
 </body>
 </html>

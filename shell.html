@@ -18,7 +18,22 @@
 </div>
 <div id="viewmode-home" hidden><!-- the presentation switch's place outside Watch (app.js syncViewmode) --></div>
 
-<div id="boot"><p>Surveying the ground between the Goldbach and the Litava&hellip;</p></div>
+<div id="boot">
+  <p class="boot-line">Surveying the ground between the Goldbach and the Litava&hellip;</p>
+  <!-- roadmap step 3 (decision 133 (a); docs/FINAL_AUDIT.md SW-1): a slow start said after 20 s, and the failure dialog (AUS_BOOT, below) -->
+  <p id="boot-status" role="status" data-slow="Still loading the 3D view&hellip;"></p>
+  <div id="boot-fail" role="alertdialog" aria-modal="true" aria-labelledby="boot-h" aria-describedby="boot-why" hidden>
+    <h2 id="boot-h">The map cannot start</h2>
+    <div id="boot-why">
+      <p data-boot="three" hidden>Its 3D library, three.js, could not be loaded from cdnjs.cloudflare.com, or it did not match the copy this page was built with. The map needs a network connection that can reach that address.</p>
+      <p data-boot="webgl" hidden>This browser could not start WebGL, the 3D graphics the map is drawn with. WebGL may be turned off, or not supported by this device or its graphics driver.</p>
+      <p data-boot="error" hidden>Something stopped the map while it was starting.</p>
+      <p>Reload the page to try again.</p>
+    </div>
+    <button id="boot-reload" type="button">Reload</button>
+  </div>
+  <noscript><p class="boot-line">This map needs JavaScript and WebGL.</p></noscript>
+</div>
 
 <nav class="rail" aria-label="Army and map controls">
   <div class="brand">
@@ -325,6 +340,8 @@
 </div>
 
 <div id="toast"></div>
+<!-- roadmap step 3 (docs/FINAL_AUDIT.md SW-1): the notice when the browser takes the 3D view's graphics context away (empty until then) -->
+<div id="glnotice" role="alert"></div>
 
 <!-- Stage 2D: the map layer, every counter and all map text, laid out by app.js (THE MAP LAYER). It is drawn over the
      canvas and under every panel by its z-index; it comes last so that Tab reaches the interface first, then the map -->
@@ -332,7 +349,51 @@
 <!-- Stage 5E: the eye-level vantage's caption (a model reading; the relief's factor; at the chapel of St Anthony the recorded mismatch) -->
 <div id="eyecap" class="eyecap" hidden></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<!-- roadmap step 3 (decision 133 (a); docs/FINAL_AUDIT.md SW-1): the start-up guard, before three.js and the bundle. It names AUS_BOOT; a
+     failure before the first frame is drawn (three.js not loaded or not matching its integrity hash, WebGL not available, an error while
+     starting) shows #boot-fail, an alert dialog with focus on Reload, and makes the rest of the page inert; the first failure wins. After
+     20 s without a frame a status line says so (never a failure). app.js marks the first frame (AUS_BOOT.ok) and stops on a failure. ES5. -->
+<script>
+var AUS_BOOT=(function(){
+  var B={done:false,failed:null,timer:null};
+  function el(id){ return document.getElementById(id); }
+  B.ok=function(){ if(B.done||B.failed) return; B.done=true; clearTimeout(B.timer); var s=el("boot-status"); if(s) s.textContent=""; };
+  B.fail=function(kind,err){
+    if(B.done||B.failed) return;
+    B.failed={kind:kind,message:String((err&&err.message)||err||"")};
+    clearTimeout(B.timer);
+    try{
+      var boot=el("boot"), kids=document.body.children, i;
+      var fr=el("firstrun"); if(fr) fr.hidden=true;
+      for(i=0;i<kids.length;i++){ var k=kids[i]; if(k!==boot&&k.tagName!=="SCRIPT"){ if("inert" in k) k.inert=true; else k.style.display="none"; } }
+      var rs=boot.querySelectorAll("[data-boot]");
+      for(i=0;i<rs.length;i++) rs[i].hidden=(rs[i].getAttribute("data-boot")!==kind);
+      el("boot-status").textContent="";
+      boot.className="failed"; boot.style.opacity="1";
+      el("boot-fail").hidden=false;
+      document.title=el("boot-h").textContent+" · "+document.title;
+      el("boot-reload").focus();
+    }catch(e){}
+    if(window.console&&console.error) console.error("Austerlitz: start-up failed ("+kind+"): "+B.failed.message);
+  };
+  /* until the first frame: the three.js script failing to load (offline, blocked, or its integrity not matching), and any uncaught error */
+  window.addEventListener("error",function(e){
+    if(B.done||B.failed) return;
+    var t=e.target;
+    if(t&&t.tagName==="SCRIPT"&&/three(\.min)?\.js/.test(t.src||"")) B.fail("three","three.js did not load: "+t.src);
+    else if(window.ErrorEvent&&e instanceof ErrorEvent) B.fail(typeof THREE==="undefined"?"three":"error",e.error||e.message);
+  },true);
+  /* once failed, nothing behind the dialog acts: keys and presses outside it stop here (the app's own handlers come later) */
+  ["keydown","pointerdown","wheel","click"].forEach(function(t){
+    window.addEventListener(t,function(e){ if(!B.failed) return; var x=e.target; if(x&&x.closest&&x.closest("#boot-fail")) return; e.stopImmediatePropagation(); },true); });
+  /* the dialog's one control keeps the focus: Tab and Shift+Tab stay on Reload */
+  window.addEventListener("keydown",function(e){ if(B.failed&&e.key==="Tab"){ e.preventDefault(); el("boot-reload").focus(); } },true);
+  el("boot-reload").addEventListener("click",function(){ location.reload(); });
+  B.timer=setTimeout(function(){ if(!B.done&&!B.failed){ var s=el("boot-status"); if(s) s.textContent=s.getAttribute("data-slow"); } },20000);
+  return B;
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>/*JS*/</script>
 </body>
 </html>

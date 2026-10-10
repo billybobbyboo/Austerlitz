@@ -736,6 +736,18 @@ try{
     if(FX.rtScene.width!==ww||FX.rtFinal.width!==1200||FX.rtFinal.height!==700) throw new Error("FX: a resize while off not taken up ("+FX.rtScene.width+" against "+ww+")");
     renderer.getDrawingBufferSize=gd; sizeFX(); }
   console.log("frame path: FX failure falls back to the standard path and recovers; off and on again reuses its targets OK");
+  /* roadmap step 3 (SW-1): boot() reports a start-up error to the guard with its kind and rethrows it; no guard, it only rethrows; a lost
+     graphics context stops the frames and fills the notice, a restored one clears it */
+  { const init0=init, calls=[]; let thrown=null;
+    global.AUS_BOOT={fail:function(k,e){ calls.push(k+":"+e.message); }};
+    init=function(){ const e=new Error("no context"); e.ausKind="webgl"; throw e; };
+    try{ boot(); }catch(e){ thrown=e.message; }
+    init=function(){ throw new Error("other"); }; try{ boot(); }catch(e){ thrown+=","+e.message; }
+    delete global.AUS_BOOT; init=function(){ throw new Error("bare"); }; try{ boot(); }catch(e){ thrown+=","+e.message; }
+    init=init0;
+    if(calls.join()!=="webgl:no context,error:other"||thrown!=="no context,other,bare") throw new Error("boot(): reported ["+calls.join()+"], thrown "+thrown);
+    if(GL.lost) throw new Error("GL.lost set at start"); }
+  console.log("start-up: boot() reports to the guard with its kind and rethrows; without a guard it rethrows OK");
 
   /* the vegetation kit and the settlements */
   const broadVariants=world.trees.children.length, conVariants=world.conifers.children.length;

@@ -527,3 +527,33 @@ if(cerrs) process.exitCode=1;
   console.log("opening: "+(oerr.length?oerr.length+" wrong":keys.length+" words in LABELS with no figure, clock, name or quotation; the tour's stops 1, 6, 7, 8; the clock played between them at 4x, Play still at half speed; begun by the card's primary; the bar a named region; Esc skips; one message a step"));
   if(oerr.length) process.exitCode=1;
 }
+/* roadmap step 3 (decision 133 (a); docs/FINAL_AUDIT.md SW-1): three.js from cdnjs r128 with its integrity and crossorigin, the start-up
+   guard before it, the failure dialog's markup, the bundle's start through boot() (which reports and rethrows), the loop stopped on a
+   failure, the context-loss notice. The page's behaviour is check:contrast's (tools/visual/boot-check.js) */
+{
+  const sh=fs.readFileSync('shell.html','utf8'), app=fs.readFileSync('app.js','utf8'), berr=[], crypto=require('crypto');
+  const ext=sh.match(/<script\b[^>]*\bsrc=[^>]*>/g)||[];
+  if(ext.length!==1) berr.push("shell.html: "+ext.length+" external scripts, not one");
+  const tag=ext[0]||"", want="sha512-"+crypto.createHash("sha512").update(fs.readFileSync("node_modules/three/build/three.min.js")).digest("base64");
+  if(!/\bsrc="https:\/\/cdnjs\.cloudflare\.com\/ajax\/libs\/three\.js\/r128\/three\.min\.js"/.test(tag)) berr.push("shell.html: three.js is not cdnjs's r128: "+tag);
+  if(!/\bcrossorigin="anonymous"/.test(tag)) berr.push("shell.html: the three.js tag has no crossorigin=\"anonymous\"");
+  const ig=(/\bintegrity="([^"]+)"/.exec(tag)||[])[1];
+  if(ig!==want) berr.push("shell.html: the three.js integrity is "+ig+", not the sha512 of node_modules/three/build/three.min.js (three 0.128.0, byte-identical to cdnjs's r128)");
+  const gi=sh.indexOf("var AUS_BOOT="), ti=sh.indexOf(tag);
+  if(gi<0||gi>ti) berr.push("shell.html: the start-up guard (AUS_BOOT) does not stand before the three.js tag");
+  const bf=(sh.match(/<div id="boot-fail"[^>]*>/)||[""])[0];
+  ['role="alertdialog"','aria-modal="true"','aria-labelledby="boot-h"','aria-describedby="boot-why"',' hidden'].forEach(a=>{ if(bf.indexOf(a)<0) berr.push("shell.html: #boot-fail lacks "+a); });
+  if(!/<h2 id="boot-h">/.test(sh)||!/<div id="boot-why">/.test(sh)) berr.push("shell.html: the dialog's heading or description is missing");
+  ["three","webgl","error"].forEach(k=>{ if(!new RegExp('<p data-boot="'+k+'" hidden>').test(sh)) berr.push("shell.html: no reason for the kind "+k); });
+  if(!/<button id="boot-reload" type="button">/.test(sh)) berr.push("shell.html: Reload is not a button");
+  if(!/<p id="boot-status" role="status" data-slow="[^"]+"><\/p>/.test(sh)) berr.push("shell.html: the slow start's status line is not an empty role=status");
+  if(!/<div id="glnotice" role="alert"><\/div>/.test(sh)) berr.push("shell.html: the context-loss notice is not an empty alert");
+  if(/localStorage|sessionStorage/.test(sh.slice(gi,ti))) berr.push("shell.html: the guard stores something");
+  if(!/\nboot\(\);\s*$/.test(app)) berr.push("app.js: the bundle does not start through boot()");
+  if(!/function boot\(\)\{\n  try\{ init\(\); \}\n  catch\(e\)\{ if\(typeof AUS_BOOT!=="undefined"&&AUS_BOOT\) AUS_BOOT\.fail\(e\.ausKind\|\|"error",e\); throw e; \}\n\}/.test(app)) berr.push("app.js: boot() does not report to the guard and rethrow");
+  if(!/function loop\(\)\{\n  if\(bootFailed\(\)\) return;/.test(app)) berr.push("app.js: the loop does not stop after a failed start");
+  if(!/catch\(e\)\{ e\.ausKind="webgl"; throw e; \}/.test(app)) berr.push("app.js: the renderer's failure is not told apart (webgl)");
+  berr.forEach(e=>console.log("  ! "+e));
+  console.log("start-up: "+(berr.length?berr.length+" wrong":"three.js from cdnjs r128 with its sha512 and crossorigin, the guard before it, the failure dialog, boot() reporting and rethrowing, the loop stopped on a failure, the context-loss notice"));
+  if(berr.length) process.exitCode=1;
+}

@@ -540,17 +540,40 @@ function relayoutAfterFonts(){
   requestRender(3);
 }
 function liftBoot(){
+  if(bootFailed()) return;   /* roadmap step 3 (SW-1): a failed start keeps its message */
   var b=document.getElementById("boot"); if(!b) return;
   requestAnimationFrame(function(){ b.style.opacity="0"; });
   setTimeout(function(){ if(b.parentNode) b.parentNode.removeChild(b); },900);
 }
 
+/* ---- roadmap step 3 (decision 133 (a); docs/FINAL_AUDIT.md SW-1): start-up and the graphics context ----
+   shell.html's guard (AUS_BOOT, before three.js) reports a failure before the first frame: three.js not loaded or not matching its
+   integrity hash, no WebGL (init tags the renderer's error), or any error while starting (boot()). The first frame drawn ends the guard's
+   watch (AUS_BOOT.ok, in loop); after a failure the loop stops. Later, a lost context stops the frames and says so (#glnotice, an alert,
+   with Reload); restored, the frames go on (three r128 makes its GL objects again as they are next used). */
+function bootFailed(){ return typeof AUS_BOOT!=="undefined"&&!!AUS_BOOT&&!!AUS_BOOT.failed; }
+var GL={lost:false};
+function bindContextLoss(cv){
+  if(!cv||!cv.addEventListener) return;
+  cv.addEventListener("webglcontextlost",function(e){ e.preventDefault(); GL.lost=true;
+    var n=document.getElementById("glnotice"); if(!n) return;
+    n.innerHTML=""; var p=document.createElement("span"); p.textContent=LABELS.glLost; n.appendChild(p);
+    var b=document.createElement("button"); b.type="button"; b.textContent=LABELS.reload; b.addEventListener("click",function(){ location.reload(); }); n.appendChild(b); });
+  cv.addEventListener("webglcontextrestored",function(){ GL.lost=false;
+    var n=document.getElementById("glnotice"); if(n) n.innerHTML="";
+    requestRender(3); });
+}
+function boot(){
+  try{ init(); }
+  catch(e){ if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT) AUS_BOOT.fail(e.ausKind||"error",e); throw e; }
+}
 function init(){
   scene=new THREE.Scene();
   scene.background=lin(LIGHT_RIG.bg0);
   scene.fog=new THREE.Fog(lin(LIGHT_RIG.fog0),90,560);
 
-  renderer=new THREE.WebGLRenderer({antialias:true});
+  try{ renderer=new THREE.WebGLRenderer({antialias:true}); }
+  catch(e){ e.ausKind="webgl"; throw e; }   /* roadmap step 3 (SW-1): no WebGL; boot() shows the start-up guard's message */
   lowTier = (window.innerWidth*window.innerHeight < 900*700) ||
              /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent||"");
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, lowTier?1.5:2));
@@ -561,6 +584,7 @@ function init(){
   renderer.outputEncoding=THREE.LinearEncoding;
   renderer.toneMapping=THREE.NoToneMapping;
   document.getElementById("stage").appendChild(renderer.domElement);
+  bindContextLoss(renderer.domElement);
 
   camera=landCam=new THREE.PerspectiveCamera(37,window.innerWidth/window.innerHeight,1,1900);
   camera.position.set(-196,132,226);
@@ -5105,6 +5129,9 @@ var LABELS={
     hybrid:{label:"Landscape with counters", title:"The ground in relief, with the paper map's counters"}
   },
   layers:{button:"Layers\u2026", heading:"Layers", aria:"Layers and ground", ground:"Ground", shows:"What is drawn"},
+  /* roadmap step 3 (SW-1): the notice when the browser takes the graphics context away; interface words, no claim */
+  glLost:"The 3D view has stopped: the browser lost its graphics context. It comes back if the browser restores it; if it does not, reload the page.",
+  reload:"Reload",
   /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): the note an event carries where it is named, and the mark on the label of
      an arrow the data calls unsettled: marks of what the data says (EVENTS[].claim, OVERLAYS' interp), no claim of their own */
   event:{disputed:"the hour is disputed", interval:"an interval, not a timestamp", recon:"a reconstruction", tag:{disputed:"hour disputed", interval:"interval", recon:"reconstruction"}},
@@ -6936,7 +6963,9 @@ function frameState(now){
   return "idle";
 }
 function loop(){
+  if(bootFailed()) return;   /* roadmap step 3 (SW-1): nothing runs behind the start-up guard's message */
   requestAnimationFrame(loop);
+  if(GL.lost){ DEV.skipped++; return; }   /* no graphics context: nothing to draw until it is restored */
   syncFollow();   /* Stage 3D: the Follow button and the vantages' pressed state, every animation frame */
   openingWatch();   /* Stage 7C: a pan, orbit or zoom took the camera (Follow off): the opening ends where it is */
   var now=performance.now(), state=frameState(now);
@@ -6957,6 +6986,7 @@ function loop(){
   syncViewOffset(false);   /* Stage 3D: the landscape's focus eased to the free rectangle's centre */
   smokeT=HARNESS?0:now*0.001;
   renderFrame();
+  if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT&&!AUS_BOOT.done) AUS_BOOT.ok();   /* the first frame drawn: the start-up guard's watch ends */
   loop._n=(loop._n||0)+1;
   if(devOn&&loop._n%120===0){ var fe=AUSTERLITZ_DEBUG.figureError();   /* with the readout on: a periodic check of the seating */
     if(fe.worst>0.02&&!loop._warned){ loop._warned=true; console.warn("Austerlitz runtime check: a figure is "+fe.worst.toFixed(3)+" units off the drawn ground ("+fe.where+")"); } }
@@ -9466,4 +9496,4 @@ var AUSTERLITZ_DEBUG=(function(){
           cover:{grid:coverGrid, truth:coverTruth, render:coverRender, error:coverError, paperTruth:paperTruth, checks:coverChecks, roads:roadDrape, woods:woodPlacement}};
 })();
 
-init();
+boot();

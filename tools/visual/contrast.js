@@ -280,7 +280,13 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
   stateFails.forEach(f=>console.log("  ! "+f));
   con.slice(0,40).forEach(e=>console.log("  ! "+TH.consoleLine(e)));
   if(jsonOut) fs.writeFileSync(jsonOut,JSON.stringify(all,null,1));
-  const bad=fails.length||small||fontFails.length||stateFails.length||(!LEGACY&&con.length);
+  /* roadmap step 3 (decision 133 (a); docs/FINAL_AUDIT.md SW-1): the start-up failures and the lost context, each on its own browser
+     (tools/visual/boot-check.js); an archived build without the start-up guard (--legacy) lists them as skipped */
+  let bootBad=0;
+  if(LEGACY&&!/var AUS_BOOT=/.test(fs.readFileSync(html,"utf8"))) console.log("boot cases: skipped (--legacy: the build has no start-up guard)");
+  else { const BR=await require("./boot-check.js").runBootCases(html); BR.forEach(r=>console.log((r.ok?"  boot ok ":"  ! boot ")+r.line));
+    bootBad=BR.filter(r=>!r.ok).length; console.log("boot cases: "+(BR.length-bootBad)+" of "+BR.length+" pass"); }
+  const bad=fails.length||small||fontFails.length||stateFails.length||(!LEGACY&&con.length)||bootBad;
   console.log(bad?"CONTRAST: FAILED":(LEGACY?"CONTRAST (legacy run, "+skipped.length+" states skipped): every text read meets WCAG AA":"CONTRAST: all text meets WCAG AA, drawn in the embedded faces, in every state reached"));
   process.exitCode=bad?1:0;
 })().catch(e=>{ console.error(e); process.exit(2); });
