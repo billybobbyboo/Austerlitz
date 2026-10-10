@@ -5387,7 +5387,7 @@ function buildUI(){
   var rtb=document.querySelector('.layer-btn[data-l="routes"]');   /* Stage 5F: the dossier's "Ordered route" follows the layer */
   if(rtb) rtb.addEventListener("click",function(){ paintDrawer(); requestRender(2); });
   var dwb=document.getElementById("dwell");   /* Stage 4D (decision 75): pause briefly at events, on by default */
-  if(dwb) dwb.addEventListener("click",function(){ DWELL.on=!DWELL.on; dwb.setAttribute("aria-pressed",String(DWELL.on)); if(!DWELL.on) DWELL.st=null; });
+  if(dwb) dwb.addEventListener("click",function(){ dwellSet(!DWELL.on); });
   document.getElementById("prev").addEventListener("click",function(){ stopPlay(); setClock(clock-10); });
   document.getElementById("next").addEventListener("click",function(){ stopPlay(); setClock(clock+10); });
   document.getElementById("prevEv").addEventListener("click",function(){ jumpEvent(-1); });
@@ -6710,6 +6710,9 @@ function dwellStarts(){
 function dwellReach(i,v){ var S=dwellStarts(), d=v*DWELL.EASE/2;
   if(i>0) d=Math.min(d,(S[i]-S[i-1])/2); if(i<S.length-1) d=Math.min(d,(S[i+1]-S[i])/2); return d; }
 function dwellReset(){ var S=dwellStarts(), i=0; while(i<S.length&&S[i]<=clock+1e-9) i++; DWELL.next=i; DWELL.st=null; DWELL.expect=null; }
+/* the toggle (roadmap step 3; docs/FINAL_AUDIT.md S-2): off or on, the next start is the first ahead of the clock, so turning it on again
+   while playing never eases back to a start the clock has passed */
+function dwellSet(on){ DWELL.on=!!on; var b=document.getElementById("dwell"); if(b&&b.setAttribute) b.setAttribute("aria-pressed",String(DWELL.on)); dwellReset(); }
 function dwellEvents(){ if(!DWELL.st) return null; var E=DWELL.st.E; return EVENTS.filter(function(e){ return evWindow(e)[0]===E; }); }
 /* the clock after dt seconds at v clock minutes a second, through any dwell */
 function dwellAdvance(dt,v){
@@ -6717,6 +6720,7 @@ function dwellAdvance(dt,v){
   while(dt>1e-9&&guard++<64){
     var st=DWELL.st;
     if(!st){
+      while(DWELL.next<S.length&&S[DWELL.next]<c-1e-9) DWELL.next++;   /* a start behind the clock is never eased back to (S-2) */
       if(!DWELL.on||DWELL.next>=S.length){ return c+dt*v; }
       var i=DWELL.next, E=S[i], d=dwellReach(i,v), z=E-d;
       if(c+dt*v<z){ return c+dt*v; }
@@ -7789,6 +7793,23 @@ var AUSTERLITZ_DEBUG=(function(){
     var kev={key:"ArrowRight",shiftKey:false,preventDefault:function(){},target:document.body}, kr=keyRow(kev,"window"); if(kr) kr.run(kev); if(!kr||playing||DWELL.st) scrub.push("the time key left the clock playing or dwelling");
     stopPlay();
     out.push({name:"dwell: scrubbing never dwells (a move of the clock while playing, the time keys)", ok:!scrub.length, detail:scrub.length?scrub.join("; "):"a move past "+fmtClock(E)+" while playing: no dwell; the → key stops the clock"});
+    /* roadmap step 3 (docs/FINAL_AUDIT.md S-2): the toggle while playing. Off across a start, on again: the clock never goes back and never
+       eases to the start it passed; the next start ahead dwells; off and on during that hold, the clock stays and that start is not held again */
+    var tg=[], sp0=speed, E1=S.filter(function(t){ return t>=420; })[0], E2=S[S.indexOf(E1)+1], last, back=0, guard;
+    function tk(){ tickClock(400); if(clock<last-1e-9) back++; last=clock; }
+    speed=0.5; playing=true; setClock(E1-30,{instant:true,camera:false}); dwellReset(); DWELL.expect=clock; last=clock;
+    dwellSet(false); if(document.getElementById("dwell").getAttribute("aria-pressed")!=="false") tg.push("off: aria-pressed not false");
+    guard=0; while(clock<=E1+2&&guard++<200) tk(); if(DWELL.st) tg.push("off: a dwell at "+fmtClock(DWELL.st.E));
+    var cOn=clock; dwellSet(true); if(document.getElementById("dwell").getAttribute("aria-pressed")!=="true") tg.push("on: aria-pressed not true");
+    tk(); if(DWELL.st&&DWELL.st.E<cOn-1e-9) tg.push("on again: eased back to "+fmtClock(DWELL.st.E)+" from "+fmtClock(cOn));
+    guard=0; while(!(DWELL.st&&DWELL.st.stage==="hold")&&clock<E2+5&&guard++<400) tk();
+    if(!(DWELL.st&&DWELL.st.E===E2)) tg.push("the next start ahead, "+fmtClock(E2)+", did not dwell");
+    var cH=clock; dwellSet(false); if(DWELL.st||Math.abs(clock-cH)>1e-9) tg.push("off in the hold: the clock moved or the dwell stayed");
+    dwellSet(true); for(var q=0;q<6;q++) tk(); if(DWELL.st&&DWELL.st.E<=E2) tg.push("on in the hold: "+fmtClock(DWELL.st.E)+" held again");
+    if(back) tg.push(back+" backward steps");
+    stopPlay(); dwellSet(true); speed=sp0;
+    out.push({name:"dwell: its toggle while the clock plays never sends the clock back; off, no dwell; on again, the next start ahead dwells (docs/FINAL_AUDIT.md S-2)", ok:!tg.length,
+      detail:tg.length?tg.join("; "):"off from "+fmtClock(E1-30)+" across "+fmtClock(E1)+", on at "+fmtClock(cOn)+": the clock monotone, "+fmtClock(E2)+" dwelt; off and on in its hold: not held again; aria-pressed followed"});
     /* reduced motion: the dwell kept; the camera moved only at event starts; every arrow whole */
     RM=true; var rm=[], r1=dry(0.5,T_MIN,T_MAX); if(r1.n!==want) rm.push(r1.n+" dwells");
     var moves=0, atStart=0, lastP=new THREE.Vector3(), c0=-1;

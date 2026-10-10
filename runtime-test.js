@@ -762,8 +762,17 @@ try{
         clock=nt; real+=st; if(DWELL.st&&DWELL.st.E!==was){ n++; was=DWELL.st.E; } }
       const L=dwellDayLength(T_MIN,x), want=dwellStarts().filter(t=>t>T_MIN).length;
       if(Math.abs(real-L)>2*st||n!==want||back||fast) throw new Error("dwell at "+x+"x: "+real.toFixed(2)+" s against "+L.toFixed(2)+", "+n+" dwells of "+want+", "+back+" backward and "+fast+" too fast steps"); });
+    /* roadmap step 3 (S-2): the toggle mid-day through dwellSet: off across a start, on again; the clock never goes back, the start it
+       passed is not dwelt, and every start ahead dwells once */
+    { const S=dwellStarts(), E1=S.filter(t=>t>=420)[0], v=MIN_PER_SEC*0.5; let back=0, seen=[];
+      clock=E1-30; dwellReset(); dwellSet(false);
+      while(clock<=E1+2){ const nt=dwellAdvance(1/60,v); if(nt<clock-1e-9) back++; clock=nt; if(DWELL.st) seen.push(DWELL.st.E); }
+      dwellSet(true);
+      while(clock<T_MAX){ const nt=Math.min(T_MAX,dwellAdvance(1/60,v)); if(nt<clock-1e-9) back++; clock=nt; if(DWELL.st&&seen[seen.length-1]!==DWELL.st.E) seen.push(DWELL.st.E); }
+      const want=S.filter(t=>t>E1+2);
+      if(back||!DWELL.on||seen.join()!==want.join()) throw new Error("dwell toggle: "+back+" backward steps, dwelt at ["+seen.join()+"] against ["+want.join()+"]"); }
     clock=c0; dwellReset();
-    console.log("dwell: the day at 0.5x, 1x, 2x and 4x in its computed length, one dwell at each event start, the clock monotone and never faster than its speed OK"); }
+    console.log("dwell: the day at 0.5x, 1x, 2x and 4x in its computed length, one dwell at each event start, the clock monotone and never faster than its speed; the toggle mid-day never sends it back OK"); }
 
   /* Stage 5B (docs/STAGE5_SPEC.md section A.5): spatial confidence, dry run. On by default (decision 85); every formation on the
      field gets a mark of its confAt grade at the default factor, a patch of the ground's cells; switched off, none is drawn */
