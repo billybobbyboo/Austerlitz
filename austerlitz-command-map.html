@@ -11059,6 +11059,13 @@ function buildUI(){
     if(t&&t.closest&&t.closest("#tourbar,#help,#helpbtn")) return;
     if(OPENING.play&&t&&t.closest&&t.closest("#play")) return;   /* Stage 7D: Play/Pause pauses the played stretch */
     openingEnd("pointer"); },{capture:true});
+  /* roadmap step 3 (docs/FINAL_AUDIT.md SW-12, generalised): a click with no press or key before it (a screen reader's or speech input's
+     activation, element.click()) on a control outside the opening's bar ends the opening where it is, and outside the first card closes
+     the card where it stands, as a press does (decision 118), before the control acts. A real press or key has already done so */
+  window.addEventListener("click",function(e){
+    var t=e.target;
+    if(OPENING.on&&!(t&&t.closest&&t.closest("#tourbar,#help,#helpbtn,#modal"))&&!(OPENING.play&&t&&t.closest&&t.closest("#play"))) openingEnd("pointer");
+    if(firstRunOpen&&!(t&&t.closest&&t.closest("#firstrun"))) closeFirst(null); },{capture:true});
   paintKey(); bindExaggeration();
   /* the legend's head opens and closes it; where it would lie over the dispatch it stays closed (its title says why) */
   document.getElementById("lg-toggle").addEventListener("click",function(){
@@ -14787,6 +14794,28 @@ var AUSTERLITZ_DEBUG=(function(){
       tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id); syncFollow();
       ck("focus: each way a focused control disappears leaves it on a named, shown successor: Leave the tour and Finish (Guided tour), the tour's Back at stop 1 (Next), the Layers \u00d7 and Esc (Layers), Watch and Clean with the panel open (closed), the chip's \u00d7 (Play) and Open the dossier (Back), the sightlines' Clear (Play), Watch's switch moved (the pressed button), Clean, 3 and H (Show interface); the Guided tour button during the opening ends it and begins the tour (docs/FINAL_AUDIT.md SW-5, SW-9, SW-12)",
         !bad.length, bad.length?bad.join("; "):"17 ways, each on its successor");
+    })();
+    /* roadmap step 3 (SW-12, generalised): a click alone (as a screen reader or speech input sends it) on a control outside the opening's bar
+       ends the opening where it stands and outside the first card closes the card, as a press does; the control then acts; while the clock
+       plays between steps, Play pauses it and leaves the opening on (7D). Restored after */
+    (function(){
+      var bad=[], fr=document.getElementById("firstrun"), md=document.getElementById("modal"), K0={c:clock,pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage};
+      function reset(){ if(OPENING.on) openingEnd("camera"); if(tourStep>=0) exitTour(); stopPlay(); setPresentation("study"); select(null,null); md.classList.remove("on"); delete md.dataset.sources; }
+      if(mode!=="terrain") setMode("terrain");
+      var ctl=[["Play","#play"],["Watch",'.vm-btn[data-vm="watch"]'],["Sources","#srcbtn"],["Layers","#layersbtn"],["a tab",'.tab-btn[data-t="oob"]'],["a phase","#phases .step"]];
+      ctl.forEach(function(c){ reset(); openingStart(); finishTween(); var e=document.querySelector(c[1]); if(!e){ bad.push(c[0]+" not found"); return; }
+        e.click(); if(OPENING.on) bad.push(c[0]+": the opening still on after its click"); if(OPENING.play||speed!==0.5) bad.push(c[0]+": left playing or at "+speed+"x"); });
+      reset(); openingStart(); finishTween(); openingGo(1);
+      if(!OPENING.play) bad.push("Next did not play the clock to step 2");
+      else { document.getElementById("play").click(); if(!OPENING.on||playing) bad.push("Play during the played stretch: opening "+OPENING.on+", playing "+playing);
+        document.querySelector('.vm-btn[data-vm="watch"]').click(); if(OPENING.on||OPENING.play||speed!==0.5) bad.push("Watch during the played stretch: opening "+OPENING.on+", speed "+speed); }
+      ["#srcbtn",'.vm-btn[data-vm="watch"]'].forEach(function(q){ reset(); fr.hidden=false; openFirstRun(); document.querySelector(q).click();
+        if(firstRunOpen||!fr.hidden) bad.push(q+": the first card still open after its click"); });
+      reset(); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+      setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
+      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv; tabChosen=K0.ch; if(docked) selectTab(K0.tab); syncFollow();
+      ck("opening and card: a click alone (as a screen reader or speech input sends it) on a control outside them ends the opening or closes the card where it stands, as a press does; Play during a played stretch pauses it (docs/FINAL_AUDIT.md SW-12)",
+        !bad.length, bad.length?bad.join("; "):ctl.length+" controls each ended the opening; Play paused the played stretch and Watch then ended it at \u00bd\u00d7; the Sources button and Watch closed the first card");
     })();
     /* Stage 7C (docs/STAGE7_SPEC.md section 6, 7C; decisions 111, 112, 114-116, 118): the opening, begun from the reopened card's primary
        action at 04:00 in Study on the landscape. Every step is its tour stop (the clock stopClock, the theme, the camera presetFrame(stopCam),
