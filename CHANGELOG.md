@@ -13,8 +13,8 @@ cluster, each proposal challenged by an implementation skeptic and an accessibil
 The commits, in order: the records `a054554`; C1 `118a288`, C2 `64e70dd`, C3 `864c3d3`, their review fixes `390bfbc`; C4 `f96fc6d`, C5
 `cdb932d`, C6 `6e5f571`, C7 `e20bb53`, C8 `4869db5`, C9 `e6d313b`, C10 `a491fca`, C11 `443b657`, the review fixes of C4-C6 `656cf7d`; C12
 `ad3c596`, C13 `450cbe5`, C14 `0dc8963`, the report-diff tool `60612c2`; the review fixes of C7-C14 `5593ceb`; C15-C16 `d5a28f3`, C18
-`146453d`, C19 and C22 `ce64ed0`, C20-C21 `a3662c9`, C23 `c9facbe`; the review fixes of those five `7736731`; the caption's tag measure
-`11d10c5`; the review fix of the map layer's topmost probe `99733eb`; the manifest `fd3d9b1`; the records, part 1, `652a4f8`; the review fixes of `7736731`-`fd3d9b1` `191ab98`; the manifest again `0e2b348`; the records, part 2 (this entry). Each segment was reviewed by independent reviewers before the next; every finding is fixed in its "review fixes"
+`146453d`, C19 and C22 `ce64ed0`, C20-C21 `a3662c9`, C23 `c9facbe`; the review fixes of the five commits `5593ceb`-`a3662c9`, `7736731`; the caption's tag measure
+`11d10c5`; the review fix of the map layer's topmost probe `99733eb`; the manifest `fd3d9b1`; the records, part 1, `652a4f8`; the review fixes of `7736731`-`fd3d9b1` `191ab98`; the manifest again `0e2b348`; the records, part 2 (this entry), part 3 `8550689` (the final check:visual) and the records' review fixes. Each segment was reviewed by independent reviewers before the next; every finding is fixed in its "review fixes"
 commit or recorded here. The plan's C17 (the phases taking the acts' clicks) waits on question 166 and was not built.
 
 **What changed, by finding.**
@@ -102,7 +102,7 @@ commit or recorded here. The plan's C17 (the phases taking the acts' clicks) wai
 **Tests added or made strict** (no assertion loosened; an assertion of old behaviour replaced by an equally strict one on the new: the
 "?" overlay's Tab cycle has three stops, the focus check's Clean expectation is the pressed switch drawn whole, the step-2 caption check
 reads the name's own box, `capRT` in `runtime-test.js` builds the new markup):
-- the self-test: 241 checks, every one passing (221 after step 2). The manifest was written twice from passing `check:selftest` runs by
+- the self-test: 241 checks, every one passing (221 after step 2). The manifest was written three times from passing `check:selftest` runs by
   `check-report.js --write-manifest`: at 224 in `390bfbc` (C1-C3), then at 241 in `fd3d9b1` from the run of `99733eb` (md5 61bd7258), where
   C2's name, "visual effects: off and on again reuses their render targets, materials and quad; no texture or geometry added (docs/FINAL_AUDIT.md SW-7)", was renamed when the check stopped
   drawing frames; and once more in `0e2b348` from the run of `191ab98` (md5 b10dc72c), where the caption check was renamed (it also holds a
@@ -128,7 +128,7 @@ reads the name's own box, `capRT` in `runtime-test.js` builds the new markup):
   - map layer: every keyboard stop, focused, is drawn on screen at full opacity and topmost (clear of the panels wherever a place beside it is free) while every other item keeps its place, and the layout is as before when it leaves; an item leaving the map hands the focus on; a click alone selects (docs/FINAL_AUDIT.md A-2; WCAG 2.4.7, 2.4.11)
   - events: every event has a pointer path, its own marker or the dossier of an event starting at the same minute whose marker a press reaches (docs/FINAL_AUDIT.md A-3)
   - visual effects: off and on again builds nothing: the same render targets, materials and quad (docs/FINAL_AUDIT.md SW-7)
-- the harness: live blocks `shortcuts` (real keys), `narrow` (a real resize: 1280, 1000, back to 1280, 2 and Esc, 700), `rmLive` (the
+- the harness: live blocks `shortcuts` (real keys), `narrow` (a real resize: 1280, 1000, back to 1280, 1000 again, 2 and Esc, 700), `rmLive` (the
   real preference turned on and off) and, on `first-run`, the real wheel; the feature `SHORTCUTS` required; `capTag` in every view;
 - `check:contrast` runs the six start-up cases (`tools/visual/boot-check.js`: no three.js, a failing integrity, no WebGL, an error after
   the interface is built, a start slowed past 20 s, the context lost and restored), each on its own browser (question 163);
@@ -152,7 +152,7 @@ On the final build (`191ab98`, md5 `b10dc72c…`; `0e2b348` adds only the manife
   bound 40).
 - `npm run check:selftest`: 241 checks, every one passing (15 min 11 s); the live blocks `shortcuts`, `narrow` and `rmLive` pass. Its one
   failure was the caption check's new name, missing from the manifest; the manifest was then regenerated from this run (`0e2b348`).
-- `npm run check:visual` (on `0e2b348`, compared case by case with the step-2 reference run by `tools/step3/report-diff.js`): 30 views of 30, "STAGE0: all checks passed" (102 min 41 s); the in-app self-test 241 of 241 in the full run; the live blocks pass (`shortcuts`; `narrow`: at 1280, 1000, back to 1280, after 2 and Esc and at 700 px the rail never over the card, hidden and inert below 1080 px, shown and not inert docked again; `rmLive`: on, `RM` true and the rail's transition 0 s, off, `RM` false and 0.32 s); `capDerived` true in all 11 Watch views; `capTag` true in the 24 views that show a tag, null in the other 6. Against the step-2 reference run two values differ, both inside their limits and none of them a limit: `hybrid-dimmed`'s unobstructed share 0.8827 to 0.8824 and at 1280 x 720 0.8486 to 0.8483 (its baselines 0.7869 and 0.7434), and `narrow-390`'s drops 4 to 5 (limit 7; Austerlitz's name dropped besides the four before). Every other measure of the 30 views, the drops, the dropped ids, the unobstructed shares and the timeline's height, is unchanged: the rail's 24 px stays inside the timeline's height. No limit moved.
+- `npm run check:visual` (on `0e2b348`, compared case by case with the step-2 reference run by `tools/step3/report-diff.js`): 30 views of 30, "STAGE0: all checks passed" (102 min 41 s); the in-app self-test 241 of 241 in the full run; the live blocks pass (`shortcuts`; `narrow`: at 1280, 1000, back to 1280, at 1000 again after 2 and Esc, and at 700 px the rail never over the card, hidden and inert below 1080 px, shown and not inert docked again; `rmLive`: on, `RM` true and the rail's transition 0 s, off, `RM` false and 0.32 s); `capDerived` true in all 11 Watch views; `capTag` true in the 24 views that show a tag, null in the other 6. Against the step-2 reference run two values differ, both inside their limits and none of them a limit: `hybrid-dimmed`'s unobstructed share 0.8827 to 0.8824 and at 1280 x 720 0.8486 to 0.8483 (its baselines 0.7869 and 0.7434), and `narrow-390`'s drops 4 to 5 (limit 7; Austerlitz's name dropped besides the four before). Every other measure of the 30 views, the drops, the dropped ids, the unobstructed shares and the timeline's height, is unchanged: the rail's 24 px stays inside the timeline's height. No limit moved.
 - `npm run check:baseline`: passes on the final build (moved in `652a4f8` and again in the records).
 - `tools/step3/hover-cost.js`: above (the worst p95 0.4 ms).
 
@@ -164,7 +164,7 @@ Before it, on each segment's snapshot (in order; each failure fixed in the commi
   without a frame); fixed in `5593ceb` and `d5a28f3` (and the hit area read at nine points).
 - The five commits `5593ceb`-`a3662c9` (build `42518fad`): `npm test` 9 of 9; `check:data` 128 identical; `check:contrast` pass, boot 6 of
   6; the self-test 240 of 241 (the caption: an event's tag outside it at 04:00-04:25 in Watch, the `.fit-off` rule that lost to `.ev`, which
-  the review also found) and the 17 new names not in the manifest.
+  the review also found) and 18 names not in the manifest (the 17 new checks and SW-7's check, renamed in `5593ceb`), with its old name missing.
 - `7736731` (build `2af867cf`): `npm test` 9 of 9; `check:data` 128 identical; `check:contrast` pass, boot 6 of 6; the self-test 240 of 241
   (the new topmost probe hit the canvas: the layer takes no pointer events), fixed in `99733eb`.
 - `99733eb` (build `61bd7258`): the self-test 241 of 241; the manifest written (`fd3d9b1`); `check:chronology` 0 errors; the hover's cost

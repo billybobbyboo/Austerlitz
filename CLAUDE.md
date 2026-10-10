@@ -285,12 +285,13 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   formation the hover shows (`pickAt`), held by the self-test at each factor.
   Since roadmap step 3: the harness's live blocks on the self-test's page, required and judged (`checkLive`): `shortcuts` (the "?" button, Tab
   to the switch, Space, Esc, then 2, M, ?, ., C and 1 change nothing and Space plays, by real keys), `narrow` (a real resize: 1280 px in Study,
-  1000, back to 1280, 2 then Esc, 700: below 1080 px the rail hidden and inert or shown beside the dispatch card, never over it; docked again,
+  1000, back to 1280, 1000 again, 2 then Esc, 700: below 1080 px the rail hidden and inert or shown beside the dispatch card, never over it; docked again,
   shown and not inert) and `rmLive` (the reduced-motion preference turned on and off on the open page: `RM` follows and the rail's transitions
   stop, then not); on `first-run`, after its keys, the real wheel over the map with the card open (a sideways wheel keeps Follow and the card, a
   vertical one closes the card and zooms); the feature `SHORTCUTS` required; in every view an event tag shown in the caption whole
   (`capTag`) and, in Watch, the derived reading "shown, inside the caption's box and not ellipsized" (`capDerived`, decision 159). The
-  self-test's step-3 checks (SW-1 to SW-12, S-1 to S-3, S-6, A-1 to A-3, decision 159, the event label's note) are named in `CHANGELOG.md`;
+  self-test's step-3 checks (SW-3 to SW-9, SW-11, SW-12, S-1 to S-3, S-6, A-1 to A-3, decision 159, the event label's note; SW-1 is checked by
+  `boot-check.js`, `css-test.js` and `runtime-test.js`, SW-2 by the `narrow` block, SW-10 by `css-test.js`) are named in `CHANGELOG.md`;
   among them the A-3 target-size check, which holds the acts (15 px) and the phases (16 px) at their heights pending question 166. No limit
   moved in step 3.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
