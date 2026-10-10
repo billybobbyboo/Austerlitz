@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build e807228bce49bfa740f78da26da2b00b (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "e807228bce49bfa740f78da26da2b00b",
- "count": 221,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 4fa1fcde463a7cd9e666a47b5edad44a (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "4fa1fcde463a7cd9e666a47b5edad44a",
+ "count": 224,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -153,6 +153,7 @@
   "atmosphere: none on the paper map; the fog's recession (fogShift) gone",
   "dwell: the day plays in its computed length at every speed, one dwell at each event start after 04:00 (section D.4)",
   "dwell: scrubbing never dwells (a move of the clock while playing, the time keys)",
+  "dwell: its toggle while the clock plays never sends the clock back; off, no dwell; on again, the next start ahead dwells (docs/FINAL_AUDIT.md S-2)",
   "reduced motion: the dwell kept, the camera moved only at event starts, every arrow whole (section D.4)",
   "smoke: a formation smokes only with a fighting phase status, and at full amount only inside a naming event's window (section E.3; decision 77)",
   "spatial confidence: every formation on the field is drawn at its position grade (confAt: between anchors the weaker one's), A as its footprint, B as its frontage doubled and C as a zone of its frontage's radius, in its side's colour (section A.5; decisions 86-88)",
@@ -212,6 +213,7 @@
   "woods: every tree and every scrub of a wood stands inside the wood as the land cover has it",
   "first run: the key names the marks that carry the sides, not coats (decision 108); the legend's swatches are the colours that draw them",
   "first run: a modal dialog (focus on its primary action, Tab kept inside); docked, the Now tab and its derived tag beside it; Esc, the stay button and a press outside close it in place, focus on Play (decisions 111-113, 118-120)",
+  "pointer: a mostly sideways wheel leaves the camera, Follow, the opening and the paper map as they are; a wheel over the map closes the first card where it stands, then zooms (docs/FINAL_AUDIT.md SW-8)",
   "the opening: each step its tour stop, its words a TOUR field or a LABELS entry, one live message each; Finish, Skip and Esc from every step to 04:00, Study, the Overview, Play focused; a drag, a zoom and a key end it where it is (decisions 114, 115, 118)",
   "the opening's played stretches: Next plays the clock at 4x to the next step and that stop is applied; the bar its own words or the dwell's event names; one message as it starts and one at the step; Pause and Space stop it; Next, Back, Skip and a key; the visitor's speed back (decision 123)",
   "standards: who carries them and how many as the appearance table rules, per drawn battalion or squadron; none where it shows none, gives none, disputes them in the field or leaves the count open; no standard on a battery or a headquarters (section 6.3)",
@@ -223,6 +225,7 @@
   "sprites: smoke and dust fade to nothing at every edge",
   "the embedded type: three faces (two Austerlitz Sans, one Austerlitz Serif) loaded before the boot screen lifted, none failed (decision 141)",
   "the embedded type: the interface is set in the embedded faces, as the tokens say (decision 141)",
+  "visual effects: off and on again reuses their render targets, materials and quad; no texture or geometry added (docs/FINAL_AUDIT.md SW-7)",
   "render on demand: a view at rest draws nothing; slow drift alone draws at the ambient rate"
  ]
 }

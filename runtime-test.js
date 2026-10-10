@@ -729,7 +729,12 @@ try{
     if(FX.rtScene!==rt0||FX.matComp!==m0||FX.quad!==q0) throw new Error("FX: off and on again made new targets or materials (SW-7)");
     renderFX=function(){ throw new Error("simulated post-processing failure"); }; renderFrame(); renderFX=realFX;
     if(FX.built||FX.rtScene) throw new Error("FX: a set that failed in a frame is kept (SW-7)");
-    setFXEnabled(true); renderFrame(); if(!FX.on||!FX.built||FX.rtScene===rt0) throw new Error("FX: not rebuilt after a failure"); }
+    setFXEnabled(true); renderFrame(); if(!FX.on||!FX.built||FX.rtScene===rt0) throw new Error("FX: not rebuilt after a failure");
+    /* a resize while the effects are off is taken up when they come back */
+    const gd=renderer.getDrawingBufferSize; setFXEnabled(false); renderer.getDrawingBufferSize=function(v){ v.x=1200; v.y=700; return v; };
+    setFXEnabled(true); const ww=Math.max(2,(1200*FX.scale)|0);
+    if(FX.rtScene.width!==ww||FX.rtFinal.width!==1200||FX.rtFinal.height!==700) throw new Error("FX: a resize while off not taken up ("+FX.rtScene.width+" against "+ww+")");
+    renderer.getDrawingBufferSize=gd; sizeFX(); }
   console.log("frame path: FX failure falls back to the standard path and recovers; off and on again reuses its targets OK");
 
   /* the vegetation kit and the settlements */

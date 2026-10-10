@@ -8323,6 +8323,7 @@ function initFX(){
   }
   FX.on=true;
   sizeFX();
+  applyGrade(_gradeNow);   /* the clock's grade, which applyGrade kept while the effects were off */
 }
 function disposeFX(){
   ["rtScene","rtA","rtB","rtC","rtD","rtFinal","matFXAA","matBright","matBlur","matComp"].forEach(function(k){ var o=FX[k]; if(o&&o.dispose) o.dispose(); FX[k]=null; });
@@ -13317,7 +13318,7 @@ var AUSTERLITZ_DEBUG=(function(){
     out.push({name:"dwell: scrubbing never dwells (a move of the clock while playing, the time keys)", ok:!scrub.length, detail:scrub.length?scrub.join("; "):"a move past "+fmtClock(E)+" while playing: no dwell; the → key stops the clock"});
     /* roadmap step 3 (docs/FINAL_AUDIT.md S-2): the toggle while playing. Off across a start, on again: the clock never goes back and never
        eases to the start it passed; the next start ahead dwells; off and on during that hold, the clock stays and that start is not held again */
-    var tg=[], sp0=speed, E1=S.filter(function(t){ return t>=420; })[0], E2=S[S.indexOf(E1)+1], last, back=0, guard;
+    var tg=[], sp0=speed, dw0=DWELL.on, E1=S.filter(function(t){ return t>=420; })[0], E2=S[S.indexOf(E1)+1], last, back=0, guard;
     function tk(){ tickClock(400); if(clock<last-1e-9) back++; last=clock; }
     speed=0.5; playing=true; setClock(E1-30,{instant:true,camera:false}); dwellReset(); DWELL.expect=clock; last=clock;
     dwellSet(false); if(document.getElementById("dwell").getAttribute("aria-pressed")!=="false") tg.push("off: aria-pressed not false");
@@ -13329,7 +13330,7 @@ var AUSTERLITZ_DEBUG=(function(){
     var cH=clock; dwellSet(false); if(DWELL.st||Math.abs(clock-cH)>1e-9) tg.push("off in the hold: the clock moved or the dwell stayed");
     dwellSet(true); for(var q=0;q<6;q++) tk(); if(DWELL.st&&DWELL.st.E<=E2) tg.push("on in the hold: "+fmtClock(DWELL.st.E)+" held again");
     if(back) tg.push(back+" backward steps");
-    stopPlay(); dwellSet(true); speed=sp0;
+    stopPlay(); dwellSet(dw0); speed=sp0;
     out.push({name:"dwell: its toggle while the clock plays never sends the clock back; off, no dwell; on again, the next start ahead dwells (docs/FINAL_AUDIT.md S-2)", ok:!tg.length,
       detail:tg.length?tg.join("; "):"off from "+fmtClock(E1-30)+" across "+fmtClock(E1)+", on at "+fmtClock(cOn)+": the clock monotone, "+fmtClock(E2)+" dwelt; off and on in its hold: not held again; aria-pressed followed"});
     /* reduced motion: the dwell kept; the camera moved only at event starts; every arrow whole */
@@ -14561,9 +14562,9 @@ var AUSTERLITZ_DEBUG=(function(){
        stands and zooms; a wheel over the docked Now tab beside the card leaves it open. Restored after */
     (function(){
       var bad=[], el=renderer.domElement, fr=document.getElementById("firstrun"),
-        K0={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,c:clock,pres:presentation,mode:mode};
+        K0={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,c:clock,pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,sel:selection};
       if(presentation!=="study") setPresentation("study"); if(mode!=="terrain") setMode("terrain"); if(tourStep>=0) exitTour(); select(null,null);
-      setClock(T_MIN,{instant:true,force:true,camera:false}); finishTween(); freeCam=false;
+      setClock(T_MIN,{instant:true,force:true,camera:false}); finishTween(); freeCam=false; tabChosen=false;
       var fc=freeCentre(), side=[{deltaX:120,deltaY:0},{deltaX:120,deltaY:8},{deltaX:-120,deltaY:0,shiftKey:true}];
       function wh(o,on){ (on||el).dispatchEvent(new WheelEvent("wheel",Object.assign({clientX:fc[0],clientY:fc[1],bubbles:true,cancelable:true},o))); }
       function kept(w,P,T){ if(freeCam) bad.push(w+": Follow turned off"); if(landCam.position.distanceTo(P)>1e-9||orbitTarget.distanceTo(T)>1e-9) bad.push(w+": the camera moved"); }
@@ -14574,6 +14575,7 @@ var AUSTERLITZ_DEBUG=(function(){
       setMode("staff"); var M0=JSON.stringify(MAPCAM.state()); side.forEach(function(o){ wh(o); });
       if(JSON.stringify(MAPCAM.state())!==M0) bad.push("a sideways wheel moved the paper map"); setMode("terrain");
       fr.hidden=false; openFirstRun(); freeCam=false;
+      wh(side[0]); if(!firstRunOpen) bad.push("a sideways wheel closed the card");
       if(docked){ wh({deltaY:-120},document.getElementById("now")); if(!firstRunOpen) bad.push("a wheel over the Now tab closed the card"); }
       var d0=landCam.position.distanceTo(orbitTarget); wh({deltaY:-120});
       if(firstRunOpen||!fr.hidden) bad.push("a wheel over the map left the card open"); if(fr.contains(document.activeElement)) bad.push("focus left on the hidden card");
@@ -14582,6 +14584,7 @@ var AUSTERLITZ_DEBUG=(function(){
       closeFirst(null); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
       setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
       landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv;
+      tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id); syncFollow();
       ck("pointer: a mostly sideways wheel leaves the camera, Follow, the opening and the paper map as they are; a wheel over the map closes the first card where it stands, then zooms (docs/FINAL_AUDIT.md SW-8)",
         !bad.length, bad.length?bad.join("; "):side.length+" sideways wheels on the landscape, in the opening and on the paper map: nothing moved; the card closed by a wheel over the map, which zoomed"+(docked?"; a wheel over the Now tab left it open":""));
     })();
@@ -14890,6 +14893,11 @@ var AUSTERLITZ_DEBUG=(function(){
       if(renderer.info.memory.geometries!==gm0) bad.push("geometries "+gm0+" -> "+renderer.info.memory.geometries);
       if(FX.rtScene!==rt0||FX.matComp!==mc0||FX.quad!==q0) bad.push("a target, material or quad made again");
       if(!FX.on||!FX.built) bad.push("the effects not on and built after the cycles");
+      /* the grade the clock set while the effects were off is drawn when they come back */
+      setFXEnabled(false); applyGrade([[0.01,0.02,0.03],[0.9,0.91,0.92],0.5,1.2,0.3,0.8]); setFXEnabled(true);
+      var u=FX.matComp.uniforms; if(Math.abs(u.lift.value.y-0.02)>1e-6||Math.abs(u.sat.value-0.5)>1e-6||Math.abs(u.exposure.value-0.8)>1e-6) bad.push("the grade set while off is not drawn after");
+      applyLight(true);
+      if(!wasOn) setFXEnabled(false);
       ck("visual effects: off and on again reuses their render targets, materials and quad; no texture or geometry added (docs/FINAL_AUDIT.md SW-7)", !bad.length,
         bad.length?bad.join("; "):"two off-on cycles after a warm one: "+tx0+" textures and "+gm0+" geometries before and after, the same scene target, composite material and quad");
     })();
