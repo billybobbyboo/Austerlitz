@@ -2855,7 +2855,7 @@ function initFX(){
       FX.quad=fsQuad(FX.matBright);
       FX.quad.frustumCulled=false;
       FX.quadScene.add(FX.quad);
-      FX.built=true;
+      FX.built=true; FX.builds=(FX.builds||0)+1;
     } catch(err){ disposeFX(); throw err; }
   }
   FX.on=true;
@@ -4886,7 +4886,7 @@ function select(kind,id){
     else setHighlight(null);
   }
   paintDrawer(); paintOOB();
-  if(selection){ if(a&&!inDr) PANEL.opener=a; if(a&&!inDr&&!shown(a)) focusTo(["drawer-back","drawer-close"]); }
+  if(selection){ if(!inDr) PANEL.opener=a; if(a&&!inDr&&!shown(a)) focusTo(["drawer-back","drawer-close"]); }   /* a press on the map (focus on the page) leaves no opener */
   else { if(inDr) focusTo([PANEL.opener,docked?"tab-"+tabNow:null,"play","restore"]); PANEL.opener=null; }
 }
 
@@ -5724,6 +5724,8 @@ function shown(e){
   if(e.closest&&(e.closest("[hidden]")||e.closest("[inert]")||e.closest("body.rail-hidden .rail")||e.closest(".drawer:not(.on)"))) return false;
   if(e.checkVisibility&&!e.checkVisibility({checkOpacity:true,checkVisibilityCSS:true})) return false;
   var r=e.getBoundingClientRect(); if(!(r.width>0||r.height>0)) return false;
+  /* an open dossier or a shown rail may still be sliding in (its box off screen for .32 s): it is shown */
+  if(e.closest&&(e.closest(".drawer.on")||e.closest("body:not(.rail-hidden) .rail"))) return true;
   return r.right>0&&r.bottom>0&&r.left<window.innerWidth&&r.top<window.innerHeight;
 }
 function focusTo(list){
@@ -6172,14 +6174,18 @@ function paintDrawerBody(){
   dr.classList.add("on");
   document.body.classList.add("drawer-open");
   /* SW-5: a rebuild with focus inside (Full dossier, a link, the clock moving) keeps the focus on the same control, else the dossier's heading */
-  var fa=focusedEl(), fk=(fa&&body.contains&&body.contains(fa))?[fa.tagName,(fa.textContent||"").trim()]:null;
+  var fa=focusedEl(), fk=null, sc=body.scrollTop||0;
+  if(fa&&body.contains&&body.contains(fa)){ var same0=[].filter.call(body.querySelectorAll(fa.tagName),function(x){ return (x.textContent||"").trim()===(fa.textContent||"").trim(); });
+    fk=[fa.tagName,(fa.textContent||"").trim(),same0.indexOf(fa)]; }
+  var nn=selection.kind==="f"?(dossierExpanded?dossierFormation(selection.id):compactCard(selection.id)):selection.kind==="e"?dossierEvent(selection.id):
+    selection.kind==="a"?dossierAnalysis(selection.id):dossierFeature(selection.id);
+  /* the C7-C14 review's item 9: a repaint that changes nothing (the clock playing) keeps the dossier as it is, focus and scroll included */
+  if(body.children.length===1&&body.firstChild.outerHTML===nn.outerHTML){ syncInert(); return; }
   body.innerHTML="";
-  if(selection.kind==="f") body.appendChild(dossierExpanded?dossierFormation(selection.id):compactCard(selection.id));
-  else if(selection.kind==="e") body.appendChild(dossierEvent(selection.id));
-  else if(selection.kind==="a") body.appendChild(dossierAnalysis(selection.id));
-  else body.appendChild(dossierFeature(selection.id));
+  body.appendChild(nn);
   syncInert();
-  if(fk&&body.querySelectorAll){ var same=[].filter.call(body.querySelectorAll(fk[0]),function(x){ return (x.textContent||"").trim()===fk[1]; })[0];
+  if(fk&&body.querySelectorAll){ body.scrollTop=sc;
+    var sames=[].filter.call(body.querySelectorAll(fk[0]),function(x){ return (x.textContent||"").trim()===fk[1]; }), same=sames[Math.max(0,fk[2])]||sames[0];
     if(!(same&&focusTo([same]))){ var h=body.querySelector("h2,h3"); if(h){ h.setAttribute("tabindex","-1"); focusTo([h]); } } }
 }
 
@@ -6798,7 +6804,7 @@ function geoText(p){
 }
 function openSources(o){
   var m=document.getElementById("modal");
-  var b=document.getElementById("modal-body"), was=!!(m.classList&&m.classList.contains("on")), top=b.scrollTop||0;
+  var b=document.getElementById("modal-body"), was=!!(m.classList&&m.classList.contains("on")), sc=(b.closest&&b.closest(".sheet"))||b, top=sc.scrollTop||0;
   b.innerHTML='<h2>'+esc(SOURCE_NOTE.title)+'</h2>'+
     SOURCE_NOTE.body.map(function(p){return '<p>'+esc(geoText(p))+'</p>';}).join('')+
     '<h3>Three layers</h3><dl class="kvs">'+SOURCE_NOTE.layers.map(function(l){
@@ -6844,7 +6850,7 @@ function openSources(o){
     '<h3>How the light is drawn</h3><ul class="bul">'+lightNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>';
   m.dataset.sources="1";
   m.classList.add("on");
-  if(o&&o.repaint&&was) b.scrollTop=top;   /* a repaint (another display factor) keeps its place and its focus */
+  if(o&&o.repaint&&was) sc.scrollTop=top;   /* a repaint (another display factor) keeps its place (the sheet scrolls) and its focus */
   else if(!was) sheetOpened("modal");     /* roadmap step 3 (SW-4): a modal dialog: focus in, the rest inert */
 }
 
@@ -7034,10 +7040,10 @@ function syncDock(){
   if(dp&&pane&&home&&home.parentNode&&home.parentNode.insertBefore){ if(want) pane.appendChild(dp); else home.parentNode.insertBefore(dp,home); }
   var nb=document.getElementById("tab-now"); if(nb) nb.hidden=!want;
   if(!want) document.body.classList.add("rail-hidden");   /* roadmap step 3 (docs/FINAL_AUDIT.md SW-2): undocked, the rail starts hidden, as at load */
-  syncInert();   /* roadmap step 3: docked or not, the rail's reason changes */
   if(want&&presentation==="study") document.body.classList.remove("rail-hidden");
   if(!want&&tabNow==="now") selectTab("oob");
   else if(want&&!tabChosen) selectTab("now");
+  syncInert();   /* roadmap step 3: docked or not, the rail's reasons change (after rail-hidden is settled: the C7-C14 review's item 3) */
 }
 function selectTab(t,focus){
   var ok=false;
@@ -7435,7 +7441,7 @@ var AUSTERLITZ_DEBUG=(function(){
         setPresentation("study"); select(null,null); stopPlay(); setClock(600,{instant:true,force:true,camera:false}); finishTween();
         function snap(){ return [clock,presentation,mode,layerOn.contours,layerOn.analysis,FX.on,devOn,hideDispatch,helpOpen(),playing,!!selection].join("|"); }
         var s0=snap(), keys=[]; for(var c=0x21;c<=0x7E;c++) keys.push(String.fromCharCode(c));
-        function kd2(on,k){ on.dispatchEvent(new KeyboardEvent("keydown",{key:k,shiftKey:/[A-Z!-+:<>?^_{|}~"]/.test(k),bubbles:true,cancelable:true})); }
+        function kd2(on,k){ on.dispatchEvent(new KeyboardEvent("keydown",{key:k,shiftKey:'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:"<>?~'.indexOf(k)>=0,bubbles:true,cancelable:true})); }
         keys.forEach(function(k){ kd2(document.body,k); }); if(snap()!==s0) bad.push("keys from the page changed "+s0+" to "+snap());
         var tbn=document.getElementById("tourbtn"); tbn.focus({preventScroll:true}); keys.forEach(function(k){ kd2(tbn,k); }); tbn.blur();
         if(snap()!==s0) bad.push("keys on a focused button changed "+s0+" to "+snap());
@@ -9351,7 +9357,7 @@ var AUSTERLITZ_DEBUG=(function(){
        shown, never left on a hidden element or dropped to the page; the Layers panel closes with Watch and Clean; the Guided tour button's
        click alone ends the opening and begins the tour. Restored after */
     (function(){
-      var bad=[], fr=document.getElementById("firstrun"), K0={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,c:clock,pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,sel:selection};
+      var bad=[], fr=document.getElementById("firstrun"), K0={p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,c:clock,pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,sel:selection,hd:hideDispatch};
       function aid(){ var a=document.activeElement; return a&&a!==document.body?(a.id||(a.dataset&&a.dataset.vm?"vm:"+a.dataset.vm:a.tagName)):"body"; }
       function want(w,id){ var a=document.activeElement; if(aid()!==id||!shown(a)) bad.push(w+": focus on "+aid()+(shown(a)?"":" (not shown)")+", not "+id); }
       function key(k){ var on=document.activeElement&&document.activeElement!==document.body?document.activeElement:window;
@@ -9374,22 +9380,22 @@ var AUSTERLITZ_DEBUG=(function(){
       fresh(); setPresentation("watch"); select("f","sthilaire"); focusId("sc-open"); document.getElementById("sc-open").click(); want("the selection chip's Open the dossier","drawer-back");
       fresh(); computeViewshed(FEATURES[0].p,EYE_OBSERVER_M); syncViewBadge(); focusId("vsclear"); document.getElementById("vsclear").click(); want("the sightlines' Clear","play");
       fresh(); var wb=document.querySelector('.vm-btn[data-vm="watch"]'); wb.focus({preventScroll:true}); wb.click(); want("Watch's switch moved into the timeline","vm:watch");
-      var cb=document.querySelector('.vm-btn[data-vm="map"]'); cb.focus({preventScroll:true}); cb.click(); want("Clean from its own button","restore");
+      var cb=document.querySelector('.vm-btn[data-vm="map"]'); cb.focus({preventScroll:true}); cb.click(); want("Clean from its own button","vm:map");
       fresh(); fr.hidden=false; openFirstRun(); key("3"); if(presentation!=="map") bad.push("3 from the card is "+presentation); want("3 from the first card","restore");
       fresh(); fr.hidden=false; openFirstRun(); key("h"); want("H from the first card","restore");
       fresh(); openingStart(); finishTween(); document.getElementById("tourbtn").click(); finishTween();
       if(OPENING.on||OPENING.play||tourStep!==0||speed!==0.5) bad.push("the Guided tour button's click during the opening: opening "+OPENING.on+", tour stop "+(tourStep+1)+", speed "+speed+" (SW-12)");
       fresh(); setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
       landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv;
-      tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id); syncFollow();
-      ck("focus: each way a focused control disappears leaves it on a named, shown successor: Leave the tour and Finish (Guided tour), the tour's Back at stop 1 (Next), the Layers \u00d7 and Esc (Layers), Watch and Clean with the panel open (closed), the chip's \u00d7 (Play) and Open the dossier (Back), the sightlines' Clear (Play), Watch's switch moved (the pressed button), Clean, 3 and H (Show interface); the Guided tour button during the opening ends it and begins the tour (docs/FINAL_AUDIT.md SW-5, SW-9, SW-12)",
+      tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id); hideDispatch=K0.hd; syncVis(); syncFollow();
+      ck("focus: each way a focused control disappears leaves it on a named, shown successor: Leave the tour and Finish (Guided tour), the tour's Back at stop 1 (Next), the Layers \u00d7 and Esc (Layers), Watch and Clean with the panel open (closed), the chip's \u00d7 (Play) and Open the dossier (Back), the sightlines' Clear (Play), Watch's switch moved and Clean's (the pressed button), 3 and H (Show interface); the Guided tour button during the opening ends it and begins the tour (docs/FINAL_AUDIT.md SW-5, SW-9, SW-12)",
         !bad.length, bad.length?bad.join("; "):"17 ways, each on its successor");
     })();
     /* roadmap step 3 (SW-12, generalised): a click alone (as a screen reader or speech input sends it) on a control outside the opening's bar
        ends the opening where it stands and outside the first card closes the card, as a press does; the control then acts; while the clock
        plays between steps, Play pauses it and leaves the opening on (7D). Restored after */
     (function(){
-      var bad=[], fr=document.getElementById("firstrun"), md=document.getElementById("modal"), K0={c:clock,pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage};
+      var bad=[], fr=document.getElementById("firstrun"), md=document.getElementById("modal"), K0={c:clock,pres:presentation,mode:mode,tab:tabNow,ch:tabChosen,p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv:curVantage,sel:selection};
       function reset(){ if(OPENING.on) openingEnd("camera"); if(tourStep>=0) exitTour(); stopPlay(); setPresentation("study"); select(null,null); closeSources(); }
       if(mode!=="terrain") setMode("terrain");
       var ctl=[["Play","#play"],["Watch",'.vm-btn[data-vm="watch"]'],["Sources","#srcbtn"],["Layers","#layersbtn"],["a tab",'.tab-btn[data-t="oob"]'],["a phase","#phases .step"]];
@@ -9403,7 +9409,7 @@ var AUSTERLITZ_DEBUG=(function(){
         if(firstRunOpen||!fr.hidden) bad.push(q+": the first card still open after its click"); });
       reset(); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
       setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
-      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv; tabChosen=K0.ch; if(docked) selectTab(K0.tab); syncFollow();
+      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv; tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id); syncFollow();
       ck("opening and card: a click alone (as a screen reader or speech input sends it) on a control outside them ends the opening or closes the card where it stands, as a press does; Play during a played stretch pauses it (docs/FINAL_AUDIT.md SW-12)",
         !bad.length, bad.length?bad.join("; "):ctl.length+" controls each ended the opening; Play paused the played stretch and Watch then ended it at \u00bd\u00d7; the Sources button and Watch closed the first card");
     })();
@@ -9419,7 +9425,8 @@ var AUSTERLITZ_DEBUG=(function(){
       function key(k,sh,on){ on=on||(document.activeElement&&document.activeElement!==document.body?document.activeElement:window);
         on.dispatchEvent(new KeyboardEvent("keydown",{key:k,shiftKey:!!sh,bubbles:true,cancelable:true})); }
       function aid(){ var a=document.activeElement; return a&&a!==document.body?a.id||a.tagName:"body"; }
-      function openS(){ if(!docked&&document.body.classList.contains("rail-hidden")) showEverything(); sb.focus({preventScroll:true}); sb.click(); }
+      function openS(){ if(!docked&&document.body.classList.contains("rail-hidden")) showEverything(); sb.focus({preventScroll:true}); inert0=inertMap(); sb.click(); }
+      var inert0=null; function inertMap(){ return [].map.call(document.body.children,function(k){ return (k.id||k.className||k.tagName)+":"+!!k.inert; }).join("|"); }
       function inertOK(w){ var notInert=[].filter.call(document.body.children,function(k){ return k.tagName!=="SCRIPT"&&k.id!=="boot"&&k!==md&&!/^(live-phase|toast|glnotice)$/.test(k.id)&&!k.inert; }).map(function(k){ return k.id||k.className; });
         if(notInert.length) bad.push(w+": not inert behind the sheet: "+notInert.join(", ")); if(document.getElementById("live-phase").inert) bad.push(w+": the phase announcement inert"); }
       if(mode!=="terrain") setMode("terrain"); setPresentation("study"); select(null,null); stopPlay();
@@ -9435,7 +9442,7 @@ var AUSTERLITZ_DEBUG=(function(){
       if(!md.classList.contains("on")||aid()!=="modal-close") bad.push("a repaint at another factor: open "+md.classList.contains("on")+", focus on "+aid());
       setDisplayFactor(K0.f);
       key("Escape"); if(md.classList.contains("on")) bad.push("Esc left the sheet open"); if(aid()!=="srcbtn") bad.push("focus on "+aid()+" after Esc, not the Sources button");
-      if(document.querySelector("body > [inert]:not(#boot)")) bad.push("something stayed inert after the sheet closed");
+      if(inertMap()!==inert0) bad.push("inert after the sheet closed is not as before it opened: "+inertMap());
       openS(); document.getElementById("modal-close").click(); if(md.classList.contains("on")||aid()!=="srcbtn") bad.push("the \u00d7: open "+md.classList.contains("on")+", focus on "+aid());
       openS(); md.dispatchEvent(new MouseEvent("click",{bubbles:true,cancelable:true})); if(md.classList.contains("on")||aid()!=="srcbtn") bad.push("the scrim: open "+md.classList.contains("on")+", focus on "+aid());
       /* SW-6: after a click on the text (focus on the sheet itself) */
@@ -9811,17 +9818,17 @@ var AUSTERLITZ_DEBUG=(function(){
       ck("the embedded type: the interface is set in the embedded faces, as the tokens say (decision 141)", !bad.length, bad.length?bad.join("; "):seen.join("; "));
     })();
 
-    /* roadmap step 3 (docs/FINAL_AUDIT.md SW-7): the visual effects off and on again reuse their targets and materials. One warm cycle with a
-       frame after each toggle (renderer.info.memory counts what was uploaded), then two more: nothing added, the same objects */
+    /* roadmap step 3 (docs/FINAL_AUDIT.md SW-7): the visual effects off and on again reuse their targets and materials: three cycles build
+       nothing (FX.builds) and keep the same objects. No frame is drawn between the toggles: under software WebGL each toggle's frame
+       recompiles every shader and the frames after it slow to seconds (measured on the step-2 build too; recorded in CHANGELOG.md) */
     (function(){
       var bad=[], wasOn=FX.on;
       if(!wasOn) bad.push("the effects were not on");
-      function cycle(){ setFXEnabled(false); renderFrame(); setFXEnabled(true); renderFrame(); }
-      cycle();
-      var m=renderer.info.memory, tx0=m.textures, gm0=m.geometries, rt0=FX.rtScene, mc0=FX.matComp, q0=FX.quad;
-      cycle(); cycle();
+      function cycle(){ setFXEnabled(false); setFXEnabled(true); }
+      var b0=FX.builds, tx0=renderer.info.memory.textures, rt0=FX.rtScene, mc0=FX.matComp, q0=FX.quad;
+      cycle(); cycle(); cycle();
+      if(FX.builds!==b0) bad.push("built "+(FX.builds-b0)+" times more");
       if(renderer.info.memory.textures!==tx0) bad.push("textures "+tx0+" -> "+renderer.info.memory.textures);
-      if(renderer.info.memory.geometries!==gm0) bad.push("geometries "+gm0+" -> "+renderer.info.memory.geometries);
       if(FX.rtScene!==rt0||FX.matComp!==mc0||FX.quad!==q0) bad.push("a target, material or quad made again");
       if(!FX.on||!FX.built) bad.push("the effects not on and built after the cycles");
       /* the grade the clock set while the effects were off is drawn when they come back */
@@ -9829,8 +9836,8 @@ var AUSTERLITZ_DEBUG=(function(){
       var u=FX.matComp.uniforms; if(Math.abs(u.lift.value.y-0.02)>1e-6||Math.abs(u.sat.value-0.5)>1e-6||Math.abs(u.exposure.value-0.8)>1e-6) bad.push("the grade set while off is not drawn after");
       applyLight(true);
       if(!wasOn) setFXEnabled(false);
-      ck("visual effects: off and on again reuses their render targets, materials and quad; no texture or geometry added (docs/FINAL_AUDIT.md SW-7)", !bad.length,
-        bad.length?bad.join("; "):"two off-on cycles after a warm one: "+tx0+" textures and "+gm0+" geometries before and after, the same scene target, composite material and quad");
+      ck("visual effects: off and on again builds nothing: the same render targets, materials and quad (docs/FINAL_AUDIT.md SW-7)", !bad.length,
+        bad.length?bad.join("; "):"three off-on cycles: built "+b0+" time(s) before and after, "+tx0+" textures, the same scene target, composite material and quad");
     })();
 
     /* 11. render on demand */

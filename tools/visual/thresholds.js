@@ -362,7 +362,7 @@ function requirements(name,m,spec,LIM){
   if(spec.opening!==undefined) need(!!m.opening,"the opening's step (Stage 7C)");
   if(name==="overview-field"||name==="overview-plan") need(!!m.phaseLabels720,"every phase's label at 1280 x 720 (Stage 3C)");
   if(name==="first-run") need(!!m.firstRunKeys,"the first-run card by real key presses (Stage 7B)");
-  if(name==="first-run") need(!!m.wheel,"the real wheel over the map with the first card open (roadmap step 3, SW-8)");
+  if(name==="first-run") need(!!m.wheel,"the real wheel over the map with the first card open (roadmap step 3, SW-8)");   /* (requirements apply to strict, non-legacy runs only) */
   if(name==="opening-2") need(!!m.openingKeys,"the opening by real key presses (Stage 7C, 7D)");
   if(spec.interact) need(!!m.intended,"the interaction's intended move (Stage 0)");
   /* (the vertex layout is part of the case's state; a report without a state fails in expectState) */
@@ -447,11 +447,14 @@ function checkLive(live,opts){
     if(!(K.arrows&&K.arrows.clock===600)) f.push("keys by real key presses: the arrows on a focused button stepped the clock to "+(K.arrows&&K.arrows.clock));
     if(!(K.ctrlC&&K.ctrlC.c0===K.ctrlC.c1)) f.push("keys by real key presses: Ctrl+C toggled the contours");
     /* roadmap step 3 (decision 134): the shortcuts switch is the overlay's second stop: Tab from its close reaches the switch, the list, and the close */
-    const H=K.help||{}; if(!(H.h1&&H.h1.open&&H.h1.focus==="help-close"&&H.h2==="help-keys"&&H.h3==="help-body"&&H.h3b==="help-close"&&H.h4&&!H.h4.open&&H.h4.focus==="tourbtn"))
+    /* an archived build (--legacy) without the switch keeps the two-stop cycle */
+    const H=K.help||{}, sw=!!live.shortcuts||!legacy, seqOK=sw?(H.h2==="help-keys"&&H.h3==="help-body"&&H.h3b==="help-close"):(H.h2==="help-body"&&H.h3==="help-close");
+    if(!(H.h1&&H.h1.open&&H.h1.focus==="help-close"&&seqOK&&H.h4&&!H.h4.open&&H.h4.focus==="tourbtn"))
       f.push("keys by real key presses: the overlay's focus: "+JSON.stringify(H)); }
   if(req("narrow","the window narrowed below 1080 px, then 2 and Esc by real key presses (roadmap step 3, SW-2, SW-3)")){ const N=live.narrow, by={};
     (N||[]).forEach(r=>{ by[r.at]=r; if(r.over) f.push("narrow layout: the rail over the dispatch card ("+r.at+", "+r.w+" px)"); });
-    const n1=by["narrowed to 1000"], n2=by["2, Esc"], n3=by["700"];
+    const n1=by["narrowed to 1000"], n2=by["2, Esc"], n3=by["700"], nw=by["widened back to 1280"];
+    if(!nw||!nw.docked||!nw.railShown||nw.railInert) f.push("narrow layout: widened back to 1280 px the docked rail is not shown and usable: "+JSON.stringify(nw));
     if(!n1||n1.docked||n1.railShown||!n1.railInert||!n1.dispatchShown) f.push("narrow layout: narrowed to 1000 px the rail is not hidden and inert with the card shown: "+JSON.stringify(n1));
     if(!n2||!n2.railShown||n2.railInert||!n2.dispatchShown) f.push("narrow layout: after 2 and Esc the rail and the card are not both shown: "+JSON.stringify(n2));
     if(!n3||!n3.railShown||n3.dispatchShown) f.push("narrow layout: at 700 px the card did not give way to the shown rail: "+JSON.stringify(n3)); }

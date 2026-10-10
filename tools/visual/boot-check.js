@@ -20,7 +20,7 @@ const GUARD=k=>new RegExp("^Austerlitz: start-up failed \\("+k+"\\): ");
 /* the messages each case must produce, and nothing else: [type, RegExp, why, min, max] (min and max 1 unless given). CTX_DELETES: the most
    "does not belong to this context" warnings the context-loss case may give, from its runs on the step-3 build (each run prints its count;
    recorded in CHANGELOG.md) */
-const CTX_DELETES=60;
+const CTX_DELETES=40;   /* measured 24 on the step-3 build (CHANGELOG.md) */
 const EXPECT={
   "no-three":[["requestfailed",/three\.min\.js /,"the request is aborted by the case"],
     ["error",/^Failed to load resource: net::ERR_FAILED$/,"Chromium's note of the aborted request"],
@@ -125,8 +125,10 @@ async function runBootCases(html,only){
       if(st.text!=="Still loading the 3D view…"||st.role!=="status") bad.push("by 23 s the status line is "+JSON.stringify(st.text));
       if(st.inert.length||st.failed) bad.push("with the status line: inert "+st.inert.join(",")+", failed "+st.failed);
       await TR.waitBoot(p,120000);
-      const af=await p.evaluate(()=>({done:window.AUS_BOOT.done,status:document.getElementById("boot-status")?document.getElementById("boot-status").textContent:"(lifted)",
-        inert:[].filter.call(document.body.children,e=>e.inert).map(e=>e.id||e.tagName),focus:document.activeElement&&document.activeElement.id}));
+      /* inert after a normal start: only what the app's own reasons make so (syncInert: the closed dossier, a hidden rail) */
+      const af=await p.evaluate(()=>({done:window.AUS_BOOT.done,
+        inert:[].filter.call(document.body.children,e=>e.inert&&!(e.id==="drawer"&&!drawerShown())&&!(e.classList.contains("rail")&&document.body.classList.contains("rail-hidden"))).map(e=>e.id||e.tagName),
+        focus:document.activeElement&&document.activeElement.id}));
       if(!af.done||af.inert.length||af.focus!=="fr-tour") bad.push("after the start: done "+af.done+", inert ["+af.inert.join()+"], focus on "+af.focus);
       bad.push.apply(bad,judgeLog("slow",log));
       R.push({name:"slow",ok:!bad.length,line:"slow: "+(bad.length?bad.join("; "):"the status line at 20 s, then a normal start (nothing inert, focus on the first card's primary action)")});
