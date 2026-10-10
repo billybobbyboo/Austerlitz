@@ -125,13 +125,14 @@ async function runBootCases(html,only){
       if(st.text!=="Still loading the 3D view…"||st.role!=="status") bad.push("by 23 s the status line is "+JSON.stringify(st.text));
       if(st.inert.length||st.failed) bad.push("with the status line: inert "+st.inert.join(",")+", failed "+st.failed);
       await TR.waitBoot(p,120000);
-      /* inert after a normal start: only what the app's own reasons make so (syncInert: the closed dossier, a hidden rail) */
-      const af=await p.evaluate(()=>({done:window.AUS_BOOT.done,
-        inert:[].filter.call(document.body.children,e=>e.inert&&!(e.id==="drawer"&&!drawerShown())&&!(e.classList.contains("rail")&&document.body.classList.contains("rail-hidden"))).map(e=>e.id||e.tagName),
+      /* inert after a normal start: only the closed dossier (syncInert's one reason at this docked width, 1366 px in Study: the rail is
+         shown, never rail-hidden, so never inert; the C7-C14 review) */
+      const af=await p.evaluate(()=>({done:window.AUS_BOOT.done,docked:docked,railHidden:document.body.classList.contains("rail-hidden"),
+        inert:[].filter.call(document.body.children,e=>e.inert&&!(e.id==="drawer"&&!drawerShown())).map(e=>e.id||e.className||e.tagName),
         focus:document.activeElement&&document.activeElement.id}));
-      if(!af.done||af.inert.length||af.focus!=="fr-tour") bad.push("after the start: done "+af.done+", inert ["+af.inert.join()+"], focus on "+af.focus);
+      if(!af.done||!af.docked||af.railHidden||af.inert.length||af.focus!=="fr-tour") bad.push("after the start: done "+af.done+", docked "+af.docked+", rail hidden "+af.railHidden+", inert ["+af.inert.join()+"], focus on "+af.focus);
       bad.push.apply(bad,judgeLog("slow",log));
-      R.push({name:"slow",ok:!bad.length,line:"slow: "+(bad.length?bad.join("; "):"the status line at 20 s, then a normal start (nothing inert, focus on the first card's primary action)")});
+      R.push({name:"slow",ok:!bad.length,line:"slow: "+(bad.length?bad.join("; "):"the status line at 20 s, then a normal start (docked, the rail shown, nothing inert but the closed dossier, focus on the first card's primary action)")});
     } finally { await browser.close(); } }
   /* the context taken away and given back on a normal page */
   if(want("context-loss")){ const browser=await chromium.launch({args:BASE_ARGS}), bad=[];

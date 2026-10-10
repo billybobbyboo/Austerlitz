@@ -336,8 +336,8 @@ body.rail-hidden .dispatch{left:16px;width:min(440px,calc(100vw - 60px))}
 .tb-cap>span{flex:none}
 .tb-cap .cap-ph{flex:0 1000 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
 .tb-cap .act{flex:0 100 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;color:var(--text-hi);letter-spacing:.05em}   /* the act shrinks after the phase (both are drawn whole on the track) */
-.tb-cap .fit-off{display:none}   /* given way whole (app.js fitCaption) */
 .tb-cap .ev{flex:0 1 auto;min-width:0;display:inline-flex;align-items:baseline;overflow:hidden;color:var(--text-hi)}
+.tb-cap .fit-off,.tb-cap .ev.fit-off{display:none}   /* given way whole (app.js fitCaption); after .ev, which it overrides */
 .tb-cap .evt{flex:0 1 auto;min-width:1.5em;overflow:hidden;text-overflow:ellipsis}
 .tb-cap .evs{flex:none;white-space:pre}
 
@@ -414,6 +414,10 @@ body.no-dispatch .dispatch{display:none !important}
 .vm-btn[aria-pressed="true"]{background:var(--text);color:var(--on-accent)}
 body.pm-watch #viewmode,body.pm-map #viewmode{opacity:.24}
 body.pm-watch #viewmode:hover,body.pm-map #viewmode:hover{opacity:1}
+/* roadmap step 3 (the C7-C14 review): the switch with the keyboard's focus in it is drawn whole (WCAG 2.4.7, 1.4.11), and its ring inside the
+   button (#viewmode clips what stands outside it) */
+body.pm-watch #viewmode:focus-within,body.pm-map #viewmode:focus-within{opacity:1}
+.vm-btn:focus-visible{outline-offset:-3px}
 
 #restore{position:fixed;left:14px;bottom:14px;z-index:40;display:none;
   background:rgba(var(--scrim-rgb),.86);border:1px solid rgba(var(--line-rgb),.28);color:var(--text-muted);
