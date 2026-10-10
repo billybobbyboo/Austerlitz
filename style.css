@@ -416,8 +416,9 @@ body.pm-watch #viewmode,body.pm-map #viewmode{opacity:.24}
 body.pm-watch #viewmode:hover,body.pm-map #viewmode:hover{opacity:1}
 /* roadmap step 3 (the C7-C14 review): the switch with the keyboard's focus in it is drawn whole (WCAG 2.4.7, 1.4.11), and its ring inside the
    button (#viewmode clips what stands outside it) */
-body.pm-watch #viewmode:focus-within,body.pm-map #viewmode:focus-within{opacity:1}
+body.pm-map #viewmode:has(:focus-visible){opacity:1}
 .vm-btn:focus-visible{outline-offset:-3px}
+.vm-btn[aria-pressed="true"]:focus-visible{outline-color:var(--on-accent)}   /* inside the pressed button, on var(--text): the ring at 3:1 (WCAG 1.4.11) */
 
 #restore{position:fixed;left:14px;bottom:14px;z-index:40;display:none;
   background:rgba(var(--scrim-rgb),.86);border:1px solid rgba(var(--line-rgb),.28);color:var(--text-muted);
