@@ -583,6 +583,9 @@ body.mode-staff #vignette{display:none}
   .tb-follow{min-height:38px}
   .tb-sit{font-size:var(--t-ui);padding:0 10px 6px}
   .tb-sit .der{display:none}
+  /* decision 174: the card has no room for the derived readings at this width, so the caption shows them in Study too (fitted, app.js
+     fitCaption); the selector repeats the hiding rule's, which it overrides */
+  body.pm-study:not(.no-dispatch) .tb-cap .der,body.pm-study:not(.no-dispatch) .tb-cap .der-sep{display:inline}
   .dispatch{left:10px;right:10px;width:auto;bottom:calc(var(--tb) + 10px);padding:12px 14px 10px}
   body:not(.rail-hidden) .dispatch{display:none}   /* SW-2: no room beside the rail at this width: the rail first, the card when it is hidden */
   .dispatch h2{font-size:var(--t-h3)}

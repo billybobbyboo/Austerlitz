@@ -596,6 +596,14 @@ if(cerrs) process.exitCode=1;
   console.log("dossier hidden when closed: "+(derr.length?derr.length+" wrong":"hidden after its slide, shown at once, inert while closed, above the timeline undocked (decision 165)"));
   if(derr.length) process.exitCode=1;
 }
+/* decision 174 (roadmap step 3): at 720 px and below the card hides the derived readings, so the caption shows them in Study (the override
+   inside that block, after the card's own rule); the harness's narrow block measures it at 700 px */
+{
+  const css=fs.readFileSync('style.css','utf8'), i=css.indexOf("@media (max-width:720px){"), blk=i<0?"":css.slice(i,css.indexOf("\n}",i));
+  const ok=/\.tb-sit \.der\{display:none\}/.test(blk)&&/body\.pm-study:not\(\.no-dispatch\) \.tb-cap \.der,body\.pm-study:not\(\.no-dispatch\) \.tb-cap \.der-sep\{display:inline\}/.test(blk);
+  console.log("the caption at 720 px and below: "+(ok?"the derived readings shown in Study where the card hides them (decision 174)":"WRONG"));
+  if(!ok){ console.log("  ! style.css: the 720 px block does not show the caption's derived readings in Study"); process.exitCode=1; }
+}
 /* roadmap step 3 (docs/FINAL_AUDIT.md SW-10): the layout seams. The narrow layout's breakpoint is the complement of app.js's DOCK_MIN (a docked
    layout at exactly 1080 px also took the narrow rules); the resize handler sets the drawing buffer's density before its size; and no
    declaration inside an @media is overridden by a later base rule with the same selector and property (such a rule never applies) */

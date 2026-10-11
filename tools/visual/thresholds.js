@@ -459,6 +459,7 @@ function checkLive(live,opts){
     if(!n1||n1.docked||n1.railShown||!n1.railInert||!n1.dispatchShown) f.push("narrow layout: narrowed to 1000 px the rail is not hidden and inert with the card shown: "+JSON.stringify(n1));
     if(!n2||!n2.railShown||n2.railInert||!n2.dispatchShown) f.push("narrow layout: after 2 and Esc the rail and the card are not both shown: "+JSON.stringify(n2));
     if(!n3||!n3.railShown||n3.dispatchShown) f.push("narrow layout: at 700 px the card did not give way to the shown rail: "+JSON.stringify(n3));
+    if(!n3||!n3.cap||n3.cap.der!==true||n3.cap.pres!=="study"||n3.cap.hd) f.push("narrow layout: at 700 px in Study the caption does not show the plateau reading whole (decision 174): "+JSON.stringify(n3&&n3.cap));
     /* decision 165 (roadmap step 3): a build with the stop is one whose narrow block reports it */
     const nd=by["dossier at 1000"]; if(!nd||nd.docked||!nd.open||!(nd.bottom<=nd.tbTop+0.5)) f.push("narrow layout: at 1000 px the open dossier reaches over the timeline: "+JSON.stringify(nd)); }
   if(req("rmLive","the reduced-motion preference turned on and off while the page is open (roadmap step 3, S-6)")){ const R=live.rmLive;

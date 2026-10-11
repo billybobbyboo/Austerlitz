@@ -417,7 +417,13 @@ async function interact(page,it,vp){
       NR.push(Object.assign({at:"dossier at 1000"},await first.evaluate(()=>{ const d=document.getElementById("drawer").getBoundingClientRect(), t=document.querySelector(".timebar").getBoundingClientRect();
         return {docked:docked,open:drawerShown(),bottom:+d.bottom.toFixed(1),tbTop:+t.top.toFixed(1)}; })));
       await first.evaluate(()=>{ select(null,null); });
-      await size(700,800); NR.push(Object.assign({at:"700"},await look()));
+      await size(700,800);
+      /* decision 174: at 700 px in Study at 05:00 (the plateau reading due), the caption shows it whole inside its box */
+      const capAt=await first.evaluate(()=>{ setClock(300,{instant:true,force:true,camera:false}); _sitKey=""; paintSituation();
+        const c=document.getElementById("tb-cap"), d=c&&c.querySelector(".der:not(.cut)"); if(!d) return {der:null};
+        const cr=c.getBoundingClientRect(), r=d.getBoundingClientRect(), cs=getComputedStyle(d);
+        return {der:cs.display!=="none"&&r.width>0&&r.left>=cr.left-0.5&&r.right<=cr.right+0.5&&d.scrollWidth<=d.clientWidth+1, pres:presentation, hd:!!hideDispatch}; });
+      NR.push(Object.assign({at:"700",cap:capAt},await look()));
       await size(vp0.width,vp0.height); await first.evaluate(()=>{ setPresentation("study"); select(null,null); });
       LIVE.narrow=NR;
       /* roadmap step 3 (docs/FINAL_AUDIT.md S-6): the reduced-motion preference turned on and off while the page is open (the audit's rm-live):
