@@ -102,6 +102,37 @@ build had meanwhile; where a recommendation differs from its default (164, 165, 
 | 174 | At 720 px and below in Study the plateau's derived reading is hidden in the dispatch card (`.tb-sit .der`) and in the caption (shown there only where the card is hidden): show it in the caption there? | yes | unchanged |
 | 175 | The screen-reader session (`docs/step3-evidence/sr-session.md`): who runs it, with NVDA and Chrome and VoiceOver and Safari; and does step 3 stay "in progress" until it is recorded? | the owner or a tester; step 3 done when it is recorded | not run; recorded as not verified |
 
+**After the owner's answers (11 October 2026): decisions 164, 165, 166 (a), 168, 171, 173, 174 applied.** The commits: the records `494a6fd`;
+D1 `69b21fc`, D2 `29f0c46`, D3 `f9edba1`, D4 `4513ffb`, D5 `823c0d9`, their review fixes `b7543ff`; D6 `d114fe1`, the re-measure `3be0491`, the
+review fixes of D6 `ff7525b`. Each was reviewed independently; every finding is fixed in its "review fixes" commit.
+- **165 (D1):** below 1080 px the dossier stops above the timeline (`.drawer{bottom:var(--tb)}`), so Play and the slider are never covered.
+- **173 (D2):** the timeline's Eyes button is named by its visible words, then the reading in full ("Eyes: Napoleon. Whose eyes? Napoleon's
+  headquarters (press to change)": `eyesShort`, `eyesName`); `aria-pressed` dropped. The 5E check's assertions replaced equally strictly.
+- **168, 171 (D3):** the Guided tour button begins the tour with focus on its Next; each stop is said once in the polite region ("Tour, stop
+  %k of %n: %t, %c.", `LABELS.tour`), the phase announcement folded into it (`TOUR_APPLYING`); leaving says "The tour has ended." When the
+  opening or the tour gives the visitor's reading back, its end message says so ("Whose eyes? Back to %r (a model reading).",
+  `LABELS.eyesBack`).
+- **174 (D4):** at 720 px and below, where the card hides its readings, the caption shows them in Study, fitted (the override yields to
+  `fitCaption`'s `.fit-off`).
+- **166 (a) (D5):** the act row takes no pointer press; each phase's hit area reaches up over it (a 15 px `::before`, 31 px tall; at least
+  67 px wide at 1280 x 720), and the phase under the pointer takes the press; an act stays a keyboard button, its click its first phase's
+  (`freeCam=false` included); the label is its own box (`.step-l`), so the drawn timeline is unchanged; each phase's title names its act.
+  A-3 is now complete but for the event markers, 2.5.8's essential exception (decision 167). Recorded: at 390 px the narrowest phases are
+  20 px wide, as before.
+- **164 (D6):** a "Panels" button in the tools (`LABELS.panels`), a disclosure of the rail below 1080 px (`aria-expanded`, `aria-controls`
+  "rail"; `setPanels`; `syncInert` keeps its state): opened, focus on the rail's selected tab; closed with focus in it, back on the button.
+  Not shown docked or under the first-run card.
+- **The one limit moved (decision 164, the owner's word):** the button widens the tools' box at 1024 px from 311 to 348 px (no wrap), so
+  `narrow-1024`'s unobstructed share fell from 0.5364 to 0.5334 (the harness's `--only` run of D6, against the step-2 reference), below its
+  baseline 0.535. A smaller form was looked for first (the timeline's control row: room only at the caption's cost, 308 px of it at 1024
+  and 5 at 721). Asked, the owner chose to re-measure once: `UNOBSTRUCTED["narrow-1024"]` was [0.535, 0.628], is [0.533, 0.628]; its drop
+  limit 6 kept; no other limit moved.
+- **Tests:** the harness's `narrow` block adds the Panels button by real clicks, a dossier opened at 1000 px (its bottom at or above the
+  timebar's top) and the caption at 700 px in Study (the plateau reading whole, and at the first minute where both readings are due, 09:05,
+  each whole or given way whole); the self-test's focus, SW-11, Eyes, phase-label (with a negative control) and target-size checks
+  replaced or extended as each commit says; `css-test.js` holds the dossier's stop, the Eyes button's name, the 720 px override and the
+  Panels button.
+
 **Tests added or made strict** (no assertion loosened; an assertion of old behaviour replaced by an equally strict one on the new: the
 "?" overlay's Tab cycle has three stops, the focus check's Clean expectation is the pressed switch drawn whole, the step-2 caption check
 reads the name's own box, `capRT` in `runtime-test.js` builds the new markup):
