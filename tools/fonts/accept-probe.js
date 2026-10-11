@@ -21,16 +21,16 @@ const EMBEDDED=["Austerlitz Sans","Austerlitz Serif"];
 
 async function child(){
   const { chromium }=require("playwright");
-  const THREE_LOCAL=[process.env.AUSTERLITZ_THREE, path.join(ROOT,"tools","visual","three.min.js"), path.join(ROOT,"node_modules","three","build","three.min.js")].find(p=>p&&fs.existsSync(p));
+  const TR=require("../visual/three-route.js"), THREE_LOCAL=TR.THREE_LOCAL;   /* roadmap step 3: one route for three.js (decision 133) */
   const MEASURE=fs.readFileSync(path.join(ROOT,"tools","visual","measure.js"),"utf8");
   const browser=await chromium.launch({args:["--use-angle=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"]});
   const res={fontconfig:process.env.FONTCONFIG_FILE||"(this machine's)",cases:{}};
   for(const c of CASES){
     const page=await browser.newPage({viewport:{width:c.vp[0],height:c.vp[1]},deviceScaleFactor:1});
     const errors=[]; page.on("pageerror",e=>errors.push(e.message));
-    if(THREE_LOCAL) await page.route(/three(\.min)?\.js$/,r=>r.fulfill({path:THREE_LOCAL,contentType:"application/javascript"}));
+    await TR.routeThree(page);
     await page.goto("file://"+HTML+"?harness=1",{waitUntil:"commit",timeout:180000});
-    await page.waitForFunction(()=>!document.getElementById("boot")&&typeof window.camera!=="undefined",null,{timeout:240000,polling:500});
+    await TR.waitBoot(page);
     await page.evaluate(MEASURE);
     await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});
     const settle=async()=>{ await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(90)); await page.waitForTimeout(450); await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(2)); };

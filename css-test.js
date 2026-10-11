@@ -410,8 +410,12 @@ if(cerrs) process.exitCode=1;
   if(/broken outline/.test(src)) werr.push("app.js still describes a broken outline");
   if(!/data-v="eye" hidden/.test(sh)||!/id="eyego" type="button" hidden/.test(sh)) werr.push("the eye-level vantage is not hidden by default");
   if(!/id="eyesbtn"/.test(sh)) werr.push("the timeline has no \u201cWhose eyes?\u201d button");
+  /* decision 173 (WCAG 2.5.3): its name begins with its visible words; no aria-pressed on a three-way cycle */
+  { const b=(sh.match(/<button[^>]*id="eyesbtn"[^>]*>([^<]*)</)||[]); const lab=(b[0]||"").match(/aria-label="([^"]*)"/);
+    if(!b[0]||/aria-pressed/.test(b[0])||!lab||lab[1].indexOf(b[1])!==0) werr.push("shell.html: the eyes button's name does not begin with its visible words, or it carries aria-pressed");
+    if(/eyesbtn[\s\S]{0,400}setAttribute\("aria-pressed"/.test(src)) werr.push("app.js: the eyes button is still given aria-pressed"); }
   werr.forEach(e=>console.log("  ! "+e));
-  console.log("Whose eyes: "+(werr.length?werr.length+" wrong":"one control, labelled a model reading, the eye's vantage hidden until a headquarters is chosen"));
+  console.log("Whose eyes: "+(werr.length?werr.length+" wrong":"one control, labelled a model reading, the eye's vantage hidden until a headquarters is chosen, its button's name beginning with its words (decision 173)"));
   if(werr.length) process.exitCode=1;
 }
 /* Stage 5F (docs/STAGE5_SPEC.md section E.4; decisions 15, 93): the ordered routes are off by default, in the side's token colour, and
@@ -526,4 +530,125 @@ if(cerrs) process.exitCode=1;
   oerr.forEach(e=>console.log("  ! "+e));
   console.log("opening: "+(oerr.length?oerr.length+" wrong":keys.length+" words in LABELS with no figure, clock, name or quotation; the tour's stops 1, 6, 7, 8; the clock played between them at 4x, Play still at half speed; begun by the card's primary; the bar a named region; Esc skips; one message a step"));
   if(oerr.length) process.exitCode=1;
+}
+/* roadmap step 3 (decision 133 (a); docs/FINAL_AUDIT.md SW-1): three.js from cdnjs r128 with its integrity and crossorigin, the start-up
+   guard before it, the failure dialog's markup, the bundle's start through boot() (which reports and rethrows), the loop stopped on a
+   failure, the context-loss notice. The page's behaviour is check:contrast's (tools/visual/boot-check.js) */
+{
+  const sh=fs.readFileSync('shell.html','utf8'), app=fs.readFileSync('app.js','utf8'), berr=[], crypto=require('crypto');
+  const ext=sh.match(/<script\b[^>]*\bsrc=[^>]*>/g)||[];
+  if(ext.length!==1) berr.push("shell.html: "+ext.length+" external scripts, not one");
+  const tag=ext[0]||"", want="sha512-"+crypto.createHash("sha512").update(fs.readFileSync("node_modules/three/build/three.min.js")).digest("base64");
+  if(!/\bsrc="https:\/\/cdnjs\.cloudflare\.com\/ajax\/libs\/three\.js\/r128\/three\.min\.js"/.test(tag)) berr.push("shell.html: three.js is not cdnjs's r128: "+tag);
+  if(!/\bcrossorigin="anonymous"/.test(tag)) berr.push("shell.html: the three.js tag has no crossorigin=\"anonymous\"");
+  const ig=(/\bintegrity="([^"]+)"/.exec(tag)||[])[1];
+  if(ig!==want) berr.push("shell.html: the three.js integrity is "+ig+", not the sha512 of node_modules/three/build/three.min.js (three 0.128.0, byte-identical to cdnjs's r128)");
+  const gi=sh.indexOf("var AUS_BOOT="), ti=sh.indexOf(tag);
+  if(gi<0||gi>ti) berr.push("shell.html: the start-up guard (AUS_BOOT) does not stand before the three.js tag");
+  const bf=(sh.match(/<div id="boot-fail"[^>]*>/)||[""])[0];
+  ['role="alertdialog"','aria-modal="true"','aria-labelledby="boot-h"','aria-describedby="boot-why"',' hidden'].forEach(a=>{ if(bf.indexOf(a)<0) berr.push("shell.html: #boot-fail lacks "+a); });
+  if(!/<h2 id="boot-h">/.test(sh)||!/<div id="boot-why">/.test(sh)) berr.push("shell.html: the dialog's heading or description is missing");
+  ["three","webgl","error"].forEach(k=>{ if(!new RegExp('<p data-boot="'+k+'" hidden>').test(sh)) berr.push("shell.html: no reason for the kind "+k); });
+  if(!/<button id="boot-reload" type="button">/.test(sh)) berr.push("shell.html: Reload is not a button");
+  if(!/<p id="boot-status" role="status" data-slow="[^"]+"><\/p>/.test(sh)) berr.push("shell.html: the slow start's status line is not an empty role=status");
+  if(!/<div id="glnotice" role="alert"><\/div>/.test(sh)) berr.push("shell.html: the context-loss notice is not an empty alert");
+  if(/localStorage|sessionStorage/.test(sh.slice(gi,ti))) berr.push("shell.html: the guard stores something");
+  if(!/\nboot\(\);\s*$/.test(app)) berr.push("app.js: the bundle does not start through boot()");
+  if(!/function boot\(\)\{\n  try\{ init\(\); \}\n  catch\(e\)\{ if\(typeof AUS_BOOT!=="undefined"&&AUS_BOOT\) AUS_BOOT\.fail\(e\.ausKind\|\|"error",e\); throw e; \}\n  if\(typeof AUS_BOOT!=="undefined"&&AUS_BOOT\) AUS_BOOT\.ok\(\);[^\n]*\n\}/.test(app)) berr.push("app.js: boot() does not report to the guard and rethrow");
+  if(!/function loop\(\)\{\n  if\(bootFailed\(\)\) return;/.test(app)) berr.push("app.js: the loop does not stop after a failed start");
+  if(!/catch\(e\)\{ e\.ausKind="webgl"; throw e; \}/.test(app)) berr.push("app.js: the renderer's failure is not told apart (webgl)");
+  berr.forEach(e=>console.log("  ! "+e));
+  console.log("start-up: "+(berr.length?berr.length+" wrong":"three.js from cdnjs r128 with its sha512 and crossorigin, the guard before it, the failure dialog, boot() reporting and rethrowing, the loop stopped on a failure, the context-loss notice"));
+  if(berr.length) process.exitCode=1;
+}
+/* roadmap step 3 (decision 134 (a); docs/FINAL_AUDIT.md A-1): the single-key shortcuts switch: a toggle button in the "?" overlay, outside the
+   list the app writes, on by default, nothing stored (decision 117), its words from LABELS; the window's handler and the opening's mute a
+   typed character when it is off. Its behaviour is the self-test's and the harness's (real key presses) */
+{
+  const sh=fs.readFileSync('shell.html','utf8'), app=fs.readFileSync('app.js','utf8'), kerr=[];
+  const hk=(sh.match(/<button id="help-keys"[^>]*>/)||[""])[0];
+  if(!/type="button"/.test(hk)||!/aria-pressed="true"/.test(hk)) kerr.push("shell.html: #help-keys is not a toggle button, pressed by default: "+hk);
+  const hs=sh.indexOf('<div id="help"'), hki=sh.indexOf('id="help-keys"'), hbi=sh.indexOf('<div id="help-body"');
+  if(!(hs>=0&&hki>hs&&hki<hbi)) kerr.push("shell.html: the switch is not in the overlay before (outside) its key list");
+  if(/class="[^"]*hp-row/.test(hk)) kerr.push("shell.html: the switch carries .hp-row (the overlay's check counts those as rows)");
+  if(!/<i aria-hidden="true">/.test(sh.slice(hki,hki+200))) kerr.push("shell.html: the switch's on/off word is not hidden from its name");
+  if(!/var SHORTCUTS=\{on:true\};/.test(app)) kerr.push("app.js: SHORTCUTS is not declared on by default");
+  const fn=(n)=>{ const i=app.indexOf("function "+n+"("); return i<0?"":app.slice(i,app.indexOf("\n}",i)); };
+  ["setShortcuts","paintShortcuts","onWindowKey"].forEach(n=>{ const b=fn(n); if(!b) kerr.push("app.js: "+n+" is missing"); else if(/localStorage|sessionStorage|indexedDB|document\.cookie/.test(b)) kerr.push("app.js: "+n+" stores something (decision 117)"); });
+  if(/localStorage|sessionStorage|indexedDB/.test(app)) kerr.push("app.js: browser storage is used (decision 117: nothing stored)");
+  if(!/if\(muted\) return;/.test(fn("onWindowKey"))) kerr.push("app.js: onWindowKey does not mute a typed character with the switch off");
+  if(!/if\(shortcutMuted\(e\)\) return;/.test(app)) kerr.push("app.js: the opening's key listener does not mute a typed character with the switch off");
+  if(!/keys:\{single:"Single-key shortcuts"/.test(app)) kerr.push("app.js: the switch's words are not in LABELS.keys");
+  kerr.forEach(e=>console.log("  ! "+e));
+  console.log("shortcuts switch: "+(kerr.length?kerr.length+" wrong":"a toggle button in the overlay outside its list, on by default, nothing stored, its words in LABELS, a typed character muted when off"));
+  if(kerr.length) process.exitCode=1;
+}
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-3): the closed dossier hidden once it has slid away (visibility, delayed by the slide), shown at once
+   when it opens; app.js's syncInert makes it inert while closed. Its behaviour is the self-test's */
+{
+  const css=fs.readFileSync('style.css','utf8'), derr=[];
+  const base=(css.match(/\n\.drawer\{[^}]*\}/)||[""])[0], on=(css.match(/\n\.drawer\.on\{[^}]*\}/)||[""])[0];
+  if(!/visibility:hidden/.test(base)||!/visibility 0s linear \.32s/.test(base)) derr.push("style.css: the closed .drawer is not hidden after its .32 s slide: "+base.trim());
+  if(!/visibility:visible/.test(on)||!/visibility 0s\}/.test(on.replace(/;?\s*\}$/,"}"))) derr.push("style.css: the open .drawer is not shown at once: "+on.trim());
+  if(!/k===dr&&!dOn/.test(fs.readFileSync('app.js','utf8'))) derr.push("app.js: syncInert does not make the closed dossier inert");
+  if(!/bottom:var\(--tb\)/.test(base)) derr.push("style.css: the undocked .drawer reaches over the timeline (decision 165: bottom:var(--tb)): "+base.trim());
+  derr.forEach(e=>console.log("  ! "+e));
+  console.log("dossier hidden when closed: "+(derr.length?derr.length+" wrong":"hidden after its slide, shown at once, inert while closed, above the timeline undocked (decision 165)"));
+  if(derr.length) process.exitCode=1;
+}
+/* decision 164 (roadmap step 3): the Panels button, a disclosure of the rail below 1080 px; its words from LABELS; not shown docked or under the
+   first card; its behaviour is the harness's narrow block */
+{
+  const sh=fs.readFileSync('shell.html','utf8'), css=fs.readFileSync('style.css','utf8'), src=fs.readFileSync('app.js','utf8'), perr=[];
+  const b=(sh.match(/<button[^>]*id="panelsbtn"[^>]*>/)||[""])[0];
+  if(!b||!/aria-expanded="false"/.test(b)||!/aria-controls="rail"/.test(b)||!/type="button"/.test(b)) perr.push("shell.html: the Panels button is not a disclosure of #rail");
+  if(!/<nav class="rail" id="rail"/.test(sh)) perr.push("shell.html: the rail has no id for aria-controls");
+  if(!/panels:\{button:"Panels"/.test(src)||!/pb\.textContent=LABELS\.panels\.button/.test(src)) perr.push("app.js: the Panels button's words are not from LABELS");
+  if(!/\n#panelsbtn\{display:none\}/.test(css)||!/@media \(max-width:1079\.98px\)\{ body:not\(\.firstrun-on\) #panelsbtn\{display:inline-block\} \}/.test(css)) perr.push("style.css: the Panels button is not shown below 1080 px only, outside the first card");
+  if(!/setAttribute\("aria-expanded",String\(!document\.body\.classList\.contains\("rail-hidden"\)\)\)/.test(src)) perr.push("app.js: syncInert does not keep the button's aria-expanded");
+  perr.forEach(e=>console.log("  ! "+e));
+  console.log("the Panels button: "+(perr.length?perr.length+" wrong":"a disclosure of the rail below 1080 px, its words from LABELS, aria-expanded kept by syncInert (decision 164)"));
+  if(perr.length) process.exitCode=1;
+}
+/* decision 174 (roadmap step 3, the owner's answer): at 720 px and below the dispatch card keeps its derived readings (nothing in that block
+   hides them); the caption shows them only where the card is hidden, as above 720 px; the harness's narrow block measures it at 700 px */
+{
+  const css=fs.readFileSync('style.css','utf8'), i=css.indexOf("@media (max-width:720px){"), blk=i<0?"":css.slice(i,css.indexOf("\n}",i));
+  /* every rule of the block whose selectors name the card's readings: none hides them (display:none or visibility:hidden) */
+  const hides=[...blk.slice(blk.indexOf("{")+1).matchAll(/([^{}]+)\{([^}]*)\}/g)].some(m=>/\.der\b/.test(m[1])&&!/\.tb-cap/.test(m[1])&&/display:none|visibility:hidden/.test(m[2]));
+  const ok=i>=0&&!hides&&!/\.tb-cap \.der/.test(blk);
+  console.log("the derived readings at 720 px and below: "+(ok?"kept in the dispatch card (decision 174)":"WRONG"));
+  if(!ok){ console.log("  ! style.css: the 720 px block hides the card's derived readings or overrides the caption's"); process.exitCode=1; }
+}
+/* roadmap step 3 (docs/FINAL_AUDIT.md SW-10): the layout seams. The narrow layout's breakpoint is the complement of app.js's DOCK_MIN (a docked
+   layout at exactly 1080 px also took the narrow rules); the resize handler sets the drawing buffer's density before its size; and no
+   declaration inside an @media is overridden by a later base rule with the same selector and property (such a rule never applies) */
+{
+  const app=fs.readFileSync('app.js','utf8'), serr=[];
+  const dock=+((/var DOCK_MIN=(\d+)/.exec(app)||[])[1]);
+  const widths=[...clean.matchAll(/@media \(max-width:([\d.]+)px\)/g)].map(m=>+m[1]);
+  if(!(dock>0)) serr.push("app.js: DOCK_MIN not found");
+  if(widths.indexOf(dock)>=0) serr.push("style.css: @media (max-width:"+dock+"px) also applies to the docked layout at exactly "+dock+" px");
+  if(widths.indexOf(dock-0.02)<0) serr.push("style.css: no narrow layout at (max-width:"+(dock-0.02)+"px), DOCK_MIN's complement");
+  const rs=/function onResize\(\)\{[\s\S]*?\n  \}/.exec(app);
+  if(!rs||!/setPixelRatio\(pxRatio\(\)\);[\s\S]*setSize\(/.test(rs[0])) serr.push("app.js: the resize handler does not set the density before the size");
+  const dl=b=>b.split(";").map(x=>x.trim()).filter(Boolean).map(x=>{ const i=x.indexOf(":"); return [x.slice(0,i).trim(),x.slice(i+1).trim()]; });
+  allRules.forEach((r,i)=>{ if(r.media===null) return;
+    dl(r.body).forEach(([p,v])=>{ if(/!important$/.test(v)) return;
+      r.sels.forEach(sel=>{ const later=allRules.slice(i+1).find(q=>q.media===null&&q.sels.indexOf(sel)>=0&&dl(q.body).some(([p2])=>p2===p));
+        if(later) serr.push("style.css: "+sel+"{"+p+"} in @media "+r.media+" is overridden by a later base rule ("+later.sel+"), so it never applies"); }); }); });
+  serr.forEach(e=>console.log("  ! "+e));
+  console.log("layout seams: "+(serr.length?serr.length+" wrong":"the narrow layout below "+dock+" px only, the density set on resize, no @media declaration shadowed by a later base rule"));
+  if(serr.length) process.exitCode=1;
+}
+/* roadmap step 3 (docs/FINAL_AUDIT.md S-6): reduced motion in the stylesheet (every transition and animation off under the preference) and
+   followed live by the app (its media query's change event). Its behaviour is the self-test's and the harness's (emulateMedia) */
+{
+  const app=fs.readFileSync('app.js','utf8'), rerr=[];
+  const rm=allRules.find(r=>r.media&&/prefers-reduced-motion:\s*reduce/.test(r.media)&&r.sels.indexOf("*")>=0);
+  if(!rm||!/transition:none!important/.test(rm.body.replace(/\s/g,""))||!/animation:none!important/.test(rm.body.replace(/\s/g,""))) rerr.push("style.css: no rule turning every transition and animation off under prefers-reduced-motion");
+  if(!/RM_MQ\.addEventListener\("change",rmChange\)/.test(app)) rerr.push("app.js: the reduced-motion preference is not followed live (rmChange)");
+  rerr.forEach(e=>console.log("  ! "+e));
+  console.log("reduced motion: "+(rerr.length?rerr.length+" wrong":"every transition and animation off in the stylesheet under the preference; the app follows it live"));
+  if(rerr.length) process.exitCode=1;
 }
