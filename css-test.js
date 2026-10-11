@@ -614,7 +614,7 @@ if(cerrs) process.exitCode=1;
    inside that block, after the card's own rule); the harness's narrow block measures it at 700 px */
 {
   const css=fs.readFileSync('style.css','utf8'), i=css.indexOf("@media (max-width:720px){"), blk=i<0?"":css.slice(i,css.indexOf("\n}",i));
-  const ok=/\.tb-sit \.der\{display:none\}/.test(blk)&&/body\.pm-study:not\(\.no-dispatch\) \.tb-cap \.der,body\.pm-study:not\(\.no-dispatch\) \.tb-cap \.der-sep\{display:inline\}/.test(blk);
+  const ok=/\.tb-sit \.der\{display:none\}/.test(blk)&&/body\.pm-study:not\(\.no-dispatch\) \.tb-cap \.der:not\(\.fit-off\),body\.pm-study:not\(\.no-dispatch\) \.tb-cap \.der-sep:not\(\.fit-off\)\{display:inline\}/.test(blk);
   console.log("the caption at 720 px and below: "+(ok?"the derived readings shown in Study where the card hides them (decision 174)":"WRONG"));
   if(!ok){ console.log("  ! style.css: the 720 px block does not show the caption's derived readings in Study"); process.exitCode=1; }
 }

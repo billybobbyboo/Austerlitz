@@ -505,10 +505,9 @@ body.pm-map #restore{display:block}
 
 /* ---------- acts across the top of the timeline ---------- */
 .tb-acts{position:absolute;left:0;right:0;top:0;height:15px;pointer-events:none}   /* decision 166 (a): the phase under it takes the press */
-.act-btn{position:absolute;top:0;height:15px;margin:0;background:rgba(var(--line-rgb),.05);border:0;border-left:2px solid var(--line-2);cursor:pointer;
+.act-btn{position:absolute;top:0;height:15px;margin:0;background:rgba(var(--line-rgb),.05);border:0;border-left:2px solid var(--line-2);
   padding:0 4px 0 5px;font-size:var(--t-ui);line-height:15px;letter-spacing:.03em;color:var(--text-muted);text-align:left;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .18s,background .18s}
-.act-btn:hover{color:var(--text)}
 .act-btn[aria-current="true"]{color:var(--text-hi);border-left-color:var(--accent);background:rgba(var(--accent-rgb),.10);font-weight:500}
 
 /* ---------- situation strip, now with a reason and a dismiss ---------- */
@@ -589,7 +588,7 @@ body.mode-staff #vignette{display:none}
   .tb-sit .der{display:none}
   /* decision 174: the card has no room for the derived readings at this width, so the caption shows them in Study too (fitted, app.js
      fitCaption); the selector repeats the hiding rule's, which it overrides */
-  body.pm-study:not(.no-dispatch) .tb-cap .der,body.pm-study:not(.no-dispatch) .tb-cap .der-sep{display:inline}
+  body.pm-study:not(.no-dispatch) .tb-cap .der:not(.fit-off),body.pm-study:not(.no-dispatch) .tb-cap .der-sep:not(.fit-off){display:inline}   /* what fitCaption gave way stays hidden */
   .dispatch{left:10px;right:10px;width:auto;bottom:calc(var(--tb) + 10px);padding:12px 14px 10px}
   body:not(.rail-hidden) .dispatch{display:none}   /* SW-2: no room beside the rail at this width: the rail first, the card when it is hidden */
   .dispatch h2{font-size:var(--t-h3)}
@@ -11692,7 +11691,7 @@ function buildTimeline(){
   if(tl){ tl.innerHTML="";
     PHASES.forEach(function(p,i){
       /* decision 166 (a): the label in its own box (it carries the ellipsis), so the button's hit area can reach up over the act row */
-      var b=el("button","step"), sl=el("span","step-l"); b.type="button"; sl.textContent=p.label; b.appendChild(sl); b.title=p.clock+"  "+p.title;
+      var b=el("button","step"), sl=el("span","step-l"); b.type="button"; sl.textContent=p.label; b.appendChild(sl); b.title=p.clock+"  "+p.title+" ("+actOf(i).n+")";   /* the act's name, no longer a pointer's to hover (decision 166 (a)) */
       b.setAttribute("aria-label",p.clock+", "+p.label+": "+p.title);
       b.style.left=tlPc(p.t0)+"%"; b.style.width=(tlPc(p.t1)-tlPc(p.t0))+"%"; b.tabIndex=-1;
       b.addEventListener("click",function(){ stopPlay(); freeCam=false; setPhase(i); });
@@ -15367,8 +15366,6 @@ var AUSTERLITZ_DEBUG=(function(){
         if(said()!==LABELS.tour.ended) bad.push(cv+": the tour left with the visitor's own reading says \u201c"+said()+"\u201d"); });
       /* no reading set aside: nothing said of one */
       setCommandView("none"); openingStart(); finishTween(); openingEnd("skip"); if(said()!==LABELS.opening.ended.replace("%c",fmtClock(T_MIN))) bad.push("the opening under everyone's reading ends with \u201c"+said()+"\u201d");
-      setCommandView(K0.cv); setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
-      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv2; tabChosen=K0.ch; if(docked) selectTab(K0.tab); syncFollow();
       /* decision 168: every stop of the tour said once in the polite region, its phase announcement folded into it; Back too; leaving says so */
       (function(){ var orig=openingSay, n=0, s0, ph=0, bad2=[]; openingSay=function(s){ n++; orig(s); };
         try{ setCommandView("none"); setPresentation("study"); startTour(); finishTween();
@@ -15381,6 +15378,8 @@ var AUSTERLITZ_DEBUG=(function(){
           if(!ph) bad2.push("no stop changed the phase");
         } finally { openingSay=orig; }
         if(bad2.length) bad.push("the tour's words: "+bad2.join("; ")); else tourSaid=TOUR.length+" stops said, "+ph+" of them in a new phase without a phase announcement besides"; })();
+      setCommandView(K0.cv); setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
+      landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv2; tabChosen=K0.ch; if(docked) selectTab(K0.tab); syncFollow();
       ck("opening and tour: shown under everyone's reading; the visitor's reading given back on every way out (skip, finish, the camera, a key, a press, leaving the tour), and the end message says so, unless the visitor chose a reading meanwhile; the tour's every stop and its end said once in the polite region (docs/FINAL_AUDIT.md SW-11; decisions 168, 171)",
         !bad.length, bad.length?bad.join("; "):"both headquarters' readings set aside and given back on 5 ways out of the opening and out of the tour, each end message naming the reading given back; a reading chosen in the tour kept, and nothing said of one; none said when none was set aside; "+tourSaid);
     })();
