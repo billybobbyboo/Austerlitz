@@ -585,10 +585,8 @@ body.mode-staff #vignette{display:none}
   .tb-play{min-width:66px;min-height:38px}
   .tb-follow{min-height:38px}
   .tb-sit{font-size:var(--t-ui);padding:0 10px 6px}
-  .tb-sit .der{display:none}
-  /* decision 174: the card has no room for the derived readings at this width, so the caption shows them in Study too (fitted, app.js
-     fitCaption); the selector repeats the hiding rule's, which it overrides */
-  body.pm-study:not(.no-dispatch) .tb-cap .der:not(.fit-off),body.pm-study:not(.no-dispatch) .tb-cap .der-sep:not(.fit-off){display:inline}   /* what fitCaption gave way stays hidden */
+  /* decision 174 (the owner's answer of 11 October 2026): the card keeps its derived readings at this width, each its own line (the caption's
+     box, 160-195 px here, cannot hold the plateau reading's 240 px whole, decision 159) */
   .dispatch{left:10px;right:10px;width:auto;bottom:calc(var(--tb) + 10px);padding:12px 14px 10px}
   body:not(.rail-hidden) .dispatch{display:none}   /* SW-2: no room beside the rail at this width: the rail first, the card when it is hidden */
   .dispatch h2{font-size:var(--t-h3)}

@@ -610,13 +610,13 @@ if(cerrs) process.exitCode=1;
   console.log("the Panels button: "+(perr.length?perr.length+" wrong":"a disclosure of the rail below 1080 px, its words from LABELS, aria-expanded kept by syncInert (decision 164)"));
   if(perr.length) process.exitCode=1;
 }
-/* decision 174 (roadmap step 3): at 720 px and below the card hides the derived readings, so the caption shows them in Study (the override
-   inside that block, after the card's own rule); the harness's narrow block measures it at 700 px */
+/* decision 174 (roadmap step 3, the owner's answer): at 720 px and below the dispatch card keeps its derived readings (nothing in that block
+   hides them); the caption shows them only where the card is hidden, as above 720 px; the harness's narrow block measures it at 700 px */
 {
   const css=fs.readFileSync('style.css','utf8'), i=css.indexOf("@media (max-width:720px){"), blk=i<0?"":css.slice(i,css.indexOf("\n}",i));
-  const ok=/\.tb-sit \.der\{display:none\}/.test(blk)&&/body\.pm-study:not\(\.no-dispatch\) \.tb-cap \.der:not\(\.fit-off\),body\.pm-study:not\(\.no-dispatch\) \.tb-cap \.der-sep:not\(\.fit-off\)\{display:inline\}/.test(blk);
-  console.log("the caption at 720 px and below: "+(ok?"the derived readings shown in Study where the card hides them (decision 174)":"WRONG"));
-  if(!ok){ console.log("  ! style.css: the 720 px block does not show the caption's derived readings in Study"); process.exitCode=1; }
+  const ok=i>=0&&!/\.tb-sit \.der\{display:none\}/.test(blk)&&!/\.tb-cap \.der/.test(blk);
+  console.log("the derived readings at 720 px and below: "+(ok?"kept in the dispatch card (decision 174)":"WRONG"));
+  if(!ok){ console.log("  ! style.css: the 720 px block hides the card's derived readings or overrides the caption's"); process.exitCode=1; }
 }
 /* roadmap step 3 (docs/FINAL_AUDIT.md SW-10): the layout seams. The narrow layout's breakpoint is the complement of app.js's DOCK_MIN (a docked
    layout at exactly 1080 px also took the narrow rules); the resize handler sets the drawing buffer's density before its size; and no

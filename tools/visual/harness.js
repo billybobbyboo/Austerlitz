@@ -433,16 +433,17 @@ async function interact(page,it,vp){
         return {docked:docked,open:drawerShown(),bottom:+d.bottom.toFixed(1),tbTop:+t.top.toFixed(1)}; })));
       await first.evaluate(()=>{ select(null,null); });
       await size(700,800);
-      /* decision 174: at 700 px in Study at 05:00 (the plateau reading due), the caption shows it whole inside its box */
-      const capAt=await first.evaluate(()=>{ setClock(300,{instant:true,force:true,camera:false}); _sitKey=""; paintSituation();
-        const c=document.getElementById("tb-cap"), d=c&&c.querySelector(".der:not(.cut)"); if(!d) return {der:null};
-        const cr=c.getBoundingClientRect(), r=d.getBoundingClientRect(), cs=getComputedStyle(d);
-        const out={der:cs.display!=="none"&&r.width>0&&r.left>=cr.left-0.5&&r.right<=cr.right+0.5&&d.scrollWidth<=d.clientWidth+1, pres:presentation, hd:!!hideDispatch};
+      /* decision 174 (the owner's answer): at 700 px in Study at 05:00 (the plateau reading due), with the rail hidden, the dispatch card shows the
+         reading whole inside it; the caption shows none cut */
+      const capAt=await first.evaluate(()=>{ setPanels(false); setClock(300,{instant:true,force:true,camera:false}); _sitKey=""; paintSituation();
+        const c=document.getElementById("tb-cap"), k=document.querySelector(".dispatch"), d=k&&k.querySelector(".tb-sit .der:not(.cut)"); if(!d) return {der:null};
+        const kr=k.getBoundingClientRect(), r=d.getBoundingClientRect(), cs=getComputedStyle(d);
+        const out={der:getComputedStyle(k).display!=="none"&&cs.display!=="none"&&r.width>0&&r.left>=kr.left-0.5&&r.right<=kr.right+0.5&&d.scrollWidth<=d.clientWidth+1, pres:presentation, hd:!!hideDispatch};
         /* the review of 4513ffb: at a minute where both readings are due, every reading is whole inside the box or given way whole */
         out.both=null; for(let t=T_MIN;t<=T_MAX&&out.both===null;t+=5){ setClock(t,{instant:true,force:true,camera:false});
           if(!(curPhase<=PLATEAU_LAST&&plateauStrength("al")>0&&centreSeparation())) continue; _sitKey=""; paintSituation(); const c2=c.getBoundingClientRect();
           out.both={at:fmtClock(t),ok:[...c.querySelectorAll(".der")].every(x=>{ const s=getComputedStyle(x), q=x.getBoundingClientRect(); return s.display==="none"||(q.left>=c2.left-0.5&&q.right<=c2.right+0.5&&x.scrollWidth<=x.clientWidth+1); })}; }
-        return out; });
+        setPanels(true); return out; });
       NR.push(Object.assign({at:"700",cap:capAt},await look()));
       await size(vp0.width,vp0.height); await first.evaluate(()=>{ setPresentation("study"); select(null,null); });
       LIVE.narrow=NR;
