@@ -3441,6 +3441,9 @@ var EYES={min:"", vs:null, vsAt:0, VS_MS:500, VS_MOVE:1,
     "authored limits on what each side knew. Not a record of what was seen.",
   LABEL:{none:"Everyone", fr:"Napoleon's headquarters", al:"Allied headquarters"}, SHORT:{none:"everyone", fr:"Napoleon", al:"Allied HQ"},
   HQ:{fr:"gqg", al:"ahq"}};
+/* the timeline's button: its visible words, and its name, which begins with them (decision 173) */
+function eyesShort(v){ return "Eyes: "+EYES.SHORT[v]; }
+function eyesName(v){ return eyesShort(v)+". Whose eyes? "+EYES.LABEL[v]+" (press to change)"; }
 /* decision 92: the cache of the guarded knowledgeOf, keyed by the phase, is cleared at each new minute of the clock */
 function knowAtClock(){ var k=commandView+"|"+Math.floor(clock+1e-9); if(EYES.min!==k){ EYES.min=k; knowKey=""; } }
 /* what the drawing shows: the reading, and at the eye-level vantage a known enemy the eye has no line of sight to is drawn as
@@ -3479,7 +3482,9 @@ function eyesSync(){
   var v=commandView, tb=document.getElementById("eyesbtn"), vb=document.querySelector('.van-btn[data-v="eye"]'), go=document.getElementById("eyego"), tg=document.getElementById("eyes-tag");
   if(tg&&!tg.innerHTML) tg.innerHTML=iconSVG(TOKENS.sym.layer.derived)+"derived";
   if(go) go.hidden=(v==="none");
-  if(tb){ tb.textContent="Eyes: "+EYES.SHORT[v]; tb.setAttribute("aria-label","Whose eyes? "+EYES.LABEL[v]+" (press to change)"); tb.setAttribute("aria-pressed",String(v!=="none")); fitCaption(); }   /* the caption's room changed with the button's words (the 146453d review) */
+  /* decision 173 (WCAG 2.5.3): the name begins with the visible words; no aria-pressed (a three-way cycle is not a toggle: the name carries
+     the state) */
+  if(tb){ tb.textContent=eyesShort(v); tb.setAttribute("aria-label",eyesName(v)); tb.removeAttribute("aria-pressed"); fitCaption(); }   /* the caption's room changed with the button's words (the 146453d review) */
   if(vb) vb.hidden=(v==="none");
   if(v==="none"&&EYE.on) eyeLeave();
   eyesViewshed(true);
@@ -8702,10 +8707,12 @@ var AUSTERLITZ_DEBUG=(function(){
     Object.keys(why).forEach(function(r){ select("f",why[r]); dossierExpanded=true; paintDrawer(); var pl=Array.prototype.map.call(document.querySelectorAll(".pillrow .pill"),function(e){ return e.textContent; }).filter(function(t){ return /^Not known/.test(t); })[0]||"none"; pills.push(pl); });
     select(null,null); dossierExpanded=k0.ex;
     var tb=document.getElementById("eyesbtn"), seq=[]; setCommandView("none");
-    for(var c=0;c<3;c++){ tb.click(); seq.push(commandView+":"+tb.textContent+":"+tb.getAttribute("aria-pressed")); }
+    /* decision 173: each state's visible words, its name beginning with them and naming the reading in full, and no aria-pressed */
+    for(var c=0;c<3;c++){ tb.click(); var nm=tb.getAttribute("aria-label")||"";
+      seq.push(commandView+":"+tb.textContent+":"+(nm.indexOf(tb.textContent)===0&&nm===eyesName(commandView)&&nm.indexOf(EYES.LABEL[commandView])>0?"named":"misnamed")+":"+(tb.hasAttribute("aria-pressed")?"pressed":"-")); }
     var vb=document.querySelector('.van-btn[data-v="eye"]'), cmd=Array.prototype.map.call(document.querySelectorAll(".cmd-btn"),function(b){ return b.getAttribute("aria-pressed"); }).join("");
     out.push({name:"Whose eyes?: the dossier names which part decides; the timeline's button cycles everyone, Napoleon, the Allied headquarters, and the Command tab's group and the eye's vantage follow it",
-      ok:pills.length===Object.keys(why).length&&pills.every(function(t){ return /\((no line of sight|authored limit)\)$/.test(t); })&&seq.join(",")==="fr:Eyes: Napoleon:true,al:Eyes: Allied HQ:true,none:Eyes: everyone:false"&&!!vb&&vb.hidden&&cmd==="truefalsefalse",
+      ok:pills.length===Object.keys(why).length&&pills.every(function(t){ return /\((no line of sight|authored limit)\)$/.test(t); })&&seq.join(",")==="fr:Eyes: Napoleon:named:-,al:Eyes: Allied HQ:named:-,none:Eyes: everyone:named:-"&&!!vb&&vb.hidden&&cmd==="truefalsefalse",
       detail:"Allied headquarters at 10:00: "+nos.length+" not known; the pills: "+pills.join(" | ")+"; the button: "+seq.join(", ")+"; the eye's vantage hidden with everyone "+(vb&&vb.hidden)});
     setCommandView(k0.cv); MAPCAM.restore(ms0); if(mode!==k0.md) setMode(k0.md);
     if(k0.sel) select(k0.sel.k,k0.sel.id);

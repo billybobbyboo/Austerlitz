@@ -410,8 +410,12 @@ if(cerrs) process.exitCode=1;
   if(/broken outline/.test(src)) werr.push("app.js still describes a broken outline");
   if(!/data-v="eye" hidden/.test(sh)||!/id="eyego" type="button" hidden/.test(sh)) werr.push("the eye-level vantage is not hidden by default");
   if(!/id="eyesbtn"/.test(sh)) werr.push("the timeline has no \u201cWhose eyes?\u201d button");
+  /* decision 173 (WCAG 2.5.3): its name begins with its visible words; no aria-pressed on a three-way cycle */
+  { const b=(sh.match(/<button[^>]*id="eyesbtn"[^>]*>([^<]*)</)||[]); const lab=(b[0]||"").match(/aria-label="([^"]*)"/);
+    if(!b[0]||/aria-pressed/.test(b[0])||!lab||lab[1].indexOf(b[1])!==0) werr.push("shell.html: the eyes button's name does not begin with its visible words, or it carries aria-pressed");
+    if(/eyesbtn[\s\S]{0,400}setAttribute\("aria-pressed"/.test(src)) werr.push("app.js: the eyes button is still given aria-pressed"); }
   werr.forEach(e=>console.log("  ! "+e));
-  console.log("Whose eyes: "+(werr.length?werr.length+" wrong":"one control, labelled a model reading, the eye's vantage hidden until a headquarters is chosen"));
+  console.log("Whose eyes: "+(werr.length?werr.length+" wrong":"one control, labelled a model reading, the eye's vantage hidden until a headquarters is chosen, its button's name beginning with its words (decision 173)"));
   if(werr.length) process.exitCode=1;
 }
 /* Stage 5F (docs/STAGE5_SPEC.md section E.4; decisions 15, 93): the ordered routes are off by default, in the side's token colour, and
