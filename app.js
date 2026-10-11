@@ -3767,7 +3767,10 @@ function clearOverlays(){
    meanwhile (the reading's buttons clear TOURCV). The eye level, which needs a reading, is left, not given back */
 var TOURCV=null;
 function readingAside(){ if(TOURCV===null&&commandView!=="none"){ TOURCV=commandView; setCommandView("none"); } }
-function readingBack(){ if(TOURCV!==null){ var v=TOURCV; TOURCV=null; setCommandView(v); } }
+/* returns the words that say so (decision 171), or "" when nothing is given back */
+function readingBack(){ if(TOURCV!==null){ var v=TOURCV; TOURCV=null; setCommandView(v); return LABELS.eyesBack.replace("%r",EYES.LABEL[v]); } return ""; }
+/* decision 168: the guided tour says each stop in the polite region, and folds the phase announcement its clock change would make into it */
+var TOUR_APPLYING=false;
 function startTour(){
   closeFirst(null);
   readingAside();
@@ -3780,7 +3783,8 @@ function exitTour(){
   var b=document.getElementById("tourbar"), a=focusedEl(), had=!!(b&&a&&b.contains&&b.contains(a));
   if(b) b.hidden=true;
   if(had) focusTo(["tourbtn","play","restore"]);   /* roadmap step 3 (SW-5): Leave the tour and Finish hid the bar with focus on it */
-  readingBack();   /* SW-11 */
+  var rb=readingBack();   /* SW-11; decision 171: said */
+  openingSay(LABELS.tour.ended+(rb?" "+rb:""));   /* decision 168 */
   clearOverlays();
   select(null,null);
   hideDispatch=false; syncVis();
@@ -3793,7 +3797,8 @@ function tourGo(d){
   tourStep=n; applyTour();
 }
 function applyTour(){
-  var st=TOUR[tourStep];
+  var st=TOUR[tourStep], say=!OPENING.on;
+  if(say) TOUR_APPLYING=true;
   stopPlay();
   clearOverlays();
   if(st.chapter) setChapter(st.chapter);
@@ -3812,6 +3817,7 @@ function applyTour(){
   pv.style.opacity=tourStep===0?0.4:1;
   document.getElementById("tour-next").textContent =
     (tourStep===TOUR.length-1) ? "Finish" : "Next";
+  if(say){ TOUR_APPLYING=false; openingSay(LABELS.tour.said.replace("%k",tourStep+1).replace("%n",TOUR.length).replace("%t",st.n).replace("%c",fmtClock(stopClock(st)))); }
 }
 
 /* ---------------- the opening (Stage 7C; docs/STAGE7_SPEC.md sections 3.4, 4, 5 and 6; owner decisions 111, 112, 114-116, 118) ----------------
@@ -3918,7 +3924,7 @@ function openingEnd(how){
   var bar=document.getElementById("tourbar"), a=document.activeElement, had=!!(bar&&a&&bar.contains&&bar.contains(a));
   OPENING.on=false; OPENING.k=-1;
   tourStep=-1; paintTimeline();
-  readingBack();   /* roadmap step 3 (SW-11) */
+  var rb=readingBack();   /* roadmap step 3 (SW-11); decision 171: said in the end message */
   if(bar) bar.hidden=true;
   openingBar(false);
   clearOverlays();
@@ -3931,11 +3937,11 @@ function openingEnd(how){
     freeCam=false; flyTo(VANTAGE.plan);
     if(docked) selectTab("now");
     OPENING.applying=false;
-    openingSay(LABELS.opening.ended.replace("%c",fmtClock(T_MIN)));
+    openingSay(LABELS.opening.ended.replace("%c",fmtClock(T_MIN))+(rb?" "+rb:""));
     focusId("play");
   } else {
     syncVis();
-    openingSay(LABELS.opening.left);
+    openingSay(LABELS.opening.left+(rb?" "+rb:""));
     if(had){ if(how==="key") focusId("play"); else if(a.blur) a.blur(); }
   }
   requestRender(3);
@@ -5239,6 +5245,9 @@ var LABELS={
     stay:"Explore on my own", stayTitle:"Close this card and stay here (Esc)"},
   /* Stage 7C (decisions 115, 118): the opening's interface words, no claim: no clock time, figure, name or quotation (css-test.js). %k and
      %n are the step and the count, %t the stop's own title (TOUR), %c a clock the app formats */
+  /* decisions 168, 171 (roadmap step 3): the tour's stops and its end said in the polite region; the visitor's "Whose eyes?" reading given back */
+  tour:{said:"Tour, stop %k of %n: %t, %c.", ended:"The tour has ended."},
+  eyesBack:"Whose eyes? Back to %r (a model reading).",
   opening:{button:"Begin the opening", buttonTitle:"Four stops of the guided tour in its own words, the clock played between them",
     head:"Opening, step %k of %n", back:"Back", next:"Next", finish:"Finish", skip:"Skip", skipTitle:"End the opening at the start of the day (Esc)",
     said:"Step %k of %n: %t, %c.", ended:"The opening has ended. Play runs the day from %c.", left:"The opening has ended here.",
@@ -5606,7 +5615,7 @@ function buildUI(){
   document.getElementById("restore").addEventListener("click",showEverything);
   document.getElementById("tourbtn").addEventListener("click",function(){
     if(OPENING.on) openingEnd("pointer");   /* roadmap step 3 (docs/FINAL_AUDIT.md SW-12): a click alone (a screen reader's) ends the opening first, as a press does */
-    if(tourStep>=0) exitTour(); else startTour();
+    if(tourStep>=0) exitTour(); else { startTour(); focusId("tour-next"); }   /* decision 168: begun from its button, focus on its Next (as the opening's, decision 124) */
   });
   /* the tour's bar serves the opening too (Stage 7C): its buttons step whichever is showing */
   document.getElementById("tour-prev").addEventListener("click",function(){ if(OPENING.on) openingGo(-1); else tourGo(-1); });
@@ -6212,7 +6221,7 @@ function paintDispatch(ph){
      region: in a hidden tab it would not be read) */
   /* Stage 7C (section 4.3): while the opening applies a step, the step's own message says it (one message per step); Stage 7D: while the
      clock plays between steps, the stretch's message and the step's say it */
-  var lv=document.getElementById("live-phase"); if(lv&&!OPENING.applying&&!OPENING.play){ lv.textContent=ph.clock+". "+actOf(ph.id).n+": "+ph.title+"."; PHASE_SAID++; }
+  var lv=document.getElementById("live-phase"); if(lv&&!OPENING.applying&&!OPENING.play&&!TOUR_APPLYING){ lv.textContent=ph.clock+". "+actOf(ph.id).n+": "+ph.title+"."; PHASE_SAID++; }
 }
 
 /* ---- a formation's text during a delayed move (owner decision 46) ----
@@ -9511,6 +9520,7 @@ var AUSTERLITZ_DEBUG=(function(){
       function fresh(){ if(OPENING.on) openingEnd("camera"); if(tourStep>=0) exitTour(); if(!document.getElementById("layerpop").hidden) window.__setPop(false);
         setPresentation("study"); select(null,null); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); }
       if(mode!=="terrain") setMode("terrain"); fresh();
+      var tbt=document.getElementById("tourbtn"); tbt.focus({preventScroll:true}); tbt.click(); want("the Guided tour button (decision 168)","tour-next"); fresh();
       startTour(); focusId("tour-exit"); document.getElementById("tour-exit").click(); want("Leave the tour","tourbtn");
       fresh(); startTour(); tourGo(TOUR.length-1); finishTween(); focusId("tour-next"); document.getElementById("tour-next").click(); finishTween();
       if(tourStep>=0) bad.push("Finish left the tour on"); want("the tour's Finish","tourbtn");
@@ -9531,11 +9541,12 @@ var AUSTERLITZ_DEBUG=(function(){
       fresh(); fr.hidden=false; openFirstRun(); key("h"); want("H from the first card","restore");
       fresh(); openingStart(); finishTween(); document.getElementById("tourbtn").click(); finishTween();
       if(OPENING.on||OPENING.play||tourStep!==0||speed!==0.5) bad.push("the Guided tour button's click during the opening: opening "+OPENING.on+", tour stop "+(tourStep+1)+", speed "+speed+" (SW-12)");
+      else want("the Guided tour button during the opening (decision 168)","tour-next");
       fresh(); setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
       landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv;
       tabChosen=K0.ch; if(docked) selectTab(K0.tab); if(K0.sel) select(K0.sel.kind,K0.sel.id); hideDispatch=K0.hd; syncVis(); syncFollow();
-      ck("focus: each way a focused control disappears leaves it on a named, shown successor: Leave the tour and Finish (Guided tour), the tour's Back at stop 1 (Next), the Layers \u00d7 and Esc (Layers), Watch and Clean with the panel open (closed), the chip's \u00d7 (Play) and Open the dossier (Back), the sightlines' Clear (Play), Watch's switch moved and Clean's (the pressed button), 3 and H (Show interface); the Guided tour button during the opening ends it and begins the tour (docs/FINAL_AUDIT.md SW-5, SW-9, SW-12)",
-        !bad.length, bad.length?bad.join("; "):"17 ways, each on its successor");
+      ck("focus: each way a focused control disappears leaves it on a named, shown successor: Leave the tour and Finish (Guided tour), the tour's Back at stop 1 (Next), the Layers \u00d7 and Esc (Layers), Watch and Clean with the panel open (closed), the chip's \u00d7 (Play) and Open the dossier (Back), the sightlines' Clear (Play), Watch's switch moved and Clean's (the pressed button), 3 and H (Show interface); the Guided tour button begins the tour with focus on its Next, and during the opening ends it first (docs/FINAL_AUDIT.md SW-5, SW-9, SW-12; decision 168)",
+        !bad.length, bad.length?bad.join("; "):"19 ways, each on its successor");
     })();
     /* roadmap step 3 (SW-12, generalised): a click alone (as a screen reader or speech input sends it) on a control outside the opening's bar
        ends the opening where it stands and outside the first card closes the card, as a press does; the control then acts; while the clock
@@ -9676,6 +9687,9 @@ var AUSTERLITZ_DEBUG=(function(){
        way out, unless the visitor chose a reading meanwhile. Restored after */
     (function(){
       var bad=[], K0={c:clock,pres:presentation,mode:mode,cv:commandView,p:landCam.position.clone(),t:orbitTarget.clone(),fc:freeCam,cv2:curVantage,tab:tabNow,ch:tabChosen};
+      var lv=document.getElementById("live-phase"), said=function(){ return lv?lv.textContent:""; }, tourSaid="";
+      /* decision 171: the end message says the reading is given back, naming it; and says nothing of it when none is */
+      function back(w,cv){ var b=LABELS.eyesBack.replace("%r",EYES.LABEL[cv]), t=said(); if(t.slice(-b.length)!==b) bad.push(w+": the end message \u201c"+t+"\u201d does not end by saying the reading is back"); }
       if(mode!=="terrain") setMode("terrain"); setPresentation("study"); select(null,null);
       ["fr","al"].forEach(function(cv){
         ["skip","end","camera","key","pointer"].forEach(function(how){
@@ -9683,16 +9697,32 @@ var AUSTERLITZ_DEBUG=(function(){
           if(commandView!=="none") bad.push(cv+": the opening under "+commandView);
           if(how==="end"){ for(var q=0;q<OPENING.stops.length&&OPENING.on;q++){ openingGo(1); if(OPENING.play) openingArrive(); finishTween(); } if(OPENING.on) openingGo(1); }
           else openingEnd(how);
-          if(commandView!==cv) bad.push(cv+": after the opening ended ("+how+") the reading is "+commandView); });
+          if(commandView!==cv) bad.push(cv+": after the opening ended ("+how+") the reading is "+commandView); back(cv+" "+how,cv); });
         setCommandView(cv); startTour(); finishTween(); if(commandView!=="none") bad.push(cv+": the tour under "+commandView);
         tourGo(1); finishTween(); if(commandView!=="none") bad.push(cv+": the tour's next stop under "+commandView);
-        exitTour(); if(commandView!==cv) bad.push(cv+": after the tour the reading is "+commandView);
+        exitTour(); if(commandView!==cv) bad.push(cv+": after the tour the reading is "+commandView); back(cv+" leaving the tour",cv);
+        if(said().indexOf(LABELS.tour.ended)!==0) bad.push(cv+": leaving the tour does not say so");
         setCommandView(cv); startTour(); finishTween(); document.getElementById("eyesbtn").click(); var chose=commandView; exitTour();
-        if(commandView!==chose) bad.push(cv+": the visitor's reading chosen in the tour ("+chose+") was not kept ("+commandView+")"); });
+        if(commandView!==chose) bad.push(cv+": the visitor's reading chosen in the tour ("+chose+") was not kept ("+commandView+")");
+        if(said()!==LABELS.tour.ended) bad.push(cv+": the tour left with the visitor's own reading says \u201c"+said()+"\u201d"); });
+      /* no reading set aside: nothing said of one */
+      setCommandView("none"); openingStart(); finishTween(); openingEnd("skip"); if(said()!==LABELS.opening.ended.replace("%c",fmtClock(T_MIN))) bad.push("the opening under everyone's reading ends with \u201c"+said()+"\u201d");
       setCommandView(K0.cv); setPresentation(K0.pres); if(mode!==K0.mode) setMode(K0.mode); setClock(K0.c,{instant:true,force:true,camera:false}); finishTween();
       landCam.position.copy(K0.p); orbitTarget.copy(K0.t); landCam.lookAt(orbitTarget); freeCam=K0.fc; curVantage=K0.cv2; tabChosen=K0.ch; if(docked) selectTab(K0.tab); syncFollow();
-      ck("opening and tour: shown under everyone's reading; the visitor's reading given back on every way out (skip, finish, the camera, a key, a press, leaving the tour), unless the visitor chose a reading meanwhile (docs/FINAL_AUDIT.md SW-11)",
-        !bad.length, bad.length?bad.join("; "):"both headquarters' readings set aside and given back on 5 ways out of the opening and out of the tour; a reading chosen in the tour kept");
+      /* decision 168: every stop of the tour said once in the polite region, its phase announcement folded into it; Back too; leaving says so */
+      (function(){ var orig=openingSay, n=0, s0, ph=0, bad2=[]; openingSay=function(s){ n++; orig(s); };
+        try{ setCommandView("none"); setPresentation("study"); startTour(); finishTween();
+          for(var k=0;k<TOUR.length;k++){ if(k>0){ n=0; s0=PHASE_SAID; var p0=curPhase; tourGo(1); finishTween(); if(curPhase!==p0) ph++;
+              if(PHASE_SAID!==s0) bad2.push("stop "+(k+1)+": a phase announcement besides"); if(n!==1) bad2.push("stop "+(k+1)+": "+n+" messages"); }
+            var st=TOUR[tourStep], w=LABELS.tour.said.replace("%k",k+1).replace("%n",TOUR.length).replace("%t",st.n).replace("%c",fmtClock(stopClock(st)));
+            if(said()!==w) bad2.push("stop "+(k+1)+" says \u201c"+said()+"\u201d"); }
+          n=0; tourGo(-1); finishTween(); if(n!==1||said().indexOf("Tour, stop "+(TOUR.length-1)+" of ")!==0) bad2.push("Back says \u201c"+said()+"\u201d");
+          exitTour(); if(said()!==LABELS.tour.ended) bad2.push("leaving says \u201c"+said()+"\u201d");
+          if(!ph) bad2.push("no stop changed the phase");
+        } finally { openingSay=orig; }
+        if(bad2.length) bad.push("the tour's words: "+bad2.join("; ")); else tourSaid=TOUR.length+" stops said, "+ph+" of them in a new phase without a phase announcement besides"; })();
+      ck("opening and tour: shown under everyone's reading; the visitor's reading given back on every way out (skip, finish, the camera, a key, a press, leaving the tour), and the end message says so, unless the visitor chose a reading meanwhile; the tour's every stop and its end said once in the polite region (docs/FINAL_AUDIT.md SW-11; decisions 168, 171)",
+        !bad.length, bad.length?bad.join("; "):"both headquarters' readings set aside and given back on 5 ways out of the opening and out of the tour, each end message naming the reading given back; a reading chosen in the tour kept, and nothing said of one; none said when none was set aside; "+tourSaid);
     })();
     /* roadmap step 3 (handed on by step 2): an event's drawn map label carries its note's word ("(hour disputed)", "(interval)", "(reconstruction)")
        exactly when it has one, and its accessible name begins with its drawn words (WCAG 2.5.3), then the note in full. At each event's start,
