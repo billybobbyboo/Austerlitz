@@ -397,5 +397,5 @@ once, decision 146; the `check:data` reference moved to its build) is merged (#5
 decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6, and what steps 1 and 2 handed on; the start-up guard and three.js's
 integrity, the single-key shortcuts switch, the hidden panels inert, the two sheets modal dialogs, focus handed on, reduced motion live,
 the timeline's rail at 24 px, a focused map item always drawn, corps counters under "Whose eyes?", the Watch caption fitted; owner questions
-162-175, each default in the build; the self-test manifest at 241) is in review (#51); its screen-reader session (`docs/step3-evidence/sr-session.md`)
+162-175, decided as recommended on 11 October 2026 and applied after the answers, `docs/ROADMAP.md`) is in review (#51); its screen-reader session (`docs/step3-evidence/sr-session.md`)
 needs a person and is not yet run. The next owner decision is 176.

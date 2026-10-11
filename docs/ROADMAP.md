@@ -128,15 +128,28 @@ items 8 and 10; each default was implemented meanwhile in a commit that could be
   Division since D-3); `tools/stage2/chronology.js`'s `REVIEW` file:line locators written before C3 may point one or more lines off
   (records; four corrected in step 2; no check reads them).
 
-### Step 3: the owner questions 162-175 (open; each default is in the build)
+### Step 3: the owner decisions 162-175 (the answers)
 
-The questions are listed with their recommendations and defaults in `CHANGELOG.md` (step 3). In short: 162 the start-up failure's words;
-163 the start-up cases inside `check:contrast`; 164 a visible "Panels" control below 1080 px; 165 the undocked dossier stopped above the
-timeline; 166 the acts and phases at 24 px (the self-test holds them at 15 and 16 px meanwhile); 167 the event markers as 2.5.8's essential
-exception; 168 the tour's focus and announcements; 169 shortcuts off and the card and the opening; 170 S-1's details and S-4; 171 the reading
-given back aloud; 172 a message when a focused item leaves the map, and the map ring's contrast; 173 the Eyes button's name (label in name);
-174 the plateau reading in the caption at 720 px and below in Study; 175 who runs the screen-reader session, and whether step 3 stays open
-until it is recorded.
+On 11 October 2026 the owner wrote: "Let's go with your recommendations on all questions." Each is decided as recommended (the questions,
+with their recommendations and the defaults the build had meanwhile, are in `CHANGELOG.md`, step 3). Where the recommendation differed from
+the default, it is applied in step 3 after the answers; "where" names the step that carries it.
+
+| # | question | decision | where |
+|---|---|---|---|
+| 162 | the start-up failure's words | kept as written | step 3 (C6) |
+| 163 | where the start-up cases run | inside `check:contrast` | step 3 (C6) |
+| 164 | a visible control for the rail below 1080 px | a "Panels" control in the tools, measured first, no limit moved without the owner's word | step 3, after the answers |
+| 165 | the undocked dossier over the timeline | stopped above it | step 3, after the answers |
+| 166 | the acts (15 px) and phases (16 px) as pointer targets | (a): the act bands stop taking clicks, the phase under the pointer takes them (31 px); an act stays a keyboard button, its click its first phase's | step 3, after the answers |
+| 167 | the event markers | 2.5.8's essential exception, the coinciding events reached through each other's dossiers | step 3 (C15, C16) |
+| 168 | the guided tour | focus on its Next when it begins, and each stop announced | step 3, after the answers |
+| 169 | shortcuts off, the first card and the opening | as built: a typed character does nothing; Space plays | step 3 (C10) |
+| 170 | S-1's details, S-4 | (a) as built; (b) the plan links and the selection ring under a reading, and (c) S-4, in step 5 | step 3 (C20); step 5 |
+| 171 | the reading given back when the opening or the tour ends | said in the end message | step 3, after the answers |
+| 172 | a message when a focused map item leaves the map; the map ring's contrast | both, in step 5 | step 5 |
+| 173 | the Eyes button's name | begins with its visible words; `aria-pressed` dropped (the name carries the state); the 5E check's assertions replaced equally strictly | step 3, after the answers |
+| 174 | the plateau reading at 720 px and below in Study | shown in the caption | step 3, after the answers |
+| 175 | the screen-reader session | run by the owner or a tester; step 3 done when it is recorded | open until recorded |
 
 ### What step 3 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)
 

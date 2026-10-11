@@ -80,7 +80,10 @@ commit or recorded here. The plan's C17 (the phases taking the acts' clicks) wai
 - **`pickFormation` on every pointer move (C23; handed on by step 1).** Measured, `tools/step3/hover-cost.js`, rule set before measuring:
   a fix only if a move's p95 exceeds 2 ms. On the build of `99733eb` (the hover's path is unchanged since), at 1600 x 900 under software WebGL, 400 moves over the free part of the screen in each of five views (`overview-field`, `close-sokolnitz`, `hybrid-dimmed`, `paper-north-up`, `pratzen-low-10x`), with the evidence skeleton off and on, each timed three times: the median at most 0.1 ms, the worst p95 0.4 ms (`pratzen-low-10x`, skeleton on), the worst move 1.0 ms. No fix is called for. (Chromium rounds `performance.now()` to 0.1 ms, so the medians are at its resolution.)
 
-**Owner questions (162-175).** Each default is in the build; none changes a guarded declaration or a limit.
+**Owner questions (162-175), decided.** On 11 October 2026 the owner wrote: "Let's go with your recommendations on all questions." Each is
+decided as recommended (`docs/ROADMAP.md`, step 3's decisions table). The table below is as the questions were put, with the defaults the
+build had meanwhile; where a recommendation differs from its default (164, 165, 166, 168, 171, 173, 174) it is applied after the answers
+(below, "After the owner's answers"); 170 (b), (c) and 172 go to step 5; 175 keeps step 3 open until the session is recorded.
 
 | # | question | recommendation | default meanwhile |
 |---|---|---|---|
