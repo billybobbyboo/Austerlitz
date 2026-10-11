@@ -465,7 +465,7 @@ function checkLive(live,opts){
     /* decision 164 (roadmap step 3): the Panels button, on a build that has it */
     const np=by["panels"]; if(np){ const P=np.pb;
       if(!(P.closed.shown&&P.closed.exp==="false"&&!P.closed.rail&&P.closed.inert)) f.push("narrow layout: the Panels button at 1000 px, the rail closed: "+JSON.stringify(P.closed));
-      if(!(P.opened.exp==="true"&&P.opened.rail&&!P.opened.inert&&/tab-btn/.test(P.opened.focus||""))) f.push("narrow layout: the Panels button did not open the rail with focus on its tab: "+JSON.stringify(P.opened));
+      if(!(P.opened.exp==="true"&&P.opened.rail&&!P.opened.inert&&P.opened.onTab===true)) f.push("narrow layout: the Panels button did not open the rail with focus on its tab: "+JSON.stringify(P.opened));
       if(!(P.reclosed.exp==="false"&&!P.reclosed.rail&&P.reclosed.inert)) f.push("narrow layout: the Panels button did not close the rail: "+JSON.stringify(P.reclosed));
       if(!(P.back.focus==="panelsbtn"&&!P.back.rail)) f.push("narrow layout: closing the rail with focus in it did not hand focus to the Panels button: "+JSON.stringify(P.back));
       if(P.docked.shown) f.push("narrow layout: the Panels button shown at 1280 px (docked)"); }

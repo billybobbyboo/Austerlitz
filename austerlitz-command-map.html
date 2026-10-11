@@ -11043,7 +11043,7 @@ function sheetTab(id,back){
 function setPanels(open){
   if(docked) return;
   var b=document.body, rail=document.getElementById("rail"), a=focusedEl(), inRail=!!(rail&&a&&rail.contains(a));
-  if(open){ if(presentation!=="study") setPresentation("study"); hideDispatch=false; b.classList.remove("rail-hidden"); syncVis(); syncInert();
+  if(open){ if(presentation!=="study") setPresentation("study"); b.classList.remove("rail-hidden"); syncInert();   /* the rail only: the dispatch's own state (the tour's, the visitor's D) kept (the review of d114fe1) */
     focusTo([document.querySelector('.tab-btn[aria-selected="true"]'),document.querySelector(".tab-btn"),"panelsbtn"]); }
   else { if(inRail) focusTo(["panelsbtn","play","restore"]); b.classList.add("rail-hidden"); syncInert(); }
   if(typeof requestRender==="function") requestRender(2);
@@ -12818,6 +12818,7 @@ function syncDock(){
   if(!want&&tabNow==="now") selectTab("oob");
   else if(want&&!tabChosen) selectTab("now");
   syncInert();   /* roadmap step 3: docked or not, the rail's reasons change (after rail-hidden is settled: the C7-C14 review's item 3) */
+  var fa=focusedEl(); if(fa&&!shown(fa)) focusTo(["play","restore"]);   /* SW-5: a control the new layout hides (the Panels button from 1080 px) hands its focus on (the review of d114fe1) */
 }
 function selectTab(t,focus){
   var ok=false;

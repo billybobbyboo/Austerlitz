@@ -417,7 +417,7 @@ async function interact(page,it,vp){
       if(await first.evaluate(()=>!!document.getElementById("panelsbtn"))){
         const pst=()=>first.evaluate(()=>{ const b=document.getElementById("panelsbtn"), r=document.querySelector(".rail");
           return {shown:getComputedStyle(b).display!=="none"&&b.getBoundingClientRect().width>0, exp:b.getAttribute("aria-expanded"), rail:!document.body.classList.contains("rail-hidden"), inert:!!r.inert,
-            focus:document.activeElement&&(document.activeElement.id||document.activeElement.className)}; });
+            focus:document.activeElement&&(document.activeElement.id||document.activeElement.className), onTab:!!(document.activeElement&&document.activeElement.classList&&document.activeElement.classList.contains("tab-btn"))}; });
         await first.evaluate(()=>{ select(null,null); document.body.classList.add("rail-hidden"); syncInert(); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });   /* the rail hidden, as at load below 1080 px */
         const PB={}; PB.closed=await pst();
         await first.click("#panelsbtn"); await first.waitForTimeout(500); PB.opened=await pst();
@@ -425,6 +425,7 @@ async function interact(page,it,vp){
         await first.click("#panelsbtn"); await first.waitForTimeout(500);
         await first.evaluate(()=>{ const t=document.querySelector('.tab-btn[aria-selected="true"]'); if(t) t.focus(); setPanels(false); }); PB.back=await pst();
         await size(1280,800); PB.docked=await pst(); await size(1000,800);
+        await first.click("#panelsbtn"); await first.waitForTimeout(500);   /* the rail shown again, as after 2 and Esc, for the steps after (the review of d114fe1) */
         NR.push({at:"panels",pb:PB}); }
       /* decision 165: a dossier opened at 1000 px stops above the timeline (its bottom at or above the timebar's top) */
       await first.evaluate(()=>{ select("f","sthilaire"); });
