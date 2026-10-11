@@ -614,7 +614,9 @@ if(cerrs) process.exitCode=1;
    hides them); the caption shows them only where the card is hidden, as above 720 px; the harness's narrow block measures it at 700 px */
 {
   const css=fs.readFileSync('style.css','utf8'), i=css.indexOf("@media (max-width:720px){"), blk=i<0?"":css.slice(i,css.indexOf("\n}",i));
-  const ok=i>=0&&!/\.tb-sit \.der\{display:none\}/.test(blk)&&!/\.tb-cap \.der/.test(blk);
+  /* every rule of the block whose selectors name the card's readings: none hides them (display:none or visibility:hidden) */
+  const hides=[...blk.slice(blk.indexOf("{")+1).matchAll(/([^{}]+)\{([^}]*)\}/g)].some(m=>/\.der\b/.test(m[1])&&!/\.tb-cap/.test(m[1])&&/display:none|visibility:hidden/.test(m[2]));
+  const ok=i>=0&&!hides&&!/\.tb-cap \.der/.test(blk);
   console.log("the derived readings at 720 px and below: "+(ok?"kept in the dispatch card (decision 174)":"WRONG"));
   if(!ok){ console.log("  ! style.css: the 720 px block hides the card's derived readings or overrides the caption's"); process.exitCode=1; }
 }

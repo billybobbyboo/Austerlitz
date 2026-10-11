@@ -11644,8 +11644,8 @@ function capTitle(cap){ var t=[]; if(!cap.children) return cap.textContent||"";
 /* roadmap step 3 (decision 159): where the caption shows the derived readings, none is ever drawn cut. The phase's title, then the act, then the
    events' names shrink first (style.css); if the parts that do not shrink still overflow the caption's box, they give way whole, in this
    order: the plateau reading's "plotted strength unchanged", the second reading (the centre separation), then the events with their tags
-   (an event's tag cut by its shrinking box counts as overflow);
-   the first reading always stands whole. What is hidden stays in the caption's title, and in the Now tab. Called after a paint and a resize */
+   (an event's tag cut by its shrinking box counts as overflow); then, where even it cannot stand whole, the first reading;
+   in the box. What is hidden stays in the caption's title, and in the Now tab. Called after a paint and a resize */
 function fitCaption(){
   var cap=document.getElementById("tb-cap"); if(!cap||!cap.querySelectorAll||typeof cap.getBoundingClientRect!=="function") return;
   var gone=cap.querySelectorAll(".fit-off"); for(var i=0;i<gone.length;i++) gone[i].classList.remove("fit-off");
@@ -11662,6 +11662,9 @@ function fitCaption(){
   for(var n=D.length-1;n>=1&&over();n--){ off(D[n]); off(D[n].previousElementSibling); }
   if(!over()) return;
   var ev=cap.querySelector(".ev"); if(ev){ off(ev); off(ev.previousElementSibling); }
+  /* last, a first reading that still cannot stand whole (the caption's box at 720 px and below is narrower than the plateau reading) gives way
+     whole too: never drawn cut (the review of c76f7cc) */
+  if(over()&&D.length){ off(D[0]); off(D[0].previousElementSibling); }
 }
 /* ---- Stage 3C: one timeline (docs/STAGE3_SPEC.md section D; owner decisions 53, 60) ----
    One axis, proportional to time from 04:00 to 18:00 (decision 53): the act bands, the phase ticks with their labels and the

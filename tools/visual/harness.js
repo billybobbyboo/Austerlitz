@@ -440,10 +440,11 @@ async function interact(page,it,vp){
         const kr=k.getBoundingClientRect(), r=d.getBoundingClientRect(), cs=getComputedStyle(d);
         const out={der:getComputedStyle(k).display!=="none"&&cs.display!=="none"&&r.width>0&&r.left>=kr.left-0.5&&r.right<=kr.right+0.5&&d.scrollWidth<=d.clientWidth+1, pres:presentation, hd:!!hideDispatch};
         /* the review of 4513ffb: at a minute where both readings are due, every reading is whole inside the box or given way whole */
+        setPresentation("watch");   /* the caption shows its readings in Watch (the review of c76f7cc: in Study they are the card's) */
         out.both=null; for(let t=T_MIN;t<=T_MAX&&out.both===null;t+=5){ setClock(t,{instant:true,force:true,camera:false});
           if(!(curPhase<=PLATEAU_LAST&&plateauStrength("al")>0&&centreSeparation())) continue; _sitKey=""; paintSituation(); const c2=c.getBoundingClientRect();
           out.both={at:fmtClock(t),ok:[...c.querySelectorAll(".der")].every(x=>{ const s=getComputedStyle(x), q=x.getBoundingClientRect(); return s.display==="none"||(q.left>=c2.left-0.5&&q.right<=c2.right+0.5&&x.scrollWidth<=x.clientWidth+1); })}; }
-        setPanels(true); return out; });
+        setPresentation("study"); setPanels(true); return out; });
       NR.push(Object.assign({at:"700",cap:capAt},await look()));
       await size(vp0.width,vp0.height); await first.evaluate(()=>{ setPresentation("study"); select(null,null); });
       LIVE.narrow=NR;
