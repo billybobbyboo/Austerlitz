@@ -596,6 +596,20 @@ if(cerrs) process.exitCode=1;
   console.log("dossier hidden when closed: "+(derr.length?derr.length+" wrong":"hidden after its slide, shown at once, inert while closed, above the timeline undocked (decision 165)"));
   if(derr.length) process.exitCode=1;
 }
+/* decision 164 (roadmap step 3): the Panels button, a disclosure of the rail below 1080 px; its words from LABELS; not shown docked or under the
+   first card; its behaviour is the harness's narrow block */
+{
+  const sh=fs.readFileSync('shell.html','utf8'), css=fs.readFileSync('style.css','utf8'), src=fs.readFileSync('app.js','utf8'), perr=[];
+  const b=(sh.match(/<button[^>]*id="panelsbtn"[^>]*>/)||[""])[0];
+  if(!b||!/aria-expanded="false"/.test(b)||!/aria-controls="rail"/.test(b)||!/type="button"/.test(b)) perr.push("shell.html: the Panels button is not a disclosure of #rail");
+  if(!/<nav class="rail" id="rail"/.test(sh)) perr.push("shell.html: the rail has no id for aria-controls");
+  if(!/panels:\{button:"Panels"/.test(src)||!/pb\.textContent=LABELS\.panels\.button/.test(src)) perr.push("app.js: the Panels button's words are not from LABELS");
+  if(!/\n#panelsbtn\{display:none\}/.test(css)||!/@media \(max-width:1079\.98px\)\{ body:not\(\.firstrun-on\) #panelsbtn\{display:inline-block\} \}/.test(css)) perr.push("style.css: the Panels button is not shown below 1080 px only, outside the first card");
+  if(!/setAttribute\("aria-expanded",String\(!document\.body\.classList\.contains\("rail-hidden"\)\)\)/.test(src)) perr.push("app.js: syncInert does not keep the button's aria-expanded");
+  perr.forEach(e=>console.log("  ! "+e));
+  console.log("the Panels button: "+(perr.length?perr.length+" wrong":"a disclosure of the rail below 1080 px, its words from LABELS, aria-expanded kept by syncInert (decision 164)"));
+  if(perr.length) process.exitCode=1;
+}
 /* decision 174 (roadmap step 3): at 720 px and below the card hides the derived readings, so the caption shows them in Study (the override
    inside that block, after the card's own rule); the harness's narrow block measures it at 700 px */
 {

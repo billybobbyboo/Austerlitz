@@ -460,6 +460,14 @@ function checkLive(live,opts){
     if(!n2||!n2.railShown||n2.railInert||!n2.dispatchShown) f.push("narrow layout: after 2 and Esc the rail and the card are not both shown: "+JSON.stringify(n2));
     if(!n3||!n3.railShown||n3.dispatchShown) f.push("narrow layout: at 700 px the card did not give way to the shown rail: "+JSON.stringify(n3));
     if(!n3||!n3.cap||n3.cap.der!==true||n3.cap.pres!=="study"||n3.cap.hd) f.push("narrow layout: at 700 px in Study the caption does not show the plateau reading whole (decision 174): "+JSON.stringify(n3&&n3.cap));
+    /* decision 164 (roadmap step 3): the Panels button, on a build that has it */
+    const np=by["panels"]; if(np){ const P=np.pb;
+      if(!(P.closed.shown&&P.closed.exp==="false"&&!P.closed.rail&&P.closed.inert)) f.push("narrow layout: the Panels button at 1000 px, the rail closed: "+JSON.stringify(P.closed));
+      if(!(P.opened.exp==="true"&&P.opened.rail&&!P.opened.inert&&/tab-btn/.test(P.opened.focus||""))) f.push("narrow layout: the Panels button did not open the rail with focus on its tab: "+JSON.stringify(P.opened));
+      if(!(P.reclosed.exp==="false"&&!P.reclosed.rail&&P.reclosed.inert)) f.push("narrow layout: the Panels button did not close the rail: "+JSON.stringify(P.reclosed));
+      if(!(P.back.focus==="panelsbtn"&&!P.back.rail)) f.push("narrow layout: closing the rail with focus in it did not hand focus to the Panels button: "+JSON.stringify(P.back));
+      if(P.docked.shown) f.push("narrow layout: the Panels button shown at 1280 px (docked)"); }
+    else if(live.shortcuts) f.push("narrow layout: the Panels button (decision 164) not reported");
     /* decision 165 (roadmap step 3): a build with the stop is one whose narrow block reports it */
     const nd=by["dossier at 1000"]; if(!nd||nd.docked||!nd.open||!(nd.bottom<=nd.tbTop+0.5)) f.push("narrow layout: at 1000 px the open dossier reaches over the timeline: "+JSON.stringify(nd)); }
   if(req("rmLive","the reduced-motion preference turned on and off while the page is open (roadmap step 3, S-6)")){ const R=live.rmLive;

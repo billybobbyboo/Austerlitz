@@ -653,6 +653,9 @@ body.firstrun-on:not(.docked) .dispatch,body.firstrun-on .legend,body.firstrun-o
 body.firstrun-on #vsbadge,body.firstrun-on #tourbar,body.firstrun-on #selchip{display:none !important}
 /* Stage 7C: the tools' "Begin the opening" stands down while the card, whose primary action it is, is open (at 390 px it would wrap the tools' row) */
 body.firstrun-on #openingbtn{display:none}
+/* decision 164: the Panels button only where the rail can be hidden (below 1080 px), and not while the first-run card stands open */
+#panelsbtn{display:none}
+@media (max-width:1079.98px){ body:not(.firstrun-on) #panelsbtn{display:inline-block} }
 /* roadmap step 3 (docs/FINAL_AUDIT.md SW-10): rules that came before the rules they were meant to override, so they never applied, now come
    after them: the first-run card on short landscape screens (they stood in the 430 px block before the card's own rules above), the layers
    panel on the shortest (it stood before the 820 px block's top). No view the harness measures is 430 px tall or less. The 720 px block's two

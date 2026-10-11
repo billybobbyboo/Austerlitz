@@ -35,7 +35,7 @@
   <noscript><p class="boot-line">This map needs JavaScript and WebGL.</p></noscript>
 </div>
 
-<nav class="rail" aria-label="Army and map controls">
+<nav class="rail" id="rail" aria-label="Army and map controls">
   <div class="brand">
     <h1>Austerlitz</h1>
     <p>2 December 1805 &middot; Moravia</p>
@@ -109,6 +109,8 @@
     <button class="t" id="openingbtn" type="button">Begin the opening</button>
     <button class="t" id="tourbtn">Guided tour</button>
     <button class="t" id="layersbtn" aria-expanded="false">Layers&hellip;</button>
+    <!-- roadmap step 3 (decision 164): below 1080 px the panels' rail opened and closed here (its words from LABELS.panels) -->
+    <button class="t" id="panelsbtn" type="button" aria-expanded="false" aria-controls="rail">Panels</button>
   </div>
   <div class="tlabel">Vantage</div>
   <div class="grp" id="vantages">

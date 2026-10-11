@@ -5247,6 +5247,7 @@ var LABELS={
      %n are the step and the count, %t the stop's own title (TOUR), %c a clock the app formats */
   /* decisions 168, 171 (roadmap step 3): the tour's stops and its end said in the polite region; the visitor's "Whose eyes?" reading given back */
   tour:{said:"Tour, stop %k of %n: %t, %c.", ended:"The tour has ended."},
+  panels:{button:"Panels", title:"Show or hide the panels: the order of battle, analysis, command and plans tabs, and the sources (below 1080 px wide)"},
   eyesBack:"Whose eyes? Back to %r (a model reading).",
   opening:{button:"Begin the opening", buttonTitle:"Four stops of the guided tour in its own words, the clock played between them",
     head:"Opening, step %k of %n", back:"Back", next:"Next", finish:"Finish", skip:"Skip", skipTitle:"End the opening at the start of the day (Esc)",
@@ -5264,6 +5265,7 @@ function applyLabels(){
   var F=LABELS.firstRun, fp=document.getElementById("fr-tour"), fs=document.getElementById("fr-close");   /* Stage 7B */
   if(fp){ fp.textContent=F.primary; fp.title=F.primaryTitle; } if(fs){ fs.textContent=F.stay; fs.title=F.stayTitle; }
   var ob=document.getElementById("openingbtn"); if(ob){ ob.textContent=LABELS.opening.button; ob.title=LABELS.opening.buttonTitle; }   /* Stage 7C */
+  var pb=document.getElementById("panelsbtn"); if(pb){ pb.textContent=LABELS.panels.button; pb.title=LABELS.panels.title; }   /* decision 164 */
   var lp=document.getElementById("layerpop"); if(lp){ lp.setAttribute("aria-label",LABELS.layers.aria);
     var h=lp.querySelector(".lp-head span"); if(h) h.textContent=LABELS.layers.heading;
     var g=lp.querySelector(".modes"); if(g) g.setAttribute("aria-label",LABELS.layers.ground); }
@@ -5398,8 +5400,20 @@ function sheetTab(id,back){
    the toast and the graphics notice; the dossier while it is closed (roadmap step 3, SW-3: it slides off screen, and its buttons stayed tab
    stops); the rail while it is hidden (the same) or the docked dossier stands over it (the dossier takes the rail's column). A failed start keeps the start-up guard's
    own (shell.html) */
+/* decision 164 (roadmap step 3): below 1080 px the "Panels" button in the tools opens and closes the rail (a disclosure: aria-expanded,
+   aria-controls). Opened, focus to the rail's selected tab; closed with focus inside it, focus back on the button. Docked (from 1080 px) the
+   button is not shown (style.css) */
+function setPanels(open){
+  if(docked) return;
+  var b=document.body, rail=document.getElementById("rail"), a=focusedEl(), inRail=!!(rail&&a&&rail.contains(a));
+  if(open){ if(presentation!=="study") setPresentation("study"); hideDispatch=false; b.classList.remove("rail-hidden"); syncVis(); syncInert();
+    focusTo([document.querySelector('.tab-btn[aria-selected="true"]'),document.querySelector(".tab-btn"),"panelsbtn"]); }
+  else { if(inRail) focusTo(["panelsbtn","play","restore"]); b.classList.add("rail-hidden"); syncInert(); }
+  if(typeof requestRender==="function") requestRender(2);
+}
 function syncInert(){
   if(bootFailed()||typeof document==="undefined"||!document.body||!document.body.children) return;
+  var pb=document.getElementById("panelsbtn"); if(pb) pb.setAttribute("aria-expanded",String(!document.body.classList.contains("rail-hidden")));   /* decision 164 */
   var top=sheetTop(), keep=top?document.getElementById(top):null, kids=document.body.children, dr=document.getElementById("drawer"), dOn=drawerShown();
   for(var i=0;i<kids.length;i++){ var k=kids[i]; if(!k||k.tagName==="SCRIPT"||k.id==="boot") continue;
     var want=(!!keep&&k!==keep&&!/^(live-phase|toast|glnotice)$/.test(k.id))||(k===dr&&!dOn)||
@@ -5622,6 +5636,7 @@ function buildUI(){
   document.getElementById("tour-next").addEventListener("click",function(){ if(OPENING.on) openingGo(1); else tourGo(1); });
   document.getElementById("tour-exit").addEventListener("click",function(){ if(OPENING.on) openingEnd("skip"); else exitTour(); });
   document.getElementById("openingbtn").addEventListener("click",function(){ openingStart(); focusId("tour-next"); });
+  var pnb=document.getElementById("panelsbtn"); if(pnb) pnb.addEventListener("click",function(){ setPanels(document.body.classList.contains("rail-hidden")); });
   document.getElementById("tourbar").addEventListener("keydown",function(e){
     if(!OPENING.on) return; var r=keyRow(e,"bar"); if(!r) return;
     e.preventDefault(); e.stopPropagation(); if(KEYS_DRY){ KEYS_DRY.push(r.id); return; } r.run(e); });

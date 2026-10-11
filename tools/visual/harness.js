@@ -412,6 +412,20 @@ async function interact(page,it,vp){
       await size(1280,800); NR.push(Object.assign({at:"widened back to 1280"},await look()));   /* the C7-C14 review's item 3: the docked rail shown and not inert */
       await size(1000,800);
       await first.keyboard.press("2"); await first.keyboard.press("Escape"); await first.waitForTimeout(700); NR.push(Object.assign({at:"2, Esc"},await look()));
+      /* decision 164: the Panels button by real clicks at 1000 px: shown (not docked), it opens the rail (focus on its selected tab) and closes
+         it again; with focus in the rail, closing hands it back to the button; at 1280 px it is not shown */
+      if(await first.evaluate(()=>!!document.getElementById("panelsbtn"))){
+        const pst=()=>first.evaluate(()=>{ const b=document.getElementById("panelsbtn"), r=document.querySelector(".rail");
+          return {shown:getComputedStyle(b).display!=="none"&&b.getBoundingClientRect().width>0, exp:b.getAttribute("aria-expanded"), rail:!document.body.classList.contains("rail-hidden"), inert:!!r.inert,
+            focus:document.activeElement&&(document.activeElement.id||document.activeElement.className)}; });
+        await first.evaluate(()=>{ select(null,null); document.body.classList.add("rail-hidden"); syncInert(); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });   /* the rail hidden, as at load below 1080 px */
+        const PB={}; PB.closed=await pst();
+        await first.click("#panelsbtn"); await first.waitForTimeout(500); PB.opened=await pst();
+        await first.click("#panelsbtn"); await first.waitForTimeout(500); PB.reclosed=await pst();
+        await first.click("#panelsbtn"); await first.waitForTimeout(500);
+        await first.evaluate(()=>{ const t=document.querySelector('.tab-btn[aria-selected="true"]'); if(t) t.focus(); setPanels(false); }); PB.back=await pst();
+        await size(1280,800); PB.docked=await pst(); await size(1000,800);
+        NR.push({at:"panels",pb:PB}); }
       /* decision 165: a dossier opened at 1000 px stops above the timeline (its bottom at or above the timebar's top) */
       await first.evaluate(()=>{ select("f","sthilaire"); });
       NR.push(Object.assign({at:"dossier at 1000"},await first.evaluate(()=>{ const d=document.getElementById("drawer").getBoundingClientRect(), t=document.querySelector(".timebar").getBoundingClientRect();
@@ -438,7 +452,7 @@ async function interact(page,it,vp){
       await first.emulateMedia({reducedMotion:"no-preference"}); await tick(); await first.waitForTimeout(300); const rm0=await rmS();
       await first.evaluate(()=>{ const s=document.getElementById("harness-still"); if(s) s.disabled=false; });
       LIVE.rmLive={on:rm1,off:rm0}; console.log("reduced motion while open: on "+JSON.stringify(rm1)+", off "+JSON.stringify(rm0));
-      console.log("narrow layout: "+NR.map(r=>r.tbTop!==undefined?r.at+": open "+r.open+", its bottom "+r.bottom+" px, the timebar's top "+r.tbTop+" px":r.at+": rail "+(r.railShown?"shown":"hidden")+(r.railInert?" inert":"")+", card "+(r.dispatchShown?"shown":"hidden")+", over "+r.over).join("; "));
+      console.log("narrow layout: "+NR.map(r=>r.pb?r.at+": "+JSON.stringify(r.pb):r.tbTop!==undefined?r.at+": open "+r.open+", its bottom "+r.bottom+" px, the timebar's top "+r.tbTop+" px":r.at+": rail "+(r.railShown?"shown":"hidden")+(r.railInert?" inert":"")+", card "+(r.dispatchShown?"shown":"hidden")+", over "+r.over).join("; "));
       console.log("shortcuts by real key presses: the switch "+S.onSwitch+", pressed "+S.off.pressed+"; Esc: open "+S.closed.open+", focus "+S.closed.focus+"; 2, M, ?, ., C, 1 changed nothing: "+S.same+"; Space played: "+S.space); }
     /* Stage 4B (docs/STAGE4_SPEC.md section A.6): the light through the day, without the shadow toe. The Field vantage and the low
        Pratzen view at 4x every hour 08:00-16:00, and three more views at 1x and 10.33x (the low Pratzen view has its own cases):
