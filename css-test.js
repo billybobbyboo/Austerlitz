@@ -587,8 +587,9 @@ if(cerrs) process.exitCode=1;
   if(!/visibility:hidden/.test(base)||!/visibility 0s linear \.32s/.test(base)) derr.push("style.css: the closed .drawer is not hidden after its .32 s slide: "+base.trim());
   if(!/visibility:visible/.test(on)||!/visibility 0s\}/.test(on.replace(/;?\s*\}$/,"}"))) derr.push("style.css: the open .drawer is not shown at once: "+on.trim());
   if(!/k===dr&&!dOn/.test(fs.readFileSync('app.js','utf8'))) derr.push("app.js: syncInert does not make the closed dossier inert");
+  if(!/bottom:var\(--tb\)/.test(base)) derr.push("style.css: the undocked .drawer reaches over the timeline (decision 165: bottom:var(--tb)): "+base.trim());
   derr.forEach(e=>console.log("  ! "+e));
-  console.log("dossier hidden when closed: "+(derr.length?derr.length+" wrong":"hidden after its slide, shown at once, inert while closed"));
+  console.log("dossier hidden when closed: "+(derr.length?derr.length+" wrong":"hidden after its slide, shown at once, inert while closed, above the timeline undocked (decision 165)"));
   if(derr.length) process.exitCode=1;
 }
 /* roadmap step 3 (docs/FINAL_AUDIT.md SW-10): the layout seams. The narrow layout's breakpoint is the complement of app.js's DOCK_MIN (a docked

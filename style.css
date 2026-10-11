@@ -141,7 +141,8 @@ body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 .legend .rose text{font-family:var(--serif)}   /* the rose's N, in the embedded serif (decision 141; it named Georgia in shell.html) */
 
 /* ---------- drawer ---------- */
-.drawer{position:fixed;right:0;top:0;bottom:0;width:var(--draw);z-index:30;background:var(--panel);
+/* undocked (below 1080 px) the dossier stops above the timeline, so Play and the slider stay uncovered (decision 165; WCAG 2.4.11) */
+.drawer{position:fixed;right:0;top:0;bottom:var(--tb);width:var(--draw);z-index:30;background:var(--panel);
   border-left:1px solid var(--line-2);transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s linear .32s;
   display:flex;flex-direction:column;visibility:hidden}
 .drawer.on{transform:translateX(0);visibility:visible;transition:transform .32s cubic-bezier(.4,0,.2,1),visibility 0s}
