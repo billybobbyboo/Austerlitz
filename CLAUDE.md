@@ -285,17 +285,19 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   formation the hover shows (`pickAt`), held by the self-test at each factor.
   Since roadmap step 3: the harness's live blocks on the self-test's page, required and judged (`checkLive`): `shortcuts` (the "?" button, Tab
   to the switch, Space, Esc, then 2, M, ?, ., C and 1 change nothing and Space plays, by real keys), `narrow` (a real resize: 1280 px in Study,
-  1000, back to 1280, 1000 again, 2 then Esc, 700: below 1080 px the rail hidden and inert or shown beside the dispatch card, never over it; docked again,
-  shown and not inert) and `rmLive` (the reduced-motion preference turned on and off on the open page: `RM` follows and the rail's transitions
+  1000, back to 1280, 1000 again, 2 then Esc, then the Panels button (decision 164) by real clicks, a dossier at 1000 px ending at the timebar's top
+  (decision 165), 700: below 1080 px the rail hidden and inert or shown beside the dispatch card, never over it; docked again, shown and not inert;
+  at 700 px the card's plateau reading whole (decision 174) and in Watch no caption reading cut) and `rmLive` (the reduced-motion preference turned on and off on the open page: `RM` follows and the rail's transitions
   stop, then not); on `first-run`, after its keys, the real wheel over the map with the card open (a sideways wheel keeps Follow and the card, a
   vertical one closes the card and zooms); the feature `SHORTCUTS` required; in every view an event tag shown in the caption whole
   (`capTag`) and, in Watch, the derived reading "shown, inside the caption's box and not ellipsized" (`capDerived`, decision 159). The
   self-test's step-3 checks (SW-3 to SW-9, SW-11, SW-12, S-1 to S-3, S-6, A-1 to A-3, decision 159, the event label's note; SW-1 is checked by
   `boot-check.js`, `css-test.js` and `runtime-test.js`, SW-2 by the `narrow` block, SW-10 by `css-test.js`) are named in `CHANGELOG.md`;
-  among them the A-3 target-size check, which holds the acts (15 px) and the phases (16 px) at their heights pending question 166. No limit
-  moved in step 3.
+  among them the A-3 target-size check (the phases' hit areas over the act row at least 24 x 24 px, the acts taking no press, decision 166 (a);
+  the event markers 2.5.8's essential exception, decision 167). One limit moved in step 3, on the owner's word (decision 164's Panels button):
+  `narrow-1024`'s unobstructed baseline [0.535, 0.628] to [0.533, 0.628], recorded in `CHANGELOG.md`; every other kept.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified roadmap step 3 build (md5 `b10dc72c...`, 2,037,511 bytes; re-baselined from the
+- `npm run check:baseline` passes only on the unmodified roadmap step 3 build (md5 `f023ae0e...`, 2,048,277 bytes; re-baselined from the
   roadmap step 2 build `af98f586...`, 1,927,346 bytes, itself from the step 1 build `7a86548c...` and the Stage 7D build `46773462...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.

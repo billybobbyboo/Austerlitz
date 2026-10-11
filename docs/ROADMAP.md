@@ -138,7 +138,7 @@ the default, it is applied in step 3 after the answers; "where" names the step t
 |---|---|---|---|
 | 162 | the start-up failure's words | kept as written | step 3 (C6) |
 | 163 | where the start-up cases run | inside `check:contrast` | step 3 (C6) |
-| 164 | a visible control for the rail below 1080 px | a "Panels" control in the tools, measured first, no limit moved without the owner's word | step 3, after the answers |
+| 164 | a visible control for the rail below 1080 px | a "Panels" control in the tools, measured first, no limit moved without the owner's word; it moved `narrow-1024`'s unobstructed baseline, and the owner chose to re-measure it once ([0.535, 0.628] to [0.533, 0.628]) | step 3, after the answers |
 | 165 | the undocked dossier over the timeline | stopped above it | step 3, after the answers |
 | 166 | the acts (15 px) and phases (16 px) as pointer targets | (a): the act bands stop taking clicks, the phase under the pointer takes them (31 px); an act stays a keyboard button, its click its first phase's | step 3, after the answers |
 | 167 | the event markers | 2.5.8's essential exception, the coinciding events reached through each other's dossiers | step 3 (C15, C16) |
@@ -148,15 +148,16 @@ the default, it is applied in step 3 after the answers; "where" names the step t
 | 171 | the reading given back when the opening or the tour ends | said in the end message | step 3, after the answers |
 | 172 | a message when a focused map item leaves the map; the map ring's contrast | both, in step 5 | step 5 |
 | 173 | the Eyes button's name | begins with its visible words; `aria-pressed` dropped (the name carries the state); the 5E check's assertions replaced equally strictly | step 3, after the answers |
-| 174 | the plateau reading at 720 px and below in Study | shown in the caption | step 3, after the answers |
+| 174 | the plateau reading at 720 px and below in Study | shown in the caption; then, the caption's box too narrow to hold it whole (decision 159), the owner's second answer: kept in the dispatch card | step 3, after the answers |
 | 175 | the screen-reader session | run by the owner or a tester; step 3 done when it is recorded | open until recorded |
 
 ### What step 3 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)
 
-- **The screen-reader session** (`docs/step3-evidence/sr-session.md`, 23 items, NVDA with Chrome and VoiceOver with Safari): not run; nothing
+- **The screen-reader session** (`docs/step3-evidence/sr-session.md`, 24 items, NVDA with Chrome and VoiceOver with Safari): not run; nothing
   a screen reader speaks is verified (question 175). Firefox, Safari and a GPU are not run either.
-- **A-3 not complete:** the acts (15 px) and phases (16 px) below 24 px (question 166; the plan's C17, phases taking the acts' clicks, not
-  built); the event markers (question 167).
+- **A-3:** done but for the event markers, 2.5.8's essential exception (decision 167); at 390 px the narrowest phases are 20 px wide, as before.
+- **Decision 174's reading:** in Study where CSS hides the card (430 px tall or less, the 390 px first screen under its card, the rail shown
+  at 720 px and below) it shows nowhere, as before step 3; in Watch at 720 px and below it gives way whole where the caption cannot hold it.
 - **To step 4:** the ceiling-derived climbs' marking in the opening's bar (handed on by step 2; its words depend on their dating).
 - **To step 5:** S-4 and the plan links and the selection ring drawn at true positions under a reading (question 170 (b), (c)); the map
   ring's contrast on any ground and a message when a focused item leaves the map (question 172); a focused map counter keeps its compact

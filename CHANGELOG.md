@@ -2,11 +2,13 @@
 
 ## 2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6)
 
-**Status: for review (#51). The build changed: `austerlitz-command-map.html` 2,037,511 bytes, md5 `b10dc72cb9af5900f7cb0b57e3488e91` (was the step-2 build, 1,927,346
+**Status: for review (#51). The build changed: `austerlitz-command-map.html` 2,048,277 bytes, md5 `f023ae0e425653deced975402b4cdea7` (was the step-2 build, 1,927,346
 bytes, md5 `af98f58641a29cb4934ca9d28bf86071`).** `check:baseline` moves to this build. `check:data`'s reference is not moved: step 3 is
 presentation and software only, and no guarded declaration changed (all 128 identical to `archive/step2-af98f586.html`, run after every
-code commit). The next owner decision is 176: this step puts questions 162-175 to the owner (below), each with the conservative default
-implemented meanwhile.
+code commit). The next owner decision is 176: this step put questions 162-175 to the owner (below), each with the conservative default
+implemented meanwhile; the owner decided all as recommended on 11 October 2026, applied after the answers (below), with two answers asked
+for on the way: `narrow-1024`'s unobstructed baseline re-measured once for the Panels button (the one limit step 3 moves,
+[0.535, 0.628] to [0.533, 0.628]), and decision 174's reading kept in the dispatch card where the caption cannot hold it whole.
 
 **How it was done.** The step's plan (not committed): the current state read from the code, then a design workflow (one designer per
 cluster, each proposal challenged by an implementation skeptic and an accessibility skeptic, then a synthesizer and a completeness critic).
@@ -64,9 +66,9 @@ commit or recorded here. The plan's C17 (the phases taking the acts' clicks) wai
   shows), so that nothing else moves when the focus does. A click alone on an item selects it.
 - **A-3: target sizes (C15, C16).** The time rail and the event markers' row 24 px (the track 53 to 55 px; the timeline's height
   unchanged), the panels' close and back buttons, the Sources button, the Layers close and the scope's clear at least 24 px. Events that
-  start at the same minute list one another in their dossiers ("Starting at the same minute"), so each has a pointer path. **Not done:** the
-  acts (15 px) and the phases (16 px) stay below 24 px, pending question 166 (the self-test holds them at those heights meanwhile); the event
-  markers (8 px drawn, a 20 px hit area) are proposed as 2.5.8's essential exception, question 167.
+  start at the same minute list one another in their dossiers ("Starting at the same minute"), so each has a pointer path. The acts
+  (15 px) and the phases (16 px), left below 24 px until the owner's answer, are taken in D5 (decision 166 (a), below); the event markers
+  (8 px drawn, a 20 px hit area) are 2.5.8's essential exception (decision 167).
 - **Decision 159: the Watch caption (C18; handed on by step 2).** Measured against `#tb-cap`'s box: where the caption shows the derived
   readings (Watch, and Study with the dispatch hidden) they stand before the event names; the act, the phase's title and the event names
   shrink first, and what still cannot fit gives way whole (`fitCaption`: the reading's emphasis, then the later reading, then the events)
@@ -104,7 +106,8 @@ build had meanwhile; where a recommendation differs from its default (164, 165, 
 
 **After the owner's answers (11 October 2026): decisions 164, 165, 166 (a), 168, 171, 173, 174 applied.** The commits: the records `494a6fd`;
 D1 `69b21fc`, D2 `29f0c46`, D3 `f9edba1`, D4 `4513ffb`, D5 `823c0d9`, their review fixes `b7543ff`; D6 `d114fe1`, the re-measure `3be0491`, the
-review fixes of D6 `ff7525b`. Each was reviewed independently; every finding is fixed in its "review fixes" commit.
+review fixes of D6 `ff7525b`; 174 in the card, the owner's second answer, `c76f7cc`, its review fixes `8ca1899`; the manifest `c5a7600`; the
+records. Each was reviewed independently; every finding is fixed in its "review fixes" commit or recorded here.
 - **165 (D1):** below 1080 px the dossier stops above the timeline (`.drawer{bottom:var(--tb)}`), so Play and the slider are never covered.
 - **173 (D2):** the timeline's Eyes button is named by its visible words, then the reading in full ("Eyes: Napoleon. Whose eyes? Napoleon's
   headquarters (press to change)": `eyesShort`, `eyesName`); `aria-pressed` dropped. The 5E check's assertions replaced equally strictly.
@@ -112,8 +115,14 @@ review fixes of D6 `ff7525b`. Each was reviewed independently; every finding is 
   %k of %n: %t, %c.", `LABELS.tour`), the phase announcement folded into it (`TOUR_APPLYING`); leaving says "The tour has ended." When the
   opening or the tour gives the visitor's reading back, its end message says so ("Whose eyes? Back to %r (a model reading).",
   `LABELS.eyesBack`).
-- **174 (D4):** at 720 px and below, where the card hides its readings, the caption shows them in Study, fitted (the override yields to
-  `fitCaption`'s `.fit-off`).
+- **174 (D4, then the owner's second answer):** D4 showed the readings in the caption at 720 px and below in Study; the self-test's 700 px
+  measure then found the caption's box there 160-195 px against the plateau reading's 240 px, so the reading was drawn cut. Asked, the
+  owner chose the dispatch card (`c76f7cc`): at 720 px and below the card keeps its readings, each its own line (243 px; the card's height
+  unchanged at 390 and 700 px); the caption shows them only where the card is hidden, as above 720 px. Its review found the caption at
+  that width cut the first reading wherever it shows them (Watch; Study with the dispatch hidden), a fault from before: `fitCaption` now
+  makes even the first reading give way whole where it cannot stand (`8ca1899`). Recorded: in Study where CSS hides the card (a window
+  430 px tall or less, the 390 px first screen under its card, the rail shown at 720 px and below) the reading shows nowhere, as before
+  step 3; at 720 px and below in Watch the plateau reading gives way whole where it cannot fit.
 - **166 (a) (D5):** the act row takes no pointer press; each phase's hit area reaches up over it (a 15 px `::before`, 31 px tall; at least
   67 px wide at 1280 x 720), and the phase under the pointer takes the press; an act stays a keyboard button, its click its first phase's
   (`freeCam=false` included); the label is its own box (`.step-l`), so the drawn timeline is unchanged; each phase's title names its act.
@@ -128,10 +137,10 @@ review fixes of D6 `ff7525b`. Each was reviewed independently; every finding is 
   and 5 at 721). Asked, the owner chose to re-measure once: `UNOBSTRUCTED["narrow-1024"]` was [0.535, 0.628], is [0.533, 0.628]; its drop
   limit 6 kept; no other limit moved.
 - **Tests:** the harness's `narrow` block adds the Panels button by real clicks, a dossier opened at 1000 px (its bottom at or above the
-  timebar's top) and the caption at 700 px in Study (the plateau reading whole, and at the first minute where both readings are due, 09:05,
-  each whole or given way whole); the self-test's focus, SW-11, Eyes, phase-label (with a negative control) and target-size checks
-  replaced or extended as each commit says; `css-test.js` holds the dossier's stop, the Eyes button's name, the 720 px override and the
-  Panels button.
+  timebar's top) and, at 700 px with the rail hidden, the card's plateau reading whole in Study and, in Watch at the first minute where both
+  readings are due (09:05), the caption's each whole or given way whole; the self-test's focus, SW-11, Eyes, phase-label (with a negative control) and target-size checks
+  replaced or extended as each commit says; `css-test.js` holds the dossier's stop, the Eyes button's name, the card's readings kept at 720 px (every rule of that block
+  read, with a negative control) and the Panels button.
 
 **Tests added or made strict** (no assertion loosened; an assertion of old behaviour replaced by an equally strict one on the new: the
 "?" overlay's Tab cycle has three stops, the focus check's Clean expectation is the pressed switch drawn whole, the step-2 caption check
@@ -176,7 +185,17 @@ frame after each toggle and so stalled the real-key checks after it; it now coun
 `FX.rts`) without drawing. Whether a GPU shows the stall is not measured.
 
 **Checks run** (each on a clean checkout of the commit named, never two heavy checks at once):
-On the final build (`191ab98`, md5 `b10dc72c…`; `0e2b348` adds only the manifest and the records commits only records):
+On the final build (`8ca1899`, md5 `f023ae0e…`, 2,048,277 bytes; `c5a7600` adds only the manifest, the records commits only records):
+- `npm test`: all 9 suites pass, and the height guard (5 min).
+- `npm run check:data`: all 128 declarations byte-identical to `archive/step2-af98f586.html`.
+- `npm run check:contrast`: every text at AA in the embedded faces in every state reached; the six boot cases pass (6 min 41 s).
+- `npm run check:selftest`: 241 checks, every one passing (12 min 20 s); the live blocks pass: `shortcuts`; `narrow` with the Panels button
+  (closed, opened with focus on the rail's tab, closed, focus handed back, not shown docked), the dossier at 1000 px ending at the timebar's
+  top (709 px against 709.5), the card's plateau reading whole at 700 px; `rmLive`. Its only failures were three checks renamed by the
+  owner's answers, missing from the manifest, regenerated from this run (`c5a7600`).
+- `npm run check:chronology` and `npm run check:visual` (on `c5a7600`): running when this was written; the result follows in the next records commit.
+
+On the build before the owner's answers (`191ab98`, md5 `b10dc72c…`; `0e2b348` adds only the manifest):
 - `npm test`: all 9 suites pass, and the height guard (6 min 53 s).
 - `npm run check:data`: all 128 declarations byte-identical to `archive/step2-af98f586.html`.
 - `npm run check:chronology`: 0 errors; the movement audit 0 findings; still open, as before, the ceiling-flagged legs sthilaire@3,
@@ -206,16 +225,16 @@ Before it, on each segment's snapshot (in order; each failure fixed in the commi
 
 **What remains uncertain or not verified.**
 - **The screen-reader session** (`docs/ROADMAP.md` step 3's last item) needs a person: `docs/step3-evidence/sr-session.md` is the script
-  (23 items, NVDA with Chrome and VoiceOver with Safari); **not run, not verified** (question 175). What a screen reader speaks for the
+  (24 items, NVDA with Chrome and VoiceOver with Safari); **not run, not verified**; decision 175: run by the owner or a tester, step 3 done when it is recorded. What a screen reader speaks for the
   dialogs, the switch, the map layer and the live regions is read from the DOM only.
 - Only Chromium (the harness's engine, software WebGL) was run: Firefox and Safari (`inert`, `aria-modal`, `:focus-within`, the
   density query) and a GPU are not verified.
 - The context-loss case's count of three r128's "object does not belong to this context" warnings varies by run (24 and 20 measured); its
   bound is 40.
-- Not in step 3 (recorded, with their questions): the acts' and phases' size (166); the plan links and the selection ring under a reading,
-  and S-4 (170 (b), (c), step 5); the focus ring's contrast on any ground and a message when a focused item leaves the map (172, step 5);
-  the Eyes button's name (173); the plateau reading at 720 px and below in Study (174); the ceiling-derived climbs in the opening's bar
-  (step 4, with their dating).
+- Not in step 3 (recorded, with the owner's decisions): the plan links and the selection ring under a reading, and S-4 (170 (b), (c), step
+  5); the focus ring's contrast on any ground and a message when a focused item leaves the map (172, step 5); the ceiling-derived climbs
+  in the opening's bar (step 4, with their dating). At 390 px the narrowest phases are 20 px wide (below 2.5.8's 24, as before step 3).
+- The screen-reader script now has 24 items (item 24: the guided tour's focus and words, decision 168).
 
 ## 2026-10 · Roadmap step 2: integrity on screen (decisions 125 (a), 126, 127 (b), 128 (a), 129, 135; owner decisions 142-161)
 
