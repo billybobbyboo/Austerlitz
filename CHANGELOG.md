@@ -193,7 +193,13 @@ On the final build (`8ca1899`, md5 `f023ae0e…`, 2,048,277 bytes; `c5a7600` add
   (closed, opened with focus on the rail's tab, closed, focus handed back, not shown docked), the dossier at 1000 px ending at the timebar's
   top (709 px against 709.5), the card's plateau reading whole at 700 px; `rmLive`. Its only failures were three checks renamed by the
   owner's answers, missing from the manifest, regenerated from this run (`c5a7600`).
-- `npm run check:chronology` and `npm run check:visual` (on `c5a7600`): running when this was written; the result follows in the next records commit.
+- `npm run check:chronology` (on `c5a7600`): 0 errors; the movement audit 0 findings; still open as before.
+- `npm run check:visual` (on `c5a7600`, compared case by case with the step-2 reference run): 30 views of 30, "STAGE0: all checks passed"
+  (75 min 46 s); the in-app self-test 241 of 241 in the full run; the live blocks pass; `capDerived` true in all 11 Watch views; `capTag`
+  true in the 24 views that show a tag, null in the other 6. Against the step-2 reference three values differ, all inside their limits:
+  `hybrid-dimmed`'s unobstructed share 0.8827 to 0.8824 (and 0.8486 to 0.8483 at 1280 x 720), `narrow-390`'s drops 4 to 5 (limit 7) and
+  `narrow-1024`'s unobstructed share 0.5364 to 0.5334 (its baseline re-measured once to 0.533 on the owner's word, decision 164). Every
+  other measure of the 30 views is unchanged.
 
 On the build before the owner's answers (`191ab98`, md5 `b10dc72c…`; `0e2b348` adds only the manifest):
 - `npm test`: all 9 suites pass, and the height guard (6 min 53 s).
