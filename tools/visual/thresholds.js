@@ -101,6 +101,7 @@ DROP_LIMIT["plans-overview"]=12;   /* was 11; loosened (decision 141) */
    viewport's baseline, which the measure falls below, is lowered to it rounded down to 0.1 point. first-run and first-run-laptop met their
    limits unchanged (question 145 not needed). Each value: was, is and why, in CHANGELOG.md */
 UNOBSTRUCTED["narrow-390"]=[0.438,0.507];   /* decision 146 (roadmap step 2, the owner's answer (a)): narrow-390 re-measured once under decision 127 (b)'s words; was [0.46,0.507], is [0.438,0.507] */
+UNOBSTRUCTED["narrow-1024"]=[0.533,0.628];   /* decision 164 (roadmap step 3, the owner's answer of 11 October 2026): narrow-1024 re-measured once for the Panels button, which widens the tools' box by 37 px (measured 0.5334 on its build, 0.5364 before); was [0.535,0.628], is [0.533,0.628]; its drop limit kept */
 const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harness machine */
 /* Stage 2E (section J, 2E): every paper-map view is a true north-up plan: GEOREF.NORTH within 0.5 degrees of up; screen pixels
    per true km at four places equal to 1% (on the 2D build's tilted staff map they differ by 6.0% and north is 17.8 degrees
