@@ -298,7 +298,7 @@
   function phaseLabels(){
     if(!document.getElementById("tb-vm")||typeof setClock!=="function") return null;
     var t0=clock, cut=[], S=document.querySelectorAll("#phases .step");
-    for(var i=0;i<PHASES.length;i++){ setClock(PHASES[i].t0+1,{instant:true,camera:false}); var b=S[i]; if(b.scrollWidth>b.clientWidth+1) cut.push(PHASES[i].label); }
+    for(var i=0;i<PHASES.length;i++){ setClock(PHASES[i].t0+1,{instant:true,camera:false}); var b=S[i], l=b.querySelector(".step-l")||b; if(l.scrollWidth>l.clientWidth+1) cut.push(PHASES[i].label); }   /* roadmap step 3 (decision 166): the label's own box where it has one */
     setClock(t0,{instant:true,camera:false});
     return {width:window.innerWidth, cut:cut};
   }

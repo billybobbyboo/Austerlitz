@@ -249,12 +249,16 @@ p.conf{font-size:var(--t-small);color:var(--text-muted);line-height:1.5;margin:0
 #sb-label{font-size:var(--t-micro);color:var(--text-muted);font-variant-numeric:tabular-nums}
 
 .step{position:absolute;top:0;height:16px;margin:0;padding:0 2px 0 4px;background:none;border:0;border-left:1px solid var(--line-2);
-  cursor:pointer;color:var(--text-muted);font-size:var(--t-ui);line-height:16px;text-align:left;white-space:nowrap;overflow:hidden;
-  text-overflow:ellipsis;transition:color .18s,background .18s}
+  cursor:pointer;color:var(--text-muted);font-size:var(--t-ui);line-height:16px;text-align:left;white-space:nowrap;overflow:visible;
+  transition:color .18s,background .18s}
+.step-l{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}   /* decision 166 (a): the label carries the ellipsis */
+/* decision 166 (a), WCAG 2.5.8: each phase's hit area reaches up over the act row (16 + 15 = 31 px); the acts take no pointer press */
+.step::before{content:"";position:absolute;left:-1px;right:0;top:-15px;height:15px}
 .step:hover{color:var(--text);background:rgba(var(--line-rgb),.06)}
 /* the current phase is always whole (decision 53): it may run over its neighbours, on an opaque plate */
 .step[aria-current="true"]{color:var(--text-hi);background:rgb(var(--scrim-rgb));box-shadow:inset 0 2px 0 var(--accent);
   overflow:visible;min-width:max-content;padding-right:6px;z-index:2}
+.step[aria-current="true"] .step-l{overflow:visible}
 
 #prog{position:absolute;left:0;right:0;top:0;height:2px;background:rgba(var(--line-rgb),.10);transform-origin:left center}
 
@@ -494,7 +498,7 @@ body.pm-map #restore{display:block}
 #layerpop .modes{margin:0}
 
 /* ---------- acts across the top of the timeline ---------- */
-.tb-acts{position:absolute;left:0;right:0;top:0;height:15px}
+.tb-acts{position:absolute;left:0;right:0;top:0;height:15px;pointer-events:none}   /* decision 166 (a): the phase under it takes the press */
 .act-btn{position:absolute;top:0;height:15px;margin:0;background:rgba(var(--line-rgb),.05);border:0;border-left:2px solid var(--line-2);cursor:pointer;
   padding:0 4px 0 5px;font-size:var(--t-ui);line-height:15px;letter-spacing:.03em;color:var(--text-muted);text-align:left;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .18s,background .18s}
