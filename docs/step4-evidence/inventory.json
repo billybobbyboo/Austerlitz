@@ -5332,8 +5332,8 @@
    "cls": "method",
    "file": "data.js",
    "line": 775,
-   "label": "Historical record / What the sources attest: who was there, roughly how many, which villages were attacked and when. Marked as fact in an event's dossier.",
-   "text": "",
+   "label": "Historical record",
+   "text": "What the sources attest: who was there, roughly how many, which villages were attacked and when. Marked as fact in an event's dossier.",
    "claim": "unchecked",
    "by": []
   },
@@ -5342,8 +5342,8 @@
    "cls": "method",
    "file": "data.js",
    "line": 776,
-   "label": "Reconstruction / How this map represents the record: a plotted position, a route between anchors, a frontage. Graded A, B or C for confidence; a formation's dossier names the grade as its position's: documented, estimated or reconstructed.",
-   "text": "",
+   "label": "Reconstruction",
+   "text": "How this map represents the record: a plotted position, a route between anchors, a frontage. Graded A, B or C for confidence; a formation's dossier names the grade as its position's: documented, estimated or reconstructed.",
    "claim": "unchecked",
    "by": []
   },
@@ -5352,8 +5352,8 @@
    "cls": "method",
    "file": "data.js",
    "line": 777,
-   "label": "Derived reading / What the engine computes from the plot, such as the holding on the heights or the centre-separation test. Never a source figure; the holding on the heights and the centre-separation test are marked derived wherever they are shown.",
-   "text": "",
+   "label": "Derived reading",
+   "text": "What the engine computes from the plot, such as the holding on the heights or the centre-separation test. Never a source figure; the holding on the heights and the centre-separation test are marked derived wherever they are shown.",
    "claim": "unchecked",
    "by": []
   },

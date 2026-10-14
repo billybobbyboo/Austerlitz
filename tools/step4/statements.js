@@ -38,17 +38,20 @@ const CLASSES=[
 ];
 const T_LEN=40;
 function statements(ROOT){
+  ROOT=path.resolve(ROOT);
   const LS=require(path.join(ROOT,"tools","lang-scan.js"))(ROOT);
   const out=[], byRef=new Map();
   LS.records.filter(r=>(r.file==="data.js"||r.file==="analysis.js")&&r.guarded&&r.text!=="").forEach(r=>{   /* an empty story is no statement */
     for(const [cls,re,textIdx] of CLASSES){ const m=re.exec(r.path); if(!m) continue;
       if(textIdx==null){ const s={ref:r.path,cls,text:r.text,t:r.text.slice(0,T_LEN),label:null,file:r.file,line:r.line}; out.push(s); byRef.set(s.ref,s); return; }
       const ref=m[1], part=+m[2]; let s=byRef.get(ref);
-      if(!s){ s={ref,cls,text:"",t:"",label:null,parts:[],file:r.file,line:r.line}; out.push(s); byRef.set(ref,s); }
+      if(!s){ s={ref,cls,text:"",t:"",label:null,parts:[],ti:textIdx,file:r.file,line:r.line}; out.push(s); byRef.set(ref,s); }
       s.parts[part]=r.text;
       return; } });
-  out.forEach(s=>{ if(!s.parts) return; const ti=CLASSES.find(c=>c[0]===s.cls)[2];
-    s.label=s.parts.filter((x,i)=>i!==ti&&x!=null).join(" / ")||null; s.text=s.parts[ti]||""; s.t=s.text.slice(0,T_LEN); delete s.parts; });
+  /* the text's index is the pattern's that made the pair (two classes, "method" among them, have patterns of both kinds; the review of
+     c69890a: looked up by class name, SOURCE_NOTE.layers lost their text) */
+  out.forEach(s=>{ if(!s.parts) return; const ti=s.ti;
+    s.label=s.parts.filter((x,i)=>i!==ti&&x!=null).join(" / ")||null; s.text=s.parts[ti]||""; s.t=s.text.slice(0,T_LEN); delete s.parts; delete s.ti; });
   return out;
 }
 module.exports={statements,CLASSES,T_LEN};
