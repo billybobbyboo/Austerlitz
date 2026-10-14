@@ -79,7 +79,7 @@ after, computed by `tools/stage2/chronology.js`).
 sources sheet. *Recommendation and default.* (a). *Status.* Pending (K10).
 
 **186. The drained count.** *Options.* (a) Both kept, attributed (Suchet's as Sokolov quotes it; the usual figures, their source not
-traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and default.* (a). *Status.* Pending (K9).
+traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and default.* (a). *Status.* Implemented (K9).
 
 **187. The claims on screen.**
 - *Options.* (i) One vocabulary (`CLAIM_WORDS`, `CLAIM`, `SRC_LABEL`, `CONF_TEXT.A`). (ii) Visibility: an index in the sources sheet, then a

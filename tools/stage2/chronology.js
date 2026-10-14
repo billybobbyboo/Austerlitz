@@ -333,7 +333,7 @@ const REVIEW_CITES={
       question 144): it dates the arrival in the villages (this row; the telnitz event at 07:00), not the start of the columns'
       descent, so it takes neither side. Since roadmap step 4 the I Column departs at 07:00 (dok@1, as the disposition ordered); its
       head at Telnitz at half past eight in Mikhailovsky-Danilevsky (1844, p. 179) is inside this row's 07:00-09:00 */
- "dok@8":["timeline 8: Vandamme takes the height above @14:30","event ice @15:00","timeline 8: French artillery fires on the @15:00"],
+ "dok@8":["timeline 8: Vandamme takes the height above @14:30","event ice @15:00","timeline 8: French artillery fires on the @15:00","timeline 8: French artillery fires on the @14:30"],
  "dok@9":["event ice @15:00","timeline 8: French artillery fires on the @15:00"],
  "lang@1":["source-note body.5 @07:30","source-note body.5 @08:00","event columns-move dispute @07:30","event columns-move dispute @08:00"],
  "lang@2":["timeline 2: Langeron attacks Sokolnitz; Przybyszewski goes @08:00","event sokolnitz @08:00"],
@@ -371,7 +371,8 @@ const REVIEW_CITES={
    range cited by caffarelli@6, suchet@6 and lich@6. ---- */
 const ALLOW_TIMED={
  "timeline 0: Weyrother reads the dispositions @01:00":"before the clock's day (04:00), at the Allied headquarters' first anchor: there is no move to date",
- "timeline 0: Napoleon is on the Zuran mound @04:00":"the headquarters' first anchor (gqg@0, on the Zuran from 04:00), restated as the map's own placing beside \"the hour he took post is not established\" (roadmap step 2, H-12; question 160): there is no move to date",
+ "timeline 0: Napoleon mounted at one in the morning @04:00":"the headquarters' first anchor (gqg@0, on the height of his bivouac, taken to be the Zuran, from 04:00), restated as the map's own placing beside \"the hour he took post is not established\" (roadmap step 2, H-12; question 160): there is no move to date",
+ "timeline 0: Napoleon mounted at one in the morning @07:30":"the dispositions' half past seven for the marshals at his bivouac (no. 9535, p. 443): an order of the evening before, not a movement",
  "tour 4 x @04:00":"the plateau reading's clock (a derived reading that sim-test.js checks), not a movement",
  "tour 4 x @07:15":"the plateau reading's clock (a derived reading that sim-test.js checks), not a movement",
  "command al@7: From about noon @12:00":"the Allied command's knowledge (the Command view), not a movement",
@@ -382,7 +383,7 @@ const ALLOW_TIMED={
  "event davout dispute @09:00":"the sources' side of the leading brigade's arrival (Stutterheim and the Moniteur's remarks have Friant's men up about nine, Schönhals attacking about nine), cited by no row: no anchor dates the arrival at the Goldbach, and friant@2 judges the village held at 09:30 (Davout)",
  "event telnitz-retaken dispute @08:30":"the other side of the named conflict friant@2 (question 177), restated in the event's dispute: this map's 08:30",
  "event telnitz-retaken dispute @09:00":"one side of the event's dispute, Schönhals's Friant attacking anew and Stutterheim's reinforcement about nine, cited by no row: friant@2 judges the village held at 09:30 in Davout's report, and both are later than the map's 08:30",
- "source-note body.5 @09:00":"the sources' side of the leading brigade's arrival at the Goldbach (about nine in Stutterheim, Schönhals and the Moniteur's remarks), cited by no row: no anchor dates the arrival, and friant@2 judges the village held at 09:30",
+ "source-note body.5 @09:00":"the sources' side of the leading brigade's arrival at the Goldbach (about nine in Stutterheim and the Moniteur's remarks), cited by no row: no anchor dates the arrival, and friant@2 judges the village held at 09:30",
  "event davout why @08:00":"the other side of the named conflict friant@2 (question 177), restated in the event's why",
  "event raigern @04:00-04:45":"the division at Raigern at the day's start, the state the event names (since the night), not the departure that friant@1 dates",
  "event raigern why @04:00":"the other side of the named conflict friant@1 (question 177), restated: this map's 04:00 for the departure from Raigern",

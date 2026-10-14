@@ -24,12 +24,12 @@
   "tour": 9
  },
  "byClaim": {
-  "unchecked": 612,
-  "attributed": 30,
-  "disputed": 39,
-  "uncertain": 5,
+  "unchecked": 585,
+  "attributed": 47,
+  "disputed": 47,
+  "uncertain": 6,
   "derived": 2,
-  "interpretation": 8
+  "interpretation": 9
  },
  "rows": [
   {
@@ -94,9 +94,30 @@
    "file": "data.js",
    "line": 57,
    "label": "before dawn",
-   "text": "Napoleon is on the Zuran mound with Berthier; his marshals have been ordered to join him for the morning's orders. The map places him there from 04:00; the hour he took post is not established.",
-   "claim": "unchecked",
-   "by": []
+   "text": "Napoleon mounted at one in the morning to ride round his posts (the 30th Bulletin), and Thiebault has him on horseback long before day; the dispositions called his marshals to his bivouac for half past seven. His post, 'la butte' of the orders, is taken here to be the Zuran; the map places him there from 04:00, and the hour he took post is not established.",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "corr11_1863",
+     "at": "no. 9541, p. 450",
+     "rd": "corr11.p450.reserve-one-oclock"
+    },
+    {
+     "src": "thiebault3_1894",
+     "at": "t. III, p. 456",
+     "rd": "thieb.p456.before-day-reread"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9535, p. 443",
+     "rd": "corr11.p443.seven-thirty-reread"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9534, p. 441",
+     "rd": "corr11.p441.butte-reread"
+    }
+   ]
   },
   {
    "ref": "PHASES[#1].title",
@@ -190,7 +211,7 @@
     },
     {
      "src": "schoenhals1873",
-     "at": "pp. 157-159",
+     "at": "pp. 159-160",
      "rd": "schoenhals1873.p157-159.departure",
      "side": "Friant attacking about nine"
     },
@@ -367,8 +388,24 @@
    "line": 82,
    "label": null,
    "text": "The sun of Austerlitz, as memoirs call it",
-   "claim": "unchecked",
-   "by": []
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "thiebault3_1894",
+     "at": "t. III, p. 461",
+     "rd": "thieb.p461.sun"
+    },
+    {
+     "src": "marbot1891",
+     "at": "t. I, p. 260",
+     "rd": "marbot.p260.centre-sun"
+    },
+    {
+     "src": "lejeune1895",
+     "at": "t. I, pp. 35-36",
+     "rd": "lejeune.p35-36.sun-eight"
+    }
+   ]
   },
   {
    "ref": "PHASES[#4].title",
@@ -548,7 +585,7 @@
    "file": "data.js",
    "line": 102,
    "label": null,
-   "text": "Grand Duke Constantine commits the Guard, which Stutterheim calls the reserve of the Allied right, against Vandamme on the Old Vineyards. The Guard infantry breaks two French battalions and the Guard cavalry carries off the eagle of the 4th Line, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brings up the Guard cavalry and Rapp charges with the chasseurs and Mamelukes; a division of Bernadotte's corps, Drouet's by his own memoir as Sokolov quotes it, meets the attack, though Thiebault counts I Corps' 2nd division among the troops that took no part.",
+   "text": "Grand Duke Constantine commits the Guard, which Stutterheim calls the reserve of the Allied right, against Vandamme on the Old Vineyards. In Mikhailovsky-Danilevsky the Guard infantry overthrows the first two French columns with the bayonet; in Schönhals the Life Guard Horse cuts down a battalion of the 4th Line and a light battalion of the 24th and takes the 4th's eagle, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brings up the Guard cavalry and Rapp charges with the chasseurs and Mamelukes; a division of Bernadotte's corps, Drouet's by his own memoir as Sokolov quotes it, meets the attack, though Thiebault counts I Corps' 2nd division among the troops that took no part.",
    "claim": "disputed",
    "by": [
     {
@@ -577,6 +614,24 @@
      "src": "marbot1891",
      "at": "t. I, p. 260",
      "rd": "marbot1891.p260.eagle"
+    },
+    {
+     "src": "mikhailovsky1846",
+     "at": "p. 259",
+     "rd": "mikhailovsky1846.p259.guard-columns",
+     "side": "the Guard infantry overthrew the first two French columns with the bayonet"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "p. 164",
+     "rd": "schoenhals1873.p164.guard-blasowitz",
+     "side": "the Life Guard Horse cut down a battalion of the 4th and one of the 24th Light"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9541, p. 451",
+     "rd": "corr11_1863.p451.guard-centre-reserve",
+     "side": "a battalion of the 4th charged and overthrown by the Russian Guard horse"
     }
    ]
   },
@@ -741,9 +796,37 @@
    "file": "data.js",
    "line": 119,
    "label": null,
-   "text": "By the afternoon a way out for the Allied left runs south over the defile at Augezd and the frozen meres beyond. This map reads it as a way left open, and the retreat the disposition ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, as running through ground the French held. French guns on the heights fire down on the ice. The 30th Bulletin claimed twenty thousand Russians drowned here; when the ponds were drained, thirty-eight guns and about a hundred and thirty horses came out of them, and two men - figures as usually given. Napoleon watches from the chapel of St Anthony above Augezd.",
-   "claim": "unchecked",
-   "by": []
+   "text": "By the afternoon a way out for the Allied left runs south over the defile at Augezd and the frozen meres beyond. This map reads it as a way left open, and the retreat the disposition ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, as running through ground the French held. French guns on the heights fire down on the ice. The 30th Bulletin claimed twenty thousand Russians drowned here, Schönhals, on the Telnitz priest's word, sixty to at most a hundred. General Suchet's report of 16 December 1805, as Sokolov quotes it, has thirty-six guns, 138 horses and three bodies taken from the pond near Augezd when it was drained; the figures usually given, thirty-eight guns, about a hundred and thirty horses and two men, were not traced to a source in this reading. Napoleon watches from the chapel of St Anthony above Augezd (Schönhals).",
+   "claim": "disputed",
+   "by": [
+    {
+     "src": "materialien1806",
+     "at": "p. 121",
+     "rd": "materialien1806.p121.zusatz15",
+     "side": "twenty thousand drowned (the 30th Bulletin, quoted)"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 169-170",
+     "rd": "schoen.p169-170.tellnitz-pfarrer",
+     "side": "sixty to at most a hundred"
+    },
+    {
+     "src": "sokolov2006",
+     "at": "t. II, pp. 70-71",
+     "rd": "sokolov.p71.suchet-drain"
+    },
+    {
+     "src": "materialien1806",
+     "at": "pp. 105-106",
+     "rd": "materialien1806.p105.retraite-kobelnitz"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "p. 167",
+     "rd": "schoen.p167.kapelle"
+    }
+   ]
   },
   {
    "ref": "PHASES[#8].events[0]",
@@ -761,9 +844,20 @@
    "file": "data.js",
    "line": 122,
    "label": "c. 15:00",
-   "text": "French artillery fires on the ice of the Satschan mere.",
-   "claim": "unchecked",
-   "by": []
+   "text": "French artillery fires on the ice of the Satschan mere. No source read gives the hour: Schönhals has the whole left wing past the Satschan dam by half past two, and Thiebault the firing over about half an hour after three.",
+   "claim": "uncertain",
+   "by": [
+    {
+     "src": "schoenhals1873",
+     "at": "p. 169",
+     "rd": "schoen.p169.ice-few"
+    },
+    {
+     "src": "thiebault3_1894",
+     "at": "t. III, pp. 465-466",
+     "rd": "thieb.p465-466.three-pm"
+    }
+   ]
   },
   {
    "ref": "PHASES[#8].events[2]",
@@ -922,9 +1016,25 @@
    "file": "data.js",
    "line": 153,
    "label": null,
-   "text": "Direction of the army. Napoleon directed the battle from the Zuran, then from Stare Vinohrady, and in the last phase from the chapel of St Anthony above Augezd.",
-   "claim": "unchecked",
-   "by": []
+   "text": "Direction of the army. Napoleon directed the battle from the height of his bivouac, taken here to be the Zuran, then from Stare Vinohrady, and in the last phase from the height above Augezd by the chapel of St Anthony.",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "corr11_1863",
+     "at": "no. 9534, p. 441",
+     "rd": "corr11.p441.butte-reread"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "p. 167",
+     "rd": "schoen.p167.kapelle"
+    },
+    {
+     "src": "stutterheim1806fr2",
+     "at": "pp. 115-116",
+     "rd": "stutfr2.p115-116.chapel-note11"
+    }
+   ]
   },
   {
    "ref": "FORMATIONS.gqg.note",
@@ -952,9 +1062,25 @@
    "file": "data.js",
    "line": 156,
    "label": null,
-   "text": "On the Zuran mound, waiting for the Allied columns to clear the plateau; his marshals are to join him for the morning's orders",
-   "claim": "unchecked",
-   "by": []
+   "text": "On the height of his bivouac, taken here to be the Zuran: 'la butte' by the road in the orders of 1 December, 'the barrow by Schlapanitz' in Mikhailovsky-Danilevsky. The dispositions call his marshals to his bivouac for the morning's orders",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "corr11_1863",
+     "at": "no. 9534, p. 441",
+     "rd": "corr11.p441.butte-reread"
+    },
+    {
+     "src": "mikhailovsky1844",
+     "at": "p. 177",
+     "rd": "md1844.p177.kurgan-sun"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9535, p. 443",
+     "rd": "corr11.p443.seven-thirty-reread"
+    }
+   ]
   },
   {
    "ref": "FORMATIONS.gqg.track[\"3\"].act",
@@ -1002,9 +1128,25 @@
    "file": "data.js",
    "line": 161,
    "label": null,
-   "text": "From the chapel of St Anthony on the hill above Augezd, watches the Allied left break and directs the fire onto the defile and the meres",
-   "claim": "unchecked",
-   "by": []
+   "text": "At the chapel of St Anthony above Augezd, come from the Pratzen with the Guard cavalry and artillery (Schönhals; an 1806 French note has him come down to the chapel with the Guard cavalry); Mikhailovsky-Danilevsky has him place the Guard artillery on the Augezd heights in person",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "schoenhals1873",
+     "at": "p. 167",
+     "rd": "schoen.p167.kapelle"
+    },
+    {
+     "src": "stutterheim1806fr2",
+     "at": "pp. 115-116",
+     "rd": "stutfr2.p115-116.chapel-note11"
+    },
+    {
+     "src": "mikhailovsky1844",
+     "at": "pp. 203-204",
+     "rd": "md1844.p203-204.guard-artillery"
+    }
+   ]
   },
   {
    "ref": "FORMATIONS.c_iv.desig",
@@ -1072,9 +1214,43 @@
    "file": "data.js",
    "line": 172,
    "label": null,
-   "text": "The number of pieces brought onto the plateau in the wheel is not recorded. For the guns turned on the Allied left at the meres at the end the accounts differ: 24 guns of the Guard and IV Corps by the chapel of St Anthony (Újezd local history); 24 pieces of the Guard that broke the ice (Thiebault's memoirs); twenty guns with which the Emperor went against the corps backed against a lake (the 30th Bulletin). Neither of the last two places its guns at the chapel. Soult's corps had 35 guns and the Guard 24",
-   "claim": "unchecked",
-   "by": []
+   "text": "The number of pieces brought onto the plateau in the wheel is not recorded. For the guns turned on the Allied left at the meres at the end, no account read gives a count at the chapel: Schönhals names the artillery of IV Corps and the Guard on the height, Mikhailovsky-Danilevsky the Guard artillery on the Augezd heights; the 30th Bulletin has twenty guns with which the Emperor went against the corps backed against a lake, Thiebault's memoirs 24 pieces of the Guard that broke the ice, and Sokolov 24 guns of the Guard horse artillery under Colonel Couin, none of them placing their guns at the chapel. '24 guns of the Guard and IV Corps' by the chapel is found in this reading only on a tourist website. At the Rhine crossing Sokolov's tables give IV Corps 36 guns and the Guard 24; no source read gives either on 2 December",
+   "claim": "disputed",
+   "by": [
+    {
+     "src": "corr11_1863",
+     "at": "no. 9541, pp. 451-452",
+     "rd": "corr11.9541.p452",
+     "side": "twenty guns against the corps by the lake"
+    },
+    {
+     "src": "thiebault3_1894",
+     "at": "t. III, p. 466",
+     "rd": "thieb.p466.ice",
+     "side": "24 pieces of the Guard broke the ice"
+    },
+    {
+     "src": "sokolov2006",
+     "at": "t. II, p. 70",
+     "rd": "sokolov2006.p70.couin-24",
+     "side": "24 guns of the Guard horse artillery"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "p. 168",
+     "rd": "schoen.p168.artillery-iv-garde"
+    },
+    {
+     "src": "sokolov2006",
+     "at": "t. II, pp. 146-151",
+     "rd": "sokolov2006.p146-151.rhine-crossing"
+    },
+    {
+     "src": "turistika_kaple",
+     "at": "the place description",
+     "rd": "turistika.kaple"
+    }
+   ]
   },
   {
    "ref": "FORMATIONS.heightguns.role",
@@ -1092,9 +1268,25 @@
    "file": "data.js",
    "line": 174,
    "label": null,
-   "text": "That French artillery fired from the heights into the retreating Allied left, and onto the ice of the Satschan mere, is documented. The battery positions drawn here are reconstructed and should not be read as surveyed.",
-   "claim": "unchecked",
-   "by": []
+   "text": "That French artillery fired from the heights into the retreating Allied left, and onto the ice of the Satschan mere, is documented (Schönhals, Mikhailovsky-Danilevsky, Stutterheim). The battery positions drawn here are reconstructed and should not be read as surveyed; the grade at the chapel rests on the sector those accounts give, not on a surveyed place.",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "schoenhals1873",
+     "at": "p. 168",
+     "rd": "schoen.p168.artillery-iv-garde"
+    },
+    {
+     "src": "mikhailovsky1844",
+     "at": "pp. 203-204",
+     "rd": "md1844.p203-204.guard-artillery"
+    },
+    {
+     "src": "stutterheim1806de",
+     "at": "pp. 74-75",
+     "rd": "stut.p74-75.kapelle-teich"
+    }
+   ]
   },
   {
    "ref": "FORMATIONS.heightguns.track[\"7\"].obj",
@@ -1132,9 +1324,20 @@
    "file": "data.js",
    "line": 181,
    "label": null,
-   "text": "A battery placed by the chapel of St Anthony (Újezd local history: 24 guns of the Guard and IV Corps) fires down onto the causeway and the frozen mere; Thiebault's memoirs have 24 pieces of the Guard break the ice of the Satschan mere, without saying where they stood",
-   "claim": "unchecked",
-   "by": []
+   "text": "Artillery of IV Corps and of the Guard, brought onto the height above Augezd by the chapel of St Anthony (Schönhals), fires down onto the causeway and the frozen mere; Mikhailovsky-Danilevsky has the Guard artillery placed there by Napoleon in person",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "schoenhals1873",
+     "at": "p. 168",
+     "rd": "schoen.p168.artillery-iv-garde"
+    },
+    {
+     "src": "mikhailovsky1844",
+     "at": "pp. 203-204",
+     "rd": "md1844.p203-204.guard-artillery"
+    }
+   ]
   },
   {
    "ref": "FORMATIONS.heightguns.track[\"9\"].act",
@@ -2587,6 +2790,18 @@
      "side": "the centre"
     },
     {
+     "src": "stutterheim1806de",
+     "at": "p. 41",
+     "rd": "stut.p41.centre",
+     "side": "the centre"
+    },
+    {
+     "src": "marbot1891",
+     "at": "t. I, p. 260",
+     "rd": "marbot1891.p260.centre-ravine",
+     "side": "the centre, with Soult's troops"
+    },
+    {
      "src": "schoenhals1873",
      "at": "p. 158",
      "rd": "schoenhals1873.p158.line",
@@ -2622,7 +2837,7 @@
    "file": "data.js",
    "line": 361,
    "label": null,
-   "text": "Its place in the line was read two ways until roadmap step 4, when this map had the corps as the general reserve behind Soult; no source read calls it so. The 30th Bulletin gives Bernadotte the command of the centre, with Rivaud's division on his left and Drouet's on his right (p. 449); Stutterheim (1806), an Austrian officer present at the battle, writes that the corps formed the centre of the French army (p. 41); Mikhailovsky-Danilevsky has Napoleon order Bernadotte and Soult together to seize the heights of Pratzen (1846, pp. 238-239); Marbot's memoirs have the centre formed by the troops of Soult and Bernadotte (vol. I, p. 260). Thiebault's memoirs count the 2nd division of I Corps, with the Guard and the reserve, among the troops that took no part in the fighting (vol. III, p. 466; the reserve is the grenadiers' on p. 504, in a boast he imputes to Napoleon). A French officer's note printed in the Materialien of 1806 has half of the corps' battalions fire no cartridge and the other half take little part (p. 93); Savary has one of its divisions break the Russian Guard's infantry (1828, pp. 205-208).",
+   "text": "No source read calls the corps the general reserve. The 30th Bulletin gives Bernadotte the command of the centre, with Rivaud's division on his left and Drouet's on his right (p. 449); Stutterheim (1806), an Austrian officer present at the battle, writes that the corps formed the centre of the French army (p. 41); Mikhailovsky-Danilevsky has Napoleon order Bernadotte and Soult together to seize the heights of Pratzen (1846, pp. 238-239); Marbot's memoirs have the centre formed by the troops of Soult and Bernadotte (vol. I, p. 260). Thiebault's memoirs count the 2nd division of I Corps, with the Guard and the reserve, among the troops that took no part in the fighting (vol. III, p. 466; the reserve is the grenadiers' on p. 504, in a boast he imputes to Napoleon). A note in the Materialien of 1806, by its lettering one of an unnamed French officer's (an attribution read on the text layer only), has half of the corps' battalions fire no cartridge and the other half take little part (p. 93); Savary has one of its divisions break the Russian Guard's infantry (1828, pp. 205-208).",
    "claim": "unchecked",
    "by": []
   },
@@ -2726,18 +2941,25 @@
    "file": "data.js",
    "line": 372,
    "label": null,
-   "text": "Near Blasowitz, the first French infantry the Russian Guard meets (Stutterheim); Schönhals has the Guard's fight against French infantry near Blasowitz",
-   "claim": "attributed",
+   "text": "Near Blasowitz the Russian Guard runs at once into its skirmishers and Kellermann's light cavalry (Stutterheim); Schönhals has the Guard's fight against French infantry near Blasowitz, unnamed; Thiebault counts I Corps' 2nd division, perhaps this one, among the troops that took no part",
+   "claim": "disputed",
    "by": [
     {
      "src": "stutterheim1806de",
      "at": "p. 56",
-     "rd": "stutterheim1806de.p56.rivaud-skirmishers"
+     "rd": "stutterheim1806de.p56.rivaud-skirmishers",
+     "side": "its skirmishers meet the Russian Guard near Blasowitz"
     },
     {
      "src": "schoenhals1873",
      "at": "p. 164",
      "rd": "schoenhals1873.p164.guard-blasowitz"
+    },
+    {
+     "src": "thiebault3_1894",
+     "at": "t. III, p. 466",
+     "rd": "thiebault3_1894.p466.second-reading",
+     "side": "I Corps' 2nd division took no part"
     }
    ]
   },
@@ -2777,14 +2999,14 @@
    "file": "data.js",
    "line": 381,
    "label": null,
-   "text": "Where I Corps stood at dawn is disputed: in the second line behind Soult (Savary), behind Girzikowitz (Stutterheim), in the Goldbach ravine with Soult's troops (Marbot), across the brook since the evening before (Mikhailovsky-Danilevsky); the place drawn is this map's",
+   "text": "Where I Corps stood at dawn is disputed: in the second line behind Soult on 1 December (Savary), behind Girzikowitz (Stutterheim), in the Goldbach ravine with Soult's troops (Marbot), across the brook since the evening before (Mikhailovsky-Danilevsky); the place drawn is this map's",
    "claim": "disputed",
    "by": [
     {
      "src": "savary1828",
      "at": "t. II, pp. 200-201",
      "rd": "savary1828.p200-201.placement",
-     "side": "in the second line behind Soult"
+     "side": "in the second line behind Soult on 1 December"
     },
     {
      "src": "stutterheim1806de",
@@ -2855,7 +3077,7 @@
    "file": "data.js",
    "line": 385,
    "label": null,
-   "text": "Takes Vandamme's place on the plateau as Vandamme wheels toward Augezd (Schönhals); Savary has the division go back to its morning place",
+   "text": "Takes Vandamme's place on the plateau as Vandamme wheels toward Augezd (Schönhals; Ségur has Bernadotte left on the plateau); Savary has one of Bernadotte's divisions, unnamed, break the Russian Guard infantry, then go back to its morning place",
    "claim": "disputed",
    "by": [
     {
@@ -2868,7 +3090,13 @@
      "src": "savary1828",
      "at": "t. II, pp. 205-208",
      "rd": "savary1828.p205-208.bernadotte-division",
-     "side": "goes back to its morning place"
+     "side": "one of Bernadotte's divisions, unnamed, breaks the Guard infantry and goes back to its morning place"
+    },
+    {
+     "src": "segur1877",
+     "at": "t. II, pp. 470-472",
+     "rd": "segur1873.p470-472.guard-bernadotte",
+     "side": "Bernadotte left on the plateau"
     }
    ]
   },
@@ -2908,7 +3136,7 @@
    "file": "data.js",
    "line": 391,
    "label": null,
-   "text": "Held in reserve with the Emperor and the grenadiers (the 30th Bulletin); its cavalry charges and breaks the Russian Guard, its artillery fires, and its infantry moves up onto the plateau, engaged by Coignet's account only.",
+   "text": "Held in reserve with the Emperor and the grenadiers (the 30th Bulletin); its cavalry charges and breaks the Russian Guard, its artillery fires, and its infantry moves up onto the plateau, not engaged in the Bulletin and Schönhals; Coignet, in its ranks, has it break the Russian second line in the attack on the Pratzen, but not engaged against the Russian Guard.",
    "claim": "disputed",
    "by": [
     {
@@ -2926,12 +3154,24 @@
      "src": "coignet1909",
      "at": "p. 122",
      "rd": "coignet1909.p122.second-line",
-     "side": "the Guard broke the Russian second line"
+     "side": "the Guard broke the Russian second line in the attack on the Pratzen (Coignet)"
     },
     {
      "src": "segur1877",
      "at": "t. II, pp. 471-472",
      "rd": "segur1873.p471-472.guard-guns"
+    },
+    {
+     "src": "coignet1909",
+     "at": "pp. 121-123",
+     "rd": "coignet1909.p121-123.guard-followed",
+     "side": "not engaged against the Russian Guard (Coignet)"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9541, p. 451",
+     "rd": "corr11_1863.p451.guard-centre-reserve",
+     "side": "the reserve not engaged"
     }
    ]
   },
@@ -2991,7 +3231,7 @@
    "file": "data.js",
    "line": 400,
    "label": null,
-   "text": "Moves up onto the plateau behind the Guard cavalry; not engaged in the 30th Bulletin, Schönhals and Thiebault, though Coignet, a grenadier of the foot Guard, claims it helped break the Russian second line",
+   "text": "Moves up onto the plateau behind the Guard cavalry; not engaged in the 30th Bulletin, Schönhals and Thiebault, Coignet, a grenadier of the foot Guard, claims it helped break the Russian second line in the attack on the Pratzen, but of the Russian Guard's attack writes that they thought their turn had come, and the enemy fell back",
    "claim": "disputed",
    "by": [
     {
@@ -3010,7 +3250,19 @@
      "src": "coignet1909",
      "at": "p. 122",
      "rd": "coignet1909.p122.second-line",
-     "side": "broke the Russian second line"
+     "side": "the Guard broke the Russian second line in the attack on the Pratzen (Coignet)"
+    },
+    {
+     "src": "coignet1909",
+     "at": "pp. 121-123",
+     "rd": "coignet1909.p121-123.guard-followed",
+     "side": "not engaged against the Russian Guard (Coignet)"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9541, p. 451",
+     "rd": "corr11_1863.p451.guard-centre-reserve",
+     "side": "the reserve not engaged"
     }
    ]
   },
@@ -3160,6 +3412,11 @@
      "src": "savary1828",
      "at": "t. II, pp. 205-208",
      "rd": "savary1828.p205-208.bernadotte-division"
+    },
+    {
+     "src": "stutterheim1806de",
+     "at": "p. 42",
+     "rd": "stutterheim1806de.p42.reserve-turas"
     }
    ]
   },
@@ -4809,9 +5066,26 @@
    "file": "data.js",
    "line": 607,
    "label": null,
-   "text": "Attacks Vandamme and breaks two French battalions; the Guard cavalry then takes the eagle of the 4th Line",
-   "claim": "unchecked",
-   "by": []
+   "text": "Attacks Vandamme and overthrows the first two French columns with the bayonet (Mikhailovsky-Danilevsky); the Life Guard Horse cuts down a battalion of the 4th Line and one of the 24th Light and takes the 4th's eagle (Schönhals)",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "mikhailovsky1846",
+     "at": "p. 259",
+     "rd": "mikhailovsky1846.p259.guard-columns",
+     "side": "the Guard infantry overthrew the first two French columns with the bayonet"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "p. 164",
+     "rd": "schoenhals1873.p164.guard-blasowitz"
+    },
+    {
+     "src": "materialien1806",
+     "at": "pp. 114-118",
+     "rd": "mat1806.p114-118.guardreport"
+    }
+   ]
   },
   {
    "ref": "FORMATIONS.rg_inf.track[\"7\"].act",
@@ -4819,9 +5093,25 @@
    "file": "data.js",
    "line": 608,
    "label": null,
-   "text": "Driven off the plateau by the French Guard and Drouet",
-   "claim": "unchecked",
-   "by": []
+   "text": "Driven off the plateau by the French Guard cavalry and, in Ségur, by Bernadotte, one of whose divisions Savary has break the Guard infantry",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "segur1877",
+     "at": "t. II, pp. 470-472",
+     "rd": "segur1873.p470-472.guard-bernadotte"
+    },
+    {
+     "src": "savary1828",
+     "at": "t. II, pp. 205-208",
+     "rd": "savary1828.p205-208.bernadotte-division"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "p. 164",
+     "rd": "schoenhals1873.p164.guard-blasowitz"
+    }
+   ]
   },
   {
    "ref": "FORMATIONS.rg_cav.desig",
@@ -5244,9 +5534,25 @@
    "file": "data.js",
    "line": 655,
    "label": "Occupied by",
-   "text": "Napoleon and Berthier on the morning of the battle; the hour they took post is not established",
-   "claim": "unchecked",
-   "by": []
+   "text": "Napoleon and Berthier on the morning of the battle, by identification: the orders of 1 December send headquarters to 'la butte' by the road, and Mikhailovsky-Danilevsky has Napoleon on 'the barrow by Schlapanitz'; no source read names the Zuran, and the hour they took post is not established",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "corr11_1863",
+     "at": "no. 9534, p. 441",
+     "rd": "corr11.p441.butte-reread"
+    },
+    {
+     "src": "mikhailovsky1844",
+     "at": "p. 177",
+     "rd": "md1844.p177.kurgan-sun"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9541, p. 450",
+     "rd": "corr11.p450.reserve-one-oclock"
+    }
+   ]
   },
   {
    "ref": "FEATURES[#zuran].facts[1]",
@@ -5264,7 +5570,7 @@
    "file": "data.js",
    "line": 656,
    "label": null,
-   "text": "Gives a view across the whole French front and the western face of the plateau",
+   "text": "In this model's terrain, a view across the French front and the western face of the plateau",
    "claim": "unchecked",
    "by": []
   },
@@ -5274,9 +5580,20 @@
    "file": "data.js",
    "line": 657,
    "label": null,
-   "text": "Napoleon watched the Allied columns march off the Pratzen from here and then released the attack; a memoir anecdote, as Thiebault tells it, has him wait a further quarter of an hour after Soult said he needed twenty minutes at most.",
-   "claim": "unchecked",
-   "by": []
+   "text": "Mikhailovsky-Danilevsky has Napoleon, on the barrow by Schlapanitz with his marshals, see the heights being stripped of troops when the sun lit the hilltops, and give his final orders, the attack to begin half an hour after them; a memoir anecdote, as Thiebault tells it, has him wait a further quarter of an hour after Soult said he needed twenty minutes at most.",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "mikhailovsky1844",
+     "at": "p. 177",
+     "rd": "md1844.p177.kurgan-sun"
+    },
+    {
+     "src": "thiebault3_1894",
+     "at": "t. III, pp. 456-458",
+     "rd": "thieb.p456-458.twenty-minutes"
+    }
+   ]
   },
   {
    "ref": "FEATURES[#goldbach].sub",
@@ -5780,9 +6097,15 @@
    "file": "data.js",
    "line": 717,
    "label": null,
-   "text": "The chapel of St Anthony on the hill above the village - where Napoleon watched the end and a French battery stood - still overlooks the ground the Allied left had to cross.",
-   "claim": "unchecked",
-   "by": []
+   "text": "The chapel of St Anthony on the hill above the village - where Schönhals has Napoleon come with the Guard cavalry and artillery at the end - still overlooks the ground the Allied left had to cross.",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "schoenhals1873",
+     "at": "p. 167",
+     "rd": "schoen.p167.kapelle"
+    }
+   ]
   },
   {
    "ref": "FEATURES[#satschan].sub",
@@ -5810,9 +6133,15 @@
    "file": "data.js",
    "line": 721,
    "label": "Recovered when drained",
-   "text": "38 guns, about 130 horses, and two men (figures as usually given)",
-   "claim": "unchecked",
-   "by": []
+   "text": "36 guns, 138 horses and three bodies in General Suchet's report of 16 December 1805, as Sokolov quotes it; 38 guns, about 130 horses and two men as usually given, not traced to a source",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "sokolov2006",
+     "at": "t. II, pp. 70-71",
+     "rd": "sokolov.p71.suchet-drain"
+    }
+   ]
   },
   {
    "ref": "FEATURES[#satschan].why[0]",
@@ -5830,9 +6159,46 @@
    "file": "data.js",
    "line": 723,
    "label": null,
-   "text": "French gunners did fire on the ice, and some men died there. The mass drowning is the 30th Bulletin's claim, and Marbot's and Thiebault's memoirs tell of thousands drowned; the count from the drained mere, as usually given, is far below it, though by inference that count is a lower bound, not the toll. This map reads the Bulletin's figure as propaganda and the catastrophe as encirclement rather than drowning: an interpretation.",
-   "claim": "unchecked",
-   "by": []
+   "text": "French gunners did fire on the ice, and some men died there. The mass drowning is the 30th Bulletin's claim, twenty thousand; Marbot's memoirs tell of thousands drowned, Thiebault's of three to four thousand and Lejeune's of more than six thousand; Stutterheim (1806) has some die in the pond, and Schönhals, on the Telnitz priest's word, sixty to at most a hundred, calling the mass drowning a French exaggeration. The count from the drained pond is far below the Bulletin's, though by inference that count is a lower bound, not the toll. This map reads the Bulletin's figure as propaganda and the catastrophe as encirclement rather than drowning: an interpretation.",
+   "claim": "disputed",
+   "by": [
+    {
+     "src": "materialien1806",
+     "at": "p. 121",
+     "rd": "materialien1806.p121.zusatz15",
+     "side": "twenty thousand (the 30th Bulletin, quoted)"
+    },
+    {
+     "src": "thiebault3_1894",
+     "at": "t. III, p. 466",
+     "rd": "thieb.p466.ice",
+     "side": "three to four thousand"
+    },
+    {
+     "src": "lejeune1895",
+     "at": "t. I, pp. 39-40",
+     "rd": "lejeune.p39-40.augezd-ice",
+     "side": "more than six thousand"
+    },
+    {
+     "src": "stutterheim1806de",
+     "at": "pp. 74-75",
+     "rd": "stut.p74-75.kapelle-teich",
+     "side": "some"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 169-170",
+     "rd": "schoen.p169-170.tellnitz-pfarrer",
+     "side": "sixty to at most a hundred"
+    },
+    {
+     "src": "marbot1891",
+     "at": "t. I, pp. 262-263",
+     "rd": "marbot.p262-263.ice",
+     "side": "thousands"
+    }
+   ]
   },
   {
    "ref": "FEATURES[#menitz].sub",
@@ -6069,9 +6435,25 @@
    "file": "data.js",
    "line": 754,
    "label": "In 1805",
-   "text": "Napoleon's command post for the last phase; a French battery stood here, 24 guns of the Guard and IV Corps in Újezd local history (Thiebault's memoirs have 24 pieces of the Guard breaking the ice, without placing them)",
-   "claim": "unchecked",
-   "by": []
+   "text": "Napoleon came here at the end from the Pratzen with the Guard cavalry and artillery, and artillery of IV Corps and the Guard fired from the height (Schönhals); an 1806 French note has him come down to the chapel with the Guard cavalry",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "schoenhals1873",
+     "at": "p. 167",
+     "rd": "schoen.p167.kapelle"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "p. 168",
+     "rd": "schoen.p168.artillery-iv-garde"
+    },
+    {
+     "src": "stutterheim1806fr2",
+     "at": "pp. 115-116",
+     "rd": "stutfr2.p115-116.chapel-note11"
+    }
+   ]
   },
   {
    "ref": "FEATURES[#chapel].facts[1]",
@@ -6079,9 +6461,22 @@
    "file": "data.js",
    "line": 754,
    "label": "The chapel",
-   "text": "First built 1703; burned in the battle; rebuilt 1863",
-   "claim": "unchecked",
-   "by": []
+   "text": "Completed in May 1703, closed in 1785, roofless about the time of the battle and in ruins by 1814, reconsecrated on 5 July 1863 (the town's account); a tourist website says it burned in 1805",
+   "claim": "disputed",
+   "by": [
+    {
+     "src": "ujezd2025",
+     "at": "the stop's text",
+     "rd": "ujezd2025.kaple",
+     "side": "roofless about the time of the battle, in ruins by 1814"
+    },
+    {
+     "src": "turistika_kaple",
+     "at": "the place description",
+     "rd": "turistika.kaple",
+     "side": "burned in 1805"
+    }
+   ]
   },
   {
    "ref": "FEATURES[#chapel].why[0]",
@@ -6199,7 +6594,7 @@
    "file": "data.js",
    "line": 773,
    "label": null,
-   "text": "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; the exact place of the Posoritz post house; the true position of Turas; Kologrivov's command, which rests on one source; when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and the hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map since roadmap step 4, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns at 07:30 in Schönhals, the III at 07:00 in Przybyszewski's report and the II coming down at 08:00 in Buxhowden's, but from 04:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map), when Friant's division left Raigern (at 05:00, or between 05:30 and 06:00, in Davout's two reports, about 06:00 in Sokolov; from 04:00 on the map), when its leading brigade reached the Goldbach (about 09:00 in Stutterheim, Schönhals and the Moniteur's remarks of 1806; 08:00 on the map) and when it retook Telnitz (in French hands at 09:30 in Davout's report, then lost again; 08:30 on the map). The map keeps its timing for Kamensky's turn, Rapp's charge, the II and III Columns and Friant's division. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Napoleon is recorded watching the end from there.",
+   "text": "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; the exact place of the Posoritz post house; the true position of Turas; Kologrivov's command, which rests on one source; when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and the hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map since roadmap step 4, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns at 07:30 in Schönhals, the III at 07:00 in Przybyszewski's report and the II coming down at 08:00 in Buxhowden's, but from 04:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map), when Friant's division left Raigern (at 05:00, or between 05:30 and 06:00, in Davout's two reports, about 06:00 in Sokolov; from 04:00 on the map), when its leading brigade reached the Goldbach (about 09:00 in Stutterheim and the Moniteur's remarks of 1806; 08:00 on the map) and when it retook Telnitz (in French hands at 09:30 in Davout's report, then lost again; 08:30 on the map). The map keeps its timing for Kamensky's turn, Rapp's charge, the II and III Columns and Friant's division. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Napoleon is recorded watching the end from there.",
    "claim": "unchecked",
    "by": []
   },
@@ -6259,7 +6654,7 @@
    "file": "data.js",
    "line": 780,
    "label": null,
-   "text": "Narrative of the fight for the Pratzeberg follows accounts drawing on Thiebault's memoirs and Duffy.",
+   "text": "Narrative of the fight for the Pratzeberg draws on Thiebault's memoirs, with Schönhals and Mikhailovsky-Danilevsky where the statements name them; Duffy (1977), on which it earlier drew, was not read in roadmap step 4.",
    "claim": "unchecked",
    "by": []
   },
@@ -6269,9 +6664,15 @@
    "file": "data.js",
    "line": 781,
    "label": null,
-   "text": "Figures for the meres follow the record of the ponds being drained after the battle.",
-   "claim": "unchecked",
-   "by": []
+   "text": "Figures for the meres: General Suchet's report of 16 December 1805, as Sokolov quotes it (2006, t. II, pp. 70-71, his note citing Alombert and Colin's edition of 2002; the French text was not read), has the pond near Augezd drained over five days and 36 Russian guns, 138 horse carcasses and three bodies taken from it; the figures usually given, 38 guns, about 130 horses and two men, were not traced to a source in this reading.",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "sokolov2006",
+     "at": "t. II, pp. 70-71",
+     "rd": "sokolov.p71.suchet-drain"
+    }
+   ]
   },
   {
    "ref": "SOURCE_NOTE.refs[3]",
@@ -6310,9 +6711,45 @@
    "file": "data.js",
    "line": 783,
    "label": null,
-   "text": "Marbot's and Thiebault's memoirs tell of thousands drowned when the Guard's guns broke the ice of the Satschan mere (Marbot, vol. I, pp. 262-263, in the 27th edition read, first published 1891; Thiebault, vol. III, 1894, p. 466), against the count from the drained ponds.",
-   "claim": "unchecked",
-   "by": []
+   "text": "Marbot's and Thiebault's memoirs tell of thousands drowned when the Guard's guns broke the ice of the Satschan mere (Marbot, vol. I, pp. 262-263, in the 27th edition read, first published 1891; Thiebault, vol. III, 1894, p. 466, three to four thousand), and Lejeune of more than six thousand (1895, vol. I, pp. 39-40); Stutterheim has some die (1806, pp. 74-75), and the editor of the Materialien prefers his word to the Bulletin's twenty thousand (1806, p. 121); Schönhals, on the Telnitz priest's statement, has sixty to at most a hundred and calls the mass drowning a French exaggeration (1873, pp. 169-170); all against the count from the drained pond.",
+   "claim": "disputed",
+   "by": [
+    {
+     "src": "marbot1891",
+     "at": "t. I, pp. 262-263",
+     "rd": "marbot.p262-263.ice",
+     "side": "thousands"
+    },
+    {
+     "src": "thiebault3_1894",
+     "at": "t. III, p. 466",
+     "rd": "thieb.p466.ice",
+     "side": "three to four thousand"
+    },
+    {
+     "src": "lejeune1895",
+     "at": "t. I, pp. 39-40",
+     "rd": "lejeune.p39-40.augezd-ice",
+     "side": "more than six thousand"
+    },
+    {
+     "src": "stutterheim1806de",
+     "at": "pp. 74-75",
+     "rd": "stut.p74-75.kapelle-teich",
+     "side": "some"
+    },
+    {
+     "src": "materialien1806",
+     "at": "p. 121",
+     "rd": "materialien1806.p121.zusatz15"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 169-170",
+     "rd": "schoen.p169-170.tellnitz-pfarrer",
+     "side": "sixty to at most a hundred"
+    }
+   ]
   },
   {
    "ref": "SOURCE_NOTE.refs[5]",
@@ -6361,9 +6798,25 @@
    "file": "analysis.js",
    "line": 20,
    "label": null,
-   "text": "Napoleon abandoned the Pratzen plateau on 1 December and camped his army west of it, behind the Goldbach. He asked for an armistice interview and let his outposts be pushed in. The intention, stated in his orders to the army, was to invite an attack on his right so that the enemy would leave the high ground in the centre.",
-   "claim": "unchecked",
-   "by": []
+   "text": "Napoleon abandoned the Pratzen plateau on 1 December and camped his army west of it, behind the Goldbach. He asked for an armistice interview and let his outposts be pushed in. His proclamation to the army that day says in terms that the enemy, marching to turn his right, will present its flank; the 30th Bulletin says everything tended to confirm the Russian general in his ill-calculated operation, and Marbot calls the thin right a trap. This map reads the thinness of the right as meant to draw the Allies off the high ground in the centre.",
+   "claim": "interpretation",
+   "by": [
+    {
+     "src": "corr11_1863",
+     "at": "no. 9533, pp. 440-441",
+     "rd": "corr11.p441.proclamation"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9541, p. 448",
+     "rd": "corr11.p448.cette-idee"
+    },
+    {
+     "src": "marbot1891",
+     "at": "t. I, p. 259",
+     "rd": "marbot.p259.trap"
+    }
+   ]
   },
   {
    "ref": "ANALYSIS[#weakness].text",
@@ -6461,7 +6914,7 @@
    "file": "analysis.js",
    "line": 45,
    "label": null,
-   "text": "Grand Duke Constantine threw the Guard, which Stutterheim calls the reserve of the Allied right, at Vandamme on the Old Vineyards. The Guard infantry broke two French battalions and the Guard cavalry took the eagle of the 4th Line, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brought up the Guard cavalry and Rapp charged with the chasseurs and Mamelukes; a division of Bernadotte's corps, Drouet's by his own memoir as Sokolov quotes it, met the attack, though Thiebault counts I Corps' 2nd division among the troops that took no part. Prince Repnin was taken prisoner.",
+   "text": "Grand Duke Constantine threw the Guard, which Stutterheim calls the reserve of the Allied right, at Vandamme on the Old Vineyards. In Mikhailovsky-Danilevsky the Guard infantry overthrew the first two French columns with the bayonet; in Schönhals the Life Guard Horse cut down a battalion of the 4th Line and a light battalion of the 24th and took the 4th's eagle, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brought up the Guard cavalry and Rapp charged with the chasseurs and Mamelukes; a division of Bernadotte's corps, Drouet's by his own memoir as Sokolov quotes it, met the attack, though Thiebault counts I Corps' 2nd division among the troops that took no part. Prince Repnin was taken prisoner.",
    "claim": "disputed",
    "by": [
     {
@@ -6485,6 +6938,29 @@
      "src": "materialien1806",
      "at": "pp. 118-119",
      "rd": "materialien1806.p118-119.einzige-trophaee"
+    },
+    {
+     "src": "mikhailovsky1846",
+     "at": "p. 259",
+     "rd": "mikhailovsky1846.p259.guard-columns",
+     "side": "the Guard infantry overthrew the first two French columns with the bayonet"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "p. 164",
+     "rd": "schoenhals1873.p164.guard-blasowitz",
+     "side": "the Life Guard Horse cut down a battalion of the 4th and one of the 24th Light"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9541, p. 451",
+     "rd": "corr11_1863.p451.guard-centre-reserve",
+     "side": "a battalion of the 4th charged and overthrown by the Russian Guard horse"
+    },
+    {
+     "src": "marbot1891",
+     "at": "t. I, p. 260",
+     "rd": "marbot1891.p260.eagle"
     }
    ]
   },
@@ -6514,7 +6990,7 @@
    "file": "analysis.js",
    "line": 60,
    "label": null,
-   "text": "This map reads a way left to the Allied left as the neck of dry ground at Augezd between the two meres, with French guns on the height above it, and the retreat the disposition had ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, as running through ground the French held. Some formations broke south across the frozen water. The 30th Bulletin claimed twenty thousand drowned; when the meres were drained the recovery was thirty-eight guns, about a hundred and thirty horses and two men, figures as usually given. The catastrophe was real; this map reads it as encirclement rather than drowning, an interpretation.",
+   "text": "This map reads a way left to the Allied left as the neck of dry ground at Augezd between the two meres, with French guns on the height above it, and the retreat the disposition had ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, as running through ground the French held. Some formations broke south across the frozen water. The 30th Bulletin claimed twenty thousand drowned; General Suchet's report of 16 December 1805, as Sokolov quotes it, has thirty-six guns, 138 horses and three bodies taken from the pond near Augezd when it was drained, and the figures usually given, thirty-eight guns, about a hundred and thirty horses and two men, were not traced to a source in this reading. The catastrophe was real; this map reads it as encirclement rather than drowning, an interpretation.",
    "claim": "unchecked",
    "by": []
   },
@@ -6524,9 +7000,20 @@
    "file": "analysis.js",
    "line": 66,
    "label": "saw / doc",
-   "text": "Allied camp fires and movement on and behind the Pratzen plateau, observed from the Zuran before first light.",
-   "claim": "unchecked",
-   "by": []
+   "text": "The Allied bivouac fires, which he rode out at one in the morning to see from his posts (the 30th Bulletin); Thiebault has reports of the Allied left's movement through the night, judged by the noise of its artillery.",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "corr11_1863",
+     "at": "no. 9541, p. 450",
+     "rd": "corr11.p450.reserve-one-oclock"
+    },
+    {
+     "src": "thiebault3_1894",
+     "at": "t. III, pp. 456-457",
+     "rd": "thiebault3_1894.p456-457.night-noise"
+    }
+   ]
   },
   {
    "ref": "COMMAND.fr[\"0\"][1]",
@@ -6554,9 +7041,25 @@
    "file": "analysis.js",
    "line": 69,
    "label": "ordered / doc",
-   "text": "The army to stand behind the Goldbach; Soult's two divisions concealed in the valley; nothing to be done that might discourage the attack on the right.",
-   "claim": "unchecked",
-   "by": []
+   "text": "The army to stand as disposed behind the Goldbach until new orders, to be given to the marshals at his bivouac in the morning (the dispositions of 1 December); Soult's two divisions in the valley.",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "corr11_1863",
+     "at": "no. 9535, p. 443",
+     "rd": "corr11.p443.seven-thirty-reread"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9535, p. 443",
+     "rd": "corr11_1863.p443.no-guard"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9535, p. 442",
+     "rd": "corr11_1863.p442.dispositions-ic"
+    }
+   ]
   },
   {
    "ref": "COMMAND.fr[\"0\"][4]",
@@ -6564,9 +7067,15 @@
    "file": "analysis.js",
    "line": 70,
    "label": "expected / doc",
-   "text": "That the enemy would march across his front to turn his right, leaving the plateau. His proclamation of 1 December says so in terms.",
-   "claim": "unchecked",
-   "by": []
+   "text": "That the enemy would march across his front to turn his right. His proclamation of 1 December says in terms that they will march to turn his right and so present their flank; that they would leave the plateau is this map's inference.",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "corr11_1863",
+     "at": "no. 9533, pp. 440-441",
+     "rd": "corr11.p441.proclamation"
+    }
+   ]
   },
   {
    "ref": "COMMAND.fr[\"1\"][0]",
@@ -6669,6 +7178,11 @@
      "src": "schoenhals1873",
      "at": "p. 169",
      "rd": "schoenhals1873.p169.guard-infantry-not-engaged"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9541, p. 451",
+     "rd": "corr11_1863.p451.guard-centre-reserve"
     }
    ]
   },
@@ -6702,9 +7216,14 @@
    "claim": "disputed",
    "by": [
     {
+     "src": "corr11_1863",
+     "at": "no. 9541, p. 449",
+     "rd": "corr11_1863.p449.centre"
+    },
+    {
      "src": "stutterheim1806de",
-     "at": "p. 62",
-     "rd": "stutterheim1806de.p62.bernadotte-column"
+     "at": "pp. 55-56",
+     "rd": "stut.p55-56.crossing"
     },
     {
      "src": "mikhailovsky1844",
@@ -7066,7 +7585,7 @@
    "ref": "PLANS.al.author",
    "cls": "plan",
    "file": "analysis.js",
-   "line": 150,
+   "line": 152,
    "label": null,
    "text": "Drafted by Gen. Franz von Weyrother, Quartermaster-General. Read aloud at Krzenowitz after midnight, in German, to an audience largely of Russian officers, with no time to copy it out.",
    "claim": "unchecked",
@@ -7076,7 +7595,7 @@
    "ref": "PLANS.al.intent",
    "cls": "plan",
    "file": "analysis.js",
-   "line": 151,
+   "line": 153,
    "label": null,
    "text": "Turn the French right with overwhelming weight, force the Goldbach at the southern villages, then wheel the left wing north-west to envelop the French as they fall back toward Brünn - severing their line to Vienna - and roll them up against the hills. The centre is to follow the attack, not hold the plateau.",
    "claim": "unchecked",
@@ -7086,7 +7605,7 @@
    "ref": "PLANS.al.assumed[0]",
    "cls": "plan",
    "file": "analysis.js",
-   "line": 153,
+   "line": 155,
    "label": null,
    "text": "That the French were retreating and would not stand.",
    "claim": "unchecked",
@@ -7096,7 +7615,7 @@
    "ref": "PLANS.al.assumed[1]",
    "cls": "plan",
    "file": "analysis.js",
-   "line": 154,
+   "line": 156,
    "label": null,
    "text": "That the Pratzen plateau could safely be vacated because the decisive ground was the French right.",
    "claim": "unchecked",
@@ -7106,7 +7625,7 @@
    "ref": "PLANS.al.assumed[2]",
    "cls": "plan",
    "file": "analysis.js",
-   "line": 155,
+   "line": 157,
    "label": null,
    "text": "That five columns could cross one another's lines of march in darkness and arrive in order.",
    "claim": "unchecked",
@@ -7116,7 +7635,7 @@
    "ref": "PLANS.al.cost",
    "cls": "plan",
    "file": "analysis.js",
-   "line": 156,
+   "line": 158,
    "label": null,
    "text": "All three assumptions were wrong. Execution compounded them: the 4th Column, ordered off only toward eight in Stutterheim and leaving half an hour after the first three in Schönhals, was held up by the cavalry column's counter-march and then by Kutuzov standing still (Mikhailovsky-Danilevsky), and was still on the plateau when Soult arrived.",
    "claim": "disputed",
@@ -7156,7 +7675,7 @@
    "ref": "PLANS.al.cols[0].ord",
    "cls": "plan order",
    "file": "analysis.js",
-   "line": 166,
+   "line": 168,
    "label": null,
    "text": "Precede the 1st Column, seize Telnitz at first light, then screen the outer flank toward Menitz.",
    "claim": "unchecked",
@@ -7166,7 +7685,7 @@
    "ref": "PLANS.al.cols[1].ord",
    "cls": "plan order",
    "file": "analysis.js",
-   "line": 168,
+   "line": 170,
    "label": null,
    "text": "Descend from the southern plateau, force the crossing at Telnitz, then wheel north-west on Turas.",
    "claim": "unchecked",
@@ -7176,7 +7695,7 @@
    "ref": "PLANS.al.cols[2].ord",
    "cls": "plan order",
    "file": "analysis.js",
-   "line": 170,
+   "line": 172,
    "label": null,
    "text": "Take Sokolnitz, cross the stream, conform on Dokhturov's right.",
    "claim": "unchecked",
@@ -7186,7 +7705,7 @@
    "ref": "PLANS.al.cols[3].ord",
    "cls": "plan order",
    "file": "analysis.js",
-   "line": 172,
+   "line": 174,
    "label": null,
    "text": "Take the Sokolnitz castle and the pheasantry, cross, and link the attack to the centre.",
    "claim": "unchecked",
@@ -7196,7 +7715,7 @@
    "ref": "PLANS.al.cols[4].ord",
    "cls": "plan order",
    "file": "analysis.js",
-   "line": 174,
+   "line": 176,
    "label": null,
    "text": "Move from Pratzen to Kobelnitz and hold the hinge between the attack and the right.",
    "claim": "unchecked",
@@ -7206,7 +7725,7 @@
    "ref": "PLANS.al.cols[5].ord",
    "cls": "plan order",
    "file": "analysis.js",
-   "line": 176,
+   "line": 178,
    "label": null,
    "text": "Cavalry. Cover the right of the attacking columns between Blasowitz and the plateau.",
    "claim": "unchecked",
@@ -7216,7 +7735,7 @@
    "ref": "PLANS.al.cols[6].ord",
    "cls": "plan order",
    "file": "analysis.js",
-   "line": 178,
+   "line": 180,
    "label": null,
    "text": "Hold the Olmutz highway, pin the French left, and link to Liechtenstein.",
    "claim": "unchecked",
@@ -7226,7 +7745,7 @@
    "ref": "PLANS.al.cols[7].ord",
    "cls": "plan order",
    "file": "analysis.js",
-   "line": 180,
+   "line": 182,
    "label": null,
    "text": "The Imperial Guard to remain behind Krzenowitz, in hand.",
    "claim": "unchecked",
@@ -7236,17 +7755,41 @@
    "ref": "PLANS.fr.author",
    "cls": "plan",
    "file": "analysis.js",
-   "line": 185,
+   "line": 187,
    "label": null,
-   "text": "Set out in the proclamation to the army and the orders of 1 December, and in the dispositions given to the corps commanders on the Zuran before dawn.",
-   "claim": "unchecked",
-   "by": []
+   "text": "Set out in the proclamation to the army and the orders of 1 December, and in the written dispositions of that evening, which called the marshals to his bivouac for the morning. The last orders were given at daybreak: at the first rays of the sun in the 30th Bulletin, before dawn on the barrow by Schlapanitz in Mikhailovsky-Danilevsky, and in Savary only once the attack on the right was pronounced.",
+   "claim": "disputed",
+   "by": [
+    {
+     "src": "corr11_1863",
+     "at": "no. 9541, p. 450",
+     "rd": "corr11.p450.reserve-one-oclock",
+     "side": "the last orders at the first rays of the sun"
+    },
+    {
+     "src": "mikhailovsky1844",
+     "at": "p. 177",
+     "rd": "md1844.p177.kurgan-sun",
+     "side": "the last orders before dawn on the barrow"
+    },
+    {
+     "src": "savary1828",
+     "at": "t. II, pp. 203-205",
+     "rd": "savary.p203-205.night-seven",
+     "side": "the marshals held until the attack on the right was pronounced"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9535, p. 443",
+     "rd": "corr11.p443.seven-thirty-reread"
+    }
+   ]
   },
   {
    "ref": "PLANS.fr.intent",
    "cls": "plan",
    "file": "analysis.js",
-   "line": 186,
+   "line": 188,
    "label": null,
    "text": "Invite the attack on the right by giving up the Pratzen plateau and holding the lower Goldbach thin. When the enemy centre has marched off the heights to join that attack, take the heights with two divisions held concealed in the valley, cut the Allied army in half, then wheel south onto the rear of everything that has gone down into the Goldbach. In Ségur and Mikhailovsky-Danilevsky Bernadotte is to assail the plateau from the left at the same time; the written dispositions do not say so.",
    "claim": "interpretation",
@@ -7260,6 +7803,11 @@
      "src": "corr11_1863",
      "at": "no. 9535, p. 442",
      "rd": "corr11_1863.p442.dispositions-ic"
+    },
+    {
+     "src": "mikhailovsky1846",
+     "at": "pp. 245-246",
+     "rd": "mikhailovsky1846.p245-246.bernadotte-left"
     }
    ]
   },
@@ -7267,7 +7815,7 @@
    "ref": "PLANS.fr.assumed[0]",
    "cls": "plan",
    "file": "analysis.js",
-   "line": 188,
+   "line": 190,
    "label": null,
    "text": "That the Allies would read the abandoned plateau and the withdrawn outposts as weakness.",
    "claim": "unchecked",
@@ -7277,7 +7825,7 @@
    "ref": "PLANS.fr.assumed[1]",
    "cls": "plan",
    "file": "analysis.js",
-   "line": 189,
+   "line": 191,
    "label": null,
    "text": "That Davout could reach the lower Goldbach from Vienna in time to keep the right alive.",
    "claim": "unchecked",
@@ -7287,7 +7835,7 @@
    "ref": "PLANS.fr.assumed[2]",
    "cls": "plan",
    "file": "analysis.js",
-   "line": 190,
+   "line": 192,
    "label": null,
    "text": "That Legrand could hold roughly five kilometres of stream on his own for several hours.",
    "claim": "unchecked",
@@ -7297,7 +7845,7 @@
    "ref": "PLANS.fr.cost",
    "cls": "plan",
    "file": "analysis.js",
-   "line": 191,
+   "line": 193,
    "label": null,
    "text": "The risk was carried entirely on the right. In this map's interpretation, a counterfactual: if Davout had not arrived, or if Legrand had broken before nine o'clock, the bait would have been swallowed with the army behind it.",
    "claim": "unchecked",
@@ -7307,7 +7855,7 @@
    "ref": "PLANS.fr.cols[0].ord",
    "cls": "plan order",
    "file": "analysis.js",
-   "line": 201,
+   "line": 203,
    "label": null,
    "text": "Hold the villages on the lower Goldbach and give ground slowly. Do nothing that might discourage the attack.",
    "claim": "unchecked",
@@ -7317,7 +7865,7 @@
    "ref": "PLANS.fr.cols[1].ord",
    "cls": "plan order",
    "file": "analysis.js",
-   "line": 203,
+   "line": 205,
    "label": null,
    "text": "Saint-Hilaire behind Puntowitz, Vandamme behind Girzikowitz, out of sight in the valley. On the signal, take the Pratzeberg and Stare Vinohrady.",
    "claim": "unchecked",
@@ -7327,7 +7875,7 @@
    "ref": "PLANS.fr.cols[2].ord",
    "cls": "plan order",
    "file": "analysis.js",
-   "line": 205,
+   "line": 207,
    "label": null,
    "text": "Climb the northern shoulder of the plateau and take the Old Vineyards, linking the assault to Lannes.",
    "claim": "unchecked",
@@ -7337,7 +7885,7 @@
    "ref": "PLANS.fr.cols[3].ord",
    "cls": "plan order",
    "file": "analysis.js",
-   "line": 207,
+   "line": 209,
    "label": null,
    "text": "Hold the Olmutz highway with the Santon fortified and entrenched. Advance only when the centre has gone in.",
    "claim": "unchecked",
@@ -7347,7 +7895,7 @@
    "ref": "PLANS.fr.cols[4].ord",
    "cls": "plan order",
    "file": "analysis.js",
-   "line": 209,
+   "line": 211,
    "label": null,
    "text": "I Corps onto Caffarelli's ground of the day before, its left behind the Santon, in column until new orders (the dispositions of 1 December); the Guard and the grenadiers the reserve with the Emperor (the 30th Bulletin), the grenadiers under Lannes's orders in the dispositions. The route drawn is this map's.",
    "claim": "attributed",
@@ -7361,6 +7909,11 @@
      "src": "corr11_1863",
      "at": "no. 9541, p. 450",
      "rd": "corr11_1863.p450.reserve-defined"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9535, p. 443",
+     "rd": "corr11_1863.p443.no-guard"
     }
    ]
   },
@@ -7368,7 +7921,7 @@
    "ref": "PLANS.fr.cols[5].ord",
    "cls": "plan order",
    "file": "analysis.js",
-   "line": 211,
+   "line": 213,
    "label": null,
    "text": "Once the plateau is held from Pratzen to the highway, turn the centre ninety degrees and come down on the rear of the Allied left.",
    "claim": "unchecked",
@@ -7378,7 +7931,7 @@
    "ref": "ACTS[#deception].line",
    "cls": "act",
    "file": "analysis.js",
-   "line": 222,
+   "line": 224,
    "label": null,
    "text": "Napoleon has given up the plateau and left his right thin. The Allies form to attack it.",
    "claim": "unchecked",
@@ -7388,7 +7941,7 @@
    "ref": "ACTS[#advance].line",
    "cls": "act",
    "file": "analysis.js",
-   "line": 224,
+   "line": 226,
    "label": null,
    "text": "Four columns go down into the Goldbach villages. The centre of the Allied position empties behind them.",
    "claim": "unchecked",
@@ -7398,7 +7951,7 @@
    "ref": "ACTS[#strike].line",
    "cls": "act",
    "file": "analysis.js",
-   "line": 226,
+   "line": 228,
    "label": null,
    "text": "Soult climbs out of the fog onto ground the Allies have just left, and holds it against everything sent back.",
    "claim": "unchecked",
@@ -7408,7 +7961,7 @@
    "ref": "ACTS[#divided].line",
    "cls": "act",
    "file": "analysis.js",
-   "line": 228,
+   "line": 230,
    "label": null,
    "text": "With the plateau lost the Allied army is in two halves. The Guard, which Stutterheim calls the reserve of the Allied right, attacks to take it back and is thrown back.",
    "claim": "attributed",
@@ -7439,7 +7992,7 @@
    "ref": "ACTS[#collapse].line",
    "cls": "act",
    "file": "analysis.js",
-   "line": 230,
+   "line": 232,
    "label": null,
    "text": "The French centre turns south onto the rear of an Allied left that is still attacking westward.",
    "claim": "unchecked",
@@ -7449,7 +8002,7 @@
    "ref": "EVENTS[#columns-move].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 242,
+   "line": 244,
    "label": null,
    "text": "The Allied columns begin to leave the plateau",
    "claim": "unchecked",
@@ -7459,7 +8012,7 @@
    "ref": "EVENTS[#columns-move].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 244,
+   "line": 246,
    "label": null,
    "text": "Every column that goes down into the valley is a column no longer holding the centre.",
    "claim": "unchecked",
@@ -7469,7 +8022,7 @@
    "ref": "EVENTS[#columns-move].dispute",
    "cls": "event dispute",
    "file": "analysis.js",
-   "line": 245,
+   "line": 247,
    "label": null,
    "text": "When the columns left the plateau: the disposition ordered all the columns to march at 07:00, and the I Column left its camp at seven (Buxhowden's and Kutuzov's reports), as the map now draws it; Schönhals has the left wing off at half past six and the II and III Columns at 07:30, Przybyszewski's report his III Column at 07:00 and Buxhowden's the II Column coming down at 08:00, and Mikhailovsky-Danilevsky the first three columns between seven and eight. The map still moves the II and III Columns from 04:00, an earlier timing it keeps.",
    "claim": "disputed",
@@ -7521,7 +8074,7 @@
    "ref": "EVENTS[#counter-march].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 247,
+   "line": 249,
    "label": null,
    "text": "Liechtenstein counter-marches across the 4th Column",
    "claim": "unchecked",
@@ -7531,7 +8084,7 @@
    "ref": "EVENTS[#counter-march].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 249,
+   "line": 251,
    "label": null,
    "text": "The cavalry column had been posted on the wrong flank overnight; in Mikhailovsky-Danilevsky its crossing of the line of march held up the 4th Column at the set hour, and Kutuzov then stood still, though the disposition ordered him forward. Stutterheim has the 4th Column ordered off only toward eight, to give the left wing's columns time, and Schönhals has it leave half an hour after the first three.",
    "claim": "disputed",
@@ -7581,7 +8134,7 @@
    "ref": "EVENTS[#telnitz].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 251,
+   "line": 253,
    "label": null,
    "text": "Kienmayer attacks Telnitz",
    "claim": "unchecked",
@@ -7591,7 +8144,7 @@
    "ref": "EVENTS[#telnitz].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 253,
+   "line": 255,
    "label": null,
    "text": "The battle opens here, on the Allied left, after a night of outpost contact along the Goldbach: the beginning of the attack Napoleon wanted.",
    "claim": "unchecked",
@@ -7601,7 +8154,7 @@
    "ref": "EVENTS[#raigern].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 255,
+   "line": 257,
    "label": null,
    "text": "Friant's division at Raigern since the night",
    "claim": "unchecked",
@@ -7611,7 +8164,7 @@
    "ref": "EVENTS[#raigern].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 257,
+   "line": 259,
    "label": null,
    "text": "Davout and Friant reached Raigern on the night of 1 December: about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers. Davout's reports send the division on from Raigern at 05:00 (his report of 2 December) or between 05:30 and 06:00 (his report of 26 December), Sokolov about six; this map moves it from 04:00. Raigern lies just beyond this corner of the map.",
    "claim": "disputed",
@@ -7645,7 +8198,7 @@
    "ref": "EVENTS[#davout].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 258,
+   "line": 260,
    "label": null,
    "text": "Friant's leading brigade reaches the Goldbach",
    "claim": "unchecked",
@@ -7655,9 +8208,9 @@
    "ref": "EVENTS[#davout].dispute",
    "cls": "event dispute",
    "file": "analysis.js",
-   "line": 260,
+   "line": 262,
    "label": null,
-   "text": "When the leading brigade reached the Goldbach: 07:45 to 08:15 on this map; about 09:00 in Stutterheim, Schönhals and the Moniteur's remarks of 1806. Davout's report has word of the attack on Telnitz reach him on the march about eight and gives no hour for the arrival.",
+   "text": "When the leading brigade reached the Goldbach: 07:45 to 08:15 on this map; about 09:00 in Stutterheim and the Moniteur's remarks of 1806, Friant attacking about 09:00 in Schönhals. Davout's report has word of the attack on Telnitz reach him on the march about eight and gives no hour for the arrival.",
    "claim": "disputed",
    "by": [
     {
@@ -7674,7 +8227,7 @@
     },
     {
      "src": "schoenhals1873",
-     "at": "pp. 157-159",
+     "at": "pp. 159-160",
      "rd": "schoenhals1873.p157-159.departure",
      "side": "Friant attacking about nine"
     },
@@ -7690,9 +8243,9 @@
    "ref": "EVENTS[#davout].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 261,
+   "line": 263,
    "label": null,
-   "text": "About 08:00 near Telnitz on this map; about nine in Stutterheim, Schönhals and the Moniteur's remarks. Davout's report has word of the attack reach him on the march about eight and gives no hour for the arrival. In this map's interpretation, a counterfactual: without it the French right does not survive the morning.",
+   "text": "About 08:00 near Telnitz on this map; about nine in Stutterheim and the Moniteur's remarks, attacking about nine in Schönhals. Davout's report has word of the attack reach him on the march about eight and gives no hour for the arrival. In this map's interpretation, a counterfactual: without it the French right does not survive the morning.",
    "claim": "disputed",
    "by": [
     {
@@ -7709,7 +8262,7 @@
     },
     {
      "src": "schoenhals1873",
-     "at": "pp. 157-159",
+     "at": "pp. 159-160",
      "rd": "schoenhals1873.p157-159.departure",
      "side": "Friant attacking about nine"
     },
@@ -7725,7 +8278,7 @@
    "ref": "EVENTS[#sokolnitz].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 263,
+   "line": 265,
    "label": null,
    "text": "Langeron and Przybyszewski attack Sokolnitz",
    "claim": "unchecked",
@@ -7735,7 +8288,7 @@
    "ref": "EVENTS[#sokolnitz].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 265,
+   "line": 267,
    "label": null,
    "text": "The fight for the village, the castle and the pheasantry absorbs two columns; Davout reported the village taken and retaken several times.",
    "claim": "attributed",
@@ -7751,7 +8304,7 @@
    "ref": "EVENTS[#telnitz-retaken].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 267,
+   "line": 269,
    "label": null,
    "text": "Friant retakes Telnitz, then loses it again",
    "claim": "unchecked",
@@ -7761,7 +8314,7 @@
    "ref": "EVENTS[#telnitz-retaken].dispute",
    "cls": "event dispute",
    "file": "analysis.js",
-   "line": 269,
+   "line": 271,
    "label": null,
    "text": "When Telnitz was retaken: 08:30 on this map; in French hands at 09:30 in Davout's report of 26 December, then lost again; Friant attacking the village anew about 09:00 in Schönhals, Davout's reinforcement up about 09:00 in Stutterheim.",
    "claim": "disputed",
@@ -7780,7 +8333,7 @@
     },
     {
      "src": "schoenhals1873",
-     "at": "pp. 157-159",
+     "at": "pp. 159-160",
      "rd": "schoenhals1873.p157-159.departure",
      "side": "Friant attacking the village anew about nine"
     },
@@ -7796,7 +8349,7 @@
    "ref": "EVENTS[#telnitz-retaken].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 270,
+   "line": 272,
    "label": null,
    "text": "Heudelet's brigade throws itself into the village straight off the march. Davout's report has it in French hands at 09:30, then lost again when a French regiment, not recognising the brigade in the fog, fired on it and the Russians came back with fresh troops; the hour on the timeline is this map's.",
    "claim": "disputed",
@@ -7815,7 +8368,7 @@
     },
     {
      "src": "schoenhals1873",
-     "at": "pp. 157-159",
+     "at": "pp. 159-160",
      "rd": "schoenhals1873.p157-159.departure",
      "side": "Friant attacking the village anew about nine"
     },
@@ -7831,7 +8384,7 @@
    "ref": "EVENTS[#decision].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 272,
+   "line": 274,
    "label": null,
    "text": "Napoleon releases Soult against the heights",
    "claim": "unchecked",
@@ -7841,7 +8394,7 @@
    "ref": "EVENTS[#decision].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 274,
+   "line": 276,
    "label": null,
    "text": "Asked how long his troops needed to crown the plateau, Soult is reported to have answered twenty minutes at most (Thiebault) or ten (Ségur), and Napoleon to have waited a further quarter of an hour, giving the signal only once an aide reported the heights abandoned (a little prematurely, Thiebault adds). A memoir anecdote. The hour is disputed: about eight in Ségur, the aide's report at half past eight in Thiebault, the French columns moving about nine in the Austrian accounts.",
    "claim": "disputed",
@@ -7882,7 +8435,7 @@
    "ref": "EVENTS[#soult].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 276,
+   "line": 278,
    "label": null,
    "text": "Saint-Hilaire and Vandamme climb the slope",
    "claim": "unchecked",
@@ -7892,7 +8445,7 @@
    "ref": "EVENTS[#soult].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 278,
+   "line": 280,
    "label": null,
    "text": "Two divisions that had been standing in fog, invisible from the crest, climb onto a plateau the 4th Column has not yet left (Stutterheim; Schönhals; Thiebault).",
    "claim": "attributed",
@@ -7923,7 +8476,7 @@
    "ref": "EVENTS[#pratzen-village].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 280,
+   "line": 282,
    "label": null,
    "text": "Thiebault's brigade clears Pratzen village",
    "claim": "unchecked",
@@ -7933,7 +8486,7 @@
    "ref": "EVENTS[#pratzen-village].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 282,
+   "line": 284,
    "label": null,
    "text": "Opens the way to the Pratzeberg. No source read gives its hour: the Allied accounts have the 4th Column's advance guard occupy the village as the French moved off, and Thiebault expected only posts there.",
    "claim": "uncertain",
@@ -7958,7 +8511,7 @@
    "ref": "EVENTS[#face-about].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 284,
+   "line": 286,
    "label": null,
    "text": "Kutuzov orders the 4th Column to face about",
    "claim": "unchecked",
@@ -7968,7 +8521,7 @@
    "ref": "EVENTS[#face-about].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 286,
+   "line": 288,
    "label": null,
    "text": "The Allied commander-in-chief, riding with the column, sees what has happened.",
    "claim": "unchecked",
@@ -7978,7 +8531,7 @@
    "ref": "EVENTS[#kamensky].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 288,
+   "line": 290,
    "label": null,
    "text": "Kamensky turns his brigade about and drives the French off the crest",
    "claim": "unchecked",
@@ -7988,7 +8541,7 @@
    "ref": "EVENTS[#kamensky].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 290,
+   "line": 292,
    "label": null,
    "text": "Allied initiative on the plateau, but whose is disputed: Mikhailovsky-Danilevsky, citing Langeron's report, has Kamensky see the French climbing, warn Langeron and turn his brigade against them; Schönhals has Langeron send the brigade; Kutuzov's official report has Kutuzov order Kamensky to occupy the ridge, and Stutterheim has the two regiments come on the commander-in-chief's order; Kutuzov's private relation of March 1806 has them turn from the column and names no order of his.",
    "claim": "disputed",
@@ -8029,7 +8582,7 @@
    "ref": "EVENTS[#kamensky].dispute",
    "cls": "event dispute",
    "file": "analysis.js",
-   "line": 291,
+   "line": 293,
    "label": null,
    "text": "When Kamensky turned his brigade about: no account read gives the hour, only a sequence, after the French began to climb the heights and before or with Jurczek's attack. This event puts the turn at 09:45; his brigade's record on this map turns it in the 08:45 phase, whose timing the map keeps.",
    "claim": "uncertain",
@@ -8060,7 +8613,7 @@
    "ref": "EVENTS[#kursk].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 293,
+   "line": 295,
    "label": null,
    "text": "Langeron's reinforcements arrive as the crest is lost",
    "claim": "unchecked",
@@ -8070,7 +8623,7 @@
    "ref": "EVENTS[#kursk].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 295,
+   "line": 297,
    "label": null,
    "text": "Langeron rode back and sent troops up toward Kamensky; one account has two battalions arriving just as the position was abandoned. Which regiment, and what it lost, are not established.",
    "claim": "unchecked",
@@ -8080,7 +8633,7 @@
    "ref": "EVENTS[#pratzeberg].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 297,
+   "line": 299,
    "label": null,
    "text": "The Pratzeberg is firmly in French hands",
    "claim": "unchecked",
@@ -8090,7 +8643,7 @@
    "ref": "EVENTS[#pratzeberg].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 299,
+   "line": 301,
    "label": null,
    "text": "From here the French centre holds the high ground above the Goldbach valley and, in time, comes down into the back of the Allied columns fighting in it.",
    "claim": "unchecked",
@@ -8100,7 +8653,7 @@
    "ref": "EVENTS[#blasowitz].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 301,
+   "line": 303,
    "label": null,
    "text": "Blasowitz falls and Bagration is levered off the army",
    "claim": "unchecked",
@@ -8110,7 +8663,7 @@
    "ref": "EVENTS[#blasowitz].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 303,
+   "line": 305,
    "label": null,
    "text": "The Allied right is separated from the centre and withdraws toward Rausnitz; Schönhals has its battalions thrown into disorder after the Guards had given way, then gathered again, somewhat, on the height by Rausnitz.",
    "claim": "attributed",
@@ -8131,7 +8684,7 @@
    "ref": "EVENTS[#guard-attack].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 305,
+   "line": 307,
    "label": null,
    "text": "The Russian Guard takes the eagle of the 4th Line",
    "claim": "unchecked",
@@ -8141,7 +8694,7 @@
    "ref": "EVENTS[#guard-attack].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 307,
+   "line": 309,
    "label": null,
    "text": "The Guard, which Stutterheim calls the reserve of the Allied right, takes the eagle of the 4th Line, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day. The hour is disputed: Rapp and Ségur put the Guard's last effort about 13:00, Schönhals has the fight over by about noon; the window is this map's.",
    "claim": "attributed",
@@ -8177,7 +8730,7 @@
    "ref": "EVENTS[#guard-broken].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 309,
+   "line": 311,
    "label": null,
    "text": "Rapp's counter-charge breaks the Chevalier Guard",
    "claim": "unchecked",
@@ -8187,7 +8740,7 @@
    "ref": "EVENTS[#guard-broken].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 311,
+   "line": 313,
    "label": null,
    "text": "Prince Repnin is taken prisoner, by Rapp's charge in the 30th Bulletin. With the reserve spent, nothing remains to retake the plateau.",
    "claim": "attributed",
@@ -8203,7 +8756,7 @@
    "ref": "EVENTS[#guard-broken].dispute",
    "cls": "event dispute",
    "file": "analysis.js",
-   "line": 312,
+   "line": 314,
    "label": null,
    "text": "When Rapp's charge went in: before one by the order of the narrative in the 30th Bulletin and in Mikhailovsky-Danilevsky (an inference: neither dates the charge itself), by about noon in Schönhals, about 13:00 or after in Rapp's own memoirs and Ségur's; the map draws it from 11:15, a timing it has kept.",
    "claim": "disputed",
@@ -8244,7 +8797,7 @@
    "ref": "EVENTS[#hq-forward].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 314,
+   "line": 316,
    "label": null,
    "text": "Napoleon moves forward to Stare Vinohrady",
    "claim": "unchecked",
@@ -8254,7 +8807,7 @@
    "ref": "EVENTS[#hq-forward].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 316,
+   "line": 318,
    "label": null,
    "text": "From Stare Vinohrady he directs the centre while the Allied left is still fighting westward on the Goldbach with its rear open. Later he moves again, to the chapel of St Anthony above Augezd, from which he watches the end.",
    "claim": "unchecked",
@@ -8264,7 +8817,7 @@
    "ref": "EVENTS[#buxhowden-blind].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 318,
+   "line": 320,
    "label": null,
    "text": "Buxhowden does not yet know the centre is gone",
    "claim": "unchecked",
@@ -8274,7 +8827,7 @@
    "ref": "EVENTS[#buxhowden-blind].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 320,
+   "line": 322,
    "label": null,
    "text": "Contemporaries put it about noon. Three columns go on attacking westward while the army behind them is being taken apart.",
    "claim": "unchecked",
@@ -8284,7 +8837,7 @@
    "ref": "EVENTS[#davout-resumes].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 322,
+   "line": 324,
    "label": null,
    "text": "Davout resumes the offensive",
    "claim": "unchecked",
@@ -8294,7 +8847,7 @@
    "ref": "EVENTS[#davout-resumes].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 324,
+   "line": 326,
    "label": null,
    "text": "The anvil becomes a hammer. Langeron is pushed back onto Sokolnitz from the west.",
    "claim": "unchecked",
@@ -8304,7 +8857,7 @@
    "ref": "EVENTS[#wheel].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 326,
+   "line": 328,
    "label": null,
    "text": "The French centre turns south",
    "claim": "unchecked",
@@ -8314,7 +8867,7 @@
    "ref": "EVENTS[#wheel].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 328,
+   "line": 330,
    "label": null,
    "text": "Ninety degrees, off the heights, into the rear of Buxhowden's three columns.",
    "claim": "unchecked",
@@ -8324,7 +8877,7 @@
    "ref": "EVENTS[#sokolnitz-falls].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 330,
+   "line": 332,
    "label": null,
    "text": "Sokolnitz falls; Przybyszewski's column is surrounded",
    "claim": "unchecked",
@@ -8334,7 +8887,7 @@
    "ref": "EVENTS[#sokolnitz-falls].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 332,
+   "line": 334,
    "label": null,
    "text": "The column tries to break out toward Kobelnitz, comes apart, and surrenders almost entire.",
    "claim": "unchecked",
@@ -8344,7 +8897,7 @@
    "ref": "EVENTS[#augezd].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 334,
+   "line": 336,
    "label": null,
    "text": "Vandamme takes the height above the Augezd defile",
    "claim": "unchecked",
@@ -8354,7 +8907,7 @@
    "ref": "EVENTS[#augezd].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 336,
+   "line": 338,
    "label": null,
    "text": "A way out for the Allied left over the Augezd defile now lies under French guns; this map reads the retreat the disposition ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, as running through ground the French held.",
    "claim": "interpretation",
@@ -8390,7 +8943,7 @@
    "ref": "EVENTS[#ice].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 338,
+   "line": 340,
    "label": null,
    "text": "French artillery fires on the ice of the Satschan mere",
    "claim": "unchecked",
@@ -8400,17 +8953,40 @@
    "ref": "EVENTS[#ice].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 340,
+   "line": 342,
    "label": null,
-   "text": "The 30th Bulletin claimed twenty thousand drowned. The drained ponds gave up thirty-eight guns, about a hundred and thirty horses and two men, figures as usually given and, by inference, a lower bound, not the toll. This map reads the catastrophe as encirclement rather than drowning, an interpretation.",
-   "claim": "unchecked",
-   "by": []
+   "text": "The 30th Bulletin claimed twenty thousand drowned; Schönhals calls the mass drowning a French exaggeration and, on the Telnitz priest's word, puts it at sixty to at most a hundred. General Suchet's report of 16 December 1805, as Sokolov quotes it, has thirty-six guns, 138 horses and three bodies taken from the pond near Augezd when it was drained, by inference a lower bound, not the toll; the figures usually given, thirty-eight guns, about a hundred and thirty horses and two men, were not traced to a source in this reading. This map reads the catastrophe as encirclement rather than drowning, an interpretation.",
+   "claim": "disputed",
+   "by": [
+    {
+     "src": "materialien1806",
+     "at": "p. 121",
+     "rd": "materialien1806.p121.zusatz15",
+     "side": "twenty thousand drowned (the 30th Bulletin, quoted)"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 169-170",
+     "rd": "schoen.p169-170.tellnitz-pfarrer",
+     "side": "sixty to at most a hundred"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "p. 169",
+     "rd": "schoenhals1873.p169.drowning-exaggeration"
+    },
+    {
+     "src": "sokolov2006",
+     "at": "t. II, pp. 70-71",
+     "rd": "sokolov.p71.suchet-drain"
+    }
+   ]
   },
   {
    "ref": "EVENTS[#end].n",
    "cls": "event name",
    "file": "analysis.js",
-   "line": 342,
+   "line": 344,
    "label": null,
    "text": "Organised resistance ends",
    "claim": "unchecked",
@@ -8420,7 +8996,7 @@
    "ref": "EVENTS[#end].why",
    "cls": "event why",
    "file": "analysis.js",
-   "line": 344,
+   "line": 346,
    "label": null,
    "text": "Bagration holds the height toward Rausnitz, then withdraws on Austerlitz, the Guard on Austerlitz, and the Allied left has ceased to exist as a formation.",
    "claim": "unchecked",
@@ -8430,7 +9006,7 @@
    "ref": "EVENTS[#end].dispute",
    "cls": "event dispute",
    "file": "analysis.js",
-   "line": 345,
+   "line": 347,
    "label": null,
    "text": "When the fighting ended: this map puts the end of organised resistance at 16:30, after Sokolov's end of the firing in the north; an Allied report printed in 1806 has the northern front quiet from 15:00, Thiebault the firing over about half an hour after three, and Mikhailovsky-Danilevsky the last shots between five and six; the 30th Bulletin has the victory decided at one. Schönhals has Bagration, no longer attacked, retreat on Austerlitz about 18:00, and Stutterheim behind Austerlitz at 18:00.",
    "claim": "disputed",
@@ -8481,7 +9057,7 @@
    "ref": "TOUR[0].x",
    "cls": "tour",
    "file": "analysis.js",
-   "line": 359,
+   "line": 361,
    "label": null,
    "text": "Ten kilometres of open Moravian farmland. The French army, marked in blue, is to the west; to the east are the Russians and the Austrians, marked in amber. Between them runs the Goldbach, a small stream in a marshy bottom, and behind it stands the Pratzen plateau, the high ground in the centre of the field.",
    "claim": "unchecked",
@@ -8491,7 +9067,7 @@
    "ref": "TOUR[1].x",
    "cls": "tour",
    "file": "analysis.js",
-   "line": 361,
+   "line": 363,
    "label": null,
    "text": "Weyrother's orders send four of the five Allied columns south-west, off the plateau, to turn the French right and cut the road to Vienna. The heavy arrows are the intended lines of march. Note what they all have in common: they lead away from the centre.",
    "claim": "unchecked",
@@ -8501,7 +9077,7 @@
    "ref": "TOUR[2].x",
    "cls": "tour",
    "file": "analysis.js",
-   "line": 363,
+   "line": 365,
    "label": null,
    "text": "Napoleon gave up the plateau on 1 December and camped behind the Goldbach, leaving his right so thin that a single division held five kilometres of stream. The weakness was real, which is what made it convincing.",
    "claim": "unchecked",
@@ -8511,7 +9087,7 @@
    "ref": "TOUR[3].x",
    "cls": "tour",
    "file": "analysis.js",
-   "line": 365,
+   "line": 367,
    "label": null,
    "text": "From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 39,000 at 04:00 to about 19,000 by 07:15, half of it gone before a shot is fired at the plateau.",
    "claim": "derived",
@@ -8527,7 +9103,7 @@
    "ref": "TOUR[4].x",
    "cls": "tour",
    "file": "analysis.js",
-   "line": 367,
+   "line": 369,
    "label": null,
    "text": "In this model's terrain an observer on the Pratzeberg summit can see about 73 per cent of the field, and one on the valley floor at Puntowitz under 3 per cent. That is a reading from the model, not a record of what anyone saw: on the morning of the battle the valley lay in fog, and it was the fog that hid Soult's divisions forming at the foot of the slope.",
    "claim": "unchecked",
@@ -8537,7 +9113,7 @@
    "ref": "TOUR[5].x",
    "cls": "tour",
    "file": "analysis.js",
-   "line": 369,
+   "line": 371,
    "label": null,
    "text": "At about a quarter to nine Saint-Hilaire and Vandamme climb out of the fog onto ground the Allies have just left. Two divisions, no reserve committed, against a column still filing off the heights.",
    "claim": "unchecked",
@@ -8547,7 +9123,7 @@
    "ref": "TOUR[6].x",
    "cls": "tour",
    "file": "analysis.js",
-   "line": 371,
+   "line": 373,
    "label": null,
    "text": "With the plateau gone the Allied army is in two halves that can no longer help one another. Buxhowden's columns are still attacking westward and will not learn what has happened behind them until about noon.",
    "claim": "unchecked",
@@ -8557,7 +9133,7 @@
    "ref": "TOUR[7].x",
    "cls": "tour",
    "file": "analysis.js",
-   "line": 373,
+   "line": 375,
    "label": null,
    "text": "The French centre turns ninety degrees and comes down off the heights into the rear of the Allied left. A way out for them is the neck of dry ground at Augezd, under guns on ground the Allies held at dawn.",
    "claim": "unchecked",
@@ -8567,7 +9143,7 @@
    "ref": "TOUR[8].x",
    "cls": "tour",
    "file": "analysis.js",
-   "line": 375,
+   "line": 377,
    "label": null,
    "text": "Allied losses are usually given as fifteen to sixteen thousand killed and wounded and twelve thousand or more taken, with about a hundred and eighty guns. French losses were near nine thousand. Everything you have watched today is a reconstruction: positions are graded A, B or C, strengths carry their ranges, and two figures on the situation line are computed rather than recorded. The sources panel says which is which.",
    "claim": "unchecked",
