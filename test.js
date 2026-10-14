@@ -364,8 +364,11 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
         cur={id:m[1],src:sec,file:f,label:null,text:""}; REG.set(m[1],cur); }
       else if(/^#/.test(l)) cur=null;
       else if(cur){ cur.text+=l+"\n"; if((m=/^- \*\*source\*\*: `([\w.-]+)`/.exec(l))) cur.src=m[1];
-        if(!cur.label&&(m=/\*\*label\*\*: ([a-z]+)/.exec(l))) cur.label=m[1]; } }); });
-  REG.forEach(r=>{ r.ocrOnly=/\bOCR\b|text layer/i.test(r.text)&&!/page image|on (?:its|the) image|image n\d|\(image\)/i.test(r.text);
+        if(!cur.label&&(m=/\*\*label\*\*: ([a-z]+)/.exec(l))) cur.label=m[1];
+        if(cur.readOn===undefined&&(m=/^- \*\*quote\*\* \(read on: ([^;)]*)/.exec(l))) cur.readOn=m[1]; } }); });
+  /* read on the text layer alone: the step-4 register says so on its quote line ("read on: page image", or the text layer); the step-2
+     register's entries name the OCR or the text layer and never a page image */
+  REG.forEach(r=>{ r.ocrOnly=r.readOn!==undefined?!/^page image/i.test(r.readOn):(/\bOCR\b|text layer/i.test(r.text)&&!/page image|on (?:its|the) image|image n\d|\(image\)/i.test(r.text));
     if(!r.src) cerr.push("reading "+r.id+" ("+r.file+") has no source"); });
   /* a clock time in any form a note might use: 08:45, 8.30, 14h30, 1400 hours, nine o'clock, half past eight, a quarter to nine, noon,
      the eighth hour, nine in the morning, 9 a.m., "at about nine" (the hour as a word after at, about, by, before, after, until, toward, from) */
