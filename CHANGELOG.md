@@ -2,7 +2,8 @@
 
 ## 2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6)
 
-**Status: for review (#51). The build changed: `austerlitz-command-map.html` 2,048,277 bytes, md5 `f023ae0e425653deced975402b4cdea7` (was the step-2 build, 1,927,346
+**Status: merged (#51); the screen-reader session recorded complete on the owner's word on 14 October 2026 (decision 175; recorded in
+roadmap step 4's first commit), so step 3 is done. The build changed: `austerlitz-command-map.html` 2,048,277 bytes, md5 `f023ae0e425653deced975402b4cdea7` (was the step-2 build, 1,927,346
 bytes, md5 `af98f58641a29cb4934ca9d28bf86071`).** `check:baseline` moves to this build. `check:data`'s reference is not moved: step 3 is
 presentation and software only, and no guarded declaration changed (all 128 identical to `archive/step2-af98f586.html`, run after every
 code commit). The next owner decision is 176: this step put questions 162-175 to the owner (below), each with the conservative default
@@ -231,8 +232,10 @@ Before it, on each segment's snapshot (in order; each failure fixed in the commi
 
 **What remains uncertain or not verified.**
 - **The screen-reader session** (`docs/ROADMAP.md` step 3's last item) needs a person: `docs/step3-evidence/sr-session.md` is the script
-  (24 items, NVDA with Chrome and VoiceOver with Safari); **not run, not verified**; decision 175: run by the owner or a tester, step 3 done when it is recorded. What a screen reader speaks for the
-  dialogs, the switch, the map layer and the live regions is read from the DOM only.
+  (24 items, NVDA with Chrome and VoiceOver with Safari); **not run, not verified** when this entry was written; decision 175: run by the owner or a tester, step 3 done when it is recorded. What a screen reader speaks for the
+  dialogs, the switch, the map layer and the live regions is read from the DOM only. **Since recorded (14 October 2026, roadmap step 4's
+  first commit):** the owner recorded the session complete; no item results, versions or speech were given with it, so the script's
+  result column stays empty and no item is recorded here as passed or failed.
 - Only Chromium (the harness's engine, software WebGL) was run: Firefox and Safari (`inert`, `aria-modal`, `:focus-within`, the
   density query) and a GPU are not verified.
 - The context-loss case's count of three r128's "object does not belong to this context" warnings varies by run (24 and 20 measured); its

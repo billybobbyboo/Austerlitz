@@ -1,9 +1,15 @@
-# Roadmap step 3: the screen-reader session (a script for a person; NOT VERIFIED)
+# Roadmap step 3: the screen-reader session (a script for a person; recorded complete by the owner, decision 175)
+
+**Status (14 October 2026): complete, on the owner's word.** Decision 175 left the session to the owner or a tester, step 3 done when it
+is recorded. The owner recorded it complete in the instruction that began roadmap step 4 (`CHANGELOG.md`, step 3's entry; `docs/ROADMAP.md`,
+step 3). No item-by-item results, versions or speech were given with it, so the result column below is left as it was: none of the 24
+items is marked pass, fail or n/a in this repository, and no finding of the session is recorded here. If the session's notes are supplied,
+they go in the result column and in `CHANGELOG.md`.
 
 `docs/ROADMAP.md` step 3 ends with one session with a screen reader, to check what the final audit and this step could only read from the
-DOM (`docs/FINAL_AUDIT.md` §2.7, "Not verifiable here"). No screen reader was available in the step-3 session, so **nothing below has been
-verified**: the "expected" column is what the step-3 build's DOM says (roles, names, states, live regions), read from `shell.html` and
-`app.js`; what a screen reader actually speaks may differ, and every difference is a finding to record.
+DOM (`docs/FINAL_AUDIT.md` §2.7, "Not verifiable here"). No screen reader was available in the step-3 session, which wrote this script:
+the "expected" column is what the step-3 build's DOM says (roles, names, states, live regions), read from `shell.html` and `app.js`; what a
+screen reader actually speaks may differ, and every difference is a finding to record.
 
 ## Set-up
 
@@ -46,7 +52,8 @@ verified**: the "expected" column is what the step-3 build's DOM says (roles, na
 | 23 | Note for the record | the role-less names (`.speeds`, `#scalebar`); the only `h1` is in the rail (hidden below 1080 px); numbers in the browser's locale ("about 6.600" in Dutch); the eye-level caption is not live; the phase flash's words only in `#toast` | (recorded for the owner questions) | |
 | 24 | The tools: "Guided tour" | focus on the tour's Next; each stop said once ("Tour, stop 1 of 8: ..., 04:00."), no phase announcement besides; Leave the tour: "The tour has ended.", focus back on the Guided tour button (decision 168) | | |
 
-## Not verified
+## Not verified in this repository
 
-Everything above. The step-3 build passes its automated checks (`CHANGELOG.md`, roadmap step 3), which read roles, names, focus and live
-regions from the DOM; none of them hears a screen reader.
+The session is recorded complete on the owner's word (above); what a screen reader spoke for each item is not recorded here. The step-3
+build passes its automated checks (`CHANGELOG.md`, roadmap step 3), which read roles, names, focus and live regions from the DOM; none of
+them hears a screen reader.

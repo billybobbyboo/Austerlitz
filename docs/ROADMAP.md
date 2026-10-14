@@ -11,8 +11,8 @@ from the code, the approach proposed, the work done conservatively, checked, rec
 |---|---|---|---|---|
 | 1 | **Suite hardening**: the fonts embedded first (so `check:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | merged (#49; `CHANGELOG.md`) |
 | 2 | **Integrity on screen**: one data task and a presentation part, decided together: the disputed hours marked, the plateau label tagged, the first claim labelled, the claim pill reworded, the contradictions fixed, the vines labelled | H-1 to H-5, H-7, H-9 to H-16, D-3 to D-6 | 125-129, 135; 142-161 | merged (#50; `CHANGELOG.md`) |
-| 3 | **Accessibility and robustness**: the shortcuts switch, hidden panels inert, the sources sheet a proper dialog, focus returned, reduced motion live and in CSS, the timeline's targets, focused map items drawn; the start-up message and the CDN integrity; "Whose eyes?" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134 | in review (#51); the screen-reader session not yet run |
-| 4 | **The sourcing stage**: Part A, an inventory of every narrative statement and a register of readings (as Stage 6 did for dress); per-statement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136 | after step 3 |
+| 3 | **Accessibility and robustness**: the shortcuts switch, hidden panels inert, the sources sheet a proper dialog, focus returned, reduced motion live and in CSS, the timeline's targets, focused map items drawn; the start-up message and the CDN integrity; "Whose eyes?" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |
+| 4 | **The sourcing stage**: Part A, an inventory of every narrative statement and a register of readings (as Stage 6 did for dress); per-statement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136 | in progress |
 | 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note) | | open |
 | 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139 | open |
 
@@ -149,12 +149,14 @@ the default, it is applied in step 3 after the answers; "where" names the step t
 | 172 | a message when a focused map item leaves the map; the map ring's contrast | both, in step 5 | step 5 |
 | 173 | the Eyes button's name | begins with its visible words; `aria-pressed` dropped (the name carries the state); the 5E check's assertions replaced equally strictly | step 3, after the answers |
 | 174 | the plateau reading at 720 px and below in Study | shown in the caption; then, the caption's box too narrow to hold it whole (decision 159), the owner's second answer: kept in the dispatch card | step 3, after the answers |
-| 175 | the screen-reader session | run by the owner or a tester; step 3 done when it is recorded | open until recorded |
+| 175 | the screen-reader session | run by the owner or a tester; step 3 done when it is recorded | recorded complete on the owner's word on 14 October 2026 (roadmap step 4's first commit); step 3 done |
 
 ### What step 3 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)
 
-- **The screen-reader session** (`docs/step3-evidence/sr-session.md`, 24 items, NVDA with Chrome and VoiceOver with Safari): not run; nothing
-  a screen reader speaks is verified (question 175). Firefox, Safari and a GPU are not run either.
+- **The screen-reader session** (`docs/step3-evidence/sr-session.md`, 24 items, NVDA with Chrome and VoiceOver with Safari): recorded complete
+  on the owner's word on 14 October 2026 (decision 175), in the instruction that began step 4; no item results, versions or speech were given
+  with it, so the script's result column stays empty and none of its 24 items is recorded here as passed or failed. The automated checks
+  still run Chromium only (no Firefox, Safari or GPU).
 - **A-3:** done but for the event markers, 2.5.8's essential exception (decision 167); at 390 px the narrowest phases are 20 px wide, as before.
 - **Decision 174's reading:** in Study where CSS hides the card (430 px tall or less, the 390 px first screen under its card, the rail shown
   at 720 px and below) it shows nowhere, as before step 3; in Watch at 720 px and below it gives way whole where the caption cannot hold it.
