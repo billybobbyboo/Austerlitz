@@ -40,8 +40,10 @@ a synthesizer and a completeness critic. Every reader is a machine reader: each 
   35 states, 0 below AA, the six start-up cases, run on its build after the commit).
 - `56501de`: K4, the three disputed hours, with the review of `d23df4a`, below (its check:selftest, 242 of 242 with the manifest held, and
   check:contrast, 35 states, 0 below AA, the six start-up cases, run on its build after the commit).
-- `aa561af`: K5, the other hours, with the review of `56501de`, below.
-- (this commit) K6, Friant and Telnitz retaken, with the review of `aa561af`, below.
+- `aa561af`: K5, the other hours, with the review of `56501de`, below (its check:selftest, 242 of 242 with the manifest held, and
+  check:contrast, 35 states, 0 below AA, the six start-up cases, run on its build after the commit).
+- `ffb0ac4`: K6, Friant and Telnitz retaken, with the review of `aa561af`, below; its checks line came in the next commit.
+- (this commit) K6's checks, recorded.
 - The language left for step 4 (the plan's K3, `f9e1b4b`): below.
 
 **The register of readings (`docs/step4-evidence/readings.md`, with `proposals.md`; H-6, decision 130).** 273 entries: 210 readings by
@@ -156,6 +158,13 @@ fact -> est and timing A -> B. The march's figures: about 115 km in under two da
 (Thiers), each attributed; this map's earlier "113 km in 40-46 hours" has no source read and is kept, so labelled, only in the Vienna road's
 facts. check:chronology: friant@1 (the departure from Raigern) and friant@2 (Telnitz retaken) now judge the sources' hours and are named
 conflicts (`CONFLICTS`), the map's 04:00, 08:00 and 08:30 allowed by name; `SOURCE_NOTE.body[5]` names the two hours (rule L8).
+check:data's changed declarations in this commit: `PHASES`, `FORMATIONS`, `FEATURES` (the Vienna road's facts), `SOURCE_NOTE`, `ANALYSIS`,
+`PLANS` (al.cost), `EVENTS`, `STATEMENT_CLAIMS`. Checks on this commit's build: npm test, all nine suites and the height guard pass;
+check:chronology 0 errors (71 moves with a timed statement, 64 consistent, 7 early, all named: friant@1, friant@2, guard_cav@6,
+kamensky@3, kamensky@4, lang@1, prz@1); check:data against the step-2 reference, no declaration added to the step's changed list. The
+telnitz-retaken event's shorter name and the reworded lines are drawn at five fixed cases (`close-sokolnitz`, `paper-close`, `eye-zuran`,
+`eye-zuran-1x`, `opening-2`): measured on this build with `harness.js --only` and compared with the step-3 report (`tools/step3/report-diff.js`),
+no difference in drops, dropped ids, unobstructed fractions or timeline height.
   The changed statements:
   - `PHASES[#1].events[2]`: was “c. 08:00 / Friant's leading brigade comes up to the Goldbach near Telnitz. The division had reached Raigern overnight after about 113 km from Vienna in 40-46 hours (sources vary).”; is “c. 08:00 / Friant's leading brigade comes up to the Goldbach near Telnitz. The hour is disputed: about nine in Stutterheim and in the Moniteur's remarks of 1806, after Telnitz had fallen in Mikhailovsky-Danilevsky; in Davout's report word of the attack reached him on the march about eight. The division had reached Raigern overnight: about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers.”; claim disputed (stutterheim1806de p. 52, stut.p52.davout-nine; materialien1806 pp. 109-110, mat.p109-110.moniteur-neuf; mikhailovsky1844 pp. 178-179, md1844.p178-179.davout-telnitz; davout1885 t. I, no. 127, pp. 202-204, davout1885.p202-204.report-26dec; sokolov2006 pp. 19, 38, sokolov2006.p19-61; thiers1847 t. VI, p. 296, thiers1845.p296.marche-etonnante).
   - `PHASES[#2].lede`: was “Langeron and Przybyszewski attack Sokolnitz village, its walled castle and the pheasantry enclosure beyond. Friant's leading brigade retakes Telnitz briefly, then withdraws behind the stream. On the plateau the 4th Column, which was meant to replace the troops leaving the heights, is still standing still: Liechtenstein's cavalry has cut across its line of march. A gap opens between it and the 3rd Column.”; is “Langeron and Przybyszewski attack Sokolnitz village, its walled castle and the pheasantry enclosure beyond. Friant's leading brigade retakes Telnitz briefly, then loses it again in the fog (Davout's report). On the plateau the 4th Column, which was meant to replace the troops leaving the heights, is still standing still: Liechtenstein's cavalry has cut across its line of march. A gap opens between it and the 3rd Column.”; unchecked.
