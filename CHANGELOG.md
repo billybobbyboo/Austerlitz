@@ -21,7 +21,20 @@ a synthesizer and a completeness critic. Every reader is a machine reader: each 
   pair's text index was looked up by class name, and two classes are named "method"); the unchecked definition no longer says the statement
   follows "the standard accounts" (itself unchecked).
 - `f40ea90`: the claim model (below).
-- The review of `f40ea90` (an independent reviewer, read-only; this commit): eight findings, each fixed or recorded below.
+- `a084d33`: the review of `f40ea90` (an independent reviewer, read-only): eight findings, each fixed or recorded below.
+- `55dde7a` (tools): `test.js` reads a register entry's "read on" marker (the step-4 register states on each quote line what the passage was
+  read on).
+- The register (records; this commit): `docs/step4-evidence/readings.md` and `README.md`, below.
+
+**The register of readings (`docs/step4-evidence/readings.md`; H-6, decision 130).** 273 entries: 210 readings by the six clusters'
+researchers and 63 counter-readings by their source skeptics (266 read on page images, 7 on a text layer only), 59 negatives
+(`C<n>.n<k>`) and 26 sources not readable from here, over 33 source keys. Every source skeptic downloaded every page image afresh: none of
+the 210 readings was rejected; about 70 were accepted with corrections (locators, grades, translations, what a reading settles), each
+applied in place and named as the skeptic's. Two source keys normalised from the skeptics' readings of the title pages: `segur1873` is the
+2nd edition of 1877 (`segur1877`), Thiers t. VI is of 1847 (`thiers1847`); three ids that repeated a step-2 register id or each other renamed
+with their entry number (`md1844.p179.half-past-eight~C1.c4`, `~C2.c6`, `md1844.p186-187.kamensky~C1.10`), so `test.js` resolves 327 reading ids
+across the two registers, each to one entry. Every reader was a machine reader; no person read these pages for step 4 (decision 136's human
+second reading is an owner question of this step).
 
 **The claim model (`narrative.js`; H-6, decision 128 (b)).** A new guarded file after `analysis.js` in `build.py`'s list, as the C7 design
 skeptic's review amended the design (its blocking findings B1-B4):
