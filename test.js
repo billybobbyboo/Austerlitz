@@ -9,6 +9,7 @@ eval(fs.readFileSync('world.js','utf8'));
 eval(fs.readFileSync('_state.js','utf8'));
 eval(fs.readFileSync('_ov.js','utf8'));
 eval(fs.readFileSync('analysis.js','utf8'));
+eval(fs.readFileSync('narrative.js','utf8'));   /* roadmap step 4: the per-statement claims, after analysis.js as in the build's order */
 /* the plotted anchor a formation (or the first of its leaves) holds at a phase - the data, not the live clock */
 function anchorPos(id,ph){ const f=FORMATIONS[id];
   if(f.track){ const s=stateAt(id,ph); return s&&s.p?s.p:null; }
@@ -75,7 +76,7 @@ Object.keys(FORMATIONS).filter(id=>FORMATIONS[id].children).forEach(id=>{
    heightguns@8 declared cf "C" and then "B" until step 2), and a moveMin on a formation's first positioned anchor, where no leg runs into
    it (anchorList never reads it: heightguns@7's 30 until step 2) */
 { const acorn=require("acorn"), dup=[];
-  ["geo.js","data.js","appearance.js","analysis.js"].forEach(f=>{ (function walk(n){ if(!n||typeof n.type!=="string") return;
+  ["geo.js","data.js","appearance.js","analysis.js","narrative.js"].forEach(f=>{ (function walk(n){ if(!n||typeof n.type!=="string") return;
       if(n.type==="ObjectExpression"){ const seen=new Set(); n.properties.forEach(p=>{ if(p.type!=="Property"||p.computed) return;
         const k=p.key.type==="Identifier"?p.key.name:String(p.key.value); if(seen.has(k)) dup.push(f+":"+p.loc.start.line+" "+k); seen.add(k); }); }
       for(const k in n){ const v=n[k]; if(Array.isArray(v)) v.forEach(walk); else if(v&&typeof v.type==="string") walk(v); } })(acorn.parse(fs.readFileSync(f,"utf8"),{ecmaVersion:2020,locations:true})); });
@@ -322,7 +323,7 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   if(!dm) errs.push("guard: DATA not found in tools/visual/data-invariance.js");
   let n=0, out=0;
   const keyOf=s=>s.type==="FunctionDeclaration"?s.id.name:(s.type==="VariableDeclaration"?s.declarations.map(d=>d.id.name).join(","):null);
-  ["geo.js","data.js","analysis.js","appearance.js"].forEach(f=>acorn.parse(fs.readFileSync(f,'utf8'),{ecmaVersion:2020}).body.forEach(s=>{
+  ["geo.js","data.js","analysis.js","appearance.js","narrative.js"].forEach(f=>acorn.parse(fs.readFileSync(f,'utf8'),{ecmaVersion:2020}).body.forEach(s=>{
     const k=keyOf(s); if(k===null) return; n++;
     if(!G.has(k)){ out++; errs.push("guard: "+f+"'s "+k+" is not in check:data's lists (tools/visual/data-invariance.js)"); } }));
   const APP_DATA=["SUN_DAY","FEATURE_GT","TIMING_TEXT","CONF_TEXT","CONF_INTERP","POS_CLAIM","SRC_LABEL"];   /* POS_CLAIM and SRC_LABEL since C28 (the critic's item 6) */
@@ -330,8 +331,53 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   const appKeys=new Set(acorn.parse(fs.readFileSync('app.js','utf8'),{ecmaVersion:2020}).body.map(keyOf).filter(k=>k!==null));
   APP_DATA.forEach(k=>{ if(!G.has(k)){ out++; errs.push("guard: app.js's "+k+" is not in check:data's lists (D-5)"); }
     if(!appKeys.has(k)) errs.push("guard: app.js declares no top-level "+k+" of its own (D-5)"); });
-  console.log("guard: the "+n+" declarations of the four data files and app.js's "+APP_DATA.length+" data declarations "+
+  console.log("guard: the "+n+" declarations of the five data files and app.js's "+APP_DATA.length+" data declarations "+
     (out?"are not all in check:data's lists ("+out+" outside)":"are in check:data's lists")+" ("+G.size+" names)"); }
+
+/* ---- roadmap step 4 (docs/FINAL_AUDIT.md H-6; decisions 128 (b), 130): narrative.js, each narrative statement's claim ----
+   The statements are tools/step4/statements.js's; a statement without an entry is unchecked. Every entry: a live statement, its h the
+   statement's hash (a reword anywhere fails until its claim is reviewed: the review of c69890a), a claim word of CLAIM_WORDS; every source
+   a key of APPEARANCE_SOURCES (the one table of works read); every reading id a heading of a register (docs/step4-evidence/readings.md,
+   docs/step2-evidence/readings.md) whose source is the one named; "fact" and "attributed" rest on a reading made here, never on a citation
+   alone; "disputed" names two sides, each read; "uncertain" names its search; a note carries no clock time (the hours are the tracks'
+   timings, which check:chronology holds). The inventory (docs/step4-evidence/inventory.md, .json) is current. */
+{ const {statements,hashOf}=require('./tools/step4/statements.js'), S=statements('.'), byRef=new Map(S.map(s=>[s.ref,s]));
+  const KINDS=["fact","attributed","disputed","derived","interpretation","uncertain","design","unchecked"], cerr=[];
+  if(JSON.stringify(Object.keys(CLAIM_WORDS).sort())!==JSON.stringify(KINDS.slice().sort())) cerr.push("CLAIM_WORDS's kinds are not "+KINDS.join(", "));
+  KINDS.forEach(k=>{ const w=CLAIM_WORDS[k]; if(!w||typeof w.w!=="string"||!w.w||typeof w.d!=="string"||!w.d) cerr.push("CLAIM_WORDS."+k+" without its word or its definition"); });
+  /* the registers' reading ids, each with its source: a "### n `id`" heading; its source the entry's "**source**: `key`" line, else its
+     section's "## n. `key`" heading (the step-2 register's form) */
+  const REG=new Map(), regFiles=["docs/step2-evidence/readings.md","docs/step4-evidence/readings.md"];
+  regFiles.forEach(f=>{ if(!fs.existsSync(f)) return; let sec=null, cur=null;
+    fs.readFileSync(f,'utf8').split("\n").forEach(l=>{ let m;
+      if((m=/^## [\w.]+ `([\w.-]+)`/.exec(l))){ sec=m[1]; cur=null; }
+      else if((m=/^### [\w.]+ `([^`]+)`/.exec(l))){ cur=m[1]; if(REG.has(cur)) cerr.push("reading id "+cur+" declared twice ("+f+")"); REG.set(cur,{src:sec,file:f}); }
+      else if(cur&&(m=/^- \*\*source\*\*: `([\w.-]+)`/.exec(l))) REG.get(cur).src=m[1]; }); });
+  const CLOCK=/\b(?:[01]?\d|2[0-3])[:.][0-5]\d\b|o'clock|\bhalf past\b|\bnoon\b|\bmidday\b/i;
+  let n=0; const byKind={};
+  Object.keys(STATEMENT_CLAIMS).forEach(ref=>{ const c=STATEMENT_CLAIMS[ref], s=byRef.get(ref), at="STATEMENT_CLAIMS["+JSON.stringify(ref)+"]"; n++;
+    if(!s){ cerr.push(at+": no such narrative statement (moved, removed or renamed?)"); return; }
+    if(c.h!==hashOf(s.text)) cerr.push(at+": the statement's text changed since its claim was written (h "+c.h+", the text's "+hashOf(s.text)+"): review the claim");
+    if(KINDS.indexOf(c.cl)<0||c.cl==="unchecked") cerr.push(at+": claim \""+c.cl+"\" is not a claim word (an unchecked statement has no entry)");
+    byKind[c.cl]=(byKind[c.cl]||0)+1;
+    const by=Array.isArray(c.by)?c.by:(cerr.push(at+": by is not a list"),[]);
+    by.forEach((b,i)=>{ const w=at+".by["+i+"]";
+      if(!b||!APPEARANCE_SOURCES[b.src]) cerr.push(w+": source \""+(b&&b.src)+"\" is not in APPEARANCE_SOURCES");
+      if(!b||typeof b.at!=="string"||!b.at) cerr.push(w+": no locator");
+      if(b&&b.rd!==undefined){ const r=REG.get(b.rd); if(!r) cerr.push(w+": reading "+b.rd+" is not a heading of a register");
+        else if(r.src!==b.src) cerr.push(w+": reading "+b.rd+" is of "+r.src+", not "+b.src); } });
+    const read=by.filter(b=>b&&b.rd!==undefined&&REG.has(b.rd));
+    if((c.cl==="fact"||c.cl==="attributed")&&!read.length) cerr.push(at+": \""+c.cl+"\" rests on no reading made here (a citation alone leaves a statement unchecked)");
+    if(c.cl==="disputed"&&new Set(read.filter(b=>b.side).map(b=>b.side)).size<2) cerr.push(at+": \"disputed\" without two sides, each read");
+    if(c.cl==="uncertain"&&!by.length&&!c.note) cerr.push(at+": \"uncertain\" names no search");
+    if(c.note!==undefined&&(typeof c.note!=="string"||CLOCK.test(c.note))) cerr.push(at+": a note with a clock time (the hours are the tracks' timings): "+c.note); });
+  /* the inventory is the sources' (the review of c69890a: its check was in no suite) */
+  const INV=require('./tools/step4/inventory.js'), inv=INV.inventory('.'), stale=[["docs/step4-evidence/inventory.json",JSON.stringify(inv,null,1)+"\n"],
+    ["docs/step4-evidence/inventory.md",INV.markdown(inv)+"\n"]].filter(([f,t])=>!fs.existsSync(f)||fs.readFileSync(f,'utf8')!==t).map(([f])=>f);
+  if(stale.length) cerr.push("the inventory is out of date: "+stale.join(", ")+" (node tools/step4/inventory.js)");
+  cerr.forEach(e=>errs.push("claims: "+e));
+  console.log("statement claims: "+S.length+" narrative statements, "+n+" with a claim ("+(Object.entries(byKind).map(([k,v])=>k+" "+v).join(", ")||"none")+
+    "), "+(S.length-n)+" unchecked; "+REG.size+" readings in the registers; the inventory "+(stale.length?"OUT OF DATE":"current")+(cerr.length?"; "+cerr.length+" errors":"")); }
 /* T-3 (docs/FINAL_AUDIT.md): a warning fails unless it is acknowledged here by its exact text, with the reason it stands and where that is
    recorded ({w, why, see}); an acknowledged warning that is no longer raised fails too, until its entry is removed. None today. */
 const KNOWN_WARN=[];

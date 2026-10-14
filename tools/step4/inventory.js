@@ -10,9 +10,9 @@ const ROOT=path.resolve(__dirname,"..",".."), OUTDIR=path.join(ROOT,"docs","step
 const {statements}=require("./statements.js");
 
 function claimsTable(root){
-  const f=path.join(root,"narrative.js"); if(!fs.existsSync(f)) return {claims:{},sources:{}};
-  const ctx={}; vm.runInNewContext(fs.readFileSync(f,"utf8")+"\n;this.__c=STATEMENT_CLAIMS;this.__s=NARRATIVE_SOURCES;",ctx);
-  return {claims:ctx.__c||{},sources:ctx.__s||{}};
+  const f=path.join(root,"narrative.js"); if(!fs.existsSync(f)) return {claims:{}};
+  const ctx={}; vm.runInNewContext(fs.readFileSync(f,"utf8")+"\n;this.__c=STATEMENT_CLAIMS;",ctx);
+  return {claims:ctx.__c||{}};
 }
 function inventory(root){
   const S=statements(root), {claims}=claimsTable(root);

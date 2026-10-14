@@ -125,7 +125,7 @@ const TYPE_ERRS=[];
   /* every code point a visitor can be shown, with every source file it comes from */
   const vis=new Map(), add=(s,where)=>{ for(const ch of s){ const c=ch.codePointAt(0); if(c>=0x20&&c!==0x7F&&!(c>=0x80&&c<0xA0)){ if(!vis.has(c)) vis.set(c,new Set()); vis.get(c).add(where); } } };
   const exempt=c=>SERIF_EXEMPT.some(([a,z,only])=>c>=a&&c<=z&&[...vis.get(c)].every(w=>w===only));
-  for(const f of ["tokens.js","geo.js","data.js","appearance.js","analysis.js","world.js","symbols.js","app.js"])
+  for(const f of ["tokens.js","geo.js","data.js","appearance.js","analysis.js","narrative.js","world.js","symbols.js","app.js"])
     for(const t of acorn.tokenizer(rd(f),{ecmaVersion:2022})) if(t.type.label==="string"||t.type.label==="template") add(dec(String(t.value)),f);
   add(dec(rd("shell.html").replace(/<!--[\s\S]*?-->/g,"")),"shell.html");
   for(const m of clean.matchAll(/(?<![-\w])content:\s*"((?:[^"\\]|\\.)*)"/g)) add(m[1].replace(/\\([0-9a-fA-F]{1,6})\s?/g,(x,h)=>String.fromCodePoint(parseInt(h,16))),"style.css");

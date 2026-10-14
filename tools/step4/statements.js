@@ -37,6 +37,10 @@ const CLASSES=[
   ["method",        /^(SOURCE_NOTE\.layers\[\d+\])\[(0|1)\]$/, 1]
 ];
 const T_LEN=40;
+/* the claim's drift key (narrative.js h): the first 12 hex digits of the SHA-1 of the text as the overclaim scan normalised it (soft
+   hyphens and zero-width characters removed, white space collapsed, trimmed: lang-scan's records are normalised so); the review of
+   c69890a: a key of the first 40 characters missed most rewords and copied overclaim hits into a guarded declaration */
+const hashOf=text=>require("crypto").createHash("sha1").update(String(text).replace(/[\u00AD\u200B-\u200D\u2060]/g,"").replace(/\s+/g," ").trim(),"utf8").digest("hex").slice(0,12);
 function statements(ROOT){
   ROOT=path.resolve(ROOT);
   const LS=require(path.join(ROOT,"tools","lang-scan.js"))(ROOT);
@@ -54,7 +58,7 @@ function statements(ROOT){
     s.label=s.parts.filter((x,i)=>i!==ti&&x!=null).join(" / ")||null; s.text=s.parts[ti]||""; s.t=s.text.slice(0,T_LEN); delete s.parts; delete s.ti; });
   return out;
 }
-module.exports={statements,CLASSES,T_LEN};
+module.exports={statements,hashOf,CLASSES,T_LEN};
 if(require.main===module){
   const S=statements(path.resolve(__dirname,"..","..")), c={};
   S.forEach(s=>{ c[s.cls]=(c[s.cls]||0)+1; });

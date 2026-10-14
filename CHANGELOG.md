@@ -1,5 +1,48 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)
+
+**Status: in progress on `claude/nice-dijkstra-mdyu2w` (draft PR #52).** This entry grows with each commit; the build's size and md5, the
+owner questions and the final checks are added when the step is complete. `check:data` changes on purpose in this step (a data task):
+every changed declaration is listed below with what it was, what it is, why and the source's locator, and the reference moves to the
+final build at the end.
+
+**How it is done.** The current state read from the code; then a research workflow: one researcher per cluster of the hand-on list
+(C1 the three disputed hours, C2 the other hours, C3 Drouet, I Corps and the Guard, C4 the Zuran, the chapel, the ice and the sun, C5 the
+strengths and the 6B data questions, C6 the language and the places), each reading challenged on fresh page images by a source skeptic;
+C7 the claims' design, challenged by a design skeptic; the second reading of the appearance quotes and of the step-2 register (H-17); then
+a synthesizer and a completeness critic. Every reader is a machine reader: each reading is recorded as one, read on a page image.
+
+**The commits so far.**
+- `567db8e` (records): roadmap step 3 recorded as merged (#51); the screen-reader session recorded complete (decision 175); step 3 done.
+- `2407a5f` (tools): `tools/step4/statements.js`, the narrative statements of `data.js` and `analysis.js`, one per string, by ref.
+- `c69890a` (records): `tools/step4/inventory.js` and `docs/step4-evidence/inventory.md`/`.json`: 687 statements, every one unchecked.
+- `0a19964` (the C7 design skeptic's review of `c69890a`, B2 and I8): `SOURCE_NOTE.layers[0..2]` had lost their text in the extractor (a
+  pair's text index was looked up by class name, and two classes are named "method"); the unchecked definition no longer says the statement
+  follows "the standard accounts" (itself unchecked).
+- The claim model (this commit; below).
+
+**The claim model (`narrative.js`; H-6, decision 128 (b)).** A new guarded file after `analysis.js` in `build.py`'s list, as the C7 design
+skeptic's review amended the design (its blocking findings B1-B4):
+- `CLAIM_WORDS` (new; was: none): the eight claim kinds, each with its word and one-line definition: fact "Read in a source", attributed
+  "As a source tells it", disputed "The sources disagree", derived, interpretation "This map's reading", uncertain "Not established", design
+  "Design decision", unchecked "Not yet checked". Why: one vocabulary for the per-statement claims, distinct from the event pill's `CLAIM`
+  and the Command tab's `SRC_LABEL` (B3); nothing shows it yet (the vocabulary and its visibility are owner questions of this step).
+- `STATEMENT_CLAIMS` (new; was: none; is: empty, so every statement is unchecked until the register is committed): `ref -> {h, cl, by, note}`,
+  `h` the first 12 hex digits of the SHA-1 of the statement's normalised text (B1: a 40-character key missed most rewords and would have copied
+  five overclaim hits into a guarded declaration), `by` the readings, each with its source (a key of `APPEARANCE_SOURCES`, the one table of
+  works read), its locator and its reading id in a register; no quotation in the build (the register holds them).
+- The guard: `tools/visual/data-invariance.js` has a group "narrative claims (roadmap step 4)"; `test.js`'s file lists (the duplicate-key
+  check, the guard's reach: "the five data files"), `css-test.js`'s glyph coverage and `redteam.js`'s retired claims read `narrative.js`; the
+  overclaim scan reads it through `build.py`'s list. `test.js` holds the claims: every entry a live statement whose hash matches, a claim word,
+  every source in `APPEARANCE_SOURCES`, every reading id a heading of a register whose source is the one named, "fact" and "attributed" on a
+  reading made here (never on a citation alone, B4), "disputed" with two sides read, "uncertain" naming its search, no clock time in a note
+  (the hours stay the tracks' timings, held by check:chronology); and the inventory current (the review's I11). Each rule shown failing on a
+  mutation (a wrong hash, a fact without a reading, a reading of another source, an unknown source, no locator, an unknown reading id, a
+  timed note, an unknown statement, a stale inventory: nine errors, then none when restored).
+- `check:data` (expected until the reference moves): "CHANGED narrative claims (roadmap step 4): 2 declarations ... not found: CLAIM_WORDS,
+  STATEMENT_CLAIMS"; every other group identical (128 declarations).
+
 ## 2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6)
 
 **Status: merged (#51); the screen-reader session recorded complete on the owner's word on 14 October 2026 (decision 175; recorded in
