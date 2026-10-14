@@ -535,6 +535,27 @@ try{
         if(g!==w) throw new Error(id+" at "+fmtClock(t)+": posClaimOf gives "+g+", the pill's key is "+w);
         if(FORMATIONS[id].track){ nS++; if(w==="interp") nI++; } }); }
     if(!nI) throw new Error("position pills: no interpolated documented position in the day");
+    /* the review of b2fc7b5: an explicit track claim wins over "interp" (no datum has both, so a temporary claim on an interpolated
+       documented leaf), and under "Position: interpolated" the dossier's paragraph does not say "documented in the sources" while a
+       grade-A position that is not interpolated does; heightguns's explicit "recon" brings CLAIM's own note */
+    { let probe=null;
+      for(let t=T_MIN;t<=T_MAX&&!probe;t+=10){ setClock(t); probe=Object.keys(FORMATIONS).find(id=>FORMATIONS[id].track&&posNow(id)&&expKey(id)==="interp")||null; }
+      if(!probe) throw new Error("position pills: no interpolated documented leaf to probe");
+      const tr=FORMATIONS[probe].track, k0=Object.keys(tr).map(Number).filter(k=>k<=curPhase).sort((a,b)=>b-a)[0], keep=tr[k0].claim;
+      const conf=id=>{ made=[]; dossierFormation(id); return made.map(x=>x.className==="conf"?x.textContent||x.innerHTML||"":"").join(""); };
+      try{ document.createElement=t=>{ const x=mk(t); made.push(x); return x; };
+        const para=conf(probe);
+        if(para.indexOf(CONF_TEXT.A)>=0) throw new Error(probe+" at "+fmtClock(clock)+": the dossier says \""+CONF_TEXT.A+"\" under \"Position: interpolated\"");
+        if(para.indexOf(CONF_INTERP)<0) throw new Error(probe+" at "+fmtClock(clock)+": the dossier's paragraph lacks CONF_INTERP");
+        tr[k0].claim="recon";
+        if(posClaimOf(probe,aggConf(probe,curPhase))!=="recon") throw new Error(probe+": an explicit claim does not win over \"interp\"");
+      } finally { if(keep===undefined) delete tr[k0].claim; else tr[k0].claim=keep; document.createElement=mk; }
+      setClock(T_MIN); const a0=Object.keys(FORMATIONS).find(id=>FORMATIONS[id].track&&posNow(id)&&expKey(id)==="fact");
+      if(!a0) throw new Error("position pills: no documented, not interpolated leaf at "+fmtClock(T_MIN));
+      try{ document.createElement=t=>{ const x=mk(t); made.push(x); return x; };
+        if(conf(a0).indexOf(CONF_TEXT.A)<0) throw new Error(a0+": a documented position's dossier lacks CONF_TEXT.A"); }
+      finally { document.createElement=mk; }
+      console.log("position pills: an explicit claim wins over \"interp\" ("+probe+"); the dossier under \"Position: interpolated\" says CONF_INTERP, not \"documented in the sources\" OK"); }
     console.log("position pills: "+nP+" claim pills in "+nV+" cards and dossiers at five clocks, each POS_CLAIM's words for its key ("+
       Object.keys(byCl).map(k=>k+" "+byCl[k]).join(", ")+"), none CLAIM's; over 85 clocks posClaimOf agrees for "+nO+" formation-samples, "+
       nI+" of "+nS+" leaf samples interpolated between documented anchors (\"Position: interpolated\") OK"); }

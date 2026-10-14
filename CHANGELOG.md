@@ -27,7 +27,8 @@ a synthesizer and a completeness critic. Every reader is a machine reader: each 
 - `76e626b` (records): the register, `docs/step4-evidence/readings.md` and `README.md`, below.
 - `46c23cf`: the review of `55dde7a` and `76e626b` (an independent reviewer, read-only): the register re-rendered, below.
 - `33f3168` (records): the step-2 register read a second time, below.
-- The interpolated position's pill (this commit; below).
+- `b2fc7b5`: the interpolated position's pill, below.
+- The review of `b2fc7b5` (this commit): below.
 
 **The register of readings (`docs/step4-evidence/readings.md`, with `proposals.md`; H-6, decision 130).** 273 entries: 210 readings by
 the six clusters' researchers and 63 counter-readings by their source skeptics (248 read on page images, 18 on page images with part of the
@@ -68,7 +69,8 @@ No person has read them a second time.
 
 **The interpolated position's pill (decision 128 (b); `docs/FINAL_AUDIT.md` H-5; the C7 design skeptic's I5).** A formation's claim pill
 read "Position: documented" wherever its grade was A, also where the clock interpolates its position between two documented anchors: the
-anchors are documented, the point between them is not (H-5: 825 of the leaves' 2,636 ten-minute samples; re-counted here, 825 of 2,636).
+anchors are documented, the point between them is not (H-5 counted 825 of 2,605 formation-samples; re-counted here on the app's own
+functions, 825 of the leaves' 2,636 ten-minute samples).
 - `POS_CLAIM` (guarded data in `app.js`): was `{fact:"Position: documented", est:"Position: estimated", recon:"Position: reconstructed"}`;
   is the same with `interp:"Position: interpolated"`. Why: decision 128 (b), H-5. The rule (the smallest, the design skeptic's): the word
   only where the pill would otherwise say "documented" from the grade, no track entry names its own claim, and the position is interpolated;
@@ -88,8 +90,19 @@ anchors are documented, the point between them is not (H-5: 825 of the leaves' 2
 - Checks: npm test, all 9 suites and the height guard; check:chronology 0 errors; check:data "CHANGED data in app.js (roadmap step 2, D-5):
   changed: POS_CLAIM" besides the narrative claims' "not found"; check:selftest 242 checks, all passing, the manifest rewritten from that run
   (241 to 242; added: "position pill: the dossier drawn says “Position: interpolated” where the position is interpolated between documented
-  anchors, else its grade's words (roadmap step 4; decision 128 (b), H-5)"; removed: none); check:contrast run after this commit (its result
-  recorded with the next commit).
+  anchors, else its grade's words (roadmap step 4; decision 128 (b), H-5)"; removed: none); check:contrast, run after the commit on its build: 35 states
+  reached, 5,517 text elements, 0 below AA, 0 below 10.5 px, 0 font failures, 0 console messages; the six start-up cases pass.
+- **The review of `b2fc7b5`, and what changed for it.** No blocking finding. (1) Under the new pill the dossier's grade paragraph still read
+  "Position documented in the sources." (`CONF_TEXT.A`), H-5's overclaim in prose: under "Position: interpolated" the paragraph now gives
+  `CONF_INTERP` alone (presentation; `CONF_TEXT` and `CONF_INTERP` unchanged). (2) No test fixed that a track's own claim wins over "interp" (no
+  datum has both): `runtime-test.js` now gives an interpolated documented leaf a temporary claim and requires it to win, and requires the dossier
+  under "Position: interpolated" to say `CONF_INTERP` and not `CONF_TEXT.A`, and a documented position that is not interpolated to say
+  `CONF_TEXT.A`; shown failing on the old paragraph ("sthilaire at 04:10: the dossier says "Position documented in the sources." under
+  "Position: interpolated""). (3) The count's attribution corrected above (H-5 counted 2,605 samples, not 2,636). (4) The self-test check settles
+  its tween after its clock steps (`finishTween`); recorded, not changed: it reads the drawer's card (the full dossier's pill is
+  `runtime-test.js`'s), and tracked formations only (aggregates are `runtime-test.js`'s). (5) The explicit-claim scan shared by `claimOf` and
+  `posClaimOf` (`explicitClaim`); `compactCard`'s unused `cl` removed. (6) Recorded for the step's records: `docs/VISUAL_SPEC.md` §545 and
+  `docs/ROADMAP.md` still describe the three-word pill; "interp" shares the estimate's half shape, told apart by its words.
 
 **The claim model (`narrative.js`; H-6, decision 128 (b)).** A new guarded file after `analysis.js` in `build.py`'s list, as the C7 design
 skeptic's review amended the design (its blocking findings B1-B4):

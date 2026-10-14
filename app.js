@@ -6332,18 +6332,19 @@ function outcomeOf(id){
   }
   return null;
 }
+/* a track entry's own claim, the latest up to the current phase (heightguns@7-8), else null; claimOf and posClaimOf read it */
+function explicitClaim(id){
+  var f=FORMATIONS[id], explicit=null;
+  if(f.track){ for(var i=0;i<=curPhase;i++){ var e=f.track[i]; if(e&&e.claim) explicit=e.claim; } }
+  return explicit;
+}
 function claimOf(id,cf){
-  var f=FORMATIONS[id];
-  var explicit=null;
-  if(f.track){
-    for(var i=0;i<=curPhase;i++){ var e=f.track[i]; if(e&&e.claim) explicit=e.claim; }
-  }
-  return explicit || CLAIM_FROM_CONF[cf] || "est";
+  return explicitClaim(id) || CLAIM_FROM_CONF[cf] || "est";
 }
 var dossierExpanded=false;
 function compactCard(id){
   var f=FORMATIONS[id];
-  var st=liveStatus(id,curPhase), cf=aggConf(id,curPhase), cl=claimOf(id,cf);
+  var st=liveStatus(id,curPhase), cf=aggConf(id,curPhase);
   var s2=f.track?stateAt(id,textPhase(id,clock)):null, wt=f.track?waitingFor(id,clock):null, tmg=timingNow(id);
   var nat=NATION[f.nation];
   var wrap=el("div","dossier card-compact");
@@ -6591,7 +6592,8 @@ function dossierFormation(id){
   }
 
   if(f.note) wrap.appendChild(el("p","note",esc(f.note)));
-  wrap.appendChild(el("p","conf",(cl!==CLAIM_FROM_CONF[cf]?esc(CLAIM[cl].note)+" ":"")+esc(CONF_TEXT[cf]||"")+(aggInterp(id,curPhase)?" "+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));   /* decision 128 (a): the position's grade text; CLAIM's note only where a track entry names its own claim (heightguns@8-9, where the entry's claim "recon" differs from its grade B), which is that entry's hedge */
+  var pk=posClaimOf(id,cf);   /* roadmap step 4 (the review of b2fc7b5): under "Position: interpolated" the grade's "documented in the sources" is not said */
+  wrap.appendChild(el("p","conf",(cl!==CLAIM_FROM_CONF[cf]?esc(CLAIM[cl].note)+" ":"")+(pk==="interp"?"":esc(CONF_TEXT[cf]||""))+(aggInterp(id,curPhase)?(pk==="interp"?"":" ")+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));   /* decision 128 (a): the position's grade text; CLAIM's note only where a track entry names its own claim (heightguns@8-9, where the entry's claim "recon" differs from its grade B), which is that entry's hedge */
 
   var act=el("div","dact");
   var btn=el("button","t","Centre the map here");
@@ -6619,8 +6621,7 @@ var POS_CLAIM={fact:"Position: documented", est:"Position: estimated", recon:"Po
    ten-minute samples). B and C interpolations keep "estimated" and "reconstructed", which never overclaimed. claimOf stays the claim
    CLAIM's notes read (the dossier's grade text) */
 function posClaimOf(id,cf){
-  var f=FORMATIONS[id], explicit=null;
-  if(f.track){ for(var i=0;i<=curPhase;i++){ var e=f.track[i]; if(e&&e.claim) explicit=e.claim; } }
+  var explicit=explicitClaim(id);
   if(explicit) return explicit;
   var k=CLAIM_FROM_CONF[cf]||"est";
   return (k==="fact"&&aggInterp(id,curPhase))?"interp":k;
@@ -10175,7 +10176,7 @@ var AUSTERLITZ_DEBUG=(function(){
           var cls=(P[0].className.match(/claim-(\w+)/)||[])[1], txt=P[0].textContent;
           if(cls!==k||txt!==POS_CLAIM[k]) pbad.push(id+" at "+fmtClock(t)+": \u201c"+txt+"\u201d ("+cls+"), want \u201c"+POS_CLAIM[k]+"\u201d ("+k+")");
           seen[k]=(seen[k]||0)+1; }); });
-      select(null,null); setClock(keepC,{instant:true,force:true,camera:false}); setPresentation(pres);
+      select(null,null); setClock(keepC,{instant:true,force:true,camera:false}); setPresentation(pres); finishTween();
       ck("position pill: the dossier drawn says \u201cPosition: interpolated\u201d where the position is interpolated between documented anchors, else its grade's words (roadmap step 4; decision 128 (b), H-5)",
         n>0&&!pbad.length&&!!seen.interp&&!!seen.fact, n+" dossiers at four clocks ("+Object.keys(seen).map(function(k){ return k+" "+seen[k]; }).join(", ")+")"+(pbad.length?"; WRONG: "+pbad.slice(0,5).join("; "):"")); })();
 
