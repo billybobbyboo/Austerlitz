@@ -11,7 +11,7 @@ changes to it are said.
 ice, K10 the strengths, K11 Blasowitz, K12 the app's sentences). This file is updated as each lands; `CHANGELOG.md`'s list of commits gives
 each label's hash.
 
-**Settled under decision 125 (b), not a question (K4; pending).** The I Column's departure (dok@1): the disposition orders every column to
+**Settled under decision 125 (b), not a question (implemented, K4).** The I Column's departure (dok@1): the disposition orders every column to
 march at seven (Materialien 1806, pp. 101-106), and Buxhowden's and Kutuzov's reports have the I Column leave its camp at seven (Kutuzov,
 documents, 1951, pp. 241-242, 255-258). The task asked for the disputed hours to be settled from the published accounts; this one is, so
 K4 makes dok@1 depart at 07:00 (`tm.dep` 420, grade A, basis "source"), its arrival derived, and takes it out of the named conflicts. The
@@ -27,7 +27,7 @@ after, computed by `tools/stage2/chronology.js`).
   the readings support (for instance the plateau at 08:45 holding the 4th Column and Kamensky's brigade, Thiebault p. 504): an assertion
   changed only on your word.
 - *Recommendation.* (b): the readings agree on seven (or half past six for the left wing, Schönhals) and none on four.
-- *Default.* (a). *Status.* Pending (K4).
+- *Default.* (a). *Status.* Implemented (K4).
 
 **177. Friant at the Goldbach and Telnitz retaken, from Davout's report (about nine; Telnitz at half past nine, then lost again).**
 - *Options.* (a) Keep friant@1's departure from 04:00, friant@2 at 08:30 and the events' clocks, the texts naming Davout's hours and the
@@ -39,12 +39,12 @@ after, computed by `tools/stage2/chronology.js`).
 **178. Kamensky's turn: the point at 09:45 or an interval.** Decision 142 keeps t 585; this asks only whether the readings reopen it.
 - *Options.* (a) Decision 142 stands: t 585, the dispute naming the sources' sequence and the versions of who turned the brigade. (b) An
   interval [525, 615].
-- *Recommendation.* (a): no source read gives a clock hour. *Default.* (a). *Status.* Pending (K4).
+- *Recommendation.* (a): no source read gives a clock hour. *Default.* (a). *Status.* Implemented (K4).
 
 **179. The Russian Guard's attack and Rapp's charge: the windows and the engine's 11:15.**
 - *Options.* (a) Keep guard-attack [660, 780], guard-broken [675, 795] and guard_cav@6 at 11:15; guard-broken "disputed" (question 161) with
   both sides and the map's early placing in its dispute. (b) Extend the windows. (c) Move the charge toward one o'clock (Rapp, Ségur).
-- *Recommendation.* (a). *Default.* (a). *Status.* Pending (K4).
+- *Recommendation.* (a). *Default.* (a). *Status.* Implemented (K4).
 
 **180. Bagration's withdrawal (bag@6, bag@8's 16:30, bag@9) and the end of the day (`EVENTS[#end]` 16:30).**
 - *Options.* (a) Keep bag@6's 11:15 and bag@8's 16:30 as the map's, the readings in their notes and acts (bag@6 named in `CONFLICTS`
@@ -94,7 +94,7 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
 **189. Decision 136's human second reading.**
 - *Options.* (a) The owner or a tester reads the 15 A-graded quotes among the 131 on their page images (decision 136 as decided), starting
   from the machine second reading's record (`docs/stage6-evidence/second-reading.md`) and first from question 195's Szekler page. (b) Accept
-  the machine second reading in its place (amending 136). (c) Defer to step 5.
+  the machine second reading in its place (amending 136). (c) Defer to step 5 (amending 136's timing).
 - *Recommendation.* (a). *Default.* The machine second reading done and recorded as one; decision 136 open, to be carried in
   `docs/ROADMAP.md` at the step's end. *Status.* The machine reading is in `3dafee8`; the human reading is not done.
 
@@ -122,8 +122,9 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
 - *Context.* Viskovatov's scale runs голубой (light blue), синій, темносиній (dark blue); the step-4 adjudicator reads "синій" as "blue",
   while the 6B register's glossary translated it "dark blue" (`docs/stage6-evidence/readings-ru-colours.md`), which is the class drawn. The
   table's `KIT` cloth "blue" is already the Szekler hussars' cornflower (`app.js`), a lighter shade.
-- *Options.* (a) Keep the drawn class "dark blue" for the Russian uhlans' coat, legwear and cap, the Guard hussars' dolman and the
-  shabraques, each record's note naming it the class for the printed "синій". (b) A new mid-blue class between the Szekler cornflower and the
+- *Options.* (a) Keep the drawn class "dark blue" for the Russian uhlans' coat and legwear and the Guard hussars' dolman, each record's note
+  naming it the class for the printed "синій" (the uhlans' cap and the Guard horse's shabraques carry the gloss only: headgear is drawn by
+  shape, and furniture is not drawn). (b) A new mid-blue class between the Szekler cornflower and the
   French "dark blue", drawn for these records (a `KIT` cloth and `css-test.js`'s table follow).
 - *Recommendation.* (a) until a period colour sample or plate in colour is read: the printed word fixes a name, not a shade. *Default.* (a).
   *Status.* Implemented (`3dafee8`; the shabraques' gloss in the review's fixes).

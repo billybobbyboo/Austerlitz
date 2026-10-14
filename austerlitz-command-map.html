@@ -1788,7 +1788,7 @@ var CLAIM = {
   fact:  {label:"Fact",          note:"Attested in the standard accounts of the battle."},
   est:   {label:"Estimate",      note:"The event is attested; the figure or frontage shown is an estimate."},
   recon: {label:"Reconstruction",note:"Inferred from the narrative. Treat as indicative, not as evidence."},
-  disputed:{label:"Disputed",    note:"The event is attested, but this reconstruction's own texts give different hours for it, or for part of it: both are shown, and the map keeps its earlier timing until they are checked against the published accounts."}
+  disputed:{label:"Disputed",    note:"The event is attested, but its hour, or the hour of part of it, is disputed: the accounts read disagree with each other or with this map's timing, each is named, and the map keeps its timing."}
 };
 var CLAIM_FROM_CONF = {A:"fact", B:"est", C:"recon"};
 
@@ -1824,7 +1824,7 @@ var PHASES = [
   lede:"Napoleon has deliberately given up the Pratzen plateau and left his right, along the lower Goldbach, looking thin enough to invite attack. Weyrother's Allied orders, read out at Krzenowitz after midnight to commanders who largely did not understand them, send four of five columns south-west across the French front. Fog fills the Goldbach valley. Soult's two assault divisions are standing in it, invisible from the heights.",
   events:[
     ["c. 01:00","Weyrother reads the dispositions at Allied headquarters, Krzenowitz. Kutuzov reportedly dozes."],
-    ["c. 04:00","Allied columns begin to move off the plateau. Liechtenstein's cavalry, misplaced on the left, must counter-march north across the front of the 4th Column."],
+    ["c. 04:00","The Allied columns stand in their camps on the plateau; Thiebault heard the Allied left moving in the night. The disposition orders them to march at seven; the map moves the II and III Columns off the plateau from 04:00, its earlier timing. Liechtenstein's cavalry, misplaced on the left, must counter-march north across the front of the 4th Column."],
     ["before dawn","Napoleon is on the Zuran mound with Berthier; his marshals have been ordered to join him for the morning's orders. The map places him there from 04:00; the hour he took post is not established."]],
   cam:[-230,132,211,-28,0,1], mist:1.0 },
 
@@ -1832,7 +1832,7 @@ var PHASES = [
   lede:"Kienmayer's Austrian advance guard attacks Telnitz, the southernmost village on the Goldbach. Legrand's thin line holds the buildings and the vineyard bank above them, and the village changes hands repeatedly. Behind Kienmayer, Dokhturov's I Column is coming down off the southern end of the plateau.",
   events:[
     ["c. 07:00","Kienmayer's advance guard attacks Telnitz. According to Stutterheim the musket fire there grew very murderous, and the Szekler infantry regiment lost two thirds of its men, dead and wounded."],
-    ["c. 07:30","Dokhturov's I Column begins descending toward the Goldbach. The hour is disputed: the event of the columns leaving the plateau, and the map, have the descent from 04:00."],
+    ["c. 07:00","Dokhturov's I Column leaves its camp as the disposition ordered; its head reaches Telnitz about eight in Kutuzov's report, at half past eight in Mikhailovsky-Danilevsky."],
     ["c. 08:00","Friant's leading brigade comes up to the Goldbach near Telnitz. The division had reached Raigern overnight after about 113 km from Vienna in 40-46 hours (sources vary)."]],
   cam:[-167,62,162,-55,4,62], mist:0.98 },
 
@@ -1856,7 +1856,7 @@ var PHASES = [
   lede:"Kamensky's brigade, marching for Sokolnitz at the tail of Langeron's column, sees the French on the height behind it, turns about and attacks. Jurczek's Austrians join in and Saint-Hilaire is pushed back toward the crest. In the same hour, and independently, Lannes begins his advance astride the Olmutz highway in the north.",
   events:[
     ["c. 09:30","Lannes advances along the highway. Bagration counter-attacks. The two battles now run in parallel."],
-    ["c. 09:45","Kamensky turns his brigade about and drives the 10e Legere off the crest. The hour of the turn is disputed: his brigade's record on this map puts it in the 08:45 phase."],
+    ["c. 09:45","Kamensky turns his brigade about and drives the 10e Legere off the crest. No account read gives the hour of the turn, only its sequence; his brigade's record on this map puts it in the 08:45 phase."],
     ["c. 10:15","Jurczek's Austrians attack the Pratzeberg; French and Austrians briefly mistake each other's identity."],
     ["c. 10:30","Langeron rides back and sends reinforcements up the slope; they arrive as the position is lost. Their regiment and losses are not established."]],
   cam:[-75,38,42,7,8,12], mist:0.05 },
@@ -1872,8 +1872,8 @@ var PHASES = [
 { id:6, t0:675, t1:765, clock:"11:15 - 12:45", label:"The Guard", title:"The Russian Guard at Stare Vinohrady",
   lede:"Grand Duke Constantine commits the Guard, which Stutterheim calls the reserve of the Allied right, against Vandamme on the Old Vineyards. The Guard infantry breaks two French battalions and the Guard cavalry carries off the eagle of the 4th Line, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brings up the Guard cavalry, Rapp charges with the chasseurs and Mamelukes, and Drouet's division forms line across the plateau.",
   events:[
-    ["after 11:00","The Russian Guard attacks Vandamme; the 4th Line loses its eagle. The hour is not established."],
-    ["c. 11:45","Bessieres and Rapp counter-charge. The Chevalier Guard is broken; Prince Repnin captured. The hour is disputed: the event of Rapp's counter-charge has it from 11:15."],
+    ["after 11:00","The Russian Guard attacks Vandamme; the 4th Line loses its eagle. The hour is disputed: before one by the order of the 30th Bulletin's and Mikhailovsky-Danilevsky's narratives, by about noon in Schönhals, about 13:00 in Rapp's memoirs and Ségur's."],
+    ["after 11:15","Bessieres and Rapp counter-charge. The Chevalier Guard is broken; Prince Repnin captured. The hour is disputed: the map draws the charge from 11:15; Rapp and Ségur put the Guard's last effort about 13:00."],
     ["c. 12:00","Napoleon moves forward from the Zuran to Stare Vinohrady."],
     ["c. 12:00","Buxhowden, on the Allied left, is still unaware of the collapse behind him."],
     ["c. 12:30","Davout regroups and attacks; Langeron is forced back toward Sokolnitz."]],
@@ -1887,7 +1887,7 @@ var PHASES = [
   cam:[-160,112,-55,-20,0,59], mist:0.0 },
 
 { id:8, t0:870, t1:1020, clock:"14:30 - 17:00", label:"The ponds", title:"Augezd, the ponds and the ice",
-  lede:"By the afternoon a way out for the Allied left runs south over the defile at Augezd and the frozen meres beyond. This map reads it as a way left open: the retreat the disposition ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, ran through ground the French held. French guns on the heights fire down on the ice. The 30th Bulletin claimed twenty thousand Russians drowned here; when the ponds were drained, thirty-eight guns and about a hundred and thirty horses came out of them, and two men - figures as usually given. Napoleon watches from the chapel of St Anthony above Augezd.",
+  lede:"By the afternoon a way out for the Allied left runs south over the defile at Augezd and the frozen meres beyond. This map reads it as a way left open, and the retreat the disposition ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, as running through ground the French held. French guns on the heights fire down on the ice. The 30th Bulletin claimed twenty thousand Russians drowned here; when the ponds were drained, thirty-eight guns and about a hundred and thirty horses came out of them, and two men - figures as usually given. Napoleon watches from the chapel of St Anthony above Augezd.",
   events:[
     ["c. 14:30","Vandamme takes the height above Augezd; the causeway comes under fire."],
     ["c. 15:00","French artillery fires on the ice of the Satschan mere."],
@@ -2179,7 +2179,7 @@ guard_cav:{ ech:"div", nation:"fr", arm:"cav", desig:"Cavalerie de la Garde",
   strength:2500,
   track:{
     0:{p:[201,154],st:"reserve",cf:"A"},
-    6:{p:[289,209],st:"charging",cf:"A",via:[[230,161],[235,188]],moveMin:45,obj:"Break the Russian Guard",act:"Rapp's counter-charge shatters the Chevalier Guard; Prince Repnin taken prisoner (the hour is disputed: about 11:45 in the Guard phase's text)"},
+    6:{p:[289,209],st:"charging",cf:"A",via:[[230,161],[235,188]],moveMin:45,obj:"Break the Russian Guard",act:"Rapp's counter-charge shatters the Chevalier Guard; Prince Repnin taken prisoner (the hour is disputed: about 13:00 or after in Rapp's own memoirs, before one by the order of the Bulletin's narrative; the map draws it from 11:15)"},
     7:{p:[303,226],st:"holding"},
     9:{p:[301,237],st:"holding"}}},
 
@@ -2246,7 +2246,8 @@ dok:{ ech:"div", nation:"ru", arm:"inf", desig:"I Column",
   role:"Main weight of the attack on Telnitz.",
   track:{
     0:{p:[291,332],st:"forming",cf:"A",obj:"Follow Kienmayer through Telnitz and wheel north",act:"At the southern end of the Pratzen plateau"},
-    1:{p:[258,371],st:"advancing",cf:"A",act:"Descends toward the Goldbach (the hour is disputed: the Telnitz phase's text has the descent begin at about 07:30)"},
+    1:{tm:{dep:420,gr:"A",basis:"source",ev:["Dokhturov's I Column leaves its camp as the disposition ordered"],note:"the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Buxhowden's and Kutuzov's reports give it (Kutuzov, documents, 1951, pp. 241-242, 255-258); the arrival is derived. Until roadmap step 4 the map moved the column from 04:00 (the conflict dok@1, decision 42)"},
+       p:[258,371],st:"advancing",cf:"A",act:"Leaves its camp at seven, as the disposition ordered, and descends toward the Goldbach (Buxhowden's and Kutuzov's reports)"},
     2:{p:[232,397],st:"attacking",cf:"A",obj:"Force the crossing at Telnitz",act:"Pushes into Telnitz behind Kienmayer"},
     7:{p:[226,404],st:"engaged",act:"Attacked from the west by Friant and from the rear off the heights"},
     8:{tm:{dep:870,at:900,gr:"C",basis:"app narrative, unsourced",ev:["Vandamme takes the height above Augezd; the causeway comes under fire.","French artillery fires on the ice of the Satschan mere."],note:"as Kienmayer: the retreat under fire runs from c. 14:30 to c. 15:00"},
@@ -2273,10 +2274,10 @@ lang:{ ech:"div", nation:"ru", arm:"inf", desig:"II Column",
 kamensky:{ ech:"bde", nation:"ru", arm:"inf", desig:"Brigade, II Column",
   name:"Kamensky's Brigade", commander:"Maj.-Gen. Sergey Kamensky", parent:"lang",
   strength:4250, strengthRange:[4000,4500], strengthNote:"the Fanagoria Grenadier and Ryazhsk Musketeer regiments, as Mikhailovsky-Danilevsky names them (1844, pp. 167, 179, 187-189, 198, 205, p. 187 citing Langeron's report to Kutuzov; its French translation of 1846 the same), who places the Ryazan regiment in Tolstoy's corps sent to Swedish Pomerania (1844, p. 257). The other reading, kept: Ryazan in the Materialien of 1806 (its list of the columns and its translation of Kutuzov's report; its translation of Stutterheim prints 'Rhiäsky') and as cited here from Duffy. Mikhailovsky-Danilevsky forms the brigade of these two regiments; Stutterheim (1806) and Thiébault have them reinforce it (disputed). About 2,000 each, with dragoons, Cossacks and pioneers attached (Duffy, via the Langeron column return)",
-  role:"Allied initiative on the plateau, but whose is disputed: turned about on its own commander's judgement in Mikhailovsky-Danilevsky, citing Langeron's report; ordered onto the ridge by Kutuzov in Kutuzov's official report.",
+  role:"Allied initiative on the plateau, but whose is disputed: turned about on its own commander's judgement in Mikhailovsky-Danilevsky, citing Langeron's report; sent by Langeron in Schönhals; ordered onto the ridge by Kutuzov in his official report; turned with no order of his in Kutuzov's private relation of March 1806.",
   track:{
     2:{p:[259,316],st:"march",cf:"B",obj:"Follow the II Column to Sokolnitz",act:"Marching at the rear of Langeron's column"},
-    3:{p:[269,298],st:"countermarch",cf:"A",obj:"Retake the Pratzeberg",act:"Kamensky sees the French on the height behind him, sends word to Langeron and turns his brigade about (the hour is disputed: about 09:45 in the event and in the Pratzeberg phase's text)"},
+    3:{p:[269,298],st:"countermarch",cf:"A",obj:"Retake the Pratzeberg",act:"Kamensky sees the French on the height behind him, sends word to Langeron and turns his brigade about, in Mikhailovsky-Danilevsky's account citing Langeron's report (the accounts differ on who turned it, and none read gives the hour)"},
     4:{p:[279,289],st:"counterattack",cf:"A",obj:"Drive Saint-Hilaire off the crest",act:"Pushes the 10e Legere back off the summit before Thiebault stabilises the French line"},
     5:{p:[291,279],st:"engaged",act:"Fights on the crest alongside Jurczek's Austrians"},
     6:{p:[305,279],st:"broken",cf:"B",act:"Broken and ordered to retire by Kutuzov"},
@@ -2540,7 +2541,7 @@ var SOURCE_NOTE = {
   "Strengths are the hardest figures of all. The Allied column organisation split and intermingled regiments, and reputable orders of battle disagree substantially — Dokhturov's I Column is given as anything from 7,750 to 14,200 men. Where sources conflict, the dossier shows a working figure and the range.",
   "Terrain relief is exaggerated about {EXAG} times: one map unit is {M_PER_UNIT} m on the ground, and heights follow a separate vertical scale fitted to surveyed elevations. At true scale the Pratzen plateau reads as a gentle rise, about 115 m from the Goldbach to the Pratzeberg over some 2.5 km. The relief setting cannot be changed while the battle plays, because redrawing the ground can take longer than a frame; the ground switch (Landscape, Paper map, Landscape with counters) can, and a slow frame while it redraws advances the battle clock by at most 1.2 minutes at 1× (4.8 at four times speed).",
   "Villages are placed from the Czech municipality register and summits from terrain-model data; the map keeps its historical frame, which lies about {ROT} degrees off true north. The compass rose shows true north for the current view. Raigern, Rausnitz and Kowalowitz lie beyond the frame and are shown as markers at its edge.",
-  "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; the exact place of the Posoritz post house; the true position of Turas; Kologrivov's command, which rests on one source; when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and three hours on which this reconstruction's own texts disagree and which the published accounts it follows have not yet been checked against: when Dokhturov's I Column began its descent (c. 07:30 in the 07:00 timeline, but from 04:00 in the event and on the map), when Kamensky turned his brigade about (c. 09:45 in the timeline, but in the 08:45 phase in his own record), and when Rapp's counter-charge went in (c. 11:45 in the timeline, but from 11:15 in the event). The map keeps its earlier timing for all three. Each would be settled from Duffy (1977): his account of the Allied left columns coming down toward Telnitz, of Kamensky's counter-attack on the Pratzeberg (with Thiebault's memoirs, on which this map's account of that fight draws) and of the Guard cavalry fight at Stare Vinohrady. Smith (1998) is cited here for strengths; whether it dates these moves is not known. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Napoleon is recorded watching the end from there.",
+  "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; the exact place of the Posoritz post house; the true position of Turas; Kologrivov's command, which rests on one source; when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and three hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map since roadmap step 4, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns from 04:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), and when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map). The map keeps its timing for the last two and for the II and III Columns. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Napoleon is recorded watching the end from there.",
   "Two figures on the situation line are computed from the plotted reconstruction rather than taken from a source. The holding on the heights is the sum of the strengths of formations whose plotted positions fall inside the plateau outline; because the reconstruction plots formations and not losses, a figure that does not change does not mean the fighting there has stopped. Centre separation is a spatial test, not a historical statistic: it reports whether a French formation stands across the line joining the Allied groups north and south of the plateau. When it stops being reported the geometry no longer holds, which is not the same as the Allied army having reunited."],
  layers:[
   ["Historical record","What the sources attest: who was there, roughly how many, which villages were attacked and when. Marked as fact in an event's dossier."],
@@ -2675,6 +2676,9 @@ var APPEARANCE_SOURCES = {
   davout1885: {au:"L.-N. Davout (ed. Ch. de Mazade)", ti:"Correspondance du maréchal Davout, prince d'Eckmühl, t. I", pub:"Paris, E. Plon, Nourrit et Cie", d:1885, kind:"primary-text", url:"https://archive.org/details/correspondanced03davogoog", ia:"correspondanced03davogoog"},
   marbot1891: {au:"M. de Marbot", ti:"Mémoires du général baron de Marbot, t. I (Gênes, Austerlitz, Eylau), 27th edition", pub:"Paris, Plon, Nourrit", d:1891, kind:"primary-text", url:"https://archive.org/details/mmoiresdugn01marbuoft", ia:"mmoiresdugn01marbuoft"},
   kavalergard1851: {au:"(the regiment's history; author not read)", ti:"История кавалергардов и Кавалергардского Ее Величества полка, с 1724 по 1-е июля 1851 года", pub:"(place not read)", d:1851, kind:"specialist", url:"https://archive.org/details/istorijakavalergardovikavalergardskogoee45", ia:"istorijakavalergardovikavalergardskogoee45"},
+  kutuzov1951: {au:"М. И. Кутузов", ti:"М. И. Кутузов. Сборник документов, т. II (1805)", pub:"Москва, Воениздат", d:1951, kind:"primary-text", url:"https://archive.org/details/20250102_20250102_1833", ia:"20250102_20250102_1833"},
+  rapp1823: {au:"J. Rapp", ti:"Mémoires du général Rapp, aide-de-camp de Napoléon, écrits par lui-même, et publiés par sa famille", pub:"Paris, Bossange frères", d:1823, kind:"primary-text", url:"https://archive.org/details/mmoiresdugnralr00rappgoog", ia:"mmoiresdugnralr00rappgoog"},
+  segur1877: {au:"Ph.-P. de Ségur", ti:"Histoire et mémoires, t. II, 2e éd.", pub:"Paris, Firmin-Didot et Cie", d:1877, kind:"primary-text", url:"https://archive.org/details/histoireetmmoir06sggoog", ia:"histoireetmmoir06sggoog"},
   thiers1847: {au:"A. Thiers", ti:"Histoire du Consulat et de l'Empire, t. VI", pub:"Paris, Paulin", d:1847, kind:"specialist", url:"https://archive.org/details/histoireduconsul06thieuoft", ia:"histoireduconsul06thieuoft"}
 };
 
@@ -2737,15 +2741,15 @@ var DRESS = {
       src:"perrot1821", at:"'Garde des consuls. Grenadiers à pied', pp. 209-210 (views f219-f220)", gr:"B", lab:"inference", q:"L'habit des grenadiers était bleu de roi", note:"Perrot's pages describe the Garde des consuls of 1800; at the formation of the Imperial Guard he names only the bonnet plate, the buttons and the giberne as changed (p. 212), so that this held in 1805 is an inference (the step-4 second reading)"},
     facings:{v:"collet bleu [...] revers blancs [...] paremens écarlates [...] pates blanches, à trois pointes ; doublure écarlate", src:"perrot1821", at:"p. 209", gr:"B", lab:"inference", q:"revers blancs, taillés carrément", note:"Perrot's pages describe the Garde des consuls of 1800; at the formation of the Imperial Guard he names only the bonnet plate, the buttons and the giberne as changed (p. 212), so that this held in 1805 is an inference (the step-4 second reading)"},
     legwear:{v:"Veste et culotte blanches", en:"white waistcoat and breeches; black gaiters above the knee", c:"white", src:"perrot1821", at:"pp. 209-210", gr:"B", lab:"inference", q:"Veste et culotte blanches", note:"Perrot's pages describe the Garde des consuls of 1800; at the formation of the Imperial Guard he names only the bonnet plate, the buttons and the giberne as changed (p. 212), so that this held in 1805 is an inference (the step-4 second reading)"},
-    head:{v:"Bonnet d'oursin, garni d'une plaque", en:"the bearskin with a plate, red plume", h:"bearskin", src:"perrot1821", at:"pp. 210, 212", gr:"B", lab:"fact", q:"Bonnet d'oursin, garni d'une plaque",
-      note:"worn on the day: Barrès, 'en grande tenue, bonnets à poil et plumets au vent' (barres1923, p. 56); Coignet, 'vingt-cinq mille bonnets à poils' (coignet1909, p. 122)"},
+    head:{v:"Bonnet d'oursin, garni d'une plaque", en:"the bearskin with a plate, red plume", h:"bearskin", src:"perrot1821", at:"pp. 210, 212", gr:"B", lab:"inference", q:"Bonnet d'oursin, garni d'une plaque",
+      note:"worn on the day: Barrès, 'en grande tenue, bonnets à poil et plumets au vent' (barres1923, p. 56); Coignet, 'vingt-cinq mille bonnets à poils' (coignet1909, p. 122). The bearskin and the red plume are the Garde des consuls' (p. 210) and the crowned eagle plate the imperial formation's (p. 212): that the rest held in 1805 is an inference (the step-4 second reading)"},
     greatcoat:{v:"en grande tenue", en:"the Guard's reserve marched in full dress", worn:false, src:"barres1923", at:"p. 56 (view f84)", gr:"B", lab:"fact", q:"en grande tenue",
       note:"Perrot gives the grenadiers a single-breasted blue greatcoat (perrot1821, p. 213); Barrès's vélites of the chasseurs had made the campaign in linen smocks and received greatcoats only at Freysing, 10-27 December (barres1923, p. 61)"}},
   fr_guard_chass: {nation:"fr", arm:"guard", mount:"foot", carry:"fr_guard_eagle", name:"Imperial Guard: chasseurs à pied",
     coat:{v:"semblable pour les couleurs à celui des grenadiers à pied; les revers étaient, ainsi que les paremens, taillés en pointes", en:"the grenadiers' colours, pointed lapels and cuffs", c:"dark blue",
-      src:"perrot1821", at:"'Chasseurs à pied', pp. 226-227 (views f236-f237)", gr:"B", lab:"fact", q:"semblable pour les couleurs à celui des grenadiers à pied"},
+      src:"perrot1821", at:"'Chasseurs à pied', pp. 226-227 (views f236-f237)", gr:"B", lab:"inference", q:"semblable pour les couleurs à celui des grenadiers à pied", note:"Perrot's grenadiers' coat is the Garde des consuls' of 1800 (p. 209); at the formation of the Imperial Guard he names only the bonnet plate, the buttons and the giberne as changed (p. 212), so that this held in 1805 is an inference (the step-4 second reading)"},
     legwear:{v:"semblable pour les couleurs à celui des grenadiers à pied", en:"white, as the grenadiers'", c:"white", src:"perrot1821", at:"p. 226", gr:"B", lab:"derived", q:"semblable pour les couleurs"},
-    head:{v:"Le bonnet sans plaque, ni sommet, orné de cordon blanc à deux glands", en:"the bearskin without plate", h:"bearskin", src:"perrot1821", at:"p. 226", gr:"B", lab:"fact", q:"Le bonnet sans plaque"},
+    head:{v:"Le bonnet sans plaque, ni sommet, orné de cordon blanc à deux glands", en:"the bearskin without plate", h:"bearskin", src:"perrot1821", at:"p. 226", gr:"B", lab:"inference", q:"Le bonnet sans plaque", note:"the page says 'bonnet'; 'bearskin' follows from the grenadiers' 'bonnet d'oursin' (pp. 210, 232): an inference (the step-4 second reading)"},
     greatcoat:{v:"en grande tenue", worn:false, src:"barres1923", at:"p. 56 (view f84)", gr:"B", lab:"fact", q:"en grande tenue", note:"as the grenadiers'; Barrès was a vélite of the chasseurs à pied"}},
   it_guard: {nation:"fr", arm:"guard", mount:"foot", carry:"it_guard_eagle", name:"Royal Guard of the Kingdom of Italy (Guardia Reale), attached to the Imperial Guard",
     coat:{gen:true, why:"no read source describes the Italian Royal Guard's dress in 1805 (Zanoli 1845, t. II, read: no dress; Fieffé: not found)"},
@@ -2801,7 +2805,7 @@ var DRESS = {
     head:{v:"shako; colback à flamme pour les compagnies d'élite", en:"the shako; the colback for the elite company", h:"shako", src:"fieffe2_1854", at:"t. II, pp. 30-31", gr:"B", lab:"fact", q:"shako; colback à flamme pour les compagnies d'élite"},
     greatcoat:{gen:true, why:"not found"}},
   fr_guard_grencav: {nation:"fr", arm:"cav", mount:"horse", carry:"fr_guard_eagle_cav", name:"Imperial Guard: grenadiers à cheval",
-    coat:{v:"Habit entièrement semblable à celui des grenadiers à pied", en:"the foot grenadiers' coat (royal blue, white lapels)", c:"dark blue", src:"perrot1821", at:"'Grenadiers à cheval', pp. 235-236 (views f245-f246)", gr:"B", lab:"fact", q:"Habit entièrement semblable à celui des gre- nadiers à pied"},
+    coat:{v:"Habit entièrement semblable à celui des grenadiers à pied", en:"the foot grenadiers' coat (royal blue, white lapels)", c:"dark blue", src:"perrot1821", at:"'Grenadiers à cheval', pp. 235-236 (views f245-f246)", gr:"B", lab:"inference", q:"Habit entièrement semblable à celui des gre- nadiers à pied", note:"Perrot's grenadiers' coat is the Garde des consuls' of 1800 (p. 209); at the formation of the Imperial Guard he names only the bonnet plate, the buttons and the giberne as changed (p. 212), so that this held in 1805 is an inference (the step-4 second reading)"},
     legwear:{v:"culotte de peau blanche, et bottes à l'écuyère", en:"white leather breeches, heavy boots", c:"white", src:"perrot1821", at:"p. 235", gr:"B", lab:"fact", q:"culotte de peau blanche"},
     head:{v:"Bonnet d'oursin sans plaque", en:"the bearskin without plate, red plume", h:"bearskin", src:"perrot1821", at:"p. 235", gr:"B", lab:"fact", q:"Bonnet d'oursin sans plaque"},
     horse:{v:"les chevaux noirs, c'est-à-dire les grenadiers à cheval", en:"'the black horses, that is the horse grenadiers', launched against the Russian Guard", c:"black", src:"coignet1909", at:"p. 336 ('Additions et variantes')", gr:"B", lab:"uncertain",
@@ -2829,7 +2833,7 @@ var DRESS = {
       note:"the 1805 headgear (hat or shako) is not stated in any source read. Carriages: olive (yellow ochre with lamp-black), the ironwork black (gassendi1809, t. I, p. 247, B); the Austrian and Russian carriage colours were not found, so decision 109 keeps one colour for all"},
     greatcoat:{gen:true, why:"not found"}},
   fr_guard_art: {nation:"fr", arm:"art", mount:"foot", carry:"fr_art_none", name:"Imperial Guard: foot artillery",
-    coat:{v:"Uniforme des grenadiers à pied, avec revers et collet bleus, lisérés de rouge", en:"the grenadiers' cut, blue lapels and collar piped red", c:"dark blue", src:"perrot1821", at:"'Artillerie à pied', pp. 232-233 (views f242-f243)", gr:"B", lab:"fact", q:"Uniforme des grenadiers à pied, avec re- vers et collet bleus"},
+    coat:{v:"Uniforme des grenadiers à pied, avec revers et collet bleus, lisérés de rouge", en:"the grenadiers' cut, blue lapels and collar piped red", c:"dark blue", src:"perrot1821", at:"'Artillerie à pied', pp. 232-233 (views f242-f243)", gr:"B", lab:"fact", note:"whether Perrot's p. 232 describes the consular or the imperial Guard was not established in the step-4 second reading; its 'grenadiers' cut' refers to the consular description of p. 209", q:"Uniforme des grenadiers à pied, avec re- vers et collet bleus"},
     legwear:{v:"veste et culotte bleues", c:"dark blue", src:"perrot1821", at:"p. 232", gr:"B", lab:"fact", q:"veste et culotte bleues"},
     head:{v:"Bonnet d'oursin sans plaque, avec cordon et plumet rouges", h:"bearskin", src:"perrot1821", at:"p. 232", gr:"B", lab:"fact", q:"Bonnet d'oursin sans plaque"},
     greatcoat:{gen:true, why:"not found for the day"}},
@@ -3457,7 +3461,7 @@ al:{
     ["knew","doc","That the villages on the stream were proving harder to take than expected."]],
  3:[["saw","doc","French infantry on the crest of the Pratzen, at close range, from the 4th Column's own position."],
     ["ordered","doc","Kutuzov: the 4th Column to face about; part of the II Column recalled up the slope."]],
- 4:[["saw","doc","Kamensky, at the tail of the II Column, saw French troops on the height behind him and turned his brigade about on his own judgement."],
+ 4:[["saw","doc","The accounts differ on who turned Kamensky's brigade about: Kamensky on his own judgement (Mikhailovsky-Danilevsky, citing Langeron's report), Langeron (Schönhals), Kutuzov (his official report; Stutterheim's regiments come on the commander-in-chief's order), or no order of Kutuzov's (his private relation of March 1806)."],
     ["didnt","doc","Buxhowden, commanding the three left-hand columns, had not been told that the centre was gone."]],
  5:[["knew","doc","That Bagration could not force the Santon and that Blasowitz had fallen."],
     ["ordered","doc","A withdrawal on Rausnitz, covering the Allied right."]],
@@ -3466,7 +3470,7 @@ al:{
  7:[["knew","doc","From about noon, that the plateau was lost and the army was cut in two."],
     ["didnt","doc","On the left, the scale of it. Buxhowden's columns were still attacking westward while being enveloped."]],
  8:[["ordered","inf","A retreat of the left. No order of the day naming its route has been read (the disposition's retreat for the left ran by the Turas wood, Kobelnitz and Puntowitz); that it went south over the Augezd defile and the meres is inferred from the accounts of the end (Schönhals)."],
-    ["knew","inf","That the way out by Augezd came under artillery fire from the height above it, ground the army had held at dawn: the fire is Schönhals's; what the command knew of it is inferred."]]
+    ["knew","inf","That the way out by Augezd came under artillery fire from the height (Schönhals's 'auf der Höhe'; that it is the height above Augezd, ground the army had held at dawn, is this map's reading); what the command knew of it is inferred."]]
 }
 };
 
@@ -3598,7 +3602,7 @@ var EVENTS = [
 {id:"columns-move", t:[240,420], n:"The Allied columns begin to leave the plateau", side:"al", kind:"movement",
  p:[291,276], forms:["kienmayer","dok","lang","prz"], cf:"B", claim:"disputed",
  why:"Every column that goes down into the valley is a column no longer holding the centre.",
- dispute:"When Dokhturov's I Column began its descent: from 04:00 in this event and on the map, but at about 07:30 in the Telnitz phase's text. This reconstruction has not yet settled it from the published accounts."},
+ dispute:"When the columns left the plateau: the disposition ordered all the columns to march at 07:00, and the I Column left its camp at seven (Buxhowden's and Kutuzov's reports), as the map now draws it; Schönhals has the left wing off at half past six and Mikhailovsky-Danilevsky the first three columns between seven and eight. The map still moves the II and III Columns from 04:00, an earlier timing it keeps."},
 
 {id:"counter-march", t:[255,480], n:"Liechtenstein counter-marches across the 4th Column", side:"al", kind:"movement",
  p:[311,227], forms:["lich","milo","kollo"], cf:"A", claim:"fact",
@@ -3641,8 +3645,8 @@ var EVENTS = [
 
 {id:"kamensky", t:585, n:"Kamensky turns his brigade about and drives the French off the crest", side:"al", kind:"engagement",
  p:[285,289], forms:["kamensky","sthilaire","lang"], cf:"B", claim:"disputed",
- why:"Allied initiative on the plateau, but whose is disputed: Mikhailovsky-Danilevsky, citing Langeron's report, has Kamensky see the French climbing, warn Langeron and turn his brigade against them; Kutuzov's official report has Kutuzov re-form two regiments he found cut off on the height and order Kamensky to occupy the ridge.",
- dispute:"When Kamensky turned his brigade about: at about 09:45 in this event and in the Pratzeberg phase's text, but in the 08:45 phase in his brigade's record on this map, whose timing the map keeps. This reconstruction has not yet settled it from the published accounts."},
+ why:"Allied initiative on the plateau, but whose is disputed: Mikhailovsky-Danilevsky, citing Langeron's report, has Kamensky see the French climbing, warn Langeron and turn his brigade against them; Schönhals has Langeron send the brigade; Kutuzov's official report has Kutuzov order Kamensky to occupy the ridge, and Stutterheim has the two regiments come on the commander-in-chief's order; Kutuzov's private relation of March 1806 has them turn from the column with no order of his.",
+ dispute:"When Kamensky turned his brigade about: no account read gives the hour, only a sequence, after the French began to climb the heights and before or with Jurczek's attack. This event puts the turn at 09:45; his brigade's record on this map turns it in the 08:45 phase, whose timing the map keeps."},
 
 {id:"kursk", t:630, n:"Langeron's reinforcements arrive as the crest is lost", side:"al", kind:"engagement",
  p:[290,282], forms:["lang","kamensky"], cf:"C", claim:"recon",
@@ -3661,8 +3665,9 @@ var EVENTS = [
  why:"The Guard, which Stutterheim calls the reserve of the Allied right, takes the eagle of the 4th Line, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day."},
 
 {id:"guard-broken", t:[675,795], n:"Rapp's counter-charge breaks the Chevalier Guard", side:"fr", kind:"engagement",
- p:[308,210], forms:["guard_cav","guard_inf","drouet","rg_cav"], cf:"B", claim:"est",
- why:"Prince Repnin is taken prisoner. With the reserve spent, nothing remains to retake the plateau."},
+ p:[308,210], forms:["guard_cav","guard_inf","drouet","rg_cav"], cf:"B", claim:"disputed",
+ why:"Prince Repnin is taken prisoner, by Rapp's charge in the 30th Bulletin. With the reserve spent, nothing remains to retake the plateau.",
+ dispute:"When Rapp's charge went in: before one by the order of the narrative in the 30th Bulletin and in Mikhailovsky-Danilevsky (an inference: neither dates the charge itself), by about noon in Schönhals, about 13:00 or after in Rapp's own memoirs and Ségur's; the map draws it from 11:15, a timing it has kept."},
 
 {id:"hq-forward", t:[720,760], n:"Napoleon moves forward to Stare Vinohrady", side:"fr", kind:"decision",
  p:[309,207], forms:["gqg"], cf:"B", claim:"est",
@@ -3759,7 +3764,8 @@ var STATEMENT_CLAIMS = {
   "FEATURES[#pratzeberg].story": {h:"607daa40f14a", cl:"attributed", by:[{src:"thiebault3_1894", at:"t. III, pp. 475-476", rd:"thiebault3_1894.p475-476.pouzet"},
       {src:"thiebault3_1894", at:"t. III, p. 469", rd:"thieb.p469.morand"},
       {src:"thiebault3_1894", at:"t. III, p. 474", rd:"thieb.p474.reinforced"},
-      {src:"schoenhals1873", at:"p. 161", rd:"schoenhals1873.p161.levasseur"}]},
+      {src:"schoenhals1873", at:"p. 161", rd:"schoenhals1873.p161.levasseur"}],
+    note:"That the fight took place on the Pratzeberg is this map's placing: Thiebault says 'cette partie des hauteurs de Pratzen'."},
   "FORMATIONS.sthilaire.track[\"4\"].act": {h:"0b5ff4a4daec", cl:"attributed", by:[{src:"thiebault3_1894", at:"t. III, pp. 475-476", rd:"thiebault3_1894.p475-476.pouzet"}],
     note:"That Jurczek's Austrians followed Kamensky's brigade is this map's sequence, not checked here."},
   "FORMATIONS.legrand.track[\"4\"].act": {h:"c37c69e5d461", cl:"attributed", by:[{src:"schoenhals1873", at:"p. 161", rd:"schoenhals1873.p161.levasseur"}],
@@ -3783,7 +3789,7 @@ var STATEMENT_CLAIMS = {
       {src:"kavalergard1851", at:"pp. 58-59", rd:"kavalergard1851.p58-59.horse-guard-eagle-depreradovich", side:"the Life Guard Horse took the eagle"},
       {src:"marbot1891", at:"t. I, p. 260", rd:"marbot1891.p260.eagle", side:"the Chevalier Guards and the Grand Duke's cuirassiers took it"},
       {src:"materialien1806", at:"pp. 118-119", rd:"materialien1806.p118-119.einzige-trophaee"}],
-    note:"The sources disagree on who took the eagle; an official report of unstated author, quoted in the Materialien of 1806, calls it the only trophy of the day."},
+    note:"The sources disagree on who took the eagle; an Allied official report, first printed in the Materialien of 1806, calls it the only trophy of the day."},
   "EVENTS[#guard-attack].why": {h:"0d56a4ebca57", cl:"attributed", by:[{src:"materialien1806", at:"pp. 118-119", rd:"materialien1806.p118-119.einzige-trophaee"},
       {src:"stutterheim1806de", at:"p. 56", rd:"stutterheim1806de.p56.reserve-blasowitz"}]},
   "FORMATIONS.rg_cav.track[\"6\"].act": {h:"137ded81b635", cl:"disputed", by:[{src:"stutterheim1806de", at:"p. 69", rd:"stutterheim1806de.p69.adler-rueckzug", side:"the Life Guard Horse took the eagle"},
@@ -3804,7 +3810,7 @@ var STATEMENT_CLAIMS = {
       {src:"schoenhals1873", at:"p. 168", rd:"schoen.p168.artillery-iv-garde"},
       {src:"stutterheim1806de", at:"pp. 55-56", rd:"stut.p55-56.crossing"},
       {src:"mikhailovsky1846", at:"p. 229", rd:"md1846.p229.night-crossing"}],
-    note:"Soult's corps went down through Kobelnitz and Puntowitz in the night (Stutterheim; Mikhailovsky-Danilevsky has it before them the evening before)."},
+    note:"Stutterheim has Soult posted by Kobelnitz in the night and attacking through Kobelnitz and Puntowitz; Mikhailovsky-Danilevsky has him before them at nightfall."},
   "FORMATIONS.bag.role": {h:"555b633bca3a", cl:"attributed", by:[{src:"schoenhals1873", at:"p. 166", rd:"schoenhals1873.p166.posthaus-suchet"},
       {src:"schoenhals1873", at:"pp. 165-166", rd:"schoenhals1873.p165-166.bagration"},
       {src:"stutterheim1806de", at:"p. 71", rd:"stutterheim1806de.p71.bagration-posorsitz"}]},
@@ -3816,8 +3822,74 @@ var STATEMENT_CLAIMS = {
       {src:"schoenhals1873", at:"pp. 165-166", rd:"schoenhals1873.p165-166.bagration"}],
     note:"That the Allied right is separated from the centre here is this map's record."},
   "ACTS[#divided].line": {h:"a1f8e3deacd8", cl:"attributed", by:[{src:"stutterheim1806de", at:"p. 56", rd:"stutterheim1806de.p56.reserve-blasowitz"},
+      {src:"corr11_1863", at:"no. 9541, p. 451", rd:"corr11_1863.p451.guard-centre-reserve"},
+      {src:"segur1877", at:"t. II, pp. 470-472", rd:"segur1873.p470-472.guard-bernadotte"},
       {src:"stutterheim1806de", at:"p. 69", rd:"stutterheim1806de.p69.adler-rueckzug"}],
-    note:"That the Guard attacked to take the plateau back is this map's reading of its counterattack."}
+    note:"The Bulletin and Ségur have the Russian Guard broken; Stutterheim has it retire unpursued. That it attacked to take the plateau back is this map's reading of its counterattack."},
+  "EVENTS[#columns-move].dispute": {h:"c3a6148e3de4", cl:"disputed", by:[{src:"materialien1806", at:"pp. 101-106", rd:"mat1806.p101-106.disposition", side:"the columns ordered to march at seven"},
+      {src:"kutuzov1951", at:"pp. 241-242", rd:"kutuzov1951.p241-242.buxhowden", side:"the I Column left its camp at seven"},
+      {src:"mikhailovsky1844", at:"p. 177", rd:"md1844.p177.eighth-hour", side:"the first three columns off in the eighth hour"},
+      {src:"schoenhals1873", at:"pp. 157-159", rd:"schoenhals1873.p157-159.departure", side:"the left wing at half past six"}],
+    note:"The II and III Columns' descent from the small hours is this map's earlier timing, which it keeps; no source read gives it."},
+  "PHASES[#0].events[1]": {h:"6864c40125db", cl:"attributed", by:[{src:"thiebault3_1894", at:"t. III, pp. 456-457", rd:"thiebault3_1894.p456-457.night-noise"},
+      {src:"materialien1806", at:"pp. 101-106", rd:"mat1806.p101-106.disposition"},
+      {src:"materialien1806", at:"p. 109", rd:"mat1806.p109.delivery"}],
+    note:"The map's movement of the II and III Columns before the ordered hour is its own timing, kept."},
+  "PHASES[#1].events[1]": {h:"06f572da7767", cl:"disputed", by:[{src:"kutuzov1951", at:"pp. 255-258", rd:"kutuzov1951.p255-258.relation", side:"the column's head at Telnitz about eight"},
+      {src:"mikhailovsky1844", at:"p. 179", rd:"md1844.p179.half-past-eight~C1.c4", side:"Dokhturov attacks Telnitz at half past eight"}]},
+  "FORMATIONS.dok.track[\"1\"].act": {h:"cb9e5941d518", cl:"attributed", by:[{src:"kutuzov1951", at:"pp. 241-242", rd:"kutuzov1951.p241-242.buxhowden"},
+      {src:"kutuzov1951", at:"pp. 255-258", rd:"kutuzov1951.p255-258.relation"},
+      {src:"materialien1806", at:"pp. 101-106", rd:"mat1806.p101-106.disposition"}]},
+  "TOUR[3].x": {h:"e4e7686b92f8", cl:"derived", by:[{src:"stutterheim1806de", at:"p. 49", rd:"stut.p49.seven"}],
+    note:"The figures are counted from the map's plot, every man once."},
+  "EVENTS[#kamensky].why": {h:"f2efdc42c000", cl:"disputed", by:[{src:"mikhailovsky1844", at:"pp. 186-187", rd:"md1844.p186-187.kamensky~C1.10", side:"Kamensky on his own judgement"},
+      {src:"schoenhals1873", at:"p. 161", rd:"schoenhals1873.p161.kamensky-langeron", side:"Langeron sent the brigade"},
+      {src:"kutuzov1951", at:"pp. 255-258", rd:"kutuzov1951.p255-258.relation", side:"Kutuzov ordered it (his official report)"},
+      {src:"kutuzov1951", at:"p. 265", rd:"kutuzov1951.p265.private-relation", side:"no order of Kutuzov's (his private relation)"},
+      {src:"stutterheim1806de", at:"p. 64", rd:"stutterheim1806de.p64.kamensky-order", side:"the regiments came on the commander-in-chief's order"}]},
+  "FORMATIONS.kamensky.role": {h:"0f797e61a9d8", cl:"disputed", by:[{src:"mikhailovsky1844", at:"pp. 186-187", rd:"md1844.p186-187.kamensky~C1.10", side:"Kamensky on his own judgement"},
+      {src:"schoenhals1873", at:"p. 161", rd:"schoenhals1873.p161.kamensky-langeron", side:"Langeron sent the brigade"},
+      {src:"kutuzov1951", at:"pp. 255-258", rd:"kutuzov1951.p255-258.relation", side:"Kutuzov ordered it (his official report)"},
+      {src:"kutuzov1951", at:"p. 265", rd:"kutuzov1951.p265.private-relation", side:"no order of Kutuzov's (his private relation)"}]},
+  "FORMATIONS.kamensky.track[\"3\"].act": {h:"7b863ba513e3", cl:"disputed", by:[{src:"mikhailovsky1844", at:"pp. 186-187", rd:"md1844.p186-187.kamensky~C1.10", side:"Kamensky on his own judgement"},
+      {src:"schoenhals1873", at:"p. 161", rd:"schoenhals1873.p161.kamensky-langeron", side:"Langeron sent the brigade"},
+      {src:"kutuzov1951", at:"pp. 255-258", rd:"kutuzov1951.p255-258.relation", side:"Kutuzov ordered it"}]},
+  "COMMAND.al[\"4\"][0]": {h:"e9db81ef528f", cl:"disputed", by:[{src:"mikhailovsky1844", at:"pp. 186-187", rd:"md1844.p186-187.kamensky~C1.10", side:"Kamensky on his own judgement"},
+      {src:"schoenhals1873", at:"p. 161", rd:"schoenhals1873.p161.kamensky-langeron", side:"Langeron sent the brigade"},
+      {src:"kutuzov1951", at:"pp. 255-258", rd:"kutuzov1951.p255-258.relation", side:"Kutuzov ordered it (his official report)"},
+      {src:"kutuzov1951", at:"p. 265", rd:"kutuzov1951.p265.private-relation", side:"no order of Kutuzov's (his private relation)"},
+      {src:"stutterheim1806de", at:"p. 64", rd:"stutterheim1806de.p64.kamensky-order", side:"the regiments came on the commander-in-chief's order"}],
+    note:"The row's DOCUMENTED tag is the Command tab's kind of row; the accounts it names disagree."},
+  "EVENTS[#kamensky].dispute": {h:"4917d4f4410d", cl:"uncertain", by:[{src:"stutterheim1806de", at:"pp. 60-64", rd:"stut1806de.p63.kamensky"},
+      {src:"mikhailovsky1844", at:"pp. 185-189", rd:"md1844.p186-187.kamensky~C1.10"},
+      {src:"schoenhals1873", at:"pp. 161-163", rd:"schoenhals1873.p161.kamensky-langeron"},
+      {src:"kutuzov1951", at:"pp. 257-258, 265-267", rd:"kutuzov1951.p255-258.relation"}],
+    note:"No account read gives the hour of the turn; the hours named are this map's."},
+  "PHASES[#4].events[1]": {h:"a5a10a3ec869", cl:"uncertain", by:[{src:"stutterheim1806de", at:"pp. 60-64", rd:"stut1806de.p63.kamensky"},
+      {src:"mikhailovsky1844", at:"pp. 185-189", rd:"md1844.p186-187.kamensky~C1.10"},
+      {src:"schoenhals1873", at:"pp. 161-163", rd:"schoenhals1873.p161.kamensky-langeron"},
+      {src:"kutuzov1951", at:"pp. 257-258, 265-267", rd:"kutuzov1951.p255-258.relation"}],
+    note:"No account read gives the hour of the turn; the hours named are this map's."},
+  "EVENTS[#guard-broken].dispute": {h:"fcced48b2ab6", cl:"disputed", by:[{src:"corr11_1863", at:"no. 9541, p. 451", rd:"corr11.9541.p451.guard-one", side:"before one, by the order of the Bulletin's narrative (an inference)"},
+      {src:"mikhailovsky1844", at:"pp. 194-196", rd:"md1844.p194-196.guard", side:"before one, by the order of his narrative (an inference)"},
+      {src:"schoenhals1873", at:"pp. 164-165", rd:"schoenhals1873.p164-165.guard-noon", side:"by about noon"},
+      {src:"rapp1823", at:"pp. 60-62", rd:"rapp1823.p60-62.une-heure", side:"about one"},
+      {src:"segur1877", at:"t. II, pp. 467-469", rd:"segur1873.p467-469.une-heure", side:"about one"}]},
+  "EVENTS[#guard-broken].why": {h:"25fbeb27dfc3", cl:"attributed", by:[{src:"corr11_1863", at:"no. 9541, p. 452", rd:"corr11.9541.p452.rapp-repnin"}],
+    note:"That nothing remained to retake the plateau is this map's reading."},
+  "PHASES[#6].events[0]": {h:"b24f697967ec", cl:"disputed", by:[{src:"corr11_1863", at:"no. 9541, p. 451", rd:"corr11.9541.p451.guard-one", side:"before one, by the order of the Bulletin's narrative (an inference)"},
+      {src:"mikhailovsky1844", at:"pp. 194-196", rd:"md1844.p194-196.guard", side:"before one, by the order of his narrative (an inference)"},
+      {src:"schoenhals1873", at:"pp. 164-165", rd:"schoenhals1873.p164-165.guard-noon", side:"by about noon"},
+      {src:"rapp1823", at:"pp. 60-62", rd:"rapp1823.p60-62.une-heure", side:"about one"},
+      {src:"segur1877", at:"t. II, pp. 467-469", rd:"segur1873.p467-469.une-heure", side:"about one"}]},
+  "PHASES[#6].events[1]": {h:"b021dcc7af84", cl:"disputed", by:[{src:"rapp1823", at:"pp. 60-62", rd:"rapp1823.p60-62.une-heure", side:"about one"},
+      {src:"segur1877", at:"t. II, pp. 467-469", rd:"segur1873.p467-469.une-heure", side:"about one"},
+      {src:"schoenhals1873", at:"pp. 164-165", rd:"schoenhals1873.p164-165.guard-noon", side:"by about noon"},
+      {src:"corr11_1863", at:"no. 9541, p. 452", rd:"corr11.9541.p452.rapp-repnin"}],
+    note:"The timeline's hour is this map's."},
+  "FORMATIONS.guard_cav.track[\"6\"].act": {h:"eab2b6543c56", cl:"disputed", by:[{src:"rapp1823", at:"pp. 60-62", rd:"rapp1823.p60-62.une-heure", side:"about one"},
+      {src:"corr11_1863", at:"no. 9541, p. 451", rd:"corr11.9541.p451.guard-one", side:"before one, by the order of the Bulletin's narrative (an inference)"},
+      {src:"corr11_1863", at:"no. 9541, p. 452", rd:"corr11.9541.p452.rapp-repnin"}]}
 };
 
 /* ============================================================
@@ -5772,8 +5844,7 @@ var OVERLAYS = {
 1:{ lines:[{pts:[[223,82],[229,116],[238,158],[213,222],[205,277],[208,365],[212,408]],side:"fr",label:"French line on the Goldbach"}],
     arrows:[
      {leg:["kienmayer",1,2],kind:"attack",side:"al",label:"Kienmayer"},
-     {pts:[[291,332],[272,359],[247,381]],kind:"move",side:"al",label:"I Column descends",
-      interp:"unsettled: the phase-1 timeline has the descent begin c. 07:30, the event and the track from 04:00 (the unresolved Dokhturov conflict, dok@1)"},
+     {leg:["dok",0,1],kind:"move",side:"al",label:"I Column descends"},
      {leg:["friant",1,2],kind:"move",side:"fr",label:"Friant's approach march"}],
     obj:[[212,408,"Telnitz"]]},
 
@@ -5796,7 +5867,7 @@ var OVERLAYS = {
 
 4:{ arrows:[
      {pts:[[259,316],[270,300],[280,291]],kind:"counter",side:"al",label:"Kamensky turns about",
-      interp:"unsettled: the phase-4 timeline dates the turn c. 09:45, his own record and the track in phase 3 (the unresolved Kamensky conflict, kamensky@3 and kamensky@4)"},
+      interp:"unsettled: no account read gives the hour of the turn; the phase-4 timeline dates it c. 09:45, his own record and the track in phase 3 (the Kamensky conflict, kamensky@3 and kamensky@4)"},
      {pts:[[324,233],[280,239],[289,273]],kind:"counter",side:"al",label:"Jurczek's Austrians",interp:"unmodelled: Jurczek's brigade has no track of its own"},
      {pts:[[213,299],[233,307],[246,307]],kind:"move",side:"fr",label:"Levasseur up the Goldbach",interp:"unmodelled: Levasseur's brigade has no track of its own"},
      {leg:["caffarelli",0,5],kind:"attack",side:"fr",label:"Caffarelli"},
@@ -12663,7 +12734,7 @@ function arrowNotes(){
   return ["An arrow drawn for a phase shows the movement the model makes during that phase. "+d+" of the "+n+" arrows are drawn from the formation's own modelled route, so their ends are its modelled positions; they move with the model.",
     "The others are interpretive and marked as such in the data: "+(k.route||0)+" ordered routes (dashed), "+(k.objective||0)+" that point at a place or objective rather than a modelled position, "+
       (k.group||0)+" that stand for several formations, "+(k.unmodelled||0)+" for bodies the map does not track, and "+(k.halt||0)+" halt bar, a column stopped short of its objective.",
-    "Hand-authored, because this map's own texts disagree about the hour and the sources have not been checked; each label carries the mark ("+LABELS.arrow.unsettled+"): "+uns.join("; ")+"."];
+    "Hand-authored, because the hour is not settled: the accounts read give none, or disagree with each other or with this map's timing, which it keeps; each label carries the mark ("+LABELS.arrow.unsettled+"): "+uns.join("; ")+"."];
 }
 /* Stage 4B (docs/STAGE4_SPEC.md section A.5; decisions 68-71): how the light is drawn, a presentation note of the sources sheet
    (not SOURCE_NOTE): derived from astronomy and the app's clock, with what it is not */

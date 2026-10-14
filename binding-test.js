@@ -17,7 +17,6 @@ function ok(cond,msg){ checks++; if(!cond) errors.push(msg); }
 
 /* the arrows that stay hand-authored (decision 37: they cannot be settled); each has its CHANGELOG.md entry */
 const UNSETTLED=[
-  {ph:1,label:"I Column descends",why:"the unresolved Dokhturov conflict (dok@1)"},
   {ph:4,label:"Kamensky turns about",why:"the unresolved Kamensky conflict (kamensky@3, kamensky@4)"}
 ];
 const KINDS=["route","objective","group","unmodelled","halt","unsettled"];

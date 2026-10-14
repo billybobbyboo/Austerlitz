@@ -101,7 +101,7 @@ al:{
     ["knew","doc","That the villages on the stream were proving harder to take than expected."]],
  3:[["saw","doc","French infantry on the crest of the Pratzen, at close range, from the 4th Column's own position."],
     ["ordered","doc","Kutuzov: the 4th Column to face about; part of the II Column recalled up the slope."]],
- 4:[["saw","doc","Kamensky, at the tail of the II Column, saw French troops on the height behind him and turned his brigade about on his own judgement."],
+ 4:[["saw","doc","The accounts differ on who turned Kamensky's brigade about: Kamensky on his own judgement (Mikhailovsky-Danilevsky, citing Langeron's report), Langeron (Schönhals), Kutuzov (his official report; Stutterheim's regiments come on the commander-in-chief's order), or no order of Kutuzov's (his private relation of March 1806)."],
     ["didnt","doc","Buxhowden, commanding the three left-hand columns, had not been told that the centre was gone."]],
  5:[["knew","doc","That Bagration could not force the Santon and that Blasowitz had fallen."],
     ["ordered","doc","A withdrawal on Rausnitz, covering the Allied right."]],
@@ -110,7 +110,7 @@ al:{
  7:[["knew","doc","From about noon, that the plateau was lost and the army was cut in two."],
     ["didnt","doc","On the left, the scale of it. Buxhowden's columns were still attacking westward while being enveloped."]],
  8:[["ordered","inf","A retreat of the left. No order of the day naming its route has been read (the disposition's retreat for the left ran by the Turas wood, Kobelnitz and Puntowitz); that it went south over the Augezd defile and the meres is inferred from the accounts of the end (Schönhals)."],
-    ["knew","inf","That the way out by Augezd came under artillery fire from the height above it, ground the army had held at dawn: the fire is Schönhals's; what the command knew of it is inferred."]]
+    ["knew","inf","That the way out by Augezd came under artillery fire from the height (Schönhals's 'auf der Höhe'; that it is the height above Augezd, ground the army had held at dawn, is this map's reading); what the command knew of it is inferred."]]
 }
 };
 
@@ -242,7 +242,7 @@ var EVENTS = [
 {id:"columns-move", t:[240,420], n:"The Allied columns begin to leave the plateau", side:"al", kind:"movement",
  p:[291,276], forms:["kienmayer","dok","lang","prz"], cf:"B", claim:"disputed",
  why:"Every column that goes down into the valley is a column no longer holding the centre.",
- dispute:"When Dokhturov's I Column began its descent: from 04:00 in this event and on the map, but at about 07:30 in the Telnitz phase's text. This reconstruction has not yet settled it from the published accounts."},
+ dispute:"When the columns left the plateau: the disposition ordered all the columns to march at 07:00, and the I Column left its camp at seven (Buxhowden's and Kutuzov's reports), as the map now draws it; Schönhals has the left wing off at half past six and Mikhailovsky-Danilevsky the first three columns between seven and eight. The map still moves the II and III Columns from 04:00, an earlier timing it keeps."},
 
 {id:"counter-march", t:[255,480], n:"Liechtenstein counter-marches across the 4th Column", side:"al", kind:"movement",
  p:[311,227], forms:["lich","milo","kollo"], cf:"A", claim:"fact",
@@ -285,8 +285,8 @@ var EVENTS = [
 
 {id:"kamensky", t:585, n:"Kamensky turns his brigade about and drives the French off the crest", side:"al", kind:"engagement",
  p:[285,289], forms:["kamensky","sthilaire","lang"], cf:"B", claim:"disputed",
- why:"Allied initiative on the plateau, but whose is disputed: Mikhailovsky-Danilevsky, citing Langeron's report, has Kamensky see the French climbing, warn Langeron and turn his brigade against them; Kutuzov's official report has Kutuzov re-form two regiments he found cut off on the height and order Kamensky to occupy the ridge.",
- dispute:"When Kamensky turned his brigade about: at about 09:45 in this event and in the Pratzeberg phase's text, but in the 08:45 phase in his brigade's record on this map, whose timing the map keeps. This reconstruction has not yet settled it from the published accounts."},
+ why:"Allied initiative on the plateau, but whose is disputed: Mikhailovsky-Danilevsky, citing Langeron's report, has Kamensky see the French climbing, warn Langeron and turn his brigade against them; Schönhals has Langeron send the brigade; Kutuzov's official report has Kutuzov order Kamensky to occupy the ridge, and Stutterheim has the two regiments come on the commander-in-chief's order; Kutuzov's private relation of March 1806 has them turn from the column with no order of his.",
+ dispute:"When Kamensky turned his brigade about: no account read gives the hour, only a sequence, after the French began to climb the heights and before or with Jurczek's attack. This event puts the turn at 09:45; his brigade's record on this map turns it in the 08:45 phase, whose timing the map keeps."},
 
 {id:"kursk", t:630, n:"Langeron's reinforcements arrive as the crest is lost", side:"al", kind:"engagement",
  p:[290,282], forms:["lang","kamensky"], cf:"C", claim:"recon",
@@ -305,8 +305,9 @@ var EVENTS = [
  why:"The Guard, which Stutterheim calls the reserve of the Allied right, takes the eagle of the 4th Line, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day."},
 
 {id:"guard-broken", t:[675,795], n:"Rapp's counter-charge breaks the Chevalier Guard", side:"fr", kind:"engagement",
- p:[308,210], forms:["guard_cav","guard_inf","drouet","rg_cav"], cf:"B", claim:"est",
- why:"Prince Repnin is taken prisoner. With the reserve spent, nothing remains to retake the plateau."},
+ p:[308,210], forms:["guard_cav","guard_inf","drouet","rg_cav"], cf:"B", claim:"disputed",
+ why:"Prince Repnin is taken prisoner, by Rapp's charge in the 30th Bulletin. With the reserve spent, nothing remains to retake the plateau.",
+ dispute:"When Rapp's charge went in: before one by the order of the narrative in the 30th Bulletin and in Mikhailovsky-Danilevsky (an inference: neither dates the charge itself), by about noon in Schönhals, about 13:00 or after in Rapp's own memoirs and Ségur's; the map draws it from 11:15, a timing it has kept."},
 
 {id:"hq-forward", t:[720,760], n:"Napoleon moves forward to Stare Vinohrady", side:"fr", kind:"decision",
  p:[309,207], forms:["gqg"], cf:"B", claim:"est",

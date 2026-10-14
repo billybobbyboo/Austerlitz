@@ -37,8 +37,7 @@ var OVERLAYS = {
 1:{ lines:[{pts:[[223,82],[229,116],[238,158],[213,222],[205,277],[208,365],[212,408]],side:"fr",label:"French line on the Goldbach"}],
     arrows:[
      {leg:["kienmayer",1,2],kind:"attack",side:"al",label:"Kienmayer"},
-     {pts:[[291,332],[272,359],[247,381]],kind:"move",side:"al",label:"I Column descends",
-      interp:"unsettled: the phase-1 timeline has the descent begin c. 07:30, the event and the track from 04:00 (the unresolved Dokhturov conflict, dok@1)"},
+     {leg:["dok",0,1],kind:"move",side:"al",label:"I Column descends"},
      {leg:["friant",1,2],kind:"move",side:"fr",label:"Friant's approach march"}],
     obj:[[212,408,"Telnitz"]]},
 
@@ -61,7 +60,7 @@ var OVERLAYS = {
 
 4:{ arrows:[
      {pts:[[259,316],[270,300],[280,291]],kind:"counter",side:"al",label:"Kamensky turns about",
-      interp:"unsettled: the phase-4 timeline dates the turn c. 09:45, his own record and the track in phase 3 (the unresolved Kamensky conflict, kamensky@3 and kamensky@4)"},
+      interp:"unsettled: no account read gives the hour of the turn; the phase-4 timeline dates it c. 09:45, his own record and the track in phase 3 (the Kamensky conflict, kamensky@3 and kamensky@4)"},
      {pts:[[324,233],[280,239],[289,273]],kind:"counter",side:"al",label:"Jurczek's Austrians",interp:"unmodelled: Jurczek's brigade has no track of its own"},
      {pts:[[213,299],[233,307],[246,307]],kind:"move",side:"fr",label:"Levasseur up the Goldbach",interp:"unmodelled: Levasseur's brigade has no track of its own"},
      {leg:["caffarelli",0,5],kind:"attack",side:"fr",label:"Caffarelli"},
@@ -6928,7 +6927,7 @@ function arrowNotes(){
   return ["An arrow drawn for a phase shows the movement the model makes during that phase. "+d+" of the "+n+" arrows are drawn from the formation's own modelled route, so their ends are its modelled positions; they move with the model.",
     "The others are interpretive and marked as such in the data: "+(k.route||0)+" ordered routes (dashed), "+(k.objective||0)+" that point at a place or objective rather than a modelled position, "+
       (k.group||0)+" that stand for several formations, "+(k.unmodelled||0)+" for bodies the map does not track, and "+(k.halt||0)+" halt bar, a column stopped short of its objective.",
-    "Hand-authored, because this map's own texts disagree about the hour and the sources have not been checked; each label carries the mark ("+LABELS.arrow.unsettled+"): "+uns.join("; ")+"."];
+    "Hand-authored, because the hour is not settled: the accounts read give none, or disagree with each other or with this map's timing, which it keeps; each label carries the mark ("+LABELS.arrow.unsettled+"): "+uns.join("; ")+"."];
 }
 /* Stage 4B (docs/STAGE4_SPEC.md section A.5; decisions 68-71): how the light is drawn, a presentation note of the sources sheet
    (not SOURCE_NOTE): derived from astronomy and the app's clock, with what it is not */
