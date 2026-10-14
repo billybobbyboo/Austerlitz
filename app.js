@@ -6331,7 +6331,7 @@ function outcomeOf(id){
   }
   return null;
 }
-/* a track entry's own claim, the latest up to the current phase (heightguns@7-8), else null; claimOf and posClaimOf read it */
+/* a track entry's own claim, the latest up to the current phase (heightguns@7 "recon", @8 "est" since roadmap step 4), else null; claimOf and posClaimOf read it */
 function explicitClaim(id){
   var f=FORMATIONS[id], explicit=null;
   if(f.track){ for(var i=0;i<=curPhase;i++){ var e=f.track[i]; if(e&&e.claim) explicit=e.claim; } }
@@ -6615,7 +6615,7 @@ function claimPill(cl){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS
    claims are the sourcing stage's (128 (b)). An event's pill keeps CLAIM's words (claimPill) */
 var POS_CLAIM={fact:"Position: documented", est:"Position: estimated", recon:"Position: reconstructed", interp:"Position: interpolated"};
 /* roadmap step 4 (decision 128 (b); docs/FINAL_AUDIT.md H-5; the C7 design skeptic's I5): the pill's key. A track entry's own claim wins
-   (heightguns@7-8, "recon"); else the position's grade's (CLAIM_FROM_CONF), except that a position the clock interpolates between anchors
+   (heightguns@7 "recon", @8 "est" since roadmap step 4); else the position's grade's (CLAIM_FROM_CONF), except that a position the clock interpolates between anchors
    whose grade reads "documented" says "interpolated": the anchors are documented, the point between them is not (H-5: 825 of the leaves'
    ten-minute samples). B and C interpolations keep "estimated" and "reconstructed", which never overclaimed. claimOf stays the claim
    CLAIM's notes read (the dossier's grade text) */

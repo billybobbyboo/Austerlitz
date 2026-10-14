@@ -66,7 +66,7 @@ fr:{
  0:[["saw","doc","The Allied bivouac fires, which he rode out at one in the morning to see from his posts (the 30th Bulletin); Thiebault has reports of the Allied left's movement through the night, judged by the noise of its artillery."],
     ["knew","doc","That the Allied army was more numerous and that the Tsar's staff, not Kutuzov, was directing it."],
     ["didnt","inf","The exact column boundaries and the order of march. Inferred: French accounts describe the Allied movement as read off the ground, not from captured orders."],
-    ["ordered","doc","The army to stand as disposed behind the Goldbach until new orders, to be given to the marshals at his bivouac in the morning (the dispositions of 1 December); Soult's two divisions in the valley."],
+    ["ordered","doc","The army placed by seven in the morning as the dispositions of 1 December set out, Soult's three divisions beyond the ravine, ready for an advance in echelons, right wing forward, and held there until new orders, to be given to the marshals at his bivouac."],
     ["expected","doc","That the enemy would march across his front to turn his right. His proclamation of 1 December says in terms that they will march to turn his right and so present their flank; that they would leave the plateau is this map's inference."]],
  1:[["saw","doc","The attack developing on Telnitz at the southern end of the line."],
     ["knew","doc","That Davout's detachment had reached Raigern overnight and would come up to the Goldbach during the morning."],
@@ -92,7 +92,7 @@ fr:{
 al:{
  0:[["knew","doc","That the French had given up the Pratzen plateau and pulled back behind the Goldbach."],
     ["didnt","doc","That two French divisions were standing in the Goldbach valley. The fog in the valley hid them."],
-    ["didnt","inf","That Bernadotte's corps and Davout's detachment had joined the army. Inferred: the Allied estimate of French strength was materially too low."],
+    ["didnt","inf","That Bernadotte's corps and part of Davout's had joined the army the evening before (Stutterheim, who has the Allied staff believe the French at Brünn few, and plan without exact knowledge of their strength). Inferred: the Allied estimate of French strength was too low."],
     ["ordered","doc","Weyrother's dispositions: four columns south-west against the French right, Bagration to hold the highway."],
     ["expected","doc","A French army in retreat that would be turned and cut off from Vienna."]],
  1:[["saw","doc","Telnitz taken and retaken."],
@@ -184,7 +184,7 @@ al:{
   ]},
 fr:{
   name:"Napoleon's plan",
-  author:"Set out in the proclamation to the army and the orders of 1 December, and in the written dispositions of that evening, which called the marshals to his bivouac for the morning. The last orders were given at daybreak: at the first rays of the sun in the 30th Bulletin, before dawn on the barrow by Schlapanitz in Mikhailovsky-Danilevsky, and in Savary only once the attack on the right was pronounced.",
+  author:"Set out in the proclamation to the army and the orders of 1 December, and in the written dispositions of that evening, which placed Soult's three divisions beyond the ravine at seven and called the marshals to his bivouac for the morning. The moment of the last orders differs: at the first rays of the sun in the 30th Bulletin; in Mikhailovsky-Danilevsky once the sun lit the hilltops, the marshals having been summoned to the barrow by Schlapanitz before dawn; in Savary only once the attack on the right was pronounced.",
   intent:"Invite the attack on the right by giving up the Pratzen plateau and holding the lower Goldbach thin. When the enemy centre has marched off the heights to join that attack, take the heights with two divisions held concealed in the valley, cut the Allied army in half, then wheel south onto the rear of everything that has gone down into the Goldbach. In Ségur and Mikhailovsky-Danilevsky Bernadotte is to assail the plateau from the left at the same time; the written dispositions do not say so.",
   assumed:[
    "That the Allies would read the abandoned plateau and the withdrawn outposts as weakness.",
@@ -293,8 +293,8 @@ var EVENTS = [
  dispute:"When Kamensky turned his brigade about: no account read gives the hour, only a sequence, after the French began to climb the heights and before or with Jurczek's attack. This event puts the turn at 09:45; his brigade's record on this map turns it in the 08:45 phase, whose timing the map keeps."},
 
 {id:"kursk", t:630, n:"Langeron's reinforcements arrive as the crest is lost", side:"al", kind:"engagement",
- p:[290,282], forms:["lang","kamensky"], cf:"C", claim:"recon",
- why:"Langeron rode back and sent troops up toward Kamensky; one account has two battalions arriving just as the position was abandoned. Which regiment, and what it lost, are not established."},
+ p:[290,282], forms:["lang","kamensky"], cf:"C", claim:"est",
+ why:"Langeron rode back and sent troops up toward Kamensky; one account has two battalions arriving just as the position was abandoned. The accounts name the Kursk regiment: Mikhailovsky-Danilevsky has Langeron bring it up too late, losing up to 1,600 men; Langeron's journal, as Sokolov quotes it, two of its battalions, half killed and half taken with their guns and colours; Schönhals has it left in reserve behind Sokolnitz and mostly taken there. The hour is this map's."},
 
 {id:"pratzeberg", t:660, n:"The Pratzeberg is firmly in French hands", side:"fr", kind:"capture",
  p:[285,289], forms:["sthilaire","legrand"], cf:"A", claim:"fact",
@@ -374,5 +374,5 @@ var TOUR = [
 {n:"The collapse", at:"ev:augezd", chapter:"collapse",
  x:"The French centre turns ninety degrees and comes down off the heights into the rear of the Allied left. A way out for them is the neck of dry ground at Augezd, under guns on ground the Allies held at dawn."},
 {n:"What it cost", at:"ph:9", chapter:null,
- x:"Allied losses are usually given as fifteen to sixteen thousand killed and wounded and twelve thousand or more taken, with about a hundred and eighty guns. French losses were near nine thousand. Everything you have watched today is a reconstruction: positions are graded A, B or C, strengths carry their ranges, and two figures on the situation line are computed rather than recorded. The sources panel says which is which."}
+ x:"The accounts put the Allied losses anywhere from about eleven thousand to more than twenty-five thousand killed, wounded and taken; the French reports count near nine thousand. Everything you have watched today is a reconstruction: positions are graded A, B or C, strengths carry their ranges, and two figures on the situation line are computed rather than recorded. The sources panel says which is which."}
 ];

@@ -127,6 +127,8 @@ var APPEARANCE_SOURCES = {
   stutterheim1806fr2: {au:"K. von Stutterheim (notes by a French officer)", ti:"La Bataille d'Austerlitz, par le général-major autrichien Stutterheim. Seconde édition, avec des notes par un officier français", pub:"Paris, Fain, Debray, Mongie, Delaunay", d:1806, kind:"primary-text", url:"https://archive.org/details/bub_gb_bLCe2qyA_D8C", ia:"bub_gb_bLCe2qyA_D8C"},
   ujezd2025: {au:"Město Újezd u Brna", ti:"Cesta přírodou: naučná stezka Újezd u Brna, stop 'Kaple sv. Antonína' (after the chronicle of church buildings, c. 1900)", pub:"municipal website, fetched 14 October 2026", d:2025, kind:"modern-web-specialist", url:"https://ujezdubrna.cz/mesto/stezka/naucna-stezka-ujezd-u-brna/bod/kaple-sv-antonina"},
   turistika_kaple: {au:"turistika.cz (user contribution)", ti:"Újezd u Brna - kaple sv. Antonína Paduánského (no source named)", pub:"tourist website, last updated 2 December 2023, fetched 14 October 2026", d:2023, kind:"modern-web-specialist", url:"https://www.turistika.cz/mista/ujezd-u-brna-kaple-sv-antonina-paduanskeho/detail"},
+  czartoryski1887: {au:"A. Czartoryski (ed. Ch. de Mazade)", ti:"Mémoires du prince Adam Czartoryski et correspondance avec l'empereur Alexandre Ier, t. I", pub:"Paris, Plon", d:1887, kind:"primary-text", url:"https://archive.org/details/mmoiresduprincea01czar", ia:"mmoiresduprincea01czar"},
+  austerlitzorg2000: {au:"Team Austerlitz (austerlitz.org)", ti:"The first cannon shot (no source named)", pub:"website, posted 4 May 2000, fetched 14 October 2026", d:2000, kind:"modern-web-specialist", url:"https://www.austerlitz.org/en/?p=36"},
   thiers1847: {au:"A. Thiers", ti:"Histoire du Consulat et de l'Empire, t. VI", pub:"Paris, Paulin", d:1847, kind:"specialist", url:"https://archive.org/details/histoireduconsul06thieuoft", ia:"histoireduconsul06thieuoft"}
 };
 
@@ -754,7 +756,7 @@ var COLOURS_CARRIED = {
     cloth:{gen:true, why:"not measured in a source read"}},
   ru_art_none: {model:{none:true, why:"no read source gives the artillery colours"}, count:{none:true, why:"not found"}, cloth:{none:true, why:"not found"}},
   at_inf: {
-    model:{v:"eine einzige Leibfahne (Standarte) aus weißem und die noch erforderliche Zahl „ordinärer“ Fahnen (Standarten) aus kaisergelben Seidenstoff", en:"one white Leib colour per regiment, the rest imperial-yellow 'ordinary' colours (the 1769 pattern, used to 1806)", src:"dolleczek1896", at:"pp. 158-159 (n169-n170)", gr:"B", lab:"fact", q:"eine einzige Leibfahne"},
+    model:{v:"eine einzige Leibfahne (Standarte) aus weißem und die noch erforderliche Zahl „ordinärer“ Fahnen (Standarten) aus kaisergelben Seidenstoff", en:"one white Leib colour per regiment, the rest imperial-yellow 'ordinary' colours (the 1769 pattern; Dolleczek's next pattern is of 1806, so that it was carried in 1805 is an inference)", src:"dolleczek1896", at:"pp. 158-159 (n169-n170); the next pattern p. 160", gr:"B", lab:"inference", q:"eine einzige Leibfahne"},
     pattern:{v:"der vorhin beschriebene schwarze Doppeladler [...] Flammenzungen-Einfassung von gelben, weißen, rothen und schwarzen Dreiecken", en:"the black double eagle on both faces of the ordinary colours (the Virgin on the Leib colour's obverse), a border of yellow, white, red and black flame triangles 16 cm wide", src:"dolleczek1896", at:"pp. 157-158", gr:"B", lab:"fact", q:"schwarze Doppeladler",
       note:"the Virgin's star halo only from 1806"},
     count:{v:"one or two per battalion", lab:"disputed", gr:"C",

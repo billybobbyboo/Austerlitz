@@ -73,10 +73,10 @@ after, computed by `tools/stage2/chronology.js`).
 - *Options per formation.* kienmayer 6,800 or 6,340 (Schönhals); lich 5,400 or 5,600 (Schönhals; moves `PLATEAU_04_RECORDED`); the IV Corps
   divisions kept or Sokolov's 22 November figures; legrand's staff as pinned or the readings' brigadiers.
 - *Recommendation.* kienmayer 6,340; lich kept; the IV Corps divisions kept until a 2 December return is read; legrand's staff the readings'.
-- *Default.* Every working figure and pin kept; every note rewritten to the readings. *Status.* Pending (K10).
+- *Default.* Every working figure and pin kept; every note rewritten to the readings. *Status.* Implemented (K10).
 
 **185. The losses lede and tour stop 9.** *Options.* (a) Attributed figures where they are read; (b) a short lede, the figures in the
-sources sheet. *Recommendation and default.* (a). *Status.* Pending (K10).
+sources sheet. *Recommendation and default.* (a). *Status.* Implemented (K10).
 
 **186. The drained count.** *Options.* (a) Both kept, attributed (Suchet's as Sokolov quotes it; the usual figures, their source not
 traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and default.* (a). *Status.* Implemented (K9).

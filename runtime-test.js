@@ -537,7 +537,8 @@ try{
     if(!nI) throw new Error("position pills: no interpolated documented position in the day");
     /* the review of b2fc7b5: an explicit track claim wins over "interp" (no datum has both, so a temporary claim on an interpolated
        documented leaf), and under "Position: interpolated" the dossier's paragraph does not say "documented in the sources" while a
-       grade-A position that is not interpolated does; heightguns's explicit "recon" brings CLAIM's own note */
+       grade-A position that is not interpolated does; an explicit claim other than its grade's brings CLAIM's own note (heightguns@8's "recon"
+       until roadmap step 4; no track claim in the data differs from its grade since, so the data no longer exercise that path) */
     { let probe=null;
       for(let t=T_MIN;t<=T_MAX&&!probe;t+=10){ setClock(t); probe=Object.keys(FORMATIONS).find(id=>FORMATIONS[id].track&&posNow(id)&&expKey(id)==="interp")||null; }
       if(!probe) throw new Error("position pills: no interpolated documented leaf to probe");
