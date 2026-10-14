@@ -25,7 +25,8 @@ a synthesizer and a completeness critic. Every reader is a machine reader: each 
 - `55dde7a` (tools): `test.js` reads a register entry's "read on" marker (the step-4 register states on each quote line what the passage was
   read on).
 - `76e626b` (records): the register, `docs/step4-evidence/readings.md` and `README.md`, below.
-- The review of `55dde7a` and `76e626b` (an independent reviewer, read-only; this commit): the register re-rendered, below.
+- `46c23cf`: the review of `55dde7a` and `76e626b` (an independent reviewer, read-only): the register re-rendered, below.
+- The step-2 register read a second time (records; this commit): below.
 
 **The register of readings (`docs/step4-evidence/readings.md`, with `proposals.md`; H-6, decision 130).** 273 entries: 210 readings by
 the six clusters' researchers and 63 counter-readings by their source skeptics (248 read on page images, 18 on page images with part of the
@@ -53,6 +54,16 @@ for step 4 (decision 136's human second reading is an owner question of this ste
   their reviews, which the register's notes cite ("proposal 3c"), are committed in `proposals.md`; the skeptics' "CRn" numbers are their
   working lists' (the README says how to find one). (10) The README states the citation limits (a claim's source must be a key of
   `APPEARANCE_SOURCES`; a negative is not a heading). The double periods on 207 status lines are gone.
+
+**The step-2 register read a second time (`docs/step2-evidence/second-reading.md`; H-17's practice, the step-2 hand-on).** Every entry of
+`docs/step2-evidence/readings.md` (§1-§9, 54) was read again on its page images, the Mikhailovsky-Danilevsky 1844 and Alombert entries
+first, by a machine second reader, and the differences and a spot check of 15 agreements read a third time by a machine adjudicator on
+fresh downloads: 52 agree, 2 differ by a letter; none was not reached. Two records corrected in place (dated): §5.2 (Mikhailovsky-Danilevsky
+1846 p. 227: "La totalité", not the OCR's "Là", read on the image; pp. 228-229 count the French guns, battalions and squadrons, though no
+strength in men) and §6.5 (the footnote of Mikhailovsky-Danilevsky 1844 p. 187: Langeron's report "отъ 25-го Ноября", not 23, now read by
+three readings; the 1846 translation's 23 kept as the disagreement; no data rests on the day). Each entry's status line says what the second
+reading found; the register's preamble says the entries were read once on 8 October and a second time, by machine readers, on 14 October.
+No person has read them a second time.
 
 **The claim model (`narrative.js`; H-6, decision 128 (b)).** A new guarded file after `analysis.js` in `build.py`'s list, as the C7 design
 skeptic's review amended the design (its blocking findings B1-B4):

@@ -1,8 +1,10 @@
 > **Roadmap step 2, reading register (`docs/ROADMAP.md`, step 2: integrity on screen).** The readings behind every text of step 2 that rests
 > on a source read (basis S): the passage quoted as printed, a translation, the locator (page, and the page image or text layer it was
 > read on), a grade, a label, what the passage settles and what it does not. Every quote below was read on the page image named, except
-> where it is marked "OCR" (read in the scan's text layer only). Each entry is **not yet second-read (H-17)**: one reading, by one
-> reader, on 8 October 2026; step 4's sourcing stage reads them again (`docs/FINAL_AUDIT.md` H-17, owner decision 136's practice).
+> where it is marked "OCR" (read in the scan's text layer only). Each entry was written as **one reading, by one reader, on 8 October
+> 2026**; on 14 October 2026 roadmap step 4 read every entry a second time on its page images and adjudicated the differences, by machine
+> readers (`second-reading.md`; `docs/FINAL_AUDIT.md` H-17's practice): each status line says what that reading found, and §5.2 and §6.5
+> are corrected in place (dated). No person has read them a second time.
 > The source keys are `appearance.js`'s `APPEARANCE_SOURCES` keys where one exists (`corr11_1863`, `stutterheim1806de`,
 > `stutterheim1806fr`, `materialien1806`, `thiebault3_1894`, `mikhailovsky1846`, `mikhailovsky1844`, `alombert4_1908`); `marbot1891`
 > is the key `docs/stage6-evidence/readings-eyewitness.md` uses for the same work (a different copy, the same pages); `tolstoy_maude` is
@@ -83,7 +85,7 @@
 - **does not settle**: which mound "la butte" is: that it is the Zuran is an inference, not stated here; where Caffarelli's bivouac
   was, and whether it is the ground no. 9535 gives Bernadotte for 07:00 on 2 December (§1.2; §13 F11); no hour for the moves; nothing
   about the hour on 2 December.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 1.2 `corr11.9535.dispositions`: the dispositions for 2 December (no. 9535, pp. 442-443)
 - **source**: no. 9535, "Dispositions générales pour la journée du 11", "Au bivouac en avant de Brünn, 10 frimaire an XIV (1er
@@ -104,7 +106,7 @@
   Bernadotte's two divisions for 07:00.
 - **does not settle**: where the bivouac was (not named; "la butte" of no. 9534 is not named here); whether the orders were carried out
   at those hours; the hour Napoleon took post on the Zuran; I Corps' position in the night (§13 F11).
-- **status**: read on the page images; not yet second-read (H-17).
+- **status**: read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 1.3 `corr11.9541.p449`: the 30th Bulletin, the order of battle (p. 449)
 - **source**: no. 9541, "30e Bulletin de la Grande Armée", "Austerlitz, 12 frimaire an XIV (3 décembre 1805)" (pp. 446-453), p. 449;
@@ -123,7 +125,7 @@
   "general reserve" (question 157).
 - **settles**: the Bulletin calls I Corps the centre, Rivaud on its left and Drouet on its right; it has the 17e légère on the Santon.
 - **does not settle**: where the centre stood or when it moved; the Bulletin is the army's own published account.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 1.4 `corr11.9541.p450`: the reserve's guns, the sunrise, the marshals (p. 450)
 - **source**: no. 9541, p. 450; image n459.
@@ -139,7 +141,7 @@
 - **settles**: the marshals were with the Emperor before the first rays of the sun; the Bulletin's forty guns served by the Guard's
   gunners with the reserve; a radiant sunrise (without the phrase "soleil d'Austerlitz").
 - **does not settle**: where the Emperor stood; any clock hour.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 1.5 `corr11.9541.p451`: the centre advances as the Russian Guard is routed (p. 451)
 - **source**: no. 9541, p. 451; image n460.
@@ -153,7 +155,7 @@
   Mikhailovsky-Danilevsky 1846 p. 229 (§5.1) for when I Corps moved.
 - **settles**: the Bulletin puts the centre's advance at the moment of the Russian Guard's rout.
 - **does not settle**: a clock hour; whether the centre had already crossed the brook.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 1.6 `corr11.9541.p452`: the twenty guns and the lake (pp. 451-452)
 - **source**: no. 9541, pp. 451-452; images n460-n461.
@@ -169,7 +171,7 @@
   Thiébault §4.8, the drained count of `data.js`'s Satschan record).
 - **settles**: the Bulletin's twenty guns and its 20,000 drowned.
 - **does not settle**: where the twenty guns stood (not at a named chapel); the number drowned.
-- **status**: read on the page images; not yet second-read (H-17).
+- **status**: read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ## 2. `stutterheim1806de` (with `stutterheim1806fr`): an Austrian officer's account, 1806
 
@@ -191,7 +193,7 @@ is a translation of the French original of the same year (its title page: "Aus d
 - **settles**: Stutterheim's night placement of I Corps behind Girschikowitz, and his "centre".
 - **does not settle**: the hour of the move (the night is that of 1-2 December by the context: the French original closes the passage
   "Voilà quelle étoit la position des deux armées dans la nuit du 1.er au 2 décembre", p. 58, view f62).
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 2.2 `stut.p49.seven`: the Allied army moves at 7 (p. 49)
 - **source**: stutterheim1806de, p. 49; image n52.
@@ -203,7 +205,7 @@ is a translation of the French original of the same year (its title page: "Aus d
   descent of the I Column (decision 125; settling it is step 4's, 125 (b)).
 - **settles**: Stutterheim's hour for the Allied army's move.
 - **does not settle**: when Dokhturov's I Column itself began to descend; the clock's basis.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 2.3 `stut.p55-56.crossing`: Bernadotte crosses at the same time as Soult's attack, toward the Blasowitz heights (pp. 55-56)
 - **source**: stutterheim1806de, pp. 55-56, images n58-n59 (https://archive.org/download/11344011bsb/page/n58.jpg,
@@ -229,7 +231,7 @@ is a translation of the French original of the same year (its title page: "Aus d
   not the Stare Vinohrady height, where the map's drawn route goes (data.js: Blasowitz [296,147], Stare Vinohrady [313,205]), is this
   register's inference; Stutterheim names no other height.
 - **does not settle**: a clock hour (none on the page); the route drawn, which is this reconstruction's.
-- **status**: read on the page images (both editions); not yet second-read (H-17).
+- **status**: read on the page images (both editions). Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 2.4 `stut.p67.liechtenstein`: Liechtenstein's cavalry between Blasowitz and Pratzen; the vineyards (p. 67)
 - **source**: stutterheim1806de, p. 67; image n70.
@@ -244,7 +246,7 @@ is a translation of the French original of the same year (its title page: "Aus d
 - **settles**: in Stutterheim, Liechtenstein covered the ground between Blasowitz and Pratzen (question 158, Liechtenstein's part); he
   names vineyards between Girschikowitz and Pratzen.
 - **does not settle**: where the vines of Stare Vinohrady were (decision 135's vineyard stays presumed); a clock hour.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 2.5 `stut.p68-70.blasowitz`: Blasowitz taken by Bernadotte's corps; the eagle; the 27th at the Santon (pp. 68-70)
 - **source**: stutterheim1806de, pp. 68-70; images n71-n73.
@@ -267,7 +269,7 @@ is a translation of the French original of the same year (its title page: "Aus d
 - **settles**: Stutterheim's attackers at Blasowitz (Bernadotte's corps, p. 68; the plan's question 158 has pp. 68-69); his eagle
   taken by the Horse Guard regiment; his 27th at the Santon.
 - **does not settle**: any clock hour; the Santon's regiment (the dated order of 1 December names the 17e légère).
-- **status**: read on the page images; not yet second-read (H-17).
+- **status**: read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 2.6 `stut.p64.rhiasky`: the Fanagoria and "Rhiasky" regiments sent to reinforce Kamensky's brigade (p. 64)
 - **source**: stutterheim1806de, p. 64, image n67 (https://archive.org/download/11344011bsb/page/n67.jpg); the French original,
@@ -293,7 +295,7 @@ is a translation of the French original of the same year (its title page: "Aus d
 - **does not settle**: whether "Rhiasky" renders Ряжскій (Ryazhsk) or Рязанскій (Ryazan): the spelling settles neither (inference; as
   readings-composition.md al.kamensky.units.stutterheim); what Kamensky's brigade itself was made of; who turned it against the French
   (§13 F13); a clock hour.
-- **status**: read on the page images (both editions); not yet second-read (H-17).
+- **status**: read on the page images (both editions). Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 2.7 `stut.p56-57.blasowitz-guard`: the Grand Duke has Blasowitz occupied by the Guard's jäger battalion; Liechtenstein arrives "in dem nähmlichen Augenblicke" (pp. 56-57)
 - **source**: stutterheim1806de, pp. 56-57, images n59-n60 (https://archive.org/download/11344011bsb/page/n59.jpg,
@@ -319,7 +321,7 @@ is a translation of the French original of the same year (its title page: "Aus d
 - **settles**: in Stutterheim, the defenders of Blasowitz are the Russian Guard's (its jäger battalion; "er" of p. 68, §2.5, is the
   Grand Duke); Liechtenstein arrives as the village is occupied (question 158).
 - **does not settle**: a clock hour ("zur bestimmten Stunde" names none).
-- **status**: read on the page images; not yet second-read (H-17).
+- **status**: read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ## 3. `materialien1806`: the German translation with the editor's additions, 1806
 
@@ -333,7 +335,7 @@ is a translation of the French original of the same year (its title page: "Aus d
 - **grade**: A as Stutterheim's text, translated; **not an independent witness**. **label**: fact (the same statement as §2.3).
 - **settles**: nothing beyond §2.3 (the same account).
 - **does not settle**: as §2.3.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 3.2 `mat.p99.ryazan`: Langeron's column list, "Rjäsan" (p. 99)
 - **source**: materialien1806, p. 99 (the editor's list of the Russian regiments by column); image n108
@@ -355,7 +357,7 @@ is a translation of the French original of the same year (its title page: "Aus d
   Musquetierregiment Rhiäsky, die als Reserve auf der Anhöhe geblieben waren, auf welcher diese Co- / lonne die Nacht zugebracht hatte,
   erhielten von dem Obergeneral den Befehl die Brigade des Generals Kamensky zu verstärken.", pp. 58-59): the Materialien gives both
   spellings.
-- **status**: p. 99 read on image n108 and pp. 58-59 on images n67-n68; not yet second-read (H-17).
+- **status**: p. 99 read on image n108 and pp. 58-59 on images n67-n68. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees but for a minor difference (diacritic of 'Rhiäsky' only); adjudicated: record stands.
 
 ### 3.3 `mat.p100-101.santon`: the editor's note on the Santon, the 17th (Zusatz 6, pp. 100-101)
 - **source**: materialien1806, Zusatz 6, pp. 100-101; image n110 (p. 101); p. 100 OCR.
@@ -371,7 +373,7 @@ is a translation of the French original of the same year (its title page: "Aus d
 - **settles**: the editor's 17th, placed under Suchet's division's height.
 - **does not settle**: the note is anchored at Suchet's division in the translation (p. 35, OCR: "mit den Divisionen Suchet 6)"), while
   the translation itself keeps Stutterheim's "27sten Infanterie-Regiments" at the Santon (p. 65, OCR); see §13 F12.
-- **status**: p. 101 read on the page image, p. 100 in the OCR; not yet second-read (H-17).
+- **status**: p. 101 read on the page image, p. 100 in the OCR. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 3.4 `mat.p110-112.kutuzov`: Kutuzov's official report, translated: "das Fanagorskische und Rjäsansche Regiment" given to Kamensky (Zusatz 11, pp. 110-112)
 - **source**: materialien1806, Zusatz 11, pp. 110-112; images n119 (p. 110, https://archive.org/download/10807964bsb/page/n119.jpg) and
@@ -400,7 +402,7 @@ is a translation of the French original of the same year (its title page: "Aus d
   three (the report's hour).
 - **does not settle**: the Russian text's spelling (Ряжскій or Рязанскій); what Kamensky's brigade was before Kutuzov's order; the hour
   of the order.
-- **status**: pp. 110 and 112 read on the page images; not yet second-read (H-17).
+- **status**: pp. 110 and 112 read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ## 4. `thiebault3_1894`: a brigade commander's memoir, published 1894
 
@@ -417,7 +419,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
 - **grade**: B (a participant's memoir, published 1894). **label**: fact (what Thiébault says, of the days after 29 November).
 - **settles**: Thiébault's placing of Bernadotte's two divisions after the retreat (one at Girzikowitz, one at Schlapanitz).
 - **does not settle**: their place on the night of 1-2 December (§13 F11); which mound the "monticule" is.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 4.2 `thieb.p456-458.twenty-minutes`: the twenty minutes and the quarter of an hour (pp. 456-458)
 - **source**: pp. 456-458; images n467-n469.
@@ -445,7 +447,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   only when an aide reported the heights abandoned, "(un peu prématurément)"; he sets it "au jour naissant", with day at eight (p. 456).
 - **does not settle**: a clock hour for the exchange on these pages; but see §4.10 (p. 504: an aide's report at half past eight, which
   this register identifies with this one by inference) and §13 F1.
-- **status**: read on the page images; not yet second-read (H-17).
+- **status**: read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 4.3 `thieb.p460.friant-legrand`: Friant at about nine; "40 ou 50,000 Russes" (p. 460)
 - **source**: p. 460; image n471.
@@ -461,7 +463,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
 - **settles**: Thiébault's "vers neuf heures" for Friant's reinforcement and his "40 ou 50,000 Russes" against Legrand's defenders.
 - **does not settle**: the davout event's "About 08:00" (handed to step 4); the ratio "roughly six times" is a derived reading of these
   figures, not Thiébault's words.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 4.4 `thieb.p461.sun`: "le « soleil d'Austerlitz »" (p. 461)
 - **source**: p. 461; image n472.
@@ -483,12 +485,12 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   and Sokolnitz, lights Legrand's and Friant's withdrawal and then ("Ce même soleil") the climb onto the Pratzen (H-9, C22; the Basis
   entry's wording since the review of C19-C23).
 - **does not settle**: a clock hour for the climb; who first used the phrase.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 4.5 `thieb.p457.fog`: the fog in the valleys (p. 457)
 - See §4.2: "un brouillard qui couvrait les vallées et empêchait de voir nos troupes qui s'y trouvaient comme blotties" (p. 457, image
   n468). **grade**: B. **label**: fact (what Thiébault says). **settles**: Thiébault's fog hiding the French in the valleys before the
-  attack (C22's lightNotes). **does not settle**: a clock hour. **status**: read on the page image; not yet second-read (H-17).
+  attack (C22's lightNotes). **does not settle**: a clock hour. **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 4.6 `thieb.p462.blasowitz`: "La 1re division du cinquième corps avait disputé Blazowitz" (p. 462)
 - **source**: p. 462; image n473.
@@ -500,7 +502,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   §2.5; both corps in Mikhailovsky-Danilevsky 1846 p. 255, §5.6).
 - **settles**: Thiébault's attacker at Blasowitz, a division of Lannes's V Corps (question 158).
 - **does not settle**: which division he means by "1re"; the hour.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 4.7 `thieb.p463-464.right-wheel`: Lannes, reinforced by "la 1re division du corps du maréchal Bernadotte" (pp. 463-464)
 - **source**: pp. 463-464; images n474-n475 (p. 464 OCR).
@@ -518,7 +520,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
 - **does not settle**: whether that is Drouet's or Rivaud's division.
 - **status**: p. 463 read on the page image, p. 464 in the OCR; p. 464 read on its image n475 (headed "464") in the review of C24-C26,
   8 October 2026: the page turn falls at "maré- / chal", so the Guard's "qui n'eurent pas un coup de fusil à tirer" is on p. 464; not yet
-  second-read (H-17).
+  second-read (H-17). Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 4.8 `thieb.p466.ice`: "trois à quatre mille" drowned; 24 pieces of the Guard; I Corps' 2nd division took no part (p. 466)
 - **source**: p. 466; image n477.
@@ -537,7 +539,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
 - **settles**: Thiébault's "trois à quatre mille" drowned and his 24 pieces of the Guard breaking the ice (C10, C11); his 2nd division of
   I Corps that took no part (§13 F11's I Corps lead; question 157).
 - **does not settle**: where the 24 pieces stood (he does not place them at a chapel); which division is "the 2nd".
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 4.9 `thieb.p469.morand`: Morand alone with the 10e léger against Kamensky's brigade (p. 469)
 - **source**: p. 469; image n480.
@@ -552,7 +554,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
 - **settles**: Thiébault's sequence: Kamensky's brigade is against Morand after his own brigade has cleared the village (pp. 468-469).
 - **does not settle**: a clock hour for Kamensky's turn (the dispute of decision 125 (a): the map's 08:45 record against the event's c.
   09:45; settling it is step 4's).
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 4.10 `thieb.p504.half-past-eight`: an aide-de-camp at half past eight; the Fanagoria and "Riajski" regiments beside Kamensky's brigade; the boast of the 2nd division of I Corps (p. 504)
 - **source**: p. 504; image n517 (https://archive.org/download/mmoires03thieuoft/page/n517.jpg).
@@ -583,7 +585,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   p. 504 and the aide of p. 458 are one (no page states it); whether "Riajski" renders Ряжскій (Ryazhsk: the reading of the spelling is an
   inference). See §13 F1, F2.
 - **status**: read on the page image (both passages; the boast was read in the OCR at first and on image n517 for the review of this
-  register); not yet second-read (H-17).
+  register). Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 4.11 `thieb.p474.reinforced`: Kamensky's brigade "renforcée par les régiments de Fanagorski et Riajski" (p. 474)
 - **source**: p. 474; image n485 (https://archive.org/download/mmoires03thieuoft/page/n485.jpg).
@@ -598,7 +600,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   translation of him (p. 58, §3.2).
 - **settles**: in Thiébault, the two regiments reinforce Kamensky's brigade; they are not its own regiments.
 - **does not settle**: what the brigade itself was made of; a clock hour; whether "Riajski" renders Ряжскій (inference, as §4.10).
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ## 5. `mikhailovsky1846`: the official Russian history in French, 1846
 
@@ -614,18 +616,21 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   at the time of Soult's attack, §2.3).
 - **settles**: Mikhailovsky-Danilevsky's night crossing of I Corps (the other side kept in drouet@3's note, C7).
 - **does not settle**: where on the far bank I Corps stood at dawn; the sources of this passage are not cited on the page.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 5.2 `md1846.p227-230.strengths`: no Allied estimate of the French strength (pp. 227-230)
 - **source**: pp. 227-230 (the item's page index n251-n254); searched in the text layer; p. 229 also read on its image (§5.1).
-- **quote** (p. 227): "Là totalité de notre armée s'élevait à peu près à 80,000 hommes." (OCR; "Là" as OCR'd). Pp. 228-229 list the
-  French corps by divisions without numbers.
+- **quote** (p. 227): "La totalité de notre armée s'élevait à peu près à 80,000 hommes." Pp. 228-229 list the French corps by divisions,
+  with "une batterie fortifiée de dix-huit pièces de canon" on the Santon, "les dix bataillons des grenadiers d'Oudinot" and the Guard "de 10
+  bataillons et de 14 escadrons": no strength in men and no French total on pp. 227-230. **Corrected 14 October 2026** (roadmap step 4's
+  adjudicated second reading, read on the page images n251-n254): the quote was "Là [...]" as the OCR gave it ("La" on the image: the mark
+  is an ink speck), and pp. 228-229 were said to list the corps "without numbers".
 - **translation**: "The whole of our army amounted to about 80,000 men."
 - **grade**: B. **label**: fact (the Allied figure); the absence of a French estimate is a negative finding.
 - **settles**: these pages give the Allied army about 80,000 and no figure for the French (C12, question 151: "about 50,000 by the Allied
   estimate" has no support here).
 - **does not settle**: whether the Allied staff made such an estimate elsewhere.
-- **status**: searched in the text layer (OCR); not yet second-read (H-17).
+- **status**: searched in the text layer (OCR). Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees but for a minor difference (the OCR's 'Là' is probably a misprint of 'La'; not resolved on the image); adjudicated: record needs correction.
 
 ### 5.3 `md1846.p233.uvarov`: Uvarov's three regiments sent to Bagration's left the same evening (p. 233)
 - **source**: p. 233; image n257.
@@ -638,7 +643,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   `docs/stage6-evidence/readings-composition.md`, al.lich.oob.schoenhals and al.uvarov.transfer.md).
 - **settles**: Mikhailovsky-Danilevsky's transfer of Uvarov's regiments the evening before (C9, lich.staff).
 - **does not settle**: the strength left with Liechtenstein.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 5.4 `md1846.p238-239.eight`: the columns leave at eight; Napoleon on a height near Schlapanitz; Bernadotte and Soult ordered onto the heights (pp. 238-239)
 - **source**: pp. 238-239; images n262 and n265 (the plate no. 7 between).
@@ -658,7 +663,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
 - **settles**: Mikhailovsky-Danilevsky has Bernadotte and Soult ordered onto the Pratzen together (question 157's evidence for "centre");
   the marshals summoned to Napoleon on a height near Schlapanitz.
 - **does not settle**: the hour Napoleon took post; which height (the Russian has "курганъ", a barrow, §6.3).
-- **status**: read on the page images; not yet second-read (H-17).
+- **status**: read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 5.5 `md1846.p241-242.kamensky`: Kamensky with "Riajsk"; half past eight is Dokhturov's attack on Telnitz (pp. 241-242)
 - **source**: pp. 241-242; images n267-n268. (p. 224, OCR, lists in Langeron's column "Wiborg", "Perro" [Perm], "Koursk", "Riajsk" and the
@@ -674,7 +679,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
 - **settles**: the 1846 translation's "Riajsk" with Kamensky; its half past eight is Dokhturov's attack on Telnitz (after Kienmayer's
   attacks, p. 240), not the start of the I Column's descent.
 - **does not settle**: when the I Column began to descend (decision 125 (a)'s first dispute).
-- **status**: read on the page images; not yet second-read (H-17).
+- **status**: read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 5.6 `md1846.p251-257.kamensky-kursk-blasowitz`: Kamensky turns; the Kursk regiment; Blasowitz (pp. 251-257)
 - **source**: pp. 251-257; images n277 (p. 251), n279-n281 (pp. 253-255), n283 (p. 257); p. 252 and p. 256 in the OCR.
@@ -709,7 +714,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   and Lannes's Caffarelli and Kellermann toward Blasowitz (p. 255; the plan's question 158 has "p. 256"); Langeron's reinforcement as the
   Kursk regiment (pp. 253-254).
 - **does not settle**: any clock hour for Kamensky's turn; who took Blasowitz (p. 257 says "les Français").
-- **status**: pp. 251, 253-255, 257 read on the page images; not yet second-read (H-17).
+- **status**: pp. 251, 253-255, 257 read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 5.7 `md1846.p256-257.blasowitz-guard`: the Guard's jäger battalion in Blasowitz, reinforced by a Semenovsky battalion; Liechtenstein only after the village was lost (pp. 256-257)
 - **source**: pp. 256-257; images n282 (p. 256) and n283 (p. 257) (https://archive.org/download/relationdelacam00dangoog/page/n282.jpg,
@@ -734,7 +739,7 @@ Thiébault says he printed "observations rectificatives" in Paris in 1806 (p. 46
   battalion), Bagration being only informed; Liechtenstein appears only after the village is lost (question 158).
 - **does not settle**: which French troops took the village (p. 257: "les Français"; p. 255 has Napoleon order part of Rivaud's division
   and Lannes's Caffarelli and Kellermann toward it, §5.6); a clock hour.
-- **status**: read on the page images; not yet second-read (H-17).
+- **status**: read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ## 6. `mikhailovsky1844`: the Russian original, 1844
 
@@ -746,7 +751,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **translation**: "Description of the first war of the Emperor Alexander with Napoleon, in the year 1805, composed by Imperial command by
   Lieutenant-General and Member of the War Council Mikhailovsky-Danilevsky. With nine plans and maps. St Petersburg, 1844."
 - **settles**: the work and its date; the 1846 French "Relation" (§5) is its translation (one witness, two languages).
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 6.2 `md1844.p167.columns`: Langeron's column, "Ряжскій" (p. 167, k = 176)
 - **quote**: "2-я колонна, Графа Ланжерона. Полки: 8-й егерскій, Мушкетерскіе: Выборгскій, Пермскій, Курскій, Ряжскій, Фанагорійскій
@@ -756,7 +761,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **grade**: B. **label**: disputed (Ryazan in the Materialien, §3.2).
 - **settles**: the Russian original's Ryazhsk in Langeron's column. Noted in passing: on the same page Kienmayer's detachment has "3 полка
   слабыхъ Венгерской конницы" (3 weak regiments of Hungarian cavalry) where the 1846 translation p. 224 has "2 faibles régiments" (§13 F9).
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 6.3 `md1844.p174-177.uvarov-eight-kurgan`: Uvarov's regiments in the evening (p. 174, k = 184); the eighth hour; the barrow by Schlapanitz (p. 177, k = 188)
 - **quote** (p. 174): "Для усиленія лѣваго крыла его, послали ему ввечеру изъ колонны Князя Лихтенштейна, порученные Генералъ-Адъютанту
@@ -774,7 +779,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **settles**: the original's Uvarov transfer "ввечеру" (in the evening); its hour for the columns' setting out, between seven and eight;
   Napoleon on a "курганъ" (barrow) by Schlapanitz with the marshals summoned before dawn.
 - **does not settle**: that the barrow is the Zuran (inference, not stated); the hour he took post; the clock's basis. See §13 F3, F4.
-- **status**: read on the page images; not yet second-read (H-17).
+- **status**: read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 6.4 `md1844.p179.half-past-eight`: Kamensky "съ полками Ряжскимъ мушкетерскимъ и Фанагорійскимъ гренадерскимъ"; Langeron at the Goldbach at half past eight (p. 179, k = 190)
 - **quote**: "въ замкѣ слѣдовалъ Графъ Каменскій 1-й, съ полками Ряжскимъ мушкетерскимъ и Фанагорійскимъ гренадерскимъ. Въ половинѣ 9-го,
@@ -787,28 +792,30 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **grade**: B. **label**: fact (what it says); Ryazhsk disputed (§3.2).
 - **settles**: the original's Ryazhsk with Kamensky; Langeron at the Goldbach at half past eight.
 - **does not settle**: the source of the half past eight (the page's footnote is anchored elsewhere).
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 6.5 `md1844.p186-187.kamensky`: Kamensky's turn, citing Langeron's report no. 867 (pp. 186-187, k = 197-198)
 - **quote**: (p. 186) "Кутузовъ поѣхалъ къ лѣвому крылу четвертой колонны. Подымаясь на гору, онъ нашелъ тамъ бригаду Графа / (p. 187)
   Каменскаго 1-го, полки Фанагорійскій и Ряжскій, очутившіеся на горѣ по слѣдующему случаю: идучи въ замкѣ колонны Графа Ланжерона, къ
   Сокольницу, Графъ Каменскій увидѣлъ вправо Французовъ, входившихъ на Праценскія высоты. Извѣстя о томъ Графа Ланжерона, онъ остановилъ
   бригаду, построилъ ее отвѣсно противъ праваго крыла Французовъ, и атаковалъ, желая помочь 4-й колоннѣ. (*)" Footnote: "(*) Донесеніе
-  Графа Ланжерона Кутузову, отъ 23-го Ноября, № 867."
+  Графа Ланжерона Кутузову, отъ 25-го Ноября, № 867."
 - **translation**: "Kutuzov rode to the left wing of the fourth column. Climbing the hill, he found there the brigade of Count Kamensky I,
   the Fanagoria and Ryazhsk regiments, which had come to be on the hill as follows: marching at the rear of Count Langeron's column toward
   Sokolnitz, Count Kamensky saw on his right the French climbing onto the Pratzen heights. Having informed Count Langeron, he halted the
   brigade, formed it perpendicular against the French right wing, and attacked, wishing to help the 4th column." (Footnote: "Count
-  Langeron's report to Kutuzov of 23 November, no. 867.")
-- **grade**: B (citing a report of 23 November old style, 5 December new style: the conversion is derived). **label**: fact (what it
+  Langeron's report to Kutuzov of 25 November, no. 867.")
+- **grade**: B (citing a report of 25 November old style, 7 December new style: the conversion is derived). **label**: fact (what it
   says); Ryazhsk disputed (§3.2, §3.4); the brigade's make-up and who turned it disputed (§2.6, §3.4, §4.11; §13 F13).
 - **settles**: the original's Ryazhsk, citing Langeron's report no. 867; the sequence (Kamensky sees the climb, warns Langeron, attacks).
 - **does not settle**: a clock hour; the footnote's day is printed in a bold numeral read as 23 (it could be read 25; the 1846 translation,
   §5.6, has 23). **Corrected by the second reading (§6.8):** the second digit has a flat top with a hooked left end, like the
   footnote-size "5" in "5-й ... егерскіе" on p. 144 and unlike the round-topped "3" of "30-го Ноября" in p. 188's footnote; the hOCR reads
   "25". The second reader reads "отъ 25-го Ноября", 25 November (old style), with moderate confidence; the day is not settled (23 in the
-  1846 translation), and it does not bear on question 153.
-- **status**: read on the page images; not yet second-read (H-17).
+  1846 translation), and it does not bear on question 153. **Corrected 14 October 2026** (roadmap step 4's second reading and its
+  adjudicator, both reading 25 on the image k = 198): the quote, the translation and the grade now give 25, the day read by three readings;
+  the 1846 translation's 23 (§5.6) is kept as the disagreement.
+- **status**: read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees; adjudicated: record needs correction.
 
 ### 6.6 `md1844.p256-257.tolstoy-corps`: the Ryazan regiment with Tolstoy's corps in Swedish Pomerania (pp. 256-257, k = 269-270)
 - **quote**: (p. 256) "корпусъ Графа Толстаго отправился моремъ изъ Кронштата и Ревеля въ Шведскую Померанію. Въ составѣ его были полки
@@ -823,7 +830,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **settles**: in this history, the Ryazan musketeer regiment was in Tolstoy's corps sent to Swedish Pomerania (question 153's case for
   Ryazhsk at Austerlitz).
 - **does not settle**: whether part of the Ryazan regiment could have been elsewhere; question 153 stays with the owner.
-- **status**: read on the page images; not yet second-read (H-17).
+- **status**: read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 6.7 `md1844.ocr`: further occurrences, found in the text layer only
 - "Ряжск" also occurs in the OCR on pp. 144 (k = 152: in a footnote's list of musketeer regiments, its heading not read), 188, 189, 198 and
@@ -832,8 +839,8 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
   September) and p. 275 (k = 288: a Flügel-Adjutant Shepelev bringing news of Austerlitz); not in the battle chapter. OCR only.
 - "Уваров" occurs on pp. 174, 196, 197, 205, 221 (OCR); p. 174 is read in §6.3.
 - "Гладков" (Gladkov) is not found in the OCR of the whole volume (a negative in a text layer: a word the OCR misread would be missed).
-- **status**: OCR only; not yet second-read (H-17). The "Ряжск" pages 144, 188, 189, 198 and 205 have since been read on their images in
-  the second reading (§6.8).
+- **status**: OCR only (8 October 2026). The "Ряжск" pages 144, 188, 189, 198 and 205 have since been read on their images in
+  the second reading (§6.8). Second-read on its page image + hOCR text by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 6.8 `md1844.second-reading`: Ryazhsk with Kamensky, a second reading of the page images (question 153)
 - **source**: the same and only archive.org scan, `1805-.-bmk-brz` (archive.org advancedsearch finds no other copy of the 1844 work), its
@@ -876,7 +883,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
   Materialien's and Duffy's reading (`data.js` kamensky.strengthNote; `appearance.js` COMPOSITION.kamensky).
 - **does not settle**: the historical question against the other witnesses; this is a second reading of the same and only scan, not of a
   second copy.
-- **status**: second-read on the page images (H-17's practice), 8 October 2026; the working notes are outside the repository.
+- **status**: second-read on the page images (H-17's practice), 8 October 2026; the working notes are outside the repository. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees; adjudicated: record stands.
 
 ## 7. `alombert4_1908`: the French returns of October 1805
 
@@ -885,7 +892,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **quote**: "Grande Armée à l'époque du 6 brumaire an XIV."
 - **translation**: "The Grande Armée as at 6 brumaire year XIV" (28 October 1805; the conversion is derived).
 - **grade**: A for its own date. **label**: fact.
-- **status**: OCR; not yet second-read (H-17).
+- **status**: OCR. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 7.2 `alo.p716-717.i-corps`: I Corps on 28 October: Drouet the 1st division, Rivaud the 2nd (pp. 716-717)
 - **source**: pp. 716-717; images n724-n725.
@@ -898,7 +905,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **grade**: A for 28 October 1805; B for 2 December. **label**: disputed (the numbering differs on 26 October, §7.5).
 - **settles**: on 28 October Drouet's division is the 1st and Rivaud's the 2nd of I Corps (C9).
 - **does not settle**: their numbers on 2 December (neither return is of that day).
-- **status**: read on the page images; not yet second-read (H-17).
+- **status**: read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 7.3 `alo.p732.suchet`: Suchet's division the 3rd of V Corps, with the 17e légère (p. 732)
 - **source**: p. 732; image n740.
@@ -909,7 +916,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **grade**: A for 28 October 1805; B for 2 December. **label**: fact.
 - **settles**: on 28 October the 17e légère belongs to Suchet's division, numbered the 3rd of V Corps (C13; question 155).
 - **does not settle**: the division's number on 2 December.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 7.4 `alo.p755-756.v-corps`: V Corps on 26 October: the grenadier division's artillery; Suchet the 3rd division (pp. 755-756)
 - **source**: pp. 755-756; images n760-n761.
@@ -927,7 +934,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
   "Gazan", read in the review of C24-C26), so the map's former "2e" for Suchet has no support in this return.
 - **does not settle**: the artillery with the grenadiers on 2 December; the division numbers on 2 December (Gazan's later detachment to
   Mortier is not read here, so the number of Suchet's division on 2 December stays open).
-- **status**: read on the page images; not yet second-read (H-17).
+- **status**: read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 7.5 `alo.p762.i-corps`: I Corps on 26 October: Pacthod's 1st division, Drouet's 2nd, Kellermann's advance guard with the 27e légère (p. 762)
 - **source**: p. 762; image n766.
@@ -949,7 +956,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **settles**: on 26 October Drouet's division is the 2nd, with the 94e, 95e and two hussar regiments; the 27e légère is in Kellermann's
   advance-guard division; the 1st division (the 8e and 45e, the 54e detached) is under Pacthod (C9's Rivaud and Drouet notes).
 - **does not settle**: the numbers on 2 December.
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 7.6 `alo.p69.caffarelli`: Caffarelli replaces the wounded Bisson at the head of his division (p. 69)
 - **source**: p. 69 (Introduction, chapter IX, "Journée du 2 novembre", which begins on p. 68); image n78
@@ -965,7 +972,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
   number the map's "1re Div., V Corps" left unsaid).
 - **does not settle**: the division's number or attachment on 2 December (the map's "with V Corps" is its staff line's "Attached from III
   Corps for the battle").
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ## 8. `marbot1891`: an aide-de-camp's memoir, published 1891 (the 27th edition read)
 
@@ -976,7 +983,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **translation**: "There was no moon, and the darkness of the night was increased by a thick fog that made marching very difficult."
 - **grade**: B. **label**: disputed (Mikhailovsky-Danilevsky 1846 p. 235: the moon showed several times; Thiébault p. 456: a clear night;
   §13 F7).
-- **status**: OCR; not yet second-read (H-17).
+- **status**: OCR. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 8.2 `marbot.p260.centre-sun`: "le centre, formé par les troupes des maréchaux Soult et Bernadotte"; "ce brillant soleil d'Austerlitz" (p. 260)
 - **source**: p. 260; image n279 (https://archive.org/download/mmoiresdugn01marbuoft/page/n279.jpg). (The critic's item 1.)
@@ -993,7 +1000,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **settles**: Marbot's centre of Soult's and Bernadotte's troops, hidden by fog in the Goldbach ravine (question 157's evidence); his
   "soleil d'Austerlitz" (italic in the print) lighting the climb toward Pratzen, the sun Napoleon liked to recall (C22).
 - **does not settle**: a clock hour; that I Corps climbed the Pratzen (Marbot then names only Soult taking the plateau).
-- **status**: read on the page image; not yet second-read (H-17).
+- **status**: read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 8.3 `marbot.p262-263.ice`: the ice broken by the Guard's artillery; thousands sinking (pp. 262-263)
 - **source**: pp. 262-263; image n282 (p. 263), p. 262 OCR.
@@ -1011,7 +1018,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **settles**: Marbot's thousands drowned when the Guard's artillery broke the ice (C11, question 150).
 - **does not settle**: a number (his "cinq ou six mille" are those on the ice; "la plus grande partie" of them drowned); where the guns
   stood.
-- **status**: p. 263 read on the page image; not yet second-read (H-17).
+- **status**: p. 263 read on the page image. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ### 8.4 `marbot.p259-260.blasiowitz`: Lannes drives the enemy back across the Olmütz road "jusqu'à Blasiowitz" (pp. 259-260)
 - **source**: pp. 259-260; images n278 (p. 259, its last line) and n279 (p. 260, its first lines)
@@ -1031,7 +1038,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
   Lannes toward Blasowitz.
 - **does not settle**: who held or took the village (Marbot names no defenders, so the defenders' "three accounts read", §2.7, §5.7,
   stand); a clock hour.
-- **status**: read on the page images; not yet second-read (H-17).
+- **status**: read on the page images. Second-read on its page image by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ## 9. `tolstoy_maude`: War and Peace, Book Three, chapter XVIII
 
@@ -1042,7 +1049,7 @@ Read on the page images (IIIF, k = the hOCR page index); the hOCR text layer was
 - **grade**: not graded (a novel; not a source for the event). **label**: fact (what the novel says).
 - **settles**: the novel's scene has some forty men on the ice, not a mass drowning: the attribution "the mass drowning is propaganda that
   Tolstoy later made permanent" (`data.js` FEATURES Satschan story) has no support in this text (C11).
-- **status**: read in the text; not yet second-read (H-17).
+- **status**: read in the text. Second-read on its text by a machine reader, 14 October 2026 (roadmap step 4, `second-reading.md`): agrees.
 
 ## 10. Searched and not found
 
