@@ -1,17 +1,19 @@
 # The appearance table, read a second time (roadmap step 4; `docs/FINAL_AUDIT.md` H-17; decision 136)
 
 Every quote of the appearance table that H-17 counted as read once (131 items: the dress classes, the compositions, the colours carried and the
-standard's measures, `appearance.js`) read again on its page images on 14 October 2026, in roadmap step 4, by a second reader, in four batches
+standard's measures, `appearance.js`) read again, on its page images where they could be reached, on 14 October 2026, in roadmap step 4, by a second reader, in four batches
 (C8a1, C8a2, C8b1, C8b2), and every disagreement, every item the second reader could not reach and a spot check of the agreements read a third
 time by an adjudicator who downloaded the images afresh. **Both readers were machine readers.** This is a machine second reading, not the human
 second reading of the A-graded quotes that decision 136 asks for: that reading stays open for the owner (15 of the 131 items are graded A; owner question 189).
 The Mikhailovsky-Danilevsky 1844 and Alombert page images, which the task put first, are the step-2 register's (`docs/step2-evidence/second-reading.md`).
 
 **Result.** 131 items: agreement 86 yes, 28 not reached, 17 minor. Adjudicated: 30 cannot verify, 11 record stands, 14 record needs correction.
-No quote was found to be absent from its page. 14 records needed correction (a locator, a date, a gloss, a label or a diacritic); each is
+No quote that could be read was found absent from its page (30 could not be verified). 14 records needed correction (a locator, a date, a gloss, a label or a diacritic); each is
 applied in `appearance.js` in this commit and listed below with what was and what is. What could not be verified is the items the second
-reader could not reach (the 1805 Schematismus on Hungaricana and Martinet's plates on Gallica returned HTTP 403, and no other scan of either was
-found); their records stand as read once, which H-17 already says.
+reader could not reach (the 1805 Schematismus on Hungaricana, and Martinet's plates, Martinien and Regnault on Gallica, returned HTTP 403, and no
+other scan was found), the two Barrès items (read on a modern re-typeset copy, not the 1923 printing, so on their text, not a page image,
+whatever the table below records) and the four items of the 1803 regulation (read only on Berriat's reprint of 1812, the named Magimel
+print not reached); their records stand as read once, which H-17 already says.
 
 **What stays as it was.** The drawn values: no colour, class, count or shape the table draws changes. One class question is the owner's: the
 Russian uhlans' and the Guard hussars' "синій" (blue) is drawn in the class "dark blue", while the author writes "темносиній" where he means dark
@@ -19,7 +21,7 @@ blue; the glosses now say "blue" and each record names the class's convention in
 
 ## The corrections applied
 
-| batch | record | the adjudicator's correction (applied as written, unless the note says otherwise) |
+| batch | record | the adjudicator's correction (applied as written, unless a note below says otherwise) |
 |---|---|---|
 | C8a1 | `COLOURS_CARRIED.ru_inf.count` | en: 'two per battalion (in first battalions one white and one coloured)' -> 'two per battalion' (the parenthesis is not on p. 80; the order names no cloth colour; keep it only with its own source and locator). Recommended also: v 'по два знамени въ каждомъ баталіонѣ' (not printed; a normalised paraphrase that reads as a quotation) -> 'на каждый баталіонъ по два знамя' (the printed words). q, at, n 2 per bn stand. |
 | C8a2 | `DRESS.ru_jager.coat` | en: 'the musketeer cut, light green (changed to dark green only on 1 November 1807)' -> 'the musketeer cut, light green (changed to dark green only on 7 November 1807)'. v, q, c 'light green' and at stand (quote minor: свѣтло-/зеленый closed up). |
@@ -38,8 +40,27 @@ blue; the glosses now say "blue" and each record names the class's convention in
 
 Note on `COLOURS_CARRIED.ru_inf.count`: the gloss "(in first battalions one white and one coloured)" is not on the order's page; it is
 Viskovatov's (`viskovatov17_1901`, p. 32; `readings-ru-colours.md`, `ru.col.1802.number`), so it moves to the record's note with its own
-source and locator, as the adjudicator allows, rather than being dropped. `COLOURS_CARRIED.ru_guard_inf.count` cites the same order and takes
+source and locator, as the adjudicator allows, rather than being dropped. The record's former `v` was Viskovatov's words (vol. 17,
+p. 32), not the order's that the record cites, which is why the printed words of the order replace it. `COLOURS_CARRIED.ru_guard_inf.count` cites the same order and takes
 the same printed words in its `v`.
+
+Note on `DRESS.fr_carabinier.cuirass` side 0: the correction is applied as an English paraphrase of what the adjudicator quotes (the French
+words and "prices of 1835" stay in the adjudication). `COLOURS_CARRIED.ru_guard_inf.model` stays "disputed", although its second side is now
+labelled an inference.
+
+## Open items the reading found (for the owner)
+
+- **The Szekler hussars' colour (the adjudicator's priority; question 195).** `DRESS.at_hussar_szekler.coat` and `.legwear` (A, drawn
+  cornflower blue) rest on one reading of the 1805 Schematismus, p. 297, which could not be reached again. In the 1813 edition, read on its
+  images, the record's words "kornblumenblaue Pelze, Dollmans und Hosen" stand in Palatinal Nr. 12's box, the Szekler Nr. 11's reading
+  "dunkelblaue": the 1805 page must be read with its neighbours. Each record now carries a note saying so (the review's fixes of `3dafee8`).
+- **The Guard grenadiers' dress of 1805.** Perrot's pp. 209-210 describe the Garde des consuls of 1800; at the imperial formation he names
+  only the plate, the buttons and the giberne as changed (p. 212). `DRESS.fr_guard_gren.coat`, `.facings` and `.legwear` are relabelled
+  "inference" (were "fact"), with a note (the review's fixes of `3dafee8`); the drawn values are unchanged.
+- **The shabraques' "синіе".** `DRESS` of the Russian Guard horse records "чепраки и чушки синіе" glossed "dark-blue": the gloss is now "blue"
+  with the same note as the uhlans' (question 194).
+- **The uhlan cap's class.** `DRESS.ru_uhlan.head`'s drawn class "czapka" is an inference (its note): its label is now "inference" (was
+  "fact").
 
 The 6B registers in this directory (`readings-*.md`) keep their first readings as they were written; where this file corrects a record, this
 file is the later reading (among them `readings-ru-uniforms.md`'s "1 November 1807", read on the text layer there and on the page image here as

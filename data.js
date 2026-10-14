@@ -91,7 +91,7 @@ var PHASES = [
   cam:[-75,38,42,7,8,12], mist:0.05 },
 
 { id:5, t0:630, t1:675, clock:"10:30 - 11:15", label:"Olmutz road", title:"The northern battle decided",
-  lede:"Liechtenstein's and Uvarov's horse charge the French cavalry screen and Murat answers with Nansouty's and d'Hautpoul's cuirassiers. The Santon and its eighteen guns hold the flank, Blasowitz falls, and Bagration is levered away from the rest of the Allied army. On the plateau, Saint-Hilaire's brigades carry that part of the Pratzen heights with their own charge, as Thiebault tells it, and Schönhals has Soult send Levasseur's brigade to support their right.",
+  lede:"Liechtenstein's and Uvarov's horse charge the French cavalry screen and Murat answers with Nansouty's and d'Hautpoul's cuirassiers. The Santon and its eighteen guns hold the flank, Blasowitz falls, and Bagration is levered away from the rest of the Allied army. On the plateau, Saint-Hilaire's brigades carry their part of the Pratzen heights with their own charge, as Thiebault tells it, and Schönhals has Soult send Levasseur's brigade to support their right.",
   events:[
     ["c. 10:40","The cavalry collision west of Blasowitz. Kellermann falls back through his infantry and reforms."],
     ["c. 11:00","The Pratzeberg is firmly in French hands."],
@@ -99,7 +99,7 @@ var PHASES = [
   cam:[-120,58,-150,34,6,-66], mist:0.0 },
 
 { id:6, t0:675, t1:765, clock:"11:15 - 12:45", label:"The Guard", title:"The Russian Guard at Stare Vinohrady",
-  lede:"Grand Duke Constantine commits the Guard, which Stutterheim calls the reserve of the Allied right, against Vandamme on the Old Vineyards. The Guard infantry breaks two French battalions and the Guard cavalry carries off the eagle of the 4th Line, which an official report quoted in 1806 calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brings up the Guard cavalry, Rapp charges with the chasseurs and Mamelukes, and Drouet's division forms line across the plateau.",
+  lede:"Grand Duke Constantine commits the Guard, which Stutterheim calls the reserve of the Allied right, against Vandamme on the Old Vineyards. The Guard infantry breaks two French battalions and the Guard cavalry carries off the eagle of the 4th Line, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brings up the Guard cavalry, Rapp charges with the chasseurs and Mamelukes, and Drouet's division forms line across the plateau.",
   events:[
     ["after 11:00","The Russian Guard attacks Vandamme; the 4th Line loses its eagle. The hour is not established."],
     ["c. 11:45","Bessieres and Rapp counter-charge. The Chevalier Guard is broken; Prince Repnin captured. The hour is disputed: the event of Rapp's counter-charge has it from 11:15."],
@@ -191,7 +191,7 @@ sthilaire:{ ech:"div", nation:"fr", arm:"inf", desig:"1re Div., IV Corps",
     2:{p:[206,231],st:"forming",act:"Crosses the Goldbach and forms for the attack"},
     3:{tm:{dep:525,gr:"B",basis:"app narrative, unsourced",ev:["Soult's divisions advance. The mist lifts off the heights.","At about 08:45 they climbed the western slope","Thiebault's brigade clears Pratzen village; the 10e Legere pushes on for the Pratzeberg."],note:"the climb begins c. 08:45 and passes Pratzen village c. 09:00; its end is not dated, so the arrival is derived"},
        p:[267,275],st:"attacking",cf:"A",via:[[218,230]],obj:"Seize the Pratzeberg",act:"Climbs the western slope; Thiebault clears Pratzen village, the 10e Legere pushes for the summit"},
-    4:{p:[283,287],st:"engaged",cf:"A",obj:"Hold the Pratzeberg",act:"Fights off Kamensky's brigade, then Jurczek's Austrians; as Thiebault tells it, Saint-Hilaire proposed falling back before Colonel Pouzet objected and the brigades' own charge carried that part of the heights"},
+    4:{p:[283,287],st:"engaged",cf:"A",obj:"Hold the Pratzeberg",act:"Fights off Kamensky's brigade, then Jurczek's Austrians; as Thiebault tells it, Saint-Hilaire proposed falling back before Colonel Pouzet objected and the brigades' own charge carried their part of the heights"},
     5:{p:[287,282],st:"holding",act:"Consolidating on the summit with Levasseur's brigade attached"},
     6:{p:[288,272],st:"holding",obj:"Cover the right of the plateau",act:"Faces east while Vandamme is attacked to the north"},
     7:{tm:{dep:780,at:840,gr:"B",basis:"app narrative, unsourced",ev:["Between about 13:00 and 14:00 Napoleon turned his centre ninety degrees and brought it down off the plateau","Soult and Davout launch the converging assault on the Allied left."],note:"the wheel is dated as a range, and the move is shown across all of it"},
@@ -235,7 +235,7 @@ legrand:{ ech:"div", nation:"fr", arm:"inf", desig:"3e Div., IV Corps",
 c_iii:{ ech:"corps", nation:"fr", arm:"inf", desig:"III Corps",
   name:"III Corps (detachment)", commander:"Marshal Louis-Nicolas Davout", parent:null,
   strength:4300, strengthNote:"Duffy and Smith give 4,300 men present, including 830 cavalry, with 12 guns. Other accounts put Friant's division alone at about 6,400, so the figure is genuinely disputed", guns:12,
-  role:"Holds the extreme right for most of the morning against forces several times its number: Thiers gives seven to eight thousand foot, the 3e de Ligne of IV Corps among them, and 2,800 horse against 35,000 Russians on the Goldbach, and Davout's report speaks of extremely strong columns. Derived from Thiers's figures, that is about 3.2 to 3.6 to one against foot and horse, 4.4 to 5 to one against the foot alone.",
+  role:"Holds the extreme right for most of the morning against forces several times its number: Thiers gives seven to eight thousand foot, with the 3e de Ligne, which this map has in IV Corps, and 2,800 horse against 35,000 Russians on the Goldbach, and Davout's report speaks of extremely strong columns. Derived from Thiers's figures, that is about 3.2 to 3.6 to one against foot and horse, 4.4 to 5 to one against the foot alone.",
   children:["friant","bourcier"],
   note:"Caffarelli's division, normally of III Corps, fought under Lannes on the opposite flank."},
 
@@ -634,7 +634,7 @@ var FEATURES = [
  facts:[["Taken by","Vandamme's division in the course of the morning; the plateau was French from end to end by about 11:00"],["Contested by","Russian Imperial Guard, after about 11:00 (the hour is not established)"],["Also","Napoleon's second command post, from about noon"]],
  why:["Northern shoulder of the plateau, linking the centre to the Olmütz road sector",
       "In this map's interpretation, a counterfactual: losing it would have reopened the Allied army's severed halves"],
- story:"The Russian Guard's counterattack here broke two of Vandamme's battalions, and its cavalry took the eagle of the 4th Line, credited to the Life Guard Horse by Stutterheim, Schönhals and the Chevalier Guard's own history and to the Chevalier Guards by Marbot; an official report quoted in 1806 calls it the only trophy of the day. Rapp's counter-charge with the Guard cavalry ended it."},
+ story:"The Russian Guard's counterattack here broke two of Vandamme's battalions, and its cavalry took the eagle of the 4th Line, credited to the Life Guard Horse by Stutterheim, Schönhals and the Chevalier Guard's own history and to the Chevalier Guards by Marbot; an Allied official report, first printed in the Materialien of 1806, calls it the only trophy of the day. Rapp's counter-charge with the Guard cavalry ended it."},
 
 {id:"pratzeberg", p:[285,289], kind:"height", name:"Pratzeberg",
  sub:"Southern summit of the plateau, above Pratzen village",
@@ -710,8 +710,8 @@ var FEATURES = [
 
 {id:"augezd", p:[297,372], kind:"village", name:"Augezd",
  sub:"Village at the head of the road over the Satschan pond embankment",
- facts:[["Height above it","Taken by Vandamme in the afternoon"],["Function","A way out for the Allied left; the disposition has the left retire, if the attack failed, by the Turas wood, Kobelnitz and Puntowitz, and the army, failing that, on Niemtschan, Hodjegitz and Herspitz"]],
- why:["This map reads it as the defile over which much of the Allied left escaped, under the French guns",
+ facts:[["Height above it","Taken by Vandamme in the afternoon"],["Function","A way out for the Allied left; according to the disposition the left was to retire, if the attack failed, by the Turas wood, Kobelnitz and Puntowitz, and the army, in the worst case, on Niemtschan, Hodjegitz and Herspitz"]],
+ why:["This map reads it as the defile over which part of the Allied left escaped, under the French guns",
       "Schönhals has the guns of IV Corps and of the Guard, brought onto the height, fire on the retreating column"],
  story:"The chapel of St Anthony on the hill above the village - where Napoleon watched the end and a French battery stood - still overlooks the ground the Allied left had to cross."},
 

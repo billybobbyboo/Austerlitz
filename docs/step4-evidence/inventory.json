@@ -323,7 +323,7 @@
    "file": "data.js",
    "line": 94,
    "label": null,
-   "text": "Liechtenstein's and Uvarov's horse charge the French cavalry screen and Murat answers with Nansouty's and d'Hautpoul's cuirassiers. The Santon and its eighteen guns hold the flank, Blasowitz falls, and Bagration is levered away from the rest of the Allied army. On the plateau, Saint-Hilaire's brigades carry that part of the Pratzen heights with their own charge, as Thiebault tells it, and Schönhals has Soult send Levasseur's brigade to support their right.",
+   "text": "Liechtenstein's and Uvarov's horse charge the French cavalry screen and Murat answers with Nansouty's and d'Hautpoul's cuirassiers. The Santon and its eighteen guns hold the flank, Blasowitz falls, and Bagration is levered away from the rest of the Allied army. On the plateau, Saint-Hilaire's brigades carry their part of the Pratzen heights with their own charge, as Thiebault tells it, and Schönhals has Soult send Levasseur's brigade to support their right.",
    "claim": "unchecked",
    "by": []
   },
@@ -373,7 +373,7 @@
    "file": "data.js",
    "line": 102,
    "label": null,
-   "text": "Grand Duke Constantine commits the Guard, which Stutterheim calls the reserve of the Allied right, against Vandamme on the Old Vineyards. The Guard infantry breaks two French battalions and the Guard cavalry carries off the eagle of the 4th Line, which an official report quoted in 1806 calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brings up the Guard cavalry, Rapp charges with the chasseurs and Mamelukes, and Drouet's division forms line across the plateau.",
+   "text": "Grand Duke Constantine commits the Guard, which Stutterheim calls the reserve of the Allied right, against Vandamme on the Old Vineyards. The Guard infantry breaks two French battalions and the Guard cavalry carries off the eagle of the 4th Line, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brings up the Guard cavalry, Rapp charges with the chasseurs and Mamelukes, and Drouet's division forms line across the plateau.",
    "claim": "unchecked",
    "by": []
   },
@@ -973,7 +973,7 @@
    "file": "data.js",
    "line": 194,
    "label": null,
-   "text": "Fights off Kamensky's brigade, then Jurczek's Austrians; as Thiebault tells it, Saint-Hilaire proposed falling back before Colonel Pouzet objected and the brigades' own charge carried that part of the heights",
+   "text": "Fights off Kamensky's brigade, then Jurczek's Austrians; as Thiebault tells it, Saint-Hilaire proposed falling back before Colonel Pouzet objected and the brigades' own charge carried their part of the heights",
    "claim": "attributed",
    "by": [
     {
@@ -1465,7 +1465,7 @@
    "file": "data.js",
    "line": 238,
    "label": null,
-   "text": "Holds the extreme right for most of the morning against forces several times its number: Thiers gives seven to eight thousand foot, the 3e de Ligne of IV Corps among them, and 2,800 horse against 35,000 Russians on the Goldbach, and Davout's report speaks of extremely strong columns. Derived from Thiers's figures, that is about 3.2 to 3.6 to one against foot and horse, 4.4 to 5 to one against the foot alone.",
+   "text": "Holds the extreme right for most of the morning against forces several times its number: Thiers gives seven to eight thousand foot, with the 3e de Ligne, which this map has in IV Corps, and 2,800 horse against 35,000 Russians on the Goldbach, and Davout's report speaks of extremely strong columns. Derived from Thiers's figures, that is about 3.2 to 3.6 to one against foot and horse, 4.4 to 5 to one against the foot alone.",
    "claim": "derived",
    "by": [
     {
@@ -4356,7 +4356,7 @@
    "file": "data.js",
    "line": 637,
    "label": null,
-   "text": "The Russian Guard's counterattack here broke two of Vandamme's battalions, and its cavalry took the eagle of the 4th Line, credited to the Life Guard Horse by Stutterheim, Schönhals and the Chevalier Guard's own history and to the Chevalier Guards by Marbot; an official report quoted in 1806 calls it the only trophy of the day. Rapp's counter-charge with the Guard cavalry ended it.",
+   "text": "The Russian Guard's counterattack here broke two of Vandamme's battalions, and its cavalry took the eagle of the 4th Line, credited to the Life Guard Horse by Stutterheim, Schönhals and the Chevalier Guard's own history and to the Chevalier Guards by Marbot; an Allied official report, first printed in the Materialien of 1806, calls it the only trophy of the day. Rapp's counter-charge with the Guard cavalry ended it.",
    "claim": "disputed",
    "by": [
     {
@@ -4464,6 +4464,16 @@
      "src": "thiebault3_1894",
      "at": "t. III, pp. 475-476",
      "rd": "thiebault3_1894.p475-476.pouzet"
+    },
+    {
+     "src": "thiebault3_1894",
+     "at": "t. III, p. 469",
+     "rd": "thieb.p469.morand"
+    },
+    {
+     "src": "thiebault3_1894",
+     "at": "t. III, p. 474",
+     "rd": "thieb.p474.reinforced"
     },
     {
      "src": "schoenhals1873",
@@ -5041,7 +5051,7 @@
    "file": "data.js",
    "line": 713,
    "label": "Function",
-   "text": "A way out for the Allied left; the disposition has the left retire, if the attack failed, by the Turas wood, Kobelnitz and Puntowitz, and the army, failing that, on Niemtschan, Hodjegitz and Herspitz",
+   "text": "A way out for the Allied left; according to the disposition the left was to retire, if the attack failed, by the Turas wood, Kobelnitz and Puntowitz, and the army, in the worst case, on Niemtschan, Hodjegitz and Herspitz",
    "claim": "attributed",
    "by": [
     {
@@ -5062,13 +5072,13 @@
    "file": "data.js",
    "line": 714,
    "label": null,
-   "text": "This map reads it as the defile over which much of the Allied left escaped, under the French guns",
+   "text": "This map reads it as the defile over which part of the Allied left escaped, under the French guns",
    "claim": "interpretation",
    "by": [
     {
-     "src": "materialien1806",
-     "at": "p. 105",
-     "rd": "materialien1806.p105.retraite-kobelnitz"
+     "src": "schoenhals1873",
+     "at": "p. 168",
+     "rd": "schoen.p168.artillery-iv-garde"
     }
    ]
   },
@@ -5640,7 +5650,7 @@
    "file": "analysis.js",
    "line": 30,
    "label": null,
-   "text": "Between 07:00 and 09:00 the three left-hand columns and Kienmayer's advance guard descended into the Goldbach villages and fed themselves into the fight for them. Each column that went down was a column no longer on the plateau. By the time Soult moved, the centre of the Allied position had been emptied by the Allies themselves.",
+   "text": "Between 07:00 and 09:00 the three left-hand columns and Kienmayer's advance guard descended into the Goldbach villages and fed themselves into the fight for them. Each column that went down was a column no longer on the plateau. This map reads the Allies as having thinned the centre of their position themselves by the time Soult moved; Stutterheim and Thiebault have the 4th Column still on the plateau when the French appeared.",
    "claim": "unchecked",
    "by": []
   },
@@ -5670,7 +5680,7 @@
    "file": "analysis.js",
    "line": 45,
    "label": null,
-   "text": "Grand Duke Constantine threw the Guard, which Stutterheim calls the reserve of the Allied right, at Vandamme on the Old Vineyards. The Guard infantry broke two French battalions and the Guard cavalry took the eagle of the 4th Line, which an official report quoted in 1806 calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brought up the Guard cavalry and Rapp charged with the chasseurs and Mamelukes; Drouet's division formed line across the plateau. Prince Repnin was taken prisoner.",
+   "text": "Grand Duke Constantine threw the Guard, which Stutterheim calls the reserve of the Allied right, at Vandamme on the Old Vineyards. The Guard infantry broke two French battalions and the Guard cavalry took the eagle of the 4th Line, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brought up the Guard cavalry and Rapp charged with the chasseurs and Mamelukes; Drouet's division formed line across the plateau. Prince Repnin was taken prisoner.",
    "claim": "unchecked",
    "by": []
   },
@@ -5680,7 +5690,7 @@
    "file": "analysis.js",
    "line": 50,
    "label": null,
-   "text": "The northern battle was a holding action that Lannes turned into an advance. This map reads the Santon, scarped and carrying eighteen guns, as anchoring the flank, so that Bagration could not get past it. When Liechtenstein's and Uvarov's horse charged, Murat answered with Nansouty's and d'Hautpoul's cuirassiers. Blasowitz fell about 11:15 and Bagration was levered off the rest of the army, withdrawing on Rausnitz; Schönhals has his battalions thrown into disorder, then gathered again on the height.",
+   "text": "The northern battle was a holding action that Lannes turned into an advance. This map reads the Santon, scarped and carrying eighteen guns, as anchoring the flank, so that Bagration could not get past it. When Liechtenstein's and Uvarov's horse charged, Murat answered with Nansouty's and d'Hautpoul's cuirassiers. Blasowitz fell about 11:15 and Bagration was levered off the rest of the army, withdrawing on Rausnitz; Schönhals has his battalions thrown into disorder after the Guards had given way, then gathered again, somewhat, on the height by Rausnitz.",
    "claim": "unchecked",
    "by": []
   },
@@ -5700,7 +5710,7 @@
    "file": "analysis.js",
    "line": 60,
    "label": null,
-   "text": "This map reads the way left to the Allied left as the neck of dry ground at Augezd between the two meres, with French guns on the height above it; the retreat the disposition had ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, ran through ground the French held. Some formations broke south across the frozen water. The 30th Bulletin claimed twenty thousand drowned; when the meres were drained the recovery was thirty-eight guns, about a hundred and thirty horses and two men, figures as usually given. The catastrophe was real; this map reads it as encirclement rather than drowning, an interpretation.",
+   "text": "This map reads a way left to the Allied left as the neck of dry ground at Augezd between the two meres, with French guns on the height above it, and the retreat the disposition had ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, as running through ground the French held. Some formations broke south across the frozen water. The 30th Bulletin claimed twenty thousand drowned; when the meres were drained the recovery was thirty-eight guns, about a hundred and thirty horses and two men, figures as usually given. The catastrophe was real; this map reads it as encirclement rather than drowning, an interpretation.",
    "claim": "unchecked",
    "by": []
   },
@@ -6149,8 +6159,8 @@
    "cls": "command",
    "file": "analysis.js",
    "line": 112,
-   "label": "ordered / doc",
-   "text": "A general retreat south over the Augezd defile and the meres.",
+   "label": "ordered / inf",
+   "text": "A retreat of the left. No order of the day naming its route has been read (the disposition's retreat for the left ran by the Turas wood, Kobelnitz and Puntowitz); that it went south over the Augezd defile and the meres is inferred from the accounts of the end (Schönhals).",
    "claim": "unchecked",
    "by": []
   },
@@ -6159,8 +6169,8 @@
    "cls": "command",
    "file": "analysis.js",
    "line": 113,
-   "label": "knew / doc",
-   "text": "That the line of retreat was under artillery fire from ground the army had held at dawn.",
+   "label": "knew / inf",
+   "text": "That the way out by Augezd came under artillery fire from the height above it, ground the army had held at dawn: the fire is Schönhals's; what the command knew of it is inferred.",
    "claim": "unchecked",
    "by": []
   },
@@ -6460,13 +6470,18 @@
    "file": "analysis.js",
    "line": 228,
    "label": null,
-   "text": "With the plateau lost the Allied army is in two halves. The Guard, which Stutterheim calls the reserve of the Allied right, is spent trying to take it back.",
+   "text": "With the plateau lost the Allied army is in two halves. The Guard, which Stutterheim calls the reserve of the Allied right, attacks to take it back and is thrown back.",
    "claim": "attributed",
    "by": [
     {
      "src": "stutterheim1806de",
      "at": "p. 56",
      "rd": "stutterheim1806de.p56.reserve-blasowitz"
+    },
+    {
+     "src": "stutterheim1806de",
+     "at": "p. 69",
+     "rd": "stutterheim1806de.p69.adler-rueckzug"
     }
    ]
   },
@@ -6802,7 +6817,7 @@
    "file": "analysis.js",
    "line": 301,
    "label": null,
-   "text": "The Allied right is separated from the centre and withdraws toward Rausnitz; Schönhals has its battalions thrown into disorder, then gathered again on the height.",
+   "text": "The Allied right is separated from the centre and withdraws toward Rausnitz; Schönhals has its battalions thrown into disorder after the Guards had given way, then gathered again, somewhat, on the height by Rausnitz.",
    "claim": "attributed",
    "by": [
     {
@@ -6833,7 +6848,7 @@
    "file": "analysis.js",
    "line": 305,
    "label": null,
-   "text": "The Guard, which Stutterheim calls the reserve of the Allied right, takes the eagle of the 4th Line, which an official report quoted in 1806 calls the only trophy of the day.",
+   "text": "The Guard, which Stutterheim calls the reserve of the Allied right, takes the eagle of the 4th Line, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day.",
    "claim": "attributed",
    "by": [
     {
@@ -6984,7 +6999,7 @@
    "file": "analysis.js",
    "line": 333,
    "label": null,
-   "text": "A way out for the Allied left over the Augezd defile now lies under French guns; the retreat the disposition ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, ran through ground the French held.",
+   "text": "A way out for the Allied left over the Augezd defile now lies under French guns; this map reads the retreat the disposition ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, as running through ground the French held.",
    "claim": "interpretation",
    "by": [
     {
@@ -7001,6 +7016,11 @@
      "src": "schoenhals1873",
      "at": "p. 168",
      "rd": "schoen.p168.artillery-iv-garde"
+    },
+    {
+     "src": "stutterheim1806de",
+     "at": "pp. 55-56",
+     "rd": "stut.p55-56.crossing"
     },
     {
      "src": "mikhailovsky1846",
