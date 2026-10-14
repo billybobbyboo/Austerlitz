@@ -11,7 +11,7 @@ final build at the end.
 (C1 the three disputed hours, C2 the other hours, C3 Drouet, I Corps and the Guard, C4 the Zuran, the chapel, the ice and the sun, C5 the
 strengths and the 6B data questions, C6 the language and the places), each reading challenged on fresh page images by a source skeptic;
 C7 the claims' design, challenged by a design skeptic; the second reading of the appearance quotes and of the step-2 register (H-17); then
-a synthesizer and a completeness critic. Every reader is a machine reader: each reading is recorded as one, read on a page image.
+a synthesizer and a completeness critic. Every reader is a machine reader: each reading is recorded as one, with what it was read on (a page image, or the text layer in part or whole).
 
 **The commits so far.**
 - `567db8e` (records): roadmap step 3 recorded as merged (#51); the screen-reader session recorded complete (decision 175); step 3 done.
@@ -24,17 +24,35 @@ a synthesizer and a completeness critic. Every reader is a machine reader: each 
 - `a084d33`: the review of `f40ea90` (an independent reviewer, read-only): eight findings, each fixed or recorded below.
 - `55dde7a` (tools): `test.js` reads a register entry's "read on" marker (the step-4 register states on each quote line what the passage was
   read on).
-- The register (records; this commit): `docs/step4-evidence/readings.md` and `README.md`, below.
+- `76e626b` (records): the register, `docs/step4-evidence/readings.md` and `README.md`, below.
+- The review of `55dde7a` and `76e626b` (an independent reviewer, read-only; this commit): the register re-rendered, below.
 
-**The register of readings (`docs/step4-evidence/readings.md`; H-6, decision 130).** 273 entries: 210 readings by the six clusters'
-researchers and 63 counter-readings by their source skeptics (266 read on page images, 7 on a text layer only), 59 negatives
-(`C<n>.n<k>`) and 26 sources not readable from here, over 33 source keys. Every source skeptic downloaded every page image afresh: none of
-the 210 readings was rejected; about 70 were accepted with corrections (locators, grades, translations, what a reading settles), each
-applied in place and named as the skeptic's. Two source keys normalised from the skeptics' readings of the title pages: `segur1873` is the
-2nd edition of 1877 (`segur1877`), Thiers t. VI is of 1847 (`thiers1847`); three ids that repeated a step-2 register id or each other renamed
-with their entry number (`md1844.p179.half-past-eight~C1.c4`, `~C2.c6`, `md1844.p186-187.kamensky~C1.10`), so `test.js` resolves 327 reading ids
-across the two registers, each to one entry. Every reader was a machine reader; no person read these pages for step 4 (decision 136's human
-second reading is an owner question of this step).
+**The register of readings (`docs/step4-evidence/readings.md`, with `proposals.md`; H-6, decision 130).** 273 entries: 210 readings by
+the six clusters' researchers and 63 counter-readings by their source skeptics (248 read on page images, 18 on page images with part of the
+passage or its locator on the text layer, 7 on a text layer only), 59 negatives (`C<n>.n<k>`) and 26 sources not readable from here, over
+33 source keys. The source skeptics downloaded the page images afresh (the 7 text-layer readings were checked on the text layer; the
+counter-readings by no other reader): none of the 210 readings was rejected; 65 were accepted with corrections (locators, grades,
+translations, what a reading settles), each shown beside the researcher's value and named as the skeptic's. Two source keys normalised from
+the skeptics' readings of the title pages: `segur1873` is the 2nd edition of 1877 (`segur1877`), Thiers t. VI is of 1847 (`thiers1847`);
+three ids that repeated a step-2 register id renamed with their entry number (`md1844.p179.half-past-eight~C1.c4`, `~C2.c6`,
+`md1844.p186-187.kamensky~C1.10`), so `test.js` resolves 327 reading ids across the two registers, each to one entry. `proposals.md` holds
+each cluster's proposals and its skeptic's review of each (the plan's inputs). Every reader was a machine reader; no person read these pages
+for step 4 (decision 136's human second reading is an owner question of this step).
+- **The review of `55dde7a` and `76e626b`, and what changed for it** (the register re-rendered, the README and the parser amended).
+  (1) Two translations had been replaced by a skeptic's fragment (C5.1 Schönhals p. 177, C2.15 Davout no. 127): every correction now
+  stands on its own line beside the researcher's value ("the source skeptic's correction"), never in its place. (2) A label the skeptic
+  corrected only in its grade field stayed "fact": C3.29 (Barrès, read in a modern re-edition) is labelled uncertain, and C3.38's limit (the
+  lettered notes' attribution rests on note a), read on the text layer) is shown. (3) Corrections dropped where the results' *_ok flag was true
+  or the limit sat only in the skeptic's note (C1.28 Kutuzov's "через два часа", the editors' gloss; C4.2's heading read on the image; C2.4,
+  C2.21, C2.23, C2.24, C2.26's settles): all shown. (4) The source table's rows for `segur1877`, `thiers1847`, `rapp1823` and
+  `czartoryski1887` corrected from the skeptics' readings of their title pages. (5) 18 readings made on images with part of the passage or
+  its locator on the text layer are marked so on their quote lines, and `test.js` lets no "fact" or "attributed" claim rest on them; a step-4
+  entry without the marker fails. (6) The count of readings accepted with corrections is 65 (the verdicts), not "about 70" (the skeptics'
+  summaries). (7) The verification sentences name their exceptions (the text-layer readings checked on the text layer, the counter-readings
+  by no other reader). (8) A skeptic's correction to a quotation is labelled as a correction, not as the quotation. (9) The proposals and
+  their reviews, which the register's notes cite ("proposal 3c"), are committed in `proposals.md`; the skeptics' "CRn" numbers are their
+  working lists' (the README says how to find one). (10) The README states the citation limits (a claim's source must be a key of
+  `APPEARANCE_SOURCES`; a negative is not a heading). The double periods on 207 status lines are gone.
 
 **The claim model (`narrative.js`; H-6, decision 128 (b)).** A new guarded file after `analysis.js` in `build.py`'s list, as the C7 design
 skeptic's review amended the design (its blocking findings B1-B4):
