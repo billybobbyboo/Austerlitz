@@ -6,7 +6,7 @@
 const fs=require("fs"), path=require("path"), acorn=require("acorn");
 const ROOT=path.resolve(__dirname,"..","..");
 const argv=process.argv.slice(2), jsonOut=argv.includes("--json")?argv[argv.indexOf("--json")+1]:null;
-const FILES=['assets.js','tokens.js','geo.js','data.js','appearance.js','analysis.js','world.js','symbols.js','app.js'];
+const FILES=['assets.js','tokens.js','geo.js','data.js','appearance.js','analysis.js','narrative.js','world.js','symbols.js','app.js'];
 const html=fs.readFileSync(path.join(ROOT,"austerlitz-command-map.html"));
 const B=s=>Buffer.byteLength(s,"utf8");
 const out={html:{bytes:html.length},files:[],css:null,shell:null,appTop:[],assets:[]};

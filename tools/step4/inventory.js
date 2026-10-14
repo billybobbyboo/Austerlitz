@@ -16,9 +16,10 @@ function claimsTable(root){
 }
 function inventory(root){
   const S=statements(root), {claims}=claimsTable(root);
-  const rows=S.map(s=>{ const c=claims[s.ref];
+  /* a malformed entry is test.js's to report; here it never throws (the review of f40ea90) */
+  const rows=S.map(s=>{ const c=Object.prototype.hasOwnProperty.call(claims,s.ref)&&claims[s.ref]&&typeof claims[s.ref]==="object"?claims[s.ref]:null;
     return {ref:s.ref,cls:s.cls,file:s.file,line:s.line,label:s.label,text:s.text,
-      claim:c?c.cl:"unchecked",by:c&&c.by?c.by.map(b=>({src:b.src,at:b.at,rd:b.rd,side:b.side})):[]}; });
+      claim:c?String(c.cl):"unchecked",by:c&&Array.isArray(c.by)?c.by.filter(b=>b&&typeof b==="object").map(b=>({src:b.src,at:b.at,rd:b.rd,side:b.side})):[]}; });
   const count=(k)=>rows.reduce((a,r)=>(a[r[k]]=(a[r[k]]||0)+1,a),{});
   return {statements:rows.length,byClass:count("cls"),byClaim:count("claim"),rows};
 }

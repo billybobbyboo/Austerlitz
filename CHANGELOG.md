@@ -20,7 +20,8 @@ a synthesizer and a completeness critic. Every reader is a machine reader: each 
 - `0a19964` (the C7 design skeptic's review of `c69890a`, B2 and I8): `SOURCE_NOTE.layers[0..2]` had lost their text in the extractor (a
   pair's text index was looked up by class name, and two classes are named "method"); the unchecked definition no longer says the statement
   follows "the standard accounts" (itself unchecked).
-- The claim model (this commit; below).
+- `f40ea90`: the claim model (below).
+- The review of `f40ea90` (an independent reviewer, read-only; this commit): eight findings, each fixed or recorded below.
 
 **The claim model (`narrative.js`; H-6, decision 128 (b)).** A new guarded file after `analysis.js` in `build.py`'s list, as the C7 design
 skeptic's review amended the design (its blocking findings B1-B4):
@@ -42,6 +43,24 @@ skeptic's review amended the design (its blocking findings B1-B4):
   timed note, an unknown statement, a stale inventory: nine errors, then none when restored).
 - `check:data` (expected until the reference moves): "CHANGED narrative claims (roadmap step 4): 2 declarations ... not found: CLAIM_WORDS,
   STATEMENT_CLAIMS"; every other group identical (128 declarations).
+- **The review of `f40ea90`, and what changed for it.** (1) The drift hash covered a pair's text but not its label (a timeline line's clock,
+  a place fact's name, a Command row's kind and source grade, a layer's name: 125 of the 687 statements), so a retimed line or a regraded row
+  kept its claim: `statements()` now returns `whole` (label and text) and the hash is of it. (2) A malformed entry (`by` a string, a null
+  entry or reading) crashed `test.js` in the inventory before its errors printed: `inventory.js` never throws on one, and `test.js` reports
+  "not an object" / "by is not a list" and builds the inventory inside a try. (3) Three rules were weaker than their words: "disputed" now
+  needs two sides read from two sources (one reading used twice passed); "uncertain" needs the sources searched, each with its locator (a
+  note alone passed); "fact" needs a reading the register labels fact and read on a page image (an OCR-only entry passed), "attributed" a
+  reading read on a page image; the register parser reads each entry's label and whether it was read on the text layer alone. (4) The clock-time
+  net in a note missed "a quarter to nine", "half-past eight", "at about nine", "the eighth hour", "nine in the morning", "9 a.m.", "14h30",
+  "1400 hours" and the curly apostrophe, and hit "1.25 km": widened and narrowed (26 time forms caught, 18 non-times passed, run). (5) The
+  register parser kept a section's source across any other "##" heading: every "##" heading now ends a section, and a reading with no
+  source fails. (6) A claim's source counted as "cited nowhere" in the appearance checks: a claim now counts. (7) Prototype keys
+  (`constructor`) passed as sources, and unknown fields (a `q` quotation, a typo) passed: own keys only, and a claim is `{h, cl, by, note}`,
+  a reading `{src, at, rd, side}`. (8) Records: the guard's comment ("four data files"), `tools/audit/size.js`'s file list. Recorded, not
+  changed: the step-2 register's §2.3 and §2.6 also read the French Stutterheim (`stutterheim1806fr`) but resolve to the German key (their
+  section's); and `check:data` exits 1 by design until the reference moves, so the draft PR's CI stops at it (it runs before
+  check:chronology in `.github/workflows/checks.yml`) for the rest of the step. Each tightened rule shown failing on a mutation (14 errors
+  from seven mutated entries, then none when restored).
 
 ## 2026-10 · Roadmap step 3: accessibility and robustness (decisions 133, 134; A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6)
 
