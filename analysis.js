@@ -27,7 +27,7 @@ var ANALYSIS = [
 { id:"commitment", n:"The commitment of the Allied left", at:"ph:1", moments:["ev:telnitz","ev:sokolnitz","ev:telnitz-retaken"],
   forms:["buxhowden","kienmayer","dok","lang","prz"],
   feats:["telnitz","sokolnitz","augezd","goldbach"],
-  text:"Between 07:00 and 09:00 the three left-hand columns and Kienmayer's advance guard descended into the Goldbach villages and fed themselves into a fight for four hamlets. Each column that went down was a column no longer on the plateau. By the time Soult moved, the centre of the Allied position had been emptied by the Allies themselves."},
+  text:"Between 07:00 and 09:00 the three left-hand columns and Kienmayer's advance guard descended into the Goldbach villages and fed themselves into the fight for them. Each column that went down was a column no longer on the plateau. By the time Soult moved, the centre of the Allied position had been emptied by the Allies themselves."},
 
 { id:"pratzen", n:"The attack on the Pratzen", at:"ev:soult", moments:["ev:decision","ev:soult","ev:pratzen-village","ev:face-about","ev:kamensky","ev:pratzeberg"],
   forms:["sthilaire","vandamme","c_iv","milo","kollo","ahq"],
@@ -42,12 +42,12 @@ var ANALYSIS = [
 { id:"guard", n:"The Russian Guard counterattack", at:"ph:6", moments:["ev:guard-attack","ev:guard-broken","ev:hq-forward"],
   forms:["constantine","rg_inf","rg_cav","vandamme","guard_cav","guard_inf","drouet"],
   feats:["vinohrady"],
-  text:"Grand Duke Constantine threw the Guard, the reserve of the Allied right, at Vandamme on the Old Vineyards. The Guard infantry broke two French battalions and the Guard cavalry took the eagle of the 4th Line, which the Allied report printed in 1806 calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brought up the Guard cavalry and Rapp charged with the chasseurs and Mamelukes; Drouet's division formed line across the plateau. Prince Repnin was taken prisoner."},
+  text:"Grand Duke Constantine threw the Guard, which Stutterheim calls the reserve of the Allied right, at Vandamme on the Old Vineyards. The Guard infantry broke two French battalions and the Guard cavalry took the eagle of the 4th Line, which an official report quoted in 1806 calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brought up the Guard cavalry and Rapp charged with the chasseurs and Mamelukes; Drouet's division formed line across the plateau. Prince Repnin was taken prisoner."},
 
 { id:"north", n:"Lannes, Murat and Bagration", at:"ph:5", moments:["ev:blasowitz"],
   forms:["c_v","caffarelli","suchet","santon","c_cav","kellermann","nansouty","dhautpoul","bag","lich"],
   feats:["santon","olmutzroad","blasowitz"],
-  text:"The northern battle was a holding action that Lannes turned into an advance. This map reads the Santon, scarped and carrying eighteen guns, as anchoring the flank, so that Bagration could not get past it. When Liechtenstein's and Uvarov's horse charged, Murat answered with Nansouty's and d'Hautpoul's cuirassiers. Blasowitz fell about 11:15 and Bagration was levered off the rest of the army, withdrawing on Rausnitz in good order."},
+  text:"The northern battle was a holding action that Lannes turned into an advance. This map reads the Santon, scarped and carrying eighteen guns, as anchoring the flank, so that Bagration could not get past it. When Liechtenstein's and Uvarov's horse charged, Murat answered with Nansouty's and d'Hautpoul's cuirassiers. Blasowitz fell about 11:15 and Bagration was levered off the rest of the army, withdrawing on Rausnitz; Schönhals has his battalions thrown into disorder, then gathered again on the height."},
 
 { id:"wheel", n:"The French wheel", at:"ev:wheel", moments:["ev:davout-resumes","ev:wheel","ev:sokolnitz-falls"],
   forms:["sthilaire","vandamme","c_gren","guard_inf","heightguns","friant","legrand","prz","lang","dok"],
@@ -57,7 +57,7 @@ var ANALYSIS = [
 { id:"collapse", n:"The destruction of the Allied left", at:"ev:augezd", moments:["ev:augezd","ev:ice","ev:end"],
   forms:["dok","kienmayer","lang","buxhowden","vandamme","sthilaire","heightguns"],
   feats:["augezd","satschan","menitz","telnitz"],
-  text:"The way out left to the Allied left was the neck of dry ground at Augezd between the two meres, with French guns on the height above it; the retreat the disposition had ordered, by Kobelnitz, lay behind the French on the plateau. Some formations broke south across the frozen water. The 30th Bulletin claimed twenty thousand drowned; when the meres were drained the recovery was thirty-eight guns, about a hundred and thirty horses and two men, figures as usually given. The catastrophe was real; this map reads it as encirclement rather than drowning, an interpretation."}
+  text:"This map reads the way left to the Allied left as the neck of dry ground at Augezd between the two meres, with French guns on the height above it; the retreat the disposition had ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, ran through ground the French held. Some formations broke south across the frozen water. The 30th Bulletin claimed twenty thousand drowned; when the meres were drained the recovery was thirty-eight guns, about a hundred and thirty horses and two men, figures as usually given. The catastrophe was real; this map reads it as encirclement rather than drowning, an interpretation."}
 ];
 
 /* ---- what each headquarters knew, saw, ordered and expected ---- */
@@ -225,7 +225,7 @@ var ACTS = [
  {id:"strike",    n:"The Pratzen Strike", phases:[3,4],
   line:"Soult climbs out of the fog onto ground the Allies have just left, and holds it against everything sent back."},
  {id:"divided",   n:"The Army Divided",   phases:[5,6],
-  line:"With the plateau lost the Allied army is in two halves. The last reserve is spent trying to take it back."},
+  line:"With the plateau lost the Allied army is in two halves. The Guard, which Stutterheim calls the reserve of the Allied right, is spent trying to take it back."},
  {id:"collapse",  n:"The Collapse",       phases:[7,8,9],
   line:"The French centre turns south onto the rear of an Allied left that is still attacking westward."}
 ];
@@ -298,11 +298,11 @@ var EVENTS = [
 
 {id:"blasowitz", t:675, n:"Blasowitz falls and Bagration is levered off the army", side:"fr", kind:"capture",
  p:[296,147], forms:["caffarelli","suchet","bag","lich"], tolKm:1.3, tolWhy:"division-level: the marker is the village; Caffarelli\u2019s plotted centre lies about 1.2 km from it, within the division\u2019s frontage", cf:"B", claim:"est",
- why:"The Allied right is separated from the centre and withdraws on Rausnitz in good order."},
+ why:"The Allied right is separated from the centre and withdraws toward Rausnitz; Schönhals has its battalions thrown into disorder, then gathered again on the height."},
 
 {id:"guard-attack", t:[660,780], n:"The Russian Guard takes the eagle of the 4th Line", side:"al", kind:"attack",
  p:[313,205], forms:["rg_inf","rg_cav","constantine","vandamme"], cf:"B", claim:"est",
- why:"The Guard, the reserve of the Allied right, takes the eagle of the 4th Line, which the Allied report printed in 1806 calls the only trophy of the day."},
+ why:"The Guard, which Stutterheim calls the reserve of the Allied right, takes the eagle of the 4th Line, which an official report quoted in 1806 calls the only trophy of the day."},
 
 {id:"guard-broken", t:[675,795], n:"Rapp's counter-charge breaks the Chevalier Guard", side:"fr", kind:"engagement",
  p:[308,210], forms:["guard_cav","guard_inf","drouet","rg_cav"], cf:"B", claim:"est",
@@ -330,7 +330,7 @@ var EVENTS = [
 
 {id:"augezd", t:870, n:"Vandamme takes the height above the Augezd defile", side:"fr", kind:"capture",
  p:[297,372], forms:["vandamme","heightguns"], cf:"A", claim:"fact",
- why:"The Allied left's way out over the Augezd defile now lies under French guns; the retreat the disposition ordered lay behind the French on the plateau."},
+ why:"A way out for the Allied left over the Augezd defile now lies under French guns; the retreat the disposition ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, ran through ground the French held."},
 
 {id:"ice", t:900, n:"French artillery fires on the ice of the Satschan mere", side:"fr", kind:"collapse",
  p:[268,421], forms:["heightguns","dok","kienmayer"], tolKm:1.5, tolWhy:"the marker is the target of a bombardment: the guns fire from the chapel height about 2 km away, and the retreating columns are converging on the ice", cf:"A", claim:"fact",
@@ -366,7 +366,7 @@ var TOUR = [
 {n:"The army divided", at:"ev:pratzeberg", chapter:"cut",
  x:"With the plateau gone the Allied army is in two halves that can no longer help one another. Buxhowden's columns are still attacking westward and will not learn what has happened behind them until about noon."},
 {n:"The collapse", at:"ev:augezd", chapter:"collapse",
- x:"The French centre turns ninety degrees and comes down off the heights into the rear of the Allied left. The only ordered way out is the neck of dry ground at Augezd, under guns on ground the Allies held at dawn."},
+ x:"The French centre turns ninety degrees and comes down off the heights into the rear of the Allied left. A way out for them is the neck of dry ground at Augezd, under guns on ground the Allies held at dawn."},
 {n:"What it cost", at:"ph:9", chapter:null,
  x:"Allied losses are usually given as fifteen to sixteen thousand killed and wounded and twelve thousand or more taken, with about a hundred and eighty guns. French losses were near nine thousand. Everything you have watched today is a reconstruction: positions are graded A, B or C, strengths carry their ranges, and two figures on the situation line are computed rather than recorded. The sources panel says which is which."}
 ];

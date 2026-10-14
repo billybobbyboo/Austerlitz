@@ -229,8 +229,8 @@ const COUNTERFACTUAL=/\b(?:would(?: not)? have (?:been|[a-z]+(?:ed|en|wn|ung|ost
 ["had not been told that the centre was gone","the true ground would have under the true sun"]
   .forEach(t=>{ if(COUNTERFACTUAL.test(t)) fail("language",`COUNTERFACTUAL catches a record or a model sentence: "${t}"`); });
 const LANG_ALLOW=[
-  /* the seven superlatives the SUPERLATIVE pattern found when it was added (roadmap step 2, H-14), allowed until roadmap step 4: each
-     attributed to the account that makes the judgement, or dropped, in step 4's language commit, and its entry removed with it
+  /* the seven superlatives the SUPERLATIVE pattern found when it was added (roadmap step 2, H-14) were allowed until roadmap step 4: each
+     was attributed to the account that makes the judgement, or dropped, in step 4's language commit (f9e1b4b), and its entry removed with it
      (docs/step4-evidence/readings.md C6; CHANGELOG.md, roadmap step 4) */
   /* permanent: a statement of this map's own method, not a judgement of the battle */
   {where:"SOURCE_NOTE.body[2]", phrase:"the hardest figures of all", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
@@ -249,9 +249,10 @@ const KIND_PATTERN={certainty:"BANNED",causal:"CAUSAL",verdict:"VERDICT",superla
 const PATTERN_STEP={BANNED:"roadmap step 1",CAUSAL:"roadmap step 1",VERDICT:"roadmap step 1",SUPERLATIVE:"roadmap step 2",COUNTERFACTUAL:"roadmap step 2"};
 /* the review of C12 (roadmap step 2): LANG_STEP1 can only shrink (one entry left at the end of step 2), an entry without found can only be
    a BANNED, CAUSAL or VERDICT hit that step 1 left, and each found tag holds at most the hits its pattern found the day it was added
-   (SUPERLATIVE: seven until step 4 and one permanent; COUNTERFACTUAL: none, H-14's two were reworded), so a later step cannot add an entry
-   under an earlier pattern's tag */
-const LANG_STEP1_MAX=1, FOUND_MAX={"SUPERLATIVE, roadmap step 2":8,"COUNTERFACTUAL, roadmap step 2":0};
+   (SUPERLATIVE: seven until step 4, gone since, and one permanent; COUNTERFACTUAL: none, H-14's two were reworded), so a later step cannot add
+   an entry under an earlier pattern's tag */
+const LANG_STEP1_MAX=1, FOUND_MAX={"SUPERLATIVE, roadmap step 2":1,"COUNTERFACTUAL, roadmap step 2":0};   /* the superlatives' cap 8 until roadmap
+   step 4 (the day's hits); since step 4 removed the seven allowed until it (K3), the one permanent entry left (the review of f9e1b4b) */
 /* roadmap step 2, C28 (the implementation plan's completeness critic, item 3): an entry's until is checkable. The steps done are named
    here; an entry whose until begins with one of them is a finding (its task has landed, so the hit it allows must be gone, or the entry
    is stale), whether or not it still matches. Add a step here when its last commit lands */
