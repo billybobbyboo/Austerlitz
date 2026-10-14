@@ -229,23 +229,9 @@ const COUNTERFACTUAL=/\b(?:would(?: not)? have (?:been|[a-z]+(?:ed|en|wn|ung|ost
 ["had not been told that the centre was gone","the true ground would have under the true sun"]
   .forEach(t=>{ if(COUNTERFACTUAL.test(t)) fail("language",`COUNTERFACTUAL catches a record or a model sentence: "${t}"`); });
 const LANG_ALLOW=[
-  /* superlatives the SUPERLATIVE pattern found when it was added (roadmap step 2, H-14) and the audit did not name: judgements of the
-     fighting, the ground and a march that no record here attributes. The sourcing stage (question 130) attributes each to the account
-     that makes it, or drops it; each fix removes its own entry */
-  {where:"PHASES[#1].events[0][1]", phrase:"among the hardest of the day", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
-   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:63): a judgement of the fighting at Telnitz, unattributed"},
-  {where:"PHASES[#4].lede", phrase:"The hardest fighting for the plateau", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
-   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:85): a judgement of the fighting on the Pratzeberg, unattributed"},
-  {where:"FEATURES[#pratzeberg].story", phrase:"The hardest fighting on the plateau", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
-   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:639): the same judgement as the phase-4 lede"},
-  {where:"FEATURES[#telnitz].story", phrase:"arguably the fiercest of the day", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
-   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:672): hedged ('arguably') but not attributed, and set against the phase-4 lede's 'hardest'"},
-  {where:"FEATURES[#sokolnitz].why[0]", phrase:"The strongest defensible position on the lower Goldbach", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
-   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:677): a judgement of the ground, unattributed"},
-  {where:"EVENTS[#sokolnitz].why", phrase:"the strongest ground on the lower Goldbach", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
-   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (analysis.js:264): the same judgement of the ground"},
-  {where:"FEATURES[#viennaroad].story", phrase:"One of the most celebrated forced marches of the period", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
-   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:746): a claim of reputation; by whom is not said"},
+  /* the seven superlatives the SUPERLATIVE pattern found when it was added (roadmap step 2, H-14), allowed until roadmap step 4: each
+     attributed to the account that makes the judgement, or dropped, in step 4's language commit, and its entry removed with it
+     (docs/step4-evidence/readings.md C6; CHANGELOG.md, roadmap step 4) */
   /* permanent: a statement of this map's own method, not a judgement of the battle */
   {where:"SOURCE_NOTE.body[2]", phrase:"the hardest figures of all", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
    until:null, perm:"a statement of method",

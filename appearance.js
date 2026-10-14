@@ -113,7 +113,12 @@ var APPEARANCE_SOURCES = {
   teuber1895: {au:"O. Teuber (text), R. von Ottenfeld (ill.)", ti:"Die österreichische Armee von 1700 bis 1867", pub:"Wien, Berté", d:1895, kind:"specialist", url:"https://diglib.uibk.ac.at/urn:nbn:at:at-ubi:2-15217"},
   dolleczek1896: {au:"A. Dolleczek", ti:"Monographie der k.u.k. österr.-ung. blanken und Handfeuer-Waffen, Kriegsmusik, Fahnen und Standarten", pub:"Wien, Kreisel & Gröger", d:1896, kind:"specialist", url:"https://archive.org/details/monographiederku00doll", ia:"monographiederku00doll"},
   wrede1_1898: {au:"A. von Wrede", ti:"Geschichte der k. und k. Wehrmacht, Bd. I", pub:"Wien, Seidel (for the Kriegsarchiv)", d:1898, kind:"specialist", url:"https://archive.org/details/geschichtederkun00wred", ia:"geschichtederkun00wred"},
-  vanicek1875: {au:"F. Vaníček", ti:"Specialgeschichte der Militärgrenze, Bd. III", pub:"Wien, k.k. Hof- und Staatsdruckerei", d:1875, kind:"specialist", url:"https://archive.org/details/specialgeschich00vangoog", ia:"specialgeschich00vangoog"}
+  vanicek1875: {au:"F. Vaníček", ti:"Specialgeschichte der Militärgrenze, Bd. III", pub:"Wien, k.k. Hof- und Staatsdruckerei", d:1875, kind:"specialist", url:"https://archive.org/details/specialgeschich00vangoog", ia:"specialgeschich00vangoog"},
+  /* roadmap step 4 (narrative.js): works read for the narrative statements' claims (docs/step4-evidence/readings.md); one table of the
+     works read, so the claims' sources are registered here beside the appearance table's */
+  davout1885: {au:"L.-N. Davout (ed. Ch. de Mazade)", ti:"Correspondance du maréchal Davout, prince d'Eckmühl: ses commandements, son ministère, 1801-1815, t. I", pub:"Paris, E. Plon, Nourrit et Cie", d:1885, kind:"primary-text", url:"https://archive.org/details/correspondanced03davogoog", ia:"correspondanced03davogoog"},
+  marbot1891: {au:"M. de Marbot", ti:"Mémoires du général baron de Marbot, t. I (Gênes, Austerlitz, Eylau), 27th edition", pub:"Paris, Plon, Nourrit", d:1891, kind:"primary-text", url:"https://archive.org/details/mmoiresdugn01marbuoft", ia:"mmoiresdugn01marbuoft"},
+  thiers1847: {au:"A. Thiers", ti:"Histoire du Consulat et de l'Empire, t. VI", pub:"Paris, Paulin", d:1847, kind:"specialist", url:"https://archive.org/details/histoireduconsul06thieuoft", ia:"histoireduconsul06thieuoft"}
 };
 
 /* dress classes: one per kind of dress the sources describe for a class of troops present. nation and arm as data.js
