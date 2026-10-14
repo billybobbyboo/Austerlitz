@@ -50,12 +50,12 @@ after, computed by `tools/stage2/chronology.js`).
 - *Options.* (a) Keep bag@6's 11:15 and bag@8's 16:30 as the map's, the readings in their notes and acts (bag@6 named in `CONFLICTS`
   against Schönhals's "toward noon"); the end "disputed". (b) Drop bag@8's departure (no source dates a movement then). (c) Redraw bag@9
   toward Austerlitz over Alt-Rausnitz.
-- *Recommendation.* (b) if `opening-4` measures unchanged, else (a); (c) not now. *Default.* (a). *Status.* Pending (K5, K11).
+- *Recommendation.* (b) if `opening-4` measures unchanged, else (a); (c) not now. *Default.* (a). *Status.* bag@8 and the end implemented (K5); bag@6's conflict pending (K11).
 
 **181. The forced dated legs: c_gren@7/@8 and kollo@4/@5.**
 - *Options.* c_gren: (a) keep `{dep 780, at 840}`, the readings in the note; (b) `{dep 780}` without `at`, c_gren@8 leaving `FORCED_DATED`.
   kollo: (a) keep `at 615`; (b) drop it.
-- *Recommendation.* c_gren (b), kollo (a). *Default.* (a) for both. *Status.* Pending (K5).
+- *Recommendation.* c_gren (b), kollo (a). *Default.* (a) for both. *Status.* Implemented (K5).
 
 **182. I Corps as the centre, and the French plan's "In hand" column.**
 - *Options.* (a) One column, its `ord` rewritten to the orders read. (b) Split into the centre (Bernadotte) and the reserve (the Guard and
@@ -116,7 +116,7 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
 - *Recommendation and default.* (a): each needs a position no reading gives. *Status.* The default is the repository's state.
 
 **193. The Timing A of the events not examined in step 4.** *Options.* (a) Keep A until examined; (b) grade each against the registers.
-*Recommendation.* (b). *Default.* (a), except those the readings contradict (B). *Status.* Pending (K5, K6).
+*Recommendation.* (b). *Default.* (a), except those the readings contradict (B). *Status.* soult, pratzen-village, ice and end implemented (K5); telnitz-retaken pending (K6).
 
 **194. The blue the Russian records print as "синій".**
 - *Context.* Viskovatov's scale runs голубой (light blue), синій, темносиній (dark blue); the step-4 adjudicator reads "синій" as "blue",

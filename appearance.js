@@ -122,6 +122,7 @@ var APPEARANCE_SOURCES = {
   kutuzov1951: {au:"М. И. Кутузов", ti:"М. И. Кутузов. Сборник документов, т. II (1805)", pub:"Москва, Воениздат", d:1951, kind:"primary-text", url:"https://archive.org/details/20250102_20250102_1833", ia:"20250102_20250102_1833"},
   rapp1823: {au:"J. Rapp", ti:"Mémoires du général Rapp, aide-de-camp de Napoléon, écrits par lui-même, et publiés par sa famille", pub:"Paris, Bossange frères", d:1823, kind:"primary-text", url:"https://archive.org/details/mmoiresdugnralr00rappgoog", ia:"mmoiresdugnralr00rappgoog"},
   segur1877: {au:"Ph.-P. de Ségur", ti:"Histoire et mémoires, t. II, 2e éd.", pub:"Paris, Firmin-Didot et Cie", d:1877, kind:"primary-text", url:"https://archive.org/details/histoireetmmoir06sggoog", ia:"histoireetmmoir06sggoog"},
+  lejeune1851: {au:"L.-F. Lejeune", ti:"Souvenirs d'un officier de l'Empire", pub:"Toulouse, Typographie Viguier", d:1851, kind:"primary-text", url:"https://archive.org/details/souvenirsdunoff00jeungoog", ia:"souvenirsdunoff00jeungoog"},
   thiers1847: {au:"A. Thiers", ti:"Histoire du Consulat et de l'Empire, t. VI", pub:"Paris, Paulin", d:1847, kind:"specialist", url:"https://archive.org/details/histoireduconsul06thieuoft", ia:"histoireduconsul06thieuoft"}
 };
 
@@ -276,7 +277,7 @@ var DRESS = {
       note:"the 1805 headgear (hat or shako) is not stated in any source read. Carriages: olive (yellow ochre with lamp-black), the ironwork black (gassendi1809, t. I, p. 247, B); the Austrian and Russian carriage colours were not found, so decision 109 keeps one colour for all"},
     greatcoat:{gen:true, why:"not found"}},
   fr_guard_art: {nation:"fr", arm:"art", mount:"foot", carry:"fr_art_none", name:"Imperial Guard: foot artillery",
-    coat:{v:"Uniforme des grenadiers à pied, avec revers et collet bleus, lisérés de rouge", en:"the grenadiers' cut, blue lapels and collar piped red", c:"dark blue", src:"perrot1821", at:"'Artillerie à pied', pp. 232-233 (views f242-f243)", gr:"B", lab:"fact", note:"whether Perrot's p. 232 describes the consular or the imperial Guard was not established in the step-4 second reading; its 'grenadiers' cut' refers to the consular description of p. 209", q:"Uniforme des grenadiers à pied, avec re- vers et collet bleus"},
+    coat:{v:"Uniforme des grenadiers à pied, avec revers et collet bleus, lisérés de rouge", en:"the grenadiers' cut, blue lapels and collar piped red", c:"dark blue", src:"perrot1821", at:"'Artillerie à pied', pp. 232-233 (views f242-f243)", gr:"B", lab:"inference", note:"whether Perrot's p. 232 describes the consular or the imperial Guard was not established in the step-4 second reading; its 'grenadiers' cut' refers to the consular description of p. 209", q:"Uniforme des grenadiers à pied, avec re- vers et collet bleus"},
     legwear:{v:"veste et culotte bleues", c:"dark blue", src:"perrot1821", at:"p. 232", gr:"B", lab:"fact", q:"veste et culotte bleues"},
     head:{v:"Bonnet d'oursin sans plaque, avec cordon et plumet rouges", h:"bearskin", src:"perrot1821", at:"p. 232", gr:"B", lab:"fact", q:"Bonnet d'oursin sans plaque"},
     greatcoat:{gen:true, why:"not found for the day"}},
