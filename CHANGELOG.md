@@ -32,7 +32,10 @@ a synthesizer and a completeness critic. Every reader is a machine reader: each 
   AA, 0 font failures, the six start-up cases, run on its build after the commit).
 - `f9e1b4b`: the language left for step 4 (K3), below (its check:selftest, 242 of 242 with the manifest held, and check:contrast, 35 states,
   0 below AA, 0 font failures, the six start-up cases, run on its build after the commit).
-- (this commit) the review of `f9e1b4b`, below.
+- `be730cf`: the review of `f9e1b4b`, below (its check:selftest, 242 of 242 with the manifest held, and check:contrast, 35 states, 0 below
+  AA, the six start-up cases, run on its build after the commit).
+- (this commit) the appearance table read a second time, below; and the owner questions 176-194, each with its recommendation and the
+  default implemented meanwhile, in `docs/step4-evidence/questions.md`.
 - The language left for step 4 (the plan's K3; this commit): below.
 
 **The register of readings (`docs/step4-evidence/readings.md`, with `proposals.md`; H-6, decision 130).** 273 entries: 210 readings by
@@ -116,6 +119,45 @@ no claim until then):
   claims)" (was "The appearance table's sources"), so the narrative's sources are not named as the appearance table's.
 - What is not done here: the parts of the phase ledes, the Guard and collapse themes and `ANALYSIS[#north]` that later commits rewrite (the
   Kamensky sentence, Drouet's division, the drained count, the Blasowitz hour) keep their words and no claim until then.
+
+**The appearance table read a second time (`docs/stage6-evidence/second-reading.md`; H-17; decision 136's place).** The 131 quotes H-17
+counted as read once were read again on their page images by a machine second reader in four batches, and every difference, every item not
+reached and a spot check of the agreements read a third time by a machine adjudicator: 86 agree, 17 differ by layout or a letter, 28 not
+reached (the 1805 Schematismus on Hungaricana and Martinet's plates on Gallica, HTTP 403, no other scan found; their records stand as read
+once); adjudicated 14 records needing correction, 11 standing, 30 not verifiable. No quote was absent from its page, and no drawn value
+changes. **No person has read them a second time: decision 136's human reading of the 15 A-graded items stays open (owner question 189).** Every change is in
+`appearance.js` (check:data: `DRESS`, `COLOURS_CARRIED`, `COMPOSITION`), was / is / why:
+- `DRESS.fr_guard_gren.facings` `v`: was "pâtes blanches", is "pates blanches" (Perrot 1821 p. 209 prints no circumflex, read on a crop).
+- `DRESS.fr_guard_gren.legwear` `at`: was "p. 210", is "pp. 209-210" (the quote on p. 209, the gaiters on p. 210). `DRESS.fr_guard_grencav
+  .greatcoat` `at`: was "p. 236", is "p. 235". `DRESS.fr_guard_art.head` `at`: was "p. 233", is "p. 232" (Perrot 1821, read on the archive.org
+  mirror of the Gallica scan, printed page = leaf n - 11).
+- `DRESS.fr_carabinier.cuirass` side 0 `en`: was "read literally, all heavy cavalry under the Consulate", is the same with what the same
+  paragraph says: in the present tense and undated, the cuirasses are proper to the cuirassiers and the carabiniers, not to all the heavy
+  cavalry; it does not date the carabiniers' cuirass to 1805 (Bardin 1849, p. 1770). The side's label (inference) and grade stand.
+- `DRESS.ru_jager.coat` `en`: was "changed to dark green only on 1 November 1807", is "7 November 1807" (Viskovatov 10, p. 258, "7 Ноября
+  1807" on the image; the 6B reading had the text layer's 1).
+- `DRESS.ru_uhlan.coat` `en`: was "dark-blue kurtka", is "blue kurtka"; `.legwear` gains a note; `.head` `en`: was "the dark-blue uhlan cap",
+  is "the blue uhlan cap", `at`: was "pp. 112-114", is "p. 114 (leaf n123); the Tatar and Lithuanian cap, pp. 112-113, for the class", with a
+  note that the class "czapka" is an inference. `DRESS.ru_guard_hussar.coat` `en`: was "dark-blue dolman", is "blue dolman". Viskovatov prints
+  "синій" (blue) and writes "темносиній" where he means dark blue; the drawn class "dark blue" is kept and each record's note names it as the
+  class's convention (owner question 194, `docs/step4-evidence/questions.md`; the default keeps the drawn class).
+- `DRESS.at_line.legwear` `at`: was "p. 255 (a letter of the 1798 reform period)", is "pp. 254-255 (Hauptmann Koller to FML Staader,
+  9 September 1798, quoted: a project, ...); the black gaiters pp. 801-802" (Teuber 1895; the gaiters are not on p. 255).
+- `COLOURS_CARRIED.ru_inf.count` `v`: was "по два знамени въ каждомъ баталіонѣ" (a normalised paraphrase, not printed), is the printed
+  "на каждый баталіонъ по два знамя" (PSZ 27, no. 20,193, p. 80); `en`: was "two per battalion (in first battalions one white and one
+  coloured)", is "two per battalion"; the gloss moves to the note with its own source (Viskovatov 17, p. 32), which the order does not say.
+  `COLOURS_CARRIED.ru_guard_inf.count` `v`: the same printed words.
+- `COLOURS_CARRIED.ru_guard_inf.model` side 1: `lab` was "fact", is "inference"; `en` was "the same author's note: made ready but never in
+  use", is the note's whole content (the 1800 table of colours in the Emperor's library, portfolio no. 169, and colours made ready but never in
+  use, kept in the St Petersburg Arsenal), with "that the Guard did not carry the 1800 colours is an inference" (Viskovatov 9, note 375,
+  p. XXXVII). The model stays disputed.
+- `COMPOSITION.santon` part 0 `note`: was "the 1806 editor of the Materialien corrects it, citing a French compilation of 1806", is "the
+  Materialien's editor (1806) names the 17te, citing the Campagnes (Paris 1806, p. 297) and Stutterheim's French edition (p. 90) together,
+  without saying that the two differ" (Materialien 1806; the editor does not say he corrects Stutterheim).
+- Checks on this commit's build: npm test, all nine suites and the height guard pass (appearance checks 592 of 592); check:chronology 0
+  errors; check:data against the step-2 reference adds `DRESS`, `COMPOSITION`, `COLOURS_CARRIED` to the step's changed list (as expected);
+  `tools/stage6/verify-quotes.js` (network): 311 quotes, 83 found whole, 26 with OCR differences, 51 not found whole in the OCR, 41 checked
+  on the page image, 110 not checked (no text layer reachable here), as before the corrections but for the locators it prints.
 
 **The review of `f9e1b4b` (K3; an independent reviewer, read-only).** It ran `test.js` and `redteam.js` (both clean) and found one high, seven
 medium and eleven low items; each is fixed here from the register's readings, but one recorded:
