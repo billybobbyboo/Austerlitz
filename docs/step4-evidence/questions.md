@@ -34,7 +34,7 @@ after, computed by `tools/stage2/chronology.js`).
   two moves named in `CONFLICTS` as in 176 (a). (b) Retime to the sources (the departure from Raigern at five or half past five; the retaking
   anchor at half past nine, A; `EVENTS[#davout]` [525, 555], `#telnitz-retaken` 570; the phase lines moved to phase 3).
 - *Recommendation.* (b) if `opening-2` and the cases at 500-570 measure within their limits; else (a) unless decision 121 is amended for
-  that case. *Default.* (a). *Status.* Implemented (K6).
+  that case. *Default.* (a). *Status.* The default (a) implemented (K6); the recommendation (b) not measured.
 
 **178. Kamensky's turn: the point at 09:45 or an interval.** Decision 142 keeps t 585; this asks only whether the readings reopen it.
 - *Options.* (a) Decision 142 stands: t 585, the dispute naming the sources' sequence and the versions of who turned the brigade. (b) An
@@ -60,7 +60,8 @@ after, computed by `tools/stage2/chronology.js`).
 **182. I Corps as the centre, and the French plan's "In hand" column.**
 - *Options.* (a) One column, its `ord` rewritten to the orders read. (b) Split into the centre (Bernadotte) and the reserve (the Guard and
   the grenadiers). (c) One column renamed the reserve, without Drouet.
-- *Recommendation.* (b) if `plans-overview` stays within its drop limit, else (c). *Default.* (a). *Status.* Pending (K7).
+- *Recommendation.* (b) if `plans-overview` stays within its drop limit, else (c). *Default.* (a). *Status.* The default (a) implemented
+  (K7); (b) and (c) not measured.
 
 **183. drouet@6's grade.**
 - *Options.* (a) A kept, the act disputed. (b) B, the place disputed (near Blasowitz in Stutterheim and Schönhals, on the Emperor's left in

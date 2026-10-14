@@ -32,7 +32,7 @@ var ANALYSIS = [
 { id:"pratzen", n:"The attack on the Pratzen", at:"ev:soult", moments:["ev:decision","ev:soult","ev:pratzen-village","ev:face-about","ev:kamensky","ev:pratzeberg"],
   forms:["sthilaire","vandamme","c_iv","milo","kollo","ahq"],
   feats:["pratzen","pratzeberg","vinohrady","puntowitz","girzikowitz"],
-  text:"Saint-Hilaire and Vandamme had been standing in fog in the Goldbach valley, invisible from the heights. At about 08:45 they climbed the western slope and struck the 4th Column, which was still on the plateau. The disposition set every column off at seven; Stutterheim has the 4th Column ordered off only toward eight, to give the left wing's columns time, and Schönhals has it leave half an hour after the first three; Mikhailovsky-Danilevsky has it held up by Liechtenstein's cavalry crossing its line of march and then by Kutuzov standing still, in Russian accounts until the Tsar ordered it forward. The fight for the two summits lasted about two hours in Stutterheim and Schönhals, three in Thiebault; on this map the plateau is French from end to end by about 11:00."},
+  text:"Saint-Hilaire and Vandamme had been standing in fog in the Goldbach valley, invisible from the heights. At about 08:45 they climbed the western slope and struck the 4th Column, which was still on the plateau. The disposition set every column off at seven; Stutterheim has the 4th Column ordered off only toward eight, to give the left wing's columns time, and Schönhals has it leave half an hour after the first three; Mikhailovsky-Danilevsky has it held up by Liechtenstein's cavalry crossing its line of march and then by Kutuzov standing still, though the disposition ordered him forward. The fight for the two summits lasted about two hours in Stutterheim and Schönhals, three in Thiebault; on this map the plateau is French from end to end by about 11:00."},
 
 { id:"cut", n:"The cutting of the Allied army", at:"ev:pratzeberg", moments:["ev:pratzeberg","ev:buxhowden-blind"], cam:[-75,38,42,7,8,12],
   forms:["sthilaire","vandamme","buxhowden","dok","lang","prz","constantine","bag"],
@@ -42,7 +42,7 @@ var ANALYSIS = [
 { id:"guard", n:"The Russian Guard counterattack", at:"ph:6", moments:["ev:guard-attack","ev:guard-broken","ev:hq-forward"],
   forms:["constantine","rg_inf","rg_cav","vandamme","guard_cav","guard_inf","drouet"],
   feats:["vinohrady"],
-  text:"Grand Duke Constantine threw the Guard, which Stutterheim calls the reserve of the Allied right, at Vandamme on the Old Vineyards. The Guard infantry broke two French battalions and the Guard cavalry took the eagle of the 4th Line, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brought up the Guard cavalry and Rapp charged with the chasseurs and Mamelukes; Drouet's division formed line across the plateau. Prince Repnin was taken prisoner."},
+  text:"Grand Duke Constantine threw the Guard, which Stutterheim calls the reserve of the Allied right, at Vandamme on the Old Vineyards. The Guard infantry broke two French battalions and the Guard cavalry took the eagle of the 4th Line, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brought up the Guard cavalry and Rapp charged with the chasseurs and Mamelukes; a division of Bernadotte's corps, Drouet's by his own memoir as Sokolov quotes it, met the attack, though Thiebault counts I Corps' 2nd division among the troops that took no part. Prince Repnin was taken prisoner."},
 
 { id:"north", n:"Lannes, Murat and Bagration", at:"ph:5", moments:["ev:blasowitz"],
   forms:["c_v","caffarelli","suchet","santon","c_cav","kellermann","nansouty","dhautpoul","bag","lich"],
@@ -75,10 +75,10 @@ fr:{
     ["knew","anec","Soult's answer that his troops needed twenty minutes at most to reach the heights: a memoir anecdote, as Thiebault tells it; Ségur tells the same exchange with ten minutes."],
     ["ordered","anec","A further quarter of an hour's delay before releasing the attack, the signal given only once an aide reported the heights abandoned (a little prematurely, Thiebault adds): the same memoir anecdote."]],
  3:[["saw","doc","The crest of the Pratzen, once the mist lifted, and the 4th Column still on it."],
-    ["didnt","inf","How strong the force still on the plateau was. Inferred: the attack went in with two divisions and no reserve committed."],
+    ["didnt","inf","How strong the force still on the plateau was. Inferred: the attack went in with Soult's two divisions; the reserve, the Guard and the grenadiers, was not committed (the 30th Bulletin; Schönhals); whether Bernadotte's corps moved with it is disputed."],
     ["ordered","doc","Soult to take the Pratzeberg and Stare Vinohrady."]],
  4:[["knew","doc","That Saint-Hilaire was in difficulty on the Pratzeberg."],
-    ["ordered","doc","Bernadotte forward onto the plateau in support; Lannes to advance in the north."]],
+    ["ordered","inf","Bernadotte's corps forward between Soult and Lannes, toward the heights by Blasowitz (Stutterheim); no dated order to it is printed, and the hour is disputed, from the start of Soult's attack (Mikhailovsky-Danilevsky) to about noon (Ségur). Lannes to advance in the north."]],
  5:[["saw","inf","The northern battle from the Zuran. Inferred from the model's terrain, not documented: most of the Olmutz road sector, including the Santon, is in view from that mound."],
     ["ordered","doc","The cavalry reserve committed against the Allied horse."]],
  6:[["saw","doc","The Russian Guard attack on Stare Vinohrady."],
@@ -106,7 +106,7 @@ al:{
  5:[["knew","doc","That Bagration could not force the Santon and that Blasowitz had fallen."],
     ["ordered","doc","A withdrawal on Rausnitz, covering the Allied right."]],
  6:[["ordered","doc","Constantine to commit the Russian Imperial Guard against the French on Stare Vinohrady."],
-    ["didnt","inf","That the French Guard was in hand and uncommitted a mile away. Inferred from the speed with which Bessieres answered."]],
+    ["didnt","inf","That the French Guard was in hand and uncommitted close by, Napoleon near Blasowitz ahead of his reserve (Schönhals). Inferred from the speed with which Bessieres answered."]],
  7:[["knew","doc","From about noon, that the plateau was lost and the army was cut in two."],
     ["didnt","doc","On the left, the scale of it. Buxhowden's columns were still attacking westward while being enveloped."]],
  8:[["ordered","inf","A retreat of the left. No order of the day naming its route has been read (the disposition's retreat for the left ran by the Turas wood, Kobelnitz and Puntowitz); that it went south over the Augezd defile and the meres is inferred from the accounts of the end (Schönhals)."],
@@ -122,8 +122,8 @@ var KNOW_OVERRIDE = {
   vandamme: [[0,"unknown"],[3,"seen"]],
   guard_inf:[[0,"unknown"],[6,"seen"]],
   guard_cav:[[0,"unknown"],[6,"seen"]],
-  drouet:   [[0,"unknown"],[6,"seen"]],
-  rivaud:   [[0,"unknown"],[4,"uncertain"],[6,"seen"]],
+  drouet:   [[0,"unknown"],[3,"uncertain"],[6,"seen"]],
+  rivaud:   [[0,"unknown"],[3,"uncertain"],[6,"seen"]],
   friant:   [[0,"unknown"],[2,"seen"]],
   bourcier: [[0,"unknown"],[2,"uncertain"]],
   c_gren:   [[0,"unknown"],[7,"seen"]],
@@ -153,7 +153,7 @@ al:{
    "That the French were retreating and would not stand.",
    "That the Pratzen plateau could safely be vacated because the decisive ground was the French right.",
    "That five columns could cross one another's lines of march in darkness and arrive in order."],
-  cost:"All three assumptions were wrong. Execution compounded them: the 4th Column, which Stutterheim has ordered off only toward eight and Schönhals half an hour after the first three, was held up by the cavalry column's counter-march and, in Russian accounts, by Kutuzov's reluctance to leave the heights, and was still on the plateau when Soult arrived.",
+  cost:"All three assumptions were wrong. Execution compounded them: the 4th Column, ordered off only toward eight in Stutterheim and leaving half an hour after the first three in Schönhals, was held up by the cavalry column's counter-march and then by Kutuzov standing still (Mikhailovsky-Danilevsky), and was still on the plateau when Soult arrived.",
   staging:[
    {n:"Columns I-III on the southern plateau", c:[288,308], rx:62, ry:70},
    {n:"IV Column at Pratzen", c:[327,231], rx:52, ry:44},
@@ -183,7 +183,7 @@ al:{
 fr:{
   name:"Napoleon's plan",
   author:"Set out in the proclamation to the army and the orders of 1 December, and in the dispositions given to the corps commanders on the Zuran before dawn.",
-  intent:"Invite the attack on the right by giving up the Pratzen plateau and holding the lower Goldbach thin. When the enemy centre has marched off the heights to join that attack, take the heights with two divisions held concealed in the valley, cut the Allied army in half, then wheel south onto the rear of everything that has gone down into the Goldbach.",
+  intent:"Invite the attack on the right by giving up the Pratzen plateau and holding the lower Goldbach thin. When the enemy centre has marched off the heights to join that attack, take the heights with two divisions held concealed in the valley, cut the Allied army in half, then wheel south onto the rear of everything that has gone down into the Goldbach. In Ségur and Mikhailovsky-Danilevsky Bernadotte is to assail the plateau from the left at the same time; the written dispositions do not say so.",
   assumed:[
    "That the Allies would read the abandoned plateau and the withdrawn outposts as weakness.",
    "That Davout could reach the lower Goldbach from Vienna in time to keep the right alive.",
@@ -206,7 +206,7 @@ fr:{
     route:[[221,179],[236,191],[267,200],[309,207]]},
    {n:"The pivot - Lannes and Murat", forms:["suchet", "caffarelli", "santon"], obj:[304,46], ord:"Hold the Olmutz highway with the Santon fortified and entrenched. Advance only when the centre has gone in.",
     route:[[225,97],[247,75],[276,61],[304,46]]},
-   {n:"In hand - Bernadotte, the Guard, the grenadiers", forms:["guard_inf", "guard_cav", "c_gren", "drouet"], obj:[300,211], ord:"Remain behind the Zuran as the general reserve, to be fed onto the plateau once it is taken.",
+   {n:"In hand - Bernadotte, the Guard, the grenadiers", forms:["guard_inf", "guard_cav", "c_gren", "drouet"], obj:[300,211], ord:"I Corps onto Caffarelli's ground of the day before, its left behind the Santon, in column until new orders (the dispositions of 1 December); the Guard and the grenadiers the reserve with the Emperor (the 30th Bulletin), the grenadiers under Lannes's orders in the dispositions. The route drawn is this map's.",
     route:[[189,161],[230,185],[263,201],[300,211]]},
    {n:"The wheel", forms:["sthilaire", "vandamme"], obj:[294,369], ord:"Once the plateau is held from Pratzen to the highway, turn the centre ninety degrees and come down on the rear of the Allied left.",
     route:[[288,249],[276,293],[286,341],[290,366],[294,369]]}
@@ -246,7 +246,7 @@ var EVENTS = [
 
 {id:"counter-march", t:[255,480], n:"Liechtenstein counter-marches across the 4th Column", side:"al", kind:"movement",
  p:[311,227], forms:["lich","milo","kollo"], cf:"A", claim:"fact",
- why:"The cavalry column had been posted on the wrong flank overnight; in Mikhailovsky-Danilevsky its crossing of the line of march held up the 4th Column at the set hour. Stutterheim has the 4th Column ordered off only toward eight, to give the left wing's columns time, and Schönhals has it leave half an hour after the first three; Russian accounts also put the delay on Kutuzov's reluctance to leave the heights."},
+ why:"The cavalry column had been posted on the wrong flank overnight; in Mikhailovsky-Danilevsky its crossing of the line of march held up the 4th Column at the set hour, and Kutuzov then stood still, though the disposition ordered him forward. Stutterheim has the 4th Column ordered off only toward eight, to give the left wing's columns time, and Schönhals has it leave half an hour after the first three."},
 
 {id:"telnitz", t:420, n:"Kienmayer attacks Telnitz", side:"al", kind:"attack",
  p:[212,408], forms:["kienmayer","legrand"], cf:"A", claim:"fact",
@@ -254,17 +254,19 @@ var EVENTS = [
 
 {id:"raigern", t:[240,285], n:"Friant's division at Raigern since the night", side:"fr", kind:"arrival",
  p:[18,500], forms:["friant","bourcier"], cf:"B", claim:"est",
- why:"Davout and Friant reached Raigern on the night of 1 December: about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers. Davout's reports send the division on from Raigern at 05:00 (his report of 2 December) or between 05:30 and 06:00 (his report of 26 December); this map moves it from 04:00. Raigern lies just beyond this corner of the map."},
+ why:"Davout and Friant reached Raigern on the night of 1 December: about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers. Davout's reports send the division on from Raigern at 05:00 (his report of 2 December) or between 05:30 and 06:00 (his report of 26 December), Sokolov about six; this map moves it from 04:00. Raigern lies just beyond this corner of the map."},
 {id:"davout", t:[465,495], n:"Friant's leading brigade reaches the Goldbach", side:"fr", kind:"arrival",
- p:[198,402], forms:["friant"], cf:"B", claim:"est",
- why:"About 08:00 near Telnitz on this map; about nine in Stutterheim and in the Moniteur's remarks, and in Davout's report word of the attack reached him on the march about eight. In this map's interpretation, a counterfactual: without it the French right does not survive the morning."},
+ p:[198,402], forms:["friant"], cf:"B", claim:"disputed",
+ dispute:"When the leading brigade reached the Goldbach: 07:45 to 08:15 on this map; about 09:00 in Stutterheim, Schönhals and the Moniteur's remarks of 1806. Davout's report has word of the attack on Telnitz reach him on the march about eight and gives no hour for the arrival.",
+ why:"About 08:00 near Telnitz on this map; about nine in Stutterheim, Schönhals and the Moniteur's remarks. Davout's report has word of the attack reach him on the march about eight and gives no hour for the arrival. In this map's interpretation, a counterfactual: without it the French right does not survive the morning."},
 
 {id:"sokolnitz", t:480, n:"Langeron and Przybyszewski attack Sokolnitz", side:"al", kind:"attack",
  p:[208,365], forms:["lang","prz","legrand"], cf:"A", claim:"fact",
  why:"The fight for the village, the castle and the pheasantry absorbs two columns; Davout reported the village taken and retaken several times."},
 
 {id:"telnitz-retaken", t:510, n:"Friant retakes Telnitz, then loses it again", side:"fr", kind:"attack",
- p:[214,406], forms:["friant"], cf:"B", claim:"est",
+ p:[214,406], forms:["friant"], cf:"B", claim:"disputed",
+ dispute:"When Telnitz was retaken: 08:30 on this map; in French hands at 09:30 in Davout's report of 26 December, then lost again; Friant attacking the village anew about 09:00 in Schönhals, Davout's reinforcement up about 09:00 in Stutterheim.",
  why:"Heudelet's brigade throws itself into the village straight off the march. Davout's report has it in French hands at 09:30, then lost again when a French regiment, not recognising the brigade in the fog, fired on it and the Russians came back with fresh troops; the hour on the timeline is this map's."},
 
 {id:"decision", t:[505,525], n:"Napoleon releases Soult against the heights", side:"fr", kind:"decision",
@@ -305,7 +307,7 @@ var EVENTS = [
  why:"The Guard, which Stutterheim calls the reserve of the Allied right, takes the eagle of the 4th Line, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day. The hour is disputed: Rapp and Ségur put the Guard's last effort about 13:00, Schönhals has the fight over by about noon; the window is this map's."},
 
 {id:"guard-broken", t:[675,795], n:"Rapp's counter-charge breaks the Chevalier Guard", side:"fr", kind:"engagement",
- p:[308,210], forms:["guard_cav","guard_inf","drouet","rg_cav"], cf:"B", claim:"disputed",
+ p:[308,210], forms:["guard_cav","drouet","rg_cav"], cf:"B", claim:"disputed",
  why:"Prince Repnin is taken prisoner, by Rapp's charge in the 30th Bulletin. With the reserve spent, nothing remains to retake the plateau.",
  dispute:"When Rapp's charge went in: before one by the order of the narrative in the 30th Bulletin and in Mikhailovsky-Danilevsky (an inference: neither dates the charge itself), by about noon in Schönhals, about 13:00 or after in Rapp's own memoirs and Ségur's; the map draws it from 11:15, a timing it has kept."},
 
