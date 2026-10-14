@@ -24,9 +24,9 @@
   "tour": 9
  },
  "byClaim": {
-  "unchecked": 635,
-  "attributed": 25,
-  "disputed": 19,
+  "unchecked": 626,
+  "attributed": 28,
+  "disputed": 25,
   "uncertain": 5,
   "derived": 2,
   "interpretation": 5
@@ -173,9 +173,44 @@
    "file": "data.js",
    "line": 65,
    "label": "c. 08:00",
-   "text": "Friant's leading brigade comes up to the Goldbach near Telnitz. The division had reached Raigern overnight after about 113 km from Vienna in 40-46 hours (sources vary).",
-   "claim": "unchecked",
-   "by": []
+   "text": "Friant's leading brigade comes up to the Goldbach near Telnitz. The hour is disputed: about nine in Stutterheim and in the Moniteur's remarks of 1806, after Telnitz had fallen in Mikhailovsky-Danilevsky; in Davout's report word of the attack reached him on the march about eight. The division had reached Raigern overnight: about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers.",
+   "claim": "disputed",
+   "by": [
+    {
+     "src": "stutterheim1806de",
+     "at": "p. 52",
+     "rd": "stut.p52.davout-nine",
+     "side": "the reinforcement about nine"
+    },
+    {
+     "src": "materialien1806",
+     "at": "pp. 109-110",
+     "rd": "mat.p109-110.moniteur-neuf",
+     "side": "Davout's 4,000 up from Raigern about nine (the Moniteur's remarks)"
+    },
+    {
+     "src": "mikhailovsky1844",
+     "at": "pp. 178-179",
+     "rd": "md1844.p178-179.davout-telnitz",
+     "side": "Davout after Telnitz had fallen"
+    },
+    {
+     "src": "davout1885",
+     "at": "t. I, no. 127, pp. 202-204",
+     "rd": "davout1885.p202-204.report-26dec",
+     "side": "word of the attack reached him on the march about eight"
+    },
+    {
+     "src": "sokolov2006",
+     "at": "pp. 19, 38",
+     "rd": "sokolov2006.p19-61"
+    },
+    {
+     "src": "thiers1847",
+     "at": "t. VI, p. 296",
+     "rd": "thiers1845.p296.marche-etonnante"
+    }
+   ]
   },
   {
    "ref": "PHASES[#2].title",
@@ -193,7 +228,7 @@
    "file": "data.js",
    "line": 69,
    "label": null,
-   "text": "Langeron and Przybyszewski attack Sokolnitz village, its walled castle and the pheasantry enclosure beyond. Friant's leading brigade retakes Telnitz briefly, then withdraws behind the stream. On the plateau the 4th Column, which was meant to replace the troops leaving the heights, is still standing still: Liechtenstein's cavalry has cut across its line of march. A gap opens between it and the 3rd Column.",
+   "text": "Langeron and Przybyszewski attack Sokolnitz village, its walled castle and the pheasantry enclosure beyond. Friant's leading brigade retakes Telnitz briefly, then loses it again in the fog (Davout's report). On the plateau the 4th Column, which was meant to replace the troops leaving the heights, is still standing still: Liechtenstein's cavalry has cut across its line of march. A gap opens between it and the 3rd Column.",
    "claim": "unchecked",
    "by": []
   },
@@ -213,9 +248,20 @@
    "file": "data.js",
    "line": 72,
    "label": "c. 08:30",
-   "text": "Friant's leading troops retake Telnitz, then fall back over the Goldbach.",
-   "claim": "unchecked",
-   "by": []
+   "text": "Friant's leading troops retake Telnitz, then lose it again in the fog. Davout's report has the village in French hands at 09:30; the hour on the timeline is this map's.",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "davout1885",
+     "at": "t. I, no. 127, pp. 202-204",
+     "rd": "davout1885.p202-204.report-26dec"
+    },
+    {
+     "src": "davout1885",
+     "at": "t. I, no. 127, p. 204",
+     "rd": "davout1885.no127.p202-204"
+    }
+   ]
   },
   {
    "ref": "PHASES[#2].events[2]",
@@ -249,6 +295,12 @@
      "at": "pp. 60-61",
      "rd": "stut.p60-61.nine-pratzen",
      "side": "the French columns move about nine"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 159-161",
+     "rd": "schoenhals1873.p159-161.nine",
+     "side": "the order to attack about nine"
     }
    ]
   },
@@ -454,7 +506,7 @@
    "file": "data.js",
    "line": 98,
    "label": "c. 11:15",
-   "text": "Blasowitz falls; no source read gives the hour, and the accounts differ on whether it fell before or after the cavalry fights.",
+   "text": "Blasowitz falls; no source read gives the hour, and the accounts differ on its order: during the cavalry fights in Schönhals, after the 3rd and 4th Columns were thrown back in the Allied report printed in 1806.",
    "claim": "uncertain",
    "by": [
     {
@@ -685,26 +737,48 @@
    "file": "data.js",
    "line": 123,
    "label": "c. 16:30",
-   "text": "Organised resistance ends, by this map's reckoning after Sokolov's end of the firing in the north; the accounts end the fighting at hours from one to six. Bagration holds the height toward Rausnitz, then withdraws on Austerlitz; the Guard on Austerlitz.",
+   "text": "Organised resistance ends, by this map's reckoning after Sokolov's end of the firing in the north; the accounts end the fighting from the Bulletin's victory decided at one to Mikhailovsky-Danilevsky's last shots between five and six. Bagration holds the height toward Rausnitz, where Mikhailovsky-Danilevsky has him at dusk; Schönhals has him withdraw on Austerlitz about six; the Guard on Austerlitz.",
    "claim": "disputed",
    "by": [
-    {
-     "src": "schoenhals1873",
-     "at": "pp. 165-166",
-     "rd": "schoenhals1873.p165-166.bagration",
-     "side": "Bagration retreats on Austerlitz about six"
-    },
-    {
-     "src": "stutterheim1806de",
-     "at": "p. 71",
-     "rd": "stut.p71.bagration-six",
-     "side": "Bagration behind Austerlitz by six"
-    },
     {
      "src": "sokolov2006",
      "at": "t. II, pp. 19-61",
      "rd": "sokolov2006.p19-61",
-     "side": "the firing in the north ends in the late afternoon"
+     "side": "the firing in the north ended about 16:30 (Sokolov)"
+    },
+    {
+     "src": "materialien1806",
+     "at": "pp. 118-119",
+     "rd": "mat.p118-119.report-evening",
+     "side": "the northern front quiet from three (an Allied report)"
+    },
+    {
+     "src": "thiebault3_1894",
+     "at": "t. III, pp. 465-466",
+     "rd": "thieb.p465-466.three-pm",
+     "side": "the firing over about half an hour after three"
+    },
+    {
+     "src": "mikhailovsky1844",
+     "at": "pp. 205-206",
+     "rd": "md1844.p205-206.dusk",
+     "side": "the last shots between five and six"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9541, p. 451",
+     "rd": "corr11.9541.p451",
+     "side": "the victory decided at one (the 30th Bulletin)"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 165-166",
+     "rd": "schoenhals1873.p165-166.bagration"
+    },
+    {
+     "src": "stutterheim1806de",
+     "at": "p. 71",
+     "rd": "stut.p71.bagration-six"
     }
    ]
   },
@@ -1747,9 +1821,20 @@
    "file": "data.js",
    "line": 248,
    "label": null,
-   "text": "At Raigern since the night of 1 December, 8 km south-west of Telnitz and just beyond the map edge, after about 113 km from Vienna in 40-46 hours (sources vary)",
-   "claim": "unchecked",
-   "by": []
+   "text": "At Raigern since the night of 1 December, 8 km south-west of Telnitz and just beyond the map edge, after about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers, a march whose figures vary between the sources",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "sokolov2006",
+     "at": "p. 19",
+     "rd": "sokolov2006.p19-61"
+    },
+    {
+     "src": "thiers1847",
+     "at": "t. VI, p. 296",
+     "rd": "thiers1845.p296.marche-etonnante"
+    }
+   ]
   },
   {
    "ref": "FORMATIONS.friant.track[\"1\"].act",
@@ -1767,7 +1852,7 @@
    "file": "data.js",
    "line": 250,
    "label": null,
-   "text": "the anchor is the position behind the stream after Telnitz is retaken c. 08:30; the leading brigade reaches the Goldbach c. 08:00 on the way",
+   "text": "the anchor is the position by Telnitz after the village is retaken, c. 08:30 on this map; Davout's report has it retaken at half past nine and lost again, and the leading brigade at the Goldbach about nine in Stutterheim (question 177); the leading brigade reaches the Goldbach c. 08:00 on the way on this map",
    "claim": "unchecked",
    "by": []
   },
@@ -1787,9 +1872,20 @@
    "file": "data.js",
    "line": 251,
    "label": null,
-   "text": "Heudelet's brigade retakes Telnitz, then withdraws behind the stream",
-   "claim": "unchecked",
-   "by": []
+   "text": "Heudelet's brigade retakes Telnitz, then loses it again: in Davout's report a French regiment, not recognising it in the fog, fired on it, and the Russians took the village again with fresh troops",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "davout1885",
+     "at": "t. I, no. 127, p. 204",
+     "rd": "davout1885.no127.p202-204"
+    },
+    {
+     "src": "davout1885",
+     "at": "t. I, no. 127, pp. 202-204",
+     "rd": "davout1885.p202-204.report-26dec"
+    }
+   ]
   },
   {
    "ref": "FORMATIONS.friant.track[\"3\"].obj",
@@ -2899,6 +2995,12 @@
      "at": "no. 9541, p. 451",
      "rd": "corr11_1863.p451.guard-centre-reserve",
      "side": "the reserve not engaged"
+    },
+    {
+     "src": "thiebault3_1894",
+     "at": "t. III, pp. 465-466",
+     "rd": "thieb.p465-466.three-pm",
+     "side": "not in action (Thiebault)"
     }
    ]
   },
@@ -5660,9 +5762,22 @@
    "file": "data.js",
    "line": 749,
    "label": "Distance covered",
-   "text": "About 113 km from Vienna in 40-46 hours (sources vary)",
-   "claim": "unchecked",
-   "by": []
+   "text": "About 115 km from Vienna in under two days (Sokolov); thirty-six leagues in forty-eight hours (Thiers); this map's earlier figure, about 113 km in 40-46 hours, has no source read",
+   "claim": "disputed",
+   "by": [
+    {
+     "src": "sokolov2006",
+     "at": "p. 19",
+     "rd": "sokolov2006.p19-61",
+     "side": "about 115 km in under two days"
+    },
+    {
+     "src": "thiers1847",
+     "at": "t. VI, p. 296",
+     "rd": "thiers1845.p296.marche-etonnante",
+     "side": "thirty-six leagues in forty-eight hours"
+    }
+   ]
   },
   {
    "ref": "FEATURES[#viennaroad].why[0]",
@@ -5836,7 +5951,7 @@
    "file": "data.js",
    "line": 773,
    "label": null,
-   "text": "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; the exact place of the Posoritz post house; the true position of Turas; Kologrivov's command, which rests on one source; when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and three hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map since roadmap step 4, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns at 07:30 in Schönhals, the III at 07:00 in Przybyszewski's report and the II coming down at 08:00 in Buxhowden's, but from 04:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), and when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map). The map keeps its timing for the last two and for the II and III Columns. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Napoleon is recorded watching the end from there.",
+   "text": "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; the exact place of the Posoritz post house; the true position of Turas; Kologrivov's command, which rests on one source; when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and the hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map since roadmap step 4, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns at 07:30 in Schönhals, the III at 07:00 in Przybyszewski's report and the II coming down at 08:00 in Buxhowden's, but from 04:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), and when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map), when Friant's division left Raigern (at 05:00, or between 05:30 and 06:00, in Davout's two reports; from 04:00 on the map) and when it retook Telnitz (at 09:30 in Davout's report, then lost again; 08:30 on the map). The map keeps its timing for Kamensky's turn, Rapp's charge, the II and III Columns and Friant's division. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Napoleon is recorded watching the end from there.",
    "claim": "unchecked",
    "by": []
   },
@@ -6028,9 +6143,38 @@
    "file": "analysis.js",
    "line": 35,
    "label": null,
-   "text": "Saint-Hilaire and Vandamme had been standing in fog in the Goldbach valley, invisible from the heights. At about 08:45 they climbed the western slope and struck the 4th Column, which was still on the plateau. It had been ordered to move at eight and left half an hour after the first three columns (Schönhals): held up by Liechtenstein's cavalry crossing its line of march and, in Russian accounts, by Kutuzov's reluctance to leave the heights until the Tsar ordered it forward. The fight for the two summits lasted about two hours in Stutterheim and Schönhals, three in Thiebault; on this map the plateau is French from end to end by about 11:00.",
-   "claim": "attributed",
+   "text": "Saint-Hilaire and Vandamme had been standing in fog in the Goldbach valley, invisible from the heights. At about 08:45 they climbed the western slope and struck the 4th Column, which was still on the plateau. The disposition set every column off at seven; Stutterheim has the 4th Column ordered off only toward eight, to give the left wing's columns time, and Schönhals has it leave half an hour after the first three; Mikhailovsky-Danilevsky has it held up by Liechtenstein's cavalry crossing its line of march and then by Kutuzov standing still, in Russian accounts until the Tsar ordered it forward. The fight for the two summits lasted about two hours in Stutterheim and Schönhals, three in Thiebault; on this map the plateau is French from end to end by about 11:00.",
+   "claim": "disputed",
    "by": [
+    {
+     "src": "materialien1806",
+     "at": "pp. 101-106",
+     "rd": "mat1806.p101-106.disposition",
+     "side": "every column ordered off at seven"
+    },
+    {
+     "src": "stutterheim1806de",
+     "at": "pp. 60-61",
+     "rd": "stut.p60-61.nine-pratzen",
+     "side": "the 4th Column ordered off only toward eight"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 159-161",
+     "rd": "schoenhals1873.p159-161.nine",
+     "side": "the 4th Column half an hour after the first three"
+    },
+    {
+     "src": "mikhailovsky1844",
+     "at": "p. 181",
+     "rd": "md1844.p181.ninth-hour",
+     "side": "held up at the set hour by the cavalry, then by Kutuzov"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 157-159",
+     "rd": "schoenhals1873.p157-159.departure"
+    },
     {
      "src": "schoenhals1873",
      "at": "p. 160",
@@ -6040,11 +6184,6 @@
      "src": "kutuzov1951",
      "at": "p. 230",
      "rd": "kutuzov1951.p230.miloradovich-eight"
-    },
-    {
-     "src": "mikhailovsky1844",
-     "at": "p. 181",
-     "rd": "md1844.p181.ninth-hour"
     },
     {
      "src": "stutterheim1806de",
@@ -6668,9 +6807,39 @@
    "file": "analysis.js",
    "line": 156,
    "label": null,
-   "text": "All three assumptions were wrong. Execution compounded them: the 4th Column, ordered to move at eight, left half an hour after the first three columns - delayed by the cavalry column's counter-march and, in Russian accounts, by Kutuzov's reluctance to leave the heights - and was still on the plateau when Soult arrived.",
-   "claim": "unchecked",
-   "by": []
+   "text": "All three assumptions were wrong. Execution compounded them: the 4th Column, which Stutterheim has ordered off only toward eight and Schönhals half an hour after the first three, was held up by the cavalry column's counter-march and, in Russian accounts, by Kutuzov's reluctance to leave the heights, and was still on the plateau when Soult arrived.",
+   "claim": "disputed",
+   "by": [
+    {
+     "src": "materialien1806",
+     "at": "pp. 101-106",
+     "rd": "mat1806.p101-106.disposition",
+     "side": "every column ordered off at seven"
+    },
+    {
+     "src": "stutterheim1806de",
+     "at": "pp. 60-61",
+     "rd": "stut.p60-61.nine-pratzen",
+     "side": "the 4th Column ordered off only toward eight"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 159-161",
+     "rd": "schoenhals1873.p159-161.nine",
+     "side": "the 4th Column half an hour after the first three"
+    },
+    {
+     "src": "mikhailovsky1844",
+     "at": "p. 181",
+     "rd": "md1844.p181.ninth-hour",
+     "side": "held up at the set hour by the cavalry, then by Kutuzov"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 157-159",
+     "rd": "schoenhals1873.p157-159.departure"
+    }
+   ]
   },
   {
    "ref": "PLANS.al.cols[0].ord",
@@ -7031,9 +7200,38 @@
    "file": "analysis.js",
    "line": 249,
    "label": null,
-   "text": "The cavalry column had been posted on the wrong flank overnight; crossing the line of march held up the 4th Column, ordered to move at eight, which left half an hour after the first three columns (Schönhals). Russian accounts also put the delay on Kutuzov's reluctance to leave the heights.",
-   "claim": "attributed",
+   "text": "The cavalry column had been posted on the wrong flank overnight; in Mikhailovsky-Danilevsky its crossing of the line of march held up the 4th Column at the set hour. Stutterheim has the 4th Column ordered off only toward eight, to give the left wing's columns time, and Schönhals has it leave half an hour after the first three; Russian accounts also put the delay on Kutuzov's reluctance to leave the heights.",
+   "claim": "disputed",
    "by": [
+    {
+     "src": "materialien1806",
+     "at": "pp. 101-106",
+     "rd": "mat1806.p101-106.disposition",
+     "side": "every column ordered off at seven"
+    },
+    {
+     "src": "stutterheim1806de",
+     "at": "pp. 60-61",
+     "rd": "stut.p60-61.nine-pratzen",
+     "side": "the 4th Column ordered off only toward eight"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 159-161",
+     "rd": "schoenhals1873.p159-161.nine",
+     "side": "the 4th Column half an hour after the first three"
+    },
+    {
+     "src": "mikhailovsky1844",
+     "at": "p. 181",
+     "rd": "md1844.p181.ninth-hour",
+     "side": "held up at the set hour by the cavalry, then by Kutuzov"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 157-159",
+     "rd": "schoenhals1873.p157-159.departure"
+    },
     {
      "src": "schoenhals1873",
      "at": "p. 160",
@@ -7043,11 +7241,6 @@
      "src": "kutuzov1951",
      "at": "p. 230",
      "rd": "kutuzov1951.p230.miloradovich-eight"
-    },
-    {
-     "src": "mikhailovsky1844",
-     "at": "p. 181",
-     "rd": "md1844.p181.ninth-hour"
     }
    ]
   },
@@ -7087,9 +7280,30 @@
    "file": "analysis.js",
    "line": 257,
    "label": null,
-   "text": "Davout and Friant reached Raigern on the night of 1 December after about 113 km from Vienna in 40-46 hours (sources vary). Raigern lies just beyond this corner of the map.",
-   "claim": "unchecked",
-   "by": []
+   "text": "Davout and Friant reached Raigern on the night of 1 December: about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers. Davout's reports send the division on from Raigern at 05:00 (his report of 2 December) or between 05:30 and 06:00 (his report of 26 December); this map moves it from 04:00. Raigern lies just beyond this corner of the map.",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "davout1885",
+     "at": "t. I, no. 123, pp. 192-193",
+     "rd": "davout1885.p192-193.report-2dec"
+    },
+    {
+     "src": "davout1885",
+     "at": "t. I, no. 127, p. 202",
+     "rd": "davout1885.p202-204.report-26dec"
+    },
+    {
+     "src": "sokolov2006",
+     "at": "p. 19",
+     "rd": "sokolov2006.p19-61"
+    },
+    {
+     "src": "thiers1847",
+     "at": "t. VI, p. 296",
+     "rd": "thiers1845.p296.marche-etonnante"
+    }
+   ]
   },
   {
    "ref": "EVENTS[#davout].n",
@@ -7107,9 +7321,28 @@
    "file": "analysis.js",
    "line": 260,
    "label": null,
-   "text": "About 08:00, near Telnitz. In this map's interpretation, a counterfactual: without it the French right does not survive the morning.",
-   "claim": "unchecked",
-   "by": []
+   "text": "About 08:00 near Telnitz on this map; about nine in Stutterheim and in the Moniteur's remarks, and in Davout's report word of the attack reached him on the march about eight. In this map's interpretation, a counterfactual: without it the French right does not survive the morning.",
+   "claim": "disputed",
+   "by": [
+    {
+     "src": "stutterheim1806de",
+     "at": "p. 52",
+     "rd": "stut.p52.davout-nine",
+     "side": "the reinforcement about nine"
+    },
+    {
+     "src": "materialien1806",
+     "at": "pp. 109-110",
+     "rd": "mat.p109-110.moniteur-neuf",
+     "side": "Davout's 4,000 up from Raigern about nine (the Moniteur's remarks)"
+    },
+    {
+     "src": "davout1885",
+     "at": "t. I, no. 127, pp. 202-204",
+     "rd": "davout1885.p202-204.report-26dec",
+     "side": "word of the attack reached him on the march about eight"
+    }
+   ]
   },
   {
    "ref": "EVENTS[#sokolnitz].n",
@@ -7143,7 +7376,7 @@
    "file": "analysis.js",
    "line": 266,
    "label": null,
-   "text": "Friant retakes Telnitz, then withdraws behind the stream",
+   "text": "Friant retakes Telnitz, then loses it again",
    "claim": "unchecked",
    "by": []
   },
@@ -7153,9 +7386,20 @@
    "file": "analysis.js",
    "line": 268,
    "label": null,
-   "text": "A counterstroke straight off the march, and then a deliberate step back. The right is to be held, not won.",
-   "claim": "unchecked",
-   "by": []
+   "text": "Heudelet's brigade throws itself into the village straight off the march. Davout's report has it in French hands at 09:30, then lost again when a French regiment, not recognising the brigade in the fog, fired on it and the Russians came back with fresh troops; the hour on the timeline is this map's.",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "davout1885",
+     "at": "t. I, no. 127, pp. 202-204",
+     "rd": "davout1885.p202-204.report-26dec"
+    },
+    {
+     "src": "davout1885",
+     "at": "t. I, no. 127, p. 204",
+     "rd": "davout1885.no127.p202-204"
+    }
+   ]
   },
   {
    "ref": "EVENTS[#decision].n",
@@ -7199,6 +7443,12 @@
      "at": "pp. 60-61",
      "rd": "stut.p60-61.nine-pratzen",
      "side": "the French columns move about nine"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 159-161",
+     "rd": "schoenhals1873.p159-161.nine",
+     "side": "the order to attack about nine"
     }
    ]
   },
@@ -7479,6 +7729,21 @@
      "src": "stutterheim1806de",
      "at": "p. 56",
      "rd": "stutterheim1806de.p56.reserve-blasowitz"
+    },
+    {
+     "src": "rapp1823",
+     "at": "pp. 60-62",
+     "rd": "rapp1823.p60-62.une-heure"
+    },
+    {
+     "src": "segur1877",
+     "at": "t. II, pp. 467-469",
+     "rd": "segur1873.p467-469.une-heure"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 164-165",
+     "rd": "schoenhals1873.p164-165.guard-noon"
     }
    ]
   },
@@ -7741,26 +8006,48 @@
    "file": "analysis.js",
    "line": 343,
    "label": null,
-   "text": "When organised resistance ended: this map puts it at 16:30, after Sokolov's end of the firing in the north; Schönhals has Bagration retreat on Austerlitz about 18:00 and Stutterheim behind Austerlitz at 18:00; the 30th Bulletin has the victory decided at one.",
+   "text": "When the fighting ended: this map puts the end of organised resistance at 16:30, after Sokolov's end of the firing in the north; an Allied report printed in 1806 has the northern front quiet from 15:00, Thiebault the firing over about half an hour after three, and Mikhailovsky-Danilevsky the last shots between five and six; the 30th Bulletin has the victory decided at one. Schönhals has Bagration, no longer attacked, retreat on Austerlitz about 18:00, and Stutterheim behind Austerlitz at 18:00.",
    "claim": "disputed",
    "by": [
-    {
-     "src": "schoenhals1873",
-     "at": "pp. 165-166",
-     "rd": "schoenhals1873.p165-166.bagration",
-     "side": "Bagration retreats on Austerlitz about six"
-    },
-    {
-     "src": "stutterheim1806de",
-     "at": "p. 71",
-     "rd": "stut.p71.bagration-six",
-     "side": "Bagration behind Austerlitz by six"
-    },
     {
      "src": "sokolov2006",
      "at": "t. II, pp. 19-61",
      "rd": "sokolov2006.p19-61",
-     "side": "the firing in the north ends in the late afternoon"
+     "side": "the firing in the north ended about 16:30 (Sokolov)"
+    },
+    {
+     "src": "materialien1806",
+     "at": "pp. 118-119",
+     "rd": "mat.p118-119.report-evening",
+     "side": "the northern front quiet from three (an Allied report)"
+    },
+    {
+     "src": "thiebault3_1894",
+     "at": "t. III, pp. 465-466",
+     "rd": "thieb.p465-466.three-pm",
+     "side": "the firing over about half an hour after three"
+    },
+    {
+     "src": "mikhailovsky1844",
+     "at": "pp. 205-206",
+     "rd": "md1844.p205-206.dusk",
+     "side": "the last shots between five and six"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9541, p. 451",
+     "rd": "corr11.9541.p451",
+     "side": "the victory decided at one (the 30th Bulletin)"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "pp. 165-166",
+     "rd": "schoenhals1873.p165-166.bagration"
+    },
+    {
+     "src": "stutterheim1806de",
+     "at": "p. 71",
+     "rd": "stut.p71.bagration-six"
     }
    ]
   },

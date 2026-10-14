@@ -216,8 +216,8 @@ const REVIEW={
  "legrand@2":["consistent","arrival",T(8),T(8),"data.js:70; analysis.js:255","Sokolnitz attacked c. 08:00"],
  "legrand@7":["early","during",T(13),T(14),"data.js:113; analysis.js:51","the act ties the move to the trap closing, dated 13:00-14:00; the engine arrives 12:45 (at least 15 min early)"],
  "legrand@8":["early","arrival",T(15),T(15),"data.js:640","Telnitz changed hands until 15:00 and the act (phase 8) retakes it 'for good'; the engine arrives 14:30"],
- "friant@1":["early",null,null,null,"data.js:64; analysis.js:251","the statement it was matched to (the leading brigade reaches the Goldbach c. 08:00) dates the arrival at the Goldbach, which is the leg into friant@2 (the davout event's marker is that anchor); this waypoint's own move from Raigern is undated. Section M counted it early by 60 (re-reviewed in the chronology data task)"],
- "friant@2":["early","arrival",T(8,30),T(8,30),"data.js:71; analysis.js:259","Telnitz retaken c. 08:30; the engine arrives 08:00"],
+ "friant@1":["early","start",T(5),T(6),"data.js:64; analysis.js:251","the move from Raigern: Davout sent the division off at five (his report of 2 December, no. 123) or between half past five and six (his report of 26 December, no. 127); the engine moves it from 04:00, this map's earlier timing, kept (a named conflict since roadmap step 4, question 177). Until step 4 the row had no kind: the statement then matched to it (the leading brigade at the Goldbach c. 08:00) dates the leg into friant@2. Section M counted it early by 60 (re-reviewed in the chronology data task)"],
+ "friant@2":["early","arrival",T(9,30),T(9,30),"data.js:71; analysis.js:259","Telnitz retaken at half past nine in Davout's report of 26 December (no. 127, p. 204), then lost again; the engine arrives 08:30 (tm.at since the chronology data task), this map's timing, kept (a named conflict since roadmap step 4, question 177). Until step 4 the row judged this map's own c. 08:30 line"],
  "friant@7":["consistent","during",T(12,30),T(12,30),"data.js:239; data.js:112; analysis.js:311","the act itself says 'at about 12:30'; the engine arrives 12:45"],
  "friant@8":["consistent","during",T(14),T(14),"analysis.js:319","Sokolnitz falls c. 14:00, inside the engine's 12:45-14:30"],
  "bourcier@7":["consistent","during",T(12,30),T(12,30),"analysis.js:311","Davout resumes c. 12:30; the engine arrives 12:45"],
@@ -301,8 +301,8 @@ const REVIEW_CITES={
  "legrand@2":["timeline 2: Langeron attacks Sokolnitz; Przybyszewski goes @08:00","event sokolnitz @08:00"],
  "legrand@7":["timeline 7: Soult and Davout launch the @13:00-14:00","chapter wheel text @13:00","chapter wheel text @14:00"],
  "legrand@8":["feature telnitz fact Changed hands @15:00"],
- "friant@1":["timeline 1: Friant's leading brigade comes up @08:00","event davout @07:45-08:15","event raigern @04:00-04:45","event davout why @08:00"],
- "friant@2":["timeline 2: Friant's leading troops retake Telnitz, @08:30","event telnitz-retaken @08:30"],
+ "friant@1":["event raigern why @05:00","event raigern why @05:30","event raigern why @06:00","source-note body.5 @05:00","source-note body.5 @05:30","source-note body.5 @06:00"],
+ "friant@2":["timeline 2: Friant's leading troops retake Telnitz, @09:30","event telnitz-retaken why @09:30","source-note body.5 @09:30"],
  "friant@7":["anchor friant@7 act @12:30","timeline 6: Davout regroups and attacks; Langeron @12:30","event davout-resumes @12:30"],
  "friant@8":["event sokolnitz-falls @14:00","timeline 7: Sokolnitz falls @14:00"],
  "bourcier@7":["event davout-resumes @12:30"],
@@ -375,11 +375,20 @@ const ALLOW_TIMED={
  "tour 4 x @04:00":"the plateau reading's clock (a derived reading that sim-test.js checks), not a movement",
  "tour 4 x @07:15":"the plateau reading's clock (a derived reading that sim-test.js checks), not a movement",
  "command al@7: From about noon @12:00":"the Allied command's knowledge (the Command view), not a movement",
+ "timeline 1: Friant's leading brigade comes up @08:00":"the other side of the named conflict friant@2 (question 177): this map's 08:00 for the leading brigade at the Goldbach, on the leg into friant@2 (about nine in Stutterheim and the Moniteur, cited by no row: the row judges the village retaken, 09:30)",
+ "event davout @07:45-08:15":"the other side of the named conflict friant@2 (question 177), the event's window: this map's timing for the leading brigade's arrival",
+ "event davout why @08:00":"the other side of the named conflict friant@2 (question 177), restated in the event's why",
+ "event raigern @04:00-04:45":"the division at Raigern at the day's start, the state the event names (since the night), not the departure that friant@1 dates",
+ "event raigern why @04:00":"the other side of the named conflict friant@1 (question 177), restated: this map's 04:00 for the departure from Raigern",
+ "timeline 2: Friant's leading troops retake Telnitz, @08:30":"the other side of the named conflict friant@2 (question 177): the phase line's mark, this map's 08:30",
+ "event telnitz-retaken @08:30":"the other side of the named conflict friant@2 (question 177): the event's clock, this map's 08:30",
+ "source-note body.5 @08:30":"the other side of the named conflict friant@2 (question 177), restated: this map's 08:30 for Telnitz retaken",
  "plan fr.cost @09:00":"a counterfactual (\"if Legrand had broken before nine o'clock\"), not a dated movement",
  "event decision why @08:30":"Thiebault's half past eight for the aide's report before the signal (1894, p. 504): the decision's hour in a source, not a movement; the climb it releases is judged at 08:45 (sthilaire@3, vandamme@3)",
  "source-note refs.3 @08:30":"Thiebault's half past eight for the aide's report before the signal, restated in the sources note (as event decision why @08:30)",
- "event end dispute @18:00":"Schönhals's and Stutterheim's six for Bagration's retreat on Austerlitz, the other side of the end's dispute: bag@9's move, in phase 9, which section M's review leaves to nightfall; the engine makes it by 17:00 (question 180)",
- "source-note body.5 @04:00":"the other side of the named conflicts lang@1 and prz@1 (question 176): this map's 04:00 for the II and III Columns, restated; the conflicts' own times (07:00 to 08:00) are cited by their rows (L8)",
+ "event end dispute @18:00":"Schönhals's and Stutterheim's six for Bagration's retreat on Austerlitz, a side of the end's dispute: no retreat on Austerlitz is drawn; bag@9, the last anchor, lies on the Rausnitz road, where Mikhailovsky-Danilevsky has him at dusk (question 180 (c))",
+ "event end dispute @15:00":"the Allied report's northern front quiet from three (Materialien 1806, pp. 118-119), a side of the end's dispute: it dates no move of Bagration's (bag@8's 16:30 is this map's end of organised resistance, after Sokolov; question 180)",
+ "source-note body.5 @04:00":"the other side of the named conflicts lang@1, prz@1 (question 176) and friant@1 (question 177): this map's 04:00 for the II and III Columns and for Friant's departure from Raigern, restated; the conflicts' own times are cited by their rows (L8)",
  "source-note body.5 @08:45":"the other side of the named conflicts kamensky@3 and kamensky@4 (decision 42): the phase's clock, restated",
  "source-note body.5 @11:15":"the other side of the named conflict guard_cav@6 (decision 42): the event's time, restated",
  "source-note body.5 @12:00":"Schönhals's bound for the named conflict guard_cav@6 (the Guard's fight over by about noon, 1873, pp. 164-165), restated: an upper bound that agrees with the engine's 11:15, not a time of the charge; the conflict's row judges the other source side, 13:00 (L4b keeps its cites inside it)",
@@ -415,8 +424,10 @@ const EXCLUDED_PATHS=[   /* [name, path class, reason] */
    (rg_cav@6, rg_inf@6, rg_inf@7 and guard_inf@6 move in the same window on this map, their rows judging this map's own phase lines, which
    name the sources' hours as disputed); kamensky@3 and @4 stay internal
    (no account read gives the hour of the turn). lang@1 and prz@1 join it (question 176): the disposition ordered the II and
-   III Columns to march at seven too, and this map keeps their earlier 04:00 */
-const CONFLICTS=["guard_cav@6","kamensky@3","kamensky@4","lang@1","prz@1"];
+   III Columns to march at seven too, and this map keeps their earlier 04:00; friant@1 and friant@2 join it too (question 177):
+   Davout's reports send Friant's division from Raigern at five or between half past five and six and have Telnitz retaken at half past
+   nine, and this map keeps 04:00 and 08:30 */
+const CONFLICTS=["friant@1","friant@2","guard_cav@6","kamensky@3","kamensky@4","lang@1","prz@1"];
 /* 2C precondition (docs/STAGE2_SPEC.md section M.13), rules D1, F1 and F2: a derived arrival (dated departure, no dated
    arrival) is at the tactical rate (a design value, unsourced), or at the ceiling only for the legs named here, flagged, or at
    its own moveMin only for the legs named in MOVEMIN_DERIVED. The two climbs and Bagration's withdrawal are a dating question

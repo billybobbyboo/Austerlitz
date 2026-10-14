@@ -34,7 +34,7 @@ after, computed by `tools/stage2/chronology.js`).
   two moves named in `CONFLICTS` as in 176 (a). (b) Retime to the sources (the departure from Raigern at five or half past five; the retaking
   anchor at half past nine, A; `EVENTS[#davout]` [525, 555], `#telnitz-retaken` 570; the phase lines moved to phase 3).
 - *Recommendation.* (b) if `opening-2` and the cases at 500-570 measure within their limits; else (a) unless decision 121 is amended for
-  that case. *Default.* (a). *Status.* Pending (K6).
+  that case. *Default.* (a). *Status.* Implemented (K6).
 
 **178. Kamensky's turn: the point at 09:45 or an interval.** Decision 142 keeps t 585; this asks only whether the readings reopen it.
 - *Options.* (a) Decision 142 stands: t 585, the dispute naming the sources' sequence and the versions of who turned the brigade. (b) An
@@ -116,7 +116,7 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
 - *Recommendation and default.* (a): each needs a position no reading gives. *Status.* The default is the repository's state.
 
 **193. The Timing A of the events not examined in step 4.** *Options.* (a) Keep A until examined; (b) grade each against the registers.
-*Recommendation.* (b). *Default.* (a), except those the readings contradict (B). *Status.* soult, pratzen-village, ice and end implemented (K5); telnitz-retaken pending (K6).
+*Recommendation.* (b). *Default.* (a), except those the readings contradict (B). *Status.* soult, pratzen-village, ice and end implemented (K5); telnitz-retaken (K6).
 
 **194. The blue the Russian records print as "синій".**
 - *Context.* Viskovatov's scale runs голубой (light blue), синій, темносиній (dark blue); the step-4 adjudicator reads "синій" as "blue",
