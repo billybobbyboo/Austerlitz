@@ -504,23 +504,40 @@ try{
      position's, in the compact card and the full dossier: each reads POS_CLAIM for the claim claimOf gives at that clock (the class kept), and
      none carries CLAIM's own words ("Fact", "Estimate", "Reconstruction"), so a return to the blanket pill fails. Every formation at five
      clocks; each count above zero */
+  /* roadmap step 4 (decision 128 (b); docs/FINAL_AUDIT.md H-5; the C7 design skeptic's I5): the key each pill should carry is computed here,
+     not through the app's posClaimOf: a track entry's own claim up to the phase, else the position's grade's key (CLAIM_FROM_CONF), and
+     "interp" where that key is "fact" and the position is interpolated (confAt for a formation with a track, any of its leaves' for an
+     aggregate). Until step 4 the want was claimOf's (the grade's "fact" on an interpolated position read "Position: documented") */
+  const interpNow=id=>{ const f=FORMATIONS[id]; if(f.track){ const c=confAt(id,clock); return !!(c&&c.interp); }
+    return leavesOf(id,[]).some(k=>{ const c=confAt(k,clock); return !!(c&&c.interp); }); };
+  const expKey=id=>{ const f=FORMATIONS[id]; let ex=null; if(f.track) for(let i=0;i<=curPhase;i++){ const e=f.track[i]; if(e&&e.claim) ex=e.claim; }
+    if(ex) return ex; const k=CLAIM_FROM_CONF[aggConf(id,curPhase)]||"est"; return k==="fact"&&interpNow(id)?"interp":k; };
   { const mk=document.createElement, CL=Object.keys(CLAIM).map(k=>CLAIM[k].label), byCl={}; let made=[], nP=0, nV=0;
     try{
       document.createElement=t=>{ const x=mk(t); made.push(x); return x; };
       [T_MIN,525,600,700,880].forEach(t=>{ setClock(t);
-        Object.keys(FORMATIONS).forEach(id=>{ const want=claimOf(id,aggConf(id,curPhase));
+        Object.keys(FORMATIONS).forEach(id=>{ const want=expKey(id);
           [["card",compactCard],["dossier",dossierFormation]].forEach(([w,fn])=>{ made=[]; fn(id); nV++;
             const h=made.map(x=>x.innerHTML||"").join("\n"), P=[...h.matchAll(/<span class="pill claim-(\w+)">([\s\S]*?)<\/span>/g)];
             if(P.length!==1) throw new Error(id+" ("+w+") at "+fmtClock(t)+": "+P.length+" claim pills, want one");
             const cl=P[0][1], txt=P[0][2].replace(/<svg[\s\S]*?<\/svg>/g,"");
-            if(cl!==want) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill's class "+cl+", claimOf gives "+want);
+            if(cl!==want) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill's class "+cl+", its key is "+want);
             if(txt!==esc(POS_CLAIM[cl]||"")) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill reads \""+txt+"\", want POS_CLAIM's \""+POS_CLAIM[cl]+"\"");
             if(CL.indexOf(txt)>=0) throw new Error(id+" ("+w+") at "+fmtClock(t)+": the pill carries CLAIM's words \""+txt+"\"");
             nP++; byCl[cl]=(byCl[cl]||0)+1; }); }); });
     } finally { document.createElement=mk; }
-    if(!nP||Object.keys(byCl).length<3) throw new Error("position pills: "+nP+" pills read in "+nV+" views, classes "+JSON.stringify(byCl)+" (want all three)");
-    console.log("position pills: "+nP+" claim pills in "+nV+" cards and dossiers at five clocks, each POS_CLAIM's words for its claim (claimOf) ("+
-      Object.keys(byCl).map(k=>k+" "+byCl[k]).join(", ")+"), none CLAIM's OK"); }
+    if(!nP||["fact","est","recon","interp"].some(k=>!byCl[k])) throw new Error("position pills: "+nP+" pills read in "+nV+" views, classes "+JSON.stringify(byCl)+" (want all four: fact, est, recon, interp)");
+    /* over the day's 85 ten-minute clocks: the app's key (posClaimOf) is the one computed here for every formation on the field, and the
+       leaves' interpolated "documented" positions are counted (H-5 counted 825 such leaf samples on the step-3 data) */
+    let nI=0, nS=0, nO=0;
+    for(let t=T_MIN;t<=T_MAX;t+=10){ setClock(t);
+      Object.keys(FORMATIONS).forEach(id=>{ if(!posNow(id)) return; nO++; const w=expKey(id), g=posClaimOf(id,aggConf(id,curPhase));
+        if(g!==w) throw new Error(id+" at "+fmtClock(t)+": posClaimOf gives "+g+", the pill's key is "+w);
+        if(FORMATIONS[id].track){ nS++; if(w==="interp") nI++; } }); }
+    if(!nI) throw new Error("position pills: no interpolated documented position in the day");
+    console.log("position pills: "+nP+" claim pills in "+nV+" cards and dossiers at five clocks, each POS_CLAIM's words for its key ("+
+      Object.keys(byCl).map(k=>k+" "+byCl[k]).join(", ")+"), none CLAIM's; over 85 clocks posClaimOf agrees for "+nO+" formation-samples, "+
+      nI+" of "+nS+" leaf samples interpolated between documented anchors (\"Position: interpolated\") OK"); }
 
   /* roadmap step 2 (docs/FINAL_AUDIT.md D-5): the sources sheet's notes read the appearance table and the computed sun, not typed values.
      Each value they name is changed in the table for one call and the note must follow it; the table is put back (and the kit's cache). The

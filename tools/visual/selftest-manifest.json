@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build f023ae0e425653deced975402b4cdea7 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "f023ae0e425653deced975402b4cdea7",
- "count": 241,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 063ce0c9276b9a49cd694295aa93a945 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "063ce0c9276b9a49cd694295aa93a945",
+ "count": 242,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -238,6 +238,7 @@
   "standards: each cloth in its sourced proportion (its sizes against the staff where both are measured); a finial exactly where one is read with its size, on the staff's top; the dip 0.95 rad about the staff (section 6.3)",
   "legend: the figures' and the standards' rows say how they are drawn (decisions 98, 103)",
   "dossiers: elevations are metres through GEOREF, never model units",
+  "position pill: the dossier drawn says “Position: interpolated” where the position is interpolated between documented anchors, else its grade's words (roadmap step 4; decision 128 (b), H-5)",
   "watch mode: a selection is always shown, and clearing it clears the dimming",
   "sprites: smoke and dust fade to nothing at every edge",
   "the embedded type: three faces (two Austerlitz Sans, one Austerlitz Serif) loaded before the boot screen lifted, none failed (decision 141)",

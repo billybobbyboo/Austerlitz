@@ -6354,7 +6354,7 @@ function compactCard(id){
   wrap.appendChild(head);
   var pills='';
   if(st) pills+=statusPill(st);
-  pills+=posClaimPill(cl);
+  pills+=posClaimPill(posClaimOf(id,cf));
   pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
   if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
   wrap.appendChild(el("div","pillrow",pills));
@@ -6480,7 +6480,7 @@ function dossierFormation(id){
   var pills='';
   if(st) pills+=statusPill(st);
   var cl=claimOf(id,cf);
-  pills+=posClaimPill(cl);
+  pills+=posClaimPill(posClaimOf(id,cf));
   pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
   if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
   if(commandView!=="none"){
@@ -6612,7 +6612,19 @@ function claimPill(cl){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS
 /* owner decision 128 (a) (docs/FINAL_AUDIT.md H-5): a formation's pill is its position's claim, worded as the position's. claimOf gives it
    (a track entry's own claim, else CLAIM_FROM_CONF of the position's grade); it says nothing of the act, the role or the notes, whose own
    claims are the sourcing stage's (128 (b)). An event's pill keeps CLAIM's words (claimPill) */
-var POS_CLAIM={fact:"Position: documented", est:"Position: estimated", recon:"Position: reconstructed"};
+var POS_CLAIM={fact:"Position: documented", est:"Position: estimated", recon:"Position: reconstructed", interp:"Position: interpolated"};
+/* roadmap step 4 (decision 128 (b); docs/FINAL_AUDIT.md H-5; the C7 design skeptic's I5): the pill's key. A track entry's own claim wins
+   (heightguns@7-8, "recon"); else the position's grade's (CLAIM_FROM_CONF), except that a position the clock interpolates between anchors
+   whose grade reads "documented" says "interpolated": the anchors are documented, the point between them is not (H-5: 825 of the leaves'
+   ten-minute samples). B and C interpolations keep "estimated" and "reconstructed", which never overclaimed. claimOf stays the claim
+   CLAIM's notes read (the dossier's grade text) */
+function posClaimOf(id,cf){
+  var f=FORMATIONS[id], explicit=null;
+  if(f.track){ for(var i=0;i<=curPhase;i++){ var e=f.track[i]; if(e&&e.claim) explicit=e.claim; } }
+  if(explicit) return explicit;
+  var k=CLAIM_FROM_CONF[cf]||"est";
+  return (k==="fact"&&aggInterp(id,curPhase))?"interp":k;
+}
 function posClaimPill(cl){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS.sym.claim[cl])+esc(POS_CLAIM[cl]||CLAIM[cl].label)+'</span>'; }
 function sect(title,html,isDl,layer){
   var d=el("div","sect");
@@ -10147,6 +10159,25 @@ var AUSTERLITZ_DEBUG=(function(){
       if(!/\u2248 \d+\u2013\d+ m on this model/.test(t)) bad.push(tl.n+" lacks a range in metres"); });
     ck("dossiers: elevations are metres through GEOREF, never model units", bad.length===0,
       bad.length?bad.join("; "):FEATURES.length+" place dossiers and "+TERRAIN_LINES.length+" terrain-study dossiers");
+
+    /* 7b. roadmap step 4 (decision 128 (b); docs/FINAL_AUDIT.md H-5): the drawn dossier's position pill. Every tracked formation on the field
+       at four clocks, selected in Study: its one claim pill in #drawer-body reads "Position: interpolated" exactly where the position shown
+       is interpolated between anchors whose grade would read "documented" and the track names no claim of its own, else POS_CLAIM's
+       words for its grade's key (or its own claim's); the key computed here from confAt and the track, not through posClaimOf */
+    (function(){ var keepC=clock, pres=presentation, pbad=[], seen={}, n=0;
+      setPresentation("study");
+      [480,585,690,840].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false});
+        Object.keys(FORMATIONS).forEach(function(id){ var f=FORMATIONS[id]; if(!f.track||!posNow(id)) return;
+          var ex=null; for(var i=0;i<=curPhase;i++){ var e=f.track[i]; if(e&&e.claim) ex=e.claim; }
+          var c=confAt(id,clock), k=ex||CLAIM_FROM_CONF[c.cf]||"est"; if(!ex&&k==="fact"&&c.interp) k="interp";
+          select("f",id); var P=document.querySelectorAll("#drawer-body .pill[class*='claim-']"); n++;
+          if(P.length!==1){ pbad.push(id+" at "+fmtClock(t)+": "+P.length+" claim pills"); return; }
+          var cls=(P[0].className.match(/claim-(\w+)/)||[])[1], txt=P[0].textContent;
+          if(cls!==k||txt!==POS_CLAIM[k]) pbad.push(id+" at "+fmtClock(t)+": \u201c"+txt+"\u201d ("+cls+"), want \u201c"+POS_CLAIM[k]+"\u201d ("+k+")");
+          seen[k]=(seen[k]||0)+1; }); });
+      select(null,null); setClock(keepC,{instant:true,force:true,camera:false}); setPresentation(pres);
+      ck("position pill: the dossier drawn says \u201cPosition: interpolated\u201d where the position is interpolated between documented anchors, else its grade's words (roadmap step 4; decision 128 (b), H-5)",
+        n>0&&!pbad.length&&!!seen.interp&&!!seen.fact, n+" dossiers at four clocks ("+Object.keys(seen).map(function(k){ return k+" "+seen[k]; }).join(", ")+")"+(pbad.length?"; WRONG: "+pbad.slice(0,5).join("; "):"")); })();
 
     /* 8. a selection is always shown somewhere, and clearing it clears the dimming */
     var steps=[], okAll=true;
