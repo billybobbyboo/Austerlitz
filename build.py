@@ -42,7 +42,7 @@ if '--tokens' in sys.argv:
     print('style.css tokens block rewritten from tokens.js')
 elif css[i:j+len(END)]!=want:
     sys.exit('style.css: the tokens block differs from tokens.js; run `python3 build.py --tokens`')
-js="\n".join(open(f,encoding='utf-8').read() for f in ['assets.js','tokens.js','geo.js','data.js','appearance.js','analysis.js','world.js','symbols.js','app.js'])
+js="\n".join(open(f,encoding='utf-8').read() for f in ['assets.js','tokens.js','geo.js','data.js','appearance.js','analysis.js','narrative.js','world.js','symbols.js','app.js'])
 fonts=fonts_block(T)
 shell=open('shell.html',encoding='utf-8').read()
 for k in MARKERS:

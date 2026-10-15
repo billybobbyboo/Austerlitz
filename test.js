@@ -9,6 +9,7 @@ eval(fs.readFileSync('world.js','utf8'));
 eval(fs.readFileSync('_state.js','utf8'));
 eval(fs.readFileSync('_ov.js','utf8'));
 eval(fs.readFileSync('analysis.js','utf8'));
+eval(fs.readFileSync('narrative.js','utf8'));   /* roadmap step 4: the per-statement claims, after analysis.js as in the build's order */
 /* the plotted anchor a formation (or the first of its leaves) holds at a phase - the data, not the live clock */
 function anchorPos(id,ph){ const f=FORMATIONS[id];
   if(f.track){ const s=stateAt(id,ph); return s&&s.p?s.p:null; }
@@ -75,7 +76,7 @@ Object.keys(FORMATIONS).filter(id=>FORMATIONS[id].children).forEach(id=>{
    heightguns@8 declared cf "C" and then "B" until step 2), and a moveMin on a formation's first positioned anchor, where no leg runs into
    it (anchorList never reads it: heightguns@7's 30 until step 2) */
 { const acorn=require("acorn"), dup=[];
-  ["geo.js","data.js","appearance.js","analysis.js"].forEach(f=>{ (function walk(n){ if(!n||typeof n.type!=="string") return;
+  ["geo.js","data.js","appearance.js","analysis.js","narrative.js"].forEach(f=>{ (function walk(n){ if(!n||typeof n.type!=="string") return;
       if(n.type==="ObjectExpression"){ const seen=new Set(); n.properties.forEach(p=>{ if(p.type!=="Property"||p.computed) return;
         const k=p.key.type==="Identifier"?p.key.name:String(p.key.value); if(seen.has(k)) dup.push(f+":"+p.loc.start.line+" "+k); seen.add(k); }); }
       for(const k in n){ const v=n[k]; if(Array.isArray(v)) v.forEach(walk); else if(v&&typeof v.type==="string") walk(v); } })(acorn.parse(fs.readFileSync(f,"utf8"),{ecmaVersion:2020,locations:true})); });
@@ -302,6 +303,8 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   const notes=[]; (function walk(o){ if(!o||typeof o!=="object") return; for(const [k,v] of Object.entries(o)){
     if(typeof v==="string"&&["note","why","basis"].includes(k)) notes.push(v); else if(typeof v==="object") walk(v); } })([DRESS,COMPOSITION,COLOURS_CARRIED,STANDARD_MEASURES]);
   notes.forEach(t=>(t.match(/\b[a-z][a-z0-9_]*\d{4}[a-z]{0,3}\b/g)||[]).forEach(k=>{ if(srcOk(k)) used.add(k); else bad("a note names an unknown source '"+k+"'"); }));
+  /* roadmap step 4: a source a statement's claim rests on is cited too (narrative.js; the review of f40ea90: APPEARANCE_SOURCES is the one table of works read) */
+  Object.keys(STATEMENT_CLAIMS).forEach(r=>{ const c=STATEMENT_CLAIMS[r]; if(c&&Array.isArray(c.by)) c.by.forEach(b=>{ if(b&&typeof b.src==="string") used.add(b.src); }); });
   /* T-3: an error, not a warning (CLAUDE.md, 6B: "every source cited and registered") */
   Object.keys(APPEARANCE_SOURCES).forEach(k=>{ if(!used.has(k)&&!notes.some(t=>t.indexOf(k)>=0)) bad("source "+k+" is cited nowhere (every source cited and registered, 6B)"); else used.add(k); });
   /* decision 105: an open question of SOURCE_NOTE stays open until the table settles it at grade A or B, undisputed */
@@ -313,7 +316,7 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   console.log("appearance checks: "+(ap-apBad)+"/"+ap+" pass ("+Object.keys(DRESS).length+" dress classes, "+Object.keys(APPEARANCE_SOURCES).length+" sources, "+
     leaves.length+" leaf formations, "+Object.keys(COLOURS_CARRIED).length+" colours entries)"); }
 
-/* roadmap step 2 (docs/FINAL_AUDIT.md D-5): the guard's reach. Every top-level declaration of the four data files, and seven data declarations
+/* roadmap step 2 (docs/FINAL_AUDIT.md D-5): the guard's reach. Every top-level declaration of the data files (four until roadmap step 4, narrative.js the fifth), and seven data declarations
    in app.js (the sun's date, place and clock basis; which places a dossier quotes as surveyed; the timing and position grades a visitor is
    told; since C28 the position pill's words and the Command tab's source grades), are in check:data's lists (tools/visual/data-invariance.js DATA, read from that file as tools/lang-scan.js reads it), so a new
    declaration cannot sit outside the guard unseen */
@@ -322,7 +325,7 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   if(!dm) errs.push("guard: DATA not found in tools/visual/data-invariance.js");
   let n=0, out=0;
   const keyOf=s=>s.type==="FunctionDeclaration"?s.id.name:(s.type==="VariableDeclaration"?s.declarations.map(d=>d.id.name).join(","):null);
-  ["geo.js","data.js","analysis.js","appearance.js"].forEach(f=>acorn.parse(fs.readFileSync(f,'utf8'),{ecmaVersion:2020}).body.forEach(s=>{
+  ["geo.js","data.js","analysis.js","appearance.js","narrative.js"].forEach(f=>acorn.parse(fs.readFileSync(f,'utf8'),{ecmaVersion:2020}).body.forEach(s=>{
     const k=keyOf(s); if(k===null) return; n++;
     if(!G.has(k)){ out++; errs.push("guard: "+f+"'s "+k+" is not in check:data's lists (tools/visual/data-invariance.js)"); } }));
   const APP_DATA=["SUN_DAY","FEATURE_GT","TIMING_TEXT","CONF_TEXT","CONF_INTERP","POS_CLAIM","SRC_LABEL"];   /* POS_CLAIM and SRC_LABEL since C28 (the critic's item 6) */
@@ -330,8 +333,91 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   const appKeys=new Set(acorn.parse(fs.readFileSync('app.js','utf8'),{ecmaVersion:2020}).body.map(keyOf).filter(k=>k!==null));
   APP_DATA.forEach(k=>{ if(!G.has(k)){ out++; errs.push("guard: app.js's "+k+" is not in check:data's lists (D-5)"); }
     if(!appKeys.has(k)) errs.push("guard: app.js declares no top-level "+k+" of its own (D-5)"); });
-  console.log("guard: the "+n+" declarations of the four data files and app.js's "+APP_DATA.length+" data declarations "+
+  console.log("guard: the "+n+" declarations of the five data files and app.js's "+APP_DATA.length+" data declarations "+
     (out?"are not all in check:data's lists ("+out+" outside)":"are in check:data's lists")+" ("+G.size+" names)"); }
+
+/* ---- roadmap step 4 (docs/FINAL_AUDIT.md H-6; decisions 128 (b), 130): narrative.js, each narrative statement's claim ----
+   The statements are tools/step4/statements.js's; a statement without an entry is unchecked. Every entry ({h, cl, by, note} and nothing
+   else): a live statement, its h the hash of the statement's label and text (a reword, a retimed line or a regraded row fails until its claim
+   is reviewed), a claim word of CLAIM_WORDS; every by entry ({src, at, rd, side} and nothing else) a source of APPEARANCE_SOURCES (the one
+   table of works read) with its locator, every reading id a heading of a register (docs/step4-evidence/readings.md,
+   docs/step2-evidence/readings.md) whose source is the one named. "fact" rests on a reading the register labels fact, read on a page image
+   (not the text layer alone); "attributed" on a reading read on a page image; never on a citation alone. "disputed" names two sides, each
+   read, from two sources; "uncertain" names the sources searched. A note carries no clock time (the hours are the tracks' timings, which
+   check:chronology holds; it does not read narrative.js). The inventory (docs/step4-evidence/inventory.md, .json) is current.
+   Tightened after the review of f40ea90: the hash covers the label, a malformed entry is reported rather than crashing the suite, the
+   register's label and page-image status are read, a disputed claim needs two sources, an uncertain one its search, and the clock-time net
+   catches the hour in words. */
+{ const {statements,hashOf}=require('./tools/step4/statements.js'), S=statements('.'), byRef=new Map(S.map(s=>[s.ref,s]));
+  const own=(o,k)=>o!=null&&Object.prototype.hasOwnProperty.call(o,k);
+  const KINDS=["fact","attributed","disputed","derived","interpretation","uncertain","design","unchecked"], cerr=[];
+  if(JSON.stringify(Object.keys(CLAIM_WORDS).sort())!==JSON.stringify(KINDS.slice().sort())) cerr.push("CLAIM_WORDS's kinds are not "+KINDS.join(", "));
+  KINDS.forEach(k=>{ const w=own(CLAIM_WORDS,k)?CLAIM_WORDS[k]:null; if(!w||typeof w.w!=="string"||!w.w||typeof w.d!=="string"||!w.d) cerr.push("CLAIM_WORDS."+k+" without its word or its definition"); });
+  /* the registers' reading ids: a "### n `id`" heading; its source the entry's "**source**: `key`" line, else its section's "## n. `key`"
+     heading (the step-2 register's form); any other "##" heading ends a section; its label the entry's "**label**: word"; read on the text
+     layer alone when the entry names the OCR or the text layer and never a page image */
+  const REG=new Map(), regFiles=["docs/step2-evidence/readings.md","docs/step4-evidence/readings.md"];
+  regFiles.forEach(f=>{ if(!fs.existsSync(f)) return; let sec=null, cur=null;
+    fs.readFileSync(f,'utf8').split("\n").forEach(l=>{ let m;
+      if(/^## /.test(l)){ m=/^## [\w.]+ `([\w.-]+)`/.exec(l); sec=m?m[1]:null; cur=null; }
+      else if((m=/^### [\w.]+ `([^`]+)`/.exec(l))){ cur=REG.get(m[1]); if(cur) cerr.push("reading id "+m[1]+" declared twice ("+f+")");
+        cur={id:m[1],src:sec,file:f,label:null,text:""}; REG.set(m[1],cur); }
+      else if(/^#/.test(l)) cur=null;
+      else if(cur){ cur.text+=l+"\n"; if((m=/^- \*\*source\*\*: `([\w.-]+)`/.exec(l))) cur.src=m[1];
+        if(!cur.label&&(m=/\*\*label\*\*: ([a-z]+)/.exec(l))) cur.label=m[1];
+        if(cur.readOn===undefined&&(m=/^- \*\*quote\*\* \(read on: (.*?)\): /.exec(l))) cur.readOn=m[1]; } }); });
+  /* read on the text layer, alone or in part: the step-4 register says so on its quote line ("read on: page image", "page image, part on the
+     text layer", or the text layer; every step-4 entry has the marker); the step-2 register's entries name the OCR or the text layer and
+     never a page image. The review of 76e626b: a reading made partly on the text layer carries no "fact" or "attributed" claim either */
+  REG.forEach(r=>{ if(r.file==="docs/step4-evidence/readings.md"&&r.readOn===undefined) cerr.push("reading "+r.id+" ("+r.file+") has no \"read on\" marker on its quote line");
+    r.ocrOnly=r.readOn!==undefined?(!/^page image/i.test(r.readOn)||/text layer|\bOCR\b/i.test(r.readOn)):(/\bOCR\b|text layer/i.test(r.text)&&!/page image|on (?:its|the) image|image n\d|\(image\)/i.test(r.text));
+    if(!r.src) cerr.push("reading "+r.id+" ("+r.file+") has no source"); });
+  /* a clock time in any form a note might use: 08:45, 8.30, 14h30, 1400 hours, nine o'clock, half past eight, a quarter to nine, noon,
+     the eighth hour, nine in the morning, 9 a.m., "at about nine" (the hour as a word after at, about, by, before, after, until, toward, from) */
+  const HW="(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)";
+  const CLOCK=new RegExp([String.raw`\b\d{1,2}[:h]\d{2}\b`, String.raw`\b\d{1,2}\.\d{2}\b(?!\s*(?:km|m|metres|rad|times|x|×|%))`, String.raw`\b\d{3,4}\s*hours\b`,
+    String.raw`o['’]clock`, String.raw`\bhalf[- ]past\b`, String.raw`\bquarter (?:to|past)\b`, String.raw`\b(?:noon|midday|midnight)\b`,
+    String.raw`\b(?:first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|eleventh|twelfth) hour\b`,
+    String.raw`\b(?:\d{1,2}|`+HW+String.raw`)\s*(?:a\.?m\.?|p\.?m\.?)(?![a-z])`, String.raw`\b(?:\d{1,2}|`+HW+String.raw`) in the (?:morning|afternoon|evening)\b`,
+    /* the hour after a preposition: a number not part of a larger figure, or a word from two to twelve ("at one point", "from one account"
+       are not hours; "after one" is missed, and "one o'clock" caught above) */
+    String.raw`\b(?:at|about|by|before|after|until|till|toward|towards|from|around)(?: about| around)? (?:\d{1,2}(?![\d,.])|`+HW.replace("one|","")+String.raw`)\b(?! (?:km|men|guns|battalions|squadrons|regiments|divisions|brigades|days|hours|minutes)\b)`].join("|"),"i");
+  const CK=["h","cl","by","note"], BK=["src","at","rd","side"];
+  let n=0; const byKind={};
+  Object.keys(STATEMENT_CLAIMS).forEach(ref=>{ const c=STATEMENT_CLAIMS[ref], s=byRef.get(ref), at="STATEMENT_CLAIMS["+JSON.stringify(ref)+"]"; n++;
+    if(!c||typeof c!=="object"||Array.isArray(c)){ cerr.push(at+": not an object"); return; }
+    Object.keys(c).filter(k=>CK.indexOf(k)<0).forEach(k=>cerr.push(at+": unknown field \""+k+"\" (a claim is {h, cl, by, note}; no quotation in the build)"));
+    if(!s){ cerr.push(at+": no such narrative statement (moved, removed or renamed?)"); return; }
+    if(c.h!==hashOf(s.whole)) cerr.push(at+": the statement (its label and text) changed since its claim was written (h "+c.h+", now "+hashOf(s.whole)+"): review the claim");
+    if(typeof c.cl!=="string"||KINDS.indexOf(c.cl)<0||c.cl==="unchecked") cerr.push(at+": claim "+JSON.stringify(c.cl)+" is not a claim word (an unchecked statement has no entry)");
+    byKind[c.cl]=(byKind[c.cl]||0)+1;
+    const by=Array.isArray(c.by)?c.by:(cerr.push(at+": by is not a list"),[]);
+    by.forEach((b,i)=>{ const w=at+".by["+i+"]";
+      if(!b||typeof b!=="object"||Array.isArray(b)){ cerr.push(w+": not an object"); return; }
+      Object.keys(b).filter(k=>BK.indexOf(k)<0).forEach(k=>cerr.push(w+": unknown field \""+k+"\" (a reading is {src, at, rd, side})"));
+      if(typeof b.src!=="string"||!own(APPEARANCE_SOURCES,b.src)) cerr.push(w+": source "+JSON.stringify(b.src)+" is not in APPEARANCE_SOURCES");
+      if(typeof b.at!=="string"||!b.at) cerr.push(w+": no locator");
+      if(b.rd!==undefined){ const r=typeof b.rd==="string"?REG.get(b.rd):null; if(!r) cerr.push(w+": reading "+JSON.stringify(b.rd)+" is not a heading of a register");
+        else if(r.src!==b.src) cerr.push(w+": reading "+b.rd+" is of "+r.src+", not "+b.src); }
+      if(b.side!==undefined&&(typeof b.side!=="string"||!b.side)) cerr.push(w+": an empty side"); });
+    const read=by.filter(b=>b&&typeof b==="object"&&typeof b.rd==="string"&&REG.has(b.rd)&&REG.get(b.rd).src===b.src);
+    const imaged=read.filter(b=>!REG.get(b.rd).ocrOnly);
+    if(c.cl==="fact"&&!imaged.some(b=>REG.get(b.rd).label==="fact")) cerr.push(at+": \"fact\" rests on no reading the register labels fact, read on a page image (a citation alone leaves a statement unchecked)");
+    if(c.cl==="attributed"&&!imaged.length) cerr.push(at+": \"attributed\" rests on no reading read on a page image");
+    if(c.cl==="disputed"){ const sd=read.filter(b=>typeof b.side==="string"&&b.side);
+      if(new Set(sd.map(b=>b.side)).size<2||new Set(sd.map(b=>b.src)).size<2||new Set(sd.map(b=>b.rd)).size<2) cerr.push(at+": \"disputed\" without two sides, each read, from two sources"); }
+    if(c.cl==="uncertain"&&!by.length) cerr.push(at+": \"uncertain\" names no search (the sources searched, each with its locator)");
+    if(c.note!==undefined&&(typeof c.note!=="string"||!c.note||CLOCK.test(c.note))) cerr.push(at+": a note that is empty or carries a clock time (the hours are the tracks' timings): "+JSON.stringify(c.note)); });
+  /* the inventory is the sources' (the review of c69890a: its check was in no suite); a failure to build it is reported, not thrown */
+  let stale=[];
+  try{ const INV=require('./tools/step4/inventory.js'), inv=INV.inventory('.');
+    stale=[["docs/step4-evidence/inventory.json",JSON.stringify(inv,null,1)+"\n"],["docs/step4-evidence/inventory.md",INV.markdown(inv)+"\n"]]
+      .filter(([f,t])=>!fs.existsSync(f)||fs.readFileSync(f,'utf8')!==t).map(([f])=>f); }
+  catch(e){ stale=["(the inventory could not be built: "+e.message+")"]; }
+  if(stale.length) cerr.push("the inventory is out of date: "+stale.join(", ")+" (node tools/step4/inventory.js)");
+  cerr.forEach(e=>errs.push("claims: "+e));
+  console.log("statement claims: "+S.length+" narrative statements, "+n+" with a claim ("+(Object.entries(byKind).map(([k,v])=>k+" "+v).join(", ")||"none")+
+    "), "+(S.length-n)+" unchecked; "+REG.size+" readings in the registers; the inventory "+(stale.length?"OUT OF DATE":"current")+(cerr.length?"; "+cerr.length+" errors":"")); }
 /* T-3 (docs/FINAL_AUDIT.md): a warning fails unless it is acknowledged here by its exact text, with the reason it stands and where that is
    recorded ({w, why, see}); an acknowledged warning that is no longer raised fails too, until its entry is removed. None today. */
 const KNOWN_WARN=[];

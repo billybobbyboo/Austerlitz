@@ -133,7 +133,7 @@ var TERRAIN_LINES=[
  {t:"valley", n:"Litava bottom", p:[[511,138],[351,313],[297,372],[262,444]],
   note:"Frames the south-east of the field and funnels the Allied retreat toward the meres."},
  {t:"defile", n:"Augezd defile", p:[[297,372],[280,408],[262,444]],
-  note:"The neck of dry ground between the two meres. The only ordered way out for three Allied columns."},
+  note:"The neck of dry ground between the two meres. This map reads it as a way out for the Allied left in the afternoon."},
  {t:"dead", n:"Dead ground, Goldbach valley", p:[[221,192],[210,242],[201,281]],
   note:"Dead ground as seen from the Pratzeberg in this model's terrain - a derived reading. On the morning of the battle it was the fog that hid Saint-Hilaire's and Vandamme's divisions forming here."}
 ];

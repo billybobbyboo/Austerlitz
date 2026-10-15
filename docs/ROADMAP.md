@@ -11,8 +11,8 @@ from the code, the approach proposed, the work done conservatively, checked, rec
 |---|---|---|---|---|
 | 1 | **Suite hardening**: the fonts embedded first (so `check:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | merged (#49; `CHANGELOG.md`) |
 | 2 | **Integrity on screen**: one data task and a presentation part, decided together: the disputed hours marked, the plateau label tagged, the first claim labelled, the claim pill reworded, the contradictions fixed, the vines labelled | H-1 to H-5, H-7, H-9 to H-16, D-3 to D-6 | 125-129, 135; 142-161 | merged (#50; `CHANGELOG.md`) |
-| 3 | **Accessibility and robustness**: the shortcuts switch, hidden panels inert, the sources sheet a proper dialog, focus returned, reduced motion live and in CSS, the timeline's targets, focused map items drawn; the start-up message and the CDN integrity; "Whose eyes?" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134 | in review (#51); the screen-reader session not yet run |
-| 4 | **The sourcing stage**: Part A, an inventory of every narrative statement and a register of readings (as Stage 6 did for dress); per-statement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136 | after step 3 |
+| 3 | **Accessibility and robustness**: the shortcuts switch, hidden panels inert, the sources sheet a proper dialog, focus returned, reduced motion live and in CSS, the timeline's targets, focused map items drawn; the start-up message and the CDN integrity; "Whose eyes?" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |
+| 4 | **The sourcing stage**: Part A, an inventory of every narrative statement and a register of readings (as Stage 6 did for dress); per-statement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136; 176-197 | done on `claude/nice-dijkstra-mdyu2w` (draft PR #52; `CHANGELOG.md`); decisions 176-197 taken as recommended on 15 October 2026, to be implemented later |
 | 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note) | | open |
 | 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139 | open |
 
@@ -61,7 +61,7 @@ items 8 and 10; each default was implemented meanwhile in a commit that could be
 | 151 | H-14: remove "roughly 60,000" and "about 50,000 by the Allied estimate", which no record gives? | remove both; the second restored in step 4 if a source gives the Allied staff's estimate | step 2 (C12) |
 | 152 | H-14: allow the SUPERLATIVE pattern's seven other hits by name until step 4, and SOURCE_NOTE's "the hardest figures of all" permanently, as "a statement of method"? | yes | step 2 (C12) |
 | 153 | H-11: settle Kamensky's musketeer regiment as Ryazhsk, keeping Ryazan as the Materialien's and Duffy's reading? | yes, after a second reading of the Mikhailovsky-Danilevsky 1844 page images (register §6.8); `mikhailovsky1844` was already in `APPEARANCE_SOURCES` (since 6B) and is now cited by `COMPOSITION.kamensky` | step 2 (C14a) |
-| 154 | heightguns@8: grade B or C? | B kept; decided in step 4 from the Újezd local history | step 4 |
+| 154 | heightguns@8: grade B or C? | B kept; decided in step 4 from the Újezd local history (step 4 found that history has no battery: the 24 guns rest on a tourist website; the period sources give the sector, so B stands, heightguns@8 "Position: estimated", K9) | step 4 |
 | 155 | mark Suchet's and Caffarelli's division numbers and c_gren's artillery from the October returns? | yes, as Rivaud's and Drouet's are, with the returns named and no date claimed for 2 December | step 2 (C14a) |
 | 156 | take H-19's six Dress-note rewordings and the note assertion in step 2? | yes | step 2 (C16) |
 | 157 | I Corps: general reserve (the app) or the centre (the 30th Bulletin, Stutterheim, Mikhailovsky-Danilevsky)? | both readings marked in c_i's dossier now; the plan column and the role settled in step 4 | step 2 (C14a), then step 4 |
@@ -99,7 +99,7 @@ items 8 and 10; each default was implemented meanwhile in a commit that could be
     Mikhailovsky-Danilevsky p. 238's height near Schlapanitz; the Zuran story's "watched the Allied columns march off the Pratzen from here".
   - Strengths: Kienmayer's 6,800 against 6,880; what makes up IV Corps' 23,600 against its divisions' 20,300 (Varé's brigade may be
     counted twice); lich's "up to 7,000" beside Schönhals's 5,600; the Guard's guns (the Bulletin p. 450: forty pieces).
-  - The chapel battery: the Újezd local history (count, composition); heightguns@8's grade (question 154), and heightguns@8-9 reading
+  - The chapel battery: the Újezd local history (count, composition; step 4: no battery in it, see decision 154's row); heightguns@8's grade (question 154), and heightguns@8-9 reading
     "Position: reconstructed" beside "Position B".
   - The ice: the source of the drained count; Ségur's 1812 history for the "sun of Austerlitz" invocation.
   - The seven superlatives allowed by name until step 4 (`LANG_ALLOW`); Legrand's "roughly six times its number" (Thiebault p. 460: "40
@@ -149,12 +149,14 @@ the default, it is applied in step 3 after the answers; "where" names the step t
 | 172 | a message when a focused map item leaves the map; the map ring's contrast | both, in step 5 | step 5 |
 | 173 | the Eyes button's name | begins with its visible words; `aria-pressed` dropped (the name carries the state); the 5E check's assertions replaced equally strictly | step 3, after the answers |
 | 174 | the plateau reading at 720 px and below in Study | shown in the caption; then, the caption's box too narrow to hold it whole (decision 159), the owner's second answer: kept in the dispatch card | step 3, after the answers |
-| 175 | the screen-reader session | run by the owner or a tester; step 3 done when it is recorded | open until recorded |
+| 175 | the screen-reader session | run by the owner or a tester; step 3 done when it is recorded | recorded complete on the owner's word on 14 October 2026 (roadmap step 4's first commit); step 3 done |
 
 ### What step 3 handed on (fact, from its commits and their reviews; `CHANGELOG.md`)
 
-- **The screen-reader session** (`docs/step3-evidence/sr-session.md`, 24 items, NVDA with Chrome and VoiceOver with Safari): not run; nothing
-  a screen reader speaks is verified (question 175). Firefox, Safari and a GPU are not run either.
+- **The screen-reader session** (`docs/step3-evidence/sr-session.md`, 24 items, NVDA with Chrome and VoiceOver with Safari): recorded complete
+  on the owner's word on 14 October 2026 (decision 175), in the instruction that began step 4; no item results, versions or speech were given
+  with it, so the script's result column stays empty and none of its 24 items is recorded here as passed or failed. The automated checks
+  still run Chromium only (no Firefox, Safari or GPU).
 - **A-3:** done but for the event markers, 2.5.8's essential exception (decision 167); at 390 px the narrowest phases are 20 px wide, as before.
 - **Decision 174's reading:** in Study where CSS hides the card (430 px tall or less, the 390 px first screen under its card, the rail shown
   at 720 px and below) it shows nowhere, as before step 3; in Watch at 720 px and below it gives way whole where the caption cannot hold it.
@@ -166,6 +168,66 @@ the default, it is applied in step 3 after the answers; "where" names the step t
   cost to `pickFormation` is answered for the views measured.
 - **Recorded:** under software WebGL the effects' off and on recompiles every shader and slows the frames after it to about 9 s (also on the
   step-2 build); not measured on a GPU. The context-loss case's count of three r128's foreign-context warnings varies by run (24, 20).
+
+### Step 4: the owner decisions 176-197 (the answers)
+
+Put by step 4, each with its options, a recommendation and the conservative default implemented meanwhile, in full in
+`docs/step4-evidence/questions.md`. On 15 October 2026 the owner decided every one as recommended, conditions included ("Let's go with your
+recommendations for all questions"), to be implemented later ("Only record the decisions/your recommendations. We will implement later.").
+"Default" is what the build carries until then; 178, 179, 183, 185, 186, 188, 192 and 194 recommended it already. 189 is a reading by the
+owner or a tester.
+
+| # | question | recommended | default in the build |
+|---|---|---|---|
+| 176 | the II and III Columns' 04:00 against the disposition's seven (lang@1, prz@1) | retime to the sources, replacing sim-test's mechanism assertion with an equally strict one | 04:00 kept, two named conflicts, the texts naming the disposition's hour (K4) |
+| 177 | Friant at the Goldbach and Telnitz retaken (Davout's half past nine) | retime to the sources if `opening-2` measures unchanged | the map's hours kept, the texts naming Davout's; friant@1 and friant@2 named conflicts (K6) |
+| 178 | Kamensky's turn: a point at 09:45 or an interval | the point (no source gives an hour) | the point, its dispute naming the sequence (K4) |
+| 179 | the Russian Guard's attack and Rapp's charge | the windows and the engine's 11:15 kept, guard-broken disputed | the same (K4) |
+| 180 | Bagration's withdrawal and the end of the day | drop bag@8's dated departure if `opening-4` measures unchanged | bag@8 kept, flagged; the end disputed; bag@6 a named conflict (K5, K11) |
+| 181 | the forced dated legs c_gren@7/@8 and kollo@4/@5 | c_gren without its `at`; kollo kept | both kept, the readings in the notes (K5) |
+| 182 | I Corps as the centre and the French plan's "In hand" column | split the column if `plans-overview` holds its limit | one column, its orders as read (K7) |
+| 183 | drouet@6's grade | B | B, measured on the full check:visual (K8) |
+| 184 | the strengths' working figures | Kienmayer 6,340; Legrand's brigadiers as read; the rest kept | every figure kept, every note naming its basis (K10) |
+| 185 | the losses lede and tour stop 9 | attributed figures | the same (K10) |
+| 186 | the drained count | both counts kept, attributed | the same (K9) |
+| 187 | the claims on screen (vocabulary, an index, the dossiers) | one vocabulary; an index in the sources sheet first, measured | nothing new shown; the claims are data and the inventory |
+| 188 | the interpolated pill's rule and words | the minimal rule, "Position: interpolated" | the same (K2) |
+| 189 | decision 136's human second reading | the owner or a tester reads the 15 A-graded quotes on their page images | the machine second reading done and recorded (`3dafee8`); the human reading not done |
+| 190 | the opening's words, its bar and the events it shows | minimal rewordings no longer than the text, measured; no marking of the ceiling-derived climbs in the bar | tour stops 6 and 8 reworded (K11, `be730cf`); no marking |
+| 191 | places: Turas, Krug, Bellowitz, the post house, Kologrivov, rg_cav | Turas moved to Tuřany (2.85 km north-north-west), measured | nothing moves; the notes narrowed (K11, K12) |
+| 192 | track additions the readings suggest but do not place | none | none |
+| 193 | the Timing A of the events not examined in step 4 | grade each against the registers | A kept until examined, except where the readings contradict it |
+| 194 | the Russian records' "синій" drawn as "dark blue" | keep "dark blue" until a period colour sample or plate in colour is read | "dark blue" kept, each note naming the convention |
+| 195 | the Szekler hussars' cornflower blue (an A-graded 1805 record read on a later page) | read the 1805 page first | the record kept, its note saying so |
+| 196 | a formation waiting at its anchor graded by the next phase's grade (`confAt`; gqg A at the Zuran 11:15-12:00 since K8) | grade it by the phase whose text it shows, measured | `confAt` unchanged, the limit recorded |
+| 197 | the Guard's dawn grades (guard_inf@0, guard_cav@0, A), placed by the command post graded B | B for both, measured | A kept |
+
+### What step 4 hands on (fact, from its commits and their reviews; `CHANGELOG.md`)
+
+- **The owner decisions 176-197** above, decided as recommended and not yet implemented: a later task applies those whose recommendation
+  differs from the build's default (176, 177, 180, 181, 182, 184, 187, 190, 191, 193, 195, 196, 197); 189 is a human reading.
+- **The claims' reach:** 134 of the 696 narrative statements carry a claim; 562 remain unchecked, mostly formation acts, feature stories and
+  the analysis chapters outside the clusters read, but 38 of them rewritten in step 4 without a claim (among them the phase-2 to phase-5 ledes,
+  `SOURCE_NOTE.body[0]`, `body[5]`, `refs[0]`, `refs[1]`, `ANALYSIS[#north]`, tour stops 6 and 8). Nothing shows a claim to a visitor (question 187).
+- **The chronology's extractor** reads only clock-shaped hours: a bare "about eight" or the Bulletin's "one in the morning" goes unjudged
+  (`tools/stage2/chronology.js` `timesIn`).
+- **Readings not made:** Duffy (1977) and Smith (1998), cited for strengths and Gladkov, not read; the Russian Biographical Dictionary (1903),
+  cited for Kutuzov's reluctance and the Tsar's order (the kollo note, the Kollowrat story, ahq@3's act), not read; Suchet's report of
+  16 December 1805 read only as Sokolov quotes it; the French reports of losses read only through Sokolov; the Szekler 1805 page (question 195);
+  decision 136's human second reading (question 189). The step's readers were machine readers throughout.
+- **Records the reviews left:** C4.p8's further sources for the guns above Augezd (Stutterheim p. 78, Schönhals's guns by Tellnitz,
+  Lejeune's "la hauteur"); `TOUR[5].x`'s "Two divisions, no reserve committed" (C3.p13: the skeptic's rewording is longer than the opening's step-2 text,
+  question 190); `TOUR[6].x`'s "With the plateau gone" (the opening's step 3) beside the plateau label's about 17,050 Allied troops at
+  11:00 (H-3, handed on by step 2, not taken up); Caffarelli's artillery on 2 December (handed on by step 2; only the grenadiers' was read);
+  the Horse Guard eagle's accounts left incomplete in K3's review; the step-2 register's §2.3 and §2.6 resolving the French Stutterheim to
+  the German key (`docs/step2-evidence/second-reading.md`); the decision and guard-attack events say "The hour is disputed" in their why with no `dispute` (guard-attack live at
+  `opening-3`, decision 121); Maliutin leading a separate column on the day (the Chevalier Guard's history) while the map has him command the
+  Guard infantry; the eye-level caption's source attributions are presentation sentences in `app.js`, outside check:data's guard and the
+  claims; the lightNotes' sun and daybreak texts not reread.
+- **Measured:** `first-run-laptop` drops Liechtenstein's name at 04:00 since K8 (6 drops, its limit 16), gqg@0's grade B; every other case
+  of the full check:visual as step 3 measured it.
+- **To step 5 (records and polish):** H-19's spellings stay (data.js "Thiebault", "Vare", "Bessieres"; appearance.js "Thiébault", "Varé");
+  `tools/stage2/chronology.js`'s location fields beyond the rows step 4 touched.
 
 ## Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)
 

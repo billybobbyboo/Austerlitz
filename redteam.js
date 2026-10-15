@@ -229,23 +229,9 @@ const COUNTERFACTUAL=/\b(?:would(?: not)? have (?:been|[a-z]+(?:ed|en|wn|ung|ost
 ["had not been told that the centre was gone","the true ground would have under the true sun"]
   .forEach(t=>{ if(COUNTERFACTUAL.test(t)) fail("language",`COUNTERFACTUAL catches a record or a model sentence: "${t}"`); });
 const LANG_ALLOW=[
-  /* superlatives the SUPERLATIVE pattern found when it was added (roadmap step 2, H-14) and the audit did not name: judgements of the
-     fighting, the ground and a march that no record here attributes. The sourcing stage (question 130) attributes each to the account
-     that makes it, or drops it; each fix removes its own entry */
-  {where:"PHASES[#1].events[0][1]", phrase:"among the hardest of the day", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
-   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:63): a judgement of the fighting at Telnitz, unattributed"},
-  {where:"PHASES[#4].lede", phrase:"The hardest fighting for the plateau", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
-   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:85): a judgement of the fighting on the Pratzeberg, unattributed"},
-  {where:"FEATURES[#pratzeberg].story", phrase:"The hardest fighting on the plateau", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
-   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:639): the same judgement as the phase-4 lede"},
-  {where:"FEATURES[#telnitz].story", phrase:"arguably the fiercest of the day", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
-   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:672): hedged ('arguably') but not attributed, and set against the phase-4 lede's 'hardest'"},
-  {where:"FEATURES[#sokolnitz].why[0]", phrase:"The strongest defensible position on the lower Goldbach", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
-   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:677): a judgement of the ground, unattributed"},
-  {where:"EVENTS[#sokolnitz].why", phrase:"the strongest ground on the lower Goldbach", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
-   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (analysis.js:264): the same judgement of the ground"},
-  {where:"FEATURES[#viennaroad].story", phrase:"One of the most celebrated forced marches of the period", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
-   until:"roadmap step 4, the sourcing stage (question 130)", why:"H-14's class (data.js:746): a claim of reputation; by whom is not said"},
+  /* the seven superlatives the SUPERLATIVE pattern found when it was added (roadmap step 2, H-14) were allowed until roadmap step 4: each
+     was attributed to the account that makes the judgement, or dropped, in step 4's language commit (f9e1b4b), and its entry removed with it
+     (docs/step4-evidence/readings.md C6; CHANGELOG.md, roadmap step 4) */
   /* permanent: a statement of this map's own method, not a judgement of the battle */
   {where:"SOURCE_NOTE.body[2]", phrase:"the hardest figures of all", kind:"superlative", found:"SUPERLATIVE, roadmap step 2",
    until:null, perm:"a statement of method",
@@ -263,13 +249,14 @@ const KIND_PATTERN={certainty:"BANNED",causal:"CAUSAL",verdict:"VERDICT",superla
 const PATTERN_STEP={BANNED:"roadmap step 1",CAUSAL:"roadmap step 1",VERDICT:"roadmap step 1",SUPERLATIVE:"roadmap step 2",COUNTERFACTUAL:"roadmap step 2"};
 /* the review of C12 (roadmap step 2): LANG_STEP1 can only shrink (one entry left at the end of step 2), an entry without found can only be
    a BANNED, CAUSAL or VERDICT hit that step 1 left, and each found tag holds at most the hits its pattern found the day it was added
-   (SUPERLATIVE: seven until step 4 and one permanent; COUNTERFACTUAL: none, H-14's two were reworded), so a later step cannot add an entry
-   under an earlier pattern's tag */
-const LANG_STEP1_MAX=1, FOUND_MAX={"SUPERLATIVE, roadmap step 2":8,"COUNTERFACTUAL, roadmap step 2":0};
+   (SUPERLATIVE: seven until step 4, gone since, and one permanent; COUNTERFACTUAL: none, H-14's two were reworded), so a later step cannot add
+   an entry under an earlier pattern's tag */
+const LANG_STEP1_MAX=1, FOUND_MAX={"SUPERLATIVE, roadmap step 2":1,"COUNTERFACTUAL, roadmap step 2":0};   /* the superlatives' cap 8 until roadmap
+   step 4 (the day's hits); since step 4 removed the seven allowed until it (K3), the one permanent entry left (the review of f9e1b4b) */
 /* roadmap step 2, C28 (the implementation plan's completeness critic, item 3): an entry's until is checkable. The steps done are named
    here; an entry whose until begins with one of them is a finding (its task has landed, so the hit it allows must be gone, or the entry
    is stale), whether or not it still matches. Add a step here when its last commit lands */
-const DONE_STEPS=["roadmap step 1","roadmap step 2"];
+const DONE_STEPS=["roadmap step 1","roadmap step 2","roadmap step 3","roadmap step 4"];
 LANG_ALLOW.forEach(a=>{ if(typeof a.until==="string"&&DONE_STEPS.some(d=>a.until===d||a.until.startsWith(d+",")||a.until.startsWith(d+" ")))
   fail("language",`LANG_ALLOW entry "${a.phrase}" at ${a.where} is allowed until "${a.until}", a step already done (DONE_STEPS): fix the text or record why it stays`); });
 if(LANG_STEP1.length>LANG_STEP1_MAX) fail("language",`LANG_STEP1 can only shrink (${LANG_STEP1_MAX} at the end of roadmap step 2), it holds ${LANG_STEP1.length}`);
@@ -344,7 +331,7 @@ Object.keys(FOUND_MAX).forEach(tag=>{ const k=LANG_ALLOW.filter(a=>a.found===tag
     "can see the whole Allied left","Not visible from the plateau","the fourth, the counter-march","Cut the Brunn road",
     "Emperor Francis I present","Chevalier Guard and Guard cavalry regiments","had stalled because Liechtenstein",
     "Vienna road at Raigern","both emperors in attendance","Guard infantry break two French battalions and carry off"];
-  const src={}; ['data.js','appearance.js','analysis.js','world.js','app.js','shell.html'].forEach(f=>src[f]=fs.readFileSync(f,'utf8'));   /* appearance.js since Stage 6B */
+  const src={}; ['data.js','appearance.js','analysis.js','narrative.js','world.js','app.js','shell.html'].forEach(f=>src[f]=fs.readFileSync(f,'utf8'));   /* appearance.js since Stage 6B, narrative.js since roadmap step 4 */
   let n=0; RETIRED.forEach(ph=>Object.keys(src).forEach(f=>{ if(src[f].indexOf(ph)>=0){ fail("retired",`${f} still says "${ph}"`); n++; } }));
   console.log("retired claims checked: "+RETIRED.length+" phrases across "+Object.keys(src).length+" sources, "+n+" found"); }
 
@@ -361,12 +348,13 @@ Object.keys(units).forEach(id=>{
    where that is recorded ({w, why, see}); an acknowledged warning that is no longer raised is a finding too, until its entry is removed.
    This block stays after every warn() and before the report. */
 const KNOWN_WARN=[
-  {w:"movement: cavalry mean rate 0.82 is not above infantry 1.26",
+  {w:"movement: cavalry mean rate 0.82 is not above infantry 1.30",
    why:"a model property kept on purpose since the chronology data task: the dated moves are shorter and faster, and the cavalry's slow "+
        "legs are the undated creeping moves of decision 45; a warning, not a finding, and not changed. The infantry mean was 1.23 until "+
-       "roadmap step 2 dated drouet@3's departure at Soult's advance (08:45, H-2): its leg no longer creeps from 04:00, so it is faster",
+       "roadmap step 2 dated drouet@3's departure at Soult's advance (08:45, H-2): its leg no longer creeps from 04:00, so it is faster; "+
+       "1.26 until roadmap step 4 dated dok@1's departure at 07:00, as the disposition ordered (decision 125 (b)), for the same reason",
    see:"docs/STAGE2_SPEC.md §M.12 (:1303) and §M.13 (:1407), on the creeping moves of §M.10; CHANGELOG.md, the chronology data task and the Stage 2C "+
-       "precondition (the march rates), and roadmap step 2 (H-2, Drouet's departure)"}];
+       "precondition (the march rates), roadmap step 2 (H-2, Drouet's departure) and roadmap step 4 (K4, the I Column's departure)"}];
 { const uw=[...new Set(W_)];
   uw.filter(w=>!KNOWN_WARN.some(k=>k.w===w)).forEach(w=>fail("warning",`not acknowledged in KNOWN_WARN: ${w}`));
   KNOWN_WARN.filter(k=>!uw.includes(k.w)).forEach(k=>fail("warning",`acknowledged but no longer raised (remove it from KNOWN_WARN): ${k.w}`));

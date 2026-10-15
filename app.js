@@ -37,8 +37,7 @@ var OVERLAYS = {
 1:{ lines:[{pts:[[223,82],[229,116],[238,158],[213,222],[205,277],[208,365],[212,408]],side:"fr",label:"French line on the Goldbach"}],
     arrows:[
      {leg:["kienmayer",1,2],kind:"attack",side:"al",label:"Kienmayer"},
-     {pts:[[291,332],[272,359],[247,381]],kind:"move",side:"al",label:"I Column descends",
-      interp:"unsettled: the phase-1 timeline has the descent begin c. 07:30, the event and the track from 04:00 (the unresolved Dokhturov conflict, dok@1)"},
+     {leg:["dok",0,1],kind:"move",side:"al",label:"I Column descends"},
      {leg:["friant",1,2],kind:"move",side:"fr",label:"Friant's approach march"}],
     obj:[[212,408,"Telnitz"]]},
 
@@ -61,7 +60,7 @@ var OVERLAYS = {
 
 4:{ arrows:[
      {pts:[[259,316],[270,300],[280,291]],kind:"counter",side:"al",label:"Kamensky turns about",
-      interp:"unsettled: the phase-4 timeline dates the turn c. 09:45, his own record and the track in phase 3 (the unresolved Kamensky conflict, kamensky@3 and kamensky@4)"},
+      interp:"unsettled: no account read gives the hour of the turn; the phase-4 timeline dates it c. 09:45, his own record and the track in phase 3 (the Kamensky conflict, kamensky@3 and kamensky@4)"},
      {pts:[[324,233],[280,239],[289,273]],kind:"counter",side:"al",label:"Jurczek's Austrians",interp:"unmodelled: Jurczek's brigade has no track of its own"},
      {pts:[[213,299],[233,307],[246,307]],kind:"move",side:"fr",label:"Levasseur up the Goldbach",interp:"unmodelled: Levasseur's brigade has no track of its own"},
      {leg:["caffarelli",0,5],kind:"attack",side:"fr",label:"Caffarelli"},
@@ -3562,8 +3561,8 @@ function eyeCaption(){
   var chapel=!!(st&&/chapel of St Anthony/.test(st.act||""));
   var h='<p><span class="ltag derived">'+iconSVG(TOKENS.sym.layer.derived)+'derived</span> Eye level at '+esc(EYES.LABEL[commandView])+', '+esc(fmtClock(clock))+
     '. Relief drawn &times;'+esc(fmtFactor(DISPLAY.factor))+'; figures are symbols many times life size.</p><p class="eyenote">'+esc(EYES.NOTE)+'</p>';
-  if(chapel) h+='<p class="eyenote">'+esc("From the chapel of St Anthony the model shows little of the Satschan pond; a source records Napoleon watching the end from there. "+
-    "A documented mismatch between the model and the source: the chapel's position is approximate and the relief stylised.")+'</p>';
+  if(chapel) h+='<p class="eyenote">'+esc("From the chapel of St Anthony the model shows little of the Satschan pond. Schönhals (1873) and a French officer's note of 1806 bring Napoleon there at the end, and Lejeune has him on a knoll above Augezd facing the lakes; "+
+    "if that knoll is the chapel's height, as this map takes it, the model and the source disagree: the chapel's position is approximate and the relief stylised.")+'</p>';
   if(EYE.capH!==h){ EYE.capH=h; b.innerHTML=h; }
   b.hidden=false;
 }
@@ -6332,18 +6331,19 @@ function outcomeOf(id){
   }
   return null;
 }
+/* a track entry's own claim, the latest up to the current phase (heightguns@7 "recon", @8 "est" since roadmap step 4), else null; claimOf and posClaimOf read it */
+function explicitClaim(id){
+  var f=FORMATIONS[id], explicit=null;
+  if(f.track){ for(var i=0;i<=curPhase;i++){ var e=f.track[i]; if(e&&e.claim) explicit=e.claim; } }
+  return explicit;
+}
 function claimOf(id,cf){
-  var f=FORMATIONS[id];
-  var explicit=null;
-  if(f.track){
-    for(var i=0;i<=curPhase;i++){ var e=f.track[i]; if(e&&e.claim) explicit=e.claim; }
-  }
-  return explicit || CLAIM_FROM_CONF[cf] || "est";
+  return explicitClaim(id) || CLAIM_FROM_CONF[cf] || "est";
 }
 var dossierExpanded=false;
 function compactCard(id){
   var f=FORMATIONS[id];
-  var st=liveStatus(id,curPhase), cf=aggConf(id,curPhase), cl=claimOf(id,cf);
+  var st=liveStatus(id,curPhase), cf=aggConf(id,curPhase);
   var s2=f.track?stateAt(id,textPhase(id,clock)):null, wt=f.track?waitingFor(id,clock):null, tmg=timingNow(id);
   var nat=NATION[f.nation];
   var wrap=el("div","dossier card-compact");
@@ -6354,7 +6354,7 @@ function compactCard(id){
   wrap.appendChild(head);
   var pills='';
   if(st) pills+=statusPill(st);
-  pills+=posClaimPill(cl);
+  pills+=posClaimPill(posClaimOf(id,cf));
   pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
   if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
   wrap.appendChild(el("div","pillrow",pills));
@@ -6480,7 +6480,7 @@ function dossierFormation(id){
   var pills='';
   if(st) pills+=statusPill(st);
   var cl=claimOf(id,cf);
-  pills+=posClaimPill(cl);
+  pills+=posClaimPill(posClaimOf(id,cf));
   pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
   if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
   if(commandView!=="none"){
@@ -6591,7 +6591,8 @@ function dossierFormation(id){
   }
 
   if(f.note) wrap.appendChild(el("p","note",esc(f.note)));
-  wrap.appendChild(el("p","conf",(cl!==CLAIM_FROM_CONF[cf]?esc(CLAIM[cl].note)+" ":"")+esc(CONF_TEXT[cf]||"")+(aggInterp(id,curPhase)?" "+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));   /* decision 128 (a): the position's grade text; CLAIM's note only where a track entry names its own claim (heightguns@8-9, where the entry's claim "recon" differs from its grade B), which is that entry's hedge */
+  var pk=posClaimOf(id,cf);   /* roadmap step 4 (the review of b2fc7b5): under "Position: interpolated" the grade's "documented in the sources" is not said */
+  wrap.appendChild(el("p","conf",(cl!==CLAIM_FROM_CONF[cf]?esc(CLAIM[cl].note)+" ":"")+(pk==="interp"?"":esc(CONF_TEXT[cf]||""))+(aggInterp(id,curPhase)?(pk==="interp"?"":" ")+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));   /* decision 128 (a): the position's grade text; CLAIM's note only where a track entry names its own claim (heightguns@8-9, where the entry's claim "recon" differs from its grade B), which is that entry's hedge */
 
   var act=el("div","dact");
   var btn=el("button","t","Centre the map here");
@@ -6612,7 +6613,18 @@ function claimPill(cl){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS
 /* owner decision 128 (a) (docs/FINAL_AUDIT.md H-5): a formation's pill is its position's claim, worded as the position's. claimOf gives it
    (a track entry's own claim, else CLAIM_FROM_CONF of the position's grade); it says nothing of the act, the role or the notes, whose own
    claims are the sourcing stage's (128 (b)). An event's pill keeps CLAIM's words (claimPill) */
-var POS_CLAIM={fact:"Position: documented", est:"Position: estimated", recon:"Position: reconstructed"};
+var POS_CLAIM={fact:"Position: documented", est:"Position: estimated", recon:"Position: reconstructed", interp:"Position: interpolated"};
+/* roadmap step 4 (decision 128 (b); docs/FINAL_AUDIT.md H-5; the C7 design skeptic's I5): the pill's key. A track entry's own claim wins
+   (heightguns@7 "recon", @8 "est" since roadmap step 4); else the position's grade's (CLAIM_FROM_CONF), except that a position the clock interpolates between anchors
+   whose grade reads "documented" says "interpolated": the anchors are documented, the point between them is not (H-5: 825 of the leaves'
+   ten-minute samples). B and C interpolations keep "estimated" and "reconstructed", which never overclaimed. claimOf stays the claim
+   CLAIM's notes read (the dossier's grade text) */
+function posClaimOf(id,cf){
+  var explicit=explicitClaim(id);
+  if(explicit) return explicit;
+  var k=CLAIM_FROM_CONF[cf]||"est";
+  return (k==="fact"&&aggInterp(id,curPhase))?"interp":k;
+}
 function posClaimPill(cl){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS.sym.claim[cl])+esc(POS_CLAIM[cl]||CLAIM[cl].label)+'</span>'; }
 function sect(title,html,isDl,layer){
   var d=el("div","sect");
@@ -6762,7 +6774,7 @@ function dossierEvent(eid){
     same.forEach(function(x){ var li=el("li"), b=el("button","linkb",esc(x.n+evNote(x))); b.addEventListener("click",function(){ select("e",x.id); }); li.appendChild(b); ulS.appendChild(li); });
     sS.appendChild(ulS); wrap.appendChild(sS); }
   wrap.appendChild(el("p","conf",esc(CLAIM[e.claim].note)+
-    (exact||e.dispute?"":" The hour is not fixed in the sources, so this is shown as an interval rather than a timestamp.")));
+    (exact||e.dispute?"":" Shown as an interval rather than a timestamp: a process, or an hour this map does not fix to the minute.")));
   var act=el("div","dact");
   var b1=el("button","t","Go to this moment");
   b1.addEventListener("click",function(){ stopPlay(); setClock(evClock(e)); centreOnMap(e.p,96); });
@@ -6915,7 +6927,7 @@ function arrowNotes(){
   return ["An arrow drawn for a phase shows the movement the model makes during that phase. "+d+" of the "+n+" arrows are drawn from the formation's own modelled route, so their ends are its modelled positions; they move with the model.",
     "The others are interpretive and marked as such in the data: "+(k.route||0)+" ordered routes (dashed), "+(k.objective||0)+" that point at a place or objective rather than a modelled position, "+
       (k.group||0)+" that stand for several formations, "+(k.unmodelled||0)+" for bodies the map does not track, and "+(k.halt||0)+" halt bar, a column stopped short of its objective.",
-    "Hand-authored, because this map's own texts disagree about the hour and the sources have not been checked; each label carries the mark ("+LABELS.arrow.unsettled+"): "+uns.join("; ")+"."];
+    "Hand-authored, because the hour is not settled: the accounts read give none, or disagree with each other or with this map's timing, which it keeps; each label carries the mark ("+LABELS.arrow.unsettled+"): "+uns.join("; ")+"."];
 }
 /* Stage 4B (docs/STAGE4_SPEC.md section A.5; decisions 68-71): how the light is drawn, a presentation note of the sources sheet
    (not SOURCE_NOTE): derived from astronomy and the app's clock, with what it is not */
@@ -6985,7 +6997,7 @@ function openSources(o){
     /* Stage 6C (docs/STAGE6_SPEC.md section 4.3 item 6): how the troops are drawn, counted from appearance.js and KIT */
     '<h3>How the troops are drawn</h3><ul class="bul">'+troopNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
     '<h3>How the standards are drawn</h3><ul class="bul">'+standardNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
-    '<h3>The appearance table\'s sources</h3><ul class="bul">'+Object.keys(APPEARANCE_SOURCES).map(function(k){ var S=APPEARANCE_SOURCES[k];
+    '<h3>The works read here (for the appearance table and the statements\' claims)</h3><ul class="bul">'+Object.keys(APPEARANCE_SOURCES).map(function(k){ var S=APPEARANCE_SOURCES[k];
       return '<li>'+esc(S.au+", "+S.ti+" ("+S.pub+", "+S.d+")")+'</li>'; }).join('')+'</ul>'+
     '<h3>How the light is drawn</h3><ul class="bul">'+lightNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>';
   m.dataset.sources="1";
@@ -10147,6 +10159,25 @@ var AUSTERLITZ_DEBUG=(function(){
       if(!/\u2248 \d+\u2013\d+ m on this model/.test(t)) bad.push(tl.n+" lacks a range in metres"); });
     ck("dossiers: elevations are metres through GEOREF, never model units", bad.length===0,
       bad.length?bad.join("; "):FEATURES.length+" place dossiers and "+TERRAIN_LINES.length+" terrain-study dossiers");
+
+    /* 7b. roadmap step 4 (decision 128 (b); docs/FINAL_AUDIT.md H-5): the drawn dossier's position pill. Every tracked formation on the field
+       at four clocks, selected in Study: its one claim pill in #drawer-body reads "Position: interpolated" exactly where the position shown
+       is interpolated between anchors whose grade would read "documented" and the track names no claim of its own, else POS_CLAIM's
+       words for its grade's key (or its own claim's); the key computed here from confAt and the track, not through posClaimOf */
+    (function(){ var keepC=clock, pres=presentation, pbad=[], seen={}, n=0;
+      setPresentation("study");
+      [480,585,690,840].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false});
+        Object.keys(FORMATIONS).forEach(function(id){ var f=FORMATIONS[id]; if(!f.track||!posNow(id)) return;
+          var ex=null; for(var i=0;i<=curPhase;i++){ var e=f.track[i]; if(e&&e.claim) ex=e.claim; }
+          var c=confAt(id,clock), k=ex||CLAIM_FROM_CONF[c.cf]||"est"; if(!ex&&k==="fact"&&c.interp) k="interp";
+          select("f",id); var P=document.querySelectorAll("#drawer-body .pill[class*='claim-']"); n++;
+          if(P.length!==1){ pbad.push(id+" at "+fmtClock(t)+": "+P.length+" claim pills"); return; }
+          var cls=(P[0].className.match(/claim-(\w+)/)||[])[1], txt=P[0].textContent;
+          if(cls!==k||txt!==POS_CLAIM[k]) pbad.push(id+" at "+fmtClock(t)+": \u201c"+txt+"\u201d ("+cls+"), want \u201c"+POS_CLAIM[k]+"\u201d ("+k+")");
+          seen[k]=(seen[k]||0)+1; }); });
+      select(null,null); setClock(keepC,{instant:true,force:true,camera:false}); setPresentation(pres); finishTween();
+      ck("position pill: the dossier drawn says \u201cPosition: interpolated\u201d where the position is interpolated between documented anchors, else its grade's words (roadmap step 4; decision 128 (b), H-5)",
+        n>0&&!pbad.length&&!!seen.interp&&!!seen.fact, n+" dossiers at four clocks ("+Object.keys(seen).map(function(k){ return k+" "+seen[k]; }).join(", ")+")"+(pbad.length?"; WRONG: "+pbad.slice(0,5).join("; "):"")); })();
 
     /* 8. a selection is always shown somewhere, and clearing it clears the dimming */
     var steps=[], okAll=true;
