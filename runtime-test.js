@@ -458,7 +458,8 @@ try{
 
   /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): an arrow the data marks unsettled carries its mark on its label in its phase,
      and no other arrow does; the sources sheet's arrow note names the mark. A disputed event's dossier carries the mark after its clock and
-     its dispute in a section of its own, and the interval sentence ("not fixed in the sources") is not added under a dispute; every other
+     its dispute in a section of its own, and the interval sentence ("Shown as an interval rather than a timestamp", since roadmap step 4; "not fixed
+     in the sources" until then) is not added under a dispute; every other
      interval event keeps it. Each count must be above zero (the check reads something) */
   { const MARK=" ("+LABELS.arrow.unsettled+")"; let nA=0, nPh=0;
     Object.keys(OVERLAYS).forEach(ph=>{ const uns=(OVERLAYS[ph].arrows||[]).filter(a=>/^unsettled:/.test(a.interp||""));
@@ -474,7 +475,7 @@ try{
       EVENTS.forEach(e=>{ made=[]; dossierEvent(e.id);
         const h=made.map(x=>x.innerHTML).join("\n"), w=evWindow(e), iv=w[0]!==w[1], dis=e.claim==="disputed";
         const cm=h.match(/<p class="dh-cmd">([^<]*)<\/p>/), clk=cm?cm[1]:"";
-        const sect='<h3>When it happened: disputed</h3><p class="ev-why">'+esc(e.dispute)+'</p>', sent=h.indexOf("The hour is not fixed in the sources")>=0;
+        const sect='<h3>When it happened: disputed</h3><p class="ev-why">'+esc(e.dispute)+'</p>', sent=h.indexOf("Shown as an interval rather than a timestamp")>=0;
         if(!cm) throw new Error("event "+e.id+": its dossier has no clock line");
         if(clk.endsWith(esc(" ("+LABELS.event.disputed+")"))!==dis) throw new Error("event "+e.id+": the clock line \""+clk+"\" "+(dis?"lacks":"carries")+" the disputed mark");
         if((h.indexOf(sect)>=0)!==!!e.dispute) throw new Error("event "+e.id+": its dispute section "+(e.dispute?"missing":"shown without a dispute"));
@@ -553,6 +554,8 @@ try{
         /* roadmap step 4 (the review of 69031df): no track claim in the data differs from its grade since heightguns@8 became "est", so the
            probe's temporary claim holds the dossier's rule that an explicit claim other than its grade's brings CLAIM's own note */
         if(conf(probe).indexOf(CLAIM.recon.note)<0) throw new Error(probe+": an explicit claim other than its grade's does not bring CLAIM's own note");
+        tr[k0].claim=CLAIM_FROM_CONF[aggConf(probe,curPhase)];   /* the review of e7f0df1: and one equal to its grade's brings none */
+        if(conf(probe).indexOf(CLAIM[tr[k0].claim].note)>=0) throw new Error(probe+": an explicit claim equal to its grade's brings CLAIM's own note");
       } finally { if(keep===undefined) delete tr[k0].claim; else tr[k0].claim=keep; document.createElement=mk; }
       setClock(T_MIN); const a0=Object.keys(FORMATIONS).find(id=>FORMATIONS[id].track&&posNow(id)&&expKey(id)==="fact");
       if(!a0) throw new Error("position pills: no documented, not interpolated leaf at "+fmtClock(T_MIN));

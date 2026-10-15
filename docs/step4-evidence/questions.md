@@ -106,7 +106,7 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
 - *Recommendation.* (a); (c) none; (d) keep. *Default.* The same. *Status.* `TOUR[7].x` reworded, shorter (`be730cf`); `TOUR[5].x` reworded, of the same length (K11).
 
 **191. Places and the Guard cavalry: Turas, Krug, Bellowitz, the Posoritz post house, Kologrivov and rg_cav.**
-- *Options.* Turas moved to the register's point (2.85 km WNW) or kept; the others kept or moved to weaker identifications.
+- *Options.* Turas moved to the register's point (2.85 km north-north-west; the C6 proposal's "WNW" was wrong, the review of `e7f0df1`) or kept; the others kept or moved to weaker identifications.
 - *Recommendation.* Turas moved, measured; the others kept; rg_cav a note. *Default.* Nothing moves. *Status.* Implemented (K11): nothing moves; the notes narrowed.
 
 **192. Track additions the readings suggest but do not place.**

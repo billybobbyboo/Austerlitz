@@ -25,8 +25,8 @@
  },
  "byClaim": {
   "unchecked": 562,
-  "attributed": 53,
-  "disputed": 63,
+  "attributed": 54,
+  "disputed": 62,
   "uncertain": 5,
   "derived": 2,
   "interpretation": 11
@@ -537,7 +537,7 @@
    "file": "data.js",
    "line": 94,
    "label": null,
-   "text": "Liechtenstein's and Uvarov's horse charge the French cavalry screen and Murat answers with Nansouty's and d'Hautpoul's cuirassiers. The Santon and its eighteen guns hold the flank, Blasowitz falls, and Bagration is levered away from the rest of the Allied army. On the plateau, Saint-Hilaire's brigades carry their part of the Pratzen heights with their own charge, as Thiebault tells it, and Schönhals has Soult send Levasseur's brigade to support their right.",
+   "text": "Liechtenstein's and Uvarov's horse charge the French cavalry screen and Murat answers with Nansouty's and d'Hautpoul's cuirassiers. The Santon and its eighteen guns hold the flank, Blasowitz falls; Thiers has its fall lever Bagration away from the rest of the Allied army, while in Schönhals his line is broken later, by Caffarelli's, Suchet's and d'Hautpoul's attacks. On the plateau, Saint-Hilaire's brigades carry their part of the Pratzen heights with their own charge, as Thiebault tells it, and Schönhals has Soult send Levasseur's brigade to support their right.",
    "claim": "unchecked",
    "by": []
   },
@@ -5173,7 +5173,7 @@
    "file": "data.js",
    "line": 589,
    "label": null,
-   "text": "Falls back fighting as Blasowitz is lost",
+   "text": "Falls back fighting as Blasowitz is lost (this map's sequence; Schönhals has its line broken later)",
    "claim": "unchecked",
    "by": []
   },
@@ -5399,25 +5399,28 @@
    "file": "data.js",
    "line": 614,
    "label": null,
-   "text": "3,700 horse (Duffy 1977; Smith 1998, cited, not read). Kologrivov's command on 2 December is in Sokolov alone, with no source on his page; Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Malyutin's separate column. The first name 'Andrei' is cited, not read",
-   "claim": "disputed",
+   "text": "3,700 horse (Duffy 1977; Smith 1998, cited, not read). Kologrivov's command on 2 December is in Sokolov alone, with no source on his page; Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column. The first name 'Andrei' is cited, not read",
+   "claim": "attributed",
    "by": [
     {
      "src": "sokolov2006",
      "at": "t. II, p. 199",
-     "rd": "sokolov2006.p199.kologrivov",
-     "side": "Kologrivov commanded the Guard cavalry on 2 December"
+     "rd": "sokolov2006.p199.kologrivov"
     },
     {
      "src": "kavalergard1851",
      "at": "pp. 56-57",
-     "rd": "kavalergard1851.p56-57.malutin-blazovits",
-     "side": "the Chevalier Guard came up in Malyutin's column"
+     "rd": "kavalergard1851.p56-57.malutin-blazovits"
     },
     {
      "src": "mikhailovsky1844",
      "at": "pp. 144-145",
      "rd": "mikhailovsky1844.p144-145.guard-commanders"
+    },
+    {
+     "src": "kavalergard1851",
+     "at": "p. 54",
+     "rd": "kavalergard1851.p54.march-commanders"
     }
    ]
   },
@@ -6292,7 +6295,7 @@
    "file": "data.js",
    "line": 710,
    "label": null,
-   "text": "This map reads it as the hinge of the Allied right onto the centre; Thiers has its loss lever Bagration off the army, and Schönhals separates Bagration later, toward noon",
+   "text": "This map reads it as the hinge of the Allied right onto the centre; Thiers has its loss lever Bagration off the army, while Schönhals has Bagration's line broken later, by Caffarelli's attack toward noon and d'Hautpoul's charge",
    "claim": "interpretation",
    "by": [
     {
@@ -6789,7 +6792,7 @@
    "file": "data.js",
    "line": 757,
    "label": null,
-   "text": "Post station on the Olmutz highway north of Holubitz, named in 1805 after Posořitz (Pozořice), whose parish included Holubitz and Kruh; position approximate (about 1 km)",
+   "text": "Post station on the Olmutz highway north of Holubitz, named after Posoritz, whose parish included Holubitz and Kruh; position approximate (about 1 km)",
    "claim": "attributed",
    "by": [
     {
@@ -6855,7 +6858,7 @@
    "file": "data.js",
    "line": 768,
    "label": null,
-   "text": "Positions here are reconstructed from standard accounts of the battle. Village-level locations, the sequence of attacks and the hours given are well documented. Exact frontages, the spacing between formations and the precise placement of cavalry reserves are not — a Napoleonic corps occupied a shifting area of ground, not a point.",
+   "text": "Positions here are reconstructed from standard accounts of the battle. Village-level locations and the sequence of attacks follow the accounts; the hours are partly dated in the sources read, partly disputed between them, and mostly this map's own, as each statement's claim and each move's timing say. Exact frontages, the spacing between formations and the precise placement of cavalry reserves are not — a Napoleonic corps occupied a shifting area of ground, not a point.",
    "claim": "unchecked",
    "by": []
   },
@@ -6905,7 +6908,7 @@
    "file": "data.js",
    "line": 773,
    "label": null,
-   "text": "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; the exact place of the Posoritz post house; the true position of Turas (it is Tuřany in Wolny's topography of 1836, and the Czech register places it about 2.9 km west-north-west of where this map draws it); Kologrivov's command on 2 December, which rests on Sokolov alone (Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Malyutin's separate column); when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and the hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map since roadmap step 4, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns at 07:30 in Schönhals, the III at 07:00 in Przybyszewski's report and the II coming down at 08:00 in Buxhowden's, but from 04:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map), when Friant's division left Raigern (at 05:00, or between 05:30 and 06:00, in Davout's two reports, about 06:00 in Sokolov; from 04:00 on the map), when its leading brigade reached the Goldbach (about 09:00 in Stutterheim and the Moniteur's remarks of 1806; 08:00 on the map) when it retook Telnitz (in French hands at 09:30 in Davout's report, then lost again; 08:30 on the map), and when Bagration's corps fell back (with Blasowitz's fall on the map, 11:15; after an attack on its left toward noon in Schönhals). The map keeps its timing for Kamensky's turn, Rapp's charge, the II and III Columns, Friant's division and Bagration's corps. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Napoleon is recorded watching the end from there.",
+   "text": "Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whether vines stood at Telnitz and at Stare Vinohrady in 1805; the upper bound of the Russian Guard's attack; Bagration's exact line at dawn; the exact place of the Posoritz post house; the true position of Turas (it is Tuřany in Wolny's topography of 1836, and the Czech register places it about 2.8 km north-north-west of where this map draws it); the positions of Krug and Bellowitz, which no source read fixes; Kologrivov's command on 2 December, which rests on Sokolov alone (Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column); when Blasowitz fell; when Napoleon took post on the Zuran; when Bernadotte's corps, Drouet's division with it, crossed the Goldbach; how many guns stood by the chapel of St Anthony, and whose; how many men drowned in the meres; how Suchet's and Caffarelli's divisions were numbered on the day (Suchet's the 3rd of V Corps in both October returns read, Gazan's the 2nd on 26 October; Caffarelli's, under Bisson on 28 October, the 1st of III Corps); the brigade of Gladkov cited from Duffy and Smith, which no source read names; whether Uvarov's regiments were with Liechtenstein's column or had gone to Bagration the evening before; the numbers of Rivaud's and Drouet's divisions in I Corps, which the October returns give differently; and the hours on which the accounts read disagree with each other or with this map's timing: when the columns left the plateau (at 07:00 as the disposition ordered, the I Column at seven in Buxhowden's and Kutuzov's reports and so on the map since roadmap step 4, half past six for the left wing in Schönhals, between seven and eight in Mikhailovsky-Danilevsky; the II and III Columns at 07:30 in Schönhals, the III at 07:00 in Przybyszewski's report and the II coming down at 08:00 in Buxhowden's, but from 04:00 on the map), when Kamensky turned his brigade about (no account read gives the hour; at 09:45 in the event, in the 08:45 phase in his brigade's record), when Rapp's counter-charge went in (by about noon in Schönhals, before one by the order of the Bulletin's narrative, about 13:00 in Rapp's and Ségur's memoirs; from 11:15 on the map), when Friant's division left Raigern (at 05:00, or between 05:30 and 06:00, in Davout's two reports, about 06:00 in Sokolov; from 04:00 on the map), when its leading brigade reached the Goldbach (about 09:00 in Stutterheim and the Moniteur's remarks of 1806; 08:00 on the map), when it retook Telnitz (in French hands at 09:30 in Davout's report, then lost again; 08:30 on the map), and when Bagration's corps fell back (with Blasowitz's fall on the map, 11:15; after an attack on its left toward noon in Schönhals). The map keeps its timing for Kamensky's turn, Rapp's charge, the II and III Columns, Friant's division and Bagration's corps. Duffy (1977) and Smith (1998), cited here for strengths, were not read. Kamensky's musketeer regiment is named here as Mikhailovsky-Danilevsky names it, Ryazhsk; the Materialien of 1806 give Ryazan, as this map earlier cited from Duffy, which is kept as the other reading. Two known limits of the terrain model are left as they are rather than reshaped to fit: its stream beds are not downhill at every point (reverse gradients of up to about 10 m within a reach), and from the chapel of St Anthony it does not show the centre of the Satschan pond, although Napoleon is recorded watching the end from there.",
    "claim": "unchecked",
    "by": []
   },
@@ -6955,7 +6958,7 @@
    "file": "data.js",
    "line": 779,
    "label": null,
-   "text": "Order-of-battle figures are this map's working figures, many first taken from Duffy (1977) and Smith (1998), cited and not read; each formation's note says where its figure comes from and what the sources read give.",
+   "text": "Order-of-battle figures are this map's working figures, many first taken from Duffy (1977) and Smith (1998), cited and not read; where a formation's note names a source or gives what the sources read, it says so, and a figure without a note is this map's.",
    "claim": "unchecked",
    "by": []
   },
@@ -7281,7 +7284,7 @@
    "file": "analysis.js",
    "line": 50,
    "label": null,
-   "text": "The northern battle was a holding action that Lannes turned into an advance. This map reads the Santon, scarped and carrying eighteen guns, as anchoring the flank, so that Bagration could not get past it. When Liechtenstein's and Uvarov's horse charged, Murat answered with Nansouty's and d'Hautpoul's cuirassiers. Blasowitz fell, about 11:15 by this map's reckoning (no source read gives the hour), and Bagration was levered off the rest of the army, withdrawing on Rausnitz; Schönhals has his battalions thrown into disorder after an attack on his left toward noon, when the Guards had given way, then gathered again, somewhat, on the height by Rausnitz.",
+   "text": "The northern battle was a holding action that Lannes turned into an advance. This map reads the Santon, scarped and carrying eighteen guns, as anchoring the flank, so that Bagration could not get past it. When Liechtenstein's and Uvarov's horse charged, Murat answered with Nansouty's and d'Hautpoul's cuirassiers. Blasowitz fell, about 11:15 by this map's reckoning (no source read gives the hour); Thiers has its fall lever Bagration off the rest of the army, withdrawing on Rausnitz, while Schönhals has his battalions thrown into disorder after an attack on his left toward noon, when the Guards had given way, then gathered again, somewhat, on the height by Rausnitz.",
    "claim": "unchecked",
    "by": []
   },
@@ -8043,7 +8046,7 @@
    "file": "analysis.js",
    "line": 170,
    "label": null,
-   "text": "Descend from the southern plateau, force the crossing at Telnitz, then wheel north-west toward the Turas wood (the disposition's words).",
+   "text": "Descend from the southern plateau, force the crossing at Telnitz, then wheel north-west toward the Turas wood (the disposition's name for it).",
    "claim": "unchecked",
    "by": []
   },
@@ -9045,7 +9048,7 @@
    "file": "analysis.js",
    "line": 305,
    "label": null,
-   "text": "The Russian Guard held the village in every account that names its defenders; the Chevalier Guard's history has it occupied without opposition. Its attackers are disputed: Bernadotte's corps, Rivaud on the left and Drouet on the right, in Stutterheim; Lannes's division in Thiebault; part of Rivaud's division with Caffarelli and Kellermann in Mikhailovsky-Danilevsky; Caffarelli's 13e Legere in Sokolov. Bagration's separation is a later action: Schönhals has his battalions thrown into disorder after an attack on his left toward noon, when the Guards had given way, then gathered again, somewhat, on the height by Rausnitz.",
+   "text": "The Russian Guard's jägers held the village in Stutterheim, Schönhals and Mikhailovsky-Danilevsky; the Chevalier Guard's history instead has the French occupy it without hindrance. Its attackers are disputed: Bernadotte's corps, Rivaud on the left and Drouet on the right, in Stutterheim; the 1st division of Lannes's V Corps in Thiebault; part of Rivaud's division ordered onto it with Caffarelli and Kellermann in Mikhailovsky-Danilevsky; Caffarelli's 13e Legere in Sokolov; Marbot has Lannes throw the Russians back from the Santon as far as Blasowitz. Bagration's separation is a later action: Schönhals has his battalions thrown into disorder after an attack on his left toward noon, when the Guards had given way, then gathered again, somewhat, on the height by Rausnitz.",
    "claim": "disputed",
    "by": [
     {
@@ -9058,7 +9061,7 @@
      "src": "thiebault3_1894",
      "at": "t. III, p. 462",
      "rd": "thiebault3_1894.p462.lannes-bagration-blazowitz",
-     "side": "Lannes's division took it"
+     "side": "the 1st division of V Corps contested it and broke the Guard's reserve"
     },
     {
      "src": "sokolov2006",
@@ -9069,12 +9072,42 @@
     {
      "src": "kavalergard1851",
      "at": "pp. 56-57",
-     "rd": "kavalergard1851.p56-57.malutin-blazovits"
+     "rd": "kavalergard1851.p56-57.malutin-blazovits",
+     "side": "the French occupied it without hindrance"
     },
     {
      "src": "schoenhals1873",
      "at": "pp. 165-166",
      "rd": "schoenhals1873.p165-166.bagration"
+    },
+    {
+     "src": "schoenhals1873",
+     "at": "p. 164",
+     "rd": "schoenhals1873.p164.guard-blasowitz",
+     "side": "the Guard jäger battalion held it and was thrown out"
+    },
+    {
+     "src": "mikhailovsky1846",
+     "at": "pp. 256-257",
+     "rd": "md1846.p256-257.blasowitz-guard",
+     "side": "the Guard's jäger battalion ordered into it"
+    },
+    {
+     "src": "mikhailovsky1846",
+     "at": "p. 255",
+     "rd": "mikhailovsky1846.p255.rivaud-pratzen",
+     "side": "part of Rivaud's division ordered onto it"
+    },
+    {
+     "src": "stutterheim1806de",
+     "at": "p. 56",
+     "rd": "stutterheim1806de.p56.reserve-blasowitz"
+    },
+    {
+     "src": "marbot1891",
+     "at": "t. I, pp. 259-260",
+     "rd": "marbot1891.p259-260.blasiowitz-aigle-clef",
+     "side": "Lannes threw the Russians back as far as Blasiowitz"
     }
    ]
   },

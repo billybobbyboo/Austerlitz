@@ -3561,7 +3561,7 @@ function eyeCaption(){
   var chapel=!!(st&&/chapel of St Anthony/.test(st.act||""));
   var h='<p><span class="ltag derived">'+iconSVG(TOKENS.sym.layer.derived)+'derived</span> Eye level at '+esc(EYES.LABEL[commandView])+', '+esc(fmtClock(clock))+
     '. Relief drawn &times;'+esc(fmtFactor(DISPLAY.factor))+'; figures are symbols many times life size.</p><p class="eyenote">'+esc(EYES.NOTE)+'</p>';
-  if(chapel) h+='<p class="eyenote">'+esc("From the chapel of St Anthony the model shows little of the Satschan pond; a source records Napoleon watching the end from there. "+
+  if(chapel) h+='<p class="eyenote">'+esc("From the chapel of St Anthony the model shows little of the Satschan pond; Schönhals (1873) and a French officer's note of 1806 bring Napoleon there at the end. "+
     "A documented mismatch between the model and the source: the chapel's position is approximate and the relief stylised.")+'</p>';
   if(EYE.capH!==h){ EYE.capH=h; b.innerHTML=h; }
   b.hidden=false;
@@ -6774,7 +6774,7 @@ function dossierEvent(eid){
     same.forEach(function(x){ var li=el("li"), b=el("button","linkb",esc(x.n+evNote(x))); b.addEventListener("click",function(){ select("e",x.id); }); li.appendChild(b); ulS.appendChild(li); });
     sS.appendChild(ulS); wrap.appendChild(sS); }
   wrap.appendChild(el("p","conf",esc(CLAIM[e.claim].note)+
-    (exact||e.dispute?"":" The hour is not fixed in the sources, so this is shown as an interval rather than a timestamp.")));
+    (exact||e.dispute?"":" Shown as an interval rather than a timestamp: a process, or an hour this map does not fix to the minute.")));
   var act=el("div","dact");
   var b1=el("button","t","Go to this moment");
   b1.addEventListener("click",function(){ stopPlay(); setClock(evClock(e)); centreOnMap(e.p,96); });

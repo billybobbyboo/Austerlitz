@@ -268,7 +268,7 @@ const REVIEW={
  "lich@5":["consistent","during",T(10,40),T(10,40),"data.js:95","the collision c. 10:40; the engine arrives 10:30"],
  "lich@6":["consistent","arrival",T(11,15),T(11,15),"analysis.js:291","Blasowitz falls c. 11:15"],
  "bag@5":["consistent","during",T(9,30),null,"data.js:86","counter-attacks from c. 09:30, inside the engine's 04:00-10:30","creep"],
- "bag@6":["early","start",T(12),null,"data.js:97","Schönhals has Caffarelli attack Bagration's left toward noon, after the Pratzen heights were lost and the 5th Column and the Guards had given way, and Bagration's battalions fall back after d'Hautpoul's charge (1873, pp. 165-166); the engine starts the falling back with Blasowitz's fall, 11:15 on this map (tm.dep since the chronology data task), kept (a named conflict since roadmap step 4, question 180). Until step 4 the row judged this map's own timeline line, which coupled the two"],
+ "bag@6":["early","start",T(12),null,"data.js:98; data.js:589; analysis.js:50; analysis.js:306; data.js:710; data.js:773","Schönhals has Caffarelli attack Bagration's left toward noon, after the Pratzen heights were lost and the 5th Column and the Guards had given way, and Bagration's battalions fall back after d'Hautpoul's charge (1873, pp. 165-166); the engine starts the falling back with Blasowitz's fall, 11:15 on this map (tm.dep since the chronology data task), kept (a named conflict since roadmap step 4, question 180). Until step 4 the row judged this map's own timeline line, which coupled the two"],
  "bag@7":["consistent","during",T(11,15),null,"data.js:97","falling back from Blasowitz's fall, this map's 11:15"],
  "bag@8":["early","during",T(16,30),T(16,30),"data.js:122","the end of organised resistance, 16:30 on this map after Sokolov's end of the firing in the north (since roadmap step 4 the line says so); the engine's flagged departure at 16:30. Schönhals has Bagration retreat on Austerlitz about six and Stutterheim behind it by six: bag@9's move, which the engine makes by 17:00 (question 180)"],
  "rg_inf@6":["consistent","during",T(11),null,"data.js:564; data.js:103","committed after 11:00 (the hour is not established, since roadmap step 2 also in the corps' role); the engine arrives 11:15"],
@@ -400,9 +400,9 @@ const ALLOW_TIMED={
  "source-note body.5 @08:45":"the other side of the named conflicts kamensky@3 and kamensky@4 (decision 42): the phase's clock, restated",
  "source-note body.5 @11:15":"the other side of the named conflict guard_cav@6 (decision 42): the event's time, restated",
  "event guard-broken dispute @11:15":"the other side of the named conflict guard_cav@6 (decision 42), restated in the event's dispute: this map's 11:15",
- "event guard-attack why @12:00":"Schönhals's bound for the named conflict guard_cav@6, restated in the attack's why (as source-note body.5 @12:00)",
- "event guard-broken dispute @12:00":"Schönhals's bound for the named conflict guard_cav@6, restated in the event's dispute (as source-note body.5 @12:00)",
- "timeline 6: The Russian Guard attacks Vandamme; @12:00":"Schönhals's bound for the named conflict guard_cav@6, restated in the phase line (as source-note body.5 @12:00)",
+ "event guard-attack why @12:00":"Schönhals's bound for the named conflict guard_cav@6, restated in the attack's why (as body.5's noon, which bag@6 cites)",
+ "event guard-broken dispute @12:00":"Schönhals's bound for the named conflict guard_cav@6, restated in the event's dispute (as body.5's noon, which bag@6 cites)",
+ "timeline 6: The Russian Guard attacks Vandamme; @12:00":"Schönhals's bound for the named conflict guard_cav@6, restated in the phase line (as body.5's noon, which bag@6 cites)",
  "anchor guard_cav@6 act @11:15":"the other side of the named conflict guard_cav@6 (decision 42), restated in the act: this map's 11:15",
  /* roadmap step 2 (decision 125 (a)): the other sides restated where the disputed hours are now marked (the two events' dispute, the three
     phase lines); each conflict's own time is cited by its row. They follow the body.5 entries above rather than being cited by the conflict
