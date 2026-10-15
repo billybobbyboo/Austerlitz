@@ -268,7 +268,7 @@ const REVIEW={
  "lich@5":["consistent","during",T(10,40),T(10,40),"data.js:95","the collision c. 10:40; the engine arrives 10:30"],
  "lich@6":["consistent","arrival",T(11,15),T(11,15),"analysis.js:291","Blasowitz falls c. 11:15"],
  "bag@5":["consistent","during",T(9,30),null,"data.js:86","counter-attacks from c. 09:30, inside the engine's 04:00-10:30","creep"],
- "bag@6":["early","start",T(11,15),null,"data.js:97","the falling back starts with Blasowitz's fall, c. 11:15 on this map (tm.dep since the chronology data task); since roadmap step 4 the timeline no longer couples the two, and no source read gives either hour (Schönhals has Bagration fight on toward noon before d'Hautpoul's charge throws his battalions back; question 180)"],
+ "bag@6":["early","start",T(12),null,"data.js:97","Schönhals has Caffarelli attack Bagration's left toward noon, after the Pratzen heights were lost and the 5th Column and the Guards had given way, and Bagration's battalions fall back after d'Hautpoul's charge (1873, pp. 165-166); the engine starts the falling back with Blasowitz's fall, 11:15 on this map (tm.dep since the chronology data task), kept (a named conflict since roadmap step 4, question 180). Until step 4 the row judged this map's own timeline line, which coupled the two"],
  "bag@7":["consistent","during",T(11,15),null,"data.js:97","falling back from Blasowitz's fall, this map's 11:15"],
  "bag@8":["early","during",T(16,30),T(16,30),"data.js:122","the end of organised resistance, 16:30 on this map after Sokolov's end of the firing in the north (since roadmap step 4 the line says so); the engine's flagged departure at 16:30. Schönhals has Bagration retreat on Austerlitz about six and Stutterheim behind it by six: bag@9's move, which the engine makes by 17:00 (question 180)"],
  "rg_inf@6":["consistent","during",T(11),null,"data.js:564; data.js:103","committed after 11:00 (the hour is not established, since roadmap step 2 also in the corps' role); the engine arrives 11:15"],
@@ -357,7 +357,7 @@ const REVIEW_CITES={
  "lich@5":["timeline 5: The cavalry collision west of @10:40"],
  "lich@6":["event blasowitz @11:15","chapter north text @11:15","feature blasowitz fact Fell @11:00-11:15"],
  "bag@5":["timeline 4: Lannes advances along the highway. @09:30"],
- "bag@6":["timeline 5: Blasowitz falls; no source read gives @11:15"],
+ "bag@6":["feature blasowitz why 0 @12:00","source-note body.5 @12:00","event blasowitz why @12:00","chapter north text @12:00"],
  "bag@7":["timeline 5: Blasowitz falls; no source read gives @11:15"],
  "bag@8":["timeline 8: Organised resistance ends, by this map's @16:30","event end @16:30","event end dispute @16:30"],
  "rg_inf@6":["formation constantine role @11:00+","timeline 6: The Russian Guard attacks Vandamme; @11:00+","feature vinohrady fact Contested by @11:00"],
@@ -399,7 +399,6 @@ const ALLOW_TIMED={
  "source-note body.5 @04:00":"the other side of the named conflicts lang@1, prz@1 (question 176) and friant@1 (question 177): this map's 04:00 for the II and III Columns and for Friant's departure from Raigern, restated; the conflicts' own times are cited by their rows (L8)",
  "source-note body.5 @08:45":"the other side of the named conflicts kamensky@3 and kamensky@4 (decision 42): the phase's clock, restated",
  "source-note body.5 @11:15":"the other side of the named conflict guard_cav@6 (decision 42): the event's time, restated",
- "source-note body.5 @12:00":"Schönhals's bound for the named conflict guard_cav@6 (the Guard's fight over by about noon, 1873, pp. 164-165), restated: an upper bound that agrees with the engine's 11:15, not a time of the charge; the conflict's row judges the other source side, 13:00 (L4b keeps its cites inside it)",
  "event guard-broken dispute @11:15":"the other side of the named conflict guard_cav@6 (decision 42), restated in the event's dispute: this map's 11:15",
  "event guard-attack why @12:00":"Schönhals's bound for the named conflict guard_cav@6, restated in the attack's why (as source-note body.5 @12:00)",
  "event guard-broken dispute @12:00":"Schönhals's bound for the named conflict guard_cav@6, restated in the event's dispute (as source-note body.5 @12:00)",
@@ -434,8 +433,10 @@ const EXCLUDED_PATHS=[   /* [name, path class, reason] */
    (no account read gives the hour of the turn). lang@1 and prz@1 join it (question 176): the disposition ordered the II and
    III Columns to march at seven too, and this map keeps their earlier 04:00; friant@1 and friant@2 join it too (question 177):
    Davout's reports send Friant's division from Raigern at five or between half past five and six and have Telnitz retaken at half past
-   nine, and this map keeps 04:00 and 08:30 */
-const CONFLICTS=["friant@1","friant@2","guard_cav@6","kamensky@3","kamensky@4","lang@1","prz@1"];
+   nine, and this map keeps 04:00 and 08:30; and bag@6 (question 180): Schönhals has Bagration's battalions fall back after an attack
+   toward noon, and this map keeps 11:15. body.5's 12:00 is cited by bag@6 (L8); the same sentence's noon for the Guard's fight (Schönhals's
+   bound for guard_cav@6) shares that ref and time, so it is cited, not allowed (the ledger is by ref and time) */
+const CONFLICTS=["bag@6","friant@1","friant@2","guard_cav@6","kamensky@3","kamensky@4","lang@1","prz@1"];
 /* 2C precondition (docs/STAGE2_SPEC.md section M.13), rules D1, F1 and F2: a derived arrival (dated departure, no dated
    arrival) is at the tactical rate (a design value, unsourced), or at the ceiling only for the legs named here, flagged, or at
    its own moveMin only for the legs named in MOVEMIN_DERIVED. The two climbs and Bagration's withdrawal are a dating question

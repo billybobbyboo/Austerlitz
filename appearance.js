@@ -129,6 +129,7 @@ var APPEARANCE_SOURCES = {
   turistika_kaple: {au:"turistika.cz (user contribution)", ti:"Újezd u Brna - kaple sv. Antonína Paduánského (no source named)", pub:"tourist website, last updated 2 December 2023, fetched 14 October 2026", d:2023, kind:"modern-web-specialist", url:"https://www.turistika.cz/mista/ujezd-u-brna-kaple-sv-antonina-paduanskeho/detail"},
   czartoryski1887: {au:"A. Czartoryski (ed. Ch. de Mazade)", ti:"Mémoires du prince Adam Czartoryski et correspondance avec l'empereur Alexandre Ier, t. I", pub:"Paris, Plon", d:1887, kind:"primary-text", url:"https://archive.org/details/mmoiresduprincea01czar", ia:"mmoiresduprincea01czar"},
   austerlitzorg2000: {au:"Team Austerlitz (austerlitz.org)", ti:"The first cannon shot (no source named)", pub:"website, posted 4 May 2000, fetched 14 October 2026", d:2000, kind:"modern-web-specialist", url:"https://www.austerlitz.org/en/?p=36"},
+  wolny1836: {au:"G. Wolny", ti:"Die Markgrafschaft Mähren, topographisch, statistisch und historisch geschildert, Bd. II, Abth. 1 (Brünner Kreis)", pub:"Brünn", d:1836, kind:"specialist", url:"https://archive.org/details/10011827bsb", ia:"10011827bsb"},
   thiers1847: {au:"A. Thiers", ti:"Histoire du Consulat et de l'Empire, t. VI", pub:"Paris, Paulin", d:1847, kind:"specialist", url:"https://archive.org/details/histoireduconsul06thieuoft", ia:"histoireduconsul06thieuoft"}
 };
 

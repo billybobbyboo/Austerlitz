@@ -550,6 +550,9 @@ try{
         if(para.indexOf(CONF_INTERP)<0) throw new Error(probe+" at "+fmtClock(clock)+": the dossier's paragraph lacks CONF_INTERP");
         tr[k0].claim="recon";
         if(posClaimOf(probe,aggConf(probe,curPhase))!=="recon") throw new Error(probe+": an explicit claim does not win over \"interp\"");
+        /* roadmap step 4 (the review of 69031df): no track claim in the data differs from its grade since heightguns@8 became "est", so the
+           probe's temporary claim holds the dossier's rule that an explicit claim other than its grade's brings CLAIM's own note */
+        if(conf(probe).indexOf(CLAIM.recon.note)<0) throw new Error(probe+": an explicit claim other than its grade's does not bring CLAIM's own note");
       } finally { if(keep===undefined) delete tr[k0].claim; else tr[k0].claim=keep; document.createElement=mk; }
       setClock(T_MIN); const a0=Object.keys(FORMATIONS).find(id=>FORMATIONS[id].track&&posNow(id)&&expKey(id)==="fact");
       if(!a0) throw new Error("position pills: no documented, not interpolated leaf at "+fmtClock(T_MIN));

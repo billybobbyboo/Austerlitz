@@ -47,7 +47,7 @@ var ANALYSIS = [
 { id:"north", n:"Lannes, Murat and Bagration", at:"ph:5", moments:["ev:blasowitz"],
   forms:["c_v","caffarelli","suchet","santon","c_cav","kellermann","nansouty","dhautpoul","bag","lich"],
   feats:["santon","olmutzroad","blasowitz"],
-  text:"The northern battle was a holding action that Lannes turned into an advance. This map reads the Santon, scarped and carrying eighteen guns, as anchoring the flank, so that Bagration could not get past it. When Liechtenstein's and Uvarov's horse charged, Murat answered with Nansouty's and d'Hautpoul's cuirassiers. Blasowitz fell, about 11:15 by this map's reckoning (no source read gives the hour), and Bagration was levered off the rest of the army, withdrawing on Rausnitz; Schönhals has his battalions thrown into disorder after the Guards had given way, then gathered again, somewhat, on the height by Rausnitz."},
+  text:"The northern battle was a holding action that Lannes turned into an advance. This map reads the Santon, scarped and carrying eighteen guns, as anchoring the flank, so that Bagration could not get past it. When Liechtenstein's and Uvarov's horse charged, Murat answered with Nansouty's and d'Hautpoul's cuirassiers. Blasowitz fell, about 11:15 by this map's reckoning (no source read gives the hour), and Bagration was levered off the rest of the army, withdrawing on Rausnitz; Schönhals has his battalions thrown into disorder after an attack on his left toward noon, when the Guards had given way, then gathered again, somewhat, on the height by Rausnitz."},
 
 { id:"wheel", n:"The French wheel", at:"ev:wheel", moments:["ev:davout-resumes","ev:wheel","ev:sokolnitz-falls"],
   forms:["sthilaire","vandamme","c_gren","guard_inf","heightguns","friant","legrand","prz","lang","dok"],
@@ -92,7 +92,7 @@ fr:{
 al:{
  0:[["knew","doc","That the French had given up the Pratzen plateau and pulled back behind the Goldbach."],
     ["didnt","doc","That two French divisions were standing in the Goldbach valley. The fog in the valley hid them."],
-    ["didnt","inf","That Bernadotte's corps and part of Davout's had joined the army the evening before (Stutterheim, who has the Allied staff believe the French at Brünn few, and plan without exact knowledge of their strength). Inferred: the Allied estimate of French strength was too low."],
+    ["didnt","inf","That Bernadotte's corps and part of Davout's had joined the army the evening before (Stutterheim, who has the Allied staff believe the French at Brünn few, and plan without exact knowledge of their strength, before the advance from Olmütz, about 19 to 24 November). Inferred: the Allied estimate of French strength was too low."],
     ["ordered","doc","Weyrother's dispositions: four columns south-west against the French right, Bagration to hold the highway."],
     ["expected","doc","A French army in retreat that would be turned and cut off from Vienna."]],
  1:[["saw","doc","Telnitz taken and retaken."],
@@ -167,7 +167,7 @@ al:{
   cols:[
    {n:"Advance Guard - Kienmayer", forms:["kienmayer"], obj:[212,408], ord:"Precede the 1st Column, seize Telnitz at first light, then screen the outer flank toward Menitz.",
     route:[[291,367],[247,397],[218,409],[200,402]]},
-   {n:"1st Column - Dokhturov", forms:["dok"], obj:[171,372], ord:"Descend from the southern plateau, force the crossing at Telnitz, then wheel north-west on Turas.",
+   {n:"1st Column - Dokhturov", forms:["dok"], obj:[171,372], ord:"Descend from the southern plateau, force the crossing at Telnitz, then wheel north-west toward the Turas wood (the disposition's words).",
     route:[[291,332],[269,362],[234,395],[198,395],[171,372]]},
    {n:"2nd Column - Langeron", forms:["lang"], obj:[190,354], ord:"Take Sokolnitz, cross the stream, conform on Dokhturov's right.",
     route:[[291,308],[265,325],[227,356],[190,354]]},
@@ -294,15 +294,15 @@ var EVENTS = [
 
 {id:"kursk", t:630, n:"Langeron's reinforcements arrive as the crest is lost", side:"al", kind:"engagement",
  p:[290,282], forms:["lang","kamensky"], cf:"C", claim:"est",
- why:"Langeron rode back and sent troops up toward Kamensky; one account has two battalions arriving just as the position was abandoned. The accounts name the Kursk regiment: Mikhailovsky-Danilevsky has Langeron bring it up too late, losing up to 1,600 men; Langeron's journal, as Sokolov quotes it, two of its battalions, half killed and half taken with their guns and colours; Schönhals has it left in reserve behind Sokolnitz and mostly taken there. The hour is this map's."},
+ why:"Langeron rode back and sent troops up toward Kamensky. The accounts name the Kursk regiment: Mikhailovsky-Danilevsky has Langeron bring it up too late, losing up to 1,600 men; Langeron's journal, as Sokolov quotes it, two of its battalions, half killed and half taken with their guns and colours; Schönhals has it left in reserve behind Sokolnitz and mostly taken there. The hour is this map's."},
 
 {id:"pratzeberg", t:660, n:"The Pratzeberg is firmly in French hands", side:"fr", kind:"capture",
  p:[285,289], forms:["sthilaire","legrand"], cf:"A", claim:"fact",
  why:"From here the French centre holds the high ground above the Goldbach valley and, in time, comes down into the back of the Allied columns fighting in it."},
 
-{id:"blasowitz", t:675, n:"Blasowitz falls and Bagration is levered off the army", side:"fr", kind:"capture",
- p:[296,147], forms:["caffarelli","suchet","bag","lich"], tolKm:1.3, tolWhy:"division-level: the marker is the village; Caffarelli\u2019s plotted centre lies about 1.2 km from it, within the division\u2019s frontage", cf:"C", claim:"est",
- why:"The Allied right is separated from the centre and withdraws toward Rausnitz; Schönhals has its battalions thrown into disorder after the Guards had given way, then gathered again, somewhat, on the height by Rausnitz."},
+{id:"blasowitz", t:675, n:"The French take Blasowitz from the Russian Guard", side:"fr", kind:"capture",
+ p:[296,147], forms:["caffarelli","rivaud","rg_inf"], tolKm:1.3, tolWhy:"division-level: the marker is the village; Caffarelli\u2019s plotted centre lies about 1.2 km from it, within the division\u2019s frontage", cf:"C", claim:"est",
+ why:"The Russian Guard held the village in every account that names its defenders; the Chevalier Guard's history has it occupied without opposition. Its attackers are disputed: Bernadotte's corps, Rivaud on the left and Drouet on the right, in Stutterheim; Lannes's division in Thiebault; part of Rivaud's division with Caffarelli and Kellermann in Mikhailovsky-Danilevsky; Caffarelli's 13e Legere in Sokolov. Bagration's separation is a later action: Schönhals has his battalions thrown into disorder after an attack on his left toward noon, when the Guards had given way, then gathered again, somewhat, on the height by Rausnitz."},
 
 {id:"guard-attack", t:[660,780], n:"The Russian Guard takes the eagle of the 4th Line", side:"al", kind:"attack",
  p:[313,205], forms:["rg_inf","rg_cav","constantine","vandamme"], cf:"B", claim:"est",
@@ -368,7 +368,7 @@ var TOUR = [
 {n:"Why the Pratzen matters", at:"ph:2", feature:"pratzen", cam:[-136,46,31,-6,8,-3],
  x:"In this model's terrain an observer on the Pratzeberg summit can see about 73 per cent of the field, and one on the valley floor at Puntowitz under 3 per cent. That is a reading from the model, not a record of what anyone saw: on the morning of the battle the valley lay in fog, and it was the fog that hid Soult's divisions forming at the foot of the slope."},
 {n:"The French strike", at:"ev:soult", chapter:"pratzen",
- x:"At about a quarter to nine Saint-Hilaire and Vandamme climb out of the fog onto ground the Allies have just left. Two divisions, no reserve committed, against a column still filing off the heights."},
+ x:"At about a quarter to nine Saint-Hilaire and Vandamme climb out of the fog onto a plateau the Allies are leaving. Two divisions, no reserve committed, against a column still filing off the heights."},
 {n:"The army divided", at:"ev:pratzeberg", chapter:"cut",
  x:"With the plateau gone the Allied army is in two halves that can no longer help one another. Buxhowden's columns are still attacking westward and will not learn what has happened behind them until about noon."},
 {n:"The collapse", at:"ev:augezd", chapter:"collapse",

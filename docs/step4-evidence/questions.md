@@ -50,7 +50,7 @@ after, computed by `tools/stage2/chronology.js`).
 - *Options.* (a) Keep bag@6's 11:15 and bag@8's 16:30 as the map's, the readings in their notes and acts (bag@6 named in `CONFLICTS`
   against Schönhals's "toward noon"); the end "disputed". (b) Drop bag@8's departure (no source dates a movement then). (c) Redraw bag@9
   toward Austerlitz over Alt-Rausnitz.
-- *Recommendation.* (b) if `opening-4` measures unchanged, else (a); (c) not now. *Default.* (a). *Status.* bag@8 and the end implemented (K5); bag@6's conflict pending (K11).
+- *Recommendation.* (b) if `opening-4` measures unchanged, else (a); (c) not now. *Default.* (a). *Status.* bag@8 and the end implemented (K5); bag@6's conflict implemented (K11).
 
 **181. The forced dated legs: c_gren@7/@8 and kollo@4/@5.**
 - *Options.* c_gren: (a) keep `{dep 780, at 840}`, the readings in the note; (b) `{dep 780}` without `at`, c_gren@8 leaving `FORCED_DATED`.
@@ -103,12 +103,11 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
 - *Options.* (a) Minimal rewordings, no longer than the text they replace, where the readings contradict it (`TOUR[5].x`, `TOUR[7].x`), each
   applied only where the opening cases measure unchanged. (b) Leave them, labelled elsewhere. (c) The bar's marking of the ceiling-derived
   climbs: none, or `LABELS.event.derived`. (d) The events live at an opening case keep claims that add no label note.
-- *Recommendation.* (a); (c) none; (d) keep. *Default.* The same. *Status.* `TOUR[7].x` reworded, shorter (`be730cf`); `TOUR[5].x` pending (K11).
+- *Recommendation.* (a); (c) none; (d) keep. *Default.* The same. *Status.* `TOUR[7].x` reworded, shorter (`be730cf`); `TOUR[5].x` reworded, of the same length (K11).
 
 **191. Places and the Guard cavalry: Turas, Krug, Bellowitz, the Posoritz post house, Kologrivov and rg_cav.**
 - *Options.* Turas moved to the register's point (2.85 km WNW) or kept; the others kept or moved to weaker identifications.
-- *Recommendation.* Turas moved, measured; the others kept; rg_cav a note. *Default.* Nothing moves. *Status.* The default is the
-  repository's state.
+- *Recommendation.* Turas moved, measured; the others kept; rg_cav a note. *Default.* Nothing moves. *Status.* Implemented (K11): nothing moves; the notes narrowed.
 
 **192. Track additions the readings suggest but do not place.**
 - *Options.* (a) None in step 4. (b) A Russian Guard detachment drawn in Blasowitz (the village's defenders in every account that names
