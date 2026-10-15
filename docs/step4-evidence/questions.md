@@ -1,4 +1,4 @@
-# Roadmap step 4: the owner questions (176-195)
+# Roadmap step 4: the owner questions (176-197)
 
 Choices that decisions 1-175 do not settle, put to the owner as the task asked, each with its options, a recommendation and the
 conservative default built meanwhile. No default breaks a test, moves a harness limit (`DROP_LIMIT`, `UNOBSTRUCTED`, `PAPER_MIN_PXKM`; the
@@ -67,7 +67,8 @@ after, computed by `tools/stage2/chronology.js`).
 - *Options.* (a) A kept, the act disputed. (b) B, the place disputed (near Blasowitz in Stutterheim and Schönhals, on the Emperor's left in
   Ségur, behind Vandamme in Savary).
 - *Recommendation.* (b), as K8 proposes for gqg@0 under decision 160. *Default.* (b) only if the phase-8 cases at 14:40 (`ph8-overview-study`,
-  `-watch`, where drouet@7 inherits the grade) and `opening-4` measure within their limits; else (a). *Status.* Implemented (K8): (b), measured with gqg@0 on the full check:visual (below in `CHANGELOG.md`).
+  `-watch`, where drouet@7 inherits the grade) and `opening-4` measure within their limits; else (a). *Status.* Implemented (K8): (b), measured with gqg@0 on the full check:visual (below in `CHANGELOG.md`). Grade C (the division
+  placed about 1.9 km from Blasowitz, where Stutterheim and Schönhals have the fight, or idle in Thiebault) was not weighed: a further option.
 
 **184. The strengths: the working figures.**
 - *Options per formation.* kienmayer 6,800 or 6,340 (Schönhals); lich 5,400 or 5,600 (Schönhals; moves `PLATEAU_04_RECORDED`); the IV Corps
@@ -86,7 +87,9 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
   button at the end of the drawer dossiers. (iii) The framing statements "interpretation" by class, or unchecked. (iv) The formation dossier's
   section tags follow their statements.
 - *Recommendation.* (i) yes; (ii) the index first, each measured; (iii) "interpretation" by class; (iv) yes, with (ii).
-- *Default.* Nothing new shown; claims are data and the inventory. *Status.* The default is the repository's state.
+- *Default.* Nothing new shown; claims are data and the inventory. *Status.* The default is the repository's state. The eye-level
+  caption's source attributions (`app.js` `eyeCaption`: Schönhals, the French officer's note of 1806, Lejeune) are presentation sentences outside
+  check:data's guard and the claims; whether they should be read from the data belongs here (the review of `c3e6299`).
 
 **188. The interpolated pill's rule and words.** *Options.* The minimal rule or every interpolated position; "Position: interpolated" or
 "Position: between documented positions". *Recommendation and default.* The minimal rule, "Position: interpolated". *Status.* Implemented
@@ -137,3 +140,21 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
   item of question 189's human reading). (b) Lower it to B now and draw the Szekler hussars "dark blue" after the 1813 box, labelled an
   inference from a later edition. (c) Draw them generic until the 1805 page is read.
 - *Recommendation.* (a), with the 1805 page read first. *Default.* (a). *Status.* The note added in the review's fixes of `3dafee8`.
+
+**196. A formation waiting at its anchor is graded by the next phase's grade (`confAt`).** Since K8 gqg@0 is B, but from 11:15 (phase 6)
+to 12:00, while the headquarters waits at the Zuran point before gqg@6's departure, `confAt` takes phase 6's grade, A, and draws the crisp
+mark and "Position: documented" there (the review of `f5e7696`; kienmayer@7 has the same one-minute case at 14:30). The dispatch's text
+meanwhile keeps the earlier phase's (`waitingFor`).
+- *Options.* (a) Keep `confAt` as it is, the limit recorded. (b) Grade a waiting formation by the phase whose text it shows
+  (`stateAt(id, waiting ? phaseAt(t)-1 : phaseAt(t))`, as `waitingFor` does), or, to cover kienmayer@7 too (its next departure falls on the
+  phase's start, so `waitingFor` returns nothing), by its leg's first anchor while the leg has not begun: a change to the model's
+  presentation in `app.js`, measured on a full check:visual (the review of the step's last commit).
+- *Recommendation.* (b), measured. *Default.* (a). *Status.* The default is the repository's state; recorded in `CHANGELOG.md`.
+
+**197. The Guard's dawn grades (guard_inf@0, guard_cav@0, grade A).** Both are placed by the command post (guard_inf@0's act: "formed in reserve
+around Napoleon's command post"; guard_cav@0 has no act), which K8 grades B; the Guard's "in reserve with the Emperor" (c_gd's role) is the
+30th Bulletin's (`corr11_1863.p451.guard-centre-reserve`), which places it by no landmark. The readings do not fix them: Stutterheim has the reserve "bey Turas" in the night, without its
+dawn place (`stutterheim1806de.p42.reserve-turas`); Coignet has the Guard formed behind the Emperor (`coignet1909.p121-123.guard-followed`);
+Savary makes the Guard infantry Lannes's natural reserve (1 December).
+- *Options.* (a) Keep A. (b) B for both, as gqg@0 under decision 160, measured on a full check:visual.
+- *Recommendation.* (b), measured. *Default.* (a). *Status.* The default is the repository's state.

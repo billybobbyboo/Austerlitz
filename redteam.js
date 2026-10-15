@@ -256,7 +256,7 @@ const LANG_STEP1_MAX=1, FOUND_MAX={"SUPERLATIVE, roadmap step 2":1,"COUNTERFACTU
 /* roadmap step 2, C28 (the implementation plan's completeness critic, item 3): an entry's until is checkable. The steps done are named
    here; an entry whose until begins with one of them is a finding (its task has landed, so the hit it allows must be gone, or the entry
    is stale), whether or not it still matches. Add a step here when its last commit lands */
-const DONE_STEPS=["roadmap step 1","roadmap step 2"];
+const DONE_STEPS=["roadmap step 1","roadmap step 2","roadmap step 3","roadmap step 4"];
 LANG_ALLOW.forEach(a=>{ if(typeof a.until==="string"&&DONE_STEPS.some(d=>a.until===d||a.until.startsWith(d+",")||a.until.startsWith(d+" ")))
   fail("language",`LANG_ALLOW entry "${a.phrase}" at ${a.where} is allowed until "${a.until}", a step already done (DONE_STEPS): fix the text or record why it stays`); });
 if(LANG_STEP1.length>LANG_STEP1_MAX) fail("language",`LANG_STEP1 can only shrink (${LANG_STEP1_MAX} at the end of roadmap step 2), it holds ${LANG_STEP1.length}`);

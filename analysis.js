@@ -47,7 +47,7 @@ var ANALYSIS = [
 { id:"north", n:"Lannes, Murat and Bagration", at:"ph:5", moments:["ev:blasowitz"],
   forms:["c_v","caffarelli","suchet","santon","c_cav","kellermann","nansouty","dhautpoul","bag","lich"],
   feats:["santon","olmutzroad","blasowitz"],
-  text:"The northern battle was a holding action that Lannes turned into an advance. This map reads the Santon, scarped and carrying eighteen guns, as anchoring the flank, so that Bagration could not get past it. When Liechtenstein's and Uvarov's horse charged, Murat answered with Nansouty's and d'Hautpoul's cuirassiers. Blasowitz fell, about 11:15 by this map's reckoning (no source read gives the hour); in Thiers, Lannes then carries Holubitz and Kruch and parts Bagration's infantry from Liechtenstein's cavalry, while Schönhals has Bagration's battalions thrown into disorder after an attack on his left toward noon, when the Guards had given way, then gathered again, somewhat, on the height by Rausnitz."},
+  text:"The northern battle was a holding action that Lannes turned into an advance. This map reads the Santon, scarped and carrying eighteen guns, as anchoring the flank, so that Bagration could not get past it. When Liechtenstein's and Uvarov's horse charged, Murat answered with Nansouty's and d'Hautpoul's cuirassiers. Blasowitz fell, about 11:15 by this map's reckoning (no source read gives the hour); in Thiers, Lannes then carries Holubitz and Krug and parts Bagration's infantry from Liechtenstein's cavalry, while Schönhals has Bagration's battalions thrown into disorder after an attack on his left toward noon, when the Guards had given way, then gathered again, somewhat, on the height by Rausnitz."},
 
 { id:"wheel", n:"The French wheel", at:"ev:wheel", moments:["ev:davout-resumes","ev:wheel","ev:sokolnitz-falls"],
   forms:["sthilaire","vandamme","c_gren","guard_inf","heightguns","friant","legrand","prz","lang","dok"],
@@ -315,7 +315,7 @@ var EVENTS = [
 
 {id:"hq-forward", t:[720,760], n:"Napoleon moves forward to Stare Vinohrady", side:"fr", kind:"decision",
  p:[309,207], forms:["gqg"], cf:"B", claim:"est",
- why:"From Stare Vinohrady he directs the centre while the Allied left is still fighting westward on the Goldbach with its rear open. Later he moves again, to the chapel of St Anthony above Augezd, from which he watches the end."},
+ why:"From Stare Vinohrady he directs the centre while the Allied left is still fighting westward on the Goldbach with its rear open. Later he moves again, to the chapel of St Anthony above Augezd (Schönhals); Lejeune has him at the end on a knoll above Augezd facing the lakes, which this map takes to be the chapel's height."},
 
 {id:"buxhowden-blind", t:[700,760], n:"Buxhowden does not yet know the centre is gone", side:"al", kind:"movement",
  p:[263,376], forms:["buxhowden","dok","lang"], cf:"B", claim:"est",

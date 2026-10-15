@@ -572,7 +572,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FEATURES[#pratzenv].facts[0]` | data.js:693 | Cleared by / Thiebault's brigade, about 09:00 | unchecked |  |
 | `FEATURES[#puntowitz].facts[0]` | data.js:699 | Occupied by / Saint-Hilaire's division before dawn | unchecked |  |
 | `FEATURES[#girzikowitz].facts[0]` | data.js:704 | Occupied by / Vandamme's division; Bernadotte's corps closing up behind | unchecked |  |
-| `FEATURES[#blasowitz].facts[0]` | data.js:709 | Contested by / The Russian Guard held it in Stutterheim, Schönhals, Mikhailovsky-Danilevsky, Thiers and Thiebault, while the Chevalier Guar… | unchecked |  |
+| `FEATURES[#blasowitz].facts[0]` | data.js:709 | Contested by / The Russian Guard held it in Stutterheim, Schönhals, Mikhailovsky-Danilevsky and Thiers, and in Thiebault the Grand Duke's r… | unchecked |  |
 | `FEATURES[#blasowitz].facts[1]` | data.js:709 | Fell / About 11:00-11:15; the hour is not established | unchecked |  |
 | `FEATURES[#augezd].facts[0]` | data.js:714 | Height above it / Taken by Vandamme in the afternoon | unchecked |  |
 | `FEATURES[#augezd].facts[1]` | data.js:714 | Function / A way out for the Allied left; according to the disposition the left was to retire, if the attack failed, by the Turas wood, Kob… | attributed | materialien1806.p105.retraite-kobelnitz; materialien1806.p106.reserve-guard-retreat |
