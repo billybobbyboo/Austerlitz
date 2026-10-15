@@ -3561,8 +3561,8 @@ function eyeCaption(){
   var chapel=!!(st&&/chapel of St Anthony/.test(st.act||""));
   var h='<p><span class="ltag derived">'+iconSVG(TOKENS.sym.layer.derived)+'derived</span> Eye level at '+esc(EYES.LABEL[commandView])+', '+esc(fmtClock(clock))+
     '. Relief drawn &times;'+esc(fmtFactor(DISPLAY.factor))+'; figures are symbols many times life size.</p><p class="eyenote">'+esc(EYES.NOTE)+'</p>';
-  if(chapel) h+='<p class="eyenote">'+esc("From the chapel of St Anthony the model shows little of the Satschan pond; Schönhals (1873) and a French officer's note of 1806 bring Napoleon there at the end. "+
-    "A documented mismatch between the model and the source: the chapel's position is approximate and the relief stylised.")+'</p>';
+  if(chapel) h+='<p class="eyenote">'+esc("From the chapel of St Anthony the model shows little of the Satschan pond. Schönhals (1873) and a French officer's note of 1806 bring Napoleon there at the end, and Lejeune has him on a knoll above Augezd facing the lakes; "+
+    "if that knoll is the chapel's height, as this map takes it, the model and the source disagree: the chapel's position is approximate and the relief stylised.")+'</p>';
   if(EYE.capH!==h){ EYE.capH=h; b.innerHTML=h; }
   b.hidden=false;
 }

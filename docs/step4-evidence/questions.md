@@ -67,7 +67,7 @@ after, computed by `tools/stage2/chronology.js`).
 - *Options.* (a) A kept, the act disputed. (b) B, the place disputed (near Blasowitz in Stutterheim and Schönhals, on the Emperor's left in
   Ségur, behind Vandamme in Savary).
 - *Recommendation.* (b), as K8 proposes for gqg@0 under decision 160. *Default.* (b) only if the phase-8 cases at 14:40 (`ph8-overview-study`,
-  `-watch`, where drouet@7 inherits the grade) and `opening-4` measure within their limits; else (a). *Status.* Pending (K8, measured).
+  `-watch`, where drouet@7 inherits the grade) and `opening-4` measure within their limits; else (a). *Status.* Implemented (K8): (b), measured with gqg@0 on the full check:visual (below in `CHANGELOG.md`).
 
 **184. The strengths: the working figures.**
 - *Options per formation.* kienmayer 6,800 or 6,340 (Schönhals); lich 5,400 or 5,600 (Schönhals; moves `PLATEAU_04_RECORDED`); the IV Corps
