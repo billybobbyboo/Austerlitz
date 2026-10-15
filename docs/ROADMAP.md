@@ -12,7 +12,7 @@ from the code, the approach proposed, the work done conservatively, checked, rec
 | 1 | **Suite hardening**: the fonts embedded first (so `check:visual` measures the same everywhere), then the checks that cannot fail or read less than they claim, and CI | T-0, T-1, T-2, D-1, D-2, H-8, T-3, T-4, T-5, T-6 | 131, 132, 141 | merged (#49; `CHANGELOG.md`) |
 | 2 | **Integrity on screen**: one data task and a presentation part, decided together: the disputed hours marked, the plateau label tagged, the first claim labelled, the claim pill reworded, the contradictions fixed, the vines labelled | H-1 to H-5, H-7, H-9 to H-16, D-3 to D-6 | 125-129, 135; 142-161 | merged (#50; `CHANGELOG.md`) |
 | 3 | **Accessibility and robustness**: the shortcuts switch, hidden panels inert, the sources sheet a proper dialog, focus returned, reduced motion live and in CSS, the timeline's targets, focused map items drawn; the start-up message and the CDN integrity; "Whose eyes?" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |
-| 4 | **The sourcing stage**: Part A, an inventory of every narrative statement and a register of readings (as Stage 6 did for dress); per-statement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136; questions 176-197 (open) | done on `claude/nice-dijkstra-mdyu2w` (draft PR #52; `CHANGELOG.md`), for review; its owner questions open |
+| 4 | **The sourcing stage**: Part A, an inventory of every narrative statement and a register of readings (as Stage 6 did for dress); per-statement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136; 176-197 | done on `claude/nice-dijkstra-mdyu2w` (draft PR #52; `CHANGELOG.md`); decisions 176-197 taken as recommended on 15 October 2026, to be implemented later |
 | 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note) | | open |
 | 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139 | open |
 
@@ -169,11 +169,13 @@ the default, it is applied in step 3 after the answers; "where" names the step t
 - **Recorded:** under software WebGL the effects' off and on recompiles every shader and slows the frames after it to about 9 s (also on the
   step-2 build); not measured on a GPU. The context-loss case's count of three r128's foreign-context warnings varies by run (24, 20).
 
-### Step 4: the owner questions 176-197 (open)
+### Step 4: the owner decisions 176-197 (the answers)
 
 Put by step 4, each with its options, a recommendation and the conservative default implemented meanwhile, in full in
-`docs/step4-evidence/questions.md`; none is answered yet. No default moves a harness limit or loosens an assertion. "Default" is what the
-build has; "recommended" is what the owner is asked to decide.
+`docs/step4-evidence/questions.md`. On 15 October 2026 the owner decided every one as recommended, conditions included ("Let's go with your
+recommendations for all questions"), to be implemented later ("Only record the decisions/your recommendations. We will implement later.").
+"Default" is what the build carries until then; 178, 179, 183, 185, 186, 188, 192 and 194 recommended it already. 189 is a reading by the
+owner or a tester.
 
 | # | question | recommended | default in the build |
 |---|---|---|---|
@@ -202,7 +204,8 @@ build has; "recommended" is what the owner is asked to decide.
 
 ### What step 4 hands on (fact, from its commits and their reviews; `CHANGELOG.md`)
 
-- **The owner questions 176-197** above, each with the default the build carries.
+- **The owner decisions 176-197** above, decided as recommended and not yet implemented: a later task applies those whose recommendation
+  differs from the build's default (176, 177, 180, 181, 182, 184, 187, 190, 191, 193, 195, 196, 197); 189 is a human reading.
 - **The claims' reach:** 134 of the 696 narrative statements carry a claim; 562 remain unchecked, mostly formation acts, feature stories and
   the analysis chapters outside the clusters read, but 38 of them rewritten in step 4 without a claim (among them the phase-2 to phase-5 ledes,
   `SOURCE_NOTE.body[0]`, `body[5]`, `refs[0]`, `refs[1]`, `ANALYSIS[#north]`, tour stops 6 and 8). Nothing shows a claim to a visitor (question 187).

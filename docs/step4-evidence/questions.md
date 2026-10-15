@@ -6,6 +6,13 @@ opening cases never, decision 121) or loosens an assertion. Where a default keep
 that carry the gap are named, and the claim says so. Most questions come from the synthesizer's plan (step 4's research workflow); the lead's
 changes to it are said.
 
+**Decided, 15 October 2026.** The owner wrote: "Let's go with your recommendations for all questions", and then: "Only record the
+decisions/your recommendations. We will implement later." Each question 176-197 is decided as its *Recommendation* reads, conditions
+included (a recommendation that depends on a measurement is to be applied only where the measurement allows it, else its stated fallback).
+None is implemented yet: the build carries each question's *Default*, as its *Status* line says, until a later task applies the decision.
+Question 189's recommendation is a reading by the owner or a tester. 178, 179, 183, 185, 186, 188, 192 and 194 recommended what the build
+already carries.
+
 **Status.** Each question's *Status* line says whether its default is in the repository (with the commit) or pending, by the plan's label
 (K4 the three disputed hours, K5 the other hours, K6 Friant, K7 I Corps and the Guard, K8 the two grades, K9 the Zuran, the chapel and the
 ice, K10 the strengths, K11 Blasowitz, K12 the app's sentences). This file is updated as each lands; `CHANGELOG.md`'s list of commits gives

@@ -2,7 +2,8 @@
 
 ## 2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)
 
-**Status: done on `claude/nice-dijkstra-mdyu2w` (draft PR #52), for review; its owner questions 176-197 are open.** The step's end, with
+**Status: done on `claude/nice-dijkstra-mdyu2w` (draft PR #52), for review. The owner decided questions 176-197 as recommended on
+15 October 2026, to be implemented later (the last commit records it; the build carries each question's default).** The step's end, with
 the final checks, the build's size and md5 and what remains uncertain, is the section after the list of commits. `check:data` changes on purpose in this step (a data task):
 every changed declaration is listed below with what it was, what it is, why and the source's locator, and the reference moves to the
 final build at the end.
@@ -61,8 +62,16 @@ a synthesizer and a completeness critic. Every reader is a machine reader: each 
 - `f5e7696`: K8, the two position grades, measured on a full check:visual, with the review of `c3e6299`, below (its check:selftest and
   check:contrast, run on its build after the commit: 242 of 242 with the manifest held; 35 states, 0 below AA, 0 font failures, the six
   start-up cases).
-- (this commit) The step's end: the review of `f5e7696`, the records and the final checks, below.
+- `e763529`: the step's end: the review of `f5e7696`, the records and the final checks, below.
+- (this commit) The owner's decisions 176-197 recorded, below (records only).
 - The language left for step 4 (the plan's K3, `f9e1b4b`): below.
+
+**The owner's decisions 176-197 (records only).** On 15 October 2026 the owner wrote: "Let's go with your recommendations for all
+questions", and then: "Only record the decisions/your recommendations. We will implement later." Each question is decided as its
+recommendation reads, conditions included, in `docs/step4-evidence/questions.md` and `docs/ROADMAP.md` (`CLAUDE.md`'s current state too).
+Nothing is implemented: no source, data or build changed, and the build carries each question's default. 178, 179, 183, 185, 186, 188, 192
+and 194 recommended what the build already carries; 176, 177, 180, 181, 182, 184, 187, 190, 191, 193, 195, 196 and 197 await a later task;
+189 is a reading by the owner or a tester. The next owner decision is 198.
 
 **The step's end (the last commit: the review of `f5e7696`, the records and the final checks).**
 - *What step 4 did, in sum.* The inventory of the 696 narrative statements of `data.js` and `analysis.js` (687 when first taken), each by ref

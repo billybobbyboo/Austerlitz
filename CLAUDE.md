@@ -415,5 +415,5 @@ statements and their claims (`narrative.js`, guarded; 134 claimed, 562 unchecked
 source skeptic on fresh page images (the 7 read on the text layer, on it; the 63 counter-readings by no other reader; `docs/step4-evidence/`); the step-2 register and the appearance quotes read a second time by machine readers
 (H-17); the interpolated position's pill (decision 128 (b)); the disputed hours from the published accounts (125 (b): dok@1 settled, eight
 named conflicts); what steps 2 and 3 handed on settled from the readings or kept disputed with both sides, but for what step 4 hands on (`docs/ROADMAP.md`); gqg@0 and drouet@6 graded B;
-the `check:data` reference and the baseline moved to its build. Its owner questions 176-197 are open, each with the default the build
-carries (`docs/step4-evidence/questions.md`, `docs/ROADMAP.md`); the next new owner question is 198.
+the `check:data` reference and the baseline moved to its build. The owner decided questions 176-197 as recommended on 15 October 2026 (`docs/step4-evidence/questions.md`,
+`docs/ROADMAP.md`), to be implemented later; the build carries each question's default until then. The next owner decision is 198.
