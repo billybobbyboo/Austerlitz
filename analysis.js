@@ -354,7 +354,7 @@ var EVENTS = [
    ============================================================ */
 /* A stop names one moment (at), and as before a theme, plan or feature; it takes the moment's clock and its theme's camera, or the
    moment's phase's. Exceptions, each from the stop's own text: stop 4 keeps its own clock (t), because its text quotes the plateau
-   reading at 07:15 (sim-test.js checks it); stops 2 and 5 keep their own cameras (the plan's overview; the Pratzen, which phase
+   reading at 07:25 (sim-test.js checks it); stops 2 and 5 keep their own cameras (the plan's overview; the Pratzen, which phase
    2's view does not show). */
 var TOUR = [
 {n:"The battlefield", at:"ph:0",

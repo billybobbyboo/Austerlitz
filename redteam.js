@@ -354,7 +354,8 @@ const KNOWN_WARN=[
        "roadmap step 2 dated drouet@3's departure at Soult's advance (08:45, H-2): its leg no longer creeps from 04:00, so it is faster; "+
        "1.26 until roadmap step 4 dated dok@1's departure at 07:00, as the disposition ordered (decision 125 (b)), and 1.30 until roadmap "+
        "step 4b dated lang@1's and prz@1's at 07:00 too (question 176 (b)), for the same reason; 1.37 until roadmap step 4b dropped bag@8's "+
-       "dated departure (question 180 (b)), which had made Bagration's last leg a fast one at 16:30: the opposite effect",
+       "dated departure (question 180 (b)), which had made Bagration's last leg a fast one at 16:30, and c_gren@7's dated arrival (question "+
+       "181 (b)), whose derived arrival makes the grenadiers' next leg slower: the opposite effect (1.29 from bag@8 alone)",
    see:"docs/STAGE2_SPEC.md §M.12 (:1303) and §M.13 (:1407), on the creeping moves of §M.10; CHANGELOG.md, the chronology data task and the Stage 2C "+
        "precondition (the march rates), roadmap step 2 (H-2, Drouet's departure), roadmap step 4 (K4, the I Column's departure) and roadmap step 4b (questions 176 and 180, the II and III Columns' departures and bag@8's)"}];
 { const uw=[...new Set(W_)];

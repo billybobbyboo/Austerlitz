@@ -34,14 +34,16 @@ after, computed by `tools/stage2/chronology.js`).
   the readings support (for instance the plateau at 08:45 holding the 4th Column and Kamensky's brigade, Thiebault p. 504): an assertion
   changed only on your word.
 - *Recommendation.* (b): the readings agree on seven (or half past six for the left wing, Schönhals) and none on four.
-- *Default.* (a). *Status.* Implemented (K4).
+- *Default.* (a). *Status.* The default (a) implemented (K4); the decision, (b), applied in roadmap step 4b (`714226f`): lang@1 and prz@1
+  from 07:00, grade B; sim-test's assertion still holds and is kept, the check the question proposed added beside it (`CHANGELOG.md`).
 
 **177. Friant at the Goldbach and Telnitz retaken, from Davout's report (about nine; Telnitz at half past nine, then lost again).**
 - *Options.* (a) Keep friant@1's departure from 04:00, friant@2 at 08:30 and the events' clocks, the texts naming Davout's hours and the
   two moves named in `CONFLICTS` as in 176 (a). (b) Retime to the sources (the departure from Raigern at five or half past five; the retaking
   anchor at half past nine, A; `EVENTS[#davout]` [525, 555], `#telnitz-retaken` 570; the phase lines moved to phase 3).
 - *Recommendation.* (b) if `opening-2` and the cases at 500-570 measure within their limits; else (a) unless decision 121 is amended for
-  that case. *Default.* (a). *Status.* The default (a) implemented (K6); the recommendation (b) not measured.
+  that case. *Default.* (a). *Status.* The default (a) implemented (K6). In roadmap step 4b (b) was built and measured: `opening-2` unchanged, but
+  `narrow-1024` 6 drops -> 7, past its limit 6, so (a) stands (`6a49f76`); question 199 asks whether that limit may move.
 
 **178. Kamensky's turn: the point at 09:45 or an interval.** Decision 142 keeps t 585; this asks only whether the readings reopen it.
 - *Options.* (a) Decision 142 stands: t 585, the dispute naming the sources' sequence and the versions of who turned the brigade. (b) An
@@ -57,12 +59,14 @@ after, computed by `tools/stage2/chronology.js`).
 - *Options.* (a) Keep bag@6's 11:15 and bag@8's 16:30 as the map's, the readings in their notes and acts (bag@6 named in `CONFLICTS`
   against Schönhals's "toward noon"); the end "disputed". (b) Drop bag@8's departure (no source dates a movement then). (c) Redraw bag@9
   toward Austerlitz over Alt-Rausnitz.
-- *Recommendation.* (b) if `opening-4` measures unchanged, else (a); (c) not now. *Default.* (a). *Status.* bag@8 and the end implemented (K5); bag@6's conflict implemented (K11).
+- *Recommendation.* (b) if `opening-4` measures unchanged, else (a); (c) not now. *Default.* (a). *Status.* bag@8 and the end implemented (K5); bag@6's conflict implemented (K11). In roadmap step 4b `opening-4`
+  measured unchanged, so (b) is applied: bag@8's dated departure dropped (`117d53f`); (c) not now.
 
 **181. The forced dated legs: c_gren@7/@8 and kollo@4/@5.**
 - *Options.* c_gren: (a) keep `{dep 780, at 840}`, the readings in the note; (b) `{dep 780}` without `at`, c_gren@8 leaving `FORCED_DATED`.
   kollo: (a) keep `at 615`; (b) drop it.
-- *Recommendation.* c_gren (b), kollo (a). *Default.* (a) for both. *Status.* Implemented (K5).
+- *Recommendation.* c_gren (b), kollo (a). *Default.* (a) for both. *Status.* The default implemented (K5); the decision applied in
+  roadmap step 4b (`117d53f`): c_gren@7 without its `at`, c_gren@8 out of `FORCED_DATED`; kollo kept.
 
 **182. I Corps as the centre, and the French plan's "In hand" column.**
 - *Options.* (a) One column, its `ord` rewritten to the orders read. (b) Split into the centre (Bernadotte) and the reserve (the Guard and
@@ -165,3 +169,29 @@ dawn place (`stutterheim1806de.p42.reserve-turas`); Coignet has the Guard formed
 Savary makes the Guard infantry Lannes's natural reserve (1 December).
 - *Options.* (a) Keep A. (b) B for both, as gqg@0 under decision 160, measured on a full check:visual.
 - *Recommendation.* (b), measured. *Default.* (a). *Status.* The default is the repository's state.
+
+## Roadmap step 4b: the owner questions (198-)
+
+Choices decisions 1-197 do not settle, met while applying decisions 176-197 in step 4b; each with its options, a recommendation and the
+conservative default built meanwhile. The next owner decision after these is the number after the last.
+
+**198. Timing grade B's words for a leg the sources date but give differently (lang@1, prz@1).**
+- *Context.* Decision 176 (b) grades the II and III Columns' departures at 07:00 B, basis "source": the disposition and Przybyszewski's
+  report give seven, Schönhals half past seven and Buxhowden's report eight for the II Column. `TIMING_TEXT.B`, the sentence the dossier
+  shows while a leg graded B runs, reads "Timing given as approximate in this reconstruction's narrative, which cites no source for it."
+  (decision 41's grades): untrue of these two legs, which cite sources. Every other leg graded B is unsourced.
+- *Options.* (a) Keep B and `TIMING_TEXT` as they are. (b) Reword `TIMING_TEXT.B` to cover both uses, for instance "Timing approximate:
+  the sources read differ on it, or this reconstruction's narrative gives it without a source." (a guarded declaration; check:data).
+  (c) Grade the two legs A where a source dates the column's own departure (prz@1, its commander's report, as dok@1 is A beside
+  Schönhals's half past six), B with (b)'s words for lang@1.
+- *Recommendation.* (b): the words then say what B means in both uses, and no grade moves. *Default.* (a), as built.
+
+**199. `narrow-1024`'s drop limit for question 177 (b).**
+- *Context.* Decision 177 recommended (b), Friant retimed to Davout's hours, if `opening-2` and the cases at 500-570 measure within
+  their limits. Built in full and measured in step 4b: `opening-2` unchanged, seven cases within their limits, but `narrow-1024` (09:30,
+  1024 x 768) drops 7 labels against its limit 6: Bourcier's name gives way to the retaken village's event label, which (b) puts at 09:30.
+  The fallback (a) is built. The limit is the 3C layer's in the 3D framing (decision 62); it is not an opening case (decision 121).
+- *Options.* (a) Keep the limit; (a) of 177 stands. (b) Move `DROP_LIMIT["narrow-1024"]` to 7 for this one cause and apply 177 (b),
+  measured again on a full check:visual (the patch is recorded in `CHANGELOG.md`, step 4b).
+- *Recommendation.* (b): the sources' hours for Friant's march and Telnitz retaken (Davout's report graded A) are worth one name dropped at
+  the 1024 px layout, where the dropped name stays reachable by hover and keyboard. *Default.* (a), as built.
