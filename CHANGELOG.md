@@ -28,7 +28,8 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 - `704e6f2`: the strengths-and-grades measurement recorded; the self-test's D-6 plateau check given a run to test after 176.
 - `a75b403`: `docs/ROADMAP.md`, each decision's status and questions 198-201.
 - `b82439b`: the step's end: the final checks, check:data's reference and the baseline moved, `CLAUDE.md`.
-- (this commit) The owner's decisions 198-201 recorded; 198 applied (`TIMING_TEXT.B`'s words).
+- `24de9a8`: the owner's decisions 198-201 recorded; 198 applied (`TIMING_TEXT.B`'s words).
+- (this commit) Decision 199: `narrow-1024`'s drop limit 7, and 177 (b) applied (Friant retimed to Davout's hours).
 
 **The review of `4981b27` and `5eaa92f` (places and plan; an independent reviewer, read-only, on a worktree of `5eaa92f`; fixed in the
 next commit).** It ran geo-test.js (59 of 59; Turas now inside the 0.5 km check, 666 bearing pairs over 27 points), test.js and redteam.js
@@ -106,7 +107,8 @@ sequence (as K5 lowered soult and pratzen-village to C and ice and end to B). Al
   two`), and Stutterheim's "about 2" when Vandamme's division finished the fight (`stut.p77-79.two-four`): half an hour earlier than the map's
   14:30 for taking the height. (Schönhals's left wing past "dieses Defilé" by half past two, `schoenhals1873.p167-169.oudinot`, is the dam by
   Satschan, as the source skeptic corrected, C2.26: a weaker bound.)
-- `telnitz-retaken` stays B (question 177's (a): its hour on the map is 08:30, against Davout's 09:30). No event is graded A now.
+- `telnitz-retaken` was B (question 177's (a): its hour on the map 08:30, against Davout's 09:30); with 199 and 177 (b) it is at Davout's
+  09:30, graded A (`davout1885.no127.p202-204`; Schönhals's and Stutterheim's attack about nine agree), the one event graded A.
 - `EVENTS[].cf` (eight, not statements): was A; is as above. An event's timing grade is shown only as its dossier's "Timing" pill; nothing on
   the map or the timeline draws it, so no harness case moves. The events' claims (fact) and texts are unchanged: question 193 asks for the
   grades. Whether the six lowered for disagreeing hours should become "disputed" with a dispute naming the hours, and whether the phase lines
@@ -174,6 +176,26 @@ decisions follow them.
   reconstruction's narrative gives it without a source." It now says what B means in both its uses: the legs graded B from sources that
   differ (lang@1, prz@1 since 176, friant@1 with 199) and those the narrative gives without a source; no grade moves. Shown in a formation's
   dossier while its timed leg runs; no harness case opens such a dossier.
+
+- *199 (b): `narrow-1024`'s drop limit 7, and 177 (b) applied.* `tools/visual/thresholds.js`: `DROP_LIMIT["narrow-1024"]` was 6 (the 3C
+  layer's in the 3D framing, decision 62), is 7, for the one cause the 177 (b) measurement found (Bourcier's name `n:bourcier` dropped
+  beside the retaken village's label at 09:30; it stays reachable by hover and keyboard); no other limit moves. 177 (b), measured and
+  recorded above ("Question 177") and kept as a patch, is applied in full on the current tree: friant@1 `tm {dep:300, at:540, gr:"B",
+  basis:"source"}`; the retaking anchor re-keyed from phase 2 to phase 3 with `tm {at:570, gr:"A", basis:"source"}` (Davout's report of 26
+  December, no. 127, p. 204, `davout1885.no127.p202-204`) and the holding anchor from phase 3 to phase 5; `EVENTS[#davout]` was `[465,495]`,
+  disputed, is `[525,555]`, "fact" (no dispute: Stutterheim and the Moniteur's remarks about nine, Schönhals attacking about nine,
+  Mikhailovsky-Danilevsky after Telnitz had fallen; Davout gives no hour for the arrival); `EVENTS[#telnitz-retaken]` was 510, disputed, B,
+  is 570, "fact", A; the phase-1 line on the brigade's arrival and the phase-2 line on the retaking move to phase 3 (c. 09:00, c. 09:30,
+  reworded to the sources' hours), and the phase-2 lede loses its retaking sentence; `OVERLAYS`: phase 1's and phase 2's arrows the approach
+  march (`leg:["friant",0,1]`), phase 3's "Friant retakes Telnitz" (`leg:["friant",1,3]`), phase 2's French line "Legrand on the stream"
+  (was "Legrand and Friant on the stream"); `EVENTS[#raigern].why` "this map moves it from 05:00" (was 04:00); `SOURCE_NOTE.body[5]`'s
+  three Friant hours "at 05:00 on the map", "and so on the map" twice (were the map's 04:00, 08:00, 08:30), and its "The map keeps its timing
+  for ..." no longer names Friant's division. check:chronology: friant@1 (a span 05:00-09:00) and friant@3 (the retaking, 09:30) consistent,
+  both out of `CONFLICTS` (four left: bag@6, guard_cav@6, kamensky@3, kamensky@4); the Friant allowances of step 4 removed, `event davout
+  @08:45-09:15` allowed. narrative.js: the two moved phase lines and the events' whys "attributed" (their sides dropped), their disputes'
+  claims removed, the Soult line's claim re-keyed to `PHASES[#2].events[1]`, Raigern's note "this map's departure is the earlier report's";
+  the inventory regenerated. The changed declarations: `PHASES`, `FORMATIONS`, `SOURCE_NOTE`, `EVENTS`, `OVERLAYS`, `STATEMENT_CLAIMS`
+  (and `thresholds.js`, outside check:data). Measured on the final full check:visual (below).
 
 **The step's end.**
 - *What step 4b part A did, in sum.* Of the eleven decisions taken up: applied as recommended, their measurement allowing it, 176 (b) (the II

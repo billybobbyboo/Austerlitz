@@ -256,20 +256,18 @@ var EVENTS = [
 
 {id:"raigern", t:[240,285], n:"Friant's division at Raigern since the night", side:"fr", kind:"arrival",
  p:[18,500], forms:["friant","bourcier"], cf:"B", claim:"est",
- why:"Davout and Friant reached Raigern on the night of 1 December: about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers. Davout's reports send the division on from Raigern at 05:00 (his report of 2 December) or between 05:30 and 06:00 (his report of 26 December), Sokolov about six; this map moves it from 04:00. Raigern lies just beyond this corner of the map."},
-{id:"davout", t:[465,495], n:"Friant's leading brigade reaches the Goldbach", side:"fr", kind:"arrival",
- p:[198,402], forms:["friant"], cf:"B", claim:"disputed",
- dispute:"When the leading brigade reached the Goldbach: 07:45 to 08:15 on this map; about 09:00 in Stutterheim and the Moniteur's remarks of 1806, Friant attacking about 09:00 in Schönhals. Davout's report has word of the attack on Telnitz reach him on the march about eight and gives no hour for the arrival.",
- why:"About 08:00 near Telnitz on this map; about nine in Stutterheim and the Moniteur's remarks, attacking about nine in Schönhals. Davout's report has word of the attack reach him on the march about eight and gives no hour for the arrival. In this map's interpretation, a counterfactual: without it the French right does not survive the morning."},
+ why:"Davout and Friant reached Raigern on the night of 1 December: about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers. Davout's reports send the division on from Raigern at 05:00 (his report of 2 December) or between 05:30 and 06:00 (his report of 26 December), Sokolov about six; this map moves it from 05:00. Raigern lies just beyond this corner of the map."},
+{id:"davout", t:[525,555], n:"Friant's leading brigade reaches the Goldbach", side:"fr", kind:"arrival",
+ p:[198,402], forms:["friant"], cf:"B", claim:"fact",
+ why:"About nine near Telnitz in Stutterheim and in the Moniteur's remarks of 1806, attacking about nine in Schönhals, after Telnitz had fallen in Mikhailovsky-Danilevsky. Davout's report has word of the attack reach him on the march about eight and gives no hour for the arrival. In this map's interpretation, a counterfactual: without it the French right does not survive the morning."},
 
 {id:"sokolnitz", t:480, n:"Langeron and Przybyszewski attack Sokolnitz", side:"al", kind:"attack",
  p:[208,365], forms:["lang","prz","legrand"], cf:"B", claim:"fact",
  why:"The fight for the village, the castle and the pheasantry absorbs two columns; Davout reported the village taken and retaken several times."},
 
-{id:"telnitz-retaken", t:510, n:"Friant retakes Telnitz, then loses it again", side:"fr", kind:"attack",
- p:[214,406], forms:["friant"], cf:"B", claim:"disputed",
- dispute:"When Telnitz was retaken: 08:30 on this map; in French hands at 09:30 in Davout's report of 26 December, then lost again; Friant attacking the village anew about 09:00 in Schönhals, Davout's reinforcement up about 09:00 in Stutterheim.",
- why:"Heudelet's brigade throws itself into the village straight off the march. Davout's report has it in French hands at 09:30, then lost again when a French regiment, not recognising the brigade in the fog, fired on it and the Russians came back with fresh troops; the hour on the timeline is this map's."},
+{id:"telnitz-retaken", t:570, n:"Friant retakes Telnitz, then loses it again", side:"fr", kind:"attack",
+ p:[214,406], forms:["friant"], cf:"A", claim:"fact",
+ why:"Heudelet's brigade throws itself into the village straight off the march. Davout's report has it in French hands at 09:30, then lost again when a French regiment, not recognising the brigade in the fog, fired on it and the Russians came back with fresh troops; Schönhals has Friant attack the village anew about nine, and Stutterheim Davout's reinforcement up about nine."},
 
 {id:"decision", t:[505,525], n:"Napoleon releases Soult against the heights", side:"fr", kind:"decision",
  p:[177,134], forms:["gqg","c_iv","sthilaire","vandamme"], cf:"B", claim:"est",

@@ -45,7 +45,7 @@ after, computed by `tools/stage2/chronology.js`).
   anchor at half past nine, A; `EVENTS[#davout]` [525, 555], `#telnitz-retaken` 570; the phase lines moved to phase 3).
 - *Recommendation.* (b) if `opening-2` and the cases at 500-570 measure within their limits; else (a) unless decision 121 is amended for
   that case. *Default.* (a). *Status.* The default (a) implemented (K6). In roadmap step 4b (b) was built and measured: `opening-2` unchanged, but
-  `narrow-1024` 6 drops -> 7, past its limit 6, so (a) stands (`6a49f76`); question 199 asks whether that limit may move.
+  `narrow-1024` 6 drops -> 7, past its limit 6, so (a) stood (`6a49f76`); on decision 199 (17 October 2026) the limit is 7 and (b) is applied.
 
 **178. Kamensky's turn: the point at 09:45 or an interval.** Decision 142 keeps t 585; this asks only whether the readings reopen it.
 - *Options.* (a) Decision 142 stands: t 585, the dispute naming the sources' sequence and the versions of who turned the brigade. (b) An
@@ -213,6 +213,8 @@ conservative default built meanwhile. The next owner decision after these is the
   measured again on a full check:visual (the patch is recorded in `CHANGELOG.md`, step 4b).
 - *Recommendation.* (b): the sources' hours for Friant's march and Telnitz retaken (Davout's report graded A) are worth one name dropped at
   the 1024 px layout, where the dropped name stays reachable by hover and keyboard. *Default.* (a), as built.
+- *Status.* Decided (b) on 17 October 2026; applied: the limit 7 and 177 (b) on the current tree (`CHANGELOG.md`), measured on the
+  final full check:visual.
 
 **200. Question 195 applied on a machine reading.**
 - *Context.* 195 (a), decided: keep the Szekler record "until the 1805 page is read with its neighbours (the first item of question 189's

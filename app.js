@@ -38,10 +38,10 @@ var OVERLAYS = {
     arrows:[
      {leg:["kienmayer",1,2],kind:"attack",side:"al",label:"Kienmayer"},
      {leg:["dok",0,1],kind:"move",side:"al",label:"I Column descends"},
-     {leg:["friant",1,2],kind:"move",side:"fr",label:"Friant's approach march"}],
+     {leg:["friant",0,1],kind:"move",side:"fr",label:"Friant's approach march"}],
     obj:[[212,408,"Telnitz"]]},
 
-2:{ lines:[{pts:[[213,222],[205,277],[208,365],[212,408]],side:"fr",label:"Legrand and Friant on the stream"}],
+2:{ lines:[{pts:[[213,222],[205,277],[208,365],[212,408]],side:"fr",label:"Legrand on the stream"}],
     arrows:[
      {pts:[[268,328],[249,338],[229,356]],kind:"attack",side:"al",label:"II Column → Sokolnitz",
       interp:"objective: the attack on Sokolnitz village; the model has the column at the village from 08:00"},
@@ -50,12 +50,13 @@ var OVERLAYS = {
      {leg:["lich",2,3],kind:"move",side:"al",label:"Liechtenstein crosses the front"},
      {pts:[[325,230],[301,237]],kind:"halt",side:"al",label:"IV Column halted",of:"col4",
       interp:"halt: the 4th Column held up on the plateau, not a route; a bar where it stopped, across its line of march"},
-     {leg:["friant",1,2],kind:"attack",side:"fr",label:"Friant retakes Telnitz"}],
+     {leg:["friant",0,1],kind:"move",side:"fr",label:"Friant's approach march"}],
     obj:[[208,365,"Sokolnitz"],[205,277,"Kobelnitz — never reached"]]},
 
 3:{ arrows:[
      {leg:["sthilaire",2,3],kind:"attack",side:"fr",label:"Saint-Hilaire"},
-     {leg:["vandamme",2,3],kind:"attack",side:"fr",label:"Vandamme"}],
+     {leg:["vandamme",2,3],kind:"attack",side:"fr",label:"Vandamme"},
+     {leg:["friant",1,3],kind:"attack",side:"fr",label:"Friant retakes Telnitz"}],
     obj:[[285,289,"Pratzeberg"],[313,205,"Stare Vinohrady"]]},
 
 4:{ arrows:[
