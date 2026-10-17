@@ -151,6 +151,9 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
   item of question 189's human reading). (b) Lower it to B now and draw the Szekler hussars "dark blue" after the 1813 box, labelled an
   inference from a later edition. (c) Draw them generic until the 1805 page is read.
 - *Recommendation.* (a), with the 1805 page read first. *Default.* (a). *Status.* The note added in the review's fixes of `3dafee8`.
+  In roadmap step 4b the 1805 page was read on its images (Hungaricana, by a machine reader): the Szekler Nr. 11's box closes on p. 296
+  with "dunkelblaue Pelze, Dollmanns und Hosen", and "kornblumenblaue" closes Palatinal Nr. 12's on p. 297; the record is corrected to
+  dark blue, A (`docs/stage6-evidence/second-reading.md`). Decision 189's human reading of it remains.
 
 **196. A formation waiting at its anchor is graded by the next phase's grade (`confAt`).** Since K8 gqg@0 is B, but from 11:15 (phase 6)
 to 12:00, while the headquarters waits at the Zuran point before gqg@6's departure, `confAt` takes phase 6's grade, A, and draws the crisp

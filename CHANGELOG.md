@@ -14,7 +14,31 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 - `6a49f76`: question 177, (b) measured and not allowed (narrow-1024 past its drop limit); its fallback (a), the build's state, kept.
 - `117d53f`: questions 180 (b) and 181, bag@8's dated departure dropped; c_gren@7's dated arrival dropped, kollo's kept.
 - `356da2e`: the review of the timing group, fixed; questions 198 and 199 recorded.
-- (this commit) Question 184: Kienmayer's working figure Schönhals's 6,340; Legrand's brigadiers the readings'.
+- `da16e48`: question 184, Kienmayer's working figure Schönhals's 6,340; Legrand's brigadiers the readings'.
+- (this commit) Question 195: the Szekler hussars' 1805 page read on its images; the record corrected to dark blue.
+
+**Question 195: the Szekler hussars' colour, the 1805 page read first.** The 1805 Schematismus, unreachable in step 4 (Hungaricana
+answered 403), was reached in this session (the site answers a browser's request; its viewer serves each page as a one-page PDF,
+`static-cdn.hungaricana.hu/pdf1/OeStA/MilitarAlmanachSchematismus_1805/page0296.pdf` to `page0298.pdf`), rendered to images and read on
+them by a machine reader (17 October 2026; not read by a person, so decision 189's human reading remains). Each regiment's box opens with
+its staff line and number and closes with its colour line: the Szekler Nr. 11's box (printed pp. 295-296) closes "Schwarze Csako,
+dunkelblaue Pelze, Dollmanns und Hosen. | w.K."; Palatinal Nr. 12's (pp. 296-297) closes "Schwarze Csako, kornblumenblaue Pelze, Dollmanns
+und Hosen. | w.K.", the words the record had from p. 297. The 1805 page has the 1813 layout: the record took the neighbouring regiment's
+colour. Settled from the reading, so the record is corrected (question 195's (a) said keep it "until the 1805 page is read with its
+neighbours"):
+- `DRESS.at_hussar_szekler.coat`: was `{v:"kornblumenblaue Pelze, Dollmanns und Hosen", en:"cornflower-blue pelisse, dolman and breeches",
+  c:"blue", at:"p. 297 (view 298)", gr:"A", lab:"fact", q:"kornblumenblaue Pelze, Dollmanns und Hosen", note: the doubt}`; is
+  `{v:"dunkelblaue Pelze, Dollmanns und Hosen", en:"dark-blue pelisse, dolman and breeches", c:"dark blue", at:"p. 296 (view 297)", gr:"A",
+  lab:"fact", q:"dunkelblaue Pelze, Dollmanns und Hosen", note: the reading}`. `.legwear` likewise (was "kornblumenblaue [...] Hosen", blue,
+  p. 297; is "dunkelblaue [...] Hosen", dark blue, p. 296); `.head` "Schwarze Csako" at p. 296 (was p. 297; Palatinal's line also has it).
+- *Drawn.* The Szekler hussars' pelisse, dolman and breeches are drawn in the `KIT` cloth "dark blue" (0x2C3B67) instead of "blue"
+  (0x3E5C9F, the cornflower); "blue" stays in `KIT` and in the table's vocabulary, now drawn by no class. css-test.js: every cloth a class
+  of the table, 14 cloth colours; runtime-test.js's notes from the table follow (the sources sheet's troop notes read the table). The
+  figures' colours do not enter the harness's drop and unobstructed measures; the self-test's figure checks are run with the group's
+  full check:visual.
+- As a check on the same scan, Hessen-Homburg Nr. 4's box (pp. 284-285) closes with "Hellblaue Csako, paperlgrüne Pelze u. Dollmanns,
+  ponceaurothe Hosen. | w.K.", as `DRESS.at_hussar_hh` records it (p. 285): no change. Recorded in `docs/stage6-evidence/second-reading.md`.
+- check:data's changed declarations in this commit: `DRESS`. `tools/stage6/verify-quotes.js` (network) was not run.
 
 **Question 184: the strengths' working figures.** As recommended: Kienmayer 6,340 (Schönhals); Liechtenstein kept at 5,400 (so
 `PLATEAU_04_RECORDED`, 38,700, does not move); the IV Corps divisions kept until a return of 2 December is read; Legrand's staff the
