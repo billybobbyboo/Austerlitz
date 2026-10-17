@@ -4,7 +4,8 @@
 
    Ground truth (WGS84):
      villages  - municipality centres, Czech municipality register as published
-                 in 33bcdd/souradnice-mest (state 1 January 2018)
+                 in 33bcdd/souradnice-mest (state 1 January 2018); Turas (since roadmap
+                 step 4b) the RÚIAN definition point of Tuřany, which that list lacks
      summits   - PeakVisor DEM summits; official heights where they differ
    The map keeps its historical frame. That frame is a similarity transform of
    true geography: fitted to twelve villages (the audit procedure: fit fifteen,
@@ -78,6 +79,8 @@ var GEOREF = (function(){
     satschan:    {n:"Satschan",    cz:"Žatčany",          lat:49.087986, lon:16.733849, kind:"v"},
     menitz:      {n:"Menitz",      cz:"Měnín",            lat:49.082495, lon:16.694343, kind:"v"},
     hostieradek: {n:"Hostieradek", cz:"Hostěrádky-Rešov", lat:49.117751, lon:16.784406, kind:"v"},
+    turas:       {n:"Turas",       cz:"Tuřany",           lat:49.147242, lon:16.662997, kind:"v",
+                  note:"RÚIAN definition point of the part of Brno Tuřany (kód 12173), read 14 October 2026 (roadmap step 4, register C6.26); Turas = Tuřany in Wolny's Moravian topography of 1836 (p. 239). Not one of the fit's villages"},
     raigern:     {n:"Raigern",     cz:"Rajhrad",          lat:49.090311, lon:16.603982, kind:"v", offmap:true},
     rausnitz:    {n:"Rausnitz",    cz:"Rousínov",         lat:49.201381, lon:16.882252, kind:"v", offmap:true},
     kowalowitz:  {n:"Kowalowitz",  cz:"Kovalovice",       lat:49.204721, lon:16.819140, kind:"v", offmap:true},

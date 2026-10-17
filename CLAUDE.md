@@ -38,7 +38,7 @@ sheet's `standardNotes`), overlays (`OVERLAYS` is historical interpretation data
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it. Since step 1: `redteam.js` section 6a judges every string a visitor can be shown (`tools/lang-scan.js`; `LANG_ALLOW` names each allowed hit with its kind, its reason and the task that removes it: since roadmap step 4, 2 entries, both permanent (the seven superlatives allowed until step 4 attributed or dropped in its K3), each naming its kind, "a statement of method" (`SOURCE_NOTE`'s "the hardest figures of all") and "attributed words" (the Allied plan's stated assumption); an entry added since step 1 names the pattern and step that found it, `LANG_STEP1` (one entry) can only shrink, and an entry whose `until` names a done step, `DONE_STEPS`, fails); a warning fails unless acknowledged by its exact text (`KNOWN_WARN` in `test.js`, `redteam.js`, `sim-test.js`); `runtime-test.js` checks every material against real three r128 and fails on any warning; each suite regenerates the generated modules it reads (`tools/fresh.js`) |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2 to Stage 7 measurement scripts (`stage2/`, `stage3/`, `stage4/`, `stage5/`, `stage6/`, `stage7/`, not bundled), the final audit's scripts (`audit/`, not bundled), the type's generator and checks (`fonts/`: `build-fonts.py`, `sources.json`, `manifest.json`, `woff2.js`, `accept-probe.js`; since step 1), `lang-scan.js` and `fresh.js` (since step 1), since roadmap step 3 `visual/three-route.js` (every page tool's one route for three.js, checked against the page's integrity), `visual/boot-check.js` (the six start-up cases, run by `check:contrast`) and `step3/` (`report-diff.js`, two `check:visual` reports compared case by case; `hover-cost.js`, the hover's cost per pointer move; not bundled), since roadmap step 4 `step4/` (`statements.js`, the narrative statements of `data.js` and `analysis.js` one per string by ref, with the hash `test.js` holds a claim to; `inventory.js`, the inventory's generator; read by `test.js` and the step's scripts, not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
-| `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `stage2c-68ac7721.html` (the 2C build, on which the drop limits are derived), `spine-6b2cccd4.html` (the spine data task's build), `stage4d-9b13adbf.html` (the 4D build, 4D's one-word data change), `stage6b-7fc0f6c3.html` (the `check:data` reference from 6B's appearance table to roadmap step 2), `step2-af98f586.html` (the `check:data` reference from roadmap step 2's data task to step 4), `step4-833743c6.html` (the `check:data` reference, since roadmap step 4, the sourcing stage) |
+| `archive/` | frozen reference builds: `correction-pass-672aff9f.html`, `stage0-c09c4b23.html`, `stage2c-68ac7721.html` (the 2C build, on which the drop limits are derived), `spine-6b2cccd4.html` (the spine data task's build), `stage4d-9b13adbf.html` (the 4D build, 4D's one-word data change), `stage6b-7fc0f6c3.html` (the `check:data` reference from 6B's appearance table to roadmap step 2), `step2-af98f586.html` (the `check:data` reference from roadmap step 2's data task to step 4), `step4-833743c6.html` (the `check:data` reference from roadmap step 4, the sourcing stage, to step 4b), `step4b-2ae24fa3.html` (the `check:data` reference from roadmap step 4b part A's first end, decisions 176-197 applied), `step4b-e257d09b.html` (the `check:data` reference since step 4b part A with the owner's decisions 198-201) |
 | `docs/` | `VISUAL_AUDIT.md` (the roadmap), `VISUAL_SPEC.md` (Stage 1), `STAGE2_SPEC.md` (Stage 2, with `stage2-evidence/`), `STAGE3_SPEC.md` (Stage 3, with `stage3-evidence/`), `STAGE4_SPEC.md` (Stage 4, with `stage4-evidence/`), `STAGE5_SPEC.md` (Stage 5, with `stage5-evidence/`), `STAGE6_SPEC.md` (Stage 6, with `stage6-evidence/`: the census, the probes and the registers of leads (Part A); the readings and the quote check (6B)), `STAGE7_SPEC.md` (Stage 7, with `stage7-evidence/`), `FINAL_AUDIT.md` (the audit after Stage 7, with `audit-evidence/`; owner decisions 125-141 in its §6.0), `ROADMAP.md` (the living plan after the audit, owner decisions 142-175 and the questions 176-197, what each step hands on, the owner's notes for later, other battles), `step2-evidence/` (roadmap step 2's register of readings, `readings.md`; since step 4 its second reading, `second-reading.md`), `step4-evidence/` (roadmap step 4's register of readings, `readings.md`, 273 entries with each source skeptic's corrections beside them; the clusters' `proposals.md`; the inventory of narrative statements, `inventory.md` and `.json`; the owner questions 176-197, `questions.md`; the quote check, `quote-check.md`; `README.md`), `stage6-evidence/second-reading.md` (since step 4: the appearance quotes read a second time, H-17), `step3-evidence/` (roadmap step 3's screen-reader script, `sr-session.md`, recorded complete on the owner's word, decision 175), `STAGE0_VERIFICATION.md`, `SUITE_RECOVERY.md`, `HANDOFF.md` |
 
 The one-off correction-pass tools (`geo-migrate.js`, `geo-anchor.js`, `patch-app.py`, `patch-history.py`, and the
@@ -92,8 +92,10 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   its text's hash current, its readings registered and of the source it names, "fact" and "attributed" on readings read on page images,
   "disputed" with two sides from two sources, "uncertain" with its search, no clock time in a note) and the inventory current, and
   `runtime-test.js` the interpolated position's pill and the dossier's claim notes; the suites write their output to a private temporary directory.
-- `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/step4-833743c6.html`
-  (the roadmap step 4 build, the sourcing stage: 19 declarations changed and 2 added against the step-2 reference, each in `CHANGELOG.md`,
+- `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/step4b-e257d09b.html`
+  (the roadmap step 4b part A build with the owner's decisions 198-201: 9 declarations changed against the first 4b reference, 14 against
+  the step-4 reference, each in `CHANGELOG.md`, 130 identical now; before it, `archive/step4b-2ae24fa3.html`, the first 4b build, owner
+  decisions 176-197 applied: 11 declarations changed against the step-4 reference; before it, `archive/step4-833743c6.html`, the roadmap step 4 build, the sourcing stage: 19 declarations changed and 2 added against the step-2 reference, each in `CHANGELOG.md`,
   130 identical now; before it, `archive/step2-af98f586.html`, the roadmap step 2 build, its data task: 12 declarations changed; before that,
   `archive/stage6b-7fc0f6c3.html`, the 6B build, with the appearance table and tour stop 1 reworded, decision 108; before that,
   `archive/stage4d-9b13adbf.html`, the 4D build, whose `SOURCE_NOTE` says "1×" for "normal speed", decision 76); a data task that changes it lists every changed declaration in `CHANGELOG.md` and moves the reference.
@@ -106,8 +108,10 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   with their reasons (`EXCLUDED_PATHS`: the tracks' `tm` timings, which `--times` and the movement audit judge, the phase clocks,
   `tolWhy` and `analysis.js`'s comments), and a cite or allowance no longer live fails (a retimed, moved or renamed statement); the dated legs near the ceiling are asserted
   (`FORCED_DATED`, `NEAR_CEILING`); the movement audit runs inside it. Since roadmap step 4 (decision 125 (b)) the rows judge the sources'
-  hours where the published accounts give them, and the map's own timing is the allowed side: eight named conflicts (`CONFLICTS`: bag@6,
-  friant@1, friant@2, guard_cav@6, kamensky@3, kamensky@4, lang@1, prz@1; dok@1 settled from the sources, its departure 07:00, grade A), each
+  hours where the published accounts give them, and the map's own timing is the allowed side: four named conflicts since roadmap step 4b
+  (`CONFLICTS`: bag@6, guard_cav@6, kamensky@3, kamensky@4; dok@1 settled from the sources in step 4, its departure
+  07:00, grade A; lang@1 and prz@1 settled in step 4b, 07:00, grade B, question 176; friant@1 and friant@2 settled in step 4b, Friant off
+  at 05:00, at the Goldbach about 09:00 (B), Telnitz retaken at 09:30 (friant@3, A), decisions 177 (b) and 199; eight in step 4), each
   cited from `SOURCE_NOTE.body[5]` (rule L8); its extractor reads only clock-shaped hours (a bare "about eight" goes unjudged; handed on).
 - `npm run check:contrast`: every visible text element in 35 interface states (the map layer's plates and the legend among them, map text also
   over black and white ground, the paper map as entered and close since 2E; Study as it opens and the Now tab on the paper map since 3B;
@@ -155,7 +159,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   within 1 px, the wheel zooms toward the cursor within 1 px, a double-click centres within 2 px, a right-drag orbits, the keys and
   touch, the floor after every step), the offset after each panel change, picking through it, Follow after 14 paths, every
   vantage's target centred and the Overview's battle inside the free rectangle naming its corps and armies, and one tween chain.
-  The drop limits of selected-formation (4) and narrow-1024 (6) are the 3C layer's in the 3D framing (owner decision 62).
+  The drop limits of selected-formation (4) and narrow-1024 (6) are the 3C layer's in the 3D framing (owner decision 62); narrow-1024's is 7
+  since roadmap step 4b, on the owner's word (decision 199: the retaken Telnitz's label at 09:30 takes Bourcier's name's room).
   Since 3E: by real key presses, Space and Enter on a focused button press it, Ctrl+C does nothing, "?" opens the overlay and
   focus returns when Esc closes it; the self-test's key-table dry run, the overlay, the names and the symbols' largest size;
   `css-test.js` checks the names (no presentation "Map", no ground "Staff map").
@@ -305,8 +310,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   the event markers 2.5.8's essential exception, decision 167). One limit moved in step 3, on the owner's word (decision 164's Panels button):
   `narrow-1024`'s unobstructed baseline [0.535, 0.628] to [0.533, 0.628], recorded in `CHANGELOG.md`; every other kept.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified roadmap step 4 build (md5 `833743c6...`, 2,159,374 bytes; re-baselined from the
-  roadmap step 3 build `f023ae0e...`, 2,048,277 bytes, itself from the roadmap step 2 build `af98f586...`, 1,927,346 bytes, itself from the step 1 build `7a86548c...` and the Stage 7D build `46773462...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
+- `npm run check:baseline` passes only on the unmodified roadmap step 4b part A build with decisions 198-201 (md5 `e257d09b...`, 2,167,583 bytes;
+  re-baselined from the first 4b build `2ae24fa3...`, 2,161,604 bytes, itself from the roadmap step 4 build `833743c6...`, 2,159,374 bytes, itself from the roadmap step 3 build `f023ae0e...`, 2,048,277 bytes, itself from the roadmap step 2 build `af98f586...`, 1,927,346 bytes, itself from the step 1 build `7a86548c...` and the Stage 7D build `46773462...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (eight on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
 - If a check cannot run (for example a blocked download), say exactly what failed.
@@ -416,4 +421,14 @@ source skeptic on fresh page images (the 7 read on the text layer, on it; the 63
 (H-17); the interpolated position's pill (decision 128 (b)); the disputed hours from the published accounts (125 (b): dok@1 settled, eight
 named conflicts); what steps 2 and 3 handed on settled from the readings or kept disputed with both sides, but for what step 4 hands on (`docs/ROADMAP.md`); gqg@0 and drouet@6 graded B;
 the `check:data` reference and the baseline moved to its build. The owner decided questions 176-197 as recommended on 15 October 2026 (`docs/step4-evidence/questions.md`,
-`docs/ROADMAP.md`), to be implemented later; the build carries each question's default until then. The next owner decision is 198.
+`docs/ROADMAP.md`), to be implemented later. Roadmap step 4b part A (decisions 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197) is
+done on `claude/adoring-gauss-ubfas9` (draft PR #53, for review): each applied as its recommendation reads, its measurement first
+(`harness.js --only` against a full step-4 reference run): 176 (b) (the II and III Columns from 07:00; sim-test's mechanism assertion kept,
+a 4th Column check added), 180 (b), 181, 184 (Kienmayer 6,340), 190 (a), 191 (Turas at Tuřany, `GEOREF.GT.turas`), 193 (b) (the events then at
+A lowered), 195 (the 1805 page read: the Szekler hussars dark blue) and 197 (b); 182 measured past a limit, so its fallback (c); 177 measured
+past a limit, so (a), then (b) on the owner's decision 199 (Friant off at 05:00, at the Goldbach about 09:00, Telnitz retaken at 09:30,
+grade A, the one event at A). The owner decided questions 198-201 as recommended on 17 October 2026, applied in the same PR: 198 (b)
+(`TIMING_TEXT.B`'s words), 199 (b) (`narrow-1024`'s drop limit 7), 200 (a) (the Szekler correction kept), 201 (b) (seven events "disputed",
+the unread claims labelled this map's); the `check:data` reference and the baseline moved to its final build. 187 and 196 remain to be
+applied; 189 is a human reading. Owner question 202 (Bourcier's dragoons after 177 (b); `docs/step4-evidence/questions.md`) is open, its
+default built. The next owner decision is 203.

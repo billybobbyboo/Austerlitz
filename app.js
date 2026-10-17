@@ -38,10 +38,10 @@ var OVERLAYS = {
     arrows:[
      {leg:["kienmayer",1,2],kind:"attack",side:"al",label:"Kienmayer"},
      {leg:["dok",0,1],kind:"move",side:"al",label:"I Column descends"},
-     {leg:["friant",1,2],kind:"move",side:"fr",label:"Friant's approach march"}],
+     {leg:["friant",0,1],kind:"move",side:"fr",label:"Friant's approach march"}],
     obj:[[212,408,"Telnitz"]]},
 
-2:{ lines:[{pts:[[213,222],[205,277],[208,365],[212,408]],side:"fr",label:"Legrand and Friant on the stream"}],
+2:{ lines:[{pts:[[213,222],[205,277],[208,365],[212,408]],side:"fr",label:"Legrand on the stream"}],
     arrows:[
      {pts:[[268,328],[249,338],[229,356]],kind:"attack",side:"al",label:"II Column → Sokolnitz",
       interp:"objective: the attack on Sokolnitz village; the model has the column at the village from 08:00"},
@@ -50,12 +50,13 @@ var OVERLAYS = {
      {leg:["lich",2,3],kind:"move",side:"al",label:"Liechtenstein crosses the front"},
      {pts:[[325,230],[301,237]],kind:"halt",side:"al",label:"IV Column halted",of:"col4",
       interp:"halt: the 4th Column held up on the plateau, not a route; a bar where it stopped, across its line of march"},
-     {leg:["friant",1,2],kind:"attack",side:"fr",label:"Friant retakes Telnitz"}],
+     {leg:["friant",0,1],kind:"move",side:"fr",label:"Friant's approach march"}],
     obj:[[208,365,"Sokolnitz"],[205,277,"Kobelnitz — never reached"]]},
 
 3:{ arrows:[
      {leg:["sthilaire",2,3],kind:"attack",side:"fr",label:"Saint-Hilaire"},
-     {leg:["vandamme",2,3],kind:"attack",side:"fr",label:"Vandamme"}],
+     {leg:["vandamme",2,3],kind:"attack",side:"fr",label:"Vandamme"},
+     {leg:["friant",1,3],kind:"attack",side:"fr",label:"Friant retakes Telnitz"}],
     obj:[[285,289,"Pratzeberg"],[313,205,"Stare Vinohrady"]]},
 
 4:{ arrows:[
@@ -96,7 +97,7 @@ var OVERLAYS = {
      {pts:[[243,396],[226,422],[203,444]],kind:"retreat",side:"al",label:"Across the Menitz mere",interp:"unmodelled: the troops on the ice are not a tracked formation"},
      {leg:["vandamme",8,9],kind:"attack",side:"fr",label:"Vandamme takes the height"},
      {pts:[[223,379],[244,388],[270,375]],kind:"attack",side:"fr",label:"Legrand and Friant",interp:"group: Legrand's and Friant's divisions together"},
-     {leg:["bag",7,9],kind:"retreat",side:"al",label:"Bagration withdraws on Rausnitz"}],
+     {leg:["bag",8,9],kind:"retreat",side:"al",label:"Bagration withdraws on Rausnitz"}],
     obj:[[297,372,"The Augezd defile"]]},
 
 9:{ lines:[{pts:[[223,82],[264,114],[313,205],[278,283],[290,366],[297,391]],side:"fr",label:"French positions at nightfall"}],
@@ -6277,7 +6278,7 @@ function timingNow(id){
   return null;
 }
 var TIMING_TEXT={A:"Timing dated in a cited source.",
-                 B:"Timing given as approximate in this reconstruction's narrative, which cites no source for it.",
+                 B:"Timing approximate: the sources read differ on it, or this reconstruction's narrative gives it without a source.",
                  C:"Timing inferred from the narrative (a bound, a sequence or a range), applied to this move."};
 function drawerKey(){
   if(!selection||selection.kind!=="f") return "";
@@ -8862,7 +8863,11 @@ var AUSTERLITZ_DEBUG=(function(){
     var d=plateauDay(), runs=[], s=0, i, bad2=[], seen=[];
     for(i=1;i<=d.length;i++) if(i===d.length||d[i]!==d[s]){ runs.push({a:T_MIN+s,b:T_MIN+i,v:d[s]}); s=i; }
     function shown(r){ return r.v>0&&r.a>T_MIN&&phaseAt(r.a)<=6; }
-    var L=runs.filter(function(r){ return shown(r)&&r.b-r.a>=70&&phaseAt(r.a+65)<=6; })[0], S=runs.filter(function(r){ return shown(r)&&r.b-r.a<=50&&phaseAt(r.a+Math.floor((r.b-r.a)/2))<=6; })[0];
+    /* roadmap step 4b (question 176): with the II and III Columns marching at seven, no run of 70 minutes or more begins after 04:00 in a
+       phase that shows the reading (the longest is 07:23-08:29); the first such run from 04:00 is taken then, the same three ways (a jump
+       from 18:00 the one that matters there) */
+    var longRun=function(r){ return r.v>0&&r.b-r.a>=70&&phaseAt(r.a+65)<=6; };
+    var L=runs.filter(function(r){ return shown(r)&&longRun(r); })[0]||runs.filter(function(r){ return r.a===T_MIN&&longRun(r); })[0], S=runs.filter(function(r){ return shown(r)&&r.b-r.a<=50&&phaseAt(r.a+Math.floor((r.b-r.a)/2))<=6; })[0];
     function note(){ _sitKey=""; paintSituation(); var h=document.getElementById("situation"), c=document.getElementById("tb-cap");
       return (/plotted strength unchanged/.test(h?h.innerHTML:""))+"/"+(/plotted strength unchanged/.test(c?c.innerHTML:"")); }
     function jump(t,from){ setClock(from,{instant:true,force:true,camera:false}); setClock(t,{instant:true,force:true,camera:false}); return note(); }

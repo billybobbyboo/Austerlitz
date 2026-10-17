@@ -1,5 +1,604 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 4b, part A: owner decisions 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 taken up
+
+**Status: done on `claude/adoring-gauss-ubfas9` (draft PR #53), for review, with the owner's decisions 198-201. The build changed:
+`austerlitz-command-map.html` 2,167,583 bytes, md5 `e257d09b7865e4bd1f76dd979b46b4ef` (the step-4 build: 2,159,374 bytes, `833743c6...`;
+the first 4b build, before 198-201: 2,161,604 bytes, `2ae24fa3...`).** A data task: each decision applied as its recommendation reads, conditions
+included (`docs/step4-evidence/questions.md`, decided as recommended on 15 October 2026); where a recommendation depends on a measurement,
+the measurement is taken first with `harness.js --only` and compared with the step-4 report (`tools/step3/report-diff.js`), and the
+decision's fallback is implemented where it does not allow it. Every changed declaration is listed below with what it was, what it is, why
+and the reading it rests on. The step-4 report is not committed, so a full `check:visual` of the unmodified step-4 build (md5
+`833743c6...`) was run first in this session as the reference (below, "The reference").
+
+**The commits.**
+- `714226f`: question 176 (b), the II and III Columns march at the disposition's seven; `ffca6eb`, its measurement recorded.
+- `6a49f76`: question 177, (b) measured and not allowed (narrow-1024 past its drop limit); its fallback (a), the build's state, kept.
+- `117d53f`: questions 180 (b) and 181, bag@8's dated departure dropped; c_gren@7's dated arrival dropped, kollo's kept.
+- `356da2e`: the review of the timing group, fixed; questions 198 and 199 recorded.
+- `da16e48`: question 184, Kienmayer's working figure Schönhals's 6,340; Legrand's brigadiers the readings'.
+- `a31162b`: question 195, the Szekler hussars' 1805 page read on its images; the record corrected to dark blue.
+- `511f5e5`: question 197, the Guard's dawn grades B.
+- `2b21ecc`: the review of the strengths-and-grades group, fixed; question 200 recorded.
+- `4981b27`: question 191, Turas moved to the address register's point for Tuřany.
+- `5eaa92f`: question 182, (b) measured past the plans-overview drop limit; (c), one column renamed the reserve, without Drouet.
+- `cfcf1b2`: question 193, the events' Timing A graded against the registers, six lowered.
+- `ed61b2d`: question 190, tour stop 6's "no reserve committed" reworded, no longer, `opening-2` measured unchanged.
+- `fd70c07`: the review of the places-and-plan group (`4981b27`, `5eaa92f`), fixed.
+- `70973cf`: the review of the events-and-opening group (`cfcf1b2`, `ed61b2d`), fixed: three more events lowered; question 201.
+- `704e6f2`: the strengths-and-grades measurement recorded; the self-test's D-6 plateau check given a run to test after 176.
+- `a75b403`: `docs/ROADMAP.md`, each decision's status and questions 198-201.
+- `b82439b`: the step's end: the final checks, check:data's reference and the baseline moved, `CLAUDE.md`.
+- `24de9a8`: the owner's decisions 198-201 recorded; 198 applied (`TIMING_TEXT.B`'s words).
+- `3d2d133`: decision 199, `narrow-1024`'s drop limit 7, and 177 (b) applied (Friant retimed to Davout's hours).
+- `8f20d05`: decision 201 (b), seven events whose hour the readings dispute made "disputed"; two unread claims labelled this map's.
+- `b7564b5`: the review of `24de9a8`, `3d2d133` and `8f20d05`, fixed; 201's measurement recorded; question 202 (Bourcier).
+- `ea86f65`: `CLAUDE.md` and `docs/ROADMAP.md` brought to decisions 198-202.
+- (this commit) The step's end again: the final checks on the final build, check:data's reference and the baseline moved.
+
+**The review of `4981b27` and `5eaa92f` (places and plan; an independent reviewer, read-only, on a worktree of `5eaa92f`; fixed in the
+next commit).** It ran geo-test.js (59 of 59; Turas now inside the 0.5 km check, 666 bearing pairs over 27 points), test.js and redteam.js
+(clean), rebuilt the build (identical) and confirmed the coordinates ([44.177, 293.774], 2.849 km at 347.6 degrees true; the drawn [44,294]
+9 m off), the declarations changed and the measurement files. No high finding. Medium: (1) `PLANS.fr.intent`'s "until new orders" rests on
+p. 443: added to its claim; (2) `SOURCE_NOTE.body[4]` made Krug and Bellowitz look register-placed: reworded; (3) the I Corps sentence in the
+intent goes beyond (c): said, for the owner to confirm. Low: (4) the 191 entry said "rather than a new literal": corrected; (5) geo.js's
+header names Turas's register; (6) "Caffarelli's ground of the day before" in a plan of 1 December: "of 1 December"; (7) the (b) variant's
+forms and shared objective stated; (8) the Status lines of 182 and 191 in `questions.md` updated (`docs/ROADMAP.md` at the step's end); (9)
+Turas is measured on the step's final full check:visual, which runs every case. check:data's changed declarations in this commit:
+`SOURCE_NOTE`, `PLANS`, `STATEMENT_CLAIMS`, and geo.js's header comment (inside `GEOREF`).
+
+**The review of `cfcf1b2` and `ed61b2d` (events and opening; an independent reviewer, read-only, on a worktree of `ed61b2d`; fixed in
+the next commit).** It ran test.js and redteam.js (clean), rebuilt the build (identical) and graded the eight events itself against both
+registers. High: (1) `davout-resumes` has a dated reading, Mikhailovsky-Danilevsky's one o'clock (`md1844.p196.one-oclock`): B, not C; (2)
+`telnitz`'s readings disagree by up to an hour (Schönhals's half past six to Stutterheim's seven to eight): B, by the commit's own rule (it
+lowered augezd for half an hour); (3) `pratzeberg`'s 11:00 rests on Ségur against Thiebault's three hours and the Bulletin, and the Pratzen
+chapter calls it the map's: B. All three applied (the entry above). Medium: (4) the events lowered for disagreeing hours keep "fact" with
+no dispute, and (5) face-about's and davout-resumes's phase lines say nothing of their grades: put to the owner as question 201 (not within
+193, which asks for the grades). Low: (6) Schönhals's defile is Satschan's dam: said; (7) Ermolov's before-dawn added to the counter-march's
+readings; (8) Mikhailovsky-Danilevsky's half past eight added to Sokolnitz's; (9) why sokolnitz-falls is B, not C, said; (10) two unread
+claims in the events' why flagged in question 201; (11) the Status lines of 190 and 193 in `questions.md` updated. 190: fine (the rewording
+supported by the Bulletin and Schönhals, 36 characters to 35; `COMMAND.fr["3"][1]` already reworded in step 4's K7, so no inconsistency).
+
+**Question 190: the opening's words.** As recommended: (a) minimal rewordings, no longer than the text they replace, where the readings
+contradict it, each only where the opening cases measure unchanged; (c) no marking of the ceiling-derived climbs in the bar (the build's
+state); (d) the events live at an opening case keep claims that add no label note (the build's state: 193 changes no claim). Of (a)'s two,
+`TOUR[7].x` was reworded in step 4 (`be730cf`); `TOUR[5].x` (the opening's step 2) kept "Two divisions, no reserve committed", which the
+source skeptic found reads as nothing behind the two divisions, against Savary's I Corps division sent behind Vandamme and Schönhals's
+Boyer dragoons sent to Soult (proposals C3.p13; `savary1828.p205-208.bernadotte-division`, `schoenhals1873.p162.drouet-replaces-vandamme`),
+while the reserve in the Bulletin's sense, the Guard and the grenadiers, was held back (`corr11_1863.p451.guard-centre-reserve`,
+`schoenhals1873.p169.guard-infantry-not-engaged`). The skeptic's own rewording was longer than the text.
+- `TOUR[5].x`: was "... Two divisions, no reserve committed, against a column still filing off the heights."; is "... Two divisions, the
+  Guard held back, against a column still filing off the heights." (the clause 36 characters, now 35); unchecked (the stop's other words,
+  its "about a quarter to nine" the map's, are not checked here).
+- Measured on `opening-2` with `harness.js --only` against the step-4 reference (the build with the rewording alone): no difference in
+  drops, dropped ids, unobstructed fractions or timeline height. css-test.js's opening rules (no figure, clock, name or quotation in the
+  opening's own words) concern `LABELS.opening`, not `TOUR`; the self-test's "every string shown a `TOUR` field" holds.
+- check:data's changed declarations in this commit: `TOUR`.
+
+**Question 193: the events' Timing A graded against the registers, one by one.** As recommended ((b)). Timing A is "dated in a cited
+source" (`TIMING_TEXT.A`; decision 143); an event keeps A where a reading in the registers dates its hour (its start, decision 89) and
+none disagrees, is lowered to B where the readings give hours that disagree with it or with each other, and to C where they give only a
+sequence (as K5 lowered soult and pratzen-village to C and ice and end to B). All eight events still graded A are lowered: six in
+`cfcf1b2`, and, after the group's review, `davout-resumes` to B (not C) and `telnitz` and `pratzeberg` to B (`cfcf1b2` had kept them A):
+- `counter-march` [04:15-08:00], A -> B. The Materialien's editor has Liechtenstein's column ordered off only at dawn ("Erst in der
+  Morgendämmerung", `mat1806.p109.delivery`); Mikhailovsky-Danilevsky has its crossing hold up the 4th Column at the set hour
+  (`md1844.p181.ninth-hour`); Stutterheim has the 4th Column ordered off only toward eight (`stut.p60-61.nine-pratzen`) and Miloradovich
+  sets out at eight (`kutuzov1951.p230.miloradovich-eight`); on the other side Ermolov has the army set out before dawn, the columns
+  crossing in the dark (`ermolov1865.p33.before-dawn`; his place in the march is not on that page, and the dark march may be the night
+  move into the disposition's places rather than the columns' departure, as the source skeptic corrected it; this line said "Ermolov, in
+  Liechtenstein's own column" until the review of `8f20d05`).
+- `telnitz` 07:00, A -> B. Schönhals has the left wing, Kienmayer with it, off at half past six (`schoenhals1873.p157-159.departure`);
+  Savary the Russians beginning to debouch on Legrand about seven, Legrand attacked soon after (`savary1828.p204-207`); Stutterheim the
+  hussars forward to reconnoitre between seven and eight (`stut1806de.p49-52.telnitz`); the Chevalier Guard's history the eighth hour
+  (`kavalergard1851.p56.eighth-hour`, not independent of Mikhailovsky-Danilevsky); Davout Telnitz under vigorous attack by about eight (a
+  bound, `davout1885.p202-204.report-26dec`): hours within the hour that disagree, as augezd's half hour does.
+- `sokolnitz` 08:00, A -> B. Przybyszewski's column in action from eight (`kutuzov1951.p269-270.przybyszewski`) and Buxhowden's II Column
+  coming down at eight toward Sokolnitz (`kutuzov1951.p241-242.buxhowden`), against Davout's "not yet attacked" about eight
+  (`davout1885.p202-204.report-26dec`), Mikhailovsky-Danilevsky's Langeron engaging at half past eight (`md1844.p179.half-past-eight~C1.c4`)
+  and Schönhals's III Column reaching Sokolnitz only after the Pratzen attack began (`schoenhals1873.p160.half-past-seven`).
+- `face-about` 09:15, A -> C. No reading gives the hour of Kutuzov's order; the sequence only: the French columns seen and moving about nine
+  (`stut.p60-61.nine-pratzen`, `schoenhals1873.p159-161.nine`), the 4th Column met as it left (`kutuzov1951.p230.miloradovich-eight`).
+- `pratzeberg` 11:00, A -> B. Ségur has everything succeeded and the Russian centre pierced toward eleven (`segur1873.p467-469.noon-one`);
+  Stutterheim's and Schönhals's about two hours from about nine make about eleven only by addition (`stut.p66.two-hours`,
+  `schoenhals1873.p162-163.two-hours`); Thiebault has three hours (`thieb.p469.trois-heures`); the 30th Bulletin the whole Allied left cut
+  off within the first hour (`corr11.9541.p451.instant`); and the Pratzen chapter calls 11:00 the map's ("on this map the plateau is French
+  from end to end by about 11:00").
+- `davout-resumes` 12:30, A -> B. Mikhailovsky-Danilevsky has Napoleon order Davout against the first three columns at one in the afternoon
+  (`md1844.p196.one-oclock`), half an hour after the map's 12:30 (`cfcf1b2` graded it C, its search having missed this reading, whose
+  register entry names other formations; the review found it).
+- `sokolnitz-falls` 14:00, A -> B. No reading dates the fall itself, but the readings' bounds disagree with 14:00: Przybyszewski's men fought
+  from eight until four by his report (`kutuzov1951.p269-270.przybyszewski`), Thiebault was wounded beyond the castle about three
+  (`thieb.p465-466.three-pm`), Buxhowden had word of the other columns' withdrawal in the second hour after noon
+  (`kutuzov1951.p241-242.buxhowden`), Stutterheim the fight decided about two (`stut.p77-79.two-four`).
+- `augezd` 14:30, A -> B. Vandamme's division entering Augezd towards two by its aide Vincent, as Thiebault reports him (`thieb.p508.augezd-
+  two`), and Stutterheim's "about 2" when Vandamme's division finished the fight (`stut.p77-79.two-four`): half an hour earlier than the map's
+  14:30 for taking the height. (Schönhals's left wing past "dieses Defilé" by half past two, `schoenhals1873.p167-169.oudinot`, is the dam by
+  Satschan, as the source skeptic corrected, C2.26: a weaker bound.)
+- `telnitz-retaken` was B (question 177's (a): its hour on the map 08:30, against Davout's 09:30); with 199 and 177 (b) it is at Davout's
+  09:30, graded A (`davout1885.p202-204.report-26dec`, read on page images; Schönhals's and Stutterheim's attack about nine agree), the one event graded A.
+- `EVENTS[].cf` (eight, not statements): was A; is as above. An event's timing grade is shown only as its dossier's "Timing" pill; nothing on
+  the map or the timeline draws it, so no harness case moves. The events' claims (fact) and texts are unchanged: question 193 asks for the
+  grades. Whether the six lowered for disagreeing hours should become "disputed" with a dispute naming the hours, and whether the phase lines
+  of face-about (09:15) and davout-resumes (12:30) should say the hour is the map's or Mikhailovsky-Danilevsky's one o'clock, is put to the
+  owner as question 201 (with two claims the review found unread: Kutuzov ordering the 4th Column to face about; Langeron pushed back on
+  Sokolnitz from the west).
+- check:data's changed declarations: `EVENTS`. Checks: test.js (a disputed hour is never A) passes.
+
+**Question 182: the French plan's "In hand" column; (b) past its limit, so (c).** The recommendation: (b), split into the centre
+(Bernadotte) and the reserve (the Guard and the grenadiers), if `plans-overview` stays within its drop limit; else (c), one column renamed
+the reserve, without Drouet. No reading gives the reserve a line of march of its own (the 30th Bulletin has it "in reserve with the
+Emperor"; the dispositions put the grenadiers under Lannes's orders), so (b) was built with the two columns on the one route the build
+already draws, "this map's" (`[[189,161],[230,185],[263,201],[300,211]]`), and the one objective [300,211], each column saying so (the
+centre `forms:["drouet"]`, as the column had: Rivaud is in no plan column, before or after; the reserve the Guard and the grenadiers); measured on `plans-overview` with
+`harness.js --only` against the step-4 reference: 12 drops -> 13 (the Litava's name), past its limit 12. (c) was then built and measured: no
+difference in drops, dropped ids, unobstructed fractions or timeline height. (c) is applied:
+- `PLANS.fr.cols[4]`: was `{n:"In hand - Bernadotte, the Guard, the grenadiers", forms:["guard_inf","guard_cav","c_gren","drouet"], ...,
+  ord:"I Corps onto Caffarelli's ground of the day before, its left behind the Santon, in column until new orders (the dispositions of 1
+  December); the Guard and the grenadiers the reserve with the Emperor (the 30th Bulletin), the grenadiers under Lannes's orders in the
+  dispositions. The route drawn is this map's."}`; is `{n:"The reserve - the Guard and the grenadiers", forms:["guard_inf","guard_cav",
+  "c_gren"], ..., ord:"The Guard and the grenadiers the reserve with the Emperor (the 30th Bulletin), the grenadiers under Lannes's orders in
+  the dispositions of 1 December. The route drawn is this map's."}` (its objective and route unchanged); the ord's claim attributed
+  (`corr11_1863.p442.dispositions-ic`, `corr11_1863.p450.reserve-defined`, `corr11_1863.p443.no-guard`), rehashed. I Corps is the centre,
+  not the reserve, in every reading (step 4's K7): no French plan column names Drouet now.
+- `PLANS.fr.intent`: an addition beyond (c), for the owner to confirm: so that the dispositions' sentence on I Corps is not lost with the
+  column, as the C3 source skeptic required it said (proposals C3.p4, change (2)), its last sentence was "In Ségur and
+  Mikhailovsky-Danilevsky Bernadotte is to assail the plateau from the left at the same time; the written dispositions do not say so.", is
+  "...; the written dispositions do not say so: they put I Corps onto Caffarelli's ground of 1 December, its left behind the Santon, in
+  column until new orders." ("of 1 December" for the order's "aujourd'hui 10", after the review; the column had "of the day before"); its
+  claim interpretation (Ségur, the dispositions pp. 442 and 443, Mikhailovsky-Danilevsky; p. 443 for "until new orders", added after the
+  review), rehashed, its note adding that what the dispositions say of I Corps is as read on their pages.
+- check:data's changed declarations in this commit: `PLANS`, `STATEMENT_CLAIMS`. Checks: test.js, redteam.js pass.
+
+**Question 191: Turas moved to Tuřany.** As recommended: Turas moved, measured; Krug, Bellowitz and the Posoritz post house kept; rg_cav a
+note (in the build since step 4's K11: its strengthNote names Kologrivov's single source and Maliutin's separate column). The
+identification is printed (Wolny's Moravian topography, 1836, p. 239: "Turas (Tuřany)", `wolny1836.p239.turas`); the position is the Czech
+address register's (RÚIAN definition point of the part of Brno Tuřany, kód 12173: 49.147242 N, 16.662997 E, `cuzk2026.ruian-geonames`,
+read on the register's text, grade C as the register entry gives it), whose points for five other villages agree with `GEOREF.GT` within
+0.5 map units (the same reading). As the source skeptic required (proposals C6.p20), the point goes into `GEOREF.GT`; `VILLAGES` holds the
+rounded literal, as for every register village, and geo-test holds it to the GT point within 0.5 km (it is 9 m off): no new scale
+constant, the transform unchanged. geo.js's header names the one village from another register.
+- `GEOREF.GT.turas` (geo.js): was (none); is `{n:"Turas", cz:"Tuřany", lat:49.147242, lon:16.662997, kind:"v", note}` (map [44.2, 293.8], by
+  `toMap`). Not one of the transform's fitted villages; geo-test's checks over every GT point (round trip, bearings of every pair 2 km or
+  more apart, every surveyed village within 0.5 km of its drawn place) pass, 59 of 59.
+- `VILLAGES` (world.js): `["Turas",89,372,5]` (its warped legacy place) is `["Turas",44,294,5]`, 2.85 km north-north-west (bearing 348
+  degrees true); the comment no longer names Turas among the places not in the register. The settlement cover the ground draws around a
+  village moves with it.
+- `SOURCE_NOTE.body[4]`: was "Villages are placed from the Czech municipality register and summits from terrain-model data; the map keeps
+  ..."; is (after the group's review, which found the first wording made Krug and Bellowitz look register-placed) "Villages are placed from
+  the Czech municipality register; Turas, which it does not list, at the Czech address register's point for Tuřany, its name in Wolny's
+  topography of 1836; Krug and Bellowitz, which no register read places, are not; summits from terrain-model data. The map keeps ...";
+  unchecked.
+- `SOURCE_NOTE.body[5]`: the open question "the true position of Turas (it is Tuřany in Wolny's topography of 1836, and the Czech register
+  places it about 2.8 km north-north-west of where this map draws it);" is removed; unchecked.
+- *Measured*: Turas's name and village are drawn in the views that show the field's west; it is measured on the step's final full
+  check:visual, compared with the strengths-and-grades run (below). A limit it moved would return it to its place (191's "measured").
+- check:data's changed declarations in this commit: `GEOREF`, `VILLAGES`, `SOURCE_NOTE`. Checks: test.js, geo-test.js, redteam.js pass.
+
+**The owner's decisions 198-201 (17 October 2026), applied in this PR.** After the step's end the owner wrote: "questions 198-201, lets
+go with your recommendations, then include that in PR 53". Each is decided as its recommendation reads, conditions included
+(`docs/step4-evidence/questions.md`), and applied below; the step's end, below, sums up the step with them, and the final checks follow.
+- *198 (b): `TIMING_TEXT.B`'s words* (a guarded declaration of `app.js`, "data in app.js"): was "Timing given as approximate in this
+  reconstruction's narrative, which cites no source for it."; is "Timing approximate: the sources read differ on it, or this
+  reconstruction's narrative gives it without a source." It now says what B means in both its uses: the legs graded B from sources that
+  differ (lang@1, prz@1 since 176, friant@1 with 199) and those the narrative gives without a source; no grade moves. Shown in a formation's
+  dossier while its timed leg runs; no harness case opens such a dossier.
+
+- *199 (b): `narrow-1024`'s drop limit 7, and 177 (b) applied.* `tools/visual/thresholds.js`: `DROP_LIMIT["narrow-1024"]` was 6 (the 3C
+  layer's in the 3D framing, decision 62), is 7, for the one cause the 177 (b) measurement found (Bourcier's name `n:bourcier` dropped
+  beside the retaken village's label at 09:30; it stays reachable by hover and keyboard); no other limit moves. 177 (b), measured and
+  recorded above ("Question 177") and kept as a patch, is applied in full on the current tree: friant@1 `tm {dep:300, at:540, gr:"B",
+  basis:"source"}`; the retaking anchor re-keyed from phase 2 to phase 3 with `tm {at:570, gr:"A", basis:"source"}` (Davout's report of 26
+  December, no. 127, p. 204, `davout1885.p202-204.report-26dec`) and the holding anchor from phase 3 to phase 5 (not 4: phase 4 begins at
+  09:30, the minute the retaking anchor is reached, so an anchor keyed 4 would be reached that same minute; keyed 5, the "counterattack"
+  status runs through phase 4 to 10:30, this map's, Davout's report having the village lost again with no hour); `EVENTS[#davout]` was `[465,495]`,
+  disputed, is `[525,555]`, "fact" (no dispute: Stutterheim and the Moniteur's remarks about nine, Schönhals attacking about nine,
+  Mikhailovsky-Danilevsky after Telnitz had fallen; Davout gives no hour for the arrival); `EVENTS[#telnitz-retaken]` was 510, disputed, B,
+  is 570, "fact", A; the phase-1 line on the brigade's arrival and the phase-2 line on the retaking move to phase 3 (c. 09:00, c. 09:30,
+  reworded to the sources' hours), and the phase-2 lede loses its retaking sentence; `OVERLAYS`: phase 1's and phase 2's arrows the approach
+  march (`leg:["friant",0,1]`), phase 3's "Friant retakes Telnitz" (`leg:["friant",1,3]`), phase 2's French line "Legrand on the stream"
+  (was "Legrand and Friant on the stream"); `EVENTS[#raigern].why` "this map moves it from 05:00" (was 04:00); `SOURCE_NOTE.body[5]`'s
+  three Friant hours "at 05:00 on the map", "and so on the map" twice (were the map's 04:00, 08:00, 08:30), and its "The map keeps its timing
+  for ..." no longer names Friant's division. check:chronology: friant@1 (a span 05:00-09:00) and friant@3 (the retaking, 09:30) consistent,
+  both out of `CONFLICTS` (four left: bag@6, guard_cav@6, kamensky@3, kamensky@4); the Friant allowances of step 4 removed, `event davout
+  @08:45-09:15` allowed. narrative.js: the two moved phase lines and the events' whys "attributed" (their sides dropped), their disputes'
+  claims removed, the Soult line's claim re-keyed to `PHASES[#2].events[1]`, Raigern's note "this map's departure is the earlier report's";
+  the inventory regenerated. The changed declarations: `PHASES`, `FORMATIONS`, `SOURCE_NOTE`, `EVENTS`, `OVERLAYS`, `STATEMENT_CLAIMS`
+  (and `thresholds.js`, outside check:data). Measured on the final full check:visual (below).
+
+- *200 (a)*: the Szekler correction kept, as built; nothing changes.
+- *201 (b): the events whose hour the readings dispute.* As recommended: (b) where the cases measure unchanged, else (c); the two unread whys
+  labelled this map's in the same task. The seven events 193 lowered for hours the readings give differently become `claim:"disputed"`,
+  each with a `dispute` naming the map's hour and the readings' (test.js: at least two clock times, never graded A):
+  - `counter-march`: the map's 04:15 (its own reckoning) against the Materialien editor's "only at dawn", Mikhailovsky-Danilevsky's set
+    hour, Stutterheim's and Miloradovich's 08:00, and Ermolov's before-dawn march;
+  - `telnitz`: 07:00 (Savary's about seven) against Schönhals's 06:30 for the left wing, Stutterheim's between seven and eight and Davout's
+    by about 08:00;
+  - `sokolnitz`: 08:00 (Przybyszewski's and Buxhowden's reports) against Davout's not yet attacked about 08:00, Mikhailovsky-Danilevsky's
+    08:30 and Schönhals's after the Pratzen attack began, about 09:00;
+  - `pratzeberg`: 11:00 (Ségur) against the plateau fight's two hours (Stutterheim, Schönhals) or three (Thiebault) from about 09:00;
+  - `davout-resumes`: 12:30, the map's, against Mikhailovsky-Danilevsky's 13:00;
+  - `sokolnitz-falls`: 14:00, the map's, against the fighting until 16:00 (Przybyszewski) and Thiebault beyond the castle about 15:00;
+  - `augezd`: 14:30, the map's, against Vincent's towards 14:00 (as Thiebault reports him) and Stutterheim's about two.
+  Each dispute's claim is "disputed" with its sides (narrative.js; every reading registered and read on page images, Ségur's
+  `segur1873.p467-469.noon-one` in part on the text layer; two, `md1844.p179.half-past-eight~C1.c4` and `thieb.p469.trois-heures`, are the
+  source skeptic's counter-readings, checked by no other reader; Ermolov's memoir is not
+  in the table of works read, so his before-dawn march is named in the text and the claim's note, not cited). check:chronology: the map's
+  side of each dispute cited by the row that already judges the event's hour (lich@2, legrand@1, lang@2, kollo@5, friant@7, friant@8,
+  vandamme@8), the readings' other hours allowed by name with their reasons (nine entries). The two whys no account read supports, labelled:
+  `EVENTS[#face-about].why` gains "That he ordered the column to face about is this map's reading: in the accounts read he rides to the left
+  of the 4th Column and orders Kamensky's regiments onto the ridge."; `EVENTS[#davout-resumes].why`'s "Langeron is pushed back onto Sokolnitz
+  from the west." becomes "That Langeron is pushed back onto Sokolnitz from the west is this map's reading; no account read says so."
+  The two phase lines: face-about's (c. 09:15) gains "No source read gives the hour."; Davout's (c. 12:30) "The hour is this map's;
+  Mikhailovsky-Danilevsky has Napoleon order the attack at one in the afternoon." On screen, a disputed event's map label and caption tag
+  read "hour disputed" and its dossier shows its dispute. The changed declarations: `PHASES`, `EVENTS`, `STATEMENT_CLAIMS`. Measured
+  (the cases where one of these events is live: `close-sokolnitz`, `paper-close`, `opening-2`, `opening-3`, `opening-4`,
+  `ph8-overview-study`, `ph8-overview-watch`), with `harness.js --only` against the 199 build on the same cases: no difference in drops,
+  dropped ids, unobstructed fractions or timeline height on any of the seven (against the step-4 reference only `close-sokolnitz`'s drops,
+  4 -> 2, which 177 (b) made). The condition of (b) holds: no event falls back to (c).
+
+**The review of `24de9a8`, `3d2d133` and `8f20d05` (decisions 198-201 and 177 (b); an independent reviewer, read-only, on a worktree of
+`8f20d05`; fixed in this commit).** It rebuilt the build (identical: md5 `d81385f7...`, 2,166,011 bytes) and ran test.js, redteam.js,
+sim-test.js, binding-test.js and check:chronology (all clean: 66 consistent, 4 early, all named; 37 allowances), and checked the hours
+against both registers quote by quote, 193's grades (telnitz-retaken the one A, seven B, face-about C), 198's words, 199's one limit and
+177 (b)'s declarations: fine. Its findings, each fixed or recorded here:
+- (1, high) The counter-march dispute placed Ermolov "riding with the column", which the source skeptic struck (`ermolov1865.p33.before-dawn`:
+  his place in the march is not on the page). `EVENTS[#counter-march].dispute`: was "... and Stutterheim has the 4th Column ordered off only
+  toward 08:00, Miloradovich setting out at 08:00; Ermolov, riding with the column, has the army moving before dawn, the columns crossing in
+  the dark."; is "... and Stutterheim has the 4th Column ordered off only toward 08:00, and Miloradovich's report has him set out at 08:00;
+  Ermolov has the army set out before dawn, the columns crossing in the dark, which may be the night move into the disposition's places rather
+  than the columns' departure." (finding 14's attribution of Miloradovich's eight to his own report in the same sentence); its claim
+  rehashed, its note saying the same; the 193 record above corrected likewise.
+- (2, high) The face-about order and Langeron forced back on Sokolnitz were labelled this map's in their whys only. Labelled where else they
+  are said: `PHASES[3].events[3]` was "Kutuzov orders the 4th Column to face about and recalls part of the II Column. No source read gives
+  the hour."; is "Kutuzov orders the 4th Column to face about, in this map's reading, which no account read gives, nor its hour; part of the
+  II Column is recalled up the slope."; `FORMATIONS.ahq.track[3].act`'s "...; Kutuzov orders the column to face about and recalls part of
+  the II Column" is "...; in this map's reading, which no account read gives, Kutuzov orders the column to face about; part of the II
+  Column is recalled"; `COMMAND.al["3"][1]` was `["ordered","doc","Kutuzov: the 4th Column to face about; part of the II Column recalled up
+  the slope."]` (shown DOCUMENTED); is `["ordered","inf", "...recalled up the slope. This map's reading: no account read has him order the
+  column about, and who turned the II Column's regiments is disputed (below)."]` (INFERRED; the row below it, `COMMAND.al["4"][0]`, gives
+  the three accounts of Kamensky's turn); `PHASES[6].events[4]`'s "Langeron is forced back toward Sokolnitz." is "Langeron is forced back
+  toward Sokolnitz, in this map's reading, which no account read gives."; `FORMATIONS.lang.track[7].act` was "Driven back toward Sokolnitz
+  by Davout at about 12:30"; is "... (this map's reading; no account read gives it)". All unchecked, as before.
+- (3) `EVENTS[#face-about].why` merged two accounts: was "... in the accounts read he rides to the left of the 4th Column and orders
+  Kamensky's regiments onto the ridge."; is "... in Mikhailovsky-Danilevsky he rides to the left wing and Kamensky turns his brigade on his
+  own; in his own public report he orders Kamensky's regiments onto the ridge; his private relation names no order." Its claim, new:
+  "interpretation" (`md1844.p186-187.kamensky~C1.10`, `kutuzov1951.p255-258.relation`, `kutuzov1951.p265.private-relation`).
+- (4) The telnitz dispute overstated the disagreement: `EVENTS[#telnitz].dispute` was "... with Savary's Russians beginning to debouch on
+  Legrand about seven; Schönhals has the left wing off at 06:30, Stutterheim the hussars forward between seven and eight, and Davout's report
+  ..."; is "... with Savary's Russians beginning to debouch on Legrand about seven and attacking soon after; the other readings bound the
+  hour rather than give it: Schönhals has the left wing set off at 06:30, Stutterheim the hussars sent forward to reconnoitre between seven
+  and eight, and Davout's report ..." (Savary's "bientôt après", p. 205, in the skeptic's note; Stutterheim's "um den Feind zu
+  recognosciren", p. 49). Its claim's note was "the others put the attack up to an hour either side"; is "the others are a departure
+  (Schönhals), a reconnaissance (Stutterheim) and a bound (Davout), not the attack's own hour." The event stays disputed (201 (b)): the
+  bounds still fall on both sides of the map's 07:00.
+- (5) `EVENTS[#pratzeberg].dispute`'s "Thiebault three." gave him a start he does not give: is "Thiebault three, with no start given."
+- (6) `KNOW_OVERRIDE.al.friant` (analysis.js, command knowledge) was `[[0,"unknown"],[2,"seen"]]`, set for Friant's c. 08:00 arrival; with
+  177 (b) he reaches the Goldbach about 09:00, phase 3: is `[[0,"unknown"],[3,"seen"]]`, with a comment. Bourcier's `[2,"uncertain"]` is
+  kept with his track (finding 7).
+- (7) Bourcier's track still reaches its screen south of Telnitz in phase 2, an undated creep from 04:00, while Mikhailovsky-Danilevsky has
+  Davout come from Raigern with Friant's infantry and Bourcier's cavalry (`md1844.p178-179.davout-telnitz`): not named by 177 (b), so put to
+  the owner as question 202, the track kept meanwhile.
+- (8-10) `CLAUDE.md`, `docs/ROADMAP.md`, this entry's status header and `questions.md`'s Status lines of 199 and 201: updated at the step's
+  end (below), after the final checks, check:data's reference and the baseline moved to the final build.
+- (11) `questions.md`'s 193 Status: telnitz-retaken A since 199 and 177 (b). (12) "What remains uncertain" (below) rewritten for the final
+  build; the 198-201 entry's "the step's end above" said "below". (13) The 201 entry names the readings read in part on the text layer and
+  the skeptic's counter-readings. (15) `SOURCE_NOTE.body[5]` listed Friant's Goldbach arrival and the retaking among "the hours on which the
+  accounts read disagree", where the readings and the map now agree: the two are folded into the departure's parenthesis, "at 05:00 on the
+  map, with its leading brigade at the Goldbach about 09:00, as in Stutterheim and the Moniteur's remarks of 1806, and Telnitz in French
+  hands at 09:30, then lost again, as in Davout's report" (were two clauses "when its leading brigade reached the Goldbach (...)" and "when it
+  retook Telnitz (...)"); unchecked. (16) check:chronology's REVIEW_CITES: a comment at lang@2 and lich@2 says the disputes' 08:00 there is
+  also the other side's hour, counted by the same cite. (17) The 199 entry says why the holding anchor is keyed 5, not 4, and cites
+  `davout1885.p202-204.report-26dec` (read on page images) for friant@3's A. (18) thresholds.js: a comment says the 199 line replaces the 6
+  above.
+- check:data's changed declarations in this commit: `EVENTS`, `PHASES`, `FORMATIONS`, `COMMAND`, `KNOW_OVERRIDE`, `SOURCE_NOTE`,
+  `STATEMENT_CLAIMS`. Checks: test.js (703 statements, 140 claimed), redteam.js, sim-test.js, binding-test.js, css-test.js, terrain-test.js,
+  audit.js and check:chronology (66 consistent, 4 early, all named) pass. Measured on the final full check:visual (below): finding 6 changes
+  what the Allied headquarters' reading draws in phase 2.
+
+**The step's end (with decisions 198-201 and their review; the final build).**
+- *What step 4b part A did, in sum.* Of the eleven decisions taken up: applied as recommended, their measurement allowing it, 176 (b) (the II
+  and III Columns from 07:00, grade B; sim-test's mechanism assertion still holds, kept, and a 4th Column check from Thiebault p. 504
+  added), 180 (b) (bag@8 undated), 181 (c_gren@7 without its arrival; kollo kept), 184 (Kienmayer 6,340; Legrand's brigadiers Sokolov's),
+  190 (a) (tour stop 6's "the Guard held back"), 191 (Turas at Tuřany through `GEOREF.GT`), 193 (b) (every event then at A lowered: seven B,
+  face-about C), 195 (the 1805 page read: the Szekler hussars "dunkelblaue", the record corrected) and 197 (b) (the Guard's dawn grades B);
+  182 measured past a limit and so its fallback (c) (`plans-overview` 12 -> 13); 177 measured past a limit, so (a) stood until the owner's
+  decision 199 moved `narrow-1024`'s limit to 7, and (b) is applied (Friant off at 05:00, at the Goldbach about 09:00, Telnitz retaken at
+  09:30, graded A, the one event at A). The owner's decisions 198-201 (17 October 2026), each as recommended: 198 (b) (`TIMING_TEXT.B`'s
+  words), 199 (b), 200 (a) (the Szekler correction kept), 201 (b) (seven events "disputed", measured unchanged; the two unread claims
+  labelled this map's wherever they are said, the Command row INFERRED). Open: question 202 (Bourcier's dragoons, the default built). Not in
+  this part: 187, 196 (to apply), 189 (a human reading).
+- *What remains uncertain (historical, not an implementation choice).* The II and III Columns' departure (seven by the order and two
+  reports, half past seven to eight in others); Friant's departure from Raigern (05:00 in one of Davout's reports, 05:30-06:00 in the other,
+  about 06:00 in Sokolov; 05:00 on the map) and Bourcier's march (question 202); the hours of the seven events now disputed, and
+  face-about's, which no reading gives; who ordered the 4th Column about and Langeron's being forced back on Sokolnitz (this map's
+  readings); Kienmayer's strength on the day (Schönhals's undated table against Sokolov's 6,380); Legrand's brigades on 2 December (two on
+  22 November, three on 28 October); where the Guard stood at dawn; the Szekler page read by a machine reader only (189). Everything step 4
+  listed as uncertain stands, but for the II and III Columns' 04:00, now gone, Friant's hours, now the sources', and Turas, now placed.
+- *Implementation choices kept (not historical claims).* `narrow-1024`'s limit 7 (decision 199); the reserve column's route the one the
+  build drew for "In hand" (182 (c)); the self-test's D-6 check taking the run from 04:00 when no later one is long enough; Friant's holding
+  anchor keyed 5 (the counterattack status through phase 4).
+- *check:data.* The reference moves to this build, archived as `archive/step4b-e257d09b.html` (the first 4b reference,
+  `archive/step4b-2ae24fa3.html`, is kept). Against it this build changed `PHASES`, `FORMATIONS`, `SOURCE_NOTE`, `COMMAND`, `KNOW_OVERRIDE`,
+  `EVENTS`, `OVERLAYS`, `TIMING_TEXT` and `STATEMENT_CLAIMS` (9), each listed above; against the step-4 reference
+  (`archive/step4-833743c6.html`) the step changed those and `GEOREF`, `PLANS`, `TOUR`, `DRESS` and `VILLAGES`. Against the new reference all
+  130 declarations in the lists are byte-identical.
+- *Checks on the final build* (md5 `e257d09b...`, 2,167,583 bytes; each heavy check run alone, in this session's container: headless
+  Chromium with SwiftShader):
+  - npm test: all nine suites and the height guard pass (order of battle 42/42, appearance 603/603, geo-test 59, binding-test 400 checks,
+    runtime-test's "console.warn unique" 0, redteam 0 findings and its one acknowledged warning); statement claims: 703 narrative
+    statements, 140 with a claim (64 disputed), 563 unchecked, the inventory current.
+  - check:chronology: 0 errors; 70 moves with a timed statement, 66 consistent, 4 early, all named conflicts (bag@6, guard_cav@6,
+    kamensky@3, kamensky@4); `CEILING_FLAGGED` sthilaire@3 and vandamme@3; `FORCED_DATED` kollo@5; 37 allowances.
+  - check:visual (`harness.js --test`, 30 cases and the self-test, about an hour): STAGE0, all checks passed. Compared case by case with the
+    step-4 reference (`tools/step3/report-diff.js`): `first-run-laptop` 6 -> 5 (176's), and the eight differences 177 (b)'s measurement
+    found and recorded ("Question 177"): `overview-field` 7 -> 6, `overview-plan` 4 -> 5, `close-sokolnitz` 4 -> 2, `staff-paper` 3 -> 5,
+    `paper-north-up` 12 -> 11, `narrow-1024` 6 -> 7 (`n:bourcier`, its limit 7 under decision 199), `eye-zuran` and `eye-zuran-1x` 6 -> 5,
+    each within its limit; no unobstructed fraction or timeline height moved. Against the run of the first 4b build (`2ae24fa3...`) the same
+    eight 177 (b) differences and no other: 198, 201 and the review's fixes (the Allied reading of Friant from phase 3 among them) move no
+    measure. Only `DROP_LIMIT["narrow-1024"]` changed (6 -> 7, decision 199); no `UNOBSTRUCTED` or `PAPER_MIN_PXKM`.
+  - check:selftest: 242 passed, 0 failed, the manifest held (no check name changed).
+  - check:contrast: 35 states, all reached; 5,523 text elements, 113 pairs, 0 below AA, 0 below 10.5 px, 0 font failures, 0 console
+    messages; the six start-up cases pass.
+  - check:data: against the new reference, all 130 declarations byte-identical. check:baseline: moved to this build (`package.json`: md5
+    `e257d09b7865e4bd1f76dd979b46b4ef`, 2,167,583 bytes; was the first 4b build `2ae24fa3...`, 2,161,604 bytes); passes.
+  - Not run: `tools/stage6/verify-quotes.js` (network; 195's quote was read on the page images instead).
+  - CI's `checks` job fails at check:data and check:baseline on the commits between `24de9a8` and this one, which compared against the
+    first 4b build until this commit moved them (expected in a data task).
+- *Records.* `CLAUDE.md` (the conflicts, `narrow-1024`'s limit, check:data's reference, the baseline, the layout's archive, the current
+  state, the next owner decision, 203); `docs/ROADMAP.md`; `docs/step4-evidence/questions.md` (the Status lines; questions 198-202);
+  `docs/stage6-evidence/second-reading.md` and `readings-at.md` (195).
+
+**The first step's end (the build before decisions 198-201: md5 `2ae24fa3...`, `b82439b`), kept as recorded then.** Its checks: npm test
+passed (697 statements, 134 claimed); check:chronology 64 consistent, 6 early (bag@6, friant@1, friant@2, guard_cav@6, kamensky@3,
+kamensky@4); check:visual STAGE0 passed, against the step-4 reference only `first-run-laptop` 6 -> 5; check:selftest 242 of 242;
+check:contrast 35 states, 5,550 text elements, 0 below AA; check:data's reference and the baseline moved to it then
+(`archive/step4b-2ae24fa3.html`).
+
+**The strengths-and-grades measurement (184, 195, 197; `511f5e5`'s build, md5 `71b957cc...`).** A full `check:visual` (`harness.js
+--test`, 30 cases and the self-test, 65 minutes), compared case by case with the reference: one difference, `first-run-laptop` 6 drops -> 5,
+which is 176's (above); every other case's drops, dropped ids, unobstructed fractions and timeline height as in step 4, no limit near:
+184's, 195's and 197's changes move no measure, so each stands (197's "measured" holds). npm test on that commit: all nine suites and the
+height guard pass. The run's one failure was the self-test's, and 176's: "derived readings: the plateau's 'plotted strength unchanged'
+follows the plotted holding alone ..." (D-6) picks the day's first run of the plotted holding of 70 minutes or more that begins after 04:00
+in a phase that shows the reading; with the II and III Columns marching at seven, none does (the runs are 04:00-07:05, then 18, 66, 36, 60,
+22, 37, 28, 3 and 52 minutes up to 12:27, when the Allied holding reaches 0), so the check found "no run of the plotted holding found to
+test" and failed rather than pass vacuously (step 1's rule). Fixed in `app.js` (presentation, not data): when no such run begins after 04:00,
+the first one from 04:00 is taken, tested the same three ways (a jump from 04:00, a jump from 18:00, played from the run's start), the short
+run's test unchanged; the check's name is unchanged, so the manifest stands. Its result is in the final checks above.
+
+**The review of `da16e48`, `a31162b` and `511f5e5` (strengths and grades; an independent reviewer, read-only; fixed in the next
+commit).** It ran test.js and redteam.js (clean) and fetched the 1805 pages itself (views 295-298, their text layer): the Szekler box closes
+"dunkelblaue", Palatinal's "kornblumenblaue", view 295's preceding box "Grasgrüne Csako, lichtblaue Pelze" (a box's colour line closes it);
+the "w.K." is illegible on the text layer. No high finding. Medium: (1) the Kienmayer note's change-history phrase and the Legrand staff's
+ambiguous Féry clause: reworded (above, 184); (2) the 195 entry quoted (a) in part: quoted in full, and the correction on a machine reading
+put to the owner as question 200; (3) the Status lines of 184 and 197 in `questions.md`: updated; (4) 197's measurement was pointed to before
+it existed: "pending until the run ends; a moved limit returns it to (a)". Low: (5) 197's inheritance (guard_cav's leg, c_gd's counter,
+guard_inf beyond dawn): said; (6) the Kienmayer claim's note: reworded; (7) the 6B register's entry for the Szekler hussars
+(`docs/stage6-evidence/readings-at.md`, at.cav.hussars.11) gains a corrigendum; the quote-check tables are snapshots, left; (8)
+`docs/ROADMAP.md`'s three stale lines and (10) the build's md5, npm test and the measurement: at the step's end; (9) question 194's Status
+says the `KIT` cloth "blue" is now drawn by no class.
+
+**Question 197: the Guard's dawn grades B (guard_inf@0, guard_cav@0).** As recommended, as gqg@0 under decision 160: both are placed by
+the command post, graded B since step 4's K8, and the readings place the Guard by no landmark at dawn (the 30th Bulletin's "in reserve with
+the Emperor", `corr11_1863.p451.guard-centre-reserve`; Stutterheim's reserve "bey Turas" in the night, `stutterheim1806de.p42.reserve-turas`;
+Coignet's Guard formed behind the Emperor, `coignet1909.p121-123.guard-followed`).
+- `FORMATIONS.guard_inf.track["0"].cf`: was "A"; is "B". `FORMATIONS.guard_cav.track["0"].cf`: was "A"; is "B".
+- *What inherits the grade* (a track entry without its own `cf` takes the last one before it, as gqg's phases 1-5 and drouet@7 and @9 did
+  under K8): guard_inf@6, @7 and @9 (none has a `cf`), so the Guard infantry is graded B all day; guard_cav only until guard_cav@6, which is A,
+  and @7 and @9 inherit A from it; the guard_cav leg from @0 to @6 is interpolated at B (the weaker of its anchors, `confAt`); the Guard's
+  corps counter (c_gd, `aggConf`, its weakest leaf) reads B all day. guard_inf@6, @7 and @9 are B beyond dawn, which question 197's text
+  did not show the owner: their A was itself only inherited from @0, and no reading places them better, so B is the conservative reading.
+  On screen: the position-confidence mark is B's soft frontage instead of A's crisp footprint, and the pill reads "Position: estimated", at
+  those positions.
+- *Measured*: the recommendation says on a full check:visual: run on this commit's build with 184 and 195 (the result below, "The
+  strengths-and-grades measurement"). 197 names no other fallback, so a limit it moved would return it to (a).
+- check:data's changed declarations in this commit: `FORMATIONS`.
+
+**Question 195: the Szekler hussars' colour, the 1805 page read first.** The 1805 Schematismus, unreachable in step 4 (Hungaricana
+answered 403), was reached in this session (the site answers a browser's request; its viewer serves each page as a one-page PDF,
+`static-cdn.hungaricana.hu/pdf1/OeStA/MilitarAlmanachSchematismus_1805/page0296.pdf` to `page0298.pdf`), rendered to images and read on
+them by a machine reader (17 October 2026; not read by a person, so decision 189's human reading remains). Each regiment's box opens with
+its staff line and number and closes with its colour line: the Szekler Nr. 11's box (printed pp. 295-296) closes "Schwarze Csako,
+dunkelblaue Pelze, Dollmanns und Hosen. | w.K."; Palatinal Nr. 12's (pp. 296-297) closes "Schwarze Csako, kornblumenblaue Pelze, Dollmanns
+und Hosen. | w.K.", the words the record had from p. 297. The 1805 page has the 1813 layout: the record took the neighbouring regiment's
+colour. Question 195's (a), decided, reads: "Keep the record (A, drawn cornflower), its note naming the doubt, until the 1805 page is read
+with its neighbours (the first item of question 189's human reading)". The page has now been read with its neighbours, but by a machine
+reader, not in 189's human reading: correcting the record now is this step's reading of the decision (keeping, at grade A "fact", a value
+the 1805 page shows to be Palatinal's would keep a known error), put to the owner as question 200, who may restore (a) until the human
+reading; the correction is built meanwhile. The record:
+- `DRESS.at_hussar_szekler.coat`: was `{v:"kornblumenblaue Pelze, Dollmanns und Hosen", en:"cornflower-blue pelisse, dolman and breeches",
+  c:"blue", at:"p. 297 (view 298)", gr:"A", lab:"fact", q:"kornblumenblaue Pelze, Dollmanns und Hosen", note: the doubt}`; is
+  `{v:"dunkelblaue Pelze, Dollmanns und Hosen", en:"dark-blue pelisse, dolman and breeches", c:"dark blue", at:"p. 296 (view 297)", gr:"A",
+  lab:"fact", q:"dunkelblaue Pelze, Dollmanns und Hosen", note: the reading}`. `.legwear` likewise (was "kornblumenblaue [...] Hosen", blue,
+  p. 297; is "dunkelblaue [...] Hosen", dark blue, p. 296); `.head` "Schwarze Csako" at p. 296 (was p. 297; Palatinal's line also has it).
+- *Drawn.* The Szekler hussars' pelisse, dolman and breeches are drawn in the `KIT` cloth "dark blue" (0x2C3B67) instead of "blue"
+  (0x3E5C9F, the cornflower); "blue" stays in `KIT` and in the table's vocabulary, now drawn by no class. css-test.js: every cloth a class
+  of the table, 14 cloth colours; runtime-test.js's notes from the table follow (the sources sheet's troop notes read the table). The
+  figures' colours do not enter the harness's drop and unobstructed measures; the self-test's figure checks are run with the group's
+  full check:visual.
+- As a check on the same scan, Hessen-Homburg Nr. 4's box (pp. 284-285) closes with "Hellblaue Csako, paperlgrüne Pelze u. Dollmanns,
+  ponceaurothe Hosen. | w.K.", as `DRESS.at_hussar_hh` records it (p. 285): no change. Recorded in `docs/stage6-evidence/second-reading.md`.
+- check:data's changed declarations in this commit: `DRESS`. `tools/stage6/verify-quotes.js` (network) was not run.
+
+**Question 184: the strengths' working figures.** As recommended: Kienmayer 6,340 (Schönhals); Liechtenstein kept at 5,400 (so
+`PLATEAU_04_RECORDED`, 38,700, does not move); the IV Corps divisions kept until a return of 2 December is read; Legrand's staff the
+readings'.
+- `FORMATIONS.kienmayer.strength`: was 6800 (Duffy and Smith as transcribed here, cited, not read); is 6340, Schönhals's table (1873,
+  p. 177, `schoenhals1873.p177.kienmayer`: about 3,400 foot and 2,940 horse; undated). Sokolov's 6,380 (`sokolov2006.p194.kienmayer`)
+  stays the other side. `test.js`'s pinned order of battle holds 6340 (was 6800; its comment says why). Kienmayer stands nowhere on the
+  plateau outline, so the plateau reading does not move; the Allied most-on-the-field figure in sim-test.js falls by 460 (82,660 of 85,400),
+  and Buxhowden's declared 40,000 against its columns' 39,230 stays within redteam.js's tolerance.
+- `FORMATIONS.legrand.staff`: was "Brigades: Merle · Féry · Levasseur (Duffy and Smith, cited). Sokolov gives the brigadiers as Merle and
+  Levasseur, and the situation of 28 October Levasseur, Merle and Brouard; Féry is Vandamme's in both. Colonel Schobert's 3e de Ligne and
+  the Tirailleurs du Pô in Telnitz"; is "Brigades: Merle · Levasseur (Sokolov, 22 November); the situation of 28 October gives Levasseur,
+  Merle and Brouard. Féry, given here from Duffy and Smith (cited, not read), is Vandamme's brigadier in both. Colonel Schobert's 3e de
+  Ligne and the Tirailleurs du Pô in Telnitz"; claim attributed (sokolov2006 t. II, pp. 186-187, `sokolov2006.p186-187.iv-corps`; the 28
+  October situation is step 6B's reading, the note says), rehashed. `test.js`'s pin "Legrand: Merle, Féry, Levasseur" held Féry in the
+  staff; under decision 184 it is replaced by an equally strict one: the staff begins "Brigades: Merle · Levasseur (Sokolov, 22 November)",
+  does not list Féry among the brigades, names Féry as Vandamme's, keeps Schobert and never "Fereys".
+- `FORMATIONS.legrand.role`: was "The bait. Three brigades cover roughly five kilometres of the lower Goldbach alone."; is "The bait. Two
+  brigades in Sokolov's order of battle cover roughly five kilometres of the lower Goldbach alone." (the three brigades were Duffy's and
+  Smith's staff); unchecked.
+- `FORMATIONS.kienmayer.strengthNote`: was "6,800 is this map's working figure, not from a source read: Duffy and Smith (cited, not read)
+  were transcribed here as 3,440 foot and 3,440 horse, which make 6,880. Schönhals's table gives 6,340 men, its lines making about 3,400
+  foot and 2,940 horse (its total line prints 2,440 horses), with two cavalry batteries, undated; Sokolov 6,380 (3,440 foot and 2,940 horse
+  with 12 guns; the sum derived)"; is "6,340, used here, is Schönhals's table, its lines making about 3,400 foot and 2,940 horse (its total
+  line prints 2,440 horses), with two cavalry batteries, undated; Sokolov 6,380 (3,440 foot and 2,940 horse with 12 guns; the sum derived).
+  Duffy and Smith (cited, not read) were transcribed here as 3,440 foot and 3,440 horse, which make 6,880; this map's earlier working
+  figure, 6,800, came from that transcription"; claim disputed (Schönhals p. 177 and Sokolov p. 194, each a side), rehashed, its note
+  "The figure used is Schönhals's; the figure it replaces, 6,800, came from a transcription of Duffy and Smith that sums to 6,880." (was
+  "The working figure is this map's, not from a source read; the transcription it came from sums to 6,880."). After the group's review the
+  note's last clause (was "...; this map's earlier working figure, 6,800, came from that transcription") is "Duffy and Smith (cited, not
+  read), as transcribed here, give 3,440 foot and 3,440 horse, which make 6,880" (no change-history in a visitor string, step 4's rule),
+  and the staff's Féry clause (was "Féry, given here from Duffy and Smith (cited, not read), is Vandamme's brigadier in both") is "Duffy and
+  Smith (cited, not read) were transcribed here with Féry, who is Vandamme's brigadier in both"; both rehashed.
+- *Drawn.* Kienmayer's strength sizes his block and sprite and orders the map layer's priority among formations of his echelon (by strength
+  last); the cases that show him are measured with this group's full check:visual (below).
+- check:data's changed declarations in this commit: `FORMATIONS`, `STATEMENT_CLAIMS`. Checks: test.js (order of battle 42/42), sim-test.js,
+  redteam.js pass; npm test in full after the group.
+
+**The reference.** A full `check:visual` (`harness.js --test`, 30 cases and the in-app self-test) of the unmodified step-4 build (md5
+`833743c6...`, the `archive/step4-833743c6.html` build), run in this session's container first (4 cores, headless Chromium with
+SwiftShader; 66 minutes): STAGE0, all checks passed, the self-test 242 of 242. Every targeted measurement of this step is compared with it
+case by case by `tools/step3/report-diff.js` (drops, dropped ids, unobstructed fractions at both sizes, timeline height, each new value
+judged against its limit). Targeted runs are `harness.js --only` without `--test` (the cases measured, not the self-test).
+
+**The review of `714226f`, `ffca6eb`, `6a49f76` and `117d53f` (the timing group; an independent reviewer, read-only; fixed in the next
+commit).** It ran test.js, sim-test.js, redteam.js, binding-test.js and check:chronology on a copy (all clean), rebuilt the build (the same
+md5) and checked the engine's windows and the plateau series the entries state. Findings and what was done: (1, medium-high) the false
+sentence `TIMING_TEXT.B` shows for lang@1 and prz@1 needed its question recorded: question 198 is in `docs/step4-evidence/questions.md`.
+(2, medium) the new sim-test check passed for Kamensky's brigade only by a minute of its early turn: the check now holds the 4th Column
+alone, and says why (above). (3, medium) records: questions 198 and 199 written (199 was "200" in `6a49f76`'s entry), "The reference"
+written, the heading says "taken up", the 176 build's size and md5 given, the Status lines of 176, 177, 180 and 181 in `questions.md`
+updated. (4, medium) check:data fails in CI until the reference moves at the step's end, as in step 4: expected. (5, 7, 9) chronology.js:
+c_gren@8's reason (the wheel overlaps 13:29-14:30), c_gren@7's says c_gren@8 judges the wheel's end, bag@8's three cites at 16:30 moved to
+`ALLOW_TIMED` with the row's reason (its `REVIEW_CITES` now empty; L4 skips a row without a kind, so its cites were unchecked). (6)
+analysis.js's comment on tour stop 4: 07:25. (8) redteam.js's reason names c_gren@7 beside bag@8 (1.29 from bag@8 alone). (10)
+`EVENTS[#columns-move].dispute`'s claim note corrected (Buxhowden gives seven for the I Column only; Kutuzov's report named; M-D's range
+not "later") and Stutterheim p. 49 added. (11) bag@8's place "as Stutterheim has him" is an inference: said. (12) the three claim notes'
+was/is added under 176. (13) chronology.js's free-text line numbers drift (data.js:589, :773): history, left. (14) `CLAUDE.md` is updated at
+the step's end. check:chronology after the fixes: 0 errors, 70 moves with a timed statement, `ALLOW_TIMED` 41 entries.
+
+**Questions 180 (b) and 181: the two dated legs no source dates.** Measured first: the build with both (this commit's, md5 `6ecedd69...`)
+on `opening-4`, `ph8-overview-study` and `ph8-overview-watch` with `harness.js --only`, compared with the step-4 reference: no difference
+in drops, dropped ids, unobstructed fractions or timeline height. 180's condition (`opening-4` unchanged) holds, so (b) is applied; (c), bag@9
+toward Austerlitz, is not (the recommendation: not now).
+- *180 (b), bag@8.* Was `tm {dep:990, gr:"C", basis:"app narrative, unsourced", ev:["Organised resistance ends, by this map's reckoning
+  after Sokolov's end of the firing in the north"], note:"the hour dates the end of organised resistance rather than Bagration's own movement
+  (STAGE2_SPEC M.6): 16:30 is Sokolov's end of the firing in the north, not a reading of Bagration's movement; the arrival is derived"}`, a
+  ceiling arrival at 16:45 flagged "not in battle order"; is no `tm`: the leg from bag@7 now runs 12:45-14:30 by the engine's default, and
+  Bagration stands on the height toward Rausnitz from 14:30; Stutterheim has him on the heights by Rausnitz from the Guard's retreat
+  (`stut.p71.bagration-six`), and that the anchor [337,29] is that height is this map's inference (the skeptic's change (d), proposals C2.p7);
+  bag@9's leg runs 14:30-17:00. No source read dates a movement of Bagration's at 16:30 (register C2; question 180). check:chronology:
+  bag@8 leaves `CEILING_FLAGGED` and bag@9 `NEAR_CEILING`; bag@8's row no longer judges the end of resistance as its time (it has no kind:
+  the 16:30 it cites dates no move of his) and its verdict is "undetermined"; 70 moves with a timed statement (71). The phase-8 arrow
+  "Bagration withdraws on Rausnitz" (`OVERLAYS[8]`, derived) was `leg:["bag",7,9]`, is `leg:["bag",8,9]`: the 7->8 leg is now marched in
+  phase 7, and binding-test requires a derived arrow's legs to be executed in its phase.
+- *181, c_gren (b).* c_gren@7's `tm` was `{dep:780, at:840, gr:"B", ...}`, is `{dep:780, gr:"B", ...}` (its `ev` kept; its note: "the
+  arrival is derived" in place of "the arrival by two is this map's"): the arrival is derived at the tactical rate, 13:29, and c_gren@8's leg
+  (13:29-14:30) is no longer forced near the ceiling, so c_gren@8 leaves `FORCED_DATED` (kollo@5 stays: 181's kollo (a)). c_gren@7's row
+  judges the departure (kind "start", 13:00-14:00, consistent; it was a span of the wheel, which the derived arrival at 13:29 leaves early).
+- `redteam.js`'s acknowledged warning carries the infantry mean 1.28 (was 1.37 in this step's first commit): bag@8's dated leg had been a
+  fast one; its exact text and reason updated.
+- check:data's changed declarations in this commit: `FORMATIONS` (the two `tm`), `OVERLAYS` (the phase-8 arrow). The changed statements:
+  `FORMATIONS.bag.track["8"].tm.note` (removed with its `tm`; unchecked) and `FORMATIONS.c_gren.track["7"].tm.note` (was "the wheel names
+  the grenadier division in support; shown across the range. Ségur and Mikhailovsky-Danilevsky set the grenadiers moving toward the lakes
+  about one; the arrival by two is this map's", is "the wheel names the grenadier division in support. Ségur and Mikhailovsky-Danilevsky set
+  the grenadiers moving toward the lakes about one; the arrival is derived. Until roadmap step 4b the map dated the arrival at 14:00, its own,
+  which forced the next leg toward the ceiling (question 181)"; unchecked).
+- Checks on this commit: test.js, sim-test.js, redteam.js, binding-test.js (387 checks) pass; check:chronology 0 errors; check:data as
+  listed; npm test, all nine suites and the height guard pass (run after the commit).
+
+**Question 177: Friant's march and Telnitz retaken, (b) measured and not allowed; (a) kept.** The recommendation: (b), retime to the
+sources, if `opening-2` and the cases at 500-570 measure within their limits; else (a) unless decision 121 is amended. (b) was built in
+full on this step's 176 build (not committed): friant@1 `tm {dep:300, at:540, gr:"B", basis:"source"}` (Davout's two reports, five or
+half past five to six; the leading brigade up to the Goldbach about nine, Stutterheim p. 52 and the Moniteur's remarks, Materialien
+pp. 109-110), the retaking anchor re-keyed to phase 3 with `tm {at:570, gr:"A"}` (Davout's report of 26 December, no. 127, p. 204,
+`davout1885.no127.p202-204`) and the holding anchor to phase 5, `EVENTS[#davout]` `[525,555]` and `#telnitz-retaken` 570 (both "fact"),
+the two phase lines moved to phase 3, the phase-1 and phase-2 arrows the approach march and phase 3's "Friant retakes Telnitz";
+check:chronology passed with friant@1 and friant@2 out of `CONFLICTS`. Measured with `harness.js --only` on the 19 cases it can reach
+(the 500-570 cases, `opening-2`, and those at 585-590 where the 570 event's tail is still live) and compared with the step-4 reference:
+`opening-2` unchanged; `narrow-1024` 6 drops -> 7 (Bourcier's name `n:bourcier` dropped beside the new label), past its limit 6;
+within their limits `overview-field` 7 -> 6, `overview-plan` 4 -> 5, `close-sokolnitz` 4 -> 2, `staff-paper` 3 -> 5, `paper-north-up`
+12 -> 11, `eye-zuran` and `eye-zuran-1x` 6 -> 5; no unobstructed fraction or timeline height moved. A limit would move, which needs the
+owner's word (no smaller form keeps the recommendation's own clocks: the label is `#telnitz-retaken` at 570, which (b) names), so (b) is
+not applied and (a), the build's state since step 4's K6 (the map's hours kept, the texts naming Davout's, friant@1 and friant@2 named
+conflicts), stands. Owner question 199 asks whether `narrow-1024`'s drop limit may move to 7 for (b) (the (b) patch is kept in this session's
+scratch and described here; it is rebuilt from this entry if the owner agrees). No file of the build changed for 177.
+
+**Question 176 (b): the II and III Columns from 07:00 (lang@1, prz@1).** The readings agree on seven, or half past six for the left wing
+(Schönhals), and none on four (register C1: the disposition orders all five columns to march at seven, Materialien 1806 pp. 101-106,
+`mat1806.p101-106.disposition`; Przybyszewski's report has the III Column set out at seven, Kutuzov, documents, 1951, pp. 269-270,
+`kutuzov1951.p269-270.przybyszewski`; Schönhals the II and III Columns at half past seven, 1873, p. 160, `schoenhals1873.p160.half-past-seven`;
+Buxhowden's report the II Column coming down at eight, `kutuzov1951.p241-242.buxhowden`; Mikhailovsky-Danilevsky the first three columns
+between seven and eight, `md1844.p177.eighth-hour`). lang@1 and prz@1 now carry `tm {dep:420, gr:"B", basis:"source"}` (the recommendation's
+grade: the sources differ by up to an hour), each arrival derived at the tactical rate (lang@1 07:00-07:20, prz@1 07:00-07:18); both leave
+`CONFLICTS` in this commit. The engine moves the two columns differently only between 04:00 and 08:00: from 08:00 every anchor is reached
+as before (lang@2 and prz@2 at 08:00).
+- *The build.* 2,160,548 bytes, md5 `c72559cb076ebde7b480f993ade20026`.
+- *The plateau reading and sim-test's mechanism assertion (the premise of the question was wrong, stated).* The question estimated that
+  the plateau's minimum before Soult's attack would rise to about 70% of dawn and that sim-test.js's assertion ("the Allied centre visibly
+  empties before Soult attacks": the minimum over its marks 04:00-08:45 under 55% of the 04:00 figure) would fail. Measured on the retimed
+  data (a scratch run of sim-test's model, every minute 04:00-08:45): the plateau holds 38,700 until 07:05, 27,000 from 07:05, 19,300 from
+  07:23 and 23,550 from 08:29 (Kamensky's brigade turning back up); before, 27,000 from 04:44 and 19,300 from 07:07. The minimum is the same
+  19,300 (50%), so the assertion still holds and is kept unchanged. The owner's word was given for replacing it with an equally strict one;
+  no replacement was needed, so none was made, and the strict assertion the question proposed is added beside it (stricter, not looser):
+  at 08:30 the 4th Column (milo, kollo) stands inside the plateau outline, as Thiebault has it still entire on the heights when the aide
+  reported them gone (1894, t. III, p. 504, `thiebault3_1894.p504.half-past-eight`). It passes on this data. (As first committed it named
+  Kamensky's brigade too; the review of `117d53f` found it inside the outline at 08:30 only by a minute of its early turn, kamensky@3, a
+  named conflict, the brigade having marched off at 08:00 with the II Column: Thiebault's "still entire" is against the map there, and
+  the brigade is no longer asserted.)
+- *Tour stop 4* keeps its own clock (07:25) and its figures (about 39,000 at 04:00, about 19,000, sim-test.js 2b agreeing: 38,700 and
+  19,300); "by 07:15" becomes "by 07:25" (the plateau reaches 19,300 at 07:23 on the retimed data; its claim note no longer says the fall
+  rests on the map's earlier timing). `chronology.js`'s allowance `tour 4 x @07:15` becomes `@07:25`.
+- *The event `columns-move`*: its window was `[240,420]`, "this map's timing for the columns' descent (from 04:00 for the II and III
+  Columns)" in check:chronology's allowance; it is `[420,480]` (07:00-08:00), the disposition's hour to the readings' latest (Buxhowden's
+  eight), which holds the map's three descents; its dispute names the map's choice. The 04:00 views no longer show it (they still show the
+  Raigern event, so the self-test's "an event label on the map at 04:00" holds). Measured (`harness.js --only` on this commit's build,
+  the eight cases the change can reach: the six at 04:00 and the two at 08:20, where the event's tail is still live, and compared with the
+  step-4 reference by `tools/step3/report-diff.js`): one difference, `first-run-laptop` 6 drops -> 5 (Liechtenstein's name `n:lich` drawn
+  again, the drop step 4's K8 had added), its limit 16; `opening-1`, `opening-end`, `opening-1-laptop`, `first-run`, `narrow-390`,
+  `close-sokolnitz` and `paper-close` unchanged in drops, dropped ids, unobstructed fractions and timeline height.
+- check:chronology: lang@1's row judges 07:00-08:00 (was 07:30-08:00: the disposition's seven is now the engine's, with Schönhals's half past
+  seven and Buxhowden's eight inside the row) and cites the event's window and its dispute at 07:00; prz@1's row is unchanged in its times;
+  both consistent. `CONFLICTS` loses lang@1 and prz@1 (six left: bag@6, friant@1, friant@2, guard_cav@6, kamensky@3, kamensky@4). `ALLOW_TIMED`:
+  `event columns-move dispute @04:00` and `event columns-move @04:00-07:00` removed (no longer live; the window is cited by lang@1);
+  `timeline 0: The disposition orders the Allied columns @04:00` and `source-note body.5 @04:00` reasoned anew (the phase line's mark; the
+  04:00 left in body.5 is Friant's, question 177).
+- `redteam.js`'s acknowledged warning (the cavalry's mean march rate not above the infantry's) carries the infantry mean 1.37, not 1.30: the
+  two dated departures make the II and III Columns' legs faster, as dok@1's did in step 4 (`KNOWN_WARN`'s exact text, its reason extended).
+- *The grade's words (a question for the owner, 198).* `TIMING_TEXT.B`, the sentence the dossier shows for a timed leg graded B, reads
+  "Timing given as approximate in this reconstruction's narrative, which cites no source for it." lang@1 and prz@1 are graded B as the
+  decision says, but cite sources; while either leg runs (07:00-07:20) a visitor who opens the column's dossier reads that no source is
+  cited. Decision 176 says B; decision 41's grade text does not fit a sourced B. Not settled by decisions 1-197: owner question 198
+  (`docs/step4-evidence/questions.md`); the default, B with `TIMING_TEXT` unchanged, is built, and the false sentence is shown meanwhile.
+- check:data's changed declarations in this commit (against `archive/step4-833743c6.html`): `PHASES`, `FORMATIONS`, `SOURCE_NOTE`, `EVENTS`,
+  `TOUR`, `STATEMENT_CLAIMS`. The changed statements:
+  - `PHASES[#0].events[1]`: was “c. 04:00 / The disposition orders the Allied columns to march at seven; Thiebault records reports through the night of the Allied left moving, judged by the noise. The map moves the II and III Columns off the plateau from 04:00, its earlier timing. Liechtenstein's cavalry, misplaced on the left, must counter-march north across the front of the 4th Column; the Materialien has it ordered off only at dawn.”; is “c. 04:00 / The disposition orders the Allied columns to march at seven; Thiebault records reports through the night of the Allied left moving, judged by the noise. Liechtenstein's cavalry, misplaced on the left, must counter-march north across the front of the 4th Column; the Materialien has it ordered off only at dawn.”; claim attributed (thiebault3_1894 t. III, pp. 456-457, thiebault3_1894.p456-457.night-noise; materialien1806 pp. 101-106, mat1806.p101-106.disposition; materialien1806 p. 109, mat1806.p109.delivery).
+  - `EVENTS[#columns-move].dispute`: was “When the columns left the plateau: the disposition ordered all the columns to march at 07:00, and the I Column left its camp at seven (Buxhowden's and Kutuzov's reports), as the map now draws it; Schönhals has the left wing off at half past six and the II and III Columns at 07:30, Przybyszewski's report his III Column at 07:00 and Buxhowden's the II Column coming down at 08:00, and Mikhailovsky-Danilevsky the first three columns between seven and eight. The map still moves the II and III Columns from 04:00, an earlier timing it keeps.”; is “When the columns left the plateau: the disposition ordered all the columns to march at 07:00, and the I Column left its camp at seven (Buxhowden's and Kutuzov's reports), as did the III Column in Przybyszewski's report; Schönhals has the left wing off at half past six and the II and III Columns at 07:30, Buxhowden's report the II Column coming down at 08:00, and Mikhailovsky-Danilevsky the first three columns between seven and eight. The map moves the three columns from 07:00, the disposition's hour.”; claim disputed (materialien1806 pp. 101-106, mat1806.p101-106.disposition; kutuzov1951 pp. 241-242, kutuzov1951.p241-242.buxhowden; mikhailovsky1844 p. 177, md1844.p177.eighth-hour; schoenhals1873 pp. 157-159, schoenhals1873.p157-159.departure; schoenhals1873 p. 160, schoenhals1873.p160.half-past-seven; kutuzov1951 pp. 269-270, kutuzov1951.p269-270.przybyszewski; kutuzov1951 pp. 255-258, kutuzov1951.p255-258.relation).
+  - `TOUR[3].x`: was “From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 39,000 at 04:00 to about 19,000 by 07:15, half of it gone before a shot is fired at the plateau.”; is “From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 39,000 at 04:00 to about 19,000 by 07:25, half of it gone before a shot is fired at the plateau.”; claim derived (stutterheim1806de p. 49, stut.p49.seven; materialien1806 pp. 101-106, mat1806.p101-106.disposition).
+  - `FORMATIONS.lang.track["1"].tm.note`: was (none); is “the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106); Schönhals has the II and III Columns leave at half past seven (1873, p. 160), Buxhowden's report the II Column come down at eight (Kutuzov, documents, 1951, pp. 241-242), Mikhailovsky-Danilevsky the first three columns between seven and eight (1844, p. 177): grade B, the map's choice among them; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)”; unchecked.
+  - `FORMATIONS.prz.track["1"].tm.note`: was (none); is “the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Przybyszewski's report gives it (Kutuzov, documents, 1951, pp. 269-270); Schönhals has the II and III Columns leave at half past seven (1873, p. 160): grade B; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)”; unchecked.
+  - `SOURCE_NOTE.body[5]`: in the hours the accounts give differently, "the II and III Columns at 07:30 in Schönhals, the III at 07:00 in
+    Przybyszewski's report and the II coming down at 08:00 in Buxhowden's, but from 04:00 on the map" is now "...; all three from 07:00 on the
+    map", and "The map keeps its timing for Kamensky's turn, Rapp's charge, the II and III Columns, Friant's division and Bagration's corps."
+    no longer names the II and III Columns; unchecked.
+  - The three claims rehashed, their notes: `EVENTS[#columns-move].dispute` was "The II and III Columns' descent from the small hours is
+    this map's earlier timing, which it keeps; no source read gives it.", is (after the review of `117d53f`) "The map moves the three
+    columns at the disposition's hour, the hour Buxhowden's and Kutuzov's reports give the I Column and Przybyszewski's his III; the other
+    side is Schönhals's later departure for the II and III Columns and Buxhowden's for the II, with Mikhailovsky-Danilevsky's range for the
+    first three.", with Stutterheim p. 49 (`stut.p49.seven`) added to its readings; `PHASES[#0].events[1]` was "The map's movement of the II
+    and III Columns before the ordered hour is its own timing (question 176); the Materialien has Liechtenstein's cavalry ordered off only at
+    dawn, later than this line's place in the map's day.", is "The Materialien has Liechtenstein's cavalry ordered off only at dawn, later
+    than this line's place in the map's day."; `TOUR[3].x` was "The figures are counted from the map's plot, every man once; they fall as
+    they do only because the map moves the II and III Columns off the plateau before the ordered march, which no source read gives
+    (question 176).", is "The figures are counted from the map's plot, every man once; they fall as the II and III Columns march off at the
+    disposition's hour, a departure the sources give differently by up to an hour, before Soult's attack.", with the disposition
+    (`mat1806.p101-106.disposition`) added to its readings.
+  - `EVENTS[#columns-move].t` (not a statement): was `[240,420]`; is `[420,480]`.
+  - `FORMATIONS.lang.track["1"].tm`, `FORMATIONS.prz.track["1"].tm` (not statements; the engine's timing): was (none: the leg crept from the
+    phase-0 anchor's 04:00 to 07:00); is `{dep:420, gr:"B", basis:"source", ev:[the dispute's sentences], note}`.
+
 ## 2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)
 
 **Status: done on `claude/nice-dijkstra-mdyu2w` (draft PR #52), for review. The owner decided questions 176-197 as recommended on

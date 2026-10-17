@@ -54,6 +54,17 @@ labelled an inference.
   cornflower blue) rest on one reading of the 1805 Schematismus, p. 297, which could not be reached again. In the 1813 edition, read on its
   images, the record's words "kornblumenblaue Pelze, Dollmans und Hosen" stand in Palatinal Nr. 12's box, the Szekler Nr. 11's reading
   "dunkelblaue": the 1805 page must be read with its neighbours. Each record now carries a note saying so (the review's fixes of `3dafee8`).
+  **Read in roadmap step 4b (owner question 195, decided (a): the 1805 page read first).** The 1805 Schematismus was reached on
+  Hungaricana (library.hungaricana.hu, `MilitarAlmanachSchematismus_1805`; the viewer's pages are served as one-page PDFs, page0296-page0298,
+  rendered to images and read on the images by a machine reader, 17 October 2026; not read by a person). Each regiment's box in this
+  edition opens with its staff line and number and closes with its colour line. The Szekler Nr. 11's box ("Grz-Hus. Regt. Stab: Szepsy
+  St.György in Siebenb. / (11.) / 1762 Szekler", printed p. 295, view 296) closes on printed p. 296 (view 297) with "Schwarze Csako,
+  dunkelblaue Pelze, Dollmanns und Hosen. | w.K."; the next box, "Husar. Regt. Stab: Gross-Topoltsan in Ung. / (12.) / 1800 Palatinal",
+  closes on p. 297 (view 298) with "Schwarze Csako, kornblumenblaue Pelze, Dollmanns und Hosen. | w.K.", the words the record had. The 1805
+  layout is the 1813 edition's: the record took the neighbouring regiment's colour. `DRESS.at_hussar_szekler` is corrected (coat and
+  legwear "dunkelblaue", drawn "dark blue"; the head "Schwarze Csako" at p. 296; each locator p. 296, view 297; grade A kept, an official
+  list of 1805 read on its page images). As a check on the same scan, Hessen-Homburg Nr. 4's box (pp. 284-285, views 285-286) closes with
+  "Hellblaue Csako, paperlgrüne Pelze u. Dollmanns, ponceaurothe Hosen. | w.K.", as `DRESS.at_hussar_hh` records it at p. 285.
 - **The Guard grenadiers' dress of 1805.** Perrot's pp. 209-210 describe the Garde des consuls of 1800; at the imperial formation he names
   only the plate, the buttons and the giberne as changed (p. 212). `DRESS.fr_guard_gren.coat`, `.facings` and `.legwear` are relabelled
   "inference" (were "fact"), with a note (the review's fixes of `3dafee8`); the drawn values are unchanged.

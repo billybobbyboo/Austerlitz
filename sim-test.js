@@ -115,6 +115,13 @@ marks.forEach(([t,lbl])=>{
 });
 const start=series[0].al, low=Math.min(...series.slice(0,4).map(s=>s.al));
 if(!(low<start*0.55)) errs.push("the Allied centre never visibly empties before Soult attacks");
+/* roadmap step 4b (question 176): the II and III Columns march at the disposition's seven, and the centre still empties before Soult
+   attacks (above); and, as Thiebault has it at half past eight (1894, t. III, p. 504, reading thiebault3_1894.p504.half-past-eight),
+   the 4th Column is still on the heights then. Thiebault has Kamensky's brigade there too; the map has it march at the rear of the II
+   Column off the plateau (kamensky@2, from 08:00) and turn back up in the 08:45 phase, a named conflict (kamensky@3), so it is not
+   asserted here (the review of 117d53f: at 08:30 it stands inside the outline only by a minute of that early turn) */
+clock=510;
+["milo","kollo"].forEach(id=>{ const p=posNow(id); if(!(p&&onPlateau(p))) errs.push(id+" is not on the plateau at 08:30, where Thiebault has the 4th Column still entire"); });
 const frLate=series.find(s=>s.t===660);
 if(!(frLate&&frLate.fr>4000)) errs.push("the French never hold the plateau in strength");
 clock=T_MIN;

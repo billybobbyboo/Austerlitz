@@ -99,14 +99,15 @@ var MARSH=[
 var VINEYARD={c:[313,205], rx:23, ry:16};
 
 /* ---------------- settlements ---------------- */
-var VILLAGES=[   /* from GEOREF ground truth; Krug, Bellowitz and Turas are not in the register and keep their warped legacy place.
+var VILLAGES=[   /* from GEOREF ground truth; Krug and Bellowitz are not in the register and keep their warped legacy place. Turas is
+                    GEOREF.GT.turas since roadmap step 4b (owner decision 191; [89,372], its warped legacy place, until then).
                     Raigern, Rausnitz and Kowalowitz lie beyond the frame and are shown as edge markers */
  ["Bosenitz",236,69,7],["Girzikowitz",233,162,9],["Puntowitz",213,222,8],
  ["Kobelnitz",205,277,9],["Sokolnitz",208,365,13],["Telnitz",212,408,12],
  ["Augezd",297,372,9],["Blasowitz",296,147,10],["Krug",339,139,5],
  ["Holubitz",340,89,7],["Pratzen",276,243,11],["Bellowitz",164,113,7],
  ["Schlapanitz",163,177,9],["Krzenowitz",415,196,10],["Austerlitz",507,126,24],
- ["Menitz",181,489,7],["Satschan",262,444,7],["Turas",89,372,5],
+ ["Menitz",181,489,7],["Satschan",262,444,7],["Turas",44,294,5],
  ["Hostieradek",342,309,7],["Posoritz post house",324,36,3]
 ];
 var CHURCHES=["Girzikowitz","Kobelnitz","Sokolnitz","Telnitz","Augezd","Blasowitz",

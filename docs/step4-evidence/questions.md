@@ -10,6 +10,8 @@ changes to it are said.
 decisions/your recommendations. We will implement later." Each question 176-197 is decided as its *Recommendation* reads, conditions
 included (a recommendation that depends on a measurement is to be applied only where the measurement allows it, else its stated fallback).
 None is implemented yet: the build carries each question's *Default*, as its *Status* line says, until a later task applies the decision.
+Roadmap step 4b part A took up 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 (`CHANGELOG.md`): each *Status* line says what
+it applied, or the fallback a measurement required; it met questions 198-202, at the end of this file.
 Question 189's recommendation is a reading by the owner or a tester. 178, 179, 183, 185, 186, 188, 192 and 194 recommended what the build
 already carries.
 
@@ -34,14 +36,16 @@ after, computed by `tools/stage2/chronology.js`).
   the readings support (for instance the plateau at 08:45 holding the 4th Column and Kamensky's brigade, Thiebault p. 504): an assertion
   changed only on your word.
 - *Recommendation.* (b): the readings agree on seven (or half past six for the left wing, Schönhals) and none on four.
-- *Default.* (a). *Status.* Implemented (K4).
+- *Default.* (a). *Status.* The default (a) implemented (K4); the decision, (b), applied in roadmap step 4b (`714226f`): lang@1 and prz@1
+  from 07:00, grade B; sim-test's assertion still holds and is kept, the check the question proposed added beside it (`CHANGELOG.md`).
 
 **177. Friant at the Goldbach and Telnitz retaken, from Davout's report (about nine; Telnitz at half past nine, then lost again).**
 - *Options.* (a) Keep friant@1's departure from 04:00, friant@2 at 08:30 and the events' clocks, the texts naming Davout's hours and the
   two moves named in `CONFLICTS` as in 176 (a). (b) Retime to the sources (the departure from Raigern at five or half past five; the retaking
   anchor at half past nine, A; `EVENTS[#davout]` [525, 555], `#telnitz-retaken` 570; the phase lines moved to phase 3).
 - *Recommendation.* (b) if `opening-2` and the cases at 500-570 measure within their limits; else (a) unless decision 121 is amended for
-  that case. *Default.* (a). *Status.* The default (a) implemented (K6); the recommendation (b) not measured.
+  that case. *Default.* (a). *Status.* The default (a) implemented (K6). In roadmap step 4b (b) was built and measured: `opening-2` unchanged, but
+  `narrow-1024` 6 drops -> 7, past its limit 6, so (a) stood (`6a49f76`); on decision 199 (17 October 2026) the limit is 7 and (b) is applied.
 
 **178. Kamensky's turn: the point at 09:45 or an interval.** Decision 142 keeps t 585; this asks only whether the readings reopen it.
 - *Options.* (a) Decision 142 stands: t 585, the dispute naming the sources' sequence and the versions of who turned the brigade. (b) An
@@ -57,18 +61,21 @@ after, computed by `tools/stage2/chronology.js`).
 - *Options.* (a) Keep bag@6's 11:15 and bag@8's 16:30 as the map's, the readings in their notes and acts (bag@6 named in `CONFLICTS`
   against Schönhals's "toward noon"); the end "disputed". (b) Drop bag@8's departure (no source dates a movement then). (c) Redraw bag@9
   toward Austerlitz over Alt-Rausnitz.
-- *Recommendation.* (b) if `opening-4` measures unchanged, else (a); (c) not now. *Default.* (a). *Status.* bag@8 and the end implemented (K5); bag@6's conflict implemented (K11).
+- *Recommendation.* (b) if `opening-4` measures unchanged, else (a); (c) not now. *Default.* (a). *Status.* bag@8 and the end implemented (K5); bag@6's conflict implemented (K11). In roadmap step 4b `opening-4`
+  measured unchanged, so (b) is applied: bag@8's dated departure dropped (`117d53f`); (c) not now.
 
 **181. The forced dated legs: c_gren@7/@8 and kollo@4/@5.**
 - *Options.* c_gren: (a) keep `{dep 780, at 840}`, the readings in the note; (b) `{dep 780}` without `at`, c_gren@8 leaving `FORCED_DATED`.
   kollo: (a) keep `at 615`; (b) drop it.
-- *Recommendation.* c_gren (b), kollo (a). *Default.* (a) for both. *Status.* Implemented (K5).
+- *Recommendation.* c_gren (b), kollo (a). *Default.* (a) for both. *Status.* The default implemented (K5); the decision applied in
+  roadmap step 4b (`117d53f`): c_gren@7 without its `at`, c_gren@8 out of `FORCED_DATED`; kollo kept.
 
 **182. I Corps as the centre, and the French plan's "In hand" column.**
 - *Options.* (a) One column, its `ord` rewritten to the orders read. (b) Split into the centre (Bernadotte) and the reserve (the Guard and
   the grenadiers). (c) One column renamed the reserve, without Drouet.
-- *Recommendation.* (b) if `plans-overview` stays within its drop limit, else (c). *Default.* (a). *Status.* The default (a) implemented
-  (K7); (b) and (c) not measured.
+- *Recommendation.* (b) if `plans-overview` stays within its drop limit, else (c). *Default.* (a). *Status.* The default (a) implemented (K7). In roadmap step 4b (b), built with both columns on the one route drawn, measured
+  past `plans-overview`'s drop limit (12 -> 13), so (c) is applied (`5eaa92f`): one column renamed the reserve, without Drouet; the
+  dispositions' sentence on I Corps moved into `PLANS.fr.intent` (an addition beyond (c), for the owner to confirm).
 
 **183. drouet@6's grade.**
 - *Options.* (a) A kept, the act disputed. (b) B, the place disputed (near Blasowitz in Stutterheim and Schönhals, on the Emperor's left in
@@ -81,7 +88,8 @@ after, computed by `tools/stage2/chronology.js`).
 - *Options per formation.* kienmayer 6,800 or 6,340 (Schönhals); lich 5,400 or 5,600 (Schönhals; moves `PLATEAU_04_RECORDED`); the IV Corps
   divisions kept or Sokolov's 22 November figures; legrand's staff as pinned or the readings' brigadiers.
 - *Recommendation.* kienmayer 6,340; lich kept; the IV Corps divisions kept until a 2 December return is read; legrand's staff the readings'.
-- *Default.* Every working figure and pin kept; every note rewritten to the readings. *Status.* Implemented (K10).
+- *Default.* Every working figure and pin kept; every note rewritten to the readings. *Status.* The default implemented (K10); the
+  decision applied in roadmap step 4b (`da16e48`): Kienmayer 6,340, Legrand's brigadiers Sokolov's, the two pins replaced by equally strict ones.
 
 **185. The losses lede and tour stop 9.** *Options.* (a) Attributed figures where they are read; (b) a short lede, the figures in the
 sources sheet. *Recommendation and default.* (a). *Status.* Implemented (K10).
@@ -113,11 +121,14 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
 - *Options.* (a) Minimal rewordings, no longer than the text they replace, where the readings contradict it (`TOUR[5].x`, `TOUR[7].x`), each
   applied only where the opening cases measure unchanged. (b) Leave them, labelled elsewhere. (c) The bar's marking of the ceiling-derived
   climbs: none, or `LABELS.event.derived`. (d) The events live at an opening case keep claims that add no label note.
-- *Recommendation.* (a); (c) none; (d) keep. *Default.* The same. *Status.* `TOUR[7].x` reworded, shorter (`be730cf`); `TOUR[5].x` reworded, of the same length (K11).
+- *Recommendation.* (a); (c) none; (d) keep. *Default.* The same. *Status.* `TOUR[7].x` reworded, shorter (`be730cf`); `TOUR[5].x`'s first sentence reworded (K11); in roadmap step 4b its
+  "Two divisions, no reserve committed" became "Two divisions, the Guard held back", one character shorter, `opening-2` measured
+  unchanged (`ed61b2d`); (c) and (d) the build's state.
 
 **191. Places and the Guard cavalry: Turas, Krug, Bellowitz, the Posoritz post house, Kologrivov and rg_cav.**
 - *Options.* Turas moved to the register's point (2.85 km north-north-west; the C6 proposal's "WNW" was wrong, the review of `e7f0df1`) or kept; the others kept or moved to weaker identifications.
-- *Recommendation.* Turas moved, measured; the others kept; rg_cav a note. *Default.* Nothing moves. *Status.* Implemented (K11): nothing moves; the notes narrowed.
+- *Recommendation.* Turas moved, measured; the others kept; rg_cav a note. *Default.* Nothing moves. *Status.* The default implemented (K11): nothing moved, the notes narrowed. In roadmap step 4b Turas is moved to the address
+  register's point for Tuřany (`4981b27`), through `GEOREF.GT`; the others kept; rg_cav's note in the build since K11.
 
 **192. Track additions the readings suggest but do not place.**
 - *Options.* (a) None in step 4. (b) A Russian Guard detachment drawn in Blasowitz (the village's defenders in every account that names
@@ -126,7 +137,10 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
 - *Recommendation and default.* (a): each needs a position no reading gives. *Status.* The default is the repository's state.
 
 **193. The Timing A of the events not examined in step 4.** *Options.* (a) Keep A until examined; (b) grade each against the registers.
-*Recommendation.* (b). *Default.* (a), except those the readings contradict (B). *Status.* soult, pratzen-village, ice and end implemented (K5); telnitz-retaken (K6).
+*Recommendation.* (b). *Default.* (a), except those the readings contradict (B). *Status.* soult, pratzen-village, ice and end implemented (K5); telnitz-retaken (K6). In roadmap step 4b the eight
+  events left at A were graded against the registers (`cfcf1b2` and its review's fixes): counter-march, telnitz, sokolnitz, pratzeberg,
+  davout-resumes, sokolnitz-falls and augezd B, face-about C; none was A then. Since decisions 199 and 177 (b) telnitz-retaken is A, at
+  Davout's 09:30 (the one event graded A). Question 201 follows from it.
 
 **194. The blue the Russian records print as "синій".**
 - *Context.* Viskovatov's scale runs голубой (light blue), синій, темносиній (dark blue); the step-4 adjudicator reads "синій" as "blue",
@@ -137,7 +151,8 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
   shape, and furniture is not drawn). (b) A new mid-blue class between the Szekler cornflower and the
   French "dark blue", drawn for these records (a `KIT` cloth and `css-test.js`'s table follow).
 - *Recommendation.* (a) until a period colour sample or plate in colour is read: the printed word fixes a name, not a shade. *Default.* (a).
-  *Status.* Implemented (`3dafee8`; the shabraques' gloss in the review's fixes).
+  *Status.* Implemented (`3dafee8`; the shabraques' gloss in the review's fixes). Since roadmap step 4b (question 195) the Szekler hussars are drawn "dark blue" too, and the
+  `KIT` cloth "blue" is drawn by no class.
 
 **195. The Szekler hussars' cornflower blue (the appearance table's A-graded record, `schem1805` p. 297).**
 - *Context.* The 1805 Schematismus could not be reached again in step 4 (Hungaricana 403; no other scan). In the 1813 edition, read on its
@@ -147,6 +162,9 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
   item of question 189's human reading). (b) Lower it to B now and draw the Szekler hussars "dark blue" after the 1813 box, labelled an
   inference from a later edition. (c) Draw them generic until the 1805 page is read.
 - *Recommendation.* (a), with the 1805 page read first. *Default.* (a). *Status.* The note added in the review's fixes of `3dafee8`.
+  In roadmap step 4b the 1805 page was read on its images (Hungaricana, by a machine reader): the Szekler Nr. 11's box closes on p. 296
+  with "dunkelblaue Pelze, Dollmanns und Hosen", and "kornblumenblaue" closes Palatinal Nr. 12's on p. 297; the record is corrected to
+  dark blue, A (`docs/stage6-evidence/second-reading.md`). Decision 189's human reading of it remains.
 
 **196. A formation waiting at its anchor is graded by the next phase's grade (`confAt`).** Since K8 gqg@0 is B, but from 11:15 (phase 6)
 to 12:00, while the headquarters waits at the Zuran point before gqg@6's departure, `confAt` takes phase 6's grade, A, and draws the crisp
@@ -164,4 +182,82 @@ around Napoleon's command post"; guard_cav@0 has no act), which K8 grades B; the
 dawn place (`stutterheim1806de.p42.reserve-turas`); Coignet has the Guard formed behind the Emperor (`coignet1909.p121-123.guard-followed`);
 Savary makes the Guard infantry Lannes's natural reserve (1 December).
 - *Options.* (a) Keep A. (b) B for both, as gqg@0 under decision 160, measured on a full check:visual.
-- *Recommendation.* (b), measured. *Default.* (a). *Status.* The default is the repository's state.
+- *Recommendation.* (b), measured. *Default.* (a). *Status.* The decision applied in roadmap step 4b (`511f5e5`), measured on a full
+  check:visual (`CHANGELOG.md`).
+
+## Roadmap step 4b: the owner questions (198-)
+
+**Decided, 17 October 2026.** The owner wrote: "questions 198-201, lets go with your recommendations, then include that in PR 53". Each is
+decided as its *Recommendation* reads, conditions included, and applied in roadmap step 4b (`CHANGELOG.md`); each *Status* line says how.
+Question 202, met in the review of those decisions' commits, is open, its default built.
+
+Choices decisions 1-197 do not settle, met while applying decisions 176-197 in step 4b; each with its options, a recommendation and the
+conservative default built meanwhile. The next owner decision after these is the number after the last.
+
+**198. Timing grade B's words for a leg the sources date but give differently (lang@1, prz@1).**
+- *Context.* Decision 176 (b) grades the II and III Columns' departures at 07:00 B, basis "source": the disposition and Przybyszewski's
+  report give seven, Schönhals half past seven and Buxhowden's report eight for the II Column. `TIMING_TEXT.B`, the sentence the dossier
+  shows while a leg graded B runs, reads "Timing given as approximate in this reconstruction's narrative, which cites no source for it."
+  (decision 41's grades): untrue of these two legs, which cite sources. Every other leg graded B is unsourced.
+- *Options.* (a) Keep B and `TIMING_TEXT` as they are. (b) Reword `TIMING_TEXT.B` to cover both uses, for instance "Timing approximate:
+  the sources read differ on it, or this reconstruction's narrative gives it without a source." (a guarded declaration; check:data).
+  (c) Grade the two legs A where a source dates the column's own departure (prz@1, its commander's report, as dok@1 is A beside
+  Schönhals's half past six), B with (b)'s words for lang@1.
+- *Recommendation.* (b): the words then say what B means in both uses, and no grade moves. *Default.* (a), as built.
+- *Status.* Decided (b) on 17 October 2026; applied: `TIMING_TEXT.B` reworded as above (`CHANGELOG.md`).
+
+**199. `narrow-1024`'s drop limit for question 177 (b).**
+- *Context.* Decision 177 recommended (b), Friant retimed to Davout's hours, if `opening-2` and the cases at 500-570 measure within
+  their limits. Built in full and measured in step 4b: `opening-2` unchanged, seven cases within their limits, but `narrow-1024` (09:30,
+  1024 x 768) drops 7 labels against its limit 6: Bourcier's name gives way to the retaken village's event label, which (b) puts at 09:30.
+  The fallback (a) is built. The limit is the 3C layer's in the 3D framing (decision 62); it is not an opening case (decision 121).
+- *Options.* (a) Keep the limit; (a) of 177 stands. (b) Move `DROP_LIMIT["narrow-1024"]` to 7 for this one cause and apply 177 (b),
+  measured again on a full check:visual (the patch is recorded in `CHANGELOG.md`, step 4b).
+- *Recommendation.* (b): the sources' hours for Friant's march and Telnitz retaken (Davout's report graded A) are worth one name dropped at
+  the 1024 px layout, where the dropped name stays reachable by hover and keyboard. *Default.* (a), as built.
+- *Status.* Decided (b) on 17 October 2026; applied: the limit 7 and 177 (b) on the current tree (`CHANGELOG.md`); its measure on the
+  step's final full check:visual is recorded in `CHANGELOG.md` (step 4b, the final checks).
+
+**200. Question 195 applied on a machine reading.**
+- *Context.* 195 (a), decided: keep the Szekler record "until the 1805 page is read with its neighbours (the first item of question 189's
+  human reading)". In step 4b the page was read with its neighbours on its images by a machine reader (the Szekler box closes "dunkelblaue";
+  "kornblumenblaue" is Palatinal Nr. 12's), and the record was corrected to dark blue, grade A.
+- *Options.* (a) Keep the correction (built). (b) Restore the cornflower record with its doubt until 189's human reading confirms the page.
+- *Recommendation.* (a): the page is legible on its images and its text layer agrees, and keeping a value shown to be another regiment's
+  at grade A "fact" would keep a known error; 189's human reading can still confirm it. *Default.* (a), as built.
+- *Status.* Decided (a) on 17 October 2026: the correction stands.
+
+**201. The events whose hour the readings dispute, after question 193.**
+- *Context.* Question 193 (b) lowered the timing grades of eight events; six of them (counter-march, telnitz, sokolnitz, pratzeberg,
+  sokolnitz-falls, augezd) for hours the readings give differently, and davout-resumes for Mikhailovsky-Danilevsky's one o'clock against the
+  map's 12:30. Their claims stay "fact" and they carry no `dispute`, so the dossier shows the disagreement only as "Timing B". Question 193
+  asked for the grades only. Two of their whys rest on no reading: Kutuzov ordering the 4th Column to face about (face-about); Langeron
+  pushed back on Sokolnitz from the west (davout-resumes). Face-about's phase line ("c. 09:15") and davout-resumes's ("c. 12:30") do not say
+  the hour is the map's.
+- *Options.* (a) Keep the claims and texts (built). (b) Make each event whose hour the readings dispute "disputed" with a `dispute` naming
+  both hours (as telnitz-retaken and end are), each measured where the event is live at a harness case (a disputed event's map label gains
+  "hour disputed"). (c) (b) for the texts only (the dispute in the why and phase lines, no claim change, no label note).
+- *Recommendation.* (b) where the cases measure unchanged, else (c); the two unread whys checked or labelled this map's in the same task.
+  *Default.* (a), as built.
+- *Status.* Decided (b) on 17 October 2026; applied: seven events made "disputed" with their disputes, the two whys labelled
+  this map's (and, after the review, their other copies: two phase lines, two acts and the Command row, now INFERRED); measured on the
+  seven cases where they are live against the 199 build: no difference, so (b) stands for every event (`CHANGELOG.md`).
+
+**202. Bourcier's dragoons after question 177 (b).**
+- *Context.* Decision 177 (b) retimed Friant's division to Davout's hours: off from Raigern at 05:00, its leading brigade at the Goldbach
+  about 09:00 (phase 3), Telnitz retaken at 09:30. Bourcier's dragoons (`FORMATIONS.bourcier`) were not named in 177: their track still
+  reaches its screen south of Telnitz ([184,420], "Screens the ground south of Telnitz") at phase 2, 08:00, an undated creep from Raigern
+  at 04:00, so on the map they leave Raigern an hour before Davout's 05:00 and stand south of Telnitz about an hour before Friant's infantry
+  reaches the stream; the Allied headquarters' reading has them "uncertain" from phase 2 (`KNOW_OVERRIDE.al.bourcier`), as Friant was
+  "seen" from phase 2 until the review moved his to phase 3. Mikhailovsky-Danilevsky has Davout come from Raigern "with Friant's infantry
+  division and Bourcier's cavalry" after Kienmayer had taken Telnitz (pp. 178-179, `md1844.p178-179.davout-telnitz`, grade B, fact; no
+  hour); no reading read gives Bourcier's own hour or place.
+- *Options.* (a) Keep the track and the reading as they are (built). (b) March Bourcier with Friant, as Mikhailovsky-Danilevsky has it:
+  the screen's anchor re-keyed from phase 2 to phase 3, its leg dated as Friant's (`tm {dep:300, gr:"B", basis:"source"}`, the departure
+  Davout's for the division he brought), `KNOW_OVERRIDE.al.bourcier` "uncertain" from phase 3; measured where Bourcier is drawn
+  (`narrow-1024`, whose drop at 09:30 is his name, and the cases at 07:00-09:30), applied only within their limits. (c) (b) without the
+  date: the anchor re-keyed to phase 3, the leg still undated.
+- *Recommendation.* (b): the one reading that names the dragoons puts them in Friant's march, and Davout's hour for that march is in the
+  map since 177 (b); the screen's place is kept, being undated in any reading. *Default.* (a), as built.
+- *Status.* Open; the default built.
+
