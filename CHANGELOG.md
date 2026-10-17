@@ -1,5 +1,37 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 4b, part B: questions 202, 187 and 196 applied; decision 189 recorded complete
+
+**Status: in progress on `claude/adoring-gauss-ubfas9` (PR #54, to come).** The owner wrote (17 October 2026): "Let's do all remaining
+questions, your recommendations for all here. 202 and 203, as well as any other ones we can do now. That means Q202, Q187 and 196, and also
+mark Decision 189 as complete. Then merge through a separate PR, meaning PR 54." Question 203 did not exist yet: this part records it (below).
+For 187, whose record names its four parts but not their words or layout, the owner chose on being asked "Index + tags": (i) the claims in
+CLAIM_WORDS's words, the event pill, the Command tab and the position text keeping their own keys but taking CLAIM_WORDS's wording where two
+say the same thing; (ii) the index in the sources sheet only, measured; (iii) the framing statements "interpretation" by class; (iv) the
+dossier's statements tagged with their claims, "Not yet checked" where they have none; the drawer button to the owner as question 203.
+
+**The commits.**
+- (this commit) Question 202 (b): Bourcier's dragoons march with Friant.
+
+**Question 202 (b): Bourcier's dragoons march with Friant.** As recommended: (b), measured. Mikhailovsky-Danilevsky has Davout come from
+Raigern "with Friant's infantry division and Bourcier's cavalry" after Kienmayer had taken Telnitz (pp. 178-179, `md1844.p178-179.davout-telnitz`,
+grade B, fact, read on page images); no reading gives the dragoons' own hour or place.
+- `FORMATIONS.bourcier.track`: the screen's anchor was `2:{p:[184,420], st:"holding", obj:"Cover the right of the Goldbach line", act:"Screens
+  the ground south of Telnitz"}` (reached at 08:00 by an undated creep from Raigern at 04:00); is keyed 3, the same place, status and
+  objective, with `tm {dep:300, gr:"B", basis:"source"}` (Davout's 05:00 for the division he brought; his report of 26 December has half
+  past five to six, Sokolov about six) and the act "Up from Raigern with Friant's division, as Mikhailovsky-Danilevsky has Davout come; the
+  screen south of Telnitz is this map's". The leg runs 05:00-08:45 (its arrival the phase's start, no arrival derived), so the dragoons reach
+  the screen as Friant's leading brigade nears the Goldbach (about 09:00).
+- `KNOW_OVERRIDE.al.bourcier`: was `[[0,"unknown"],[2,"uncertain"]]`; is `[[0,"unknown"],[3,"uncertain"]]`, as Friant's "seen" moved to
+  phase 3 in part A.
+- `STATEMENT_CLAIMS`: the new act "attributed" (`md1844.p178-179.davout-telnitz`), its note saying the screen is this map's.
+- redteam.js's acknowledged warning "cavalry mean rate ... is not above infantry 1.28": the cavalry mean is 0.83 (was 0.82), one of the
+  cavalry's undated creeping legs (decision 45) now dated; the reason extended. Not an assertion: a warning acknowledged by its exact text.
+- Measured with `harness.js --only` on the cases where the dragoons' place or the Allied reading of them differs (`close-sokolnitz`,
+  `paper-close`, `opening-2`, `eye-zuran`, `eye-zuran-1x`, `narrow-1024`) against the final part-A run: no difference in drops, dropped ids,
+  unobstructed fractions or timeline height. check:chronology: 0 errors (bourcier@3 05:00-08:45, B, source; its evidence the act).
+- check:data's changed declarations: `FORMATIONS`, `KNOW_OVERRIDE`, `STATEMENT_CLAIMS`.
+
 ## 2026-10 · Roadmap step 4b, part A: owner decisions 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 taken up
 
 **Status: done on `claude/adoring-gauss-ubfas9` (draft PR #53), for review, with the owner's decisions 198-201. The build changed:

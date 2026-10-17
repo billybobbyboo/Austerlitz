@@ -129,7 +129,8 @@ var KNOW_OVERRIDE = {
   /* roadmap step 4b (decision 177 (b)): Friant reaches the Goldbach about 09:00, phase 3, in Stutterheim and the Moniteur's remarks;
      "seen" from phase 3 follows the march, as "seen" from phase 2 followed its earlier c. 08:00 arrival */
   friant:   [[0,"unknown"],[3,"seen"]],
-  bourcier: [[0,"unknown"],[2,"uncertain"]],
+  /* roadmap step 4b, question 202 (b): Bourcier marches with Friant from Raigern, his screen reached in phase 3 */
+  bourcier: [[0,"unknown"],[3,"uncertain"]],
   c_gren:   [[0,"unknown"],[7,"seen"]],
   heightguns:[[0,"unknown"],[8,"seen"]]
  },

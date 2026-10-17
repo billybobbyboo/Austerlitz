@@ -34,6 +34,8 @@ var STATEMENT_CLAIMS = {
       {src:"kutuzov1951", at:"pp. 255-258", rd:"kutuzov1951.p255-258.relation"},
       {src:"kutuzov1951", at:"p. 265", rd:"kutuzov1951.p265.private-relation"}],
     note:"No account read has Kutuzov order the 4th Column to face about; the order is this map's reading, the three accounts on Kamensky's turn attributed in the text."},
+  "FORMATIONS.bourcier.track[\"3\"].act": {h:"ef45d62b77ef", cl:"attributed", by:[{src:"mikhailovsky1844", at:"pp. 178-179", rd:"md1844.p178-179.davout-telnitz"}],
+    note:"Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry; no reading gives the dragoons' own place, so the screen is this map's."},
   "EVENTS[#telnitz].dispute": {h:"bf5ca2cd0451", cl:"disputed", by:[{src:"savary1828", at:"t. II, pp. 204-207", rd:"savary1828.p204-207", side:"the Russians debouching on Legrand about seven"},
       {src:"schoenhals1873", at:"pp. 157-159", rd:"schoenhals1873.p157-159.departure", side:"the left wing off at half past six"},
       {src:"stutterheim1806de", at:"pp. 49-52", rd:"stut1806de.p49-52.telnitz", side:"the hussars forward to reconnoitre between seven and eight"},
