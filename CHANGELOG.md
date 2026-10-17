@@ -17,7 +17,30 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 - `da16e48`: question 184, Kienmayer's working figure Schönhals's 6,340; Legrand's brigadiers the readings'.
 - `a31162b`: question 195, the Szekler hussars' 1805 page read on its images; the record corrected to dark blue.
 - `511f5e5`: question 197, the Guard's dawn grades B.
-- (this commit) The review of the strengths-and-grades group, fixed; question 200 recorded.
+- `2b21ecc`: the review of the strengths-and-grades group, fixed; question 200 recorded.
+- (this commit) Question 191: Turas moved to the address register's point for Tuřany.
+
+**Question 191: Turas moved to Tuřany.** As recommended: Turas moved, measured; Krug, Bellowitz and the Posoritz post house kept; rg_cav a
+note (in the build since step 4's K11: its strengthNote names Kologrivov's single source and Maliutin's separate column). The
+identification is printed (Wolny's Moravian topography, 1836, p. 239: "Turas (Tuřany)", `wolny1836.p239.turas`); the position is the Czech
+address register's (RÚIAN definition point of the part of Brno Tuřany, kód 12173: 49.147242 N, 16.662997 E, `cuzk2026.ruian-geonames`,
+read on the register's text, grade C as the register entry gives it), whose points for five other villages agree with `GEOREF.GT` within
+0.5 map units (the same reading). As the source skeptic required (proposals C6.p20), the point goes into `GEOREF.GT` and the village reads
+it, rather than a new literal: no new scale constant, the transform unchanged.
+- `GEOREF.GT.turas` (geo.js): was (none); is `{n:"Turas", cz:"Tuřany", lat:49.147242, lon:16.662997, kind:"v", note}` (map [44.2, 293.8], by
+  `toMap`). Not one of the transform's fitted villages; geo-test's checks over every GT point (round trip, bearings of every pair 2 km or
+  more apart, every surveyed village within 0.5 km of its drawn place) pass, 59 of 59.
+- `VILLAGES` (world.js): `["Turas",89,372,5]` (its warped legacy place) is `["Turas",44,294,5]`, 2.85 km north-north-west (bearing 348
+  degrees true); the comment no longer names Turas among the places not in the register. The settlement cover the ground draws around a
+  village moves with it.
+- `SOURCE_NOTE.body[4]`: was "Villages are placed from the Czech municipality register and summits from terrain-model data; the map keeps
+  ..."; is "Villages are placed from the Czech municipality register, Turas, which it does not list, at the Czech address register's point for
+  Tuřany, the name Wolny's topography of 1836 gives it, and summits from terrain-model data; the map keeps ..."; unchecked.
+- `SOURCE_NOTE.body[5]`: the open question "the true position of Turas (it is Tuřany in Wolny's topography of 1836, and the Czech register
+  places it about 2.8 km north-north-west of where this map draws it);" is removed; unchecked.
+- *Measured*: Turas's name and village are drawn in the views that show the field's west; it is measured on the step's final full
+  check:visual, compared with the strengths-and-grades run (below). A limit it moved would return it to its place (191's "measured").
+- check:data's changed declarations in this commit: `GEOREF`, `VILLAGES`, `SOURCE_NOTE`. Checks: test.js, geo-test.js, redteam.js pass.
 
 **The review of `da16e48`, `a31162b` and `511f5e5` (strengths and grades; an independent reviewer, read-only; fixed in the next
 commit).** It ran test.js and redteam.js (clean) and fetched the 1805 pages itself (views 295-298, their text layer): the Szekler box closes

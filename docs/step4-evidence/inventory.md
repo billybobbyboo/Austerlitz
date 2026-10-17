@@ -634,7 +634,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `SOURCE_NOTE.body[1]` | data.js:770 | Every formation marker therefore carries a confidence grade. A means the position is documented; B means the sector is documented but the f… | unchecked |  |
 | `SOURCE_NOTE.body[2]` | data.js:771 | Strengths are the hardest figures of all. The Allied column organisation split and intermingled regiments, and reputable orders of battle d… | unchecked |  |
 | `SOURCE_NOTE.body[3]` | data.js:772 | Terrain relief is exaggerated about {EXAG} times: one map unit is {M_PER_UNIT} m on the ground, and heights follow a separate vertical scal… | unchecked |  |
-| `SOURCE_NOTE.body[4]` | data.js:773 | Villages are placed from the Czech municipality register and summits from terrain-model data; the map keeps its historical frame, which lie… | unchecked |  |
+| `SOURCE_NOTE.body[4]` | data.js:773 | Villages are placed from the Czech municipality register, Turas, which it does not list, at the Czech address register's point for Tuřany, … | unchecked |  |
 | `SOURCE_NOTE.body[5]` | data.js:774 | Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whet… | unchecked |  |
 | `SOURCE_NOTE.body[6]` | data.js:775 | Two figures on the situation line are computed from the plotted reconstruction rather than taken from a source. The holding on the heights … | unchecked |  |
 | `SOURCE_NOTE.layers[0]` | data.js:777 | Historical record / What the sources attest: who was there, roughly how many, which villages were attacked and when. Marked as fact in an e… | unchecked |  |
