@@ -3396,7 +3396,10 @@ function paintChapterText(){
 }
 /* the Command tab's source tags (analysis.js COMMAND rows): roadmap step 2 (H-7) adds "anec", a memoir anecdote whose teller the row names,
    graded as the event that tells it (claim est, "A memoir anecdote"); any other kind is drawn as INFERRED, as before */
-var SRC_LABEL={doc:"DOCUMENTED",inf:"INFERRED",anec:"ANECDOTE"};
+/* decision 187 (i), roadmap step 4b part B: one vocabulary; "inf" says what CLAIM_WORDS.interpretation says, so it takes its word (was
+   "INFERRED"); "doc" and "anec" say more or less than "Read in a source" and "As a source tells it" (no Command row is checked against a
+   reading by them), so they keep theirs */
+var SRC_LABEL={doc:"DOCUMENTED",inf:"THIS MAP'S READING",anec:"ANECDOTE"};
 function srcKind(k){ return SRC_LABEL.hasOwnProperty(k)?k:"inf"; }
 function paintCommand(){
   var host=document.getElementById("cmdbody");
@@ -6495,8 +6498,8 @@ function dossierFormation(id){
   wrap.appendChild(el("div","pillrow",pills));
 
   /* WHO */
-  var who=row("Commander", esc(f.commander||"—"));
-  if(f.staff) who+=row("Composition", esc(f.staff));
+  var who=row("Commander", f.commander?esc(f.commander)+claimTag("FORMATIONS."+id+".commander"):"—");
+  if(f.staff) who+=row("Composition", esc(f.staff)+claimTag("FORMATIONS."+id+".staff"));
   if(f.parent) who+=row("Higher formation",
     '<button class="linkb" data-goto="'+esc(f.parent)+'">'+esc(FORMATIONS[f.parent].name)+'</button>');
   who+=row("Arm", esc({inf:"Infantry",cav:"Cavalry",art:"Artillery",mixed:"Infantry and cavalry",
@@ -6508,7 +6511,7 @@ function dossierFormation(id){
   var str=f.strength||aggStrength(id);
   var many = str ? row("Approximate strength","&asymp; "+str.toLocaleString()+" men") : row("Strength","Not recorded");
   if(f.guns) many+=row("Guns", esc(String(f.guns)));
-  if(f.strengthNote) many+=row("On the figures", esc(f.strengthNote));
+  if(f.strengthNote) many+=row("On the figures", esc(f.strengthNote)+claimTag("FORMATIONS."+id+".strengthNote"));
   wrap.appendChild(sect("How many",many,true,"record"));
   /* Stage 6C: what it wore, and how the figures draw it */
   var dsx=f.track?dressSection(id):null; if(dsx) wrap.appendChild(dsx);
@@ -6541,24 +6544,25 @@ function dossierFormation(id){
   if(f.track){
     var tp=textPhase(id,clock);
     var prev=tp>0?stateAt(id,tp-1):null;
-    var nx=wt?{i:curPhase,act:f.track[wt.ph].act||"Moves to its next position.",from:wt.w[0]}:nextChange(id,curPhase);
+    var nx=wt?{i:curPhase,act:f.track[wt.ph].act||"Moves to its next position.",from:wt.w[0],ref:f.track[wt.ph].act?trackRef(id,wt.ph,"act"):null}:nextChange(id,curPhase);
+    if(nx&&!wt&&nx.ref===undefined) nx.ref=f.track[nx.i]&&f.track[nx.i].act===nx.act?trackRef(id,nx.i,"act"):null;
     var h='<ol class="tl">';
     h+='<li class="past"><b>'+(prev&&prev.act?esc(PHASES[Math.max(0,tp-1)].clock):"—")+'</b><span>'+
-        (prev&&prev.act?esc(prev.act):"No earlier action recorded.")+'</span></li>';
+        (prev&&prev.act?esc(prev.act)+claimTag(trackRef(id,prev.actPhase,"act")):"No earlier action recorded.")+'</span></li>';
     h+='<li class="now"><b>'+esc(PHASES[curPhase].clock)+'</b><span>'+
-        (s&&s.act?esc(s.act):"Position unchanged.")+
+        (s&&s.act?esc(s.act)+claimTag(trackRef(id,s.actPhase,"act")):"Position unchanged.")+
         (s&&s.act&&s.actPhase<curPhase?' <i>(continuing from '+esc(PHASES[s.actPhase].clock)+')</i>':'')+'</span></li>';
     h+='<li class="next"><b>'+(nx?(nx.from!==undefined?"From "+esc(fmtClock(nx.from)):esc(PHASES[nx.i].clock)):"—")+'</b><span>'+
-        (nx?esc(nx.act):"No further change recorded in this reconstruction.")+'</span></li>';
+        (nx?esc(nx.act)+(nx.ref?claimTag(nx.ref):""):"No further change recorded in this reconstruction.")+'</span></li>';
     h+='</ol>';
-    wrap.appendChild(sect("What it was doing",h,false,"recon"));
+    wrap.appendChild(sect("What it was doing",h,false));   /* decision 187 (iv): its statements carry their claims; the section's "reconstruction" tag gone */
   }
 
   /* WHY */
   var why='';
-  if(s&&s.obj) why+=row("Objective", esc(s.obj));
-  if(f.role) why+=row("Role in the battle", esc(f.role));
-  if(why) wrap.appendChild(sect("Why it was there",why,true,"record"));
+  if(s&&s.obj) why+=row("Objective", esc(s.obj)+claimTag(trackRef(id,objPhaseOf(id,textPhase(id,clock)),"obj")));
+  if(f.role) why+=row("Role in the battle", esc(f.role)+claimTag("FORMATIONS."+id+".role"));
+  if(why) wrap.appendChild(sect("Why it was there",why,true));   /* decision 187 (iv): its statements carry their claims; the section's "record" tag gone */
 
   /* the event it is part of at this moment */
   var mine=liveEvents(clock).filter(function(x){ return x.e.forms.indexOf(id)>=0; });
@@ -6578,7 +6582,7 @@ function dossierFormation(id){
   /* OUTCOME */
   var oc=f.track?outcomeOf(id):null;
   if(oc) wrap.appendChild(sect("What became of it",
-    '<p class="prose">'+esc(oc.act)+'</p><p class="hh">Last recorded at '+esc(PHASES[oc.ph].clock)+'</p>',false));
+    '<p class="prose">'+esc(oc.act)+(FORMATIONS[id].track[oc.ph].act===oc.act?claimTag(trackRef(id,oc.ph,"act")):"")+'</p><p class="hh">Last recorded at '+esc(PHASES[oc.ph].clock)+'</p>',false));
 
   /* subordinates */
   if(f.children&&f.children.length){
@@ -6594,7 +6598,7 @@ function dossierFormation(id){
     wrap.appendChild(sc);
   }
 
-  if(f.note) wrap.appendChild(el("p","note",esc(f.note)));
+  if(f.note) wrap.appendChild(el("p","note",esc(f.note)+claimTag("FORMATIONS."+id+".note")));
   var pk=posClaimOf(id,cf);   /* roadmap step 4 (the review of b2fc7b5): under "Position: interpolated" the grade's "documented in the sources" is not said */
   wrap.appendChild(el("p","conf",(cl!==CLAIM_FROM_CONF[cf]?esc(CLAIM[cl].note)+" ":"")+(pk==="interp"?"":esc(CONF_TEXT[cf]||""))+(aggInterp(id,curPhase)?(pk==="interp"?"":" ")+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));   /* decision 128 (a): the position's grade text; CLAIM's note only where a track entry names its own claim (heightguns@8-9, where the entry's claim "recon" differs from its grade B), which is that entry's hedge */
 
@@ -6630,6 +6634,20 @@ function posClaimOf(id,cf){
   return (k==="fact"&&aggInterp(id,curPhase))?"interp":k;
 }
 function posClaimPill(cl){ return '<span class="pill claim-'+cl+'">'+iconSVG(TOKENS.sym.claim[cl])+esc(POS_CLAIM[cl]||CLAIM[cl].label)+'</span>'; }
+/* decision 187 (roadmap step 4b part B): a narrative statement's claim, by its ref (tools/step4/statements.js's): its own STATEMENT_CLAIMS
+   entry, else its class's (CLAIM_BY_CLASS, the framing statements, (iii)), else "unchecked"; and its tag, CLAIM_WORDS's word, the one
+   vocabulary (i). The formation dossier's statements carry their tags, (iv); the sources sheet's index lists them, (ii) */
+var _claimClassRe=null;
+function stmtClaim(ref){
+  if(Object.prototype.hasOwnProperty.call(STATEMENT_CLAIMS,ref)) return {cl:STATEMENT_CLAIMS[ref].cl, own:true};
+  if(!_claimClassRe) _claimClassRe=Object.keys(CLAIM_BY_CLASS).map(function(k){ return {k:k, re:new RegExp(CLAIM_BY_CLASS[k].re), cl:CLAIM_BY_CLASS[k].cl}; });
+  for(var i=0;i<_claimClassRe.length;i++) if(_claimClassRe[i].re.test(ref)) return {cl:_claimClassRe[i].cl, cls:_claimClassRe[i].k};
+  return {cl:"unchecked"};
+}
+function claimTag(ref){ var c=stmtClaim(ref);
+  return ' <span class="ltag claim" data-claim="'+esc(c.cl)+'" data-ref=\''+esc(ref)+'\'>'+esc(CLAIM_WORDS[c.cl].w)+'</span>'; }
+function trackRef(id,ph,field){ return 'FORMATIONS.'+id+'.track["'+ph+'"].'+field; }
+function objPhaseOf(id,ph){ var t=FORMATIONS[id].track; for(var i=ph;i>=0;i--) if(t[i]&&t[i].obj) return i; return -1; }
 function sect(title,html,isDl,layer){
   var d=el("div","sect");
   d.innerHTML='<h3>'+esc(title)+(layer?' <span class="ltag '+layer+'">'+iconSVG(TOKENS.sym.layer[layer])+esc(LAYER_TAG[layer])+'</span>':'')+'</h3>'+
@@ -6958,6 +6976,48 @@ function geoText(p){
   return String(p).replace(/\{EXAG\}/g,fmtFactor(DISPLAY.factor)).replace(/\{M_PER_UNIT\}/g,(GEOREF.KM_PER_MAP*1000).toFixed(0))
     .replace(/\{ROT\}/g,GEOREF.ROT_DEG.toFixed(0)).replace(/\{CONTOUR_M\}/g,(CONTOUR_INTERVAL*GEOREF.V_M_PER_UNIT).toFixed(0));
 }
+/* decision 187 (ii), roadmap step 4b part B: the index of the statements' claims in the sources sheet. Each claim word of CLAIM_WORDS
+   with its definition and the statements that carry it (where each is, and the works it rests on); the framing statements by class
+   (CLAIM_BY_CLASS) counted, not listed; "Not yet checked" said of the rest, which carry no entry. Read from narrative.js alone */
+function refLabel(ref){ var m;
+  var byId=function(A,id){ for(var i=0;i<A.length;i++) if(A[i].id===id) return A[i]; return null; };
+  if((m=/^EVENTS\[#([\w-]+)\]\.(\w+)/.exec(ref))){ var e=byId(EVENTS,m[1]); return e?"Event \u201c"+e.n+"\u201d"+({why:", why it matters",dispute:", its dispute",n:""}[m[2]]||""):null; }
+  if((m=/^PHASES\[#(\d+)\]\.(\w+)(?:\[(\d+)\])?/.exec(ref))){ var P=PHASES[+m[1]]; if(!P) return null;
+    return "Phase \u201c"+P.title+"\u201d"+(m[2]==="events"&&P.events[+m[3]]?", the line at "+P.events[+m[3]][0]:m[2]==="lede"?", its opening":m[2]==="flash"?", its flash":""); }
+  if((m=/^FORMATIONS\.(\w+)\.track\["(\d+)"\]\.(\w+)/.exec(ref))){ var F=FORMATIONS[m[1]], Q=PHASES[+m[2]]; if(!F||!Q) return null;
+    return F.name+", "+Q.clock+(m[3]==="obj"?", its objective":m[3]==="act"?"":", its timing"); }
+  if((m=/^FORMATIONS\.(\w+)\.(\w+)/.exec(ref))){ var G=FORMATIONS[m[1]]; if(!G) return null;
+    return G.name+({commander:", its commander",staff:", its composition",role:", its role",note:", its note",strengthNote:", its figures",desig:", its designation",mixedNote:", its arms",army:", its army"}[m[2]]||""); }
+  if((m=/^FEATURES\[#(\w+)\]/.exec(ref))){ var T=byId(FEATURES,m[1]); return T?T.name:null; }
+  if((m=/^ANALYSIS\[#(\w+)\]/.exec(ref))){ var A=byId(ANALYSIS,m[1]); return A?"Theme \u201c"+A.n+"\u201d":null; }
+  if((m=/^TOUR\[(\d+)\]/.exec(ref))) return TOUR[+m[1]]?"Tour stop "+(+m[1]+1)+", \u201c"+TOUR[+m[1]].n+"\u201d":null;
+  if((m=/^ACTS\[#(\w+)\]/.exec(ref))){ var C=byId(ACTS,m[1]); return C?"Act \u201c"+C.n+"\u201d":null; }
+  if((m=/^COMMAND\.(fr|al)\["(\d+)"\]/.exec(ref))) return PHASES[+m[2]]?"Command, "+(m[1]==="fr"?"the French":"the Allied")+" headquarters, "+PHASES[+m[2]].clock:null;
+  if((m=/^PLANS\.(fr|al)\./.exec(ref))) return m[1]==="fr"?"The French plan":"The Allied plan";
+  if(/^SOURCE_NOTE\./.test(ref)) return "This sheet";
+  return null;
+}
+function claimsIndex(){
+  var K=["fact","attributed","disputed","derived","interpretation","uncertain","design"], by={}, cls={};
+  Object.keys(STATEMENT_CLAIMS).forEach(function(r){ var c=STATEMENT_CLAIMS[r].cl; (by[c]=by[c]||[]).push(r); });
+  var h='<p>'+esc("Each statement of this map's narrative can carry a claim: what kind of statement it is, checked against the works read here (above). "+
+    "The claims are listed below by kind, with where each statement is and the works it rests on; a statement without one is not yet checked.")+'</p><ul class="bul claims-index">';
+  K.forEach(function(k){ var W=CLAIM_WORDS[k], L=(by[k]||[]).slice();
+    var byCls=Object.keys(CLAIM_BY_CLASS).filter(function(c){ return CLAIM_BY_CLASS[c].cl===k; });
+    if(!L.length&&!byCls.length) return;
+    h+='<li><b>'+esc(W.w)+'</b> \u2014 '+esc(W.d)+(L.length?' '+esc("("+L.length+(L.length===1?" statement":" statements")+")"):"");
+    if(byCls.length) h+='<br>'+esc("By class: every "+byCls.map(function(c){ return c+" ("+CLAIM_BY_CLASS[c].why+")"; }).join("; every ")+", unless it carries a claim of its own.");
+    if(L.length){
+      L=L.map(function(r){ return {r:r, t:refLabel(r)||r}; }).sort(function(a,b){ return a.t<b.t?-1:a.t>b.t?1:0; });
+      h+='<details><summary>'+esc("The "+L.length+(L.length===1?" statement":" statements"))+'</summary><ul class="bul">'+L.map(function(x){
+        var c=STATEMENT_CLAIMS[x.r], ws=[];
+        (c.by||[]).forEach(function(b){ var S=APPEARANCE_SOURCES[b.src]; var w=(S?S.au:b.src)+(b.at?", "+b.at:""); if(ws.indexOf(w)<0) ws.push(w); });
+        return '<li>'+esc(x.t)+(ws.length?' <span class="hh">'+esc("("+ws.join("; ")+")")+'</span>':'')+'</li>'; }).join('')+'</ul></details>';
+    }
+    h+='</li>'; });
+  h+='<li><b>'+esc(CLAIM_WORDS.unchecked.w)+'</b> \u2014 '+esc(CLAIM_WORDS.unchecked.d)+' '+esc("Every other statement.")+'</li></ul>';
+  return h;
+}
 function openSources(o){
   var m=document.getElementById("modal");
   var b=document.getElementById("modal-body"), was=!!(m.classList&&m.classList.contains("on")), sc=(b.closest&&b.closest(".sheet"))||b, top=sc.scrollTop||0;
@@ -7003,6 +7063,7 @@ function openSources(o){
     '<h3>How the standards are drawn</h3><ul class="bul">'+standardNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
     '<h3>The works read here (for the appearance table and the statements\' claims)</h3><ul class="bul">'+Object.keys(APPEARANCE_SOURCES).map(function(k){ var S=APPEARANCE_SOURCES[k];
       return '<li>'+esc(S.au+", "+S.ti+" ("+S.pub+", "+S.d+")")+'</li>'; }).join('')+'</ul>'+
+    '<h3>The statements\' claims</h3>'+claimsIndex()+
     '<h3>How the light is drawn</h3><ul class="bul">'+lightNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>';
   m.dataset.sources="1";
   m.classList.add("on");

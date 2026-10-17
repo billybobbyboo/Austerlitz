@@ -567,6 +567,40 @@ try{
       Object.keys(byCl).map(k=>k+" "+byCl[k]).join(", ")+"), none CLAIM's; over 85 clocks posClaimOf agrees for "+nO+" formation-samples, "+
       nI+" of "+nS+" leaf samples interpolated between documented anchors (\"Position: interpolated\") OK"); }
 
+  /* decision 187 (roadmap step 4b part B): the claims on screen. In every formation's dossier at five clocks each claim tag names a live
+     narrative statement (tools/step4/statements.js), its claim the statement's own (STATEMENT_CLAIMS), else its class's (CLAIM_BY_CLASS),
+     else "unchecked", in CLAIM_WORDS's word; the commander, the composition, the figures' note, the role, the note, the act now and the
+     objective, where shown, each carry theirs; the sections of statements alone ("What it was doing", "Why it was there") carry no
+     section tag. Every narrative statement has a place in the index's words (refLabel), every claimed one is listed in the sources sheet's
+     index, and each claim word there with its count */
+  { const ST=require('./tools/step4/statements.js').statements(__dirname), live=new Set(ST.map(s=>s.ref)), mk=document.createElement, bad=[], byCl={};
+    const KC=Object.keys(CLAIM_BY_CLASS).map(k=>[new RegExp(CLAIM_BY_CLASS[k].re),CLAIM_BY_CLASS[k].cl]);
+    const want=r=>Object.prototype.hasOwnProperty.call(STATEMENT_CLAIMS,r)?STATEMENT_CLAIMS[r].cl:((KC.find(([re])=>re.test(r))||[0,"unchecked"])[1]);
+    let made=[], nT=0, nV=0;
+    try{ document.createElement=t=>{ const x=mk(t); made.push(x); return x; };
+      [T_MIN,525,600,700,880].forEach(t=>{ setClock(t);
+        Object.keys(FORMATIONS).forEach(id=>{ made=[]; dossierFormation(id); nV++; const f=FORMATIONS[id];
+          const h=made.map(x=>x.innerHTML||"").join("\n"), T=[...h.matchAll(/<span class="ltag claim" data-claim="(\w+)" data-ref='([^']+)'>([^<]*)<\/span>/g)], refs=T.map(m=>m[2]);
+          T.forEach(m=>{ nT++; byCl[m[1]]=(byCl[m[1]]||0)+1;
+            if(!live.has(m[2])) bad.push(id+" at "+fmtClock(t)+": a claim tag on "+m[2]+", not a narrative statement");
+            else if(m[1]!==want(m[2])) bad.push(id+" at "+fmtClock(t)+": "+m[2]+" tagged "+m[1]+", its claim is "+want(m[2]));
+            if(m[3]!==esc(CLAIM_WORDS[m[1]]?CLAIM_WORDS[m[1]].w:"?")) bad.push(id+": the tag on "+m[2]+" reads \""+m[3]+"\", not CLAIM_WORDS's word"); });
+          ["commander","staff","strengthNote","role","note"].forEach(k=>{ if(f[k]&&refs.indexOf("FORMATIONS."+id+"."+k)<0) bad.push(id+" at "+fmtClock(t)+": its "+k+" shown without its claim"); });
+          if(f.track){ const s=stateAt(id,textPhase(id,clock));
+            if(s&&s.act&&refs.indexOf('FORMATIONS.'+id+'.track["'+s.actPhase+'"].act')<0) bad.push(id+" at "+fmtClock(t)+": the act now shown without its claim");
+            if(s&&s.obj&&!refs.some(r=>/\.obj$/.test(r))) bad.push(id+" at "+fmtClock(t)+": the objective shown without its claim"); }
+          ["What it was doing","Why it was there"].forEach(n=>{ if(h.indexOf("<h3>"+n+" <span")>=0) bad.push(id+": \""+n+"\" still carries a section tag"); }); }); });
+    } finally { document.createElement=mk; }
+    const noLab=ST.filter(s=>!refLabel(s.ref)).map(s=>s.ref); if(noLab.length) bad.push(noLab.length+" statements without a place in the index's words: "+noLab.slice(0,5).join(", "));
+    const ix=claimsIndex(), cnt={};
+    Object.keys(STATEMENT_CLAIMS).forEach(r=>{ cnt[STATEMENT_CLAIMS[r].cl]=(cnt[STATEMENT_CLAIMS[r].cl]||0)+1; if(ix.indexOf('<li>'+esc(refLabel(r)||r))<0) bad.push("the index does not list "+r); });
+    Object.keys(cnt).forEach(k=>{ if(ix.indexOf('<b>'+esc(CLAIM_WORDS[k].w)+'</b> \u2014 '+esc(CLAIM_WORDS[k].d)+' '+esc("("+cnt[k]+(cnt[k]===1?" statement":" statements")+")"))<0) bad.push("the index's count for "+k+" is not "+cnt[k]); });
+    if(ix.indexOf('<b>'+esc(CLAIM_WORDS.unchecked.w)+'</b>')<0) bad.push("the index does not name the unchecked");
+    if(!byCl.unchecked||!byCl.interpretation||!nT) bad.push("claim tags: "+nT+" read, kinds "+JSON.stringify(byCl)+" (want the unchecked and the framing interpretation among them)");
+    if(bad.length) throw new Error("the claims on screen (decision 187): "+bad.slice(0,8).join("; ")+(bad.length>8?" (and "+(bad.length-8)+" more)":""));
+    console.log("the claims on screen (decision 187): "+nT+" claim tags in "+nV+" dossiers at five clocks, each its statement's claim in CLAIM_WORDS's word ("+
+      Object.keys(byCl).map(k=>k+" "+byCl[k]).join(", ")+"); every one of "+ST.length+" statements placed in the index's words, the "+Object.keys(STATEMENT_CLAIMS).length+" claimed listed with their counts OK"); }
+
   /* roadmap step 2 (docs/FINAL_AUDIT.md D-5): the sources sheet's notes read the appearance table and the computed sun, not typed values.
      Each value they name is changed in the table for one call and the note must follow it; the table is put back (and the kit's cache). The
      Austrian model is printed with its source and without a trailing parenthesis (its period claim, an inference in the reading) */

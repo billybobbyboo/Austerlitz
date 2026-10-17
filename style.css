@@ -546,7 +546,9 @@ body.pm-map #restore{display:block}
 /* layer tags on dossier sections, and the derived marker on the strip */
 .ltag{display:inline-block;font-size:var(--t-micro);letter-spacing:.07em;padding:1px 6px;border-radius:2px;
   margin-left:7px;vertical-align:2px;font-weight:400}
-.ltag.record,.ltag.recon,.ltag.derived{background:var(--plate);color:var(--plate-ink)}
+.ltag.record,.ltag.recon,.ltag.derived,.ltag.claim{background:var(--plate);color:var(--plate-ink)}
+/* decision 187 (iv): a statement's claim, after its text: never wrapped inside itself */
+.ltag.claim{white-space:nowrap}
 .tb-sit small{font-size:var(--t-micro);letter-spacing:.07em;color:var(--text-muted);margin-right:5px;
   border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px;vertical-align:1px}
 .dispatch::-webkit-scrollbar{width:6px}

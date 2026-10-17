@@ -17,7 +17,8 @@ var CLAIM = {
   fact:  {label:"Fact",          note:"Attested in the standard accounts of the battle."},
   est:   {label:"Estimate",      note:"The event is attested; the figure or frontage shown is an estimate."},
   recon: {label:"Reconstruction",note:"Inferred from the narrative. Treat as indicative, not as evidence."},
-  disputed:{label:"Disputed",    note:"The event is attested, but its hour, or the hour of part of it, is disputed: the accounts read disagree with each other or with this map's timing, or give none while this map's own texts differ; each is named, and the map keeps its timing."}
+  /* decision 187 (i), roadmap step 4b part B: one vocabulary; "disputed" says what CLAIM_WORDS.disputed says, so it takes its word (was "Disputed") */
+  disputed:{label:"The sources disagree", note:"The event is attested, but its hour, or the hour of part of it, is disputed: the accounts read disagree with each other or with this map's timing, or give none while this map's own texts differ; each is named, and the map keeps its timing."}
 };
 var CLAIM_FROM_CONF = {A:"fact", B:"est", C:"recon"};
 

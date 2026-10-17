@@ -408,6 +408,19 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
       if(new Set(sd.map(b=>b.side)).size<2||new Set(sd.map(b=>b.src)).size<2||new Set(sd.map(b=>b.rd)).size<2) cerr.push(at+": \"disputed\" without two sides, each read, from two sources"); }
     if(c.cl==="uncertain"&&!by.length) cerr.push(at+": \"uncertain\" names no search (the sources searched, each with its locator)");
     if(c.note!==undefined&&(typeof c.note!=="string"||!c.note||CLOCK.test(c.note))) cerr.push(at+": a note that is empty or carries a clock time (the hours are the tracks' timings): "+JSON.stringify(c.note)); });
+  /* decision 187 (iii), roadmap step 4b part B: the framing statements' claim by class. Every CLAIM_BY_CLASS entry ({re, cl, why}) names a
+     class of tools/step4/statements.js; its pattern matches exactly that class's refs (no more, no fewer); its claim is one that needs no
+     reading (never fact, attributed, disputed or uncertain, which test.js holds to readings); a statement with its own entry keeps it */
+  let nClass=0; const {CLASSES}=require('./tools/step4/statements.js'), CLN=new Set(CLASSES.map(c=>c[0]));
+  if(typeof CLAIM_BY_CLASS!=="object"||!CLAIM_BY_CLASS||Array.isArray(CLAIM_BY_CLASS)) cerr.push("CLAIM_BY_CLASS is not a table");
+  else Object.keys(CLAIM_BY_CLASS).forEach(k=>{ const r=CLAIM_BY_CLASS[k], at="CLAIM_BY_CLASS["+JSON.stringify(k)+"]";
+    if(!CLN.has(k)){ cerr.push(at+": not a class of tools/step4/statements.js"); return; }
+    if(!r||typeof r!=="object"||typeof r.re!=="string"||typeof r.cl!=="string"||KINDS.indexOf(r.cl)<0||r.cl==="unchecked"||typeof r.why!=="string"||!r.why){ cerr.push(at+": not {re, cl (a claim word), why}"); return; }
+    Object.keys(r).filter(x=>["re","cl","why"].indexOf(x)<0).forEach(x=>cerr.push(at+": unknown field \""+x+"\""));
+    if(["fact","attributed","disputed","uncertain"].indexOf(r.cl)>=0) cerr.push(at+": \""+r.cl+"\" rests on readings, statement by statement, never on a class");
+    let re=null; try{ re=new RegExp(r.re); }catch(e){ cerr.push(at+": its pattern does not compile"); return; }
+    S.forEach(s=>{ const m=re.test(s.ref); if(m!==(s.cls===k)) cerr.push(at+": its pattern "+(m?"matches":"misses")+" "+s.ref+" (of the class "+s.cls+")");
+      if(m&&!own(STATEMENT_CLAIMS,s.ref)){ nClass++; byKind[r.cl+" by class"]=(byKind[r.cl+" by class"]||0)+1; } }); });
   /* the inventory is the sources' (the review of c69890a: its check was in no suite); a failure to build it is reported, not thrown */
   let stale=[];
   try{ const INV=require('./tools/step4/inventory.js'), inv=INV.inventory('.');
@@ -416,8 +429,8 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   catch(e){ stale=["(the inventory could not be built: "+e.message+")"]; }
   if(stale.length) cerr.push("the inventory is out of date: "+stale.join(", ")+" (node tools/step4/inventory.js)");
   cerr.forEach(e=>errs.push("claims: "+e));
-  console.log("statement claims: "+S.length+" narrative statements, "+n+" with a claim ("+(Object.entries(byKind).map(([k,v])=>k+" "+v).join(", ")||"none")+
-    "), "+(S.length-n)+" unchecked; "+REG.size+" readings in the registers; the inventory "+(stale.length?"OUT OF DATE":"current")+(cerr.length?"; "+cerr.length+" errors":"")); }
+  console.log("statement claims: "+S.length+" narrative statements, "+n+" with a claim of their own, "+nClass+" by class ("+(Object.entries(byKind).map(([k,v])=>k+" "+v).join(", ")||"none")+
+    "), "+(S.length-n-nClass)+" unchecked; "+REG.size+" readings in the registers; the inventory "+(stale.length?"OUT OF DATE":"current")+(cerr.length?"; "+cerr.length+" errors":"")); }
 /* T-3 (docs/FINAL_AUDIT.md): a warning fails unless it is acknowledged here by its exact text, with the reason it stands and where that is
    recorded ({w, why, see}); an acknowledged warning that is no longer raised fails too, until its entry is removed. None today. */
 const KNOWN_WARN=[];
