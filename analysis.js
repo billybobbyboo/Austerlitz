@@ -100,7 +100,7 @@ al:{
  2:[["knew","doc","That the 4th Column was still on the plateau: Kutuzov was holding it back, and the Tsar rode up about 08:45 and ordered it forward (Russian Biographical Dictionary, 1903)."],
     ["knew","doc","That the villages on the stream were proving harder to take than expected."]],
  3:[["saw","doc","French infantry on the crest of the Pratzen, at close range, from the 4th Column's own position."],
-    ["ordered","doc","Kutuzov: the 4th Column to face about; part of the II Column recalled up the slope."]],
+    ["ordered","inf","Kutuzov: the 4th Column to face about; part of the II Column recalled up the slope. This map's reading: no account read has him order the column about, and who turned the II Column's regiments is disputed (below)."]],
  4:[["saw","doc","The accounts differ on who turned Kamensky's brigade about: Kamensky on his own judgement (Mikhailovsky-Danilevsky, citing Langeron's report), Langeron (Schönhals), Kutuzov (his official report; Stutterheim's regiments come on the commander-in-chief's order), or no order named (Kutuzov's private relation of March 1806)."],
     ["didnt","doc","Buxhowden, commanding the three left-hand columns, had not been told that the centre was gone."]],
  5:[["knew","doc","That Bagration could not force the Santon and that Blasowitz had fallen."],
@@ -126,7 +126,9 @@ var KNOW_OVERRIDE = {
      not named (p. 62); "uncertain" from phase 3 for both divisions is this map's interpretation, not a documented limit */
   drouet:   [[0,"unknown"],[3,"uncertain"],[6,"seen"]],
   rivaud:   [[0,"unknown"],[3,"uncertain"],[6,"seen"]],
-  friant:   [[0,"unknown"],[2,"seen"]],
+  /* roadmap step 4b (decision 177 (b)): Friant reaches the Goldbach about 09:00, phase 3, in Stutterheim and the Moniteur's remarks;
+     "seen" from phase 3 follows the march, as "seen" from phase 2 followed its earlier c. 08:00 arrival */
+  friant:   [[0,"unknown"],[3,"seen"]],
   bourcier: [[0,"unknown"],[2,"uncertain"]],
   c_gren:   [[0,"unknown"],[7,"seen"]],
   heightguns:[[0,"unknown"],[8,"seen"]]
@@ -249,12 +251,12 @@ var EVENTS = [
 {id:"counter-march", t:[255,480], n:"Liechtenstein counter-marches across the 4th Column", side:"al", kind:"movement",
  p:[311,227], forms:["lich","milo","kollo"], cf:"B", claim:"disputed",
  why:"The cavalry column had been posted on the wrong flank overnight; in Mikhailovsky-Danilevsky its crossing of the line of march held up the 4th Column at the set hour, and Kutuzov then stood still, though the disposition ordered him forward. Stutterheim has the 4th Column ordered off only toward eight, to give the left wing's columns time, and Schönhals has it leave half an hour after the first three.",
- dispute:"When the cavalry column crossed: from 04:15 on this map, its own reckoning; the Materialien's editor has it ordered off only at dawn, Mikhailovsky-Danilevsky has its crossing hold up the 4th Column at the set hour, and Stutterheim has the 4th Column ordered off only toward 08:00, Miloradovich setting out at 08:00; Ermolov, riding with the column, has the army moving before dawn, the columns crossing in the dark."},
+ dispute:"When the cavalry column crossed: from 04:15 on this map, its own reckoning; the Materialien's editor has it ordered off only at dawn, Mikhailovsky-Danilevsky has its crossing hold up the 4th Column at the set hour, and Stutterheim has the 4th Column ordered off only toward 08:00, and Miloradovich's report has him set out at 08:00; Ermolov has the army set out before dawn, the columns crossing in the dark, which may be the night move into the disposition's places rather than the columns' departure."},
 
 {id:"telnitz", t:420, n:"Kienmayer attacks Telnitz", side:"al", kind:"attack",
  p:[212,408], forms:["kienmayer","legrand"], cf:"B", claim:"disputed",
  why:"The battle opens here, on the Allied left, after a night of outpost contact along the Goldbach: the beginning of the attack Napoleon wanted.",
- dispute:"When Kienmayer attacked Telnitz: 07:00 on this map, with Savary's Russians beginning to debouch on Legrand about seven; Schönhals has the left wing off at 06:30, Stutterheim the hussars forward between seven and eight, and Davout's report Telnitz under vigorous attack by about 08:00."},
+ dispute:"When Kienmayer attacked Telnitz: 07:00 on this map, with Savary's Russians beginning to debouch on Legrand about seven and attacking soon after; the other readings bound the hour rather than give it: Schönhals has the left wing set off at 06:30, Stutterheim the hussars sent forward to reconnoitre between seven and eight, and Davout's report Telnitz under vigorous attack by about 08:00."},
 
 {id:"raigern", t:[240,285], n:"Friant's division at Raigern since the night", side:"fr", kind:"arrival",
  p:[18,500], forms:["friant","bourcier"], cf:"B", claim:"est",
@@ -286,7 +288,7 @@ var EVENTS = [
 
 {id:"face-about", t:555, n:"Kutuzov orders the 4th Column to face about", side:"al", kind:"decision",
  p:[290,237], forms:["ahq","milo","kollo"], cf:"C", claim:"fact",
- why:"The Allied commander-in-chief, riding with the column, sees what has happened. That he ordered the column to face about is this map's reading: in the accounts read he rides to the left of the 4th Column and orders Kamensky's regiments onto the ridge."},
+ why:"The Allied commander-in-chief, riding with the column, sees what has happened. That he ordered the column to face about is this map's reading: in Mikhailovsky-Danilevsky he rides to the left wing and Kamensky turns his brigade on his own; in his own public report he orders Kamensky's regiments onto the ridge; his private relation names no order."},
 
 {id:"kamensky", t:585, n:"Kamensky turns his brigade about and drives the French off the crest", side:"al", kind:"engagement",
  p:[285,289], forms:["kamensky","sthilaire","lang"], cf:"B", claim:"disputed",
@@ -300,7 +302,7 @@ var EVENTS = [
 {id:"pratzeberg", t:660, n:"The Pratzeberg is firmly in French hands", side:"fr", kind:"capture",
  p:[285,289], forms:["sthilaire","legrand"], cf:"B", claim:"disputed",
  why:"From here the French centre holds the high ground above the Goldbach valley and, in time, comes down into the back of the Allied columns fighting in it.",
- dispute:"When the Pratzeberg was firmly French: 11:00 on this map, Ségur's 'towards eleven'; Stutterheim and Schönhals have the plateau fight last about two hours from about 09:00, Thiebault three."},
+ dispute:"When the Pratzeberg was firmly French: 11:00 on this map, Ségur's 'towards eleven'; Stutterheim and Schönhals have the plateau fight last about two hours from about 09:00, Thiebault three, with no start given."},
 
 {id:"blasowitz", t:675, n:"The French take Blasowitz from the Russian Guard", side:"fr", kind:"capture",
  p:[296,147], forms:["caffarelli","rivaud","rg_inf"], tolKm:1.3, tolWhy:"division-level: the marker is the village; Caffarelli\u2019s plotted centre lies about 1.2 km from it, within the division\u2019s frontage", cf:"C", claim:"est",

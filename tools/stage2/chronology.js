@@ -336,6 +336,8 @@ const REVIEW_CITES={
  "dok@8":["timeline 8: Vandamme takes the height above @14:30","event ice @15:00","timeline 8: French artillery fires on the @15:00","timeline 8: French artillery fires on the @14:30"],
  "dok@9":["event ice @15:00","timeline 8: French artillery fires on the @15:00"],
  "lang@1":["source-note body.5 @07:00","source-note body.5 @07:30","source-note body.5 @08:00","event columns-move dispute @07:00","event columns-move dispute @07:30","event columns-move dispute @08:00","event columns-move @07:00-08:00"],
+ /* the sokolnitz dispute's 08:00 is two hours at once: the map's (Przybyszewski's and Buxhowden's reports) and the bound in Davout's
+    report, Sokolnitz not yet attacked about 08:00, which is the other side; the ledger runs by ref and time, so the one cite counts both */
  "lang@2":["timeline 2: Langeron attacks Sokolnitz; Przybyszewski goes @08:00","event sokolnitz @08:00","event sokolnitz dispute @08:00"],
  "lang@4":["timeline 4: Langeron rides back and sends @10:30","event kursk @10:30"],
  "lang@7":["anchor lang@7 act @12:30","timeline 6: Davout regroups and attacks; Langeron @12:30"],
@@ -353,6 +355,8 @@ const REVIEW_CITES={
  "kollo@2":["event counter-march @04:15-08:00"],
  "kollo@4":["timeline 4: Jurczek's Austrians attack the Pratzeberg; @10:15"],
  "kollo@5":["timeline 4: Jurczek's Austrians attack the Pratzeberg; @10:15","event pratzeberg @11:00","timeline 5: The Pratzeberg is firmly in @11:00","event pratzeberg dispute @11:00"],
+ /* the counter-march dispute's 08:00 is the readings' (Stutterheim's 4th Column ordered off toward eight, Miloradovich's report), the
+    other side from the map's 04:15; it falls at the end of the map's window 04:15-08:00, so this row's cite counts it */
  "lich@2":["event counter-march @04:15-08:00","event counter-march dispute @04:15","event counter-march dispute @08:00"],
  "lich@5":["timeline 5: The cavalry collision west of @10:40"],
  "lich@6":["event blasowitz @11:15","chapter north text @11:15","feature blasowitz fact Fell @11:00-11:15"],

@@ -11,7 +11,7 @@ decisions/your recommendations. We will implement later." Each question 176-197 
 included (a recommendation that depends on a measurement is to be applied only where the measurement allows it, else its stated fallback).
 None is implemented yet: the build carries each question's *Default*, as its *Status* line says, until a later task applies the decision.
 Roadmap step 4b part A took up 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 (`CHANGELOG.md`): each *Status* line says what
-it applied, or the fallback a measurement required; it met questions 198-201, at the end of this file.
+it applied, or the fallback a measurement required; it met questions 198-202, at the end of this file.
 Question 189's recommendation is a reading by the owner or a tester. 178, 179, 183, 185, 186, 188, 192 and 194 recommended what the build
 already carries.
 
@@ -139,7 +139,8 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
 **193. The Timing A of the events not examined in step 4.** *Options.* (a) Keep A until examined; (b) grade each against the registers.
 *Recommendation.* (b). *Default.* (a), except those the readings contradict (B). *Status.* soult, pratzen-village, ice and end implemented (K5); telnitz-retaken (K6). In roadmap step 4b the eight
   events left at A were graded against the registers (`cfcf1b2` and its review's fixes): counter-march, telnitz, sokolnitz, pratzeberg,
-  davout-resumes, sokolnitz-falls and augezd B, face-about C; none is A now. Question 201 follows from it.
+  davout-resumes, sokolnitz-falls and augezd B, face-about C; none was A then. Since decisions 199 and 177 (b) telnitz-retaken is A, at
+  Davout's 09:30 (the one event graded A). Question 201 follows from it.
 
 **194. The blue the Russian records print as "синій".**
 - *Context.* Viskovatov's scale runs голубой (light blue), синій, темносиній (dark blue); the step-4 adjudicator reads "синій" as "blue",
@@ -188,6 +189,7 @@ Savary makes the Guard infantry Lannes's natural reserve (1 December).
 
 **Decided, 17 October 2026.** The owner wrote: "questions 198-201, lets go with your recommendations, then include that in PR 53". Each is
 decided as its *Recommendation* reads, conditions included, and applied in roadmap step 4b (`CHANGELOG.md`); each *Status* line says how.
+Question 202, met in the review of those decisions' commits, is open, its default built.
 
 Choices decisions 1-197 do not settle, met while applying decisions 176-197 in step 4b; each with its options, a recommendation and the
 conservative default built meanwhile. The next owner decision after these is the number after the last.
@@ -213,8 +215,8 @@ conservative default built meanwhile. The next owner decision after these is the
   measured again on a full check:visual (the patch is recorded in `CHANGELOG.md`, step 4b).
 - *Recommendation.* (b): the sources' hours for Friant's march and Telnitz retaken (Davout's report graded A) are worth one name dropped at
   the 1024 px layout, where the dropped name stays reachable by hover and keyboard. *Default.* (a), as built.
-- *Status.* Decided (b) on 17 October 2026; applied: the limit 7 and 177 (b) on the current tree (`CHANGELOG.md`), measured on the
-  final full check:visual.
+- *Status.* Decided (b) on 17 October 2026; applied: the limit 7 and 177 (b) on the current tree (`CHANGELOG.md`); its measure on the
+  step's final full check:visual is recorded in `CHANGELOG.md` (step 4b, the final checks).
 
 **200. Question 195 applied on a machine reading.**
 - *Context.* 195 (a), decided: keep the Szekler record "until the 1805 page is read with its neighbours (the first item of question 189's
@@ -238,4 +240,24 @@ conservative default built meanwhile. The next owner decision after these is the
 - *Recommendation.* (b) where the cases measure unchanged, else (c); the two unread whys checked or labelled this map's in the same task.
   *Default.* (a), as built.
 - *Status.* Decided (b) on 17 October 2026; applied: seven events made "disputed" with their disputes, the two whys labelled
-  this map's, measured on the cases where they are live (`CHANGELOG.md`).
+  this map's (and, after the review, their other copies: two phase lines, two acts and the Command row, now INFERRED); measured on the
+  seven cases where they are live against the 199 build: no difference, so (b) stands for every event (`CHANGELOG.md`).
+
+**202. Bourcier's dragoons after question 177 (b).**
+- *Context.* Decision 177 (b) retimed Friant's division to Davout's hours: off from Raigern at 05:00, its leading brigade at the Goldbach
+  about 09:00 (phase 3), Telnitz retaken at 09:30. Bourcier's dragoons (`FORMATIONS.bourcier`) were not named in 177: their track still
+  reaches its screen south of Telnitz ([184,420], "Screens the ground south of Telnitz") at phase 2, 08:00, an undated creep from Raigern
+  at 04:00, so on the map they leave Raigern an hour before Davout's 05:00 and stand south of Telnitz about an hour before Friant's infantry
+  reaches the stream; the Allied headquarters' reading has them "uncertain" from phase 2 (`KNOW_OVERRIDE.al.bourcier`), as Friant was
+  "seen" from phase 2 until the review moved his to phase 3. Mikhailovsky-Danilevsky has Davout come from Raigern "with Friant's infantry
+  division and Bourcier's cavalry" after Kienmayer had taken Telnitz (pp. 178-179, `md1844.p178-179.davout-telnitz`, grade B, fact; no
+  hour); no reading read gives Bourcier's own hour or place.
+- *Options.* (a) Keep the track and the reading as they are (built). (b) March Bourcier with Friant, as Mikhailovsky-Danilevsky has it:
+  the screen's anchor re-keyed from phase 2 to phase 3, its leg dated as Friant's (`tm {dep:300, gr:"B", basis:"source"}`, the departure
+  Davout's for the division he brought), `KNOW_OVERRIDE.al.bourcier` "uncertain" from phase 3; measured where Bourcier is drawn
+  (`narrow-1024`, whose drop at 09:30 is his name, and the cases at 07:00-09:30), applied only within their limits. (c) (b) without the
+  date: the anchor re-keyed to phase 3, the leg still undated.
+- *Recommendation.* (b): the one reading that names the dragoons puts them in Friant's march, and Davout's hour for that march is in the
+  map since 177 (b); the screen's place is kept, being undated in any reading. *Default.* (a), as built.
+- *Status.* Open; the default built.
+

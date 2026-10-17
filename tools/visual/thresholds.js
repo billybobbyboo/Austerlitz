@@ -33,7 +33,8 @@ const DROP_LIMIT={"first-run":12,"first-run-laptop":16,"overview-field":11,"over
    and 23 there; the owner chose the tight count, the previous build's in the same framing (the method 3B used for
    narrow-1024), so that any further drop fails (docs/stage3-evidence/offset-limits.json; CHANGELOG.md, Stage 3D). */
 DROP_LIMIT["selected-formation"]=4; DROP_LIMIT["narrow-1024"]=6;
-/* owner decision 199 (roadmap step 4b, the owner's answer of 17 October 2026): narrow-1024's limit 6 -> 7, for one cause only: with
+/* owner decision 199 (roadmap step 4b, the owner's answer of 17 October 2026): narrow-1024's limit 6 -> 7 (this line replaces the 6 set
+   just above, which is kept as the 3D framing's record), for one cause only: with
    question 177 (b), Friant retimed to Davout's hours, the retaken village's event label at 09:30 takes the room of Bourcier's name
    (n:bourcier), which stays reachable by hover and keyboard; measured on the full check:visual (CHANGELOG.md, step 4b) */
 DROP_LIMIT["narrow-1024"]=7;
