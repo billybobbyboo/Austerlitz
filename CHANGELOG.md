@@ -35,7 +35,7 @@ owner was asked how far to take it and chose (i), (ii)'s index alone, (iii) and 
   check:visual at the part's end.
 - *(iii) The framing statements by class*: `CLAIM_BY_CLASS` (narrative.js, new, guarded in check:data's group "narrative claims"): every phase
   title, track objective and act line "interpretation", each class with the pattern of its refs and its reason, unless the statement has an
-  entry of its own (one act line has). 75 statements so (10 phase titles, 60 track objectives, 5 act lines). Event names, which the
+  entry of its own (one act line has). 75 statements so (10 phase titles, 61 track objectives, 4 act lines). Event names, which the
   question's option text also listed, are not classed: an event's name states the event, whose claim is the event's own (`EVENTS[].claim`,
   shown in its pill), so "This map's reading" would understate a documented event and overstate nothing it adds; recorded here for the
   owner. test.js holds each class to `tools/step4/statements.js`'s classes (its pattern matches that class's refs exactly), its claim one
