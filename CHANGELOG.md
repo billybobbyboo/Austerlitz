@@ -11,7 +11,20 @@ say the same thing; (ii) the index in the sources sheet only, measured; (iii) th
 dossier's statements tagged with their claims, "Not yet checked" where they have none; the drawer button to the owner as question 203.
 
 **The commits.**
-- (this commit) Question 202 (b): Bourcier's dragoons march with Friant.
+- `7968f09`: question 202 (b), Bourcier's dragoons march with Friant.
+- (this commit) Question 196 (b): a formation waiting at an anchor graded by it.
+
+**Question 196 (b): a formation waiting at an anchor is graded by that anchor.** As recommended: (b), in its fuller form, which covers
+kienmayer@7 too. `confAt` (app.js, a declaration of check:data's "movement, strength and confidence model") graded a formation by the phase
+the clock is in, so while it still stood at an anchor waiting for a leg that begins later in the phase it took the next anchor's grade. Was:
+between two anchors the weaker one's, else the current phase's; is: before its next leg begins (`legAt`'s `u` 0 with a next anchor) the
+anchor it stands at, graded as that anchor is (`stateAt` of its phase); between two anchors and at an anchor as before. The cases this
+changes over the day (every minute, every leaf formation, from the model): gqg 11:15-12:00 (A -> B: the headquarters waits at the Zuran
+point, gqg@0, B since step 4's K8, until gqg@6's departure at 12:00), friant at 09:00 (one minute, A -> B: at the Goldbach anchor, friant@1,
+B, before the leg to the retaking begins) and kienmayer at 14:30 (one minute, A -> B). The dispatch's text already took the earlier phase's
+(`waitingFor`) for gqg; it is unchanged. What draws on `confAt` follows: the position mark on the ground, the name's badge, the dossier's
+pill and grade. Measured: `opening-4` (14:30) with `harness.js --only` against the final part-A run (pending at this commit); the full
+check:visual at the part's end. check:data's changed declaration: `confAt`.
 
 **Question 202 (b): Bourcier's dragoons march with Friant.** As recommended: (b), measured. Mikhailovsky-Danilevsky has Davout come from
 Raigern "with Friant's infantry division and Bourcier's cavalry" after Kienmayer had taken Telnitz (pp. 178-179, `md1844.p178-179.davout-telnitz`,

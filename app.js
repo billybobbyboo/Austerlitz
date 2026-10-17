@@ -725,13 +725,16 @@ function sideOnFieldAt(side,t){
 
 /* ---- confidence of a position ----
    A plotted position between two anchors is an interpolation. It is graded
-   no better than the weaker of the two anchors it lies between. */
+   no better than the weaker of the two anchors it lies between. A formation still waiting at an anchor for its next leg to begin
+   stands at that anchor and is graded by it, not by the phase it waits in (question 196 (b), roadmap step 4b: gqg waiting at the Zuran
+   point from 11:15 until gqg@6's departure at 12:00 was drawn at phase 6's A; kienmayer@7's one minute at 14:30 likewise). */
 var GRADE_RANK={A:0,B:1,C:2};
 function worseGrade(a,b){ return (GRADE_RANK[a]||0)>=(GRADE_RANK[b]||0)?a:b; }
 function confAt(id,t){
   var f=FORMATIONS[id]; if(!f.track) return null;
   var s=stateAt(id,phaseAt(t)), cf=s?s.cf:"B";
   var L=(typeof legAt==="function")?legAt(id,t):null;
+  if(L&&L.b&&L.u<=0){ var sa=stateAt(id,L.a.ph); return {cf:sa?sa.cf:"B", interp:false}; }
   if(L&&L.b&&L.u>0&&L.u<1){
     var ca=stateAt(id,L.a.ph), cb=stateAt(id,L.b.ph);
     return {cf:worseGrade(worseGrade(ca?ca.cf:"B",cb?cb.cf:"B"),cf), interp:true};
