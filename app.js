@@ -96,7 +96,7 @@ var OVERLAYS = {
      {pts:[[243,396],[226,422],[203,444]],kind:"retreat",side:"al",label:"Across the Menitz mere",interp:"unmodelled: the troops on the ice are not a tracked formation"},
      {leg:["vandamme",8,9],kind:"attack",side:"fr",label:"Vandamme takes the height"},
      {pts:[[223,379],[244,388],[270,375]],kind:"attack",side:"fr",label:"Legrand and Friant",interp:"group: Legrand's and Friant's divisions together"},
-     {leg:["bag",7,9],kind:"retreat",side:"al",label:"Bagration withdraws on Rausnitz"}],
+     {leg:["bag",8,9],kind:"retreat",side:"al",label:"Bagration withdraws on Rausnitz"}],
     obj:[[297,372,"The Augezd defile"]]},
 
 9:{ lines:[{pts:[[223,82],[264,114],[313,205],[278,283],[290,366],[297,391]],side:"fr",label:"French positions at nightfall"}],

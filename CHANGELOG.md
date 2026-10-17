@@ -11,7 +11,37 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 
 **The commits.**
 - `714226f`: question 176 (b), the II and III Columns march at the disposition's seven; `ffca6eb`, its measurement recorded.
-- (this commit) Question 177: (b) measured and not allowed (narrow-1024 past its drop limit); its fallback (a), the build's state, kept.
+- `6a49f76`: question 177, (b) measured and not allowed (narrow-1024 past its drop limit); its fallback (a), the build's state, kept.
+- (this commit) Questions 180 (b) and 181: bag@8's dated departure dropped; c_gren@7's dated arrival dropped, kollo's kept.
+
+**Questions 180 (b) and 181: the two dated legs no source dates.** Measured first: the build with both (this commit's, md5 `6ecedd69...`)
+on `opening-4`, `ph8-overview-study` and `ph8-overview-watch` with `harness.js --only`, compared with the step-4 reference: no difference
+in drops, dropped ids, unobstructed fractions or timeline height. 180's condition (`opening-4` unchanged) holds, so (b) is applied; (c), bag@9
+toward Austerlitz, is not (the recommendation: not now).
+- *180 (b), bag@8.* Was `tm {dep:990, gr:"C", basis:"app narrative, unsourced", ev:["Organised resistance ends, by this map's reckoning
+  after Sokolov's end of the firing in the north"], note:"the hour dates the end of organised resistance rather than Bagration's own movement
+  (STAGE2_SPEC M.6): 16:30 is Sokolov's end of the firing in the north, not a reading of Bagration's movement; the arrival is derived"}`, a
+  ceiling arrival at 16:45 flagged "not in battle order"; is no `tm`: the leg from bag@7 now runs 12:45-14:30 by the engine's default, and
+  Bagration stands on the height toward Rausnitz from 14:30, as Stutterheim has him there from the Guard's retreat (`stut.p71.bagration-six`);
+  bag@9's leg runs 14:30-17:00. No source read dates a movement of Bagration's at 16:30 (register C2; question 180). check:chronology:
+  bag@8 leaves `CEILING_FLAGGED` and bag@9 `NEAR_CEILING`; bag@8's row no longer judges the end of resistance as its time (it has no kind:
+  the 16:30 it cites dates no move of his) and its verdict is "undetermined"; 70 moves with a timed statement (71). The phase-8 arrow
+  "Bagration withdraws on Rausnitz" (`OVERLAYS[8]`, derived) was `leg:["bag",7,9]`, is `leg:["bag",8,9]`: the 7->8 leg is now marched in
+  phase 7, and binding-test requires a derived arrow's legs to be executed in its phase.
+- *181, c_gren (b).* c_gren@7's `tm` was `{dep:780, at:840, gr:"B", ...}`, is `{dep:780, gr:"B", ...}` (its `ev` kept; its note: "the
+  arrival is derived" in place of "the arrival by two is this map's"): the arrival is derived at the tactical rate, 13:29, and c_gren@8's leg
+  (13:29-14:30) is no longer forced near the ceiling, so c_gren@8 leaves `FORCED_DATED` (kollo@5 stays: 181's kollo (a)). c_gren@7's row
+  judges the departure (kind "start", 13:00-14:00, consistent; it was a span of the wheel, which the derived arrival at 13:29 leaves early).
+- `redteam.js`'s acknowledged warning carries the infantry mean 1.28 (was 1.37 in this step's first commit): bag@8's dated leg had been a
+  fast one; its exact text and reason updated.
+- check:data's changed declarations in this commit: `FORMATIONS` (the two `tm`), `OVERLAYS` (the phase-8 arrow). The changed statements:
+  `FORMATIONS.bag.track["8"].tm.note` (removed with its `tm`; unchecked) and `FORMATIONS.c_gren.track["7"].tm.note` (was "the wheel names
+  the grenadier division in support; shown across the range. Ségur and Mikhailovsky-Danilevsky set the grenadiers moving toward the lakes
+  about one; the arrival by two is this map's", is "the wheel names the grenadier division in support. Ségur and Mikhailovsky-Danilevsky set
+  the grenadiers moving toward the lakes about one; the arrival is derived. Until roadmap step 4b the map dated the arrival at 14:00, its own,
+  which forced the next leg toward the ceiling (question 181)"; unchecked).
+- Checks on this commit: test.js, sim-test.js, redteam.js, binding-test.js (387 checks) pass; check:chronology 0 errors; check:data as
+  listed; npm test in full below with the review's commit.
 
 **Question 177: Friant's march and Telnitz retaken, (b) measured and not allowed; (a) kept.** The recommendation: (b), retime to the
 sources, if `opening-2` and the cases at 500-570 measure within their limits; else (a) unless decision 121 is amended. (b) was built in

@@ -7,7 +7,7 @@ excluded and why). A statement with no entry in `STATEMENT_CLAIMS` is **unchecke
 (its own citation, where it names one, is not checked here either). The readings named are in `docs/step4-evidence/readings.md` (C*n*.*k*)
 or `docs/step2-evidence/readings.md` (§*n*.*k*).
 
-**698 statements.**
+**697 statements.**
 
 | class | statements |
 |---|---|
@@ -18,7 +18,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | formation | 167 |
 | track objective | 61 |
 | track act | 113 |
-| timing note | 24 |
+| timing note | 23 |
 | place | 38 |
 | place fact | 44 |
 | place why | 30 |
@@ -35,7 +35,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 
 | claim | statements |
 |---|---|
-| unchecked | 564 |
+| unchecked | 563 |
 | disputed | 62 |
 | attributed | 54 |
 | interpretation | 11 |
@@ -276,16 +276,16 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.bag.commander` | data.js:583 | Lt.-Gen. Prince Pyotr Bagration | unchecked |  |
 | `FORMATIONS.bag.strengthNote` | data.js:584 | about 13,000 to 14,000 with 42 guns | unchecked |  |
 | `FORMATIONS.bag.role` | data.js:585 | Holds the Brünn–Olmütz highway. Driven back from Holubitz and Kruh, it re-forms on the height toward Rausnitz and withdraws toward Austerli… | attributed | schoenhals1873.p166.posthaus-suchet; schoenhals1873.p165-166.bagration; stutterheim1806de.p71.bagration-posorsitz |
-| `FORMATIONS.constantine.desig` | data.js:597 | Imperial Guard | unchecked |  |
-| `FORMATIONS.constantine.commander` | data.js:598 | Grand Duke Constantine Pavlovich | unchecked |  |
-| `FORMATIONS.constantine.strengthNote` | data.js:599 | Duffy and Smith give 6,730 infantry, 3,700 horse, 100 pioneers and 40 guns. Narrative accounts often give about 8,500 | unchecked |  |
-| `FORMATIONS.constantine.role` | data.js:600 | The reserve of the Allied right (Stutterheim); the disposition posts it at daybreak behind Blasowitz and Kruh, to reinforce Liechtenstein's… | attributed | stutterheim1806de.p56.reserve-blasowitz; materialien1806.p106.reserve-guard-retreat |
-| `FORMATIONS.rg_inf.desig` | data.js:603 | Guard Infantry | unchecked |  |
-| `FORMATIONS.rg_inf.commander` | data.js:604 | Lt.-Gen. Maliutin | unchecked |  |
-| `FORMATIONS.rg_inf.strengthNote` | data.js:605 | 6,730 (Duffy 1977; Smith 1998) | unchecked |  |
-| `FORMATIONS.rg_cav.desig` | data.js:614 | Guard Cavalry | unchecked |  |
-| `FORMATIONS.rg_cav.commander` | data.js:615 | Lt.-Gen. Andrei Kologrivov | unchecked |  |
-| `FORMATIONS.rg_cav.strengthNote` | data.js:616 | 3,700 horse (Duffy 1977; Smith 1998, cited, not read). Kologrivov's command on 2 December is in Sokolov alone, with no source on his page; … | attributed | sokolov2006.p199.kologrivov; kavalergard1851.p56-57.malutin-blazovits; mikhailovsky1844.p144-145.guard-commanders; kavalergard1851.p54.march-commanders |
+| `FORMATIONS.constantine.desig` | data.js:596 | Imperial Guard | unchecked |  |
+| `FORMATIONS.constantine.commander` | data.js:597 | Grand Duke Constantine Pavlovich | unchecked |  |
+| `FORMATIONS.constantine.strengthNote` | data.js:598 | Duffy and Smith give 6,730 infantry, 3,700 horse, 100 pioneers and 40 guns. Narrative accounts often give about 8,500 | unchecked |  |
+| `FORMATIONS.constantine.role` | data.js:599 | The reserve of the Allied right (Stutterheim); the disposition posts it at daybreak behind Blasowitz and Kruh, to reinforce Liechtenstein's… | attributed | stutterheim1806de.p56.reserve-blasowitz; materialien1806.p106.reserve-guard-retreat |
+| `FORMATIONS.rg_inf.desig` | data.js:602 | Guard Infantry | unchecked |  |
+| `FORMATIONS.rg_inf.commander` | data.js:603 | Lt.-Gen. Maliutin | unchecked |  |
+| `FORMATIONS.rg_inf.strengthNote` | data.js:604 | 6,730 (Duffy 1977; Smith 1998) | unchecked |  |
+| `FORMATIONS.rg_cav.desig` | data.js:613 | Guard Cavalry | unchecked |  |
+| `FORMATIONS.rg_cav.commander` | data.js:614 | Lt.-Gen. Andrei Kologrivov | unchecked |  |
+| `FORMATIONS.rg_cav.strengthNote` | data.js:615 | 3,700 horse (Duffy 1977; Smith 1998, cited, not read). Kologrivov's command on 2 December is in Sokolov alone, with no source on his page; … | attributed | sokolov2006.p199.kologrivov; kavalergard1851.p56-57.malutin-blazovits; mikhailovsky1844.p144-145.guard-commanders; kavalergard1851.p54.march-commanders |
 
 ## track objective
 
@@ -349,9 +349,9 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.lich.track["5"].obj` | data.js:576 | Break the French cavalry screen | unchecked |  |
 | `FORMATIONS.bag.track["0"].obj` | data.js:587 | Hold the highway and cover the Allied right | unchecked |  |
 | `FORMATIONS.bag.track["5"].obj` | data.js:589 | Drive Lannes back on Brünn | unchecked |  |
-| `FORMATIONS.rg_inf.track["0"].obj` | data.js:607 | Remain in reserve near Krzenowitz | unchecked |  |
-| `FORMATIONS.rg_inf.track["6"].obj` | data.js:609 | Retake Stare Vinohrady | unchecked |  |
-| `FORMATIONS.rg_cav.track["6"].obj` | data.js:619 | Break the French line on the plateau | unchecked |  |
+| `FORMATIONS.rg_inf.track["0"].obj` | data.js:606 | Remain in reserve near Krzenowitz | unchecked |  |
+| `FORMATIONS.rg_inf.track["6"].obj` | data.js:608 | Retake Stare Vinohrady | unchecked |  |
+| `FORMATIONS.rg_cav.track["6"].obj` | data.js:618 | Break the French line on the plateau | unchecked |  |
 
 ## track act
 
@@ -465,11 +465,11 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.bag.track["0"].act` | data.js:587 | Astride the Olmutz highway, his line reaching south toward Holubitz. Re-plotted on the corrected road, which passes about 2 km north of Hol… | unchecked |  |
 | `FORMATIONS.bag.track["5"].act` | data.js:589 | Attacks along the highway; cannot get past the Santon battery | unchecked |  |
 | `FORMATIONS.bag.track["6"].act` | data.js:591 | Falls back fighting as Blasowitz is lost (this map's sequence; Schönhals has its line broken later) | unchecked |  |
-| `FORMATIONS.bag.track["8"].act` | data.js:594 | On the height toward Rausnitz, covering the Allied right (Schönhals); he retreats on Austerlitz about six in Schönhals, and is behind it by… | attributed | schoenhals1873.p165-166.bagration; stut.p71.bagration-six |
-| `FORMATIONS.rg_inf.track["0"].act` | data.js:607 | On the high ground near Allied headquarters | unchecked |  |
-| `FORMATIONS.rg_inf.track["6"].act` | data.js:609 | Attacks Vandamme and overthrows the first two French columns with the bayonet (Mikhailovsky-Danilevsky); the Life Guard Horse cuts down a b… | attributed | mikhailovsky1846.p259.guard-columns (the Guard infantry overthrew the first two French columns with the bayonet); schoenhals1873.p164.guard-blasowitz; mat1806.p114-118.guardreport |
-| `FORMATIONS.rg_inf.track["7"].act` | data.js:610 | Driven off the plateau by the French Guard cavalry; Ségur has Bernadotte about to complete its defeat, and Savary one of his divisions brea… | attributed | segur1873.p470-472.guard-bernadotte (Bernadotte about to complete its defeat); savary1828.p205-208.bernadotte-division; schoenhals1873.p164.guard-blasowitz |
-| `FORMATIONS.rg_cav.track["6"].act` | data.js:619 | The Guard cavalry takes the eagle of the 4th Line (credited to the Life Guard Horse by Stutterheim and Schönhals, to the Chevalier Guards b… | disputed | stutterheim1806de.p69.adler-rueckzug (the Life Guard Horse took the eagle); marbot1891.p260.eagle (the Chevalier Guards took it) |
+| `FORMATIONS.bag.track["8"].act` | data.js:593 | On the height toward Rausnitz, covering the Allied right (Schönhals); he retreats on Austerlitz about six in Schönhals, and is behind it by… | attributed | schoenhals1873.p165-166.bagration; stut.p71.bagration-six |
+| `FORMATIONS.rg_inf.track["0"].act` | data.js:606 | On the high ground near Allied headquarters | unchecked |  |
+| `FORMATIONS.rg_inf.track["6"].act` | data.js:608 | Attacks Vandamme and overthrows the first two French columns with the bayonet (Mikhailovsky-Danilevsky); the Life Guard Horse cuts down a b… | attributed | mikhailovsky1846.p259.guard-columns (the Guard infantry overthrew the first two French columns with the bayonet); schoenhals1873.p164.guard-blasowitz; mat1806.p114-118.guardreport |
+| `FORMATIONS.rg_inf.track["7"].act` | data.js:609 | Driven off the plateau by the French Guard cavalry; Ségur has Bernadotte about to complete its defeat, and Savary one of his divisions brea… | attributed | segur1873.p470-472.guard-bernadotte (Bernadotte about to complete its defeat); savary1828.p205-208.bernadotte-division; schoenhals1873.p164.guard-blasowitz |
+| `FORMATIONS.rg_cav.track["6"].act` | data.js:618 | The Guard cavalry takes the eagle of the 4th Line (credited to the Life Guard Horse by Stutterheim and Schönhals, to the Chevalier Guards b… | disputed | stutterheim1806de.p69.adler-rueckzug (the Life Guard Horse took the eagle); marbot1891.p260.eagle (the Chevalier Guards took it) |
 
 ## timing note
 
@@ -488,7 +488,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.rivaud.track["3"].tm.note` | data.js:370 | with Soult's attack (Stutterheim), c. 08:45 on this map; the arrival is derived | unchecked |  |
 | `FORMATIONS.drouet.track["3"].tm.note` | data.js:382 | this map holds the division at its dawn position until Soult's advance. Stutterheim (1806), an Austrian officer present at the battle, has … | unchecked |  |
 | `FORMATIONS.guard_inf.track["7"].tm.note` | data.js:401 | the wheel names the Guard in support; shown across the range. Savary has the grenadiers and the Guard's foot division support the wheel; Sé… | unchecked |  |
-| `FORMATIONS.c_gren.track["7"].tm.note` | data.js:423 | the wheel names the grenadier division in support; shown across the range. Ségur and Mikhailovsky-Danilevsky set the grenadiers moving towa… | unchecked |  |
+| `FORMATIONS.c_gren.track["7"].tm.note` | data.js:423 | the wheel names the grenadier division in support. Ségur and Mikhailovsky-Danilevsky set the grenadiers moving toward the lakes about one; … | unchecked |  |
 | `FORMATIONS.kienmayer.track["8"].tm.note` | data.js:466 | falls back under fire: not before the causeway is under fire, c. 14:30, and over the neck before the ice is fired on, c. 15:00; shown acros… | unchecked |  |
 | `FORMATIONS.dok.track["1"].tm.note` | data.js:478 | the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Buxhowden's and Kutuzov's reports give it (Kutuzov,… | unchecked |  |
 | `FORMATIONS.dok.track["8"].tm.note` | data.js:482 | as Kienmayer: the retreat under fire runs from c. 14:30 to c. 15:00 | unchecked |  |
@@ -498,155 +498,154 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.kollo.track["4"].tm.note` | data.js:560 | the attack on the summit, c. 10:15 on this map, is the arrival at this anchor; no source read gives the hour, and the sources tie the attac… | unchecked |  |
 | `FORMATIONS.bag.track["5"].tm.note` | data.js:588 | Bagration's counter-attack is dated c. 09:30; before it he holds | unchecked |  |
 | `FORMATIONS.bag.track["6"].tm.note` | data.js:590 | the falling back begins with Blasowitz's fall, c. 11:15 on this map; no source read gives either hour, and Schönhals has Bagration fight on… | unchecked |  |
-| `FORMATIONS.bag.track["8"].tm.note` | data.js:593 | the hour dates the end of organised resistance rather than Bagration's own movement (STAGE2_SPEC M.6): 16:30 is Sokolov's end of the firing… | unchecked |  |
 
 ## place
 
 | ref | where | statement | claim | readings |
 |---|---|---|---|---|
-| `FEATURES[#pratzen].sub` | data.js:628 | Dominant central plateau: a crest about 3 km long from Stare Vinohrady to the Pratzeberg | unchecked |  |
-| `FEATURES[#pratzen].story` | data.js:633 | Napoleon gave it up on purpose on 1 December and camped his army west of it. When the Allies marched off it in the morning he took it back … | unchecked |  |
-| `FEATURES[#vinohrady].sub` | data.js:636 | The Old Vineyards — northern high point of the plateau | unchecked |  |
-| `FEATURES[#vinohrady].story` | data.js:640 | The Russian Guard's counterattack here broke two of Vandamme's battalions, and its cavalry took the eagle of the 4th Line, credited to the … | disputed | stutterheim1806de.p69.adler-rueckzug (the Life Guard Horse took the eagle); schoenhals1873.p164.p166.adler-verlust (the Life Guard Horse took the eagle); kavalergard1851.p58-59.horse-guard-eagle-depreradovich (the Life Guard Horse took the eagle); marbot1891.p260.eagle (the Chevalier Guards and the Grand Duke's cuirassiers took it); materialien1806.p118-119.einzige-trophaee |
-| `FEATURES[#pratzeberg].sub` | data.js:643 | Southern summit of the plateau, above Pratzen village | unchecked |  |
-| `FEATURES[#pratzeberg].story` | data.js:646 | Saint-Hilaire's brigades of Morand and Thiebault fought Kamensky's brigade here. As Thiebault tells it, Saint-Hilaire proposed falling back… | attributed | thiebault3_1894.p475-476.pouzet; thieb.p469.morand; thieb.p474.reinforced; schoenhals1873.p161.levasseur |
-| `FEATURES[#santon].sub` | data.js:649 | Fortified hill north of the Brünn–Olmütz highway | unchecked |  |
-| `FEATURES[#santon].story` | data.js:653 | Named by French soldiers after a chapel in Egypt. Bagration could not get past it, which is a large part of why the northern battle stayed … | unchecked |  |
-| `FEATURES[#zuran].sub` | data.js:656 | Low prehistoric barrow west of the Goldbach | unchecked |  |
-| `FEATURES[#zuran].story` | data.js:659 | Mikhailovsky-Danilevsky has Napoleon, on the barrow by Schlapanitz with his marshals, see the heights being stripped of troops when the sun… | attributed | md1844.p177.kurgan-sun; thieb.p456-458.twenty-minutes |
-| `FEATURES[#goldbach].sub` | data.js:662 | Small stream in a marshy valley, the armies' dividing line | unchecked |  |
-| `FEATURES[#goldbach].story` | data.js:666 | The Allies spent the morning forcing crossings that led nowhere while the battle was decided on the high ground behind them. | unchecked |  |
-| `FEATURES[#litava].sub` | data.js:669 | Also Littawa — flows west from Austerlitz past the southern edge of the plateau | unchecked |  |
-| `FEATURES[#telnitz].sub` | data.js:675 | Southernmost village on the Goldbach | unchecked |  |
-| `FEATURES[#telnitz].story` | data.js:679 | Mikhailovsky-Danilevsky has Kienmayer's Austrians twice break into the village and fail to hold it, then take it with Lewis once Dokhturov'… | attributed | mikhailovsky1844.p177-178.eighth-hour-telnitz; davout1885.no123.p192-193.plus-belle-resistance; stutterheim1806de.p50-51.telnitz-moerderisch; marbot.p259.trap |
-| `FEATURES[#sokolnitz].sub` | data.js:682 | Village with a walled castle and a pheasantry enclosure | unchecked |  |
-| `FEATURES[#sokolnitz].story` | data.js:685 | Przybyszewski's column was surrounded here in the afternoon and tried to break out north toward Kobelnitz. It disintegrated and surrendered… | unchecked |  |
-| `FEATURES[#kobelnitz].sub` | data.js:688 | Village on the Goldbach north of Sokolnitz | unchecked |  |
-| `FEATURES[#kobelnitz].story` | data.js:691 | Kollowrat and Miloradovich were ordered here from the Pratzen. They were still on the plateau when Soult arrived: held up by Liechtenstein'… | unchecked |  |
-| `FEATURES[#pratzenv].sub` | data.js:694 | Village on the western side of the plateau, north of the Pratzeberg, in a hollow at about 245 m | unchecked |  |
-| `FEATURES[#puntowitz].sub` | data.js:700 | Goldbach village behind which Saint-Hilaire formed | unchecked |  |
-| `FEATURES[#girzikowitz].sub` | data.js:705 | Goldbach village behind which Vandamme formed | unchecked |  |
-| `FEATURES[#blasowitz].sub` | data.js:710 | Village between the plateau and the Olmütz road | unchecked |  |
-| `FEATURES[#augezd].sub` | data.js:715 | Village at the head of the road over the Satschan pond embankment | unchecked |  |
-| `FEATURES[#augezd].story` | data.js:719 | The chapel of St Anthony on the hill above the village - where Schönhals has Napoleon come with the Guard cavalry and artillery at the end … | attributed | schoen.p167.kapelle |
-| `FEATURES[#satschan].sub` | data.js:722 | Large shallow fishpond, frozen on 2 December | unchecked |  |
-| `FEATURES[#satschan].story` | data.js:725 | French gunners did fire on the ice, and some men died there. The mass drowning is the 30th Bulletin's claim, twenty thousand; Marbot's memo… | disputed | materialien1806.p121.zusatz15 (twenty thousand (the 30th Bulletin, quoted)); thieb.p466.ice (three to four thousand); lejeune.p39-40.augezd-ice (more than six thousand); stut.p74-75.kapelle-teich (some); schoen.p169-170.tellnitz-pfarrer (sixty to at most a hundred); marbot.p262-263.ice (thousands) |
-| `FEATURES[#menitz].sub` | data.js:728 | The western of the two meres | unchecked |  |
-| `FEATURES[#austerlitz].sub` | data.js:733 | Slavkov u Brna — the town that named the battle | unchecked |  |
-| `FEATURES[#austerlitz].story` | data.js:736 | Napoleon signed the armistice with Francis at the castle here on 6 December. | unchecked |  |
-| `FEATURES[#krzenowitz].sub` | data.js:739 | Allied headquarters on the night of 1–2 December | unchecked |  |
-| `FEATURES[#krzenowitz].story` | data.js:742 | The orders were read in German to an audience of largely Russian commanders, late, and with no time to distribute copies. | unchecked |  |
-| `FEATURES[#olmutzroad].sub` | data.js:745 | The road across the northern battlefield: east-north-east from Brünn past the Santon to the Posoritz post house and Rausnitz | unchecked |  |
-| `FEATURES[#viennaroad].sub` | data.js:750 | Rajhrad (Raigern), on the Brünn-Vienna road, lies about 1.6 km beyond this corner of the map and 8 km from Telnitz | unchecked |  |
-| `FEATURES[#viennaroad].story` | data.js:753 | Thiers (1847) wrote of Friant's division that no troops on foot had made so astonishing a march: by his count, thirty-six leagues from Vien… | attributed | thiers1845.p296.marche-etonnante |
-| `FEATURES[#chapel].sub` | data.js:755 | On the hill at the northern edge of Augezd (Újezd u Brna); position approximate | unchecked |  |
-| `FEATURES[#posthouse].sub` | data.js:759 | Post station on the Olmutz highway north of Holubitz, named after Posoritz, whose parish included Holubitz and Kruh; position approximate (… | attributed | corr11_1863.p443.9536-pozoritzer-post; stutterheim1806de.p58.p70.posthaus; wolny1836.p158-159.holubitz-kruh |
-| `FEATURES[#rausnitz].sub` | data.js:763 | Rousínov (Rausnitz) lies about 2.7 km beyond this edge of the map on the Olmutz highway | unchecked |  |
+| `FEATURES[#pratzen].sub` | data.js:627 | Dominant central plateau: a crest about 3 km long from Stare Vinohrady to the Pratzeberg | unchecked |  |
+| `FEATURES[#pratzen].story` | data.js:632 | Napoleon gave it up on purpose on 1 December and camped his army west of it. When the Allies marched off it in the morning he took it back … | unchecked |  |
+| `FEATURES[#vinohrady].sub` | data.js:635 | The Old Vineyards — northern high point of the plateau | unchecked |  |
+| `FEATURES[#vinohrady].story` | data.js:639 | The Russian Guard's counterattack here broke two of Vandamme's battalions, and its cavalry took the eagle of the 4th Line, credited to the … | disputed | stutterheim1806de.p69.adler-rueckzug (the Life Guard Horse took the eagle); schoenhals1873.p164.p166.adler-verlust (the Life Guard Horse took the eagle); kavalergard1851.p58-59.horse-guard-eagle-depreradovich (the Life Guard Horse took the eagle); marbot1891.p260.eagle (the Chevalier Guards and the Grand Duke's cuirassiers took it); materialien1806.p118-119.einzige-trophaee |
+| `FEATURES[#pratzeberg].sub` | data.js:642 | Southern summit of the plateau, above Pratzen village | unchecked |  |
+| `FEATURES[#pratzeberg].story` | data.js:645 | Saint-Hilaire's brigades of Morand and Thiebault fought Kamensky's brigade here. As Thiebault tells it, Saint-Hilaire proposed falling back… | attributed | thiebault3_1894.p475-476.pouzet; thieb.p469.morand; thieb.p474.reinforced; schoenhals1873.p161.levasseur |
+| `FEATURES[#santon].sub` | data.js:648 | Fortified hill north of the Brünn–Olmütz highway | unchecked |  |
+| `FEATURES[#santon].story` | data.js:652 | Named by French soldiers after a chapel in Egypt. Bagration could not get past it, which is a large part of why the northern battle stayed … | unchecked |  |
+| `FEATURES[#zuran].sub` | data.js:655 | Low prehistoric barrow west of the Goldbach | unchecked |  |
+| `FEATURES[#zuran].story` | data.js:658 | Mikhailovsky-Danilevsky has Napoleon, on the barrow by Schlapanitz with his marshals, see the heights being stripped of troops when the sun… | attributed | md1844.p177.kurgan-sun; thieb.p456-458.twenty-minutes |
+| `FEATURES[#goldbach].sub` | data.js:661 | Small stream in a marshy valley, the armies' dividing line | unchecked |  |
+| `FEATURES[#goldbach].story` | data.js:665 | The Allies spent the morning forcing crossings that led nowhere while the battle was decided on the high ground behind them. | unchecked |  |
+| `FEATURES[#litava].sub` | data.js:668 | Also Littawa — flows west from Austerlitz past the southern edge of the plateau | unchecked |  |
+| `FEATURES[#telnitz].sub` | data.js:674 | Southernmost village on the Goldbach | unchecked |  |
+| `FEATURES[#telnitz].story` | data.js:678 | Mikhailovsky-Danilevsky has Kienmayer's Austrians twice break into the village and fail to hold it, then take it with Lewis once Dokhturov'… | attributed | mikhailovsky1844.p177-178.eighth-hour-telnitz; davout1885.no123.p192-193.plus-belle-resistance; stutterheim1806de.p50-51.telnitz-moerderisch; marbot.p259.trap |
+| `FEATURES[#sokolnitz].sub` | data.js:681 | Village with a walled castle and a pheasantry enclosure | unchecked |  |
+| `FEATURES[#sokolnitz].story` | data.js:684 | Przybyszewski's column was surrounded here in the afternoon and tried to break out north toward Kobelnitz. It disintegrated and surrendered… | unchecked |  |
+| `FEATURES[#kobelnitz].sub` | data.js:687 | Village on the Goldbach north of Sokolnitz | unchecked |  |
+| `FEATURES[#kobelnitz].story` | data.js:690 | Kollowrat and Miloradovich were ordered here from the Pratzen. They were still on the plateau when Soult arrived: held up by Liechtenstein'… | unchecked |  |
+| `FEATURES[#pratzenv].sub` | data.js:693 | Village on the western side of the plateau, north of the Pratzeberg, in a hollow at about 245 m | unchecked |  |
+| `FEATURES[#puntowitz].sub` | data.js:699 | Goldbach village behind which Saint-Hilaire formed | unchecked |  |
+| `FEATURES[#girzikowitz].sub` | data.js:704 | Goldbach village behind which Vandamme formed | unchecked |  |
+| `FEATURES[#blasowitz].sub` | data.js:709 | Village between the plateau and the Olmütz road | unchecked |  |
+| `FEATURES[#augezd].sub` | data.js:714 | Village at the head of the road over the Satschan pond embankment | unchecked |  |
+| `FEATURES[#augezd].story` | data.js:718 | The chapel of St Anthony on the hill above the village - where Schönhals has Napoleon come with the Guard cavalry and artillery at the end … | attributed | schoen.p167.kapelle |
+| `FEATURES[#satschan].sub` | data.js:721 | Large shallow fishpond, frozen on 2 December | unchecked |  |
+| `FEATURES[#satschan].story` | data.js:724 | French gunners did fire on the ice, and some men died there. The mass drowning is the 30th Bulletin's claim, twenty thousand; Marbot's memo… | disputed | materialien1806.p121.zusatz15 (twenty thousand (the 30th Bulletin, quoted)); thieb.p466.ice (three to four thousand); lejeune.p39-40.augezd-ice (more than six thousand); stut.p74-75.kapelle-teich (some); schoen.p169-170.tellnitz-pfarrer (sixty to at most a hundred); marbot.p262-263.ice (thousands) |
+| `FEATURES[#menitz].sub` | data.js:727 | The western of the two meres | unchecked |  |
+| `FEATURES[#austerlitz].sub` | data.js:732 | Slavkov u Brna — the town that named the battle | unchecked |  |
+| `FEATURES[#austerlitz].story` | data.js:735 | Napoleon signed the armistice with Francis at the castle here on 6 December. | unchecked |  |
+| `FEATURES[#krzenowitz].sub` | data.js:738 | Allied headquarters on the night of 1–2 December | unchecked |  |
+| `FEATURES[#krzenowitz].story` | data.js:741 | The orders were read in German to an audience of largely Russian commanders, late, and with no time to distribute copies. | unchecked |  |
+| `FEATURES[#olmutzroad].sub` | data.js:744 | The road across the northern battlefield: east-north-east from Brünn past the Santon to the Posoritz post house and Rausnitz | unchecked |  |
+| `FEATURES[#viennaroad].sub` | data.js:749 | Rajhrad (Raigern), on the Brünn-Vienna road, lies about 1.6 km beyond this corner of the map and 8 km from Telnitz | unchecked |  |
+| `FEATURES[#viennaroad].story` | data.js:752 | Thiers (1847) wrote of Friant's division that no troops on foot had made so astonishing a march: by his count, thirty-six leagues from Vien… | attributed | thiers1845.p296.marche-etonnante |
+| `FEATURES[#chapel].sub` | data.js:754 | On the hill at the northern edge of Augezd (Újezd u Brna); position approximate | unchecked |  |
+| `FEATURES[#posthouse].sub` | data.js:758 | Post station on the Olmutz highway north of Holubitz, named after Posoritz, whose parish included Holubitz and Kruh; position approximate (… | attributed | corr11_1863.p443.9536-pozoritzer-post; stutterheim1806de.p58.p70.posthaus; wolny1836.p158-159.holubitz-kruh |
+| `FEATURES[#rausnitz].sub` | data.js:762 | Rousínov (Rausnitz) lies about 2.7 km beyond this edge of the map on the Olmutz highway | unchecked |  |
 
 ## place fact
 
 | ref | where | statement | claim | readings |
 |---|---|---|---|---|
-| `FEATURES[#pratzen].facts[0]` | data.js:629 | Relief / Summit about 115 m above the Goldbach (324 m against 207-211 m); Pratzen village lies in a hollow at 245 m | unchecked |  |
-| `FEATURES[#pratzen].facts[1]` | data.js:629 | Extent / Runs north–south between Blasowitz and the Litava | unchecked |  |
-| `FEATURES[#pratzen].facts[2]` | data.js:629 | Held at dawn by / Allied 4th Column and the departing I–III Columns | unchecked |  |
-| `FEATURES[#vinohrady].facts[0]` | data.js:637 | Taken by / Vandamme's division in the course of the morning; the plateau was French from end to end by about 11:00 | unchecked |  |
-| `FEATURES[#vinohrady].facts[1]` | data.js:637 | Contested by / Russian Imperial Guard, after about 11:00 (the hour is not established) | unchecked |  |
-| `FEATURES[#vinohrady].facts[2]` | data.js:637 | Also / Napoleon's second command post, from about noon | unchecked |  |
-| `FEATURES[#pratzeberg].facts[0]` | data.js:644 | Taken by / Saint-Hilaire's division | unchecked |  |
-| `FEATURES[#pratzeberg].facts[1]` | data.js:644 | Counterattacked by / Kamensky's brigade, then Jurczek's Austrians | unchecked |  |
-| `FEATURES[#pratzeberg].facts[2]` | data.js:644 | Secure by / About 11:00 | unchecked |  |
-| `FEATURES[#santon].facts[0]` | data.js:650 | Garrison / Claparède's 17e Légère with eighteen guns | unchecked |  |
-| `FEATURES[#santon].facts[1]` | data.js:650 | Preparation / Slopes scarped and crest entrenched before the battle; which face is not established | unchecked |  |
-| `FEATURES[#santon].facts[2]` | data.js:650 | Result / Never taken | unchecked |  |
-| `FEATURES[#zuran].facts[0]` | data.js:657 | Occupied by / Napoleon and Berthier on the morning of the battle, by identification: the orders of 1 December send headquarters to 'la butt… | attributed | corr11.p441.butte-reread; md1844.p177.kurgan-sun; thieb.p456.before-day-reread |
-| `FEATURES[#zuran].facts[1]` | data.js:657 | Vacated / About noon, for Stare Vinohrady | unchecked |  |
-| `FEATURES[#goldbach].facts[0]` | data.js:663 | Course / North to south past Puntowitz, Kobelnitz, Sokolnitz and Telnitz | unchecked |  |
-| `FEATURES[#goldbach].facts[1]` | data.js:663 | Obstacle value / Trivial for infantry, difficult for guns and horse in December mud | unchecked |  |
-| `FEATURES[#litava].facts[0]` | data.js:670 | Joins / The Goldbach amongst the meres in the south | unchecked |  |
-| `FEATURES[#telnitz].facts[0]` | data.js:676 | Attacked by / Kienmayer, then Dokhturov | unchecked |  |
-| `FEATURES[#telnitz].facts[1]` | data.js:676 | Defended by / Colonel Schobert's 3e de Ligne and the Tirailleurs du Pô (Legrand); later Friant | unchecked |  |
-| `FEATURES[#telnitz].facts[2]` | data.js:676 | Changed hands / Several times between 07:00 and 15:00 | unchecked |  |
-| `FEATURES[#sokolnitz].facts[0]` | data.js:683 | Attacked by / Langeron (village) and Przybyszewski (castle and pheasantry) | unchecked |  |
-| `FEATURES[#sokolnitz].facts[1]` | data.js:683 | Defended by / Legrand, then Friant | unchecked |  |
-| `FEATURES[#sokolnitz].facts[2]` | data.js:683 | Fell finally / Early afternoon, to the converging attack | unchecked |  |
-| `FEATURES[#kobelnitz].facts[0]` | data.js:689 | Objective of / The Allied 4th Column, which never reached it | unchecked |  |
-| `FEATURES[#pratzenv].facts[0]` | data.js:695 | Cleared by / Thiebault's brigade, about 09:00 | unchecked |  |
-| `FEATURES[#puntowitz].facts[0]` | data.js:701 | Occupied by / Saint-Hilaire's division before dawn | unchecked |  |
-| `FEATURES[#girzikowitz].facts[0]` | data.js:706 | Occupied by / Vandamme's division; Bernadotte's corps closing up behind | unchecked |  |
-| `FEATURES[#blasowitz].facts[0]` | data.js:711 | Contested by / The Russian Guard held it in Stutterheim, Schönhals, Mikhailovsky-Danilevsky and Thiers, and in Thiebault the Grand Duke's r… | unchecked |  |
-| `FEATURES[#blasowitz].facts[1]` | data.js:711 | Fell / About 11:00-11:15; the hour is not established | unchecked |  |
-| `FEATURES[#augezd].facts[0]` | data.js:716 | Height above it / Taken by Vandamme in the afternoon | unchecked |  |
-| `FEATURES[#augezd].facts[1]` | data.js:716 | Function / A way out for the Allied left; according to the disposition the left was to retire, if the attack failed, by the Turas wood, Kob… | attributed | materialien1806.p105.retraite-kobelnitz; materialien1806.p106.reserve-guard-retreat |
-| `FEATURES[#satschan].facts[0]` | data.js:723 | The claim / The 30th Bulletin: twenty thousand Russians drowned | unchecked |  |
-| `FEATURES[#satschan].facts[1]` | data.js:723 | Recovered when drained / 36 guns, 138 horses and three bodies in General Suchet's report of 16 December 1805, as Sokolov quotes it; 38 guns… | attributed | sokolov.p71.suchet-drain |
-| `FEATURES[#menitz].facts[0]` | data.js:729 | Crossed by / Part of Dokhturov's column in the retreat | unchecked |  |
-| `FEATURES[#austerlitz].facts[0]` | data.js:734 | Role / Allied rear area; the Guard withdrew on it | unchecked |  |
-| `FEATURES[#austerlitz].facts[1]` | data.js:734 | Note / Almost no fighting took place in the town itself | unchecked |  |
-| `FEATURES[#krzenowitz].facts[0]` | data.js:740 | Role / Where Weyrother read out the dispositions after midnight | unchecked |  |
-| `FEATURES[#olmutzroad].facts[0]` | data.js:746 | Held by / Lannes' V Corps and Murat's cavalry against Bagration | unchecked |  |
-| `FEATURES[#viennaroad].facts[0]` | data.js:751 | Used by / Friant's division, which reached Raigern overnight on 1-2 December | unchecked |  |
-| `FEATURES[#viennaroad].facts[1]` | data.js:751 | Distance covered / About 115 km from Vienna in under two days (Sokolov); thirty-six leagues in forty-eight hours (Thiers) | disputed | sokolov2006.p19-61 (about 115 km in under two days); thiers1845.p296.marche-etonnante (thirty-six leagues in forty-eight hours) |
-| `FEATURES[#chapel].facts[0]` | data.js:756 | In 1805 / Napoleon came here at the end from the Pratzen with the Guard cavalry and artillery, and artillery of IV Corps and the Guard fire… | attributed | schoen.p167.kapelle; schoen.p168.artillery-iv-garde; stutfr2.p115-116.chapel-note11 |
-| `FEATURES[#chapel].facts[1]` | data.js:756 | The chapel / Completed in May 1703, closed in 1785, it lost its roof about the time of the battle and was in ruins by 1814, reconsecrated o… | disputed | ujezd2025.kaple (lost its roof about the time of the battle, in ruins by 1814); turistika.kaple (burned in 1805); austerlitzorg.p36.first-shot (the first cannon shot fired from it (a tradition)) |
-| `FEATURES[#posthouse].facts[0]` | data.js:760 | Role / The Allied right's line of retreat ran past it toward Rausnitz | unchecked |  |
-| `FEATURES[#rausnitz].facts[0]` | data.js:764 | Role / Bagration's line of withdrawal | unchecked |  |
+| `FEATURES[#pratzen].facts[0]` | data.js:628 | Relief / Summit about 115 m above the Goldbach (324 m against 207-211 m); Pratzen village lies in a hollow at 245 m | unchecked |  |
+| `FEATURES[#pratzen].facts[1]` | data.js:628 | Extent / Runs north–south between Blasowitz and the Litava | unchecked |  |
+| `FEATURES[#pratzen].facts[2]` | data.js:628 | Held at dawn by / Allied 4th Column and the departing I–III Columns | unchecked |  |
+| `FEATURES[#vinohrady].facts[0]` | data.js:636 | Taken by / Vandamme's division in the course of the morning; the plateau was French from end to end by about 11:00 | unchecked |  |
+| `FEATURES[#vinohrady].facts[1]` | data.js:636 | Contested by / Russian Imperial Guard, after about 11:00 (the hour is not established) | unchecked |  |
+| `FEATURES[#vinohrady].facts[2]` | data.js:636 | Also / Napoleon's second command post, from about noon | unchecked |  |
+| `FEATURES[#pratzeberg].facts[0]` | data.js:643 | Taken by / Saint-Hilaire's division | unchecked |  |
+| `FEATURES[#pratzeberg].facts[1]` | data.js:643 | Counterattacked by / Kamensky's brigade, then Jurczek's Austrians | unchecked |  |
+| `FEATURES[#pratzeberg].facts[2]` | data.js:643 | Secure by / About 11:00 | unchecked |  |
+| `FEATURES[#santon].facts[0]` | data.js:649 | Garrison / Claparède's 17e Légère with eighteen guns | unchecked |  |
+| `FEATURES[#santon].facts[1]` | data.js:649 | Preparation / Slopes scarped and crest entrenched before the battle; which face is not established | unchecked |  |
+| `FEATURES[#santon].facts[2]` | data.js:649 | Result / Never taken | unchecked |  |
+| `FEATURES[#zuran].facts[0]` | data.js:656 | Occupied by / Napoleon and Berthier on the morning of the battle, by identification: the orders of 1 December send headquarters to 'la butt… | attributed | corr11.p441.butte-reread; md1844.p177.kurgan-sun; thieb.p456.before-day-reread |
+| `FEATURES[#zuran].facts[1]` | data.js:656 | Vacated / About noon, for Stare Vinohrady | unchecked |  |
+| `FEATURES[#goldbach].facts[0]` | data.js:662 | Course / North to south past Puntowitz, Kobelnitz, Sokolnitz and Telnitz | unchecked |  |
+| `FEATURES[#goldbach].facts[1]` | data.js:662 | Obstacle value / Trivial for infantry, difficult for guns and horse in December mud | unchecked |  |
+| `FEATURES[#litava].facts[0]` | data.js:669 | Joins / The Goldbach amongst the meres in the south | unchecked |  |
+| `FEATURES[#telnitz].facts[0]` | data.js:675 | Attacked by / Kienmayer, then Dokhturov | unchecked |  |
+| `FEATURES[#telnitz].facts[1]` | data.js:675 | Defended by / Colonel Schobert's 3e de Ligne and the Tirailleurs du Pô (Legrand); later Friant | unchecked |  |
+| `FEATURES[#telnitz].facts[2]` | data.js:675 | Changed hands / Several times between 07:00 and 15:00 | unchecked |  |
+| `FEATURES[#sokolnitz].facts[0]` | data.js:682 | Attacked by / Langeron (village) and Przybyszewski (castle and pheasantry) | unchecked |  |
+| `FEATURES[#sokolnitz].facts[1]` | data.js:682 | Defended by / Legrand, then Friant | unchecked |  |
+| `FEATURES[#sokolnitz].facts[2]` | data.js:682 | Fell finally / Early afternoon, to the converging attack | unchecked |  |
+| `FEATURES[#kobelnitz].facts[0]` | data.js:688 | Objective of / The Allied 4th Column, which never reached it | unchecked |  |
+| `FEATURES[#pratzenv].facts[0]` | data.js:694 | Cleared by / Thiebault's brigade, about 09:00 | unchecked |  |
+| `FEATURES[#puntowitz].facts[0]` | data.js:700 | Occupied by / Saint-Hilaire's division before dawn | unchecked |  |
+| `FEATURES[#girzikowitz].facts[0]` | data.js:705 | Occupied by / Vandamme's division; Bernadotte's corps closing up behind | unchecked |  |
+| `FEATURES[#blasowitz].facts[0]` | data.js:710 | Contested by / The Russian Guard held it in Stutterheim, Schönhals, Mikhailovsky-Danilevsky and Thiers, and in Thiebault the Grand Duke's r… | unchecked |  |
+| `FEATURES[#blasowitz].facts[1]` | data.js:710 | Fell / About 11:00-11:15; the hour is not established | unchecked |  |
+| `FEATURES[#augezd].facts[0]` | data.js:715 | Height above it / Taken by Vandamme in the afternoon | unchecked |  |
+| `FEATURES[#augezd].facts[1]` | data.js:715 | Function / A way out for the Allied left; according to the disposition the left was to retire, if the attack failed, by the Turas wood, Kob… | attributed | materialien1806.p105.retraite-kobelnitz; materialien1806.p106.reserve-guard-retreat |
+| `FEATURES[#satschan].facts[0]` | data.js:722 | The claim / The 30th Bulletin: twenty thousand Russians drowned | unchecked |  |
+| `FEATURES[#satschan].facts[1]` | data.js:722 | Recovered when drained / 36 guns, 138 horses and three bodies in General Suchet's report of 16 December 1805, as Sokolov quotes it; 38 guns… | attributed | sokolov.p71.suchet-drain |
+| `FEATURES[#menitz].facts[0]` | data.js:728 | Crossed by / Part of Dokhturov's column in the retreat | unchecked |  |
+| `FEATURES[#austerlitz].facts[0]` | data.js:733 | Role / Allied rear area; the Guard withdrew on it | unchecked |  |
+| `FEATURES[#austerlitz].facts[1]` | data.js:733 | Note / Almost no fighting took place in the town itself | unchecked |  |
+| `FEATURES[#krzenowitz].facts[0]` | data.js:739 | Role / Where Weyrother read out the dispositions after midnight | unchecked |  |
+| `FEATURES[#olmutzroad].facts[0]` | data.js:745 | Held by / Lannes' V Corps and Murat's cavalry against Bagration | unchecked |  |
+| `FEATURES[#viennaroad].facts[0]` | data.js:750 | Used by / Friant's division, which reached Raigern overnight on 1-2 December | unchecked |  |
+| `FEATURES[#viennaroad].facts[1]` | data.js:750 | Distance covered / About 115 km from Vienna in under two days (Sokolov); thirty-six leagues in forty-eight hours (Thiers) | disputed | sokolov2006.p19-61 (about 115 km in under two days); thiers1845.p296.marche-etonnante (thirty-six leagues in forty-eight hours) |
+| `FEATURES[#chapel].facts[0]` | data.js:755 | In 1805 / Napoleon came here at the end from the Pratzen with the Guard cavalry and artillery, and artillery of IV Corps and the Guard fire… | attributed | schoen.p167.kapelle; schoen.p168.artillery-iv-garde; stutfr2.p115-116.chapel-note11 |
+| `FEATURES[#chapel].facts[1]` | data.js:755 | The chapel / Completed in May 1703, closed in 1785, it lost its roof about the time of the battle and was in ruins by 1814, reconsecrated o… | disputed | ujezd2025.kaple (lost its roof about the time of the battle, in ruins by 1814); turistika.kaple (burned in 1805); austerlitzorg.p36.first-shot (the first cannon shot fired from it (a tradition)) |
+| `FEATURES[#posthouse].facts[0]` | data.js:759 | Role / The Allied right's line of retreat ran past it toward Rausnitz | unchecked |  |
+| `FEATURES[#rausnitz].facts[0]` | data.js:763 | Role / Bagration's line of withdrawal | unchecked |  |
 
 ## place why
 
 | ref | where | statement | claim | readings |
 |---|---|---|---|---|
-| `FEATURES[#pratzen].why[0]` | data.js:630 | The dominant ground of the central battlefield, well above the Goldbach crossings | unchecked |  |
-| `FEATURES[#pratzen].why[1]` | data.js:631 | Whoever holds it holds the centre, and can come down into the rear of anything fighting in the valley | unchecked |  |
-| `FEATURES[#pratzen].why[2]` | data.js:632 | The Allied plan required vacating it in order to attack the French right | unchecked |  |
-| `FEATURES[#vinohrady].why[0]` | data.js:638 | Northern shoulder of the plateau, linking the centre to the Olmütz road sector | unchecked |  |
-| `FEATURES[#vinohrady].why[1]` | data.js:639 | In this map's interpretation, a counterfactual: losing it would have reopened the Allied army's severed halves | unchecked |  |
-| `FEATURES[#pratzeberg].why[0]` | data.js:645 | This map reads it as the hinge of the French plan: Mikhailovsky-Danilevsky has Napoleon order Bernadotte and Soult to seize the Pratzen hei… | interpretation | mikhailovsky1844.p177.orders; marbot1891.p259-260.blasiowitz-aigle-clef |
-| `FEATURES[#santon].why[0]` | data.js:651 | Anchors the extreme French left and enfilades the highway | unchecked |  |
-| `FEATURES[#santon].why[1]` | data.js:652 | This map reads the fortified Santon as anchoring the northern flank, freeing Lannes to attack | interpretation |  |
-| `FEATURES[#zuran].why[0]` | data.js:658 | In this model's terrain, a view across the French front and the western face of the plateau | unchecked |  |
-| `FEATURES[#goldbach].why[0]` | data.js:664 | Its valley held the fog that hid Soult's two divisions until they stepped onto the plateau | unchecked |  |
-| `FEATURES[#goldbach].why[1]` | data.js:665 | Its villages hold the crossings for guns and formed cavalry; this map reads the southern battle as a fight for those crossings | interpretation |  |
-| `FEATURES[#litava].why[0]` | data.js:671 | Frames the south-eastern edge of the battlefield and funnels the Allied retreat | unchecked |  |
-| `FEATURES[#telnitz].why[0]` | data.js:677 | The southern hinge of the French line and the road to the Vienna highway | unchecked |  |
-| `FEATURES[#telnitz].why[1]` | data.js:678 | The I Column's first objective in Weyrother's disposition, which has it take the village and then cover its left beyond the defile | attributed | materialien1806.p102-103.disposition-turas |
-| `FEATURES[#sokolnitz].why[0]` | data.js:684 | A walled castle and a pheasantry enclosure stand beside the village on the lower Goldbach; Davout reported the village taken and retaken se… | attributed | davout1885.no123.p192-193.plus-belle-resistance |
-| `FEATURES[#kobelnitz].why[0]` | data.js:690 | The link between Legrand's thin southern line and Soult's assault divisions | unchecked |  |
-| `FEATURES[#pratzenv].why[0]` | data.js:696 | Sits between the two summits and covers the approach from Krzenowitz | unchecked |  |
-| `FEATURES[#puntowitz].why[0]` | data.js:702 | One of the two crossing points from which the assault on the plateau was launched | unchecked |  |
-| `FEATURES[#girzikowitz].why[0]` | data.js:707 | The northern launch point for the assault on Stare Vinohrady | unchecked |  |
-| `FEATURES[#blasowitz].why[0]` | data.js:712 | This map reads it as the hinge of the Allied right onto the centre; in Thiers its loss is followed by Lannes parting Bagration's infantry f… | interpretation | thiers1845.p317-318.blaziowitz-levered; schoenhals1873.p165-166.bagration; schoenhals1873.p166.posthaus-suchet |
-| `FEATURES[#augezd].why[0]` | data.js:717 | This map reads it as the defile over which part of the Allied left escaped, under the French guns | interpretation | schoen.p168.artillery-iv-garde |
-| `FEATURES[#augezd].why[1]` | data.js:718 | Schönhals has the guns of IV Corps and of the Guard, brought onto the height, fire on the retreating column | attributed | schoen.p168.artillery-iv-garde |
-| `FEATURES[#satschan].why[0]` | data.js:724 | Closes the southern escape route and forms the anvil of the French envelopment | unchecked |  |
-| `FEATURES[#menitz].why[0]` | data.js:730 | Second of the two water obstacles closing the southern flank | unchecked |  |
-| `FEATURES[#austerlitz].why[0]` | data.js:735 | The Allied line of retreat and supply toward Hungary | unchecked |  |
-| `FEATURES[#krzenowitz].why[0]` | data.js:741 | The Allied command centre and the Guard's assembly area | unchecked |  |
-| `FEATURES[#olmutzroad].why[0]` | data.js:747 | The Allied line of advance from Olmütz and the axis of the northern battle | unchecked |  |
-| `FEATURES[#viennaroad].why[0]` | data.js:752 | This map reads Friant's arrival as what kept the French right from giving way | unchecked |  |
-| `FEATURES[#chapel].why[0]` | data.js:757 | The view from here covers the defile and the meres the Allied left had to cross | unchecked |  |
-| `FEATURES[#posthouse].why[0]` | data.js:761 | Marks where the highway leaves the field for Rausnitz and Olmutz | unchecked |  |
+| `FEATURES[#pratzen].why[0]` | data.js:629 | The dominant ground of the central battlefield, well above the Goldbach crossings | unchecked |  |
+| `FEATURES[#pratzen].why[1]` | data.js:630 | Whoever holds it holds the centre, and can come down into the rear of anything fighting in the valley | unchecked |  |
+| `FEATURES[#pratzen].why[2]` | data.js:631 | The Allied plan required vacating it in order to attack the French right | unchecked |  |
+| `FEATURES[#vinohrady].why[0]` | data.js:637 | Northern shoulder of the plateau, linking the centre to the Olmütz road sector | unchecked |  |
+| `FEATURES[#vinohrady].why[1]` | data.js:638 | In this map's interpretation, a counterfactual: losing it would have reopened the Allied army's severed halves | unchecked |  |
+| `FEATURES[#pratzeberg].why[0]` | data.js:644 | This map reads it as the hinge of the French plan: Mikhailovsky-Danilevsky has Napoleon order Bernadotte and Soult to seize the Pratzen hei… | interpretation | mikhailovsky1844.p177.orders; marbot1891.p259-260.blasiowitz-aigle-clef |
+| `FEATURES[#santon].why[0]` | data.js:650 | Anchors the extreme French left and enfilades the highway | unchecked |  |
+| `FEATURES[#santon].why[1]` | data.js:651 | This map reads the fortified Santon as anchoring the northern flank, freeing Lannes to attack | interpretation |  |
+| `FEATURES[#zuran].why[0]` | data.js:657 | In this model's terrain, a view across the French front and the western face of the plateau | unchecked |  |
+| `FEATURES[#goldbach].why[0]` | data.js:663 | Its valley held the fog that hid Soult's two divisions until they stepped onto the plateau | unchecked |  |
+| `FEATURES[#goldbach].why[1]` | data.js:664 | Its villages hold the crossings for guns and formed cavalry; this map reads the southern battle as a fight for those crossings | interpretation |  |
+| `FEATURES[#litava].why[0]` | data.js:670 | Frames the south-eastern edge of the battlefield and funnels the Allied retreat | unchecked |  |
+| `FEATURES[#telnitz].why[0]` | data.js:676 | The southern hinge of the French line and the road to the Vienna highway | unchecked |  |
+| `FEATURES[#telnitz].why[1]` | data.js:677 | The I Column's first objective in Weyrother's disposition, which has it take the village and then cover its left beyond the defile | attributed | materialien1806.p102-103.disposition-turas |
+| `FEATURES[#sokolnitz].why[0]` | data.js:683 | A walled castle and a pheasantry enclosure stand beside the village on the lower Goldbach; Davout reported the village taken and retaken se… | attributed | davout1885.no123.p192-193.plus-belle-resistance |
+| `FEATURES[#kobelnitz].why[0]` | data.js:689 | The link between Legrand's thin southern line and Soult's assault divisions | unchecked |  |
+| `FEATURES[#pratzenv].why[0]` | data.js:695 | Sits between the two summits and covers the approach from Krzenowitz | unchecked |  |
+| `FEATURES[#puntowitz].why[0]` | data.js:701 | One of the two crossing points from which the assault on the plateau was launched | unchecked |  |
+| `FEATURES[#girzikowitz].why[0]` | data.js:706 | The northern launch point for the assault on Stare Vinohrady | unchecked |  |
+| `FEATURES[#blasowitz].why[0]` | data.js:711 | This map reads it as the hinge of the Allied right onto the centre; in Thiers its loss is followed by Lannes parting Bagration's infantry f… | interpretation | thiers1845.p317-318.blaziowitz-levered; schoenhals1873.p165-166.bagration; schoenhals1873.p166.posthaus-suchet |
+| `FEATURES[#augezd].why[0]` | data.js:716 | This map reads it as the defile over which part of the Allied left escaped, under the French guns | interpretation | schoen.p168.artillery-iv-garde |
+| `FEATURES[#augezd].why[1]` | data.js:717 | Schönhals has the guns of IV Corps and of the Guard, brought onto the height, fire on the retreating column | attributed | schoen.p168.artillery-iv-garde |
+| `FEATURES[#satschan].why[0]` | data.js:723 | Closes the southern escape route and forms the anvil of the French envelopment | unchecked |  |
+| `FEATURES[#menitz].why[0]` | data.js:729 | Second of the two water obstacles closing the southern flank | unchecked |  |
+| `FEATURES[#austerlitz].why[0]` | data.js:734 | The Allied line of retreat and supply toward Hungary | unchecked |  |
+| `FEATURES[#krzenowitz].why[0]` | data.js:740 | The Allied command centre and the Guard's assembly area | unchecked |  |
+| `FEATURES[#olmutzroad].why[0]` | data.js:746 | The Allied line of advance from Olmütz and the axis of the northern battle | unchecked |  |
+| `FEATURES[#viennaroad].why[0]` | data.js:751 | This map reads Friant's arrival as what kept the French right from giving way | unchecked |  |
+| `FEATURES[#chapel].why[0]` | data.js:756 | The view from here covers the defile and the meres the Allied left had to cross | unchecked |  |
+| `FEATURES[#posthouse].why[0]` | data.js:760 | Marks where the highway leaves the field for Rausnitz and Olmutz | unchecked |  |
 
 ## method
 
 | ref | where | statement | claim | readings |
 |---|---|---|---|---|
-| `SOURCE_NOTE.body[0]` | data.js:770 | Positions here are reconstructed from standard accounts of the battle. Village-level locations and the sequence of attacks follow the accou… | unchecked |  |
-| `SOURCE_NOTE.body[1]` | data.js:771 | Every formation marker therefore carries a confidence grade. A means the position is documented; B means the sector is documented but the f… | unchecked |  |
-| `SOURCE_NOTE.body[2]` | data.js:772 | Strengths are the hardest figures of all. The Allied column organisation split and intermingled regiments, and reputable orders of battle d… | unchecked |  |
-| `SOURCE_NOTE.body[3]` | data.js:773 | Terrain relief is exaggerated about {EXAG} times: one map unit is {M_PER_UNIT} m on the ground, and heights follow a separate vertical scal… | unchecked |  |
-| `SOURCE_NOTE.body[4]` | data.js:774 | Villages are placed from the Czech municipality register and summits from terrain-model data; the map keeps its historical frame, which lie… | unchecked |  |
-| `SOURCE_NOTE.body[5]` | data.js:775 | Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whet… | unchecked |  |
-| `SOURCE_NOTE.body[6]` | data.js:776 | Two figures on the situation line are computed from the plotted reconstruction rather than taken from a source. The holding on the heights … | unchecked |  |
-| `SOURCE_NOTE.layers[0]` | data.js:778 | Historical record / What the sources attest: who was there, roughly how many, which villages were attacked and when. Marked as fact in an e… | unchecked |  |
-| `SOURCE_NOTE.layers[1]` | data.js:779 | Reconstruction / How this map represents the record: a plotted position, a route between anchors, a frontage. Graded A, B or C for confiden… | unchecked |  |
-| `SOURCE_NOTE.layers[2]` | data.js:780 | Derived reading / What the engine computes from the plot, such as the holding on the heights or the centre-separation test. Never a source … | unchecked |  |
-| `SOURCE_NOTE.refs[0]` | data.js:781 | Order-of-battle figures are this map's working figures, many first taken from Duffy (1977) and Smith (1998), cited and not read; where a fo… | unchecked |  |
-| `SOURCE_NOTE.refs[1]` | data.js:782 | Narrative of the fight for the Pratzeberg draws on Thiebault's memoirs, with Schönhals and Mikhailovsky-Danilevsky where the statements nam… | unchecked |  |
-| `SOURCE_NOTE.refs[2]` | data.js:783 | Figures for the meres: General Suchet's report of 16 December 1805, as Sokolov quotes it (2006, t. II, pp. 70-71, his note 88 citing Alombe… | attributed | sokolov.p71.suchet-drain |
-| `SOURCE_NOTE.refs[3]` | data.js:784 | Soult's 'twenty minutes at most' and Napoleon's further quarter of an hour are a memoir anecdote, told here as Thiebault's memoirs tell it … | attributed | thieb.p456-458.twenty-minutes; thiebault3_1894.p504.half-past-eight; segur1873.p466.dix-minutes; savary1828.p204-205.seven-davout |
-| `SOURCE_NOTE.refs[4]` | data.js:785 | Marbot's and Thiebault's memoirs tell of thousands drowned when the Guard's guns broke the ice of the Satschan mere (Marbot, vol. I, pp. 26… | disputed | marbot.p262-263.ice (thousands); thieb.p466.ice (three to four thousand); lejeune.p39-40.augezd-ice (more than six thousand); stut.p74-75.kapelle-teich (some); materialien1806.p121.zusatz15; schoen.p169-170.tellnitz-pfarrer (sixty to at most a hundred) |
-| `SOURCE_NOTE.refs[5]` | data.js:786 | 'The sun of Austerlitz' is a phrase the memoirs use: Thiebault puts it in quotation marks for the rising sun, which in his telling greets t… | attributed | thieb.p461.sun; marbot.p260.centre-sun; thieb.p456-458.twenty-minutes; lejeune1851.p87.eight |
+| `SOURCE_NOTE.body[0]` | data.js:769 | Positions here are reconstructed from standard accounts of the battle. Village-level locations and the sequence of attacks follow the accou… | unchecked |  |
+| `SOURCE_NOTE.body[1]` | data.js:770 | Every formation marker therefore carries a confidence grade. A means the position is documented; B means the sector is documented but the f… | unchecked |  |
+| `SOURCE_NOTE.body[2]` | data.js:771 | Strengths are the hardest figures of all. The Allied column organisation split and intermingled regiments, and reputable orders of battle d… | unchecked |  |
+| `SOURCE_NOTE.body[3]` | data.js:772 | Terrain relief is exaggerated about {EXAG} times: one map unit is {M_PER_UNIT} m on the ground, and heights follow a separate vertical scal… | unchecked |  |
+| `SOURCE_NOTE.body[4]` | data.js:773 | Villages are placed from the Czech municipality register and summits from terrain-model data; the map keeps its historical frame, which lie… | unchecked |  |
+| `SOURCE_NOTE.body[5]` | data.js:774 | Open questions, left unresolved rather than guessed: the pattern of Russian infantry flags; whether Grenz infantry wore brown in 1805; whet… | unchecked |  |
+| `SOURCE_NOTE.body[6]` | data.js:775 | Two figures on the situation line are computed from the plotted reconstruction rather than taken from a source. The holding on the heights … | unchecked |  |
+| `SOURCE_NOTE.layers[0]` | data.js:777 | Historical record / What the sources attest: who was there, roughly how many, which villages were attacked and when. Marked as fact in an e… | unchecked |  |
+| `SOURCE_NOTE.layers[1]` | data.js:778 | Reconstruction / How this map represents the record: a plotted position, a route between anchors, a frontage. Graded A, B or C for confiden… | unchecked |  |
+| `SOURCE_NOTE.layers[2]` | data.js:779 | Derived reading / What the engine computes from the plot, such as the holding on the heights or the centre-separation test. Never a source … | unchecked |  |
+| `SOURCE_NOTE.refs[0]` | data.js:780 | Order-of-battle figures are this map's working figures, many first taken from Duffy (1977) and Smith (1998), cited and not read; where a fo… | unchecked |  |
+| `SOURCE_NOTE.refs[1]` | data.js:781 | Narrative of the fight for the Pratzeberg draws on Thiebault's memoirs, with Schönhals and Mikhailovsky-Danilevsky where the statements nam… | unchecked |  |
+| `SOURCE_NOTE.refs[2]` | data.js:782 | Figures for the meres: General Suchet's report of 16 December 1805, as Sokolov quotes it (2006, t. II, pp. 70-71, his note 88 citing Alombe… | attributed | sokolov.p71.suchet-drain |
+| `SOURCE_NOTE.refs[3]` | data.js:783 | Soult's 'twenty minutes at most' and Napoleon's further quarter of an hour are a memoir anecdote, told here as Thiebault's memoirs tell it … | attributed | thieb.p456-458.twenty-minutes; thiebault3_1894.p504.half-past-eight; segur1873.p466.dix-minutes; savary1828.p204-205.seven-davout |
+| `SOURCE_NOTE.refs[4]` | data.js:784 | Marbot's and Thiebault's memoirs tell of thousands drowned when the Guard's guns broke the ice of the Satschan mere (Marbot, vol. I, pp. 26… | disputed | marbot.p262-263.ice (thousands); thieb.p466.ice (three to four thousand); lejeune.p39-40.augezd-ice (more than six thousand); stut.p74-75.kapelle-teich (some); materialien1806.p121.zusatz15; schoen.p169-170.tellnitz-pfarrer (sixty to at most a hundred) |
+| `SOURCE_NOTE.refs[5]` | data.js:785 | 'The sun of Austerlitz' is a phrase the memoirs use: Thiebault puts it in quotation marks for the rising sun, which in his telling greets t… | attributed | thieb.p461.sun; marbot.p260.centre-sun; thieb.p456-458.twenty-minutes; lejeune1851.p87.eight |
 
 ## theme
 

@@ -348,14 +348,15 @@ Object.keys(units).forEach(id=>{
    where that is recorded ({w, why, see}); an acknowledged warning that is no longer raised is a finding too, until its entry is removed.
    This block stays after every warn() and before the report. */
 const KNOWN_WARN=[
-  {w:"movement: cavalry mean rate 0.82 is not above infantry 1.37",
+  {w:"movement: cavalry mean rate 0.82 is not above infantry 1.28",
    why:"a model property kept on purpose since the chronology data task: the dated moves are shorter and faster, and the cavalry's slow "+
        "legs are the undated creeping moves of decision 45; a warning, not a finding, and not changed. The infantry mean was 1.23 until "+
        "roadmap step 2 dated drouet@3's departure at Soult's advance (08:45, H-2): its leg no longer creeps from 04:00, so it is faster; "+
        "1.26 until roadmap step 4 dated dok@1's departure at 07:00, as the disposition ordered (decision 125 (b)), and 1.30 until roadmap "+
-       "step 4b dated lang@1's and prz@1's at 07:00 too (question 176 (b)), for the same reason",
+       "step 4b dated lang@1's and prz@1's at 07:00 too (question 176 (b)), for the same reason; 1.37 until roadmap step 4b dropped bag@8's "+
+       "dated departure (question 180 (b)), which had made Bagration's last leg a fast one at 16:30: the opposite effect",
    see:"docs/STAGE2_SPEC.md §M.12 (:1303) and §M.13 (:1407), on the creeping moves of §M.10; CHANGELOG.md, the chronology data task and the Stage 2C "+
-       "precondition (the march rates), roadmap step 2 (H-2, Drouet's departure), roadmap step 4 (K4, the I Column's departure) and roadmap step 4b (question 176, the II and III Columns' departures)"}];
+       "precondition (the march rates), roadmap step 2 (H-2, Drouet's departure), roadmap step 4 (K4, the I Column's departure) and roadmap step 4b (questions 176 and 180, the II and III Columns' departures and bag@8's)"}];
 { const uw=[...new Set(W_)];
   uw.filter(w=>!KNOWN_WARN.some(k=>k.w===w)).forEach(w=>fail("warning",`not acknowledged in KNOWN_WARN: ${w}`));
   KNOWN_WARN.filter(k=>!uw.includes(k.w)).forEach(k=>fail("warning",`acknowledged but no longer raised (remove it from KNOWN_WARN): ${k.w}`));

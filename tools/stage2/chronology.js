@@ -234,7 +234,7 @@ const REVIEW={
  "guard_inf@6":["consistent","during",T(11),null,"data.js:103; analysis.js:295","committed as the Russian Guard attacks, after 11:00; the engine arrives 11:15"],
  "guard_inf@7":["early","span",T(13),T(14),"analysis.js:315","the wheel (which names the Guard infantry) is 13:00-14:00; the engine moves 11:15-12:45"],
  "guard_cav@6":["early","during",T(13),T(13),"data.js:104; analysis.js:299; analysis.js:38","Rapp's counter-charge about 13:00 or after in Rapp's own memoirs (1823, pp. 60-62: 'Il était déjà une heure' before the Russian Guard's last effort) and in Ségur's (1877, t. II, pp. 467-469); the engine arrives 11:15. Since roadmap step 4 (decision 125 (b), question 161) the row judges the sources' side: until then it judged this map's own c. 11:45 timeline line against its 11:15 event. Schönhals (1873, pp. 164-165) has the Guard's fight over by about noon, an upper bound that agrees with the engine (allowed by name); the Bulletin's order puts it before one. The map keeps 11:15 (decision 42)"],
- "c_gren@7":["early","span",T(13),T(14),"analysis.js:315","the wheel (which names the grenadiers) is 13:00-14:00; the engine moves 11:15-12:45"],
+ "c_gren@7":["early","start",T(13),T(14),"analysis.js:315","the wheel (which names the grenadiers) is 13:00-14:00, and Ségur and Mikhailovsky-Danilevsky set the grenadiers moving toward the lakes about one; the engine departs at 13:00 (tm.dep) and, since roadmap step 4b (question 181 (b)), derives the arrival at the tactical rate (13:29): the row judges the departure. Until step 4b the map dated the arrival at 14:00, its own, and the row judged the move as a span of the wheel (consistent at 13:00-14:00)"],
  "c_gren@8":["consistent","during",T(13),T(14),"analysis.js:315","the wheel 13:00-14:00 inside the engine's 12:45-14:30"],
  "ahq@3":["consistent","during",T(8,30),T(9),"data.js:411; data.js:412; analysis.js:96","the emperors join the column about 08:30-09:00; the engine arrives 08:45; but the headquarters is 'at Krzenowitz' in phase 0 and the engine moves it from 04:00","creep"],
  "ahq@6":["undetermined",null,null,null,"data.js:414","the fall-back to Krzenowitz is untimed; the act places it in phase 6 (from 11:15), after the engine's arrival"],
@@ -270,7 +270,7 @@ const REVIEW={
  "bag@5":["consistent","during",T(9,30),null,"data.js:86","counter-attacks from c. 09:30, inside the engine's 04:00-10:30","creep"],
  "bag@6":["early","start",T(12),null,"data.js:98; data.js:589; analysis.js:50; analysis.js:305; data.js:710; data.js:773","Schönhals has Caffarelli attack Bagration's left toward noon, after the Pratzen heights were lost and the 5th Column and the Guards had given way, and Bagration's battalions fall back after d'Hautpoul's charge (1873, pp. 165-166); the engine starts the falling back with Blasowitz's fall, 11:15 on this map (tm.dep since the chronology data task), kept (a named conflict since roadmap step 4, question 180). Until step 4 the row judged this map's own timeline line, which coupled the two; body.5's noon also stands for Schönhals's bound on Rapp's charge (guard_cav@6), which shares the key (the ledger is by ref and time)"],
  "bag@7":["consistent","during",T(11,15),null,"data.js:98","falling back from Blasowitz's fall, this map's 11:15"],
- "bag@8":["early","during",T(16,30),T(16,30),"data.js:122","the end of organised resistance, 16:30 on this map after Sokolov's end of the firing in the north (since roadmap step 4 the line says so); the engine's flagged departure at 16:30. Schönhals has Bagration retreat on Austerlitz about six and Stutterheim behind it by six: bag@9's move, which the engine makes by 17:00 (question 180)"],
+ "bag@8":["early",null,null,null,"data.js:122","the end of organised resistance, 16:30 on this map after Sokolov's end of the firing in the north, dates no move of Bagration's (docs/STAGE2_SPEC.md section M.6); since roadmap step 4b (question 180 (b)) the engine has no dated departure here and reaches the height toward Rausnitz at phase 8's start, 14:30 (Stutterheim has Bagration on the Rausnitz heights from the Guard's retreat). Until step 4b it departed at 16:30 (a flagged ceiling arrival, 16:45) and the row judged the end of resistance as its time. Schönhals has Bagration retreat on Austerlitz about six and Stutterheim behind it by six: no such move is drawn (question 180 (c), not now)"],
  "rg_inf@6":["consistent","during",T(11),null,"data.js:564; data.js:103","committed after 11:00 (the hour is not established, since roadmap step 2 also in the corps' role); the engine arrives 11:15"],
  "rg_inf@7":["consistent","during",T(11,15),T(13,15),"data.js:104; analysis.js:299","driven off after Rapp's charge, inside 11:15-12:45 (since roadmap step 4 the timeline dates the charge 'after 11:15', this map's timing; its c. 11:45 was this map's own until then)"],
  "rg_cav@6":["consistent","during",T(11),null,"data.js:103","takes the eagle after 11:00; the engine arrives 11:15","creep"],
@@ -395,7 +395,7 @@ const ALLOW_TIMED={
  "event decision why @08:30":"Thiebault's half past eight for the aide's report before the signal (1894, p. 504): the decision's hour in a source, not a movement; the climb it releases is judged at 08:45 (sthilaire@3, vandamme@3)",
  "source-note refs.3 @08:30":"Thiebault's half past eight for the aide's report before the signal, restated in the sources note (as event decision why @08:30)",
  "event end dispute @18:00":"Schönhals's and Stutterheim's six for Bagration's retreat on Austerlitz, a side of the end's dispute: no retreat on Austerlitz is drawn; bag@9, the last anchor, lies on the Rausnitz road, where Mikhailovsky-Danilevsky has him at dusk (question 180 (c))",
- "event end dispute @15:00":"the Allied report's northern front quiet from three (Materialien 1806, pp. 118-119), a side of the end's dispute: it dates no move of Bagration's (bag@8's 16:30 is this map's end of organised resistance, after Sokolov; question 180)",
+ "event end dispute @15:00":"the Allied report's northern front quiet from three (Materialien 1806, pp. 118-119), a side of the end's dispute: it dates no move of Bagration's (16:30 is this map's end of organised resistance, after Sokolov, and bag@8 has no dated departure since roadmap step 4b; question 180)",
  "source-note body.5 @04:00":"the other side of the named conflict friant@1 (question 177): this map's 04:00 for Friant's departure from Raigern, restated; the conflict's own times are cited by its row (L8)",
  "source-note body.5 @08:45":"the other side of the named conflicts kamensky@3 and kamensky@4 (decision 42): the phase's clock, restated",
  "source-note body.5 @11:15":"the other side of the named conflict guard_cav@6 (decision 42): the event's time, restated",
@@ -437,17 +437,17 @@ const EXCLUDED_PATHS=[   /* [name, path class, reason] */
 const CONFLICTS=["bag@6","friant@1","friant@2","guard_cav@6","kamensky@3","kamensky@4"];
 /* 2C precondition (docs/STAGE2_SPEC.md section M.13), rules D1, F1 and F2: a derived arrival (dated departure, no dated
    arrival) is at the tactical rate (a design value, unsourced), or at the ceiling only for the legs named here, flagged, or at
-   its own moveMin only for the legs named in MOVEMIN_DERIVED. The two climbs and Bagration's withdrawal are a dating question
-   (the Kamensky passage; nightfall), not a rate one: they wait on the sources. The dated legs forced to 80% of the ceiling or
-   more by a following default stay open too (FORCED_DATED, computed and asserted), and every other leg at 80% or more is named
-   with its reason (NEAR_CEILING). Any other rule, a named leg moving off its rule, or an unnamed leg reaching 80% fails --check. */
-const CEILING_FLAGGED=["sthilaire@3","vandamme@3","bag@8"];
-const FORCED_DATED=["c_gren@8","kollo@5"];
+   its own moveMin only for the legs named in MOVEMIN_DERIVED. The two climbs are a dating question (the Kamensky
+   passage), not a rate one: they wait on the sources. Bagration's withdrawal (bag@8) was one too until roadmap step 4b, when its dated
+   departure, which no source gave, was dropped (question 180 (b)), and bag@9 with it left NEAR_CEILING. The dated legs forced to 80% of
+   the ceiling or more by a following default stay open too (FORCED_DATED, computed and asserted; c_gren@8 left it in step 4b, its
+   preceding arrival no longer dated, question 181 (b)), and every other leg at 80% or more is named with its reason (NEAR_CEILING). Any other rule, a named leg moving off its rule, or an unnamed leg reaching 80% fails --check. */
+const CEILING_FLAGGED=["sthilaire@3","vandamme@3"];
+const FORCED_DATED=["kollo@5"];
 const MOVEMIN_DERIVED={
  "gqg@6":"a headquarters has no tactical rate (app.js TACTICAL_RATE); its own moveMin of 40 is slower than the ceiling's 23.8 minutes, so anchorList takes the moveMin. Decided in docs/STAGE2_SPEC.md section M.13 (the derived legs, :1340; the decided table, :1393: \"its own moveMin (headquarters: no tactical rate)\"); data.js's gqg@6 note says so"
 };
 const NEAR_CEILING={
- "bag@9":"from bag@8's flagged derived arrival (16:45) to the phase-9 default (17:00): it follows from bag@8 and waits on the same sources (docs/STAGE2_SPEC.md section M.13, :1343)",
  "guard_inf@6":"its own moveMin of 60, unchanged since Stage 1B (docs/STAGE2_SPEC.md section M.13, :1344)"
 };
 const NEAR_SHARE=0.8;
