@@ -2,8 +2,9 @@
 
 ## 2026-10 · Roadmap step 4b, part A: owner decisions 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 taken up
 
-**Status: done on `claude/adoring-gauss-ubfas9` (draft PR #53), for review. The build changed: `austerlitz-command-map.html`
-2,161,604 bytes, md5 `2ae24fa38626cf4de4a3097535b67212` (the step-4 build: 2,159,374 bytes, `833743c6...`).** A data task: each decision applied as its recommendation reads, conditions
+**Status: done on `claude/adoring-gauss-ubfas9` (draft PR #53), for review, with the owner's decisions 198-201. The build changed:
+`austerlitz-command-map.html` 2,167,583 bytes, md5 `e257d09b7865e4bd1f76dd979b46b4ef` (the step-4 build: 2,159,374 bytes, `833743c6...`;
+the first 4b build, before 198-201: 2,161,604 bytes, `2ae24fa3...`).** A data task: each decision applied as its recommendation reads, conditions
 included (`docs/step4-evidence/questions.md`, decided as recommended on 15 October 2026); where a recommendation depends on a measurement,
 the measurement is taken first with `harness.js --only` and compared with the step-4 report (`tools/step3/report-diff.js`), and the
 decision's fallback is implemented where it does not allow it. Every changed declaration is listed below with what it was, what it is, why
@@ -31,7 +32,9 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 - `24de9a8`: the owner's decisions 198-201 recorded; 198 applied (`TIMING_TEXT.B`'s words).
 - `3d2d133`: decision 199, `narrow-1024`'s drop limit 7, and 177 (b) applied (Friant retimed to Davout's hours).
 - `8f20d05`: decision 201 (b), seven events whose hour the readings dispute made "disputed"; two unread claims labelled this map's.
-- (this commit) The review of `24de9a8`, `3d2d133` and `8f20d05`, fixed; 201's measurement recorded; question 202 (Bourcier).
+- `b7564b5`: the review of `24de9a8`, `3d2d133` and `8f20d05`, fixed; 201's measurement recorded; question 202 (Bourcier).
+- `ea86f65`: `CLAUDE.md` and `docs/ROADMAP.md` brought to decisions 198-202.
+- (this commit) The step's end again: the final checks on the final build, check:data's reference and the baseline moved.
 
 **The review of `4981b27` and `5eaa92f` (places and plan; an independent reviewer, read-only, on a worktree of `5eaa92f`; fixed in the
 next commit).** It ran geo-test.js (59 of 59; Turas now inside the 0.5 km check, 666 bearing pairs over 27 points), test.js and redteam.js
@@ -292,51 +295,64 @@ against both registers quote by quote, 193's grades (telnitz-retaken the one A, 
   audit.js and check:chronology (66 consistent, 4 early, all named) pass. Measured on the final full check:visual (below): finding 6 changes
   what the Allied headquarters' reading draws in phase 2.
 
-**The step's end.**
+**The step's end (with decisions 198-201 and their review; the final build).**
 - *What step 4b part A did, in sum.* Of the eleven decisions taken up: applied as recommended, their measurement allowing it, 176 (b) (the II
   and III Columns from 07:00, grade B; sim-test's mechanism assertion still holds, kept, and a 4th Column check from Thiebault p. 504
   added), 180 (b) (bag@8 undated), 181 (c_gren@7 without its arrival; kollo kept), 184 (Kienmayer 6,340; Legrand's brigadiers Sokolov's),
-  190 (a) (tour stop 6's "the Guard held back"), 191 (Turas at Tuřany through `GEOREF.GT`), 193 (b) (every event left at A lowered: seven B,
+  190 (a) (tour stop 6's "the Guard held back"), 191 (Turas at Tuřany through `GEOREF.GT`), 193 (b) (every event then at A lowered: seven B,
   face-about C), 195 (the 1805 page read: the Szekler hussars "dunkelblaue", the record corrected) and 197 (b) (the Guard's dawn grades B);
-  measured past a limit and so their fallbacks: 177 ((a): `narrow-1024` 6 -> 7 drops) and 182 ((c): `plans-overview` 12 -> 13). Owner
-  questions 198-201 (`docs/step4-evidence/questions.md`): B's words for a sourced leg; `narrow-1024`'s limit for 177 (b); 195 on a machine
-  reading; the events whose hour the readings dispute. Not in this part: 187, 196 (to apply), 189 (a human reading).
+  182 measured past a limit and so its fallback (c) (`plans-overview` 12 -> 13); 177 measured past a limit, so (a) stood until the owner's
+  decision 199 moved `narrow-1024`'s limit to 7, and (b) is applied (Friant off at 05:00, at the Goldbach about 09:00, Telnitz retaken at
+  09:30, graded A, the one event at A). The owner's decisions 198-201 (17 October 2026), each as recommended: 198 (b) (`TIMING_TEXT.B`'s
+  words), 199 (b), 200 (a) (the Szekler correction kept), 201 (b) (seven events "disputed", measured unchanged; the two unread claims
+  labelled this map's wherever they are said, the Command row INFERRED). Open: question 202 (Bourcier's dragoons, the default built). Not in
+  this part: 187, 196 (to apply), 189 (a human reading).
 - *What remains uncertain (historical, not an implementation choice).* The II and III Columns' departure (seven by the order and two
-  reports, half past seven to eight in others); Friant's march and Telnitz retaken (the map's hours kept against Davout's, question 199);
-  the hours of the eight events now graded B or C (question 201); Kienmayer's strength on the day (Schönhals's undated table against
-  Sokolov's 6,380); Legrand's brigades on 2 December (two on 22 November, three on 28 October); where the Guard stood at dawn; the
-  Szekler page read by a machine reader only (189). Everything step 4 listed as uncertain stands, but for the II and III Columns' 04:00, now
-  gone, and Turas, now placed.
-- *Implementation choices kept (not historical claims).* `TIMING_TEXT.B`'s words (question 198); `narrow-1024`'s limit (199); the reserve
-  column's route the one the build drew for "In hand" (182 (c)); the self-test's D-6 check taking the run from 04:00 when no later one is
-  long enough.
-- *check:data.* The reference moves to this build, archived as `archive/step4b-2ae24fa3.html`. Against the step-4 reference
-  (`archive/step4-833743c6.html`) the step changed `GEOREF` (Turas), `PHASES`, `FORMATIONS`, `SOURCE_NOTE`, `PLANS`, `EVENTS`, `TOUR`,
-  `OVERLAYS`, `DRESS`, `VILLAGES` and `STATEMENT_CLAIMS` (11; 130 declarations in the lists), each listed above with what it was, what it is,
-  why and the reading; against the new reference all 130 are byte-identical.
-- *Checks on the final build* (md5 `2ae24fa3...`, 2,161,604 bytes; each heavy check run alone, in this session's container: 4 cores,
-  headless Chromium with SwiftShader):
-  - npm test: all nine suites and the height guard pass (order of battle 42/42, appearance 603/603, geo-test 59, binding-test 387,
-    runtime-test's "console.warn unique" 0); statement claims: 697 narrative statements, 134 with a claim, 563 unchecked, the inventory
-    current.
-  - check:chronology: 0 errors; 70 moves with a timed statement, 64 consistent, 6 early, all named conflicts (bag@6, friant@1, friant@2,
-    guard_cav@6, kamensky@3, kamensky@4); `CEILING_FLAGGED` sthilaire@3 and vandamme@3; `FORCED_DATED` kollo@5.
-  - check:visual (`harness.js --test`, 30 cases and the self-test, 67 minutes): STAGE0, all checks passed, the self-test 242 of 242.
-    Compared case by case with the step-4 reference: one difference, `first-run-laptop` 6 drops -> 5 (Liechtenstein's name drawn again,
-    176); with the strengths-and-grades run, none (so 191's Turas, 182 (c), 190 and 193 move no measure). No `DROP_LIMIT`, `UNOBSTRUCTED` or
-    `PAPER_MIN_PXKM` changed.
-  - check:selftest: 242 of 242, the manifest held (no check name changed; not regenerated); the D-6 check now tests 05:05 (the holding
-    unchanged since 04:00) and 07:14.
-  - check:contrast: 35 states, all reached; 5,550 text elements, 113 pairs, 0 below AA, 0 below 10.5 px, 0 font failures, 0 console
-    messages; the six start-up cases pass (the context-loss case 24 foreign-context warnings, at most 40).
-  - check:baseline: moved to this build (`package.json`: md5 `2ae24fa3...`, 2,161,604 bytes; was the step-4 build `833743c6...`,
-    2,159,374 bytes); passes.
+  reports, half past seven to eight in others); Friant's departure from Raigern (05:00 in one of Davout's reports, 05:30-06:00 in the other,
+  about 06:00 in Sokolov; 05:00 on the map) and Bourcier's march (question 202); the hours of the seven events now disputed, and
+  face-about's, which no reading gives; who ordered the 4th Column about and Langeron's being forced back on Sokolnitz (this map's
+  readings); Kienmayer's strength on the day (Schönhals's undated table against Sokolov's 6,380); Legrand's brigades on 2 December (two on
+  22 November, three on 28 October); where the Guard stood at dawn; the Szekler page read by a machine reader only (189). Everything step 4
+  listed as uncertain stands, but for the II and III Columns' 04:00, now gone, Friant's hours, now the sources', and Turas, now placed.
+- *Implementation choices kept (not historical claims).* `narrow-1024`'s limit 7 (decision 199); the reserve column's route the one the
+  build drew for "In hand" (182 (c)); the self-test's D-6 check taking the run from 04:00 when no later one is long enough; Friant's holding
+  anchor keyed 5 (the counterattack status through phase 4).
+- *check:data.* The reference moves to this build, archived as `archive/step4b-e257d09b.html` (the first 4b reference,
+  `archive/step4b-2ae24fa3.html`, is kept). Against it this build changed `PHASES`, `FORMATIONS`, `SOURCE_NOTE`, `COMMAND`, `KNOW_OVERRIDE`,
+  `EVENTS`, `OVERLAYS`, `TIMING_TEXT` and `STATEMENT_CLAIMS` (9), each listed above; against the step-4 reference
+  (`archive/step4-833743c6.html`) the step changed those and `GEOREF`, `PLANS`, `TOUR`, `DRESS` and `VILLAGES`. Against the new reference all
+  130 declarations in the lists are byte-identical.
+- *Checks on the final build* (md5 `e257d09b...`, 2,167,583 bytes; each heavy check run alone, in this session's container: headless
+  Chromium with SwiftShader):
+  - npm test: all nine suites and the height guard pass (order of battle 42/42, appearance 603/603, geo-test 59, binding-test 400 checks,
+    runtime-test's "console.warn unique" 0, redteam 0 findings and its one acknowledged warning); statement claims: 703 narrative
+    statements, 140 with a claim (64 disputed), 563 unchecked, the inventory current.
+  - check:chronology: 0 errors; 70 moves with a timed statement, 66 consistent, 4 early, all named conflicts (bag@6, guard_cav@6,
+    kamensky@3, kamensky@4); `CEILING_FLAGGED` sthilaire@3 and vandamme@3; `FORCED_DATED` kollo@5; 37 allowances.
+  - check:visual (`harness.js --test`, 30 cases and the self-test, about an hour): STAGE0, all checks passed. Compared case by case with the
+    step-4 reference (`tools/step3/report-diff.js`): `first-run-laptop` 6 -> 5 (176's), and the eight differences 177 (b)'s measurement
+    found and recorded ("Question 177"): `overview-field` 7 -> 6, `overview-plan` 4 -> 5, `close-sokolnitz` 4 -> 2, `staff-paper` 3 -> 5,
+    `paper-north-up` 12 -> 11, `narrow-1024` 6 -> 7 (`n:bourcier`, its limit 7 under decision 199), `eye-zuran` and `eye-zuran-1x` 6 -> 5,
+    each within its limit; no unobstructed fraction or timeline height moved. Against the run of the first 4b build (`2ae24fa3...`) the same
+    eight 177 (b) differences and no other: 198, 201 and the review's fixes (the Allied reading of Friant from phase 3 among them) move no
+    measure. Only `DROP_LIMIT["narrow-1024"]` changed (6 -> 7, decision 199); no `UNOBSTRUCTED` or `PAPER_MIN_PXKM`.
+  - check:selftest: 242 passed, 0 failed, the manifest held (no check name changed).
+  - check:contrast: 35 states, all reached; 5,523 text elements, 113 pairs, 0 below AA, 0 below 10.5 px, 0 font failures, 0 console
+    messages; the six start-up cases pass.
+  - check:data: against the new reference, all 130 declarations byte-identical. check:baseline: moved to this build (`package.json`: md5
+    `e257d09b7865e4bd1f76dd979b46b4ef`, 2,167,583 bytes; was the first 4b build `2ae24fa3...`, 2,161,604 bytes); passes.
   - Not run: `tools/stage6/verify-quotes.js` (network; 195's quote was read on the page images instead).
-  - CI's `checks` job failed at check:data on this step's intermediate commits, which compared against the step-4 reference until this
-    commit moved it (expected in a data task).
-- *Records.* `CLAUDE.md` (the checks: the conflicts, check:data's reference, the baseline; the layout's archive; the current state; the next
-  owner decision, 202); `docs/ROADMAP.md`; `docs/step4-evidence/questions.md` (the Status lines; questions 198-201);
+  - CI's `checks` job fails at check:data and check:baseline on the commits between `24de9a8` and this one, which compared against the
+    first 4b build until this commit moved them (expected in a data task).
+- *Records.* `CLAUDE.md` (the conflicts, `narrow-1024`'s limit, check:data's reference, the baseline, the layout's archive, the current
+  state, the next owner decision, 203); `docs/ROADMAP.md`; `docs/step4-evidence/questions.md` (the Status lines; questions 198-202);
   `docs/stage6-evidence/second-reading.md` and `readings-at.md` (195).
+
+**The first step's end (the build before decisions 198-201: md5 `2ae24fa3...`, `b82439b`), kept as recorded then.** Its checks: npm test
+passed (697 statements, 134 claimed); check:chronology 64 consistent, 6 early (bag@6, friant@1, friant@2, guard_cav@6, kamensky@3,
+kamensky@4); check:visual STAGE0 passed, against the step-4 reference only `first-run-laptop` 6 -> 5; check:selftest 242 of 242;
+check:contrast 35 states, 5,550 text elements, 0 below AA; check:data's reference and the baseline moved to it then
+(`archive/step4b-2ae24fa3.html`).
 
 **The strengths-and-grades measurement (184, 195, 197; `511f5e5`'s build, md5 `71b957cc...`).** A full `check:visual` (`harness.js
 --test`, 30 cases and the self-test, 65 minutes), compared case by case with the reference: one difference, `first-run-laptop` 6 drops -> 5,
@@ -348,7 +364,7 @@ in a phase that shows the reading; with the II and III Columns marching at seven
 22, 37, 28, 3 and 52 minutes up to 12:27, when the Allied holding reaches 0), so the check found "no run of the plotted holding found to
 test" and failed rather than pass vacuously (step 1's rule). Fixed in `app.js` (presentation, not data): when no such run begins after 04:00,
 the first one from 04:00 is taken, tested the same three ways (a jump from 04:00, a jump from 18:00, played from the run's start), the short
-run's test unchanged; the check's name is unchanged, so the manifest stands. Its result is in the final checks below.
+run's test unchanged; the check's name is unchanged, so the manifest stands. Its result is in the final checks above.
 
 **The review of `da16e48`, `a31162b` and `511f5e5` (strengths and grades; an independent reviewer, read-only; fixed in the next
 commit).** It ran test.js and redteam.js (clean) and fetched the 1805 pages itself (views 295-298, their text layer): the Szekler box closes
