@@ -36,7 +36,11 @@ as before (lang@2 and prz@2 at 08:00).
 - *The event `columns-move`*: its window was `[240,420]`, "this map's timing for the columns' descent (from 04:00 for the II and III
   Columns)" in check:chronology's allowance; it is `[420,480]` (07:00-08:00), the disposition's hour to the readings' latest (Buxhowden's
   eight), which holds the map's three descents; its dispute names the map's choice. The 04:00 views no longer show it (they still show the
-  Raigern event, so the self-test's "an event label on the map at 04:00" holds); measured below.
+  Raigern event, so the self-test's "an event label on the map at 04:00" holds). Measured (`harness.js --only` on this commit's build,
+  the eight cases the change can reach: the six at 04:00 and the two at 08:20, where the event's tail is still live, and compared with the
+  step-4 reference by `tools/step3/report-diff.js`): one difference, `first-run-laptop` 6 drops -> 5 (Liechtenstein's name `n:lich` drawn
+  again, the drop step 4's K8 had added), its limit 16; `opening-1`, `opening-end`, `opening-1-laptop`, `first-run`, `narrow-390`,
+  `close-sokolnitz` and `paper-close` unchanged in drops, dropped ids, unobstructed fractions and timeline height.
 - check:chronology: lang@1's row judges 07:00-08:00 (was 07:30-08:00: the disposition's seven is now the engine's, with Schönhals's half past
   seven and Buxhowden's eight inside the row) and cites the event's window and its dispute at 07:00; prz@1's row is unchanged in its times;
   both consistent. `CONFLICTS` loses lang@1 and prz@1 (six left: bag@6, friant@1, friant@2, guard_cav@6, kamensky@3, kamensky@4). `ALLOW_TIMED`:
