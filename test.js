@@ -432,9 +432,10 @@ warn.forEach(e=>{ const k=KNOWN_WARN.find(x=>x.w===e); console.log("  ~ "+e+(k?"
 
 /* --- order of battle: figures that were corrected against the published returns.
    Pinned so a failed patch can never silently revert them again. --- */
-/* corrected in the 2026-09 geographic and historical pass (Duffy 1977; Smith 1998 unless noted) */
+/* corrected in the 2026-09 geographic and historical pass (Duffy 1977; Smith 1998 unless noted);
+   kienmayer's strength Schönhals's 6,340 since roadmap step 4b (1873, p. 177; decision 184), 6,800 until then */
 const OOB=[
- ["kienmayer","arm","mixed"],["kienmayer","strength",6800],["kienmayer","guns",12],
+ ["kienmayer","arm","mixed"],["kienmayer","strength",6340],["kienmayer","guns",12],
  ["c_iii","strength",4300],["c_iii","guns",12],["friant","strength",3470],["bourcier","strength",830],
  ["dok","strength",13490],["dok","guns",64],["bag","guns",42],
  ["lich","strength",5400],["lich","guns",24],["lich","nation","ru"],
@@ -458,7 +459,9 @@ const PIN=[ [()=>FORMATIONS.gqg.army&&FORMATIONS.gqg.army.guns===139, "the 139 g
   [()=>/^FZM /.test(FORMATIONS.kollo.commander)&&/^FZM /.test(FORMATIONS.col4.commander), "Kollowrat is FZM (Deutsche Biographie)"],
   [()=>/Kologrivov/.test(FORMATIONS.rg_cav.commander), "Kologrivov commands the Guard cavalry"],
   [()=>/Claparède/.test(FORMATIONS.santon.commander), "Claparède commands on the Santon"],
-  [()=>/Féry/.test(FORMATIONS.legrand.staff)&&/Schobert/.test(FORMATIONS.legrand.staff)&&!/Fereys/.test(FORMATIONS.legrand.staff), "Legrand: Merle, Féry, Levasseur; Schobert's 3e in Telnitz"],
+  /* roadmap step 4b (decision 184): Legrand's brigadiers the readings' (Sokolov's order of battle of 22 November), no longer Duffy's and Smith's
+     Merle, Féry and Levasseur, which this pin held until then; Féry named as Vandamme's */
+  [()=>/^Brigades: Merle · Levasseur \(Sokolov, 22 November\)/.test(FORMATIONS.legrand.staff)&&!/Merle · Féry/.test(FORMATIONS.legrand.staff)&&/Féry[^.]*Vandamme's/.test(FORMATIONS.legrand.staff)&&/Schobert/.test(FORMATIONS.legrand.staff)&&!/Fereys/.test(FORMATIONS.legrand.staff), "Legrand: Merle and Levasseur (Sokolov, 22 November; decision 184), Féry Vandamme's; Schobert's 3e in Telnitz"],
   [()=>FORMATIONS.lich.mix&&FORMATIONS.lich.mix.nation==="at", "5th Column mixed"] ];
 PIN.forEach(([f,msg])=>{ if(!f()){ console.log("  ! "+msg); oobBadPin++; } });
 if(!/Beaumont/.test(JSON.stringify(FORMATIONS.c_cav||{}))){

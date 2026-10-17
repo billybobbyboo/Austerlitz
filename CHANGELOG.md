@@ -13,7 +13,41 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 - `714226f`: question 176 (b), the II and III Columns march at the disposition's seven; `ffca6eb`, its measurement recorded.
 - `6a49f76`: question 177, (b) measured and not allowed (narrow-1024 past its drop limit); its fallback (a), the build's state, kept.
 - `117d53f`: questions 180 (b) and 181, bag@8's dated departure dropped; c_gren@7's dated arrival dropped, kollo's kept.
-- (this commit) The review of the timing group, fixed; questions 198 and 199 recorded.
+- `356da2e`: the review of the timing group, fixed; questions 198 and 199 recorded.
+- (this commit) Question 184: Kienmayer's working figure Schönhals's 6,340; Legrand's brigadiers the readings'.
+
+**Question 184: the strengths' working figures.** As recommended: Kienmayer 6,340 (Schönhals); Liechtenstein kept at 5,400 (so
+`PLATEAU_04_RECORDED`, 38,700, does not move); the IV Corps divisions kept until a return of 2 December is read; Legrand's staff the
+readings'.
+- `FORMATIONS.kienmayer.strength`: was 6800 (Duffy and Smith as transcribed here, cited, not read); is 6340, Schönhals's table (1873,
+  p. 177, `schoenhals1873.p177.kienmayer`: about 3,400 foot and 2,940 horse; undated). Sokolov's 6,380 (`sokolov2006.p194.kienmayer`)
+  stays the other side. `test.js`'s pinned order of battle holds 6340 (was 6800; its comment says why). Kienmayer stands nowhere on the
+  plateau outline, so the plateau reading does not move; the Allied most-on-the-field figure in sim-test.js falls by 460 (82,660 of 85,400),
+  and Buxhowden's declared 40,000 against its columns' 39,230 stays within redteam.js's tolerance.
+- `FORMATIONS.legrand.staff`: was "Brigades: Merle · Féry · Levasseur (Duffy and Smith, cited). Sokolov gives the brigadiers as Merle and
+  Levasseur, and the situation of 28 October Levasseur, Merle and Brouard; Féry is Vandamme's in both. Colonel Schobert's 3e de Ligne and
+  the Tirailleurs du Pô in Telnitz"; is "Brigades: Merle · Levasseur (Sokolov, 22 November); the situation of 28 October gives Levasseur,
+  Merle and Brouard. Féry, given here from Duffy and Smith (cited, not read), is Vandamme's brigadier in both. Colonel Schobert's 3e de
+  Ligne and the Tirailleurs du Pô in Telnitz"; claim attributed (sokolov2006 t. II, pp. 186-187, `sokolov2006.p186-187.iv-corps`; the 28
+  October situation is step 6B's reading, the note says), rehashed. `test.js`'s pin "Legrand: Merle, Féry, Levasseur" held Féry in the
+  staff; under decision 184 it is replaced by an equally strict one: the staff begins "Brigades: Merle · Levasseur (Sokolov, 22 November)",
+  does not list Féry among the brigades, names Féry as Vandamme's, keeps Schobert and never "Fereys".
+- `FORMATIONS.legrand.role`: was "The bait. Three brigades cover roughly five kilometres of the lower Goldbach alone."; is "The bait. Two
+  brigades in Sokolov's order of battle cover roughly five kilometres of the lower Goldbach alone." (the three brigades were Duffy's and
+  Smith's staff); unchecked.
+- `FORMATIONS.kienmayer.strengthNote`: was "6,800 is this map's working figure, not from a source read: Duffy and Smith (cited, not read)
+  were transcribed here as 3,440 foot and 3,440 horse, which make 6,880. Schönhals's table gives 6,340 men, its lines making about 3,400
+  foot and 2,940 horse (its total line prints 2,440 horses), with two cavalry batteries, undated; Sokolov 6,380 (3,440 foot and 2,940 horse
+  with 12 guns; the sum derived)"; is "6,340, used here, is Schönhals's table, its lines making about 3,400 foot and 2,940 horse (its total
+  line prints 2,440 horses), with two cavalry batteries, undated; Sokolov 6,380 (3,440 foot and 2,940 horse with 12 guns; the sum derived).
+  Duffy and Smith (cited, not read) were transcribed here as 3,440 foot and 3,440 horse, which make 6,880; this map's earlier working
+  figure, 6,800, came from that transcription"; claim disputed (Schönhals p. 177 and Sokolov p. 194, each a side), rehashed, its note
+  "The figure used is Schönhals's; the transcription of Duffy and Smith that it replaced sums to 6,880." (was "The working figure is this
+  map's, not from a source read; the transcription it came from sums to 6,880.").
+- *Drawn.* Kienmayer's strength sizes his block and sprite and orders the map layer's priority among formations of his echelon (by strength
+  last); the cases that show him are measured with this group's full check:visual (below).
+- check:data's changed declarations in this commit: `FORMATIONS`, `STATEMENT_CLAIMS`. Checks: test.js (order of battle 42/42), sim-test.js,
+  redteam.js pass; npm test in full after the group.
 
 **The reference.** A full `check:visual` (`harness.js --test`, 30 cases and the in-app self-test) of the unmodified step-4 build (md5
 `833743c6...`, the `archive/step4-833743c6.html` build), run in this session's container first (4 cores, headless Chromium with
