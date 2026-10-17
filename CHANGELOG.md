@@ -27,7 +27,8 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 - `70973cf`: the review of the events-and-opening group (`cfcf1b2`, `ed61b2d`), fixed: three more events lowered; question 201.
 - `704e6f2`: the strengths-and-grades measurement recorded; the self-test's D-6 plateau check given a run to test after 176.
 - `a75b403`: `docs/ROADMAP.md`, each decision's status and questions 198-201.
-- (this commit) The step's end: the final checks, check:data's reference and the baseline moved, `CLAUDE.md`.
+- `b82439b`: the step's end: the final checks, check:data's reference and the baseline moved, `CLAUDE.md`.
+- (this commit) The owner's decisions 198-201 recorded; 198 applied (`TIMING_TEXT.B`'s words).
 
 **The review of `4981b27` and `5eaa92f` (places and plan; an independent reviewer, read-only, on a worktree of `5eaa92f`; fixed in the
 next commit).** It ran geo-test.js (59 of 59; Turas now inside the 0.5 km check, 666 bearing pairs over 27 points), test.js and redteam.js
@@ -163,6 +164,16 @@ constant, the transform unchanged. geo.js's header names the one village from an
 - *Measured*: Turas's name and village are drawn in the views that show the field's west; it is measured on the step's final full
   check:visual, compared with the strengths-and-grades run (below). A limit it moved would return it to its place (191's "measured").
 - check:data's changed declarations in this commit: `GEOREF`, `VILLAGES`, `SOURCE_NOTE`. Checks: test.js, geo-test.js, redteam.js pass.
+
+**The owner's decisions 198-201 (17 October 2026), applied in this PR.** After the step's end the owner wrote: "questions 198-201, lets
+go with your recommendations, then include that in PR 53". Each is decided as its recommendation reads, conditions included
+(`docs/step4-evidence/questions.md`), and applied below; the step's end above is the build before them, and the final checks of the
+decisions follow them.
+- *198 (b): `TIMING_TEXT.B`'s words* (a guarded declaration of `app.js`, "data in app.js"): was "Timing given as approximate in this
+  reconstruction's narrative, which cites no source for it."; is "Timing approximate: the sources read differ on it, or this
+  reconstruction's narrative gives it without a source." It now says what B means in both its uses: the legs graded B from sources that
+  differ (lang@1, prz@1 since 176, friant@1 with 199) and those the narrative gives without a source; no grade moves. Shown in a formation's
+  dossier while its timed leg runs; no harness case opens such a dossier.
 
 **The step's end.**
 - *What step 4b part A did, in sum.* Of the eleven decisions taken up: applied as recommended, their measurement allowing it, 176 (b) (the II

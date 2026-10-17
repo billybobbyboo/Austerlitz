@@ -186,6 +186,9 @@ Savary makes the Guard infantry Lannes's natural reserve (1 December).
 
 ## Roadmap step 4b: the owner questions (198-)
 
+**Decided, 17 October 2026.** The owner wrote: "questions 198-201, lets go with your recommendations, then include that in PR 53". Each is
+decided as its *Recommendation* reads, conditions included, and applied in roadmap step 4b (`CHANGELOG.md`); each *Status* line says how.
+
 Choices decisions 1-197 do not settle, met while applying decisions 176-197 in step 4b; each with its options, a recommendation and the
 conservative default built meanwhile. The next owner decision after these is the number after the last.
 
@@ -199,6 +202,7 @@ conservative default built meanwhile. The next owner decision after these is the
   (c) Grade the two legs A where a source dates the column's own departure (prz@1, its commander's report, as dok@1 is A beside
   Schönhals's half past six), B with (b)'s words for lang@1.
 - *Recommendation.* (b): the words then say what B means in both uses, and no grade moves. *Default.* (a), as built.
+- *Status.* Decided (b) on 17 October 2026; applied: `TIMING_TEXT.B` reworded as above (`CHANGELOG.md`).
 
 **199. `narrow-1024`'s drop limit for question 177 (b).**
 - *Context.* Decision 177 recommended (b), Friant retimed to Davout's hours, if `opening-2` and the cases at 500-570 measure within
