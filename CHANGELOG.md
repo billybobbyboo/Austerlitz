@@ -10,7 +10,24 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 `833743c6...`) was run first in this session as the reference (below, "The reference").
 
 **The commits.**
-- (this commit) Question 176 (b): the II and III Columns march at the disposition's seven.
+- `714226f`: question 176 (b), the II and III Columns march at the disposition's seven; `ffca6eb`, its measurement recorded.
+- (this commit) Question 177: (b) measured and not allowed (narrow-1024 past its drop limit); its fallback (a), the build's state, kept.
+
+**Question 177: Friant's march and Telnitz retaken, (b) measured and not allowed; (a) kept.** The recommendation: (b), retime to the
+sources, if `opening-2` and the cases at 500-570 measure within their limits; else (a) unless decision 121 is amended. (b) was built in
+full on this step's 176 build (not committed): friant@1 `tm {dep:300, at:540, gr:"B", basis:"source"}` (Davout's two reports, five or
+half past five to six; the leading brigade up to the Goldbach about nine, Stutterheim p. 52 and the Moniteur's remarks, Materialien
+pp. 109-110), the retaking anchor re-keyed to phase 3 with `tm {at:570, gr:"A"}` (Davout's report of 26 December, no. 127, p. 204,
+`davout1885.no127.p202-204`) and the holding anchor to phase 5, `EVENTS[#davout]` `[525,555]` and `#telnitz-retaken` 570 (both "fact"),
+the two phase lines moved to phase 3, the phase-1 and phase-2 arrows the approach march and phase 3's "Friant retakes Telnitz";
+check:chronology passed with friant@1 and friant@2 out of `CONFLICTS`. Measured with `harness.js --only` on the 19 cases it can reach
+(the 500-570 cases, `opening-2`, and those at 585-590 where the 570 event's tail is still live) and compared with the step-4 reference:
+`opening-2` unchanged; `narrow-1024` 6 drops -> 7 (Bourcier's name `n:bourcier` dropped beside the new label), past its limit 6;
+within their limits `overview-field` 7 -> 6, `overview-plan` 4 -> 5, `close-sokolnitz` 4 -> 2, `staff-paper` 3 -> 5, `paper-north-up`
+12 -> 11, `eye-zuran` and `eye-zuran-1x` 6 -> 5; no unobstructed fraction or timeline height moved. A limit would move, which needs the
+owner's word (no smaller form keeps the recommendation's own clocks: the label is `#telnitz-retaken` at 570, which (b) names), so (b) is
+not applied and (a), the build's state since step 4's K6 (the map's hours kept, the texts naming Davout's, friant@1 and friant@2 named
+conflicts), stands. Owner question 200 asks whether `narrow-1024`'s drop limit may move to 7 for (b). No file of the build changed for 177.
 
 **Question 176 (b): the II and III Columns from 07:00 (lang@1, prz@1).** The readings agree on seven, or half past six for the left wing
 (Schönhals), and none on four (register C1: the disposition orders all five columns to march at seven, Materialien 1806 pp. 101-106,
