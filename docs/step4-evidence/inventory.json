@@ -6913,7 +6913,7 @@
    "file": "data.js",
    "line": 773,
    "label": null,
-   "text": "Villages are placed from the Czech municipality register, Turas, which it does not list, at the Czech address register's point for Tuřany, the name Wolny's topography of 1836 gives it, and summits from terrain-model data; the map keeps its historical frame, which lies about {ROT} degrees off true north. The compass rose shows true north for the current view. Raigern, Rausnitz and Kowalowitz lie beyond the frame and are shown as markers at its edge.",
+   "text": "Villages are placed from the Czech municipality register; Turas, which it does not list, at the Czech address register's point for Tuřany, its name in Wolny's topography of 1836; Krug and Bellowitz, which no register read places, are not; summits from terrain-model data. The map keeps its historical frame, which lies about {ROT} degrees off true north. The compass rose shows true north for the current view. Raigern, Rausnitz and Kowalowitz lie beyond the frame and are shown as markers at its edge.",
    "claim": "unchecked",
    "by": []
   },
@@ -8170,7 +8170,7 @@
    "file": "analysis.js",
    "line": 188,
    "label": null,
-   "text": "Invite the attack on the right by giving up the Pratzen plateau and holding the lower Goldbach thin. When the enemy centre has marched off the heights to join that attack, take the heights with two divisions held concealed in the valley, cut the Allied army in half, then wheel south onto the rear of everything that has gone down into the Goldbach. In Ségur and Mikhailovsky-Danilevsky Bernadotte is to assail the plateau from the left at the same time; the written dispositions do not say so: they put I Corps onto Caffarelli's ground of the day before, its left behind the Santon, in column until new orders.",
+   "text": "Invite the attack on the right by giving up the Pratzen plateau and holding the lower Goldbach thin. When the enemy centre has marched off the heights to join that attack, take the heights with two divisions held concealed in the valley, cut the Allied army in half, then wheel south onto the rear of everything that has gone down into the Goldbach. In Ségur and Mikhailovsky-Danilevsky Bernadotte is to assail the plateau from the left at the same time; the written dispositions do not say so: they put I Corps onto Caffarelli's ground of 1 December, its left behind the Santon, in column until new orders.",
    "claim": "interpretation",
    "by": [
     {
@@ -8182,6 +8182,11 @@
      "src": "corr11_1863",
      "at": "no. 9535, p. 442",
      "rd": "corr11_1863.p442.dispositions-ic"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9535, p. 443",
+     "rd": "corr11_1863.p443.no-guard"
     },
     {
      "src": "mikhailovsky1846",

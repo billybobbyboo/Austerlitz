@@ -4,7 +4,8 @@
 
    Ground truth (WGS84):
      villages  - municipality centres, Czech municipality register as published
-                 in 33bcdd/souradnice-mest (state 1 January 2018)
+                 in 33bcdd/souradnice-mest (state 1 January 2018); Turas (since roadmap
+                 step 4b) the RÚIAN definition point of Tuřany, which that list lacks
      summits   - PeakVisor DEM summits; official heights where they differ
    The map keeps its historical frame. That frame is a similarity transform of
    true geography: fitted to twelve villages (the audit procedure: fit fifteen,

@@ -21,7 +21,19 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 - `4981b27`: question 191, Turas moved to the address register's point for Tuřany.
 - `5eaa92f`: question 182, (b) measured past the plans-overview drop limit; (c), one column renamed the reserve, without Drouet.
 - `cfcf1b2`: question 193, the events' Timing A graded against the registers, six lowered.
-- (this commit) Question 190: tour stop 6's "no reserve committed" reworded, no longer, `opening-2` measured unchanged.
+- `ed61b2d`: question 190, tour stop 6's "no reserve committed" reworded, no longer, `opening-2` measured unchanged.
+- (this commit) The review of the places-and-plan group (`4981b27`, `5eaa92f`), fixed.
+
+**The review of `4981b27` and `5eaa92f` (places and plan; an independent reviewer, read-only, on a worktree of `5eaa92f`; fixed in the
+next commit).** It ran geo-test.js (59 of 59; Turas now inside the 0.5 km check, 666 bearing pairs over 27 points), test.js and redteam.js
+(clean), rebuilt the build (identical) and confirmed the coordinates ([44.177, 293.774], 2.849 km at 347.6 degrees true; the drawn [44,294]
+9 m off), the declarations changed and the measurement files. No high finding. Medium: (1) `PLANS.fr.intent`'s "until new orders" rests on
+p. 443: added to its claim; (2) `SOURCE_NOTE.body[4]` made Krug and Bellowitz look register-placed: reworded; (3) the I Corps sentence in the
+intent goes beyond (c): said, for the owner to confirm. Low: (4) the 191 entry said "rather than a new literal": corrected; (5) geo.js's
+header names Turas's register; (6) "Caffarelli's ground of the day before" in a plan of 1 December: "of 1 December"; (7) the (b) variant's
+forms and shared objective stated; (8) the Status lines of 182 and 191 in `questions.md` updated (`docs/ROADMAP.md` at the step's end); (9)
+Turas is measured on the step's final full check:visual, which runs every case. check:data's changed declarations in this commit:
+`SOURCE_NOTE`, `PLANS`, `STATEMENT_CLAIMS`, and geo.js's header comment (inside `GEOREF`).
 
 **Question 190: the opening's words.** As recommended: (a) minimal rewordings, no longer than the text they replace, where the readings
 contradict it, each only where the opening cases measure unchanged; (c) no marking of the ceiling-derived climbs in the bar (the build's
@@ -77,7 +89,8 @@ lowered to B where the readings give hours that disagree with it or with each ot
 (Bernadotte) and the reserve (the Guard and the grenadiers), if `plans-overview` stays within its drop limit; else (c), one column renamed
 the reserve, without Drouet. No reading gives the reserve a line of march of its own (the 30th Bulletin has it "in reserve with the
 Emperor"; the dispositions put the grenadiers under Lannes's orders), so (b) was built with the two columns on the one route the build
-already draws, "this map's" (`[[189,161],[230,185],[263,201],[300,211]]`), each column saying so; measured on `plans-overview` with
+already draws, "this map's" (`[[189,161],[230,185],[263,201],[300,211]]`), and the one objective [300,211], each column saying so (the
+centre `forms:["drouet"]`, as the column had: Rivaud is in no plan column, before or after; the reserve the Guard and the grenadiers); measured on `plans-overview` with
 `harness.js --only` against the step-4 reference: 12 drops -> 13 (the Litava's name), past its limit 12. (c) was then built and measured: no
 difference in drops, dropped ids, unobstructed fractions or timeline height. (c) is applied:
 - `PLANS.fr.cols[4]`: was `{n:"In hand - Bernadotte, the Guard, the grenadiers", forms:["guard_inf","guard_cav","c_gren","drouet"], ...,
@@ -88,10 +101,13 @@ difference in drops, dropped ids, unobstructed fractions or timeline height. (c)
   the dispositions of 1 December. The route drawn is this map's."}` (its objective and route unchanged); the ord's claim attributed
   (`corr11_1863.p442.dispositions-ic`, `corr11_1863.p450.reserve-defined`, `corr11_1863.p443.no-guard`), rehashed. I Corps is the centre,
   not the reserve, in every reading (step 4's K7): no French plan column names Drouet now.
-- `PLANS.fr.intent`: so that the dispositions' sentence on I Corps is not lost with the column, its last sentence was "In Ségur and
+- `PLANS.fr.intent`: an addition beyond (c), for the owner to confirm: so that the dispositions' sentence on I Corps is not lost with the
+  column, as the C3 source skeptic required it said (proposals C3.p4, change (2)), its last sentence was "In Ségur and
   Mikhailovsky-Danilevsky Bernadotte is to assail the plateau from the left at the same time; the written dispositions do not say so.", is
-  "...; the written dispositions do not say so: they put I Corps onto Caffarelli's ground of the day before, its left behind the Santon, in
-  column until new orders."; its claim interpretation (Ségur, the dispositions, Mikhailovsky-Danilevsky), rehashed.
+  "...; the written dispositions do not say so: they put I Corps onto Caffarelli's ground of 1 December, its left behind the Santon, in
+  column until new orders." ("of 1 December" for the order's "aujourd'hui 10", after the review; the column had "of the day before"); its
+  claim interpretation (Ségur, the dispositions pp. 442 and 443, Mikhailovsky-Danilevsky; p. 443 for "until new orders", added after the
+  review), rehashed, its note adding that what the dispositions say of I Corps is as read on their pages.
 - check:data's changed declarations in this commit: `PLANS`, `STATEMENT_CLAIMS`. Checks: test.js, redteam.js pass.
 
 **Question 191: Turas moved to Tuřany.** As recommended: Turas moved, measured; Krug, Bellowitz and the Posoritz post house kept; rg_cav a
@@ -99,8 +115,9 @@ note (in the build since step 4's K11: its strengthNote names Kologrivov's singl
 identification is printed (Wolny's Moravian topography, 1836, p. 239: "Turas (Tuřany)", `wolny1836.p239.turas`); the position is the Czech
 address register's (RÚIAN definition point of the part of Brno Tuřany, kód 12173: 49.147242 N, 16.662997 E, `cuzk2026.ruian-geonames`,
 read on the register's text, grade C as the register entry gives it), whose points for five other villages agree with `GEOREF.GT` within
-0.5 map units (the same reading). As the source skeptic required (proposals C6.p20), the point goes into `GEOREF.GT` and the village reads
-it, rather than a new literal: no new scale constant, the transform unchanged.
+0.5 map units (the same reading). As the source skeptic required (proposals C6.p20), the point goes into `GEOREF.GT`; `VILLAGES` holds the
+rounded literal, as for every register village, and geo-test holds it to the GT point within 0.5 km (it is 9 m off): no new scale
+constant, the transform unchanged. geo.js's header names the one village from another register.
 - `GEOREF.GT.turas` (geo.js): was (none); is `{n:"Turas", cz:"Tuřany", lat:49.147242, lon:16.662997, kind:"v", note}` (map [44.2, 293.8], by
   `toMap`). Not one of the transform's fitted villages; geo-test's checks over every GT point (round trip, bearings of every pair 2 km or
   more apart, every surveyed village within 0.5 km of its drawn place) pass, 59 of 59.
@@ -108,8 +125,10 @@ it, rather than a new literal: no new scale constant, the transform unchanged.
   degrees true); the comment no longer names Turas among the places not in the register. The settlement cover the ground draws around a
   village moves with it.
 - `SOURCE_NOTE.body[4]`: was "Villages are placed from the Czech municipality register and summits from terrain-model data; the map keeps
-  ..."; is "Villages are placed from the Czech municipality register, Turas, which it does not list, at the Czech address register's point for
-  Tuřany, the name Wolny's topography of 1836 gives it, and summits from terrain-model data; the map keeps ..."; unchecked.
+  ..."; is (after the group's review, which found the first wording made Krug and Bellowitz look register-placed) "Villages are placed from
+  the Czech municipality register; Turas, which it does not list, at the Czech address register's point for Tuřany, its name in Wolny's
+  topography of 1836; Krug and Bellowitz, which no register read places, are not; summits from terrain-model data. The map keeps ...";
+  unchecked.
 - `SOURCE_NOTE.body[5]`: the open question "the true position of Turas (it is Tuřany in Wolny's topography of 1836, and the Czech register
   places it about 2.8 km north-north-west of where this map draws it);" is removed; unchecked.
 - *Measured*: Turas's name and village are drawn in the views that show the field's west; it is measured on the step's final full

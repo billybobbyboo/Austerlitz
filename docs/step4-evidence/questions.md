@@ -71,8 +71,9 @@ after, computed by `tools/stage2/chronology.js`).
 **182. I Corps as the centre, and the French plan's "In hand" column.**
 - *Options.* (a) One column, its `ord` rewritten to the orders read. (b) Split into the centre (Bernadotte) and the reserve (the Guard and
   the grenadiers). (c) One column renamed the reserve, without Drouet.
-- *Recommendation.* (b) if `plans-overview` stays within its drop limit, else (c). *Default.* (a). *Status.* The default (a) implemented
-  (K7); (b) and (c) not measured.
+- *Recommendation.* (b) if `plans-overview` stays within its drop limit, else (c). *Default.* (a). *Status.* The default (a) implemented (K7). In roadmap step 4b (b), built with both columns on the one route drawn, measured
+  past `plans-overview`'s drop limit (12 -> 13), so (c) is applied (`5eaa92f`): one column renamed the reserve, without Drouet; the
+  dispositions' sentence on I Corps moved into `PLANS.fr.intent` (an addition beyond (c), for the owner to confirm).
 
 **183. drouet@6's grade.**
 - *Options.* (a) A kept, the act disputed. (b) B, the place disputed (near Blasowitz in Stutterheim and Schönhals, on the Emperor's left in
@@ -122,7 +123,8 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
 
 **191. Places and the Guard cavalry: Turas, Krug, Bellowitz, the Posoritz post house, Kologrivov and rg_cav.**
 - *Options.* Turas moved to the register's point (2.85 km north-north-west; the C6 proposal's "WNW" was wrong, the review of `e7f0df1`) or kept; the others kept or moved to weaker identifications.
-- *Recommendation.* Turas moved, measured; the others kept; rg_cav a note. *Default.* Nothing moves. *Status.* Implemented (K11): nothing moves; the notes narrowed.
+- *Recommendation.* Turas moved, measured; the others kept; rg_cav a note. *Default.* Nothing moves. *Status.* The default implemented (K11): nothing moved, the notes narrowed. In roadmap step 4b Turas is moved to the address
+  register's point for Tuřany (`4981b27`), through `GEOREF.GT`; the others kept; rg_cav's note in the build since K11.
 
 **192. Track additions the readings suggest but do not place.**
 - *Options.* (a) None in step 4. (b) A Russian Guard detachment drawn in Blasowitz (the village's defenders in every account that names
