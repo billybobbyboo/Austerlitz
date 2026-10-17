@@ -181,7 +181,7 @@ measurement did not allow it or did not take it up.
 | # | question | recommended | in the build |
 |---|---|---|---|
 | 176 | the II and III Columns' 04:00 against the disposition's seven (lang@1, prz@1) | retime to the sources, replacing sim-test's mechanism assertion with an equally strict one | applied in 4b: from 07:00, B; the assertion still holds and is kept, a 4th Column check (Thiebault p. 504) added |
-| 177 | Friant at the Goldbach and Telnitz retaken (Davout's half past nine) | retime to the sources if `opening-2` measures unchanged | measured in 4b: `narrow-1024` past its drop limit, so (a) kept (the map's hours, the texts naming Davout's); question 199 |
+| 177 | Friant at the Goldbach and Telnitz retaken (Davout's half past nine) | retime to the sources if `opening-2` measures unchanged | measured in 4b: `narrow-1024` past its drop limit, so (a) stood; on decision 199 the limit is 7 and (b) is applied (Friant off at 05:00, at the Goldbach about 09:00, Telnitz retaken at 09:30, A) |
 | 178 | Kamensky's turn: a point at 09:45 or an interval | the point (no source gives an hour) | the point, its dispute naming the sequence (K4) |
 | 179 | the Russian Guard's attack and Rapp's charge | the windows and the engine's 11:15 kept, guard-broken disputed | the same (K4) |
 | 180 | Bagration's withdrawal and the end of the day | drop bag@8's dated departure if `opening-4` measures unchanged | applied in 4b (`opening-4` unchanged): bag@8 undated; the end disputed; bag@6 a named conflict |
@@ -197,31 +197,33 @@ measurement did not allow it or did not take it up.
 | 190 | the opening's words, its bar and the events it shows | minimal rewordings no longer than the text, measured; no marking of the ceiling-derived climbs in the bar | applied: tour stops 6 and 8 reworded (K11, `be730cf`, and in 4b "the Guard held back", `opening-2` unchanged); no marking |
 | 191 | places: Turas, Krug, Bellowitz, the post house, Kologrivov, rg_cav | Turas moved to Tuřany (2.85 km north-north-west), measured | applied in 4b: Turas at Tuřany (`GEOREF.GT.turas`); the others kept |
 | 192 | track additions the readings suggest but do not place | none | none |
-| 193 | the Timing A of the events not examined in step 4 | grade each against the registers | applied in 4b: every event left at A lowered (seven B, face-about C); question 201 |
+| 193 | the Timing A of the events not examined in step 4 | grade each against the registers | applied in 4b: every event then at A lowered (seven B, face-about C); since 199 and 177 (b) telnitz-retaken is A, the one event graded A; decision 201 made the seven "disputed" |
 | 194 | the Russian records' "синій" drawn as "dark blue" | keep "dark blue" until a period colour sample or plate in colour is read | "dark blue" kept, each note naming the convention |
 | 195 | the Szekler hussars' cornflower blue (an A-graded 1805 record read on a later page) | read the 1805 page first | read in 4b (images, machine reader): the Szekler box prints "dunkelblaue"; the record corrected; question 200 |
 | 196 | a formation waiting at its anchor graded by the next phase's grade (`confAt`; gqg A at the Zuran 11:15-12:00 since K8) | grade it by the phase whose text it shows, measured | `confAt` unchanged, the limit recorded |
 | 197 | the Guard's dawn grades (guard_inf@0, guard_cav@0, A), placed by the command post graded B | B for both, measured | applied in 4b, measured on a full check:visual |
 
-### Step 4b, part A: the decisions applied, and the owner questions 198-201
+### Step 4b, part A: the decisions applied, and the owner questions 198-202
 
 Applied on `claude/adoring-gauss-ubfas9` (draft PR #53), each as its recommendation reads, conditions measured with `harness.js --only`
 against a full step-4 reference run (`CHANGELOG.md`): 176 (b), 180 (b), 181, 184, 190 (a), 191, 193 (b), 195 (the page read), 197 (b);
-177 and 182 measured past a limit, so their fallbacks ((a); (c)). Not taken up in 4b: 187 and 196 (not in its scope) and 189 (a human
-reading). The questions the step met, in full in `docs/step4-evidence/questions.md`:
+182 measured past a limit, so its fallback (c); 177 measured past a limit, so (a), then (b) on decision 199. Not taken up in 4b: 187 and
+196 (not in its scope) and 189 (a human reading). The questions the step met, in full in `docs/step4-evidence/questions.md`; the owner
+decided 198-201 as recommended on 17 October 2026, applied in the same PR; 202 is open:
 
-| # | question | recommended | default in the build |
+| # | question | recommended | the build |
 |---|---|---|---|
-| 198 | timing grade B's dossier words ("cites no source") for lang@1 and prz@1, graded B from sources that differ | reword `TIMING_TEXT.B` to cover both uses | B and the words kept |
-| 199 | `narrow-1024`'s drop limit 6 -> 7 so that 177 (b) applies | move it, measured on a full check:visual | the limit kept, 177 (a) |
-| 200 | question 195 applied on a machine reading of the 1805 page | keep the correction | the correction |
-| 201 | the events whose hour the readings dispute (after 193): "disputed" with a dispute, and two unread whys | (b) where the cases measure unchanged, else (c) | claims and texts kept |
+| 198 | timing grade B's dossier words ("cites no source") for lang@1 and prz@1, graded B from sources that differ | reword `TIMING_TEXT.B` to cover both uses | decided (b): reworded |
+| 199 | `narrow-1024`'s drop limit 6 -> 7 so that 177 (b) applies | move it, measured on a full check:visual | decided (b): the limit 7, 177 (b) applied |
+| 200 | question 195 applied on a machine reading of the 1805 page | keep the correction | decided (a): the correction |
+| 201 | the events whose hour the readings dispute (after 193): "disputed" with a dispute, and two unread whys | (b) where the cases measure unchanged, else (c) | decided (b): seven events disputed, measured unchanged; the unread claims labelled this map's |
+| 202 | Bourcier's dragoons after 177 (b): their screen south of Telnitz at 08:00, an undated creep from 04:00, while Mikhailovsky-Danilevsky has them come with Friant | march them with Friant (the anchor at phase 3, the leg dated 05:00, B), measured | the default: the track kept |
 
 ### What step 4 hands on (fact, from its commits and their reviews; `CHANGELOG.md`)
 
 - **The owner decisions 176-197** above, decided as recommended: step 4b part A applied 176, 180, 181, 184, 190, 191, 193, 195 and 197,
-  and measured 177 and 182 into their fallbacks; 187 and 196 remain to be applied; 189 is a human reading. Step 4b's questions 198-201 are
-  above.
+  measured 182 into its fallback, and applied 177 (b) on decision 199; 187 and 196 remain to be applied; 189 is a human reading. Step 4b's
+  questions 198-201 are decided and applied; 202 is open (above).
 - **The claims' reach:** 134 of the 696 narrative statements carry a claim; 562 remain unchecked, mostly formation acts, feature stories and
   the analysis chapters outside the clusters read, but 38 of them rewritten in step 4 without a claim (among them the phase-2 to phase-5 ledes,
   `SOURCE_NOTE.body[0]`, `body[5]`, `refs[0]`, `refs[1]`, `ANALYSIS[#north]`, tour stops 6 and 8). Nothing shows a claim to a visitor (question 187).

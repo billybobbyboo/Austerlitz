@@ -107,9 +107,10 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   with their reasons (`EXCLUDED_PATHS`: the tracks' `tm` timings, which `--times` and the movement audit judge, the phase clocks,
   `tolWhy` and `analysis.js`'s comments), and a cite or allowance no longer live fails (a retimed, moved or renamed statement); the dated legs near the ceiling are asserted
   (`FORCED_DATED`, `NEAR_CEILING`); the movement audit runs inside it. Since roadmap step 4 (decision 125 (b)) the rows judge the sources'
-  hours where the published accounts give them, and the map's own timing is the allowed side: six named conflicts since roadmap step 4b
-  (`CONFLICTS`: bag@6, friant@1, friant@2, guard_cav@6, kamensky@3, kamensky@4; dok@1 settled from the sources in step 4, its departure
-  07:00, grade A; lang@1 and prz@1 settled in step 4b, 07:00, grade B, question 176; eight in step 4), each
+  hours where the published accounts give them, and the map's own timing is the allowed side: four named conflicts since roadmap step 4b
+  (`CONFLICTS`: bag@6, guard_cav@6, kamensky@3, kamensky@4; dok@1 settled from the sources in step 4, its departure
+  07:00, grade A; lang@1 and prz@1 settled in step 4b, 07:00, grade B, question 176; friant@1 and friant@2 settled in step 4b, Friant off
+  at 05:00, at the Goldbach about 09:00 (B), Telnitz retaken at 09:30 (friant@3, A), decisions 177 (b) and 199; eight in step 4), each
   cited from `SOURCE_NOTE.body[5]` (rule L8); its extractor reads only clock-shaped hours (a bare "about eight" goes unjudged; handed on).
 - `npm run check:contrast`: every visible text element in 35 interface states (the map layer's plates and the legend among them, map text also
   over black and white ground, the paper map as entered and close since 2E; Study as it opens and the Now tab on the paper map since 3B;
@@ -157,7 +158,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   within 1 px, the wheel zooms toward the cursor within 1 px, a double-click centres within 2 px, a right-drag orbits, the keys and
   touch, the floor after every step), the offset after each panel change, picking through it, Follow after 14 paths, every
   vantage's target centred and the Overview's battle inside the free rectangle naming its corps and armies, and one tween chain.
-  The drop limits of selected-formation (4) and narrow-1024 (6) are the 3C layer's in the 3D framing (owner decision 62).
+  The drop limits of selected-formation (4) and narrow-1024 (6) are the 3C layer's in the 3D framing (owner decision 62); narrow-1024's is 7
+  since roadmap step 4b, on the owner's word (decision 199: the retaken Telnitz's label at 09:30 takes Bourcier's name's room).
   Since 3E: by real key presses, Space and Enter on a focused button press it, Ctrl+C does nothing, "?" opens the overlay and
   focus returns when Esc closes it; the self-test's key-table dry run, the overlay, the names and the symbols' largest size;
   `css-test.js` checks the names (no presentation "Map", no ground "Staff map").

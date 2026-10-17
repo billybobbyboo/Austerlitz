@@ -234,7 +234,7 @@ go with your recommendations, then include that in PR 53". Each is decided as it
   4 -> 2, which 177 (b) made). The condition of (b) holds: no event falls back to (c).
 
 **The review of `24de9a8`, `3d2d133` and `8f20d05` (decisions 198-201 and 177 (b); an independent reviewer, read-only, on a worktree of
-`8f20d05`; fixed in this commit).** It rebuilt the build (identical: md5 `d81385f7...`, 2,157,328 bytes) and ran test.js, redteam.js,
+`8f20d05`; fixed in this commit).** It rebuilt the build (identical: md5 `d81385f7...`, 2,166,011 bytes) and ran test.js, redteam.js,
 sim-test.js, binding-test.js and check:chronology (all clean: 66 consistent, 4 early, all named; 37 allowances), and checked the hours
 against both registers quote by quote, 193's grades (telnitz-retaken the one A, seven B, face-about C), 198's words, 199's one limit and
 177 (b)'s declarations: fine. Its findings, each fixed or recorded here:
