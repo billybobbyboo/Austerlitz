@@ -185,8 +185,8 @@ ol.tl li b{font-weight:400;font-size:var(--t-ui);color:var(--text-muted);font-va
 ol.tl li span{color:var(--text-muted);line-height:1.5}
 ol.tl li i{color:var(--text-muted);font-style:normal;font-size:var(--t-small)}
 ol.tl li.now{border-left-color:var(--accent)}
-ol.tl li.now span{color:var(--text)}
-ol.tl li.past span{color:var(--text-muted)}
+ol.tl li.now > span{color:var(--text)}
+ol.tl li.past > span{color:var(--text-muted)}
 
 ul.links{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
 .linkb{background:none;border:1px solid var(--line-2);color:var(--text-muted);font-size:var(--t-small);padding:4px 9px;
@@ -546,7 +546,9 @@ body.pm-map #restore{display:block}
 /* layer tags on dossier sections, and the derived marker on the strip */
 .ltag{display:inline-block;font-size:var(--t-micro);letter-spacing:.07em;padding:1px 6px;border-radius:2px;
   margin-left:7px;vertical-align:2px;font-weight:400}
-.ltag.record,.ltag.recon,.ltag.derived{background:var(--plate);color:var(--plate-ink)}
+.ltag.record,.ltag.recon,.ltag.derived,.ltag.claim{background:var(--plate);color:var(--plate-ink)}
+/* decision 187 (iv): a statement's claim, after its text: never wrapped inside itself */
+.ltag.claim{white-space:nowrap}
 .tb-sit small{font-size:var(--t-micro);letter-spacing:.07em;color:var(--text-muted);margin-right:5px;
   border:1px solid rgba(var(--line-rgb),.45);padding:0 4px;border-radius:2px;vertical-align:1px}
 .dispatch::-webkit-scrollbar{width:6px}

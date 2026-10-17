@@ -1,5 +1,162 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 4b, part B: questions 202, 187 and 196 applied; decision 189 recorded complete
+
+**Status: done on `claude/adoring-gauss-ubfas9` (PR #54), for review. The build changed: `austerlitz-command-map.html` 2,178,819 bytes, md5
+`02a46c500ca839a9a6e108d8333cc78a` (the part-A build with decisions 198-201: 2,167,583 bytes, `e257d09b...`).** The owner wrote (17 October 2026): "Let's do all remaining
+questions, your recommendations for all here. 202 and 203, as well as any other ones we can do now. That means Q202, Q187 and 196, and also
+mark Decision 189 as complete. Then merge through a separate PR, meaning PR 54." Question 203 did not exist yet: this part records it (below).
+For 187, whose record names its four parts but not their words or layout, the owner chose on being asked "Index + tags": (i) the claims in
+CLAIM_WORDS's words, the event pill, the Command tab and the position text keeping their own keys but taking CLAIM_WORDS's wording where two
+say the same thing; (ii) the index in the sources sheet only, measured; (iii) the framing statements "interpretation" by class; (iv) the
+dossier's statements tagged with their claims, "Not yet checked" where they have none; the drawer button to the owner as question 203.
+
+**The commits.**
+- `7968f09`: question 202 (b), Bourcier's dragoons march with Friant.
+- `6f0adee`: question 196 (b), a formation waiting at an anchor graded by it.
+- `c1a000f`: question 187, the claims on screen (the index and the dossier's tags).
+- `dba7f86`: questions.md and ROADMAP: 187, 189, 196 and 202's status; question 203.
+- `43c381e`: the index's places told apart: a place's summary, whys and facts, and each Command row by its number.
+- `6982e81`: the review of `7968f09`, `6f0adee`, `c1a000f` and `dba7f86`, fixed; questions 203 widened and 204 recorded.
+- `f6ff1c9`: `CLAUDE.md`.
+- (this commit) The part's end: the final checks, check:data's reference and the baseline moved.
+
+**Question 187: the claims on screen, as the owner chose ("Index + tags").** Decision 187 recommended (i) one vocabulary, (ii) an index in
+the sources sheet first, then a button at the end of the drawer dossiers, each measured, (iii) the framing statements "interpretation" by
+class and (iv) the formation dossier's section tags following their statements, with (ii). Its record gives no words or layout, so the
+owner was asked how far to take it and chose (i), (ii)'s index alone, (iii) and (iv); the drawer button is question 203.
+- *(i) One vocabulary.* `CLAIM_WORDS` (narrative.js) is the vocabulary of the statements' claims, shown now in the index and the tags.
+  The three other vocabularies keep their keys; a label takes `CLAIM_WORDS`'s word only where it says the same thing: `SRC_LABEL.inf`
+  (app.js, the Command tab) was "INFERRED", is "THIS MAP'S READING" (`CLAIM_WORDS.interpretation`). `CLAIM.disputed.label` (data.js, the
+  event pill) was changed from "Disputed" to "The sources disagree" in `c1a000f` and restored after the review: an event's "disputed" also
+  covers one source against this map's hour (davout-resumes) and no account's hour against the map's own texts (kamensky), where "the
+  sources disagree" overclaims; `CLAIM_WORDS.disputed` requires two sides from two sources, `EVENTS[].claim` does not. Kept, because they
+  say more or less than the claim word: `CLAIM.fact` "Fact" ("Attested in the standard
+  accounts", not "a source read here"), `CLAIM.est`, `CLAIM.recon`, `CLAIM.disputed`, `SRC_LABEL.doc` "DOCUMENTED" and `.anec` "ANECDOTE" (no Command row is
+  checked against a reading by them, so "Read in a source" or "As a source tells it" would overclaim), and `CONF_TEXT.A` (a position's grade,
+  not a statement's claim).
+- *(ii) The index* (app.js `claimsIndex`, `refLabel`): a section "The statements' claims" in the sources sheet, after the works read: each
+  claim word with its definition and its count; the claimed statements listed under it, each by where it is in a visitor's words
+  (an event, a phase's line, a formation at a phase, a place, a theme, a tour stop, a Command row, a plan, this sheet) and the works it
+  rests on with their locators; the framing classes named with their reasons; "Not yet checked" for every other statement. Read from
+  narrative.js alone (no quotation in the build). Measured: check:contrast (the sources sheet is one of its states) and the full
+  check:visual at the part's end.
+- *(iii) The framing statements by class*: `CLAIM_BY_CLASS` (narrative.js, new, guarded in check:data's group "narrative claims"): every phase
+  title, track objective and act line "interpretation", each class with the pattern of its refs and its reason, unless the statement has an
+  entry of its own (one act line has). 75 statements so (10 phase titles, 61 track objectives, 4 act lines). Event names, which the
+  option put to the owner on 17 October also listed (questions.md's text says "the framing statements" only), are not classed (question
+  204): an event's name states the event, whose claim is the event's own (`EVENTS[].claim`,
+  shown in its pill), so "This map's reading" would understate a documented event and overstate nothing it adds; recorded here for the
+  owner. test.js holds each class to `tools/step4/statements.js`'s classes (its pattern matches that class's refs exactly), its claim one
+  that needs no reading (never fact, attributed, disputed or uncertain), and counts them; the inventory shows "interpretation (by class)".
+- *(iv) The formation dossier's tags* (app.js `stmtClaim`, `claimTag`): each narrative statement the dossier shows carries its claim's word
+  after it: the commander, the composition, the note on the figures, the act before, now and next, the objective, the role, the outcome and
+  the note; a statement without a claim "Not yet checked". "What it was doing" and "Why it was there", made of statements alone, lose their
+  section tags ("reconstruction", "record"); the sections that hold data rows (Who, How many, Where, Its day, Dress) keep theirs. The tag is
+  the layer tag's plate (`.ltag.claim`, style.css), not wrapped inside itself.
+- runtime-test.js (new check): in every formation's dossier at five clocks, each claim tag names a live narrative statement with its own
+  claim, else its class's, else "unchecked", in `CLAIM_WORDS`'s word, and each statement shown carries one (1,257 tags in 200 dossiers:
+  unchecked 883, interpretation 131, disputed 135, attributed 103, derived 5); every one of the 704 statements has a place in the index's
+  words; every claimed statement is listed in the index with its kind's count.
+- check:data's changed declarations: `SRC_LABEL` (app.js), `CLAIM_BY_CLASS` (new), and the presentation code outside the guard (`CLAIM`
+  changed in `c1a000f`, restored by the review's fixes). Checks at this commit: test.js (704 statements: 141 with a claim of their own, 75 by class, 488 unchecked; the inventory current),
+  redteam.js, css-test.js, sim-test.js, binding-test.js and runtime-test.js pass.
+
+**The part's end.**
+- *What part B did.* 202 (b) applied (Bourcier's dragoons from Raigern with Friant, 05:00, B); 196 (b) applied (`confAt`); 187 applied as the
+  owner chose ("Index + tags": `SRC_LABEL.inf` in `CLAIM_WORDS`'s word, the claims index in the sources sheet, 75 framing statements
+  "interpretation" by class, the formation dossier's statements tagged); 189 recorded complete on the owner's word. Questions 203 (the
+  drawer button and the other dossiers' and the card's tags) and 204 (event names by class) open, their defaults built. The next owner
+  decision is 205.
+- *What remains uncertain (historical).* Bourcier's own hour and place (no reading gives them; the march with Friant is
+  Mikhailovsky-Danilevsky's, the 05:00 Davout's for the division); everything part A listed. Decision 189's human reading: recorded
+  complete on the owner's word, with no item results; the 15 A-graded appearance quotes and the Szekler page rest on the machine readings.
+- *Implementation choices (not historical claims).* Which labels share `CLAIM_WORDS`'s words (only `SRC_LABEL.inf`); the framing classes
+  (phase titles, track objectives, act lines; event names not, question 204); the index listed in full, not collapsed (keyboard); the
+  tags without icons; the compact card untagged (question 203).
+- *check:data.* The reference moves to this build, archived as `archive/step4b-02a46c50.html`. Against the part-A reference
+  (`archive/step4b-e257d09b.html`) the part changed `FORMATIONS`, `KNOW_OVERRIDE`, `confAt`, `SRC_LABEL` and `STATEMENT_CLAIMS` and added
+  `CLAIM_BY_CLASS` (6; `CLAIM` changed and restored, net unchanged); against the new reference all 131 declarations are byte-identical.
+- *Checks on the final build* (md5 `02a46c50...`, 2,178,819 bytes; each heavy check run alone):
+  - npm test: all nine suites and the height guard pass (order of battle 42/42, appearance 603/603, geo-test 59, binding-test 400; test.js
+    704 statements, 141 with a claim of their own, 75 by class, 488 unchecked, the inventory current; runtime-test's claims on screen, 1,257
+    tags in 200 dossiers, and "console.warn unique" 0; sim-test's 196 pins and 556 waiting samples).
+  - check:chronology: 0 errors; 66 consistent, 4 early, all named (bag@6, guard_cav@6, kamensky@3, kamensky@4); 25 explicit times.
+  - check:visual (30 cases and the self-test): STAGE0, all checks passed; compared case by case with the final part-A run, no difference in
+    drops, dropped ids, unobstructed fractions or timeline height in any case. No limit changed.
+  - check:selftest: 242 passed, 0 failed, the manifest held.
+  - check:contrast: 35 states, all reached; 5,864 text elements, 114 pairs, 0 below AA, 0 below 10.5 px, 0 font failures, 0 console
+    messages; the six start-up cases pass.
+  - check:data: 131 identical against the new reference. check:baseline: moved to this build (`package.json`: md5
+    `02a46c500ca839a9a6e108d8333cc78a`, 2,178,819 bytes; was `e257d09b...`, 2,167,583 bytes); passes.
+  - Not run: `tools/stage6/verify-quotes.js` (network).
+- *Records.* `CLAUDE.md`, `docs/ROADMAP.md`, `docs/step4-evidence/questions.md` (187, 189, 196 and 202's Status lines; 203, 204),
+  `docs/VISUAL_SPEC.md` §10.4.
+
+**The review of `7968f09`, `6f0adee`, `c1a000f` and `dba7f86` (an independent reviewer, read-only, on a worktree of `dba7f86`; fixed in
+this commit).** It rebuilt the build (identical) and ran test.js, redteam.js, sim-test.js, binding-test.js, css-test.js, runtime-test.js,
+audit.js, terrain-test.js, check:chronology and the inventory's check (all clean), compared the old and new `confAt` for every leaf at every
+minute (only gqg 11:15-12:00, friant 09:00 and kienmayer 14:30 change, A -> B, as recorded; no track entry sets a grade without a place, so
+nothing is lost while a formation waits) and ran `refLabel` over all 704 refs. Its findings, each fixed or recorded:
+- (1, high) The event pill "The sources disagree" overclaimed (above, (i)): restored to "Disputed".
+- (2, high) The index's collapsed lists (`<details>`) could not be reached by keyboard: the sources sheet's Tab order is its close button and
+  its body (`SHEETS.modal`, held by the self-test). The lists are shown in full; runtime-test.js fails on a collapsed list in the index.
+- (3) Bourcier's 05:00 had no evidence string carrying the hour: `bourcier@3.tm.ev` gains "Davout's reports send the division on from Raigern
+  at 05:00" (the raigern event's why). Grade B is decision 202's as decided ("the leg dated 05:00, B"); the hour is Davout's for the division
+  he brought, applied to the dragoons by Mikhailovsky-Danilevsky's sentence: an inference, as the timing note says. The reviewer notes that
+  C ("inferred ... applied to this move") would fit as well, and that the dragoons reach their screen at 08:45, east of Friant, while
+  Mikhailovsky-Danilevsky has Davout arrive with both after Telnitz fell: the screen is this map's, as the act says; for the owner.
+- (4) The compact card (a selected formation's default view: the act now, the next act, the objective, the army total) is untagged; recorded
+  in question 203's option (c). The dossier header's designation is untagged too (the header is not a section of statements).
+- (5) The index's intro said every claim was "checked against the works read here": it now says that a claim of its own was checked on the
+  works' page images by machine readers, none yet read again by a person, and that a framing statement's claim is given by its kind, not
+  checked one by one.
+- (6) Ambiguous index places: a formation's label names its nation ("Guard Infantry (France)", "(Russia)"); a phase line its first words;
+  this sheet its paragraph, basis or layer; a plan its field or column; the framing classes their visitor names (`CLAIM_BY_CLASS[].n`, test.js
+  requires it) and their counts, computed from the data (runtime-test.js checks each against `tools/step4/statements.js`).
+- (7) The event-name exclusion is put to the owner as question 204 (default: as built).
+- (8) No test pinned 196: sim-test.js now holds gqg at 11:15, 11:40 and 11:59 at B, friant at 09:00 and kienmayer at 14:30, and the rule
+  for every leaf at every ten minutes (556 waiting samples).
+- (9) The act list's colours (`ol.tl li.now span`, `.past span`) outranked the tag's ink: scoped to the list's own spans (`> span`).
+  (10) The tag carries a visually hidden "Claim: " for screen readers. (13) The guard's comment and `docs/VISUAL_SPEC.md` §10.4 name the new
+  words and the tag. (14) The Command tab's longer tag is measured on check:contrast. (15) No collapsed list, so nothing closes on a repaint.
+- Recorded, not changed: (11) "Who" and "How many" keep their "record" section tags (their data rows: arm, echelon, strength) while their
+  statement rows say "Not yet checked"; (12) Bourcier's dossier says "Position unchanged." while he marches 05:00-08:45 (no act at phase 0;
+  as before this part, when the creep from 04:00 did the same).
+- Records: `docs/ROADMAP.md`'s step-4b paragraph and the claims' reach; `questions.md`'s preamble; `CLAUDE.md` at the part's end.
+- check:data's changed declarations in this commit: `CLAIM` (restored), `FORMATIONS` (bourcier's evidence), `CLAIM_BY_CLASS` (the names).
+
+**Question 196 (b): a formation waiting at an anchor is graded by that anchor.** As recommended: (b), in its fuller form, which covers
+kienmayer@7 too. `confAt` (app.js, a declaration of check:data's "movement, strength and confidence model") graded a formation by the phase
+the clock is in, so while it still stood at an anchor waiting for a leg that begins later in the phase it took the next anchor's grade. Was:
+between two anchors the weaker one's, else the current phase's; is: before its next leg begins (`legAt`'s `u` 0 with a next anchor) the
+anchor it stands at, graded as that anchor is (`stateAt` of its phase); between two anchors and at an anchor as before. The cases this
+changes over the day (every minute, every leaf formation, from the model): gqg 11:15-12:00 (A -> B: the headquarters waits at the Zuran
+point, gqg@0, B since step 4's K8, until gqg@6's departure at 12:00), friant at 09:00 (one minute, A -> B: at the Goldbach anchor, friant@1,
+B, before the leg to the retaking begins) and kienmayer at 14:30 (one minute, A -> B). The dispatch's text already took the earlier phase's
+(`waitingFor`) for gqg; it is unchanged. What draws on `confAt` follows: the position mark on the ground, the name's badge, the dossier's
+pill and grade. Measured: `opening-4` (14:30) with `harness.js --only` against the final part-A run: no difference in drops, dropped ids,
+unobstructed fractions or timeline height; the full check:visual at the part's end. check:data's changed declaration: `confAt`.
+
+**Question 202 (b): Bourcier's dragoons march with Friant.** As recommended: (b), measured. Mikhailovsky-Danilevsky has Davout come from
+Raigern "with Friant's infantry division and Bourcier's cavalry" after Kienmayer had taken Telnitz (pp. 178-179, `md1844.p178-179.davout-telnitz`,
+grade B, fact, read on page images); no reading gives the dragoons' own hour or place.
+- `FORMATIONS.bourcier.track`: the screen's anchor was `2:{p:[184,420], st:"holding", obj:"Cover the right of the Goldbach line", act:"Screens
+  the ground south of Telnitz"}` (reached at 08:00 by an undated creep from Raigern at 04:00); is keyed 3, the same place, status and
+  objective, with `tm {dep:300, gr:"B", basis:"source"}` (Davout's 05:00 for the division he brought; his report of 26 December has half
+  past five to six, Sokolov about six) and the act "Up from Raigern with Friant's division, as Mikhailovsky-Danilevsky has Davout come; the
+  screen south of Telnitz is this map's". The leg runs 05:00-08:45 (its arrival the phase's start, no arrival derived), so the dragoons reach
+  the screen as Friant's leading brigade nears the Goldbach (about 09:00).
+- `KNOW_OVERRIDE.al.bourcier`: was `[[0,"unknown"],[2,"uncertain"]]`; is `[[0,"unknown"],[3,"uncertain"]]`, as Friant's "seen" moved to
+  phase 3 in part A.
+- `STATEMENT_CLAIMS`: the new act "attributed" (`md1844.p178-179.davout-telnitz`), its note saying the screen is this map's.
+- redteam.js's acknowledged warning "cavalry mean rate ... is not above infantry 1.28": the cavalry mean is 0.83 (was 0.82), one of the
+  cavalry's undated creeping legs (decision 45) now dated; the reason extended. Not an assertion: a warning acknowledged by its exact text.
+- Measured with `harness.js --only` on the cases where the dragoons' place or the Allied reading of them differs (`close-sokolnitz`,
+  `paper-close`, `opening-2`, `eye-zuran`, `eye-zuran-1x`, `narrow-1024`) against the final part-A run: no difference in drops, dropped ids,
+  unobstructed fractions or timeline height. check:chronology: 0 errors (bourcier@3 05:00-08:45, B, source; its evidence the act).
+- check:data's changed declarations: `FORMATIONS`, `KNOW_OVERRIDE`, `STATEMENT_CLAIMS`.
+
 ## 2026-10 · Roadmap step 4b, part A: owner decisions 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 taken up
 
 **Status: done on `claude/adoring-gauss-ubfas9` (draft PR #53), for review, with the owner's decisions 198-201. The build changed:

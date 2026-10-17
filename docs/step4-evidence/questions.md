@@ -9,9 +9,11 @@ changes to it are said.
 **Decided, 15 October 2026.** The owner wrote: "Let's go with your recommendations for all questions", and then: "Only record the
 decisions/your recommendations. We will implement later." Each question 176-197 is decided as its *Recommendation* reads, conditions
 included (a recommendation that depends on a measurement is to be applied only where the measurement allows it, else its stated fallback).
-None is implemented yet: the build carries each question's *Default*, as its *Status* line says, until a later task applies the decision.
+None was implemented then: the build carried each question's *Default* until a later task applied the decision; each *Status* line says
+what the build carries now.
 Roadmap step 4b part A took up 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 (`CHANGELOG.md`): each *Status* line says what
-it applied, or the fallback a measurement required; it met questions 198-202, at the end of this file.
+it applied, or the fallback a measurement required; it met questions 198-202, at the end of this file. Roadmap step 4b part B applied 187,
+196 and 202, recorded 189 complete on the owner's word, and met question 203.
 Question 189's recommendation is a reading by the owner or a tester. 178, 179, 183, 185, 186, 188, 192 and 194 recommended what the build
 already carries.
 
@@ -102,7 +104,9 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
   button at the end of the drawer dossiers. (iii) The framing statements "interpretation" by class, or unchecked. (iv) The formation dossier's
   section tags follow their statements.
 - *Recommendation.* (i) yes; (ii) the index first, each measured; (iii) "interpretation" by class; (iv) yes, with (ii).
-- *Default.* Nothing new shown; claims are data and the inventory. *Status.* The default is the repository's state. The eye-level
+- *Default.* Nothing new shown; claims are data and the inventory. *Status.* Applied in roadmap step 4b part B as the owner chose on being
+  asked ("Index + tags", 17 October 2026): (i), (ii)'s index in the sources sheet, (iii) for phase titles, track objectives and act lines
+  (event names not classed: their claim is the event's own), (iv); the drawer button is question 203 (`CHANGELOG.md`). Before it: the default. The eye-level
   caption's source attributions (`app.js` `eyeCaption`: Schönhals, the French officer's note of 1806, Lejeune) are presentation sentences outside
   check:data's guard and the claims; whether they should be read from the data belongs here (the review of `c3e6299`).
 
@@ -115,7 +119,9 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
   from the machine second reading's record (`docs/stage6-evidence/second-reading.md`) and first from question 195's Szekler page. (b) Accept
   the machine second reading in its place (amending 136). (c) Defer to step 5 (amending 136's timing).
 - *Recommendation.* (a). *Default.* The machine second reading done and recorded as one; decision 136 open, to be carried in
-  `docs/ROADMAP.md` at the step's end. *Status.* The machine reading is in `3dafee8`; the human reading is not done.
+  `docs/ROADMAP.md` at the step's end. *Status.* The machine reading is in `3dafee8`. Recorded complete on the owner's word in roadmap step
+  4b part B (17 October 2026: "mark Decision 189 as complete"), as decision 175 recorded the screen-reader session: no item results were
+  given, so none is recorded, and no quote's grade or record changes for it; the Szekler page (195) stands as the machine reading read it.
 
 **190. The opening's words, its bar, and the events it shows.**
 - *Options.* (a) Minimal rewordings, no longer than the text they replace, where the readings contradict it (`TOUR[5].x`, `TOUR[7].x`), each
@@ -174,7 +180,9 @@ meanwhile keeps the earlier phase's (`waitingFor`).
   (`stateAt(id, waiting ? phaseAt(t)-1 : phaseAt(t))`, as `waitingFor` does), or, to cover kienmayer@7 too (its next departure falls on the
   phase's start, so `waitingFor` returns nothing), by its leg's first anchor while the leg has not begun: a change to the model's
   presentation in `app.js`, measured on a full check:visual (the review of the step's last commit).
-- *Recommendation.* (b), measured. *Default.* (a). *Status.* The default is the repository's state; recorded in `CHANGELOG.md`.
+- *Recommendation.* (b), measured. *Default.* (a). *Status.* Applied in roadmap step 4b part B (`6f0adee`): (b) in its fuller form, a
+  formation whose next leg has not begun graded by the anchor it stands at (gqg 11:15-12:00, friant at 09:00, kienmayer at 14:30, A -> B);
+  `opening-4` measured unchanged, the full check:visual at the part's end (`CHANGELOG.md`).
 
 **197. The Guard's dawn grades (guard_inf@0, guard_cav@0, grade A).** Both are placed by the command post (guard_inf@0's act: "formed in reserve
 around Napoleon's command post"; guard_cav@0 has no act), which K8 grades B; the Guard's "in reserve with the Emperor" (c_gd's role) is the
@@ -189,7 +197,8 @@ Savary makes the Guard infantry Lannes's natural reserve (1 December).
 
 **Decided, 17 October 2026.** The owner wrote: "questions 198-201, lets go with your recommendations, then include that in PR 53". Each is
 decided as its *Recommendation* reads, conditions included, and applied in roadmap step 4b (`CHANGELOG.md`); each *Status* line says how.
-Question 202, met in the review of those decisions' commits, is open, its default built.
+Question 202, met in the review of those decisions' commits, was decided (b) with 187 and 196 on 17 October 2026 ("your recommendations
+for all"), applied in roadmap step 4b part B; question 203, met there, is open, its default built.
 
 Choices decisions 1-197 do not settle, met while applying decisions 176-197 in step 4b; each with its options, a recommendation and the
 conservative default built meanwhile. The next owner decision after these is the number after the last.
@@ -259,5 +268,32 @@ conservative default built meanwhile. The next owner decision after these is the
   date: the anchor re-keyed to phase 3, the leg still undated.
 - *Recommendation.* (b): the one reading that names the dragoons puts them in Friant's march, and Davout's hour for that march is in the
   map since 177 (b); the screen's place is kept, being undated in any reading. *Default.* (a), as built.
+- *Status.* Decided (b) on 17 October 2026 ("your recommendations for all"); applied in roadmap step 4b part B (`7968f09`), measured on six
+  cases with no difference (`CHANGELOG.md`).
+
+**203. The claims at the end of the drawer dossiers (decision 187 (ii)'s second part).**
+- *Context.* Decision 187 (ii) recommended the index in the sources sheet first, then a button at the end of the drawer dossiers, each
+  measured. In roadmap step 4b part B the owner chose the index and the dossier's tags, and this button for later. The formation dossier now
+  tags each statement with its claim; the event, place and terrain-line dossiers (the "drawer dossiers" besides the formation's) show their
+  statements without one, and nothing there leads to the index.
+- *Options.* (a) Nothing more: the index and the formation dossier's tags. (b) At the end of every drawer dossier, a button "How this is
+  sourced" opening the sources sheet at the index, with the dossier's own statements and their claims listed first; measured on
+  `paper-drawer`, `selected-formation` and the contrast states that open a dossier. (c) (b) without the button: the event, place and
+  terrain-line dossiers' statements tagged as the formation dossier's are, and the formation's compact card's (its act now, the next act,
+  the objective, the army total), which part B left untagged (the review of `c1a000f`).
+- *Recommendation.* (b), measured, with (c)'s tags if the measures allow both. *Default.* (a), as built.
 - *Status.* Open; the default built.
+
+**204. Event names as framing statements (decision 187 (iii)).**
+- *Context.* Decision 187 (iii) gives the framing statements the claim "interpretation" (`CLAIM_WORDS`: "This map's reading") by class. In
+  roadmap step 4b part B the classes so claimed are the phase titles, the track objectives and the act lines (75 statements). The option
+  put to the owner on 17 October also named event names; they were left out: an event's name states the event ("Kienmayer attacks Telnitz"),
+  whose own claim (`EVENTS[].claim`: fact, estimate, reconstruction, disputed) its pill shows, so "This map's reading" would understate a
+  documented event. Some track objectives, likewise, restate orders the readings give (the Allied disposition's), which "beyond what its
+  sources say" understates without overclaiming.
+- *Options.* (a) As built: event names unclassed (their claim the event's), track objectives "interpretation" by class. (b) Event names
+  "interpretation" by class too, as the option named them. (c) (a), and the track objectives that restate a read order given claims of their
+  own, one by one, from the readings.
+- *Recommendation.* (a) now, (c) when a sourcing pass reaches the orders. *Default.* (a), as built.
+- *Status.* Open; the default built. The next owner decision is 205.
 

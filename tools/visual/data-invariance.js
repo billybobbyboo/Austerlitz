@@ -30,11 +30,11 @@ const DATA={
      (GEOREF.GT) a place's dossier quotes as "surveyed X m"; TIMING_TEXT, CONF_TEXT and CONF_INTERP: the timing and position grades as a
      visitor is told them. Since C28 (the completeness critic's item 6, after the reference moved to the step-2 build): POS_CLAIM, a
      formation's position grade as its pill words it (decision 128 (a)), and SRC_LABEL, the Command tab's source grades (DOCUMENTED,
-     INFERRED, ANECDOTE): the same class, what a visitor is told a statement's or a position's grade is */
+     INFERRED until roadmap step 4b part B, since then THIS MAP'S READING (decision 187 (i)), ANECDOTE): the same class, what a visitor is told a statement's or a position's grade is */
   "data in app.js (roadmap step 2, D-5)":["SUN_DAY","FEATURE_GT","TIMING_TEXT","CONF_TEXT","CONF_INTERP","POS_CLAIM","SRC_LABEL"],
   /* roadmap step 4 (docs/FINAL_AUDIT.md H-6; decisions 128 (b), 130): narrative.js, each narrative statement's claim and the readings it
      rests on, and the claims' words */
-  "narrative claims (roadmap step 4)":["CLAIM_WORDS","STATEMENT_CLAIMS"]
+  "narrative claims (roadmap step 4)":["CLAIM_WORDS","CLAIM_BY_CLASS","STATEMENT_CLAIMS"]
 };
 function split(file){
   const h=fs.readFileSync(file,"utf8");

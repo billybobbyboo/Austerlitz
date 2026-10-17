@@ -11,8 +11,11 @@
             docs/step4-evidence/readings.md or docs/step2-evidence/readings.md (the quotations are there, not in the build), and, for a
             disputed claim, the side the reading supports;
        note optional, in a visitor's words; never a clock time (the hours are the tracks' timings and the chronology ledger's).
-   - CLAIM_WORDS: each claim's word and its one-line definition, as a visitor would be told them; nothing shows them yet (the vocabulary is
-     an owner question of step 4). */
+   - CLAIM_WORDS: each claim's word and its one-line definition, as a visitor would be told them; since roadmap step 4b part B (decision
+     187) shown in the sources sheet's index of claims and on the formation dossier's statements.
+   - CLAIM_BY_CLASS (decision 187 (iii)): the framing statements' claim by their class (tools/step4/statements.js CLASSES), each class with
+     the pattern of its refs (test.js holds it to the classes), its name in a visitor's words (n) and why; a statement of such a class with its own STATEMENT_CLAIMS entry
+     takes its entry's claim. */
 var CLAIM_WORDS = {
   fact:          {w:"Read in a source",        d:"A source read here says what the statement says."},
   attributed:    {w:"As a source tells it",    d:"The statement reports, by name, what a source read here says: the claim is that the source says it."},
@@ -22,6 +25,12 @@ var CLAIM_WORDS = {
   uncertain:     {w:"Not established",         d:"Searched for in the sources read here and not established by them."},
   design:        {w:"Design decision",         d:"A convention of this map's drawing or method, not a claim about the battle."},
   unchecked:     {w:"Not yet checked",         d:"Not yet checked against a source read here."}
+};
+
+var CLAIM_BY_CLASS = {
+  "phase title":     {re:"^PHASES\\[#\\d+\\]\\.title$",                 cl:"interpretation", n:"the title of each of the day's phases", why:"how this map divides the day and names each part"},
+  "track objective": {re:"^FORMATIONS\\.\\w+\\.track\\[\"\\d+\"\\]\\.obj$", cl:"interpretation", n:"a formation's objective", why:"a formation's purpose as this map reads it from its orders and movements"},
+  "act":             {re:"^ACTS\\[#\\w+\\]\\.line$",                  cl:"interpretation", n:"the line of each of the timeline's five acts", why:"this map's summary of a part of the day"}
 };
 
 var STATEMENT_CLAIMS = {
@@ -34,6 +43,8 @@ var STATEMENT_CLAIMS = {
       {src:"kutuzov1951", at:"pp. 255-258", rd:"kutuzov1951.p255-258.relation"},
       {src:"kutuzov1951", at:"p. 265", rd:"kutuzov1951.p265.private-relation"}],
     note:"No account read has Kutuzov order the 4th Column to face about; the order is this map's reading, the three accounts on Kamensky's turn attributed in the text."},
+  "FORMATIONS.bourcier.track[\"3\"].act": {h:"ef45d62b77ef", cl:"attributed", by:[{src:"mikhailovsky1844", at:"pp. 178-179", rd:"md1844.p178-179.davout-telnitz"}],
+    note:"Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry; no reading gives the dragoons' own place, so the screen is this map's."},
   "EVENTS[#telnitz].dispute": {h:"bf5ca2cd0451", cl:"disputed", by:[{src:"savary1828", at:"t. II, pp. 204-207", rd:"savary1828.p204-207", side:"the Russians debouching on Legrand about seven"},
       {src:"schoenhals1873", at:"pp. 157-159", rd:"schoenhals1873.p157-159.departure", side:"the left wing off at half past six"},
       {src:"stutterheim1806de", at:"pp. 49-52", rd:"stut1806de.p49-52.telnitz", side:"the hussars forward to reconnoitre between seven and eight"},

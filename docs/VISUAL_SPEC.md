@@ -550,7 +550,11 @@ Shapes are drawn, not font glyphs (font coverage of symbols differs by system).
 - **Source tags** (documented / inference, owner decision 10): neutral `plate`; documented with a filled
   circle, inference with a hollow circle and in italic, each with its word. Since roadmap step 2 (question
   148): a third, ANECDOTE (`SRC_LABEL.anec`), with a half-filled circle (`TOKENS.sym.source.anec`, `half`), for
-  a Command-tab row that tells a memoir anecdote; `.src.anec` on the same plate as the other two, upright.
+  a Command-tab row that tells a memoir anecdote; `.src.anec` on the same plate as the other two, upright. Since roadmap step 4b part B
+  (decision 187 (i)) the inference's word is "THIS MAP'S READING" (`SRC_LABEL.inf`, was "INFERRED"), `CLAIM_WORDS.interpretation`'s.
+- **Statement claim tags** (since roadmap step 4b part B, decision 187 (iv)): after each narrative statement in the formation dossier, its
+  claim in `CLAIM_WORDS`'s word (`.ltag.claim`), on the layer tags' `plate` and `plate-ink`, without an icon (the word carries it; the eight
+  kinds have no glyphs), never wrapped inside itself; a screen reader hears "Claim:" before the word.
 - **Event markers:** side colour (decision 1) for every event, including decisions, which keep their own glyph
   shape instead of gold. The dossier header bar uses the side colour, not `NATION.ru.fill` (`app.js:3796`).
 
