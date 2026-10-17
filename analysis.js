@@ -241,10 +241,10 @@ var ACTS = [
          withdrawal | collapse
    ============================================================ */
 var EVENTS = [
-{id:"columns-move", t:[240,420], n:"The Allied columns begin to leave the plateau", side:"al", kind:"movement",
+{id:"columns-move", t:[420,480], n:"The Allied columns begin to leave the plateau", side:"al", kind:"movement",
  p:[291,276], forms:["kienmayer","dok","lang","prz"], cf:"B", claim:"disputed",
  why:"Every column that goes down into the valley is a column no longer holding the centre.",
- dispute:"When the columns left the plateau: the disposition ordered all the columns to march at 07:00, and the I Column left its camp at seven (Buxhowden's and Kutuzov's reports), as the map now draws it; Schönhals has the left wing off at half past six and the II and III Columns at 07:30, Przybyszewski's report his III Column at 07:00 and Buxhowden's the II Column coming down at 08:00, and Mikhailovsky-Danilevsky the first three columns between seven and eight. The map still moves the II and III Columns from 04:00, an earlier timing it keeps."},
+ dispute:"When the columns left the plateau: the disposition ordered all the columns to march at 07:00, and the I Column left its camp at seven (Buxhowden's and Kutuzov's reports), as did the III Column in Przybyszewski's report; Schönhals has the left wing off at half past six and the II and III Columns at 07:30, Buxhowden's report the II Column coming down at 08:00, and Mikhailovsky-Danilevsky the first three columns between seven and eight. The map moves the three columns from 07:00, the disposition's hour."},
 
 {id:"counter-march", t:[255,480], n:"Liechtenstein counter-marches across the 4th Column", side:"al", kind:"movement",
  p:[311,227], forms:["lich","milo","kollo"], cf:"A", claim:"fact",
@@ -364,7 +364,7 @@ var TOUR = [
 {n:"The French deception", at:"ph:0", chapter:"deception",
  x:"Napoleon gave up the plateau on 1 December and camped behind the Goldbach, leaving his right so thin that a single division held five kilometres of stream. The weakness was real, which is what made it convincing."},
 {n:"The Allied advance", at:"ph:1", t:445, chapter:"commitment",
- x:"From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 39,000 at 04:00 to about 19,000 by 07:15, half of it gone before a shot is fired at the plateau."},
+ x:"From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 39,000 at 04:00 to about 19,000 by 07:25, half of it gone before a shot is fired at the plateau."},
 {n:"Why the Pratzen matters", at:"ph:2", feature:"pratzen", cam:[-136,46,31,-6,8,-3],
  x:"In this model's terrain an observer on the Pratzeberg summit can see about 73 per cent of the field, and one on the valley floor at Puntowitz under 3 per cent. That is a reading from the model, not a record of what anyone saw: on the morning of the battle the valley lay in fog, and it was the fog that hid Soult's divisions forming at the foot of the slope."},
 {n:"The French strike", at:"ev:soult", chapter:"pratzen",

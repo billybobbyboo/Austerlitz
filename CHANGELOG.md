@@ -1,5 +1,70 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 4b, part A: owner decisions 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 applied
+
+**Status: in progress on `claude/adoring-gauss-ubfas9`.** A data task: each decision applied as its recommendation reads, conditions
+included (`docs/step4-evidence/questions.md`, decided as recommended on 15 October 2026); where a recommendation depends on a measurement,
+the measurement is taken first with `harness.js --only` and compared with the step-4 report (`tools/step3/report-diff.js`), and the
+decision's fallback is implemented where it does not allow it. Every changed declaration is listed below with what it was, what it is, why
+and the reading it rests on. The step-4 report is not committed, so a full `check:visual` of the unmodified step-4 build (md5
+`833743c6...`) was run first in this session as the reference (below, "The reference").
+
+**The commits.**
+- (this commit) Question 176 (b): the II and III Columns march at the disposition's seven.
+
+**Question 176 (b): the II and III Columns from 07:00 (lang@1, prz@1).** The readings agree on seven, or half past six for the left wing
+(Schönhals), and none on four (register C1: the disposition orders all five columns to march at seven, Materialien 1806 pp. 101-106,
+`mat1806.p101-106.disposition`; Przybyszewski's report has the III Column set out at seven, Kutuzov, documents, 1951, pp. 269-270,
+`kutuzov1951.p269-270.przybyszewski`; Schönhals the II and III Columns at half past seven, 1873, p. 160, `schoenhals1873.p160.half-past-seven`;
+Buxhowden's report the II Column coming down at eight, `kutuzov1951.p241-242.buxhowden`; Mikhailovsky-Danilevsky the first three columns
+between seven and eight, `md1844.p177.eighth-hour`). lang@1 and prz@1 now carry `tm {dep:420, gr:"B", basis:"source"}` (the recommendation's
+grade: the sources differ by up to an hour), each arrival derived at the tactical rate (lang@1 07:00-07:20, prz@1 07:00-07:18); both leave
+`CONFLICTS` in this commit. The engine moves the two columns differently only between 04:00 and 08:00: from 08:00 every anchor is reached
+as before (lang@2 and prz@2 at 08:00).
+- *The plateau reading and sim-test's mechanism assertion (the premise of the question was wrong, stated).* The question estimated that
+  the plateau's minimum before Soult's attack would rise to about 70% of dawn and that sim-test.js's assertion ("the Allied centre visibly
+  empties before Soult attacks": the minimum over its marks 04:00-08:45 under 55% of the 04:00 figure) would fail. Measured on the retimed
+  data (a scratch run of sim-test's model, every minute 04:00-08:45): the plateau holds 38,700 until 07:05, 27,000 from 07:05, 19,300 from
+  07:23 and 23,550 from 08:29 (Kamensky's brigade turning back up); before, 27,000 from 04:44 and 19,300 from 07:07. The minimum is the same
+  19,300 (50%), so the assertion still holds and is kept unchanged. The owner's word was given for replacing it with an equally strict one;
+  no replacement was needed, so none was made, and the strict assertion the question proposed is added beside it (stricter, not looser):
+  at 08:30 Kamensky's brigade and the 4th Column (milo, kollo) stand inside the plateau outline, as Thiebault has them still entire on the
+  heights when the aide reported them gone (1894, t. III, p. 504, `thiebault3_1894.p504.half-past-eight`). It passes on this data.
+- *Tour stop 4* keeps its own clock (07:25) and its figures (about 39,000 at 04:00, about 19,000, sim-test.js 2b agreeing: 38,700 and
+  19,300); "by 07:15" becomes "by 07:25" (the plateau reaches 19,300 at 07:23 on the retimed data; its claim note no longer says the fall
+  rests on the map's earlier timing). `chronology.js`'s allowance `tour 4 x @07:15` becomes `@07:25`.
+- *The event `columns-move`*: its window was `[240,420]`, "this map's timing for the columns' descent (from 04:00 for the II and III
+  Columns)" in check:chronology's allowance; it is `[420,480]` (07:00-08:00), the disposition's hour to the readings' latest (Buxhowden's
+  eight), which holds the map's three descents; its dispute names the map's choice. The 04:00 views no longer show it (they still show the
+  Raigern event, so the self-test's "an event label on the map at 04:00" holds); measured below.
+- check:chronology: lang@1's row judges 07:00-08:00 (was 07:30-08:00: the disposition's seven is now the engine's, with Schönhals's half past
+  seven and Buxhowden's eight inside the row) and cites the event's window and its dispute at 07:00; prz@1's row is unchanged in its times;
+  both consistent. `CONFLICTS` loses lang@1 and prz@1 (six left: bag@6, friant@1, friant@2, guard_cav@6, kamensky@3, kamensky@4). `ALLOW_TIMED`:
+  `event columns-move dispute @04:00` and `event columns-move @04:00-07:00` removed (no longer live; the window is cited by lang@1);
+  `timeline 0: The disposition orders the Allied columns @04:00` and `source-note body.5 @04:00` reasoned anew (the phase line's mark; the
+  04:00 left in body.5 is Friant's, question 177).
+- `redteam.js`'s acknowledged warning (the cavalry's mean march rate not above the infantry's) carries the infantry mean 1.37, not 1.30: the
+  two dated departures make the II and III Columns' legs faster, as dok@1's did in step 4 (`KNOWN_WARN`'s exact text, its reason extended).
+- *The grade's words (a question for the owner, 198).* `TIMING_TEXT.B`, the sentence the dossier shows for a timed leg graded B, reads
+  "Timing given as approximate in this reconstruction's narrative, which cites no source for it." lang@1 and prz@1 are graded B as the
+  decision says, but cite sources; while either leg runs (07:00-07:20) a visitor who opens the column's dossier reads that no source is
+  cited. Decision 176 says B; decision 41's grade text does not fit a sourced B. Not settled by decisions 1-197: owner question 198 below;
+  the default, B with `TIMING_TEXT` unchanged, is built.
+- check:data's changed declarations in this commit (against `archive/step4-833743c6.html`): `PHASES`, `FORMATIONS`, `SOURCE_NOTE`, `EVENTS`,
+  `TOUR`, `STATEMENT_CLAIMS`. The changed statements:
+  - `PHASES[#0].events[1]`: was “c. 04:00 / The disposition orders the Allied columns to march at seven; Thiebault records reports through the night of the Allied left moving, judged by the noise. The map moves the II and III Columns off the plateau from 04:00, its earlier timing. Liechtenstein's cavalry, misplaced on the left, must counter-march north across the front of the 4th Column; the Materialien has it ordered off only at dawn.”; is “c. 04:00 / The disposition orders the Allied columns to march at seven; Thiebault records reports through the night of the Allied left moving, judged by the noise. Liechtenstein's cavalry, misplaced on the left, must counter-march north across the front of the 4th Column; the Materialien has it ordered off only at dawn.”; claim attributed (thiebault3_1894 t. III, pp. 456-457, thiebault3_1894.p456-457.night-noise; materialien1806 pp. 101-106, mat1806.p101-106.disposition; materialien1806 p. 109, mat1806.p109.delivery).
+  - `EVENTS[#columns-move].dispute`: was “When the columns left the plateau: the disposition ordered all the columns to march at 07:00, and the I Column left its camp at seven (Buxhowden's and Kutuzov's reports), as the map now draws it; Schönhals has the left wing off at half past six and the II and III Columns at 07:30, Przybyszewski's report his III Column at 07:00 and Buxhowden's the II Column coming down at 08:00, and Mikhailovsky-Danilevsky the first three columns between seven and eight. The map still moves the II and III Columns from 04:00, an earlier timing it keeps.”; is “When the columns left the plateau: the disposition ordered all the columns to march at 07:00, and the I Column left its camp at seven (Buxhowden's and Kutuzov's reports), as did the III Column in Przybyszewski's report; Schönhals has the left wing off at half past six and the II and III Columns at 07:30, Buxhowden's report the II Column coming down at 08:00, and Mikhailovsky-Danilevsky the first three columns between seven and eight. The map moves the three columns from 07:00, the disposition's hour.”; claim disputed (materialien1806 pp. 101-106, mat1806.p101-106.disposition; kutuzov1951 pp. 241-242, kutuzov1951.p241-242.buxhowden; mikhailovsky1844 p. 177, md1844.p177.eighth-hour; schoenhals1873 pp. 157-159, schoenhals1873.p157-159.departure; schoenhals1873 p. 160, schoenhals1873.p160.half-past-seven; kutuzov1951 pp. 269-270, kutuzov1951.p269-270.przybyszewski; kutuzov1951 pp. 255-258, kutuzov1951.p255-258.relation).
+  - `TOUR[3].x`: was “From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 39,000 at 04:00 to about 19,000 by 07:15, half of it gone before a shot is fired at the plateau.”; is “From seven o'clock the Allied left goes down into the villages and stays there. Watch the figure on the plateau outline, a reading derived from the plotted positions with every man counted once: the Allied strength on the heights falls from about 39,000 at 04:00 to about 19,000 by 07:25, half of it gone before a shot is fired at the plateau.”; claim derived (stutterheim1806de p. 49, stut.p49.seven; materialien1806 pp. 101-106, mat1806.p101-106.disposition).
+  - `FORMATIONS.lang.track["1"].tm.note`: was (none); is “the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106); Schönhals has the II and III Columns leave at half past seven (1873, p. 160), Buxhowden's report the II Column come down at eight (Kutuzov, documents, 1951, pp. 241-242), Mikhailovsky-Danilevsky the first three columns between seven and eight (1844, p. 177): grade B, the map's choice among them; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)”; unchecked.
+  - `FORMATIONS.prz.track["1"].tm.note`: was (none); is “the departure at seven as the disposition ordered (Materialien 1806 pp. 101-106) and as Przybyszewski's report gives it (Kutuzov, documents, 1951, pp. 269-270); Schönhals has the II and III Columns leave at half past seven (1873, p. 160): grade B; the arrival is derived. Until roadmap step 4b the map moved the column from 04:00 (question 176)”; unchecked.
+  - `SOURCE_NOTE.body[5]`: in the hours the accounts give differently, "the II and III Columns at 07:30 in Schönhals, the III at 07:00 in
+    Przybyszewski's report and the II coming down at 08:00 in Buxhowden's, but from 04:00 on the map" is now "...; all three from 07:00 on the
+    map", and "The map keeps its timing for Kamensky's turn, Rapp's charge, the II and III Columns, Friant's division and Bagration's corps."
+    no longer names the II and III Columns; unchecked.
+  - `EVENTS[#columns-move].t` (not a statement): was `[240,420]`; is `[420,480]`.
+  - `FORMATIONS.lang.track["1"].tm`, `FORMATIONS.prz.track["1"].tm` (not statements; the engine's timing): was (none: the leg crept from the
+    phase-0 anchor's 04:00 to 07:00); is `{dep:420, gr:"B", basis:"source", ev:[the dispute's sentences], note}`.
+
 ## 2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)
 
 **Status: done on `claude/nice-dijkstra-mdyu2w` (draft PR #52), for review. The owner decided questions 176-197 as recommended on
