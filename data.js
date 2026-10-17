@@ -77,7 +77,7 @@ var PHASES = [
     ["c. 08:45","Soult's divisions advance. The mist lifts off the heights."],
     ["c. 09:00","Friant's leading brigade comes up to the Goldbach near Telnitz: about nine in Stutterheim and the Moniteur's remarks of 1806, attacking about nine in Schönhals, after Telnitz had fallen in Mikhailovsky-Danilevsky; Davout's report has word of the attack reach him on the march about eight and gives no hour for the brigade's arrival. The division had reached Raigern overnight: about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers."],
     ["c. 09:00","Thiebault's brigade clears Pratzen village; the 10e Legere pushes on for the Pratzeberg."],
-    ["c. 09:15","Kutuzov orders the 4th Column to face about and recalls part of the II Column."],
+    ["c. 09:15","Kutuzov orders the 4th Column to face about and recalls part of the II Column. No source read gives the hour."],
     ["c. 09:30","Friant's leading troops retake Telnitz, then lose it again in the fog: Davout's report has the village in French hands at 09:30."]],
   cam:[-136,46,31,-6,8,-3], mist:0.16, flash:"The sun of Austerlitz, as memoirs call it" },
 
@@ -105,7 +105,7 @@ var PHASES = [
     ["after 11:15","Bessieres and Rapp counter-charge. The Chevalier Guard is broken; Prince Repnin captured. The hour is disputed: the map draws the charge from 11:15; Rapp and Ségur put the Guard's last effort about 13:00."],
     ["c. 12:00","Napoleon moves forward from the Zuran to Stare Vinohrady."],
     ["c. 12:00","Buxhowden, on the Allied left, is still unaware of the collapse behind him."],
-    ["c. 12:30","Davout regroups and attacks; Langeron is forced back toward Sokolnitz."]],
+    ["c. 12:30","Davout regroups and attacks; Langeron is forced back toward Sokolnitz. The hour is this map's; Mikhailovsky-Danilevsky has Napoleon order the attack at one in the afternoon."]],
   cam:[-76,36,-1,26,6,-31], mist:0.0 },
 
 { id:7, t0:765, t1:870, clock:"12:45 - 14:30", label:"The wheel", title:"The centre turns south",

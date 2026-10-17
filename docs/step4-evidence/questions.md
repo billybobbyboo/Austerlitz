@@ -223,6 +223,7 @@ conservative default built meanwhile. The next owner decision after these is the
 - *Options.* (a) Keep the correction (built). (b) Restore the cornflower record with its doubt until 189's human reading confirms the page.
 - *Recommendation.* (a): the page is legible on its images and its text layer agrees, and keeping a value shown to be another regiment's
   at grade A "fact" would keep a known error; 189's human reading can still confirm it. *Default.* (a), as built.
+- *Status.* Decided (a) on 17 October 2026: the correction stands.
 
 **201. The events whose hour the readings dispute, after question 193.**
 - *Context.* Question 193 (b) lowered the timing grades of eight events; six of them (counter-march, telnitz, sokolnitz, pratzeberg,
@@ -236,3 +237,5 @@ conservative default built meanwhile. The next owner decision after these is the
   "hour disputed"). (c) (b) for the texts only (the dispute in the why and phase lines, no claim change, no label note).
 - *Recommendation.* (b) where the cases measure unchanged, else (c); the two unread whys checked or labelled this map's in the same task.
   *Default.* (a), as built.
+- *Status.* Decided (b) on 17 October 2026; applied: seven events made "disputed" with their disputes, the two whys labelled
+  this map's, measured on the cases where they are live (`CHANGELOG.md`).

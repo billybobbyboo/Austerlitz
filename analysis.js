@@ -247,12 +247,14 @@ var EVENTS = [
  dispute:"When the columns left the plateau: the disposition ordered all the columns to march at 07:00, and the I Column left its camp at seven (Buxhowden's and Kutuzov's reports), as did the III Column in Przybyszewski's report; Schönhals has the left wing off at half past six and the II and III Columns at 07:30, Buxhowden's report the II Column coming down at 08:00, and Mikhailovsky-Danilevsky the first three columns between seven and eight. The map moves the three columns from 07:00, the disposition's hour."},
 
 {id:"counter-march", t:[255,480], n:"Liechtenstein counter-marches across the 4th Column", side:"al", kind:"movement",
- p:[311,227], forms:["lich","milo","kollo"], cf:"B", claim:"fact",
- why:"The cavalry column had been posted on the wrong flank overnight; in Mikhailovsky-Danilevsky its crossing of the line of march held up the 4th Column at the set hour, and Kutuzov then stood still, though the disposition ordered him forward. Stutterheim has the 4th Column ordered off only toward eight, to give the left wing's columns time, and Schönhals has it leave half an hour after the first three."},
+ p:[311,227], forms:["lich","milo","kollo"], cf:"B", claim:"disputed",
+ why:"The cavalry column had been posted on the wrong flank overnight; in Mikhailovsky-Danilevsky its crossing of the line of march held up the 4th Column at the set hour, and Kutuzov then stood still, though the disposition ordered him forward. Stutterheim has the 4th Column ordered off only toward eight, to give the left wing's columns time, and Schönhals has it leave half an hour after the first three.",
+ dispute:"When the cavalry column crossed: from 04:15 on this map, its own reckoning; the Materialien's editor has it ordered off only at dawn, Mikhailovsky-Danilevsky has its crossing hold up the 4th Column at the set hour, and Stutterheim has the 4th Column ordered off only toward 08:00, Miloradovich setting out at 08:00; Ermolov, riding with the column, has the army moving before dawn, the columns crossing in the dark."},
 
 {id:"telnitz", t:420, n:"Kienmayer attacks Telnitz", side:"al", kind:"attack",
- p:[212,408], forms:["kienmayer","legrand"], cf:"B", claim:"fact",
- why:"The battle opens here, on the Allied left, after a night of outpost contact along the Goldbach: the beginning of the attack Napoleon wanted."},
+ p:[212,408], forms:["kienmayer","legrand"], cf:"B", claim:"disputed",
+ why:"The battle opens here, on the Allied left, after a night of outpost contact along the Goldbach: the beginning of the attack Napoleon wanted.",
+ dispute:"When Kienmayer attacked Telnitz: 07:00 on this map, with Savary's Russians beginning to debouch on Legrand about seven; Schönhals has the left wing off at 06:30, Stutterheim the hussars forward between seven and eight, and Davout's report Telnitz under vigorous attack by about 08:00."},
 
 {id:"raigern", t:[240,285], n:"Friant's division at Raigern since the night", side:"fr", kind:"arrival",
  p:[18,500], forms:["friant","bourcier"], cf:"B", claim:"est",
@@ -262,8 +264,9 @@ var EVENTS = [
  why:"About nine near Telnitz in Stutterheim and in the Moniteur's remarks of 1806, attacking about nine in Schönhals, after Telnitz had fallen in Mikhailovsky-Danilevsky. Davout's report has word of the attack reach him on the march about eight and gives no hour for the arrival. In this map's interpretation, a counterfactual: without it the French right does not survive the morning."},
 
 {id:"sokolnitz", t:480, n:"Langeron and Przybyszewski attack Sokolnitz", side:"al", kind:"attack",
- p:[208,365], forms:["lang","prz","legrand"], cf:"B", claim:"fact",
- why:"The fight for the village, the castle and the pheasantry absorbs two columns; Davout reported the village taken and retaken several times."},
+ p:[208,365], forms:["lang","prz","legrand"], cf:"B", claim:"disputed",
+ why:"The fight for the village, the castle and the pheasantry absorbs two columns; Davout reported the village taken and retaken several times.",
+ dispute:"When the attack on Sokolnitz began: 08:00 on this map, with Przybyszewski's report (his column in action from eight) and Buxhowden's (the II Column coming down at eight); Davout's report has Sokolnitz not yet attacked about 08:00, Mikhailovsky-Danilevsky Langeron engaging at 08:30, and Schönhals the III Column at Sokolnitz only after the attack on the Pratzen began, about 09:00."},
 
 {id:"telnitz-retaken", t:570, n:"Friant retakes Telnitz, then loses it again", side:"fr", kind:"attack",
  p:[214,406], forms:["friant"], cf:"A", claim:"fact",
@@ -283,7 +286,7 @@ var EVENTS = [
 
 {id:"face-about", t:555, n:"Kutuzov orders the 4th Column to face about", side:"al", kind:"decision",
  p:[290,237], forms:["ahq","milo","kollo"], cf:"C", claim:"fact",
- why:"The Allied commander-in-chief, riding with the column, sees what has happened."},
+ why:"The Allied commander-in-chief, riding with the column, sees what has happened. That he ordered the column to face about is this map's reading: in the accounts read he rides to the left of the 4th Column and orders Kamensky's regiments onto the ridge."},
 
 {id:"kamensky", t:585, n:"Kamensky turns his brigade about and drives the French off the crest", side:"al", kind:"engagement",
  p:[285,289], forms:["kamensky","sthilaire","lang"], cf:"B", claim:"disputed",
@@ -295,8 +298,9 @@ var EVENTS = [
  why:"Langeron rode back and sent troops up toward Kamensky. The accounts name the Kursk regiment: Mikhailovsky-Danilevsky has Langeron bring it up too late, losing up to 1,600 men; Langeron's journal, as Sokolov quotes it, two of its battalions, half killed and half taken with their guns and colours; Schönhals has it left in reserve behind Sokolnitz and mostly taken there. The hour is this map's."},
 
 {id:"pratzeberg", t:660, n:"The Pratzeberg is firmly in French hands", side:"fr", kind:"capture",
- p:[285,289], forms:["sthilaire","legrand"], cf:"B", claim:"fact",
- why:"From here the French centre holds the high ground above the Goldbach valley and, in time, comes down into the back of the Allied columns fighting in it."},
+ p:[285,289], forms:["sthilaire","legrand"], cf:"B", claim:"disputed",
+ why:"From here the French centre holds the high ground above the Goldbach valley and, in time, comes down into the back of the Allied columns fighting in it.",
+ dispute:"When the Pratzeberg was firmly French: 11:00 on this map, Ségur's 'towards eleven'; Stutterheim and Schönhals have the plateau fight last about two hours from about 09:00, Thiebault three."},
 
 {id:"blasowitz", t:675, n:"The French take Blasowitz from the Russian Guard", side:"fr", kind:"capture",
  p:[296,147], forms:["caffarelli","rivaud","rg_inf"], tolKm:1.3, tolWhy:"division-level: the marker is the village; Caffarelli\u2019s plotted centre lies about 1.2 km from it, within the division\u2019s frontage", cf:"C", claim:"est",
@@ -320,20 +324,23 @@ var EVENTS = [
  why:"Contemporaries put it about noon. Three columns go on attacking westward while the army behind them is being taken apart."},
 
 {id:"davout-resumes", t:750, n:"Davout resumes the offensive", side:"fr", kind:"attack",
- p:[204,392], forms:["friant","bourcier"], cf:"B", claim:"fact",
- why:"The anvil becomes a hammer. Langeron is pushed back onto Sokolnitz from the west."},
+ p:[204,392], forms:["friant","bourcier"], cf:"B", claim:"disputed",
+ why:"The anvil becomes a hammer. That Langeron is pushed back onto Sokolnitz from the west is this map's reading; no account read says so.",
+ dispute:"When Davout resumed the offensive: 12:30 on this map; Mikhailovsky-Danilevsky has Napoleon order Davout against the first three columns at 13:00."},
 
 {id:"wheel", t:[780,840], n:"The French centre turns south", side:"fr", kind:"movement",
  p:[277,303], forms:["sthilaire","vandamme","c_gren","guard_inf"], cf:"B", claim:"est",
  why:"Ninety degrees, off the heights, into the rear of Buxhowden's three columns."},
 
 {id:"sokolnitz-falls", t:840, n:"Sokolnitz falls; Przybyszewski's column is surrounded", side:"fr", kind:"capture",
- p:[217,352], forms:["prz","friant","sthilaire"], cf:"B", claim:"fact",
- why:"The column tries to break out toward Kobelnitz, comes apart, and surrenders almost entire."},
+ p:[217,352], forms:["prz","friant","sthilaire"], cf:"B", claim:"disputed",
+ why:"The column tries to break out toward Kobelnitz, comes apart, and surrenders almost entire.",
+ dispute:"When Sokolnitz fell: 14:00 on this map, which no account read dates; Przybyszewski's report has his men fighting until 16:00, Thiebault is wounded beyond the castle about 15:00, and Stutterheim has the fight decided about two."},
 
 {id:"augezd", t:870, n:"Vandamme takes the height above the Augezd defile", side:"fr", kind:"capture",
- p:[297,372], forms:["vandamme","heightguns"], cf:"B", claim:"fact",
- why:"A way out for the Allied left over the Augezd defile now lies under French guns; this map reads the retreat the disposition ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, as running through ground the French held."},
+ p:[297,372], forms:["vandamme","heightguns"], cf:"B", claim:"disputed",
+ why:"A way out for the Allied left over the Augezd defile now lies under French guns; this map reads the retreat the disposition ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, as running through ground the French held.",
+ dispute:"When Vandamme took the height above Augezd: 14:30 on this map; his division was entering Augezd towards 14:00 by his aide Vincent, as Thiebault reports him, and Stutterheim has the fight decided about two when Vandamme's division finished it."},
 
 {id:"ice", t:900, n:"French artillery fires on the ice of the Satschan mere", side:"fr", kind:"collapse",
  p:[268,421], forms:["heightguns","dok","kienmayer"], tolKm:1.5, tolWhy:"the marker is the target of a bombardment: the guns fire from the chapel height about 2 km away, and the retreating columns are converging on the ice", cf:"B", claim:"fact",

@@ -29,7 +29,8 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 - `a75b403`: `docs/ROADMAP.md`, each decision's status and questions 198-201.
 - `b82439b`: the step's end: the final checks, check:data's reference and the baseline moved, `CLAUDE.md`.
 - `24de9a8`: the owner's decisions 198-201 recorded; 198 applied (`TIMING_TEXT.B`'s words).
-- (this commit) Decision 199: `narrow-1024`'s drop limit 7, and 177 (b) applied (Friant retimed to Davout's hours).
+- `3d2d133`: decision 199, `narrow-1024`'s drop limit 7, and 177 (b) applied (Friant retimed to Davout's hours).
+- (this commit) Decision 201 (b): seven events whose hour the readings dispute made "disputed"; two unread claims labelled this map's.
 
 **The review of `4981b27` and `5eaa92f` (places and plan; an independent reviewer, read-only, on a worktree of `5eaa92f`; fixed in the
 next commit).** It ran geo-test.js (59 of 59; Turas now inside the 0.5 km check, 666 bearing pairs over 27 points), test.js and redteam.js
@@ -196,6 +197,33 @@ decisions follow them.
   claims removed, the Soult line's claim re-keyed to `PHASES[#2].events[1]`, Raigern's note "this map's departure is the earlier report's";
   the inventory regenerated. The changed declarations: `PHASES`, `FORMATIONS`, `SOURCE_NOTE`, `EVENTS`, `OVERLAYS`, `STATEMENT_CLAIMS`
   (and `thresholds.js`, outside check:data). Measured on the final full check:visual (below).
+
+- *200 (a)*: the Szekler correction kept, as built; nothing changes.
+- *201 (b): the events whose hour the readings dispute.* As recommended: (b) where the cases measure unchanged, else (c); the two unread whys
+  labelled this map's in the same task. The seven events 193 lowered for hours the readings give differently become `claim:"disputed"`,
+  each with a `dispute` naming the map's hour and the readings' (test.js: at least two clock times, never graded A):
+  - `counter-march`: the map's 04:15 (its own reckoning) against the Materialien editor's "only at dawn", Mikhailovsky-Danilevsky's set
+    hour, Stutterheim's and Miloradovich's 08:00, and Ermolov's before-dawn march;
+  - `telnitz`: 07:00 (Savary's about seven) against Schönhals's 06:30 for the left wing, Stutterheim's between seven and eight and Davout's
+    by about 08:00;
+  - `sokolnitz`: 08:00 (Przybyszewski's and Buxhowden's reports) against Davout's not yet attacked about 08:00, Mikhailovsky-Danilevsky's
+    08:30 and Schönhals's after the Pratzen attack began, about 09:00;
+  - `pratzeberg`: 11:00 (Ségur) against the plateau fight's two hours (Stutterheim, Schönhals) or three (Thiebault) from about 09:00;
+  - `davout-resumes`: 12:30, the map's, against Mikhailovsky-Danilevsky's 13:00;
+  - `sokolnitz-falls`: 14:00, the map's, against the fighting until 16:00 (Przybyszewski) and Thiebault beyond the castle about 15:00;
+  - `augezd`: 14:30, the map's, against Vincent's towards 14:00 (as Thiebault reports him) and Stutterheim's about two.
+  Each dispute's claim is "disputed" with its sides (narrative.js; every reading registered and read on page images; Ermolov's memoir is not
+  in the table of works read, so his before-dawn march is named in the text and the claim's note, not cited). check:chronology: the map's
+  side of each dispute cited by the row that already judges the event's hour (lich@2, legrand@1, lang@2, kollo@5, friant@7, friant@8,
+  vandamme@8), the readings' other hours allowed by name with their reasons (nine entries). The two whys no account read supports, labelled:
+  `EVENTS[#face-about].why` gains "That he ordered the column to face about is this map's reading: in the accounts read he rides to the left
+  of the 4th Column and orders Kamensky's regiments onto the ridge."; `EVENTS[#davout-resumes].why`'s "Langeron is pushed back onto Sokolnitz
+  from the west." becomes "That Langeron is pushed back onto Sokolnitz from the west is this map's reading; no account read says so."
+  The two phase lines: face-about's (c. 09:15) gains "No source read gives the hour."; Davout's (c. 12:30) "The hour is this map's;
+  Mikhailovsky-Danilevsky has Napoleon order the attack at one in the afternoon." On screen, a disputed event's map label and caption tag
+  read "hour disputed" and its dossier shows its dispute. The changed declarations: `PHASES`, `EVENTS`, `STATEMENT_CLAIMS`. Measured
+  (the cases where one of these events is live: `close-sokolnitz`, `paper-close`, `opening-2`, `opening-3`, `opening-4`,
+  `ph8-overview-study`, `ph8-overview-watch`), against the 199 build on the same cases: pending at this commit, recorded in the next.
 
 **The step's end.**
 - *What step 4b part A did, in sum.* Of the eleven decisions taken up: applied as recommended, their measurement allowing it, 176 (b) (the II
