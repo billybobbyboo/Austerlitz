@@ -185,7 +185,7 @@ al:{
 fr:{
   name:"Napoleon's plan",
   author:"Set out in the proclamation to the army and the orders of 1 December, and in the written dispositions of that evening, which placed Soult's three divisions beyond the ravine at seven and called the marshals to his bivouac for the morning. The moment of the last orders differs: at the first rays of the sun in the 30th Bulletin; in Mikhailovsky-Danilevsky once the sun lit the hilltops, the marshals having been summoned to the barrow by Schlapanitz before dawn; in Savary only once the attack on the right was pronounced.",
-  intent:"Invite the attack on the right by giving up the Pratzen plateau and holding the lower Goldbach thin. When the enemy centre has marched off the heights to join that attack, take the heights with two divisions held concealed in the valley, cut the Allied army in half, then wheel south onto the rear of everything that has gone down into the Goldbach. In Ségur and Mikhailovsky-Danilevsky Bernadotte is to assail the plateau from the left at the same time; the written dispositions do not say so.",
+  intent:"Invite the attack on the right by giving up the Pratzen plateau and holding the lower Goldbach thin. When the enemy centre has marched off the heights to join that attack, take the heights with two divisions held concealed in the valley, cut the Allied army in half, then wheel south onto the rear of everything that has gone down into the Goldbach. In Ségur and Mikhailovsky-Danilevsky Bernadotte is to assail the plateau from the left at the same time; the written dispositions do not say so: they put I Corps onto Caffarelli's ground of the day before, its left behind the Santon, in column until new orders.",
   assumed:[
    "That the Allies would read the abandoned plateau and the withdrawn outposts as weakness.",
    "That Davout could reach the lower Goldbach from Vienna in time to keep the right alive.",
@@ -208,7 +208,7 @@ fr:{
     route:[[221,179],[236,191],[267,200],[309,207]]},
    {n:"The pivot - Lannes and Murat", forms:["suchet", "caffarelli", "santon"], obj:[304,46], ord:"Hold the Olmutz highway with the Santon fortified and entrenched. Advance only when the centre has gone in.",
     route:[[225,97],[247,75],[276,61],[304,46]]},
-   {n:"In hand - Bernadotte, the Guard, the grenadiers", forms:["guard_inf", "guard_cav", "c_gren", "drouet"], obj:[300,211], ord:"I Corps onto Caffarelli's ground of the day before, its left behind the Santon, in column until new orders (the dispositions of 1 December); the Guard and the grenadiers the reserve with the Emperor (the 30th Bulletin), the grenadiers under Lannes's orders in the dispositions. The route drawn is this map's.",
+   {n:"The reserve - the Guard and the grenadiers", forms:["guard_inf", "guard_cav", "c_gren"], obj:[300,211], ord:"The Guard and the grenadiers the reserve with the Emperor (the 30th Bulletin), the grenadiers under Lannes's orders in the dispositions of 1 December. The route drawn is this map's.",
     route:[[189,161],[230,185],[263,201],[300,211]]},
    {n:"The wheel", forms:["sthilaire", "vandamme"], obj:[294,369], ord:"Once the plateau is held from Pratzen to the highway, turn the centre ninety degrees and come down on the rear of the Allied left.",
     route:[[288,249],[276,293],[286,341],[290,366],[294,369]]}

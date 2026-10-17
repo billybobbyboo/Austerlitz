@@ -746,7 +746,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `PLANS.fr.cols[1].ord` | analysis.js:205 | Saint-Hilaire behind Puntowitz, Vandamme behind Girzikowitz, out of sight in the valley. On the signal, take the Pratzeberg and Stare Vinoh… | unchecked |  |
 | `PLANS.fr.cols[2].ord` | analysis.js:207 | Climb the northern shoulder of the plateau and take the Old Vineyards, linking the assault to Lannes. | unchecked |  |
 | `PLANS.fr.cols[3].ord` | analysis.js:209 | Hold the Olmutz highway with the Santon fortified and entrenched. Advance only when the centre has gone in. | unchecked |  |
-| `PLANS.fr.cols[4].ord` | analysis.js:211 | I Corps onto Caffarelli's ground of the day before, its left behind the Santon, in column until new orders (the dispositions of 1 December)… | attributed | corr11_1863.p442.dispositions-ic; corr11_1863.p450.reserve-defined; corr11_1863.p443.no-guard |
+| `PLANS.fr.cols[4].ord` | analysis.js:211 | The Guard and the grenadiers the reserve with the Emperor (the 30th Bulletin), the grenadiers under Lannes's orders in the dispositions of … | attributed | corr11_1863.p442.dispositions-ic; corr11_1863.p450.reserve-defined; corr11_1863.p443.no-guard |
 | `PLANS.fr.cols[5].ord` | analysis.js:213 | Once the plateau is held from Pratzen to the highway, turn the centre ninety degrees and come down on the rear of the Allied left. | unchecked |  |
 
 ## act

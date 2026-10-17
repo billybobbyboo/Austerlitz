@@ -18,7 +18,29 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 - `a31162b`: question 195, the Szekler hussars' 1805 page read on its images; the record corrected to dark blue.
 - `511f5e5`: question 197, the Guard's dawn grades B.
 - `2b21ecc`: the review of the strengths-and-grades group, fixed; question 200 recorded.
-- (this commit) Question 191: Turas moved to the address register's point for Tuřany.
+- `4981b27`: question 191, Turas moved to the address register's point for Tuřany.
+- (this commit) Question 182: (b) measured past the plans-overview drop limit; (c), one column renamed the reserve, without Drouet.
+
+**Question 182: the French plan's "In hand" column; (b) past its limit, so (c).** The recommendation: (b), split into the centre
+(Bernadotte) and the reserve (the Guard and the grenadiers), if `plans-overview` stays within its drop limit; else (c), one column renamed
+the reserve, without Drouet. No reading gives the reserve a line of march of its own (the 30th Bulletin has it "in reserve with the
+Emperor"; the dispositions put the grenadiers under Lannes's orders), so (b) was built with the two columns on the one route the build
+already draws, "this map's" (`[[189,161],[230,185],[263,201],[300,211]]`), each column saying so; measured on `plans-overview` with
+`harness.js --only` against the step-4 reference: 12 drops -> 13 (the Litava's name), past its limit 12. (c) was then built and measured: no
+difference in drops, dropped ids, unobstructed fractions or timeline height. (c) is applied:
+- `PLANS.fr.cols[4]`: was `{n:"In hand - Bernadotte, the Guard, the grenadiers", forms:["guard_inf","guard_cav","c_gren","drouet"], ...,
+  ord:"I Corps onto Caffarelli's ground of the day before, its left behind the Santon, in column until new orders (the dispositions of 1
+  December); the Guard and the grenadiers the reserve with the Emperor (the 30th Bulletin), the grenadiers under Lannes's orders in the
+  dispositions. The route drawn is this map's."}`; is `{n:"The reserve - the Guard and the grenadiers", forms:["guard_inf","guard_cav",
+  "c_gren"], ..., ord:"The Guard and the grenadiers the reserve with the Emperor (the 30th Bulletin), the grenadiers under Lannes's orders in
+  the dispositions of 1 December. The route drawn is this map's."}` (its objective and route unchanged); the ord's claim attributed
+  (`corr11_1863.p442.dispositions-ic`, `corr11_1863.p450.reserve-defined`, `corr11_1863.p443.no-guard`), rehashed. I Corps is the centre,
+  not the reserve, in every reading (step 4's K7): no French plan column names Drouet now.
+- `PLANS.fr.intent`: so that the dispositions' sentence on I Corps is not lost with the column, its last sentence was "In Ségur and
+  Mikhailovsky-Danilevsky Bernadotte is to assail the plateau from the left at the same time; the written dispositions do not say so.", is
+  "...; the written dispositions do not say so: they put I Corps onto Caffarelli's ground of the day before, its left behind the Santon, in
+  column until new orders."; its claim interpretation (Ségur, the dispositions, Mikhailovsky-Danilevsky), rehashed.
+- check:data's changed declarations in this commit: `PLANS`, `STATEMENT_CLAIMS`. Checks: test.js, redteam.js pass.
 
 **Question 191: Turas moved to Tuřany.** As recommended: Turas moved, measured; Krug, Bellowitz and the Posoritz post house kept; rg_cav a
 note (in the build since step 4's K11: its strengthNote names Kologrivov's single source and Maliutin's separate column). The
