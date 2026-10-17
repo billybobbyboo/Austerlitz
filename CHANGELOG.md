@@ -15,7 +15,20 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 - `117d53f`: questions 180 (b) and 181, bag@8's dated departure dropped; c_gren@7's dated arrival dropped, kollo's kept.
 - `356da2e`: the review of the timing group, fixed; questions 198 and 199 recorded.
 - `da16e48`: question 184, Kienmayer's working figure Schönhals's 6,340; Legrand's brigadiers the readings'.
-- (this commit) Question 195: the Szekler hussars' 1805 page read on its images; the record corrected to dark blue.
+- `a31162b`: question 195, the Szekler hussars' 1805 page read on its images; the record corrected to dark blue.
+- (this commit) Question 197: the Guard's dawn grades B.
+
+**Question 197: the Guard's dawn grades B (guard_inf@0, guard_cav@0).** As recommended, as gqg@0 under decision 160: both are placed by
+the command post, graded B since step 4's K8, and the readings place the Guard by no landmark at dawn (the 30th Bulletin's "in reserve with
+the Emperor", `corr11_1863.p451.guard-centre-reserve`; Stutterheim's reserve "bey Turas" in the night, `stutterheim1806de.p42.reserve-turas`;
+Coignet's Guard formed behind the Emperor, `coignet1909.p121-123.guard-followed`).
+- `FORMATIONS.guard_inf.track["0"].cf`: was "A"; is "B". `FORMATIONS.guard_cav.track["0"].cf`: was "A"; is "B".
+- *What inherits the grade* (a track entry without its own `cf` takes the last one before it, as gqg's phases 1-5 and drouet@7 and @9 did
+  under K8): guard_inf@6, @7 and @9 (none has a `cf`), so the Guard infantry is graded B all day; guard_cav only until guard_cav@6, which is A,
+  and @7 and @9 inherit A from it. On screen: the position-confidence mark is B's soft frontage instead of A's crisp footprint, and the pill
+  reads "Position: estimated", at those positions.
+- *Measured*: the recommendation says on a full check:visual, run on this commit's build (below, with 184 and 195).
+- check:data's changed declarations in this commit: `FORMATIONS`.
 
 **Question 195: the Szekler hussars' colour, the 1805 page read first.** The 1805 Schematismus, unreachable in step 4 (Hungaricana
 answered 403), was reached in this session (the site answers a browser's request; its viewer serves each page as a one-page PDF,
