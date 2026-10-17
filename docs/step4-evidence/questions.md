@@ -10,6 +10,8 @@ changes to it are said.
 decisions/your recommendations. We will implement later." Each question 176-197 is decided as its *Recommendation* reads, conditions
 included (a recommendation that depends on a measurement is to be applied only where the measurement allows it, else its stated fallback).
 None is implemented yet: the build carries each question's *Default*, as its *Status* line says, until a later task applies the decision.
+Roadmap step 4b part A took up 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 (`CHANGELOG.md`): each *Status* line says what
+it applied, or the fallback a measurement required; it met questions 198-201, at the end of this file.
 Question 189's recommendation is a reading by the owner or a tester. 178, 179, 183, 185, 186, 188, 192 and 194 recommended what the build
 already carries.
 
