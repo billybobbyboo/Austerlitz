@@ -22,7 +22,8 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 - `5eaa92f`: question 182, (b) measured past the plans-overview drop limit; (c), one column renamed the reserve, without Drouet.
 - `cfcf1b2`: question 193, the events' Timing A graded against the registers, six lowered.
 - `ed61b2d`: question 190, tour stop 6's "no reserve committed" reworded, no longer, `opening-2` measured unchanged.
-- (this commit) The review of the places-and-plan group (`4981b27`, `5eaa92f`), fixed.
+- `fd70c07`: the review of the places-and-plan group (`4981b27`, `5eaa92f`), fixed.
+- (this commit) The review of the events-and-opening group (`cfcf1b2`, `ed61b2d`), fixed: three more events lowered; question 201.
 
 **The review of `4981b27` and `5eaa92f` (places and plan; an independent reviewer, read-only, on a worktree of `5eaa92f`; fixed in the
 next commit).** It ran geo-test.js (59 of 59; Turas now inside the 0.5 km check, 666 bearing pairs over 27 points), test.js and redteam.js
@@ -34,6 +35,18 @@ header names Turas's register; (6) "Caffarelli's ground of the day before" in a 
 forms and shared objective stated; (8) the Status lines of 182 and 191 in `questions.md` updated (`docs/ROADMAP.md` at the step's end); (9)
 Turas is measured on the step's final full check:visual, which runs every case. check:data's changed declarations in this commit:
 `SOURCE_NOTE`, `PLANS`, `STATEMENT_CLAIMS`, and geo.js's header comment (inside `GEOREF`).
+
+**The review of `cfcf1b2` and `ed61b2d` (events and opening; an independent reviewer, read-only, on a worktree of `ed61b2d`; fixed in
+the next commit).** It ran test.js and redteam.js (clean), rebuilt the build (identical) and graded the eight events itself against both
+registers. High: (1) `davout-resumes` has a dated reading, Mikhailovsky-Danilevsky's one o'clock (`md1844.p196.one-oclock`): B, not C; (2)
+`telnitz`'s readings disagree by up to an hour (Schönhals's half past six to Stutterheim's seven to eight): B, by the commit's own rule (it
+lowered augezd for half an hour); (3) `pratzeberg`'s 11:00 rests on Ségur against Thiebault's three hours and the Bulletin, and the Pratzen
+chapter calls it the map's: B. All three applied (the entry above). Medium: (4) the events lowered for disagreeing hours keep "fact" with
+no dispute, and (5) face-about's and davout-resumes's phase lines say nothing of their grades: put to the owner as question 201 (not within
+193, which asks for the grades). Low: (6) Schönhals's defile is Satschan's dam: said; (7) Ermolov's before-dawn added to the counter-march's
+readings; (8) Mikhailovsky-Danilevsky's half past eight added to Sokolnitz's; (9) why sokolnitz-falls is B, not C, said; (10) two unread
+claims in the events' why flagged in question 201; (11) the Status lines of 190 and 193 in `questions.md` updated. 190: fine (the rewording
+supported by the Bulletin and Schönhals, 36 characters to 35; `COMMAND.fr["3"][1]` already reworded in step 4's K7, so no inconsistency).
 
 **Question 190: the opening's words.** As recommended: (a) minimal rewordings, no longer than the text they replace, where the readings
 contradict it, each only where the opening cases measure unchanged; (c) no marking of the ceiling-derived climbs in the bar (the build's
@@ -52,38 +65,50 @@ while the reserve in the Bulletin's sense, the Guard and the grenadiers, was hel
 - check:data's changed declarations in this commit: `TOUR`.
 
 **Question 193: the events' Timing A graded against the registers, one by one.** As recommended ((b)). Timing A is "dated in a cited
-source" (`TIMING_TEXT.A`; decision 143); an event keeps A where a reading in the registers dates its hour (its start, decision 89), is
-lowered to B where the readings give hours that disagree with it or with each other, and to C where they give only a sequence or a bound
-(as K5 lowered soult and pratzen-village to C and ice and end to B). Of the eight events still graded A:
+source" (`TIMING_TEXT.A`; decision 143); an event keeps A where a reading in the registers dates its hour (its start, decision 89) and
+none disagrees, is lowered to B where the readings give hours that disagree with it or with each other, and to C where they give only a
+sequence (as K5 lowered soult and pratzen-village to C and ice and end to B). All eight events still graded A are lowered: six in
+`cfcf1b2`, and, after the group's review, `davout-resumes` to B (not C) and `telnitz` and `pratzeberg` to B (`cfcf1b2` had kept them A):
 - `counter-march` [04:15-08:00], A -> B. The Materialien's editor has Liechtenstein's column ordered off only at dawn ("Erst in der
   Morgendämmerung", `mat1806.p109.delivery`); Mikhailovsky-Danilevsky has its crossing hold up the 4th Column at the set hour
   (`md1844.p181.ninth-hour`); Stutterheim has the 4th Column ordered off only toward eight (`stut.p60-61.nine-pratzen`) and Miloradovich
-  sets out at eight (`kutuzov1951.p230.miloradovich-eight`). The window's end agrees; its start, 04:15, is against "only at dawn".
-- `telnitz` 07:00: A kept. Savary has the Russians beginning to debouch on Legrand about seven (`savary1828.p204-207`); Stutterheim the
-  hussars forward between seven and eight (`stut1806de.p49-52.telnitz`); the Chevalier Guard's history Kienmayer's advance in the eighth
-  hour (`kavalergard1851.p56.eighth-hour`); Schönhals the left wing off at half past six (`schoenhals1873.p157-159.departure`).
+  sets out at eight (`kutuzov1951.p230.miloradovich-eight`); on the other side Ermolov, in Liechtenstein's own column, has the army moving
+  before dawn, the columns crossing in the dark (`ermolov1865.p33.before-dawn`).
+- `telnitz` 07:00, A -> B. Schönhals has the left wing, Kienmayer with it, off at half past six (`schoenhals1873.p157-159.departure`);
+  Savary the Russians beginning to debouch on Legrand about seven, Legrand attacked soon after (`savary1828.p204-207`); Stutterheim the
+  hussars forward to reconnoitre between seven and eight (`stut1806de.p49-52.telnitz`); the Chevalier Guard's history the eighth hour
+  (`kavalergard1851.p56.eighth-hour`, not independent of Mikhailovsky-Danilevsky); Davout Telnitz under vigorous attack by about eight (a
+  bound, `davout1885.p202-204.report-26dec`): hours within the hour that disagree, as augezd's half hour does.
 - `sokolnitz` 08:00, A -> B. Przybyszewski's column in action from eight (`kutuzov1951.p269-270.przybyszewski`) and Buxhowden's II Column
   coming down at eight toward Sokolnitz (`kutuzov1951.p241-242.buxhowden`), against Davout's "not yet attacked" about eight
-  (`davout1885.p202-204.report-26dec`) and Schönhals's III Column reaching Sokolnitz only after the Pratzen attack began
-  (`schoenhals1873.p160.half-past-seven`).
+  (`davout1885.p202-204.report-26dec`), Mikhailovsky-Danilevsky's Langeron engaging at half past eight (`md1844.p179.half-past-eight~C1.c4`)
+  and Schönhals's III Column reaching Sokolnitz only after the Pratzen attack began (`schoenhals1873.p160.half-past-seven`).
 - `face-about` 09:15, A -> C. No reading gives the hour of Kutuzov's order; the sequence only: the French columns seen and moving about nine
   (`stut.p60-61.nine-pratzen`, `schoenhals1873.p159-161.nine`), the 4th Column met as it left (`kutuzov1951.p230.miloradovich-eight`).
-- `pratzeberg` 11:00: A kept. Ségur has everything succeeded and the Russian centre pierced toward eleven (`segur1873.p467-469.noon-one`);
-  Stutterheim and Schönhals the fight about two hours from about nine (`stut.p66.two-hours`, `schoenhals1873.p162-163.two-hours`);
-  Thiebault's three hours (`thieb.p469.trois-heures`) is a duration, the other side, named in the Pratzen chapter.
-- `davout-resumes` 12:30, A -> C. No reading in the registers gives the hour of Davout's renewed offensive (searched: the reports of Davout,
-  Buxhowden, Kutuzov and Przybyszewski, Stutterheim, Schönhals, Mikhailovsky-Danilevsky, Ségur, Savary, Thiebault as registered).
-- `sokolnitz-falls` 14:00, A -> B. No reading dates Sokolnitz's fall; Przybyszewski's men fought from eight until four by his report
-  (`kutuzov1951.p269-270.przybyszewski`), Thiebault was wounded beyond the castle about three (`thieb.p465-466.three-pm`), Buxhowden had word
-  of the other columns' withdrawal in the second hour after noon (`kutuzov1951.p241-242.buxhowden`), Stutterheim the fight decided about two
-  (`stut.p77-79.two-four`).
+- `pratzeberg` 11:00, A -> B. Ségur has everything succeeded and the Russian centre pierced toward eleven (`segur1873.p467-469.noon-one`);
+  Stutterheim's and Schönhals's about two hours from about nine make about eleven only by addition (`stut.p66.two-hours`,
+  `schoenhals1873.p162-163.two-hours`); Thiebault has three hours (`thieb.p469.trois-heures`); the 30th Bulletin the whole Allied left cut
+  off within the first hour (`corr11.9541.p451.instant`); and the Pratzen chapter calls 11:00 the map's ("on this map the plateau is French
+  from end to end by about 11:00").
+- `davout-resumes` 12:30, A -> B. Mikhailovsky-Danilevsky has Napoleon order Davout against the first three columns at one in the afternoon
+  (`md1844.p196.one-oclock`), half an hour after the map's 12:30 (`cfcf1b2` graded it C, its search having missed this reading, whose
+  register entry names other formations; the review found it).
+- `sokolnitz-falls` 14:00, A -> B. No reading dates the fall itself, but the readings' bounds disagree with 14:00: Przybyszewski's men fought
+  from eight until four by his report (`kutuzov1951.p269-270.przybyszewski`), Thiebault was wounded beyond the castle about three
+  (`thieb.p465-466.three-pm`), Buxhowden had word of the other columns' withdrawal in the second hour after noon
+  (`kutuzov1951.p241-242.buxhowden`), Stutterheim the fight decided about two (`stut.p77-79.two-four`).
 - `augezd` 14:30, A -> B. Vandamme's division entering Augezd towards two by its aide Vincent, as Thiebault reports him (`thieb.p508.augezd-
-  two`), Stutterheim's "about 2" when Vandamme's division finished the fight (`stut.p77-79.two-four`), Schönhals's left wing past the defile by
-  half past two (`schoenhals1873.p167-169.oudinot`): half an hour earlier than the map's 14:30 for taking the height.
-- `telnitz-retaken` stays B (question 177's (a): its hour on the map is 08:30, against Davout's 09:30).
-- `EVENTS[].cf` (six, not statements): was A; is as above. An event's timing grade is shown only as its dossier's "Timing" pill; nothing on
-  the map or the timeline draws it, so no harness case moves. The events' claims (fact) are unchanged: question 193 asks for the grades.
-- check:data's changed declarations in this commit: `EVENTS`. Checks: test.js (a disputed hour is never A) passes.
+  two`), and Stutterheim's "about 2" when Vandamme's division finished the fight (`stut.p77-79.two-four`): half an hour earlier than the map's
+  14:30 for taking the height. (Schönhals's left wing past "dieses Defilé" by half past two, `schoenhals1873.p167-169.oudinot`, is the dam by
+  Satschan, as the source skeptic corrected, C2.26: a weaker bound.)
+- `telnitz-retaken` stays B (question 177's (a): its hour on the map is 08:30, against Davout's 09:30). No event is graded A now.
+- `EVENTS[].cf` (eight, not statements): was A; is as above. An event's timing grade is shown only as its dossier's "Timing" pill; nothing on
+  the map or the timeline draws it, so no harness case moves. The events' claims (fact) and texts are unchanged: question 193 asks for the
+  grades. Whether the six lowered for disagreeing hours should become "disputed" with a dispute naming the hours, and whether the phase lines
+  of face-about (09:15) and davout-resumes (12:30) should say the hour is the map's or Mikhailovsky-Danilevsky's one o'clock, is put to the
+  owner as question 201 (with two claims the review found unread: Kutuzov ordering the 4th Column to face about; Langeron pushed back on
+  Sokolnitz from the west).
+- check:data's changed declarations: `EVENTS`. Checks: test.js (a disputed hour is never A) passes.
 
 **Question 182: the French plan's "In hand" column; (b) past its limit, so (c).** The recommendation: (b), split into the centre
 (Bernadotte) and the reserve (the Guard and the grenadiers), if `plans-overview` stays within its drop limit; else (c), one column renamed

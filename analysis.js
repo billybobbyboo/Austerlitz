@@ -251,7 +251,7 @@ var EVENTS = [
  why:"The cavalry column had been posted on the wrong flank overnight; in Mikhailovsky-Danilevsky its crossing of the line of march held up the 4th Column at the set hour, and Kutuzov then stood still, though the disposition ordered him forward. Stutterheim has the 4th Column ordered off only toward eight, to give the left wing's columns time, and Schönhals has it leave half an hour after the first three."},
 
 {id:"telnitz", t:420, n:"Kienmayer attacks Telnitz", side:"al", kind:"attack",
- p:[212,408], forms:["kienmayer","legrand"], cf:"A", claim:"fact",
+ p:[212,408], forms:["kienmayer","legrand"], cf:"B", claim:"fact",
  why:"The battle opens here, on the Allied left, after a night of outpost contact along the Goldbach: the beginning of the attack Napoleon wanted."},
 
 {id:"raigern", t:[240,285], n:"Friant's division at Raigern since the night", side:"fr", kind:"arrival",
@@ -297,7 +297,7 @@ var EVENTS = [
  why:"Langeron rode back and sent troops up toward Kamensky. The accounts name the Kursk regiment: Mikhailovsky-Danilevsky has Langeron bring it up too late, losing up to 1,600 men; Langeron's journal, as Sokolov quotes it, two of its battalions, half killed and half taken with their guns and colours; Schönhals has it left in reserve behind Sokolnitz and mostly taken there. The hour is this map's."},
 
 {id:"pratzeberg", t:660, n:"The Pratzeberg is firmly in French hands", side:"fr", kind:"capture",
- p:[285,289], forms:["sthilaire","legrand"], cf:"A", claim:"fact",
+ p:[285,289], forms:["sthilaire","legrand"], cf:"B", claim:"fact",
  why:"From here the French centre holds the high ground above the Goldbach valley and, in time, comes down into the back of the Allied columns fighting in it."},
 
 {id:"blasowitz", t:675, n:"The French take Blasowitz from the Russian Guard", side:"fr", kind:"capture",
@@ -322,7 +322,7 @@ var EVENTS = [
  why:"Contemporaries put it about noon. Three columns go on attacking westward while the army behind them is being taken apart."},
 
 {id:"davout-resumes", t:750, n:"Davout resumes the offensive", side:"fr", kind:"attack",
- p:[204,392], forms:["friant","bourcier"], cf:"C", claim:"fact",
+ p:[204,392], forms:["friant","bourcier"], cf:"B", claim:"fact",
  why:"The anvil becomes a hammer. Langeron is pushed back onto Sokolnitz from the west."},
 
 {id:"wheel", t:[780,840], n:"The French centre turns south", side:"fr", kind:"movement",

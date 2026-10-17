@@ -119,7 +119,9 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
 - *Options.* (a) Minimal rewordings, no longer than the text they replace, where the readings contradict it (`TOUR[5].x`, `TOUR[7].x`), each
   applied only where the opening cases measure unchanged. (b) Leave them, labelled elsewhere. (c) The bar's marking of the ceiling-derived
   climbs: none, or `LABELS.event.derived`. (d) The events live at an opening case keep claims that add no label note.
-- *Recommendation.* (a); (c) none; (d) keep. *Default.* The same. *Status.* `TOUR[7].x` reworded, shorter (`be730cf`); `TOUR[5].x` reworded, of the same length (K11).
+- *Recommendation.* (a); (c) none; (d) keep. *Default.* The same. *Status.* `TOUR[7].x` reworded, shorter (`be730cf`); `TOUR[5].x`'s first sentence reworded (K11); in roadmap step 4b its
+  "Two divisions, no reserve committed" became "Two divisions, the Guard held back", one character shorter, `opening-2` measured
+  unchanged (`ed61b2d`); (c) and (d) the build's state.
 
 **191. Places and the Guard cavalry: Turas, Krug, Bellowitz, the Posoritz post house, Kologrivov and rg_cav.**
 - *Options.* Turas moved to the register's point (2.85 km north-north-west; the C6 proposal's "WNW" was wrong, the review of `e7f0df1`) or kept; the others kept or moved to weaker identifications.
@@ -133,7 +135,9 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
 - *Recommendation and default.* (a): each needs a position no reading gives. *Status.* The default is the repository's state.
 
 **193. The Timing A of the events not examined in step 4.** *Options.* (a) Keep A until examined; (b) grade each against the registers.
-*Recommendation.* (b). *Default.* (a), except those the readings contradict (B). *Status.* soult, pratzen-village, ice and end implemented (K5); telnitz-retaken (K6).
+*Recommendation.* (b). *Default.* (a), except those the readings contradict (B). *Status.* soult, pratzen-village, ice and end implemented (K5); telnitz-retaken (K6). In roadmap step 4b the eight
+  events left at A were graded against the registers (`cfcf1b2` and its review's fixes): counter-march, telnitz, sokolnitz, pratzeberg,
+  davout-resumes, sokolnitz-falls and augezd B, face-about C; none is A now. Question 201 follows from it.
 
 **194. The blue the Russian records print as "синій".**
 - *Context.* Viskovatov's scale runs голубой (light blue), синій, темносиній (dark blue); the step-4 adjudicator reads "синій" as "blue",
@@ -211,3 +215,16 @@ conservative default built meanwhile. The next owner decision after these is the
 - *Options.* (a) Keep the correction (built). (b) Restore the cornflower record with its doubt until 189's human reading confirms the page.
 - *Recommendation.* (a): the page is legible on its images and its text layer agrees, and keeping a value shown to be another regiment's
   at grade A "fact" would keep a known error; 189's human reading can still confirm it. *Default.* (a), as built.
+
+**201. The events whose hour the readings dispute, after question 193.**
+- *Context.* Question 193 (b) lowered the timing grades of eight events; six of them (counter-march, telnitz, sokolnitz, pratzeberg,
+  sokolnitz-falls, augezd) for hours the readings give differently, and davout-resumes for Mikhailovsky-Danilevsky's one o'clock against the
+  map's 12:30. Their claims stay "fact" and they carry no `dispute`, so the dossier shows the disagreement only as "Timing B". Question 193
+  asked for the grades only. Two of their whys rest on no reading: Kutuzov ordering the 4th Column to face about (face-about); Langeron
+  pushed back on Sokolnitz from the west (davout-resumes). Face-about's phase line ("c. 09:15") and davout-resumes's ("c. 12:30") do not say
+  the hour is the map's.
+- *Options.* (a) Keep the claims and texts (built). (b) Make each event whose hour the readings dispute "disputed" with a `dispute` naming
+  both hours (as telnitz-retaken and end are), each measured where the event is live at a harness case (a disputed event's map label gains
+  "hour disputed"). (c) (b) for the texts only (the dispute in the why and phase lines, no claim change, no label note).
+- *Recommendation.* (b) where the cases measure unchanged, else (c); the two unread whys checked or labelled this map's in the same task.
+  *Default.* (a), as built.
