@@ -147,7 +147,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.vandamme.role` | data.js:206 | Left-hand assault division against Stare Vinohrady; receives the Russian Guard counterattack. | unchecked |  |
 | `FORMATIONS.legrand.desig` | data.js:219 | 3e Div., IV Corps | unchecked |  |
 | `FORMATIONS.legrand.commander` | data.js:220 | Gen. de division Claude Legrand | unchecked |  |
-| `FORMATIONS.legrand.staff` | data.js:221 | Brigades: Merle · Levasseur (Sokolov, 22 November); the situation of 28 October gives Levasseur, Merle and Brouard. Féry, given here from D… | attributed | sokolov2006.p186-187.iv-corps |
+| `FORMATIONS.legrand.staff` | data.js:221 | Brigades: Merle · Levasseur (Sokolov, 22 November); the situation of 28 October gives Levasseur, Merle and Brouard. Duffy and Smith (cited,… | attributed | sokolov2006.p186-187.iv-corps |
 | `FORMATIONS.legrand.strengthNote` | data.js:222 | about 7,000, this map's working figure, not from a source read; 7,361 present on 22 November (Sokolov); 5,000 to 6,000 in Stutterheim (1806) | disputed | sokolov2006.p186-187.iv-corps (7,361 present on 22 November); stutterheim1806de.p72.legrand-5-6000 (5,000 to 6,000) |
 | `FORMATIONS.legrand.role` | data.js:223 | The bait. Two brigades in Sokolov's order of battle cover roughly five kilometres of the lower Goldbach alone. | unchecked |  |
 | `FORMATIONS.c_iii.desig` | data.js:235 | III Corps | unchecked |  |

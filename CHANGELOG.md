@@ -16,7 +16,20 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 - `356da2e`: the review of the timing group, fixed; questions 198 and 199 recorded.
 - `da16e48`: question 184, Kienmayer's working figure Schönhals's 6,340; Legrand's brigadiers the readings'.
 - `a31162b`: question 195, the Szekler hussars' 1805 page read on its images; the record corrected to dark blue.
-- (this commit) Question 197: the Guard's dawn grades B.
+- `511f5e5`: question 197, the Guard's dawn grades B.
+- (this commit) The review of the strengths-and-grades group, fixed; question 200 recorded.
+
+**The review of `da16e48`, `a31162b` and `511f5e5` (strengths and grades; an independent reviewer, read-only; fixed in the next
+commit).** It ran test.js and redteam.js (clean) and fetched the 1805 pages itself (views 295-298, their text layer): the Szekler box closes
+"dunkelblaue", Palatinal's "kornblumenblaue", view 295's preceding box "Grasgrüne Csako, lichtblaue Pelze" (a box's colour line closes it);
+the "w.K." is illegible on the text layer. No high finding. Medium: (1) the Kienmayer note's change-history phrase and the Legrand staff's
+ambiguous Féry clause: reworded (above, 184); (2) the 195 entry quoted (a) in part: quoted in full, and the correction on a machine reading
+put to the owner as question 200; (3) the Status lines of 184 and 197 in `questions.md`: updated; (4) 197's measurement was pointed to before
+it existed: "pending until the run ends; a moved limit returns it to (a)". Low: (5) 197's inheritance (guard_cav's leg, c_gd's counter,
+guard_inf beyond dawn): said; (6) the Kienmayer claim's note: reworded; (7) the 6B register's entry for the Szekler hussars
+(`docs/stage6-evidence/readings-at.md`, at.cav.hussars.11) gains a corrigendum; the quote-check tables are snapshots, left; (8)
+`docs/ROADMAP.md`'s three stale lines and (10) the build's md5, npm test and the measurement: at the step's end; (9) question 194's Status
+says the `KIT` cloth "blue" is now drawn by no class.
 
 **Question 197: the Guard's dawn grades B (guard_inf@0, guard_cav@0).** As recommended, as gqg@0 under decision 160: both are placed by
 the command post, graded B since step 4's K8, and the readings place the Guard by no landmark at dawn (the 30th Bulletin's "in reserve with
@@ -25,9 +38,13 @@ Coignet's Guard formed behind the Emperor, `coignet1909.p121-123.guard-followed`
 - `FORMATIONS.guard_inf.track["0"].cf`: was "A"; is "B". `FORMATIONS.guard_cav.track["0"].cf`: was "A"; is "B".
 - *What inherits the grade* (a track entry without its own `cf` takes the last one before it, as gqg's phases 1-5 and drouet@7 and @9 did
   under K8): guard_inf@6, @7 and @9 (none has a `cf`), so the Guard infantry is graded B all day; guard_cav only until guard_cav@6, which is A,
-  and @7 and @9 inherit A from it. On screen: the position-confidence mark is B's soft frontage instead of A's crisp footprint, and the pill
-  reads "Position: estimated", at those positions.
-- *Measured*: the recommendation says on a full check:visual, run on this commit's build (below, with 184 and 195).
+  and @7 and @9 inherit A from it; the guard_cav leg from @0 to @6 is interpolated at B (the weaker of its anchors, `confAt`); the Guard's
+  corps counter (c_gd, `aggConf`, its weakest leaf) reads B all day. guard_inf@6, @7 and @9 are B beyond dawn, which question 197's text
+  did not show the owner: their A was itself only inherited from @0, and no reading places them better, so B is the conservative reading.
+  On screen: the position-confidence mark is B's soft frontage instead of A's crisp footprint, and the pill reads "Position: estimated", at
+  those positions.
+- *Measured*: the recommendation says on a full check:visual: run on this commit's build with 184 and 195 (the result below, "The
+  strengths-and-grades measurement"). 197 names no other fallback, so a limit it moved would return it to (a).
 - check:data's changed declarations in this commit: `FORMATIONS`.
 
 **Question 195: the Szekler hussars' colour, the 1805 page read first.** The 1805 Schematismus, unreachable in step 4 (Hungaricana
@@ -37,8 +54,11 @@ them by a machine reader (17 October 2026; not read by a person, so decision 189
 its staff line and number and closes with its colour line: the Szekler Nr. 11's box (printed pp. 295-296) closes "Schwarze Csako,
 dunkelblaue Pelze, Dollmanns und Hosen. | w.K."; Palatinal Nr. 12's (pp. 296-297) closes "Schwarze Csako, kornblumenblaue Pelze, Dollmanns
 und Hosen. | w.K.", the words the record had from p. 297. The 1805 page has the 1813 layout: the record took the neighbouring regiment's
-colour. Settled from the reading, so the record is corrected (question 195's (a) said keep it "until the 1805 page is read with its
-neighbours"):
+colour. Question 195's (a), decided, reads: "Keep the record (A, drawn cornflower), its note naming the doubt, until the 1805 page is read
+with its neighbours (the first item of question 189's human reading)". The page has now been read with its neighbours, but by a machine
+reader, not in 189's human reading: correcting the record now is this step's reading of the decision (keeping, at grade A "fact", a value
+the 1805 page shows to be Palatinal's would keep a known error), put to the owner as question 200, who may restore (a) until the human
+reading; the correction is built meanwhile. The record:
 - `DRESS.at_hussar_szekler.coat`: was `{v:"kornblumenblaue Pelze, Dollmanns und Hosen", en:"cornflower-blue pelisse, dolman and breeches",
   c:"blue", at:"p. 297 (view 298)", gr:"A", lab:"fact", q:"kornblumenblaue Pelze, Dollmanns und Hosen", note: the doubt}`; is
   `{v:"dunkelblaue Pelze, Dollmanns und Hosen", en:"dark-blue pelisse, dolman and breeches", c:"dark blue", at:"p. 296 (view 297)", gr:"A",
@@ -79,8 +99,12 @@ readings'.
   line prints 2,440 horses), with two cavalry batteries, undated; Sokolov 6,380 (3,440 foot and 2,940 horse with 12 guns; the sum derived).
   Duffy and Smith (cited, not read) were transcribed here as 3,440 foot and 3,440 horse, which make 6,880; this map's earlier working
   figure, 6,800, came from that transcription"; claim disputed (Schönhals p. 177 and Sokolov p. 194, each a side), rehashed, its note
-  "The figure used is Schönhals's; the transcription of Duffy and Smith that it replaced sums to 6,880." (was "The working figure is this
-  map's, not from a source read; the transcription it came from sums to 6,880.").
+  "The figure used is Schönhals's; the figure it replaces, 6,800, came from a transcription of Duffy and Smith that sums to 6,880." (was
+  "The working figure is this map's, not from a source read; the transcription it came from sums to 6,880."). After the group's review the
+  note's last clause (was "...; this map's earlier working figure, 6,800, came from that transcription") is "Duffy and Smith (cited, not
+  read), as transcribed here, give 3,440 foot and 3,440 horse, which make 6,880" (no change-history in a visitor string, step 4's rule),
+  and the staff's Féry clause (was "Féry, given here from Duffy and Smith (cited, not read), is Vandamme's brigadier in both") is "Duffy and
+  Smith (cited, not read) were transcribed here with Féry, who is Vandamme's brigadier in both"; both rehashed.
 - *Drawn.* Kienmayer's strength sizes his block and sprite and orders the map layer's priority among formations of his echelon (by strength
   last); the cases that show him are measured with this group's full check:visual (below).
 - check:data's changed declarations in this commit: `FORMATIONS`, `STATEMENT_CLAIMS`. Checks: test.js (order of battle 42/42), sim-test.js,

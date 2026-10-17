@@ -85,7 +85,8 @@ after, computed by `tools/stage2/chronology.js`).
 - *Options per formation.* kienmayer 6,800 or 6,340 (Schönhals); lich 5,400 or 5,600 (Schönhals; moves `PLATEAU_04_RECORDED`); the IV Corps
   divisions kept or Sokolov's 22 November figures; legrand's staff as pinned or the readings' brigadiers.
 - *Recommendation.* kienmayer 6,340; lich kept; the IV Corps divisions kept until a 2 December return is read; legrand's staff the readings'.
-- *Default.* Every working figure and pin kept; every note rewritten to the readings. *Status.* Implemented (K10).
+- *Default.* Every working figure and pin kept; every note rewritten to the readings. *Status.* The default implemented (K10); the
+  decision applied in roadmap step 4b (`da16e48`): Kienmayer 6,340, Legrand's brigadiers Sokolov's, the two pins replaced by equally strict ones.
 
 **185. The losses lede and tour stop 9.** *Options.* (a) Attributed figures where they are read; (b) a short lede, the figures in the
 sources sheet. *Recommendation and default.* (a). *Status.* Implemented (K10).
@@ -141,7 +142,8 @@ traced); (b) Suchet's only; (c) the usual figures dropped. *Recommendation and d
   shape, and furniture is not drawn). (b) A new mid-blue class between the Szekler cornflower and the
   French "dark blue", drawn for these records (a `KIT` cloth and `css-test.js`'s table follow).
 - *Recommendation.* (a) until a period colour sample or plate in colour is read: the printed word fixes a name, not a shade. *Default.* (a).
-  *Status.* Implemented (`3dafee8`; the shabraques' gloss in the review's fixes).
+  *Status.* Implemented (`3dafee8`; the shabraques' gloss in the review's fixes). Since roadmap step 4b (question 195) the Szekler hussars are drawn "dark blue" too, and the
+  `KIT` cloth "blue" is drawn by no class.
 
 **195. The Szekler hussars' cornflower blue (the appearance table's A-graded record, `schem1805` p. 297).**
 - *Context.* The 1805 Schematismus could not be reached again in step 4 (Hungaricana 403; no other scan). In the 1813 edition, read on its
@@ -171,7 +173,8 @@ around Napoleon's command post"; guard_cav@0 has no act), which K8 grades B; the
 dawn place (`stutterheim1806de.p42.reserve-turas`); Coignet has the Guard formed behind the Emperor (`coignet1909.p121-123.guard-followed`);
 Savary makes the Guard infantry Lannes's natural reserve (1 December).
 - *Options.* (a) Keep A. (b) B for both, as gqg@0 under decision 160, measured on a full check:visual.
-- *Recommendation.* (b), measured. *Default.* (a). *Status.* The default is the repository's state.
+- *Recommendation.* (b), measured. *Default.* (a). *Status.* The decision applied in roadmap step 4b (`511f5e5`), measured on a full
+  check:visual (`CHANGELOG.md`).
 
 ## Roadmap step 4b: the owner questions (198-)
 
@@ -198,3 +201,11 @@ conservative default built meanwhile. The next owner decision after these is the
   measured again on a full check:visual (the patch is recorded in `CHANGELOG.md`, step 4b).
 - *Recommendation.* (b): the sources' hours for Friant's march and Telnitz retaken (Davout's report graded A) are worth one name dropped at
   the 1024 px layout, where the dropped name stays reachable by hover and keyboard. *Default.* (a), as built.
+
+**200. Question 195 applied on a machine reading.**
+- *Context.* 195 (a), decided: keep the Szekler record "until the 1805 page is read with its neighbours (the first item of question 189's
+  human reading)". In step 4b the page was read with its neighbours on its images by a machine reader (the Szekler box closes "dunkelblaue";
+  "kornblumenblaue" is Palatinal Nr. 12's), and the record was corrected to dark blue, grade A.
+- *Options.* (a) Keep the correction (built). (b) Restore the cornflower record with its doubt until 189's human reading confirms the page.
+- *Recommendation.* (a): the page is legible on its images and its text layer agrees, and keeping a value shown to be another regiment's
+  at grade A "fact" would keep a known error; 189's human reading can still confirm it. *Default.* (a), as built.

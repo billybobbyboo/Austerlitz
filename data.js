@@ -218,7 +218,7 @@ vandamme:{ ech:"div", nation:"fr", arm:"inf", desig:"2e Div., IV Corps",
 
 legrand:{ ech:"div", nation:"fr", arm:"inf", desig:"3e Div., IV Corps",
   name:"Legrand's Division", commander:"Gen. de division Claude Legrand",
-  staff:"Brigades: Merle · Levasseur (Sokolov, 22 November); the situation of 28 October gives Levasseur, Merle and Brouard. Féry, given here from Duffy and Smith (cited, not read), is Vandamme's brigadier in both. Colonel Schobert's 3e de Ligne and the Tirailleurs du Pô in Telnitz", parent:"c_iv",
+  staff:"Brigades: Merle · Levasseur (Sokolov, 22 November); the situation of 28 October gives Levasseur, Merle and Brouard. Duffy and Smith (cited, not read) were transcribed here with Féry, who is Vandamme's brigadier in both. Colonel Schobert's 3e de Ligne and the Tirailleurs du Pô in Telnitz", parent:"c_iv",
   strength:7000, strengthNote:"about 7,000, this map's working figure, not from a source read; 7,361 present on 22 November (Sokolov); 5,000 to 6,000 in Stutterheim (1806)",
   role:"The bait. Two brigades in Sokolov's order of battle cover roughly five kilometres of the lower Goldbach alone.",
   track:{
@@ -456,7 +456,7 @@ buxhowden:{ ech:"corps", nation:"ru", arm:"hq", desig:"Left Wing",
 kienmayer:{ ech:"div", nation:"at", arm:"mixed", desig:"Advance Guard, I Column",
   name:"Kienmayer's Advance Guard", commander:"Feldmarschall-Leutnant Michael von Kienmayer",
   staff:"Grenz infantry (Broder Nr. 7, 1st and 2nd Szekler Nr. 14 and 15) with chevau-legers, hussars and Cossacks", parent:"buxhowden",
-  strength:6340, strengthNote:"6,340, used here, is Schönhals's table, its lines making about 3,400 foot and 2,940 horse (its total line prints 2,440 horses), with two cavalry batteries, undated; Sokolov 6,380 (3,440 foot and 2,940 horse with 12 guns; the sum derived). Duffy and Smith (cited, not read) were transcribed here as 3,440 foot and 3,440 horse, which make 6,880; this map's earlier working figure, 6,800, came from that transcription", guns:12,
+  strength:6340, strengthNote:"6,340, used here, is Schönhals's table, its lines making about 3,400 foot and 2,940 horse (its total line prints 2,440 horses), with two cavalry batteries, undated; Sokolov 6,380 (3,440 foot and 2,940 horse with 12 guns; the sum derived). Duffy and Smith (cited, not read), as transcribed here, give 3,440 foot and 3,440 horse, which make 6,880", guns:12,
   role:"Opens the battle. The Allied extreme left.",
   track:{
     0:{p:[291,367],st:"forming",cf:"A",obj:"Take Telnitz and turn the French right",act:"Formed near Augezd before first light"},

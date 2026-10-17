@@ -289,6 +289,7 @@ the line names two colours, e.g. the artillery "Rehfarbe und Ponceau. | g. Kn." 
 - **grade**: A: official list for 1805.
 - **label**: fact (the 1802 decree's shako colour for Nr. 11, "schwarz", agrees: teuber1895 p. 315, read on the image)
 - **notes**: The 1802 decree's light blue for all would differ in shade from "kornblumenblau"; no evidence read that it was applied.
+- **corrigendum (roadmap step 4b, owner question 195)**: the words above close Palatinal Nr. 12's box on p. 297, not the Szekler Nr. 11's: read on the 1805 page images in step 4b, the Szekler box closes on p. 296 (view 297) with "Schwarze Csako, dunkelblaue Pelze, Dollmanns und Hosen. | w.K.". The record is corrected in `appearance.js` (`DRESS.at_hussar_szekler`); see `second-reading.md`.
 
 - **id**: at.cav.uhlans.1
 - **claim**: In the 1805 army list the Merveldt uhlans (Nr. 1) wore an imperial-yellow czapka, grass-green kurtka and trousers, scarlet facings and yellow buttons.
