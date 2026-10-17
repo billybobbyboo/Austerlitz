@@ -6988,11 +6988,12 @@ function refLabel(ref){ var m;
     return F.name+", "+Q.clock+(m[3]==="obj"?", its objective":m[3]==="act"?"":", its timing"); }
   if((m=/^FORMATIONS\.(\w+)\.(\w+)/.exec(ref))){ var G=FORMATIONS[m[1]]; if(!G) return null;
     return G.name+({commander:", its commander",staff:", its composition",role:", its role",note:", its note",strengthNote:", its figures",desig:", its designation",mixedNote:", its arms",army:", its army"}[m[2]]||""); }
-  if((m=/^FEATURES\[#(\w+)\]/.exec(ref))){ var T=byId(FEATURES,m[1]); return T?T.name:null; }
+  if((m=/^FEATURES\[#(\w+)\]\.(\w+)(?:\[(\d+)\])?/.exec(ref))){ var T=byId(FEATURES,m[1]); if(!T) return null;
+    return T.name+(m[2]==="why"?", why it matters ("+(+m[3]+1)+")":m[2]==="facts"&&T.facts[+m[3]]?", \u201c"+T.facts[+m[3]][0]+"\u201d":m[2]==="sub"?", its summary":""); }
   if((m=/^ANALYSIS\[#(\w+)\]/.exec(ref))){ var A=byId(ANALYSIS,m[1]); return A?"Theme \u201c"+A.n+"\u201d":null; }
   if((m=/^TOUR\[(\d+)\]/.exec(ref))) return TOUR[+m[1]]?"Tour stop "+(+m[1]+1)+", \u201c"+TOUR[+m[1]].n+"\u201d":null;
   if((m=/^ACTS\[#(\w+)\]/.exec(ref))){ var C=byId(ACTS,m[1]); return C?"Act \u201c"+C.n+"\u201d":null; }
-  if((m=/^COMMAND\.(fr|al)\["(\d+)"\]/.exec(ref))) return PHASES[+m[2]]?"Command, "+(m[1]==="fr"?"the French":"the Allied")+" headquarters, "+PHASES[+m[2]].clock:null;
+  if((m=/^COMMAND\.(fr|al)\["(\d+)"\]\[(\d+)\]/.exec(ref))) return PHASES[+m[2]]?"Command, "+(m[1]==="fr"?"the French":"the Allied")+" headquarters, "+PHASES[+m[2]].clock+", row "+(+m[3]+1):null;
   if((m=/^PLANS\.(fr|al)\./.exec(ref))) return m[1]==="fr"?"The French plan":"The Allied plan";
   if(/^SOURCE_NOTE\./.test(ref)) return "This sheet";
   return null;

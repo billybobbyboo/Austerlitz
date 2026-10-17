@@ -13,7 +13,9 @@ dossier's statements tagged with their claims, "Not yet checked" where they have
 **The commits.**
 - `7968f09`: question 202 (b), Bourcier's dragoons march with Friant.
 - `6f0adee`: question 196 (b), a formation waiting at an anchor graded by it.
-- (this commit) Question 187: the claims on screen (the index and the dossier's tags).
+- `c1a000f`: question 187, the claims on screen (the index and the dossier's tags).
+- `dba7f86`: questions.md and ROADMAP: 187, 189, 196 and 202's status; question 203.
+- (this commit) The index's places told apart: a place's summary, whys and facts, and each Command row by its number.
 
 **Question 187: the claims on screen, as the owner chose ("Index + tags").** Decision 187 recommended (i) one vocabulary, (ii) an index in
 the sources sheet first, then a button at the end of the drawer dossiers, each measured, (iii) the framing statements "interpretation" by
