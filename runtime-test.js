@@ -580,7 +580,7 @@ try{
     try{ document.createElement=t=>{ const x=mk(t); made.push(x); return x; };
       [T_MIN,525,600,700,880].forEach(t=>{ setClock(t);
         Object.keys(FORMATIONS).forEach(id=>{ made=[]; dossierFormation(id); nV++; const f=FORMATIONS[id];
-          const h=made.map(x=>x.innerHTML||"").join("\n"), T=[...h.matchAll(/<span class="ltag claim" data-claim="(\w+)" data-ref='([^']+)'>([^<]*)<\/span>/g)], refs=T.map(m=>m[2]);
+          const h=made.map(x=>x.innerHTML||"").join("\n"), T=[...h.matchAll(/<span class="ltag claim" data-claim="(\w+)" data-ref='([^']+)'><span class="sr-only">Claim: <\/span>([^<]*)<\/span>/g)], refs=T.map(m=>m[2]);
           T.forEach(m=>{ nT++; byCl[m[1]]=(byCl[m[1]]||0)+1;
             if(!live.has(m[2])) bad.push(id+" at "+fmtClock(t)+": a claim tag on "+m[2]+", not a narrative statement");
             else if(m[1]!==want(m[2])) bad.push(id+" at "+fmtClock(t)+": "+m[2]+" tagged "+m[1]+", its claim is "+want(m[2]));
@@ -596,6 +596,10 @@ try{
     Object.keys(STATEMENT_CLAIMS).forEach(r=>{ cnt[STATEMENT_CLAIMS[r].cl]=(cnt[STATEMENT_CLAIMS[r].cl]||0)+1; if(ix.indexOf('<li>'+esc(refLabel(r)||r))<0) bad.push("the index does not list "+r); });
     Object.keys(cnt).forEach(k=>{ if(ix.indexOf('<b>'+esc(CLAIM_WORDS[k].w)+'</b> \u2014 '+esc(CLAIM_WORDS[k].d)+' '+esc("("+cnt[k]+(cnt[k]===1?" statement":" statements")+")"))<0) bad.push("the index's count for "+k+" is not "+cnt[k]); });
     if(ix.indexOf('<b>'+esc(CLAIM_WORDS.unchecked.w)+'</b>')<0) bad.push("the index does not name the unchecked");
+    /* each framing class named in the index with the number of its statements that take its claim (tools/step4/statements.js's classes) */
+    Object.keys(CLAIM_BY_CLASS).forEach(k=>{ const n=ST.filter(s=>s.cls===k&&!Object.prototype.hasOwnProperty.call(STATEMENT_CLAIMS,s.ref)).length;
+      if(ix.indexOf(esc(CLAIM_BY_CLASS[k].n+" ("+CLAIM_BY_CLASS[k].why+"; "+n+(n===1?" statement":" statements")+")"))<0) bad.push("the index's count for the class "+k+" is not "+n); });
+    if(/<details|<summary/.test(ix)) bad.push("the index has a collapsed list, which the sheet's Tab order cannot reach");
     if(!byCl.unchecked||!byCl.interpretation||!nT) bad.push("claim tags: "+nT+" read, kinds "+JSON.stringify(byCl)+" (want the unchecked and the framing interpretation among them)");
     if(bad.length) throw new Error("the claims on screen (decision 187): "+bad.slice(0,8).join("; ")+(bad.length>8?" (and "+(bad.length-8)+" more)":""));
     console.log("the claims on screen (decision 187): "+nT+" claim tags in "+nV+" dossiers at five clocks, each its statement's claim in CLAIM_WORDS's word ("+

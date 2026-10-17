@@ -6645,7 +6645,7 @@ function stmtClaim(ref){
   return {cl:"unchecked"};
 }
 function claimTag(ref){ var c=stmtClaim(ref);
-  return ' <span class="ltag claim" data-claim="'+esc(c.cl)+'" data-ref=\''+esc(ref)+'\'>'+esc(CLAIM_WORDS[c.cl].w)+'</span>'; }
+  return ' <span class="ltag claim" data-claim="'+esc(c.cl)+'" data-ref=\''+esc(ref)+'\'><span class="sr-only">Claim: </span>'+esc(CLAIM_WORDS[c.cl].w)+'</span>'; }
 function trackRef(id,ph,field){ return 'FORMATIONS.'+id+'.track["'+ph+'"].'+field; }
 function objPhaseOf(id,ph){ var t=FORMATIONS[id].track; for(var i=ph;i>=0;i--) if(t[i]&&t[i].obj) return i; return -1; }
 function sect(title,html,isDl,layer){
@@ -6977,43 +6977,55 @@ function geoText(p){
     .replace(/\{ROT\}/g,GEOREF.ROT_DEG.toFixed(0)).replace(/\{CONTOUR_M\}/g,(CONTOUR_INTERVAL*GEOREF.V_M_PER_UNIT).toFixed(0));
 }
 /* decision 187 (ii), roadmap step 4b part B: the index of the statements' claims in the sources sheet. Each claim word of CLAIM_WORDS
-   with its definition and the statements that carry it (where each is, and the works it rests on); the framing statements by class
-   (CLAIM_BY_CLASS) counted, not listed; "Not yet checked" said of the rest, which carry no entry. Read from narrative.js alone */
+   with its definition and the statements that carry it (where each is, and the works it rests on), listed in full (no collapsed lists:
+   the sheet's Tab order is its close button and its body, so a control inside could not be reached by keyboard; the review of c1a000f);
+   the framing statements by class (CLAIM_BY_CLASS) named and counted, not listed; "Not yet checked" said of the rest. Read from
+   narrative.js and the statements' own declarations */
+function excerpt(t){ t=String(t||""); var w=t.split(/\s+/).slice(0,6).join(" "); return w.length<t.length?w+"\u2026":w; }
 function refLabel(ref){ var m;
   var byId=function(A,id){ for(var i=0;i<A.length;i++) if(A[i].id===id) return A[i]; return null; };
   if((m=/^EVENTS\[#([\w-]+)\]\.(\w+)/.exec(ref))){ var e=byId(EVENTS,m[1]); return e?"Event \u201c"+e.n+"\u201d"+({why:", why it matters",dispute:", its dispute",n:""}[m[2]]||""):null; }
   if((m=/^PHASES\[#(\d+)\]\.(\w+)(?:\[(\d+)\])?/.exec(ref))){ var P=PHASES[+m[1]]; if(!P) return null;
-    return "Phase \u201c"+P.title+"\u201d"+(m[2]==="events"&&P.events[+m[3]]?", the line at "+P.events[+m[3]][0]:m[2]==="lede"?", its opening":m[2]==="flash"?", its flash":""); }
+    return "Phase \u201c"+P.title+"\u201d"+(m[2]==="events"&&P.events[+m[3]]?", the line at "+P.events[+m[3]][0]+" (\u201c"+excerpt(P.events[+m[3]][1])+"\u201d)":m[2]==="lede"?", its opening":m[2]==="flash"?", its flash":""); }
   if((m=/^FORMATIONS\.(\w+)\.track\["(\d+)"\]\.(\w+)/.exec(ref))){ var F=FORMATIONS[m[1]], Q=PHASES[+m[2]]; if(!F||!Q) return null;
-    return F.name+", "+Q.clock+(m[3]==="obj"?", its objective":m[3]==="act"?"":", its timing"); }
+    return F.name+" ("+NATION[F.nation].name+"), "+Q.clock+(m[3]==="obj"?", its objective":m[3]==="act"?"":", its timing"); }
   if((m=/^FORMATIONS\.(\w+)\.(\w+)/.exec(ref))){ var G=FORMATIONS[m[1]]; if(!G) return null;
-    return G.name+({commander:", its commander",staff:", its composition",role:", its role",note:", its note",strengthNote:", its figures",desig:", its designation",mixedNote:", its arms",army:", its army"}[m[2]]||""); }
+    return G.name+" ("+NATION[G.nation].name+")"+({commander:", its commander",staff:", its composition",role:", its role",note:", its note",strengthNote:", its figures",desig:", its designation",mixedNote:", its arms",army:", its army"}[m[2]]||""); }
   if((m=/^FEATURES\[#(\w+)\]\.(\w+)(?:\[(\d+)\])?/.exec(ref))){ var T=byId(FEATURES,m[1]); if(!T) return null;
     return T.name+(m[2]==="why"?", why it matters ("+(+m[3]+1)+")":m[2]==="facts"&&T.facts[+m[3]]?", \u201c"+T.facts[+m[3]][0]+"\u201d":m[2]==="sub"?", its summary":""); }
   if((m=/^ANALYSIS\[#(\w+)\]/.exec(ref))){ var A=byId(ANALYSIS,m[1]); return A?"Theme \u201c"+A.n+"\u201d":null; }
   if((m=/^TOUR\[(\d+)\]/.exec(ref))) return TOUR[+m[1]]?"Tour stop "+(+m[1]+1)+", \u201c"+TOUR[+m[1]].n+"\u201d":null;
   if((m=/^ACTS\[#(\w+)\]/.exec(ref))){ var C=byId(ACTS,m[1]); return C?"Act \u201c"+C.n+"\u201d":null; }
   if((m=/^COMMAND\.(fr|al)\["(\d+)"\]\[(\d+)\]/.exec(ref))) return PHASES[+m[2]]?"Command, "+(m[1]==="fr"?"the French":"the Allied")+" headquarters, "+PHASES[+m[2]].clock+", row "+(+m[3]+1):null;
-  if((m=/^PLANS\.(fr|al)\./.exec(ref))) return m[1]==="fr"?"The French plan":"The Allied plan";
-  if(/^SOURCE_NOTE\./.test(ref)) return "This sheet";
+  if((m=/^PLANS\.(fr|al)\.(\w+)(?:\[(\d+)\])?/.exec(ref))){ var PL=PLANS[m[1]]; if(!PL) return null;
+    return (m[1]==="fr"?"The French plan":"The Allied plan")+({author:", who made it",intent:", its intent",cost:", its cost",assumed:", what it assumed ("+(+m[3]+1)+")"}[m[2]]||
+      (m[2]==="cols"&&PL.cols[+m[3]]?", the column \u201c"+PL.cols[+m[3]].n+"\u201d":"")); }
+  if((m=/^SOURCE_NOTE\.(\w+)\[(\d+)\]/.exec(ref))) return "This sheet, "+({body:"paragraph ",refs:"basis ",layers:"layer "}[m[1]]||"")+(+m[2]+1);
   return null;
 }
 function claimsIndex(){
   var K=["fact","attributed","disputed","derived","interpretation","uncertain","design"], by={}, cls={};
   Object.keys(STATEMENT_CLAIMS).forEach(function(r){ var c=STATEMENT_CLAIMS[r].cl; (by[c]=by[c]||[]).push(r); });
-  var h='<p>'+esc("Each statement of this map's narrative can carry a claim: what kind of statement it is, checked against the works read here (above). "+
-    "The claims are listed below by kind, with where each statement is and the works it rests on; a statement without one is not yet checked.")+'</p><ul class="bul claims-index">';
+  var nByCls={}, classOf=function(r){ for(var k in CLAIM_BY_CLASS) if(new RegExp(CLAIM_BY_CLASS[k].re).test(r)&&!Object.prototype.hasOwnProperty.call(STATEMENT_CLAIMS,r)) return k; return null; };
+  var tally=function(r){ var k=classOf(r); if(k) nByCls[k]=(nByCls[k]||0)+1; };
+  PHASES.forEach(function(P,i){ if(P.title) tally("PHASES[#"+i+"].title"); });
+  Object.keys(FORMATIONS).forEach(function(id){ var t=FORMATIONS[id].track; if(t) Object.keys(t).forEach(function(k){ if(t[k]&&t[k].obj) tally(trackRef(id,k,"obj")); }); });
+  ACTS.forEach(function(A){ if(A.line) tally("ACTS[#"+A.id+"].line"); });
+  var h='<p>'+esc("Each statement of this map's narrative can carry a claim: what kind of statement it is. A claim of its own was checked against "+
+    "the works read here (above), on their page images, by machine readers; none has yet been read again by a person. A framing statement's claim "+
+    "is given by its kind of statement, not checked one by one. A statement with neither is not yet checked. The claims are listed below by kind, "+
+    "each statement by where it is and the works it rests on.")+'</p><ul class="bul claims-index">';
   K.forEach(function(k){ var W=CLAIM_WORDS[k], L=(by[k]||[]).slice();
     var byCls=Object.keys(CLAIM_BY_CLASS).filter(function(c){ return CLAIM_BY_CLASS[c].cl===k; });
     if(!L.length&&!byCls.length) return;
     h+='<li><b>'+esc(W.w)+'</b> \u2014 '+esc(W.d)+(L.length?' '+esc("("+L.length+(L.length===1?" statement":" statements")+")"):"");
-    if(byCls.length) h+='<br>'+esc("By class: every "+byCls.map(function(c){ return c+" ("+CLAIM_BY_CLASS[c].why+")"; }).join("; every ")+", unless it carries a claim of its own.");
+    if(byCls.length) h+='<br>'+esc("By its kind, not checked one by one: "+byCls.map(function(c){ var n=nByCls[c]||0; return CLAIM_BY_CLASS[c].n+" ("+CLAIM_BY_CLASS[c].why+"; "+n+(n===1?" statement":" statements")+")"; }).join("; ")+", unless it carries a claim of its own.");
     if(L.length){
       L=L.map(function(r){ return {r:r, t:refLabel(r)||r}; }).sort(function(a,b){ return a.t<b.t?-1:a.t>b.t?1:0; });
-      h+='<details><summary>'+esc("The "+L.length+(L.length===1?" statement":" statements"))+'</summary><ul class="bul">'+L.map(function(x){
+      h+='<ul class="bul">'+L.map(function(x){
         var c=STATEMENT_CLAIMS[x.r], ws=[];
         (c.by||[]).forEach(function(b){ var S=APPEARANCE_SOURCES[b.src]; var w=(S?S.au:b.src)+(b.at?", "+b.at:""); if(ws.indexOf(w)<0) ws.push(w); });
-        return '<li>'+esc(x.t)+(ws.length?' <span class="hh">'+esc("("+ws.join("; ")+")")+'</span>':'')+'</li>'; }).join('')+'</ul></details>';
+        return '<li>'+esc(x.t)+(ws.length?' <span class="hh">'+esc("("+ws.join("; ")+")")+'</span>':'')+'</li>'; }).join('')+'</ul>';
     }
     h+='</li>'; });
   h+='<li><b>'+esc(CLAIM_WORDS.unchecked.w)+'</b> \u2014 '+esc(CLAIM_WORDS.unchecked.d)+' '+esc("Every other statement.")+'</li></ul>';

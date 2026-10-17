@@ -191,8 +191,8 @@ ol.tl li b{font-weight:400;font-size:var(--t-ui);color:var(--text-muted);font-va
 ol.tl li span{color:var(--text-muted);line-height:1.5}
 ol.tl li i{color:var(--text-muted);font-style:normal;font-size:var(--t-small)}
 ol.tl li.now{border-left-color:var(--accent)}
-ol.tl li.now span{color:var(--text)}
-ol.tl li.past span{color:var(--text-muted)}
+ol.tl li.now > span{color:var(--text)}
+ol.tl li.past > span{color:var(--text-muted)}
 
 ul.links{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
 .linkb{background:none;border:1px solid var(--line-2);color:var(--text-muted);font-size:var(--t-small);padding:4px 9px;
@@ -1793,8 +1793,7 @@ var CLAIM = {
   fact:  {label:"Fact",          note:"Attested in the standard accounts of the battle."},
   est:   {label:"Estimate",      note:"The event is attested; the figure or frontage shown is an estimate."},
   recon: {label:"Reconstruction",note:"Inferred from the narrative. Treat as indicative, not as evidence."},
-  /* decision 187 (i), roadmap step 4b part B: one vocabulary; "disputed" says what CLAIM_WORDS.disputed says, so it takes its word (was "Disputed") */
-  disputed:{label:"The sources disagree", note:"The event is attested, but its hour, or the hour of part of it, is disputed: the accounts read disagree with each other or with this map's timing, or give none while this map's own texts differ; each is named, and the map keeps its timing."}
+  disputed:{label:"Disputed",    note:"The event is attested, but its hour, or the hour of part of it, is disputed: the accounts read disagree with each other or with this map's timing, or give none while this map's own texts differ; each is named, and the map keeps its timing."}
 };
 var CLAIM_FROM_CONF = {A:"fact", B:"est", C:"recon"};
 
@@ -2038,7 +2037,7 @@ bourcier:{ ech:"div", nation:"fr", arm:"cav", desig:"4e Div. Dragons",
   role:"Covers Davout's open southern flank and the Vienna road.",
   track:{
     0:{p:[22,489],st:"march",cf:"C"},
-    3:{tm:{dep:300,gr:"B",basis:"source",ev:["Up from Raigern with Friant's division"],note:"Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry (1844, pp. 178-179); the departure is Davout's for the division he brought, at five in his report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127). No reading gives the dragoons' own hour or place. Until roadmap step 4b's question 202 the map moved them from 04:00 to this screen by 08:00 (phase 2)"},
+    3:{tm:{dep:300,gr:"B",basis:"source",ev:["Davout's reports send the division on from Raigern at 05:00","Up from Raigern with Friant's division"],note:"Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry (1844, pp. 178-179); the departure is Davout's for the division he brought, at five in his report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127). No reading gives the dragoons' own hour or place. Until roadmap step 4b's question 202 the map moved them from 04:00 to this screen by 08:00 (phase 2)"},
        p:[184,420],st:"holding",obj:"Cover the right of the Goldbach line",act:"Up from Raigern with Friant's division, as Mikhailovsky-Danilevsky has Davout come; the screen south of Telnitz is this map's"},
     7:{p:[201,416],st:"advancing"},
     8:{p:[253,393],st:"pursuing",via:[[212,408],[247,397]],act:"Pursues along the Telnitz to Augezd track"},
@@ -3778,7 +3777,7 @@ var TOUR = [
    - CLAIM_WORDS: each claim's word and its one-line definition, as a visitor would be told them; since roadmap step 4b part B (decision
      187) shown in the sources sheet's index of claims and on the formation dossier's statements.
    - CLAIM_BY_CLASS (decision 187 (iii)): the framing statements' claim by their class (tools/step4/statements.js CLASSES), each class with
-     the pattern of its refs (test.js holds it to the classes) and why; a statement of such a class with its own STATEMENT_CLAIMS entry
+     the pattern of its refs (test.js holds it to the classes), its name in a visitor's words (n) and why; a statement of such a class with its own STATEMENT_CLAIMS entry
      takes its entry's claim. */
 var CLAIM_WORDS = {
   fact:          {w:"Read in a source",        d:"A source read here says what the statement says."},
@@ -3792,9 +3791,9 @@ var CLAIM_WORDS = {
 };
 
 var CLAIM_BY_CLASS = {
-  "phase title":     {re:"^PHASES\\[#\\d+\\]\\.title$",                 cl:"interpretation", why:"how this map divides the day and names each part"},
-  "track objective": {re:"^FORMATIONS\\.\\w+\\.track\\[\"\\d+\"\\]\\.obj$", cl:"interpretation", why:"a formation's purpose as this map reads it from its orders and movements"},
-  "act":             {re:"^ACTS\\[#\\w+\\]\\.line$",                  cl:"interpretation", why:"this map's summary of a part of the day"}
+  "phase title":     {re:"^PHASES\\[#\\d+\\]\\.title$",                 cl:"interpretation", n:"the title of each of the day's phases", why:"how this map divides the day and names each part"},
+  "track objective": {re:"^FORMATIONS\\.\\w+\\.track\\[\"\\d+\"\\]\\.obj$", cl:"interpretation", n:"a formation's objective", why:"a formation's purpose as this map reads it from its orders and movements"},
+  "act":             {re:"^ACTS\\[#\\w+\\]\\.line$",                  cl:"interpretation", n:"the line of each of the timeline's five acts", why:"this map's summary of a part of the day"}
 };
 
 var STATEMENT_CLAIMS = {
@@ -12932,7 +12931,7 @@ function stmtClaim(ref){
   return {cl:"unchecked"};
 }
 function claimTag(ref){ var c=stmtClaim(ref);
-  return ' <span class="ltag claim" data-claim="'+esc(c.cl)+'" data-ref=\''+esc(ref)+'\'>'+esc(CLAIM_WORDS[c.cl].w)+'</span>'; }
+  return ' <span class="ltag claim" data-claim="'+esc(c.cl)+'" data-ref=\''+esc(ref)+'\'><span class="sr-only">Claim: </span>'+esc(CLAIM_WORDS[c.cl].w)+'</span>'; }
 function trackRef(id,ph,field){ return 'FORMATIONS.'+id+'.track["'+ph+'"].'+field; }
 function objPhaseOf(id,ph){ var t=FORMATIONS[id].track; for(var i=ph;i>=0;i--) if(t[i]&&t[i].obj) return i; return -1; }
 function sect(title,html,isDl,layer){
@@ -13264,43 +13263,55 @@ function geoText(p){
     .replace(/\{ROT\}/g,GEOREF.ROT_DEG.toFixed(0)).replace(/\{CONTOUR_M\}/g,(CONTOUR_INTERVAL*GEOREF.V_M_PER_UNIT).toFixed(0));
 }
 /* decision 187 (ii), roadmap step 4b part B: the index of the statements' claims in the sources sheet. Each claim word of CLAIM_WORDS
-   with its definition and the statements that carry it (where each is, and the works it rests on); the framing statements by class
-   (CLAIM_BY_CLASS) counted, not listed; "Not yet checked" said of the rest, which carry no entry. Read from narrative.js alone */
+   with its definition and the statements that carry it (where each is, and the works it rests on), listed in full (no collapsed lists:
+   the sheet's Tab order is its close button and its body, so a control inside could not be reached by keyboard; the review of c1a000f);
+   the framing statements by class (CLAIM_BY_CLASS) named and counted, not listed; "Not yet checked" said of the rest. Read from
+   narrative.js and the statements' own declarations */
+function excerpt(t){ t=String(t||""); var w=t.split(/\s+/).slice(0,6).join(" "); return w.length<t.length?w+"\u2026":w; }
 function refLabel(ref){ var m;
   var byId=function(A,id){ for(var i=0;i<A.length;i++) if(A[i].id===id) return A[i]; return null; };
   if((m=/^EVENTS\[#([\w-]+)\]\.(\w+)/.exec(ref))){ var e=byId(EVENTS,m[1]); return e?"Event \u201c"+e.n+"\u201d"+({why:", why it matters",dispute:", its dispute",n:""}[m[2]]||""):null; }
   if((m=/^PHASES\[#(\d+)\]\.(\w+)(?:\[(\d+)\])?/.exec(ref))){ var P=PHASES[+m[1]]; if(!P) return null;
-    return "Phase \u201c"+P.title+"\u201d"+(m[2]==="events"&&P.events[+m[3]]?", the line at "+P.events[+m[3]][0]:m[2]==="lede"?", its opening":m[2]==="flash"?", its flash":""); }
+    return "Phase \u201c"+P.title+"\u201d"+(m[2]==="events"&&P.events[+m[3]]?", the line at "+P.events[+m[3]][0]+" (\u201c"+excerpt(P.events[+m[3]][1])+"\u201d)":m[2]==="lede"?", its opening":m[2]==="flash"?", its flash":""); }
   if((m=/^FORMATIONS\.(\w+)\.track\["(\d+)"\]\.(\w+)/.exec(ref))){ var F=FORMATIONS[m[1]], Q=PHASES[+m[2]]; if(!F||!Q) return null;
-    return F.name+", "+Q.clock+(m[3]==="obj"?", its objective":m[3]==="act"?"":", its timing"); }
+    return F.name+" ("+NATION[F.nation].name+"), "+Q.clock+(m[3]==="obj"?", its objective":m[3]==="act"?"":", its timing"); }
   if((m=/^FORMATIONS\.(\w+)\.(\w+)/.exec(ref))){ var G=FORMATIONS[m[1]]; if(!G) return null;
-    return G.name+({commander:", its commander",staff:", its composition",role:", its role",note:", its note",strengthNote:", its figures",desig:", its designation",mixedNote:", its arms",army:", its army"}[m[2]]||""); }
+    return G.name+" ("+NATION[G.nation].name+")"+({commander:", its commander",staff:", its composition",role:", its role",note:", its note",strengthNote:", its figures",desig:", its designation",mixedNote:", its arms",army:", its army"}[m[2]]||""); }
   if((m=/^FEATURES\[#(\w+)\]\.(\w+)(?:\[(\d+)\])?/.exec(ref))){ var T=byId(FEATURES,m[1]); if(!T) return null;
     return T.name+(m[2]==="why"?", why it matters ("+(+m[3]+1)+")":m[2]==="facts"&&T.facts[+m[3]]?", \u201c"+T.facts[+m[3]][0]+"\u201d":m[2]==="sub"?", its summary":""); }
   if((m=/^ANALYSIS\[#(\w+)\]/.exec(ref))){ var A=byId(ANALYSIS,m[1]); return A?"Theme \u201c"+A.n+"\u201d":null; }
   if((m=/^TOUR\[(\d+)\]/.exec(ref))) return TOUR[+m[1]]?"Tour stop "+(+m[1]+1)+", \u201c"+TOUR[+m[1]].n+"\u201d":null;
   if((m=/^ACTS\[#(\w+)\]/.exec(ref))){ var C=byId(ACTS,m[1]); return C?"Act \u201c"+C.n+"\u201d":null; }
   if((m=/^COMMAND\.(fr|al)\["(\d+)"\]\[(\d+)\]/.exec(ref))) return PHASES[+m[2]]?"Command, "+(m[1]==="fr"?"the French":"the Allied")+" headquarters, "+PHASES[+m[2]].clock+", row "+(+m[3]+1):null;
-  if((m=/^PLANS\.(fr|al)\./.exec(ref))) return m[1]==="fr"?"The French plan":"The Allied plan";
-  if(/^SOURCE_NOTE\./.test(ref)) return "This sheet";
+  if((m=/^PLANS\.(fr|al)\.(\w+)(?:\[(\d+)\])?/.exec(ref))){ var PL=PLANS[m[1]]; if(!PL) return null;
+    return (m[1]==="fr"?"The French plan":"The Allied plan")+({author:", who made it",intent:", its intent",cost:", its cost",assumed:", what it assumed ("+(+m[3]+1)+")"}[m[2]]||
+      (m[2]==="cols"&&PL.cols[+m[3]]?", the column \u201c"+PL.cols[+m[3]].n+"\u201d":"")); }
+  if((m=/^SOURCE_NOTE\.(\w+)\[(\d+)\]/.exec(ref))) return "This sheet, "+({body:"paragraph ",refs:"basis ",layers:"layer "}[m[1]]||"")+(+m[2]+1);
   return null;
 }
 function claimsIndex(){
   var K=["fact","attributed","disputed","derived","interpretation","uncertain","design"], by={}, cls={};
   Object.keys(STATEMENT_CLAIMS).forEach(function(r){ var c=STATEMENT_CLAIMS[r].cl; (by[c]=by[c]||[]).push(r); });
-  var h='<p>'+esc("Each statement of this map's narrative can carry a claim: what kind of statement it is, checked against the works read here (above). "+
-    "The claims are listed below by kind, with where each statement is and the works it rests on; a statement without one is not yet checked.")+'</p><ul class="bul claims-index">';
+  var nByCls={}, classOf=function(r){ for(var k in CLAIM_BY_CLASS) if(new RegExp(CLAIM_BY_CLASS[k].re).test(r)&&!Object.prototype.hasOwnProperty.call(STATEMENT_CLAIMS,r)) return k; return null; };
+  var tally=function(r){ var k=classOf(r); if(k) nByCls[k]=(nByCls[k]||0)+1; };
+  PHASES.forEach(function(P,i){ if(P.title) tally("PHASES[#"+i+"].title"); });
+  Object.keys(FORMATIONS).forEach(function(id){ var t=FORMATIONS[id].track; if(t) Object.keys(t).forEach(function(k){ if(t[k]&&t[k].obj) tally(trackRef(id,k,"obj")); }); });
+  ACTS.forEach(function(A){ if(A.line) tally("ACTS[#"+A.id+"].line"); });
+  var h='<p>'+esc("Each statement of this map's narrative can carry a claim: what kind of statement it is. A claim of its own was checked against "+
+    "the works read here (above), on their page images, by machine readers; none has yet been read again by a person. A framing statement's claim "+
+    "is given by its kind of statement, not checked one by one. A statement with neither is not yet checked. The claims are listed below by kind, "+
+    "each statement by where it is and the works it rests on.")+'</p><ul class="bul claims-index">';
   K.forEach(function(k){ var W=CLAIM_WORDS[k], L=(by[k]||[]).slice();
     var byCls=Object.keys(CLAIM_BY_CLASS).filter(function(c){ return CLAIM_BY_CLASS[c].cl===k; });
     if(!L.length&&!byCls.length) return;
     h+='<li><b>'+esc(W.w)+'</b> \u2014 '+esc(W.d)+(L.length?' '+esc("("+L.length+(L.length===1?" statement":" statements")+")"):"");
-    if(byCls.length) h+='<br>'+esc("By class: every "+byCls.map(function(c){ return c+" ("+CLAIM_BY_CLASS[c].why+")"; }).join("; every ")+", unless it carries a claim of its own.");
+    if(byCls.length) h+='<br>'+esc("By its kind, not checked one by one: "+byCls.map(function(c){ var n=nByCls[c]||0; return CLAIM_BY_CLASS[c].n+" ("+CLAIM_BY_CLASS[c].why+"; "+n+(n===1?" statement":" statements")+")"; }).join("; ")+", unless it carries a claim of its own.");
     if(L.length){
       L=L.map(function(r){ return {r:r, t:refLabel(r)||r}; }).sort(function(a,b){ return a.t<b.t?-1:a.t>b.t?1:0; });
-      h+='<details><summary>'+esc("The "+L.length+(L.length===1?" statement":" statements"))+'</summary><ul class="bul">'+L.map(function(x){
+      h+='<ul class="bul">'+L.map(function(x){
         var c=STATEMENT_CLAIMS[x.r], ws=[];
         (c.by||[]).forEach(function(b){ var S=APPEARANCE_SOURCES[b.src]; var w=(S?S.au:b.src)+(b.at?", "+b.at:""); if(ws.indexOf(w)<0) ws.push(w); });
-        return '<li>'+esc(x.t)+(ws.length?' <span class="hh">'+esc("("+ws.join("; ")+")")+'</span>':'')+'</li>'; }).join('')+'</ul></details>';
+        return '<li>'+esc(x.t)+(ws.length?' <span class="hh">'+esc("("+ws.join("; ")+")")+'</span>':'')+'</li>'; }).join('')+'</ul>';
     }
     h+='</li>'; });
   h+='<li><b>'+esc(CLAIM_WORDS.unchecked.w)+'</b> \u2014 '+esc(CLAIM_WORDS.unchecked.d)+' '+esc("Every other statement.")+'</li></ul>';

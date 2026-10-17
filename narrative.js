@@ -14,7 +14,7 @@
    - CLAIM_WORDS: each claim's word and its one-line definition, as a visitor would be told them; since roadmap step 4b part B (decision
      187) shown in the sources sheet's index of claims and on the formation dossier's statements.
    - CLAIM_BY_CLASS (decision 187 (iii)): the framing statements' claim by their class (tools/step4/statements.js CLASSES), each class with
-     the pattern of its refs (test.js holds it to the classes) and why; a statement of such a class with its own STATEMENT_CLAIMS entry
+     the pattern of its refs (test.js holds it to the classes), its name in a visitor's words (n) and why; a statement of such a class with its own STATEMENT_CLAIMS entry
      takes its entry's claim. */
 var CLAIM_WORDS = {
   fact:          {w:"Read in a source",        d:"A source read here says what the statement says."},
@@ -28,9 +28,9 @@ var CLAIM_WORDS = {
 };
 
 var CLAIM_BY_CLASS = {
-  "phase title":     {re:"^PHASES\\[#\\d+\\]\\.title$",                 cl:"interpretation", why:"how this map divides the day and names each part"},
-  "track objective": {re:"^FORMATIONS\\.\\w+\\.track\\[\"\\d+\"\\]\\.obj$", cl:"interpretation", why:"a formation's purpose as this map reads it from its orders and movements"},
-  "act":             {re:"^ACTS\\[#\\w+\\]\\.line$",                  cl:"interpretation", why:"this map's summary of a part of the day"}
+  "phase title":     {re:"^PHASES\\[#\\d+\\]\\.title$",                 cl:"interpretation", n:"the title of each of the day's phases", why:"how this map divides the day and names each part"},
+  "track objective": {re:"^FORMATIONS\\.\\w+\\.track\\[\"\\d+\"\\]\\.obj$", cl:"interpretation", n:"a formation's objective", why:"a formation's purpose as this map reads it from its orders and movements"},
+  "act":             {re:"^ACTS\\[#\\w+\\]\\.line$",                  cl:"interpretation", n:"the line of each of the timeline's five acts", why:"this map's summary of a part of the day"}
 };
 
 var STATEMENT_CLAIMS = {

@@ -17,8 +17,7 @@ var CLAIM = {
   fact:  {label:"Fact",          note:"Attested in the standard accounts of the battle."},
   est:   {label:"Estimate",      note:"The event is attested; the figure or frontage shown is an estimate."},
   recon: {label:"Reconstruction",note:"Inferred from the narrative. Treat as indicative, not as evidence."},
-  /* decision 187 (i), roadmap step 4b part B: one vocabulary; "disputed" says what CLAIM_WORDS.disputed says, so it takes its word (was "Disputed") */
-  disputed:{label:"The sources disagree", note:"The event is attested, but its hour, or the hour of part of it, is disputed: the accounts read disagree with each other or with this map's timing, or give none while this map's own texts differ; each is named, and the map keeps its timing."}
+  disputed:{label:"Disputed",    note:"The event is attested, but its hour, or the hour of part of it, is disputed: the accounts read disagree with each other or with this map's timing, or give none while this map's own texts differ; each is named, and the map keeps its timing."}
 };
 var CLAIM_FROM_CONF = {A:"fact", B:"est", C:"recon"};
 
@@ -262,7 +261,7 @@ bourcier:{ ech:"div", nation:"fr", arm:"cav", desig:"4e Div. Dragons",
   role:"Covers Davout's open southern flank and the Vienna road.",
   track:{
     0:{p:[22,489],st:"march",cf:"C"},
-    3:{tm:{dep:300,gr:"B",basis:"source",ev:["Up from Raigern with Friant's division"],note:"Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry (1844, pp. 178-179); the departure is Davout's for the division he brought, at five in his report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127). No reading gives the dragoons' own hour or place. Until roadmap step 4b's question 202 the map moved them from 04:00 to this screen by 08:00 (phase 2)"},
+    3:{tm:{dep:300,gr:"B",basis:"source",ev:["Davout's reports send the division on from Raigern at 05:00","Up from Raigern with Friant's division"],note:"Mikhailovsky-Danilevsky has Davout come from Raigern with Friant's infantry and Bourcier's cavalry (1844, pp. 178-179); the departure is Davout's for the division he brought, at five in his report of 2 December (no. 123), between half past five and six in his report of 26 December (no. 127). No reading gives the dragoons' own hour or place. Until roadmap step 4b's question 202 the map moved them from 04:00 to this screen by 08:00 (phase 2)"},
        p:[184,420],st:"holding",obj:"Cover the right of the Goldbach line",act:"Up from Raigern with Friant's division, as Mikhailovsky-Danilevsky has Davout come; the screen south of Telnitz is this map's"},
     7:{p:[201,416],st:"advancing"},
     8:{p:[253,393],st:"pursuing",via:[[212,408],[247,397]],act:"Pursues along the Telnitz to Augezd track"},

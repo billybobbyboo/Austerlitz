@@ -9,7 +9,8 @@ changes to it are said.
 **Decided, 15 October 2026.** The owner wrote: "Let's go with your recommendations for all questions", and then: "Only record the
 decisions/your recommendations. We will implement later." Each question 176-197 is decided as its *Recommendation* reads, conditions
 included (a recommendation that depends on a measurement is to be applied only where the measurement allows it, else its stated fallback).
-None is implemented yet: the build carries each question's *Default*, as its *Status* line says, until a later task applies the decision.
+None was implemented then: the build carried each question's *Default* until a later task applied the decision; each *Status* line says
+what the build carries now.
 Roadmap step 4b part A took up 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 (`CHANGELOG.md`): each *Status* line says what
 it applied, or the fallback a measurement required; it met questions 198-202, at the end of this file. Roadmap step 4b part B applied 187,
 196 and 202, recorded 189 complete on the owner's word, and met question 203.
@@ -278,7 +279,21 @@ conservative default built meanwhile. The next owner decision after these is the
 - *Options.* (a) Nothing more: the index and the formation dossier's tags. (b) At the end of every drawer dossier, a button "How this is
   sourced" opening the sources sheet at the index, with the dossier's own statements and their claims listed first; measured on
   `paper-drawer`, `selected-formation` and the contrast states that open a dossier. (c) (b) without the button: the event, place and
-  terrain-line dossiers' statements tagged as the formation dossier's are.
+  terrain-line dossiers' statements tagged as the formation dossier's are, and the formation's compact card's (its act now, the next act,
+  the objective, the army total), which part B left untagged (the review of `c1a000f`).
 - *Recommendation.* (b), measured, with (c)'s tags if the measures allow both. *Default.* (a), as built.
-- *Status.* Open; the default built. The next owner decision is 204.
+- *Status.* Open; the default built.
+
+**204. Event names as framing statements (decision 187 (iii)).**
+- *Context.* Decision 187 (iii) gives the framing statements the claim "interpretation" (`CLAIM_WORDS`: "This map's reading") by class. In
+  roadmap step 4b part B the classes so claimed are the phase titles, the track objectives and the act lines (75 statements). The option
+  put to the owner on 17 October also named event names; they were left out: an event's name states the event ("Kienmayer attacks Telnitz"),
+  whose own claim (`EVENTS[].claim`: fact, estimate, reconstruction, disputed) its pill shows, so "This map's reading" would understate a
+  documented event. Some track objectives, likewise, restate orders the readings give (the Allied disposition's), which "beyond what its
+  sources say" understates without overclaiming.
+- *Options.* (a) As built: event names unclassed (their claim the event's), track objectives "interpretation" by class. (b) Event names
+  "interpretation" by class too, as the option named them. (c) (a), and the track objectives that restate a read order given claims of their
+  own, one by one, from the readings.
+- *Recommendation.* (a) now, (c) when a sourcing pass reaches the orders. *Default.* (a), as built.
+- *Status.* Open; the default built. The next owner decision is 205.
 

@@ -185,8 +185,8 @@ ol.tl li b{font-weight:400;font-size:var(--t-ui);color:var(--text-muted);font-va
 ol.tl li span{color:var(--text-muted);line-height:1.5}
 ol.tl li i{color:var(--text-muted);font-style:normal;font-size:var(--t-small)}
 ol.tl li.now{border-left-color:var(--accent)}
-ol.tl li.now span{color:var(--text)}
-ol.tl li.past span{color:var(--text-muted)}
+ol.tl li.now > span{color:var(--text)}
+ol.tl li.past > span{color:var(--text-muted)}
 
 ul.links{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
 .linkb{background:none;border:1px solid var(--line-2);color:var(--text-muted);font-size:var(--t-small);padding:4px 9px;

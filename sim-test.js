@@ -137,6 +137,18 @@ console.log(`\nformations on the field at 04:00: ${early.length}, at 15:00: ${la
 });
 clock=240;
 if(centreSeparation()) errs.push("the army is reported cut in two before the battle begins");
+/* question 196 (b), roadmap step 4b part B: a formation waiting at an anchor for its next leg to begin is graded by that anchor, not by the
+   phase it waits in (confAt). Pinned: gqg at the Zuran point from 11:15 until gqg@6's departure at 12:00, its anchor gqg@0 graded B (phase 6
+   is A); friant at the Goldbach (friant@1, B) at 09:00 before the leg to the retaking; kienmayer's minute at 14:30; and the rule itself for
+   every leaf formation at every ten minutes of the day */
+eval(fs.readFileSync('_state.js','utf8'));
+{ const pin=[["gqg",675,"B"],["gqg",700,"B"],["gqg",719,"B"],["friant",540,"B"],["kienmayer",870,"B"]];
+  pin.forEach(([id,t,g])=>{ const c=confAt(id,t); if(!c||c.cf!==g||c.interp) errs.push("196: "+id+" at "+t+" graded "+JSON.stringify(c)+", want "+g+" at its anchor"); });
+  let nW=0; Object.keys(FORMATIONS).filter(id=>FORMATIONS[id].track).forEach(id=>{ for(let t=T_MIN;t<=T_MAX;t+=10){ const L=legAt(id,t);
+    if(L&&L.b&&L.u<=0){ nW++; const sa=stateAt(id,L.a.ph), c=confAt(id,t); if(!c||c.cf!==sa.cf||c.interp) errs.push("196: "+id+" waiting at "+t+" graded "+JSON.stringify(c)+", its anchor's "+sa.cf); } } });
+  if(!nW) errs.push("196: no formation waits at an anchor in the day (the rule is untested)");
+  console.log("question 196: a waiting formation graded by its anchor ("+pin.length+" pins; the rule held at "+nW+" waiting samples)"); }
+
 const cutEver=series.some(s=>s.cut);
 if(!cutEver) warns.push("the derived reading never reports the Allied army as cut in two");
 

@@ -15,22 +15,25 @@ dossier's statements tagged with their claims, "Not yet checked" where they have
 - `6f0adee`: question 196 (b), a formation waiting at an anchor graded by it.
 - `c1a000f`: question 187, the claims on screen (the index and the dossier's tags).
 - `dba7f86`: questions.md and ROADMAP: 187, 189, 196 and 202's status; question 203.
-- (this commit) The index's places told apart: a place's summary, whys and facts, and each Command row by its number.
+- `43c381e`: the index's places told apart: a place's summary, whys and facts, and each Command row by its number.
+- (this commit) The review of `7968f09`, `6f0adee`, `c1a000f` and `dba7f86`, fixed; questions 203 widened and 204 recorded.
 
 **Question 187: the claims on screen, as the owner chose ("Index + tags").** Decision 187 recommended (i) one vocabulary, (ii) an index in
 the sources sheet first, then a button at the end of the drawer dossiers, each measured, (iii) the framing statements "interpretation" by
 class and (iv) the formation dossier's section tags following their statements, with (ii). Its record gives no words or layout, so the
 owner was asked how far to take it and chose (i), (ii)'s index alone, (iii) and (iv); the drawer button is question 203.
 - *(i) One vocabulary.* `CLAIM_WORDS` (narrative.js) is the vocabulary of the statements' claims, shown now in the index and the tags.
-  The three other vocabularies keep their keys; a label takes `CLAIM_WORDS`'s word only where it says the same thing:
-  `CLAIM.disputed.label` (data.js, the event pill) was "Disputed", is "The sources disagree" (`CLAIM_WORDS.disputed`: the event's dispute
-  names each side, as the claim's definition says); `SRC_LABEL.inf` (app.js, the Command tab) was "INFERRED", is "THIS MAP'S READING"
-  (`CLAIM_WORDS.interpretation`). Kept, because they say more or less than the claim word: `CLAIM.fact` "Fact" ("Attested in the standard
-  accounts", not "a source read here"), `CLAIM.est`, `CLAIM.recon`, `SRC_LABEL.doc` "DOCUMENTED" and `.anec` "ANECDOTE" (no Command row is
+  The three other vocabularies keep their keys; a label takes `CLAIM_WORDS`'s word only where it says the same thing: `SRC_LABEL.inf`
+  (app.js, the Command tab) was "INFERRED", is "THIS MAP'S READING" (`CLAIM_WORDS.interpretation`). `CLAIM.disputed.label` (data.js, the
+  event pill) was changed from "Disputed" to "The sources disagree" in `c1a000f` and restored after the review: an event's "disputed" also
+  covers one source against this map's hour (davout-resumes) and no account's hour against the map's own texts (kamensky), where "the
+  sources disagree" overclaims; `CLAIM_WORDS.disputed` requires two sides from two sources, `EVENTS[].claim` does not. Kept, because they
+  say more or less than the claim word: `CLAIM.fact` "Fact" ("Attested in the standard
+  accounts", not "a source read here"), `CLAIM.est`, `CLAIM.recon`, `CLAIM.disputed`, `SRC_LABEL.doc` "DOCUMENTED" and `.anec` "ANECDOTE" (no Command row is
   checked against a reading by them, so "Read in a source" or "As a source tells it" would overclaim), and `CONF_TEXT.A` (a position's grade,
   not a statement's claim).
 - *(ii) The index* (app.js `claimsIndex`, `refLabel`): a section "The statements' claims" in the sources sheet, after the works read: each
-  claim word with its definition and its count; the claimed statements in a closed list under it, each by where it is in a visitor's words
+  claim word with its definition and its count; the claimed statements listed under it, each by where it is in a visitor's words
   (an event, a phase's line, a formation at a phase, a place, a theme, a tour stop, a Command row, a plan, this sheet) and the works it
   rests on with their locators; the framing classes named with their reasons; "Not yet checked" for every other statement. Read from
   narrative.js alone (no quotation in the build). Measured: check:contrast (the sources sheet is one of its states) and the full
@@ -38,7 +41,8 @@ owner was asked how far to take it and chose (i), (ii)'s index alone, (iii) and 
 - *(iii) The framing statements by class*: `CLAIM_BY_CLASS` (narrative.js, new, guarded in check:data's group "narrative claims"): every phase
   title, track objective and act line "interpretation", each class with the pattern of its refs and its reason, unless the statement has an
   entry of its own (one act line has). 75 statements so (10 phase titles, 61 track objectives, 4 act lines). Event names, which the
-  question's option text also listed, are not classed: an event's name states the event, whose claim is the event's own (`EVENTS[].claim`,
+  option put to the owner on 17 October also listed (questions.md's text says "the framing statements" only), are not classed (question
+  204): an event's name states the event, whose claim is the event's own (`EVENTS[].claim`,
   shown in its pill), so "This map's reading" would understate a documented event and overstate nothing it adds; recorded here for the
   owner. test.js holds each class to `tools/step4/statements.js`'s classes (its pattern matches that class's refs exactly), its claim one
   that needs no reading (never fact, attributed, disputed or uncertain), and counts them; the inventory shows "interpretation (by class)".
@@ -51,9 +55,42 @@ owner was asked how far to take it and chose (i), (ii)'s index alone, (iii) and 
   claim, else its class's, else "unchecked", in `CLAIM_WORDS`'s word, and each statement shown carries one (1,257 tags in 200 dossiers:
   unchecked 883, interpretation 131, disputed 135, attributed 103, derived 5); every one of the 704 statements has a place in the index's
   words; every claimed statement is listed in the index with its kind's count.
-- check:data's changed declarations: `CLAIM` (data.js), `SRC_LABEL` (app.js), `CLAIM_BY_CLASS` (new), and the presentation code outside the
-  guard. Checks at this commit: test.js (704 statements: 141 with a claim of their own, 75 by class, 488 unchecked; the inventory current),
+- check:data's changed declarations: `SRC_LABEL` (app.js), `CLAIM_BY_CLASS` (new), and the presentation code outside the guard (`CLAIM`
+  changed in `c1a000f`, restored by the review's fixes). Checks at this commit: test.js (704 statements: 141 with a claim of their own, 75 by class, 488 unchecked; the inventory current),
   redteam.js, css-test.js, sim-test.js, binding-test.js and runtime-test.js pass.
+
+**The review of `7968f09`, `6f0adee`, `c1a000f` and `dba7f86` (an independent reviewer, read-only, on a worktree of `dba7f86`; fixed in
+this commit).** It rebuilt the build (identical) and ran test.js, redteam.js, sim-test.js, binding-test.js, css-test.js, runtime-test.js,
+audit.js, terrain-test.js, check:chronology and the inventory's check (all clean), compared the old and new `confAt` for every leaf at every
+minute (only gqg 11:15-12:00, friant 09:00 and kienmayer 14:30 change, A -> B, as recorded; no track entry sets a grade without a place, so
+nothing is lost while a formation waits) and ran `refLabel` over all 704 refs. Its findings, each fixed or recorded:
+- (1, high) The event pill "The sources disagree" overclaimed (above, (i)): restored to "Disputed".
+- (2, high) The index's collapsed lists (`<details>`) could not be reached by keyboard: the sources sheet's Tab order is its close button and
+  its body (`SHEETS.modal`, held by the self-test). The lists are shown in full; runtime-test.js fails on a collapsed list in the index.
+- (3) Bourcier's 05:00 had no evidence string carrying the hour: `bourcier@3.tm.ev` gains "Davout's reports send the division on from Raigern
+  at 05:00" (the raigern event's why). Grade B is decision 202's as decided ("the leg dated 05:00, B"); the hour is Davout's for the division
+  he brought, applied to the dragoons by Mikhailovsky-Danilevsky's sentence: an inference, as the timing note says. The reviewer notes that
+  C ("inferred ... applied to this move") would fit as well, and that the dragoons reach their screen at 08:45, east of Friant, while
+  Mikhailovsky-Danilevsky has Davout arrive with both after Telnitz fell: the screen is this map's, as the act says; for the owner.
+- (4) The compact card (a selected formation's default view: the act now, the next act, the objective, the army total) is untagged; recorded
+  in question 203's option (c). The dossier header's designation is untagged too (the header is not a section of statements).
+- (5) The index's intro said every claim was "checked against the works read here": it now says that a claim of its own was checked on the
+  works' page images by machine readers, none yet read again by a person, and that a framing statement's claim is given by its kind, not
+  checked one by one.
+- (6) Ambiguous index places: a formation's label names its nation ("Guard Infantry (France)", "(Russia)"); a phase line its first words;
+  this sheet its paragraph, basis or layer; a plan its field or column; the framing classes their visitor names (`CLAIM_BY_CLASS[].n`, test.js
+  requires it) and their counts, computed from the data (runtime-test.js checks each against `tools/step4/statements.js`).
+- (7) The event-name exclusion is put to the owner as question 204 (default: as built).
+- (8) No test pinned 196: sim-test.js now holds gqg at 11:15, 11:40 and 11:59 at B, friant at 09:00 and kienmayer at 14:30, and the rule
+  for every leaf at every ten minutes (556 waiting samples).
+- (9) The act list's colours (`ol.tl li.now span`, `.past span`) outranked the tag's ink: scoped to the list's own spans (`> span`).
+  (10) The tag carries a visually hidden "Claim: " for screen readers. (13) The guard's comment and `docs/VISUAL_SPEC.md` §10.4 name the new
+  words and the tag. (14) The Command tab's longer tag is measured on check:contrast. (15) No collapsed list, so nothing closes on a repaint.
+- Recorded, not changed: (11) "Who" and "How many" keep their "record" section tags (their data rows: arm, echelon, strength) while their
+  statement rows say "Not yet checked"; (12) Bourcier's dossier says "Position unchanged." while he marches 05:00-08:45 (no act at phase 0;
+  as before this part, when the creep from 04:00 did the same).
+- Records: `docs/ROADMAP.md`'s step-4b paragraph and the claims' reach; `questions.md`'s preamble; `CLAUDE.md` at the part's end.
+- check:data's changed declarations in this commit: `CLAIM` (restored), `FORMATIONS` (bourcier's evidence), `CLAIM_BY_CLASS` (the names).
 
 **Question 196 (b): a formation waiting at an anchor is graded by that anchor.** As recommended: (b), in its fuller form, which covers
 kienmayer@7 too. `confAt` (app.js, a declaration of check:data's "movement, strength and confidence model") graded a formation by the phase

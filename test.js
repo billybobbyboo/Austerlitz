@@ -408,15 +408,15 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
       if(new Set(sd.map(b=>b.side)).size<2||new Set(sd.map(b=>b.src)).size<2||new Set(sd.map(b=>b.rd)).size<2) cerr.push(at+": \"disputed\" without two sides, each read, from two sources"); }
     if(c.cl==="uncertain"&&!by.length) cerr.push(at+": \"uncertain\" names no search (the sources searched, each with its locator)");
     if(c.note!==undefined&&(typeof c.note!=="string"||!c.note||CLOCK.test(c.note))) cerr.push(at+": a note that is empty or carries a clock time (the hours are the tracks' timings): "+JSON.stringify(c.note)); });
-  /* decision 187 (iii), roadmap step 4b part B: the framing statements' claim by class. Every CLAIM_BY_CLASS entry ({re, cl, why}) names a
+  /* decision 187 (iii), roadmap step 4b part B: the framing statements' claim by class. Every CLAIM_BY_CLASS entry ({re, cl, n, why}) names a
      class of tools/step4/statements.js; its pattern matches exactly that class's refs (no more, no fewer); its claim is one that needs no
      reading (never fact, attributed, disputed or uncertain, which test.js holds to readings); a statement with its own entry keeps it */
   let nClass=0; const {CLASSES}=require('./tools/step4/statements.js'), CLN=new Set(CLASSES.map(c=>c[0]));
   if(typeof CLAIM_BY_CLASS!=="object"||!CLAIM_BY_CLASS||Array.isArray(CLAIM_BY_CLASS)) cerr.push("CLAIM_BY_CLASS is not a table");
   else Object.keys(CLAIM_BY_CLASS).forEach(k=>{ const r=CLAIM_BY_CLASS[k], at="CLAIM_BY_CLASS["+JSON.stringify(k)+"]";
     if(!CLN.has(k)){ cerr.push(at+": not a class of tools/step4/statements.js"); return; }
-    if(!r||typeof r!=="object"||typeof r.re!=="string"||typeof r.cl!=="string"||KINDS.indexOf(r.cl)<0||r.cl==="unchecked"||typeof r.why!=="string"||!r.why){ cerr.push(at+": not {re, cl (a claim word), why}"); return; }
-    Object.keys(r).filter(x=>["re","cl","why"].indexOf(x)<0).forEach(x=>cerr.push(at+": unknown field \""+x+"\""));
+    if(!r||typeof r!=="object"||typeof r.re!=="string"||typeof r.cl!=="string"||KINDS.indexOf(r.cl)<0||r.cl==="unchecked"||typeof r.n!=="string"||!r.n||typeof r.why!=="string"||!r.why){ cerr.push(at+": not {re, cl (a claim word), n, why}"); return; }
+    Object.keys(r).filter(x=>["re","cl","n","why"].indexOf(x)<0).forEach(x=>cerr.push(at+": unknown field \""+x+"\""));
     if(["fact","attributed","disputed","uncertain"].indexOf(r.cl)>=0) cerr.push(at+": \""+r.cl+"\" rests on readings, statement by statement, never on a class");
     let re=null; try{ re=new RegExp(r.re); }catch(e){ cerr.push(at+": its pattern does not compile"); return; }
     S.forEach(s=>{ const m=re.test(s.ref); if(m!==(s.cls===k)) cerr.push(at+": its pattern "+(m?"matches":"misses")+" "+s.ref+" (of the class "+s.cls+")");
