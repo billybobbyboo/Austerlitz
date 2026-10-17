@@ -2,7 +2,8 @@
 
 ## 2026-10 · Roadmap step 4b, part B: questions 202, 187 and 196 applied; decision 189 recorded complete
 
-**Status: in progress on `claude/adoring-gauss-ubfas9` (PR #54, to come).** The owner wrote (17 October 2026): "Let's do all remaining
+**Status: done on `claude/adoring-gauss-ubfas9` (PR #54), for review. The build changed: `austerlitz-command-map.html` 2,178,819 bytes, md5
+`02a46c500ca839a9a6e108d8333cc78a` (the part-A build with decisions 198-201: 2,167,583 bytes, `e257d09b...`).** The owner wrote (17 October 2026): "Let's do all remaining
 questions, your recommendations for all here. 202 and 203, as well as any other ones we can do now. That means Q202, Q187 and 196, and also
 mark Decision 189 as complete. Then merge through a separate PR, meaning PR 54." Question 203 did not exist yet: this part records it (below).
 For 187, whose record names its four parts but not their words or layout, the owner chose on being asked "Index + tags": (i) the claims in
@@ -16,7 +17,9 @@ dossier's statements tagged with their claims, "Not yet checked" where they have
 - `c1a000f`: question 187, the claims on screen (the index and the dossier's tags).
 - `dba7f86`: questions.md and ROADMAP: 187, 189, 196 and 202's status; question 203.
 - `43c381e`: the index's places told apart: a place's summary, whys and facts, and each Command row by its number.
-- (this commit) The review of `7968f09`, `6f0adee`, `c1a000f` and `dba7f86`, fixed; questions 203 widened and 204 recorded.
+- `6982e81`: the review of `7968f09`, `6f0adee`, `c1a000f` and `dba7f86`, fixed; questions 203 widened and 204 recorded.
+- `f6ff1c9`: `CLAUDE.md`.
+- (this commit) The part's end: the final checks, check:data's reference and the baseline moved.
 
 **Question 187: the claims on screen, as the owner chose ("Index + tags").** Decision 187 recommended (i) one vocabulary, (ii) an index in
 the sources sheet first, then a button at the end of the drawer dossiers, each measured, (iii) the framing statements "interpretation" by
@@ -58,6 +61,37 @@ owner was asked how far to take it and chose (i), (ii)'s index alone, (iii) and 
 - check:data's changed declarations: `SRC_LABEL` (app.js), `CLAIM_BY_CLASS` (new), and the presentation code outside the guard (`CLAIM`
   changed in `c1a000f`, restored by the review's fixes). Checks at this commit: test.js (704 statements: 141 with a claim of their own, 75 by class, 488 unchecked; the inventory current),
   redteam.js, css-test.js, sim-test.js, binding-test.js and runtime-test.js pass.
+
+**The part's end.**
+- *What part B did.* 202 (b) applied (Bourcier's dragoons from Raigern with Friant, 05:00, B); 196 (b) applied (`confAt`); 187 applied as the
+  owner chose ("Index + tags": `SRC_LABEL.inf` in `CLAIM_WORDS`'s word, the claims index in the sources sheet, 75 framing statements
+  "interpretation" by class, the formation dossier's statements tagged); 189 recorded complete on the owner's word. Questions 203 (the
+  drawer button and the other dossiers' and the card's tags) and 204 (event names by class) open, their defaults built. The next owner
+  decision is 205.
+- *What remains uncertain (historical).* Bourcier's own hour and place (no reading gives them; the march with Friant is
+  Mikhailovsky-Danilevsky's, the 05:00 Davout's for the division); everything part A listed. Decision 189's human reading: recorded
+  complete on the owner's word, with no item results; the 15 A-graded appearance quotes and the Szekler page rest on the machine readings.
+- *Implementation choices (not historical claims).* Which labels share `CLAIM_WORDS`'s words (only `SRC_LABEL.inf`); the framing classes
+  (phase titles, track objectives, act lines; event names not, question 204); the index listed in full, not collapsed (keyboard); the
+  tags without icons; the compact card untagged (question 203).
+- *check:data.* The reference moves to this build, archived as `archive/step4b-02a46c50.html`. Against the part-A reference
+  (`archive/step4b-e257d09b.html`) the part changed `FORMATIONS`, `KNOW_OVERRIDE`, `confAt`, `SRC_LABEL` and `STATEMENT_CLAIMS` and added
+  `CLAIM_BY_CLASS` (6; `CLAIM` changed and restored, net unchanged); against the new reference all 131 declarations are byte-identical.
+- *Checks on the final build* (md5 `02a46c50...`, 2,178,819 bytes; each heavy check run alone):
+  - npm test: all nine suites and the height guard pass (order of battle 42/42, appearance 603/603, geo-test 59, binding-test 400; test.js
+    704 statements, 141 with a claim of their own, 75 by class, 488 unchecked, the inventory current; runtime-test's claims on screen, 1,257
+    tags in 200 dossiers, and "console.warn unique" 0; sim-test's 196 pins and 556 waiting samples).
+  - check:chronology: 0 errors; 66 consistent, 4 early, all named (bag@6, guard_cav@6, kamensky@3, kamensky@4); 25 explicit times.
+  - check:visual (30 cases and the self-test): STAGE0, all checks passed; compared case by case with the final part-A run, no difference in
+    drops, dropped ids, unobstructed fractions or timeline height in any case. No limit changed.
+  - check:selftest: 242 passed, 0 failed, the manifest held.
+  - check:contrast: 35 states, all reached; 5,864 text elements, 114 pairs, 0 below AA, 0 below 10.5 px, 0 font failures, 0 console
+    messages; the six start-up cases pass.
+  - check:data: 131 identical against the new reference. check:baseline: moved to this build (`package.json`: md5
+    `02a46c500ca839a9a6e108d8333cc78a`, 2,178,819 bytes; was `e257d09b...`, 2,167,583 bytes); passes.
+  - Not run: `tools/stage6/verify-quotes.js` (network).
+- *Records.* `CLAUDE.md`, `docs/ROADMAP.md`, `docs/step4-evidence/questions.md` (187, 189, 196 and 202's Status lines; 203, 204),
+  `docs/VISUAL_SPEC.md` §10.4.
 
 **The review of `7968f09`, `6f0adee`, `c1a000f` and `dba7f86` (an independent reviewer, read-only, on a worktree of `dba7f86`; fixed in
 this commit).** It rebuilt the build (identical) and ran test.js, redteam.js, sim-test.js, binding-test.js, css-test.js, runtime-test.js,
