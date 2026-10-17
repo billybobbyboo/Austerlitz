@@ -23,7 +23,8 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 - `cfcf1b2`: question 193, the events' Timing A graded against the registers, six lowered.
 - `ed61b2d`: question 190, tour stop 6's "no reserve committed" reworded, no longer, `opening-2` measured unchanged.
 - `fd70c07`: the review of the places-and-plan group (`4981b27`, `5eaa92f`), fixed.
-- (this commit) The review of the events-and-opening group (`cfcf1b2`, `ed61b2d`), fixed: three more events lowered; question 201.
+- `70973cf`: the review of the events-and-opening group (`cfcf1b2`, `ed61b2d`), fixed: three more events lowered; question 201.
+- (this commit) The strengths-and-grades measurement recorded; the self-test's D-6 plateau check given a run to test after 176.
 
 **The review of `4981b27` and `5eaa92f` (places and plan; an independent reviewer, read-only, on a worktree of `5eaa92f`; fixed in the
 next commit).** It ran geo-test.js (59 of 59; Turas now inside the 0.5 km check, 666 bearing pairs over 27 points), test.js and redteam.js
@@ -159,6 +160,18 @@ constant, the transform unchanged. geo.js's header names the one village from an
 - *Measured*: Turas's name and village are drawn in the views that show the field's west; it is measured on the step's final full
   check:visual, compared with the strengths-and-grades run (below). A limit it moved would return it to its place (191's "measured").
 - check:data's changed declarations in this commit: `GEOREF`, `VILLAGES`, `SOURCE_NOTE`. Checks: test.js, geo-test.js, redteam.js pass.
+
+**The strengths-and-grades measurement (184, 195, 197; `511f5e5`'s build, md5 `71b957cc...`).** A full `check:visual` (`harness.js
+--test`, 30 cases and the self-test, 65 minutes), compared case by case with the reference: one difference, `first-run-laptop` 6 drops -> 5,
+which is 176's (above); every other case's drops, dropped ids, unobstructed fractions and timeline height as in step 4, no limit near:
+184's, 195's and 197's changes move no measure, so each stands (197's "measured" holds). npm test on that commit: all nine suites and the
+height guard pass. The run's one failure was the self-test's, and 176's: "derived readings: the plateau's 'plotted strength unchanged'
+follows the plotted holding alone ..." (D-6) picks the day's first run of the plotted holding of 70 minutes or more that begins after 04:00
+in a phase that shows the reading; with the II and III Columns marching at seven, none does (the runs are 04:00-07:05, then 18, 66, 36, 60,
+22, 37, 28, 3 and 52 minutes up to 12:27, when the Allied holding reaches 0), so the check found "no run of the plotted holding found to
+test" and failed rather than pass vacuously (step 1's rule). Fixed in `app.js` (presentation, not data): when no such run begins after 04:00,
+the first one from 04:00 is taken, tested the same three ways (a jump from 04:00, a jump from 18:00, played from the run's start), the short
+run's test unchanged; the check's name is unchanged, so the manifest stands. Its result is in the final checks below.
 
 **The review of `da16e48`, `a31162b` and `511f5e5` (strengths and grades; an independent reviewer, read-only; fixed in the next
 commit).** It ran test.js and redteam.js (clean) and fetched the 1805 pages itself (views 295-298, their text layer): the Szekler box closes

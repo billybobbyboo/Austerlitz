@@ -8862,7 +8862,11 @@ var AUSTERLITZ_DEBUG=(function(){
     var d=plateauDay(), runs=[], s=0, i, bad2=[], seen=[];
     for(i=1;i<=d.length;i++) if(i===d.length||d[i]!==d[s]){ runs.push({a:T_MIN+s,b:T_MIN+i,v:d[s]}); s=i; }
     function shown(r){ return r.v>0&&r.a>T_MIN&&phaseAt(r.a)<=6; }
-    var L=runs.filter(function(r){ return shown(r)&&r.b-r.a>=70&&phaseAt(r.a+65)<=6; })[0], S=runs.filter(function(r){ return shown(r)&&r.b-r.a<=50&&phaseAt(r.a+Math.floor((r.b-r.a)/2))<=6; })[0];
+    /* roadmap step 4b (question 176): with the II and III Columns marching at seven, no run of 70 minutes or more begins after 04:00 in a
+       phase that shows the reading (the longest is 07:23-08:29); the first such run from 04:00 is taken then, the same three ways (a jump
+       from 18:00 the one that matters there) */
+    var longRun=function(r){ return r.v>0&&r.b-r.a>=70&&phaseAt(r.a+65)<=6; };
+    var L=runs.filter(function(r){ return shown(r)&&longRun(r); })[0]||runs.filter(function(r){ return r.a===T_MIN&&longRun(r); })[0], S=runs.filter(function(r){ return shown(r)&&r.b-r.a<=50&&phaseAt(r.a+Math.floor((r.b-r.a)/2))<=6; })[0];
     function note(){ _sitKey=""; paintSituation(); var h=document.getElementById("situation"), c=document.getElementById("tb-cap");
       return (/plotted strength unchanged/.test(h?h.innerHTML:""))+"/"+(/plotted strength unchanged/.test(c?c.innerHTML:"")); }
     function jump(t,from){ setClock(from,{instant:true,force:true,camera:false}); setClock(t,{instant:true,force:true,camera:false}); return note(); }
