@@ -20,7 +20,24 @@ and the reading it rests on. The step-4 report is not committed, so a full `chec
 - `2b21ecc`: the review of the strengths-and-grades group, fixed; question 200 recorded.
 - `4981b27`: question 191, Turas moved to the address register's point for Tuřany.
 - `5eaa92f`: question 182, (b) measured past the plans-overview drop limit; (c), one column renamed the reserve, without Drouet.
-- (this commit) Question 193: the events' Timing A graded against the registers, six lowered.
+- `cfcf1b2`: question 193, the events' Timing A graded against the registers, six lowered.
+- (this commit) Question 190: tour stop 6's "no reserve committed" reworded, no longer, `opening-2` measured unchanged.
+
+**Question 190: the opening's words.** As recommended: (a) minimal rewordings, no longer than the text they replace, where the readings
+contradict it, each only where the opening cases measure unchanged; (c) no marking of the ceiling-derived climbs in the bar (the build's
+state); (d) the events live at an opening case keep claims that add no label note (the build's state: 193 changes no claim). Of (a)'s two,
+`TOUR[7].x` was reworded in step 4 (`be730cf`); `TOUR[5].x` (the opening's step 2) kept "Two divisions, no reserve committed", which the
+source skeptic found reads as nothing behind the two divisions, against Savary's I Corps division sent behind Vandamme and Schönhals's
+Boyer dragoons sent to Soult (proposals C3.p13; `savary1828.p205-208.bernadotte-division`, `schoenhals1873.p162.drouet-replaces-vandamme`),
+while the reserve in the Bulletin's sense, the Guard and the grenadiers, was held back (`corr11_1863.p451.guard-centre-reserve`,
+`schoenhals1873.p169.guard-infantry-not-engaged`). The skeptic's own rewording was longer than the text.
+- `TOUR[5].x`: was "... Two divisions, no reserve committed, against a column still filing off the heights."; is "... Two divisions, the
+  Guard held back, against a column still filing off the heights." (the clause 36 characters, now 35); unchecked (the stop's other words,
+  its "about a quarter to nine" the map's, are not checked here).
+- Measured on `opening-2` with `harness.js --only` against the step-4 reference (the build with the rewording alone): no difference in
+  drops, dropped ids, unobstructed fractions or timeline height. css-test.js's opening rules (no figure, clock, name or quotation in the
+  opening's own words) concern `LABELS.opening`, not `TOUR`; the self-test's "every string shown a `TOUR` field" holds.
+- check:data's changed declarations in this commit: `TOUR`.
 
 **Question 193: the events' Timing A graded against the registers, one by one.** As recommended ((b)). Timing A is "dated in a cited
 source" (`TIMING_TEXT.A`; decision 143); an event keeps A where a reading in the registers dates its hour (its start, decision 89), is
