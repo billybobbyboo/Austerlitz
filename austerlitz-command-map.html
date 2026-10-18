@@ -11526,9 +11526,11 @@ var LABELS={
      an arrow the data calls unsettled: marks of what the data says (EVENTS[].claim, OVERLAYS' interp), no claim of their own */
   event:{disputed:"the hour is disputed", interval:"an interval, not a timestamp", recon:"a reconstruction", tag:{disputed:"hour disputed", interval:"interval", recon:"reconstruction"},
     map:{disputed:"hour disputed", interval:"interval", recon:"reconstruction"},   /* roadmap step 3: the drawn map label's note (evMapText); "hour disputed", as the caption's tag: the disputed class disputes an hour, not the event (the ce64ed0 review) */
-    sameStart:"Starting at the same minute"},
-  /* decision 203 (b), roadmap step 4b part C: the drawer dossier's button to the claims index, and the index's list of that dossier's statements */
-  dossier:{sourced:"How this is sourced", here:"In this dossier", none:"This dossier shows none of the narrative's statements (a terrain line's note is this map's own analysis of the ground)."},   /* roadmap step 3 (A-3): the events sharing a marker's place on the timeline (dossierEvent) */
+    sameStart:"Starting at the same minute"},   /* roadmap step 3 (A-3): the events sharing a marker's place on the timeline (dossierEvent) */
+  /* decision 203 (b), roadmap step 4b part C: the drawer dossier's button to the claims index, and the head of the sheet it opens: the
+     statements that dossier tags; a terrain line's note (world.js TERRAIN_LINES) is not among the inventoried statements, so not yet checked */
+  dossier:{sourced:"How this is sourced", here:"Tagged in this dossier",
+    none:"This dossier's note is not among the narrative statements inventoried so far: not yet checked."},
   arrow:{unsettled:"disputed"},   /* owner decision 145 (question 145, 8 October 2026): the shorter form, so the 07:00 place name Augezd is drawn again */
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
      its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with the five glides of
@@ -12587,6 +12589,7 @@ var CONF_TEXT={A:"Position documented in the sources.",
 function paintDrawer(){ _drawerKey=drawerKey(); paintDrawerBody(); syncSelChip(); }
 var _drawerClear=0;
 function paintDrawerBody(){
+  _claimRefs=null;   /* a dossier that threw leaves no collection open (the review of 559802d) */
   var dr=document.getElementById("drawer"), body=document.getElementById("drawer-body");
   if(!selection){ dr.classList.remove("on"); document.body.classList.remove("drawer-open"); syncInert();
     /* SW-3: the closed dossier's buttons go with it, once it has slid away (at once when nothing slides) */
@@ -12942,7 +12945,8 @@ function claimRefsStart(){ var prev=_claimRefs; _claimRefs=[]; return prev; }
 function claimRefsEnd(prev){ var r=_claimRefs||[]; _claimRefs=prev; return r; }
 /* decision 203 (b): at the end of every drawer dossier, a button opening the sources sheet at the index, this dossier's statements first */
 function srcButton(refs){ var d=el("div","dact"), b=el("button","t",esc(LABELS.dossier.sourced));
-  b.addEventListener("click",function(){ openSources({refs:refs.slice()}); }); d.appendChild(b); return d; }
+  /* the clock stopped first, as "Go to this moment" does: a repaint under the sheet would take this button, the sheet's way back (the review of 559802d) */
+  b.addEventListener("click",function(){ stopPlay(); openSources({refs:refs.slice()}); }); d.appendChild(b); return d; }
 function trackRef(id,ph,field){ return 'FORMATIONS.'+id+'.track["'+ph+'"].'+field; }
 function objPhaseOf(id,ph){ var t=FORMATIONS[id].track; for(var i=ph;i>=0;i--) if(t[i]&&t[i].obj) return i; return -1; }
 function sect(title,html,isDl,layer){
@@ -13131,7 +13135,7 @@ function dossierAnalysis(name){
   b1.addEventListener("click",function(){ centreOnMap(tl.p[Math.floor(tl.p.length/2)],92); });
   act.appendChild(b1);
   wrap.appendChild(act);
-  wrap.appendChild(srcButton([]));   /* decision 203: a terrain line's note is this map's analysis (app.js TERRAIN_LINES), not a narrative statement */
+  wrap.appendChild(srcButton([]));   /* decision 203: a terrain line's note (world.js TERRAIN_LINES) is not among the inventoried statements (tools/step4/statements.js reads data.js and analysis.js), so it is listed as not yet checked */
   return wrap;
 }
 
@@ -13291,7 +13295,7 @@ function refLabel(ref){ var m;
   if((m=/^FORMATIONS\.(\w+)\.track\["(\d+)"\]\.(\w+)/.exec(ref))){ var F=FORMATIONS[m[1]], Q=PHASES[+m[2]]; if(!F||!Q) return null;
     return F.name+" ("+NATION[F.nation].name+"), "+Q.clock+(m[3]==="obj"?", its objective":m[3]==="act"?"":", its timing"); }
   if((m=/^FORMATIONS\.(\w+)\.(\w+)/.exec(ref))){ var G=FORMATIONS[m[1]]; if(!G) return null;
-    return G.name+" ("+NATION[G.nation].name+")"+({commander:", its commander",staff:", its composition",role:", its role",note:", its note",strengthNote:", its figures",desig:", its designation",mixedNote:", its arms",army:", its army"}[m[2]]||""); }
+    return G.name+" ("+NATION[G.nation].name+")"+({commander:", its commander",staff:", its composition",role:", its role",note:", its note",strengthNote:", its figures",desig:", its designation",mixedNote:", its arms"}[m[2]]||(m[2]==="army"?(/\.army\.src$/.test(ref)?", its army's source":", its army's figure"):"")); }
   if((m=/^FEATURES\[#(\w+)\]\.(\w+)(?:\[(\d+)\])?/.exec(ref))){ var T=byId(FEATURES,m[1]); if(!T) return null;
     return T.name+(m[2]==="why"?", why it matters ("+(+m[3]+1)+")":m[2]==="facts"&&T.facts[+m[3]]?", \u201c"+T.facts[+m[3]][0]+"\u201d":m[2]==="sub"?", its summary":""); }
   if((m=/^ANALYSIS\[#(\w+)\]/.exec(ref))){ var A=byId(ANALYSIS,m[1]); return A?"Theme \u201c"+A.n+"\u201d":null; }
@@ -13304,7 +13308,15 @@ function refLabel(ref){ var m;
   if((m=/^SOURCE_NOTE\.(\w+)\[(\d+)\]/.exec(ref))) return "This sheet, "+({body:"paragraph ",refs:"basis ",layers:"layer "}[m[1]]||"")+(+m[2]+1);
   return null;
 }
-function claimsIndex(refs){
+/* decision 203 (b): opened from a dossier, the sheet's head lists the statements that dossier tags, each with its claim and the works it
+   rests on, so nothing needs scrolling and the focus (the close button) stays in view (the review of 559802d) */
+function dossierClaims(refs){ var h='<h3 id="claims-here">'+esc(LABELS.dossier.here)+'</h3>';
+  return h+(refs.length?'<ul class="bul">'+refs.map(function(r){ var c=stmtClaim(r), E=STATEMENT_CLAIMS[r], ws=[];
+        (E&&E.by||[]).forEach(function(b){ var S=APPEARANCE_SOURCES[b.src]; var w=(S?S.au:b.src)+(b.at?", "+b.at:""); if(ws.indexOf(w)<0) ws.push(w); });
+        return '<li>'+esc(refLabel(r)||r)+' \u2014 <b>'+esc(CLAIM_WORDS[c.cl].w)+'</b>'+(c.cls?' '+esc("(by its kind)"):'')+(ws.length?' <span class="hh">'+esc("("+ws.join("; ")+")")+'</span>':'')+'</li>'; }).join('')+'</ul>'
+      :'<p>'+esc(LABELS.dossier.none)+'</p>');
+}
+function claimsIndex(){
   var K=["fact","attributed","disputed","derived","interpretation","uncertain","design"], by={}, cls={};
   Object.keys(STATEMENT_CLAIMS).forEach(function(r){ var c=STATEMENT_CLAIMS[r].cl; (by[c]=by[c]||[]).push(r); });
   var nByCls={}, classOf=function(r){ for(var k in CLAIM_BY_CLASS) if(new RegExp(CLAIM_BY_CLASS[k].re).test(r)&&!Object.prototype.hasOwnProperty.call(STATEMENT_CLAIMS,r)) return k; return null; };
@@ -13316,12 +13328,6 @@ function claimsIndex(refs){
     "the works read here (above), on their page images, by machine readers; none has yet been read again by a person. A framing statement's claim "+
     "is given by its kind of statement, not checked one by one. A statement with neither is not yet checked. The claims are listed below by kind, "+
     "each statement by where it is and the works it rests on.")+'</p>';
-  /* decision 203 (b): opened from a dossier, that dossier's statements first, each with its claim and the works it rests on */
-  if(refs){ h+='<h4 id="claims-here">'+esc(LABELS.dossier.here)+'</h4>';
-    h+=refs.length?'<ul class="bul">'+refs.map(function(r){ var c=stmtClaim(r), E=STATEMENT_CLAIMS[r], ws=[];
-        (E&&E.by||[]).forEach(function(b){ var S=APPEARANCE_SOURCES[b.src]; var w=(S?S.au:b.src)+(b.at?", "+b.at:""); if(ws.indexOf(w)<0) ws.push(w); });
-        return '<li>'+esc(refLabel(r)||r)+' \u2014 <b>'+esc(CLAIM_WORDS[c.cl].w)+'</b>'+(c.cls?' '+esc("(by its kind)"):'')+(ws.length?' <span class="hh">'+esc("("+ws.join("; ")+")")+'</span>':'')+'</li>'; }).join('')+'</ul>'
-      :'<p>'+esc(LABELS.dossier.none)+'</p>'; }
   h+='<ul class="bul claims-index">';
   K.forEach(function(k){ var W=CLAIM_WORDS[k], L=(by[k]||[]).slice();
     var byCls=Object.keys(CLAIM_BY_CLASS).filter(function(c){ return CLAIM_BY_CLASS[c].cl===k; });
@@ -13344,7 +13350,7 @@ function openSources(o){
   var m=document.getElementById("modal");
   var refs=o&&o.refs?o.refs:(o&&o.repaint?_srcRefs:null); _srcRefs=refs;   /* decision 203: a repaint keeps the dossier's list */
   var b=document.getElementById("modal-body"), was=!!(m.classList&&m.classList.contains("on")), sc=(b.closest&&b.closest(".sheet"))||b, top=sc.scrollTop||0;
-  b.innerHTML='<h2>'+esc(SOURCE_NOTE.title)+'</h2>'+
+  b.innerHTML='<h2>'+esc(SOURCE_NOTE.title)+'</h2>'+(refs?dossierClaims(refs):'')+
     SOURCE_NOTE.body.map(function(p){return '<p>'+esc(geoText(p))+'</p>';}).join('')+
     '<h3>Three layers</h3><dl class="kvs">'+SOURCE_NOTE.layers.map(function(l){
       return '<div class="kv"><dt>'+esc(l[0])+'</dt><dd>'+esc(l[1])+'</dd></div>'; }).join('')+'</dl>'+
@@ -13386,14 +13392,13 @@ function openSources(o){
     '<h3>How the standards are drawn</h3><ul class="bul">'+standardNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
     '<h3>The works read here (for the appearance table and the statements\' claims)</h3><ul class="bul">'+Object.keys(APPEARANCE_SOURCES).map(function(k){ var S=APPEARANCE_SOURCES[k];
       return '<li>'+esc(S.au+", "+S.ti+" ("+S.pub+", "+S.d+")")+'</li>'; }).join('')+'</ul>'+
-    '<h3 id="claims-index">The statements\' claims</h3>'+claimsIndex(refs)+
+    '<h3 id="claims-index">The statements\' claims</h3>'+claimsIndex()+
     '<h3>How the light is drawn</h3><ul class="bul">'+lightNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>';
   m.dataset.sources="1";
   m.classList.add("on");
   if(o&&o.repaint&&was) sc.scrollTop=top;   /* a repaint (another display factor) keeps its place (the sheet scrolls) and its focus */
   else if(!was) sheetOpened("modal");     /* roadmap step 3 (SW-4): a modal dialog: focus in, the rest inert */
-  /* decision 203: opened from a dossier, the sheet scrolls to that dossier's statements (the focus stays on the close button, Tab as before) */
-  if(refs&&!(o&&o.repaint)){ var at=document.getElementById("claims-here"); if(at&&sc&&typeof at.offsetTop==="number") sc.scrollTop=Math.max(0,at.offsetTop-16); }
+  if(refs&&!(o&&o.repaint)) sc.scrollTop=0;   /* decision 203: the dossier's statements at the sheet's head */
 }
 
 function flash(msg){
