@@ -2,14 +2,16 @@
 
 ## 2026-10 · Roadmap step 4b, part C: questions 203 and 204 decided; 203 applied
 
-**Status: in progress on `claude/adoring-gauss-ubfas9` (PR #55, to come).** The owner wrote (18 October 2026): "Go with your recommendations
+**Status: done on `claude/adoring-gauss-ubfas9` (PR #55), for review. The build changed: `austerlitz-command-map.html` 2,182,537 bytes, md5
+`97352160b97bc8e21380074e1bedbea5` (the part-B build: 2,178,819 bytes, `02a46c50...`).** The owner wrote (18 October 2026): "Go with your recommendations
 for 203, 204, and 205. Then implement as a PR." There was no question 205 (the last asked is 204; 205 is the next number): nothing is
 decided for it.
 
 **The commits.**
 - `559802d`: question 203 (b) with (c), the drawer dossiers' "How this is sourced" and their statements' tags; 204 (a) recorded.
 - `4f7a3e8`: the review of `559802d`, fixed (its records in the next commit).
-- (this commit) The records of `4f7a3e8`; the dossier cases' measurement recorded.
+- `0a3fc1b`: the records of `4f7a3e8`; the dossier cases' measurement recorded.
+- (this commit) The part's end: the final checks, the baseline moved (check:data's reference kept: no data changed).
 
 **Question 203 (b) with (c): the claims at the end of every drawer dossier.** As recommended: (b), measured, with (c)'s tags if the measures
 allow both. A presentation change (app.js, outside check:data's guard; check:data unchanged, all 131 declarations identical).
@@ -54,6 +56,21 @@ findings, each fixed or recorded:
   sheet's head (an h3), so the index's outline is as before. (9) A dossier that throws leaves no collection open (`paintDrawerBody` resets
   it). (10) The A-3 comment back on its line. (11) `CLAUDE.md` at the part's end. (12) Most of the listed statements read "Not yet checked":
   as the claims stand (488 of 704 unchecked), for the owner.
+
+**The part's end.**
+- *What part C did.* 203 (b) with (c) applied (the terrain lines' notes, outside the inventory, left for a sourcing pass); 204 (a) recorded,
+  nothing changed. No owner question is open; the next owner decision is 205.
+- *What remains uncertain (historical).* Nothing new: the claims shown are those part B recorded (141 of 704 statements with a claim of
+  their own, 75 by class, 488 not yet checked); the terrain lines' notes (world.js) are not inventoried.
+- *Implementation choices.* The list at the sheet's head (not scrolled to); the button stops the clock; the dossier headers untagged.
+- *check:data.* No data declaration changed (a presentation part): against `archive/step4b-02a46c50.html` all 131 are identical; the
+  reference is kept.
+- *Checks on the final build* (md5 `97352160...`, 2,182,537 bytes; each heavy check alone): npm test, all nine suites and the height guard
+  (runtime-test's claims on screen with part C's checks: 291 tags in the cards, the events' and the places' dossiers, the button in 178 of
+  them and every full dossier); check:chronology 0 errors; check:visual STAGE0, all checks passed, no difference from the part-B run in any
+  of the 30 cases; check:selftest 242 passed, 0 failed, the manifest held; check:contrast 35 states, 5,897 text elements, 0 below AA, 0 font
+  failures, the six start-up cases pass; check:baseline moved to this build (`package.json`: md5 `97352160b97bc8e21380074e1bedbea5`,
+  2,182,537 bytes; was `02a46c50...`, 2,178,819 bytes), passes.
 
 **Question 204 (a): event names as framing statements.** Decided as recommended: as built; event names unclassed, their claim the event's
 own; the track objectives that restate an order read handed on to the next sourcing pass. Nothing changes.
