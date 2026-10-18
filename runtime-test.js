@@ -475,7 +475,7 @@ try{
       EVENTS.forEach(e=>{ made=[]; dossierEvent(e.id);
         const h=made.map(x=>x.innerHTML).join("\n"), w=evWindow(e), iv=w[0]!==w[1], dis=e.claim==="disputed";
         const cm=h.match(/<p class="dh-cmd">([^<]*)<\/p>/), clk=cm?cm[1]:"";
-        const sect='<h3>When it happened: disputed</h3><p class="ev-why">'+esc(e.dispute)+'</p>', sent=h.indexOf("Shown as an interval rather than a timestamp")>=0;
+        const sect='<h3>When it happened: disputed</h3><p class="ev-why">'+esc(e.dispute)+claimTag("EVENTS[#"+e.id+"].dispute")+'</p>',   /* decision 203: with its claim tag */ sent=h.indexOf("Shown as an interval rather than a timestamp")>=0;
         if(!cm) throw new Error("event "+e.id+": its dossier has no clock line");
         if(clk.endsWith(esc(" ("+LABELS.event.disputed+")"))!==dis) throw new Error("event "+e.id+": the clock line \""+clk+"\" "+(dis?"lacks":"carries")+" the disputed mark");
         if((h.indexOf(sect)>=0)!==!!e.dispute) throw new Error("event "+e.id+": its dispute section "+(e.dispute?"missing":"shown without a dispute"));
@@ -591,6 +591,45 @@ try{
             if(s&&s.obj&&!refs.some(r=>/\.obj$/.test(r))) bad.push(id+" at "+fmtClock(t)+": the objective shown without its claim"); }
           ["What it was doing","Why it was there"].forEach(n=>{ if(h.indexOf("<h3>"+n+" <span")>=0) bad.push(id+": \""+n+"\" still carries a section tag"); }); }); });
     } finally { document.createElement=mk; }
+    /* decision 203 (roadmap step 4b part C): the compact card, the event and the place dossiers tag their statements as the formation
+       dossier does (the act now and next, the objective, the army total; an event's why and dispute; a place's facts, whys and story), and
+       every drawer dossier ends with the button to the index; the index opened from a dossier lists that dossier's statements first */
+    let nC=0, nB=0;
+    const tagsOf=h=>[...h.matchAll(/<span class="ltag claim" data-claim="(\w+)" data-ref='([^']+)'><span class="sr-only">Claim: <\/span>([^<]*)<\/span>/g)];
+    const hasBtn=()=>made.some(x=>(x.innerHTML||"")===esc(LABELS.dossier.sourced));   /* the stub keeps each element's own HTML: the button is one with the label */
+    /* the button's list is the dossier's tags, in order (srcButton watched), and no collection is left open after a dossier is built */
+    const realSB=srcButton; let given=null; srcButton=function(r){ given=r.slice(); return realSB(r); };
+    const judge=(what,h,wantRefs)=>{ const T=tagsOf(h), refs=T.map(m=>m[2]); nC+=T.length; if(hasBtn()) nB++; else bad.push(what+": no \""+LABELS.dossier.sourced+"\" button");
+      if(_claimRefs!==null) bad.push(what+": a claim collection left open");
+      if(!given||JSON.stringify(given)!==JSON.stringify([...new Set(refs)])) bad.push(what+": the button's statements "+JSON.stringify(given)+" are not its tags "+JSON.stringify(refs));
+      T.forEach(m=>{ if(!live.has(m[2])) bad.push(what+": a tag on "+m[2]+", not a statement"); else if(m[1]!==want(m[2])) bad.push(what+": "+m[2]+" tagged "+m[1]+", its claim is "+want(m[2]));
+        if(m[3]!==esc(CLAIM_WORDS[m[1]]?CLAIM_WORDS[m[1]].w:"?")) bad.push(what+": the tag on "+m[2]+" reads \""+m[3]+"\""); });
+      wantRefs.forEach(r=>{ if(refs.indexOf(r)<0) bad.push(what+": "+r+" shown without its claim"); }); given=null; };
+    try{ document.createElement=t=>{ const x=mk(t); made.push(x); return x; };
+      [T_MIN,600,880].forEach(t=>{ setClock(t);
+        Object.keys(FORMATIONS).forEach(id=>{ made=[]; compactCard(id); const f=FORMATIONS[id], h=made.map(x=>x.innerHTML||"").join("\n"), w=[];
+          if(f.army){ w.push("FORMATIONS."+id+".army.men","FORMATIONS."+id+".army.src"); }
+          if(f.track){ const s=stateAt(id,textPhase(id,clock)), wt=waitingFor(id,clock); if(s&&s.act) w.push('FORMATIONS.'+id+'.track["'+s.actPhase+'"].act');
+            if(wt&&f.track[wt.ph].act) w.push('FORMATIONS.'+id+'.track["'+wt.ph+'"].act');
+            if(s&&s.obj){ let k=textPhase(id,clock); while(k>0&&!(f.track[k]&&f.track[k].obj)) k--; w.push('FORMATIONS.'+id+'.track["'+k+'"].obj'); } }
+          judge(id+" (card) at "+fmtClock(t),h,w);
+          made=[]; given=null; dossierFormation(id); if(!hasBtn()) bad.push(id+" (dossier): no button"); if(_claimRefs!==null) bad.push(id+" (dossier): a claim collection left open"); }); });
+      EVENTS.forEach(e=>{ made=[]; dossierEvent(e.id); judge("event "+e.id,made.map(x=>x.innerHTML||"").join("\n"),["EVENTS[#"+e.id+"].why"].concat(e.dispute?["EVENTS[#"+e.id+"].dispute"]:[])); });
+      FEATURES.forEach(ft=>{ made=[]; dossierFeature(ft.id); const w=(ft.facts||[]).map((k,i)=>"FEATURES[#"+ft.id+"].facts["+i+"]").concat((ft.why||[]).map((x,i)=>"FEATURES[#"+ft.id+"].why["+i+"]"),ft.story?["FEATURES[#"+ft.id+"].story"]:[]);
+        judge("place "+ft.id,made.map(x=>x.innerHTML||"").join("\n"),w.filter(r=>live.has(r))); });
+      TERRAIN_LINES.forEach(tl=>{ made=[]; given=null; dossierAnalysis(tl.n); if(!hasBtn()) bad.push("terrain line "+tl.n+": no button"); else nB++;
+        if(!given||given.length) bad.push("terrain line "+tl.n+": the button passes "+JSON.stringify(given)+", want none"); });
+    } finally { document.createElement=mk; srcButton=realSB; }
+    /* the sheet opened from a dossier: its head lists that dossier's statements, each with its claim's word, before the sheet's own text; a
+       repaint keeps the list; the tools' button opens it without one; a dossier without statements says so */
+    { const e=EVENTS.find(x=>x.dispute), rs=["EVENTS[#"+e.id+"].why","EVENTS[#"+e.id+"].dispute"], mb=document.getElementById("modal-body");
+      openSources({refs:rs}); let H=mb.innerHTML, at=H.indexOf('id="claims-here"'), body0=H.indexOf(esc(geoText(SOURCE_NOTE.body[0])));
+      if(at<0||body0<0||at>body0) bad.push("the sheet opened from a dossier does not list its statements at its head");
+      rs.forEach(r=>{ const p=H.indexOf(esc(refLabel(r))+' \u2014 <b>'+esc(CLAIM_WORDS[stmtClaim(r).cl].w)+'</b>'); if(p<at||p>body0) bad.push("the sheet opened from "+e.id+"'s dossier does not list "+r+" with its claim first"); });
+      openSources({repaint:true}); if(mb.innerHTML.indexOf('id="claims-here"')<0) bad.push("a repaint of the sheet loses the dossier's list");
+      openSources(); if(mb.innerHTML.indexOf('id="claims-here"')>=0) bad.push("the tools' sheet lists a dossier's statements");
+      openSources({refs:[]}); if(mb.innerHTML.indexOf(esc(LABELS.dossier.none))<0) bad.push("the sheet opened from a dossier without statements does not say so");
+      closeSources(); }
     const noLab=ST.filter(s=>!refLabel(s.ref)).map(s=>s.ref); if(noLab.length) bad.push(noLab.length+" statements without a place in the index's words: "+noLab.slice(0,5).join(", "));
     const ix=claimsIndex(), cnt={};
     Object.keys(STATEMENT_CLAIMS).forEach(r=>{ cnt[STATEMENT_CLAIMS[r].cl]=(cnt[STATEMENT_CLAIMS[r].cl]||0)+1; if(ix.indexOf('<li>'+esc(refLabel(r)||r))<0) bad.push("the index does not list "+r); });
@@ -603,7 +642,8 @@ try{
     if(!byCl.unchecked||!byCl.interpretation||!nT) bad.push("claim tags: "+nT+" read, kinds "+JSON.stringify(byCl)+" (want the unchecked and the framing interpretation among them)");
     if(bad.length) throw new Error("the claims on screen (decision 187): "+bad.slice(0,8).join("; ")+(bad.length>8?" (and "+(bad.length-8)+" more)":""));
     console.log("the claims on screen (decision 187): "+nT+" claim tags in "+nV+" dossiers at five clocks, each its statement's claim in CLAIM_WORDS's word ("+
-      Object.keys(byCl).map(k=>k+" "+byCl[k]).join(", ")+"); every one of "+ST.length+" statements placed in the index's words, the "+Object.keys(STATEMENT_CLAIMS).length+" claimed listed with their counts OK"); }
+      Object.keys(byCl).map(k=>k+" "+byCl[k]).join(", ")+"); every one of "+ST.length+" statements placed in the index's words, the "+Object.keys(STATEMENT_CLAIMS).length+" claimed listed with their counts; "+
+      "decision 203: "+nC+" tags in the cards, the events' and the places' dossiers, the button in "+nB+" of them and every full dossier, the dossier's statements first in the index OK"); }
 
   /* roadmap step 2 (docs/FINAL_AUDIT.md D-5): the sources sheet's notes read the appearance table and the computed sun, not typed values.
      Each value they name is changed in the table for one call and the note must follow it; the table is put back (and the kit's cache). The

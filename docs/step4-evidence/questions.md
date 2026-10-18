@@ -198,7 +198,8 @@ Savary makes the Guard infantry Lannes's natural reserve (1 December).
 **Decided, 17 October 2026.** The owner wrote: "questions 198-201, lets go with your recommendations, then include that in PR 53". Each is
 decided as its *Recommendation* reads, conditions included, and applied in roadmap step 4b (`CHANGELOG.md`); each *Status* line says how.
 Question 202, met in the review of those decisions' commits, was decided (b) with 187 and 196 on 17 October 2026 ("your recommendations
-for all"), applied in roadmap step 4b part B; question 203, met there, is open, its default built.
+for all"), applied in roadmap step 4b part B; questions 203 and 204, met there, were decided as recommended on 18 October 2026 (203 applied in part C;
+204 (a), as built).
 
 Choices decisions 1-197 do not settle, met while applying decisions 176-197 in step 4b; each with its options, a recommendation and the
 conservative default built meanwhile. The next owner decision after these is the number after the last.
@@ -282,7 +283,13 @@ conservative default built meanwhile. The next owner decision after these is the
   terrain-line dossiers' statements tagged as the formation dossier's are, and the formation's compact card's (its act now, the next act,
   the objective, the army total), which part B left untagged (the review of `c1a000f`).
 - *Recommendation.* (b), measured, with (c)'s tags if the measures allow both. *Default.* (a), as built.
-- *Status.* Open; the default built.
+- *Status.* Decided (b) with (c) on 18 October 2026 ("Go with your recommendations for 203, 204"); applied in roadmap step 4b part C:
+  every drawer dossier (the formation's card and full dossier, an event's, a place's, a terrain line's) ends with "How this is sourced",
+  opening the sources sheet with that dossier's tagged statements at its head; the card's, the events' and the places' statements tagged
+  (the dossier headers' name, designation and summary untagged, as the formation dossier's header is). The terrain lines' notes are not
+  tagged: they are world.js's `TERRAIN_LINES`, outside the inventory (data.js and analysis.js), so their sheet says "not yet checked" until a
+  sourcing pass inventories them (a departure from (c) as written, whose premise missed it; the review of `559802d`). Measured on the
+  dossier cases, unchanged; the full checks in `CHANGELOG.md`.
 
 **204. Event names as framing statements (decision 187 (iii)).**
 - *Context.* Decision 187 (iii) gives the framing statements the claim "interpretation" (`CLAIM_WORDS`: "This map's reading") by class. In
@@ -295,5 +302,6 @@ conservative default built meanwhile. The next owner decision after these is the
   "interpretation" by class too, as the option named them. (c) (a), and the track objectives that restate a read order given claims of their
   own, one by one, from the readings.
 - *Recommendation.* (a) now, (c) when a sourcing pass reaches the orders. *Default.* (a), as built.
-- *Status.* Open; the default built. The next owner decision is 205.
+- *Status.* Decided (a) on 18 October 2026: as built, nothing changes; (c) handed on to the next sourcing pass. The owner's message also
+  named a question 205, which did not exist; none was asked. The next owner decision is 205.
 

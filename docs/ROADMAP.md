@@ -209,7 +209,8 @@ Part A (merged, PR #53), each as its recommendation reads, conditions measured w
 run (`CHANGELOG.md`): 176 (b), 180 (b), 181, 184, 190 (a), 191, 193 (b), 195 (the page read), 197 (b); 182 measured past a limit, so its
 fallback (c); 177 measured past a limit, so (a), then (b) on decision 199; the owner decided 198-201 as recommended on 17 October 2026,
 applied in the same PR. Part B (PR #54): 187 as the owner chose ("Index + tags"), 196 (b) and 202 (b), measured; 189 recorded complete on
-the owner's word. The questions the step met, in full in `docs/step4-evidence/questions.md`; 203 and 204 are open:
+the owner's word. Part C (PR #55): 203 (b) with (c), 204 (a), decided 18 October 2026. The questions the step met, in full in
+`docs/step4-evidence/questions.md`; none is open:
 
 | # | question | recommended | the build |
 |---|---|---|---|
@@ -218,14 +219,14 @@ the owner's word. The questions the step met, in full in `docs/step4-evidence/qu
 | 200 | question 195 applied on a machine reading of the 1805 page | keep the correction | decided (a): the correction |
 | 201 | the events whose hour the readings dispute (after 193): "disputed" with a dispute, and two unread whys | (b) where the cases measure unchanged, else (c) | decided (b): seven events disputed, measured unchanged; the unread claims labelled this map's |
 | 202 | Bourcier's dragoons after 177 (b): their screen south of Telnitz at 08:00, an undated creep from 04:00, while Mikhailovsky-Danilevsky has them come with Friant | march them with Friant (the anchor at phase 3, the leg dated 05:00, B), measured | decided (b), applied in 4b part B, measured unchanged |
-| 203 | the claims at the end of the drawer dossiers (187 (ii)'s second part) | a button to the index at each drawer dossier's end, with the event, place and terrain-line statements and the compact card tagged, measured | open; the default: the index and the formation dossier's tags only |
-| 204 | event names as framing statements (187 (iii)) | keep them unclassed, their claim the event's; the objectives that restate a read order claimed one by one later | open; the default: as built |
+| 203 | the claims at the end of the drawer dossiers (187 (ii)'s second part) | a button to the index at each drawer dossier's end, with the event, place and terrain-line statements and the compact card tagged, measured | decided (b) with (c), 18 October 2026; applied in 4b part C (the terrain lines' notes, outside the inventory, not tagged: to the next sourcing pass) |
+| 204 | event names as framing statements (187 (iii)) | keep them unclassed, their claim the event's; the objectives that restate a read order claimed one by one later | decided (a), 18 October 2026: as built; (c) to the next sourcing pass |
 
 ### What step 4 hands on (fact, from its commits and their reviews; `CHANGELOG.md`)
 
 - **The owner decisions 176-197** above, decided as recommended: step 4b part A applied 176, 180, 181, 184, 190, 191, 193, 195 and 197,
   measured 182 into its fallback, and applied 177 (b) on decision 199; step 4b part B applied 187, 196 and 202 and recorded 189 complete on
-  the owner's word. Step 4b's questions 198-202 are decided and applied; 203 and 204 are open (above).
+  the owner's word. Step 4b's questions 198-204 are decided; part C applied 203 (204 (a) is the build's state).
 - **The claims' reach:** at step 4's end 134 of the 696 narrative statements carried a claim and 562 were unchecked (after step 4b part B, 141 of
   704 carry one of their own, 75 framing statements one by class, 488 unchecked), mostly formation acts, feature stories and
   the analysis chapters outside the clusters read, but 38 of them rewritten in step 4 without a claim (among them the phase-2 to phase-5 ledes,
