@@ -1,5 +1,36 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 4b, part C: questions 203 and 204 decided; 203 applied
+
+**Status: in progress on `claude/adoring-gauss-ubfas9` (PR #55, to come).** The owner wrote (18 October 2026): "Go with your recommendations
+for 203, 204, and 205. Then implement as a PR." There was no question 205 (the last asked is 204; 205 is the next number): nothing is
+decided for it.
+
+**The commits.**
+- (this commit) Question 203 (b) with (c): the drawer dossiers' "How this is sourced" and their statements' tags; 204 (a) recorded.
+
+**Question 203 (b) with (c): the claims at the end of every drawer dossier.** As recommended: (b), measured, with (c)'s tags if the measures
+allow both. A presentation change (app.js, outside check:data's guard; check:data unchanged, all 131 declarations identical).
+- *(b) The button.* Every drawer dossier ends with "How this is sourced" (`LABELS.dossier.sourced`): the formation's card and its full
+  dossier, an event's, a place's and a terrain line's. It opens the sources sheet (`openSources({refs})`) scrolled to a list "In this
+  dossier" (`LABELS.dossier.here`) at the head of the claims index: each of that dossier's statements by its place, its claim's word ("by
+  its kind" for a framing statement) and the works it rests on; a terrain line's dossier holds no narrative statement (its note is this
+  map's own analysis, `TERRAIN_LINES` in app.js) and says so (`LABELS.dossier.none`). The focus goes to the sheet's close button and Tab
+  keeps its order (close, body), as before; a repaint keeps the list; the tools' "Accuracy, sources" opens the sheet without it. The
+  statements are those the dossier tags, collected as it is built (`claimRefsStart`, `claimRefsEnd`).
+- *(c) The tags.* As in the formation dossier (decision 187 (iv)): the card's act now, its next act, its objective and its army total (the
+  figure and its source, two statements); an event's why and its dispute; a place's facts, its whys and its story. The dossier headers'
+  name, designation and summary stay untagged, as the formation dossier's header is.
+- runtime-test.js: the event dossier's dispute paragraph is matched with its tag (the check as strict as before); a new check holds the cards
+  at three clocks, every event's and place's dossier: each tag its statement's claim, each statement shown tagged, the button in every
+  drawer dossier and every full dossier, the index opened from a dossier listing its statements first, one without statements saying so, the
+  tools' sheet without the list (291 tags; 178 buttons besides the full dossiers').
+- Measured: `paper-drawer`, `selected-formation` and `watch-selected` (the cases that open a dossier) with `harness.js --only` against the
+  part-B run (pending at this commit); the full check:visual, check:contrast and check:selftest at the part's end.
+
+**Question 204 (a): event names as framing statements.** Decided as recommended: as built; event names unclassed, their claim the event's
+own; the track objectives that restate an order read handed on to the next sourcing pass. Nothing changes.
+
 ## 2026-10 · Roadmap step 4b, part B: questions 202, 187 and 196 applied; decision 189 recorded complete
 
 **Status: done on `claude/adoring-gauss-ubfas9` (PR #54), for review. The build changed: `austerlitz-command-map.html` 2,178,819 bytes, md5

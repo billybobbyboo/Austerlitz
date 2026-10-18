@@ -5240,7 +5240,9 @@ var LABELS={
      an arrow the data calls unsettled: marks of what the data says (EVENTS[].claim, OVERLAYS' interp), no claim of their own */
   event:{disputed:"the hour is disputed", interval:"an interval, not a timestamp", recon:"a reconstruction", tag:{disputed:"hour disputed", interval:"interval", recon:"reconstruction"},
     map:{disputed:"hour disputed", interval:"interval", recon:"reconstruction"},   /* roadmap step 3: the drawn map label's note (evMapText); "hour disputed", as the caption's tag: the disputed class disputes an hour, not the event (the ce64ed0 review) */
-    sameStart:"Starting at the same minute"},   /* roadmap step 3 (A-3): the events sharing a marker's place on the timeline (dossierEvent) */
+    sameStart:"Starting at the same minute"},
+  /* decision 203 (b), roadmap step 4b part C: the drawer dossier's button to the claims index, and the index's list of that dossier's statements */
+  dossier:{sourced:"How this is sourced", here:"In this dossier", none:"This dossier shows none of the narrative's statements (a terrain line's note is this map's own analysis of the ground)."},   /* roadmap step 3 (A-3): the events sharing a marker's place on the timeline (dossierEvent) */
   arrow:{unsettled:"disputed"},   /* owner decision 145 (question 145, 8 October 2026): the shorter form, so the 07:00 place name Augezd is drawn again */
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
      its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with the five glides of
@@ -6349,7 +6351,7 @@ function claimOf(id,cf){
 }
 var dossierExpanded=false;
 function compactCard(id){
-  var f=FORMATIONS[id];
+  var f=FORMATIONS[id], cr0=claimRefsStart();
   var st=liveStatus(id,curPhase), cf=aggConf(id,curPhase);
   var s2=f.track?stateAt(id,textPhase(id,clock)):null, wt=f.track?waitingFor(id,clock):null, tmg=timingNow(id);
   var nat=NATION[f.nation];
@@ -6367,21 +6369,22 @@ function compactCard(id){
   wrap.appendChild(el("div","pillrow",pills));
   var str=f.strength||aggStrength(id);
   var body='';
-  if(f.army) body+=row("Army total", esc(f.army.men)+", "+f.army.guns+" guns <span class=\"hh\">("+esc(f.army.src)+")</span>");
+  if(f.army) body+=row("Army total", esc(f.army.men)+claimTag("FORMATIONS."+id+".army.men")+", "+f.army.guns+" guns <span class=\"hh\">("+esc(f.army.src)+")</span>"+claimTag("FORMATIONS."+id+".army.src"));
   else if(f.strengthRange) body+=row("Strength","&asymp; "+f.strengthRange[0].toLocaleString()+"&ndash;"+f.strengthRange[1].toLocaleString()+" men <span class=\"hh\">(working figure "+str.toLocaleString()+")</span>"+(f.guns?", "+f.guns+" guns":""));
   else if(str) body+=row("Strength","&asymp; "+str.toLocaleString()+" men"+(f.guns?", "+f.guns+" guns":""));
   if(f.parent){
     var pf=FORMATIONS[f.parent];
     body+=row("Under", esc(shortCommander(pf))+" &middot; "+esc(pf.name));
   }
-  if(s2&&s2.act) body+=row("Doing now", esc(s2.act));
-  if(wt&&f.track[wt.ph].act) body+=row("From "+esc(fmtClock(wt.w[0])), esc(f.track[wt.ph].act));
-  if(s2&&s2.obj) body+=row("Objective", esc(s2.obj));
+  if(s2&&s2.act) body+=row("Doing now", esc(s2.act)+claimTag(trackRef(id,s2.actPhase,"act")));
+  if(wt&&f.track[wt.ph].act) body+=row("From "+esc(fmtClock(wt.w[0])), esc(f.track[wt.ph].act)+claimTag(trackRef(id,wt.ph,"act")));
+  if(s2&&s2.obj) body+=row("Objective", esc(s2.obj)+claimTag(trackRef(id,objPhaseOf(id,textPhase(id,clock)),"obj")));
   body+=posRow(id,true);   /* roadmap step 2 (D-6): an aggregate's midpoint, tagged derived */
   wrap.appendChild(el("dl","kvs",body));
   var mb=el("button","more-btn","Full dossier: role, movement, sources");
   mb.addEventListener("click",function(){ dossierExpanded=true; paintDrawer(); });
   wrap.appendChild(mb);
+  wrap.appendChild(srcButton(claimRefsEnd(cr0)));
   return wrap;
 }
 /* ---- Stage 6C (docs/STAGE6_SPEC.md section 4.3 item 7; owner decisions 101, 103, 104): the full dossier's "Dress" ----
@@ -6469,7 +6472,7 @@ function marchRow(id){
     (mr.ice?' <span class="hh">over the frozen mere</span>':'')+" "+derivedTag()+' <span class="hh">(the plotted leg\u2019s length over its time window)</span>');
 }
 function dossierFormation(id){
-  var f=FORMATIONS[id];
+  var f=FORMATIONS[id], cr0=claimRefsStart();
   var isAgg=!f.track;
   var s=f.track?stateAt(id,textPhase(id,clock)):null, wt=f.track?waitingFor(id,clock):null, tmg=timingNow(id);
   var st=liveStatus(id,curPhase), cf=aggConf(id,curPhase);
@@ -6607,6 +6610,7 @@ function dossierFormation(id){
   btn.addEventListener("click",function(){ focusOn(id); });
   act.appendChild(btn);
   wrap.appendChild(act);
+  wrap.appendChild(srcButton(claimRefsEnd(cr0)));   /* decision 203 (b) */
 
   wrap.querySelectorAll("[data-goto]").forEach(function(b){
     b.addEventListener("click",function(){ select("f",b.dataset.goto); focusOn(b.dataset.goto); });
@@ -6644,8 +6648,15 @@ function stmtClaim(ref){
   for(var i=0;i<_claimClassRe.length;i++) if(_claimClassRe[i].re.test(ref)) return {cl:_claimClassRe[i].cl, cls:_claimClassRe[i].k};
   return {cl:"unchecked"};
 }
-function claimTag(ref){ var c=stmtClaim(ref);
+/* decision 203 (roadmap step 4b part C): the statements a dossier tags, collected while it is built, for its "How this is sourced" button */
+var _claimRefs=null;
+function claimTag(ref){ var c=stmtClaim(ref); if(_claimRefs&&_claimRefs.indexOf(ref)<0) _claimRefs.push(ref);
   return ' <span class="ltag claim" data-claim="'+esc(c.cl)+'" data-ref=\''+esc(ref)+'\'><span class="sr-only">Claim: </span>'+esc(CLAIM_WORDS[c.cl].w)+'</span>'; }
+function claimRefsStart(){ var prev=_claimRefs; _claimRefs=[]; return prev; }
+function claimRefsEnd(prev){ var r=_claimRefs||[]; _claimRefs=prev; return r; }
+/* decision 203 (b): at the end of every drawer dossier, a button opening the sources sheet at the index, this dossier's statements first */
+function srcButton(refs){ var d=el("div","dact"), b=el("button","t",esc(LABELS.dossier.sourced));
+  b.addEventListener("click",function(){ openSources({refs:refs.slice()}); }); d.appendChild(b); return d; }
 function trackRef(id,ph,field){ return 'FORMATIONS.'+id+'.track["'+ph+'"].'+field; }
 function objPhaseOf(id,ph){ var t=FORMATIONS[id].track; for(var i=ph;i>=0;i--) if(t[i]&&t[i].obj) return i; return -1; }
 function sect(title,html,isDl,layer){
@@ -6682,6 +6693,7 @@ function dossierFeature(id){
   var ft=null; FEATURES.forEach(function(x){ if(x.id===id) ft=x; });
   var wrap=el("div","dossier");
   if(!ft) return wrap;
+  var cr0=claimRefsStart();
   var kindName={height:"High ground",water:"Watercourse or mere",village:"Village",town:"Town",road:"Road"}[ft.kind]||ft.kind;
   var head=el("div","dh");
   head.innerHTML='<div class="dh-bar" style="background:var(--text-muted)"></div><div class="dh-tx">'+
@@ -6695,17 +6707,17 @@ function dossierFeature(id){
                : (gtk&&GEOREF.ELEV_SRC[gtk]) ? '; surveyed <span class="hh">'+esc(GEOREF.ELEV_SRC[gtk])+'</span>' : "";
   var facts=row("Elevation on this model", "\u2248 "+Math.round(elM)+" m at the marker"+surveyed+
     ' <span class="hh">(relief drawn \u00d7'+geoText("{EXAG}")+' vertically)</span>');
-  (ft.facts||[]).forEach(function(k){ facts+=row(k[0],esc(k[1])); });
+  (ft.facts||[]).forEach(function(k,i){ facts+=row(k[0],esc(k[1])+claimTag("FEATURES[#"+ft.id+"].facts["+i+"]")); });
   wrap.appendChild(el("dl","kvs",facts));
   if(ft.why&&ft.why.length){
     var s=el("div","sect");
     s.innerHTML='<h3>Operational importance</h3><ul class="bul">'+
-      ft.why.map(function(x){return '<li>'+esc(x)+'</li>';}).join('')+'</ul>';
+      ft.why.map(function(x,i){return '<li>'+esc(x)+claimTag("FEATURES[#"+ft.id+"].why["+i+"]")+'</li>';}).join('')+'</ul>';
     wrap.appendChild(s);
   }
   if(ft.story){
     var s2=el("div","sect");
-    s2.innerHTML='<h3>What happened here</h3><p class="prose">'+esc(ft.story)+'</p>';
+    s2.innerHTML='<h3>What happened here</h3><p class="prose">'+esc(ft.story)+claimTag("FEATURES[#"+ft.id+"].story")+'</p>';
     wrap.appendChild(s2);
   }
   var here=[];
@@ -6740,6 +6752,7 @@ function dossierFeature(id){
   wrap.appendChild(act);
   wrap.appendChild(el("p","conf",
     "Sightlines are computed from this model's elevations, not the real survey, and take no account of woods, buildings or smoke."));
+  wrap.appendChild(srcButton(claimRefsEnd(cr0)));
   return wrap;
 }
 function syncViewBadge(){
@@ -6756,7 +6769,7 @@ function dossierEvent(eid){
   var e=null; EVENTS.forEach(function(x){ if(x.id===eid) e=x; });
   var wrap=el("div","dossier");
   if(!e) return wrap;
-  var w=evWindow(e), exact=(w[0]===w[1]);
+  var w=evWindow(e), exact=(w[0]===w[1]), cr0=claimRefsStart();
   var col = e.side==="fr" ? "var(--side-fr)" : "var(--side-al)";     /* the side, not a nation */
   var KIND={decision:"Command decision",attack:"Attack",capture:"Position taken",
             arrival:"Reinforcement",engagement:"Engagement",movement:"Movement",
@@ -6772,10 +6785,10 @@ function dossierEvent(eid){
     '<span class="pill ghost">Timing '+esc(e.cf)+'</span>'+
     (exact?'':'<span class="pill ghost">Interval, not a timestamp</span>')));
   var s2=el("div","sect");
-  s2.innerHTML='<h3>Why it matters</h3><p class="ev-why">'+esc(e.why)+'</p>';
+  s2.innerHTML='<h3>Why it matters</h3><p class="ev-why">'+esc(e.why)+claimTag("EVENTS[#"+e.id+"].why")+'</p>';
   wrap.appendChild(s2);
   /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): a disputed event gives both hours and who gives each (EVENTS[].dispute) */
-  if(e.dispute){ var sD=el("div","sect"); sD.innerHTML='<h3>When it happened: disputed</h3><p class="ev-why">'+esc(e.dispute)+'</p>'; wrap.appendChild(sD); }
+  if(e.dispute){ var sD=el("div","sect"); sD.innerHTML='<h3>When it happened: disputed</h3><p class="ev-why">'+esc(e.dispute)+claimTag("EVENTS[#"+e.id+"].dispute")+'</p>'; wrap.appendChild(sD); }
   if(e.forms.length){
     var s3=el("div","sect");
     s3.innerHTML='<h3>Formations concerned</h3>';
@@ -6802,6 +6815,7 @@ function dossierEvent(eid){
   b1.addEventListener("click",function(){ stopPlay(); setClock(evClock(e)); centreOnMap(e.p,96); });
   act.appendChild(b1);
   wrap.appendChild(act);
+  wrap.appendChild(srcButton(claimRefsEnd(cr0)));
   return wrap;
 }
 function dossierAnalysis(name){
@@ -6831,6 +6845,7 @@ function dossierAnalysis(name){
   b1.addEventListener("click",function(){ centreOnMap(tl.p[Math.floor(tl.p.length/2)],92); });
   act.appendChild(b1);
   wrap.appendChild(act);
+  wrap.appendChild(srcButton([]));   /* decision 203: a terrain line's note is this map's analysis (app.js TERRAIN_LINES), not a narrative statement */
   return wrap;
 }
 
@@ -7003,7 +7018,7 @@ function refLabel(ref){ var m;
   if((m=/^SOURCE_NOTE\.(\w+)\[(\d+)\]/.exec(ref))) return "This sheet, "+({body:"paragraph ",refs:"basis ",layers:"layer "}[m[1]]||"")+(+m[2]+1);
   return null;
 }
-function claimsIndex(){
+function claimsIndex(refs){
   var K=["fact","attributed","disputed","derived","interpretation","uncertain","design"], by={}, cls={};
   Object.keys(STATEMENT_CLAIMS).forEach(function(r){ var c=STATEMENT_CLAIMS[r].cl; (by[c]=by[c]||[]).push(r); });
   var nByCls={}, classOf=function(r){ for(var k in CLAIM_BY_CLASS) if(new RegExp(CLAIM_BY_CLASS[k].re).test(r)&&!Object.prototype.hasOwnProperty.call(STATEMENT_CLAIMS,r)) return k; return null; };
@@ -7014,7 +7029,14 @@ function claimsIndex(){
   var h='<p>'+esc("Each statement of this map's narrative can carry a claim: what kind of statement it is. A claim of its own was checked against "+
     "the works read here (above), on their page images, by machine readers; none has yet been read again by a person. A framing statement's claim "+
     "is given by its kind of statement, not checked one by one. A statement with neither is not yet checked. The claims are listed below by kind, "+
-    "each statement by where it is and the works it rests on.")+'</p><ul class="bul claims-index">';
+    "each statement by where it is and the works it rests on.")+'</p>';
+  /* decision 203 (b): opened from a dossier, that dossier's statements first, each with its claim and the works it rests on */
+  if(refs){ h+='<h4 id="claims-here">'+esc(LABELS.dossier.here)+'</h4>';
+    h+=refs.length?'<ul class="bul">'+refs.map(function(r){ var c=stmtClaim(r), E=STATEMENT_CLAIMS[r], ws=[];
+        (E&&E.by||[]).forEach(function(b){ var S=APPEARANCE_SOURCES[b.src]; var w=(S?S.au:b.src)+(b.at?", "+b.at:""); if(ws.indexOf(w)<0) ws.push(w); });
+        return '<li>'+esc(refLabel(r)||r)+' \u2014 <b>'+esc(CLAIM_WORDS[c.cl].w)+'</b>'+(c.cls?' '+esc("(by its kind)"):'')+(ws.length?' <span class="hh">'+esc("("+ws.join("; ")+")")+'</span>':'')+'</li>'; }).join('')+'</ul>'
+      :'<p>'+esc(LABELS.dossier.none)+'</p>'; }
+  h+='<ul class="bul claims-index">';
   K.forEach(function(k){ var W=CLAIM_WORDS[k], L=(by[k]||[]).slice();
     var byCls=Object.keys(CLAIM_BY_CLASS).filter(function(c){ return CLAIM_BY_CLASS[c].cl===k; });
     if(!L.length&&!byCls.length) return;
@@ -7031,8 +7053,10 @@ function claimsIndex(){
   h+='<li><b>'+esc(CLAIM_WORDS.unchecked.w)+'</b> \u2014 '+esc(CLAIM_WORDS.unchecked.d)+' '+esc("Every other statement.")+'</li></ul>';
   return h;
 }
+var _srcRefs=null;
 function openSources(o){
   var m=document.getElementById("modal");
+  var refs=o&&o.refs?o.refs:(o&&o.repaint?_srcRefs:null); _srcRefs=refs;   /* decision 203: a repaint keeps the dossier's list */
   var b=document.getElementById("modal-body"), was=!!(m.classList&&m.classList.contains("on")), sc=(b.closest&&b.closest(".sheet"))||b, top=sc.scrollTop||0;
   b.innerHTML='<h2>'+esc(SOURCE_NOTE.title)+'</h2>'+
     SOURCE_NOTE.body.map(function(p){return '<p>'+esc(geoText(p))+'</p>';}).join('')+
@@ -7076,12 +7100,14 @@ function openSources(o){
     '<h3>How the standards are drawn</h3><ul class="bul">'+standardNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
     '<h3>The works read here (for the appearance table and the statements\' claims)</h3><ul class="bul">'+Object.keys(APPEARANCE_SOURCES).map(function(k){ var S=APPEARANCE_SOURCES[k];
       return '<li>'+esc(S.au+", "+S.ti+" ("+S.pub+", "+S.d+")")+'</li>'; }).join('')+'</ul>'+
-    '<h3>The statements\' claims</h3>'+claimsIndex()+
+    '<h3 id="claims-index">The statements\' claims</h3>'+claimsIndex(refs)+
     '<h3>How the light is drawn</h3><ul class="bul">'+lightNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>';
   m.dataset.sources="1";
   m.classList.add("on");
   if(o&&o.repaint&&was) sc.scrollTop=top;   /* a repaint (another display factor) keeps its place (the sheet scrolls) and its focus */
   else if(!was) sheetOpened("modal");     /* roadmap step 3 (SW-4): a modal dialog: focus in, the rest inert */
+  /* decision 203: opened from a dossier, the sheet scrolls to that dossier's statements (the focus stays on the close button, Tab as before) */
+  if(refs&&!(o&&o.repaint)){ var at=document.getElementById("claims-here"); if(at&&sc&&typeof at.offsetTop==="number") sc.scrollTop=Math.max(0,at.offsetTop-16); }
 }
 
 function flash(msg){
