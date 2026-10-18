@@ -285,8 +285,11 @@ conservative default built meanwhile. The next owner decision after these is the
 - *Recommendation.* (b), measured, with (c)'s tags if the measures allow both. *Default.* (a), as built.
 - *Status.* Decided (b) with (c) on 18 October 2026 ("Go with your recommendations for 203, 204"); applied in roadmap step 4b part C:
   every drawer dossier (the formation's card and full dossier, an event's, a place's, a terrain line's) ends with "How this is sourced",
-  opening the sources sheet at the index with that dossier's statements first; the card's, the events' and the places' statements tagged
-  (the dossier headers' name, designation and summary untagged, as the formation dossier's header is); measured (`CHANGELOG.md`).
+  opening the sources sheet with that dossier's tagged statements at its head; the card's, the events' and the places' statements tagged
+  (the dossier headers' name, designation and summary untagged, as the formation dossier's header is). The terrain lines' notes are not
+  tagged: they are world.js's `TERRAIN_LINES`, outside the inventory (data.js and analysis.js), so their sheet says "not yet checked" until a
+  sourcing pass inventories them (a departure from (c) as written, whose premise missed it; the review of `559802d`). Measured on the
+  dossier cases, unchanged; the full checks in `CHANGELOG.md`.
 
 **204. Event names as framing statements (decision 187 (iii)).**
 - *Context.* Decision 187 (iii) gives the framing statements the claim "interpretation" (`CLAIM_WORDS`: "This map's reading") by class. In

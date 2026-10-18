@@ -219,7 +219,7 @@ the owner's word. Part C (PR #55): 203 (b) with (c), 204 (a), decided 18 October
 | 200 | question 195 applied on a machine reading of the 1805 page | keep the correction | decided (a): the correction |
 | 201 | the events whose hour the readings dispute (after 193): "disputed" with a dispute, and two unread whys | (b) where the cases measure unchanged, else (c) | decided (b): seven events disputed, measured unchanged; the unread claims labelled this map's |
 | 202 | Bourcier's dragoons after 177 (b): their screen south of Telnitz at 08:00, an undated creep from 04:00, while Mikhailovsky-Danilevsky has them come with Friant | march them with Friant (the anchor at phase 3, the leg dated 05:00, B), measured | decided (b), applied in 4b part B, measured unchanged |
-| 203 | the claims at the end of the drawer dossiers (187 (ii)'s second part) | a button to the index at each drawer dossier's end, with the event, place and terrain-line statements and the compact card tagged, measured | decided (b) with (c), 18 October 2026; applied in 4b part C, measured |
+| 203 | the claims at the end of the drawer dossiers (187 (ii)'s second part) | a button to the index at each drawer dossier's end, with the event, place and terrain-line statements and the compact card tagged, measured | decided (b) with (c), 18 October 2026; applied in 4b part C (the terrain lines' notes, outside the inventory, not tagged: to the next sourcing pass) |
 | 204 | event names as framing statements (187 (iii)) | keep them unclassed, their claim the event's; the objectives that restate a read order claimed one by one later | decided (a), 18 October 2026: as built; (c) to the next sourcing pass |
 
 ### What step 4 hands on (fact, from its commits and their reviews; `CHANGELOG.md`)

@@ -7,26 +7,53 @@ for 203, 204, and 205. Then implement as a PR." There was no question 205 (the l
 decided for it.
 
 **The commits.**
-- (this commit) Question 203 (b) with (c): the drawer dossiers' "How this is sourced" and their statements' tags; 204 (a) recorded.
+- `559802d`: question 203 (b) with (c), the drawer dossiers' "How this is sourced" and their statements' tags; 204 (a) recorded.
+- `4f7a3e8`: the review of `559802d`, fixed (its records in the next commit).
+- (this commit) The records of `4f7a3e8`; the dossier cases' measurement recorded.
 
 **Question 203 (b) with (c): the claims at the end of every drawer dossier.** As recommended: (b), measured, with (c)'s tags if the measures
 allow both. A presentation change (app.js, outside check:data's guard; check:data unchanged, all 131 declarations identical).
 - *(b) The button.* Every drawer dossier ends with "How this is sourced" (`LABELS.dossier.sourced`): the formation's card and its full
-  dossier, an event's, a place's and a terrain line's. It opens the sources sheet (`openSources({refs})`) scrolled to a list "In this
-  dossier" (`LABELS.dossier.here`) at the head of the claims index: each of that dossier's statements by its place, its claim's word ("by
-  its kind" for a framing statement) and the works it rests on; a terrain line's dossier holds no narrative statement (its note is this
-  map's own analysis, `TERRAIN_LINES` in app.js) and says so (`LABELS.dossier.none`). The focus goes to the sheet's close button and Tab
-  keeps its order (close, body), as before; a repaint keeps the list; the tools' "Accuracy, sources" opens the sheet without it. The
+  dossier, an event's, a place's and a terrain line's. It stops the clock and opens the sources sheet (`openSources({refs})`) with a list
+  "Tagged in this dossier" (`LABELS.dossier.here`, `dossierClaims`) at the sheet's head: each statement that dossier tags, by its place, its
+  claim's word ("by its kind" for a framing statement) and the works it rests on. A terrain line's note (`TERRAIN_LINES`, world.js) is not
+  among the inventoried statements (tools/step4/statements.js reads data.js and analysis.js), so its sheet says "This dossier's note is not
+  among the narrative statements inventoried so far: not yet checked." (`LABELS.dossier.none`); its tag, which question 203 (c) named, waits
+  for those notes to be inventoried (handed on to the next sourcing pass). The focus goes to the sheet's close button and Tab keeps its order
+  (close, body), as before; a repaint keeps the list; the tools' "Accuracy, sources" opens the sheet without it. The
   statements are those the dossier tags, collected as it is built (`claimRefsStart`, `claimRefsEnd`).
 - *(c) The tags.* As in the formation dossier (decision 187 (iv)): the card's act now, its next act, its objective and its army total (the
   figure and its source, two statements); an event's why and its dispute; a place's facts, its whys and its story. The dossier headers'
   name, designation and summary stay untagged, as the formation dossier's header is.
 - runtime-test.js: the event dossier's dispute paragraph is matched with its tag (the check as strict as before); a new check holds the cards
-  at three clocks, every event's and place's dossier: each tag its statement's claim, each statement shown tagged, the button in every
-  drawer dossier and every full dossier, the index opened from a dossier listing its statements first, one without statements saying so, the
-  tools' sheet without the list (291 tags; 178 buttons besides the full dossiers').
+  at three clocks (their act now, next act, objective and army total), every event's and place's dossier: each tag its statement's claim in
+  `CLAIM_WORDS`'s word, each statement shown tagged, the button in every drawer dossier and every full dossier, the button's list exactly the
+  dossier's tags in order, no collection left open, a terrain line's button with none; and the sheet itself (`openSources`): opened from a
+  dossier its head lists the statements with their claims before the sheet's own text, a repaint keeps the list, the tools' button opens it
+  without one, a dossier without statements says so (291 tags; 178 buttons besides the full dossiers').
 - Measured: `paper-drawer`, `selected-formation` and `watch-selected` (the cases that open a dossier) with `harness.js --only` against the
-  part-B run (pending at this commit); the full check:visual, check:contrast and check:selftest at the part's end.
+  part-B run, on `559802d`: no difference in drops, dropped ids, unobstructed fractions or timeline height; the full check:visual,
+  check:contrast and check:selftest at the part's end, on the final build.
+
+**The review of `559802d` (an independent reviewer, read-only, on a worktree of `559802d`; fixed in `4f7a3e8`).** It rebuilt the build
+(identical), ran test.js, redteam.js, css-test.js and check:data (clean) and traced every ref against `tools/step4/statements.js`. Its
+findings, each fixed or recorded:
+- (1, high) The terrain-line sheet called those notes "this map's own analysis of the ground", while they carry historical claims
+  ("Napoleon's first command post", "scarped and entrenched before the battle"); and the notes are world.js's, not app.js's. The words are
+  now "not among the narrative statements inventoried so far: not yet checked"; question 203 (c)'s terrain-line tags wait for those notes to
+  be inventoried (above; questions.md).
+- (2) A repaint of the dossier under the sheet (the clock playing) took the button, the sheet's way back, so Esc left the focus on the page:
+  the button stops the clock first, as "Go to this moment" does.
+- (3) The sheet scrolled to the list, leaving its focused close button (which scrolls with the sheet) out of view: the list is now at the
+  sheet's head, so nothing scrolls (`dossierClaims`).
+- (4) The records said "measured" before the measures: worded to what has run.
+- (5) runtime-test did not hold the button's list, the open collection, the card's next act and objective, the tag's word or the sheet
+  itself: added (above).
+- (6) A formation's army figure and its source had one label: "its army's figure", "its army's source". (7) The list is named for what it
+  holds, "Tagged in this dossier" (the header's name, designation and summary are not tagged). (8) The list is a section of its own at the
+  sheet's head (an h3), so the index's outline is as before. (9) A dossier that throws leaves no collection open (`paintDrawerBody` resets
+  it). (10) The A-3 comment back on its line. (11) `CLAUDE.md` at the part's end. (12) Most of the listed statements read "Not yet checked":
+  as the claims stand (488 of 704 unchecked), for the owner.
 
 **Question 204 (a): event names as framing statements.** Decided as recommended: as built; event names unclassed, their claim the event's
 own; the track objectives that restate an order read handed on to the next sourcing pass. Nothing changes.
