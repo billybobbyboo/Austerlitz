@@ -35,6 +35,63 @@ only; presentation polish; test-suite hygiene; a small data task, only with evid
   reports 75 of 75 current. No check reads the column (`REVIEW_CITES` is the live link), as before.
 - Checked: `check:chronology` 0 errors; `css-test.js` 0 errors; the build rebuilt byte-identical (`97352160...`).
 
+**Group 2: presentation polish (app.js, shell.html, style.css, world.js, tokens.js; no data declaration changed).** Each item's state read
+first; each default that a decision does not settle is an owner question (`docs/step5-evidence/questions.md`, 205-208).
+- *SW-13 (dead code and leftovers).* Removed, never referenced: `shade`, `subUnitsFig`, `frameClock` (app.js), `grainTexture` and `_grain`
+  (world.js), `themeTok` (tokens.js), `playRAF` (kept until now only because css-test.js matched the declaration's text: its two checks
+  now match `var playing=false, speed=0.5,`, as strict), the `getElementById("fxstate")` that named no element, the body classes `plan-on`
+  and `cmd-on` (no CSS), the unused id `vantages`, the CSS `#firstrun b.fr`, `#firstrun b.al` and `#firstrun .key-ar` (matched nothing);
+  `#firstrun`, `#firstrun h2`, `#firstrun p` and `.legend .ar`, each declared twice, are one rule each (merged where the later rule stood,
+  its values winning, so nothing drawn changes); `window.__setPop` is the module variable `setLayerPop`; `flash()` clears its earlier timer,
+  so a second message keeps its 3.4 s; `syncFollow` and `paintDevStats` find their static elements once instead of every frame. Kept, as
+  designed: the four `console.warn` calls (the movement audit at start, the camera floor's guard, the post chain's fallback, the seating
+  check under `?stats`): they are the runtime checks the harness judges (T-1) and never fire on a correct build; a visitor sees them only in
+  the console.
+- *R-7, the comments in the build:* `analysis.js` (ten themes; the nine tour texts read in about 2 min 17 s), `world.js` (the relief drawn at
+  `DISPLAY.factor` since 2B), the `LABELS` comment (7D's measured 44.8 s of stretches, 95.2-115.8 s in all). Comments only: check:data's
+  declarations are unchanged.
+- *R-3 (one name per thing; question 205, the default).* `LABELS.names`: the themes "themes" ("The battle in ten themes", "Pick one of the
+  ten themes above", the theme mark's "The theme"; the "?" overlay's Esc row "the theme"); the phase's text "the phase text" (the D row, the
+  legend's tooltip); the sources sheet "Accuracy and sources" (its button, its dialog's name and its text region; its heading,
+  `SOURCE_NOTE.title`, is data and unchanged); the sources sheet's fog note says "the “Whose eyes?” reading" (it said "the Command view");
+  the timeline's button "Eyes: Napoleon's HQ" (it said "Eyes: Napoleon"; the self-test's 5E check expects the new words, as strict).
+  `shell.html` carries the same words for a page whose bundle fails.
+- *R-4 (the keys).* The "?" overlay's opening row adds 7D's pause ("while the clock plays between steps, Space off a button and Play/Pause
+  pause it"); the legend's control hint is composed from `KEYS` (`legendHint`: the rows with a `hint`, in their order; "wheel", "right-drag
+  (or Shift or Ctrl and drag) to turn", where it said "scroll" and "right-drag or Shift-drag"); `shell.html`'s card button reads "Begin (two
+  min)", as `LABELS` makes it at load (it said "Guided tour").
+- *R-5.* The dossier's last record reads "Last recorded in “The ponds”, 14:30 - 17:00", and for the 30 formations last recorded in phase 9
+  "Last recorded in “Reckoning”, after dark" (`phaseSpan`; it read "Last recorded at After dark").
+- *R-6 (formats; question 206, the default; the tour's own words are question 207, unchanged).* A clock range shown on screen is written as
+  the phases' clocks are ("08:00 - 09:00", `evTimeShown`: the event dossier and the markers' tips; spoken names keep "to", `evTimeText`); the
+  relief factor "4×" everywhere (the legend, the place dossier, the paper map's notes and the eye-level caption said "×4"; the self-test's
+  factor checks read "drawn 4× vertically", stricter than the old "×4" substring); the tour's counter "Stop 1 of 9" from `LABELS.tour.counter`
+  (it was "1 OF 9"); numbers grouped "38,700" always (`toLocaleString("en-GB")`, 18 sites; the visitor's locale until now); the claims index,
+  the confidence grades' list and the order of battle's army headings use a colon where they used an em dash (runtime-test's claims-index
+  checks follow, as strict). `CONF_TEXT.C`'s em dash is guarded data, left.
+- *The VISUAL_AUDIT leftovers.* The event steps' glyphs in the media players' order, the bar outside the triangle, in the same two glyphs
+  (question 208, the default); the native `title` tooltips of the timeline (phases, event markers, acts, the theme's mark) replaced by one
+  tooltip, `#tltip` (`bindTimeTips`): shown at once on hover and on keyboard focus, in the page's type, hidden from assistive technology
+  (it repeats the name), Esc hides it and the pointer may move onto it (WCAG 1.4.13); the self-test's event-marker check reads the tip (and
+  no native title) and, on the first marker, the tip shown on focus and hidden when the focus leaves (stricter than before).
+- *G-1.* The scale bar is an image named, with a title, "Scale: 1 km, at the centre of the view (in perspective, nearer ground is larger
+  and farther smaller)" on the landscape, "…, across the paper map" on the paper map.
+- *Question 170 (b).* Under a "Whose eyes?" reading the plan links and the selection ring draw a formation where the reading draws it
+  (`readPos`): none for a formation the reading does not know, a corps or column at its known formations' mean (`aggReading`).
+  runtime-test.js holds it every 30 minutes for both readings and both plans (939 links at the reading's positions, 331 hidden with their
+  formation; 32 rings, 31 withheld).
+- *Question 170 (c), S-4.* The dossier's reading pill is the drawing's (`drawnKnow`; a corps or column, `aggReading`), with the reason "no
+  line of sight from the eye level" where the eye level turns "In sight" into "Reported only".
+- *Question 172.* The map items' focus ring stands on a plate of its own (`box-shadow` in `--on-accent`, 7 px, the ring at 3-5 px): at
+  3:1 or more on any ground in both themes; css-test.js holds the rule (the plate reaches past the ring, the two token colours at 3:1 in the
+  dark and paper themes). A focused map item that leaves the map says so in a polite region of its own, `#live-map`
+  (`LABELS.mapLeft`: "Telnitz has left the map; the focus is on …").
+- *Measured* (`harness.js --only`, 12 cases: first-run, first-run-laptop, narrow-390, opening-1, opening-2, overview-field,
+  selected-formation, paper-drawer, narrow-1024, eye-zuran, plans-overview, staff-paper; compared with the full reference run of the
+  unchanged build by `tools/step3/report-diff.js`): no difference in drops, dropped ids, unobstructed fractions or timeline height.
+- *Checked:* npm test, all nine suites and the height guard; check:data, all 131 declarations identical; check:chronology 0 errors. The
+  build: 2,190,836 bytes, md5 `8e061e4d8619729b8e763cb5eb54d028` (check:baseline moves at the step's end).
+
 ## 2026-10 · Roadmap step 4b, part C: questions 203 and 204 decided; 203 applied
 
 **Status: done on `claude/adoring-gauss-ubfas9` (PR #55); merged (#55). The build changed: `austerlitz-command-map.html` 2,182,537 bytes, md5

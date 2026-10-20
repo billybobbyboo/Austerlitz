@@ -1,7 +1,8 @@
 /* ============================================================
    WORLD v2 — terrain, land cover, hydrography, settlement
    map (0..680, 0..500) -> world (x -170..170, z -125..125)
-   1 world unit = 2 map units = GEOREF.M_PER_WORLD m (~63 m); relief exaggeration is GEOREF.EXAG
+   1 world unit = 2 map units = GEOREF.M_PER_WORLD m (~63 m); the relief is drawn at DISPLAY.factor (since Stage 2B; GEOREF.EXAG
+   is the model's own exaggeration)
    ============================================================ */
 
 /* One matte helper for the whole scene: rough, non-metallic, lit by the sun
@@ -1090,27 +1091,6 @@ function atlasShader(mat){
       .replace("#include <dithering_fragment>","#include <dithering_fragment>\n  if(uDebug>0.5) gl_FragColor=vec4(gCls/255.0,gCrop/255.0,uMode/255.0,1.0);");
   };
   return mat;
-}
-var _grain=null;
-function grainTexture(){
-  if(_grain) return _grain;
-  var N=256, c=document.createElement("canvas"); c.width=c.height=N;
-  var x=c.getContext("2d"), img=x.createImageData(N,N), d=img.data;
-  for(var j=0;j<N;j++) for(var i=0;i<N;i++){
-    /* three octaves of value noise, tileable because vnoise is sampled on a
-       period that divides the tile; then a faint furrow direction */
-    var u=i/N*8, v=j/N*8;
-    var n = 0.55*vnoise(u+0.5,v+0.5) + 0.30*vnoise(u*2.3+11.1,v*2.3+7.3) + 0.15*vnoise(u*5.1+3.7,v*5.1+9.9);
-    var furrow = 0.5+0.5*Math.sin((i*0.9+j*0.35)*0.42);
-    var g = 0.86 + (n-0.5)*0.30 + (furrow-0.5)*0.06;
-    var val=Math.max(0,Math.min(255,g*255))|0;
-    var o=(j*N+i)*4; d[o]=val; d[o+1]=val; d[o+2]=val; d[o+3]=255;
-  }
-  x.putImageData(img,0,0);
-  _grain=new THREE.CanvasTexture(c);
-  _grain.wrapS=_grain.wrapT=THREE.RepeatWrapping;
-  _grain.anisotropy=4;
-  return _grain;
 }
 
 function sampleVS(x,z){

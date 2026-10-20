@@ -244,7 +244,7 @@ if(cerrs) process.exitCode=1;
    toggle in the layers panel, on; the phase boundary's glide not used while playing */
 {
   const app=fs.readFileSync('app.js','utf8'), sh=fs.readFileSync('shell.html','utf8'), perr=[];
-  if(!/var playing=false, playRAF=0, speed=0\.5,/.test(app)) perr.push("app.js: the default speed is not half speed");
+  if(!/var playing=false, speed=0\.5,/.test(app)) perr.push("app.js: the default speed is not half speed");
   if(!/data-s="0\.5" aria-pressed="true"/.test(sh)||/data-s="1" aria-pressed="true"/.test(sh)) perr.push("shell.html: the half-speed button is not the pressed one");
   if(!/id="dwell" aria-pressed="true"/.test(sh)) perr.push("shell.html: the dwell's toggle is missing or off");
   if(!/camMove=moveCam && !freeCam && mode!=="staff" && !playing/.test(app)) perr.push("app.js: the phase boundary's glide runs while playing");
@@ -515,7 +515,7 @@ if(cerrs) process.exitCode=1;
   if(!on||!/stops:\[0,5,6,7\]/.test(app.slice(on.start,on.end))) oerr.push("app.js: OPENING's stops are not the tour's 1, 6, 7 and 8 (decision 114)");
   /* Stage 7D (decision 123): the clock played between the steps at 4x, the opening's own speed; the visitor's Play still starts at half speed (decision 74) */
   if(!on||!/SPEED:4\b/.test(app.slice(on.start,on.end))) oerr.push("app.js: OPENING.SPEED is not 4x (decision 123)");
-  if(!/var playing=false, playRAF=0, speed=0\.5,/.test(app)) oerr.push("app.js: Play no longer starts at half speed (decision 74)");
+  if(!/var playing=false, speed=0\.5,/.test(app)) oerr.push("app.js: Play no longer starts at half speed (decision 74)");
   if(!/if\(OPENING\.play&&t&&t\.closest&&t\.closest\("#play"\)\) return;/.test(app)) oerr.push("app.js: the Play/Pause button does not pause the opening's played stretch");
   if(!/lv&&!OPENING\.applying&&!OPENING\.play/.test(app)) oerr.push("app.js: the phase announcements are not folded while the clock plays between steps");
   if(!/closeFirst\("open"\)/.test(app)||!/how==="open"\)\{ openingStart\(\)/.test(app)) oerr.push("app.js: the card's primary action does not begin the opening");
@@ -651,4 +651,27 @@ if(cerrs) process.exitCode=1;
   rerr.forEach(e=>console.log("  ! "+e));
   console.log("reduced motion: "+(rerr.length?rerr.length+" wrong":"every transition and animation off in the stylesheet under the preference; the app follows it live"));
   if(rerr.length) process.exitCode=1;
+}
+/* roadmap step 5 (question 172; WCAG 1.4.11): the map items' focus ring stands on a plate of its own, so it meets 3:1 on any ground. The
+   base rule .ml-item:focus-visible draws an outline in a token colour and a box-shadow plate in another, the plate reaching at least 1 px
+   past the ring (spread >= offset + width + 1), and the two token colours at 3:1 or more in the dark theme (:root) and the paper map's
+   (body.mode-staff), as the tokens block writes them */
+{
+  const ferr=[], R=allRules.find(r=>r.media===null&&r.sels.indexOf(".ml-item:focus-visible")>=0);
+  const tok=sel=>{ const r=allRules.find(q=>q.media===null&&q.sel===sel), o={}; if(r) for(const m of r.body.matchAll(/(--[\w-]+):([^;]+)/g)) o[m[1]]=m[2].trim(); return o; };
+  const dark=tok(":root"), paper=Object.assign({},dark,tok("body.mode-staff"));
+  const lum=h=>{ const v=[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255).map(c=>c<=0.03928?c/12.92:Math.pow((c+0.055)/1.055,2.4)); return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2]; };
+  const ratio=(a,b)=>{ const x=lum(a), y=lum(b); return (Math.max(x,y)+0.05)/(Math.min(x,y)+0.05); };
+  if(!R) ferr.push("style.css: no base rule .ml-item:focus-visible");
+  else { const b=R.body.replace(/\s+/g," ");
+    const ol=/outline:\s*(\d+(?:\.\d+)?)px solid var\((--[\w-]+)\)/.exec(b), of=/outline-offset:\s*(\d+(?:\.\d+)?)px/.exec(b), sh=/box-shadow:\s*0 0 0 (\d+(?:\.\d+)?)px var\((--[\w-]+)\)/.exec(b);
+    if(!ol||!of||!sh) ferr.push("style.css: .ml-item:focus-visible lacks its outline, offset or plate (box-shadow 0 0 0 Npx var(--token))");
+    else { const w=+ol[1], o=+of[1], sp=+sh[1];
+      if(sp<o+w+1) ferr.push("style.css: the focus ring's plate ("+sp+" px) does not reach 1 px past the ring ("+(o+w)+" px)");
+      [["the dark theme",dark],["the paper map",paper]].forEach(([n,T])=>{ const a=T[ol[2]], p=T[sh[2]];
+        if(!/^#[0-9A-Fa-f]{6}$/.test(a||"")||!/^#[0-9A-Fa-f]{6}$/.test(p||"")) ferr.push("style.css: "+n+": "+ol[2]+" or "+sh[2]+" is not a #RRGGBB token");
+        else if(ratio(a,p)<3) ferr.push("style.css: "+n+": the focus ring "+a+" on its plate "+p+" at "+ratio(a,p).toFixed(2)+":1, under 3:1"); }); } }
+  ferr.forEach(e=>console.log("  ! "+e));
+  console.log("map focus ring: "+(ferr.length?ferr.length+" wrong":"on its own plate, at 3:1 or more in both themes (question 172)"));
+  if(ferr.length) process.exitCode=1;
 }
