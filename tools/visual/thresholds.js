@@ -177,6 +177,7 @@ module.exports.check=function(name,m,spec,opts){
   if(n>0&&(left.length||n>m.labels.examples.length)) f.push(n+" overlapping labels or counters "+JSON.stringify(m.labels.pairs)+": "+m.labels.examples.slice(0,4).join("; "));
   if(m.smokeEdgeAlpha) f.push("smoke sprites have a visible edge (alpha "+m.smokeEdgeAlpha+"/255)");
   if(m.dustEdgeAlpha) f.push("dust sprites have a visible edge (alpha "+m.dustEdgeAlpha+"/255)");
+  /* the mist sheets (gone since Stage 4C; an archived build read with --legacy still has them: kept for those, roadmap step 5) */
   if(m.mist.visible&&m.mist.maxAlphaAtCrossing>0.02) f.push("mist visible where the ground rises through it (alpha "+m.mist.maxAlphaAtCrossing+")");
   /* black-slope clipping shows as solid near-black regions; small black details (headgear, text, poles) are fine */
   if(m.pixels.solidBlack>SOLID_BLACK) f.push("solid near-black regions cover "+(100*m.pixels.solidBlack).toFixed(3)+"% of the map ("+m.pixels.solidBlocks+" blocks of 8x8; limit 0.05%)");

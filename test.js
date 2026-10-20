@@ -10,6 +10,7 @@ eval(fs.readFileSync('_state.js','utf8'));
 eval(fs.readFileSync('_ov.js','utf8'));
 eval(fs.readFileSync('analysis.js','utf8'));
 eval(fs.readFileSync('narrative.js','utf8'));   /* roadmap step 4: the per-statement claims, after analysis.js as in the build's order */
+const MAPF=require('./tools/map-frame.js')(W), offMap=p=>!MAPF.inside(p);   /* roadmap step 5 (T-9 (e)): the map frame from world.js's W, not typed */
 /* the plotted anchor a formation (or the first of its leaves) holds at a phase - the data, not the live clock */
 function anchorPos(id,ph){ const f=FORMATIONS[id];
   if(f.track){ const s=stateAt(id,ph); return s&&s.p?s.p:null; }
@@ -34,14 +35,14 @@ ids.forEach(id=>{
     const e0=f.track[k];
     if(e0.claim && !CLAIM[e0.claim]) errs.push(id+" ph"+k+": unknown claim class "+e0.claim);
     else if(e0.claim==="disputed") errs.push(id+" ph"+k+": claim disputed is an event's, with its dispute (roadmap step 2, decision 125 (a)); a track entry marks a disputed hour in its act");
-    if(e0.via) e0.via.forEach(v=>{ if(v[0]<0||v[0]>680||v[1]<0||v[1]>500)
+    if(e0.via) e0.via.forEach(v=>{ if(offMap(v))
       errs.push(id+" ph"+k+": via point off map "+v); });
     if(e0.moveMin!==undefined && !(e0.moveMin>0)) errs.push(id+" ph"+k+": bad moveMin");
     const n=+k; if(!(n>=0&&n<PHASES.length)) errs.push(id+": track phase "+k+" out of range");
     const e=f.track[k];
     if(e.st && !STATUS[e.st]) errs.push(id+" ph"+k+": unknown status "+e.st);
     if('p' in e && e.p!==null){
-      if(e.p[0]<0||e.p[0]>680||e.p[1]<0||e.p[1]>500) errs.push(id+" ph"+k+": pos off map "+e.p);
+      if(offMap(e.p)) errs.push(id+" ph"+k+": pos off map "+e.p);
     }
     if(e.cf && !"ABC".includes(e.cf)) errs.push(id+" ph"+k+": bad confidence");
   });
@@ -89,10 +90,10 @@ for(let i=0;i<PHASES.length;i++){
   const o=OVERLAYS[i];
   if(!o){ warn.push("phase "+i+": no overlay"); continue; }
   [...(o.arrows||[]),...(o.lines||[]),...(o.bounds||[])].forEach(x=>{
-    (x.pts||[]).forEach(p=>{ if(p[0]<0||p[0]>680||p[1]<0||p[1]>500) errs.push("phase "+i+": overlay point off map "+p); });
+    (x.pts||[]).forEach(p=>{ if(offMap(p)) errs.push("phase "+i+": overlay point off map "+p); });
     if(x.side && !["fr","al"].includes(x.side)) errs.push("phase "+i+": bad side");
   });
-  (o.obj||[]).forEach(p=>{ if(p[0]<0||p[0]>680) errs.push("phase "+i+": objective off map"); });
+  (o.obj||[]).forEach(p=>{ if(p[0]<0||p[0]>MAPF.w) errs.push("phase "+i+": objective off map"); });
 }
 
 // terrain sanity at the places that matter, in metres, at ground-truth positions
@@ -104,7 +105,7 @@ const hw=ROADS.find(r=>r.cls==="highway").p, sant=G.GT.santon.map;
 const nearHw=hw.reduce((b,q)=>Math.hypot(q[0]-sant[0],q[1]-sant[1])<Math.hypot(b[0]-sant[0],b[1]-sant[1])?q:b);
 if(mAt('santon')-G.elevM(hAt(nearHw[0],nearHw[1])) < 15) errs.push("Santon does not stand above the highway");
 if(mAt('pratzeberg')-mAt('sokolnitz') < 80) errs.push("Pratzen plateau not dominant over the Goldbach");
-if(hAt(SATS[0]*2+340,SATS[1]*2+250) > -2) errs.push("Satschan basin not a depression");
+if(hAt(...MAPF.toMap(SATS[0],SATS[1])) > -2) errs.push("Satschan basin not a depression");
 
 // phase-by-phase occupancy
 console.log("\n-- counters on the field by phase --");
@@ -183,7 +184,7 @@ TOUR.forEach((st,i)=>{
     else if(!num(tw[0])||!num(tw[1])) bad("no clock");
     else if(tw[0]<T0||tw[1]>T1) bad("clock "+JSON.stringify(e.t)+" outside the day ("+T0+"-"+T1+")");
     if(!Array.isArray(e.p)||e.p.length!==2||!num(e.p[0])||!num(e.p[1])) bad("no point");
-    else if(e.p[0]<0||e.p[0]>680||e.p[1]<0||e.p[1]>500) bad("point off map "+e.p);
+    else if(offMap(e.p)) bad("point off map "+e.p);
     if(!["fr","al"].includes(e.side)) bad("bad side "+e.side);
     if(KIND&&!Object.prototype.hasOwnProperty.call(KIND,e.kind)) bad("kind "+e.kind+" is not one the dossier names ("+Object.keys(KIND).join(", ")+")");
     if(typeof e.cf!=="string"||e.cf.length!==1||!"ABC".includes(e.cf)) bad("timing grade "+e.cf+" is not A, B or C");

@@ -419,7 +419,8 @@
     return {count:n, maxErr:+worst.toFixed(3)};
   }
 
-  /* ---- sprite textures and mist ---- */
+  /* ---- sprite textures and mist (the mist sheets are gone since Stage 4C: on a build since then world.mist is absent and the measure
+     returns {visible:false}; it is kept for the archived builds a --legacy run reads, docs/FINAL_AUDIT.md R-7, roadmap step 5) ---- */
   function edgeAlpha(tex){
     if(!tex||!tex.image||!tex.image.getContext) return null;
     var c=tex.image, w=c.width, h=c.height, d=readCanvas(c), mx=0;

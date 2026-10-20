@@ -34,15 +34,21 @@ for(const f of FILES){
   }
 }
 out.css={bytes:B(fs.readFileSync(path.join(ROOT,"style.css"),"utf8"))};
-out.shell={bytes:B(fs.readFileSync(path.join(ROOT,"shell.html"),"utf8"))-B("/*CSS*/")-B("/*JS*/")};
+/* roadmap step 5 (the step-1 hand-on): fonts.css is a part too, put in at shell.html's FONTS marker (decision 141); until step 5 the
+   parts fell 96,642 bytes short of the build (the file, less the 9-byte marker counted in shell.html) */
+out.fonts={bytes:B(fs.readFileSync(path.join(ROOT,"fonts.css"),"utf8"))};
+out.shell={bytes:B(fs.readFileSync(path.join(ROOT,"shell.html"),"utf8"))-B("/*CSS*/")-B("/*JS*/")-B("/*FONTS*/")};
 const dbg=out.appTop.find(t=>/AUSTERLITZ_DEBUG/.test(t.name));
 out.selfTest=dbg?{name:dbg.name,bytes:dbg.bytes,shareOfHtml:+(dbg.bytes/html.length).toFixed(3),line:dbg.line}:null;
-const tot=out.files.reduce((a,f)=>a+f.bytes,0)+out.css.bytes+out.shell.bytes;
+/* the bundle joins the scripts with a newline between each two (build.py) */
+const tot=out.files.reduce((a,f)=>a+f.bytes,0)+(FILES.length-1)+out.css.bytes+out.fonts.bytes+out.shell.bytes;
 out.sumOfParts=tot;
-console.log("built file:",html.length,"bytes; parts (sources + css + shell):",tot);
+console.log("built file:",html.length,"bytes; parts (sources + css + fonts + shell):",tot,tot===html.length?"(equal)":"(DIFFERENT by "+(html.length-tot)+")");
+if(tot!==html.length) process.exitCode=1;
 for(const f of out.files) console.log(("  "+f.file).padEnd(18),String(f.bytes).padStart(8),"bytes",(100*f.bytes/html.length).toFixed(1).padStart(5)+"%","  comments",String(f.commentBytes).padStart(7),(100*f.commentShare).toFixed(0)+"%");
 console.log("  style.css".padEnd(18),String(out.css.bytes).padStart(8),"bytes");
-console.log("  shell.html".padEnd(18),String(out.shell.bytes).padStart(8),"bytes (without the two markers)");
+console.log("  fonts.css".padEnd(18),String(out.fonts.bytes).padStart(8),"bytes");
+console.log("  shell.html".padEnd(18),String(out.shell.bytes).padStart(8),"bytes (without the three markers)");
 console.log("embedded textures (assets.js):"); for(const a of out.assets) console.log("  ",a.key.padEnd(18),a.mime.padEnd(11),a.bytes);
 console.log("app.js: the ten largest top-level statements:"); for(const t of out.appTop.slice(0,10)) console.log("  ",String(t.bytes).padStart(7),"line",String(t.line).padStart(5),t.name.slice(0,60));
 if(out.selfTest) console.log("the in-app self-test and debug API ("+out.selfTest.name+", app.js:"+out.selfTest.line+"):",out.selfTest.bytes,"bytes,",(100*out.selfTest.shareOfHtml).toFixed(1)+"% of the built file");

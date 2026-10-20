@@ -17,13 +17,16 @@
      L3  a cite or an ALLOW_TIMED entry that does not resolve to exactly one live statement still carrying that time: a retimed
          sentence, a moved or renamed source (a new path, phase or id), or a free-text ref reworded within the beginning its
          cite names, fails here until its row (or its entry) is reviewed; a reword that keeps the time and the cited beginning
-         is not detected (the ledger is by ref and time, not by full text);
+         was not detected until roadmap step 5 (the ledger was by ref and time alone): L9 now holds the text;
      L4  a REVIEW row with a kind whose text times (from, and to when set) are not times of the statements it cites; (L4b) a
          cite outside its row's text times;
      L5  a REVIEW or REVIEW_CITES key that is not a movement anchor, or a row of one table missing from the other;
      L6  a phase whose clock string is not its t0 - t1;
      (L7, the themes' and tour stops' moments and the one stop that keeps its own clock, is test.js's: not repeated here;)
      L8  a named conflict whose row does not cite SOURCE_NOTE's open question at its own time (the conflict stays disclosed);
+     L9  (roadmap step 5, the step-1 hand-on) a cite or an ALLOW_TIMED entry whose statement's text is not the text it was reviewed
+         against: tools/stage2/chronology-text.json keeps, for each, a hash of its statement's whole text; a reword fails here until
+         the row (or the entry) is reviewed again and the file regenerated (--rehash --write); an entry for a cite no longer made fails;
      D1  a derived arrival other than at the tactical rate (a design value, unsourced), at the ceiling (flagged, and named in
          CEILING_FLAGGED) or at its own moveMin (named in MOVEMIN_DERIVED); a named leg whose arrival has another rule;
      F1  the dated legs forced to 80% of their ceiling or more by a following default not exactly FORCED_DATED;
@@ -556,6 +559,13 @@ function resolve(L,c){
   if(!s) return {err:"\""+short(ref,60)+"\" ("+hits[0].where+") no longer carries "+tstr(q)+" (it carries "+[...new Set(hits.map(tstr))].join(", ")+")"};
   return {s,q};
 }
+/* L9 (roadmap step 5): the text each cite and allowance resolves to, hashed (sha1, 12 hex digits), and the reviewed record of it */
+const TEXT_PATH=path.join(__dirname,"chronology-text.json");
+function citeTexts(M,L){ L=L||extract(M||X).filter(s=>!s.weak); const out={}, H=t=>require("crypto").createHash("sha1").update(String(t)).digest("hex").slice(0,12);
+  Object.values(REVIEW_CITES).forEach(a=>a.forEach(c=>{ const r=resolve(L,c); if(!r.err) out[c]=H(r.s.text); }));
+  Object.keys(ALLOW_TIMED).forEach(c=>{ const r=resolve(L,c); if(!r.err) out[c]=H(r.s.text); });
+  return out; }
+function citeTextFile(){ try{ return JSON.parse(fs.readFileSync(TEXT_PATH,"utf8")).texts||{}; }catch(e){ return {}; } }
 function valueAt(M,p){ let v=M; for(const k of p.split(".")){ if(v==null) return undefined; v=v[k]; } return v; }
 function checkModel(M){
   M=M||X; const bad=[], out=[], rows=audit(M), S=extract(M), L=S.filter(s=>!s.weak), INV=inventory();
@@ -579,6 +589,11 @@ function checkModel(M){
   Object.entries(REVIEW_CITES).forEach(([k,a])=>a.forEach(c=>{ nCites++; const r=resolve(L,c); if(r.err) bad.push("L3 "+k+": "+r.err); else { const kk=key(r.s); cited.set(kk,(cited.get(kk)||[]).concat(k)); } }));
   Object.entries(ALLOW_TIMED).forEach(([c,why])=>{ if(!why) bad.push("L3 ALLOW_TIMED \""+c+"\" gives no reason");
     const r=resolve(L,c); if(r.err) bad.push("L3 ALLOW_TIMED: "+r.err+": remove or update the entry"); else allowed.set(key(r.s),c); });
+  /* L9 (roadmap step 5): each cite's and allowance's statement is the text it was reviewed against */
+  { const want=citeTextFile(), have=citeTexts(M,L);
+    Object.keys(have).forEach(c=>{ if(!(c in want)) bad.push("L9 \""+short(c,70)+"\": no reviewed text recorded (review its row or entry, then --rehash --write)");
+      else if(want[c]!==have[c]) bad.push("L9 \""+short(c,70)+"\": its statement's text has changed since it was reviewed (review its row or entry, then --rehash --write)"); });
+    Object.keys(want).forEach(c=>{ if(!(c in have)) bad.push("L9 chronology-text.json names \""+short(c,70)+"\", which no row cites and no entry allows (or it no longer resolves): --rehash --write"); }); }
   /* L2: every live timed statement is cited or allow-listed, not both */
   const live=new Map(); L.forEach(s=>{ if(!live.has(key(s))) live.set(key(s),s); });
   live.forEach((s,kk)=>{ if(!cited.has(kk)&&!allowed.has(kk)) bad.push("L2 "+s.where+" \""+short(s.ref,70)+"\" @"+tstr(s)+": a timed statement no REVIEW row cites (REVIEW_CITES) and ALLOW_TIMED does not name");
@@ -670,4 +685,15 @@ if(require.main===module&&process.argv.includes("--locate")){
   console.log("REVIEW evidence: "+(decl.properties.length-edits.length)+" of "+decl.properties.length+" rows current");
   if(process.argv.includes("--write")&&edits.length){ let t=me; edits.sort((a,b)=>b[0]-a[0]).forEach(([a,b,v])=>{ t=t.slice(0,a)+v+t.slice(b); });
     fs.writeFileSync(__filename,t); console.log("rewritten: "+edits.length+" rows"); }
+}
+
+/* L9's record (roadmap step 5): node tools/stage2/chronology.js --rehash [--write]: lists the cites and allowances whose statement's text
+   differs from the record; --write rewrites tools/stage2/chronology-text.json. Run it only after the rows those cites belong to are
+   reviewed against the new text. */
+if(require.main===module&&process.argv.includes("--rehash")){
+  const have=citeTexts(X), want=citeTextFile(), ch=Object.keys(have).filter(c=>want[c]!==have[c]), gone=Object.keys(want).filter(c=>!(c in have));
+  ch.forEach(c=>console.log("  changed or new: "+c)); gone.forEach(c=>console.log("  gone: "+c));
+  console.log("chronology-text: "+Object.keys(have).length+" cites and allowances, "+ch.length+" changed or new, "+gone.length+" gone");
+  if(process.argv.includes("--write")){ const o={note:"tools/stage2/chronology-text.json (roadmap step 5, check:chronology's L9): each REVIEW_CITES cite's and ALLOW_TIMED entry's statement text, hashed (sha1, 12 hex digits), as its row or entry was last reviewed. Written by node tools/stage2/chronology.js --rehash --write; never by hand.",texts:{}};
+    Object.keys(have).sort().forEach(c=>o.texts[c]=have[c]); fs.writeFileSync(TEXT_PATH,JSON.stringify(o,null,1)+"\n"); console.log("written: "+TEXT_PATH); }
 }

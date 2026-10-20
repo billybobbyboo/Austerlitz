@@ -28,9 +28,13 @@ const allRules=[];
 
 /* top-level selectors only: a selector list starting at column 0 */
 const rules=[...base.matchAll(/^([^@\s][^{}]*?)\{/gm)].map(m=>m[1].trim().replace(/\s+/g," "));
-const seen={}, dupes=[];
-rules.forEach(r=>{ if(seen[r]) dupes.push(r); seen[r]=1; });
-if(dupes.length) errs.push("duplicated rules: "+[...new Set(dupes)].join(" | "));
+/* no selector list declared twice in one context: the base rules (all of them, wherever they stand between the @media blocks; until roadmap
+   step 5 only those before the first @media were read, and four selectors were declared twice: #firstrun, #firstrun h2, #firstrun p,
+   .legend .ar), or one @media block */
+{ const seen={}, dupes=[]; let blk=0, prev;
+  allRules.forEach(r=>{ if(r.media!==prev){ blk++; prev=r.media; } const k=(r.media===null?"base":"@media "+r.media+" #"+blk)+" | "+r.sel;
+    if(seen[k]) dupes.push(r.media===null?r.sel:r.sel+" (in @media "+r.media+")"); seen[k]=1; });
+  if(dupes.length) errs.push("duplicated rules: "+[...new Set(dupes)].join(" | ")); }
 
 const required=[
  ".tab-btn",".chap",".cmdrow",".planblock",".pill.claim-fact",".pill.claim-disputed",".pill.claim-interp",
@@ -71,9 +75,7 @@ const TYPE_ERRS=[];
     [0x25C4,0x25C4,"shell.html","the timeline's buttons (.tb-icon, sans)"]];
   /* where a font-family may be set outside the tokens, with the reason */
   const FONT_ALLOW=[["#devstats","the developer readout (aria-hidden, hidden unless the ` key or ?stats): a monospace stack is its purpose"]];
-  const ENT={middot:"·",times:"×",asymp:"≈",ndash:"–",mdash:"—",hellip:"…",rdquo:"”",ldquo:"“",rsquo:"’",
-    lsquo:"‘",minus:"−",lt:"<",gt:">",amp:"&",lsaquo:"‹",rsaquo:"›",laquo:"«",raquo:"»",frac12:"½",nbsp:" ",
-    quot:'"',apos:"'",rarr:"→",larr:"←",uarr:"↑",darr:"↓",deg:"°",sect:"§",copy:"©"};
+  const LS=require("./tools/lang-scan.js");   /* roadmap step 5: the one walker and entity table (tools/lang-scan.js) */
   const rd=f=>fs.readFileSync(f,"utf8");
   const first=v=>{ const m=/^\s*(?:"([^"]+)"|'([^']+)'|([^,]+))/.exec(v||""); return m?(m[1]||m[2]||m[3]).trim():""; };
   /* 1. the tokens name an embedded face first */
@@ -120,14 +122,14 @@ const TYPE_ERRS=[];
     if(fs.existsSync("austerlitz-command-map.html")&&!rd("austerlitz-command-map.html").includes(css)) TYPE_ERRS.push("austerlitz-command-map.html does not carry fonts.css verbatim (python3 build.py)");
   }
   /* 3. coverage: every glyph a visitor can be shown */
-  const dec=s=>s.replace(/&#x([0-9a-f]+);/gi,(m,h)=>String.fromCodePoint(parseInt(h,16))).replace(/&#([0-9]+);/g,(m,n)=>String.fromCodePoint(+n))
-    .replace(/&([a-z]+[0-9]*);/gi,(m,n)=>ENT[n]!=null?ENT[n]:(TYPE_ERRS.push("glyph scan: the entity &"+n+"; is not in css-test.js's table"),m));
+  const dec=s=>LS.decodeEntities(s,n=>TYPE_ERRS.push("glyph scan: the entity &"+n+"; is not in tools/lang-scan.js's table"));
   /* every code point a visitor can be shown, with every source file it comes from */
   const vis=new Map(), add=(s,where)=>{ for(const ch of s){ const c=ch.codePointAt(0); if(c>=0x20&&c!==0x7F&&!(c>=0x80&&c<0xA0)){ if(!vis.has(c)) vis.set(c,new Set()); vis.get(c).add(where); } } };
   const exempt=c=>SERIF_EXEMPT.some(([a,z,only])=>c>=a&&c<=z&&[...vis.get(c)].every(w=>w===only));
-  for(const f of ["tokens.js","geo.js","data.js","appearance.js","analysis.js","narrative.js","world.js","symbols.js","app.js"])
-    for(const t of acorn.tokenizer(rd(f),{ecmaVersion:2022})) if(t.type.label==="string"||t.type.label==="template") add(dec(String(t.value)),f);
-  add(dec(rd("shell.html").replace(/<!--[\s\S]*?-->/g,"")),"shell.html");
+  /* roadmap step 5 (the step-1 hand-on): the strings are tools/lang-scan.js's records (every string of the built scripts but assets.js's
+     data URIs, tokens.js's TOKENS, shell.html's text and visitor attributes), their entities decoded by its table; until step 5 an acorn
+     tokenizer of its own here, and shell.html read whole */
+  for(const r of LS(process.cwd()).records) if(r.file!=="assets.js") add(dec(r.text),r.file);
   for(const m of clean.matchAll(/(?<![-\w])content:\s*"((?:[^"\\]|\\.)*)"/g)) add(m[1].replace(/\\([0-9a-fA-F]{1,6})\s?/g,(x,h)=>String.fromCodePoint(parseInt(h,16))),"style.css");
   for(const r of ["sans","serif"]){
     const F=faces.filter(f=>f.fam===FAM[r]); if(!F.length) continue;
@@ -264,12 +266,13 @@ if(cerrs) process.exitCode=1;
    .setRGB and .setHSL with three numbers. Not palette colours: white (the neutral base a material, an instance colour or a sprite's mask
    multiplies), and black where the canvas is compositing "destination-in" (the last globalCompositeOperation set before it in its
    declaration), an alpha mask, where only the alpha counts; the six-digit hex keeps the rule's exemption before step 1 (white written
-   FFFFFF or ffffff, nothing else), so nothing that rule flagged passes now. GLSL's vec3 literals (the ground shader's frost and
-   viewshed tints, the post chain's luma weights) are not read: shader source, not a canvas or material colour. */
+   FFFFFF or ffffff, nothing else), so nothing that rule flagged passes now. Since roadmap step 5 (the step-1 hand-on) GLSL's vec3 and
+   vec4 literals of three or four numbers in shader source are read too (until step 5 they were not: the ground shader's crop tints,
+   frost and viewshed tints, now LAND_COL.glsl); a luma weight (the vector a dot() takes with a colour) is not a colour. */
 {
   const acorn=require('acorn'), perr=[];
   const ALLOW={"world.js":["COVER_COL","LAND_COL","WATER_COL"],"app.js":["LIGHT","LIGHT_RIG","SPRITE_COL","KIT"],"symbols.js":[]};
-  const LIT=/0x[0-9A-Fa-f]{6}\b|#(?:[0-9A-Fa-f]{8}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3,4})\b|rgba?\(\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?|hsla?\(\s*\d|THREE\.Color\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*\)|\.set(?:RGB|HSL)\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*\)/g;
+  const LIT=/vec[34]\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*(?:,\s*[\d.]+\s*)?\)|0x[0-9A-Fa-f]{6}\b|#(?:[0-9A-Fa-f]{8}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3,4})\b|rgba?\(\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?|hsla?\(\s*\d|THREE\.Color\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*\)|\.set(?:RGB|HSL)\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*\)/g;
   /* a literal's r, g, b (0-255), or null where it is not read (hsl, setHSL: never exempt) */
   const rgbOf=x=>{ let m;
     if((m=/^(?:0x|#)([0-9A-Fa-f]{6})(?:[0-9A-Fa-f]{2})?$/.exec(x))) return [0,2,4].map(i=>parseInt(m[1].substr(i,2),16));
@@ -277,11 +280,12 @@ if(cerrs) process.exitCode=1;
     if((m=/^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/.exec(x))) return [m[1],m[2],m[3]].map(Number);
     if((m=/^(?:THREE\.Color|\.setRGB)\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/.exec(x))) return [m[1],m[2],m[3]].map(v=>Math.round(+v*255));
     return null; };
-  let nLit=0, nWhite=0, nMask=0;
+  let nLit=0, nWhite=0, nMask=0, nLuma=0;
   Object.keys(ALLOW).forEach(f=>{ const src=fs.readFileSync(f,'utf8'), ast=acorn.parse(src,{ecmaVersion:2020});
     ast.body.forEach(n=>{ const name=n.type==="FunctionDeclaration"?n.id.name:n.type==="VariableDeclaration"?n.declarations.map(d=>d.id.name).join(","):"("+n.type+")";
       const body=src.slice(n.start,n.end), lit=[]; let m; LIT.lastIndex=0;
       while((m=LIT.exec(body))){ nLit++; const c=rgbOf(m[0]);
+        if(/^vec/.test(m[0])&&/dot\(\s*\w+\s*,\s*$/.test(body.slice(Math.max(0,m.index-16),m.index))){ nLuma++; continue; }   /* a luma weight */
         /* the six-digit hex: the exemption before step 1 only; the other spellings: white, or black in an alpha mask */
         if(/^(0x|#)[0-9A-Fa-f]{6}$/.test(m[0])){ if(/^(0x|#)(FFFFFF|ffffff)$/.test(m[0])){ nWhite++; continue; } }
         else if(c&&c.every(v=>v===255)){ nWhite++; continue; }
@@ -293,7 +297,7 @@ if(cerrs) process.exitCode=1;
   if(!/"ground":\s*\{"field":/.test(T)||!/paper:\s*COVER_KEYS\.map\(function\(k\)\{ return hexNumW\(TOKENS\.sym\.paperMap\.ground\[k\]\); \}\)/.test(W)) perr.push("the paper map's ground colours are not read from TOKENS.sym.paperMap.ground");
   perr.forEach(e=>console.log("  ! "+e));
   console.log("palette: "+(perr.length?perr.length+" wrong":"0 colour literals outside the tables ("+nLit+" read in "+Object.keys(ALLOW).join(", ")+"; "+nWhite+" white and "+nMask+
-    " alpha-mask black exempt); the landscape's colours in their tables (light, sprites, ground, land, water), the figures' in KIT, the paper map's ground in the tokens"));
+    " alpha-mask black and "+nLuma+" GLSL luma weights exempt); the landscape's colours in their tables (light, sprites, ground, land, water), the figures' in KIT, the paper map's ground in the tokens"));
   if(perr.length) process.exitCode=1;
 }
 /* Stage 6C (docs/STAGE6_SPEC.md section 6.2; owner decisions 99, 102-104, 109): KIT draws only what appearance.js names. Every KIT cloth
@@ -319,6 +323,14 @@ if(cerrs) process.exitCode=1;
       if(KIT.mat[KIT.head[k].col]===undefined) perr.push("KIT.head \""+k+"\" is drawn in no material of KIT"); });
     if(KIT.mat.black!==0x2E2B27) perr.push("KIT.mat.black is not decision 84's #2E2B27");
     Object.keys(KIT.horse).forEach(k=>{ if(Y(KIT.horse[k])<floor-1e-6) perr.push("KIT.horse \""+k+"\" is darker than decision 84's black"); });
+    /* roadmap step 5 (the step-1 hand-on): a standard's threads (KIT.weave laid over each cloth, flagTexture) on every cloth a standard is
+       drawn in, KIT.flag's and each nation's plain cloth, at decision 84's black or lighter */
+    { const wv=/^rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([\d.]+)\s*\)$/.exec(KIT.weave||"");
+      if(!wv) perr.push("KIT.weave is not an rgba() colour");
+      else { const a=+wv[4], W=[+wv[1],+wv[2],+wv[3]], NAT=vm.runInContext("NATION",ctx);
+        const cloths=Object.keys(KIT.flag).map(k=>["KIT.flag."+k,KIT.flag[k]]).concat(Object.keys(NAT).map(n=>["NATION."+n+".fill",parseInt(NAT[n].fill.slice(1),16)]));
+        cloths.forEach(([n,c])=>{ const m=[16,8,0].map((sh,i)=>Math.round(((c>>sh)&255)*(1-a)+W[i]*a)), h=(m[0]<<16)|(m[1]<<8)|m[2];
+          if(Y(h)<floor-1e-6) perr.push("the weave's threads on "+n+" ("+c.toString(16)+") fall below decision 84's black"); }); } }
     let used=0;
     Object.keys(DRESS).forEach(id=>{ const d=DRESS[id];
       ["coat","legwear"].forEach(a=>{ if(S(d[a],"c")){ used++; if(KIT.cloth[d[a].c]===undefined) perr.push(id+"."+a+": the colour \""+d[a].c+"\" has no drawn value"); } });

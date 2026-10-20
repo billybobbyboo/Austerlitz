@@ -65,17 +65,14 @@ EVENTS.forEach(e=>{
 });
 
 /* ---------- 2. SPATIAL ---------- */
-function wet(mp){
-  const w=W(mp[0],mp[1]);
-  const pS=1-smoothstep(0.55,1.08,Math.sqrt(((w[0]-SATS[0])/28)**2+((w[1]-SATS[1])/10.5)**2));
-  const pM=1-smoothstep(0.55,1.08,Math.sqrt(((w[0]-MENI[0])/23)**2+((w[1]-MENI[1])/9)**2));
-  return {pond:Math.max(pS,pM), marsh:covAt(covMarsh,w[0],w[1])};
-}
+/* the model's own wetAt (_clock.js, from app.js), read, not typed again (roadmap step 5, docs/FINAL_AUDIT.md T-9 (d): until step 5 a copy here) */
+function wet(mp){ return wetAt(mp[0],mp[1]); }
+const MAPF=require('./tools/map-frame.js')(W);   /* roadmap step 5 (T-9 (e)): the map frame from world.js's W, not typed (680 x 500 until step 5) */
 Object.keys(units).forEach(id=>{
   const A=anchorList(id);
   A.forEach(a=>{
     if(!a.p) return;
-    if(a.p[0]<0||a.p[0]>680||a.p[1]<0||a.p[1]>500) fail("spatial",`${id} anchor at phase ${a.ph} is off the map`);
+    if(!MAPF.inside(a.p)) fail("spatial",`${id} anchor at phase ${a.ph} is off the map`);
     const w=wet(a.p);
     if(w.pond>0.55&&!a.ice) fail("spatial",`${id} halts in open water at phase ${a.ph}`);
     const nearVill=VILLAGES.some(v=>Math.hypot(a.p[0]-v[1],a.p[1]-v[2])<32);

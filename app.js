@@ -845,8 +845,10 @@ var KIT={
          at_inf:{paint:"ordinary", lower:{n:1, per:"bn"}}, at_grenz:{paint:"ordinary"}, at_cav:{paint:"ordinary"}},
   std:{drop:0.853, thick:0.61, aspect:2.4/1.4},
   /* the cloth's weave, the faint dark threads every painted or plain cloth carries (flagTexture): a design value, no claim (roadmap step 1,
-     docs/FINAL_AUDIT.md T-6: until step 1 a literal in flagTexture, text unchanged) */
-  weave:"rgba(0,0,0,.12)"
+     docs/FINAL_AUDIT.md T-6: until step 1 a literal in flagTexture, text unchanged). Since roadmap step 5 (the step-1 hand-on) the threads
+     are decision 84's black at 12%, not black: a thread on the black cloth (the Austrian eagle) stays at the floor, where 12% black laid it
+     below; on every other cloth a thread is at most 5.5/255 lighter than before (css-test.js holds every cloth's threads at the floor or above) */
+  weave:"rgba(46,43,39,.12)"
 };
 /* a value of appearance.js the drawing follows: a claim (not generic, disputed or "none shown") at grade A or B whose class (k: c a
    colour, h a headgear) is not "generic"; anything else is drawn generic (docs/STAGE6_SPEC.md section 6.6, "For 6C and 6D") */

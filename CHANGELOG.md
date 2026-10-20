@@ -92,6 +92,44 @@ first; each default that a decision does not settle is an owner question (`docs/
 - *Checked:* npm test, all nine suites and the height guard; check:data, all 131 declarations identical; check:chronology 0 errors. The
   build: 2,190,836 bytes, md5 `8e061e4d8619729b8e763cb5eb54d028` (check:baseline moves at the step's end).
 
+**Group 3: test-suite hygiene (step 1's hand-ons; the context-loss case).** No historical text and no guarded declaration changed; the build
+changes only where a test now reads what the app draws (the ground shader's colours moved into a table, the same numbers; the weave).
+- *T-9 (b), `audit.js`.* Continuity and coverage are assertions (they only printed): no formation moves faster in any 5-minute step than
+  its arm's ceiling (`SPEED_CEIL`), every tracked formation has a positioned anchor, and those that never move are named with the reason
+  (`STATIC`: santon, one anchor); `errors: N` and the exit code, which `tools/run-all.sh` already judged for the other suites.
+- *T-9 (d), model code typed again in the tests.* `redteam.js`'s `wet()` is the model's own `wetAt` (from `_clock.js`); `terrain-test.js`'s crop
+  distribution is counted on the drawn ground's faces (`FACE.crop`, 134,400 faces: 47/27/14/12%), not on a copy of the field pattern's hash.
+- *T-9 (e), map constants typed by hand.* `tools/map-frame.js` reads the map frame and its inverse from world.js's `W` (guarded): `test.js`,
+  `redteam.js` and `geo-test.js` use it where they typed 680 x 500 and `*2+340, *2+250`.
+- *`css-test.js`.* The duplicate-rule check reads every base rule (wherever it stands between the @media blocks) and each @media block on its
+  own (it read only the base rules before the first @media; the four duplicates it missed were merged in group 2); the palette rule reads
+  GLSL's `vec3`/`vec4` literals too (a luma weight, the vector `dot()` takes with a colour, exempt; 3 found), so the ground shader's crop
+  tints, frost and "Whose eyes?" viewshed tints moved into `LAND_COL.glsl`, written into the shader by `glslV3` (the shader's text numerically
+  identical, checked line by line); the glyph coverage reads `tools/lang-scan.js`'s records and its one entity table (the two walkers
+  duplicated each other; lang-scan turned every named entity into a space): 204 glyphs, as before.
+- *`KIT.weave`.* The standards' threads are decision 84's black at 12% (`rgba(46,43,39,.12)`), not black: on the black cloth (the Austrian
+  eagle) a thread no longer falls below the floor; on every other cloth a thread is at most 5.5/255 lighter (a visible change of a 1 px line in
+  the flag textures, too small for any harness measure). css-test.js holds every cloth a standard is drawn in (`KIT.flag`, each nation's plain
+  cloth) with its threads at the floor or above (it fails on the old weave: `KIT.flag.black`).
+- *`tools/audit/size.js`* counts `fonts.css` and the bundle's joins: the parts now sum to the build exactly (2,192,107 = 2,192,107), and it
+  exits 1 if they do not.
+- *The chronology ledger* matched a statement by its reference and time, so a reword keeping both passed: check:chronology's new rule L9
+  holds each cite's and allowance's statement text by hash (`tools/stage2/chronology-text.json`, 157 entries, written by `--rehash --write`
+  after a row's review); a reword later in a cited sentence now fails (tried on the Kamensky line, then restored).
+- *R-7's mist measure* (`measure.js`, `thresholds.js`) is kept: it still measures the archived pre-4C builds a `--legacy` run reads; its
+  comments say so.
+- *The context-loss case* (`tools/visual/boot-check.js`; `CTX_DELETES` unchanged, 40). The count varied 20-44 because the context was lost
+  while the page's start-up frames were still settling (under software WebGL about 40 s of them, each rebuilding the confidence patches):
+  probed, 52 warnings with the loss at once, 36-40 after 8 s, 12 after 20 s, and the app idle after about 43 s. The case now waits for the
+  render loop to be idle (`DEV.state`, 0.5 s, within 120 s) before the loss and after the restore: 0 warnings on three runs, deterministic.
+  The scenario three r128 warns on (a geometry drawn before the loss, disposed after it) then no longer occurs in the case; a clock step
+  after the restore would make it occur on purpose, 248 warnings, past the bound: question 212.
+- *Checked:* npm test, all nine suites and the height guard; check:data, 131 declarations identical; check:chronology 0 errors (L9 with
+  it); `boot-check.js` context-loss three times (0 warnings each). The build: 2,192,107 bytes, md5 `3888026c2ddfaf9ec31b71b69584adcd`.
+
+**The review of groups 1 and 2** (an independent reviewer, read-only, on `22c77ac`; its nine findings are fixed in the commit after this one
+and recorded there).
+
 ## 2026-10 · Roadmap step 4b, part C: questions 203 and 204 decided; 203 applied
 
 **Status: done on `claude/adoring-gauss-ubfas9` (PR #55); merged (#55). The build changed: `austerlitz-command-map.html` 2,182,537 bytes, md5
