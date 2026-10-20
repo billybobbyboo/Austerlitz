@@ -1,8 +1,8 @@
 # Set-up tasks for Claude Code: done
 
 The four tasks handed over after the suite recovery are complete (September 2026). This file is kept as their record;
-details and check results are in `CHANGELOG.md`. The next work is Stage 1 (`docs/VISUAL_AUDIT.md`), which starts only
-when asked.
+details and check results are in `CHANGELOG.md`. The work after them was Stage 1 (`docs/VISUAL_AUDIT.md`); the
+plan now is `docs/ROADMAP.md`.
 
 | task | outcome | PR |
 |---|---|---|

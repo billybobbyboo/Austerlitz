@@ -9,10 +9,11 @@
    bold) needs 4.5:1, larger text 3:1. CSS transitions are disabled so nothing is read mid-transition.
    Stage 2D: counters and all map text are DOM (the map layer, #maplayer), so they are read here like any page text. Map text
    sits on plates meant to meet AA over any ground: it is composited over black and white as well as the two backdrops
-   (decision 38). Six states were added for what the contextual legend and the layer show only then: the terrain study,
+   (decision 38). Four states were added for what the contextual legend and the layer show only then: the terrain study,
    the going classes, a plan and the halt (legend-layers), true scale (legend-1x), the legend closed, and the hybrid view
-   with a corps highlighted (dimmed counters; in Study, since Watch draws the view-mode control at 24% until it is hovered,
-   a Stage 1 matter recorded in CHANGELOG.md); each state is drawn once before it is read (the layer lays out in a frame).
+   with a corps highlighted (dimmed counters; read in Study, since Watch then drew the view-mode control at 24% until it was
+   hovered, a Stage 1 matter recorded in CHANGELOG.md; since 3C Watch's switch is in the timeline at full opacity); each state is
+   drawn once before it is read (the layer lays out in a frame).
    Stage 2E: two paper-map states (the paper backdrops, as every state named staff-*): the overview as entered, and close
    on Sokolnitz.
    Stage 3B: Study as it opens (the Now tab, the legend closed), before the legend is opened for the states after it; and the
@@ -21,6 +22,8 @@
    Stage 3E: the "?" overlay over the landscape and over the paper map.
    Stage 5E: "Whose eyes?": the dossier's reason, the eye-level vantage's caption, the paper map with a headquarters' reading.
    Stage 5G: the dossier with its day-track inset.
+   Stage 7C: the opening's bar at a step (opening) and the screen it ends on (opening-end). Stage 7D: its bar while the clock plays
+   between steps, paused (opening-playing). Roadmap step 3 (question 163): after the states, the six start-up cases of boot-check.js.
    Decision 141 (roadmap step 1, docs/FINAL_AUDIT.md T-0): the type is embedded (fonts.css), and no visible text may be drawn in any other
    face. Which fonts draw a text depends only on its computed font (the family list, weight, style, stretch, variant and synthesis), its
    text-transform, its language and its characters. So every text element read here, in every state, adds its characters to the set kept

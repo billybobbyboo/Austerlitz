@@ -1,8 +1,43 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 170 (b), (c) and 172)
+
+**Status: in progress on `claude/magical-rubin-vahnny`.** Begun from `main` at `9a24be1` (step 4b part C merged, #55; the build
+2,182,537 bytes, md5 `97352160b97bc8e21380074e1bedbea5`). The owner asked (20 October 2026) for step 5 in four groups, in order: records
+only; presentation polish; test-suite hygiene; a small data task, only with evidence.
+
+**Group 1: records only (no build change; `check:baseline` passes on the unchanged build).** Each item's state read first:
+- *R-1 (the two READMEs).* Step 1 had already rewritten both; what still did not hold: `README.md` named `archive/step2-af98f586.html` as
+  check:data's reference (it is `archive/step4b-02a46c50.html` since step 4b part B), 221 self-test checks (242), "about 13 minutes", no
+  `narrative.js`, no `check:remeasure`, no start-up cases in check:contrast; `tools/visual/README.md` lacked `boot-check.js` and
+  `three-route.js`, gave 221 checks and 13 minutes. Both rewritten from `package.json` and `CLAUDE.md` (the sources grouped as presentation,
+  guarded data and generated files; every script of `package.json`; each suite named with what it holds).
+- *R-2 (status lines).* `CHANGELOG.md`: every merged part headed "for review" or "awaits the owner's review" now says "merged (#n)" (4b C #55,
+  4b B #54, 4b A #53, step 4 #52, step 1 #49, the final audit #48, 7D #47, 7C #46, 7B #44 and #45, Stage 7 Part A #43, 2B #14, the
+  chronology task #12 and #13, 2A section M #11, 2A #10; each number from `git log --merges`), and the four "has not started" lines of
+  merged 2C-2F are dropped; `docs/STAGE6_SPEC.md` (6D merged, #42), `docs/VISUAL_SPEC.md` (Part B done), `docs/HANDOFF.md` (the plan is
+  `docs/ROADMAP.md`), `docs/VISUAL_AUDIT.md` (Stages 1-7 done; the final audit and the roadmap), `docs/STAGE2_SPEC.md` (check:baseline then),
+  `docs/STAGE7_SPEC.md` (the next decision was then 111); `CLAUDE.md`: Stage 7 Part A merged (#43), "seven on Stage 0" (the Stage 0 record:
+  seven suites passed, runtime-test 2 errors; with runtime-test and binding-test, nine), and `symbols.js`'s row (its icon set and arm glyphs;
+  the event glyphs and objective markers are `app.js`'s). The 6B record's 309 quotes note the audit's 311 (an inference on why, kept as
+  the audit's).
+- *R-7 (stale comments), the files outside the build:* `css-test.js` (`formationAtlas`, removed in 6C), `tools/visual/cases.js` (its header,
+  the "Staff (paper) map" note), `tools/visual/contrast.js` (2D added four states, not six; Watch's switch at full opacity since 3C; the
+  7C, 7D and step-3 additions). `.github/workflows/checks.yml`'s "about ten minutes" was already gone (step 1). The comments inside the build
+  (`analysis.js` lines 2 and 359, `world.js` line 4, `app.js`'s `LABELS` comment) change the build, so they go with group 2; the mist
+  measure (`measure.js`, `thresholds.js`), which measures sheets gone since 4C, is group 3's.
+- *R-4's records.* Every out-of-date record of the keys R-4 names is in the build (the "?" overlay's opening row, the legend's hint,
+  `shell.html`'s fallback button): all group 2. `CLAUDE.md`'s 7C sentence ("a key ... end it where it is") is 7C's record and 7D's pause is
+  recorded beside it; nothing else to change.
+- *`tools/stage2/chronology.js`'s REVIEW evidence column* (handed on by steps 2 and 4): 74 of 75 rows did not give their statements' current
+  lines. A `--locate` mode now regenerates the column from each row's `REVIEW_CITES` (the live file:line of each cited statement, in order;
+  the two rows that cite nothing, ahq@6 and bag@8, by an inventory path, `UNCITED_AT`); `--locate --write` rewrote 74 rows, and `--locate`
+  reports 75 of 75 current. No check reads the column (`REVIEW_CITES` is the live link), as before.
+- Checked: `check:chronology` 0 errors; `css-test.js` 0 errors; the build rebuilt byte-identical (`97352160...`).
+
 ## 2026-10 · Roadmap step 4b, part C: questions 203 and 204 decided; 203 applied
 
-**Status: done on `claude/adoring-gauss-ubfas9` (PR #55), for review. The build changed: `austerlitz-command-map.html` 2,182,537 bytes, md5
+**Status: done on `claude/adoring-gauss-ubfas9` (PR #55); merged (#55). The build changed: `austerlitz-command-map.html` 2,182,537 bytes, md5
 `97352160b97bc8e21380074e1bedbea5` (the part-B build: 2,178,819 bytes, `02a46c50...`).** The owner wrote (18 October 2026): "Go with your recommendations
 for 203, 204, and 205. Then implement as a PR." There was no question 205 (the last asked is 204; 205 is the next number): nothing is
 decided for it.
@@ -77,7 +112,7 @@ own; the track objectives that restate an order read handed on to the next sourc
 
 ## 2026-10 · Roadmap step 4b, part B: questions 202, 187 and 196 applied; decision 189 recorded complete
 
-**Status: done on `claude/adoring-gauss-ubfas9` (PR #54), for review. The build changed: `austerlitz-command-map.html` 2,178,819 bytes, md5
+**Status: done on `claude/adoring-gauss-ubfas9` (PR #54); merged (#54). The build changed: `austerlitz-command-map.html` 2,178,819 bytes, md5
 `02a46c500ca839a9a6e108d8333cc78a` (the part-A build with decisions 198-201: 2,167,583 bytes, `e257d09b...`).** The owner wrote (17 October 2026): "Let's do all remaining
 questions, your recommendations for all here. 202 and 203, as well as any other ones we can do now. That means Q202, Q187 and 196, and also
 mark Decision 189 as complete. Then merge through a separate PR, meaning PR 54." Question 203 did not exist yet: this part records it (below).
@@ -234,7 +269,7 @@ grade B, fact, read on page images); no reading gives the dragoons' own hour or 
 
 ## 2026-10 · Roadmap step 4b, part A: owner decisions 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 taken up
 
-**Status: done on `claude/adoring-gauss-ubfas9` (draft PR #53), for review, with the owner's decisions 198-201. The build changed:
+**Status: done on `claude/adoring-gauss-ubfas9` (draft PR #53); merged (#53), with the owner's decisions 198-201. The build changed:
 `austerlitz-command-map.html` 2,167,583 bytes, md5 `e257d09b7865e4bd1f76dd979b46b4ef` (the step-4 build: 2,159,374 bytes, `833743c6...`;
 the first 4b build, before 198-201: 2,161,604 bytes, `2ae24fa3...`).** A data task: each decision applied as its recommendation reads, conditions
 included (`docs/step4-evidence/questions.md`, decided as recommended on 15 October 2026); where a recommendation depends on a measurement,
@@ -833,7 +868,7 @@ as before (lang@2 and prz@2 at 08:00).
 
 ## 2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)
 
-**Status: done on `claude/nice-dijkstra-mdyu2w` (draft PR #52), for review. The owner decided questions 176-197 as recommended on
+**Status: done on `claude/nice-dijkstra-mdyu2w` (draft PR #52); merged (#52). The owner decided questions 176-197 as recommended on
 15 October 2026, to be implemented later (the last commit records it; the build carries each question's default).** The step's end, with
 the final checks, the build's size and md5 and what remains uncertain, is the section after the list of commits. `check:data` changes on purpose in this step (a data task):
 every changed declaration is listed below with what it was, what it is, why and the source's locator, and the reference moves to the
@@ -2679,7 +2714,7 @@ climbs. Step 5: H-19's spelling, H-18, the labels' cost to `pickFormation`, `bui
 
 ## 2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)
 
-**Status: for review (#49). The build changed: `austerlitz-command-map.html` 1,883,794 bytes, md5 `7a86548c5e394853571f28f9e1640a74` (was
+**Status: merged (#49). The build changed: `austerlitz-command-map.html` 1,883,794 bytes, md5 `7a86548c5e394853571f28f9e1640a74` (was
 the Stage 7D build, 1,764,002 bytes, md5 `46773462faa1e1b9f4a4010e450e110a`).** `check:baseline` moves to this build. `check:data`'s
 reference is not moved: no guarded declaration changed (all 121 identical). The first commit (`086ccec`) records the audit (#48) as merged,
 decisions 125-141 (`docs/FINAL_AUDIT.md` §6.0) and the new `docs/ROADMAP.md`. The next owner decision is 142. The size, +119,792 bytes
@@ -2944,7 +2979,7 @@ warning, the hover's cost and the S-1 check; for step 5, the T-9 items not taken
 
 ## 2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build
 
-**Status: for review. No source file, no data and no build changed:** `austerlitz-command-map.html` is the Stage 7D build, 1,764,002 bytes,
+**Status: merged (#48). No source file, no data and no build changed:** `austerlitz-command-map.html` is the Stage 7D build, 1,764,002 bytes,
 md5 `46773462faa1e1b9f4a4010e450e110a`; `npm run check:baseline` passes at the start and at the end; `check:data`'s reference is not moved.
 The first commit records 7D (#47) as merged: Stage 7 is complete. The next owner decision is 125.
 
@@ -3022,7 +3057,7 @@ The first commit records 7D (#47) as merged: Stage 7 is complete. The next owner
 
 ## 2026-10 · Stage 7D: the clock played between the opening's steps (docs/STAGE7_SPEC.md §3.5, §4.3-§4.5, §6; owner decisions 123, 124)
 
-**Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
+**Status: merged (#47); with it Stage 7 is complete. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
 `austerlitz-command-map.html`: 1,764,002 bytes, md5 `46773462faa1e1b9f4a4010e450e110a` (was 1,748,568 bytes, md5 `bebcfff6…`, Stage 7C).**
 `check:baseline` moves to this build. The first commit records 7B (#45) and 7C (#46) as merged, and the owner's decisions 123 and 124.
 
@@ -3122,7 +3157,7 @@ a frame paused mid-stretch by the Play/Pause button's own toggle; Stage 0's thre
 
 ## 2026-10 · Stage 7C: the opening, stills from the tour (docs/STAGE7_SPEC.md §3.4, §4, §5, §6; owner decisions 111, 112, 114-116, 118, 121)
 
-**Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
+**Status: merged (#46). Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
 `austerlitz-command-map.html`: 1,748,568 bytes, md5 `bebcfff6ce5e85f9b13f9b5c3709d20e` (was 1,729,495 bytes, md5 `82337dd4…`, Stage 7B).**
 `check:baseline` moves to this build. Built on the 7B branch: 7B (#44) was merged into the Part A branch, not `main`, and #45 brings its four
 commits to `main`; until #45 is merged this part's pull request shows them too.
@@ -3247,7 +3282,7 @@ At 1280 x 720 the rows without a case of their own are held by the 1600 x 900 ca
 
 ## 2026-10 · Stage 7B: the first screen (docs/STAGE7_SPEC.md §4, §5, §6; owner decisions 111-113, 117-120, 122)
 
-**Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
+**Status: merged (#44 into the Part A branch, #45 into `main`). Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
 `austerlitz-command-map.html`: 1,729,495 bytes, md5 `82337dd43a45c7ee6e502605b667549d` (was 1,720,613 bytes, md5 `3dd7ca41…`, Stage 6D).**
 `check:baseline` moves to this build. Built on the Part A branch (#43, not yet merged); its first commit records the owner's decisions 111-122
 in the specification (§0.5: every recommendation of §7 accepted).
@@ -3346,7 +3381,7 @@ the same way (`7b-firstrun-probe.json`).
 
 ## 2026-10 · Stage 7 Part A: first run and opening sequence, the specification (docs/STAGE7_SPEC.md); no change to the build
 
-**Status: for review. No source file, no data and no build changed:** `austerlitz-command-map.html` is the Stage 6D build, 1,720,613 bytes,
+**Status: merged (#43). No source file, no data and no build changed:** `austerlitz-command-map.html` is the Stage 6D build, 1,720,613 bytes,
 md5 `3dd7ca41f73d0e5ffcfe5fa64adc5f51` (`check:baseline` passes); `check:data` passes against `archive/stage6b-7fc0f6c3.html` (not moved).
 The first commit records Stage 6D as merged (#42): Stage 6 is complete. The next owner decision is 111.
 
@@ -3697,7 +3732,8 @@ generic (colours also "none shown"); grade A only with a source or document date
 headgear or colour drawn generic; every colours entry with a model, a count rule and a cloth; the standard's measures in metres or
 provisional with a reason; every source cited, every source a note names registered; SOURCE_NOTE's two questions kept while the table
 does not settle them. `runtime-test.js`: the table's dry run for all 32 blocks. `redteam.js`: the retired claims also checked in
-`appearance.js` (6 sources). `tools/stage6/verify-quotes.js` (not bundled): every quote searched for in its source's text; 309 quotes:
+`appearance.js` (6 sources). `tools/stage6/verify-quotes.js` (not bundled): every quote searched for in its source's text; 309 quotes (the final audit counts 311 by the same script on the unchanged
+table, `docs/FINAL_AUDIT.md` R-2: this record was likely written before the table's last edit, an inference):
 103 found whole, 31 with OCR differences, 41 checked on the page images in this part (`quote-check-images.json`: the Schönhals order of
 battle, the PSZ cap orders, four Viskovatov pages), 56 not found in damaged OCR and 78 with no text layer reachable here, all recorded as
 read on the page images by the reading pass (`docs/stage6-evidence/quote-check.md`).
@@ -5339,7 +5375,7 @@ the Watch presentation control.
 
 ## 2026-09 · Stage 2F: the ground surface (docs/STAGE2_SPEC.md §B.4, §I.2, §J, §K; decisions 27, 28, 30, 31)
 
-**Status: done; merged (#19). Stage 2 has no further part; Stage 3 has not started. `austerlitz-command-map.html`: 1,253,655 bytes, md5
+**Status: done; merged (#19). Stage 2 has no further part. `austerlitz-command-map.html`: 1,253,655 bytes, md5
 `ee4390a2585f3df170fba82eb1994112`** (was 1,226,091 bytes, md5 `c5883f79…`, Stage 2E).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move.
@@ -5561,7 +5597,7 @@ every view (the meres are drawn in every view). The self-test checks the row.
 
 ## 2026-09 · Stage 2E: the true north-up paper map (docs/STAGE2_SPEC.md §F, §G, §H, §J, §K; decisions 18, 19, 25, 29, 31, 39)
 
-**Status: done; merged (#18). 2F has not started. `austerlitz-command-map.html`: 1,226,091 bytes, md5
+**Status: done; merged (#18). `austerlitz-command-map.html`: 1,226,091 bytes, md5
 `c5883f79cc1481b2dc4863d089b4e363`** (was 1,189,512 bytes, md5 `2dc0c26d…`, Stage 2D).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move.
@@ -5798,7 +5834,7 @@ large flat triangle, and its bounding box is larger still.
 
 ## 2026-09 · Stage 2D: one DOM/SVG layer for map text, and the contextual legend (docs/STAGE2_SPEC.md §E, §F, §H, §J, §K; decisions 24, 29, 38, 39)
 
-**Status: done; merged (#17). 2E has not started. `austerlitz-command-map.html`: 1,189,512 bytes, md5
+**Status: done; merged (#17). `austerlitz-command-map.html`: 1,189,512 bytes, md5
 `2dc0c26d969ec037cb838929d259320f`** (was 1,166,868 bytes, md5 `68ac7721…`, Stage 2C).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move.
@@ -6017,7 +6053,7 @@ as rendered, lowest per view. The layer's DOM nodes are the displayed items only
 
 ## 2026-09 · Stage 2C: movement arrows (docs/STAGE2_SPEC.md §C, §D, §J, §K; decisions 20-23, 33, 37, 46)
 
-**Status: done; merged (#15). 2D has not started. `austerlitz-command-map.html`: 1,166,868 bytes, md5
+**Status: done; merged (#15). `austerlitz-command-map.html`: 1,166,868 bytes, md5
 `68ac77219de339186b7b96aae2266a4f`** (was 1,149,340 bytes, md5 `0c485151…`, Stage 2B; 1,153,477 bytes, md5 `f6324c90…`, after the
 precondition commit, the entry below).
 - `check:baseline` moves to this build.
@@ -6240,7 +6276,7 @@ The next legs start later with them: `vandamme@8` 13:24-14:30 (was 13:15), `riva
 
 ## 2026-09 · Stage 2B: display height, exaggeration, standards (docs/STAGE2_SPEC.md §A, §B, §I.1, §J, §K; decisions 19, 26, 32, 34, 35, 36)
 
-**Status: done; awaits the owner's review. 2C has not started. `austerlitz-command-map.html`: 1,149,340 bytes, md5
+**Status: done; merged (#14). `austerlitz-command-map.html`: 1,149,340 bytes, md5
 `0c48515152e57c29963b79c4a99d78c9`** (was 1,122,358 bytes, md5 `12d34eed…`). `check:baseline` moves to this build. `check:data`: all 112 data
 declarations identical to the #12/#13 build (only rendering declarations change); its reference is unchanged.
 
@@ -6394,7 +6430,7 @@ DOM/SVG layer (decision 24).
 
 ## 2026-09 · Chronology data task (owner decisions 40-46; docs/STAGE2_SPEC.md §M.7-§M.12): explicit anchor times
 
-**Status: done; awaits the owner's review. 2B has not started. `austerlitz-command-map.html`: 1,121,991 bytes, md5
+**Status: done; merged (#12; its follow-up #13). `austerlitz-command-map.html`: 1,121,991 bytes, md5
 `e76222b31b3671020c7643b9e6ea1925`** (was 1,107,799 bytes, md5 `5bf48b75…`). `check:baseline` and `check:data` move to this
 build (below).
 
@@ -6522,7 +6558,7 @@ unreadable here); the derived arrivals (a model rule, not evidence); the undated
 
 ## 2026-09 · Stage 2A continued: owner decisions 31-39 and the chronology audit (docs/STAGE2_SPEC.md §M); no change to the build
 
-**Status: §M awaits the owner's review; 2B has not started. `austerlitz-command-map.html` unchanged: 1,107,799 bytes, md5
+**Status: §M merged (#11); the owner's decisions 40-46 on it followed. `austerlitz-command-map.html` unchanged: 1,107,799 bytes, md5
 `5bf48b75373fe0cf9fc8a32cbeae918c`.**
 
 **What changed**
@@ -6569,7 +6605,7 @@ is the analysis chapter "guard", not an event (the event `guard-broken` starts a
 
 ## 2026-09 · Stage 2A: map readability specified (docs/STAGE2_SPEC.md); no change to the build
 
-**Status: specification for the owner's review. `austerlitz-command-map.html` unchanged: 1,107,799 bytes, md5
+**Status: specification, merged (#10). `austerlitz-command-map.html` unchanged: 1,107,799 bytes, md5
 `5bf48b75373fe0cf9fc8a32cbeae918c`** (confirmed on `main` before the work, and by `check:baseline` after it).
 
 **What changed**

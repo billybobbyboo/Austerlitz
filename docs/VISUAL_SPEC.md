@@ -1,8 +1,8 @@
 # Visual language specification (Stage 1, Part A)
 
 **Status: approved and implemented in Part B (Stage 1B, §14).** Written against `main` at
-`e9190e1` (`austerlitz-command-map.html` md5 `c09c4b23d9e245ff9d693960cf9496b9`). Part B implements it; it has
-not started. Line numbers refer to that commit.
+`e9190e1` (`austerlitz-command-map.html` md5 `c09c4b23d9e245ff9d693960cf9496b9`). Part B implemented it (Stage 1B, merged; `CHANGELOG.md`). Line
+numbers refer to that commit.
 
 Scope: the colour and type used by the interface, the counters, the labels and the map symbology. The 3D
 terrain palette, lighting, sky, fog, smoke and mist are Stage 4 and are only documented here (appendix A).
@@ -38,7 +38,7 @@ in part with other colours that already exist; both are stated here so that Part
 | 3 | Status and claim labels stop using side colours: neutral tones, distinguished by icon, shape, weight and text. | Workable, **no data change needed.** | `STATUS[*].tone` (guarded by `check:data`) stays as a meaning key; only `TONE` (not guarded, `symbols.js:7-10`) and the drawing change. Today three of the six tone pills fail contrast (warn 3.04, quiet 3.56, active 3.97:1) and "active" orange is 1.0 CIEDE2000 from the Allied plan colour. The same treatment is recommended for the evidence-layer and source tags, which have the same problem (§3.2); the owner extended decision 3 to them (owner decision 10). |
 | 4 | Counter confidence: no dashed or dotted frames; B and C by a letter badge; "reported only" keeps its "?". | Workable, with a **plated badge.** | The badge letter is drawn today with no halo or plate: `#D8B563` on the bright landscape is 1.15:1, the "?" `#EFC468` 1.37:1 (`symbols.js:118-131`). Once the dash is gone the badge is the only encoding, so it needs its own plate and keyline (§10). The legend's "approximate position ----" entry (`shell.html:150`) must change with it. |
 | 5 | Vertical exaggeration adjustable in Stage 2 (1x, default about 4x, current 10.3x). | Recorded (§11). | No conflict. The display factor must apply to the ground mesh and `groundY()` only; `height()`, the viewshed and line of sight stay in true model units (all guarded by `check:data`). |
-| 6 | Miniature scale of figures, buildings and flags is deliberate; flags come to the same symbol scale in Stage 2. | Recorded (§9). | Measured: figures are drawn about 55-70 times life size, buildings 10-15 times, flags over 100 times. "One convention" is today three different factors; the owner chose named scales (owner decision 14). |
+| 6 | Miniature scale of figures, buildings and flags is deliberate; flags come to the same symbol scale in Stage 2. | Recorded (§9). | Measured: figures are drawn about 55-70 times life size, buildings 10-15 times, flags over 100 times (Stage 1A's measure on that build; since Stage 2B the legend and the sources sheet say figures and standards about 45-70 times). "One convention" is today three different factors; the owner chose named scales (owner decision 14). |
 | 7 | The paper map becomes a true north-up, top-down map in Stage 2. | Recorded (§11). | No conflict: `GEOREF.NORTH` and `GEOREF.ROT` (17.42 degrees) already give the rotation. |
 
 **`NATION` does not need to change.** The three nation fills stay well apart under protanopia and

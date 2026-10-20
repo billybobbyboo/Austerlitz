@@ -257,7 +257,7 @@ if(cerrs) process.exitCode=1;
    in world.js is in COVER_COL, LAND_COL or WATER_COL; in app.js in the light's tables (LIGHT, LIGHT_RIG) or the sprite palette
    (SPRITE_COL). White (a vertex-coloured material's neutral base) is not a palette colour. The paper map's ground is
    TOKENS.sym.paperMap.ground. Stage 6C (docs/STAGE6_SPEC.md sections 5 and 6.2) ends Stage 4E's exemption of the figures, coats and
-   flags (formationAtlas, figKit, makeBlock, flagTexture): their colours are KIT's, or NATION's for the generic appearance.
+   flags (then formationAtlas, removed in 6C; figKit, makeBlock, flagTexture): their colours are KIT's, or NATION's for the generic appearance.
    Every spelling of a colour is read (roadmap step 1, docs/FINAL_AUDIT.md T-6: until step 1 only 0xRRGGBB and #RRGGBB, so eleven
    literals in five declarations went unseen, now in LAND_COL, LIGHT_RIG and KIT; symbols.js was not read, and has no table): 0xRRGGBB;
    #RGB, #RGBA, #RRGGBB, #RRGGBBAA; an rgb() or rgba() triple of numbers (the alpha may be computed); hsl() and hsla(); THREE.Color,
