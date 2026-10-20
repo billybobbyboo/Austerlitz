@@ -13,7 +13,7 @@ from the code, the approach proposed, the work done conservatively, checked, rec
 | 2 | **Integrity on screen**: one data task and a presentation part, decided together: the disputed hours marked, the plateau label tagged, the first claim labelled, the claim pill reworded, the contradictions fixed, the vines labelled | H-1 to H-5, H-7, H-9 to H-16, D-3 to D-6 | 125-129, 135; 142-161 | merged (#50; `CHANGELOG.md`) |
 | 3 | **Accessibility and robustness**: the shortcuts switch, hidden panels inert, the sources sheet a proper dialog, focus returned, reduced motion live and in CSS, the timeline's targets, focused map items drawn; the start-up message and the CDN integrity; "Whose eyes?" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |
 | 4 | **The sourcing stage**: Part A, an inventory of every narrative statement and a register of readings (as Stage 6 did for dress); per-statement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136; 176-197 | done (#52); decisions 176-197 taken as recommended on 15 October 2026; step 4b part A applied 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 on `claude/adoring-gauss-ubfas9` (draft PR #53; `CHANGELOG.md`), owner questions 198-201 |
-| 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-212 put | done on `claude/magical-rubin-vahnny` (draft PR #56; `CHANGELOG.md`); owner questions 205-212 open (`docs/step5-evidence/questions.md`) |
+| 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-212; 213 put | merged (#56; `CHANGELOG.md`); decisions 205-212 taken as recommended on 20 October 2026 and applied in PR #57 (`docs/step5-evidence/questions.md`); owner question 213 open; done |
 | 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139 | open |
 
 ### What step 1 handed on (fact, from its commits; `CHANGELOG.md`)
@@ -248,7 +248,7 @@ the owner's word. Part C (PR #55): 203 (b) with (c), 204 (a), decided 18 October
   claims; the lightNotes' sun and daybreak texts not reread.
 - **Measured:** `first-run-laptop` drops Liechtenstein's name at 04:00 since K8 (6 drops, its limit 16), gqg@0's grade B; every other case
   of the full check:visual as step 3 measured it.
-- **To step 5 (records and polish):** H-19's spellings stay (data.js "Thiebault", "Vare", "Bessieres"; appearance.js "Thiébault", "Varé");
+- **To step 5 (records and polish):** H-19's spellings stay (data.js "Thiebault", "Vare", "Bessieres"; appearance.js "Thiébault", "Varé"; settled by decision 209 (a), PR #57);
   `tools/stage2/chronology.js`'s location fields beyond the rows step 4 touched.
 
 ### What step 5 hands on (fact, from its commits and their reviews; `CHANGELOG.md`)
@@ -264,6 +264,33 @@ the owner's word. Part C (PR #55): 203 (b) with (c), 204 (a), decided 18 October
   caption and the light notes are still presentation sentences outside the claims (question 187's note; their attributions checked).
 - **The suite:** the context-loss case no longer runs three r128's dispose-after-restore path (question 212); the theme's mark on the
   timeline (`#spinemark`) takes no pointer and shows no tip.
+
+### Decisions 205-212 (20 October 2026; the owner: "Go with your recommendations for all questions"; applied in PR #57)
+
+| # | question | decided | where |
+|---|---|---|---|
+| 205 | one name per thing on screen (R-3) | (a): "theme", the phase text, "Accuracy and sources", "Napoleon's HQ" | step 5 group 2, as built |
+| 206 | the formats (R-6) | (a): " - " in a span, "4×", "Stop 1 of 9", en-GB grouping, colons | step 5 group 2, as built |
+| 207 | the tour's own words (decision 115) | (a): kept | unchanged |
+| 208 | the event steps' glyphs | (a): the media order, the same glyphs | step 5 group 2, as built |
+| 209 | accents in names (H-19) | (a): Thiébault, Varé, Bessières, Légère, Olmütz, Grande Armée outside quotations, a data task, measured | PR #57 |
+| 210 | the Guard infantry's commander | (c): "Not established on the day", the note naming both | PR #57 |
+| 211 | the Guard infantry's 6,730 | (b): Duffy read on the text layer (S5.7), Smith not readable (S5.8); nothing changed; question 213 | PR #57 |
+| 212 | the context-loss case's bound | (b): a clock step after the restore, `CTX_DELETES` 248 | PR #57 |
+
+### What PR #57 hands on
+
+- **Owner question 213** (`docs/step5-evidence/questions.md`): the Russian Guard's strengths after Duffy's appendix, read on the text layer only
+  (the 6,730 would hold a reserve grenadier regiment, by the reader's pairing; `rg_cav`'s 3,700 consistent with his total if a horse row was
+  lost). Recommended: read Duffy pp. 184-185 on the page first. The next owner decision is 214.
+- **Spellings not in decision 209's six:** two French designations a visitor sees, `FORMATIONS.c_cav.desig` "Reserve de Cavalerie" (Réserve)
+  and the French Guard cavalry's staff line "Chasseurs a Cheval" (à); `world.js`'s internal road key "Brunn-Olmutz highway" (never shown; read
+  by `tools/stale-compare.js`, so left); the Dress notes' internal words (`appearance.js`); `CONF_TEXT.C`'s em dash (guarded). Each for a later
+  data task.
+- **The overclaim scan's attribution pattern** (`redteam.js` `ATTRIBUTED`, `as \w+ tells it`) no longer matches "as Thiébault tells it" (`\w`
+  without the u flag has no é; the C6 researcher's note foresaw it): five sentences are scanned without that exemption, so the scan is
+  stricter, none of them a hit. Widening the pattern to accented names would restore the exemption: the owner's word, as any change to an
+  assertion's reach.
 
 ## Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)
 

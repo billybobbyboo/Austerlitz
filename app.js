@@ -77,7 +77,7 @@ var OVERLAYS = {
 
 6:{ arrows:[
      {pts:[[413,202],[359,187],[330,192]],kind:"attack",side:"al",label:"Russian Imperial Guard",interp:"group: the Guard infantry and cavalry under Constantine"},
-     {pts:[[201,154],[245,184],[285,208]],kind:"counter",side:"fr",label:"Bessieres and Rapp",interp:"group: the Guard cavalry under Bessieres, with Rapp's charge"},
+     {pts:[[201,154],[245,184],[285,208]],kind:"counter",side:"fr",label:"Bessières and Rapp",interp:"group: the Guard cavalry under Bessières, with Rapp's charge"},
      {leg:["drouet",6,7],kind:"move",side:"fr",label:"Drouet forms line"}],
     lines:[{pts:[[296,145],[309,207],[296,241],[283,287]],side:"fr",label:"French on the plateau"}],
     obj:[[313,205,"Stare Vinohrady"]]},
@@ -5948,7 +5948,7 @@ function shortCommander(f){
 function buildOOB(){
   var host=document.getElementById("oob");
   host.innerHTML="";
-  [["French army: Grande Armee",["gqg","c_iv","c_iii","c_v","c_cav","c_i","c_gd","c_gren"],"fr"],
+  [["French army: Grande Armée",["gqg","c_iv","c_iii","c_v","c_cav","c_i","c_gd","c_gren"],"fr"],
    ["Allied army: Russia and Austria",["ahq","buxhowden","col4","lich","bag","constantine"],"al"]]
   .forEach(function(grp){
     var h=el("div","oob-head",esc(grp[0]));
@@ -7067,11 +7067,11 @@ function lightNotes(){
     "The relief is drawn exaggerated, so the light is steepened by the same factor: the ground's lit and shaded sides, and its shadows, are those the true "+
       "ground would have under the true sun. The sun's disc stands at its true height, so where the relief is exaggerated the light seems to come from higher than the disc.",
     "Before dawn the field is lit by a design light, not by a moon; nothing about the night's sky is claimed. The weather of the day (the fog in the valley, "+
-      "the sun on the heights at about 08:45) is drawn as the phases' texts give it. Thiebault's and Marbot's memoirs have the fog hiding the French in the "+
+      "the sun on the heights at about 08:45) is drawn as the phases' texts give it. Thiébault's and Marbot's memoirs have the fog hiding the French in the "+
       "valley and the 'sun of Austerlitz' lighting the climb onto the Pratzen (this sheet's Basis), but give the climb itself no clock hour. "+
-      "Thiebault writes that day came only at eight (vol. III, 1894, p. 456), and that an aide-de-camp came at half past eight to report that the last "+
+      "Thiébault writes that day came only at eight (vol. III, 1894, p. 456), and that an aide-de-camp came at half past eight to report that the last "+
       "enemy corps had left the Pratzen heights, a report he says misled Napoleon (p. 504). The hours drawn are this map's own: the climb from about 08:45, inside the "+
-      "sources' range as the climbs' timing notes give it (about eight in S\u00e9gur, the aide's report at half past eight in Thiebault, about nine "+
+      "sources' range as the climbs' timing notes give it (about eight in S\u00e9gur, the aide's report at half past eight in Thiébault, about nine "+
       "in Stutterheim and Sch\u00f6nhals), none of them taken as its hour.",
     "The valley fog is drawn from the narrative: in the Goldbach valley until about 08:45, off the heights first. Its top is drawn at "+Math.round(ATMO.FOG_TOP)+
       " m, the height below which the \u201cWhose eyes?\u201d reading treats ground as fogged while the mist lies; its depth and its lifting are modelled, not recorded, "+

@@ -6,7 +6,8 @@
    - "sri": the request answered with a copy one byte longer, so its integrity hash does not match;
    - "no-webgl": Chromium launched with --disable-3d-apis --disable-gpu (three.js loads; no WebGL context);
    - "slow": three.js answered after 21 s: the status line says so at 20 s, and the page then starts as usual (no failure, nothing inert);
-   - "context-loss": a normal start, then the context lost (WEBGL_lose_context) and restored.
+   - "context-loss": a normal start, then the context lost (WEBGL_lose_context) and restored with the page idle (no warning yet), then a step
+     of the clock (decision 212 (b)) that disposes geometries made before the loss: at least one warning, at most CTX_DELETES.
    A failure case passes only if, within 15 s of the page's load: the alert dialog #boot-fail is shown with the reason for its kind and no
    other, focus is on Reload and stays there through Tab and Shift+Tab, every other child of the body is inert, the first-run card is
    hidden, a key behind the dialog does nothing, its text meets WCAG AA (4.5:1) against its own background, and the page's messages are
@@ -18,9 +19,10 @@ const TR=require("./three-route.js");
 const BASE_ARGS=["--use-angle=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"];
 const GUARD=k=>new RegExp("^Austerlitz: start-up failed \\("+k+"\\): ");
 /* the messages each case must produce, and nothing else: [type, RegExp, why, min, max] (min and max 1 unless given). CTX_DELETES: the most
-   "does not belong to this context" warnings the context-loss case may give, from its runs on the step-3 build (each run prints its count;
+   "does not belong to this context" warnings the context-loss case may give, as measured on the runs below (each run prints its count;
    recorded in CHANGELOG.md) */
-const CTX_DELETES=40;   /* measured 24 on the step-3 build (CHANGELOG.md) */
+const CTX_DELETES=248;   /* owner decision 212 (b), 20 October 2026: the count measured with the clock step after the restore, 248 on each of
+   three runs of the step-5 build (deterministic); 40 until then (measured 24 on the step-3 build, CHANGELOG.md) */
 const EXPECT={
   "no-three":[["requestfailed",/three\.min\.js /,"the request is aborted by the case"],
     ["error",/^Failed to load resource: net::ERR_FAILED$/,"Chromium's note of the aborted request"],
@@ -145,8 +147,9 @@ async function runBootCases(html,only){
          40 s of them, each rebuilding the confidence patches, confPlace), and the count was read 2.3 s after the restore: three r128's
          warnings then varied with how far the settling had gone (20-44 seen, 52 with the loss at once; it failed CI once on PR #55, 44 over
          CTX_DELETES). Idle before the loss, nothing drawn before it is disposed after the restore: 0 warnings on three runs of the step-5
-         build. A step of the clock after the restore (a visitor's) would dispose the pre-loss geometries on purpose: 248 warnings, past
-         CTX_DELETES, which moves only on the owner's word (docs/step5-evidence/questions.md, question 212) */
+         build. Owner decision 212 (b): then, the page restored and idle with no such warning yet (held at 0), a step of the clock (a
+         visitor's) disposes the pre-loss geometries on purpose, the path three r128 warns on: 248 warnings on each of three runs, CTX_DELETES
+         the bound (docs/step5-evidence/questions.md) */
       const a=await p.evaluate(async()=>{ const ext=renderer.getContext().getExtension("WEBGL_lose_context"); if(!ext) return {noExt:true};
         const settle=async()=>{ const t0=performance.now(); let s=0;
           while(performance.now()-t0<120000){ await new Promise(z=>setTimeout(z,100)); if(DEV.state==="idle"){ if(!s) s=performance.now(); else if(performance.now()-s>=500) return true; } else s=0; }
@@ -161,13 +164,25 @@ async function runBootCases(html,only){
         r.low=[n.querySelector("span"),n.querySelector("button")].filter(e=>{ const L1=lum(rgb(getComputedStyle(e).color)), L2=lum(bgOf(e)); return (Math.max(L1,L2)+0.05)/(Math.min(L1,L2)+0.05)<4.5; }).map(e=>e.tagName);
         const f0=DEV.frames; ext.restoreContext(); await new Promise(z=>setTimeout(z,300)); const settled1=await settle();
         r.after={lost:GL.lost,text:n.textContent,frames:DEV.frames-f0,fx:FX.on}; r.settled=[settled0,settled1]; return r; });
+      /* decision 212 (b): no warning yet, idle; then the clock to phase 3's start and the page idle again, frames drawn after it */
+      const nIdle=countOf(log,EXPECT["context-loss"][0][1]); let st=null;
+      if(!a.noExt){ st=await p.evaluate(async()=>{ const settle=async()=>{ const t0=performance.now(); let s=0;
+          while(performance.now()-t0<120000){ await new Promise(z=>setTimeout(z,100)); if(DEV.state==="idle"){ if(!s) s=performance.now(); else if(performance.now()-s>=500) return true; } else s=0; }
+          return false; };
+        const f0=DEV.frames; setClock(PHASES[3].t0,{force:true}); await new Promise(z=>setTimeout(z,300)); const ok=await settle();
+        return {settled:ok,frames:DEV.frames-f0,clock:clock,lost:GL.lost}; }); }
       if(a.noExt) bad.push("no WEBGL_lose_context");
       else { if(!a.lost||a.role!=="alert"||!a.vis||!a.button||a.text.indexOf("The 3D view has stopped")!==0||a.low.length) bad.push("lost: "+JSON.stringify(a));
         if(a.after.lost||a.after.text||!(a.after.frames>0)) bad.push("restored: "+JSON.stringify(a.after));
-        if(!a.settled[0]||!a.settled[1]) bad.push("the page was not idle within 120 s "+(a.settled[0]?"after the restore":"before the loss")); }
+        if(!a.settled[0]||!a.settled[1]) bad.push("the page was not idle within 120 s "+(a.settled[0]?"after the restore":"before the loss"));
+        if(nIdle!==0) bad.push(nIdle+" \u201cdoes not belong to this context\u201d warnings before the clock step (the page idle: want 0)");
+        if(!st||!st.settled||st.lost||!(st.frames>0)) bad.push("the clock step after the restore: "+JSON.stringify(st)); }
       bad.push.apply(bad,judgeLog("context-loss",log));
       const nd=countOf(log,EXPECT["context-loss"][0][1]);
-      R.push({name:"context-loss",ok:!bad.length,line:"context-loss: "+(bad.length?bad.join("; "):"the notice (an alert with Reload, at AA) while lost, cleared and frames drawn again by the app when restored")+"; "+nd+" “does not belong to this context” warnings (at most "+CTX_DELETES+")"});
+      /* the review of decision 212 (b): the clock step must run the path it was added for (at least one warning after it), not only stay
+         under the bound */
+      if(st&&!(nd-nIdle>0)) bad.push("no \u201cdoes not belong to this context\u201d warning after the clock step (the dispose-after-restore path not run)");
+      R.push({name:"context-loss",ok:!bad.length,line:"context-loss: "+(bad.length?bad.join("; "):"the notice (an alert with Reload, at AA) while lost, cleared and frames drawn again by the app when restored, idle with no warning, then a clock step drawn")+"; "+nd+" “does not belong to this context” warnings (at most "+CTX_DELETES+")"});
     } finally { await browser.close(); } }
   return R;
 }

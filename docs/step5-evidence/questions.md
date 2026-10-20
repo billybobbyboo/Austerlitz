@@ -4,6 +4,11 @@ Choices that decisions 1-204 do not settle, put to the owner as the task asked (
 and the conservative default built meanwhile. No default moves a harness limit (`DROP_LIMIT`, `UNOBSTRUCTED`, `PAPER_MIN_PXKM`,
 `CTX_DELETES`; the opening cases never, decision 121) or loosens an assertion. Each *Status* line says what the build carries.
 
+**Decided.** On 20 October 2026, after PR #56 was merged, the owner: "Go with your recommendations for all questions." Decisions 205-212
+are each question's recommendation, applied in roadmap step 5's follow-up (PR #57): 205 (a), 206 (a), 207 (a) and 208 (a), already in the
+build as their defaults; 209 (a), the accents, a data task, measured; 210 (c); 211 (b), Duffy read on the text layer and Smith not readable,
+so the strength unchanged and question 213 put; 212 (b), `CTX_DELETES` 248 on the owner's word. The next owner decision is 214.
+
 **205. One name per thing on screen (R-3).** `docs/FINAL_AUDIT.md` R-3 found four things with more than one name on screen.
 - *The ten themes* were "moments" in the Analysis tab's heading and hint and "chapter" in the "?" overlay and the theme's mark on the
   timeline. The code and the specifications call them themes, and "moment" is a phase's or an event's place in the day (a theme names its
@@ -59,6 +64,10 @@ quotations and source titles (the build's majority today); (c) as now. *Recommen
 the names' own, and the sources print them. *Default:* (c), nothing changed but "St-Hilaire" (once, in `PHASES[3].lede`), now "Saint-Hilaire"
 as everywhere else (not an accent). The Dress notes' internal words that H-19 also names ("data.js", "(col4.mixedNote)", in `appearance.js`)
 are not spellings: left for a later data task.
+*Status:* decision 209 (a), applied (PR #57): Thiébault, Varé, Bessières, Légère, Olmütz and Grande Armée in every statement of `data.js` and
+`analysis.js`, the overlay's label and the order of battle's heading in `app.js`, the claims' notes in `narrative.js` and the chronology
+ledger's names, cites and allowances; quotations, source titles and reading ids as printed. 66 statements' texts changed by the six names
+alone, 38 claims of their own rehashed after that check (`CHANGELOG.md`); check:visual measured against the step-5 build.
 
 **210. The Guard infantry's commander on 2 December (`FORMATIONS.rg_inf.commander`; step 4's hand-on).** The map names Lt.-Gen. Maliutin.
 The sources read (register entries C6.27, C6.28, C6.c1, C6.c2, C6.c3 and S5.6) give him the Guard infantry at Olmütz and on the march, and
@@ -72,12 +81,19 @@ and say in the note where he was on the day and who led the infantry that fought
 naming both. *Recommendation:* (c): the field then says what the sources say, and the note keeps both. *Default:* (b), applied in group 4
 after its review (the first default, (a), was put in the field and taken out again on the reviewer's finding that it overstates Sokolov);
 the note's claim "attributed", six readings.
+*Status:* decision 210 (c), applied (PR #57): `FORMATIONS.rg_inf.commander` "Not established on the day", its own claim "uncertain" with
+its search (S5.6, C6.c1-C6.c3, C6.27); the strength note names Maliutin and Depreradovich 1st as the sources give them.
 
 **211. The Guard infantry's 6,730 (`FORMATIONS.rg_inf.strength`).** Duffy's and Smith's figure (cited, not read) appears to count the whole
 Guard infantry, the Life Grenadiers' three battalions with it, while Sokolov's 1st column (S5.6) has seven battalions with the Tsesarevich and
 the Life Grenadiers with Maliutin, away; Sokolov's total for the whole reserve is 10 battalions and 7,500 infantry (p. 200), which gives no
 figure for the seven. Options: (a) keep 6,730 with its note (as now); (b) read Duffy and Smith first, then decide; (c) lower it to the seven
 battalions' share, if a source read gives it. *Recommendation:* (b). *Default:* (a), unchanged.
+*Status:* decision 211 (b), done (PR #57). Duffy (1977) was read on the text layer only (the item lends; its pages not open from here):
+register entry S5.7. Its appendix (pp. 184-185) gives the Guard 10,530 and 40 pieces; its rows, as the reader pairs the OCR's names and strengths in
+order (not seen on a page), would put the 6,730 as the three Guard regiments (1,000, 1,400, 1,500), the jägers (530) and a three-battalion
+"Guard Gr.R. (in reserve)" (2,300), which would leave 4,430 for the seven battalions with the Tsesarevich. Smith (1998) could not be read (S5.8). A reading on the text layer carries no claim
+(`test.js`), so nothing is changed: the strength stays 6,730 with its note, and the choice goes to the owner as question 213.
 
 **212. The context-loss case and `CTX_DELETES` (group 3).** The case now loses the context with the page idle: 0 "does not belong to this
 context" warnings on three runs, deterministic, and the bound 40 untouched. But the case then no longer exercises a geometry drawn before the
@@ -87,3 +103,17 @@ word);
 (c) (a), and lower `CTX_DELETES` to 0 to hold the determinism (your word: a bound changed). *Recommendation:* (b) with a bound of 248, the count measured: the case
 then tests the restored context under a visitor's step as well, at a count that no longer varies (group 3's review asked for it: the idle
 case alone no longer exercises the path its bound was set for). *Default:* (a).
+*Status:* decision 212 (b), applied (PR #57): `tools/visual/boot-check.js` holds 0 warnings with the page idle after the restore, then
+steps the clock to phase 3 and requires the page idle again with frames drawn; `CTX_DELETES` 248, the count on each of three runs.
+
+**213. The Russian Guard's strengths after Duffy's appendix (decision 211; `FORMATIONS.rg_inf.strength` 6,730, `FORMATIONS.rg_cav.strength`
+3,700, the corps note of `FORMATIONS.constantine`).** Read on the text layer only (S5.7), and with the reader's pairing of the OCR's names and
+strengths (not seen on a page), Duffy's 6,730 would count a three-battalion Guard grenadier regiment "in reserve" with the seven battalions
+that fought (4,430 by his rows). His horse rows as paired sum to 2,900; but the map's corps note (6,730 infantry, 3,700 horse, 100 pioneers)
+sums to his 10,530 exactly, and the 800 his rows leave over is exactly 3,700 less 2,900, so the text layer is consistent with the map's 3,700
+if one horse row was lost in the OCR or the pairing. Smith is not read (S5.8). Options: (a) as now: 6,730 and 3,700 unchanged, S5.7
+recorded; (b) read Duffy's pp. 184-185 on the page (a person with the book, or an archive.org loan), then, if the page bears the pairing out,
+set `rg_inf` to the seven battalions' figure with its note (the grenadier regiment's 2,300 to the 2nd column), and settle the 800 against
+`rg_cav`'s 3,700; (c) lower `rg_inf` to 4,430 now, on the text layer (against the register's rule that a reading on the text layer carries no
+claim); the horse is not in this option, the text layer giving no ground to move it. *Recommendation:* (b): the figures move only on a page
+read. *Default:* (a).
