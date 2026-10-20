@@ -5974,7 +5974,7 @@ function buildOOB(){
           var gf=FORMATIONS[gid];
           var r3=el("button","oob-row sub2");
           r3.type="button"; r3.dataset.id=gid;
-          r3.innerHTML='<span class="oob-name">'+esc(gf.name)+'</span>'+
+          r3.innerHTML='<span class="oob-name">'+esc(gf.name)+'<em>'+esc(shortCommander(gf))+'</em></span>'+   /* its commander, as the rows above (roadmap step 5; step 2's hand-on) */
             '<span class="oob-str">'+(gf.strength?gf.strength.toLocaleString("en-GB"):"—")+'</span>';
           r3.addEventListener("click",function(){ select("f",gid); focusOn(gid); });
           host.appendChild(r3);
@@ -7068,10 +7068,11 @@ function lightNotes(){
       "ground would have under the true sun. The sun's disc stands at its true height, so where the relief is exaggerated the light seems to come from higher than the disc.",
     "Before dawn the field is lit by a design light, not by a moon; nothing about the night's sky is claimed. The weather of the day (the fog in the valley, "+
       "the sun on the heights at about 08:45) is drawn as the phases' texts give it. Thiebault's and Marbot's memoirs have the fog hiding the French in the "+
-      "valley and the 'sun of Austerlitz' lighting the climb onto the Pratzen (the sources sheet's Basis), but give the climb itself no clock hour. "+
+      "valley and the 'sun of Austerlitz' lighting the climb onto the Pratzen (this sheet's Basis), but give the climb itself no clock hour. "+
       "Thiebault writes that day came only at eight (vol. III, 1894, p. 456), and that an aide-de-camp came at half past eight to report that the last "+
-      "enemy corps had left the Pratzen heights, a report he says misled Napoleon (p. 504). The hours drawn are the narrative's, and this reconstruction "+
-      "cites no source for them.",
+      "enemy corps had left the Pratzen heights, a report he says misled Napoleon (p. 504). The hours drawn are this map's own: the climb from about 08:45, inside the "+
+      "sources' range as the climbs' timing notes give it (about eight in S\u00e9gur, the aide's report at half past eight in Thiebault, about nine "+
+      "in Stutterheim and Sch\u00f6nhals), none of them taken as its hour.",
     "The valley fog is drawn from the narrative: in the Goldbach valley until about 08:45, off the heights first. Its top is drawn at "+Math.round(ATMO.FOG_TOP)+
       " m, the height below which the \u201cWhose eyes?\u201d reading treats ground as fogged while the mist lies; its depth and its lifting are modelled, not recorded, "+
       "and it is drawn see-through so the formations in it stay visible. The thin mist drawn in the late afternoon is modelled too: no text mentions it.",

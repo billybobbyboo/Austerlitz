@@ -1851,7 +1851,7 @@ var PHASES = [
   cam:[-144,52,130,-56,4,46], mist:0.90 },
 
 { id:3, t0:525, t1:570, clock:"08:45 - 09:30", label:"The Pratzen", title:"Soult storms the heights",
-  lede:"Saint-Hilaire and Vandamme climb out of the fog into sunlight onto a plateau the 4th Column is still crossing. St-Hilaire makes for the Pratzeberg south of Pratzen village, Vandamme for Stare Vinohrady, the 'old vineyards', north-east of the village. Kutuzov, riding with the 4th Column, sees the danger and begins pulling troops back. The Allied centre is being broken, but the plateau will not be firmly French until about 11:00.",
+  lede:"Saint-Hilaire and Vandamme climb out of the fog into sunlight onto a plateau the 4th Column is still crossing. Saint-Hilaire makes for the Pratzeberg south of Pratzen village, Vandamme for Stare Vinohrady, the 'old vineyards', north-east of the village. Kutuzov, riding with the 4th Column, sees the danger and begins pulling troops back. The Allied centre is being broken, but the plateau will not be firmly French until about 11:00.",
   events:[
     ["c. 08:45","Soult's divisions advance. The mist lifts off the heights."],
     ["c. 09:00","Friant's leading brigade comes up to the Goldbach near Telnitz: about nine in Stutterheim and the Moniteur's remarks of 1806, attacking about nine in Schönhals, after Telnitz had fallen in Mikhailovsky-Danilevsky; Davout's report has word of the attack reach him on the march about eight and gives no hour for the brigade's arrival. The division had reached Raigern overnight: about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers."],
@@ -2381,8 +2381,8 @@ constantine:{ ech:"corps", nation:"ru", arm:"guard", desig:"Imperial Guard",
   children:["rg_inf","rg_cav"]},
 
 rg_inf:{ ech:"div", nation:"ru", arm:"guard", desig:"Guard Infantry",
-  name:"Guard Infantry", commander:"Lt.-Gen. Maliutin", parent:"constantine",
-  strength:6730, strengthNote:"6,730 (Duffy 1977; Smith 1998)",
+  name:"Guard Infantry", commander:"Maj.-Gen. Depreradovich 1st", parent:"constantine",
+  strength:6730, strengthNote:"6,730 (Duffy 1977; Smith 1998). Its commander on 2 December, Depreradovich 1st with the Guard infantry of the 1st Guard column under the Tsesarevich, is in Sokolov alone, with no source on his page; Mikhailovsky-Danilevsky and the Chevalier Guard's history have Lt.-Gen. Maliutin command the Guard infantry at Olmütz and on the march, and on the day Maliutin led a separate column, the Life Grenadiers, the Chevalier Guard and the Life Cossacks, which came up late (Sokolov; the Chevalier Guard's history; the Allied report printed in 1806)",
   track:{
     0:{p:[413,202],st:"reserve",cf:"A",obj:"Remain in reserve near Krzenowitz",act:"On the high ground near Allied headquarters"},
     5:{p:[378,196],st:"advancing"},
@@ -2430,7 +2430,7 @@ var FEATURES = [
  facts:[["Garrison","Claparède's 17e Légère with eighteen guns"],["Preparation","Slopes scarped and crest entrenched before the battle; which face is not established"],["Result","Never taken"]],
  why:["Anchors the extreme French left and enfilades the highway",
       "This map reads the fortified Santon as anchoring the northern flank, freeing Lannes to attack"],
- story:"Named by French soldiers after a chapel in Egypt. Bagration could not get past it, which is a large part of why the northern battle stayed a holding action."},
+ story:"Veterans of Egypt named it the Santon, Marbot says, because the small chapel on its top had a roof like a minaret; Ségur heard it was named for a tomb the Turks had left there. Bagration could not get past it, which is a large part of why the northern battle stayed a holding action."},
 
 {id:"zuran", p:[177,134], kind:"height", name:"Zuran mound",
  sub:"Low prehistoric barrow west of the Goldbach",
@@ -2513,7 +2513,7 @@ var FEATURES = [
  sub:"Slavkov u Brna — the town that named the battle",
  facts:[["Role","Allied rear area; the Guard withdrew on it"],["Note","Almost no fighting took place in the town itself"]],
  why:["The Allied line of retreat and supply toward Hungary"],
- story:"Napoleon signed the armistice with Francis at the castle here on 6 December."},
+ story:"On 4 December Napoleon met Emperor Francis at his bivouac by the outposts, by a mill in Savary's account, and the two agreed on an armistice (the 31st Bulletin); the 32nd Bulletin, dated 6 December, has Prince Liechtenstein conclude it with Marshal Berthier at the castle here."},
 
 {id:"krzenowitz", p:[415,196], kind:"village", name:"Krzenowitz",
  sub:"Allied headquarters on the night of 1–2 December",
@@ -3898,6 +3898,13 @@ var STATEMENT_CLAIMS = {
   "FEATURES[#pratzeberg].why[0]": {h:"6f5c364524a9", cl:"interpretation", by:[{src:"mikhailovsky1844", at:"p. 177", rd:"mikhailovsky1844.p177.orders"},
       {src:"marbot1891", at:"t. I, pp. 259-260", rd:"marbot1891.p259-260.blasiowitz-aigle-clef"}]},
   "FEATURES[#santon].why[1]": {h:"52b9f9c34360", cl:"interpretation", by:[]},
+  "FEATURES[#santon].story": {h:"d0edbb6c901f", cl:"disputed", by:[{src:"marbot1891", at:"t. I, p. 258", rd:"marbot1891.p258.santon-name", side:"named by veterans of Egypt for the minaret-like chapel on its top"},
+      {src:"segur1877", at:"t. II, p. 452", rd:"segur1877.p452.santon-tomb", side:"named, it was said, for a tomb the Turks had left there"}],
+    note:"The second sentence, on the northern battle, is this map's reading."},
+  "FEATURES[#austerlitz].story": {h:"70451329a531", cl:"attributed", by:[{src:"corr11_1863", at:"no. 9546, p. 457", rd:"corr11_1863.p457.bulletin31-meeting"},
+      {src:"savary1828", at:"t. II, p. 213", rd:"savary1828.p213.meeting-mill"},
+      {src:"corr11_1863", at:"no. 9548, p. 462", rd:"corr11_1863.p462.bulletin32-armistice"}],
+    note:"The armistice's own text was not read."},
   "FEATURES[#goldbach].why[1]": {h:"b7d728e3582f", cl:"interpretation", by:[]},
   "EVENTS[#blasowitz].why": {h:"543ee1e66ee8", cl:"disputed", by:[{src:"stutterheim1806de", at:"p. 68", rd:"stutterheim1806de.p68.blasowitz-hartnaeckig", side:"Bernadotte's corps took it"},
       {src:"thiebault3_1894", at:"t. III, p. 462", rd:"thiebault3_1894.p462.lannes-bagration-blazowitz", side:"the 1st division of V Corps contested it and broke the Grand Duke's reserve"},
@@ -4366,6 +4373,13 @@ var STATEMENT_CLAIMS = {
       {src:"kavalergard1851", at:"pp. 56-57", rd:"kavalergard1851.p56-57.malutin-blazovits"},
       {src:"mikhailovsky1844", at:"pp. 144-145", rd:"mikhailovsky1844.p144-145.guard-commanders"},
       {src:"kavalergard1851", at:"p. 54", rd:"kavalergard1851.p54.march-commanders"}],
+    note:"The strength is Duffy's and Smith's, cited, not read."},
+  "FORMATIONS.rg_inf.strengthNote": {h:"d598f4f226b9", cl:"attributed", by:[{src:"sokolov2006", at:"t. II, pp. 199-200", rd:"sokolov2006.p199-200.guard-columns"},
+      {src:"mikhailovsky1844", at:"pp. 144-145", rd:"mikhailovsky1844.p144-145.guard-commanders"},
+      {src:"kavalergard1851", at:"p. 54", rd:"kavalergard1851.p54.march-commanders"},
+      {src:"kavalergard1851", at:"pp. 56-57", rd:"kavalergard1851.p56-57.malutin-blazovits"},
+      {src:"kavalergard1851", at:"pp. 58-59", rd:"kavalergard1851.p58-59.horse-guard-eagle-depreradovich"},
+      {src:"materialien1806", at:"pp. 118-119", rd:"materialien1806.p118-119.malutin-chevaliergarde"}],
     note:"The strength is Duffy's and Smith's, cited, not read."},
   "FORMATIONS.sthilaire.strengthNote": {h:"32e3455bf273", cl:"attributed", by:[{src:"sokolov2006", at:"t. II, pp. 186-187", rd:"sokolov2006.p186-187.iv-corps"}],
     note:"The working figure is this map's, not from a source read."},
@@ -12250,7 +12264,7 @@ function buildOOB(){
           var gf=FORMATIONS[gid];
           var r3=el("button","oob-row sub2");
           r3.type="button"; r3.dataset.id=gid;
-          r3.innerHTML='<span class="oob-name">'+esc(gf.name)+'</span>'+
+          r3.innerHTML='<span class="oob-name">'+esc(gf.name)+'<em>'+esc(shortCommander(gf))+'</em></span>'+   /* its commander, as the rows above (roadmap step 5; step 2's hand-on) */
             '<span class="oob-str">'+(gf.strength?gf.strength.toLocaleString("en-GB"):"—")+'</span>';
           r3.addEventListener("click",function(){ select("f",gid); focusOn(gid); });
           host.appendChild(r3);
@@ -13344,10 +13358,11 @@ function lightNotes(){
       "ground would have under the true sun. The sun's disc stands at its true height, so where the relief is exaggerated the light seems to come from higher than the disc.",
     "Before dawn the field is lit by a design light, not by a moon; nothing about the night's sky is claimed. The weather of the day (the fog in the valley, "+
       "the sun on the heights at about 08:45) is drawn as the phases' texts give it. Thiebault's and Marbot's memoirs have the fog hiding the French in the "+
-      "valley and the 'sun of Austerlitz' lighting the climb onto the Pratzen (the sources sheet's Basis), but give the climb itself no clock hour. "+
+      "valley and the 'sun of Austerlitz' lighting the climb onto the Pratzen (this sheet's Basis), but give the climb itself no clock hour. "+
       "Thiebault writes that day came only at eight (vol. III, 1894, p. 456), and that an aide-de-camp came at half past eight to report that the last "+
-      "enemy corps had left the Pratzen heights, a report he says misled Napoleon (p. 504). The hours drawn are the narrative's, and this reconstruction "+
-      "cites no source for them.",
+      "enemy corps had left the Pratzen heights, a report he says misled Napoleon (p. 504). The hours drawn are this map's own: the climb from about 08:45, inside the "+
+      "sources' range as the climbs' timing notes give it (about eight in S\u00e9gur, the aide's report at half past eight in Thiebault, about nine "+
+      "in Stutterheim and Sch\u00f6nhals), none of them taken as its hour.",
     "The valley fog is drawn from the narrative: in the Goldbach valley until about 08:45, off the heights first. Its top is drawn at "+Math.round(ATMO.FOG_TOP)+
       " m, the height below which the \u201cWhose eyes?\u201d reading treats ground as fogged while the mist lies; its depth and its lifting are modelled, not recorded, "+
       "and it is drawn see-through so the formations in it stay visible. The thin mist drawn in the late afternoon is modelled too: no text mentions it.",

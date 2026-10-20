@@ -13,7 +13,7 @@ from the code, the approach proposed, the work done conservatively, checked, rec
 | 2 | **Integrity on screen**: one data task and a presentation part, decided together: the disputed hours marked, the plateau label tagged, the first claim labelled, the claim pill reworded, the contradictions fixed, the vines labelled | H-1 to H-5, H-7, H-9 to H-16, D-3 to D-6 | 125-129, 135; 142-161 | merged (#50; `CHANGELOG.md`) |
 | 3 | **Accessibility and robustness**: the shortcuts switch, hidden panels inert, the sources sheet a proper dialog, focus returned, reduced motion live and in CSS, the timeline's targets, focused map items drawn; the start-up message and the CDN integrity; "Whose eyes?" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |
 | 4 | **The sourcing stage**: Part A, an inventory of every narrative statement and a register of readings (as Stage 6 did for dress); per-statement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136; 176-197 | done (#52); decisions 176-197 taken as recommended on 15 October 2026; step 4b part A applied 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 on `claude/adoring-gauss-ubfas9` (draft PR #53; `CHANGELOG.md`), owner questions 198-201 |
-| 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note) | | open |
+| 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-212 put | done on `claude/magical-rubin-vahnny` (draft PR #56; `CHANGELOG.md`); owner questions 205-212 open (`docs/step5-evidence/questions.md`) |
 | 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139 | open |
 
 ### What step 1 handed on (fact, from its commits; `CHANGELOG.md`)
@@ -250,6 +250,20 @@ the owner's word. Part C (PR #55): 203 (b) with (c), 204 (a), decided 18 October
   of the full check:visual as step 3 measured it.
 - **To step 5 (records and polish):** H-19's spellings stay (data.js "Thiebault", "Vare", "Bessieres"; appearance.js "Thiébault", "Varé");
   `tools/stage2/chronology.js`'s location fields beyond the rows step 4 touched.
+
+### What step 5 hands on (fact, from its commits and their reviews; `CHANGELOG.md`)
+
+- **The owner questions 205-212** (`docs/step5-evidence/questions.md`), each with its default in the build: 205 the names (themes, the phase
+  text, "Accuracy and sources", "Napoleon's HQ"; `SOURCE_NOTE.title` kept), 206 the formats ("08:00 - 09:00", "4×", "Stop 1 of 9", "38,700",
+  colons), 207 the tour's own words (unchanged), 208 the event steps' glyphs (the media order, the same glyphs), 209 the accents (unchanged
+  but "Saint-Hilaire"), 210 the Guard infantry's commander (Depreradovich 1st, applied), 211 its 6,730 (unchanged), 212 the context-loss
+  case's bound (the case idle, 0 warnings; `CTX_DELETES` 40 kept).
+- **To a later data task:** the accents if 209 (a) is chosen; the Dress notes' internal words (H-19's jargon, `appearance.js`); `CONF_TEXT.C`'s
+  em dash (guarded); the armistice's own text (the Moniteur of 26 frimaire an XIV, not found on archive.org); Duffy and Smith for the Guard
+  infantry's strength (211); the second sentence of the Santon's story, this map's reading, could stand as its own statement; the eye-level
+  caption and the light notes are still presentation sentences outside the claims (question 187's note; their attributions checked).
+- **The suite:** the context-loss case no longer runs three r128's dispose-after-restore path (question 212); the theme's mark on the
+  timeline (`#spinemark`) takes no pointer and shows no tip.
 
 ## Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)
 

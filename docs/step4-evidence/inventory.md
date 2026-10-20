@@ -36,10 +36,10 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 
 | claim | statements |
 |---|---|
-| unchecked | 488 |
+| unchecked | 485 |
 | interpretation (by class) | 75 |
-| disputed | 64 |
-| attributed | 58 |
+| disputed | 65 |
+| attributed | 60 |
 | interpretation | 12 |
 | uncertain | 5 |
 | derived | 2 |
@@ -66,7 +66,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `PHASES[#0].lede` | data.js:53 | Napoleon has deliberately given up the Pratzen plateau and left his right, along the lower Goldbach, looking thin enough to invite attack. … | unchecked |  |
 | `PHASES[#1].lede` | data.js:61 | Kienmayer's Austrian advance guard attacks Telnitz, the southernmost village on the Goldbach. Legrand's thin line holds the buildings and t… | unchecked |  |
 | `PHASES[#2].lede` | data.js:68 | Langeron and Przybyszewski attack Sokolnitz village, its walled castle and the pheasantry enclosure beyond. On the plateau the 4th Column, … | unchecked |  |
-| `PHASES[#3].lede` | data.js:75 | Saint-Hilaire and Vandamme climb out of the fog into sunlight onto a plateau the 4th Column is still crossing. St-Hilaire makes for the Pra… | unchecked |  |
+| `PHASES[#3].lede` | data.js:75 | Saint-Hilaire and Vandamme climb out of the fog into sunlight onto a plateau the 4th Column is still crossing. Saint-Hilaire makes for the … | unchecked |  |
 | `PHASES[#4].lede` | data.js:85 | Kamensky's brigade, marching for Sokolnitz at the tail of Langeron's column, sees the French on the height behind it, turns about and attac… | unchecked |  |
 | `PHASES[#5].lede` | data.js:94 | Liechtenstein's and Uvarov's horse charge the French cavalry screen and Murat answers with Nansouty's and d'Hautpoul's cuirassiers. The San… | unchecked |  |
 | `PHASES[#6].lede` | data.js:102 | Grand Duke Constantine commits the Guard, which Stutterheim calls the reserve of the Allied right, against Vandamme on the Old Vineyards. I… | disputed | sokolov2006.p53.guard-drouet (a division of I Corps met the attack (Drouet's memoir)); thiebault3_1894.p466.second-reading (I Corps' 2nd division took no part); stutterheim1806de.p56.reserve-blasowitz; materialien1806.p118-119.einzige-trophaee; marbot1891.p260.eagle; mikhailovsky1846.p259.guard-columns (the Guard infantry overthrew the first two French columns with the bayonet); schoenhals1873.p164.guard-blasowitz (the Life Guard Horse cut down a battalion of the 4th and one of the 24th Light); corr11_1863.p451.guard-centre-reserve (a battalion of the 4th charged and overthrown by the Russian Guard horse) |
@@ -283,8 +283,8 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FORMATIONS.constantine.strengthNote` | data.js:600 | Duffy and Smith give 6,730 infantry, 3,700 horse, 100 pioneers and 40 guns. Narrative accounts often give about 8,500 | unchecked |  |
 | `FORMATIONS.constantine.role` | data.js:601 | The reserve of the Allied right (Stutterheim); the disposition posts it at daybreak behind Blasowitz and Kruh, to reinforce Liechtenstein's… | attributed | stutterheim1806de.p56.reserve-blasowitz; materialien1806.p106.reserve-guard-retreat |
 | `FORMATIONS.rg_inf.desig` | data.js:604 | Guard Infantry | unchecked |  |
-| `FORMATIONS.rg_inf.commander` | data.js:605 | Lt.-Gen. Maliutin | unchecked |  |
-| `FORMATIONS.rg_inf.strengthNote` | data.js:606 | 6,730 (Duffy 1977; Smith 1998) | unchecked |  |
+| `FORMATIONS.rg_inf.commander` | data.js:605 | Maj.-Gen. Depreradovich 1st | unchecked |  |
+| `FORMATIONS.rg_inf.strengthNote` | data.js:606 | 6,730 (Duffy 1977; Smith 1998). Its commander on 2 December, Depreradovich 1st with the Guard infantry of the 1st Guard column under the Ts… | attributed | sokolov2006.p199-200.guard-columns; mikhailovsky1844.p144-145.guard-commanders; kavalergard1851.p54.march-commanders; kavalergard1851.p56-57.malutin-blazovits; kavalergard1851.p58-59.horse-guard-eagle-depreradovich; materialien1806.p118-119.malutin-chevaliergarde |
 | `FORMATIONS.rg_cav.desig` | data.js:615 | Guard Cavalry | unchecked |  |
 | `FORMATIONS.rg_cav.commander` | data.js:616 | Lt.-Gen. Andrei Kologrivov | unchecked |  |
 | `FORMATIONS.rg_cav.strengthNote` | data.js:617 | 3,700 horse (Duffy 1977; Smith 1998, cited, not read). Kologrivov's command on 2 December is in Sokolov alone, with no source on his page; … | attributed | sokolov2006.p199.kologrivov; kavalergard1851.p56-57.malutin-blazovits; mikhailovsky1844.p144-145.guard-commanders; kavalergard1851.p54.march-commanders |
@@ -514,7 +514,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FEATURES[#pratzeberg].sub` | data.js:644 | Southern summit of the plateau, above Pratzen village | unchecked |  |
 | `FEATURES[#pratzeberg].story` | data.js:647 | Saint-Hilaire's brigades of Morand and Thiebault fought Kamensky's brigade here. As Thiebault tells it, Saint-Hilaire proposed falling back… | attributed | thiebault3_1894.p475-476.pouzet; thieb.p469.morand; thieb.p474.reinforced; schoenhals1873.p161.levasseur |
 | `FEATURES[#santon].sub` | data.js:650 | Fortified hill north of the Brünn–Olmütz highway | unchecked |  |
-| `FEATURES[#santon].story` | data.js:654 | Named by French soldiers after a chapel in Egypt. Bagration could not get past it, which is a large part of why the northern battle stayed … | unchecked |  |
+| `FEATURES[#santon].story` | data.js:654 | Veterans of Egypt named it the Santon, Marbot says, because the small chapel on its top had a roof like a minaret; Ségur heard it was named… | disputed | marbot1891.p258.santon-name (named by veterans of Egypt for the minaret-like chapel on its top); segur1877.p452.santon-tomb (named, it was said, for a tomb the Turks had left there) |
 | `FEATURES[#zuran].sub` | data.js:657 | Low prehistoric barrow west of the Goldbach | unchecked |  |
 | `FEATURES[#zuran].story` | data.js:660 | Mikhailovsky-Danilevsky has Napoleon, on the barrow by Schlapanitz with his marshals, see the heights being stripped of troops when the sun… | attributed | md1844.p177.kurgan-sun; thieb.p456-458.twenty-minutes |
 | `FEATURES[#goldbach].sub` | data.js:663 | Small stream in a marshy valley, the armies' dividing line | unchecked |  |
@@ -536,7 +536,7 @@ or `docs/step2-evidence/readings.md` (§*n*.*k*).
 | `FEATURES[#satschan].story` | data.js:726 | French gunners did fire on the ice, and some men died there. The mass drowning is the 30th Bulletin's claim, twenty thousand; Marbot's memo… | disputed | materialien1806.p121.zusatz15 (twenty thousand (the 30th Bulletin, quoted)); thieb.p466.ice (three to four thousand); lejeune.p39-40.augezd-ice (more than six thousand); stut.p74-75.kapelle-teich (some); schoen.p169-170.tellnitz-pfarrer (sixty to at most a hundred); marbot.p262-263.ice (thousands) |
 | `FEATURES[#menitz].sub` | data.js:729 | The western of the two meres | unchecked |  |
 | `FEATURES[#austerlitz].sub` | data.js:734 | Slavkov u Brna — the town that named the battle | unchecked |  |
-| `FEATURES[#austerlitz].story` | data.js:737 | Napoleon signed the armistice with Francis at the castle here on 6 December. | unchecked |  |
+| `FEATURES[#austerlitz].story` | data.js:737 | On 4 December Napoleon met Emperor Francis at his bivouac by the outposts, by a mill in Savary's account, and the two agreed on an armistic… | attributed | corr11_1863.p457.bulletin31-meeting; savary1828.p213.meeting-mill; corr11_1863.p462.bulletin32-armistice |
 | `FEATURES[#krzenowitz].sub` | data.js:740 | Allied headquarters on the night of 1–2 December | unchecked |  |
 | `FEATURES[#krzenowitz].story` | data.js:743 | The orders were read in German to an audience of largely Russian commanders, late, and with no time to distribute copies. | unchecked |  |
 | `FEATURES[#olmutzroad].sub` | data.js:746 | The road across the northern battlefield: east-north-east from Brünn past the Santon to the Posoritz post house and Rausnitz | unchecked |  |

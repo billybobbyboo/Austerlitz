@@ -153,6 +153,49 @@ Its findings, each fixed in the commit after group 3's, or recorded:
 - Checked after the fixes: npm test, all nine suites and the height guard; check:data, 131 identical; check:chronology 0 errors. The build:
   2,194,116 bytes, md5 `9d904bc9b9968d105d069032095e97e7`.
 
+**Group 4: a small data task, with evidence (H-18, H-19's one spelling, the Guard infantry's commander; the light notes, the order of
+battle's rows).** The readings were made by machine readers on page images on 20 October 2026 (one per question; the eye-level caption and
+the light notes' attributions checked against the registers and Thiébault's pages read again), the decisive pages read again by the lead;
+none by a person. Six new entries in `docs/step4-evidence/readings.md`, section S5 (S5.1-S5.6). check:data's reference moves to the step's
+final build. Every changed declaration, with was, is and why:
+- `FEATURES[#austerlitz].story` (H-18): was "Napoleon signed the armistice with Francis at the castle here on 6 December."; is "On 4 December
+  Napoleon met Emperor Francis at his bivouac by the outposts, by a mill in Savary's account, and the two agreed on an armistice (the 31st
+  Bulletin); the 32nd Bulletin, dated 6 December, has Prince Liechtenstein conclude it with Marshal Berthier at the castle here."; why: the 32nd
+  Bulletin (Correspondance no. 9548, p. 462, S5.1) has Liechtenstein conclude the armistice with Berthier at the castle; the 31st (no. 9546,
+  p. 457, S5.2) has the two emperors meet at Napoleon's bivouac by the outposts and agree on an armistice; Savary, who was there (t. II,
+  p. 213, S5.3), puts the meeting at a mill before Bernadotte's outposts. The armistice's own text (the Moniteur of 26 frimaire an XIV) was
+  not found, so its date and signatures as printed are not claimed. Claim: attributed (three readings).
+- `FEATURES[#santon].story` (H-18): was "Named by French soldiers after a chapel in Egypt. Bagration could not get past it, …"; is "Veterans of
+  Egypt named it the Santon, Marbot says, because the small chapel on its top had a roof like a minaret; Ségur heard it was named for a tomb
+  the Turks had left there. Bagration could not get past it, …" (the second sentence unchanged); why: no source read says "a chapel in Egypt":
+  Marbot (t. I, p. 258, S5.4; Thiers t. VI, pp. 293, 297 agreeing) has veterans of Egypt name the hill for its own minaret-like chapel, and
+  Ségur (t. II, p. 452, S5.5), as hearsay, a Turkish tomb. Claim: disputed, the two sides; its note says the second sentence is this map's
+  reading.
+- `FORMATIONS.rg_inf.commander` (step 4's hand-on; question 210, the default): was "Lt.-Gen. Maliutin"; is "Maj.-Gen. Depreradovich 1st"; and
+  `FORMATIONS.rg_inf.strengthNote`: was "6,730 (Duffy 1977; Smith 1998)"; is that, then "Its commander on 2 December, Depreradovich 1st with
+  the Guard infantry of the 1st Guard column under the Tsesarevich, is in Sokolov alone, with no source on his page; Mikhailovsky-Danilevsky
+  and the Chevalier Guard's history have Lt.-Gen. Maliutin command the Guard infantry at Olmütz and on the march, and on the day Maliutin led
+  a separate column, the Life Grenadiers, the Chevalier Guard and the Life Cossacks, which came up late (Sokolov; the Chevalier Guard's
+  history; the Allied report printed in 1806)"; why: no source read puts Maliutin with the infantry that fought at Stare Vinohrady: Sokolov's
+  order of battle (t. II, pp. 199-200, S5.6, read again by the lead) names Depreradovich 1st over the 1st column's Guard infantry and Maliutin
+  at the head of the 2nd column; the Chevalier Guard's history (pp. 54, 56-59, C6.28, C6.c1, C6.c2) and the 1806 report (pp. 118-119, C6.c3)
+  put Maliutin's column away from the plateau, Mikhailovsky-Danilevsky (pp. 144-145, C6.27) gives him the infantry at Olmütz. As `rg_cav`'s
+  Kologrivov, the name is Sokolov's alone, and the note says so. The note's claim: attributed (six readings); the commander field stays
+  unchecked, as `rg_cav`'s. The strength (6,730) is unchanged: question 211.
+- `PHASES[#3].lede` (H-19): "St-Hilaire" -> "Saint-Hilaire" (the one place the name was abbreviated). No other spelling changed: the accents
+  are question 209 (default: as now).
+- `STATEMENT_CLAIMS`: three entries added (the two stories, the note), each hashed; the inventory regenerated (704 statements: 144 with a
+  claim of their own, 75 by class, 485 unchecked; it was 141, 75 and 488).
+- Not data, app.js: the light notes' sentence "The hours drawn are the narrative's, and this reconstruction cites no source for them" is now
+  "The hours drawn are this map's own: the climb from about 08:45, inside the sources' range as the climbs' timing notes give it (about eight
+  in Ségur, the aide's report at half past eight in Thiebault, about nine in Stutterheim and Schönhals), none of them taken as its hour" (the
+  reader's finding: since step 4 the climbs' timing notes cite that range, C1.37 and C2.22; the words are the notes' own), and "(the sources
+  sheet's Basis)" is "(this sheet's Basis)" (the review of 22c77ac, item 8). Every other attribution of the light notes and of the eye-level
+  caption holds as written (each found in the registers, Thiébault pp. 456, 457 and 504 read again on the images); they stay presentation
+  sentences in app.js, outside the claims (question 187's open note). The order of battle's third rows (a brigade under a division) print
+  their commander as the rows above do (Claparède under Suchet's division, step 2's hand-on).
+- check:chronology: the lede's cite (kamensky@6, "lede 3 @11:00") reviewed against the new text (its hour unchanged) and L9's record rehashed.
+
 ## 2026-10 · Roadmap step 4b, part C: questions 203 and 204 decided; 203 applied
 
 **Status: done on `claude/adoring-gauss-ubfas9` (PR #55); merged (#55). The build changed: `austerlitz-command-map.html` 2,182,537 bytes, md5

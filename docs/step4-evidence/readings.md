@@ -3314,3 +3314,75 @@
 
 **The researcher's notes** (C6): 1. The overclaim scan's attribution test (redteam.js ATTRIBUTED) matches 'according to', 'as X tells it', 'accounts/memoirs/the Bulletin say...', but NOT 'in X's account' (the cluster file's suggested form). Also 'as \w+ tells it' needs an unaccented name in JS without the u flag ('Thiebault', as FEATURES[#zuran].story already writes it). 'the finest' (Davout's 'la plus belle') is a SUPERLATIVE hit and needs 'according to' in its own sentence. 2. FORMATIONS.c_iii is III Corps' detachment (Friant, Bourcier); Thiébault's '40 ou 50,000 Russes' (register §4.3) concerns Legrand's few battalions in Telnitz and Sokolnitz (IV Corps). The cluster file calls the item 'Legrand's six times'; the role text belongs to III Corps. 3. Blasowitz: the event's present name, forms and ANALYSIS[#north] follow Thiers's 1845 narrative (C), read here. The map plots no Russian Guard detachment at Blasowitz: rg_inf is 1.8-3 km east at 10:00-12:00 (computed on a read-only copy of the live generated modules in the scratch directory). If the owner wants the defenders drawn, that is a track change (data), not proposed here. sim-test's event check takes the nearest named form, so a forms list with kellermann passes at 0.72 km whatever the others' distances. 4. Thiers p. 317 has the village 'profondément encaissé dans un ravin' and burning; Schönhals p. 164 has Napoleon 'seiner Reserve voraus, bei Blaziowitz' (for C3/C4's items). 5. Davout's report of 26 December (C1/C2's reading) has Friant's troops 'marchèrent d'abord sur Turas': with Thiébault's 'jusqu'à Turas' and Schönhals p. 167 'gegen Turas und Kobelnitz', Turas recurs in the accounts as a western reference point; the disposition's objective is the Turas WOOD, whose place is not read: PLANS.al.cols[1].obj [171,372] remains the map's placement. 6. The Allied report (Materialien Zusatz 13, p. 119) names a 'Rausnitzer Posthaus' at the north end of the French afternoon line; whether it is the Posoritz post house is not stated. Pozořice village itself is about 3.8 km NW of the register's 'Stará pošta' (Wolny: Holubitz and Kruh were in Posoritz parish), which explains the name. 7. FORMATIONS.rg_cav: M-D 1844 p. 145 lists the Guard cavalry at Olmütz as Chevalier Guard 5, Horse 5, Hussar 5, Cossack 2 squadrons; Sokolov p. 199 puts only the Horse Guard and Hussars under Kologrivov on 2 December, the Chevalier Guard with Malyutin (OCR of leaf n199). The map's 3,700 horse (Duffy/Smith) and the 'Chevalier Guard's charge' in rg_cav@6 may need the column split noted (C5's strengths cluster). 8. The disposition (Materialien p. 103) also says 'Da der glückliche Erfolg der Schlacht von dem entschlossenen Angriffe unsers linken Flügels ... abhängt': a source for PLANS.al.assumed[1]'s attributed 'decisive ground' (a permanent LANG_ALLOW entry), should it be cited. 9. Wolny 1836 p. 158 (C, local tradition) puts the Russian Guard's near-destruction 'auf der östl. Anhöhe zwischen Kruh, der Holubitzer Mühle bis Křenowitz' and the Emperors on the height 'Zigan' near Holubitz: unsourced topography lore, recorded only. 10. Process: one read-only 'git log -1' was run by mistake while copying the generated modules (no change to the repository); the generated modules (_world_mod.js, _clock.js, _derived.js, _events.js) and data.js/analysis.js/geo.js were copied to the scratch directory to compute positions; nothing under /home/user/Austerlitz was written. 11. Readings by other clusters relied on in notes only (not as basis unless re-read here): C1 savary1828.p204-207 (the 4e's 'une de ses aigles'), marbot1891.p260.eagle, davout1885.p202-204; C2 md1844.p198.bagration.
 
+
+## S5: roadmap step 5's readings (H-18, the Guard infantry's commander)
+
+Read on 20 October 2026 by machine readers (one per question), each quotation on its page image; the lead read the 32nd Bulletin's page
+and Sokolov's two pages on the images again, and the Santon's two quotations against the pages' OCR text. Not read by a person. The
+reports: the step's `CHANGELOG.md` entry. The format is the clusters' above.
+
+### S5.1 `corr11_1863.p462.bulletin32-armistice`
+
+- **source**: `corr11_1863`, no. 9548 (32nd Bulletin, Austerlitz, 15 frimaire an XIV, 6 December 1805), p. 462, leaf n471; images: https://archive.org/download/correspondancede11napouoft/page/n471.jpg.
+- **quote** (read on: page image): Le prince Jean de Liechtenstein est venu trouver l'Empereur au château d'Austerlitz. L'Empereur lui a accordé une conférence de plusieurs heures. [...] Ce prince a conclu avec le maréchal Berthier un armistice de la teneur suivante¹. [footnote ¹: Voir le Moniteur du 26 frimaire an XIV]
+- **translation**: Prince Johann of Liechtenstein came to see the Emperor at the castle of Austerlitz. The Emperor granted him a conference of several hours. [...] This prince concluded with Marshal Berthier an armistice in the following terms (see the Moniteur of 26 frimaire an XIV).
+- **grade**: B. **label**: fact.
+- **settles**: The 32nd Bulletin has the armistice concluded at the castle of Austerlitz by Liechtenstein and Berthier, not signed by Napoleon and Francis.
+- **does not settle**: The armistice's own text, date and signatures (not printed in the volume; the Moniteur was not found on archive.org).
+- **bears on**: FEATURES[#austerlitz].story.
+- **status**: read by a machine reader, 20 October 2026, on the page image; read again on the image by the lead: exact. Not read by a person.
+
+### S5.2 `corr11_1863.p457.bulletin31-meeting`
+
+- **source**: `corr11_1863`, no. 9546 (31st Bulletin, Austerlitz, 14 frimaire an XIV, 5 December 1805), p. 457, leaf n466; images: https://archive.org/download/correspondancede11napouoft/page/n466.jpg.
+- **quote** (read on: page image): L'Empereur est parti hier d'Austerlitz et est allé à ses avant-postes, près de Ziaroschitz. Il s'est là placé à son bivouac. L'empereur d'Allemagne n'a pas tardé à arriver. Ces deux monarques ont eu une entrevue qui a duré deux heures. [...] Ces deux princes sont convenus d'un armistice et des principales conditions de la paix [...]. Après cela, il est revenu coucher à Austerlitz.
+- **translation**: Yesterday the Emperor left Austerlitz and went to his outposts near Ziaroschitz, where he took his place at his bivouac. The Emperor of Germany soon arrived; the two monarchs had a meeting of two hours. [...] The two princes agreed on an armistice and the principal conditions of peace [...]. After this he returned to sleep at Austerlitz.
+- **grade**: B. **label**: fact.
+- **settles**: The 31st Bulletin: on 4 December Napoleon met Francis at his bivouac by the outposts near Ziaroschitz, and they agreed on an armistice.
+- **does not settle**: Where Ziaroschitz is (taken by the reader to be Saruschitz, Žarošice: not checked on a map).
+- **bears on**: FEATURES[#austerlitz].story.
+- **status**: read by a machine reader, 20 October 2026, on the page image. Not read by a person.
+
+### S5.3 `savary1828.p213.meeting-mill`
+
+- **source**: `savary1828`, t. II, p. 213, leaf n224; images: https://archive.org/download/mmoiresduducder04savagoog/page/n224.jpg.
+- **quote** (read on: page image): Le 4, à neuf heures du matin, nous partîmes tous avec l'empereur et la garde à cheval, pour aller par la grande route d'Hollitsch à un moulin qui était devant les avant-postes de Bernadotte, à environ trois lieues d'Austerlitz : nous y arrivâmes les premiers; l'empereur fit faire des feux, et attendit.
+- **translation**: On the 4th at nine in the morning we all left with the Emperor and the horse Guard, by the Holitsch high road, for a mill in front of Bernadotte's outposts, about three leagues from Austerlitz: we arrived first; the Emperor had fires lit and waited.
+- **grade**: B. **label**: fact.
+- **settles**: Savary, who was there: the meeting of 4 December was at a mill before Bernadotte's outposts.
+- **does not settle**: The mill's name (Thiers, t. VI, p. 334, a later historian: "près du moulin de Paleny, entre Nasiedlowitz et Urschitz", read on the image, leaf n343, grade C).
+- **bears on**: FEATURES[#austerlitz].story.
+- **status**: read by a machine reader, 20 October 2026, on the page image. Not read by a person.
+
+### S5.4 `marbot1891.p258.santon-name`
+
+- **source**: `marbot1891`, t. I, p. 258, leaf n277; images: https://archive.org/download/mmoiresdugn01marbuoft/page/n277.jpg.
+- **quote** (read on: page image): Napoléon appuyait sa gauche à un mamelon d'un accès fort difficile, que nos soldats d'Égypte nommèrent le Santon, parce qu'il était surmonté d'une petite chapelle dont le toit avait la forme d'un minaret.
+- **translation**: Napoleon rested his left on a knoll of very difficult access, which our soldiers from Egypt named the Santon, because it was topped by a small chapel whose roof had the shape of a minaret.
+- **grade**: B. **label**: disputed.
+- **settles**: Marbot: veterans of Egypt named the hill for the minaret-like chapel on it (Thiers, t. VI, pp. 293 and 297, leaves n302 and n306, read on the images: "les soldats d'Égypte avaient nommé le Santon"; "une chapelle dite de Bosenitz").
+- **does not settle**: Which reason is right (Ségur, S5.5, gives another).
+- **bears on**: FEATURES[#santon].story.
+- **status**: read by a machine reader, 20 October 2026, on the page image; checked by the lead against the page's OCR text: exact. Not read by a person.
+
+### S5.5 `segur1877.p452.santon-tomb`
+
+- **source**: `segur1877`, t. II, livre XIX, p. 452, leaf n473; images: https://archive.org/download/histoireetmmoir06sggoog/page/n473.jpg.
+- **quote** (read on: page image): elle s'appuyait à ce monticule escarpé nommé le Santon, appelé ainsi, disait-on, d'un tombeau que jadis y avaient laissé les Turcs.
+- **translation**: it rested on that steep hillock called the Santon, so named, it was said, from a tomb the Turks had once left there.
+- **grade**: B. **label**: disputed.
+- **settles**: Ségur, as hearsay ("disait-on"): the hill was named for a Turkish tomb.
+- **does not settle**: Which reason is right (Marbot, S5.4).
+- **bears on**: FEATURES[#santon].story.
+- **status**: read by a machine reader, 20 October 2026, on the page image; checked by the lead against the page's OCR text: exact. Not read by a person.
+
+### S5.6 `sokolov2006.p199-200.guard-columns`
+
+- **source**: `sokolov2006`, t. II, appendix 22 (Расписание союзной армии на 2 декабря 1805 года), pp. 199-200, leaves n198-n199; images: https://archive.org/download/1799-1805-.-ii/page/n198_w1600.jpg, https://archive.org/download/1799-1805-.-ii/page/n199_w1600.jpg.
+- **quote** (read on: page image): (p. 199) 1-Я ГВАРДЕЙСКАЯ КОЛОННА начальник Цесаревич и Великий князь Константин Павлович / РУССКИЕ ВОЙСКА / ПЕХОТА / Генерал-майор Депрерадович 1-й, командир 1-й бригады гвардейской пехоты, командир лейб-гвардии Семеновского полка [the Preobrazhensky, Semenovsky and Izmailovsky regiments, 2 battalions each, and the Guard jägers, 1 battalion] (p. 200) 2-я ГВАРДЕЙСКАЯ КОЛОННА / Начальник генерал-лейтенант Малютин, командир л.-гв. Измайловского полка и командующий всей гвардейской пехотой / ПЕХОТА / Генерал-майор Лобанов, командир 2-й бригады гвардейской пехоты, командир Лейб-гренадерского полка [the Life Grenadier regiment, 3 battalions] / КАВАЛЕРИЯ / Генерал-майор Депрерадович 2-й, командир Кавалергардского полка [the Chevalier Guard, 5 squadrons; the Life Guard Cossacks, 2 sotnias]
+- **translation**: 1st GUARD COLUMN, chief the Tsesarevich and Grand Duke Constantine Pavlovich. Russian troops, infantry: Major-General Depreradovich 1st, commander of the 1st Guard infantry brigade, commander of the Life Guard Semenovsky regiment [...]. 2nd GUARD COLUMN, chief Lieutenant-General Malyutin, commander of the Life Guard Izmailovsky regiment and commanding all the Guard infantry. Infantry: Major-General Lobanov, commander of the 2nd Guard infantry brigade, commander of the Life Grenadier regiment [...]. Cavalry: Major-General Depreradovich 2nd, commander of the Chevalier Guard regiment [...].
+- **grade**: C. **label**: fact.
+- **settles**: A modern specialist's order of battle for 2 December: the Guard infantry with the Tsesarevich (the 1st column) under Depreradovich 1st; Malyutin, by title commanding all the Guard infantry, at the head of the 2nd column (the Life Grenadiers, the Chevalier Guard, the Life Cossacks).
+- **does not settle**: The table's own source (none on the page); first names (none printed).
+- **bears on**: FORMATIONS.rg_inf.commander; FORMATIONS.rg_inf.strengthNote; FORMATIONS.rg_inf.strength (the 6,730 may count the Life Grenadiers' three battalions with the 2nd column: question 211).
+- **status**: read by a machine reader, 20 October 2026, on zoomed crops of the full-size images; read again on the crops by the lead: exact. Not read by a person.
