@@ -69,7 +69,7 @@ function counterHTML(f,o){
     '</span>';
   var name='<b class="mlc-name" style="font-weight:'+(dim?400:500)+'">'+esc(shortName(f))+'</b>';
   if(!o.full) return h+'<span class="mlc-text" style="'+plate+'">'+name+(ic?iconSVG(ic.icon):'')+'</span>';
-  var sub=(o.strength?'≈'+o.strength.toLocaleString():'')+(o.commander?(o.strength?' · ':'')+esc(o.commander):'');
+  var sub=(o.strength?'≈'+o.strength.toLocaleString("en-GB"):'')+(o.commander?(o.strength?' · ':'')+esc(o.commander):'');
   return h+'<span class="mlc-text" style="'+plate+'">'+name+
     (s?'<span class="mlc-st" style="color:'+(dim?K.sub:K.plateInk)+';font-weight:'+(dim?400:ic.weight)+'">'+iconSVG(ic.icon)+esc(s.label)+'</span>':'')+
     (sub?'<span class="mlc-sub" style="color:'+K.sub+'">'+sub+'</span>':'')+'</span>';
@@ -77,7 +77,7 @@ function counterHTML(f,o){
 /* the accessible name (docs/STAGE2_SPEC.md section F.1): name, side, echelon, strength, status, position grade */
 function counterLabel(f,o){
   var s=o.st&&STATUS[o.st];
-  return f.name+", "+(SIDE_WORD[f.nation]||f.nation)+", "+(ECH_WORD[f.ech]||f.ech)+(o.strength?", about "+o.strength.toLocaleString():"")+
+  return f.name+", "+(SIDE_WORD[f.nation]||f.nation)+", "+(ECH_WORD[f.ech]||f.ech)+(o.strength?", about "+o.strength.toLocaleString("en-GB"):"")+
     (s?", "+s.label.toLowerCase():"")+", position grade "+(o.cf||"A")+(o.know==="uncertain"?", reported only":"");
 }
 /* a formation's name in the landscape, which draws no counters: neutral text with the side mark beside it (decision 9), and since

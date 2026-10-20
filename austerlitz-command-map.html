@@ -6254,7 +6254,7 @@ function counterHTML(f,o){
     '</span>';
   var name='<b class="mlc-name" style="font-weight:'+(dim?400:500)+'">'+esc(shortName(f))+'</b>';
   if(!o.full) return h+'<span class="mlc-text" style="'+plate+'">'+name+(ic?iconSVG(ic.icon):'')+'</span>';
-  var sub=(o.strength?'≈'+o.strength.toLocaleString():'')+(o.commander?(o.strength?' · ':'')+esc(o.commander):'');
+  var sub=(o.strength?'≈'+o.strength.toLocaleString("en-GB"):'')+(o.commander?(o.strength?' · ':'')+esc(o.commander):'');
   return h+'<span class="mlc-text" style="'+plate+'">'+name+
     (s?'<span class="mlc-st" style="color:'+(dim?K.sub:K.plateInk)+';font-weight:'+(dim?400:ic.weight)+'">'+iconSVG(ic.icon)+esc(s.label)+'</span>':'')+
     (sub?'<span class="mlc-sub" style="color:'+K.sub+'">'+sub+'</span>':'')+'</span>';
@@ -6262,7 +6262,7 @@ function counterHTML(f,o){
 /* the accessible name (docs/STAGE2_SPEC.md section F.1): name, side, echelon, strength, status, position grade */
 function counterLabel(f,o){
   var s=o.st&&STATUS[o.st];
-  return f.name+", "+(SIDE_WORD[f.nation]||f.nation)+", "+(ECH_WORD[f.ech]||f.ech)+(o.strength?", about "+o.strength.toLocaleString():"")+
+  return f.name+", "+(SIDE_WORD[f.nation]||f.nation)+", "+(ECH_WORD[f.ech]||f.ech)+(o.strength?", about "+o.strength.toLocaleString("en-GB"):"")+
     (s?", "+s.label.toLowerCase():"")+", position grade "+(o.cf||"A")+(o.know==="uncertain"?", reported only":"");
 }
 /* a formation's name in the landscape, which draws no counters: neutral text with the side mark beside it (decision 9), and since
@@ -9755,6 +9755,18 @@ function readPos(id){
   if(f.track) return drawnKnow(id)==="unknown"?null:posNow(id);
   return aggReading(id).p;
 }
+/* the dossier's reading pill under a reading (roadmap step 5, S-4 and question 170 (c); the review of 22c77ac): {kn, why}, as drawn. A
+   formation: drawnKnow, with knowReason's reason, or "no line of sight from the eye level" where the eye level turns "seen" into reported
+   only. A corps or column: its formations' reading (aggReading), with their count as the reason ("1 of its 3 formations on the field
+   known"; none known: "none of its ... known"), not the corps' own rule at its mean position, which can disagree */
+function pillReading(id){
+  var f=FORMATIONS[id];
+  if(f.track){ var kn=drawnKnow(id), k0=knowledgeOf(id); return {kn:kn, why:kn!==k0?"no line of sight from the eye level":knowReason(id)}; }
+  var a=aggReading(id), w=null;
+  if(!a.whole&&a.n&&(a.know==="unknown"||a.know==="uncertain"))
+    w=(a.k?a.k+" of its "+a.n:"none of its "+a.n)+" formation"+(a.n===1?"":"s")+" on the field known"+(a.know==="uncertain"&&a.k?", none in sight":"");
+  return {kn:a.know, why:w};
+}
 /* which part of the rule decides (the dossier's reason): the authored limit (KNOW_OVERRIDE), the line of sight, the valley fog */
 function knowReason(id){
   var k=(knowAtClock(),knowledgeOf(id));
@@ -10440,6 +10452,16 @@ function mlInit(){
     if(document.fonts.ready) document.fonts.ready.then(remeasure);
   }
 }
+/* a map item's short name for the polite message (question 172): its formation's, event's, place's or terrain line's own name; else its
+   accessible name to the first comma (the review of 22c77ac: "Event, 09:30: ..." gave "Event") */
+function mlShortName(it){
+  var p=it&&it.pick, n=null;
+  if(p&&p.kind==="f"&&FORMATIONS[p.id]) n=FORMATIONS[p.id].name;
+  else if(p&&p.kind==="e"){ var e=EVENTS.filter(function(x){ return x.id===p.id; })[0]; if(e) n=e.n; }
+  else if(p&&p.kind==="t"){ var t=FEATURES.filter(function(x){ return x.id===p.id; })[0]; if(t) n=t.name; }
+  else if(p&&p.kind==="a") n=p.id;
+  return n||String(it.el.getAttribute("aria-label")||it.el.textContent||"").split(",")[0].trim();
+}
 function mlItem(key,cls){
   var it=ML.items[key];
   if(!it){
@@ -10762,7 +10784,7 @@ function mlLayout(){
   if(lostFocus){ var nxt=fo.filter(function(it){ return it.base>=lostFocus.base; })[0]||fo[0];
     if(nxt&&nxt.el.focus) nxt.el.focus({preventScroll:true}); else if(ML.root.focus) ML.root.focus({preventScroll:true});
     /* roadmap step 5 (question 172): said, politely, in a region of its own (the phase announcement's is the clock's) */
-    var lm=document.getElementById("live-map"), nm=function(it){ return String(it.el.getAttribute("aria-label")||it.el.textContent||"").split(",")[0].trim(); };
+    var lm=document.getElementById("live-map"), nm=mlShortName;
     if(lm) lm.textContent=LABELS.mapLeft.replace("%n",nm(lostFocus)||"An item").replace("%m",nxt?nm(nxt):LABELS.mapLeftLayer); }
   st.ms=performance.now()-t0;
   /* nodes drawn now: the layer, its lines and every item displayed (a hidden item is display:none and inert) */
@@ -11556,7 +11578,7 @@ var LABELS={
   panels:{button:"Panels", title:"Show or hide the panels: the order of battle, analysis, command and plans tabs, and the sources (below 1080 px wide)"},
   eyesBack:"Whose eyes? Back to %r (a model reading).",
   /* roadmap step 5 (question 172): a focused map item that leaves the map (the clock moved it off, or it ended) hands the focus on, and says so */
-  mapLeft:"%n has left the map; the focus is on %m.", mapLeftLayer:"the map",
+  mapLeft:"%n has left the view; the focus is on %m.", mapLeftLayer:"the map",   /* the review of 22c77ac: "the view" (the clock, a pan or a zoom) */
   opening:{button:"Begin the opening", buttonTitle:"Four stops of the guided tour in its own words, the clock played between them",
     head:"Opening, step %k of %n", back:"Back", next:"Next", finish:"Finish", skip:"Skip", skipTitle:"End the opening at the start of the day (Esc)",
     said:"Step %k of %n: %t, %c.", ended:"The opening has ended. Play runs the day from %c.", left:"The opening has ended here.",
@@ -11613,7 +11635,7 @@ var KEYS=[
     run:function(){ setPresentation(presentation==="study"?"watch":"study"); }},
   {id:"m", scope:"window", group:"View and ground", keys:["m","M"], show:["M"], text:function(){ var G=LABELS.ground; return "The ground: "+G.terrain.label+", "+G.staff.label+", "+G.hybrid.label+", in turn"; },
     run:function(){ setMode(mode==="terrain"?"staff":(mode==="staff"?"hybrid":"terrain")); }},
-  {id:"esc", scope:"window", group:"View and ground", keys:["Escape"], show:["Esc"], text:"Back: close the sources sheet; else the first card where it stands, the layers panel, the opening (to the start of the day) or the tour; else everything shown in Study, and the theme and the selection cleared",
+  {id:"esc", scope:"window", group:"View and ground", keys:["Escape"], show:["Esc"], text:function(){ return "Back: close the "+LABELS.names.sheet+" sheet; else the first card where it stands, the layers panel, the opening (to the start of the day) or the tour; else everything shown in Study, and the theme and the selection cleared"; },
     run:function(){
       if(sheetTop()){ if(sheetTop()==="help") setHelp(false); else closeSources(); return; }   /* roadmap step 3 (SW-4): the topmost sheet first */
       if(firstRunOpen){ closeFirst("explore"); return; }
@@ -12389,7 +12411,8 @@ function bindTimeTips(){
   tb.addEventListener("pointerdown",function(){ tipHide(true); });
   tp.addEventListener("pointerover",function(){ clearTimeout(TIP.hideT); });
   tp.addEventListener("pointerout",function(){ tipHide(false); });
-  window.addEventListener("keydown",function(e){ if(e.key==="Escape"&&!tp.hidden) tipHide(true); },{capture:true});
+  /* Esc hides a shown tip and does nothing else (the review of 22c77ac: it also ran the app's Esc); a second Esc is the app's */
+  window.addEventListener("keydown",function(e){ if(e.key==="Escape"&&!tp.hidden){ tipHide(true); e.stopPropagation(); e.preventDefault(); } },{capture:true});
 }
 function buildTimeline(){
   SPINE=buildSpine();
@@ -12398,7 +12421,7 @@ function buildTimeline(){
     PHASES.forEach(function(p,i){
       /* decision 166 (a): the label in its own box (it carries the ellipsis), so the button's hit area can reach up over the act row */
       var b=el("button","step"), sl=el("span","step-l"); b.type="button"; sl.textContent=p.label; b.appendChild(sl); b.dataset.tip=p.clock+": "+p.title+" ("+actOf(i).n+")";   /* the act's name, no longer a pointer's to hover (decision 166 (a)); its tip (timeTip, roadmap step 5) */
-      b.setAttribute("aria-label",p.clock+", "+p.label+": "+p.title);
+      b.setAttribute("aria-label",p.clock+", "+p.label+": "+p.title+" ("+actOf(i).n+")");   /* the act, as the tip shows it (the review of 22c77ac) */
       b.style.left=tlPc(p.t0)+"%"; b.style.width=(tlPc(p.t1)-tlPc(p.t0))+"%"; b.tabIndex=-1;
       b.addEventListener("click",function(){ stopPlay(); freeCam=false; setPhase(i); });
       tl.appendChild(b); });
@@ -12833,8 +12856,8 @@ function dossierFormation(id){
     /* roadmap step 5 (docs/FINAL_AUDIT.md S-4; question 170 (c)): the reading as drawn (drawnKnow: at the eye level a known enemy the eye
        has no line of sight to is drawn reported only; a corps or column, its formations' reading, aggReading), with that reason; until
        step 5 knowledgeOf, which said "In sight" where the drawing showed "reported only" */
-    var kn=f.track?drawnKnow(id):aggReading(id).know, k0=f.track?knowledgeOf(id):kn;
-    var KL={own:"Own troops",seen:"In sight",uncertain:"Reported only",unknown:"Not known"}, why=(kn!==k0)?"no line of sight from the eye level":knowReason(id);   /* Stage 5E: which part decides */
+    var PR=pillReading(id), kn=PR.kn, why=PR.why;
+    var KL={own:"Own troops",seen:"In sight",uncertain:"Reported only",unknown:"Not known"};   /* Stage 5E: which part decides */
     if(KL[kn]) pills+='<span class="pill ghost">'+esc(KL[kn]+(why?" ("+why+")":""))+'</span>';
   }
   wrap.appendChild(el("div","pillrow",pills));
@@ -12862,7 +12885,7 @@ function dossierFormation(id){
   var whr=posRow(id,false)+marchRow(id);
   if(tmg){
     var tw=tmg.w, tt=tmg.tm;
-    whr+=row("Timing", (tw[0]<clock&&tw[1]<=clock?"Reached ":"Moves ")+esc(fmtClock(tw[0]))+"&ndash;"+esc(fmtClock(tw[1]))+
+    whr+=row("Timing", (tw[0]<clock&&tw[1]<=clock?"Reached ":"Moves ")+esc(fmtClock(tw[0]))+" - "+esc(fmtClock(tw[1]))+
       (tmg.arrDerived?' <span class="hh">(arrival derived: '+esc(arrivalRuleText(tmg))+')</span>':'')+
       " &middot; grade "+esc(tt.gr)+" &middot; "+esc(tt.basis));
     whr+=row("Dated by", tt.ev.map(function(q){ return "&ldquo;"+esc(q)+"&rdquo;"; }).join("; ")+'<br><span class="hh">'+esc(tt.note)+'</span>');
@@ -13213,15 +13236,15 @@ function updateScaleBar(){
     if(w<62) pick=choices[i];
   }
   var px=Math.round(pick*k);
-  if(px<10||px>400){ box.style.opacity="0"; return; }
-  box.style.opacity="1";
+  if(px<10||px>400){ box.style.opacity="0"; box.setAttribute("aria-hidden","true"); return; }
+  box.style.opacity="1"; box.removeAttribute("aria-hidden");
   var was=bar.style.width;
   bar.style.width=px+"px";
   lab.textContent=(pick<1? (pick*1000)+" m" : pick+" km");
   /* roadmap step 5 (docs/FINAL_AUDIT.md G-1; docs/VISUAL_AUDIT.md: "say so"): in perspective the bar holds at the centre of the view (the
      orbit target) only, and its name and title say so; the paper map has one scale across the view */
   var nm="Scale: "+lab.textContent+(camera.isOrthographicCamera?", across the paper map":", at the centre of the view (in perspective, nearer ground is larger and farther smaller)");
-  if(box.getAttribute("aria-label")!==nm){ box.setAttribute("aria-label",nm); box.title=nm; }
+  if(box.getAttribute("aria-label")!==nm) box.setAttribute("aria-label",nm);   /* no native title: the timebar's tips are #tltip's (the review of 22c77ac) */
   /* roadmap step 3 (the review of 7736731): the scale bar shares the caption's row, so the caption's room changes with it: fitted again
      (decision 159), only when the bar's width changes */
   if(was!==bar.style.width&&typeof fitCaption==="function") fitCaption();
@@ -13438,7 +13461,7 @@ function openSources(o){
       TACTICAL_RATE.inf.toFixed(1)+" km/h, cavalry "+TACTICAL_RATE.cav.toFixed(1)+", mixed "+TACTICAL_RATE.mixed.toFixed(1)+
       ". These rates are design values, not sourced, and are not historical rates. They are used only where the move still fits before the formation's next position; otherwise the move keeps the march-rate ceiling and is flagged.")+'</li>'+
     derivedArrivals().map(function(r){ var f=FORMATIONS[r.id];
-      return '<li>'+esc(f.name+" ("+fmtClock(r.b.w[0])+"\u2013"+fmtClock(r.b.w[1])+"): "+arrivalRuleText(r.b)+".")+'</li>'; }).join('')+'</ul>'+
+      return '<li>'+esc(f.name+" ("+fmtClock(r.b.w[0])+" - "+fmtClock(r.b.w[1])+"): "+arrivalRuleText(r.b)+".")+'</li>'; }).join('')+'</ul>'+
     /* Stage 2C: the arrows (decisions 33 and 37), counted from OVERLAYS */
     '<h3>How the arrows are drawn</h3><ul class="bul">'+arrowNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
     /* Stage 6C (docs/STAGE6_SPEC.md section 4.3 item 6): how the troops are drawn, counted from appearance.js and KIT */

@@ -127,8 +127,31 @@ changes only where a test now reads what the app draws (the ground shader's colo
 - *Checked:* npm test, all nine suites and the height guard; check:data, 131 declarations identical; check:chronology 0 errors (L9 with
   it); `boot-check.js` context-loss three times (0 warnings each). The build: 2,192,107 bytes, md5 `3888026c2ddfaf9ec31b71b69584adcd`.
 
-**The review of groups 1 and 2** (an independent reviewer, read-only, on `22c77ac`; its nine findings are fixed in the commit after this one
-and recorded there).
+**The review of groups 1 and 2** (an independent reviewer, read-only, on `22c77ac`; it rebuilt the build byte-identical, ran no browser).
+Its findings, each fixed in the commit after group 3's, or recorded:
+- (1, medium) The dossier pill of a corps or column took its formations' reading but the corps' own reason (`knowReason` at its mean
+  position): 84 disagreements over the day ("In sight (no line of sight)"). Now `pillReading`: a corps or column gives its formations' count
+  as the reason ("1 of its 3 formations on the field known"), a formation the drawing's reason; runtime-test.js holds it every 30 minutes for
+  both readings (464 corps and column readings, 101 with a reason).
+- (2) The message when a focused item leaves the map named an event "Event" (its accessible name to the first comma) and said "left the
+  map" for a pan or zoom too: now the item's own name (`mlShortName`: the formation's, event's, place's or terrain line's) and "has left the
+  view"; runtime-test.js holds the names.
+- (3) R-6 was incomplete: `symbols.js`'s two `toLocaleString()` (the counter's strength line and its accessible name) and runtime-test.js's
+  two now "en-GB"; the dossier's Timing row and the sources sheet's derived arrivals wrote a clock range with an en dash: now " - ".
+- (4) Esc on a shown tip also ran the app's Esc (the tour, the theme, the selection): it now hides the tip alone; a second Esc is the app's.
+- (5) The theme's mark (`#spinemark`, aria-hidden, no pointer events) cannot show a tip, nor could it its native title before: the record
+  above that lists it among the tips' elements is corrected here; its `data-tip` is harmless and kept.
+- (6) The scale bar kept a native `title` in the timebar: removed (its name is its `aria-label`), and hidden from assistive technology
+  while the bar is hidden.
+- (7) The phase buttons' act name, which the removed `title` gave as a description, is in their name now ("…: The Allied left opens the
+  battle (Act …)").
+- (8) The "?" overlay's Esc row named "the sources sheet": now "the Accuracy and sources sheet" (`LABELS.names.sheet`). The light notes'
+  "the sources sheet's Basis" is changed with group 4's correction of those notes.
+- (9) Records: `docs/VISUAL_AUDIT.md`'s "#6 to #47" is "#7 to #47" (#6 is a set-up task's merge); `legendHint` has a test now
+  (runtime-test.js); check:selftest, check:contrast and the full check:visual run at the step's end, on the final build (the self-test's
+  edited checks, the tooltip and the focus ring's plate among what they read).
+- Checked after the fixes: npm test, all nine suites and the height guard; check:data, 131 identical; check:chronology 0 errors. The build:
+  2,194,116 bytes, md5 `9d904bc9b9968d105d069032095e97e7`.
 
 ## 2026-10 · Roadmap step 4b, part C: questions 203 and 204 decided; 203 applied
 

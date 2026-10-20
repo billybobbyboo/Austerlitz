@@ -448,7 +448,7 @@ try{
     [T_MIN,525,600,660,700,764,800].forEach(t=>{ setClock(t); _sitKey=""; paintSituation();
       const host=document.getElementById("situation").innerHTML, cap=document.getElementById("tb-cap").innerHTML;
       const onH=plateauStrength("al"), want=curPhase<=6&&onH>0, cut=!!centreSeparation();
-      const tag='<small>derived</small> on the heights: Allied &asymp; '+onH.toLocaleString(), cutTag='<small>derived</small> centre separation detected';
+      const tag='<small>derived</small> on the heights: Allied &asymp; '+onH.toLocaleString("en-GB"), cutTag='<small>derived</small> centre separation detected';
       if((host.indexOf(tag)>=0&&host.indexOf(esc(FLAT_NOTE))>=0)!==want||(cap.indexOf(tag)>=0)!==want) bad.push(fmtClock(t)+": the plateau reading "+(want?"not shown":"shown"));
       if((host.indexOf(cutTag)>=0&&host.indexOf(esc(SEP_NOTE))>=0)!==cut||(cap.indexOf(cutTag)>=0)!==cut) bad.push(fmtClock(t)+": the separation "+(cut?"not shown":"shown"));
       seen[want?"heights":"noHeights"]++; seen[cut?"cut":"noCut"]++; });
@@ -496,7 +496,7 @@ try{
       if(drawn!==want) bad.push(fmtClock(t)+": the label "+(want?"not drawn":"drawn")+" in phase "+curPhase);
       if(drawn){ if(!/derived/.test(it.el.innerHTML)) bad.push(fmtClock(t)+': its words without "derived"');
         if(!/derived/.test(it.aria||"")) bad.push(fmtClock(t)+': its name without "derived"');
-        if(it.el.innerHTML.indexOf(plateauStrength("al").toLocaleString())<0) bad.push(fmtClock(t)+": its figure is not the reading"); }
+        if(it.el.innerHTML.indexOf(plateauStrength("al").toLocaleString("en-GB"))<0) bad.push(fmtClock(t)+": its figure is not the reading"); }
       seen[want?"on":"off"]++; });
     if(bad.length||!seen.on||!seen.off) throw new Error("plateau label: "+bad.join("; ")+" (seen "+JSON.stringify(seen)+")");
     console.log("plateau label: drawn and marked derived, words and name, at "+seen.on+" of 7 clocks (phases 0-6); not drawn at "+seen.off+" OK"); }
@@ -989,6 +989,33 @@ try{
     setCommandView("none"); updateVisibility();
     if(bad.length||!links||!hid||!rings||!noRing) throw new Error("readings, plan links and the ring: "+(bad.slice(0,4).join("; ")||"a case never met")+" ("+links+" links, "+hid+" hidden, "+rings+" rings, "+noRing+" none)");
     console.log("Whose eyes, plan links and the selection ring (question 170 (b)): "+links+" links at the reading's positions, "+hid+" hidden with their formation; "+rings+" rings, "+noRing+" withheld OK"); }
+
+  /* the review of 22c77ac: the dossier's pill for a corps or column is its formations' reading (aggReading) with their count as its reason,
+     never the corps' own rule at its mean position; a formation's is the drawing's (drawnKnow) with knowReason's reason. Every 30 minutes for
+     both readings, every aggregate with formations on the field */
+  { let nA=0, nWhy=0; const bad=[];
+    ["fr","al"].forEach(cv=>{ setCommandView(cv);
+      for(let t=T_MIN;t<=T_MAX;t+=30){ setClock(t,{instant:true,camera:false});
+        Object.keys(FORMATIONS).filter(id=>!FORMATIONS[id].track&&leavesOf(id,[]).some(k=>posNow(k))).forEach(id=>{ nA++;
+          const P=pillReading(id), A=aggReading(id);
+          if(P.kn!==A.know) bad.push(cv+" "+fmtClock(t)+" "+id+": the pill reads "+P.kn+", its formations "+A.know);
+          const wantWhy=!A.whole&&(A.know==="unknown"||A.know==="uncertain");
+          if(wantWhy!==!!P.why||(P.why&&P.why.indexOf(String(A.n))<0)) bad.push(cv+" "+fmtClock(t)+" "+id+": reason "+JSON.stringify(P.why)+" for "+A.k+" of "+A.n+" known");
+          if(P.why) nWhy++; });
+        Object.keys(units).filter(id=>posNow(id)).forEach(id=>{ const P=pillReading(id); if(P.kn!==drawnKnow(id)||((P.kn==="unknown"||P.kn==="uncertain")&&!P.why)) bad.push(cv+" "+fmtClock(t)+" "+id+": the formation's pill "+P.kn+" without its reason"); }); } });
+    setCommandView("none"); setClock(T_MIN,{instant:true,camera:false});
+    if(bad.length||!nA||!nWhy) throw new Error("the dossier's reading pill: "+(bad.slice(0,4).join("; ")||"no aggregate with a reason met"));
+    console.log("Whose eyes, the dossier's pill: "+nA+" corps and column readings, each its formations' reading, "+nWhy+" with their count as the reason OK"); }
+
+  /* roadmap step 5 (R-4): the legend's control hint is KEYS's hint rows, in their order, and the shell's fallback the landscape's; and a map
+     item's short name (question 172's message) is its own name, not its accessible name's first word */
+  { const H=(land)=>KEYS.filter(r=>r.hint&&(land?!r.paper:!r.land)).sort((a,b)=>a.hi-b.hi).map(r=>r.hint).join(" \u00b7 ");
+    const shell=require('fs').readFileSync('shell.html','utf8'), m=/id="lg-hint">([^<]*)</.exec(shell), dec=x=>x.replace(/&middot;/g,"\u00b7");
+    if(legendHint(true)!==H(true)||legendHint(false)!==H(false)||!/wheel/.test(legendHint(true))||/scroll/.test(legendHint(true))) throw new Error("the legend's hint is not KEYS's: "+legendHint(true));
+    if(!m||dec(m[1])!==legendHint(true)) throw new Error("shell.html's legend hint is not the landscape's KEYS hint: "+(m?m[1]:"none"));
+    const ev=EVENTS[0], it={pick:{kind:"e",id:ev.id},el:{getAttribute:()=>"Event, 07:00: x",textContent:""}};
+    if(mlShortName(it)!==ev.n||mlShortName({pick:{kind:"f",id:"sthilaire"},el:it.el})!==FORMATIONS.sthilaire.name) throw new Error("a map item's short name is not its own: "+mlShortName(it));
+    console.log("the legend's hint from KEYS ("+KEYS.filter(r=>r.hint).length+" rows), the shell's fallback the same; the map items' short names OK"); }
 
   /* Stage 5F (docs/STAGE5_SPEC.md section E.4; decision 93): the ordered routes, dry run. Off by default; on at 09:30, every column; in
      phase 0 with the arrows drawn, not the four the axis arrows draw; with Saint-Hilaire selected, his two columns; off, nothing left */

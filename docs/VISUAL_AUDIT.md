@@ -4,7 +4,7 @@ Written against the verified correction-pass build (md5 `672aff9f…`), before S
 since fixed high-impact problem 1 (rendering faults), the first-run text and card overlap (parts of
 problems 2 and 3), the worst label collisions (interim, part of 4), the Watch-mode selection and the
 dossier units (medium items), and added the performance baseline. See `CHANGELOG.md` for what was done
-and verified. Stages 1-7 below have since been done too (merged, #6 to #47); the final audit (`docs/FINAL_AUDIT.md`, §3) measured
+and verified. Stages 1-7 below have since been done too (merged, #7 to #47); the final audit (`docs/FINAL_AUDIT.md`, §3) measured
 what of this plan remains, and the living plan is `docs/ROADMAP.md`. Figures quoted here are as audited then.
 
 ## The short answer
