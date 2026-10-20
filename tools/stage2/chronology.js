@@ -692,7 +692,8 @@ if(require.main===module&&process.argv.includes("--locate")){
    reviewed against the new text. */
 if(require.main===module&&process.argv.includes("--rehash")){
   const have=citeTexts(X), want=citeTextFile(), ch=Object.keys(have).filter(c=>want[c]!==have[c]), gone=Object.keys(want).filter(c=>!(c in have));
-  ch.forEach(c=>console.log("  changed or new: "+c)); gone.forEach(c=>console.log("  gone: "+c));
+  /* each changed cite with the text it now resolves to, for the review the record stands for (the review of b588b37) */
+  const L=extract(X).filter(s=>!s.weak); ch.forEach(c=>{ const r=resolve(L,c); console.log("  changed or new: "+c+"\n     now: "+(r.err?r.err:short(r.s.text,240))); }); gone.forEach(c=>console.log("  gone: "+c));
   console.log("chronology-text: "+Object.keys(have).length+" cites and allowances, "+ch.length+" changed or new, "+gone.length+" gone");
   if(process.argv.includes("--write")){ const o={note:"tools/stage2/chronology-text.json (roadmap step 5, check:chronology's L9): each REVIEW_CITES cite's and ALLOW_TIMED entry's statement text, hashed (sha1, 12 hex digits), as its row or entry was last reviewed. Written by node tools/stage2/chronology.js --rehash --write; never by hand.",texts:{}};
     Object.keys(have).sort().forEach(c=>o.texts[c]=have[c]); fs.writeFileSync(TEXT_PATH,JSON.stringify(o,null,1)+"\n"); console.log("written: "+TEXT_PATH); }

@@ -196,6 +196,23 @@ final build. Every changed declaration, with was, is and why:
   their commander as the rows above do (Claparède under Suchet's division, step 2's hand-on).
 - check:chronology: the lede's cite (kamensky@6, "lede 3 @11:00") reviewed against the new text (its hour unchanged) and L9's record rehashed.
 
+**The review of group 3** (an independent reviewer, read-only, on `b588b37`; it rebuilt both builds, ran the node suites in both trees and
+found every one passing; it ran no browser). Its findings, each fixed in the commit after group 4's, or recorded:
+- (1, medium-high) The context-loss case, idle, no longer exercises the path its bound was set for (a geometry drawn before the loss,
+  disposed after it), nor a loss while the page is busy; with a count of 0, the bound of 40 lets warnings through unseen. The assertion's words
+  are unchanged and the move is disclosed, but the case was moved off the scenario that failed CI. Not changed without the owner's word (a
+  bound): the clock step after the restore measured again, 248 warnings on each of three runs (deterministic); question 212 recommends that
+  sub-case with a bound of 248.
+- (2) Question 212 was cited before the questions file held it: committed with group 4.
+- (3) The ground shader's elevation tints (`vec3(0.90+0.16*e, ...)`, components that are expressions) were still outside the palette rule:
+  moved into `LAND_COL.glsl.elev` (base and slope; the shader computes base + slope x e, the same arithmetic), and the rule reads a vector whose
+  components begin with a number (a splat such as `vec3(1.0)` or `vec3(2.4)`, gamma and thresholds, is not a colour and not matched).
+- (4) The glyph coverage, through lang-scan, no longer read `data-slow`, the start-up guard's 20 s status line: `data-slow` is a visitor
+  attribute in `tools/lang-scan.js` (also judged by the overclaim scan now). The inline guard's strings are console messages.
+- (5) Records: `tools/audit/size.js`'s note gives the old shortfall exactly (96,643: fonts.css less its 9-byte marker, plus the 9 joining
+  newlines); terrain-test.js's crop count reads the faces whose class is field (112,436: 47/28/15/11%), and its comment says what FACE.crop is.
+- (6) `--rehash` prints each changed cite with the text it now resolves to, for the review the record stands for.
+
 ## 2026-10 · Roadmap step 4b, part C: questions 203 and 204 decided; 203 applied
 
 **Status: done on `claude/adoring-gauss-ubfas9` (PR #55); merged (#55). The build changed: `austerlitz-command-map.html` 2,182,537 bytes, md5

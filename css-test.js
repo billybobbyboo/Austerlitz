@@ -267,12 +267,13 @@ if(cerrs) process.exitCode=1;
    multiplies), and black where the canvas is compositing "destination-in" (the last globalCompositeOperation set before it in its
    declaration), an alpha mask, where only the alpha counts; the six-digit hex keeps the rule's exemption before step 1 (white written
    FFFFFF or ffffff, nothing else), so nothing that rule flagged passes now. Since roadmap step 5 (the step-1 hand-on) GLSL's vec3 and
-   vec4 literals of three or four numbers in shader source are read too (until step 5 they were not: the ground shader's crop tints,
+   vec4 literals of three or four numbers (since the review of b588b37 also components that are expressions beginning with a number, the
+   elevation tints') in shader source are read too (until step 5 they were not: the ground shader's crop tints,
    frost and viewshed tints, now LAND_COL.glsl); a luma weight (the vector a dot() takes with a colour) is not a colour. */
 {
   const acorn=require('acorn'), perr=[];
   const ALLOW={"world.js":["COVER_COL","LAND_COL","WATER_COL"],"app.js":["LIGHT","LIGHT_RIG","SPRITE_COL","KIT"],"symbols.js":[]};
-  const LIT=/vec[34]\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*(?:,\s*[\d.]+\s*)?\)|0x[0-9A-Fa-f]{6}\b|#(?:[0-9A-Fa-f]{8}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3,4})\b|rgba?\(\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?|hsla?\(\s*\d|THREE\.Color\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*\)|\.set(?:RGB|HSL)\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*\)/g;
+  const LIT=/vec[34]\(\s*-?[\d.][^,()]*,\s*-?[\d.][^,()]*,\s*-?[\d.][^,()]*(?:,\s*-?[\d.][^,()]*)?\)|0x[0-9A-Fa-f]{6}\b|#(?:[0-9A-Fa-f]{8}|[0-9A-Fa-f]{6}|[0-9A-Fa-f]{3,4})\b|rgba?\(\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?\s*,\s*\d+(?:\.\d+)?|hsla?\(\s*\d|THREE\.Color\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*\)|\.set(?:RGB|HSL)\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*\)/g;
   /* a literal's r, g, b (0-255), or null where it is not read (hsl, setHSL: never exempt) */
   const rgbOf=x=>{ let m;
     if((m=/^(?:0x|#)([0-9A-Fa-f]{6})(?:[0-9A-Fa-f]{2})?$/.exec(x))) return [0,2,4].map(i=>parseInt(m[1].substr(i,2),16));

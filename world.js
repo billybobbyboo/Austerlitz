@@ -680,7 +680,10 @@ var LAND_COL={
      in atlasShader's source, the same numbers): the field's crop tints (crops 1-3, multiplied), the frost the hollows take on, and the
      "Whose eyes?" viewshed's tints (in sight, in sight under the fog, out of sight: each a multiplier and an addition) */
   glsl:{crop:[[1.025,0.99,0.97],[0.98,1.015,0.985],[0.99,1.01,0.995]], frost:[0.70,0.73,0.78],
-    vs:[[[0.86,0.88,0.70],[0.20,0.17,0.03]],[[0.60,0.64,0.70],[0.14,0.15,0.17]],[[0.40,0.42,0.52],[0.035,0.055,0.10]]]}
+    vs:[[[0.86,0.88,0.70],[0.20,0.17,0.03]],[[0.60,0.64,0.70],[0.14,0.15,0.17]],[[0.40,0.42,0.52],[0.035,0.055,0.10]]],
+    /* the elevation tint, base + slope x e (the point's relative elevation), on the paper map and on the landscape (the review of b588b37:
+       until then vec3 expressions in the shader's source, which the palette rule did not read) */
+    elev:{paper:[[0.90,0.92,0.98],[0.16,0.10,-0.20]], land:[[0.90,0.90,0.92],[0.14,0.14,0.12]]}}
 };
 /* a GLSL vec3 from three numbers, each written as a float */
 function glslV3(a){ return "vec3("+a.map(function(v){ var t=String(v); return /[.e]/.test(t)?t:t+".0"; }).join(",")+")"; }
@@ -1015,7 +1018,7 @@ var GROUND_FRAG_MAIN=[
   "  if(A.w>0.15&&A.w<0.55) t*=1.04;",
   "  float ao=clamp(1.0-curv*0.40,0.62,1.10), e=vGnd.x, paper=step(1.5,uMode);",
   "  vec3 bc=gPalOf(gCls);",
-  "  bc*=paper>0.5?vec3(0.90+0.16*e,0.92+0.10*e,0.98-0.20*e):vec3(0.90+0.14*e,0.90+0.14*e,0.92+0.12*e);",
+  "  bc*=paper>0.5?("+glslV3(LAND_COL.glsl.elev.paper[0])+"+"+glslV3(LAND_COL.glsl.elev.paper[1])+"*e):("+glslV3(LAND_COL.glsl.elev.land[0])+"+"+glslV3(LAND_COL.glsl.elev.land[1])+"*e);",
   "  if(gCls!=3.0&&gCls!=4.0){ bc*=t;",
   "    if(gCls==0.0) bc*=gCrop==1.0?"+glslV3(LAND_COL.glsl.crop[0])+":gCrop==2.0?"+glslV3(LAND_COL.glsl.crop[1])+":gCrop==3.0?"+glslV3(LAND_COL.glsl.crop[2])+":vec3(1.0); }",
   "  float hollow=max(0.0,0.94-ao)*2.4, sh=vColor.r;",

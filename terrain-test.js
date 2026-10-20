@@ -152,12 +152,13 @@ if(reliefBad||!order.every(x=>x)||!down||floatBad) process.exitCode=1;
 console.log("  vertical exaggeration (derived): "+G.EXAG.toFixed(1)+"x");
 
 /* --- crop distribution: the field must actually contain all four holdings. Since roadmap step 5 (docs/FINAL_AUDIT.md T-9 (d)) counted on the
-   drawn ground's own faces (FACE.crop, set by buildFaceFacts through world.js's fieldStrip, on the ground groundGeometry built above);
-   until step 5 the field pattern's hash and thresholds were typed again here and sampled on a grid of their own --- */
+   ground's faces as buildFaceFacts samples them (FACE.crop, through world.js's own fieldStrip, the table the ground shader draws per point
+   from; on the ground groundGeometry built above), and since the review of b588b37 only on the faces whose class is field (FACE.cover 0,
+   COVER_KEYS); until step 5 the field pattern's hash and thresholds were typed again here and sampled on a grid of their own --- */
 (function(){
-  const counts=[0,0,0,0], C=FACE.crop; let field=0;
-  for(let f=0;f<C.length;f++){ const k=C[f]; if(k>=0&&k<=3){ counts[k]++; field++; } }
+  const counts=[0,0,0,0], C=FACE.crop, K=FACE.cover; let field=0;
+  for(let f=0;f<C.length;f++){ if(K[f]!==0) continue; const k=C[f]; if(k>=0&&k<=3){ counts[k]++; field++; } }
   const pct=counts.map(c=>Math.round(100*c/field));
-  console.log("crop distribution (stubble/plough/pasture/sowing): "+pct.join("/")+" % of "+field+" faces");
+  console.log("crop distribution (stubble/plough/pasture/sowing): "+pct.join("/")+" % of "+field+" field faces");
   if(!field||counts.some(c=>c===0)) { console.log("  ! a crop type never occurs"); process.exitCode=1; }
 })();

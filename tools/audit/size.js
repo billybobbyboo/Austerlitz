@@ -35,7 +35,8 @@ for(const f of FILES){
 }
 out.css={bytes:B(fs.readFileSync(path.join(ROOT,"style.css"),"utf8"))};
 /* roadmap step 5 (the step-1 hand-on): fonts.css is a part too, put in at shell.html's FONTS marker (decision 141); until step 5 the
-   parts fell 96,642 bytes short of the build (the file, less the 9-byte marker counted in shell.html) */
+   parts fell 96,643 bytes short of the build (fonts.css, 96,643 bytes, less its 9-byte marker counted in shell.html, plus the 9 newlines
+   that join the scripts, not counted either; ROADMAP's "96,642" was off by one) */
 out.fonts={bytes:B(fs.readFileSync(path.join(ROOT,"fonts.css"),"utf8"))};
 out.shell={bytes:B(fs.readFileSync(path.join(ROOT,"shell.html"),"utf8"))-B("/*CSS*/")-B("/*JS*/")-B("/*FONTS*/")};
 const dbg=out.appTop.find(t=>/AUSTERLITZ_DEBUG/.test(t.name));

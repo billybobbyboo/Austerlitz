@@ -78,7 +78,8 @@ battalions' strength. *Default:* (a), unchanged.
 **212. The context-loss case and `CTX_DELETES` (group 3).** The case now loses the context with the page idle: 0 "does not belong to this
 context" warnings on three runs, deterministic, and the bound 40 untouched. But the case then no longer exercises a geometry drawn before the
 loss and disposed after it (three r128's path the warning comes from). Options: (a) as now; (b) add a clock step after the restore (a visitor's
-action) so that path runs on every run: 248 warnings on the one run made (whether that count is the same on every run was not measured),
-which needs `CTX_DELETES` raised (your word);
-(c) (a), and lower `CTX_DELETES` to 0 to hold the determinism (your word: a bound changed). *Recommendation:* (b): the case then tests the
-restored context under a visitor's step as well, at a count that no longer varies. *Default:* (a).
+action) so that path runs on every run: 248 warnings on each of three runs (deterministic), which needs `CTX_DELETES` raised to 248 (your
+word);
+(c) (a), and lower `CTX_DELETES` to 0 to hold the determinism (your word: a bound changed). *Recommendation:* (b) with a bound of 248, the count measured: the case
+then tests the restored context under a visitor's step as well, at a count that no longer varies (group 3's review asked for it: the idle
+case alone no longer exercises the path its bound was set for). *Default:* (a).

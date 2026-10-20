@@ -41,7 +41,8 @@ module.exports=function langScan(ROOT){
   const DEV=new Set(["AUSTERLITZ_DEBUG"]);
   const CODE_CALL=/^(querySelector|querySelectorAll|getElementById|getElementsByClassName|getElementsByTagName|closest|matches|addEventListener|removeEventListener|createElement|createElementNS|getAttribute|removeAttribute|hasAttribute|getContext|setProperty|getPropertyValue|matchMedia|dispatchEvent|getExtension|getItem|setItem|removeItem)$/;
   const CLASS_CALL=/^(add|remove|toggle|contains)$/;   /* code only on a classList */
-  const VISITOR_ATTR=/^(aria-label|title|alt|aria-description|aria-roledescription|placeholder|aria-valuetext)$/;
+  /* data-slow: the start-up guard's 20 s status line, which AUS_BOOT shows (roadmap step 5, the review of b588b37) */
+  const VISITOR_ATTR=/^(aria-label|title|alt|aria-description|aria-roledescription|placeholder|aria-valuetext|data-slow)$/;
   const norm=t=>String(t).replace(/[­​-‍⁠]/g,"").replace(/\s+/g," ").trim();
   const records=[], declared=new Set();
   const keyName=k=>k.type==="Identifier"?k.name:String(k.value);
