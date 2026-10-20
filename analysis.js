@@ -27,12 +27,12 @@ var ANALYSIS = [
 { id:"commitment", n:"The commitment of the Allied left", at:"ph:1", moments:["ev:telnitz","ev:sokolnitz","ev:telnitz-retaken"],
   forms:["buxhowden","kienmayer","dok","lang","prz"],
   feats:["telnitz","sokolnitz","augezd","goldbach"],
-  text:"Between 07:00 and 09:00 the three left-hand columns and Kienmayer's advance guard descended into the Goldbach villages and fed themselves into the fight for them. Each column that went down was a column no longer on the plateau. This map reads the Allies as having thinned the centre of their position themselves by the time Soult moved; Stutterheim and Thiebault have the 4th Column still on the plateau when the French appeared."},
+  text:"Between 07:00 and 09:00 the three left-hand columns and Kienmayer's advance guard descended into the Goldbach villages and fed themselves into the fight for them. Each column that went down was a column no longer on the plateau. This map reads the Allies as having thinned the centre of their position themselves by the time Soult moved; Stutterheim and Thiébault have the 4th Column still on the plateau when the French appeared."},
 
 { id:"pratzen", n:"The attack on the Pratzen", at:"ev:soult", moments:["ev:decision","ev:soult","ev:pratzen-village","ev:face-about","ev:kamensky","ev:pratzeberg"],
   forms:["sthilaire","vandamme","c_iv","milo","kollo","ahq"],
   feats:["pratzen","pratzeberg","vinohrady","puntowitz","girzikowitz"],
-  text:"Saint-Hilaire and Vandamme had been standing in fog in the Goldbach valley, invisible from the heights. At about 08:45 they climbed the western slope and struck the 4th Column, which was still on the plateau. The disposition set every column off at seven; Stutterheim has the 4th Column ordered off only toward eight, to give the left wing's columns time, and Schönhals has it leave half an hour after the first three; Mikhailovsky-Danilevsky has it held up by Liechtenstein's cavalry crossing its line of march and then by Kutuzov standing still, though the disposition ordered him forward. The fight for the two summits lasted about two hours in Stutterheim and Schönhals, three in Thiebault; on this map the plateau is French from end to end by about 11:00."},
+  text:"Saint-Hilaire and Vandamme had been standing in fog in the Goldbach valley, invisible from the heights. At about 08:45 they climbed the western slope and struck the 4th Column, which was still on the plateau. The disposition set every column off at seven; Stutterheim has the 4th Column ordered off only toward eight, to give the left wing's columns time, and Schönhals has it leave half an hour after the first three; Mikhailovsky-Danilevsky has it held up by Liechtenstein's cavalry crossing its line of march and then by Kutuzov standing still, though the disposition ordered him forward. The fight for the two summits lasted about two hours in Stutterheim and Schönhals, three in Thiébault; on this map the plateau is French from end to end by about 11:00."},
 
 { id:"cut", n:"The cutting of the Allied army", at:"ev:pratzeberg", moments:["ev:pratzeberg","ev:buxhowden-blind"], cam:[-75,38,42,7,8,12],
   forms:["sthilaire","vandamme","buxhowden","dok","lang","prz","constantine","bag"],
@@ -42,7 +42,7 @@ var ANALYSIS = [
 { id:"guard", n:"The Russian Guard counterattack", at:"ph:6", moments:["ev:guard-attack","ev:guard-broken","ev:hq-forward"],
   forms:["constantine","rg_inf","rg_cav","vandamme","guard_cav","guard_inf","drouet"],
   feats:["vinohrady"],
-  text:"Grand Duke Constantine threw the Guard, which Stutterheim calls the reserve of the Allied right, at Vandamme on the Old Vineyards. In Mikhailovsky-Danilevsky the Guard infantry overthrew the first two French columns with the bayonet; in Schönhals the Life Guard Horse cut down a battalion of the 4th Line and a light battalion of the 24th and took the 4th's eagle, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessieres brought up the Guard cavalry and Rapp charged with the chasseurs and Mamelukes; a division of Bernadotte's corps, Drouet's by his own memoir as Sokolov quotes it, met the attack, though Thiebault counts I Corps' 2nd division among the troops that took no part. Prince Repnin was taken prisoner."},
+  text:"Grand Duke Constantine threw the Guard, which Stutterheim calls the reserve of the Allied right, at Vandamme on the Old Vineyards. In Mikhailovsky-Danilevsky the Guard infantry overthrew the first two French columns with the bayonet; in Schönhals the Life Guard Horse cut down a battalion of the 4th Line and a light battalion of the 24th and took the 4th's eagle, which an Allied official report, first printed in the Materialien of 1806, calls the only trophy of the day; who took it is disputed (the Life Guard Horse in Stutterheim and Schönhals, the Chevalier Guards in Marbot). Bessières brought up the Guard cavalry and Rapp charged with the chasseurs and Mamelukes; a division of Bernadotte's corps, Drouet's by his own memoir as Sokolov quotes it, met the attack, though Thiébault counts I Corps' 2nd division among the troops that took no part. Prince Repnin was taken prisoner."},
 
 { id:"north", n:"Lannes, Murat and Bagration", at:"ph:5", moments:["ev:blasowitz"],
   forms:["c_v","caffarelli","suchet","santon","c_cav","kellermann","nansouty","dhautpoul","bag","lich"],
@@ -63,7 +63,7 @@ var ANALYSIS = [
 /* ---- what each headquarters knew, saw, ordered and expected ---- */
 var COMMAND = {
 fr:{
- 0:[["saw","doc","The Allied bivouac fires, which he rode out at one in the morning to see from his posts (the 30th Bulletin); Thiebault has reports of the Allied left's movement through the night, judged by the noise of its artillery."],
+ 0:[["saw","doc","The Allied bivouac fires, which he rode out at one in the morning to see from his posts (the 30th Bulletin); Thiébault has reports of the Allied left's movement through the night, judged by the noise of its artillery."],
     ["knew","doc","That the Allied army was more numerous and that the Tsar's staff, not Kutuzov, was directing it."],
     ["didnt","inf","The exact column boundaries and the order of march. Inferred: French accounts describe the Allied movement as read off the ground, not from captured orders."],
     ["ordered","doc","The army placed by seven in the morning as the dispositions of 1 December set out, Soult's three divisions beyond the ravine, ready for an advance in echelons, right wing forward, and held there until new orders, to be given to the marshals at his bivouac."],
@@ -72,17 +72,17 @@ fr:{
     ["knew","doc","That Davout's detachment had reached Raigern overnight and would come up to the Goldbach during the morning."],
     ["ordered","doc","The right to give ground slowly and hold the villages."]],
  2:[["saw","doc","Allied columns descending off the plateau in strength."],
-    ["knew","anec","Soult's answer that his troops needed twenty minutes at most to reach the heights: a memoir anecdote, as Thiebault tells it; Ségur tells the same exchange with ten minutes."],
-    ["ordered","anec","A further quarter of an hour's delay before releasing the attack, the signal given only once an aide reported the heights abandoned (a little prematurely, Thiebault adds): the same memoir anecdote."]],
+    ["knew","anec","Soult's answer that his troops needed twenty minutes at most to reach the heights: a memoir anecdote, as Thiébault tells it; Ségur tells the same exchange with ten minutes."],
+    ["ordered","anec","A further quarter of an hour's delay before releasing the attack, the signal given only once an aide reported the heights abandoned (a little prematurely, Thiébault adds): the same memoir anecdote."]],
  3:[["saw","doc","The crest of the Pratzen, once the mist lifted, and the 4th Column still on it."],
     ["didnt","inf","How strong the force still on the plateau was. Inferred: the attack went in with Soult's two divisions; the reserve, the Guard and the grenadiers, was not committed (the 30th Bulletin; Schönhals); whether Bernadotte's corps moved with it is disputed."],
     ["ordered","doc","Soult to take the Pratzeberg and Stare Vinohrady."]],
  4:[["knew","doc","That Saint-Hilaire was in difficulty on the Pratzeberg."],
     ["ordered","inf","Bernadotte's corps forward between Soult and Lannes, toward the heights by Blasowitz (Stutterheim); no dated order to it is printed, and the hour is disputed, from the start of Soult's attack (Mikhailovsky-Danilevsky) to about noon (Ségur). Lannes to advance in the north."]],
- 5:[["saw","inf","The northern battle from the Zuran. Inferred from the model's terrain, not documented: most of the Olmutz road sector, including the Santon, is in view from that mound."],
+ 5:[["saw","inf","The northern battle from the Zuran. Inferred from the model's terrain, not documented: most of the Olmütz road sector, including the Santon, is in view from that mound."],
     ["ordered","doc","The cavalry reserve committed against the Allied horse."]],
  6:[["saw","doc","The Russian Guard attack on Stare Vinohrady."],
-    ["ordered","doc","Bessieres to commit the Guard cavalry."],
+    ["ordered","doc","Bessières to commit the Guard cavalry."],
     ["knew","doc","That the plateau, and with it the centre of the enemy army, was his."]],
  7:[["knew","doc","That Buxhowden's columns were still fighting in the villages, unaware of what had happened behind them."],
     ["ordered","doc","The centre to wheel south onto their rear, supported by the Guard and the grenadiers."]],
@@ -106,7 +106,7 @@ al:{
  5:[["knew","doc","That Bagration could not force the Santon and that Blasowitz had fallen."],
     ["ordered","doc","A withdrawal on Rausnitz, covering the Allied right."]],
  6:[["ordered","doc","Constantine to commit the Russian Imperial Guard against the French on Stare Vinohrady."],
-    ["didnt","inf","That the French Guard was in hand and uncommitted close by, Napoleon near Blasowitz ahead of his reserve (Schönhals). Inferred from the speed with which Bessieres answered."]],
+    ["didnt","inf","That the French Guard was in hand and uncommitted close by, Napoleon near Blasowitz ahead of his reserve (Schönhals). Inferred from the speed with which Bessières answered."]],
  7:[["knew","doc","From about noon, that the plateau was lost and the army was cut in two."],
     ["didnt","doc","On the left, the scale of it. Buxhowden's columns were still attacking westward while being enveloped."]],
  8:[["ordered","inf","A retreat of the left. No order of the day naming its route has been read (the disposition's retreat for the left ran by the Turas wood, Kobelnitz and Puntowitz); that it went south over the Augezd defile and the meres is inferred from the accounts of the end (Schönhals)."],
@@ -180,7 +180,7 @@ al:{
     route:[[335,229],[293,245],[256,265],[207,277]]},
    {n:"5th Column - Liechtenstein", forms:["lich"], obj:[288,145], ord:"Cavalry. Cover the right of the attacking columns between Blasowitz and the plateau.",
     route:[[296,243],[316,218],[308,177],[288,145]]},
-   {n:"Advance Guard of the Right - Bagration", forms:["bag"], obj:[253,73], ord:"Hold the Olmutz highway, pin the French left, and link to Liechtenstein.",
+   {n:"Advance Guard of the Right - Bagration", forms:["bag"], obj:[253,73], ord:"Hold the Olmütz highway, pin the French left, and link to Liechtenstein.",
     route:[[315,41],[292,52],[273,62],[253,73]]},
    {n:"Reserve - Constantine", forms:["rg_inf", "rg_cav"], obj:[404,198], ord:"The Imperial Guard to remain behind Krzenowitz, in hand.",
     route:[[417,198],[380,195],[347,192]]}
@@ -209,7 +209,7 @@ fr:{
     route:[[204,218],[228,236],[254,260],[271,274],[285,287]]},
    {n:"The second axis - Vandamme", forms:["vandamme"], obj:[309,207], ord:"Climb the northern shoulder of the plateau and take the Old Vineyards, linking the assault to Lannes.",
     route:[[221,179],[236,191],[267,200],[309,207]]},
-   {n:"The pivot - Lannes and Murat", forms:["suchet", "caffarelli", "santon"], obj:[304,46], ord:"Hold the Olmutz highway with the Santon fortified and entrenched. Advance only when the centre has gone in.",
+   {n:"The pivot - Lannes and Murat", forms:["suchet", "caffarelli", "santon"], obj:[304,46], ord:"Hold the Olmütz highway with the Santon fortified and entrenched. Advance only when the centre has gone in.",
     route:[[225,97],[247,75],[276,61],[304,46]]},
    {n:"The reserve - the Guard and the grenadiers", forms:["guard_inf", "guard_cav", "c_gren"], obj:[300,211], ord:"The Guard and the grenadiers the reserve with the Emperor (the 30th Bulletin), the grenadiers under Lannes's orders in the dispositions of 1 December. The route drawn is this map's.",
     route:[[189,161],[230,185],[263,201],[300,211]]},
@@ -277,15 +277,15 @@ var EVENTS = [
 
 {id:"decision", t:[505,525], n:"Napoleon releases Soult against the heights", side:"fr", kind:"decision",
  p:[177,134], forms:["gqg","c_iv","sthilaire","vandamme"], cf:"B", claim:"est",
- why:"Asked how long his troops needed to crown the plateau, Soult is reported to have answered twenty minutes at most (Thiebault) or ten (Ségur), and Napoleon to have waited a further quarter of an hour, giving the signal only once an aide reported the heights abandoned (a little prematurely, Thiebault adds). A memoir anecdote. The hour is disputed: about eight in Ségur, the aide's report at half past eight in Thiebault, the French columns moving about nine in the Austrian accounts."},
+ why:"Asked how long his troops needed to crown the plateau, Soult is reported to have answered twenty minutes at most (Thiébault) or ten (Ségur), and Napoleon to have waited a further quarter of an hour, giving the signal only once an aide reported the heights abandoned (a little prematurely, Thiébault adds). A memoir anecdote. The hour is disputed: about eight in Ségur, the aide's report at half past eight in Thiébault, the French columns moving about nine in the Austrian accounts."},
 
 {id:"soult", t:[525,555], n:"Saint-Hilaire and Vandamme climb the slope", side:"fr", kind:"attack",
  p:[262,262], forms:["sthilaire","vandamme"], cf:"C", claim:"fact",
- why:"Two divisions that had been standing in fog, invisible from the crest, climb onto a plateau the 4th Column has not yet left (Stutterheim; Schönhals; Thiebault)."},
+ why:"Two divisions that had been standing in fog, invisible from the crest, climb onto a plateau the 4th Column has not yet left (Stutterheim; Schönhals; Thiébault)."},
 
-{id:"pratzen-village", t:540, n:"Thiebault's brigade clears Pratzen village", side:"fr", kind:"capture",
- p:[276,243], forms:["sthilaire"], tolKm:1.5, tolWhy:"Thiebault\u2019s brigade is not plotted separately: the marker is the village it cleared, and at about 09:00 the division\u2019s plotted centre is still climbing the western slope below it", cf:"C", claim:"est",
- why:"Opens the way to the Pratzeberg. No source read gives its hour: the Allied accounts have the 4th Column's advance guard occupy the village as the French moved off, and Thiebault expected only posts there."},
+{id:"pratzen-village", t:540, n:"Thiébault's brigade clears Pratzen village", side:"fr", kind:"capture",
+ p:[276,243], forms:["sthilaire"], tolKm:1.5, tolWhy:"Thiébault\u2019s brigade is not plotted separately: the marker is the village it cleared, and at about 09:00 the division\u2019s plotted centre is still climbing the western slope below it", cf:"C", claim:"est",
+ why:"Opens the way to the Pratzeberg. No source read gives its hour: the Allied accounts have the 4th Column's advance guard occupy the village as the French moved off, and Thiébault expected only posts there."},
 
 {id:"face-about", t:555, n:"Kutuzov orders the 4th Column to face about", side:"al", kind:"decision",
  p:[290,237], forms:["ahq","milo","kollo"], cf:"C", claim:"fact",
@@ -303,11 +303,11 @@ var EVENTS = [
 {id:"pratzeberg", t:660, n:"The Pratzeberg is firmly in French hands", side:"fr", kind:"capture",
  p:[285,289], forms:["sthilaire","legrand"], cf:"B", claim:"disputed",
  why:"From here the French centre holds the high ground above the Goldbach valley and, in time, comes down into the back of the Allied columns fighting in it.",
- dispute:"When the Pratzeberg was firmly French: 11:00 on this map, Ségur's 'towards eleven'; Stutterheim and Schönhals have the plateau fight last about two hours from about 09:00, Thiebault three, with no start given."},
+ dispute:"When the Pratzeberg was firmly French: 11:00 on this map, Ségur's 'towards eleven'; Stutterheim and Schönhals have the plateau fight last about two hours from about 09:00, Thiébault three, with no start given."},
 
 {id:"blasowitz", t:675, n:"The French take Blasowitz from the Russian Guard", side:"fr", kind:"capture",
  p:[296,147], forms:["caffarelli","rivaud","rg_inf"], tolKm:1.3, tolWhy:"division-level: the marker is the village; Caffarelli\u2019s plotted centre lies about 1.2 km from it, within the division\u2019s frontage", cf:"C", claim:"est",
- why:"The Russian Guard's jägers held the village in Stutterheim, Schönhals and Mikhailovsky-Danilevsky; the Chevalier Guard's history instead has the French occupy it without hindrance. Its attackers are disputed: Bernadotte's corps, Rivaud on the left and Drouet on the right, in Stutterheim; the 1st division of Lannes's V Corps in Thiebault; part of Rivaud's division ordered onto it with Caffarelli and Kellermann in Mikhailovsky-Danilevsky; Caffarelli's 13e Legere in Sokolov; Marbot has Lannes throw the Russians back from the Santon as far as Blasowitz. Bagration's separation is a later action: Schönhals has his battalions thrown into disorder after an attack on his left toward noon, when the Guards had given way, then gathered again, somewhat, on the height by Rausnitz."},
+ why:"The Russian Guard's jägers held the village in Stutterheim, Schönhals and Mikhailovsky-Danilevsky; the Chevalier Guard's history instead has the French occupy it without hindrance. Its attackers are disputed: Bernadotte's corps, Rivaud on the left and Drouet on the right, in Stutterheim; the 1st division of Lannes's V Corps in Thiébault; part of Rivaud's division ordered onto it with Caffarelli and Kellermann in Mikhailovsky-Danilevsky; Caffarelli's 13e Légère in Sokolov; Marbot has Lannes throw the Russians back from the Santon as far as Blasowitz. Bagration's separation is a later action: Schönhals has his battalions thrown into disorder after an attack on his left toward noon, when the Guards had given way, then gathered again, somewhat, on the height by Rausnitz."},
 
 {id:"guard-attack", t:[660,780], n:"The Russian Guard takes the eagle of the 4th Line", side:"al", kind:"attack",
  p:[313,205], forms:["rg_inf","rg_cav","constantine","vandamme"], cf:"B", claim:"est",
@@ -338,12 +338,12 @@ var EVENTS = [
 {id:"sokolnitz-falls", t:840, n:"Sokolnitz falls; Przybyszewski's column is surrounded", side:"fr", kind:"capture",
  p:[217,352], forms:["prz","friant","sthilaire"], cf:"B", claim:"disputed",
  why:"The column tries to break out toward Kobelnitz, comes apart, and surrenders almost entire.",
- dispute:"When Sokolnitz fell: 14:00 on this map, which no account read dates; Przybyszewski's report has his men fighting until 16:00, Thiebault is wounded beyond the castle about 15:00, and Stutterheim has the fight decided about two."},
+ dispute:"When Sokolnitz fell: 14:00 on this map, which no account read dates; Przybyszewski's report has his men fighting until 16:00, Thiébault is wounded beyond the castle about 15:00, and Stutterheim has the fight decided about two."},
 
 {id:"augezd", t:870, n:"Vandamme takes the height above the Augezd defile", side:"fr", kind:"capture",
  p:[297,372], forms:["vandamme","heightguns"], cf:"B", claim:"disputed",
  why:"A way out for the Allied left over the Augezd defile now lies under French guns; this map reads the retreat the disposition ordered for the left, by the Turas wood, Kobelnitz and Puntowitz, as running through ground the French held.",
- dispute:"When Vandamme took the height above Augezd: 14:30 on this map; his division was entering Augezd towards 14:00 by his aide Vincent, as Thiebault reports him, and Stutterheim has the fight decided about two when Vandamme's division finished it."},
+ dispute:"When Vandamme took the height above Augezd: 14:30 on this map; his division was entering Augezd towards 14:00 by his aide Vincent, as Thiébault reports him, and Stutterheim has the fight decided about two when Vandamme's division finished it."},
 
 {id:"ice", t:900, n:"French artillery fires on the ice of the Satschan mere", side:"fr", kind:"collapse",
  p:[268,421], forms:["heightguns","dok","kienmayer"], tolKm:1.5, tolWhy:"the marker is the target of a bombardment: the guns fire from the chapel height about 2 km away, and the retreating columns are converging on the ice", cf:"B", claim:"fact",
@@ -352,7 +352,7 @@ var EVENTS = [
 {id:"end", t:990, n:"Organised resistance ends", side:"fr", kind:"collapse",
  p:[290,366], forms:[], cf:"B", claim:"disputed",
  why:"Bagration holds the height toward Rausnitz, then withdraws on Austerlitz, the Guard on Austerlitz, and the Allied left has ceased to exist as a formation.",
- dispute:"When the fighting ended: this map puts the end of organised resistance at 16:30, after Sokolov's end of the firing in the north; an Allied report printed in 1806 has the northern front quiet from 15:00, Thiebault the firing over about half an hour after three, and Mikhailovsky-Danilevsky the last shots between five and six; the 30th Bulletin has the victory decided at one. Schönhals has Bagration, no longer attacked, retreat on Austerlitz about 18:00, and Stutterheim behind Austerlitz at 18:00."}
+ dispute:"When the fighting ended: this map puts the end of organised resistance at 16:30, after Sokolov's end of the firing in the north; an Allied report printed in 1806 has the northern front quiet from 15:00, Thiébault the firing over about half an hour after three, and Mikhailovsky-Danilevsky the last shots between five and six; the 30th Bulletin has the victory decided at one. Schönhals has Bagration, no longer attacked, retreat on Austerlitz about 18:00, and Stutterheim behind Austerlitz at 18:00."}
 ];
 
 /* ============================================================

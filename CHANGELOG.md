@@ -1,10 +1,74 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 5's follow-up: decisions 205-212 (PR #57)
+
+**Status: done on `claude/magical-rubin-vahnny` (draft PR #57), for review. The build changed: `austerlitz-command-map.html` @@SIZE@@ bytes,
+md5 `@@MD5@@` (the step 5 build: 2,197,389 bytes, `f6082ae2...`).** Begun from `main` at `92460d4` (step 5 merged, #56). On 20 October
+2026 the owner: "Go with your recommendations for all questions. Just merged 56. So maybe implement these questions through PR 57." Every
+question of `docs/step5-evidence/questions.md` decided as its recommendation; the owner's words, each decision and its status there and in
+`docs/ROADMAP.md`. One new owner question, 213; the next owner decision is 214.
+
+**Already in the build (their defaults were the recommendations):** 205 (a) the names, 206 (a) the formats, 208 (a) the glyphs; 207 (a), the
+tour's own words, unchanged.
+
+**Decision 212 (b): the context-loss case's clock step, `CTX_DELETES` 248 (the owner's word).** `tools/visual/boot-check.js`: after the loss
+and the restore with the page idle, the warnings so far are held at 0 (they were measured, not held); then the clock is stepped to phase 3's
+start (a visitor's action), and the case requires the page idle again within 120 s, the context not lost and frames drawn, so three r128's
+dispose-after-restore path runs on every run. `CTX_DELETES` 40 to 248: the count was 248 on each of three runs of the step 5 build (group 3's
+measure) and on three runs of this branch's (each "ok ... idle with no warning, then a clock step drawn; 248 ... (at most 248)"). No other
+bound moved.
+
+**Decision 210 (c): the Guard infantry's commander (data; guarded).**
+- `FORMATIONS.rg_inf.commander`: was "Lt.-Gen. Maliutin"; is "Not established on the day". Why: of the sources read, none names one commander of
+  the Guard infantry that fought with the Tsesarevich; Sokolov (S5.6, grade C) lists it under Depreradovich 1st, by title a brigade's
+  commander, and gives Maliutin, still titled commanding all the Guard infantry, a separate column (with the Chevalier Guard's history and
+  the 1806 Materialien, C6.c1-C6.c3, and Mikhailovsky-Danilevsky, C6.27).
+- `FORMATIONS.rg_inf.strengthNote`: was "6,730 (Duffy 1977; Smith 1998). Maliutin commanded the Guard infantry at Olmütz and on the
+  march …"; is "6,730 (Duffy 1977; Smith 1998). Who commanded it on 2 December is not established by the sources read. Maliutin commanded
+  …" (the rest as it was). Its claim rehashed after review, "attributed", unchanged in its readings.
+- `STATEMENT_CLAIMS` (narrative.js): a new entry for `FORMATIONS.rg_inf.commander`, "uncertain", its search S5.6, C6.c1, C6.c2, C6.c3 and C6.27
+  (the claims of their own: 144 to 145).
+- The order of battle's third-level rows (step 5) and the dossier show the field as it is; `shortCommander` leaves it whole.
+
+**Decision 209 (a): the accents (data; guarded).** Thiébault, Varé, Bessières, Légère, Olmütz and Grande Armée, each a whole word, case kept,
+everywhere outside quotations, source titles and ids:
+- `data.js` (Thiebault 38, Vare 4, Bessieres 5, Legere 7, Olmutz 6), `analysis.js` (Thiebault 18, Bessieres 3, Legere 1, Olmutz 3), `app.js`
+  (`OVERLAYS`' label and its note "Bessières and Rapp", the order of battle's "French army: Grande Armée", the light notes' Thiébault three
+  times), `narrative.js` (the claims' notes and sides: Thiebault 6, Legere 1; no hash is of a note);
+- the declarations changed, with decision 210's, as check:data lists them against the step 5 reference: ten, `PHASES`, `FORMATIONS`,
+  `FEATURES`, `SOURCE_NOTE`, `ANALYSIS`, `COMMAND`, `PLANS`, `EVENTS`, `OVERLAYS` and `STATEMENT_CLAIMS` (and two rendering declarations,
+  `buildOOB` and `lightNotes`); every other declaration identical;
+- what was not changed: the quotations (a script found none of the six names changed inside single quotes, «» or “”; `appearance.js`'s
+  quoted "Rhiasky" kept),
+  the reading ids (`thiebault3_1894…`), source keys; `world.js`'s road key "Brunn-Olmutz highway" (internal, never shown; handed on);
+- the claims: 68 statements of `data.js` and `analysis.js` changed text; for 66 the old and new texts are equal once the six names are folded
+  back (checked by script against `HEAD`'s statements), and the 38 of them with a claim of their own were rehashed; the other two are decision
+  210's. Inventory regenerated (704 statements);
+- the chronology ledger (`tools/stage2/chronology.js`): `NAMES` (Thiébault, 10e Légère, Bessières), `REVIEW`'s notes, the `REVIEW_CITES` cite
+  keys and `ALLOW_TIMED` keys and reasons follow the text; `chronology-text.json` rewritten by `--rehash --write` after its listing was read
+  (32 cites and allowances changed by the names alone, 5 old keys gone); `--locate --write`: 75 of 75 rows current;
+- `sim-test.js`'s comment and message follow.
+- Measured: @@VISUAL@@
+
+**Decision 211 (b): Duffy and Smith read first (no data change).** Duffy, *Austerlitz 1805* (1977), lends on archive.org; its page images and
+text are not open from here, so it was read through archive.org's public full-text search (OCR snippets), its appendix's header and strength
+row found again by the lead: register entry S5.7 (text layer only, grade C). As the OCR pairs its rows, Duffy's 6,730 is the three Guard
+regiments (1,000, 1,400, 1,500), the jägers (530) and a three-battalion "Guard Gr.R. (in reserve)" (2,300): the seven battalions with the
+Tsesarevich 4,430. His horse rows sum to 2,900, not the 3,700 the map credits to Duffy and Smith (`guard_cav`); 800 of his 10,530 is in no row
+read. Smith (1998) could not be read (S5.8, a negative: no copy on archive.org or Open Library; Google Books' quota spent). A reading on the
+text layer carries no claim (`test.js`; the register's rule), so the strengths stay, and the choice is owner question 213 (recommended: read
+Duffy's pp. 184-185 on the page first).
+
+**Verified:** @@VERIFIED@@
+
+**Uncertain, historical:** the Guard's strengths (question 213); who led the Guard infantry that fought (the field now says the sources do not
+establish it). **Implementation:** the accented forms are the names' own; nothing else was respelled.
+
 ## 2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 170 (b), (c) and 172)
 
-**Status: done on `claude/magical-rubin-vahnny` (draft PR #56), for review. The build changed: `austerlitz-command-map.html` 2,197,389 bytes,
+**Status: merged (#56). The build changed: `austerlitz-command-map.html` 2,197,389 bytes,
 md5 `f6082ae2c1443618b3c426a834625bea` (the step 4b part C build: 2,182,537 bytes, `97352160...`).** Begun from `main` at `9a24be1` (step 4b
-part C merged, #55). Owner questions 205-212 are open (`docs/step5-evidence/questions.md`); the next owner decision is 213. The owner asked (20 October 2026) for step 5 in four groups, in order: records
+part C merged, #55). Owner questions 205-212 were put here and decided as recommended on 20 October 2026 (the section above, PR #57). The owner asked (20 October 2026) for step 5 in four groups, in order: records
 only; presentation polish; test-suite hygiene; a small data task, only with evidence.
 
 **Group 1: records only (no build change; `check:baseline` passes on the unchanged build).** Each item's state read first:
