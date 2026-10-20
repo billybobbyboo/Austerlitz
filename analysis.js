@@ -1,5 +1,5 @@
 /* ============================================================
-   ANALYSIS — the nine things that decided Austerlitz,
+   ANALYSIS — ten themes of the day (the rail's Analysis tab),
    the two command views, and documented limits on what was known.
    src: "doc" = attested decision or report · "inf" = labelled inference · "anec" = a memoir anecdote, its teller named in the text (roadmap step 2, H-7)
    ============================================================ */
@@ -356,7 +356,7 @@ var EVENTS = [
 ];
 
 /* ============================================================
-   GUIDED TOUR — nine stops, about twelve minutes.
+   GUIDED TOUR — nine stops (their nine texts read in about 2 min 17 s, docs/STAGE7_SPEC.md section 0.4, item 4).
    Every stop reuses an existing chapter, plan or feature; none of the
    text asserts anything the reconstruction does not already carry.
    ============================================================ */

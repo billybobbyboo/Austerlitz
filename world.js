@@ -1,7 +1,8 @@
 /* ============================================================
    WORLD v2 — terrain, land cover, hydrography, settlement
    map (0..680, 0..500) -> world (x -170..170, z -125..125)
-   1 world unit = 2 map units = GEOREF.M_PER_WORLD m (~63 m); relief exaggeration is GEOREF.EXAG
+   1 world unit = 2 map units = GEOREF.M_PER_WORLD m (~63 m); the relief is drawn at DISPLAY.factor (since Stage 2B; GEOREF.EXAG
+   is the model's own exaggeration)
    ============================================================ */
 
 /* One matte helper for the whole scene: rough, non-metallic, lit by the sun
@@ -674,8 +675,18 @@ var LAND_COL={
   bare:[0x45423C,0x4A4741,0x403E39,0x4E4A43,0x474540],
   conifer:[0x2C3A2C,0x27332A,0x30402F],
   scrub:[0x4E4A3E,0x574F42,0x46433A],
-  contour:{fine:0x2A2418, index:0x17140C}, marsh:0x5D7C8C
+  contour:{fine:0x2A2418, index:0x17140C}, marsh:0x5D7C8C,
+  /* the ground shader's own colours, linear RGB in 0-1 as GLSL takes them (roadmap step 5, the step-1 hand-on: until step 5 vec3 literals
+     in atlasShader's source, the same numbers): the field's crop tints (crops 1-3, multiplied), the frost the hollows take on, and the
+     "Whose eyes?" viewshed's tints (in sight, in sight under the fog, out of sight: each a multiplier and an addition) */
+  glsl:{crop:[[1.025,0.99,0.97],[0.98,1.015,0.985],[0.99,1.01,0.995]], frost:[0.70,0.73,0.78],
+    vs:[[[0.86,0.88,0.70],[0.20,0.17,0.03]],[[0.60,0.64,0.70],[0.14,0.15,0.17]],[[0.40,0.42,0.52],[0.035,0.055,0.10]]],
+    /* the elevation tint, base + slope x e (the point's relative elevation), on the paper map and on the landscape (the review of b588b37:
+       until then vec3 expressions in the shader's source, which the palette rule did not read) */
+    elev:{paper:[[0.90,0.92,0.98],[0.16,0.10,-0.20]], land:[[0.90,0.90,0.92],[0.14,0.14,0.12]]}}
 };
+/* a GLSL vec3 from three numbers, each written as a float */
+function glslV3(a){ return "vec3("+a.map(function(v){ var t=String(v); return /[.e]/.test(t)?t:t+".0"; }).join(",")+")"; }
 function hexNumW(h){ return parseInt(String(h).replace("#",""),16); }
 function hexCss(n){ return "#"+("000000"+n.toString(16)).slice(-6).toUpperCase(); }
 /* Stage 2F: the ground is coloured per point by its shader (atlasShader), from the class at that point and the palette's
@@ -1007,19 +1018,19 @@ var GROUND_FRAG_MAIN=[
   "  if(A.w>0.15&&A.w<0.55) t*=1.04;",
   "  float ao=clamp(1.0-curv*0.40,0.62,1.10), e=vGnd.x, paper=step(1.5,uMode);",
   "  vec3 bc=gPalOf(gCls);",
-  "  bc*=paper>0.5?vec3(0.90+0.16*e,0.92+0.10*e,0.98-0.20*e):vec3(0.90+0.14*e,0.90+0.14*e,0.92+0.12*e);",
+  "  bc*=paper>0.5?("+glslV3(LAND_COL.glsl.elev.paper[0])+"+"+glslV3(LAND_COL.glsl.elev.paper[1])+"*e):("+glslV3(LAND_COL.glsl.elev.land[0])+"+"+glslV3(LAND_COL.glsl.elev.land[1])+"*e);",
   "  if(gCls!=3.0&&gCls!=4.0){ bc*=t;",
-  "    if(gCls==0.0) bc*=gCrop==1.0?vec3(1.025,0.99,0.97):gCrop==2.0?vec3(0.98,1.015,0.985):gCrop==3.0?vec3(0.99,1.01,0.995):vec3(1.0); }",
+  "    if(gCls==0.0) bc*=gCrop==1.0?"+glslV3(LAND_COL.glsl.crop[0])+":gCrop==2.0?"+glslV3(LAND_COL.glsl.crop[1])+":gCrop==3.0?"+glslV3(LAND_COL.glsl.crop[2])+":vec3(1.0); }",
   "  float hollow=max(0.0,0.94-ao)*2.4, sh=vColor.r;",
   "  if(paper<0.5&&gCls!=3.0){ float frost=min(0.30,vColor.g*0.26+hollow*0.22+(gCls==1.0?0.08:0.0)+(gCls==2.0?0.06:0.0));",
-  "    if(frost>0.01) bc+=(vec3(0.70,0.73,0.78)-bc)*frost; }",
+  "    if(frost>0.01) bc+=("+glslV3(LAND_COL.glsl.frost)+"-bc)*frost; }",
   "  float shL=paper>0.5?sh:0.70;",   /* Stage 4B: the landscape carries no baked hillshade, every point the flat ground's (0.70) */
   "  bc*=(paper>0.5?(0.66+0.46*shL):(0.70+0.42*shL))*ao;",
   "  if(paper<0.5){ float wc=(shL-0.55)*0.07; bc.r*=1.0+wc; bc.b*=1.0-wc; }",
   "  gCol=clamp(gLin(bc),0.0,1.0);",
   "  if(uVSOn>0.5){ vec2 q=floor((vWxz-uVSG.xy)/uVSG.zw+0.5); float vis=0.0;",   /* sampleVS: the nearest node of the analysis grid */
   "    if(q.x>=0.0&&q.y>=0.0&&q.x<uVSN.x&&q.y<uVSN.y) vis=texture2D(uVS,(q+0.5)/uVSN).x;",
-  "    gCol=vis>0.75?gCol*vec3(0.86,0.88,0.70)+vec3(0.20,0.17,0.03):vis>0.25?gCol*vec3(0.60,0.64,0.70)+vec3(0.14,0.15,0.17):gCol*vec3(0.40,0.42,0.52)+vec3(0.035,0.055,0.10); }",   /* Stage 5E: in sight, in sight under the fog, out of sight */
+  "    gCol=vis>0.75?gCol*"+glslV3(LAND_COL.glsl.vs[0][0])+"+"+glslV3(LAND_COL.glsl.vs[0][1])+":vis>0.25?gCol*"+glslV3(LAND_COL.glsl.vs[1][0])+"+"+glslV3(LAND_COL.glsl.vs[1][1])+":gCol*"+glslV3(LAND_COL.glsl.vs[2][0])+"+"+glslV3(LAND_COL.glsl.vs[2][1])+"; }",   /* Stage 5E: in sight, in sight under the fog, out of sight */
   "}",
   "float gCell=uMode>0.5?(gCls==0.0?(gCrop==1.0?8.0:gCrop==2.0?9.0:gCrop==3.0?10.0:0.0):gCls):vCover;",
   "float ci=mod(gCell,4.0), cj=floor(gCell/4.0);",
@@ -1090,27 +1101,6 @@ function atlasShader(mat){
       .replace("#include <dithering_fragment>","#include <dithering_fragment>\n  if(uDebug>0.5) gl_FragColor=vec4(gCls/255.0,gCrop/255.0,uMode/255.0,1.0);");
   };
   return mat;
-}
-var _grain=null;
-function grainTexture(){
-  if(_grain) return _grain;
-  var N=256, c=document.createElement("canvas"); c.width=c.height=N;
-  var x=c.getContext("2d"), img=x.createImageData(N,N), d=img.data;
-  for(var j=0;j<N;j++) for(var i=0;i<N;i++){
-    /* three octaves of value noise, tileable because vnoise is sampled on a
-       period that divides the tile; then a faint furrow direction */
-    var u=i/N*8, v=j/N*8;
-    var n = 0.55*vnoise(u+0.5,v+0.5) + 0.30*vnoise(u*2.3+11.1,v*2.3+7.3) + 0.15*vnoise(u*5.1+3.7,v*5.1+9.9);
-    var furrow = 0.5+0.5*Math.sin((i*0.9+j*0.35)*0.42);
-    var g = 0.86 + (n-0.5)*0.30 + (furrow-0.5)*0.06;
-    var val=Math.max(0,Math.min(255,g*255))|0;
-    var o=(j*N+i)*4; d[o]=val; d[o+1]=val; d[o+2]=val; d[o+3]=255;
-  }
-  x.putImageData(img,0,0);
-  _grain=new THREE.CanvasTexture(c);
-  _grain.wrapS=_grain.wrapT=THREE.RepeatWrapping;
-  _grain.anisotropy=4;
-  return _grain;
 }
 
 function sampleVS(x,z){

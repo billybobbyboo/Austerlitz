@@ -4,7 +4,7 @@
 branch, #45 into `main`); 7C (§6) merged (#46); 7D (§6) written under decisions 123-124 (§0.6) and merged (#47); Stage 7 is complete: `CHANGELOG.md`. Part A itself changed no source file, no data and no build:** `check:baseline` passes on the unchanged Stage 6D
 build (`austerlitz-command-map.html`, 1,720,613 bytes, md5 `3dd7ca41f73d0e5ffcfe5fa64adc5f51`) before and after it. Written against `main` at
 `b1cb13f` (Stage 6D merged as #42; with it Stage 6 is complete); `check:data`'s reference is `archive/stage6b-7fc0f6c3.html`. Line numbers
-refer to that commit; the code is the source of truth, not the documents. The next owner decision is 111 (§7). On this build every check
+refer to that commit; the code is the source of truth, not the documents. The next owner decision was then 111 (§7). On this build every check
 was run: `npm test` (all nine suites and the height guard), `check:data` (121 declarations identical), `check:chronology` (errors 0),
 `check:contrast` (5,354 elements, 0 below AA, 0 below 10.5 px) and `check:visual` ("STAGE0: all checks passed", 23 views, the self-test 203
 of 203); details in `CHANGELOG.md`.

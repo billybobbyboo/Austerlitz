@@ -231,6 +231,11 @@ p.conf{font-size:var(--t-small);color:var(--text-muted);line-height:1.5;margin:0
   font-family:var(--serif);font-size:var(--t-prose);color:var(--text-hi);background:rgba(var(--scrim-rgb),.82);
   border:1px solid rgba(var(--accent-rgb),.38);padding:8px 18px;opacity:0;transition:opacity .8s ease;pointer-events:none}
 #toast.on{opacity:1}
+/* roadmap step 5: the timeline's one tooltip (app.js timeTip), in place of the native title tooltips */
+#tltip{position:fixed;left:0;top:0;z-index:62;max-width:min(380px,calc(100vw - 16px));padding:5px 9px;
+  font-family:var(--sans);font-size:var(--t-ui);line-height:1.4;color:var(--text-hi);background:rgba(var(--scrim-rgb),.96);
+  border:1px solid var(--line-2);border-radius:2px;box-shadow:0 6px 20px rgba(0,0,0,.45)}
+#tltip[hidden]{display:none}
 
 /* ---------- time bar ---------- */
 .timebar{position:fixed;left:0;right:0;bottom:0;height:auto;min-height:54px;z-index:24;
@@ -522,14 +527,9 @@ body.pm-map #restore{display:block}
 #tour-exit{margin-left:auto}
 
 /* ---------- first run ---------- */
-#firstrun{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);z-index:46;
-  width:min(470px,calc(100vw - 32px));background:rgba(var(--scrim-rgb),.96);border:1px solid var(--line-2);
-  padding:26px 28px 22px;backdrop-filter:blur(12px);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+/* the card's box and type: one rule each since roadmap step 5 (SW-13), where Stage 0's second rule (below) stood, which overrode the
+   first's place, size and padding; #firstrun b.fr and b.al, which matched nothing, removed */
 #firstrun[hidden]{display:none}
-#firstrun h2{font-family:var(--serif);font-weight:400;font-size:var(--t-display);margin:0 0 12px;color:var(--text-hi)}
-#firstrun p{font-family:var(--serif);font-size:var(--t-prose);line-height:1.65;color:var(--text-body);margin:0 0 11px}
-#firstrun b.fr{color:var(--side-fr-text);font-weight:400}
-#firstrun b.al{color:var(--side-al-text);font-weight:400}
 .fr-act{display:flex;gap:7px;margin-top:16px}
 #fr-tour{background:var(--text);color:var(--on-accent);border-color:var(--text)}
 
@@ -636,14 +636,14 @@ body.mode-staff #vignette{display:none}
 }
 
 /* ---------- Stage 0: the first-run card on its own, low over a legible field ---------- */
-#firstrun{left:calc(var(--rail) + (100vw - var(--rail))/2);top:auto;bottom:calc(var(--tb) + 18px);
-  transform:translateX(-50%);width:min(540px,calc(100vw - var(--rail) - 40px));padding:20px 24px 18px}
+#firstrun{position:fixed;left:calc(var(--rail) + (100vw - var(--rail))/2);top:auto;bottom:calc(var(--tb) + 18px);
+  transform:translateX(-50%);z-index:46;width:min(540px,calc(100vw - var(--rail) - 40px));background:rgba(var(--scrim-rgb),.96);
+  border:1px solid var(--line-2);padding:20px 24px 18px;backdrop-filter:blur(12px);box-shadow:0 20px 60px rgba(0,0,0,.6)}
 body.rail-hidden #firstrun{left:50%;width:min(540px,calc(100vw - 32px))}
-#firstrun h2{font-size:var(--t-h2);margin:0 0 8px}
-#firstrun p{margin:0 0 9px}
+#firstrun h2{font-family:var(--serif);font-weight:400;font-size:var(--t-h2);margin:0 0 8px;color:var(--text-hi)}
+#firstrun p{font-family:var(--serif);font-size:var(--t-prose);line-height:1.65;color:var(--text-body);margin:0 0 9px}
 #firstrun .key-sw{display:inline-block;width:11px;height:11px;border:1px solid rgba(0,0,0,.55);border-radius:1px;
   margin:0 5px 0 1px;vertical-align:-1px}
-#firstrun .key-ar{display:inline-block;width:18px;height:5px;border-radius:2px;margin:0 5px 0 1px;vertical-align:2px}
 #firstrun .fr-act .t{min-height:34px;padding:7px 14px;font-size:var(--t-ui)}
 /* Stage 7B (decisions 111, 113): the card's one primary action, drawn as a pressed button is; the dispatch stays hidden under the card only
    below 1080 px, where it is a card the first-run card would stand over (decision 58); docked it is the rail's Now tab, shown */
@@ -668,9 +668,8 @@ body.firstrun-on #openingbtn{display:none}
   .tb-sit{display:none}
   #layerpop{max-height:78vh;top:56px}
 }
-.legend .ar{width:20px;height:5px;border-radius:2px}
-/* Stage 2C: the heads as drawn (decision 20): French the plain triangle, Allied the notched chevron */
-.legend .ar{position:relative;margin-right:8px;border-radius:2px 0 0 2px}
+/* Stage 2C: the heads as drawn (decision 20): French the plain triangle, Allied the notched chevron (one rule since roadmap step 5, SW-13) */
+.legend .ar{width:20px;height:5px;position:relative;margin-right:8px;border-radius:2px 0 0 2px}
 .legend .ar::after{content:"";position:absolute;right:-8px;top:-3px;width:9px;height:11px;background:inherit;
   clip-path:polygon(0 0,100% 50%,0 100%)}
 .legend .ar[data-key="arrow-al"]::after{clip-path:polygon(0 0,100% 50%,0 100%,38% 50%)}
@@ -700,7 +699,9 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 .ml-item.on{opacity:1}
 .ml-item.ml-wrap{white-space:normal}
 .ml-item:focus{outline:none}
-.ml-item:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+/* roadmap step 5 (question 172; WCAG 1.4.11): the ring on a plate of its own (--on-accent, the accent's contrasting ground in either theme),
+   so it meets 3:1 on any ground; until step 5 the ring alone, which a light ground took below 3:1 (css-test.js holds it) */
+.ml-item:focus-visible{outline:2px solid var(--accent);outline-offset:3px;box-shadow:0 0 0 7px var(--on-accent)}
 .ml-item.ml-forced{z-index:1}   /* roadmap step 3 (A-2): the focused item, drawn over the others where no room was free */
 #maplayer:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}   /* the layer's own ring inside the screen */
 .mlt{font-size:var(--t-ui);line-height:16px;padding:0 5px 1px}

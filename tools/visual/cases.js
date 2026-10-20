@@ -1,4 +1,4 @@
-/* Stage 0 baseline cases. Each case fixes the clock, the presentation, the ground style,
+/* The visual harness's cases: Stage 0's baseline cases and those every stage since added (30; tools/visual/README.md). Each case fixes the clock, the presentation, the ground style,
    the camera and any selection, so a later build can be compared with this one.
    cam: [px,py,pz, tx,ty,tz] in world units; aim: {map:[mx,my], dir:[dx,dy,dz], r} places the
    camera r units from the ground point under a map coordinate, along dir.
@@ -30,7 +30,7 @@ module.exports = [
   { name:"close-sokolnitz", viewport:[1600,900], t:500, presentation:"watch", mode:"terrain",
     aim:{map:[210,362], dir:[-0.62,0.46,0.64], r:58}, note:"Close view of Sokolnitz and the lower Goldbach, 08:20." },
   { name:"staff-paper", viewport:[1600,900], t:570, presentation:"study", mode:"staff",
-    cam:[-27,272,41,-27,0,9], note:"Staff (paper) map, Overview vantage, 09:30." },
+    cam:[-27,272,41,-27,0,9], note:"Paper map, Overview vantage, 09:30." },
   { name:"pratzen-low", viewport:[1600,900], t:590, presentation:"watch", mode:"terrain",
     aim:{map:[285,289], dir:[-1.0,0.13,0.18], r:70}, note:"Low angle from the Goldbach up the west face of the Pratzeberg, 09:50." },
   { name:"pratzen-orbit-min", viewport:[1600,900], t:590, presentation:"watch", mode:"terrain",

@@ -12,7 +12,7 @@ let pass=0, fail=0; const bad=[];
 function check(name,ok,detail){ if(ok) pass++; else { fail++; bad.push(name+(detail?': '+detail:'')); } console.log((ok?'  ok   ':'  FAIL ')+name+(detail?'  ('+detail+')':'')); }
 const km=(a,b)=>G.kmBetween(a,b);
 function segDistKm(p,poly){ let d=1e9; for(let i=0;i<poly.length-1;i++){ const a=poly[i],b=poly[i+1],vx=b[0]-a[0],vy=b[1]-a[1],t=Math.max(0,Math.min(1,((p[0]-a[0])*vx+(p[1]-a[1])*vy)/(vx*vx+vy*vy))); d=Math.min(d,Math.hypot(p[0]-a[0]-t*vx,p[1]-a[1]-t*vy)); } return d*G.KM_PER_MAP; }
-const toMap=pw=>[pw[0]*2+340,pw[1]*2+250];
+const MAPF=require('./tools/map-frame.js')(M.W), toMap=pw=>MAPF.toMap(pw[0],pw[1]);   /* roadmap step 5 (T-9 (e)): W's inverse, read, not typed */
 
 console.log('-- transform --');
 const AUD={pratzen:[276,243],pratzeberg:[285,289],vinohrady:[313,205],austerlitz:[507,126],augezd:[297,372],satschan:[262,444],

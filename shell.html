@@ -66,7 +66,7 @@
     </div>
     <div id="oob" class="tabpane" role="tabpanel" aria-labelledby="tab-oob" hidden></div>
     <div id="analysis" class="tabpane" role="tabpanel" aria-labelledby="tab-analysis" hidden>
-      <p class="sechead">The battle in ten moments</p>
+      <p class="sechead">The battle in ten themes</p>
       <div id="chapters"></div>
       <div id="chaptext"></div>
     </div>
@@ -94,7 +94,7 @@
   </div>
 
   <div class="railfoot">
-    <button id="srcbtn" type="button">Accuracy, sources and confidence grades</button>
+    <button id="srcbtn" type="button">Accuracy and sources</button>
   </div>
 </nav>
 
@@ -102,6 +102,7 @@
 <div id="dispatch-home" hidden></div>
 <!-- one polite announcement per phase change, whichever tab is shown (a hidden tab's live region would not be read) -->
 <div id="live-phase" class="sr-only" aria-live="polite"></div>
+<div id="live-map" class="sr-only" aria-live="polite"></div>
 
 <div class="tools">
   <div class="grp">
@@ -113,7 +114,7 @@
     <button class="t" id="panelsbtn" type="button" aria-expanded="false" aria-controls="rail">Panels</button>
   </div>
   <div class="tlabel">Vantage</div>
-  <div class="grp" id="vantages">
+  <div class="grp">
     <button class="t van-btn" data-v="field" aria-pressed="true" title="The whole field from the west">Field</button>
     <button class="t van-btn" data-v="zuran" title="Towards the plateau from near the Zuran mound, Napoleon's first command post: a preset view, not what he saw">Zuran</button>
     <button class="t van-btn" data-v="plateau" title="The Pratzen plateau">Pratzen</button>
@@ -246,7 +247,7 @@
     <div class="k"><span id="exag-line"></span></div>
     <div class="k"><span id="exag-symbols"></span></div>
     <div id="goingkey"><!-- rows written from TOKENS.sym.going by paintKey (app.js), the table the going layer draws --></div>
-    <div class="hint" id="lg-hint">drag to pan &middot; right-drag or Shift-drag to turn &middot; scroll to zoom toward the pointer &middot; double-click to centre &middot; click or Tab to a counter or a name</div>
+    <div class="hint" id="lg-hint">drag to pan &middot; right-drag (or Shift or Ctrl and drag) to turn &middot; wheel to zoom toward the pointer &middot; double-click to centre &middot; click or Tab to a counter or a name</div>
     <div class="hint keys"><b>?</b> all keys and controls</div>
   </div>
 </div>
@@ -258,12 +259,14 @@
 <div class="timebar">
   <div id="prog"><i></i></div>
   <div class="tb-top">
+    <!-- roadmap step 5 (docs/VISUAL_AUDIT.md, low; question 208, the default meanwhile): the event steps in the media players' order, the
+         bar outside the triangle (U+2502 before U+25C4, U+25BA before U+2502), the same two glyphs; until step 5 the reverse -->
     <div class="tb-ctrl">
-      <button class="t tb-icon" id="prevEv" aria-label="Previous event" title="Previous event">&#9668;&#9474;</button>
+      <button class="t tb-icon" id="prevEv" aria-label="Previous event" title="Previous event">&#9474;&#9668;</button>
       <button class="t tb-icon" id="prev" aria-label="Back ten minutes" title="Back ten minutes">&#9668;</button>
       <button class="t tb-play" id="play" aria-pressed="false">Play</button>
       <button class="t tb-icon" id="next" aria-label="Forward ten minutes" title="Forward ten minutes">&#9658;</button>
-      <button class="t tb-icon" id="nextEv" aria-label="Next event" title="Next event">&#9474;&#9658;</button>
+      <button class="t tb-icon" id="nextEv" aria-label="Next event" title="Next event">&#9658;&#9474;</button>
       <button class="t tb-follow" id="follow" aria-pressed="true" title="Follow the action: while the clock plays, keep the live events in view; paused, each phase's view">Follow</button>
     </div>
     <div class="clockbox"><span id="clockread">04:00</span><small>2 Dec 1805</small></div>
@@ -277,7 +280,7 @@
       <button class="t spd-btn" data-s="2" aria-pressed="false">2&times;</button>
       <button class="t spd-btn" data-s="4" aria-pressed="false">4&times;</button>
     </div>
-    <div class="tb-scale" id="scalebar" aria-label="Scale">
+    <div class="tb-scale" id="scalebar" role="img" aria-label="Scale">
       <i id="sb-fill"></i><span id="sb-label"></span>
     </div>
   </div>
@@ -317,7 +320,7 @@
 <div id="modal" role="dialog" aria-modal="true" aria-label="Accuracy and sources">
   <div class="sheet" tabindex="-1">
     <button id="modal-close" type="button" aria-label="Close (Esc)">&times;</button>
-    <div id="modal-body" tabindex="0" role="region" aria-label="Accuracy, sources and confidence grades: the text"></div>
+    <div id="modal-body" tabindex="0" role="region" aria-label="Accuracy and sources: the text"></div>
   </div>
 </div>
 
@@ -341,12 +344,13 @@
   <p id="fr-key">French formations are marked in blue and the Allies in amber: on their names, their counters and the ground beneath
      them, and on the movement arrows. The high ground in the centre is the Pratzen plateau, which this map reads as deciding the battle.</p>
   <div class="fr-act">
-    <button class="t fr-primary" id="fr-tour" type="button">Guided tour</button>
+    <button class="t fr-primary" id="fr-tour" type="button">Begin (two min)</button>
     <button class="t" id="fr-close" type="button">Explore on my own</button>
   </div>
 </div>
 
 <div id="toast"></div>
+<div id="tltip" aria-hidden="true" hidden></div>
 <!-- roadmap step 3 (docs/FINAL_AUDIT.md SW-1): the notice when the browser takes the 3D view's graphics context away (empty until then) -->
 <div id="glnotice" role="alert"></div>
 

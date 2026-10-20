@@ -2,7 +2,7 @@
 
 Fixed, reproducible views of the Austerlitz command map, measured and held to thresholds, plus the in-app self-test. Written for Stage 0
 and extended by every stage since; rewritten in roadmap step 1 (`docs/ROADMAP.md`; owner decisions 131, 132 and 141), when the harness was
-made to assert everything it measures. `CLAUDE.md`'s "Checks" section says, stage by stage, what each check holds the build to.
+made to assert everything it measures; brought up to date in roadmap step 5 (R-1). `CLAUDE.md`'s "Checks" section says, stage by stage, what each check holds the build to.
 
 ## Requirements and the reference machine
 Node 22 and Playwright 1.56.0 with its Chromium (`npm install`, then `npx playwright install chromium`). Rendering is forced to software
@@ -15,15 +15,17 @@ report records its platform, Chromium and Playwright (`report.env`), and `remeas
 ## Scripts
 | script | what it does |
 |---|---|
-| `harness.js <build.html> <outdir> [--test] [--only a,b] [--legacy] [--selftest-only] [--compare <dir>]` | loads `build.html?harness=1`, drives it into each case of `cases.js`, writes `<case>.png` and `report.json`; `--test` also runs the in-app self-test and the real-key and live checks and judges everything (exit 1 on any failure). `npm run check:visual` is the full `--test` run (about 100 minutes). `--selftest-only` (`npm run check:selftest`, the CI job): no case; one fresh 1366 x 768 page, the self-test, the slider, Play and the 3E keys (about 13 minutes). `--legacy`: an archived build; the feature gates of the older harness are kept, what is skipped is listed, and the run never reports "all checks passed". `--compare <dir>`: per-case pixel differences against another run |
+| `harness.js <build.html> <outdir> [--test] [--only a,b] [--legacy] [--selftest-only] [--compare <dir>]` | loads `build.html?harness=1`, drives it into each case of `cases.js`, writes `<case>.png` and `report.json`; `--test` also runs the in-app self-test and the real-key and live checks and judges everything (exit 1 on any failure). `npm run check:visual` is the full `--test` run (about 100 minutes). `--selftest-only` (`npm run check:selftest`, the CI job): no case; one fresh 1366 x 768 page, the self-test, the slider, Play and the 3E keys, and the live blocks (about 15 minutes). `--legacy`: an archived build; the feature gates of the older harness are kept, what is skipped is listed, and the run never reports "all checks passed". `--compare <dir>`: per-case pixel differences against another run |
 | `check-report.js <outdir or report.json> [--html file] [--legacy] [--write-manifest]` | judges a finished report again without rendering (`npm run check:report`): the build's md5, every case of `cases.js` present, each case's spec and state, the live blocks from their raw numbers, the self-test against `selftest-manifest.json`, every page's console messages, and the failures the run recorded. `--write-manifest` writes the manifest from a report whose self-test passed, printing the names added and removed (record them in `CHANGELOG.md`) |
 | `remeasure.js <run1> <run2> [--bounds keep or tight] [--emit] [--accept-loosening 141]` | decision 141's one re-measure after the embedded fonts (`npm run check:remeasure`): reads two identical full runs of the same build in the same environment and proposes the font-dependent limits (`DROP_LIMIT`, `UNOBSTRUCTED`, `PAPER_MIN_PXKM`); `keep` (the default) changes a limit only where the measure is past it; it never edits `thresholds.js`, `--emit` prints the block and the CHANGELOG table, and it exits 1 on any loosening unless `--accept-loosening 141` |
-| `contrast.js <build.html>` | `npm run check:contrast`: every visible text element in 35 interface states at WCAG AA and the 10.5 px floor, drawn in the embedded faces (each computed font's characters, as the elements showed them, drawn in a probe on the page and its platform fonts read over the Chrome DevTools Protocol; a failing set asked character by character), every state reached, every console message judged |
+| `contrast.js <build.html>` | `npm run check:contrast`: every visible text element in 35 interface states at WCAG AA and the 10.5 px floor, drawn in the embedded faces (each computed font's characters, as the elements showed them, drawn in a probe on the page and its platform fonts read over the Chrome DevTools Protocol; a failing set asked character by character), every state reached, every console message judged; then the six start-up cases of `boot-check.js` |
+| `boot-check.js <build.html>` | since roadmap step 3 (decision 133, question 163): the six start-up cases, each on its own browser: three.js aborted, a copy failing its integrity, WebGL disabled, an error after the interface is built (the failure dialog, focus kept on Reload, everything else inert, its text at AA, exactly the messages its `EXPECT` names), a start slowed past 20 s, and the context lost and restored (`CTX_DELETES`); run at the end of `check:contrast` |
+| `three-route.js` | every page tool's one route for three.js r128 (the local copy answering the cdnjs request, checked against the page's integrity hash) and its wait for the page to start |
 | `data-invariance.js <original.html> <patched.html>` | `npm run check:data`: parses both builds (acorn) and compares every top-level declaration; the historical, geographic and model declarations (DATA) must be byte-identical |
 | `thresholds.js` | every limit and the judging functions shared by the harness, `check-report.js` and `remeasure.js`: `DROP_LIMIT`, `UNOBSTRUCTED`, `PAPER_MIN_PXKM`, `TIMELINE_MAX`, `LAYER_MS`, `SOLID_BLACK`, `SMOKE_SHARE`, `CONF_SHARE`, `CONSOLE_ALLOW` (each allowed message named, with its reason and what removes it), `REQUIRED_FEATURES`, `expectState` and `CAM_TOL`, `GROUND_SELF_TOL`, `judgeReport` |
 | `cases.js` | the 30 cases (below) |
 | `measure.js` | the in-page driver and measures, injected by the scripts above; it reads app canvases through a canvas of its own (`readCanvas`), so measuring raises no browser warning |
-| `selftest-manifest.json` | the self-test's 221 check names, generated by `check-report.js --write-manifest` from a passing run; regenerate it, and record the change, in any commit that adds, removes or renames a self-test check |
+| `selftest-manifest.json` | the self-test's 242 check names, generated by `check-report.js --write-manifest` from a passing run; regenerate it, and record the change, in any commit that adds, removes or renames a self-test check |
 | `darkness-study.js`, `compare-gallery.js` | Stage 0's darkness attribution study, and a before/after gallery of two runs |
 
 ## Cases (`cases.js`)
@@ -45,5 +47,5 @@ page and block), `report.skipped`, `report.features`, `report.pages`, `report.mo
 
 ## Timing
 On 4 cores with software rendering: a full `check:visual` about 75-110 minutes (a fresh page loads in 15-20 s, a case takes 1-4 minutes, the
-self-test about 13), `check:selftest` about 13 minutes, `check:contrast` 7-12 minutes. Never run a page probe beside `check:visual`: its
+self-test about 15), `check:selftest` about 15 minutes, `check:contrast` 7-12 minutes and its start-up cases a few more. Never run a page probe beside `check:visual`: its
 timing limits (the map layer's 8 ms, the self-test's 2 ms move) assume the machine is not shared.

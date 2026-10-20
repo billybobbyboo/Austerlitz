@@ -22,6 +22,14 @@
    phrase cannot hide across a line break.
    module.exports(ROOT) -> {records:[{file,line,decl,path,text,guarded,skip}], guarded:Set, missing:[guarded names not declared], files} */
 const fs=require("fs"), path=require("path");
+/* roadmap step 5 (the step-1 hand-on: this file and css-test.js's glyph walker duplicated one another): the one table of the HTML entities
+   the sources use, and the one decoder, for this scan and for css-test.js's glyph coverage (which reads this scan's records). An entity not
+   in the table is reported through onUnknown (css-test.js fails on it); until step 5 this scan turned every named entity into a space */
+const ENT={nbsp:"\u00a0",amp:"&",lt:"<",gt:">",quot:'"',apos:"'",middot:"·",times:"×",asymp:"≈",ndash:"–",mdash:"—",hellip:"…",rdquo:"”",ldquo:"“",
+  rsquo:"’",lsquo:"‘",minus:"−",lsaquo:"‹",rsaquo:"›",laquo:"«",raquo:"»",frac12:"½",rarr:"→",larr:"←",uarr:"↑",darr:"↓",deg:"°",sect:"§",copy:"©"};
+function decodeEntities(s,onUnknown){
+  return String(s).replace(/&#x([0-9a-f]+);/gi,(m,h)=>String.fromCodePoint(parseInt(h,16))).replace(/&#([0-9]+);/g,(m,n)=>String.fromCodePoint(+n))
+    .replace(/&([a-z]+[0-9]*);/gi,(m,n)=>ENT[n]!=null?ENT[n]:(onUnknown?onUnknown(n):0,m)); }
 module.exports=function langScan(ROOT){
   let acorn; try{ acorn=require("acorn"); }catch(e){ acorn=require(path.join(ROOT,"node_modules","acorn")); }
   const di=fs.readFileSync(path.join(ROOT,"tools/visual/data-invariance.js"),"utf8");
@@ -33,7 +41,8 @@ module.exports=function langScan(ROOT){
   const DEV=new Set(["AUSTERLITZ_DEBUG"]);
   const CODE_CALL=/^(querySelector|querySelectorAll|getElementById|getElementsByClassName|getElementsByTagName|closest|matches|addEventListener|removeEventListener|createElement|createElementNS|getAttribute|removeAttribute|hasAttribute|getContext|setProperty|getPropertyValue|matchMedia|dispatchEvent|getExtension|getItem|setItem|removeItem)$/;
   const CLASS_CALL=/^(add|remove|toggle|contains)$/;   /* code only on a classList */
-  const VISITOR_ATTR=/^(aria-label|title|alt|aria-description|aria-roledescription|placeholder|aria-valuetext)$/;
+  /* data-slow: the start-up guard's 20 s status line, which AUS_BOOT shows (roadmap step 5, the review of b588b37) */
+  const VISITOR_ATTR=/^(aria-label|title|alt|aria-description|aria-roledescription|placeholder|aria-valuetext|data-slow)$/;
   const norm=t=>String(t).replace(/[­​-‍⁠]/g,"").replace(/\s+/g," ").trim();
   const records=[], declared=new Set();
   const keyName=k=>k.type==="Identifier"?k.name:String(k.value);
@@ -114,7 +123,7 @@ module.exports=function langScan(ROOT){
   { const raw=fs.readFileSync(path.join(ROOT,"shell.html"),"utf8"), line=lineAt(raw);
     const blank=m=>m.replace(/[^\n]/g," ");   /* blanked, not removed, so that line numbers hold */
     const src=raw.replace(/<script[\s\S]*?<\/script>/gi,blank).replace(/<style[\s\S]*?<\/style>/gi,blank).replace(/<!--[\s\S]*?-->/g,blank);
-    const ent=t=>t.replace(/&nbsp;/g," ").replace(/&amp;/g,"&").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&quot;/g,'"').replace(/&#(\d+);/g,(m,d)=>String.fromCharCode(+d)).replace(/&#x([0-9a-f]+);/gi,(m,h)=>String.fromCharCode(parseInt(h,16))).replace(/&[a-z][a-z0-9]*;/gi," ");
+    const ent=t=>decodeEntities(t,null);
     const VOID=/^(area|base|br|col|embed|hr|img|input|link|meta|source|track|wbr)$/i, open=[];
     const re=/<([a-zA-Z][\w-]*)((?:\s+[\w:-]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+))?)*)\s*(\/?)>|<\/([a-zA-Z][\w-]*)\s*>|<[!?][^>]*>|([^<]+)/g; let m;
     while((m=re.exec(src))){
@@ -132,3 +141,4 @@ module.exports=function langScan(ROOT){
   const missing=[...GUARDED].filter(n=>!declared.has(n));
   return {records,guarded:GUARDED,missing,files:BUILT.concat(["shell.html"])};
 };
+module.exports.ENT=ENT; module.exports.decodeEntities=decodeEntities;

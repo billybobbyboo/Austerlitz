@@ -1,8 +1,270 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 170 (b), (c) and 172)
+
+**Status: done on `claude/magical-rubin-vahnny` (draft PR #56), for review. The build changed: `austerlitz-command-map.html` 2,197,389 bytes,
+md5 `f6082ae2c1443618b3c426a834625bea` (the step 4b part C build: 2,182,537 bytes, `97352160...`).** Begun from `main` at `9a24be1` (step 4b
+part C merged, #55). Owner questions 205-212 are open (`docs/step5-evidence/questions.md`); the next owner decision is 213. The owner asked (20 October 2026) for step 5 in four groups, in order: records
+only; presentation polish; test-suite hygiene; a small data task, only with evidence.
+
+**Group 1: records only (no build change; `check:baseline` passes on the unchanged build).** Each item's state read first:
+- *R-1 (the two READMEs).* Step 1 had already rewritten both; what still did not hold: `README.md` named `archive/step2-af98f586.html` as
+  check:data's reference (it is `archive/step4b-02a46c50.html` since step 4b part B), 221 self-test checks (242), "about 13 minutes", no
+  `narrative.js`, no `check:remeasure`, no start-up cases in check:contrast; `tools/visual/README.md` lacked `boot-check.js` and
+  `three-route.js`, gave 221 checks and 13 minutes. Both rewritten from `package.json` and `CLAUDE.md` (the sources grouped as presentation,
+  guarded data and generated files; every script of `package.json`; each suite named with what it holds).
+- *R-2 (status lines).* `CHANGELOG.md`: every merged part headed "for review" or "awaits the owner's review" now says "merged (#n)" (4b C #55,
+  4b B #54, 4b A #53, step 4 #52, step 1 #49, the final audit #48, 7D #47, 7C #46, 7B #44 and #45, Stage 7 Part A #43, 2B #14, the
+  chronology task #12 and #13, 2A section M #11, 2A #10; each number from `git log --merges`), and the four "has not started" lines of
+  merged 2C-2F are dropped; `docs/STAGE6_SPEC.md` (6D merged, #42), `docs/VISUAL_SPEC.md` (Part B done), `docs/HANDOFF.md` (the plan is
+  `docs/ROADMAP.md`), `docs/VISUAL_AUDIT.md` (Stages 1-7 done; the final audit and the roadmap), `docs/STAGE2_SPEC.md` (check:baseline then),
+  `docs/STAGE7_SPEC.md` (the next decision was then 111); `CLAUDE.md`: Stage 7 Part A merged (#43), "seven on Stage 0" (the Stage 0 record:
+  seven suites passed, runtime-test 2 errors; with runtime-test and binding-test, nine), and `symbols.js`'s row (its icon set and arm glyphs;
+  the event glyphs and objective markers are `app.js`'s). The 6B record's 309 quotes note the audit's 311 (an inference on why, kept as
+  the audit's).
+- *R-7 (stale comments), the files outside the build:* `css-test.js` (`formationAtlas`, removed in 6C), `tools/visual/cases.js` (its header,
+  the "Staff (paper) map" note), `tools/visual/contrast.js` (2D added four states, not six; Watch's switch at full opacity since 3C; the
+  7C, 7D and step-3 additions). `.github/workflows/checks.yml`'s "about ten minutes" was already gone (step 1). The comments inside the build
+  (`analysis.js` lines 2 and 359, `world.js` line 4, `app.js`'s `LABELS` comment) change the build, so they go with group 2; the mist
+  measure (`measure.js`, `thresholds.js`), which measures sheets gone since 4C, is group 3's.
+- *R-4's records.* Every out-of-date record of the keys R-4 names is in the build (the "?" overlay's opening row, the legend's hint,
+  `shell.html`'s fallback button): all group 2. `CLAUDE.md`'s 7C sentence ("a key ... end it where it is") is 7C's record and 7D's pause is
+  recorded beside it; nothing else to change.
+- *`tools/stage2/chronology.js`'s REVIEW evidence column* (handed on by steps 2 and 4): 74 of 75 rows did not give their statements' current
+  lines. A `--locate` mode now regenerates the column from each row's `REVIEW_CITES` (the live file:line of each cited statement, in order;
+  the two rows that cite nothing, ahq@6 and bag@8, by an inventory path, `UNCITED_AT`); `--locate --write` rewrote 74 rows, and `--locate`
+  reports 75 of 75 current. No check reads the column (`REVIEW_CITES` is the live link), as before.
+- Checked: `check:chronology` 0 errors; `css-test.js` 0 errors; the build rebuilt byte-identical (`97352160...`).
+
+**Group 2: presentation polish (app.js, shell.html, style.css, world.js, tokens.js; no data declaration changed).** Each item's state read
+first; each default that a decision does not settle is an owner question (`docs/step5-evidence/questions.md`, 205-208).
+- *SW-13 (dead code and leftovers).* Removed, never referenced: `shade`, `subUnitsFig`, `frameClock` (app.js), `grainTexture` and `_grain`
+  (world.js), `themeTok` (tokens.js), `playRAF` (kept until now only because css-test.js matched the declaration's text: its two checks
+  now match `var playing=false, speed=0.5,`, as strict), the `getElementById("fxstate")` that named no element, the body classes `plan-on`
+  and `cmd-on` (no CSS), the unused id `vantages`, the CSS `#firstrun b.fr`, `#firstrun b.al` and `#firstrun .key-ar` (matched nothing);
+  `#firstrun`, `#firstrun h2`, `#firstrun p` and `.legend .ar`, each declared twice, are one rule each (merged where the later rule stood,
+  its values winning, so nothing drawn changes); `window.__setPop` is the module variable `setLayerPop`; `flash()` clears its earlier timer,
+  so a second message keeps its 3.4 s; `syncFollow` and `paintDevStats` find their static elements once instead of every frame. Kept, as
+  designed: the four `console.warn` calls (the movement audit at start, the camera floor's guard, the post chain's fallback, the seating
+  check under `?stats`): they are the runtime checks the harness judges (T-1) and never fire on a correct build; a visitor sees them only in
+  the console.
+- *R-7, the comments in the build:* `analysis.js` (ten themes; the nine tour texts read in about 2 min 17 s), `world.js` (the relief drawn at
+  `DISPLAY.factor` since 2B), the `LABELS` comment (7D's measured 44.8 s of stretches, 95.2-115.8 s in all). Comments only: check:data's
+  declarations are unchanged.
+- *R-3 (one name per thing; question 205, the default).* `LABELS.names`: the themes "themes" ("The battle in ten themes", "Pick one of the
+  ten themes above", the theme mark's "The theme"; the "?" overlay's Esc row "the theme"); the phase's text "the phase text" (the D row, the
+  legend's tooltip); the sources sheet "Accuracy and sources" (its button, its dialog's name and its text region; its heading,
+  `SOURCE_NOTE.title`, is data and unchanged); the sources sheet's fog note says "the “Whose eyes?” reading" (it said "the Command view");
+  the timeline's button "Eyes: Napoleon's HQ" (it said "Eyes: Napoleon"; the self-test's 5E check expects the new words, as strict).
+  `shell.html` carries the same words for a page whose bundle fails.
+- *R-4 (the keys).* The "?" overlay's opening row adds 7D's pause ("while the clock plays between steps, Space off a button and Play/Pause
+  pause it"); the legend's control hint is composed from `KEYS` (`legendHint`: the rows with a `hint`, in their order; "wheel", "right-drag
+  (or Shift or Ctrl and drag) to turn", where it said "scroll" and "right-drag or Shift-drag"); `shell.html`'s card button reads "Begin (two
+  min)", as `LABELS` makes it at load (it said "Guided tour").
+- *R-5.* The dossier's last record reads "Last recorded in “The ponds”, 14:30 - 17:00", and for the 30 formations last recorded in phase 9
+  "Last recorded in “Reckoning”, after dark" (`phaseSpan`; it read "Last recorded at After dark").
+- *R-6 (formats; question 206, the default; the tour's own words are question 207, unchanged).* A clock range shown on screen is written as
+  the phases' clocks are ("08:00 - 09:00", `evTimeShown`: the event dossier and the markers' tips; spoken names keep "to", `evTimeText`); the
+  relief factor "4×" everywhere (the legend, the place dossier, the paper map's notes and the eye-level caption said "×4"; the self-test's
+  factor checks read "drawn 4× vertically", stricter than the old "×4" substring); the tour's counter "Stop 1 of 9" from `LABELS.tour.counter`
+  (it was "1 OF 9"); numbers grouped "38,700" always (`toLocaleString("en-GB")`, 18 sites; the visitor's locale until now); the claims index,
+  the confidence grades' list and the order of battle's army headings use a colon where they used an em dash (runtime-test's claims-index
+  checks follow, as strict). `CONF_TEXT.C`'s em dash is guarded data, left.
+- *The VISUAL_AUDIT leftovers.* The event steps' glyphs in the media players' order, the bar outside the triangle, in the same two glyphs
+  (question 208, the default); the native `title` tooltips of the timeline (phases, event markers, acts, the theme's mark) replaced by one
+  tooltip, `#tltip` (`bindTimeTips`): shown at once on hover and on keyboard focus, in the page's type, hidden from assistive technology
+  (it repeats the name), Esc hides it and the pointer may move onto it (WCAG 1.4.13); the self-test's event-marker check reads the tip (and
+  no native title) and, on the first marker, the tip shown on focus and hidden when the focus leaves (stricter than before).
+- *G-1.* The scale bar is an image named, with a title, "Scale: 1 km, at the centre of the view (in perspective, nearer ground is larger
+  and farther smaller)" on the landscape, "…, across the paper map" on the paper map.
+- *Question 170 (b).* Under a "Whose eyes?" reading the plan links and the selection ring draw a formation where the reading draws it
+  (`readPos`): none for a formation the reading does not know, a corps or column at its known formations' mean (`aggReading`).
+  runtime-test.js holds it every 30 minutes for both readings and both plans (939 links at the reading's positions, 331 hidden with their
+  formation; 32 rings, 31 withheld).
+- *Question 170 (c), S-4.* The dossier's reading pill is the drawing's (`drawnKnow`; a corps or column, `aggReading`), with the reason "no
+  line of sight from the eye level" where the eye level turns "In sight" into "Reported only".
+- *Question 172.* The map items' focus ring stands on a plate of its own (`box-shadow` in `--on-accent`, 7 px, the ring at 3-5 px): at
+  3:1 or more on any ground in both themes; css-test.js holds the rule (the plate reaches past the ring, the two token colours at 3:1 in the
+  dark and paper themes). A focused map item that leaves the map says so in a polite region of its own, `#live-map`
+  (`LABELS.mapLeft`: "Telnitz has left the map; the focus is on …").
+- *Measured* (`harness.js --only`, 12 cases: first-run, first-run-laptop, narrow-390, opening-1, opening-2, overview-field,
+  selected-formation, paper-drawer, narrow-1024, eye-zuran, plans-overview, staff-paper; compared with the full reference run of the
+  unchanged build by `tools/step3/report-diff.js`): no difference in drops, dropped ids, unobstructed fractions or timeline height.
+- *Checked:* npm test, all nine suites and the height guard; check:data, all 131 declarations identical; check:chronology 0 errors. The
+  build: 2,190,836 bytes, md5 `8e061e4d8619729b8e763cb5eb54d028` (check:baseline moves at the step's end).
+
+**Group 3: test-suite hygiene (step 1's hand-ons; the context-loss case).** No historical text and no guarded declaration changed; the build
+changes only where a test now reads what the app draws (the ground shader's colours moved into a table, the same numbers; the weave).
+- *T-9 (b), `audit.js`.* Continuity and coverage are assertions (they only printed): no formation moves faster in any 5-minute step than
+  its arm's ceiling (`SPEED_CEIL`), every tracked formation has a positioned anchor, and those that never move are named with the reason
+  (`STATIC`: santon, one anchor); `errors: N` and the exit code, which `tools/run-all.sh` already judged for the other suites.
+- *T-9 (d), model code typed again in the tests.* `redteam.js`'s `wet()` is the model's own `wetAt` (from `_clock.js`); `terrain-test.js`'s crop
+  distribution is counted on the drawn ground's faces (`FACE.crop`, 134,400 faces: 47/27/14/12%), not on a copy of the field pattern's hash.
+- *T-9 (e), map constants typed by hand.* `tools/map-frame.js` reads the map frame and its inverse from world.js's `W` (guarded): `test.js`,
+  `redteam.js` and `geo-test.js` use it where they typed 680 x 500 and `*2+340, *2+250`.
+- *`css-test.js`.* The duplicate-rule check reads every base rule (wherever it stands between the @media blocks) and each @media block on its
+  own (it read only the base rules before the first @media; the four duplicates it missed were merged in group 2); the palette rule reads
+  GLSL's `vec3`/`vec4` literals too (a luma weight, the vector `dot()` takes with a colour, exempt; 3 found), so the ground shader's crop
+  tints, frost and "Whose eyes?" viewshed tints moved into `LAND_COL.glsl`, written into the shader by `glslV3` (the shader's text numerically
+  identical, checked line by line); the glyph coverage reads `tools/lang-scan.js`'s records and its one entity table (the two walkers
+  duplicated each other; lang-scan turned every named entity into a space): 204 glyphs, as before.
+- *`KIT.weave`.* The standards' threads are decision 84's black at 12% (`rgba(46,43,39,.12)`), not black: on the black cloth (the Austrian
+  eagle) a thread no longer falls below the floor; on every other cloth a thread is at most 5.5/255 lighter (a visible change of a 1 px line in
+  the flag textures, too small for any harness measure). css-test.js holds every cloth a standard is drawn in (`KIT.flag`, each nation's plain
+  cloth) with its threads at the floor or above (it fails on the old weave: `KIT.flag.black`).
+- *`tools/audit/size.js`* counts `fonts.css` and the bundle's joins: the parts now sum to the build exactly (2,192,107 = 2,192,107), and it
+  exits 1 if they do not.
+- *The chronology ledger* matched a statement by its reference and time, so a reword keeping both passed: check:chronology's new rule L9
+  holds each cite's and allowance's statement text by hash (`tools/stage2/chronology-text.json`, 157 entries, written by `--rehash --write`
+  after a row's review); a reword later in a cited sentence now fails (tried on the Kamensky line, then restored).
+- *R-7's mist measure* (`measure.js`, `thresholds.js`) is kept: it still measures the archived pre-4C builds a `--legacy` run reads; its
+  comments say so.
+- *The context-loss case* (`tools/visual/boot-check.js`; `CTX_DELETES` unchanged, 40). The count varied 20-44 because the context was lost
+  while the page's start-up frames were still settling (under software WebGL about 40 s of them, each rebuilding the confidence patches):
+  probed, 52 warnings with the loss at once, 36-40 after 8 s, 12 after 20 s, and the app idle after about 43 s. The case now waits for the
+  render loop to be idle (`DEV.state`, 0.5 s, within 120 s) before the loss and after the restore: 0 warnings on three runs, deterministic.
+  The scenario three r128 warns on (a geometry drawn before the loss, disposed after it) then no longer occurs in the case; a clock step
+  after the restore would make it occur on purpose, 248 warnings, past the bound: question 212.
+- *Checked:* npm test, all nine suites and the height guard; check:data, 131 declarations identical; check:chronology 0 errors (L9 with
+  it); `boot-check.js` context-loss three times (0 warnings each). The build: 2,192,107 bytes, md5 `3888026c2ddfaf9ec31b71b69584adcd`.
+
+**The review of groups 1 and 2** (an independent reviewer, read-only, on `22c77ac`; it rebuilt the build byte-identical, ran no browser).
+Its findings, each fixed in the commit after group 3's, or recorded:
+- (1, medium) The dossier pill of a corps or column took its formations' reading but the corps' own reason (`knowReason` at its mean
+  position): 84 disagreements over the day ("In sight (no line of sight)"). Now `pillReading`: a corps or column gives its formations' count
+  as the reason ("1 of its 3 formations on the field known"), a formation the drawing's reason; runtime-test.js holds it every 30 minutes for
+  both readings (464 corps and column readings, 101 with a reason).
+- (2) The message when a focused item leaves the map named an event "Event" (its accessible name to the first comma) and said "left the
+  map" for a pan or zoom too: now the item's own name (`mlShortName`: the formation's, event's, place's or terrain line's) and "has left the
+  view"; runtime-test.js holds the names.
+- (3) R-6 was incomplete: `symbols.js`'s two `toLocaleString()` (the counter's strength line and its accessible name) and runtime-test.js's
+  two now "en-GB"; the dossier's Timing row and the sources sheet's derived arrivals wrote a clock range with an en dash: now " - ".
+- (4) Esc on a shown tip also ran the app's Esc (the tour, the theme, the selection): it now hides the tip alone; a second Esc is the app's.
+- (5) The theme's mark (`#spinemark`, aria-hidden, no pointer events) cannot show a tip, nor could it its native title before: the record
+  above that lists it among the tips' elements is corrected here; its `data-tip` is harmless and kept.
+- (6) The scale bar kept a native `title` in the timebar: removed (its name is its `aria-label`), and hidden from assistive technology
+  while the bar is hidden.
+- (7) The phase buttons' act name, which the removed `title` gave as a description, is in their name now ("…: The Allied left opens the
+  battle (Act …)").
+- (8) The "?" overlay's Esc row named "the sources sheet": now "the Accuracy and sources sheet" (`LABELS.names.sheet`). The light notes'
+  "the sources sheet's Basis" is changed with group 4's correction of those notes.
+- (9) Records: `docs/VISUAL_AUDIT.md`'s "#6 to #47" is "#7 to #47" (#6 is a set-up task's merge); `legendHint` has a test now
+  (runtime-test.js); check:selftest, check:contrast and the full check:visual run at the step's end, on the final build (the self-test's
+  edited checks, the tooltip and the focus ring's plate among what they read).
+- Checked after the fixes: npm test, all nine suites and the height guard; check:data, 131 identical; check:chronology 0 errors. The build:
+  2,194,116 bytes, md5 `9d904bc9b9968d105d069032095e97e7`.
+
+**Group 4: a small data task, with evidence (H-18, H-19's one spelling, the Guard infantry's commander; the light notes, the order of
+battle's rows).** The readings were made by machine readers on page images on 20 October 2026 (one per question; the eye-level caption and
+the light notes' attributions checked against the registers and Thiébault's pages read again), the decisive pages read again by the lead;
+none by a person. Six new entries in `docs/step4-evidence/readings.md`, section S5 (S5.1-S5.6). check:data's reference moves to the step's
+final build. Every changed declaration, with was, is and why:
+- `FEATURES[#austerlitz].story` (H-18): was "Napoleon signed the armistice with Francis at the castle here on 6 December."; is "On 4 December
+  Napoleon met Emperor Francis at Napoleon's bivouac by the outposts, by a mill in Savary's account, and the two agreed on an armistice (the
+  31st Bulletin); the 32nd Bulletin, dated 6 December, has Prince Johann of Liechtenstein come to the Emperor at the castle here and conclude
+  it with Marshal Berthier." (worded so after the group's review: the Bulletin puts Liechtenstein's visit at the castle, and its sentence on
+  the armistice names no place); why: the 32nd Bulletin (Correspondance no. 9548, p. 462, S5.1) has Liechtenstein come to the castle and
+  conclude the armistice with Berthier; the 31st (no. 9546,
+  p. 457, S5.2) has the two emperors meet at Napoleon's bivouac by the outposts and agree on an armistice; Savary, who was there (t. II,
+  p. 213, S5.3), puts the meeting at a mill before Bernadotte's outposts. The armistice's own text (the Moniteur of 26 frimaire an XIV) was
+  not found, so its date and signatures as printed are not claimed. Claim: attributed (three readings).
+- `FEATURES[#santon].story` (H-18): was "Named by French soldiers after a chapel in Egypt. Bagration could not get past it, …"; is "Veterans of
+  Egypt named it the Santon, Marbot says, because the small chapel on its top had a roof like a minaret; Ségur reports it was said to be
+  named for a tomb the Turks had left there. Bagration could not get past it, …" (the second sentence unchanged); why: no source read says "a chapel in Egypt":
+  Marbot (t. I, p. 258, S5.4; Thiers t. VI, pp. 293, 297 agreeing) has veterans of Egypt name the hill for its own minaret-like chapel, and
+  Ségur (t. II, p. 452, S5.5), as hearsay, a Turkish tomb. Claim: disputed, the two sides; its note says the second sentence is this map's
+  reading.
+- `FORMATIONS.rg_inf.strengthNote` (step 4's hand-on; question 210, the default as the review of this group left it): was "6,730 (Duffy
+  1977; Smith 1998)"; is that, then "Maliutin commanded the Guard infantry at Olmütz and on the march (Mikhailovsky-Danilevsky; the
+  Chevalier Guard's history), and Sokolov's order of battle for 2 December still titles him commanding all the Guard infantry; but on the day
+  he led a separate column, the Life Grenadiers and the Chevalier Guard, which came up late, the Chevalier Guard sent ahead (Sokolov; the
+  Chevalier Guard's history; the Allied report printed in 1806). The Guard infantry with the Tsesarevich is under Depreradovich 1st,
+  commander of the 1st Guard infantry brigade, in Sokolov alone, with no source on his page"; why: no source read puts Maliutin with the
+  infantry that fought at Stare Vinohrady: Sokolov's order of battle (t. II, pp. 199-200, S5.6) lists the 1st column's infantry under
+  Depreradovich 1st (by title a brigade's commander) and Maliutin, titled commanding all the Guard infantry, at the head of the 2nd column;
+  the Chevalier Guard's history (pp. 54, 56-59, C6.28, C6.c1, C6.c2) and the 1806 report (pp. 118-119, C6.c3) put Maliutin's column away
+  from the plateau; Mikhailovsky-Danilevsky (pp. 144-145, C6.27) gives him the infantry at Olmütz. The note's claim: attributed (six
+  readings). `FORMATIONS.rg_inf.commander` is unchanged, "Lt.-Gen. Maliutin" (group 4's commit put "Maj.-Gen. Depreradovich 1st" there;
+  its review found that this overstates Sokolov, who gives him a brigade, and the field went back): question 210 recommends "not
+  established on the day". The strength (6,730) is unchanged: question 211.
+- `PHASES[#3].lede` (H-19): "St-Hilaire" -> "Saint-Hilaire" (the one place the name was abbreviated). No other spelling changed: the accents
+  are question 209 (default: as now).
+- `STATEMENT_CLAIMS`: three entries added (the two stories, the note), each hashed; the inventory regenerated (704 statements: 144 with a
+  claim of their own, 75 by class, 485 unchecked; it was 141, 75 and 488).
+- Not data, app.js: the light notes' sentence "The hours drawn are the narrative's, and this reconstruction cites no source for them" is now
+  "The hours drawn are this map's own: the climb from about 08:45, inside the sources' range as the climbs' timing notes give it (about eight
+  in Ségur, the aide's report at half past eight in Thiebault, about nine in Stutterheim and Schönhals), none of them taken as its hour" (the
+  reader's finding: since step 4 the climbs' timing notes cite that range, C1.37 and C2.22; the words are the notes' own), and "(the sources
+  sheet's Basis)" is "(this sheet's Basis)" (the review of 22c77ac, item 8). Every other attribution of the light notes and of the eye-level
+  caption holds as written (each found in the registers, Thiébault pp. 456, 457 and 504 read again on the images); they stay presentation
+  sentences in app.js, outside the claims (question 187's open note). The order of battle's third rows (a brigade under a division) print
+  their commander as the rows above do (Claparède under Suchet's division, step 2's hand-on).
+- check:chronology: the lede's cite (kamensky@6, "lede 3 @11:00") reviewed against the new text (its hour unchanged) and L9's record rehashed.
+- *Measured* (`harness.js --only` against the reference run): pratzen-low, overview-field, selected-formation, watch-selected, paper-drawer
+  and staff-paper, no difference in drops, dropped ids, unobstructed fractions or timeline height.
+
+**The review of group 4** (an independent reviewer, read-only, on `24f13cf`; it read the S5 page images itself and found every quotation,
+page and translation exact, the hashes current, the claims' readings registered). Its findings, each fixed in the commit after group 3's
+review, or recorded:
+- (1, medium) `FORMATIONS.rg_inf`: Sokolov's table also titles Maliutin "commanding all the Guard infantry" and gives Depreradovich 1st only
+  the 1st brigade, so "Depreradovich 1st" in the commander field overstated it and the note dropped that side: the field is back to
+  "Lt.-Gen. Maliutin" (question 210's default is now (b); its recommendation (c), "not established on the day"), and the note says both.
+- (2) The 32nd Bulletin puts Liechtenstein's visit at the castle; its sentence on the armistice names no place: reworded ("has Prince Johann of
+  Liechtenstein come to the Emperor at the castle here and conclude it with Marshal Berthier"), and "Napoleon's bivouac" for "his bivouac";
+  S5.1's "settles" with it.
+- (3) `shortCommander` stripped "Gen." before "Gen. de brigade" ("de brigade Michel Claparède", on the new order-of-battle row and, older, on
+  the map counter): "Gen. de brigade" is stripped whole.
+- (4) The note said Sokolov had the column come up late and the 1806 report the Cossacks: the column is the Life Grenadiers and the Chevalier
+  Guard, "which came up late, the Chevalier Guard sent ahead", from the three sources together.
+- (5) Sokolov's total for the reserve, 10 battalions and 7,500 infantry (p. 200, read again on the image), is in S5.6 and question 211.
+- (6) The default of question 210 changed a data value before the owner's answer: it no longer does (the field is as before step 5).
+- (7) The group's "Checked" line and build: below. (8) "Ségur heard" is "Ségur reports it was said" (his "disait-on").
+- *Checked* (group 4 with its review's fixes): npm test, all nine suites and the height guard; check:chronology 0 errors; check:data:
+  PHASES, FORMATIONS, FEATURES and STATEMENT_CLAIMS changed on purpose, every other declaration identical. The build: 2,197,389 bytes, md5 `f6082ae2c1443618b3c426a834625bea`.
+
+**The step's end.**
+- *The commits.* `c74855e` group 1; `22c77ac` group 2; `b588b37` group 3; `02b3522` the review of groups 1 and 2; `24f13cf` group 4;
+  `8d97f3d` the review of group 3; `900cd50` the review of group 4; `9f27edd` check:data's reference and the baseline moved, CLAUDE.md;
+  (this commit) the final checks and records.
+- *Checks on the final build* (md5 `f6082ae2...`, 2,197,389 bytes; each heavy check alone): npm test, all nine suites and the height guard;
+  check:chronology 0 errors (L9: 157 cites and allowances current); check:data against the new reference `archive/step5-f6082ae2.html`, all
+  131 declarations identical (against the old reference, `archive/step4b-02a46c50.html`: PHASES, FORMATIONS, FEATURES and STATEMENT_CLAIMS
+  changed, group 4); check:visual "STAGE0: all checks passed", the self-test 242 of 242 by the manifest, and against the reference run of the
+  unchanged step-4b-C build (`tools/step3/report-diff.js --all`): no difference in drops, dropped ids, unobstructed fractions or timeline height
+  in any of the 30 cases; check:contrast 35 states reached, 5,903 text elements, 0 below AA, 0 below 10.5 px, 0 font failures, the six
+  start-up cases pass (context-loss 0 warnings); check:selftest "STAGE0: all checks passed", 242 passed, 0 failed, the manifest held; check:baseline moved to this build (`package.json`: md5
+  `f6082ae2c1443618b3c426a834625bea`, 2,197,389 bytes; was `97352160...`, 2,182,537 bytes), passes. No limit (`DROP_LIMIT`, `UNOBSTRUCTED`,
+  `PAPER_MIN_PXKM`, `CTX_DELETES`) moved; the self-test manifest is unchanged (no check added, removed or renamed: the changed checks keep their
+  names).
+- *What remains uncertain (historical).* The armistice's own text (date, place, signatories as printed) was not read; the Bulletins are
+  the French army's own account. Which reason named the Santon (Marbot's chapel, Ségur's hearsay tomb) is not settled: both kept. Who led the
+  Guard infantry that fought at Stare Vinohrady is not settled by the sources read (question 210); its 6,730 may count the Life Grenadiers
+  (question 211). Every reading of the step was made by machine readers; none by a person.
+- *Implementation choices.* Each default of questions 205-208 and 212 (the names, the formats, the glyphs, the idle context-loss case); the
+  tooltip's behaviour (at once, on focus, Esc, hoverable); the focus ring's plate colour (`--on-accent`); `readPos` and `pillReading` as the
+  reading's one answer for the plan links, the ring and the pill; the GLSL colours' table (`LAND_COL.glsl`); the weave at the floor colour;
+  check:chronology's text record (`chronology-text.json`).
+
+**The review of group 3** (an independent reviewer, read-only, on `b588b37`; it rebuilt both builds, ran the node suites in both trees and
+found every one passing; it ran no browser). Its findings, each fixed in the commit after group 4's, or recorded:
+- (1, medium-high) The context-loss case, idle, no longer exercises the path its bound was set for (a geometry drawn before the loss,
+  disposed after it), nor a loss while the page is busy; with a count of 0, the bound of 40 lets warnings through unseen. The assertion's words
+  are unchanged and the move is disclosed, but the case was moved off the scenario that failed CI. Not changed without the owner's word (a
+  bound): the clock step after the restore measured again, 248 warnings on each of three runs (deterministic); question 212 recommends that
+  sub-case with a bound of 248.
+- (2) Question 212 was cited before the questions file held it: committed with group 4.
+- (3) The ground shader's elevation tints (`vec3(0.90+0.16*e, ...)`, components that are expressions) were still outside the palette rule:
+  moved into `LAND_COL.glsl.elev` (base and slope; the shader computes base + slope x e, the same arithmetic), and the rule reads a vector whose
+  components begin with a number (a splat such as `vec3(1.0)` or `vec3(2.4)`, gamma and thresholds, is not a colour and not matched).
+- (4) The glyph coverage, through lang-scan, no longer read `data-slow`, the start-up guard's 20 s status line: `data-slow` is a visitor
+  attribute in `tools/lang-scan.js` (also judged by the overclaim scan now). The inline guard's strings are console messages.
+- (5) Records: `tools/audit/size.js`'s note gives the old shortfall exactly (96,643: fonts.css less its 9-byte marker, plus the 9 joining
+  newlines); terrain-test.js's crop count reads the faces whose class is field (112,436: 47/28/15/11%), and its comment says what FACE.crop is.
+- (6) `--rehash` prints each changed cite with the text it now resolves to, for the review the record stands for.
+
 ## 2026-10 · Roadmap step 4b, part C: questions 203 and 204 decided; 203 applied
 
-**Status: done on `claude/adoring-gauss-ubfas9` (PR #55), for review. The build changed: `austerlitz-command-map.html` 2,182,537 bytes, md5
+**Status: done on `claude/adoring-gauss-ubfas9` (PR #55); merged (#55). The build changed: `austerlitz-command-map.html` 2,182,537 bytes, md5
 `97352160b97bc8e21380074e1bedbea5` (the part-B build: 2,178,819 bytes, `02a46c50...`).** The owner wrote (18 October 2026): "Go with your recommendations
 for 203, 204, and 205. Then implement as a PR." There was no question 205 (the last asked is 204; 205 is the next number): nothing is
 decided for it.
@@ -77,7 +339,7 @@ own; the track objectives that restate an order read handed on to the next sourc
 
 ## 2026-10 · Roadmap step 4b, part B: questions 202, 187 and 196 applied; decision 189 recorded complete
 
-**Status: done on `claude/adoring-gauss-ubfas9` (PR #54), for review. The build changed: `austerlitz-command-map.html` 2,178,819 bytes, md5
+**Status: done on `claude/adoring-gauss-ubfas9` (PR #54); merged (#54). The build changed: `austerlitz-command-map.html` 2,178,819 bytes, md5
 `02a46c500ca839a9a6e108d8333cc78a` (the part-A build with decisions 198-201: 2,167,583 bytes, `e257d09b...`).** The owner wrote (17 October 2026): "Let's do all remaining
 questions, your recommendations for all here. 202 and 203, as well as any other ones we can do now. That means Q202, Q187 and 196, and also
 mark Decision 189 as complete. Then merge through a separate PR, meaning PR 54." Question 203 did not exist yet: this part records it (below).
@@ -234,7 +496,7 @@ grade B, fact, read on page images); no reading gives the dragoons' own hour or 
 
 ## 2026-10 · Roadmap step 4b, part A: owner decisions 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 taken up
 
-**Status: done on `claude/adoring-gauss-ubfas9` (draft PR #53), for review, with the owner's decisions 198-201. The build changed:
+**Status: done on `claude/adoring-gauss-ubfas9` (draft PR #53); merged (#53), with the owner's decisions 198-201. The build changed:
 `austerlitz-command-map.html` 2,167,583 bytes, md5 `e257d09b7865e4bd1f76dd979b46b4ef` (the step-4 build: 2,159,374 bytes, `833743c6...`;
 the first 4b build, before 198-201: 2,161,604 bytes, `2ae24fa3...`).** A data task: each decision applied as its recommendation reads, conditions
 included (`docs/step4-evidence/questions.md`, decided as recommended on 15 October 2026); where a recommendation depends on a measurement,
@@ -833,7 +1095,7 @@ as before (lang@2 and prz@2 at 08:00).
 
 ## 2026-10 · Roadmap step 4: the sourcing stage (H-6, H-17; decisions 125 (b), 128 (b), 130, 136)
 
-**Status: done on `claude/nice-dijkstra-mdyu2w` (draft PR #52), for review. The owner decided questions 176-197 as recommended on
+**Status: done on `claude/nice-dijkstra-mdyu2w` (draft PR #52); merged (#52). The owner decided questions 176-197 as recommended on
 15 October 2026, to be implemented later (the last commit records it; the build carries each question's default).** The step's end, with
 the final checks, the build's size and md5 and what remains uncertain, is the section after the list of commits. `check:data` changes on purpose in this step (a data task):
 every changed declaration is listed below with what it was, what it is, why and the source's locator, and the reference moves to the
@@ -2679,7 +2941,7 @@ climbs. Step 5: H-19's spelling, H-18, the labels' cost to `pickFormation`, `bui
 
 ## 2026-10 · Roadmap step 1: suite hardening, the fonts embedded first (decisions 131, 132, 141)
 
-**Status: for review (#49). The build changed: `austerlitz-command-map.html` 1,883,794 bytes, md5 `7a86548c5e394853571f28f9e1640a74` (was
+**Status: merged (#49). The build changed: `austerlitz-command-map.html` 1,883,794 bytes, md5 `7a86548c5e394853571f28f9e1640a74` (was
 the Stage 7D build, 1,764,002 bytes, md5 `46773462faa1e1b9f4a4010e450e110a`).** `check:baseline` moves to this build. `check:data`'s
 reference is not moved: no guarded declaration changed (all 121 identical). The first commit (`086ccec`) records the audit (#48) as merged,
 decisions 125-141 (`docs/FINAL_AUDIT.md` §6.0) and the new `docs/ROADMAP.md`. The next owner decision is 142. The size, +119,792 bytes
@@ -2944,7 +3206,7 @@ warning, the hover's cost and the S-1 check; for step 5, the T-9 items not taken
 
 ## 2026-10 · Final audit (docs/FINAL_AUDIT.md); no change to the build
 
-**Status: for review. No source file, no data and no build changed:** `austerlitz-command-map.html` is the Stage 7D build, 1,764,002 bytes,
+**Status: merged (#48). No source file, no data and no build changed:** `austerlitz-command-map.html` is the Stage 7D build, 1,764,002 bytes,
 md5 `46773462faa1e1b9f4a4010e450e110a`; `npm run check:baseline` passes at the start and at the end; `check:data`'s reference is not moved.
 The first commit records 7D (#47) as merged: Stage 7 is complete. The next owner decision is 125.
 
@@ -3022,7 +3284,7 @@ The first commit records 7D (#47) as merged: Stage 7 is complete. The next owner
 
 ## 2026-10 · Stage 7D: the clock played between the opening's steps (docs/STAGE7_SPEC.md §3.5, §4.3-§4.5, §6; owner decisions 123, 124)
 
-**Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
+**Status: merged (#47); with it Stage 7 is complete. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
 `austerlitz-command-map.html`: 1,764,002 bytes, md5 `46773462faa1e1b9f4a4010e450e110a` (was 1,748,568 bytes, md5 `bebcfff6…`, Stage 7C).**
 `check:baseline` moves to this build. The first commit records 7B (#45) and 7C (#46) as merged, and the owner's decisions 123 and 124.
 
@@ -3122,7 +3384,7 @@ a frame paused mid-stretch by the Play/Pause button's own toggle; Stage 0's thre
 
 ## 2026-10 · Stage 7C: the opening, stills from the tour (docs/STAGE7_SPEC.md §3.4, §4, §5, §6; owner decisions 111, 112, 114-116, 118, 121)
 
-**Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
+**Status: merged (#46). Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
 `austerlitz-command-map.html`: 1,748,568 bytes, md5 `bebcfff6ce5e85f9b13f9b5c3709d20e` (was 1,729,495 bytes, md5 `82337dd4…`, Stage 7B).**
 `check:baseline` moves to this build. Built on the 7B branch: 7B (#44) was merged into the Part A branch, not `main`, and #45 brings its four
 commits to `main`; until #45 is merged this part's pull request shows them too.
@@ -3247,7 +3509,7 @@ At 1280 x 720 the rows without a case of their own are held by the 1600 x 900 ca
 
 ## 2026-10 · Stage 7B: the first screen (docs/STAGE7_SPEC.md §4, §5, §6; owner decisions 111-113, 117-120, 122)
 
-**Status: for review. Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
+**Status: merged (#44 into the Part A branch, #45 into `main`). Presentation only: no data declaration changes (`check:data` passes against `archive/stage6b-7fc0f6c3.html`).
 `austerlitz-command-map.html`: 1,729,495 bytes, md5 `82337dd43a45c7ee6e502605b667549d` (was 1,720,613 bytes, md5 `3dd7ca41…`, Stage 6D).**
 `check:baseline` moves to this build. Built on the Part A branch (#43, not yet merged); its first commit records the owner's decisions 111-122
 in the specification (§0.5: every recommendation of §7 accepted).
@@ -3346,7 +3608,7 @@ the same way (`7b-firstrun-probe.json`).
 
 ## 2026-10 · Stage 7 Part A: first run and opening sequence, the specification (docs/STAGE7_SPEC.md); no change to the build
 
-**Status: for review. No source file, no data and no build changed:** `austerlitz-command-map.html` is the Stage 6D build, 1,720,613 bytes,
+**Status: merged (#43). No source file, no data and no build changed:** `austerlitz-command-map.html` is the Stage 6D build, 1,720,613 bytes,
 md5 `3dd7ca41f73d0e5ffcfe5fa64adc5f51` (`check:baseline` passes); `check:data` passes against `archive/stage6b-7fc0f6c3.html` (not moved).
 The first commit records Stage 6D as merged (#42): Stage 6 is complete. The next owner decision is 111.
 
@@ -3697,7 +3959,8 @@ generic (colours also "none shown"); grade A only with a source or document date
 headgear or colour drawn generic; every colours entry with a model, a count rule and a cloth; the standard's measures in metres or
 provisional with a reason; every source cited, every source a note names registered; SOURCE_NOTE's two questions kept while the table
 does not settle them. `runtime-test.js`: the table's dry run for all 32 blocks. `redteam.js`: the retired claims also checked in
-`appearance.js` (6 sources). `tools/stage6/verify-quotes.js` (not bundled): every quote searched for in its source's text; 309 quotes:
+`appearance.js` (6 sources). `tools/stage6/verify-quotes.js` (not bundled): every quote searched for in its source's text; 309 quotes (the final audit counts 311 by the same script on the unchanged
+table, `docs/FINAL_AUDIT.md` R-2: this record was likely written before the table's last edit, an inference):
 103 found whole, 31 with OCR differences, 41 checked on the page images in this part (`quote-check-images.json`: the Schönhals order of
 battle, the PSZ cap orders, four Viskovatov pages), 56 not found in damaged OCR and 78 with no text layer reachable here, all recorded as
 read on the page images by the reading pass (`docs/stage6-evidence/quote-check.md`).
@@ -5339,7 +5602,7 @@ the Watch presentation control.
 
 ## 2026-09 · Stage 2F: the ground surface (docs/STAGE2_SPEC.md §B.4, §I.2, §J, §K; decisions 27, 28, 30, 31)
 
-**Status: done; merged (#19). Stage 2 has no further part; Stage 3 has not started. `austerlitz-command-map.html`: 1,253,655 bytes, md5
+**Status: done; merged (#19). Stage 2 has no further part. `austerlitz-command-map.html`: 1,253,655 bytes, md5
 `ee4390a2585f3df170fba82eb1994112`** (was 1,226,091 bytes, md5 `c5883f79…`, Stage 2E).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move.
@@ -5561,7 +5824,7 @@ every view (the meres are drawn in every view). The self-test checks the row.
 
 ## 2026-09 · Stage 2E: the true north-up paper map (docs/STAGE2_SPEC.md §F, §G, §H, §J, §K; decisions 18, 19, 25, 29, 31, 39)
 
-**Status: done; merged (#18). 2F has not started. `austerlitz-command-map.html`: 1,226,091 bytes, md5
+**Status: done; merged (#18). `austerlitz-command-map.html`: 1,226,091 bytes, md5
 `c5883f79cc1481b2dc4863d089b4e363`** (was 1,189,512 bytes, md5 `2dc0c26d…`, Stage 2D).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move.
@@ -5798,7 +6061,7 @@ large flat triangle, and its bounding box is larger still.
 
 ## 2026-09 · Stage 2D: one DOM/SVG layer for map text, and the contextual legend (docs/STAGE2_SPEC.md §E, §F, §H, §J, §K; decisions 24, 29, 38, 39)
 
-**Status: done; merged (#17). 2E has not started. `austerlitz-command-map.html`: 1,189,512 bytes, md5
+**Status: done; merged (#17). `austerlitz-command-map.html`: 1,189,512 bytes, md5
 `2dc0c26d969ec037cb838929d259320f`** (was 1,166,868 bytes, md5 `68ac7721…`, Stage 2C).
 - `check:baseline` moves to this build.
 - `check:data`: all 113 data declarations byte-identical to `archive/stage2c-68ac7721.html`; the reference does not move.
@@ -6017,7 +6280,7 @@ as rendered, lowest per view. The layer's DOM nodes are the displayed items only
 
 ## 2026-09 · Stage 2C: movement arrows (docs/STAGE2_SPEC.md §C, §D, §J, §K; decisions 20-23, 33, 37, 46)
 
-**Status: done; merged (#15). 2D has not started. `austerlitz-command-map.html`: 1,166,868 bytes, md5
+**Status: done; merged (#15). `austerlitz-command-map.html`: 1,166,868 bytes, md5
 `68ac77219de339186b7b96aae2266a4f`** (was 1,149,340 bytes, md5 `0c485151…`, Stage 2B; 1,153,477 bytes, md5 `f6324c90…`, after the
 precondition commit, the entry below).
 - `check:baseline` moves to this build.
@@ -6240,7 +6503,7 @@ The next legs start later with them: `vandamme@8` 13:24-14:30 (was 13:15), `riva
 
 ## 2026-09 · Stage 2B: display height, exaggeration, standards (docs/STAGE2_SPEC.md §A, §B, §I.1, §J, §K; decisions 19, 26, 32, 34, 35, 36)
 
-**Status: done; awaits the owner's review. 2C has not started. `austerlitz-command-map.html`: 1,149,340 bytes, md5
+**Status: done; merged (#14). `austerlitz-command-map.html`: 1,149,340 bytes, md5
 `0c48515152e57c29963b79c4a99d78c9`** (was 1,122,358 bytes, md5 `12d34eed…`). `check:baseline` moves to this build. `check:data`: all 112 data
 declarations identical to the #12/#13 build (only rendering declarations change); its reference is unchanged.
 
@@ -6394,7 +6657,7 @@ DOM/SVG layer (decision 24).
 
 ## 2026-09 · Chronology data task (owner decisions 40-46; docs/STAGE2_SPEC.md §M.7-§M.12): explicit anchor times
 
-**Status: done; awaits the owner's review. 2B has not started. `austerlitz-command-map.html`: 1,121,991 bytes, md5
+**Status: done; merged (#12; its follow-up #13). `austerlitz-command-map.html`: 1,121,991 bytes, md5
 `e76222b31b3671020c7643b9e6ea1925`** (was 1,107,799 bytes, md5 `5bf48b75…`). `check:baseline` and `check:data` move to this
 build (below).
 
@@ -6522,7 +6785,7 @@ unreadable here); the derived arrivals (a model rule, not evidence); the undated
 
 ## 2026-09 · Stage 2A continued: owner decisions 31-39 and the chronology audit (docs/STAGE2_SPEC.md §M); no change to the build
 
-**Status: §M awaits the owner's review; 2B has not started. `austerlitz-command-map.html` unchanged: 1,107,799 bytes, md5
+**Status: §M merged (#11); the owner's decisions 40-46 on it followed. `austerlitz-command-map.html` unchanged: 1,107,799 bytes, md5
 `5bf48b75373fe0cf9fc8a32cbeae918c`.**
 
 **What changed**
@@ -6569,7 +6832,7 @@ is the analysis chapter "guard", not an event (the event `guard-broken` starts a
 
 ## 2026-09 · Stage 2A: map readability specified (docs/STAGE2_SPEC.md); no change to the build
 
-**Status: specification for the owner's review. `austerlitz-command-map.html` unchanged: 1,107,799 bytes, md5
+**Status: specification, merged (#10). `austerlitz-command-map.html` unchanged: 1,107,799 bytes, md5
 `5bf48b75373fe0cf9fc8a32cbeae918c`** (confirmed on `main` before the work, and by `check:baseline` after it).
 
 **What changed**

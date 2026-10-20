@@ -39,6 +39,11 @@ Object.keys(FORMATIONS).forEach(id=>{
   }
   worst.push({id,km:mx*KM_PER_MAP,at});
 });
+/* roadmap step 5 (docs/FINAL_AUDIT.md T-9 (b): until step 5 continuity and coverage only printed): no formation moves faster in any
+   5-minute step than its arm's march-rate ceiling (SPEED_CEIL, the movement audit's), so a jump of the clock's interpolation fails here */
+const errs=[];
+worst.forEach(w=>{ const f=FORMATIONS[w.id], ceil=SPEED_CEIL[f.arm]||5.0;
+  if(w.km*12>ceil*(1+1e-9)) errs.push("continuity: "+w.id+" moves "+(w.km*1000).toFixed(0)+" m in 5 minutes at "+fmtClock(w.at)+" ("+(w.km*12).toFixed(2)+" km/h), over its "+ceil+" km/h ceiling"); });
 worst.sort((a,b)=>b.km-a.km).slice(0,6).forEach(w=>
   console.log("  "+w.id.padEnd(13),(w.km*1000).toFixed(0).padStart(4)+" m per 5 min at "+fmtClock(w.at),
               "= "+(w.km*12).toFixed(1)+" km/h"));
@@ -47,3 +52,13 @@ worst.sort((a,b)=>b.km-a.km).slice(0,6).forEach(w=>
 let anchored=0, total=0;
 Object.keys(FORMATIONS).forEach(id=>{ if(FORMATIONS[id].track){ total++; if(anchorList(id).length>1) anchored++; } });
 console.log("\nformations with tracks:",total," moving:",anchored);
+/* coverage (step 5): every tracked formation has a positioned anchor, and those that never move are the ones named here, with the reason */
+const STATIC={santon:"the 17e Légère's detachment holds the fortified hill all day: one anchor"};
+Object.keys(FORMATIONS).forEach(id=>{ if(!FORMATIONS[id].track) return; const A=anchorList(id);
+  if(!A.some(a=>a.p)) errs.push("coverage: "+id+" has a track with no positioned anchor");
+  if(A.length<=1&&!STATIC[id]) errs.push("coverage: "+id+" never moves, and STATIC does not name it");
+  if(A.length>1&&STATIC[id]) errs.push("coverage: "+id+" is named in STATIC but moves"); });
+Object.keys(STATIC).forEach(id=>{ if(!FORMATIONS[id]||!FORMATIONS[id].track) errs.push("coverage: STATIC names "+id+", which has no track"); });
+errs.forEach(e=>console.log("  ! "+e));
+console.log("errors: "+errs.length);
+if(errs.length) process.exitCode=1;

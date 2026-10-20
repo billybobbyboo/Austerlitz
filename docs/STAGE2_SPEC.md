@@ -11,7 +11,7 @@ is merged (#18). 2F (the ground surface: land cover drawn per point, draped road
 implemented as §J and §K describe; what it found is at the end of §K; it is merged (#19). Stage 2 is complete.** Sections A-L below still describe the build
 they were written against, except §C.1, whose tables were re-run on the new tracks (the earlier ones are §C.4). Written against `main` at `7e03692`
 (`austerlitz-command-map.html` 1,107,799 bytes, md5 `5bf48b75373fe0cf9fc8a32cbeae918c`, confirmed before any work;
-`npm run check:baseline` now checks exactly that build). Line numbers refer to that commit.
+`npm run check:baseline` checked exactly that build then; it has moved with every build since, `CHANGELOG.md`). Line numbers refer to that commit.
 
 Scope: Stage 2 of `docs/VISUAL_AUDIT.md` (problems 4, 5, 8, 9 and opportunity 5) as ordered by owner decisions 18-30
 (§0). Parts 2B-2F implement it; this part only measures, prototypes and specifies.

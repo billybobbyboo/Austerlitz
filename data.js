@@ -72,7 +72,7 @@ var PHASES = [
   cam:[-144,52,130,-56,4,46], mist:0.90 },
 
 { id:3, t0:525, t1:570, clock:"08:45 - 09:30", label:"The Pratzen", title:"Soult storms the heights",
-  lede:"Saint-Hilaire and Vandamme climb out of the fog into sunlight onto a plateau the 4th Column is still crossing. St-Hilaire makes for the Pratzeberg south of Pratzen village, Vandamme for Stare Vinohrady, the 'old vineyards', north-east of the village. Kutuzov, riding with the 4th Column, sees the danger and begins pulling troops back. The Allied centre is being broken, but the plateau will not be firmly French until about 11:00.",
+  lede:"Saint-Hilaire and Vandamme climb out of the fog into sunlight onto a plateau the 4th Column is still crossing. Saint-Hilaire makes for the Pratzeberg south of Pratzen village, Vandamme for Stare Vinohrady, the 'old vineyards', north-east of the village. Kutuzov, riding with the 4th Column, sees the danger and begins pulling troops back. The Allied centre is being broken, but the plateau will not be firmly French until about 11:00.",
   events:[
     ["c. 08:45","Soult's divisions advance. The mist lifts off the heights."],
     ["c. 09:00","Friant's leading brigade comes up to the Goldbach near Telnitz: about nine in Stutterheim and the Moniteur's remarks of 1806, attacking about nine in Schönhals, after Telnitz had fallen in Mikhailovsky-Danilevsky; Davout's report has word of the attack reach him on the march about eight and gives no hour for the brigade's arrival. The division had reached Raigern overnight: about 115 km from Vienna in under two days in Sokolov, thirty-six leagues in forty-eight hours in Thiers."],
@@ -603,7 +603,7 @@ constantine:{ ech:"corps", nation:"ru", arm:"guard", desig:"Imperial Guard",
 
 rg_inf:{ ech:"div", nation:"ru", arm:"guard", desig:"Guard Infantry",
   name:"Guard Infantry", commander:"Lt.-Gen. Maliutin", parent:"constantine",
-  strength:6730, strengthNote:"6,730 (Duffy 1977; Smith 1998)",
+  strength:6730, strengthNote:"6,730 (Duffy 1977; Smith 1998). Maliutin commanded the Guard infantry at Olmütz and on the march (Mikhailovsky-Danilevsky; the Chevalier Guard's history), and Sokolov's order of battle for 2 December still titles him commanding all the Guard infantry; but on the day he led a separate column, the Life Grenadiers and the Chevalier Guard, which came up late, the Chevalier Guard sent ahead (Sokolov; the Chevalier Guard's history; the Allied report printed in 1806). The Guard infantry with the Tsesarevich is under Depreradovich 1st, commander of the 1st Guard infantry brigade, in Sokolov alone, with no source on his page",
   track:{
     0:{p:[413,202],st:"reserve",cf:"A",obj:"Remain in reserve near Krzenowitz",act:"On the high ground near Allied headquarters"},
     5:{p:[378,196],st:"advancing"},
@@ -651,7 +651,7 @@ var FEATURES = [
  facts:[["Garrison","Claparède's 17e Légère with eighteen guns"],["Preparation","Slopes scarped and crest entrenched before the battle; which face is not established"],["Result","Never taken"]],
  why:["Anchors the extreme French left and enfilades the highway",
       "This map reads the fortified Santon as anchoring the northern flank, freeing Lannes to attack"],
- story:"Named by French soldiers after a chapel in Egypt. Bagration could not get past it, which is a large part of why the northern battle stayed a holding action."},
+ story:"Veterans of Egypt named it the Santon, Marbot says, because the small chapel on its top had a roof like a minaret; Ségur reports it was said to be named for a tomb the Turks had left there. Bagration could not get past it, which is a large part of why the northern battle stayed a holding action."},
 
 {id:"zuran", p:[177,134], kind:"height", name:"Zuran mound",
  sub:"Low prehistoric barrow west of the Goldbach",
@@ -734,7 +734,7 @@ var FEATURES = [
  sub:"Slavkov u Brna — the town that named the battle",
  facts:[["Role","Allied rear area; the Guard withdrew on it"],["Note","Almost no fighting took place in the town itself"]],
  why:["The Allied line of retreat and supply toward Hungary"],
- story:"Napoleon signed the armistice with Francis at the castle here on 6 December."},
+ story:"On 4 December Napoleon met Emperor Francis at Napoleon's bivouac by the outposts, by a mill in Savary's account, and the two agreed on an armistice (the 31st Bulletin); the 32nd Bulletin, dated 6 December, has Prince Johann of Liechtenstein come to the Emperor at the castle here and conclude it with Marshal Berthier."},
 
 {id:"krzenowitz", p:[415,196], kind:"village", name:"Krzenowitz",
  sub:"Allied headquarters on the night of 1–2 December",

@@ -784,10 +784,6 @@ function initBlockGeo(){
   GEO.flag   = new THREE.PlaneGeometry(2.4,1.4);
   GEO.finial = new THREE.ConeGeometry(0.5,1,4);   /* Stage 6D: the eagle or spearhead on the staff, a four-sided point 1 unit high before scaling */
 }
-function shade(hex,k){
-  var r=Math.min(255,((hex>>16)&255)*k), g=Math.min(255,((hex>>8)&255)*k), b=Math.min(255,(hex&255)*k);
-  return "rgb("+(r|0)+","+(g|0)+","+(b|0)+")";
-}
 function srnd(i){ var v=Math.sin(i*127.1+i*i*0.017)*43758.5453; return v-Math.floor(v); }
 function imesh(geo,colour,count){
   var m=new THREE.InstancedMesh(geo, matte({color:colour,flatShading:true}), count);
@@ -849,8 +845,10 @@ var KIT={
          at_inf:{paint:"ordinary", lower:{n:1, per:"bn"}}, at_grenz:{paint:"ordinary"}, at_cav:{paint:"ordinary"}},
   std:{drop:0.853, thick:0.61, aspect:2.4/1.4},
   /* the cloth's weave, the faint dark threads every painted or plain cloth carries (flagTexture): a design value, no claim (roadmap step 1,
-     docs/FINAL_AUDIT.md T-6: until step 1 a literal in flagTexture, text unchanged) */
-  weave:"rgba(0,0,0,.12)"
+     docs/FINAL_AUDIT.md T-6: until step 1 a literal in flagTexture, text unchanged). Since roadmap step 5 (the step-1 hand-on) the threads
+     are decision 84's black at 12%, not black: a thread on the black cloth (the Austrian eagle) stays at the floor, where 12% black laid it
+     below; on every other cloth a thread is at most 5.5/255 lighter than before (css-test.js holds every cloth's threads at the floor or above) */
+  weave:"rgba(46,43,39,.12)"
 };
 /* a value of appearance.js the drawing follows: a claim (not generic, disputed or "none shown") at grade A or B whose class (k: c a
    colour, h a headgear) is not "generic"; anything else is drawn generic (docs/STAGE6_SPEC.md section 6.6, "For 6C and 6D") */
@@ -1018,9 +1016,6 @@ function figKit(){
 }
 /* every geometry of the figure kit drawn by any block: the two coats and every cached class (the float checks read it) */
 function kitGeos(){ var K=figKit(); return [K.infCoat,K.rider].concat(Object.keys(KIT_GEO).map(function(k){ return KIT_GEO[k]; })); }
-
-/* how a formation is subdivided: battalions, or squadrons for horse */
-function subUnitsFig(f){ return subUnits(f); }
 
 function makeBlock(f,id){
   var g=new THREE.Group();
@@ -1956,15 +1951,15 @@ function paintExaggeration(){
   /* the paper map has no relief setting (decision 19): the control is not offered there, and its row says why */
   var set=document.getElementById("exag-set"), desc=document.getElementById("exag-desc");
   if(set) set.hidden=paper;
-  if(desc) desc.textContent=paper?"The paper map is drawn flat, with its own hillshade (\u00d7"+fmtFactor(PAPER_HILLSHADE)+"); the setting applies to the landscape"
+  if(desc) desc.textContent=paper?"The paper map is drawn flat, with its own hillshade ("+fmtFactor(PAPER_HILLSHADE)+"\u00d7); the setting applies to the landscape"
     :"How tall the ground is drawn; 1\u00d7 is true scale";
   var el=document.getElementById("exag-line"), sy=document.getElementById("exag-symbols");
   /* the paper map (Stage 2E, decisions 19 and 29): its hillshade's own factor; it draws no figure, building or tree */
-  if(paper){ if(el) el.textContent="paper map: the ground drawn flat, in plan; hillshade exaggerated \u00d7"+fmtFactor(PAPER_HILLSHADE)+" (1\u00d7 is true scale)";
+  if(paper){ if(el) el.textContent="paper map: the ground drawn flat, in plan; hillshade exaggerated "+fmtFactor(PAPER_HILLSHADE)+"\u00d7 (1\u00d7 is true scale)";
     if(sy) sy.textContent="villages and woods at their extent in the model; counters and names at symbol scale"; return; }
   if(el) el.textContent = isTrueScale()
     ? "relief at true scale: formations drawn as their footprints"
-    : "relief drawn \u00d7"+fmtFactor(f)+" vertically (1\u00d7 is true scale)";
+    : "relief drawn "+fmtFactor(f)+"\u00d7 vertically (1\u00d7 is true scale)";
   if(sy) sy.textContent = isTrueScale() ? "counters and names at symbol scale"
     : "symbols: figures and standards about 45\u201370\u00d7 life, buildings and trees about 10\u201315\u00d7";
 }
@@ -2375,7 +2370,7 @@ function applyOverlayOpacity(){
 var TRANS_MS=2600;
 var T_MIN=PHASES[0].t0, T_MAX=PHASES[PHASES.length-1].t1;
 var clock=T_MIN, curPhase=0;
-var playing=false, playRAF=0, speed=0.5, MIN_PER_SEC=10;   /* Stage 4D (decision 74): Play starts at half speed; the buttons keep their meaning */
+var playing=false, speed=0.5, MIN_PER_SEC=10;   /* Stage 4D (decision 74): Play starts at half speed; the buttons keep their meaning */
 var KM_PER_MAP=GEOREF.KM_PER_MAP;   /* one map unit on the ground: from geo.js, the only scale */
 
 function easeInOut(k){ return k<0.5 ? 4*k*k*k : 1-Math.pow(-2*k+2,3)/2; }
@@ -2959,8 +2954,6 @@ function setFXEnabled(on){
     renderer.toneMapping=THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure=1.0;
   }
-  var vb=document.getElementById("fxstate");
-  if(vb) vb.textContent=FX.on?"FX on":"FX off";
 }
 function renderStandard(){
   camera.layers.enableAll();
@@ -2998,7 +2991,7 @@ function devMark(){ var r=renderer.info.render; return {calls:r.calls,triangles:
 var devOn=/[?&]stats\b/.test(location.search), _devT=0, _devSeat=0;
 function kfmt(n){ return n>=1e6?(n/1e6).toFixed(2)+"M":(n>=1e3?(n/1e3).toFixed(1)+"k":String(n)); }
 function paintDevStats(now){
-  var el=document.getElementById("devstats"); if(!el) return;
+  var el=paintDevStats.el||(paintDevStats.el=document.getElementById("devstats")); if(!el) return;   /* roadmap step 5 (SW-13): found once */
   if(el.hidden===devOn) el.hidden=!devOn;
   if(!devOn||now-_devT<500) return;
   var sec=_devT?(now-_devT)/1000:1; _devT=now;
@@ -3045,7 +3038,10 @@ function evWindow(e){ return Array.isArray(e.t)?e.t:[e.t,e.t]; }
    or Enter on it, the previous/next keys, the dossier's "Go to this moment" and the map layer's names, as for the themes, the tour
    (momentOf) and the dwell (decision 75); an interval's window is drawn as a bar from its start */
 function evClock(e){ return evWindow(e)[0]; }
-function evTimeText(e){ var w=evWindow(e); return w[0]===w[1]?fmtClock(w[0]):fmtClock(w[0])+" to "+fmtClock(w[1]); }
+function evTimeText(e){ var w=evWindow(e); return w[0]===w[1]?fmtClock(w[0]):fmtClock(w[0])+" to "+fmtClock(w[1]); }   /* spoken (names) */
+/* roadmap step 5 (docs/FINAL_AUDIT.md R-6; question 206, the default meanwhile): a clock range shown on screen as the phases' clocks are
+   written (PHASES[].clock, "08:00 - 09:00"); spoken names keep "to" (evTimeText) */
+function evTimeShown(e){ var w=evWindow(e); return w[0]===w[1]?fmtClock(w[0]):fmtClock(w[0])+" - "+fmtClock(w[1]); }
 /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1, H-15): the note an event carries where it is named outside its dossier
    (its marker's name and title, its map label's accessible name, the Now tab's strip, the opening's bar, a formation's dossier, the
    selection chip; since roadmap step 3 the map label's drawn words too, evMapText): its hour disputed
@@ -3144,7 +3140,7 @@ function updateSelRing(){
   var on = selection && selection.kind==="f" && units[selection.id] &&
            mode!=="staff" && presentation!=="map";
   if(!on){ selRing.material.opacity=0; selRing.visible=false; return; }
-  var p=posNow(selection.id);
+  var p=readPos(selection.id);   /* roadmap step 5 (question 170 (b)): where the reading draws it; none where it does not know it */
   if(!p){ selRing.visible=false; return; }
   var rec=units[selection.id], ud=rec.block.userData;
   var r=Math.max(7,(ud&&ud.W0?ud.W0:8)*0.62*1.25*(ud?ud.sw:1)+3.4);
@@ -3381,7 +3377,7 @@ function paintChapters(){
 function paintChapterText(){
   var host=document.getElementById("chaptext");
   if(!host) return;
-  if(!chapter){ host.innerHTML='<p class="muted">Pick one of the ten moments above. The map will move to that hour, highlight the formations and ground involved, and dim everything else.</p>'; return; }
+  if(!chapter){ host.innerHTML='<p class="muted">'+esc(LABELS.names.themePick)+' The map will move to that hour, highlight the formations and ground involved, and dim everything else.</p>'; return; }
   var c=chapterById(chapter);
   var feats=c.feats.map(function(fid){
     var nm=fid; FEATURES.forEach(function(x){ if(x.id===fid) nm=x.name; });
@@ -3427,7 +3423,6 @@ function setCommandView(v){
   document.querySelectorAll(".cmd-btn").forEach(function(b){
     b.setAttribute("aria-pressed", b.dataset.cv===v ? "true":"false");
   });
-  document.body.classList.toggle("cmd-on", v!=="none");
   paintCommand();
   eyesSync();   /* Stage 5E */
 }
@@ -3445,7 +3440,7 @@ function setCommandView(v){
 var EYES={min:"", vs:null, vsAt:0, VS_MS:500, VS_MOVE:1,
   NOTE:"A model reading: line of sight over this model's ground from the headquarters' plotted position, the valley fog's rule, and "+
     "authored limits on what each side knew. Not a record of what was seen.",
-  LABEL:{none:"Everyone", fr:"Napoleon's headquarters", al:"Allied headquarters"}, SHORT:{none:"everyone", fr:"Napoleon", al:"Allied HQ"},
+  LABEL:{none:"Everyone", fr:"Napoleon's headquarters", al:"Allied headquarters"}, SHORT:{none:"everyone", fr:"Napoleon's HQ", al:"Allied HQ"},   /* roadmap step 5 (R-3): the headquarters, as LABEL names it */
   HQ:{fr:"gqg", al:"ahq"}};
 /* the timeline's button: its visible words, and its name, which begins with them (decision 173) */
 function eyesShort(v){ return "Eyes: "+EYES.SHORT[v]; }
@@ -3474,6 +3469,27 @@ function aggReading(id){
   var sx=0, sy=0, cf="A", seen=false;
   K.forEach(function(k){ var q=posNow(k); sx+=q[0]; sy+=q[1]; cf=worseGrade(cf,liveConf(k,curPhase).cf); if(drawnKnow(k)==="seen") seen=true; });
   return {p:[sx/K.length,sy/K.length],know:seen?"seen":"uncertain",n:n,k:K.length,cf:cf,whole:K.length===n};
+}
+/* roadmap step 5 (question 170 (b), decided in step 3: "the same class of leak" as S-1): a formation's position as "Whose eyes?" draws it:
+   everyone's reading, posNow; else a formation the reading does not know (drawnKnow "unknown") has none, and a corps or column is at its
+   known formations' mean (aggReading). The plan links and the selection ring read it, so they no longer draw a position the reading hides */
+function readPos(id){
+  if(commandView==="none") return posNow(id);
+  var f=FORMATIONS[id]; if(!f) return null;
+  if(f.track) return drawnKnow(id)==="unknown"?null:posNow(id);
+  return aggReading(id).p;
+}
+/* the dossier's reading pill under a reading (roadmap step 5, S-4 and question 170 (c); the review of 22c77ac): {kn, why}, as drawn. A
+   formation: drawnKnow, with knowReason's reason, or "no line of sight from the eye level" where the eye level turns "seen" into reported
+   only. A corps or column: its formations' reading (aggReading), with their count as the reason ("1 of its 3 formations on the field
+   known"; none known: "none of its ... known"), not the corps' own rule at its mean position, which can disagree */
+function pillReading(id){
+  var f=FORMATIONS[id];
+  if(f.track){ var kn=drawnKnow(id), k0=knowledgeOf(id); return {kn:kn, why:kn!==k0?"no line of sight from the eye level":knowReason(id)}; }
+  var a=aggReading(id), w=null;
+  if(!a.whole&&a.n&&(a.know==="unknown"||a.know==="uncertain"))
+    w=(a.k?a.k+" of its "+a.n:"none of its "+a.n)+" formation"+(a.n===1?"":"s")+" on the field known"+(a.know==="uncertain"&&a.k?", none in sight":"");
+  return {kn:a.know, why:w};
 }
 /* which part of the rule decides (the dossier's reason): the authored limit (KNOW_OVERRIDE), the line of sight, the valley fog */
 function knowReason(id){
@@ -3567,7 +3583,7 @@ function eyeCaption(){
   var hq=EYES.HQ[commandView], A=anchorList(hq).filter(function(a){ return a.p&&a.arr<=clock+1e-9; }).pop(), st=A?stateAt(hq,A.ph):null;
   var chapel=!!(st&&/chapel of St Anthony/.test(st.act||""));
   var h='<p><span class="ltag derived">'+iconSVG(TOKENS.sym.layer.derived)+'derived</span> Eye level at '+esc(EYES.LABEL[commandView])+', '+esc(fmtClock(clock))+
-    '. Relief drawn &times;'+esc(fmtFactor(DISPLAY.factor))+'; figures are symbols many times life size.</p><p class="eyenote">'+esc(EYES.NOTE)+'</p>';
+    '. Relief drawn '+esc(fmtFactor(DISPLAY.factor))+'&times;; figures are symbols many times life size.</p><p class="eyenote">'+esc(EYES.NOTE)+'</p>';
   if(chapel) h+='<p class="eyenote">'+esc("From the chapel of St Anthony the model shows little of the Satschan pond. Schönhals (1873) and a French officer's note of 1806 bring Napoleon there at the end, and Lejeune has him on a knoll above Augezd facing the lakes; "+
     "if that knoll is the chapel's height, as this map takes it, the model and the source disagree: the chapel's position is approximate and the relief stylised.")+'</p>';
   if(EYE.capH!==h){ EYE.capH=h; b.innerHTML=h; }
@@ -3698,7 +3714,7 @@ function updatePlanLinks(){
   for(var i=0;i<pairs.length;i++){
     var show = pairs[i][2] || near ||
                (selection&&selection.kind==="f"&&selection.id===pairs[i][0]);
-    var p=show?posNow(pairs[i][0]):null;
+    var p=show?readPos(pairs[i][0]):null;   /* roadmap step 5 (question 170 (b)): from where the reading draws the formation; none if it does not know it */
     if(!p){ arr[k]=arr[k+1]=arr[k+2]=arr[k+3]=arr[k+4]=arr[k+5]=0; k+=6; continue; }
     var a=W(p[0],p[1]), b=W(pairs[i][1][0],pairs[i][1][1]);
     arr[k++]=a[0]; arr[k++]=displayHeight(a[0],a[1])+2.6; arr[k++]=a[1];
@@ -3736,7 +3752,6 @@ function setPlan(side){
   document.querySelectorAll(".plan-btn").forEach(function(b){
     b.setAttribute("aria-pressed", b.dataset.p===planSide ? "true":"false");
   });
-  document.body.classList.toggle("plan-on",!!planSide);   /* the legend explains the staging outline */
   if(!chapter) setHighlight(planSide?{}:null);
   paintPlanText();
 }
@@ -3814,7 +3829,7 @@ function applyTour(){
   if(st.feature) select("t",st.feature); else select(null,null);
   var bar=document.getElementById("tourbar");
   bar.hidden=false;
-  document.getElementById("tour-n").textContent=(tourStep+1)+" OF "+TOUR.length;
+  document.getElementById("tour-n").textContent=LABELS.tour.counter.replace("%k",tourStep+1).replace("%n",TOUR.length);
   document.getElementById("tour-t").textContent=st.n;
   document.getElementById("tour-x").textContent=st.x;
   var pv=document.getElementById("tour-prev");
@@ -4161,6 +4176,16 @@ function mlInit(){
     if(document.fonts.ready) document.fonts.ready.then(remeasure);
   }
 }
+/* a map item's short name for the polite message (question 172): its formation's, event's, place's or terrain line's own name; else its
+   accessible name to the first comma (the review of 22c77ac: "Event, 09:30: ..." gave "Event") */
+function mlShortName(it){
+  var p=it&&it.pick, n=null;
+  if(p&&p.kind==="f"&&FORMATIONS[p.id]) n=FORMATIONS[p.id].name;
+  else if(p&&p.kind==="e"){ var e=EVENTS.filter(function(x){ return x.id===p.id; })[0]; if(e) n=e.n; }
+  else if(p&&p.kind==="t"){ var t=FEATURES.filter(function(x){ return x.id===p.id; })[0]; if(t) n=t.name; }
+  else if(p&&p.kind==="a") n=p.id;
+  return n||String(it.el.getAttribute("aria-label")||it.el.textContent||"").split(",")[0].trim();
+}
 function mlItem(key,cls){
   var it=ML.items[key];
   if(!it){
@@ -4283,8 +4308,8 @@ function mlCollect(){
 /* the label's words and, spoken, its accessible name: both say "derived" (owner decision 126) */
 function plateauText(spoken){
   var al=plateauStrength("al"), fr=plateauStrength("fr");
-  if(spoken) return "The Pratzen plateau, a derived reading: Allied about "+al.toLocaleString()+(fr>500?(", French about "+fr.toLocaleString()):"");
-  return "THE PRATZEN  ·  derived: Allied ≈ "+al.toLocaleString()+(fr>500?("   French ≈ "+fr.toLocaleString()):"");
+  if(spoken) return "The Pratzen plateau, a derived reading: Allied about "+al.toLocaleString("en-GB")+(fr>500?(", French about "+fr.toLocaleString("en-GB")):"");
+  return "THE PRATZEN  ·  derived: Allied ≈ "+al.toLocaleString("en-GB")+(fr>500?("   French ≈ "+fr.toLocaleString("en-GB")):"");
 }
 /* the interface panels over the map, read as rectangles once per pass */
 var ML_PANELS=[".rail",".dispatch",".legend",".drawer",".timebar",".tools","#viewmode","#tourbar","#firstrun","#selchip","#layerpop","#vsbadge","#restore"];
@@ -4481,7 +4506,10 @@ function mlLayout(){
     fo.forEach(function(it){ ML.root.appendChild(it.el); });
     if(back&&document.activeElement!==back&&back.focus) back.focus({preventScroll:true}); }
   if(lostFocus){ var nxt=fo.filter(function(it){ return it.base>=lostFocus.base; })[0]||fo[0];
-    if(nxt&&nxt.el.focus) nxt.el.focus({preventScroll:true}); else if(ML.root.focus) ML.root.focus({preventScroll:true}); }
+    if(nxt&&nxt.el.focus) nxt.el.focus({preventScroll:true}); else if(ML.root.focus) ML.root.focus({preventScroll:true});
+    /* roadmap step 5 (question 172): said, politely, in a region of its own (the phase announcement's is the clock's) */
+    var lm=document.getElementById("live-map"), nm=mlShortName;
+    if(lm) lm.textContent=LABELS.mapLeft.replace("%n",nm(lostFocus)||"An item").replace("%m",nxt?nm(nxt):LABELS.mapLeftLayer); }
   st.ms=performance.now()-t0;
   /* nodes drawn now: the layer, its lines and every item displayed (a hidden item is display:none and inert) */
   st.nodes=2+(ML.lines&&ML.lines.childNodes?ML.lines.childNodes.length:0);
@@ -4520,8 +4548,15 @@ function paintLegend(){
   _lgKey=key; ML.lgSize=null;
   lg.querySelectorAll("[data-lg]").forEach(function(e){ e.hidden=!on[e.dataset.lg]; });
   var hint=document.getElementById("lg-hint");   /* the controls of the view shown: the paper map pans, the landscape orbits */
-  if(hint) hint.innerHTML=land?"drag to pan &middot; right-drag or Shift-drag to turn &middot; scroll to zoom toward the pointer &middot; double-click to centre &middot; click or Tab to a counter or a name"
-    :"drag to pan &middot; scroll to zoom toward the pointer &middot; Tab to the map: arrows pan, + &minus; zoom &middot; click or Tab to a counter or a name";
+  if(hint) hint.textContent=legendHint(land);
+}
+/* roadmap step 5 (docs/FINAL_AUDIT.md R-4): the legend's control hint from KEYS, the rows that carry a hint in their hint order (hi): the
+   landscape's rows (land) or the paper map's (paper), and both's; until step 5 written by hand ("scroll", "right-drag or
+   Shift-drag", where KEYS says Wheel and "also Shift or Ctrl and drag") */
+function legendHint(land){
+  var R=KEYS.filter(function(r){ return r.hint&&(land?!r.paper:!r.land); });
+  R.sort(function(a,b){ return a.hi-b.hi; });
+  return R.map(function(r){ return r.hint; }).join(" \u00b7 ");
 }
 function mlLegendFit(VW,VH){
   var lg=document.querySelector(".legend"), tg=document.getElementById("lg-toggle"); if(!lg||!tg) return;
@@ -4538,7 +4573,7 @@ function mlLegendFit(VW,VH){
   var open=ML.legendOpen&&!squeeze;
   if(lg.classList.contains("collapsed")===open){ lg.classList.toggle("collapsed",!open); tg.setAttribute("aria-expanded",String(open)); }
   if(lg.classList.contains("squeezed")!==squeeze){ lg.classList.toggle("squeezed",squeeze);
-    tg.title=squeeze?"No room for the key beside the dispatch: hide the dispatch (D) or close the dossier":"Show or hide the key"; }
+    tg.title=squeeze?"No room for the key beside "+LABELS.names.phaseText+": hide it (D) or close the dossier":"Show or hide the key"; }
 }
 /* ---- hover and picking by footprint (section F.1) ---- */
 /* the drawn ground under a screen point: the view ray marched over groundY, then bisected */
@@ -5129,7 +5164,7 @@ var curVantage=null;
 function syncFollow(){
   var b=document.getElementById("follow"), on=String(!freeCam);
   if(b&&b.getAttribute("aria-pressed")!==on) b.setAttribute("aria-pressed",on);
-  var vs=document.querySelectorAll(".van-btn");
+  var vs=syncFollow.vs||(syncFollow.vs=document.querySelectorAll(".van-btn"));   /* roadmap step 5 (SW-13): the static buttons found once, not every frame */
   for(var i=0;i<vs.length;i++){ var pr=String(vs[i].dataset.v===curVantage); if(vs[i].getAttribute("aria-pressed")!==pr) vs[i].setAttribute("aria-pressed",pr); }
 }
 function setFollow(on){
@@ -5248,7 +5283,8 @@ var LABELS={
   arrow:{unsettled:"disputed"},   /* owner decision 145 (question 145, 8 October 2026): the shorter form, so the 07:00 place name Augezd is drawn again */
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
      its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with the five glides of
-     1.6 s and, since 7D, the clock played between them at 4x, about 50 s: 100 to 121 s; docs/STAGE7_SPEC.md sections 3.4, 3.5). At 390 px the
+     1.6 s, 100 to 121 s as 7C planned it; since 7D the clock plays between them at 4x, measured 44.8 s of stretches and 95.2 to 115.8 s in
+     all; docs/STAGE7_SPEC.md sections 3.4, 3.5). At 390 px the
      row holds 308 px beside "Explore on my own" (150): "Begin (two minutes)" (155) and 7C's first "about a minute" wrapped the button and
      made the card 12 px taller; "Begin (two min)" is 128 */
   firstRun:{primary:"Begin (two min)", primaryTitle:"Begin the opening: four stops of the guided tour in its own words, the clock played between them; Next moves on, Esc skips it",
@@ -5256,9 +5292,17 @@ var LABELS={
   /* Stage 7C (decisions 115, 118): the opening's interface words, no claim: no clock time, figure, name or quotation (css-test.js). %k and
      %n are the step and the count, %t the stop's own title (TOUR), %c a clock the app formats */
   /* decisions 168, 171 (roadmap step 3): the tour's stops and its end said in the polite region; the visitor's "Whose eyes?" reading given back */
-  tour:{said:"Tour, stop %k of %n: %t, %c.", ended:"The tour has ended."},
+  tour:{said:"Tour, stop %k of %n: %t, %c.", ended:"The tour has ended.", counter:"Stop %k of %n"},   /* counter: the bar's head (roadmap step 5, R-6; "1 OF 9" until step 5) */
+  /* roadmap step 5 (docs/FINAL_AUDIT.md R-3): one name on screen for each thing named in more than one way (question 205, the default
+     meanwhile): the ten themes "themes" (the code's and the specifications' word; "moment" stays a phase's or an event's), the phase's own
+     text "the phase text" (the Now tab's note; "dispatch" was the code's word on screen), the sources sheet "Accuracy and sources" (its
+     button, its name; its heading is SOURCE_NOTE.title, data) */
+  names:{themes:"The battle in ten themes", themePick:"Pick one of the ten themes above.", theme:"The theme", phaseText:"the phase text",
+    sheet:"Accuracy and sources"},
   panels:{button:"Panels", title:"Show or hide the panels: the order of battle, analysis, command and plans tabs, and the sources (below 1080 px wide)"},
   eyesBack:"Whose eyes? Back to %r (a model reading).",
+  /* roadmap step 5 (question 172): a focused map item that leaves the map (the clock moved it off, or it ended) hands the focus on, and says so */
+  mapLeft:"%n has left the view; the focus is on %m.", mapLeftLayer:"the map",   /* the review of 22c77ac: "the view" (the clock, a pan or a zoom) */
   opening:{button:"Begin the opening", buttonTitle:"Four stops of the guided tour in its own words, the clock played between them",
     head:"Opening, step %k of %n", back:"Back", next:"Next", finish:"Finish", skip:"Skip", skipTitle:"End the opening at the start of the day (Esc)",
     said:"Step %k of %n: %t, %c.", ended:"The opening has ended. Play runs the day from %c.", left:"The opening has ended here.",
@@ -5276,6 +5320,11 @@ function applyLabels(){
   if(fp){ fp.textContent=F.primary; fp.title=F.primaryTitle; } if(fs){ fs.textContent=F.stay; fs.title=F.stayTitle; }
   var ob=document.getElementById("openingbtn"); if(ob){ ob.textContent=LABELS.opening.button; ob.title=LABELS.opening.buttonTitle; }   /* Stage 7C */
   var pb=document.getElementById("panelsbtn"); if(pb){ pb.textContent=LABELS.panels.button; pb.title=LABELS.panels.title; }   /* decision 164 */
+  /* roadmap step 5 (R-3): the names, from LABELS.names (shell.html carries the same words for a page whose bundle fails, SW-1) */
+  var N=LABELS.names, th=document.querySelector("#analysis .sechead"); if(th) th.textContent=N.themes;
+  var sb=document.getElementById("srcbtn"); if(sb) sb.textContent=N.sheet;
+  var md=document.getElementById("modal"); if(md) md.setAttribute("aria-label",N.sheet);
+  var mb=document.getElementById("modal-body"); if(mb) mb.setAttribute("aria-label",N.sheet+": the text");
   var lp=document.getElementById("layerpop"); if(lp){ lp.setAttribute("aria-label",LABELS.layers.aria);
     var h=lp.querySelector(".lp-head span"); if(h) h.textContent=LABELS.layers.heading;
     var g=lp.querySelector(".modes"); if(g) g.setAttribute("aria-label",LABELS.layers.ground); }
@@ -5296,7 +5345,7 @@ var KEYS=[
   {id:"nextev", scope:"window", group:"Time", keys:["."], show:["."], text:"The next event", run:function(){ jumpEvent(1); }},
   {id:"prevev", scope:"window", group:"Time", keys:[","], show:[","], text:"The previous event", run:function(){ jumpEvent(-1); }},
   /* Stage 7C (section 4.6): the opening's bar has its own arrows, as the time rail has; Enter or Space presses its focused button */
-  {id:"opening", scope:"bar", group:"Time", keys:["ArrowLeft","ArrowRight"], show:["←","→"], text:"In the opening's bar: the step before or after (Enter or Space presses the focused button; Esc skips to the start of the day; any other key or a press on the map ends the opening where it is)",
+  {id:"opening", scope:"bar", group:"Time", keys:["ArrowLeft","ArrowRight"], show:["←","→"], text:"In the opening's bar: the step before or after (Enter or Space presses the focused button; Esc skips to the start of the day; while the clock plays between steps, Space off a button and Play/Pause pause it; any other key or a press on the map ends the opening where it is)",
     run:function(e){ openingGo(e.key==="ArrowRight"?1:-1); }},
   {id:"study", scope:"window", group:"View and ground", keys:["1"], show:["1"], text:function(){ return presLine("study"); },
     run:function(){ setPresentation("study"); }},
@@ -5310,17 +5359,17 @@ var KEYS=[
     run:function(){ setPresentation(presentation==="study"?"watch":"study"); }},
   {id:"m", scope:"window", group:"View and ground", keys:["m","M"], show:["M"], text:function(){ var G=LABELS.ground; return "The ground: "+G.terrain.label+", "+G.staff.label+", "+G.hybrid.label+", in turn"; },
     run:function(){ setMode(mode==="terrain"?"staff":(mode==="staff"?"hybrid":"terrain")); }},
-  {id:"esc", scope:"window", group:"View and ground", keys:["Escape"], show:["Esc"], text:"Back: close the sources sheet; else the first card where it stands, the layers panel, the opening (to the start of the day) or the tour; else everything shown in Study, and the chapter and the selection cleared",
+  {id:"esc", scope:"window", group:"View and ground", keys:["Escape"], show:["Esc"], text:function(){ return "Back: close the "+LABELS.names.sheet+" sheet; else the first card where it stands, the layers panel, the opening (to the start of the day) or the tour; else everything shown in Study, and the theme and the selection cleared"; },
     run:function(){
       if(sheetTop()){ if(sheetTop()==="help") setHelp(false); else closeSources(); return; }   /* roadmap step 3 (SW-4): the topmost sheet first */
       if(firstRunOpen){ closeFirst("explore"); return; }
-      if(!document.getElementById("layerpop").hidden){ window.__setPop(false); return; }
+      if(!document.getElementById("layerpop").hidden){ setLayerPop(false); return; }
       if(OPENING.on){ openingEnd("skip"); return; }   /* Stage 7C */
       if(tourStep>=0){ exitTour(); return; }
       if(presentation!=="study"||hideDispatch) showEverything();
       if(chapter) setChapter(null);
       select(null,null); }},
-  {id:"d", scope:"window", group:"Layers and panels", keys:["d","D"], show:["D"], text:"Show or hide the dispatch's text", run:function(){ setDispatchVisible(hideDispatch); }},
+  {id:"d", scope:"window", group:"Layers and panels", keys:["d","D"], show:["D"], text:function(){ return "Show or hide "+LABELS.names.phaseText; }, run:function(){ setDispatchVisible(hideDispatch); }},
   {id:"c", scope:"window", group:"Layers and panels", keys:["c","C"], show:["C"], text:"Contours on or off",
     run:function(){ var cb=document.querySelector('.layer-btn[data-l="contours"]'); if(cb) cb.click(); }},
   {id:"t", scope:"window", group:"Layers and panels", keys:["t","T"], show:["T"], text:"The terrain study on or off",
@@ -5332,15 +5381,15 @@ var KEYS=[
   {id:"mapturn", scope:"map", group:"The map, when it has focus (Tab to it)", keys:ARROWS, shift:true, show:["Shift","←","↑","→","↓"],
     text:function(){ return "On the "+LABELS.ground.terrain.label.toLowerCase()+": turn 15° and tilt 5°; on the "+LABELS.ground.staff.label.toLowerCase()+": pan"; },
     run:function(e){ mapKey(e); }},
-  {id:"mapzoom", scope:"map", group:"The map, when it has focus (Tab to it)", keys:["+","=","-","_"], show:["+","−"], text:"Zoom in or out about the centre",
+  {id:"mapzoom", scope:"map", group:"The map, when it has focus (Tab to it)", keys:["+","=","-","_"], show:["+","−"], text:"Zoom in or out about the centre", hint:"Tab to the map: arrows pan, + \u2212 zoom", hi:5, paper:true,
     run:function(e){ mapKey(e); }},
-  {id:"item", scope:"item", group:"The map, when it has focus (Tab to it)", keys:["Enter"," "], show:["Tab","Enter"], text:"Tab reaches the counters and names on the map, in order of importance; Enter or Space selects one"},
+  {id:"item", scope:"item", group:"The map, when it has focus (Tab to it)", keys:["Enter"," "], show:["Tab","Enter"], text:"Tab reaches the counters and names on the map, in order of importance; Enter or Space selects one", hint:"click or Tab to a counter or a name", hi:6},
   {id:"rail", scope:"rail", group:"The timeline", keys:[], show:["←","→","Home","End","PgUp","PgDn"], text:"On the time rail: ten minutes (Shift, an hour), the day's start and end, the phases' starts"},
   {id:"groups", scope:"group", group:"The timeline", keys:[], show:["←","→","Home","End"], text:"In the acts, the phases, the events and the panel's tabs: move between them; Enter or Space chooses"},
-  {id:"drag", scope:"pointer", group:"Pointer and touch", keys:[], show:["Drag"], text:"Pan the map (the ground under the pointer stays under it)"},
-  {id:"rdrag", scope:"pointer", group:"Pointer and touch", keys:[], show:["Right-drag"], text:function(){ return "Turn and tilt the "+LABELS.ground.terrain.label.toLowerCase()+" (also Shift or Ctrl and drag)"; }},
-  {id:"wheel", scope:"pointer", group:"Pointer and touch", keys:[], show:["Wheel"], text:"Zoom toward the pointer"},
-  {id:"dbl", scope:"pointer", group:"Pointer and touch", keys:[], show:["Double-click"], text:function(){ return "Centre the "+LABELS.ground.terrain.label.toLowerCase()+" on that point"; }},
+  {id:"drag", scope:"pointer", group:"Pointer and touch", keys:[], show:["Drag"], text:"Pan the map (the ground under the pointer stays under it)", hint:"drag to pan", hi:1},
+  {id:"rdrag", scope:"pointer", group:"Pointer and touch", keys:[], show:["Right-drag"], text:function(){ return "Turn and tilt the "+LABELS.ground.terrain.label.toLowerCase()+" (also Shift or Ctrl and drag)"; }, hint:"right-drag (or Shift or Ctrl and drag) to turn", hi:2, land:true},
+  {id:"wheel", scope:"pointer", group:"Pointer and touch", keys:[], show:["Wheel"], text:"Zoom toward the pointer", hint:"wheel to zoom toward the pointer", hi:3},
+  {id:"dbl", scope:"pointer", group:"Pointer and touch", keys:[], show:["Double-click"], text:function(){ return "Centre the "+LABELS.ground.terrain.label.toLowerCase()+" on that point"; }, hint:"double-click to centre", hi:4, land:true},
   {id:"click", scope:"pointer", group:"Pointer and touch", keys:[], show:["Click"], text:"Select a counter, a name or an event; on empty ground, clear the selection"},
   {id:"touch", scope:"pointer", group:"Pointer and touch", keys:[], show:["One finger","Two fingers"], text:"Pan; pinch to zoom and twist to turn"},
   {id:"dev", scope:"window", group:"Developer", keys:["`"], show:["`"], text:"The developer readout: frame and render statistics",
@@ -5557,7 +5606,7 @@ function buildUI(){
   bindCanvas();
 
   /* the one timeline (Stage 3C): act bands, phase ticks, the rail, the event markers, on one time axis */
-  buildTimeline();
+  buildTimeline(); bindTimeTips();
 
   document.querySelectorAll(".mode-btn").forEach(function(b){
     b.addEventListener("click",function(){ setMode(b.dataset.m); });
@@ -5718,7 +5767,7 @@ function buildUI(){
   document.getElementById("layerclose").addEventListener("click",function(){ setPop(false); });
   pop.addEventListener("click",function(e){ e.stopPropagation(); });
   document.addEventListener("click",function(){ if(!pop.hidden) setPop(false); });
-  window.__setPop=setPop;
+  setLayerPop=setPop;   /* roadmap step 5 (SW-13): a module variable, not a window global (window.__setPop until step 5) */
   document.getElementById("going").addEventListener("click",function(){
     goingOn=!goingOn;
     this.setAttribute("aria-pressed",String(goingOn));
@@ -5892,15 +5941,15 @@ function syncSelChip(){
 }
 function shortCommander(f){
   var c=f.commander||"";
-  c=c.replace(/^(Marshal|Gen\. de division|Gen\.|General|Lt\.-Gen\.|Maj\.-Gen\.|FML|Feldmarschall-Leutnant|Emperor|Grand Duke)\s+/,"");
+  c=c.replace(/^(Marshal|Gen\. de division|Gen\. de brigade|Gen\.|General|Lt\.-Gen\.|Maj\.-Gen\.|FML|Feldmarschall-Leutnant|Emperor|Grand Duke)\s+/,"");
   var cut=c.indexOf(";"); if(cut>0) c=c.slice(0,cut);
   return c.length>34 ? c.slice(0,33)+"\u2026" : c;
 }
 function buildOOB(){
   var host=document.getElementById("oob");
   host.innerHTML="";
-  [["French army — Grande Armee",["gqg","c_iv","c_iii","c_v","c_cav","c_i","c_gd","c_gren"],"fr"],
-   ["Allied army — Russia and Austria",["ahq","buxhowden","col4","lich","bag","constantine"],"al"]]
+  [["French army: Grande Armee",["gqg","c_iv","c_iii","c_v","c_cav","c_i","c_gd","c_gren"],"fr"],
+   ["Allied army: Russia and Austria",["ahq","buxhowden","col4","lich","bag","constantine"],"al"]]
   .forEach(function(grp){
     var h=el("div","oob-head",esc(grp[0]));
     host.appendChild(h);
@@ -5910,7 +5959,7 @@ function buildOOB(){
       row.type="button"; row.dataset.id=id;
       row.innerHTML='<span class="oob-dot" style="background:'+NATION[f.nation].fill+'"></span>'+
         '<span class="oob-name">'+esc(f.name)+'<em>'+esc(shortCommander(f))+'</em></span>'+
-        '<span class="oob-str">'+(aggStrength(id)?aggStrength(id).toLocaleString():"—")+'</span>';
+        '<span class="oob-str">'+(aggStrength(id)?aggStrength(id).toLocaleString("en-GB"):"—")+'</span>';
       row.addEventListener("click",function(){ select("f",id); focusOn(id); });
       host.appendChild(row);
       if(f.children) f.children.forEach(function(cid){
@@ -5918,15 +5967,15 @@ function buildOOB(){
         var r2=el("button","oob-row sub");
         r2.type="button"; r2.dataset.id=cid;
         r2.innerHTML='<span class="oob-name">'+esc(cf.name)+'<em>'+esc(shortCommander(cf))+'</em></span>'+
-          '<span class="oob-str">'+(cf.strength?cf.strength.toLocaleString():"—")+'</span>';
+          '<span class="oob-str">'+(cf.strength?cf.strength.toLocaleString("en-GB"):"—")+'</span>';
         r2.addEventListener("click",function(){ select("f",cid); focusOn(cid); });
         host.appendChild(r2);
         if(cf.children) cf.children.forEach(function(gid){
           var gf=FORMATIONS[gid];
           var r3=el("button","oob-row sub2");
           r3.type="button"; r3.dataset.id=gid;
-          r3.innerHTML='<span class="oob-name">'+esc(gf.name)+'</span>'+
-            '<span class="oob-str">'+(gf.strength?gf.strength.toLocaleString():"—")+'</span>';
+          r3.innerHTML='<span class="oob-name">'+esc(gf.name)+'<em>'+esc(shortCommander(gf))+'</em></span>'+   /* its commander, as the rows above (roadmap step 5; step 2's hand-on) */
+            '<span class="oob-str">'+(gf.strength?gf.strength.toLocaleString("en-GB"):"—")+'</span>';
           r3.addEventListener("click",function(){ select("f",gid); focusOn(gid); });
           host.appendChild(r3);
         });
@@ -5996,7 +6045,7 @@ function paintSituation(){
   if(key===_sitKey) return;
   _sitKey=key;
   var der=(curPhase<=PLATEAU_LAST&&onH>0)?'<span class="der" title="'+esc(FLAT_NOTE)+'"><small>derived</small> on the heights: Allied &asymp; '+
-      onH.toLocaleString()+(flatFor>=60?' <em>plotted strength unchanged</em>':'')+'</span>':"";
+      onH.toLocaleString("en-GB")+(flatFor>=60?' <em>plotted strength unchanged</em>':'')+'</span>':"";
   var cutH=cut?'<span class="cut der" title="'+esc(SEP_NOTE)+'"><small>derived</small> centre separation detected</span>':"";
   var c='<span class="act">'+esc(act.n.toUpperCase())+'</span><span class="sep">&middot;</span><span class="cap-ph">'+esc(PHASES[curPhase].title)+'</span>';
   /* roadmap step 2 (docs/FINAL_AUDIT.md H-15; decision 125 (a)): each event named with its note's tag before the name, where the caption's ellipsis cannot cut it;
@@ -6061,14 +6110,42 @@ function rovingGroup(host,sel){
     B.forEach(function(b,k){ b.tabIndex=(k===j)?0:-1; }); B[j].focus();
   });
 }
+/* roadmap step 5 (docs/VISUAL_AUDIT.md, low: "native title tooltips on event diamonds"; docs/FINAL_AUDIT.md section 3, L): the timeline's
+   phases, event markers, acts and the theme's mark carry their words in data-tip, shown in one tooltip (#tltip) on hover and on keyboard
+   focus, in the page's own type, at once; Esc hides it, and the pointer may move onto it (WCAG 1.4.13). The tip repeats the element's name
+   (aria-label), so it is hidden from assistive technology. Until step 5 native title tooltips, shown after a delay and never on focus. */
+var TIP={el:null, on:null, hideT:0};
+function tipShow(t){
+  var tp=TIP.el||(TIP.el=document.getElementById("tltip")); if(!tp||!t||!t.dataset||!t.dataset.tip) return;
+  clearTimeout(TIP.hideT); TIP.on=t; tp.textContent=t.dataset.tip; tp.hidden=false;
+  var r=t.getBoundingClientRect(), w=tp.offsetWidth, h=tp.offsetHeight, x=r.left+r.width/2-w/2;
+  x=Math.max(8,Math.min(window.innerWidth-w-8,x));
+  tp.style.left=Math.round(x)+"px"; tp.style.top=Math.round(Math.max(8,r.top-h-8))+"px";
+}
+function tipHide(now){ clearTimeout(TIP.hideT); var tp=TIP.el; if(!tp) return;
+  if(now){ tp.hidden=true; TIP.on=null; return; }
+  TIP.hideT=setTimeout(function(){ tp.hidden=true; TIP.on=null; },150); }
+function bindTimeTips(){
+  var tb=document.querySelector(".timebar"), tp=document.getElementById("tltip"); if(!tb||!tp||bindTimeTips.done) return; bindTimeTips.done=true;
+  function tipOf(e){ var t=e.target; return t&&t.closest?t.closest("[data-tip]"):null; }
+  tb.addEventListener("pointerover",function(e){ var t=tipOf(e); if(t) tipShow(t); });
+  tb.addEventListener("pointerout",function(e){ var t=tipOf(e); if(t&&!(e.relatedTarget&&t.contains(e.relatedTarget))) tipHide(false); });
+  tb.addEventListener("focusin",function(e){ var t=tipOf(e); if(t) tipShow(t); else tipHide(true); });
+  tb.addEventListener("focusout",function(){ tipHide(true); });
+  tb.addEventListener("pointerdown",function(){ tipHide(true); });
+  tp.addEventListener("pointerover",function(){ clearTimeout(TIP.hideT); });
+  tp.addEventListener("pointerout",function(){ tipHide(false); });
+  /* Esc hides a shown tip and does nothing else (the review of 22c77ac: it also ran the app's Esc); a second Esc is the app's */
+  window.addEventListener("keydown",function(e){ if(e.key==="Escape"&&!tp.hidden){ tipHide(true); e.stopPropagation(); e.preventDefault(); } },{capture:true});
+}
 function buildTimeline(){
   SPINE=buildSpine();
   var tl=document.getElementById("phases");
   if(tl){ tl.innerHTML="";
     PHASES.forEach(function(p,i){
       /* decision 166 (a): the label in its own box (it carries the ellipsis), so the button's hit area can reach up over the act row */
-      var b=el("button","step"), sl=el("span","step-l"); b.type="button"; sl.textContent=p.label; b.appendChild(sl); b.title=p.clock+"  "+p.title+" ("+actOf(i).n+")";   /* the act's name, no longer a pointer's to hover (decision 166 (a)) */
-      b.setAttribute("aria-label",p.clock+", "+p.label+": "+p.title);
+      var b=el("button","step"), sl=el("span","step-l"); b.type="button"; sl.textContent=p.label; b.appendChild(sl); b.dataset.tip=p.clock+": "+p.title+" ("+actOf(i).n+")";   /* the act's name, no longer a pointer's to hover (decision 166 (a)); its tip (timeTip, roadmap step 5) */
+      b.setAttribute("aria-label",p.clock+", "+p.label+": "+p.title+" ("+actOf(i).n+")");   /* the act, as the tip shows it (the review of 22c77ac) */
       b.style.left=tlPc(p.t0)+"%"; b.style.width=(tlPc(p.t1)-tlPc(p.t0))+"%"; b.tabIndex=-1;
       b.addEventListener("click",function(){ stopPlay(); freeCam=false; setPhase(i); });
       tl.appendChild(b); });
@@ -6094,7 +6171,7 @@ function buildTimeline(){
     evs.forEach(function(o,k){
       var e=o.e, b=el("button","ev-mark "+(e.kind==="decision"?"dec ":"")+(e.side==="fr"?"fr":"al")); b.type="button";
       var lab=evTimeText(e)+", "+e.n+evNote(e);   /* roadmap step 2 (H-1, H-15): its note, disputed, an interval or a reconstruction */
-      b.style.left=tlPc(o.t)+"%"; b.title=evTimeText(e)+"  "+e.n+evNote(e); b.setAttribute("aria-label",lab); b.tabIndex=k===0?0:-1;
+      b.style.left=tlPc(o.t)+"%"; b.dataset.tip=evTimeShown(e)+": "+e.n+evNote(e); b.setAttribute("aria-label",lab); b.tabIndex=k===0?0:-1;
       b.addEventListener("click",function(){ stopPlay(); setClock(o.t); select("e",e.id); });
       evh.appendChild(b); _evTicks.push({el:b,bar:o.bar||null,e:e,t:o.t}); });
     rovingGroup(evh,".ev-mark"); }
@@ -6121,7 +6198,7 @@ function buildActs(){
   host.innerHTML="";
   ACTS.forEach(function(a){
     var p0=PHASES[a.phases[0]], p1=PHASES[a.phases[a.phases.length-1]], b=el("button","act-btn");
-    b.type="button"; b.dataset.a=a.id; b.textContent=a.n; b.title=a.line; b.tabIndex=-1;
+    b.type="button"; b.dataset.a=a.id; b.textContent=a.n; b.dataset.tip=a.line; b.tabIndex=-1;
     b.setAttribute("aria-label",a.n+", "+fmtClock(p0.t0)+" to "+fmtClock(p1.t1)+": "+a.line);
     b.style.left=tlPc(p0.t0)+"%"; b.style.width=(tlPc(p1.t1)-tlPc(p0.t0))+"%";
     /* decision 166 (a): an act takes no pointer press (the phase under the pointer takes it, style.css); its click, from the keyboard, is its
@@ -6205,7 +6282,7 @@ function paintTimeline(){
   /* the chosen chapter's or tour stop's place on the axis */
   var sm=document.getElementById("spinemark");
   if(sm){ var c=(chapter&&typeof chapterById==="function")?chapterById(chapter):null, st=(tourStep>=0)?TOUR[tourStep]:null, t2=c?chapterClock(c):(st?stopClock(st):null);
-    sm.hidden=(t2===null); if(t2!==null){ sm.style.left=tlPc(t2)+"%"; sm.title=c?"The chapter \u201c"+c.n+"\u201d, at "+fmtClock(t2):"Tour stop "+(tourStep+1)+", at "+fmtClock(t2); } }
+    sm.hidden=(t2===null); if(t2!==null){ sm.style.left=tlPc(t2)+"%"; sm.dataset.tip=c?LABELS.names.theme+" \u201c"+c.n+"\u201d, at "+fmtClock(t2):"Tour stop "+(tourStep+1)+", at "+fmtClock(t2); } }
   /* the theme's other moments, marked on the timeline (section C.2): its events' markers and its phases' ticks */
   var ms=c?c.moments.map(momentOf):[], evIn={}, phIn={};
   ms.forEach(function(m){ if(!m) return; if(m.kind==="ev") evIn[m.id]=1; else phIn[m.id]=1; });
@@ -6373,8 +6450,8 @@ function compactCard(id){
   var str=f.strength||aggStrength(id);
   var body='';
   if(f.army) body+=row("Army total", esc(f.army.men)+claimTag("FORMATIONS."+id+".army.men")+", "+f.army.guns+" guns <span class=\"hh\">("+esc(f.army.src)+")</span>"+claimTag("FORMATIONS."+id+".army.src"));
-  else if(f.strengthRange) body+=row("Strength","&asymp; "+f.strengthRange[0].toLocaleString()+"&ndash;"+f.strengthRange[1].toLocaleString()+" men <span class=\"hh\">(working figure "+str.toLocaleString()+")</span>"+(f.guns?", "+f.guns+" guns":""));
-  else if(str) body+=row("Strength","&asymp; "+str.toLocaleString()+" men"+(f.guns?", "+f.guns+" guns":""));
+  else if(f.strengthRange) body+=row("Strength","&asymp; "+f.strengthRange[0].toLocaleString("en-GB")+"&ndash;"+f.strengthRange[1].toLocaleString("en-GB")+" men <span class=\"hh\">(working figure "+str.toLocaleString("en-GB")+")</span>"+(f.guns?", "+f.guns+" guns":""));
+  else if(str) body+=row("Strength","&asymp; "+str.toLocaleString("en-GB")+" men"+(f.guns?", "+f.guns+" guns":""));
   if(f.parent){
     var pf=FORMATIONS[f.parent];
     body+=row("Under", esc(shortCommander(pf))+" &middot; "+esc(pf.name));
@@ -6458,6 +6535,9 @@ function dressSection(id){
    midpoint, tagged derived, with how many it averages ("Midpoint", not "Centre", a tactical word throughout the narrative). The march row's
    distance, time and rate are computed from the plotted leg and its time window (marchRate): derived (where the leg's arrival is itself
    derived, the Timing row below names its rule) */
+/* roadmap step 5 (docs/FINAL_AUDIT.md R-5): a phase's clock as a sentence takes it: "14:30 - 17:00", or "after dark" (PHASES[9].clock
+   "After dark" read mid-sentence; "Last recorded at After dark" until step 5) */
+function phaseSpan(ph){ var c=PHASES[ph].clock; return /^\d/.test(c)?c:c.charAt(0).toLowerCase()+c.slice(1); }
 function derivedTag(){ return '<span class="ltag derived">'+iconSVG(TOKENS.sym.layer.derived)+'derived</span>'; }
 function posRow(id,card){
   var f=FORMATIONS[id], pos=posNow(id);
@@ -6497,8 +6577,11 @@ function dossierFormation(id){
   pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
   if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
   if(commandView!=="none"){
-    var kn=knowledgeOf(id);
-    var KL={own:"Own troops",seen:"In sight",uncertain:"Reported only",unknown:"Not known"}, why=knowReason(id);   /* Stage 5E: which part decides */
+    /* roadmap step 5 (docs/FINAL_AUDIT.md S-4; question 170 (c)): the reading as drawn (drawnKnow: at the eye level a known enemy the eye
+       has no line of sight to is drawn reported only; a corps or column, its formations' reading, aggReading), with that reason; until
+       step 5 knowledgeOf, which said "In sight" where the drawing showed "reported only" */
+    var PR=pillReading(id), kn=PR.kn, why=PR.why;
+    var KL={own:"Own troops",seen:"In sight",uncertain:"Reported only",unknown:"Not known"};   /* Stage 5E: which part decides */
     if(KL[kn]) pills+='<span class="pill ghost">'+esc(KL[kn]+(why?" ("+why+")":""))+'</span>';
   }
   wrap.appendChild(el("div","pillrow",pills));
@@ -6515,7 +6598,7 @@ function dossierFormation(id){
 
   /* HOW MANY */
   var str=f.strength||aggStrength(id);
-  var many = str ? row("Approximate strength","&asymp; "+str.toLocaleString()+" men") : row("Strength","Not recorded");
+  var many = str ? row("Approximate strength","&asymp; "+str.toLocaleString("en-GB")+" men") : row("Strength","Not recorded");
   if(f.guns) many+=row("Guns", esc(String(f.guns)));
   if(f.strengthNote) many+=row("On the figures", esc(f.strengthNote)+claimTag("FORMATIONS."+id+".strengthNote"));
   wrap.appendChild(sect("How many",many,true,"record"));
@@ -6526,7 +6609,7 @@ function dossierFormation(id){
   var whr=posRow(id,false)+marchRow(id);
   if(tmg){
     var tw=tmg.w, tt=tmg.tm;
-    whr+=row("Timing", (tw[0]<clock&&tw[1]<=clock?"Reached ":"Moves ")+esc(fmtClock(tw[0]))+"&ndash;"+esc(fmtClock(tw[1]))+
+    whr+=row("Timing", (tw[0]<clock&&tw[1]<=clock?"Reached ":"Moves ")+esc(fmtClock(tw[0]))+" - "+esc(fmtClock(tw[1]))+
       (tmg.arrDerived?' <span class="hh">(arrival derived: '+esc(arrivalRuleText(tmg))+')</span>':'')+
       " &middot; grade "+esc(tt.gr)+" &middot; "+esc(tt.basis));
     whr+=row("Dated by", tt.ev.map(function(q){ return "&ldquo;"+esc(q)+"&rdquo;"; }).join("; ")+'<br><span class="hh">'+esc(tt.note)+'</span>');
@@ -6588,7 +6671,7 @@ function dossierFormation(id){
   /* OUTCOME */
   var oc=f.track?outcomeOf(id):null;
   if(oc) wrap.appendChild(sect("What became of it",
-    '<p class="prose">'+esc(oc.act)+(FORMATIONS[id].track[oc.ph].act===oc.act?claimTag(trackRef(id,oc.ph,"act")):"")+'</p><p class="hh">Last recorded at '+esc(PHASES[oc.ph].clock)+'</p>',false));
+    '<p class="prose">'+esc(oc.act)+(FORMATIONS[id].track[oc.ph].act===oc.act?claimTag(trackRef(id,oc.ph,"act")):"")+'</p><p class="hh">Last recorded in \u201c'+esc(PHASES[oc.ph].label)+'\u201d, '+esc(phaseSpan(oc.ph))+'</p>',false));
 
   /* subordinates */
   if(f.children&&f.children.length){
@@ -6710,7 +6793,7 @@ function dossierFeature(id){
   var surveyed = (gt&&gt.elev) ? "; surveyed "+gt.elev+" m"+(GEOREF.ELEV_SRC[gtk]?' <span class="hh">('+esc(GEOREF.ELEV_SRC[gtk])+')</span>':"")
                : (gtk&&GEOREF.ELEV_SRC[gtk]) ? '; surveyed <span class="hh">'+esc(GEOREF.ELEV_SRC[gtk])+'</span>' : "";
   var facts=row("Elevation on this model", "\u2248 "+Math.round(elM)+" m at the marker"+surveyed+
-    ' <span class="hh">(relief drawn \u00d7'+geoText("{EXAG}")+' vertically)</span>');
+    ' <span class="hh">(relief drawn '+geoText("{EXAG}")+'\u00d7 vertically)</span>');
   (ft.facts||[]).forEach(function(k,i){ facts+=row(k[0],esc(k[1])+claimTag("FEATURES[#"+ft.id+"].facts["+i+"]")); });
   wrap.appendChild(el("dl","kvs",facts));
   if(ft.why&&ft.why.length){
@@ -6782,7 +6865,7 @@ function dossierEvent(eid){
   head.innerHTML='<div class="dh-bar" style="background:'+col+'"></div><div class="dh-tx">'+
     '<p class="dh-sub">'+esc(KIND[e.kind]||e.kind)+' &middot; '+
       (e.side==="fr"?"French":"Allied")+'</p><h2>'+esc(e.n)+'</h2>'+
-    '<p class="dh-cmd">'+esc((exact?("about "+fmtClock(w[0])):(fmtClock(w[0])+" to "+fmtClock(w[1])))+(e.claim==="disputed"?" ("+LABELS.event.disputed+")":""))+'</p></div>';
+    '<p class="dh-cmd">'+esc((exact?("about "+fmtClock(w[0])):(fmtClock(w[0])+" - "+fmtClock(w[1])))+(e.claim==="disputed"?" ("+LABELS.event.disputed+")":""))+'</p></div>';
   wrap.appendChild(head);
   wrap.appendChild(el("div","pillrow",
     claimPill(e.claim)+
@@ -6877,11 +6960,15 @@ function updateScaleBar(){
     if(w<62) pick=choices[i];
   }
   var px=Math.round(pick*k);
-  if(px<10||px>400){ box.style.opacity="0"; return; }
-  box.style.opacity="1";
+  if(px<10||px>400){ box.style.opacity="0"; box.setAttribute("aria-hidden","true"); return; }
+  box.style.opacity="1"; box.removeAttribute("aria-hidden");
   var was=bar.style.width;
   bar.style.width=px+"px";
   lab.textContent=(pick<1? (pick*1000)+" m" : pick+" km");
+  /* roadmap step 5 (docs/FINAL_AUDIT.md G-1; docs/VISUAL_AUDIT.md: "say so"): in perspective the bar holds at the centre of the view (the
+     orbit target) only, and its name and title say so; the paper map has one scale across the view */
+  var nm="Scale: "+lab.textContent+(camera.isOrthographicCamera?", across the paper map":", at the centre of the view (in perspective, nearer ground is larger and farther smaller)");
+  if(box.getAttribute("aria-label")!==nm) box.setAttribute("aria-label",nm);   /* no native title: the timebar's tips are #tltip's (the review of 22c77ac) */
   /* roadmap step 3 (the review of 7736731): the scale bar shares the caption's row, so the caption's room changes with it: fitted again
      (decision 159), only when the bar's width changes */
   if(was!==bar.style.width&&typeof fitCaption==="function") fitCaption();
@@ -6981,12 +7068,13 @@ function lightNotes(){
       "ground would have under the true sun. The sun's disc stands at its true height, so where the relief is exaggerated the light seems to come from higher than the disc.",
     "Before dawn the field is lit by a design light, not by a moon; nothing about the night's sky is claimed. The weather of the day (the fog in the valley, "+
       "the sun on the heights at about 08:45) is drawn as the phases' texts give it. Thiebault's and Marbot's memoirs have the fog hiding the French in the "+
-      "valley and the 'sun of Austerlitz' lighting the climb onto the Pratzen (the sources sheet's Basis), but give the climb itself no clock hour. "+
+      "valley and the 'sun of Austerlitz' lighting the climb onto the Pratzen (this sheet's Basis), but give the climb itself no clock hour. "+
       "Thiebault writes that day came only at eight (vol. III, 1894, p. 456), and that an aide-de-camp came at half past eight to report that the last "+
-      "enemy corps had left the Pratzen heights, a report he says misled Napoleon (p. 504). The hours drawn are the narrative's, and this reconstruction "+
-      "cites no source for them.",
+      "enemy corps had left the Pratzen heights, a report he says misled Napoleon (p. 504). The hours drawn are this map's own: the climb from about 08:45, inside the "+
+      "sources' range as the climbs' timing notes give it (about eight in S\u00e9gur, the aide's report at half past eight in Thiebault, about nine "+
+      "in Stutterheim and Sch\u00f6nhals), none of them taken as its hour.",
     "The valley fog is drawn from the narrative: in the Goldbach valley until about 08:45, off the heights first. Its top is drawn at "+Math.round(ATMO.FOG_TOP)+
-      " m, the height below which the Command view treats ground as fogged while the mist lies; its depth and its lifting are modelled, not recorded, "+
+      " m, the height below which the \u201cWhose eyes?\u201d reading treats ground as fogged while the mist lies; its depth and its lifting are modelled, not recorded, "+
       "and it is drawn see-through so the formations in it stay visible. The thin mist drawn in the late afternoon is modelled too: no text mentions it.",
     "The haze that softens what lies behind the place in view is a depth cue, the same at every zoom; the day's visibility is not recorded in this reconstruction."];
 }
@@ -7027,7 +7115,7 @@ function refLabel(ref){ var m;
 function dossierClaims(refs){ var h='<h3 id="claims-here">'+esc(LABELS.dossier.here)+'</h3>';
   return h+(refs.length?'<ul class="bul">'+refs.map(function(r){ var c=stmtClaim(r), E=STATEMENT_CLAIMS[r], ws=[];
         (E&&E.by||[]).forEach(function(b){ var S=APPEARANCE_SOURCES[b.src]; var w=(S?S.au:b.src)+(b.at?", "+b.at:""); if(ws.indexOf(w)<0) ws.push(w); });
-        return '<li>'+esc(refLabel(r)||r)+' \u2014 <b>'+esc(CLAIM_WORDS[c.cl].w)+'</b>'+(c.cls?' '+esc("(by its kind)"):'')+(ws.length?' <span class="hh">'+esc("("+ws.join("; ")+")")+'</span>':'')+'</li>'; }).join('')+'</ul>'
+        return '<li>'+esc(refLabel(r)||r)+': <b>'+esc(CLAIM_WORDS[c.cl].w)+'</b>'+(c.cls?' '+esc("(by its kind)"):'')+(ws.length?' <span class="hh">'+esc("("+ws.join("; ")+")")+'</span>':'')+'</li>'; }).join('')+'</ul>'
       :'<p>'+esc(LABELS.dossier.none)+'</p>');
 }
 function claimsIndex(){
@@ -7046,7 +7134,7 @@ function claimsIndex(){
   K.forEach(function(k){ var W=CLAIM_WORDS[k], L=(by[k]||[]).slice();
     var byCls=Object.keys(CLAIM_BY_CLASS).filter(function(c){ return CLAIM_BY_CLASS[c].cl===k; });
     if(!L.length&&!byCls.length) return;
-    h+='<li><b>'+esc(W.w)+'</b> \u2014 '+esc(W.d)+(L.length?' '+esc("("+L.length+(L.length===1?" statement":" statements")+")"):"");
+    h+='<li><b>'+esc(W.w)+'</b>: '+esc(W.d)+(L.length?' '+esc("("+L.length+(L.length===1?" statement":" statements")+")"):"");
     if(byCls.length) h+='<br>'+esc("By its kind, not checked one by one: "+byCls.map(function(c){ var n=nByCls[c]||0; return CLAIM_BY_CLASS[c].n+" ("+CLAIM_BY_CLASS[c].why+"; "+n+(n===1?" statement":" statements")+")"; }).join("; ")+", unless it carries a claim of its own.");
     if(L.length){
       L=L.map(function(r){ return {r:r, t:refLabel(r)||r}; }).sort(function(a,b){ return a.t<b.t?-1:a.t>b.t?1:0; });
@@ -7056,7 +7144,7 @@ function claimsIndex(){
         return '<li>'+esc(x.t)+(ws.length?' <span class="hh">'+esc("("+ws.join("; ")+")")+'</span>':'')+'</li>'; }).join('')+'</ul>';
     }
     h+='</li>'; });
-  h+='<li><b>'+esc(CLAIM_WORDS.unchecked.w)+'</b> \u2014 '+esc(CLAIM_WORDS.unchecked.d)+' '+esc("Every other statement.")+'</li></ul>';
+  h+='<li><b>'+esc(CLAIM_WORDS.unchecked.w)+'</b>: '+esc(CLAIM_WORDS.unchecked.d)+' '+esc("Every other statement.")+'</li></ul>';
   return h;
 }
 var _srcRefs=null;
@@ -7069,9 +7157,9 @@ function openSources(o){
     '<h3>Three layers</h3><dl class="kvs">'+SOURCE_NOTE.layers.map(function(l){
       return '<div class="kv"><dt>'+esc(l[0])+'</dt><dd>'+esc(l[1])+'</dd></div>'; }).join('')+'</dl>'+
     '<h3>Confidence grades</h3><ul class="bul">'+
-    '<li><b>A</b> — '+esc(CONF_TEXT.A)+'</li>'+
-    '<li><b>B</b> — '+esc(CONF_TEXT.B)+'</li>'+
-    '<li><b>C</b> — '+esc(CONF_TEXT.C)+'</li>'+
+    '<li><b>A</b>: '+esc(CONF_TEXT.A)+'</li>'+
+    '<li><b>B</b>: '+esc(CONF_TEXT.B)+'</li>'+
+    '<li><b>C</b>: '+esc(CONF_TEXT.C)+'</li>'+
     /* Stage 5B (decisions 85-88): how the grade is drawn on the ground; written by the app, so the guarded SOURCE_NOTE stays as it is */
     '<li>'+esc("On the map each formation's grade is drawn on the ground under it: A as its modelled footprint, crisp; B as a soft frontage, twice the "+
       "footprint's width and fading at its ends; C as a diffuse zone whose radius is the formation's own frontage. These are drawn sizes, not measured "+
@@ -7098,7 +7186,7 @@ function openSources(o){
       TACTICAL_RATE.inf.toFixed(1)+" km/h, cavalry "+TACTICAL_RATE.cav.toFixed(1)+", mixed "+TACTICAL_RATE.mixed.toFixed(1)+
       ". These rates are design values, not sourced, and are not historical rates. They are used only where the move still fits before the formation's next position; otherwise the move keeps the march-rate ceiling and is flagged.")+'</li>'+
     derivedArrivals().map(function(r){ var f=FORMATIONS[r.id];
-      return '<li>'+esc(f.name+" ("+fmtClock(r.b.w[0])+"\u2013"+fmtClock(r.b.w[1])+"): "+arrivalRuleText(r.b)+".")+'</li>'; }).join('')+'</ul>'+
+      return '<li>'+esc(f.name+" ("+fmtClock(r.b.w[0])+" - "+fmtClock(r.b.w[1])+"): "+arrivalRuleText(r.b)+".")+'</li>'; }).join('')+'</ul>'+
     /* Stage 2C: the arrows (decisions 33 and 37), counted from OVERLAYS */
     '<h3>How the arrows are drawn</h3><ul class="bul">'+arrowNotes().map(function(t){ return '<li>'+esc(t)+'</li>'; }).join('')+'</ul>'+
     /* Stage 6C (docs/STAGE6_SPEC.md section 4.3 item 6): how the troops are drawn, counted from appearance.js and KIT */
@@ -7118,7 +7206,8 @@ function openSources(o){
 function flash(msg){
   var t=document.getElementById("toast");
   t.textContent=msg; t.classList.add("on");
-  setTimeout(function(){ t.classList.remove("on"); },3400);
+  clearTimeout(flash._t);   /* roadmap step 5 (docs/FINAL_AUDIT.md SW-13): a second message keeps its whole 3.4 s */
+  flash._t=setTimeout(function(){ t.classList.remove("on"); },3400);
 }
 function setProg(f){
   var b=document.getElementById("prog");
@@ -7254,6 +7343,7 @@ function followStep(dtMs){
   return true;
 }
 var presentation="study", hideDispatch=false;
+var setLayerPop=null;   /* the Layers panel opened or closed (set where the panel is bound); roadmap step 5 (SW-13) */
 var PRESENT={
   study:{cls:"pm-study", rail:true},
   watch:{cls:"pm-watch", rail:false},
@@ -7263,7 +7353,7 @@ function setPresentation(m){
   closeFirst(null);
   if(!PRESENT[m]) m="study";
   var a=focusedEl(), vmb=!!(a&&a.classList&&a.classList.contains("vm-btn"));   /* roadmap step 3 (SW-5): read before anything is hidden */
-  if(m!=="study"&&window.__setPop) window.__setPop(false);   /* roadmap step 3 (docs/FINAL_AUDIT.md SW-9): the Layers panel closes with its opener */
+  if(m!=="study"&&setLayerPop) setLayerPop(false);   /* roadmap step 3 (docs/FINAL_AUDIT.md SW-9): the Layers panel closes with its opener */
   presentation=m;
   var b=document.body;
   b.classList.remove("pm-study","pm-watch","pm-map");
@@ -7351,7 +7441,6 @@ function syncTimebarHeight(){
 }
 
 /* ---------------- loop ---------------- */
-var frameClock=new THREE.Clock();
 var lastFrame=0;
 /* ---- render on demand ----
    A frame is drawn when something changes: a tween, playback, recent input, an easing that has
@@ -8069,16 +8158,16 @@ var AUSTERLITZ_DEBUG=(function(){
     ck2("standards: the top over its denominator is the sourced ratio (Russian and Austrian standards on foot: staff and finial over the stature, the man to his hat's top) or the provisional "+STD_RATIO+" (the figure's top) for every standard (decision 106)", !stBad.length,
       F.map(function(f){ return fmtFactor(f)+"\u00d7 "+B[f].std.n+" standards ("+B[f].std.sourced+" sourced), worst deviation "+B[f].std.worst.toFixed(4)+(B[f].std.where?" ("+B[f].std.where+")":""); }).join("; "));
     var lgBad=F.filter(function(f){ var t=B[f].legend; return f===1 ? !/true scale/.test(t)||!/footprints/.test(t)
-      : t.indexOf("\u00d7"+fmtFactor(f))<0||!/true scale/.test(t)||!/45\u201370/.test(t)||!/10\u201315/.test(t); });
+      : t.indexOf("drawn "+fmtFactor(f)+"\u00d7 vertically")<0||!/true scale/.test(t)||!/45\u201370/.test(t)||!/10\u201315/.test(t); });
     ck2("legend: states the current factor, relative to true scale, and the two named symbol scales", !lgBad.length,
       F.map(function(f){ return fmtFactor(f)+"\u00d7: \""+B[f].legend+"\""; }).join("; "));
     var stale=[], model=GEOREF.EXAG.toFixed(0);
     F.forEach(function(f){ var o=B[f];
       if(o.sources.indexOf("exaggerated about "+fmtFactor(f)+" times")<0) stale.push(fmtFactor(f)+"\u00d7 sources sheet does not state it");
-      if(o.dossier.indexOf("\u00d7"+fmtFactor(f)+" vertically")<0) stale.push(fmtFactor(f)+"\u00d7 place dossier does not state it");
+      if(o.dossier.indexOf("drawn "+fmtFactor(f)+"\u00d7 vertically")<0) stale.push(fmtFactor(f)+"\u00d7 place dossier does not state it");
       if(f!==GEOREF.EXAG){ if(o.sources.indexOf("about "+model+" times")>=0) stale.push(fmtFactor(f)+"\u00d7 sources sheet states "+model);
-        if(o.dossier.indexOf("\u00d7"+model+" ")>=0) stale.push(fmtFactor(f)+"\u00d7 dossier states \u00d7"+model);
-        if(o.legend.indexOf("\u00d7"+model)>=0) stale.push(fmtFactor(f)+"\u00d7 legend states \u00d7"+model); } });
+        if(o.dossier.indexOf(" "+model+"\u00d7")>=0) stale.push(fmtFactor(f)+"\u00d7 dossier states "+model+"\u00d7");
+        if(o.legend.indexOf(" "+model+"\u00d7")>=0) stale.push(fmtFactor(f)+"\u00d7 legend states "+model+"\u00d7"); } });
     ck2("no stale exaggeration: the sources sheet, place dossier and legend state the display factor, never GEOREF.EXAG as drawn", !stale.length,
       stale.length?stale.join("; "):"checked at "+F.map(fmtFactor).join(", ")+" (the model's own "+GEOREF.EXAG+" appears only when it is the display factor)");
     var t1=B[1];
@@ -8744,7 +8833,7 @@ var AUSTERLITZ_DEBUG=(function(){
       var it=[ML.items["c:"+id],ML.items["n:"+id]].some(function(q){ return q&&q.eFrame===ML.frame&&q.state==="on"; });
       if(kq==="unknown"){ nUnk++; if((r.block&&r.block.visible)||(r.conf&&r.conf.visible)||(r.foot&&r.foot.visible)||it) unkDrawn.push(id); }
       if(r.block&&r.block.visible){ fig++; if(!hasLOS(hq,p)) hidden.push(id); } });
-    var cap=document.getElementById("eyecap"), capOK=!!cap&&!cap.hidden&&cap.textContent.indexOf("\u00d7"+fmtFactor(DISPLAY.factor))>=0&&cap.textContent.indexOf("A model reading")>=0;
+    var cap=document.getElementById("eyecap"), capOK=!!cap&&!cap.hidden&&cap.textContent.indexOf("Relief drawn "+fmtFactor(DISPLAY.factor)+"\u00d7")>=0&&cap.textContent.indexOf("A model reading")>=0;
     var nearOK=landCam.near===EYE.NEAR;
     LANDCAM.orbit(40,0); settle(2,true);
     var left=!EYE.on, near1=landCam.near===EYE.NEAR0, floor=landCam.position.y>=camFloor(landCam.position.x,landCam.position.z)-1e-6, viol=CAM.violations-k0.viol, capGone=!!cap&&cap.hidden;
@@ -8864,7 +8953,7 @@ var AUSTERLITZ_DEBUG=(function(){
       seq.push(commandView+":"+tb.textContent+":"+(nm.indexOf(tb.textContent)===0&&nm===eyesName(commandView)&&nm.indexOf(EYES.LABEL[commandView])>0?"named":"misnamed")+":"+(tb.hasAttribute("aria-pressed")?"pressed":"-")); }
     var vb=document.querySelector('.van-btn[data-v="eye"]'), cmd=Array.prototype.map.call(document.querySelectorAll(".cmd-btn"),function(b){ return b.getAttribute("aria-pressed"); }).join("");
     out.push({name:"Whose eyes?: the dossier names which part decides; the timeline's button cycles everyone, Napoleon, the Allied headquarters, and the Command tab's group and the eye's vantage follow it",
-      ok:pills.length===Object.keys(why).length&&pills.every(function(t){ return /\((no line of sight|authored limit)\)$/.test(t); })&&seq.join(",")==="fr:Eyes: Napoleon:named:-,al:Eyes: Allied HQ:named:-,none:Eyes: everyone:named:-"&&!!vb&&vb.hidden&&cmd==="truefalsefalse",
+      ok:pills.length===Object.keys(why).length&&pills.every(function(t){ return /\((no line of sight|authored limit)\)$/.test(t); })&&seq.join(",")==="fr:Eyes: Napoleon's HQ:named:-,al:Eyes: Allied HQ:named:-,none:Eyes: everyone:named:-"&&!!vb&&vb.hidden&&cmd==="truefalsefalse",
       detail:"Allied headquarters at 10:00: "+nos.length+" not known; the pills: "+pills.join(" | ")+"; the button: "+seq.join(", ")+"; the eye's vantage hidden with everyone "+(vb&&vb.hidden)});
     setCommandView(k0.cv); MAPCAM.restore(ms0); if(mode!==k0.md) setMode(k0.md);
     if(k0.sel) select(k0.sel.k,k0.sel.id);
@@ -9252,8 +9341,8 @@ var AUSTERLITZ_DEBUG=(function(){
       var aud=auditMovement();
       ck("derived readings unchanged: the plateau at 04:00, both army totals, the movement audit",
         AL>0&&FR>0&&p04>0&&p04===p04d&&p04===PLATEAU_04_RECORDED&&Math.abs(p04-tour04)<=500&&!over.length&&!aud.length,
-        "Allied on the plateau at 04:00 = "+p04.toLocaleString()+" (from the data alone "+p04d.toLocaleString()+"; recorded 38,700; the tour's \u201cabout "+(isNaN(tour04)?"?":tour04.toLocaleString())+"\u201d); "+
-        (over.length?"totals exceed an army at "+over.join(","):"totals within the data's armies, "+AL.toLocaleString()+" Allied and "+FR.toLocaleString()+" French, at "+nMom+" moments")+"; movement audit "+aud.length+" findings");
+        "Allied on the plateau at 04:00 = "+p04.toLocaleString("en-GB")+" (from the data alone "+p04d.toLocaleString("en-GB")+"; recorded 38,700; the tour's \u201cabout "+(isNaN(tour04)?"?":tour04.toLocaleString("en-GB"))+"\u201d); "+
+        (over.length?"totals exceed an army at "+over.join(","):"totals within the data's armies, "+AL.toLocaleString("en-GB")+" Allied and "+FR.toLocaleString("en-GB")+" French, at "+nMom+" moments")+"; movement audit "+aud.length+" findings");
 
 
       /* 12. Stage 2C: every overlay arrow, line and boundary vertex at its lift above the drawn ground, in every phase;
@@ -9497,7 +9586,10 @@ var AUSTERLITZ_DEBUG=(function(){
       _evTicks.forEach(function(o){ var e=o.e, want=e.n+note6(e), a=o.el.getAttribute("aria-label");
         if(note6(e)) nN++;
         if(a!==evTimeText(e)+", "+want) c6.push(e.id+": its marker is named '"+String(a).slice(0,80)+"'");
-        if(o.el.title!==evTimeText(e)+"  "+want) c6.push(e.id+": its marker's title '"+String(o.el.title).slice(0,80)+"'");
+        if(o.el.title||o.el.dataset.tip!==evTimeShown(e)+": "+want) c6.push(e.id+": its marker's tip '"+String(o.el.dataset.tip).slice(0,80)+"'"+(o.el.title?" and a native title":""));   /* roadmap step 5: the tip, not a native title */
+        if(o===_evTicks[0]){ var fa6=focusedEl(); o.el.focus({preventScroll:true}); var tt6=document.getElementById("tltip");   /* the tip shown on keyboard focus, as on hover */
+          if(!tt6||tt6.hidden||tt6.textContent!==o.el.dataset.tip) c6.push(e.id+": its tip is not shown on focus ("+(tt6?(tt6.hidden?"hidden":"'"+tt6.textContent.slice(0,60)+"'"):"no #tltip")+")");
+          o.el.blur(); if(tt6&&!tt6.hidden) c6.push(e.id+": its tip stays shown after the focus leaves"); if(fa6&&fa6.focus) fa6.focus({preventScroll:true}); }
         setClock(evWindow(e)[0],{instant:true,force:true,camera:false}); _sitKey=""; paintSituation();
         var lv=liveEvents(clock), dw=dwellEvents();
         if(!(dw&&dw.length)&&lv.length&&lv[0].e===e){ nC++;
@@ -9668,7 +9760,7 @@ var AUSTERLITZ_DEBUG=(function(){
           else if(op<0.99) bad.push(w+": the focused switch drawn at opacity "+op.toFixed(2)); } }
       function key(k){ var on=document.activeElement&&document.activeElement!==document.body?document.activeElement:window;
         on.dispatchEvent(new KeyboardEvent("keydown",{key:k,bubbles:true,cancelable:true})); }
-      function fresh(){ if(OPENING.on) openingEnd("camera"); if(tourStep>=0) exitTour(); if(!document.getElementById("layerpop").hidden) window.__setPop(false);
+      function fresh(){ if(OPENING.on) openingEnd("camera"); if(tourStep>=0) exitTour(); if(!document.getElementById("layerpop").hidden) setLayerPop(false);
         setPresentation("study"); select(null,null); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); }
       if(mode!=="terrain") setMode("terrain"); fresh();
       var tbt=document.getElementById("tourbtn"); tbt.focus({preventScroll:true}); tbt.click(); want("the Guided tour button (decision 168)","tour-next"); fresh();
@@ -9952,7 +10044,7 @@ var AUSTERLITZ_DEBUG=(function(){
       select("f","sthilaire"); chk("dossier",document.getElementById("drawer-back")); chk("dossier",document.getElementById("drawer-close")); select(null,null);
       openSources(); chk("sources",document.getElementById("modal-close")); closeSources();
       setHelp(true); chk("keys",document.getElementById("help-close")); chk("keys",document.getElementById("help-keys")); setHelp(false);
-      window.__setPop(true); chk("layers",document.getElementById("layerclose")); window.__setPop(false);
+      setLayerPop(true); chk("layers",document.getElementById("layerclose")); setLayerPop(false);
       setPresentation("watch"); select("f","sthilaire"); all("timeline (Watch)",".tb-top button"); all("chip","#selchip button"); select(null,null);
       setPresentation("study");
       /* decision 166 (a): the acts take no pointer press; each phase's hit area (its box and its ::before over the act row) at least 24 x 24 px,

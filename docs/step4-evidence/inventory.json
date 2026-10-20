@@ -25,9 +25,9 @@
  },
  "byClaim": {
   "interpretation (by class)": 75,
-  "unchecked": 488,
-  "attributed": 58,
-  "disputed": 64,
+  "unchecked": 485,
+  "attributed": 60,
+  "disputed": 65,
   "uncertain": 5,
   "derived": 2,
   "interpretation": 12
@@ -276,7 +276,7 @@
    "file": "data.js",
    "line": 75,
    "label": null,
-   "text": "Saint-Hilaire and Vandamme climb out of the fog into sunlight onto a plateau the 4th Column is still crossing. St-Hilaire makes for the Pratzeberg south of Pratzen village, Vandamme for Stare Vinohrady, the 'old vineyards', north-east of the village. Kutuzov, riding with the 4th Column, sees the danger and begins pulling troops back. The Allied centre is being broken, but the plateau will not be firmly French until about 11:00.",
+   "text": "Saint-Hilaire and Vandamme climb out of the fog into sunlight onto a plateau the 4th Column is still crossing. Saint-Hilaire makes for the Pratzeberg south of Pratzen village, Vandamme for Stare Vinohrady, the 'old vineyards', north-east of the village. Kutuzov, riding with the 4th Column, sees the danger and begins pulling troops back. The Allied centre is being broken, but the plateau will not be firmly French until about 11:00.",
    "claim": "unchecked",
    "by": []
   },
@@ -5317,9 +5317,40 @@
    "file": "data.js",
    "line": 606,
    "label": null,
-   "text": "6,730 (Duffy 1977; Smith 1998)",
-   "claim": "unchecked",
-   "by": []
+   "text": "6,730 (Duffy 1977; Smith 1998). Maliutin commanded the Guard infantry at Olmütz and on the march (Mikhailovsky-Danilevsky; the Chevalier Guard's history), and Sokolov's order of battle for 2 December still titles him commanding all the Guard infantry; but on the day he led a separate column, the Life Grenadiers and the Chevalier Guard, which came up late, the Chevalier Guard sent ahead (Sokolov; the Chevalier Guard's history; the Allied report printed in 1806). The Guard infantry with the Tsesarevich is under Depreradovich 1st, commander of the 1st Guard infantry brigade, in Sokolov alone, with no source on his page",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "sokolov2006",
+     "at": "t. II, pp. 199-200",
+     "rd": "sokolov2006.p199-200.guard-columns"
+    },
+    {
+     "src": "mikhailovsky1844",
+     "at": "pp. 144-145",
+     "rd": "mikhailovsky1844.p144-145.guard-commanders"
+    },
+    {
+     "src": "kavalergard1851",
+     "at": "p. 54",
+     "rd": "kavalergard1851.p54.march-commanders"
+    },
+    {
+     "src": "kavalergard1851",
+     "at": "pp. 56-57",
+     "rd": "kavalergard1851.p56-57.malutin-blazovits"
+    },
+    {
+     "src": "kavalergard1851",
+     "at": "pp. 58-59",
+     "rd": "kavalergard1851.p58-59.horse-guard-eagle-depreradovich"
+    },
+    {
+     "src": "materialien1806",
+     "at": "pp. 118-119",
+     "rd": "materialien1806.p118-119.malutin-chevaliergarde"
+    }
+   ]
   },
   {
    "ref": "FORMATIONS.rg_inf.track[\"0\"].obj",
@@ -5827,9 +5858,22 @@
    "file": "data.js",
    "line": 654,
    "label": null,
-   "text": "Named by French soldiers after a chapel in Egypt. Bagration could not get past it, which is a large part of why the northern battle stayed a holding action.",
-   "claim": "unchecked",
-   "by": []
+   "text": "Veterans of Egypt named it the Santon, Marbot says, because the small chapel on its top had a roof like a minaret; Ségur reports it was said to be named for a tomb the Turks had left there. Bagration could not get past it, which is a large part of why the northern battle stayed a holding action.",
+   "claim": "disputed",
+   "by": [
+    {
+     "src": "marbot1891",
+     "at": "t. I, p. 258",
+     "rd": "marbot1891.p258.santon-name",
+     "side": "named by veterans of Egypt for the minaret-like chapel on its top"
+    },
+    {
+     "src": "segur1877",
+     "at": "t. II, p. 452",
+     "rd": "segur1877.p452.santon-tomb",
+     "side": "named, it was said, for a tomb the Turks had left there"
+    }
+   ]
   },
   {
    "ref": "FEATURES[#zuran].sub",
@@ -6605,9 +6649,25 @@
    "file": "data.js",
    "line": 737,
    "label": null,
-   "text": "Napoleon signed the armistice with Francis at the castle here on 6 December.",
-   "claim": "unchecked",
-   "by": []
+   "text": "On 4 December Napoleon met Emperor Francis at Napoleon's bivouac by the outposts, by a mill in Savary's account, and the two agreed on an armistice (the 31st Bulletin); the 32nd Bulletin, dated 6 December, has Prince Johann of Liechtenstein come to the Emperor at the castle here and conclude it with Marshal Berthier.",
+   "claim": "attributed",
+   "by": [
+    {
+     "src": "corr11_1863",
+     "at": "no. 9546, p. 457",
+     "rd": "corr11_1863.p457.bulletin31-meeting"
+    },
+    {
+     "src": "savary1828",
+     "at": "t. II, p. 213",
+     "rd": "savary1828.p213.meeting-mill"
+    },
+    {
+     "src": "corr11_1863",
+     "at": "no. 9548, p. 462",
+     "rd": "corr11_1863.p462.bulletin32-armistice"
+    }
+   ]
   },
   {
    "ref": "FEATURES[#krzenowitz].sub",

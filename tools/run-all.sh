@@ -21,7 +21,8 @@ echo "BUILD OK: $(cat "$OUT/build.out")  bundle $(wc -c < bundle.js) bytes, html
 # A suite fails if it exits non-zero (including a crash or the timeout) or prints an error summary:
 # a non-zero error, failure, finding, violation or disagreement count, a console warning (runtime-test.js: three.js r128's own
 # material checks, roadmap step 1, T-1), or a line marking a failed check.
-# audit.js alone reports only in its output; the others also set their exit code (runtime-test.js since roadmap step 1).
+# Every suite also sets its exit code (runtime-test.js since roadmap step 1; audit.js since roadmap step 5, when its continuity and
+# coverage became assertions, T-9 (b)).
 FAILS='^(CSS ERRORS|ERRORS|errors|findings): *[1-9]|VIOLATIONS \([1-9]|, [1-9][0-9]* failed$|: [1-9][0-9]* disagreements|^  (!|E|FAIL|✗) |BROKEN|  FLOATS$|: DISAGREE$|<-- outside|^console\.warn unique: *[1-9]'
 failed=""
 # Stage 2B height guard: no presentation code reads the model height (height()/hAt()) where the drawn ground is meant,

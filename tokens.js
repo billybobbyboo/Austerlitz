@@ -108,5 +108,3 @@ var TOKENS = /*TOKENS:BEGIN*/{
   }
 }/*TOKENS:END*/;
 
-/* the theme's colours for JavaScript drawing: paper = the paper map */
-function themeTok(paper){ return paper ? TOKENS.theme.paper : TOKENS.theme.dark; }

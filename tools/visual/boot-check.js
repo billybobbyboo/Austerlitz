@@ -139,7 +139,19 @@ async function runBootCases(html,only){
     try{ const {p,log}=await page(browser,"context-loss",pg=>TR.routeThree(pg));
       await p.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:60000});
       await TR.waitBoot(p,240000);
+      /* roadmap step 5: the page idle (DEV.state "idle", the render loop drawing nothing, for 0.5 s; within 120 s) before the loss and
+         after the restore, so that the same geometries stand drawn before the loss and are replaced after the restore on every run. Until
+         step 5 the loss came as soon as the page had started, while its start-up frames were still settling (under software WebGL about
+         40 s of them, each rebuilding the confidence patches, confPlace), and the count was read 2.3 s after the restore: three r128's
+         warnings then varied with how far the settling had gone (20-44 seen, 52 with the loss at once; it failed CI once on PR #55, 44 over
+         CTX_DELETES). Idle before the loss, nothing drawn before it is disposed after the restore: 0 warnings on three runs of the step-5
+         build. A step of the clock after the restore (a visitor's) would dispose the pre-loss geometries on purpose: 248 warnings, past
+         CTX_DELETES, which moves only on the owner's word (docs/step5-evidence/questions.md, question 212) */
       const a=await p.evaluate(async()=>{ const ext=renderer.getContext().getExtension("WEBGL_lose_context"); if(!ext) return {noExt:true};
+        const settle=async()=>{ const t0=performance.now(); let s=0;
+          while(performance.now()-t0<120000){ await new Promise(z=>setTimeout(z,100)); if(DEV.state==="idle"){ if(!s) s=performance.now(); else if(performance.now()-s>=500) return true; } else s=0; }
+          return false; };
+        const settled0=await settle();
         ext.loseContext(); await new Promise(z=>setTimeout(z,400));
         const n=document.getElementById("glnotice"), r={lost:GL.lost,role:n.getAttribute("role"),text:n.textContent,button:!!n.querySelector("button"),vis:n.getBoundingClientRect().height>0};
         /* the notice's text and button against their own backgrounds, at AA */
@@ -147,11 +159,12 @@ async function runBootCases(html,only){
         function lum(c){ return [c.r,c.g,c.b].map(v=>{ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); }).reduce((s,v,i)=>s+v*[0.2126,0.7152,0.0722][i],0); }
         function bgOf(e){ for(let x=e;x;x=x.parentElement){ const c=rgb(getComputedStyle(x).backgroundColor); if(c.a>0.99) return c; } return {r:0,g:0,b:0}; }
         r.low=[n.querySelector("span"),n.querySelector("button")].filter(e=>{ const L1=lum(rgb(getComputedStyle(e).color)), L2=lum(bgOf(e)); return (Math.max(L1,L2)+0.05)/(Math.min(L1,L2)+0.05)<4.5; }).map(e=>e.tagName);
-        const f0=DEV.frames; ext.restoreContext(); await new Promise(z=>setTimeout(z,2300));
-        r.after={lost:GL.lost,text:n.textContent,frames:DEV.frames-f0,fx:FX.on}; return r; });
+        const f0=DEV.frames; ext.restoreContext(); await new Promise(z=>setTimeout(z,300)); const settled1=await settle();
+        r.after={lost:GL.lost,text:n.textContent,frames:DEV.frames-f0,fx:FX.on}; r.settled=[settled0,settled1]; return r; });
       if(a.noExt) bad.push("no WEBGL_lose_context");
       else { if(!a.lost||a.role!=="alert"||!a.vis||!a.button||a.text.indexOf("The 3D view has stopped")!==0||a.low.length) bad.push("lost: "+JSON.stringify(a));
-        if(a.after.lost||a.after.text||!(a.after.frames>0)) bad.push("restored: "+JSON.stringify(a.after)); }
+        if(a.after.lost||a.after.text||!(a.after.frames>0)) bad.push("restored: "+JSON.stringify(a.after));
+        if(!a.settled[0]||!a.settled[1]) bad.push("the page was not idle within 120 s "+(a.settled[0]?"after the restore":"before the loss")); }
       bad.push.apply(bad,judgeLog("context-loss",log));
       const nd=countOf(log,EXPECT["context-loss"][0][1]);
       R.push({name:"context-loss",ok:!bad.length,line:"context-loss: "+(bad.length?bad.join("; "):"the notice (an alert with Reload, at AA) while lost, cleared and frames drawn again by the app when restored")+"; "+nd+" “does not belong to this context” warnings (at most "+CTX_DELETES+")"});
