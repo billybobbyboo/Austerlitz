@@ -74,7 +74,7 @@ by class, 484 unchecked, the inventory current; redteam 0 findings); `check:chro
 against the step 5 reference: the ten declarations above changed, then, the reference moved to `archive/step5b-fdc25e82.html`, 131 identical;
 the context-loss case three times on its own, each 248 warnings, none idle, at least one after the step; `check:visual` STAGE0 all checks
 passed, 0 failures over 30 cases, the self-test 242 of 242; `check:contrast` 5,905 text elements, 0 below AA, 0 below 10.5 px, 0 font
-failures, 35 of 35 states, 0 console messages, 6 of 6 start-up cases (context-loss 248); `check:selftest` (running at this commit; its result follows in the next); `check:baseline`
+failures, 35 of 35 states, 0 console messages, 6 of 6 start-up cases (context-loss 248); `check:selftest` 242 of 242 against its manifest, 0 failing, STAGE0 all checks passed; `check:baseline`
 moved to `fdc25e82`, 2,198,549 bytes. The independent read-only review of the first commit: 15 findings; fixed in the second commit: the
 Russian Guard cavalry is `rg_cav` (question 213, S5.7, here), the corps note's sum (the text layer consistent with 3,700), the pairing the
 reader's, question 213's options, S5.7 bearing on the commander, the register's intro and header, the clock step's lower bound and
