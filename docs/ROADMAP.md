@@ -256,7 +256,7 @@ the owner's word. Part C (PR #55): 203 (b) with (c), 204 (a), decided 18 October
 - **The owner questions 205-212** (`docs/step5-evidence/questions.md`), each with its default in the build: 205 the names (themes, the phase
   text, "Accuracy and sources", "Napoleon's HQ"; `SOURCE_NOTE.title` kept), 206 the formats ("08:00 - 09:00", "4×", "Stop 1 of 9", "38,700",
   colons), 207 the tour's own words (unchanged), 208 the event steps' glyphs (the media order, the same glyphs), 209 the accents (unchanged
-  but "Saint-Hilaire"), 210 the Guard infantry's commander (Depreradovich 1st, applied), 211 its 6,730 (unchanged), 212 the context-loss
+  but "Saint-Hilaire"), 210 the Guard infantry's commander (Maliutin kept, the day in the note; recommended: "not established on the day"), 211 its 6,730 (unchanged), 212 the context-loss
   case's bound (the case idle, 0 warnings; `CTX_DELETES` 40 kept).
 - **To a later data task:** the accents if 209 (a) is chosen; the Dress notes' internal words (H-19's jargon, `appearance.js`); `CONF_TEXT.C`'s
   em dash (guarded); the armistice's own text (the Moniteur of 26 frimaire an XIV, not found on archive.org); Duffy and Smith for the Guard

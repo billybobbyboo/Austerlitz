@@ -60,20 +60,24 @@ the names' own, and the sources print them. *Default:* (c), nothing changed but 
 as everywhere else (not an accent). The Dress notes' internal words that H-19 also names ("data.js", "(col4.mixedNote)", in `appearance.js`)
 are not spellings: left for a later data task.
 
-**210. The Guard infantry's commander on 2 December (`FORMATIONS.rg_inf`; step 4's hand-on).** The map named Lt.-Gen. Maliutin. The sources
-read (register entries C6.27, C6.28, C6.c1, C6.c2, C6.c3 and S5.6) give him the Guard infantry at Olmütz and on the march, and on the day a
-separate column (the Life Grenadiers, the Chevalier Guard, the Life Cossacks) that came up late; Sokolov's order of battle (S5.6, grade C, no
-source on its page) names Maj.-Gen. Depreradovich 1st over the Guard infantry with the Tsesarevich. No source read puts Maliutin with the
-infantry that fought at Stare Vinohrady. Options: (a) the commander "Maj.-Gen. Depreradovich 1st", the note saying it is Sokolov's alone and
-what Maliutin commanded (as `rg_cav`'s Kologrivov, also Sokolov's alone, is written); (b) keep "Lt.-Gen. Maliutin" and add the day's facts to
-the note (the field would still say he led the attack); (c) the commander "not established", Depreradovich and Maliutin both in the note.
-*Recommendation and default:* (a), applied in group 4 (the note's claim "attributed", six readings).
+**210. The Guard infantry's commander on 2 December (`FORMATIONS.rg_inf.commander`; step 4's hand-on).** The map names Lt.-Gen. Maliutin.
+The sources read (register entries C6.27, C6.28, C6.c1, C6.c2, C6.c3 and S5.6) give him the Guard infantry at Olmütz and on the march, and
+Sokolov's order of battle for 2 December still titles him "commanding all the Guard infantry"; but on the day all three that cover it put him
+at the head of a separate column (the Life Grenadiers and the Chevalier Guard; the Chevalier Guard sent ahead), which came up late. The Guard
+infantry that fought with the Tsesarevich is listed in Sokolov (S5.6, grade C, no source on its page) under Maj.-Gen. Depreradovich 1st, by
+title the 1st Guard infantry brigade's commander, with the Izmailovsky and the jägers labelled part of the 2nd brigade. No source read
+puts Maliutin with the infantry at Stare Vinohrady, and none names one commander of that infantry under the Tsesarevich. Options: (a) the
+commander "Maj.-Gen. Depreradovich 1st" (overstates Sokolov, who gives him a brigade); (b) keep "Lt.-Gen. Maliutin", the commander by title,
+and say in the note where he was on the day and who led the infantry that fought; (c) the commander "not established on the day", the note
+naming both. *Recommendation:* (c): the field then says what the sources say, and the note keeps both. *Default:* (b), applied in group 4
+after its review (the first default, (a), was put in the field and taken out again on the reviewer's finding that it overstates Sokolov);
+the note's claim "attributed", six readings.
 
 **211. The Guard infantry's 6,730 (`FORMATIONS.rg_inf.strength`).** Duffy's and Smith's figure (cited, not read) appears to count the whole
 Guard infantry, the Life Grenadiers' three battalions with it, while Sokolov's 1st column (S5.6) has seven battalions with the Tsesarevich and
-the Life Grenadiers with Maliutin, away. Options: (a) keep 6,730 with its note (as now); (b) read Duffy and Smith first, then decide;
-(c) lower it by the Life Grenadiers' strength, if a source read gives it. *Recommendation:* (b): no figure read here gives the seven
-battalions' strength. *Default:* (a), unchanged.
+the Life Grenadiers with Maliutin, away; Sokolov's total for the whole reserve is 10 battalions and 7,500 infantry (p. 200), which gives no
+figure for the seven. Options: (a) keep 6,730 with its note (as now); (b) read Duffy and Smith first, then decide; (c) lower it to the seven
+battalions' share, if a source read gives it. *Recommendation:* (b). *Default:* (a), unchanged.
 
 **212. The context-loss case and `CTX_DELETES` (group 3).** The case now loses the context with the page idle: 0 "does not belong to this
 context" warnings on three runs, deterministic, and the bound 40 untouched. But the case then no longer exercises a geometry drawn before the

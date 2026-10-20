@@ -159,29 +159,33 @@ the light notes' attributions checked against the registers and Thiébault's pag
 none by a person. Six new entries in `docs/step4-evidence/readings.md`, section S5 (S5.1-S5.6). check:data's reference moves to the step's
 final build. Every changed declaration, with was, is and why:
 - `FEATURES[#austerlitz].story` (H-18): was "Napoleon signed the armistice with Francis at the castle here on 6 December."; is "On 4 December
-  Napoleon met Emperor Francis at his bivouac by the outposts, by a mill in Savary's account, and the two agreed on an armistice (the 31st
-  Bulletin); the 32nd Bulletin, dated 6 December, has Prince Liechtenstein conclude it with Marshal Berthier at the castle here."; why: the 32nd
-  Bulletin (Correspondance no. 9548, p. 462, S5.1) has Liechtenstein conclude the armistice with Berthier at the castle; the 31st (no. 9546,
+  Napoleon met Emperor Francis at Napoleon's bivouac by the outposts, by a mill in Savary's account, and the two agreed on an armistice (the
+  31st Bulletin); the 32nd Bulletin, dated 6 December, has Prince Johann of Liechtenstein come to the Emperor at the castle here and conclude
+  it with Marshal Berthier." (worded so after the group's review: the Bulletin puts Liechtenstein's visit at the castle, and its sentence on
+  the armistice names no place); why: the 32nd Bulletin (Correspondance no. 9548, p. 462, S5.1) has Liechtenstein come to the castle and
+  conclude the armistice with Berthier; the 31st (no. 9546,
   p. 457, S5.2) has the two emperors meet at Napoleon's bivouac by the outposts and agree on an armistice; Savary, who was there (t. II,
   p. 213, S5.3), puts the meeting at a mill before Bernadotte's outposts. The armistice's own text (the Moniteur of 26 frimaire an XIV) was
   not found, so its date and signatures as printed are not claimed. Claim: attributed (three readings).
 - `FEATURES[#santon].story` (H-18): was "Named by French soldiers after a chapel in Egypt. Bagration could not get past it, …"; is "Veterans of
-  Egypt named it the Santon, Marbot says, because the small chapel on its top had a roof like a minaret; Ségur heard it was named for a tomb
-  the Turks had left there. Bagration could not get past it, …" (the second sentence unchanged); why: no source read says "a chapel in Egypt":
+  Egypt named it the Santon, Marbot says, because the small chapel on its top had a roof like a minaret; Ségur reports it was said to be
+  named for a tomb the Turks had left there. Bagration could not get past it, …" (the second sentence unchanged); why: no source read says "a chapel in Egypt":
   Marbot (t. I, p. 258, S5.4; Thiers t. VI, pp. 293, 297 agreeing) has veterans of Egypt name the hill for its own minaret-like chapel, and
   Ségur (t. II, p. 452, S5.5), as hearsay, a Turkish tomb. Claim: disputed, the two sides; its note says the second sentence is this map's
   reading.
-- `FORMATIONS.rg_inf.commander` (step 4's hand-on; question 210, the default): was "Lt.-Gen. Maliutin"; is "Maj.-Gen. Depreradovich 1st"; and
-  `FORMATIONS.rg_inf.strengthNote`: was "6,730 (Duffy 1977; Smith 1998)"; is that, then "Its commander on 2 December, Depreradovich 1st with
-  the Guard infantry of the 1st Guard column under the Tsesarevich, is in Sokolov alone, with no source on his page; Mikhailovsky-Danilevsky
-  and the Chevalier Guard's history have Lt.-Gen. Maliutin command the Guard infantry at Olmütz and on the march, and on the day Maliutin led
-  a separate column, the Life Grenadiers, the Chevalier Guard and the Life Cossacks, which came up late (Sokolov; the Chevalier Guard's
-  history; the Allied report printed in 1806)"; why: no source read puts Maliutin with the infantry that fought at Stare Vinohrady: Sokolov's
-  order of battle (t. II, pp. 199-200, S5.6, read again by the lead) names Depreradovich 1st over the 1st column's Guard infantry and Maliutin
-  at the head of the 2nd column; the Chevalier Guard's history (pp. 54, 56-59, C6.28, C6.c1, C6.c2) and the 1806 report (pp. 118-119, C6.c3)
-  put Maliutin's column away from the plateau, Mikhailovsky-Danilevsky (pp. 144-145, C6.27) gives him the infantry at Olmütz. As `rg_cav`'s
-  Kologrivov, the name is Sokolov's alone, and the note says so. The note's claim: attributed (six readings); the commander field stays
-  unchecked, as `rg_cav`'s. The strength (6,730) is unchanged: question 211.
+- `FORMATIONS.rg_inf.strengthNote` (step 4's hand-on; question 210, the default as the review of this group left it): was "6,730 (Duffy
+  1977; Smith 1998)"; is that, then "Maliutin commanded the Guard infantry at Olmütz and on the march (Mikhailovsky-Danilevsky; the
+  Chevalier Guard's history), and Sokolov's order of battle for 2 December still titles him commanding all the Guard infantry; but on the day
+  he led a separate column, the Life Grenadiers and the Chevalier Guard, which came up late, the Chevalier Guard sent ahead (Sokolov; the
+  Chevalier Guard's history; the Allied report printed in 1806). The Guard infantry with the Tsesarevich is under Depreradovich 1st,
+  commander of the 1st Guard infantry brigade, in Sokolov alone, with no source on his page"; why: no source read puts Maliutin with the
+  infantry that fought at Stare Vinohrady: Sokolov's order of battle (t. II, pp. 199-200, S5.6) lists the 1st column's infantry under
+  Depreradovich 1st (by title a brigade's commander) and Maliutin, titled commanding all the Guard infantry, at the head of the 2nd column;
+  the Chevalier Guard's history (pp. 54, 56-59, C6.28, C6.c1, C6.c2) and the 1806 report (pp. 118-119, C6.c3) put Maliutin's column away
+  from the plateau; Mikhailovsky-Danilevsky (pp. 144-145, C6.27) gives him the infantry at Olmütz. The note's claim: attributed (six
+  readings). `FORMATIONS.rg_inf.commander` is unchanged, "Lt.-Gen. Maliutin" (group 4's commit put "Maj.-Gen. Depreradovich 1st" there;
+  its review found that this overstates Sokolov, who gives him a brigade, and the field went back): question 210 recommends "not
+  established on the day". The strength (6,730) is unchanged: question 211.
 - `PHASES[#3].lede` (H-19): "St-Hilaire" -> "Saint-Hilaire" (the one place the name was abbreviated). No other spelling changed: the accents
   are question 209 (default: as now).
 - `STATEMENT_CLAIMS`: three entries added (the two stories, the note), each hashed; the inventory regenerated (704 statements: 144 with a
@@ -195,6 +199,27 @@ final build. Every changed declaration, with was, is and why:
   sentences in app.js, outside the claims (question 187's open note). The order of battle's third rows (a brigade under a division) print
   their commander as the rows above do (Claparède under Suchet's division, step 2's hand-on).
 - check:chronology: the lede's cite (kamensky@6, "lede 3 @11:00") reviewed against the new text (its hour unchanged) and L9's record rehashed.
+- *Measured* (`harness.js --only` against the reference run): pratzen-low, overview-field, selected-formation, watch-selected, paper-drawer
+  and staff-paper, no difference in drops, dropped ids, unobstructed fractions or timeline height.
+
+**The review of group 4** (an independent reviewer, read-only, on `24f13cf`; it read the S5 page images itself and found every quotation,
+page and translation exact, the hashes current, the claims' readings registered). Its findings, each fixed in the commit after group 3's
+review, or recorded:
+- (1, medium) `FORMATIONS.rg_inf`: Sokolov's table also titles Maliutin "commanding all the Guard infantry" and gives Depreradovich 1st only
+  the 1st brigade, so "Depreradovich 1st" in the commander field overstated it and the note dropped that side: the field is back to
+  "Lt.-Gen. Maliutin" (question 210's default is now (b); its recommendation (c), "not established on the day"), and the note says both.
+- (2) The 32nd Bulletin puts Liechtenstein's visit at the castle; its sentence on the armistice names no place: reworded ("has Prince Johann of
+  Liechtenstein come to the Emperor at the castle here and conclude it with Marshal Berthier"), and "Napoleon's bivouac" for "his bivouac";
+  S5.1's "settles" with it.
+- (3) `shortCommander` stripped "Gen." before "Gen. de brigade" ("de brigade Michel Claparède", on the new order-of-battle row and, older, on
+  the map counter): "Gen. de brigade" is stripped whole.
+- (4) The note said Sokolov had the column come up late and the 1806 report the Cossacks: the column is the Life Grenadiers and the Chevalier
+  Guard, "which came up late, the Chevalier Guard sent ahead", from the three sources together.
+- (5) Sokolov's total for the reserve, 10 battalions and 7,500 infantry (p. 200, read again on the image), is in S5.6 and question 211.
+- (6) The default of question 210 changed a data value before the owner's answer: it no longer does (the field is as before step 5).
+- (7) The group's "Checked" line and build: below. (8) "Ségur heard" is "Ségur reports it was said" (his "disait-on").
+- *Checked* (group 4 with its review's fixes): npm test, all nine suites and the height guard; check:chronology 0 errors; check:data:
+  PHASES, FORMATIONS, FEATURES and STATEMENT_CLAIMS changed on purpose, every other declaration identical. The build: 2,197,389 bytes, md5 `f6082ae2c1443618b3c426a834625bea`.
 
 **The review of group 3** (an independent reviewer, read-only, on `b588b37`; it rebuilt both builds, ran the node suites in both trees and
 found every one passing; it ran no browser). Its findings, each fixed in the commit after group 4's, or recorded:

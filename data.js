@@ -602,8 +602,8 @@ constantine:{ ech:"corps", nation:"ru", arm:"guard", desig:"Imperial Guard",
   children:["rg_inf","rg_cav"]},
 
 rg_inf:{ ech:"div", nation:"ru", arm:"guard", desig:"Guard Infantry",
-  name:"Guard Infantry", commander:"Maj.-Gen. Depreradovich 1st", parent:"constantine",
-  strength:6730, strengthNote:"6,730 (Duffy 1977; Smith 1998). Its commander on 2 December, Depreradovich 1st with the Guard infantry of the 1st Guard column under the Tsesarevich, is in Sokolov alone, with no source on his page; Mikhailovsky-Danilevsky and the Chevalier Guard's history have Lt.-Gen. Maliutin command the Guard infantry at Olmütz and on the march, and on the day Maliutin led a separate column, the Life Grenadiers, the Chevalier Guard and the Life Cossacks, which came up late (Sokolov; the Chevalier Guard's history; the Allied report printed in 1806)",
+  name:"Guard Infantry", commander:"Lt.-Gen. Maliutin", parent:"constantine",
+  strength:6730, strengthNote:"6,730 (Duffy 1977; Smith 1998). Maliutin commanded the Guard infantry at Olmütz and on the march (Mikhailovsky-Danilevsky; the Chevalier Guard's history), and Sokolov's order of battle for 2 December still titles him commanding all the Guard infantry; but on the day he led a separate column, the Life Grenadiers and the Chevalier Guard, which came up late, the Chevalier Guard sent ahead (Sokolov; the Chevalier Guard's history; the Allied report printed in 1806). The Guard infantry with the Tsesarevich is under Depreradovich 1st, commander of the 1st Guard infantry brigade, in Sokolov alone, with no source on his page",
   track:{
     0:{p:[413,202],st:"reserve",cf:"A",obj:"Remain in reserve near Krzenowitz",act:"On the high ground near Allied headquarters"},
     5:{p:[378,196],st:"advancing"},
@@ -651,7 +651,7 @@ var FEATURES = [
  facts:[["Garrison","Claparède's 17e Légère with eighteen guns"],["Preparation","Slopes scarped and crest entrenched before the battle; which face is not established"],["Result","Never taken"]],
  why:["Anchors the extreme French left and enfilades the highway",
       "This map reads the fortified Santon as anchoring the northern flank, freeing Lannes to attack"],
- story:"Veterans of Egypt named it the Santon, Marbot says, because the small chapel on its top had a roof like a minaret; Ségur heard it was named for a tomb the Turks had left there. Bagration could not get past it, which is a large part of why the northern battle stayed a holding action."},
+ story:"Veterans of Egypt named it the Santon, Marbot says, because the small chapel on its top had a roof like a minaret; Ségur reports it was said to be named for a tomb the Turks had left there. Bagration could not get past it, which is a large part of why the northern battle stayed a holding action."},
 
 {id:"zuran", p:[177,134], kind:"height", name:"Zuran mound",
  sub:"Low prehistoric barrow west of the Goldbach",
@@ -734,7 +734,7 @@ var FEATURES = [
  sub:"Slavkov u Brna — the town that named the battle",
  facts:[["Role","Allied rear area; the Guard withdrew on it"],["Note","Almost no fighting took place in the town itself"]],
  why:["The Allied line of retreat and supply toward Hungary"],
- story:"On 4 December Napoleon met Emperor Francis at his bivouac by the outposts, by a mill in Savary's account, and the two agreed on an armistice (the 31st Bulletin); the 32nd Bulletin, dated 6 December, has Prince Liechtenstein conclude it with Marshal Berthier at the castle here."},
+ story:"On 4 December Napoleon met Emperor Francis at Napoleon's bivouac by the outposts, by a mill in Savary's account, and the two agreed on an armistice (the 31st Bulletin); the 32nd Bulletin, dated 6 December, has Prince Johann of Liechtenstein come to the Emperor at the castle here and conclude it with Marshal Berthier."},
 
 {id:"krzenowitz", p:[415,196], kind:"village", name:"Krzenowitz",
  sub:"Allied headquarters on the night of 1–2 December",

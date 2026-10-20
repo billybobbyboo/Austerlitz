@@ -2381,8 +2381,8 @@ constantine:{ ech:"corps", nation:"ru", arm:"guard", desig:"Imperial Guard",
   children:["rg_inf","rg_cav"]},
 
 rg_inf:{ ech:"div", nation:"ru", arm:"guard", desig:"Guard Infantry",
-  name:"Guard Infantry", commander:"Maj.-Gen. Depreradovich 1st", parent:"constantine",
-  strength:6730, strengthNote:"6,730 (Duffy 1977; Smith 1998). Its commander on 2 December, Depreradovich 1st with the Guard infantry of the 1st Guard column under the Tsesarevich, is in Sokolov alone, with no source on his page; Mikhailovsky-Danilevsky and the Chevalier Guard's history have Lt.-Gen. Maliutin command the Guard infantry at Olmütz and on the march, and on the day Maliutin led a separate column, the Life Grenadiers, the Chevalier Guard and the Life Cossacks, which came up late (Sokolov; the Chevalier Guard's history; the Allied report printed in 1806)",
+  name:"Guard Infantry", commander:"Lt.-Gen. Maliutin", parent:"constantine",
+  strength:6730, strengthNote:"6,730 (Duffy 1977; Smith 1998). Maliutin commanded the Guard infantry at Olmütz and on the march (Mikhailovsky-Danilevsky; the Chevalier Guard's history), and Sokolov's order of battle for 2 December still titles him commanding all the Guard infantry; but on the day he led a separate column, the Life Grenadiers and the Chevalier Guard, which came up late, the Chevalier Guard sent ahead (Sokolov; the Chevalier Guard's history; the Allied report printed in 1806). The Guard infantry with the Tsesarevich is under Depreradovich 1st, commander of the 1st Guard infantry brigade, in Sokolov alone, with no source on his page",
   track:{
     0:{p:[413,202],st:"reserve",cf:"A",obj:"Remain in reserve near Krzenowitz",act:"On the high ground near Allied headquarters"},
     5:{p:[378,196],st:"advancing"},
@@ -2430,7 +2430,7 @@ var FEATURES = [
  facts:[["Garrison","Claparède's 17e Légère with eighteen guns"],["Preparation","Slopes scarped and crest entrenched before the battle; which face is not established"],["Result","Never taken"]],
  why:["Anchors the extreme French left and enfilades the highway",
       "This map reads the fortified Santon as anchoring the northern flank, freeing Lannes to attack"],
- story:"Veterans of Egypt named it the Santon, Marbot says, because the small chapel on its top had a roof like a minaret; Ségur heard it was named for a tomb the Turks had left there. Bagration could not get past it, which is a large part of why the northern battle stayed a holding action."},
+ story:"Veterans of Egypt named it the Santon, Marbot says, because the small chapel on its top had a roof like a minaret; Ségur reports it was said to be named for a tomb the Turks had left there. Bagration could not get past it, which is a large part of why the northern battle stayed a holding action."},
 
 {id:"zuran", p:[177,134], kind:"height", name:"Zuran mound",
  sub:"Low prehistoric barrow west of the Goldbach",
@@ -2513,7 +2513,7 @@ var FEATURES = [
  sub:"Slavkov u Brna — the town that named the battle",
  facts:[["Role","Allied rear area; the Guard withdrew on it"],["Note","Almost no fighting took place in the town itself"]],
  why:["The Allied line of retreat and supply toward Hungary"],
- story:"On 4 December Napoleon met Emperor Francis at his bivouac by the outposts, by a mill in Savary's account, and the two agreed on an armistice (the 31st Bulletin); the 32nd Bulletin, dated 6 December, has Prince Liechtenstein conclude it with Marshal Berthier at the castle here."},
+ story:"On 4 December Napoleon met Emperor Francis at Napoleon's bivouac by the outposts, by a mill in Savary's account, and the two agreed on an armistice (the 31st Bulletin); the 32nd Bulletin, dated 6 December, has Prince Johann of Liechtenstein come to the Emperor at the castle here and conclude it with Marshal Berthier."},
 
 {id:"krzenowitz", p:[415,196], kind:"village", name:"Krzenowitz",
  sub:"Allied headquarters on the night of 1–2 December",
@@ -3898,10 +3898,10 @@ var STATEMENT_CLAIMS = {
   "FEATURES[#pratzeberg].why[0]": {h:"6f5c364524a9", cl:"interpretation", by:[{src:"mikhailovsky1844", at:"p. 177", rd:"mikhailovsky1844.p177.orders"},
       {src:"marbot1891", at:"t. I, pp. 259-260", rd:"marbot1891.p259-260.blasiowitz-aigle-clef"}]},
   "FEATURES[#santon].why[1]": {h:"52b9f9c34360", cl:"interpretation", by:[]},
-  "FEATURES[#santon].story": {h:"d0edbb6c901f", cl:"disputed", by:[{src:"marbot1891", at:"t. I, p. 258", rd:"marbot1891.p258.santon-name", side:"named by veterans of Egypt for the minaret-like chapel on its top"},
+  "FEATURES[#santon].story": {h:"3d1bbbd8b78d", cl:"disputed", by:[{src:"marbot1891", at:"t. I, p. 258", rd:"marbot1891.p258.santon-name", side:"named by veterans of Egypt for the minaret-like chapel on its top"},
       {src:"segur1877", at:"t. II, p. 452", rd:"segur1877.p452.santon-tomb", side:"named, it was said, for a tomb the Turks had left there"}],
     note:"The second sentence, on the northern battle, is this map's reading."},
-  "FEATURES[#austerlitz].story": {h:"70451329a531", cl:"attributed", by:[{src:"corr11_1863", at:"no. 9546, p. 457", rd:"corr11_1863.p457.bulletin31-meeting"},
+  "FEATURES[#austerlitz].story": {h:"ccdc57245b9c", cl:"attributed", by:[{src:"corr11_1863", at:"no. 9546, p. 457", rd:"corr11_1863.p457.bulletin31-meeting"},
       {src:"savary1828", at:"t. II, p. 213", rd:"savary1828.p213.meeting-mill"},
       {src:"corr11_1863", at:"no. 9548, p. 462", rd:"corr11_1863.p462.bulletin32-armistice"}],
     note:"The armistice's own text was not read."},
@@ -4374,7 +4374,7 @@ var STATEMENT_CLAIMS = {
       {src:"mikhailovsky1844", at:"pp. 144-145", rd:"mikhailovsky1844.p144-145.guard-commanders"},
       {src:"kavalergard1851", at:"p. 54", rd:"kavalergard1851.p54.march-commanders"}],
     note:"The strength is Duffy's and Smith's, cited, not read."},
-  "FORMATIONS.rg_inf.strengthNote": {h:"d598f4f226b9", cl:"attributed", by:[{src:"sokolov2006", at:"t. II, pp. 199-200", rd:"sokolov2006.p199-200.guard-columns"},
+  "FORMATIONS.rg_inf.strengthNote": {h:"8b4540d464fd", cl:"attributed", by:[{src:"sokolov2006", at:"t. II, pp. 199-200", rd:"sokolov2006.p199-200.guard-columns"},
       {src:"mikhailovsky1844", at:"pp. 144-145", rd:"mikhailovsky1844.p144-145.guard-commanders"},
       {src:"kavalergard1851", at:"p. 54", rd:"kavalergard1851.p54.march-commanders"},
       {src:"kavalergard1851", at:"pp. 56-57", rd:"kavalergard1851.p56-57.malutin-blazovits"},
@@ -12234,7 +12234,7 @@ function syncSelChip(){
 }
 function shortCommander(f){
   var c=f.commander||"";
-  c=c.replace(/^(Marshal|Gen\. de division|Gen\.|General|Lt\.-Gen\.|Maj\.-Gen\.|FML|Feldmarschall-Leutnant|Emperor|Grand Duke)\s+/,"");
+  c=c.replace(/^(Marshal|Gen\. de division|Gen\. de brigade|Gen\.|General|Lt\.-Gen\.|Maj\.-Gen\.|FML|Feldmarschall-Leutnant|Emperor|Grand Duke)\s+/,"");
   var cut=c.indexOf(";"); if(cut>0) c=c.slice(0,cut);
   return c.length>34 ? c.slice(0,33)+"\u2026" : c;
 }

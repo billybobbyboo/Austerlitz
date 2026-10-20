@@ -5941,7 +5941,7 @@ function syncSelChip(){
 }
 function shortCommander(f){
   var c=f.commander||"";
-  c=c.replace(/^(Marshal|Gen\. de division|Gen\.|General|Lt\.-Gen\.|Maj\.-Gen\.|FML|Feldmarschall-Leutnant|Emperor|Grand Duke)\s+/,"");
+  c=c.replace(/^(Marshal|Gen\. de division|Gen\. de brigade|Gen\.|General|Lt\.-Gen\.|Maj\.-Gen\.|FML|Feldmarschall-Leutnant|Emperor|Grand Duke)\s+/,"");
   var cut=c.indexOf(";"); if(cut>0) c=c.slice(0,cut);
   return c.length>34 ? c.slice(0,33)+"\u2026" : c;
 }
