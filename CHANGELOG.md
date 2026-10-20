@@ -2,8 +2,8 @@
 
 ## 2026-10 · Roadmap step 5's follow-up: decisions 205-212 (PR #57)
 
-**Status: done on `claude/magical-rubin-vahnny` (draft PR #57), for review. The build changed: `austerlitz-command-map.html` @@SIZE@@ bytes,
-md5 `@@MD5@@` (the step 5 build: 2,197,389 bytes, `f6082ae2...`).** Begun from `main` at `92460d4` (step 5 merged, #56). On 20 October
+**Status: done on `claude/magical-rubin-vahnny` (draft PR #57), for review. The build changed: `austerlitz-command-map.html` 2,198,549 bytes,
+md5 `fdc25e82225674ab0a607fe872bde73c` (the step 5 build: 2,197,389 bytes, `f6082ae2...`).** Begun from `main` at `92460d4` (step 5 merged, #56). On 20 October
 2026 the owner: "Go with your recommendations for all questions. Just merged 56. So maybe implement these questions through PR 57." Every
 question of `docs/step5-evidence/questions.md` decided as its recommendation; the owner's words, each decision and its status there and in
 `docs/ROADMAP.md`. One new owner question, 213; the next owner decision is 214.
@@ -54,7 +54,9 @@ everywhere outside quotations, source titles and ids:
   keys and `ALLOW_TIMED` keys and reasons follow the text; `chronology-text.json` rewritten by `--rehash --write` after its listing was read
   (32 cites and allowances changed by the names alone, 5 old keys gone); `--locate --write`: 75 of 75 rows current;
 - `sim-test.js`'s comment and message follow.
-- Measured: @@VISUAL@@
+- Measured: the full check:visual on this build (`fdc25e82`), compared case by case with the step 5 run (`f6082ae2`) by
+  `tools/step3/report-diff.js`: 30 of 30 cases, no difference in drops, dropped ids, unobstructed fractions or timeline height; no limit
+  moved.
 
 **Decision 211 (b): Duffy and Smith read first (no data change).** Duffy, *Austerlitz 1805* (1977), lends on archive.org; its page images and
 text are not open from here, so it was read through archive.org's public full-text search (OCR snippets), its appendix's header and strength
@@ -67,7 +69,19 @@ row was lost in the OCR or the pairing. Smith (1998) could not be read (S5.8, a 
 text layer carries no claim (`test.js`; the register's rule), so the strengths stay, and the choice is owner question 213 (recommended: read
 Duffy's pp. 184-185 on the page first).
 
-**Verified:** @@VERIFIED@@
+**Verified (on the final build, `fdc25e82`):** `npm test`, 9 of 9 suites pass (test.js: 704 statements, 145 with a claim of their own, 75
+by class, 484 unchecked, the inventory current; redteam 0 findings); `check:chronology` 0 errors (75 of 75 REVIEW rows current); `check:data`
+against the step 5 reference: the ten declarations above changed, then, the reference moved to `archive/step5b-fdc25e82.html`, 131 identical;
+the context-loss case three times on its own, each 248 warnings, none idle, at least one after the step; `check:visual` STAGE0 all checks
+passed, 0 failures over 30 cases, the self-test 242 of 242; `check:contrast` 5,905 text elements, 0 below AA, 0 below 10.5 px, 0 font
+failures, 35 of 35 states, 0 console messages, 6 of 6 start-up cases (context-loss 248); `check:selftest` (running at this commit; its result follows in the next); `check:baseline`
+moved to `fdc25e82`, 2,198,549 bytes. The independent read-only review of the first commit: 15 findings; fixed in the second commit: the
+Russian Guard cavalry is `rg_cav` (question 213, S5.7, here), the corps note's sum (the text layer consistent with 3,700), the pairing the
+reader's, question 213's options, S5.7 bearing on the commander, the register's intro and header, the clock step's lower bound and
+`boot-check.js`'s comments, the claim's locator and C6.28, `arrow-binding.js`'s alias, CLAUDE.md's counts; recorded, not changed: the
+redteam `ATTRIBUTED` pattern and the accents (ROADMAP: stricter, the owner's word to widen), "Reserve de Cavalerie" and "Chasseurs a
+Cheval" (ROADMAP's hand-ons), the commander's tag repeating the field (above). check:visual and the checks after it ran on the build with
+the review's fixes.
 
 **Uncertain, historical:** the Guard's strengths (question 213); who led the Guard infantry that fought (the field now says the sources do not
 establish it). **Implementation:** the accented forms are the names' own; nothing else was respelled.
