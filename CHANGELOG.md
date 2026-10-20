@@ -13,8 +13,9 @@ tour's own words, unchanged.
 
 **Decision 212 (b): the context-loss case's clock step, `CTX_DELETES` 248 (the owner's word).** `tools/visual/boot-check.js`: after the loss
 and the restore with the page idle, the warnings so far are held at 0 (they were measured, not held); then the clock is stepped to phase 3's
-start (a visitor's action), and the case requires the page idle again within 120 s, the context not lost and frames drawn, so three r128's
-dispose-after-restore path runs on every run. `CTX_DELETES` 40 to 248: the count was 248 on each of three runs of the step 5 build (group 3's
+start (a visitor's action), and the case requires the page idle again within 120 s, the context not lost, frames drawn and at least one
+warning after the step (the review's tightening: the path must run, not only stay under the bound), so three r128's dispose-after-restore path
+runs on every run. `CTX_DELETES` 40 to 248: the count was 248 on each of three runs of the step 5 build (group 3's
 measure) and on three runs of this branch's (each "ok ... idle with no warning, then a clock step drawn; 248 ... (at most 248)"). No other
 bound moved.
 
@@ -28,7 +29,12 @@ bound moved.
   …" (the rest as it was). Its claim rehashed after review, "attributed", unchanged in its readings.
 - `STATEMENT_CLAIMS` (narrative.js): a new entry for `FORMATIONS.rg_inf.commander`, "uncertain", its search S5.6, C6.c1, C6.c2, C6.c3 and C6.27
   (the claims of their own: 144 to 145).
-- The order of battle's third-level rows (step 5) and the dossier show the field as it is; `shortCommander` leaves it whole.
+- The order of battle's third-level rows (step 5) and the dossier show the field as it is; `shortCommander` leaves it whole. The dossier's
+  Commander row then reads "Not established on the day" with its claim's tag "Not established" (`CLAIM_WORDS.uncertain`), and the counter
+  shows it as its commander line: both follow from the owner's choice, noted for the owner, nothing changed.
+- The review: the claim's search gains C6.28 (the march's commanders, p. 54) and its C6.c1 locator is "pp. 56-57" (was "pp. 56-59", C6.c2's
+  pages joined); its note names Duffy's header (Maliutin the reserve's lieutenant-general of infantry), read on the text layer only (S5.7),
+  so the disagreement is kept without a claim resting on it.
 
 **Decision 209 (a): the accents (data; guarded).** Thiébault, Varé, Bessières, Légère, Olmütz and Grande Armée, each a whole word, case kept,
 everywhere outside quotations, source titles and ids:
@@ -52,10 +58,12 @@ everywhere outside quotations, source titles and ids:
 
 **Decision 211 (b): Duffy and Smith read first (no data change).** Duffy, *Austerlitz 1805* (1977), lends on archive.org; its page images and
 text are not open from here, so it was read through archive.org's public full-text search (OCR snippets), its appendix's header and strength
-row found again by the lead: register entry S5.7 (text layer only, grade C). As the OCR pairs its rows, Duffy's 6,730 is the three Guard
-regiments (1,000, 1,400, 1,500), the jägers (530) and a three-battalion "Guard Gr.R. (in reserve)" (2,300): the seven battalions with the
-Tsesarevich 4,430. His horse rows sum to 2,900, not the 3,700 the map credits to Duffy and Smith (`guard_cav`); 800 of his 10,530 is in no row
-read. Smith (1998) could not be read (S5.8, a negative: no copy on archive.org or Open Library; Google Books' quota spent). A reading on the
+row found again by the lead: register entry S5.7 (text layer only, grade C). The OCR gives the page's second column as seven names, then
+seven strengths; as the reader pairs them in order (not seen on a page), Duffy's 6,730 would be the three Guard regiments (1,000, 1,400,
+1,500), the jägers (530) and a three-battalion "Guard Gr.R. (in reserve)" (2,300): the seven battalions with the Tsesarevich 4,430. His horse
+rows as paired sum to 2,900 against the 3,700 the map credits to Duffy and Smith (`rg_cav`); but the map's corps note (6,730, 3,700 and 100)
+sums to his 10,530 exactly, and the 800 left over is exactly 3,700 less 2,900: the text layer is consistent with the map's 3,700 if one horse
+row was lost in the OCR or the pairing. Smith (1998) could not be read (S5.8, a negative: no copy on archive.org or Open Library; Google Books' quota spent). A reading on the
 text layer carries no claim (`test.js`; the register's rule), so the strengths stay, and the choice is owner question 213 (recommended: read
 Duffy's pp. 184-185 on the page first).
 

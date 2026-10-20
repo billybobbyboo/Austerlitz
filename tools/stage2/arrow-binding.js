@@ -56,7 +56,7 @@ function keysOf(id){
   const add=s=>{ if(s) k.add(s.toLowerCase()); };
   (f.name||"").replace(/'s .*$/,"").split(/ and /).forEach(s=>add(s.trim()));
   const cm=(f.commander||"").replace(/\(.*\)/,"").split(/;|,/)[0].trim().split(/\s+/); add(cm[cm.length-1]);
-  if(id==="guard_cav"){ add("Bessieres"); add("Rapp"); }
+  if(id==="guard_cav"){ add("Bessières"); add("Rapp"); }
   if(id==="c_iii") add("Davout");
   if(id==="drouet") add("Drouet");
   if(id==="lich") add("Liechtenstein");

@@ -90,9 +90,9 @@ the Life Grenadiers with Maliutin, away; Sokolov's total for the whole reserve i
 figure for the seven. Options: (a) keep 6,730 with its note (as now); (b) read Duffy and Smith first, then decide; (c) lower it to the seven
 battalions' share, if a source read gives it. *Recommendation:* (b). *Default:* (a), unchanged.
 *Status:* decision 211 (b), done (PR #57). Duffy (1977) was read on the text layer only (the item lends; its pages not open from here):
-register entry S5.7. Its appendix (pp. 184-185) gives the Guard 10,530 and 40 pieces; its rows, as the OCR pairs them, put the 6,730 as the
-three Guard regiments (1,000, 1,400, 1,500), the jägers (530) and a three-battalion "Guard Gr.R. (in reserve)" (2,300), which leaves 4,430
-for the seven battalions with the Tsesarevich. Smith (1998) could not be read (S5.8). A reading on the text layer carries no claim
+register entry S5.7. Its appendix (pp. 184-185) gives the Guard 10,530 and 40 pieces; its rows, as the reader pairs the OCR's names and strengths in
+order (not seen on a page), would put the 6,730 as the three Guard regiments (1,000, 1,400, 1,500), the jägers (530) and a three-battalion
+"Guard Gr.R. (in reserve)" (2,300), which would leave 4,430 for the seven battalions with the Tsesarevich. Smith (1998) could not be read (S5.8). A reading on the text layer carries no claim
 (`test.js`), so nothing is changed: the strength stays 6,730 with its note, and the choice goes to the owner as question 213.
 
 **212. The context-loss case and `CTX_DELETES` (group 3).** The case now loses the context with the page idle: 0 "does not belong to this
@@ -106,12 +106,14 @@ case alone no longer exercises the path its bound was set for). *Default:* (a).
 *Status:* decision 212 (b), applied (PR #57): `tools/visual/boot-check.js` holds 0 warnings with the page idle after the restore, then
 steps the clock to phase 3 and requires the page idle again with frames drawn; `CTX_DELETES` 248, the count on each of three runs.
 
-**213. The Russian Guard's strengths after Duffy's appendix (decision 211; `FORMATIONS.rg_inf.strength` 6,730, `FORMATIONS.guard_cav.strength`
-3,700, the corps note of `FORMATIONS.constantine`).** Read on the text layer only (S5.7), Duffy's 6,730 counts a three-battalion Guard
-grenadier regiment "in reserve" with the seven battalions that fought (4,430 by his rows), and his horse rows sum to 2,900, not the 3,700 the map
-credits to Duffy and Smith (800 of his 10,530 in no row read). Smith is not read (S5.8). Options: (a) as now, the note saying what the text
-layer gives, once its reading is on a page image; (b) borrow Duffy's pages (a person with an archive.org account, or the book) and read pp.
-184-185 on the page, then set `rg_inf` to the seven battalions' figure and `guard_cav` to the rows' sum, each with its note, if the page bears
-the OCR out; (c) lower `rg_inf` to 4,430 and `guard_cav` to 2,900 now, on the text layer (against the register's rule that a reading on the text
-layer carries no claim). *Recommendation:* (b): the figures move only on a page read; the map's other strengths are held to that.
-*Default:* (a) without the note's change: nothing changed, the reading recorded.
+**213. The Russian Guard's strengths after Duffy's appendix (decision 211; `FORMATIONS.rg_inf.strength` 6,730, `FORMATIONS.rg_cav.strength`
+3,700, the corps note of `FORMATIONS.constantine`).** Read on the text layer only (S5.7), and with the reader's pairing of the OCR's names and
+strengths (not seen on a page), Duffy's 6,730 would count a three-battalion Guard grenadier regiment "in reserve" with the seven battalions
+that fought (4,430 by his rows). His horse rows as paired sum to 2,900; but the map's corps note (6,730 infantry, 3,700 horse, 100 pioneers)
+sums to his 10,530 exactly, and the 800 his rows leave over is exactly 3,700 less 2,900, so the text layer is consistent with the map's 3,700
+if one horse row was lost in the OCR or the pairing. Smith is not read (S5.8). Options: (a) as now: 6,730 and 3,700 unchanged, S5.7
+recorded; (b) read Duffy's pp. 184-185 on the page (a person with the book, or an archive.org loan), then, if the page bears the pairing out,
+set `rg_inf` to the seven battalions' figure with its note (the grenadier regiment's 2,300 to the 2nd column), and settle the 800 against
+`rg_cav`'s 3,700; (c) lower `rg_inf` to 4,430 now, on the text layer (against the register's rule that a reading on the text layer carries no
+claim); the horse is not in this option, the text layer giving no ground to move it. *Recommendation:* (b): the figures move only on a page
+read. *Default:* (a).

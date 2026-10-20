@@ -6,7 +6,8 @@
    - "sri": the request answered with a copy one byte longer, so its integrity hash does not match;
    - "no-webgl": Chromium launched with --disable-3d-apis --disable-gpu (three.js loads; no WebGL context);
    - "slow": three.js answered after 21 s: the status line says so at 20 s, and the page then starts as usual (no failure, nothing inert);
-   - "context-loss": a normal start, then the context lost (WEBGL_lose_context) and restored.
+   - "context-loss": a normal start, then the context lost (WEBGL_lose_context) and restored with the page idle (no warning yet), then a step
+     of the clock (decision 212 (b)) that disposes geometries made before the loss: at least one warning, at most CTX_DELETES.
    A failure case passes only if, within 15 s of the page's load: the alert dialog #boot-fail is shown with the reason for its kind and no
    other, focus is on Reload and stays there through Tab and Shift+Tab, every other child of the body is inert, the first-run card is
    hidden, a key behind the dialog does nothing, its text meets WCAG AA (4.5:1) against its own background, and the page's messages are
@@ -18,7 +19,7 @@ const TR=require("./three-route.js");
 const BASE_ARGS=["--use-angle=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"];
 const GUARD=k=>new RegExp("^Austerlitz: start-up failed \\("+k+"\\): ");
 /* the messages each case must produce, and nothing else: [type, RegExp, why, min, max] (min and max 1 unless given). CTX_DELETES: the most
-   "does not belong to this context" warnings the context-loss case may give, from its runs on the step-3 build (each run prints its count;
+   "does not belong to this context" warnings the context-loss case may give, as measured on the runs below (each run prints its count;
    recorded in CHANGELOG.md) */
 const CTX_DELETES=248;   /* owner decision 212 (b), 20 October 2026: the count measured with the clock step after the restore, 248 on each of
    three runs of the step-5 build (deterministic); 40 until then (measured 24 on the step-3 build, CHANGELOG.md) */
@@ -178,6 +179,9 @@ async function runBootCases(html,only){
         if(!st||!st.settled||st.lost||!(st.frames>0)) bad.push("the clock step after the restore: "+JSON.stringify(st)); }
       bad.push.apply(bad,judgeLog("context-loss",log));
       const nd=countOf(log,EXPECT["context-loss"][0][1]);
+      /* the review of decision 212 (b): the clock step must run the path it was added for (at least one warning after it), not only stay
+         under the bound */
+      if(st&&!(nd-nIdle>0)) bad.push("no \u201cdoes not belong to this context\u201d warning after the clock step (the dispose-after-restore path not run)");
       R.push({name:"context-loss",ok:!bad.length,line:"context-loss: "+(bad.length?bad.join("; "):"the notice (an alert with Reload, at AA) while lost, cleared and frames drawn again by the app when restored, idle with no warning, then a clock step drawn")+"; "+nd+" “does not belong to this context” warnings (at most "+CTX_DELETES+")"});
     } finally { await browser.close(); } }
   return R;

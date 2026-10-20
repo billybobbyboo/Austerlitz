@@ -281,10 +281,16 @@ the owner's word. Part C (PR #55): 203 (b) with (c), 204 (a), decided 18 October
 ### What PR #57 hands on
 
 - **Owner question 213** (`docs/step5-evidence/questions.md`): the Russian Guard's strengths after Duffy's appendix, read on the text layer only
-  (the 6,730 with a reserve grenadier regiment in it; the horse rows 2,900 against the map's 3,700). Recommended: read Duffy pp. 184-185 on the
-  page first. The next owner decision is 214.
-- **Spellings not in decision 209's six:** `world.js`'s internal road key "Brunn-Olmutz highway" (never shown); the Dress notes' internal words
-  (`appearance.js`); `CONF_TEXT.C`'s em dash (guarded). Each for a later data task.
+  (the 6,730 would hold a reserve grenadier regiment, by the reader's pairing; `rg_cav`'s 3,700 consistent with his total if a horse row was
+  lost). Recommended: read Duffy pp. 184-185 on the page first. The next owner decision is 214.
+- **Spellings not in decision 209's six:** two French designations a visitor sees, `FORMATIONS.c_cav.desig` "Reserve de Cavalerie" (Réserve)
+  and the French Guard cavalry's staff line "Chasseurs a Cheval" (à); `world.js`'s internal road key "Brunn-Olmutz highway" (never shown; read
+  by `tools/stale-compare.js`, so left); the Dress notes' internal words (`appearance.js`); `CONF_TEXT.C`'s em dash (guarded). Each for a later
+  data task.
+- **The overclaim scan's attribution pattern** (`redteam.js` `ATTRIBUTED`, `as \w+ tells it`) no longer matches "as Thiébault tells it" (`\w`
+  without the u flag has no é; the C6 researcher's note foresaw it): five sentences are scanned without that exemption, so the scan is
+  stricter, none of them a hit. Widening the pattern to accented names would restore the exemption: the owner's word, as any change to an
+  assertion's reach.
 
 ## Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)
 
