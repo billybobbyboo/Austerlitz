@@ -2,8 +2,9 @@
 
 ## 2026-10 · Roadmap step 5: records and polish (R-1 to R-7, SW-13, G-1, the VISUAL_AUDIT leftovers; questions 170 (b), (c) and 172)
 
-**Status: in progress on `claude/magical-rubin-vahnny`.** Begun from `main` at `9a24be1` (step 4b part C merged, #55; the build
-2,182,537 bytes, md5 `97352160b97bc8e21380074e1bedbea5`). The owner asked (20 October 2026) for step 5 in four groups, in order: records
+**Status: done on `claude/magical-rubin-vahnny` (draft PR #56), for review. The build changed: `austerlitz-command-map.html` 2,197,389 bytes,
+md5 `f6082ae2c1443618b3c426a834625bea` (the step 4b part C build: 2,182,537 bytes, `97352160...`).** Begun from `main` at `9a24be1` (step 4b
+part C merged, #55). Owner questions 205-212 are open (`docs/step5-evidence/questions.md`); the next owner decision is 213. The owner asked (20 October 2026) for step 5 in four groups, in order: records
 only; presentation polish; test-suite hygiene; a small data task, only with evidence.
 
 **Group 1: records only (no build change; `check:baseline` passes on the unchanged build).** Each item's state read first:
@@ -220,6 +221,29 @@ review, or recorded:
 - (7) The group's "Checked" line and build: below. (8) "Ségur heard" is "Ségur reports it was said" (his "disait-on").
 - *Checked* (group 4 with its review's fixes): npm test, all nine suites and the height guard; check:chronology 0 errors; check:data:
   PHASES, FORMATIONS, FEATURES and STATEMENT_CLAIMS changed on purpose, every other declaration identical. The build: 2,197,389 bytes, md5 `f6082ae2c1443618b3c426a834625bea`.
+
+**The step's end.**
+- *The commits.* `c74855e` group 1; `22c77ac` group 2; `b588b37` group 3; `02b3522` the review of groups 1 and 2; `24f13cf` group 4;
+  `8d97f3d` the review of group 3; `900cd50` the review of group 4; `9f27edd` check:data's reference and the baseline moved, CLAUDE.md;
+  (this commit) the final checks and records.
+- *Checks on the final build* (md5 `f6082ae2...`, 2,197,389 bytes; each heavy check alone): npm test, all nine suites and the height guard;
+  check:chronology 0 errors (L9: 157 cites and allowances current); check:data against the new reference `archive/step5-f6082ae2.html`, all
+  131 declarations identical (against the old reference, `archive/step4b-02a46c50.html`: PHASES, FORMATIONS, FEATURES and STATEMENT_CLAIMS
+  changed, group 4); check:visual "STAGE0: all checks passed", the self-test 242 of 242 by the manifest, and against the reference run of the
+  unchanged step-4b-C build (`tools/step3/report-diff.js --all`): no difference in drops, dropped ids, unobstructed fractions or timeline height
+  in any of the 30 cases; check:contrast 35 states reached, 5,903 text elements, 0 below AA, 0 below 10.5 px, 0 font failures, the six
+  start-up cases pass (context-loss 0 warnings); check:selftest "STAGE0: all checks passed", 242 passed, 0 failed, the manifest held; check:baseline moved to this build (`package.json`: md5
+  `f6082ae2c1443618b3c426a834625bea`, 2,197,389 bytes; was `97352160...`, 2,182,537 bytes), passes. No limit (`DROP_LIMIT`, `UNOBSTRUCTED`,
+  `PAPER_MIN_PXKM`, `CTX_DELETES`) moved; the self-test manifest is unchanged (no check added, removed or renamed: the changed checks keep their
+  names).
+- *What remains uncertain (historical).* The armistice's own text (date, place, signatories as printed) was not read; the Bulletins are
+  the French army's own account. Which reason named the Santon (Marbot's chapel, Ségur's hearsay tomb) is not settled: both kept. Who led the
+  Guard infantry that fought at Stare Vinohrady is not settled by the sources read (question 210); its 6,730 may count the Life Grenadiers
+  (question 211). Every reading of the step was made by machine readers; none by a person.
+- *Implementation choices.* Each default of questions 205-208 and 212 (the names, the formats, the glyphs, the idle context-loss case); the
+  tooltip's behaviour (at once, on focus, Esc, hoverable); the focus ring's plate colour (`--on-accent`); `readPos` and `pillReading` as the
+  reading's one answer for the plan links, the ring and the pill; the GLSL colours' table (`LAND_COL.glsl`); the weave at the floor colour;
+  check:chronology's text record (`chronology-text.json`).
 
 **The review of group 3** (an independent reviewer, read-only, on `b588b37`; it rebuilt both builds, ran the node suites in both trees and
 found every one passing; it ran no browser). Its findings, each fixed in the commit after group 4's, or recorded:
