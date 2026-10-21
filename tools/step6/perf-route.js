@@ -23,7 +23,7 @@
    The developer readout's "frames drawn/s" (the ` key) is not a frame rate: the app renders on demand and idles; it is not used. */
 (function(root){
   "use strict";
-  var VERSION="step6-perf-route 1";
+  var VERSION="step6-perf-route 2";
   /* the route: the views of the brief, with the harness's own camera for each (tools/visual/cases.js) */
   var OV=[-27,272,41,-27,0,9], FIELD=[-195,92,156,-33,4,-2];
   var PRATZEN={map:[285,289], dir:[-1.0,0.13,0.18], r:70};
@@ -67,7 +67,7 @@
       D.applyCase(spec,aimOf); D.settle(30);
     }
     /* ---- frame sampling: one requestAnimationFrame chain on the build's window ---- */
-    var S={on:false, last:0, t0:0, rows:[], step:null, keep:false, gpu:[]};
+    var S={on:false, gen:0, last:0, t0:0, rows:[], step:null, keep:false, gpu:[]};
     var app={js:0, drew:false, paused:false};
     /* the app's loop() timed; renderFrame() marks a drawn frame (both looked up by name each frame, so a wrapper on the window is used) */
     var origLoop=w.loop, origRF=w.renderFrame;
@@ -88,9 +88,11 @@
       while(pendQ.length&&gl.getQueryParameter(pendQ[0],gl.QUERY_RESULT_AVAILABLE)){ var q=pendQ.shift();
         if(!disjoint&&S.on) S.gpu.push(gl.getQueryParameter(q,gl.QUERY_RESULT)/1e6); gl.deleteQuery(q); }
       if(disjoint){ pendQ.forEach(function(q){ gl.deleteQuery(q); }); pendQ=[]; } }
-    function tick(ts){
-      if(!S.on) return;
-      w.requestAnimationFrame(tick);
+    /* one chain per segment: a chain left from the segment before (its next frame still pending when this one starts) stops at its generation,
+       so no frame is counted twice (a first version counted some twice, as 0 ms frames) */
+    function tick(ts,gen){
+      if(!S.on||gen!==S.gen) return;
+      w.requestAnimationFrame(function(t){ tick(t,gen); });
       if(S.last){
         var ri=renderer.info.render;
         S.rows.push({t:ts-S.t0, dt:ts-S.last, drew:app.drew, js:app.drew?app.js:null, calls:app.drew?ri.calls:null, tris:app.drew?ri.triangles:null});
@@ -101,8 +103,9 @@
     }
     function sample(secs,step,keep){
       return new Promise(function(res){
+        var gen=++S.gen;
         S.rows=[]; S.gpu=[]; S.last=0; S.step=step||null; S.keep=!!keep; S.on=true;
-        w.requestAnimationFrame(function(ts){ S.t0=ts; S.last=0; w.requestAnimationFrame(tick); });
+        w.requestAnimationFrame(function(ts){ if(gen!==S.gen) return; S.t0=ts; S.last=0; w.requestAnimationFrame(function(t){ tick(t,gen); }); });
         w.setTimeout(function(){ S.on=false; S.step=null; S.keep=false; var r=S.rows.slice(); r.gpu=S.gpu.slice(); res(r); }, secs*1000+100);
       });
     }
@@ -218,8 +221,8 @@
     if(d.load) L.push("load: DOM ready "+d.load.domReadyMs+" ms, load event "+d.load.loadMs+" ms, "+d.load.transferBytes+" bytes transferred");
     L.push("build: "+(r.build?r.build.bytes+" bytes, sha256 "+r.build.sha256:"not read")+"; refresh "+r.refreshMs+" ms; long frame > "+(r.refreshMs?r1(1.5*r.refreshMs):"-")+" ms");
     r.notes.forEach(function(n){ L.push("NOTE: "+n); });
-    L.push(pad("segment",16)+pad("kind",17)+pad("frames",7)+pad("fps",7)+pad("p50",7)+pad("p95",7)+pad("p99",7)+pad("max",7)+pad("long%",7)+pad("warm",7)+pad("js50",6)+pad("js95",6)+pad("gpu50",6)+pad("gpu95",6)+pad("calls",6)+pad("tris",9));
-    r.segments.forEach(function(s){ L.push(pad(s.id,16)+pad(s.kind,17)+pad(s.frames,7)+pad(s.fps,7)+pad(s.p50,7)+pad(s.p95,7)+pad(s.p99,7)+pad(s.max,7)+pad(s.longPct,7)+pad(s.warmMax,7)+pad(s.js50,6)+pad(s.js95,6)+pad(s.gpu50,6)+pad(s.gpu95,6)+pad(s.calls,6)+pad(s.tris,9)); });
+    L.push(pad("segment",16)+pad("kind",17)+pad("frames",7)+pad("fps",6)+pad("p50",8)+pad("p95",8)+pad("p99",8)+pad("max",8)+pad("long%",7)+pad("warm",8)+pad("js50",8)+pad("js95",8)+pad("gpu50",8)+pad("gpu95",8)+pad("calls",6)+pad("tris",9));
+    r.segments.forEach(function(s){ L.push(pad(s.id,16)+pad(s.kind,17)+pad(s.frames,7)+pad(s.fps,6)+pad(s.p50,8)+pad(s.p95,8)+pad(s.p99,8)+pad(s.max,8)+pad(s.longPct,7)+pad(s.warmMax,8)+pad(s.js50,8)+pad(s.js95,8)+pad(s.gpu50,8)+pad(s.gpu95,8)+pad(s.calls,6)+pad(s.tris,9)); });
     L.push("AUS_PERF_JSON "+JSON.stringify(r,function(k,v){ return k==="text"?undefined:v; }));
     return L.join("\n");
   }

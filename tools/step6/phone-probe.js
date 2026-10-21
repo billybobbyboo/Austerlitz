@@ -75,7 +75,11 @@ const INPAGE=function(){
   A.targets=function(){
     /* a press's target only: an element that takes no pointer event (the act bands, decision 166 (a)) is a keyboard control, not a target */
     var R=Array.prototype.slice.call(document.querySelectorAll(SEL)).filter(function(e){ return vis(e)&&!e.disabled&&!(e.closest&&e.closest(MAPSEL))&&!e.closest("[inert]")&&getComputedStyle(e).pointerEvents!=="none"; })
-      .map(function(e){ var r=e.getBoundingClientRect(); return {e:e,r:r,cx:(r.left+r.right)/2,cy:(r.top+r.bottom)/2}; });
+      .map(function(e){ var b=e.getBoundingClientRect(), r={left:b.left,top:b.top,right:b.right,bottom:b.bottom,width:b.width,height:b.height};
+        /* the press area a positioned ::before adds (the phases' reach up over the act row, style.css .step::before, decision 166 (a)) */
+        var pb=getComputedStyle(e,"::before"); if(pb.content&&pb.content!=="none"&&pb.position==="absolute"){ var t=parseFloat(pb.top), h=parseFloat(pb.height);
+          if(t<0&&h>0){ r.top=Math.min(r.top,b.top+t); r.height=r.bottom-r.top; } }
+        return {e:e,r:r,cx:(r.left+r.right)/2,cy:(r.top+r.bottom)/2}; });
     return R.map(function(o,i){
       var small=o.r.width<24-1e-6||o.r.height<24-1e-6, ok=!small;
       if(small){ ok=true; for(var j=0;j<R.length;j++){ if(j===i) continue; var q=R[j];
