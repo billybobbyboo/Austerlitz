@@ -53,7 +53,7 @@ inventory current; 1 warning, acknowledged; redteam 0 findings, 2 warnings ackno
 PR #57's reference: exactly FORMATIONS, APPEARANCE_SOURCES, COMPOSITION and STATEMENT_CLAIMS changed, then, the reference moved to
 `archive/step5c-45f8f662.html`, 131 identical; `check:visual`: 0 failures but the one above (30 cases; the self-test 242 of 242), and after
 decision 214 `check:report` all checks pass; `check:contrast` 5,907 text elements, 0 below AA, 0 below 10.5 px, 0 font failures, 35 of 35
-states, 0 console messages, 6 of 6 start-up cases; `check:selftest` (rerun after a container restart; its result follows in the next commit); `check:baseline` moved to `45f8f662`, 2,200,058 bytes.
+states, 0 console messages, 6 of 6 start-up cases; `check:selftest` 242 of 242 against its manifest, 0 failing (rerun after a container restart stopped the first run); `check:baseline` moved to `45f8f662`, 2,200,058 bytes.
 
 **Uncertain, historical:** what Duffy's 800 are; whether "Guard Gr.R." is the Life Grenadier regiment (an inference from Sokolov); Smith's
 figures. **Implementation:** the Life Grenadiers are not drawn (no formation of the map is theirs; a formation for them would need a track,
