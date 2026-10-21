@@ -3,8 +3,8 @@
    prototype layout injected by this probe (--layout <id> from tools/step6/phone-layouts.js: CSS and JS put into the live page after it
    started; never in the source). Chromium with touch, the device's pixel ratio and a phone's user agent (so the build takes its lowTier path
    as on a phone; Safari itself is not here: the harness is Chromium only, docs/FINAL_AUDIT.md section 5).
-   Each device on fresh pages, the states reached by real taps where a control exists (page.tap: touch events), else through the app's own
-   functions (named in each state's note):
+   Each device on fresh pages, the states reached by real taps where a control exists (page.tap: touch events, 700 ms apart: taps closer
+   than that were found to be lost here), else through the app's own functions (named in each state's note):
      first     the first screen, untouched (04:00, the first-run card open)
      explore   after a tap on "Explore on my own" (the card closed where it stands), the clock at 09:30
      panels    then a tap on Panels: the rail and its Now tab
@@ -14,9 +14,11 @@
      paper     the paper map, by a tap on its button in the Layers panel, then the panel closed
      tour      the guided tour's first stop, by a tap on Guided tour
    Per state: the unobstructed fraction and the timeline's height (tools/visual/measure.js, the harness's own measures); every text element
-   cut (its content wider or taller than its box where the overflow is hidden, or its box partly outside the screen); every visible control's
-   box against WCAG 2.5.8 (24 x 24 px, or its spacing exception) and against 44 x 44 px (Apple's and WCAG 2.5.5's AAA size); controls whose
-   centre another element covers (a tap there reaches the other); the panels that overlap one another; the features with no reachable control;
+   cut (its content wider or taller than its box where the overflow is hidden, or its box partly outside the screen; text wholly off the screen
+   is counted apart); every visible control that takes a press, its box against WCAG 2.5.8 (24 x 24 px, or its spacing exception; the event
+   markers counted apart, decision 167's essential exception) and against 44 x 44 px (Apple's and WCAG 2.5.5's AAA size); controls whose
+   centre another element covers (a tap there reaches the other); the panels that overlap one another; the features with no reachable control
+   (none of nine points of any of its controls on the screen and on top);
    text contrast as rendered (measure.js textContrast on a CSS-scale screenshot: AA, 4.5:1 or 3:1 for large text, and the 10.5 px floor).
    node tools/step6/phone-probe.js [--layout current|<id>] [--only 390x844,...] [--states first,explore] [--json out.json] [--shots dir]
    Measurement only; nothing is written to a source file. Never run it beside check:visual. */
@@ -51,7 +53,8 @@ const INPAGE=function(){
   var SEL="button,a[href],input,select,textarea,[role=button],[role=tab],[role=slider],[tabindex]:not([tabindex='-1'])";
   var MAPSEL="#maplayer";
   A.targets=function(){
-    var R=Array.prototype.slice.call(document.querySelectorAll(SEL)).filter(function(e){ return vis(e)&&!e.disabled&&!(e.closest&&e.closest(MAPSEL))&&!e.closest("[inert]"); })
+    /* a press's target only: an element that takes no pointer event (the act bands, decision 166 (a)) is a keyboard control, not a target */
+    var R=Array.prototype.slice.call(document.querySelectorAll(SEL)).filter(function(e){ return vis(e)&&!e.disabled&&!(e.closest&&e.closest(MAPSEL))&&!e.closest("[inert]")&&getComputedStyle(e).pointerEvents!=="none"; })
       .map(function(e){ var r=e.getBoundingClientRect(); return {e:e,r:r,cx:(r.left+r.right)/2,cy:(r.top+r.bottom)/2}; });
     return R.map(function(o,i){
       var small=o.r.width<24-1e-6||o.r.height<24-1e-6, ok=!small;
@@ -62,7 +65,7 @@ const INPAGE=function(){
       var covered=!!(top&&top!==o.e&&!o.e.contains(top)&&!(top.closest&&top.closest("label")&&top.closest("label").contains(o.e)));
       var outside=o.r.right>innerWidth+0.5||o.r.bottom>innerHeight+0.5||o.r.left<-0.5||o.r.top<-0.5;
       var offscreen=o.r.right<=0||o.r.bottom<=0||o.r.left>=innerWidth||o.r.top>=innerHeight;
-      return {el:desc(o.e),name:nameOf(o.e).slice(0,40),w:+o.r.width.toFixed(1),h:+o.r.height.toFixed(1),x:Math.round(o.r.left),y:Math.round(o.r.top),
+      return {el:desc(o.e),name:nameOf(o.e).slice(0,40),evmark:!!(o.e.closest&&o.e.closest("#evmarks")),w:+o.r.width.toFixed(1),h:+o.r.height.toFixed(1),x:Math.round(o.r.left),y:Math.round(o.r.top),
         under24:small,spacingOk:ok,under44:o.r.width<44||o.r.height<44,covered:covered?desc(top):null,outside:outside,offscreen:offscreen}; }); };
   /* cut text: an element holding its own text whose content overflows a box that clips it, or whose box runs off the screen */
   A.cut=function(){
@@ -76,7 +79,8 @@ const INPAGE=function(){
       else if(clipY&&e.scrollHeight>e.clientHeight+1&&cs.overflowY!=="auto"&&cs.overflowY!=="scroll") why="clipped down";
       if(!why){ for(var p=e.parentElement;p&&p!==document.body;p=p.parentElement){ var pc=getComputedStyle(p); if(pc.overflow==="hidden"||pc.overflowX==="hidden"){
         var pr=p.getBoundingClientRect(); if(r.right>pr.right+1||r.left<pr.left-1){ why="cut by "+desc(p); } break; } } }
-      if(!why&&(r.right>innerWidth+0.5||r.left<-0.5||r.bottom>innerHeight+0.5)) why="off the screen";
+      if(!why&&(r.right<=0||r.left>=innerWidth||r.bottom<=0||r.top>=innerHeight)) why="wholly off the screen";
+      else if(!why&&(r.right>innerWidth+0.5||r.left<-0.5||r.bottom>innerHeight+0.5||r.top<-0.5)) why="partly off the screen";
       if(why) out.push({el:desc(e),why:why,text:(e.textContent||"").replace(/\s+/g," ").trim().slice(0,60),w:Math.round(r.width)}); });
     return out; };
   /* text under the project's 10.5 px floor (CLAUDE.md, check:contrast), the map layer's included */
@@ -99,9 +103,12 @@ const INPAGE=function(){
     eyes:["#eyesbtn"], speeds:[".spd-btn"]};
   A.reach=function(){ var o={}; Object.keys(FEAT).forEach(function(k){ var best=null;
       FEAT[k].forEach(function(s){ document.querySelectorAll(s).forEach(function(e){ if(best==="ok") return; if(!vis(e)||e.closest("[inert]")){ best=best||"hidden"; return; }
-        var r=e.getBoundingClientRect(), cx=(r.left+r.right)/2, cy=(r.top+r.bottom)/2;
-        if(cx<0||cy<0||cx>=innerWidth||cy>=innerHeight){ best=best==="covered"?best:"off the screen"; return; }
-        var t=document.elementFromPoint(cx,cy); if(t&&t!==e&&!e.contains(t)){ best="covered by "+desc(t); return; } best="ok"; }); });
+        /* reachable where any of nine points of its box (its centre, the inner corners and the edges' middles, 20% in) is on the screen and
+           finds it on top */
+        var r=e.getBoundingClientRect(), on=0, top=null;
+        [[.5,.5],[.2,.2],[.8,.2],[.2,.8],[.8,.8],[.5,.2],[.5,.8],[.2,.5],[.8,.5]].forEach(function(q){ var x=r.left+q[0]*r.width, y=r.top+q[1]*r.height;
+          if(x<0||y<0||x>=innerWidth||y>=innerHeight) return; on++; var t=document.elementFromPoint(x,y); if(t&&(t===e||e.contains(t))) best="ok"; else if(!top) top=t; });
+        if(best==="ok") return; best=on?"covered by "+desc(top):"off the screen"; }); });
       o[k]=best||"absent"; }); return o; };
   window.__ph=A; return true;
 };
@@ -125,14 +132,14 @@ async function open(browser,d){
 async function settle(page){ await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(60)); await page.waitForTimeout(450); await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(2)); }
 /* a tap on a control; under the menu prototype a tool hidden behind the Menu button is reached through it, as a visitor would */
 async function tapIf(page,sel){ let h=await page.$(sel);
-  if(h&&!(await h.isVisible())){ const m=await page.$("#ph-menu"); if(m&&await m.isVisible()){ await m.tap(); h=await page.$(sel); } }
-  if(!h||!(await h.isVisible())) return false; await h.tap({timeout:5000}).catch(()=>{}); return true; }
+  if(h&&!(await h.isVisible())){ const m=await page.$("#ph-menu"); if(m&&await m.isVisible()){ await m.tap(); await page.waitForTimeout(700); h=await page.$(sel); } }
+  if(!h||!(await h.isVisible())) return false; await h.tap({timeout:5000}).catch(()=>{}); await page.waitForTimeout(700); return true; }
 /* each state from a fresh page, so that one state's taps never carry into the next */
 const REACH={
   first: async p=>"untouched",
-  explore: async p=>{ await p.tap("#fr-close"); await p.evaluate(()=>{ setClock(570,{instant:true,force:true}); }); return "tap: Explore on my own; setClock(09:30)"; },
+  explore: async p=>{ await p.tap("#fr-close"); await p.waitForTimeout(700); await p.evaluate(()=>{ setClock(570,{instant:true,force:true}); }); return "tap: Explore on my own; setClock(09:30)"; },
   panels: async p=>{ await REACH.explore(p); const t=await tapIf(p,"#panelsbtn"); return "explore, then "+(t?"tap: Panels":"Panels not shown"); },
-  dossier: async p=>{ await REACH.explore(p); await p.evaluate(()=>{ select("f","sthilaire"); }); return "explore, then select('f','sthilaire') (a tap on its counter)"; },
+  dossier: async p=>{ await REACH.explore(p); await p.evaluate(()=>{ select("f","sthilaire"); }); await p.waitForTimeout(700); return "explore, then select('f','sthilaire') (a tap on its counter)"; },
   watch: async p=>{ await REACH.explore(p); const t=await tapIf(p,".vm-btn[data-vm=watch]"); return "explore, then "+(t?"tap: Watch":"Watch not shown"); },
   layers: async p=>{ await REACH.explore(p); const t=await tapIf(p,"#layersbtn"); return "explore, then "+(t?"tap: Layers":"Layers not shown"); },
   paper: async p=>{ await REACH.layers(p); const t=await tapIf(p,".mode-btn[data-m=staff]"); await tapIf(p,"#layerclose"); return "layers, then "+(t?"tap: Paper map, tap: close":"Paper map not shown"); },
@@ -158,14 +165,15 @@ const REACH={
       const tc=await page.evaluate(b=>window.__aus.textContrast(b),b64), small=await page.evaluate(()=>window.__ph.small());
       if(SHOTS) fs.writeFileSync(path.join(SHOTS,LAYOUT+"-"+d.key+"-"+st+".png"),css);
       const S={how, unobstructed:m.unobstructed, timeline:m.timeline, layer:m.layer, panels, overlaps:ov,
-        targets:T.length, fail2_5_8:T.filter(t=>t.under24&&!t.spacingOk).map(t=>t.el+" "+t.w+"x"+t.h+" '"+t.name+"'"),
+        targets:T.length, fail2_5_8:T.filter(t=>t.under24&&!t.spacingOk&&!t.evmark).map(t=>t.el+" "+t.w+"x"+t.h+" '"+t.name+"'"),
+        evmarksUnder24:T.filter(t=>t.evmark&&t.under24&&!t.spacingOk).length,
         under44:T.filter(t=>t.under44).length, under44List:T.filter(t=>t.under44).map(t=>t.el+" "+t.w+"x"+t.h),
         covered:T.filter(t=>t.covered).map(t=>t.el+" '"+t.name+"' under "+t.covered), outside:T.filter(t=>t.outside).map(t=>t.el+" '"+t.name+"'"+(t.offscreen?" (wholly off)":"")),
-        cut:cut, unreachable:Object.keys(reach).filter(k=>reach[k]!=="ok").map(k=>k+": "+reach[k]),
+        cut:cut.filter(c=>c.why!=="wholly off the screen"), offScreenText:cut.filter(c=>c.why==="wholly off the screen").length, unreachable:Object.keys(reach).filter(k=>reach[k]!=="ok").map(k=>k+": "+reach[k]),
         contrast:{texts:tc.texts, belowAA:tc.belowAA.length, belowAAList:tc.belowAA.slice(0,8), min:tc.min, belowFloor:small.length, belowFloorList:small.slice(0,8)},
         console:page._console.slice(), errors:page._errors.slice()};
       D.states[st]=S;
-      console.log(LAYOUT,d.key,st.padEnd(8),"unobstr",S.unobstructed,"tl",S.timeline,"cut",cut.length,"2.5.8 fail",S.fail2_5_8.length,"<44",S.under44+"/"+S.targets,
+      console.log(LAYOUT,d.key,st.padEnd(8),"unobstr",S.unobstructed,"tl",S.timeline,"cut",S.cut.length,"2.5.8 fail",S.fail2_5_8.length,"(+"+S.evmarksUnder24+" event markers)","<44",S.under44+"/"+S.targets,
         "covered",S.covered.length,"outside",S.outside.length,"overlaps",ov.map(o=>o.a+"/"+o.b).join(",")||"-","unreachable",S.unreachable.length,"AA fail",S.contrast.belowAA,"|",how);
       await page._ctx.close();
     }
