@@ -86,8 +86,10 @@ function menuJS(){
   var b=document.createElement("button"); b.id="ph-menu"; b.className="t"; b.type="button"; b.textContent="Menu"; b.setAttribute("aria-expanded","false");
   b.addEventListener("click",function(){ var on=!document.body.classList.contains("ph-menu-open"); document.body.classList.toggle("ph-menu-open",on); b.setAttribute("aria-expanded",String(on)); });
   document.body.appendChild(b);
-  /* a press on any tool closes the menu (the Layers panel and the sheets open over the map, not under the menu) */
-  document.querySelector(".tools").addEventListener("click",function(){ document.body.classList.remove("ph-menu-open"); b.setAttribute("aria-expanded","false"); });
+  /* a press on any tool closes the menu (the Layers panel and the sheets open over the map, not under the menu); heard in the capture phase,
+     since the Layers button stops its click's propagation (app.js:5766): a first version listened in the bubble phase and the menu stayed open
+     over the Layers panel (its layers and paper states re-measured, phone-menu-layers.json) */
+  document.querySelector(".tools").addEventListener("click",function(){ document.body.classList.remove("ph-menu-open"); b.setAttribute("aria-expanded","false"); },true);
 }
 async function inject(page,css,js){
   await page.addStyleTag({content:css});
