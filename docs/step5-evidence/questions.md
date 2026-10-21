@@ -117,3 +117,10 @@ set `rg_inf` to the seven battalions' figure with its note (the grenadier regime
 `rg_cav`'s 3,700; (c) lower `rg_inf` to 4,430 now, on the text layer (against the register's rule that a reading on the text layer carries no
 claim); the horse is not in this option, the text layer giving no ground to move it. *Recommendation:* (b): the figures move only on a page
 read. *Default:* (a).
+*Status:* decision 213 (b), 21 October 2026 (the owner sent a photograph of Duffy's pp. 184-185: "Is this what you're looking for?", then "Go
+with 213 (b) and apply it as its own small PR"). Read on the page (S5.7): each unit beside its strength, the pairing as the reader had it; the
+table ends with the pioneers, so no row was lost and the 800 is in none of Duffy's rows (the explanation above, "consistent with the map's
+3,700 if one horse row was lost", is refuted by the page). Applied (its own PR): `rg_inf` 4,430 and its composition without the Life
+Grenadiers (not drawn); `rg_cav` 2,900 (Duffy's rows, Schönhals's four); `constantine` kept at 10,500 with its note giving Duffy's heading
+and rows; `duffy1977` in the table of works read; the two notes' claims on S5.7; the corps-versus-formations warning acknowledged in
+`test.js` and `redteam.js` with its reason (`CHANGELOG.md`). The next owner decision is 214.

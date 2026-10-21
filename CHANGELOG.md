@@ -1,8 +1,54 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Decision 213 (b): the Russian Guard's strengths from Duffy's page (its own PR)
+
+**Status: done on `claude/magical-rubin-vahnny` (draft PR), for review. The build changed: `austerlitz-command-map.html` @@SIZE@@ bytes,
+md5 `@@MD5@@` (PR #57's build: 2,198,549 bytes, `fdc25e82...`).** Begun from `main` at `8e3278e` (PR #57 merged). On 21 October 2026 the
+owner sent a photograph of Duffy, *Austerlitz 1805*, pp. 184-185 ("Is this what you're looking for?"), then: "Go with 213 (b) and apply it as
+its own small PR." A data task (guarded declarations), with its evidence.
+
+**The reading (register entry S5.7, now on the page image).** Read by the lead on zoomed crops of the owner's photograph (kept outside the
+repository: a work in copyright; the passage is quoted in the register): the heading "Reserve, Russian Imperial Guard, Grand Duke Constantine
+(10,530, 40 pieces)"; the Izmailovsky 2 bns. 1,000, the Semenovsky 2 bns. 1,400, the Preobrazhensky 2 bns. 1,500, the Guard jägers 1 bn. 530, a
+"Guard Gr.R. (in reserve)" 3 bns. 2,300; the Chevalier Garde 5 sqs. 800, the Gardes du Corps 5 sqs. 1,000, the Life Guard Hussars 5 sqs. 800,
+the Life Guard Cossacks 2 sqs. 300; pioneers 1 coy. 100; the table ends there. So the pairing PR #57 inferred from the OCR is the page's, and
+its alternative explanation (a horse row lost in the OCR, which would have kept the map's 3,700) is refuted: the rows sum to 9,730, and 800 of
+the heading's 10,530 is in none of them. The map's 3,700 horse equals 10,530 less 6,730 and 100: a subtraction, not Duffy's figure.
+
+**What changed (was, is, why):**
+- `FORMATIONS.rg_inf.strength`: was 6,730; is 4,430, the seven battalions with the Tsesarevich (Duffy's rows: 1,000, 1,400, 1,500, 530).
+  Why: the map's Guard infantry is the infantry that fought (its note and track); Duffy's 6,730 adds the grenadier regiment "in reserve",
+  which Sokolov (S5.6) puts in Maliutin's separate column.
+- `FORMATIONS.rg_inf.strengthNote`: begins "4,430: the seven battalions …", gives Duffy's 6,730 with the reserve regiment's 2,300 not drawn and
+  Smith as cited, not read; the rest (the commander) as it was. Its claim, "attributed", rehashed and resting on S5.7 as well.
+- `COMPOSITION.rg_inf` (`appearance.js`): the Life Grenadiers' three battalions (`ru_gren`, Schönhals p. 178) taken out; its note says why
+  ("not drawn in this formation: 'in reserve' in Duffy, in Maliutin's separate column in Sokolov"). The formation now draws the six Guard
+  battalions and the jägers' one.
+- `FORMATIONS.rg_cav.strength`: was 3,700; is 2,900, Duffy's four rows, the same four as Schönhals's table that the dress table already
+  read (800, 1,000, 800, 300): the map's own composition summed to 2,900 while the strength said 3,700. Its note begins "2,900 horse: Duffy's
+  rows …", Smith cited, not read; the rest as it was. Its claim rehashed, resting on S5.7 as well.
+- `FORMATIONS.constantine.strengthNote`: was "Duffy and Smith give 6,730 infantry, 3,700 horse, 100 pioneers and 40 guns. Narrative accounts
+  often give about 8,500"; is Duffy's heading and rows, the 800 in no row, what the map draws, Smith cited, not read, and the 8,500 sentence
+  kept. Its strength stays 10,500 (Duffy's 10,530). It has no claim of its own (unchecked, as before: the 8,500 sentence has no reading).
+- `APPEARANCE_SOURCES.duffy1977` (the one table of works read): added, so the claims can cite it.
+- `STATEMENT_CLAIMS`: the two notes' claims as above; `rg_inf.commander`'s note no longer says S5.7 is on the text layer.
+- `test.js`: the order-of-battle values `rg_inf` 4,430 and `rg_cav` 2,900 (they pin the data, so they follow it).
+- **A warning acknowledged, not a check loosened:** the corps declares 10,500 and its two formations now sum to 7,330, past `test.js`'s 30% and
+  `redteam.js`'s 25% warnings. The gap is the source's own (the reserve regiment's 2,300, the pioneers' 100 and Duffy's 800 in no row), so each
+  warning is acknowledged by its exact text in `KNOWN_WARN` with that reason and this record; the error rule (children never above the
+  parent) is unchanged and holds.
+
+**What was not changed:** the Guard's 40 guns; the knowledge model and the tracks (no time or place moved); Smith (still not read, S5.8).
+
+**Verified:** @@VERIFIED@@
+
+**Uncertain, historical:** what Duffy's 800 are; whether "Guard Gr.R." is the Life Grenadier regiment (an inference from Sokolov); Smith's
+figures. **Implementation:** the Life Grenadiers are not drawn (no formation of the map is theirs; a formation for them would need a track,
+which no source read gives).
+
 ## 2026-10 · Roadmap step 5's follow-up: decisions 205-212 (PR #57)
 
-**Status: done on `claude/magical-rubin-vahnny` (draft PR #57), for review. The build changed: `austerlitz-command-map.html` 2,198,549 bytes,
+**Status: merged (#57). The build changed: `austerlitz-command-map.html` 2,198,549 bytes,
 md5 `fdc25e82225674ab0a607fe872bde73c` (the step 5 build: 2,197,389 bytes, `f6082ae2...`).** Begun from `main` at `92460d4` (step 5 merged, #56). On 20 October
 2026 the owner: "Go with your recommendations for all questions. Just merged 56. So maybe implement these questions through PR 57." Every
 question of `docs/step5-evidence/questions.md` decided as its recommendation; the owner's words, each decision and its status there and in

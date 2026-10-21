@@ -433,8 +433,14 @@ console.log("\nphases:",PHASES.length,"| chapters:",ANALYSIS.length,
   console.log("statement claims: "+S.length+" narrative statements, "+n+" with a claim of their own, "+nClass+" by class ("+(Object.entries(byKind).map(([k,v])=>k+" "+v).join(", ")||"none")+
     "), "+(S.length-n-nClass)+" unchecked; "+REG.size+" readings in the registers; the inventory "+(stale.length?"OUT OF DATE":"current")+(cerr.length?"; "+cerr.length+" errors":"")); }
 /* T-3 (docs/FINAL_AUDIT.md): a warning fails unless it is acknowledged here by its exact text, with the reason it stands and where that is
-   recorded ({w, why, see}); an acknowledged warning that is no longer raised fails too, until its entry is removed. None today. */
-const KNOWN_WARN=[];
+   recorded ({w, why, see}); an acknowledged warning that is no longer raised fails too, until its entry is removed. One since decision 213 (b). */
+const KNOWN_WARN=[
+  {w:"constantine: declared 10500 vs children 7330",
+   why:"owner decision 213 (b), 21 October 2026: the corps keeps Duffy's heading (10,530, as 10,500), its two drawn formations his rows "+
+       "without the reserve's grenadier regiment (4,430 and 2,900); the 3,170 between them is that regiment's 2,300 'in reserve' (not drawn), "+
+       "the pioneers' 100 and 800 in none of his rows (1977, pp. 184-185, register entry S5.7): a gap explained by the source, not a "+
+       "detachment counted twice (the error rule above still holds: the children never exceed the parent)",
+   see:"CHANGELOG.md, decision 213 (b); docs/step5-evidence/questions.md, question 213"}];
 { const uw=[...new Set(warn)];
   uw.filter(w=>!KNOWN_WARN.some(k=>k.w===w)).forEach(w=>errs.push("warning not acknowledged in KNOWN_WARN: "+w));
   KNOWN_WARN.filter(k=>!uw.includes(k.w)).forEach(k=>errs.push("acknowledged warning no longer raised (remove it from KNOWN_WARN): "+k.w));
@@ -454,7 +460,7 @@ const OOB=[
  ["dok","strength",13490],["dok","guns",64],["bag","guns",42],
  ["lich","strength",5400],["lich","guns",24],["lich","nation","ru"],
  ["constantine","strength",10500],["constantine","guns",40],
- ["rg_inf","strength",6730],["rg_cav","strength",3700],
+ ["rg_inf","strength",4430],["rg_cav","strength",2900],   /* decision 213 (b): Duffy's rows (1977, pp. 184-185); 6,730 and 3,700 until then */
  ["c_gren","guns",undefined],["c_cav","guns",36],["gqg","guns",undefined],
  ["col4","strength",13900],["milo","strength",4800],["kamensky","strength",4250],["nansouty","strength",1600],
  ["santon","arm","inf"],["santon","battery",18],["santon","parent","suchet"],["buxhowden","arm","hq"]

@@ -5266,7 +5266,7 @@
    "file": "data.js",
    "line": 600,
    "label": null,
-   "text": "Duffy and Smith give 6,730 infantry, 3,700 horse, 100 pioneers and 40 guns. Narrative accounts often give about 8,500",
+   "text": "Duffy gives the Guard 10,530 men and 40 pieces; his rows give 6,730 infantry, the Guard grenadier regiment's 2,300 'in reserve' among them, 2,900 horse and 100 pioneers, 9,730 in all, so 800 of his total is in no row (1977, pp. 184-185). This map draws the 4,430 infantry with the Tsesarevich and the 2,900 horse. Smith (1998) is cited, not read. Narrative accounts often give about 8,500",
    "claim": "unchecked",
    "by": []
   },
@@ -5348,7 +5348,7 @@
    "file": "data.js",
    "line": 606,
    "label": null,
-   "text": "6,730 (Duffy 1977; Smith 1998). Who commanded it on 2 December is not established by the sources read. Maliutin commanded the Guard infantry at Olmütz and on the march (Mikhailovsky-Danilevsky; the Chevalier Guard's history), and Sokolov's order of battle for 2 December still titles him commanding all the Guard infantry; but on the day he led a separate column, the Life Grenadiers and the Chevalier Guard, which came up late, the Chevalier Guard sent ahead (Sokolov; the Chevalier Guard's history; the Allied report printed in 1806). The Guard infantry with the Tsesarevich is under Depreradovich 1st, commander of the 1st Guard infantry brigade, in Sokolov alone, with no source on his page",
+   "text": "4,430: the seven battalions with the Tsesarevich in Duffy's order of battle, the Izmailovsky 1,000, the Semenovsky 1,400 and the Preobrazhensky 1,500, two battalions each, and the Guard jägers' one battalion 530 (1977, pp. 184-185). Duffy's 6,730 for the Guard infantry adds a Guard grenadier regiment of three battalions, 2,300, 'in reserve', which this map does not draw; Sokolov puts the Life Grenadiers in Maliutin's separate column. Smith (1998) is cited, not read. Who commanded it on 2 December is not established by the sources read. Maliutin commanded the Guard infantry at Olmütz and on the march (Mikhailovsky-Danilevsky; the Chevalier Guard's history), and Sokolov's order of battle for 2 December still titles him commanding all the Guard infantry; but on the day he led a separate column, the Life Grenadiers and the Chevalier Guard, which came up late, the Chevalier Guard sent ahead (Sokolov; the Chevalier Guard's history; the Allied report printed in 1806). The Guard infantry with the Tsesarevich is under Depreradovich 1st, commander of the 1st Guard infantry brigade, in Sokolov alone, with no source on his page",
    "claim": "attributed",
    "by": [
     {
@@ -5380,6 +5380,11 @@
      "src": "materialien1806",
      "at": "pp. 118-119",
      "rd": "materialien1806.p118-119.malutin-chevaliergarde"
+    },
+    {
+     "src": "duffy1977",
+     "at": "pp. 184-185",
+     "rd": "duffy1977.p184-185.guard-oob"
     }
    ]
   },
@@ -5493,7 +5498,7 @@
    "file": "data.js",
    "line": 617,
    "label": null,
-   "text": "3,700 horse (Duffy 1977; Smith 1998, cited, not read). Kologrivov's command on 2 December is in Sokolov alone, with no source on his page; Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column. The first name 'Andrei' is cited, not read",
+   "text": "2,900 horse: Duffy's rows, the Chevalier Garde 800, the Gardes du Corps 1,000, the Life Guard Hussars 800 and the Life Guard Cossacks 300 (1977, p. 185), the same four as the Allied order of battle in Schönhals (1873, p. 178). Smith (1998) is cited, not read. Kologrivov's command on 2 December is in Sokolov alone, with no source on his page; Mikhailovsky-Danilevsky and the Chevalier Guard's history have him command the Guard cavalry at Olmütz and on the march, and the Chevalier Guard came up in Maliutin's separate column. The first name 'Andrei' is cited, not read",
    "claim": "attributed",
    "by": [
     {
@@ -5515,6 +5520,11 @@
      "src": "kavalergard1851",
      "at": "p. 54",
      "rd": "kavalergard1851.p54.march-commanders"
+    },
+    {
+     "src": "duffy1977",
+     "at": "pp. 184-185",
+     "rd": "duffy1977.p184-185.guard-oob"
     }
    ]
   },
