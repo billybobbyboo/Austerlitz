@@ -26,9 +26,11 @@ headless Chromium with software WebGL (SwiftShader) as the Stage 0 harness runs 
 | `perf-local.js [--way paste\|frame] [--device desktop\|iphone] [--viewport WxH] [--quick] [--only ids] [--json f]` | 2.4 | runs the route here under Playwright, both ways, to show it runs (its frame times are software WebGL) |
 | `census.js [--json f] [--only views]` | 3.1 | every draw call of one whole frame in 26 views, by pass, by what is drawn, by distance and by a man's height on screen |
 | `census-report.js census.json` | 3.1 | the census as tables (`docs/step6-evidence/census.md`) |
+| `size-probe.js [--json f]` | 3.1 | per block in five views: distance, a vertical man's height on screen, a man-sized sphere's diameter on screen |
 | `lod-probe.js [--json f] [--shots dir] [--only views]` | 3.2 | the level-of-detail options prototyped in the live scene and measured, each undone before the next |
 | `phone-probe.js [--layout current\|compact\|sheets\|menu] [--only sizes] [--states s] [--json f] [--shots dir]` | 4 | the build at five phone sizes with touch, the device's density and a phone's user agent, eight states each, by real taps |
 | `phone-layouts.js` | 4.3 | the three prototype layouts the probe injects |
+| `phone-report.js` | 4 | the phone JSON files as tables (`docs/step6-evidence/phone.md`) |
 
 Their outputs, screenshots and a README are in `docs/step6-evidence/`.
 
@@ -43,13 +45,15 @@ Their outputs, screenshots and a README are in `docs/step6-evidence/`.
   r128 does not cull instanced meshes), so every 4x view draws nearly the same frame. A man's size on screen differs by view (a man-sized sphere, which
   does not depend on the camera's pitch): 4-8 px in the Overview, 8-16 px from the Field vantage, 16 px or more in the low and close views. So a
   level of detail by size would cut the Overview's figures and leave the low views' alone. Measured (§3.2): the Overview's blocks in a far
-  form (a box per unit) halve its frame; no figure shadows takes a quarter
-  off every 4x frame; culling the blocks by their own bounds would skip about half the figures' world pass in the low views. The rule that decides 138 from the laptop's report is stated now (§3.4):
-  built only if frames drop in the Overview or the low views **and** hiding the figures cures it.
+  form (a box per unit) halve its frame; no figure shadows takes a quarter off every 4x frame; culling the blocks by their own bounds would
+  skip about half the figures' world pass in the low views. The rule that decides 138 from the laptop's report is stated now (§3.4): built
+  only if frames drop in the Overview or the low views **and** hiding the figures cures it.
 - **Item 3 (question 137).** Measured: at 360-430 px wide the timeline is 172-174 px tall, its act and phase
   labels are cut, the tools stand over the dispatch card, the presentation switch over the dossier's head; the three 45-minute phases are
   18-22 px wide on a proportional axis, under 2.5.8's 24 px, whatever the styling. Three prototypes measured (§4.3-§4.4): a compact timeline (127
-  px), sheets at the foot (the map's free share after "Explore" from about 0.20 to 0.50-0.56), and the controls behind a Menu button.
+  px), sheets at the foot (the map's free share after "Explore" from about 0.20 to 0.50-0.56), and the controls behind a Menu button
+  (0.62-0.65); but none frames the battle in the area it frees (at 390 px after "Explore" the view holds no map item today, compact or
+  with sheets, and 3 with the Menu), which a Part B must.
 - **Questions 215-230** (§7), each with options, a recommendation and its cost; the order recommended: 1, then 2 or its retirement by the rule,
   then 3, with 3's Part B free to begin while 1 waits on the owner's devices.
 
@@ -220,8 +224,8 @@ review's findings).
 
 `tools/step6/census.js` records every draw call of one whole frame where three issues it, in each of the harness's 20 views that are neither fresh pages nor real
 pointer input (`tools/visual/cases.js` has 30: 9 fresh, 1 interaction), and three of them at 1x and 10.33x as well (26 frames); the sum is checked against `renderer.info` for the same frame (equal in
-every view: calls exactly; triangles to within the sprites' (at most 92 a frame), which the first run did not count and the committed script
-does). The tables are `docs/step6-evidence/census.md`.
+every view, calls and triangles, sprites counted as `info` counts them; a first run that did not count the sprites was 92 triangles short at
+most, and was run again). The tables are `docs/step6-evidence/census.md`.
 
 **At the 4x default every landscape view draws nearly the same frame**, 2.48-2.53 million triangles in 740-857 calls, from the Overview to the
 close view of Sokolnitz: no figure block is culled (§0.2), and the trees (six instanced meshes), the scrub and the ground are each drawn whole
@@ -244,7 +248,23 @@ The low Pratzen view at 4x (`pratzen-low`), by what is drawn:
 | everything else (marks, arrows, sky, smoke, trails, pads, post-processing) | | | | about 1% |
 | **the frame** | **1.45 M in 473 calls** | **1.03 M in 278 calls** | **2.48 M in 758 calls** (the post-processing's 7 among them) | |
 
-**The figures' size on screen decides what a level of detail can save.** A man's height on screen (CSS px at 1600 x 900), world pass:
+**By distance from the eye** (world pass, every mesh of the figure blocks, by its block's distance; a world unit is 63.2 m,
+`GEOREF.M_PER_WORLD`; both passes and every view in `census.md`):
+
+| view | under 60 units (3.8 km) | 60-120 (7.6 km) | 120-240 (15.2 km) | 240-480 (30.3 km) |
+|---|---|---|---|---|
+| the Overview (`overview-plan`) | | | | 633.5 k in 306 calls |
+| the Field vantage | | | 248.2 k, 110 | 385.3 k, 196 |
+| the low Pratzen view | 104.4 k, 38 | 422.9 k, 219 | 89.6 k, 38 | |
+| close on Sokolnitz | 121.6 k, 59 | 113.4 k, 43 | 375.5 k, 189 | |
+| the eye level | | 133.4 k, 39 | | |
+
+With the lens fixed (37° for every view, `size-probe.json`), a man's size across follows his distance: the Overview's blocks are 422-453
+units away and 6.7-7.2 px across, the Field vantage's 167-325 units and 9.3-18.1 px, the low Pratzen view's 40-156 units and 19-77 px, close
+on Sokolnitz 24-213 units and 14-128 px (at 1600 x 900; a smaller screen makes every man smaller, so a level of detail keyed to the size on
+screen, not the distance, follows the viewport too).
+
+**The figures' size on screen decides what a level of detail can save.** A man's height on screen by the census's vertical measure (a 1.8-unit vertical segment at a block's first man, CSS px at 1600 x 900; it follows the camera's pitch, below), world pass:
 
 | view | men and horses, world pass | a man under 2 px | 2-4 px | 4-8 px | 8-16 px | 16 px or more |
 |---|---|---|---|---|---|---|
@@ -713,4 +733,29 @@ as written, this document carrying the correction. **Recommended: (a)**, in item
 
 ## 8. The review
 
-[pending]
+One independent read-only review of this document, its evidence and its probes (21 findings; it read files and ran small scripts over the
+JSON, and ran no page while the probes ran). Every finding was fixed or is recorded here; where a fix needed a measurement, it was made.
+
+| # | finding | what was done |
+|---|---|---|
+| 1 | blocking: the route the owner will paste had no recorded run; the local JSONs were an older version's, with the double count | the route's version 3 run here both ways, the JSONs replaced; §2.4 says what software WebGL runs show (0-7 frames a segment) and what not |
+| 2 | blocking: iOS Auto-Lock would end the iPhone runs; a hidden page went unreported | P1's step sets Auto-Lock to Never; `perf-run.html` asks for a screen wake lock; the route flags a segment during which the page was hidden, and the rule repeats such a run |
+| 3 | DevTools docked shrinks the page during L1 | L1 undocks DevTools; the report's viewport line is the check |
+| 4 | §0.2 wrong: the eye level has a shadow pass | corrected (36 calls, 133 k, 27% of its frame) |
+| 5 | the rule for 138: played segments could decide it with no evidence; rules 1 and 4 conflicted; "cure" defined twice; R on a fast panel; "them" ambiguous; two near-equal criteria | rewritten (§3.4): the four orbits of the views 138 names decide; one criterion (more than 5% long frames); a long frame above max(1.5 R, 25 ms), in the route too; a cure is no drop with the figures hidden; the third run first; when a run stands |
+| 6 | the clock covered by the played segments overstated | the review's computation stated as such (about 10:15 at 4x, 09:10 at ½x), the report's own `clockTo` the measure |
+| 7 | counts: 26 census views, not 30; 23 route segments, not 25; about 3 minutes | corrected everywhere |
+| 8 | "a man's height on screen" followed the camera's pitch | measured again by a man-sized sphere (`size-probe.js`): the Overview's men are 4-8 px across, not under 2; §3.1, §3.2, §1 and question 219 restated; a far form keyed to the sphere |
+| 9 | the prototypes free area but the battle is not framed in it; the map text's AA vacuous where there is none | the map items in view reported (0 of 0 after "Explore" at 390 px today); a framing requirement in §4.4, §4.5 and question 223; the vacuous AA said |
+| 10 | landscape has more faults than question 226 said | the three overlaps, Watch's squeezed caption and the speeds off the edge listed; question 226 costed so |
+| 11 | thinning understated: the probe's lasts one frame | §3.3 and question 219 say what a real thinning changes (`layoutFigs`, `showBattalions`, the 6C ranges) |
+| 12 | impostors not mentioned | §3.3: why not prototyped (the box bounds any far form's saving: 0.2% more at most) |
+| 13 | `census.md`, `phone.md` missing; no distance table | both generated; the distance table in §3.1 |
+| 14 | `check:data` claimed before it was run | run: 131 of 131 identical (`CHANGELOG.md`) |
+| 15 | `CLAUDE.md`'s table broken by a row on several lines | the row on one line |
+| 16 | GitHub Pages publishes the whole repository | question 217 says so; (b) with only the two folders offered |
+| 17 | inferences stated as facts (how a frame time is read; why close on Sokolnitz no pixel changed) | labelled; the second's reason withdrawn |
+| 18 | numbers: 49.3% not 49.4%; the bands' sum; 19-22% not 20-21%; the phases' measured widths; about 80 merged calls, not 73; the rail not 44 px; two line numbers; the probe's header; the sections' order | each corrected |
+| 19 | probe bugs not changing these numbers: GPU queries crossing segments and the warm-up; the error path's restore; a block behind the eye "far"; the phone probe's cut and reach limits; a scale constant typed in the census report | the route (version 3) and `lod-probe.js` fixed; the census report reads `GEOREF`; the phone probe's limits recorded in §4.1 |
+| 20 | departures not flagged: decision 53's "the current phase always whole"; decision 139's "with the developer readout" | both stated (question 224; §2.1 and question 216) |
+| 21 | question 221's recommendation muddled | simplified to (b) |

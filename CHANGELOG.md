@@ -9,7 +9,7 @@ devices: a Windows laptop with an Intel integrated GPU, an iPhone with Safari, a
 `docs/STEP6_SPEC.md`, the evidence `docs/step6-evidence/` (its README names each file's script), the probes `tools/step6/` (not bundled).
 
 **Item 1 (decision 139): the route and the protocol.** `tools/step6/perf-route.js` drives the unchanged build through
-`AUSTERLITZ_DEBUG.applyCase` over 25 segments (the Overview, the low Pratzen view at 1x, 4x and 10.33x, the phase-8 Overview, the paper map,
+`AUSTERLITZ_DEBUG.applyCase` over 23 segments (the Overview, the low Pratzen view at 1x, 4x and 10.33x, the phase-8 Overview, the paper map,
 the eye level, each held and moved; three diagnostics with the figures hidden and with Visual effects off; Play at 4x and at ½x under Follow)
 and reports frame-interval percentiles, long frames against the display's own refresh, the app's JavaScript time, the GPU's time where the
 browser offers WebGL2's timer query, and draw calls and triangles. Pasted into the console on the laptop; on the iPhone through
@@ -17,7 +17,7 @@ browser offers WebGL2's timer query, and draw calls and triangles. Pasted into t
 (`tools/step6/perf-local.js`; software WebGL, no console message); its frame times decide nothing. Ten clock minutes at 4x last a quarter
 of a second, so the played segments run 12 s each (question 216).
 
-**Item 2 (decision 138): measured.** The census of every draw call (30 views): a 4x landscape frame is 2.48-2.53 million triangles in 740-857
+**Item 2 (decision 138): measured.** The census of every draw call (26 views): a 4x landscape frame is 2.48-2.53 million triangles in 740-857
 calls whatever the view, because no figure block is ever culled (three r128's `InstancedMesh` sets `frustumCulled` false); the figures and
 standards are 49.7% of the low Pratzen view (P-1 inferred about 91%: the 1x frame it subtracted also lacks the trees, the scrub, the buildings
 and every shadow); the shadow pass is 41%. A man's size on screen (a man-sized sphere; a vertical measure first used followed the camera's pitch,
