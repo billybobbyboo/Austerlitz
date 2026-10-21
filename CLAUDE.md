@@ -470,7 +470,9 @@ build. The owner then photographed Duffy's pp. 184-185 and decided question 213 
 Guard infantry 4,430 (the Life Grenadiers "in reserve" not drawn) and its cavalry 2,900, from Duffy's rows read on the page (register entry
 S5.7), the corps kept at 10,500 with the gap acknowledged in `KNOWN_WARN`; with it decision 214 (`narrow-1024`'s drop limit 7 to 8, the owner's
 word); the `check:data` reference and the baseline moved to its build (PR #58). Roadmap step 6 Part A (the specification of its three items,
-`docs/STEP6_SPEC.md`; no source file, data or build changed) is written on `claude/upbeat-hamilton-y9utq8` (draft PR #59): the frame-time route and
-protocol for the owner's Windows laptop (Intel integrated GPU) and iPhone (decision 139), the draw-call census and the level-of-detail options
-measured with the rule that decides decision 138 stated in advance, and the phone screens and three prototype layouts measured (decision 137);
-owner questions 215-230 are put (§7). The next owner decision is 215.
+`docs/STEP6_SPEC.md`; no source file, data or build changed) is merged (#59): the frame-time route and protocol for the owner's Windows laptop
+(Intel integrated GPU) and iPhone (decision 139), the draw-call census and the level-of-detail options measured with the rule that decides
+decision 138 stated in advance, and the phone screens and three prototype layouts measured (decision 137). The owner decided questions 215-230
+as recommended on 21 October 2026 ("Go with your recommendations for all"; `docs/STEP6_SPEC.md` §0.3, `docs/ROADMAP.md`): item 1 first (the
+owner hosts a copy and runs the route five times; the reports decide 138 by §3.4's rule), then 2 or its retirement, then 3, whose Part B may
+begin meanwhile. The next owner decision is 231.

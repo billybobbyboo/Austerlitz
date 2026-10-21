@@ -1,5 +1,19 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 6: owner decisions 215-230 recorded
+
+**Status: records only, on `claude/upbeat-hamilton-y9utq8` (begun again from `main` at `a107472`, #59 merged). No source file, no data file and
+no build changed:** `austerlitz-command-map.html` 2,200,058 bytes, md5 `45f8f662ef828d2e1ab593a3b87b6ff7` (unchanged). On 21 October 2026,
+after #59 was merged, the owner wrote: "Go with your recommendations for all." Each of questions 215-230 (`docs/STEP6_SPEC.md` §7) is decided as
+recommended and recorded in `docs/STEP6_SPEC.md` §0.3 (the table, with when each applies), `docs/ROADMAP.md` (step 6's row and a decisions
+table) and `CLAUDE.md` (the current state; the next owner decision is 231).
+
+What follows from them, and what does not yet: item 1 waits on the owner (a hosted copy, decision 217; five runs, §2.3); its reports decide
+138 by §3.4's rule (218), the phone's to 222, the iPhone's viewport to 229, and its records commit carries P-1's note (230). Item 3's Part B
+may begin meanwhile (215 (a)) under 223-229; nothing of it is begun here (it is its own task).
+
+**Verified:** `check:baseline` passes (`45f8f662`, 2,200,058 bytes); `check:data` 131 of 131 identical; records only, so no suite was re-run.
+
 ## 2026-10 · Roadmap step 6 Part A: the specification (real hardware, figure level of detail, a phone layout)
 
 **Status: written on `claude/upbeat-hamilton-y9utq8` (draft PR #59), for review. No source file, no data file and no build changed:**

@@ -1,10 +1,10 @@
 # Real hardware, figure level of detail, a phone layout: specification (roadmap step 6, Part A)
 
-**Status: Part A written on `claude/upbeat-hamilton-y9utq8` (draft PR #59, for review). It changed no source file, no data and no build:**
+**Status: Part A merged (#59); the owner decided questions 215-230 as recommended on 21 October 2026 (§0.3). Part A changed no source file, no data and no build:**
 `check:baseline` passes on the unchanged build (`austerlitz-command-map.html`, 2,200,058 bytes, md5 `45f8f662ef828d2e1ab593a3b87b6ff7`,
 SHA-256 `bca73918aed88c62c7b564e6f9531b20b51eedb54554d272dfeb27b45eb10794`) and `check:data` finds 131 of 131 declarations identical
 to `archive/step5c-45f8f662.html`. Written against `main` at `7437dcc` (PR #58 merged); line numbers refer to that commit; the code is the
-source of truth. The next owner decision is 215 (§7).
+source of truth. The next owner decision is 231.
 
 Scope: roadmap step 6 (`docs/ROADMAP.md`: "Later, each its own decision: a phone layout; a measured pass on real hardware; figure level of
 detail"; findings A-4 and P-1 of `docs/FINAL_AUDIT.md`; decisions 137, 138, 139). Part A specifies all three items and builds none of them.
@@ -98,6 +98,30 @@ Their outputs, screenshots and a README are in `docs/step6-evidence/`.
   million (49.7%, both passes); the rest of the difference is the trees (0.81 million with their shadows), the scrub (0.20 million) and the
   buildings, which the 1x frame does not draw either. The finding's direction stands (the figures are the largest single item), its number does
   not; recorded for the owner (question 230), the audit not edited.
+
+### 0.3 Owner decisions 215-230 (the answers to §7)
+
+After #59 was merged the owner wrote (21 October 2026): "Go with your recommendations for all." Each question of §7 is therefore decided as
+recommended; the options and costs stay in §7 as written. Nothing is built by these decisions alone: item 1 waits on the owner's runs.
+
+| # | question | decision | when |
+|---|---|---|---|
+| 215 | the order of the items | (a): 1, then 2 or its retirement by §3.4's rule, then 3; item 3's Part B may begin while item 1 waits on the devices | now |
+| 216 | the route's departures | (a): the played segments 12 s at 4x and at ½x from 08:30; frame intervals, not the developer readout | as built |
+| 217 | the hosted copy | (a) or (b), the owner's choice: GitHub Pages (the whole repository public by address) or another static host with only the build and `tools/step6/`; taken down after the runs if wished | the owner, before item 1 |
+| 218 | the rule that decides 138 | (a): as stated in §3.4 | at item 1's analysis |
+| 219 | if 138 is built, which form | (a), then (b) if needed: no figure shadows and culling first, the laptop measured again; then thinning for blocks whose men are under 8 px across (a man's sphere) only if a view still drops | if 138 is built |
+| 220 | frames drop but not the figures' | (b): a performance step on the lever the diagnostics name, its own Part A measuring it on the laptop first | if rule 4 applies |
+| 221 | culling the blocks | (b): only as part of a built 138, its first step with (a) of 219 | if 138 is built |
+| 222 | the phone's own drawing | (c): decided after the phone's runs | after P1, P2 |
+| 223 | the phone layout's parts | (a): the compact timeline, the sheets (portrait only) and the controls behind a Menu, with the presets, Follow and the opening framed into the area they free | item 3 |
+| 224 | the phases on a phone | (a): off the axis as presses (a list in the dispatch sheet, or a stepper beside Play); the axis keeps their ticks and stays a slider; the current phase named in the caption and the list (decision 53's proportional axis kept; its "current phase always whole" on the track met by the caption, as stated) | item 3 |
+| 225 | controls off the phone's timeline | (a): the ten-minute steps and the Eyes button leave it ("Whose eyes?" stays in the Command tab), the four speeds one button; the slider's keys unchanged | item 3 |
+| 226 | a phone held landscape | (a): today's layout kept there, its overlaps and Watch's control row fixed, with its own case | item 3 |
+| 227 | the new words | (a): proposed in item 3's Part B, decided by the owner, in `LABELS` | item 3 |
+| 228 | the checks for phones | (a): eight phone cases with a device (density 3, touch, a mobile user agent), the phone states in `check:contrast`, the four zero-limits (24 px targets but the markers, no cut text but a named list, no overlaps, every feature one control away) and the framing floor, each case's baselines and limits measured once on the build that adds the layout and set on the owner's word; 44 px recorded, not held | item 3 |
+| 229 | Safari's own viewport | (a): the phone cases at the height the iPhone's report gives, once P1 is in | item 3, after P1 |
+| 230 | P-1's number | (a): a records-only note in `docs/FINAL_AUDIT.md` under P-1, pointing to this document, in item 1's records commit | item 1's records commit |
 
 ## 2. Item 1: measuring on real hardware (question 139)
 
@@ -630,7 +654,7 @@ session of the kind each roadmap step took):
 - **What a level of detail looks like in motion.** The probe compares still frames; the switch between forms as the camera moves (popping)
   is for a Part B to measure.
 
-## 7. Questions for the owner (from 215)
+## 7. Questions for the owner (from 215; decided as recommended, §0.3)
 
 Each with options, a recommendation and what it costs. Nothing is built until they are answered.
 
