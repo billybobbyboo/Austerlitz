@@ -407,6 +407,12 @@ Per state:
   rendered (`measure.js` `textContrast` on a screenshot at CSS scale, as the harness reads them). The interface measure is the one that does
   not depend on the device's density (it reads computed styles).
 
+**The measures' limits** (the review's, recorded): "cut" counts the compact prototype's phase labels, which it hides by `clip` (they are
+meant to be unseen, and are not cut text), and text scrolled out of a sheet's or panel's box (it can be scrolled to); "not on screen" is per
+feature, so a feature with one control on the screen passes though another of its controls is off it (the speeds held landscape, question
+226); the relief control and the dwell's toggle (both in the Layers panel) are not in the list. The map labels' contrast is read only where
+the map layer has labels in the view: in the portrait states after "Explore" it has none (§4.4), so its "none below AA" says nothing there.
+
 **A false start, recorded.** The first run lost taps: the probe gave each tap 5 s, and Playwright taps only once the element has stood still
 for two animation frames, which under software WebGL at density 3 take seconds each. Its Panels, Layers, Paper map and (at 390 px and wider)
 Watch states were the "explore" state over again. The probe now waits up to 90 s, records a tap that still fails, and checks each state; the
