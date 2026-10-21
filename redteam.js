@@ -354,7 +354,12 @@ const KNOWN_WARN=[
        "dated departure (question 180 (b)), which had made Bagration's last leg a fast one at 16:30, and c_gren@7's dated arrival (question "+
        "181 (b)), whose derived arrival makes the grenadiers' next leg slower: the opposite effect (1.29 from bag@8 alone); the cavalry mean 0.82 until question 202 (b) dated Bourcier's march from Raigern at 05:00, one of the cavalry's undated creeping legs (decision 45) no longer from 04:00",
    see:"docs/STAGE2_SPEC.md §M.12 (:1303) and §M.13 (:1407), on the creeping moves of §M.10; CHANGELOG.md, the chronology data task and the Stage 2C "+
-       "precondition (the march rates), roadmap step 2 (H-2, Drouet's departure), roadmap step 4 (K4, the I Column's departure) and roadmap step 4b (questions 176 and 180, the II and III Columns' departures and bag@8's)"}];
+       "precondition (the march rates), roadmap step 2 (H-2, Drouet's departure), roadmap step 4 (K4, the I Column's departure) and roadmap step 4b (questions 176 and 180, the II and III Columns' departures and bag@8's)"},
+  {w:"command: constantine declares 10500 but its children sum to 7330",
+   why:"owner decision 213 (b), 21 October 2026: the corps keeps Duffy's heading (10,530, as 10,500) and its two drawn formations his rows "+
+       "without the reserve's grenadier regiment (4,430 and 2,900); the gap is that regiment's 2,300 'in reserve' (not drawn), the pioneers' 100 "+
+       "and 800 in none of his rows (1977, pp. 184-185, register entry S5.7); the same warning as test.js's at its own 25% (test.js KNOWN_WARN)",
+   see:"CHANGELOG.md, decision 213 (b); docs/step5-evidence/questions.md, question 213"}];
 { const uw=[...new Set(W_)];
   uw.filter(w=>!KNOWN_WARN.some(k=>k.w===w)).forEach(w=>fail("warning",`not acknowledged in KNOWN_WARN: ${w}`));
   KNOWN_WARN.filter(k=>!uw.includes(k.w)).forEach(k=>fail("warning",`acknowledged but no longer raised (remove it from KNOWN_WARN): ${k.w}`));

@@ -38,6 +38,12 @@ DROP_LIMIT["selected-formation"]=4; DROP_LIMIT["narrow-1024"]=6;
    question 177 (b), Friant retimed to Davout's hours, the retaken village's event label at 09:30 takes the room of Bourcier's name
    (n:bourcier), which stays reachable by hover and keyboard; measured on the full check:visual (CHANGELOG.md, step 4b) */
 DROP_LIMIT["narrow-1024"]=7;
+/* owner decision 214 (the owner's answer of 21 October 2026, "Go with (a). Raise the limit to 8."): narrow-1024's limit 7 -> 8 (this line
+   replaces the 7 above, kept as decision 199's record), for one cause only: with decision 213 (b) the Russian Guard infantry's strength,
+   4,430 from Duffy's page (was 6,730), lowers its counter's rank in the map layer (rank(f, strength)), and the place name t:austerlitz finds
+   no room there; the low Pratzen view drops one fewer (5 -> 4, the same name drawn); every other case unchanged; measured on the full
+   check:visual (CHANGELOG.md, decision 213 (b)) */
+DROP_LIMIT["narrow-1024"]=8;
 /* Stage 5E (docs/STAGE5_SPEC.md section D.6): the eye-level views are new; their limits are what the 5E build drops there (place names on
    the horizon: Goldbach, Telnitz, Sokolnitz, Satschan, Kobelnitz, and at 1x Menitz), never raised (as decision 62 set the 3D framing's) */
 DROP_LIMIT["eye-zuran"]=5; DROP_LIMIT["eye-zuran-1x"]=6;

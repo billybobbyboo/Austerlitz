@@ -89,6 +89,7 @@ var APPEARANCE_SOURCES = {
   stutterheim1806fr: {au:"K. von Stutterheim", ti:"La bataille d'Austerlitz, par un militaire témoin de la journée du 2 décembre 1805", pub:"Hambourg", d:1806, kind:"primary-text", url:"https://gallica.bnf.fr/ark:/12148/bpt6k6497274t"},
   stutterheim1806de: {au:"K. von Stutterheim", ti:"Die Schlacht bey Austerlitz, am 2. December 1805. Von einem Officier und Augenzeugen. Aus dem Französischen", pub:"Hamburg", d:1806, kind:"primary-text", url:"https://archive.org/details/11344011bsb", ia:"11344011bsb"},
   materialien1806: {au:"anonymous ('gesammelt von einem Militär')", ti:"Materialien zu der Geschichte der Schlacht bei Austerlitz", pub:"Weimar, Landes-Industrie-Comptoir", d:1806, kind:"primary-text", url:"https://archive.org/details/10807964bsb", ia:"10807964bsb"},
+  duffy1977: {au:"C. Duffy", ti:"Austerlitz 1805 (appendix: order of battle, pp. 184-185)", pub:"London, Seeley Service", d:1977, kind:"specialist", url:"https://archive.org/details/austerlitz18050000duff", ia:"austerlitz18050000duff"},
   schoenhals1873: {au:"K. von Schönhals", ti:"Der Krieg 1805 in Deutschland (Beilage: Ordre de Bataille des verbündeten Heeres in der Schlacht von Austerlitz, pp. 177-178)", pub:"Wien", d:1873, kind:"specialist", url:"https://archive.org/details/derkriegindeuts00schgoog", ia:"derkriegindeuts00schgoog"},
   mikhailovsky1846: {au:"A. I. Mikhailovsky-Danilevsky (tr. L. Narischkine)", ti:"Relation de la campagne de 1805 (Austerlitz)", pub:"Paris, Dumaine", d:1846, kind:"specialist", url:"https://archive.org/details/relationdelacam00dangoog", ia:"relationdelacam00dangoog"},
   mikhailovsky1844: {au:"А. И. Михайловский-Данилевский", ti:"Описание первой войны Императора Александра съ Наполеономъ въ 1805 году", pub:"Санкт-Петербург", d:1844, kind:"specialist", url:"https://archive.org/details/1805-.-bmk-brz"},
@@ -646,11 +647,10 @@ var COMPOSITION = {
     parts:[
       {dress:"ru_jager", n:6, unit:"bn", v:"6. Jäger-Regiment ... 3 — — 800; 5. Jäger-Regiment ... 3 — — 1300", src:"schoenhals1873", at:"p. 178", gr:"B", lab:"fact", q:"6. Jäger-Regiment"},
       {dress:"ru_musk", n:9, unit:"bn", v:"Archangelokrodsky ... 3; Stary Ingermandlansky ... 3; Pskowsky ... 3", src:"schoenhals1873", at:"p. 178", gr:"B", lab:"fact", q:"Pskowsky"}]},
-  rg_inf: {note:"the Life Grenadier Regiment, an army grenadier regiment, marched with the Guard (mikhailovsky1846, p. 226: 'les grenadiers du corps')",
+  rg_inf: {note:"the Life Grenadier Regiment, an army grenadier regiment, marched with the Guard (mikhailovsky1846, p. 226: 'les grenadiers du corps'); not drawn in this formation: 'in reserve' in duffy1977 (p. 185), in Maliutin's separate column in sokolov2006 (pp. 199-200); schoenhals1873 (p. 178) lists its three battalions, 2,300",
     parts:[
       {dress:"ru_guard_inf", n:6, unit:"bn", v:"Semunorvsky 2; Preobrajschensky 2; Ismaelovsky 2", src:"schoenhals1873", at:"p. 178", gr:"B", lab:"fact", q:"Preobrajschensky"},
-      {dress:"ru_guard_jager", n:1, unit:"bn", v:"Leib-Jäger 1 — — 530", src:"schoenhals1873", at:"p. 178", gr:"B", lab:"fact", q:"Leib-Jäger"},
-      {dress:"ru_gren", n:3, unit:"bn", v:"Leib-Grenadier 3 2300", src:"schoenhals1873", at:"p. 178", gr:"B", lab:"fact", q:"Leib-Grenadier"}]},
+      {dress:"ru_guard_jager", n:1, unit:"bn", v:"Leib-Jäger 1 — — 530", src:"schoenhals1873", at:"p. 178", gr:"B", lab:"fact", q:"Leib-Jäger"}]},
   rg_cav: {
     parts:[
       {dress:"ru_chevalier", n:5, unit:"sqn", v:"Chevaliers-Garde — — 5 800", src:"schoenhals1873", at:"p. 178", gr:"B", lab:"fact", q:"Chevaliers-Garde"},

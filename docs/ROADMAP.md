@@ -277,12 +277,17 @@ the owner's word. Part C (PR #55): 203 (b) with (c), 204 (a), decided 18 October
 | 210 | the Guard infantry's commander | (c): "Not established on the day", the note naming both | PR #57 |
 | 211 | the Guard infantry's 6,730 | (b): Duffy read on the text layer (S5.7), Smith not readable (S5.8); nothing changed; question 213 | PR #57 |
 | 212 | the context-loss case's bound | (b): a clock step after the restore, `CTX_DELETES` 248 | PR #57 |
+| 213 | the Russian Guard's strengths after Duffy's appendix | (b), 21 October 2026, on the owner's photograph of pp. 184-185: `rg_inf` 4,430, `rg_cav` 2,900 | PR #58 |
+| 214 | `narrow-1024`'s drop limit after 213 (b) (the place name "Austerlitz" dropped there) | (a), 7 to 8 | PR #58 |
 
 ### What PR #57 hands on
 
-- **Owner question 213** (`docs/step5-evidence/questions.md`): the Russian Guard's strengths after Duffy's appendix, read on the text layer only
-  (the 6,730 would hold a reserve grenadier regiment, by the reader's pairing; `rg_cav`'s 3,700 consistent with his total if a horse row was
-  lost). Recommended: read Duffy pp. 184-185 on the page first. The next owner decision is 214.
+- **Owner question 213** (`docs/step5-evidence/questions.md`): the Russian Guard's strengths after Duffy's appendix. Decided (b) on 21 October
+  2026 after the owner photographed pp. 184-185, and applied in its own PR: `rg_inf` 4,430 (the Life Grenadiers "in reserve" not drawn),
+  `rg_cav` 2,900, the corps' note from Duffy's page (`CHANGELOG.md`); with it decision 214, `narrow-1024`'s drop limit 8. The next owner
+  decision is 215.
+- **From decision 213 (b):** Smith (1998) is still not read (S5.8); what Duffy's 800 are is not established; the corps-versus-formations
+  warning is acknowledged (`KNOWN_WARN`) while the Life Grenadiers have no formation of their own.
 - **Spellings not in decision 209's six:** two French designations a visitor sees, `FORMATIONS.c_cav.desig` "Reserve de Cavalerie" (Réserve)
   and the French Guard cavalry's staff line "Chasseurs a Cheval" (à); `world.js`'s internal road key "Brunn-Olmutz highway" (never shown; read
   by `tools/stale-compare.js`, so left); the Dress notes' internal words (`appearance.js`); `CONF_TEXT.C`'s em dash (guarded). Each for a later
