@@ -3,8 +3,9 @@
    prototype layout injected by this probe (--layout <id> from tools/step6/phone-layouts.js: CSS and JS put into the live page after it
    started; never in the source). Chromium with touch, the device's pixel ratio and a phone's user agent (so the build takes its lowTier path
    as on a phone; Safari itself is not here: the harness is Chromium only, docs/FINAL_AUDIT.md section 5).
-   Each device on fresh pages, the states reached by real taps where a control exists (page.tap: touch events, 700 ms apart: taps closer
-   than that were found to be lost here), else through the app's own functions (named in each state's note):
+   Each device on fresh pages, the states reached by real taps where a control exists (page.tap: touch events; each state checked after its
+   tap, and reached by the app's own function only if the tap did not take, which the state's note then says), else through the app's own
+   functions (named in each state's note):
      first     the first screen, untouched (04:00, the first-run card open)
      explore   after a tap on "Explore on my own" (the card closed where it stands), the clock at 09:30
      panels    then a tap on Panels: the rail and its Now tab
@@ -133,17 +134,31 @@ async function settle(page){ await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(60)
 /* a tap on a control; under the menu prototype a tool hidden behind the Menu button is reached through it, as a visitor would */
 async function tapIf(page,sel){ let h=await page.$(sel);
   if(h&&!(await h.isVisible())){ const m=await page.$("#ph-menu"); if(m&&await m.isVisible()){ await m.tap(); await page.waitForTimeout(700); h=await page.$(sel); } }
-  if(!h||!(await h.isVisible())) return false; await h.tap({timeout:5000}).catch(()=>{}); await page.waitForTimeout(700); return true; }
+  if(!h||!(await h.isVisible())) return false;
+  /* Playwright taps once the element has stood still for two animation frames: here a frame can take seconds, so the wait is long, and a tap
+     that still fails is recorded, not swallowed (a first version gave it 5 s and lost taps silently) */
+  try{ await h.tap({timeout:90000}); }catch(e){ (page._tapErrors=page._tapErrors||[]).push(sel+": "+e.message.split("\n")[0]); return false; }
+  await page.waitForTimeout(700); return true; }
+/* a tap that must reach a state: the tap, then the state checked; once more if it did not take (under software WebGL at density 3 a frame
+   holds the main thread for seconds); then the app's own function, the way used recorded */
+async function reach(page,sel,ok,fallback,label){
+  for(let i=0;i<2;i++){ const t=await tapIf(page,sel); if(t&&await page.evaluate(ok)) return "tap: "+label+(i?" (the second tap)":""); }
+  if(await page.evaluate(ok)) return "tap: "+label;
+  await page.evaluate(fallback); await page.waitForTimeout(700);
+  return label+": "+(await page.evaluate(ok)?"the tap did not take; reached by the app's own function":"NOT REACHED");
+}
 /* each state from a fresh page, so that one state's taps never carry into the next */
 const REACH={
   first: async p=>"untouched",
-  explore: async p=>{ await p.tap("#fr-close"); await p.waitForTimeout(700); await p.evaluate(()=>{ setClock(570,{instant:true,force:true}); }); return "tap: Explore on my own; setClock(09:30)"; },
-  panels: async p=>{ await REACH.explore(p); const t=await tapIf(p,"#panelsbtn"); return "explore, then "+(t?"tap: Panels":"Panels not shown"); },
+  explore: async p=>{ const h=await reach(p,"#fr-close",()=>!firstRunOpen,()=>closeFirst(null),"Explore on my own");
+    await p.evaluate(()=>{ setClock(570,{instant:true,force:true}); }); return h+"; setClock(09:30)"; },
+  panels: async p=>"explore, then "+(await REACH.explore(p),await reach(p,"#panelsbtn",()=>!document.body.classList.contains("rail-hidden"),()=>document.getElementById("panelsbtn").click(),"Panels")),
   dossier: async p=>{ await REACH.explore(p); await p.evaluate(()=>{ select("f","sthilaire"); }); await p.waitForTimeout(700); return "explore, then select('f','sthilaire') (a tap on its counter)"; },
-  watch: async p=>{ await REACH.explore(p); const t=await tapIf(p,".vm-btn[data-vm=watch]"); return "explore, then "+(t?"tap: Watch":"Watch not shown"); },
-  layers: async p=>{ await REACH.explore(p); const t=await tapIf(p,"#layersbtn"); return "explore, then "+(t?"tap: Layers":"Layers not shown"); },
-  paper: async p=>{ await REACH.layers(p); const t=await tapIf(p,".mode-btn[data-m=staff]"); await tapIf(p,"#layerclose"); return "layers, then "+(t?"tap: Paper map, tap: close":"Paper map not shown"); },
-  tour: async p=>{ await REACH.explore(p); const t=await tapIf(p,"#tourbtn"); return "explore, then "+(t?"tap: Guided tour":"Guided tour not shown"); }
+  watch: async p=>"explore, then "+(await REACH.explore(p),await reach(p,".vm-btn[data-vm=watch]",()=>presentation==="watch",()=>setPresentation("watch"),"Watch")),
+  layers: async p=>"explore, then "+(await REACH.explore(p),await reach(p,"#layersbtn",()=>!document.getElementById("layerpop").hidden,()=>document.getElementById("layersbtn").click(),"Layers")),
+  paper: async p=>{ await REACH.layers(p); const h=await reach(p,".mode-btn[data-m=staff]",()=>mode==="staff",()=>setMode("staff"),"Paper map");
+    await tapIf(p,"#layerclose"); return "layers, then "+h+", then tap: close"; },
+  tour: async p=>"explore, then "+(await REACH.explore(p),await reach(p,"#tourbtn",()=>tourStep>=0,()=>startTour(),"Guided tour"))
 };
 (async()=>{
   const lay=LAYOUT==="current"?null:LAYOUTS[LAYOUT]; if(LAYOUT!=="current"&&!lay) throw new Error("no layout "+LAYOUT);
@@ -171,7 +186,7 @@ const REACH={
         covered:T.filter(t=>t.covered).map(t=>t.el+" '"+t.name+"' under "+t.covered), outside:T.filter(t=>t.outside).map(t=>t.el+" '"+t.name+"'"+(t.offscreen?" (wholly off)":"")),
         cut:cut.filter(c=>c.why!=="wholly off the screen"), offScreenText:cut.filter(c=>c.why==="wholly off the screen").length, unreachable:Object.keys(reach).filter(k=>reach[k]!=="ok").map(k=>k+": "+reach[k]),
         contrast:{texts:tc.texts, belowAA:tc.belowAA.length, belowAAList:tc.belowAA.slice(0,8), min:tc.min, belowFloor:small.length, belowFloorList:small.slice(0,8)},
-        console:page._console.slice(), errors:page._errors.slice()};
+        console:page._console.slice(), errors:page._errors.slice(), tapErrors:(page._tapErrors||[]).slice()};
       D.states[st]=S;
       console.log(LAYOUT,d.key,st.padEnd(8),"unobstr",S.unobstructed,"tl",S.timeline,"cut",S.cut.length,"2.5.8 fail",S.fail2_5_8.length,"(+"+S.evmarksUnder24+" event markers)","<44",S.under44+"/"+S.targets,
         "covered",S.covered.length,"outside",S.outside.length,"overlaps",ov.map(o=>o.a+"/"+o.b).join(",")||"-","unreachable",S.unreachable.length,"AA fail",S.contrast.belowAA,"|",how);

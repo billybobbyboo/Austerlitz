@@ -1,8 +1,9 @@
 /* Roadmap step 6 Part A (docs/STEP6_SPEC.md section 4.3): phone layouts prototyped for measurement only. Each is CSS and a little JS that
    tools/step6/phone-probe.js injects into the live page after it has started; nothing here is in the source or the build, and nothing is a
    design decided: these are the shapes the owner's questions ask about, built far enough to be measured (sizes, cuts, targets, contrast).
-   Every rule applies only on a phone-sized screen (max-width 720 px, or max-height 430 px held landscape), so the layouts the harness holds
-   above that are untouched. The words are the build's own: no text is written or rewritten here; a control the prototype adds takes an
+   Every rule applies only on a phone-sized screen (max-width 720 px, or max-height 430 px held landscape; the compact timeline only below 720
+   px wide), so the layouts the harness holds above that are untouched. Each default rule stands before its media block (a first version had
+   it after, and the added buttons never showed: its compact run is superseded). The words are the build's own: no text is written or rewritten here; a control the prototype adds takes an
    existing control's words (the speed button shows the speed the build shows); the two new names, "Menu" and the grip's "Open the card", are
    placeholders of the prototype, not words decided (LABELS is the owner's).
    - compact: the timeline as two rows: the transport (event back, Play, event forward, Follow), the clock, the speed as one button that
@@ -15,7 +16,10 @@
    - menu: sheets, and the tools and the presentation switch folded behind one "Menu" button at the top right (the Watch presentation keeps
      its switch in the timeline, as the build does). */
 const PHONE="@media (max-width:720px), (max-height:430px)";
-const COMPACT=`${PHONE}{
+/* the compact timeline only where the screen is narrow: held landscape (844 x 390) the build's own timeline is one row already (90.5 px) */
+const NARROW="@media (max-width:720px)";
+const COMPACT=`#ph-speed{display:none}
+${NARROW}{
   .tb-top{flex-wrap:wrap;row-gap:2px;column-gap:6px;padding:4px 8px 0}
   .tb-ctrl{gap:4px;flex:0 0 auto;order:1}
   #prev,#next{display:none}
@@ -33,11 +37,11 @@ const COMPACT=`${PHONE}{
   #phases .step{height:24px}
   #phases .step .step-l{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   .timerail,.evmarks{top:24px}
-}
-#ph-speed{display:none}`;
+}`;
 /* the sheets: the dispatch card collapsed to its head (a press on its grip opens it to 60% of the screen), the dossier and the rail at most
    55% and 60%, the first-run card across the foot; each scrolls inside */
-const SHEETS=`${PHONE}{
+const SHEETS=`#ph-grip{display:none}
+${PHONE}{
   .dispatch,body:not(.rail-hidden) .dispatch{left:0!important;right:0!important;width:auto!important;bottom:var(--tb)!important;max-height:22vh!important;
     overflow:hidden!important;border-left:0;border-top:2px solid var(--accent);padding:22px 14px 8px}
   body.ph-sheet-open .dispatch{max-height:60vh!important;overflow-y:auto!important}
@@ -49,9 +53,9 @@ const SHEETS=`${PHONE}{
     padding:14px 16px 12px;border-left:0;border-right:0}
   .rail{right:0;width:auto;top:auto;bottom:var(--tb);max-height:60vh;border-right:0;border-top:1px solid var(--line);transform:translateY(0)}
   body.rail-hidden .rail{transform:translateY(100%)}
-}
-#ph-grip{display:none}`;
-const MENU=`${PHONE}{
+}`;
+const MENU=`#ph-menu{display:none}
+${PHONE}{
   #ph-menu{display:inline-block;position:fixed;top:10px;right:10px;z-index:43;min-width:44px;min-height:44px}
   .tools{top:62px;right:10px;left:10px;align-items:stretch;background:rgba(var(--scrim-rgb),.96);border:1px solid var(--line-2);padding:10px;display:none}
   body.ph-menu-open .tools{display:flex}
@@ -60,8 +64,7 @@ const MENU=`${PHONE}{
   body:not(.pm-watch) #viewmode{display:none}
   body.ph-menu-open:not(.pm-watch) #viewmode{display:flex;top:auto;left:10px;right:10px;transform:none;position:fixed;bottom:calc(var(--tb) + 10px)}
   body.ph-menu-open .vm-btn{min-height:44px;flex:1 1 0}
-}
-#ph-menu{display:none}`;
+}`;
 /* the speed as one button: each press the next of the build's own four speed buttons (their words and their handlers) */
 function speedJS(){
   if(document.getElementById("ph-speed")) return;
