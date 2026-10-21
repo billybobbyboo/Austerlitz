@@ -83,24 +83,30 @@
   var FEAT={play:["#play"], clock:["#timerail"], phases:["#phases .step","#phlist .ph-item"], presentation:[".vm-btn"], layers:["#layersbtn"], paperMap:[".mode-btn[data-m=staff]","#layersbtn"],
     panels:["#panelsbtn","#tab-now"], follow:["#follow"], vantages:[".van-btn"], help:["#helpbtn"], sources:["#srcbtn"], tour:["#tourbtn","#fr-tour"], events:["#evmarks button, #evmarks [role=button]"],
     eyes:["#eyesbtn",".cmd-btn"], speeds:[".spd-btn","#speedbtn"]};
-  /* [the container that hides a control, the control that shows it, when]: the Menu shows the tools; the sheet's grip its phases; the Panels the
-     rail; "Explore on my own" what the first card stands down (the dispatch below 720 px, the tools held landscape); the Layers panel's close
-     the tools it stands in place of held landscape; Study what Watch does not show (decision 60: Watch is the battlefield and the timeline) */
-  var B=function(c){ return document.body.classList.contains(c); };
-  var OPENER=[["#tools","#menubtn"],["#phlist","#dgrip"],[".rail","#panelsbtn"],[".dispatch,#tools","#fr-close",function(){ return B("firstrun-on"); }],
-    ["#tools","#layerclose",function(){ return !document.getElementById("layerpop").hidden; }],
-    ["#tools,#menubtn,.rail,.dispatch",'.vm-btn[data-vm="study"]',function(){ return B("pm-watch"); }]];
-  /* the shortest chain of controls that shows e: each a press, the first on the screen and on top */
-  function chain(e,n){ if(n>3) return null; var best=null;
-    OPENER.forEach(function(q){ if(q[2]&&!q[2]()) return; if(!(e.closest&&e.closest(q[0]))||(e.matches&&e.matches(q[1]))) return;
-      var b=document.querySelector(q[1]); if(!b) return; var p=null;
-      if(vis(b)&&!b.closest("[inert]")&&onTop(b)==="ok") p=[q[1]]; else { var r=chain(b,n+1); if(r) p=r.concat([q[1]]); }
-      if(p&&(!best||p.length<best.length)) best=p; });
-    return best; }
+  /* [the container that hides a control, the control that shows it, when]: the Menu shows the tools (below 720 px); the sheet's grip its phases;
+     the Panels the rail; "Explore on my own" what the first card stands down (the dispatch below 720 px, the tools held landscape); the dossier's
+     close the dispatch sheet it stands in place of; the Layers panel's close the dispatch (below 720 px) and the tools (held landscape) it stands
+     in place of; Study what Watch does not show (decision 60: Watch is the battlefield and the timeline): the Menu and the dispatch below 720 px,
+     the tools and the dispatch above */
+  var B=function(c){ return document.body.classList.contains(c); }, PH=function(){ return typeof PHONE!=="undefined"&&PHONE===true; };
+  var OPENER=[["#tools","#menubtn",PH],["#phlist","#dgrip"],[".rail","#panelsbtn"],[".dispatch,#tools","#fr-close",function(){ return B("firstrun-on"); }],
+    [".dispatch","#drawer-close",function(){ return B("drawer-open"); }],
+    [".dispatch,#tools","#layerclose",function(){ return !document.getElementById("layerpop").hidden; }],
+    ["#menubtn,.dispatch",'.vm-btn[data-vm="study"]',function(){ return B("pm-watch")&&PH(); }],
+    ["#tools,.dispatch",'.vm-btn[data-vm="study"]',function(){ return B("pm-watch")&&!PH(); }]];
   function onTop(e){ var r=e.getBoundingClientRect(), on=0, top=null, ok=false;
     [[.5,.5],[.2,.2],[.8,.2],[.2,.8],[.8,.8],[.5,.2],[.5,.8],[.2,.5],[.8,.5]].forEach(function(q){ if(ok) return; var x=r.left+q[0]*r.width, y=r.top+q[1]*r.height;
       if(x<0||y<0||x>=innerWidth||y>=innerHeight) return; on++; var t=document.elementFromPoint(x,y); if(t&&(t===e||e.contains(t))) ok=true; else if(!top) top=t; });
     return ok?"ok":on?"covered by "+desc(top):"off the screen"; }
+  /* the shortest chain of controls that shows e: each a press, the first on the screen and on top; at each step only the innermost container
+     that hides e counts (the phase list needs its grip even after the card that hides the whole dispatch is closed) */
+  function chain(e,n){ if(n>3) return null; var best=null, C=[];
+    OPENER.forEach(function(q){ if(q[2]&&!q[2]()) return; var c=e.closest&&e.closest(q[0]); if(!c||(e.matches&&e.matches(q[1]))) return; C.push([q,c]); });
+    var inner=C.filter(function(x){ return !C.some(function(y){ return y[1]!==x[1]&&x[1].contains(y[1]); }); });
+    inner.forEach(function(x){ var q=x[0], b=document.querySelector(q[1]); if(!b) return; var p=null;
+      if(vis(b)&&!b.closest("[inert]")&&onTop(b)==="ok") p=[q[1]]; else { var r=chain(b,n+1); if(r) p=r.concat([q[1]]); }
+      if(p&&(!best||p.length<best.length)) best=p; });
+    return best; }
   A.reach=function(){ var o={}; Object.keys(FEAT).forEach(function(k){ var best=null, via=null, depth=null;
       FEAT[k].forEach(function(s){ document.querySelectorAll(s).forEach(function(e){ if(best==="ok") return; if(!vis(e)||e.closest("[inert]")){ best=best||"hidden"; return; }
         var w=onTop(e); if(w==="ok") best="ok"; else if(!best||best==="hidden") best=w; }); });

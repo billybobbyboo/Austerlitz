@@ -782,6 +782,7 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   .ph-item{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:0 6px;background:none;border:0;
     border-bottom:1px solid rgba(var(--line-rgb),.08);color:var(--text-muted);font-size:var(--t-ui);text-align:left;cursor:pointer}
   .ph-item b{flex:0 0 112px;font-weight:400;font-variant-numeric:tabular-nums}
+  .ph-act{margin:10px 0 2px;font-size:var(--t-small);color:var(--text-hi);letter-spacing:.05em}
   .ph-item[aria-current="true"]{color:var(--text-hi);box-shadow:inset 2px 0 0 var(--accent)}
   body.drawer-open .dispatch,body:has(#layerpop:not([hidden])) .dispatch{display:none}
   /* the dossier and the rail as sheets at the foot; the rail gives way to an open dossier (and is inert under it, app.js syncInert) */

@@ -494,7 +494,7 @@ async function interact(page,it,vp){
         await first.keyboard.press("Escape"); await first.waitForTimeout(300);
         await first.click("#dgrip"); await first.waitForTimeout(300); PH.sheet=await st();
         await first.evaluate(()=>{ const d=document.querySelector(".dispatch"), b=document.querySelectorAll("#phlist .ph-item")[3]; if(d&&b) d.scrollTop=b.offsetTop-40; });
-        await first.click("#phlist .ph-item:nth-child(4)"); await settle(first); PH.phase=await st();
+        await first.locator("#phlist .ph-item").nth(3).click(); await settle(first); PH.phase=await st();
         await first.click("#dgrip"); await first.waitForTimeout(300); PH.sheetClosed=await st();
         PH.speeds=[]; for(let i=0;i<4;i++){ await first.click("#speedbtn"); PH.speeds.push(await first.evaluate(()=>({speed:speed,name:document.getElementById("speedbtn").getAttribute("aria-label")}))); }
         await first.evaluate(()=>{ select("f","sthilaire"); }); await first.waitForTimeout(400); PH.dossier=await st();

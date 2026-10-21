@@ -113,6 +113,14 @@ DROP_LIMIT["plans-overview"]=12;   /* was 11; loosened (decision 141) */
    limits unchanged (question 145 not needed). Each value: was, is and why, in CHANGELOG.md */
 UNOBSTRUCTED["narrow-390"]=[0.438,0.507];   /* decision 146 (roadmap step 2, the owner's answer (a)): narrow-390 re-measured once under decision 127 (b)'s words; was [0.46,0.507], is [0.438,0.507] */
 UNOBSTRUCTED["narrow-1024"]=[0.533,0.628];   /* decision 164 (roadmap step 3, the owner's answer of 11 October 2026): narrow-1024 re-measured once for the Panels button, which widens the tools' box by 37 px (measured 0.5334 on its build, 0.5364 before); was [0.535,0.628], is [0.533,0.628]; its drop limit kept */
+/* roadmap step 6 item 3 Part B (decision 228 (a)): the phone cases' baselines and drop limits, what the build that adds the phone layout measures
+   there (rounded down to 0.1 point; the drops as measured), PROPOSED to the owner (question 232); a phone case has no 1280 x 720 measure (its
+   device is a phone's). narrow-390 is not a phone case and keeps its limits (decision 146): on this build it drops 9 (limit 7), question 233 */
+UNOBSTRUCTED["phone-390-first"]=[0.591,null]; UNOBSTRUCTED["phone-390-explore"]=[0.652,null]; UNOBSTRUCTED["phone-390-dossier"]=[0.315,null];
+UNOBSTRUCTED["phone-390-watch"]=[0.817,null]; UNOBSTRUCTED["phone-390-layers"]=[0.310,null]; UNOBSTRUCTED["phone-360-explore"]=[0.625,null];
+UNOBSTRUCTED["phone-430-explore"]=[0.685,null]; UNOBSTRUCTED["phone-844x390-explore"]=[0.690,null];
+DROP_LIMIT["phone-390-first"]=9; DROP_LIMIT["phone-390-explore"]=2; DROP_LIMIT["phone-390-dossier"]=1; DROP_LIMIT["phone-390-watch"]=2;
+DROP_LIMIT["phone-390-layers"]=0; DROP_LIMIT["phone-360-explore"]=3; DROP_LIMIT["phone-430-explore"]=2; DROP_LIMIT["phone-844x390-explore"]=3;
 const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harness machine */
 /* Stage 2E (section J, 2E): every paper-map view is a true north-up plan: GEOREF.NORTH within 0.5 degrees of up; screen pixels
    per true km at four places equal to 1% (on the 2D build's tilted staff map they differ by 6.0% and north is 17.8 degrees
@@ -146,6 +154,32 @@ module.exports.TIMELINE_MAX=TIMELINE_MAX; module.exports.TIMELINE_RECORDED=TIMEL
    167; no cut text but cutAllow's; no two panels overlapping; every feature one control away but reachAllow's) hold in every phone case; 44 px
    is recorded, not held */
 const PHONE={timeline:{}, framing:{}, cutAllow:{}, reachAllow:{}};
+/* measured on the build that adds the layout (docs/STEP6_SPEC.md section 9.3; the harness's report of its phone cases), PROPOSED (question 232) */
+["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-layers","phone-360-explore","phone-430-explore"].forEach(n=>{ PHONE.timeline[n]=121; });
+PHONE.timeline["phone-390-watch"]=155;   /* Watch: the presentation switch in the control row (decision 60), a third row */
+PHONE.timeline["phone-844x390-explore"]=91;   /* held landscape: the layout above 720 px, one control row (90.5 px) */
+Object.assign(PHONE.framing,{"phone-390-first":17,"phone-390-explore":6,"phone-390-dossier":5,"phone-390-watch":9,"phone-390-layers":2,
+  "phone-360-explore":4,"phone-430-explore":7,"phone-844x390-explore":10});
+/* the caption's parts give way in order where its row is narrow (decision 159): the phase's title first, then the act, then the events' names;
+   each is whole elsewhere on the screen or one press away (the act as a heading of the phase list, the phase as the dispatch sheet's title, the
+   event in the sheet and in its dossier). Held landscape, the track's act and phase names are cut where their band is narrower than the name
+   (decision 53's proportional axis), as on any window under about 1,280 px; the current phase whole on its plate (decision 53) */
+const CAP_GIVES=[{el:"span.evt",why:"ellipsis",reason:"the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier"},
+  {el:"span.act",why:"ellipsis",reason:"the caption's act gives way after the phase (decision 159); whole as a heading of the phase list"},
+  {el:"span.cap-ph",why:"ellipsis",reason:"the caption's phase title gives way first (decision 159); whole as the dispatch's title"}];
+const TRACK_CUT=[{el:"button.act-btn",why:"ellipsis",reason:"an act band's name on the proportional track, narrower than its name (decision 53)"},
+  {el:"span.step-l",why:"ellipsis",reason:"a phase's name on the proportional track, narrower than its name; the current one whole (decision 53)"}];
+["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-watch","phone-390-layers","phone-360-explore","phone-430-explore"].forEach(n=>{ PHONE.cutAllow[n]=CAP_GIVES; });
+PHONE.cutAllow["phone-844x390-explore"]=CAP_GIVES.concat(TRACK_CUT);
+/* two presses: "Accuracy and sources" and "Whose eyes?" are in the rail (the Menu, then the Panels) below 720 px; the phases, where an open
+   dossier or the Layers panel stands in place of the dispatch sheet (its close, then the grip) or the first card stands over it (Explore, then the
+   grip); in Watch below 720 px what stands behind the Menu (Study, then the Menu) and the rail's (Study, the Menu, the Panels: three) */
+const TWO={sources:{depth:2,reason:"in the rail: the Menu, then the Panels"},eyes:{depth:2,reason:"the Command tab, in the rail: the Menu, then the Panels"}};
+["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-layers","phone-360-explore","phone-430-explore"].forEach(n=>{ PHONE.reachAllow[n]=Object.assign({},TWO); });
+["phone-390-first","phone-390-dossier","phone-390-layers"].forEach(n=>{ PHONE.reachAllow[n].phases={depth:2,reason:"the dispatch sheet stood down (the first card, a dossier, the Layers panel): its close, then the grip"}; });
+PHONE.reachAllow["phone-390-watch"]={layers:{depth:2,reason:"Watch shows no tools: Study, then the Menu"},paperMap:{depth:2,reason:"Study, then the Menu"},
+  panels:{depth:2,reason:"Study, then the Menu"},vantages:{depth:2,reason:"Study, then the Menu"},tour:{depth:2,reason:"Study, then the Menu"},
+  phases:{depth:2,reason:"Study, then the dispatch sheet's grip"},sources:{depth:3,reason:"Study, the Menu, the Panels"},eyes:{depth:3,reason:"Study, the Menu, the Panels"}};
 module.exports.PHONE=PHONE;
 /* Stage 4B (docs/STAGE4_SPEC.md section A.6): the Stage 0 darkness limit, and the views the harness renders through the day without
    the shadow toe: [case, clock or null (the case's own), factor or null (the case's own)]. New */

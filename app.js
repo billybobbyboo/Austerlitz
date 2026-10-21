@@ -6184,6 +6184,7 @@ function buildTimeline(){
   var pl=document.getElementById("phlist");
   if(pl){ pl.innerHTML="";
     PHASES.forEach(function(p,i){
+      if(i===0||actOf(i).n!==actOf(i-1).n) pl.appendChild(el("p","ph-act",esc(actOf(i).n)));   /* each act named whole over its phases (the track's act row is not drawn on a phone) */
       var b=el("button","ph-item"); b.type="button";
       b.innerHTML='<b>'+esc(phaseSpan(i))+'</b><span>'+esc(p.label)+'</span>';
       b.setAttribute("aria-label",p.clock+", "+p.label+": "+p.title+" ("+actOf(i).n+")");
