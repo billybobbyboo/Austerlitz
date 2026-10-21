@@ -14,7 +14,7 @@ from the code, the approach proposed, the work done conservatively, checked, rec
 | 3 | **Accessibility and robustness**: the shortcuts switch, hidden panels inert, the sources sheet a proper dialog, focus returned, reduced motion live and in CSS, the timeline's targets, focused map items drawn; the start-up message and the CDN integrity; "Whose eyes?" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |
 | 4 | **The sourcing stage**: Part A, an inventory of every narrative statement and a register of readings (as Stage 6 did for dress); per-statement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136; 176-197 | done (#52); decisions 176-197 taken as recommended on 15 October 2026; step 4b part A applied 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 on `claude/adoring-gauss-ubfas9` (draft PR #53; `CHANGELOG.md`), owner questions 198-201 |
 | 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-212; 213 put | merged (#56; `CHANGELOG.md`); decisions 205-212 taken as recommended on 20 October 2026 and applied in PR #57 (`docs/step5-evidence/questions.md`); owner question 213 open; done |
-| 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139 | open |
+| 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139; 215-230 put | Part A written (`docs/STEP6_SPEC.md`, draft PR): the route and protocol for the owner's laptop and iPhone, the census and the level-of-detail options measured, the rule that decides 138 stated in advance, the phone screens and three layouts measured; owner questions 215-230 open; nothing built |
 
 ### What step 1 handed on (fact, from its commits; `CHANGELOG.md`)
 
@@ -296,6 +296,21 @@ the owner's word. Part C (PR #55): 203 (b) with (c), 204 (a), decided 18 October
   without the u flag has no é; the C6 researcher's note foresaw it): five sentences are scanned without that exemption, so the scan is
   stricter, none of them a hit. Widening the pattern to accented names would restore the exemption: the owner's word, as any change to an
   assertion's reach.
+
+### What step 6 Part A hands on (fact, from its commits and its review; `docs/STEP6_SPEC.md`, `CHANGELOG.md`)
+
+- **To the owner (item 1, question 139):** host a copy (question 217) and run the route five times (§2.3: L1-L3 on the Windows laptop with its
+  Intel GPU, P1-P2 on the iPhone in Safari); paste the reports back with the two models. Nothing else in step 6 needs the owner's devices.
+- **To the analysis after item 1:** apply §3.4's rule to L1 and L2 (138 built or retired, mechanically); the phone's runs to question 222;
+  the iPhone's viewport line to question 229; a records-only commit with the reports and, under question 230, a note on P-1.
+- **To item 2, if built:** the options and their measures (§3.2), what the self-test would then check (§3.3); the far form's look against
+  decision 107 (question 219); culling (question 221). Found by the census and not in the audit: no figure block is ever culled (three r128's
+  `InstancedMesh` sets `frustumCulled` false); the shadow pass is 41% of a 4x frame; P-1's "about 91%" is about half (49.7%).
+- **To item 3:** the measures of today and of three prototypes (§4.2-§4.4), the phases under 24 px on a proportional axis (question 224), the
+  checks and limits a phone layout needs (§4.5, question 228), the probes to measure the layout's build the same way (`tools/step6/phone-probe.js`
+  with a layout of the build's own instead of an injected one).
+- **The probes' own limits:** Chromium only (no Safari, no WebKit installed here); taps, not fingers; software WebGL frame times decide
+  nothing; the phone screenshots read at CSS scale (the interface contrast by computed styles, which does not depend on it).
 
 ## Later: the owner's notes of 7 October 2026 (not yet scheduled; to be decided when taken up)
 

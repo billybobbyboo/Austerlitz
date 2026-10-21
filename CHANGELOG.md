@@ -1,5 +1,44 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 6 Part A: the specification (real hardware, figure level of detail, a phone layout)
+
+**Status: written on `claude/upbeat-hamilton-y9utq8` (draft PR), for review. No source file, no data file and no build changed:**
+`austerlitz-command-map.html` 2,200,058 bytes, md5 `45f8f662ef828d2e1ab593a3b87b6ff7` (PR #58's build, unchanged). Begun from `main` at `7437dcc`
+(PR #58 merged). On 21 October 2026 the owner asked for step 6's Part A: all three items specified, none built; asked, the owner named the
+devices: a Windows laptop with an Intel integrated GPU, an iPhone with Safari, and a hosted copy for the phone. The specification is
+`docs/STEP6_SPEC.md`, the evidence `docs/step6-evidence/` (its README names each file's script), the probes `tools/step6/` (not bundled).
+
+**Item 1 (decision 139): the route and the protocol.** `tools/step6/perf-route.js` drives the unchanged build through
+`AUSTERLITZ_DEBUG.applyCase` over 25 segments (the Overview, the low Pratzen view at 1x, 4x and 10.33x, the phase-8 Overview, the paper map,
+the eye level, each held and moved; three diagnostics with the figures hidden and with Visual effects off; Play at 4x and at ½x under Follow)
+and reports frame-interval percentiles, long frames against the display's own refresh, the app's JavaScript time, the GPU's time where the
+browser offers WebGL2's timer query, and draw calls and triangles. Pasted into the console on the laptop; on the iPhone through
+`tools/step6/perf-run.html` (the build in a same-origin frame, the report with Copy and Share). Run here end to end both ways
+(`tools/step6/perf-local.js`; software WebGL, no console message); its frame times decide nothing. Ten clock minutes at 4x last a quarter
+of a second, so the played segments run 12 s each (question 216).
+
+**Item 2 (decision 138): measured.** The census of every draw call (30 views): a 4x landscape frame is 2.48-2.53 million triangles in 740-857
+calls whatever the view, because no figure block is ever culled (three r128's `InstancedMesh` sets `frustumCulled` false); the figures and
+standards are 49.7% of the low Pratzen view (P-1 inferred about 91%: the 1x frame it subtracted also lacks the trees, the scrub, the buildings
+and every shadow); the shadow pass is 41%. A man's height on screen: under 2 px for nine tenths of the Overview's figures, 16 px or more in the
+low and close views. The options prototyped in the live scene: a box per unit beyond 4 px, -49.7% in the Overview (2.6% of the pixels change;
+the coats' greens and whites become fields of colour); every fourth man, -35.5% (0.6%); no figure shadows, -25% in every 4x view (at most 1%);
+instancing across blocks, 832 to 327 calls with the same picture; culling by the blocks' bounds would skip 339 k of the low view's
+figure triangles. The rule that decides 138 from the laptop's report is stated in advance (§3.4).
+
+**Item 3 (decision 137): measured.** Today at 360-430 px wide: the timeline 172-174 px, its act and phase names cut, the tools over the dispatch
+card, a dossier leaving 3-5% of the screen free; held landscape (844 x 390) 90.5 px and 69% free. Three prototypes (CSS and JS put into the
+started page by the probe, never in the source): a compact timeline (127 px), sheets at the foot (after "Explore" 50-56% free), the controls
+behind a Menu (62-65%). The three 45-minute phases are 18-22 px wide on the proportional axis whatever the styling (question 224). The cases
+and limits the checks would need (§4.5).
+
+**Owner questions 215-230** (`docs/STEP6_SPEC.md` §7), each with options, a recommendation and its cost; the next owner decision is 215.
+
+**Verified:** `check:baseline` passes on the unchanged build (`45f8f662`, 2,200,058 bytes); `check:data` 131 of 131 identical [pending: run at
+the end]; no limit of `tools/visual/thresholds.js` moved. [pending: npm test.] The independent review: [pending].
+
+**Uncertain or not verified:** every GPU number (item 1 exists for them); Safari (the probes are Chromium); real touch; the far forms in motion.
+
 ## 2026-10 · Decisions 213 (b) and 214: the Russian Guard's strengths from Duffy's page (PR #58)
 
 **Status: done on `claude/magical-rubin-vahnny` (PR #58), for review. The build changed: `austerlitz-command-map.html` 2,200,058 bytes,
