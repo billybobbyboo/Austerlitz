@@ -1,0 +1,5290 @@
+{
+ "note": "one whole frame per view, software WebGL; the counts are the build's, independent of the GPU",
+ "views": {
+  "overview-field": {
+   "calls": 832,
+   "tris": 2523513,
+   "infoCalls": 832,
+   "infoTris": 2523605,
+   "byPass": {
+    "shadow": {
+     "calls": 289,
+     "tris": 1042554,
+     "inst": 8037
+    },
+    "world": {
+     "calls": 536,
+     "tris": 1480952,
+     "inst": 8949
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "shadow | figures: men and horses": {
+     "calls": 226,
+     "tris": 628058,
+     "inst": 6059
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "world | figures: men and horses": {
+     "calls": 226,
+     "tris": 628058,
+     "inst": 6059
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | formation pads": {
+     "calls": 31,
+     "tris": 62,
+     "inst": 31
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 12600,
+     "inst": 31
+    },
+    "world | dust": {
+     "calls": 8,
+     "tris": 0,
+     "inst": 8
+    },
+    "world | smoke": {
+     "calls": 33,
+     "tris": 0,
+     "inst": 33
+    },
+    "world | overlays (arrows)": {
+     "calls": 42,
+     "tris": 2276,
+     "inst": 42
+    },
+    "world | event glyphs": {
+     "calls": 5,
+     "tris": 0,
+     "inst": 5
+    },
+    "world | trails": {
+     "calls": 15,
+     "tris": 0,
+     "inst": 15
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {
+    "shadow | <480": {
+     "calls": 178,
+     "tris": 385186,
+     "inst": 3859
+    },
+    "shadow | <240": {
+     "calls": 101,
+     "tris": 248024,
+     "inst": 2484
+    },
+    "world | <480": {
+     "calls": 196,
+     "tris": 385330,
+     "inst": 3931
+    },
+    "world | <240": {
+     "calls": 110,
+     "tris": 248154,
+     "inst": 2549
+    }
+   },
+   "figPx": {
+    "<8 px": {
+     "calls": 39,
+     "tris": 2286,
+     "inst": 165
+    },
+    "<16 px": {
+     "calls": 241,
+     "tris": 622394,
+     "inst": 6132
+    },
+    "<4 px": {
+     "calls": 20,
+     "tris": 1968,
+     "inst": 120
+    },
+    "<inf px": {
+     "calls": 3,
+     "tris": 6800,
+     "inst": 60
+    }
+   },
+   "figures": {
+    "calls": 585,
+    "tris": 1266694,
+    "distinctGeoAllPasses": 71,
+    "distinctGeoWorld": 36,
+    "blocksDrawn": 31
+   },
+   "camera": {
+    "pos": [
+     -195,
+     94.1,
+     156
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "overview-field-1x": {
+   "calls": 195,
+   "tris": 237909,
+   "infoCalls": 195,
+   "infoTris": 238001,
+   "byPass": {
+    "world": {
+     "calls": 188,
+     "tris": 237902,
+     "inst": 188
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | other: Mesh": {
+     "calls": 1,
+     "tris": 12688,
+     "inst": 1
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | footprints (1x)": {
+     "calls": 31,
+     "tris": 12600,
+     "inst": 31
+    },
+    "world | dust": {
+     "calls": 8,
+     "tris": 0,
+     "inst": 8
+    },
+    "world | smoke": {
+     "calls": 33,
+     "tris": 0,
+     "inst": 33
+    },
+    "world | overlays (arrows)": {
+     "calls": 42,
+     "tris": 2276,
+     "inst": 42
+    },
+    "world | event glyphs": {
+     "calls": 5,
+     "tris": 0,
+     "inst": 5
+    },
+    "world | trails": {
+     "calls": 15,
+     "tris": 0,
+     "inst": 15
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {},
+   "figPx": {},
+   "figures": {
+    "calls": 0,
+    "tris": 0,
+    "distinctGeoAllPasses": 0,
+    "distinctGeoWorld": 0,
+    "blocksDrawn": 0
+   },
+   "camera": {
+    "pos": [
+     -195,
+     95.1,
+     156
+    ],
+    "fx": true,
+    "factor": 1,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "overview-field-10x": {
+   "calls": 832,
+   "tris": 2523513,
+   "infoCalls": 832,
+   "infoTris": 2523605,
+   "byPass": {
+    "shadow": {
+     "calls": 289,
+     "tris": 1042554,
+     "inst": 8037
+    },
+    "world": {
+     "calls": 536,
+     "tris": 1480952,
+     "inst": 8949
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "shadow | figures: men and horses": {
+     "calls": 226,
+     "tris": 628058,
+     "inst": 6059
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "world | figures: men and horses": {
+     "calls": 226,
+     "tris": 628058,
+     "inst": 6059
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | formation pads": {
+     "calls": 31,
+     "tris": 62,
+     "inst": 31
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 12600,
+     "inst": 31
+    },
+    "world | dust": {
+     "calls": 8,
+     "tris": 0,
+     "inst": 8
+    },
+    "world | smoke": {
+     "calls": 33,
+     "tris": 0,
+     "inst": 33
+    },
+    "world | overlays (arrows)": {
+     "calls": 42,
+     "tris": 2276,
+     "inst": 42
+    },
+    "world | event glyphs": {
+     "calls": 5,
+     "tris": 0,
+     "inst": 5
+    },
+    "world | trails": {
+     "calls": 15,
+     "tris": 0,
+     "inst": 15
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {
+    "shadow | <480": {
+     "calls": 178,
+     "tris": 385186,
+     "inst": 3859
+    },
+    "shadow | <240": {
+     "calls": 101,
+     "tris": 248024,
+     "inst": 2484
+    },
+    "world | <480": {
+     "calls": 196,
+     "tris": 385330,
+     "inst": 3931
+    },
+    "world | <240": {
+     "calls": 110,
+     "tris": 248154,
+     "inst": 2549
+    }
+   },
+   "figPx": {
+    "<8 px": {
+     "calls": 39,
+     "tris": 2286,
+     "inst": 165
+    },
+    "<16 px": {
+     "calls": 241,
+     "tris": 622394,
+     "inst": 6132
+    },
+    "<4 px": {
+     "calls": 20,
+     "tris": 1968,
+     "inst": 120
+    },
+    "<inf px": {
+     "calls": 3,
+     "tris": 6800,
+     "inst": 60
+    }
+   },
+   "figures": {
+    "calls": 585,
+    "tris": 1266694,
+    "distinctGeoAllPasses": 71,
+    "distinctGeoWorld": 36,
+    "blocksDrawn": 31
+   },
+   "camera": {
+    "pos": [
+     -195,
+     92,
+     156
+    ],
+    "fx": true,
+    "factor": 10.32642489706367,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "overview-plan": {
+   "calls": 832,
+   "tris": 2523513,
+   "infoCalls": 832,
+   "infoTris": 2523605,
+   "byPass": {
+    "shadow": {
+     "calls": 289,
+     "tris": 1042554,
+     "inst": 8037
+    },
+    "world": {
+     "calls": 536,
+     "tris": 1480952,
+     "inst": 8949
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "shadow | figures: men and horses": {
+     "calls": 226,
+     "tris": 628058,
+     "inst": 6059
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "world | figures: men and horses": {
+     "calls": 226,
+     "tris": 628058,
+     "inst": 6059
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | formation pads": {
+     "calls": 31,
+     "tris": 62,
+     "inst": 31
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 12600,
+     "inst": 31
+    },
+    "world | dust": {
+     "calls": 8,
+     "tris": 0,
+     "inst": 8
+    },
+    "world | smoke": {
+     "calls": 33,
+     "tris": 0,
+     "inst": 33
+    },
+    "world | overlays (arrows)": {
+     "calls": 42,
+     "tris": 2276,
+     "inst": 42
+    },
+    "world | event glyphs": {
+     "calls": 5,
+     "tris": 0,
+     "inst": 5
+    },
+    "world | trails": {
+     "calls": 15,
+     "tris": 0,
+     "inst": 15
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {
+    "shadow | <480": {
+     "calls": 279,
+     "tris": 633210,
+     "inst": 6343
+    },
+    "world | <480": {
+     "calls": 306,
+     "tris": 633484,
+     "inst": 6480
+    }
+   },
+   "figPx": {
+    "<2 px": {
+     "calls": 282,
+     "tris": 565776,
+     "inst": 5803
+    },
+    "<4 px": {
+     "calls": 20,
+     "tris": 67000,
+     "inst": 662
+    },
+    "<16 px": {
+     "calls": 1,
+     "tris": 672,
+     "inst": 12
+    }
+   },
+   "figures": {
+    "calls": 585,
+    "tris": 1266694,
+    "distinctGeoAllPasses": 71,
+    "distinctGeoWorld": 36,
+    "blocksDrawn": 31
+   },
+   "camera": {
+    "pos": [
+     -38.8,
+     423.2,
+     54.2
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "close-sokolnitz": {
+   "calls": 781,
+   "tris": 2478151,
+   "infoCalls": 781,
+   "infoTris": 2478209,
+   "byPass": {
+    "shadow": {
+     "calls": 275,
+     "tris": 1019578,
+     "inst": 7813
+    },
+    "world": {
+     "calls": 499,
+     "tris": 1458566,
+     "inst": 8702
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "shadow | figures: men and horses": {
+     "calls": 212,
+     "tris": 605082,
+     "inst": 5835
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 8,
+     "tris": 1104,
+     "inst": 38
+    },
+    "world | figures: men and horses": {
+     "calls": 212,
+     "tris": 605082,
+     "inst": 5835
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | formation pads": {
+     "calls": 27,
+     "tris": 54,
+     "inst": 27
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 12186,
+     "inst": 31
+    },
+    "world | dust": {
+     "calls": 7,
+     "tris": 0,
+     "inst": 7
+    },
+    "world | smoke": {
+     "calls": 18,
+     "tris": 0,
+     "inst": 18
+    },
+    "world | overlays (arrows)": {
+     "calls": 38,
+     "tris": 3300,
+     "inst": 38
+    },
+    "world | event glyphs": {
+     "calls": 3,
+     "tris": 0,
+     "inst": 3
+    },
+    "world | trails": {
+     "calls": 19,
+     "tris": 0,
+     "inst": 19
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {
+    "shadow | <240": {
+     "calls": 172,
+     "tris": 375330,
+     "inst": 3763
+    },
+    "shadow | <120": {
+     "calls": 39,
+     "tris": 113324,
+     "inst": 1141
+    },
+    "shadow | <60": {
+     "calls": 54,
+     "tris": 121580,
+     "inst": 1215
+    },
+    "world | <240": {
+     "calls": 189,
+     "tris": 375462,
+     "inst": 3834
+    },
+    "world | <120": {
+     "calls": 43,
+     "tris": 113392,
+     "inst": 1175
+    },
+    "world | <60": {
+     "calls": 59,
+     "tris": 121642,
+     "inst": 1246
+    }
+   },
+   "figPx": {
+    "<16 px": {
+     "calls": 30,
+     "tris": 1924,
+     "inst": 143
+    },
+    "<inf px": {
+     "calls": 245,
+     "tris": 607000,
+     "inst": 6035
+    },
+    "<8 px": {
+     "calls": 12,
+     "tris": 684,
+     "inst": 57
+    },
+    "<4 px": {
+     "calls": 2,
+     "tris": 864,
+     "inst": 18
+    }
+   },
+   "figures": {
+    "calls": 556,
+    "tris": 1220730,
+    "distinctGeoAllPasses": 71,
+    "distinctGeoWorld": 36,
+    "blocksDrawn": 31
+   },
+   "camera": {
+    "pos": [
+     -100.9,
+     22.7,
+     93
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "close-sokolnitz-1x": {
+   "calls": 181,
+   "tris": 238569,
+   "infoCalls": 181,
+   "infoTris": 238629,
+   "byPass": {
+    "world": {
+     "calls": 174,
+     "tris": 238562,
+     "inst": 174
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | other: Mesh": {
+     "calls": 1,
+     "tris": 12688,
+     "inst": 1
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | footprints (1x)": {
+     "calls": 31,
+     "tris": 12186,
+     "inst": 31
+    },
+    "world | dust": {
+     "calls": 7,
+     "tris": 0,
+     "inst": 7
+    },
+    "world | smoke": {
+     "calls": 18,
+     "tris": 0,
+     "inst": 18
+    },
+    "world | overlays (arrows)": {
+     "calls": 41,
+     "tris": 3350,
+     "inst": 41
+    },
+    "world | event glyphs": {
+     "calls": 4,
+     "tris": 0,
+     "inst": 4
+    },
+    "world | trails": {
+     "calls": 19,
+     "tris": 0,
+     "inst": 19
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {},
+   "figPx": {},
+   "figures": {
+    "calls": 0,
+    "tris": 0,
+    "distinctGeoAllPasses": 0,
+    "distinctGeoWorld": 0,
+    "blocksDrawn": 0
+   },
+   "camera": {
+    "pos": [
+     -100.9,
+     23.4,
+     93
+    ],
+    "fx": true,
+    "factor": 1,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "close-sokolnitz-10x": {
+   "calls": 769,
+   "tris": 2477085,
+   "infoCalls": 769,
+   "infoTris": 2477135,
+   "byPass": {
+    "shadow": {
+     "calls": 275,
+     "tris": 1019578,
+     "inst": 7813
+    },
+    "world": {
+     "calls": 487,
+     "tris": 1457500,
+     "inst": 8690
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "shadow | figures: men and horses": {
+     "calls": 212,
+     "tris": 605082,
+     "inst": 5835
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 14,
+     "tris": 14410,
+     "inst": 14
+    },
+    "world | draped: road edge": {
+     "calls": 14,
+     "tris": 23012,
+     "inst": 14
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 7,
+     "tris": 1092,
+     "inst": 37
+    },
+    "world | figures: men and horses": {
+     "calls": 212,
+     "tris": 605082,
+     "inst": 5835
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | formation pads": {
+     "calls": 25,
+     "tris": 50,
+     "inst": 25
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 12186,
+     "inst": 31
+    },
+    "world | dust": {
+     "calls": 4,
+     "tris": 0,
+     "inst": 4
+    },
+    "world | smoke": {
+     "calls": 18,
+     "tris": 0,
+     "inst": 18
+    },
+    "world | overlays (arrows)": {
+     "calls": 35,
+     "tris": 3130,
+     "inst": 35
+    },
+    "world | event glyphs": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | trails": {
+     "calls": 19,
+     "tris": 0,
+     "inst": 19
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {
+    "shadow | <240": {
+     "calls": 172,
+     "tris": 375330,
+     "inst": 3763
+    },
+    "shadow | <120": {
+     "calls": 39,
+     "tris": 113324,
+     "inst": 1141
+    },
+    "shadow | <60": {
+     "calls": 54,
+     "tris": 121580,
+     "inst": 1215
+    },
+    "world | <240": {
+     "calls": 188,
+     "tris": 375450,
+     "inst": 3833
+    },
+    "world | <120": {
+     "calls": 43,
+     "tris": 113392,
+     "inst": 1175
+    },
+    "world | <60": {
+     "calls": 59,
+     "tris": 121642,
+     "inst": 1246
+    }
+   },
+   "figPx": {
+    "<16 px": {
+     "calls": 27,
+     "tris": 1662,
+     "inst": 129
+    },
+    "<inf px": {
+     "calls": 248,
+     "tris": 607262,
+     "inst": 6049
+    },
+    "<8 px": {
+     "calls": 12,
+     "tris": 684,
+     "inst": 57
+    },
+    "<4 px": {
+     "calls": 2,
+     "tris": 864,
+     "inst": 18
+    }
+   },
+   "figures": {
+    "calls": 555,
+    "tris": 1220718,
+    "distinctGeoAllPasses": 71,
+    "distinctGeoWorld": 36,
+    "blocksDrawn": 31
+   },
+   "camera": {
+    "pos": [
+     -100.9,
+     21.2,
+     93
+    ],
+    "fx": true,
+    "factor": 10.32642489706367,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "staff-paper": {
+   "calls": 148,
+   "tris": 238691,
+   "infoCalls": 148,
+   "infoTris": 238701,
+   "byPass": {
+    "world": {
+     "calls": 141,
+     "tris": 238684,
+     "inst": 141
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | other: Mesh": {
+     "calls": 1,
+     "tris": 12688,
+     "inst": 1
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 2,
+     "tris": 96,
+     "inst": 2
+    },
+    "world | paper map": {
+     "calls": 5,
+     "tris": 4404,
+     "inst": 5
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 10970,
+     "inst": 31
+    },
+    "world | overlays (arrows)": {
+     "calls": 34,
+     "tris": 1692,
+     "inst": 34
+    },
+    "world | event glyphs": {
+     "calls": 5,
+     "tris": 0,
+     "inst": 5
+    },
+    "world | trails": {
+     "calls": 15,
+     "tris": 0,
+     "inst": 15
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {},
+   "figPx": {},
+   "figures": {
+    "calls": 0,
+    "tris": 0,
+    "distinctGeoAllPasses": 0,
+    "distinctGeoWorld": 0,
+    "blocksDrawn": 0
+   },
+   "camera": {
+    "pos": [
+     -54.4,
+     400,
+     22.3
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "staff",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "pratzen-low": {
+   "calls": 758,
+   "tris": 2480127,
+   "infoCalls": 758,
+   "infoTris": 2480181,
+   "byPass": {
+    "shadow": {
+     "calls": 278,
+     "tris": 1025966,
+     "inst": 7876
+    },
+    "world": {
+     "calls": 473,
+     "tris": 1454154,
+     "inst": 8736
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 8,
+     "tris": 1104,
+     "inst": 38
+    },
+    "shadow | figures: men and horses": {
+     "calls": 216,
+     "tris": 611482,
+     "inst": 5899
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 9,
+     "tris": 11398,
+     "inst": 9
+    },
+    "world | draped: road edge": {
+     "calls": 9,
+     "tris": 17906,
+     "inst": 9
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 8,
+     "tris": 1104,
+     "inst": 38
+    },
+    "world | figures: men and horses": {
+     "calls": 216,
+     "tris": 611482,
+     "inst": 5899
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 2,
+     "tris": 144,
+     "inst": 2
+    },
+    "world | formation pads": {
+     "calls": 14,
+     "tris": 28,
+     "inst": 14
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 12508,
+     "inst": 31
+    },
+    "world | dust": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | smoke": {
+     "calls": 23,
+     "tris": 0,
+     "inst": 23
+    },
+    "world | overlays (arrows)": {
+     "calls": 30,
+     "tris": 1334,
+     "inst": 30
+    },
+    "world | event glyphs": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | trails": {
+     "calls": 25,
+     "tris": 0,
+     "inst": 25
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {
+    "shadow | <120": {
+     "calls": 200,
+     "tris": 422766,
+     "inst": 4242
+    },
+    "shadow | <60": {
+     "calls": 34,
+     "tris": 104320,
+     "inst": 1042
+    },
+    "shadow | <240": {
+     "calls": 34,
+     "tris": 89536,
+     "inst": 898
+    },
+    "world | <120": {
+     "calls": 219,
+     "tris": 422942,
+     "inst": 4330
+    },
+    "world | <60": {
+     "calls": 38,
+     "tris": 104378,
+     "inst": 1071
+    },
+    "world | <240": {
+     "calls": 38,
+     "tris": 89576,
+     "inst": 918
+    }
+   },
+   "figPx": {
+    "<inf px": {
+     "calls": 274,
+     "tris": 615000,
+     "inst": 6204
+    },
+    "<16 px": {
+     "calls": 15,
+     "tris": 936,
+     "inst": 79
+    },
+    "<8 px": {
+     "calls": 3,
+     "tris": 264,
+     "inst": 22
+    },
+    "<4 px": {
+     "calls": 1,
+     "tris": 672,
+     "inst": 12
+    }
+   },
+   "figures": {
+    "calls": 563,
+    "tris": 1233518,
+    "distinctGeoAllPasses": 71,
+    "distinctGeoWorld": 36,
+    "blocksDrawn": 31
+   },
+   "camera": {
+    "pos": [
+     -95.8,
+     21.9,
+     31.8
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "selected-formation": {
+   "calls": 764,
+   "tris": 2518029,
+   "infoCalls": 764,
+   "infoTris": 2518041,
+   "byPass": {
+    "shadow": {
+     "calls": 289,
+     "tris": 1042554,
+     "inst": 8037
+    },
+    "world": {
+     "calls": 468,
+     "tris": 1475468,
+     "inst": 8881
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "shadow | figures: men and horses": {
+     "calls": 226,
+     "tris": 628058,
+     "inst": 6059
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 12,
+     "tris": 12778,
+     "inst": 12
+    },
+    "world | draped: road edge": {
+     "calls": 12,
+     "tris": 20206,
+     "inst": 12
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 8,
+     "tris": 1104,
+     "inst": 38
+    },
+    "world | figures: men and horses": {
+     "calls": 226,
+     "tris": 628058,
+     "inst": 6059
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 2,
+     "tris": 144,
+     "inst": 2
+    },
+    "world | formation pads": {
+     "calls": 26,
+     "tris": 52,
+     "inst": 26
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 12600,
+     "inst": 31
+    },
+    "world | smoke": {
+     "calls": 3,
+     "tris": 0,
+     "inst": 3
+    },
+    "world | overlays (arrows)": {
+     "calls": 42,
+     "tris": 2276,
+     "inst": 42
+    },
+    "world | event glyphs": {
+     "calls": 3,
+     "tris": 0,
+     "inst": 3
+    },
+    "world | selection ring": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {
+    "shadow | <240": {
+     "calls": 145,
+     "tris": 288458,
+     "inst": 2885
+    },
+    "shadow | <120": {
+     "calls": 134,
+     "tris": 344752,
+     "inst": 3458
+    },
+    "world | <240": {
+     "calls": 159,
+     "tris": 288548,
+     "inst": 2935
+    },
+    "world | <120": {
+     "calls": 146,
+     "tris": 344924,
+     "inst": 3544
+    }
+   },
+   "figPx": {
+    "<16 px": {
+     "calls": 71,
+     "tris": 105242,
+     "inst": 1183
+    },
+    "<inf px": {
+     "calls": 176,
+     "tris": 453864,
+     "inst": 4439
+    },
+    "<8 px": {
+     "calls": 30,
+     "tris": 66658,
+     "inst": 712
+    },
+    "<4 px": {
+     "calls": 17,
+     "tris": 1488,
+     "inst": 58
+    },
+    "<2 px": {
+     "calls": 9,
+     "tris": 6196,
+     "inst": 85
+    }
+   },
+   "figures": {
+    "calls": 584,
+    "tris": 1266682,
+    "distinctGeoAllPasses": 71,
+    "distinctGeoWorld": 36,
+    "blocksDrawn": 31
+   },
+   "camera": {
+    "pos": [
+     -75.8,
+     68.2,
+     66.6
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "watch-selected": {
+   "calls": 740,
+   "tris": 2483551,
+   "infoCalls": 740,
+   "infoTris": 2483573,
+   "byPass": {
+    "shadow": {
+     "calls": 279,
+     "tris": 1025978,
+     "inst": 7877
+    },
+    "world": {
+     "calls": 454,
+     "tris": 1457566,
+     "inst": 8717
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "shadow | figures: men and horses": {
+     "calls": 216,
+     "tris": 611482,
+     "inst": 5899
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 11,
+     "tris": 12448,
+     "inst": 11
+    },
+    "world | draped: road edge": {
+     "calls": 11,
+     "tris": 19656,
+     "inst": 11
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 8,
+     "tris": 1104,
+     "inst": 38
+    },
+    "world | figures: men and horses": {
+     "calls": 216,
+     "tris": 611482,
+     "inst": 5899
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 2,
+     "tris": 144,
+     "inst": 2
+    },
+    "world | formation pads": {
+     "calls": 20,
+     "tris": 40,
+     "inst": 20
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 12526,
+     "inst": 31
+    },
+    "world | smoke": {
+     "calls": 9,
+     "tris": 0,
+     "inst": 9
+    },
+    "world | overlays (arrows)": {
+     "calls": 38,
+     "tris": 1916,
+     "inst": 38
+    },
+    "world | event glyphs": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | trails": {
+     "calls": 3,
+     "tris": 0,
+     "inst": 3
+    },
+    "world | selection ring": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {
+    "shadow | <240": {
+     "calls": 136,
+     "tris": 258506,
+     "inst": 2579
+    },
+    "shadow | <120": {
+     "calls": 133,
+     "tris": 358128,
+     "inst": 3604
+    },
+    "world | <240": {
+     "calls": 149,
+     "tris": 258584,
+     "inst": 2623
+    },
+    "world | <120": {
+     "calls": 146,
+     "tris": 358312,
+     "inst": 3696
+    }
+   },
+   "figPx": {
+    "<16 px": {
+     "calls": 59,
+     "tris": 74050,
+     "inst": 877
+    },
+    "<inf px": {
+     "calls": 176,
+     "tris": 461816,
+     "inst": 4517
+    },
+    "<8 px": {
+     "calls": 17,
+     "tris": 16482,
+     "inst": 224
+    },
+    "<4 px": {
+     "calls": 17,
+     "tris": 25756,
+     "inst": 309
+    },
+    "<2 px": {
+     "calls": 24,
+     "tris": 38768,
+     "inst": 390
+    }
+   },
+   "figures": {
+    "calls": 564,
+    "tris": 1233530,
+    "distinctGeoAllPasses": 71,
+    "distinctGeoWorld": 36,
+    "blocksDrawn": 31
+   },
+   "camera": {
+    "pos": [
+     -73,
+     65.1,
+     63
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "hybrid-dimmed": {
+   "calls": 740,
+   "tris": 2485213,
+   "infoCalls": 740,
+   "infoTris": 2485223,
+   "byPass": {
+    "shadow": {
+     "calls": 279,
+     "tris": 1025978,
+     "inst": 7877
+    },
+    "world": {
+     "calls": 454,
+     "tris": 1459228,
+     "inst": 8717
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "shadow | figures: men and horses": {
+     "calls": 216,
+     "tris": 611482,
+     "inst": 5899
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 12,
+     "tris": 12778,
+     "inst": 12
+    },
+    "world | draped: road edge": {
+     "calls": 12,
+     "tris": 20206,
+     "inst": 12
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 8,
+     "tris": 1104,
+     "inst": 38
+    },
+    "world | figures: men and horses": {
+     "calls": 216,
+     "tris": 611482,
+     "inst": 5899
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 2,
+     "tris": 144,
+     "inst": 2
+    },
+    "world | formation pads": {
+     "calls": 22,
+     "tris": 44,
+     "inst": 22
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 12658,
+     "inst": 31
+    },
+    "world | smoke": {
+     "calls": 3,
+     "tris": 0,
+     "inst": 3
+    },
+    "world | overlays (arrows)": {
+     "calls": 42,
+     "tris": 2562,
+     "inst": 42
+    },
+    "world | event glyphs": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | trails": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {
+    "shadow | <240": {
+     "calls": 170,
+     "tris": 346742,
+     "inst": 3478
+    },
+    "shadow | <120": {
+     "calls": 99,
+     "tris": 269892,
+     "inst": 2705
+    },
+    "world | <240": {
+     "calls": 186,
+     "tris": 346860,
+     "inst": 3542
+    },
+    "world | <120": {
+     "calls": 109,
+     "tris": 270036,
+     "inst": 2777
+    }
+   },
+   "figPx": {
+    "<16 px": {
+     "calls": 146,
+     "tris": 267296,
+     "inst": 2747
+    },
+    "<inf px": {
+     "calls": 119,
+     "tris": 347024,
+     "inst": 3412
+    },
+    "<8 px": {
+     "calls": 14,
+     "tris": 1208,
+     "inst": 90
+    },
+    "<4 px": {
+     "calls": 14,
+     "tris": 1344,
+     "inst": 68
+    }
+   },
+   "figures": {
+    "calls": 564,
+    "tris": 1233530,
+    "distinctGeoAllPasses": 71,
+    "distinctGeoWorld": 36,
+    "blocksDrawn": 31
+   },
+   "camera": {
+    "pos": [
+     -94.2,
+     57,
+     71.9
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "hybrid",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "pratzen-low-1x": {
+   "calls": 160,
+   "tris": 227733,
+   "infoCalls": 160,
+   "infoTris": 227787,
+   "byPass": {
+    "world": {
+     "calls": 153,
+     "tris": 227726,
+     "inst": 153
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 9,
+     "tris": 11398,
+     "inst": 9
+    },
+    "world | draped: road edge": {
+     "calls": 9,
+     "tris": 17906,
+     "inst": 9
+    },
+    "world | other: Mesh": {
+     "calls": 1,
+     "tris": 12688,
+     "inst": 1
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 2,
+     "tris": 144,
+     "inst": 2
+    },
+    "world | footprints (1x)": {
+     "calls": 31,
+     "tris": 12508,
+     "inst": 31
+    },
+    "world | dust": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | smoke": {
+     "calls": 23,
+     "tris": 0,
+     "inst": 23
+    },
+    "world | overlays (arrows)": {
+     "calls": 30,
+     "tris": 1334,
+     "inst": 30
+    },
+    "world | event glyphs": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | trails": {
+     "calls": 25,
+     "tris": 0,
+     "inst": 25
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {},
+   "figPx": {},
+   "figures": {
+    "calls": 0,
+    "tris": 0,
+    "distinctGeoAllPasses": 0,
+    "distinctGeoWorld": 0,
+    "blocksDrawn": 0
+   },
+   "camera": {
+    "pos": [
+     -95.8,
+     21.8,
+     31.8
+    ],
+    "fx": true,
+    "factor": 1,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "pratzen-low-10x": {
+   "calls": 759,
+   "tris": 2480127,
+   "infoCalls": 759,
+   "infoTris": 2480183,
+   "byPass": {
+    "shadow": {
+     "calls": 278,
+     "tris": 1025966,
+     "inst": 7876
+    },
+    "world": {
+     "calls": 474,
+     "tris": 1454154,
+     "inst": 8737
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 8,
+     "tris": 1104,
+     "inst": 38
+    },
+    "shadow | figures: men and horses": {
+     "calls": 216,
+     "tris": 611482,
+     "inst": 5899
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 9,
+     "tris": 11398,
+     "inst": 9
+    },
+    "world | draped: road edge": {
+     "calls": 9,
+     "tris": 17906,
+     "inst": 9
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 8,
+     "tris": 1104,
+     "inst": 38
+    },
+    "world | figures: men and horses": {
+     "calls": 216,
+     "tris": 611482,
+     "inst": 5899
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 2,
+     "tris": 144,
+     "inst": 2
+    },
+    "world | formation pads": {
+     "calls": 14,
+     "tris": 28,
+     "inst": 14
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 12508,
+     "inst": 31
+    },
+    "world | dust": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | smoke": {
+     "calls": 24,
+     "tris": 0,
+     "inst": 24
+    },
+    "world | overlays (arrows)": {
+     "calls": 30,
+     "tris": 1334,
+     "inst": 30
+    },
+    "world | event glyphs": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | trails": {
+     "calls": 25,
+     "tris": 0,
+     "inst": 25
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {
+    "shadow | <120": {
+     "calls": 210,
+     "tris": 434710,
+     "inst": 4372
+    },
+    "shadow | <60": {
+     "calls": 34,
+     "tris": 104320,
+     "inst": 1042
+    },
+    "shadow | <240": {
+     "calls": 24,
+     "tris": 77592,
+     "inst": 768
+    },
+    "world | <120": {
+     "calls": 230,
+     "tris": 434890,
+     "inst": 4462
+    },
+    "world | <60": {
+     "calls": 38,
+     "tris": 104378,
+     "inst": 1071
+    },
+    "world | <240": {
+     "calls": 27,
+     "tris": 77628,
+     "inst": 786
+    }
+   },
+   "figPx": {
+    "<inf px": {
+     "calls": 274,
+     "tris": 615000,
+     "inst": 6204
+    },
+    "<16 px": {
+     "calls": 15,
+     "tris": 936,
+     "inst": 79
+    },
+    "<8 px": {
+     "calls": 3,
+     "tris": 264,
+     "inst": 22
+    },
+    "<2 px": {
+     "calls": 1,
+     "tris": 672,
+     "inst": 12
+    }
+   },
+   "figures": {
+    "calls": 563,
+    "tris": 1233518,
+    "distinctGeoAllPasses": 71,
+    "distinctGeoWorld": 36,
+    "blocksDrawn": 31
+   },
+   "camera": {
+    "pos": [
+     -95.8,
+     22.1,
+     31.8
+    ],
+    "fx": true,
+    "factor": 10.32642489706367,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "paper-north-up": {
+   "calls": 156,
+   "tris": 240905,
+   "infoCalls": 156,
+   "infoTris": 240915,
+   "byPass": {
+    "world": {
+     "calls": 149,
+     "tris": 240898,
+     "inst": 149
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | other: Mesh": {
+     "calls": 1,
+     "tris": 12688,
+     "inst": 1
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 2,
+     "tris": 96,
+     "inst": 2
+    },
+    "world | paper map": {
+     "calls": 5,
+     "tris": 4404,
+     "inst": 5
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 12600,
+     "inst": 31
+    },
+    "world | overlays (arrows)": {
+     "calls": 42,
+     "tris": 2276,
+     "inst": 42
+    },
+    "world | event glyphs": {
+     "calls": 5,
+     "tris": 0,
+     "inst": 5
+    },
+    "world | trails": {
+     "calls": 15,
+     "tris": 0,
+     "inst": 15
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {},
+   "figPx": {},
+   "figures": {
+    "calls": 0,
+    "tris": 0,
+    "distinctGeoAllPasses": 0,
+    "distinctGeoWorld": 0,
+    "blocksDrawn": 0
+   },
+   "camera": {
+    "pos": [
+     12.1,
+     400,
+     9
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "staff",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "paper-close": {
+   "calls": 103,
+   "tris": 203451,
+   "infoCalls": 103,
+   "infoTris": 203455,
+   "byPass": {
+    "world": {
+     "calls": 96,
+     "tris": 203444,
+     "inst": 96
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 3,
+     "tris": 18720,
+     "inst": 3
+    },
+    "world | draped: stream": {
+     "calls": 3,
+     "tris": 12276,
+     "inst": 3
+    },
+    "world | draped: road": {
+     "calls": 7,
+     "tris": 4314,
+     "inst": 7
+    },
+    "world | draped: road edge": {
+     "calls": 7,
+     "tris": 7354,
+     "inst": 7
+    },
+    "world | other: Mesh": {
+     "calls": 1,
+     "tris": 12688,
+     "inst": 1
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 2,
+     "tris": 96,
+     "inst": 2
+    },
+    "world | paper map": {
+     "calls": 5,
+     "tris": 4404,
+     "inst": 5
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 6212,
+     "inst": 31
+    },
+    "world | overlays (arrows)": {
+     "calls": 23,
+     "tris": 2980,
+     "inst": 23
+    },
+    "world | event glyphs": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | trails": {
+     "calls": 8,
+     "tris": 0,
+     "inst": 8
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {},
+   "figPx": {},
+   "figures": {
+    "calls": 0,
+    "tris": 0,
+    "distinctGeoAllPasses": 0,
+    "distinctGeoWorld": 0,
+    "blocksDrawn": 0
+   },
+   "camera": {
+    "pos": [
+     -70.8,
+     400,
+     58.8
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "staff",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "paper-drawer": {
+   "calls": 110,
+   "tris": 226493,
+   "infoCalls": 110,
+   "infoTris": 226499,
+   "byPass": {
+    "world": {
+     "calls": 103,
+     "tris": 226486,
+     "inst": 103
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 6,
+     "tris": 21130,
+     "inst": 6
+    },
+    "world | draped: stream": {
+     "calls": 6,
+     "tris": 13722,
+     "inst": 6
+    },
+    "world | draped: road": {
+     "calls": 10,
+     "tris": 12304,
+     "inst": 10
+    },
+    "world | draped: road edge": {
+     "calls": 10,
+     "tris": 19610,
+     "inst": 10
+    },
+    "world | other: Mesh": {
+     "calls": 1,
+     "tris": 12688,
+     "inst": 1
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | paper map": {
+     "calls": 5,
+     "tris": 4404,
+     "inst": 5
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 6894,
+     "inst": 31
+    },
+    "world | overlays (arrows)": {
+     "calls": 27,
+     "tris": 1334,
+     "inst": 27
+    },
+    "world | event glyphs": {
+     "calls": 3,
+     "tris": 0,
+     "inst": 3
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {},
+   "figPx": {},
+   "figures": {
+    "calls": 0,
+    "tris": 0,
+    "distinctGeoAllPasses": 0,
+    "distinctGeoWorld": 0,
+    "blocksDrawn": 0
+   },
+   "camera": {
+    "pos": [
+     -37.1,
+     400,
+     22.7
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "staff",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "paper-laptop": {
+   "calls": 156,
+   "tris": 240905,
+   "infoCalls": 156,
+   "infoTris": 240915,
+   "byPass": {
+    "world": {
+     "calls": 149,
+     "tris": 240898,
+     "inst": 149
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | other: Mesh": {
+     "calls": 1,
+     "tris": 12688,
+     "inst": 1
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 2,
+     "tris": 96,
+     "inst": 2
+    },
+    "world | paper map": {
+     "calls": 5,
+     "tris": 4404,
+     "inst": 5
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 12600,
+     "inst": 31
+    },
+    "world | overlays (arrows)": {
+     "calls": 42,
+     "tris": 2276,
+     "inst": 42
+    },
+    "world | event glyphs": {
+     "calls": 5,
+     "tris": 0,
+     "inst": 5
+    },
+    "world | trails": {
+     "calls": 15,
+     "tris": 0,
+     "inst": 15
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {},
+   "figPx": {},
+   "figures": {
+    "calls": 0,
+    "tris": 0,
+    "distinctGeoAllPasses": 0,
+    "distinctGeoWorld": 0,
+    "blocksDrawn": 0
+   },
+   "camera": {
+    "pos": [
+     15.5,
+     400,
+     10.4
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "staff",
+    "viewport": [
+     1280,
+     720
+    ]
+   }
+  },
+  "narrow-1024": {
+   "calls": 832,
+   "tris": 2523513,
+   "infoCalls": 832,
+   "infoTris": 2523605,
+   "byPass": {
+    "shadow": {
+     "calls": 289,
+     "tris": 1042554,
+     "inst": 8037
+    },
+    "world": {
+     "calls": 536,
+     "tris": 1480952,
+     "inst": 8949
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "shadow | figures: men and horses": {
+     "calls": 226,
+     "tris": 628058,
+     "inst": 6059
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "world | figures: men and horses": {
+     "calls": 226,
+     "tris": 628058,
+     "inst": 6059
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | formation pads": {
+     "calls": 31,
+     "tris": 62,
+     "inst": 31
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 12600,
+     "inst": 31
+    },
+    "world | dust": {
+     "calls": 8,
+     "tris": 0,
+     "inst": 8
+    },
+    "world | smoke": {
+     "calls": 33,
+     "tris": 0,
+     "inst": 33
+    },
+    "world | overlays (arrows)": {
+     "calls": 42,
+     "tris": 2276,
+     "inst": 42
+    },
+    "world | event glyphs": {
+     "calls": 5,
+     "tris": 0,
+     "inst": 5
+    },
+    "world | trails": {
+     "calls": 15,
+     "tris": 0,
+     "inst": 15
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {
+    "shadow | <480": {
+     "calls": 178,
+     "tris": 385186,
+     "inst": 3859
+    },
+    "shadow | <240": {
+     "calls": 101,
+     "tris": 248024,
+     "inst": 2484
+    },
+    "world | <480": {
+     "calls": 196,
+     "tris": 385330,
+     "inst": 3931
+    },
+    "world | <240": {
+     "calls": 110,
+     "tris": 248154,
+     "inst": 2549
+    }
+   },
+   "figPx": {
+    "<8 px": {
+     "calls": 53,
+     "tris": 39022,
+     "inst": 560
+    },
+    "<16 px": {
+     "calls": 229,
+     "tris": 592266,
+     "inst": 5791
+    },
+    "<4 px": {
+     "calls": 11,
+     "tris": 1044,
+     "inst": 77
+    },
+    "<2 px": {
+     "calls": 10,
+     "tris": 1116,
+     "inst": 49
+    }
+   },
+   "figures": {
+    "calls": 585,
+    "tris": 1266694,
+    "distinctGeoAllPasses": 71,
+    "distinctGeoWorld": 36,
+    "blocksDrawn": 31
+   },
+   "camera": {
+    "pos": [
+     -195,
+     94.1,
+     156
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "terrain",
+    "viewport": [
+     1024,
+     768
+    ]
+   }
+  },
+  "ph8-overview-study": {
+   "calls": 809,
+   "tris": 2501099,
+   "infoCalls": 809,
+   "infoTris": 2501163,
+   "byPass": {
+    "shadow": {
+     "calls": 284,
+     "tris": 1031954,
+     "inst": 7961
+    },
+    "world": {
+     "calls": 518,
+     "tris": 1469138,
+     "inst": 8860
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 12,
+     "tris": 2052,
+     "inst": 63
+    },
+    "shadow | figures: men and horses": {
+     "calls": 218,
+     "tris": 616522,
+     "inst": 5959
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 12,
+     "tris": 2052,
+     "inst": 63
+    },
+    "world | figures: men and horses": {
+     "calls": 218,
+     "tris": 616522,
+     "inst": 5959
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | formation pads": {
+     "calls": 32,
+     "tris": 64,
+     "inst": 32
+    },
+    "world | confidence marks": {
+     "calls": 32,
+     "tris": 11792,
+     "inst": 32
+    },
+    "world | dust": {
+     "calls": 9,
+     "tris": 0,
+     "inst": 9
+    },
+    "world | smoke": {
+     "calls": 21,
+     "tris": 0,
+     "inst": 21
+    },
+    "world | overlays (arrows)": {
+     "calls": 29,
+     "tris": 1868,
+     "inst": 29
+    },
+    "world | trails": {
+     "calls": 28,
+     "tris": 0,
+     "inst": 28
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    },
+    "world | event glyphs": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    }
+   },
+   "figBands": {
+    "shadow | <inf": {
+     "calls": 274,
+     "tris": 622610,
+     "inst": 6267
+    },
+    "world | <inf": {
+     "calls": 301,
+     "tris": 622884,
+     "inst": 6404
+    }
+   },
+   "figPx": {
+    "<2 px": {
+     "calls": 293,
+     "tris": 621092,
+     "inst": 6351
+    },
+    "<8 px": {
+     "calls": 3,
+     "tris": 1536,
+     "inst": 30
+    },
+    "<4 px": {
+     "calls": 2,
+     "tris": 220,
+     "inst": 20
+    }
+   },
+   "figures": {
+    "calls": 575,
+    "tris": 1245494,
+    "distinctGeoAllPasses": 73,
+    "distinctGeoWorld": 37,
+    "blocksDrawn": 32
+   },
+   "camera": {
+    "pos": [
+     -38.8,
+     533.1,
+     66.2
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "ph8-overview-watch": {
+   "calls": 809,
+   "tris": 2501099,
+   "infoCalls": 809,
+   "infoTris": 2501163,
+   "byPass": {
+    "shadow": {
+     "calls": 284,
+     "tris": 1031954,
+     "inst": 7961
+    },
+    "world": {
+     "calls": 518,
+     "tris": 1469138,
+     "inst": 8860
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 12,
+     "tris": 2052,
+     "inst": 63
+    },
+    "shadow | figures: men and horses": {
+     "calls": 218,
+     "tris": 616522,
+     "inst": 5959
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 12,
+     "tris": 2052,
+     "inst": 63
+    },
+    "world | figures: men and horses": {
+     "calls": 218,
+     "tris": 616522,
+     "inst": 5959
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | formation pads": {
+     "calls": 32,
+     "tris": 64,
+     "inst": 32
+    },
+    "world | confidence marks": {
+     "calls": 32,
+     "tris": 11792,
+     "inst": 32
+    },
+    "world | dust": {
+     "calls": 9,
+     "tris": 0,
+     "inst": 9
+    },
+    "world | smoke": {
+     "calls": 21,
+     "tris": 0,
+     "inst": 21
+    },
+    "world | overlays (arrows)": {
+     "calls": 29,
+     "tris": 1868,
+     "inst": 29
+    },
+    "world | trails": {
+     "calls": 28,
+     "tris": 0,
+     "inst": 28
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    },
+    "world | event glyphs": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    }
+   },
+   "figBands": {
+    "shadow | <480": {
+     "calls": 274,
+     "tris": 622610,
+     "inst": 6267
+    },
+    "world | <480": {
+     "calls": 301,
+     "tris": 622884,
+     "inst": 6404
+    }
+   },
+   "figPx": {
+    "<2 px": {
+     "calls": 270,
+     "tris": 527084,
+     "inst": 5423
+    },
+    "<8 px": {
+     "calls": 2,
+     "tris": 384,
+     "inst": 12
+    },
+    "<16 px": {
+     "calls": 2,
+     "tris": 1344,
+     "inst": 24
+    },
+    "<4 px": {
+     "calls": 24,
+     "tris": 94036,
+     "inst": 942
+    }
+   },
+   "figures": {
+    "calls": 575,
+    "tris": 1245494,
+    "distinctGeoAllPasses": 73,
+    "distinctGeoWorld": 37,
+    "blocksDrawn": 32
+   },
+   "camera": {
+    "pos": [
+     -38.8,
+     423.2,
+     54.2
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "ph8-overview-watch-1x": {
+   "calls": 181,
+   "tris": 236693,
+   "infoCalls": 181,
+   "infoTris": 236757,
+   "byPass": {
+    "world": {
+     "calls": 174,
+     "tris": 236686,
+     "inst": 174
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | other: Mesh": {
+     "calls": 1,
+     "tris": 12688,
+     "inst": 1
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | footprints (1x)": {
+     "calls": 32,
+     "tris": 11792,
+     "inst": 32
+    },
+    "world | dust": {
+     "calls": 9,
+     "tris": 0,
+     "inst": 9
+    },
+    "world | smoke": {
+     "calls": 21,
+     "tris": 0,
+     "inst": 21
+    },
+    "world | overlays (arrows)": {
+     "calls": 29,
+     "tris": 1868,
+     "inst": 29
+    },
+    "world | trails": {
+     "calls": 28,
+     "tris": 0,
+     "inst": 28
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    },
+    "world | event glyphs": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    }
+   },
+   "figBands": {},
+   "figPx": {},
+   "figures": {
+    "calls": 0,
+    "tris": 0,
+    "distinctGeoAllPasses": 0,
+    "distinctGeoWorld": 0,
+    "blocksDrawn": 0
+   },
+   "camera": {
+    "pos": [
+     -38.8,
+     422.3,
+     54.1
+    ],
+    "fx": true,
+    "factor": 1,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "ph8-overview-watch-10x": {
+   "calls": 809,
+   "tris": 2501099,
+   "infoCalls": 809,
+   "infoTris": 2501163,
+   "byPass": {
+    "shadow": {
+     "calls": 284,
+     "tris": 1031954,
+     "inst": 7961
+    },
+    "world": {
+     "calls": 518,
+     "tris": 1469138,
+     "inst": 8860
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 12,
+     "tris": 2052,
+     "inst": 63
+    },
+    "shadow | figures: men and horses": {
+     "calls": 218,
+     "tris": 616522,
+     "inst": 5959
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 12,
+     "tris": 2052,
+     "inst": 63
+    },
+    "world | figures: men and horses": {
+     "calls": 218,
+     "tris": 616522,
+     "inst": 5959
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | formation pads": {
+     "calls": 32,
+     "tris": 64,
+     "inst": 32
+    },
+    "world | confidence marks": {
+     "calls": 32,
+     "tris": 11792,
+     "inst": 32
+    },
+    "world | dust": {
+     "calls": 9,
+     "tris": 0,
+     "inst": 9
+    },
+    "world | smoke": {
+     "calls": 21,
+     "tris": 0,
+     "inst": 21
+    },
+    "world | overlays (arrows)": {
+     "calls": 29,
+     "tris": 1868,
+     "inst": 29
+    },
+    "world | trails": {
+     "calls": 28,
+     "tris": 0,
+     "inst": 28
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    },
+    "world | event glyphs": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    }
+   },
+   "figBands": {
+    "shadow | <480": {
+     "calls": 274,
+     "tris": 622610,
+     "inst": 6267
+    },
+    "world | <480": {
+     "calls": 301,
+     "tris": 622884,
+     "inst": 6404
+    }
+   },
+   "figPx": {
+    "<2 px": {
+     "calls": 271,
+     "tris": 551012,
+     "inst": 5657
+    },
+    "<8 px": {
+     "calls": 3,
+     "tris": 1056,
+     "inst": 24
+    },
+    "<4 px": {
+     "calls": 23,
+     "tris": 70108,
+     "inst": 708
+    },
+    "<16 px": {
+     "calls": 1,
+     "tris": 672,
+     "inst": 12
+    }
+   },
+   "figures": {
+    "calls": 575,
+    "tris": 1245494,
+    "distinctGeoAllPasses": 73,
+    "distinctGeoWorld": 37,
+    "blocksDrawn": 32
+   },
+   "camera": {
+    "pos": [
+     -38.9,
+     425,
+     54.3
+    ],
+    "fx": true,
+    "factor": 10.32642489706367,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "eye-zuran": {
+   "calls": 200,
+   "tris": 493787,
+   "infoCalls": 200,
+   "infoTris": 493805,
+   "byPass": {
+    "shadow": {
+     "calls": 36,
+     "tris": 133304,
+     "inst": 1332
+    },
+    "world": {
+     "calls": 157,
+     "tris": 360476,
+     "inst": 1486
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | figures: guns and gear": {
+     "calls": 2,
+     "tris": 60,
+     "inst": 5
+    },
+    "shadow | figures: men and horses": {
+     "calls": 27,
+     "tris": 132144,
+     "inst": 1260
+    },
+    "shadow | standards": {
+     "calls": 7,
+     "tris": 1100,
+     "inst": 67
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 6,
+     "tris": 21130,
+     "inst": 6
+    },
+    "world | draped: stream": {
+     "calls": 6,
+     "tris": 13722,
+     "inst": 6
+    },
+    "world | draped: road": {
+     "calls": 12,
+     "tris": 12982,
+     "inst": 12
+    },
+    "world | draped: road edge": {
+     "calls": 12,
+     "tris": 20632,
+     "inst": 12
+    },
+    "world | other: Mesh": {
+     "calls": 1,
+     "tris": 12688,
+     "inst": 1
+    },
+    "world | figures: guns and gear": {
+     "calls": 1,
+     "tris": 48,
+     "inst": 4
+    },
+    "world | figures: men and horses": {
+     "calls": 27,
+     "tris": 132144,
+     "inst": 1260
+    },
+    "world | standards": {
+     "calls": 11,
+     "tris": 1174,
+     "inst": 104
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | formation pads": {
+     "calls": 3,
+     "tris": 6,
+     "inst": 3
+    },
+    "world | confidence marks": {
+     "calls": 24,
+     "tris": 7036,
+     "inst": 24
+    },
+    "world | dust": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | smoke": {
+     "calls": 6,
+     "tris": 0,
+     "inst": 6
+    },
+    "world | overlays (arrows)": {
+     "calls": 33,
+     "tris": 3010,
+     "inst": 33
+    },
+    "world | event glyphs": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | trails": {
+     "calls": 4,
+     "tris": 0,
+     "inst": 4
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {
+    "shadow | <120": {
+     "calls": 36,
+     "tris": 133304,
+     "inst": 1332
+    },
+    "world | <120": {
+     "calls": 39,
+     "tris": 133366,
+     "inst": 1368
+    }
+   },
+   "figPx": {
+    "<inf px": {
+     "calls": 27,
+     "tris": 96830,
+     "inst": 980
+    },
+    "<8 px": {
+     "calls": 1,
+     "tris": 168,
+     "inst": 14
+    },
+    "<16 px": {
+     "calls": 1,
+     "tris": 96,
+     "inst": 8
+    }
+   },
+   "figures": {
+    "calls": 75,
+    "tris": 266670,
+    "distinctGeoAllPasses": 25,
+    "distinctGeoWorld": 13,
+    "blocksDrawn": 5
+   },
+   "camera": {
+    "pos": [
+     -81.5,
+     3.1,
+     -58
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "eye-zuran-1x": {
+   "calls": 122,
+   "tris": 227111,
+   "infoCalls": 122,
+   "infoTris": 227129,
+   "byPass": {
+    "world": {
+     "calls": 115,
+     "tris": 227104,
+     "inst": 115
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 6,
+     "tris": 21130,
+     "inst": 6
+    },
+    "world | draped: stream": {
+     "calls": 6,
+     "tris": 13722,
+     "inst": 6
+    },
+    "world | draped: road": {
+     "calls": 12,
+     "tris": 12982,
+     "inst": 12
+    },
+    "world | draped: road edge": {
+     "calls": 12,
+     "tris": 20632,
+     "inst": 12
+    },
+    "world | other: Mesh": {
+     "calls": 1,
+     "tris": 12688,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | confidence marks": {
+     "calls": 2,
+     "tris": 1040,
+     "inst": 2
+    },
+    "world | footprints (1x)": {
+     "calls": 22,
+     "tris": 5996,
+     "inst": 22
+    },
+    "world | dust": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | smoke": {
+     "calls": 6,
+     "tris": 0,
+     "inst": 6
+    },
+    "world | overlays (arrows)": {
+     "calls": 33,
+     "tris": 3010,
+     "inst": 33
+    },
+    "world | event glyphs": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | trails": {
+     "calls": 4,
+     "tris": 0,
+     "inst": 4
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {},
+   "figPx": {},
+   "figures": {
+    "calls": 0,
+    "tris": 0,
+    "distinctGeoAllPasses": 0,
+    "distinctGeoWorld": 0,
+    "blocksDrawn": 0
+   },
+   "camera": {
+    "pos": [
+     -81.5,
+     0.8,
+     -58
+    ],
+    "fx": true,
+    "factor": 1,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  },
+  "plans-overview": {
+   "calls": 857,
+   "tris": 2527077,
+   "infoCalls": 857,
+   "infoTris": 2527103,
+   "byPass": {
+    "shadow": {
+     "calls": 289,
+     "tris": 1042554,
+     "inst": 8037
+    },
+    "world": {
+     "calls": 561,
+     "tris": 1484516,
+     "inst": 8974
+    },
+    "post": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "byWhat": {
+    "shadow | other: Mesh": {
+     "calls": 1,
+     "tris": 984,
+     "inst": 82
+    },
+    "shadow | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "shadow | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "shadow | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "shadow | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "shadow | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "shadow | figures: men and horses": {
+     "calls": 226,
+     "tris": 628058,
+     "inst": 6059
+    },
+    "shadow | standards": {
+     "calls": 44,
+     "tris": 4036,
+     "inst": 245
+    },
+    "world | sky": {
+     "calls": 1,
+     "tris": 1216,
+     "inst": 1
+    },
+    "world | ground": {
+     "calls": 1,
+     "tris": 134400,
+     "inst": 1
+    },
+    "world | draped: bank": {
+     "calls": 7,
+     "tris": 21930,
+     "inst": 7
+    },
+    "world | draped: stream": {
+     "calls": 7,
+     "tris": 14202,
+     "inst": 7
+    },
+    "world | draped: road": {
+     "calls": 15,
+     "tris": 14740,
+     "inst": 15
+    },
+    "world | draped: road edge": {
+     "calls": 15,
+     "tris": 23562,
+     "inst": 15
+    },
+    "world | houses": {
+     "calls": 1,
+     "tris": 2676,
+     "inst": 223
+    },
+    "world | roofs": {
+     "calls": 1,
+     "tris": 1464,
+     "inst": 183
+    },
+    "world | other: Mesh": {
+     "calls": 2,
+     "tris": 13672,
+     "inst": 83
+    },
+    "world | spires": {
+     "calls": 1,
+     "tris": 216,
+     "inst": 12
+    },
+    "world | trees": {
+     "calls": 6,
+     "tris": 404004,
+     "inst": 1194
+    },
+    "world | scrub": {
+     "calls": 1,
+     "tris": 200160,
+     "inst": 556
+    },
+    "world | figures: guns and gear": {
+     "calls": 9,
+     "tris": 1116,
+     "inst": 39
+    },
+    "world | figures: men and horses": {
+     "calls": 226,
+     "tris": 628058,
+     "inst": 6059
+    },
+    "world | standards": {
+     "calls": 71,
+     "tris": 4310,
+     "inst": 382
+    },
+    "world | contours": {
+     "calls": 2,
+     "tris": 0,
+     "inst": 2
+    },
+    "world | marsh": {
+     "calls": 1,
+     "tris": 0,
+     "inst": 1
+    },
+    "world | water and ice": {
+     "calls": 4,
+     "tris": 288,
+     "inst": 4
+    },
+    "world | formation pads": {
+     "calls": 31,
+     "tris": 62,
+     "inst": 31
+    },
+    "world | confidence marks": {
+     "calls": 31,
+     "tris": 12600,
+     "inst": 31
+    },
+    "world | plans": {
+     "calls": 81,
+     "tris": 3564,
+     "inst": 81
+    },
+    "world | overlays (arrows)": {
+     "calls": 42,
+     "tris": 2276,
+     "inst": 42
+    },
+    "world | event glyphs": {
+     "calls": 5,
+     "tris": 0,
+     "inst": 5
+    },
+    "post | other: Mesh": {
+     "calls": 7,
+     "tris": 7,
+     "inst": 7
+    }
+   },
+   "figBands": {
+    "shadow | <inf": {
+     "calls": 279,
+     "tris": 633210,
+     "inst": 6343
+    },
+    "world | <inf": {
+     "calls": 306,
+     "tris": 633484,
+     "inst": 6480
+    }
+   },
+   "figPx": {
+    "<2 px": {
+     "calls": 301,
+     "tris": 632584,
+     "inst": 6459
+    },
+    "<4 px": {
+     "calls": 1,
+     "tris": 192,
+     "inst": 6
+    },
+    "<8 px": {
+     "calls": 1,
+     "tris": 672,
+     "inst": 12
+    }
+   },
+   "figures": {
+    "calls": 585,
+    "tris": 1266694,
+    "distinctGeoAllPasses": 71,
+    "distinctGeoWorld": 36,
+    "blocksDrawn": 31
+   },
+   "camera": {
+    "pos": [
+     -38.8,
+     533.1,
+     66.2
+    ],
+    "fx": true,
+    "factor": 4,
+    "mode": "terrain",
+    "viewport": [
+     1600,
+     900
+    ]
+   }
+  }
+ }
+}
