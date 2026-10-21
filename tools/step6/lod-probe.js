@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /* Roadmap step 6 Part A (docs/STEP6_SPEC.md section 3.2): the figure level-of-detail options, prototyped in the page by this probe only (the
    build is unchanged; every change is made to the live scene after the page has started and undone before the next option), and measured:
-   draw calls and triangles of one whole frame, the world pass's time here (software WebGL: relative within this run only, not a GPU's), and
+   draw calls and triangles of one whole frame, the world pass's JavaScript time here (software WebGL: it was found too noisy to compare, 17 to
+   444 ms for one frame; recorded, not used), and
    the share of the free rectangle's pixels that change against the unmodified frame (tools/stage5/lib.js __s5.diff, threshold 8 of 255).
    "Far" is decided per formation block by a man's height on screen (1.8 kit units at its first instance, CSS px), so the rule is the same at
    every factor and viewport; P is that height.
@@ -10,7 +11,7 @@
      extent, a man's height (a rider's on horse), in the mean of the unit's coat instance colours; one instanced mesh for all of them;
      the standards kept as they are;
    - thin(P,k): beyond P, each figure mesh drawn with every k-th man (instances copied down, count divided), so each class keeps its share;
-   - noshadow(P): beyond P, the block's meshes cast no shadow (the shadow map's pass skips them);
+   - noshadow(P): beyond P, the block's meshes cast no shadow (the shadow map's pass skips them); noshadow@all: no block casts one;
    - merge: every figure and standard mesh of every block merged into one instanced mesh per geometry, colour and texture (instancing across
      blocks), its instances in world space; nothing else changes, so the picture should not change (three r128 culls no instanced mesh either
      way);
@@ -23,9 +24,11 @@ const argv=process.argv.slice(2), opt=f=>{ const i=argv.indexOf(f); return i>=0?
 const OUT=opt("--json"), SHOTS=opt("--shots"), ONLY=opt("--only")?opt("--only").split(","):null;
 const CASES=require(path.join(L.ROOT,"tools","visual","cases.js"));
 const byName=n=>CASES.find(c=>c.name===n);
-const VIEWS=["overview-field","overview-plan","pratzen-low","pratzen-low-10x","ph8-overview-watch","close-sokolnitz","selected-formation"].map(byName);
-const OPTIONS=[{id:"blocks",P:4},{id:"blocks",P:8},{id:"thin",P:4,k:4},{id:"thin",P:8,k:4},{id:"noshadow",P:4},{id:"noshadow",P:8},
-  {id:"merge"},{id:"blocks+noshadow",P:4},{id:"blocks+noshadow",P:8}];
+/* the views where the census shows the figures' sizes differ (tools/step6/census.js): the Overview twice (men under 4 px), the Field vantage (8-16 px),
+   the low and the close views (16 px or more) */
+const VIEWS=["overview-plan","ph8-overview-watch","overview-field","pratzen-low","close-sokolnitz"].map(byName);
+/* P 4 px: below it a man is under the size at which the census finds most of the Overview's figures; P "all": every block (no figure casts a shadow) */
+const OPTIONS=[{id:"blocks",P:4},{id:"thin",P:4,k:4},{id:"noshadow",P:4},{id:"noshadow",P:1e9,tag:"all"},{id:"merge"},{id:"blocks+noshadow",P:4}];
 const LOD=function(){
   var V=THREE.Vector3, m4=new THREE.Matrix4(), mw=new THREE.Matrix4(), p0=new V(), p1=new V(), undo=[];
   function meshes(b){ var ud=b.userData, out=[]; if(!ud) return out; [ud.body,ud.std].forEach(function(g){ if(g) g.traverse(function(o){ if(o.isMesh) out.push(o); }); }); return out; }
@@ -124,12 +127,12 @@ const LOD=function(){
     const V={base, options:{}};
     console.log(c.name.padEnd(22),"base calls",base.calls,"tris",base.tris,"world",base.worldMs,"ms; man px blocks",JSON.stringify(base.px),"figure meshes",base.culling.meshes,"frustumCulled",base.culling.culledFlag,"wholly out of view",base.culling.offView,"their tris (world pass)",base.culling.offTris);
     for(const o of OPTIONS){
-      const key=o.id+(o.P?"@"+o.P+"px":"")+(o.k?"/"+o.k:"");
+      const key=o.id+(o.tag?"@"+o.tag:o.P?"@"+o.P+"px":"")+(o.k?"/"+o.k:"");
       const info=await page.evaluate(o=>{ let i={}; o.id.split("+").forEach(id=>{ Object.assign(i,{[id]:id==="thin"?__lod.thin(o.P,o.k):id==="merge"?__lod.merge():__lod[id](o.P)}); }); return i; },o);
       await page.evaluate(()=>requestRender(3));
       const k=await page.evaluate(()=>Object.assign(__lod.cost(),{worldMs:window.__s5.frame(5)}));
       const s=await L.shot(page), d=await page.evaluate(([a,b])=>window.__s5.diff(a,b),[b64,s]);
-      if(SHOTS&&/^(pratzen-low|overview-field|ph8-overview-watch)$/.test(c.name)) fs.writeFileSync(path.join(SHOTS,c.name+"-"+key.replace(/[@\/+]/g,"_")+".png"),Buffer.from(s,"base64"));
+      if(SHOTS&&/^(pratzen-low|overview-plan)$/.test(c.name)) fs.writeFileSync(path.join(SHOTS,c.name+"-"+key.replace(/[@\/+]/g,"_")+".png"),Buffer.from(s,"base64"));
       await page.evaluate(()=>__lod.reset());
       const back=await page.evaluate(()=>__lod.cost());
       V.options[key]=Object.assign({info},k,{changed:d.changed, restored:back.tris===base.tris&&back.calls===base.calls});
