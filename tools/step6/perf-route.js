@@ -13,7 +13,8 @@
    - the interval between animation frames of the build's window (requestAnimationFrame timestamps): the frame time a visitor sees. While a
      segment runs the app draws every animation frame (a still view is kept drawing by requestRender, as an orbit keeps it drawing), so the
      interval is the frame time; a GPU-bound frame shows here, because the browser holds the next animation frame until the GPU catches up;
-   - a long frame: an interval above 1.5 times the display's own refresh interval, measured first with the app's loop paused by this script
+   - a long frame: an interval above 1.5 times the display's own refresh interval and above 25 ms, the refresh measured first with the app's
+     loop paused by this script
      (on a visitor's page the app is never idle while smoke or dust drifts: it redraws at its ambient rate);
    - the app's JavaScript time per drawn frame (its loop() timed by a wrapper): the CPU side; a page cannot read the GPU's own time
      unless the timer query below is offered;
@@ -23,7 +24,7 @@
    The developer readout's "frames drawn/s" (the ` key) is not a frame rate: the app renders on demand and idles; it is not used. */
 (function(root){
   "use strict";
-  var VERSION="step6-perf-route 2";
+  var VERSION="step6-perf-route 3";
   /* the route: the views of the brief, with the harness's own camera for each (tools/visual/cases.js) */
   var OV=[-27,272,41,-27,0,9], FIELD=[-195,92,156,-33,4,-2];
   var PRATZEN={map:[285,289], dir:[-1.0,0.13,0.18], r:70};
@@ -81,13 +82,14 @@
     var pendQ=[];
     w.renderFrame=function(){ var q=null;
       if(TQ&&S.on&&pendQ.length<8){ q=gl.createQuery(); gl.beginQuery(TQ.TIME_ELAPSED_EXT,q); }
-      try{ origRF(); } finally{ if(q){ gl.endQuery(TQ.TIME_ELAPSED_EXT); pendQ.push(q); } }
+      try{ origRF(); } finally{ if(q){ gl.endQuery(TQ.TIME_ELAPSED_EXT); pendQ.push({q:q, gen:S.gen, t:w.performance.now()}); } }
       app.drew=true; };
     function pollQ(){
       if(!TQ) return; var disjoint=gl.getParameter(TQ.GPU_DISJOINT_EXT);
-      while(pendQ.length&&gl.getQueryParameter(pendQ[0],gl.QUERY_RESULT_AVAILABLE)){ var q=pendQ.shift();
-        if(!disjoint&&S.on) S.gpu.push(gl.getQueryParameter(q,gl.QUERY_RESULT)/1e6); gl.deleteQuery(q); }
-      if(disjoint){ pendQ.forEach(function(q){ gl.deleteQuery(q); }); pendQ=[]; } }
+      /* a result counts only for the segment that issued it, and not in its warm-up (as the frame intervals) */
+      while(pendQ.length&&gl.getQueryParameter(pendQ[0].q,gl.QUERY_RESULT_AVAILABLE)){ var P=pendQ.shift();
+        if(!disjoint&&S.on&&P.gen===S.gen&&P.t-S.t0>=SECS.warm*1000) S.gpu.push(gl.getQueryParameter(P.q,gl.QUERY_RESULT)/1e6); gl.deleteQuery(P.q); }
+      if(disjoint){ pendQ.forEach(function(P){ gl.deleteQuery(P.q); }); pendQ=[]; } }
     /* one chain per segment: a chain left from the segment before (its next frame still pending when this one starts) stops at its generation,
        so no frame is counted twice (a first version counted some twice, as 0 ms frames) */
     function tick(ts,gen){
@@ -101,26 +103,33 @@
       if(S.step) S.step((ts-S.t0)/1000);
       if(S.keep) w.requestRender(2);   /* the view kept drawing every frame */
     }
+    /* the page hidden during a segment (a lock screen, a notification, another tab): the segment is flagged, its frames do not stand */
+    function onVis(){ if(w.document.visibilityState!=="visible") S.hidden=true; }
+    w.document.addEventListener("visibilitychange",onVis);
     function sample(secs,step,keep){
       return new Promise(function(res){
+        S.hidden=w.document.visibilityState!=="visible";
         var gen=++S.gen;
         S.rows=[]; S.gpu=[]; S.last=0; S.step=step||null; S.keep=!!keep; S.on=true;
         w.requestAnimationFrame(function(ts){ if(gen!==S.gen) return; S.t0=ts; S.last=0; w.requestAnimationFrame(function(t){ tick(t,gen); }); });
-        w.setTimeout(function(){ S.on=false; S.step=null; S.keep=false; var r=S.rows.slice(); r.gpu=S.gpu.slice(); res(r); }, secs*1000+100);
+        w.setTimeout(function(){ S.on=false; S.step=null; S.keep=false; var r=S.rows.slice(); r.gpu=S.gpu.slice(); r.hidden=S.hidden; res(r); }, secs*1000+100);
       });
     }
     var refresh=null;
+    /* a long frame: above 1.5 refresh intervals (a missed refresh), and never under 25 ms, so that a display faster than 60 Hz does not make a
+       steady 60 frames a second a run of long frames */
+    function longMs(){ return Math.max(1.5*refresh,25); }
     function summarise(id,kind,rows,extra){
       var warm=rows.filter(function(r){ return r.t<SECS.warm*1000; }), R=rows.filter(function(r){ return r.t>=SECS.warm*1000; });
       var dt=R.map(function(r){ return r.dt; }), drawn=R.filter(function(r){ return r.drew; });
-      var js=drawn.map(function(r){ return r.js; }), long=refresh?dt.filter(function(d){ return d>1.5*refresh; }).length:null;
+      var js=drawn.map(function(r){ return r.js; }), long=refresh?dt.filter(function(d){ return d>longMs(); }).length:null;
       var span=dt.reduce(function(a,b){ return a+b; },0);
       return Object.assign({id:id, kind:kind, frames:dt.length, drawn:drawn.length, fps:span?r1(dt.length/(span/1000)):null,
         p50:r1(pct(dt,0.5)), p90:r1(pct(dt,0.9)), p95:r1(pct(dt,0.95)), p99:r1(pct(dt,0.99)), max:r1(dt.length?Math.max.apply(null,dt):null),
         long:long, longPct:long==null||!dt.length?null:r1(100*long/dt.length),
         warmMax:r1(warm.length?Math.max.apply(null,warm.map(function(r){ return r.dt; })):null),
         js50:r1(pct(js,0.5)), js95:r1(pct(js,0.95)), gpu50:rows.gpu&&rows.gpu.length?r1(pct(rows.gpu,0.5)):null, gpu95:rows.gpu&&rows.gpu.length?r1(pct(rows.gpu,0.95)):null, gpuN:rows.gpu?rows.gpu.length:0,
-        calls:pct(drawn.map(function(r){ return r.calls; }),0.5), tris:pct(drawn.map(function(r){ return r.tris; }),0.5)}, extra||{});
+        calls:pct(drawn.map(function(r){ return r.calls; }),0.5), tris:pct(drawn.map(function(r){ return r.tris; }),0.5), hidden:!!rows.hidden}, extra||{});
     }
     /* ---- the moves: the camera written each frame through the app's own camera and clamp (no pointer events) ---- */
     function orbitStep(){
@@ -181,7 +190,7 @@
         var dt=rows.map(function(r){ return r.dt; }); refresh=pct(dt,0.5);
         if(dt.length<20){ refresh=1000/60; out.notes.push("the refresh could not be measured ("+dt.length+" idle frames): 16.7 ms assumed"); }
         else if(refresh>25) out.notes.push("the display refreshed every "+r1(refresh)+" ms while idle (a 30 Hz cap: Low Power Mode on an iPhone, or a battery saver?)");
-        out.refreshMs=r1(refresh);
+        out.refreshMs=r1(refresh); out.longMs=r1(longMs());
         out.segments.push(summarise("idle","idle",rows,{note:"the app's loop paused by this script: the display's own refresh"}));
         out.device=device(); });
     });
@@ -207,8 +216,10 @@
         return sample(SECS.played*scale).then(function(rows){ var c1=G("clock"); if(G("playing")) w.stopPlay(); w.setSpeed(0.5);
           out.segments.push(summarise(p.id,"played",rows,{note:"Play at "+p.speed+"x under Follow from 08:30, Watch", clockFrom:r1(c0), clockTo:r1(c1), follow:!G("freeCam")})); }); });
     });
-    return seq.then(function(){ pendQ.forEach(function(q){ gl.deleteQuery(q); }); pendQ=[]; w.loop=origLoop; w.renderFrame=origRF; out.finished=new Date().toISOString(); out.text=format(out); return out; },
-      function(e){ app.paused=false; w.loop=origLoop; w.renderFrame=origRF; S.on=false; try{ figuresHidden(false); }catch(x){} throw e; });
+    return seq.then(function(){ pendQ.forEach(function(P){ gl.deleteQuery(P.q); }); pendQ=[]; w.document.removeEventListener("visibilitychange",onVis); w.loop=origLoop; w.renderFrame=origRF; out.finished=new Date().toISOString(); out.text=format(out); return out; },
+      function(e){ app.paused=false; w.loop=origLoop; w.renderFrame=origRF; S.on=false; w.document.removeEventListener("visibilitychange",onVis);
+        try{ figuresHidden(false); }catch(x){} try{ if(!G("FX.on")) w.setFXEnabled(true); }catch(x){} try{ if(G("playing")) w.stopPlay(); w.setSpeed(0.5); }catch(x){}
+        throw e; });
   }
   function pad(s,n){ s=String(s==null?"-":s); while(s.length<n) s=" "+s; return s; }
   function format(r){
@@ -219,8 +230,9 @@
     L.push("screen "+(d.screen||[]).join("x")+", viewport "+(d.viewport||[]).join("x")+", devicePixelRatio "+d.dpr+", drawn at "+d.pixelRatio+" ("+(d.buffer||[]).join("x")+
       "), lowTier "+d.lowTier+", effects "+d.fx+" (scale "+d.fxScale+"), in a frame "+d.inFrame);
     if(d.load) L.push("load: DOM ready "+d.load.domReadyMs+" ms, load event "+d.load.loadMs+" ms, "+d.load.transferBytes+" bytes transferred");
-    L.push("build: "+(r.build?r.build.bytes+" bytes, sha256 "+r.build.sha256:"not read")+"; refresh "+r.refreshMs+" ms; long frame > "+(r.refreshMs?r1(1.5*r.refreshMs):"-")+" ms");
+    L.push("build: "+(r.build?r.build.bytes+" bytes, sha256 "+r.build.sha256:"not read")+"; refresh "+r.refreshMs+" ms; long frame > "+(r.longMs||"-")+" ms");
     r.notes.forEach(function(n){ L.push("NOTE: "+n); });
+    r.segments.forEach(function(s){ if(s.hidden) L.push("NOTE: the page was hidden during "+s.id+" "+s.kind+": its numbers do not stand"); });
     L.push(pad("segment",16)+pad("kind",17)+pad("frames",7)+pad("fps",6)+pad("p50",8)+pad("p95",8)+pad("p99",8)+pad("max",8)+pad("long%",7)+pad("warm",8)+pad("js50",8)+pad("js95",8)+pad("gpu50",8)+pad("gpu95",8)+pad("calls",6)+pad("tris",9));
     r.segments.forEach(function(s){ L.push(pad(s.id,16)+pad(s.kind,17)+pad(s.frames,7)+pad(s.fps,6)+pad(s.p50,8)+pad(s.p95,8)+pad(s.p99,8)+pad(s.max,8)+pad(s.longPct,7)+pad(s.warmMax,8)+pad(s.js50,8)+pad(s.js95,8)+pad(s.gpu50,8)+pad(s.gpu95,8)+pad(s.calls,6)+pad(s.tris,9)); });
     L.push("AUS_PERF_JSON "+JSON.stringify(r,function(k,v){ return k==="text"?undefined:v; }));
@@ -230,7 +242,7 @@
   root.AUS_PERF=API;
   /* pasted into the console of the build's own page: run there at once */
   if(root.AUSTERLITZ_DEBUG&&root.AUSTERLITZ_DEBUG.applyCase&&!root.AUS_PERF_NO_AUTORUN){
-    console.log("AUS_PERF: running the route (about 3 minutes); keep this tab in front and do not touch the page");
+    console.log("AUS_PERF: running the route (about 3 minutes); keep this tab in front, the screen on, and do not touch the page");
     run(root,{log:function(m){ console.log("AUS_PERF: "+m); }}).then(function(r){ API.last=r; console.log(r.text); console.log("AUS_PERF: done; copy(AUS_PERF.last.text) copies the report"); },
       function(e){ console.error("AUS_PERF failed:",e); });
   }

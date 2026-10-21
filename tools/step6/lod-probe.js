@@ -2,7 +2,7 @@
 /* Roadmap step 6 Part A (docs/STEP6_SPEC.md section 3.2): the figure level-of-detail options, prototyped in the page by this probe only (the
    build is unchanged; every change is made to the live scene after the page has started and undone before the next option), and measured:
    draw calls and triangles of one whole frame, the world pass's JavaScript time here (software WebGL: it was found too noisy to compare, 17 to
-   444 ms for one frame; recorded, not used), and
+   444 ms for one frame, 2 to 4,208 ms over the second run; recorded, not used), and
    the share of the free rectangle's pixels that change against the unmodified frame (tools/stage5/lib.js __s5.diff, threshold 8 of 255).
    "Far" is decided per formation block by a man's height on screen (1.8 kit units at its first instance, CSS px), so the rule is the same at
    every factor and viewport; P is that height.
@@ -37,7 +37,7 @@ const LOD=function(){
     var ud=b.userData, m=null; if(!ud||!ud.figs||!ud.figs.length) return null; m=ud.figs[0].mesh; if(!m.count) return null;
     b.updateMatrixWorld(true); m.getMatrixAt(0,m4); mw.multiplyMatrices(m.matrixWorld,m4);
     p0.set(0,0,0).applyMatrix4(mw); p1.set(0,1.8,0).applyMatrix4(mw);
-    var a=p0.clone().project(camera), c=p1.clone().project(camera); if(a.z>1) return 0;
+    var a=p0.clone().project(camera), c=p1.clone().project(camera); if(a.z>1) return null;   /* behind the eye: no size (a first version returned 0, "far"; no measured view had a block behind the eye: its far counts are 0 in the low views and every block in the Overviews) */
     return Math.abs(a.y-c.y)*window.innerHeight/2; }
   function drawnBlocks(){ var L=[]; Object.keys(units).forEach(function(id){ var b=units[id].block; if(b&&up(b)) L.push(b); }); return L; }
   function far(P){ return drawnBlocks().filter(function(b){ var px=manPx(b); return px!=null&&px<P; }); }

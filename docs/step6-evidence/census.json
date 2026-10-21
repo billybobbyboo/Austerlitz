@@ -3,7 +3,7 @@
  "views": {
   "overview-field": {
    "calls": 832,
-   "tris": 2523513,
+   "tris": 2523605,
    "infoCalls": 832,
    "infoTris": 2523605,
    "byPass": {
@@ -14,7 +14,7 @@
     },
     "world": {
      "calls": 536,
-     "tris": 1480952,
+     "tris": 1481044,
      "inst": 8949
     },
     "post": {
@@ -166,22 +166,22 @@
     },
     "world | dust": {
      "calls": 8,
-     "tris": 0,
+     "tris": 16,
      "inst": 8
     },
     "world | smoke": {
      "calls": 33,
-     "tris": 0,
+     "tris": 66,
      "inst": 33
     },
     "world | overlays (arrows)": {
      "calls": 42,
-     "tris": 2276,
+     "tris": 2278,
      "inst": 42
     },
     "world | event glyphs": {
      "calls": 5,
-     "tris": 0,
+     "tris": 8,
      "inst": 5
     },
     "world | trails": {
@@ -263,13 +263,13 @@
   },
   "overview-field-1x": {
    "calls": 195,
-   "tris": 237909,
+   "tris": 238001,
    "infoCalls": 195,
    "infoTris": 238001,
    "byPass": {
     "world": {
      "calls": 188,
-     "tris": 237902,
+     "tris": 237994,
      "inst": 188
     },
     "post": {
@@ -336,22 +336,22 @@
     },
     "world | dust": {
      "calls": 8,
-     "tris": 0,
+     "tris": 16,
      "inst": 8
     },
     "world | smoke": {
      "calls": 33,
-     "tris": 0,
+     "tris": 66,
      "inst": 33
     },
     "world | overlays (arrows)": {
      "calls": 42,
-     "tris": 2276,
+     "tris": 2278,
      "inst": 42
     },
     "world | event glyphs": {
      "calls": 5,
-     "tris": 0,
+     "tris": 8,
      "inst": 5
     },
     "world | trails": {
@@ -391,7 +391,7 @@
   },
   "overview-field-10x": {
    "calls": 832,
-   "tris": 2523513,
+   "tris": 2523605,
    "infoCalls": 832,
    "infoTris": 2523605,
    "byPass": {
@@ -402,7 +402,7 @@
     },
     "world": {
      "calls": 536,
-     "tris": 1480952,
+     "tris": 1481044,
      "inst": 8949
     },
     "post": {
@@ -554,22 +554,22 @@
     },
     "world | dust": {
      "calls": 8,
-     "tris": 0,
+     "tris": 16,
      "inst": 8
     },
     "world | smoke": {
      "calls": 33,
-     "tris": 0,
+     "tris": 66,
      "inst": 33
     },
     "world | overlays (arrows)": {
      "calls": 42,
-     "tris": 2276,
+     "tris": 2278,
      "inst": 42
     },
     "world | event glyphs": {
      "calls": 5,
-     "tris": 0,
+     "tris": 8,
      "inst": 5
     },
     "world | trails": {
@@ -651,7 +651,7 @@
   },
   "overview-plan": {
    "calls": 832,
-   "tris": 2523513,
+   "tris": 2523605,
    "infoCalls": 832,
    "infoTris": 2523605,
    "byPass": {
@@ -662,7 +662,7 @@
     },
     "world": {
      "calls": 536,
-     "tris": 1480952,
+     "tris": 1481044,
      "inst": 8949
     },
     "post": {
@@ -814,22 +814,22 @@
     },
     "world | dust": {
      "calls": 8,
-     "tris": 0,
+     "tris": 16,
      "inst": 8
     },
     "world | smoke": {
      "calls": 33,
-     "tris": 0,
+     "tris": 66,
      "inst": 33
     },
     "world | overlays (arrows)": {
      "calls": 42,
-     "tris": 2276,
+     "tris": 2278,
      "inst": 42
     },
     "world | event glyphs": {
      "calls": 5,
-     "tris": 0,
+     "tris": 8,
      "inst": 5
     },
     "world | trails": {
@@ -896,7 +896,7 @@
   },
   "close-sokolnitz": {
    "calls": 781,
-   "tris": 2478151,
+   "tris": 2478209,
    "infoCalls": 781,
    "infoTris": 2478209,
    "byPass": {
@@ -907,7 +907,7 @@
     },
     "world": {
      "calls": 499,
-     "tris": 1458566,
+     "tris": 1458624,
      "inst": 8702
     },
     "post": {
@@ -1059,22 +1059,22 @@
     },
     "world | dust": {
      "calls": 7,
-     "tris": 0,
+     "tris": 14,
      "inst": 7
     },
     "world | smoke": {
      "calls": 18,
-     "tris": 0,
+     "tris": 36,
      "inst": 18
     },
     "world | overlays (arrows)": {
      "calls": 38,
-     "tris": 3300,
+     "tris": 3304,
      "inst": 38
     },
     "world | event glyphs": {
      "calls": 3,
-     "tris": 0,
+     "tris": 4,
      "inst": 3
     },
     "world | trails": {
@@ -1166,13 +1166,13 @@
   },
   "close-sokolnitz-1x": {
    "calls": 181,
-   "tris": 238569,
+   "tris": 238629,
    "infoCalls": 181,
    "infoTris": 238629,
    "byPass": {
     "world": {
      "calls": 174,
-     "tris": 238562,
+     "tris": 238622,
      "inst": 174
     },
     "post": {
@@ -1239,22 +1239,22 @@
     },
     "world | dust": {
      "calls": 7,
-     "tris": 0,
+     "tris": 14,
      "inst": 7
     },
     "world | smoke": {
      "calls": 18,
-     "tris": 0,
+     "tris": 36,
      "inst": 18
     },
     "world | overlays (arrows)": {
      "calls": 41,
-     "tris": 3350,
+     "tris": 3354,
      "inst": 41
     },
     "world | event glyphs": {
      "calls": 4,
-     "tris": 0,
+     "tris": 6,
      "inst": 4
     },
     "world | trails": {
@@ -1294,7 +1294,7 @@
   },
   "close-sokolnitz-10x": {
    "calls": 769,
-   "tris": 2477085,
+   "tris": 2477135,
    "infoCalls": 769,
    "infoTris": 2477135,
    "byPass": {
@@ -1305,7 +1305,7 @@
     },
     "world": {
      "calls": 487,
-     "tris": 1457500,
+     "tris": 1457550,
      "inst": 8690
     },
     "post": {
@@ -1457,22 +1457,22 @@
     },
     "world | dust": {
      "calls": 4,
-     "tris": 0,
+     "tris": 8,
      "inst": 4
     },
     "world | smoke": {
      "calls": 18,
-     "tris": 0,
+     "tris": 36,
      "inst": 18
     },
     "world | overlays (arrows)": {
      "calls": 35,
-     "tris": 3130,
+     "tris": 3134,
      "inst": 35
     },
     "world | event glyphs": {
      "calls": 2,
-     "tris": 0,
+     "tris": 2,
      "inst": 2
     },
     "world | trails": {
@@ -1564,13 +1564,13 @@
   },
   "staff-paper": {
    "calls": 148,
-   "tris": 238691,
+   "tris": 238701,
    "infoCalls": 148,
    "infoTris": 238701,
    "byPass": {
     "world": {
      "calls": 141,
-     "tris": 238684,
+     "tris": 238694,
      "inst": 141
     },
     "post": {
@@ -1637,12 +1637,12 @@
     },
     "world | overlays (arrows)": {
      "calls": 34,
-     "tris": 1692,
+     "tris": 1694,
      "inst": 34
     },
     "world | event glyphs": {
      "calls": 5,
-     "tris": 0,
+     "tris": 8,
      "inst": 5
     },
     "world | trails": {
@@ -1682,7 +1682,7 @@
   },
   "pratzen-low": {
    "calls": 758,
-   "tris": 2480127,
+   "tris": 2480181,
    "infoCalls": 758,
    "infoTris": 2480181,
    "byPass": {
@@ -1693,7 +1693,7 @@
     },
     "world": {
      "calls": 473,
-     "tris": 1454154,
+     "tris": 1454208,
      "inst": 8736
     },
     "post": {
@@ -1845,22 +1845,22 @@
     },
     "world | dust": {
      "calls": 2,
-     "tris": 0,
+     "tris": 4,
      "inst": 2
     },
     "world | smoke": {
      "calls": 23,
-     "tris": 0,
+     "tris": 46,
      "inst": 23
     },
     "world | overlays (arrows)": {
      "calls": 30,
-     "tris": 1334,
+     "tris": 1336,
      "inst": 30
     },
     "world | event glyphs": {
      "calls": 2,
-     "tris": 0,
+     "tris": 2,
      "inst": 2
     },
     "world | trails": {
@@ -1952,7 +1952,7 @@
   },
   "selected-formation": {
    "calls": 764,
-   "tris": 2518029,
+   "tris": 2518041,
    "infoCalls": 764,
    "infoTris": 2518041,
    "byPass": {
@@ -1963,7 +1963,7 @@
     },
     "world": {
      "calls": 468,
-     "tris": 1475468,
+     "tris": 1475480,
      "inst": 8881
     },
     "post": {
@@ -2115,17 +2115,17 @@
     },
     "world | smoke": {
      "calls": 3,
-     "tris": 0,
+     "tris": 6,
      "inst": 3
     },
     "world | overlays (arrows)": {
      "calls": 42,
-     "tris": 2276,
+     "tris": 2278,
      "inst": 42
     },
     "world | event glyphs": {
      "calls": 3,
-     "tris": 0,
+     "tris": 4,
      "inst": 3
     },
     "world | selection ring": {
@@ -2212,7 +2212,7 @@
   },
   "watch-selected": {
    "calls": 740,
-   "tris": 2483551,
+   "tris": 2483573,
    "infoCalls": 740,
    "infoTris": 2483573,
    "byPass": {
@@ -2223,7 +2223,7 @@
     },
     "world": {
      "calls": 454,
-     "tris": 1457566,
+     "tris": 1457588,
      "inst": 8717
     },
     "post": {
@@ -2375,17 +2375,17 @@
     },
     "world | smoke": {
      "calls": 9,
-     "tris": 0,
+     "tris": 18,
      "inst": 9
     },
     "world | overlays (arrows)": {
      "calls": 38,
-     "tris": 1916,
+     "tris": 1918,
      "inst": 38
     },
     "world | event glyphs": {
      "calls": 2,
-     "tris": 0,
+     "tris": 2,
      "inst": 2
     },
     "world | trails": {
@@ -2477,7 +2477,7 @@
   },
   "hybrid-dimmed": {
    "calls": 740,
-   "tris": 2485213,
+   "tris": 2485223,
    "infoCalls": 740,
    "infoTris": 2485223,
    "byPass": {
@@ -2488,7 +2488,7 @@
     },
     "world": {
      "calls": 454,
-     "tris": 1459228,
+     "tris": 1459238,
      "inst": 8717
     },
     "post": {
@@ -2640,17 +2640,17 @@
     },
     "world | smoke": {
      "calls": 3,
-     "tris": 0,
+     "tris": 6,
      "inst": 3
     },
     "world | overlays (arrows)": {
      "calls": 42,
-     "tris": 2562,
+     "tris": 2564,
      "inst": 42
     },
     "world | event glyphs": {
      "calls": 2,
-     "tris": 0,
+     "tris": 2,
      "inst": 2
     },
     "world | trails": {
@@ -2732,13 +2732,13 @@
   },
   "pratzen-low-1x": {
    "calls": 160,
-   "tris": 227733,
+   "tris": 227787,
    "infoCalls": 160,
    "infoTris": 227787,
    "byPass": {
     "world": {
      "calls": 153,
-     "tris": 227726,
+     "tris": 227780,
      "inst": 153
     },
     "post": {
@@ -2805,22 +2805,22 @@
     },
     "world | dust": {
      "calls": 2,
-     "tris": 0,
+     "tris": 4,
      "inst": 2
     },
     "world | smoke": {
      "calls": 23,
-     "tris": 0,
+     "tris": 46,
      "inst": 23
     },
     "world | overlays (arrows)": {
      "calls": 30,
-     "tris": 1334,
+     "tris": 1336,
      "inst": 30
     },
     "world | event glyphs": {
      "calls": 2,
-     "tris": 0,
+     "tris": 2,
      "inst": 2
     },
     "world | trails": {
@@ -2860,7 +2860,7 @@
   },
   "pratzen-low-10x": {
    "calls": 759,
-   "tris": 2480127,
+   "tris": 2480183,
    "infoCalls": 759,
    "infoTris": 2480183,
    "byPass": {
@@ -2871,7 +2871,7 @@
     },
     "world": {
      "calls": 474,
-     "tris": 1454154,
+     "tris": 1454210,
      "inst": 8737
     },
     "post": {
@@ -3023,22 +3023,22 @@
     },
     "world | dust": {
      "calls": 2,
-     "tris": 0,
+     "tris": 4,
      "inst": 2
     },
     "world | smoke": {
      "calls": 24,
-     "tris": 0,
+     "tris": 48,
      "inst": 24
     },
     "world | overlays (arrows)": {
      "calls": 30,
-     "tris": 1334,
+     "tris": 1336,
      "inst": 30
     },
     "world | event glyphs": {
      "calls": 2,
-     "tris": 0,
+     "tris": 2,
      "inst": 2
     },
     "world | trails": {
@@ -3130,13 +3130,13 @@
   },
   "paper-north-up": {
    "calls": 156,
-   "tris": 240905,
+   "tris": 240915,
    "infoCalls": 156,
    "infoTris": 240915,
    "byPass": {
     "world": {
      "calls": 149,
-     "tris": 240898,
+     "tris": 240908,
      "inst": 149
     },
     "post": {
@@ -3203,12 +3203,12 @@
     },
     "world | overlays (arrows)": {
      "calls": 42,
-     "tris": 2276,
+     "tris": 2278,
      "inst": 42
     },
     "world | event glyphs": {
      "calls": 5,
-     "tris": 0,
+     "tris": 8,
      "inst": 5
     },
     "world | trails": {
@@ -3248,13 +3248,13 @@
   },
   "paper-close": {
    "calls": 103,
-   "tris": 203451,
+   "tris": 203455,
    "infoCalls": 103,
    "infoTris": 203455,
    "byPass": {
     "world": {
      "calls": 96,
-     "tris": 203444,
+     "tris": 203448,
      "inst": 96
     },
     "post": {
@@ -3321,12 +3321,12 @@
     },
     "world | overlays (arrows)": {
      "calls": 23,
-     "tris": 2980,
+     "tris": 2982,
      "inst": 23
     },
     "world | event glyphs": {
      "calls": 2,
-     "tris": 0,
+     "tris": 2,
      "inst": 2
     },
     "world | trails": {
@@ -3366,13 +3366,13 @@
   },
   "paper-drawer": {
    "calls": 110,
-   "tris": 226493,
+   "tris": 226499,
    "infoCalls": 110,
    "infoTris": 226499,
    "byPass": {
     "world": {
      "calls": 103,
-     "tris": 226486,
+     "tris": 226492,
      "inst": 103
     },
     "post": {
@@ -3434,12 +3434,12 @@
     },
     "world | overlays (arrows)": {
      "calls": 27,
-     "tris": 1334,
+     "tris": 1336,
      "inst": 27
     },
     "world | event glyphs": {
      "calls": 3,
-     "tris": 0,
+     "tris": 4,
      "inst": 3
     },
     "post | other: Mesh": {
@@ -3474,13 +3474,13 @@
   },
   "paper-laptop": {
    "calls": 156,
-   "tris": 240905,
+   "tris": 240915,
    "infoCalls": 156,
    "infoTris": 240915,
    "byPass": {
     "world": {
      "calls": 149,
-     "tris": 240898,
+     "tris": 240908,
      "inst": 149
     },
     "post": {
@@ -3547,12 +3547,12 @@
     },
     "world | overlays (arrows)": {
      "calls": 42,
-     "tris": 2276,
+     "tris": 2278,
      "inst": 42
     },
     "world | event glyphs": {
      "calls": 5,
-     "tris": 0,
+     "tris": 8,
      "inst": 5
     },
     "world | trails": {
@@ -3592,7 +3592,7 @@
   },
   "narrow-1024": {
    "calls": 832,
-   "tris": 2523513,
+   "tris": 2523605,
    "infoCalls": 832,
    "infoTris": 2523605,
    "byPass": {
@@ -3603,7 +3603,7 @@
     },
     "world": {
      "calls": 536,
-     "tris": 1480952,
+     "tris": 1481044,
      "inst": 8949
     },
     "post": {
@@ -3755,22 +3755,22 @@
     },
     "world | dust": {
      "calls": 8,
-     "tris": 0,
+     "tris": 16,
      "inst": 8
     },
     "world | smoke": {
      "calls": 33,
-     "tris": 0,
+     "tris": 66,
      "inst": 33
     },
     "world | overlays (arrows)": {
      "calls": 42,
-     "tris": 2276,
+     "tris": 2278,
      "inst": 42
     },
     "world | event glyphs": {
      "calls": 5,
-     "tris": 0,
+     "tris": 8,
      "inst": 5
     },
     "world | trails": {
@@ -3852,7 +3852,7 @@
   },
   "ph8-overview-study": {
    "calls": 809,
-   "tris": 2501099,
+   "tris": 2501163,
    "infoCalls": 809,
    "infoTris": 2501163,
    "byPass": {
@@ -3863,7 +3863,7 @@
     },
     "world": {
      "calls": 518,
-     "tris": 1469138,
+     "tris": 1469202,
      "inst": 8860
     },
     "post": {
@@ -4015,17 +4015,17 @@
     },
     "world | dust": {
      "calls": 9,
-     "tris": 0,
+     "tris": 18,
      "inst": 9
     },
     "world | smoke": {
      "calls": 21,
-     "tris": 0,
+     "tris": 42,
      "inst": 21
     },
     "world | overlays (arrows)": {
      "calls": 29,
-     "tris": 1868,
+     "tris": 1870,
      "inst": 29
     },
     "world | trails": {
@@ -4040,7 +4040,7 @@
     },
     "world | event glyphs": {
      "calls": 1,
-     "tris": 0,
+     "tris": 2,
      "inst": 1
     }
    },
@@ -4097,7 +4097,7 @@
   },
   "ph8-overview-watch": {
    "calls": 809,
-   "tris": 2501099,
+   "tris": 2501163,
    "infoCalls": 809,
    "infoTris": 2501163,
    "byPass": {
@@ -4108,7 +4108,7 @@
     },
     "world": {
      "calls": 518,
-     "tris": 1469138,
+     "tris": 1469202,
      "inst": 8860
     },
     "post": {
@@ -4260,17 +4260,17 @@
     },
     "world | dust": {
      "calls": 9,
-     "tris": 0,
+     "tris": 18,
      "inst": 9
     },
     "world | smoke": {
      "calls": 21,
-     "tris": 0,
+     "tris": 42,
      "inst": 21
     },
     "world | overlays (arrows)": {
      "calls": 29,
-     "tris": 1868,
+     "tris": 1870,
      "inst": 29
     },
     "world | trails": {
@@ -4285,7 +4285,7 @@
     },
     "world | event glyphs": {
      "calls": 1,
-     "tris": 0,
+     "tris": 2,
      "inst": 1
     }
    },
@@ -4347,13 +4347,13 @@
   },
   "ph8-overview-watch-1x": {
    "calls": 181,
-   "tris": 236693,
+   "tris": 236757,
    "infoCalls": 181,
    "infoTris": 236757,
    "byPass": {
     "world": {
      "calls": 174,
-     "tris": 236686,
+     "tris": 236750,
      "inst": 174
     },
     "post": {
@@ -4420,17 +4420,17 @@
     },
     "world | dust": {
      "calls": 9,
-     "tris": 0,
+     "tris": 18,
      "inst": 9
     },
     "world | smoke": {
      "calls": 21,
-     "tris": 0,
+     "tris": 42,
      "inst": 21
     },
     "world | overlays (arrows)": {
      "calls": 29,
-     "tris": 1868,
+     "tris": 1870,
      "inst": 29
     },
     "world | trails": {
@@ -4445,7 +4445,7 @@
     },
     "world | event glyphs": {
      "calls": 1,
-     "tris": 0,
+     "tris": 2,
      "inst": 1
     }
    },
@@ -4475,7 +4475,7 @@
   },
   "ph8-overview-watch-10x": {
    "calls": 809,
-   "tris": 2501099,
+   "tris": 2501163,
    "infoCalls": 809,
    "infoTris": 2501163,
    "byPass": {
@@ -4486,7 +4486,7 @@
     },
     "world": {
      "calls": 518,
-     "tris": 1469138,
+     "tris": 1469202,
      "inst": 8860
     },
     "post": {
@@ -4638,17 +4638,17 @@
     },
     "world | dust": {
      "calls": 9,
-     "tris": 0,
+     "tris": 18,
      "inst": 9
     },
     "world | smoke": {
      "calls": 21,
-     "tris": 0,
+     "tris": 42,
      "inst": 21
     },
     "world | overlays (arrows)": {
      "calls": 29,
-     "tris": 1868,
+     "tris": 1870,
      "inst": 29
     },
     "world | trails": {
@@ -4663,7 +4663,7 @@
     },
     "world | event glyphs": {
      "calls": 1,
-     "tris": 0,
+     "tris": 2,
      "inst": 1
     }
    },
@@ -4725,7 +4725,7 @@
   },
   "eye-zuran": {
    "calls": 200,
-   "tris": 493787,
+   "tris": 493805,
    "infoCalls": 200,
    "infoTris": 493805,
    "byPass": {
@@ -4736,7 +4736,7 @@
     },
     "world": {
      "calls": 157,
-     "tris": 360476,
+     "tris": 360494,
      "inst": 1486
     },
     "post": {
@@ -4838,17 +4838,17 @@
     },
     "world | dust": {
      "calls": 1,
-     "tris": 0,
+     "tris": 2,
      "inst": 1
     },
     "world | smoke": {
      "calls": 6,
-     "tris": 0,
+     "tris": 12,
      "inst": 6
     },
     "world | overlays (arrows)": {
      "calls": 33,
-     "tris": 3010,
+     "tris": 3014,
      "inst": 33
     },
     "world | event glyphs": {
@@ -4920,13 +4920,13 @@
   },
   "eye-zuran-1x": {
    "calls": 122,
-   "tris": 227111,
+   "tris": 227129,
    "infoCalls": 122,
    "infoTris": 227129,
    "byPass": {
     "world": {
      "calls": 115,
-     "tris": 227104,
+     "tris": 227122,
      "inst": 115
     },
     "post": {
@@ -4998,17 +4998,17 @@
     },
     "world | dust": {
      "calls": 1,
-     "tris": 0,
+     "tris": 2,
      "inst": 1
     },
     "world | smoke": {
      "calls": 6,
-     "tris": 0,
+     "tris": 12,
      "inst": 6
     },
     "world | overlays (arrows)": {
      "calls": 33,
-     "tris": 3010,
+     "tris": 3014,
      "inst": 33
     },
     "world | event glyphs": {
@@ -5053,7 +5053,7 @@
   },
   "plans-overview": {
    "calls": 857,
-   "tris": 2527077,
+   "tris": 2527103,
    "infoCalls": 857,
    "infoTris": 2527103,
    "byPass": {
@@ -5064,7 +5064,7 @@
     },
     "world": {
      "calls": 561,
-     "tris": 1484516,
+     "tris": 1484542,
      "inst": 8974
     },
     "post": {
@@ -5216,17 +5216,17 @@
     },
     "world | plans": {
      "calls": 81,
-     "tris": 3564,
+     "tris": 3580,
      "inst": 81
     },
     "world | overlays (arrows)": {
      "calls": 42,
-     "tris": 2276,
+     "tris": 2278,
      "inst": 42
     },
     "world | event glyphs": {
      "calls": 5,
-     "tris": 0,
+     "tris": 8,
      "inst": 5
     },
     "post | other: Mesh": {

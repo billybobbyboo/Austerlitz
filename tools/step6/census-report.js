@@ -4,6 +4,8 @@
    Reads the JSON only; arithmetic, no measurement. */
 const fs=require("fs");
 const R=JSON.parse(fs.readFileSync(process.argv[2],"utf8")), V=R.views, out=[];
+/* metres per world unit from GEOREF, the one scale authority (geo.js), not a constant typed here */
+const GEOREF=new Function(require("fs").readFileSync(require("path").join(__dirname,"..","..","geo.js"),"utf8")+";return GEOREF;")();
 const k=n=>n==null?"-":n>=1e6?(n/1e6).toFixed(2)+" M":n>=1e3?(n/1e3).toFixed(1)+" k":String(n);
 const pc=(a,b)=>b?(100*a/b).toFixed(1)+"%":"-";
 out.push("# The census of one whole frame (tools/step6/census.js)\n");
@@ -26,14 +28,16 @@ for(const n of pick){
   Object.entries(v.byWhat).sort((a,b)=>b[1].tris-a[1].tris).forEach(([w,x])=>{ const [p,what]=w.split(" | "); if(x.tris<1000&&x.calls<5) return;
     out.push(`| ${p} | ${what} | ${x.calls} | ${k(x.tris)} | ${pc(x.tris,v.tris)} | ${x.inst} |`); });
   if(Object.keys(v.figBands).length){
-    out.push(`\nThe figures by their block's distance from the eye (world units; ${(63.2).toFixed(1)} m each, GEOREF.M_PER_WORLD):\n`);
-    out.push("| pass | distance | calls | triangles |"); out.push("|---|---|---|---|");
-    Object.entries(v.figBands).sort().forEach(([b,x])=>out.push(`| ${b.split(" | ")[0]} | ${b.split(" | ")[1]} | ${x.calls} | ${k(x.tris)} |`));
-    out.push("\nThe figures in the world pass by a man's height on screen (CSS px, at the block's first instance):\n");
+    out.push(`\nThe figures by their block's distance from the eye (world units, upper bound of each band; ${GEOREF.M_PER_WORLD.toFixed(1)} m each, GEOREF.M_PER_WORLD):\n`);
+    out.push("| pass | distance (world units) | about (km) | calls | triangles |"); out.push("|---|---|---|---|---|");
+    const lim=b=>{ const x=b.split(" | ")[1].slice(1); return x==="inf"?1e9:+x; };
+    Object.entries(v.figBands).sort((a,b)=>a[0].split(" | ")[0].localeCompare(b[0].split(" | ")[0])||lim(a[0])-lim(b[0])).forEach(([b,x])=>{ const u=lim(b);
+      out.push(`| ${b.split(" | ")[0]} | under ${u>=1e9?"any":u} | ${u>=1e9?"-":"under "+(u*GEOREF.M_PER_WORLD/1000).toFixed(1)} | ${x.calls} | ${k(x.tris)} |`); });
+    out.push("\nThe figures in the world pass by a vertical man's height on screen (CSS px, a 1.8-unit vertical segment at the block's first instance: it follows the camera's pitch as much as its distance; tools/step6/size-probe.js measures a man's bounding sphere instead):\n");
     out.push("| a man's height | calls | triangles | instances |"); out.push("|---|---|---|---|");
     const ord=["<2 px","<4 px","<8 px","<16 px","<inf px"];
     ord.filter(b=>v.figPx[b]).forEach(b=>{ const x=v.figPx[b]; out.push(`| ${b.replace("<inf","16 px or more").replace("<2 px","under 2 px").replace("<4 px","2-4 px").replace("<8 px","4-8 px").replace("<16 px","8-16 px")} | ${x.calls} | ${k(x.tris)} | ${x.inst} |`); });
-    out.push(`\nDistinct figure geometries and textures drawn: ${v.figures.distinctGeoWorld} in the world pass, ${v.figures.distinctGeoAllPasses} counting each pass (what instancing across blocks would draw as one call each); the figures' calls now: ${v.figures.calls}.`);
+    out.push(`\nDistinct figure geometries and textures drawn: ${v.figures.distinctGeoWorld} in the world pass, ${v.figures.distinctGeoAllPasses} counting each pass (by geometry and texture; tools/step6/lod-probe.js's merge, which also keys the colour, made 39-40 meshes); the figures' calls now: ${v.figures.calls}.`);
   }
 }
 process.stdout.write(out.join("\n")+"\n");

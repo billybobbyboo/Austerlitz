@@ -21,10 +21,10 @@ headless Chromium with software WebGL (SwiftShader) as the Stage 0 harness runs 
 
 | script | section | what it does |
 |---|---|---|
-| `perf-route.js` | 2 | the frame-time route for real hardware: drives the build through `AUSTERLITZ_DEBUG.applyCase` over 25 segments and prints a report to paste back |
+| `perf-route.js` | 2 | the frame-time route for real hardware: drives the build through `AUSTERLITZ_DEBUG.applyCase` over 23 segments and prints a report to paste back |
 | `perf-run.html` | 2 | the route's page for a phone: the build in a same-origin frame, Start, the report with Copy and Share |
 | `perf-local.js [--way paste\|frame] [--device desktop\|iphone] [--viewport WxH] [--quick] [--only ids] [--json f]` | 2.4 | runs the route here under Playwright, both ways, to show it runs (its frame times are software WebGL) |
-| `census.js [--json f] [--only views]` | 3.1 | every draw call of one whole frame in 30 views, by pass, by what is drawn, by distance and by a man's height on screen |
+| `census.js [--json f] [--only views]` | 3.1 | every draw call of one whole frame in 26 views, by pass, by what is drawn, by distance and by a man's height on screen |
 | `census-report.js census.json` | 3.1 | the census as tables (`docs/step6-evidence/census.md`) |
 | `lod-probe.js [--json f] [--shots dir] [--only views]` | 3.2 | the level-of-detail options prototyped in the live scene and measured, each undone before the next |
 | `phone-probe.js [--layout current\|compact\|sheets\|menu] [--only sizes] [--states s] [--json f] [--shots dir]` | 4 | the build at five phone sizes with touch, the device's density and a phone's user agent, eight states each, by real taps |
@@ -32,7 +32,7 @@ headless Chromium with software WebGL (SwiftShader) as the Stage 0 harness runs 
 
 Their outputs, screenshots and a README are in `docs/step6-evidence/`.
 
-## 1. In short
+## In short
 
 - **Item 1 (question 139).** The route and protocol are ready (§2): a script the owner pastes into the browser's console on the laptop (Windows,
   Intel integrated GPU, Chrome or Edge), and a page for the iPhone (Safari) opened from a hosted copy. About 30 minutes of the owner's time and a
@@ -82,11 +82,12 @@ Their outputs, screenshots and a README are in `docs/step6-evidence/`.
   `node_modules/three/build/three.js`, 0.128.0, the page's release), and `makeBlock` does not set it back: every block's meshes are submitted in
   every frame, in every pass, whatever the camera sees. The census (§3.1) shows it: a close view of Sokolnitz draws 98% of the Field view's
   triangles. §3.2 measures what a cull by each block's own bounds would skip.
-- **The phone path.** `lowTier` (`app.js:593-594`): window under 900 x 700 CSS px or a mobile user agent; then the buffer at most 1.5 device px
+- **The phone path.** `lowTier` (`app.js:593-594`): a window of under 900 x 700 CSS px in area (`innerWidth*innerHeight < 900*700`) or a mobile user agent; then the buffer at most 1.5 device px
   per CSS px, the shadow map 1,024 px, the post-processing at scale 1.0.
-- **At 1x and at the eye level there is no shadow pass** (measured, §3.1: 0 shadow-map draw calls). The trees, scrub, roofs, spires, chimneys
-  and houses are not drawn there (`app.js:1881-1889`, `syncLandscapeLayers`: `landscapeVisible()` is false at 1x and at the eye level, Stages 2B
-  and 5E), the formations are footprints at 1x (decision 34), and nothing else casts a shadow.
+- **At 1x there is no shadow pass** (measured, §3.1: 0 shadow-map draw calls in every 1x view). The trees, scrub, roofs, spires, chimneys and
+  houses are not drawn at 1x or at the eye level (`app.js:1881-1889`, `syncLandscapeLayers`: `landscapeVisible()` is false there, Stages 2B and
+  5E), and at 1x the formations are footprints (decision 34), so nothing casts a shadow. At the eye level, drawn at 4x, the figures still do:
+  `eye-zuran`'s shadow pass is 36 calls and 133 k triangles, 27% of its frame.
 - **The audit's P-1 is an inference, and it overstates.** P-1 took the figures as the 4x frame's triangles less the 1x frame's ("so about 2.29
   million are figures and standards"). Counted call by call (§3.1), the figures and standards are 1.23 million of the low Pratzen view's 2.48
   million (49.7%, both passes); the rest of the difference is the trees (0.81 million with their shadows), the scrub (0.20 million) and the
@@ -103,11 +104,13 @@ Every frame time this project has recorded is software WebGL: SwiftShader in hea
 - **It renders on demand** (`app.js` `frameState`, `loop`): a frame is drawn while a tween, Play, recent input, a settling easing or a
   requested render is live; otherwise nothing is drawn. The developer readout's "frames drawn/s" (the ` key, `paintDevStats`) counts the frames
   drawn in the last half second: a still view reads near 0 and says nothing of what a frame costs. A frame time must be taken while the app
-  draws every animation frame: while the camera moves, while the clock plays, or with the view kept drawing.
+  draws every animation frame: while the camera moves, while the clock plays, or with the view kept drawing. So the route replaces the
+  readout that decision 139's recommendation named ("with the developer readout"): a departure from its wording, recorded for the owner
+  (question 216 covers the route as a whole).
 - **On a visitor's page it is not idle while the battle smokes.** Without `?harness=1`, `ambientNow()` (`app.js`) keeps drawing at the ambient
   rate (`AMBIENT_MS` 90: about 11 frames a second) whenever a formation's smoke or dust or a broken formation's sway is visible (read from
   the code). So the display's own refresh interval can only be measured with the app's loop paused (§2.2).
-- **The phone takes a lighter path.** `lowTier` is set when the window is under 900 x 700 CSS px or the user agent names Android, iPhone, iPad
+- **The phone takes a lighter path.** `lowTier` is set when the window's area is under 900 x 700 CSS px or the user agent names Android, iPhone, iPad
   or Mobile (`app.js:593-594`): the drawing buffer at most 1.5 device pixels per CSS pixel (2 otherwise), the shadow map 1,024 px (4,096 or
   2,048 otherwise), the post-processing's scale 1.0 (1.3 otherwise). An iPad on iPadOS reports a desktop user agent (inference, from Safari's
   documented default; not measured here) and so takes the desktop path at a large window.
@@ -135,8 +138,9 @@ warm-up (shader compiles, texture uploads), reported apart as `warm` (its longes
 
 **The brief's "ten clock minutes played at 4x" is a quarter of a second.** Play advances `MIN_PER_SEC × speed` clock minutes a second
 (`app.js:2373`: 10), so at 4x ten clock minutes last 0.25 s plus any dwell: about 15 frames at 60 Hz, too few for a 95th percentile. The played
-segments therefore run for 12 s of real time each from 08:30 and record the clock they covered (`clockFrom`, `clockTo`); at 4x that is about
-three hours of the day with its dwells, at ½× about an hour. Recorded as a departure from the brief's wording, for the owner (question 216).
+segments therefore run for 12 s of real time each from 08:30 and record the clock they covered (`clockFrom`, `clockTo`): with the dwells at the event starts, at 4x
+to about 10:15 and at ½x to about 09:10 (computed by the review from `dwellAdvance` and the event starts, not measured on a GPU; the report
+gives each run's own). Recorded as a departure from the brief's wording, for the owner (question 216).
 
 Per segment the report gives: frames, frames a second, the frame interval's median, 95th and 99th percentiles and maximum (ms), the share of
 **long frames** (an interval above 1.5 R, a missed refresh), the warm-up's longest frame, the app's JavaScript time per drawn frame (median and
@@ -149,8 +153,9 @@ size, `lowTier`, effects and their scale, whether it runs in a frame), the page'
 (fetched by the page) and the refresh interval. A JSON line, `AUS_PERF_JSON {...}`, carries everything for the record.
 
 **How a frame time is read.** The interval between animation frames of the build's window is the frame time a visitor sees. A frame bound by
-the GPU shows there too: the browser does not run the next animation frame until the GPU has taken the last (fact for Chrome and Safari's
-compositors as they behave; it is how frame-rate meters in pages work). So: a long interval with a short JavaScript time is the GPU (or the
+the GPU shows there too: the browser does not run the next animation frame until the GPU has taken the last (inference: it is how frame-rate
+meters in pages work and how Chrome's and Safari's compositors are understood to behave; no source was read for it here; the GPU timer, where
+offered, checks it). So: a long interval with a short JavaScript time is the GPU (or the
 compositor); a JavaScript time near or above R is the CPU.
 
 **What it does not change.** The build is opened as served, without `?harness=1` (a visitor's page: drift and smoke move). The script's own
@@ -172,15 +177,18 @@ Two ways to host, the owner's choice (publishing the build is an outward-facing 
 - **Any static host** (for example a drag-and-drop host): upload a folder holding `austerlitz-command-map.html` and `tools/step6/` with its
   two files, keeping that layout (the wrapper looks for the build at `../../austerlitz-command-map.html`; `?src=` names another path).
 
-**The runs** (about 30 minutes in all; each run about 3.5 minutes, during which nothing may be touched):
+**The runs** (about 30 minutes in all; each run about 3 minutes, during which nothing may be touched):
 
 | run | device and browser | how | why |
 |---|---|---|---|
-| L1 | the Windows laptop, Chrome or Edge, the window maximised, zoom 100%, plugged in | open the hosted build; wait for the first-run card; F12, Console; paste the whole of `perf-route.js` (Chrome asks to type "allow pasting" the first time); Enter; when "done" shows, type `copy(AUS_PERF.last.text)` and paste the report into a reply | the decision run (§3.4) |
+| L1 | the Windows laptop, Chrome or Edge, the window maximised, zoom 100%, plugged in | open the hosted build; wait for the first-run card; F12, then undock DevTools into its own window (its ⋮ menu, "Dock side": the separate window), so the page keeps the window's whole size; Console; paste the whole of `perf-route.js` (Chrome asks to type "allow pasting" the first time); Enter; bring the page's window to the front and leave both alone; when "done" shows, type `copy(AUS_PERF.last.text)` and paste the report into a reply. The report's "viewport" line shows the size measured: it should be the maximised window's | the decision run (§3.4) |
 | L2 | the same | after 2 minutes' rest, L1 again | repeatability: a drop must show in both |
 | L3 | the same | open the hosted `tools/step6/perf-run.html`; Start; Copy | the frame's own cost on the same machine, so the phone's numbers (frame only) can be read against L1 |
-| P1 | the iPhone, Safari, Low Power Mode off, Reduce Motion off (Settings → Accessibility → Motion), held upright | open the hosted `tools/step6/perf-run.html`; wait for "Press Start"; Start; keep the screen on and do not touch it; Copy (or Share to Notes or Mail) | the phone (decision 139's second machine) |
+| P1 | the iPhone, Safari, Low Power Mode off, Reduce Motion off (Settings → Accessibility → Motion), **Auto-Lock set to Never** for the runs (Settings → Display & Brightness → Auto-Lock; set it back after: iOS locks after 30 s untouched by default, and a locked page draws nothing), held upright | open the hosted `tools/step6/perf-run.html`; wait for "Press Start"; Start (the page also asks the browser to keep the screen awake, where offered); do not touch it; Copy (or Share to Notes or Mail) | the phone (decision 139's second machine) |
 | P2 | the same | after 2 minutes' rest, P1 again | repeatability and heat |
+
+A segment during which the page was hidden (a lock, a notification, another tab) is marked in the report ("NOTE: the page was hidden
+during ..."), and the run is repeated (§3.4, rule 5).
 
 Before L1: `chrome://gpu` (or `edge://gpu`) should say "WebGL: Hardware accelerated"; note the laptop's model and, if known, the GPU's name
 (the report carries the browser's WebGL renderer string, which on Windows names the GPU through ANGLE). Safari reports "Apple GPU" only, so
@@ -202,8 +210,8 @@ hundreds of milliseconds to seconds here) and decide nothing.
 
 ### 3.1 The census (measured; hardware-independent)
 
-`tools/step6/census.js` records every draw call of one whole frame where three issues it, in each of the harness's 24 non-fresh views and the
-three views drawn at every factor at 1x and 10.33x as well (30 frames); the sum is checked against `renderer.info` for the same frame (equal in
+`tools/step6/census.js` records every draw call of one whole frame where three issues it, in each of the harness's 20 views that are neither fresh pages nor real
+pointer input (`tools/visual/cases.js` has 30: 9 fresh, 1 interaction), and three of them at 1x and 10.33x as well (26 frames); the sum is checked against `renderer.info` for the same frame (equal in
 every view: calls exactly; triangles to within the sprites' (at most 92 a frame), which the first run did not count and the committed script
 does). The tables are `docs/step6-evidence/census.md`.
 
@@ -217,7 +225,7 @@ The low Pratzen view at 4x (`pratzen-low`), by what is drawn:
 
 | what | world pass | shadow pass | together | share |
 |---|---|---|---|---|
-| men and horses (the figure kit) | 611.5 k in 216 calls | 611.5 k in 216 calls | 1.22 M | 49.4% |
+| men and horses (the figure kit) | 611.5 k in 216 calls | 611.5 k in 216 calls | 1.22 M | 49.3% |
 | trees (6 instanced meshes, 1,194 trees) | 404.0 k | 404.0 k | 0.81 M | 32.6% |
 | scrub (556) | 200.2 k | none (does not cast) | 0.20 M | 8.1% |
 | the ground (one mesh) | 134.4 k | none | 0.13 M | 5.4% |
@@ -230,7 +238,7 @@ The low Pratzen view at 4x (`pratzen-low`), by what is drawn:
 
 **The figures' size on screen decides what a level of detail can save.** A man's height on screen (CSS px at 1600 x 900), world pass:
 
-| view | figure triangles, world pass | a man under 2 px | 2-4 px | 4-8 px | 8-16 px | 16 px or more |
+| view | men and horses, world pass | a man under 2 px | 2-4 px | 4-8 px | 8-16 px | 16 px or more |
 |---|---|---|---|---|---|---|
 | the Overview (`overview-plan`) | 628 k | 566 k | 67 k | | 0.7 k | |
 | phase 8, the Overview (`ph8-overview-watch`) | 617 k | 527 k | 94 k | 0.4 k | 1.3 k | |
@@ -239,7 +247,8 @@ The low Pratzen view at 4x (`pratzen-low`), by what is drawn:
 | close on Sokolnitz (`close-sokolnitz`) | 605 k | | 0.9 k | 0.7 k | 1.9 k | 607 k |
 | the eye level (`eye-zuran`) | 132 k | | | 0.2 k | 0.1 k | 97 k |
 
-(rows may not sum exactly: a mesh whose first man is behind the eye has no size and is not banded.)
+(the bands count every mesh of a block, its standards and gear too, so a row can sum to a little more than its first column; a mesh whose
+first man is behind the eye has no size and is not banded.)
 
 So: from the Overview nine tenths of the figures' triangles draw men under 2 px tall, which no one can see as men; in the Field vantage
 they are 8-16 px; in the low and close views 16 px or more, everywhere, because every block, near or far, is drawn many times life size
@@ -247,7 +256,8 @@ they are 8-16 px; in the low and close views 16 px or more, everywhere, because 
 Overview and almost none in the low views.
 
 **Draw calls.** The figures take 556-585 of the 740-857 calls at 4x (both passes), in 36-37 distinct geometries and textures per pass (71-73
-counting both): instancing across blocks would draw them in about 73 calls.
+counting both). Instancing across blocks, as `lod-probe.js` built it (keyed by geometry, colour and texture), made 39-40 meshes of the
+289-303: the figures in about 80 calls of both passes instead of 556-585 (§3.2).
 
 ### 3.2 The options, prototyped and measured (`tools/step6/lod-probe.js`)
 
@@ -272,7 +282,8 @@ pass's JavaScript time was recorded and found too noisy under software WebGL to 
 - **No size-keyed option touches the low or close views**: at the 4x default every man there is 16 px or more, near or far (the scale
   convention). In the Overviews, a far form halves the frame.
 - **Shadows**: the figures' shadow pass is a quarter of every 4x frame, and dropping it changes at most 1% of the free rectangle's pixels at
-  this resolution (the low Pratzen view; none close on Sokolnitz, where the blocks' shadows fall under other blocks). It is the one figure
+  this resolution (the low Pratzen view; none close on Sokolnitz at 08:20, a low sun and the valley fog's hour: why none there was not traced, and the share
+  depends on the hour). It is the one figure
   lever that reaches every view.
 - **Culling** would skip about half the figures' world-pass triangles in the low and close views (339 k and 293 k), with nothing on screen
   changing; the shadow pass would cull by the light's frustum, not the eye's (three does so for meshes that allow culling), so shadows cast
@@ -298,9 +309,14 @@ option.
 | option | what is then drawn, against the claims | what the self-test reads today (its checks, `app.js`) | what it would then have to check | the claims at risk |
 |---|---|---|---|---|
 | **blocks** (beyond P, one box per drawn unit) | each far unit a box in the mean of its men's coat colours: the class's settled coat, or the nation's symbol colour where the table does not settle it (as the men); no headgear, legwear, cuirass or horse colour, which below P are under a pixel; the units are the same units, so decision 100's shares hold by construction; standards unchanged | 6C "figures: every figure drawn as its class's claims say" and "each drawn battalion ... takes a class in proportion" read each block's `ud.dress` records, their meshes' instance colours and geometries; "figures: every visible man, horse and standard stands on the drawn ground" reads `figureError()` over the kit's meshes; the legend's figure rows; decision 107's side cue | the same two 6C checks over the near form, unchanged, **and** over the far form: one box per drawn unit of each class, its colour the class's coat (or the nation's) within the jitter band, no box for a unit not drawn; the far form seated (each box's footprint on the drawn ground within the 0.02 units the men are held to: a box spanning a battalion's frontage on the 10.33x relief's slopes cannot be, so the far form must follow the ground, a draped quad or one box per file); the switch between forms at P on screen, at 1x, 4x and 10.33x; the legend's figure row still true (it says "figures": a far box is a symbol of the same figures) | the far form's colour must be the near form's (never a new colour); a unit's box must never stand where its men would not (the seating) |
-| **thin** (beyond P, every k-th man) | the same classes, fewer men per unit: the share of each class kept (each class's mesh thinned alike); the men per unit is a layout value (`kitBlock`'s files and ranks), not a claim; standards unchanged | as above | the two 6C checks unchanged (they read the class records, whose units do not change); the men drawn per unit stated as a design value; the seating check reads the thinned men (unchanged code path) | none known: no claim counts men per unit |
+| **thin** (beyond P, every k-th man) | the same classes, fewer men per unit: the share of each class kept (each class's mesh thinned alike); the men per unit is a layout value (`kitBlock`'s files and ranks), not a claim; standards unchanged | as above | the probe's thinning lasts one frame: `layoutFigs` (`app.js:1116-1132`) rewrites every instance from its base whenever a block lays out, and `showBattalions` (`app.js:1159`) shows the first `u*perBat` instances, assuming each unit's men contiguous. A real thinning changes both (a per-unit stride in the base table and in the count) and the per-unit ranges the 6C checks read; those checks then read the thinned layout, the seating check its men; the men drawn per unit stated as a design value | none known: no claim counts men per unit |
 | **noshadow** (beyond P, or every block) | the figures exactly as now, without their shadow beyond P | no self-test check reads which objects cast shadows (4B's light checks read the shadow box's fit, not the casters) | a check that a block beyond P casts none and one within casts | none (a shadow is light, not a claim); visually the far blocks lose their contact with the ground (§3.2's pixel share) |
 | **merge** (instancing across blocks) | identical (§3.2 measures it) | every 6C and 6D check reads per-block meshes (`ud.dress[].meshes`, `ud.figs`, `ud.seat`, `ud.poles`, `ud.flagMeshes`, `ud.finials`); `layoutFigs` and `placeStandards` write per-block instance matrices whenever a block moves or redeploys | every one of those checks rewritten to read the merged buffers through a block-to-range index, equally strictly; the per-frame cost of copying moved blocks' matrices into the merged buffers measured (a CPU cost the GPU saving must exceed) | none in what is drawn; the risk is in the code: the 6C/6D paths are the most checked in the build, and every one would be touched |
+
+**Impostors** (each far unit as a picture of its figures on a camera-facing quad) were not prototyped. A box per unit is 12 triangles, a quad 2:
+in the Overview the 195 boxes are about 4.7 k triangles of both passes, so an impostor could save at most that much more than the box (0.2%
+of the frame), and its picture would carry the same claims as the box's colour, plus a texture per class and angle to keep true to them. The
+box measures the saving any far form can make.
 
 **Culling** is not an option of the brief's, but the census makes it one (§0.2: no block is ever culled): culling each block by its own bounds
 (a sphere round its men, kept as it moves) changes nothing drawn on screen and nothing the self-test reads (it reads blocks, not what the GPU
@@ -314,29 +330,34 @@ a level of detail that does not cure it. The rule below therefore asks two thing
 figures are what drops them. It is applied to the laptop's runs L1 and L2 (§2.3) by the analysis after them, mechanically; the phone's runs do
 not decide 138 (decision 138 names an integrated GPU; the phone's numbers go to question 222).
 
-**Definitions** (from the report; R is the run's measured refresh interval):
-- a segment **drops frames** when more than 5% of its frames are long (an interval above 1.5 R), or its 95th percentile is above 1.5 R;
-- the **decisive segments**: `overview` orbit, `ph8-overview` orbit (the Overview), `pratzen-low-4x` orbit and `pratzen-low-10x` orbit (the low
-  views), and `play-4x` and `play-half` (the clock played under Follow, which moves the camera between those views);
-- a drop is **the figures'** when, in the same view, the `orbit -figures` segment does not drop frames, or its share of long frames is at most
-  half the `orbit` segment's (for `pratzen-low-10x`, the 4x view's diagnostic: the same view, its relief drawn taller; for a played segment, the view it spends most of its time in: the report's camera is not recorded per frame, so the
-  played segments count as the figures' only if the Overview's or the low views' diagnostics do).
+**Definitions** (from the report the route prints; R is the run's measured refresh interval, and a frame is **long** when its interval is
+above the report's "long frame" value, max(1.5 R, 25 ms): a missed refresh, never counted under 25 ms, so that a 120 or 144 Hz panel does
+not turn a steady 60 frames a second into long frames):
+- a segment **drops frames** when more than 5% of its frames are long (the report's `long%`); one criterion only;
+- the **decisive segments** are the four orbits of the views decision 138 names: `overview` and `ph8-overview` (the Overview), `pratzen-low-4x`
+  and `pratzen-low-10x` (the low views). The held segments, the other views and the played segments are reported and read, but decide
+  nothing (the played segments run from the Field vantage under Follow, a view 138 does not name);
+- a drop is **cured** by hiding the figures when the same view's `orbit -figures` segment does not drop frames (for `pratzen-low-10x`, the 4x
+  view's diagnostic: the same view, its relief drawn taller); a reduction short of that is not a cure;
+- a run **stands** when its refresh was measured (no "could not be measured" note) and no decisive segment, nor its diagnostic, is marked
+  hidden.
 
-**The rule:**
-1. If no decisive segment drops frames in both L1 and L2: **138 is retired** (the item closes; nothing is built; recorded in the roadmap).
-2. If one or more drops frames in both runs and the drop is the figures' in at least one of them: **138 is built**, its form chosen by
-   question 219 against §3.2's measures: first what reaches every view and changes least on screen (no figure shadows, culling by the
-   blocks' bounds), the laptop measured again, then a far form only for a view that still drops (in the Overview, where most men are under
-   4 px; no size-keyed form helps the low views, where every man is 16 px or more).
-3. If frames drop in both runs but the figures' diagnostic does not cure it: **138 is retired as a level of detail**, and what the other
-   diagnostics show is put to the owner as a new question (question 220): `orbit -effects` curing it points at the post-processing (its 1.3
-   scale renders 1.69 times the screen's pixels on a laptop); neither curing it points at the shadow map, the trees or the fill; a JavaScript time
-   near or above R points at the CPU.
-4. A drop in one run only is reported and not counted (heat, a notification, a background task); if L1 and L2 disagree on a decisive segment,
-   a third run (L1 again) settles that segment by two of three.
+**The rule**, applied in this order to the laptop's runs that stand:
+1. A decisive segment that drops frames in one of L1 and L2 and not in the other is settled by a third run (L1 again): two of three decide
+   it.
+2. If no decisive segment drops frames: **138 is retired** (the item closes; nothing is built; recorded in the roadmap).
+3. If a decisive segment drops frames and its drop is cured by hiding the figures (in two runs of the three, or both of two): **138 is
+   built**, its form chosen by question 219 against §3.2's measures: first what reaches every view and changes least on screen (no figure
+   shadows; culling, question 221), the laptop measured again, then a far form only for a view that still drops.
+4. If decisive segments drop frames and none is cured by hiding the figures: **138 is retired as a level of detail**, and what the other
+   diagnostics show goes to the owner as a new question (question 220): `orbit -effects` curing it points at the post-processing (its 1.3
+   scale renders 1.69 times the drawing buffer's pixels on a laptop); neither curing it points at the shadow map, the trees or the fill; a
+   JavaScript time (`js50`) near or above R points at the CPU.
+5. A run that does not stand is repeated before the rule is applied.
 
-The thresholds (5%, 1.5 R) are design values chosen for this rule: at 60 Hz, 5% is three missed frames a second, the point at which a pan is
-visibly uneven (inference: no study was read for it); 1.5 R is the first interval that is a missed refresh rather than jitter.
+The thresholds (5%, max(1.5 R, 25 ms)) are design values chosen for this rule: at 60 Hz, 5% is three missed frames a second, the point at
+which a pan is visibly uneven (inference: no study was read for it); 1.5 R is the first interval that is a missed refresh rather than jitter,
+and 25 ms (40 frames a second) the floor under it.
 
 ## 4. Item 3: a phone layout (question 137; A-4)
 
@@ -407,7 +428,7 @@ first run's JSON is superseded by the second.
 (`narrow-390`, the harness's case at density 1, holds the first screen at [0.438, 0.507]: the probe's 0.4388 at density 3 with touch agrees.)
 
 What the five sizes show (the 390 x 844 screenshots are named; every size alike unless said):
-- **The timeline takes 172-174 px** in portrait (20-21% of the height), 178 px in Watch (212 px at 360 wide), 90.5 px held landscape. Its
+- **The timeline takes 172-174 px** in portrait (19-22% of the height), 178 px in Watch (212 px at 360 wide), 90.5 px held landscape. Its
   control row wraps into three rows below 720 px (the transport; the clock, the caption and the Eyes button; "?" and the speeds).
 - **Cut text, every portrait size**: the five act names ("The De…", "Th…"), eight of the ten phase names, and the caption's event
   ("Friant retakes Telnitz, then lo…"); with the rail open, its tab row ("Command Plans" runs into the edge, `current-*-panels.png`) and the
@@ -458,8 +479,14 @@ At the other portrait sizes alike (`phone.md`): after "Explore", today 0.19-0.20
 0.22 with the menu; the Panels 0.44 today, 0.15 and 0.17: **landscape keeps today's side panels** (question 226).
 
 What the prototypes leave open, measured:
+- **The free area is not where the battle is drawn.** The map layer's items in the view (placed of all in view, `layer` in the JSON) at
+  390 x 844: the first screen 9 of 14 today, 10 of 18 compact, 15 of 23 sheets, 20 of 30 menu; but after "Explore" with the clock at 09:30
+  (the phase's camera, Follow on) **0 of 0** today, compact and with sheets (1 of 1), 3 of 4 with the menu: the camera frames the phase for
+  the build's own panels, and in portrait the formations fall at the screen's foot under the card or sheet (`phone/sheets-390x844-explore.png`:
+  the free area holds the Litava's name only). Held landscape 11-15 items are placed. A phone layout must frame the presets, Follow and
+  the opening in the free area its sheets leave (`landFreeRect`, `syncViewOffset`), and §4.5 measures it.
 - **The phases.** On a proportional time axis (decision 53: one axis, proportional to time) the three 45-minute phases (08:00-08:45,
-  08:45-09:30, 10:30-11:15) are 45/840 of the track: 18.4 px at 360, 20 at 390, 21.2 at 412, 22.2 at 430. No styling of the track makes them
+  08:45-09:30, 10:30-11:15) are 45/840 of the track: measured 18.2 px at 360, 19.8 at 390, 21 at 412, 22 at 430 (45/840 of the track's width). No styling of the track makes them
   24 px while the axis stays proportional and the phases stay presses on it. Question 224.
 - **Watch's timeline grows** (163-175 px) when the presentation switch joins the control row: one more row. The Menu could hold the switch
   in Watch too; not built.
@@ -478,7 +505,7 @@ timeline recorded, not held. A phone layout would make phones a supported layout
 **The harness (`tools/visual/harness.js`, `cases.js`, `thresholds.js`).**
 - **A device per case**: `cases.js` gains an optional `device` ({density, touch, mobile user agent}); `harness.js` opens such a case in a
   context with them (as `phone-probe.js` does), its screenshot taken at CSS scale for the text measures. Today every page is density 1
-  (`harness.js:44`).
+  (`harness.js:43`).
 - **The cases** (each a fresh page reached by real taps, as the 7B and 7C cases are): `phone-390-first`, `phone-390-explore`,
   `phone-390-dossier`, `phone-390-watch`, `phone-390-layers`, `phone-360-explore` (the narrowest), `phone-430-explore` (the widest portrait),
   `phone-844x390-explore` (held landscape); with question 229, a 390 case at the height the iPhone's report gives. `narrow-390` stays as it is
@@ -490,10 +517,12 @@ timeline recorded, not held. A phone layout would make phones a supported layout
   need the owner's answer to question 224 first); no text cut but where the layout means it to be (a list the case names, each with its
   reason, as `LANG_ALLOW` names its entries); no two interface panels overlapping; every feature on the screen or one named control away
   (the reach list of §4.1, each "hidden" naming the control that shows it).
+- **Framing**: in every phone case the map layer's items placed in the free area held to a floor per case (measured once, as the drop limits),
+  so that the free area is where the battle is drawn (§4.4: today 0 items after "Explore" at 390 px).
 - **The self-test**: the layout's own checks (the sheets' heights, the Menu's focus order and Esc, the dispatch sheet's grip, decision 165's
   dossier stopped above the timeline), as 3B's and 7B's were added.
 
-**The contrast check (`tools/visual/contrast.js`).** Today its 35 states are at 1600 x 900 (`contrast.js:189`), with the start-up cases on
+**The contrast check (`tools/visual/contrast.js`).** Today its 35 states are at 1600 x 900 (`contrast.js:188`), with the start-up cases on
 their own pages. It would gain a second page at 390 x 844 (density 3, touch, the mobile user agent) with the phone states: the first screen,
 explore, the dossier, Watch, the Layers panel, the paper map, the tour, the Menu open, the dispatch sheet open; every text element at AA and
 the 10.5 px floor, as now. The density-3 screenshot is read at CSS scale; whether that lowers a thin glyph's measured contrast (§4.1) is
@@ -521,7 +550,7 @@ session of the kind each roadmap step took):
 
 | item | the owner's part | the work after it | estimate |
 |---|---|---|---|
-| 1 | host a copy (10-30 minutes, once); five runs of about 3.5 minutes with rests (about 30 minutes); paste the reports back | read the reports against §3.4's rule and record the result (a records-only commit: `CHANGELOG.md`, `docs/ROADMAP.md`, the reports in `docs/step6-evidence/`) | under one session |
+| 1 | host a copy (10-30 minutes, once); five runs of about 3 minutes with rests (about 30 minutes); paste the reports back | read the reports against §3.4's rule and record the result (a records-only commit: `CHANGELOG.md`, `docs/ROADMAP.md`, the reports in `docs/step6-evidence/`) | under one session |
 | 2, retired | none | the records only (with item 1's commit) | none further |
 | 2, built: culling only (question 221) | none | each block culled by its own bounds, kept as it moves; the shadow pass by the light's frustum; a self-test check; measured | one session |
 | 2, built: a far form (blocks or thinning) with no shadow beyond P | the form's look (screenshots to approve) | the far form, its seating on the drawn ground at every factor, its colour checks against the classes (§3.3), the switch at P, the harness's figure measures re-run; measured against item 1's numbers on the owner's laptop again | two to three sessions |
@@ -551,20 +580,25 @@ Each with options, a recommendation and what it costs. Nothing is built until th
 another, 3 only after 2 is closed; (c) 3 first. **Recommended: (a).** Item 3 needs no GPU number but question 222's, and item 1 needs only the
 owner's half hour. Cost: none beyond the items'; (b) delays the phone layout by item 2's sessions if 2 is built.
 
-**216. The played segments.** The brief asked for "ten clock minutes played at 4x"; at 4x that is a quarter of a second (§2.2).
-(a) as built: 12 s of real time at 4x and at ½x from 08:30, the clock covered recorded; (b) ten clock minutes at ½x (2 s, about 120 frames at
-60 Hz); (c) both (a) and (b). **Recommended: (a)**: enough frames for a 99th percentile in each, and ½x is the visitor's default speed. Cost:
-none (built); (c) adds 2 s to each run.
+**216. The route's two departures from the words it was asked for.** (i) The brief asked for "ten clock minutes played at 4x": at 4x that
+is a quarter of a second (§2.2), so the played segments run 12 s at 4x and at ½x from 08:30 and record the clock covered. (ii) Decision 139's
+recommendation measured "with the developer readout"; its "frames drawn/s" is not a frame rate (§2.1), so the route measures frame
+intervals instead. (a) both as built; (b) (i) as ten clock minutes at ½x (2 s, about 120 frames at 60 Hz); (c) (a) and (b) both.
+**Recommended: (a)**: enough frames for the percentiles in each, ½x the visitor's default speed; the readout stays for the developer.
+Cost: none (built); (c) adds 2 s to each run.
 
-**217. The hosted copy.** (a) GitHub Pages from the repository (public to anyone with the address; a private repository needs a paid plan);
+**217. The hosted copy.** (a) GitHub Pages from the repository (every file on `main` then has a public address, the documents, the evidence's
+quoted passages and the archived builds included, not only the two files the runs need; a private repository needs a paid plan);
 (b) another static host the owner uses, the two files kept in their folders; (c) no hosted copy: the laptop runs from a local server
 (`python -m http.server` in the repository) and the phone is not measured, decision 139 half done. **Recommended: (a) or (b), the owner's
-choice**; it can be taken down after the runs. Cost: 10-30 minutes once; the build is then public while it stands.
+choice**, (b) with only the build and `tools/step6/` if the rest should not be public; either can be taken down after the runs. Cost: 10-30
+minutes once; what is hosted is public while it stands.
 
-**218. The rule that decides 138** (§3.4). (a) as stated: built only if a decisive segment drops frames (more than 5% long frames, or a 95th
-percentile above 1.5 R) in both laptop runs and hiding the figures cures it; (b) stricter: any decisive segment over 1% long frames; (c)
-looser: the Overview only. **Recommended: (a).** It asks the measurement two things, whether frames drop and whether the figures are why, so a
-level of detail is built only where it can help. Cost: none now; (b) would build on drops a visitor barely sees.
+**218. The rule that decides 138** (§3.4). (a) as stated: built only if one of the four decisive orbits (the two Overviews, the low view at
+4x and 10.33x) has more than 5% long frames (above max(1.5 R, 25 ms)) in two runs and hiding the figures cures it there; (b) stricter: more
+than 1% long frames; (c) the played segments decisive too. **Recommended: (a).** It asks the measurement two things, whether frames drop
+in the views 138 names and whether the figures are why, so a level of detail is built only where it can help. Cost: none now; (b) would
+build on drops a visitor barely sees; (c) would count views 138 does not name.
 
 **219. If 138 is built, which form.** Measured (§3.2): in the Overview, a box per unit beyond 4 px halves the frame (2.6% of the pixels
 change, and green and white blocks become fields of colour); every fourth man saves 36% (0.6%); no figure shadow saves 25% in every 4x view
@@ -575,32 +609,35 @@ reach the low views (where 138's drops would matter most and no size-keyed form 
 the claims do not settle. Cost: (a) one session; (b) one more, with the seating checks (§3.3); (c) and (d) change how the Overview reads (the
 side's cue, decision 107) and want screenshots approved.
 
-**220. If frames drop but the figures are not why** (§3.4, rule 3). (a) record it and stop: no performance work; (b) a performance step on
+**220. If frames drop but the figures are not why** (§3.4, rule 4). (a) record it and stop: no performance work; (b) a performance step on
 the lever the diagnostics name (the post-processing's scale, the shadow map, the trees, the fill), with its own Part A; (c) build the level of
 detail anyway. **Recommended: (b)**, its Part A to measure the lever on the owner's laptop before anything is changed (decision 139's rule).
 Cost: a Part A session; nothing built without its own decision.
 
 **221. Culling the blocks** (§0.2, §3.2): no figure block is ever culled; in the low and close views about half the figures' world-pass
 triangles (339 k, 293 k) are drawn out of view. (a) a small change of its own, whatever 138 decides: each block culled by its own bounds,
-kept as it moves, nothing on screen changing; (b) only as part of a built 138; (c) leave it. **Recommended: (b) unless item 1 shows the low
-views dropping frames**, then (a) first: a change to the draw path is performance work, and decision 139 puts the measurement before it.
-Cost: one session; the self-test gains a check that every block in the view is drawn.
+kept as it moves, nothing on screen changing; (b) only as part of a built 138 (question 219's first step); (c) leave it. **Recommended: (b).**
+Decision 139 puts the measurement before any performance work, and if the low views do not drop frames there is nothing to gain; if they do
+and the figures are why, 138 is built and culling comes first in it. Cost: one session within 138; the self-test gains a check that every
+block in the view is drawn.
 
 **222. The phone's own drawing.** If the iPhone's runs drop frames: (a) the phone layout only, the drawing unchanged; (b) a lighter drawing
 on phones as well (effects off by default, no shadows, or a lower density than `lowTier`'s 1.5), each measured on the phone; (c) decide after
 the phone's runs. **Recommended: (c).** Cost: none now.
 
 **223. The phone layout's parts** (§4.3-§4.4). (a) all three: the compact timeline, the sheets (portrait only), the controls behind a Menu;
-(b) the compact timeline and the sheets, the tools kept as they are; (c) the compact timeline only. **Recommended: (a)**: after "Explore" the
+(b) the compact timeline and the sheets, the tools kept as they are; (c) the compact timeline only. **Recommended: (a)**, with the framing fixed: after "Explore" the
 map's free share goes from 0.19-0.20 to 0.62-0.65, with a dossier from 0.03-0.05 to 0.29-0.32, and the overlaps of today go but the two
-sheets' (to be ruled). Cost: three to four sessions with the cases of §4.5 (§5).
+sheets' (to be ruled); but free area is not yet a view of the battle (§4.4: 0 of 0 map items in view after "Explore" at 390 px today, 3 of 4
+with the menu), so the presets, Follow and the opening must be framed into it, which the prototypes did not do. Cost: three to four sessions with the cases of §4.5 (§5).
 
 **224. The phases on a phone.** On a proportional axis the three 45-minute phases are 18-22 px wide (§4.4), under 2.5.8. (a) on a phone, the
 phases leave the axis as presses: the axis keeps their ticks and the act and phase in the caption, and the phases become a list in the
 dispatch sheet (or a "phase" stepper beside Play); (b) a phone axis not proportional to time, every phase at least 24 px (against decision
 53's one proportional axis, on phones only); (c) keep them as they are and record the failure (2.5.8's "equivalent" exception needs another control on
-the page that sets the phase and meets 24 px, which is (a)). **Recommended: (a)**: decision 53 holds, every phase is a 44 px press in the list, and the axis stays a
-slider. Cost: part of item 3; the self-test's A-3 phase check changes on phones.
+the page that sets the phase and meets 24 px, which is (a)). **Recommended: (a)**: decision 53's proportional axis holds, every phase is a 44 px press in the list, and the axis stays a
+slider. Decision 53 also asks for "the current phase always whole" on the track: the compact prototype hides every phase's label, the current
+one included (a departure, for the owner); in (a) the current phase is named in the caption and the list. Cost: part of item 3; the self-test's A-3 phase check changes on phones.
 
 **225. Controls that leave the phone's timeline** (the compact prototype): the two ten-minute steps (the slider and the event steps remain),
 the Eyes button ("Whose eyes?" stays in the Command tab), the four speeds folded into one button. (a) as prototyped; (b) keep all, the
@@ -608,8 +645,12 @@ timeline a row taller (about 170 px); (c) into the Menu. **Recommended: (a)**; t
 Cost: none beyond item 3; the self-test's Watch-switch and keyboard-group checks read the phone's row.
 
 **226. A phone held landscape** (844 x 390): today's timeline is 90.5 px and after "Explore" 0.69 of the screen is free; the sheets make the
-dossier and the rail worse there. (a) keep today's layout held landscape, fixing its one overlap (the first-run card under the tools); (b)
-the phone layout there too; (c) not supported. **Recommended: (a).** Cost: small, inside item 3.
+dossier and the rail worse there (§4.4). But it has its own faults (`phone-current.json`, 844 x 390): three overlaps (the first-run card
+under the tools, 173 x 43; the presentation switch over a dossier, 24 x 34; the tools over the Layers panel, 288 x 23); in Watch the caption
+squeezed to about 19 px (its derived readings and the event cut, `phone/current-844x390-watch.png`) and the speed buttons pushed off the
+screen's edge (4x wholly, 2x partly; the probe's reach list counts "speeds" as one feature, so it did not report it). (a) keep today's layout
+held landscape and fix these (the overlaps, Watch's control row); (b) the phone layout there too; (c) not supported. **Recommended: (a).**
+Cost: a part of item 3, with its own case (§4.5).
 
 **227. The new words.** A phone layout needs at least two names the build does not have: the Menu button's and the dispatch sheet's grip's
 (the prototypes' "Menu" and "Open the card" are placeholders). (a) the owner decides them in item 3's Part B from proposals, in `LABELS`;
@@ -620,7 +661,7 @@ the phone states in `check:contrast`, the four new zero-limits (24 px targets bu
 every feature one control away), each case's unobstructed baseline, drop limit and timeline ceiling measured once on the build that adds the
 layout and set on the owner's word; 44 px recorded, not held; (b) the same with 44 px held; (c) `narrow-390` kept as the only case.
 **Recommended: (a).** 44 px is Apple's guideline and WCAG's AAA; holding it would rule out the event markers and much of the build's
-density (no control reaches it today but the rail). Cost: part of item 3; `check:visual` grows by eight cases, each a fresh page at density 3
+density (no control that takes a press reaches it today, the clock's rail included, 24 px tall). Cost: part of item 3; `check:visual` grows by eight cases, each a fresh page at density 3
 (the probes here took about 1.5 minutes a state under software WebGL: a longer run).
 
 **229. Safari's own viewport.** The probes use the full CSS viewport (390 x 844); Safari's bars take part of it. (a) the phone cases use the
