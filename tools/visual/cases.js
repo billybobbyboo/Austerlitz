@@ -21,6 +21,28 @@ module.exports = [
      first-run-laptop so that the harness's last page, on which the self-test runs, stays the 1366 x 768 one */
   { name:"narrow-390", viewport:[390,844], fresh:true, expect:{t:240},
     note:"The first screen at 390 x 844, undocked: recorded, not a supported layout (decision 122)." },
+  /* roadmap step 6 item 3 Part B (docs/STEP6_SPEC.md section 4.5; decision 228 (a)): the phone cases. Each on a fresh page with a device
+     (density 3, touch, a phone's user agent: harness.js PHONE_DEVICES), reached by real taps as a visitor reaches it (phone: the state):
+     "first" the page untouched; "explore" a tap on "Explore on my own", then the clock set to t (09:30: the phase's view, framed by the app);
+     "dossier" then Saint-Hilaire's division selected (select(), as a tap on its counter does); "watch" then Watch by a tap, through the Menu;
+     "layers" then the Layers panel by a tap, through the Menu. Their limits are measured once on the build that adds the layout and set on
+     the owner's word (thresholds.js). Listed before first-run-laptop, as narrow-390 is */
+  { name:"phone-390-first", viewport:[390,844], fresh:true, device:"ios", phone:"first", expect:{t:240},
+    note:"A phone held upright, 390 x 844 (an iPhone 12-15), the first screen." },
+  { name:"phone-390-explore", viewport:[390,844], fresh:true, device:"ios", phone:"explore", t:570,
+    note:"390 x 844 after \"Explore on my own\", at 09:30: the phase's view framed into the free area." },
+  { name:"phone-390-dossier", viewport:[390,844], fresh:true, device:"ios", phone:"dossier", t:570, select:["f","sthilaire"],
+    note:"390 x 844, Saint-Hilaire's dossier open as a sheet." },
+  { name:"phone-390-watch", viewport:[390,844], fresh:true, device:"ios", phone:"watch", t:570, presentation:"watch",
+    note:"390 x 844 in Watch." },
+  { name:"phone-390-layers", viewport:[390,844], fresh:true, device:"ios", phone:"layers", t:570,
+    note:"390 x 844 with the Layers panel open." },
+  { name:"phone-360-explore", viewport:[360,800], fresh:true, device:"android", phone:"explore", t:570,
+    note:"The narrowest phone of the five, 360 x 800, after \"Explore\"." },
+  { name:"phone-430-explore", viewport:[430,932], fresh:true, device:"ios", phone:"explore", t:570,
+    note:"The widest phone held upright, 430 x 932, after \"Explore\"." },
+  { name:"phone-844x390-explore", viewport:[844,390], fresh:true, device:"ios", phone:"explore", t:570,
+    note:"A phone held landscape, 844 x 390: the layout above 720 px with its fixes (decision 226), after \"Explore\"." },
   { name:"first-run-laptop", viewport:[1366,768], fresh:true, expect:{t:240},
     note:"The same on a common laptop viewport." },
   { name:"overview-field", viewport:[1600,900], t:570, presentation:"study", mode:"terrain",

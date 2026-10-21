@@ -11527,10 +11527,12 @@ function presetFrame(v){ var c=reframe(v); return isOverview(v)?fitOverview(c):p
 /* roadmap step 6 item 3 (decision 223; docs/STEP6_SPEC.md section 4.4): on a phone held upright the free rectangle is narrow and the authored
    presets, made for a wide window, show a strip of their view, the battle falling under the sheets (0 of 0 map items in view after "Explore"
    at 390 px in Part A). There the eye is moved back along its line of sight, its target kept, until the free rectangle spans at least the
-   horizontal angle PORTRAIT_FIT.t (the tangent of its half: a design value, measured by the map items placed in the free area, section 4.5),
-   at most PORTRAIT_FIT.kMax times as far. Follow's distance takes the same factor. Elsewhere (not PHONE, the paper map) the factor is 1;
-   the Overview is fitted into the free rectangle already (fitOverview). */
-var PORTRAIT_FIT={t:0.6, kMax:3};
+   horizontal angle PORTRAIT_FIT.t (the tangent of its half), at most PORTRAIT_FIT.kMax times as far. Follow's distance takes the same factor.
+   Elsewhere (not PHONE, the paper map) the factor is 1; the Overview is fitted into the free rectangle already (fitOverview). t is a design
+   value, measured (tools/step6/portrait-fit.js; docs/step6-evidence/portrait-fit*.json): at 390 x 844 after "Explore", over the eight phases'
+   views, the map layer's items wholly inside the free area were 63 unframed (a phase with 2), 78 at t 0.2, 95 at 0.25 (each phase 5 or more),
+   78 at 0.3, 80 at 0.35, 74 at 0.45 (the factor there at kMax, 3): 0.25, the most, the eye 1.75 times as far there */
+var PORTRAIT_FIT={t:0.25, kMax:3};
 function portraitK(){
   if(!PHONE||mode==="staff"||!landCam) return 1;
   var fr=landFreeRect(), f=(viewH()/2)/Math.tan(THREE.MathUtils.degToRad(landCam.fov)/2), t=((fr[2]-fr[0])/2)/f;

@@ -63,86 +63,8 @@ const DEVICES=[
 ].filter(d=>!opt("--only")||opt("--only").split(",").includes(d.key));
 const STATES=(opt("--states")||"first,explore,panels,dossier,watch,layers,paper,tour").split(",");
 
-const INPAGE=function(){
-  var A={};
-  function vis(e){ if(!e||!e.isConnected) return false; var cs=getComputedStyle(e); if(cs.display==="none"||cs.visibility==="hidden"||+cs.opacity<0.02) return false;
-    for(var p=e;p;p=p.parentElement){ var c=getComputedStyle(p); if(c.display==="none"||c.visibility==="hidden"||p.hidden) return false; }
-    var r=e.getBoundingClientRect(); return r.width>0&&r.height>0; }
-  function desc(e){ if(!e||e===document.body) return "body"; return e.tagName.toLowerCase()+(e.id?"#"+e.id:"")+(e.className&&typeof e.className==="string"?"."+e.className.trim().split(/\s+/).slice(0,2).join("."):""); }
-  function nameOf(e){ var a=e.getAttribute("aria-label"); if(a&&a.trim()) return a.trim(); var t=(e.textContent||"").replace(/\s+/g," ").trim(); return t||e.getAttribute("title")||""; }
-  var SEL="button,a[href],input,select,textarea,[role=button],[role=tab],[role=slider],[tabindex]:not([tabindex='-1'])";
-  var MAPSEL="#maplayer";
-  A.targets=function(){
-    /* a press's target only: an element that takes no pointer event (the act bands, decision 166 (a)) is a keyboard control, not a target */
-    var R=Array.prototype.slice.call(document.querySelectorAll(SEL)).filter(function(e){ return vis(e)&&!e.disabled&&!(e.closest&&e.closest(MAPSEL))&&!e.closest("[inert]")&&getComputedStyle(e).pointerEvents!=="none"; })
-      .map(function(e){ var b=e.getBoundingClientRect(), r={left:b.left,top:b.top,right:b.right,bottom:b.bottom,width:b.width,height:b.height};
-        /* the press area a positioned ::before adds (the phases' reach up over the act row, style.css .step::before, decision 166 (a)) */
-        var pb=getComputedStyle(e,"::before"); if(pb.content&&pb.content!=="none"&&pb.position==="absolute"){ var t=parseFloat(pb.top), h=parseFloat(pb.height);
-          if(t<0&&h>0){ r.top=Math.min(r.top,b.top+t); r.height=r.bottom-r.top; } }
-        return {e:e,r:r,cx:(r.left+r.right)/2,cy:(r.top+r.bottom)/2}; });
-    return R.map(function(o,i){
-      var small=o.r.width<24-1e-6||o.r.height<24-1e-6, ok=!small;
-      if(small){ ok=true; for(var j=0;j<R.length;j++){ if(j===i) continue; var q=R[j];
-        var nx=Math.max(q.r.left,Math.min(o.cx,q.r.right)), ny=Math.max(q.r.top,Math.min(o.cy,q.r.bottom));
-        if(Math.hypot(nx-o.cx,ny-o.cy)<12){ ok=false; break; } if((q.r.width<24||q.r.height<24)&&Math.hypot(q.cx-o.cx,q.cy-o.cy)<24){ ok=false; break; } } }
-      var cx=Math.max(0,Math.min(innerWidth-1,o.cx)), cy=Math.max(0,Math.min(innerHeight-1,o.cy)), top=document.elementFromPoint(cx,cy);
-      var covered=!!(top&&top!==o.e&&!o.e.contains(top)&&!(top.closest&&top.closest("label")&&top.closest("label").contains(o.e)));
-      var outside=o.r.right>innerWidth+0.5||o.r.bottom>innerHeight+0.5||o.r.left<-0.5||o.r.top<-0.5;
-      var offscreen=o.r.right<=0||o.r.bottom<=0||o.r.left>=innerWidth||o.r.top>=innerHeight;
-      return {el:desc(o.e),name:nameOf(o.e).slice(0,40),evmark:!!(o.e.closest&&o.e.closest("#evmarks")),w:+o.r.width.toFixed(1),h:+o.r.height.toFixed(1),x:Math.round(o.r.left),y:Math.round(o.r.top),
-        under24:small,spacingOk:ok,under44:o.r.width<44||o.r.height<44,covered:covered?desc(top):null,outside:outside,offscreen:offscreen}; }); };
-  /* cut text: an element holding its own text whose content overflows a box that clips it, or whose box runs off the screen */
-  A.cut=function(){
-    var out=[];
-    document.querySelectorAll("body *").forEach(function(e){
-      if(e.closest(MAPSEL)||e.closest(".sr-only")||!vis(e)) return;
-      var own=Array.prototype.some.call(e.childNodes,function(n){ return n.nodeType===3&&n.textContent.trim().length>0; }); if(!own) return;
-      var cs=getComputedStyle(e), r=e.getBoundingClientRect(), why=null;
-      var clipX=cs.overflowX!=="visible"||cs.textOverflow==="ellipsis", clipY=cs.overflowY!=="visible"||(cs.webkitLineClamp&&cs.webkitLineClamp!=="none");
-      if(clipX&&e.scrollWidth>e.clientWidth+1) why=cs.textOverflow==="ellipsis"?"ellipsis":"clipped across";
-      else if(clipY&&e.scrollHeight>e.clientHeight+1&&cs.overflowY!=="auto"&&cs.overflowY!=="scroll") why="clipped down";
-      if(!why){ for(var p=e.parentElement;p&&p!==document.body;p=p.parentElement){ var pc=getComputedStyle(p); if(pc.overflow==="hidden"||pc.overflowX==="hidden"){
-        var pr=p.getBoundingClientRect(); if(r.right>pr.right+1||r.left<pr.left-1){ why="cut by "+desc(p); } break; } } }
-      if(!why&&(r.right<=0||r.left>=innerWidth||r.bottom<=0||r.top>=innerHeight)) why="wholly off the screen";
-      else if(!why&&(r.right>innerWidth+0.5||r.left<-0.5||r.bottom>innerHeight+0.5||r.top<-0.5)) why="partly off the screen";
-      if(why) out.push({el:desc(e),why:why,text:(e.textContent||"").replace(/\s+/g," ").trim().slice(0,60),w:Math.round(r.width)}); });
-    return out; };
-  /* text under the project's 10.5 px floor (CLAUDE.md, check:contrast), the map layer's included */
-  A.small=function(){ var out=[]; document.querySelectorAll("body *").forEach(function(e){ if(e.closest(".sr-only")||!vis(e)) return;
-      if(!Array.prototype.some.call(e.childNodes,function(n){ return n.nodeType===3&&n.textContent.trim().length>0; })) return;
-      var px=parseFloat(getComputedStyle(e).fontSize); if(px<10.5-1e-6) out.push(desc(e)+" "+px+"px"); }); return out; };
-  var PANELS={rail:".rail",timebar:".timebar",card:"#firstrun",dispatch:".dispatch",tools:".tools",viewmode:"#viewmode",drawer:".drawer",
-    layers:"#layerpop",tourbar:"#tourbar",selchip:"#selchip",legend:".legend",eyecap:"#eyecap",help:"#help"};
-  A.panels=function(){ var o={}; Object.keys(PANELS).forEach(function(k){ var e=document.querySelector(PANELS[k]); if(!e||!vis(e)||e.getAttribute("aria-hidden")==="true") return;
-      if(k==="rail"&&document.body.classList.contains("rail-hidden")) return; if(k==="drawer"&&!e.classList.contains("on")) return;
-      var r=e.getBoundingClientRect(); if(r.right<=0||r.left>=innerWidth||r.bottom<=0||r.top>=innerHeight) return; o[k]=[r.left,r.top,r.right,r.bottom].map(Math.round); }); return o; };
-  A.overlaps=function(){ var P=A.panels(), K=Object.keys(P), out=[];
-    for(var i=0;i<K.length;i++) for(var j=i+1;j<K.length;j++){ var a=P[K[i]], b=P[K[j]], w=Math.min(a[2],b[2])-Math.max(a[0],b[0]), h=Math.min(a[3],b[3])-Math.max(a[1],b[1]);
-      if(w>1&&h>1){ var inA=document.querySelector(PANELS[K[i]]).contains(document.querySelector(PANELS[K[j]]))||document.querySelector(PANELS[K[j]]).contains(document.querySelector(PANELS[K[i]]));
-        if(!inA) out.push({a:K[i],b:K[j],w:Math.round(w),h:Math.round(h)}); } }
-    return out; };
-  /* the features a visitor needs, each by the controls that do it; reachable: one of them visible, on the screen, not covered */
-  /* since Part B (the phone layout of the build): the phases also in the dispatch sheet's list, the speeds as one button, "Whose eyes?" in the
-     Command tab too; a hidden control is reported with the controls that show it (the Menu, the sheet's grip, the Panels), as a visitor reaches it */
-  var FEAT={play:["#play"], clock:["#timerail"], phases:["#phases .step","#phlist .ph-item"], presentation:[".vm-btn"], layers:["#layersbtn"], paperMap:[".mode-btn[data-m=staff]","#layersbtn"],
-    panels:["#panelsbtn","#tab-now"], follow:["#follow"], vantages:[".van-btn"], help:["#helpbtn"], sources:["#srcbtn"], tour:["#tourbtn","#fr-tour"], events:["#evmarks button, #evmarks [role=button]"],
-    eyes:["#eyesbtn",".cmd-btn"], speeds:[".spd-btn","#speedbtn"]};
-  var OPENER=[["#tools","#menubtn"],["#phlist","#dgrip"],[".rail","#panelsbtn"]];
-  A.reach=function(){ var o={}; Object.keys(FEAT).forEach(function(k){ var best=null;
-      FEAT[k].forEach(function(s){ document.querySelectorAll(s).forEach(function(e){ if(best==="ok") return; if(!vis(e)||e.closest("[inert]")){ best=best||"hidden"; return; }
-        /* reachable where any of nine points of its box (its centre, the inner corners and the edges' middles, 20% in) is on the screen and
-           finds it on top */
-        var r=e.getBoundingClientRect(), on=0, top=null;
-        [[.5,.5],[.2,.2],[.8,.2],[.2,.8],[.8,.8],[.5,.2],[.5,.8],[.2,.5],[.8,.5]].forEach(function(q){ var x=r.left+q[0]*r.width, y=r.top+q[1]*r.height;
-          if(x<0||y<0||x>=innerWidth||y>=innerHeight) return; on++; var t=document.elementFromPoint(x,y); if(t&&(t===e||e.contains(t))) best="ok"; else if(!top) top=t; });
-        if(best==="ok") return; best=on?"covered by "+desc(top):"off the screen"; }); });
-      if(best!=="ok"){ var via=null; FEAT[k].forEach(function(s){ document.querySelectorAll(s).forEach(function(e){ if(via) return; var path=[], x=e;
-          for(var n=0;n<3&&x;n++){ var hit=null; OPENER.forEach(function(q){ if(!hit&&x.closest&&x.closest(q[0])) hit=q; }); if(!hit) break;
-            var b=document.querySelector(hit[1]); if(!b) break; path.unshift(hit[1]); if(vis(b)&&!b.closest("[inert]")){ via=path.join(" > "); break; } x=b; } }); });
-        if(via) best=(best||"hidden")+"; shown by "+via; }
-      o[k]=best||"absent"; }); return o; };
-  window.__ph=A; return true;
-};
+/* the in-page measures: since Part B in tools/visual/phone-measure.js, shared with the harness's phone cases (Part A had them here) */
+const INPAGE=fs.readFileSync(path.join(ROOT,"tools","visual","phone-measure.js"),"utf8");
 async function open(browser,d){
   const ctx=await browser.newContext({viewport:{width:d.vp[0],height:d.vp[1]},deviceScaleFactor:d.dpr,isMobile:true,hasTouch:true,userAgent:d.ua});
   const page=await ctx.newPage();
@@ -156,7 +78,7 @@ async function open(browser,d){
   await page.evaluate(MEASURE);
   await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});
   await L5.inject(page,L5.HELPERS);
-  await L5.inject(page,INPAGE);
+  await page.evaluate(INPAGE);
   page._ctx=ctx;
   return page;
 }
@@ -215,11 +137,11 @@ const REACH={
       if(SHOTS&&css) fs.writeFileSync(path.join(SHOTS,LAYOUT+"-"+d.key+"-"+st+".png"),css);
       const ui=judgeText(await page.evaluate(COLLECT+"("+JSON.stringify(st)+")"), await page.evaluate(()=>mode==="staff"));
       const S={how, uiContrast:{texts:ui.texts, belowAA:ui.belowAA.length, belowAAList:ui.belowAA.slice(0,12), below10_5px:ui.small}, unobstructed:m.unobstructed, timeline:m.timeline, layer:m.layer, panels, overlaps:ov,
-        targets:T.length, fail2_5_8:T.filter(t=>t.under24&&!t.spacingOk&&!t.evmark).map(t=>t.el+" "+t.w+"x"+t.h+" '"+t.name+"'"),
+        targets:T.length, fail2_5_8:T.filter(t=>t.under24&&!t.spacingOk&&!t.evmark&&!t.scrolled).map(t=>t.el+" "+t.w+"x"+t.h+" '"+t.name+"'"),
         evmarksUnder24:T.filter(t=>t.evmark&&t.under24&&!t.spacingOk).length,
         under44:T.filter(t=>t.under44).length, under44List:T.filter(t=>t.under44).map(t=>t.el+" "+t.w+"x"+t.h),
-        covered:T.filter(t=>t.covered).map(t=>t.el+" '"+t.name+"' under "+t.covered), outside:T.filter(t=>t.outside).map(t=>t.el+" '"+t.name+"'"+(t.offscreen?" (wholly off)":"")),
-        cut:cut.filter(c=>c.why!=="wholly off the screen"), offScreenText:cut.filter(c=>c.why==="wholly off the screen").length, unreachable:Object.keys(reach).filter(k=>reach[k]!=="ok").map(k=>k+": "+reach[k]),
+        covered:T.filter(t=>t.covered&&!t.scrolled).map(t=>t.el+" '"+t.name+"' under "+t.covered), outside:T.filter(t=>t.outside&&!t.scrolled).map(t=>t.el+" '"+t.name+"'"+(t.offscreen?" (wholly off)":"")),
+        cut:cut.filter(c=>c.why!=="wholly off the screen"), offScreenText:cut.filter(c=>c.why==="wholly off the screen").length, unreachable:Object.keys(reach).filter(k=>reach[k].state!=="ok").map(k=>k+": "+reach[k].state+(reach[k].via?"; shown by "+reach[k].via:"")), reach, framing:await page.evaluate(()=>window.__ph.framing()),
         contrast:{texts:tc.texts, belowAA:tc.belowAA.length, belowAAList:tc.belowAA.slice(0,8), min:tc.min, belowFloor:small.length, belowFloorList:small.slice(0,8)},
         console:page._console.slice(), errors:page._errors.slice(), tapErrors:(page._tapErrors||[]).slice()};
       D.states[st]=S;

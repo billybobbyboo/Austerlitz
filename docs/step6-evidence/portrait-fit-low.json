@@ -1,0 +1,267 @@
+{
+ "note": "per phone size and t: at each phase's start, the map layer's items placed, inside the free rectangle, dropped; the eye's factor (software WebGL; layout and counts only)",
+ "sizes": {
+  "390x844": {
+   "0.2": {
+    "rows": [
+     {
+      "ph": 1,
+      "k": 1.401,
+      "placed": 21,
+      "inFree": 13,
+      "dropped": 7
+     },
+     {
+      "ph": 2,
+      "k": 1.401,
+      "placed": 23,
+      "inFree": 13,
+      "dropped": 10
+     },
+     {
+      "ph": 3,
+      "k": 1.401,
+      "placed": 14,
+      "inFree": 10,
+      "dropped": 7
+     },
+     {
+      "ph": 4,
+      "k": 1.401,
+      "placed": 5,
+      "inFree": 3,
+      "dropped": 1
+     },
+     {
+      "ph": 5,
+      "k": 1.401,
+      "placed": 5,
+      "inFree": 3,
+      "dropped": 0
+     },
+     {
+      "ph": 6,
+      "k": 1.401,
+      "placed": 15,
+      "inFree": 11,
+      "dropped": 4
+     },
+     {
+      "ph": 7,
+      "k": 1.401,
+      "placed": 16,
+      "inFree": 12,
+      "dropped": 4
+     },
+     {
+      "ph": 8,
+      "k": 1.401,
+      "placed": 15,
+      "inFree": 13,
+      "dropped": 5
+     }
+    ],
+    "inFree": 78,
+    "placed": 114,
+    "dropped": 38,
+    "minInFree": 3,
+    "k": 1.401
+   },
+   "0.25": {
+    "rows": [
+     {
+      "ph": 1,
+      "k": 1.752,
+      "placed": 22,
+      "inFree": 18,
+      "dropped": 9
+     },
+     {
+      "ph": 2,
+      "k": 1.752,
+      "placed": 24,
+      "inFree": 18,
+      "dropped": 8
+     },
+     {
+      "ph": 3,
+      "k": 1.752,
+      "placed": 12,
+      "inFree": 12,
+      "dropped": 5
+     },
+     {
+      "ph": 4,
+      "k": 1.752,
+      "placed": 7,
+      "inFree": 6,
+      "dropped": 2
+     },
+     {
+      "ph": 5,
+      "k": 1.752,
+      "placed": 7,
+      "inFree": 6,
+      "dropped": 1
+     },
+     {
+      "ph": 6,
+      "k": 1.752,
+      "placed": 18,
+      "inFree": 13,
+      "dropped": 7
+     },
+     {
+      "ph": 7,
+      "k": 1.752,
+      "placed": 8,
+      "inFree": 5,
+      "dropped": 7
+     },
+     {
+      "ph": 8,
+      "k": 1.752,
+      "placed": 19,
+      "inFree": 17,
+      "dropped": 4
+     }
+    ],
+    "inFree": 95,
+    "placed": 117,
+    "dropped": 43,
+    "minInFree": 5,
+    "k": 1.752
+   },
+   "0.3": {
+    "rows": [
+     {
+      "ph": 1,
+      "k": 2.102,
+      "placed": 13,
+      "inFree": 10,
+      "dropped": 8
+     },
+     {
+      "ph": 2,
+      "k": 2.102,
+      "placed": 24,
+      "inFree": 17,
+      "dropped": 11
+     },
+     {
+      "ph": 3,
+      "k": 2.102,
+      "placed": 16,
+      "inFree": 12,
+      "dropped": 5
+     },
+     {
+      "ph": 4,
+      "k": 2.102,
+      "placed": 8,
+      "inFree": 4,
+      "dropped": 4
+     },
+     {
+      "ph": 5,
+      "k": 2.102,
+      "placed": 8,
+      "inFree": 6,
+      "dropped": 2
+     },
+     {
+      "ph": 6,
+      "k": 2.102,
+      "placed": 18,
+      "inFree": 11,
+      "dropped": 6
+     },
+     {
+      "ph": 7,
+      "k": 2.102,
+      "placed": 9,
+      "inFree": 8,
+      "dropped": 7
+     },
+     {
+      "ph": 8,
+      "k": 2.102,
+      "placed": 11,
+      "inFree": 10,
+      "dropped": 4
+     }
+    ],
+    "inFree": 78,
+    "placed": 107,
+    "dropped": 47,
+    "minInFree": 4,
+    "k": 2.102
+   },
+   "0.35": {
+    "rows": [
+     {
+      "ph": 1,
+      "k": 2.452,
+      "placed": 12,
+      "inFree": 11,
+      "dropped": 9
+     },
+     {
+      "ph": 2,
+      "k": 2.452,
+      "placed": 15,
+      "inFree": 9,
+      "dropped": 10
+     },
+     {
+      "ph": 3,
+      "k": 2.452,
+      "placed": 10,
+      "inFree": 8,
+      "dropped": 5
+     },
+     {
+      "ph": 4,
+      "k": 2.452,
+      "placed": 12,
+      "inFree": 11,
+      "dropped": 3
+     },
+     {
+      "ph": 5,
+      "k": 2.452,
+      "placed": 9,
+      "inFree": 7,
+      "dropped": 3
+     },
+     {
+      "ph": 6,
+      "k": 2.452,
+      "placed": 21,
+      "inFree": 13,
+      "dropped": 7
+     },
+     {
+      "ph": 7,
+      "k": 2.452,
+      "placed": 13,
+      "inFree": 10,
+      "dropped": 8
+     },
+     {
+      "ph": 8,
+      "k": 2.452,
+      "placed": 11,
+      "inFree": 11,
+      "dropped": 4
+     }
+    ],
+    "inFree": 80,
+    "placed": 103,
+    "dropped": 49,
+    "minInFree": 7,
+    "k": 2.452
+   }
+  }
+ }
+}
