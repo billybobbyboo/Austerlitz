@@ -28,15 +28,23 @@ instancing across blocks, 832 to 327 calls with the same picture; culling by the
 figure triangles. The rule that decides 138 from the laptop's report is stated in advance (§3.4).
 
 **Item 3 (decision 137): measured.** Today at 360-430 px wide: the timeline 172-174 px, its act and phase names cut, the tools over the dispatch
-card, a dossier leaving 3-5% of the screen free; held landscape (844 x 390) 90.5 px and 69% free. Three prototypes (CSS and JS put into the
-started page by the probe, never in the source): a compact timeline (127 px), sheets at the foot (after "Explore" 50-56% free), the controls
-behind a Menu (62-65%). The three 45-minute phases are 18-22 px wide on the proportional axis whatever the styling (question 224). The cases
-and limits the checks would need (§4.5).
+card, a dossier leaving 3-5% of the screen free; held landscape (844 x 390) 90.5 px and 69% free, with its own overlaps and Watch's caption
+squeezed. The interface text by `check:contrast`'s own method: none below AA or under 10.5 px but the tour's disabled "Back" on its first
+stop (exempt). Three prototypes (CSS and JS put into the started page by the probe, never in the source): a compact timeline (127 px),
+sheets at the foot (after "Explore" 50-56% free), the controls behind a Menu (62-65%); none frames the battle in the area it frees (at 390
+px after "Explore" no map item in view today, 3 with the Menu). The three 45-minute phases are 18.2-22 px wide on the proportional axis
+whatever the styling (question 224). The cases and limits the checks would need (§4.5).
 
 **Owner questions 215-230** (`docs/STEP6_SPEC.md` §7), each with options, a recommendation and its cost; the next owner decision is 215.
 
-**Verified:** `check:baseline` passes on the unchanged build (`45f8f662`, 2,200,058 bytes); `check:data` 131 of 131 identical [pending: run at
-the end]; no limit of `tools/visual/thresholds.js` moved. [pending: npm test.] The independent review: [pending].
+**Verified (on the final tree):** `check:baseline` passes on the unchanged build (`45f8f662ef828d2e1ab593a3b87b6ff7`, 2,200,058 bytes);
+`check:data` 131 of 131 declarations identical to `archive/step5c-45f8f662.html`; `npm test` all 9 suites pass and the height guard (redteam 0
+findings, 2 warnings acknowledged; runtime-test 0 console warnings); no limit of `tools/visual/thresholds.js` moved; `check:visual`,
+`check:contrast` and `check:selftest` not run (no source changed; the probes ran one at a time instead). The independent read-only review:
+21 findings (2 blocking: the route's final version had no recorded run, and iOS Auto-Lock would end the phone's runs), every one fixed or
+recorded (`docs/STEP6_SPEC.md` §8); its findings that needed a measurement were measured (the route's version 3 run here both ways; a man's
+size on screen by a pitch-free sphere, `size-probe.js`: the Overview's men 4-8 px across, not under 2 as the first, vertical measure said;
+the phone views' map items in the free area).
 
 **Uncertain or not verified:** every GPU number (item 1 exists for them); Safari (the probes are Chromium); real touch; the far forms in motion.
 
