@@ -28,5 +28,7 @@ counts (draw calls, triangles) and layout measures do not depend on the GPU.
 - the 2.5.8 counts of the first runs measured a phase by its own box, without the 15 px its `::before` adds over the act row (decision 166
   (a)); the contrast-only runs re-measured the targets with it, and `phone-report.js` takes their counts where they exist;
 - the LOD probe's first run was stopped (its nine options would have taken about two hours); the second measured six options in five views;
-- the route's first local runs counted some frames twice (a segment's frame chain outlived it) and printed run-together columns; the JSON
-  files here are from the corrected route (`step6-perf-route 2`).
+- the route's first local runs counted some frames twice (a segment's frame chain outlived it) and printed run-together columns; the second
+  version lacked the hidden-page flag, the wake lock and the 25 ms floor; the two `perf-local-*.json` files are from the version the owner
+  will run (`step6-perf-route 3`). Under software WebGL each segment records 0-7 frames (a frame takes seconds): they show the route runs and
+  restores the page, nothing more.

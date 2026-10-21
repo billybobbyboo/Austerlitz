@@ -40,9 +40,10 @@ Their outputs, screenshots and a README are in `docs/step6-evidence/`.
   played segments run for 12 s instead (question 216).
 - **Item 2 (question 138).** The census corrects the audit: the figures and standards are about half a 4x landscape frame's 2.5 million
   triangles (P-1 said about 91%); the trees with their shadows are a third; the shadow pass alone is 41%. No figure block is ever culled (three
-  r128 does not cull instanced meshes), so every 4x view draws nearly the same frame. A man's size on screen differs by view: under 2 px for nine
-  tenths of the figures in the Overview, 16 px or more in the low and close views. So a level of detail by size would cut the Overview's figures
-  and leave the low views' alone. Measured (§3.2): a box per unit beyond 4 px halves the Overview's frame; no figure shadows takes a quarter
+  r128 does not cull instanced meshes), so every 4x view draws nearly the same frame. A man's size on screen differs by view (a man-sized sphere, which
+  does not depend on the camera's pitch): 4-8 px in the Overview, 8-16 px from the Field vantage, 16 px or more in the low and close views. So a
+  level of detail by size would cut the Overview's figures and leave the low views' alone. Measured (§3.2): the Overview's blocks in a far
+  form (a box per unit) halve its frame; no figure shadows takes a quarter
   off every 4x frame; culling the blocks by their own bounds would skip about half the figures' world pass in the low views. The rule that decides 138 from the laptop's report is stated now (§3.4):
   built only if frames drop in the Overview or the low views **and** hiding the figures cures it.
 - **Item 3 (question 137).** Measured: at 360-430 px wide the timeline is 172-174 px tall, its act and phase
@@ -201,10 +202,17 @@ model, and anything that happened during a run (a notification, the screen dimmi
 
 ### 2.4 Verified here, and what here cannot say
 
-`tools/step6/perf-local.js` runs the route under Playwright: pasted into the build's page (`--way paste`) and through the wrapper page from a
-local HTTP server (`--way frame`), at 1600 x 900 and as an iPhone (390 x 844, density 3, Safari's user agent: the build took its `lowTier` path,
-drawn at 1.5, 585 x 1,266). Both ways ran end to end with no console warning or error. Its frame times are SwiftShader's (a frame takes
-hundreds of milliseconds to seconds here) and decide nothing.
+`tools/step6/perf-local.js` runs the route under Playwright: pasted into the build's page (`--way paste`, 1600 x 900) and through the wrapper
+page from a local HTTP server (`--way frame`, as an iPhone: 390 x 844, density 3, Safari's user agent). The version the owner will run,
+`step6-perf-route 3`, ran end to end both ways with no console warning or error (`docs/step6-evidence/perf-local-desktop.json`,
+`perf-local-iphone.json`): every segment set up, the figures hidden and shown again, the effects turned off and on, Play started and
+stopped, the page restored. As an iPhone the build took its `lowTier` path, drawn at 1.5 (585 x 1,266), in a frame. What the runs
+show of the route itself: SwiftShader here offers the GPU timer query (its results appear where a segment had frames enough); a frame
+takes about 0.1-9 s here, so a 4-6 s segment records 0-7 frames (at 1600 x 900 most record none, and the refresh could not be measured:
+the report says so in a note, as it would on a device), and the numbers decide nothing. On the owner's devices a frame takes milliseconds
+and each segment records hundreds. Two earlier versions were superseded here: the first counted some frames twice (0 ms intervals in the
+played segments) and printed run-together columns; the second lacked the hidden-page flag, the wake lock and the 25 ms floor (the
+review's findings).
 
 ## 3. Item 2: the figures' level of detail (question 138; P-1)
 
@@ -250,10 +258,26 @@ The low Pratzen view at 4x (`pratzen-low`), by what is drawn:
 (the bands count every mesh of a block, its standards and gear too, so a row can sum to a little more than its first column; a mesh whose
 first man is behind the eye has no size and is not banded.)
 
-So: from the Overview nine tenths of the figures' triangles draw men under 2 px tall, which no one can see as men; in the Field vantage
-they are 8-16 px; in the low and close views 16 px or more, everywhere, because every block, near or far, is drawn many times life size
-(decisions 6, 14) and the far ones are still large. A level of detail keyed to a man's size on screen would save most of the figures in the
-Overview and almost none in the low views.
+**What that measure is, and a better one** (the review's finding, then measured): the table's "height" is a vertical 1.8-unit segment
+projected to the screen, so it follows the camera's pitch as much as its distance: the Overview looks 83.4° down, and a man seen from above
+is foreshortened. `tools/step6/size-probe.js` measures, per block, a man-sized sphere's diameter on screen (radius 0.9 kit units, centred at
+mid-height, through the block's and the man's matrices), which does not depend on the pitch (`docs/step6-evidence/size-probe.json`; world pass,
+men and horses, 31 blocks a view):
+
+| view | pitch | by the vertical measure | by a man's sphere |
+|---|---|---|---|
+| the Overview (`overview-plan`) | 83.4° down | under 2 px 561 k, 2-4 px 68 k | 4-8 px, all 629 k |
+| phase 8, the Overview | 83.4° down | under 2 px 542 k, 2-4 px 71 k | 4-8 px, all 613 k |
+| the Field vantage | 21.8° down | 8-16 px 622 k, 16 or more 7 k | 8-16 px 535 k, 16 or more 94 k |
+| the low Pratzen view | 13.6° down | 16 px or more, all 613 k | 16 px or more, all 613 k |
+| close on Sokolnitz | 25.7° down | 16 px or more, all 606 k | 16 px or more 570 k, 8-16 px 36 k |
+
+So: the Overview's men are 4-8 px across, specks rather than men (Stage 6 Part A's scale probe found a man's headgear reaching 4 px only in
+the close views, and gave a man "0.6-1.0 px at the Overview", `CHANGELOG.md`, Stage 6 Part A: by its numbers a vertical measure too, not
+checked) but not invisible; from the Field vantage 8-16 px; in the low and close views 16 px or more, near or far, because
+every block is drawn many times life size (decisions 6, 14). A level of detail keyed to a man's size on screen would take the Overview's
+figures (every block there is under 8 px) and none in the low views. Any such key must be the sphere's (a pitch-free size), or the far form
+would switch as the camera tilts.
 
 **Draw calls.** The figures take 556-585 of the 740-857 calls at 4x (both passes), in 36-37 distinct geometries and textures per pass (71-73
 counting both). Instancing across blocks, as `lod-probe.js` built it (keyed by geometry, colour and texture), made 39-40 meshes of the
@@ -264,22 +288,24 @@ counting both). Instancing across blocks, as `lod-probe.js` built it (keyed by g
 Each option is built in the live scene by the probe (the build unchanged), one frame drawn and counted (`renderer.info`, every pass), a
 screenshot compared with the unmodified frame (the share of the free rectangle's pixels that change by more than 8 of 255, `__s5.diff`, as
 Stage 5's probes compare), then undone; the frame after undoing was checked equal to the first in calls and triangles every time. "Far" is
-decided per block by a man's height on screen (1.8 kit units at its first instance, CSS px at 1600 x 900): P = 4 px. Five views: the two
-Overviews (most men under 2 px), the Field vantage (8-16 px), the low Pratzen view and the close view of Sokolnitz (16 px or more). The world
+decided per block by the vertical measure of §3.1 with P = 4 px; in the two Overviews that took every block (31 of 31), which by a man's
+sphere are all 4-8 px across, so the far set measured is the same as "a man under 8 px across" would give; in the other three views no block
+was far by either measure (the Field vantage's are 8-16 px). Five views: the two Overviews, the Field vantage, the low Pratzen view and the
+close view of Sokolnitz. The world
 pass's JavaScript time was recorded and found too noisy under software WebGL to compare (from 2 to 4,208 ms for frames of one view); it is not used.
 
 | option | the Overview (`overview-plan`, 2.52 M, 832 calls) | phase 8, the Overview | the Field vantage | the low Pratzen view (2.48 M, 758 calls) | close on Sokolnitz | pixels changed (the Overview / low Pratzen) |
 |---|---|---|---|---|---|---|
-| **blocks** beyond 4 px: one box per drawn unit (31 blocks, 195 boxes) | 1.27 M (-49.7%), 364 calls | 1.28 M (-48.8%), 361 | no block far: unchanged | no block far: unchanged | unchanged | 2.6% / 0 |
-| **thin** beyond 4 px: every 4th man | 1.63 M (-35.5%), 832 calls | 1.61 M (-35.8%) | unchanged | unchanged | unchanged | 0.6% / 0 |
-| **noshadow** beyond 4 px | 1.89 M (-25.1%), 553 calls | 1.88 M (-24.7%), 540 | unchanged | unchanged | unchanged | 0.2% / 0 |
+| **blocks** for the far blocks: one box per drawn unit (31 blocks, 195 boxes) | 1.27 M (-49.7%), 364 calls | 1.28 M (-48.8%), 361 | no block far: unchanged | no block far: unchanged | unchanged | 2.6% / 0 |
+| **thin** for the far blocks: every 4th man | 1.63 M (-35.5%), 832 calls | 1.61 M (-35.8%) | unchanged | unchanged | unchanged | 0.6% / 0 |
+| **noshadow** for the far blocks | 1.89 M (-25.1%), 553 calls | 1.88 M (-24.7%), 540 | unchanged | unchanged | unchanged | 0.2% / 0 |
 | **noshadow** for every block | 1.89 M (-25.1%), 553 | 1.88 M (-24.7%), 540 | 1.89 M (-25.1%), 553 | 1.86 M (-24.9%), 490 | 1.87 M (-24.6%), 516 | 0.2% / 1.0% (Field 0.4%, close 0%) |
 | **merge** (instancing across blocks: 303 meshes into 39) | 2.52 M (0%), **327 calls** | 2.50 M, 316 | 2.52 M, 327 | 2.48 M, **273 calls** | 2.48 M, 304 | 0.02% / 0.02% (the same picture) |
-| **blocks + noshadow** beyond 4 px | 1.27 M (-49.8%), 320 calls | 1.28 M (-49.0%), 317 | unchanged | unchanged | unchanged | 2.6% / 0 |
+| **blocks + noshadow** for the far blocks | 1.27 M (-49.8%), 320 calls | 1.28 M (-49.0%), 317 | unchanged | unchanged | unchanged | 2.6% / 0 |
 | **culling** by each block's bounds (measured, not built: the figure meshes none of whose men is in the view, world pass) | 0 of 303 | 0 of 298 | 0 of 303 | **179 of 293 meshes, 339 k triangles** (55% of the figures' world pass) | **159 of 289, 293 k** | none (nothing in view is removed) |
 
 **What it says.**
-- **No size-keyed option touches the low or close views**: at the 4x default every man there is 16 px or more, near or far (the scale
+- **No size-keyed option touches the low or close views**: at the 4x default every man there is 16 px or more by either measure (the scale
   convention). In the Overviews, a far form halves the frame.
 - **Shadows**: the figures' shadow pass is a quarter of every 4x frame, and dropping it changes at most 1% of the free rectangle's pixels at
   this resolution (the low Pratzen view; none close on Sokolnitz at 08:20, a low sun and the valley fog's hour: why none there was not traced, and the share
@@ -444,12 +470,16 @@ What the five sizes show (the 390 x 844 screenshots are named; every size alike 
   tools (99 x 160) and the presentation switch (161 x 34); a dossier under the dispatch card (307 x 520 at 390) and under the presentation
   switch (168 x 34); the Layers panel over the dispatch card and the tools (it is 58% of the screen's height at 430 x 932). Held landscape,
   the first-run card under the tools (173 x 43).
-- **Targets**: no control that takes a press reaches 44 x 44 px but the clock's rail across its width (the transport's buttons are 42 x 38,
-  the tools 28 px tall, the speeds 26-31 x 30, "?" 32 x 32): the 44 px size is met by none. Under 2.5.8's 24 px: [pending: the corrected count;
-  the three 45-minute phases fail by width at every portrait size, 18-22 px], and the 25 event markers (11-14 px, decision 167's exception).
+- **Targets**: no control that takes a press reaches 44 x 44 px (the clock's rail is wide but 24 px tall, the transport's buttons 42 x 38,
+  the tools 28 px tall, the speeds 26-31 x 30, "?" 32 x 32). Under 2.5.8's 24 px (the phases' press area measured with the 15 px their `::before` adds over
+  the act row, decision 166 (a)): 3 at every portrait size, the three 45-minute phases, too narrow (18.2-22 px wide); none held landscape;
+  and the 25 event markers (11-14 px, decision 167's exception).
 - **Not on screen**: with the card open, Panels (hidden by its own rule while the card stands, `body.firstrun-on`); the sources' button lives
   in the rail, hidden until Panels; with a dossier open at 390 px, the tour's button pushed off the screen; in Watch, the tools by design.
-- **Contrast**: the map labels as rendered, none below AA in any state at any size; the interface text by check:contrast's method, [pending].
+- **Contrast**: the interface text by `check:contrast`'s own method (`phone-contrast-current.json`; 47-194 text elements a state): none below AA
+  in any state at any size, none under 10.5 px, but one in each tour state, the tour bar's "Back" at 2.17:1: on the tour's first stop it is
+  disabled and drawn at 0.4 opacity (`app.js:3887`), and WCAG 1.4.3 does not apply to an inactive control (`check:contrast` reads the tour at
+  its second stop, where it is enabled). The map labels as rendered: none below AA where there are labels in the view (§4.1).
 
 **What A-4 said, checked.** "the timeline is 174 px tall (17% of the height) ... its act and phase labels are cut ... the caption is cut ...
 the card covers most of the map (46.0% unobstructed)". Measured now at 390 x 844: 174 px (20.6% of 844; 17% is 174 of 1,024, inference: the
@@ -475,11 +505,14 @@ words throughout; two new control names are placeholders: "Menu" and the grip's 
 
 | layout, 390 x 844 | timeline | first screen | after "Explore" | Panels | a dossier | Watch | Layers | the tour | overlaps | 2.5.8 (but markers) |
 |---|---|---|---|---|---|---|---|---|---|---|
-| today | 174 | 0.44 | 0.20 | 0.19 | 0.04 | 0.79 | 0.13 | 0.42 | tools/dispatch; rail/tools, rail/switch; dossier/dispatch, dossier/switch; Layers/dispatch, Layers/tools | [pending] |
+| today | 174 | 0.44 | 0.20 | 0.19 | 0.04 | 0.79 | 0.13 | 0.42 | tools/dispatch; rail/tools, rail/switch; dossier/dispatch, dossier/switch; Layers/dispatch, Layers/tools | 3 (the 45-minute phases) |
 | compact | **127** | 0.49 | 0.21 | | | 0.81 (163 px) | | | tools/dispatch | 3 (the 45-minute phases) |
 | sheets | 127 | 0.51 | **0.52** | 0.14 | **0.28** | | | | dossier/dispatch (both sheets) | 3 |
-| menu | 127 | **0.59** | **0.63** | 0.26 | **0.31** | 0.79 (175 px) | [pending] | 0.59 | dossier/dispatch | 3 |
+| menu | 127 | **0.59** | **0.63** | 0.26 | **0.31** | 0.79 (175 px) | 0.14 | 0.59 | dossier/dispatch; Layers/dispatch | 3 |
 
+The Menu's Layers state is the second run's (`phone-menu-layers.json`, the menu closing on the Layers button): the Layers panel itself then
+covers most of the map (0.13-0.15 free), as today's does (0.12-0.13); after it is closed on the paper map 0.62-0.65 is free. The interface
+text with the Menu at 390 x 844 and 844 x 390 (`phone-contrast-menu.json`): none below AA, none under 10.5 px, but the same disabled "Back".
 At the other portrait sizes alike (`phone.md`): after "Explore", today 0.19-0.20, sheets 0.50-0.56, menu 0.62-0.65; a dossier, today
 0.03-0.05, sheets 0.26-0.29, menu 0.29-0.32. Held landscape (844 x 390) the sheets make it worse: a dossier 0.37 today, 0.18 as a sheet,
 0.22 with the menu; the Panels 0.44 today, 0.15 and 0.17: **landscape keeps today's side panels** (question 226).
@@ -606,13 +639,14 @@ than 1% long frames; (c) the played segments decisive too. **Recommended: (a).**
 in the views 138 names and whether the figures are why, so a level of detail is built only where it can help. Cost: none now; (b) would
 build on drops a visitor barely sees; (c) would count views 138 does not name.
 
-**219. If 138 is built, which form.** Measured (§3.2): in the Overview, a box per unit beyond 4 px halves the frame (2.6% of the pixels
-change, and green and white blocks become fields of colour); every fourth man saves 36% (0.6%); no figure shadow saves 25% in every 4x view
-(at most 1%); not drawing the men beyond 4 px at all (the ground mark alone) would save about half, computed, not built. Options: (a) no
-figure shadows anywhere, and culling (question 221), first; then measure the laptop again and add (b) only if it still drops; (b) thinning
-beyond 4 px; (c) boxes beyond 4 px in the coats' colours; (d) the men not drawn beyond 4 px. **Recommended: (a), then (b) if needed.** They
-reach the low views (where 138's drops would matter most and no size-keyed form helps) and change least on screen; neither draws anything
-the claims do not settle. Cost: (a) one session; (b) one more, with the seating checks (§3.3); (c) and (d) change how the Overview reads (the
+**219. If 138 is built, which form.** Measured (§3.2): in the Overview, where every man is 4-8 px across, a box per unit halves the frame
+(2.6% of the pixels change, and green and white blocks become fields of colour); every fourth man saves 36% (0.6%); no figure shadow saves
+25% in every 4x view (at most 1%); not drawing the men there at all (the ground mark alone) would save about half, computed, not built.
+Options: (a) no figure shadows anywhere, and culling (question 221), first; then measure the laptop again and add (b) only if it still drops;
+(b) thinning for blocks whose men are under 8 px across (a man's sphere, §3.1); (c) boxes there in the coats' colours; (d) the men not drawn
+there. **Recommended: (a), then (b) if needed.** (a) reaches the low views (where no size-keyed form helps) and changes least on screen;
+(b) keeps the look closest; neither draws anything the claims do not settle. Cost: (a) one session; (b) one or two more: a real thinning
+changes `layoutFigs` and `showBattalions` and the per-unit ranges the 6C checks read (§3.3); (c) and (d) change how the Overview reads (the
 side's cue, decision 107) and want screenshots approved.
 
 **220. If frames drop but the figures are not why** (§3.4, rule 4). (a) record it and stop: no performance work; (b) a performance step on

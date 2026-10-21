@@ -1,0 +1,3313 @@
+{
+ "layout": "menu",
+ "note": "the compact timeline, the sheets and the controls behind a Menu button (prototype)",
+ "devices": {
+  "390x844": {
+   "note": "iPhone 12-15 (the full CSS viewport; Safari's bars take part of it)",
+   "dpr": 3,
+   "states": {
+    "first": {
+     "how": "untouched",
+     "uiContrast": {
+      "texts": 60,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.5872,
+     "timeline": 127,
+     "layer": {
+      "placed": 20,
+      "dropped": 10
+     },
+     "panels": {
+      "timebar": [
+       0,
+       717,
+       390,
+       844
+      ],
+      "card": [
+       0,
+       491,
+       390,
+       717
+      ]
+     },
+     "overlaps": [],
+     "targets": 45,
+     "fail2_5_8": [
+      "button.step 20x39 '08:00 - 08:45, Sokolnitz: Sokolnitz, the'",
+      "button.step 20x39 '08:45 - 09:30, The Pratzen: Soult storms'",
+      "button.step 20x39 '10:30 - 11:15, Olmütz road: The northern'"
+     ],
+     "evmarksUnder24": 25,
+     "under44": 44,
+     "under44List": [
+      "button#prevEv.t.tb-icon 40x40",
+      "button#play.t.tb-play 66x40",
+      "button#nextEv.t.tb-icon 40x40",
+      "button#follow.t.tb-follow 56.9x40",
+      "button#ph-speed.t 44x40",
+      "button#helpbtn.t.tb-help 36x32",
+      "button.step 80.1x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 20x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 40.1x39",
+      "button.step 46.8x39",
+      "button.step 66.8x39",
+      "button.step 26.7x39",
+      "div#timerail.timerail 374x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button#fr-tour.t.fr-primary 122.8x34",
+      "button#fr-close.t 142.4x34"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.dec",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.dec",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant's division at Raigern since the night",
+       "w": 233
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Deployment",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Telnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Pratzeberg",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Guard",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The wheel",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The ponds",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 1
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "presentation: hidden",
+      "layers: hidden",
+      "paperMap: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "sources: hidden",
+      "eyes: hidden",
+      "speeds: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "explore": {
+     "how": "tap: Explore on my own; setClock(09:30)",
+     "uiContrast": {
+      "texts": 51,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.6341,
+     "timeline": 127,
+     "layer": {
+      "placed": 3,
+      "dropped": 1
+     },
+     "panels": {
+      "timebar": [
+       0,
+       717,
+       390,
+       844
+      ],
+      "dispatch": [
+       0,
+       531,
+       390,
+       717
+      ]
+     },
+     "overlaps": [],
+     "targets": 44,
+     "fail2_5_8": [
+      "button.step 20x39 '08:00 - 08:45, Sokolnitz: Sokolnitz, the'",
+      "button.step 20x39 '08:45 - 09:30, The Pratzen: Soult storms'",
+      "button.step 20x39 '10:30 - 11:15, Olmütz road: The northern'"
+     ],
+     "evmarksUnder24": 25,
+     "under44": 43,
+     "under44List": [
+      "button#ph-grip 64x24",
+      "button#prevEv.t.tb-icon 40x40",
+      "button#play.t.tb-play 66x40",
+      "button#nextEv.t.tb-icon 40x40",
+      "button#follow.t.tb-follow 56.9x40",
+      "button#ph-speed.t 44x40",
+      "button#helpbtn.t.tb-help 36x32",
+      "button.step 80.1x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 20x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 40.1x39",
+      "button.step 46.8x39",
+      "button.step 66.8x39",
+      "button.step 26.7x39",
+      "div#timerail.timerail 374x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.dec",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.dec",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "p#d-lede.lede",
+       "why": "partly off the screen",
+       "text": "Kamensky's brigade, marching for Sokolnitz at the tail of La",
+       "w": 361
+      },
+      {
+       "el": "span.act",
+       "why": "ellipsis",
+       "text": "THE PRATZEN STRIKE",
+       "w": 58
+      },
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 235
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Deployment",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Telnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Pratzeberg",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Guard",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The wheel",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The ponds",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 1
+      }
+     ],
+     "offScreenText": 8,
+     "unreachable": [
+      "presentation: hidden",
+      "layers: hidden",
+      "paperMap: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "sources: hidden",
+      "tour: hidden",
+      "eyes: hidden",
+      "speeds: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "panels": {
+     "how": "explore, then tap: Panels",
+     "uiContrast": {
+      "texts": 161,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.2588,
+     "timeline": 127,
+     "layer": {
+      "placed": 1,
+      "dropped": 0
+     },
+     "panels": {
+      "rail": [
+       0,
+       211,
+       390,
+       717
+      ],
+      "timebar": [
+       0,
+       717,
+       390,
+       844
+      ]
+     },
+     "overlaps": [],
+     "targets": 88,
+     "fail2_5_8": [
+      "button.step 20x39 '08:00 - 08:45, Sokolnitz: Sokolnitz, the'",
+      "button.step 20x39 '08:45 - 09:30, The Pratzen: Soult storms'",
+      "button.step 20x39 '10:30 - 11:15, Olmütz road: The northern'"
+     ],
+     "evmarksUnder24": 25,
+     "under44": 47,
+     "under44List": [
+      "button#tab-oob.tab-btn 115.8x32.4",
+      "button#tab-analysis.tab-btn 81.3x32.4",
+      "button#tab-command.tab-btn 91.6x32.4",
+      "button#tab-plans.tab-btn 65.3x32.4",
+      "button#srcbtn 121.5x24",
+      "button#prevEv.t.tb-icon 40x40",
+      "button#play.t.tb-play 66x40",
+      "button#nextEv.t.tb-icon 40x40",
+      "button#follow.t.tb-follow 56.9x40",
+      "button#ph-speed.t 44x40",
+      "button#helpbtn.t.tb-help 36x32",
+      "button.step 80.1x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 20x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 40.1x39",
+      "button.step 46.8x39",
+      "button.step 66.8x39",
+      "button.step 26.7x39",
+      "div#timerail.timerail 374x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "button.oob-row 'III Corps (detachment)Louis-Nicolas Davo' under div.railfoot",
+      "button.oob-row.sub 'Friant's DivisionLouis Friant3,470' under nav#rail.rail",
+      "button.oob-row.sub 'Bourcier's DragoonsFrançois Bourcier830' under button#follow.t.tb-follow",
+      "button.oob-row 'V CorpsJean Lannes12,700' under button.step",
+      "button.oob-row.sub 'Caffarelli's DivisionMarie-François de C' under div#timerail.timerail",
+      "button.oob-row.sub 'Suchet's DivisionLouis-Gabriel Suchet6,0' under div#timerail.timerail",
+      "button.oob-row.sub2 'The Santon detachmentMichel Claparède1,6' under div#timerail.timerail",
+      "button.oob-row 'Cavalry ReserveJoachim Murat7,400' under div#timerail.timerail",
+      "button.oob-row.sub 'Kellermann's Light CavalryFrançois Étien' under div#timerail.timerail",
+      "button.oob-row.sub 'Nansouty's CuirassiersÉtienne de Nansout' under div#timerail.timerail",
+      "button.oob-row.sub 'd'Hautpoul's CuirassiersJean-Joseph d'Ha' under div#timerail.timerail",
+      "button.oob-row.sub 'Walther's DragoonsFrederic Walther1,500' under div#timerail.timerail",
+      "button.oob-row 'I CorpsJean-Baptiste Bernadotte13,000' under div#timerail.timerail",
+      "button.oob-row.sub 'Rivaud's DivisionOlivier Rivaud6,000' under div#timerail.timerail",
+      "button.oob-row.sub 'Drouet d'Erlon's DivisionJean-Baptiste D' under div#timerail.timerail",
+      "button.oob-row 'Imperial GuardJean-Baptiste Bessières5,5' under div#timerail.timerail",
+      "button.oob-row.sub 'Guard InfantryGrenadiers and Chasseurs a' under div#timerail.timerail",
+      "button.oob-row.sub 'Guard CavalryBessières2,500' under div#timerail.timerail",
+      "button.oob-row 'Grenadier DivisionNicolas Oudinot5,700' under div#timerail.timerail",
+      "button.oob-row 'Allied HeadquartersMikhail Kutuzov (comm' under div#timerail.timerail",
+      "button.oob-row 'Left Wing CommandFriedrich Wilhelm von B' under div#timerail.timerail",
+      "button.oob-row.sub 'Kienmayer's Advance GuardMichael von Kie' under div#timerail.timerail",
+      "button.oob-row.sub 'First ColumnDmitry Dokhturov13,490' under div#timerail.timerail",
+      "button.oob-row.sub 'Second ColumnLouis de Langeron11,700' under div#timerail.timerail",
+      "button.oob-row.sub2 'Kamensky's BrigadeSergey Kamensky4,250' under div#timerail.timerail",
+      "button.oob-row.sub 'Third ColumnIgnacy Przybyszewski7,700' under div#timerail.timerail",
+      "button.oob-row 'Fourth ColumnFZM Johann Kollowrat and Lt' under div#timerail.timerail",
+      "button.oob-row.sub 'Miloradovich's RussiansMikhail Miloradov' under div#timerail.timerail",
+      "button.oob-row.sub 'Kollowrat's AustriansFZM Johann Karl Gra' under div#timerail.timerail",
+      "button.oob-row 'Fifth Column (cavalry)Prince Johann von ' under div#timerail.timerail",
+      "button.oob-row 'Advance Guard of the RightPrince Pyotr B' under div#timerail.timerail",
+      "button.oob-row 'Russian Imperial GuardConstantine Pavlov' under div#timerail.timerail",
+      "button.oob-row.sub 'Guard InfantryNot established on the day' under div#timerail.timerail",
+      "button.oob-row.sub 'Guard CavalryAndrei Kologrivov2,900' under div#timerail.timerail",
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.dec",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.dec",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [
+      "button.oob-row.sub 'Caffarelli's DivisionMarie-François de C'",
+      "button.oob-row.sub 'Suchet's DivisionLouis-Gabriel Suchet6,0' (wholly off)",
+      "button.oob-row.sub2 'The Santon detachmentMichel Claparède1,6' (wholly off)",
+      "button.oob-row 'Cavalry ReserveJoachim Murat7,400' (wholly off)",
+      "button.oob-row.sub 'Kellermann's Light CavalryFrançois Étien' (wholly off)",
+      "button.oob-row.sub 'Nansouty's CuirassiersÉtienne de Nansout' (wholly off)",
+      "button.oob-row.sub 'd'Hautpoul's CuirassiersJean-Joseph d'Ha' (wholly off)",
+      "button.oob-row.sub 'Walther's DragoonsFrederic Walther1,500' (wholly off)",
+      "button.oob-row 'I CorpsJean-Baptiste Bernadotte13,000' (wholly off)",
+      "button.oob-row.sub 'Rivaud's DivisionOlivier Rivaud6,000' (wholly off)",
+      "button.oob-row.sub 'Drouet d'Erlon's DivisionJean-Baptiste D' (wholly off)",
+      "button.oob-row 'Imperial GuardJean-Baptiste Bessières5,5' (wholly off)",
+      "button.oob-row.sub 'Guard InfantryGrenadiers and Chasseurs a' (wholly off)",
+      "button.oob-row.sub 'Guard CavalryBessières2,500' (wholly off)",
+      "button.oob-row 'Grenadier DivisionNicolas Oudinot5,700' (wholly off)",
+      "button.oob-row 'Allied HeadquartersMikhail Kutuzov (comm' (wholly off)",
+      "button.oob-row 'Left Wing CommandFriedrich Wilhelm von B' (wholly off)",
+      "button.oob-row.sub 'Kienmayer's Advance GuardMichael von Kie' (wholly off)",
+      "button.oob-row.sub 'First ColumnDmitry Dokhturov13,490' (wholly off)",
+      "button.oob-row.sub 'Second ColumnLouis de Langeron11,700' (wholly off)",
+      "button.oob-row.sub2 'Kamensky's BrigadeSergey Kamensky4,250' (wholly off)",
+      "button.oob-row.sub 'Third ColumnIgnacy Przybyszewski7,700' (wholly off)",
+      "button.oob-row 'Fourth ColumnFZM Johann Kollowrat and Lt' (wholly off)",
+      "button.oob-row.sub 'Miloradovich's RussiansMikhail Miloradov' (wholly off)",
+      "button.oob-row.sub 'Kollowrat's AustriansFZM Johann Karl Gra' (wholly off)",
+      "button.oob-row 'Fifth Column (cavalry)Prince Johann von ' (wholly off)",
+      "button.oob-row 'Advance Guard of the RightPrince Pyotr B' (wholly off)",
+      "button.oob-row 'Russian Imperial GuardConstantine Pavlov' (wholly off)",
+      "button.oob-row.sub 'Guard InfantryNot established on the day' (wholly off)",
+      "button.oob-row.sub 'Guard CavalryAndrei Kologrivov2,900' (wholly off)"
+     ],
+     "cut": [
+      {
+       "el": "span.oob-name",
+       "why": "partly off the screen",
+       "text": "Caffarelli's DivisionMarie-François de Caffarelli du F…",
+       "w": 284
+      },
+      {
+       "el": "span.oob-str",
+       "why": "partly off the screen",
+       "text": "6,700",
+       "w": 36
+      },
+      {
+       "el": "span.act",
+       "why": "ellipsis",
+       "text": "THE PRATZEN STRIKE",
+       "w": 58
+      },
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 235
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Deployment",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Telnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Pratzeberg",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Guard",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The wheel",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The ponds",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 1
+      }
+     ],
+     "offScreenText": 89,
+     "unreachable": [
+      "presentation: hidden",
+      "layers: hidden",
+      "paperMap: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "tour: hidden",
+      "eyes: hidden",
+      "speeds: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "dossier": {
+     "how": "explore, then select('f','sthilaire') (a tap on its counter)",
+     "uiContrast": {
+      "texts": 72,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.3057,
+     "timeline": 127,
+     "layer": {
+      "placed": 1,
+      "dropped": 0
+     },
+     "panels": {
+      "timebar": [
+       0,
+       717,
+       390,
+       844
+      ],
+      "dispatch": [
+       0,
+       531,
+       390,
+       717
+      ],
+      "drawer": [
+       0,
+       253,
+       390,
+       717
+      ]
+     },
+     "overlaps": [
+      {
+       "a": "dispatch",
+       "b": "drawer",
+       "w": 390,
+       "h": 186
+      }
+     ],
+     "targets": 47,
+     "fail2_5_8": [
+      "button.step 20x39 '08:00 - 08:45, Sokolnitz: Sokolnitz, the'",
+      "button.step 20x39 '08:45 - 09:30, The Pratzen: Soult storms'",
+      "button.step 20x39 '10:30 - 11:15, Olmütz road: The northern'"
+     ],
+     "evmarksUnder24": 25,
+     "under44": 46,
+     "under44List": [
+      "button#ph-grip 64x24",
+      "button#prevEv.t.tb-icon 40x40",
+      "button#play.t.tb-play 66x40",
+      "button#nextEv.t.tb-icon 40x40",
+      "button#follow.t.tb-follow 56.9x40",
+      "button#ph-speed.t 44x40",
+      "button#helpbtn.t.tb-help 36x32",
+      "button.step 80.1x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 20x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 40.1x39",
+      "button.step 46.8x39",
+      "button.step 66.8x39",
+      "button.step 26.7x39",
+      "div#timerail.timerail 374x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button#drawer-close 24x25",
+      "button.more-btn 346x35",
+      "button.t 128.8x28"
+     ],
+     "covered": [
+      "button#ph-grip 'Open the card' under dd",
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.dec",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.dec",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr",
+      "button.more-btn 'Full dossier: role, movement, sources' under button.step",
+      "button.t 'How this is sourced' under button.ev-mark.al"
+     ],
+     "outside": [
+      "button.t 'How this is sourced'"
+     ],
+     "cut": [
+      {
+       "el": "p#d-lede.lede",
+       "why": "partly off the screen",
+       "text": "Kamensky's brigade, marching for Sokolnitz at the tail of La",
+       "w": 361
+      },
+      {
+       "el": "span.act",
+       "why": "ellipsis",
+       "text": "THE PRATZEN STRIKE",
+       "w": 58
+      },
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 235
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Deployment",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Telnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Pratzeberg",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Guard",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The wheel",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The ponds",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 1
+      },
+      {
+       "el": "button.t",
+       "why": "partly off the screen",
+       "text": "How this is sourced",
+       "w": 129
+      }
+     ],
+     "offScreenText": 8,
+     "unreachable": [
+      "presentation: hidden",
+      "layers: hidden",
+      "paperMap: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "sources: hidden",
+      "tour: hidden",
+      "eyes: hidden",
+      "speeds: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "watch": {
+     "how": "explore, then tap: Watch",
+     "uiContrast": {
+      "texts": 40,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.7936,
+     "timeline": 175,
+     "layer": {
+      "placed": 4,
+      "dropped": 1
+     },
+     "panels": {
+      "timebar": [
+       0,
+       669,
+       390,
+       844
+      ],
+      "viewmode": [
+       8,
+       674,
+       175,
+       720
+      ]
+     },
+     "overlaps": [],
+     "targets": 46,
+     "fail2_5_8": [
+      "button.step 20x39 '08:00 - 08:45, Sokolnitz: Sokolnitz, the'",
+      "button.step 20x39 '08:45 - 09:30, The Pratzen: Soult storms'",
+      "button.step 20x39 '10:30 - 11:15, Olmütz road: The northern'"
+     ],
+     "evmarksUnder24": 25,
+     "under44": 42,
+     "under44List": [
+      "button#prevEv.t.tb-icon 40x40",
+      "button#play.t.tb-play 66x40",
+      "button#nextEv.t.tb-icon 40x40",
+      "button#follow.t.tb-follow 56.9x40",
+      "button#ph-speed.t 44x40",
+      "button#helpbtn.t.tb-help 36x32",
+      "button.step 80.1x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 20x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 40.1x39",
+      "button.step 46.8x39",
+      "button.step 66.8x39",
+      "button.step 26.7x39",
+      "div#timerail.timerail 374x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.dec",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.dec",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 41
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Deployment",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Telnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Pratzeberg",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Guard",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The wheel",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The ponds",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 1
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "layers: hidden",
+      "paperMap: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "sources: hidden",
+      "tour: hidden",
+      "eyes: hidden",
+      "speeds: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "layers": {
+     "how": "explore, then tap: Layers",
+     "uiContrast": {
+      "texts": 88,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.1439,
+     "timeline": 127,
+     "layer": {
+      "placed": 0,
+      "dropped": 0
+     },
+     "panels": {
+      "timebar": [
+       0,
+       717,
+       390,
+       844
+      ],
+      "dispatch": [
+       0,
+       531,
+       390,
+       717
+      ],
+      "layers": [
+       10,
+       96,
+       380,
+       586
+      ]
+     },
+     "overlaps": [
+      {
+       "a": "dispatch",
+       "b": "layers",
+       "w": 370,
+       "h": 55
+      }
+     ],
+     "targets": 64,
+     "fail2_5_8": [
+      "button.step 20x39 '08:00 - 08:45, Sokolnitz: Sokolnitz, the'",
+      "button.step 20x39 '08:45 - 09:30, The Pratzen: Soult storms'",
+      "button.step 20x39 '10:30 - 11:15, Olmütz road: The northern'"
+     ],
+     "evmarksUnder24": 25,
+     "under44": 50,
+     "under44List": [
+      "button#ph-grip 64x24",
+      "button#layerclose 24x24",
+      "button.mode-btn 114.3x42",
+      "button.mode-btn 114.3x42",
+      "button.mode-btn 113.3x42",
+      "button.t.exag-btn 59.6x30",
+      "button.t.exag-btn 34.9x30",
+      "button.t.exag-btn 60.4x30",
+      "button#prevEv.t.tb-icon 40x40",
+      "button#play.t.tb-play 66x40",
+      "button#nextEv.t.tb-icon 40x40",
+      "button#follow.t.tb-follow 56.9x40",
+      "button#ph-speed.t 44x40",
+      "button#helpbtn.t.tb-help 36x32",
+      "button.step 80.1x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 20x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 40.1x39",
+      "button.step 46.8x39",
+      "button.step 66.8x39",
+      "button.step 26.7x39",
+      "div#timerail.timerail 374x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "button#ph-grip 'Open the card' under button.lp-row.layer-btn",
+      "button#skel-day.lp-row 'Skeleton: whole dayEvery formation's plo' under span.why",
+      "button.lp-row.layer-btn 'Ordered routesEach plan column's line of' under span.why",
+      "button.lp-row.layer-btn 'ContoursHeight lines at a fixed interval' under button.step",
+      "button.lp-row.layer-btn 'Terrain studyNamed ridges, valleys, esca' under button.ev-mark.fr",
+      "button#going.lp-row 'GoingWhere guns and formed cavalry could' under div#timerail.timerail",
+      "button.t.exag-btn '1× true' under b",
+      "button.t.exag-btn '4×' under b",
+      "button.t.exag-btn '10.33×' under b",
+      "button#dwell.lp-row 'Pause briefly at eventsWhile playing, th' under div#timerail.timerail",
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.dec",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.dec",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [
+      "button.lp-row.layer-btn 'Terrain studyNamed ridges, valleys, esca'",
+      "button#going.lp-row 'GoingWhere guns and formed cavalry could' (wholly off)",
+      "button.t.exag-btn '1× true' (wholly off)",
+      "button.t.exag-btn '4×' (wholly off)",
+      "button.t.exag-btn '10.33×' (wholly off)",
+      "button#dwell.lp-row 'Pause briefly at eventsWhile playing, th' (wholly off)"
+     ],
+     "cut": [
+      {
+       "el": "p#d-lede.lede",
+       "why": "partly off the screen",
+       "text": "Kamensky's brigade, marching for Sokolnitz at the tail of La",
+       "w": 361
+      },
+      {
+       "el": "span.act",
+       "why": "ellipsis",
+       "text": "THE PRATZEN STRIKE",
+       "w": 58
+      },
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 235
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Deployment",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Telnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Pratzeberg",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Guard",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The wheel",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The ponds",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 1
+      }
+     ],
+     "offScreenText": 18,
+     "unreachable": [
+      "presentation: hidden",
+      "layers: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "sources: hidden",
+      "tour: hidden",
+      "eyes: hidden",
+      "speeds: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "paper": {
+     "how": "layers, then tap: Paper map, then tap: close",
+     "uiContrast": {
+      "texts": 93,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.6341,
+     "timeline": 127,
+     "layer": {
+      "placed": 19,
+      "dropped": 17
+     },
+     "panels": {
+      "timebar": [
+       0,
+       717,
+       390,
+       844
+      ],
+      "dispatch": [
+       0,
+       531,
+       390,
+       717
+      ]
+     },
+     "overlaps": [],
+     "targets": 44,
+     "fail2_5_8": [
+      "button.step 20x39 '08:00 - 08:45, Sokolnitz: Sokolnitz, the'",
+      "button.step 20x39 '08:45 - 09:30, The Pratzen: Soult storms'",
+      "button.step 20x39 '10:30 - 11:15, Olmütz road: The northern'"
+     ],
+     "evmarksUnder24": 25,
+     "under44": 43,
+     "under44List": [
+      "button#ph-grip 64x24",
+      "button#prevEv.t.tb-icon 40x40",
+      "button#play.t.tb-play 66x40",
+      "button#nextEv.t.tb-icon 40x40",
+      "button#follow.t.tb-follow 56.9x40",
+      "button#ph-speed.t 44x40",
+      "button#helpbtn.t.tb-help 36x32",
+      "button.step 80.1x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 20x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 40.1x39",
+      "button.step 46.8x39",
+      "button.step 66.8x39",
+      "button.step 26.7x39",
+      "div#timerail.timerail 374x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.dec",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.dec",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "p#d-lede.lede",
+       "why": "partly off the screen",
+       "text": "Kamensky's brigade, marching for Sokolnitz at the tail of La",
+       "w": 361
+      },
+      {
+       "el": "span.act",
+       "why": "ellipsis",
+       "text": "THE PRATZEN STRIKE",
+       "w": 58
+      },
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 235
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Deployment",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Telnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Pratzeberg",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Guard",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The wheel",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The ponds",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 1
+      }
+     ],
+     "offScreenText": 8,
+     "unreachable": [
+      "presentation: hidden",
+      "layers: hidden",
+      "paperMap: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "sources: hidden",
+      "tour: hidden",
+      "eyes: hidden",
+      "speeds: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "tour": {
+     "how": "explore, then tap: Guided tour",
+     "uiContrast": {
+      "texts": 58,
+      "belowAA": 1,
+      "belowAAList": [
+       "2.17<4.5 11.5px #tour-prev \"Back\""
+      ],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.5935,
+     "timeline": 127,
+     "layer": {
+      "placed": 16,
+      "dropped": 7
+     },
+     "panels": {
+      "timebar": [
+       0,
+       717,
+       390,
+       844
+      ],
+      "tourbar": [
+       10,
+       480,
+       380,
+       707
+      ]
+     },
+     "overlaps": [],
+     "targets": 45,
+     "fail2_5_8": [
+      "button.step 20x39 '08:00 - 08:45, Sokolnitz: Sokolnitz, the'",
+      "button.step 20x39 '08:45 - 09:30, The Pratzen: Soult storms'",
+      "button.step 20x39 '10:30 - 11:15, Olmütz road: The northern'"
+     ],
+     "evmarksUnder24": 25,
+     "under44": 44,
+     "under44List": [
+      "button#prevEv.t.tb-icon 40x40",
+      "button#play.t.tb-play 66x40",
+      "button#nextEv.t.tb-icon 40x40",
+      "button#follow.t.tb-follow 56.9x40",
+      "button#ph-speed.t 44x40",
+      "button#helpbtn.t.tb-help 36x32",
+      "button.step 80.1x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 20x39",
+      "button.step 26.7x39",
+      "button.step 20x39",
+      "button.step 40.1x39",
+      "button.step 46.8x39",
+      "button.step 66.8x39",
+      "button.step 26.7x39",
+      "div#timerail.timerail 374x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button#tour-next.t 47.4x28",
+      "button#tour-exit.t 100x28"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.dec",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.dec",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.act",
+       "why": "ellipsis",
+       "text": "THE DECEPTION",
+       "w": 52
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Deployment",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Telnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Pratzeberg",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Guard",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The wheel",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The ponds",
+       "w": 1
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 1
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "presentation: hidden",
+      "layers: hidden",
+      "paperMap: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "sources: hidden",
+      "tour: hidden",
+      "eyes: hidden",
+      "speeds: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    }
+   }
+  },
+  "844x390": {
+   "note": "iPhone 12-15 held landscape",
+   "dpr": 3,
+   "states": {
+    "first": {
+     "how": "untouched",
+     "uiContrast": {
+      "texts": 55,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.3878,
+     "timeline": 90.5,
+     "layer": {
+      "placed": 6,
+      "dropped": 7
+     },
+     "panels": {
+      "timebar": [
+       0,
+       300,
+       844,
+       390
+      ],
+      "card": [
+       0,
+       147,
+       844,
+       299
+      ]
+     },
+     "overlaps": [],
+     "targets": 51,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 50,
+     "under44List": [
+      "button#prevEv.t.tb-icon 39.5x32",
+      "button#prev.t.tb-icon 36x32",
+      "button#play.t.tb-play 58x32",
+      "button#next.t.tb-icon 36x32",
+      "button#nextEv.t.tb-icon 39.5x32",
+      "button#follow.t.tb-follow 56.9x32",
+      "button#eyesbtn.t.tb-eyes 105x28",
+      "button#helpbtn.t.tb-help 32x32",
+      "button.t.spd-btn 35.4x30",
+      "button.t.spd-btn 30.3x30",
+      "button.t.spd-btn 32.6x30",
+      "button.t.spd-btn 33x30",
+      "button.step 174.8x31",
+      "button.step 58.3x31",
+      "button.step 43.7x31",
+      "button.step 43.7x31",
+      "button.step 58.3x31",
+      "button.step 43.7x31",
+      "button.step 87.4x31",
+      "button.step 102x31",
+      "button.step 145.7x31",
+      "button.step 58.3x31",
+      "div#timerail.timerail 816x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button#fr-tour.t.fr-primary 122.8x34",
+      "button#fr-close.t 142.4x34"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.al",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant's division at Raigern since the night",
+       "w": 33
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Allied Advance",
+       "w": 102
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Pratzen Strike",
+       "w": 102
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Pratzeberg",
+       "w": 51
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 51
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "presentation: hidden",
+      "layers: hidden",
+      "paperMap: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "sources: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "explore": {
+     "how": "tap: Explore on my own; setClock(09:30)",
+     "uiContrast": {
+      "texts": 60,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.7755,
+     "timeline": 90.5,
+     "layer": {
+      "placed": 15,
+      "dropped": 5
+     },
+     "panels": {
+      "timebar": [
+       0,
+       300,
+       844,
+       390
+      ]
+     },
+     "overlaps": [],
+     "targets": 49,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 48,
+     "under44List": [
+      "button#prevEv.t.tb-icon 39.5x32",
+      "button#prev.t.tb-icon 36x32",
+      "button#play.t.tb-play 58x32",
+      "button#next.t.tb-icon 36x32",
+      "button#nextEv.t.tb-icon 39.5x32",
+      "button#follow.t.tb-follow 56.9x32",
+      "button#eyesbtn.t.tb-eyes 105x28",
+      "button#helpbtn.t.tb-help 32x32",
+      "button.t.spd-btn 35.4x30",
+      "button.t.spd-btn 30.3x30",
+      "button.t.spd-btn 32.6x30",
+      "button.t.spd-btn 33x30",
+      "button.step 174.8x31",
+      "button.step 58.3x31",
+      "button.step 43.7x31",
+      "button.step 43.7x31",
+      "button.step 75.9x31",
+      "button.step 43.7x31",
+      "button.step 87.4x31",
+      "button.step 102x31",
+      "button.step 145.7x31",
+      "button.step 58.3x31",
+      "div#timerail.timerail 816x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.al",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 92
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Allied Advance",
+       "w": 102
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Pratzen Strike",
+       "w": 102
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 51
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "presentation: hidden",
+      "layers: hidden",
+      "paperMap: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "sources: hidden",
+      "tour: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "panels": {
+     "how": "explore, then tap: Panels",
+     "uiContrast": {
+      "texts": 174,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.1735,
+     "timeline": 90.5,
+     "layer": {
+      "placed": 3,
+      "dropped": 3
+     },
+     "panels": {
+      "rail": [
+       0,
+       65,
+       844,
+       299
+      ],
+      "timebar": [
+       0,
+       300,
+       844,
+       390
+      ]
+     },
+     "overlaps": [],
+     "targets": 94,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 53,
+     "under44List": [
+      "button#tab-oob.tab-btn 229.3x32.4",
+      "button#tab-analysis.tab-btn 194.8x32.4",
+      "button#tab-command.tab-btn 205.1x32.4",
+      "button#tab-plans.tab-btn 178.8x32.4",
+      "button#srcbtn 121.5x24",
+      "button#prevEv.t.tb-icon 39.5x32",
+      "button#prev.t.tb-icon 36x32",
+      "button#play.t.tb-play 58x32",
+      "button#next.t.tb-icon 36x32",
+      "button#nextEv.t.tb-icon 39.5x32",
+      "button#follow.t.tb-follow 56.9x32",
+      "button#eyesbtn.t.tb-eyes 105x28",
+      "button#helpbtn.t.tb-help 32x32",
+      "button.t.spd-btn 35.4x30",
+      "button.t.spd-btn 30.3x30",
+      "button.t.spd-btn 32.6x30",
+      "button.t.spd-btn 33x30",
+      "button.step 174.8x31",
+      "button.step 58.3x31",
+      "button.step 43.7x31",
+      "button.step 43.7x31",
+      "button.step 75.9x31",
+      "button.step 43.7x31",
+      "button.step 87.4x31",
+      "button.step 102x31",
+      "button.step 145.7x31",
+      "button.step 58.3x31",
+      "div#timerail.timerail 816x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "button.oob-row 'Imperial HeadquartersNapoleon I—' under div.railfoot",
+      "button.oob-row 'IV CorpsNicolas Soult23,600' under div.tb-top",
+      "button.oob-row.sub 'Saint-Hilaire's DivisionLouis Vincent de' under button.step",
+      "button.oob-row.sub 'Vandamme's DivisionDominique Vandamme6,7' under div#timerail.timerail",
+      "button.oob-row.sub 'Legrand's DivisionClaude Legrand7,000' under div#timerail.timerail",
+      "button.oob-row.sub 'French guns on the heightsCorps and Guar' under div#timerail.timerail",
+      "button.oob-row 'III Corps (detachment)Louis-Nicolas Davo' under div#timerail.timerail",
+      "button.oob-row.sub 'Friant's DivisionLouis Friant3,470' under div#timerail.timerail",
+      "button.oob-row.sub 'Bourcier's DragoonsFrançois Bourcier830' under div#timerail.timerail",
+      "button.oob-row 'V CorpsJean Lannes12,700' under div#timerail.timerail",
+      "button.oob-row.sub 'Caffarelli's DivisionMarie-François de C' under div#timerail.timerail",
+      "button.oob-row.sub 'Suchet's DivisionLouis-Gabriel Suchet6,0' under div#timerail.timerail",
+      "button.oob-row.sub2 'The Santon detachmentMichel Claparède1,6' under div#timerail.timerail",
+      "button.oob-row 'Cavalry ReserveJoachim Murat7,400' under div#timerail.timerail",
+      "button.oob-row.sub 'Kellermann's Light CavalryFrançois Étien' under div#timerail.timerail",
+      "button.oob-row.sub 'Nansouty's CuirassiersÉtienne de Nansout' under div#timerail.timerail",
+      "button.oob-row.sub 'd'Hautpoul's CuirassiersJean-Joseph d'Ha' under div#timerail.timerail",
+      "button.oob-row.sub 'Walther's DragoonsFrederic Walther1,500' under div#timerail.timerail",
+      "button.oob-row 'I CorpsJean-Baptiste Bernadotte13,000' under div#timerail.timerail",
+      "button.oob-row.sub 'Rivaud's DivisionOlivier Rivaud6,000' under div#timerail.timerail",
+      "button.oob-row.sub 'Drouet d'Erlon's DivisionJean-Baptiste D' under div#timerail.timerail",
+      "button.oob-row 'Imperial GuardJean-Baptiste Bessières5,5' under div#timerail.timerail",
+      "button.oob-row.sub 'Guard InfantryGrenadiers and Chasseurs a' under div#timerail.timerail",
+      "button.oob-row.sub 'Guard CavalryBessières2,500' under div#timerail.timerail",
+      "button.oob-row 'Grenadier DivisionNicolas Oudinot5,700' under div#timerail.timerail",
+      "button.oob-row 'Allied HeadquartersMikhail Kutuzov (comm' under div#timerail.timerail",
+      "button.oob-row 'Left Wing CommandFriedrich Wilhelm von B' under div#timerail.timerail",
+      "button.oob-row.sub 'Kienmayer's Advance GuardMichael von Kie' under div#timerail.timerail",
+      "button.oob-row.sub 'First ColumnDmitry Dokhturov13,490' under div#timerail.timerail",
+      "button.oob-row.sub 'Second ColumnLouis de Langeron11,700' under div#timerail.timerail",
+      "button.oob-row.sub2 'Kamensky's BrigadeSergey Kamensky4,250' under div#timerail.timerail",
+      "button.oob-row.sub 'Third ColumnIgnacy Przybyszewski7,700' under div#timerail.timerail",
+      "button.oob-row 'Fourth ColumnFZM Johann Kollowrat and Lt' under div#timerail.timerail",
+      "button.oob-row.sub 'Miloradovich's RussiansMikhail Miloradov' under div#timerail.timerail",
+      "button.oob-row.sub 'Kollowrat's AustriansFZM Johann Karl Gra' under div#timerail.timerail",
+      "button.oob-row 'Fifth Column (cavalry)Prince Johann von ' under div#timerail.timerail",
+      "button.oob-row 'Advance Guard of the RightPrince Pyotr B' under div#timerail.timerail",
+      "button.oob-row 'Russian Imperial GuardConstantine Pavlov' under div#timerail.timerail",
+      "button.oob-row.sub 'Guard InfantryNot established on the day' under div#timerail.timerail",
+      "button.oob-row.sub 'Guard CavalryAndrei Kologrivov2,900' under div#timerail.timerail",
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.al",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.fr"
+     ],
+     "outside": [
+      "button.oob-row.sub 'Vandamme's DivisionDominique Vandamme6,7'",
+      "button.oob-row.sub 'Legrand's DivisionClaude Legrand7,000' (wholly off)",
+      "button.oob-row.sub 'French guns on the heightsCorps and Guar' (wholly off)",
+      "button.oob-row 'III Corps (detachment)Louis-Nicolas Davo' (wholly off)",
+      "button.oob-row.sub 'Friant's DivisionLouis Friant3,470' (wholly off)",
+      "button.oob-row.sub 'Bourcier's DragoonsFrançois Bourcier830' (wholly off)",
+      "button.oob-row 'V CorpsJean Lannes12,700' (wholly off)",
+      "button.oob-row.sub 'Caffarelli's DivisionMarie-François de C' (wholly off)",
+      "button.oob-row.sub 'Suchet's DivisionLouis-Gabriel Suchet6,0' (wholly off)",
+      "button.oob-row.sub2 'The Santon detachmentMichel Claparède1,6' (wholly off)",
+      "button.oob-row 'Cavalry ReserveJoachim Murat7,400' (wholly off)",
+      "button.oob-row.sub 'Kellermann's Light CavalryFrançois Étien' (wholly off)",
+      "button.oob-row.sub 'Nansouty's CuirassiersÉtienne de Nansout' (wholly off)",
+      "button.oob-row.sub 'd'Hautpoul's CuirassiersJean-Joseph d'Ha' (wholly off)",
+      "button.oob-row.sub 'Walther's DragoonsFrederic Walther1,500' (wholly off)",
+      "button.oob-row 'I CorpsJean-Baptiste Bernadotte13,000' (wholly off)",
+      "button.oob-row.sub 'Rivaud's DivisionOlivier Rivaud6,000' (wholly off)",
+      "button.oob-row.sub 'Drouet d'Erlon's DivisionJean-Baptiste D' (wholly off)",
+      "button.oob-row 'Imperial GuardJean-Baptiste Bessières5,5' (wholly off)",
+      "button.oob-row.sub 'Guard InfantryGrenadiers and Chasseurs a' (wholly off)",
+      "button.oob-row.sub 'Guard CavalryBessières2,500' (wholly off)",
+      "button.oob-row 'Grenadier DivisionNicolas Oudinot5,700' (wholly off)",
+      "button.oob-row 'Allied HeadquartersMikhail Kutuzov (comm' (wholly off)",
+      "button.oob-row 'Left Wing CommandFriedrich Wilhelm von B' (wholly off)",
+      "button.oob-row.sub 'Kienmayer's Advance GuardMichael von Kie' (wholly off)",
+      "button.oob-row.sub 'First ColumnDmitry Dokhturov13,490' (wholly off)",
+      "button.oob-row.sub 'Second ColumnLouis de Langeron11,700' (wholly off)",
+      "button.oob-row.sub2 'Kamensky's BrigadeSergey Kamensky4,250' (wholly off)",
+      "button.oob-row.sub 'Third ColumnIgnacy Przybyszewski7,700' (wholly off)",
+      "button.oob-row 'Fourth ColumnFZM Johann Kollowrat and Lt' (wholly off)",
+      "button.oob-row.sub 'Miloradovich's RussiansMikhail Miloradov' (wholly off)",
+      "button.oob-row.sub 'Kollowrat's AustriansFZM Johann Karl Gra' (wholly off)",
+      "button.oob-row 'Fifth Column (cavalry)Prince Johann von ' (wholly off)",
+      "button.oob-row 'Advance Guard of the RightPrince Pyotr B' (wholly off)",
+      "button.oob-row 'Russian Imperial GuardConstantine Pavlov' (wholly off)",
+      "button.oob-row.sub 'Guard InfantryNot established on the day' (wholly off)",
+      "button.oob-row.sub 'Guard CavalryAndrei Kologrivov2,900' (wholly off)"
+     ],
+     "cut": [
+      {
+       "el": "span.oob-name",
+       "why": "partly off the screen",
+       "text": "Vandamme's DivisionDominique Vandamme",
+       "w": 738
+      },
+      {
+       "el": "em",
+       "why": "partly off the screen",
+       "text": "Dominique Vandamme",
+       "w": 738
+      },
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 92
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Allied Advance",
+       "w": 102
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Pratzen Strike",
+       "w": 102
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 51
+      }
+     ],
+     "offScreenText": 109,
+     "unreachable": [
+      "presentation: hidden",
+      "layers: hidden",
+      "paperMap: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "tour: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "dossier": {
+     "how": "explore, then select('f','sthilaire') (a tap on its counter)",
+     "uiContrast": {
+      "texts": 72,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.2245,
+     "timeline": 90.5,
+     "layer": {
+      "placed": 6,
+      "dropped": 2
+     },
+     "panels": {
+      "timebar": [
+       0,
+       300,
+       844,
+       390
+      ],
+      "drawer": [
+       0,
+       85,
+       844,
+       299
+      ]
+     },
+     "overlaps": [],
+     "targets": 52,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 51,
+     "under44List": [
+      "button#prevEv.t.tb-icon 39.5x32",
+      "button#prev.t.tb-icon 36x32",
+      "button#play.t.tb-play 58x32",
+      "button#next.t.tb-icon 36x32",
+      "button#nextEv.t.tb-icon 39.5x32",
+      "button#follow.t.tb-follow 56.9x32",
+      "button#eyesbtn.t.tb-eyes 105x28",
+      "button#helpbtn.t.tb-help 32x32",
+      "button.t.spd-btn 35.4x30",
+      "button.t.spd-btn 30.3x30",
+      "button.t.spd-btn 32.6x30",
+      "button.t.spd-btn 33x30",
+      "button.step 174.8x31",
+      "button.step 58.3x31",
+      "button.step 43.7x31",
+      "button.step 43.7x31",
+      "button.step 75.9x31",
+      "button.step 43.7x31",
+      "button.step 87.4x31",
+      "button.step 102x31",
+      "button.step 145.7x31",
+      "button.step 58.3x31",
+      "div#timerail.timerail 816x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button#drawer-close 24x25",
+      "button.more-btn 800x35",
+      "button.t 128.8x28"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.al",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.fr",
+      "button.more-btn 'Full dossier: role, movement, sources' under div#timerail.timerail",
+      "button.t 'How this is sourced' under div#timerail.timerail"
+     ],
+     "outside": [
+      "button.more-btn 'Full dossier: role, movement, sources' (wholly off)",
+      "button.t 'How this is sourced' (wholly off)"
+     ],
+     "cut": [
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 92
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Allied Advance",
+       "w": 102
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Pratzen Strike",
+       "w": 102
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 51
+      },
+      {
+       "el": "dt",
+       "why": "partly off the screen",
+       "text": "Objective",
+       "w": 118
+      },
+      {
+       "el": "dd",
+       "why": "partly off the screen",
+       "text": "Hold the Pratzeberg Claim: This map's reading",
+       "w": 672
+      },
+      {
+       "el": "span.ltag.claim",
+       "why": "partly off the screen",
+       "text": "Claim: This map's reading",
+       "w": 120
+      }
+     ],
+     "offScreenText": 4,
+     "unreachable": [
+      "presentation: hidden",
+      "layers: hidden",
+      "paperMap: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "sources: hidden",
+      "tour: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "watch": {
+     "how": "explore, then tap: Watch",
+     "uiContrast": {
+      "texts": 69,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.7347,
+     "timeline": 104,
+     "layer": {
+      "placed": 15,
+      "dropped": 4
+     },
+     "panels": {
+      "timebar": [
+       0,
+       286,
+       844,
+       390
+      ],
+      "viewmode": [
+       556,
+       289,
+       727,
+       335
+      ]
+     },
+     "overlaps": [],
+     "targets": 52,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 48,
+     "under44List": [
+      "button#prevEv.t.tb-icon 39.5x32",
+      "button#prev.t.tb-icon 36x32",
+      "button#play.t.tb-play 58x32",
+      "button#next.t.tb-icon 36x32",
+      "button#nextEv.t.tb-icon 39.5x32",
+      "button#follow.t.tb-follow 56.9x32",
+      "button#eyesbtn.t.tb-eyes 105x28",
+      "button#helpbtn.t.tb-help 32x32",
+      "button.t.spd-btn 35.4x30",
+      "button.t.spd-btn 30.3x30",
+      "button.t.spd-btn 32.6x30",
+      "button.t.spd-btn 33x30",
+      "button.step 174.8x31",
+      "button.step 58.3x31",
+      "button.step 43.7x31",
+      "button.step 43.7x31",
+      "button.step 75.9x31",
+      "button.step 43.7x31",
+      "button.step 87.4x31",
+      "button.step 102x31",
+      "button.step 145.7x31",
+      "button.step 58.3x31",
+      "div#timerail.timerail 816x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "button.t.spd-btn '4×' under button.t.spd-btn",
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.al",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.fr"
+     ],
+     "outside": [
+      "button.t.spd-btn '2×'",
+      "button.t.spd-btn '4×' (wholly off)"
+     ],
+     "cut": [
+      {
+       "el": "span.sep",
+       "why": "cut by div#tb-cap.tb-cap",
+       "text": "·",
+       "w": 18
+      },
+      {
+       "el": "span.sep.der-sep",
+       "why": "cut by div#tb-cap.tb-cap",
+       "text": "·",
+       "w": 18
+      },
+      {
+       "el": "span.der",
+       "why": "cut by div#tb-cap.tb-cap",
+       "text": "derived on the heights: Allied ≈ 18,150",
+       "w": 235
+      },
+      {
+       "el": "small",
+       "why": "cut by div#tb-cap.tb-cap",
+       "text": "derived",
+       "w": 53
+      },
+      {
+       "el": "span.sep.der-sep",
+       "why": "cut by div#tb-cap.tb-cap",
+       "text": "·",
+       "w": 18
+      },
+      {
+       "el": "span.cut.der",
+       "why": "cut by div#tb-cap.tb-cap",
+       "text": "derived centre separation detected",
+       "w": 219
+      },
+      {
+       "el": "small",
+       "why": "cut by div#tb-cap.tb-cap",
+       "text": "derived",
+       "w": 53
+      },
+      {
+       "el": "span.sep",
+       "why": "cut by div#tb-cap.tb-cap",
+       "text": "·",
+       "w": 18
+      },
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 19
+      },
+      {
+       "el": "button.t.spd-btn",
+       "why": "partly off the screen",
+       "text": "2×",
+       "w": 33
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Allied Advance",
+       "w": 102
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Pratzen Strike",
+       "w": 102
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 51
+      }
+     ],
+     "offScreenText": 1,
+     "unreachable": [
+      "layers: hidden",
+      "paperMap: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "sources: hidden",
+      "tour: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "layers": {
+     "how": "explore, then tap: Layers",
+     "uiContrast": {
+      "texts": 97,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.6293,
+     "timeline": 90.5,
+     "layer": {
+      "placed": 12,
+      "dropped": 4
+     },
+     "panels": {
+      "timebar": [
+       0,
+       300,
+       844,
+       390
+      ],
+      "layers": [
+       534,
+       96,
+       822,
+       265
+      ]
+     },
+     "overlaps": [],
+     "targets": 69,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 55,
+     "under44List": [
+      "button#layerclose 24x24",
+      "button.mode-btn 87x42",
+      "button.mode-btn 87x42",
+      "button.mode-btn 86x42",
+      "button.t.exag-btn 59.6x30",
+      "button.t.exag-btn 34.9x30",
+      "button.t.exag-btn 60.4x30",
+      "button#prevEv.t.tb-icon 39.5x32",
+      "button#prev.t.tb-icon 36x32",
+      "button#play.t.tb-play 58x32",
+      "button#next.t.tb-icon 36x32",
+      "button#nextEv.t.tb-icon 39.5x32",
+      "button#follow.t.tb-follow 56.9x32",
+      "button#eyesbtn.t.tb-eyes 105x28",
+      "button#helpbtn.t.tb-help 32x32",
+      "button.t.spd-btn 35.4x30",
+      "button.t.spd-btn 30.3x30",
+      "button.t.spd-btn 32.6x30",
+      "button.t.spd-btn 33x30",
+      "button.step 174.8x31",
+      "button.step 58.3x31",
+      "button.step 43.7x31",
+      "button.step 43.7x31",
+      "button.step 75.9x31",
+      "button.step 43.7x31",
+      "button.step 87.4x31",
+      "button.step 102x31",
+      "button.step 145.7x31",
+      "button.step 58.3x31",
+      "div#timerail.timerail 816x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "button.lp-row.layer-btn 'Formation countersMilitary symbols with ' under canvas",
+      "button.lp-row.layer-btn 'MovementAttack arrows and defensive line' under div.tb-top",
+      "button.lp-row.layer-btn 'Historical eventsMarkers for what happen' under div#timerail.timerail",
+      "button.lp-row.layer-btn 'NamesVillages, terrain and formation nam' under div#timerail.timerail",
+      "button.lp-row.layer-btn 'Route marchedThe ground each formation h' under div#timerail.timerail",
+      "button.lp-row.layer-btn 'Position confidenceEach formation's grou' under div#timerail.timerail",
+      "button.lp-row.layer-btn 'Evidence skeletonThe plotted positions (' under div#timerail.timerail",
+      "button#skel-day.lp-row 'Skeleton: whole dayEvery formation's plo' under div#timerail.timerail",
+      "button.lp-row.layer-btn 'Ordered routesEach plan column's line of' under div#timerail.timerail",
+      "button.lp-row.layer-btn 'ContoursHeight lines at a fixed interval' under div#timerail.timerail",
+      "button.lp-row.layer-btn 'Terrain studyNamed ridges, valleys, esca' under div#timerail.timerail",
+      "button#going.lp-row 'GoingWhere guns and formed cavalry could' under div#timerail.timerail",
+      "button.t.exag-btn '1× true' under div#timerail.timerail",
+      "button.t.exag-btn '4×' under div#timerail.timerail",
+      "button.t.exag-btn '10.33×' under div#timerail.timerail",
+      "button#dwell.lp-row 'Pause briefly at eventsWhile playing, th' under div#timerail.timerail",
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.al",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.fr"
+     ],
+     "outside": [
+      "button.lp-row.layer-btn 'Historical eventsMarkers for what happen'",
+      "button.lp-row.layer-btn 'NamesVillages, terrain and formation nam' (wholly off)",
+      "button.lp-row.layer-btn 'Route marchedThe ground each formation h' (wholly off)",
+      "button.lp-row.layer-btn 'Position confidenceEach formation's grou' (wholly off)",
+      "button.lp-row.layer-btn 'Evidence skeletonThe plotted positions (' (wholly off)",
+      "button#skel-day.lp-row 'Skeleton: whole dayEvery formation's plo' (wholly off)",
+      "button.lp-row.layer-btn 'Ordered routesEach plan column's line of' (wholly off)",
+      "button.lp-row.layer-btn 'ContoursHeight lines at a fixed interval' (wholly off)",
+      "button.lp-row.layer-btn 'Terrain studyNamed ridges, valleys, esca' (wholly off)",
+      "button#going.lp-row 'GoingWhere guns and formed cavalry could' (wholly off)",
+      "button.t.exag-btn '1× true' (wholly off)",
+      "button.t.exag-btn '4×' (wholly off)",
+      "button.t.exag-btn '10.33×' (wholly off)",
+      "button#dwell.lp-row 'Pause briefly at eventsWhile playing, th' (wholly off)"
+     ],
+     "cut": [
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 92
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Allied Advance",
+       "w": 102
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Pratzen Strike",
+       "w": 102
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 51
+      }
+     ],
+     "offScreenText": 27,
+     "unreachable": [
+      "presentation: hidden",
+      "layers: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "sources: hidden",
+      "tour: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "paper": {
+     "how": "layers, then tap: Paper map, then tap: close",
+     "uiContrast": {
+      "texts": 94,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.7755,
+     "timeline": 90.5,
+     "layer": {
+      "placed": 21,
+      "dropped": 15
+     },
+     "panels": {
+      "timebar": [
+       0,
+       300,
+       844,
+       390
+      ]
+     },
+     "overlaps": [],
+     "targets": 49,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 48,
+     "under44List": [
+      "button#prevEv.t.tb-icon 39.5x32",
+      "button#prev.t.tb-icon 36x32",
+      "button#play.t.tb-play 58x32",
+      "button#next.t.tb-icon 36x32",
+      "button#nextEv.t.tb-icon 39.5x32",
+      "button#follow.t.tb-follow 56.9x32",
+      "button#eyesbtn.t.tb-eyes 105x28",
+      "button#helpbtn.t.tb-help 32x32",
+      "button.t.spd-btn 35.4x30",
+      "button.t.spd-btn 30.3x30",
+      "button.t.spd-btn 32.6x30",
+      "button.t.spd-btn 33x30",
+      "button.step 174.8x31",
+      "button.step 58.3x31",
+      "button.step 43.7x31",
+      "button.step 43.7x31",
+      "button.step 75.9x31",
+      "button.step 43.7x31",
+      "button.step 87.4x31",
+      "button.step 102x31",
+      "button.step 145.7x31",
+      "button.step 58.3x31",
+      "div#timerail.timerail 816x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.al",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 92
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Allied Advance",
+       "w": 102
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Pratzen Strike",
+       "w": 102
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 51
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "presentation: hidden",
+      "layers: hidden",
+      "paperMap: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "sources: hidden",
+      "tour: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "tour": {
+     "how": "explore, then tap: Guided tour",
+     "uiContrast": {
+      "texts": 59,
+      "belowAA": 1,
+      "belowAAList": [
+       "2.17<4.5 11.5px #tour-prev \"Back\""
+      ],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.4912,
+     "timeline": 90.5,
+     "layer": {
+      "placed": 10,
+      "dropped": 13
+     },
+     "panels": {
+      "timebar": [
+       0,
+       300,
+       844,
+       390
+      ],
+      "tourbar": [
+       142,
+       124,
+       702,
+       291
+      ]
+     },
+     "overlaps": [],
+     "targets": 51,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 50,
+     "under44List": [
+      "button#prevEv.t.tb-icon 39.5x32",
+      "button#prev.t.tb-icon 36x32",
+      "button#play.t.tb-play 58x32",
+      "button#next.t.tb-icon 36x32",
+      "button#nextEv.t.tb-icon 39.5x32",
+      "button#follow.t.tb-follow 56.9x32",
+      "button#eyesbtn.t.tb-eyes 105x28",
+      "button#helpbtn.t.tb-help 32x32",
+      "button.t.spd-btn 35.4x30",
+      "button.t.spd-btn 30.3x30",
+      "button.t.spd-btn 32.6x30",
+      "button.t.spd-btn 33x30",
+      "button.step 174.8x31",
+      "button.step 58.3x31",
+      "button.step 43.7x31",
+      "button.step 43.7x31",
+      "button.step 58.3x31",
+      "button.step 43.7x31",
+      "button.step 87.4x31",
+      "button.step 102x31",
+      "button.step 145.7x31",
+      "button.step 58.3x31",
+      "div#timerail.timerail 816x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button#tour-next.t 47.4x28",
+      "button#tour-exit.t 100x28"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.al",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.act",
+       "why": "ellipsis",
+       "text": "THE DECEPTION",
+       "w": 98
+      },
+      {
+       "el": "span.cap-ph",
+       "why": "ellipsis",
+       "text": "Dispositions in the dark",
+       "w": 12
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Allied Advance",
+       "w": 102
+      },
+      {
+       "el": "button.act-btn",
+       "why": "ellipsis",
+       "text": "The Pratzen Strike",
+       "w": 102
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Sokolnitz",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "The Pratzen",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Pratzeberg",
+       "w": 51
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Olmütz road",
+       "w": 37
+      },
+      {
+       "el": "span.step-l",
+       "why": "ellipsis",
+       "text": "Reckoning",
+       "w": 51
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "presentation: hidden",
+      "layers: hidden",
+      "paperMap: hidden",
+      "panels: hidden",
+      "vantages: hidden",
+      "sources: hidden",
+      "tour: hidden"
+     ],
+     "contrast": {
+      "texts": null,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": null,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    }
+   }
+  }
+ }
+}

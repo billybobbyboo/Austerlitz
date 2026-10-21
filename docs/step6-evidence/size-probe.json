@@ -1,0 +1,1120 @@
+{
+ "note": "per block: distance (world units), a vertical man's height on screen and a man's bounding sphere's diameter on screen (CSS px, 1600 x 900); software WebGL, no time measured",
+ "views": {
+  "overview-plan": {
+   "pitchDeg": -83.4,
+   "fov": 37,
+   "blocks": [
+    {
+     "id": "gqg",
+     "d": 438.6,
+     "vertPx": 1.89,
+     "spherePx": 6.9,
+     "tris": 3456
+    },
+    {
+     "id": "sthilaire",
+     "d": 423.1,
+     "vertPx": 0.72,
+     "spherePx": 7.15,
+     "tris": 33344
+    },
+    {
+     "id": "vandamme",
+     "d": 427.6,
+     "vertPx": 1.19,
+     "spherePx": 7.08,
+     "tris": 29760
+    },
+    {
+     "id": "legrand",
+     "d": 424.5,
+     "vertPx": 0.2,
+     "spherePx": 7.13,
+     "tris": 30144
+    },
+    {
+     "id": "friant",
+     "d": 425.9,
+     "vertPx": 0.51,
+     "spherePx": 7.11,
+     "tris": 18560
+    },
+    {
+     "id": "bourcier",
+     "d": 426.3,
+     "vertPx": 0.6,
+     "spherePx": 7.1,
+     "tris": 6800
+    },
+    {
+     "id": "caffarelli",
+     "d": 437.5,
+     "vertPx": 1.84,
+     "spherePx": 6.92,
+     "tris": 29760
+    },
+    {
+     "id": "suchet",
+     "d": 440.7,
+     "vertPx": 2.05,
+     "spherePx": 6.87,
+     "tris": 19776
+    },
+    {
+     "id": "santon",
+     "d": 440.5,
+     "vertPx": 2.14,
+     "spherePx": 6.87,
+     "tris": 11880
+    },
+    {
+     "id": "kellermann",
+     "d": 435.1,
+     "vertPx": 1.71,
+     "spherePx": 6.95,
+     "tris": 9000
+    },
+    {
+     "id": "nansouty",
+     "d": 434.8,
+     "vertPx": 1.69,
+     "spherePx": 6.96,
+     "tris": 6400
+    },
+    {
+     "id": "dhautpoul",
+     "d": 433.8,
+     "vertPx": 1.62,
+     "spherePx": 6.98,
+     "tris": 7040
+    },
+    {
+     "id": "walther",
+     "d": 437.8,
+     "vertPx": 1.81,
+     "spherePx": 6.91,
+     "tris": 6800
+    },
+    {
+     "id": "rivaud",
+     "d": 431,
+     "vertPx": 1.4,
+     "spherePx": 7.02,
+     "tris": 27776
+    },
+    {
+     "id": "drouet",
+     "d": 429.5,
+     "vertPx": 1.25,
+     "spherePx": 7.05,
+     "tris": 33344
+    },
+    {
+     "id": "guard_inf",
+     "d": 435.3,
+     "vertPx": 1.64,
+     "spherePx": 6.95,
+     "tris": 15456
+    },
+    {
+     "id": "guard_cav",
+     "d": 434,
+     "vertPx": 1.59,
+     "spherePx": 6.97,
+     "tris": 9070
+    },
+    {
+     "id": "c_gren",
+     "d": 434.7,
+     "vertPx": 1.58,
+     "spherePx": 6.96,
+     "tris": 25056
+    },
+    {
+     "id": "ahq",
+     "d": 426.8,
+     "vertPx": 1.04,
+     "spherePx": 7.09,
+     "tris": 3456
+    },
+    {
+     "id": "buxhowden",
+     "d": 424.6,
+     "vertPx": 0.01,
+     "spherePx": 7.13,
+     "tris": 3456
+    },
+    {
+     "id": "kienmayer",
+     "d": 428.3,
+     "vertPx": 0.5,
+     "spherePx": 7.07,
+     "tris": 32092
+    },
+    {
+     "id": "dok",
+     "d": 425.4,
+     "vertPx": 0.25,
+     "spherePx": 7.11,
+     "tris": 36288
+    },
+    {
+     "id": "lang",
+     "d": 423.6,
+     "vertPx": 0.05,
+     "spherePx": 7.14,
+     "tris": 21024
+    },
+    {
+     "id": "kamensky",
+     "d": 421.7,
+     "vertPx": 0.44,
+     "spherePx": 7.18,
+     "tris": 24000
+    },
+    {
+     "id": "prz",
+     "d": 423.2,
+     "vertPx": 0.26,
+     "spherePx": 7.15,
+     "tris": 40320
+    },
+    {
+     "id": "milo",
+     "d": 426.7,
+     "vertPx": 1.06,
+     "spherePx": 7.09,
+     "tris": 24480
+    },
+    {
+     "id": "kollo",
+     "d": 425.9,
+     "vertPx": 0.95,
+     "spherePx": 7.11,
+     "tris": 34848
+    },
+    {
+     "id": "lich",
+     "d": 434,
+     "vertPx": 1.62,
+     "spherePx": 6.97,
+     "tris": 18880
+    },
+    {
+     "id": "bag",
+     "d": 449.3,
+     "vertPx": 2.5,
+     "spherePx": 6.74,
+     "tris": 36000
+    },
+    {
+     "id": "rg_inf",
+     "d": 435.7,
+     "vertPx": 1.42,
+     "spherePx": 6.94,
+     "tris": 21312
+    },
+    {
+     "id": "rg_cav",
+     "d": 433.3,
+     "vertPx": 1.46,
+     "spherePx": 6.98,
+     "tris": 9560
+    }
+   ]
+  },
+  "ph8-overview-watch": {
+   "pitchDeg": -83.4,
+   "fov": 37,
+   "blocks": [
+    {
+     "id": "gqg",
+     "d": 425.7,
+     "vertPx": 0.01,
+     "spherePx": 7.11,
+     "tris": 3456
+    },
+    {
+     "id": "sthilaire",
+     "d": 424.2,
+     "vertPx": 0.08,
+     "spherePx": 7.13,
+     "tris": 30144
+    },
+    {
+     "id": "vandamme",
+     "d": 423.6,
+     "vertPx": 0.06,
+     "spherePx": 7.14,
+     "tris": 29760
+    },
+    {
+     "id": "legrand",
+     "d": 425.3,
+     "vertPx": 0.32,
+     "spherePx": 7.12,
+     "tris": 30144
+    },
+    {
+     "id": "friant",
+     "d": 427.4,
+     "vertPx": 0.56,
+     "spherePx": 7.08,
+     "tris": 15360
+    },
+    {
+     "id": "bourcier",
+     "d": 424.9,
+     "vertPx": 0.32,
+     "spherePx": 7.12,
+     "tris": 6800
+    },
+    {
+     "id": "caffarelli",
+     "d": 445.4,
+     "vertPx": 1.95,
+     "spherePx": 6.79,
+     "tris": 32960
+    },
+    {
+     "id": "suchet",
+     "d": 449,
+     "vertPx": 2.47,
+     "spherePx": 6.74,
+     "tris": 22976
+    },
+    {
+     "id": "santon",
+     "d": 440.5,
+     "vertPx": 2.15,
+     "spherePx": 6.87,
+     "tris": 11880
+    },
+    {
+     "id": "kellermann",
+     "d": 440.1,
+     "vertPx": 1.82,
+     "spherePx": 6.88,
+     "tris": 9000
+    },
+    {
+     "id": "nansouty",
+     "d": 439,
+     "vertPx": 1.77,
+     "spherePx": 6.89,
+     "tris": 6400
+    },
+    {
+     "id": "dhautpoul",
+     "d": 437.2,
+     "vertPx": 1.69,
+     "spherePx": 6.92,
+     "tris": 7040
+    },
+    {
+     "id": "walther",
+     "d": 439.9,
+     "vertPx": 1.92,
+     "spherePx": 6.88,
+     "tris": 6800
+    },
+    {
+     "id": "rivaud",
+     "d": 430.5,
+     "vertPx": 1.3,
+     "spherePx": 7.03,
+     "tris": 24576
+    },
+    {
+     "id": "drouet",
+     "d": 427.9,
+     "vertPx": 1.14,
+     "spherePx": 7.07,
+     "tris": 30144
+    },
+    {
+     "id": "guard_inf",
+     "d": 426.5,
+     "vertPx": 1.03,
+     "spherePx": 7.1,
+     "tris": 15456
+    },
+    {
+     "id": "guard_cav",
+     "d": 426.9,
+     "vertPx": 1.07,
+     "spherePx": 7.09,
+     "tris": 9070
+    },
+    {
+     "id": "c_gren",
+     "d": 423.6,
+     "vertPx": 0.06,
+     "spherePx": 7.14,
+     "tris": 25056
+    },
+    {
+     "id": "ahq",
+     "d": 442.7,
+     "vertPx": 1.42,
+     "spherePx": 6.84,
+     "tris": 3456
+    },
+    {
+     "id": "buxhowden",
+     "d": 425.8,
+     "vertPx": 0.14,
+     "spherePx": 7.11,
+     "tris": 3456
+    },
+    {
+     "id": "kienmayer",
+     "d": 425.1,
+     "vertPx": 0.27,
+     "spherePx": 7.12,
+     "tris": 32092
+    },
+    {
+     "id": "dok",
+     "d": 427.2,
+     "vertPx": 0.39,
+     "spherePx": 7.08,
+     "tris": 36288
+    },
+    {
+     "id": "lang",
+     "d": 424.6,
+     "vertPx": 0.27,
+     "spherePx": 7.13,
+     "tris": 21024
+    },
+    {
+     "id": "kamensky",
+     "d": 434.7,
+     "vertPx": 1.21,
+     "spherePx": 6.96,
+     "tris": 20736
+    },
+    {
+     "id": "prz",
+     "d": 424.7,
+     "vertPx": 0.22,
+     "spherePx": 7.13,
+     "tris": 36864
+    },
+    {
+     "id": "milo",
+     "d": 441.4,
+     "vertPx": 1.21,
+     "spherePx": 6.86,
+     "tris": 21024
+    },
+    {
+     "id": "kollo",
+     "d": 444.9,
+     "vertPx": 1.38,
+     "spherePx": 6.8,
+     "tris": 34848
+    },
+    {
+     "id": "lich",
+     "d": 447.4,
+     "vertPx": 1.83,
+     "spherePx": 6.76,
+     "tris": 18880
+    },
+    {
+     "id": "bag",
+     "d": 453.3,
+     "vertPx": 2.58,
+     "spherePx": 6.67,
+     "tris": 36000
+    },
+    {
+     "id": "rg_inf",
+     "d": 444.1,
+     "vertPx": 1.46,
+     "spherePx": 6.81,
+     "tris": 21312
+    },
+    {
+     "id": "rg_cav",
+     "d": 445.5,
+     "vertPx": 1.56,
+     "spherePx": 6.79,
+     "tris": 9560
+    }
+   ]
+  },
+  "overview-field": {
+   "pitchDeg": -21.8,
+   "fov": 37,
+   "blocks": [
+    {
+     "id": "gqg",
+     "d": 263.2,
+     "vertPx": 11.19,
+     "spherePx": 11.5,
+     "tris": 3456
+    },
+    {
+     "id": "sthilaire",
+     "d": 234.3,
+     "vertPx": 11.89,
+     "spherePx": 12.91,
+     "tris": 33344
+    },
+    {
+     "id": "vandamme",
+     "d": 260.9,
+     "vertPx": 10.86,
+     "spherePx": 11.6,
+     "tris": 29760
+    },
+    {
+     "id": "legrand",
+     "d": 197.1,
+     "vertPx": 13.69,
+     "spherePx": 15.36,
+     "tris": 30144
+    },
+    {
+     "id": "friant",
+     "d": 172.6,
+     "vertPx": 15.54,
+     "spherePx": 17.53,
+     "tris": 18560
+    },
+    {
+     "id": "bourcier",
+     "d": 167,
+     "vertPx": 16.01,
+     "spherePx": 18.12,
+     "tris": 6800
+    },
+    {
+     "id": "caffarelli",
+     "d": 274,
+     "vertPx": 10.58,
+     "spherePx": 11.05,
+     "tris": 29760
+    },
+    {
+     "id": "suchet",
+     "d": 285.2,
+     "vertPx": 10.28,
+     "spherePx": 10.61,
+     "tris": 19776
+    },
+    {
+     "id": "santon",
+     "d": 286.5,
+     "vertPx": 10.33,
+     "spherePx": 10.56,
+     "tris": 11880
+    },
+    {
+     "id": "kellermann",
+     "d": 280.3,
+     "vertPx": 10.26,
+     "spherePx": 10.8,
+     "tris": 9000
+    },
+    {
+     "id": "nansouty",
+     "d": 276.5,
+     "vertPx": 10.39,
+     "spherePx": 10.94,
+     "tris": 6400
+    },
+    {
+     "id": "dhautpoul",
+     "d": 269.5,
+     "vertPx": 10.63,
+     "spherePx": 11.23,
+     "tris": 7040
+    },
+    {
+     "id": "walther",
+     "d": 277.1,
+     "vertPx": 10.43,
+     "spherePx": 10.92,
+     "tris": 6800
+    },
+    {
+     "id": "rivaud",
+     "d": 258.8,
+     "vertPx": 10.96,
+     "spherePx": 11.69,
+     "tris": 27776
+    },
+    {
+     "id": "drouet",
+     "d": 248.5,
+     "vertPx": 11.33,
+     "spherePx": 12.18,
+     "tris": 33344
+    },
+    {
+     "id": "guard_inf",
+     "d": 252.1,
+     "vertPx": 11.45,
+     "spherePx": 12,
+     "tris": 15456
+    },
+    {
+     "id": "guard_cav",
+     "d": 253,
+     "vertPx": 11.35,
+     "spherePx": 11.96,
+     "tris": 9070
+    },
+    {
+     "id": "c_gren",
+     "d": 248.2,
+     "vertPx": 11.61,
+     "spherePx": 12.19,
+     "tris": 25056
+    },
+    {
+     "id": "ahq",
+     "d": 255.4,
+     "vertPx": 11.04,
+     "spherePx": 11.85,
+     "tris": 3456
+    },
+    {
+     "id": "buxhowden",
+     "d": 215.8,
+     "vertPx": 12.87,
+     "spherePx": 14.02,
+     "tris": 3456
+    },
+    {
+     "id": "kienmayer",
+     "d": 187.6,
+     "vertPx": 14.56,
+     "spherePx": 16.13,
+     "tris": 32092
+    },
+    {
+     "id": "dok",
+     "d": 182.6,
+     "vertPx": 14.69,
+     "spherePx": 16.57,
+     "tris": 36288
+    },
+    {
+     "id": "lang",
+     "d": 210.8,
+     "vertPx": 13.07,
+     "spherePx": 14.36,
+     "tris": 21024
+    },
+    {
+     "id": "kamensky",
+     "d": 231,
+     "vertPx": 12.1,
+     "spherePx": 13.1,
+     "tris": 24000
+    },
+    {
+     "id": "prz",
+     "d": 212.2,
+     "vertPx": 12.92,
+     "spherePx": 14.26,
+     "tris": 40320
+    },
+    {
+     "id": "milo",
+     "d": 269,
+     "vertPx": 10.61,
+     "spherePx": 11.25,
+     "tris": 24480
+    },
+    {
+     "id": "kollo",
+     "d": 249.4,
+     "vertPx": 11.26,
+     "spherePx": 12.13,
+     "tris": 34848
+    },
+    {
+     "id": "lich",
+     "d": 285,
+     "vertPx": 10.08,
+     "spherePx": 10.62,
+     "tris": 18880
+    },
+    {
+     "id": "bag",
+     "d": 324.7,
+     "vertPx": 9.18,
+     "spherePx": 9.32,
+     "tris": 36000
+    },
+    {
+     "id": "rg_inf",
+     "d": 302,
+     "vertPx": 9.58,
+     "spherePx": 10.02,
+     "tris": 21312
+    },
+    {
+     "id": "rg_cav",
+     "d": 289.5,
+     "vertPx": 9.93,
+     "spherePx": 10.45,
+     "tris": 9560
+    }
+   ]
+  },
+  "pratzen-low": {
+   "pitchDeg": -13.6,
+   "fov": 37,
+   "blocks": [
+    {
+     "id": "gqg",
+     "d": 97.4,
+     "vertPx": 76.04,
+     "spherePx": 31.07,
+     "tris": 3456
+    },
+    {
+     "id": "sthilaire",
+     "d": 80,
+     "vertPx": 36.69,
+     "spherePx": 37.85,
+     "tris": 30144
+    },
+    {
+     "id": "vandamme",
+     "d": 100.5,
+     "vertPx": 33.45,
+     "spherePx": 30.12,
+     "tris": 29760
+    },
+    {
+     "id": "legrand",
+     "d": 39.6,
+     "vertPx": 79.13,
+     "spherePx": 76.5,
+     "tris": 30144
+    },
+    {
+     "id": "friant",
+     "d": 60.9,
+     "vertPx": 89.35,
+     "spherePx": 49.7,
+     "tris": 15360
+    },
+    {
+     "id": "bourcier",
+     "d": 64.7,
+     "vertPx": 129.72,
+     "spherePx": 46.79,
+     "tris": 6800
+    },
+    {
+     "id": "caffarelli",
+     "d": 108,
+     "vertPx": 38.92,
+     "spherePx": 28.02,
+     "tris": 29760
+    },
+    {
+     "id": "suchet",
+     "d": 121.2,
+     "vertPx": 42.35,
+     "spherePx": 24.96,
+     "tris": 19776
+    },
+    {
+     "id": "santon",
+     "d": 118.1,
+     "vertPx": 47.76,
+     "spherePx": 25.62,
+     "tris": 11880
+    },
+    {
+     "id": "kellermann",
+     "d": 108.2,
+     "vertPx": 35.37,
+     "spherePx": 27.97,
+     "tris": 9000
+    },
+    {
+     "id": "nansouty",
+     "d": 104.3,
+     "vertPx": 37.26,
+     "spherePx": 29.01,
+     "tris": 6400
+    },
+    {
+     "id": "dhautpoul",
+     "d": 97.1,
+     "vertPx": 40.54,
+     "spherePx": 31.15,
+     "tris": 7040
+    },
+    {
+     "id": "walther",
+     "d": 105.7,
+     "vertPx": 41.59,
+     "spherePx": 28.64,
+     "tris": 6800
+    },
+    {
+     "id": "rivaud",
+     "d": 87.2,
+     "vertPx": 41.36,
+     "spherePx": 34.72,
+     "tris": 27776
+    },
+    {
+     "id": "drouet",
+     "d": 77,
+     "vertPx": 44.99,
+     "spherePx": 39.29,
+     "tris": 33344
+    },
+    {
+     "id": "guard_inf",
+     "d": 83,
+     "vertPx": 72.89,
+     "spherePx": 36.44,
+     "tris": 15456
+    },
+    {
+     "id": "guard_cav",
+     "d": 82.1,
+     "vertPx": 63.79,
+     "spherePx": 36.84,
+     "tris": 9070
+    },
+    {
+     "id": "c_gren",
+     "d": 79.4,
+     "vertPx": 77.89,
+     "spherePx": 38.13,
+     "tris": 25056
+    },
+    {
+     "id": "ahq",
+     "d": 99.2,
+     "vertPx": 31.39,
+     "spherePx": 30.5,
+     "tris": 3456
+    },
+    {
+     "id": "buxhowden",
+     "d": 73.7,
+     "vertPx": 44.46,
+     "spherePx": 41.09,
+     "tris": 3456
+    },
+    {
+     "id": "kienmayer",
+     "d": 72.4,
+     "vertPx": 66.98,
+     "spherePx": 41.78,
+     "tris": 32092
+    },
+    {
+     "id": "dok",
+     "d": 53,
+     "vertPx": 90.89,
+     "spherePx": 57.05,
+     "tris": 36288
+    },
+    {
+     "id": "lang",
+     "d": 64.9,
+     "vertPx": 49.05,
+     "spherePx": 46.6,
+     "tris": 21024
+    },
+    {
+     "id": "kamensky",
+     "d": 77.1,
+     "vertPx": 38.08,
+     "spherePx": 39.27,
+     "tris": 20736
+    },
+    {
+     "id": "prz",
+     "d": 53,
+     "vertPx": 55.74,
+     "spherePx": 57.14,
+     "tris": 36864
+    },
+    {
+     "id": "milo",
+     "d": 98.1,
+     "vertPx": 30.54,
+     "spherePx": 30.84,
+     "tris": 21024
+    },
+    {
+     "id": "kollo",
+     "d": 75.7,
+     "vertPx": 39.57,
+     "spherePx": 39.98,
+     "tris": 34848
+    },
+    {
+     "id": "lich",
+     "d": 114.2,
+     "vertPx": 31.5,
+     "spherePx": 26.51,
+     "tris": 18880
+    },
+    {
+     "id": "bag",
+     "d": 156.3,
+     "vertPx": 31.13,
+     "spherePx": 19.36,
+     "tris": 36000
+    },
+    {
+     "id": "rg_inf",
+     "d": 134.8,
+     "vertPx": 23.43,
+     "spherePx": 22.44,
+     "tris": 21312
+    },
+    {
+     "id": "rg_cav",
+     "d": 118.2,
+     "vertPx": 27.63,
+     "spherePx": 25.6,
+     "tris": 9560
+    }
+   ]
+  },
+  "close-sokolnitz": {
+   "pitchDeg": -25.7,
+   "fov": 37,
+   "blocks": [
+    {
+     "id": "gqg",
+     "d": 157.3,
+     "vertPx": 25.41,
+     "spherePx": 19.24,
+     "tris": 3456
+    },
+    {
+     "id": "sthilaire",
+     "d": 104.5,
+     "vertPx": 31.72,
+     "spherePx": 28.97,
+     "tris": 30144
+    },
+    {
+     "id": "vandamme",
+     "d": 127.7,
+     "vertPx": 27.33,
+     "spherePx": 23.7,
+     "tris": 29760
+    },
+    {
+     "id": "legrand",
+     "d": 64.2,
+     "vertPx": 44.45,
+     "spherePx": 47.15,
+     "tris": 30144
+    },
+    {
+     "id": "friant",
+     "d": 23.7,
+     "vertPx": 81.86,
+     "spherePx": 127.66,
+     "tris": 15360
+    },
+    {
+     "id": "bourcier",
+     "d": 28.2,
+     "vertPx": 83.83,
+     "spherePx": 107.3,
+     "tris": 6800
+    },
+    {
+     "id": "caffarelli",
+     "d": 167.9,
+     "vertPx": 21.34,
+     "spherePx": 18.02,
+     "tris": 29760
+    },
+    {
+     "id": "suchet",
+     "d": 174.1,
+     "vertPx": 21.41,
+     "spherePx": 17.38,
+     "tris": 19776
+    },
+    {
+     "id": "santon",
+     "d": 177.8,
+     "vertPx": 21.59,
+     "spherePx": 17.02,
+     "tris": 11880
+    },
+    {
+     "id": "kellermann",
+     "d": 160,
+     "vertPx": 21.75,
+     "spherePx": 18.91,
+     "tris": 9000
+    },
+    {
+     "id": "nansouty",
+     "d": 157,
+     "vertPx": 22.36,
+     "spherePx": 19.27,
+     "tris": 6400
+    },
+    {
+     "id": "dhautpoul",
+     "d": 150.5,
+     "vertPx": 23.38,
+     "spherePx": 20.1,
+     "tris": 7040
+    },
+    {
+     "id": "walther",
+     "d": 160.6,
+     "vertPx": 22.66,
+     "spherePx": 18.84,
+     "tris": 6800
+    },
+    {
+     "id": "rivaud",
+     "d": 134.4,
+     "vertPx": 27.93,
+     "spherePx": 22.51,
+     "tris": 24576
+    },
+    {
+     "id": "drouet",
+     "d": 126,
+     "vertPx": 29.95,
+     "spherePx": 24.01,
+     "tris": 30144
+    },
+    {
+     "id": "guard_inf",
+     "d": 143,
+     "vertPx": 27.11,
+     "spherePx": 21.16,
+     "tris": 15456
+    },
+    {
+     "id": "guard_cav",
+     "d": 141.3,
+     "vertPx": 26.65,
+     "spherePx": 21.41,
+     "tris": 9070
+    },
+    {
+     "id": "c_gren",
+     "d": 137.5,
+     "vertPx": 28.38,
+     "spherePx": 22,
+     "tris": 25056
+    },
+    {
+     "id": "ahq",
+     "d": 129,
+     "vertPx": 25.14,
+     "spherePx": 23.46,
+     "tris": 3456
+    },
+    {
+     "id": "buxhowden",
+     "d": 86.8,
+     "vertPx": 35.56,
+     "spherePx": 34.86,
+     "tris": 3456
+    },
+    {
+     "id": "kienmayer",
+     "d": 53.9,
+     "vertPx": 54.5,
+     "spherePx": 56.15,
+     "tris": 32092
+    },
+    {
+     "id": "dok",
+     "d": 49.9,
+     "vertPx": 53.98,
+     "spherePx": 60.69,
+     "tris": 36288
+    },
+    {
+     "id": "lang",
+     "d": 74.5,
+     "vertPx": 40.18,
+     "spherePx": 40.6,
+     "tris": 21024
+    },
+    {
+     "id": "kamensky",
+     "d": 94.3,
+     "vertPx": 33.05,
+     "spherePx": 32.09,
+     "tris": 20736
+    },
+    {
+     "id": "prz",
+     "d": 68.8,
+     "vertPx": 42.35,
+     "spherePx": 43.97,
+     "tris": 36864
+    },
+    {
+     "id": "milo",
+     "d": 133.8,
+     "vertPx": 24.53,
+     "spherePx": 22.62,
+     "tris": 21024
+    },
+    {
+     "id": "kollo",
+     "d": 132.8,
+     "vertPx": 24.59,
+     "spherePx": 22.78,
+     "tris": 34848
+    },
+    {
+     "id": "lich",
+     "d": 155.9,
+     "vertPx": 21.46,
+     "spherePx": 19.4,
+     "tris": 18880
+    },
+    {
+     "id": "bag",
+     "d": 212.9,
+     "vertPx": 17.22,
+     "spherePx": 14.21,
+     "tris": 36000
+    },
+    {
+     "id": "rg_inf",
+     "d": 178.5,
+     "vertPx": 18.69,
+     "spherePx": 16.95,
+     "tris": 21312
+    },
+    {
+     "id": "rg_cav",
+     "d": 170.4,
+     "vertPx": 19.6,
+     "spherePx": 17.76,
+     "tris": 9560
+    }
+   ]
+  }
+ }
+}

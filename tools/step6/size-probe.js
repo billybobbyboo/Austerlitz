@@ -3,8 +3,9 @@
    lod-probe.js take a man's height as the projection of a vertical 1.8-unit segment at the block's first man: under a camera looking steeply
    down (the Overview) a vertical segment is foreshortened, so that measure follows the camera's pitch as much as its distance. Here, per
    formation block drawn as figures, in the five views of lod-probe.js: the block's distance from the eye, that vertical measure, and a measure
-   that does not depend on the pitch: the diameter on screen of a man's bounding sphere (the coat geometry's sphere through the first man's
-   instance and the block's world matrix), in CSS px at 1600 x 900; with each block's figure triangles (world pass, every mesh of its body).
+   that does not depend on the pitch: the diameter on screen of a man's sphere (radius 0.9 kit units, half his 1.8, centred 0.9 above his foot,
+   through the first man's instance and the block's world matrix; a first version used the coat geometry's own sphere, smaller than a man and
+   unlike for riders, and was stopped), in CSS px at 1600 x 900; with each block's figure triangles (world pass, every mesh of its body).
    node tools/step6/size-probe.js [--json out.json]
    Opened as the harness opens a page (tools/stage7/lib.js). Measurement only; nothing is written to a source file. */
 const fs=require("fs"), path=require("path");
@@ -24,8 +25,8 @@ const SIZE=function(){
       p0.set(0,0,0).applyMatrix4(mw); p1.set(0,1.8,0).applyMatrix4(mw);
       var a=p0.clone().project(cam), c=p1.clone().project(cam), behind=a.z>1;
       var vert=behind?null:Math.abs(a.y-c.y)*H/2;
-      if(!m.geometry.boundingSphere) m.geometry.computeBoundingSphere();
-      s.copy(m.geometry.boundingSphere).applyMatrix4(mw);
+      /* a man's sphere: radius 0.9 kit units (half the 1.8 of a man) at 0.9 above his foot, through his instance and the block's matrices */
+      s.center.set(0,0.9,0); s.radius=0.9; s.applyMatrix4(mw);
       var d=s.center.distanceTo(cam.position), sph=behind?null:(2*s.radius)/(d*tanH)*(H/2);
       var tris=0; ud.body.traverse(function(o){ if(o.isInstancedMesh&&o.count&&up(o)){ var g=o.geometry; tris+=Math.floor((g.index?g.index.count:g.attributes.position.count)/3)*o.count; } });
       out.push({id:id, d:+d.toFixed(1), vertPx:vert==null?null:+vert.toFixed(2), spherePx:sph==null?null:+sph.toFixed(2), tris:tris}); });

@@ -20,8 +20,9 @@ of a second, so the played segments run 12 s each (question 216).
 **Item 2 (decision 138): measured.** The census of every draw call (30 views): a 4x landscape frame is 2.48-2.53 million triangles in 740-857
 calls whatever the view, because no figure block is ever culled (three r128's `InstancedMesh` sets `frustumCulled` false); the figures and
 standards are 49.7% of the low Pratzen view (P-1 inferred about 91%: the 1x frame it subtracted also lacks the trees, the scrub, the buildings
-and every shadow); the shadow pass is 41%. A man's height on screen: under 2 px for nine tenths of the Overview's figures, 16 px or more in the
-low and close views. The options prototyped in the live scene: a box per unit beyond 4 px, -49.7% in the Overview (2.6% of the pixels change;
+and every shadow); the shadow pass is 41%. A man's size on screen (a man-sized sphere; a vertical measure first used followed the camera's pitch,
+the review's finding): 4-8 px in the Overview, 16 px or more in the low and close views. The options prototyped in the live scene: the
+Overview's blocks as a box per unit, -49.7% (2.6% of the pixels change;
 the coats' greens and whites become fields of colour); every fourth man, -35.5% (0.6%); no figure shadows, -25% in every 4x view (at most 1%);
 instancing across blocks, 832 to 327 calls with the same picture; culling by the blocks' bounds would skip 339 k of the low view's
 figure triangles. The rule that decides 138 from the laptop's report is stated in advance (§3.4).
