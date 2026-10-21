@@ -688,3 +688,31 @@ if(cerrs) process.exitCode=1;
   console.log("map focus ring: "+(ferr.length?ferr.length+" wrong":"on its own plate, at 3:1 or more in both themes (question 172)"));
   if(ferr.length) process.exitCode=1;
 }
+/* roadmap step 6 item 3 (docs/STEP6_SPEC.md section 4.5; decisions 223-226, 228): the phone layout's rules. Below 720 px wide (one query, the
+   stylesheet's and app.js's PHONE_Q): the compact timeline (the ten-minute steps, the four speeds and "Whose eyes?" off it, the speed one button;
+   no act row; the phases no presses on the axis, listed in the dispatch sheet); the sheets; the Menu; their controls not shown elsewhere, and at
+   least 24 px high where the block sets them; their words from LABELS. Held landscape (430 px tall or less), the controls decision 225 takes off
+   the phone's timeline off it too, the tools standing down under the first card. Their behaviour is the harness's phone block and cases */
+{
+  const sh=fs.readFileSync('shell.html','utf8'), src=fs.readFileSync('app.js','utf8'), herr=[];
+  const q=(/var PHONE_Q="([^"]+)"/.exec(src)||[])[1];
+  const blk=media=>allRules.filter(r=>r.media===media);
+  const ph=blk(q||"(max-width:720px)"), ls=blk("(max-height:430px)");
+  const decl=(rules,sel,p)=>{ const r=rules.filter(x=>x.sels.indexOf(sel)>=0); let v=null; r.forEach(x=>declsOf(x.body).forEach(([k,w])=>{ if(k===p) v=w; })); return v; };
+  if(q!=="(max-width:720px)") herr.push("app.js: PHONE_Q is not the stylesheet's phone query (max-width:720px): "+q);
+  ["#prev","#next","#eyesbtn",".speeds",".tb-acts"].forEach(s=>{ if(decl(ph,s,"display")!=="none") herr.push("style.css: "+s+" not hidden on the phone's timeline (decision 225, 224)"); });
+  ["#prev","#next","#eyesbtn",".speeds"].forEach(s=>{ if(decl(ls,s,"display")!=="none") herr.push("style.css: "+s+" not off a phone's timeline held landscape (decisions 225, 226)"); });
+  if(decl(ph,".step","pointer-events")!=="none") herr.push("style.css: the phases are still presses on the phone's axis (decision 224 (a))");
+  ["#speedbtn","#menubtn",".dgrip",".phlist",".tools-vm"].forEach(s=>{ const b=allRules.find(r=>r.media===null&&r.sels.indexOf(s)>=0);
+    if(!b||!/display:none/.test(b.body)) herr.push("style.css: "+s+" is shown outside the phone layout (no base display:none)"); });
+  [["#speedbtn",ph],["#menubtn",ph],[".tb-icon",ph],[".tb-play",ph],[".tb-follow",ph],[".ph-item",ph],[".tools .t",ph]].forEach(([s,R])=>{ const h=parseFloat(decl(R,s,"min-height"));
+    if(!(h>=24)) herr.push("style.css: "+s+" under 24 px high on a phone ("+decl(R,s,"min-height")+")"); });
+  if(!/body\.drawer-open \.dispatch/.test(ph.map(r=>r.sel).join("\n"))) herr.push("style.css: the dispatch sheet does not give way to an open dossier on a phone");
+  if(decl(ls,"body.firstrun-on .tools","display")!=="none") herr.push("style.css: held landscape the tools stand under the first card (decision 226)");
+  if(!/<button class="t" id="menubtn" type="button" aria-expanded="false" aria-controls="tools">/.test(sh)||!/<div class="tools" id="tools">/.test(sh)) herr.push("shell.html: the Menu is not a disclosure of #tools");
+  if(!/<button class="dgrip" id="dgrip" type="button" aria-expanded="false">/.test(sh)) herr.push("shell.html: the dispatch sheet's grip is not a disclosure button");
+  if(!/mnb\.textContent=LABELS\.phone\.menu/.test(src)||!/dgb\.setAttribute\("aria-label",LABELS\.phone\.grip\)/.test(src)||!/LABELS\.phone\.speed\+" "\+on\.textContent/.test(src)) herr.push("app.js: the phone layout's words are not from LABELS.phone");
+  herr.forEach(e=>console.log("  ! "+e));
+  console.log("the phone layout: "+(herr.length?herr.length+" wrong":"below 720 px the compact timeline, the phases listed, the sheets and the Menu, their words from LABELS; held landscape the phone's timeline (decisions 223-226)"));
+  if(herr.length) process.exitCode=1;
+}

@@ -122,9 +122,12 @@ const INPAGE=function(){
         if(!inA) out.push({a:K[i],b:K[j],w:Math.round(w),h:Math.round(h)}); } }
     return out; };
   /* the features a visitor needs, each by the controls that do it; reachable: one of them visible, on the screen, not covered */
-  var FEAT={play:["#play"], clock:["#timerail"], phases:["#phases .step"], presentation:[".vm-btn"], layers:["#layersbtn"], paperMap:[".mode-btn[data-m=staff]","#layersbtn"],
+  /* since Part B (the phone layout of the build): the phases also in the dispatch sheet's list, the speeds as one button, "Whose eyes?" in the
+     Command tab too; a hidden control is reported with the controls that show it (the Menu, the sheet's grip, the Panels), as a visitor reaches it */
+  var FEAT={play:["#play"], clock:["#timerail"], phases:["#phases .step","#phlist .ph-item"], presentation:[".vm-btn"], layers:["#layersbtn"], paperMap:[".mode-btn[data-m=staff]","#layersbtn"],
     panels:["#panelsbtn","#tab-now"], follow:["#follow"], vantages:[".van-btn"], help:["#helpbtn"], sources:["#srcbtn"], tour:["#tourbtn","#fr-tour"], events:["#evmarks button, #evmarks [role=button]"],
-    eyes:["#eyesbtn"], speeds:[".spd-btn"]};
+    eyes:["#eyesbtn",".cmd-btn"], speeds:[".spd-btn","#speedbtn"]};
+  var OPENER=[["#tools","#menubtn"],["#phlist","#dgrip"],[".rail","#panelsbtn"]];
   A.reach=function(){ var o={}; Object.keys(FEAT).forEach(function(k){ var best=null;
       FEAT[k].forEach(function(s){ document.querySelectorAll(s).forEach(function(e){ if(best==="ok") return; if(!vis(e)||e.closest("[inert]")){ best=best||"hidden"; return; }
         /* reachable where any of nine points of its box (its centre, the inner corners and the edges' middles, 20% in) is on the screen and
@@ -133,6 +136,10 @@ const INPAGE=function(){
         [[.5,.5],[.2,.2],[.8,.2],[.2,.8],[.8,.8],[.5,.2],[.5,.8],[.2,.5],[.8,.5]].forEach(function(q){ var x=r.left+q[0]*r.width, y=r.top+q[1]*r.height;
           if(x<0||y<0||x>=innerWidth||y>=innerHeight) return; on++; var t=document.elementFromPoint(x,y); if(t&&(t===e||e.contains(t))) best="ok"; else if(!top) top=t; });
         if(best==="ok") return; best=on?"covered by "+desc(top):"off the screen"; }); });
+      if(best!=="ok"){ var via=null; FEAT[k].forEach(function(s){ document.querySelectorAll(s).forEach(function(e){ if(via) return; var path=[], x=e;
+          for(var n=0;n<3&&x;n++){ var hit=null; OPENER.forEach(function(q){ if(!hit&&x.closest&&x.closest(q[0])) hit=q; }); if(!hit) break;
+            var b=document.querySelector(hit[1]); if(!b) break; path.unshift(hit[1]); if(vis(b)&&!b.closest("[inert]")){ via=path.join(" > "); break; } x=b; } }); });
+        if(via) best=(best||"hidden")+"; shown by "+via; }
       o[k]=best||"absent"; }); return o; };
   window.__ph=A; return true;
 };
@@ -156,7 +163,7 @@ async function open(browser,d){
 async function settle(page){ await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(60)); await page.waitForTimeout(450); await page.evaluate(()=>AUSTERLITZ_DEBUG.settle(2)); }
 /* a tap on a control; under the menu prototype a tool hidden behind the Menu button is reached through it, as a visitor would */
 async function tapIf(page,sel){ let h=await page.$(sel);
-  if(h&&!(await h.isVisible())){ const m=await page.$("#ph-menu"); if(m&&await m.isVisible()){ await m.tap(); await page.waitForTimeout(700); h=await page.$(sel); } }
+  if(h&&!(await h.isVisible())){ const m=(await page.$("#menubtn:visible"))||(await page.$("#ph-menu")); if(m&&await m.isVisible()){ await m.tap(); await page.waitForTimeout(700); h=await page.$(sel); } }
   if(!h||!(await h.isVisible())) return false;
   /* Playwright taps once the element has stood still for two animation frames: here a frame can take seconds, so the wait is long, and a tap
      that still fails is recorded, not swallowed (a first version gave it 5 s and lost taps silently) */
@@ -181,7 +188,10 @@ const REACH={
   layers: async p=>"explore, then "+(await REACH.explore(p),await reach(p,"#layersbtn",()=>!document.getElementById("layerpop").hidden,()=>document.getElementById("layersbtn").click(),"Layers")),
   paper: async p=>{ await REACH.layers(p); const h=await reach(p,".mode-btn[data-m=staff]",()=>mode==="staff",()=>setMode("staff"),"Paper map");
     await tapIf(p,"#layerclose"); return "layers, then "+h+", then tap: close"; },
-  tour: async p=>"explore, then "+(await REACH.explore(p),await reach(p,"#tourbtn",()=>tourStep>=0,()=>startTour(),"Guided tour"))
+  tour: async p=>"explore, then "+(await REACH.explore(p),await reach(p,"#tourbtn",()=>tourStep>=0,()=>startTour(),"Guided tour")),
+  /* since Part B, the build's phone layout: the Menu open, and the dispatch sheet opened whole by its grip */
+  menu: async p=>"explore, then "+(await REACH.explore(p),await reach(p,"#menubtn",()=>document.body.classList.contains("menu-open"),()=>setMenu(true),"Menu")),
+  sheet: async p=>"explore, then "+(await REACH.explore(p),await reach(p,"#dgrip",()=>document.body.classList.contains("dsheet-open"),()=>setDSheet(true),"the dispatch sheet's grip"))
 };
 (async()=>{
   const lay=LAYOUT==="current"?null:LAYOUTS[LAYOUT]; if(LAYOUT!=="current"&&!lay) throw new Error("no layout "+LAYOUT);
