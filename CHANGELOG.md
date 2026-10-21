@@ -2,7 +2,7 @@
 
 ## 2026-10 · Roadmap step 6 Part A: the specification (real hardware, figure level of detail, a phone layout)
 
-**Status: written on `claude/upbeat-hamilton-y9utq8` (draft PR), for review. No source file, no data file and no build changed:**
+**Status: written on `claude/upbeat-hamilton-y9utq8` (draft PR #59), for review. No source file, no data file and no build changed:**
 `austerlitz-command-map.html` 2,200,058 bytes, md5 `45f8f662ef828d2e1ab593a3b87b6ff7` (PR #58's build, unchanged). Begun from `main` at `7437dcc`
 (PR #58 merged). On 21 October 2026 the owner asked for step 6's Part A: all three items specified, none built; asked, the owner named the
 devices: a Windows laptop with an Intel integrated GPU, an iPhone with Safari, and a hosted copy for the phone. The specification is

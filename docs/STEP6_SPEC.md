@@ -1,6 +1,6 @@
 # Real hardware, figure level of detail, a phone layout: specification (roadmap step 6, Part A)
 
-**Status: Part A written on `claude/upbeat-hamilton-y9utq8` (draft PR, for review). It changed no source file, no data and no build:**
+**Status: Part A written on `claude/upbeat-hamilton-y9utq8` (draft PR #59, for review). It changed no source file, no data and no build:**
 `check:baseline` passes on the unchanged build (`austerlitz-command-map.html`, 2,200,058 bytes, md5 `45f8f662ef828d2e1ab593a3b87b6ff7`,
 SHA-256 `bca73918aed88c62c7b564e6f9531b20b51eedb54554d272dfeb27b45eb10794`) and `check:data` finds 131 of 131 declarations identical
 to `archive/step5c-45f8f662.html`. Written against `main` at `7437dcc` (PR #58 merged); line numbers refer to that commit; the code is the
