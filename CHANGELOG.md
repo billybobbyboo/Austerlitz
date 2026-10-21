@@ -1,9 +1,9 @@
 # Austerlitz Command Map — Changelog
 
-## 2026-10 · Decision 213 (b): the Russian Guard's strengths from Duffy's page (its own PR)
+## 2026-10 · Decisions 213 (b) and 214: the Russian Guard's strengths from Duffy's page (PR #58)
 
-**Status: done on `claude/magical-rubin-vahnny` (draft PR), for review. The build changed: `austerlitz-command-map.html` @@SIZE@@ bytes,
-md5 `@@MD5@@` (PR #57's build: 2,198,549 bytes, `fdc25e82...`).** Begun from `main` at `8e3278e` (PR #57 merged). On 21 October 2026 the
+**Status: done on `claude/magical-rubin-vahnny` (PR #58), for review. The build changed: `austerlitz-command-map.html` 2,200,058 bytes,
+md5 `45f8f662ef828d2e1ab593a3b87b6ff7` (PR #57's build: 2,198,549 bytes, `fdc25e82...`).** Begun from `main` at `8e3278e` (PR #57 merged). On 21 October 2026 the
 owner sent a photograph of Duffy, *Austerlitz 1805*, pp. 184-185 ("Is this what you're looking for?"), then: "Go with 213 (b) and apply it as
 its own small PR." A data task (guarded declarations), with its evidence.
 
@@ -38,9 +38,22 @@ the heading's 10,530 is in none of them. The map's 3,700 horse equals 10,530 les
   warning is acknowledged by its exact text in `KNOWN_WARN` with that reason and this record; the error rule (children never above the
   parent) is unchanged and holds.
 
+**Decision 214: `narrow-1024`'s drop limit 7 to 8 (the owner's word).** The full check:visual on this build failed one case:
+`narrow-1024` dropped 8 map-layer items over its limit of 7, the extra one the place name "Austerlitz" (`t:austerlitz`); the low Pratzen view
+dropped one fewer (5 to 4, the same name drawn there); every other case unchanged (`tools/step3/report-diff.js` against PR #57's run). The
+cause is the data, not the layer: a formation's rank in the map layer follows its strength (`rank(f, strength)`), and the Guard infantry at
+4,430 ranks lower. No smaller form of 213 (b) avoids it (the number is the decision), so the work stopped and the owner was asked; the owner
+(21 October 2026): "Go with (a). Raise the limit to 8." `tools/visual/thresholds.js`: `DROP_LIMIT["narrow-1024"]=8`, decision 199's line kept
+as its record; `npm run check:report` then judged the finished report again: all checks pass. No other limit moved.
+
 **What was not changed:** the Guard's 40 guns; the knowledge model and the tracks (no time or place moved); Smith (still not read, S5.8).
 
-**Verified:** @@VERIFIED@@
+**Verified (on the final build, `45f8f662`):** `npm test` 9 of 9 suites pass (test.js: 704 statements, 145 with a claim of their own, the
+inventory current; 1 warning, acknowledged; redteam 0 findings, 2 warnings acknowledged); `check:chronology` 0 errors; `check:data` against
+PR #57's reference: exactly FORMATIONS, APPEARANCE_SOURCES, COMPOSITION and STATEMENT_CLAIMS changed, then, the reference moved to
+`archive/step5c-45f8f662.html`, 131 identical; `check:visual`: 0 failures but the one above (30 cases; the self-test 242 of 242), and after
+decision 214 `check:report` all checks pass; `check:contrast` 5,907 text elements, 0 below AA, 0 below 10.5 px, 0 font failures, 35 of 35
+states, 0 console messages, 6 of 6 start-up cases; `check:selftest` (rerun after a container restart; its result follows in the next commit); `check:baseline` moved to `45f8f662`, 2,200,058 bytes.
 
 **Uncertain, historical:** what Duffy's 800 are; whether "Guard Gr.R." is the Life Grenadier regiment (an inference from Sokolov); Smith's
 figures. **Implementation:** the Life Grenadiers are not drawn (no formation of the map is theirs; a formation for them would need a track,

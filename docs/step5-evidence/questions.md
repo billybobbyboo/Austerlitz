@@ -123,4 +123,11 @@ table ends with the pioneers, so no row was lost and the 800 is in none of Duffy
 3,700 if one horse row was lost", is refuted by the page). Applied (its own PR): `rg_inf` 4,430 and its composition without the Life
 Grenadiers (not drawn); `rg_cav` 2,900 (Duffy's rows, Schönhals's four); `constantine` kept at 10,500 with its note giving Duffy's heading
 and rows; `duffy1977` in the table of works read; the two notes' claims on S5.7; the corps-versus-formations warning acknowledged in
-`test.js` and `redteam.js` with its reason (`CHANGELOG.md`). The next owner decision is 214.
+`test.js` and `redteam.js` with its reason (`CHANGELOG.md`).
+
+**214. `narrow-1024`'s drop limit after decision 213 (b).** The full check:visual on 213 (b)'s build dropped 8 map-layer items at
+`narrow-1024`, over its limit of 7: the place name "Austerlitz", because the Guard infantry at 4,430 ranks lower in the map layer (a
+formation's rank follows its strength); the low Pratzen view dropped one fewer; nothing else moved. No smaller form of 213 (b) avoids it.
+Options: (a) the limit 7 to 8, as decision 199 moved it for a sourced data change; (b) keep 6,730 (213 (b) not applied).
+*Recommendation:* (a). *Decided:* (a), 21 October 2026 (the owner: "Go with (a). Raise the limit to 8."); applied in PR #58
+(`tools/visual/thresholds.js`). The next owner decision is 215.
