@@ -1,0 +1,79 @@
+/* Roadmap step 6 Part A (docs/STEP6_SPEC.md section 4.3): phone layouts prototyped for measurement only. Each is CSS and a little JS that
+   tools/step6/phone-probe.js injects into the live page after it has started; nothing here is in the source or the build, and nothing is a
+   design decided: these are the shapes the owner's questions ask about, built far enough to be measured (sizes, cuts, targets, contrast).
+   Every rule applies only on a phone-sized screen (max-width 720 px, or max-height 430 px held landscape), so the layouts the harness holds
+   above that are untouched. The words are the build's own: no text is written or rewritten here; a control the prototype adds takes an
+   existing control's words (the speed button shows the speed the build shows, the menu button is labelled "Menu", the one new word).
+   - compact: the timeline as two rows: the transport (event back, Play, event forward, Follow), the clock, the speed as one button that
+     steps through the build's four speeds, "?"; then the caption on its own line; the track without the act row and without the phase labels
+     (the phases stay as presses, each with its accessible name); the ten-minute steps and "Whose eyes?" leave the timeline (the slider and
+     the event steps remain; "Whose eyes?" stays in the Command tab).
+   - sheets: compact, and the Now tab's card (the dispatch), the dossier and the first-run card as sheets across the foot of the screen above
+     the timeline, each at most 45% of the screen's height and scrolling inside; the panels' rail as a sheet too (full width, at most 60%).
+   - menu: sheets, and the tools and the presentation switch folded behind one "Menu" button at the top right (the Watch presentation keeps
+     its switch in the timeline, as the build does). */
+const PHONE="@media (max-width:720px), (max-height:430px)";
+const COMPACT=`${PHONE}{
+  .tb-top{flex-wrap:wrap;row-gap:0;column-gap:6px;padding:2px 8px 0}
+  .tb-ctrl{gap:4px;flex:0 0 auto}
+  #prev,#next{display:none}
+  .speeds{display:none}
+  #eyesbtn{display:none}
+  #ph-speed{display:inline-block;min-width:44px;min-height:38px}
+  .clockbox{order:0}
+  .tb-cap{order:5;flex:1 1 100%;width:100%;padding:0 2px 2px}
+  .tb-trackwrap{height:40px;margin:0 8px}
+  .tb-acts{display:none}
+  .tb-track{top:0;height:16px}
+  #phases .step .step-l{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .timerail,.evmarks{top:16px}
+}
+#ph-speed{display:none}`;
+const SHEETS=`${PHONE}{
+  .dispatch,body:not(.rail-hidden) .dispatch{left:0!important;right:0!important;width:auto!important;bottom:var(--tb)!important;max-height:45vh!important;
+    border-left:0;border-top:2px solid var(--accent);padding:10px 14px 8px}
+  .drawer{left:0;right:0;width:auto;top:auto;bottom:var(--tb);height:45vh;border-left:0;border-top:1px solid var(--line-2);transform:translateY(100%)}
+  .drawer.on{transform:translateY(0)}
+  #firstrun,body.rail-hidden #firstrun{left:0!important;right:0;width:auto!important;transform:none!important;bottom:var(--tb)!important;max-height:45vh;overflow-y:auto;
+    padding:14px 16px 12px;border-left:0;border-right:0}
+  .rail{right:0;width:auto;top:auto;bottom:var(--tb);max-height:60vh;border-right:0;border-top:1px solid var(--line);transform:translateY(0)}
+  body.rail-hidden .rail{transform:translateY(100%)}
+}`;
+const MENU=`${PHONE}{
+  #ph-menu{display:inline-block;position:fixed;top:10px;right:10px;z-index:43;min-width:44px;min-height:44px}
+  .tools{top:62px;right:10px;left:10px;align-items:stretch;background:rgba(var(--scrim-rgb),.96);border:1px solid var(--line-2);padding:10px;display:none}
+  body.ph-menu-open .tools{display:flex}
+  .tools .grp{max-width:none;justify-content:flex-start}
+  .tools .t{min-height:44px}
+  body:not(.pm-watch) #viewmode{display:none}
+  body.ph-menu-open:not(.pm-watch) #viewmode{display:flex;top:auto;left:10px;right:10px;transform:none;position:fixed;bottom:calc(var(--tb) + 10px)}
+  body.ph-menu-open .vm-btn{min-height:44px;flex:1 1 0}
+}
+#ph-menu{display:none}`;
+/* the speed as one button: each press the next of the build's own four speed buttons (their words and their handlers) */
+function speedJS(){
+  if(document.getElementById("ph-speed")) return;
+  var b=document.createElement("button"); b.id="ph-speed"; b.className="t"; b.type="button";
+  var S=[].slice.call(document.querySelectorAll(".spd-btn"));
+  function paint(){ var on=S.find(function(x){ return x.getAttribute("aria-pressed")==="true"; })||S[0]; b.textContent=on.textContent; b.setAttribute("aria-label","Playback speed "+on.textContent); }
+  b.addEventListener("click",function(){ var i=S.findIndex(function(x){ return x.getAttribute("aria-pressed")==="true"; }); S[(i+1)%S.length].click(); paint(); });
+  paint(); var c=document.querySelector(".clockbox"); c.parentNode.insertBefore(b,c.nextSibling);
+}
+function menuJS(){
+  if(document.getElementById("ph-menu")) return;
+  var b=document.createElement("button"); b.id="ph-menu"; b.className="t"; b.type="button"; b.textContent="Menu"; b.setAttribute("aria-expanded","false");
+  b.addEventListener("click",function(){ var on=!document.body.classList.contains("ph-menu-open"); document.body.classList.toggle("ph-menu-open",on); b.setAttribute("aria-expanded",String(on)); });
+  document.body.appendChild(b);
+  /* a press on any tool closes the menu (the Layers panel and the sheets open over the map, not under the menu) */
+  document.querySelector(".tools").addEventListener("click",function(){ document.body.classList.remove("ph-menu-open"); b.setAttribute("aria-expanded","false"); });
+}
+async function inject(page,css,js){
+  await page.addStyleTag({content:css});
+  for(const f of js) await page.evaluate("("+f.toString()+")()");
+  await page.evaluate(()=>{ if(typeof syncTimebarHeight==="function") syncTimebarHeight(); requestRender(3); });
+}
+module.exports={
+  compact:{note:"the compact timeline (prototype, injected by the probe)", apply:p=>inject(p,COMPACT,[speedJS])},
+  sheets:{note:"the compact timeline and the panels as sheets at the foot (prototype)", apply:p=>inject(p,COMPACT+SHEETS,[speedJS])},
+  menu:{note:"the compact timeline, the sheets and the controls behind a Menu button (prototype)", apply:p=>inject(p,COMPACT+SHEETS+MENU,[speedJS,menuJS])}
+};

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Frame-time route</title>
+<!-- Roadmap step 6 Part A (docs/STEP6_SPEC.md section 2.3): the measurement route on a phone or any browser without a console. Opens the build,
+     unchanged, in a same-origin frame filling the window, runs tools/step6/perf-route.js on it and shows the report to copy or share.
+     ?src= the build's path (default ../../austerlitz-command-map.html, the repository's layout); ?quick=1 halves every segment (a trial run);
+     ?only=id,id runs those segments only. Measurement only: not part of the product, not bundled. -->
+<style>
+  html,body{margin:0;height:100%;background:#101418;color:#E8E2D3;font:16px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}
+  #app{position:fixed;inset:0;width:1px;min-width:100%;height:100%;border:0;display:block}
+  #panel{position:fixed;left:0;right:0;top:0;max-height:100%;overflow:auto;background:#101418;padding:16px;box-sizing:border-box;z-index:2}
+  #panel[hidden]{display:none}
+  button{font:inherit;min-height:44px;min-width:44px;padding:8px 16px;margin:4px 8px 4px 0;background:#E8E2D3;color:#101418;border:0;border-radius:6px}
+  button:disabled{opacity:.5}
+  textarea{width:100%;height:50vh;box-sizing:border-box;font:12px/1.3 ui-monospace,Menlo,Consolas,monospace;background:#1b2229;color:#E8E2D3;border:1px solid #3a4652}
+  p{margin:8px 0}
+</style>
+</head>
+<body>
+<iframe id="app" title="The built page under measurement"></iframe>
+<div id="panel" role="region" aria-label="Frame-time route">
+  <p id="msg">Loading the build…</p>
+  <button id="go" type="button" disabled>Start (about 3 minutes)</button>
+  <p>While it runs: keep the screen on and this page in front, do not touch it, and keep the phone or laptop on power. The page shows this panel again when it has finished.</p>
+  <div id="res" hidden>
+    <button id="copy" type="button">Copy the report</button><button id="share" type="button">Share…</button>
+    <textarea id="out" readonly aria-label="The report"></textarea>
+  </div>
+</div>
+<script>
+(function(){
+  var q=new URLSearchParams(location.search), src=q.get("src")||"../../austerlitz-command-map.html";
+  var fr=document.getElementById("app"), msg=document.getElementById("msg"), go=document.getElementById("go"), panel=document.getElementById("panel");
+  window.AUS_PERF_NO_AUTORUN=true;
+  var s=document.createElement("script"); s.src="perf-route.js"; document.head.appendChild(s);
+  fr.src=src;
+  function ready(){ var w=fr.contentWindow; try{ return !!(w&&w.AUSTERLITZ_DEBUG&&w.AUSTERLITZ_DEBUG.applyCase&&w.AUS_BOOT&&w.AUS_BOOT.done&&window.AUS_PERF); }catch(e){ return false; } }
+  var t0=Date.now(), iv=setInterval(function(){
+    if(ready()){ clearInterval(iv); msg.textContent="The build has started ("+Math.round((Date.now()-t0)/1000)+" s). Press Start."; go.disabled=false; }
+    else if(Date.now()-t0>120000){ clearInterval(iv); msg.textContent="The build did not start within 120 s (is "+src+" on this host, and is three.js reachable?)."; }
+  },500);
+  go.addEventListener("click",function(){
+    go.disabled=true; panel.hidden=true;
+    AUS_PERF.run(fr.contentWindow,{quick:q.get("quick")==="1", only:q.get("only")||null, log:function(m){ document.title="Route: "+m; }}).then(function(r){
+      AUS_PERF.last=r; document.title="Frame-time route: done";
+      document.getElementById("out").value=r.text; document.getElementById("res").hidden=false;
+      msg.textContent="Done. Copy the report (or Share it to Mail or Notes) and paste it back."; panel.hidden=false;
+    },function(e){ msg.textContent="The route failed: "+(e&&e.message||e); panel.hidden=false; });
+  });
+  document.getElementById("copy").addEventListener("click",function(){
+    var t=document.getElementById("out"); t.focus(); t.select(); t.setSelectionRange(0,t.value.length);
+    var done=function(){ msg.textContent="Copied."; };
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(t.value).then(done,function(){ document.execCommand("copy"); done(); });
+    else { document.execCommand("copy"); done(); }
+  });
+  document.getElementById("share").addEventListener("click",function(){
+    var t=document.getElementById("out").value;
+    if(navigator.share) navigator.share({title:"Austerlitz frame-time route",text:t}).catch(function(){});
+    else msg.textContent="Sharing is not offered by this browser: use Copy.";
+  });
+})();
+</script>
+</body>
+</html>
