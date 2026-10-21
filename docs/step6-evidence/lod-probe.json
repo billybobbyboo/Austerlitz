@@ -1,0 +1,498 @@
+{
+ "note": "software WebGL; calls and triangles are the build's; worldMs is relative within this run only",
+ "views": {
+  "overview-plan": {
+   "base": {
+    "calls": 832,
+    "tris": 2523605,
+    "worldMs": 536.6,
+    "px": {
+     "<2": 28,
+     "2-4": 3
+    },
+    "culling": {
+     "meshes": 303,
+     "culledFlag": 0,
+     "offView": 0,
+     "offTris": 0,
+     "onTris": 633448
+    }
+   },
+   "options": {
+    "blocks@4px": {
+     "info": {
+      "blocks": {
+       "far": 31,
+       "boxes": 195
+      }
+     },
+     "calls": 364,
+     "tris": 1269937,
+     "worldMs": 3.7,
+     "changed": 0.0257,
+     "restored": true
+    },
+    "thin@4px/4": {
+     "info": {
+      "thin": {
+       "far": 31,
+       "meshes": 212
+      }
+     },
+     "calls": 832,
+     "tris": 1627747,
+     "worldMs": 30.6,
+     "changed": 0.0058,
+     "restored": true
+    },
+    "noshadow@4px": {
+     "info": {
+      "noshadow": {
+       "far": 31
+      }
+     },
+     "calls": 553,
+     "tris": 1890395,
+     "worldMs": 2934,
+     "changed": 0.0021,
+     "restored": true
+    },
+    "noshadow@all": {
+     "info": {
+      "noshadow": {
+       "far": 31
+      }
+     },
+     "calls": 553,
+     "tris": 1890395,
+     "worldMs": 1212.6,
+     "changed": 0.0021,
+     "restored": true
+    },
+    "merge": {
+     "info": {
+      "merge": {
+       "meshes": 303,
+       "merged": 39
+      }
+     },
+     "calls": 327,
+     "tris": 2523605,
+     "worldMs": 2.7,
+     "changed": 0.0002,
+     "restored": true
+    },
+    "blocks+noshadow@4px": {
+     "info": {
+      "blocks": {
+       "far": 31,
+       "boxes": 195
+      },
+      "noshadow": {
+       "far": 31
+      }
+     },
+     "calls": 320,
+     "tris": 1265901,
+     "worldMs": 5,
+     "changed": 0.0257,
+     "restored": true
+    }
+   }
+  },
+  "ph8-overview-watch": {
+   "base": {
+    "calls": 809,
+    "tris": 2501163,
+    "worldMs": 342.7,
+    "px": {
+     "<2": 28,
+     "2-4": 3
+    },
+    "culling": {
+     "meshes": 298,
+     "culledFlag": 0,
+     "offView": 0,
+     "offTris": 0,
+     "onTris": 622848
+    }
+   },
+   "options": {
+    "blocks@4px": {
+     "info": {
+      "blocks": {
+       "far": 31,
+       "boxes": 190
+      }
+     },
+     "calls": 361,
+     "tris": 1280527,
+     "worldMs": 3.8,
+     "changed": 0.0252,
+     "restored": true
+    },
+    "thin@4px/4": {
+     "info": {
+      "thin": {
+       "far": 31,
+       "meshes": 212
+      }
+     },
+     "calls": 809,
+     "tris": 1605305,
+     "worldMs": 2286.5,
+     "changed": 0.0058,
+     "restored": true
+    },
+    "noshadow@4px": {
+     "info": {
+      "noshadow": {
+       "far": 31
+      }
+     },
+     "calls": 540,
+     "tris": 1884529,
+     "worldMs": 17,
+     "changed": 0.0012,
+     "restored": true
+    },
+    "noshadow@all": {
+     "info": {
+      "noshadow": {
+       "far": 31
+      }
+     },
+     "calls": 540,
+     "tris": 1884529,
+     "worldMs": 333.6,
+     "changed": 0.0012,
+     "restored": true
+    },
+    "merge": {
+     "info": {
+      "merge": {
+       "meshes": 298,
+       "merged": 40
+      }
+     },
+     "calls": 316,
+     "tris": 2501163,
+     "worldMs": 2.5,
+     "changed": 0.0002,
+     "restored": true
+    },
+    "blocks+noshadow@4px": {
+     "info": {
+      "blocks": {
+       "far": 31,
+       "boxes": 190
+      },
+      "noshadow": {
+       "far": 31
+      }
+     },
+     "calls": 317,
+     "tris": 1276491,
+     "worldMs": 2.8,
+     "changed": 0.0252,
+     "restored": true
+    }
+   }
+  },
+  "overview-field": {
+   "base": {
+    "calls": 832,
+    "tris": 2523605,
+    "worldMs": 79.8,
+    "px": {
+     "8-16": 30,
+     ">=16": 1
+    },
+    "culling": {
+     "meshes": 303,
+     "culledFlag": 0,
+     "offView": 0,
+     "offTris": 0,
+     "onTris": 633448
+    }
+   },
+   "options": {
+    "blocks@4px": {
+     "info": {
+      "blocks": {
+       "far": 0,
+       "boxes": 0
+      }
+     },
+     "calls": 832,
+     "tris": 2523605,
+     "worldMs": 7.3,
+     "changed": 0,
+     "restored": true
+    },
+    "thin@4px/4": {
+     "info": {
+      "thin": {
+       "far": 0,
+       "meshes": 0
+      }
+     },
+     "calls": 832,
+     "tris": 2523605,
+     "worldMs": 3839.8,
+     "changed": 0,
+     "restored": true
+    },
+    "noshadow@4px": {
+     "info": {
+      "noshadow": {
+       "far": 0
+      }
+     },
+     "calls": 832,
+     "tris": 2523605,
+     "worldMs": 3827.2,
+     "changed": 0,
+     "restored": true
+    },
+    "noshadow@all": {
+     "info": {
+      "noshadow": {
+       "far": 31
+      }
+     },
+     "calls": 553,
+     "tris": 1890395,
+     "worldMs": 2754.1,
+     "changed": 0.0038,
+     "restored": true
+    },
+    "merge": {
+     "info": {
+      "merge": {
+       "meshes": 303,
+       "merged": 39
+      }
+     },
+     "calls": 327,
+     "tris": 2523605,
+     "worldMs": 2.6,
+     "changed": 0.001,
+     "restored": true
+    },
+    "blocks+noshadow@4px": {
+     "info": {
+      "blocks": {
+       "far": 0,
+       "boxes": 0
+      },
+      "noshadow": {
+       "far": 0
+      }
+     },
+     "calls": 832,
+     "tris": 2523605,
+     "worldMs": 3731.5,
+     "changed": 0,
+     "restored": true
+    }
+   }
+  },
+  "pratzen-low": {
+   "base": {
+    "calls": 758,
+    "tris": 2480181,
+    "worldMs": 18.2,
+    "px": {
+     ">=16": 31
+    },
+    "culling": {
+     "meshes": 293,
+     "culledFlag": 0,
+     "offView": 179,
+     "offTris": 339022,
+     "onTris": 277850
+    }
+   },
+   "options": {
+    "blocks@4px": {
+     "info": {
+      "blocks": {
+       "far": 0,
+       "boxes": 0
+      }
+     },
+     "calls": 758,
+     "tris": 2480181,
+     "worldMs": 8,
+     "changed": 0,
+     "restored": true
+    },
+    "thin@4px/4": {
+     "info": {
+      "thin": {
+       "far": 0,
+       "meshes": 0
+      }
+     },
+     "calls": 758,
+     "tris": 2480181,
+     "worldMs": 4207.9,
+     "changed": 0,
+     "restored": true
+    },
+    "noshadow@4px": {
+     "info": {
+      "noshadow": {
+       "far": 0
+      }
+     },
+     "calls": 758,
+     "tris": 2480181,
+     "worldMs": 6.7,
+     "changed": 0,
+     "restored": true
+    },
+    "noshadow@all": {
+     "info": {
+      "noshadow": {
+       "far": 31
+      }
+     },
+     "calls": 490,
+     "tris": 1863559,
+     "worldMs": 6.6,
+     "changed": 0.0096,
+     "restored": true
+    },
+    "merge": {
+     "info": {
+      "merge": {
+       "meshes": 293,
+       "merged": 39
+      }
+     },
+     "calls": 273,
+     "tris": 2480181,
+     "worldMs": 2.4,
+     "changed": 0.0002,
+     "restored": true
+    },
+    "blocks+noshadow@4px": {
+     "info": {
+      "blocks": {
+       "far": 0,
+       "boxes": 0
+      },
+      "noshadow": {
+       "far": 0
+      }
+     },
+     "calls": 758,
+     "tris": 2480181,
+     "worldMs": 9.2,
+     "changed": 0,
+     "restored": true
+    }
+   }
+  },
+  "close-sokolnitz": {
+   "base": {
+    "calls": 781,
+    "tris": 2478209,
+    "worldMs": 369.5,
+    "px": {
+     ">=16": 31
+    },
+    "culling": {
+     "meshes": 289,
+     "culledFlag": 0,
+     "offView": 159,
+     "offTris": 292986,
+     "onTris": 317486
+    }
+   },
+   "options": {
+    "blocks@4px": {
+     "info": {
+      "blocks": {
+       "far": 0,
+       "boxes": 0
+      }
+     },
+     "calls": 781,
+     "tris": 2478209,
+     "worldMs": 7.1,
+     "changed": 0,
+     "restored": true
+    },
+    "thin@4px/4": {
+     "info": {
+      "thin": {
+       "far": 0,
+       "meshes": 0
+      }
+     },
+     "calls": 781,
+     "tris": 2478209,
+     "worldMs": 3964.8,
+     "changed": 0,
+     "restored": true
+    },
+    "noshadow@4px": {
+     "info": {
+      "noshadow": {
+       "far": 0
+      }
+     },
+     "calls": 781,
+     "tris": 2478209,
+     "worldMs": 3990.9,
+     "changed": 0,
+     "restored": true
+    },
+    "noshadow@all": {
+     "info": {
+      "noshadow": {
+       "far": 31
+      }
+     },
+     "calls": 516,
+     "tris": 1867975,
+     "worldMs": 2471.5,
+     "changed": 0,
+     "restored": true
+    },
+    "merge": {
+     "info": {
+      "merge": {
+       "meshes": 289,
+       "merged": 39
+      }
+     },
+     "calls": 304,
+     "tris": 2478209,
+     "worldMs": 2.5,
+     "changed": 0.0002,
+     "restored": true
+    },
+    "blocks+noshadow@4px": {
+     "info": {
+      "blocks": {
+       "far": 0,
+       "boxes": 0
+      },
+      "noshadow": {
+       "far": 0
+      }
+     },
+     "calls": 781,
+     "tris": 2478209,
+     "worldMs": 19.5,
+     "changed": 0,
+     "restored": true
+    }
+   }
+  }
+ }
+}

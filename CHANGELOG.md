@@ -1,5 +1,53 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 6 Part A: the specification (real hardware, figure level of detail, a phone layout)
+
+**Status: written on `claude/upbeat-hamilton-y9utq8` (draft PR #59), for review. No source file, no data file and no build changed:**
+`austerlitz-command-map.html` 2,200,058 bytes, md5 `45f8f662ef828d2e1ab593a3b87b6ff7` (PR #58's build, unchanged). Begun from `main` at `7437dcc`
+(PR #58 merged). On 21 October 2026 the owner asked for step 6's Part A: all three items specified, none built; asked, the owner named the
+devices: a Windows laptop with an Intel integrated GPU, an iPhone with Safari, and a hosted copy for the phone. The specification is
+`docs/STEP6_SPEC.md`, the evidence `docs/step6-evidence/` (its README names each file's script), the probes `tools/step6/` (not bundled).
+
+**Item 1 (decision 139): the route and the protocol.** `tools/step6/perf-route.js` drives the unchanged build through
+`AUSTERLITZ_DEBUG.applyCase` over 23 segments (the Overview, the low Pratzen view at 1x, 4x and 10.33x, the phase-8 Overview, the paper map,
+the eye level, each held and moved; three diagnostics with the figures hidden and with Visual effects off; Play at 4x and at ½x under Follow)
+and reports frame-interval percentiles, long frames against the display's own refresh, the app's JavaScript time, the GPU's time where the
+browser offers WebGL2's timer query, and draw calls and triangles. Pasted into the console on the laptop; on the iPhone through
+`tools/step6/perf-run.html` (the build in a same-origin frame, the report with Copy and Share). Run here end to end both ways
+(`tools/step6/perf-local.js`; software WebGL, no console message); its frame times decide nothing. Ten clock minutes at 4x last a quarter
+of a second, so the played segments run 12 s each (question 216).
+
+**Item 2 (decision 138): measured.** The census of every draw call (26 views): a 4x landscape frame is 2.48-2.53 million triangles in 740-857
+calls whatever the view, because no figure block is ever culled (three r128's `InstancedMesh` sets `frustumCulled` false); the figures and
+standards are 49.7% of the low Pratzen view (P-1 inferred about 91%: the 1x frame it subtracted also lacks the trees, the scrub, the buildings
+and every shadow); the shadow pass is 41%. A man's size on screen (a man-sized sphere; a vertical measure first used followed the camera's pitch,
+the review's finding): 4-8 px in the Overview, 16 px or more in the low and close views. The options prototyped in the live scene: the
+Overview's blocks as a box per unit, -49.7% (2.6% of the pixels change;
+the coats' greens and whites become fields of colour); every fourth man, -35.5% (0.6%); no figure shadows, -25% in every 4x view (at most 1%);
+instancing across blocks, 832 to 327 calls with the same picture; culling by the blocks' bounds would skip 339 k of the low view's
+figure triangles. The rule that decides 138 from the laptop's report is stated in advance (§3.4).
+
+**Item 3 (decision 137): measured.** Today at 360-430 px wide: the timeline 172-174 px, its act and phase names cut, the tools over the dispatch
+card, a dossier leaving 3-5% of the screen free; held landscape (844 x 390) 90.5 px and 69% free, with its own overlaps and Watch's caption
+squeezed. The interface text by `check:contrast`'s own method: none below AA or under 10.5 px but the tour's disabled "Back" on its first
+stop (exempt). Three prototypes (CSS and JS put into the started page by the probe, never in the source): a compact timeline (127 px),
+sheets at the foot (after "Explore" 50-56% free), the controls behind a Menu (62-65%); none frames the battle in the area it frees (at 390
+px after "Explore" no map item in view today, 3 with the Menu). The three 45-minute phases are 18.2-22 px wide on the proportional axis
+whatever the styling (question 224). The cases and limits the checks would need (§4.5).
+
+**Owner questions 215-230** (`docs/STEP6_SPEC.md` §7), each with options, a recommendation and its cost; the next owner decision is 215.
+
+**Verified (on the final tree):** `check:baseline` passes on the unchanged build (`45f8f662ef828d2e1ab593a3b87b6ff7`, 2,200,058 bytes);
+`check:data` 131 of 131 declarations identical to `archive/step5c-45f8f662.html`; `npm test` all 9 suites pass and the height guard (redteam 0
+findings, 2 warnings acknowledged; runtime-test 0 console warnings); no limit of `tools/visual/thresholds.js` moved; `check:visual`,
+`check:contrast` and `check:selftest` not run (no source changed; the probes ran one at a time instead). The independent read-only review:
+21 findings (2 blocking: the route's final version had no recorded run, and iOS Auto-Lock would end the phone's runs), every one fixed or
+recorded (`docs/STEP6_SPEC.md` §8); its findings that needed a measurement were measured (the route's version 3 run here both ways; a man's
+size on screen by a pitch-free sphere, `size-probe.js`: the Overview's men 4-8 px across, not under 2 as the first, vertical measure said;
+the phone views' map items in the free area).
+
+**Uncertain or not verified:** every GPU number (item 1 exists for them); Safari (the probes are Chromium); real touch; the far forms in motion.
+
 ## 2026-10 · Decisions 213 (b) and 214: the Russian Guard's strengths from Duffy's page (PR #58)
 
 **Status: done on `claude/magical-rubin-vahnny` (PR #58), for review. The build changed: `austerlitz-command-map.html` 2,200,058 bytes,
