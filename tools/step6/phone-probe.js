@@ -61,7 +61,9 @@ const DEVICES=[
   {key:"430x932", vp:[430,932], dpr:3, ua:IOS, note:"iPhone 14-15 Plus and Pro Max"},
   {key:"844x390", vp:[844,390], dpr:3, ua:IOS, note:"iPhone 12-15 held landscape"},
   /* since Part B (the review's item 3): a small phone held landscape, which keeps the layout above 720 px as 844 x 390 does */
-  {key:"667x375", vp:[667,375], dpr:2, ua:IOS, note:"iPhone SE (2nd, 3rd generation) and 6-8 held landscape"}
+  {key:"667x375", vp:[667,375], dpr:2, ua:IOS, note:"iPhone SE (2nd, 3rd generation) and 6-8 held landscape"},
+  /* since item 1's P1 (decision 229): the owner's iPhone 17 Pro, the viewport Safari left it (P1's report, docs/step6-evidence/perf-P1-iphone.txt) */
+  {key:"402x714", vp:[402,714], dpr:3, ua:IOS, note:"the owner's iPhone 17 Pro in Safari, the visible viewport of P1's report"}
 ].filter(d=>!opt("--only")||opt("--only").split(",").includes(d.key));
 const STATES=(opt("--states")||"first,explore,panels,dossier,watch,layers,paper,tour").split(",");
 

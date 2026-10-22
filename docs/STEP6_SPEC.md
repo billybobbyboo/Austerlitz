@@ -1014,3 +1014,45 @@ it costs on a phone, so P1 and P2 are read on their own (inference).
 **What remains of item 1:** P1 and P2 (the phone's runs decide question 222, the phone's own drawing, and decision 229, the phone cases'
 height); no other decision waits on them. Item 2 is retired; item 3 is built (§9-§10). Under decision 230, `docs/FINAL_AUDIT.md`'s P-1 now
 carries a note pointing here. The next owner decision is 236.
+
+## 12. Item 1: the iPhone's runs (P1, P2), and what they leave to the owner
+
+**The runs.** On 22 October 2026 the owner ran the wrapper page (`tools/step6/perf-run.html`) twice in Safari on an **iPhone 17 Pro** (the
+model the owner's word; the report says "Apple GPU" only): P1 from 07:51:52 UTC, P2 from 07:56:25, about two minutes after P1 ended. The
+reports, verbatim: `docs/step6-evidence/perf-P1-iphone.txt` and `.json`, `perf-P2-iphone.txt` and `.json`. Their device lines: Safari 26.6.1
+(its user agent's system token "iPhone OS 18_7"; the phone's iOS version is not otherwise in the report), 4 cores as Safari reports them, the
+screen 402 x 874 CSS px at density 3, **the viewport 402 x 714** (the wrapper's frame fills the window, `position:fixed; inset:0`, so this is the
+area Safari's bars left the page, held upright), drawn at 1.5 (603 x 1,071), `lowTier`, effects on at scale 1.0, the shadow map on; no GPU
+timer (Safari does not offer WebGL2's timer query, so neither report has the GPU's own time). Both read and hashed the build: 2,218,404 bytes,
+SHA-256 `0c64a52d...`, `main`'s after #60. P1 loaded in 5.9 s (1,024,216 bytes transferred), P2 in 2.2 s (0 bytes: from the cache).
+
+**Both stand** in §3.4's sense: the refresh measured (17 ms: 60 frames a second; the iPhone 17 Pro's display goes to 120 Hz, so Safari paced
+the page at 60, inference: its default for a page's animation frames), no note, no segment hidden. A long frame is one above 25.5 ms (1.5 R).
+
+**What they show** (fact, from the reports; §3.4's definitions used to read them, not to decide: 138 is decided, decision 235, and question
+222 has no rule):
+- **the light views hold**: the 1x low view, the paper map and the eye level (0.22-0.48 million triangles), held and moved, at most 4% long
+  frames in either run (P2's 1x view held, 49 frames a second; every other 54-60), under the 5% §3.4 calls a drop;
+- **the heavy views drop in most segments of both runs**: of the 13 segments drawing 2.47-2.52 million triangles (the Overview, the low view
+  at 4x and 10.33x, phase 8's Overview, Play), 8 drop in P1 and 10 in P2, at a median interval of 28-52 ms (19-36 frames a second); phase 8's
+  Overview drops in every segment of both runs (19-21 frames a second, 29 with the figures hidden);
+- **the same segment differs between runs, and a run slows as it goes**: the 4x low view's orbit ran at 59.5 frames a second in P1 and 24.2
+  in P2, Play at 4x at 28.6 in P1 and 60 in P2. In both runs the first heavy segments hold 60 (the Overview held and orbiting) and the drops
+  follow, in P2 from its fourth drawn segment, in P1 from its eighth; the light views between them hold. In the dropping segments the app's
+  own JavaScript took 7-19 ms a frame (`js50`), against 3-5 ms in the heavy segments that held 60. Inference, not examined: the phone lowering
+  its clocks under sustained drawing (heat or power); a page can read neither;
+- **neither diagnostic cures a drop it can be compared with**: hiding the figures and standards (half the triangles) took phase 8's Overview
+  from 20 to 28.5-29.3 frames a second, still dropping (98.8-100% long), and P2's 4x low view from 24.2 to 33.2, still dropping. Read
+  literally, P1's 10.33x drop is "cured" by the 4x `-figures` segment (3.1% long), but that segment ran before P1 slowed: the order, not the
+  figures, separates them (inference). Turning the effects off was never faster: slower in two segments (P2's Overview, 60 to 19.4; P1's 4x
+  low view, 59.5 to 22.8), about the same in four. Each diagnostic runs after its full segment, so on a phone that slows as it goes, the
+  toggle and the slowing cannot be told apart (inference).
+
+**What a visitor meets** (inference, from the reports and the app's frame loop, `app.js` `frameState`): the app draws on demand; a still view
+draws nothing, or redraws at its ambient rate (every 90 ms) while smoke drifts, so a visitor's phone is not kept drawing as the route keeps it.
+Play and a moving camera draw every frame, as the route's played and orbit segments do: on this phone Play ran at 28-29 frames a second in P1,
+and at 60 then 40 in P2.
+
+**Against the desktop** (L3's purpose, §2.3): the wrapper cost nothing measurable there (§11); the phone's `js50` in the heavy views while
+they held 60 was 3-5 ms, the desktop's 3.9-6.0 ms in the same segments (every time in the phone's reports is a whole number of
+milliseconds: Safari's clock, coarser than Chrome's). The phone's runs are read on their own.
