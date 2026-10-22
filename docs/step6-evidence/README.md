@@ -50,3 +50,19 @@ Measured on the Part B build (the layout in the source, not injected), by the sa
 The probe's own Part B states `menu` and `sheet` (the Menu open, the dispatch sheet opened whole) were measured on Part B's first builds
 (0.27 and 0.24 free at 390 x 844); the final runs above measure Part A's eight states.
 
+## Item 1: the owner's runs (`docs/STEP6_SPEC.md` §11, §12)
+
+| file | what |
+|---|---|
+| `perf-L1-desktop.txt`, `perf-L1-desktop.json` | L1 as the owner pasted it (22 October 2026): the route's report and its `AUS_PERF_JSON` line, on a Windows desktop with an NVIDIA GeForce RTX 4070, Chrome 155, 144 Hz, `main` after #60 |
+| `perf-L2-desktop.txt`, `perf-L2-desktop.json` | L2, the same machine about five minutes later |
+| `perf-L3-desktop.txt`, `perf-L3-desktop.json` | L3, the same machine about an hour after L2, through the wrapper page `tools/step6/perf-run.html` (in a frame; the build read and hashed: 2,218,404 bytes, SHA-256 `0c64a52d...`, the build of `main` after #60) |
+| `perf-P1-iphone.txt`, `perf-P1-iphone.json` | P1 (22 October 2026): the wrapper page on the owner's iPhone 17 Pro in Safari (the model the owner's word; the report says "Apple GPU"), held upright; the same build read and hashed |
+| `perf-P2-iphone.txt`, `perf-P2-iphone.json` | P2, the same phone about two minutes after P1 ended |
+| `phone-402x714.json`, `phone/p1view-402x714-*.png` | §12 (decision 229): the build's eight phone states at P1's viewport, 402 x 714 | `node tools/step6/phone-probe.js --only 402x714 --json ... --shots ...` |
+| `phone-paper-entry.txt`, `phone/paper-entry-*.png` | §12 (question 238): the paper map entered on a phone held upright, at 390 x 844 and 402 x 714 (the screenshots reduced to CSS scale) | `node tools/step6/paper-entry.js 390x844,402x714 <dir>` |
+| `perf-local-phone-route.json` | §14.1 (decision 236): the phone route run here, through the wrapper as an iPhone at 402 x 714, halved (`--quick`): it runs end to end with no console message, and each block's drawing (`set`) is its candidate's; software WebGL, so its frame times decide nothing | `node tools/step6/perf-local.js --way frame --device iphone --viewport 402x714 --phone --quick --json ...` |
+
+The reports are copied verbatim from the owner's messages (the JSON line without its `AUS_PERF_JSON ` prefix); the two probes' files are
+measured here, as their commands give.
+

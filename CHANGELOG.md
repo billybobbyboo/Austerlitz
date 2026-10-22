@@ -1,5 +1,101 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 6: owner decisions 236-238 applied (the paper map's frame and scale bar on a phone; two phone cases; the phone route)
+
+**Status: on `claude/upbeat-hamilton-y9utq8` (PR #61).** On 22 October 2026 the owner wrote "go with your recommendations": questions 236-238
+(`docs/STEP6_SPEC.md` §13) decided as recommended (§13.1) and applied (§14). No data changed (`check:data` 131 of 131 identical). **The build:
+2,220,267 bytes, md5 `fffc4fdab06476b028c4e8ad0f74680c`** (was 2,218,404, `c9d29c14...`); `check:baseline` moved to it.
+
+- **238 (a), the paper map framed again** (`app.js` `MAPCAM.syncPanels`, from `syncViewOffset`): while the field is shown as framed (the
+  visitor has not panned, zoomed or chosen a vantage), a panel's change that gives it room (drawn more than 1% larger) frames it again, as a
+  resize did; a panel opening over it moves nothing. Before: on a phone held upright the field framed beside the open Layers sheet kept that
+  frame when the sheet closed (122 x 112 px under the dispatch sheet at 390 x 844; 70 x 64 at 402 x 714); after: 360 x 332 and 364 x 336 px
+  in the free area. `runtime-test.js` dry-runs the rule (and fails on the build before it). A phone case, `phone-390-paper`, enters the paper
+  map by its taps and is held to the whole field in the free area (`FRAMED`).
+- **Found by that case, fixed: the paper map's scale bar below 1080 px.** `style.css`'s narrow block hid `.tb-scale` on every view, the paper
+  map's included, against Stage 2E's rule (one scale across the view, its bar to 1%); no paper-map case below 1080 px existed. The bar is now
+  kept on the paper map at every width (hidden below 1080 px on the landscape only); on a phone held upright it heads the caption's row, the
+  caption's parts giving way (decision 159), since at the head of the control row it pushed the speed button to a second line (the timeline
+  165 px). Measured: the bar 65 px for 65.3 wanted, the timeline 121 px, the unobstructed share 0.6529.
+- **237 (a)**: `phone-402x714-explore`, the owner's iPhone at P1's viewport. `check:visual` has 39 cases.
+- **The two cases' limits, as measured** (`thresholds.js`): `phone-402x714-explore` unobstructed 0.585, drops 2, framing 6, timeline 121;
+  `phone-390-paper` 0.652, drops 17, framing 11, timeline 121.
+- **236 (b), the phone route** (`tools/step6/perf-route.js` with `{phone:true}`, `perf-run.html?route=phone`, `step6-phone-route 1`, about seven
+  minutes): phase 8's Overview orbiting and Play at half speed, each drawn as it is for 45 s, then bracketed blocks A C A ... twice, the
+  candidates (figures cast no shadow; the shadow pass skipped; density 1.0; both; the figures hidden as the reference), each block recording
+  the drawing it ran with; the rule that reads the owner's two runs (P3, P4) stated before them (§14.1). Checked here (`perf-local.js --phone`,
+  software WebGL: times decide nothing): end to end, no console message, every block's drawing its candidate's.
+
+**Verified:** `check:visual` on this build: all 39 cases, the self-test's 242 checks and the live blocks pass ("STAGE0: all checks passed",
+1 h 42 min; `phone-402x714-explore` unobstructed 0.5852, 6 placed, 2 dropped; `phone-390-paper` 0.6529, 19 placed, 17 dropped, the whole field in
+the free area, the scale bar 65 px for 65.3); `npm test` all 9 suites and the height guard; `check:data` 131 of 131 identical; `check:baseline`
+on this build; CI (`npm test`, `check:data`, `check:chronology`, `check:contrast`, the self-test) green on every push of the PR. The earlier full
+run, on the build before the scale bar's two changes, found the scale bar (above) and nothing else.
+**Not verified:** Safari itself and a real finger for the two phone cases and the paper map's frame (Chromium with a phone's device); the
+phone route's numbers on a phone (P3, P4 wait on the owner). Inference, recorded: skipping the shadow pass stands for the sun casting no
+shadow under `lowTier`, which would cost at most as much.
+
+## 2026-10 · Roadmap step 6 item 1: the iPhone's runs (P1, P2); questions 236-238
+
+**Status: records and measurement scripts only, on `claude/upbeat-hamilton-y9utq8` (PR #61). No source file, no data file and no build
+changed:** `austerlitz-command-map.html` 2,218,404 bytes, md5 `c9d29c149b613bff059598e4fe8c8d03` (unchanged).
+
+On 22 October 2026 the owner ran the wrapper page twice in Safari on an iPhone 17 Pro (the model the owner's word), kept verbatim
+(`docs/step6-evidence/perf-P1-iphone.*`, `perf-P2-iphone.*`); both read and hashed `main`'s build after #60. Read in `docs/STEP6_SPEC.md` §12
+(fact, from the reports): both stand (the refresh 17 ms: Safari paced the page at 60 frames a second; the viewport 402 x 714; `lowTier`, drawn at
+1.5; no GPU timer in Safari); the light views (0.22-0.48 million triangles) hold 60 frames a second, at most 4% long frames; the heavy views
+(2.47-2.52 million) drop in 8 of their 13 segments in P1 and 10 in P2, at 19-36 frames a second, phase 8's Overview in every segment; the same
+segment differs between runs and each run slows as it goes, the app's own JavaScript 7-19 ms a frame where it drops against 3-5 where it holds
+(inference, not examined: the phone lowering its clocks under sustained drawing); hiding the figures took phase 8's Overview from 20 to about 29,
+still dropping, and turning the effects off was never faster; each diagnostic runs after its full segment, so on a phone that slows the two cannot
+be told apart (inference).
+
+Decision 229: the phone layout probed at P1's viewport (`tools/step6/phone-probe.js` gains the size 402 x 714; `phone-402x714.json`, eight
+states): the four zero-limits hold as at 390 x 844, every interface text at AA but the tour's disabled "Back" (as at 390), the timeline 121 px,
+the unobstructed share 0.02-0.07 lower. Found while probing (a fault of item 3, measured: `tools/step6/paper-entry.js`, new, not bundled;
+`phone-paper-entry.txt`): on a phone held upright the Paper map button is in the Layers sheet only; pressing it frames the field into the
+strip the sheet leaves, and closing the sheet does not frame it again (the paper map frames itself again on a resize, not on a panel's
+change): the field 122 x 112 px under the dispatch sheet at 390 x 844, 70 x 64 px at the top of 402 x 714. Part B's own record shows it
+(`phone/partB-390x844-paper.png`) without naming it; no phone case enters the paper map.
+
+Questions put (§13): **236** the phone's drawing (recommended (b): lighter drawings measured on the phone by a rule stated first), **237**
+decision 229 applied as one case at 402 x 714 (recommended (a)), **238** the paper map framed again on a panel's change, in its own change
+(recommended (a)). Recorded in `docs/STEP6_SPEC.md` §12-§13, `docs/ROADMAP.md`, `CLAUDE.md` (the next owner decision is 239) and the evidence
+README.
+
+**Verified:** `check:baseline` passes on the unchanged build; `check:data` 131 of 131 identical; `npm test` all 9 suites and the height guard; the two reports read by `node` (every number
+above); the probes run here under Chromium with a phone's device and software WebGL (Safari itself and the phone's GPU are not here).
+**Not verified:** the paper map's frame in Safari on the phone (Chromium's emulation only); the desktop's Layers popover's effect on the frame
+(inference).
+
+## 2026-10 · Roadmap step 6 item 1: the owner's desktop runs (L1-L3); decision 235 (question 138 retired)
+
+**Status: records only, on `claude/upbeat-hamilton-y9utq8` (begun again from `main` at `a8afeec`, #60 merged). No source file, no data file
+and no build changed:** `austerlitz-command-map.html` 2,218,404 bytes, md5 `c9d29c149b613bff059598e4fe8c8d03` (unchanged).
+
+On 22 October 2026 the owner ran the frame-time route twice (L1, L2) on `main` after #60, "on a windows desktop": Chrome 155, an NVIDIA GeForce
+RTX 4070, 144 Hz. The reports are kept verbatim (`docs/step6-evidence/perf-L1-desktop.*`, `perf-L2-desktop.*`). Decision 138 and §3.4's rule name
+an integrated GPU (the protocol, the owner's Intel-graphics laptop); asked how these runs should count, the owner chose "Decide 138 from these"
+(**decision 235**). Applied as written: both runs stand (refresh 6.9 ms measured, nothing hidden); no segment of either has a long frame
+(above 25 ms; the decisive orbits 0% in both; the longest interval 20.9 ms); **rule 2: question 138 retired, item 2 closed**. The departure is
+recorded: a fast discrete GPU decided what 138 asked of an integrated one, and these runs say nothing of integrated graphics or the phone.
+Besides (one machine): JavaScript 1.9-6.1 ms and the GPU 1.7-5.0 ms per frame at the median; hiding the figures halved the triangles and cut the
+calls by about 70% without slowing or speeding the frame interval (`docs/STEP6_SPEC.md` §11).
+
+Decision 230 applied: `docs/FINAL_AUDIT.md`'s P-1 carries a records-only note (49.7%, 1.23 million triangles, not about 91%; 138 retired).
+
+Then L3, the wrapper page `tools/step6/perf-run.html` on the same desktop about an hour later, kept verbatim (`perf-L3-desktop.*`). It stands
+(refresh 6.9 ms, nothing hidden, in a frame); it read and hashed the build, 2,218,404 bytes, SHA-256 `0c64a52d...`, `main`'s after #60. Against L1
+and L2: every median interval 6.9 ms, every segment's `js50` within 0.1 ms of L1's or L2's, the decisive orbits 0%
+long; one 27.8 ms frame in each played segment (0.1%), where L1 and L2 had none. L3 is not a decision run and does not change decision 235.
+
+Recorded in `docs/STEP6_SPEC.md` §11, `docs/ROADMAP.md`, `CLAUDE.md` (the next owner decision is 236) and the evidence README. P1 and P2 remain
+(questions 222 and 229 wait on the phone's runs).
+
+**Verified:** `check:baseline` passes on the unchanged build (`c9d29c14...`, 2,218,404 bytes); `check:data` 131 of 131 identical; `npm test` all 9
+suites and the height guard pass; the rule applied, and L3 compared with L1 and L2, by a `node` reading of the three JSON reports (§11); L3's SHA-256 computed
+here from the committed build. Records only: no page check re-run.
+
 ## 2026-10 · Roadmap step 6 item 3: owner decisions 231-234 applied
 
 **Status: on `claude/upbeat-hamilton-y9utq8` (PR #60), with Part B.** On 22 October 2026 the owner wrote: "Let's go with your recommendations

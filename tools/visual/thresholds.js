@@ -123,13 +123,18 @@ UNOBSTRUCTED["phone-390-watch"]=[0.817,null]; UNOBSTRUCTED["phone-390-layers"]=[
 UNOBSTRUCTED["phone-430-explore"]=[0.685,null]; UNOBSTRUCTED["phone-844x390-explore"]=[0.690,null];
 DROP_LIMIT["phone-390-first"]=9; DROP_LIMIT["phone-390-explore"]=2; DROP_LIMIT["phone-390-dossier"]=1; DROP_LIMIT["phone-390-watch"]=2;
 DROP_LIMIT["phone-390-layers"]=0; DROP_LIMIT["phone-360-explore"]=3; DROP_LIMIT["phone-430-explore"]=2; DROP_LIMIT["phone-844x390-explore"]=3;
+/* roadmap step 6 item 1 (docs/STEP6_SPEC.md section 14): decision 237 (a), the owner's iPhone at P1's viewport, and decision 238 (a), the paper
+   map entered by its taps, each as the build that adds it measures it (rounded down to 0.1 point; the drops as measured), set as measured on
+   the owner's word (22 October 2026) */
+UNOBSTRUCTED["phone-402x714-explore"]=[0.585,null]; UNOBSTRUCTED["phone-390-paper"]=[0.652,null];
+DROP_LIMIT["phone-402x714-explore"]=2; DROP_LIMIT["phone-390-paper"]=17;
 const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harness machine */
 /* Stage 2E (section J, 2E): every paper-map view is a true north-up plan: GEOREF.NORTH within 0.5 degrees of up; screen pixels
    per true km at four places equal to 1% (on the 2D build's tilted staff map they differ by 6.0% and north is 17.8 degrees
    off); the scale bar correct to 1%; no figure, roof, chimney, house or 3D tree drawn; hillshade, contours, village
    footprints, water, woods, draped arrows and counters drawn. The views that enter the paper map as a visitor does frame the
    whole modelled ground inside the unobstructed area (every sample point on screen and clear of every panel). All new. */
-const PAPER={north:0.5, spread:0.01, scaleBar:0.01}, FRAMED=["paper-north-up","paper-laptop"];
+const PAPER={north:0.5, spread:0.01, scaleBar:0.01}, FRAMED=["paper-north-up","paper-laptop","phone-390-paper"];   /* phone-390-paper: decision 238 */
 module.exports.PAPER=PAPER; module.exports.FRAMED=FRAMED;
 /* Stage 3B (docs/STAGE3_SPEC.md sections B.4 and H; owner decision 49): the paper map as entered, Study, framed at least this
    many screen px per true km (east-west, at the Pratzeberg). Before 3B: 17.1 at 1600 x 900 and 5.5 at 1280 x 720. New.
@@ -157,10 +162,11 @@ module.exports.TIMELINE_MAX=TIMELINE_MAX; module.exports.TIMELINE_RECORDED=TIMEL
    is recorded, not held */
 const PHONE={timeline:{}, framing:{}, cutAllow:{}, reachAllow:{}};
 /* measured on the build that adds the layout (docs/STEP6_SPEC.md section 9.3; the harness's report of its phone cases), set as measured (decision 232 (a)) */
-["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-layers","phone-360-explore","phone-430-explore"].forEach(n=>{ PHONE.timeline[n]=121; });
+["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-layers","phone-360-explore","phone-430-explore",
+  "phone-402x714-explore","phone-390-paper"].forEach(n=>{ PHONE.timeline[n]=121; });
 PHONE.timeline["phone-390-watch"]=155;   /* Watch: the presentation switch in the control row (decision 60), a third row */
 PHONE.timeline["phone-844x390-explore"]=91;   /* held landscape: the layout above 720 px, one control row (90.5 px) */
-Object.assign(PHONE.framing,{"phone-390-first":17,"phone-390-explore":6,"phone-390-dossier":5,"phone-390-watch":9,"phone-390-layers":2,
+Object.assign(PHONE.framing,{"phone-402x714-explore":6,"phone-390-paper":11,"phone-390-first":17,"phone-390-explore":6,"phone-390-dossier":5,"phone-390-watch":9,"phone-390-layers":2,
   "phone-360-explore":4,"phone-430-explore":7,"phone-844x390-explore":10});
 /* the caption's parts give way in order where its row is narrow (decision 159): the phase's title first, then the act, then the events' names;
    each is whole elsewhere on the screen or one press away (the act as a heading of the phase list, the phase as the dispatch sheet's title, the
@@ -172,14 +178,16 @@ const CAP_GIVES=[{el:"span.evt",why:"ellipsis",reason:"the caption's event name 
 const CAP_PH={el:"span.cap-ph",why:"ellipsis",reason:"the caption's phase title gives way first (decision 159); the current phase whole on its plate on the track"};
 const TRACK_CUT=[{el:"button.act-btn",why:"ellipsis",reason:"an act band's name on the proportional track, narrower than its name (decision 53)"},
   {el:"span.step-l",why:"ellipsis",reason:"a phase's name on the proportional track, narrower than its name; the current one whole (decision 53)"}];
-["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-watch","phone-390-layers","phone-360-explore","phone-430-explore"].forEach(n=>{ PHONE.cutAllow[n]=CAP_GIVES; });
+["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-watch","phone-390-layers","phone-360-explore","phone-430-explore",
+  "phone-402x714-explore","phone-390-paper"].forEach(n=>{ PHONE.cutAllow[n]=CAP_GIVES; });
 PHONE.cutAllow["phone-844x390-explore"]=CAP_GIVES.concat([CAP_PH],TRACK_CUT);
 /* more than one press: "Accuracy and sources" is in the rail (the Menu, then the Panels: two) and "Whose eyes?" in its Command tab (three) below
    720 px; held landscape "Whose eyes?" two (the Panels, the tab); the phases, where an open dossier or the Layers panel stands in place of the
    dispatch sheet (its close, then the grip) or the first card stands over it (Explore, then the grip); in Watch below 720 px what stands behind
    the Menu (Study, then the Menu) and the rail's (Study, the Menu, the Panels, and the Command tab for "Whose eyes?") */
 const TWO={sources:{depth:2,reason:"in the rail: the Menu, then the Panels"},eyes:{depth:3,reason:"the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)"}};
-["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-layers","phone-360-explore","phone-430-explore"].forEach(n=>{ PHONE.reachAllow[n]=Object.assign({},TWO); });
+["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-layers","phone-360-explore","phone-430-explore",
+  "phone-402x714-explore","phone-390-paper"].forEach(n=>{ PHONE.reachAllow[n]=Object.assign({},TWO); });
 ["phone-390-first","phone-390-dossier","phone-390-layers"].forEach(n=>{ PHONE.reachAllow[n].phases={depth:2,reason:"the dispatch sheet stood down (the first card, a dossier, the Layers panel): its close, then the grip"}; });
 PHONE.reachAllow["phone-390-watch"]={layers:{depth:2,reason:"Watch shows no tools: Study, then the Menu"},paperMap:{depth:2,reason:"Study, then the Menu"},
   panels:{depth:2,reason:"Study, then the Menu"},vantages:{depth:2,reason:"Study, then the Menu"},tour:{depth:2,reason:"Study, then the Menu"},

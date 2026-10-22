@@ -1,11 +1,14 @@
 # Real hardware, figure level of detail, a phone layout: specification (roadmap step 6, Part A)
 
 **Status: Part A merged (#59); the owner decided questions 215-230 as recommended on 21 October 2026 (§0.3). Item 3's Part B, the phone layout,
-is built (§9; PR #60); the owner decided questions 231-234 as recommended on 22 October 2026 (§10.1); item 1 waits on the owner's runs. Part A changed no source file, no data and no build:**
+is built (§9; PR #60, merged); the owner decided questions 231-234 as recommended on 22 October 2026 (§10.1). Item 1: the owner's two desktop
+runs (L1, L2) decided question 138 by §3.4's rule, on the owner's word that a desktop should decide it: 138 retired (decision 235, §11); L3, the
+wrapper page on the same desktop, run and recorded (§11); the iPhone's runs P1 and P2 recorded, with questions 236-238 (§12-§13). Part A
+changed no source file, no data and no build:**
 `check:baseline` passes on the unchanged build (`austerlitz-command-map.html`, 2,200,058 bytes, md5 `45f8f662ef828d2e1ab593a3b87b6ff7`,
 SHA-256 `bca73918aed88c62c7b564e6f9531b20b51eedb54554d272dfeb27b45eb10794`) and `check:data` finds 131 of 131 declarations identical
 to `archive/step5c-45f8f662.html`. Written against `main` at `7437dcc` (PR #58 merged); line numbers refer to that commit; the code is the
-source of truth. The next owner decision is 235.
+source of truth. The next owner decision is 239.
 
 Scope: roadmap step 6 (`docs/ROADMAP.md`: "Later, each its own decision: a phone layout; a measured pass on real hardware; figure level of
 detail"; findings A-4 and P-1 of `docs/FINAL_AUDIT.md`; decisions 137, 138, 139). Part A specifies all three items and builds none of them.
@@ -955,3 +958,263 @@ On 22 October 2026 the owner wrote: "Let's go with your recommendations for all 
 | 234 | the departures of §9.4 | (a): accepted as built | recorded here; nothing changed |
 
 The next owner decision is 235.
+
+## 11. Item 1: the owner's runs, and decision 235 (question 138 retired)
+
+**The runs.** On 22 October 2026 the owner ran the route twice (L1, L2; `step6-perf-route 3`, pasted into the console) on `main` after #60 (the
+build of 2,218,404 bytes, the reports' `bodyBytes`), "on a windows desktop": Chrome 155 on Windows, an **NVIDIA GeForce RTX 4070** through
+ANGLE and Direct3D 11, 32 cores, 32 GB, a 2,560 x 1,440 screen at 144 Hz (the measured refresh 6.9 ms), the page drawn at 2,560 x 1,305 at
+density 1, effects on at scale 1.3, not `lowTier`. The reports, verbatim: `docs/step6-evidence/perf-L1-desktop.txt` and `.json`,
+`perf-L2-desktop.txt` and `.json`. L3 (the wrapper page on the same machine) was run after them and is read below; the phone's P1 and P2
+were not run.
+
+**The rule of §3.4, applied as written** (`node` over the two JSON files):
+- both runs **stand**: the refresh measured (6.9 ms), no note, no segment hidden; a long frame is one above 25 ms (max(1.5 R, 25));
+- the four **decisive** orbits (`overview`, `ph8-overview`, `pratzen-low-4x`, `pratzen-low-10x`) have **0% long frames in both runs**; no
+  segment of either run has one (the longest interval 20.8 and 20.9 ms, in the played segments); every segment at or within 1 frame a second
+  of 144 frames a second but the played ones (139-141);
+- so **rule 2: no decisive segment drops frames, and 138 is retired** (nothing is built; item 2 closes).
+
+**The departure, recorded (decision 235).** Decision 138 and §3.4 name "an ordinary integrated GPU", and the protocol (§2.3) the owner's Windows
+laptop with Intel graphics. These runs are a desktop with a current discrete GPU. Asked how they should count (options: run L1 and L2 on the
+Intel laptop as the rule says; decide 138 from these; leave 138 open), the owner chose: **"Decide 138 from these."** So 138 is decided on a
+machine far stronger than the one it names: these runs show that the build holds a 144 Hz refresh on such a desktop, and they say nothing of an
+integrated GPU, nor of the phone (question 222 still waits on P1 and P2).
+
+**What the runs show besides (fact, from the reports; one machine, two runs):**
+- per frame, the app's JavaScript took 1.9-6.1 ms at the median (`js50`; 6.0-7.0 ms at the 95th percentile while playing at 4x) and the GPU
+  1.7-5.0 ms at the median, at most 5.5 at the 95th percentile (WebGL2's timer query): both well inside the 6.9 ms of a 144 Hz refresh;
+- hiding the figures and standards (the `-figures` segments) halved the triangles (2.52 to 1.26 million in the Overview) and cut the draw
+  calls by about 70% (832 to 247) and the JavaScript by about a third (4.9 to 3.1 ms in the Overview's orbit), with the GPU's median as before
+  or lower (5.0 to 4.4 ms and 4.8 to 4.5 ms in the Overview's orbit; 4.7 to 4.3 and 4.7 to 2.1 in the low view's): on this GPU the triangles
+  are not what a frame waits on;
+- the GPU's medians of the same segment differ between runs by about a factor of two in some segments (the low view held: 2.4 ms in L1, 4.6 in
+  L2; the 10.33x orbit 4.6 and 2.2), values falling near 2.2 or near 4.6 ms (inference: the GPU's clock states or the timer's resolution on this
+  driver; not examined); no segment's frame interval moved with them.
+
+**L3, the wrapper page on the same desktop (fact, from its report; `perf-L3-desktop.txt` and `.json`).** The owner ran
+`tools/step6/perf-run.html` on the same machine on 22 October 2026, about an hour after L2 (started 07:45:59 UTC; L2 at 06:43:33). It **stands**:
+the refresh measured (6.9 ms), no note, no segment hidden, the page in a frame. Through the wrapper the route could read the build: **2,218,404
+bytes, SHA-256 `0c64a52d2eeb7218e2b17714da18f682d87fcce7c882065676c73cbb17c667ac`**, the build of `main` after #60 (the same hash computed here
+from `austerlitz-command-map.html`), which L1 and L2, pasted into the console, report as "not read" (their `bodyBytes`, 2,218,404, agree). Read
+against L1 and L2, for §2.3's purpose (the frame's own cost, so that the phone's runs, frame only, can be read against L1):
+- every segment's median interval 6.9 ms, as in L1 and L2; `js50` 2.0-6.1 ms (L1 and L2 1.9-6.1), every segment within 0.1 ms of L1's or
+  L2's and equal to one of them in 17 of 22; `gpu50` 1.8-5.2 ms (1.7-5.0), the same segment's GPU median again differing between runs (the
+  phase-8 orbit 4.4, 4.3 and 3.1 ms in L1, L2 and L3; the 1x view held 2.1, 2.1 and 3.2);
+- the four decisive orbits 0% long, as in L1 and L2; the one difference: **one long frame in each played segment** (`play-4x` and
+  `play-half`, 1 of 1,622 and 1 of 1,633, 0.1%, each 27.8 ms, four refresh intervals), where L1 and L2 had none (their longest 20.8 and
+  20.9 ms); every other segment's longest interval 14.0 ms or less;
+- the load: DOM ready 3,153 ms, 1,023,649 bytes transferred for a body of 2,218,404 (L1 and L2 2,218,704: the host served the build compressed
+  this time; the time is the wrapper's and the host's, not the app's).
+
+So on this machine the frame's own cost does not show in any median; whether the two 27.8 ms frames are the frame's or chance, one run cannot
+say (inference). L3 is not a decision run (§3.4 reads L1 and L2), and it would not change decision 235: no decisive segment drops, and 0.1% is
+far below the rule's 5%. What L3 offers the phone's runs is narrow: a frame that costs nothing measurable on a fast desktop says little of what
+it costs on a phone, so P1 and P2 are read on their own (inference).
+
+**What remained of item 1:** P1 and P2 (the phone's runs decide question 222, the phone's own drawing, and decision 229, the phone cases'
+height; recorded in §12, with questions 236-238 in §13); no other decision waits on them. Item 2 is retired; item 3 is built (§9-§10). Under decision 230, `docs/FINAL_AUDIT.md`'s P-1 now
+carries a note pointing here. The next owner decision is 236.
+
+## 12. Item 1: the iPhone's runs (P1, P2), and what they leave to the owner
+
+**The runs.** On 22 October 2026 the owner ran the wrapper page (`tools/step6/perf-run.html`) twice in Safari on an **iPhone 17 Pro** (the
+model the owner's word; the report says "Apple GPU" only): P1 from 07:51:52 UTC, P2 from 07:56:25, about two minutes after P1 ended. The
+reports, verbatim: `docs/step6-evidence/perf-P1-iphone.txt` and `.json`, `perf-P2-iphone.txt` and `.json`. Their device lines: Safari 26.6.1
+(its user agent's system token "iPhone OS 18_7"; the phone's iOS version is not otherwise in the report), 4 cores as Safari reports them, the
+screen 402 x 874 CSS px at density 3, **the viewport 402 x 714** (the wrapper's frame fills the window, `position:fixed; inset:0`, so this is the
+area Safari's bars left the page, held upright), drawn at 1.5 (603 x 1,071), `lowTier`, effects on at scale 1.0, the shadow map on; no GPU
+timer (Safari does not offer WebGL2's timer query, so neither report has the GPU's own time). Both read and hashed the build: 2,218,404 bytes,
+SHA-256 `0c64a52d...`, `main`'s after #60. P1 loaded in 5.9 s (1,024,216 bytes transferred), P2 in 2.2 s (0 bytes: from the cache).
+
+**Both stand** in §3.4's sense: the refresh measured (17 ms: 60 frames a second; the iPhone 17 Pro's display goes to 120 Hz, so Safari paced
+the page at 60, inference: its default for a page's animation frames), no note, no segment hidden. A long frame is one above 25.5 ms (1.5 R).
+
+**What they show** (fact, from the reports; §3.4's definitions used to read them, not to decide: 138 is decided, decision 235, and question
+222 has no rule):
+- **the light views hold**: the 1x low view, the paper map and the eye level (0.22-0.48 million triangles), held and moved, at most 4% long
+  frames in either run (P2's 1x view held, 49 frames a second; every other 54-60), under the 5% §3.4 calls a drop;
+- **the heavy views drop in most segments of both runs**: of the 13 segments drawing 2.47-2.52 million triangles (the Overview, the low view
+  at 4x and 10.33x, phase 8's Overview, Play), 8 drop in P1 and 10 in P2, at a median interval of 28-52 ms (19-36 frames a second); phase 8's
+  Overview drops in every segment of both runs (19-21 frames a second, 29 with the figures hidden);
+- **the same segment differs between runs, and a run slows as it goes**: the 4x low view's orbit ran at 59.5 frames a second in P1 and 24.2
+  in P2, Play at 4x at 28.6 in P1 and 60 in P2. In both runs the first heavy segments hold 60 (the Overview held and orbiting) and the drops
+  follow, in P2 from its fourth drawn segment, in P1 from its eighth; the light views between them hold. In the dropping segments the app's
+  own JavaScript took 7-19 ms a frame (`js50`), against 3-5 ms in the heavy segments that held 60. Inference, not examined: the phone lowering
+  its clocks under sustained drawing (heat or power); a page can read neither;
+- **neither diagnostic cures a drop it can be compared with**: hiding the figures and standards (half the triangles) took phase 8's Overview
+  from 20 to 28.5-29.3 frames a second, still dropping (98.8-100% long), and P2's 4x low view from 24.2 to 33.2, still dropping. Read
+  literally, P1's 10.33x drop is "cured" by the 4x `-figures` segment (3.1% long), but that segment ran before P1 slowed: the order, not the
+  figures, separates them (inference). Turning the effects off was never faster: slower in two segments (P2's Overview, 60 to 19.4; P1's 4x
+  low view, 59.5 to 22.8), about the same in four. Each diagnostic runs after its full segment, so on a phone that slows as it goes, the
+  toggle and the slowing cannot be told apart (inference).
+
+**What a visitor meets** (inference, from the reports and the app's frame loop, `app.js` `frameState`): the app draws on demand; a still view
+draws nothing, or redraws at its ambient rate (every 90 ms) while smoke drifts, so a visitor's phone is not kept drawing as the route keeps it.
+Play and a moving camera draw every frame, as the route's played and orbit segments do: on this phone Play ran at 28-29 frames a second in P1,
+and at 60 then 40 in P2.
+
+**Against the desktop** (L3's purpose, §2.3): the wrapper cost nothing measurable there (§11); the phone's `js50` in the heavy views while
+they held 60 was 3-5 ms, the desktop's 3.9-6.0 ms in the same segments (every time in the phone's reports is a whole number of
+milliseconds: Safari's clock, coarser than Chrome's). The phone's runs are read on their own.
+
+**Decision 229: the phone layout at the viewport P1 gives** (measured here: `tools/step6/phone-probe.js --only 402x714`, Chromium with a
+phone's device, density 3, touch and Safari's user agent, software WebGL; `docs/step6-evidence/phone-402x714.json`, screenshots
+`phone/p1view-402x714-*.png`). Decision 229 (a) asks that the phone cases use "the height the iPhone's report gives"; the report gives 402 x
+714, a phone 12 px wider than the cases' 390 (iPhone 12-15) and 160 px of its 874 taken by Safari. The eight states of §4.1 there, against
+Part B's 390 x 844 (`phone-partB.json`):
+- the four zero-limits hold as at 390 x 844: no press target under 24 px but the event markers; no text cut but the caption's parts
+  `PHONE.cutAllow` names (the act and the event giving way, decision 159); no two panels overlapping; every feature on the screen or one press
+  away but what `PHONE.reachAllow` names, the same list as at 390;
+- every interface text at AA (but the tour's disabled "Back", 2.17:1, as at 390 x 844) and none under 10.5 px; the map text at AA;
+- the timeline 121 px (155 in Watch), as at 390 x 844; the unobstructed share 0.02-0.07 lower in each state (0.24-0.79 against 0.26-0.82), the
+  same timeline taking more of a shorter screen; fewer map items placed after "Explore" (6 against 7, with 2 dropped).
+
+So nothing in the layout fails at the height Safari leaves the owner's phone; what decision 229 changes is which case holds that. Question
+237 asks how it is applied.
+
+**Found while probing: the paper map entered on a phone held upright is framed into the Layers panel's leftovers** (fact, measured in
+Chromium with a phone's device: `tools/step6/paper-entry.js`, `docs/step6-evidence/phone-paper-entry.txt`, `phone/paper-entry-*.png`). On a
+phone held upright the Paper map button is in the Layers panel only (`shell.html`), and the Layers panel is a sheet over most of the screen.
+Pressing Paper map frames the whole field (`MAPCAM.frameField`) into the free rectangle the sheet leaves: 360 x 112 px at the foot of a 390 x
+844 screen, 304 x 64 px at the top of a 402 x 714 one. Closing the panel does not frame it again: the paper map keeps that frame (its
+`framed` flag still true), the field drawn 122 x 112 px under the dispatch sheet at 390 x 844 (nothing of the battle in view) and 70 x 64 px
+at the top of the 402 x 714 screen. The paper map frames itself again on a resize (`app.js` `onResize`), not on a panel's change
+(`syncViewOffset` returns at once on the paper map). Part B's records show the same (`phone/partB-390x844-paper.png`, no map item in view)
+without naming it; none of the eight phone cases enters the paper map, and `check:contrast`'s phone paper state measures text, not framing.
+On a desktop the Layers panel is a small popover, so the same rule leaves only a margin where it stood (inference; not measured here).
+Question 238.
+
+## 13. Questions for the owner (from 236)
+
+**236. The phone's own drawing, after the runs** (question 222 (c) put it here). On the newest iPhone the light views hold 60 frames a second;
+the heavy views (about 2.5 million triangles) drop to about 20-35 once the phone has drawn them for a while, and neither hiding the figures
+nor turning the effects off cured it as the route measures them (§12). (a) **record it and leave the drawing**: the phone layout only, as
+question 222 (a) put it; (b) **measure lighter drawings on the phone first, then build the one a stated rule picks**: a phone route (version
+4) that, after drawing a heavy view until the phone slows, alternates in the same view the drawing as it is with each candidate (the drawing
+density 1.0 in place of `lowTier`'s 1.5; no shadow map; the figures casting no shadow; the figures hidden, as the reference), each pair
+twice, so that the phone's slowing and the change are told apart; the rule stated before the runs, as §3.4 was (the least change that keeps
+the heavy views' orbit and played segments under 5% long frames in both runs, else the one that gains most, else (a)); the owner runs it
+twice (about 10 minutes); the change, if any, for `lowTier` only, measured on the phone again; (c) **a lighter drawing on phones now**, unmeasured
+(density 1.0 under `lowTier`): against decision 139's order (the measurement before any performance work), and the obvious candidate of
+question 222 (b), the effects off by default, these runs do not support. **Recommended: (b).** Cost: one session for the route and its
+check here, the owner's two runs, a session for the change if the rule picks one.
+
+**237. How decision 229 is applied.** (a) **one new case at the owner's phone's visible viewport**, `phone-402x714-explore` (density 3, touch,
+Safari's user agent), measured once in `check:visual` and its limits set as measured (as decision 232 set the others'); the five 390 x 844
+cases kept, the full viewport of an iPhone 12-15; (b) **the five 390 cases made shorter** (390 x 684: P1's 160 px of Safari's bars taken
+from 844; an inference that an iPhone 12-15's Safari takes as much); (c) both. **Recommended: (a)**: the one height measured is the
+owner's phone's, and the probe above finds the layout whole there; (b) would rest on a height no report gives. Cost: one `check:visual` run
+for the new case, then the limits as measured.
+
+**238. The paper map's frame on a phone** (§12, found while probing). (a) **fix it in its own change**: while the paper map shows the field as
+framed (the visitor has not panned or zoomed it), a panel's change frames it again, as a resize does, so that closing the Layers sheet leaves
+the field in the free area; a phone case entering the paper map by its taps (Menu, Layers, Paper map, close) added to `check:visual`, its
+limits measured; the desktop's paper-map cases measured unchanged or the change stated; (b) **leave it and record it**. **Recommended:
+(a)**: it is a fault of the phone layout as built (item 3), every visitor who opens the paper map on a phone held upright meets it, and
+the rule it needs is the resize's. Cost: one session; the build, `check:baseline` and the self-test's manifest move if a check is added.
+
+### 13.1 The owner's decisions
+
+On 22 October 2026 the owner wrote: "go with your recommendations". Decided as recommended:
+
+| # | question | decision | applied |
+|---|---|---|---|
+| 236 | the phone's own drawing | (b): lighter drawings measured on the phone by a rule stated before the runs, then the one it picks built for `lowTier` | the phone route and its rule (§14) |
+| 237 | decision 229's application | (a): one new case, `phone-402x714-explore`, its limits as measured; the 390 x 844 cases kept | `cases.js`, `thresholds.js` (§14) |
+| 238 | the paper map's frame on a phone | (a): framed again when a panel's change gives the field room; a phone case entering the paper map by its taps | `app.js` `MAPCAM.syncPanels`; `cases.js` (§14) |
+
+## 14. Decisions 236-238 applied
+
+### 14.1 Decision 236: the phone route, and the rule that reads it, stated before the runs
+
+**The route** (`tools/step6/perf-route.js`, `step6-phone-route 1`, run by the wrapper page as `tools/step6/perf-run.html?route=phone`; about
+seven minutes). P1 and P2 showed the phone slowing as it draws, so a candidate measured after the drawing as it is (as the route's
+diagnostics were) cannot be told from the slowing (§12). The phone route therefore brackets: in each of two kinds it first draws the
+drawing as it is for 45 s (the warm-up, until the phone slows; recorded, not compared), then the blocks A C1 A C2 A C3 A C4 A C5 A, twice, each
+block 6 s after the view is set (A the drawing as it is; C a candidate set after the view and undone after the block); a candidate is
+compared with the two As beside it. The two kinds: **orbit**, phase 8's Overview orbiting (`ph8-overview`, the one view that dropped in every
+segment of both runs), and **played**, Play at the visitor's half speed under Follow from 08:30 in Watch (`play-half`, what the opening and
+Watch play). The refresh is measured first, as in the route of §2. The candidates, in the order the rule reads them (the least visible change
+first: a design order):
+1. `figShadow`: the figures and standards cast no shadow (their meshes' `castShadow` off; the ground, the woods and the villages still cast);
+2. `shadowPass`: the shadow pass skipped (the shadow map not redrawn, its last frame kept, so no shader is rebuilt inside the comparison;
+   the change it stands for, the sun casting no shadow under `lowTier`, draws no shadow map at all and samples none, so it costs at most
+   what this measures: inference);
+3. `density1`: the drawing buffer at density 1.0 in place of `lowTier`'s 1.5 (on a density-3 phone 402 x 714 pixels in place of 603 x
+   1,071: 44% of the pixels);
+4. `density1Pass`: 3 and 2 together;
+5. `figures`: the figures and standards hidden: **the reference**, not a drawing to build; it says how much of a dropped frame the figures are.
+
+**The rule** (applied to the owner's two runs of the phone route, P3 and P4, mechanically, by the analysis after them):
+- a segment **drops** when more than 5% of its frames are long (above max(1.5 R, 25 ms)), as in §3.4;
+- a run **stands** when its refresh was measured and no segment was hidden (else it is run again);
+- a run **tests** a kind when at least half of that kind's A blocks drop (the phone slowed); in a run that does not test a kind, the drawing
+  as it is held there;
+- a candidate **cures** a kind in a run when both its blocks there do not drop while at least one A beside each of them does;
+- its **gain** in a kind and a run is the median, over its two blocks, of the two As' mean median interval (`p50`) divided by its own: 1.5
+  is 50% more frames a second.
+
+Applied in this order:
+1. If neither run tests either kind: **nothing is built** (the phone held the drawing as it is; recorded).
+2. Else the first of candidates 1-4 that cures every kind both runs test is **built for `lowTier` only** (in its built form: for 2, the sun
+   casting no shadow under `lowTier`), and the phone measured once more by the owner (one run of the route of §2).
+3. Else the first of candidates 1-4 whose gain is at least 1.25 in every kind both runs test is **built** as in 2, recorded as a gain, not a
+   cure.
+4. Else **nothing is built**: what the reference (candidate 5) shows goes to the owner with the result (whether the figures are what drops a
+   phone's frames), as a new question.
+
+The thresholds (half the As, 1.25) are design values chosen for this rule: half the As, so that a run in which the phone mostly held is not
+read as a test; 1.25, a quarter more frames a second, the least gain worth a visible change (inference: no study was read for it).
+
+**The runs** (P3, P4): as P1 (§2.3: Safari, Low Power Mode off, Reduce Motion off, Auto-Lock Never, held upright), opening
+`tools/step6/perf-run.html?route=phone` on the hosted copy; Start; leave it about seven minutes; Copy; two minutes' rest, then again. The
+report has the route's form, one row per block (its kind column the candidate and the round, and at the row's end the drawing the block
+ran with: the density, the shadow pass, the figures casting a shadow and shown, read from the page as it starts, so that each candidate is
+seen to have taken effect).
+
+**Checked here** (`tools/step6/perf-local.js --way frame --device iphone --viewport 402x714 --phone`, in full and halved;
+`docs/step6-evidence/perf-local-phone-route.json`): the route runs end to end through the wrapper with no console warning or error; every
+block's drawing is its candidate's (A: density 1.5, the shadow pass on, 314 of the 341 figure meshes casting, 341 shown; `figShadow` 0 casting;
+`shadowPass` the pass off; `density1` 1; `density1Pass` both; `figures` 0 shown), and every A after a candidate is the drawing as it is again.
+Under software WebGL at density 3 a frame takes about two seconds, so its blocks hold 0-3 frames and its times decide nothing; skipping the
+shadow pass took a frame from 809 draw calls and 2.50 million triangles to 525 and 1.47 million (the shadow pass's share, the build's own).
+
+### 14.2 Decision 238: the paper map framed again on a panel's change, and its scale bar on a phone
+
+**The rule, as built** (`app.js` `MAPCAM.syncPanels`, called where the landscape's view offset is kept, `syncViewOffset`): while the paper map
+shows the field as framed (`MAPCAM.framed()`: the visitor has not panned, zoomed or chosen a vantage), the screen and the panels it was
+framed among are kept as a key; when they change and the field framed anew would be drawn more than 1% larger, it is framed again (a glide,
+at once when settling or under reduced motion), as a resize already did. A panel that opens over the field (a selection's chip, a dossier)
+moves nothing, so the map never slides from under the pointer; a panel closing over a field already framed for that room moves nothing either.
+`runtime-test.js` dry-runs it with the panel list stubbed (framed beside a panel over most of the screen, the panel gone: 2.293 to 0.463 units
+a pixel; a panel opening over it and closing again: unmoved; after a pan: unmoved), and fails on the build before it ("the panel closed, the
+field not framed again"). In Chromium with a phone's device (`tools/step6/paper-entry.js`): the field after the Layers sheet closes 360 x 332
+px in the free 360 x 472 at 390 x 844 (was 122 x 112 under the dispatch sheet), 364 x 336 px at 402 x 714 (was 70 x 64).
+
+**The case** `phone-390-paper` (the Menu, Layers, Paper map, the panel's close, by real taps) is held to the whole field in the free area
+(`FRAMED`, `frameInFree` 1) and to every paper-map rule of Stage 2E. Its first run found what no paper-map case below 1080 px could: **the
+scale bar was hidden there** (`style.css`'s narrow block hid `.tb-scale` on every view, the paper map's included; the paper map's rule since
+Stage 2E is one scale across the view and its bar to 1%). The bar is now kept on the paper map at every width (hidden below 1080 px on the
+landscape only, whose bar holds at the centre of the view alone); on a phone held upright it heads the caption's row, the caption's parts
+giving way (decision 159), since at the head of the control row it pushed the speed button to a second line (the timeline 165 px). Measured
+on this build: the bar 65 px for 65.3 wanted (0.4%), the timeline 121 px, the unobstructed share 0.6529 (as `phone-390-explore`'s), the four
+zero-limits clean.
+
+### 14.3 Decision 237, and the limits as measured
+
+`phone-402x714-explore` (`cases.js`): the owner's iPhone 17 Pro at the viewport P1 gave, Safari's user agent, density 3, after "Explore". The
+two cases' limits, as the build that adds them measures them (`thresholds.js`; rounded down to 0.1 point, the drops as measured, as decision 232
+set the others'):
+
+| case | unobstructed | drops | framing floor | timeline |
+|---|---|---|---|---|
+| `phone-402x714-explore` | 0.585 (0.5852) | 2 | 6 | 121 |
+| `phone-390-paper` | 0.652 (0.6529) | 17 (19 placed) | 11 | 121 |
+
+`check:visual` now has 39 cases. The full run on the build before the scale bar's two changes passed every case and the self-test but these
+two cases' unset limits and the scale bar; the scale bar's changes touch the paper map below 1080 px only (`phone-390-paper` is the one case
+there), and that case was measured again on the final build; the full run on the final build passes all 39 cases, the self-test and the
+live blocks (`CHANGELOG.md`).
+
+The next owner decision is 239.

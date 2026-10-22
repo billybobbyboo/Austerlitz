@@ -14,7 +14,7 @@ from the code, the approach proposed, the work done conservatively, checked, rec
 | 3 | **Accessibility and robustness**: the shortcuts switch, hidden panels inert, the sources sheet a proper dialog, focus returned, reduced motion live and in CSS, the timeline's targets, focused map items drawn; the start-up message and the CDN integrity; "Whose eyes?" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |
 | 4 | **The sourcing stage**: Part A, an inventory of every narrative statement and a register of readings (as Stage 6 did for dress); per-statement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136; 176-197 | done (#52); decisions 176-197 taken as recommended on 15 October 2026; step 4b part A applied 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 on `claude/adoring-gauss-ubfas9` (draft PR #53; `CHANGELOG.md`), owner questions 198-201 |
 | 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-212; 213 put | merged (#56; `CHANGELOG.md`); decisions 205-212 taken as recommended on 20 October 2026 and applied in PR #57 (`docs/step5-evidence/questions.md`); owner question 213 open; done |
-| 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139; 215-230; 231-234 | Part A merged (#59, `docs/STEP6_SPEC.md`); decisions 215-230 taken as recommended on 21 October 2026; item 1 waits on the owner's runs (hosting, question 217; five runs, §2.3); item 3's Part B, the phone layout, built (§9; PR #60), decisions 231-234 taken as recommended on 22 October 2026 (§10.1); decision 229 waits on item 1's P1 |
+| 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139; 215-230; 231-238 | Part A merged (#59, `docs/STEP6_SPEC.md`); decisions 215-230 taken as recommended on 21 October 2026; item 3's Part B, the phone layout, built and merged (§9; #60), decisions 231-234 taken as recommended on 22 October 2026 (§10.1); item 1: the owner's desktop runs L1 and L2 (an RTX 4070, no long frame) decided 138 on the owner's word, retired (decision 235, §11); item 2 closed; L3, the wrapper page on the same desktop, recorded (§11); the iPhone's P1 and P2 recorded (§12); decisions 236-238 taken as recommended (§13.1) and applied (§14): the paper map framed again on a panel's change and its scale bar kept below 1080 px, two phone cases, the phone route and its rule; P3 and P4 (the phone route on the iPhone) remain |
 
 ### What step 1 handed on (fact, from its commits; `CHANGELOG.md`)
 
@@ -330,7 +330,32 @@ landscape, today's layout with its overlaps and Watch's row fixed. The checks of
 device and their own measures (`tools/visual/phone-measure.js`), a live phone block, ten phone states in `check:contrast`, css-test and
 runtime-test checks. The owner decided questions 231-234 as recommended on 22 October 2026 ("Let's go with your recommendations for all
 questions, then I'll merge"): the words as proposed (231), the phone cases' limits as measured (232), narrow-390 retired, `phone-390-first` measuring
-that screen as a phone (233), the departures accepted (234). Decision 229 waits on the iPhone's report (item 1's P1). The next owner decision is 235.
+that screen as a phone (233), the departures accepted (234). Decision 229 waits on the iPhone's report (item 1's P1).
+
+### Step 6 item 1: the desktop runs, and decision 235 (`docs/STEP6_SPEC.md` §11)
+
+On 22 October 2026 the owner ran L1 and L2 on a Windows desktop (Chrome 155, an NVIDIA GeForce RTX 4070, 144 Hz) instead of the Intel-graphics
+laptop the protocol named. Asked how they should count, the owner chose "Decide 138 from these" (**decision 235**). Applied as written, §3.4's
+rule finds both runs standing and no long frame in any segment (the decisive orbits 0% in both): **question 138 retired**, item 2 closed, with
+the departure recorded (a fast discrete GPU decided what decision 138 asked of an integrated one). `docs/FINAL_AUDIT.md`'s P-1 carries decision
+230's note. L3, the wrapper page on the same desktop, stands too: no median moved, one 27.8 ms frame in each played segment, the build read
+and hashed as `main`'s after #60 (§11). P1 and P2 remain: the phone's runs decide question 222 and decision 229. The next owner decision is 236.
+
+### Step 6 item 1: the iPhone's runs (`docs/STEP6_SPEC.md` §12-§13)
+
+On 22 October 2026 the owner ran the wrapper page twice on an iPhone 17 Pro in Safari (P1, P2; both stand, 60 frames a second paced, the
+viewport 402 x 714). The light views (the 1x low view, the paper map, the eye level) hold 60 frames a second; the heavy views (about 2.5
+million triangles: the Overviews, the low view at 4x and 10.33x, Play) drop to about 20-35 once the phone has drawn them a while, 8 and 10 of
+their 13 segments; hiding the figures or turning the effects off cured no drop the runs can compare. Probing the layout at P1's viewport
+(decision 229) found it whole there, and found a fault of item 3: the paper map, entered on a phone held upright through the Layers sheet,
+keeps the frame it took beside the sheet (the field 70-122 px wide, or under the dispatch sheet). Questions put: **236** (the phone's drawing:
+recommended, measure lighter drawings on the phone by a rule stated first), **237** (decision 229 as one case at 402 x 714) and **238** (the
+paper map framed again when a panel changes, in its own change). The owner decided all three as recommended the same day ("go with your
+recommendations"), applied in PR #61 (§14): 238, the paper map framed again when a panel's change gives it room, with a phone case entering it
+by its taps, whose first run found the scale bar hidden below 1080 px on the paper map too (now kept, at the head of the caption's row on a
+phone); 237, `phone-402x714-explore`; both cases' limits as measured; 236, the phone route (`perf-run.html?route=phone`) and its rule, stated
+before the runs (§14.1). P3 and P4, the phone route twice on the iPhone, remain; the rule then decides what, if anything, is built. The next
+owner decision is 239.
 
 ### What step 6 Part A hands on (fact, from its commits and its review; `docs/STEP6_SPEC.md`, `CHANGELOG.md`)
 

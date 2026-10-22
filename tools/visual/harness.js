@@ -184,6 +184,7 @@ async function interact(page,it,vp){
       if(c.phone==="dossier") await page.evaluate(s=>{ select(s[0],s[1]); },c.select);
       if(c.phone==="watch") await viaMenu('.vm-btn[data-vm="watch"]');
       if(c.phone==="layers") await viaMenu("#layersbtn");
+      if(c.phone==="paper"){ await viaMenu("#layersbtn"); await tap('.mode-btn[data-m="staff"]'); await settle(page); await tap("#layerclose"); }   /* decision 238 */
       await settle(page); }
     const phoneReading=!!(c.phone&&c.phone!=="first");
     /* Stage 7C: an opening case is reached as a visitor reaches it, by real clicks on the card's primary action and the bar's Next */

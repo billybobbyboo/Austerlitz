@@ -44,6 +44,10 @@
      minutes a second), too few frames to measure; so each played segment runs for its seconds and records the clock it covered */
   var PLAYED=[{id:"play-4x", speed:4, t:510}, {id:"play-half", speed:0.5, t:510}];
   var SECS={idle:3, held:4, move:6, played:12, warm:0.5};
+  /* decision 236's phone route (docs/STEP6_SPEC.md section 14): its version, the candidates in the order the rule reads them (the reference,
+     the figures hidden, last), the warm-up and each block's seconds (design values), and the rounds */
+  var PHONE_VERSION="step6-phone-route 1";
+  var PHONE={order:["figShadow","shadowPass","density1","density1Pass","figures"], warm:45, secs:6, rounds:2};
 
   function pct(a,p){ if(!a.length) return null; var s=a.slice().sort(function(x,y){ return x-y; }); return s[Math.min(s.length-1,Math.floor(p*(s.length-1)+0.5))]; }
   function r1(v){ return v==null?null:Math.round(v*10)/10; }
@@ -176,7 +180,8 @@
           .catch(function(){ return null; });
       }catch(e){ return Promise.resolve(null); }
     }
-    var out={version:VERSION, started:new Date().toISOString(), device:null, build:null, refreshMs:null, segments:[], notes:[]};
+    var out={version:o.phone?PHONE_VERSION:VERSION, started:new Date().toISOString(), device:null, build:null, refreshMs:null, segments:[], notes:[]};
+    if(o.phone) out.route="phone";
     function want(id){ return !only||only.indexOf(id)>=0; }
     var seq=Promise.resolve();
     function then(f){ seq=seq.then(f); }
@@ -194,7 +199,7 @@
         out.segments.push(summarise("idle","idle",rows,{note:"the app's loop paused by this script: the display's own refresh"}));
         out.device=device(); });
     });
-    VIEWS.forEach(function(v){
+    if(o.phone) phoneRoute(); else VIEWS.forEach(function(v){
       if(!want(v.id)) return;
       then(function(){ log(v.id); apply(v.spec); return wait(w,600).then(function(){ return sample(SECS.held*scale,null,true); })
         .then(function(rows){ out.segments.push(summarise(v.id,"held",rows,{note:v.note})); }); });
@@ -209,16 +214,57 @@
           .then(function(rows){ w.setFXEnabled(was); out.segments.push(summarise(v.id,v.move+" -effects",rows,{note:"Visual effects off (the F key)"})); }); });
       }
     });
-    PLAYED.forEach(function(p){
+    if(!o.phone) PLAYED.forEach(function(p){
       if(!want(p.id)) return;
       then(function(){ log(p.id); apply({t:p.t, presentation:"watch", mode:"terrain", cam:FIELD}); w.setFollow(true); D.settle(30);
         w.setSpeed(p.speed); var c0=G("clock"); w.togglePlay();
         return sample(SECS.played*scale).then(function(rows){ var c1=G("clock"); if(G("playing")) w.stopPlay(); w.setSpeed(0.5);
           out.segments.push(summarise(p.id,"played",rows,{note:"Play at "+p.speed+"x under Follow from 08:30, Watch", clockFrom:r1(c0), clockTo:r1(c1), follow:!G("freeCam")})); }); });
     });
+    /* ---- decision 236 (docs/STEP6_SPEC.md section 14): the phone route. The heavy view that dropped in every segment of P1 and P2 (phase 8's
+       Overview, orbiting) and Play at the visitor's half speed under Follow, each drawn first as it is for PHONE.warm seconds until the phone
+       slows, then in bracketed blocks, A C1 A C2 ... A, A the drawing as it is, each candidate between two As, twice: a candidate is compared
+       with the two As beside it, so that the phone's slowing over time and the candidate are told apart. Each candidate set after the view is
+       applied and undone before the next block */
+    function phoneRoute(){
+      var SM=renderer.shadowMap;
+      var CAND={
+        A:{note:"the drawing as it is", on:function(){}, off:function(){}},
+        figShadow:{note:"the figures and standards cast no shadow", on:function(){ kitMeshes().forEach(function(m){ m._cs=m.castShadow; m.castShadow=false; }); w.requestRender(3); },
+          off:function(){ kitMeshes().forEach(function(m){ if(m._cs!==undefined){ m.castShadow=m._cs; delete m._cs; } }); w.requestRender(3); }},
+        /* the shadow map not drawn again (its last frame kept: no shader is rebuilt, as turning the light's shadow off would rebuild them) */
+        shadowPass:{note:"the shadow pass skipped (the shadow map not redrawn)", on:function(){ SM.autoUpdate=false; SM.needsUpdate=false; }, off:function(){ SM.autoUpdate=true; SM.needsUpdate=true; }},
+        density1:{note:"drawn at density 1.0 (lowTier's 1.5 otherwise)", on:function(){ setDensity(1); }, off:function(){ setDensity(null); }},
+        density1Pass:{note:"density 1.0 and the shadow pass skipped", on:function(){ setDensity(1); SM.autoUpdate=false; SM.needsUpdate=false; },
+          off:function(){ SM.autoUpdate=true; SM.needsUpdate=true; setDensity(null); }},
+        figures:{note:"the figures and standards hidden (the reference: not a drawing to build)", on:function(){ figuresHidden(true); }, off:function(){ figuresHidden(false); }}
+      };
+      /* the drawing each block ran with, read from the page as the block starts (so the report shows each candidate took effect): the
+         drawing buffer's density, whether the shadow map is redrawn, and the figures' meshes casting a shadow and drawn, of all */
+      function drawing(){ var K=kitMeshes(); return {density:renderer.getPixelRatio(), shadowPass:!!SM.autoUpdate,
+        figCast:K.filter(function(m){ return m.castShadow; }).length, figShown:K.filter(function(m){ return m.material.visible; }).length, fig:K.length}; }
+      /* the drawing buffer's density as onResize sets it (app.js): null, the app's own pxRatio() */
+      function setDensity(d){ renderer.setPixelRatio(d==null?w.pxRatio():d); renderer.setSize(w.innerWidth,w.innerHeight); w.sizeFX(); w.requestRender(3); }
+      var KINDS={
+        orbit:{id:"ph8-overview", start:function(){ apply(VIEWS[4].spec); }, sample:function(){ return sample(PHONE.secs*scale,MOVE.orbit(),true); }, stop:function(){}},
+        played:{id:"play-half", start:function(){ apply({t:510, presentation:"watch", mode:"terrain", cam:FIELD}); w.setFollow(true); D.settle(30); w.setSpeed(0.5); w.togglePlay(); },
+          sample:function(){ return sample(PHONE.secs*scale); }, stop:function(){ if(G("playing")) w.stopPlay(); w.setSpeed(0.5); }}
+      };
+      Object.keys(KINDS).forEach(function(k){ var K=KINDS[k];
+        then(function(){ log(K.id+" warm-up"); K.start(); return sample(PHONE.warm*scale,k==="orbit"?MOVE.orbit():null,k==="orbit").then(function(rows){ K.stop();
+          out.segments.push(summarise(K.id,"warm-up",rows,{cand:"A",note:"the drawing as it is, until the phone slows (not compared)"})); }); });
+        for(var round=1;round<=PHONE.rounds;round++) PHONE.order.forEach(function(c,i){ var r=round;
+          [ "A", c ].concat(i===PHONE.order.length-1?["A"]:[]).forEach(function(cc){
+            then(function(){ log(K.id+" "+cc+" ("+r+")"); K.start(); CAND[cc].on(); var st=drawing();
+              return wait(w,300).then(function(){ return K.sample(); }).then(function(rows){ CAND[cc].off(); K.stop();
+                out.segments.push(summarise(K.id,cc+" "+r,rows,{cand:cc, round:r, note:CAND[cc].note, set:st})); }); }); }); });
+      });
+    }
     return seq.then(function(){ pendQ.forEach(function(P){ gl.deleteQuery(P.q); }); pendQ=[]; w.document.removeEventListener("visibilitychange",onVis); w.loop=origLoop; w.renderFrame=origRF; out.finished=new Date().toISOString(); out.text=format(out); return out; },
       function(e){ app.paused=false; w.loop=origLoop; w.renderFrame=origRF; S.on=false; w.document.removeEventListener("visibilitychange",onVis);
-        try{ figuresHidden(false); }catch(x){} try{ if(!G("FX.on")) w.setFXEnabled(true); }catch(x){} try{ if(G("playing")) w.stopPlay(); w.setSpeed(0.5); }catch(x){}
+        try{ figuresHidden(false); }catch(x){} try{ if(!G("FX.on")) w.setFXEnabled(true); }catch(x){}
+        try{ renderer.shadowMap.autoUpdate=true; renderer.shadowMap.needsUpdate=true; kitMeshes().forEach(function(m){ if(m._cs!==undefined){ m.castShadow=m._cs; delete m._cs; } });
+          if(renderer.getPixelRatio()!==w.pxRatio()){ renderer.setPixelRatio(w.pxRatio()); renderer.setSize(w.innerWidth,w.innerHeight); w.sizeFX(); } }catch(x){} try{ if(G("playing")) w.stopPlay(); w.setSpeed(0.5); }catch(x){}
         throw e; });
   }
   function pad(s,n){ s=String(s==null?"-":s); while(s.length<n) s=" "+s; return s; }
@@ -234,11 +280,12 @@
     r.notes.forEach(function(n){ L.push("NOTE: "+n); });
     r.segments.forEach(function(s){ if(s.hidden) L.push("NOTE: the page was hidden during "+s.id+" "+s.kind+": its numbers do not stand"); });
     L.push(pad("segment",16)+pad("kind",17)+pad("frames",7)+pad("fps",6)+pad("p50",8)+pad("p95",8)+pad("p99",8)+pad("max",8)+pad("long%",7)+pad("warm",8)+pad("js50",8)+pad("js95",8)+pad("gpu50",8)+pad("gpu95",8)+pad("calls",6)+pad("tris",9));
-    r.segments.forEach(function(s){ L.push(pad(s.id,16)+pad(s.kind,17)+pad(s.frames,7)+pad(s.fps,6)+pad(s.p50,8)+pad(s.p95,8)+pad(s.p99,8)+pad(s.max,8)+pad(s.longPct,7)+pad(s.warmMax,8)+pad(s.js50,8)+pad(s.js95,8)+pad(s.gpu50,8)+pad(s.gpu95,8)+pad(s.calls,6)+pad(s.tris,9)); });
+    r.segments.forEach(function(s){ L.push(pad(s.id,16)+pad(s.kind,17)+pad(s.frames,7)+pad(s.fps,6)+pad(s.p50,8)+pad(s.p95,8)+pad(s.p99,8)+pad(s.max,8)+pad(s.longPct,7)+pad(s.warmMax,8)+pad(s.js50,8)+pad(s.js95,8)+pad(s.gpu50,8)+pad(s.gpu95,8)+pad(s.calls,6)+pad(s.tris,9)+
+      (s.set?"  density "+s.set.density+", shadow pass "+(s.set.shadowPass?"on":"off")+", figures casting "+s.set.figCast+"/"+s.set.fig+", shown "+s.set.figShown+"/"+s.set.fig:"")); });
     L.push("AUS_PERF_JSON "+JSON.stringify(r,function(k,v){ return k==="text"?undefined:v; }));
     return L.join("\n");
   }
-  var API={run:run, format:format, VERSION:VERSION, VIEWS:VIEWS, DIAG:DIAG, PLAYED:PLAYED, SECS:SECS, last:null};
+  var API={run:run, format:format, VERSION:VERSION, PHONE_VERSION:PHONE_VERSION, PHONE:PHONE, VIEWS:VIEWS, DIAG:DIAG, PLAYED:PLAYED, SECS:SECS, last:null};
   root.AUS_PERF=API;
   /* pasted into the console of the build's own page: run there at once */
   if(root.AUSTERLITZ_DEBUG&&root.AUSTERLITZ_DEBUG.applyCase&&!root.AUS_PERF_NO_AUTORUN){

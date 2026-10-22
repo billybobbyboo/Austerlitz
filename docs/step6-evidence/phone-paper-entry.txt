@@ -1,0 +1,5 @@
+390x844 menu #fr-close | .mode-btn[data-m=staff] NOT VISIBLE => {"mode":"terrain","framed":false,"wpp":0.5,"field":[-241,18,631,826],"freeRect":[16,296,376,536],"layerOpen":false,"menuOpen":true,"vp":[390,844]}
+390x844 layers #fr-close | #layersbtn | .mode-btn[data-m=staff] | {"mode":"staff","framed":true,"wpp":3.6033,"field":[135,600,257,712],"freeRect":[16,600,376,712],"layerOpen":true,"menuOpen":false,"vp":[390,844]} | #layerclose => {"mode":"staff","framed":true,"wpp":3.6033,"field":[135,600,257,712],"freeRect":[16,64,376,536],"layerOpen":false,"menuOpen":false,"vp":[390,844]}
+402x714 menu #fr-close | .mode-btn[data-m=staff] NOT VISIBLE => {"mode":"terrain","framed":false,"wpp":0.5,"field":[-235,-47,637,761],"freeRect":[16,296,392,400],"layerOpen":false,"menuOpen":true,"vp":[402,714]}
+402x714 layers #fr-close | #layersbtn | .mode-btn[data-m=staff] | {"mode":"staff","framed":true,"wpp":6.3058,"field":[133,16,203,80],"freeRect":[16,16,320,80],"layerOpen":true,"menuOpen":false,"vp":[402,714]} | #layerclose => {"mode":"staff","framed":true,"wpp":6.3058,"field":[133,16,203,80],"freeRect":[16,64,392,400],"layerOpen":false,"menuOpen":false,"vp":[402,714]}
+exit 0

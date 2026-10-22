@@ -571,6 +571,9 @@ body.mode-staff #vignette{display:none}
   .tlabel{display:none}
   .tools .grp{max-width:58vw}
   .tb-scale{display:none}
+  /* roadmap step 6 (found by decision 238's phone case): the paper map keeps its scale bar at every width (Stage 2E: one scale across the view,
+     its bar to 1%); hidden here only on the landscape, whose bar holds at the centre of the view alone */
+  body.mode-staff .tb-scale{display:flex}
 }
 @media (max-width:720px){
   #layerpop{right:10px;left:10px;width:auto;top:96px;max-height:58vh}
@@ -755,6 +758,10 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   #clockread{font-size:var(--t-h3)}
   #speedbtn{display:inline-block;order:3;margin-left:auto;min-width:48px;min-height:44px;font-size:var(--t-ui)}
   .tb-cap{order:5;flex:1 1 calc(100% - 48px)}
+  /* the paper map's scale bar (kept below 1080 px since decision 238's case) at the head of the caption's row, the caption giving it room
+     (its parts give way, decision 159), not a row of its own */
+  .tb-scale{order:4}
+  body.mode-staff .tb-cap{flex-basis:0;min-width:0}
   .tb-help{order:6;min-width:40px;min-height:36px}
   .tb-vm{order:7}
   .tb-trackwrap{height:36px;margin:0 8px}

@@ -1,0 +1,1693 @@
+{
+ "layout": "current",
+ "note": "the build as it is",
+ "devices": {
+  "402x714": {
+   "note": "the owner's iPhone 17 Pro in Safari, the visible viewport of P1's report",
+   "dpr": 3,
+   "states": {
+    "first": {
+     "how": "untouched",
+     "uiContrast": {
+      "texts": 42,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.5243,
+     "timeline": 121,
+     "layer": {
+      "placed": 13,
+      "dropped": 8
+     },
+     "panels": {
+      "timebar": [
+       0,
+       593,
+       402,
+       714
+      ],
+      "card": [
+       0,
+       367,
+       402,
+       593
+      ],
+      "menu": [
+       332,
+       10,
+       392,
+       54
+      ]
+     },
+     "overlaps": [],
+     "targets": 35,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 29,
+     "under44List": [
+      "button#helpbtn.t.tb-help 40x36",
+      "div#timerail.timerail 386x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button#fr-tour.t.fr-primary 122.8x34",
+      "button#fr-close.t 142.4x34"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.act",
+       "why": "ellipsis",
+       "text": "THE DECEPTION",
+       "w": 2
+      },
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant's division at Raigern since the night",
+       "w": 243
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "phases: covered by div#phases.tb-track; shown by #fr-close > #dgrip",
+      "presentation: hidden; shown by #menubtn",
+      "layers: hidden; shown by #menubtn",
+      "paperMap: hidden; shown by #menubtn",
+      "panels: hidden; shown by #menubtn",
+      "vantages: hidden; shown by #menubtn",
+      "sources: hidden; shown by #menubtn > #panelsbtn",
+      "eyes: hidden; shown by #menubtn > #panelsbtn > #tab-command"
+     ],
+     "reach": {
+      "play": {
+       "state": "ok",
+       "depth": 0
+      },
+      "clock": {
+       "state": "ok",
+       "depth": 0
+      },
+      "phases": {
+       "state": "covered by div#phases.tb-track",
+       "depth": 2,
+       "via": "#fr-close > #dgrip"
+      },
+      "presentation": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "layers": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "paperMap": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "panels": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "follow": {
+       "state": "ok",
+       "depth": 0
+      },
+      "vantages": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "help": {
+       "state": "ok",
+       "depth": 0
+      },
+      "sources": {
+       "state": "hidden",
+       "depth": 2,
+       "via": "#menubtn > #panelsbtn"
+      },
+      "tour": {
+       "state": "ok",
+       "depth": 0
+      },
+      "events": {
+       "state": "ok",
+       "depth": 0
+      },
+      "eyes": {
+       "state": "hidden",
+       "depth": 3,
+       "via": "#menubtn > #panelsbtn > #tab-command"
+      },
+      "speeds": {
+       "state": "ok",
+       "depth": 0
+      }
+     },
+     "framing": {
+      "placed": 13,
+      "inFree": 12,
+      "free": [
+       16,
+       64,
+       392,
+       576
+      ]
+     },
+     "contrast": {
+      "texts": 16,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": 7.96,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "explore": {
+     "how": "tap: Explore on my own; setClock(09:30)",
+     "uiContrast": {
+      "texts": 35,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.5852,
+     "timeline": 121,
+     "layer": {
+      "placed": 6,
+      "dropped": 2
+     },
+     "panels": {
+      "timebar": [
+       0,
+       593,
+       402,
+       714
+      ],
+      "dispatch": [
+       0,
+       414,
+       402,
+       593
+      ],
+      "menu": [
+       332,
+       10,
+       392,
+       54
+      ]
+     },
+     "overlaps": [],
+     "targets": 34,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 28,
+     "under44List": [
+      "button#dgrip.dgrip 374x28",
+      "button#helpbtn.t.tb-help 40x36",
+      "div#timerail.timerail 386x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.act",
+       "why": "ellipsis",
+       "text": "THE PRATZEN STRIKE",
+       "w": 69
+      },
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 235
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "phases: covered by div#phases.tb-track; shown by #dgrip",
+      "presentation: hidden; shown by #menubtn",
+      "layers: hidden; shown by #menubtn",
+      "paperMap: hidden; shown by #menubtn",
+      "panels: hidden; shown by #menubtn",
+      "vantages: hidden; shown by #menubtn",
+      "sources: hidden; shown by #menubtn > #panelsbtn",
+      "tour: hidden; shown by #menubtn",
+      "eyes: hidden; shown by #menubtn > #panelsbtn > #tab-command"
+     ],
+     "reach": {
+      "play": {
+       "state": "ok",
+       "depth": 0
+      },
+      "clock": {
+       "state": "ok",
+       "depth": 0
+      },
+      "phases": {
+       "state": "covered by div#phases.tb-track",
+       "depth": 1,
+       "via": "#dgrip"
+      },
+      "presentation": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "layers": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "paperMap": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "panels": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "follow": {
+       "state": "ok",
+       "depth": 0
+      },
+      "vantages": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "help": {
+       "state": "ok",
+       "depth": 0
+      },
+      "sources": {
+       "state": "hidden",
+       "depth": 2,
+       "via": "#menubtn > #panelsbtn"
+      },
+      "tour": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "events": {
+       "state": "ok",
+       "depth": 0
+      },
+      "eyes": {
+       "state": "hidden",
+       "depth": 3,
+       "via": "#menubtn > #panelsbtn > #tab-command"
+      },
+      "speeds": {
+       "state": "ok",
+       "depth": 0
+      }
+     },
+     "framing": {
+      "placed": 6,
+      "inFree": 6,
+      "free": [
+       16,
+       64,
+       392,
+       400
+      ]
+     },
+     "contrast": {
+      "texts": 7,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": 8.32,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "panels": {
+     "how": "explore, then tap: Panels",
+     "uiContrast": {
+      "texts": 154,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.2422,
+     "timeline": 121,
+     "layer": {
+      "placed": 2,
+      "dropped": 0
+     },
+     "panels": {
+      "rail": [
+       0,
+       165,
+       402,
+       593
+      ],
+      "timebar": [
+       0,
+       593,
+       402,
+       714
+      ],
+      "menu": [
+       332,
+       10,
+       392,
+       54
+      ]
+     },
+     "overlaps": [],
+     "targets": 79,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 32,
+     "under44List": [
+      "button#tab-oob.tab-btn 120.8x32.4",
+      "button#tab-analysis.tab-btn 86.3x32.4",
+      "button#tab-command.tab-btn 96.6x32.4",
+      "button#tab-plans.tab-btn 70.3x32.4",
+      "button#srcbtn 121.5x24",
+      "button#helpbtn.t.tb-help 40x36",
+      "div#timerail.timerail 386x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.act",
+       "why": "ellipsis",
+       "text": "THE PRATZEN STRIKE",
+       "w": 69
+      },
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 235
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "phases: covered by div#phases.tb-track; shown by #railclose > #dgrip",
+      "presentation: hidden; shown by #menubtn",
+      "layers: hidden; shown by #menubtn",
+      "paperMap: hidden; shown by #menubtn",
+      "panels: hidden; shown by #menubtn",
+      "vantages: hidden; shown by #menubtn",
+      "tour: hidden; shown by #menubtn",
+      "eyes: hidden; shown by #tab-command"
+     ],
+     "reach": {
+      "play": {
+       "state": "ok",
+       "depth": 0
+      },
+      "clock": {
+       "state": "ok",
+       "depth": 0
+      },
+      "phases": {
+       "state": "covered by div#phases.tb-track",
+       "depth": 2,
+       "via": "#railclose > #dgrip"
+      },
+      "presentation": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "layers": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "paperMap": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "panels": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "follow": {
+       "state": "ok",
+       "depth": 0
+      },
+      "vantages": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "help": {
+       "state": "ok",
+       "depth": 0
+      },
+      "sources": {
+       "state": "ok",
+       "depth": 0
+      },
+      "tour": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "events": {
+       "state": "ok",
+       "depth": 0
+      },
+      "eyes": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#tab-command"
+      },
+      "speeds": {
+       "state": "ok",
+       "depth": 0
+      }
+     },
+     "framing": {
+      "placed": 2,
+      "inFree": 1,
+      "free": [
+       16,
+       16,
+       320,
+       152
+      ]
+     },
+     "contrast": {
+      "texts": 3,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": 8.32,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "dossier": {
+     "how": "explore, then select('f','sthilaire') (a tap on its counter)",
+     "uiContrast": {
+      "texts": 47,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.292,
+     "timeline": 121,
+     "layer": {
+      "placed": 2,
+      "dropped": 0
+     },
+     "panels": {
+      "timebar": [
+       0,
+       593,
+       402,
+       714
+      ],
+      "menu": [
+       332,
+       10,
+       392,
+       54
+      ],
+      "drawer": [
+       0,
+       200,
+       402,
+       593
+      ]
+     },
+     "overlaps": [],
+     "targets": 36,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 30,
+     "under44List": [
+      "button#helpbtn.t.tb-help 40x36",
+      "div#timerail.timerail 386x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button#drawer-close 24x25",
+      "button.more-btn 358x35",
+      "button.t 128.8x28"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.act",
+       "why": "ellipsis",
+       "text": "THE PRATZEN STRIKE",
+       "w": 69
+      },
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 235
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "phases: covered by div#phases.tb-track; shown by #drawer-close > #dgrip",
+      "presentation: hidden; shown by #menubtn",
+      "layers: hidden; shown by #menubtn",
+      "paperMap: hidden; shown by #menubtn",
+      "panels: hidden; shown by #menubtn",
+      "vantages: hidden; shown by #menubtn",
+      "sources: hidden; shown by #menubtn > #panelsbtn",
+      "tour: hidden; shown by #menubtn",
+      "eyes: hidden; shown by #menubtn > #panelsbtn > #tab-command"
+     ],
+     "reach": {
+      "play": {
+       "state": "ok",
+       "depth": 0
+      },
+      "clock": {
+       "state": "ok",
+       "depth": 0
+      },
+      "phases": {
+       "state": "covered by div#phases.tb-track",
+       "depth": 2,
+       "via": "#drawer-close > #dgrip"
+      },
+      "presentation": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "layers": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "paperMap": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "panels": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "follow": {
+       "state": "ok",
+       "depth": 0
+      },
+      "vantages": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "help": {
+       "state": "ok",
+       "depth": 0
+      },
+      "sources": {
+       "state": "hidden",
+       "depth": 2,
+       "via": "#menubtn > #panelsbtn"
+      },
+      "tour": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "events": {
+       "state": "ok",
+       "depth": 0
+      },
+      "eyes": {
+       "state": "hidden",
+       "depth": 3,
+       "via": "#menubtn > #panelsbtn > #tab-command"
+      },
+      "speeds": {
+       "state": "ok",
+       "depth": 0
+      }
+     },
+     "framing": {
+      "placed": 2,
+      "inFree": 1,
+      "free": [
+       16,
+       16,
+       320,
+       184
+      ]
+     },
+     "contrast": {
+      "texts": 3,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": 8.32,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "watch": {
+     "how": "explore, then tap: Watch",
+     "uiContrast": {
+      "texts": 33,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.7898,
+     "timeline": 155,
+     "layer": {
+      "placed": 7,
+      "dropped": 2
+     },
+     "panels": {
+      "timebar": [
+       0,
+       559,
+       402,
+       714
+      ],
+      "viewmode": [
+       8,
+       644,
+       175,
+       678
+      ]
+     },
+     "overlaps": [],
+     "targets": 35,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 30,
+     "under44List": [
+      "button#helpbtn.t.tb-help 40x36",
+      "button.vm-btn 54.5x32",
+      "button.vm-btn 57.2x32",
+      "button.vm-btn 53.3x32",
+      "div#timerail.timerail 386x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 53
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "phases: covered by div#phases.tb-track; shown by .vm-btn[data-vm=\"study\"] > #dgrip",
+      "layers: hidden; shown by .vm-btn[data-vm=\"study\"] > #menubtn",
+      "paperMap: hidden; shown by .vm-btn[data-vm=\"study\"] > #menubtn",
+      "panels: hidden; shown by .vm-btn[data-vm=\"study\"] > #menubtn",
+      "vantages: hidden; shown by .vm-btn[data-vm=\"study\"] > #menubtn",
+      "sources: hidden; shown by .vm-btn[data-vm=\"study\"] > #menubtn > #panelsbtn",
+      "tour: hidden; shown by .vm-btn[data-vm=\"study\"] > #menubtn",
+      "eyes: hidden; shown by .vm-btn[data-vm=\"study\"] > #menubtn > #panelsbtn > #tab-command"
+     ],
+     "reach": {
+      "play": {
+       "state": "ok",
+       "depth": 0
+      },
+      "clock": {
+       "state": "ok",
+       "depth": 0
+      },
+      "phases": {
+       "state": "covered by div#phases.tb-track",
+       "depth": 2,
+       "via": ".vm-btn[data-vm=\"study\"] > #dgrip"
+      },
+      "presentation": {
+       "state": "ok",
+       "depth": 0
+      },
+      "layers": {
+       "state": "hidden",
+       "depth": 2,
+       "via": ".vm-btn[data-vm=\"study\"] > #menubtn"
+      },
+      "paperMap": {
+       "state": "hidden",
+       "depth": 2,
+       "via": ".vm-btn[data-vm=\"study\"] > #menubtn"
+      },
+      "panels": {
+       "state": "hidden",
+       "depth": 2,
+       "via": ".vm-btn[data-vm=\"study\"] > #menubtn"
+      },
+      "follow": {
+       "state": "ok",
+       "depth": 0
+      },
+      "vantages": {
+       "state": "hidden",
+       "depth": 2,
+       "via": ".vm-btn[data-vm=\"study\"] > #menubtn"
+      },
+      "help": {
+       "state": "ok",
+       "depth": 0
+      },
+      "sources": {
+       "state": "hidden",
+       "depth": 3,
+       "via": ".vm-btn[data-vm=\"study\"] > #menubtn > #panelsbtn"
+      },
+      "tour": {
+       "state": "hidden",
+       "depth": 2,
+       "via": ".vm-btn[data-vm=\"study\"] > #menubtn"
+      },
+      "events": {
+       "state": "ok",
+       "depth": 0
+      },
+      "eyes": {
+       "state": "hidden",
+       "depth": 4,
+       "via": ".vm-btn[data-vm=\"study\"] > #menubtn > #panelsbtn > #tab-command"
+      },
+      "speeds": {
+       "state": "ok",
+       "depth": 0
+      }
+     },
+     "framing": {
+      "placed": 7,
+      "inFree": 6,
+      "free": [
+       16,
+       16,
+       392,
+       544
+      ]
+     },
+     "contrast": {
+      "texts": 8,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": 8.32,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "layers": {
+     "how": "explore, then tap: Layers",
+     "uiContrast": {
+      "texts": 62,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.2818,
+     "timeline": 121,
+     "layer": {
+      "placed": 1,
+      "dropped": 0
+     },
+     "panels": {
+      "timebar": [
+       0,
+       593,
+       402,
+       714
+      ],
+      "menu": [
+       332,
+       10,
+       392,
+       54
+      ],
+      "layers": [
+       10,
+       96,
+       392,
+       510
+      ]
+     },
+     "overlaps": [],
+     "targets": 53,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 34,
+     "under44List": [
+      "button#layerclose 24x24",
+      "button.mode-btn 118.3x42",
+      "button.mode-btn 118.3x42",
+      "button.mode-btn 117.3x42",
+      "button.t.exag-btn 59.6x30",
+      "button.t.exag-btn 34.9x30",
+      "button.t.exag-btn 60.4x30",
+      "button#helpbtn.t.tb-help 40x36",
+      "div#timerail.timerail 386x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "button.lp-row.layer-btn 'Position confidenceEach formation's grou' under canvas",
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.act",
+       "why": "ellipsis",
+       "text": "THE PRATZEN STRIKE",
+       "w": 69
+      },
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 235
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "phases: covered by div#phases.tb-track; shown by #layerclose > #dgrip",
+      "presentation: hidden; shown by #menubtn",
+      "layers: hidden; shown by #menubtn",
+      "panels: hidden; shown by #menubtn",
+      "vantages: hidden; shown by #menubtn",
+      "sources: hidden; shown by #menubtn > #panelsbtn",
+      "tour: hidden; shown by #menubtn",
+      "eyes: hidden; shown by #menubtn > #panelsbtn > #tab-command"
+     ],
+     "reach": {
+      "play": {
+       "state": "ok",
+       "depth": 0
+      },
+      "clock": {
+       "state": "ok",
+       "depth": 0
+      },
+      "phases": {
+       "state": "covered by div#phases.tb-track",
+       "depth": 2,
+       "via": "#layerclose > #dgrip"
+      },
+      "presentation": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "layers": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "paperMap": {
+       "state": "ok",
+       "depth": 0
+      },
+      "panels": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "follow": {
+       "state": "ok",
+       "depth": 0
+      },
+      "vantages": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "help": {
+       "state": "ok",
+       "depth": 0
+      },
+      "sources": {
+       "state": "hidden",
+       "depth": 2,
+       "via": "#menubtn > #panelsbtn"
+      },
+      "tour": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "events": {
+       "state": "ok",
+       "depth": 0
+      },
+      "eyes": {
+       "state": "hidden",
+       "depth": 3,
+       "via": "#menubtn > #panelsbtn > #tab-command"
+      },
+      "speeds": {
+       "state": "ok",
+       "depth": 0
+      }
+     },
+     "framing": {
+      "placed": 1,
+      "inFree": 0,
+      "free": [
+       16,
+       16,
+       320,
+       80
+      ]
+     },
+     "contrast": {
+      "texts": 1,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": 8.4,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "paper": {
+     "how": "layers, then tap: Paper map, then tap: close",
+     "uiContrast": {
+      "texts": 67,
+      "belowAA": 0,
+      "belowAAList": [],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.5852,
+     "timeline": 121,
+     "layer": {
+      "placed": 16,
+      "dropped": 20
+     },
+     "panels": {
+      "timebar": [
+       0,
+       593,
+       402,
+       714
+      ],
+      "dispatch": [
+       0,
+       414,
+       402,
+       593
+      ],
+      "menu": [
+       332,
+       10,
+       392,
+       54
+      ]
+     },
+     "overlaps": [],
+     "targets": 34,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 28,
+     "under44List": [
+      "button#dgrip.dgrip 374x28",
+      "button#helpbtn.t.tb-help 40x36",
+      "div#timerail.timerail 386x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.act",
+       "why": "ellipsis",
+       "text": "THE PRATZEN STRIKE",
+       "w": 69
+      },
+      {
+       "el": "span.evt",
+       "why": "ellipsis",
+       "text": "Friant retakes Telnitz, then loses it again",
+       "w": 235
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "phases: covered by div#phases.tb-track; shown by #dgrip",
+      "presentation: hidden; shown by #menubtn",
+      "layers: hidden; shown by #menubtn",
+      "paperMap: hidden; shown by #menubtn",
+      "panels: hidden; shown by #menubtn",
+      "vantages: hidden; shown by #menubtn",
+      "sources: hidden; shown by #menubtn > #panelsbtn",
+      "tour: hidden; shown by #menubtn",
+      "eyes: hidden; shown by #menubtn > #panelsbtn > #tab-command"
+     ],
+     "reach": {
+      "play": {
+       "state": "ok",
+       "depth": 0
+      },
+      "clock": {
+       "state": "ok",
+       "depth": 0
+      },
+      "phases": {
+       "state": "covered by div#phases.tb-track",
+       "depth": 1,
+       "via": "#dgrip"
+      },
+      "presentation": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "layers": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "paperMap": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "panels": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "follow": {
+       "state": "ok",
+       "depth": 0
+      },
+      "vantages": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "help": {
+       "state": "ok",
+       "depth": 0
+      },
+      "sources": {
+       "state": "hidden",
+       "depth": 2,
+       "via": "#menubtn > #panelsbtn"
+      },
+      "tour": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "events": {
+       "state": "ok",
+       "depth": 0
+      },
+      "eyes": {
+       "state": "hidden",
+       "depth": 3,
+       "via": "#menubtn > #panelsbtn > #tab-command"
+      },
+      "speeds": {
+       "state": "ok",
+       "depth": 0
+      }
+     },
+     "framing": {
+      "placed": 16,
+      "inFree": 10,
+      "free": [
+       16,
+       64,
+       392,
+       400
+      ]
+     },
+     "contrast": {
+      "texts": 39,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": 4.95,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    },
+    "tour": {
+     "how": "explore, then tap: Guided tour",
+     "uiContrast": {
+      "texts": 47,
+      "belowAA": 1,
+      "belowAAList": [
+       "2.17<4.5 11.5px #tour-prev \"Back\""
+      ],
+      "below10_5px": 0
+     },
+     "unobstructed": 0.5314,
+     "timeline": 121,
+     "layer": {
+      "placed": 17,
+      "dropped": 13
+     },
+     "panels": {
+      "timebar": [
+       0,
+       593,
+       402,
+       714
+      ],
+      "menu": [
+       332,
+       10,
+       392,
+       54
+      ],
+      "tourbar": [
+       10,
+       356,
+       392,
+       583
+      ]
+     },
+     "overlaps": [],
+     "targets": 35,
+     "fail2_5_8": [],
+     "evmarksUnder24": 25,
+     "under44": 29,
+     "under44List": [
+      "button#helpbtn.t.tb-help 40x36",
+      "div#timerail.timerail 386x24",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.al 11.3x11.3",
+      "button.ev-mark.dec 14.1x14.1",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button.ev-mark.fr 11.3x11.3",
+      "button#tour-next.t 47.4x28",
+      "button#tour-exit.t 100x28"
+     ],
+     "covered": [
+      "div#timerail.timerail 'Battle clock' under button.ev-mark.fr",
+      "button.ev-mark.fr '04:00 to 04:45, Friant's division at Rai' under button.ev-mark.al",
+      "button.ev-mark.al '07:00, Kienmayer attacks Telnitz (the ho' under button.ev-mark.al",
+      "button.ev-mark.al '08:00, Langeron and Przybyszewski attack' under button.ev-mark.dec",
+      "button.ev-mark.dec '08:25 to 08:45, Napoleon releases Soult ' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Friant's leading brigade' under button.ev-mark.fr",
+      "button.ev-mark.fr '08:45 to 09:15, Saint-Hilaire and Vandam' under button.ev-mark.fr",
+      "button.ev-mark.fr '09:00, Thiébault's brigade clears Pratze' under button.ev-mark.fr",
+      "button.ev-mark.dec '09:15, Kutuzov orders the 4th Column to ' under button.ev-mark.al",
+      "button.ev-mark.fr '09:30, Friant retakes Telnitz, then lose' under button.ev-mark.al",
+      "button.ev-mark.al '10:30, Langeron's reinforcements arrive ' under button.ev-mark.al",
+      "button.ev-mark.fr '11:00, The Pratzeberg is firmly in Frenc' under button.ev-mark.fr",
+      "button.ev-mark.al '11:00 to 13:00, The Russian Guard takes ' under button.ev-mark.fr",
+      "button.ev-mark.fr '11:15, The French take Blasowitz from th' under button.ev-mark.al",
+      "button.ev-mark.fr '11:15 to 13:15, Rapp's counter-charge br' under button.ev-mark.al",
+      "button.ev-mark.al '11:40 to 12:40, Buxhowden does not yet k' under button.ev-mark.dec",
+      "button.ev-mark.dec '12:00 to 12:40, Napoleon moves forward t' under button.ev-mark.fr",
+      "button.ev-mark.fr '12:30, Davout resumes the offensive (the' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:00, Sokolnitz falls; Przybyszewski's ' under button.ev-mark.fr",
+      "button.ev-mark.fr '14:30, Vandamme takes the height above t' under button.ev-mark.fr"
+     ],
+     "outside": [],
+     "cut": [
+      {
+       "el": "span.act",
+       "why": "ellipsis",
+       "text": "THE DECEPTION",
+       "w": 64
+      }
+     ],
+     "offScreenText": 0,
+     "unreachable": [
+      "phases: covered by div#phases.tb-track; shown by #tour-exit > #dgrip",
+      "presentation: hidden; shown by #menubtn",
+      "layers: hidden; shown by #menubtn",
+      "paperMap: hidden; shown by #menubtn",
+      "panels: hidden; shown by #menubtn",
+      "vantages: hidden; shown by #menubtn",
+      "sources: hidden; shown by #menubtn > #panelsbtn",
+      "tour: hidden; shown by #menubtn",
+      "eyes: hidden; shown by #menubtn > #panelsbtn > #tab-command"
+     ],
+     "reach": {
+      "play": {
+       "state": "ok",
+       "depth": 0
+      },
+      "clock": {
+       "state": "ok",
+       "depth": 0
+      },
+      "phases": {
+       "state": "covered by div#phases.tb-track",
+       "depth": 2,
+       "via": "#tour-exit > #dgrip"
+      },
+      "presentation": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "layers": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "paperMap": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "panels": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "follow": {
+       "state": "ok",
+       "depth": 0
+      },
+      "vantages": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "help": {
+       "state": "ok",
+       "depth": 0
+      },
+      "sources": {
+       "state": "hidden",
+       "depth": 2,
+       "via": "#menubtn > #panelsbtn"
+      },
+      "tour": {
+       "state": "hidden",
+       "depth": 1,
+       "via": "#menubtn"
+      },
+      "events": {
+       "state": "ok",
+       "depth": 0
+      },
+      "eyes": {
+       "state": "hidden",
+       "depth": 3,
+       "via": "#menubtn > #panelsbtn > #tab-command"
+      },
+      "speeds": {
+       "state": "ok",
+       "depth": 0
+      }
+     },
+     "framing": {
+      "placed": 17,
+      "inFree": 14,
+      "free": [
+       16,
+       64,
+       392,
+       344
+      ]
+     },
+     "contrast": {
+      "texts": 19,
+      "belowAA": 0,
+      "belowAAList": [],
+      "min": 8.5,
+      "belowFloor": 0,
+      "belowFloorList": []
+     },
+     "console": [],
+     "errors": [],
+     "tapErrors": []
+    }
+   }
+  }
+ }
+}

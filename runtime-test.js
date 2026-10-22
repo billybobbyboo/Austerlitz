@@ -1168,6 +1168,26 @@ try{
       console.log("phone layout: the Menu and the dispatch sheet only below 720 px, closed on leaving it; the portrait framing (factor "+k.toFixed(3)+" in this stub, and 1.75) keeps the target and the line of sight OK");
     } finally { PHONE=P0; document.body.classList=cl0; window.matchMedia=mm0; } }
 
+  /* roadmap step 6, decision 238 (docs/STEP6_SPEC.md section 12): the paper map's field framed again when a panel's change gives it room, a
+     dry run with the panel list stubbed: framed beside a panel covering most of the screen (the Layers sheet on a phone), then the panel gone:
+     drawn larger; a panel opening over it (a selection's chip, a dossier): nothing moves; panned by the visitor: nothing moves. Its behaviour
+     in a page is the harness's phone-390-paper case */
+  { const mp0=mlPanels, m0=mode, s0=MAPCAM.state(); let P=[];
+    mlPanels=()=>P.map(q=>q.slice());
+    try{
+      mode="staff";
+      P=[[0,0,1600,700]]; MAPCAM.frameField(true); const w1=MAPCAM.state().wpp;
+      P=[]; syncViewOffset(true); const w2=MAPCAM.state().wpp;
+      if(!(w2<w1*0.99)||!MAPCAM.framed()) throw new Error("paper map: the panel closed, the field not framed again ("+w1+" to "+w2+", framed "+MAPCAM.framed()+")");
+      const a=MAPCAM.state(); P=[[0,0,400,300]]; syncViewOffset(true); const b=MAPCAM.state();
+      if(a.x!==b.x||a.z!==b.z||a.wpp!==b.wpp) throw new Error("paper map: a panel opening over the framed field moved it");
+      P=[]; syncViewOffset(true); const c=MAPCAM.state();
+      if(a.x!==c.x||a.z!==c.z||a.wpp!==c.wpp) throw new Error("paper map: the panel closing again moved the field, framed for that room already");
+      MAPCAM.pan(40,10); const d=MAPCAM.state(); P=[[0,0,1600,700]]; syncViewOffset(true); P=[]; syncViewOffset(true); const e=MAPCAM.state();
+      if(MAPCAM.framed()||d.x!==e.x||d.z!==e.z||d.wpp!==e.wpp) throw new Error("paper map: a panel's change moved a field the visitor had panned");
+      console.log("paper map: framed again when a panel's change gives the field room ("+w1.toFixed(3)+" to "+w2.toFixed(3)+" units a pixel), never when a panel opens over it or after a pan OK");
+    } finally { mlPanels=mp0; mode=m0; MAPCAM.restore(s0); } }
+
   /* Stage 6B: the appearance table's resolution, a dry run for every drawn block (appearance.js; decision 100) */
   { const ids=Object.keys(units).filter(id=>units[id].block); let parts=0, dom=0;
     ids.forEach(id=>{ const r=appearanceOf(id);
