@@ -165,21 +165,24 @@ Object.assign(PHONE.framing,{"phone-390-first":17,"phone-390-explore":6,"phone-3
    event in the sheet and in its dossier). Held landscape, the track's act and phase names are cut where their band is narrower than the name
    (decision 53's proportional axis), as on any window under about 1,280 px; the current phase whole on its plate (decision 53) */
 const CAP_GIVES=[{el:"span.evt",why:"ellipsis",reason:"the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier"},
-  {el:"span.act",why:"ellipsis",reason:"the caption's act gives way after the phase (decision 159); whole as a heading of the phase list"},
-  {el:"span.cap-ph",why:"ellipsis",reason:"the caption's phase title gives way first (decision 159); whole as the dispatch's title"}];
+  {el:"span.act",why:"ellipsis",reason:"the caption's act gives way after the phase (decision 159); whole as a heading of the phase list"}];
+/* held landscape the phase's title is drawn cut before it gives way whole; upright it gives way whole (decision 159's fitCaption), as measured */
+const CAP_PH={el:"span.cap-ph",why:"ellipsis",reason:"the caption's phase title gives way first (decision 159); the current phase whole on its plate on the track"};
 const TRACK_CUT=[{el:"button.act-btn",why:"ellipsis",reason:"an act band's name on the proportional track, narrower than its name (decision 53)"},
   {el:"span.step-l",why:"ellipsis",reason:"a phase's name on the proportional track, narrower than its name; the current one whole (decision 53)"}];
 ["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-watch","phone-390-layers","phone-360-explore","phone-430-explore"].forEach(n=>{ PHONE.cutAllow[n]=CAP_GIVES; });
-PHONE.cutAllow["phone-844x390-explore"]=CAP_GIVES.concat(TRACK_CUT);
-/* two presses: "Accuracy and sources" and "Whose eyes?" are in the rail (the Menu, then the Panels) below 720 px; the phases, where an open
-   dossier or the Layers panel stands in place of the dispatch sheet (its close, then the grip) or the first card stands over it (Explore, then the
-   grip); in Watch below 720 px what stands behind the Menu (Study, then the Menu) and the rail's (Study, the Menu, the Panels: three) */
-const TWO={sources:{depth:2,reason:"in the rail: the Menu, then the Panels"},eyes:{depth:2,reason:"the Command tab, in the rail: the Menu, then the Panels"}};
+PHONE.cutAllow["phone-844x390-explore"]=CAP_GIVES.concat([CAP_PH],TRACK_CUT);
+/* more than one press: "Accuracy and sources" is in the rail (the Menu, then the Panels: two) and "Whose eyes?" in its Command tab (three) below
+   720 px; held landscape "Whose eyes?" two (the Panels, the tab); the phases, where an open dossier or the Layers panel stands in place of the
+   dispatch sheet (its close, then the grip) or the first card stands over it (Explore, then the grip); in Watch below 720 px what stands behind
+   the Menu (Study, then the Menu) and the rail's (Study, the Menu, the Panels, and the Command tab for "Whose eyes?") */
+const TWO={sources:{depth:2,reason:"in the rail: the Menu, then the Panels"},eyes:{depth:3,reason:"the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)"}};
 ["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-layers","phone-360-explore","phone-430-explore"].forEach(n=>{ PHONE.reachAllow[n]=Object.assign({},TWO); });
 ["phone-390-first","phone-390-dossier","phone-390-layers"].forEach(n=>{ PHONE.reachAllow[n].phases={depth:2,reason:"the dispatch sheet stood down (the first card, a dossier, the Layers panel): its close, then the grip"}; });
 PHONE.reachAllow["phone-390-watch"]={layers:{depth:2,reason:"Watch shows no tools: Study, then the Menu"},paperMap:{depth:2,reason:"Study, then the Menu"},
   panels:{depth:2,reason:"Study, then the Menu"},vantages:{depth:2,reason:"Study, then the Menu"},tour:{depth:2,reason:"Study, then the Menu"},
-  phases:{depth:2,reason:"Study, then the dispatch sheet's grip"},sources:{depth:3,reason:"Study, the Menu, the Panels"},eyes:{depth:3,reason:"Study, the Menu, the Panels"}};
+  phases:{depth:2,reason:"Study, then the dispatch sheet's grip"},sources:{depth:3,reason:"Study, the Menu, the Panels"},eyes:{depth:4,reason:"Study, the Menu, the Panels, the Command tab"}};
+PHONE.reachAllow["phone-844x390-explore"]={eyes:{depth:2,reason:"the Command tab, in the rail: the Panels, then the tab (as on any window under 1,080 px)"}};
 module.exports.PHONE=PHONE;
 /* Stage 4B (docs/STAGE4_SPEC.md section A.6): the Stage 0 darkness limit, and the views the harness renders through the day without
    the shadow toe: [case, clock or null (the case's own), factor or null (the case's own)]. New */
@@ -339,6 +342,7 @@ module.exports.check=function(name,m,spec,opts){
     if(P.fail2_5_8.length) f.push(P.fail2_5_8.length+" press targets under 24 x 24 px without 2.5.8's spacing exception (the event markers apart, decision 167): "+P.fail2_5_8.slice(0,4).join("; "));
     const ca=PL.cutAllow[name]||[], cut=P.cut.filter(c=>!ca.some(a=>a.el===c.el&&a.why===c.why));
     if(cut.length) f.push(cut.length+" texts cut that the case does not name: "+cut.slice(0,4).map(c=>c.el+" ("+c.why+") \u201c"+c.text+"\u201d").join("; "));
+    if(P.outside.length) f.push(P.outside.length+" press targets partly off the screen: "+P.outside.slice(0,4).join("; "));
     if(P.overlaps.length) f.push("interface panels overlap: "+P.overlaps.map(o=>o.a+"/"+o.b+" "+o.w+"x"+o.h).join(", "));
     const ra=PL.reachAllow[name]||{};
     Object.keys(P.reach).forEach(k=>{ const R=P.reach[k], a=ra[k];
@@ -470,6 +474,12 @@ function expectState(name,m,spec){
     want("the tour stop",s.tour,-1);
     want("the opening",s.opening,false);
     want("the first-run card",s.firstRun,!!spec.fresh&&!(spec.phone&&spec.phone!=="first"));
+    /* roadmap step 6 item 3 Part B (the review's item 5): a phone case stands in the phone state it measures: the phone layout on upright (not held
+       landscape), the Menu and the dispatch sheet closed, the Layers panel open in its own case only, a dossier in its own only, the rail hidden */
+    if(spec.phone){ const P=s.phone, up=spec.viewport[0]<=720&&spec.viewport[1]>430;
+      if(!P) f.push("state: the phone layout's state was not recorded (T-6)");
+      else { want("the phone layout",P.on,up); want("the Menu",P.menu,false); want("the dispatch sheet opened whole",P.sheet,false);
+        want("the Layers panel",P.layers,spec.phone==="layers"); want("a dossier",P.drawer,spec.phone==="dossier"); want("the rail",P.rail,false); } }
   } else {
     if(s.openingPlay) f.push("state: the opening's clock is still playing toward a step (OPENING.play) (T-6)");
     want("the first-run card",s.firstRun,false);

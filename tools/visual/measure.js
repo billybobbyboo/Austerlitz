@@ -96,6 +96,9 @@
       layers:g(function(){ return {confidence:layerOn.confidence, routes:layerOn.routes, skeleton:layerOn.skeleton}; },{}),
       confNone:g(function(){ return !!CONF.none; },null), skelDay:g(function(){ return !!SKEL.day; },null),
       viewport:[window.innerWidth,window.innerHeight],
+      /* roadmap step 6 item 3 Part B (the review's item 5): the phone layout's state, which a phone case asks for (thresholds.js expectState) */
+      phone:g(function(){ return {on:PHONE, menu:menuOpen(), sheet:dsheetOpen(), layers:!document.getElementById("layerpop").hidden,
+        drawer:document.body.classList.contains("drawer-open"), rail:!document.body.classList.contains("rail-hidden")}; },null),
       /* the vertex layout rg() reads: 280 x 240 cells, two triangles each, 18 floats */
       groundLayout:g(function(){ return groundMesh.geometry.attributes.position.array.length===280*240*18&&!groundMesh.geometry.index; },false)};
   }

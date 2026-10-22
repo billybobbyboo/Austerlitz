@@ -5132,16 +5132,19 @@ function presetFrame(v){ var c=reframe(v); return isOverview(v)?fitOverview(c):p
 /* roadmap step 6 item 3 (decision 223; docs/STEP6_SPEC.md section 4.4): on a phone held upright the free rectangle is narrow and the authored
    presets, made for a wide window, show a strip of their view, the battle falling under the sheets (0 of 0 map items in view after "Explore"
    at 390 px in Part A). There the eye is moved back along its line of sight, its target kept, until the free rectangle spans at least the
-   horizontal angle PORTRAIT_FIT.t (the tangent of its half), at most PORTRAIT_FIT.kMax times as far. Follow's distance takes the same factor.
+   horizontal angle PORTRAIT_FIT.t (the tangent of its half), at most PORTRAIT_FIT.kMax times as far. Follow's distance takes the same factor
+   (so on a phone it stands up to kMax times beyond FOLLOW's 230-300 units).
    Elsewhere (not PHONE, the paper map) the factor is 1; the Overview is fitted into the free rectangle already (fitOverview). t is a design
    value, measured (tools/step6/portrait-fit.js; docs/step6-evidence/portrait-fit*.json): at 390 x 844 after "Explore", over the eight phases'
    views, the map layer's items wholly inside the free area were 63 unframed (a phase with 2), 78 at t 0.2, 95 at 0.25 (each phase 5 or more),
    78 at 0.3, 80 at 0.35, 74 at 0.45 (the factor there at kMax, 3): 0.25, the most, the eye 1.75 times as far there */
-var PORTRAIT_FIT={t:0.25, kMax:3};
+var PORTRAIT_FIT={t:0.25, kMax:3}, _pk={key:null,k:1};
 function portraitK(){
   if(!PHONE||mode==="staff"||!landCam) return 1;
+  /* once per layout of the panels (VOFF.key, syncViewOffset): Follow asks every frame (the review's item 14) */
+  var key=VOFF.key+"|"+PORTRAIT_FIT.t+"|"+PORTRAIT_FIT.kMax; if(VOFF.key&&_pk.key===key) return _pk.k;
   var fr=landFreeRect(), f=(viewH()/2)/Math.tan(THREE.MathUtils.degToRad(landCam.fov)/2), t=((fr[2]-fr[0])/2)/f;
-  return t>0?Math.max(1,Math.min(PORTRAIT_FIT.kMax,PORTRAIT_FIT.t/t)):1;
+  var k=t>0?Math.max(1,Math.min(PORTRAIT_FIT.kMax,PORTRAIT_FIT.t/t)):1; _pk.key=VOFF.key?key:null; _pk.k=k; return k;
 }
 function portraitFrame(c,k){ return k>1?[c[3]+(c[0]-c[3])*k,c[4]+(c[1]-c[4])*k,c[5]+(c[2]-c[5])*k,c[3],c[4],c[5]]:c; }
 function fitOverview(c){
@@ -6184,11 +6187,11 @@ function buildTimeline(){
   var pl=document.getElementById("phlist");
   if(pl){ pl.innerHTML="";
     PHASES.forEach(function(p,i){
-      if(i===0||actOf(i).n!==actOf(i-1).n) pl.appendChild(el("p","ph-act",esc(actOf(i).n)));   /* each act named whole over its phases (the track's act row is not drawn on a phone) */
+      if(i===0||actOf(i).n!==actOf(i-1).n) pl.appendChild(el("h3","ph-act",esc(actOf(i).n)));   /* each act named whole over its phases (the track's act row is not drawn on a phone) */
       var b=el("button","ph-item"); b.type="button";
       b.innerHTML='<b>'+esc(phaseSpan(i))+'</b><span>'+esc(p.label)+'</span>';
       b.setAttribute("aria-label",p.clock+", "+p.label+": "+p.title+" ("+actOf(i).n+")");
-      b.addEventListener("click",function(){ stopPlay(); freeCam=false; setPhase(i); });
+      b.addEventListener("click",function(){ stopPlay(); freeCam=false; setDSheet(false); setPhase(i); });   /* the sheet folds, so the phase's view is seen (the review's item 15) */
       pl.appendChild(b); }); }
   buildActs();
   var rail=document.getElementById("timerail"), ticks=document.getElementById("railticks"), evh=document.getElementById("evmarks");
@@ -7406,6 +7409,7 @@ function setPresentation(m){
   if(!PRESENT[m]) m="study";
   var a=focusedEl(), vmb=!!(a&&a.classList&&a.classList.contains("vm-btn"));   /* roadmap step 3 (SW-5): read before anything is hidden */
   if(m!=="study"&&setLayerPop) setLayerPop(false);   /* roadmap step 3 (docs/FINAL_AUDIT.md SW-9): the Layers panel closes with its opener */
+  if(m!=="study") setMenu(false,true);   /* roadmap step 6 item 3: and the Menu with the tools Watch and Clean do not show (the review's item 6) */
   presentation=m;
   var b=document.body;
   b.classList.remove("pm-study","pm-watch","pm-map");
@@ -7478,13 +7482,17 @@ function syncViewmode(){
    whole with the phases listed (setDSheet; decision 224 (a)); the rail and the dossier sheets at the foot too, the rail giving way to an open
    dossier (syncInert); the tools and, in Study, the presentation switch behind the Menu (setMenu), which a press on a tool, a press outside
    it or Esc closes. */
-var PHONE_Q="(max-width:720px)", PHONE=false;
+/* the query: below 720 px wide and taller than 430 px (a phone held upright; a small phone held landscape, 667 x 375 or 640 x 360, keeps the
+   layout above, as an 844 x 390 one does: the review's item 3) */
+var PHONE_Q="(max-width:720px) and (min-height:431px)", PHONE=false;
 function syncPhone(){
   var want=!!(typeof window!=="undefined"&&window.matchMedia&&window.matchMedia(PHONE_Q).matches);
   if(want===PHONE) return;
   PHONE=want;
   if(!want){ setMenu(false); setDSheet(false); }
+  var a=focusedEl(), vm=document.getElementById("viewmode"), inVm=!!(a&&vm&&vm.contains&&vm.contains(a));
   syncViewmode(); syncInert();
+  if(inVm&&a!==focusedEl()) focusTo([a,"menubtn","play"]);   /* SW-5: the switch moved in the DOM drops the focus (the review's item 9) */
 }
 function dsheetOpen(){ return document.body.classList.contains("dsheet-open"); }
 function setDSheet(open){
@@ -7493,11 +7501,12 @@ function setDSheet(open){
   if(typeof requestRender==="function") requestRender(2);
 }
 function menuOpen(){ return document.body.classList.contains("menu-open"); }
-function setMenu(open){
+/* keep: closed by a press on one of its tools, whose own handler places the focus (and SW-5's hand-on runs after it, bindPhone) */
+function setMenu(open,keep){
   open=!!open&&PHONE;
   if(open===menuOpen()) return;
   var b=document.getElementById("menubtn"), tl=document.getElementById("tools"), a=focusedEl();
-  if(!open&&a&&tl&&tl.contains(a)) focusTo(["menubtn","play"]);   /* the tools go: focus stays near them (SW-5) */
+  if(!open&&!keep&&a&&tl&&tl.contains(a)) focusTo(["menubtn","play"]);   /* the tools go: focus stays near them (SW-5) */
   document.body.classList.toggle("menu-open",open); if(b) b.setAttribute("aria-expanded",String(open));
   if(open&&tl) focusTo([].slice.call(tl.querySelectorAll("button")));
   if(typeof requestRender==="function") requestRender(2);
@@ -7506,7 +7515,10 @@ function bindPhone(){
   var mb=document.getElementById("menubtn"), tl=document.getElementById("tools"), g=document.getElementById("dgrip");
   if(mb) mb.addEventListener("click",function(){ setMenu(!menuOpen()); });
   /* a press on any tool closes the menu: heard in the capture phase, before the tool's own handler (the Layers button stops its click) */
-  if(tl) tl.addEventListener("click",function(e){ if(menuOpen()&&e.target&&e.target.closest&&e.target.closest("button")) setMenu(false); },true);
+  if(tl) tl.addEventListener("click",function(e){ if(!(menuOpen()&&e.target&&e.target.closest&&e.target.closest("button"))) return;
+    setMenu(false,true);
+    /* after the tool's own handler: a focus left on a control now hidden goes to the Menu's button (SW-5; the review's item 9) */
+    setTimeout(function(){ var f=focusedEl(); if(f&&!shown(f)) focusTo(["menubtn","play"]); },0); },true);
   /* a press outside the menu and its button closes it */
   window.addEventListener("pointerdown",function(e){ if(!menuOpen()) return; var t=e.target;
     if(t&&t.closest&&(t.closest("#tools")||t.closest("#menubtn"))) return; setMenu(false); },true);

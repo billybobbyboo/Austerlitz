@@ -14,7 +14,7 @@ from the code, the approach proposed, the work done conservatively, checked, rec
 | 3 | **Accessibility and robustness**: the shortcuts switch, hidden panels inert, the sources sheet a proper dialog, focus returned, reduced motion live and in CSS, the timeline's targets, focused map items drawn; the start-up message and the CDN integrity; "Whose eyes?" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |
 | 4 | **The sourcing stage**: Part A, an inventory of every narrative statement and a register of readings (as Stage 6 did for dress); per-statement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136; 176-197 | done (#52); decisions 176-197 taken as recommended on 15 October 2026; step 4b part A applied 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 on `claude/adoring-gauss-ubfas9` (draft PR #53; `CHANGELOG.md`), owner questions 198-201 |
 | 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-212; 213 put | merged (#56; `CHANGELOG.md`); decisions 205-212 taken as recommended on 20 October 2026 and applied in PR #57 (`docs/step5-evidence/questions.md`); owner question 213 open; done |
-| 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139; 215-230 | Part A merged (#59, `docs/STEP6_SPEC.md`); decisions 215-230 taken as recommended on 21 October 2026; item 1 waits on the owner's runs (hosting, question 217; five runs, §2.3); item 3's Part B may begin meanwhile (215 (a)); nothing built |
+| 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139; 215-230; 231-234 | Part A merged (#59, `docs/STEP6_SPEC.md`); decisions 215-230 taken as recommended on 21 October 2026; item 1 waits on the owner's runs (hosting, question 217; five runs, §2.3); item 3's Part B, the phone layout, built (§9; draft PR #60) with questions 231-234 (§10) |
 
 ### What step 1 handed on (fact, from its commits; `CHANGELOG.md`)
 
@@ -320,6 +320,16 @@ After #59 was merged the owner wrote (21 October 2026): "Go with your recommenda
 | 228 | the phone checks | eight cases with a device, contrast states, four zero-limits and the framing floor, limits on the owner's word; 44 px recorded |
 | 229 | Safari's viewport | the cases at P1's height |
 | 230 | P-1's number | a records-only note in `docs/FINAL_AUDIT.md`, in item 1's records commit |
+
+### Step 6 item 3 Part B: the phone layout (built; `docs/STEP6_SPEC.md` §9, §10)
+
+Begun on the owner's word of 21 October 2026 ("Yes, start Item 3 part B."), under decisions 223-229: below 720 px wide the compact timeline
+(121 px), the phases listed in the dispatch sheet, the dispatch, the dossier, the rail and the first card as sheets at the foot, the tools and
+the switch behind a Menu, the presets and Follow moved back along their line of sight into the freed area (`PORTRAIT_FIT.t`, measured); held
+landscape, today's layout with its overlaps and Watch's row fixed. The checks of decision 228: eight phone cases in `check:visual` with a
+device and their own measures (`tools/visual/phone-measure.js`), a live phone block, ten phone states in `check:contrast`, css-test and
+runtime-test checks. Open for the owner: the words (231), the phone cases' limits as measured (232), narrow-390's drops, 9 against its limit 7
+(233; `check:visual` fails there until decided), and the departures (234). Decision 229 waits on the iPhone's report (item 1's P1).
 
 ### What step 6 Part A hands on (fact, from its commits and its review; `docs/STEP6_SPEC.md`, `CHANGELOG.md`)
 

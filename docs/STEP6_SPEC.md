@@ -1,10 +1,11 @@
 # Real hardware, figure level of detail, a phone layout: specification (roadmap step 6, Part A)
 
-**Status: Part A merged (#59); the owner decided questions 215-230 as recommended on 21 October 2026 (§0.3). Part A changed no source file, no data and no build:**
+**Status: Part A merged (#59); the owner decided questions 215-230 as recommended on 21 October 2026 (§0.3). Item 3's Part B, the phone layout,
+is built (§9; draft PR #60), with owner questions 231-234 (§10); item 1 waits on the owner's runs. Part A changed no source file, no data and no build:**
 `check:baseline` passes on the unchanged build (`austerlitz-command-map.html`, 2,200,058 bytes, md5 `45f8f662ef828d2e1ab593a3b87b6ff7`,
 SHA-256 `bca73918aed88c62c7b564e6f9531b20b51eedb54554d272dfeb27b45eb10794`) and `check:data` finds 131 of 131 declarations identical
 to `archive/step5c-45f8f662.html`. Written against `main` at `7437dcc` (PR #58 merged); line numbers refer to that commit; the code is the
-source of truth. The next owner decision is 231.
+source of truth. The next owner decision is 231 (§10; after it, 235).
 
 Scope: roadmap step 6 (`docs/ROADMAP.md`: "Later, each its own decision: a phone layout; a measured pass on real hardware; figure level of
 detail"; findings A-4 and P-1 of `docs/FINAL_AUDIT.md`; decisions 137, 138, 139). Part A specifies all three items and builds none of them.
@@ -783,3 +784,155 @@ JSON, and ran no page while the probes ran). Every finding was fixed or is recor
 | 19 | probe bugs not changing these numbers: GPU queries crossing segments and the warm-up; the error path's restore; a block behind the eye "far"; the phone probe's cut and reach limits; a scale constant typed in the census report | the route (version 3) and `lod-probe.js` fixed; the census report reads `GEOREF`; the phone probe's limits recorded in §4.1 |
 | 20 | departures not flagged: decision 53's "the current phase always whole"; decision 139's "with the developer readout" | both stated (question 224; §2.1 and question 216) |
 | 21 | question 221's recommendation muddled | simplified to (b) |
+
+## 9. Item 3 Part B: the phone layout, as built (decisions 223-229)
+
+**Status: built on `claude/upbeat-hamilton-y9utq8` (with the decisions' record, draft PR #60), for review; begun on the owner's word of 21
+October 2026, "Yes, start Item 3 part B."** Item 1 still waits on the owner's runs (215 (a) let this part begin meanwhile). No data changed
+(`check:data` 131 of 131 identical); the build changed (its size and md5 in `CHANGELOG.md`). Every number below is the build's, measured here
+in headless Chromium with software WebGL, density 3, touch and a phone's user agent (the harness's phone cases and `tools/step6/phone-probe.js`
+on the build itself, `--layout current`); no Safari, no real finger (§4.1, §6).
+
+### 9.1 What was built
+
+The phone layout applies below 720 px wide and above 430 px tall (`style.css`'s phone block; `app.js` `PHONE_Q`, `PHONE`, `syncPhone`, the same
+query, `(max-width:720px) and (min-height:431px)`): a phone held upright. A phone held landscape (844 x 390, and the smaller 667 x 375 and
+640 x 360: the review's item 3) keeps the layout above it, with its faults fixed (decision 226).
+
+- **The compact timeline (decisions 223, 225).** One row: event back, Play, event forward, Follow (44 px tall), the clock, and the speed as one
+  button (`#speedbtn`, 48 x 44 px) that steps through the four speeds and shows the one set (`setSpeed`, `speedNext`, `paintSpeedBtn`); then the
+  caption with "?" (in Watch, the presentation switch in its own row, decision 60). The ten-minute steps, the four speed buttons and the Eyes
+  button leave it ("Whose eyes?" stays in the Command tab; the keys are unchanged). The track: no act row; the phases a band of their ticks,
+  12 px, the current one marked, no press on them; the rail and the event markers as above it. 121 px tall at every portrait size (172-174 in
+  Part A), 155 px in Watch (178).
+- **The phases (decision 224 (a)).** Pressed in a list in the dispatch sheet (`#phlist`, built with the timeline): each phase a 44 px row, its
+  span and name, named as on the axis, `aria-current` on the current one, under its act's name as a heading (the act row is not drawn on a
+  phone, so the acts are named whole here). On the axis the phases keep their ticks and stay a keyboard group (a keyboard on a phone-wide window still steps
+  them); they take no pointer press there. The current phase is the dispatch sheet's title and is marked in the list; the caption, given way in
+decision 159's order on a phone's narrow row, shows the act (cut) and the live event, not the phase's title (a departure from 224 (a)'s "named
+in the caption", §9.4). A phase pressed in the list folds the sheet, so its view is seen.
+- **The sheets (portrait).** The dispatch card is a sheet at the screen's foot, above the timeline: collapsed, its head (the derived readings,
+  whole, decision 174; the live event's name; the clock; the phase's title), at most 34% of the height, scrolling inside; its grip (`#dgrip`, a
+  disclosure, `setDSheet`) opens it to 62% with the lede, the events, the changes and the phase list. It gives way to the rail (as below 720 px
+  before), to an open dossier and to the Layers panel. The dossier is a sheet of 55%, the rail one of 60% with its own close (`#railclose`,
+  44 px; the Panels button is behind the Menu) and gives way to an open dossier (hidden and inert under it, `syncInert`); the first card stands
+  at the foot, at most half the height, scrolling inside.
+- **The Menu (decision 223).** One 44 px button at the top right (`#menubtn`, a disclosure of `#tools`, `setMenu`): the tools and, in Study, the
+  presentation switch (moved into the tools by `syncViewmode`; in Watch it stays in the timeline, in Clean where it stands). Opened, focus moves
+  to its first control; a press on a tool (heard in the capture phase: the Layers button stops its click), a press outside it and Esc (its row
+  in `KEYS`) close it, focus back on the button where it was inside. Not shown in Watch or Clean, which show no tools.
+- **The views framed into the freed area (decision 223).** On a phone held upright the presets (`presetFrame`: every phase's, theme's, tour
+  stop's and vantage's camera, and the opening's) and Follow's distance are moved back along their line of sight, their target kept, until the
+  free rectangle spans the horizontal angle `PORTRAIT_FIT.t` (the tangent of its half), at most three times as far; elsewhere the factor is 1.
+  The Overview was already fitted into the free rectangle. On a phone Follow's distance thus stands up to three times beyond its 230-300 units.
+  `t` is a design value, measured (one run per value, software WebGL; the counts are layout, not frame times, but the curve is not monotonic and
+  0.25 a single peak) (`tools/step6/portrait-fit.js`;
+  `docs/step6-evidence/portrait-fit.log`, `portrait-fit-low.json`): over the eight phases' views at 390 x 844 the map layer's items wholly
+  inside the free area were 63 without it (one phase 2), 78 at t 0.2, **95 at 0.25** (every phase 5 or more), 78 at 0.3, 80 at 0.35, 74 at 0.45
+  (at the cap); 0.25 is built, the eye 1.75 times as far at 390 px. Part A's 0 of 0 after "Explore" was the old layout's; with the sheets and
+  without the factor, 2 or 3 in the two phases of 09:30-11:15, the northern battle off the screen's right (`portrait-fit` screenshots).
+- **A phone held landscape (decision 226).** Below 431 px tall: the controls decision 225 takes off the phone's timeline leave it too (the
+  ten-minute steps, "Whose eyes?"; the speeds one button), so Watch's row keeps its caption and its speed on the screen; the tools stand down
+  while the first card stands (as the opening's button and Panels already did); the Layers panel takes the tools' place while it is open; the
+  presentation switch keeps clear of an open dossier. No overlap remains (the three of §4.2).
+- **The words (decision 227 (a)).** Proposed in `LABELS.phone` (question 231): the Menu's, the grip's, the rail's close, the speed button's
+  name and title, the phase list's name.
+
+### 9.2 Measured (the build; the harness's phone cases)
+
+| case | free share | timeline | map items placed / in the free area | dropped | under 44 px (of the targets) | 2.5.8 failures (but the markers) | overlaps |
+|---|---|---|---|---|---|---|---|
+| phone-390-first | 0.592 (Part A 0.44) | 121 (174) | 18 / 17 | 9 | 29 of 35 | 0 | 0 |
+| phone-390-explore (09:30) | 0.653 (0.20) | 121 | 7 / 6 | 2 | 28 of 34 | 0 | 0 |
+| phone-390-dossier | 0.315 (0.04) | 121 | 5 / 5 | 1 | 28 of 34 | 0 | 0 |
+| phone-390-watch | 0.817 (0.79) | 155 (178) | 10 / 9 | 2 | 30 of 35 | 0 | 0 |
+| phone-390-layers | 0.311 (0.13) | 121 | 2 / 2 | 0 | 31 of 44 | 0 | 0 |
+| phone-360-explore | 0.625 (0.19) | 121 (172) | 6 / 4 | 3 | 28 of 34 | 0 | 0 |
+| phone-430-explore | 0.685 (0.19) | 121 (174) | 7 / 7 | 2 | 28 of 34 | 0 | 0 |
+| phone-844x390-explore | 0.690 (0.69) | 90.5 (90.5) | 11 / 10 | 3 | 54 of 54 | 0 | 0 (3 in Part A's states) |
+
+The orbit target at the free rectangle's centre within 1 px in every case; map text at AA as rendered in every case (its lowest 7.96:1). With
+the probe (`tools/step6/phone-probe.js --layout current`): the Panels open, 0.26 free at 390 x 844 (0.19 in Part A); the dispatch sheet opened
+whole, 0.24; the Menu open, 0.27; every state of both sizes measured, no overlap, no target under 24 px but the event markers.
+
+**Cut text left** (each named, with its reason, in `thresholds.js` `PHONE.cutAllow`): in portrait, the caption's act and event names giving way
+(decision 159; the act whole as a heading of the phase list, the event in the sheet and its dossier); held landscape also the caption's phase
+title and the track's act and phase names narrower than their bands (decision 53's proportional axis; the current phase whole on its plate).
+**More than one press away** (`PHONE.reachAllow`): below 720 px "Accuracy and sources" two (the Menu, the Panels) and "Whose eyes?" three (the
+Menu, the Panels, the Command tab; decision 225 keeps it there); held landscape "Whose eyes?" two (the Panels, the tab, as on any window under
+1,080 px); the phases while the first card, a dossier or the Layers panel stands in the dispatch sheet's place (its close, then the grip); in
+Watch below 720 px what Watch does not show (Study, then the Menu or the grip; the rail's three, "Whose eyes?" four). Every other feature is on
+the screen or one press away. (The review's item 2: a first count missed the rail's tabs and said two for "Whose eyes?".)
+
+### 9.3 The checks (decision 228 (a))
+
+- **`check:visual`: eight phone cases** (`tools/visual/cases.js`: `phone-390-first`, `-explore`, `-dossier`, `-watch`, `-layers`,
+  `phone-360-explore`, `phone-430-explore`, `phone-844x390-explore`), each a fresh page with a device (`harness.js` `PHONE_DEVICES`: density 3,
+  touch, an iPhone's or an Android phone's user agent) reached by real taps (through the Menu where the control stands behind it), its
+  screenshots at CSS scale (the clock set and the dossier's formation selected by the app's own functions, as the probes did), and every measure the harness takes of a reading view (confidence, skeleton, routes) but the 1280 x 720 resize (a
+  phone's device). Their own measures in the page, `tools/visual/phone-measure.js` (moved from `phone-probe.js`, which now reads it too): the
+  press targets against 2.5.8 and 44 px, the cut text, the panels' overlaps, the reach (each hidden feature with the chain of controls that
+  shows it), the framing. Judged in `thresholds.js`: the four zero-limits (no press target under 24 px without the spacing exception but the
+  event markers; no cut text but `PHONE.cutAllow`'s; no overlap; every feature on the screen or one press away but `PHONE.reachAllow`'s), no
+  press target partly off the screen, the phone state the case asks for (`expectState`: the layout on upright, the Menu and the sheet closed,
+  the Layers panel or the dossier open in its own case only), the
+  framing floor (`PHONE.framing`), the timeline's ceiling (`PHONE.timeline`; `TIMELINE_MAX`'s 92 px holds from 1,024 px), an `UNOBSTRUCTED`
+  baseline and a `DROP_LIMIT` per case: each what this build measures, **proposed to the owner** (question 232). 44 px recorded, not held.
+- **The harness's live phone block** (the narrowed self-test page, 390 x 844, real clicks and keys): the Menu (its disclosure, focus into it,
+  Esc with focus back, a tool's press closing it), the grip and a phase pressed in the list, the speed button through the four speeds, the
+  dossier and rail sheets above the timeline within their heights, the rail giving way to a dossier and closed by its own button, the first
+  card a sheet, and the layout gone when the page is given back its size. The self-test's own checks run at one size (1,366 x 768), so the
+  layout's checks that §4.5 placed in the self-test are this block, as 3B's narrow layout's were (its manifest unchanged, 242 checks).
+- **`check:contrast`: a second page** at 390 x 844 (density 3, touch, an iPhone's user agent) with ten phone states: the first screen, explore,
+  the dispatch sheet open, the Menu, the Panels, a dossier, the Layers panel, Watch, the tour at its second stop and the paper map; every text
+  element at AA and the 10.5 px floor and drawn in the embedded faces, as the 1,600 x 900 page's.
+- **`css-test.js`**: the phone block's rules (the controls off the timeline, the phases no presses, the new controls shown only there and at
+  least 24 px high, the dispatch giving way to a dossier, held landscape's), the Menu and the grip disclosures, their words from `LABELS`.
+  **`runtime-test.js`**: a dry run of the Menu, the sheet and the portrait framing (the factor 1 above 720 px; the target kept, the eye on its
+  line of sight).
+
+### 9.4 Departures, and what is not done
+
+- **narrow-390** (decision 122's case, density 1) now measures the phone layout's first screen: free 0.592 (baseline 0.438) and **9 drops
+  against its limit of 7** (decision 146). More of the field is free, so 27 items are in view against 14, and the place names around the plateau
+  collide at the Overview's distance (Pratzen, Stare Vinohrady, the Pratzeberg, the Santon, Zuran, the Goldbach, Sokolnitz, Augezd, and
+  Liechtenstein's name). No limit was moved: `check:visual` fails there until the owner decides (question 233).
+- **The self-test's layout checks are a live block** of the harness, not self-test checks (above).
+- **The current phase is not in the caption on a phone held upright** (decision 224 (a) named it there): the caption's row gives the phase's
+  title way first (decision 159); the phase is the dispatch sheet's title and is marked in its list (question 234).
+- **Watch on a phone has no phase list** (the dispatch is not shown in Watch): its phases are the slider's and the event steps', or Study's
+  list, one press away. Its timeline is 155 px (the switch's row, decision 60).
+- **Held landscape**, decision 225's removals apply too (a reading of 226: a phone's timeline; today's layout otherwise kept). That block is a
+  height's query: a desktop window 430 px tall or less takes it too, as it took the block's older rules.
+- **Decision 229** (the phone cases at the height Safari leaves) waits on the iPhone's report (P1); the cases use the full CSS viewport.
+- **Not verified:** Safari itself and a real finger (Chromium with touch emulation only, §4.1, §6); a screen-reader pass on a phone (VoiceOver;
+  §5 named it, if the owner can run one); frame times on a phone (item 1's P1, P2; decision 222).
+
+## 10. Questions for the owner (from 231)
+
+**231. The phone layout's words** (decision 227 (a); `app.js` `LABELS.phone`). Proposed: the Menu's button "Menu" (its title "The tools: the
+opening, the tour, layers, panels, the vantages and the presentation"); the dispatch sheet's grip, a bar with no visible word, named "The phase
+text in full" (a disclosure: its state is said by `aria-expanded`); the rail sheet's close "×", named "Close the panels"; the speed button showing
+the speed ("½×", "1×", "2×", "4×"), named "Playback speed ½×" and so on (the speeds' group's own name), titled "Playback speed: each press the
+next of ½×, 1×, 2× and 4×"; the phase list named "Phases" (the axis group's own name). (a) as proposed; (b) other words, the owner's; (c) a
+visible word on the grip as well. **Recommended: (a)**; cost: none (each a `LABELS` entry).
+
+**232. The phone cases' limits** (decision 228 (a): measured once on this build, set on the owner's word). The values in `thresholds.js`
+(§9.2): each case's free share as its `UNOBSTRUCTED` baseline (rounded down to 0.1 point) and its drops as its `DROP_LIMIT`; the timeline's
+ceiling 121 px upright, 155 in Watch, 91 held landscape; the framing floors (17, 6, 5, 9, 2, 4, 7, 10); the cut text and the two-press features
+named with their reasons (§9.2). (a) set as measured; (b) other values. **Recommended: (a)**; they are what the build does, and none moves an
+existing limit. Cost: none.
+
+**233. narrow-390** (decision 122's case at density 1) drops 9 against its limit of 7 on this build (§9.4); `check:visual` fails there until
+decided. (a) retire it: `phone-390-first` measures the same screen as a phone (density 3, touch), with this build's limits (question 232); (b)
+keep it and raise its drop limit to 9 (decision 141's way: on the owner's word); (c) keep it at 7 and change the layout (fewer place names at the
+first screen's distance: a design change for its own task). **Recommended: (a)**: the case was "recorded, not a supported layout"; the phone
+case now holds that screen with the device. Cost: the case and its limits removed, a record in `CHANGELOG.md`.
+
+**234. The departures of §9.4** (the layout's checks a live block; the current phase not in the caption on a phone held upright, but the
+sheet's title; Watch without a phase list; decision 225's removals held landscape too; "Accuracy and sources" two presses away and "Whose
+eyes?" three on a phone held upright). (a) accept as built; (b) as built, and a Panels button beside the Menu, so the rail is one press away and
+"Whose eyes?" two (a second 44 px button over the map, about 0.8% of the screen at 390 x 844). **Recommended: (a)**: decision 225 kept "Whose
+eyes?" in the Command tab, and the rail is a reading place on a phone, not a control. Cost: none; (b) a button, its word and its checks.
+
+The next owner decision after these is 235.

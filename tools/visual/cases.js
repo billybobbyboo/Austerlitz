@@ -22,7 +22,8 @@ module.exports = [
   { name:"narrow-390", viewport:[390,844], fresh:true, expect:{t:240},
     note:"The first screen at 390 x 844, undocked: recorded, not a supported layout (decision 122)." },
   /* roadmap step 6 item 3 Part B (docs/STEP6_SPEC.md section 4.5; decision 228 (a)): the phone cases. Each on a fresh page with a device
-     (density 3, touch, a phone's user agent: harness.js PHONE_DEVICES), reached by real taps as a visitor reaches it (phone: the state):
+     (density 3, touch, a phone's user agent: harness.js PHONE_DEVICES), reached by real taps as a visitor reaches it (phone: the state; the clock
+     and the dossier's selection set by the app's own functions, as noted):
      "first" the page untouched; "explore" a tap on "Explore on my own", then the clock set to t (09:30: the phase's view, framed by the app);
      "dossier" then Saint-Hilaire's division selected (select(), as a tap on its counter does); "watch" then Watch by a tap, through the Menu;
      "layers" then the Layers panel by a tap, through the Menu. Their limits are measured once on the build that adds the layout and set on

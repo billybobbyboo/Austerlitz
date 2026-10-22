@@ -736,13 +736,14 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 #devstats[hidden]{display:none}
 
 /* ---------- roadmap step 6 item 3 (docs/STEP6_SPEC.md section 4; decisions 223-229): the phone layout, below 720 px wide ----------
-   Held landscape (844 x 390) keeps the layout above (decision 226). The compact timeline (decisions 223, 225): one row of the transport (event
+   A phone held landscape (844 x 390; 667 x 375 and 640 x 360 too: the query asks for more than 430 px of height, the review's item 3) keeps
+   the layout above (decision 226). The compact timeline (decisions 223, 225): one row of the transport (event
    back, Play, event forward, Follow), the clock and the speed as one button (#speedbtn); then the caption with "?" (and, in Watch, the
    presentation switch); the ten-minute steps, the four speeds and "Whose eyes?" leave it (the keys and the Command tab keep them). The track:
    no act row; the phases a band of their ticks with the current one marked, no press on them (decision 224 (a): the dispatch sheet lists them;
    the caption names the act and the phase); the rail and the event markers as above. */
 #speedbtn,#menubtn,.dgrip,.phlist,.tools-vm,.railclose{display:none}
-@media (max-width:720px){
+@media (max-width:720px) and (min-height:431px){
   .tb-top{flex-wrap:wrap;column-gap:6px;row-gap:0;padding:4px 8px 0}
   .tb-ctrl{order:1;gap:4px}
   #prev,#next,#eyesbtn,.speeds{display:none}
@@ -818,7 +819,8 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
    the phone's timeline (decision 225: the ten-minute steps and "Whose eyes?"; the speeds as one button), which gives Watch's control row its
    caption back and keeps its speeds on the screen; the first-run card has the screen while it stands (the tools stand down, as the opening's
    button and Panels do while it stands); the Layers panel takes the tools' place while it is open; the presentation switch keeps clear of an
-   open dossier. No view the harness measures above 720 px wide is 430 px tall or less */
+   open dossier. The query is the height's alone, so a desktop window 430 px tall or less takes it too (as it took this block's older rules);
+   the harness measures it in phone-844x390-explore only */
 @media (max-height:430px){
   #prev,#next,#eyesbtn,.speeds{display:none}
   #speedbtn{display:inline-block;min-width:44px;font-size:var(--t-ui)}

@@ -55,10 +55,12 @@
       if(e.closest(MAPSEL)||e.closest(".sr-only")||!vis(e)) return;
       var own=Array.prototype.some.call(e.childNodes,function(n){ return n.nodeType===3&&n.textContent.trim().length>0; }); if(!own) return;
       var cs=getComputedStyle(e), r=e.getBoundingClientRect(), why=null;
-      if(scrolledOut(e,r)||inScroll(e,r)) return;   /* scrolled out of a sheet, or running past its edge: whole, a scroll away */
+      if(scrolledOut(e,r)) return;   /* scrolled out of a sheet: whole, a scroll away */
       var clipX=cs.overflowX!=="visible"||cs.textOverflow==="ellipsis", clipY=cs.overflowY!=="visible"||(cs.webkitLineClamp&&cs.webkitLineClamp!=="none");
       if(clipX&&e.scrollWidth>e.clientWidth+1) why=cs.textOverflow==="ellipsis"?"ellipsis":"clipped across";
       else if(clipY&&e.scrollHeight>e.clientHeight+1&&cs.overflowY!=="auto"&&cs.overflowY!=="scroll") why="clipped down";
+      /* a box running past a sheet's scrolling edge is a scroll away: only its own overflow counts then (the review's item 8) */
+      if(!why&&inScroll(e,r)) return;
       if(!why){ for(var p=e.parentElement;p&&p!==document.body;p=p.parentElement){ var pc=getComputedStyle(p); if(pc.overflow==="hidden"||pc.overflowX==="hidden"){
         var pr=p.getBoundingClientRect(); if(r.right>pr.right+1||r.left<pr.left-1){ why="cut by "+desc(p); } break; } } }
       if(!why&&(r.right<=0||r.left>=innerWidth||r.bottom<=0||r.top>=innerHeight)) why="wholly off the screen";
@@ -89,7 +91,8 @@
      in place of; Study what Watch does not show (decision 60: Watch is the battlefield and the timeline): the Menu and the dispatch below 720 px,
      the tools and the dispatch above */
   var B=function(c){ return document.body.classList.contains(c); }, PH=function(){ return typeof PHONE!=="undefined"&&PHONE===true; };
-  var OPENER=[["#tools","#menubtn",PH],["#phlist","#dgrip"],[".rail","#panelsbtn"],[".dispatch,#tools","#fr-close",function(){ return B("firstrun-on"); }],
+  var OPENER=[["#tools","#menubtn",PH],["#phlist","#dgrip"],[".rail","#panelsbtn"],
+    ["#now","#tab-now"],["#oob","#tab-oob"],["#analysis","#tab-analysis"],["#command","#tab-command"],["#plans","#tab-plans"],[".dispatch,#tools","#fr-close",function(){ return B("firstrun-on"); }],
     [".dispatch","#drawer-close",function(){ return B("drawer-open"); }],
     [".dispatch,#tools","#layerclose",function(){ return !document.getElementById("layerpop").hidden; }],
     ["#menubtn,.dispatch",'.vm-btn[data-vm="study"]',function(){ return B("pm-watch")&&PH(); }],

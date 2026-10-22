@@ -59,7 +59,9 @@ const DEVICES=[
   {key:"390x844", vp:[390,844], dpr:3, ua:IOS, note:"iPhone 12-15 (the full CSS viewport; Safari's bars take part of it)"},
   {key:"412x915", vp:[412,915], dpr:2.625, ua:AND, note:"Pixel 7 class"},
   {key:"430x932", vp:[430,932], dpr:3, ua:IOS, note:"iPhone 14-15 Plus and Pro Max"},
-  {key:"844x390", vp:[844,390], dpr:3, ua:IOS, note:"iPhone 12-15 held landscape"}
+  {key:"844x390", vp:[844,390], dpr:3, ua:IOS, note:"iPhone 12-15 held landscape"},
+  /* since Part B (the review's item 3): a small phone held landscape, which keeps the layout above 720 px as 844 x 390 does */
+  {key:"667x375", vp:[667,375], dpr:2, ua:IOS, note:"iPhone SE (2nd, 3rd generation) and 6-8 held landscape"}
 ].filter(d=>!opt("--only")||opt("--only").split(",").includes(d.key));
 const STATES=(opt("--states")||"first,explore,panels,dossier,watch,layers,paper,tour").split(",");
 
