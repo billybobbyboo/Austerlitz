@@ -19,8 +19,9 @@ comment only (`LABELS.phone`'s, recording 231): **2,218,404 bytes, md5 `c9d29c14
   caption on a phone held upright; Watch without a phase list; decision 225's removals held landscape too; "Accuracy and sources" two presses
   away and "Whose eyes?" three on a phone held upright).
 
-**Verified so far:** `npm test` all 9 suites and the height guard pass; `check:data` 131 of 131 identical; `check:baseline` passes on this
-build. The full `check:visual` (37 cases) is running on it; its result will be recorded here.
+**Verified (on this build):** `npm test` all 9 suites and the height guard pass; `check:data` 131 of 131 identical; `check:baseline` passes;
+**`check:visual` passes in full**: 37 cases, the self-test's 242 checks and every live block, the phone block included ("STAGE0: all checks
+passed"); CI on `afd9ce0` green (npm test, check:data, check:chronology, check:contrast, check:selftest).
 
 ## 2026-10 · Roadmap step 6 item 3 Part B: the phone layout (decisions 223-229)
 
