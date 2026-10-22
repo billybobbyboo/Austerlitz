@@ -3,11 +3,12 @@
 **Status: Part A merged (#59); the owner decided questions 215-230 as recommended on 21 October 2026 (§0.3). Item 3's Part B, the phone layout,
 is built (§9; PR #60, merged); the owner decided questions 231-234 as recommended on 22 October 2026 (§10.1). Item 1: the owner's two desktop
 runs (L1, L2) decided question 138 by §3.4's rule, on the owner's word that a desktop should decide it: 138 retired (decision 235, §11); L3, the
-wrapper page on the same desktop, run and recorded (§11); P1 and P2 remain. Part A changed no source file, no data and no build:**
+wrapper page on the same desktop, run and recorded (§11); the iPhone's runs P1 and P2 recorded, with questions 236-238 (§12-§13). Part A
+changed no source file, no data and no build:**
 `check:baseline` passes on the unchanged build (`austerlitz-command-map.html`, 2,200,058 bytes, md5 `45f8f662ef828d2e1ab593a3b87b6ff7`,
 SHA-256 `bca73918aed88c62c7b564e6f9531b20b51eedb54554d272dfeb27b45eb10794`) and `check:data` finds 131 of 131 declarations identical
 to `archive/step5c-45f8f662.html`. Written against `main` at `7437dcc` (PR #58 merged); line numbers refer to that commit; the code is the
-source of truth. The next owner decision is 236.
+source of truth. The next owner decision is 239.
 
 Scope: roadmap step 6 (`docs/ROADMAP.md`: "Later, each its own decision: a phone layout; a measured pass on real hardware; figure level of
 detail"; findings A-4 and P-1 of `docs/FINAL_AUDIT.md`; decisions 137, 138, 139). Part A specifies all three items and builds none of them.
@@ -1011,8 +1012,8 @@ say (inference). L3 is not a decision run (§3.4 reads L1 and L2), and it would 
 far below the rule's 5%. What L3 offers the phone's runs is narrow: a frame that costs nothing measurable on a fast desktop says little of what
 it costs on a phone, so P1 and P2 are read on their own (inference).
 
-**What remains of item 1:** P1 and P2 (the phone's runs decide question 222, the phone's own drawing, and decision 229, the phone cases'
-height); no other decision waits on them. Item 2 is retired; item 3 is built (§9-§10). Under decision 230, `docs/FINAL_AUDIT.md`'s P-1 now
+**What remained of item 1:** P1 and P2 (the phone's runs decide question 222, the phone's own drawing, and decision 229, the phone cases'
+height; recorded in §12, with questions 236-238 in §13); no other decision waits on them. Item 2 is retired; item 3 is built (§9-§10). Under decision 230, `docs/FINAL_AUDIT.md`'s P-1 now
 carries a note pointing here. The next owner decision is 236.
 
 ## 12. Item 1: the iPhone's runs (P1, P2), and what they leave to the owner
@@ -1056,3 +1057,61 @@ and at 60 then 40 in P2.
 **Against the desktop** (L3's purpose, §2.3): the wrapper cost nothing measurable there (§11); the phone's `js50` in the heavy views while
 they held 60 was 3-5 ms, the desktop's 3.9-6.0 ms in the same segments (every time in the phone's reports is a whole number of
 milliseconds: Safari's clock, coarser than Chrome's). The phone's runs are read on their own.
+
+**Decision 229: the phone layout at the viewport P1 gives** (measured here: `tools/step6/phone-probe.js --only 402x714`, Chromium with a
+phone's device, density 3, touch and Safari's user agent, software WebGL; `docs/step6-evidence/phone-402x714.json`, screenshots
+`phone/p1view-402x714-*.png`). Decision 229 (a) asks that the phone cases use "the height the iPhone's report gives"; the report gives 402 x
+714, a phone 12 px wider than the cases' 390 (iPhone 12-15) and 160 px of its 874 taken by Safari. The eight states of §4.1 there, against
+Part B's 390 x 844 (`phone-partB.json`):
+- the four zero-limits hold as at 390 x 844: no press target under 24 px but the event markers; no text cut but the caption's parts
+  `PHONE.cutAllow` names (the act and the event giving way, decision 159); no two panels overlapping; every feature on the screen or one press
+  away but what `PHONE.reachAllow` names, the same list as at 390;
+- every interface text at AA (but the tour's disabled "Back", 2.17:1, as at 390 x 844) and none under 10.5 px; the map text at AA;
+- the timeline 121 px (155 in Watch), as at 390 x 844; the unobstructed share 0.02-0.07 lower in each state (0.24-0.79 against 0.26-0.82), the
+  same timeline taking more of a shorter screen; fewer map items placed after "Explore" (6 against 7, with 2 dropped).
+
+So nothing in the layout fails at the height Safari leaves the owner's phone; what decision 229 changes is which case holds that. Question
+237 asks how it is applied.
+
+**Found while probing: the paper map entered on a phone held upright is framed into the Layers panel's leftovers** (fact, measured in
+Chromium with a phone's device: `tools/step6/paper-entry.js`, `docs/step6-evidence/phone-paper-entry.txt`, `phone/paper-entry-*.png`). On a
+phone held upright the Paper map button is in the Layers panel only (`shell.html`), and the Layers panel is a sheet over most of the screen.
+Pressing Paper map frames the whole field (`MAPCAM.frameField`) into the free rectangle the sheet leaves: 360 x 112 px at the foot of a 390 x
+844 screen, 304 x 64 px at the top of a 402 x 714 one. Closing the panel does not frame it again: the paper map keeps that frame (its
+`framed` flag still true), the field drawn 122 x 112 px under the dispatch sheet at 390 x 844 (nothing of the battle in view) and 70 x 64 px
+at the top of the 402 x 714 screen. The paper map frames itself again on a resize (`app.js` `onResize`), not on a panel's change
+(`syncViewOffset` returns at once on the paper map). Part B's records show the same (`phone/partB-390x844-paper.png`, no map item in view)
+without naming it; none of the eight phone cases enters the paper map, and `check:contrast`'s phone paper state measures text, not framing.
+On a desktop the Layers panel is a small popover, so the same rule leaves only a margin where it stood (inference; not measured here).
+Question 238.
+
+## 13. Questions for the owner (from 236)
+
+**236. The phone's own drawing, after the runs** (question 222 (c) put it here). On the newest iPhone the light views hold 60 frames a second;
+the heavy views (about 2.5 million triangles) drop to about 20-35 once the phone has drawn them for a while, and neither hiding the figures
+nor turning the effects off cured it as the route measures them (§12). (a) **record it and leave the drawing**: the phone layout only, as
+question 222 (a) put it; (b) **measure lighter drawings on the phone first, then build the one a stated rule picks**: a phone route (version
+4) that, after drawing a heavy view until the phone slows, alternates in the same view the drawing as it is with each candidate (the drawing
+density 1.0 in place of `lowTier`'s 1.5; no shadow map; the figures casting no shadow; the figures hidden, as the reference), each pair
+twice, so that the phone's slowing and the change are told apart; the rule stated before the runs, as §3.4 was (the least change that keeps
+the heavy views' orbit and played segments under 5% long frames in both runs, else the one that gains most, else (a)); the owner runs it
+twice (about 10 minutes); the change, if any, for `lowTier` only, measured on the phone again; (c) **a lighter drawing on phones now**, unmeasured
+(density 1.0 under `lowTier`): against decision 139's order (the measurement before any performance work), and the obvious candidate of
+question 222 (b), the effects off by default, these runs do not support. **Recommended: (b).** Cost: one session for the route and its
+check here, the owner's two runs, a session for the change if the rule picks one.
+
+**237. How decision 229 is applied.** (a) **one new case at the owner's phone's visible viewport**, `phone-402x714-explore` (density 3, touch,
+Safari's user agent), measured once in `check:visual` and its limits set as measured (as decision 232 set the others'); the five 390 x 844
+cases kept, the full viewport of an iPhone 12-15; (b) **the five 390 cases made shorter** (390 x 684: P1's 160 px of Safari's bars taken
+from 844; an inference that an iPhone 12-15's Safari takes as much); (c) both. **Recommended: (a)**: the one height measured is the
+owner's phone's, and the probe above finds the layout whole there; (b) would rest on a height no report gives. Cost: one `check:visual` run
+for the new case, then the limits as measured.
+
+**238. The paper map's frame on a phone** (§12, found while probing). (a) **fix it in its own change**: while the paper map shows the field as
+framed (the visitor has not panned or zoomed it), a panel's change frames it again, as a resize does, so that closing the Layers sheet leaves
+the field in the free area; a phone case entering the paper map by its taps (Menu, Layers, Paper map, close) added to `check:visual`, its
+limits measured; the desktop's paper-map cases measured unchanged or the change stated; (b) **leave it and record it**. **Recommended:
+(a)**: it is a fault of the phone layout as built (item 3), every visitor who opens the paper map on a phone held upright meets it, and
+the rule it needs is the resize's. Cost: one session; the build, `check:baseline` and the self-test's manifest move if a check is added.
+
+The next owner decision is 239.

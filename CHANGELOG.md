@@ -1,5 +1,38 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 6 item 1: the iPhone's runs (P1, P2); questions 236-238
+
+**Status: records and measurement scripts only, on `claude/upbeat-hamilton-y9utq8` (PR #61). No source file, no data file and no build
+changed:** `austerlitz-command-map.html` 2,218,404 bytes, md5 `c9d29c149b613bff059598e4fe8c8d03` (unchanged).
+
+On 22 October 2026 the owner ran the wrapper page twice in Safari on an iPhone 17 Pro (the model the owner's word), kept verbatim
+(`docs/step6-evidence/perf-P1-iphone.*`, `perf-P2-iphone.*`); both read and hashed `main`'s build after #60. Read in `docs/STEP6_SPEC.md` §12
+(fact, from the reports): both stand (the refresh 17 ms: Safari paced the page at 60 frames a second; the viewport 402 x 714; `lowTier`, drawn at
+1.5; no GPU timer in Safari); the light views (0.22-0.48 million triangles) hold 60 frames a second, at most 4% long frames; the heavy views
+(2.47-2.52 million) drop in 8 of their 13 segments in P1 and 10 in P2, at 19-36 frames a second, phase 8's Overview in every segment; the same
+segment differs between runs and each run slows as it goes, the app's own JavaScript 7-19 ms a frame where it drops against 3-5 where it holds
+(inference, not examined: the phone lowering its clocks under sustained drawing); hiding the figures took phase 8's Overview from 20 to about 29,
+still dropping, and turning the effects off was never faster; each diagnostic runs after its full segment, so on a phone that slows the two cannot
+be told apart (inference).
+
+Decision 229: the phone layout probed at P1's viewport (`tools/step6/phone-probe.js` gains the size 402 x 714; `phone-402x714.json`, eight
+states): the four zero-limits hold as at 390 x 844, every interface text at AA but the tour's disabled "Back" (as at 390), the timeline 121 px,
+the unobstructed share 0.02-0.07 lower. Found while probing (a fault of item 3, measured: `tools/step6/paper-entry.js`, new, not bundled;
+`phone-paper-entry.txt`): on a phone held upright the Paper map button is in the Layers sheet only; pressing it frames the field into the
+strip the sheet leaves, and closing the sheet does not frame it again (the paper map frames itself again on a resize, not on a panel's
+change): the field 122 x 112 px under the dispatch sheet at 390 x 844, 70 x 64 px at the top of 402 x 714. Part B's own record shows it
+(`phone/partB-390x844-paper.png`) without naming it; no phone case enters the paper map.
+
+Questions put (§13): **236** the phone's drawing (recommended (b): lighter drawings measured on the phone by a rule stated first), **237**
+decision 229 applied as one case at 402 x 714 (recommended (a)), **238** the paper map framed again on a panel's change, in its own change
+(recommended (a)). Recorded in `docs/STEP6_SPEC.md` §12-§13, `docs/ROADMAP.md`, `CLAUDE.md` (the next owner decision is 239) and the evidence
+README.
+
+**Verified:** `check:baseline` passes on the unchanged build; `check:data` 131 of 131 identical; `npm test` all 9 suites and the height guard; the two reports read by `node` (every number
+above); the probes run here under Chromium with a phone's device and software WebGL (Safari itself and the phone's GPU are not here).
+**Not verified:** the paper map's frame in Safari on the phone (Chromium's emulation only); the desktop's Layers popover's effect on the frame
+(inference).
+
 ## 2026-10 · Roadmap step 6 item 1: the owner's desktop runs (L1-L3); decision 235 (question 138 retired)
 
 **Status: records only, on `claude/upbeat-hamilton-y9utq8` (begun again from `main` at `a8afeec`, #60 merged). No source file, no data file
