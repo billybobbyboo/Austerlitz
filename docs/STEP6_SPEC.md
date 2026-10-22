@@ -1114,4 +1114,61 @@ limits measured; the desktop's paper-map cases measured unchanged or the change 
 (a)**: it is a fault of the phone layout as built (item 3), every visitor who opens the paper map on a phone held upright meets it, and
 the rule it needs is the resize's. Cost: one session; the build, `check:baseline` and the self-test's manifest move if a check is added.
 
+### 13.1 The owner's decisions
+
+On 22 October 2026 the owner wrote: "go with your recommendations". Decided as recommended:
+
+| # | question | decision | applied |
+|---|---|---|---|
+| 236 | the phone's own drawing | (b): lighter drawings measured on the phone by a rule stated before the runs, then the one it picks built for `lowTier` | the phone route and its rule (§14) |
+| 237 | decision 229's application | (a): one new case, `phone-402x714-explore`, its limits as measured; the 390 x 844 cases kept | `cases.js`, `thresholds.js` (§14) |
+| 238 | the paper map's frame on a phone | (a): framed again when a panel's change gives the field room; a phone case entering the paper map by its taps | `app.js` `MAPCAM.syncPanels`; `cases.js` (§14) |
+
+## 14. Decisions 236-238 applied
+
+### 14.1 Decision 236: the phone route, and the rule that reads it, stated before the runs
+
+**The route** (`tools/step6/perf-route.js`, `step6-phone-route 1`, run by the wrapper page as `tools/step6/perf-run.html?route=phone`; about
+seven minutes). P1 and P2 showed the phone slowing as it draws, so a candidate measured after the drawing as it is (as the route's
+diagnostics were) cannot be told from the slowing (§12). The phone route therefore brackets: in each of two kinds it first draws the
+drawing as it is for 45 s (the warm-up, until the phone slows; recorded, not compared), then the blocks A C1 A C2 A C3 A C4 A C5 A, twice, each
+block 6 s after the view is set (A the drawing as it is; C a candidate set after the view and undone after the block); a candidate is
+compared with the two As beside it. The two kinds: **orbit**, phase 8's Overview orbiting (`ph8-overview`, the one view that dropped in every
+segment of both runs), and **played**, Play at the visitor's half speed under Follow from 08:30 in Watch (`play-half`, what the opening and
+Watch play). The refresh is measured first, as in the route of §2. The candidates, in the order the rule reads them (the least visible change
+first: a design order):
+1. `figShadow`: the figures and standards cast no shadow (their meshes' `castShadow` off; the ground, the woods and the villages still cast);
+2. `shadowPass`: the shadow pass skipped (the shadow map not redrawn, its last frame kept, so no shader is rebuilt inside the comparison;
+   the change it stands for, the sun casting no shadow under `lowTier`, draws no shadow map at all and samples none, so it costs at most
+   what this measures: inference);
+3. `density1`: the drawing buffer at density 1.0 in place of `lowTier`'s 1.5 (on a density-3 phone 402 x 714 pixels in place of 603 x
+   1,071: 44% of the pixels);
+4. `density1Pass`: 3 and 2 together;
+5. `figures`: the figures and standards hidden: **the reference**, not a drawing to build; it says how much of a dropped frame the figures are.
+
+**The rule** (applied to the owner's two runs of the phone route, P3 and P4, mechanically, by the analysis after them):
+- a segment **drops** when more than 5% of its frames are long (above max(1.5 R, 25 ms)), as in §3.4;
+- a run **stands** when its refresh was measured and no segment was hidden (else it is run again);
+- a run **tests** a kind when at least half of that kind's A blocks drop (the phone slowed); in a run that does not test a kind, the drawing
+  as it is held there;
+- a candidate **cures** a kind in a run when both its blocks there do not drop while at least one A beside each of them does;
+- its **gain** in a kind and a run is the median, over its two blocks, of the two As' mean median interval (`p50`) divided by its own: 1.5
+  is 50% more frames a second.
+
+Applied in this order:
+1. If neither run tests either kind: **nothing is built** (the phone held the drawing as it is; recorded).
+2. Else the first of candidates 1-4 that cures every kind both runs test is **built for `lowTier` only** (in its built form: for 2, the sun
+   casting no shadow under `lowTier`), and the phone measured once more by the owner (one run of the route of §2).
+3. Else the first of candidates 1-4 whose gain is at least 1.25 in every kind both runs test is **built** as in 2, recorded as a gain, not a
+   cure.
+4. Else **nothing is built**: what the reference (candidate 5) shows goes to the owner with the result (whether the figures are what drops a
+   phone's frames), as a new question.
+
+The thresholds (half the As, 1.25) are design values chosen for this rule: half the As, so that a run in which the phone mostly held is not
+read as a test; 1.25, a quarter more frames a second, the least gain worth a visible change (inference: no study was read for it).
+
+**The runs** (P3, P4): as P1 (§2.3: Safari, Low Power Mode off, Reduce Motion off, Auto-Lock Never, held upright), opening
+`tools/step6/perf-run.html?route=phone` on the hosted copy; Start; leave it about seven minutes; Copy; two minutes' rest, then again. The
+report has the route's form, one row per block (its kind column the candidate and the round).
+
 The next owner decision is 239.

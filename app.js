@@ -4040,7 +4040,7 @@ function viewDistTo(p){ return camera.isOrthographicCamera ? distAtWpp(worldPerP
    the module knows only its camera and three functions it is given (the viewport, the panels, a scheduler for eased moves),
    so that Stage 3 can reuse it. No orbit, no tilt. */
 var MAPCAM=(function(){
-  var cam=null, env=null, st={x:0,z:0,wpp:0.5}, moved=false, framed=false, gid=0, H=400;
+  var cam=null, env=null, st={x:0,z:0,wpp:0.5}, moved=false, framed=false, gid=0, H=400, pkey="";
   var N=new THREE.Vector3(GEOREF.NORTH[0],0,GEOREF.NORTH[1]).normalize(), E=new THREE.Vector3(-N.z,0,N.x);   /* north and east on the ground */
   var FIELD=[[-GROUND_W/2,-GROUND_D/2],[GROUND_W/2,-GROUND_D/2],[GROUND_W/2,GROUND_D/2],[-GROUND_W/2,GROUND_D/2]];   /* the modelled ground */
   var MARGIN=10, lim={min:0.015,max:0.8};
@@ -4100,10 +4100,22 @@ var MAPCAM=(function(){
       return k>=1; }, dur); }
   /* the whole modelled ground, framed; the zoom limits follow it (from 12 times closer to 1.5 times farther) */
   function fieldState(){ var s=fit(FIELD); lim.max=Math.max(0.8,s.wpp*1.5); return s; }
+  /* the screen and the panels the field was framed among (decision 238): what syncPanels compares */
+  function panelsKey(){ var v=vp(), P=env.panels(), k=v[0]+"x"+v[1];
+    for(var i=0;i<P.length;i++) k+=";"+Math.round(P[i][0])+","+Math.round(P[i][1])+","+Math.round(P[i][2])+","+Math.round(P[i][3]);
+    return k; }
+  function showField(s,instant){ if(instant) set(s); else glide(s,900); framed=true; }
+  function frameField(instant){ moved=false; pkey=panelsKey(); showField(fieldState(),instant); }
   return {
     init:init, apply:apply, toGround:toGround, toScreen:toScreen, pan:pan, zoomAt:zoomAt, freeRect:freeRect, stop:stop,
-    frameField:function(instant){ moved=false; var s=fieldState(); if(instant) set(s); else glide(s,900); framed=true; },
+    frameField:frameField,
     framed:function(){ return framed; },
+    /* roadmap step 6, decision 238: while the field is shown as framed (the visitor has not panned or zoomed it), a panel's change that gives
+       it more room frames it again (drawn more than 1% larger), as a resize does: on a phone held upright the Paper map button is in the Layers
+       sheet, and the field framed beside the open sheet kept that frame when the sheet closed (docs/STEP6_SPEC.md section 12). A panel that
+       opens over the field (a selection's chip, a dossier) moves nothing, so the map never slides from under the pointer */
+    syncPanels:function(instant){ if(!framed) return; var k=panelsKey(); if(k===pkey) return; pkey=k;
+      var s=fieldState(); if(s.wpp<st.wpp*0.99) showField(s,instant); },
     centreOn:function(x,z,w,instant){ var s=place(x,z,clampW(w)); if(instant) set(s); else glide(s,900); },
     glideTo:function(x,z,w,ms){ glide(place(x,z,clampW(w)),ms||1200); },
     state:function(){ return {x:st.x,z:st.z,wpp:st.wpp,moved:moved}; },
@@ -5095,7 +5107,8 @@ function landPanels(){
 function landFreeRect(){ return MAPCAM.freeRect(null,landPanels()); }
 function freeCentre(){ var fr=landFreeRect(); return [(fr[0]+fr[2])/2,(fr[1]+fr[3])/2]; }
 function syncViewOffset(instant){
-  if(mode==="staff"||!landCam) return true;
+  if(mode==="staff"){ MAPCAM.syncPanels(instant||RM); return true; }   /* decision 238: the paper map's field framed anew when a panel's change gives it room */
+  if(!landCam) return true;
   var W=renderer.domElement.clientWidth||window.innerWidth, H=viewH(), P=landPanels(), key=W+"x"+H;
   for(var i=0;i<P.length;i++) key+=";"+Math.round(P[i][0])+","+Math.round(P[i][1])+","+Math.round(P[i][2])+","+Math.round(P[i][3]);
   if(key!==VOFF.key){ VOFF.key=key; var c=freeCentre(); VOFF.tx=W/2-c[0]; VOFF.ty=H/2-c[1]; }

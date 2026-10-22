@@ -43,6 +43,12 @@ module.exports = [
     note:"The widest phone held upright, 430 x 932, after \"Explore\"." },
   { name:"phone-844x390-explore", viewport:[844,390], fresh:true, device:"ios", phone:"explore", t:570,
     note:"A phone held landscape, 844 x 390: the layout above 720 px with its fixes (decision 226), after \"Explore\"." },
+  /* roadmap step 6 item 1 (docs/STEP6_SPEC.md sections 12-14): decision 237 (a), the owner's iPhone at the viewport its report gave (P1), and
+     decision 238 (a), the paper map entered as a visitor enters it ("paper": the Layers panel through the Menu, its Paper map button, its close) */
+  { name:"phone-402x714-explore", viewport:[402,714], fresh:true, device:"ios", phone:"explore", t:570,
+    note:"The owner's iPhone 17 Pro in Safari, 402 x 714 (the viewport P1's report gave, decision 237), after \"Explore\"." },
+  { name:"phone-390-paper", viewport:[390,844], fresh:true, device:"ios", phone:"paper", t:570, mode:"staff",
+    note:"390 x 844, the paper map entered by its taps (the Menu, Layers, Paper map, the panel closed): the whole field in the free area (decision 238)." },
   { name:"first-run-laptop", viewport:[1366,768], fresh:true, expect:{t:240},
     note:"The same on a common laptop viewport." },
   { name:"overview-field", viewport:[1600,900], t:570, presentation:"study", mode:"terrain",

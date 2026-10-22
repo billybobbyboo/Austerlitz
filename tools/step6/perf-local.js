@@ -3,7 +3,8 @@
    show that it runs end to end in both of its ways (pasted into the build's page; the wrapper page tools/step6/perf-run.html with the build in
    a frame) and to record what it reports here. Here is SOFTWARE WebGL (SwiftShader, headless Chromium, no GPU): its frame times are not a
    visitor's and decide nothing (question 139 needs the owner's machines); its draw calls and triangles are the build's own.
-   node tools/step6/perf-local.js [--way paste|frame] [--device desktop|iphone] [--viewport WxH] [--quick] [--only id,id] [--json out.json]
+   node tools/step6/perf-local.js [--way paste|frame] [--device desktop|iphone] [--viewport WxH] [--quick] [--only id,id] [--phone] [--json out.json]
+   (--phone: decision 236's phone route, docs/STEP6_SPEC.md section 14)
    The repository is served from a local HTTP server (the wrapper reads its frame's window, which file:// pages may not); three.js is answered
    from the local copy (tools/visual/three-route.js). Measurement only; never run it beside check:visual. */
 const fs=require("fs"), path=require("path"), http=require("http");
@@ -11,7 +12,7 @@ const { chromium } = require("playwright");
 const TR=require("../visual/three-route.js");
 const ROOT=path.join(__dirname,"..","..");
 const argv=process.argv.slice(2), opt=f=>{ const i=argv.indexOf(f); return i>=0?argv[i+1]:null; }, has=f=>argv.includes(f);
-const WAY=opt("--way")||"paste", DEV=opt("--device")||"desktop", VPO=opt("--viewport"), OUT=opt("--json"), QUICK=has("--quick"), ONLY=opt("--only");
+const WAY=opt("--way")||"paste", DEV=opt("--device")||"desktop", VPO=opt("--viewport"), OUT=opt("--json"), QUICK=has("--quick"), ONLY=opt("--only"), PHONE=has("--phone");
 const DEVICES={
   desktop:{viewport:{width:1600,height:900},deviceScaleFactor:1},
   /* an iPhone 13-15's CSS viewport and density; Chromium with Safari's user agent, so the build takes its lowTier path as on the phone */
@@ -36,9 +37,10 @@ function serve(){ return new Promise(res=>{ const s=http.createServer((q,r)=>{
     console.log("started in",Date.now()-t0,"ms");
     await page.evaluate(()=>{ window.AUS_PERF_NO_AUTORUN=true; });
     await page.addScriptTag({path:path.join(__dirname,"perf-route.js")});
-    r=await page.evaluate(o=>AUS_PERF.run(window,o).then(x=>x),{quick:QUICK,only:ONLY});
+    r=await page.evaluate(o=>AUS_PERF.run(window,o).then(x=>x),{quick:QUICK,only:ONLY,phone:PHONE});
   } else {
-    await page.goto(base+"tools/step6/perf-run.html"+(QUICK?"?quick=1":"")+(ONLY?(QUICK?"&":"?")+"only="+ONLY:""),{waitUntil:"load",timeout:180000});
+    const qs=[QUICK?"quick=1":"",ONLY?"only="+ONLY:"",PHONE?"route=phone":""].filter(Boolean).join("&");
+    await page.goto(base+"tools/step6/perf-run.html"+(qs?"?"+qs:""),{waitUntil:"load",timeout:180000});
     await page.waitForFunction(()=>!document.getElementById("go").disabled,null,{timeout:300000,polling:500});
     console.log("started in",Date.now()-t0,"ms; the panel:",await page.textContent("#msg"));
     await page.click("#go");
@@ -48,7 +50,7 @@ function serve(){ return new Promise(res=>{ const s=http.createServer((q,r)=>{
   }
   console.log(r.text.split("\n").filter(l=>!/^AUS_PERF_JSON/.test(l)).join("\n"));
   console.log("console warnings and errors:",errors.length, errors.slice(0,5).join(" | "));
-  r.local={way:WAY,device:DEV,quick:QUICK,errors:errors,note:"software WebGL (SwiftShader) in headless Chromium: frame times are not a GPU's"};
+  r.local={way:WAY,device:DEV,quick:QUICK,phone:PHONE,errors:errors,note:"software WebGL (SwiftShader) in headless Chromium: frame times are not a GPU's"};
   if(OUT) fs.writeFileSync(OUT,JSON.stringify(r,null,1));
   await browser.close(); srv.close();
 })().catch(e=>{ console.error(e); process.exit(1); });
