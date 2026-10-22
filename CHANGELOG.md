@@ -1,6 +1,6 @@
 # Austerlitz Command Map — Changelog
 
-## 2026-10 · Roadmap step 6 item 1: the owner's desktop runs; decision 235 (question 138 retired)
+## 2026-10 · Roadmap step 6 item 1: the owner's desktop runs (L1-L3); decision 235 (question 138 retired)
 
 **Status: records only, on `claude/upbeat-hamilton-y9utq8` (begun again from `main` at `a8afeec`, #60 merged). No source file, no data file
 and no build changed:** `austerlitz-command-map.html` 2,218,404 bytes, md5 `c9d29c149b613bff059598e4fe8c8d03` (unchanged).
@@ -15,11 +15,18 @@ Besides (one machine): JavaScript 1.9-6.1 ms and the GPU 1.7-5.0 ms per frame at
 calls by about 70% without slowing or speeding the frame interval (`docs/STEP6_SPEC.md` §11).
 
 Decision 230 applied: `docs/FINAL_AUDIT.md`'s P-1 carries a records-only note (49.7%, 1.23 million triangles, not about 91%; 138 retired).
-Recorded in `docs/STEP6_SPEC.md` §11, `docs/ROADMAP.md`, `CLAUDE.md` (the next owner decision is 236) and the evidence README. L3, P1 and P2
-remain (questions 222 and 229 wait on the phone's runs).
+
+Then L3, the wrapper page `tools/step6/perf-run.html` on the same desktop about an hour later, kept verbatim (`perf-L3-desktop.*`). It stands
+(refresh 6.9 ms, nothing hidden, in a frame); it read and hashed the build, 2,218,404 bytes, SHA-256 `0c64a52d...`, `main`'s after #60. Against L1
+and L2: every median interval 6.9 ms, every segment's `js50` within 0.1 ms of L1's or L2's, the decisive orbits 0%
+long; one 27.8 ms frame in each played segment (0.1%), where L1 and L2 had none. L3 is not a decision run and does not change decision 235.
+
+Recorded in `docs/STEP6_SPEC.md` §11, `docs/ROADMAP.md`, `CLAUDE.md` (the next owner decision is 236) and the evidence README. P1 and P2 remain
+(questions 222 and 229 wait on the phone's runs).
 
 **Verified:** `check:baseline` passes on the unchanged build (`c9d29c14...`, 2,218,404 bytes); `check:data` 131 of 131 identical; `npm test` all 9
-suites and the height guard pass; the rule applied by a `node` reading of the two JSON reports (§11). Records only: no page check re-run.
+suites and the height guard pass; the rule applied, and L3 compared with L1 and L2, by a `node` reading of the three JSON reports (§11); L3's SHA-256 computed
+here from the committed build. Records only: no page check re-run.
 
 ## 2026-10 · Roadmap step 6 item 3: owner decisions 231-234 applied
 

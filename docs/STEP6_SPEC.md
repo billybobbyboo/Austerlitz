@@ -2,8 +2,8 @@
 
 **Status: Part A merged (#59); the owner decided questions 215-230 as recommended on 21 October 2026 (§0.3). Item 3's Part B, the phone layout,
 is built (§9; PR #60, merged); the owner decided questions 231-234 as recommended on 22 October 2026 (§10.1). Item 1: the owner's two desktop
-runs (L1, L2) decided question 138 by §3.4's rule, on the owner's word that a desktop should decide it: 138 retired (decision 235, §11); L3, P1
-and P2 remain. Part A changed no source file, no data and no build:**
+runs (L1, L2) decided question 138 by §3.4's rule, on the owner's word that a desktop should decide it: 138 retired (decision 235, §11); L3, the
+wrapper page on the same desktop, run and recorded (§11); P1 and P2 remain. Part A changed no source file, no data and no build:**
 `check:baseline` passes on the unchanged build (`austerlitz-command-map.html`, 2,200,058 bytes, md5 `45f8f662ef828d2e1ab593a3b87b6ff7`,
 SHA-256 `bca73918aed88c62c7b564e6f9531b20b51eedb54554d272dfeb27b45eb10794`) and `check:data` finds 131 of 131 declarations identical
 to `archive/step5c-45f8f662.html`. Written against `main` at `7437dcc` (PR #58 merged); line numbers refer to that commit; the code is the
@@ -964,7 +964,8 @@ The next owner decision is 235.
 build of 2,218,404 bytes, the reports' `bodyBytes`), "on a windows desktop": Chrome 155 on Windows, an **NVIDIA GeForce RTX 4070** through
 ANGLE and Direct3D 11, 32 cores, 32 GB, a 2,560 x 1,440 screen at 144 Hz (the measured refresh 6.9 ms), the page drawn at 2,560 x 1,305 at
 density 1, effects on at scale 1.3, not `lowTier`. The reports, verbatim: `docs/step6-evidence/perf-L1-desktop.txt` and `.json`,
-`perf-L2-desktop.txt` and `.json`. L3 (the wrapper page on the same machine) and the phone's P1 and P2 were not run.
+`perf-L2-desktop.txt` and `.json`. L3 (the wrapper page on the same machine) was run after them and is read below; the phone's P1 and P2
+were not run.
 
 **The rule of §3.4, applied as written** (`node` over the two JSON files):
 - both runs **stand**: the refresh measured (6.9 ms), no note, no segment hidden; a long frame is one above 25 ms (max(1.5 R, 25));
@@ -990,6 +991,26 @@ integrated GPU, nor of the phone (question 222 still waits on P1 and P2).
   L2; the 10.33x orbit 4.6 and 2.2), values falling near 2.2 or near 4.6 ms (inference: the GPU's clock states or the timer's resolution on this
   driver; not examined); no segment's frame interval moved with them.
 
-**What remains of item 1:** L3, P1 and P2 (the phone's runs decide question 222, the phone's own drawing, and decision 229, the phone cases'
+**L3, the wrapper page on the same desktop (fact, from its report; `perf-L3-desktop.txt` and `.json`).** The owner ran
+`tools/step6/perf-run.html` on the same machine on 22 October 2026, about an hour after L2 (started 07:45:59 UTC; L2 at 06:43:33). It **stands**:
+the refresh measured (6.9 ms), no note, no segment hidden, the page in a frame. Through the wrapper the route could read the build: **2,218,404
+bytes, SHA-256 `0c64a52d2eeb7218e2b17714da18f682d87fcce7c882065676c73cbb17c667ac`**, the build of `main` after #60 (the same hash computed here
+from `austerlitz-command-map.html`), which L1 and L2, pasted into the console, report as "not read" (their `bodyBytes`, 2,218,404, agree). Read
+against L1 and L2, for §2.3's purpose (the frame's own cost, so that the phone's runs, frame only, can be read against L1):
+- every segment's median interval 6.9 ms, as in L1 and L2; `js50` 2.0-6.1 ms (L1 and L2 1.9-6.1), every segment within 0.1 ms of L1's or
+  L2's and equal to one of them in 17 of 22; `gpu50` 1.8-5.2 ms (1.7-5.0), the same segment's GPU median again differing between runs (the
+  phase-8 orbit 4.4, 4.3 and 3.1 ms in L1, L2 and L3; the 1x view held 2.1, 2.1 and 3.2);
+- the four decisive orbits 0% long, as in L1 and L2; the one difference: **one long frame in each played segment** (`play-4x` and
+  `play-half`, 1 of 1,622 and 1 of 1,633, 0.1%, each 27.8 ms, four refresh intervals), where L1 and L2 had none (their longest 20.8 and
+  20.9 ms); every other segment's longest interval 14.0 ms or less;
+- the load: DOM ready 3,153 ms, 1,023,649 bytes transferred for a body of 2,218,404 (L1 and L2 2,218,704: the host served the build compressed
+  this time; the time is the wrapper's and the host's, not the app's).
+
+So on this machine the frame's own cost does not show in any median; whether the two 27.8 ms frames are the frame's or chance, one run cannot
+say (inference). L3 is not a decision run (§3.4 reads L1 and L2), and it would not change decision 235: no decisive segment drops, and 0.1% is
+far below the rule's 5%. What L3 offers the phone's runs is narrow: a frame that costs nothing measurable on a fast desktop says little of what
+it costs on a phone, so P1 and P2 are read on their own (inference).
+
+**What remains of item 1:** P1 and P2 (the phone's runs decide question 222, the phone's own drawing, and decision 229, the phone cases'
 height); no other decision waits on them. Item 2 is retired; item 3 is built (§9-§10). Under decision 230, `docs/FINAL_AUDIT.md`'s P-1 now
 carries a note pointing here. The next owner decision is 236.
