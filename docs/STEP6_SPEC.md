@@ -1169,6 +1169,51 @@ read as a test; 1.25, a quarter more frames a second, the least gain worth a vis
 
 **The runs** (P3, P4): as P1 (§2.3: Safari, Low Power Mode off, Reduce Motion off, Auto-Lock Never, held upright), opening
 `tools/step6/perf-run.html?route=phone` on the hosted copy; Start; leave it about seven minutes; Copy; two minutes' rest, then again. The
-report has the route's form, one row per block (its kind column the candidate and the round).
+report has the route's form, one row per block (its kind column the candidate and the round, and at the row's end the drawing the block
+ran with: the density, the shadow pass, the figures casting a shadow and shown, read from the page as it starts, so that each candidate is
+seen to have taken effect).
+
+**Checked here** (`tools/step6/perf-local.js --way frame --device iphone --viewport 402x714 --phone`, in full and halved;
+`docs/step6-evidence/perf-local-phone-route.json`): the route runs end to end through the wrapper with no console warning or error; every
+block's drawing is its candidate's (A: density 1.5, the shadow pass on, 314 of the 341 figure meshes casting, 341 shown; `figShadow` 0 casting;
+`shadowPass` the pass off; `density1` 1; `density1Pass` both; `figures` 0 shown), and every A after a candidate is the drawing as it is again.
+Under software WebGL at density 3 a frame takes about two seconds, so its blocks hold 0-3 frames and its times decide nothing; skipping the
+shadow pass took a frame from 809 draw calls and 2.50 million triangles to 525 and 1.47 million (the shadow pass's share, the build's own).
+
+### 14.2 Decision 238: the paper map framed again on a panel's change, and its scale bar on a phone
+
+**The rule, as built** (`app.js` `MAPCAM.syncPanels`, called where the landscape's view offset is kept, `syncViewOffset`): while the paper map
+shows the field as framed (`MAPCAM.framed()`: the visitor has not panned, zoomed or chosen a vantage), the screen and the panels it was
+framed among are kept as a key; when they change and the field framed anew would be drawn more than 1% larger, it is framed again (a glide,
+at once when settling or under reduced motion), as a resize already did. A panel that opens over the field (a selection's chip, a dossier)
+moves nothing, so the map never slides from under the pointer; a panel closing over a field already framed for that room moves nothing either.
+`runtime-test.js` dry-runs it with the panel list stubbed (framed beside a panel over most of the screen, the panel gone: 2.293 to 0.463 units
+a pixel; a panel opening over it and closing again: unmoved; after a pan: unmoved), and fails on the build before it ("the panel closed, the
+field not framed again"). In Chromium with a phone's device (`tools/step6/paper-entry.js`): the field after the Layers sheet closes 360 x 332
+px in the free 360 x 472 at 390 x 844 (was 122 x 112 under the dispatch sheet), 364 x 336 px at 402 x 714 (was 70 x 64).
+
+**The case** `phone-390-paper` (the Menu, Layers, Paper map, the panel's close, by real taps) is held to the whole field in the free area
+(`FRAMED`, `frameInFree` 1) and to every paper-map rule of Stage 2E. Its first run found what no paper-map case below 1080 px could: **the
+scale bar was hidden there** (`style.css`'s narrow block hid `.tb-scale` on every view, the paper map's included; the paper map's rule since
+Stage 2E is one scale across the view and its bar to 1%). The bar is now kept on the paper map at every width (hidden below 1080 px on the
+landscape only, whose bar holds at the centre of the view alone); on a phone held upright it heads the caption's row, the caption's parts
+giving way (decision 159), since at the head of the control row it pushed the speed button to a second line (the timeline 165 px). Measured
+on this build: the bar 65 px for 65.3 wanted (0.4%), the timeline 121 px, the unobstructed share 0.6529 (as `phone-390-explore`'s), the four
+zero-limits clean.
+
+### 14.3 Decision 237, and the limits as measured
+
+`phone-402x714-explore` (`cases.js`): the owner's iPhone 17 Pro at the viewport P1 gave, Safari's user agent, density 3, after "Explore". The
+two cases' limits, as the build that adds them measures them (`thresholds.js`; rounded down to 0.1 point, the drops as measured, as decision 232
+set the others'):
+
+| case | unobstructed | drops | framing floor | timeline |
+|---|---|---|---|---|
+| `phone-402x714-explore` | 0.585 (0.5852) | 2 | 6 | 121 |
+| `phone-390-paper` | 0.652 (0.6529) | 17 (19 placed) | 11 | 121 |
+
+`check:visual` now has 39 cases. The full run on the build before the scale bar's two changes passed every case and the self-test but these
+two cases' unset limits and the scale bar; the scale bar's changes touch the paper map below 1080 px only (`phone-390-paper` is the one case
+there), and that case was measured again on the final build; a full run on the final build is recorded in `CHANGELOG.md`.
 
 The next owner decision is 239.

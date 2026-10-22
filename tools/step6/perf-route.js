@@ -239,6 +239,10 @@
           off:function(){ SM.autoUpdate=true; SM.needsUpdate=true; setDensity(null); }},
         figures:{note:"the figures and standards hidden (the reference: not a drawing to build)", on:function(){ figuresHidden(true); }, off:function(){ figuresHidden(false); }}
       };
+      /* the drawing each block ran with, read from the page as the block starts (so the report shows each candidate took effect): the
+         drawing buffer's density, whether the shadow map is redrawn, and the figures' meshes casting a shadow and drawn, of all */
+      function drawing(){ var K=kitMeshes(); return {density:renderer.getPixelRatio(), shadowPass:!!SM.autoUpdate,
+        figCast:K.filter(function(m){ return m.castShadow; }).length, figShown:K.filter(function(m){ return m.material.visible; }).length, fig:K.length}; }
       /* the drawing buffer's density as onResize sets it (app.js): null, the app's own pxRatio() */
       function setDensity(d){ renderer.setPixelRatio(d==null?w.pxRatio():d); renderer.setSize(w.innerWidth,w.innerHeight); w.sizeFX(); w.requestRender(3); }
       var KINDS={
@@ -251,9 +255,9 @@
           out.segments.push(summarise(K.id,"warm-up",rows,{cand:"A",note:"the drawing as it is, until the phone slows (not compared)"})); }); });
         for(var round=1;round<=PHONE.rounds;round++) PHONE.order.forEach(function(c,i){ var r=round;
           [ "A", c ].concat(i===PHONE.order.length-1?["A"]:[]).forEach(function(cc){
-            then(function(){ log(K.id+" "+cc+" ("+r+")"); K.start(); CAND[cc].on();
+            then(function(){ log(K.id+" "+cc+" ("+r+")"); K.start(); CAND[cc].on(); var st=drawing();
               return wait(w,300).then(function(){ return K.sample(); }).then(function(rows){ CAND[cc].off(); K.stop();
-                out.segments.push(summarise(K.id,cc+" "+r,rows,{cand:cc, round:r, note:CAND[cc].note})); }); }); }); });
+                out.segments.push(summarise(K.id,cc+" "+r,rows,{cand:cc, round:r, note:CAND[cc].note, set:st})); }); }); }); });
       });
     }
     return seq.then(function(){ pendQ.forEach(function(P){ gl.deleteQuery(P.q); }); pendQ=[]; w.document.removeEventListener("visibilitychange",onVis); w.loop=origLoop; w.renderFrame=origRF; out.finished=new Date().toISOString(); out.text=format(out); return out; },
@@ -276,7 +280,8 @@
     r.notes.forEach(function(n){ L.push("NOTE: "+n); });
     r.segments.forEach(function(s){ if(s.hidden) L.push("NOTE: the page was hidden during "+s.id+" "+s.kind+": its numbers do not stand"); });
     L.push(pad("segment",16)+pad("kind",17)+pad("frames",7)+pad("fps",6)+pad("p50",8)+pad("p95",8)+pad("p99",8)+pad("max",8)+pad("long%",7)+pad("warm",8)+pad("js50",8)+pad("js95",8)+pad("gpu50",8)+pad("gpu95",8)+pad("calls",6)+pad("tris",9));
-    r.segments.forEach(function(s){ L.push(pad(s.id,16)+pad(s.kind,17)+pad(s.frames,7)+pad(s.fps,6)+pad(s.p50,8)+pad(s.p95,8)+pad(s.p99,8)+pad(s.max,8)+pad(s.longPct,7)+pad(s.warmMax,8)+pad(s.js50,8)+pad(s.js95,8)+pad(s.gpu50,8)+pad(s.gpu95,8)+pad(s.calls,6)+pad(s.tris,9)); });
+    r.segments.forEach(function(s){ L.push(pad(s.id,16)+pad(s.kind,17)+pad(s.frames,7)+pad(s.fps,6)+pad(s.p50,8)+pad(s.p95,8)+pad(s.p99,8)+pad(s.max,8)+pad(s.longPct,7)+pad(s.warmMax,8)+pad(s.js50,8)+pad(s.js95,8)+pad(s.gpu50,8)+pad(s.gpu95,8)+pad(s.calls,6)+pad(s.tris,9)+
+      (s.set?"  density "+s.set.density+", shadow pass "+(s.set.shadowPass?"on":"off")+", figures casting "+s.set.figCast+"/"+s.set.fig+", shown "+s.set.figShown+"/"+s.set.fig:"")); });
     L.push("AUS_PERF_JSON "+JSON.stringify(r,function(k,v){ return k==="text"?undefined:v; }));
     return L.join("\n");
   }
