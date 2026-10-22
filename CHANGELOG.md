@@ -5,7 +5,7 @@
 **Status: built on `claude/upbeat-hamilton-y9utq8` (draft PR #60, after the decisions' record), for review; owner questions 231-234 open.**
 Begun on the owner's word of 21 October 2026, "Yes, start Item 3 part B." (decision 215 (a): while item 1 waits on the owner's runs). No data
 changed: `check:data` 131 of 131 declarations identical to `archive/step5c-45f8f662.html` (the reference kept). The build changed:
-`austerlitz-command-map.html` **2,217,944 bytes, md5 `aab689247dd15d3a28a4ed7f1255dd05`** (was 2,200,058, `45f8f662...`); `check:baseline`
+`austerlitz-command-map.html` **2,218,401 bytes, md5 `82b21175e1f06b61eb743cdaa536527f`** (was 2,200,058, `45f8f662...`); `check:baseline`
 moved to it. The specification and the record are `docs/STEP6_SPEC.md` §9 (as built, measured, the checks, the departures) and §10 (questions).
 
 **What changed (presentation and checks only).** Below 720 px wide and above 430 px tall (`style.css`'s phone block, `app.js` `PHONE_Q`):
@@ -52,7 +52,7 @@ the acts' headings, the single-run design value: each fixed or recorded (`docs/S
 height query applying to any short desktop window, and the Panels button's `aria-expanded` while a dossier stands over the rail.
 
 **Verified so far:** `npm test` all 9 suites and the height guard pass; `check:data` 131 of 131 identical; `check:chronology` 0 errors;
-`check:baseline` passes on this build (`aab68924...`, 2,217,944 bytes). `check:visual`, `check:contrast` and `check:selftest` on the final tree are
+`check:baseline` passes on this build (`82b21175...`, 2,218,401 bytes). `check:visual`, `check:contrast` and `check:selftest` on the final tree are
 running (software WebGL, one at a time); their results will be recorded here.
 
 ## 2026-10 · Roadmap step 6: owner decisions 215-230 recorded

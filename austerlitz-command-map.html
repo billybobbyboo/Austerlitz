@@ -824,8 +824,8 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 /* roadmap step 6 item 3 (decision 226): a phone held landscape (430 px tall or less) keeps the layout above it, with the controls that leave
    the phone's timeline (decision 225: the ten-minute steps and "Whose eyes?"; the speeds as one button), which gives Watch's control row its
    caption back and keeps its speeds on the screen; the first-run card has the screen while it stands (the tools stand down, as the opening's
-   button and Panels do while it stands); the Layers panel takes the tools' place while it is open; the presentation switch keeps clear of an
-   open dossier. The query is the height's alone, so a desktop window 430 px tall or less takes it too (as it took this block's older rules);
+   button and Panels do while it stands), and while the tour's bar stands; the Layers panel takes the tools' place while it is open; the
+   presentation switch keeps clear of an open dossier and of the rail. The query is the height's alone, so a desktop window 430 px tall or less takes it too (as it took this block's older rules);
    the harness measures it in phone-844x390-explore only */
 @media (max-height:430px){
   #prev,#next,#eyesbtn,.speeds{display:none}
@@ -834,6 +834,10 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   body:has(#layerpop:not([hidden])) .tools{visibility:hidden}
   #layerpop{top:56px;max-height:calc(100vh - var(--tb) - 64px)}
   body.drawer-open:not(.docked) #viewmode{left:calc((100vw - var(--draw))/2)}
+  /* measured at 667 x 375 (the probe, Part B): the switch clear of the rail shown beside the map, the tools standing down while the tour's or
+     the opening's bar stands (its own controls; "Leave the tour" gives them back), as under the first card */
+  body:not(.rail-hidden):not(.docked) #viewmode{left:calc(var(--rail) + (100vw - var(--rail))/2)}
+  body:has(#tourbar:not([hidden])) .tools{display:none}
 }
 
 /* Stage 5E (docs/STAGE5_SPEC.md section D.5): "Whose eyes?", its caption, the timeline's button, the eye-level vantage's caption */

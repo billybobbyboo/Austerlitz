@@ -94,6 +94,9 @@
   var OPENER=[["#tools","#menubtn",PH],["#phlist","#dgrip"],[".rail","#panelsbtn"],
     ["#now","#tab-now"],["#oob","#tab-oob"],["#analysis","#tab-analysis"],["#command","#tab-command"],["#plans","#tab-plans"],[".dispatch,#tools","#fr-close",function(){ return B("firstrun-on"); }],
     [".dispatch","#drawer-close",function(){ return B("drawer-open"); }],
+    [".dispatch","#railclose",function(){ return PH()&&!B("rail-hidden"); }],
+    [".dispatch","#tour-exit",function(){ return !document.getElementById("tourbar").hidden; }],
+    ["#tools","#tour-exit",function(){ return !document.getElementById("tourbar").hidden&&!PH(); }],
     [".dispatch,#tools","#layerclose",function(){ return !document.getElementById("layerpop").hidden; }],
     ["#menubtn,.dispatch",'.vm-btn[data-vm="study"]',function(){ return B("pm-watch")&&PH(); }],
     ["#tools,.dispatch",'.vm-btn[data-vm="study"]',function(){ return B("pm-watch")&&!PH(); }]];
