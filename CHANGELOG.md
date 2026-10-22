@@ -56,7 +56,8 @@ included); `check:data` 131 of 131 identical; `check:chronology` 0 errors; `chec
 `check:visual` (the full run, on the build before the last held-landscape fix, which touches only views 430 px tall or less): 242 checks pass,
 2 fail: `narrow-390`'s 9 drops against its limit 7 (question 233, expected, no limit moved) and the live phone block's sheet check, a harness
 step fixed after it (a phase pressed now folds the sheet; `17d6ddb`), which the self-test run below passes; all eight phone cases within every
-limit and zero-limit; `phone-844x390-explore` measured and judged again after the fix (no failure). `check:contrast`: every text at AA in the 35
+limit and zero-limit; `phone-844x390-explore` measured and judged again after the fix (no failure). `check:contrast` and `check:selftest` ran on the same build (no page they open is 430 px tall or less).
+`check:contrast`: every text at AA in the 35
 states and the ten phone states, drawn in the embedded faces, the six start-up cases pass (244 context warnings, at most 248). `check:selftest`:
 242 checks and every live block pass, the phone block included. CI on `17d6ddb`: npm test, check:data, check:chronology, check:contrast and
 check:selftest pass (CI does not run `check:visual` on this branch). The phone probe at six sizes (`docs/step6-evidence/phone-partB.json`).
