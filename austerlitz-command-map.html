@@ -577,6 +577,9 @@ body.mode-staff #vignette{display:none}
   .tlabel{display:none}
   .tools .grp{max-width:58vw}
   .tb-scale{display:none}
+  /* roadmap step 6 (found by decision 238's phone case): the paper map keeps its scale bar at every width (Stage 2E: one scale across the view,
+     its bar to 1%); hidden here only on the landscape, whose bar holds at the centre of the view alone */
+  body.mode-staff .tb-scale{display:flex}
 }
 @media (max-width:720px){
   #layerpop{right:10px;left:10px;width:auto;top:96px;max-height:58vh}
