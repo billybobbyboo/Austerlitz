@@ -337,7 +337,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   the event markers 2.5.8's essential exception, decision 167). One limit moved in step 3, on the owner's word (decision 164's Panels button):
   `narrow-1024`'s unobstructed baseline [0.535, 0.628] to [0.533, 0.628], recorded in `CHANGELOG.md`; every other kept.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified build of PR #58 (decision 213 (b); md5 `45f8f662...`, 2,200,058 bytes;
+- `npm run check:baseline` passes only on the unmodified build of roadmap step 6 item 3 Part B, the phone layout (md5 `aab68924...`,
+  2,217,944 bytes; re-baselined from PR #58's build, decision 213 (b), md5 `45f8f662...`, 2,200,058 bytes; that one
   re-baselined from PR #57's build `fdc25e82...`, 2,198,549 bytes, itself from the roadmap step 5 build `f6082ae2...`, 2,197,389 bytes, itself from the step 4b part C build `97352160...`, 2,182,537 bytes, itself from the part-B build `02a46c50...`, 2,178,819 bytes, itself from the part-A build with decisions 198-201, `e257d09b...`, 2,167,583 bytes, itself from the first 4b build `2ae24fa3...`, 2,161,604 bytes, itself from the roadmap step 4 build `833743c6...`, 2,159,374 bytes, itself from the roadmap step 3 build `f023ae0e...`, 2,048,277 bytes, itself from the roadmap step 2 build `af98f586...`, 1,927,346 bytes, itself from the step 1 build `7a86548c...` and the Stage 7D build `46773462...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (seven on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.

@@ -904,6 +904,9 @@ the screen or one press away. (The review's item 2: a first count missed the rai
   list, one press away. Its timeline is 155 px (the switch's row, decision 60).
 - **Held landscape**, decision 225's removals apply too (a reading of 226: a phone's timeline; today's layout otherwise kept). That block is a
   height's query: a desktop window 430 px tall or less takes it too, as it took the block's older rules.
+- **Left as they are, recorded (the review):** the Panels button keeps `aria-expanded="true"` while a dossier's sheet stands over the rail on a
+  phone (the rail is open, hidden under the dossier; `css-test.js` holds syncInert's one writer of it); the held-landscape block's query is the
+  height's, so a short desktop window takes it too.
 - **Decision 229** (the phone cases at the height Safari leaves) waits on the iPhone's report (P1); the cases use the full CSS viewport.
 - **Not verified:** Safari itself and a real finger (Chromium with touch emulation only, §4.1, §6); a screen-reader pass on a phone (VoiceOver;
   §5 named it, if the owner can run one); frame times on a phone (item 1's P1, P2; decision 222).
