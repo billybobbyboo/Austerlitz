@@ -1214,6 +1214,7 @@ set the others'):
 
 `check:visual` now has 39 cases. The full run on the build before the scale bar's two changes passed every case and the self-test but these
 two cases' unset limits and the scale bar; the scale bar's changes touch the paper map below 1080 px only (`phone-390-paper` is the one case
-there), and that case was measured again on the final build; a full run on the final build is recorded in `CHANGELOG.md`.
+there), and that case was measured again on the final build; the full run on the final build passes all 39 cases, the self-test and the
+live blocks (`CHANGELOG.md`).
 
 The next owner decision is 239.

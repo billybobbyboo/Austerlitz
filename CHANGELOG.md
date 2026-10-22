@@ -26,10 +26,11 @@
   the drawing it ran with; the rule that reads the owner's two runs (P3, P4) stated before them (§14.1). Checked here (`perf-local.js --phone`,
   software WebGL: times decide nothing): end to end, no console message, every block's drawing its candidate's.
 
-**Verified so far:** `check:baseline` passes on this build; `check:data` 131 of 131 identical; CI (`npm test`, `check:data`,
-`check:chronology`, `check:contrast`, the self-test) green on the fix's first push; a full `check:visual` on the build before the scale bar's
-two changes passed every case and the self-test but the two new cases' unset limits and the scale bar; `phone-390-paper` measured again on
-this build. In progress: the full `check:visual` on this build (its result to be recorded here).
+**Verified:** `check:visual` on this build: all 39 cases, the self-test's 242 checks and the live blocks pass ("STAGE0: all checks passed",
+1 h 42 min; `phone-402x714-explore` unobstructed 0.5852, 6 placed, 2 dropped; `phone-390-paper` 0.6529, 19 placed, 17 dropped, the whole field in
+the free area, the scale bar 65 px for 65.3); `npm test` all 9 suites and the height guard; `check:data` 131 of 131 identical; `check:baseline`
+on this build; CI (`npm test`, `check:data`, `check:chronology`, `check:contrast`, the self-test) green on every push of the PR. The earlier full
+run, on the build before the scale bar's two changes, found the scale bar (above) and nothing else.
 **Not verified:** Safari itself and a real finger for the two phone cases and the paper map's frame (Chromium with a phone's device); the
 phone route's numbers on a phone (P3, P4 wait on the owner). Inference, recorded: skipping the shadow pass stands for the sun casting no
 shadow under `lowTier`, which would cost at most as much.
