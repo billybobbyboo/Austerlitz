@@ -490,4 +490,7 @@ begin meanwhile. Roadmap step 6 item 3 Part B (the phone layout, decisions 223-2
 with the decisions' record): below 720 px wide the compact timeline, the phases listed in the dispatch sheet, the sheets at the foot, the tools
 behind a Menu, the views framed into the freed area (`PORTRAIT_FIT.t` 0.25, measured); held landscape today's layout with its faults fixed; the
 phone checks of decision 228 (`docs/STEP6_SPEC.md` §9). The owner decided questions 231-234 as recommended on 22 October 2026 (§10.1): the words as
-proposed, the phone cases' limits as measured, `narrow-390` retired, the departures accepted. The next owner decision is 235.
+proposed, the phone cases' limits as measured, `narrow-390` retired, the departures accepted; merged (#60). Item 1: the owner's two runs on a
+Windows desktop (an RTX 4070, no long frame in any segment) decided question 138 on the owner's word ("Decide 138 from these", decision 235):
+retired by §3.4's rule, item 2 closed, the departure recorded (`docs/STEP6_SPEC.md` §11); P-1's note in `docs/FINAL_AUDIT.md` (decision 230);
+L3, P1 and P2 remain (questions 222 and 229 wait on the phone's runs). The next owner decision is 236.

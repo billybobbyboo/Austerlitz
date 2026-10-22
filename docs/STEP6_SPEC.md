@@ -1,11 +1,13 @@
 # Real hardware, figure level of detail, a phone layout: specification (roadmap step 6, Part A)
 
 **Status: Part A merged (#59); the owner decided questions 215-230 as recommended on 21 October 2026 (§0.3). Item 3's Part B, the phone layout,
-is built (§9; PR #60); the owner decided questions 231-234 as recommended on 22 October 2026 (§10.1); item 1 waits on the owner's runs. Part A changed no source file, no data and no build:**
+is built (§9; PR #60, merged); the owner decided questions 231-234 as recommended on 22 October 2026 (§10.1). Item 1: the owner's two desktop
+runs (L1, L2) decided question 138 by §3.4's rule, on the owner's word that a desktop should decide it: 138 retired (decision 235, §11); L3, P1
+and P2 remain. Part A changed no source file, no data and no build:**
 `check:baseline` passes on the unchanged build (`austerlitz-command-map.html`, 2,200,058 bytes, md5 `45f8f662ef828d2e1ab593a3b87b6ff7`,
 SHA-256 `bca73918aed88c62c7b564e6f9531b20b51eedb54554d272dfeb27b45eb10794`) and `check:data` finds 131 of 131 declarations identical
 to `archive/step5c-45f8f662.html`. Written against `main` at `7437dcc` (PR #58 merged); line numbers refer to that commit; the code is the
-source of truth. The next owner decision is 235.
+source of truth. The next owner decision is 236.
 
 Scope: roadmap step 6 (`docs/ROADMAP.md`: "Later, each its own decision: a phone layout; a measured pass on real hardware; figure level of
 detail"; findings A-4 and P-1 of `docs/FINAL_AUDIT.md`; decisions 137, 138, 139). Part A specifies all three items and builds none of them.
@@ -955,3 +957,39 @@ On 22 October 2026 the owner wrote: "Let's go with your recommendations for all 
 | 234 | the departures of §9.4 | (a): accepted as built | recorded here; nothing changed |
 
 The next owner decision is 235.
+
+## 11. Item 1: the owner's runs, and decision 235 (question 138 retired)
+
+**The runs.** On 22 October 2026 the owner ran the route twice (L1, L2; `step6-perf-route 3`, pasted into the console) on `main` after #60 (the
+build of 2,218,404 bytes, the reports' `bodyBytes`), "on a windows desktop": Chrome 155 on Windows, an **NVIDIA GeForce RTX 4070** through
+ANGLE and Direct3D 11, 32 cores, 32 GB, a 2,560 x 1,440 screen at 144 Hz (the measured refresh 6.9 ms), the page drawn at 2,560 x 1,305 at
+density 1, effects on at scale 1.3, not `lowTier`. The reports, verbatim: `docs/step6-evidence/perf-L1-desktop.txt` and `.json`,
+`perf-L2-desktop.txt` and `.json`. L3 (the wrapper page on the same machine) and the phone's P1 and P2 were not run.
+
+**The rule of §3.4, applied as written** (`node` over the two JSON files):
+- both runs **stand**: the refresh measured (6.9 ms), no note, no segment hidden; a long frame is one above 25 ms (max(1.5 R, 25));
+- the four **decisive** orbits (`overview`, `ph8-overview`, `pratzen-low-4x`, `pratzen-low-10x`) have **0% long frames in both runs**; no
+  segment of either run has one (the longest interval 20.8 and 20.9 ms, in the played segments); every segment at or within 1 frame a second
+  of 144 frames a second but the played ones (139-141);
+- so **rule 2: no decisive segment drops frames, and 138 is retired** (nothing is built; item 2 closes).
+
+**The departure, recorded (decision 235).** Decision 138 and §3.4 name "an ordinary integrated GPU", and the protocol (§2.3) the owner's Windows
+laptop with Intel graphics. These runs are a desktop with a current discrete GPU. Asked how they should count (options: run L1 and L2 on the
+Intel laptop as the rule says; decide 138 from these; leave 138 open), the owner chose: **"Decide 138 from these."** So 138 is decided on a
+machine far stronger than the one it names: these runs show that the build holds a 144 Hz refresh on such a desktop, and they say nothing of an
+integrated GPU, nor of the phone (question 222 still waits on P1 and P2).
+
+**What the runs show besides (fact, from the reports; one machine, two runs):**
+- per frame, the app's JavaScript took 1.9-6.1 ms at the median (`js50`; 6.0-7.0 ms at the 95th percentile while playing at 4x) and the GPU
+  1.7-5.0 ms at the median, at most 5.5 at the 95th percentile (WebGL2's timer query): both well inside the 6.9 ms of a 144 Hz refresh;
+- hiding the figures and standards (the `-figures` segments) halved the triangles (2.52 to 1.26 million in the Overview) and cut the draw
+  calls by about 70% (832 to 247) and the JavaScript by about a third (4.9 to 3.1 ms in the Overview's orbit), with the GPU's median as before
+  or lower (5.0 to 4.4 ms and 4.8 to 4.5 ms in the Overview's orbit; 4.7 to 4.3 and 4.7 to 2.1 in the low view's): on this GPU the triangles
+  are not what a frame waits on;
+- the GPU's medians of the same segment differ between runs by about a factor of two in some segments (the low view held: 2.4 ms in L1, 4.6 in
+  L2; the 10.33x orbit 4.6 and 2.2), values falling near 2.2 or near 4.6 ms (inference: the GPU's clock states or the timer's resolution on this
+  driver; not examined); no segment's frame interval moved with them.
+
+**What remains of item 1:** L3, P1 and P2 (the phone's runs decide question 222, the phone's own drawing, and decision 229, the phone cases'
+height); no other decision waits on them. Item 2 is retired; item 3 is built (§9-§10). Under decision 230, `docs/FINAL_AUDIT.md`'s P-1 now
+carries a note pointing here. The next owner decision is 236.

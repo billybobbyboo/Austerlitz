@@ -664,6 +664,10 @@ within one run; it says nothing of a visitor's frame rate on a GPU, which no sta
 4x and 227,649 at 1x, where formations are footprints, so about 2.29 million are figures and standards. On a GPU this is likely fine on a
 desktop and uncertain on an integrated laptop GPU or a phone (INFERENCE; question 139). It is the lever for the open "figure level of detail"
 item (question 138).
+*Note (roadmap step 6, decision 230; a records-only note, the finding above unchanged):* the number is an inference the census corrects: the
+1x frame it subtracts also lacks the trees, the scrub, the buildings and every shadow, so the figures and standards are 1.23 million triangles,
+49.7% of the low Pratzen view, not about 91% (`docs/STEP6_SPEC.md` §0.2, §3.1). Question 138 was retired by decision 235 on the owner's desktop
+runs (an RTX 4070: no long frame in any segment; `docs/STEP6_SPEC.md` §11).
 
 **P-2 · minor · About a quarter of the file is never run by a visitor.** FACT: the self-test (12.8%) and comments (10.1%); the textures are
 37.8%, the normal maps alone 20.9%. Nothing is minified. Served compressed this matters less (INFERENCE: base64 JPEG compresses poorly, the

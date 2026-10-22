@@ -1,5 +1,26 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 6 item 1: the owner's desktop runs; decision 235 (question 138 retired)
+
+**Status: records only, on `claude/upbeat-hamilton-y9utq8` (begun again from `main` at `a8afeec`, #60 merged). No source file, no data file
+and no build changed:** `austerlitz-command-map.html` 2,218,404 bytes, md5 `c9d29c149b613bff059598e4fe8c8d03` (unchanged).
+
+On 22 October 2026 the owner ran the frame-time route twice (L1, L2) on `main` after #60, "on a windows desktop": Chrome 155, an NVIDIA GeForce
+RTX 4070, 144 Hz. The reports are kept verbatim (`docs/step6-evidence/perf-L1-desktop.*`, `perf-L2-desktop.*`). Decision 138 and §3.4's rule name
+an integrated GPU (the protocol, the owner's Intel-graphics laptop); asked how these runs should count, the owner chose "Decide 138 from these"
+(**decision 235**). Applied as written: both runs stand (refresh 6.9 ms measured, nothing hidden); no segment of either has a long frame
+(above 25 ms; the decisive orbits 0% in both; the longest interval 20.9 ms); **rule 2: question 138 retired, item 2 closed**. The departure is
+recorded: a fast discrete GPU decided what 138 asked of an integrated one, and these runs say nothing of integrated graphics or the phone.
+Besides (one machine): JavaScript 1.9-6.1 ms and the GPU 1.7-5.0 ms per frame at the median; hiding the figures halved the triangles and cut the
+calls by about 70% without slowing or speeding the frame interval (`docs/STEP6_SPEC.md` §11).
+
+Decision 230 applied: `docs/FINAL_AUDIT.md`'s P-1 carries a records-only note (49.7%, 1.23 million triangles, not about 91%; 138 retired).
+Recorded in `docs/STEP6_SPEC.md` §11, `docs/ROADMAP.md`, `CLAUDE.md` (the next owner decision is 236) and the evidence README. L3, P1 and P2
+remain (questions 222 and 229 wait on the phone's runs).
+
+**Verified:** `check:baseline` passes on the unchanged build (`c9d29c14...`, 2,218,404 bytes); `check:data` 131 of 131 identical; `npm test` all 9
+suites and the height guard pass; the rule applied by a `node` reading of the two JSON reports (§11). Records only: no page check re-run.
+
 ## 2026-10 · Roadmap step 6 item 3: owner decisions 231-234 applied
 
 **Status: on `claude/upbeat-hamilton-y9utq8` (PR #60), with Part B.** On 22 October 2026 the owner wrote: "Let's go with your recommendations
