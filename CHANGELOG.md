@@ -1,5 +1,104 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 6 item 3: owner decisions 231-234 applied
+
+**Status: on `claude/upbeat-hamilton-y9utq8` (PR #60), with Part B.** On 22 October 2026 the owner wrote: "Let's go with your recommendations
+for all questions, then I'll merge." Each of questions 231-234 (`docs/STEP6_SPEC.md` §10) is decided as recommended and recorded in §10.1,
+`docs/ROADMAP.md` and `CLAUDE.md`; the next owner decision is 235. No data changed (`check:data` 131 of 131 identical). The build changed by a
+comment only (`LABELS.phone`'s, recording 231): **2,218,404 bytes, md5 `c9d29c149b613bff059598e4fe8c8d03`** (was 2,218,401, `82b21175...`);
+`check:baseline` moved to it.
+
+- **231 (a):** the phone layout's words as proposed (`LABELS.phone`: "Menu", the grip's "The phase text in full", "Close the panels", the speed
+  button's "Playback speed" with the speed, the list's "Phases"); nothing else changed.
+- **232 (a):** the phone cases' limits as measured (`tools/visual/thresholds.js`: their `UNOBSTRUCTED` baselines, `DROP_LIMIT`s and `PHONE`'s
+  timeline ceilings, framing floors, cut and reach lists); their comments now record the decision instead of "proposed".
+- **233 (a):** `narrow-390` retired: removed from `tools/visual/cases.js` (37 cases); its limits kept in `thresholds.js` as the record (decisions
+  122, 141, 146) and deleted after them; `TIMELINE_RECORDED` empty; `remeasure.js` holds the phone cases to their own ceilings, not 92 px.
+  `phone-390-first` measures that screen as a phone (density 3, touch).
+- **234 (a):** the departures of §9.4 accepted as built (the layout's checks a live block; the current phase the sheet's title, not in the
+  caption on a phone held upright; Watch without a phase list; decision 225's removals held landscape too; "Accuracy and sources" two presses
+  away and "Whose eyes?" three on a phone held upright).
+
+**Verified (on this build):** `npm test` all 9 suites and the height guard pass; `check:data` 131 of 131 identical; `check:baseline` passes;
+**`check:visual` passes in full**: 37 cases, the self-test's 242 checks and every live block, the phone block included ("STAGE0: all checks
+passed"); CI on `afd9ce0` green (npm test, check:data, check:chronology, check:contrast, check:selftest).
+
+## 2026-10 · Roadmap step 6 item 3 Part B: the phone layout (decisions 223-229)
+
+**Status: built on `claude/upbeat-hamilton-y9utq8` (draft PR #60, after the decisions' record), for review; owner questions 231-234 open.**
+Begun on the owner's word of 21 October 2026, "Yes, start Item 3 part B." (decision 215 (a): while item 1 waits on the owner's runs). No data
+changed: `check:data` 131 of 131 declarations identical to `archive/step5c-45f8f662.html` (the reference kept). The build changed:
+`austerlitz-command-map.html` **2,218,401 bytes, md5 `82b21175e1f06b61eb743cdaa536527f`** (was 2,200,058, `45f8f662...`); `check:baseline`
+moved to it. The specification and the record are `docs/STEP6_SPEC.md` §9 (as built, measured, the checks, the departures) and §10 (questions).
+
+**What changed (presentation and checks only).** Below 720 px wide and above 430 px tall (`style.css`'s phone block, `app.js` `PHONE_Q`):
+- the compact timeline (decisions 223, 225): one row of the transport, the clock and one speed button (`#speedbtn`); the caption and "?" below;
+  no ten-minute steps, no four speeds, no Eyes button; no act row; 121 px (172-174 px before), 155 px in Watch (178);
+- the phases (224 (a)): a band of ticks on the axis with no press; pressed in a list in the dispatch sheet (`#phlist`, 44 px rows under the
+  acts' names as headings), which folds when one is pressed;
+- the sheets: the dispatch card at the foot, its head shown (the readings whole, decision 174) and its grip (`#dgrip`) opening it whole; the
+  dossier (55%) and the rail (60%, its own close `#railclose`) as sheets, the rail giving way to a dossier; the first card at the foot;
+- the Menu (`#menubtn`, 44 px): the tools and, in Study, the presentation switch; closed by a tool's press, a press outside, Esc, Watch or Clean;
+- the views framed into the freed area: the presets and Follow's distance moved back along the line of sight by `portraitK()`, to the angle
+  `PORTRAIT_FIT.t` 0.25 (a design value, measured by `tools/step6/portrait-fit.js`: 95 map items in the free area over the eight phases at
+  390 x 844, against 63 without it; `docs/step6-evidence/portrait-fit.log`, `portrait-fit-low.json`; one run per value), at most 3 times as far;
+  elsewhere the factor is 1, and no view of any other harness case moves.
+Held landscape (430 px tall or less; decision 226): today's layout, with decision 225's controls off its timeline (Watch's row keeps its
+caption and its speed on the screen), the tools standing down under the first card, the Layers panel in the tools' place, the switch clear of
+a dossier. Words proposed in `LABELS.phone` (question 231).
+
+**The checks (decision 228 (a)).** `check:visual`: eight phone cases (`phone-390-first`, `-explore`, `-dossier`, `-watch`, `-layers`,
+`phone-360-explore`, `phone-430-explore`, `phone-844x390-explore`) with a device (density 3, touch, a phone's user agent), reached by taps,
+measured by `tools/visual/phone-measure.js` (new; `tools/step6/phone-probe.js` reads it too) and judged on four zero-limits, a framing floor, a
+timeline ceiling, a baseline and a drop limit each: the measured values, **proposed** (question 232; `thresholds.js` `PHONE`, `UNOBSTRUCTED`,
+`DROP_LIMIT` entries added, **no existing limit moved**); the harness's live phone block; `check:contrast`'s second page at 390 x 844 with ten
+phone states; `css-test.js`'s phone layout check; `runtime-test.js`'s dry run of the Menu, the sheet and the framing.
+
+**Measured on this build** (the harness's phone cases): the free share 0.592 on the first screen at 390 x 844 (0.44 before), 0.653 after
+"Explore" (0.20), 0.315 with a dossier (0.04), 0.311 with the Layers panel (0.13), 0.817 in Watch (0.79); 0.625 at 360 x 800, 0.685 at
+430 x 932, 0.690 held landscape (0.69); no press target under 24 px but the event markers, no overlapping panels, no text under 10.5 px;
+6-17 map items placed in the free area (0 of 0 after "Explore" at 390 px in Part A).
+
+**Uncertain, open or not verified.** `narrow-390` (decision 122's case) drops 9 against its limit of 7 on this build: `check:visual` fails
+there until the owner decides (question 233); no limit was moved. The current phase is not in the caption on a phone held upright (its row
+gives the phase's title way first, decision 159): it is the sheet's title (question 234). "Accuracy and sources" is two presses away on a phone
+and "Whose eyes?" three (the Menu, the Panels, the Command tab; decision 225 keeps it there; question 234). Decision 229 (Safari's height)
+waits on the iPhone's report. Chromium with touch emulation only: no Safari, no real finger, no screen-reader pass on a phone, no frame time on
+a phone (item 1).
+
+**Review.** One independent read-only review (17 findings): the phone query also took small phones held landscape (now above 430 px tall
+only); the reach count missed the rail's tabs ("Whose eyes?" three presses, not two); the runtime dry run could not fail on its key property;
+`expectState` did not check the phone state; the Menu stayed open after a key changed the presentation; the caption's phase title allowed cut
+where the record said it was named; the cut measure skipped a text's own overflow inside a sheet; focus lost through the Menu and the switch's
+moves; the speed check's start, the harness's page reuse, the records' "real taps", Follow's distance, the sheet staying open on a phase press,
+the acts' headings, the single-run design value: each fixed or recorded (`docs/STEP6_SPEC.md` §9). Two left as they were and recorded: the
+height query applying to any short desktop window, and the Panels button's `aria-expanded` while a dossier stands over the rail.
+
+**Verified (on the final tree unless said):** `npm test` all 9 suites and the height guard pass (runtime-test 0 warnings, its phone dry run
+included); `check:data` 131 of 131 identical; `check:chronology` 0 errors; `check:baseline` passes on this build (`82b21175...`, 2,218,401 bytes).
+`check:visual` (the full run, on the build before the last held-landscape fix, which touches only views 430 px tall or less): 242 checks pass,
+2 fail: `narrow-390`'s 9 drops against its limit 7 (question 233, expected, no limit moved) and the live phone block's sheet check, a harness
+step fixed after it (a phase pressed now folds the sheet; `17d6ddb`), which the self-test run below passes; all eight phone cases within every
+limit and zero-limit; `phone-844x390-explore` measured and judged again after the fix (no failure). `check:contrast` and `check:selftest` ran on the same build (no page they open is 430 px tall or less).
+`check:contrast`: every text at AA in the 35
+states and the ten phone states, drawn in the embedded faces, the six start-up cases pass (244 context warnings, at most 248). `check:selftest`:
+242 checks and every live block pass, the phone block included. CI on `17d6ddb`: npm test, check:data, check:chronology, check:contrast and
+check:selftest pass (CI does not run `check:visual` on this branch). The phone probe at six sizes (`docs/step6-evidence/phone-partB.json`).
+
+## 2026-10 · Roadmap step 6: owner decisions 215-230 recorded
+
+**Status: records only, on `claude/upbeat-hamilton-y9utq8` (begun again from `main` at `a107472`, #59 merged). No source file, no data file and
+no build changed:** `austerlitz-command-map.html` 2,200,058 bytes, md5 `45f8f662ef828d2e1ab593a3b87b6ff7` (unchanged). On 21 October 2026,
+after #59 was merged, the owner wrote: "Go with your recommendations for all." Each of questions 215-230 (`docs/STEP6_SPEC.md` §7) is decided as
+recommended and recorded in `docs/STEP6_SPEC.md` §0.3 (the table, with when each applies), `docs/ROADMAP.md` (step 6's row and a decisions
+table) and `CLAUDE.md` (the current state; the next owner decision is 231).
+
+What follows from them, and what does not yet: item 1 waits on the owner (a hosted copy, decision 217; five runs, §2.3); its reports decide
+138 by §3.4's rule (218), the phone's to 222, the iPhone's viewport to 229, and its records commit carries P-1's note (230). Item 3's Part B
+may begin meanwhile (215 (a)) under 223-229; nothing of it is begun here (it is its own task).
+
+**Verified:** `check:baseline` passes (`45f8f662`, 2,200,058 bytes); `check:data` 131 of 131 identical; records only, so no suite was re-run.
+
 ## 2026-10 · Roadmap step 6 Part A: the specification (real hardware, figure level of detail, a phone layout)
 
 **Status: written on `claude/upbeat-hamilton-y9utq8` (draft PR #59), for review. No source file, no data file and no build changed:**

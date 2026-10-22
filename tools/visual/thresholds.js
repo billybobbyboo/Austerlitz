@@ -113,6 +113,16 @@ DROP_LIMIT["plans-overview"]=12;   /* was 11; loosened (decision 141) */
    limits unchanged (question 145 not needed). Each value: was, is and why, in CHANGELOG.md */
 UNOBSTRUCTED["narrow-390"]=[0.438,0.507];   /* decision 146 (roadmap step 2, the owner's answer (a)): narrow-390 re-measured once under decision 127 (b)'s words; was [0.46,0.507], is [0.438,0.507] */
 UNOBSTRUCTED["narrow-1024"]=[0.533,0.628];   /* decision 164 (roadmap step 3, the owner's answer of 11 October 2026): narrow-1024 re-measured once for the Panels button, which widens the tools' box by 37 px (measured 0.5334 on its build, 0.5364 before); was [0.535,0.628], is [0.533,0.628]; its drop limit kept */
+/* roadmap step 6 item 3 Part B (decision 228 (a)): the phone cases' baselines and drop limits, what the build that adds the phone layout measures
+   there (rounded down to 0.1 point; the drops as measured), set on the owner's word (decision 232 (a), 22 October 2026); a phone case has no
+   1280 x 720 measure (its device is a phone's). narrow-390 (decision 122's case at density 1) is retired by decision 233 (a): on this build it
+   dropped 9 against its limit 7; phone-390-first measures that screen as a phone. Its limits above are kept as the record and deleted here */
+delete DROP_LIMIT["narrow-390"]; delete UNOBSTRUCTED["narrow-390"];
+UNOBSTRUCTED["phone-390-first"]=[0.591,null]; UNOBSTRUCTED["phone-390-explore"]=[0.652,null]; UNOBSTRUCTED["phone-390-dossier"]=[0.315,null];
+UNOBSTRUCTED["phone-390-watch"]=[0.817,null]; UNOBSTRUCTED["phone-390-layers"]=[0.310,null]; UNOBSTRUCTED["phone-360-explore"]=[0.625,null];
+UNOBSTRUCTED["phone-430-explore"]=[0.685,null]; UNOBSTRUCTED["phone-844x390-explore"]=[0.690,null];
+DROP_LIMIT["phone-390-first"]=9; DROP_LIMIT["phone-390-explore"]=2; DROP_LIMIT["phone-390-dossier"]=1; DROP_LIMIT["phone-390-watch"]=2;
+DROP_LIMIT["phone-390-layers"]=0; DROP_LIMIT["phone-360-explore"]=3; DROP_LIMIT["phone-430-explore"]=2; DROP_LIMIT["phone-844x390-explore"]=3;
 const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harness machine */
 /* Stage 2E (section J, 2E): every paper-map view is a true north-up plan: GEOREF.NORTH within 0.5 degrees of up; screen pixels
    per true km at four places equal to 1% (on the 2D build's tilted staff map they differ by 6.0% and north is 17.8 degrees
@@ -130,13 +140,52 @@ const PAPER_MIN_PXKM={"paper-north-up":28,"paper-laptop":21};
 const TIMELINE_MAX=92;
 /* Stage 7B (owner decision 122): narrow-390, the first screen at 390 x 844, is a new case whose timeline wraps (172 px on the 6D build); its
    height is recorded in the report, not held to TIMELINE_MAX, until the project takes up a phone layout. Every other view is held as before */
-const TIMELINE_RECORDED=["narrow-390"];
+const TIMELINE_RECORDED=[];   /* narrow-390 until decision 233 (a) retired it; the phone cases are held to their own ceilings (PHONE.timeline) */
 /* Stage 3D (section H): in the phase-8 Overview views no arrow head more than a quarter hidden by a panel or the screen's edge
    (4 of 5 Allied arrows in Part A; 2 of 5 still wholly under the 90 px timeline before the Overview was fitted); in every
    landscape view on a build with the view offset, the orbit target at the free rectangle's centre within 1 px. New */
 const HEADS_SHOWN=["ph8-overview-study","ph8-overview-watch"], FOCUS_PX=1;
 module.exports.HEADS_SHOWN=HEADS_SHOWN; module.exports.FOCUS_PX=FOCUS_PX;
 module.exports.TIMELINE_MAX=TIMELINE_MAX; module.exports.TIMELINE_RECORDED=TIMELINE_RECORDED;
+/* roadmap step 6 item 3 Part B (docs/STEP6_SPEC.md section 4.5; decision 228 (a)): the phone cases' own limits, each measured once on the build
+   that adds the phone layout and set on the owner's word (the values below are that build's measures, set on the owner's word, decision 232 (a);
+   none moves an existing limit). Decided as measured: decision 232 (a), 22 October 2026. timeline: the timeline's ceiling per case (the phone's, in place of TIMELINE_MAX's 92 px, which holds from
+   1024 px); framing: the floor of the map layer's items placed wholly inside the free rectangle; cutAllow: the text a case may show cut, each
+   with its reason (every other cut text fails); reachAllow: a feature more than one press away, with the presses it takes and the reason (every
+   other feature is on the screen or one named control away). The four zero-limits (no press target under 24 px but the event markers, decision
+   167; no cut text but cutAllow's; no two panels overlapping; every feature one control away but reachAllow's) hold in every phone case; 44 px
+   is recorded, not held */
+const PHONE={timeline:{}, framing:{}, cutAllow:{}, reachAllow:{}};
+/* measured on the build that adds the layout (docs/STEP6_SPEC.md section 9.3; the harness's report of its phone cases), set as measured (decision 232 (a)) */
+["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-layers","phone-360-explore","phone-430-explore"].forEach(n=>{ PHONE.timeline[n]=121; });
+PHONE.timeline["phone-390-watch"]=155;   /* Watch: the presentation switch in the control row (decision 60), a third row */
+PHONE.timeline["phone-844x390-explore"]=91;   /* held landscape: the layout above 720 px, one control row (90.5 px) */
+Object.assign(PHONE.framing,{"phone-390-first":17,"phone-390-explore":6,"phone-390-dossier":5,"phone-390-watch":9,"phone-390-layers":2,
+  "phone-360-explore":4,"phone-430-explore":7,"phone-844x390-explore":10});
+/* the caption's parts give way in order where its row is narrow (decision 159): the phase's title first, then the act, then the events' names;
+   each is whole elsewhere on the screen or one press away (the act as a heading of the phase list, the phase as the dispatch sheet's title, the
+   event in the sheet and in its dossier). Held landscape, the track's act and phase names are cut where their band is narrower than the name
+   (decision 53's proportional axis), as on any window under about 1,280 px; the current phase whole on its plate (decision 53) */
+const CAP_GIVES=[{el:"span.evt",why:"ellipsis",reason:"the caption's event name gives way (decision 159); whole in the dispatch sheet and its dossier"},
+  {el:"span.act",why:"ellipsis",reason:"the caption's act gives way after the phase (decision 159); whole as a heading of the phase list"}];
+/* held landscape the phase's title is drawn cut before it gives way whole; upright it gives way whole (decision 159's fitCaption), as measured */
+const CAP_PH={el:"span.cap-ph",why:"ellipsis",reason:"the caption's phase title gives way first (decision 159); the current phase whole on its plate on the track"};
+const TRACK_CUT=[{el:"button.act-btn",why:"ellipsis",reason:"an act band's name on the proportional track, narrower than its name (decision 53)"},
+  {el:"span.step-l",why:"ellipsis",reason:"a phase's name on the proportional track, narrower than its name; the current one whole (decision 53)"}];
+["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-watch","phone-390-layers","phone-360-explore","phone-430-explore"].forEach(n=>{ PHONE.cutAllow[n]=CAP_GIVES; });
+PHONE.cutAllow["phone-844x390-explore"]=CAP_GIVES.concat([CAP_PH],TRACK_CUT);
+/* more than one press: "Accuracy and sources" is in the rail (the Menu, then the Panels: two) and "Whose eyes?" in its Command tab (three) below
+   720 px; held landscape "Whose eyes?" two (the Panels, the tab); the phases, where an open dossier or the Layers panel stands in place of the
+   dispatch sheet (its close, then the grip) or the first card stands over it (Explore, then the grip); in Watch below 720 px what stands behind
+   the Menu (Study, then the Menu) and the rail's (Study, the Menu, the Panels, and the Command tab for "Whose eyes?") */
+const TWO={sources:{depth:2,reason:"in the rail: the Menu, then the Panels"},eyes:{depth:3,reason:"the Command tab, in the rail: the Menu, the Panels, the tab (decision 225 keeps it there)"}};
+["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-layers","phone-360-explore","phone-430-explore"].forEach(n=>{ PHONE.reachAllow[n]=Object.assign({},TWO); });
+["phone-390-first","phone-390-dossier","phone-390-layers"].forEach(n=>{ PHONE.reachAllow[n].phases={depth:2,reason:"the dispatch sheet stood down (the first card, a dossier, the Layers panel): its close, then the grip"}; });
+PHONE.reachAllow["phone-390-watch"]={layers:{depth:2,reason:"Watch shows no tools: Study, then the Menu"},paperMap:{depth:2,reason:"Study, then the Menu"},
+  panels:{depth:2,reason:"Study, then the Menu"},vantages:{depth:2,reason:"Study, then the Menu"},tour:{depth:2,reason:"Study, then the Menu"},
+  phases:{depth:2,reason:"Study, then the dispatch sheet's grip"},sources:{depth:3,reason:"Study, the Menu, the Panels"},eyes:{depth:4,reason:"Study, the Menu, the Panels, the Command tab"}};
+PHONE.reachAllow["phone-844x390-explore"]={eyes:{depth:2,reason:"the Command tab, in the rail: the Panels, then the tab (as on any window under 1,080 px)"}};
+module.exports.PHONE=PHONE;
 /* Stage 4B (docs/STAGE4_SPEC.md section A.6): the Stage 0 darkness limit, and the views the harness renders through the day without
    the shadow toe: [case, clock or null (the case's own), factor or null (the case's own)]. New */
 const SOLID_BLACK=0.0005, LIGHT_SWEEP=[];
@@ -252,7 +301,7 @@ module.exports.check=function(name,m,spec,opts){
      control row (#tb-vm) */
   const TL=m.timeline;
   if(TL&&TL.hasRow){
-    if(TL.height!==null&&TL.height>TIMELINE_MAX&&!TIMELINE_RECORDED.includes(name)) f.push("the timeline is "+TL.height+" px tall (at most "+TIMELINE_MAX+")");
+    if(TL.height!==null&&TL.height>TIMELINE_MAX&&!TIMELINE_RECORDED.includes(name)&&!(spec&&spec.device)) f.push("the timeline is "+TL.height+" px tall (at most "+TIMELINE_MAX+")");
     if(m.presentation==="watch"&&!(TL.switchInRow&&TL.switchOpacity===1)) f.push("Watch: the presentation switch is not in the timeline's control row at full opacity ("+TL.switchOpacity+")");
     /* roadmap step 1 (T-6): strict, the reading must be shown (true); before step 1 only false failed, and a caption with no derived reading
        at all (null) passed. CAP_DERIVED_NONE names a case exempt, with its reason (none) */
@@ -290,6 +339,19 @@ module.exports.check=function(name,m,spec,opts){
     const miss=Object.keys(Pm.drawn).filter(k=>!Pm.drawn[k]); if(miss.length) f.push("paper map does not draw: "+miss.join(", "));
     if(FRAMED.includes(name)&&Pm.frameInFree<1) f.push("paper map: "+(100*(1-Pm.frameInFree)).toFixed(1)+"% of the modelled ground is off screen or under a panel (on screen "+(100*Pm.frameOnScreen).toFixed(1)+"%)");
   }
+  /* roadmap step 6 item 3 Part B (decision 228 (a)): a phone case's own limits and its four zero-limits (PHONE above) */
+  if(spec&&spec.device&&m.phone){ const P=m.phone, PL=LIM.PHONE;
+    if(P.fail2_5_8.length) f.push(P.fail2_5_8.length+" press targets under 24 x 24 px without 2.5.8's spacing exception (the event markers apart, decision 167): "+P.fail2_5_8.slice(0,4).join("; "));
+    const ca=PL.cutAllow[name]||[], cut=P.cut.filter(c=>!ca.some(a=>a.el===c.el&&a.why===c.why));
+    if(cut.length) f.push(cut.length+" texts cut that the case does not name: "+cut.slice(0,4).map(c=>c.el+" ("+c.why+") \u201c"+c.text+"\u201d").join("; "));
+    if(P.outside.length) f.push(P.outside.length+" press targets partly off the screen: "+P.outside.slice(0,4).join("; "));
+    if(P.overlaps.length) f.push("interface panels overlap: "+P.overlaps.map(o=>o.a+"/"+o.b+" "+o.w+"x"+o.h).join(", "));
+    const ra=PL.reachAllow[name]||{};
+    Object.keys(P.reach).forEach(k=>{ const R=P.reach[k], a=ra[k];
+      if(R.depth===0||R.depth===1) return; if(a&&R.depth!==null&&R.depth<=a.depth) return;
+      f.push("the feature \u201c"+k+"\u201d is "+(R.depth===null?"not reachable ("+R.state+")":R.depth+" presses away ("+R.via+")")+": every feature on the screen or one named control away"); });
+    const fm=PL.framing[name]; if(fm!==undefined&&P.framing.inFree<fm) f.push("framing: "+P.framing.inFree+" of the map layer's "+P.framing.placed+" items inside the free rectangle, below the floor "+fm);
+    const tm=PL.timeline[name]; if(tm!==undefined&&m.timeline&&m.timeline.height>tm) f.push("the timeline is "+m.timeline.height+" px tall (the phone's ceiling here "+tm+")"); }
   if(strict){ requirements(name,m,spec,LIM).forEach(x=>f.push(x)); expectState(name,m,spec).forEach(x=>f.push(x)); }
   return f;
 };
@@ -303,7 +365,9 @@ module.exports.check=function(name,m,spec,opts){
 /* the limits by case, with overrides (remeasure.js re-judges a run with the values it proposes) */
 function limits(o){ o=o||{};
   return {DROP_LIMIT:Object.assign({},DROP_LIMIT,o.DROP_LIMIT||{}), UNOBSTRUCTED:Object.assign({},UNOBSTRUCTED,o.UNOBSTRUCTED||{}),
-    PAPER_MIN_PXKM:Object.assign({},PAPER_MIN_PXKM,o.PAPER_MIN_PXKM||{})}; }
+    PAPER_MIN_PXKM:Object.assign({},PAPER_MIN_PXKM,o.PAPER_MIN_PXKM||{}),
+    PHONE:{timeline:Object.assign({},PHONE.timeline,(o.PHONE||{}).timeline||{}), framing:Object.assign({},PHONE.framing,(o.PHONE||{}).framing||{}),
+      cutAllow:Object.assign({},PHONE.cutAllow,(o.PHONE||{}).cutAllow||{}), reachAllow:Object.assign({},PHONE.reachAllow,(o.PHONE||{}).reachAllow||{})}}; }
 module.exports.limits=limits;
 
 /* T-1: a console warning or error (or a failed console.assert), a page error, a crash or a failed request on any page the harness or
@@ -359,14 +423,17 @@ module.exports.CAM_TOL=CAM_TOL; module.exports.MAP_WPP_TOL=MAP_WPP_TOL; module.e
    no orbit focus (orthographic) */
 function requirements(name,m,spec,LIM){
   const f=[], need=(ok,what)=>{ if(!ok) f.push("not measured: "+what+" (T-5)"); };
-  const reading=!spec.fresh||spec.opening!==undefined, land=m.mode!=="staff", U=LIM.UNOBSTRUCTED[name], Dk=m.docking, TL=m.timeline;
+  const reading=!spec.fresh||spec.opening!==undefined||(!!spec.phone&&spec.phone!=="first"), land=m.mode!=="staff", U=LIM.UNOBSTRUCTED[name], Dk=m.docking, TL=m.timeline;
+  if(spec.device){ need(!!m.phone,"the phone measures: targets, cut text, overlaps, reach, framing (roadmap step 6 item 3, decision 228)");
+    if(LIM.PHONE.timeline[name]===undefined) f.push("no timeline ceiling for this phone case in thresholds.js PHONE (decision 228)");
+    if(LIM.PHONE.framing[name]===undefined) f.push("no framing floor for this phone case in thresholds.js PHONE (decision 228)"); }
   need(!!m.layer,"the map layer's pass (Stage 2D)");
   if(LIM.DROP_LIMIT[name]===undefined) f.push("no drop limit for this case in thresholds.js: its drops are unchecked (T-5)");
   if(!U) f.push("no unobstructed baseline for this case in thresholds.js: its share is unchecked (T-5)");
-  need(typeof m.unobstructed==="number"&&typeof m.unobstructed720==="number","the unobstructed share at the case's viewport and at 1280 x 720");
+  need(typeof m.unobstructed==="number"&&(!!spec.device||typeof m.unobstructed720==="number"),"the unobstructed share at the case's viewport and at 1280 x 720 (a phone case at its own only)");
   need(!!(Dk&&Dk.hasNowTab&&m.viewport),"the docking (the rail's Now tab, Stage 3B)");
   need(!!(TL&&TL.hasRow&&TL.height!==null),"the timeline's control row and height (Stage 3C)");
-  if(land){ need(!!(m.smoke&&m.smokePuffs),"the smoke's share (Stage 4E)"); need(m.focus!=null&&m.focus720!=null,"the orbit target against the free rectangle's centre (Stage 3D)"); }
+  if(land){ need(!!(m.smoke&&m.smokePuffs),"the smoke's share (Stage 4E)"); need(m.focus!=null&&(!!spec.device||m.focus720!=null),"the orbit target against the free rectangle's centre (Stage 3D)"); }
   else need(!!m.paper,"the paper map's geometry (Stage 2E)");
   if(reading) need(!!m.confShare,"the position-confidence marks' share (Stage 5B)");
   if(reading&&!spec.eye){ need(!!m.skeleton,"the evidence skeleton on, the whole day (Stage 5D)"); need(!!m.routes,"the ordered routes on (Stage 5F)");
@@ -394,7 +461,7 @@ function expectState(name,m,spec){
   const f=[], s=m.state;
   if(!s) return ["the case's state was not recorded (T-6; a report made by a harness before roadmap step 1): its clock, presentation, mode, factor, selection, camera, layers and the ground's vertex layout are unchecked"];
   const want=(what,got,exp)=>{ if(got!==exp) f.push("state: "+what+" is "+JSON.stringify(got)+", the case asks "+JSON.stringify(exp)+" (T-6)"); };
-  const reading=!spec.fresh||spec.opening!==undefined;
+  const reading=!spec.fresh||spec.opening!==undefined||(!!spec.phone&&spec.phone!=="first");
   if(spec.opening===undefined){
     const t=spec.expect&&spec.expect.t!==undefined?spec.expect.t:spec.t;
     if(!(typeof s.clock==="number"&&Math.abs(s.clock-t)<1e-9)) f.push("state: the clock is "+s.clock+", the case asks "+t+" (T-6)");
@@ -408,7 +475,13 @@ function expectState(name,m,spec){
     want("the Plans overlay",s.plan,spec.plan||null);
     want("the tour stop",s.tour,-1);
     want("the opening",s.opening,false);
-    want("the first-run card",s.firstRun,!!spec.fresh);
+    want("the first-run card",s.firstRun,!!spec.fresh&&!(spec.phone&&spec.phone!=="first"));
+    /* roadmap step 6 item 3 Part B (the review's item 5): a phone case stands in the phone state it measures: the phone layout on upright (not held
+       landscape), the Menu and the dispatch sheet closed, the Layers panel open in its own case only, a dossier in its own only, the rail hidden */
+    if(spec.phone){ const P=s.phone, up=spec.viewport[0]<=720&&spec.viewport[1]>430;
+      if(!P) f.push("state: the phone layout's state was not recorded (T-6)");
+      else { want("the phone layout",P.on,up); want("the Menu",P.menu,false); want("the dispatch sheet opened whole",P.sheet,false);
+        want("the Layers panel",P.layers,spec.phone==="layers"); want("a dossier",P.drawer,spec.phone==="dossier"); want("the rail",P.rail,false); } }
   } else {
     if(s.openingPlay) f.push("state: the opening's clock is still playing toward a step (OPENING.play) (T-6)");
     want("the first-run card",s.firstRun,false);
@@ -465,6 +538,24 @@ function checkLive(live,opts){
     const H=K.help||{}, sw=!!live.shortcuts||!legacy, seqOK=sw?(H.h2==="help-keys"&&H.h3==="help-body"&&H.h3b==="help-close"):(H.h2==="help-body"&&H.h3==="help-close");
     if(!(H.h1&&H.h1.open&&H.h1.focus==="help-close"&&seqOK&&H.h4&&!H.h4.open&&H.h4.focus==="tourbtn"))
       f.push("keys by real key presses: the overlay's focus: "+JSON.stringify(H)); }
+  /* roadmap step 6 item 3 Part B (decisions 223-225): the phone layout on the self-test's page narrowed to 390 x 844 (harness.js's phone block) */
+  if(req("phone","the phone layout at 390 x 844 by real clicks and keys (roadmap step 6 item 3, decisions 223-225)")){ const P=live.phone, bad=w=>f.push("the phone layout: "+w);
+    const S=P.start||{}, vh=S.vh||844, under=(x,lim)=>!!x&&x.shown&&x.h<=lim*vh+0.5, above=x=>!!x&&!!S.tb&&x.bottom<=S.tb.top+0.5;
+    if(!S.phone||!S.menuBtn||!S.menuBtn.shown||(S.tools&&S.tools.shown)||S.menu) bad("at 390 px the Menu is not the tools' one button: "+JSON.stringify({phone:S.phone,menuBtn:S.menuBtn,tools:S.tools}));
+    const M=P.menuOpen||{}; if(!M.menu||M.exp!=="true"||!(M.tools&&M.tools.shown)||!M.vmInTools||!M.focusInTools) bad("the Menu opened: "+JSON.stringify({menu:M.menu,exp:M.exp,vmInTools:M.vmInTools,focus:M.focus}));
+    const E=P.menuEsc||{}; if(E.menu||E.exp!=="false"||E.focus!=="menubtn") bad("Esc on the Menu: open "+E.menu+", focus "+E.focus+" (want closed, focus on the Menu)");
+    const T=P.menuTool||{}; if(T.menu||!T.layers) bad("a tool's press did not close the Menu and act: menu "+T.menu+", Layers "+T.layers);
+    const G=P.sheet||{}; if(!G.sheet||G.grip!=="true"||!(G.phlist&&G.phlist.shown)||!under(G.dispatch,0.62)||!above(G.dispatch)) bad("the dispatch sheet opened by its grip: "+JSON.stringify({sheet:G.sheet,grip:G.grip,phlist:G.phlist,dispatch:G.dispatch}));
+    const F=P.phase||{}; if(F.phase!==3||!F.cur||F.sheet) bad("a phase pressed in the sheet's list: phase "+F.phase+", current "+F.cur+", the sheet folded "+!F.sheet+" (want the fourth, folded)");
+    const A2=P.sheetAgain||{}; if(!A2.sheet||A2.grip!=="true") bad("the grip did not open the folded sheet again: "+JSON.stringify({sheet:A2.sheet,grip:A2.grip}));
+    const C=P.sheetClosed||{}; if(C.sheet||C.grip!=="false"||(C.phlist&&C.phlist.shown)||!under(C.dispatch,0.34)) bad("the dispatch sheet closed: "+JSON.stringify({sheet:C.sheet,phlist:C.phlist,dispatch:C.dispatch}));
+    const sp=(P.speeds||[]).map(x=>x.speed); if(sp.join()!=="1,2,4,0.5"||!(P.speeds||[]).every(x=>/^Playback speed /.test(x.name||""))) bad("the speed button: "+JSON.stringify(P.speeds));
+    const D=P.dossier||{}; if(!under(D.drawer,0.55)||!above(D.drawer)||(D.dispatch&&D.dispatch.shown)) bad("the dossier sheet: "+JSON.stringify({drawer:D.drawer,dispatch:D.dispatch}));
+    const R=P.rail||{}; if(!under(R.rail,0.6)||!above(R.rail)||R.railInert||(R.dispatch&&R.dispatch.shown)) bad("the rail sheet: "+JSON.stringify({rail:R.rail,inert:R.railInert,dispatch:R.dispatch}));
+    const RD=P.railDossier||{}; if(!(RD.drawer&&RD.drawer.shown)||(RD.rail&&RD.rail.shown)||!RD.railInert) bad("the rail under a dossier is not given way and inert: "+JSON.stringify({rail:RD.rail,inert:RD.railInert}));
+    const RC=P.railClosed||{}; if((RC.rail&&RC.rail.shown)||!RC.railInert) bad("the rail's close button did not close it: "+JSON.stringify({rail:RC.rail,inert:RC.railInert}));
+    const K=P.card||{}; if(!under(K.card,0.5)||!above(K.card)) bad("the first card is not a sheet within half the height above the timeline: "+JSON.stringify(K.card));
+    const B=P.back||{}; if(B.phone||B.menu||B.sheet||B.vmInTools||(B.menuBtn&&B.menuBtn.shown)) bad("given back its size, the phone layout stays: "+JSON.stringify({phone:B.phone,menu:B.menu,sheet:B.sheet,vmInTools:B.vmInTools})); }
   if(req("narrow","the window narrowed below 1080 px, then 2 and Esc by real key presses (roadmap step 3, SW-2, SW-3)")){ const N=live.narrow, by={};
     (N||[]).forEach(r=>{ by[r.at]=r; if(r.over) f.push("narrow layout: the rail over the dispatch card ("+r.at+", "+r.w+" px)"); });
     const n1=by["narrowed to 1000"], n2=by["2, Esc"], n3=by["700"], nw=by["widened back to 1280"];

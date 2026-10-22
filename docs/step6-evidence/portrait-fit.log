@@ -1,0 +1,8 @@
+# tools/step6/portrait-fit.js at 390 x 844 (density 3, touch, an iPhone's agent), on the build with the phone layout (PORTRAIT_FIT set on the live page per t).
+# First run: --t 0,0.45,0.6,0.75,0.9, stopped after t 0.45 (every t from 0.45 up gives the cap, kMax 3; its JSON was not written). Second run: --t 0.2,0.25,0.3,0.35 (portrait-fit-low.json).
+390x844 t 0     factor 1 | in the free area 63 of 87 placed (min a phase 2), dropped 30 | by phase 15/20 13/19 12/12 2/3 3/3 7/10 5/7 6/13
+390x844 t 0.45  factor 3 | in the free area 74 of 102 placed (min a phase 6), dropped 55 | by phase 10/15 12/16 9/10 11/16 6/10 7/12 9/12 10/11
+390x844 t 0.2   factor 1.401 | in the free area 78 of 114 placed (min a phase 3), dropped 38 | by phase 13/21 13/23 10/14 3/5 3/5 11/15 12/16 13/15
+390x844 t 0.25  factor 1.752 | in the free area 95 of 117 placed (min a phase 5), dropped 43 | by phase 18/22 18/24 12/12 6/7 6/7 13/18 5/8 17/19
+390x844 t 0.3   factor 2.102 | in the free area 78 of 107 placed (min a phase 4), dropped 47 | by phase 10/13 17/24 12/16 4/8 6/8 11/18 8/9 10/11
+390x844 t 0.35  factor 2.452 | in the free area 80 of 103 placed (min a phase 7), dropped 49 | by phase 11/12 9/15 8/10 11/12 7/9 13/21 10/13 11/11

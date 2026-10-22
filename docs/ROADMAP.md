@@ -14,7 +14,7 @@ from the code, the approach proposed, the work done conservatively, checked, rec
 | 3 | **Accessibility and robustness**: the shortcuts switch, hidden panels inert, the sources sheet a proper dialog, focus returned, reduced motion live and in CSS, the timeline's targets, focused map items drawn; the start-up message and the CDN integrity; "Whose eyes?" over corps counters, the dwell toggle, the eye level and a phase, the narrow layout, the effects leak; then a screen-reader session | A-1 to A-3, SW-1 to SW-12, S-1 to S-3, S-6 | 133, 134; 162-175 | merged (#51; `CHANGELOG.md`); the screen-reader session recorded complete on the owner's word (decision 175, 14 October 2026); done |
 | 4 | **The sourcing stage**: Part A, an inventory of every narrative statement and a register of readings (as Stage 6 did for dress); per-statement claims; the chronology's evidence from the sources; the second reading of the appearance quotes; the 6B data questions; the disputed hours settled | H-6, H-17; 125 (b), 128 (b) | 125, 128, 130, 136; 176-197 | done (#52); decisions 176-197 taken as recommended on 15 October 2026; step 4b part A applied 176, 177, 180, 181, 182, 184, 190, 191, 193, 195 and 197 on `claude/adoring-gauss-ubfas9` (draft PR #53; `CHANGELOG.md`), owner questions 198-201 |
 | 5 | **Records and polish** (any time; a records-only commit can take R-1, R-2 and R-7 at once) | R-1 to R-7, SW-13, the VISUAL_AUDIT leftovers (event glyphs, native tooltips, the scale bar's note), G-1, S-4; step 1's test hand-ons; H-18, H-19 (one spelling) | 170 (b), (c), 172; 205-212; 213 put | merged (#56; `CHANGELOG.md`); decisions 205-212 taken as recommended on 20 October 2026 and applied in PR #57 (`docs/step5-evidence/questions.md`); owner question 213 open; done |
-| 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139; 215-230 put | Part A written (`docs/STEP6_SPEC.md`, draft PR #59): the route and protocol for the owner's laptop and iPhone, the census and the level-of-detail options measured, the rule that decides 138 stated in advance, the phone screens and three layouts measured; owner questions 215-230 open; nothing built |
+| 6 | **Later, each its own decision**: a phone layout; a measured pass on real hardware; figure level of detail | A-4, P-1 | 137, 138, 139; 215-230; 231-234 | Part A merged (#59, `docs/STEP6_SPEC.md`); decisions 215-230 taken as recommended on 21 October 2026; item 1 waits on the owner's runs (hosting, question 217; five runs, §2.3); item 3's Part B, the phone layout, built (§9; PR #60), decisions 231-234 taken as recommended on 22 October 2026 (§10.1); decision 229 waits on item 1's P1 |
 
 ### What step 1 handed on (fact, from its commits; `CHANGELOG.md`)
 
@@ -297,12 +297,47 @@ the owner's word. Part C (PR #55): 203 (b) with (c), 204 (a), decided 18 October
   stricter, none of them a hit. Widening the pattern to accented names would restore the exemption: the owner's word, as any change to an
   assertion's reach.
 
+### Step 6: the owner decisions 215-230 (the answers)
+
+After #59 was merged the owner wrote (21 October 2026): "Go with your recommendations for all." Each is recorded with its options in
+`docs/STEP6_SPEC.md` §0.3 and §7; in short:
+
+| # | question | decision |
+|---|---|---|
+| 215 | the order | 1, then 2 or its retirement by the rule, then 3; 3's Part B may begin while 1 waits |
+| 216 | the route's departures | the played segments 12 s at 4x and ½x; frame intervals, not the readout |
+| 217 | the hosted copy | the owner's choice: GitHub Pages (all public) or another static host with the build and `tools/step6/` only |
+| 218 | the rule for 138 | as stated (§3.4) |
+| 219 | if 138 is built | no figure shadows and culling first, measured again; thinning under 8 px across only if still needed |
+| 220 | drops not the figures' | a performance step on the lever named, its own Part A |
+| 221 | culling | only within a built 138 |
+| 222 | the phone's drawing | after the phone's runs |
+| 223 | the phone layout | compact timeline, sheets (portrait), Menu, the views framed into the freed area |
+| 224 | the phases on a phone | off the axis as presses; the axis keeps ticks; the current phase in the caption and the list |
+| 225 | controls off the timeline | the ten-minute steps and Eyes button off; the speeds one button |
+| 226 | landscape | today's layout kept, its overlaps and Watch's row fixed |
+| 227 | new words | proposed in item 3's Part B, the owner decides |
+| 228 | the phone checks | eight cases with a device, contrast states, four zero-limits and the framing floor, limits on the owner's word; 44 px recorded |
+| 229 | Safari's viewport | the cases at P1's height |
+| 230 | P-1's number | a records-only note in `docs/FINAL_AUDIT.md`, in item 1's records commit |
+
+### Step 6 item 3 Part B: the phone layout (built; `docs/STEP6_SPEC.md` §9, §10)
+
+Begun on the owner's word of 21 October 2026 ("Yes, start Item 3 part B."), under decisions 223-229: below 720 px wide the compact timeline
+(121 px), the phases listed in the dispatch sheet, the dispatch, the dossier, the rail and the first card as sheets at the foot, the tools and
+the switch behind a Menu, the presets and Follow moved back along their line of sight into the freed area (`PORTRAIT_FIT.t`, measured); held
+landscape, today's layout with its overlaps and Watch's row fixed. The checks of decision 228: eight phone cases in `check:visual` with a
+device and their own measures (`tools/visual/phone-measure.js`), a live phone block, ten phone states in `check:contrast`, css-test and
+runtime-test checks. The owner decided questions 231-234 as recommended on 22 October 2026 ("Let's go with your recommendations for all
+questions, then I'll merge"): the words as proposed (231), the phone cases' limits as measured (232), narrow-390 retired, `phone-390-first` measuring
+that screen as a phone (233), the departures accepted (234). Decision 229 waits on the iPhone's report (item 1's P1). The next owner decision is 235.
+
 ### What step 6 Part A hands on (fact, from its commits and its review; `docs/STEP6_SPEC.md`, `CHANGELOG.md`)
 
-- **To the owner (item 1, question 139):** host a copy (question 217) and run the route five times (§2.3: L1-L3 on the Windows laptop with its
+- **To the owner (item 1, question 139):** host a copy (decision 217) and run the route five times (§2.3: L1-L3 on the Windows laptop with its
   Intel GPU, P1-P2 on the iPhone in Safari); paste the reports back with the two models. Nothing else in step 6 needs the owner's devices.
-- **To the analysis after item 1:** apply §3.4's rule to L1 and L2 (138 built or retired, mechanically); the phone's runs to question 222;
-  the iPhone's viewport line to question 229; a records-only commit with the reports and, under question 230, a note on P-1.
+- **To the analysis after item 1:** apply §3.4's rule to L1 and L2 (138 built or retired, mechanically, decision 218); the phone's runs to
+  decision 222; the iPhone's viewport line to decision 229; a records-only commit with the reports and, under decision 230, a note on P-1.
 - **To item 2, if built:** the options and their measures (§3.2), what the self-test would then check (§3.3); the far form's look against
   decision 107 (question 219); culling (question 221). Found by the census and not in the audit: no figure block is ever culled (three r128's
   `InstancedMesh` sets `frustumCulled` false); the shadow pass is 41% of a 4x frame; P-1's "about 91%" is about half (49.7%).

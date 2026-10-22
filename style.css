@@ -577,9 +577,6 @@ body.mode-staff #vignette{display:none}
   #tourbar{width:calc(100vw - 20px);bottom:calc(var(--tb) + 10px);padding:13px 15px 11px}
   #tour-t{font-size:var(--t-h3)}
   #tour-x{font-size:var(--t-prose)}
-  .tb-icon{min-width:42px;min-height:38px}
-  .tb-play{min-width:66px;min-height:38px}
-  .tb-follow{min-height:38px}
   .tb-sit{font-size:var(--t-ui);padding:0 10px 6px}
   /* decision 174 (the owner's answer of 11 October 2026): the card keeps its derived readings at this width, each its own line (the caption's
      box, 160-195 px here, cannot hold the plateau reading's 240 px whole, decision 159) */
@@ -589,17 +586,8 @@ body.mode-staff #vignette{display:none}
   .dispatch ol{display:none}
   .dispatch p.lede{font-size:var(--t-prose);max-height:26vh;overflow:auto}
   .tools .grp{max-width:52vw}
-  .tb-top{gap:8px;padding:2px 10px 0;flex-wrap:wrap}
-  .tb-trackwrap{margin:0 10px}   /* roadmap step 3 (A-3): the 2 px given to the rail, as in the base rule */
-  .clockbox small{display:none}
-  #clockread{font-size:var(--t-h3)}
-  .speeds{order:4;margin-left:auto}
   #viewmode{top:10px}
   .vm-btn{padding:6px 11px;font-size:var(--t-small)}
-}
-@media (max-width:420px){
-  .tb-ctrl{flex:1 1 auto}
-  .speeds .t{padding:6px 6px}
 }
 
 .legend .keys{margin-top:5px;padding-top:0;border:0;line-height:1.7}
@@ -746,6 +734,105 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
   font:11px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:#CFE3C8;
   background:rgba(4,8,10,.84);border:1px solid rgba(160,200,150,.25);padding:6px 9px}
 #devstats[hidden]{display:none}
+
+/* ---------- roadmap step 6 item 3 (docs/STEP6_SPEC.md section 4; decisions 223-229): the phone layout, below 720 px wide ----------
+   A phone held landscape (844 x 390; 667 x 375 and 640 x 360 too: the query asks for more than 430 px of height, the review's item 3) keeps
+   the layout above (decision 226). The compact timeline (decisions 223, 225): one row of the transport (event
+   back, Play, event forward, Follow), the clock and the speed as one button (#speedbtn); then the caption with "?" (and, in Watch, the
+   presentation switch); the ten-minute steps, the four speeds and "Whose eyes?" leave it (the keys and the Command tab keep them). The track:
+   no act row; the phases a band of their ticks with the current one marked, no press on them (decision 224 (a): the dispatch sheet lists them;
+   the caption names the act and the phase); the rail and the event markers as above. */
+#speedbtn,#menubtn,.dgrip,.phlist,.tools-vm,.railclose{display:none}
+@media (max-width:720px) and (min-height:431px){
+  .tb-top{flex-wrap:wrap;column-gap:6px;row-gap:0;padding:4px 8px 0}
+  .tb-ctrl{order:1;gap:4px}
+  #prev,#next,#eyesbtn,.speeds{display:none}
+  .tb-icon{min-width:44px;min-height:44px}
+  .tb-play{min-width:60px;min-height:44px}
+  .tb-follow{min-height:44px;margin-left:0}
+  .clockbox{order:2}
+  .clockbox small{display:none}
+  #clockread{font-size:var(--t-h3)}
+  #speedbtn{display:inline-block;order:3;margin-left:auto;min-width:48px;min-height:44px;font-size:var(--t-ui)}
+  .tb-cap{order:5;flex:1 1 calc(100% - 48px)}
+  .tb-help{order:6;min-width:40px;min-height:36px}
+  .tb-vm{order:7}
+  .tb-trackwrap{height:36px;margin:0 8px}
+  .tb-acts{display:none}
+  .tb-track{top:0;height:12px}
+  .step{height:12px;pointer-events:none}
+  .step::before{display:none}
+  .step-l{display:none}   /* each phase keeps its name (aria-label); the caption names the current one */
+  .step[aria-current="true"]{min-width:0;padding-right:2px}
+  .timerail,.evmarks{top:12px}
+  .playhead{top:-12px;height:36px}
+  /* the dispatch card a sheet at the foot (decision 223): its head (the readings, decision 174, whole; the clock; the title) shown, the grip
+     opening it whole (app.js setDSheet) with the lede, the events, the changes and the phases (decision 224 (a)); it scrolls inside, never cut.
+     It gives way to an open dossier and to the Layers panel, as it gives way to the rail (above) */
+  .dispatch,body.rail-hidden .dispatch{left:0;right:0;width:auto;bottom:var(--tb);max-height:34vh;padding:0 14px 8px;border:0;
+    border-top:2px solid var(--accent);box-shadow:0 -10px 30px rgba(0,0,0,.45)}
+  body.dsheet-open .dispatch{max-height:62vh}
+  .dgrip{display:block;position:sticky;top:0;z-index:1;width:100%;height:28px;margin:0 0 2px;padding:0;border:0;cursor:pointer;
+    background:rgb(var(--scrim-rgb))}
+  .dgrip span{display:block;width:40px;height:4px;margin:12px auto;border-radius:2px;background:var(--text-muted)}
+  .dispatch p.lede,#d-changes,.dispatch .tb-sit .why{display:none}
+  body.dsheet-open .dispatch p.lede{display:block;max-height:none;overflow:visible}
+  body.dsheet-open .dispatch .tb-sit .why{display:block}
+  body.dsheet-open .dispatch ol,body.dsheet-open #d-changes{display:block}
+  body.dsheet-open .phlist{display:block;margin-top:8px;border-top:1px solid var(--line)}
+  .ph-item{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;padding:0 6px;background:none;border:0;
+    border-bottom:1px solid rgba(var(--line-rgb),.08);color:var(--text-muted);font-size:var(--t-ui);text-align:left;cursor:pointer}
+  .ph-item b{flex:0 0 112px;font-weight:400;font-variant-numeric:tabular-nums}
+  .ph-act{margin:10px 0 2px;font-size:var(--t-small);color:var(--text-hi);letter-spacing:.05em}
+  .ph-item[aria-current="true"]{color:var(--text-hi);box-shadow:inset 2px 0 0 var(--accent)}
+  body.drawer-open .dispatch,body:has(#layerpop:not([hidden])) .dispatch{display:none}
+  /* the dossier and the rail as sheets at the foot; the rail gives way to an open dossier (and is inert under it, app.js syncInert) */
+  .drawer{left:0;right:0;top:auto;width:auto;height:min(55vh,calc(100vh - var(--tb) - 64px));border-left:0;border-top:1px solid var(--line-2);
+    transform:translateY(calc(100% + var(--tb)))}
+  .drawer.on{transform:translateY(0)}
+  .rail{top:auto;right:0;width:auto;height:min(60vh,calc(100vh - var(--tb) - 64px));padding:10px 14px 10px;border-right:0;
+    border-top:1px solid var(--line);box-shadow:0 -12px 40px rgba(0,0,0,.45)}
+  body.rail-hidden .rail{transform:translateY(calc(100% + var(--tb)))}
+  body.drawer-open .rail{visibility:hidden}
+  .tabs{margin-top:8px;flex-wrap:wrap}
+  .brand{position:relative;padding-right:48px}
+  .railclose{display:block;position:absolute;right:-6px;top:-4px;min-width:44px;min-height:44px;padding:0;background:none;border:0;
+    color:var(--text-muted);font-size:var(--t-h3);line-height:1;cursor:pointer}
+  /* the first-run card across the foot, scrolling inside */
+  #firstrun,body.rail-hidden #firstrun{left:0;right:0;width:auto;transform:none;bottom:var(--tb);max-height:min(50vh,calc(100vh - var(--tb) - 64px));
+    overflow-y:auto;padding:14px 16px 12px;border-left:0;border-right:0}
+  /* the Menu (decision 223): the tools and, in Study, the presentation switch behind one button at the top right; not in Watch or Clean,
+     which show no tools */
+  #menubtn{display:inline-block;position:fixed;top:10px;right:10px;z-index:43;min-width:60px;min-height:44px;font-size:var(--t-ui)}
+  body.pm-watch #menubtn,body.pm-map #menubtn{display:none}
+  .tools{display:none;top:62px;left:10px;right:10px;z-index:44;align-items:stretch;gap:8px;padding:10px;
+    background:rgba(var(--scrim-rgb),.96);border:1px solid var(--line-2);max-height:calc(100vh - var(--tb) - 72px);overflow-y:auto}
+  body.menu-open .tools{display:flex}
+  body.drawer-open .tools{transform:none}
+  .tools .grp{max-width:none;justify-content:flex-start}
+  .tools .t{min-height:44px;font-size:var(--t-ui)}
+  .tools-vm{display:block}
+  .tools-vm #viewmode{position:static;transform:none;opacity:1;backdrop-filter:none}
+  .tools-vm .vm-btn{flex:1 1 0;min-height:44px}
+}
+/* roadmap step 6 item 3 (decision 226): a phone held landscape (430 px tall or less) keeps the layout above it, with the controls that leave
+   the phone's timeline (decision 225: the ten-minute steps and "Whose eyes?"; the speeds as one button), which gives Watch's control row its
+   caption back and keeps its speeds on the screen; the first-run card has the screen while it stands (the tools stand down, as the opening's
+   button and Panels do while it stands), and while the tour's bar stands; the Layers panel takes the tools' place while it is open; the
+   presentation switch keeps clear of an open dossier and of the rail. The query is the height's alone, so a desktop window 430 px tall or less takes it too (as it took this block's older rules);
+   the harness measures it in phone-844x390-explore only */
+@media (max-height:430px){
+  #prev,#next,#eyesbtn,.speeds{display:none}
+  #speedbtn{display:inline-block;min-width:44px;font-size:var(--t-ui)}
+  body.firstrun-on .tools{display:none}
+  body:has(#layerpop:not([hidden])) .tools{visibility:hidden}
+  #layerpop{top:56px;max-height:calc(100vh - var(--tb) - 64px)}
+  body.drawer-open:not(.docked) #viewmode{left:calc((100vw - var(--draw))/2)}
+  /* measured at 667 x 375 (the probe, Part B): the switch clear of the rail shown beside the map, the tools standing down while the tour's or
+     the opening's bar stands (its own controls; "Leave the tour" gives them back), as under the first card */
+  body:not(.rail-hidden):not(.docked) #viewmode{left:calc(var(--rail) + (100vw - var(--rail))/2)}
+  body:has(#tourbar:not([hidden])) .tools{display:none}
+}
 
 /* Stage 5E (docs/STAGE5_SPEC.md section D.5): "Whose eyes?", its caption, the timeline's button, the eye-level vantage's caption */
 .eyes-note{margin:8px 0 4px;color:var(--text-body);font-size:var(--t-small);line-height:1.45}

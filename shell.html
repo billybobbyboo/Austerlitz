@@ -37,6 +37,8 @@
 
 <nav class="rail" id="rail" aria-label="Army and map controls">
   <div class="brand">
+    <!-- roadmap step 6 item 3: below 720 px wide, where the rail is a sheet at the foot, it closes here as well as by the Panels button -->
+    <button class="railclose" id="railclose" type="button">&times;</button>
     <h1>Austerlitz</h1>
     <p>2 December 1805 &middot; Moravia</p>
   </div>
@@ -55,6 +57,9 @@
     <div id="now" class="tabpane" role="tabpanel" aria-labelledby="tab-now">
       <p class="now-off">The phase text is hidden: press D to show it. During the guided tour, its text is in the tour bar.</p>
       <section class="dispatch">
+        <!-- roadmap step 6 item 3 (decision 223): below 720 px wide the card is a sheet at the screen's foot, its head shown; the grip opens
+             it whole, with the phases listed (decision 224 (a); app.js setDSheet, buildTimeline). Not shown elsewhere (style.css) -->
+        <button class="dgrip" id="dgrip" type="button" aria-expanded="false"><span aria-hidden="true"></span></button>
         <!-- Stage 3C: the situation's derived readings and the live event's reason (from the timebar's old second row) -->
         <div class="tb-sit" id="situation"></div>
         <div class="clock" id="d-clock"></div>
@@ -62,6 +67,7 @@
         <p class="lede" id="d-lede"></p>
         <ol id="d-events"></ol>
         <div id="d-changes"></div>
+        <div class="phlist" id="phlist" role="group" aria-label="Phases"></div>
       </section>
     </div>
     <div id="oob" class="tabpane" role="tabpanel" aria-labelledby="tab-oob" hidden></div>
@@ -104,7 +110,11 @@
 <div id="live-phase" class="sr-only" aria-live="polite"></div>
 <div id="live-map" class="sr-only" aria-live="polite"></div>
 
-<div class="tools">
+<!-- roadmap step 6 item 3 (decision 223): below 720 px wide the tools and, in Study, the presentation switch stand behind this button
+     (app.js setMenu; style.css); elsewhere it is not shown -->
+<button class="t" id="menubtn" type="button" aria-expanded="false" aria-controls="tools">Menu</button>
+<div class="tools" id="tools">
+  <div class="tools-vm" id="tools-vm"><!-- below 720 px, in Study: the presentation switch (app.js syncViewmode) --></div>
   <div class="grp">
     <!-- Stage 7C: the opening again, for a later visit (hidden while the first-run card, whose primary action it is, stands open) -->
     <button class="t" id="openingbtn" type="button">Begin the opening</button>
@@ -270,6 +280,9 @@
       <button class="t tb-follow" id="follow" aria-pressed="true" title="Follow the action: while the clock plays, keep the live events in view; paused, each phase's view">Follow</button>
     </div>
     <div class="clockbox"><span id="clockread">04:00</span><small>2 Dec 1805</small></div>
+    <!-- roadmap step 6 item 3 (decision 225): below 720 px wide the four speeds as one button that steps through them (style.css; its words
+         from LABELS.phone, app.js setSpeed) -->
+    <button class="t tb-speed" id="speedbtn" type="button">&frac12;&times;</button>
     <div class="tb-cap" id="tb-cap"></div>
     <button class="t tb-eyes" id="eyesbtn" type="button" aria-label="Eyes: everyone. Whose eyes? Everyone (press to change)" title="Whose eyes? Everyone, Napoleon's headquarters, the Allied headquarters (a model reading)">Eyes: everyone</button>
     <button class="t tb-help" id="helpbtn" aria-haspopup="dialog" aria-label="Keys and controls (?)" title="Keys and controls (?)">?</button>

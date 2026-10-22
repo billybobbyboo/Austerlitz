@@ -175,6 +175,23 @@ const STATES=[
   ["opening-end", ()=>{ if(typeof openingEnd!=="function") return; openingEnd("skip"); updateVisibility(); },
     ["openingEnd","OPENING"], ()=>OPENING.on===false&&clock===240&&presentation==="study"&&tourStep===-1&&document.getElementById("tourbar").hidden]
 ];
+/* roadmap step 6 item 3 Part B (docs/STEP6_SPEC.md section 4.5; decision 228 (a)): the phone's states, on a second page at 390 x 844 with a
+   phone's density (3), touch and user agent (the harness's PHONE_DEVICES.ios): the first screen (read at load), then explore at 09:30, the
+   dispatch sheet opened whole, the Menu, the Panels (the rail's sheet), a dossier's sheet, the Layers panel, Watch, the tour at its second stop
+   (its Back enabled) and the paper map; each needs the phone layout's functions and checks PHONE (the layout below 720 px) */
+const PHONE_STATES=[
+  ["phone-explore", ()=>{ closeFirst(null); setPresentation("study"); setMode("terrain"); setClock(570,{force:true}); updateVisibility(); },
+    ["setMenu","PHONE"], ()=>PHONE===true&&!firstRunOpen&&presentation==="study"&&clock===570],
+  ["phone-sheet", ()=>{ setDSheet(true); }, ["setDSheet"], ()=>dsheetOpen()],
+  ["phone-menu", ()=>{ setDSheet(false); setMenu(true); }, ["setMenu"], ()=>menuOpen()&&!dsheetOpen()],
+  ["phone-panels", ()=>{ setMenu(false); setPanels(true); }, ["setPanels"], ()=>!menuOpen()&&!document.body.classList.contains("rail-hidden")],
+  ["phone-dossier", ()=>{ setPanels(false); select("f","sthilaire"); paintDrawer(); }, [], ()=>document.body.classList.contains("rail-hidden")&&!!selection&&selection.id==="sthilaire"],
+  ["phone-layers", ()=>{ select(null,null); setLayerPop(true); }, ["setLayerPop"], ()=>!selection&&!document.getElementById("layerpop").hidden],
+  ["phone-watch", ()=>{ setLayerPop(false); setPresentation("watch"); updateVisibility(); }, [], ()=>document.getElementById("layerpop").hidden&&presentation==="watch"],
+  ["phone-tour", ()=>{ setPresentation("study"); startTour(); tourGo(1); }, ["startTour","tourGo"], ()=>presentation==="study"&&tourStep===1&&!document.getElementById("tourbar").hidden],
+  ["staff-phone", ()=>{ exitTour(); setMode("staff"); updateVisibility(); }, ["exitTour"], ()=>tourStep===-1&&mode==="staff"]
+];
+const PHONE_DEVICE={vp:[390,844], dpr:3, ua:"Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1"};
 function hx(h){ h=h.replace("#",""); return [0,2,4].map(i=>parseInt(h.slice(i,i+2),16)); }
 function lin(v){ v/=255; return v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4); }
 function L(c){ return 0.2126*lin(c[0])+0.7152*lin(c[1])+0.0722*lin(c[2]); }
@@ -186,19 +203,25 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
   /* launched as the harness launches it (step 1): ANGLE on SwiftShader, AUSTERLITZ_CHROME if set (before step 1 --use-gl=swiftshader) */
   const browser=await chromium.launch({executablePath:process.env.AUSTERLITZ_CHROME||undefined,
     args:["--use-angle=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"]});
-  const page=await browser.newPage({viewport:{width:1600,height:900},deviceScaleFactor:1});
   /* T-1: every message of the page, labelled by the state being read (as the harness records them) */
-  const LOG=[]; let AT="load";
-  const rec=(type,text)=>LOG.push({page:"1600x900 contrast",at:AT,type:type,text:String(text).slice(0,400)});
-  page.on("console",m=>{ const t=m.type(); if(t==="warning"||t==="error"||t==="assert") rec(t,m.text()); });
-  page.on("pageerror",e=>rec("pageerror",e.message+" | "+String(e.stack||"").split("\n")[1]));
-  page.on("crash",()=>rec("crash","the page crashed"));
-  page.on("requestfailed",q=>rec("requestfailed",q.url().slice(0,160)+" "+((q.failure()||{}).errorText||"")));
-  await TR.routeThree(page);
-  await page.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:180000});
-  await TR.waitBoot(page);
-  const fontsStatus=await page.evaluate(()=>document.fonts?document.fonts.ready.then(()=>document.fonts.status):"no document.fonts");
-  await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});
+  const LOG=[]; let AT="load", page=null, PAGE="1600x900 contrast";
+  const rec=(type,text)=>LOG.push({page:PAGE,at:AT,type:type,text:String(text).slice(0,400)});
+  /* one page of states: the 1600 x 900 page, then (roadmap step 6 item 3) the phone's */
+  async function openP(vp,dev){
+    page=dev?await (await browser.newContext({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:dev.dpr,isMobile:true,hasTouch:true,userAgent:dev.ua})).newPage()
+      :await browser.newPage({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:1});
+    page.on("console",m=>{ const t=m.type(); if(t==="warning"||t==="error"||t==="assert") rec(t,m.text()); });
+    page.on("pageerror",e=>rec("pageerror",e.message+" | "+String(e.stack||"").split("\n")[1]));
+    page.on("crash",()=>rec("crash","the page crashed"));
+    page.on("requestfailed",q=>rec("requestfailed",q.url().slice(0,160)+" "+((q.failure()||{}).errorText||"")));
+    await TR.routeThree(page);
+    await page.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:180000});
+    await TR.waitBoot(page);
+    const st=await page.evaluate(()=>document.fonts?document.fonts.ready.then(()=>document.fonts.status):"no document.fonts");
+    await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});
+    return st;
+  }
+  const fontsStatus=await openP([1600,900],null);
   /* decision 141: which platform fonts draw each computed font's characters (the CDP, once, after the last state; see the header) */
   async function fontCheck(){
     const keys=await page.evaluate(()=>{ const F=window.__cxFonts||{}, K=Object.keys(F); document.querySelectorAll("[data-cxp]").forEach(e=>e.remove());
@@ -243,6 +266,7 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
   /* every state is drawn by AUSTERLITZ_DEBUG.settle before it is read (the map layer lays out in a frame) */
   if(!LEGACY&&(await missing(["AUSTERLITZ_DEBUG"])).length) stateFails.push("the build has no AUSTERLITZ_DEBUG: no state can be drawn before it is read (T-5)");
   const rows=[...await page.evaluate(COLLECT+'("first-run")')];
+  async function readStates(STATES){
   for(const [name,fn,needs,reached] of STATES){ AT=name;
     const miss=await missing(needs);
     if(miss.length){ if(LEGACY){ skipped.push(name+" (the build has no "+miss.join(", ")+")"); continue; }
@@ -254,8 +278,21 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
     if(!ok){ const desc=String(reached).replace(/^\(\)=>/,"");
       if(LEGACY) skipped.push(name+" (not reached: "+desc+")"); else stateFails.push("state "+name+" not reached: "+desc+" is false (T-5)"); }
     rows.push(...await page.evaluate(COLLECT+"("+JSON.stringify(name)+")")); }
+  }
+  await readStates(STATES);
   AT="font check";
   const FC=await fontCheck(), fontFails=FC.fails;
+  /* roadmap step 6 item 3 Part B: the phone's page (a build without the phone layout, --legacy, skips it; one that has it must reach each state) */
+  let phoneStates=0;
+  const hasPhone=/var PHONE_Q=/.test(fs.readFileSync(html,"utf8"));
+  if(hasPhone){ await page.close(); PAGE="390x844 phone contrast"; AT="phone-first";
+    const fs2=await openP(PHONE_DEVICE.vp,PHONE_DEVICE); if(fs2!=="loaded") stateFails.push("the phone page: the fonts are "+fs2+" after document.fonts.ready (decision 141)");
+    if(!(await page.evaluate(()=>typeof PHONE!=="undefined"&&PHONE===true&&firstRunOpen===true))) stateFails.push("state phone-first not reached: the phone layout is not on, or the first card not open, on a fresh 390 x 844 page (T-5)");
+    rows.push(...await page.evaluate(COLLECT+'("phone-first")'));
+    await readStates(PHONE_STATES); phoneStates=PHONE_STATES.length+1;
+    AT="phone font check"; const FC2=await fontCheck(); FC2.fails.forEach(x=>fontFails.push(x)); FC.chars+=FC2.chars; FC.fonts+=FC2.fonts; }
+  else if(!LEGACY) stateFails.push("the build has no phone layout (PHONE_Q): the phone's states cannot be read (roadmap step 6 item 3, T-5)");
+  else skipped.push("the phone's states (the build has no phone layout)");
   await browser.close();
   const pairs=new Map(); let small=0;
   rows.forEach(r=>{
@@ -278,7 +315,7 @@ const BACK={dark:[hx("#0C1116"),hx("#A6AEB3")], paper:[hx("#F1EDE1"),hx("#D4D5C9
   /* T-1: the page's messages against CONSOLE_ALLOW (each entry named, with its reason) */
   const CJ=TH.judgeConsole(LOG), con=CJ.bad;
   if(fontsStatus!=="loaded") stateFails.push("the fonts are "+fontsStatus+" after document.fonts.ready (decision 141)");
-  console.log("states "+(STATES.length+1)+": "+(STATES.length+1-stateFails.filter(x=>/^state /.test(x)).length-skipped.length)+" reached"+(skipped.length?", "+skipped.length+" skipped (--legacy): "+skipped.join("; "):"")+
+  console.log("states "+(STATES.length+1+phoneStates)+" ("+phoneStates+" at 390 x 844 as a phone): "+(STATES.length+1+phoneStates-stateFails.filter(x=>/^state /.test(x)).length-skipped.length)+" reached"+(skipped.length?", "+skipped.length+" skipped (--legacy): "+skipped.join("; "):"")+
     "; console messages "+LOG.length+", failing "+con.length+(Object.keys(CJ.used).length?" (allowed by name in thresholds.js CONSOLE_ALLOW: "+Object.entries(CJ.used).map(([k,n])=>k+" "+n).join(", ")+")":""));
   stateFails.forEach(f=>console.log("  ! "+f));
   con.slice(0,40).forEach(e=>console.log("  ! "+TH.consoleLine(e)));

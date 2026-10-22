@@ -1141,6 +1141,33 @@ try{
     if(off||!on||on!==!cleanViewHidesEvents()) throw new Error("events layer: hidden "+!off+" when off, shown "+on+" when on, in "+presentation);
     console.log("events layer: off hides it, on shows it again ("+presentation+") OK"); }
 
+  /* roadmap step 6 item 3 Part B (docs/STEP6_SPEC.md section 4.5): the phone layout's Menu, the dispatch sheet and the portrait framing, a dry
+     run (the body's classes held in a set for it): above 720 px (PHONE false) neither opens and the presets are the authored ones; below it the
+     Menu and the sheet open and close, and a preset keeps its target, its eye on the same line of sight at least as far; leaving the phone
+     layout closes both. Their behaviour is the harness's phone block and cases */
+  { const cl0=document.body.classList, S=new Set(), P0=PHONE, mm0=window.matchMedia;
+    document.body.classList={add(c){S.add(c)},remove(c){S.delete(c)},toggle(c,on){ if(on===undefined?!S.has(c):on) S.add(c); else S.delete(c); return S.has(c); },contains:c=>S.has(c)};
+    try{
+      PHONE=false; setMenu(true); setDSheet(true); if(menuOpen()||dsheetOpen()) throw new Error("phone layout: the Menu or the sheet opened above 720 px");
+      const A=reframe(VANTAGE.field), B=presetFrame(VANTAGE.field); if(A.some((v,i)=>Math.abs(v-B[i])>1e-9)) throw new Error("phone layout: a preset reframed above 720 px");
+      PHONE=true;
+      setMenu(true); if(!menuOpen()) throw new Error("phone layout: setMenu(true) did not open the Menu");
+      setMenu(false); if(menuOpen()) throw new Error("phone layout: setMenu(false) did not close the Menu");
+      setDSheet(true); if(!dsheetOpen()) throw new Error("phone layout: the grip did not open the dispatch sheet");
+      const k=portraitK(), C=presetFrame(VANTAGE.field);
+      if(!(k>=1&&k<=PORTRAIT_FIT.kMax)) throw new Error("phone layout: the portrait factor "+k+" outside [1, "+PORTRAIT_FIT.kMax+"]");
+      if([3,4,5].some(i=>Math.abs(C[i]-A[i])>1e-9)) throw new Error("phone layout: the portrait framing moved the preset's target");
+      const d0=Math.hypot(A[0]-A[3],A[1]-A[4],A[2]-A[5]), d1=Math.hypot(C[0]-C[3],C[1]-C[4],C[2]-C[5]);
+      if(!(Math.abs(d1-k*d0)<1e-6)) throw new Error("phone layout: the eye "+d1+" from the target, want "+k+" x "+d0);
+      /* the stub's window is 1,600 px wide, so the factor above may be 1: the framing itself at 1.75, the factor 390 x 844 takes (the review's item 4) */
+      const E=portraitFrame(A,1.75), d2=Math.hypot(E[0]-E[3],E[1]-E[4],E[2]-E[5]), u0=[0,1,2].map(i=>(A[i]-A[i+3])/d0), u2=[0,1,2].map(i=>(E[i]-E[i+3])/d2);
+      if([3,4,5].some(i=>E[i]!==A[i])||!(Math.abs(d2-1.75*d0)<1e-9)||u0.some((v,i)=>Math.abs(v-u2[i])>1e-9)) throw new Error("phone layout: portraitFrame(1.75) did not keep the target and the line of sight at 1.75 times the distance");
+      if(portraitFrame(A,1)!==A) throw new Error("phone layout: portraitFrame(1) is not the preset itself");
+      PHONE=true; S.add("menu-open"); S.add("dsheet-open"); window.matchMedia=()=>({matches:false}); syncPhone();
+      if(PHONE||menuOpen()||dsheetOpen()) throw new Error("phone layout: leaving the phone layout left the Menu or the sheet open");
+      console.log("phone layout: the Menu and the dispatch sheet only below 720 px, closed on leaving it; the portrait framing (factor "+k.toFixed(3)+" in this stub, and 1.75) keeps the target and the line of sight OK");
+    } finally { PHONE=P0; document.body.classList=cl0; window.matchMedia=mm0; } }
+
   /* Stage 6B: the appearance table's resolution, a dry run for every drawn block (appearance.js; decision 100) */
   { const ids=Object.keys(units).filter(id=>units[id].block); let parts=0, dom=0;
     ids.forEach(id=>{ const r=appearanceOf(id);

@@ -34,14 +34,23 @@ TR.checkIntegrity(html);   /* the page's integrity hash against the routed copy:
 const ALL_CASES=require("./cases.js");
 const CASES=SELFTEST_ONLY?[]:ALL_CASES.filter(c=>!ONLY||ONLY.split(",").includes(c.name));
 const MEASURE=fs.readFileSync(path.join(__dirname,"measure.js"),"utf8");
+/* roadmap step 6 item 3 Part B (decision 228 (a)): the phone cases' device (density 3, touch, a phone's user agent; the Chromium harness's
+   stand-in for the phone, docs/STEP6_SPEC.md section 4.1) and their in-page measures (phone-measure.js, shared with tools/step6/phone-probe.js) */
+const PHONE_MEASURE=fs.readFileSync(path.join(__dirname,"phone-measure.js"),"utf8");
+const PHONE_DEVICES={
+  ios:{dpr:3, ua:"Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1"},
+  android:{dpr:3, ua:"Mozilla/5.0 (Linux; Android 14; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Mobile Safari/537.36"}};
 const MANIFEST_PATH=path.join(__dirname,"selftest-manifest.json");
 const md5=f=>crypto.createHash("md5").update(fs.readFileSync(f)).digest("hex");
 const RUN=new Date().toISOString();
 
 /* T-1: every page's messages, for the whole run; AT names the block running (a case's name, "self-test", "slider keys", ...) */
 const LOG=[], SKIPPED=[], PAGES=[]; let AT="load", BUILD_FEATURES=null;
-async function openPage(browser,vp,label){
-  const page=await browser.newPage({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:1});
+async function openPage(browser,vp,label,device){
+  const Dv=device?PHONE_DEVICES[device]:null;
+  if(device&&!Dv) throw new Error("no phone device "+device);
+  const page=Dv?await (await browser.newContext({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:Dv.dpr,isMobile:true,hasTouch:true,userAgent:Dv.ua})).newPage()
+    :await browser.newPage({viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:1});
   label=label||vp.join("x");
   const rec=(type,text)=>LOG.push({page:label,at:AT,type:type,text:String(text).slice(0,400)});
   page.on("console",m=>{ const t=m.type(); if(t==="warning"||t==="error"||t==="assert") rec(t,m.text()); });
@@ -156,14 +165,27 @@ async function interact(page,it,vp){
   const ordered=CASES.filter(c=>c.fresh&&c.viewport[0]===1600).concat(CASES.filter(c=>!c.fresh),CASES.filter(c=>c.fresh&&c.viewport[0]!==1600));
   for(const c of ordered){
     AT=c.name;
-    const key=c.viewport.join("x")+(c.fresh?":"+c.name:"");
+    const key=c.viewport.join("x")+(c.device?"@"+c.device:"")+(c.fresh?":"+c.name:"");   /* a device page is never another case's (the review's item 12) */
     const reuse=(key===currentKey)||(currentKey&&currentKey.startsWith(c.viewport.join("x")+":")&&!c.fresh&&currentKey.split(":")[0]===c.viewport.join("x"));
-    if(!reuse){ if(current&&current!==pages.keep) await current.close(); current=await openPage(browser,c.viewport,c.viewport.join("x")+(c.fresh?" "+c.name:"")); }
+    if(!reuse){ if(current&&current!==pages.keep){ const cx=current.context(), dev=current._device; await current.close(); if(dev) await cx.close(); }
+      current=await openPage(browser,c.viewport,c.viewport.join("x")+(c.fresh?" "+c.name:""),c.device); current._device=!!c.device; }
     currentKey=key; const page=current; pages.last=page;
     const t0=Date.now(); let m0opening=null;
     if(!c.fresh){ await page.evaluate(s=>window.__aus.apply(s),c); await settle(page);
       if(c.interact){ await interact(page,c.interact,c.viewport); await settle(page); } }
     else await settle(page);
+    /* roadmap step 6 item 3 Part B (decision 228 (a)): a phone case reached as a visitor reaches it, by real taps (through the Menu where the
+       control stands behind it); the clock then set to the case's (the phase's view, as the app frames it) and the selection made by select() */
+    if(c.phone&&c.phone!=="first"){
+      const tap=async sel=>{ await page.tap(sel,{timeout:180000}); await page.waitForTimeout(500); };
+      const viaMenu=async sel=>{ if(!(await page.isVisible(sel))&&await page.isVisible("#menubtn")) await tap("#menubtn"); await tap(sel); };
+      await tap("#fr-close");
+      await page.evaluate(t=>{ setClock(t,{instant:true,force:true}); },c.t); await settle(page);
+      if(c.phone==="dossier") await page.evaluate(s=>{ select(s[0],s[1]); },c.select);
+      if(c.phone==="watch") await viaMenu('.vm-btn[data-vm="watch"]');
+      if(c.phone==="layers") await viaMenu("#layersbtn");
+      await settle(page); }
+    const phoneReading=!!(c.phone&&c.phone!=="first");
     /* Stage 7C: an opening case is reached as a visitor reaches it, by real clicks on the card's primary action and the bar's Next */
     const opening=c.fresh&&c.opening!==undefined&&await has(page,"OPENING","the opening's clicks");
     /* Stage 7D (decision 123): Next on a step plays the clock to the next one; a second Next goes straight there, as a visitor may (under
@@ -176,7 +198,7 @@ async function interact(page,it,vp){
       m0opening=await page.evaluate(()=>({on:OPENING.on,k:OPENING.k,stop:tourStep,clock:clock})); }
     /* roadmap step 1 (T-6): the state the case stands in, before anything is measured */
     const st0=await stateOf(page,c);
-    const buf=await page.screenshot({timeout:180000});
+    const buf=await page.screenshot({timeout:180000,scale:"css"});
     fs.writeFileSync(path.join(out,c.name+".png"),buf);
     const m=await page.evaluate(()=>window.__aus.metrics());
     m.state=st0; m.run=RUN;
@@ -192,10 +214,10 @@ async function interact(page,it,vp){
     /* Stage 5B (docs/STAGE5_SPEC.md section A.5): the position-confidence marks' share of the free rectangle, as rendered: the same
        view drawn once more without them (a build with the marks; not the first-run views, whose card is not a reading; the opening's are) */
     /* (a reading with Position confidence off fails in thresholds.js expectState: decision 85 has it on by default) */
-    if((!c.fresh||opening)&&await has(page,"CONF","the position-confidence share")&&await page.evaluate(()=>!!layerOn.confidence)){
+    if((!c.fresh||opening||phoneReading)&&await has(page,"CONF","the position-confidence share")&&await page.evaluate(()=>!!layerOn.confidence)){
       /* since Stage 6C (decision 107) Position confidence off keeps a side footprint: the frame without the marks draws none (CONF.none) */
       await page.evaluate(()=>{ layerOn.confidence=false; CONF.none=true; }); await settle(page);
-      const off=await page.screenshot({timeout:180000});
+      const off=await page.screenshot({timeout:180000,scale:"css"});
       await page.evaluate(()=>{ layerOn.confidence=true; CONF.none=false; }); await settle(page);
       m.confShare=await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[buf.toString("base64"),off.toString("base64")]);
     }
@@ -205,28 +227,31 @@ async function interact(page,it,vp){
     /* Stage 5F (docs/STAGE5_SPEC.md section E.4; decision 93): the ordered routes on: the map layer's items and drops as without them
        (ground drawing), map text at AA as rendered; their share of the free rectangle recorded (off by default: every other measure is
        taken without them; not at the eye level, where they are not drawn) */
-    if((!c.fresh||opening)&&!c.eye&&await has(page,"ROUTES","the ordered routes' measure")){
+    if((!c.fresh||opening||phoneReading)&&!c.eye&&await has(page,"ROUTES","the ordered routes' measure")){
       const lay=()=>page.evaluate(()=>{ mlLayout(); return {items:ML.stats.items,dropped:ML.stats.dropped,ids:ML.stats.dropped_.slice().sort().join(","),routes:ROUTES.grp?ROUTES.grp.children.length:0}; });
       const s0=await lay();
       await page.evaluate(()=>{ layerOn.routes=true; requestRender(3); }); await settle(page);
-      const on=await page.screenshot({timeout:180000}), s1=await lay();
+      const on=await page.screenshot({timeout:180000,scale:"css"}), s1=await lay();
       const tc=await page.evaluate(b=>window.__aus.textContrast?window.__aus.textContrast(b):null,on.toString("base64"));
       await page.evaluate(()=>{ layerOn.routes=false; requestRender(3); }); await settle(page);
       m.routes={routes:s1.routes,items:[s0.items,s1.items],dropped:[s0.dropped,s1.dropped],sameDrops:s0.ids===s1.ids,
         belowAA:tc?tc.belowAA:[],minContrast:tc?tc.min:null,share:(await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[on.toString("base64"),buf.toString("base64")])).share};
     }
-    if((!c.fresh||opening)&&!c.eye&&await has(page,"SKEL","the evidence skeleton's measure")){   /* not at the eye level: the skeleton is not drawn there (5E) */
+    if((!c.fresh||opening||phoneReading)&&!c.eye&&await has(page,"SKEL","the evidence skeleton's measure")){   /* not at the eye level: the skeleton is not drawn there (5E) */
       const lay=()=>page.evaluate(()=>{ mlLayout(); return {items:ML.stats.items,dropped:ML.stats.dropped,ids:ML.stats.dropped_.slice().sort().join(","),
         anchors:SKEL.marks.length,legs:SKEL.scope?SKEL.scope.legs.length:0}; });
       const s0=await lay();
       await page.evaluate(()=>{ layerOn.skeleton=true; SKEL.day=true; requestRender(3); }); await settle(page);
-      const on=await page.screenshot({timeout:180000}), s1=await lay();
+      const on=await page.screenshot({timeout:180000,scale:"css"}), s1=await lay();
       const tc=await page.evaluate(b=>window.__aus.textContrast?window.__aus.textContrast(b):null,on.toString("base64"));
       await page.evaluate(()=>{ layerOn.skeleton=false; SKEL.day=false; requestRender(3); }); await settle(page);
       m.skeleton={anchors:s1.anchors,legs:s1.legs,items:[s0.items,s1.items],dropped:[s0.dropped,s1.dropped],sameDrops:s0.ids===s1.ids,
         belowAA:tc?tc.belowAA:[],minContrast:tc?tc.min:null,share:(await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[on.toString("base64"),buf.toString("base64")])).share};
     }
-    if(await page.evaluate(()=>!!window.__aus.unobstructed)){
+    /* roadmap step 6 item 3 Part B: the phone measures (targets, cut text, overlaps, reach, framing), as the visitor's page stands */
+    if(c.device){ await page.evaluate(PHONE_MEASURE); m.phone=await page.evaluate(()=>window.__ph.summary()); }
+    /* (a phone case is not resized to 1280 x 720: its device is a phone's; its baseline is at its own viewport only) */
+    if(!c.device&&await page.evaluate(()=>!!window.__aus.unobstructed)){
       /* one drawn frame at each size is enough: the panels are DOM, and the legend decides in that frame whether it fits */
       /* headless Chromium delivers a resize event only with a rendered frame, which a page that draws on demand may not
          produce: the page is told of its new size before it draws (else the layer and the legend fit the old size, and the
@@ -448,6 +473,44 @@ async function interact(page,it,vp){
       NR.push(Object.assign({at:"700",cap:capAt},await look()));
       await size(vp0.width,vp0.height); await first.evaluate(()=>{ setPresentation("study"); select(null,null); });
       LIVE.narrow=NR;
+      /* roadmap step 6 item 3 Part B (docs/STEP6_SPEC.md section 4.5; decisions 223-225): the phone layout on this page, narrowed to 390 x 844
+         (density 1, the mouse: the layout is the width's; the phone cases above have the device), by real clicks and keys: the Menu (its
+         disclosure, focus into it, Esc closing it with focus back on its button, a tool's press closing it); the dispatch sheet's grip and its
+         phase list (a phase by a click); the speed button through the four speeds; a dossier sheet above the timeline with the card given
+         way; the rail sheet above the timeline, closed by its own button; each sheet within its height; then the page given back its size */
+      if(await first.evaluate(()=>typeof setMenu==="function")){
+        AT="phone"; const PH={};
+        await size(390,844); await first.evaluate(()=>{ closeFirst(null); setPresentation("study"); select(null,null); setPanels(false); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+        const st=()=>first.evaluate(()=>{ const q=s=>document.querySelector(s), r=s=>{ const e=q(s); if(!e) return null; const b=e.getBoundingClientRect(), cs=getComputedStyle(e);
+            return {shown:cs.display!=="none"&&cs.visibility!=="hidden"&&b.width>0&&b.height>0,top:+b.top.toFixed(1),bottom:+b.bottom.toFixed(1),h:+b.height.toFixed(1)}; }, a=document.activeElement;
+          return {phone:PHONE,menu:menuOpen(),exp:q("#menubtn").getAttribute("aria-expanded"),menuBtn:r("#menubtn"),tools:r("#tools"),vmInTools:!!q("#tools-vm #viewmode"),
+            focus:a&&a!==document.body?(a.id||a.className):"body",focusInTools:!!(a&&q("#tools").contains(a)),layers:!q("#layerpop").hidden,sheet:dsheetOpen(),grip:q("#dgrip").getAttribute("aria-expanded"),
+            dispatch:r(".dispatch"),phlist:r("#phlist"),drawer:r(".drawer"),rail:r(".rail"),railInert:!!q(".rail").inert,card:r("#firstrun"),tb:r(".timebar"),vh:innerHeight,
+            phase:curPhase,cur:(q('#phlist .ph-item[aria-current="true"]')||{}).textContent||null,speed:speed,speedName:q("#speedbtn").getAttribute("aria-label")}; });
+        PH.start=await st();
+        await first.click("#menubtn"); PH.menuOpen=await st();
+        await first.keyboard.press("Escape"); PH.menuEsc=await st();
+        await first.click("#menubtn"); await first.click("#layersbtn"); await first.waitForTimeout(300); PH.menuTool=await st();
+        await first.keyboard.press("Escape"); await first.waitForTimeout(300);
+        await first.click("#dgrip"); await first.waitForTimeout(300); PH.sheet=await st();
+        await first.evaluate(()=>{ const d=document.querySelector(".dispatch"), b=document.querySelectorAll("#phlist .ph-item")[3]; if(d&&b) d.scrollTop=b.offsetTop-40; });
+        await first.locator("#phlist .ph-item").nth(3).click(); await settle(first); PH.phase=await st();
+        /* a phase pressed folds the sheet (its view is then seen); the grip opens it again and closes it */
+        await first.click("#dgrip"); await first.waitForTimeout(300); PH.sheetAgain=await st();
+        await first.click("#dgrip"); await first.waitForTimeout(300); PH.sheetClosed=await st();
+        await first.evaluate(()=>setSpeed(0.5)); PH.speeds=[]; for(let i=0;i<4;i++){ await first.click("#speedbtn"); PH.speeds.push(await first.evaluate(()=>({speed:speed,name:document.getElementById("speedbtn").getAttribute("aria-label")}))); }
+        await first.evaluate(()=>{ select("f","sthilaire"); }); await first.waitForTimeout(400); PH.dossier=await st();
+        await first.evaluate(()=>{ select(null,null); }); await first.waitForTimeout(400);
+        await first.click("#menubtn"); await first.click("#panelsbtn"); await first.waitForTimeout(400); PH.rail=await st();
+        await first.evaluate(()=>{ select("f","sthilaire"); }); await first.waitForTimeout(400); PH.railDossier=await st();
+        await first.evaluate(()=>{ select(null,null); }); await first.waitForTimeout(400);
+        await first.click("#railclose"); await first.waitForTimeout(400); PH.railClosed=await st();
+        await first.evaluate(()=>{ const fr=document.getElementById("firstrun"); fr.hidden=false; openFirstRun(); }); await first.waitForTimeout(300); PH.card=await st();
+        await first.evaluate(()=>{ closeFirst(null); });
+        await size(vp0.width,vp0.height); PH.back=await st();
+        await first.evaluate(()=>{ setSpeed(0.5); setPresentation("study"); select(null,null); });
+        LIVE.phone=PH; console.log("phone layout on this page: "+JSON.stringify({menu:PH.menuOpen.menu,esc:PH.menuEsc.focus,sheet:PH.sheet.sheet,phase:PH.phase.phase,dossier:PH.dossier.drawer,rail:PH.rail.rail}));
+      }
       /* roadmap step 3 (docs/FINAL_AUDIT.md S-6): the reduced-motion preference turned on and off while the page is open (the audit's rm-live):
          the app follows it (RM) and the panels' slides stop (the rail's transition-duration) */
       AT="reduced motion";

@@ -4312,7 +4312,7 @@ function plateauText(spoken){
   return "THE PRATZEN  ·  derived: Allied ≈ "+al.toLocaleString("en-GB")+(fr>500?("   French ≈ "+fr.toLocaleString("en-GB")):"");
 }
 /* the interface panels over the map, read as rectangles once per pass */
-var ML_PANELS=[".rail",".dispatch",".legend",".drawer",".timebar",".tools","#viewmode","#tourbar","#firstrun","#selchip","#layerpop","#vsbadge","#restore"];
+var ML_PANELS=[".rail",".dispatch",".legend",".drawer",".timebar",".tools","#viewmode","#tourbar","#firstrun","#selchip","#layerpop","#vsbadge","#restore","#menubtn"];
 function mlPanels(){
   var R=[];
   ML_PANELS.forEach(function(q){ var e=document.querySelector(q); if(!e||e.hidden) return;
@@ -5128,7 +5128,25 @@ function actionExtent(){
   return (_actExt=B);
 }
 function isOverview(v){ var P=VANTAGE.plan; for(var i=0;i<6;i++) if(Math.abs(v[i]-P[i])>1e-9) return false; return true; }
-function presetFrame(v){ var c=reframe(v); return isOverview(v)?fitOverview(c):c; }
+function presetFrame(v){ var c=reframe(v); return isOverview(v)?fitOverview(c):portraitFrame(c,portraitK()); }
+/* roadmap step 6 item 3 (decision 223; docs/STEP6_SPEC.md section 4.4): on a phone held upright the free rectangle is narrow and the authored
+   presets, made for a wide window, show a strip of their view, the battle falling under the sheets (0 of 0 map items in view after "Explore"
+   at 390 px in Part A). There the eye is moved back along its line of sight, its target kept, until the free rectangle spans at least the
+   horizontal angle PORTRAIT_FIT.t (the tangent of its half), at most PORTRAIT_FIT.kMax times as far. Follow's distance takes the same factor
+   (so on a phone it stands up to kMax times beyond FOLLOW's 230-300 units).
+   Elsewhere (not PHONE, the paper map) the factor is 1; the Overview is fitted into the free rectangle already (fitOverview). t is a design
+   value, measured (tools/step6/portrait-fit.js; docs/step6-evidence/portrait-fit*.json): at 390 x 844 after "Explore", over the eight phases'
+   views, the map layer's items wholly inside the free area were 63 unframed (a phase with 2), 78 at t 0.2, 95 at 0.25 (each phase 5 or more),
+   78 at 0.3, 80 at 0.35, 74 at 0.45 (the factor there at kMax, 3): 0.25, the most, the eye 1.75 times as far there */
+var PORTRAIT_FIT={t:0.25, kMax:3}, _pk={key:null,k:1};
+function portraitK(){
+  if(!PHONE||mode==="staff"||!landCam) return 1;
+  /* once per layout of the panels (VOFF.key, syncViewOffset): Follow asks every frame (the review's item 14) */
+  var key=VOFF.key+"|"+PORTRAIT_FIT.t+"|"+PORTRAIT_FIT.kMax; if(VOFF.key&&_pk.key===key) return _pk.k;
+  var fr=landFreeRect(), f=(viewH()/2)/Math.tan(THREE.MathUtils.degToRad(landCam.fov)/2), t=((fr[2]-fr[0])/2)/f;
+  var k=t>0?Math.max(1,Math.min(PORTRAIT_FIT.kMax,PORTRAIT_FIT.t/t)):1; _pk.key=VOFF.key?key:null; _pk.k=k; return k;
+}
+function portraitFrame(c,k){ return k>1?[c[3]+(c[0]-c[3])*k,c[4]+(c[1]-c[4])*k,c[5]+(c[2]-c[5])*k,c[3],c[4],c[5]]:c; }
 function fitOverview(c){
   syncViewOffset(true);
   var fr=landFreeRect(), VW=renderer.domElement.clientWidth||window.innerWidth, H=viewH(), S=[], v=new THREE.Vector3();
@@ -5300,6 +5318,11 @@ var LABELS={
   names:{themes:"The battle in ten themes", themePick:"Pick one of the ten themes above.", theme:"The theme", phaseText:"the phase text",
     sheet:"Accuracy and sources"},
   panels:{button:"Panels", title:"Show or hide the panels: the order of battle, analysis, command and plans tabs, and the sources (below 1080 px wide)"},
+  /* roadmap step 6 item 3 (decisions 223-227): the phone layout's words, below 720 px wide, as proposed and decided (decision 231 (a), 22 October
+     2026); "Playback speed" and "Phases" are the build's own names for the speeds' group and the phases' group */
+  phone:{speed:"Playback speed", speedTitle:"Playback speed: each press the next of \u00bd\u00d7, 1\u00d7, 2\u00d7 and 4\u00d7",
+    menu:"Menu", menuTitle:"The tools: the opening, the tour, layers, panels, the vantages and the presentation",
+    grip:"The phase text in full", phases:"Phases", closePanels:"Close the panels"},
   eyesBack:"Whose eyes? Back to %r (a model reading).",
   /* roadmap step 5 (question 172): a focused map item that leaves the map (the clock moved it off, or it ended) hands the focus on, and says so */
   mapLeft:"%n has left the view; the focus is on %m.", mapLeftLayer:"the map",   /* the review of 22c77ac: "the view" (the clock, a pan or a zoom) */
@@ -5320,6 +5343,11 @@ function applyLabels(){
   if(fp){ fp.textContent=F.primary; fp.title=F.primaryTitle; } if(fs){ fs.textContent=F.stay; fs.title=F.stayTitle; }
   var ob=document.getElementById("openingbtn"); if(ob){ ob.textContent=LABELS.opening.button; ob.title=LABELS.opening.buttonTitle; }   /* Stage 7C */
   var pb=document.getElementById("panelsbtn"); if(pb){ pb.textContent=LABELS.panels.button; pb.title=LABELS.panels.title; }   /* decision 164 */
+  var spb=document.getElementById("speedbtn"); if(spb){ spb.title=LABELS.phone.speedTitle; paintSpeedBtn(); }   /* roadmap step 6 item 3 */
+  var mnb=document.getElementById("menubtn"); if(mnb){ mnb.textContent=LABELS.phone.menu; mnb.title=LABELS.phone.menuTitle; }
+  var dgb=document.getElementById("dgrip"); if(dgb){ dgb.setAttribute("aria-label",LABELS.phone.grip); dgb.title=LABELS.phone.grip; }
+  var phl=document.getElementById("phlist"); if(phl) phl.setAttribute("aria-label",LABELS.phone.phases);
+  var rcl=document.getElementById("railclose"); if(rcl){ rcl.setAttribute("aria-label",LABELS.phone.closePanels); rcl.title=LABELS.phone.closePanels; }
   /* roadmap step 5 (R-3): the names, from LABELS.names (shell.html carries the same words for a page whose bundle fails, SW-1) */
   var N=LABELS.names, th=document.querySelector("#analysis .sechead"); if(th) th.textContent=N.themes;
   var sb=document.getElementById("srcbtn"); if(sb) sb.textContent=N.sheet;
@@ -5359,11 +5387,12 @@ var KEYS=[
     run:function(){ setPresentation(presentation==="study"?"watch":"study"); }},
   {id:"m", scope:"window", group:"View and ground", keys:["m","M"], show:["M"], text:function(){ var G=LABELS.ground; return "The ground: "+G.terrain.label+", "+G.staff.label+", "+G.hybrid.label+", in turn"; },
     run:function(){ setMode(mode==="terrain"?"staff":(mode==="staff"?"hybrid":"terrain")); }},
-  {id:"esc", scope:"window", group:"View and ground", keys:["Escape"], show:["Esc"], text:function(){ return "Back: close the "+LABELS.names.sheet+" sheet; else the first card where it stands, the layers panel, the opening (to the start of the day) or the tour; else everything shown in Study, and the theme and the selection cleared"; },
+  {id:"esc", scope:"window", group:"View and ground", keys:["Escape"], show:["Esc"], text:function(){ return "Back: close the "+LABELS.names.sheet+" sheet; else the first card where it stands, the layers panel, the menu, the opening (to the start of the day) or the tour; else everything shown in Study, and the theme and the selection cleared"; },
     run:function(){
       if(sheetTop()){ if(sheetTop()==="help") setHelp(false); else closeSources(); return; }   /* roadmap step 3 (SW-4): the topmost sheet first */
       if(firstRunOpen){ closeFirst("explore"); return; }
       if(!document.getElementById("layerpop").hidden){ setLayerPop(false); return; }
+      if(menuOpen()){ setMenu(false); return; }   /* roadmap step 6 item 3 */
       if(OPENING.on){ openingEnd("skip"); return; }   /* Stage 7C */
       if(tourStep>=0){ exitTour(); return; }
       if(presentation!=="study"||hideDispatch) showEverything();
@@ -5476,7 +5505,7 @@ function syncInert(){
   var top=sheetTop(), keep=top?document.getElementById(top):null, kids=document.body.children, dr=document.getElementById("drawer"), dOn=drawerShown();
   for(var i=0;i<kids.length;i++){ var k=kids[i]; if(!k||k.tagName==="SCRIPT"||k.id==="boot") continue;
     var want=(!!keep&&k!==keep&&!/^(live-phase|toast|glnotice)$/.test(k.id))||(k===dr&&!dOn)||
-      (!!(k.classList&&k.classList.contains("rail"))&&((!!docked&&dOn)||document.body.classList.contains("rail-hidden")));
+      (!!(k.classList&&k.classList.contains("rail"))&&((!!docked&&dOn)||(PHONE&&dOn)||document.body.classList.contains("rail-hidden")));   /* roadmap step 6 item 3: on a phone the dossier's sheet stands over the rail's */
     if(!!k.inert!==want) k.inert=want; }
 }
 function helpOpen(){ return sheetIsOpen("help"); }
@@ -5644,6 +5673,7 @@ function buildUI(){
   document.querySelectorAll(".spd-btn").forEach(function(b){
     b.addEventListener("click",function(){ setSpeed(+b.dataset.s); });
   });
+  var spb=document.getElementById("speedbtn"); if(spb) spb.addEventListener("click",speedNext);   /* roadmap step 6 item 3 */
 
   document.querySelectorAll(".van-btn").forEach(function(b){
     b.addEventListener("click",function(){
@@ -5754,6 +5784,7 @@ function buildUI(){
   })();
   if(window.innerWidth<1080) document.body.classList.add("rail-hidden");
   syncDock();
+  bindPhone();   /* roadmap step 6 item 3: the phone layout's controls, and PHONE */
   var db=document.getElementById("drawer-back"); if(db) db.addEventListener("click",function(){ select(null,null); });
 
   var pop=document.getElementById("layerpop"), popBtn=document.getElementById("layersbtn");
@@ -5793,6 +5824,7 @@ function buildUI(){
   function onResize(){
     requestRender(3);
     syncDock();
+    syncPhone();   /* roadmap step 6 item 3 */
     landCam.aspect=window.innerWidth/window.innerHeight;
     landCam.updateProjectionMatrix();
     renderer.setPixelRatio(pxRatio());   /* roadmap step 3 (SW-10): a window moved to a screen of another density */
@@ -6150,6 +6182,17 @@ function buildTimeline(){
       b.addEventListener("click",function(){ stopPlay(); freeCam=false; setPhase(i); });
       tl.appendChild(b); });
     rovingGroup(tl,".step"); }
+  /* roadmap step 6 item 3 (decision 224 (a)): below 720 px wide the phases are pressed in this list, in the dispatch sheet opened whole, not
+     on the axis, where the three of 45 minutes are under 24 px wide; each named as on the axis */
+  var pl=document.getElementById("phlist");
+  if(pl){ pl.innerHTML="";
+    PHASES.forEach(function(p,i){
+      if(i===0||actOf(i).n!==actOf(i-1).n) pl.appendChild(el("h3","ph-act",esc(actOf(i).n)));   /* each act named whole over its phases (the track's act row is not drawn on a phone) */
+      var b=el("button","ph-item"); b.type="button";
+      b.innerHTML='<b>'+esc(phaseSpan(i))+'</b><span>'+esc(p.label)+'</span>';
+      b.setAttribute("aria-label",p.clock+", "+p.label+": "+p.title+" ("+actOf(i).n+")");
+      b.addEventListener("click",function(){ stopPlay(); freeCam=false; setDSheet(false); setPhase(i); });   /* the sheet folds, so the phase's view is seen (the review's item 15) */
+      pl.appendChild(b); }); }
   buildActs();
   var rail=document.getElementById("timerail"), ticks=document.getElementById("railticks"), evh=document.getElementById("evmarks");
   if(ticks){ var html="";
@@ -6261,6 +6304,7 @@ function paintTimeline(){
   document.querySelectorAll("#phases .step").forEach(function(b,i){
     b.setAttribute("aria-current", i===curPhase?"true":"false"); if(!inG) b.tabIndex=(i===curPhase)?0:-1;
   });
+  document.querySelectorAll("#phlist .ph-item").forEach(function(b,i){ b.setAttribute("aria-current", i===curPhase?"true":"false"); });   /* roadmap step 6 item 3 */
   paintSituation();
   paintActs();
   var r=document.getElementById("clockread");
@@ -7234,6 +7278,17 @@ function setSpeed(x){
   document.querySelectorAll(".spd-btn").forEach(function(b){
     b.setAttribute("aria-pressed", (+b.dataset.s===x)?"true":"false");
   });
+  paintSpeedBtn();
+}
+/* roadmap step 6 item 3 (decision 225): below 720 px the speeds are one button showing the speed, named with it */
+function paintSpeedBtn(){
+  var sb=document.getElementById("speedbtn"), on=document.querySelector('.spd-btn[aria-pressed="true"]');
+  if(sb&&on){ sb.textContent=on.textContent; sb.setAttribute("aria-label",LABELS.phone.speed+" "+on.textContent); }
+}
+/* the phone's speed button: the next of the four speeds, after the last the first */
+function speedNext(){
+  var S=[].slice.call(document.querySelectorAll(".spd-btn")).map(function(b){ return +b.dataset.s; }), i=S.indexOf(speed);
+  if(S.length) setSpeed(S[(i+1)%S.length]);
 }
 function tickClock(dtMs){
   if(!playing) return;
@@ -7318,7 +7373,7 @@ function followGoal(){
   if(!(sw>0)) return {T:null,dist:null,dir:dir};
   cx/=sw; cz/=sw; var rad=0;
   L.forEach(function(o){ var w=W(o.e.p[0],o.e.p[1]); rad+=o.w*Math.hypot(w[0]-cx,w[1]-cz); }); rad/=sw;
-  return {T:new THREE.Vector3(cx,groundY(cx,cz),cz),dist:Math.max(FOLLOW.DMIN,Math.min(FOLLOW.DMAX,FOLLOW.K*rad+FOLLOW.D0)),dir:dir};
+  return {T:new THREE.Vector3(cx,groundY(cx,cz),cz),dist:Math.max(FOLLOW.DMIN,Math.min(FOLLOW.DMAX,FOLLOW.K*rad+FOLLOW.D0))*portraitK(),dir:dir};   /* roadmap step 6 item 3: 1 but on a phone held upright */
 }
 function followActive(){ return playing&&!freeCam&&mode!=="staff"&&!_tw.cam; }
 function followStep(dtMs){
@@ -7354,6 +7409,7 @@ function setPresentation(m){
   if(!PRESENT[m]) m="study";
   var a=focusedEl(), vmb=!!(a&&a.classList&&a.classList.contains("vm-btn"));   /* roadmap step 3 (SW-5): read before anything is hidden */
   if(m!=="study"&&setLayerPop) setLayerPop(false);   /* roadmap step 3 (docs/FINAL_AUDIT.md SW-9): the Layers panel closes with its opener */
+  if(m!=="study") setMenu(false,true);   /* roadmap step 6 item 3: and the Menu with the tools Watch and Clean do not show (the review's item 6) */
   presentation=m;
   var b=document.body;
   b.classList.remove("pm-study","pm-watch","pm-map");
@@ -7414,8 +7470,61 @@ function selectTab(t,focus){
 function syncViewmode(){
   var vm=document.getElementById("viewmode"), slot=document.getElementById("tb-vm"), home=document.getElementById("viewmode-home");
   if(!vm||!slot||!home||!home.parentNode||!home.parentNode.insertBefore) return;
+  /* roadmap step 6 item 3 (decision 223): below 720 px wide, in Study, the switch stands behind the Menu, in the tools */
+  var ts=document.getElementById("tools-vm");
   if(presentation==="watch"){ if(vm.parentNode!==slot) slot.appendChild(vm); }
-  else if(vm.parentNode===slot) home.parentNode.insertBefore(vm,home);
+  else if(PHONE&&presentation==="study"&&ts){ if(vm.parentNode!==ts) ts.appendChild(vm); }
+  else if(vm.parentNode===slot||vm.parentNode===ts) home.parentNode.insertBefore(vm,home);
+}
+/* ---------------- roadmap step 6 item 3: the phone layout (docs/STEP6_SPEC.md section 4; decisions 223-226) ----------------
+   Below 720 px wide (PHONE_Q, the query of style.css's phone block; held landscape keeps the layout above it, decision 226): the timeline
+   compact (style.css; the speed as one button, setSpeed); the dispatch card a sheet at the foot, its head shown and its grip opening it
+   whole with the phases listed (setDSheet; decision 224 (a)); the rail and the dossier sheets at the foot too, the rail giving way to an open
+   dossier (syncInert); the tools and, in Study, the presentation switch behind the Menu (setMenu), which a press on a tool, a press outside
+   it or Esc closes. */
+/* the query: below 720 px wide and taller than 430 px (a phone held upright; a small phone held landscape, 667 x 375 or 640 x 360, keeps the
+   layout above, as an 844 x 390 one does: the review's item 3) */
+var PHONE_Q="(max-width:720px) and (min-height:431px)", PHONE=false;
+function syncPhone(){
+  var want=!!(typeof window!=="undefined"&&window.matchMedia&&window.matchMedia(PHONE_Q).matches);
+  if(want===PHONE) return;
+  PHONE=want;
+  if(!want){ setMenu(false); setDSheet(false); }
+  var a=focusedEl(), vm=document.getElementById("viewmode"), inVm=!!(a&&vm&&vm.contains&&vm.contains(a));
+  syncViewmode(); syncInert();
+  if(inVm&&a!==focusedEl()) focusTo([a,"menubtn","play"]);   /* SW-5: the switch moved in the DOM drops the focus (the review's item 9) */
+}
+function dsheetOpen(){ return document.body.classList.contains("dsheet-open"); }
+function setDSheet(open){
+  open=!!open&&PHONE;
+  var b=document.getElementById("dgrip"); document.body.classList.toggle("dsheet-open",open); if(b) b.setAttribute("aria-expanded",String(open));
+  if(typeof requestRender==="function") requestRender(2);
+}
+function menuOpen(){ return document.body.classList.contains("menu-open"); }
+/* keep: closed by a press on one of its tools, whose own handler places the focus (and SW-5's hand-on runs after it, bindPhone) */
+function setMenu(open,keep){
+  open=!!open&&PHONE;
+  if(open===menuOpen()) return;
+  var b=document.getElementById("menubtn"), tl=document.getElementById("tools"), a=focusedEl();
+  if(!open&&!keep&&a&&tl&&tl.contains(a)) focusTo(["menubtn","play"]);   /* the tools go: focus stays near them (SW-5) */
+  document.body.classList.toggle("menu-open",open); if(b) b.setAttribute("aria-expanded",String(open));
+  if(open&&tl) focusTo([].slice.call(tl.querySelectorAll("button")));
+  if(typeof requestRender==="function") requestRender(2);
+}
+function bindPhone(){
+  var mb=document.getElementById("menubtn"), tl=document.getElementById("tools"), g=document.getElementById("dgrip");
+  if(mb) mb.addEventListener("click",function(){ setMenu(!menuOpen()); });
+  /* a press on any tool closes the menu: heard in the capture phase, before the tool's own handler (the Layers button stops its click) */
+  if(tl) tl.addEventListener("click",function(e){ if(!(menuOpen()&&e.target&&e.target.closest&&e.target.closest("button"))) return;
+    setMenu(false,true);
+    /* after the tool's own handler: a focus left on a control now hidden goes to the Menu's button (SW-5; the review's item 9) */
+    setTimeout(function(){ var f=focusedEl(); if(f&&!shown(f)) focusTo(["menubtn","play"]); },0); },true);
+  /* a press outside the menu and its button closes it */
+  window.addEventListener("pointerdown",function(e){ if(!menuOpen()) return; var t=e.target;
+    if(t&&t.closest&&(t.closest("#tools")||t.closest("#menubtn"))) return; setMenu(false); },true);
+  if(g) g.addEventListener("click",function(){ setDSheet(!dsheetOpen()); });
+  var rc=document.getElementById("railclose"); if(rc) rc.addEventListener("click",function(){ setPanels(false); });
+  syncPhone();
 }
 function syncVis(){
   document.body.classList.toggle("no-dispatch",hideDispatch);
