@@ -1,5 +1,39 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 6: owner decisions 236-238 applied (the paper map's frame and scale bar on a phone; two phone cases; the phone route)
+
+**Status: on `claude/upbeat-hamilton-y9utq8` (PR #61).** On 22 October 2026 the owner wrote "go with your recommendations": questions 236-238
+(`docs/STEP6_SPEC.md` §13) decided as recommended (§13.1) and applied (§14). No data changed (`check:data` 131 of 131 identical). **The build:
+2,220,267 bytes, md5 `fffc4fdab06476b028c4e8ad0f74680c`** (was 2,218,404, `c9d29c14...`); `check:baseline` moved to it.
+
+- **238 (a), the paper map framed again** (`app.js` `MAPCAM.syncPanels`, from `syncViewOffset`): while the field is shown as framed (the
+  visitor has not panned, zoomed or chosen a vantage), a panel's change that gives it room (drawn more than 1% larger) frames it again, as a
+  resize did; a panel opening over it moves nothing. Before: on a phone held upright the field framed beside the open Layers sheet kept that
+  frame when the sheet closed (122 x 112 px under the dispatch sheet at 390 x 844; 70 x 64 at 402 x 714); after: 360 x 332 and 364 x 336 px
+  in the free area. `runtime-test.js` dry-runs the rule (and fails on the build before it). A phone case, `phone-390-paper`, enters the paper
+  map by its taps and is held to the whole field in the free area (`FRAMED`).
+- **Found by that case, fixed: the paper map's scale bar below 1080 px.** `style.css`'s narrow block hid `.tb-scale` on every view, the paper
+  map's included, against Stage 2E's rule (one scale across the view, its bar to 1%); no paper-map case below 1080 px existed. The bar is now
+  kept on the paper map at every width (hidden below 1080 px on the landscape only); on a phone held upright it heads the caption's row, the
+  caption's parts giving way (decision 159), since at the head of the control row it pushed the speed button to a second line (the timeline
+  165 px). Measured: the bar 65 px for 65.3 wanted, the timeline 121 px, the unobstructed share 0.6529.
+- **237 (a)**: `phone-402x714-explore`, the owner's iPhone at P1's viewport. `check:visual` has 39 cases.
+- **The two cases' limits, as measured** (`thresholds.js`): `phone-402x714-explore` unobstructed 0.585, drops 2, framing 6, timeline 121;
+  `phone-390-paper` 0.652, drops 17, framing 11, timeline 121.
+- **236 (b), the phone route** (`tools/step6/perf-route.js` with `{phone:true}`, `perf-run.html?route=phone`, `step6-phone-route 1`, about seven
+  minutes): phase 8's Overview orbiting and Play at half speed, each drawn as it is for 45 s, then bracketed blocks A C A ... twice, the
+  candidates (figures cast no shadow; the shadow pass skipped; density 1.0; both; the figures hidden as the reference), each block recording
+  the drawing it ran with; the rule that reads the owner's two runs (P3, P4) stated before them (§14.1). Checked here (`perf-local.js --phone`,
+  software WebGL: times decide nothing): end to end, no console message, every block's drawing its candidate's.
+
+**Verified so far:** `check:baseline` passes on this build; `check:data` 131 of 131 identical; CI (`npm test`, `check:data`,
+`check:chronology`, `check:contrast`, the self-test) green on the fix's first push; a full `check:visual` on the build before the scale bar's
+two changes passed every case and the self-test but the two new cases' unset limits and the scale bar; `phone-390-paper` measured again on
+this build. In progress: the full `check:visual` on this build (its result to be recorded here).
+**Not verified:** Safari itself and a real finger for the two phone cases and the paper map's frame (Chromium with a phone's device); the
+phone route's numbers on a phone (P3, P4 wait on the owner). Inference, recorded: skipping the shadow pass stands for the sun casting no
+shadow under `lowTier`, which would cost at most as much.
+
 ## 2026-10 · Roadmap step 6 item 1: the iPhone's runs (P1, P2); questions 236-238
 
 **Status: records and measurement scripts only, on `claude/upbeat-hamilton-y9utq8` (PR #61). No source file, no data file and no build
