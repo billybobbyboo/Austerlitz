@@ -50,7 +50,7 @@ Measured on the Part B build (the layout in the source, not injected), by the sa
 The probe's own Part B states `menu` and `sheet` (the Menu open, the dispatch sheet opened whole) were measured on Part B's first builds
 (0.27 and 0.24 free at 390 x 844); the final runs above measure Part A's eight states.
 
-## Item 1: the owner's runs (`docs/STEP6_SPEC.md` §11, §12)
+## Item 1: the owner's runs (`docs/STEP6_SPEC.md` §11, §12, §15)
 
 | file | what |
 |---|---|
@@ -62,6 +62,8 @@ The probe's own Part B states `menu` and `sheet` (the Menu open, the dispatch sh
 | `phone-402x714.json`, `phone/p1view-402x714-*.png` | §12 (decision 229): the build's eight phone states at P1's viewport, 402 x 714 | `node tools/step6/phone-probe.js --only 402x714 --json ... --shots ...` |
 | `phone-paper-entry.txt`, `phone/paper-entry-*.png` | §12 (question 238): the paper map entered on a phone held upright, at 390 x 844 and 402 x 714 (the screenshots reduced to CSS scale) | `node tools/step6/paper-entry.js 390x844,402x714 <dir>` |
 | `perf-local-phone-route.json` | §14.1 (decision 236): the phone route run here, through the wrapper as an iPhone at 402 x 714, halved (`--quick`): it runs end to end with no console message, and each block's drawing (`set`) is its candidate's; software WebGL, so its frame times decide nothing | `node tools/step6/perf-local.js --way frame --device iphone --viewport 402x714 --phone --quick --json ...` |
+| `perf-P3-iphone.txt`, `perf-P3-iphone.json`, `perf-P4-iphone.txt`, `perf-P4-iphone.json` | §15 (decision 236): the owner's two runs of the phone route on the iPhone 17 Pro, as pasted (22 October 2026) | the owner, `perf-run.html?route=phone` |
+| `phone-rule-P3-P4.txt` | §15: §14.1's rule applied to P3 and P4 (its verdict: rule 3, density 1.0 with no shadow, built for `lowTier`) | `node tools/step6/phone-rule.js docs/step6-evidence/perf-P3-iphone.json docs/step6-evidence/perf-P4-iphone.json` |
 
 The reports are copied verbatim from the owner's messages (the JSON line without its `AUS_PERF_JSON ` prefix); the two probes' files are
 measured here, as their commands give.

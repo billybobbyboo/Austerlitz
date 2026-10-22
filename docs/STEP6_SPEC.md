@@ -1217,4 +1217,50 @@ two cases' unset limits and the scale bar; the scale bar's changes touch the pap
 there), and that case was measured again on the final build; the full run on the final build passes all 39 cases, the self-test and the
 live blocks (`CHANGELOG.md`).
 
+## 15. Decision 236 applied: the phone route's runs (P3, P4), the rule's verdict, and what it built
+
+**The runs.** On 22 October 2026 the owner ran the phone route (`perf-run.html?route=phone`, `step6-phone-route 1`) twice on the same iPhone 17
+Pro in Safari, held upright: P3 from 22:30:05 UTC, P4 from 22:39:55, three and a half minutes after P3 ended. The reports, verbatim:
+`docs/step6-evidence/perf-P3-iphone.txt` and `.json`, `perf-P4-iphone.txt` and `.json`. Both read and hashed the build merged in #61 (2,220,267
+bytes, SHA-256 `695e1f94...`); both measured the refresh (17 ms) and hid nothing, so both **stand**; every block's drawing is its candidate's
+(each A at density 1.5 with the shadow pass on and 314 of the 341 figure meshes casting, every candidate's as §14.1 names it).
+
+**The rule of §14.1, applied as written** (`tools/step6/phone-rule.js`, new, not bundled; its output `docs/step6-evidence/phone-rule-P3-P4.txt`):
+- both runs **test** both kinds: every A block drops (the Overview of phase 8 orbiting at 20-25 frames a second, its median interval 39-50 ms;
+  Play at half speed at 26.5-27.8, 36-38 ms); the warm-ups ran at 37 frames a second orbiting (a third of their frames long: the phone held
+  60 for a while, then slowed) and at 28 playing;
+- **no candidate cures** either kind: the nearest, density 1.0 with the shadow pass skipped, still 34.5-43% long frames playing and 72-100%
+  orbiting;
+- the **gains** (the As' mean median interval over the candidate's, the median of its two blocks):
+
+| candidate | orbit P3 | orbit P4 | played P3 | played P4 |
+|---|---|---|---|---|
+| 1 `figShadow` | 1.209 | 1.179 | 1.106 | 1.103 |
+| 2 `shadowPass` | 1.251 | 1.203 | 1.141 | 1.180 |
+| 3 `density1` | 1.057 | 1.068 | 1.217 | 1.242 |
+| 4 `density1Pass` | **1.548** | **1.478** | **1.470** | **1.480** |
+| 5 `figures` (the reference) | 1.393 | 1.428 | 1.337 | 1.299 |
+
+- **Verdict, rule 3: candidate 4, density 1.0 with no shadow, is built for `lowTier`** (a gain, not a cure): the first of candidates 1-4
+  whose gain is at least 1.25 in every kind both runs test; 1-3 each fall short in at least one.
+
+**Observations besides (fact from the reports, unless marked):** neither half of candidate 4 gains 1.25 alone in both kinds (density alone
+1.06-1.24, the pass alone 1.14-1.25), together 1.47-1.55 (inference: each removes a different limit, the pixels filled and the second drawing of
+every caster, and the frame waits on both); playing, it took the phone from about 27 to about 40 frames a second (the median interval 37 to 25
+ms); hiding every figure and standard (the reference) gains less than candidate 4 (1.30-1.43), so the figures are not the larger part of a
+phone's frame; the first of each candidate's two orbit blocks gained more than the second (`figShadow` 1.39 and 1.03 in P3), and two As
+fell to 39-41 ms beside them: the phone's own state still moves within a run (inference), which the bracketing and the median absorb.
+
+**What is built** (`app.js`): under `lowTier`, `pxRatio()` caps the drawing buffer's density at 1.0 (was 1.5), and the sun casts no shadow
+(`sun.castShadow=!lowTier`; the shadow map, never drawn, costs nothing). `lowTier` is set at start for a phone's or a tablet's user agent
+(Android, iPhone, iPad, "Mobile") or a window under 900 x 700 px of area, so the change reaches phones, tablets and small windows; a desktop
+window of ordinary size and every check's 1366 x 768 and 1600 x 900 page are unchanged. On those screens the landscape loses its cast
+shadows (those of the figures and standards, the trees and the villages' houses, roofs, spires and chimneys; the ground casts none, and the
+sun still lights each slope by its angle, with decision 70's fill as before), and the WebGL canvas is drawn at one device pixel per CSS pixel (the interface's text, DOM, is not). The measured candidate
+skipped the shadow pass but kept the last shadow map and its sampling; the built form samples none, so it costs at most what was measured
+(inference, as §14.1 stated).
+
+**What the rule asks next:** the phone measured once more by the owner, one run of the route of §2 (`tools/step6/perf-run.html`, no
+`route`; P5), on the build that carries the change. Nothing else waits on it.
+
 The next owner decision is 239.

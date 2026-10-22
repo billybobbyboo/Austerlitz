@@ -1,5 +1,26 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 6: decision 236's verdict (the phone route's runs P3, P4): density 1.0 and no shadow under `lowTier`
+
+**Status: on `claude/upbeat-hamilton-y9utq8` (begun again from `main` at `f8d0949`, #61 merged).** No data changed (`check:data` 131 of 131
+identical). **The build: 2,220,714 bytes, md5 `c4793156103b60bb74151c7d13dbdd9d`** (was 2,220,267, `fffc4fda...`); `check:baseline` moved to it.
+
+On 22 October 2026 the owner ran the phone route twice on the iPhone 17 Pro (P3, P4), kept verbatim (`docs/step6-evidence/perf-P3-iphone.*`,
+`perf-P4-iphone.*`). §14.1's rule, applied as written by `tools/step6/phone-rule.js` (new, not bundled; its output `phone-rule-P3-P4.txt`): both
+runs stand and test both kinds (every A block dropping: phase 8's Overview orbiting at 20-25 frames a second, Play at half speed at 26.5-27.8); no
+candidate cures; **rule 3: candidate 4, density 1.0 with the shadow pass skipped, gains at least 1.25 in every kind both runs test**
+(1.47-1.55; Play from about 27 to about 40 frames a second); candidates 1-3 each fall short somewhere (the best, the pass alone, 1.14-1.25).
+Built in its built form (`app.js`): under `lowTier` the drawing buffer's density at most 1.0 (`pxRatio`, was 1.5) and the sun casting no
+shadow (`sun.castShadow=!lowTier`). `lowTier` is a phone's or tablet's user agent or a window under 900 x 700 px of area at load: there the
+landscape loses its cast shadows (the figures', the trees', the villages'; the ground casts none) and the WebGL canvas is drawn at one device
+pixel per CSS pixel; a desktop window of ordinary size is unchanged. Recorded in `docs/STEP6_SPEC.md` §15, `docs/ROADMAP.md`, `CLAUDE.md` and
+the evidence README.
+
+**Verified so far:** `npm test` all 9 suites and the height guard; `check:data` 131 of 131 identical; `check:baseline` on this build. In
+progress: the full `check:visual` on this build (every phone case now draws at density 1.0 without shadows); its result to be recorded here.
+**Not verified:** the change on the phone itself: the rule asks for one run of the route of §2 on it (P5). Inference, recorded: the measured
+candidate kept the last shadow map's sampling, the built form has none, so it costs at most what was measured.
+
 ## 2026-10 · Roadmap step 6: owner decisions 236-238 applied (the paper map's frame and scale bar on a phone; two phone cases; the phone route)
 
 **Status: on `claude/upbeat-hamilton-y9utq8` (PR #61).** On 22 October 2026 the owner wrote "go with your recommendations": questions 236-238

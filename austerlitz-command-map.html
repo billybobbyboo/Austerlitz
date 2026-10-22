@@ -6985,8 +6985,11 @@ function rmChange(e){
   requestRender(3);
 }
 function endTweens(){ var n=0; while(tween&&n<4){ tween(performance.now()+1e7); n++; } }
-/* the drawing buffer's density: the screen's, at most 2 (1.5 on a low tier); read at start and on every resize (roadmap step 3, SW-10) */
-function pxRatio(){ return Math.min(window.devicePixelRatio||1, lowTier?1.5:2); }
+/* the drawing buffer's density: the screen's, at most 2 (1.0 on a low tier); read at start and on every resize (roadmap step 3, SW-10).
+   Roadmap step 6, decision 236: 1.5 on a low tier until the owner's phone runs P3 and P4, whose rule (docs/STEP6_SPEC.md section 14.1, its
+   rule 3) picked density 1.0 with the sun casting no shadow (below) for the low tier, a gain on the phone (about 1.5 times the frames a
+   second in its heavy views), not a cure */
+function pxRatio(){ return Math.min(window.devicePixelRatio||1, lowTier?1:2); }
 function boot(){
   try{ init(); }
   catch(e){ if(typeof AUS_BOOT!=="undefined"&&AUS_BOOT) AUS_BOOT.fail(e.ausKind||"error",e); throw e; }
@@ -7022,7 +7025,8 @@ function init(){
   fillLight=new THREE.DirectionalLight(LIGHT_RIG.fill,0.16);
   fillLight.position.set(80,60,-120); scene.add(fillLight);
   sun=new THREE.DirectionalLight(LIGHT_RIG.sun0,0.40);
-  sun.position.set(-140,92,-160); sun.castShadow=true;
+  sun.position.set(-140,92,-160);
+  sun.castShadow=!lowTier;   /* roadmap step 6, decision 236 (with pxRatio above): no shadow map on a low tier (a phone, a tablet, a small window) */
   var shadowPx = lowTier ? 1024 : (renderer.capabilities.maxTextureSize>=8192 ? 4096 : 2048);
   sun.shadow.mapSize.set(shadowPx,shadowPx);
   sun.shadow.radius=1.5;
