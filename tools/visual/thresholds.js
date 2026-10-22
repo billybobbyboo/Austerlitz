@@ -123,6 +123,11 @@ UNOBSTRUCTED["phone-390-watch"]=[0.817,null]; UNOBSTRUCTED["phone-390-layers"]=[
 UNOBSTRUCTED["phone-430-explore"]=[0.685,null]; UNOBSTRUCTED["phone-844x390-explore"]=[0.690,null];
 DROP_LIMIT["phone-390-first"]=9; DROP_LIMIT["phone-390-explore"]=2; DROP_LIMIT["phone-390-dossier"]=1; DROP_LIMIT["phone-390-watch"]=2;
 DROP_LIMIT["phone-390-layers"]=0; DROP_LIMIT["phone-360-explore"]=3; DROP_LIMIT["phone-430-explore"]=2; DROP_LIMIT["phone-844x390-explore"]=3;
+/* roadmap step 6 item 1 (docs/STEP6_SPEC.md section 14): decision 237 (a), the owner's iPhone at P1's viewport, and decision 238 (a), the paper
+   map entered by its taps, each as the build that adds it measures it (rounded down to 0.1 point; the drops as measured), set as measured on
+   the owner's word (22 October 2026) */
+UNOBSTRUCTED["phone-402x714-explore"]=[0.585,null]; UNOBSTRUCTED["phone-390-paper"]=[0.652,null];
+DROP_LIMIT["phone-402x714-explore"]=2; DROP_LIMIT["phone-390-paper"]=17;
 const LAYER_MS=8;   /* section J's budget for one pass at 1600 x 900 on the harness machine */
 /* Stage 2E (section J, 2E): every paper-map view is a true north-up plan: GEOREF.NORTH within 0.5 degrees of up; screen pixels
    per true km at four places equal to 1% (on the 2D build's tilted staff map they differ by 6.0% and north is 17.8 degrees
@@ -157,10 +162,11 @@ module.exports.TIMELINE_MAX=TIMELINE_MAX; module.exports.TIMELINE_RECORDED=TIMEL
    is recorded, not held */
 const PHONE={timeline:{}, framing:{}, cutAllow:{}, reachAllow:{}};
 /* measured on the build that adds the layout (docs/STEP6_SPEC.md section 9.3; the harness's report of its phone cases), set as measured (decision 232 (a)) */
-["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-layers","phone-360-explore","phone-430-explore"].forEach(n=>{ PHONE.timeline[n]=121; });
+["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-layers","phone-360-explore","phone-430-explore",
+  "phone-402x714-explore","phone-390-paper"].forEach(n=>{ PHONE.timeline[n]=121; });
 PHONE.timeline["phone-390-watch"]=155;   /* Watch: the presentation switch in the control row (decision 60), a third row */
 PHONE.timeline["phone-844x390-explore"]=91;   /* held landscape: the layout above 720 px, one control row (90.5 px) */
-Object.assign(PHONE.framing,{"phone-390-first":17,"phone-390-explore":6,"phone-390-dossier":5,"phone-390-watch":9,"phone-390-layers":2,
+Object.assign(PHONE.framing,{"phone-402x714-explore":6,"phone-390-paper":11,"phone-390-first":17,"phone-390-explore":6,"phone-390-dossier":5,"phone-390-watch":9,"phone-390-layers":2,
   "phone-360-explore":4,"phone-430-explore":7,"phone-844x390-explore":10});
 /* the caption's parts give way in order where its row is narrow (decision 159): the phase's title first, then the act, then the events' names;
    each is whole elsewhere on the screen or one press away (the act as a heading of the phase list, the phase as the dispatch sheet's title, the
