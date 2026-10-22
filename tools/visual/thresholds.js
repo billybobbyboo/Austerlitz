@@ -544,7 +544,8 @@ function checkLive(live,opts){
     const E=P.menuEsc||{}; if(E.menu||E.exp!=="false"||E.focus!=="menubtn") bad("Esc on the Menu: open "+E.menu+", focus "+E.focus+" (want closed, focus on the Menu)");
     const T=P.menuTool||{}; if(T.menu||!T.layers) bad("a tool's press did not close the Menu and act: menu "+T.menu+", Layers "+T.layers);
     const G=P.sheet||{}; if(!G.sheet||G.grip!=="true"||!(G.phlist&&G.phlist.shown)||!under(G.dispatch,0.62)||!above(G.dispatch)) bad("the dispatch sheet opened by its grip: "+JSON.stringify({sheet:G.sheet,grip:G.grip,phlist:G.phlist,dispatch:G.dispatch}));
-    const F=P.phase||{}; if(F.phase!==3||!F.cur) bad("a phase pressed in the sheet's list: phase "+F.phase+", current "+F.cur+" (want the fourth)");
+    const F=P.phase||{}; if(F.phase!==3||!F.cur||F.sheet) bad("a phase pressed in the sheet's list: phase "+F.phase+", current "+F.cur+", the sheet folded "+!F.sheet+" (want the fourth, folded)");
+    const A2=P.sheetAgain||{}; if(!A2.sheet||A2.grip!=="true") bad("the grip did not open the folded sheet again: "+JSON.stringify({sheet:A2.sheet,grip:A2.grip}));
     const C=P.sheetClosed||{}; if(C.sheet||C.grip!=="false"||(C.phlist&&C.phlist.shown)||!under(C.dispatch,0.34)) bad("the dispatch sheet closed: "+JSON.stringify({sheet:C.sheet,phlist:C.phlist,dispatch:C.dispatch}));
     const sp=(P.speeds||[]).map(x=>x.speed); if(sp.join()!=="1,2,4,0.5"||!(P.speeds||[]).every(x=>/^Playback speed /.test(x.name||""))) bad("the speed button: "+JSON.stringify(P.speeds));
     const D=P.dossier||{}; if(!under(D.drawer,0.55)||!above(D.drawer)||(D.dispatch&&D.dispatch.shown)) bad("the dossier sheet: "+JSON.stringify({drawer:D.drawer,dispatch:D.dispatch}));

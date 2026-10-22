@@ -495,6 +495,8 @@ async function interact(page,it,vp){
         await first.click("#dgrip"); await first.waitForTimeout(300); PH.sheet=await st();
         await first.evaluate(()=>{ const d=document.querySelector(".dispatch"), b=document.querySelectorAll("#phlist .ph-item")[3]; if(d&&b) d.scrollTop=b.offsetTop-40; });
         await first.locator("#phlist .ph-item").nth(3).click(); await settle(first); PH.phase=await st();
+        /* a phase pressed folds the sheet (its view is then seen); the grip opens it again and closes it */
+        await first.click("#dgrip"); await first.waitForTimeout(300); PH.sheetAgain=await st();
         await first.click("#dgrip"); await first.waitForTimeout(300); PH.sheetClosed=await st();
         await first.evaluate(()=>setSpeed(0.5)); PH.speeds=[]; for(let i=0;i<4;i++){ await first.click("#speedbtn"); PH.speeds.push(await first.evaluate(()=>({speed:speed,name:document.getElementById("speedbtn").getAttribute("aria-label")}))); }
         await first.evaluate(()=>{ select("f","sthilaire"); }); await first.waitForTimeout(400); PH.dossier=await st();
