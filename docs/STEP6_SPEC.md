@@ -1,11 +1,11 @@
 # Real hardware, figure level of detail, a phone layout: specification (roadmap step 6, Part A)
 
 **Status: Part A merged (#59); the owner decided questions 215-230 as recommended on 21 October 2026 (§0.3). Item 3's Part B, the phone layout,
-is built (§9; draft PR #60), with owner questions 231-234 (§10); item 1 waits on the owner's runs. Part A changed no source file, no data and no build:**
+is built (§9; PR #60); the owner decided questions 231-234 as recommended on 22 October 2026 (§10.1); item 1 waits on the owner's runs. Part A changed no source file, no data and no build:**
 `check:baseline` passes on the unchanged build (`austerlitz-command-map.html`, 2,200,058 bytes, md5 `45f8f662ef828d2e1ab593a3b87b6ff7`,
 SHA-256 `bca73918aed88c62c7b564e6f9531b20b51eedb54554d272dfeb27b45eb10794`) and `check:data` finds 131 of 131 declarations identical
 to `archive/step5c-45f8f662.html`. Written against `main` at `7437dcc` (PR #58 merged); line numbers refer to that commit; the code is the
-source of truth. The next owner decision is 231 (§10; after it, 235).
+source of truth. The next owner decision is 235.
 
 Scope: roadmap step 6 (`docs/ROADMAP.md`: "Later, each its own decision: a phone layout; a measured pass on real hardware; figure level of
 detail"; findings A-4 and P-1 of `docs/FINAL_AUDIT.md`; decisions 137, 138, 139). Part A specifies all three items and builds none of them.
@@ -943,4 +943,15 @@ eyes?" three on a phone held upright). (a) accept as built; (b) as built, and a 
 "Whose eyes?" two (a second 44 px button over the map, about 0.8% of the screen at 390 x 844). **Recommended: (a)**: decision 225 kept "Whose
 eyes?" in the Command tab, and the rail is a reading place on a phone, not a control. Cost: none; (b) a button, its word and its checks.
 
-The next owner decision after these is 235.
+### 10.1 Owner decisions 231-234 (the answers)
+
+On 22 October 2026 the owner wrote: "Let's go with your recommendations for all questions, then I'll merge." Each is decided as recommended:
+
+| # | question | decision | what was done |
+|---|---|---|---|
+| 231 | the phone layout's words | (a): as proposed | `LABELS.phone` kept; its comment records the decision |
+| 232 | the phone cases' limits | (a): as measured | `thresholds.js`'s phone entries (`UNOBSTRUCTED`, `DROP_LIMIT`, `PHONE`) kept as set, their comments record the decision |
+| 233 | narrow-390 | (a): retired | the case removed from `cases.js`; its limits kept in `thresholds.js` as the record and deleted after them; `TIMELINE_RECORDED` empty; `check:visual` 37 cases |
+| 234 | the departures of §9.4 | (a): accepted as built | recorded here; nothing changed |
+
+The next owner decision is 235.

@@ -151,11 +151,12 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   against `tools/visual/selftest-manifest.json` (242 since roadmap step 4's K2, the interpolated position's pill; 241 after step 3; 221 after step 2), with the slider, Play and the 3E keys by real key
   presses, since step 3 the live blocks below, and every console message judged; about 15 minutes. `npm run check:report` judges a finished `check:visual` report again without rendering; `npm run
   check:remeasure` is decision 141's one re-measure tool (`tools/visual/remeasure.js`).
-- `npm run check:visual`: 38 fixed views (since roadmap step 6 item 3 Part B, decision 228 (a), eight phone cases, each a fresh page with a
+- `npm run check:visual`: 37 fixed views (since roadmap step 6 item 3 Part B, decision 228 (a), eight phone cases, each a fresh page with a
   device (density 3, touch, a phone's user agent) reached by real taps, judged by `tools/visual/phone-measure.js`'s measures against four
   zero-limits (no press target under 24 px but the event markers; no cut text but `PHONE.cutAllow`'s; no overlapping panels; every feature on
   the screen or one press away but `PHONE.reachAllow`'s), a framing floor, a timeline ceiling, an unobstructed baseline and a drop limit, each
-  as the Part B build measures them, proposed to the owner (question 232); and the live phone block; before them, 30: 11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
+  as the Part B build measures them, set on the owner's word (decision 232 (a)); and the live phone block; `narrow-390` retired (decision
+  233 (a), `phone-390-first` measures its screen as a phone); before them, 30: 11 at the 4x default, the low Pratzen view at 1x and 10.33x, since 2E four paper-map views, since 3B
   `narrow-1024`, the undocked layout, since 3C the phase-8 Overview in Study and in Watch, since 5E the eye level at the Zuran at 4x
   and 1x, since 5F the Plans tab at the Overview, `plans-overview`, since 7B the first screen at 390 x 844, `narrow-390`, and since 7C the
   opening's four steps and its end at 1600 x 900 and its first step at 1280 x 720, each on a fresh page reached by real clicks), Stage 0
@@ -337,8 +338,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   the event markers 2.5.8's essential exception, decision 167). One limit moved in step 3, on the owner's word (decision 164's Panels button):
   `narrow-1024`'s unobstructed baseline [0.535, 0.628] to [0.533, 0.628], recorded in `CHANGELOG.md`; every other kept.
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified build of roadmap step 6 item 3 Part B, the phone layout (md5 `82b21175...`,
-  2,218,401 bytes; re-baselined from PR #58's build, decision 213 (b), md5 `45f8f662...`, 2,200,058 bytes; that one
+- `npm run check:baseline` passes only on the unmodified build of roadmap step 6 item 3 Part B, the phone layout (md5 `c9d29c14...`,
+  2,218,404 bytes; re-baselined from PR #58's build, decision 213 (b), md5 `45f8f662...`, 2,200,058 bytes; that one
   re-baselined from PR #57's build `fdc25e82...`, 2,198,549 bytes, itself from the roadmap step 5 build `f6082ae2...`, 2,197,389 bytes, itself from the step 4b part C build `97352160...`, 2,182,537 bytes, itself from the part-B build `02a46c50...`, 2,178,819 bytes, itself from the part-A build with decisions 198-201, `e257d09b...`, 2,167,583 bytes, itself from the first 4b build `2ae24fa3...`, 2,161,604 bytes, itself from the roadmap step 4 build `833743c6...`, 2,159,374 bytes, itself from the roadmap step 3 build `f023ae0e...`, 2,048,277 bytes, itself from the roadmap step 2 build `af98f586...`, 1,927,346 bytes, itself from the step 1 build `7a86548c...` and the Stage 7D build `46773462...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.
 - All nine suites pass (seven on Stage 0, `runtime-test.js` since `docs/HANDOFF.md` task 2; `binding-test.js` since 2C). Never loosen or remove an
   assertion to make a suite pass.
@@ -488,5 +489,5 @@ owner hosts a copy and runs the route five times; the reports decide 138 by §3.
 begin meanwhile. Roadmap step 6 item 3 Part B (the phone layout, decisions 223-229; begun on the owner's word of 21 October 2026; draft PR #60
 with the decisions' record): below 720 px wide the compact timeline, the phases listed in the dispatch sheet, the sheets at the foot, the tools
 behind a Menu, the views framed into the freed area (`PORTRAIT_FIT.t` 0.25, measured); held landscape today's layout with its faults fixed; the
-phone checks of decision 228 (`docs/STEP6_SPEC.md` §9). Owner questions 231-234 (§10): the words, the phone cases' limits, narrow-390 (9 drops
-against its limit 7: `check:visual` fails there until decided), the departures. The next owner decision is 231.
+phone checks of decision 228 (`docs/STEP6_SPEC.md` §9). The owner decided questions 231-234 as recommended on 22 October 2026 (§10.1): the words as
+proposed, the phone cases' limits as measured, `narrow-390` retired, the departures accepted. The next owner decision is 235.

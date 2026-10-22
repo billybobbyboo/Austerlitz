@@ -114,8 +114,10 @@ DROP_LIMIT["plans-overview"]=12;   /* was 11; loosened (decision 141) */
 UNOBSTRUCTED["narrow-390"]=[0.438,0.507];   /* decision 146 (roadmap step 2, the owner's answer (a)): narrow-390 re-measured once under decision 127 (b)'s words; was [0.46,0.507], is [0.438,0.507] */
 UNOBSTRUCTED["narrow-1024"]=[0.533,0.628];   /* decision 164 (roadmap step 3, the owner's answer of 11 October 2026): narrow-1024 re-measured once for the Panels button, which widens the tools' box by 37 px (measured 0.5334 on its build, 0.5364 before); was [0.535,0.628], is [0.533,0.628]; its drop limit kept */
 /* roadmap step 6 item 3 Part B (decision 228 (a)): the phone cases' baselines and drop limits, what the build that adds the phone layout measures
-   there (rounded down to 0.1 point; the drops as measured), PROPOSED to the owner (question 232); a phone case has no 1280 x 720 measure (its
-   device is a phone's). narrow-390 is not a phone case and keeps its limits (decision 146): on this build it drops 9 (limit 7), question 233 */
+   there (rounded down to 0.1 point; the drops as measured), set on the owner's word (decision 232 (a), 22 October 2026); a phone case has no
+   1280 x 720 measure (its device is a phone's). narrow-390 (decision 122's case at density 1) is retired by decision 233 (a): on this build it
+   dropped 9 against its limit 7; phone-390-first measures that screen as a phone. Its limits above are kept as the record and deleted here */
+delete DROP_LIMIT["narrow-390"]; delete UNOBSTRUCTED["narrow-390"];
 UNOBSTRUCTED["phone-390-first"]=[0.591,null]; UNOBSTRUCTED["phone-390-explore"]=[0.652,null]; UNOBSTRUCTED["phone-390-dossier"]=[0.315,null];
 UNOBSTRUCTED["phone-390-watch"]=[0.817,null]; UNOBSTRUCTED["phone-390-layers"]=[0.310,null]; UNOBSTRUCTED["phone-360-explore"]=[0.625,null];
 UNOBSTRUCTED["phone-430-explore"]=[0.685,null]; UNOBSTRUCTED["phone-844x390-explore"]=[0.690,null];
@@ -138,7 +140,7 @@ const PAPER_MIN_PXKM={"paper-north-up":28,"paper-laptop":21};
 const TIMELINE_MAX=92;
 /* Stage 7B (owner decision 122): narrow-390, the first screen at 390 x 844, is a new case whose timeline wraps (172 px on the 6D build); its
    height is recorded in the report, not held to TIMELINE_MAX, until the project takes up a phone layout. Every other view is held as before */
-const TIMELINE_RECORDED=["narrow-390"];
+const TIMELINE_RECORDED=[];   /* narrow-390 until decision 233 (a) retired it; the phone cases are held to their own ceilings (PHONE.timeline) */
 /* Stage 3D (section H): in the phase-8 Overview views no arrow head more than a quarter hidden by a panel or the screen's edge
    (4 of 5 Allied arrows in Part A; 2 of 5 still wholly under the 90 px timeline before the Overview was fitted); in every
    landscape view on a build with the view offset, the orbit target at the free rectangle's centre within 1 px. New */
@@ -146,15 +148,15 @@ const HEADS_SHOWN=["ph8-overview-study","ph8-overview-watch"], FOCUS_PX=1;
 module.exports.HEADS_SHOWN=HEADS_SHOWN; module.exports.FOCUS_PX=FOCUS_PX;
 module.exports.TIMELINE_MAX=TIMELINE_MAX; module.exports.TIMELINE_RECORDED=TIMELINE_RECORDED;
 /* roadmap step 6 item 3 Part B (docs/STEP6_SPEC.md section 4.5; decision 228 (a)): the phone cases' own limits, each measured once on the build
-   that adds the phone layout and set on the owner's word (the values below are that build's measures, PROPOSED to the owner, question 232;
-   none moves an existing limit). timeline: the timeline's ceiling per case (the phone's, in place of TIMELINE_MAX's 92 px, which holds from
+   that adds the phone layout and set on the owner's word (the values below are that build's measures, set on the owner's word, decision 232 (a);
+   none moves an existing limit). Decided as measured: decision 232 (a), 22 October 2026. timeline: the timeline's ceiling per case (the phone's, in place of TIMELINE_MAX's 92 px, which holds from
    1024 px); framing: the floor of the map layer's items placed wholly inside the free rectangle; cutAllow: the text a case may show cut, each
    with its reason (every other cut text fails); reachAllow: a feature more than one press away, with the presses it takes and the reason (every
    other feature is on the screen or one named control away). The four zero-limits (no press target under 24 px but the event markers, decision
    167; no cut text but cutAllow's; no two panels overlapping; every feature one control away but reachAllow's) hold in every phone case; 44 px
    is recorded, not held */
 const PHONE={timeline:{}, framing:{}, cutAllow:{}, reachAllow:{}};
-/* measured on the build that adds the layout (docs/STEP6_SPEC.md section 9.3; the harness's report of its phone cases), PROPOSED (question 232) */
+/* measured on the build that adds the layout (docs/STEP6_SPEC.md section 9.3; the harness's report of its phone cases), set as measured (decision 232 (a)) */
 ["phone-390-first","phone-390-explore","phone-390-dossier","phone-390-layers","phone-360-explore","phone-430-explore"].forEach(n=>{ PHONE.timeline[n]=121; });
 PHONE.timeline["phone-390-watch"]=155;   /* Watch: the presentation switch in the control row (decision 60), a third row */
 PHONE.timeline["phone-844x390-explore"]=91;   /* held landscape: the layout above 720 px, one control row (90.5 px) */

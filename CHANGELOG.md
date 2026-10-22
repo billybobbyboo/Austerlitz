@@ -1,5 +1,27 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 6 item 3: owner decisions 231-234 applied
+
+**Status: on `claude/upbeat-hamilton-y9utq8` (PR #60), with Part B.** On 22 October 2026 the owner wrote: "Let's go with your recommendations
+for all questions, then I'll merge." Each of questions 231-234 (`docs/STEP6_SPEC.md` §10) is decided as recommended and recorded in §10.1,
+`docs/ROADMAP.md` and `CLAUDE.md`; the next owner decision is 235. No data changed (`check:data` 131 of 131 identical). The build changed by a
+comment only (`LABELS.phone`'s, recording 231): **2,218,404 bytes, md5 `c9d29c149b613bff059598e4fe8c8d03`** (was 2,218,401, `82b21175...`);
+`check:baseline` moved to it.
+
+- **231 (a):** the phone layout's words as proposed (`LABELS.phone`: "Menu", the grip's "The phase text in full", "Close the panels", the speed
+  button's "Playback speed" with the speed, the list's "Phases"); nothing else changed.
+- **232 (a):** the phone cases' limits as measured (`tools/visual/thresholds.js`: their `UNOBSTRUCTED` baselines, `DROP_LIMIT`s and `PHONE`'s
+  timeline ceilings, framing floors, cut and reach lists); their comments now record the decision instead of "proposed".
+- **233 (a):** `narrow-390` retired: removed from `tools/visual/cases.js` (37 cases); its limits kept in `thresholds.js` as the record (decisions
+  122, 141, 146) and deleted after them; `TIMELINE_RECORDED` empty; `remeasure.js` holds the phone cases to their own ceilings, not 92 px.
+  `phone-390-first` measures that screen as a phone (density 3, touch).
+- **234 (a):** the departures of §9.4 accepted as built (the layout's checks a live block; the current phase the sheet's title, not in the
+  caption on a phone held upright; Watch without a phase list; decision 225's removals held landscape too; "Accuracy and sources" two presses
+  away and "Whose eyes?" three on a phone held upright).
+
+**Verified so far:** `npm test` all 9 suites and the height guard pass; `check:data` 131 of 131 identical; `check:baseline` passes on this
+build. The full `check:visual` (37 cases) is running on it; its result will be recorded here.
+
 ## 2026-10 · Roadmap step 6 item 3 Part B: the phone layout (decisions 223-229)
 
 **Status: built on `claude/upbeat-hamilton-y9utq8` (draft PR #60, after the decisions' record), for review; owner questions 231-234 open.**

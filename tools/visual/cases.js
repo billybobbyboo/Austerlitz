@@ -17,17 +17,16 @@ module.exports = [
   { name:"opening-4", viewport:[1600,900], fresh:true, opening:3, note:"The opening's last step (tour stop 8, 14:30)." },
   { name:"opening-end", viewport:[1600,900], fresh:true, opening:"end", note:"Where the opening leaves the visitor: 04:00, Study on the Now tab, the Overview, Play focused (decision 118)." },
   { name:"opening-1-laptop", viewport:[1280,720], fresh:true, opening:0, note:"The opening's first step at 1280 x 720." },
-  /* Stage 7B (owner decision 122): the first screen on a phone-sized window, recorded (its timeline is not held to 92 px). Listed before
-     first-run-laptop so that the harness's last page, on which the self-test runs, stays the 1366 x 768 one */
-  { name:"narrow-390", viewport:[390,844], fresh:true, expect:{t:240},
-    note:"The first screen at 390 x 844, undocked: recorded, not a supported layout (decision 122)." },
+  /* Stage 7B (owner decision 122) had narrow-390 here, the first screen at 390 x 844 at density 1, recorded; retired by owner decision 233 (a)
+     (22 October 2026): phone-390-first measures that screen as a phone, with the device */
   /* roadmap step 6 item 3 Part B (docs/STEP6_SPEC.md section 4.5; decision 228 (a)): the phone cases. Each on a fresh page with a device
      (density 3, touch, a phone's user agent: harness.js PHONE_DEVICES), reached by real taps as a visitor reaches it (phone: the state; the clock
      and the dossier's selection set by the app's own functions, as noted):
      "first" the page untouched; "explore" a tap on "Explore on my own", then the clock set to t (09:30: the phase's view, framed by the app);
      "dossier" then Saint-Hilaire's division selected (select(), as a tap on its counter does); "watch" then Watch by a tap, through the Menu;
      "layers" then the Layers panel by a tap, through the Menu. Their limits are measured once on the build that adds the layout and set on
-     the owner's word (thresholds.js). Listed before first-run-laptop, as narrow-390 is */
+     the owner's word (decision 232 (a), thresholds.js). Listed before first-run-laptop, so that the harness's last page, on which the self-test runs,
+     stays the 1366 x 768 one */
   { name:"phone-390-first", viewport:[390,844], fresh:true, device:"ios", phone:"first", expect:{t:240},
     note:"A phone held upright, 390 x 844 (an iPhone 12-15), the first screen." },
   { name:"phone-390-explore", viewport:[390,844], fresh:true, device:"ios", phone:"explore", t:570,

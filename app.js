@@ -5318,8 +5318,8 @@ var LABELS={
   names:{themes:"The battle in ten themes", themePick:"Pick one of the ten themes above.", theme:"The theme", phaseText:"the phase text",
     sheet:"Accuracy and sources"},
   panels:{button:"Panels", title:"Show or hide the panels: the order of battle, analysis, command and plans tabs, and the sources (below 1080 px wide)"},
-  /* roadmap step 6 item 3 (decisions 223-227): the phone layout's words, below 720 px wide. Proposed for the owner (decision 227 (a)); until
-     decided, "Playback speed" and "Phases" are the build's own names for the speeds' group and the phases' group */
+  /* roadmap step 6 item 3 (decisions 223-227): the phone layout's words, below 720 px wide, as proposed and decided (decision 231 (a), 22 October
+     2026); "Playback speed" and "Phases" are the build's own names for the speeds' group and the phases' group */
   phone:{speed:"Playback speed", speedTitle:"Playback speed: each press the next of \u00bd\u00d7, 1\u00d7, 2\u00d7 and 4\u00d7",
     menu:"Menu", menuTitle:"The tools: the opening, the tour, layers, panels, the vantages and the presentation",
     grip:"The phase text in full", phases:"Phases", closePanels:"Close the panels"},

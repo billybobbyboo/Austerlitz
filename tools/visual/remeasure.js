@@ -104,7 +104,7 @@ for(const [n,lim] of Object.entries(L.PAPER_MIN_PXKM)){ const v=R[0].cases[n].pa
   if(p!==lim) change('PAPER_MIN_PXKM["'+n+'"]',lim,p,p<lim,"Stage 3C's floor; measured "+v+" px per true km, rounded down (3C)",n); }
 
 /* 5. reported, not re-measured */
-const tl=CASES.filter(c=>!T.TIMELINE_RECORDED.includes(c.name)).map(c=>[c.name,R[0].cases[c.name].timeline.height]), tlMax=Math.max(...tl.map(x=>x[1]));
+const tl=CASES.filter(c=>!T.TIMELINE_RECORDED.includes(c.name)&&!c.device).map(c=>[c.name,R[0].cases[c.name].timeline.height]), tlMax=Math.max(...tl.map(x=>x[1]));
 const conf={land:[],paper:[]}; CASES.forEach(c=>{ const m=R[0].cases[c.name]; if(m.confShare) conf[m.mode==="staff"?"paper":"land"].push(m.confShare.share); });
 const smoke=Math.max(...CASES.map(c=>{ const m=R[0].cases[c.name]; return m.smoke?m.smoke.share:0; })), ms=Math.max(...CASES.map(c=>R[0].cases[c.name].layer.ms));
 
