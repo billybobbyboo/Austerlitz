@@ -36,3 +36,17 @@ counts (draw calls, triangles) and layout measures do not depend on the GPU.
   version lacked the hidden-page flag, the wake lock and the 25 ms floor; the two `perf-local-*.json` files are from the version the owner
   will run (`step6-perf-route 3`). Under software WebGL each segment records 0-7 frames (a frame takes seconds): they show the route runs and
   restores the page, nothing more.
+
+## Item 3 Part B (the phone layout, built; `docs/STEP6_SPEC.md` §9)
+
+Measured on the Part B build (the layout in the source, not injected), by the same scripts:
+
+| file | section | script |
+|---|---|---|
+| `phone-cases.json` | §9.2, §9.3 (the harness's eight phone cases and `narrow-390`: free share, timeline, drops, framing, the phone measures, the phone state) | `npm run check:visual` (`tools/visual/out/report.json`, the phone cases' measures kept); `phone-844x390-explore` again after the held-landscape block's last fix (`harness.js --only phone-844x390-explore`) |
+| `phone-partB.json`, `phone/partB-*.png` | §9.2 (the build at six sizes, eight states each: the four portrait sizes, 844 x 390 and, since Part B, 667 x 375) | `node tools/step6/phone-probe.js --layout current --json ... --shots ...` (the held-landscape sizes again after the 430 px block's fix of 667 x 375; the portrait sizes are not touched by it) |
+| `portrait-fit.log`, `portrait-fit-low.json` | §9.1 (the design value `PORTRAIT_FIT.t`: the map items inside the free area over the eight phases at 390 x 844, per t; one run per t) | `node tools/step6/portrait-fit.js --only 390x844 --t ...` |
+
+The probe's own Part B states `menu` and `sheet` (the Menu open, the dispatch sheet opened whole) were measured on Part B's first builds
+(0.27 and 0.24 free at 390 x 844); the final runs above measure Part A's eight states.
+

@@ -51,9 +51,15 @@ moves; the speed check's start, the harness's page reuse, the records' "real tap
 the acts' headings, the single-run design value: each fixed or recorded (`docs/STEP6_SPEC.md` §9). Two left as they were and recorded: the
 height query applying to any short desktop window, and the Panels button's `aria-expanded` while a dossier stands over the rail.
 
-**Verified so far:** `npm test` all 9 suites and the height guard pass; `check:data` 131 of 131 identical; `check:chronology` 0 errors;
-`check:baseline` passes on this build (`82b21175...`, 2,218,401 bytes). `check:visual`, `check:contrast` and `check:selftest` on the final tree are
-running (software WebGL, one at a time); their results will be recorded here.
+**Verified (on the final tree unless said):** `npm test` all 9 suites and the height guard pass (runtime-test 0 warnings, its phone dry run
+included); `check:data` 131 of 131 identical; `check:chronology` 0 errors; `check:baseline` passes on this build (`82b21175...`, 2,218,401 bytes).
+`check:visual` (the full run, on the build before the last held-landscape fix, which touches only views 430 px tall or less): 242 checks pass,
+2 fail: `narrow-390`'s 9 drops against its limit 7 (question 233, expected, no limit moved) and the live phone block's sheet check, a harness
+step fixed after it (a phase pressed now folds the sheet; `17d6ddb`), which the self-test run below passes; all eight phone cases within every
+limit and zero-limit; `phone-844x390-explore` measured and judged again after the fix (no failure). `check:contrast`: every text at AA in the 35
+states and the ten phone states, drawn in the embedded faces, the six start-up cases pass (244 context warnings, at most 248). `check:selftest`:
+242 checks and every live block pass, the phone block included. CI on `17d6ddb`: npm test, check:data, check:chronology, check:contrast and
+check:selftest pass (CI does not run `check:visual` on this branch). The phone probe at six sizes (`docs/step6-evidence/phone-partB.json`).
 
 ## 2026-10 · Roadmap step 6: owner decisions 215-230 recorded
 

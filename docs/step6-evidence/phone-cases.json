@@ -1,0 +1,1521 @@
+{
+ "note": "the harness phone cases (npm run check:visual on the Part B build; phone-844x390-explore again after the 430 px block fix of 667 x 375, the only case it touches) and narrow-390",
+ "cases": {
+  "narrow-390": {
+   "unobstructed": 0.5919,
+   "timeline": 121,
+   "layer": {
+    "placed": 18,
+    "dropped": 9,
+    "droppedIds": [
+     "n:lich",
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:santon",
+     "t:zuran",
+     "t:goldbach",
+     "t:sokolnitz",
+     "t:augezd"
+    ]
+   },
+   "focus": 0,
+   "textContrastMin": 7.96,
+   "state": {
+    "on": true,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   }
+  },
+  "phone-390-first": {
+   "unobstructed": 0.5919,
+   "timeline": 121,
+   "layer": {
+    "placed": 18,
+    "dropped": 9,
+    "droppedIds": [
+     "n:lich",
+     "t:pratzen",
+     "t:vinohrady",
+     "t:pratzeberg",
+     "t:santon",
+     "t:zuran",
+     "t:goldbach",
+     "t:sokolnitz",
+     "t:augezd"
+    ]
+   },
+   "focus": 0,
+   "textContrastMin": 7.96,
+   "phone": {
+    "targets": 35,
+    "scrolled": 0,
+    "fail2_5_8": [],
+    "evmarksUnder24": 25,
+    "under44": 29,
+    "under44List": [
+     "button#helpbtn.t.tb-help 40x36",
+     "div#timerail.timerail 374x24",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button#fr-tour.t.fr-primary 122.8x34",
+     "button#fr-close.t 142.4x34"
+    ],
+    "covered": [
+     "div#timerail.timerail 'Battle clock' under button.ev-mark.fr"
+    ],
+    "outside": [],
+    "cut": [
+     {
+      "el": "span.evt",
+      "why": "ellipsis",
+      "text": "Friant's division at Raigern since the night",
+      "w": 233
+     }
+    ],
+    "offScreenText": 0,
+    "overlaps": [],
+    "panels": {
+     "timebar": [
+      0,
+      723,
+      390,
+      844
+     ],
+     "card": [
+      0,
+      497,
+      390,
+      723
+     ],
+     "menu": [
+      320,
+      10,
+      380,
+      54
+     ]
+    },
+    "reach": {
+     "play": {
+      "state": "ok",
+      "depth": 0
+     },
+     "clock": {
+      "state": "ok",
+      "depth": 0
+     },
+     "phases": {
+      "state": "covered by div#phases.tb-track",
+      "depth": 2,
+      "via": "#fr-close > #dgrip"
+     },
+     "presentation": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "layers": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "paperMap": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "panels": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "follow": {
+      "state": "ok",
+      "depth": 0
+     },
+     "vantages": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "help": {
+      "state": "ok",
+      "depth": 0
+     },
+     "sources": {
+      "state": "hidden",
+      "depth": 2,
+      "via": "#menubtn > #panelsbtn"
+     },
+     "tour": {
+      "state": "ok",
+      "depth": 0
+     },
+     "events": {
+      "state": "ok",
+      "depth": 0
+     },
+     "eyes": {
+      "state": "hidden",
+      "depth": 3,
+      "via": "#menubtn > #panelsbtn > #tab-command"
+     },
+     "speeds": {
+      "state": "ok",
+      "depth": 0
+     }
+    },
+    "small": [],
+    "framing": {
+     "placed": 18,
+     "inFree": 17,
+     "free": [
+      16,
+      64,
+      376,
+      712
+     ]
+    }
+   },
+   "state": {
+    "on": true,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   }
+  },
+  "phone-390-explore": {
+   "unobstructed": 0.6529,
+   "timeline": 121,
+   "layer": {
+    "placed": 7,
+    "dropped": 2,
+    "droppedIds": [
+     "t:pratzen",
+     "t:pratzeberg"
+    ]
+   },
+   "focus": 0,
+   "textContrastMin": 8.32,
+   "phone": {
+    "targets": 34,
+    "scrolled": 0,
+    "fail2_5_8": [],
+    "evmarksUnder24": 25,
+    "under44": 28,
+    "under44List": [
+     "button#dgrip.dgrip 362x28",
+     "button#helpbtn.t.tb-help 40x36",
+     "div#timerail.timerail 374x24",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3"
+    ],
+    "covered": [
+     "div#timerail.timerail 'Battle clock' under button.ev-mark.fr"
+    ],
+    "outside": [],
+    "cut": [
+     {
+      "el": "span.act",
+      "why": "ellipsis",
+      "text": "THE PRATZEN STRIKE",
+      "w": 58
+     },
+     {
+      "el": "span.evt",
+      "why": "ellipsis",
+      "text": "Friant retakes Telnitz, then loses it again",
+      "w": 235
+     }
+    ],
+    "offScreenText": 0,
+    "overlaps": [],
+    "panels": {
+     "timebar": [
+      0,
+      723,
+      390,
+      844
+     ],
+     "dispatch": [
+      0,
+      548,
+      390,
+      723
+     ],
+     "menu": [
+      320,
+      10,
+      380,
+      54
+     ]
+    },
+    "reach": {
+     "play": {
+      "state": "ok",
+      "depth": 0
+     },
+     "clock": {
+      "state": "ok",
+      "depth": 0
+     },
+     "phases": {
+      "state": "covered by div#phases.tb-track",
+      "depth": 1,
+      "via": "#dgrip"
+     },
+     "presentation": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "layers": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "paperMap": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "panels": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "follow": {
+      "state": "ok",
+      "depth": 0
+     },
+     "vantages": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "help": {
+      "state": "ok",
+      "depth": 0
+     },
+     "sources": {
+      "state": "hidden",
+      "depth": 2,
+      "via": "#menubtn > #panelsbtn"
+     },
+     "tour": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "events": {
+      "state": "ok",
+      "depth": 0
+     },
+     "eyes": {
+      "state": "hidden",
+      "depth": 3,
+      "via": "#menubtn > #panelsbtn > #tab-command"
+     },
+     "speeds": {
+      "state": "ok",
+      "depth": 0
+     }
+    },
+    "small": [],
+    "framing": {
+     "placed": 7,
+     "inFree": 6,
+     "free": [
+      16,
+      64,
+      376,
+      536
+     ]
+    }
+   },
+   "state": {
+    "on": true,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   }
+  },
+  "phone-390-dossier": {
+   "unobstructed": 0.3151,
+   "timeline": 121,
+   "layer": {
+    "placed": 5,
+    "dropped": 1,
+    "droppedIds": [
+     "t:pratzeberg"
+    ]
+   },
+   "focus": 0,
+   "textContrastMin": 8.32,
+   "phone": {
+    "targets": 34,
+    "scrolled": 2,
+    "fail2_5_8": [],
+    "evmarksUnder24": 25,
+    "under44": 28,
+    "under44List": [
+     "button#helpbtn.t.tb-help 40x36",
+     "div#timerail.timerail 374x24",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button#drawer-close 24x25"
+    ],
+    "covered": [
+     "div#timerail.timerail 'Battle clock' under button.ev-mark.fr"
+    ],
+    "outside": [],
+    "cut": [
+     {
+      "el": "span.act",
+      "why": "ellipsis",
+      "text": "THE PRATZEN STRIKE",
+      "w": 58
+     },
+     {
+      "el": "span.evt",
+      "why": "ellipsis",
+      "text": "Friant retakes Telnitz, then loses it again",
+      "w": 235
+     }
+    ],
+    "offScreenText": 0,
+    "overlaps": [],
+    "panels": {
+     "timebar": [
+      0,
+      723,
+      390,
+      844
+     ],
+     "menu": [
+      320,
+      10,
+      380,
+      54
+     ],
+     "drawer": [
+      0,
+      259,
+      390,
+      723
+     ]
+    },
+    "reach": {
+     "play": {
+      "state": "ok",
+      "depth": 0
+     },
+     "clock": {
+      "state": "ok",
+      "depth": 0
+     },
+     "phases": {
+      "state": "covered by div#phases.tb-track",
+      "depth": 2,
+      "via": "#drawer-close > #dgrip"
+     },
+     "presentation": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "layers": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "paperMap": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "panels": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "follow": {
+      "state": "ok",
+      "depth": 0
+     },
+     "vantages": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "help": {
+      "state": "ok",
+      "depth": 0
+     },
+     "sources": {
+      "state": "hidden",
+      "depth": 2,
+      "via": "#menubtn > #panelsbtn"
+     },
+     "tour": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "events": {
+      "state": "ok",
+      "depth": 0
+     },
+     "eyes": {
+      "state": "hidden",
+      "depth": 3,
+      "via": "#menubtn > #panelsbtn > #tab-command"
+     },
+     "speeds": {
+      "state": "ok",
+      "depth": 0
+     }
+    },
+    "small": [],
+    "framing": {
+     "placed": 5,
+     "inFree": 5,
+     "free": [
+      16,
+      16,
+      304,
+      248
+     ]
+    }
+   },
+   "state": {
+    "on": true,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": true,
+    "rail": false
+   }
+  },
+  "phone-390-watch": {
+   "unobstructed": 0.8171,
+   "timeline": 155,
+   "layer": {
+    "placed": 10,
+    "dropped": 2,
+    "droppedIds": [
+     "t:pratzen",
+     "t:pratzeberg"
+    ]
+   },
+   "focus": 0,
+   "textContrastMin": 8.32,
+   "phone": {
+    "targets": 35,
+    "scrolled": 0,
+    "fail2_5_8": [],
+    "evmarksUnder24": 25,
+    "under44": 30,
+    "under44List": [
+     "button#helpbtn.t.tb-help 40x36",
+     "button.vm-btn 54.5x32",
+     "button.vm-btn 57.2x32",
+     "button.vm-btn 53.3x32",
+     "div#timerail.timerail 374x24",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3"
+    ],
+    "covered": [
+     "div#timerail.timerail 'Battle clock' under button.ev-mark.fr"
+    ],
+    "outside": [],
+    "cut": [
+     {
+      "el": "span.evt",
+      "why": "ellipsis",
+      "text": "Friant retakes Telnitz, then loses it again",
+      "w": 41
+     }
+    ],
+    "offScreenText": 0,
+    "overlaps": [],
+    "panels": {
+     "timebar": [
+      0,
+      689,
+      390,
+      844
+     ],
+     "viewmode": [
+      8,
+      774,
+      175,
+      808
+     ]
+    },
+    "reach": {
+     "play": {
+      "state": "ok",
+      "depth": 0
+     },
+     "clock": {
+      "state": "ok",
+      "depth": 0
+     },
+     "phases": {
+      "state": "covered by div#phases.tb-track",
+      "depth": 2,
+      "via": ".vm-btn[data-vm=\"study\"] > #dgrip"
+     },
+     "presentation": {
+      "state": "ok",
+      "depth": 0
+     },
+     "layers": {
+      "state": "hidden",
+      "depth": 2,
+      "via": ".vm-btn[data-vm=\"study\"] > #menubtn"
+     },
+     "paperMap": {
+      "state": "hidden",
+      "depth": 2,
+      "via": ".vm-btn[data-vm=\"study\"] > #menubtn"
+     },
+     "panels": {
+      "state": "hidden",
+      "depth": 2,
+      "via": ".vm-btn[data-vm=\"study\"] > #menubtn"
+     },
+     "follow": {
+      "state": "ok",
+      "depth": 0
+     },
+     "vantages": {
+      "state": "hidden",
+      "depth": 2,
+      "via": ".vm-btn[data-vm=\"study\"] > #menubtn"
+     },
+     "help": {
+      "state": "ok",
+      "depth": 0
+     },
+     "sources": {
+      "state": "hidden",
+      "depth": 3,
+      "via": ".vm-btn[data-vm=\"study\"] > #menubtn > #panelsbtn"
+     },
+     "tour": {
+      "state": "hidden",
+      "depth": 2,
+      "via": ".vm-btn[data-vm=\"study\"] > #menubtn"
+     },
+     "events": {
+      "state": "ok",
+      "depth": 0
+     },
+     "eyes": {
+      "state": "hidden",
+      "depth": 4,
+      "via": ".vm-btn[data-vm=\"study\"] > #menubtn > #panelsbtn > #tab-command"
+     },
+     "speeds": {
+      "state": "ok",
+      "depth": 0
+     }
+    },
+    "small": [],
+    "framing": {
+     "placed": 10,
+     "inFree": 9,
+     "free": [
+      16,
+      16,
+      376,
+      672
+     ]
+    }
+   },
+   "state": {
+    "on": true,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   }
+  },
+  "phone-390-layers": {
+   "unobstructed": 0.3106,
+   "timeline": 121,
+   "layer": {
+    "placed": 2,
+    "dropped": 0,
+    "droppedIds": []
+   },
+   "focus": 0,
+   "textContrastMin": 8.46,
+   "phone": {
+    "targets": 44,
+    "scrolled": 9,
+    "fail2_5_8": [],
+    "evmarksUnder24": 25,
+    "under44": 31,
+    "under44List": [
+     "button#layerclose 24x24",
+     "button.mode-btn 114.3x42",
+     "button.mode-btn 114.3x42",
+     "button.mode-btn 113.3x42",
+     "button#helpbtn.t.tb-help 40x36",
+     "div#timerail.timerail 374x24",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3"
+    ],
+    "covered": [
+     "div#timerail.timerail 'Battle clock' under button.ev-mark.fr"
+    ],
+    "outside": [],
+    "cut": [
+     {
+      "el": "span.act",
+      "why": "ellipsis",
+      "text": "THE PRATZEN STRIKE",
+      "w": 58
+     },
+     {
+      "el": "span.evt",
+      "why": "ellipsis",
+      "text": "Friant retakes Telnitz, then loses it again",
+      "w": 235
+     }
+    ],
+    "offScreenText": 0,
+    "overlaps": [],
+    "panels": {
+     "timebar": [
+      0,
+      723,
+      390,
+      844
+     ],
+     "menu": [
+      320,
+      10,
+      380,
+      54
+     ],
+     "layers": [
+      10,
+      96,
+      380,
+      586
+     ]
+    },
+    "reach": {
+     "play": {
+      "state": "ok",
+      "depth": 0
+     },
+     "clock": {
+      "state": "ok",
+      "depth": 0
+     },
+     "phases": {
+      "state": "covered by div#phases.tb-track",
+      "depth": 2,
+      "via": "#layerclose > #dgrip"
+     },
+     "presentation": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "layers": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "paperMap": {
+      "state": "ok",
+      "depth": 0
+     },
+     "panels": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "follow": {
+      "state": "ok",
+      "depth": 0
+     },
+     "vantages": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "help": {
+      "state": "ok",
+      "depth": 0
+     },
+     "sources": {
+      "state": "hidden",
+      "depth": 2,
+      "via": "#menubtn > #panelsbtn"
+     },
+     "tour": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "events": {
+      "state": "ok",
+      "depth": 0
+     },
+     "eyes": {
+      "state": "hidden",
+      "depth": 3,
+      "via": "#menubtn > #panelsbtn > #tab-command"
+     },
+     "speeds": {
+      "state": "ok",
+      "depth": 0
+     }
+    },
+    "small": [],
+    "framing": {
+     "placed": 2,
+     "inFree": 2,
+     "free": [
+      16,
+      600,
+      376,
+      712
+     ]
+    }
+   },
+   "state": {
+    "on": true,
+    "menu": false,
+    "sheet": false,
+    "layers": true,
+    "drawer": false,
+    "rail": false
+   }
+  },
+  "phone-360-explore": {
+   "unobstructed": 0.625,
+   "timeline": 121,
+   "layer": {
+    "placed": 6,
+    "dropped": 3,
+    "droppedIds": [
+     "t:pratzen",
+     "t:pratzeberg",
+     "t:krzenowitz"
+    ]
+   },
+   "focus": 0,
+   "textContrastMin": 8.32,
+   "phone": {
+    "targets": 34,
+    "scrolled": 0,
+    "fail2_5_8": [],
+    "evmarksUnder24": 25,
+    "under44": 28,
+    "under44List": [
+     "button#dgrip.dgrip 332x28",
+     "button#helpbtn.t.tb-help 40x36",
+     "div#timerail.timerail 344x24",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3"
+    ],
+    "covered": [
+     "div#timerail.timerail 'Battle clock' under button.ev-mark.fr"
+    ],
+    "outside": [],
+    "cut": [
+     {
+      "el": "span.act",
+      "why": "ellipsis",
+      "text": "THE PRATZEN STRIKE",
+      "w": 28
+     },
+     {
+      "el": "span.evt",
+      "why": "ellipsis",
+      "text": "Friant retakes Telnitz, then loses it again",
+      "w": 235
+     }
+    ],
+    "offScreenText": 0,
+    "overlaps": [],
+    "panels": {
+     "timebar": [
+      0,
+      679,
+      360,
+      800
+     ],
+     "dispatch": [
+      0,
+      500,
+      360,
+      679
+     ],
+     "menu": [
+      290,
+      10,
+      350,
+      54
+     ]
+    },
+    "reach": {
+     "play": {
+      "state": "ok",
+      "depth": 0
+     },
+     "clock": {
+      "state": "ok",
+      "depth": 0
+     },
+     "phases": {
+      "state": "covered by div#phases.tb-track",
+      "depth": 1,
+      "via": "#dgrip"
+     },
+     "presentation": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "layers": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "paperMap": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "panels": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "follow": {
+      "state": "ok",
+      "depth": 0
+     },
+     "vantages": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "help": {
+      "state": "ok",
+      "depth": 0
+     },
+     "sources": {
+      "state": "hidden",
+      "depth": 2,
+      "via": "#menubtn > #panelsbtn"
+     },
+     "tour": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "events": {
+      "state": "ok",
+      "depth": 0
+     },
+     "eyes": {
+      "state": "hidden",
+      "depth": 3,
+      "via": "#menubtn > #panelsbtn > #tab-command"
+     },
+     "speeds": {
+      "state": "ok",
+      "depth": 0
+     }
+    },
+    "small": [],
+    "framing": {
+     "placed": 6,
+     "inFree": 4,
+     "free": [
+      16,
+      64,
+      344,
+      488
+     ]
+    }
+   },
+   "state": {
+    "on": true,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   }
+  },
+  "phone-430-explore": {
+   "unobstructed": 0.6853,
+   "timeline": 121,
+   "layer": {
+    "placed": 7,
+    "dropped": 2,
+    "droppedIds": [
+     "t:pratzen",
+     "t:pratzeberg"
+    ]
+   },
+   "focus": 0,
+   "textContrastMin": 8.32,
+   "phone": {
+    "targets": 34,
+    "scrolled": 0,
+    "fail2_5_8": [],
+    "evmarksUnder24": 25,
+    "under44": 28,
+    "under44List": [
+     "button#dgrip.dgrip 402x28",
+     "button#helpbtn.t.tb-help 40x36",
+     "div#timerail.timerail 414x24",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3"
+    ],
+    "covered": [
+     "div#timerail.timerail 'Battle clock' under button.ev-mark.fr"
+    ],
+    "outside": [],
+    "cut": [
+     {
+      "el": "span.act",
+      "why": "ellipsis",
+      "text": "THE PRATZEN STRIKE",
+      "w": 97
+     }
+    ],
+    "offScreenText": 0,
+    "overlaps": [],
+    "panels": {
+     "timebar": [
+      0,
+      811,
+      430,
+      932
+     ],
+     "dispatch": [
+      0,
+      636,
+      430,
+      811
+     ],
+     "menu": [
+      360,
+      10,
+      420,
+      54
+     ]
+    },
+    "reach": {
+     "play": {
+      "state": "ok",
+      "depth": 0
+     },
+     "clock": {
+      "state": "ok",
+      "depth": 0
+     },
+     "phases": {
+      "state": "covered by div#phases.tb-track",
+      "depth": 1,
+      "via": "#dgrip"
+     },
+     "presentation": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "layers": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "paperMap": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "panels": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "follow": {
+      "state": "ok",
+      "depth": 0
+     },
+     "vantages": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "help": {
+      "state": "ok",
+      "depth": 0
+     },
+     "sources": {
+      "state": "hidden",
+      "depth": 2,
+      "via": "#menubtn > #panelsbtn"
+     },
+     "tour": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#menubtn"
+     },
+     "events": {
+      "state": "ok",
+      "depth": 0
+     },
+     "eyes": {
+      "state": "hidden",
+      "depth": 3,
+      "via": "#menubtn > #panelsbtn > #tab-command"
+     },
+     "speeds": {
+      "state": "ok",
+      "depth": 0
+     }
+    },
+    "small": [],
+    "framing": {
+     "placed": 7,
+     "inFree": 7,
+     "free": [
+      16,
+      64,
+      416,
+      624
+     ]
+    }
+   },
+   "state": {
+    "on": true,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   }
+  },
+  "phone-844x390-explore": {
+   "unobstructed": 0.6903,
+   "timeline": 90.5,
+   "layer": {
+    "placed": 11,
+    "dropped": 3,
+    "droppedIds": [
+     "t:vinohrady",
+     "t:austerlitz",
+     "t:krzenowitz"
+    ]
+   },
+   "focus": 0,
+   "textContrastMin": 8.32,
+   "phone": {
+    "targets": 54,
+    "scrolled": 0,
+    "fail2_5_8": [],
+    "evmarksUnder24": 25,
+    "under44": 54,
+    "under44List": [
+     "button.vm-btn 56.5x32",
+     "button.vm-btn 59.2x32",
+     "button.vm-btn 53.3x32",
+     "button#openingbtn.t 120.7x28",
+     "button#tourbtn.t 85.9x28",
+     "button#layersbtn.t 68.1x28",
+     "button#panelsbtn.t 58.2x28",
+     "button.t.van-btn 48.1x28",
+     "button.t.van-btn 53.6x28",
+     "button.t.van-btn 63.6x28",
+     "button.t.van-btn 52x28",
+     "button.t.van-btn 73.4x28",
+     "button#prevEv.t.tb-icon 39.5x32",
+     "button#play.t.tb-play 58x32",
+     "button#nextEv.t.tb-icon 39.5x32",
+     "button#follow.t.tb-follow 56.9x32",
+     "button#speedbtn.t.tb-speed 44x29",
+     "button#helpbtn.t.tb-help 32x32",
+     "button.step 174.8x31",
+     "button.step 58.3x31",
+     "button.step 43.7x31",
+     "button.step 43.7x31",
+     "button.step 75.9x31",
+     "button.step 43.7x31",
+     "button.step 87.4x31",
+     "button.step 102x31",
+     "button.step 145.7x31",
+     "button.step 58.3x31",
+     "div#timerail.timerail 816x24",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.al 11.3x11.3",
+     "button.ev-mark.dec 14.1x14.1",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3",
+     "button.ev-mark.fr 11.3x11.3"
+    ],
+    "covered": [
+     "div#timerail.timerail 'Battle clock' under button.ev-mark.al"
+    ],
+    "outside": [],
+    "cut": [
+     {
+      "el": "span.act",
+      "why": "ellipsis",
+      "text": "THE PRATZEN STRIKE",
+      "w": 131
+     },
+     {
+      "el": "span.cap-ph",
+      "why": "ellipsis",
+      "text": "The crisis on the Pratzeberg",
+      "w": 25
+     },
+     {
+      "el": "button.act-btn",
+      "why": "ellipsis",
+      "text": "The Allied Advance",
+      "w": 102
+     },
+     {
+      "el": "button.act-btn",
+      "why": "ellipsis",
+      "text": "The Pratzen Strike",
+      "w": 102
+     },
+     {
+      "el": "span.step-l",
+      "why": "ellipsis",
+      "text": "Sokolnitz",
+      "w": 37
+     },
+     {
+      "el": "span.step-l",
+      "why": "ellipsis",
+      "text": "The Pratzen",
+      "w": 37
+     },
+     {
+      "el": "span.step-l",
+      "why": "ellipsis",
+      "text": "Olmütz road",
+      "w": 37
+     },
+     {
+      "el": "span.step-l",
+      "why": "ellipsis",
+      "text": "Reckoning",
+      "w": 51
+     }
+    ],
+    "offScreenText": 0,
+    "overlaps": [],
+    "panels": {
+     "timebar": [
+      0,
+      300,
+      844,
+      390
+     ],
+     "tools": [
+      482,
+      56,
+      830,
+      119
+     ],
+     "viewmode": [
+      336,
+      14,
+      508,
+      48
+     ]
+    },
+    "reach": {
+     "play": {
+      "state": "ok",
+      "depth": 0
+     },
+     "clock": {
+      "state": "ok",
+      "depth": 0
+     },
+     "phases": {
+      "state": "ok",
+      "depth": 0
+     },
+     "presentation": {
+      "state": "ok",
+      "depth": 0
+     },
+     "layers": {
+      "state": "ok",
+      "depth": 0
+     },
+     "paperMap": {
+      "state": "ok",
+      "depth": 0
+     },
+     "panels": {
+      "state": "ok",
+      "depth": 0
+     },
+     "follow": {
+      "state": "ok",
+      "depth": 0
+     },
+     "vantages": {
+      "state": "ok",
+      "depth": 0
+     },
+     "help": {
+      "state": "ok",
+      "depth": 0
+     },
+     "sources": {
+      "state": "hidden",
+      "depth": 1,
+      "via": "#panelsbtn"
+     },
+     "tour": {
+      "state": "ok",
+      "depth": 0
+     },
+     "events": {
+      "state": "ok",
+      "depth": 0
+     },
+     "eyes": {
+      "state": "hidden",
+      "depth": 2,
+      "via": "#panelsbtn > #tab-command"
+     },
+     "speeds": {
+      "state": "ok",
+      "depth": 0
+     }
+    },
+    "small": [],
+    "framing": {
+     "placed": 11,
+     "inFree": 10,
+     "free": [
+      16,
+      136,
+      832,
+      288
+     ]
+    }
+   },
+   "state": {
+    "on": false,
+    "menu": false,
+    "sheet": false,
+    "layers": false,
+    "drawer": false,
+    "rail": false
+   }
+  }
+ }
+}

@@ -853,7 +853,12 @@ in the caption", §9.4). A phase pressed in the list folds the sheet, so its vie
 
 The orbit target at the free rectangle's centre within 1 px in every case; map text at AA as rendered in every case (its lowest 7.96:1). With
 the probe (`tools/step6/phone-probe.js --layout current`): the Panels open, 0.26 free at 390 x 844 (0.19 in Part A); the dispatch sheet opened
-whole, 0.24; the Menu open, 0.27; every state of both sizes measured, no overlap, no target under 24 px but the event markers.
+whole, 0.24, and the Menu open, 0.27 (both on Part B's first builds); at all six sizes (the four portrait sizes, 844 x 390 and 667 x 375) and in
+all eight of Part A's states, no overlap and no target under 24 px but the event markers, every interface text at AA but the tour's disabled
+"Back" (exempt, §4.2) (`docs/step6-evidence/phone-partB.json`). At 667 x 375 (a small phone held landscape, which keeps the layout above) the
+probe first found the rail under the switch (22 x 34) and the tools under the tour's bar (347 x 40): the 430 px block now moves the switch
+clear of the rail and stands the tools down while the tour's bar stands; measured again, none. Held that small, a dossier leaves 0.21 free and
+the Layers panel 0.16.
 
 **Cut text left** (each named, with its reason, in `thresholds.js` `PHONE.cutAllow`): in portrait, the caption's act and event names giving way
 (decision 159; the act whole as a heading of the phase list, the event in the sheet and its dossier); held landscape also the caption's phase
