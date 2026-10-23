@@ -31,14 +31,15 @@ headless Chromium with software WebGL (SwiftShader), as the Stage 0 harness and 
 | `stills.js [--views] [--protos file:id]` | 1-6 | direct captures of the build in each view, and of the same view with a prototype put into the live scene; each frame's draw calls, triangles and map-layer counts beside it; the prototype undone and the frame after it checked |
 | `density.js` | 1, 7 | what each view is made of: the share of the free rectangle each class of drawing covers (each hidden in turn and the frames compared), the arrows' widths in pixels, a census of the map layer's labels |
 | `label-motion.js [--stab]` | 3 | the map layer driven through pans, zooms, orbits, glides and Play on both map types, 30 frames a second, every item's place read after every frame; jumps, pops, level-of-detail switches, flicker, overlaps and the pass's time; six stabilisers prototyped in the page |
-| `record.js --clip` | 3-5 | frame-stepped recordings: the clock advanced by the play speed's share of a second per frame, each frame drawn by the app and captured, encoded at 10 frames a second (MP4 and a small GIF) |
+| `record.js --clip` | 3-5 | frame-stepped recordings: the clock advanced by the play speed's share of a second per frame and set as Play sets it, each frame drawn by the app and captured, encoded at 10 frames a second (MP4 and a small GIF) |
 | `kit-census.js` | 4, 8 | triangles per man, horse, gun and house in the build's kit and the prototypes', and the frame with each prototype in place |
 | `carried.js` | 9 | the three carried findings, by real clicks, keys and taps |
 | `gait-check.js`, `legs.js` | 4.3 | the gait's rule checked in the page; every leg of the movement model with its duration and speed (no page) |
 | `sheets.py` | all | the comparison sheets: the build and its prototypes side by side, from the captures |
 | `pixdiff.py` | 4-6 | how much of a frame each prototype changes: the pixels of the kept captures whose grey level differs by more than 40 of 255 |
 | `label-far.js` | 7.2 | which drawn items of the map layer stand beyond 1.5 times the eye's distance to its target (the hierarchy by distance's reach) |
-| `stream-vis.js` | 5 | how much of the streams the build draws: the ribbons painted and their pixels counted, with and without their depth test |
+| `stream-vis.js` | 5, 9.5 | how much of the streams, their banks and the roads the build draws: the ribbons painted and their pixels counted, as built, double-sided, and with no depth test |
+| `clip-motion.py` | 4.3, 5.3 | what moves in the kept recordings: each frame against its clip's first and the variants against each other, counted on the committed clips (no page) |
 | `protos/ground.js`, `labels.js`, `figures.js`, `water.js`, `buildings.js`, `arrows.js` | 2-7 | the prototypes, each an in-page module registering `window.__p8[id]` with `install` and `uninstall` |
 
 Their outputs, screenshots and recordings are in `docs/stage8-evidence/` (its `README.md` lists every file).
@@ -606,7 +607,7 @@ its mounted officers', whose stride is longer; the infantry's follow from the am
 full swing; none at 4x.
 
 **Recorded** (`docs/stage8-evidence/clips/`; each the build above and `f-gait` below over the same frames, at ½x and 10 frames a second, the
-camera tracking the formation 24-26 units out; the clock set each frame as Play sets it). [[INF-MARCH]] [[BAT-LIMBER]] [[MARCH-4X]] [[CAV-CLIP]]
+camera tracking the formation 24-26 units out; the clock set each frame as Play sets it). `inf-march.mp4`, Saint-Hilaire's climb (the clock 08:47 to 09:05, 37 frames): it opens in the thinning valley fog as the division closes from line into column and turns to its heading (the build's own easing, `SHAPE` and `WHEEL`); then, in the build's half, the battalions and their mounted officers slide up the slope, no man or horse moving; in `f-gait`'s the men's legs swing in cadence (at about 5 km/h modelled, 2.0 cycles a second: five frames a cycle), the officers' horses walk, each on its own beat, the riders bobbing with them, and the column reads as on the march, its feet still sliding over the ground (the ratio above). A movement arrow's ribbon lies across the battalions in every frame (section 7.1). [[BAT-LIMBER]] [[MARCH-4X]] [[CAV-CLIP]]
 
 **The drift the gait must not animate** (`tools/stage8/legs.js`, `legs.json`, the model's own legs): of the 147 legs the clock moves, 92 run
 at under 1 km/h, 52 of them for two hours or more: Nansouty's division covers 1.85 km between 04:00 and 10:30 (0.28 km/h), Saint-Hilaire's
@@ -739,6 +740,11 @@ Goldbach, the bright blue line of `stream-low-base.jpg`.
   each variant now has its own, and both views were taken again. The same draw calls
   and triangles: the ribbons are already submitted to the renderer today and culled there, so drawing them costs only the pixels they cover.
   The ribbons' widths are the build's (the Goldbach 2.8 units, about 177 m, on banks 4.6 wide): symbol widths, never yet seen.
+- **The flow** (`clips/stream-flow.mp4`: straight above the Goldbach below Sokolnitz at noon, 31 frames at 10 a second, the clock and the
+  camera held; `w-stream` above, `w-flow` below; `clip-motion.json`): `w-stream`'s part does not change (47 to 62 pixels differ from its first
+  frame by more than 8 of 255, the encoder's noise); in `w-flow`'s the ripple drifts downstream, 284 pixels differing by more than 8 after a
+  tenth of a second and 1,416 after three, none by more than 40: a faint shimmer on the water when watched for, not a current. Its speed
+  and strength are design values; the case against it is section 5.4's, not its look.
 
 ### 5.4 Stream movement, assessed on its own
 
