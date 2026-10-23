@@ -430,7 +430,11 @@ under reduced motion. It changes no placement, so the probe's counts are those o
 (`clips/paper-zoom.mp4`, `clips/hybrid-orbit.mp4`, `clips/hybrid-zoom.mp4`, `clips/paper-play.mp4`: the build above, `l-fade` below,
 the same frames at 10 a second). In the paper map's zoom the build's counters and names change places from one frame to the next; with
 the prototype they hold their places, and those whose place is taken fade out and come back a few frames later, so that fewer are drawn
-while the zoom runs (the table's "items drawn while moving"). [[LABEL-CLIPS]]
+while the zoom runs (the table's "items drawn while moving"). While the clock plays on the paper map (`paper-play.mp4`, 09:00-09:20 at ½x) both
+hold steady from frame to frame, the prototype's counters in the places each first took. (In that recording the phase's toast, "The sun of
+Austerlitz, as memoirs call it", stands in every frame, because the probe sets the clock with `force`, which shows it again each time; at
+1280 x 720 its left end lies under the Study / Watch / Clean switch in the build as in the prototype: a small fault of the interface, outside
+Stage 8's subject, recorded for 8H.) [[LABEL-CLIPS]]
 
 ### 3.4 Recommended (question 240): anchor2 with the band, and fades
 
@@ -1262,7 +1266,8 @@ decisions 141, 199, 214 and 232 were.
   village cover class not below today's: 57.0% of the build's, 59.2% of the prototype's); every landmark at its sourced position within its grade's tolerance, with its claim in the dossier.
 
 ### 8H: integration
-- **Benefit:** the whole measured together, on the owner's devices; the open polish findings closed.
+- **Benefit:** the whole measured together, on the owner's devices; the open polish findings closed (section 9.4's, and the phase toast
+  that lies partly under the view switch at 1280 x 720, section 3.2's recordings).
 - **Systems:** all; `check:visual`, `check:contrast`, `check:selftest`.
 - **Evidence:** the device route after (desktop, phone, and an integrated-GPU laptop if one can be had); the effects-off bracket (section 8.5).
 - **Acceptance:** section 8.3's budgets on every device run; every check passing; the records.
