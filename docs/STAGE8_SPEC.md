@@ -19,7 +19,7 @@ carried from earlier reviews.
 **Scope guard (kept).** Nothing is implemented. No source, data or build file changed; no limit of `tools/visual/thresholds.js` moved
 (`DROP_LIMIT`, `UNOBSTRUCTED`, `PAPER_MIN_PXKM`, `CTX_DELETES`, `CONF_SHARE` untouched); three.js stays r128 and the product one
 self-contained HTML. Every prototype is JavaScript a probe puts into a live page after it has started, undone after its frame (the frame after
-it checked equal to the first in draw calls and triangles), or dying with its page; none is in the source. No GPU frame time could be
+it compared with the first in draw calls and triangles: 69 of 72 equal, the other three explained in section 7.1), or dying with its page; none is in the source. No GPU frame time could be
 measured here (the container has none): every timing in this document is the layout's CPU time or software WebGL and is said to be.
 
 **How this was established.** Every number comes from a script in `tools/stage8/` (committed; not bundled), run against the build above in
@@ -724,9 +724,13 @@ Goldbach, the bright blue line of `stream-low-base.jpg`.
   own (`atmoUniforms`, `app.js:389-391`, which feeds every material the haze's and the fog's uniforms), and the ice drew black; any Stage 8
   shader change must call it, as the ground's and the atlas's already do.
 - **The streams** (`goldbach-top-*.jpg`, `goldbach-noon-*.jpg`, the Goldbach below Sokolnitz at noon; `water-stream.json`): the build shows
-  no stream (the frame `*-base.jpg`); `w-stream`, drawing the ribbons, shows the Goldbach as a grey-blue channel between paler banks, darker
-  and less blue than the build's own colour would be, crossing under the village's houses (`goldbach-top-w-stream.jpg`); [[SV-NOON]]
-  `w-streamice`'s pale rim reads as ice along both banks (`goldbach-top-w-streamice.jpg`), which nothing read supports. The same draw calls
+  no stream (the frame `*-base.jpg`); `w-stream`, drawing the ribbons, shows the Goldbach as a grey-blue channel between paler banks,
+  crossing under the village's houses (`goldbach-top-w-stream.jpg`: 94,300 pixels change, `pixdiff.json`); from the west bank, 30 units out,
+  a pale band running away toward Sokolnitz behind the troops, the sky reflected at a grazing angle (`goldbach-noon-w-stream.jpg`: 9,600
+  pixels). `w-streamice`'s pale rim reads as ice along both banks from above (`goldbach-top-w-streamice.jpg`: 32,600 pixels more than
+  `w-stream`) and barely from the bank (900), which is as well, since nothing read supports it. A fault of the prototype's, recorded: its
+  first captures of `w-streamice` were `w-stream`'s (the variant installed second reused the first's compiled program, which drew no rim);
+  each variant now has its own, and both views were taken again. The same draw calls
   and triangles: the ribbons are already submitted to the renderer today and culled there, so drawing them costs only the pixels they cover.
   The ribbons' widths are the build's (the Goldbach 2.8 units, about 177 m at 1x; the roads 1.2-2.9): symbol widths, never yet seen.
 
@@ -1298,7 +1302,7 @@ build stays as it is until the answers. A limit of `tools/visual/thresholds.js` 
 | `npm run check:baseline` | passes: `austerlitz-command-map.html` 2,220,714 bytes, md5 `c4793156103b60bb74151c7d13dbdd9d`, unchanged by this document |
 | [[S12-FINAL]] | |
 | every probe of `tools/stage8/` | run to its end on the build above; outputs in `docs/stage8-evidence/` (the README lists each) |
-| each prototype undone | the frame after each prototype's removal equal to the frame before it in draw calls and triangles ([[UNDO-COUNT]] removals checked by `stills.js`) |
+| each prototype undone | the frame after each prototype's removal compared with the frame before it in draw calls and triangles: 72 removals checked by `stills.js`, 69 equal; the three close on Sokolnitz (the arrows) 20 triangles fewer, which the build's own rebuild of its overlays makes there with no prototype (section 7.1); the ribbon probe's paint undone in its 13 views with no pixel changed by more than 40 of 255 |
 
 Not run here, because nothing in the build changed: `check:visual` (passed on this build: its 39 cases, the self-test's 242 checks and the
 live blocks, `CHANGELOG.md`'s entry for decision 236's verdict); `check:contrast` and `check:selftest`, which CI runs on every push and pull
