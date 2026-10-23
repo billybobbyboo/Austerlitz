@@ -53,9 +53,9 @@ assessment can be checked against them (section 12.2).
 - **What the build draws (section 1).** At a distance the battle reads as washes of blue and amber, not troops: the confidence marks are
   what is seen of a formation there. Close up, symbology outweighs the troops: arrow ribbons of fixed world width drawn over everything,
   192-px glyph rings, the C marks spread over slopes, large plain standards. The guns are the weakest drawing (tubes on solid discs, brown
-  cubes on the march, switched in one frame). Nothing moves within a formation: blocks slide. The meres are flat plates; the streams
-  and the roads' ribbons are not drawn at all (culled); every house the same box turned at random; no landmark drawn. The light, the fog, the ground's cover, the
-  readings, the interface and the paper map hold up and are kept.
+  cubes on the march, switched in one frame). Nothing moves within a formation: blocks slide. The meres are flat plates; the streams'
+  and the roads' ribbons are not drawn at all (culled); every house is the same box turned at random; no landmark is drawn. The light, the
+  fog, the ground's cover, the readings, the interface and the paper map hold up and are kept.
 - **L1, the glow (section 2; question 239).** Five alternatives in seven views: recommended, a thin cased outline of each formation's
   footprint in its side's colour, the selection in the accent, and "Position confidence" an optional outline layer, off by default on the
   landscape (supersedes decision 85 there; restyles 87 and 107; keeps 86, 88 and 91: a reported-only formation's C zone and the
@@ -66,13 +66,15 @@ assessment can be checked against them (section 12.2).
   faded out), a level-of-detail band released at rest, and fades: 249 jumps (counters 19), no overlap among live items; a view reached
   without motion laid out exactly as today.
 - **L3, troops and motion (section 4; questions 242-245).** A richer kit prototyped on three formations: the guns change most and read as
-  field pieces; infantry and cavalry change less than expected at the visitor's distances. A gait locked to the clock (the phase a function of
-  the modelled track, still when paused, the same when scrubbed, faded out above 3.2 cycles a second, none under reduced motion or below
-  1 km/h), and why: at
-  ½x a drawn formation already moves 2.6-5 times as fast for its size as a man walks, at 4x 20-40 times. Part of the floating is the model's: 52 of its 147 legs drift at under 1 km/h for two hours or more,
-  because a move no source dates is spread over its interval (decision 45); the gait leaves them still. The artillery's sources (Gassendi
-  1809, IV Corps' order of 25 October 1805, Teuber, Nilus) give the wheels' proportion, the coffret, one driver a vehicle (as an
-  authorisation) and the limbers' place, and no time for limbering. Facings: kept out (decision 104), since only the French classes have them sourced.
+  field pieces (spoked wheels, trails, their limbers and teams behind them); infantry and cavalry change little at the visitor's distances;
+  on every formation the prototype's kit would add an estimated 34-52% to the frame, so it is proposed only with culling and a lighter kit
+  drawn near the eye. A gait locked to the clock (its phase a function of the modelled track: still when paused, the same when scrubbed;
+  faded out above 3.2 cycles a second; none under reduced motion or below 1 km/h), and why: at ½x a drawn formation already moves 2.6-5 times
+  as fast for its size as a man walks, at 4x 20-40 times. Part of the floating is the model's: 52 of its 147 legs drift at under 1 km/h for
+  two hours or more, because a move no source dates is spread over its interval (decision 45); the gait leaves them still. The artillery's
+  sources (Gassendi 1809, IV Corps' order of 25 October 1805, Teuber, Nilus) give the wheels' proportion, the coffret, one driver a vehicle
+  (as an authorisation) and the limbers' place, and no time for limbering. Facings: kept out (decision 104), since only the French classes
+  have them sourced.
 - **L4, water (section 5; questions 246, 253).** The streams are not drawn at all today (their ribbons, and the roads', face away from the
   eye and are culled: section 9.5); drawn, they should be darker and still. The meres stay ice, varied in material and light. The day was
   mild in Prague (4.9-10.6 °C; the Klementinum series), the eyewitnesses disagree on the ice's strength, and nothing read says the streams
@@ -86,11 +88,11 @@ assessment can be checked against them (section 12.2).
 - **Performance (section 8; questions 249, 250).** Budgets stated before anything is built (the phone's heavy views at most 1.62 million
   triangles; an integrated-GPU run before any PR adds more than 10%); block culling first; the gait free of calls and triangles; the
   effects-off question as a bracketed run.
-- **Carried findings (section 9; questions 251, 253).** All three still present: under a reading, "Centre the map here" goes to the true
-  position of a formation the reading does not know; the dossier's sources are at its end (6,000 px down); a timeline tip stays
-  after its element is activated (an extra Esc; on a phone it stays on the screen). Of the audit's unassigned findings, A-5, S-5, S-7, A-6,
-  G-2, P-2 and T-7 are still present and P-3 partly. And one
-  found here (9.5): the landscape draws none of its road or stream ribbons, and the self-test's checks of them, being geometric, cannot see it.
+- **Carried findings, and one found here (section 9; questions 251, 253).** All three carried findings are still present: under a reading,
+  "Centre the map here" goes to the true position of a formation the reading does not know; the dossier's sources are at its end (6,000 px
+  down); a timeline tip stays after its element is activated (an extra Esc; on a phone it stays on the screen). Of the audit's unassigned
+  findings, A-5, S-5, S-7, A-6, G-2, P-2 and T-7 are still present and P-3 partly. Found here (9.5): the landscape draws none of its road
+  or stream ribbons, and the self-test's checks of them, being geometric, cannot see it.
 - **The plan (section 10; question 252):** PRs 8A-8H; nothing implemented here.
 
 ## 0. What binds Stage 8
@@ -592,6 +594,12 @@ swing; 4.0 at 1x, half faded; none at 2x and 4x (the cycles a second `gait-check
 its mounted officers', whose stride is longer; the infantry's follow from the amplitude it records). The guns on the heights (13:45-14:30): 0.7 cycles a second at ½x, 1.4 at 1x and 2.8 at 2x,
 full swing; none at 4x.
 
+**Recorded** (`docs/stage8-evidence/clips/`; each the build above and `f-gait` below over the same frames, at ½x and 10 frames a second, the
+camera tracking the formation 24-26 units out). `inf-march.mp4`, Saint-Hilaire's division on the plateau's west slope from 08:47:
+in the build the files slide up the slope with their legs together and the officer's box horse glides; with `f-gait` the files step in
+cadence and the horse walks, the legs alternating from frame to frame, and nothing else changes (the column's place, its speed and the
+camera are the build's). [[GAIT-CLIPS]]
+
 **The drift the gait must not animate** (`tools/stage8/legs.js`, `legs.json`, the model's own legs): of the 147 legs the clock moves, 92 run
 at under 1 km/h, 52 of them for two hours or more: Nansouty's division covers 1.85 km between 04:00 and 10:30 (0.28 km/h), Saint-Hilaire's
 0.35 km between 04:00 and 08:00. A leg with no dated departure is spread over its whole interval: decision 45 ("Creeping moves ... otherwise
@@ -1088,8 +1096,13 @@ event-marker check extended to Enter and Esc by real keys, and the phone case to
 ### 9.5 Found in this Part: the roads and the streams are never drawn
 
 **Measured** (`tools/stage8/stream-vis.js`, `stream-vis.json`): in each view the streams' material painted magenta, the banks' cyan and the
-roads' yellow, and the pixels the paint changes counted, as built, then drawn double-sided, then with no depth test as well. As built, every
-stream, bank and road ribbon covers **0 pixels** in every view probed [[SV-VIEWS]]; drawn double-sided they cover [[SV-DOUBLE]]. **Why (fact,
+roads' yellow, and the pixels the paint changes counted, as built, then drawn double-sided, then with no depth test as well. As built they cover
+nothing, or almost nothing, in all eleven views probed (the Goldbach from straight above at noon at 1x, 4x and 10.33x and from its west bank
+at 1x and 4x, the Field vantage, the low Pratzen view, Telnitz, Sokolnitz, close on Sokolnitz and the Goldbach at 08:20): the streams
+**0 pixels** in ten of them (82 in the eleventh, of 17,036), the banks and the roads at most 5% of what they would cover, and that only where
+the ground rises above the eye and a ribbon is seen from below (the roads in `stream-low`, 2,924 of 56,656 pixels). Drawn double-sided they
+cover 851-56,106 pixels of streams, 1,628-70,400 of banks and 8,809-147,446 of roads in a view (in Telnitz the roads alone a tenth of the
+frame); after each view's paint was undone, no pixel of the frame differed from the first by more than 40 of 255. **Why (fact,
 `world.js:1144`):** `ribbon()` lays each ribbon's rows across the course and indexes its triangles `(o, p, o+1)`, which winds every one of them
 facing down whatever the course's direction; the stream, bank and road materials keep three.js's default front side, so seen from above,
 as every view of the map sees them, the renderer culls them all. What a visitor sees of a road or a stream is the ground shader's own cover
