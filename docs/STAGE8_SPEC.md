@@ -634,7 +634,16 @@ variation. The streams (`stream-low-base.jpg`): the bluest and brightest line in
 | `w-streamice` | `w-stream` with a thin pale rim of ice along both banks | shown for assessment only: not supported by section 5.2 |
 | `w-flow` | `w-stream` with its ripple drifting downstream in real time (the clip `clips/stream-flow.mp4`) | shown for assessment only |
 
-[[S5-3-RESULTS]]
+**What they show** (`docs/stage8-evidence/water/`, the build beside each; `water-ice.json`, `water-stream.json`):
+- **The meres read as ice** (`ice-high-w-ice.jpg`, `water/ice-mid-w-ice.jpg`, `ph8-overview-watch-w-ice.jpg`): a rimed, whitened margin
+  easing into darker, glossier ice toward the middle with broad soft patches, against the build's two flat tones; the shore reads as shore
+  ice rather than as a plate's edge. No line, crack or hole is drawn; the outlines, the level and the ring are the build's. The margin is
+  bright at these distances, the one value to tune in 8F (its colour sits in `WATER_COL`). The prototype costs nothing in the frame (the same
+  draw calls and triangles; a few instructions per fragment over the meres) and was removed cleanly in every view.
+- **A fault found on the way, recorded**: the prototype's first version replaced the materials' shader hook instead of chaining the app's
+  own (`atmoUniforms`, `app.js:389-391`, which feeds every material the haze's and the fog's uniforms), and the ice drew black; any Stage 8
+  shader change must call it, as the ground's and the atlas's already do.
+- [[S5-STREAMS]]
 
 ### 5.4 Stream movement, assessed on its own
 
