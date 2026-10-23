@@ -7,7 +7,8 @@
                 moved); an item not drawn is searched for only every EVERY_MS (333 ms) of motion; at rest the build's full solve with persist;
    - l-anchor2: l-anchor, but a held item whose place is blocked first tries the eight places hugging its own anchor before it is hidden, and a
                 hidden item is shown again only after two re-placement passes with room;
-   - l-band:    l-anchor2, and the level-of-detail switches' distance (viewDist) held until it has moved BAND (hysteresis);
+   - l-band:    l-anchor2, and, while the view moves, the level-of-detail switches' distance (viewDist) held until it has moved BAND
+                (hysteresis); released at rest;
    - l-fade:    l-band, and items appearing or leaving fade over FADE_MS of real time instead of popping (a leaving item drawn at its last
                 place, under the others, taking no pointer); not under reduced motion. */
 "use strict";
@@ -62,6 +63,7 @@ const inPage=function(){
   }
   function upd(){
     if(mode8!=="l-band"&&mode8!=="l-fade") return orig.upd();
+    if(!S.moving) lod.d=null;   /* at rest the switches read the true distance: the band holds only while the view moves */
     var d=viewDist(); if(lod.d===null||Math.abs(d-lod.d)/lod.d>S.BAND) lod.d=d;
     var vd=window.viewDist; window.viewDist=function(){ return lod.d; };
     try{ orig.upd(); } finally { window.viewDist=vd; }

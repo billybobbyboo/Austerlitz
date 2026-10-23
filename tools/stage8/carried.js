@@ -49,7 +49,7 @@ async function fresh(browser,vp,dev){
       await btn.first().click({force:true,timeout:60000});
       const r=await page.evaluate(id=>{ var n=0; while(tween&&n<6){ tween(performance.now()+1e7); n++; } AUSTERLITZ_DEBUG.settle(3);
         var p=posNow(id), w=W(p[0],p[1]), rp=readPos(id), d=Math.hypot(orbitTarget.x-w[0],orbitTarget.z-w[1]);
-        var drawn=units[id].block.visible, lbl=ML.items["n:"+id]&&ML.items["n:"+id].state==="on";
+        var drawn=units[id].block.visible, nm=ML.items["n:"+id], lbl=!!(nm&&nm.state==="on"&&nm.eFrame===ML.frame);   /* laid out in this frame (an item not collected keeps its last state) */
         return {targetToTrue:+d.toFixed(3), readPos:rp?[+rp[0].toFixed(1),+rp[1].toFixed(1)]:null, figuresDrawn:drawn, nameDrawn:!!lbl, know:drawnKnow(id),
           screen:(function(){ var v=new THREE.Vector3(w[0],groundY(w[0],w[1]),w[1]).project(camera); return [Math.round((v.x*0.5+0.5)*innerWidth),Math.round((-v.y*0.5+0.5)*innerHeight)]; })()}; },c.id);
       R.centring.cases.push(Object.assign({id:c.id, button:true},r));

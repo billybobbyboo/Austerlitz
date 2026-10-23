@@ -1,0 +1,65 @@
+{
+ "build": "c4793156103b60bb74151c7d13dbdd9d",
+ "views": {
+  "ice-mid": {
+   "base": {
+    "calls": 699,
+    "tris": 2471305,
+    "items": 59,
+    "placed": 10,
+    "dropped": 1
+   },
+   "w-ice": {
+    "info": {
+     "kind": "w-ice"
+    },
+    "calls": 699,
+    "tris": 2471305,
+    "items": 59,
+    "placed": 10,
+    "dropped": 1,
+    "restored": true
+   }
+  },
+  "ice-high": {
+   "base": {
+    "calls": 733,
+    "tris": 2493525,
+    "items": 64,
+    "placed": 15,
+    "dropped": 2
+   },
+   "w-ice": {
+    "info": {
+     "kind": "w-ice"
+    },
+    "calls": 733,
+    "tris": 2493525,
+    "items": 64,
+    "placed": 15,
+    "dropped": 2,
+    "restored": true
+   }
+  },
+  "ph8-overview-watch": {
+   "base": {
+    "calls": 809,
+    "tris": 2501163,
+    "items": 25,
+    "placed": 22,
+    "dropped": 3
+   },
+   "w-ice": {
+    "info": {
+     "kind": "w-ice"
+    },
+    "calls": 809,
+    "tris": 2501163,
+    "items": 25,
+    "placed": 22,
+    "dropped": 3,
+    "restored": true
+   }
+  }
+ }
+}

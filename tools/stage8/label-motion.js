@@ -18,8 +18,10 @@
    - none: the build as it is;
    - persist: each item first tries the place it held in the last frame (its box against its anchor), then the build's own search;
    - persist+hold: persist, and an item that was dropped is shown again only after it has found room in 4 successive frames (the never
-     dropped items are exempt), and the distance the level-of-detail switches read (viewDist: wantCorps 250, the brigades 165, the name
-     ranges 170/220/300) held until it has moved 8% (hysteresis; the counters' full form, ML_FULL_DIST through viewDistTo, is not banded here);
+     dropped items are exempt), and, while the view moves, the distance the level-of-detail switches read (viewDist: wantCorps 250, the
+     brigades 165, the name ranges 170/220/300) held until it has moved 8% (hysteresis; released at rest, where the switches read the true
+     distance; the counters' full form, ML_FULL_DIST through viewDistTo, is not banded here). The runs in label-motion.json and
+     label-motion-final.json held the band at rest too; label-motion-rest.json measures the band released;
    - freeze: while the camera moves, no item is placed anew: each drawn item keeps its box against its anchor (it moves with the map) and
      nothing new appears; the frame after the motion is solved again with persist (the overlaps this costs are counted);
    - anchor2: anchor, but a drawn item whose held place is blocked first tries the eight places hugging its own anchor (mlPlaceItem's first
@@ -124,6 +126,7 @@ const PROBE=function(){
     if(STAB!=="persist+hold"&&STAB!=="anchor2+band") return orig.upd();
     /* viewDist is read once per pass for every switch (wantCorps 250, showBde 165, the name ranges 170/220/300) and viewDistTo for ML_FULL_DIST 70:
        the band is applied by holding the distance the switches read until it has moved 8% from the last one they acted on */
+    if(!MOVING) lodMem.d=null;   /* at rest the switches read the true distance: the band holds only while the view moves */
     var d=viewDist(); if(lodMem.d===null||Math.abs(d-lodMem.d)/lodMem.d>BAND) lodMem.d=d;
     var vd=window.viewDist; window.viewDist=function(){ return lodMem.d; };
     try{ orig.upd(); } finally { window.viewDist=vd; }

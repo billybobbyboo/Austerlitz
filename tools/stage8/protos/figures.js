@@ -18,7 +18,8 @@
    the legs reached, the current leg to the clock's u), so the same clock always gives the same pose, scrubbing included; a paused clock or
    a halted formation does not step. One stride is STRIDE units of that distance (a DESIGN value for the compressed time and the figure scale,
    docs/STAGE8_SPEC.md section 4.3); the swing fades out where the cycle on screen would run faster than MAX_HZ (fast play) and under
-   reduced motion. Infantry steps together (a formed body in cadence: DESIGN), horses each on their own beat; the walk's four beats
+   reduced motion. Infantry steps together (a formed body in cadence: DESIGN), horses each on their own beat (a fixed phase per instance, by
+   its index, a rider's his horse's); the walk's four beats
    (left hind, left fore, right hind, right fore) for horses, a trot above TROT_KMH of modelled speed (DESIGN thresholds). */
 "use strict";
 const inPage=function(){
@@ -128,10 +129,10 @@ const inPage=function(){
     mat.onBeforeCompile=function(sh){
       atmoUniforms(sh);   /* the atmosphere's uniforms (app.js: a material with a hook of its own calls it) */
       for(var k in U) sh.uniforms[k]=U[k];
-      sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nattribute float aPart;\nuniform float uPhase, uAmp, uTrot, uKind;\n"+
+      sh.vertexShader=sh.vertexShader.replace("#include <common>","#include <common>\nattribute float aPart;\nattribute float aPh;\nuniform float uPhase, uAmp, uTrot, uKind;\n"+
         "vec3 swingX(vec3 p, vec3 o, float a){ vec3 q=p-o; float c=cos(a), s=sin(a); return o+vec3(q.x, q.y*c-q.z*s, q.y*s+q.z*c); }\n")
       .replace("#include <begin_vertex>","#include <begin_vertex>\n"+
-        "#ifdef USE_INSTANCING\n float ph=uPhase;\n if(uKind>0.5){ vec4 o=instanceMatrix[3]; ph+=6.2831853*fract(sin(dot(o.xz,vec2(12.9898,78.233)))*43758.5453); }\n#else\n float ph=uPhase;\n#endif\n"+
+        "float ph=uPhase; if(uKind>0.5) ph+=6.2831853*aPh;\n"+
         "float sw=0.0; vec3 piv=vec3(0.0);\n"+
         "if(uKind<0.5){ if(aPart>0.5&&aPart<1.5){ sw=sin(ph)*0.42; piv=vec3(-0.085,0.62,0.0);} else if(aPart>1.5&&aPart<2.5){ sw=-sin(ph)*0.42; piv=vec3(0.085,0.62,0.0);} else if(aPart>2.5&&aPart<3.5){ sw=-sin(ph)*0.30; piv=vec3(-0.245,1.12,0.0);} }\n"+
         "else { float off=0.0; if(aPart>4.5&&aPart<5.5){ off=uTrot>0.5?0.0:0.25; piv=vec3(-0.12,0.69,0.40);} else if(aPart>5.5&&aPart<6.5){ off=uTrot>0.5?0.5:0.75; piv=vec3(0.12,0.69,0.40);} else if(aPart>6.5&&aPart<7.5){ off=uTrot>0.5?0.5:0.0; piv=vec3(-0.12,0.69,-0.40);} else if(aPart>7.5){ off=uTrot>0.5?0.0:0.5; piv=vec3(0.12,0.69,-0.40);} \n"+
@@ -147,6 +148,11 @@ const inPage=function(){
       if(t>=w[1]) d+=len; else if(t>w[0]) d+=len*(t-w[0])/((w[1]-w[0])||1); } return d; }
   /* ---- install: swap the three formations' figure geometries; the battery rebuilt from its own gun places ---- */
   function swap(mesh,geo){ var g0=mesh.geometry; F.undo.push(function(){ mesh.geometry=g0; }); mesh.geometry=geo; }
+  /* the horses' beats: a fixed phase per instance (0..1), set once from its index, so that a horse's step never depends on where the block
+     has seated it (its place changes as the block turns and settles on the ground); a rider or a driver takes his horse's */
+  function phOf(i){ var x=Math.sin(i*12.9898+78.233)*43758.5453; return x-Math.floor(x); }
+  function withPhase(geo,n,map){ var g=geo.clone(), a=new Float32Array(n); for(var i=0;i<n;i++) a[i]=phOf(map?map(i):i);
+    g.setAttribute("aPh",new THREE.InstancedBufferAttribute(a,1)); F.undo.push(function(){ g.dispose(); }); return g; }
   function install(o){
     if(F.on) uninstall(); F.on=true; F.gait=!!(o&&o.gait); F.recs=[];
     var cache={};
@@ -160,7 +166,7 @@ const inPage=function(){
           if(!mounted&&part==="coat"){ ng=coatFoot; gk="man"; } else if(!mounted&&part==="fixed"){ ng=geoOf("foot",kd,[kd.leg,kd.head,kd.gunner?1:0].join("|")); gk="man"; }
           else if(mounted&&part==="horse"){ ng=geoOf("horse",kd,kd.horseCol); gk="horse"; } else if(mounted&&part==="coat"){ ng=coatRider; gk="rider"; }
           else if(mounted&&part==="fixed"){ ng=geoOf("rider",kd,[kd.leg,kd.head,kd.cuirass,kd.dress].join("|")); gk="rider"; }
-          if(!ng) return; swap(m,ng);
+          if(!ng) return; swap(m,mounted?withPhase(ng,m.count):ng);
           /* a rider takes his horse's beat (the horse kind: the same per-instance phase from the same place), his parts never swing, he bobs with it */
           if(F.gait){ var m0=m.material; m.material=m0.clone(); F.undo.push(function(){ m.material.dispose(); m.material=m0; });
             F.recs.push({id:id, kind:mounted?"horse":"man", arm:mounted?"cav":"inf", mat:m.material, U:gaitMaterial(m.material,mounted?"horse":"man")}); } }); }); });
@@ -175,8 +181,9 @@ const inPage=function(){
       var DRV=riderFixed(KIT.mat.legwear,"generic",null,null,true), n=guns.length;
       /* deployed: the guns, their crews, and behind each its limber (the coffret on it) and team with its driver; limbered: the limber, the gun
          hooked behind with the coffret between its cheeks, the team ahead with its driver */
-      var gD=mk(GUN,n), cC=mk(coatFoot,n*5), cF=mk(geoOf("foot",crewKd,"crew|"+crewKd.leg+"|"+crewKd.head),n*5), lD=mk(LIMBC,n), hD=mk(HORSE,n*4), dDC=mk(coatRider,n), dDF=mk(DRV,n);
-      var gL=mk(GUNC,n), lL=mk(LIMB,n), hT=mk(HORSE,n*4), dC=mk(coatRider,n), dF=mk(DRV,n);
+      var drvMap=function(k){ return k*4; }, hoMap=null;
+      var gD=mk(GUN,n), cC=mk(coatFoot,n*5), cF=mk(geoOf("foot",crewKd,"crew|"+crewKd.leg+"|"+crewKd.head),n*5), lD=mk(LIMBC,n), hD=mk(withPhase(HORSE,n*4,hoMap),n*4), dDC=mk(withPhase(coatRider,n,drvMap),n), dDF=mk(withPhase(DRV,n,drvMap),n);
+      var gL=mk(GUNC,n), lL=mk(LIMB,n), hT=mk(withPhase(HORSE,n*4,hoMap),n*4), dC=mk(withPhase(coatRider,n,drvMap),n), dF=mk(withPhase(DRV,n,drvMap),n);
       var col=new THREE.Color(), tint=lin(crewKd.coat||hexNum(NATION.fr.fill)), D=new THREE.Object3D(), local=[];
       function put(im,i,x,y,z,ry,rx){ local.push({im:im,i:i,x:x,y:y,z:z,ry:ry||0,rx:rx||0}); }
       function team(hm,dc,df,k,x,z0,dir){   /* two pairs of horses from z0 in the direction dir (+1 ahead, -1 behind), the driver on the near wheeler */
