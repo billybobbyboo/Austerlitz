@@ -312,6 +312,32 @@
     "road": 0,
     "changed": 0
    }
+  },
+  "paper-close": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   },
+   "doubleSided": {
+    "stream": 36935,
+    "bank": 29108,
+    "road": 36086,
+    "changed": 119147
+   },
+   "unhidden": {
+    "stream": 20479,
+    "bank": 14237,
+    "road": 23219,
+    "changed": 66182
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
   }
  }
 }
