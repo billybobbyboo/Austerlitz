@@ -1,0 +1,54 @@
+Austerlitz step 6 frame-time route (step6-phone-route 1), 2026-10-22T22:39:55.491Z
+device: Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.1 Mobile/15E148 Safari/604.1
+GPU: Apple Inc. / Apple GPU; WebGL2 true; cores 4; memory null GB
+screen 402x874, viewport 402x714, devicePixelRatio 3, drawn at 1.5 (603x1071), lowTier true, effects true (scale 1), in a frame true
+load: DOM ready 2030 ms, load event 2091 ms, 0 bytes transferred
+build: 2220267 bytes, sha256 695e1f941ac337942dc89bb9ba3f1d665abf00f781c3185009f3703f8326eea7; refresh 17 ms; long frame > 25.5 ms
+         segment             kind frames   fps     p50     p95     p99     max  long%    warm    js50    js95   gpu50   gpu95 calls     tris
+            idle             idle    155    60      17      17      17      17      0      17       -       -       -       -     -        -
+    ph8-overview          warm-up   1651    37      17      50      52      55   33.1      17       5      18       -       -   809  2501195
+    ph8-overview              A 1    128  22.9      48      51      52      52    100      51      17      20       -       -   809  2501189  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+    ph8-overview      figShadow 1    157  28.2      34      47      48      50    100      49       8      18       -       -   535  1878575  density 1.5, shadow pass on, figures casting 0/341, shown 341/341
+    ph8-overview              A 1    117    21      50      52      53      55    100      54      18      21       -       -   809  2501213  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+    ph8-overview     shadowPass 1    149  26.6      35      46      48      48    100      47       9      18       -       -   525  1469209  density 1.5, shadow pass off, figures casting 314/341, shown 341/341
+    ph8-overview              A 1    115  20.6      50      52      53      53    100      52      18      20       -       -   809  2501213  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+    ph8-overview       density1 1    127  22.7      44      46      47      48    100      45      18      20       -       -   809  2501163  density 1, shadow pass on, figures casting 314/341, shown 341/341
+    ph8-overview              A 1    132  23.6      40      51      52      53    100      50      10      19       -       -   809  2501211  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+    ph8-overview   density1Pass 1    142  25.5      39      42      42      43    100      40      16      19       -       -   525  1469199  density 1, shadow pass off, figures casting 314/341, shown 341/341
+    ph8-overview              A 1    122  21.7      49      51      52      52    100      50      18      20       -       -   809  2501213  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+    ph8-overview        figures 1    162    29      35      37      38      39    100      37      10      11       -       -   234  1255659  density 1.5, shadow pass on, figures casting 314/341, shown 0/341
+    ph8-overview              A 1    112  20.2      49      51      53      54    100      51      18      20       -       -   809  2501213  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+    ph8-overview              A 2    116  20.9      49      52      52      52    100      50      18      20       -       -   809  2501153  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+    ph8-overview      figShadow 2    117    21      48      49      50      52    100      53      19      21       -       -   535  1878603  density 1.5, shadow pass on, figures casting 0/341, shown 341/341
+    ph8-overview              A 2    139  24.9      39      51      53      54    100      54       9      20       -       -   809  2501141  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+    ph8-overview     shadowPass 2    123  22.1      45      48      48      49    100      48      17      20       -       -   525  1469259  density 1.5, shadow pass off, figures casting 314/341, shown 341/341
+    ph8-overview              A 2    118  21.3      49      52      53      54    100      54      18      20       -       -   809  2501139  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+    ph8-overview       density1 2    126  22.7      44      46      48      48    100      45      18      20       -       -   809  2501213  density 1, shadow pass on, figures casting 314/341, shown 341/341
+    ph8-overview              A 2    117  21.1      49      52      53      53    100      52      18      20       -       -   809  2501139  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+    ph8-overview   density1Pass 2    183  32.7      27      40      41      42   72.1      40       7      17       -       -   525  1469257  density 1, shadow pass off, figures casting 314/341, shown 341/341
+    ph8-overview              A 2    114  20.4      49      52      53      53    100      53      18      21       -       -   809  2501139  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+    ph8-overview        figures 2    163  29.1      34      37      38      39    100      38      10      12       -       -   234  1255719  density 1.5, shadow pass on, figures casting 314/341, shown 0/341
+    ph8-overview              A 2    112  20.1      50      52      53      54    100      50      18      20       -       -   809  2501139  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+       play-half          warm-up   1234  27.7      36      41      43      49    100      40      10      12       -       -   785  2490101
+       play-half              A 1    151  27.1      37      41      44      46    100      41       9      13       -       -   789  2490239  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+       play-half      figShadow 1    166  29.7      34      37      38      39    100      39       9      11       -       -   524  1873605  density 1.5, shadow pass on, figures casting 0/341, shown 341/341
+       play-half              A 1    148  26.5      38      41      44      45    100      42      10      12       -       -   789  2490239  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+       play-half     shadowPass 1    173  30.9      32      35      39      44    100      38       8      11       -       -   514  1464239  density 1.5, shadow pass off, figures casting 314/341, shown 341/341
+       play-half              A 1    150    27      37      41      43      44    100      44      10      13       -       -   789  2490239  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+       play-half       density1 1    186  33.2      30      33      34      37    100      36       8      11       -       -   789  2490229  density 1, shadow pass on, figures casting 314/341, shown 341/341
+       play-half              A 1    150  26.8      37      42      43      44    100      42      10      13       -       -   790  2490253  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+       play-half   density1Pass 1    223  39.8      25      29      30      32   38.6      30       7      10       -       -   514  1464261  density 1, shadow pass off, figures casting 314/341, shown 341/341
+       play-half              A 1    151  26.9      37      41      43      44    100      41      10      12       -       -   789  2490235  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+       play-half        figures 1    188  33.7      29      38      40      44   88.8      33       7      15       -       -   232  1257707  density 1.5, shadow pass on, figures casting 314/341, shown 0/341
+       play-half              A 1    151  27.1      37      42      44      44    100      43       9      13       -       -   789  2490239  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+       play-half              A 2    152  27.1      37      41      42      43    100      42      10      12       -       -   789  2490239  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+       play-half      figShadow 2    165  29.6      34      36      39      41    100      38       9      11       -       -   524  1873595  density 1.5, shadow pass on, figures casting 0/341, shown 341/341
+       play-half              A 2    149  26.5      38      41      44      47    100      43      10      12       -       -   789  2490227  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+       play-half     shadowPass 2    176  31.6      32      35      36      39    100      37       8      11       -       -   515  1464279  density 1.5, shadow pass off, figures casting 314/341, shown 341/341
+       play-half              A 2    149  26.7      38      41      43      44    100      42      10      13       -       -   789  2490239  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+       play-half       density1 2    184  33.1      30      33      34      37    100      35       9      10       -       -   789  2490235  density 1, shadow pass on, figures casting 314/341, shown 341/341
+       play-half              A 2    151  26.9      37      41      44      49    100      43      10      13       -       -   789  2490229  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+       play-half   density1Pass 2    226  40.2      25      28      29      31   34.5      30       7       9       -       -   514  1464261  density 1, shadow pass off, figures casting 314/341, shown 341/341
+       play-half              A 2    150  26.9      37      40      43      44    100      41      10      12       -       -   789  2490237  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
+       play-half        figures 2    200  35.7      28      33      34      38   84.5      35       7       9       -       -   232  1257707  density 1.5, shadow pass on, figures casting 314/341, shown 0/341
+       play-half              A 2    151    27      37      41      44      44    100      42      10      12       -       -   789  2490227  density 1.5, shadow pass on, figures casting 314/341, shown 341/341
