@@ -27,7 +27,7 @@ headless Chromium with software WebGL (SwiftShader), as the Stage 0 harness and 
 
 | script | section | what it does |
 |---|---|---|
-| `lib.js`, `views.js` | all | the shared page helpers (tools/stage7's, with JPEG captures, contact sheets and an encoder); the views the evidence is taken in: 12 harness cases by name and 23 views fixed by clock, presentation and camera, each chosen from the data |
+| `lib.js`, `views.js` | all | the shared page helpers (tools/stage7's, with JPEG captures, contact sheets and an encoder); the views the evidence is taken in: 12 harness cases by name and 25 views fixed by clock, presentation and camera, each chosen from the data |
 | `stills.js [--views] [--protos file:id]` | 1-6 | direct captures of the build in each view, and of the same view with a prototype put into the live scene; each frame's draw calls, triangles and map-layer counts beside it; the prototype undone and the frame after it checked |
 | `density.js` | 1, 7 | what each view is made of: the share of the free rectangle each class of drawing covers (each hidden in turn and the frames compared), the arrows' widths in pixels, a census of the map layer's labels |
 | `label-motion.js [--stab]` | 3 | the map layer driven through pans, zooms, orbits, glides and Play on both map types, 30 frames a second, every item's place read after every frame; jumps, pops, level-of-detail switches, flicker, overlaps and the pass's time; six stabilisers prototyped in the page |

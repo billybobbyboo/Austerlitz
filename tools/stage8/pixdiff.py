@@ -13,7 +13,7 @@ out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ev, 'pixdiff.json')
 PAIRS = [('figures', v, p) for v, p in [('inf-front', 'f-kit'), ('inf-front', 'f-facings'), ('cav-front', 'f-kit'), ('bat-front', 'f-kit'), ('bat-march', 'f-kit')]] + \
         [('figures-close', v, 'f-kit') for v in ['inf-close', 'cav-close', 'bat-deployed', 'bat-limbered']] + \
         [('arrows', v, p) for v in ['pratzen-low', 'inf-mid', 'close-sokolnitz'] for p in ['a-cap', 'a-soft', 'a-calm']] + \
-        [('water', v, 'w-ice') for v in ['ice-mid', 'ice-high', 'ph8-overview-watch']] + [('water', 'stream-low', p) for p in ['w-stream', 'w-streamice']] + \
+        [('water', v, 'w-ice') for v in ['ice-mid', 'ice-high', 'ph8-overview-watch']] + [('water', v, p) for v in ['goldbach-top', 'goldbach-noon'] for p in ['w-stream', 'w-streamice']] + \
         [('buildings', v, p) for v in ['village-telnitz', 'village-pratzen', 'village-sokolnitz', 'overview-field', 'bat-chapel', 'woods-pheasantry'] for p in ['b-village', 'b-landmarks']]
 res = {'threshold': 40, 'pairs': {}}
 for f, v, p in PAIRS:
