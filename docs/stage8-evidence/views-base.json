@@ -261,6 +261,15 @@
     "placed": 30,
     "dropped": 7
    }
+  },
+  "ice-sun": {
+   "base": {
+    "calls": 701,
+    "tris": 2497325,
+    "items": 55,
+    "placed": 2,
+    "dropped": 0
+   }
   }
  }
 }

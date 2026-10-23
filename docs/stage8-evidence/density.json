@@ -1,0 +1,62 @@
+{
+ "build": "c4793156103b60bb74151c7d13dbdd9d",
+ "views": {
+  "overview-field": {
+   "arrows": {
+    "share": 0.0694,
+    "contrastMedian": 2.16,
+    "share3to1": 0.179
+   },
+   "marks": {
+    "share": 0.0413,
+    "contrastMedian": 1.53,
+    "share3to1": 0.067
+   },
+   "events": {
+    "share": 0.002,
+    "contrastMedian": 1.53,
+    "share3to1": 0.111
+   },
+   "standards": {
+    "share": 0.0094,
+    "contrastMedian": 1.33,
+    "share3to1": 0.046
+   },
+   "maptext": {
+    "share": 0.1157,
+    "contrastMedian": 2.3,
+    "share3to1": 0.225
+   },
+   "figures": {
+    "share": 0.0363,
+    "contrastMedian": 1.43,
+    "share3to1": 0.088
+   },
+   "arrowsPx": [
+    12.4,
+    13.9,
+    14.2,
+    14.4,
+    14.9,
+    16.4
+   ],
+   "labels": {
+    "drawn": 42,
+    "byCat": {
+     "name": 26,
+     "plateau": 1,
+     "place": 6,
+     "event": 1,
+     "overlay": 7,
+     "objective": 1
+    },
+    "leaders": 18,
+    "far150": 42,
+    "upperQuarter": 4,
+    "dropped": 6,
+    "occluded": 0,
+    "ms": 1
+   }
+  }
+ }
+}
