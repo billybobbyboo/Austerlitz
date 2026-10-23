@@ -52,6 +52,32 @@
     "dropped": 1,
     "restored": true
    }
+  },
+  "bat-deployed": {
+   "base": {
+    "calls": 732,
+    "tris": 2516154,
+    "items": 58,
+    "placed": 4,
+    "dropped": 0
+   },
+   "f-kit": {
+    "info": {
+     "formations": [
+      "sthilaire",
+      "nansouty",
+      "heightguns"
+     ],
+     "gait": false,
+     "materials": 0
+    },
+    "calls": 736,
+    "tris": 2609978,
+    "items": 58,
+    "placed": 4,
+    "dropped": 0,
+    "restored": true
+   }
   }
  }
 }
