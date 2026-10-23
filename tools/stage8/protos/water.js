@@ -58,7 +58,7 @@ const inPage=function(){
         .replace("#include <roughnessmap_fragment>","#include <roughnessmap_fragment>\nroughnessFactor=mix(roughnessFactor,0.6,ed8);")
         .replace("#include <lights_fragment_maps>","#include <lights_fragment_maps>\n{ vec3 V8=normalize(cameraPosition-vW8); float fz=pow(1.0-max(dot(V8,vec3(0,1,0)),0.0),3.0); radiance*=(1.0+3.0*fz); }");
     };
-    mat.customProgramCacheKey=function(){ return "w8stream"+(flow?"f":""); };
+    mat.customProgramCacheKey=function(){ return "w8stream"+(iceEdge?"i":"")+(flow?"f":""); };   /* one program per variant: a variant installed after another must not reuse its program (w-streamice did, and drew no rim) */
   }
   function install(kind){
     if(Wt.on) uninstall(); Wt.on=kind;

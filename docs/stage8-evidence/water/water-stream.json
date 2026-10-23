@@ -31,6 +31,37 @@
     "dropped": 0,
     "restored": true
    }
+  },
+  "goldbach-noon": {
+   "base": {
+    "calls": 823,
+    "tris": 2509849,
+    "items": 63,
+    "placed": 35,
+    "dropped": 10
+   },
+   "w-stream": {
+    "info": {
+     "kind": "w-stream"
+    },
+    "calls": 823,
+    "tris": 2509849,
+    "items": 63,
+    "placed": 35,
+    "dropped": 10,
+    "restored": true
+   },
+   "w-streamice": {
+    "info": {
+     "kind": "w-streamice"
+    },
+    "calls": 823,
+    "tris": 2509849,
+    "items": 63,
+    "placed": 35,
+    "dropped": 10,
+    "restored": true
+   }
   }
  }
 }
