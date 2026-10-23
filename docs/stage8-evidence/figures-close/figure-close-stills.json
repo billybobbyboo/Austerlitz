@@ -78,6 +78,32 @@
     "dropped": 0,
     "restored": true
    }
+  },
+  "bat-limbered": {
+   "base": {
+    "calls": 751,
+    "tris": 2512521,
+    "items": 52,
+    "placed": 0,
+    "dropped": 0
+   },
+   "f-kit": {
+    "info": {
+     "formations": [
+      "sthilaire",
+      "nansouty",
+      "heightguns"
+     ],
+     "gait": false,
+     "materials": 0
+    },
+    "calls": 753,
+    "tris": 2592137,
+    "items": 52,
+    "placed": 0,
+    "dropped": 0,
+    "restored": true
+   }
   }
  }
 }
