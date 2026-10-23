@@ -649,7 +649,19 @@ chimneys and spires are hidden while a prototype stands. No village's place, ext
 | `b-village` | houses gable-end to the lane on both sides, spaced along it, each with a yard behind and a barn across the yard's end on about half the plots; steep gable roofs in two materials, thatch and tile, in a placeholder share (40% tile); whitewashed walls over a darker plinth, the gable to the lane with two small windows, the door to the yard; a chimney on the ridge; churches turned east-west, a nave, a polygonal east end and a west tower with a plain pyramidal helm | DESIGN (the composition, a common pattern of the region's street villages, until the cadastre's plans are read; the roof share a placeholder; the churches generic: no church's own form claimed) |
 | `b-landmarks` | `b-village`, and at the data's places: the chapel of St Anthony above Augezd (`FEATURES` `chapel`, approximate) drawn roofless; a low wall round the Sokolnitz pheasantry's wood along its drawn cover edge | the chapel's state on the day is uncertain (the data: "lost its roof about the time of the battle and was in ruins by 1814", a modern town text; the intact form is the other option); the wall's line is the wood's drawn edge, an assumption; both wait on the evidence step |
 
-[[S6-3-RESULTS]]
+**What they show** (`docs/stage8-evidence/buildings/`; the build's houses hidden while a prototype stands, its castle kept in `b-village`):
+- **The villages read as villages.** Pratzen at 09:00 (`village-pratzen-b-village.jpg`): two rows of houses gable-end to the lane, barns
+  across the yards, straw and tile roofs mixed, against the build's few scattered houses turned at random; Telnitz and Sokolnitz the same in
+  the morning fog. The number of buildings rises by about half (the barns), every house still inside its village's place (the share of
+  houses whose centre lies in the drawn village cover: 59.2% against the build's 57.0%; neither is 100%: the cover polygons are the 2E data
+  question's, and the build's own houses already stand partly outside them).
+- **The churches are the weak part.** The generic west tower reads as a tall white block, its small pyramidal helm lost at these distances
+  (`village-sokolnitz-b-village.jpg`), where the build's dark six-sided spire at least read as a church. The towers' forms are not read
+  (Telnitz church 1726-1740 and Pratzen church 1728-1730 stood, Wolny; their towers are not described), so 8G should draw them only after its
+  evidence step, keeping the build's spire meanwhile.
+- **The Sokolnitz castle as Wolny's quadrangle** (`village-sokolnitz-b-landmarks.jpg`): four wings round a court, the east front higher,
+  reads as a manor where the build's three wings and corner block read as a group of houses.
+- [[S6-3-MORE]]
 
 ### 6.4 Recommended (question 248)
 
@@ -711,7 +723,9 @@ are not drops: the measure counts them apart, as it counts the level-of-detail s
 **Today (fact, `world.js` `buildWoods`, `treeKit`).** 1,194 trees in six instanced meshes (four bare deciduous habits, two conifers) and 556
 scrub, at the building scale (10-15 times life), inside the drawn wood cover since Stage 2F; deciduous crowns "bare wood: a dense mass of twig,
 grey-brown ... never green", conifers green; each wood's conifer share is a value of the build (`WOODS[].conifer`, 0.12-0.55: no source is named
-for it). In the close views the woods are dark, spiky masses (`woods-pheasantry-base.jpg`); in the Overview dark clumps. Seasonal plausibility:
+for it). In the close views the woods are dark, spiky masses (`woods-pheasantry-base.jpg`); in the Overview dark clumps. Seen from inside a
+wood's edge, a bare deciduous crown is a faceted grey mass that reads as a boulder, the conifers as dark cones (`water/ice-sun-base.jpg`, whose
+camera stands behind the wood above the Satschan mere: kept for this, not for the ice). Seasonal plausibility:
 bare broadleaves in December are right; the dense opaque crowns read as evergreen masses more than as bare trees.
 
 **Recommended (question 247), a design pass, no data:** airier deciduous crowns (an open silhouette of a few main limbs and a
