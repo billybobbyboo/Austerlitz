@@ -16,7 +16,8 @@ const inPage=function(){
   var A={orig:null, kind:null, sym0:null}, MAX_PX=16, OP=0.62, GLYPH_PX=64;
   function wrapped(mapPts,o,add,mats){
     var wp=mapPts.map(function(p){ return o.world?p:W(p[0],p[1]); }), mid=wp[Math.floor(wp.length/2)], P=new THREE.Vector3(mid[0],groundY(mid[0],mid[1])+(o.lift||0),mid[1]);
-    var ppu=1/worldPerPx(P), wmax=Math.max(o.w0||0,o.w1||0)*1.34, k=wmax>0?Math.min(1,MAX_PX/(wmax*ppu)):1;
+    /* the scale at the ribbon's middle; a middle behind the eye (worldPerPx negative there) is left uncapped: it is not where the ribbon is seen */
+    var wpp=worldPerPx(P), wmax=Math.max(o.w0||0,o.w1||0)*1.34, k=(wmax>0&&wpp>0&&isFinite(wpp))?Math.min(1,MAX_PX*wpp/wmax):1;
     var o2=Object.assign({},o,{w0:o.w0*k, w1:o.w1*k}); if(o.head){ o2.headW=o.headW*k; o2.headL=o.headL*k; }
     var r=A.orig(mapPts,o2,add,mats);
     if(A.kind!=="a-cap") (r.layers||[]).forEach(function(lay){ [lay.shaft,lay.head].forEach(function(m){ if(!m) return; m.material.depthTest=true; m.material.userData.op=(m.material.userData.op||1)*OP; m.material.needsUpdate=true; }); });

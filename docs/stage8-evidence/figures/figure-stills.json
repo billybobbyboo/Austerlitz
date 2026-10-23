@@ -26,6 +26,84 @@
     "dropped": 0,
     "restored": true
    }
+  },
+  "cav-front": {
+   "base": {
+    "calls": 784,
+    "tris": 2499433,
+    "items": 57,
+    "placed": 9,
+    "dropped": 2
+   },
+   "f-kit": {
+    "info": {
+     "formations": [
+      "sthilaire",
+      "nansouty",
+      "heightguns"
+     ],
+     "gait": false,
+     "materials": 0
+    },
+    "calls": 784,
+    "tris": 2549753,
+    "items": 57,
+    "placed": 9,
+    "dropped": 2,
+    "restored": true
+   }
+  },
+  "bat-front": {
+   "base": {
+    "calls": 749,
+    "tris": 2518809,
+    "items": 58,
+    "placed": 10,
+    "dropped": 0
+   },
+   "f-kit": {
+    "info": {
+     "formations": [
+      "sthilaire",
+      "nansouty",
+      "heightguns"
+     ],
+     "gait": false,
+     "materials": 0
+    },
+    "calls": 753,
+    "tris": 2612633,
+    "items": 58,
+    "placed": 10,
+    "dropped": 0,
+    "restored": true
+   }
+  },
+  "bat-march": {
+   "base": {
+    "calls": 745,
+    "tris": 2510217,
+    "items": 59,
+    "placed": 4,
+    "dropped": 0
+   },
+   "f-kit": {
+    "info": {
+     "formations": [
+      "sthilaire",
+      "nansouty",
+      "heightguns"
+     ],
+     "gait": false,
+     "materials": 0
+    },
+    "calls": 747,
+    "tris": 2589833,
+    "items": 59,
+    "placed": 4,
+    "dropped": 0,
+    "restored": true
+   }
   }
  }
 }

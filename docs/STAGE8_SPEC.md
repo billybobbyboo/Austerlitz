@@ -36,6 +36,8 @@ headless Chromium with software WebGL (SwiftShader), as the Stage 0 harness and 
 | `carried.js` | 9 | the three carried findings, by real clicks, keys and taps |
 | `gait-check.js`, `legs.js` | 4.3 | the gait's rule checked in the page; every leg of the movement model with its duration and speed (no page) |
 | `sheets.py` | all | the comparison sheets: the build and its prototypes side by side, from the captures |
+| `pixdiff.py` | 4-6 | how much of a frame each prototype changes: the pixels of the kept captures whose grey level differs by more than 40 of 255 |
+| `stream-vis.js` | 5 | how much of the streams the build draws: the ribbons painted and their pixels counted, with and without their depth test |
 | `protos/ground.js`, `labels.js`, `figures.js`, `water.js`, `buildings.js`, `arrows.js` | 2-7 | the prototypes, each an in-page module registering `window.__p8[id]` with `install` and `uninstall` |
 
 Their outputs, screenshots and recordings are in `docs/stage8-evidence/` (its `README.md` lists every file).
@@ -133,7 +135,7 @@ counts beside each in `views-base.json`): the harness's own cases by name (the F
 and 10.33x, close on Sokolnitz, Landscape with counters, the paper map as entered and close, phase 8's Overview, the eye level, a selection)
 and close views chosen from the data: Saint-Hilaire's division climbing at 09:20, Nansouty's cuirassiers at 10:55, the guns on the heights
 unlimbered at 13:20 and hitched up at 14:10, the Satschan mere at 15:00, the Goldbach at 08:20, Telnitz, Sokolnitz, Pratzen, the pheasantry
-wood, the wood above the Satschan mere at 14:00 (`ice-sun`) and a low view east at noon. Every 4x landscape view here is 2.47-2.52 million triangles in 713-832 draw calls (step 6's census found 2.48-2.53
+wood, the wood above the Satschan mere at 14:00 (`ice-sun`) and a low view east at noon. Every 4x landscape view here is 2.47-2.52 million triangles in 701-832 draw calls (step 6's census found 2.48-2.53
 million and 740-857 in its own views, `docs/STEP6_SPEC.md` §3.1: nothing is culled); 1x 0.23 million, the paper map 0.20-0.24, the eye level 0.49.
 
 ### 1.2 What each picture is made of
@@ -482,13 +484,24 @@ kept within 2% of the build's, so the standards' ratio (decision 106) is unchang
   behind the deployed guns, the coffret): the frame rises by 93,800 triangles and four draw calls in `bat-front` (`figure-stills.json`), all three formations' kits together, against
   50,300 and none in `inf-front` and `cav-front`, where the guns are not yet on the field (their first anchor is in phase 7). The build's battery is a row of dark tubes on solid brown discs as large as a man
   (`bat-front-base.jpg`); with `f-kit` each gun stands on spoked wheels with its trail to the ground and its crew about it, and reads as a field
-  piece at the Field vantage's distances as well as close (`bat-front-f-kit.jpg`; [[BAT-CLOSE]]). Hitched up, the build shows brown cubes trailed
-  by loose barrels; the prototype shows each gun's trail lifted onto its limber behind the team ([[BAT-MARCH]]).
+  piece at the Field vantage's distances as well as close (`bat-front-f-kit.jpg`; close up, `figures-close/bat-deployed-*.jpg`: the build's gun is a dark tube laid between two solid
+  discs larger than a man, which read as plates; the prototype's stands on two spoked wheels with its trail down, its crew about it, and its
+  limber and team, with a driver, behind it). Hitched up, the build shows brown cubes trailed
+  by loose barrels; the prototype shows each gun's trail lifted onto its limber behind the team (`bat-march-*.jpg`, and close up
+  `figures-close/bat-limbered-*.jpg`). The guns' pairs change the most pixels of any: 114,800 of 1.44 million in `bat-march`, 72,600 and
+  77,000 in the two close views (`pixdiff.py`, `pixdiff.json`: grey level changed by more than 40 of 255, on the kept JPEGs).
 - **Infantry and cavalry change less than the eye expects at the distances visitors use.** At 40 px a man (`inf-front`), the coat cut, the
   arms, the pack and the slanted musket make the files read as men rather than posts, and the horse's raised neck and legs read as a horse;
-  the difference is real but small (18,800 pixels of 1.44 million change in `inf-front`, 4,100 in `cav-front`, where Nansouty's men stand behind
-  another formation). Close up ([[CLOSE-VIEWS]]) it is plain. The kit is the change the close views need; it is not what the distant views
-  need (their problem is section 2's and section 7's).
+  the difference is real but small (18,500 pixels of 1.44 million change in `inf-front`, 3,600 in `cav-front`, where Nansouty's men stand behind
+  another formation). Closer, it stays small (`figures-close/inf-close-*.jpg`, `cav-close-*.jpg`: the coat's cut, the slimmer arms and the pack read on
+  the nearest files, 7,800 pixels change in `inf-close` and 2,600 in `cav-close`, where Nansouty's cuirassiers stand behind Blasowitz's
+  houses and under two Allied arrows): those frames are the arrows', the standards' and a glyph ring's (section 4.5). The kit is what the
+  guns need at every distance; for infantry and cavalry it is a refinement of the close views, and not what the distant views need (their
+  problem is section 2's and section 7's).
+- **A fault found on the way, recorded.** The kit's first captures drew the horse's barrel white on the cavalry's and the officers' horses
+  (the part was left uncoloured) and the teams' brown twice, too dark; fixed in the prototype (the barrel takes the class's horse colour,
+  decision 109's one brown) and every figure capture retaken with the fix (`figure-stills.json`, `figure-facings.json`; the close views were
+  taken after it).
 - **The facings** (`inf-front-f-facings.jpg`) are the most legible single change for the French line infantry (section 4.6).
 - **What dominates the close views is still not the troops**: in `bat-front` a movement arrow's ribbon, drawn over everything at its fixed
   width, covers a third of the frame and every formation under it, in all three variants (section 7.1).
@@ -779,7 +792,8 @@ level, the arrows show through the hills (the audit's A-5, recorded in 5E and st
 
 **Prototyped (`protos/arrows.js`; `docs/stage8-evidence/arrows/`).** The prototypes wrap the build's `drapedRibbon`, so they act on every draped
 ribbon of the overlays: the movement arrows, and also the lines of battle, the boundaries and the halt bars. `a-cap`: each ribbon's width
-capped so its casing is at most 16 px across at its middle (the head scaled with it; never widened). `a-soft`: `a-cap`, every ribbon's
+capped so its casing is at most 16 px across at its middle (the head scaled with it; never widened; a ribbon whose middle lies
+behind the eye left as it is: the prototype's first run failed on one, in `inf-mid`, and was run again with this rule). `a-soft`: `a-cap`, every ribbon's
 opacity at 0.62 (fills and casings), and the ribbons depth-tested: the arrows, lifted 2.4 units, pass above the men's 1.88 units, but the
 lines of battle (lifted 1.9) and the boundaries (1.6) do not, so in these captures the figures cut them. `a-calm`: `a-soft` with the event
 glyphs capped at 64 px instead of 192.
