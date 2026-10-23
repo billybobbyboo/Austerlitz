@@ -26,6 +26,32 @@
     "dropped": 1,
     "restored": true
    }
+  },
+  "cav-close": {
+   "base": {
+    "calls": 716,
+    "tris": 2482623,
+    "items": 51,
+    "placed": 8,
+    "dropped": 1
+   },
+   "f-kit": {
+    "info": {
+     "formations": [
+      "sthilaire",
+      "nansouty",
+      "heightguns"
+     ],
+     "gait": false,
+     "materials": 0
+    },
+    "calls": 716,
+    "tris": 2532943,
+    "items": 51,
+    "placed": 8,
+    "dropped": 1,
+    "restored": true
+   }
   }
  }
 }
