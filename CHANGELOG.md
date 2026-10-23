@@ -16,8 +16,10 @@ landscape loses its cast shadows (the figures', the trees', the villages'; the g
 pixel per CSS pixel; a desktop window of ordinary size is unchanged. Recorded in `docs/STEP6_SPEC.md` §15, `docs/ROADMAP.md`, `CLAUDE.md` and
 the evidence README.
 
-**Verified so far:** `npm test` all 9 suites and the height guard; `check:data` 131 of 131 identical; `check:baseline` on this build. In
-progress: the full `check:visual` on this build (every phone case now draws at density 1.0 without shadows); its result to be recorded here.
+**Verified:** `check:visual` on this build: all 39 cases, the self-test's 242 checks and the live blocks pass ("STAGE0: all checks passed",
+1 h 26 min), every phone case, now drawn at density 1.0 without shadows, within the limits already set (none moved); `npm test` all 9
+suites and the height guard; `check:data` 131 of 131 identical; `check:baseline` on this build; the rule's verdict reproduced by
+`tools/step6/phone-rule.js` from the two reports.
 **Not verified:** the change on the phone itself: the rule asks for one run of the route of §2 on it (P5). Inference, recorded: the measured
 candidate kept the last shadow map's sampling, the built form has none, so it costs at most what was measured.
 

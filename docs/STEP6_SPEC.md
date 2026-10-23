@@ -1260,6 +1260,9 @@ sun still lights each slope by its angle, with decision 70's fill as before), an
 skipped the shadow pass but kept the last shadow map and its sampling; the built form samples none, so it costs at most what was measured
 (inference, as §14.1 stated).
 
+**Checked here:** `check:visual` on the build with the change passes all 39 cases, the self-test and the live blocks; every phone case (each
+`lowTier`) within the limits set before (none moved).
+
 **What the rule asks next:** the phone measured once more by the owner, one run of the route of §2 (`tools/step6/perf-run.html`, no
 `route`; P5), on the build that carries the change. Nothing else waits on it.
 
