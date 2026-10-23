@@ -1,11 +1,12 @@
 #!/usr/bin/env node
-/* Stage 8 Part A (docs/STAGE8_SPEC.md section 9.4): the phase's toast against the view switch. One phase carries a message (phase 3, 08:45,
-   PHASES[3].flash), shown by flash() when the clock enters the phase other than instantly (setClock: Play, the rail's keys, a phase's
-   button). In Study and in Watch at 1600 x 900, 1366 x 768 and 1280 x 720: the clock at 08:40, the time rail focused and PageDown pressed (a
-   real key: the next phase's start), then (the toast's hiding timer cleared, so that the slow capture still shows it) the toast's and the
-   switch's boxes, their overlap, their opacity
-   and their z-index (the toast takes no pointer, so elementFromPoint cannot tell which is drawn over the other: both are fixed in the
-   page's root stacking context, the higher z-index drawn over the lower), and a capture of the screen's top.
+/* Stage 8 Part A (docs/STAGE8_SPEC.md section 9.6): the phase's toast against the view switch. One phase carries a message (phase 3, 08:45,
+   PHASES[3].flash), shown by flash() when setClock brings the clock into the phase other than instantly (Play, the rail's keys and pointer,
+   the step buttons, an event, a phase's button among them), or sets it there with force (a phase's button, a chapter, a tour stop).
+   In Study and in Watch at 1600 x 900, 1366 x 768 and 1280 x 720: the clock at 08:40, the time rail focused and PageDown pressed (a real
+   key: the next phase's start), then, the toast's hiding timer cleared so that the slow capture still shows it, the toast's and the
+   switch's boxes, their overlap, their opacity and their z-index (the toast takes no pointer, so elementFromPoint cannot tell which is
+   drawn over the other: both are fixed in the page's root stacking context, the higher z-index drawn over the lower), and a capture of
+   the screen's top.
    node tools/stage8/toast.js [--json file] [--cases 1280x720-study,...] [--merge]   Measurement only. The JSON is written after each case;
    --merge keeps an earlier run's cases of the same build. */
 "use strict";

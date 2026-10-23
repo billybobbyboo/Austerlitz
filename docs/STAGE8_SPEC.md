@@ -36,8 +36,8 @@ headless Chromium with software WebGL (SwiftShader), as the Stage 0 harness and 
 | `pixdiff.py` | 4-6 | how much of a frame each prototype changes: the pixels of the kept captures whose grey level differs by more than 40 of 255 |
 | `label-far.js` | 7.2 | which drawn items of the map layer stand beyond 1.5 times the eye's distance to its target (the hierarchy by distance's reach) |
 | `stream-vis.js` | 5, 9.5 | how much of the streams, their banks and the roads the build draws: the ribbons painted and their pixels counted, as built, double-sided, and with no depth test |
-| `toast.js` | 9.4 | the phase's toast against the view switch, after a real key on the time rail, in Study and Watch at three sizes |
-| `clip-motion.py` | 4.3, 5.3 | what moves in the kept recordings: each frame against its clip's first and the variants against each other, counted on the committed clips (no page) |
+| `toast.js` | 9.6 | the phase's toast against the view switch, after a real key on the time rail, in Study and Watch at three sizes |
+| `clip-motion.py` | 3, 5.3 | what moves in the kept recordings: each frame against its clip's first and the variants against each other, counted on the committed clips (no page) |
 | `protos/ground.js`, `labels.js`, `figures.js`, `water.js`, `buildings.js`, `arrows.js` | 2-7 | the prototypes, each an in-page module registering `window.__p8[id]` with `install` and `uninstall` |
 
 Their outputs, screenshots and recordings are in `docs/stage8-evidence/` (its `README.md` lists every file).
@@ -51,9 +51,11 @@ assessment can be checked against them (section 12.2).
 
 - **What the build draws (section 1).** At a distance the battle reads as washes of blue and amber, not troops: the confidence marks are
   what is seen of a formation there. Close up, symbology outweighs the troops: arrow ribbons of fixed world width drawn over everything,
-  glyph rings well over 100 px across (the cap is 192), the C marks spread over slopes, large plain standards. The guns are the weakest drawing (tubes on solid discs, brown
+  glyph rings well over 100 px across (the cap is 192), the C marks spread over slopes, large plain standards. The guns are the weakest
+  drawing (tubes on solid discs, brown
   cubes on the march, switched in one frame). Nothing moves within a formation: blocks slide. The meres are flat plates; the streams'
-  and the roads' ribbons are not drawn at all (culled); every house is the same box turned at random; of the landmarks the narrative names, only the
+  and the roads' ribbons are not drawn at all (culled); every house is the same box turned at random; of the landmarks the narrative names,
+  only the
   Sokolnitz castle is drawn. The light, the
   fog, the ground's cover, the readings, the interface and the paper map hold up and are kept.
 - **L1, the glow (section 2; question 239).** Five alternatives in seven views: recommended, a thin cased outline of each formation's
@@ -69,18 +71,20 @@ assessment can be checked against them (section 12.2).
   field pieces (spoked wheels, trails, their limbers and teams behind them); infantry and cavalry change little at the visitor's distances;
   on every formation the prototype's kit would add an estimated 34-52% to the frame, so it is proposed only with culling and a lighter kit
   drawn near the eye. A gait locked to the clock (its phase a function of the modelled track: still when paused, the same when scrubbed;
-  faded out above 3.2 cycles a second, a formation's parts together; none under reduced motion or below 1 km/h), and why: at ½x a drawn formation already moves 2.6-5 times
-  as fast for its size as a man walks, at 4x 20-40 times. Part of the floating is the model's: 52 of its 147 legs drift at under 1 km/h for
-  two hours or more, because a move no source dates is spread over its interval (decision 45); the gait leaves them still. The artillery's
-  sources (Gassendi 1809, IV Corps' order of 25 October 1805, Teuber, Nilus) give the wheels' proportion, the coffret, one driver a vehicle
-  (as an authorisation) and the limbers' place, and no time for limbering. Facings: kept out (decision 104), since only the French classes
-  have them sourced.
+  faded out between 3.2 and 4.8 cycles a second, a formation's parts together; none under reduced motion, and built, none below 1 km/h), and
+  why: at ½x a drawn formation already moves 2.6-5 times as fast for its size as a man walks, at 4x 20-40 times. Part of the floating is the
+  model's: 52 of its 147 legs drift at under 1 km/h for two hours or more, because a move no source dates is spread over its interval
+  (decision 45); built, the gait leaves them still (the prototype does not yet: it swings Nansouty's drift). The artillery's sources
+  (Gassendi 1809, IV Corps' order of 25 October 1805, Teuber, Nilus) give the wheels' proportion, the coffret, one driver a vehicle (as an
+  authorisation) and the limbers' place, and no time for limbering. Facings: kept out (decision 104), since only the French classes have
+  them sourced.
 - **L4, water (section 5; questions 246, 253).** The streams are not drawn at all today (their ribbons, and the roads', face away from the
   eye and are culled: section 9.5); drawn, they should be darker and still. The meres stay ice, varied in material and light. The day was
   mild in Prague (4.9-10.6 °C; the Klementinum series), the sources disagree on the ice's strength, and nothing read says the streams
   were iced: no stream ice, and no flow, which would also keep an idle page drawing about 11 frames a second.
 - **L5, buildings (section 6; question 248).** The villages re-laid on the 1825-1826 cadastre's pattern (dwellings end-on to the street,
-  barns across the yards); the landmarks the sources support (Sokolnitz castle's quadrangle, the fences of Telnitz and Sokolnitz) after an evidence
+  barns across the yards); the landmarks the sources support (Sokolnitz castle's quadrangle, the fences of Telnitz and Sokolnitz) after an
+  evidence
   step, and the two chapels once their state on the day is read (St Anthony's roof is not found; the Santon's was destroyed during the
   battle); the pheasantry's wall, dated later, is not proposed.
 - **Further (section 7; questions 241, 247).** The arrows capped at 16 px on screen and hidden by the ground alone; the glyphs at 64 px;
@@ -444,14 +448,16 @@ the same frames at 10 a second). In the paper map's zoom the build's counters an
 the prototype they hold their places, and those whose place is taken fade out and come back a few frames later, so that fewer are drawn
 while the zoom runs (the table's "items drawn while moving"). In the paper map's Play (`paper-play.mp4`: 09:00 to 09:20 at ½x, 41 frames,
 the camera still), the build reshuffles the layer five times in those twenty clock minutes (`clip-motion.json`: the frames in which more
-than 30,000 pixels of the map change from the one before, the largest 49,000): at 09:02, from one frame to the next, seven counters change
-places across the map, V Corps, the Imperial Guard, the Grenadier Division, the Cavalry Reserve, the Russian Imperial Guard, the Fifth
-Column and the Advance Guard of the Right (`clips/paper-play-f4-f5.jpg`, the build above, the prototype below). With the prototype no frame
-changes as much (the largest 21,500 pixels; over the clip 189,000 against the build's 335,000): through most of the clip the counters keep
-their places as their formations move; at 09:17, where the build reshuffles too, three counters (V Corps, the Fifth Column, the Russian
-Imperial Guard) leave their places, fading out and back in elsewhere over a few frames, and the names about them move beside their anchors
-or fade: the price section 3.4 states, eased by the fades rather than removed. Orbiting the Field vantage in Landscape with counters
-(`hybrid-orbit.mp4`), the build's layout reshuffles in every frame,
+than 30,000 pixels of the map change by more than 40 of 255 from the frame before, the largest 49,000): at 09:02, from one frame to the
+next, seven counters change places across the map, V Corps, the Imperial Guard, the Grenadier Division, the Cavalry Reserve, the Russian
+Imperial Guard, the Fifth Column and the Advance Guard of the Right (`clips/paper-play-f4-f5.jpg`, the build above, the prototype below,
+whose counters all hold). With the prototype no frame changes as much (the largest 21,500 pixels by the same measure; over the clip 189,000
+against the build's 335,000), but its layer does not hold throughout: where a live event's label appears (09:07:30, "Kutuzov orders the 4th
+Column to face about", placed first as today, decision 39), seven counters leave their places over the next five frames, two or three at a
+time, each fading out and back in elsewhere, and at 09:17 three more (V Corps, the Fifth Column, the Russian Imperial Guard). The build
+reshuffles at those moments too (frames 15, 20 and 34), each time in a single frame. That is the price section 3.4 states: where the
+layer must change, it changes by fades spread over a few frames rather than in one, here at two moments of the build's five. Orbiting the
+Field vantage in Landscape with counters (`hybrid-orbit.mp4`), the build's layout reshuffles in every frame,
 counters trading places across the field; the prototype's hold theirs, a few fading where another takes their room. Zooming in on the same
 view (`hybrid-zoom.mp4`), the build's labels slide and swap as the
 anchors spread; the prototype's keep their places against their anchors, and the few that lose their room fade.
@@ -634,7 +640,7 @@ second, the camera tracking the formation 24-26 units out; the clock set each fr
   the column reads as on the march, its feet still sliding over the ground (the ratio above). A movement arrow's ribbon lies across the
   battalions in every frame (section 7.1).
 - `bat-limber.mp4`, the guns on the heights limbering up and moving off toward Augezd (13:42 to 13:58, 33 frames): in the build's half the
-  deployed battery is replaced, in the frame its leg begins (13:45), by its limbered group, block horses drawing brown boxes and barrels on
+  deployed battery is replaced, in the first frame after its leg begins (13:45:30), by its limbered group, block horses drawing brown boxes and barrels on
   solid discs, which then slides away; in the prototype's the same switch shows the teams harnessed, a driver on each near wheeler, the guns
   on spoked wheels behind their limbers, and the teams walk (0.7 cycles a second at ½x), the drivers bobbing; the wheels do not turn (not
   prototyped; built, they would follow the track's distance as the gait does). The switch in one frame is the build's and is kept: no source
@@ -657,8 +663,9 @@ at under 1 km/h, 52 of them for two hours or more: Nansouty's division covers 1.
 0.35 km between 04:00 and 08:00. A leg with no dated departure is spread over its whole interval: decision 45 ("Creeping moves ... otherwise
 nothing is invented, today's behaviour stays, and while the formation is between anchors the dossier shows the existing 'interpolated'
 marker"). So part of what the owner saw as floating is the model saying it does not know when a formation moved; a block drifting its own
-width in an hour of the clock is that statement, not a march. **The gait draws no swing below 1 km/h** (DESIGN: a drift between anchors,
-not a march), so it never animates a move the sources do not date; a dated departure, where a text gives one, remains a data task under
+width in an hour of the clock is that statement, not a march. **Built, the gait draws no swing below 1 km/h** (DESIGN: a drift between
+anchors, not a march), so it never animates a move the sources do not date. The prototype does not yet apply this floor: `gait-check.json`
+records Nansouty's drift of 04:00-10:30 (0.28 km/h) at full swing at every speed, at 0.05 cycles a second at ½x, a stride every 20 seconds. A dated departure, where a text gives one, remains a data task under
 decisions 40-45.
 
 What it does not do: no figure turns, kneels, fires, falls or runs; no casualty is drawn and no formation thins with losses
@@ -723,7 +730,7 @@ kit is built and the owner can judge the close views with it.
 - **Acceptance (8E):** every 6C and 6D self-test check passing with its meaning unchanged (each figure's class colours, headgear, legwear and
   cuirass; the standards' carriers, counts, cloths, proportions, finials, the ratio at 1x, 4x and 10.33x); the gait's rule held by the
   self-test (`tools/stage8/gait-check.js`'s cases made checks: the pose identical from three paths to a clock, still while paused, none on a
-  halted formation or under reduced motion, the fade above 3.2 cycles a second, a formation's parts together); the figures seated on the drawn ground in every pose within
+  halted formation, below 1 km/h or under reduced motion, the fade above 3.2 cycles a second, a formation's parts together); the figures seated on the drawn ground in every pose within
   the existing tolerance; the battery's driver count, wheel ratio and coffret as their registered readings; section 8.3's budgets.
 
 ## 5. Ice, shorelines and streams (the owner's note L4; the brief's priority 4)
@@ -1191,8 +1198,10 @@ cover. The streams' look (`w-stream`, question 246) is 8F's, on ribbons that are
 ### 9.6 Found in this Part: the phase's message under the view switch
 
 **Measured** (`tools/stage8/toast.js`, `toast.json`, `toast/`): one phase carries a message (`PHASES[3].flash`, "The sun of Austerlitz, as
-memoirs call it", at 08:45), which `flash()` shows for 3.4 s whenever the clock enters the phase other than instantly: Play, the time
-rail's keys, a phase's or an act's button (`setClock`, `setPhase`). In Study the toast is centred on the free area beside the docked rail
+memoirs call it", at 08:45), which `flash()` shows for 3.4 s whenever `setClock` brings the clock into the phase other than instantly
+(Play; the time rail's keys and pointer; the step buttons and the arrow keys; an event's marker, "Go to this moment" and a day-track's
+anchor; a phase's or an act's button), and again whenever a phase's button, a chapter or a tour stop sets the clock inside the phase
+(each sets it with `force`: `setPhase`, `setChapter`, `applyTour`). In Study the toast is centred on the free area beside the docked rail
 (`#toast`: `left: calc(50% + var(--rail)/2)`, `top: 26px`, z-index 40) and the view switch on the window (`#viewmode`: `left: 50%`,
 `top: 14px`, z-index 42). After a real PageDown on the time rail from 08:40, at 1600 x 900, 1366 x 768 and 1280 x 720 alike, the two boxes
 overlap by 77 x 22 px, 17.6% of the toast's, and the switch is drawn over it: the message reads "...f Austerlitz, as memoirs call it", its
@@ -1303,7 +1312,7 @@ decisions 141, 199, 214 and 232 were.
   within section 8.3's budgets.
 - **Acceptance:** every 6C and 6D check passes unchanged in meaning (class colours, headgear, cuirasses, standards' measures, the ratio of
   decision 106 within 2%); the gait's rule held by the self-test at 1x, 4x and 10.33x: the pose identical at a clock reached from three earlier
-  clocks, still with the clock stopped, no swing on a halted formation or under reduced motion, the fade above 3.2 cycles a second, a formation's parts faded together (by its fastest-cycling part); figures
+  clocks, still with the clock stopped, no swing on a halted formation, below 1 km/h or under reduced motion, the fade above 3.2 cycles a second, a formation's parts faded together (by its fastest-cycling part); figures
   seated on the drawn ground within the existing tolerance in every pose; the budgets of section 8.3.
 
 ### 8F: water, woods and the near ground
@@ -1355,7 +1364,7 @@ build stays as it is until the answers. A limit of `tools/visual/thresholds.js` 
 | **241** | The arrows and the event glyphs (section 7.1, 7.6; A-5) | (a) **each arrow's width capped at 16 px on screen in the two perspective presentations, the arrows depth-tested against the drawn ground alone, their fill at 0.62 of today's opacity, the glyphs capped at 64 px** (`a-calm` with section 7.1's two changes: the ground-only depth test, and the lines of battle, boundaries and halt bars keeping their widths and opacity); (b) the cap only (`a-cap`); (c) as today | **(a)** | decision 57's value (192 px) and 2C's "over everything" (the depth test); keeps 1, 15, 20, 21, 83 (form, dash, chevron, boundaries, draw-on) | PR 8B; `binding-test.js` unchanged; the eye-level cases read against a depth-only frame |
 | **242** | The figures' kit (L3; section 4) | (a) **`f-kit` for every class**: the man, the horse and the rider redrawn in more parts, every colour, headgear and cuirass from the existing claims; (b) the artillery only; (c) as today | **(a)** | extends 6C's shapes (DESIGN); keeps 97, 100, 102, 103, 104, 106, 109 | PR 8E; on every formation the prototype's kit would add 34-52% to the 4x frame: only with culling (249), a kit of at most 1.3 times the build's per man, and the rich kit where a man is 16 px or more on screen, within section 8.3's budgets |
 | **243** | The artillery (L3; section 4.4) | (a) **the generic field piece**: spoked wheels in Gassendi's proportion, a bracket trail, the French coffret between the cheeks when limbered, the Allied limbers' box, one driver a vehicle (two for six horses: IV Corps' order, an authorisation), the limbers and teams behind the deployed guns, four horses a drawn gun, one carriage colour, the switch between the groups as today; each reading registered in `appearance.js` first; (b) as (a), with each army's carriage colour where sourced (French olive, Austrian ochre, the Russian generic); (c) as today | **(a)** | (b) would extend 109 ("one colour unless each army's is sourced": two of three are) | PR 8E with its data task (the readings of `leads.md` topic 1, graded and registered) |
-| **244** | The gait (L3; section 4.3) | (a) **the clock's gait**: the swing's phase a function of the clock alone (the modelled track's distance over a design stride), its amplitude the play speed's (faded out above 3.2 cycles a second on screen, a formation's parts together, eased when the speed changes), none under reduced motion, when halted, or below 1 km/h (the drift of an undated leg, decision 45); (b) no gait; (c) a gait in real time | **(a)** | none (VISUAL_AUDIT's "do not animate losses" kept: no figure falls) | PR 8D (the shader hooks), 8E; no draw call, no triangle |
+| **244** | The gait (L3; section 4.3) | (a) **the clock's gait**: the swing's phase a function of the clock alone (the modelled track's distance over a design stride), its amplitude the play speed's (full up to 3.2 cycles a second on screen, none above 4.8, a formation's parts together, eased when the speed changes), none under reduced motion, when halted, or below 1 km/h (the drift of an undated leg, decision 45); (b) no gait; (c) a gait in real time | **(a)** | none (VISUAL_AUDIT's "do not animate losses" kept: no figure falls) | PR 8D (the shader hooks), 8E; no draw call, no triangle |
 | **245** | Facings (decision 104; section 4.6) | (a) **keep decision 104**: no facings; (b) class-level facings where the table settles them at A or B, after a data task gives them colour classes (today the French line and the Guard's foot grenadiers; the Allied classes' facings are regimental) | **(a)**, reconsidered after 8E | (b) extends 104 | none for (a) |
 | **246** | Water (L4; section 5) | (a) **the meres' ice varied in material and light** (`w-ice`: a frosted margin easing into clearer, glossier ice; a broad tonal variation; a stronger reflection at grazing angles; the shore ring feathered), **the streams darker and less blue** (`w-stream`), **still, no stream ice**; (b) as (a) with edge ice on the streams; (c) as (a) with the streams flowing; (d) as today | **(a)** | keeps 27 (outlines), §F.1's rule (no crack, hole, snow or figure), 79 (the colours' tables) | PR 8F; (c) would make an idle page draw about 11 frames a second whenever a stream is in view |
 | **247** | Woods and the near ground (section 7.3, 7.4) | (a) **airier deciduous crowns** and a little more variation, the conifer shares kept until sourced; **a detail layer near the eye** on the ground (no new class or colour); (b) the woods only; (c) as today | **(a)** | keeps 2F's cover checks and "bare winter trees, frost on north-facing slopes, crop strips" | PR 8F; the trees' triangles per tree held at or under today's |
@@ -1373,7 +1382,7 @@ build stays as it is until the answers. A limit of `tools/visual/thresholds.js` 
 | check | result |
 |---|---|
 | `npm test` on `main` at `9eb7abb` (before any Stage 8 file existed) | all nine suites and the height guard pass (5 min 47 s) |
-| `npm test` on the final tree (every probe, prototype, capture and record of this Part in place), after the last recordings | all nine suites and the height guard pass (5 min 22 s): no warning unacknowledged, "console.warn unique" 0 |
+| `npm test` on the final tree (every probe, prototype, capture and record of this Part in place), after the last recordings | all nine suites and the height guard pass (5 min 23 s): no warning unacknowledged, "console.warn unique" 0 |
 | `npm run check:data` on the final tree | 131 of 131 declarations byte-identical to `archive/step5c-45f8f662.html` |
 | `npm run check:chronology` on the final tree | 0 errors; the movement audit 0 findings |
 | `npm run check:baseline` on the final tree | passes: `austerlitz-command-map.html` 2,220,714 bytes, md5 `c4793156103b60bb74151c7d13dbdd9d`, unchanged by this document |
@@ -1458,3 +1467,18 @@ or recorded:
   and compared with the build's own rebuild (`a-rebuild`); "opacity multiplied by 0.62"; the arrows' widths by view; question 241 (a) with
   7.1's two changes; 8.2's lighter kit a target, not a measurement, and its head example withdrawn (the build's head is the same
   icosahedron); 8H's reference to section 3.3; the widths "at 1x" (the factor is vertical only).
+
+**A third reading.** A third independent reader (read-only, on the text written after the second reading: the recordings' descriptions in
+sections 3, 4.3 and 5.3, the fade rule's change, section 9.6, the evidence README and the `CHANGELOG.md` entry) checked them against the clips,
+`clip-motion.json`, `record-log.txt`, `toast.json`, the probes and the code; every number of the clip descriptions, the gait arithmetic,
+section 5.3's flow and section 9.6's boxes matched. It reported 7 findings (1 blocking, 3 medium, 3 low), each fixed here:
+- **Blocking, fixed.** The paper map's Play with the prototype was described as holding but at 09:17: from 09:07:30, where an event's
+  label appears, seven counters leave their places over five frames, two or three at a time; section 3 and `CHANGELOG.md` now give both
+  moments.
+- **Medium, fixed.** The toast probe was filed under section 9.4 (it is 9.6) in the tools table, the README and the probe's header; section
+  9.6 named only some of the inputs that show the toast (every `setClock` without `instant` does, and a phase's button, a chapter and a tour
+  stop with `force`); "the gait draws no swing below 1 km/h" was stated as the prototype's rule, which does not apply it (`gait-check.json`:
+  Nansouty's 0.28 km/h drift at full swing): it is now proposed, and in 4.7's and 8E's acceptance.
+- **Low, fixed.** Section 3's threshold (more than 40 of 255) stated; the battery's switch in the first frame after its leg begins
+  (13:45:30); `clip-motion.py`'s sections (3 and 5.3); the fade's wording in the summary and question 244 (full up to 3.2 cycles a second,
+  none above 4.8).

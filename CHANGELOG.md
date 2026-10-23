@@ -23,8 +23,9 @@ session; the assessment rests on direct captures of the build instead.
   the view moves, a level-of-detail band released at rest and short fades: 249 jumps (19 of counters), no overlap among live items, a view
   reached without motion laid out exactly as today; its cost, more pops (1,156: items faded out while the view moves come back at rest),
   softened by the fades, not removed. Recorded in the paper map's Play (`clips/paper-play.mp4`, `clip-motion.py`): the build reshuffles the
-  layer five times in twenty clock minutes, seven counters at once at 09:02; the prototype holds it but for one moment, at 09:17, when
-  three counters fade out and come back elsewhere.
+  layer five times in twenty clock minutes, seven counters at once at 09:02; the prototype holds it between two moments when it must
+  change (an event's label appearing at 09:07:30, and 09:17), and then ten counters fade out and back in elsewhere over a few frames,
+  two or three at a time, where the build moves them in one.
 - **L3, troops and motion (§4, questions 242-245).** A richer kit on three representatives (`protos/figures.js`) and its cost counted
   (`kit-census.js`: a man 204 to 344 triangles, a rider and his horse 288 to 592; on every formation an estimated 34-52% more triangles in the
   4x frame, so only with culling, a lighter kit and the rich kit near the eye); a gait locked to the clock and checked (`gait-check.js`);
@@ -46,9 +47,11 @@ session; the assessment rests on direct captures of the build instead.
   goes to the true position of four formations the reading does not know; the dossier's sources at its end; a timeline tip kept after its
   element is activated), checked by real clicks, keys and taps (`carried.js`).
 - **The plan (§10, question 252):** PRs 8A-8H, each with its benefit, systems, evidence, performance and acceptance; nothing implemented here.
-- **Reviewed twice (§12.4).** Two independent readers checked the text against the evidence and the code (23 findings, then 15 on what
-  was written after); each finding is fixed or recorded. The second found that the recorder set the clock with `force`, rebuilding the
-  overlays every frame: the five clock-driven clips were recorded again as Play sets the clock.
+- **Reviewed three times (§12.4).** Independent readers checked the text against the evidence and the code (23 findings, then 15 on
+  what was written after, then 7 on the text written after the second); each finding is fixed or recorded. The second found that the
+  recorder set the clock with `force`, rebuilding the overlays every frame: the five clock-driven clips were recorded again as Play sets
+  the clock. The third found the prototype's Play described as steadier than it is, and the gait's 1 km/h floor stated as prototyped
+  (it is proposed: the prototype swings Nansouty's 0.28 km/h drift).
 - **Tools (`tools/stage8/`, not bundled):** `views.js`, `lib.js`, `stills.js`, `label-motion.js`, `label-far.js`, `density.js`, `record.js`,
   `kit-census.js`, `carried.js`, `gait-check.js`, `legs.js`, `stream-vis.js`, `toast.js`, `pixdiff.py`, `clip-motion.py`, `sheets.py` and the in-page prototypes `protos/`
   (ground, labels, figures, water, buildings, arrows), each prototype put into the live page and removed after its frame, its removal checked
@@ -60,7 +63,7 @@ session; the assessment rests on direct captures of the build instead.
 **Owner questions 239-253** (`docs/STAGE8_SPEC.md` §11), each with its options, a recommendation, what it supersedes and its cost; the next
 owner decision is 239.
 
-**Verified (on the final tree):** `npm test`: all nine suites and the height guard pass (5 min 22 s; no warning
+**Verified (on the final tree):** `npm test`: all nine suites and the height guard pass (5 min 23 s; no warning
 unacknowledged, `console.warn` 0); `check:baseline` passes on the unchanged build; `check:data` 131 of 131 declarations byte-identical to
 `archive/step5c-45f8f662.html`; `check:chronology` 0 errors. Every probe run to its end on the build above; each prototype's removal
 checked (69 of 72 removals equal in draw calls and triangles, the other three the build's own rebuild of its overlays; the ribbon probe's
