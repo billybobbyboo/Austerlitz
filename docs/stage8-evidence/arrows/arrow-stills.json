@@ -84,6 +84,48 @@
     "dropped": 1,
     "restored": true
    }
+  },
+  "close-sokolnitz": {
+   "base": {
+    "calls": 781,
+    "tris": 2478169,
+    "items": 63,
+    "placed": 19,
+    "dropped": 2
+   },
+   "a-cap": {
+    "info": {
+     "kind": "a-cap"
+    },
+    "calls": 778,
+    "tris": 2477621,
+    "items": 63,
+    "placed": 19,
+    "dropped": 2,
+    "restored": false
+   },
+   "a-soft": {
+    "info": {
+     "kind": "a-soft"
+    },
+    "calls": 778,
+    "tris": 2477621,
+    "items": 63,
+    "placed": 19,
+    "dropped": 2,
+    "restored": false
+   },
+   "a-calm": {
+    "info": {
+     "kind": "a-calm"
+    },
+    "calls": 778,
+    "tris": 2477621,
+    "items": 63,
+    "placed": 19,
+    "dropped": 2,
+    "restored": false
+   }
   }
  }
 }
