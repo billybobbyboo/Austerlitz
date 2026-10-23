@@ -1,0 +1,266 @@
+{
+ "build": "c4793156103b60bb74151c7d13dbdd9d",
+ "views": {
+  "overview-field": {
+   "base": {
+    "calls": 832,
+    "tris": 2523605,
+    "items": 48,
+    "placed": 42,
+    "dropped": 6
+   }
+  },
+  "overview-plan": {
+   "base": {
+    "calls": 832,
+    "tris": 2523605,
+    "items": 27,
+    "placed": 22,
+    "dropped": 5
+   }
+  },
+  "close-sokolnitz": {
+   "base": {
+    "calls": 781,
+    "tris": 2478209,
+    "items": 63,
+    "placed": 19,
+    "dropped": 2
+   }
+  },
+  "pratzen-low": {
+   "base": {
+    "calls": 758,
+    "tris": 2480181,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4
+   }
+  },
+  "pratzen-low-1x": {
+   "base": {
+    "calls": 160,
+    "tris": 227787,
+    "items": 65,
+    "placed": 25,
+    "dropped": 4
+   }
+  },
+  "pratzen-low-10x": {
+   "base": {
+    "calls": 759,
+    "tris": 2480183,
+    "items": 65,
+    "placed": 21,
+    "dropped": 3
+   }
+  },
+  "hybrid-dimmed": {
+   "base": {
+    "calls": 740,
+    "tris": 2485223,
+    "items": 63,
+    "placed": 32,
+    "dropped": 8
+   }
+  },
+  "paper-north-up": {
+   "base": {
+    "calls": 156,
+    "tris": 240915,
+    "items": 36,
+    "placed": 25,
+    "dropped": 11
+   }
+  },
+  "paper-close": {
+   "base": {
+    "calls": 103,
+    "tris": 203455,
+    "items": 64,
+    "placed": 5,
+    "dropped": 1
+   }
+  },
+  "ph8-overview-watch": {
+   "base": {
+    "calls": 809,
+    "tris": 2501163,
+    "items": 25,
+    "placed": 22,
+    "dropped": 3
+   }
+  },
+  "eye-zuran": {
+   "base": {
+    "calls": 205,
+    "tris": 493805,
+    "items": 48,
+    "placed": 16,
+    "dropped": 5
+   }
+  },
+  "selected-formation": {
+   "base": {
+    "calls": 764,
+    "tris": 2518041,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4
+   }
+  },
+  "hybrid-field": {
+   "base": {
+    "calls": 832,
+    "tris": 2523605,
+    "items": 50,
+    "placed": 36,
+    "dropped": 14
+   }
+  },
+  "hybrid-low": {
+   "base": {
+    "calls": 759,
+    "tris": 2480183,
+    "items": 64,
+    "placed": 19,
+    "dropped": 7
+   }
+  },
+  "inf-close": {
+   "base": {
+    "calls": 715,
+    "tris": 2477531,
+    "items": 58,
+    "placed": 3,
+    "dropped": 1
+   }
+  },
+  "inf-mid": {
+   "base": {
+    "calls": 737,
+    "tris": 2481029,
+    "items": 61,
+    "placed": 18,
+    "dropped": 1
+   }
+  },
+  "cav-close": {
+   "base": {
+    "calls": 714,
+    "tris": 2482623,
+    "items": 51,
+    "placed": 8,
+    "dropped": 1
+   }
+  },
+  "cav-mid": {
+   "base": {
+    "calls": 727,
+    "tris": 2483867,
+    "items": 56,
+    "placed": 18,
+    "dropped": 2
+   }
+  },
+  "bat-deployed": {
+   "base": {
+    "calls": 732,
+    "tris": 2516154,
+    "items": 58,
+    "placed": 4,
+    "dropped": 0
+   }
+  },
+  "bat-limbered": {
+   "base": {
+    "calls": 751,
+    "tris": 2512521,
+    "items": 52,
+    "placed": 0,
+    "dropped": 0
+   }
+  },
+  "bat-chapel": {
+   "base": {
+    "calls": 730,
+    "tris": 2490339,
+    "items": 59,
+    "placed": 14,
+    "dropped": 4
+   }
+  },
+  "ice-low": {
+   "base": {
+    "calls": 796,
+    "tris": 2505367,
+    "items": 64,
+    "placed": 36,
+    "dropped": 12
+   }
+  },
+  "ice-high": {
+   "base": {
+    "calls": 730,
+    "tris": 2493525,
+    "items": 64,
+    "placed": 15,
+    "dropped": 2
+   }
+  },
+  "stream-low": {
+   "base": {
+    "calls": 757,
+    "tris": 2476073,
+    "items": 62,
+    "placed": 23,
+    "dropped": 7
+   }
+  },
+  "village-telnitz": {
+   "base": {
+    "calls": 741,
+    "tris": 2483571,
+    "items": 59,
+    "placed": 5,
+    "dropped": 2
+   }
+  },
+  "village-sokolnitz": {
+   "base": {
+    "calls": 747,
+    "tris": 2474215,
+    "items": 59,
+    "placed": 5,
+    "dropped": 1
+   }
+  },
+  "village-pratzen": {
+   "base": {
+    "calls": 713,
+    "tris": 2481805,
+    "items": 59,
+    "placed": 16,
+    "dropped": 1
+   }
+  },
+  "woods-pheasantry": {
+   "base": {
+    "calls": 765,
+    "tris": 2476345,
+    "items": 63,
+    "placed": 15,
+    "dropped": 2
+   }
+  },
+  "horizon-east": {
+   "base": {
+    "calls": 788,
+    "tris": 2502985,
+    "items": 65,
+    "placed": 30,
+    "dropped": 7
+   }
+  }
+ }
+}
