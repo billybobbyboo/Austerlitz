@@ -160,7 +160,8 @@ const inPage=function(){
     function geoOf(kind,kd,key){ var k=kind+"|"+key+"|"+(facingsOf(kd)?"fc":""); return cache[k]||(cache[k]=kind==="foot"?footFixed(kd.leg,kd.head,kd.gunner,facingsOf(kd)):kind==="rider"?riderFixed(kd.leg,kd.head,kd.cuirass,
       kd.dress==="fr_cuirassier"&&DRESS.fr_cuirassier.furniture&&/dark blue/.test(DRESS.fr_cuirassier.furniture.v||"")?KIT.cloth["dark blue"]:null):kind==="horse"?horse(kd.horseCol):null); }
     var coatFoot=footCoat(), coatRider=riderCoat();
-    [IDS.inf,IDS.cav].forEach(function(id){ var b=units[id]&&units[id].block, ud=b&&b.userData; if(!ud) return;
+    var cavId=(o&&o.cav)||IDS.cav;   /* the cavalry representative: Nansouty's, or another named by the variant (f-gait-gc: the Guard cavalry, the one cavalry leg fast enough to step) */
+    [IDS.inf,cavId].forEach(function(id){ var b=units[id]&&units[id].block, ud=b&&b.userData; if(!ud) return;
       ud.dress.forEach(function(r){ var kd=r.kd||kitGeneric(FORMATIONS[id].nation);
         r.meshes.forEach(function(m){ var part=m.userData.kit&&m.userData.kit.part, mounted=r.mounted, ng=null, gk=null;
           if(!mounted&&part==="coat"){ ng=coatFoot; gk="man"; } else if(!mounted&&part==="fixed"){ ng=geoOf("foot",kd,[kd.leg,kd.head,kd.gunner?1:0].join("|")); gk="man"; }
@@ -219,7 +220,7 @@ const inPage=function(){
     }
     var upd0=window.updateVisibility; window.updateVisibility=function(){ upd0(); gaitUpdate(); }; F.undo.push(function(){ window.updateVisibility=upd0; });
     updateVisibility(); requestRender(3);
-    return {formations:[IDS.inf,IDS.cav,IDS.art], gait:F.gait, materials:F.recs.length};
+    return {formations:[IDS.inf,cavId,IDS.art], gait:F.gait, materials:F.recs.length};
   }
   /* the phase and amplitude of each formation's gait at the clock: amplitude 1 while its leg is in progress, 0 when it stands, the clock is
      paused at a halt, under reduced motion, or where the cycles on screen would exceed MAX_HZ (clock minutes a second times cycles a clock minute) */
@@ -242,6 +243,7 @@ const inPage=function(){
   window.__p8["f-kit"]={install:function(){ return install({gait:false}); }, uninstall:uninstall};
   window.__p8["f-gait"]={install:function(){ return install({gait:true}); }, uninstall:uninstall};
   window.__p8["f-facings"]={install:function(){ return install({gait:false, facings:true}); }, uninstall:uninstall};
+  window.__p8["f-gait-gc"]={install:function(){ return install({gait:true, cav:"guard_cav"}); }, uninstall:uninstall};
   window.__f8=F; F.trackDist=trackDist; F.gaitUpdate=gaitUpdate; return true;
 };
-module.exports={inPage, ids:{"f-kit":{},"f-gait":{},"f-facings":{}}};
+module.exports={inPage, ids:{"f-kit":{},"f-gait":{},"f-facings":{},"f-gait-gc":{}}};

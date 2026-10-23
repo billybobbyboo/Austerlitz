@@ -19,8 +19,8 @@ const SCR=path.join(process.env.STAGE8_TMP||"/tmp/claude-0/-home-user-Austerlitz
 const CLIPS={
   "inf-march": {t:525, mode:"terrain", presentation:"watch", follow:{id:"sthilaire", r:26, az:0.75, el:0.33}, from:527, to:545, speed:0.5,
     variants:["base","figures:f-gait"], note:"Saint-Hilaire's division climbing the plateau's west slope (its leg 08:45-09:15), at ½x, the camera tracking it 26 units out."},
-  "cav-move": {mode:"terrain", presentation:"watch", follow:{id:"nansouty", r:26, az:0.75, el:0.33}, moving:{id:"nansouty", after:560}, span:18, speed:0.5,
-    variants:["base","figures:f-gait"], note:"Nansouty's division on the leg it marches before its charge, at ½x, tracked 26 units out."},
+  "cav-move": {mode:"terrain", presentation:"watch", follow:{id:"guard_cav", r:26, az:0.75, el:0.33}, from:629, to:647, speed:0.5,
+    variants:["base","figures:f-gait-gc"], note:"The Guard cavalry on its march of 10:30-11:15 (4.85 km/h, the one cavalry leg of the model fast enough to step: Nansouty's are drifts under 1 km/h), at ½x, tracked 26 units out."},
   "bat-limber": {mode:"terrain", presentation:"watch", follow:{id:"heightguns", r:24, az:1.1, el:0.36}, from:822, to:838, speed:0.5,
     variants:["base","figures:f-gait"], note:"The guns on the heights limbering up and moving off toward Augezd (the leg 13:45-14:30), at ½x."},
   "inf-march-4x": {t:525, mode:"terrain", presentation:"watch", follow:{id:"sthilaire", r:26, az:0.75, el:0.33}, from:527, to:567, speed:4, fps:10,
