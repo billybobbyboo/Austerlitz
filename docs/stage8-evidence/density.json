@@ -213,57 +213,60 @@
     "ms": 0.9
    }
   },
-  "stream-low": {
+  "ph8-overview-watch": {
    "arrows": {
-    "share": 0.0346,
-    "contrastMedian": 1.83,
-    "share3to1": 0.344
+    "share": 0.0251,
+    "contrastMedian": 1.44,
+    "share3to1": 0.195
    },
    "marks": {
-    "share": 0.0108,
-    "contrastMedian": 1.06,
-    "share3to1": 0
+    "share": 0.0367,
+    "contrastMedian": 2.17,
+    "share3to1": 0.239
    },
    "events": {
-    "share": 0.0057,
-    "contrastMedian": 1.21,
-    "share3to1": 0.047
-   },
-   "standards": {
-    "share": 0.2169,
-    "contrastMedian": 2.86,
-    "share3to1": 0.376
-   },
-   "maptext": {
-    "share": 0.0366,
-    "contrastMedian": 4.73,
-    "share3to1": 0.638
-   },
-   "figures": {
-    "share": 0.0294,
-    "contrastMedian": 1.13,
+    "share": 0,
+    "contrastMedian": 1.18,
     "share3to1": 0
    },
+   "standards": {
+    "share": 0.001,
+    "contrastMedian": 1.15,
+    "share3to1": 0.007
+   },
+   "maptext": {
+    "share": 0.0417,
+    "contrastMedian": 1.42,
+    "share3to1": 0.212
+   },
+   "figures": {
+    "share": 0.008,
+    "contrastMedian": 1.22,
+    "share3to1": 0.015
+   },
    "arrowsPx": [
-    20.1,
-    60.1,
-    68.2
+    6,
+    6.2,
+    6.2,
+    6.2,
+    9.9,
+    9.9
    ],
    "labels": {
-    "drawn": 23,
+    "drawn": 22,
     "byCat": {
-     "name": 11,
-     "plateau": 1,
-     "overlay": 4,
-     "objective": 1,
-     "place": 6
+     "name": 5,
+     "place": 9,
+     "event": 1,
+     "overlay": 6,
+     "objective": 1
     },
-    "leaders": 12,
-    "far150": 4,
-    "upperQuarter": 19,
-    "dropped": 7,
-    "occluded": 1,
-    "ms": 1.3
+    "leaders": 6,
+    "far150": 22,
+    "upperQuarter": 5,
+    "dropped": 3,
+    "occluded": 0,
+    "ms": 0.6
    }
   }
  }
