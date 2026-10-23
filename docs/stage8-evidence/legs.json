@@ -1,0 +1,927 @@
+{
+ "legs": 147,
+ "under1kmh": 92,
+ "under1kmhOver2h": 52,
+ "slow": [
+  {
+   "id": "dok",
+   "arm": "inf",
+   "from": "08:00",
+   "to": "12:45",
+   "minutes": 285,
+   "km": 0.29,
+   "kmh": 0.06,
+   "timed": false
+  },
+  {
+   "id": "guard_cav",
+   "arm": "cav",
+   "from": "12:45",
+   "to": "17:00",
+   "minutes": 255,
+   "km": 0.35,
+   "kmh": 0.08,
+   "timed": false
+  },
+  {
+   "id": "prz",
+   "arm": "inf",
+   "from": "09:30",
+   "to": "12:45",
+   "minutes": 195,
+   "km": 0.27,
+   "kmh": 0.08,
+   "timed": false
+  },
+  {
+   "id": "sthilaire",
+   "arm": "inf",
+   "from": "04:00",
+   "to": "08:00",
+   "minutes": 240,
+   "km": 0.35,
+   "kmh": 0.09,
+   "timed": false
+  },
+  {
+   "id": "vandamme",
+   "arm": "inf",
+   "from": "04:00",
+   "to": "08:00",
+   "minutes": 240,
+   "km": 0.37,
+   "kmh": 0.09,
+   "timed": false
+  },
+  {
+   "id": "friant",
+   "arm": "inf",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 0.26,
+   "kmh": 0.1,
+   "timed": false
+  },
+  {
+   "id": "friant",
+   "arm": "inf",
+   "from": "10:30",
+   "to": "12:45",
+   "minutes": 135,
+   "km": 0.28,
+   "kmh": 0.13,
+   "timed": false
+  },
+  {
+   "id": "kienmayer",
+   "arm": "mixed",
+   "from": "08:00",
+   "to": "12:45",
+   "minutes": 285,
+   "km": 0.64,
+   "kmh": 0.13,
+   "timed": false
+  },
+  {
+   "id": "friant",
+   "arm": "inf",
+   "from": "09:30",
+   "to": "10:30",
+   "minutes": 60,
+   "km": 0.14,
+   "kmh": 0.14,
+   "timed": false
+  },
+  {
+   "id": "bourcier",
+   "arm": "cav",
+   "from": "08:45",
+   "to": "12:45",
+   "minutes": 240,
+   "km": 0.55,
+   "kmh": 0.14,
+   "timed": false
+  },
+  {
+   "id": "drouet",
+   "arm": "inf",
+   "from": "12:45",
+   "to": "17:00",
+   "minutes": 255,
+   "km": 0.63,
+   "kmh": 0.15,
+   "timed": false
+  },
+  {
+   "id": "suchet",
+   "arm": "inf",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 0.41,
+   "kmh": 0.16,
+   "timed": false
+  },
+  {
+   "id": "kollo",
+   "arm": "inf",
+   "from": "08:00",
+   "to": "08:45",
+   "minutes": 45,
+   "km": 0.13,
+   "kmh": 0.17,
+   "timed": false
+  },
+  {
+   "id": "rg_inf",
+   "arm": "guard",
+   "from": "04:00",
+   "to": "10:30",
+   "minutes": 390,
+   "km": 1.12,
+   "kmh": 0.17,
+   "timed": false
+  },
+  {
+   "id": "walther",
+   "arm": "cav",
+   "from": "12:45",
+   "to": "17:00",
+   "minutes": 255,
+   "km": 0.79,
+   "kmh": 0.19,
+   "timed": false
+  },
+  {
+   "id": "rivaud",
+   "arm": "inf",
+   "from": "12:45",
+   "to": "17:00",
+   "minutes": 255,
+   "km": 0.81,
+   "kmh": 0.19,
+   "timed": false
+  },
+  {
+   "id": "guard_inf",
+   "arm": "guard",
+   "from": "14:00",
+   "to": "17:00",
+   "minutes": 180,
+   "km": 0.56,
+   "kmh": 0.19,
+   "timed": false
+  },
+  {
+   "id": "sthilaire",
+   "arm": "inf",
+   "from": "09:30",
+   "to": "10:30",
+   "minutes": 60,
+   "km": 0.2,
+   "kmh": 0.2,
+   "timed": false
+  },
+  {
+   "id": "legrand",
+   "arm": "inf",
+   "from": "15:00",
+   "to": "17:00",
+   "minutes": 120,
+   "km": 0.4,
+   "kmh": 0.2,
+   "timed": false
+  },
+  {
+   "id": "kellermann",
+   "arm": "cav",
+   "from": "04:00",
+   "to": "10:30",
+   "minutes": 390,
+   "km": 1.33,
+   "kmh": 0.2,
+   "timed": false
+  },
+  {
+   "id": "buxhowden",
+   "arm": "hq",
+   "from": "08:00",
+   "to": "12:45",
+   "minutes": 285,
+   "km": 0.98,
+   "kmh": 0.21,
+   "timed": false
+  },
+  {
+   "id": "milo",
+   "arm": "inf",
+   "from": "04:00",
+   "to": "08:00",
+   "minutes": 240,
+   "km": 0.86,
+   "kmh": 0.21,
+   "timed": false
+  },
+  {
+   "id": "c_gren",
+   "arm": "inf",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 0.57,
+   "kmh": 0.23,
+   "timed": false
+  },
+  {
+   "id": "lang",
+   "arm": "inf",
+   "from": "08:00",
+   "to": "10:30",
+   "minutes": 150,
+   "km": 0.58,
+   "kmh": 0.23,
+   "timed": true
+  },
+  {
+   "id": "vandamme",
+   "arm": "inf",
+   "from": "09:30",
+   "to": "11:15",
+   "minutes": 105,
+   "km": 0.41,
+   "kmh": 0.24,
+   "timed": false
+  },
+  {
+   "id": "kollo",
+   "arm": "inf",
+   "from": "04:00",
+   "to": "08:00",
+   "minutes": 240,
+   "km": 0.95,
+   "kmh": 0.24,
+   "timed": false
+  },
+  {
+   "id": "dhautpoul",
+   "arm": "cav",
+   "from": "12:45",
+   "to": "17:00",
+   "minutes": 255,
+   "km": 1.08,
+   "kmh": 0.25,
+   "timed": false
+  },
+  {
+   "id": "prz",
+   "arm": "inf",
+   "from": "08:00",
+   "to": "09:30",
+   "minutes": 90,
+   "km": 0.41,
+   "kmh": 0.27,
+   "timed": false
+  },
+  {
+   "id": "nansouty",
+   "arm": "cav",
+   "from": "04:00",
+   "to": "10:30",
+   "minutes": 390,
+   "km": 1.85,
+   "kmh": 0.28,
+   "timed": false
+  },
+  {
+   "id": "nansouty",
+   "arm": "cav",
+   "from": "12:45",
+   "to": "17:00",
+   "minutes": 255,
+   "km": 1.22,
+   "kmh": 0.29,
+   "timed": false
+  },
+  {
+   "id": "lich",
+   "arm": "cav",
+   "from": "04:00",
+   "to": "08:00",
+   "minutes": 240,
+   "km": 1.17,
+   "kmh": 0.29,
+   "timed": false
+  },
+  {
+   "id": "kellermann",
+   "arm": "cav",
+   "from": "12:45",
+   "to": "17:00",
+   "minutes": 255,
+   "km": 1.3,
+   "kmh": 0.3,
+   "timed": false
+  },
+  {
+   "id": "vandamme",
+   "arm": "inf",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 0.78,
+   "kmh": 0.31,
+   "timed": false
+  },
+  {
+   "id": "dhautpoul",
+   "arm": "cav",
+   "from": "04:00",
+   "to": "10:30",
+   "minutes": 390,
+   "km": 2.04,
+   "kmh": 0.31,
+   "timed": false
+  },
+  {
+   "id": "buxhowden",
+   "arm": "hq",
+   "from": "04:00",
+   "to": "08:00",
+   "minutes": 240,
+   "km": 1.24,
+   "kmh": 0.31,
+   "timed": false
+  },
+  {
+   "id": "walther",
+   "arm": "cav",
+   "from": "04:00",
+   "to": "10:30",
+   "minutes": 390,
+   "km": 2.09,
+   "kmh": 0.32,
+   "timed": false
+  },
+  {
+   "id": "lang",
+   "arm": "inf",
+   "from": "10:30",
+   "to": "12:45",
+   "minutes": 135,
+   "km": 0.8,
+   "kmh": 0.35,
+   "timed": false
+  },
+  {
+   "id": "milo",
+   "arm": "inf",
+   "from": "08:00",
+   "to": "08:45",
+   "minutes": 45,
+   "km": 0.29,
+   "kmh": 0.38,
+   "timed": false
+  },
+  {
+   "id": "lang",
+   "arm": "inf",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 0.98,
+   "kmh": 0.39,
+   "timed": false
+  },
+  {
+   "id": "friant",
+   "arm": "inf",
+   "from": "12:45",
+   "to": "14:30",
+   "minutes": 105,
+   "km": 0.71,
+   "kmh": 0.4,
+   "timed": false
+  },
+  {
+   "id": "caffarelli",
+   "arm": "inf",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 1.02,
+   "kmh": 0.41,
+   "timed": false
+  },
+  {
+   "id": "bag",
+   "arm": "inf",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 1.03,
+   "kmh": 0.41,
+   "timed": false
+  },
+  {
+   "id": "sthilaire",
+   "arm": "inf",
+   "from": "10:30",
+   "to": "11:15",
+   "minutes": 45,
+   "km": 0.32,
+   "kmh": 0.42,
+   "timed": false
+  },
+  {
+   "id": "legrand",
+   "arm": "inf",
+   "from": "07:00",
+   "to": "08:00",
+   "minutes": 60,
+   "km": 0.44,
+   "kmh": 0.44,
+   "timed": false
+  },
+  {
+   "id": "rg_cav",
+   "arm": "cav",
+   "from": "04:00",
+   "to": "11:15",
+   "minutes": 435,
+   "km": 3.23,
+   "kmh": 0.44,
+   "timed": false
+  },
+  {
+   "id": "guard_cav",
+   "arm": "cav",
+   "from": "11:15",
+   "to": "12:45",
+   "minutes": 90,
+   "km": 0.7,
+   "kmh": 0.46,
+   "timed": false
+  },
+  {
+   "id": "kienmayer",
+   "arm": "mixed",
+   "from": "07:00",
+   "to": "08:00",
+   "minutes": 60,
+   "km": 0.46,
+   "kmh": 0.46,
+   "timed": false
+  },
+  {
+   "id": "suchet",
+   "arm": "inf",
+   "from": "11:15",
+   "to": "12:45",
+   "minutes": 90,
+   "km": 0.71,
+   "kmh": 0.47,
+   "timed": false
+  },
+  {
+   "id": "ahq",
+   "arm": "hq",
+   "from": "08:45",
+   "to": "09:30",
+   "minutes": 45,
+   "km": 0.35,
+   "kmh": 0.47,
+   "timed": false
+  },
+  {
+   "id": "lich",
+   "arm": "cav",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 1.18,
+   "kmh": 0.47,
+   "timed": false
+  },
+  {
+   "id": "kamensky",
+   "arm": "inf",
+   "from": "09:30",
+   "to": "10:30",
+   "minutes": 60,
+   "km": 0.49,
+   "kmh": 0.49,
+   "timed": false
+  },
+  {
+   "id": "suchet",
+   "arm": "inf",
+   "from": "12:45",
+   "to": "14:30",
+   "minutes": 105,
+   "km": 0.91,
+   "kmh": 0.52,
+   "timed": false
+  },
+  {
+   "id": "lang",
+   "arm": "inf",
+   "from": "12:45",
+   "to": "14:30",
+   "minutes": 105,
+   "km": 0.92,
+   "kmh": 0.52,
+   "timed": false
+  },
+  {
+   "id": "sthilaire",
+   "arm": "inf",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 1.34,
+   "kmh": 0.54,
+   "timed": false
+  },
+  {
+   "id": "drouet",
+   "arm": "inf",
+   "from": "11:15",
+   "to": "12:45",
+   "minutes": 90,
+   "km": 0.81,
+   "kmh": 0.54,
+   "timed": false
+  },
+  {
+   "id": "rg_cav",
+   "arm": "cav",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 1.36,
+   "kmh": 0.55,
+   "timed": false
+  },
+  {
+   "id": "caffarelli",
+   "arm": "inf",
+   "from": "11:15",
+   "to": "12:45",
+   "minutes": 90,
+   "km": 0.84,
+   "kmh": 0.56,
+   "timed": false
+  },
+  {
+   "id": "rg_inf",
+   "arm": "guard",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 1.39,
+   "kmh": 0.56,
+   "timed": false
+  },
+  {
+   "id": "ahq",
+   "arm": "hq",
+   "from": "11:15",
+   "to": "14:30",
+   "minutes": 195,
+   "km": 1.84,
+   "kmh": 0.57,
+   "timed": false
+  },
+  {
+   "id": "kamensky",
+   "arm": "inf",
+   "from": "08:45",
+   "to": "09:30",
+   "minutes": 45,
+   "km": 0.43,
+   "kmh": 0.57,
+   "timed": false
+  },
+  {
+   "id": "milo",
+   "arm": "inf",
+   "from": "11:15",
+   "to": "14:30",
+   "minutes": 195,
+   "km": 1.84,
+   "kmh": 0.57,
+   "timed": false
+  },
+  {
+   "id": "bag",
+   "arm": "inf",
+   "from": "11:31",
+   "to": "12:45",
+   "minutes": 74,
+   "km": 0.72,
+   "kmh": 0.58,
+   "timed": false
+  },
+  {
+   "id": "kamensky",
+   "arm": "inf",
+   "from": "10:30",
+   "to": "11:15",
+   "minutes": 45,
+   "km": 0.44,
+   "kmh": 0.59,
+   "timed": false
+  },
+  {
+   "id": "bourcier",
+   "arm": "cav",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 1.56,
+   "kmh": 0.62,
+   "timed": false
+  },
+  {
+   "id": "ahq",
+   "arm": "hq",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 1.56,
+   "kmh": 0.62,
+   "timed": false
+  },
+  {
+   "id": "milo",
+   "arm": "inf",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 1.56,
+   "kmh": 0.62,
+   "timed": false
+  },
+  {
+   "id": "kollo",
+   "arm": "inf",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 1.56,
+   "kmh": 0.62,
+   "timed": false
+  },
+  {
+   "id": "kellermann",
+   "arm": "cav",
+   "from": "11:15",
+   "to": "12:45",
+   "minutes": 90,
+   "km": 0.99,
+   "kmh": 0.66,
+   "timed": false
+  },
+  {
+   "id": "bag",
+   "arm": "inf",
+   "from": "12:45",
+   "to": "14:30",
+   "minutes": 105,
+   "km": 1.17,
+   "kmh": 0.67,
+   "timed": false
+  },
+  {
+   "id": "nansouty",
+   "arm": "cav",
+   "from": "11:15",
+   "to": "12:45",
+   "minutes": 90,
+   "km": 1.02,
+   "kmh": 0.68,
+   "timed": false
+  },
+  {
+   "id": "buxhowden",
+   "arm": "hq",
+   "from": "12:45",
+   "to": "14:30",
+   "minutes": 105,
+   "km": 1.19,
+   "kmh": 0.68,
+   "timed": false
+  },
+  {
+   "id": "legrand",
+   "arm": "inf",
+   "from": "04:00",
+   "to": "07:00",
+   "minutes": 180,
+   "km": 2.12,
+   "kmh": 0.71,
+   "timed": false
+  },
+  {
+   "id": "rivaud",
+   "arm": "inf",
+   "from": "09:25",
+   "to": "11:15",
+   "minutes": 110,
+   "km": 1.3,
+   "kmh": 0.71,
+   "timed": false
+  },
+  {
+   "id": "lich",
+   "arm": "cav",
+   "from": "08:45",
+   "to": "10:30",
+   "minutes": 105,
+   "km": 1.26,
+   "kmh": 0.72,
+   "timed": false
+  },
+  {
+   "id": "guard_inf",
+   "arm": "guard",
+   "from": "13:00",
+   "to": "14:00",
+   "minutes": 60,
+   "km": 0.76,
+   "kmh": 0.76,
+   "timed": true
+  },
+  {
+   "id": "kamensky",
+   "arm": "inf",
+   "from": "12:45",
+   "to": "14:30",
+   "minutes": 105,
+   "km": 1.33,
+   "kmh": 0.76,
+   "timed": false
+  },
+  {
+   "id": "buxhowden",
+   "arm": "hq",
+   "from": "14:30",
+   "to": "17:00",
+   "minutes": 150,
+   "km": 2,
+   "kmh": 0.8,
+   "timed": false
+  },
+  {
+   "id": "legrand",
+   "arm": "inf",
+   "from": "14:00",
+   "to": "15:00",
+   "minutes": 60,
+   "km": 0.81,
+   "kmh": 0.81,
+   "timed": true
+  },
+  {
+   "id": "suchet",
+   "arm": "inf",
+   "from": "09:30",
+   "to": "10:30",
+   "minutes": 60,
+   "km": 0.81,
+   "kmh": 0.81,
+   "timed": true
+  },
+  {
+   "id": "ahq",
+   "arm": "hq",
+   "from": "04:00",
+   "to": "08:45",
+   "minutes": 285,
+   "km": 3.87,
+   "kmh": 0.81,
+   "timed": false
+  },
+  {
+   "id": "caffarelli",
+   "arm": "inf",
+   "from": "12:45",
+   "to": "14:30",
+   "minutes": 105,
+   "km": 1.45,
+   "kmh": 0.83,
+   "timed": false
+  },
+  {
+   "id": "rivaud",
+   "arm": "inf",
+   "from": "11:15",
+   "to": "12:45",
+   "minutes": 90,
+   "km": 1.25,
+   "kmh": 0.84,
+   "timed": false
+  },
+  {
+   "id": "kamensky",
+   "arm": "inf",
+   "from": "08:00",
+   "to": "08:45",
+   "minutes": 45,
+   "km": 0.65,
+   "kmh": 0.87,
+   "timed": false
+  },
+  {
+   "id": "walther",
+   "arm": "cav",
+   "from": "10:30",
+   "to": "12:45",
+   "minutes": 135,
+   "km": 2.1,
+   "kmh": 0.93,
+   "timed": false
+  },
+  {
+   "id": "dhautpoul",
+   "arm": "cav",
+   "from": "10:30",
+   "to": "12:45",
+   "minutes": 135,
+   "km": 2.12,
+   "kmh": 0.94,
+   "timed": false
+  },
+  {
+   "id": "kienmayer",
+   "arm": "mixed",
+   "from": "04:00",
+   "to": "07:00",
+   "minutes": 180,
+   "km": 2.83,
+   "kmh": 0.94,
+   "timed": false
+  },
+  {
+   "id": "rg_cav",
+   "arm": "cav",
+   "from": "12:45",
+   "to": "14:30",
+   "minutes": 105,
+   "km": 1.64,
+   "kmh": 0.94,
+   "timed": false
+  },
+  {
+   "id": "lich",
+   "arm": "cav",
+   "from": "12:45",
+   "to": "14:30",
+   "minutes": 105,
+   "km": 1.66,
+   "kmh": 0.95,
+   "timed": false
+  },
+  {
+   "id": "rg_inf",
+   "arm": "guard",
+   "from": "12:45",
+   "to": "14:30",
+   "minutes": 105,
+   "km": 1.68,
+   "kmh": 0.96,
+   "timed": false
+  },
+  {
+   "id": "lich",
+   "arm": "cav",
+   "from": "08:00",
+   "to": "08:45",
+   "minutes": 45,
+   "km": 0.73,
+   "kmh": 0.97,
+   "timed": false
+  },
+  {
+   "id": "lich",
+   "arm": "cav",
+   "from": "11:15",
+   "to": "12:45",
+   "minutes": 90,
+   "km": 1.47,
+   "kmh": 0.98,
+   "timed": false
+  },
+  {
+   "id": "legrand",
+   "arm": "inf",
+   "from": "08:00",
+   "to": "09:30",
+   "minutes": 90,
+   "km": 1.49,
+   "kmh": 0.99,
+   "timed": false
+  }
+ ]
+}

@@ -1,0 +1,343 @@
+{
+ "build": "c4793156103b60bb74151c7d13dbdd9d",
+ "views": {
+  "goldbach-top": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   },
+   "doubleSided": {
+    "stream": 27710,
+    "bank": 41020,
+    "road": 64953,
+    "changed": 164331
+   },
+   "unhidden": {
+    "stream": 26474,
+    "bank": 40941,
+    "road": 66242,
+    "changed": 161719
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  },
+  "goldbach-top-1x": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   },
+   "doubleSided": {
+    "stream": 56106,
+    "bank": 70400,
+    "road": 106899,
+    "changed": 271122
+   },
+   "unhidden": {
+    "stream": 52562,
+    "bank": 70835,
+    "road": 103621,
+    "changed": 270008
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  },
+  "goldbach-top-10x": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   },
+   "doubleSided": {
+    "stream": 28871,
+    "bank": 42685,
+    "road": 64807,
+    "changed": 171086
+   },
+   "unhidden": {
+    "stream": 27748,
+    "bank": 42669,
+    "road": 67949,
+    "changed": 168499
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  },
+  "goldbach-noon": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 132,
+    "changed": 221
+   },
+   "doubleSided": {
+    "stream": 3707,
+    "bank": 6381,
+    "road": 8809,
+    "changed": 27559
+   },
+   "unhidden": {
+    "stream": 3395,
+    "bank": 6547,
+    "road": 5038,
+    "changed": 23163
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  },
+  "goldbach-noon-1x": {
+   "drawn": {
+    "stream": 82,
+    "bank": 654,
+    "road": 0,
+    "changed": 1555
+   },
+   "doubleSided": {
+    "stream": 17036,
+    "bank": 28937,
+    "road": 70636,
+    "changed": 151699
+   },
+   "unhidden": {
+    "stream": 16838,
+    "bank": 30883,
+    "road": 56607,
+    "changed": 144861
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  },
+  "overview-field": {
+   "drawn": {
+    "stream": 0,
+    "bank": 2,
+    "road": 0,
+    "changed": 3
+   },
+   "doubleSided": {
+    "stream": 5236,
+    "bank": 9752,
+    "road": 27518,
+    "changed": 66669
+   },
+   "unhidden": {
+    "stream": 5243,
+    "bank": 9773,
+    "road": 25989,
+    "changed": 64893
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  },
+  "village-sokolnitz": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 56,
+    "changed": 107
+   },
+   "doubleSided": {
+    "stream": 32057,
+    "bank": 4642,
+    "road": 12316,
+    "changed": 76107
+   },
+   "unhidden": {
+    "stream": 20743,
+    "bank": 3013,
+    "road": 8788,
+    "changed": 61559
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  },
+  "village-telnitz": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   },
+   "doubleSided": {
+    "stream": 6117,
+    "bank": 4617,
+    "road": 147446,
+    "changed": 167264
+   },
+   "unhidden": {
+    "stream": 4367,
+    "bank": 3149,
+    "road": 142175,
+    "changed": 158041
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  },
+  "close-sokolnitz": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 2,
+    "changed": 2
+   },
+   "doubleSided": {
+    "stream": 11236,
+    "bank": 7950,
+    "road": 20700,
+    "changed": 68438
+   },
+   "unhidden": {
+    "stream": 10235,
+    "bank": 7395,
+    "road": 19091,
+    "changed": 62941
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  },
+  "stream-low": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 2924,
+    "changed": 3452
+   },
+   "doubleSided": {
+    "stream": 851,
+    "bank": 1628,
+    "road": 56656,
+    "changed": 74001
+   },
+   "unhidden": {
+    "stream": 73,
+    "bank": 1511,
+    "road": 49733,
+    "changed": 65585
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  },
+  "pratzen-low": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 1
+   },
+   "doubleSided": {
+    "stream": 17413,
+    "bank": 20182,
+    "road": 37843,
+    "changed": 97537
+   },
+   "unhidden": {
+    "stream": 17068,
+    "bank": 19991,
+    "road": 34225,
+    "changed": 92873
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  },
+  "paper-north-up": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 5
+   },
+   "doubleSided": {
+    "stream": 2294,
+    "bank": 1146,
+    "road": 6329,
+    "changed": 10985
+   },
+   "unhidden": {
+    "stream": 1670,
+    "bank": 870,
+    "road": 4550,
+    "changed": 8170
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  },
+  "paper-close": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   },
+   "doubleSided": {
+    "stream": 36935,
+    "bank": 29108,
+    "road": 36086,
+    "changed": 119147
+   },
+   "unhidden": {
+    "stream": 20479,
+    "bank": 14237,
+    "road": 23219,
+    "changed": 66182
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  }
+ }
+}

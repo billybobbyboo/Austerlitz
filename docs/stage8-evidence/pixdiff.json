@@ -1,0 +1,375 @@
+{
+ "threshold": 40,
+ "pairs": {
+  "figures/inf-front/f-kit": {
+   "pixels": 18471,
+   "share": 0.01283,
+   "bbox": [
+    661,
+    217,
+    1393,
+    806
+   ]
+  },
+  "figures/inf-front/f-facings": {
+   "pixels": 27038,
+   "share": 0.01878,
+   "bbox": [
+    661,
+    217,
+    1393,
+    806
+   ]
+  },
+  "figures/cav-front/f-kit": {
+   "pixels": 3649,
+   "share": 0.00253,
+   "bbox": [
+    19,
+    0,
+    1097,
+    439
+   ]
+  },
+  "figures/bat-front/f-kit": {
+   "pixels": 36182,
+   "share": 0.02513,
+   "bbox": [
+    376,
+    7,
+    1599,
+    807
+   ]
+  },
+  "figures/bat-march/f-kit": {
+   "pixels": 114821,
+   "share": 0.07974,
+   "bbox": [
+    0,
+    116,
+    1318,
+    807
+   ]
+  },
+  "figures-close/inf-close/f-kit": {
+   "pixels": 7805,
+   "share": 0.00542,
+   "bbox": [
+    670,
+    136,
+    1240,
+    807
+   ]
+  },
+  "figures-close/cav-close/f-kit": {
+   "pixels": 2590,
+   "share": 0.0018,
+   "bbox": [
+    529,
+    219,
+    996,
+    458
+   ]
+  },
+  "figures-close/bat-deployed/f-kit": {
+   "pixels": 72582,
+   "share": 0.0504,
+   "bbox": [
+    316,
+    70,
+    1599,
+    807
+   ]
+  },
+  "figures-close/bat-limbered/f-kit": {
+   "pixels": 77026,
+   "share": 0.05349,
+   "bbox": [
+    0,
+    171,
+    1396,
+    807
+   ]
+  },
+  "arrows/pratzen-low/a-cap": {
+   "pixels": 22582,
+   "share": 0.01568,
+   "bbox": [
+    223,
+    329,
+    1065,
+    807
+   ]
+  },
+  "arrows/pratzen-low/a-soft": {
+   "pixels": 23447,
+   "share": 0.01628,
+   "bbox": [
+    223,
+    329,
+    1065,
+    807
+   ]
+  },
+  "arrows/pratzen-low/a-calm": {
+   "pixels": 26949,
+   "share": 0.01871,
+   "bbox": [
+    223,
+    294,
+    1065,
+    807
+   ]
+  },
+  "arrows/inf-mid/a-cap": {
+   "pixels": 18244,
+   "share": 0.01267,
+   "bbox": [
+    0,
+    120,
+    679,
+    432
+   ]
+  },
+  "arrows/inf-mid/a-soft": {
+   "pixels": 18892,
+   "share": 0.01312,
+   "bbox": [
+    0,
+    120,
+    679,
+    432
+   ]
+  },
+  "arrows/inf-mid/a-calm": {
+   "pixels": 28073,
+   "share": 0.0195,
+   "bbox": [
+    0,
+    1,
+    1097,
+    432
+   ]
+  },
+  "arrows/close-sokolnitz/a-cap": {
+   "pixels": 12668,
+   "share": 0.0088,
+   "bbox": [
+    169,
+    0,
+    1321,
+    593
+   ]
+  },
+  "arrows/close-sokolnitz/a-soft": {
+   "pixels": 14503,
+   "share": 0.01007,
+   "bbox": [
+    169,
+    0,
+    1322,
+    593
+   ]
+  },
+  "arrows/close-sokolnitz/a-calm": {
+   "pixels": 21219,
+   "share": 0.01474,
+   "bbox": [
+    169,
+    0,
+    1322,
+    593
+   ]
+  },
+  "water/ice-mid/w-ice": {
+   "pixels": 75104,
+   "share": 0.05216,
+   "bbox": [
+    411,
+    118,
+    1526,
+    807
+   ]
+  },
+  "water/ice-high/w-ice": {
+   "pixels": 87394,
+   "share": 0.06069,
+   "bbox": [
+    0,
+    214,
+    1213,
+    550
+   ]
+  },
+  "water/ph8-overview-watch/w-ice": {
+   "pixels": 7163,
+   "share": 0.00497,
+   "bbox": [
+    606,
+    639,
+    887,
+    748
+   ]
+  },
+  "water/goldbach-top/w-stream": {
+   "pixels": 94326,
+   "share": 0.0655,
+   "bbox": [
+    680,
+    0,
+    1259,
+    703
+   ]
+  },
+  "water/goldbach-top/w-streamice": {
+   "pixels": 104654,
+   "share": 0.07268,
+   "bbox": [
+    680,
+    0,
+    1579,
+    807
+   ]
+  },
+  "water/goldbach-noon/w-stream": {
+   "pixels": 9553,
+   "share": 0.00663,
+   "bbox": [
+    0,
+    131,
+    1301,
+    467
+   ]
+  },
+  "water/goldbach-noon/w-streamice": {
+   "pixels": 9982,
+   "share": 0.00693,
+   "bbox": [
+    0,
+    144,
+    1301,
+    467
+   ]
+  },
+  "buildings/village-telnitz/b-village": {
+   "pixels": 13864,
+   "share": 0.00963,
+   "bbox": [
+    247,
+    0,
+    1323,
+    586
+   ]
+  },
+  "buildings/village-telnitz/b-landmarks": {
+   "pixels": 18523,
+   "share": 0.01286,
+   "bbox": [
+    247,
+    0,
+    1323,
+    586
+   ]
+  },
+  "buildings/village-pratzen/b-village": {
+   "pixels": 88517,
+   "share": 0.06147,
+   "bbox": [
+    137,
+    0,
+    1333,
+    531
+   ]
+  },
+  "buildings/village-pratzen/b-landmarks": {
+   "pixels": 88517,
+   "share": 0.06147,
+   "bbox": [
+    137,
+    0,
+    1333,
+    531
+   ]
+  },
+  "buildings/village-sokolnitz/b-village": {
+   "pixels": 42871,
+   "share": 0.02977,
+   "bbox": [
+    51,
+    0,
+    1256,
+    806
+   ]
+  },
+  "buildings/village-sokolnitz/b-landmarks": {
+   "pixels": 95890,
+   "share": 0.06659,
+   "bbox": [
+    52,
+    0,
+    1256,
+    806
+   ]
+  },
+  "buildings/overview-field/b-village": {
+   "pixels": 17384,
+   "share": 0.01207,
+   "bbox": [
+    322,
+    253,
+    1513,
+    809
+   ]
+  },
+  "buildings/overview-field/b-landmarks": {
+   "pixels": 18519,
+   "share": 0.01286,
+   "bbox": [
+    322,
+    253,
+    1513,
+    809
+   ]
+  },
+  "buildings/bat-chapel/b-village": {
+   "pixels": 12171,
+   "share": 0.00845,
+   "bbox": [
+    448,
+    45,
+    1440,
+    416
+   ]
+  },
+  "buildings/bat-chapel/b-landmarks": {
+   "pixels": 12634,
+   "share": 0.00877,
+   "bbox": [
+    448,
+    45,
+    1440,
+    416
+   ]
+  },
+  "buildings/woods-pheasantry/b-village": {
+   "pixels": 10005,
+   "share": 0.00695,
+   "bbox": [
+    139,
+    0,
+    1226,
+    803
+   ]
+  },
+  "buildings/woods-pheasantry/b-landmarks": {
+   "pixels": 23801,
+   "share": 0.01653,
+   "bbox": [
+    135,
+    0,
+    1226,
+    803
+   ]
+  }
+ }
+}

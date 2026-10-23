@@ -1,0 +1,158 @@
+{
+ "build": "c4793156103b60bb74151c7d13dbdd9d",
+ "views": {
+  "pratzen-low": {
+   "base": {
+    "calls": 758,
+    "tris": 2480181,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4
+   },
+   "a-cap": {
+    "info": {
+     "kind": "a-cap"
+    },
+    "calls": 758,
+    "tris": 2480001,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   },
+   "a-soft": {
+    "info": {
+     "kind": "a-soft"
+    },
+    "calls": 758,
+    "tris": 2480001,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   },
+   "a-calm": {
+    "info": {
+     "kind": "a-calm"
+    },
+    "calls": 758,
+    "tris": 2480001,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   }
+  },
+  "inf-mid": {
+   "base": {
+    "calls": 737,
+    "tris": 2481029,
+    "items": 61,
+    "placed": 18,
+    "dropped": 1
+   },
+   "a-cap": {
+    "info": {
+     "kind": "a-cap"
+    },
+    "calls": 737,
+    "tris": 2480727,
+    "items": 61,
+    "placed": 18,
+    "dropped": 1,
+    "restored": true
+   },
+   "a-soft": {
+    "info": {
+     "kind": "a-soft"
+    },
+    "calls": 737,
+    "tris": 2480727,
+    "items": 61,
+    "placed": 18,
+    "dropped": 1,
+    "restored": true
+   },
+   "a-calm": {
+    "info": {
+     "kind": "a-calm"
+    },
+    "calls": 737,
+    "tris": 2480727,
+    "items": 61,
+    "placed": 18,
+    "dropped": 1,
+    "restored": true
+   }
+  },
+  "close-sokolnitz": {
+   "base": {
+    "calls": 781,
+    "tris": 2478159,
+    "items": 63,
+    "placed": 19,
+    "dropped": 2
+   },
+   "a-rebuild": {
+    "info": {
+     "kind": "a-rebuild"
+    },
+    "calls": 781,
+    "tris": 2478149,
+    "items": 63,
+    "placed": 19,
+    "dropped": 2,
+    "restored": false,
+    "after": {
+     "calls": 781,
+     "tris": 2478149
+    }
+   },
+   "a-cap": {
+    "info": {
+     "kind": "a-cap"
+    },
+    "calls": 778,
+    "tris": 2477621,
+    "items": 63,
+    "placed": 19,
+    "dropped": 2,
+    "restored": false,
+    "after": {
+     "calls": 781,
+     "tris": 2478149
+    }
+   },
+   "a-soft": {
+    "info": {
+     "kind": "a-soft"
+    },
+    "calls": 778,
+    "tris": 2477621,
+    "items": 63,
+    "placed": 19,
+    "dropped": 2,
+    "restored": false,
+    "after": {
+     "calls": 781,
+     "tris": 2478149
+    }
+   },
+   "a-calm": {
+    "info": {
+     "kind": "a-calm"
+    },
+    "calls": 778,
+    "tris": 2477621,
+    "items": 63,
+    "placed": 19,
+    "dropped": 2,
+    "restored": false,
+    "after": {
+     "calls": 781,
+     "tris": 2478149
+    }
+   }
+  }
+ }
+}

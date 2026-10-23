@@ -1,0 +1,185 @@
+{
+ "build": "c4793156103b60bb74151c7d13dbdd9d",
+ "cases": {
+  "1600x900-study": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 809,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "toastOpacity": 1,
+   "toastZ": "40",
+   "switchBox": {
+    "x": 714,
+    "y": 14,
+    "w": 171,
+    "h": 34
+   },
+   "switchOpacity": 1,
+   "switchZ": "42",
+   "switchPosition": "fixed",
+   "overlap": {
+    "w": 77,
+    "h": 22,
+    "px": 1685,
+    "shareOfToast": 0.176
+   },
+   "timerCleared": true
+  },
+  "1600x900-watch": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 809,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "toastOpacity": 1,
+   "toastZ": "40",
+   "switchBox": {
+    "x": 1153,
+    "y": 811,
+    "w": 171,
+    "h": 34
+   },
+   "switchOpacity": 1,
+   "switchZ": "42",
+   "switchPosition": "static",
+   "overlap": {
+    "w": 0,
+    "h": 0,
+    "px": 0,
+    "shareOfToast": 0
+   },
+   "timerCleared": true
+  },
+  "1366x768-study": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 692,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "toastOpacity": 1,
+   "toastZ": "40",
+   "switchBox": {
+    "x": 597,
+    "y": 14,
+    "w": 171,
+    "h": 34
+   },
+   "switchOpacity": 1,
+   "switchZ": "42",
+   "switchPosition": "fixed",
+   "overlap": {
+    "w": 77,
+    "h": 22,
+    "px": 1685,
+    "shareOfToast": 0.176
+   },
+   "timerCleared": true
+  },
+  "1366x768-watch": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 692,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "toastOpacity": 1,
+   "toastZ": "40",
+   "switchBox": {
+    "x": 919,
+    "y": 679,
+    "w": 171,
+    "h": 34
+   },
+   "switchOpacity": 1,
+   "switchZ": "42",
+   "switchPosition": "static",
+   "overlap": {
+    "w": 55,
+    "h": 0,
+    "px": 0,
+    "shareOfToast": 0
+   },
+   "timerCleared": true
+  },
+  "1280x720-study": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 649,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "toastOpacity": 1,
+   "toastZ": "40",
+   "switchBox": {
+    "x": 554,
+    "y": 14,
+    "w": 171,
+    "h": 34
+   },
+   "switchOpacity": 1,
+   "switchZ": "42",
+   "switchPosition": "fixed",
+   "overlap": {
+    "w": 77,
+    "h": 22,
+    "px": 1685,
+    "shareOfToast": 0.176
+   },
+   "timerCleared": true
+  },
+  "1280x720-watch": {
+   "clock": 525,
+   "phase": 3,
+   "text": "The sun of Austerlitz, as memoirs call it",
+   "toastOn": true,
+   "toast": {
+    "x": 649,
+    "y": 26,
+    "w": 282,
+    "h": 34
+   },
+   "toastOpacity": 1,
+   "toastZ": "40",
+   "switchBox": {
+    "x": 833,
+    "y": 631,
+    "w": 171,
+    "h": 34
+   },
+   "switchOpacity": 1,
+   "switchZ": "42",
+   "switchPosition": "static",
+   "overlap": {
+    "w": 98,
+    "h": 0,
+    "px": 0,
+    "shareOfToast": 0
+   },
+   "timerCleared": true
+  }
+ }
+}

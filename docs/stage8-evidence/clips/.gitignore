@@ -1,0 +1,7 @@
+# record.js also writes each variant on its own and GIFs; only each clip's stacked comparison is kept (the evidence README)
+*.gif
+*-base.mp4
+*-figures_*.mp4
+*-labels_*.mp4
+*-water_*.mp4
+!inf-march-4x-figures_f-gait.mp4

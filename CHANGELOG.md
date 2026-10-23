@@ -1,5 +1,80 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 8 Part A: appearance and motion, the specification (the owner's notes L1-L5)
+
+**Status: written on `claude/festive-wozniak-vsbtqr` (draft PR #64), for review. No source file, no data file and no build changed:**
+`austerlitz-command-map.html` 2,220,714 bytes, md5 `c4793156103b60bb74151c7d13dbdd9d` (decision 236's build, unchanged). Begun from `main` at
+`9eb7abb` (PR #63 merged). On 23 October 2026 the owner asked for Stage 8, appearance and motion, beginning with its Part A: the owner's notes
+L1-L5 (`docs/ROADMAP.md`) and five further opportunities, the current state measured, reversible prototypes in the live page, a plan of
+manageable PRs and one list of owner decisions. The specification is `docs/STAGE8_SPEC.md`, the evidence `docs/stage8-evidence/` (its README
+names each file's script), the probes and prototypes `tools/stage8/` (not bundled). The nine photographs the brief names did not reach the
+session; the assessment rests on direct captures of the build instead.
+
+- **What the build draws (§1, fact, measured).** 30 views captured from the unchanged build, each with its draw calls, triangles and map-layer
+  counts, and what each class of mark covers on screen (`density.js`): at a distance the confidence marks are what is seen of a formation;
+  close up the arrows, the 192-px glyph rings, the C marks and the plain standards outweigh the troops; the guns are the weakest drawing;
+  nothing moves within a formation; the meres are flat plates; the streams and the roads are not drawn at all (§9.5); every house is the same
+  box.
+- **L1, the ground under the troops (§2, question 239).** Five alternatives prototyped in seven views (`protos/ground.js`); recommended, a thin
+  cased outline of each footprint in its side's colour, "Position confidence" an optional layer off by default on the landscape (it would
+  supersede decision 85 there, restyle 87 and 107, keep 86, 88 and 91 and 1x).
+- **L2, labels in motion (§3, question 240).** 16 motions on both map types, every item's place after every frame (`label-motion.js`): the
+  build 4,003 jumps (1,549 of counters), 791 pops, 165 level-of-detail switches; six stabilisers prototyped; recommended, a layout held while
+  the view moves, a level-of-detail band released at rest and short fades: 249 jumps (19 of counters), no overlap among live items, a view
+  reached without motion laid out exactly as today; its cost, more pops (1,156: items faded out while the view moves come back at rest),
+  softened by the fades, not removed. Recorded in the paper map's Play (`clips/paper-play.mp4`, `clip-motion.py`): the build reshuffles the
+  layer five times in twenty clock minutes, seven counters at once at 09:02; the prototype holds it between two moments when it must
+  change (an event's label appearing at 09:07:30, and 09:17), and then ten counters fade out and back in elsewhere over a few frames,
+  two or three at a time, where the build moves them in one.
+- **L3, troops and motion (§4, questions 242-245).** A richer kit on three representatives (`protos/figures.js`) and its cost counted
+  (`kit-census.js`: a man 204 to 344 triangles, a rider and his horse 288 to 592; on every formation an estimated 34-52% more triangles in the
+  4x frame, so only with culling, a lighter kit and the rich kit near the eye); a gait locked to the clock and checked (`gait-check.js`);
+  52 of the model's 147 legs drift at under 1 km/h for two hours or more (`legs.js`; decision 45); the artillery's sources read as leads;
+  facings kept out (decision 104). Recorded at ½x (`clips/`), the gait reads as marching and the teams as drawing their guns; at 4x the
+  prototype fades each part on its own, so a formation's officers can step on a slow leg while its infantry glide: built, a formation
+  fades as one.
+- **Found in the build (§9.5, question 253).** The landscape draws none of its road, stream or bank ribbons: `world.js`'s `ribbon()` winds
+  their triangles facing down and the materials are front-sided, so the renderer culls them (`stream-vis.js`: 0 pixels as built, or nearly,
+  in every view probed, the paper map's included; tens of thousands once double-sided); what a visitor sees of a road or a stream is the
+  ground's cover class under it, and the bright line along the Goldbach in the morning is Legrand's line of battle. The self-test's 2F check of the ribbons is geometric and cannot see it.
+  Proposed for 8A: the ribbons wound facing up, and the check made able to fail. Found too (§9.6, `toast.js`): in Study the one phase
+  message ("The sun of Austerlitz, as memoirs call it") stands with its first words under the view switch at every size measured; for 8H.
+- **L4, water (§5, question 246); L5, buildings (§6, question 248); further (§7, questions 241, 247).** The meres stay ice, varied; the streams,
+  once drawn, darker and still, no stream ice, no flow; the villages re-laid on the cadastre's pattern, the landmarks after an evidence step; the
+  arrows capped on screen and hidden by the ground alone, the glyphs at 64 px, airier woods, a detail layer near the eye.
+- **Performance (§8, questions 249, 250); carried findings (§9, question 251).** Budgets stated before anything is built; block culling first;
+  the effects-off question as a bracketed run. The three carried findings are all still present (under a reading, "Centre the map here"
+  goes to the true position of four formations the reading does not know; the dossier's sources at its end; a timeline tip kept after its
+  element is activated), checked by real clicks, keys and taps (`carried.js`).
+- **The plan (§10, question 252):** PRs 8A-8H, each with its benefit, systems, evidence, performance and acceptance; nothing implemented here.
+- **Reviewed three times (§12.4).** Independent readers checked the text against the evidence and the code (23 findings, then 15 on
+  what was written after, then 7 on the text written after the second); each finding is fixed or recorded. The second found that the
+  recorder set the clock with `force`, rebuilding the overlays every frame: the five clock-driven clips were recorded again as Play sets
+  the clock. The third found the prototype's Play described as steadier than it is, and the gait's 1 km/h floor stated as prototyped
+  (it is proposed: the prototype swings Nansouty's 0.28 km/h drift).
+- **Tools (`tools/stage8/`, not bundled):** `views.js`, `lib.js`, `stills.js`, `label-motion.js`, `label-far.js`, `density.js`, `record.js`,
+  `kit-census.js`, `carried.js`, `gait-check.js`, `legs.js`, `stream-vis.js`, `toast.js`, `pixdiff.py`, `clip-motion.py`, `sheets.py` and the in-page prototypes `protos/`
+  (ground, labels, figures, water, buildings, arrows), each prototype put into the live page and removed after its frame, its removal checked
+  (69 of 72 removals equal; the other three the build's own rebuild of its overlays, §7.1). Faults of the prototypes and probes found on the
+  way (among them the ice drawn black without the atmosphere's uniforms, the kit's horse colour, the arrow cap behind the eye, the stream-ice
+  variant's shared program, the stream probe's first colour test) were fixed, each recorded where it bears, and their evidence taken again. **Evidence (`docs/stage8-evidence/`, 198 files, 52.7 MB):**
+  the README names each file's script.
+
+**Owner questions 239-253** (`docs/STAGE8_SPEC.md` §11), each with its options, a recommendation, what it supersedes and its cost; the next
+owner decision is 239.
+
+**Verified (on the final tree):** `npm test`: all nine suites and the height guard pass (5 min 23 s; no warning
+unacknowledged, `console.warn` 0); `check:baseline` passes on the unchanged build; `check:data` 131 of 131 declarations byte-identical to
+`archive/step5c-45f8f662.html`; `check:chronology` 0 errors. Every probe run to its end on the build above; each prototype's removal
+checked (69 of 72 removals equal in draw calls and triangles, the other three the build's own rebuild of its overlays; the ribbon probe's
+paint undone with no pixel changed by more than 40 of 255). `check:visual` not re-run: nothing in the build changed. CI (the build check, the suite, `check:data`,
+`check:chronology`, `check:contrast` and the self-test) runs on every push of the branch.
+
+**Uncertain or not verified:** every frame time (the container has no GPU: the times here are the layout's CPU time or software WebGL's, and
+the budgets of §8.3 are counts until the owner's devices run the route); Safari and real touch; the sources of the leads register, read by a
+machine reader in this session (none by a person) and entered nowhere: they are leads for the evidence steps of 8E, 8F and 8G; that the
+roads and streams were never drawn in earlier builds (read from their code, not drawn and counted); the photographs.
+
 ## 2026-10 · Roadmap step 6 item 1: P5, the phone with decision 236's change; step 6 done
 
 **Status: records only, on `claude/upbeat-hamilton-y9utq8` (begun again from `main` at `b04e150`, #62 merged). No source file, no data file
