@@ -1,0 +1,23 @@
+# record.js's report of each variant of the kept clips (docs/stage8-evidence/README.md): the clip, the variant, the frames, the wall time
+# taken here (software WebGL, other jobs sharing the machine: not a frame time), the file, the clock at the last frame, and for a gait
+# variant the cycles a real second the gait drew at the last frame for each of the three formations it is put on (hz; for a formation
+# with mounted officers, theirs: the last part updated). The camera-driven clips (paper-zoom, hybrid-orbit, hybrid-zoom) were recorded
+# once; the clock-driven ones (inf-march, cav-move, inf-march-4x, bat-limber, paper-play) again after the recorder set the clock as Play
+# does (section 12.4); stream-flow from straight above the Goldbach.
+paper-zoom base frames 31 in 413 s -> docs/stage8-evidence/clips/paper-zoom-base.mp4 {"clock":570,"hz":null}
+paper-zoom labels:l-fade frames 31 in 520 s -> docs/stage8-evidence/clips/paper-zoom-labels_l-fade.mp4 {"clock":570,"hz":null}
+hybrid-orbit base frames 31 in 811 s -> docs/stage8-evidence/clips/hybrid-orbit-base.mp4 {"clock":570,"hz":null}
+hybrid-orbit labels:l-fade frames 31 in 795 s -> docs/stage8-evidence/clips/hybrid-orbit-labels_l-fade.mp4 {"clock":570,"hz":null}
+hybrid-zoom base frames 31 in 790 s -> docs/stage8-evidence/clips/hybrid-zoom-base.mp4 {"clock":570,"hz":null}
+hybrid-zoom labels:l-fade frames 31 in 558 s -> docs/stage8-evidence/clips/hybrid-zoom-labels_l-fade.mp4 {"clock":570,"hz":null}
+inf-march base frames 37 in 1313 s -> docs/stage8-evidence/clips/inf-march-base.mp4 {"clock":545,"hz":null}
+inf-march figures:f-gait frames 37 in 1067 s -> docs/stage8-evidence/clips/inf-march-figures_f-gait.mp4 {"clock":545,"hz":{"sthilaire":0.82,"nansouty":0.05,"heightguns":0}}
+inf-march-4x figures:f-gait frames 11 in 703 s -> docs/stage8-evidence/clips/inf-march-4x-figures_f-gait.mp4 {"clock":567,"hz":{"sthilaire":3.33,"nansouty":0.38,"heightguns":0}}
+cav-move base frames 37 in 1600 s -> docs/stage8-evidence/clips/cav-move-base.mp4 {"clock":647,"hz":null}
+cav-move figures:f-gait-gc frames 37 in 1209 s -> docs/stage8-evidence/clips/cav-move-figures_f-gait-gc.mp4 {"clock":647,"hz":{"sthilaire":0.07,"guard_cav":0.8,"heightguns":0}}
+bat-limber base frames 33 in 1205 s -> docs/stage8-evidence/clips/bat-limber-base.mp4 {"clock":838,"hz":null}
+bat-limber figures:f-gait frames 33 in 1294 s -> docs/stage8-evidence/clips/bat-limber-figures_f-gait.mp4 {"clock":838,"hz":{"sthilaire":0.27,"nansouty":0.05,"heightguns":0.7}}
+paper-play base frames 41 in 645 s -> docs/stage8-evidence/clips/paper-play-base.mp4 {"clock":560,"hz":null}
+paper-play labels:l-fade frames 41 in 534 s -> docs/stage8-evidence/clips/paper-play-labels_l-fade.mp4 {"clock":560,"hz":null}
+stream-flow water:w-stream frames 31 in 480 s -> docs/stage8-evidence/clips/stream-flow-water_w-stream.mp4 {"clock":720,"hz":null}
+stream-flow water:w-flow frames 31 in 468 s -> docs/stage8-evidence/clips/stream-flow-water_w-flow.mp4 {"clock":720,"hz":null}

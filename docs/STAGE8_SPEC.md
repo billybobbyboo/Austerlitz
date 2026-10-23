@@ -1,9 +1,6 @@
 # Appearance and motion: specification (Stage 8, Part A)
 
-> **In progress (a working commit).** Placeholders written `[[NAME]]` mark results still being measured; this note goes when they are
-> filled. Nothing below is decided.
-
-**Status: Part A, written for review on `claude/festive-wozniak-vsbtqr` (draft PR). No source file, no data file and no build changed:**
+**Status: Part A, written for review on `claude/festive-wozniak-vsbtqr` (draft PR #64). No source file, no data file and no build changed:**
 `check:baseline` passes on the unchanged build (`austerlitz-command-map.html`, 2,220,714 bytes, md5 `c4793156103b60bb74151c7d13dbdd9d`) and
 `check:data` finds 131 of 131 declarations identical to `archive/step5c-45f8f662.html`. Written against `main` at `9eb7abb` (PR #63 merged);
 line numbers refer to that commit; the code is the source of truth. The owner's questions begin at 239 (section 11); nothing in this document
@@ -346,9 +343,12 @@ is drawn; the map layer's items and drops unchanged in every view.
 
 ### 3.2 Measured (`tools/stage8/label-motion.js`; `docs/stage8-evidence/label-motion*.json`)
 
-The probe drives the app's own camera functions one 30 fps frame at a time (a pan of 8 px a frame, a zoom of 3% a frame in and then out, an orbit of
-6 px a frame, a glide by the app's own arc, Play at ½x with Follow from 09:00) in four views at 1600 x 900 in Study (Landscape with counters and the
-landscape from the Field vantage at 09:30, the low Pratzen view at 09:50, the paper map as entered at 09:30), runs the frame's state pass and the map layer's pass as a
+The probe drives the app's own camera functions one 30 fps frame at a time (a pan of 8 px a frame, a zoom of 3% a frame in and then out, an
+orbit of
+6 px a frame, a glide by the app's own arc, Play at ½x with Follow from 09:00) in four views at 1600 x 900 in Study (Landscape with counters
+and the
+landscape from the Field vantage at 09:30, the low Pratzen view at 09:50, the paper map as entered at 09:30), runs the frame's state pass
+and the map layer's pass as a
 drawn frame does, and reads every item's state and box after each frame: 16 motions, 40,715 item-frames (an item in view in two successive
 frames). A **jump** is an item drawn in both frames whose box moved more than 3 px against its own anchor (it took another place); a **pop**
 an item in view in both frames that went from drawn to dropped or hidden, or back; a **level-of-detail switch** an item entering or leaving
@@ -357,12 +357,14 @@ counts here too, though not as a pop); an **overlap** two drawn boxes overlappin
 layer's rule is none).
 
 **The build (stabiliser "none").** 4,003 jumps in 40,715 item-frames (9.8 per 100; in the zooms of Landscape with
-counters and the paper map, 8 or 9 of the 26-36 items in view change place in every frame), 791 pops (1.9 per 100), 165 level-of-detail switches, 232 flickers, no overlap. The worst
+counters and the paper map, 8 or 9 of the 26-36 items in view change place in every frame), 791 pops (1.9 per 100), 165 level-of-detail
+switches, 232 flickers, no overlap. The worst
 motions are the zooms and orbits: the paper map's zoom 572 jumps (27 per 100 item-frames), Landscape with counters' zoom 519 and orbit 490,
 the landscape's orbit 438, the glides 283-372; Play is quieter but not still (Landscape with counters 245, the landscape 205, the paper map
 117). By kind: counters 1,549 jumps, the arrows' labels 1,013, the landscape's names 965, the objective markers 223, places 156, the plateau
 reading 80, events 17; the places pop most (468: the major/minor range at 210 units and the ground's occlusion). One pan from the Field
-vantage swaps the division counters for their corps' (23 counters entering or leaving at once, `hybrid-pan`; the 250-unit switch 3% away). The layer's pass took a median
+vantage swaps the division counters for their corps' (23 counters entering or leaving at once, `hybrid-pan`; the 250-unit switch 3% away).
+The layer's pass took a median
 1.1-3.0 ms per frame and a 95th percentile 1.8-12.3 ms (CPU in this page; a single frame's maximum, up to 313 ms, varies between runs of the
 same motion without pattern, 123.9 ms in one run of the orbit with anchor2+band and 2.6 ms in the next, and is read as the page's own
 pauses, not the layout).
@@ -404,7 +406,8 @@ banded columns are `label-motion-rest.json`'s):
 
 ### 3.3 The stabilisers
 
-The six stabilisers (with the build, seven variants) keep the layer's rules as they stand at rest (priority order, the never-dropped items, panels and arrow heads as obstacles, leader
+The six stabilisers (with the build, seven variants) keep the layer's rules as they stand at rest (priority order, the never-dropped items,
+panels and arrow heads as obstacles, leader
 lines, occlusion, the full solve when the view stops); they differ only in what a frame of motion may do:
 
 - **persist**: each item first tries the place it held in the last frame (its box against its anchor), then the build's own search. It halves
@@ -425,9 +428,11 @@ lines, occlusion, the full solve when the view stops); they differ only in what 
 - **anchor2**: anchor, but an item whose held place is taken first tries the eight places hugging its own anchor (the build's first
   candidates, no rings, so it never leaves its anchor's side), and a hidden item comes back only after two re-placement passes with room.
   The jumps fall to 247 (94% fewer; while the view moves, an item that is not one of the never-dropped ones moves only to a place beside
-  its own anchor, by the rule (the probe does not record how far an item moved), and the solve at rest after each motion makes the rest: counters 19
-  against the build's 1,549), the pops to 1,143 (45% more than the build's, 36% fewer than anchor's), the flicker below the build's (162).
-- **anchor2+band**: anchor2 with persist+hold's level-of-detail band. The band moves the level-of-detail switches to the moment the view stops; the rest as anchor2: 249 jumps (counters 19), 1,156 pops,
+  its own anchor, by the rule (the probe does not record how far an item moved), and the solve at rest after each motion makes the rest:
+  counters 19 against the build's 1,549), the pops to 1,143 (45% more than the build's, 36% fewer than anchor's), the flicker below the
+  build's (162).
+- **anchor2+band**: anchor2 with persist+hold's level-of-detail band. The band moves the level-of-detail switches to the moment the view
+  stops; the rest as anchor2: 249 jumps (counters 19), 1,156 pops,
   171 flickers, no overlap. About a fifth fewer items are drawn while the view moves (366 against 471, the medians summed); at rest they
   come back (76 items appear or leave in the frame after the motion, and 45 take a new place there), which the fades below soften.
 
@@ -437,8 +442,18 @@ under reduced motion. It changes no placement, so the probe's counts are those o
 (`clips/paper-zoom.mp4`, `clips/hybrid-orbit.mp4`, `clips/hybrid-zoom.mp4`, `clips/paper-play.mp4`: the build above, `l-fade` below,
 the same frames at 10 a second). In the paper map's zoom the build's counters and names change places from one frame to the next; with
 the prototype they hold their places, and those whose place is taken fade out and come back a few frames later, so that fewer are drawn
-while the zoom runs (the table's "items drawn while moving"). [[PAPER-PLAY]] Orbiting the Field vantage in Landscape with counters (`hybrid-orbit.mp4`), the build's layout reshuffles in every frame,
-counters trading places across the field; the prototype's hold theirs, a few fading where another takes their room. Zooming in on the same view (`hybrid-zoom.mp4`), the build's labels slide and swap as the
+while the zoom runs (the table's "items drawn while moving"). In the paper map's Play (`paper-play.mp4`: 09:00 to 09:20 at ½x, 41 frames,
+the camera still), the build reshuffles the layer five times in those twenty clock minutes (`clip-motion.json`: the frames in which more
+than 30,000 pixels of the map change from the one before, the largest 49,000): at 09:02, from one frame to the next, seven counters change
+places across the map, V Corps, the Imperial Guard, the Grenadier Division, the Cavalry Reserve, the Russian Imperial Guard, the Fifth
+Column and the Advance Guard of the Right (`clips/paper-play-f4-f5.jpg`, the build above, the prototype below). With the prototype no frame
+changes as much (the largest 21,500 pixels; over the clip 189,000 against the build's 335,000): through most of the clip the counters keep
+their places as their formations move; at 09:17, where the build reshuffles too, three counters (V Corps, the Fifth Column, the Russian
+Imperial Guard) leave their places, fading out and back in elsewhere over a few frames, and the names about them move beside their anchors
+or fade: the price section 3.4 states, eased by the fades rather than removed. Orbiting the Field vantage in Landscape with counters
+(`hybrid-orbit.mp4`), the build's layout reshuffles in every frame,
+counters trading places across the field; the prototype's hold theirs, a few fading where another takes their room. Zooming in on the same
+view (`hybrid-zoom.mp4`), the build's labels slide and swap as the
 anchors spread; the prototype's keep their places against their anchors, and the few that lose their room fade.
 
 ### 3.4 Recommended (question 240): anchor2 with the band, and fades
@@ -618,7 +633,13 @@ second, the camera tracking the formation 24-26 units out; the clock set each fr
   modelled, 2.0 cycles a second: five frames a cycle), the officers' horses walk, each on its own beat, the riders bobbing with them, and
   the column reads as on the march, its feet still sliding over the ground (the ratio above). A movement arrow's ribbon lies across the
   battalions in every frame (section 7.1).
-- [[BAT-LIMBER]]
+- `bat-limber.mp4`, the guns on the heights limbering up and moving off toward Augezd (13:42 to 13:58, 33 frames): in the build's half the
+  deployed battery is replaced, in the frame its leg begins (13:45), by its limbered group, block horses drawing brown boxes and barrels on
+  solid discs, which then slides away; in the prototype's the same switch shows the teams harnessed, a driver on each near wheeler, the guns
+  on spoked wheels behind their limbers, and the teams walk (0.7 cycles a second at ½x), the drivers bobbing; the wheels do not turn (not
+  prototyped; built, they would follow the track's distance as the gait does). The switch in one frame is the build's and is kept: no source
+  read gives the time limbering took (section 4.4). In both halves the arrows of the wheel south ("Saint-Hilaire wheels south", "Vandamme
+  wheels south", "The French centre turns south") lie across much of the frame, and the battery is seen through them (section 7.1).
 - `inf-march-4x-figures_f-gait.mp4`, the same climb at 4x, the prototype alone (08:47 to 09:27 in eleven frames, 1.1 seconds; the recorder
   steps the clock itself, so the speed buttons still show ½x): the infantry glide as the build's blocks do, their cycle far above the limit
   (16 a second on the climb at 5 km/h) and faded out. Their mounted officers, whose horses' stride is longer, are faded out on the climb
@@ -1352,10 +1373,10 @@ build stays as it is until the answers. A limit of `tools/visual/thresholds.js` 
 | check | result |
 |---|---|
 | `npm test` on `main` at `9eb7abb` (before any Stage 8 file existed) | all nine suites and the height guard pass (5 min 47 s) |
-| `npm run check:data` | 131 of 131 declarations identical to `archive/step5c-45f8f662.html` |
-| `npm run check:chronology` | 0 errors |
-| `npm run check:baseline` | passes: `austerlitz-command-map.html` 2,220,714 bytes, md5 `c4793156103b60bb74151c7d13dbdd9d`, unchanged by this document |
-| [[S12-FINAL]] | |
+| `npm test` on the final tree (every probe, prototype, capture and record of this Part in place), after the last recordings | all nine suites and the height guard pass (5 min 22 s): no warning unacknowledged, "console.warn unique" 0 |
+| `npm run check:data` on the final tree | 131 of 131 declarations byte-identical to `archive/step5c-45f8f662.html` |
+| `npm run check:chronology` on the final tree | 0 errors; the movement audit 0 findings |
+| `npm run check:baseline` on the final tree | passes: `austerlitz-command-map.html` 2,220,714 bytes, md5 `c4793156103b60bb74151c7d13dbdd9d`, unchanged by this document |
 | every probe of `tools/stage8/` | run to its end on the build above; outputs in `docs/stage8-evidence/` (the README lists each) |
 | each prototype undone | the frame after each prototype's removal compared with the frame before it in draw calls and triangles: 72 removals checked by `stills.js`, 69 equal; the three close on Sokolnitz (the arrows) 10 triangles fewer, exactly the frame of the build's own rebuild of its overlays with no prototype (`a-rebuild`, section 7.1); the ribbon probe's paint undone in its 13 views with no pixel changed by more than 40 of 255 |
 
