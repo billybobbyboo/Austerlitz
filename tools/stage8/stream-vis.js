@@ -8,7 +8,8 @@
    yellow: red and green each over blue by more than 60). B is
    what is drawn of each ribbon, C what would be drawn if both faces were, D what the ribbon would cover if nothing hid it: D - C is what the
    drawn ground and everything in front hide. The materials are restored after each view, and the frame after it compared with A.
-   node tools/stage8/stream-vis.js [--views a,b] [--json file]
+   node tools/stage8/stream-vis.js [--views a,b] [--json file] [--merge] (the JSON written after each view; --merge keeps an earlier run's views of
+   the same build)
    Measurement only. */
 "use strict";
 const fs=require("fs"), path=require("path");
@@ -22,6 +23,7 @@ const ONLY=(opt("--views")||"goldbach-top,goldbach-top-1x,goldbach-top-10x,goldb
 (async()=>{
   const browser=await L.launch(), page=await L.open(browser,[1600,900]);
   const res={build:require("crypto").createHash("md5").update(fs.readFileSync(path.join(L.ROOT,"austerlitz-command-map.html"))).digest("hex"), views:{}};
+  if(JSONF&&argv.includes("--merge")&&fs.existsSync(JSONF)){ const old=JSON.parse(fs.readFileSync(JSONF,"utf8")); if(old.build===res.build) Object.assign(res.views,old.views); }
   const install=()=>page.evaluate(()=>{ if(window.__sv) return;
     var img=function(b){ return new Promise(function(r){ var i=new Image(); i.onload=function(){ var c=document.createElement("canvas"); c.width=i.width; c.height=i.height; var x=c.getContext("2d",{willReadFrequently:true}); x.drawImage(i,0,0); r(x.getImageData(0,0,i.width,i.height).data); }; i.src="data:image/png;base64,"+b; }); };
     window.__sv={
