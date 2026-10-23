@@ -434,7 +434,8 @@ while the zoom runs (the table's "items drawn while moving"). While the clock pl
 hold steady from frame to frame, the prototype's counters in the places each first took. (In that recording the phase's toast, "The sun of
 Austerlitz, as memoirs call it", stands in every frame, because the probe sets the clock with `force`, which shows it again each time; at
 1280 x 720 its left end lies under the Study / Watch / Clean switch in the build as in the prototype: a small fault of the interface, outside
-Stage 8's subject, recorded for 8H.) [[LABEL-CLIPS]]
+Stage 8's subject, recorded for 8H.) Orbiting the Field vantage in Landscape with counters (`hybrid-orbit.mp4`), the build's layout reshuffles in every frame,
+counters trading places across the field; the prototype's hold theirs, a few fading where another takes their room. [[LABEL-CLIPS]]
 
 ### 3.4 Recommended (question 240): anchor2 with the band, and fades
 
@@ -604,7 +605,10 @@ full swing; none at 4x.
 camera tracking the formation 24-26 units out). `inf-march.mp4`, Saint-Hilaire's division on the plateau's west slope from 08:47:
 in the build the files slide up the slope with their legs together and the officer's box horse glides; with `f-gait` the files step in
 cadence and the horse walks, the legs alternating from frame to frame, and nothing else changes (the column's place, its speed and the
-camera are the build's). [[GAIT-CLIPS]]
+camera are the build's). `bat-limber.mp4`, the guns on the heights from 13:42, their leg toward Augezd beginning at 13:45: in both, the
+deployed group gives way to the limbered one between two frames (the prototype keeps the build's switch, question 243); after it the
+build's box teams slide, the prototype's walk with their drivers, each gun on its spoked wheels behind its limber. Until the battery moves
+off, a broad arrow ("Saint-Hilaire wheels south") lies over it in both variants: section 7.1's case. [[GAIT-CLIPS]]
 
 **The drift the gait must not animate** (`tools/stage8/legs.js`, `legs.json`, the model's own legs): of the 147 legs the clock moves, 92 run
 at under 1 km/h, 52 of them for two hours or more: Nansouty's division covers 1.85 km between 04:00 and 10:30 (0.28 km/h), Saint-Hilaire's
