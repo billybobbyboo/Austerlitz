@@ -1,0 +1,453 @@
+{
+ "build": "c4793156103b60bb74151c7d13dbdd9d",
+ "views": {
+  "pratzen-low": {
+   "base": {
+    "calls": 758,
+    "tris": 2480181,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4
+   },
+   "g-none": {
+    "info": {
+     "style": "none"
+    },
+    "calls": 727,
+    "tris": 2467673,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   },
+   "g-marker": {
+    "info": {
+     "style": "marker"
+    },
+    "calls": 758,
+    "tris": 2467863,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   },
+   "g-outline": {
+    "info": {
+     "style": "outline"
+    },
+    "calls": 789,
+    "tris": 2476137,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   },
+   "g-selonly": {
+    "info": {
+     "style": "selonly"
+    },
+    "calls": 727,
+    "tris": 2467673,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   },
+   "g-confline": {
+    "info": {
+     "style": "confline"
+    },
+    "calls": 789,
+    "tris": 2479937,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   }
+  },
+  "overview-field": {
+   "base": {
+    "calls": 832,
+    "tris": 2523605,
+    "items": 48,
+    "placed": 42,
+    "dropped": 6
+   },
+   "g-none": {
+    "info": {
+     "style": "none"
+    },
+    "calls": 801,
+    "tris": 2511005,
+    "items": 48,
+    "placed": 42,
+    "dropped": 6,
+    "restored": true
+   },
+   "g-marker": {
+    "info": {
+     "style": "marker"
+    },
+    "calls": 832,
+    "tris": 2511801,
+    "items": 48,
+    "placed": 42,
+    "dropped": 6,
+    "restored": true
+   },
+   "g-outline": {
+    "info": {
+     "style": "outline"
+    },
+    "calls": 863,
+    "tris": 2519485,
+    "items": 48,
+    "placed": 42,
+    "dropped": 6,
+    "restored": true
+   },
+   "g-selonly": {
+    "info": {
+     "style": "selonly"
+    },
+    "calls": 801,
+    "tris": 2511005,
+    "items": 48,
+    "placed": 42,
+    "dropped": 6,
+    "restored": true
+   },
+   "g-confline": {
+    "info": {
+     "style": "confline"
+    },
+    "calls": 863,
+    "tris": 2523109,
+    "items": 48,
+    "placed": 42,
+    "dropped": 6,
+    "restored": true
+   }
+  },
+  "inf-mid": {
+   "base": {
+    "calls": 737,
+    "tris": 2481029,
+    "items": 61,
+    "placed": 18,
+    "dropped": 1
+   },
+   "g-none": {
+    "info": {
+     "style": "none"
+    },
+    "calls": 706,
+    "tris": 2468053,
+    "items": 61,
+    "placed": 18,
+    "dropped": 1,
+    "restored": true
+   },
+   "g-marker": {
+    "info": {
+     "style": "marker"
+    },
+    "calls": 737,
+    "tris": 2468227,
+    "items": 61,
+    "placed": 18,
+    "dropped": 1,
+    "restored": true
+   },
+   "g-outline": {
+    "info": {
+     "style": "outline"
+    },
+    "calls": 768,
+    "tris": 2476349,
+    "items": 61,
+    "placed": 18,
+    "dropped": 1,
+    "restored": true
+   },
+   "g-selonly": {
+    "info": {
+     "style": "selonly"
+    },
+    "calls": 706,
+    "tris": 2468053,
+    "items": 61,
+    "placed": 18,
+    "dropped": 1,
+    "restored": true
+   },
+   "g-confline": {
+    "info": {
+     "style": "confline"
+    },
+    "calls": 768,
+    "tris": 2480281,
+    "items": 61,
+    "placed": 18,
+    "dropped": 1,
+    "restored": true
+   }
+  },
+  "bat-front": {
+   "base": {
+    "calls": 749,
+    "tris": 2518809,
+    "items": 58,
+    "placed": 10,
+    "dropped": 0
+   },
+   "g-none": {
+    "info": {
+     "style": "none"
+    },
+    "calls": 717,
+    "tris": 2504185,
+    "items": 58,
+    "placed": 10,
+    "dropped": 0,
+    "restored": true
+   },
+   "g-marker": {
+    "info": {
+     "style": "marker"
+    },
+    "calls": 749,
+    "tris": 2504365,
+    "items": 58,
+    "placed": 10,
+    "dropped": 0,
+    "restored": true
+   },
+   "g-outline": {
+    "info": {
+     "style": "outline"
+    },
+    "calls": 781,
+    "tris": 2512837,
+    "items": 58,
+    "placed": 10,
+    "dropped": 0,
+    "restored": true
+   },
+   "g-selonly": {
+    "info": {
+     "style": "selonly"
+    },
+    "calls": 717,
+    "tris": 2504185,
+    "items": 58,
+    "placed": 10,
+    "dropped": 0,
+    "restored": true
+   },
+   "g-confline": {
+    "info": {
+     "style": "confline"
+    },
+    "calls": 781,
+    "tris": 2517013,
+    "items": 58,
+    "placed": 10,
+    "dropped": 0,
+    "restored": true
+   }
+  },
+  "overview-plan": {
+   "base": {
+    "calls": 832,
+    "tris": 2523605,
+    "items": 27,
+    "placed": 22,
+    "dropped": 5
+   },
+   "g-none": {
+    "info": {
+     "style": "none"
+    },
+    "calls": 801,
+    "tris": 2511005,
+    "items": 27,
+    "placed": 22,
+    "dropped": 5,
+    "restored": true
+   },
+   "g-marker": {
+    "info": {
+     "style": "marker"
+    },
+    "calls": 832,
+    "tris": 2512849,
+    "items": 27,
+    "placed": 22,
+    "dropped": 5,
+    "restored": true
+   },
+   "g-outline": {
+    "info": {
+     "style": "outline"
+    },
+    "calls": 863,
+    "tris": 2519481,
+    "items": 27,
+    "placed": 22,
+    "dropped": 5,
+    "restored": true
+   },
+   "g-selonly": {
+    "info": {
+     "style": "selonly"
+    },
+    "calls": 801,
+    "tris": 2511005,
+    "items": 27,
+    "placed": 22,
+    "dropped": 5,
+    "restored": true
+   },
+   "g-confline": {
+    "info": {
+     "style": "confline"
+    },
+    "calls": 863,
+    "tris": 2523109,
+    "items": 27,
+    "placed": 22,
+    "dropped": 5,
+    "restored": true
+   }
+  },
+  "hybrid-low": {
+   "base": {
+    "calls": 759,
+    "tris": 2480183,
+    "items": 64,
+    "placed": 19,
+    "dropped": 7
+   },
+   "g-none": {
+    "info": {
+     "style": "none"
+    },
+    "calls": 728,
+    "tris": 2467675,
+    "items": 64,
+    "placed": 19,
+    "dropped": 7,
+    "restored": true
+   },
+   "g-marker": {
+    "info": {
+     "style": "marker"
+    },
+    "calls": 759,
+    "tris": 2467845,
+    "items": 64,
+    "placed": 19,
+    "dropped": 7,
+    "restored": true
+   },
+   "g-outline": {
+    "info": {
+     "style": "outline"
+    },
+    "calls": 790,
+    "tris": 2476139,
+    "items": 64,
+    "placed": 19,
+    "dropped": 7,
+    "restored": true
+   },
+   "g-selonly": {
+    "info": {
+     "style": "selonly"
+    },
+    "calls": 728,
+    "tris": 2467675,
+    "items": 64,
+    "placed": 19,
+    "dropped": 7,
+    "restored": true
+   },
+   "g-confline": {
+    "info": {
+     "style": "confline"
+    },
+    "calls": 790,
+    "tris": 2479931,
+    "items": 64,
+    "placed": 19,
+    "dropped": 7,
+    "restored": true
+   }
+  },
+  "selected-formation": {
+   "base": {
+    "calls": 764,
+    "tris": 2518041,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4
+   },
+   "g-none": {
+    "info": {
+     "style": "none"
+    },
+    "calls": 733,
+    "tris": 2505441,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   },
+   "g-marker": {
+    "info": {
+     "style": "marker"
+    },
+    "calls": 764,
+    "tris": 2505721,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   },
+   "g-outline": {
+    "info": {
+     "style": "outline"
+    },
+    "calls": 795,
+    "tris": 2513917,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   },
+   "g-selonly": {
+    "info": {
+     "style": "selonly"
+    },
+    "calls": 734,
+    "tris": 2505905,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   },
+   "g-confline": {
+    "info": {
+     "style": "confline"
+    },
+    "calls": 795,
+    "tris": 2517545,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   }
+  }
+ }
+}

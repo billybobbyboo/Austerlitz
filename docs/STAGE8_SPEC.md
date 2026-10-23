@@ -232,7 +232,16 @@ counters in the low view, and a selection (`selected-formation`).
   triangles (the frame with `g-none` against the build); `g-outline` the same 31 calls and 8,300-8,700 triangles, `g-confline` 31 calls and
   12,100-12,800, `g-marker` 31 calls and 170-800. None matters against a 2.5-million-triangle frame.
 
-[[S2-OTHERVIEWS]]
+**The Overview, Landscape with counters, a selection** (`overview-plan-*.jpg`, `hybrid-low-*.jpg`, `selected-formation-*.jpg`). In the Overview
+the build's marks are the battle's strongest shapes, a band of blue and amber washes along the Goldbach and over the plateau; with `g-none`
+the formations all but vanish there and only the arrows and names place them; `g-outline` draws each as a small outlined block, and the
+order of battle can be read off the field again. In Landscape with counters the counters already carry the side and the grade, and every
+ground cue is redundant there: the build's C marks spread amber across the foreground (`hybrid-low-base.jpg`), the outline is quiet. With a
+selection, `g-selonly`'s accent outline makes the selected division unmistakable and draws nothing else; the build's ellipse sits inside a
+wash. **`g-confline`'s C discs show the prototype's limit**: draped as straight strips across a slope, a long arc breaks into dashes
+(`hybrid-low-g-confline.jpg`), which decisions 4 and 15 forbid; built, the outlines must be split on the ground's triangles, as the skeleton's legs
+are (section 2.5). The six views without a selection draw nothing different for `g-selonly` and `g-none` (identical frames, checked pixel
+by pixel); their `g-selonly` captures are not kept (`ground-stills.json` records every one).
 
 ### 2.4 Recommended (question 239)
 
