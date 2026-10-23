@@ -111,6 +111,56 @@
     "occluded": 0,
     "ms": 0.9
    }
+  },
+  "inf-mid": {
+   "arrows": {
+    "share": 0.0525,
+    "contrastMedian": 2.13,
+    "share3to1": 0.137
+   },
+   "marks": {
+    "share": 0.1017,
+    "contrastMedian": 1.23,
+    "share3to1": 0.132
+   },
+   "events": {
+    "share": 0.0104,
+    "contrastMedian": 1.64,
+    "share3to1": 0.167
+   },
+   "standards": {
+    "share": 0.0238,
+    "contrastMedian": 1.33,
+    "share3to1": 0.072
+   },
+   "maptext": {
+    "share": 0.0334,
+    "contrastMedian": 2.17,
+    "share3to1": 0.28
+   },
+   "figures": {
+    "share": 0.1112,
+    "contrastMedian": 1.49,
+    "share3to1": 0.164
+   },
+   "arrowsPx": [],
+   "labels": {
+    "drawn": 18,
+    "byCat": {
+     "name": 8,
+     "plateau": 1,
+     "place": 3,
+     "objective": 2,
+     "event": 2,
+     "overlay": 2
+    },
+    "leaders": 1,
+    "far150": 0,
+    "upperQuarter": 14,
+    "dropped": 1,
+    "occluded": 0,
+    "ms": 1.2
+   }
   }
  }
 }
