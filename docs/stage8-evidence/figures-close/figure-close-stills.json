@@ -1,0 +1,31 @@
+{
+ "build": "c4793156103b60bb74151c7d13dbdd9d",
+ "views": {
+  "inf-close": {
+   "base": {
+    "calls": 715,
+    "tris": 2477531,
+    "items": 58,
+    "placed": 3,
+    "dropped": 1
+   },
+   "f-kit": {
+    "info": {
+     "formations": [
+      "sthilaire",
+      "nansouty",
+      "heightguns"
+     ],
+     "gait": false,
+     "materials": 0
+    },
+    "calls": 715,
+    "tris": 2527851,
+    "items": 58,
+    "placed": 3,
+    "dropped": 1,
+    "restored": true
+   }
+  }
+ }
+}
