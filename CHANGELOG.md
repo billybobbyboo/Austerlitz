@@ -1,5 +1,23 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Roadmap step 6 item 1: P5, the phone with decision 236's change; step 6 done
+
+**Status: records only, on `claude/upbeat-hamilton-y9utq8` (begun again from `main` at `b04e150`, #62 merged). No source file, no data file
+and no build changed:** `austerlitz-command-map.html` 2,220,714 bytes, md5 `c4793156103b60bb74151c7d13dbdd9d` (unchanged).
+
+On 23 October 2026 the owner ran the route of §2 on the iPhone 17 Pro with the change (P5, `docs/step6-evidence/perf-P5-iphone.*`): it read
+the build merged in #62 (SHA-256 `136e1e98...`, the hash computed here from `main`), drawn at density 1 (402 x 714). Two earlier tries read the
+build before the change from the host's and Safari's caches; they are kept as two more runs of that build (`perf-P5a-oldbuild-iphone.*`,
+`perf-P5b-oldbuild-iphone.*`); the third loaded the build under a fresh address through the wrapper's `?src=`. P5 (fact, one run): phase 8's
+Overview held at 60 frames a second and orbiting at 47 (2.7% long), Play at half speed at 53 (1.6%), at 4x at 60; one heavy segment of 13
+dropping (phase 8's Overview with Visual effects off), against 5-10 of 13 in each of the four runs of the build before (P1, P2, P5a, P5b), in
+which phase 8's Overview ran at about 20 frames a second every time. Item 1 is complete and roadmap step 6 is done (`docs/STEP6_SPEC.md` §16,
+`docs/ROADMAP.md`, `CLAUDE.md`, the evidence README). Handed on, observed and not decided: Visual effects off was never faster on the phone and
+four times much slower, but its segment always runs last of its view, so the phone's slowing cannot be told from the toggle.
+
+**Verified:** `check:baseline` passes on the unchanged build; `check:data` 131 of 131 identical; the comparison read by `node` from the five
+reports; P5's build hash against `main`'s. Records only: no page check re-run.
+
 ## 2026-10 · Roadmap step 6: decision 236's verdict (the phone route's runs P3, P4): density 1.0 and no shadow under `lowTier`
 
 **Status: on `claude/upbeat-hamilton-y9utq8` (begun again from `main` at `f8d0949`, #61 merged).** No data changed (`check:data` 131 of 131

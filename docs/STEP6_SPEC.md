@@ -1266,4 +1266,50 @@ skipped the shadow pass but kept the last shadow map and its sampling; the built
 **What the rule asks next:** the phone measured once more by the owner, one run of the route of §2 (`tools/step6/perf-run.html`, no
 `route`; P5), on the build that carries the change. Nothing else waits on it.
 
+## 16. P5: the phone with the change, and the end of item 1
+
+**The runs.** On 23 October 2026, after #62's merge, the owner ran the route of §2 on the iPhone 17 Pro three times (Safari, held upright, the
+viewport 402 x 714). The first two (00:48:47 and 00:55:12 UTC) read the build before the change (2,220,267 bytes, SHA-256 `695e1f94...`, drawn
+at 1.5): the host and then Safari's cache still served it, the wrapper loading the build at a fixed address; they are kept, labelled, as two
+more runs of that build (`docs/step6-evidence/perf-P5a-oldbuild-iphone.*`, `perf-P5b-oldbuild-iphone.*`). The third, **P5** (01:00:04 UTC,
+`perf-P5-iphone.*`), opened the wrapper with `?src=../../austerlitz-command-map.html%3Fv%3D5`, so the frame loaded the build under a fresh
+address: it read **2,220,714 bytes, SHA-256 `136e1e98...`, the build merged in #62** (the same hash computed here from `main`), drawn at
+**density 1 (402 x 714)**, `lowTier`. It stands (the refresh measured, 17 ms; nothing hidden). P5 began two and a half minutes after P5b
+ended, so the phone was not rested (inference: if anything against the change).
+
+**Against the four runs of the build before it on the same phone** (P1, P2 and the two above; fact, from the reports; a segment drops when
+more than 5% of its frames are long):
+
+| segment | P1 | P2 | P5a (old) | P5b (old) | **P5** |
+|---|---|---|---|---|---|
+| phase 8's Overview, held | 21.3, 100% | 21, 100% | 21.5, 100% | 21.5, 100% | **60, 0%** |
+| phase 8's Overview, orbit | 20, 100% | 20.2, 100% | 21.2, 100% | 19.7, 100% | **47, 2.7%** |
+| the low view at 4x, orbit | 59.5, 1.2% | 24.2, 100% | 22.4, 100% | 60, 0% | **60, 0%** |
+| the low view at 10.33x, orbit | 34.4, 98.4% | 22.8, 100% | 32.1, 100% | 59.8, 0% | **60, 0%** |
+| Play at 4x | 28.6, 100% | 60, 0.4% | 60, 0.3% | 28.4, 100% | **60, 0%** |
+| Play at half speed | 27.9, 100% | 40.2, 41.8% | 30, 85.9% | 27.6, 100% | **53, 1.6%** |
+| heavy segments that drop | 8 of 13 | 10 of 13 | 10 of 13 | 5 of 13 | **1 of 13** |
+
+(frames a second, then the share of long frames.) The one heavy segment that still drops is phase 8's Overview with Visual effects off
+(28.1, 100%). The triangles drawn fell from 2.50 to 1.47 million in phase 8's Overview, the shadow pass gone; the light views (the 1x low
+view, the paper map, the eye level) hold 60 as before.
+
+**What this says, and what it does not.** One run, on one phone: the build with the change held the views decision 138 named and Play at or
+near 60 frames a second, where the build before it dropped to 20-30 in four runs out of four in phase 8's Overview and in Play at half speed in
+all four. The phone's own state still moves between runs (P5b, on the old build, held 60 in the low views that P5a dropped in), so a single run
+cannot give the size of the gain; it shows the change working on the device it was measured for. Nothing in §14.1's rule asks for more, and no
+decision waits on P5.
+
+**Observed, not decided (handed on):** on this phone, the heavy views with Visual effects off (the F key) were never faster than with them on,
+and in four pairs much slower: phase 8's Overview 28.1 frames a second with the effects off against 47 with them on in P5; on the old build the
+Overview 19.4 and 19.9 against 60 in P2 and P5a, and the low view at 4x 22.8 against 59.5 in P1 (every other pair within two frames a second
+of each other). But the effects-off segment always runs last of its view, after the figures' segment, so the phone's slowing within a run cannot
+be told from the toggle (as §12 said); only a bracketed measure, as the phone route's, would say whether turning the effects off makes a
+phone slower. If it does, a visitor who turns them off to make a phone faster gets the opposite (inference: with the effects off the scene is
+drawn straight to the canvas with its antialiasing, which the post-processing path does not use; not examined). Recorded for the owner;
+nothing is changed.
+
+**Item 1 is complete:** the desktop runs decided 138 (decision 235, §11), the phone's runs decided 222 through decision 236 (§12-§15) and 229
+through decision 237 (§14), and P5 shows the change on the phone. With item 2 retired and item 3 built, roadmap step 6 is done.
+
 The next owner decision is 239.

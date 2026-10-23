@@ -1,0 +1,30 @@
+Austerlitz step 6 frame-time route (step6-perf-route 3), 2026-10-23T00:55:12.467Z
+device: Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.1 Mobile/15E148 Safari/604.1
+GPU: Apple Inc. / Apple GPU; WebGL2 true; cores 4; memory null GB
+screen 402x874, viewport 402x714, devicePixelRatio 3, drawn at 1.5 (603x1071), lowTier true, effects true (scale 1), in a frame true
+load: DOM ready 2162 ms, load event 2228 ms, 0 bytes transferred
+build: 2220267 bytes, sha256 695e1f941ac337942dc89bb9ba3f1d665abf00f781c3185009f3703f8326eea7; refresh 17 ms; long frame > 25.5 ms
+         segment             kind frames   fps     p50     p95     p99     max  long%    warm    js50    js95   gpu50   gpu95 calls     tris
+            idle             idle    156    60      17      17      17      17      0      17       -       -       -       -     -        -
+        overview             held    216    60      17      17      17      17      0      32       5       6       -       -   832  2523605
+        overview            orbit    336    60      17      17      17      19      0      35       5       6       -       -   832  2523605
+        overview   orbit -figures    335    60      17      17      17      23      0      23       3       4       -       -   247  1256911
+        overview   orbit -effects    336    60      17      17      17      17      0      36       4       5       -       -   825  2523598
+  pratzen-low-4x             held    216    60      17      17      17      20      0      25       5       7       -       -   725  2474189
+  pratzen-low-4x            orbit    336    60      17      17      17      19      0      32       5       6       -       -   720  2476288
+  pratzen-low-4x   orbit -figures    336    60      17      17      17      17      0      23       4       5       -       -   158  1242784
+  pratzen-low-4x   orbit -effects    336    60      17      17      23      27    0.3      35       4       5       -       -   713  2476281
+  pratzen-low-1x             held    216    60      17      17      17      19      0      21       4       5       -       -   133   221817
+  pratzen-low-1x            orbit    337    60      17      17      17      18      0      26       4       5       -       -   128   223916
+ pratzen-low-10x             held    216    60      17      17      17      18      0      36       5       7       -       -   726  2474201
+ pratzen-low-10x            orbit    335  59.8      17      17      20      22      0      34       5       6       -       -   721  2476288
+    ph8-overview             held     77  21.5      47      49      50      50    100      49      18      20       -       -   809  2501213
+    ph8-overview            orbit    110  19.7      50      54      54      56    100      52      19      22       -       -   809  2501153
+    ph8-overview   orbit -figures    161  28.8      35      38      39      40    100      39      10      12       -       -   234  1255719
+    ph8-overview   orbit -effects    109  19.5      51      54      55      55    100      53      14      16       -       -   802  2501146
+           paper             held    216    60      17      17      17      17      0      20       4       5       -       -   156   240915
+           paper              pan    336    60      17      17      17      17      0      31       4       5       -       -   156   240915
+             eye             held    215  59.7      17      19      20      22      0      25       8       9       -       -   190   483893
+             eye             look    328  58.6      17      20      20      21      0      17       7       9       -       -   119   463153
+         play-4x           played    329  28.4      35      40      43      44    100      40       8      12       -       -   786  2495737
+       play-half           played    320  27.6      36      40      42      45    100      39      10      12       -       -   783  2490375
