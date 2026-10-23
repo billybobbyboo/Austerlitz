@@ -1,0 +1,98 @@
+{
+ "kit": {
+  "manCoat": 36,
+  "manFixed": 168,
+  "riderCoat": 36,
+  "riderFixed": 144,
+  "horse": 108,
+  "man": 204,
+  "mounted": 288,
+  "gun": 156,
+  "limbered": 700,
+  "house": 20,
+  "houses": 223,
+  "roofs": 183
+ },
+ "scene": {
+  "figures": 612598,
+  "standards": 4310,
+  "trees": 404004,
+  "scrub": 200160,
+  "buildings": 5340,
+  "ground": 134400,
+  "other": 104494
+ },
+ "protos": {
+  "f-kit": {
+   "info": {
+    "formations": [
+     "sthilaire",
+     "nansouty",
+     "heightguns"
+    ],
+    "gait": false,
+    "materials": 0
+   },
+   "calls": 758,
+   "tris": 2530501,
+   "dTris": 50320,
+   "dCalls": 0
+  },
+  "b-village": {
+   "info": {
+    "kind": "b-village",
+    "counts": {
+     "houses": 287,
+     "thatched": 201,
+     "tiled": 86,
+     "chimneys": 179,
+     "towers": 12
+    },
+    "landmarks": null,
+    "triangles": 8736,
+    "inVillageCover": {
+     "build": 0.57,
+     "prototype": 0.592
+    }
+   },
+   "calls": 768,
+   "tris": 2486973,
+   "dTris": 6792,
+   "dCalls": 10
+  },
+  "g-outline": {
+   "info": {
+    "style": "outline"
+   },
+   "calls": 789,
+   "tris": 2476137,
+   "dTris": -4044,
+   "dCalls": 31
+  },
+  "g-marker": {
+   "info": {
+    "style": "marker"
+   },
+   "calls": 758,
+   "tris": 2467863,
+   "dTris": -12318,
+   "dCalls": 0
+  }
+ },
+ "frame": {
+  "calls": 758,
+  "tris": 2480181
+ },
+ "protoKit": {
+  "manCoat": 76,
+  "manFixed": 268,
+  "man": 344,
+  "horse": 308,
+  "riderCoat": 64,
+  "riderFixed": 220,
+  "mounted": 592,
+  "gun": 728,
+  "limberedGun": 740,
+  "limber": 556
+ }
+}

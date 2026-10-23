@@ -3,8 +3,8 @@
    a prototype of tools/stage8/protos/ put into the live scene, so that each pair is the same camera, clock and state. Each frame's draw
    calls and triangles (renderer.info, every pass) and the map layer's counts are recorded beside it; a prototype is undone after its frame
    and the frame after it checked against the first (calls and triangles equal).
-   node tools/stage8/stills.js [--views a,b] [--protos file:id,file:id] [--out dir] [--json file] [--base] (--base: the build's frame too, default on
-   when no prototype is named)
+   node tools/stage8/stills.js [--views a,b] [--protos file:id,file:id] [--out dir] [--json file] [--base] [--merge] (--base: the build's frame too,
+   default on when no prototype is named; the JSON is written after each view, and --merge keeps the views an earlier run of the same build wrote)
    Measurement and prototype code only: nothing is written to a source file. */
 "use strict";
 const fs=require("fs"), path=require("path");
@@ -21,6 +21,8 @@ const FILES=[...new Set(P8.map(p=>p.file))].map(f=>P8.find(p=>p.file===f));
 (async()=>{
   const browser=await L.launch(); let page=null, vp=null;
   const res={build:require("crypto").createHash("md5").update(fs.readFileSync(path.join(L.ROOT,"austerlitz-command-map.html"))).digest("hex"), views:{}};
+  if(JSONF&&argv.includes("--merge")&&fs.existsSync(JSONF)){ const old=JSON.parse(fs.readFileSync(JSONF,"utf8")); if(old.build===res.build) Object.assign(res.views,old.views); }
+  const save=()=>{ if(JSONF){ fs.mkdirSync(path.dirname(JSONF),{recursive:true}); fs.writeFileSync(JSONF,JSON.stringify(res,null,1)); } };
   for(const name of ONLY){
     const v=VIEWS[name]; if(!v) throw new Error("no view "+name);
     if(!page||vp!==v.viewport.join("x")){ if(page) await page.close(); page=await L.open(browser,v.viewport); vp=v.viewport.join("x");
@@ -44,7 +46,8 @@ const FILES=[...new Set(P8.map(p=>p.file))].map(f=>P8.find(p=>p.file===f));
       R[p.id]=Object.assign({info},k,{restored:back.calls===b0.calls&&back.tris===b0.tris});
       console.log(name.padEnd(20),p.id.padEnd(16),JSON.stringify(k),back.calls===b0.calls&&back.tris===b0.tris?"":"NOT RESTORED "+JSON.stringify(back));
     }
+    save();
   }
   if(page) await page.close(); await browser.close();
-  if(JSONF){ fs.mkdirSync(path.dirname(JSONF),{recursive:true}); fs.writeFileSync(JSONF,JSON.stringify(res,null,1)); }
+  save();
 })().catch(e=>{ console.error(e); process.exit(1); });

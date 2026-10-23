@@ -447,7 +447,7 @@ A battalion is a block of 8 files by 3 ranks (24 men), a squadron 5 by 2 (10 rid
 (instance-coloured by his class's cloth, decision 102) and his fixed parts (legwear, head, the class's headgear from `kitHat`, decision 103;
 the musket, pack and bayonet, or a gunner's figure without them); a rider sits on a horse of one brown (decision 109); a cuirass where the table
 records one (decision 104). The parts are boxes and cylinders, an icosahedron for the head, an extruded bicorne or a hemispherical
-helmet, flat-shaded; [[KIT-TRIS]]. The drawn man is 1.88 world units, about
+helmet, flat-shaded; a man 204 triangles, a rider and his horse 288 (`kit-census.json`). The drawn man is 1.88 world units, about
 118 m of ground, 70 times life (decision 14's named scale; `docs/STEP6_SPEC.md` §3.1). A man is about 7 px across in the Overview, 9-18 px from the Field vantage,
 19-77 px in the low Pratzen view and 14-128 px close on Sokolnitz (`docs/STEP6_SPEC.md` §3.1, a man's sphere).
 
@@ -877,7 +877,28 @@ Fact, from `docs/STEP6_SPEC.md` §3, §11-§16:
 
 ### 8.2 What Stage 8's prototypes would add (counted; `tools/stage8/kit-census.js`)
 
-[[KITCENSUS]]
+**Counted** (`tools/stage8/kit-census.js`, `kit-census.json`; the low Pratzen view, 758 draw calls and 2.48 million triangles, both passes):
+
+| piece | the build | the prototype | factor |
+|---|---|---|---|
+| a man (coat and fixed parts) | 204 triangles | 344 | 1.69 |
+| a rider and his horse | 288 | 592 | 2.06 |
+| a gun deployed | 156 | 728 | 4.7 |
+| a gun hitched up (the limber, the gun, four horses) | 700 | 740 + 556 + 4 x 308 | 3.6 |
+| a house (walls and roof) | 20 | about 30 (with the barns, the villages 8,736 in all) | |
+
+In that view the world pass draws 612,600 triangles of figures, 404,000 of trees, 200,200 of scrub, 134,400 of ground, 4,300 of standards and
+5,300 of buildings (step 6's census, reproduced). `f-kit` on the three representative formations adds 50,300 triangles and no draw call;
+the villages 6,800 and 10 calls; the outline cue removes 4,000 triangles and adds 31 calls.
+
+**What the kit would cost on every formation (an estimate from the factors, not a measurement):** the figures' triangles would rise by
+69-106% (all men to all riders), the 4x frame from 2.48 to 3.3-3.8 million triangles (+34-52%, both passes), the phone's heavy frame (one
+pass, `lowTier`) from about 1.47 to 1.9-2.1 million (+29-44%). That is outside both budgets of section 8.3 by a wide margin. Three levers,
+each measured in step 6 or here, bring it back: block culling (8D: 13.7% of the low view's frame, nothing in the Overview); a lighter kit
+(the prototype was shaped for the picture, not for its count: the head alone is an 80-triangle icosahedron, and 8E's target is at most 1.3
+times the build's per man); and the rich kit only where it is seen (a man 16 px or more: the low and close views), the build's kit beyond,
+which is a level of detail by size on screen. Decision 235 retired level of detail for today's workload; a richer kit is a new one, so
+question 249 asks for culling and question 242 for the kit with these limits.
 
 ### 8.3 Budgets, stated before anything is built
 
@@ -1080,8 +1101,9 @@ decisions 141, 199, 214 and 232 were.
   `appearance.js` only through a data task if question 243's team sizes are recorded.
 - **Evidence:** section 4.4: the team sizes, drivers and wheel sizes read (Gassendi, Alombert, Viskovatov and the Austrian sources), each
   graded and labelled in `appearance.js` before it is drawn, or the generic value labelled GENERIC.
-- **Performance:** [[KIT-COST]]; within section 8.3's budgets after 8D's culling, or the far form (today's kit beyond a man of 12 px on
-  screen) built with it.
+- **Performance:** on every formation the prototype's kit would add 34-52% to the 4x frame (section 8.2): built only with 8D's culling, a kit
+  of at most 1.3 times the build's triangles per man, and the rich kit only where a man is 16 px or more on screen (today's kit beyond),
+  within section 8.3's budgets.
 - **Acceptance:** every 6C and 6D check passes unchanged in meaning (class colours, headgear, cuirasses, standards' measures, the ratio of
   decision 106 within 2%); the gait's rule held by the self-test at 1x, 4x and 10.33x: the pose identical at a clock reached from three earlier
   clocks, still with the clock stopped, no swing on a halted formation or under reduced motion, the fade above 3.2 cycles a second; figures
@@ -1131,7 +1153,7 @@ build stays as it is until the answers. A limit of `tools/visual/thresholds.js` 
 | **239** | The ground under the troops (L1; section 2) | (a) remove the marks and decision 107's footprint from the landscape (`g-none`); (b) **a thin cased outline** of the footprint in the side's colour under every formation drawn as figures, the selection outlined in the accent, "Position confidence" an optional layer **off by default on the landscape** drawing the grade's extents as outlines (`g-outline`, `g-confline`), the paper map as today; a reported-only formation's C zone and the eye level's own side kept as they are (decision 91), and at 1x the footprint drawn by its grade whatever the layer; (c) a small cased chevron ahead of each formation (`g-marker`) with the same optional layer; (d) as today | **(b)** | supersedes 85 on the landscape (on by default); restyles 87 and 107 (a footprint under every formation, drawn as its edge); keeps 86, 88, 91, 1, 4, 15 (one hue a side, no dash: each outline split on the drawn ground's triangles), 34 (1x drawn as today), the pads | PR 8B; the 5B and 6C self-test checks rewritten to the outline; `CONF_SHARE` replaced by the outline's share, its limit as 8B measures it; `css-test.js`'s default; the legend; about 31 draw calls more unless the outlines are merged into one mesh |
 | **240** | The map layer in motion (L2; section 3) and its hierarchy in the low views (section 7.2) | (a) **anchor2 with the band, and fades**: held beside its anchor while the view moves, else faded out; looked for again every 333 ms; the level-of-detail switches banded 8% while moving, released at rest; at rest each item first tries its last place; **and the far items a step smaller**; (b) as (a), and the far items yielding first in the low views (more drops there: their limits only on the owner's word); (c) persist+hold: the last place first, a returning item after four frames with room, the band, without the fades; (d) as today | **(a)** | none; decisions 24, 38, 39 and 47 kept as invariants (section 3.4) | PR 8C; a motion block added to `check:visual`, its limits as 8C measures them |
 | **241** | The arrows and the event glyphs (section 7.1, 7.6; A-5) | (a) **each arrow's width capped at 16 px on screen in the two perspective presentations, the ribbons depth-tested, their fill at 0.62 of today's opacity, the glyphs capped at 64 px** (`a-calm`); (b) the cap only (`a-cap`); (c) as today | **(a)** | decision 57's value (192 px) and 2C's "over everything" (the depth test); keeps 1, 15, 20, 21, 83 (form, dash, chevron, boundaries, draw-on) | PR 8B; `binding-test.js` unchanged; the eye-level cases read against a depth-only frame |
-| **242** | The figures' kit (L3; section 4) | (a) **`f-kit` for every class**: the man, the horse and the rider redrawn in more parts, every colour, headgear and cuirass from the existing claims; (b) the artillery only; (c) as today | **(a)** | extends 6C's shapes (DESIGN); keeps 97, 100, 102, 103, 104, 106, 109 | PR 8E; [[KIT-COST-SHORT]]; within section 8.3's budgets after 8D's culling |
+| **242** | The figures' kit (L3; section 4) | (a) **`f-kit` for every class**: the man, the horse and the rider redrawn in more parts, every colour, headgear and cuirass from the existing claims; (b) the artillery only; (c) as today | **(a)** | extends 6C's shapes (DESIGN); keeps 97, 100, 102, 103, 104, 106, 109 | PR 8E; on every formation the prototype's kit would add 34-52% to the 4x frame: only with culling (249), a kit of at most 1.3 times the build's per man, and the rich kit where a man is 16 px or more on screen; within section 8.3's budgets after 8D's culling |
 | **243** | The artillery (L3; section 4.4) | (a) **the generic field piece**: spoked wheels in Gassendi's proportion, a bracket trail, the French coffret between the cheeks when limbered, the Allied limbers' box, one driver a vehicle (two for six horses: IV Corps' order, an authorisation), the limbers and teams behind the deployed guns, four horses a drawn gun, one carriage colour, the switch between the groups as today; each reading registered in `appearance.js` first; (b) as (a), with each army's carriage colour where sourced (French olive, Austrian ochre, the Russian generic); (c) as today | **(a)** | (b) would extend 109 ("one colour unless each army's is sourced": two of three are) | PR 8E with its data task (the readings of `leads.md` topic 1, graded and registered) |
 | **244** | The gait (L3; section 4.3) | (a) **the clock's gait**: the swing's phase a function of the clock alone (the modelled track's distance over a design stride), its amplitude the play speed's (faded out above 3.2 cycles a second on screen, eased when the speed changes), none under reduced motion, when halted, or below 1 km/h (the drift of an undated leg, decision 45); (b) no gait; (c) a gait in real time | **(a)** | none (VISUAL_AUDIT's "do not animate losses" kept: no figure falls) | PR 8D (the shader hooks), 8E; no draw call, no triangle |
 | **245** | Facings (decision 104; section 4.6) | (a) **keep decision 104**: no facings; (b) class-level facings where the table settles them at A or B, after a data task gives them colour classes (today the French line and the Guard's foot grenadiers; the Allied classes' facings are regimental) | **(a)**, reconsidered after 8E | (b) extends 104 | none for (a) |

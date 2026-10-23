@@ -6,7 +6,8 @@
    heads (layerOn.arrows), the ground marks (the confidence marks and decision 107's side footprint: CONF.none), the event glyphs and the plateau outline (eventGroup), the standards (each block's std group), the map layer's text and counters
    (#maplayer), the figures (each block's body). Also each arrow's width on screen at its middle (px), from its drawn
    ribbon's width and the view's scale there. Every class is shown again after its frame.
-   node tools/stage8/density.js [--views a,b] [--json file]
+   node tools/stage8/density.js [--views a,b] [--json file] [--merge] (the JSON written after each view; --merge keeps an earlier run's views of
+   the same build)
    Measurement only. */
 "use strict";
 const fs=require("fs"), path=require("path");
@@ -24,6 +25,8 @@ const CLASSES={
 };
 (async()=>{
   const browser=await L.launch(), page=await L.open(browser,[1600,900]), res={build:require("crypto").createHash("md5").update(fs.readFileSync(path.join(L.ROOT,"austerlitz-command-map.html"))).digest("hex"), views:{}};
+  if(JSONF&&argv.includes("--merge")&&fs.existsSync(JSONF)){ const old=JSON.parse(fs.readFileSync(JSONF,"utf8")); if(old.build===res.build) Object.assign(res.views,old.views); }
+  const save=()=>{ if(JSONF){ fs.mkdirSync(path.dirname(JSONF),{recursive:true}); fs.writeFileSync(JSONF,JSON.stringify(res,null,1)); } };
   for(const name of ONLY){
     const v=VIEWS[name]; await L.applyCase(page,v);
     if(v.focus) throw new Error("focus views are not supported here");
@@ -45,7 +48,8 @@ const CLASSES={
         if(camera.isPerspectiveCamera&&camera.position.distanceTo(it.world)>150) out.far150++; if(it.rect[3]<fr[1]+(fr[3]-fr[1])*0.25) out.upperQuarter++; }
       return out; });
     console.log(name.padEnd(20),Object.keys(CLASSES).map(k=>k+" "+(100*R[k].share).toFixed(1)+"%").join("  "),"arrows px",JSON.stringify(R.arrowsPx),"labels",JSON.stringify(R.labels));
+    save();
   }
   await browser.close();
-  if(JSONF){ fs.mkdirSync(path.dirname(JSONF),{recursive:true}); fs.writeFileSync(JSONF,JSON.stringify(res,null,1)); }
+  save();
 })().catch(e=>{ console.error(e); process.exit(1); });
