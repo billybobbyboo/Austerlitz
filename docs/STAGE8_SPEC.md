@@ -53,8 +53,8 @@ assessment can be checked against them (section 12.2).
 - **What the build draws (section 1).** At a distance the battle reads as washes of blue and amber, not troops: the confidence marks are
   what is seen of a formation there. Close up, symbology outweighs the troops: arrow ribbons of fixed world width drawn over everything,
   192-px glyph rings, the C marks spread over slopes, large plain standards. The guns are the weakest drawing (tubes on solid discs, brown
-  cubes on the march, switched in one frame). Nothing moves within a formation: blocks slide. The meres are flat plates; the streams the
-  bluest line in a winter landscape; every house the same box turned at random; no landmark drawn. The light, the fog, the ground's cover, the
+  cubes on the march, switched in one frame). Nothing moves within a formation: blocks slide. The meres are flat plates; the streams
+  and the roads' ribbons are not drawn at all (culled); every house the same box turned at random; no landmark drawn. The light, the fog, the ground's cover, the
   readings, the interface and the paper map hold up and are kept.
 - **L1, the glow (section 2; question 239).** Five alternatives in seven views: recommended, a thin cased outline of each formation's
   footprint in its side's colour, the selection in the accent, and "Position confidence" an optional outline layer, off by default on the
@@ -73,9 +73,10 @@ assessment can be checked against them (section 12.2).
   because a move no source dates is spread over its interval (decision 45); the gait leaves them still. The artillery's sources (Gassendi
   1809, IV Corps' order of 25 October 1805, Teuber, Nilus) give the wheels' proportion, the coffret, one driver a vehicle (as an
   authorisation) and the limbers' place, and no time for limbering. Facings: kept out (decision 104), since only the French classes have them sourced.
-- **L4, water (section 5; question 246).** The meres stay ice, varied in material and light; the streams darker and still. The day was mild
-  in Prague (4.9-10.6 °C; the Klementinum series), the eyewitnesses disagree on the ice's strength, and nothing read says the streams were
-  iced: no stream ice, and no flow, which would also keep an idle page drawing about 11 frames a second.
+- **L4, water (section 5; questions 246, 253).** The streams are not drawn at all today (their ribbons, and the roads', face away from the
+  eye and are culled: section 9.5); drawn, they should be darker and still. The meres stay ice, varied in material and light. The day was
+  mild in Prague (4.9-10.6 °C; the Klementinum series), the eyewitnesses disagree on the ice's strength, and nothing read says the streams
+  were iced: no stream ice, and no flow, which would also keep an idle page drawing about 11 frames a second.
 - **L5, buildings (section 6; question 248).** The villages re-laid on the 1825-1826 cadastre's pattern (dwellings end-on to the street,
   barns across the yards); the landmarks the sources support (Sokolnitz castle's quadrangle, the fences of Telnitz and Sokolnitz) after an evidence
   step, and the two chapels once their state on the day is read (St Anthony's roof is not found; the Santon's was destroyed during the
@@ -85,10 +86,11 @@ assessment can be checked against them (section 12.2).
 - **Performance (section 8; questions 249, 250).** Budgets stated before anything is built (the phone's heavy views at most 1.62 million
   triangles; an integrated-GPU run before any PR adds more than 10%); block culling first; the gait free of calls and triangles; the
   effects-off question as a bracketed run.
-- **Carried findings (section 9; question 251).** All three still present: under a reading, "Centre the map here" goes to the true
+- **Carried findings (section 9; questions 251, 253).** All three still present: under a reading, "Centre the map here" goes to the true
   position of a formation the reading does not know; the dossier's sources are at its end (6,000 px down); a timeline tip stays
   after its element is activated (an extra Esc; on a phone it stays on the screen). Of the audit's unassigned findings, A-5, S-5, S-7, A-6,
-  G-2, P-2 and T-7 are still present and P-3 partly.
+  G-2, P-2 and T-7 are still present and P-3 partly. And one
+  found here (9.5): the landscape draws none of its road or stream ribbons, and the self-test's checks of them, being geometric, cannot see it.
 - **The plan (section 10; question 252):** PRs 8A-8H; nothing implemented here.
 
 ## 0. What binds Stage 8
@@ -182,10 +184,12 @@ map layer's (its plates against the scene) 1.4-6.3.
   are boxes. **The artillery is the weakest drawing in the build**: a gun is a dark cylinder on two solid brown discs with a box trail, the
   limbered battery a brown box on two discs, its barrel on its own pair of discs behind, four box-horses ahead, and it switches between the two in one frame when its leg
   starts. Nothing moves within a formation: a march is a block sliding over the ground.
-- **Water** (`ph8-overview-watch-base.jpg`, `ice-high-base.jpg`, `water/ice-mid-base.jpg`, `stream-low-base.jpg`). The meres are flat ellipses of one
-  grey-blue with a lighter ring at the shore: from above they read as plates laid on the field, with a hard edge where the ground meets them;
-  the computed sun's sheen is the only variation. The streams are bright blue-grey ribbons of one width on a darker bank ribbon, the bluest
-  thing in a winter landscape.
+- **Water** (`ph8-overview-watch-base.jpg`, `ice-high-base.jpg`, `water/ice-mid-base.jpg`, `water/goldbach-top-base.jpg`). The meres are flat
+  ellipses of one grey-blue with a lighter ring at the shore: from above they read as plates laid on the field, with a hard edge where the
+  ground meets them; the computed sun's sheen is the only variation. **The streams are not drawn at all** (section 9.5): their ribbons, and
+  the roads', face away from the eye and the renderer culls them. What a visitor sees along the Goldbach is the ground's own damp and water
+  cover, a darker band (`water/goldbach-top-base.jpg`), and in the morning Legrand's line of battle drawn along it: the bright blue line in
+  `stream-low-base.jpg` is that line (with the overlays off it goes), not the stream.
 - **Buildings** (`village-telnitz-base.jpg`, `village-pratzen-base.jpg`, `village-sokolnitz-base.jpg`, `close-sokolnitz-base.jpg`). Every house is a box
   with the same painted windows and door on all four sides (four wall tints) under a gable roof (five roof colours); 22% are barns; houses stand at
   random along the village's lane, turned at random by 0 or 90 degrees; churches are a box nave with a box tower and a six-sided spire; the
@@ -667,7 +671,8 @@ kit is built and the owner can judge the close views with it.
 The two meres are ellipses (`CircleGeometry`, 48 segments) of one ice material (`WATER_COL.ice` `#4E5C66`, roughness 0.32, the environment's
 weight 0.42, 96% opaque), each with a ring of shore ice over its outer 14% (`#75838B`, rougher), at a level kept under the drawn ground's edge
 at every factor; their outlines are schematic (decision 27: no outline changes without a georeferenced source). The streams are ribbons of
-one width each (the Goldbach 2.8 units, the Littawa 3.2, the brooks 1.4) in one blue-grey (`#587A8E`) on a darker bank ribbon, draped on the ground. Stage
+one width each (the Goldbach 2.8 units, the Littawa 3.2, the brooks 1.4) in one blue-grey (`#587A8E`) on a darker bank ribbon, draped on
+the ground, and **none of them is drawn** (section 9.5: the ribbons face down and are culled). Stage
 4E's rule for the meres (`docs/STAGE4_SPEC.md` §F.1, as built): ice, "No cracking, breaking or figures in the water ... no snow", nothing
 that suggests mass drowning (`docs/VISUAL_AUDIT.md` opportunity 4). (`docs/ROADMAP.md`'s note L4 words it "no cracks, holes, snow or figures
 in the water" and attributes it to decision 79, which is the colours' tables; the rule is §F.1's recommendation as 4E built it. A records
@@ -675,7 +680,9 @@ slip, noted here, not changed.)
 
 What a visitor sees (`ice-high-base.jpg`, `water/ice-mid-base.jpg`, `ph8-overview-watch-base.jpg`): from above, two flat plates of
 one grey-blue laid on the field, the shore ring a second flat tone, a hard edge where the ground meets them; the computed sun's sheen the only
-variation. The streams (`stream-low-base.jpg`): the bluest and brightest line in a winter landscape, of one width from source to mouth.
+variation. The streams: nothing of their own (section 9.5); along their course the ground's damp and water cover, a darker band
+(`water/goldbach-top-base.jpg`, straight above the Goldbach at noon), and in the morning phases Legrand's line of battle drawn along the
+Goldbach, the bright blue line of `stream-low-base.jpg`.
 
 ### 5.2 What is known of the water on the day (evidence; `docs/stage8-evidence/leads.md`)
 
@@ -693,7 +700,7 @@ variation. The streams (`stream-low-base.jpg`): the bluest and brightest line in
 | id | what changes | label |
 |---|---|---|
 | `w-ice` | the meres' ice: a frosted margin (lighter, rougher) easing into clearer, darker, glossier ice toward the middle; a broad low-contrast tonal variation (no lines, no cracks); a stronger reflection of the sky at grazing angles; the shore ring's hard edge feathered on both sides | DESIGN; outlines, level and colours' tables kept |
-| `w-stream` | the streams darker and less blue, reflecting the sky at grazing angles; the banks a little darker at the water | DESIGN |
+| `w-stream` | the stream and bank ribbons drawn (double-sided: section 9.5), the streams darker and less blue, reflecting the sky at grazing angles; the banks a little darker at the water | DESIGN |
 | `w-streamice` | `w-stream` with a thin pale rim of ice along both banks | shown for assessment only: not supported by section 5.2 |
 | `w-flow` | `w-stream` with its ripple drifting downstream in real time (the clip `clips/stream-flow.mp4`) | shown for assessment only |
 
@@ -706,10 +713,12 @@ variation. The streams (`stream-low-base.jpg`): the bluest and brightest line in
 - **A fault found on the way, recorded**: the prototype's first version replaced the materials' shader hook instead of chaining the app's
   own (`atmoUniforms`, `app.js:389-391`, which feeds every material the haze's and the fog's uniforms), and the ice drew black; any Stage 8
   shader change must call it, as the ground's and the atlas's already do.
-- **The streams** (`stream-low-*.jpg`, the Goldbach at 08:20 in the valley fog; the clip `clips/stream-flow.mp4` closer): `w-stream`
-  takes the brightest blue line out of the fogged valley; it reads as water rather than as a drawn line, though at this distance the change
-  is small; `w-streamice`'s pale rim is invisible here and would show only close up, which is as well, since nothing read supports it. The
-  same draw calls and triangles; removed cleanly.
+- **The streams** (`goldbach-top-*.jpg`, `goldbach-noon-*.jpg`, the Goldbach below Sokolnitz at noon; `water-stream.json`): the build shows
+  no stream (the frame `*-base.jpg`); `w-stream`, drawing the ribbons, shows the Goldbach as a grey-blue channel between paler banks, darker
+  and less blue than the build's own colour would be, crossing under the village's houses (`goldbach-top-w-stream.jpg`); [[SV-NOON]]
+  `w-streamice`'s pale rim reads as ice along both banks (`goldbach-top-w-streamice.jpg`), which nothing read supports. The same draw calls
+  and triangles: the ribbons are already submitted to the renderer today and culled there, so drawing them costs only the pixels they cover.
+  The ribbons' widths are the build's (the Goldbach 2.8 units, about 177 m at 1x; the roads 1.2-2.9): symbol widths, never yet seen.
 
 ### 5.4 Stream movement, assessed on its own
 
@@ -718,7 +727,7 @@ variation. The streams (`stream-low-base.jpg`): the bluest and brightest line in
 - **Uncertain:** whether the streams carried ice on the day; how fast they ran. No source read describes their surface on 2 December.
 - **The cost of moving water.** The build draws on demand: with the clock stopped and nothing in motion it draws no frame at all, and its
   ambient frames (about 11 a second, `AMBIENT_MS` 90) run only while smoke, dust or a broken formation is in view, never under reduced motion
-  (`ambientNow`, `app.js:7584`). A flowing stream is in view in almost every landscape frame, so it would turn an idle page into one drawing
+  (`ambientNow`, `app.js:7584`). Once the streams are drawn, one is in view in most landscape frames, so a flowing one would turn an idle page into one drawing
   about 11 frames a second for as long as it is open, on a phone too; and a flow in real time while the clock stands is the one motion on the
   map that would not be the clock's.
 - **Recommendation:** no flow; the streams still, darker and less blue (`w-stream`); no stream ice. The flow stays a documented option
@@ -726,7 +735,7 @@ variation. The streams (`stream-low-base.jpg`): the bluest and brightest line in
 
 ### 5.5 Recommended (question 246)
 
-**(a): `w-ice` and `w-stream`, still, no stream ice**: the meres' material varied (a frosted margin as Ségur's "blanchi par les frimas" has
+**(a): the streams drawn first (question 253, in 8A), then `w-ice` and `w-stream`, still, no stream ice**: the meres' material varied (a frosted margin as Ségur's "blanchi par les frimas" has
 it, clearer and glossier toward the middle, a broad low-contrast variation, the shore ring feathered), their outlines, level and the 4E rule
 unchanged; the streams darker and less blue, their banks a little darker; nothing moves. (b) edge ice on the streams is not supported by
 anything read; (c) a flow is a design choice with its idle cost. The ponds the sources name and the build lacks are a geographic data task
@@ -1010,8 +1019,9 @@ question 250.
 ## 9. Findings carried from earlier reviews (checked on the build, not assumed)
 
 The brief names three; each was checked on the unchanged build by real clicks, keys and taps (`tools/stage8/carried.js`;
-`docs/stage8-evidence/carried.json`). The audit findings no roadmap step took up are checked after them, each against the current code.
-None is fixed here; each fix is proposed in PR 8A (section 10) or where it belongs.
+`docs/stage8-evidence/carried.json`). The audit findings no roadmap step took up are checked after them, each against the current code,
+and one fault this Part found in the build is recorded with them (9.5). None is fixed here; each fix is proposed in PR 8A (section 10) or
+where it belongs.
 
 ### 9.1 The headquarters view: the dossier and the centring
 
@@ -1075,6 +1085,28 @@ event-marker check extended to Enter and Esc by real keys, and the phone case to
 | **P-4** (polish) start-up cost of the relief grid | +0.45 s, recorded in 2E, not re-measured | not re-measured here | 8H, with the device route's load time |
 | **T-7** (minor) wall-clock thresholds | the map layer's 8 ms, the self-test's 2 ms pan budget, the harness's 20 s wait | **present** (`app.js:9409-9414`, `tools/visual/thresholds.js`) | Stage 8's own timing measures (section 8.3) are medians and 95th percentiles over runs, never a single frame |
 
+### 9.5 Found in this Part: the roads and the streams are never drawn
+
+**Measured** (`tools/stage8/stream-vis.js`, `stream-vis.json`): in each view the streams' material painted magenta, the banks' cyan and the
+roads' yellow, and the pixels the paint changes counted, as built, then drawn double-sided, then with no depth test as well. As built, every
+stream, bank and road ribbon covers **0 pixels** in every view probed [[SV-VIEWS]]; drawn double-sided they cover [[SV-DOUBLE]]. **Why (fact,
+`world.js:1144`):** `ribbon()` lays each ribbon's rows across the course and indexes its triangles `(o, p, o+1)`, which winds every one of them
+facing down whatever the course's direction; the stream, bank and road materials keep three.js's default front side, so seen from above,
+as every view of the map sees them, the renderer culls them all. What a visitor sees of a road or a stream is the ground shader's own cover
+classes under it (Stage 2F: the road class where the road raster says so, the water and damp classes along the streams), on the landscape
+and on the paper map alike. The same winding and front-side materials stand in every archived build from Stage 0 on (inference from the code,
+`archive/`; not measured on the archives). **Why no check saw it:** the self-test's 2F check (`roadDrape`, `app.js:8377`) holds every ribbon
+vertex at its lift above the drawn ground and every edge above it, and the start-up check (`app.js:8229`) holds the water's `visible` flag:
+both are true of ribbons the renderer never draws. It is the kind of check roadmap step 1 made strict elsewhere (decision 131: a check that
+cannot fail).
+
+**Proposed (8A, question 253):** the ribbons wound facing up (the index order reversed in `ribbon()`; the materials, widths, lifts and colours
+as they are), so that the roads, the streams and their banks are drawn on the landscape as 2F meant; the self-test's 2F check extended to
+count each ribbon class's drawn pixels where it lies, as `stream-vis.js` does, so that it fails on an undrawn ribbon; the captures before and
+after put to the owner in 8A, since the widths (the Goldbach 2.8 units, about 177 m at 1x; the roads 1.2-2.9) are symbol widths no one has
+yet seen drawn. It adds no draw call and no triangle (the ribbons are submitted to the renderer today and culled there), only the pixels they
+cover. The streams' look (`w-stream`, question 246) is 8F's, on ribbons that are drawn.
+
 ## 10. The implementation plan: PRs in order
 
 The brief's provisional order (presentation, ground cues, arrows and label stability; rendering preparation; troop detail and motion;
@@ -1089,7 +1121,7 @@ decisions 141, 199, 214 and 232 were.
 
 | PR | what | answers | needs |
 |---|---|---|---|
-| **8A** | the carried findings (section 9.1-9.3) | the brief's carried findings | question 251 |
+| **8A** | the carried findings (section 9.1-9.3); the roads and streams drawn (9.5) | the brief's carried findings; 9.5 | questions 251, 253 |
 | **8B** | the ground under the troops; the arrows and the event glyphs calmed | L1; A-5; 7.1, 7.6 | questions 239, 241 |
 | **8C** | the map layer in motion; the hierarchy by distance in the low views | L2; 7.2 | question 240 |
 | **8D** | rendering preparation: the blocks culled by their bounds; the kit's part attribute and the gait's shader hooks; the census held by a check; the device runs before | section 8 | questions 249, 250 |
@@ -1098,16 +1130,20 @@ decisions 141, 199, 214 and 232 were.
 | **8G** | buildings: the evidence step, then the villages, then the landmarks (a data task) | L5 | question 248 |
 | **8H** | integration: accessibility, the device runs after, the effects-off bracket, S-7, the open polish findings | all; 8.5; 9.4 | everything above |
 
-### 8A: the carried findings
+### 8A: the carried findings, and the roads and streams drawn
 - **Benefit:** the knowledge rule holds for the camera too (no centring on what the reading cannot see); a dossier's sources are one
-  link from its head; the timeline's tips stop outstaying their use.
-- **Systems:** `app.js` (the dossier's centring under a reading; the dossier's source block; `bindTimeTips`); the self-test, runtime-test.
-- **Evidence:** none (presentation); `carried.js` re-run as the before and after.
-- **Performance:** none.
+  link from its head; the timeline's tips stop outstaying their use; the roads and the streams drawn on the landscape, as 2F meant (9.5).
+- **Systems:** `app.js` (the dossier's centring under a reading; the dossier's source block; `bindTimeTips`; the self-test's `roadDrape`
+  check extended to the ribbons' drawn pixels); `world.js` (`ribbon()`'s index order); the self-test, runtime-test, `terrain-test.js`.
+- **Evidence:** none (presentation); `carried.js` and `stream-vis.js` re-run as the before and after.
+- **Performance:** none for the three carried findings; the ribbons add no draw call or triangle, only the pixels they cover.
 - **Acceptance:** under each reading, every 30 minutes, "Centre the map here" and the order of battle's rows centre on `readPos` within
   0.5 units, and nothing for a formation the reading does not know (runtime-test, as for 170 (b)); the dossier's source link inside the
   visible box at 1366 x 768 and on the phone (the self-test); Enter, then one Esc closes an event's dossier with no tip left shown (real keys),
-  and a tap on a phone shows no tip (the phone case); `carried.js` re-run showing each fixed.
+  and a tap on a phone shows no tip (the phone case); `carried.js` re-run showing each fixed; every stream, bank and road ribbon drawn where
+  it lies (`stream-vis.js`: drawn as built within 5% of drawn double-sided in the Goldbach views at 1x, 4x and 10.33x; the self-test's ribbon
+  count at each factor), its lift and edges as 2F's check holds them, and every check:visual limit held with the ribbons drawn (map text at
+  AA over them, the drops unchanged).
 
 ### 8B: the ground under the troops; the arrows and the glyphs
 - **Benefit:** the owner's L1 removed: no coloured wash under the troops by default; side and position still readable at every distance;
@@ -1210,7 +1246,7 @@ decisions 141, 199, 214 and 232 were.
 - **Evidence:** the device route after (desktop, phone, and an integrated-GPU laptop if one can be had); the effects-off bracket (section 8.5).
 - **Acceptance:** section 8.3's budgets on every device run; every check passing; the records.
 
-## 11. Questions for the owner (239-252)
+## 11. Questions for the owner (239-253)
 
 Each question names its options, a recommendation, what it would supersede or extend, and its cost. Nothing is decided by this document; the
 build stays as it is until the answers. A limit of `tools/visual/thresholds.js` moves only on the owner's word, in the PR that measures it.
@@ -1231,6 +1267,7 @@ build stays as it is until the answers. A limit of `tools/visual/thresholds.js` 
 | **250** | Budgets and device runs (section 8.3, 8.5) | (a) **the budgets of section 8.3** (the phone's heavy views at most 1.62 million triangles, the desktop's 4x frame at most 2.8 million and 900 calls, the map layer's pass not above the build's in the same motions by more than 0.5 ms at the median and 2 ms at the 95th percentile, the gait free of calls and triangles), **an integrated-GPU run before any PR adding more than 10%**, the device route before and after the PRs that change the drawing; (b) as (a), and **the bracketed effects-off run** on the phone (section 8.5) | **(b)** | keeps 236's `lowTier` | the owner's runs: about 15 minutes each |
 | **251** | The carried findings (section 9.1-9.3) | (a) **fix all three in 8A** as section 9 proposes: the centring on a formation the reading does not know withheld, the dossier's sources one link from its head, the timeline's tip hidden once its element is activated; (b) fix 9.1 only (it is the knowledge rule's); (c) record them | **(a)** | extends 170 (b)'s rule to the centring | PR 8A, small |
 | **252** | The plan (section 10) | (a) **PRs 8A-8H in that order**, each a draft for review with its measures; (b) another order | **(a)** | none | as section 10 |
+| **253** | The roads and streams drawn (section 9.5) | (a) **the ribbons wound facing up in 8A**, with their materials, widths and colours as they are, a self-test check that counts them drawn, and the captures before and after put to the owner; (b) as (a), and the widths set again first (the Goldbach 2.8 units, about 177 m at 1x; the roads 1.2-2.9); (c) left undrawn (the ground's cover classes carry the roads and streams, as today) | **(a)** | none: 2F meant them drawn; keeps 27 (the streams' lines where they are) | PR 8A; no draw call or triangle, the pixels they cover; the self-test's 2F check made able to fail |
 
 ## 12. Verification, and what remains to be measured
 
@@ -1258,6 +1295,8 @@ request (decision 132), this branch's included. The probes' prototypes never ent
   again, section 1.3's assessment can be checked against them.
 - **An integrated GPU.** Never measured (step 6's L1 was not run); section 8.3 makes it a condition before a PR that adds more than 10%.
 - **The effects-off question.** Handed on by step 6; the bracketed protocol of section 8.5 is ready, not run.
+- **The archived builds' ribbons (section 9.5).** That the roads and streams were never drawn in earlier builds is read from their code (the
+  same winding and front-side materials from Stage 0 on), not measured by drawing them.
 - **The sources of section 4.4, 5.2 and 6.2.** Read by machine readers in this session (page images where the README says so, else the text
   layer); none by a person; none entered into `appearance.js`, `data.js` or the registers: they are leads for the evidence steps of 8E, 8F
   and 8G, each to be graded there.

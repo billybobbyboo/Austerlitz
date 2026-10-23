@@ -1,0 +1,36 @@
+{
+ "build": "c4793156103b60bb74151c7d13dbdd9d",
+ "views": {
+  "goldbach-top": {
+   "base": {
+    "calls": 683,
+    "tris": 2477921,
+    "items": 61,
+    "placed": 1,
+    "dropped": 0
+   },
+   "w-stream": {
+    "info": {
+     "kind": "w-stream"
+    },
+    "calls": 683,
+    "tris": 2477921,
+    "items": 61,
+    "placed": 1,
+    "dropped": 0,
+    "restored": true
+   },
+   "w-streamice": {
+    "info": {
+     "kind": "w-streamice"
+    },
+    "calls": 683,
+    "tris": 2477921,
+    "items": 61,
+    "placed": 1,
+    "dropped": 0,
+    "restored": true
+   }
+  }
+ }
+}

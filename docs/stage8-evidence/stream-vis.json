@@ -1,0 +1,57 @@
+{
+ "build": "c4793156103b60bb74151c7d13dbdd9d",
+ "views": {
+  "goldbach-top": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   },
+   "doubleSided": {
+    "stream": 27710,
+    "bank": 41020,
+    "road": 64953,
+    "changed": 164331
+   },
+   "unhidden": {
+    "stream": 26474,
+    "bank": 40941,
+    "road": 66242,
+    "changed": 161719
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  },
+  "goldbach-top-1x": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   },
+   "doubleSided": {
+    "stream": 56106,
+    "bank": 70400,
+    "road": 106899,
+    "changed": 271122
+   },
+   "unhidden": {
+    "stream": 52562,
+    "bank": 70835,
+    "road": 103621,
+    "changed": 270008
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
+  }
+ }
+}
