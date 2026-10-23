@@ -58,7 +58,7 @@ assessment can be checked against them (section 12.2).
 - **L2, labels in motion (section 3; question 240).** Measured over 16 motions and 40,715 item-frames: the build makes 4,003 jumps (an item
   taking another place: 1,549 of them counters) and 165 level-of-detail switches, one pan from the Field vantage swaps 23 counters at once (its
   distance 3% inside the corps switch). Six stabilisers prototyped; recommended, a held layout while the view moves (beside its own anchor or
-  faded out), a level-of-detail band released at rest, and fades: 240 jumps (counters 19), no overlap among live items; a view reached
+  faded out), a level-of-detail band released at rest, and fades: 249 jumps (counters 19), no overlap among live items; a view reached
   without motion laid out exactly as today.
 - **L3, troops and motion (section 4; questions 242-245).** A richer kit prototyped on three formations: the guns change most and read as
   field pieces; infantry and cavalry change less than expected at the visitor's distances. A gait locked to the clock (the pose a function of
@@ -329,13 +329,16 @@ same motion without pattern, 2.8 to 97.7 ms for the same orbit, and is read as t
 |---|---|---|---|---|---|---|---|
 | none (the build) | 4,003 | 791 | 165 | 232 | 0 | 471 | 15 / 5 |
 | persist | 1,726 | 620 | 165 | 156 | 0 | 470 | 10 / 5 |
-| persist+hold | 1,611 | 487 | 105 | 74 | 0 | 453 | 0 / 5 |
+| persist+hold | 1,611 | 487 | 165 | 74 | 0 | 453 | 0 / 5 |
 | freeze | 307 | 153 | 165 | 27 | **506** | 452 | 123 / 68 |
 | anchor | 47 | 1,799 | 165 | 493 | 0 | 380 | 36 / 39 |
 | anchor2 | 247 | 1,143 | 165 | 162 | 0 | 365 | 44 / 84 |
-| **anchor2+band** | **240** | **1,168** | **105** | **178** | **0** | **366** | 36 / 88 |
+| **anchor2+band** | **249** | **1,156** | **165** | **171** | **0** | **366** | 45 / 76 |
 
-Per motion (jumps / pops / level-of-detail switches / flickers / overlap frames):
+The two banded stabilisers as proposed, the band released at rest (`label-motion-rest.json`). Measured first with the band held at rest
+too (`label-motion.json`, `label-motion-final.json`), they made 105 switches: the band defers 60 of the 165 to the moment the view stops,
+`hybrid-pan`'s 23-counter swap among them; it does not remove them. Per motion (jumps / pops / level-of-detail switches / flickers / overlap
+frames):
 
 | motion | none | persist | persist+hold | freeze | anchor | anchor2 | anchor2+band |
 |---|---|---|---|---|---|---|---|
@@ -364,9 +367,10 @@ lines, occlusion, the full solve when the view stops); they differ only in what 
 - **persist**: each item first tries the place it held in the last frame (its box against its anchor), then the build's own search. It halves
   the jumps but cannot stop an item being pushed when a higher one takes its place.
 - **persist+hold**: persist; an item that was not drawn in the last frame is drawn only after four frames with room (entering items too);
-  and, while the view moves, the distance the level-of-detail switches read is held until it has moved 8% (a band, `viewDist`). The band
-  takes the 23-counter flip out of the pan and about a third of the switches overall; the hold takes two thirds of the flicker and 38% of
-  the pops, and draws a few items fewer while the view moves (453 against 471); the jumps stay (1,611).
+  and, while the view moves, the distance the level-of-detail switches read is held until it has moved 8% (a band, `viewDist`), released
+  at rest. The band moves the switches a motion would make near a threshold to the moment the view stops (`hybrid-pan`'s 23-counter swap
+  happens once, as the pan ends); the hold takes two thirds of the flicker and 38% of the pops, and draws a few items fewer while the view
+  moves (453 against 471); the jumps stay (1,611).
 - **freeze**: while the view moves no item is placed anew; each keeps its box against its anchor. Few jumps, but boxes run into one another
   (506 frames with an overlap, against the layer's rule) and the solve at the end of the motion moves everything at once (123 jumps at rest).
   Rejected.
@@ -379,9 +383,9 @@ lines, occlusion, the full solve when the view stops); they differ only in what 
   candidates, no rings, so it never leaves its anchor's side), and a hidden item comes back only after two re-placement passes with room.
   The jumps fall to 247 (94% fewer; those left are an item moved to a place beside its own anchor, never across the screen: counters 19
   against the build's 1,549), the pops to 1,143 (45% more than the build's, 36% fewer than anchor's), the flicker below the build's (162).
-- **anchor2+band**: anchor2 with persist+hold's level-of-detail band. The band takes the corps switch out of the pans and about a third of the level-of-detail switches (105); the rest as anchor2: 240
-  jumps, 1,168 pops, 178 flickers, no overlap. About a fifth fewer items are drawn while the view moves (366 against 471, the medians summed);
-  at rest the full solve brings them back (88 reappearances in the frame after the motion, which the fades below soften).
+- **anchor2+band**: anchor2 with persist+hold's level-of-detail band. The band moves the level-of-detail switches to the moment the view stops; the rest as anchor2: 249 jumps (counters 19), 1,156 pops,
+  171 flickers, no overlap. About a fifth fewer items are drawn while the view moves (366 against 471, the medians summed); at rest they
+  come back (76 reappearances in the frame after the motion, and 45 items take a new place there), which the fades below soften.
 
 **Fades.** A pop is a placement event whatever the rule; what the eye minds is its suddenness. `protos/labels.js` adds `l-fade`: an item
 appearing or leaving fades over 180 ms of real time (a leaving item drawn at its last place, under the others, taking no pointer); none
@@ -396,8 +400,8 @@ taken moves only to a place hugging its anchor, else fades out; what has no room
 with room; the level-of-detail switches act on a distance held inside an 8% band. **At rest** the band is released (the switches read the true
 distance, so a view's corps or divisions never depend on how it was reached) and each item first tries the place it held, then the build's own
 search (persist). It is the only stabiliser that removes the darting the owner describes (counters' jumps from 1,549 to 19, all jumps from
-4,003 to 240, never across the screen) without breaking the layer's rules (no overlap among live items in any frame); its price is a fifth
-fewer items while the view moves and more items fading than popping today, which the fades make gentle. [[S3-REST]] **persist+hold** is the
+4,003 to 249, never across the screen) without breaking the layer's rules (no overlap among live items in any frame); its price is a fifth
+fewer items while the view moves and more items fading than popping today, which the fades make gentle. **persist+hold** is the
 lighter alternative (question 240 (c)): it holds a returning item four frames before drawing it, cuts the pops by 38% and the flicker by two
 thirds and takes the corps flip out of the pans, but leaves 1,611 jumps (40% of today's). **freeze** breaks the no-overlap rule (decision 24)
 and is not offered.
@@ -425,8 +429,8 @@ moves; at the end of each, one pass at rest.
 
 Measured by a motion block in `check:visual` (the 16 motions of `label-motion.js`, driven through the app's own camera functions as here, and
 the four that real input can drive, by real input), against limits set at the 8C build's measure and put to the owner then (decisions 141 and
-232's practice): jumps at most 300 (240 measured here), pops at most 1,300 (1,168), level-of-detail switches at most 120 (105), flickers at
-most 200 (178), no overlap among live items in any frame; the layer's pass not above the build's in the same motions on the same idle machine
+232's practice): jumps at most 300 (249 measured here), pops at most 1,300 (1,156), level-of-detail switches not more than the build's (165),
+flickers at most 200 (171), no overlap among live items in any frame; the layer's pass not above the build's in the same motions on the same idle machine
 by more than 0.5 ms at the median and 2 ms at the 95th percentile (the build: 1.1-3.0 ms and 1.8-12.3 ms, `label-motion.json`; the
 anchor2 runs here shared the machine with other browser jobs, so their times are not comparable; their counts are deterministic and are);
 in every check:visual view the drops and dropped ids identical to today's; the self-test's map-layer checks unchanged.
@@ -1023,8 +1027,8 @@ decisions 141, 199, 214 and 232 were.
 - **Evidence:** none.
 - **Performance:** the pass's CPU time held to section 8.3's budget (not above the build's in the same motions by more than 0.5 ms at the
   median and 2 ms at the 95th percentile, on an idle machine).
-- **Acceptance:** over the 16 motions of `label-motion.js`: jumps at most 300 (the prototype's 240, against the build's 4,003), pops at most
-  1,300, level-of-detail switches at most 120, no overlap among live items in any frame, flickers at most 200; at rest every view's drops and
+- **Acceptance:** over the 16 motions of `label-motion.js`: jumps at most 300 (the prototype's 249, against the build's 4,003), pops at most
+  1,300, level-of-detail switches not more than the build's 165, no overlap among live items in any frame, flickers at most 200; at rest every view's drops and
   dropped ids identical to the build's in every view reached without motion, the never-dropped items never hidden while moving, every dropped item
   reachable by hover and keyboard (decision 39), a focused item never hidden (step 3's A-2); the limits put to the owner as measured on the 8C
   build.
