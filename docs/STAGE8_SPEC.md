@@ -39,6 +39,7 @@ headless Chromium with software WebGL (SwiftShader), as the Stage 0 harness and 
 | `pixdiff.py` | 4-6 | how much of a frame each prototype changes: the pixels of the kept captures whose grey level differs by more than 40 of 255 |
 | `label-far.js` | 7.2 | which drawn items of the map layer stand beyond 1.5 times the eye's distance to its target (the hierarchy by distance's reach) |
 | `stream-vis.js` | 5, 9.5 | how much of the streams, their banks and the roads the build draws: the ribbons painted and their pixels counted, as built, double-sided, and with no depth test |
+| `toast.js` | 9.4 | the phase's toast against the view switch, after a real key on the time rail, in Study and Watch at three sizes |
 | `clip-motion.py` | 4.3, 5.3 | what moves in the kept recordings: each frame against its clip's first and the variants against each other, counted on the committed clips (no page) |
 | `protos/ground.js`, `labels.js`, `figures.js`, `water.js`, `buildings.js`, `arrows.js` | 2-7 | the prototypes, each an in-page module registering `window.__p8[id]` with `install` and `uninstall` |
 
@@ -71,7 +72,7 @@ assessment can be checked against them (section 12.2).
   field pieces (spoked wheels, trails, their limbers and teams behind them); infantry and cavalry change little at the visitor's distances;
   on every formation the prototype's kit would add an estimated 34-52% to the frame, so it is proposed only with culling and a lighter kit
   drawn near the eye. A gait locked to the clock (its phase a function of the modelled track: still when paused, the same when scrubbed;
-  faded out above 3.2 cycles a second; none under reduced motion or below 1 km/h), and why: at ½x a drawn formation already moves 2.6-5 times
+  faded out above 3.2 cycles a second, a formation's parts together; none under reduced motion or below 1 km/h), and why: at ½x a drawn formation already moves 2.6-5 times
   as fast for its size as a man walks, at 4x 20-40 times. Part of the floating is the model's: 52 of its 147 legs drift at under 1 km/h for
   two hours or more, because a move no source dates is spread over its interval (decision 45); the gait leaves them still. The artillery's
   sources (Gassendi 1809, IV Corps' order of 25 October 1805, Teuber, Nilus) give the wheels' proportion, the coffret, one driver a vehicle
@@ -90,11 +91,12 @@ assessment can be checked against them (section 12.2).
 - **Performance (section 8; questions 249, 250).** Budgets stated before anything is built (the phone's heavy views at most 1.62 million
   triangles; an integrated-GPU run before any PR adds more than 10%); block culling first; the gait free of calls and triangles; the
   effects-off question as a bracketed run.
-- **Carried findings, and one found here (section 9; questions 251, 253).** All three carried findings are still present: under a reading,
+- **Carried findings, and two found here (section 9; questions 251, 253).** All three carried findings are still present: under a reading,
   "Centre the map here" goes to the true position of a formation the reading does not know; the dossier's sources are at its end (6,000 px
   down); a timeline tip stays after its element is activated (an extra Esc; on a phone it stays on the screen). Of the audit's unassigned
   findings, A-5, S-5, S-7, A-6, G-2, P-2 and T-7 are still present and P-3 partly. Found here (9.5): the landscape draws none of its road
-  or stream ribbons, and the self-test's checks of them, being geometric, cannot see it.
+  or stream ribbons, and the self-test's checks of them, being geometric, cannot see it; and (9.6) in Study the one phase message's first
+  words stand under the view switch.
 - **The plan (section 10; question 252):** PRs 8A-8H; nothing implemented here.
 
 ## 0. What binds Stage 8
@@ -590,7 +592,9 @@ give, and which, is a design choice.
   3 km/h 1.2, at 5 km/h 2.0; cavalry at a walk 1.0; teams 1.0). The feet slide by the ratio of the two scales (about 2 to 4 at ½x): the
   gait says "marching", it does not measure the ground;
 - **the swing fades out where it would be a blur**: full up to 3.2 cycles a second on screen, nothing above 4.8 (between, in proportion). At
-  ½x and 1x the march is seen; at 4x the formations glide as today, which is honest about a clock running 2,400 times faster than the day;
+  ½x and 1x the march is seen; at 4x the formations glide as today, which is honest about a clock running 2,400 times faster than the day.
+  The prototype fades each part by its own cycle, so on a slow leg a formation's mounted officers, whose stride is longer, can still step at
+  4x while its infantry glide (the 4x recording below); built, a formation's parts fade together, by its fastest-cycling part;
 - **a formed body steps together** (infantry in cadence: a design choice), horses each on their own beat (a fixed phase per horse, set once;
   a rider's and a driver's their horse's); the
   walk's four beats (left hind, left fore, right hind, right fore) and a trot (diagonal pairs) above 8 km/h of modelled speed (a design
@@ -603,11 +607,29 @@ give, and which, is a design choice.
 when the clock is reached from three earlier clocks (all three formations); unchanged while the clock stands and frames are drawn; no swing
 on a halted formation or under reduced motion. Saint-Hilaire's climb (08:45-09:15) runs at about 5 km/h: 2.0 cycles a second at ½x, full
 swing; 4.0 at 1x, half faded; none at 2x and 4x (the cycles a second `gait-check.json` records for Saint-Hilaire, 0.82 at ½x, are
-its mounted officers', whose stride is longer; the infantry's follow from the amplitude it records). The guns on the heights (13:45-14:30): 0.7 cycles a second at ½x, 1.4 at 1x and 2.8 at 2x,
-full swing; none at 4x.
+its mounted officers', whose stride is longer; the infantry's follow from the amplitude it records). The guns on the heights (13:45-14:30):
+0.7 cycles a second at ½x, 1.4 at 1x and 2.8 at 2x, full swing; none at 4x.
 
-**Recorded** (`docs/stage8-evidence/clips/`; each the build above and `f-gait` below over the same frames, at ½x and 10 frames a second, the
-camera tracking the formation 24-26 units out; the clock set each frame as Play sets it). `inf-march.mp4`, Saint-Hilaire's climb (the clock 08:47 to 09:05, 37 frames): it opens in the thinning valley fog as the division closes from line into column and turns to its heading (the build's own easing, `SHAPE` and `WHEEL`); then, in the build's half, the battalions and their mounted officers slide up the slope, no man or horse moving; in `f-gait`'s the men's legs swing in cadence (at about 5 km/h modelled, 2.0 cycles a second: five frames a cycle), the officers' horses walk, each on its own beat, the riders bobbing with them, and the column reads as on the march, its feet still sliding over the ground (the ratio above). A movement arrow's ribbon lies across the battalions in every frame (section 7.1). [[BAT-LIMBER]] [[MARCH-4X]] [[CAV-CLIP]]
+**Recorded** (`docs/stage8-evidence/clips/`; the build above and the prototype below over the same frames, at ½x and 10 frames a
+second, the camera tracking the formation 24-26 units out; the clock set each frame as Play sets it):
+- `inf-march.mp4`, Saint-Hilaire's climb (the clock 08:47 to 09:05, 37 frames): it opens in the thinning valley fog as the division closes
+  from line into column and turns to its heading (the build's own easing, `SHAPE` and `WHEEL`); then, in the build's half, the battalions
+  and their mounted officers slide up the slope, no man or horse moving; in `f-gait`'s the men's legs swing in cadence (at about 5 km/h
+  modelled, 2.0 cycles a second: five frames a cycle), the officers' horses walk, each on its own beat, the riders bobbing with them, and
+  the column reads as on the march, its feet still sliding over the ground (the ratio above). A movement arrow's ribbon lies across the
+  battalions in every frame (section 7.1).
+- [[BAT-LIMBER]]
+- `inf-march-4x-figures_f-gait.mp4`, the same climb at 4x, the prototype alone (08:47 to 09:27 in eleven frames, 1.1 seconds; the recorder
+  steps the clock itself, so the speed buttons still show ½x): the infantry glide as the build's blocks do, their cycle far above the limit
+  (16 a second on the climb at 5 km/h) and faded out. Their mounted officers, whose horses' stride is longer, are faded out on the climb
+  (6.6 cycles a second) but not after it: at the clip's end the division is on a slower leg (about 2.5 km/h; the gait reports 3.3 cycles a
+  second for the officers at 09:27, `clips/record-log.txt`), and their horses step at 92% of the swing, three frames a cycle, a flicker
+  beside a gliding column. 8E should fade a formation's swing as one, by its fastest-cycling part, so that a block never half-steps.
+- `cav-move.mp4`, the Guard cavalry's march (10:29 to 10:47, 37 frames; 4.85 km/h modelled, 0.8 cycles a second at ½x; `f-gait-gc`, the same
+  kit and gait put on the Guard cavalry): in the build's half the squadrons slide past Girzikowitz, every horse's four straight legs still;
+  in the prototype's each horse walks on its own beat, its legs at another point of the stride than its neighbours', its rider bobbing with
+  it: horses walking, their hooves still sliding. About 10:40 the march runs through Girzikowitz, its houses standing among the squadrons:
+  the build has no rule for a formation in a village, and its men and the houses are drawn through each other.
 
 **The drift the gait must not animate** (`tools/stage8/legs.js`, `legs.json`, the model's own legs): of the 147 legs the clock moves, 92 run
 at under 1 km/h, 52 of them for two hours or more: Nansouty's division covers 1.85 km between 04:00 and 10:30 (0.28 km/h), Saint-Hilaire's
@@ -618,7 +640,8 @@ width in an hour of the clock is that statement, not a march. **The gait draws n
 not a march), so it never animates a move the sources do not date; a dated departure, where a text gives one, remains a data task under
 decisions 40-45.
 
-What it does not do: no figure turns, kneels, fires, falls or runs; no casualty is drawn and no formation thins with losses (`docs/VISUAL_AUDIT.md`
+What it does not do: no figure turns, kneels, fires, falls or runs; no casualty is drawn and no formation thins with losses
+(`docs/VISUAL_AUDIT.md`
 opportunity 4: "Do not animate losses"); the smoke, dust and sway are as before.
 
 ### 4.4 What the sources say of the artillery (leads, `docs/stage8-evidence/leads.md` topic 1; none yet entered in `appearance.js`)
@@ -673,12 +696,13 @@ kit is built and the owner can judge the close views with it.
   shown as if it were a measured one); the carriage one colour (decision 109); each reading registered in `appearance.js` first (a data task
   inside 8E). (b) as (a), with each army's carriage colour where sourced (French olive, Austrian ochre; the Russian generic), extending 109.
   **Recommended: (a).**
-- **The gait (244):** the rule of section 4.3 as prototyped. (b) no gait; (c) a gait in real time, independent of the clock (rejected here:
+- **The gait (244):** the rule of section 4.3 as prototyped, but for its fade, which acts on a formation's parts together (the 4x
+  recording). (b) no gait; (c) a gait in real time, independent of the clock (rejected here:
   it would step while the clock stands and differ when scrubbed). **Recommended: (a).**
 - **Acceptance (8E):** every 6C and 6D self-test check passing with its meaning unchanged (each figure's class colours, headgear, legwear and
   cuirass; the standards' carriers, counts, cloths, proportions, finials, the ratio at 1x, 4x and 10.33x); the gait's rule held by the
   self-test (`tools/stage8/gait-check.js`'s cases made checks: the pose identical from three paths to a clock, still while paused, none on a
-  halted formation or under reduced motion, the fade above 3.2 cycles a second); the figures seated on the drawn ground in every pose within
+  halted formation or under reduced motion, the fade above 3.2 cycles a second, a formation's parts together); the figures seated on the drawn ground in every pose within
   the existing tolerance; the battery's driver count, wheel ratio and coffret as their registered readings; section 8.3's budgets.
 
 ## 5. Ice, shorelines and streams (the owner's note L4; the brief's priority 4)
@@ -1048,8 +1072,8 @@ question 250.
 
 The brief names three; each was checked on the unchanged build by real clicks, keys and taps (`tools/stage8/carried.js`;
 `docs/stage8-evidence/carried.json`). The audit findings no roadmap step took up are checked after them, each against the current code,
-and one fault this Part found in the build is recorded with them (9.5). None is fixed here; each fix is proposed in PR 8A (section 10) or
-where it belongs.
+and two faults this Part found in the build are recorded with them (9.5, 9.6). None is fixed here; each fix is proposed in PR 8A (section
+10) or where it belongs.
 
 ### 9.1 The headquarters view: the dossier and the centring
 
@@ -1143,6 +1167,20 @@ after put to the owner in 8A, since the widths are symbol widths no one has yet 
 the brooks 1.4, on banks of 4.6, 5.0 and 2.4; the roads 1.2-2.9 on edges 1.1 wider, 2.3-4.0). It adds no draw call and no triangle (the ribbons are submitted to the renderer today and culled there), only the pixels they
 cover. The streams' look (`w-stream`, question 246) is 8F's, on ribbons that are drawn.
 
+### 9.6 Found in this Part: the phase's message under the view switch
+
+**Measured** (`tools/stage8/toast.js`, `toast.json`, `toast/`): one phase carries a message (`PHASES[3].flash`, "The sun of Austerlitz, as
+memoirs call it", at 08:45), which `flash()` shows for 3.4 s whenever the clock enters the phase other than instantly: Play, the time
+rail's keys, a phase's or an act's button (`setClock`, `setPhase`). In Study the toast is centred on the free area beside the docked rail
+(`#toast`: `left: calc(50% + var(--rail)/2)`, `top: 26px`, z-index 40) and the view switch on the window (`#viewmode`: `left: 50%`,
+`top: 14px`, z-index 42). After a real PageDown on the time rail from 08:40, at 1600 x 900, 1366 x 768 and 1280 x 720 alike, the two boxes
+overlap by 77 x 22 px, 17.6% of the toast's, and the switch is drawn over it: the message reads "...f Austerlitz, as memoirs call it", its
+first words hidden (`toast/*-study.jpg`). In Watch the switch stands in the timeline's control row and nothing overlaps. The probe clears
+the toast's timer before its capture (a software-rendered capture outlasts the 3.4 s), and its page, as every probe's here, has the CSS
+transitions off (`tools/stage7/lib.js`); the boxes depend on neither. **Proposed
+(8H):** the toast placed clear of the switch (below it, or the switch's box taken as its obstacle), and `toast.js`'s overlap made a check
+in Study and Watch at each size the harness measures.
+
 ## 10. The implementation plan: PRs in order
 
 The brief's provisional order (presentation, ground cues, arrows and label stability; rendering preparation; troop detail and motion;
@@ -1164,7 +1202,7 @@ decisions 141, 199, 214 and 232 were.
 | **8E** | the troops: the kit for every class, the artillery, the gait; the facing per leg (S-5) | L3; S-5 | questions 242-245; 8D |
 | **8F** | the water; the woods and the near ground | L4; 7.3, 7.4 | questions 246, 247 |
 | **8G** | buildings: the evidence step, then the villages, then the landmarks (a data task) | L5 | question 248 |
-| **8H** | integration: accessibility, the device runs after, the effects-off bracket, S-7, the open polish findings | all; 8.5; 9.4 | everything above |
+| **8H** | integration: accessibility, the device runs after, the effects-off bracket, S-7, the open polish findings | all; 8.5; 9.4; 9.6 | everything above |
 
 ### 8A: the carried findings, and the roads and streams drawn
 - **Benefit:** the knowledge rule holds for the camera too (no centring on what the reading cannot see); a dossier's sources are one
@@ -1244,7 +1282,7 @@ decisions 141, 199, 214 and 232 were.
   within section 8.3's budgets.
 - **Acceptance:** every 6C and 6D check passes unchanged in meaning (class colours, headgear, cuirasses, standards' measures, the ratio of
   decision 106 within 2%); the gait's rule held by the self-test at 1x, 4x and 10.33x: the pose identical at a clock reached from three earlier
-  clocks, still with the clock stopped, no swing on a halted formation or under reduced motion, the fade above 3.2 cycles a second; figures
+  clocks, still with the clock stopped, no swing on a halted formation or under reduced motion, the fade above 3.2 cycles a second, a formation's parts faded together (by its fastest-cycling part); figures
   seated on the drawn ground within the existing tolerance in every pose; the budgets of section 8.3.
 
 ### 8F: water, woods and the near ground
@@ -1277,11 +1315,12 @@ decisions 141, 199, 214 and 232 were.
   village cover class not below today's: 57.0% of the build's, 59.2% of the prototype's); every landmark at its sourced position within its grade's tolerance, with its claim in the dossier.
 
 ### 8H: integration
-- **Benefit:** the whole measured together, on the owner's devices; the open polish findings closed (section 9.4's, and the phase toast
-  that lies partly under the view switch at 1280 x 720, section 3.3's recordings).
-- **Systems:** all; `check:visual`, `check:contrast`, `check:selftest`.
+- **Benefit:** the whole measured together, on the owner's devices; the open polish findings closed (section 9.4's, and the phase's
+  message whose first words stand under the view switch in Study, section 9.6).
+- **Systems:** all; `style.css` (`#toast`); `check:visual`, `check:contrast`, `check:selftest`.
 - **Evidence:** the device route after (desktop, phone, and an integrated-GPU laptop if one can be had); the effects-off bracket (section 8.5).
-- **Acceptance:** section 8.3's budgets on every device run; every check passing; the records.
+- **Acceptance:** section 8.3's budgets on every device run; every check passing; the phase's message clear of the view switch in Study and
+  Watch at every size the harness measures (`toast.js`'s overlap 0, made a check); the records.
 
 ## 11. Questions for the owner (239-253)
 
@@ -1295,7 +1334,7 @@ build stays as it is until the answers. A limit of `tools/visual/thresholds.js` 
 | **241** | The arrows and the event glyphs (section 7.1, 7.6; A-5) | (a) **each arrow's width capped at 16 px on screen in the two perspective presentations, the arrows depth-tested against the drawn ground alone, their fill at 0.62 of today's opacity, the glyphs capped at 64 px** (`a-calm` with section 7.1's two changes: the ground-only depth test, and the lines of battle, boundaries and halt bars keeping their widths and opacity); (b) the cap only (`a-cap`); (c) as today | **(a)** | decision 57's value (192 px) and 2C's "over everything" (the depth test); keeps 1, 15, 20, 21, 83 (form, dash, chevron, boundaries, draw-on) | PR 8B; `binding-test.js` unchanged; the eye-level cases read against a depth-only frame |
 | **242** | The figures' kit (L3; section 4) | (a) **`f-kit` for every class**: the man, the horse and the rider redrawn in more parts, every colour, headgear and cuirass from the existing claims; (b) the artillery only; (c) as today | **(a)** | extends 6C's shapes (DESIGN); keeps 97, 100, 102, 103, 104, 106, 109 | PR 8E; on every formation the prototype's kit would add 34-52% to the 4x frame: only with culling (249), a kit of at most 1.3 times the build's per man, and the rich kit where a man is 16 px or more on screen, within section 8.3's budgets |
 | **243** | The artillery (L3; section 4.4) | (a) **the generic field piece**: spoked wheels in Gassendi's proportion, a bracket trail, the French coffret between the cheeks when limbered, the Allied limbers' box, one driver a vehicle (two for six horses: IV Corps' order, an authorisation), the limbers and teams behind the deployed guns, four horses a drawn gun, one carriage colour, the switch between the groups as today; each reading registered in `appearance.js` first; (b) as (a), with each army's carriage colour where sourced (French olive, Austrian ochre, the Russian generic); (c) as today | **(a)** | (b) would extend 109 ("one colour unless each army's is sourced": two of three are) | PR 8E with its data task (the readings of `leads.md` topic 1, graded and registered) |
-| **244** | The gait (L3; section 4.3) | (a) **the clock's gait**: the swing's phase a function of the clock alone (the modelled track's distance over a design stride), its amplitude the play speed's (faded out above 3.2 cycles a second on screen, eased when the speed changes), none under reduced motion, when halted, or below 1 km/h (the drift of an undated leg, decision 45); (b) no gait; (c) a gait in real time | **(a)** | none (VISUAL_AUDIT's "do not animate losses" kept: no figure falls) | PR 8D (the shader hooks), 8E; no draw call, no triangle |
+| **244** | The gait (L3; section 4.3) | (a) **the clock's gait**: the swing's phase a function of the clock alone (the modelled track's distance over a design stride), its amplitude the play speed's (faded out above 3.2 cycles a second on screen, a formation's parts together, eased when the speed changes), none under reduced motion, when halted, or below 1 km/h (the drift of an undated leg, decision 45); (b) no gait; (c) a gait in real time | **(a)** | none (VISUAL_AUDIT's "do not animate losses" kept: no figure falls) | PR 8D (the shader hooks), 8E; no draw call, no triangle |
 | **245** | Facings (decision 104; section 4.6) | (a) **keep decision 104**: no facings; (b) class-level facings where the table settles them at A or B, after a data task gives them colour classes (today the French line and the Guard's foot grenadiers; the Allied classes' facings are regimental) | **(a)**, reconsidered after 8E | (b) extends 104 | none for (a) |
 | **246** | Water (L4; section 5) | (a) **the meres' ice varied in material and light** (`w-ice`: a frosted margin easing into clearer, glossier ice; a broad tonal variation; a stronger reflection at grazing angles; the shore ring feathered), **the streams darker and less blue** (`w-stream`), **still, no stream ice**; (b) as (a) with edge ice on the streams; (c) as (a) with the streams flowing; (d) as today | **(a)** | keeps 27 (outlines), §F.1's rule (no crack, hole, snow or figure), 79 (the colours' tables) | PR 8F; (c) would make an idle page draw about 11 frames a second whenever a stream is in view |
 | **247** | Woods and the near ground (section 7.3, 7.4) | (a) **airier deciduous crowns** and a little more variation, the conifer shares kept until sourced; **a detail layer near the eye** on the ground (no new class or colour); (b) the woods only; (c) as today | **(a)** | keeps 2F's cover checks and "bare winter trees, frost on north-facing slopes, crop strips" | PR 8F; the trees' triangles per tree held at or under today's |
