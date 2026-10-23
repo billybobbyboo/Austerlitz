@@ -1,0 +1,24 @@
+{
+ "build": "c4793156103b60bb74151c7d13dbdd9d",
+ "views": {
+  "inf-front": {
+   "f-facings": {
+    "info": {
+     "formations": [
+      "sthilaire",
+      "nansouty",
+      "heightguns"
+     ],
+     "gait": false,
+     "materials": 0
+    },
+    "calls": 697,
+    "tris": 2538127,
+    "items": 59,
+    "placed": 6,
+    "dropped": 0,
+    "restored": true
+   }
+  }
+ }
+}
