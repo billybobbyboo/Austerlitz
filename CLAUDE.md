@@ -504,4 +504,6 @@ L3, the wrapper page on the same desktop, recorded (§11); the iPhone's P1 and P
 change gives it room, `MAPCAM.syncPanels`, and its scale bar kept below 1080 px (found by the new case `phone-390-paper`); `phone-402x714-explore`;
 both cases' limits as measured; the phone route, `perf-run.html?route=phone`, with its rule stated before the runs (§14.1), merged (#61). The owner's
 P3 and P4 (§15): no candidate cures; by the rule's rule 3, density 1.0 with the sun casting no shadow, built for `lowTier` (`pxRatio`,
-`sun.castShadow`; gains 1.47-1.55); P5, one run of the route of §2 on the phone with it, remains. The next owner decision is 239.
+`sun.castShadow`; gains 1.47-1.55), merged (#62); P5 on the phone with it (§16): the heavy views and Play at or near 60 frames a second, one
+heavy segment of 13 dropping against 5-10 before; item 1 complete and roadmap step 6 done (handed on, not decided: Visual effects off was never
+faster on the phone, its segment confounded with the phone's slowing). The next owner decision is 239.
