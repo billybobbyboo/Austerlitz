@@ -36,7 +36,7 @@ headless Chromium with software WebGL (SwiftShader), as the Stage 0 harness and 
 | `carried.js` | 9 | the three carried findings, by real clicks, keys and taps |
 | `gait-check.js`, `legs.js` | 4.3 | the gait's rule checked in the page; every leg of the movement model with its duration and speed (no page) |
 | `sheets.py` | all | the comparison sheets: the build and its prototypes side by side, from the captures |
-| `protos/ground.js`, `labels.js`, `figures.js`, `water.js`, `buildings.js` | 2-6 | the prototypes, each an in-page module registering `window.__p8[id]` with `install` and `uninstall` |
+| `protos/ground.js`, `labels.js`, `figures.js`, `water.js`, `buildings.js`, `arrows.js` | 2-7 | the prototypes, each an in-page module registering `window.__p8[id]` with `install` and `uninstall` |
 
 Their outputs, screenshots and recordings are in `docs/stage8-evidence/` (its `README.md` lists every file).
 
@@ -128,12 +128,12 @@ an anchor, a time, a strength, a village or a mere.
 
 ### 1.1 The captures
 
-29 views were captured from the unchanged build at 1600 x 900 (`tools/stage8/stills.js`; `docs/stage8-evidence/views/<view>-base.jpg`, the
+30 views were captured from the unchanged build at 1600 x 900 (`tools/stage8/stills.js`; `docs/stage8-evidence/views/<view>-base.jpg`, the
 counts beside each in `views-base.json`): the harness's own cases by name (the Field vantage, the Overview, the low Pratzen view at 1x, 4x
 and 10.33x, close on Sokolnitz, Landscape with counters, the paper map as entered and close, phase 8's Overview, the eye level, a selection)
 and close views chosen from the data: Saint-Hilaire's division climbing at 09:20, Nansouty's cuirassiers at 10:55, the guns on the heights
 unlimbered at 13:20 and hitched up at 14:10, the Satschan mere at 15:00, the Goldbach at 08:20, Telnitz, Sokolnitz, Pratzen, the pheasantry
-wood and a low view east at noon. Every 4x landscape view here is 2.47-2.52 million triangles in 713-832 draw calls (step 6's census found 2.48-2.53
+wood, the wood above the Satschan mere at 14:00 (`ice-sun`) and a low view east at noon. Every 4x landscape view here is 2.47-2.52 million triangles in 713-832 draw calls (step 6's census found 2.48-2.53
 million and 740-857 in its own views, `docs/STEP6_SPEC.md` §3.1: nothing is culled); 1x 0.23 million, the paper map 0.20-0.24, the eye level 0.49.
 
 ### 1.2 What each picture is made of
@@ -342,12 +342,13 @@ same motion without pattern, 2.8 to 97.7 ms for the same orbit, and is read as t
 The two banded stabilisers as proposed, the band released at rest (`label-motion-rest.json`). Measured first with the band held at rest
 too (`label-motion.json`, `label-motion-final.json`), they made 105 switches: the band defers 60 of the 165 to the moment the view stops,
 `hybrid-pan`'s 23-counter swap among them; it does not remove them. Per motion (jumps / pops / level-of-detail switches / flickers / overlap
-frames):
+frames; a motion's counts include its frame at rest, so the switches a band defers are counted in the motion that deferred them; the two
+banded columns are `label-motion-rest.json`'s):
 
 | motion | none | persist | persist+hold | freeze | anchor | anchor2 | anchor2+band |
 |---|---|---|---|---|---|---|---|
-| `hybrid-pan` | 128 / 39 / 23 / 9 / 0 | 74 / 34 / 23 / 7 / 0 | 69 / 27 / 0 / 6 / 0 | 6 / 7 / 23 / 0 / 48 | 4 / 90 / 23 / 20 / 0 | 8 / 62 / 23 / 9 / 0 | 7 / 68 / 0 / 13 / 0 |
-| `hybrid-zoom` | 519 / 198 / 56 / 67 / 0 | 206 / 123 / 56 / 36 / 0 | 206 / 87 / 24 / 13 / 0 | 7 / 13 / 56 / 3 / 47 | 7 / 202 / 56 / 49 / 0 | 26 / 147 / 56 / 16 / 0 | 28 / 164 / 24 / 28 / 0 |
+| `hybrid-pan` | 128 / 39 / 23 / 9 / 0 | 74 / 34 / 23 / 7 / 0 | 69 / 27 / 23 / 6 / 0 | 6 / 7 / 23 / 0 / 48 | 4 / 90 / 23 / 20 / 0 | 8 / 62 / 23 / 9 / 0 | 8 / 62 / 23 / 9 / 0 |
+| `hybrid-zoom` | 519 / 198 / 56 / 67 / 0 | 206 / 123 / 56 / 36 / 0 | 206 / 87 / 56 / 13 / 0 | 7 / 13 / 56 / 3 / 47 | 7 / 202 / 56 / 49 / 0 | 26 / 147 / 56 / 16 / 0 | 26 / 158 / 56 / 25 / 0 |
 | `hybrid-orbit` | 490 / 125 / 0 / 33 / 0 | 200 / 90 / 0 / 21 / 0 | 187 / 48 / 0 / 8 / 0 | 24 / 5 / 0 / 0 / 58 | 3 / 231 / 0 / 73 / 0 | 14 / 171 / 0 / 38 / 0 | 14 / 171 / 0 / 38 / 0 |
 | `hybrid-glide` | 372 / 119 / 12 / 37 / 0 | 175 / 107 / 12 / 29 / 0 | 158 / 64 / 12 / 14 / 0 | 19 / 6 / 12 / 0 / 36 | 3 / 138 / 12 / 42 / 0 | 18 / 79 / 12 / 9 / 0 | 18 / 79 / 12 / 9 / 0 |
 | `hybrid-play` | 245 / 71 / 2 / 16 / 0 | 87 / 63 / 2 / 10 / 0 | 86 / 55 / 2 / 8 / 0 | 87 / 63 / 2 / 10 / 0 | 2 / 160 / 2 / 31 / 0 | 15 / 120 / 2 / 8 / 0 | 15 / 120 / 2 / 8 / 0 |
@@ -355,8 +356,8 @@ frames):
 | `paper-zoom` | 572 / 38 / 0 / 14 / 0 | 285 / 37 / 0 / 11 / 0 | 254 / 25 / 0 / 7 / 0 | 0 / 0 / 0 / 5 / 57 | 7 / 157 / 0 / 50 / 0 | 17 / 125 / 0 / 29 / 0 | 17 / 125 / 0 / 29 / 0 |
 | `paper-glide` | 283 / 21 / 27 / 7 / 0 | 112 / 12 / 27 / 4 / 0 | 86 / 22 / 27 / 0 / 0 | 1 / 12 / 27 / 1 / 23 | 0 / 85 / 27 / 24 / 0 | 7 / 45 / 27 / 2 / 0 | 7 / 45 / 27 / 2 / 0 |
 | `paper-play` | 117 / 6 / 2 / 0 / 0 | 20 / 4 / 2 / 0 / 0 | 20 / 4 / 2 / 0 / 0 | 20 / 4 / 2 / 0 / 0 | 1 / 45 / 2 / 7 / 0 | 4 / 29 / 2 / 2 / 0 | 4 / 29 / 2 / 2 / 0 |
-| `land-pan` | 108 / 5 / 2 / 1 / 0 | 67 / 3 / 2 / 0 / 0 | 59 / 3 / 0 / 0 / 0 | 18 / 2 / 2 / 0 / 52 | 9 / 55 / 2 / 15 / 0 | 18 / 31 / 2 / 3 / 0 | 12 / 31 / 0 / 3 / 0 |
-| `land-zoom` | 347 / 50 / 33 / 22 / 0 | 144 / 39 / 33 / 17 / 0 | 134 / 52 / 30 / 6 / 0 | 5 / 3 / 33 / 8 / 51 | 5 / 167 / 33 / 46 / 0 | 32 / 92 / 33 / 14 / 0 | 30 / 94 / 30 / 14 / 0 |
+| `land-pan` | 108 / 5 / 2 / 1 / 0 | 67 / 3 / 2 / 0 / 0 | 59 / 3 / 2 / 0 / 0 | 18 / 2 / 2 / 0 / 52 | 9 / 55 / 2 / 15 / 0 | 18 / 31 / 2 / 3 / 0 | 18 / 31 / 2 / 3 / 0 |
+| `land-zoom` | 347 / 50 / 33 / 22 / 0 | 144 / 39 / 33 / 17 / 0 | 134 / 52 / 33 / 6 / 0 | 5 / 3 / 33 / 8 / 51 | 5 / 167 / 33 / 46 / 0 | 32 / 92 / 33 / 14 / 0 | 34 / 94 / 33 / 14 / 0 |
 | `land-orbit` | 438 / 52 / 0 / 15 / 0 | 167 / 42 / 0 / 12 / 0 | 165 / 27 / 0 / 5 / 0 | 27 / 3 / 0 / 0 / 59 | 0 / 178 / 0 / 62 / 0 | 37 / 81 / 0 / 13 / 0 | 37 / 81 / 0 / 13 / 0 |
 | `land-play` | 205 / 19 / 2 / 2 / 0 | 77 / 18 / 2 / 0 / 0 | 77 / 14 / 2 / 0 / 0 | 77 / 18 / 2 / 0 / 0 | 2 / 121 / 2 / 30 / 0 | 20 / 77 / 2 / 12 / 0 | 20 / 77 / 2 / 12 / 0 |
 | `low-pan` | 24 / 4 / 0 / 0 / 0 | 17 / 4 / 0 / 0 / 0 | 17 / 6 / 0 / 0 / 0 | 5 / 6 / 0 / 0 / 0 | 1 / 24 / 0 / 5 / 0 | 5 / 12 / 0 / 0 / 0 | 5 / 12 / 0 / 0 / 0 |
@@ -478,7 +479,8 @@ kept within 2% of the build's, so the standards' ratio (decision 106) is unchang
 
 **What they show** (`docs/stage8-evidence/figures/` at the views' distances; `figures-close/` closer, with the build beside each):
 - **The guns are where the kit changes most**, partly because the prototype also draws what the build does not (the limbers and teams
-  behind the deployed guns, the coffret): the frame's triangles rise by 72,500 in `bat-front`, all three formations' kits together. The build's battery is a row of dark tubes on solid brown discs as large as a man
+  behind the deployed guns, the coffret): the frame rises by 93,800 triangles and four draw calls in `bat-front` (`figure-stills.json`), all three formations' kits together, against
+  50,300 and none in `inf-front` and `cav-front`, where the guns are not yet on the field (their first anchor is in phase 7). The build's battery is a row of dark tubes on solid brown discs as large as a man
   (`bat-front-base.jpg`); with `f-kit` each gun stands on spoked wheels with its trail to the ground and its crew about it, and reads as a field
   piece at the Field vantage's distances as well as close (`bat-front-f-kit.jpg`; [[BAT-CLOSE]]). Hitched up, the build shows brown cubes trailed
   by loose barrels; the prototype shows each gun's trail lifted onto its limber behind the team ([[BAT-MARCH]]).
@@ -741,14 +743,16 @@ chimneys and spires are hidden while a prototype stands. No village's place, ext
   evidence step, keeping the build's spire meanwhile.
 - **The Sokolnitz castle as Wolny's quadrangle** (`village-sokolnitz-b-landmarks.jpg`): four wings round a court, the east front higher,
   reads as a manor where the build's three wings and corner block read as a group of houses.
-**The landmarks at the battle's distances.** The chapel of St Anthony, drawn small and roofed at its approximate place, is lost among the
-guns and the Guard at 15:00 (`bat-chapel-b-landmarks.jpg`): at the building scale a chapel is a house, and its weight in the picture comes
-from its name in the map layer and its place on the height, not from its size. The fences round Telnitz and Sokolnitz (135 segments along the
-drawn village edges, about 0.3 units high: the building scale's 1.5 m fence) vanish in the morning fog at 08:20 (`woods-pheasantry-b-landmarks.jpg`)
-and are a thin line at the Field vantage; they would carry in the low views and as a village-edge symbol on the paper map. Cost: the frame
-6,800 triangles more with the villages and 8,100 with the landmarks (the build's houses hidden, `building-stills.json`); every prototype
-removed cleanly (the frame after it equal to the build's). One reporting slip, recorded: the JSON's `b-village` rows repeat the previous
-`b-landmarks` install's landmark counts (the prototype did not clear them; fixed after the run); the triangles show what each drew.
+- **The landmarks at the battle's distances.** The chapel of St Anthony, drawn small and roofed at its approximate place, is lost among the
+  guns and the Guard at 15:00 (`bat-chapel-b-landmarks.jpg`): at the building scale a chapel is a house, and its weight in the picture comes
+  from its name in the map layer and its place on the height, not from its size. The fences round Telnitz and Sokolnitz (135 segments along
+  the drawn village edges, about 0.3 units high: the building scale's 1.5 m fence) vanish in the morning fog at 08:20
+  (`woods-pheasantry-b-landmarks.jpg`) and are a thin line at the Field vantage; they would carry in the low views and as a village-edge
+  symbol on the paper map.
+- **Cost.** The frame 6,800 triangles and 10 draw calls more with the villages, 8,100 and 15 with the landmarks (the build's houses hidden,
+  `building-stills.json`); every prototype removed cleanly (the frame after it equal to the build's). One reporting slip, recorded: the JSON's
+  `b-village` rows repeat the previous `b-landmarks` install's landmark counts (the prototype did not clear them; fixed after the run); the
+  triangles show what each drew.
 
 ### 6.4 Recommended (question 248)
 
@@ -820,7 +824,7 @@ drops counted and put to the owner.
 scrub, at the building scale (10-15 times life), inside the drawn wood cover since Stage 2F; deciduous crowns "bare wood: a dense mass of twig,
 grey-brown ... never green", conifers green; each wood's conifer share is a value of the build (`WOODS[].conifer`, 0.12-0.55: no source is named
 for it). In the close views the woods are dark, spiky masses (`woods-pheasantry-base.jpg`); in the Overview dark clumps. Seen from inside a
-wood's edge, a bare deciduous crown is a faceted grey mass that reads as a boulder, the conifers as dark cones (`water/ice-sun-base.jpg`, whose
+wood's edge, a bare deciduous crown is a faceted grey mass that reads as a boulder, the conifers as dark cones (`views/ice-sun-base.jpg`, whose
 camera stands behind the wood above the Satschan mere: kept for this, not for the ice). Seasonal plausibility:
 bare broadleaves in December are right; the dense opaque crowns read as evergreen masses more than as bare trees.
 
@@ -883,12 +887,15 @@ Fact, from `docs/STEP6_SPEC.md` §3, §11-§16:
 |---|---|---|---|
 | a man (coat and fixed parts) | 204 triangles | 344 | 1.69 |
 | a rider and his horse | 288 | 592 | 2.06 |
-| a gun deployed | 156 | 728 | 4.7 |
-| a gun hitched up (the limber, the gun, four horses) | 700 | 740 + 556 + 4 x 308 | 3.6 |
+| a gun deployed (the piece alone) | 156 | 728 | 4.7 |
+| a gun hitched up (the limber, the gun, four horses; the prototype's driver not counted) | 700 | 740 + 556 + 4 x 308 | 3.6 |
 | a house (walls and roof) | 20 | about 30 (with the barns, the villages 8,736 in all) | |
 
+The prototype's deployed battery also draws, behind each gun, its limber, four horses and a driver (the build draws none of them).
+
 In that view the world pass draws 612,600 triangles of figures, 404,000 of trees, 200,200 of scrub, 134,400 of ground, 4,300 of standards and
-5,300 of buildings (step 6's census, reproduced). `f-kit` on the three representative formations adds 50,300 triangles and no draw call;
+5,300 of buildings (step 6's census, reproduced). `f-kit` on the three representative formations adds 50,300 triangles and no draw call (the guns are not yet on the field at
+that clock; with them deployed, in `bat-front`, 93,800 and four calls);
 the villages 6,800 and 10 calls; the outline cue removes 4,000 triangles and adds 31 calls.
 
 **What the kit would cost on every formation (an estimate from the factors, not a measurement):** the figures' triangles would rise by
@@ -1051,9 +1058,9 @@ decisions 141, 199, 214 and 232 were.
   tokens exist); `style.css`; the self-test (5B's confidence checks, 6C's side cue, the legend), `css-test.js` (decision 85's default),
   `runtime-test.js`, `binding-test.js` (unchanged: paths and kinds), the harness (`CONF_SHARE` replaced by the ground cue's share).
 - **Evidence:** none; it is presentation. Decisions superseded or restyled: 85 (on the landscape), 87, 107 (question 239); 57's value (241).
-- **Performance:** the outline's triangles (one ribbon per formation: 31 draw calls and 8,300-8,700 triangles in the four views measured, against the
-  marks' 31 calls and 12,500-14,600, section 2.3);
-  the arrows unchanged in count; the glyphs smaller.
+- **Performance:** the outline is two meshes a formation (its casing and its line): 62-64 draw calls and 8,300-8,700 triangles in the seven
+  views measured, against the marks' 31-32 calls and 12,500-14,600 (section 2.3, `ground-stills.json`): about 31 calls more than today
+  unless the outlines are merged into one mesh, and 4,000-6,000 triangles fewer; the arrows unchanged in count; the glyphs smaller.
 - **Acceptance:** in every check:visual view: no filled side-coloured area under a formation drawn as figures (the share of the free
   rectangle within 6 px of a formation's footprint whose colour is within 10 of a side token, measured as `confShare` is, 0 for fills); every
   formation on the field locatable at the Field vantage and the Overview (its outline or its name drawn, by the self-test at 20 clocks); the
@@ -1132,8 +1139,9 @@ decisions 141, 199, 214 and 232 were.
 - **Evidence:** first, a reading step (section 6.2's leads: Wolny 1836-1837, Schwoy 1793, the stable cadastre's maps of the 1820s, the
   Second Military Survey), each landmark graded; the roof mix and the building types per village from the cadastre where it can be read,
   else labelled DESIGN.
-- **Performance:** the prototype's villages 8,736 triangles (with the landmarks 10,184) against the build's houses' 8,700 (`docs/STEP6_SPEC.md`
-  §3.1); the frame 6,800 triangles more with the villages, 8,100 with the landmarks (`building-stills.json`), a few draw calls.
+- **Performance:** the prototype's villages 8,736 triangles a pass (with the landmarks 10,184) against the build's buildings' 5,340 in the
+  low Pratzen view (`kit-census.json`); the frame, both passes, 6,800 triangles and 10 draw calls more with the villages, 8,100 and 15 with
+  the landmarks (`building-stills.json`).
 - **Acceptance:** every village's footprint and every house inside it as before (2E's paper-map test, 2F's cover test: the share of houses whose centre lies in the drawn
   village cover class not below today's: 57.0% of the build's, 59.2% of the prototype's); every landmark at its sourced position within its grade's tolerance, with its claim in the dossier.
 
@@ -1153,7 +1161,7 @@ build stays as it is until the answers. A limit of `tools/visual/thresholds.js` 
 | **239** | The ground under the troops (L1; section 2) | (a) remove the marks and decision 107's footprint from the landscape (`g-none`); (b) **a thin cased outline** of the footprint in the side's colour under every formation drawn as figures, the selection outlined in the accent, "Position confidence" an optional layer **off by default on the landscape** drawing the grade's extents as outlines (`g-outline`, `g-confline`), the paper map as today; a reported-only formation's C zone and the eye level's own side kept as they are (decision 91), and at 1x the footprint drawn by its grade whatever the layer; (c) a small cased chevron ahead of each formation (`g-marker`) with the same optional layer; (d) as today | **(b)** | supersedes 85 on the landscape (on by default); restyles 87 and 107 (a footprint under every formation, drawn as its edge); keeps 86, 88, 91, 1, 4, 15 (one hue a side, no dash: each outline split on the drawn ground's triangles), 34 (1x drawn as today), the pads | PR 8B; the 5B and 6C self-test checks rewritten to the outline; `CONF_SHARE` replaced by the outline's share, its limit as 8B measures it; `css-test.js`'s default; the legend; about 31 draw calls more unless the outlines are merged into one mesh |
 | **240** | The map layer in motion (L2; section 3) and its hierarchy in the low views (section 7.2) | (a) **anchor2 with the band, and fades**: held beside its anchor while the view moves, else faded out; looked for again every 333 ms; the level-of-detail switches banded 8% while moving, released at rest; at rest each item first tries its last place; **and the far items a step smaller**; (b) as (a), and the far items yielding first in the low views (more drops there: their limits only on the owner's word); (c) persist+hold: the last place first, a returning item after four frames with room, the band, without the fades; (d) as today | **(a)** | none; decisions 24, 38, 39 and 47 kept as invariants (section 3.4) | PR 8C; a motion block added to `check:visual`, its limits as 8C measures them |
 | **241** | The arrows and the event glyphs (section 7.1, 7.6; A-5) | (a) **each arrow's width capped at 16 px on screen in the two perspective presentations, the ribbons depth-tested, their fill at 0.62 of today's opacity, the glyphs capped at 64 px** (`a-calm`); (b) the cap only (`a-cap`); (c) as today | **(a)** | decision 57's value (192 px) and 2C's "over everything" (the depth test); keeps 1, 15, 20, 21, 83 (form, dash, chevron, boundaries, draw-on) | PR 8B; `binding-test.js` unchanged; the eye-level cases read against a depth-only frame |
-| **242** | The figures' kit (L3; section 4) | (a) **`f-kit` for every class**: the man, the horse and the rider redrawn in more parts, every colour, headgear and cuirass from the existing claims; (b) the artillery only; (c) as today | **(a)** | extends 6C's shapes (DESIGN); keeps 97, 100, 102, 103, 104, 106, 109 | PR 8E; on every formation the prototype's kit would add 34-52% to the 4x frame: only with culling (249), a kit of at most 1.3 times the build's per man, and the rich kit where a man is 16 px or more on screen; within section 8.3's budgets after 8D's culling |
+| **242** | The figures' kit (L3; section 4) | (a) **`f-kit` for every class**: the man, the horse and the rider redrawn in more parts, every colour, headgear and cuirass from the existing claims; (b) the artillery only; (c) as today | **(a)** | extends 6C's shapes (DESIGN); keeps 97, 100, 102, 103, 104, 106, 109 | PR 8E; on every formation the prototype's kit would add 34-52% to the 4x frame: only with culling (249), a kit of at most 1.3 times the build's per man, and the rich kit where a man is 16 px or more on screen, within section 8.3's budgets |
 | **243** | The artillery (L3; section 4.4) | (a) **the generic field piece**: spoked wheels in Gassendi's proportion, a bracket trail, the French coffret between the cheeks when limbered, the Allied limbers' box, one driver a vehicle (two for six horses: IV Corps' order, an authorisation), the limbers and teams behind the deployed guns, four horses a drawn gun, one carriage colour, the switch between the groups as today; each reading registered in `appearance.js` first; (b) as (a), with each army's carriage colour where sourced (French olive, Austrian ochre, the Russian generic); (c) as today | **(a)** | (b) would extend 109 ("one colour unless each army's is sourced": two of three are) | PR 8E with its data task (the readings of `leads.md` topic 1, graded and registered) |
 | **244** | The gait (L3; section 4.3) | (a) **the clock's gait**: the swing's phase a function of the clock alone (the modelled track's distance over a design stride), its amplitude the play speed's (faded out above 3.2 cycles a second on screen, eased when the speed changes), none under reduced motion, when halted, or below 1 km/h (the drift of an undated leg, decision 45); (b) no gait; (c) a gait in real time | **(a)** | none (VISUAL_AUDIT's "do not animate losses" kept: no figure falls) | PR 8D (the shader hooks), 8E; no draw call, no triangle |
 | **245** | Facings (decision 104; section 4.6) | (a) **keep decision 104**: no facings; (b) class-level facings where the table settles them at A or B, after a data task gives them colour classes (today the French line and the Guard's foot grenadiers; the Allied classes' facings are regimental) | **(a)**, reconsidered after 8E | (b) extends 104 | none for (a) |
@@ -1161,7 +1169,7 @@ build stays as it is until the answers. A limit of `tools/visual/thresholds.js` 
 | **247** | Woods and the near ground (section 7.3, 7.4) | (a) **airier deciduous crowns** and a little more variation, the conifer shares kept until sourced; **a detail layer near the eye** on the ground (no new class or colour); (b) the woods only; (c) as today | **(a)** | keeps 2F's cover checks and "bare winter trees, frost on north-facing slopes, crop strips" | PR 8F; the trees' triangles per tree held at or under today's |
 | **248** | Buildings and landmarks (L5; section 6) | (a) **the villages re-laid on the cadastre's pattern** (dwellings end-on or L-shaped to the street, barns across the yards' ends; the roofing a placeholder until read), the churches turned east-west, **then, after an evidence step and a data task, the landmarks the sources support**: the Sokolnitz castle as Wolny's quadrangle, the fences round Telnitz and Sokolnitz; the two chapels once their state on the day is settled (St Anthony's roof not found; the Santon's destroyed during the battle); (b) the villages only; (c) as today | **(a)** | keeps 14 (the building scale), 2E's village footprints, the villages' places and counts; the landmarks are a data task (`data.js` or `world.js`, with their claims) | PR 8G; the villages about 8,700 triangles, 10,200 with the landmarks |
 | **249** | Culling the figure blocks (section 8.4) | (a) **each block culled by its own bounds** (decision 221 tied culling to a built 138, which decision 235 retired), in 8D, before the kit; (b) not | **(a)** | reopens 221's condition | PR 8D; nothing on screen changes; the self-test's figure checks read through it |
-| **250** | Budgets and device runs (section 8.3, 8.5) | (a) **the budgets of section 8.3** (the phone's heavy views at most 1.62 million triangles, the desktop's 4x frame at most 2.8 million and 900 calls, the map layer's pass at most 3 ms median and 8 ms at the 95th percentile, the gait free of calls and triangles), **an integrated-GPU run before any PR adding more than 10%**, the device route before and after the PRs that change the drawing; (b) as (a), and **the bracketed effects-off run** on the phone (section 8.5) | **(b)** | keeps 236's `lowTier` | the owner's runs: about 15 minutes each |
+| **250** | Budgets and device runs (section 8.3, 8.5) | (a) **the budgets of section 8.3** (the phone's heavy views at most 1.62 million triangles, the desktop's 4x frame at most 2.8 million and 900 calls, the map layer's pass not above the build's in the same motions by more than 0.5 ms at the median and 2 ms at the 95th percentile, the gait free of calls and triangles), **an integrated-GPU run before any PR adding more than 10%**, the device route before and after the PRs that change the drawing; (b) as (a), and **the bracketed effects-off run** on the phone (section 8.5) | **(b)** | keeps 236's `lowTier` | the owner's runs: about 15 minutes each |
 | **251** | The carried findings (section 9.1-9.3) | (a) **fix all three in 8A** as section 9 proposes: the centring on a formation the reading does not know withheld, the dossier's sources one link from its head, the timeline's tip hidden once its element is activated; (b) fix 9.1 only (it is the knowledge rule's); (c) record them | **(a)** | extends 170 (b)'s rule to the centring | PR 8A, small |
 | **252** | The plan (section 10) | (a) **PRs 8A-8H in that order**, each a draft for review with its measures; (b) another order | **(a)** | none | as section 10 |
 
@@ -1179,8 +1187,9 @@ build stays as it is until the answers. A limit of `tools/visual/thresholds.js` 
 | every probe of `tools/stage8/` | run to its end on the build above; outputs in `docs/stage8-evidence/` (the README lists each) |
 | each prototype undone | the frame after each prototype's removal equal to the frame before it in draw calls and triangles ([[UNDO-COUNT]] removals checked by `stills.js`) |
 
-Not run, because nothing in the build changed: `check:visual`, `check:contrast`, `check:selftest` (each passed on this build in step 6's last
-runs, `CHANGELOG.md`). The probes' prototypes never enter the build; no limit moved.
+Not run here, because nothing in the build changed: `check:visual` (passed on this build: its 39 cases, the self-test's 242 checks and the
+live blocks, `CHANGELOG.md`'s entry for decision 236's verdict); `check:contrast` and `check:selftest`, which CI runs on every push and pull
+request (decision 132), this branch's included. The probes' prototypes never enter the build; no limit moved.
 
 ### 12.2 What was not measured, and why
 
