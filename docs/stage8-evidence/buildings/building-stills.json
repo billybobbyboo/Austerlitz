@@ -1,0 +1,391 @@
+{
+ "build": "c4793156103b60bb74151c7d13dbdd9d",
+ "views": {
+  "village-telnitz": {
+   "base": {
+    "calls": 741,
+    "tris": 2483571,
+    "items": 59,
+    "placed": 5,
+    "dropped": 2
+   },
+   "b-village": {
+    "info": {
+     "kind": "b-village",
+     "counts": {
+      "houses": 287,
+      "thatched": 201,
+      "tiled": 86,
+      "chimneys": 179,
+      "towers": 12
+     },
+     "landmarks": null,
+     "triangles": 8736,
+     "inVillageCover": {
+      "build": 0.57,
+      "prototype": 0.592
+     }
+    },
+    "calls": 751,
+    "tris": 2490363,
+    "items": 59,
+    "placed": 5,
+    "dropped": 2,
+    "restored": true
+   },
+   "b-landmarks": {
+    "info": {
+     "kind": "b-landmarks",
+     "counts": {
+      "houses": 287,
+      "thatched": 201,
+      "tiled": 86,
+      "chimneys": 179,
+      "towers": 12
+     },
+     "landmarks": {
+      "castleWings": 4,
+      "chapel": 1,
+      "fenceSegments": 135
+     },
+     "triangles": 10184,
+     "inVillageCover": {
+      "build": 0.57,
+      "prototype": 0.592
+     }
+    },
+    "calls": 756,
+    "tris": 2491639,
+    "items": 59,
+    "placed": 5,
+    "dropped": 2,
+    "restored": true
+   }
+  },
+  "village-pratzen": {
+   "base": {
+    "calls": 713,
+    "tris": 2481805,
+    "items": 59,
+    "placed": 16,
+    "dropped": 1
+   },
+   "b-village": {
+    "info": {
+     "kind": "b-village",
+     "counts": {
+      "houses": 287,
+      "thatched": 201,
+      "tiled": 86,
+      "chimneys": 179,
+      "towers": 12
+     },
+     "landmarks": {
+      "castleWings": 4,
+      "chapel": 1,
+      "fenceSegments": 135
+     },
+     "triangles": 8736,
+     "inVillageCover": {
+      "build": 0.57,
+      "prototype": 0.592
+     }
+    },
+    "calls": 723,
+    "tris": 2488597,
+    "items": 59,
+    "placed": 16,
+    "dropped": 1,
+    "restored": true
+   },
+   "b-landmarks": {
+    "info": {
+     "kind": "b-landmarks",
+     "counts": {
+      "houses": 287,
+      "thatched": 201,
+      "tiled": 86,
+      "chimneys": 179,
+      "towers": 12
+     },
+     "landmarks": {
+      "castleWings": 4,
+      "chapel": 1,
+      "fenceSegments": 135
+     },
+     "triangles": 10184,
+     "inVillageCover": {
+      "build": 0.57,
+      "prototype": 0.592
+     }
+    },
+    "calls": 728,
+    "tris": 2489873,
+    "items": 59,
+    "placed": 16,
+    "dropped": 1,
+    "restored": true
+   }
+  },
+  "village-sokolnitz": {
+   "base": {
+    "calls": 747,
+    "tris": 2474225,
+    "items": 59,
+    "placed": 5,
+    "dropped": 1
+   },
+   "b-village": {
+    "info": {
+     "kind": "b-village",
+     "counts": {
+      "houses": 287,
+      "thatched": 201,
+      "tiled": 86,
+      "chimneys": 179,
+      "towers": 12
+     },
+     "landmarks": {
+      "castleWings": 4,
+      "chapel": 1,
+      "fenceSegments": 135
+     },
+     "triangles": 8736,
+     "inVillageCover": {
+      "build": 0.57,
+      "prototype": 0.592
+     }
+    },
+    "calls": 757,
+    "tris": 2481017,
+    "items": 59,
+    "placed": 5,
+    "dropped": 1,
+    "restored": true
+   },
+   "b-landmarks": {
+    "info": {
+     "kind": "b-landmarks",
+     "counts": {
+      "houses": 287,
+      "thatched": 201,
+      "tiled": 86,
+      "chimneys": 179,
+      "towers": 12
+     },
+     "landmarks": {
+      "castleWings": 4,
+      "chapel": 1,
+      "fenceSegments": 135
+     },
+     "triangles": 10184,
+     "inVillageCover": {
+      "build": 0.57,
+      "prototype": 0.592
+     }
+    },
+    "calls": 762,
+    "tris": 2482293,
+    "items": 59,
+    "placed": 5,
+    "dropped": 1,
+    "restored": true
+   }
+  },
+  "overview-field": {
+   "base": {
+    "calls": 832,
+    "tris": 2523605,
+    "items": 48,
+    "placed": 42,
+    "dropped": 6
+   },
+   "b-village": {
+    "info": {
+     "kind": "b-village",
+     "counts": {
+      "houses": 287,
+      "thatched": 201,
+      "tiled": 86,
+      "chimneys": 179,
+      "towers": 12
+     },
+     "landmarks": {
+      "castleWings": 4,
+      "chapel": 1,
+      "fenceSegments": 135
+     },
+     "triangles": 8736,
+     "inVillageCover": {
+      "build": 0.57,
+      "prototype": 0.592
+     }
+    },
+    "calls": 842,
+    "tris": 2530397,
+    "items": 48,
+    "placed": 42,
+    "dropped": 6,
+    "restored": true
+   },
+   "b-landmarks": {
+    "info": {
+     "kind": "b-landmarks",
+     "counts": {
+      "houses": 287,
+      "thatched": 201,
+      "tiled": 86,
+      "chimneys": 179,
+      "towers": 12
+     },
+     "landmarks": {
+      "castleWings": 4,
+      "chapel": 1,
+      "fenceSegments": 135
+     },
+     "triangles": 10184,
+     "inVillageCover": {
+      "build": 0.57,
+      "prototype": 0.592
+     }
+    },
+    "calls": 847,
+    "tris": 2531673,
+    "items": 48,
+    "placed": 42,
+    "dropped": 6,
+    "restored": true
+   }
+  },
+  "bat-chapel": {
+   "base": {
+    "calls": 736,
+    "tris": 2492985,
+    "items": 60,
+    "placed": 15,
+    "dropped": 4
+   },
+   "b-village": {
+    "info": {
+     "kind": "b-village",
+     "counts": {
+      "houses": 287,
+      "thatched": 201,
+      "tiled": 86,
+      "chimneys": 179,
+      "towers": 12
+     },
+     "landmarks": {
+      "castleWings": 4,
+      "chapel": 1,
+      "fenceSegments": 135
+     },
+     "triangles": 8736,
+     "inVillageCover": {
+      "build": 0.57,
+      "prototype": 0.592
+     }
+    },
+    "calls": 746,
+    "tris": 2499777,
+    "items": 60,
+    "placed": 15,
+    "dropped": 4,
+    "restored": true
+   },
+   "b-landmarks": {
+    "info": {
+     "kind": "b-landmarks",
+     "counts": {
+      "houses": 287,
+      "thatched": 201,
+      "tiled": 86,
+      "chimneys": 179,
+      "towers": 12
+     },
+     "landmarks": {
+      "castleWings": 4,
+      "chapel": 1,
+      "fenceSegments": 135
+     },
+     "triangles": 10184,
+     "inVillageCover": {
+      "build": 0.57,
+      "prototype": 0.592
+     }
+    },
+    "calls": 751,
+    "tris": 2501053,
+    "items": 60,
+    "placed": 15,
+    "dropped": 4,
+    "restored": true
+   }
+  },
+  "woods-pheasantry": {
+   "base": {
+    "calls": 765,
+    "tris": 2476275,
+    "items": 63,
+    "placed": 15,
+    "dropped": 2
+   },
+   "b-village": {
+    "info": {
+     "kind": "b-village",
+     "counts": {
+      "houses": 287,
+      "thatched": 201,
+      "tiled": 86,
+      "chimneys": 179,
+      "towers": 12
+     },
+     "landmarks": {
+      "castleWings": 4,
+      "chapel": 1,
+      "fenceSegments": 135
+     },
+     "triangles": 8736,
+     "inVillageCover": {
+      "build": 0.57,
+      "prototype": 0.592
+     }
+    },
+    "calls": 775,
+    "tris": 2483067,
+    "items": 63,
+    "placed": 15,
+    "dropped": 2,
+    "restored": true
+   },
+   "b-landmarks": {
+    "info": {
+     "kind": "b-landmarks",
+     "counts": {
+      "houses": 287,
+      "thatched": 201,
+      "tiled": 86,
+      "chimneys": 179,
+      "towers": 12
+     },
+     "landmarks": {
+      "castleWings": 4,
+      "chapel": 1,
+      "fenceSegments": 135
+     },
+     "triangles": 10184,
+     "inVillageCover": {
+      "build": 0.57,
+      "prototype": 0.592
+     }
+    },
+    "calls": 780,
+    "tris": 2484343,
+    "items": 63,
+    "placed": 15,
+    "dropped": 2,
+    "restored": true
+   }
+  }
+ }
+}

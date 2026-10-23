@@ -119,7 +119,7 @@ const inPage=function(){
     return g;
   }
   function install(kind){
-    if(B.on) uninstall(); B.on=kind;
+    if(B.on) uninstall(); B.on=kind; B.landmarkCounts=null;   /* (cleared here since the evidence run: before, a b-village install reported the last b-landmarks counts) */
     B.hidden=[houseMesh,roofMesh,chimneyMesh,spireMesh].filter(Boolean); B.hidden.forEach(function(m){ m.userData._v8=m.visible; m.visible=false; });
     B.grp=build(kind==="b-landmarks"); scene.add(B.grp);
     B.upd=window.updateVisibility; window.updateVisibility=function(){ B.upd(); B.grp.visible=landscapeVisible(); B.hidden.forEach(function(m){ m.visible=false; }); };

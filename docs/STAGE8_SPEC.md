@@ -661,7 +661,14 @@ chimneys and spires are hidden while a prototype stands. No village's place, ext
   evidence step, keeping the build's spire meanwhile.
 - **The Sokolnitz castle as Wolny's quadrangle** (`village-sokolnitz-b-landmarks.jpg`): four wings round a court, the east front higher,
   reads as a manor where the build's three wings and corner block read as a group of houses.
-- [[S6-3-MORE]]
+**The landmarks at the battle's distances.** The chapel of St Anthony, drawn small and roofed at its approximate place, is lost among the
+guns and the Guard at 15:00 (`bat-chapel-b-landmarks.jpg`): at the building scale a chapel is a house, and its weight in the picture comes
+from its name in the map layer and its place on the height, not from its size. The fences round Telnitz and Sokolnitz (135 segments along the
+drawn village edges, about 0.3 units high: the building scale's 1.5 m fence) vanish in the morning fog at 08:20 (`woods-pheasantry-b-landmarks.jpg`)
+and are a thin line at the Field vantage; they would carry in the low views and as a village-edge symbol on the paper map. Cost: the frame
+6,800 triangles more with the villages and 8,100 with the landmarks (the build's houses hidden, `building-stills.json`); every prototype
+removed cleanly (the frame after it equal to the build's). One reporting slip, recorded: the JSON's `b-village` rows repeat the previous
+`b-landmarks` install's landmark counts (the prototype did not clear them; fixed after the run); the triangles show what each drew.
 
 ### 6.4 Recommended (question 248)
 
@@ -1011,8 +1018,8 @@ decisions 141, 199, 214 and 232 were.
 - **Evidence:** first, a reading step (section 6.2's leads: Wolny 1836-1837, Schwoy 1793, the stable cadastre's maps of the 1820s, the
   Second Military Survey), each landmark graded; the roof mix and the building types per village from the cadastre where it can be read,
   else labelled DESIGN.
-- **Performance:** the prototype's villages 8,736 triangles (with the landmarks 10,184) against the build's houses' [[BLD-BUILD]], a few
-  draw calls.
+- **Performance:** the prototype's villages 8,736 triangles (with the landmarks 10,184) against the build's houses' 8,700 (`docs/STEP6_SPEC.md`
+  §3.1); the frame 6,800 triangles more with the villages, 8,100 with the landmarks (`building-stills.json`), a few draw calls.
 - **Acceptance:** every village's footprint and every house inside it as before (2E's paper-map test, 2F's cover test: the share of houses whose centre lies in the drawn
   village cover class not below today's: 57.0% of the build's, 59.2% of the prototype's); every landmark at its sourced position within its grade's tolerance, with its claim in the dossier.
 
