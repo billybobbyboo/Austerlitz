@@ -389,6 +389,11 @@ The owner asked for these to be noted for later. They are about appearance and m
 appearance and motion**, after steps 1-3, beginning as every stage did with a Part A (the current state measured, options prototyped, owner
 questions). What each touches is stated here so that the decision, when it comes, is taken knowingly; nothing below is decided.
 
+**Stage 8 Part A** (23 October 2026; `docs/STAGE8_SPEC.md`, with `docs/stage8-evidence/`): the notes below measured and prototyped in the
+live page, with five further opportunities (arrows, label density, woodland, terrain near the eye, one language across the presentations),
+performance budgets stated before anything is built, and the carried findings checked; the plan is PRs 8A-8H and owner questions 239-252
+(its §11). Nothing below is decided by it; no source file, data or build changed.
+
 **L1. "The coloured glow underneath troops and divisions (blue for the French, orange for the Russians and Austrians): remove it; it looks
 clunky."**
 - *What it is (fact):* the position-confidence marks (Stage 5B; `CONF`, `confPlace` in `app.js`): every formation's position grade drawn on the
