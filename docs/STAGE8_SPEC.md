@@ -37,6 +37,7 @@ headless Chromium with software WebGL (SwiftShader), as the Stage 0 harness and 
 | `gait-check.js`, `legs.js` | 4.3 | the gait's rule checked in the page; every leg of the movement model with its duration and speed (no page) |
 | `sheets.py` | all | the comparison sheets: the build and its prototypes side by side, from the captures |
 | `pixdiff.py` | 4-6 | how much of a frame each prototype changes: the pixels of the kept captures whose grey level differs by more than 40 of 255 |
+| `label-far.js` | 7.2 | which drawn items of the map layer stand beyond 1.5 times the eye's distance to its target (the hierarchy by distance's reach) |
 | `stream-vis.js` | 5 | how much of the streams the build draws: the ribbons painted and their pixels counted, with and without their depth test |
 | `protos/ground.js`, `labels.js`, `figures.js`, `water.js`, `buildings.js`, `arrows.js` | 2-7 | the prototypes, each an in-page module registering `window.__p8[id]` with `install` and `uninstall` |
 
@@ -140,7 +141,27 @@ million and 740-857 in its own views, `docs/STEP6_SPEC.md` §3.1: nothing is cul
 
 ### 1.2 What each picture is made of
 
-[[S1-DENSITY]]
+`tools/stage8/density.js` hides one class of drawing at a time and counts the pixels of the free rectangle (outside every panel) that change by
+more than 8 of 255, a class's share of the picture as drawn (overlaps counted for each class), and the median contrast of the changed pixels
+against what lies under them (the WCAG luminance ratio; 3:1 is the floor for a non-text symbol). `density.json`, `density-low.json`:
+
+| view | figures | ground marks | arrows and the overlays' lines | standards | event glyphs, plateau outline | map text and counters |
+|---|---|---|---|---|---|---|
+| phase 8's Overview (`ph8-overview-watch`) | 0.8% | 3.7% | 2.5% | 0.1% | 0.0% | 4.2% |
+| the Field vantage (`overview-field`) | 3.6% | 4.1% | 6.9% | 0.9% | 0.2% | 11.6% |
+| the low Pratzen view (`pratzen-low`) | 9.4% | 8.8% | 5.3% | 3.7% | 0.6% | 4.8% |
+| Saint-Hilaire's climb (`inf-mid`) | 11.1% | 10.2% | 5.2% | 2.4% | 1.0% | 3.3% |
+| close on Sokolnitz (`close-sokolnitz`) | 6.3% | 5.3% | 4.5% | 3.0% | 0.2% | 2.9% |
+| the Goldbach at 08:20 (`stream-low`) | 2.9% | 1.1% | 3.5% | 21.7% | 0.6% | 3.7% |
+| low, east at noon (`horizon-east`) | 2.4% | 1.2% | 3.9% | 0.7% | 0.5% | 6.5% |
+| low over the Satschan mere at 15:00 (`ice-low`) | 3.7% | 0.9% | 5.0% | 1.1% | 0.3% | 6.7% |
+
+In the Overview the marks cover more than four times what the figures do, and at the Field vantage the marks, the arrows and the map
+layer each cover more than the figures: at the distances a visitor starts from, the battle is drawn by its symbology. In the low and
+close views the figures are the largest class, but the marks come close (8.8% against 9.4% in the low Pratzen view, 10.2% against 11.1% in
+`inf-mid`), and in the Goldbach view one French standard near the eye covers a fifth of the free area. The marks' pixels differ little from
+the ground under them (median contrast 1.0-1.6; 0-24% of them at 3:1 or more): a wash, not an edge. The arrows' are 1.4-2.9, the
+map layer's (its plates against the scene) 1.4-6.3.
 
 ### 1.3 The assessment, view by view (direct captures; the photographs did not arrive, see the head of this document)
 
@@ -209,7 +230,10 @@ says (`graded` holds them). At 1x the footprint (decision 34) is drawn by the fo
 off. So a change of the layer's default changes the 1x footprint's drawing too, and an alternative that removes the marks must say what
 draws those two.
 
-[[S2-MEASURE]]
+**Measured** (`density.js`, section 1.2). The marks cover 3.7% of the free rectangle in phase 8's Overview, where the figures cover
+0.8%, and 4.1% at the Field vantage against the figures' 3.6%; in the low and close views 5.3-10.2%, nearly as much as the figures there
+(6.3-11.1%). Their pixels differ little from the ground under them (median contrast 1.0-1.6, 0-24% of them at 3:1 or more): a wash, not an
+edge.
 
 ### 2.2 The alternatives, prototyped in the same views (`tools/stage8/protos/ground.js`; `docs/stage8-evidence/ground/`)
 
@@ -787,7 +811,8 @@ in world units (attack 2.0-2.6, counter 1.8-2.3, move 1.3-1.6; the casing 1.34 t
 drawn over everything (depthTest false, "an annotation on the map, not an object in the landscape") at 95% opacity. The hierarchy the
 symbology settled is kept by form, not weight: side by colour (decision 1), the Allied chevron head (20), intended routes broken (15, the one
 dashed kind), derived arrows drawn on with the clock (83), interpretive ones flagged. What does not hold up is the weight: a width fixed in
-the world is a hairline in the Overview and a band [[ARROWPX]] across in the low and close views, where the heads cover battalions and, at the eye
+the world is 6-10 px across in phase 8's Overview, 12-16 px at the Field vantage and a band 49-68 px across in the low and close
+views (`density.js`, each live arrow's casing at its middle: the low Pratzen view 50-58, close on Sokolnitz 49-55, the Goldbach view 20-68), where the heads cover battalions and, at the eye
 level, the arrows show through the hills (the audit's A-5, recorded in 5E and still present).
 
 **Prototyped (`protos/arrows.js`; `docs/stage8-evidence/arrows/`).** The prototypes wrap the build's `drapedRibbon`, so they act on every draped
@@ -797,7 +822,20 @@ behind the eye left as it is: the prototype's first run failed on one, in `inf-m
 opacity at 0.62 (fills and casings), and the ribbons depth-tested: the arrows, lifted 2.4 units, pass above the men's 1.88 units, but the
 lines of battle (lifted 1.9) and the boundaries (1.6) do not, so in these captures the figures cut them. `a-calm`: `a-soft` with the event
 glyphs capped at 64 px instead of 192.
-[[S7-ARROWS]]
+
+**What they show** (`docs/stage8-evidence/arrows/`, three views with the build; `arrow-stills.json`, `pixdiff.json`):
+- **`a-cap` turns the bands into lines.** In the low Pratzen view Levasseur's arrow up the Goldbach and Kamensky's counter-attack on the crest
+  (`pratzen-low-base.jpg`), in `inf-mid` Saint-Hilaire's and Vandamme's arrows, close on Sokolnitz the Allied II and III Columns' arrows and
+  Legrand's line along the stream become lines of 16 px with heads in proportion (`*-a-cap.jpg`), every path, head form, colour, label and the
+  draw-on as before (the prototype passes the build's own ribbon a narrower width, nothing else). The frame loses 180-550 triangles (and three
+  draw calls close on Sokolnitz); 0.9-1.6% of its pixels change.
+- **`a-soft`** lightens them further. Its depth test against everything drawn shows why the recommendation below tests against the ground
+  alone: close on Sokolnitz the village's houses and the trees cut the II and III Columns' arrows, which all but vanish behind the castle
+  (`close-sokolnitz-a-soft.jpg`), and Legrand's line along the stream passes behind the houses of Telnitz.
+- **The frames after them.** Each prototype was removed and the frame after it compared with the first: equal in every view but close on
+  Sokolnitz, where it held 20 triangles fewer; the build's own rebuild of the overlays does the same there with no prototype (its shafts
+  10 triangles a pass fewer than the page's first build of them; checked with `rebuildOverlays` alone), so the difference is the build's, not
+  a remnant.
 
 **Recommended (question 241):** `a-calm` in 8B for the movement arrows, with one change from the prototype: the depth test against **the
 drawn ground alone**; the lines of battle, the boundaries and the halt bars keep their widths and opacity, and take the same ground-only
@@ -819,9 +857,13 @@ formation's name is collected depends on one distance for the whole view, the ey
 names while it is under 300 units (170 for brigades, 220 for artillery and headquarters), corps and army names at any distance beyond 250;
 places other than the major ones under 210. In a view held low toward the horizon the target is near, so everything on the plateau and beyond
 is collected: in `horizon-east` 30 items are drawn (65 collected, 7 dropped), in `ice-low` 36 (12 dropped), stacked in a band above the
-horizon at one weight (`horizon-east-base.jpg`), while the views from above draw 15-24.
+horizon at one weight (`horizon-east-base.jpg`), where the views from above spread 15-42 over the field.
 
-[[S7-LABELS-CENSUS]]
+**Measured** (`tools/stage8/label-far.js`, `label-far.json`: the build's own layout, each drawn item's anchor against the eye's distance to
+its target). Beyond 1.5 times that distance stand 23 of the 30 items drawn in `horizon-east` (16 of them formation names; 15 on leader
+lines), 26 of 36 in `ice-low` and 19 of 23 in `stream-low`: the band above the horizon is these items. In the close views 7 and 9 of 18 and
+19 (places and names behind the troops), in the low Pratzen view 3 of 24, and none of the 42 at the Field vantage or the 22 of phase 8's
+Overview, whose targets stand 244 and 425 units out.
 
 **Recommended (question 240 (a), in 8C):** a hierarchy by distance in the perspective presentations: an item whose anchor stands farther
 from the eye than 1.5 times the eye's distance to the orbit target is drawn a step smaller (a scale-free rule: at the Field vantage, its target
@@ -873,7 +915,10 @@ three (section 3), the arrows' cap in the two perspective presentations only.
 and faded near the eye (decision 57, `app.js:3193`). In the close views a glyph is the largest single shape after the arrows: 150-190 px
 rings over the troops (`inf-front-base.jpg`, `cav-close-base.jpg`), in the eye-level views over the horizon. `a-calm` caps them at 64 px (the
 event's map label and its tag unchanged, the glyph's hit area unchanged, decision 167's exception for the markers on the timeline untouched).
-[[S7-GLYPHRES]]
+In the captures (`*-a-calm.jpg` against `*-a-soft.jpg`) the rings that stood over the troops become small marks: in `inf-mid` the crosshair
+over the Russian line and the circled arrow over Saint-Hilaire's column, close on Sokolnitz the ring over the village; the glyphs' cap alone
+changes 3,500-9,200 more pixels than `a-soft` (`pixdiff.json`). The event stays findable by its map label (which keeps its size) and by its
+marker on the timeline.
 
 ## 8. Performance as part of the design
 
