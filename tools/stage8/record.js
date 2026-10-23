@@ -35,8 +35,8 @@ const CLIPS={
     variants:["base","labels:l-fade"], note:"Landscape with counters from the Field vantage, orbited about its target, 30 frames."},
   "hybrid-zoom": {t:570, mode:"hybrid", presentation:"study", cam:[-195,92,156,-33,4,-2], motion:{kind:"zoom", k:1.05, n:30},
     variants:["base","labels:l-fade"], note:"Landscape with counters from the Field vantage, zoomed in about the centre, 30 frames."},
-  "stream-flow": {t:720, mode:"terrain", presentation:"watch", aim:{map:[206,380], dir:[-0.78,0.30,0.55], r:30}, motion:{kind:"hold", n:30},
-    variants:["water:w-stream","water:w-flow"], note:"The Goldbach below Sokolnitz at noon (goldbach-noon): the stream drawn and restyled, still and with its ripple drifting downstream (assessment only)."}
+  "stream-flow": {t:720, mode:"terrain", presentation:"watch", aim:{map:[206,380], dir:[0.05,0.99,0.1], r:28}, motion:{kind:"hold", n:30},
+    variants:["water:w-stream","water:w-flow"], note:"The Goldbach below Sokolnitz at noon from straight above (goldbach-top; from the bank at 1280 x 720 the stream is out of the frame): the stream drawn and restyled, still and with its ripple drifting downstream (assessment only)."}
 };
 (async()=>{
   const C=CLIPS[CLIP]; if(!C) throw new Error("no clip "+CLIP+" ("+Object.keys(CLIPS).join(", ")+")");
