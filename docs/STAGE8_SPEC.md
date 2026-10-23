@@ -52,9 +52,10 @@ assessment can be checked against them (section 12.2).
 
 - **What the build draws (section 1).** At a distance the battle reads as washes of blue and amber, not troops: the confidence marks are
   what is seen of a formation there. Close up, symbology outweighs the troops: arrow ribbons of fixed world width drawn over everything,
-  192-px glyph rings, the C marks spread over slopes, large plain standards. The guns are the weakest drawing (tubes on solid discs, brown
+  glyph rings well over 100 px across (the cap is 192), the C marks spread over slopes, large plain standards. The guns are the weakest drawing (tubes on solid discs, brown
   cubes on the march, switched in one frame). Nothing moves within a formation: blocks slide. The meres are flat plates; the streams'
-  and the roads' ribbons are not drawn at all (culled); every house is the same box turned at random; no landmark is drawn. The light, the
+  and the roads' ribbons are not drawn at all (culled); every house is the same box turned at random; of the landmarks the narrative names, only the
+  Sokolnitz castle is drawn. The light, the
   fog, the ground's cover, the readings, the interface and the paper map hold up and are kept.
 - **L1, the glow (section 2; question 239).** Five alternatives in seven views: recommended, a thin cased outline of each formation's
   footprint in its side's colour, the selection in the accent, and "Position confidence" an optional outline layer, off by default on the
@@ -64,7 +65,7 @@ assessment can be checked against them (section 12.2).
   taking another place: 1,549 of them counters) and 165 level-of-detail switches, one pan from the Field vantage swaps 23 counters at once (its
   distance 3% inside the corps switch). Six stabilisers prototyped; recommended, a held layout while the view moves (beside its own anchor or
   faded out), a level-of-detail band released at rest, and fades: 249 jumps (counters 19), no overlap among live items; a view reached
-  without motion laid out exactly as today.
+  without motion laid out exactly as today (by construction; 8C's checks would hold it).
 - **L3, troops and motion (section 4; questions 242-245).** A richer kit prototyped on three formations: the guns change most and read as
   field pieces (spoked wheels, trails, their limbers and teams behind them); infantry and cavalry change little at the visitor's distances;
   on every formation the prototype's kit would add an estimated 34-52% to the frame, so it is proposed only with culling and a lighter kit
@@ -77,7 +78,7 @@ assessment can be checked against them (section 12.2).
   have them sourced.
 - **L4, water (section 5; questions 246, 253).** The streams are not drawn at all today (their ribbons, and the roads', face away from the
   eye and are culled: section 9.5); drawn, they should be darker and still. The meres stay ice, varied in material and light. The day was
-  mild in Prague (4.9-10.6 °C; the Klementinum series), the eyewitnesses disagree on the ice's strength, and nothing read says the streams
+  mild in Prague (4.9-10.6 °C; the Klementinum series), the sources disagree on the ice's strength, and nothing read says the streams
   were iced: no stream ice, and no flow, which would also keep an idle page drawing about 11 frames a second.
 - **L5, buildings (section 6; question 248).** The villages re-laid on the 1825-1826 cadastre's pattern (dwellings end-on to the street,
   barns across the yards); the landmarks the sources support (Sokolnitz castle's quadrangle, the fences of Telnitz and Sokolnitz) after an evidence
@@ -161,10 +162,10 @@ against what lies under them (the WCAG luminance ratio; 3:1 is the floor for a n
 | low over the Satschan mere at 15:00 (`ice-low`) | 3.7% | 0.9% | 5.0% | 1.1% | 0.3% | 6.7% |
 
 In the Overview the marks cover more than four times what the figures do, and at the Field vantage the marks, the arrows and the map
-layer each cover more than the figures: at the distances a visitor starts from, the battle is drawn by its symbology. In the low and
-close views the figures are the largest class, but the marks come close (8.8% against 9.4% in the low Pratzen view, 10.2% against 11.1% in
-`inf-mid`), and in the Goldbach view one French standard near the eye covers a fifth of the free area. The marks' pixels differ little from
-the ground under them (median contrast 1.0-1.6; 0-24% of them at 3:1 or more): a wash, not an edge. The arrows' are 1.4-2.9, the
+layer each cover more than the figures: at the distances a visitor starts from, the battle is drawn by its symbology. In the low Pratzen
+view, `inf-mid` and close on Sokolnitz the figures are the largest class, but the marks come close (8.8% against 9.4% in the low Pratzen
+view, 10.2% against 11.1% in `inf-mid`); in the views toward the horizon the map layer and the arrows cover more than the figures, and in the Goldbach view one French standard near the eye covers a fifth of the free area. The marks' pixels differ little from
+the ground under them (median contrast 1.0-2.2; 0-24% of them at 3:1 or more): a wash, not an edge. The arrows' are 1.4-2.9, the
 map layer's (its plates against the scene) 1.4-6.3.
 
 ### 1.3 The assessment, view by view (direct captures; the photographs did not arrive, see the head of this document)
@@ -237,8 +238,9 @@ off. So a change of the layer's default changes the 1x footprint's drawing too, 
 draws those two.
 
 **Measured** (`density.js`, section 1.2). The marks cover 3.7% of the free rectangle in phase 8's Overview, where the figures cover
-0.8%, and 4.1% at the Field vantage against the figures' 3.6%; in the low and close views 5.3-10.2%, nearly as much as the figures there
-(6.3-11.1%). Their pixels differ little from the ground under them (median contrast 1.0-1.6, 0-24% of them at 3:1 or more): a wash, not an
+0.8%, and 4.1% at the Field vantage against the figures' 3.6%; in the low Pratzen view, `inf-mid` and close on Sokolnitz 5.3-10.2%, nearly as
+much as the figures there (6.3-11.1%), and 0.9-1.2% in the views toward the horizon. Their pixels differ little from the ground under them
+(median contrast 1.0-2.2, 0-24% of them at 3:1 or more): a wash, not an
 edge.
 
 ### 2.2 The alternatives, prototyped in the same views (`tools/stage8/protos/ground.js`; `docs/stage8-evidence/ground/`)
@@ -351,15 +353,16 @@ the layer's list in view; a **flicker** an item drawn, gone and drawn again with
 counts here too, though not as a pop); an **overlap** two drawn boxes overlapping (the
 layer's rule is none).
 
-**The build (stabiliser "none").** 4,003 jumps in 40,715 item-frames (9.8 per 100; in a zoom, 8 or 9 of the
-about 30 items in view change place in every frame), 791 pops (1.9 per 100), 165 level-of-detail switches, 232 flickers, no overlap. The worst
+**The build (stabiliser "none").** 4,003 jumps in 40,715 item-frames (9.8 per 100; in the zooms of Landscape with
+counters and the paper map, 8 or 9 of the 26-36 items in view change place in every frame), 791 pops (1.9 per 100), 165 level-of-detail switches, 232 flickers, no overlap. The worst
 motions are the zooms and orbits: the paper map's zoom 572 jumps (27 per 100 item-frames), Landscape with counters' zoom 519 and orbit 490,
 the landscape's orbit 438, the glides 283-372; Play is quieter but not still (Landscape with counters 245, the landscape 205, the paper map
 117). By kind: counters 1,549 jumps, the arrows' labels 1,013, the landscape's names 965, the objective markers 223, places 156, the plateau
 reading 80, events 17; the places pop most (468: the major/minor range at 210 units and the ground's occlusion). One pan from the Field
 vantage swaps the division counters for their corps' (23 counters entering or leaving at once, `hybrid-pan`; the 250-unit switch 3% away). The layer's pass took a median
 1.1-3.0 ms per frame and a 95th percentile 1.8-12.3 ms (CPU in this page; a single frame's maximum, up to 313 ms, varies between runs of the
-same motion without pattern, 2.8 to 97.7 ms for the same orbit, and is read as the page's own pauses, not the layout).
+same motion without pattern, 123.9 ms in one run of the orbit with anchor2+band and 2.6 ms in the next, and is read as the page's own
+pauses, not the layout).
 
 | stabiliser (section 3.3) | jumps | pops | level-of-detail switches | flickers | overlap frames | items drawn while moving (median, summed over the motions) | jumps or pops at rest after the motion |
 |---|---|---|---|---|---|---|---|
@@ -418,11 +421,12 @@ lines, occlusion, the full solve when the view stops); they differ only in what 
   items are drawn while the view moves.
 - **anchor2**: anchor, but an item whose held place is taken first tries the eight places hugging its own anchor (the build's first
   candidates, no rings, so it never leaves its anchor's side), and a hidden item comes back only after two re-placement passes with room.
-  The jumps fall to 247 (94% fewer; those left are an item moved to a place beside its own anchor, never across the screen: counters 19
+  The jumps fall to 247 (94% fewer; while the view moves, an item that is not one of the never-dropped ones moves only to a place beside
+  its own anchor, by the rule (the probe does not record how far an item moved), and the solve at rest after each motion makes the rest: counters 19
   against the build's 1,549), the pops to 1,143 (45% more than the build's, 36% fewer than anchor's), the flicker below the build's (162).
 - **anchor2+band**: anchor2 with persist+hold's level-of-detail band. The band moves the level-of-detail switches to the moment the view stops; the rest as anchor2: 249 jumps (counters 19), 1,156 pops,
   171 flickers, no overlap. About a fifth fewer items are drawn while the view moves (366 against 471, the medians summed); at rest they
-  come back (76 reappearances in the frame after the motion, and 45 items take a new place there), which the fades below soften.
+  come back (76 items appear or leave in the frame after the motion, and 45 take a new place there), which the fades below soften.
 
 **Fades.** A pop is a placement event whatever the rule; what the eye minds is its suddenness. `protos/labels.js` adds `l-fade`: an item
 appearing or leaving fades over 180 ms of real time (a leaving item drawn at its last place, under the others, taking no pointer); none
@@ -430,12 +434,9 @@ under reduced motion. It changes no placement, so the probe's counts are those o
 (`clips/paper-zoom.mp4`, `clips/hybrid-orbit.mp4`, `clips/hybrid-zoom.mp4`, `clips/paper-play.mp4`: the build above, `l-fade` below,
 the same frames at 10 a second). In the paper map's zoom the build's counters and names change places from one frame to the next; with
 the prototype they hold their places, and those whose place is taken fade out and come back a few frames later, so that fewer are drawn
-while the zoom runs (the table's "items drawn while moving"). While the clock plays on the paper map (`paper-play.mp4`, 09:00-09:20 at ½x) both
-hold steady from frame to frame, the prototype's counters in the places each first took. (In that recording the phase's toast, "The sun of
-Austerlitz, as memoirs call it", stands in every frame, because the probe sets the clock with `force`, which shows it again each time; at
-1280 x 720 its left end lies under the Study / Watch / Clean switch in the build as in the prototype: a small fault of the interface, outside
-Stage 8's subject, recorded for 8H.) Orbiting the Field vantage in Landscape with counters (`hybrid-orbit.mp4`), the build's layout reshuffles in every frame,
-counters trading places across the field; the prototype's hold theirs, a few fading where another takes their room. [[LABEL-CLIPS]]
+while the zoom runs (the table's "items drawn while moving"). [[PAPER-PLAY]] Orbiting the Field vantage in Landscape with counters (`hybrid-orbit.mp4`), the build's layout reshuffles in every frame,
+counters trading places across the field; the prototype's hold theirs, a few fading where another takes their room. Zooming in on the same view (`hybrid-zoom.mp4`), the build's labels slide and swap as the
+anchors spread; the prototype's keep their places against their anchors, and the few that lose their room fade.
 
 ### 3.4 Recommended (question 240): anchor2 with the band, and fades
 
@@ -443,8 +444,10 @@ counters trading places across the field; the prototype's hold theirs, a few fad
 taken moves only to a place hugging its anchor, else fades out; what has no room is looked for again every 333 ms and fades in after two passes
 with room; the level-of-detail switches act on a distance held inside an 8% band. **At rest** the band is released (the switches read the true
 distance, so a view's corps or divisions never depend on how it was reached) and each item first tries the place it held, then the build's own
-search (persist). It is the only stabiliser that removes the darting the owner describes (counters' jumps from 1,549 to 19, all jumps from
-4,003 to 249, never across the screen) without breaking the layer's rules (no overlap among live items in any frame); its price is a fifth
+search (persist). It removes the darting the owner describes (counters' jumps from 1,549 to 19, all jumps from 4,003 to 249; while the view
+moves, an item other than a never-dropped one moves only beside its own anchor) without breaking the layer's rules (no overlap among live
+items in any frame), with a third of anchor's flicker and two thirds of its pops (anchor, at 47 jumps, is the one other stabiliser that
+does as much for the jumps); its price is a fifth
 fewer items while the view moves and more items fading than popping today, which the fades make gentle. **persist+hold** is the
 lighter alternative (question 240 (c)): it holds a returning item four frames before drawing it, cuts the pops by 38% and the flicker by two
 thirds and takes the corps flip out of the pans, but leaves 1,611 jumps (40% of today's). **freeze** breaks the no-overlap rule (decision 24)
@@ -515,13 +518,14 @@ kept within 2% of the build's, so the standards' ratio (decision 106) is unchang
 | `f-kit` | **the man**: a coat cut as a torso wider at the shoulders with skirts behind, arms as tapered limbs (the left free, the right at the musket), legs in two tapered segments with shoes, the pack and its rolled cover, the musket and bayonet slanted at the shoulder. **The horse**: a barrel body with chest and quarters, the neck raised forward, the head angled down, ears, the tail, each leg in two segments with a hoof. **The rider**: seated with thighs along the horse and shins down, the saddle and the saddle-cloth, the sabre at the shoulder, the cuirass where recorded. **The gun**: a turned barrel (a lathe profile: breech, reinforce, chase, muzzle), a bracket trail of two cheeks to the ground, an axle, wheels with a rim, a hub and twelve spokes. **The limber**: an axle, two smaller wheels, a frame and the pole forward. **The battery**: five gunners about each gun, as the build has them; behind each deployed gun its limber, the coffret on it, and its team of four horses with one driver on the near wheeler, turned to the rear (equipment the build does not draw); hitched up, each gun's trail lifted onto its limber with the coffret between its cheeks, behind the team | DESIGN (shapes and proportions; the gunners' posts); GENERIC (the gun and limber: a field piece of the period, not a sourced model of any army's system); the battery's arrangement, the coffret and the one driver from the leads of section 4.4, to be registered before anything is built |
 | `f-facings` | `f-kit`, and on the French line infantry only the lapels and the turnbacks in white and the collar in red | the table's claim (`DRESS.fr_line.facings`, Fieffé, grade B) carries no colour class; drawing it would extend decision 104 (section 4.6) |
 | `f-gait` | `f-kit`, and the legs, the free arm and the horses' legs swing by the rule of section 4.3 | DESIGN (the rule, the stride, the thresholds) |
+| `f-gait-gc` | `f-gait` with the Guard cavalry in Nansouty's place, for the cavalry's recording: its march of 10:30-11:15 (4.85 km/h) is the one cavalry leg of the model fast enough to step (`legs.js`; Nansouty's are drifts under 1 km/h) | as `f-gait`; the Guard's horse colour as the table has it (decision 109) |
 
 **What they show** (`docs/stage8-evidence/figures/` at the views' distances; `figures-close/` closer, with the build beside each):
 - **The guns are where the kit changes most**, partly because the prototype also draws what the build does not (the limbers and teams
   behind the deployed guns, the coffret): the frame rises by 93,800 triangles and four draw calls in `bat-front` (`figure-stills.json`), all three formations' kits together, against
   50,300 and none in `inf-front` and `cav-front`, where the guns are not yet on the field (their first anchor is in phase 7). The build's battery is a row of dark tubes on solid brown discs as large as a man
   (`bat-front-base.jpg`); with `f-kit` each gun stands on spoked wheels with its trail to the ground and its crew about it, and reads as a field
-  piece at the Field vantage's distances as well as close (`bat-front-f-kit.jpg`; close up, `figures-close/bat-deployed-*.jpg`: the build's gun is a dark tube laid between two solid
+  piece in the views 20-24 units out (`bat-front-f-kit.jpg`; close up, `figures-close/bat-deployed-*.jpg`: the build's gun is a dark tube laid between two solid
   discs larger than a man, which read as plates; the prototype's stands on two spoked wheels with its trail down, its crew about it, and its
   limber and team, with a driver, behind it). Hitched up, the build shows brown cubes trailed
   by loose barrels; the prototype shows each gun's trail lifted onto its limber behind the team (`bat-march-*.jpg`, and close up
@@ -532,8 +536,8 @@ kept within 2% of the build's, so the standards' ratio (decision 106) is unchang
   the difference is real but small (18,500 pixels of 1.44 million change in `inf-front`, 3,600 in `cav-front`, where Nansouty's men stand behind
   another formation). Closer, it stays small (`figures-close/inf-close-*.jpg`, `cav-close-*.jpg`: the coat's cut, the slimmer arms and the pack read on
   the nearest files, 7,800 pixels change in `inf-close` and 2,600 in `cav-close`, where Nansouty's cuirassiers stand behind Blasowitz's
-  houses and under two Allied arrows): those frames are the arrows', the standards' and a glyph ring's (section 4.5). The kit is what the
-  guns need at every distance; for infantry and cavalry it is a refinement of the close views, and not what the distant views need (their
+  houses and under an Allied arrow): those frames are the arrows', the standards' and a glyph ring's (section 4.5). The kit is what the
+  guns need in the close views (no gun was captured from the Field vantage); for infantry and cavalry it is a refinement of the close views, and not what the distant views need (their
   problem is section 2's and section 7's).
 - **A fault found on the way, recorded.** The kit's first captures drew the horse's barrel white on the cavalry's and the officers' horses
   (the part was left uncoloured) and the teams' brown twice, too dark; fixed in the prototype (the barrel takes the class's horse colour,
@@ -541,7 +545,7 @@ kept within 2% of the build's, so the standards' ratio (decision 106) is unchang
   taken after it).
 - **The facings** (`inf-front-f-facings.jpg`) are the most legible single change for the French line infantry (section 4.6).
 - **What dominates the close views is still not the troops**: in `bat-front` a movement arrow's ribbon, drawn over everything at its fixed
-  width, covers a third of the frame and every formation under it, in all three variants (section 7.1).
+  width, covers a third of the frame and every formation under it, in both captures (section 7.1).
 
 ### 4.3 Motion: the compressed time and the figure scale
 
@@ -602,13 +606,7 @@ its mounted officers', whose stride is longer; the infantry's follow from the am
 full swing; none at 4x.
 
 **Recorded** (`docs/stage8-evidence/clips/`; each the build above and `f-gait` below over the same frames, at ½x and 10 frames a second, the
-camera tracking the formation 24-26 units out). `inf-march.mp4`, Saint-Hilaire's division on the plateau's west slope from 08:47:
-in the build the files slide up the slope with their legs together and the officer's box horse glides; with `f-gait` the files step in
-cadence and the horse walks, the legs alternating from frame to frame, and nothing else changes (the column's place, its speed and the
-camera are the build's). `bat-limber.mp4`, the guns on the heights from 13:42, their leg toward Augezd beginning at 13:45: in both, the
-deployed group gives way to the limbered one between two frames (the prototype keeps the build's switch, question 243); after it the
-build's box teams slide, the prototype's walk with their drivers, each gun on its spoked wheels behind its limber. Until the battery moves
-off, a broad arrow ("Saint-Hilaire wheels south") lies over it in both variants: section 7.1's case. [[GAIT-CLIPS]]
+camera tracking the formation 24-26 units out; the clock set each frame as Play sets it). [[INF-MARCH]] [[BAT-LIMBER]] [[MARCH-4X]] [[CAV-CLIP]]
 
 **The drift the gait must not animate** (`tools/stage8/legs.js`, `legs.json`, the model's own legs): of the 147 legs the clock moves, 92 run
 at under 1 km/h, 52 of them for two hours or more: Nansouty's division covers 1.85 km between 04:00 and 10:30 (0.28 km/h), Saint-Hilaire's
@@ -735,12 +733,12 @@ Goldbach, the bright blue line of `stream-low-base.jpg`.
   no stream (the frame `*-base.jpg`); `w-stream`, drawing the ribbons, shows the Goldbach as a grey-blue channel between paler banks,
   crossing under the village's houses (`goldbach-top-w-stream.jpg`: 94,300 pixels change, `pixdiff.json`); from the west bank, 30 units out,
   a pale band running away toward Sokolnitz behind the troops, the sky reflected at a grazing angle (`goldbach-noon-w-stream.jpg`: 9,600
-  pixels). `w-streamice`'s pale rim reads as ice along both banks from above (`goldbach-top-w-streamice.jpg`: 32,600 pixels more than
-  `w-stream`) and barely from the bank (900), which is as well, since nothing read supports it. A fault of the prototype's, recorded: its
+  pixels). `w-streamice`'s pale rim reads as ice along both banks from above (`goldbach-top-w-streamice.jpg`: 32,600 pixels whose colour
+  differs from `w-stream`'s by more than 40 of 255 in a channel) and barely from the bank (900), which is as well, since nothing read supports it. A fault of the prototype's, recorded: its
   first captures of `w-streamice` were `w-stream`'s (the variant installed second reused the first's compiled program, which drew no rim);
   each variant now has its own, and both views were taken again. The same draw calls
   and triangles: the ribbons are already submitted to the renderer today and culled there, so drawing them costs only the pixels they cover.
-  The ribbons' widths are the build's (the Goldbach 2.8 units, about 177 m at 1x; the roads 1.2-2.9): symbol widths, never yet seen.
+  The ribbons' widths are the build's (the Goldbach 2.8 units, about 177 m, on banks 4.6 wide): symbol widths, never yet seen.
 
 ### 5.4 Stream movement, assessed on its own
 
@@ -842,15 +840,16 @@ in world units (attack 2.0-2.6, counter 1.8-2.3, move 1.3-1.6; the casing 1.34 t
 drawn over everything (depthTest false, "an annotation on the map, not an object in the landscape") at 95% opacity. The hierarchy the
 symbology settled is kept by form, not weight: side by colour (decision 1), the Allied chevron head (20), intended routes broken (15, the one
 dashed kind), derived arrows drawn on with the clock (83), interpretive ones flagged. What does not hold up is the weight: a width fixed in
-the world is 6-10 px across in phase 8's Overview, 12-16 px at the Field vantage and a band 49-68 px across in the low and close
-views (`density.js`, each live arrow's casing at its middle: the low Pratzen view 50-58, close on Sokolnitz 49-55, the Goldbach view 20-68), where the heads cover battalions and, at the eye
+the world is 6-10 px across in phase 8's Overview, 12-16 px at the Field vantage and a band up to 50-68 px across in the low and close
+views (`density.js`, each live arrow's casing at its middle: the low Pratzen view 50-58, close on Sokolnitz 49-55, the Goldbach view 20-68,
+low toward the east 25-50, low over the Satschan mere 11-63), where the heads cover battalions and, at the eye
 level, the arrows show through the hills (the audit's A-5, recorded in 5E and still present).
 
 **Prototyped (`protos/arrows.js`; `docs/stage8-evidence/arrows/`).** The prototypes wrap the build's `drapedRibbon`, so they act on every draped
 ribbon of the overlays: the movement arrows, and also the lines of battle, the boundaries and the halt bars. `a-cap`: each ribbon's width
 capped so its casing is at most 16 px across at its middle (the head scaled with it; never widened; a ribbon whose middle lies
 behind the eye left as it is: the prototype's first run failed on one, in `inf-mid`, and was run again with this rule). `a-soft`: `a-cap`, every ribbon's
-opacity at 0.62 (fills and casings), and the ribbons depth-tested: the arrows, lifted 2.4 units, pass above the men's 1.88 units, but the
+opacity multiplied by 0.62 (fills and casings), and the ribbons depth-tested: the arrows, lifted 2.4 units, pass above the men's 1.88 units, but the
 lines of battle (lifted 1.9) and the boundaries (1.6) do not, so in these captures the figures cut them. `a-calm`: `a-soft` with the event
 glyphs capped at 64 px instead of 192.
 
@@ -943,8 +942,8 @@ three (section 3), the arrows' cap in the two perspective presentations only.
 ### 7.6 The event glyphs
 
 **Today (fact).** Event glyphs (a ringed cross, a circled arrow) and objective markers are sprites, capped at `SYM_MAX_PX` 192 px on screen
-and faded near the eye (decision 57, `app.js:3193`). In the close views a glyph is the largest single shape after the arrows: 150-190 px
-rings over the troops (`inf-front-base.jpg`, `cav-close-base.jpg`), in the eye-level views over the horizon. `a-calm` caps them at 64 px (the
+and faded near the eye (decision 57, `app.js:3193`). In the close views a glyph is the largest single shape after the arrows: rings well
+over 100 px across over the troops (`inf-front-base.jpg`, `cav-close-base.jpg`), in the eye-level views over the horizon. `a-calm` caps them at 64 px (the
 event's map label and its tag unchanged, the glyph's hit area unchanged, decision 167's exception for the markers on the timeline untouched).
 In the captures (`*-a-calm.jpg` against `*-a-soft.jpg`) the rings that stood over the troops become small marks: in `inf-mid` the crosshair
 over the Russian line and the circled arrow over Saint-Hilaire's column, close on Sokolnitz the ring over the village; the glyphs' cap alone
@@ -990,10 +989,10 @@ the villages 6,800 and 10 calls; the outline cue removes 4,000 triangles and add
 
 **What the kit would cost on every formation (an estimate from the factors, not a measurement):** the figures' triangles would rise by
 69-106% (all men to all riders), the 4x frame from 2.48 to 3.3-3.8 million triangles (+34-52%, both passes), the phone's heavy frame (one
-pass, `lowTier`) from about 1.47 to 1.9-2.1 million (+29-44%). That is outside both budgets of section 8.3 by a wide margin. Three levers,
-each measured in step 6 or here, bring it back: block culling (8D: 13.7% of the low view's frame, nothing in the Overview); a lighter kit
-(the prototype was shaped for the picture, not for its count: the head alone is an 80-triangle icosahedron, and 8E's target is at most 1.3
-times the build's per man); and the rich kit only where it is seen (a man 16 px or more: the low and close views), the build's kit beyond,
+pass, `lowTier`) from about 1.47 to 1.9-2.1 million (+29-44%). That is outside both budgets of section 8.3 by a wide margin. Three levers
+bring it back: block culling (measured in step 6: 13.7% of the low view's frame, nothing in the Overview); a lighter kit (a target, not a
+measurement: the prototype was shaped for the picture, not for its count, its man 140 triangles above the build's, and 8E's target is at most
+1.3 times the build's per man); and the rich kit only where it is seen (a man 16 px or more: the low and close views), the build's kit beyond,
 which is a level of detail by size on screen. Decision 235 retired level of detail for today's workload; a richer kit is a new one, so
 question 249 asks for culling and question 242 for the kit with these limits.
 
@@ -1125,15 +1124,16 @@ drapes the same ribbons flat and looks at them from straight above (its own 2F c
 them either: in its two views (as entered, `paper-north-up`, and close, `paper-close`) 0 pixels as built, and double-sided 2,294 and 36,935
 pixels of streams, 1,146 and 29,108 of banks, 6,329 and 36,086 of roads; there too the roads and streams are only the ground's cover classes. The same winding and front-side materials stand in every archived build from Stage 0 on (inference from the code,
 `archive/`; not measured on the archives). **Why no check saw it:** the self-test's 2F check (`roadDrape`, `app.js:8377`) holds every ribbon
-vertex at its lift above the drawn ground and every edge above it, and the start-up check (`app.js:8229`) holds the water's `visible` flag:
+vertex at its lift above the drawn ground and every edge above it, and a paper-map check of the self-test (`app.js:8229`) reads the water's `visible` flags:
 both are true of ribbons the renderer never draws. It is the kind of check roadmap step 1 made strict elsewhere (decision 131: a check that
 cannot fail).
 
 **Proposed (8A, question 253):** the ribbons wound facing up (the index order reversed in `ribbon()`; the materials, widths, lifts and colours
-as they are), so that the roads, the streams and their banks are drawn on the landscape as 2F meant; the self-test's 2F check extended to
+as they are), so that the roads, the streams and their banks are drawn as 2F meant, on the landscape and on the paper map (the same ribbons
+draw there: the paper map changes too, and its captures go with the landscape's in the before and after); the self-test's 2F check extended to
 count each ribbon class's drawn pixels where it lies, as `stream-vis.js` does, so that it fails on an undrawn ribbon; the captures before and
-after put to the owner in 8A, since the widths (the Goldbach 2.8 units, about 177 m at 1x; the roads 1.2-2.9) are symbol widths no one has
-yet seen drawn. It adds no draw call and no triangle (the ribbons are submitted to the renderer today and culled there), only the pixels they
+after put to the owner in 8A, since the widths are symbol widths no one has yet seen drawn (the Goldbach 2.8 units, about 177 m, the Littawa 3.2,
+the brooks 1.4, on banks of 4.6, 5.0 and 2.4; the roads 1.2-2.9 on edges 1.1 wider, 2.3-4.0). It adds no draw call and no triangle (the ribbons are submitted to the renderer today and culled there), only the pixels they
 cover. The streams' look (`w-stream`, question 246) is 8F's, on ribbons that are drawn.
 
 ## 10. The implementation plan: PRs in order
@@ -1161,7 +1161,7 @@ decisions 141, 199, 214 and 232 were.
 
 ### 8A: the carried findings, and the roads and streams drawn
 - **Benefit:** the knowledge rule holds for the camera too (no centring on what the reading cannot see); a dossier's sources are one
-  link from its head; the timeline's tips stop outstaying their use; the roads and the streams drawn on the landscape, as 2F meant (9.5).
+  link from its head; the timeline's tips stop outstaying their use; the roads and the streams drawn on the landscape and the paper map, as 2F meant (9.5).
 - **Systems:** `app.js` (the dossier's centring under a reading; the dossier's source block; `bindTimeTips`; the self-test's `roadDrape`
   check extended to the ribbons' drawn pixels); `world.js` (`ribbon()`'s index order); the self-test, runtime-test, `terrain-test.js`.
 - **Evidence:** none (presentation); `carried.js` and `stream-vis.js` re-run as the before and after.
@@ -1271,7 +1271,7 @@ decisions 141, 199, 214 and 232 were.
 
 ### 8H: integration
 - **Benefit:** the whole measured together, on the owner's devices; the open polish findings closed (section 9.4's, and the phase toast
-  that lies partly under the view switch at 1280 x 720, section 3.2's recordings).
+  that lies partly under the view switch at 1280 x 720, section 3.3's recordings).
 - **Systems:** all; `check:visual`, `check:contrast`, `check:selftest`.
 - **Evidence:** the device route after (desktop, phone, and an integrated-GPU laptop if one can be had); the effects-off bracket (section 8.5).
 - **Acceptance:** section 8.3's budgets on every device run; every check passing; the records.
@@ -1285,7 +1285,7 @@ build stays as it is until the answers. A limit of `tools/visual/thresholds.js` 
 |---|---|---|---|---|---|
 | **239** | The ground under the troops (L1; section 2) | (a) remove the marks and decision 107's footprint from the landscape (`g-none`); (b) **a thin cased outline** of the footprint in the side's colour under every formation drawn as figures, the selection outlined in the accent, "Position confidence" an optional layer **off by default on the landscape** drawing the grade's extents as outlines (`g-outline`, `g-confline`), the paper map as today; a reported-only formation's C zone and the eye level's own side kept as they are (decision 91), and at 1x the footprint drawn by its grade whatever the layer; (c) a small cased chevron ahead of each formation (`g-marker`) with the same optional layer; (d) as today | **(b)** | supersedes 85 on the landscape (on by default); restyles 87 and 107 (a footprint under every formation, drawn as its edge); keeps 86, 88, 91, 1, 4, 15 (one hue a side, no dash: each outline split on the drawn ground's triangles), 34 (1x drawn as today), the pads | PR 8B; the 5B and 6C self-test checks rewritten to the outline; `CONF_SHARE` replaced by the outline's share, its limit as 8B measures it; `css-test.js`'s default; the legend; about 31 draw calls more unless the outlines are merged into one mesh |
 | **240** | The map layer in motion (L2; section 3) and its hierarchy in the low views (section 7.2) | (a) **anchor2 with the band, and fades**: held beside its anchor while the view moves, else faded out; looked for again every 333 ms; the level-of-detail switches banded 8% while moving, released at rest; at rest each item first tries its last place; **and the far items a step smaller**; (b) as (a), and the far items yielding first in the low views (more drops there: their limits only on the owner's word); (c) persist+hold: the last place first, a returning item after four frames with room, the band, without the fades; (d) as today | **(a)** | none; decisions 24, 38, 39 and 47 kept as invariants (section 3.4) | PR 8C; a motion block added to `check:visual`, its limits as 8C measures them |
-| **241** | The arrows and the event glyphs (section 7.1, 7.6; A-5) | (a) **each arrow's width capped at 16 px on screen in the two perspective presentations, the ribbons depth-tested, their fill at 0.62 of today's opacity, the glyphs capped at 64 px** (`a-calm`); (b) the cap only (`a-cap`); (c) as today | **(a)** | decision 57's value (192 px) and 2C's "over everything" (the depth test); keeps 1, 15, 20, 21, 83 (form, dash, chevron, boundaries, draw-on) | PR 8B; `binding-test.js` unchanged; the eye-level cases read against a depth-only frame |
+| **241** | The arrows and the event glyphs (section 7.1, 7.6; A-5) | (a) **each arrow's width capped at 16 px on screen in the two perspective presentations, the arrows depth-tested against the drawn ground alone, their fill at 0.62 of today's opacity, the glyphs capped at 64 px** (`a-calm` with section 7.1's two changes: the ground-only depth test, and the lines of battle, boundaries and halt bars keeping their widths and opacity); (b) the cap only (`a-cap`); (c) as today | **(a)** | decision 57's value (192 px) and 2C's "over everything" (the depth test); keeps 1, 15, 20, 21, 83 (form, dash, chevron, boundaries, draw-on) | PR 8B; `binding-test.js` unchanged; the eye-level cases read against a depth-only frame |
 | **242** | The figures' kit (L3; section 4) | (a) **`f-kit` for every class**: the man, the horse and the rider redrawn in more parts, every colour, headgear and cuirass from the existing claims; (b) the artillery only; (c) as today | **(a)** | extends 6C's shapes (DESIGN); keeps 97, 100, 102, 103, 104, 106, 109 | PR 8E; on every formation the prototype's kit would add 34-52% to the 4x frame: only with culling (249), a kit of at most 1.3 times the build's per man, and the rich kit where a man is 16 px or more on screen, within section 8.3's budgets |
 | **243** | The artillery (L3; section 4.4) | (a) **the generic field piece**: spoked wheels in Gassendi's proportion, a bracket trail, the French coffret between the cheeks when limbered, the Allied limbers' box, one driver a vehicle (two for six horses: IV Corps' order, an authorisation), the limbers and teams behind the deployed guns, four horses a drawn gun, one carriage colour, the switch between the groups as today; each reading registered in `appearance.js` first; (b) as (a), with each army's carriage colour where sourced (French olive, Austrian ochre, the Russian generic); (c) as today | **(a)** | (b) would extend 109 ("one colour unless each army's is sourced": two of three are) | PR 8E with its data task (the readings of `leads.md` topic 1, graded and registered) |
 | **244** | The gait (L3; section 4.3) | (a) **the clock's gait**: the swing's phase a function of the clock alone (the modelled track's distance over a design stride), its amplitude the play speed's (faded out above 3.2 cycles a second on screen, eased when the speed changes), none under reduced motion, when halted, or below 1 km/h (the drift of an undated leg, decision 45); (b) no gait; (c) a gait in real time | **(a)** | none (VISUAL_AUDIT's "do not animate losses" kept: no figure falls) | PR 8D (the shader hooks), 8E; no draw call, no triangle |
@@ -1297,7 +1297,7 @@ build stays as it is until the answers. A limit of `tools/visual/thresholds.js` 
 | **250** | Budgets and device runs (section 8.3, 8.5) | (a) **the budgets of section 8.3** (the phone's heavy views at most 1.62 million triangles, the desktop's 4x frame at most 2.8 million and 900 calls, the map layer's pass not above the build's in the same motions by more than 0.5 ms at the median and 2 ms at the 95th percentile, the gait free of calls and triangles), **an integrated-GPU run before any PR adding more than 10%**, the device route before and after the PRs that change the drawing; (b) as (a), and **the bracketed effects-off run** on the phone (section 8.5) | **(b)** | keeps 236's `lowTier` | the owner's runs: about 15 minutes each |
 | **251** | The carried findings (section 9.1-9.3) | (a) **fix all three in 8A** as section 9 proposes: the centring on a formation the reading does not know withheld, the dossier's sources one link from its head, the timeline's tip hidden once its element is activated; (b) fix 9.1 only (it is the knowledge rule's); (c) record them | **(a)** | extends 170 (b)'s rule to the centring | PR 8A, small |
 | **252** | The plan (section 10) | (a) **PRs 8A-8H in that order**, each a draft for review with its measures; (b) another order | **(a)** | none | as section 10 |
-| **253** | The roads and streams drawn (section 9.5) | (a) **the ribbons wound facing up in 8A**, with their materials, widths and colours as they are, a self-test check that counts them drawn, and the captures before and after put to the owner; (b) as (a), and the widths set again first (the Goldbach 2.8 units, about 177 m at 1x; the roads 1.2-2.9); (c) left undrawn (the ground's cover classes carry the roads and streams, as today) | **(a)** | none: 2F meant them drawn; keeps 27 (the streams' lines where they are) | PR 8A; no draw call or triangle, the pixels they cover; the self-test's 2F check made able to fail |
+| **253** | The roads and streams drawn (section 9.5) | (a) **the ribbons wound facing up in 8A**, with their materials, widths and colours as they are, on the landscape and the paper map alike, a self-test check that counts them drawn, and the captures of both before and after put to the owner; (b) as (a), and the widths set again first (the streams 1.4-3.2 units on banks of 2.4-5.0, the Goldbach's 2.8 about 177 m; the roads 1.2-2.9 on edges of 2.3-4.0); (c) left undrawn (the ground's cover classes carry the roads and streams, as today) | **(a)** | none: 2F meant them drawn; keeps 27 (the streams' lines where they are) | PR 8A; no draw call or triangle, the pixels they cover; the self-test's 2F check made able to fail |
 
 ## 12. Verification, and what remains to be measured
 

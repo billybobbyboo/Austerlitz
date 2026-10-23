@@ -30,6 +30,9 @@ const inPage=function(){
   }
   function uninstall(){ if(!A.kind) return; window.drapedRibbon=A.orig; if(A.sym0!==null){ SYM_MAX_PX=A.sym0; A.sym0=null; } A.kind=null; rebuildOverlays(curPhase,true); updateVisibility(); requestRender(3); }
   ["a-cap","a-soft","a-calm"].forEach(function(k){ window.__p8[k]={install:function(){ return install(k); }, uninstall:uninstall}; });
+  /* a-rebuild: no change at all, only the build's own rebuild of the current phase's overlays (rebuildOverlays), as every prototype above
+     does on install and on removal: what the build itself makes of a rebuild, for comparison with the frames after the prototypes */
+  window.__p8["a-rebuild"]={install:function(){ rebuildOverlays(curPhase,true); updateVisibility(); requestRender(3); return {kind:"a-rebuild"}; }, uninstall:function(){}};
   window.__a8=A; return true;
 };
-module.exports={inPage, ids:{"a-cap":{},"a-soft":{},"a-calm":{}}};
+module.exports={inPage, ids:{"a-cap":{},"a-soft":{},"a-calm":{},"a-rebuild":{}}};

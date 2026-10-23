@@ -43,7 +43,7 @@ const FILES=[...new Set(P8.map(p=>p.file))].map(f=>P8.find(p=>p.file===f));
       const k=await cost(); await L.jpeg(page,path.join(OUT,name+"-"+p.id+".jpg"),86);
       await page.evaluate(id=>window.__p8[id].uninstall(),p.id); await L.settle(page);
       const back=await cost();
-      R[p.id]=Object.assign({info},k,{restored:back.calls===b0.calls&&back.tris===b0.tris});
+      R[p.id]=Object.assign({info},k,{restored:back.calls===b0.calls&&back.tris===b0.tris, after:{calls:back.calls, tris:back.tris}});
       console.log(name.padEnd(20),p.id.padEnd(16),JSON.stringify(k),back.calls===b0.calls&&back.tris===b0.tris?"":"NOT RESTORED "+JSON.stringify(back));
     }
     save();

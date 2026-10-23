@@ -3,6 +3,8 @@
    frame in seconds here, so a clip is not filmed in real time: each frame is set and drawn by the app, then captured, and the frames are
    encoded at the frame rate a visitor's screen would have shown them (FPS). A clip's clock advances by the play speed's clock minutes for each
    frame's share of a second (MIN_PER_SEC x speed / FPS): at the default ½x, half a clock minute a frame at 10 frames a second, as Play would.
+   The clock is set as Play sets it (setClock without force: the overlays, the facings and the phase's toast change only when the phase does;
+   until this was found the clips set it with force, which rebuilt the overlays every frame); Play's dwell at event starts is not reproduced.
    The camera either follows a formation (a fixed offset in the world from its block, so the shot tracks it without turning) or moves by the
    app's own camera functions (a pan, a zoom, an orbit) one step a frame. ?harness=1 is kept (deterministic frames: the smoke does not drift).
    Prototypes (tools/stage8/protos/<file>.js, file:id) are installed before the first frame; the gait is told the play speed it stands for.
@@ -60,7 +62,7 @@ const CLIPS={
       await page.evaluate(([C,k,fps,spec])=>{
         if(window.__l8){ window.__l8.moving=k>0&&k<(C.motion?C.motion.n:1e9); window.__l8.frameMs=1000/fps; }
         if(window.__f8) window.__f8.rate=MIN_PER_SEC*(C.speed||0.5)/60;   /* the gait told the play speed this clip stands for */
-        if(spec.from!=null){ const t=spec.from+k*MIN_PER_SEC*(C.speed||0.5)/fps; setClock(Math.min(spec.to,t),{instant:false,force:true,camera:false}); }
+        if(spec.from!=null){ const t=spec.from+k*MIN_PER_SEC*(C.speed||0.5)/fps; setClock(Math.min(spec.to,t),{instant:false,camera:false}); }   /* as Play sets it (tickClock: no force), the camera held by the shot */
         if(C.motion&&k>0){ const fr=mode==="staff"?MAPCAM.freeRect():landFreeRect(), c=[(fr[0]+fr[2])/2,(fr[1]+fr[3])/2];
           if(C.motion.kind==="zoom"){ if(mode==="staff") MAPCAM.zoomAt(c[0],c[1],1/C.motion.k); else LANDCAM.zoomAt(c[0],c[1],1/C.motion.k); }
           else if(C.motion.kind==="orbit") LANDCAM.orbit(C.motion.d,0);
