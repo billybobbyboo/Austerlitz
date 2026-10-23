@@ -88,10 +88,25 @@
   "close-sokolnitz": {
    "base": {
     "calls": 781,
-    "tris": 2478169,
+    "tris": 2478159,
     "items": 63,
     "placed": 19,
     "dropped": 2
+   },
+   "a-rebuild": {
+    "info": {
+     "kind": "a-rebuild"
+    },
+    "calls": 781,
+    "tris": 2478149,
+    "items": 63,
+    "placed": 19,
+    "dropped": 2,
+    "restored": false,
+    "after": {
+     "calls": 781,
+     "tris": 2478149
+    }
    },
    "a-cap": {
     "info": {
@@ -102,7 +117,11 @@
     "items": 63,
     "placed": 19,
     "dropped": 2,
-    "restored": false
+    "restored": false,
+    "after": {
+     "calls": 781,
+     "tris": 2478149
+    }
    },
    "a-soft": {
     "info": {
@@ -113,7 +132,11 @@
     "items": 63,
     "placed": 19,
     "dropped": 2,
-    "restored": false
+    "restored": false,
+    "after": {
+     "calls": 781,
+     "tris": 2478149
+    }
    },
    "a-calm": {
     "info": {
@@ -124,7 +147,11 @@
     "items": 63,
     "placed": 19,
     "dropped": 2,
-    "restored": false
+    "restored": false,
+    "after": {
+     "calls": 781,
+     "tris": 2478149
+    }
    }
   }
  }
