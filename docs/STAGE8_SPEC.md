@@ -427,8 +427,10 @@ lines, occlusion, the full solve when the view stops); they differ only in what 
 **Fades.** A pop is a placement event whatever the rule; what the eye minds is its suddenness. `protos/labels.js` adds `l-fade`: an item
 appearing or leaving fades over 180 ms of real time (a leaving item drawn at its last place, under the others, taking no pointer); none
 under reduced motion. It changes no placement, so the probe's counts are those of anchor2+band; the recordings show it
-(`clips/paper-zoom.mp4`, `clips/hybrid-orbit.mp4`, `clips/hybrid-zoom.mp4`, `clips/paper-play.mp4`: the build above, the prototype below,
-the same frames).
+(`clips/paper-zoom.mp4`, `clips/hybrid-orbit.mp4`, `clips/hybrid-zoom.mp4`, `clips/paper-play.mp4`: the build above, `l-fade` below,
+the same frames at 10 a second). In the paper map's zoom the build's counters and names change places from one frame to the next; with
+the prototype they hold their places, and those whose place is taken fade out and come back a few frames later, so that fewer are drawn
+while the zoom runs (the table's "items drawn while moving"). [[LABEL-CLIPS]]
 
 ### 3.4 Recommended (question 240): anchor2 with the band, and fades
 
@@ -1106,8 +1108,10 @@ frame); after each view's paint was undone, no pixel of the frame differed from 
 `world.js:1144`):** `ribbon()` lays each ribbon's rows across the course and indexes its triangles `(o, p, o+1)`, which winds every one of them
 facing down whatever the course's direction; the stream, bank and road materials keep three.js's default front side, so seen from above,
 as every view of the map sees them, the renderer culls them all. What a visitor sees of a road or a stream is the ground shader's own cover
-classes under it (Stage 2F: the road class where the road raster says so, the water and damp classes along the streams), on the landscape
-and on the paper map alike. The same winding and front-side materials stand in every archived build from Stage 0 on (inference from the code,
+classes under it (Stage 2F: the road class where the road raster says so, the water and damp classes along the streams). The paper map
+drapes the same ribbons flat and looks at them from straight above (its own 2F check, `app.js:8234`, is geometric too), and draws none of
+them either: in its two views (as entered, `paper-north-up`, and close, `paper-close`) 0 pixels as built, and double-sided 2,294 and 36,935
+pixels of streams, 1,146 and 29,108 of banks, 6,329 and 36,086 of roads; there too the roads and streams are only the ground's cover classes. The same winding and front-side materials stand in every archived build from Stage 0 on (inference from the code,
 `archive/`; not measured on the archives). **Why no check saw it:** the self-test's 2F check (`roadDrape`, `app.js:8377`) holds every ribbon
 vertex at its lift above the drawn ground and every edge above it, and the start-up check (`app.js:8229`) holds the water's `visible` flag:
 both are true of ribbons the renderer never draws. It is the kind of check roadmap step 1 made strict elsewhere (decision 131: a check that
