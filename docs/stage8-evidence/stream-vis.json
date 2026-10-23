@@ -286,6 +286,32 @@
     "road": 0,
     "changed": 0
    }
+  },
+  "paper-north-up": {
+   "drawn": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 5
+   },
+   "doubleSided": {
+    "stream": 2294,
+    "bank": 1146,
+    "road": 6329,
+    "changed": 10985
+   },
+   "unhidden": {
+    "stream": 1670,
+    "bank": 870,
+    "road": 4550,
+    "changed": 8170
+   },
+   "restored": {
+    "stream": 0,
+    "bank": 0,
+    "road": 0,
+    "changed": 0
+   }
   }
  }
 }
