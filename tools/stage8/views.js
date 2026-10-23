@@ -52,6 +52,10 @@ const V={
     note:"The Satschan mere against the low afternoon sun (the computed sun in the south-west at 14:00), from the north."},
   "stream-low":{viewport:VP, t:500, presentation:"watch", mode:"terrain", aim:{map:[209,392], dir:[-0.78,0.22,0.58], r:30},
     note:"The Goldbach between Sokolnitz and Telnitz, low, 08:20."},
+  "goldbach-top":{viewport:VP, t:720, presentation:"watch", mode:"terrain", aim:{map:[206,380], dir:[0.05,0.99,0.1], r:28},
+    note:"The Goldbach below Sokolnitz from straight above at noon, the fog gone (section 5: where a stream ribbon would show)."},
+  "goldbach-noon":{viewport:VP, t:720, presentation:"watch", mode:"terrain", aim:{map:[206,380], dir:[-0.78,0.30,0.55], r:30},
+    note:"The Goldbach below Sokolnitz at noon, from the west bank, 30 units out."},
   /* buildings and woods (L5, woodland) */
   "village-telnitz":{viewport:VP, t:470, presentation:"watch", mode:"terrain", aim:{map:[212,408], dir:[-0.55,0.30,0.78], r:26},
     note:"Telnitz, its church and houses, 07:50."},

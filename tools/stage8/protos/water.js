@@ -6,8 +6,10 @@
                  glossier ice toward the middle, a broad low-contrast tonal noise (wind-polished and rimed patches, no lines), and a stronger
                  reflection of the sky at grazing angles (a Fresnel weight on the environment map); the shore ice's hard ring replaced by a
                  band feathered at both edges;
-   - w-stream:   the streams darker and less blue (open water under a winter sky), reflecting the sky more at grazing angles, the banks a
-                 little darker where they meet the water;
+   - w-stream:   the streams drawn at all (the build's ribbons, world.js ribbon(), are wound facing down, so with the materials' default
+                 front side three r128 culls every one of them and the landscape draws no stream, bank or road ribbon: here the stream and
+                 bank materials are made double-sided), the streams darker and less blue (open water under a winter sky), reflecting the sky
+                 more at grazing angles, the banks a little darker where they meet the water;
    - w-streamice: w-stream with a thin pale rim of ice along both edges of the water, its edge broken by a noise (shown for assessment only:
                  whether the streams froze at the edges on the day is not recorded in the data; section 5.2);
    - w-flow:     w-stream with a slow drift of its ripple pattern downstream (the Goldbach's course runs north to south, as drawn), in real
@@ -21,8 +23,8 @@ const inPage=function(){
   var NOISE="float h8(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453); }\n"+
     "float n8(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.0-2.0*f); return mix(mix(h8(i),h8(i+vec2(1,0)),f.x),mix(h8(i+vec2(0,1)),h8(i+vec2(1,1)),f.x),f.y); }\n"+
     "float fbm8(vec2 p){ return 0.55*n8(p)+0.28*n8(p*2.1+3.7)+0.17*n8(p*4.3+9.1); }\n";
-  function patch(mat,fn){ var m0={obc:mat.onBeforeCompile, key:mat.customProgramCacheKey, env:mat.envMapIntensity, rough:mat.roughness, col:mat.color.clone(), op:mat.opacity, tr:mat.transparent};
-    Wt.undo.push(function(){ mat.onBeforeCompile=m0.obc; mat.customProgramCacheKey=m0.key; mat.envMapIntensity=m0.env; mat.roughness=m0.rough; mat.color.copy(m0.col); mat.opacity=m0.op; mat.transparent=m0.tr; mat.needsUpdate=true; });
+  function patch(mat,fn){ var m0={obc:mat.onBeforeCompile, key:mat.customProgramCacheKey, env:mat.envMapIntensity, rough:mat.roughness, col:mat.color.clone(), op:mat.opacity, tr:mat.transparent, side:mat.side};
+    Wt.undo.push(function(){ mat.onBeforeCompile=m0.obc; mat.customProgramCacheKey=m0.key; mat.envMapIntensity=m0.env; mat.roughness=m0.rough; mat.color.copy(m0.col); mat.opacity=m0.op; mat.transparent=m0.tr; mat.side=m0.side; mat.needsUpdate=true; });
     fn(mat); mat.needsUpdate=true; }
   /* the mere's ice: local uv of the CircleGeometry (0..1 across), r its distance from the centre (0 at the middle, 1 at the shore) */
   function iceShader(mat,frostCol,clearCol,isRim){
@@ -73,8 +75,8 @@ const inPage=function(){
       str.forEach(function(o,i){ var m=Math.max(1,Math.ceil(widths[Math.min(i,widths.length-1)]/RIBBON_STEP)), n=o.geometry.attributes.position.count, A=new Float32Array(n);
         for(var k=0;k<n;k++) A[k]=-1+2*(k%(m+1))/m;
         o.geometry.setAttribute("aAcross",new THREE.BufferAttribute(A,1)); Wt.undo.push(function(){ o.geometry.deleteAttribute("aAcross"); }); });
-      if(str[0]) patch(str[0].material,function(m){ m.color.copy(lin(0x3E4E58)); m.roughness=0.22; m.envMapIntensity=0.55; streamShader(m,kind==="w-streamice",kind==="w-flow"); });
-      if(banks[0]) patch(banks[0].material,function(m){ m.color.copy(lin(0x454D40)); });
+      if(str[0]) patch(str[0].material,function(m){ m.side=THREE.DoubleSide; m.color.copy(lin(0x3E4E58)); m.roughness=0.22; m.envMapIntensity=0.55; streamShader(m,kind==="w-streamice",kind==="w-flow"); });
+      if(banks[0]) patch(banks[0].material,function(m){ m.side=THREE.DoubleSide; m.color.copy(lin(0x454D40)); });
       if(kind==="w-flow"&&!RM&&!HARNESS){ var tick=function(){ Wt.U.uTime.value=(performance.now()-Wt.t0)/1000; requestRender(1); Wt.raf=requestAnimationFrame(tick); }; tick();
         Wt.undo.push(function(){ cancelAnimationFrame(Wt.raf); }); }
     }
