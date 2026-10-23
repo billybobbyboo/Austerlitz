@@ -83,7 +83,7 @@ const inPage=function(){
     L.forEach(function(q){ legs.push(P(taper(0.075,0.10,0.11,0.15,0.34),[q[0],0.52,q[1]],null,null,col,q[2]), P(taper(0.055,0.06,0.07,0.08,0.34),[q[0],0.19,q[1]],null,null,col,q[2]),
       P(BOX(0.085,0.05,0.10),[q[0],0.025,q[1]+0.01],null,null,M.black,q[2])); });
     var body=new THREE.CylinderGeometry(0.21,0.20,0.86,8,1); body.rotateX(Math.PI/2);
-    return merge([P(body,[0,0.86,0],[1.0,1.15,1]), P(taper(0.30,0.34,0.36,0.40,0.30),[0,0.84,0.43],null,[Math.PI/2,0,0],col), P(taper(0.32,0.30,0.38,0.36,0.26),[0,0.88,-0.42],null,[-Math.PI/2,0,0],col),
+    return merge([P(body,[0,0.86,0],[1.0,1.15,1],null,col), P(taper(0.30,0.34,0.36,0.40,0.30),[0,0.84,0.43],null,[Math.PI/2,0,0],col), P(taper(0.32,0.30,0.38,0.36,0.26),[0,0.88,-0.42],null,[-Math.PI/2,0,0],col),
       P(taper(0.20,0.30,0.14,0.20,0.52),[0,1.13,0.62],null,[0.72,0,0],col), P(taper(0.12,0.24,0.09,0.15,0.40),[0,1.27,0.92],null,[2.1,0,0],col),
       P(BOX(0.03,0.08,0.03),[-0.04,1.43,0.80],null,null,col), P(BOX(0.03,0.08,0.03),[0.04,1.43,0.80],null,null,col),
       P(BOX(0.05,0.36,0.07),[0,0.86,-0.66],null,[0.45,0,0],M.black)].concat(legs));
@@ -204,7 +204,7 @@ const inPage=function(){
       cC.instanceColor.needsUpdate=true;
       /* the drivers' coats: the nation's symbol colour (no train dress in the table); the horses one brown (decision 109), their bodies taking it as an instance colour */
       [dC,dDC].forEach(function(im){ for(var c2=0;c2<im.count;c2++){ col.copy(lin(hexNum(NATION.fr.fill))).multiplyScalar(0.86+0.28*srnd(c2*5+1)); im.setColorAt(c2,col); } im.instanceColor.needsUpdate=true; });
-      [hT,hD].forEach(function(im){ for(var c3=0;c3<im.count;c3++){ col.copy(lin(KIT.horse.brown)).multiplyScalar(0.92+0.16*srnd(c3*11+5)); im.setColorAt(c3,col); } im.instanceColor.needsUpdate=true; });
+      [hT,hD].forEach(function(im){ for(var c3=0;c3<im.count;c3++){ col.setRGB(1,1,1).multiplyScalar(0.92+0.16*srnd(c3*11+5)); im.setColorAt(c3,col); } im.instanceColor.needsUpdate=true; });   /* the brown is in the geometry (decision 109's one brown); the instance only varies it */
       function seat(){ if(!hu.seatPrep) return; hu.seatPrep(); var C=hu.upright(), g=new THREE.Vector3(), q=new THREE.Quaternion(), s=new THREE.Vector3(1,1,1), mm=new THREE.Matrix4(), e=new THREE.Euler();
         local.forEach(function(L){ hu.seatLocal(L.x,L.z,g); g.y+=L.y; e.set(L.rx,L.ry,0,"YXZ"); q.setFromEuler(e).premultiply(C); mm.compose(g,q,s); L.im.setMatrixAt(L.i,mm); });
         [gD,cC,cF,lD,hD,dDC,dDF,gL,lL,hT,dC,dF].forEach(function(im){ im.instanceMatrix.needsUpdate=true; }); }

@@ -78,6 +78,32 @@
     "dropped": 0,
     "restored": true
    }
+  },
+  "bat-march": {
+   "base": {
+    "calls": 745,
+    "tris": 2510217,
+    "items": 59,
+    "placed": 4,
+    "dropped": 0
+   },
+   "f-kit": {
+    "info": {
+     "formations": [
+      "sthilaire",
+      "nansouty",
+      "heightguns"
+     ],
+     "gait": false,
+     "materials": 0
+    },
+    "calls": 747,
+    "tris": 2589833,
+    "items": 59,
+    "placed": 4,
+    "dropped": 0,
+    "restored": true
+   }
   }
  }
 }
