@@ -647,7 +647,10 @@ variation. The streams (`stream-low-base.jpg`): the bluest and brightest line in
 - **A fault found on the way, recorded**: the prototype's first version replaced the materials' shader hook instead of chaining the app's
   own (`atmoUniforms`, `app.js:389-391`, which feeds every material the haze's and the fog's uniforms), and the ice drew black; any Stage 8
   shader change must call it, as the ground's and the atlas's already do.
-- [[S5-STREAMS]]
+- **The streams** (`stream-low-*.jpg`, the Goldbach at 08:20 in the valley fog; the clip `clips/stream-flow.mp4` closer): `w-stream`
+  takes the brightest blue line out of the fogged valley; it reads as water rather than as a drawn line, though at this distance the change
+  is small; `w-streamice`'s pale rim is invisible here and would show only close up, which is as well, since nothing read supports it. The
+  same draw calls and triangles; removed cleanly.
 
 ### 5.4 Stream movement, assessed on its own
 
