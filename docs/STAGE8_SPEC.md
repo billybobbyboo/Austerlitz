@@ -863,9 +863,10 @@ glyphs capped at 64 px instead of 192.
   alone: close on Sokolnitz the village's houses and the trees cut the II and III Columns' arrows, which all but vanish behind the castle
   (`close-sokolnitz-a-soft.jpg`), and Legrand's line along the stream passes behind the houses of Telnitz.
 - **The frames after them.** Each prototype was removed and the frame after it compared with the first: equal in every view but close on
-  Sokolnitz, where it held 20 triangles fewer; the build's own rebuild of the overlays does the same there with no prototype (its shafts
-  10 triangles a pass fewer than the page's first build of them; checked with `rebuildOverlays` alone), so the difference is the build's, not
-  a remnant.
+  Sokolnitz, where it held 10 triangles fewer (`arrow-stills.json`, each entry's `after`: 2,478,149 against the first frame's 2,478,159),
+  which is exactly the frame the build gives when it rebuilds its overlays with no prototype at all (`a-rebuild`, 2,478,149): there the
+  page's first build of the overlays draws 10 triangles more than any rebuild of them, so the difference is the build's, not a remnant (in an
+  earlier run of the same view the first frame drew 20 more).
 
 **Recommended (question 241):** `a-calm` in 8B for the movement arrows, with one change from the prototype: the depth test against **the
 drawn ground alone**; the lines of battle, the boundaries and the halt bars keep their widths and opacity, and take the same ground-only
@@ -1311,7 +1312,7 @@ build stays as it is until the answers. A limit of `tools/visual/thresholds.js` 
 | `npm run check:baseline` | passes: `austerlitz-command-map.html` 2,220,714 bytes, md5 `c4793156103b60bb74151c7d13dbdd9d`, unchanged by this document |
 | [[S12-FINAL]] | |
 | every probe of `tools/stage8/` | run to its end on the build above; outputs in `docs/stage8-evidence/` (the README lists each) |
-| each prototype undone | the frame after each prototype's removal compared with the frame before it in draw calls and triangles: 72 removals checked by `stills.js`, 69 equal; the three close on Sokolnitz (the arrows) 20 triangles fewer, which the build's own rebuild of its overlays makes there with no prototype (section 7.1); the ribbon probe's paint undone in its 13 views with no pixel changed by more than 40 of 255 |
+| each prototype undone | the frame after each prototype's removal compared with the frame before it in draw calls and triangles: 72 removals checked by `stills.js`, 69 equal; the three close on Sokolnitz (the arrows) 10 triangles fewer, exactly the frame of the build's own rebuild of its overlays with no prototype (`a-rebuild`, section 7.1); the ribbon probe's paint undone in its 13 views with no pixel changed by more than 40 of 255 |
 
 Not run here, because nothing in the build changed: `check:visual` (passed on this build: its 39 cases, the self-test's 242 checks and the
 live blocks, `CHANGELOG.md`'s entry for decision 236's verdict); `check:contrast` and `check:selftest`, which CI runs on every push and pull
