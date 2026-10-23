@@ -34,6 +34,8 @@ headless Chromium with software WebGL (SwiftShader), as the Stage 0 harness and 
 | `record.js --clip` | 3-5 | frame-stepped recordings: the clock advanced by the play speed's share of a second per frame, each frame drawn by the app and captured, encoded at 10 frames a second (MP4 and a small GIF) |
 | `kit-census.js` | 4, 8 | triangles per man, horse, gun and house in the build's kit and the prototypes', and the frame with each prototype in place |
 | `carried.js` | 9 | the three carried findings, by real clicks, keys and taps |
+| `gait-check.js`, `legs.js` | 4.3 | the gait's rule checked in the page; every leg of the movement model with its duration and speed (no page) |
+| `sheets.py` | all | the comparison sheets: the build and its prototypes side by side, from the captures |
 | `protos/ground.js`, `labels.js`, `figures.js`, `water.js`, `buildings.js` | 2-6 | the prototypes, each an in-page module registering `window.__p8[id]` with `install` and `uninstall` |
 
 Their outputs, screenshots and recordings are in `docs/stage8-evidence/` (its `README.md` lists every file).
@@ -543,7 +545,8 @@ give, and which, is a design choice.
 **Measured** (`tools/stage8/gait-check.js`, `gait-check.json`; the three formations at the middle of a moving leg): the phase identical
 when the clock is reached from three earlier clocks (all three formations); unchanged while the clock stands and frames are drawn; no swing
 on a halted formation or under reduced motion. Saint-Hilaire's climb (08:45-09:15) runs at about 5 km/h: 2.0 cycles a second at ½x, full
-swing; 4.0 at 1x, half faded; none at 2x and 4x. The guns on the heights (13:45-14:30): 0.7 cycles a second at ½x, 1.4 at 1x and 2.8 at 2x,
+swing; 4.0 at 1x, half faded; none at 2x and 4x (the cycles a second `gait-check.json` records for Saint-Hilaire, 0.82 at ½x, are
+its mounted officers', whose stride is longer; the infantry's follow from the amplitude it records). The guns on the heights (13:45-14:30): 0.7 cycles a second at ½x, 1.4 at 1x and 2.8 at 2x,
 full swing; none at 4x.
 
 **The drift the gait must not animate** (`tools/stage8/legs.js`, `legs.json`, the model's own legs): of the 147 legs the clock moves, 92 run
