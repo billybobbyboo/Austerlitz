@@ -509,6 +509,6 @@ heavy segment of 13 dropping against 5-10 before; item 1 complete and roadmap st
 faster on the phone, its segment confounded with the phone's slowing). Stage 8 Part A (appearance and motion: the owner's notes L1-L5, `docs/STAGE8_SPEC.md`; begun on 23
 October 2026 from `main` at `9eb7abb`): the build measured, the alternatives prototyped in the live page (the ground under the troops, the map
 layer in motion, the troops' kit, the artillery and a gait locked to the clock, the ice and the streams, the villages and landmarks, the arrows),
-the sources read as leads, the carried findings checked (all three still present), one fault found (the landscape draws none of its road or
-stream ribbons: wound facing down, culled; the self-test's checks of them geometric), a plan of PRs 8A-8H and owner questions 239-253; no source
+the sources read as leads, the carried findings checked (all three still present), two faults found (the landscape draws none of its road or
+stream ribbons: wound facing down, culled; the self-test's checks of them geometric; in Study the phase's one message under the view switch), a plan of PRs 8A-8H and owner questions 239-253; no source
 file, data or build changed; on `claude/festive-wozniak-vsbtqr` (draft PR #64, for review). The next owner decision is 239.

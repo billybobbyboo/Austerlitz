@@ -391,8 +391,8 @@ questions). What each touches is stated here so that the decision, when it comes
 
 **Stage 8 Part A** (23 October 2026; `docs/STAGE8_SPEC.md`, with `docs/stage8-evidence/`): the notes below measured and prototyped in the
 live page, with five further opportunities (arrows, label density, woodland, terrain near the eye, one language across the presentations),
-performance budgets stated before anything is built, the carried findings checked, and one fault found (the roads' and streams' ribbons are
-never drawn, its §9.5); the plan is PRs 8A-8H and owner questions 239-253 (its §11). Nothing below is decided by it; no source file, data or build changed.
+performance budgets stated before anything is built, the carried findings checked, and two faults found (the roads' and streams' ribbons are
+never drawn, its §9.5; in Study the phase's one message stands under the view switch, its §9.6); the plan is PRs 8A-8H and owner questions 239-253 (its §11). Nothing below is decided by it; no source file, data or build changed.
 
 **L1. "The coloured glow underneath troops and divisions (blue for the French, orange for the Russians and Austrians): remove it; it looks
 clunky."**
