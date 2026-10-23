@@ -61,9 +61,11 @@ assessment can be checked against them (section 12.2).
   faded out), a level-of-detail band released at rest, and fades: 249 jumps (counters 19), no overlap among live items; a view reached
   without motion laid out exactly as today.
 - **L3, troops and motion (section 4; questions 242-245).** A richer kit prototyped on three formations: the guns change most and read as
-  field pieces; infantry and cavalry change less than expected at the visitor's distances. A gait locked to the clock (the pose a function of
-  the modelled track, still when paused, the same when scrubbed, faded out above 3.2 cycles a second, none under reduced motion), and why: at
-  ½x a drawn formation already moves 2.6-5 times as fast for its size as a man walks, at 4x 20-40 times. The artillery's sources (Gassendi
+  field pieces; infantry and cavalry change less than expected at the visitor's distances. A gait locked to the clock (the phase a function of
+  the modelled track, still when paused, the same when scrubbed, faded out above 3.2 cycles a second, none under reduced motion or below
+  1 km/h), and why: at
+  ½x a drawn formation already moves 2.6-5 times as fast for its size as a man walks, at 4x 20-40 times. Part of the floating is the model's: 52 of its 147 legs drift at under 1 km/h for two hours or more,
+  because a move no source dates is spread over its interval (decision 45); the gait leaves them still. The artillery's sources (Gassendi
   1809, IV Corps' order of 25 October 1805, Teuber, Nilus) give the wheels' proportion, the coffret, one driver a vehicle (as an
   authorisation) and the limbers' place, and no time for limbering. Facings: kept out (decision 104), since only the French classes have them sourced.
 - **L4, water (section 5; question 246).** The meres stay ice, varied in material and light; the streams darker and still. The day was mild
@@ -537,6 +539,21 @@ give, and which, is a design choice.
 - **under reduced motion nothing swings** (the place still follows the clock, as now); the dwell's hold, a stopped clock, stands still;
 - **the shadow is not animated** in the prototype (the shadow pass draws the rest pose); built, the depth material takes the same vertex rule
   (a custom depth material per kit material, section 8.4).
+
+**Measured** (`tools/stage8/gait-check.js`, `gait-check.json`; the three formations at the middle of a moving leg): the phase identical
+when the clock is reached from three earlier clocks (all three formations); unchanged while the clock stands and frames are drawn; no swing
+on a halted formation or under reduced motion. Saint-Hilaire's climb (08:45-09:15) runs at about 5 km/h: 2.0 cycles a second at ½x, full
+swing; 4.0 at 1x, half faded; none at 2x and 4x. The guns on the heights (13:45-14:30): 0.7 cycles a second at ½x, 1.4 at 1x and 2.8 at 2x,
+full swing; none at 4x.
+
+**The drift the gait must not animate** (`tools/stage8/legs.js`, `legs.json`, the model's own legs): of the 147 legs the clock moves, 92 run
+at under 1 km/h, 52 of them for two hours or more: Nansouty's division covers 1.85 km between 04:00 and 10:30 (0.28 km/h), Saint-Hilaire's
+0.35 km between 04:00 and 08:00. A leg with no dated departure is spread over its whole interval: decision 45 ("Creeping moves ... otherwise
+nothing is invented, today's behaviour stays, and while the formation is between anchors the dossier shows the existing 'interpolated'
+marker"). So part of what the owner saw as floating is the model saying it does not know when a formation moved; a block drifting its own
+width in an hour of the clock is that statement, not a march. **The gait draws no swing below 1 km/h** (DESIGN: a drift between anchors,
+not a march), so it never animates a move the sources do not date; a dated departure, where a text gives one, remains a data task under
+decisions 40-45.
 
 What it does not do: no figure turns, kneels, fires, falls or runs; no casualty is drawn and no formation thins with losses (`docs/VISUAL_AUDIT.md`
 opportunity 4: "Do not animate losses"); the smoke, dust and sway are as before.
@@ -1113,7 +1130,7 @@ build stays as it is until the answers. A limit of `tools/visual/thresholds.js` 
 | **241** | The arrows and the event glyphs (section 7.1, 7.6; A-5) | (a) **each arrow's width capped at 16 px on screen in the two perspective presentations, the ribbons depth-tested, their fill at 0.62 of today's opacity, the glyphs capped at 64 px** (`a-calm`); (b) the cap only (`a-cap`); (c) as today | **(a)** | decision 57's value (192 px) and 2C's "over everything" (the depth test); keeps 1, 15, 20, 21, 83 (form, dash, chevron, boundaries, draw-on) | PR 8B; `binding-test.js` unchanged; the eye-level cases read against a depth-only frame |
 | **242** | The figures' kit (L3; section 4) | (a) **`f-kit` for every class**: the man, the horse and the rider redrawn in more parts, every colour, headgear and cuirass from the existing claims; (b) the artillery only; (c) as today | **(a)** | extends 6C's shapes (DESIGN); keeps 97, 100, 102, 103, 104, 106, 109 | PR 8E; [[KIT-COST-SHORT]]; within section 8.3's budgets after 8D's culling |
 | **243** | The artillery (L3; section 4.4) | (a) **the generic field piece**: spoked wheels in Gassendi's proportion, a bracket trail, the French coffret between the cheeks when limbered, the Allied limbers' box, one driver a vehicle (two for six horses: IV Corps' order, an authorisation), the limbers and teams behind the deployed guns, four horses a drawn gun, one carriage colour, the switch between the groups as today; each reading registered in `appearance.js` first; (b) as (a), with each army's carriage colour where sourced (French olive, Austrian ochre, the Russian generic); (c) as today | **(a)** | (b) would extend 109 ("one colour unless each army's is sourced": two of three are) | PR 8E with its data task (the readings of `leads.md` topic 1, graded and registered) |
-| **244** | The gait (L3; section 4.3) | (a) **the clock's gait**: the pose a function of the clock alone (the modelled track's distance over a design stride), faded out above 3.2 cycles a second on screen, none under reduced motion or when halted; (b) no gait; (c) a gait in real time | **(a)** | none (VISUAL_AUDIT's "do not animate losses" kept: no figure falls) | PR 8D (the shader hooks), 8E; no draw call, no triangle |
+| **244** | The gait (L3; section 4.3) | (a) **the clock's gait**: the swing's phase a function of the clock alone (the modelled track's distance over a design stride), its amplitude the play speed's (faded out above 3.2 cycles a second on screen, eased when the speed changes), none under reduced motion, when halted, or below 1 km/h (the drift of an undated leg, decision 45); (b) no gait; (c) a gait in real time | **(a)** | none (VISUAL_AUDIT's "do not animate losses" kept: no figure falls) | PR 8D (the shader hooks), 8E; no draw call, no triangle |
 | **245** | Facings (decision 104; section 4.6) | (a) **keep decision 104**: no facings; (b) class-level facings where the table settles them at A or B, after a data task gives them colour classes (today the French line and the Guard's foot grenadiers; the Allied classes' facings are regimental) | **(a)**, reconsidered after 8E | (b) extends 104 | none for (a) |
 | **246** | Water (L4; section 5) | (a) **the meres' ice varied in material and light** (`w-ice`: a frosted margin easing into clearer, glossier ice; a broad tonal variation; a stronger reflection at grazing angles; the shore ring feathered), **the streams darker and less blue** (`w-stream`), **still, no stream ice**; (b) as (a) with edge ice on the streams; (c) as (a) with the streams flowing; (d) as today | **(a)** | keeps 27 (outlines), §F.1's rule (no crack, hole, snow or figure), 79 (the colours' tables) | PR 8F; (c) would make an idle page draw about 11 frames a second whenever a stream is in view |
 | **247** | Woods and the near ground (section 7.3, 7.4) | (a) **airier deciduous crowns** and a little more variation, the conifer shares kept until sourced; **a detail layer near the eye** on the ground (no new class or colour); (b) the woods only; (c) as today | **(a)** | keeps 2F's cover checks and "bare winter trees, frost on north-facing slopes, crop strips" | PR 8F; the trees' triangles per tree held at or under today's |
