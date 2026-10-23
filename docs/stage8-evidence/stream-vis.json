@@ -1,0 +1,29 @@
+{
+ "build": "c4793156103b60bb74151c7d13dbdd9d",
+ "views": {
+  "goldbach-top": {
+   "drawn": {
+    "red": 155304,
+    "green": 0
+   },
+   "unhidden": {
+    "red": 155304,
+    "green": 0
+   },
+   "streamShare": 1,
+   "bankShare": null
+  },
+  "goldbach-top-1x": {
+   "drawn": {
+    "red": 272960,
+    "green": 0
+   },
+   "unhidden": {
+    "red": 272960,
+    "green": 0
+   },
+   "streamShare": 1,
+   "bankShare": null
+  }
+ }
+}
