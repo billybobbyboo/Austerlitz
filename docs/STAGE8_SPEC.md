@@ -911,7 +911,8 @@ None is fixed here; each fix is proposed in PR 8A (section 10) or where it belon
 **Measured (1600 x 900, Napoleon's headquarters' reading, 08:30; by real clicks).** Of the 13 Allied formations on the field the reading knows
 6 not at all and 2 only as reported. For the four of the six probed (Buxhowden's command of the left wing, Kienmayer, Dokhturov,
 Langeron), the full dossier's "Centre the map here" glides the camera to the formation's **true** position, every time to within 0.001
-units (`targetToTrue` 0), where the reading draws nothing ([[S9-NAMES]]). So the centring shows the visitor where a formation is that the
+units (`targetToTrue` 0), where the reading draws nothing (no figures, no name: re-measured with each item
+laid out in the current frame; the first run read one item's stale state). So the centring shows the visitor where a formation is that the
 reading says the headquarters cannot see: the same class of leak decision 170 (b) closed for the plan links and the selection ring in step
 5 (`readPos`), still open in `focusOn` (`posOf`, `app.js:6053-6056`). For the two reported only (the Russian Guard's infantry and cavalry,
 `rg_inf`, `rg_cav`), the reading itself draws them at their true positions, as their C zones (`readPos` returns `posNow` for a tracked

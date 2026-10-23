@@ -14,7 +14,7 @@
     "targetToTrue": 0,
     "readPos": null,
     "figuresDrawn": false,
-    "nameDrawn": true,
+    "nameDrawn": false,
     "know": "unknown",
     "screen": [
      948,
