@@ -1372,3 +1372,23 @@ reported 23 findings: 3 blocking, 11 medium, 9 low. Each was checked against the
   `ice-sun` view kept for the woods only.
 - **Recorded.** The evidence the reviewer found absent (the README, the recordings, the arrows, the closer figures, the water's JSON) was
   still being made; section 12.1 lists what exists at the end.
+
+**A second reading.** A second independent reader (read-only, on the text of 23 October as it stood after the first review's fixes and the
+work since: the summary, 1.2-1.3, 2.1, 3.2-3.3, 4.2-4.3, 5.1-5.5, 7.1-7.6, 8.2, 9.5, 8A, 8H, question 253, 12.1) checked them against the
+evidence files, the probes and the code. Every cell of the 1.2 and 3.2 tables and every number of 4.2, 5.3, 7.2, 7.6, 8.2 and 9.5 matched its
+file, and 9.5's reading of `ribbon()` and of the archives' ribbons was confirmed. It reported 15 findings (5 medium, 10 low), each fixed here
+or recorded:
+- **Medium, fixed.** (1) The recordings had set the clock with `force` every frame, which rebuilt the overlays (their fade restarted), reset
+  the facings and showed the phase's toast again: the five clips the clock drives were recorded again as Play sets it, and the paper map's
+  Play, described from three frames as steady, is described from the new recording (the probe counts 117 jumps there in the build). (2) The
+  stabiliser's "never across the screen" and "the only stabiliser" were not measured: they are now its rule while the view moves and a
+  comparison with anchor. (3) The guns' reading "at the Field vantage's distances" had no capture there: limited to the views taken. (4) The
+  ribbons' fix draws them on the paper map too: said in 9.5, 8A and question 253, with the banks' and the road edges' widths. (5) The files
+  found missing (the README, two clips) were still being made: section 12.1 lists what exists at the end.
+- **Low, fixed.** The marks' contrast (1.0-2.2) and their share by named views; which views the figures lead; the zooms' items in view; a
+  pass-time example from one stabiliser; "76 items appear or leave"; the stream-ice counts' method; the glyphs' size (well over 100 px, the
+  cap 192); the Sokolnitz castle among the landmarks; "the sources disagree" on the ice; the self-test's paper-map check (`app.js:8229`); one
+  Allied arrow over Nansouty's men; "both captures" in `bat-front`; the frames after the arrows' removals now recorded in the JSON (`after`)
+  and compared with the build's own rebuild (`a-rebuild`); "opacity multiplied by 0.62"; the arrows' widths by view; question 241 (a) with
+  7.1's two changes; 8.2's lighter kit a target, not a measurement, and its head example withdrawn (the build's head is the same
+  icosahedron); 8H's reference to section 3.3; the widths "at 1x" (the factor is vertical only).
