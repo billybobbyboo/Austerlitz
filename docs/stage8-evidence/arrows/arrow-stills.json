@@ -1,0 +1,47 @@
+{
+ "build": "c4793156103b60bb74151c7d13dbdd9d",
+ "views": {
+  "pratzen-low": {
+   "base": {
+    "calls": 758,
+    "tris": 2480181,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4
+   },
+   "a-cap": {
+    "info": {
+     "kind": "a-cap"
+    },
+    "calls": 758,
+    "tris": 2480001,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   },
+   "a-soft": {
+    "info": {
+     "kind": "a-soft"
+    },
+    "calls": 758,
+    "tris": 2480001,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   },
+   "a-calm": {
+    "info": {
+     "kind": "a-calm"
+    },
+    "calls": 758,
+    "tris": 2480001,
+    "items": 65,
+    "placed": 24,
+    "dropped": 4,
+    "restored": true
+   }
+  }
+ }
+}

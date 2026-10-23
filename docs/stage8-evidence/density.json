@@ -161,6 +161,57 @@
     "occluded": 0,
     "ms": 1.2
    }
+  },
+  "close-sokolnitz": {
+   "arrows": {
+    "share": 0.0448,
+    "contrastMedian": 1.71,
+    "share3to1": 0.187
+   },
+   "marks": {
+    "share": 0.0526,
+    "contrastMedian": 1.03,
+    "share3to1": 0
+   },
+   "events": {
+    "share": 0.0025,
+    "contrastMedian": 1.14,
+    "share3to1": 0.028
+   },
+   "standards": {
+    "share": 0.0298,
+    "contrastMedian": 1.58,
+    "share3to1": 0.272
+   },
+   "maptext": {
+    "share": 0.0286,
+    "contrastMedian": 3.64,
+    "share3to1": 0.551
+   },
+   "figures": {
+    "share": 0.063,
+    "contrastMedian": 1.21,
+    "share3to1": 0.051
+   },
+   "arrowsPx": [
+    49.3,
+    54.7
+   ],
+   "labels": {
+    "drawn": 19,
+    "byCat": {
+     "name": 8,
+     "overlay": 3,
+     "objective": 2,
+     "place": 6
+    },
+    "leaders": 1,
+    "far150": 0,
+    "upperQuarter": 14,
+    "dropped": 2,
+    "occluded": 0,
+    "ms": 0.9
+   }
   }
  }
 }
