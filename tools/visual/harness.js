@@ -214,13 +214,17 @@ async function interact(page,it,vp){
     m.textContrast=await page.evaluate(b=>window.__aus.textContrast?window.__aus.textContrast(b):null,buf.toString("base64"));
     /* Stage 5B (docs/STAGE5_SPEC.md section A.5): the position-confidence marks' share of the free rectangle, as rendered: the same
        view drawn once more without them (a build with the marks; not the first-run views, whose card is not a reading; the opening's are) */
-    /* (a reading with Position confidence off fails in thresholds.js expectState: decision 85 has it on by default) */
-    if((!c.fresh||opening||phoneReading)&&await has(page,"CONF","the position-confidence share")&&await page.evaluate(()=>!!layerOn.confidence)){
-      /* since Stage 6C (decision 107) Position confidence off keeps a side footprint: the frame without the marks draws none (CONF.none) */
-      await page.evaluate(()=>{ layerOn.confidence=false; CONF.none=true; }); await settle(page);
+    /* (a reading not at the layer's first setting fails in thresholds.js expectState: decisions 85 and 239) */
+    /* Stage 8, implementation PR 8B (decision 239): on the landscape the layer is off at first and every formation drawn as figures keeps its
+       outline (the side cue decision 107 asked for, restyled); on the paper map it is on at first with its filled marks. The measure is now the
+       ground cues as the case shows them: the frame without any (CONF.none) against the frame as rendered, the layer left as it is (its setting
+       recorded); on the landscape what it measures is the outlines (and a C zone or the eye level's own side, decision 91, where drawn) */
+    if((!c.fresh||opening||phoneReading)&&await has(page,"CONF","the position-confidence share")){
+      await page.evaluate(()=>{ CONF.none=true; }); await settle(page);
       const off=await page.screenshot({timeout:180000,scale:"css"});
-      await page.evaluate(()=>{ layerOn.confidence=true; CONF.none=false; }); await settle(page);
+      await page.evaluate(()=>{ CONF.none=false; }); await settle(page);
       m.confShare=await page.evaluate(([a,b])=>window.__aus.confShare(a,b),[buf.toString("base64"),off.toString("base64")]);
+      m.confShare.layer=await page.evaluate(()=>!!layerOn.confidence);
     }
     /* Stage 5D (docs/STAGE5_SPEC.md section B.4): the evidence skeleton on, the whole day (its densest scope): the map layer's items and
        drops as without it (it is ground drawing, not a map-layer item), map text at AA as rendered; its share of the free rectangle recorded

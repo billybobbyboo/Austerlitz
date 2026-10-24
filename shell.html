@@ -157,9 +157,10 @@
       <b>Names</b><i>Villages, terrain and formation names</i></button>
     <button class="lp-row layer-btn" data-l="trails" aria-pressed="true">
       <b>Route marched</b><i>The ground each formation has covered</i></button>
-    <!-- Stage 5B (docs/STAGE5_SPEC.md section A.4; decision 85) -->
-    <button class="lp-row layer-btn" data-l="confidence" aria-pressed="true">
-      <b>Position confidence</b><i>Each formation's ground drawn by its position grade: crisp A, soft B, diffuse C</i></button>
+    <!-- Stage 5B (docs/STAGE5_SPEC.md section A.4; decision 85); since Stage 8, implementation PR 8B (decision 239), set apart for the
+         landscape (off at first: each formation's outline then marks its grade's extent) and the paper map (on at first, as before) -->
+    <button class="lp-row layer-btn" data-l="confidence" aria-pressed="false">
+      <b>Position confidence</b><i>Each formation's position grade: outlined on the landscape, filled on the paper map; A its footprint, B its frontage doubled, C a zone</i></button>
     <!-- Stage 5D (docs/STAGE5_SPEC.md section B.3; decision 90): off by default; the selection, else this phase, or the whole day -->
     <button class="lp-row layer-btn" data-l="skeleton" aria-pressed="false">
       <b>Evidence skeleton</b><i>The plotted positions (filled A, ring B, open ring C) and the lines interpolated between them: the selected formation, else this phase</i></button>
@@ -226,6 +227,14 @@
     <div class="k" data-lg="sidemark"><span>beside a name: its side, French or Allied</span><span class="sw" data-key="side-fr"></span><span class="sw" data-key="side-al"></span></div>
     <div class="k" data-lg="foot"><span>French formation, its footprint</span><span class="sw" data-key="foot-fr"></span></div>
     <div class="k" data-lg="foot"><span>Allied formation, its footprint</span><span class="sw" data-key="foot-al"></span></div>
+    <!-- Stage 8, implementation PR 8B (decision 239): on the landscape every formation drawn as figures is outlined on the ground in its side's
+         colour, the selection in the accent; with Position confidence on, the outline marks its grade's extent -->
+    <div class="k" data-lg="line-fr"><span>French formation, outlined on the ground</span><span class="olk" data-key="line-fr"></span></div>
+    <div class="k" data-lg="line-al"><span>Allied formation, outlined on the ground</span><span class="olk" data-key="line-al"></span></div>
+    <div class="k" data-lg="line-sel"><span>the selection, outlined</span><span class="olk" data-key="line-sel"></span></div>
+    <div class="k" data-lg="lconf-a"><span>A: position documented (outlined round its footprint)</span><span class="olk olk-a"></span></div>
+    <div class="k" data-lg="lconf-b"><span>B: sector documented, frontage approximate (round its frontage doubled)</span><span class="olk olk-b"></span></div>
+    <div class="k" data-lg="lconf-c"><span>C: reconstructed, position indicative (a ring of its frontage's radius)</span><span class="olk olk-c"></span></div>
     <div class="k" data-lg="arrow-fr"><span>French movement</span><span class="ar" data-key="arrow-fr"></span></div>
     <div class="k" data-lg="arrow-al"><span>Allied movement</span><span class="ar" data-key="arrow-al"></span></div>
     <div class="k" data-lg="halt"><span>halt: a column stopped short of its objective</span><span class="hlt" data-key="arrow-al"></span></div>

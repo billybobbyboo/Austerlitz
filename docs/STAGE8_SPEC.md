@@ -1818,3 +1818,246 @@ committed), and failed:
 - *CI's five unobstructed shortfalls (section 13.3)* are `main`'s: CI's runner measures Part A's unchanged build 0.01 to 0.21 points under five
   unobstructed baselines, and 8A's build the same. Whether to re-measure them on CI's runner is the owner's to decide, as decisions 146, 199
   and 214 decided theirs; no baseline is lowered here.
+
+## 14. Implementation PR 8B as built (24 October 2026)
+
+**Status.** Built on `claude/blissful-clarke-9axnzp-8b` (draft PR #66), **stacked on implementation PR 8A's branch**: its base is
+`claude/blissful-clarke-9axnzp`, so its diff is 8B's alone, and it is to be merged after 8A (or retargeted to `main` once 8A is merged). It
+applies decisions 239 (b) and 241 (a) as section 0.3 records them, with the points 0.3.1 settles (items 1-6); nothing of 8C-8H. No data file,
+geography, simulation or renderer changed (`check:data`: all 131 declarations byte-identical to its reference). The build: 2,317,927 bytes, md5 `9b20dc4ca251e17ddb2468f98f920f38`.
+
+### 14.1 The ground under the troops (decision 239 (b); sections 2.4, 2.5)
+
+**What is drawn (fact, `app.js` `OUTLINE`, `makeOutline`, `outlinePlace`, `outlineReach`, `updateVisibility`).**
+- *On the landscape (both perspective presentations), by default:* every formation drawn as figures (4x and 10.33x) has a thin cased outline of
+  its footprint (the extent grade A fills, W0 sw x D0 sd) in its side's colour (`TOKENS.sym.side[side].base`) on the side's edge colour, the
+  line 1.7 px and its casing 3.4 px (CSS pixels at every density and under the effects' supersampling, `OUTLINE.px`), and **no filled
+  mark**: the broad washes are gone from the default perspective views. The selected formation (and the formations of a selected corps)
+  are outlined in the selection accent (`TOKENS.theme.dark.accent`) on the keyline, 2.2 px on 4.4.
+- *"Position confidence" (the Layers panel), optional, off at first in the two perspective presentations:* switched on there, each outline is
+  drawn round its grade's extent (decisions 86 and 88 kept: A its footprint, B its frontage doubled, C a disc of its frontage's radius; between
+  anchors the weaker grade), its line thinner as the grade weakens (A 1.7, B 1.4, C 1.1 px, the casing twice the line), never dashed. The
+  setting is kept for each presentation (`CONF_ON`): the landscape's and the paper map's.
+- *Kept as they were (decision 239's exceptions):* a formation reported only, under a headquarters reading, drawn as its C zone filled and
+  without figures (decision 91); at the eye level, the observer's own side as its filled marks (91); at 1x, every formation's footprint by its
+  grade, filled, whatever the layer (decision 34, as drawn until 8B with the layer on, the default then).
+- *The paper map (0.3.1 item 1):* unchanged: the grade's filled marks under the counters, the layer on at first there (decision 85 kept on the
+  paper map); section 7.5 does not convert them.
+- *Never lost under a slope, never dashed (decision 239's last sentence).* Each outline is a patch of the ground's own cells at a lift of
+  0.25 units, the band drawn by its signed distance from the extent's edge in screen pixels (the fragment's derivatives), so it is one
+  continuous band at every distance. The band is centred on the extent's edge: its line lies on the edge, inside the patch whatever the
+  slope; the patch reaches beyond the extent by the casing's reach on the ground there (`outlineReach`: the eye's world units per pixel over
+  the sine of the angle its ray meets the drawn ground, the largest over the extent's centre and corners, a margin of 2), so the casing's
+  outer half is cut only where the ground is seen within a few degrees of edge-on (the far side of a hilltop at its horizon), and the line
+  never. Where the drawn ground itself is seen edge-on, a mark on it has no area on the screen: there, as every ground mark since 5B, the
+  outline thins to nothing over a few pixels.
+- *The legend:* rows for the French, the Allied and the selected outline; with the layer on, the grades' outlines; the filled rows where filled
+  marks are drawn (the paper map, 1x, a reported zone, the eye level's own side). The first-run key's words (decision 108) are unchanged and
+  still true: the sides are marked "on the ground beneath them".
+
+**Decisions touched (0.3.1 item 3):** 85 superseded on the landscape, kept on the paper map; 87 and 107 restyled (every formation drawn as
+figures keeps a ground cue, its outline, which is also decision 107's side cue); 86, 88, 91 and 34 kept.
+
+### 14.2 The arrows and the glyphs (decision 241 (a); section 7.1)
+
+- *The cap (`ARROW_CAP`, `capPts`, `capFactors`, `ribbonRelayout`, `arrowCap`).* In the two perspective presentations every movement arrow,
+  and the part of a derived arrow drawn on with the clock, is laid at every drawn frame whose eye has moved so that its casing is at most
+  16 px across on screen: along the arrow, every unit of its length, the casing's two edges are draped on the drawn ground at its lift and
+  projected through the eye, and the factor is brought down until their distance on screen is under 16 px (aimed at 15.5, `ARROW_CAP.M`
+  0.97, for a row between two points read): from 1, by the ratio, again at most twice, since a casing across a break of slope does not
+  narrow in proportion on screen (the ground's height across it changes as it narrows; at 10.33x one drawn-on row measured 17.25 px when
+  the factor was read from the full width alone); then quantised down in steps of 1.1; a factor never above 1 (never widened); the head
+  scaled with its shaft at its base (its form, the Allied chevron's notch, kept). Every point of the path, the colours, the label and the draw-on are as before: the
+  centre line is the curve's, only the width changes. On the paper map nothing is capped.
+- *The fill (0.3.1 item 5).* A movement arrow's fill, and its drawn-on part's, at 0.62 of its opacity in the two perspective presentations.
+  The casing keeps its own opacity and is there a **border**: it leaves out what the fill covers, less a tuck of 2% (`BORDER`,
+  `borderShaftHook`, `borderHeadHook`, `headInside`), so the fill is seen over the ground, edged by its casing, and the side's colour is not
+  darkened by the casing under it (until 8B the casing lay under the whole fill, hidden by its 95%). On the paper map nothing changes (0.3.1
+  item 4): the fill at its opacity as before (`paperK`) and the casing under the whole of it (`BORDER.U`, switched with the opacities by
+  `applyOverlayOpacity`).
+- *Hidden by the drawn ground alone (`GDEPTH`, `gdepthPass`, `groundDepthHook`).* In every drawn frame of the perspective presentations whose eye,
+  size or ground has changed, the field and its apron are drawn once more, alone, into a depth texture of the frame's size, before the world;
+  every overlay ribbon (the movement arrows and their drawn-on parts, the lines of battle and their ticks, the boundaries, the halt bars)
+  leaves out a fragment the ground stands in front of, beyond the depth's precision (0.2% of the distance and a quarter unit). The figures,
+  the woods and the buildings do not hide them: an annotation over the landscape, as 2C drew it. At the eye level the arrows no longer show
+  through the hills (the audit's A-5). The lines of battle, the boundaries and the halt bars keep their widths and opacity.
+- *The glyphs.* The event glyphs and the objective markers at most 64 px on screen (`SYM_MAX_PX`; decision 57's 192 superseded, 0.3.1 item 6);
+  on the paper map at their authored size, as before.
+
+**What it costs (measured, software WebGL on this machine's CPU: comparable between the two builds, not a GPU's time; `tools/stage8/compare-8.js`,
+`docs/stage8-evidence/8b/compare/compare.json`, on this build; three earlier runs on 8B's build before its last two changes gave the same calls,
+triangles, widths and cues).** In the eight landscape views compared, 147,088 more
+triangles in a frame whose eye has moved, and 2 more draw calls in seven of them (close on Sokolnitz 781 on both): the ground's depth pass,
+the field and the apron drawn once more (its own JavaScript 0.1-0.6 ms). The outlines' patches against 8A's filled marks: from 1,934 fewer
+triangles to 20,942 more (each patch covers its footprint and the band's reach, where a filled mark covered its grade's extent); with
+Position confidence on, 670-9,956 more than with it off. On the paper map nothing (156 calls, 240,915 triangles, as on 8A).
+The frame's time on this CPU moves by several milliseconds from run to run of the same builds. With the eye moving (the pass drawn in every
+frame), the median of five frames: in the low Pratzen view 9.2-10.2 ms on 8A and 10.1-12.9 ms on 8B over four runs (2.7-3.0 ms more in the
+three on 8B's earlier build, 0.1 ms less in the one on this build); at the Overview 11.7-15.7 ms against 12.3-22.6; close on Sokolnitz and in
+the low view with counters from 6.1 ms less to 5.1 ms more; in the other four views, measured in two runs, 0.4-2.2 ms more in both. With the eye
+still (the pass kept) no consistent difference. The depth pass and the outlines may cost this CPU a millisecond or two, which these runs do
+not resolve. The cap's relayout runs only in a frame whose eye has moved. What they cost a GPU is for the device runs (section 8: 8D before,
+8H after).
+
+**The ground's patches (found by the context-loss case, section 14.3).** A patch now keeps its geometry and grows it only when it needs more
+room (`groundPatch`); until 8B a patch whose cells changed in number was disposed and built again, which a moving formation does while the clock
+plays.
+
+### 14.3 Found and fixed on the way
+
+- *The lines' ticks drawn black.* Given the ground's hook, the tick lines (fogged `LineBasicMaterial`s) lost the atmosphere's uniforms, which
+  every material receives through the prototype's `onBeforeCompile` (`atmoUniforms`): their fog divided by zero, and the bloom spread the
+  undefined values into black blocks (the low Pratzen view, the eye level). The hook now gives the atmosphere's uniforms first; `css-test.js`
+  holds it. (Part A's ice prototype met the same fault, its section 12.)
+- *The outlines' widths in the target's pixels.* The outline shader measured its band in the render target's pixels, so under the effects'
+  1.3 supersampling it was drawn a quarter thinner than designed, and on a phone at density 3 a third as wide; the widths are now CSS pixels
+  (`OUTLINE.px`, set by the frame).
+- *The context-loss case past its bound.* `check:contrast`'s context-loss case (decision 212 (b): after a lost and restored context, a step of
+  the clock disposes geometries made before the loss, and three r128 warns once for each of their buffers and vertex arrays; at most
+  `CTX_DELETES`, 248) reached Chromium's own cap on 8B's first build (256 warnings and "too many errors", on CI and here; 8A's build 244 here):
+  its arrows' casings carry three more attributes, and the outlines' patches, placed for every formation drawn as figures, were rebuilt whenever
+  their cells changed in number. The patches now grow and are never rebuilt (`groundPatch`): at the case's clock step 404 buffers and vertex
+  arrays are deleted, against 884, and the case gives 199 warnings here and 195 on CI. The bound is unchanged.
+- *The self-test's own renders drew the last frame's geometry.* three r128 uploads a changed geometry once a frame, and the app turns the
+  renderer's automatic count reset off (since roadmap step 3: the frame resets it, so the developer readout can split the passes). A check that
+  changes a geometry (the outlines laid again by `updateVisibility`, the arrows by the cap, the ribbons draped again for the paper map) and
+  renders before the next frame drew the geometry the last frame drew: the outline check found bands 2-3 px from their edges where the
+  formation had turned since. Each such render of the self-test's now begins a frame of its own (`renderer.info.reset()`); the app's own
+  frames were never affected (each resets it before it draws, after the cap and the outlines are laid).
+
+### 14.4 The checks, and each made to fail
+
+**The self-test** (its manifest from 250 checks on 8A to 261: eleven added, seven renamed because the decisions change what they assert; all
+261 pass on this build, 1366 x 768):
+- *Added, at 1x, 4x and 10.33x:* "arrows (decision 241): ... at most 16 px across on screen at every drawn row" (18 views: the four vantages,
+  the low Pratzen view and Napoleon's eye level at 08:30, 09:50 and 12:00; the widest casing 15.51, 15.48 and 15.72 px, of 1,467, 1,464 and
+  1,456 drawn rows, 902, 943 and 984 of them capped; none wider than built, off its curve or off its lift; the heads in proportion; the frame
+  lays them; on the paper map every row as built, and each movement arrow's casing, drawn alone, under the whole fill at every point of its
+  centre line, at each factor 103 of 103 points of three arrows' centre lines); "a movement arrow's fill ... at 0.62 of its opacity" (36 arrows, 19 drawn-on parts, 8 lines,
+  2 boundaries and a halt bar over the ten phases, and 32 fill-and-casing pairs as drawn on both maps); "every overlay ribbon ... hidden by the
+  drawn ground alone" (judged at the canvas's size wherever a strip is 5 px across on screen: at 4x 9 points hidden, none drawn, and 79 in
+  sight, all drawn, 14 of them behind a figure, a wood or a building; at 10.33x 47 hidden and 112 in sight, 30 behind; at 1x, where the ribbons
+  stand over the true relief, 33 in sight; the movement arrows' casings drawn alone a border at every point judged).
+- *Added, once:* "outlines (decision 239): never broken on steep ground" (12 renderings, 3 views at 4x and 10.33x with the layer off and on:
+  8,875 of 8,879 points of the bands drawn; 729 more where the eye's ray meets the drawn ground within 3 degrees, not judged); "outlines
+  (decision 239): ... every formation on the field in the free rectangle findable by its outline or its name" (the Field vantage and the
+  Overview at 20 clocks, 1,209 formation-views).
+- *Renamed:* Stage 5B's "every grade's mark is draped" (at each factor) now "every grade's mark and every outline is draped"; 5B's "every
+  formation on the field is drawn at its position grade" now "on the landscape every formation drawn as figures is outlined, round its
+  footprint with Position confidence off and round its grade's extent with it on", the paper map's marks as before (1,240 formation-samples at
+  20 clocks; with the layer on A 258, B 281, C 81); 6C's identity check (decision 107) now its outline in its side's colour with no filled mark
+  under it (decisions 107, 239; 158 formation-views in Study, Watch and Clean, the layer on and off); the legend's rows now the outline rows
+  under the outlines; 3E's symbols check now at 64 px, not 192 (the largest symbol drawn 64.0 px with the eye 1.8 units from a live glyph).
+- *Its own renders:* each render the self-test makes of its own begins a frame (`renderer.info.reset()`, section 14.3), 8A's ribbon check too.
+
+**`css-test.js`:** decision 241's values (the cap 16 px with its margin, the fill 0.62 and the bordered casing on the movement arrows and their
+drawn-on parts only, the glyphs 64 px, every overlay ribbon and the lines' ticks tested against the ground, the hook keeping the atmosphere's
+uniforms); decision 239's first settings and outlines (off at first on the landscape and on on the paper map, no dash, the side's tokens and
+the selection's accent). **`runtime-test.js`:** decision 239's cues (each formation drawn as figures outlined and none filled, the layer off
+and on, the grade's outline with it on, the paper map's filled marks) and the render's pass order with the ground's depth pass first.
+**The harness:** the position-confidence share now measures the ground cues as each case shows them (section 14.5), and its state check the
+layer's first setting by presentation.
+
+**Each made to fail.** Copies of the final build with a change put back (in the session's scratch space, not committed):
+- with (1) the cap a no-op, (2) the fill at its old opacity, (3) the ground's test never discarding, (4) the casing under the whole fill
+  again, (5) the outlines drawn in dashes and (6) the glyphs at 192 px (md5 `84085d40...`): the self-test fails ten checks, the others (251)
+  passing: the cap at 1x, 4x and 10.33x (no row capped, the widest casing 211-218 px), the opacities at each factor (91 fills at their old
+  opacity; as drawn, fill against casing 2.0 where 1.24 is wanted), the ground's hiding at each factor (at 4x 44 points the ground hides drawn,
+  at 10.33x 49; at 1x, as at each factor, no casing drawn as a border to judge, which the check requires) and the steep outlines (7,298 of 8,879 points of the bands drawn); the
+  glyphs' 192 px is caught by the manifest, since the check's name carries the cap ("check missing: ... at most 64 px", "not in the manifest:
+  ... at most 192 px"); `css-test.js` fails "the glyphs' cap is not 64
+  px", "the cap, the fill and the bordered casing on 0 drawers, not the arrows' and their drawn-on parts'" and "the outline's fragment shader
+  is missing or draws a dash";
+- with Position confidence on at first on the landscape: `runtime-test.js` fails "position confidence is on at first on the landscape
+  (decision 239)" and `css-test.js` "position confidence is not off at first on the landscape and on at first on the paper map (decisions 85,
+  239)";
+- with the filled marks back under the figures while the layer is on: `runtime-test.js` fails "spatial confidence on: a filled mark on the
+  landscape: gqg, sthilaire, vandamme, legrand";
+- with the casing a border on the paper map too (`BORDER.U` never switched off; the self-test's arrow checks run alone on a copy, and on the
+  build as it is beside it, 103 of 103 points under the fill at each factor): the cap check fails at 1x, 4x and 10.33x, the casings under the
+  fill at 3 of 103 points of their centre lines; `css-test.js` fails "the casing's border is not switched off on the paper map".
+
+### 14.5 What it replaces in the measures, and the new baselines
+
+Measured on CI (Chromium 141, the runner's; `check:visual`'s 39 cases), 8A's build (run 40075243524) against this build (run 40086612769 on
+`b42e500`) and against 8B's build before its last two changes (run 40075245190, `c260697e`), and compared case by case
+(`tools/step3/report-diff.js`). The two 8B builds' reports differ in nothing but the paper map's shares below:
+
+- *The position-confidence share (`CONF_SHARE`, the harness's `confShare`; Stage 5B, section A.5): its meaning replaced.* Until 8B it measured
+  the filled marks the layer drew at first: each case's frame against the same frame with the layer off and no ground cue. Decision 239 takes
+  those marks out of the landscape's default views, so on the landscape that measure would now read nearly nothing. The harness now measures the
+  ground cues as each case shows them: the frame against the same frame with no ground cue at all (`CONF.none`), the layer left as the case has
+  it (its setting recorded beside the share; the state check requires the layer's first setting for each presentation). On the landscape that
+  is the outlines, with a reported formation's C zone and the eye level's own side where they are drawn (decision 91). At 1x it is nothing,
+  since the footprints by grade are the formations themselves there and stay. On the paper map it is the filled marks, as before.
+
+  | case (landscape) | 8A, the old measure | 8B, the new |
+  |---|---|---|
+  | `pratzen-low-1x` | 18.42% | 0 (1x: no outline; the footprints stay) |
+  | `watch-selected` | 14.44% | 1.00% |
+  | `hybrid-dimmed` | 13.90% | 1.04% |
+  | `selected-formation` | 13.75% | 1.07% |
+  | `narrow-1024` | 8.82% | 1.89% |
+  | `phone-390-watch` | 9.76% | 0.76% |
+  | `pratzen-low` | 8.45% | 0.52% |
+  | `phone-390-explore` | 8.34% | 1.05% |
+  | `phone-360-explore` | 8.26% | 1.35% |
+  | `eye-zuran` | 6.42% | 6.42% (the eye level's own side, decision 91: unchanged) |
+  | `overview-field` | 4.07% | 0.81% |
+  | the other 19 landscape cases | 0-7.74% | 0-1.22% |
+
+  The landscape's largest is now the eye level's own side, 6.42% at `eye-zuran` on both builds; without it at most 1.89% (`narrow-1024`).
+  Here (Chromium 153) the 8B build measures `eye-zuran` at 6.42% as well (`narrow-1024` 1.94%). **The landscape's limit lowered from 20% to
+  7%**: the largest measured, rounded up as 5B rounded its limits (its rule, never raised, kept). A return of the filled washes would fail it in
+  the ten cases at 4x or 10.33x where 8A measured them above 7%. This is put to the owner as question 254 (section 14.6). The paper map's
+  limit (16%) is unchanged: its marks and its arrows are drawn as on 8A, and the new measure gives 8A's shares to four places in all six of its
+  cases. (On 8B's build before the casing's border was switched off on the paper map, `paper-close` measured 14.32% against 13.68%, the
+  others within 0.01 points: that view's movement arrows cross the marks, and with the casing a border their fill showed the marks through.)
+- *The map layer's drops: fewer.* 8B places more of the map layer where the narrower arrows' heads and the smaller glyphs leave it room:
+  `overview-field` drops 6 to 5 (the Santon's name placed), `opening-3` 3 to 2 (the Pratzeberg's), `opening-4` 4 to 3 (the chapel's); in
+  `hybrid-dimmed` ten dropped as before, but Kamensky's and Kollowrat's counters and Pratzen's name are placed and Kellermann's and the Russian
+  Guard infantry's counters and the annotation "Bagration" dropped instead (each reachable by hover and keyboard, as the self-test holds). Every
+  case within its drop limit; no limit moved.
+- *Unchanged:* every unobstructed share and the timeline's height in every case (no difference to four places), the map text's contrast at AA
+  and the pass times within 8 ms. The five unobstructed shortfalls on CI are `main`'s (section 13.3), the same values on 8A and on 8B.
+- *Not harness measures:* the arrows' widths on screen, their opacities, the ground's hiding and the glyphs' size are held by the self-test's
+  checks (section 14.4), and measured in nine matching views by `compare-8.js` (section 14.2).
+
+### 14.6 What remains (handed on)
+
+- **Question 254 (for the owner): the landscape's limit for the position-confidence share** (`CONF_SHARE.land`; section 14.5), now the
+  measure of the ground cues as each case shows them. (a) **7%**, the largest measured (6.42%, the same in both browsers) rounded up, as set here: it
+  holds the eye level's own side (decision 91) and fails a return of the filled washes in the ten cases where 8A measured them above 7%;
+  (b) 20%, 5B's value, kept: it would fail only a wash larger than 5B's largest; (c) a tighter limit for the outlines alone (2%) and the eye
+  level's cases judged apart: one more limit to keep. **Recommended: (a)**, set as measured, as decisions 141, 199, 214 and 232 set limits;
+  the owner decides whether it stands.
+- *A ground mark seen edge-on.* Where the drawn ground meets the eye's ray within a few degrees (the far side of a hilltop at its horizon from a
+  low eye), an outline, as every mark drawn on the ground since 5B, has no area on the screen and thins to nothing over a few pixels; the
+  steep-outline check counts these points and passes over them (729 of 9,608 in its twelve renderings). Drawing the outline there as a line on
+  the screen (a silhouette) would be a different technique, not taken here.
+- *The ribbons at the eye level.* The overlay ribbons are lifted 1.6-2.4 units over the ground at 4x, above an eye 3 m (scaled) over it, so
+  near the eye a ribbon is seen from below, edge-on, as a thread; at 4x from Napoleon's eye at 08:30 no strip is 5 px across on the screen, and
+  the occlusion check judges none there (it does at 10.33x, and from the low Pratzen view and Puntowitz). Unchanged from before 8B; a lift tied
+  to the eye's height would belong to 8C's work on the low views.
+- *The cost on a device.* The cap's per-frame relayout while the eye moves and the ground's depth pass were measured here on the CPU (software
+  WebGL; section 14.2); their cost on the owner's laptop and phone is for the device runs of 8D (before) and 8H (after), as section 8 plans.
+- *What 8B did not touch:* the map layer in motion and the low views' hierarchy (8C), the troops' kit and gait (8E), the water, woods and near
+  ground (8F), the buildings (8G); 7.5's one language across the presentations (the paper map unchanged, as 0.3.1 item 1 settles).
+
+### 14.7 What was run
+
+On the final build (md5 `9b20dc4c...`), here (Chromium 153 through `AUSTERLITZ_CHROME`, software WebGL) and on CI (Chromium 141):
+- `npm test`: all nine suites and the height guard pass here. `check:data`: all 131 declarations byte-identical to its reference.
+  `check:chronology`: 0 errors. `check:baseline`: passes on this build.
+- `check:selftest` here: every one of its 261 checks passes (the manifest regenerated from this run: one check renamed at each factor, the
+  arrows' cap, which now also holds the paper map's casing under the fill).
+- On CI on `b42e500` (this build; the later commits change records and evidence only): the checks job (`npm test`, `check:data`,
+  `check:chronology`), `check:contrast` (45 states, none below AA; the six start-up cases, the context-loss case with 195 warnings, at most
+  248) and `check:selftest` (261 of 261 by name) pass.
+- `check:visual` on CI (run 40086612769 on `b42e500`): its 39 cases, sweeps and live blocks with five failures, the five of `main`'s build on the
+  same runner with the same values to four places (section 13.3: the unobstructed shares of first-run, first-run-laptop, narrow-1024 and
+  phone-844x390-explore). Against 8A's report: the map layer's drops as section 14.5 gives them, every unobstructed share and timeline height the
+  same; judged again against this tree's limits and manifest (`check-report.js`): those five only, 261 of 261 self-test checks. No limit was
+  raised or loosened; the landscape's confidence share lowered (question 254).
+- The comparison (`compare-8.js`) run again on this build: the calls, triangles, widths, sizes and cues of its three earlier runs (section 14.2).
+- Each new check made to fail (section 14.4).

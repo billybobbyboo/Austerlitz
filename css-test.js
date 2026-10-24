@@ -383,6 +383,28 @@ if(cerrs) process.exitCode=1;
   derr.forEach(e=>console.log("  ! "+e));
   console.log("typed data and derived tags: "+(derr.length?derr.length+" wrong":"the troops' and the standards' notes and the Dress type no measure or grade definition, the light no minutes; the place and march rows tagged by posRow and marchRow; paintSituation keeps no clock"));
   if(derr.length) process.exitCode=1; }
+/* Stage 8, implementation PR 8B (decision 241; docs/STAGE8_SPEC.md section 14): the decided values in place: the movement arrows' casing at most
+   16 px on screen and their fill at 0.62 of its opacity, the casing at its own; the event glyphs and the objective markers at most 64 px; the cap
+   and the fill on the movement arrows and their drawn-on parts only, the ground's test on every overlay ribbon and the lines' ticks */
+{
+  const src=fs.readFileSync('app.js','utf8'), aerr=[];
+  if(!/var ARROW_CAP=\{PX:16, Q:1\.1, OP:0\.62, M:0\.97\}/.test(src)) aerr.push("ARROW_CAP is not {PX:16, Q:1.1, OP:0.62, M:0.97}");
+  if(!/var ARROW_EDGE_OP=1;/.test(src)) aerr.push("the casing's opacity is not its own (ARROW_EDGE_OP 1)");
+  if(!/var SYM_MAX_PX=64, SYM_FADE=\[4,12\];/.test(src)) aerr.push("the glyphs' cap is not 64 px");
+  const caps=(src.match(/cap:true, fillOp:ARROW_CAP\.OP, edgeOp:ARROW_EDGE_OP, border:true, ground:true, role:"(arrow|drawon)"/g)||[]).length;
+  if(caps!==2) aerr.push("the cap, the fill and the bordered casing on "+caps+" drawers, not the arrows' and their drawn-on parts'");
+  if(/border:true[^}]*role:"(halt|line|bound)"/.test(src)) aerr.push("a line, boundary or halt bar has a bordered casing");
+  /* the border in the two perspective presentations only: on the paper map nothing changes (0.3.1 item 4), the casing under the whole fill */
+  if(!/BORDER\.U\.value=paper\?0:1;/.test(src)||(src.match(/sh\.uniforms\.uBorder=BORDER\.U;/g)||[]).length!==2||(src.match(/if\(uBorder>0\.5&&/g)||[]).length!==2)
+    aerr.push("the casing's border is not switched off on the paper map (BORDER.U, uBorder in both hooks)");
+  ["halt","line","bound"].forEach(r=>{ if(!new RegExp('ground:true,role:"'+r+'"\\}').test(src)) aerr.push("the "+r+"s are not tested against the ground"); });
+  if(/cap:true[^}]*role:"(halt|line|bound)"/.test(src)) aerr.push("a line, boundary or halt bar is capped");
+  if(!/lm\.onBeforeCompile=groundDepthHook;/.test(src)) aerr.push("the lines' ticks are not tested against the ground");
+  if(!/function groundDepthHook\(sh\)\{\n  atmoUniforms\(sh\);/.test(src)) aerr.push("the ground's hook drops the atmosphere's uniforms (a fogged tick drawn black)");
+  aerr.forEach(e=>console.log("  ! "+e));
+  console.log("arrows and glyphs (decision 241): "+(aerr.length?aerr.length+" wrong":"the cap 16 px, the fill 0.62 and the casing a border on the movement arrows and their drawn-on parts (the border in the perspective presentations only), the glyphs at 64 px, every overlay ribbon and tick tested against the ground"));
+  if(aerr.length) process.exitCode=1;
+}
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by
    a dash or a dotted line, and their colour is the side's from the tokens */
 {
@@ -392,9 +414,16 @@ if(cerrs) process.exitCode=1;
     const body=src.slice(n.start,n.end); if(/setLineDash|LineDashed|dashSize|dashRuns|segment/i.test(body)) cerr.push(n.id.name+" draws a dash"); });
   want.forEach(f=>{ if(!seen[f]) cerr.push(f+" missing"); });
   if(!/confPlace\(rec\[mk\],g,wq\[0\],wq\[1\],rec\.yaw\|\|0,fu\.W0\*fu\.sw,fu\.D0\*fu\.sd,hexNum\(side\)/.test(src)||!/side=TOKENS\.sym\.side\[sideOfNation\(f\.nation\)\]\.base/.test(src)) cerr.push("the marks' colour is not the side's token");
-  if(!/layerOn=\{[^}]*confidence:true/.test(src)) cerr.push("position confidence is not on by default (decision 85)");
+  /* Stage 8, implementation PR 8B (decision 239): the layer's first setting by presentation, off on the landscape (where the app opens) and on
+     on the paper map (decision 85 kept there); the outlines no dash either, in the side's token colour on its edge, the selection's in the accent */
+  if(!/var CONF_ON=\{land:false, paper:true\};/.test(src)||!/layerOn=\{[^}]*confidence:false/.test(src)) cerr.push("position confidence is not off at first on the landscape and on at first on the paper map (decisions 85, 239)");
+  ["makeOutline","outlinePlace","outlineReach"].forEach(f=>{ const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===f);
+    if(!n) cerr.push(f+" missing"); else if(/setLineDash|LineDashed|dashSize|dashRuns|segment/i.test(src.slice(n.start,n.end))) cerr.push(f+" draws a dash"); });
+  { const m=/var OUTLINE_FS=\[([\s\S]*?)\]\.join/.exec(src); if(!m||/dash|fract\(|mod\(/i.test(m[1])) cerr.push("the outline's fragment shader is missing or draws a dash"); }
+  if(!/outlinePlace\(rec\.line,gl,wq\[0\],wq\[1\],rec\.yaw\|\|0,fu\.W0\*fu\.sw,fu\.D0\*fu\.sd,hexNum\(sl\?TOKENS\.theme\.dark\.accent:SL\.base\),hexNum\(sl\?TOKENS\.sym\.keyline:SL\.edge\)/.test(src)||
+     !/SL=TOKENS\.sym\.side\[sdl\]/.test(src)) cerr.push("the outlines' colours are not the side's tokens (the selection's the accent)");
   cerr.forEach(e=>console.log("  ! "+e));
-  console.log("confidence marks: "+(cerr.length?cerr.length+" wrong":"no dash, the side's token colour, on by default"));
+  console.log("confidence marks: "+(cerr.length?cerr.length+" wrong":"no dash, the side's token colour; off at first on the landscape, on at first on the paper map; the outlines no dash, in the side's tokens, the selection's in the accent"));
   if(cerr.length) process.exitCode=1;
 }
 /* Stage 5D (docs/STAGE5_SPEC.md section B.4; decisions 4, 15, 90): the evidence skeleton draws no dash, its colour is the annotation

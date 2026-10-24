@@ -406,6 +406,16 @@ its head; the sources sheet gives each claim's note and each work's side in a di
 activated and never shown by a touch. The roads', the streams' and their banks' ribbons are drawn (wound facing up, both faces), their widths
 a display convention for each presentation, set against narrower ones in matching views. Checks able to fail added for each (§13.4).
 
+**Implementation PR 8B** (24 October 2026; `docs/STAGE8_SPEC.md` §14; draft, stacked on 8A's branch, for review): decisions 239 (b) and 241 (a).
+On the landscape every formation drawn as figures is outlined on the ground in its side's colour, the selected one in the selection accent, with
+no wash under the troops; "Position confidence" is optional there and off at first, and on draws each outline round its grade's extent, thinner
+as the grade weakens; the paper map keeps its filled marks, the layer on at first there; the reported-only C zones, the eye level's own side and
+1x's footprints are kept. In the two perspective presentations every movement arrow is at most 16 px across on screen at its casing, its fill
+at 0.62 of its opacity with the casing a border; every overlay ribbon is hidden by the drawn ground alone; the event glyphs and the objective
+markers are at most 64 px; on the paper map nothing changes. Checks able to fail added for each (§14.4); the harness's position-confidence share
+now measures the ground cues as each case shows them, its landscape limit lowered to their measured baseline (§14.5), put to the owner as
+question 254.
+
 **L1. "The coloured glow underneath troops and divisions (blue for the French, orange for the Russians and Austrians): remove it; it looks
 clunky."**
 - *What it is (fact):* the position-confidence marks (Stage 5B; `CONF`, `confPlace` in `app.js`): every formation's position grade drawn on the
