@@ -2,10 +2,10 @@
 
 **Status: Part A, the specification, is complete and merged (PR #64, `main` at `d86835e`). The owner decided its questions 239-253 on
 24 October 2026 (section 0.3, the decisions with their qualifications, and the points they settle in this text); the implementation follows
-the plan of section 10 in eight implementation PRs, 8A to 8H, of which 8A (section 13) and 8B (section 14) are built in the session that
-recorded the decisions. Names (section 0.4): "Stage 8 Part A" is this specification only; "implementation PR 8A" is the first of the
-implementation PRs. Nothing below section 12 was written in Part A, and the decisions for 8C-8H set their direction and constraints only:
-none of them is implemented or verified until its own PR says so.**
+the plan of section 10 in eight implementation PRs, 8A to 8H, of which 8A (section 13) and 8B (section 14, added by its own PR, stacked on
+8A's) are built in the session that recorded the decisions. Names (section 0.4): "Stage 8 Part A" is this specification only;
+"implementation PR 8A" is the first of the implementation PRs. Nothing below section 12 was written in Part A, and the decisions for 8C-8H
+set their direction and constraints only: none of them is implemented or verified until its own PR says so.**
 
 *Part A's own status line, as merged:* written for review on `claude/festive-wozniak-vsbtqr` (draft PR #64). No source file, no data file and
 no build changed: `check:baseline` passes on the unchanged build (`austerlitz-command-map.html`, 2,220,714 bytes, md5
@@ -1647,3 +1647,174 @@ section 5.3's flow and section 9.6's boxes matched. It reported 7 findings (1 bl
 - **Low, fixed.** Section 3's threshold (more than 40 of 255) stated; the battery's switch in the first frame after its leg begins
   (13:45:30); `clip-motion.py`'s sections (3 and 5.3); the fade's wording in the summary and question 244 (full up to 3.2 cycles a second,
   none above 4.8).
+
+## 13. Implementation PR 8A as built (24 October 2026)
+
+**Status.** Built on `claude/blissful-clarke-9axnzp` (draft PR #65), from `main` at `d86835e` (PR #64, Stage 8 Part A, merged; nothing
+merged since, checked). It applies decisions 251 (a) and 253 (b) as section 0.3 records them, with the points 0.3.1 settles; nothing of 8B-8H.
+No data file, no geography, no simulation and no renderer changed (`check:data`: all 131 declarations byte-identical to its reference; `check:chronology`: 0 errors). The build:
+2,247,866 bytes, md5 `870caf24e7465206d1a0a994e38265eb` (`check:baseline` moved to it).
+
+### 13.1 The carried findings (decision 251 (a), expanded; section 9.1-9.3)
+
+**What a reading may disclose (fact, `app.js`).** Under "Whose eyes?" (Napoleon's or the Allied headquarters) a formation the reading does not
+know (`drawnKnow` "unknown") is now hidden from every place a visitor could read its position from, not only from the map:
+- *Centring.* `focusOn` centres on the reading's position (`readPos`), so neither the order of battle's rows nor a dossier centres on an unknown
+  formation; the full dossier offers no "Centre the map here" for it and says why instead (`LABELS.reading.noCentre`: "Not known to Napoleon's
+  headquarters at 08:30 (a model reading): the map does not centre on it.").
+- *The dossiers' place rows.* The compact card's and the full dossier's position row (`posRow`) give "Not known to … at …" for an unknown
+  formation, without the derived tag; an aggregate's midpoint is the mean of the formations of it the reading knows (`aggReading`, as its
+  counter is placed since roadmap step 3), said so in the row (`LABELS.reading.known`, `known1`), and none where it knows none.
+- *The day-track.* An unknown formation's inset draws no position dot and no current leg, and its caption says why (`noDot`, `noDots` for an
+  aggregate's hidden formations).
+- *Related rows.* A place's "Formations nearby now" (`placeNearby`) leaves out the formations the reading does not know.
+- *Following the reading.* An open dossier is painted again when the reading or the clock changes what it would show (`drawerKey`: the
+  hidden formations and the reading are part of its key), so a dossier opened under one reading never keeps another's places.
+Reviewed and kept, because they disclose no position the reading does not have: an act's and an objective's text (orders, not places), the march
+row (a leg's length and duration), the Timing row, the ordered route's distance, the plotted positions list of the full dossier (the record of
+the plotted anchors, a sourcing view of the data, as in every reading since 5D), the events. Observed and unchanged: the plateau's derived
+reading is the plateau's, not a formation's.
+
+**The sources at the head.** Every drawer dossier (the compact card, a formation's full dossier, an event's, a place's, an analysis chapter's and
+a terrain line's) begins with "How this is sourced" under its head, in the part shown without scrolling; the button at the end stays (the review
+of decision 203). Both open the sources sheet with that dossier's statements at its head (`srcButton`, `dossierClaims`). A dossier opens at its
+head: the full dossier reached by the card's own "Full dossier" button kept, until 8A, the place the card was scrolled to (a rebuild with the
+focus inside restored the old offset), so at 1366 x 768 and on a phone its "How this is sourced" stood above the visible part; a rebuild of the
+same dossier keeps its place, another opens at its head (`paintDrawerBody`). Found when Part A's `carried.js` was run again on 8A (section
+13.4).
+
+**What a claim rests on.** The sources sheet's head list and its index of claims give, for each claimed statement, the works it rests on with
+their locators; where the claim is "disputed", each work's side (`claimWorks`, `claimDetail`); and the claim's note where it has one. Until 8A
+the note and the sides were recorded in `narrative.js` and shown nowhere.
+
+**The timeline's tips.** A tip is the hover's (a mouse or a pen over its element) or the keyboard focus's, never a touch's; activating the element
+(a press, a click, a tap, Enter or Space) dismisses it, and it comes back only with a new hover or a new focus; Esc hides a shown tip and does
+nothing else (`TIP`, `tipSync`, `bindTimeTips`). Keyboard focus and hover keep their tips, as WCAG 1.4.13 asks.
+
+**Checks that can fail.** `runtime-test.js`: two new blocks (every reading at every half hour: no unknown formation centred, placed in a row, in
+a midpoint, a day-track or a nearby list; the dossier follows the reading; every claim's note and side in the index and the head list).
+The self-test: "timeline tips (decision 251)" (synthetic pointer, focus and key events: hover, focus, activation, Esc, touch) and "dossiers: in
+every kind of drawer dossier the sources are one press from where it opens" (six dossiers, and the full dossier also by the card's own button
+from the card scrolled to it with the focus inside, as a visitor reaches it; the button inside the visible part, the sheet opened with its
+statements). The harness: the live block `tips` (real mouse, keys and, on a phone page, real taps: Tab to a marker shows its tip, Enter opens
+its dossier and hides the tip, Esc closes the dossier with no tip shown, a new focus (the next marker) shows its tip and Esc hides it and closes nothing; a hover shows its tip,
+a click hides it, the pointer away and back shows it again; with the focus on one marker and the pointer over another the hover's tip shows,
+leaving it shows the focus's again, Enter hides it and opens the focused marker's dossier; on a 390 x 844 touch page a tap opens the event's
+dossier and shows no tip), and the phone dossier's
+measure (`phone-measure.js` `srcHead`: the head button inside the visible sheet). Each was made to fail by putting its fix back
+(section 13.4).
+
+### 13.2 The roads and the streams (decision 253 (b); section 9.5)
+
+**Wound facing up, drawn on both faces (fact, `world.js` `ribbon`, `buildWater`, `buildRoads`).** Each ribbon's triangles are now indexed (o,
+o+1, p), (o+1, p+1, p): counter-clockwise seen from above, their normals (and so their light) up; and the six ribbon materials (the bank, the
+stream, the three roads and the road edge) draw both faces, since a sliver lifted over a crest at 10.33x can face away from the eye (wound up and
+front-sided, 7.4% of the road edges' pixels in one view were still culled). They are drawn on the landscape and on the paper map. Their centre
+lines, lifts and colours are unchanged; the geography is not touched (the ribbons follow `RIVERS` and `ROADS` as before).
+
+**The widths, a display convention (`RIBBON_W`).** A ribbon's drawn width is the width it was built with until 8A (its base) times its group's
+factor for the presentation shown: the streams with their banks, the roads with their edges, on the landscape (both perspective presentations)
+and on the paper map. One mesh serves both: `drape` lays it again when the display changes. The factors were chosen by comparing the build's
+widths with narrower ones in matching views (`tools/stage8/ribbon-widths.js`: the frame with the ribbons culled as before 8A, then at ×1, ×0.7,
+×0.5 and ×0.35, each with its pixels per kind, draw calls and triangles; 1600 x 900, Chromium 153, software WebGL; the frames are in
+`docs/stage8-evidence/8a/ribbons/`):
+
+| view | x1: stream / bank / road px | x0.7 | x0.5 (chosen) | x0.35 | calls, triangles (culled as before and every width) |
+|---|---|---|---|---|---|
+| `village-telnitz` (4x) | 6,117 / 4,608 / 147,448 | 5,272 / 1,922 / 105,118 | 4,060 / 1,519 / 75,657 | 2,862 / 1,151 / 52,682 | 741, 2,483,571 |
+| `village-sokolnitz` (4x) | 32,062 / 4,277 / 12,325 | 21,360 / 3,537 / 9,123 | 14,163 / 3,840 / 7,050 | 9,555 / 2,710 / 5,651 | 747, 2,474,215 |
+| `close-sokolnitz` (4x) | 11,245 / 7,941 / 20,715 | 8,897 / 5,570 / 15,048 | 6,636 / 4,041 / 10,935 | 4,714 / 2,449 / 7,724 | 781, 2,478,149 |
+| `goldbach-top` (4x) | 27,702 / 41,020 / 64,955 | 19,799 / 33,833 / 46,983 | 14,472 / 28,089 / 34,375 | 11,144 / 19,526 / 25,608 | 681, 2,477,921 |
+| `goldbach-noon` (4x) | 3,707 / 6,379 / 8,751 | 3,309 / 5,034 / 6,314 | 2,547 / 3,919 / 4,810 | 1,873 / 3,262 / 3,584 | 823, 2,509,849 |
+| `overview-field` (4x) | 5,236 / 9,747 / 27,504 | 3,667 / 6,991 / 21,915 | 2,674 / 4,887 / 18,045 | 2,041 / 2,973 / 14,395 | 832, 2,523,605 |
+| `paper-north-up` (paper map) | 2,294 / 1,225 / 6,602 | 1,629 / 761 / 4,800 | 1,180 / 451 / 3,577 | 744 / 239 / 2,668 | 156, 240,915 |
+| `paper-close` (paper map) | 36,936 / 29,215 / 36,285 | 28,021 / 21,701 / 22,484 | 19,946 / 15,513 / 14,626 | 13,658 / 9,870 / 9,315 | 103, 203,455 |
+| `pratzen-low-1x` (1x) | 31,840 / 33,166 / 67,663 | 22,819 / 23,058 / 53,600 | 16,780 / 18,117 / 44,441 | 12,145 / 14,179 / 37,314 | 160, 227,787 |
+
+The factor chosen is **0.5, for both groups and both presentations** (`RIBBON_W`), and `css-test.js` holds it. At ×1 the roads were wider than
+the houses beside them in the close views at 4x (the road through Telnitz 147,448 px, ten times the village's stream and bank together) and
+the Goldbach's banks a dark band wider than the villages' footprints across the paper map's close view; at ×0.7 the paper map's close view
+still read as bands. At ×0.35 the streams became threads at the Overview (2,041 px against 5,236 at ×1) and on the whole paper map (744
+against 2,294), the banks under a pixel there. At ×0.5 each kind stays visible at the Overview and on the whole paper map, and the close views
+read as lanes and brooks beside the houses. The drawn widths remain symbols, not the streams' or the roads' widths: the Goldbach is drawn 1.4
+units wide (88 m at `GEOREF`'s 63.2 m a unit), the Littawa 1.6, the brooks 0.7, their banks 2.3, 2.5 and 1.2, the roads 0.6 to 1.45 and
+their edges 1.15 to 2.0 (the widths `world.js` builds them with, halved). One factor for both presentations keeps one convention; `RIBBON_W` keeps them apart so
+a later pass can tune one without the other.
+
+**The check that can fail.** The self-test's "roads and streams: each kind (stream, bank, road, road edge) is drawn from above where it lies,
+as rendered" renders the ribbons alone, each kind in a flag colour, in three views at each factor (straight above the Goldbach, from its west
+bank, through Telnitz) and on the paper map, as built and double-sided: each kind must cover at least 60 px and as built at least 95% of what it
+covers double-sided. With the winding put back it fails (section 13.4). The geometric checks (every vertex at its lift, no edge under the
+ground) are kept.
+
+**What it costs.** No draw call and no triangle (the ribbons were submitted and culled before 8A): the same calls and triangles in all six
+views compared (`tools/stage8/compare-8.js`, `docs/stage8-evidence/8a/compare/compare.json`: the Overview 832 calls and 2,523,605 triangles, the
+whole paper map 156 and 240,915). What they add is the pixels they cover: at ×0.5, 25,606 px at the Overview (1.8% of the 1600 x 900 frame) and
+81,236 px through Telnitz (5.6%). The frame's time on this machine's CPU (software WebGL, the median of five frames; comparable between the two
+builds, not a GPU's) moved within its noise: the Overview 10.5, 12.1 and 11.7 ms before 8A in three runs and 17.1, 11.2 and 11.2 with it; the
+other five views from -4.7 to +0.3 ms.
+
+### 13.3 What was run
+
+On the final build (md5 `870caf24...`; commit `7507e92`), here (Chromium 153 through `AUSTERLITZ_CHROME`, Playwright 1.56, software WebGL)
+and on CI (Chromium 141, the runner's):
+- `npm test`: all nine suites and the height guard pass, here and on CI. `check:data`: all 131 declarations byte-identical to its reference.
+  `check:chronology`: 0 errors, its movement audit 0 findings. `check:baseline`: passes on this build.
+- `check:contrast` (every interface state, the phone's among them, and the six start-up cases): passes on CI.
+- `check:selftest`: passes on CI, every one of its 250 checks by name against the manifest. The manifest was regenerated from this PR's passing
+  run (`32a9921`), from 242 to 250 checks: the ribbons at 1x, 4x and 10.33x and on the paper map (six), the tips, the dossiers' sources.
+- `check:visual` (39 cases and its sweeps and live blocks). The unchanged build first, here, as the baseline the comparisons read: its 39 cases
+  measured without a failure and its self-test's 242 checks passing; the run then stopped in the light sweep (the browser closed, here; the
+  full runs are CI's). On CI the unchanged build (`main` at `d86835e`, run 40075295260) fails five unobstructed-share baselines by 0.01 to 0.21
+  points: first-run 0.6256 against 0.626, and at 1280 x 720 0.5069 against 0.507; first-run-laptop at 1280 x 720 0.5069 against 0.507;
+  narrow-1024 0.5321 against 0.533; phone-844x390-explore 0.6879 against 0.69. They are the runner's measure, not this PR's. 8A's build on the
+  same runner gives the same five values to four places (run 40075243524 on `7507e92`, this build; and run 40071349079 on `32a9921`, build
+  `9fa6998c`), and its report differs from `main`'s in no drop, dropped item, unobstructed fraction or timeline height
+  (`tools/step3/report-diff.js`). No limit was moved: the baselines are never lowered (Stage 3B's rule), and the five failures stand on `main`
+  until they are re-measured on the owner's word.
+- The carried findings measured again on this build (`tools/stage8/carried.js`, real clicks, keys and taps; `8a/carried-after.json`): under
+  Napoleon's headquarters' reading at 08:30 the dossiers of the four formations it does not know offer no "Centre the map here" (on Part A's
+  build each did, and centred on the true position), and the two it knows only as reported centre on their C zone, where the map draws them; at
+  the eye level a known formation's centring leaves the eye level and puts it at the free rectangle's centre (0 px). "How this is sourced" stands
+  inside the visible part of the card and of the full dossier at 1600 x 900, 1366 x 768 and on a 390 x 844 phone (at 202-230 px and 443-471 px;
+  on Part A's build below it, at 793-852 px in the card and 4,100-6,028 px in the full dossier). By real keys, Tab to an event marker shows its
+  tip, Enter opens its dossier and hides the tip, Esc closes the dossier with no tip shown; a hover shows a phase's tip, a click hides it and it
+  stays hidden with the pointer away; on a phone a tap opens the event's dossier and shows no tip, after one second and after three.
+
+### 13.4 Each check made to fail
+
+Every check 8A adds was run once against a copy of the build with its fix put back (the copies in the session's scratch space, not
+committed), and failed:
+- `runtime-test.js`, the readings: `focusOn` centring on the true position (`posOf`) fails it ("fr 04:00: ahq centred, which the reading does
+  not know", and five more at the first clock alone); the claims: `claimDetail` without the claim's note fails it ("EVENTS[#counter-march].dispute:
+  its note is not in the index", and others), and without the dispute's sides ("... p. 109's side is not beside it in the index").
+- The self-test, on one copy of the final build with the ribbons wound facing down and their six materials front-sided as before 8A, the
+  tips' rules for a click and a touch removed and every dossier's head button removed (md5 `2c5d304d...`): the ribbon checks fail at 1x, 4x
+  and 10.33x and on the paper map (as built against double-sided, at 1x stream 0 of 32,111 px, bank 32 of 22,699, road 0 of 33,325, road edge
+  1 of 21,612; at 10.33x 40 of 27,796, 84 of 19,355, 148 of 43,483 and 575 of 29,639; on the paper map 0 of 579, 376, 647 and 378 px at each
+  factor); the tips check fails (the tip kept after Enter on its marker, Esc on a shown tip doing something else, a touch showing the tip); the
+  dossiers check fails (no "How this is sourced" at the head of any of the six); the other 242 checks pass, as on 8A (250). The harness's live block `tips`
+  on the same copy fails too ("Enter on it: the dossier not opened, or its tip kept; one Esc after it: the dossier not closed, or a tip shown;
+  Esc on a shown tip did more than hide it; Enter on the focused marker kept the tip or opened no dossier"): the copy's run ends with nine
+  failures, these eight and the live block. The block's phone taps showed no tip on the copy either; the touch rule is held by the
+  self-test's synthetic touch, which fails on it.
+
+- The full dossier's head (found after the copies above were made): on the final build with its one line put back (the rebuild restoring the
+  old offset whatever the dossier), a probe taking the self-test's path (the card scrolled to its "Full dossier" button, pressed with the focus
+  inside) opened the full dossier at the card's offset, 212 px at 1366 x 768 and 198 px on a 390 x 844 phone, its "How this is sourced" at -10
+  to 18 px and 245-273 px against the visible parts 35-677 and 295-723; on the final build at 0, the button at 202-230 and 443-471 px.
+  `carried.js` had measured the same on the build before the fix (`8a/carried-after.json` is its run on the final build).
+
+### 13.5 What remains (handed on)
+
+- *The widths.* `RIBBON_W`'s 0.5 is this PR's judgement on the probe's frames (decision 253 (b) asked for the widths reviewed and set); it is a
+  display convention, put to the owner's review with the frames in `8a/ribbons/`, not a question asked.
+- *A phone's tap shows no tip,* by decision 251's rule; on a phone an event's name and hour reach a visitor through its dossier and the phase
+  list.
+- *Reviewed and kept under a reading* (section 13.1): the full dossier's Timing row with its dated quotations and its plotted positions' clocks
+  and grades, the record of the sources and the anchors rather than the reading's places.
+- *Not this PR's:* 9.4 and 9.6 (the open polish findings; in Study the phase's one message under the view switch) belong to 8H by section 10's
+  plan; the ribbons' cost on a device's GPU to the device runs of 8D and 8H.
+- *CI's five unobstructed shortfalls (section 13.3)* are `main`'s: CI's runner measures Part A's unchanged build 0.01 to 0.21 points under five
+  unobstructed baselines, and 8A's build the same. Whether to re-measure them on CI's runner is the owner's to decide, as decisions 146, 199
+  and 214 decided theirs; no baseline is lowered here.
