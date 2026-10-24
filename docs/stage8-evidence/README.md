@@ -69,4 +69,4 @@ draw calls, triangles, widths, sizes and cues; their times are in section 14.2);
 | path | made by | what |
 |---|---|---|
 | `8b/compare/<view>-a.jpg`, `-b.jpg`, `-b-conf-on.jpg`, `-sheet.jpg`, `8b/compare/compare.json` | `compare-8.js --a <8A> --b <8B> --b-variants conf-on` | section 14.2: the ground cues, the arrows and the glyphs in nine matching views, 8A beside 8B and 8B with Position confidence on, with each frame's widest casing by role, the glyphs' and the markers' largest size, the cues drawn, draw calls, triangles, time and the ground's depth pass |
-| `8b/harness/<case>.jpg` | `pair-sheets.py`, from two CI runs' captures | section 14.5: every `check:visual` case (the phone cases among them), 8A's build (run 40075243524) beside 8B's (@@HARNESS8B@@), at half size |
+| `8b/harness/<case>.jpg` | `pair-sheets.py`, from two CI runs' captures | section 14.5: every `check:visual` case (the phone cases among them), 8A's build (run 40075243524) beside 8B's (run 40086612769 on `b42e500`, this build), at half size |

@@ -1979,10 +1979,9 @@ layer's first setting by presentation.
 
 ### 14.5 What it replaces in the measures, and the new baselines
 
-Measured on CI (Chromium 141, the runner's; `check:visual`'s 39 cases), 8A's build (run 40075243524) against 8B's
-build before its last two changes (run 40075245190, `c260697e`: neither change alters a measure below but the paper map's arrows, section
-14.2; the final build's run is named in section 14.7), and compared case by case
-(`tools/step3/report-diff.js`):
+Measured on CI (Chromium 141, the runner's; `check:visual`'s 39 cases), 8A's build (run 40075243524) against this build (run 40086612769 on
+`b42e500`) and against 8B's build before its last two changes (run 40075245190, `c260697e`), and compared case by case
+(`tools/step3/report-diff.js`). The two 8B builds' reports differ in nothing but the paper map's shares below:
 
 - *The position-confidence share (`CONF_SHARE`, the harness's `confShare`; Stage 5B, section A.5): its meaning replaced.* Until 8B it measured
   the filled marks the layer drew at first: each case's frame against the same frame with the layer off and no ground cue. Decision 239 takes
@@ -2011,9 +2010,9 @@ build before its last two changes (run 40075245190, `c260697e`: neither change a
   Here (Chromium 153) the 8B build measures `eye-zuran` at 6.42% as well (`narrow-1024` 1.94%). **The landscape's limit lowered from 20% to
   7%**: the largest measured, rounded up as 5B rounded its limits (its rule, never raised, kept). A return of the filled washes would fail it in
   the ten cases at 4x or 10.33x where 8A measured them above 7%. This is put to the owner as question 254 (section 14.6). The paper map's
-  limit (16%) is unchanged: its marks are drawn as before, and measured the new way give the same shares within 0.01 points in five of its six
-  cases; at `paper-close` 14.32% against 13.68%, a view whose movement arrows cross the marks (their casing is now a border there too; that
-  this is the cause is not measured).
+  limit (16%) is unchanged: its marks and its arrows are drawn as on 8A, and the new measure gives 8A's shares to four places in all six of its
+  cases. (On 8B's build before the casing's border was switched off on the paper map, `paper-close` measured 14.32% against 13.68%, the
+  others within 0.01 points: that view's movement arrows cross the marks, and with the casing a border their fill showed the marks through.)
 - *The map layer's drops: fewer.* 8B places more of the map layer where the narrower arrows' heads and the smaller glyphs leave it room:
   `overview-field` drops 6 to 5 (the Santon's name placed), `opening-3` 3 to 2 (the Pratzeberg's), `opening-4` 4 to 3 (the chapel's); in
   `hybrid-dimmed` ten dropped as before, but Kamensky's and Kollowrat's counters and Pratzen's name are placed and Kellermann's and the Russian
@@ -2052,4 +2051,13 @@ On the final build (md5 `9b20dc4c...`), here (Chromium 153 through `AUSTERLITZ_C
   `check:chronology`: 0 errors. `check:baseline`: passes on this build.
 - `check:selftest` here: every one of its 261 checks passes (the manifest regenerated from this run: one check renamed at each factor, the
   arrows' cap, which now also holds the paper map's casing under the fill).
-- @@CI8B@@
+- On CI on `b42e500` (this build; the later commits change records and evidence only): the checks job (`npm test`, `check:data`,
+  `check:chronology`), `check:contrast` (45 states, none below AA; the six start-up cases, the context-loss case with 195 warnings, at most
+  248) and `check:selftest` (261 of 261 by name) pass.
+- `check:visual` on CI (run 40086612769 on `b42e500`): its 39 cases, sweeps and live blocks with five failures, the five of `main`'s build on the
+  same runner with the same values to four places (section 13.3: the unobstructed shares of first-run, first-run-laptop, narrow-1024 and
+  phone-844x390-explore). Against 8A's report: the map layer's drops as section 14.5 gives them, every unobstructed share and timeline height the
+  same; judged again against this tree's limits and manifest (`check-report.js`): those five only, 261 of 261 self-test checks. No limit was
+  raised or loosened; the landscape's confidence share lowered (question 254).
+- The comparison (`compare-8.js`) run again on this build: the calls, triangles, widths, sizes and cues of its three earlier runs (section 14.2).
+- Each new check made to fail (section 14.4).

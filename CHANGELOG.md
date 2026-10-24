@@ -57,13 +57,17 @@ moved to it. The record is `docs/STAGE8_SPEC.md` §14.
   glyphs' renamed check; `css-test.js` and `runtime-test.js` fail on copies with the layer on at first and with the washes back; with the casing
   a border on the paper map too, the cap check fails at 1x, 4x and 10.33x (the casings under the fill at 3 of 103 points, 103 on the build) and
   `css-test.js` with it.
+- **Verified (on this build, `docs/STAGE8_SPEC.md` §14.7):** `npm test` all nine suites and the height guard, here and on CI; `check:data` 131 of
+  131 identical; `check:chronology` 0 errors; `check:baseline`; `check:selftest` 261 of 261 by name, here and on CI; `check:contrast` on CI (the
+  context-loss case 195 warnings, at most 248); `check:visual` on CI (run 40086612769): five failures, `main`'s five on the same runner with the
+  same values (8A's record), its other measures as §14.5 gives them; the comparison run again on this build.
 - **What a measure now means, and its baseline (§14.5):** the position-confidence share now measures the ground cues as each case shows them (the
   frame against the same frame with none, the layer as the case has it; the state check requires each presentation's first setting): on the
   landscape the outlines, at most 1.89% of the free rectangle (`narrow-1024`) where 8A's filled marks covered up to 18.42%, and the eye level's
   own side, 6.42% at `eye-zuran` on both builds (decision 91, unchanged); **the landscape's limit lowered from 20% to 7%**, the largest measured
-  (6.42%, the same in both browsers) rounded up, put to the owner as question 254; the paper map's marks as before, its limit 16% unchanged. The map layer drops
-  fewer items in three cases and as many, changed, in one (§14.5); every unobstructed share and the timeline's height unchanged; no limit raised
-  or loosened.
+  (6.42%, the same in both browsers) rounded up, put to the owner as question 254; the paper map's marks and arrows as on 8A, its shares 8A's to
+  four places, its limit 16% unchanged. The map layer drops fewer items in three cases and as many, changed, in one (§14.5); every unobstructed
+  share and the timeline's height unchanged; no limit raised or loosened.
 - **Uncertain or open:** question 254 (the landscape's confidence-share limit, set at 7% as measured); a ground mark seen edge-on (the far side
   of a hilltop at its horizon, from a low eye) has no area on the screen, so an outline there thins to nothing over a few pixels, as every ground
   mark has since 5B (the steep-outline check counts these points and passes over them); at the eye level at 4x an overlay ribbon near the eye is
