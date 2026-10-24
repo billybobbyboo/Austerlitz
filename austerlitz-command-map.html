@@ -13240,8 +13240,10 @@ function paintDrawerBody(){
   clearTimeout(_drawerClear);
   dr.classList.add("on");
   document.body.classList.add("drawer-open");
-  /* SW-5: a rebuild with focus inside (Full dossier, a link, the clock moving) keeps the focus on the same control, else the dossier's heading */
-  var fa=focusedEl(), fk=null, sc=body.scrollTop||0;
+  /* SW-5: a rebuild with focus inside (Full dossier, a link, the clock moving) keeps the focus on the same control, else the dossier's heading.
+     Stage 8, implementation PR 8A (decision 251): a rebuild of the same dossier keeps its place in it; another (the card's "Full dossier", a
+     link to another formation) opens at its head, where its sources are: until 8A it kept the place the card was scrolled to */
+  var fa=focusedEl(), fk=null, sc=body.scrollTop||0, dk=selection.kind+":"+selection.id+(selection.kind==="f"&&dossierExpanded?":full":"");
   if(fa&&body.contains&&body.contains(fa)){ var same0=[].filter.call(body.querySelectorAll(fa.tagName),function(x){ return (x.textContent||"").trim()===(fa.textContent||"").trim(); });
     fk=[fa.tagName,(fa.textContent||"").trim(),same0.indexOf(fa)]; }
   var nn=selection.kind==="f"?(dossierExpanded?dossierFormation(selection.id):compactCard(selection.id)):selection.kind==="e"?dossierEvent(selection.id):
@@ -13250,8 +13252,9 @@ function paintDrawerBody(){
   if(body.children.length===1&&body.firstChild.outerHTML===nn.outerHTML){ syncInert(); return; }
   body.innerHTML="";
   body.appendChild(nn);
+  var sameDossier=body.getAttribute("data-dossier")===dk; body.setAttribute("data-dossier",dk);
   syncInert();
-  if(fk&&body.querySelectorAll){ body.scrollTop=sc;
+  if(fk&&body.querySelectorAll){ body.scrollTop=sameDossier?sc:0;
     var sames=[].filter.call(body.querySelectorAll(fk[0]),function(x){ return (x.textContent||"").trim()===fk[1]; }), same=sames[Math.max(0,fk[2])]||sames[0];
     if(!(same&&focusTo([same]))){ var h=body.querySelector("h2,h3"); if(h){ h.setAttribute("tabindex","-1"); focusTo([h]); } } }
 }
@@ -16972,10 +16975,13 @@ var AUSTERLITZ_DEBUG=(function(){
         still=document.body.classList.contains("st-still");
       document.body.classList.add("st-still");   /* the dossier at rest, not in its slide */
       setPresentation("study"); setClock(570,{instant:true,force:true,camera:false});
-      var cases=[["f","sthilaire",false],["f","sthilaire",true],["f","c_iv",false],["e",EVENTS[0].id,false],["t",FEATURES[0].id,false],["a",TERRAIN_LINES[0].n,false]];
-      cases.forEach(function(c){ var what=c[0]+":"+c[1]+(c[2]?" (full)":"");
-        select(null,null); dossierExpanded=c[2]; select(c[0],c[1]); if(dossierExpanded!==c[2]){ dossierExpanded=c[2]; paintDrawer(); }
+      var cases=[["f","sthilaire",false],["f","sthilaire",true],["f","sthilaire","button"],["f","c_iv",false],["e",EVENTS[0].id,false],["t",FEATURES[0].id,false],["a",TERRAIN_LINES[0].n,false]];
+      cases.forEach(function(c){ var what=c[0]+":"+c[1]+(c[2]==="button"?" (full, by the card's own button, the card scrolled to it)":c[2]?" (full)":"");
+        select(null,null); dossierExpanded=c[2]===true; select(c[0],c[1]); if(dossierExpanded!==(c[2]===true)){ dossierExpanded=c[2]===true; paintDrawer(); }
         body.scrollTop=0;
+        if(c[2]==="button"){ var fb=[].filter.call(body.querySelectorAll("button"),function(q){ return /full dossier/i.test(q.textContent); })[0];
+          if(!fb){ bad.push(what+": the card has no “Full dossier” button"); return; }
+          body.scrollTop=body.scrollHeight; fb.focus({preventScroll:true}); fb.click(); }   /* as a visitor: scrolled to it, pressed (its focus inside the dossier) */
         var b=body.querySelector(".src-head button");
         if(!b||(b.textContent||"").trim()!==LABELS.dossier.sourced){ bad.push(what+": no “"+LABELS.dossier.sourced+"” at its head"); return; }
         var r=b.getBoundingClientRect(), vb=body.getBoundingClientRect(), vd=dr.getBoundingClientRect(),
@@ -16988,7 +16994,7 @@ var AUSTERLITZ_DEBUG=(function(){
       select(null,null); dossierExpanded=de0; setClock(c0,{instant:true,force:true,camera:false}); if(sel0) select(sel0.kind,sel0.id); setPresentation(pm);
       if(!still) document.body.classList.remove("st-still");
       ck("dossiers: in every kind of drawer dossier the sources are one press from where it opens: its head's “"+LABELS.dossier.sourced+"” inside the dossier's visible part without scrolling, opening the sources sheet with its statements (decision 251)",
-        !bad.length&&n===cases.length, bad.length?bad.join("; "):n+" dossiers at "+window.innerWidth+" x "+window.innerHeight+" (a formation's card and full dossier, a corps's card, an event's, a place's, a terrain line's)");
+        !bad.length&&n===cases.length, bad.length?bad.join("; "):n+" dossiers at "+window.innerWidth+" x "+window.innerHeight+" (a formation's card and full dossier, the full dossier also by the card's own button from the card scrolled to it, a corps's card, an event's, a place's, a terrain line's)");
     })();
     cameraChecks3D(ck);   /* Stage 3D */
     keyChecks3E(ck);      /* Stage 3E */
