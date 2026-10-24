@@ -1,10 +1,17 @@
 # Appearance and motion: specification (Stage 8, Part A)
 
-**Status: Part A, written for review on `claude/festive-wozniak-vsbtqr` (draft PR #64). No source file, no data file and no build changed:**
-`check:baseline` passes on the unchanged build (`austerlitz-command-map.html`, 2,220,714 bytes, md5 `c4793156103b60bb74151c7d13dbdd9d`) and
-`check:data` finds 131 of 131 declarations identical to `archive/step5c-45f8f662.html`. Written against `main` at `9eb7abb` (PR #63 merged);
-line numbers refer to that commit; the code is the source of truth. The owner's questions begin at 239 (section 11); nothing in this document
-is decided by it.
+**Status: Part A, the specification, is complete and merged (PR #64, `main` at `d86835e`). The owner decided its questions 239-253 on
+24 October 2026 (section 0.3, the decisions with their qualifications, and the points they settle in this text); the implementation follows
+the plan of section 10 in eight implementation PRs, 8A to 8H, of which 8A (section 13) and 8B (section 14) are built in the session that
+recorded the decisions. Names (section 0.4): "Stage 8 Part A" is this specification only; "implementation PR 8A" is the first of the
+implementation PRs. Nothing below section 12 was written in Part A, and the decisions for 8C-8H set their direction and constraints only:
+none of them is implemented or verified until its own PR says so.**
+
+*Part A's own status line, as merged:* written for review on `claude/festive-wozniak-vsbtqr` (draft PR #64). No source file, no data file and
+no build changed: `check:baseline` passes on the unchanged build (`austerlitz-command-map.html`, 2,220,714 bytes, md5
+`c4793156103b60bb74151c7d13dbdd9d`) and `check:data` finds 131 of 131 declarations identical to `archive/step5c-45f8f662.html`. Written against
+`main` at `9eb7abb` (PR #63 merged); line numbers in sections 1-12 refer to that commit; the code is the source of truth. The owner's
+questions begin at 239 (section 11); nothing in sections 1-12 is decided by them.
 
 Scope: the owner's notes for later, L1-L5 (`docs/ROADMAP.md`, "Later: the owner's notes of 7 October 2026"), which the roadmap said "would make
 a Stage 8, appearance and motion", and the brief of 23 October 2026 that opened it: (1) the glow or filled bases under the troops; (2) counters
@@ -135,6 +142,150 @@ standards)"; continuous clock-driven positions and the march-rate audit; the Com
 restrained dark interface with serif narrative; reduced-motion support, ARIA states, the keyboard time slider; the single-file build on three.js
 r128; "bare winter trees, frost on north-facing slopes, crop strips". Every proposal below was checked against it; none moves a formation,
 an anchor, a time, a strength, a village or a mere.
+
+### 0.3 Owner decisions 239-253 (24 October 2026)
+
+After Part A was merged (PR #64) the owner decided every question of section 11, on 24 October 2026, each with qualifications that are part of
+the decision. They are recorded here in the owner's words. Where a decision settles, extends or corrects something this specification says,
+the point is listed after them (0.3.1) and the section concerned carries a note. Decisions 239, 241, 251 and 253 are applied in implementation
+PRs 8A and 8B (sections 13 and 14); 252 governs both. The others set the direction and the constraints of implementation PRs 8C-8H: **none of
+those is implemented or verified by 8A or 8B.**
+
+- **239, the ground under the troops: option (b).** "Use thin, cased, side-coloured footprint outlines under formations drawn as figures,
+  with the selected formation distinguished by the selection accent. Remove the broad filled side-coloured ground washes from the default
+  perspective views. Position confidence becomes optional and off by default in both perspective presentations, using the specified grade
+  extents as outlines when enabled. Preserve the specified exceptions: reported-only formations' C zones under the headquarters readings, the
+  eye-level observer's own-side marks, and the 1x footprint treatment. Resolve the paper-map inconsistency in the specification explicitly:
+  retain the paper map's existing confidence treatment, including its filled areas and default-on setting. Section 7.5 must not silently
+  authorise converting those areas to outlines. Keep side identity, confidence grades, selection and reported positions distinguishable.
+  Prevent outlines from disappearing beneath slopes or appearing unintentionally dashed." *Applied in 8B.*
+- **240, label stability and hierarchy: option (a).** "For implementation PR 8C, use anchor2 with the distance band and fades, plus the
+  proposed smaller step for distant labels. Preserve the specified priority, focus, keyboard access, never-dropped items and reduced-motion
+  behaviour. I accept the measured trade-off of fewer jumps and more temporary disappearances as the starting design. Acceptance must also
+  include whether a visitor can follow a formation through camera movement and playback. Report jumps, appearances/disappearances, flicker and
+  visibility separately. A lower jump count alone does not establish a better result. Do not implement 8C during this session." *8C; not
+  implemented.*
+- **241, arrows and event glyphs: option (a).** "Cap movement-arrow casing width at 16 screen pixels in the perspective presentations, reduce
+  the fill to 0.62 of its existing opacity, and cap event glyphs at 64 pixels. Test arrows against the drawn terrain alone, preserving their
+  annotation role over buildings and vegetation. Keep lines of battle, boundaries and halt bars at their existing widths and opacity, with the
+  specified terrain occlusion. Preserve paths, head forms, side colours, planned-versus-executed distinctions, labels and clock-driven draw-on.
+  Keep paper-map arrow widths unchanged. The width cap must respond correctly as the camera moves. Measure the cost of any extra terrain depth
+  pass." *Applied in 8B.*
+- **242, troop models: option (a), subject to the specified budgets.** "For 8E, improve infantry, horses and riders using the prototype
+  direction and existing appearance claims. Preserve miniature scale and sourced colours, headgear and equipment. Complete rendering
+  preparation first. Optimise the models and use richer detail only where it is visible. Do not apply the expensive prototype unchanged across
+  the entire battlefield." *8E, after 8D; not implemented.*
+- **243, artillery: option (a), with explicit source boundaries.** "Use the generic field-piece improvements: spoked wheels, a recognisable
+  trail and carriage, improved limbers, appropriate ammunition boxes, and teams behind deployed guns. Retain the single carriage colour and
+  current instantaneous deployed/limbered switch. Register and grade each historical claim before using it. Do not generalise IV Corps'
+  October authorisation for driver numbers into a demonstrated rule for the Guard, Austrian or Russian artillery. Specify where each source
+  applies. Elsewhere use an explicitly identified generic or inferred convention pending stronger evidence." *8E with its data task; not
+  implemented.*
+- **244, gait: option (a).** "Use a gait whose phase follows the modelled track and clock, with amplitude controlled by the specified
+  playback-speed thresholds. No swing when halted, below the proposed 1 km/h cutoff, or under reduced motion. A paused clock must hold the
+  pose still. Fade a formation's parts together and ease speed-related amplitude changes. Verify reproducibility when scrubbing, terrain
+  contact, moving bounds and shadow behaviour. Describe the animation honestly as a visual convention for symbolic figures under compressed
+  time; do not claim physically matched footsteps." *8D (hooks) and 8E; not implemented.*
+- **245, uniform facings: option (a).** "Keep decision 104. Do not add facings in this implementation. Reconsider them after the main
+  troop-model work can be judged." *Nothing to build; reconsidered after 8E.*
+- **246, water: option (a).** "For 8F, improve the meres' ice through material, lighting and restrained tonal variation, with softer shore
+  transitions. Keep streams still, darker and less blue. No added stream ice, animated flow, cracks, holes, snow or figures on the ice.
+  Preserve geographic outlines and levels. Tune the bright ice margins so they integrate with the surrounding terrain." *8F; not implemented
+  (8A draws the streams' ribbons with today's materials, section 13).*
+- **247, woodland and near terrain: option (a).** "For 8F, use airier deciduous silhouettes, restrained variation and a finer near-ground
+  detail layer. Preserve woodland boundaries, tree counts, the existing conifer shares pending evidence, land-cover classes, frost and crop
+  strips. Hold tree geometry within the specified budget and measure transparency costs if introduced." *8F; not implemented.*
+- **248, buildings and landmarks: option (a), with the evidence step first.** "For 8G, develop the villages around the cadastral
+  street-and-yard pattern and add supported landmarks after research and a documented data task. Keep later maps' relevance to 1805
+  explicitly qualified. Unestablished roofing and other forms must remain labelled design conventions. Preserve village locations, footprints
+  and symbolic scale. Do not replace the existing church silhouettes with the prototype's weaker generic towers without adequate evidence and
+  a convincing visual result. Any proposed geographic correction must be identified and reviewed as such." *8G; not implemented.*
+- **249, culling: option (a).** "For 8D, cull figure blocks using correct per-block bounds before adding richer models. Account for changing
+  formation shape, terrain seating, animation and shadow visibility. Verify that visible figures and their shadows do not disappear
+  incorrectly." *8D; not implemented.*
+- **250, performance budgets and device runs: option (b).** "Adopt §8.3's budgets and the bracketed effects-on/effects-off diagnostic.
+  Preserve decision 236's lowTier density and shadow settings. Treat geometry counts as budgets, not proof of frame-rate performance. Retain
+  the integrated-GPU measurement condition before a qualifying increase. Use repeated, comparable device runs and identify the exact build
+  tested. Correct the bracket protocol if necessary so every evaluated sample actually has the neighbouring comparison samples required by its
+  rule. If my hardware measurements are unavailable, complete the code, reproducible evidence and automated checks, then clearly identify
+  device acceptance as pending." *Every Stage 8 PR's records; the bracket protocol corrected in section 8.5 (0.3.1, item 10).*
+- **251, carried findings: option (a), expanded to cover the audit gaps.** "Fix the camera-centering, source-access and timeline-tooltip
+  issues, with these additional requirements: Under a headquarters reading, unknown enemy formations must not reveal their true current
+  location through camera centring, compact-card position text, full-dossier position text or aggregate midpoints. Apply the reading
+  consistently to those outputs, using readPos/aggReading or the appropriate equivalent. General historical reference content can remain
+  available. Check related location-derived rows for the same class of disclosure. Bring source access into the initially visible dossier
+  area. Display the existing claim qualifications and source-specific positions in disputes, including the relevant claim note and by.side
+  information currently omitted by dossierClaims/claimsIndex. Use the recorded content; do not invent explanations or alter historical claims
+  merely to simplify the interface. Dismiss timeline tooltips on activation, prevent touch tooltips from lingering over the timeline, and
+  preserve keyboard and hover accessibility. Test mixed pointer/focus interactions as well as Enter, Escape and touch. Add meaningful
+  regression checks for each corrected behaviour." *Applied in 8A.*
+- **252, implementation order: option (a).** "Keep the planned order of implementation PRs 8A–8H. Clearly distinguish the completed
+  specification from implementation PR 8A. This session covers implementation PRs 8A and 8B only. Keep them separately reviewable. If
+  prerequisites have not been merged, a clearly documented stacked draft PR is acceptable. Do not merge either PR automatically."
+- **253, road and stream visibility: option (b).** "Correct ribbon winding so roads, streams and banks render from above. Review and set their
+  symbolic widths before accepting the visual result. Do not simply expose the existing wide ribbons and declare the work finished. Compare
+  narrower alternatives in matching landscape and paper-map views, including close views through settlements and distant overviews. Keep
+  centre lines and geography unchanged. Widths chosen for readability must be documented as display conventions, not claimed as measured
+  historical widths. Add a rendered-visibility check capable of failing when a ribbon is submitted but invisible. Retain the terrain-draping
+  checks. Measure the added pixel-rendering cost as well as draw calls and triangles." *Applied in 8A.*
+
+#### 0.3.1 What the decisions settle in this text (reconciled)
+
+1. **The paper map's confidence marks (239 against section 7.5).** Section 7.5 recommended "the same outline language for the side cue and the
+   grade's extents in all three" presentations. Decision 239 keeps the paper map's treatment as it is: its marks filled, B and C capped on
+   screen, "Position confidence" on by default there. The outline language applies to the two perspective presentations only; section 7.5
+   carries a note saying so, and it authorises nothing on the paper map.
+2. **Which presentations the default covers (239 against section 2.4).** Section 2.4 said "off by default on the landscape". The owner names
+   both perspective presentations, Landscape and Landscape with counters. The layer's setting is therefore kept apart for the perspective
+   presentations (off at first) and the paper map (on at first); the one "Position confidence" control acts on the presentation shown.
+3. **The decisions 239 touches.** Decision 85 ("on by default") is superseded in the two perspective presentations and kept on the paper map;
+   87 and 107 are restyled (every formation drawn as figures keeps a ground cue: its footprint drawn as its cased outline); 86 and 88 are kept
+   (the extents and the weaker grade between anchors, drawn as outlines when the layer is on); 91 is kept (a reported-only formation's C zone
+   and the eye level's own side as filled marks, as today, whatever the layer); 34 is kept (at 1x the footprint by its grade whatever the
+   layer, as it is drawn today with the layer on).
+4. **What 241's cap and opacity act on.** Part A's prototypes (section 7.1) wrapped every draped ribbon; decision 241 limits the cap and the
+   opacity to the movement arrows (the derived arrows' drawn-on parts among them, which are movement arrows), and keeps the lines of battle,
+   the boundaries and the halt bars at their widths and opacity; all of them take the ground-only occlusion. On the paper map nothing changes
+   (no cap; a plan over flat ground, where the ground hides nothing).
+5. **241's "fill".** Question 241 (a) and the decision speak of the fill's opacity; the prototype `a-soft` multiplied fills and casings alike.
+   8B applies 0.62 to the fill as decided and states, with its measures, how the casing is drawn so that the side's colour is preserved
+   (section 14).
+6. **241 and decision 57.** Decision 57's largest size on screen, 192 px, is superseded by 64 px. Decision 57 gave the event glyphs and the
+   objective markers one cap, and Part A's `a-calm` capped both; 8B keeps them together at 64 px (the markers' hit areas and the timeline's
+   markers, decision 167, unchanged).
+7. **243's drivers.** Section 4.7 (a) proposed "one driver a vehicle (two for a six-horse team: IV Corps' order, an authorisation)" for every
+   battery. Decision 243 limits the order to where it is shown to apply (IV Corps' own batteries, as an authorisation of 25 October); for the
+   Guard's, the Austrian and the Russian artillery 8E draws an explicitly identified generic or inferred convention, each registered with its
+   grade and scope before it is drawn.
+8. **244's honesty clause.** Section 4.3 already describes the stride as a design value that "says 'marching', it does not measure the ground";
+   decision 244 makes that the description every record and the legend use: a visual convention for symbolic figures under compressed time,
+   never physically matched footsteps.
+9. **248's churches.** Section 6.4 proposed "the churches turned east-west (generic)" with the villages. Decision 248 keeps the existing church
+   silhouettes unless adequate evidence and a convincing visual result justify replacing them; the Pratzen church's place on its hill (section
+   6.2) is a geographic correction and is identified and reviewed as such if proposed.
+10. **250's bracket protocol (section 8.5), corrected.** In the second order, B A B A B A B, the first and last B have one neighbouring A each,
+    so section 8.5's rule ("every B's median interval exceeds both its neighbouring As'") cannot be evaluated for them. Corrected: in each
+    order only the blocks with a block of the other kind on both sides are evaluated: in A B A B A B A the three Bs, each of which must be
+    slower than both neighbouring As; in B A B A B A B the three As, each of which must be faster than both neighbouring Bs. Effects off is
+    slower only if every evaluated comparison says so in both runs and both orders. Section 8.5 carries the corrected rule.
+11. **251's scope.** Section 9.1 proposed the centring and the order of battle's rows; decision 251 extends the reading to the compact card's
+    and the full dossier's position text, the aggregates' midpoints and every related location-derived row (8A reviews each and lists them,
+    section 13). Section 9.2 proposed a line at the dossier's head with a link; the decision asks for source access in the initially visible
+    area. Showing the claims' notes and the disputes' sides in the sources sheet is new: Part A did not propose it.
+12. **253's widths.** Decision 253 chooses (b) over the recommended (a): the widths are reviewed and set before the result is accepted,
+    against narrower alternatives in matching views, and documented as display conventions.
+13. **240's acceptance (for 8C).** Section 3.5's limits stand as the starting design; 8C adds a measure of whether a visitor can follow a
+    formation through camera movement and playback, and reports jumps, appearances and disappearances, flicker and visibility separately.
+14. **252, the PRs of this session.** 8A is a draft PR on `main`; 8B is a draft PR stacked on 8A's branch until 8A is merged; neither is
+    merged by the session that builds it.
+
+### 0.4 The names: Stage 8 Part A, and the implementation PRs
+
+- **Stage 8 Part A** is this specification: the measurements, prototypes, plan and questions of sections 1-12, merged as PR #64 on 23 October
+  2026. It is complete, and it implemented nothing.
+- **Implementation PRs 8A to 8H** are the eight pull requests of section 10's plan. They are always written "implementation PR 8A" (or "8A"
+  under a heading that says so), never "Part 8A"; Part A is never abbreviated "8A". Implementation PR 8A is the first of them (section 13),
+  not Part A.
 
 ## 1. What the build draws today, and what a visitor sees
 
@@ -313,6 +464,9 @@ default (decision 85 there unchanged). Two drawings stay exactly as they are, be
 reported-only formation's C zone under "Whose eyes?" and the eye level's own side as its marks (decision 91; restyling them as outlines is
 possible, but would change 91's "diffuse zone", so it is left out of (b)). At 1x the footprint keeps its grade's drawing whatever the
 layer (as it is drawn today with the layer on), so 1x does not change with the default (decision 34). The pads stay.
+
+*Decided (239, section 0.3): option (b), off by default in both perspective presentations (Landscape and Landscape with counters), the paper
+map's treatment kept as it is (section 0.3.1, items 1-3); built in implementation PR 8B (section 14).*
 
 ### 2.5 Acceptance criteria (8B)
 
@@ -998,6 +1152,9 @@ selection (an ellipse on the landscape, the counter's state on the paper map). *
 the grade's extents in all three (the paper map keeping its layer on by default, question 239 (b)'s note), the same stabilised layout in all
 three (section 3), the arrows' cap in the two perspective presentations only.
 
+*Decision 239 (section 0.3.1, item 1):* the outline language is for the two perspective presentations only. The paper map keeps its
+confidence treatment as it is (its marks filled, B and C capped on screen, the layer on by default); this section authorises no change there.
+
 ### 7.6 The event glyphs
 
 **Today (fact).** Event glyphs (a ringed cross, a circled arrow) and objective markers are sprites, capped at `SYM_MAX_PX` 192 px on screen
@@ -1095,6 +1252,11 @@ question 250.
   rest with the order B A B A B A B, so that neither run order nor the phone's heating can be mistaken for the toggle; the rule stated before
   the run: effects off is slower if every B's median interval exceeds both its neighbouring As' in both runs and both orders. The route's
   change is a small one (`tools/step6/perf-route.js` takes a candidate list already); proposed as question 250 (b).
+  **Corrected under decision 250** (section 0.3.1, item 10): in B A B A B A B the first and last B have one neighbouring A, so the rule above
+  cannot be evaluated for them. In each order only the blocks with a block of the other kind on both sides are evaluated: in A B A B A B A the
+  three Bs, each of which must have a median interval above both neighbouring As'; in B A B A B A B the three As, each of which must have a
+  median below both neighbouring Bs'. Effects off is slower only if every evaluated comparison says so, in both runs and both orders; each run
+  names the build it tested by its hash (the route reads and hashes it), and the runs compared are of the same build on the same device.
 
 ## 9. Findings carried from earlier reviews (checked on the build, not assumed)
 
@@ -1353,6 +1515,9 @@ decisions 141, 199, 214 and 232 were.
   Watch at every size the harness measures (`toast.js`'s overlap 0, made a check); the records.
 
 ## 11. Questions for the owner (239-253)
+
+**Decided on 24 October 2026: section 0.3, with the owner's qualifications and the points they settle (0.3.1).** The table below is Part A's
+text as the owner read it.
 
 Each question names its options, a recommendation, what it would supersede or extend, and its cost. Nothing is decided by this document; the
 build stays as it is until the answers. A limit of `tools/visual/thresholds.js` moves only on the owner's word, in the PR that measures it.

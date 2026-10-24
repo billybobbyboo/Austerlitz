@@ -354,6 +354,48 @@ async function interact(page,it,vp){
       got.push("event marker Enter: "+ev.name+" → clock "+ev.clock+", "+ev.sel);
       LIVE.slider={keys:keys,valuetext:vt,marker:ev};
       report.sliderKeys=got; console.log("slider by real key presses: "+got.join(", ")); }
+    /* Stage 8, implementation PR 8A (decision 251; docs/STAGE8_SPEC.md section 9.3): the timeline's tips by real input. The keyboard: a marker
+       focused shows its tip, Enter opens its dossier and the tip goes, one Esc closes the dossier, a new focus shows the tip, Esc on a shown
+       tip hides it and nothing else. A real mouse: over a phase its tip, its click dismisses it while the pointer stays, off and back shows it
+       again; with a marker focused, the pointer over another marker shows that one's and, leaving it, the focused one's again. A real tap on a
+       phone (a fresh page with the phone cases' device): no tip, after one second and after three. Judged in thresholds.js checkLive */
+    AT="tips";
+    if(await has(first,"TIPS","the timeline's tips by real keys, mouse and touch")){
+      const TP={}, tipOn=pg=>pg.evaluate(()=>{ const tp=document.getElementById("tltip"), a=document.activeElement;
+        return {tip:tp&&!tp.hidden?tp.textContent:null, focusTip:a&&a.dataset&&a.dataset.tip?a.dataset.tip:null, drawer:typeof drawerShown==="function"?drawerShown():null,
+          sel:selection?selection.kind+":"+selection.id:null}; });
+      const centre=(pg,sel,k)=>pg.evaluate(([s,i])=>{ const e=[].filter.call(document.querySelectorAll(s),x=>{ const r=x.getBoundingClientRect(); return r.width>8&&r.height>0; })[i];
+        if(!e) return null; const r=e.getBoundingClientRect(); return {x:r.left+r.width/2,y:r.top+r.height/2,tip:e.dataset.tip}; },[sel,k]);
+      await first.evaluate(()=>{ setPresentation("study"); stopPlay(); setClock(240,{instant:true,force:true,camera:false}); select(null,null); });
+      await first.mouse.move(5,5);
+      await first.focus("#evmarks .ev-mark[tabindex='0']"); await first.keyboard.press("ArrowRight"); TP.focus=await tipOn(first);
+      await first.keyboard.press("Enter"); await first.waitForTimeout(250); TP.enter=await tipOn(first);
+      await first.keyboard.press("Escape"); await first.waitForTimeout(250); TP.esc=await tipOn(first);
+      await first.keyboard.press("ArrowRight"); await first.waitForTimeout(100); TP.refocus=await tipOn(first);
+      await first.keyboard.press("Escape"); await first.waitForTimeout(100); TP.escTip=await tipOn(first);
+      const ph=await centre(first,"#phases .step",3);
+      if(ph){ await first.evaluate(()=>{ if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+        await first.mouse.move(ph.x,ph.y,{steps:4}); await first.waitForTimeout(120); TP.hover=Object.assign({want:ph.tip},await tipOn(first));
+        await first.mouse.down(); await first.mouse.up(); await first.waitForTimeout(250); TP.click=await tipOn(first);
+        await first.mouse.move(ph.x,ph.y-260,{steps:4}); await first.waitForTimeout(400); TP.away=await tipOn(first);
+        await first.mouse.move(ph.x,ph.y,{steps:4}); await first.waitForTimeout(120); TP.back=Object.assign({want:ph.tip},await tipOn(first));
+        await first.mouse.move(ph.x,ph.y-260,{steps:4}); await first.waitForTimeout(400); }
+      await first.evaluate(()=>{ stopPlay(); setClock(240,{instant:true,force:true,camera:false}); select(null,null); });
+      await first.focus("#evmarks .ev-mark[tabindex='0']"); await first.keyboard.press("ArrowRight"); TP.mixFocus=await tipOn(first);
+      const mb=await centre(first,"#evmarks .ev-mark",4);
+      if(mb){ await first.mouse.move(mb.x,mb.y,{steps:4}); await first.waitForTimeout(120); TP.mixHover=Object.assign({want:mb.tip},await tipOn(first));
+        await first.mouse.move(mb.x,mb.y-260,{steps:4}); await first.waitForTimeout(400); TP.mixLeave=await tipOn(first);
+        await first.keyboard.press("Enter"); await first.waitForTimeout(250); TP.mixEnter=await tipOn(first);
+        await first.keyboard.press("Escape"); await first.waitForTimeout(250); }
+      await first.evaluate(()=>{ select(null,null); if(document.activeElement&&document.activeElement.blur) document.activeElement.blur(); });
+      /* a real tap, on a page with the phone cases' device */
+      AT="tips (phone)"; const pp=await openPage(browser,[390,844],"390x844 tips","ios");
+      try{ await settle(pp); await pp.tap("#fr-close",{timeout:180000}); await pp.waitForTimeout(400);
+        await pp.evaluate(()=>{ setClock(570,{instant:true,force:true,camera:false}); }); await settle(pp);
+        const mk=await centre(pp,"#evmarks .ev-mark",2);
+        if(mk){ await pp.touchscreen.tap(mk.x,mk.y); await pp.waitForTimeout(1000); TP.tap1=await tipOn(pp); await pp.waitForTimeout(2000); TP.tap3=await tipOn(pp); }
+      } finally { const cx=pp.context(); await pp.close(); await cx.close(); }
+      LIVE.tips=TP; console.log("timeline tips by real input: "+JSON.stringify(TP)); }
     /* Stage 4D (docs/STAGE4_SPEC.md section D.4; decisions 74, 75): Play by a real key press runs at half speed, its button
        pressed; and the Watch view of the low Pratzen case held in a dwell at the phase-3 event start 09:00 keeps every threshold
        of its view (the darkness limit, map text at AA as rendered, drops within its limit), its event lit and named */

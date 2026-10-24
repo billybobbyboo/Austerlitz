@@ -990,6 +990,71 @@ try{
     if(bad.length||!links||!hid||!rings||!noRing) throw new Error("readings, plan links and the ring: "+(bad.slice(0,4).join("; ")||"a case never met")+" ("+links+" links, "+hid+" hidden, "+rings+" rings, "+noRing+" none)");
     console.log("Whose eyes, plan links and the selection ring (question 170 (b)): "+links+" links at the reading's positions, "+hid+" hidden with their formation; "+rings+" rings, "+noRing+" withheld OK"); }
 
+  /* Stage 8, implementation PR 8A (decision 251; docs/STAGE8_SPEC.md section 9.1): under a reading, a formation on the field that the reading
+     does not know has no place anywhere the map gives one, the camera included. Every 30 minutes for both headquarters, every formation of the
+     other side on the field: the centring (focusOn, as the dossier's button and the order of battle's rows call it) goes to readPos or nowhere;
+     the card's "Where" and the full dossier's "Position at" say the reading's sentence (readUnknown) exactly when it does not know it, and the
+     full dossier then offers no "Centre the map here"; its day-track has no dot and no leg in progress; a place's "Formations nearby now" never
+     lists it. Every corps or column of that side with formations on the field: its midpoint the mean of its known formations (aggReading),
+     their number said, or the sentence when none is known. An open dossier follows a change of the reading */
+  { let nH=0, nK=0, nAgg=0, nPart=0, nPl=0, nFollow=0; const bad=[], mk=document.createElement, realCM=centreOnMap; let made=[], cm=null;
+    const html=()=>made.map(x=>x.innerHTML||"").join("\n"), centreBtn=()=>made.some(x=>x.innerHTML==="Centre the map here");
+    try{ document.createElement=t=>{ const x=mk(t); made.push(x); return x; }; centreOnMap=function(mp){ cm=mp; };
+      ["fr","al"].forEach(cv=>{ setCommandView(cv);
+        for(let t=T_MIN;t<=T_MAX;t+=30){ setClock(t,{instant:true,camera:false});
+          const at=cv+" "+fmtClock(t);
+          Object.keys(units).filter(id=>sideOfNation(FORMATIONS[id].nation)!==cv&&posNow(id)).forEach(id=>{
+            const hid=readHidden(id), r=readPos(id), U=esc(readUnknown());
+            if(hid!==(drawnKnow(id)==="unknown")||hid!==(r===null)) bad.push(at+": "+id+" hidden "+hid+", drawn "+drawnKnow(id)+", readPos "+JSON.stringify(r));
+            cm=null; focusOn(id);
+            if(hid&&cm) bad.push(at+": "+id+" centred, which the reading does not know");
+            if(!hid&&!(cm&&Math.abs(cm[0]-r[0])<1e-9&&Math.abs(cm[1]-r[1])<1e-9)) bad.push(at+": "+id+" centred at "+JSON.stringify(cm)+", not its reading's position");
+            made=[]; compactCard(id); const hc=html(); made=[]; dossierFormation(id); const hf=html(), btn=centreBtn();
+            const w='<dt>Where</dt><dd>'+U+'</dd>', p='<dt>Position at '+esc(fmtClock(clock))+'</dt><dd>'+U+'</dd>';
+            if(hid){ nH++;
+              if(hc.indexOf(w)<0) bad.push(at+": "+id+"'s card does not say "+readUnknown());
+              if(hf.indexOf(p)<0) bad.push(at+": "+id+"'s dossier does not say "+readUnknown());
+              if(btn) bad.push(at+": "+id+"'s dossier offers to centre on it");
+              if(hf.indexOf(esc(LABELS.reading.noCentre.replace("%u",readUnknown())))<0) bad.push(at+": "+id+"'s dossier does not say why it does not centre");
+              const M=dayTrackModel(id), L=M&&M.leaves[0];
+              if(L&&(L.dot||L.legs.some(lg=>lg.now))) bad.push(at+": "+id+"'s day-track draws its place at the clock"); }
+            else { nK++;
+              if(hc.indexOf(w)>=0||hf.indexOf(p)>=0) bad.push(at+": "+id+" known, but its place withheld");
+              if(!btn) bad.push(at+": "+id+" known, but its dossier offers no centring"); } });
+          Object.keys(FORMATIONS).filter(id=>!FORMATIONS[id].track&&sideOfNation(FORMATIONS[id].nation)!==cv&&posNow(id)).forEach(id=>{ nAgg++;
+            const A=aggReading(id); made=[]; dossierFormation(id); const hf=html();
+            if(!A.p){ if(hf.indexOf('<dt>Midpoint at '+esc(fmtClock(clock))+'</dt><dd>'+esc(readUnknown())+'</dd>')<0) bad.push(at+": "+id+": none known, but its midpoint shown"); }
+            else if(!A.whole){ nPart++;
+              if(hf.indexOf(esc(nearestFeature(A.p)))<0||hf.indexOf(esc(EYES.LABEL[cv]))<0) bad.push(at+": "+id+": the midpoint is not its known formations' mean, named"); }
+            cm=null; focusOn(id); if(!A.p&&cm) bad.push(at+": "+id+" centred, none of its formations known");
+            if(A.p&&!(cm&&Math.abs(cm[0]-A.p[0])<1e-9&&Math.abs(cm[1]-A.p[1])<1e-9)) bad.push(at+": "+id+" centred off its known formations' mean"); });
+          FEATURES.forEach(ft=>{ placeNearby(ft).forEach(u=>{ if(readHidden(u)) bad.push(at+": "+ft.id+" lists "+u+" nearby"); }); nPl++; }); } });
+      /* an open dossier follows the reading: its key holds the reading, and a change repaints it */
+      setClock(510,{instant:true,camera:false}); setCommandView("fr");
+      const enemy=Object.keys(units).find(id=>sideOfNation(FORMATIONS[id].nation)==="al"&&posNow(id)&&readHidden(id));
+      if(enemy){ select("f",enemy); const k1=_drawerKey; setCommandView("none"); const k2=_drawerKey; setCommandView("fr"); const k3=_drawerKey;
+        if(k1===k2||k2===k3||k1!==k3||k3!==drawerKey()) bad.push("an open dossier did not follow the reading ("+[k1,k2,k3].join(" / ")+")"); else nFollow++;
+        select(null,null); }
+      else bad.push("no enemy hidden at 08:30 to open a dossier on");
+    } finally { document.createElement=mk; centreOnMap=realCM; setCommandView("none"); }
+    if(bad.length||!nH||!nK||!nAgg||!nPart||!nFollow) throw new Error("readings, the centring and the dossiers' places (decision 251): "+(bad.slice(0,6).join("; ")||"a case never met")+
+      " ("+nH+" hidden, "+nK+" known, "+nAgg+" aggregates, "+nPart+" partly known, "+nFollow+" followed)");
+    console.log("Whose eyes, the centring and the dossiers' places (decision 251): "+nH+" formations withheld (no centring, the reading's sentence in the card and the dossier, no dot), "+
+      nK+" known at their reading's position; "+nAgg+" corps or columns ("+nPart+" at their known formations' mean); "+nPl+" places' nearby lists; an open dossier followed the reading OK"); }
+
+  /* Stage 8, implementation PR 8A (decision 251): the sources sheet gives each claim as recorded: the index and a dossier's list carry every
+     claim's note and, in a dispute, the side each work supports beside that work (narrative.js's by[].side); nothing is typed */
+  { const bad=[], ix=claimsIndex(); let nN=0, nS=0, nD=0;
+    Object.keys(STATEMENT_CLAIMS).forEach(r=>{ const E=STATEMENT_CLAIMS[r];
+      if(E.note){ nN++; if(ix.indexOf(esc(E.note))<0) bad.push(r+": its note is not in the index"); }
+      const W=claimWorks(E);
+      W.forEach(w=>{ if(!w.sides.length) return; nS++; const s=esc(w.w)+': '+esc(w.sides.join("; "));
+        if(ix.indexOf(s)<0) bad.push(r+": "+w.w+"'s side is not beside it in the index");
+        if(dossierClaims([r]).indexOf(s)<0) bad.push(r+": "+w.w+"'s side is not beside it in a dossier's list"); });
+      if(E.cl==="disputed"){ nD++; if(!W.some(w=>w.sides.length)) bad.push(r+": disputed, with no side shown"); } });
+    if(bad.length||!nN||!nS||!nD) throw new Error("the claims as recorded (decision 251): "+(bad.slice(0,6).join("; ")||"none met")+" ("+nN+" notes, "+nS+" sides, "+nD+" disputes)");
+    console.log("the claims as recorded in the sources sheet (decision 251): "+nN+" notes and "+nS+" works' sides in "+nD+" disputes, in the index and a dossier's list OK"); }
+
   /* the review of 22c77ac: the dossier's pill for a corps or column is its formations' reading (aggReading) with their count as its reason,
      never the corps' own rule at its mean position; a formation's is the drawing's (drawnKnow) with knowReason's reason. Every 30 minutes for
      both readings, every aggregate with formations on the field */

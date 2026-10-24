@@ -1820,7 +1820,9 @@ function dayTrackModel(id){
   if(!all.length) return null;
   var F=dtFrame(all), out={ids:ids,frame:F,leaves:[]};
   ids.forEach(function(k){
-    var A=anchorList(k).filter(function(a){ return a.p!==null; }), L={id:k,anchors:[],legs:[],dot:null,routes:[]}, cur=legAt(k,clock);
+    /* Stage 8, implementation PR 8A (decision 251): under a reading, a formation it does not know has no dot and no leg in progress here (its
+       plotted day, the anchors and the legs, is the record and stays) */
+    var hid=readHidden(k), A=anchorList(k).filter(function(a){ return a.p!==null; }), L={id:k,anchors:[],legs:[],dot:null,routes:[],hidden:hid}, cur=hid?null:legAt(k,clock);
     A.forEach(function(a){ var st=stateAt(k,a.ph), pt=F.P(W(a.p[0],a.p[1])), last=L.anchors[L.anchors.length-1];
       var mk={an:a,cf:st?st.cf:"B",timed:!!a.tm};
       if(last&&Math.hypot(pt[0]-last.pt[0],pt[1]-last.pt[1])<DT.MERGE){ last.members.push(mk); last.cf=worseGrade(last.cf,mk.cf); last.timed=last.timed||mk.timed; }
@@ -1828,7 +1830,7 @@ function dayTrackModel(id){
     var AA=anchorList(k);
     for(var i=1;i<AA.length;i++){ var a=AA[i-1], b=AA[i]; if(!a.p||!b.p) continue;
       L.legs.push({a:a,b:b,pts:legPath(a,b).pts.map(function(q){ return F.P(W(q[0],q[1])); }),now:!!(cur&&cur.b===b&&cur.u>0&&cur.u<1)}); }
-    var p=posNow(k); if(p) L.dot=F.P(W(p[0],p[1]));
+    var p=hid?null:posNow(k); if(p) L.dot=F.P(W(p[0],p[1]));
     ["al","fr"].forEach(function(sd){ PLANS[sd].cols.forEach(function(c){ if(c.forms.indexOf(k)>=0) L.routes.push({col:c.n,pts:c.route.map(function(q){ return F.P(W(q[0],q[1])); })}); }); });
     out.leaves.push(L); });
   var kmPx=F.s*GEOREF.UNITS_PER_KM, steps=[0.25,0.5,1,2,3,5], km=steps[0];
@@ -1868,10 +1870,13 @@ function dayTrackEl(id){
     '<text x="'+dtNum(bx+M.bar.px+5)+'" y="'+(by+3.5)+'" font-size="11" fill="currentColor">'+M.bar.km+' km</text></g>';
   g+='<g class="dt-north"><line x1="'+(DT.W-12)+'" y1="20" x2="'+(DT.W-12)+'" y2="8" stroke="'+ink+'" stroke-width="1.4"/><path d="M'+(DT.W-15)+' 11 L'+(DT.W-12)+' 6 L'+(DT.W-9)+' 11 Z" fill="'+ink+'"/><text x="'+(DT.W-24)+'" y="18" font-size="11" fill="currentColor">N</text></g>';
   var fig=el("figure","daytrack");
-  var name=esc(f.name), hasRoute=M.leaves.some(function(L){ return L.routes.length; });
+  var name=esc(f.name), hasRoute=M.leaves.some(function(L){ return L.routes.length; }), nHid=M.leaves.filter(function(L){ return L.hidden; }).length;
+  var R=LABELS.reading, hr=commandView!=="none"?EYES.LABEL[commandView]:"";
   fig.innerHTML='<div class="dt-map" style="background:'+P.ground.field+'"><svg viewBox="0 0 '+DT.W+' '+DT.H+'" style="color:'+ink+'" role="group" aria-label="'+name+': the plotted day, north up, scale bar '+M.bar.km+' km">'+g+'</svg></div>'+
-    '<figcaption class="dt-key">'+(leaf?'Plotted positions (filled A, ring B, small ring C; a tick: an explicit time), the line between them interpolated'+(hasRoute?', the dashed line its ordered route':'')+', the dot where it is at '+esc(fmtClock(clock))+'.'
-      :'Its formations\u2019 plotted days together (no aggregate track is drawn: an aggregate has no positions of its own)'+(hasRoute?'; dashed, their ordered routes':'')+'.')+'</figcaption>';
+    '<figcaption class="dt-key">'+(leaf?'Plotted positions (filled A, ring B, small ring C; a tick: an explicit time), the line between them interpolated'+(hasRoute?', the dashed line its ordered route':'')+
+        (nHid?'; '+esc(R.noDot.replace("%c",fmtClock(clock)).replace("%r",hr)):', the dot where it is at '+esc(fmtClock(clock)))+'.'
+      :'Its formations\u2019 plotted days together (no aggregate track is drawn: an aggregate has no positions of its own)'+(hasRoute?'; dashed, their ordered routes':'')+
+        (nHid?'; '+esc(R.noDots.replace("%c",fmtClock(clock)).replace("%k",nHid).replace("%r",hr)):'')+'.')+'</figcaption>';
   fig.querySelectorAll(".dt-a").forEach(function(b,k){ if(k===0) b.tabIndex=0;
     function go(){ stopPlay(); setClock(+b.dataset.t); }
     b.addEventListener("click",go); b.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } }); });
@@ -2673,7 +2678,7 @@ function setClock(t,opts){
     if(selection) paintDrawer();
     if(PHASES[ph].flash && !opts.instant) flash(PHASES[ph].flash);
   }
-  else if(selection&&selection.kind==="f"&&drawerKey()!==_drawerKey) paintDrawer();   /* a delayed move begins or ends */
+  else if(selection&&(selection.kind==="f"||selection.kind==="t")&&drawerKey()!==_drawerKey) paintDrawer();   /* a delayed move begins or ends; Stage 8, 8A: or the reading withdraws a place */
   applyLight(false);   /* Stage 4B: the light is the clock's */
   drawOnArrows();      /* Stage 4D: derived arrows drawn to the clock */
   paintTimeline();
@@ -3429,6 +3434,7 @@ function setCommandView(v){
   });
   paintCommand();
   eyesSync();   /* Stage 5E */
+  if(selection&&drawerKey()!==_drawerKey) paintDrawer();   /* Stage 8, 8A (decision 251): an open dossier follows the reading */
 }
 
 /* ---- "Whose eyes?" (Stage 5E; docs/STAGE5_SPEC.md section D.5; owner decisions 91, 92) ----
@@ -3483,6 +3489,16 @@ function readPos(id){
   if(f.track) return drawnKnow(id)==="unknown"?null:posNow(id);
   return aggReading(id).p;
 }
+/* Stage 8, implementation PR 8A (decision 251): under a headquarters reading a formation on the field that the reading does not know has no
+   place anywhere the map gives one: the camera's centring (focusOn), the dossier's place rows and midpoints (posRow), the day-track's dot and
+   its leg in progress (dayTrackModel). readHidden: a formation on the field the reading does not know (a corps or column: none of its
+   formations on the field known, aggReading); readUnknown: the sentence said in its place */
+function readHidden(id){
+  if(commandView==="none"||!posNow(id)) return false;
+  var f=FORMATIONS[id]; if(!f) return false;
+  return f.track?drawnKnow(id)==="unknown":!aggReading(id).p;
+}
+function readUnknown(){ return LABELS.reading.unknown.replace("%r",EYES.LABEL[commandView]).replace("%c",fmtClock(clock)); }
 /* the dossier's reading pill under a reading (roadmap step 5, S-4 and question 170 (c); the review of 22c77ac): {kn, why}, as drawn. A
    formation: drawnKnow, with knowReason's reason, or "no line of sight from the eye level" where the eye level turns "seen" into reported
    only. A corps or column: its formations' reading (aggReading), with their count as the reason ("1 of its 3 formations on the field
@@ -5315,6 +5331,13 @@ var LABELS={
      statements that dossier tags; a terrain line's note (world.js TERRAIN_LINES) is not among the inventoried statements, so not yet checked */
   dossier:{sourced:"How this is sourced", here:"Tagged in this dossier",
     none:"This dossier's note is not among the narrative statements inventoried so far: not yet checked."},
+  /* Stage 8, implementation PR 8A (decision 251): under a headquarters reading, what stands in place of the place of a formation the reading
+     does not know (readUnknown), and an aggregate's midpoint of its known formations; interface words around the reading's own (EYES.LABEL,
+     the clock): %r the headquarters, %c the clock, %u the first sentence, %k and %n the formations known and on the field */
+  reading:{unknown:"Not known to %r at %c", noCentre:"%u (a model reading): the map does not centre on it.",
+    known:"the mean of the %k of its %n formations on the field known to %r; it need not be where any of them stands",
+    known1:"the one of its %n formations on the field known to %r",
+    noDot:"its place at %c is not shown: not known to %r (a model reading)", noDots:"the places at %c of %k of them are not shown: not known to %r (a model reading)"},
   arrow:{unsettled:"disputed"},   /* owner decision 145 (question 145, 8 October 2026): the shorter form, so the 07:00 place name Augezd is drawn again */
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
      its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with the five glides of
@@ -6050,8 +6073,11 @@ function centreOnMap(mp,radius){
   glide(pos,tgt,1500,0.10);
   freeCam=true;   /* Stage 3D (decision 47): a centring turns Follow off */
 }
+/* Stage 8, implementation PR 8A (decision 251; docs/STAGE8_SPEC.md section 9.1): the centring follows the reading, as the plan links and the
+   selection ring do since question 170 (b): a formation the reading does not know is not centred (readPos has no position for it), a corps
+   or column is centred on its known formations' mean (aggReading). Everyone's reading: posNow, as before (posOf is posNow) */
 function focusOn(id){
-  var p=posOf(id,curPhase); if(!p) return;
+  var p=readPos(id); if(!p) return;
   centreOnMap(p,86);
 }
 
@@ -6163,7 +6189,7 @@ function rovingGroup(host,sel){
    phases, event markers, acts and the theme's mark carry their words in data-tip, shown in one tooltip (#tltip) on hover and on keyboard
    focus, in the page's own type, at once; Esc hides it, and the pointer may move onto it (WCAG 1.4.13). The tip repeats the element's name
    (aria-label), so it is hidden from assistive technology. Until step 5 native title tooltips, shown after a delay and never on focus. */
-var TIP={el:null, on:null, hideT:0};
+var TIP={el:null, on:null, hideT:0, hover:null, focus:null, goneHover:null, goneFocus:null, press:null, pressT:0};
 function tipShow(t){
   var tp=TIP.el||(TIP.el=document.getElementById("tltip")); if(!tp||!t||!t.dataset||!t.dataset.tip) return;
   clearTimeout(TIP.hideT); TIP.on=t; tp.textContent=t.dataset.tip; tp.hidden=false;
@@ -6174,18 +6200,32 @@ function tipShow(t){
 function tipHide(now){ clearTimeout(TIP.hideT); var tp=TIP.el; if(!tp) return;
   if(now){ tp.hidden=true; TIP.on=null; return; }
   TIP.hideT=setTimeout(function(){ tp.hidden=true; TIP.on=null; },150); }
+/* Stage 8, implementation PR 8A (decision 251; docs/STAGE8_SPEC.md section 9.3): which tip is shown. A tip is the hover's (a mouse or a pen
+   over the element) or the keyboard focus's, never the touch's; activating its element (a press, a click, a tap, Enter or Space) dismisses
+   it, and it is shown again only by a new hover (the pointer leaves and comes back) or a new focus (the focus leaves and comes back). The
+   hover wins while there is one, else the focus. now: hide at once (else after 150 ms, so the pointer can reach the tip, WCAG 1.4.13) */
+function tipSync(now){
+  var t=(TIP.hover&&TIP.hover!==TIP.goneHover)?TIP.hover:(TIP.focus&&TIP.focus!==TIP.goneFocus)?TIP.focus:null;
+  if(t) tipShow(t); else tipHide(now);
+}
 function bindTimeTips(){
   var tb=document.querySelector(".timebar"), tp=document.getElementById("tltip"); if(!tb||!tp||bindTimeTips.done) return; bindTimeTips.done=true;
   function tipOf(e){ var t=e.target; return t&&t.closest?t.closest("[data-tip]"):null; }
-  tb.addEventListener("pointerover",function(e){ var t=tipOf(e); if(t) tipShow(t); });
-  tb.addEventListener("pointerout",function(e){ var t=tipOf(e); if(t&&!(e.relatedTarget&&t.contains(e.relatedTarget))) tipHide(false); });
-  tb.addEventListener("focusin",function(e){ var t=tipOf(e); if(t) tipShow(t); else tipHide(true); });
-  tb.addEventListener("focusout",function(){ tipHide(true); });
-  tb.addEventListener("pointerdown",function(){ tipHide(true); });
+  function inside(t,n){ return !!(t&&n&&t.contains(n)); }
+  tb.addEventListener("pointerover",function(e){ var t=tipOf(e); if(!t||e.pointerType==="touch"||inside(t,e.relatedTarget)) return; TIP.hover=t; tipSync(true); });
+  tb.addEventListener("pointerout",function(e){ var t=tipOf(e); if(!t||inside(t,e.relatedTarget)) return;
+    if(TIP.hover===t) TIP.hover=null; if(TIP.goneHover===t) TIP.goneHover=null; tipSync(false); });
+  /* a press begins an activation: the element's tip goes at once, and the focus the press gives it (a mouse's at its press, a tap's just
+     after it) does not bring the tip back */
+  tb.addEventListener("pointerdown",function(e){ var t=tipOf(e); TIP.press=t; TIP.pressT=Date.now(); if(t) TIP.goneHover=t; tipSync(true); });
+  tb.addEventListener("focusin",function(e){ var t=tipOf(e); TIP.focus=t;
+    TIP.goneFocus=(t&&TIP.press===t&&Date.now()-TIP.pressT<1000)?t:null; tipSync(true); });
+  tb.addEventListener("focusout",function(e){ var t=tipOf(e); if(t&&TIP.focus===t){ TIP.focus=null; TIP.goneFocus=null; } tipSync(true); });
+  tb.addEventListener("click",function(e){ var t=tipOf(e); if(!t) return; TIP.goneHover=t; TIP.goneFocus=t; tipSync(true); },true);
   tp.addEventListener("pointerover",function(){ clearTimeout(TIP.hideT); });
-  tp.addEventListener("pointerout",function(){ tipHide(false); });
+  tp.addEventListener("pointerout",function(){ tipSync(false); });
   /* Esc hides a shown tip and does nothing else (the review of 22c77ac: it also ran the app's Esc); a second Esc is the app's */
-  window.addEventListener("keydown",function(e){ if(e.key==="Escape"&&!tp.hidden){ tipHide(true); e.stopPropagation(); e.preventDefault(); } },{capture:true});
+  window.addEventListener("keydown",function(e){ if(e.key==="Escape"&&!tp.hidden){ TIP.goneHover=TIP.hover; TIP.goneFocus=TIP.focus; tipHide(true); e.stopPropagation(); e.preventDefault(); } },{capture:true});
 }
 function buildTimeline(){
   SPINE=buildSpine();
@@ -6429,8 +6469,13 @@ var TIMING_TEXT={A:"Timing dated in a cited source.",
                  B:"Timing approximate: the sources read differ on it, or this reconstruction's narrative gives it without a source.",
                  C:"Timing inferred from the narrative (a bound, a sequence or a range), applied to this move."};
 function drawerKey(){
+  if(selection&&selection.kind==="t"&&commandView!=="none"){   /* Stage 8, 8A: a place's "Formations nearby now" under a reading follows it */
+    var ft=null; FEATURES.forEach(function(x){ if(x.id===selection.id) ft=x; }); return ft?"t|"+commandView+"|"+placeNearby(ft).join(","):""; }
   if(!selection||selection.kind!=="f") return "";
-  return leavesOf(selection.id,[]).map(function(k){ var L=legAt(k,clock); return textPhase(k,clock)+(L&&L.b&&L.u>0&&L.u<1?"m":"s"); }).join(",");
+  /* Stage 8, implementation PR 8A (decision 251): and, under a reading, whether each of its formations is hidden by it (the reading follows the
+     clock, decision 92: a formation may become known or unknown within a phase), so the dossier never keeps a place the reading has withdrawn */
+  return leavesOf(selection.id,[]).map(function(k){ var L=legAt(k,clock); return textPhase(k,clock)+(L&&L.b&&L.u>0&&L.u<1?"m":"s")+(readHidden(k)?"h":""); }).join(",")+
+    "|"+commandView+(EYE.on?"e":"");
 }
 var _drawerKey="";
 var CONF_INTERP="The formation is between two plotted anchors: this position is interpolated, and graded no better than the weaker anchor.";
@@ -6508,6 +6553,7 @@ function compactCard(id){
   pills+='<span class="pill ghost">Position '+esc(cf)+(aggInterp(id,curPhase)?' &middot; interpolated':'')+'</span>';
   if(tmg) pills+='<span class="pill ghost">Timing '+esc(tmg.tm.gr)+'</span>';
   wrap.appendChild(el("div","pillrow",pills));
+  var srcRefs=[]; wrap.appendChild(srcButton(srcRefs,true));   /* Stage 8, 8A (decision 251): the sources at the head */
   var str=f.strength||aggStrength(id);
   var body='';
   if(f.army) body+=row("Army total", esc(f.army.men)+claimTag("FORMATIONS."+id+".army.men")+", "+f.army.guns+" guns <span class=\"hh\">("+esc(f.army.src)+")</span>"+claimTag("FORMATIONS."+id+".army.src"));
@@ -6525,7 +6571,8 @@ function compactCard(id){
   var mb=el("button","more-btn","Full dossier: role, movement, sources");
   mb.addEventListener("click",function(){ dossierExpanded=true; paintDrawer(); });
   wrap.appendChild(mb);
-  wrap.appendChild(srcButton(claimRefsEnd(cr0)));
+  Array.prototype.push.apply(srcRefs,claimRefsEnd(cr0));
+  wrap.appendChild(srcButton(srcRefs));
   return wrap;
 }
 /* ---- Stage 6C (docs/STAGE6_SPEC.md section 4.3 item 7; owner decisions 101, 103, 104): the full dossier's "Dress" ----
@@ -6602,12 +6649,18 @@ function phaseSpan(ph){ var c=PHASES[ph].clock; return /^\d/.test(c)?c:c.charAt(
 function derivedTag(){ return '<span class="ltag derived">'+iconSVG(TOKENS.sym.layer.derived)+'derived</span>'; }
 function posRow(id,card){
   var f=FORMATIONS[id], pos=posNow(id);
-  if(f.track) return card ? row("Where", pos? esc(nearestFeature(pos)) : "Not on the field at this hour")
-    : row("Position at "+esc(fmtClock(clock)), pos? esc(nearestFeature(pos)) : esc(notYetAt(id,clock)?"Not yet on the field in this reconstruction":"No longer on the field"));
-  var n=leavesOf(id,[]).filter(function(k){ return !!posNow(k); }).length;
-  if(card) return '<div class="kv"><dt>Midpoint'+(pos?' '+derivedTag():'')+'</dt><dd>'+(pos? esc(nearestFeature(pos)) : "Not on the field at this hour")+'</dd></div>';   /* no tag on an absent reading, as the full row */
-  return row("Midpoint at "+esc(fmtClock(clock)), pos? esc(nearestFeature(pos))+" "+derivedTag()+' <span class="hh">('+
-    (n===1?"its one formation on the field":"the mean of its "+n+" formations\u2019 plotted positions; it need not be where any of them stands")+')</span>' : "\u2014");
+  /* Stage 8, implementation PR 8A (decision 251): under a reading, a formation the reading does not know has no place here (readUnknown in
+     its place), and an aggregate's midpoint is its known formations' (aggReading), their number named; everyone's reading and the observer's
+     own side as before */
+  var hid=readHidden(id);
+  if(f.track) return card ? row("Where", hid? esc(readUnknown()) : pos? esc(nearestFeature(pos)) : "Not on the field at this hour")
+    : row("Position at "+esc(fmtClock(clock)), hid? esc(readUnknown()) : pos? esc(nearestFeature(pos)) : esc(notYetAt(id,clock)?"Not yet on the field in this reconstruction":"No longer on the field"));
+  var n=leavesOf(id,[]).filter(function(k){ return !!posNow(k); }).length, rd=commandView!=="none"&&pos?aggReading(id):null, part=!!(rd&&!rd.whole&&rd.p);
+  if(part) pos=rd.p;
+  if(card) return '<div class="kv"><dt>Midpoint'+(pos&&!hid?' '+derivedTag():'')+'</dt><dd>'+(hid? esc(readUnknown()) : pos? esc(nearestFeature(pos)) : "Not on the field at this hour")+'</dd></div>';   /* no tag on an absent reading, as the full row */
+  return row("Midpoint at "+esc(fmtClock(clock)), hid? esc(readUnknown()) : pos? esc(nearestFeature(pos))+" "+derivedTag()+' <span class="hh">('+
+    (part?esc(LABELS.reading[rd.k===1?"known1":"known"].replace("%k",rd.k).replace("%n",rd.n).replace("%r",EYES.LABEL[commandView])):
+     n===1?"its one formation on the field":"the mean of its "+n+" formations\u2019 plotted positions; it need not be where any of them stands")+')</span>' : "\u2014");
 }
 function marchRow(id){
   var mr=FORMATIONS[id].track?marchRate(id,clock):null; if(!mr) return "";
@@ -6646,6 +6699,7 @@ function dossierFormation(id){
     if(KL[kn]) pills+='<span class="pill ghost">'+esc(KL[kn]+(why?" ("+why+")":""))+'</span>';
   }
   wrap.appendChild(el("div","pillrow",pills));
+  var srcRefs=[]; wrap.appendChild(srcButton(srcRefs,true));   /* Stage 8, 8A (decision 251): the sources at the head */
 
   /* WHO */
   var who=row("Commander", f.commander?esc(f.commander)+claimTag("FORMATIONS."+id+".commander"):"—");
@@ -6753,11 +6807,13 @@ function dossierFormation(id){
   wrap.appendChild(el("p","conf",(cl!==CLAIM_FROM_CONF[cf]?esc(CLAIM[cl].note)+" ":"")+(pk==="interp"?"":esc(CONF_TEXT[cf]||""))+(aggInterp(id,curPhase)?(pk==="interp"?"":" ")+esc(CONF_INTERP):"")+(tmg?" "+esc(TIMING_TEXT[tmg.tm.gr]||""):"")));   /* decision 128 (a): the position's grade text; CLAIM's note only where a track entry names its own claim (heightguns@8-9, where the entry's claim "recon" differs from its grade B), which is that entry's hedge */
 
   var act=el("div","dact");
-  var btn=el("button","t","Centre the map here");
-  btn.addEventListener("click",function(){ focusOn(id); });
-  act.appendChild(btn);
+  if(readHidden(id)) act.appendChild(el("p","hh read-note",esc(LABELS.reading.noCentre.replace("%u",readUnknown()))));   /* Stage 8, 8A (decision 251): nothing to centre on */
+  else { var btn=el("button","t","Centre the map here");
+    btn.addEventListener("click",function(){ focusOn(id); });
+    act.appendChild(btn); }
   wrap.appendChild(act);
-  wrap.appendChild(srcButton(claimRefsEnd(cr0)));   /* decision 203 (b) */
+  Array.prototype.push.apply(srcRefs,claimRefsEnd(cr0));
+  wrap.appendChild(srcButton(srcRefs));   /* decision 203 (b) */
 
   wrap.querySelectorAll("[data-goto]").forEach(function(b){
     b.addEventListener("click",function(){ select("f",b.dataset.goto); focusOn(b.dataset.goto); });
@@ -6802,7 +6858,9 @@ function claimTag(ref){ var c=stmtClaim(ref); if(_claimRefs&&_claimRefs.indexOf(
 function claimRefsStart(){ var prev=_claimRefs; _claimRefs=[]; return prev; }
 function claimRefsEnd(prev){ var r=_claimRefs||[]; _claimRefs=prev; return r; }
 /* decision 203 (b): at the end of every drawer dossier, a button opening the sources sheet at the index, this dossier's statements first */
-function srcButton(refs){ var d=el("div","dact"), b=el("button","t",esc(LABELS.dossier.sourced));
+/* Stage 8, implementation PR 8A (decision 251; docs/STAGE8_SPEC.md section 9.2): the same button at the dossier's head too (head), so that its
+   sources are one press from where the dossier opens; refs is filled when the dossier is built to its end, and read at the press */
+function srcButton(refs,head){ var d=el("div",head?"dact src-head":"dact"), b=el("button","t",esc(LABELS.dossier.sourced));
   /* the clock stopped first, as "Go to this moment" does: a repaint under the sheet would take this button, the sheet's way back (the review of 559802d) */
   b.addEventListener("click",function(){ stopPlay(); openSources({refs:refs.slice()}); }); d.appendChild(b); return d; }
 function trackRef(id,ph,field){ return 'FORMATIONS.'+id+'.track["'+ph+'"].'+field; }
@@ -6868,11 +6926,7 @@ function dossierFeature(id){
     s2.innerHTML='<h3>What happened here</h3><p class="prose">'+esc(ft.story)+claimTag("FEATURES[#"+ft.id+"].story")+'</p>';
     wrap.appendChild(s2);
   }
-  var here=[];
-  Object.keys(units).forEach(function(uid){
-    var pp=posNow(uid);
-    if(pp&&Math.hypot(pp[0]-ft.p[0],pp[1]-ft.p[1])<34) here.push(uid);
-  });
+  var here=placeNearby(ft);
   if(here.length){
     var s3=el("div","sect");
     s3.innerHTML='<h3>Formations nearby now</h3>';
@@ -6903,6 +6957,16 @@ function dossierFeature(id){
   wrap.appendChild(srcButton(claimRefsEnd(cr0)));
   return wrap;
 }
+/* the formations within 34 units of a place at the clock ("Formations nearby now"); Stage 8, implementation PR 8A (decision 251): under a reading,
+   not one it does not know (readHidden) */
+function placeNearby(ft){
+  var here=[];
+  Object.keys(units).forEach(function(uid){
+    var pp=posNow(uid);
+    if(pp&&Math.hypot(pp[0]-ft.p[0],pp[1]-ft.p[1])<34&&!readHidden(uid)) here.push(uid);
+  });
+  return here;
+}
 function syncViewBadge(){
   var b=document.getElementById("vsbadge");
   if(!b) return;
@@ -6932,6 +6996,7 @@ function dossierEvent(eid){
     claimPill(e.claim)+
     '<span class="pill ghost">Timing '+esc(e.cf)+'</span>'+
     (exact?'':'<span class="pill ghost">Interval, not a timestamp</span>')));
+  var srcRefs=[]; wrap.appendChild(srcButton(srcRefs,true));   /* Stage 8, 8A (decision 251): the sources at the head */
   var s2=el("div","sect");
   s2.innerHTML='<h3>Why it matters</h3><p class="ev-why">'+esc(e.why)+claimTag("EVENTS[#"+e.id+"].why")+'</p>';
   wrap.appendChild(s2);
@@ -6963,7 +7028,8 @@ function dossierEvent(eid){
   b1.addEventListener("click",function(){ stopPlay(); setClock(evClock(e)); centreOnMap(e.p,96); });
   act.appendChild(b1);
   wrap.appendChild(act);
-  wrap.appendChild(srcButton(claimRefsEnd(cr0)));
+  Array.prototype.push.apply(srcRefs,claimRefsEnd(cr0));
+  wrap.appendChild(srcButton(srcRefs));
   return wrap;
 }
 function dossierAnalysis(name){
@@ -6978,6 +7044,7 @@ function dossierAnalysis(name){
     '<p class="dh-sub">Terrain analysis</p><h2>'+esc(tl.n)+'</h2>'+
     '<p class="dh-cmd">'+esc(kind)+'</p></div>';
   wrap.appendChild(head);
+  wrap.appendChild(srcButton([],true));   /* Stage 8, 8A (decision 251): the sources at the head */
   var hs=tl.p.map(function(q){ return hAt(q[0],q[1]); });
   var lo=Math.min.apply(null,hs), hi=Math.max.apply(null,hs);
   var len=0;
@@ -7173,10 +7240,28 @@ function refLabel(ref){ var m;
 }
 /* decision 203 (b): opened from a dossier, the sheet's head lists the statements that dossier tags, each with its claim and the works it
    rests on, so nothing needs scrolling and the focus (the close button) stays in view (the review of 559802d) */
+/* Stage 8, implementation PR 8A (decision 251): a claim as recorded (narrative.js STATEMENT_CLAIMS), in full: the works it rests on, each with its
+   locator and, for a disputed claim, the side that work supports (by[].side), and the claim's note (its qualification), in the entry's own words.
+   Until 8A the sheet gave each work once, without its side, and no note. claimWorks: the works, each once, with every side it supports in the
+   order recorded; claimDetail: the works and the note, as the sheet shows them */
+function claimWorks(E){
+  var out=[], at={};
+  (E&&E.by||[]).forEach(function(b){ var S=APPEARANCE_SOURCES[b.src], w=(S?S.au:b.src)+(b.at?", "+b.at:"");
+    if(!at.hasOwnProperty(w)){ at[w]=out.length; out.push({w:w,sides:[]}); }
+    if(b.side&&out[at[w]].sides.indexOf(b.side)<0) out[at[w]].sides.push(b.side); });
+  return out;
+}
+function claimDetail(E){
+  if(!E) return "";
+  var W=claimWorks(E), sided=W.some(function(x){ return x.sides.length; }), h="";
+  if(sided) h+='<ul class="bul claim-sides">'+W.map(function(x){ return '<li>'+esc(x.w)+(x.sides.length?': '+esc(x.sides.join("; ")):'')+'</li>'; }).join('')+'</ul>';
+  else if(W.length) h+=' <span class="hh">'+esc("("+W.map(function(x){ return x.w; }).join("; ")+")")+'</span>';
+  if(E.note) h+='<span class="hh claim-note">'+esc(E.note)+'</span>';
+  return h;
+}
 function dossierClaims(refs){ var h='<h3 id="claims-here">'+esc(LABELS.dossier.here)+'</h3>';
-  return h+(refs.length?'<ul class="bul">'+refs.map(function(r){ var c=stmtClaim(r), E=STATEMENT_CLAIMS[r], ws=[];
-        (E&&E.by||[]).forEach(function(b){ var S=APPEARANCE_SOURCES[b.src]; var w=(S?S.au:b.src)+(b.at?", "+b.at:""); if(ws.indexOf(w)<0) ws.push(w); });
-        return '<li>'+esc(refLabel(r)||r)+': <b>'+esc(CLAIM_WORDS[c.cl].w)+'</b>'+(c.cls?' '+esc("(by its kind)"):'')+(ws.length?' <span class="hh">'+esc("("+ws.join("; ")+")")+'</span>':'')+'</li>'; }).join('')+'</ul>'
+  return h+(refs.length?'<ul class="bul">'+refs.map(function(r){ var c=stmtClaim(r), E=STATEMENT_CLAIMS[r];
+        return '<li>'+esc(refLabel(r)||r)+': <b>'+esc(CLAIM_WORDS[c.cl].w)+'</b>'+(c.cls?' '+esc("(by its kind)"):'')+claimDetail(E)+'</li>'; }).join('')+'</ul>'
       :'<p>'+esc(LABELS.dossier.none)+'</p>');
 }
 function claimsIndex(){
@@ -7190,7 +7275,7 @@ function claimsIndex(){
   var h='<p>'+esc("Each statement of this map's narrative can carry a claim: what kind of statement it is. A claim of its own was checked against "+
     "the works read here (above), on their page images, by machine readers; none has yet been read again by a person. A framing statement's claim "+
     "is given by its kind of statement, not checked one by one. A statement with neither is not yet checked. The claims are listed below by kind, "+
-    "each statement by where it is and the works it rests on.")+'</p>';
+    "each statement by where it is and the works it rests on; where the sources disagree, the side each work supports; and the claim's note where it has one.")+'</p>';
   h+='<ul class="bul claims-index">';
   K.forEach(function(k){ var W=CLAIM_WORDS[k], L=(by[k]||[]).slice();
     var byCls=Object.keys(CLAIM_BY_CLASS).filter(function(c){ return CLAIM_BY_CLASS[c].cl===k; });
@@ -7199,10 +7284,7 @@ function claimsIndex(){
     if(byCls.length) h+='<br>'+esc("By its kind, not checked one by one: "+byCls.map(function(c){ var n=nByCls[c]||0; return CLAIM_BY_CLASS[c].n+" ("+CLAIM_BY_CLASS[c].why+"; "+n+(n===1?" statement":" statements")+")"; }).join("; ")+", unless it carries a claim of its own.");
     if(L.length){
       L=L.map(function(r){ return {r:r, t:refLabel(r)||r}; }).sort(function(a,b){ return a.t<b.t?-1:a.t>b.t?1:0; });
-      h+='<ul class="bul">'+L.map(function(x){
-        var c=STATEMENT_CLAIMS[x.r], ws=[];
-        (c.by||[]).forEach(function(b){ var S=APPEARANCE_SOURCES[b.src]; var w=(S?S.au:b.src)+(b.at?", "+b.at:""); if(ws.indexOf(w)<0) ws.push(w); });
-        return '<li>'+esc(x.t)+(ws.length?' <span class="hh">'+esc("("+ws.join("; ")+")")+'</span>':'')+'</li>'; }).join('')+'</ul>';
+      h+='<ul class="bul">'+L.map(function(x){ return '<li>'+esc(x.t)+claimDetail(STATEMENT_CLAIMS[x.r])+'</li>'; }).join('')+'</ul>';   /* Stage 8, 8A: as recorded, with each side and the note */
     }
     h+='</li>'; });
   h+='<li><b>'+esc(CLAIM_WORDS.unchecked.w)+'</b>: '+esc(CLAIM_WORDS.unchecked.d)+' '+esc("Every other statement.")+'</li></ul>';
@@ -8233,6 +8315,8 @@ var AUSTERLITZ_DEBUG=(function(){
     var rdp=roadDrape();
     ck("paper map: roads and streams draped on the flat sheet, every vertex at its lift", rdp.n>0&&rdp.worst<=0.05&&rdp.mids>0&&!rdp.under,
       rdp.n+" vertices in "+rdp.meshes+" meshes; worst |y - groundY - lift| "+rdp.worst.toExponential(1)+"; "+rdp.under+" of "+rdp.mids+" edge midpoints under the sheet");
+    var rvp=ribbonVisibility(true);   /* Stage 8, implementation PR 8A (decision 253) */
+    ck("paper map: each kind of road and stream ribbon is drawn where it lies, as rendered: drawn as built within 5% of the same ribbons drawn double-sided (decision 253)", rvp.ok, rvp.text);
     ck("paper map: no figures, roofs, chimneys, houses or 3D trees drawn; hillshade, contours, village footprints, water, woods, draped arrows and counters drawn",
       !hidden.length&&!missing.length, (hidden.length?"DRAWN: "+hidden.slice(0,6).join(", ")+"; ":"")+(missing.length?"MISSING: "+missing.join(", ")+"; ":"")+
       world.paper.userData.villages+" village footprints, "+world.paper.userData.woods+" woods, "+drapes+" draped overlay meshes, "+counters+" counters");
@@ -8383,6 +8467,53 @@ var AUSTERLITZ_DEBUG=(function(){
       for(var t=0;t<I.length;t+=3) for(var k=0;k<3;k++){ v.fromBufferAttribute(P,I[t+k]).applyMatrix4(o.matrixWorld); w.fromBufferAttribute(P,I[t+(k+1)%3]).applyMatrix4(o.matrixWorld);
         mids++; if((v.y+w.y)/2<groundY((v.x+w.x)/2,(v.z+w.z)/2)) under++; } });
     return {worst:worst,where:where,n:n,meshes:meshes,mids:mids,under:under};
+  }
+  /* Stage 8, implementation PR 8A (decision 253; docs/STAGE8_SPEC.md section 9.5): the roads, the streams and their banks as rendered, not
+     only as built. roadDrape holds the ribbons' vertices on the drawn ground, which was as true of the ribbons the renderer never drew (their
+     triangles faced down, culled in every view until 8A) as of drawn ones. Here each view is rendered into a target of the test's own with
+     only the drawn ground (its depth) and the ribbons, each ribbon in a flat colour of its kind with its own material's side, depth test and
+     offset: as built. Then the same with every ribbon double-sided: what would be drawn if both faces were. A ribbon wound away from the eye
+     draws nothing in the first and its whole in the second, so the check fails on a ribbon submitted but invisible. The views: straight above
+     the Goldbach below Sokolnitz, from its west bank, and Telnitz from the north-west, its roads and the stream (paper: the field as framed).
+     Each kind must be drawn in the views (more than RIB_MIN pixels in all) and drawn as built within 5% of drawn double-sided, in each view
+     where it covers more than RIB_MIN pixels and in all */
+  var RIB_KINDS=["stream","bank","road","road edge"], RIB_COL=[[255,0,255],[0,255,255],[255,255,0],[255,0,0]], RIB_MIN=60;
+  function ribbonVisibility(paper){
+    var W0=800, H0=450, rt=new THREE.WebGLRenderTarget(W0,H0,{minFilter:THREE.NearestFilter,magFilter:THREE.NearestFilter});
+    var cams=[];
+    if(paper){ var pc=paperCam.clone(); pc.updateMatrixWorld(); pc.updateProjectionMatrix(); cams.push(["the field as framed",pc]); }
+    else [["straight above the Goldbach below Sokolnitz",[206,380],[0.05,0.99,0.1],28],["the Goldbach from its west bank",[206,380],[-0.78,0.30,0.55],30],
+      ["Telnitz from the north-west",[212,408],[-0.55,0.30,0.78],26]].forEach(function(v){ var w=W(v[1][0],v[1][1]), d=new THREE.Vector3(v[2][0],v[2][1],v[2][2]).normalize();
+      var c=new THREE.PerspectiveCamera(37,W0/H0,1,1900), T=new THREE.Vector3(w[0],groundY(w[0],w[1]),w[1]);
+      c.position.copy(T).addScaledVector(d,v[3]); c.lookAt(T); c.updateMatrixWorld(); c.updateProjectionMatrix(); cams.push([v[0],c]); });
+    var rib=world.roads.concat(world.water).filter(function(o){ return o.userData.drape&&RIB_KINDS.indexOf(o.userData.drape.kind)>=0&&o.visible; });
+    var keep=rib.map(function(o){ return o.material; }), flags={}, hid=[], cc=new THREE.Color(), ca=renderer.getClearAlpha(), tm=renderer.toneMapping, oe=renderer.outputEncoding;
+    function flag(k,m,dbl){ var key=k+"|"+m.uuid+"|"+(dbl?1:0); if(!flags[key]){ var c=RIB_COL[RIB_KINDS.indexOf(k)];
+        flags[key]=new THREE.MeshBasicMaterial({color:new THREE.Color(c[0]/255,c[1]/255,c[2]/255),fog:false,toneMapped:false,side:dbl?THREE.DoubleSide:m.side,
+          depthTest:m.depthTest,depthWrite:m.depthWrite,polygonOffset:m.polygonOffset,polygonOffsetFactor:m.polygonOffsetFactor,polygonOffsetUnits:m.polygonOffsetUnits}); }
+      return flags[key]; }
+    var buf=new Uint8Array(W0*H0*4), per=[];
+    renderer.getClearColor(cc);
+    scene.children.forEach(function(o){ if(o!==groundMesh&&rib.indexOf(o)<0&&o.visible){ o.visible=false; hid.push(o); } });
+    renderer.toneMapping=THREE.NoToneMapping; renderer.outputEncoding=THREE.LinearEncoding; renderer.setClearColor(0xffffff,1);
+    try{
+      cams.forEach(function(cv){ var row={view:cv[0],built:[0,0,0,0],dbl:[0,0,0,0]};
+        [false,true].forEach(function(dbl){ rib.forEach(function(o,i){ o.material=flag(o.userData.drape.kind,keep[i],dbl); });
+          renderer.setRenderTarget(rt); renderer.clear(); renderer.render(scene,cv[1]); renderer.readRenderTargetPixels(rt,0,0,W0,H0,buf);
+          var n=dbl?row.dbl:row.built;
+          for(var q=0;q<buf.length;q+=4) for(var k=0;k<4;k++){ var c=RIB_COL[k]; if(buf[q]===c[0]&&buf[q+1]===c[1]&&buf[q+2]===c[2]){ n[k]++; break; } } });
+        per.push(row); });
+    } finally {
+      rib.forEach(function(o,i){ o.material=keep[i]; }); Object.keys(flags).forEach(function(k){ flags[k].dispose(); });
+      renderer.setRenderTarget(null); renderer.setClearColor(cc,ca); renderer.toneMapping=tm; renderer.outputEncoding=oe;
+      hid.forEach(function(o){ o.visible=true; }); rt.dispose(); requestRender(2);
+    }
+    var bad=[], tot=RIB_KINDS.map(function(k,j){ var b=0, d=0; per.forEach(function(r){ b+=r.built[j]; d+=r.dbl[j];
+        if(r.dbl[j]>RIB_MIN&&r.built[j]<0.95*r.dbl[j]) bad.push(k+" in "+r.view+": "+r.built[j]+" of "+r.dbl[j]+" px"); });
+      if(!(d>RIB_MIN)) bad.push(k+": not in the views ("+d+" px double-sided)"); else if(b<0.95*d) bad.push(k+": "+b+" of "+d+" px drawn as built");
+      return k+" "+b+"/"+d; });
+    return {ok:!bad.length&&rib.length>0, per:per,
+      text:rib.length+" ribbons; drawn as built / drawn double-sided, pixels at "+W0+" x "+H0+" over "+per.length+" view"+(per.length===1?"":"s")+": "+tot.join(", ")+(bad.length?"; NOT DRAWN: "+bad.slice(0,6).join("; "):"")};
   }
   /* the trees and scrub of the woods (Stage 2F; owner, on the 2E review): every one inside the wood as the land cover has it */
   function woodPlacement(){
@@ -9485,6 +9616,8 @@ var AUSTERLITZ_DEBUG=(function(){
       ck("roads and streams: every vertex stands at its lift above the drawn ground, and no edge cuts under it", rd.n>0&&rd.worst<=0.05&&rd.mids>0&&!rd.under,
         rd.n+" vertices in "+rd.meshes+" road and stream meshes; worst |y - groundY - lift| "+rd.worst.toExponential(1)+(rd.where?" ("+rd.where+")":"")+
         "; "+rd.under+" of "+rd.mids+" edge midpoints under the ground");
+      var rv=ribbonVisibility(false);   /* Stage 8, implementation PR 8A (decision 253) */
+      ck("roads and streams: each kind (stream, bank, road, road edge) is drawn from above where it lies, as rendered: drawn as built within 5% of the same ribbons drawn double-sided (decision 253)", rv.ok, rv.text);
 
       layerChecks(ck);
       paperBy[fct]=paperChecks(ck);
@@ -9760,6 +9893,81 @@ var AUSTERLITZ_DEBUG=(function(){
         !c6.length&&nN>0&&nD>0&&nA>0&&nCT>0&&nFN>0&&nS>0, nN+" events with a note, "+nD+" disputed, "+nA+" unsettled arrows; the caption read at "+nC+" starts ("+nCT+" with a tag; the tags read: "+Object.keys(read6).join(", ")+"; the ellipsis "+ell6.toFixed(1)+" px), a formation's dossier at "+nF+" ("+nFN+" linking the event with its note), the selection chip naming "+nS+" with its note"+(c6.length?"; "+c6.slice(0,4).join("; "):""));
       if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
       document.body.classList.remove("st-still"); if(pl0) togglePlay();
+    })();
+    /* Stage 8, implementation PR 8A (decision 251; docs/STAGE8_SPEC.md section 9.3): the timeline's tips, by the events a visitor's input
+       sends (the harness repeats it by real keys, a real mouse and a real tap, its "tips" block): a keyboard focus shows the element's tip and
+       Enter (its click) dismisses it, one Esc then closing the dossier it opened; a new focus shows it again; Esc on a shown tip hides it and
+       does nothing else; a mouse's hover shows it, its press dismisses it (the focus the press gives does not bring it back), a new hover
+       shows it again; a touch never shows one, whether its press, the focus it gives or its click; with a marker focused, a hover over
+       another shows that one's tip and, leaving it, the focused one's again */
+    (function(){
+      var T8=[], tp=document.getElementById("tltip"), body=document.body, A=_evTicks[1]&&_evTicks[1].el, B=_evTicks[2]&&_evTicks[2].el,
+        P=[].filter.call(document.querySelectorAll("#phases .step"),function(b){ return shown(b); })[3], pm=presentation, c0=clock,
+        cam0=[landCam.position.clone(),orbitTarget.clone(),freeCam];   /* a phase's click flies the camera: put back after */
+      function tip(){ return tp&&!tp.hidden?tp.textContent:null; }
+      function pe(el,type,pt,rel){ el.dispatchEvent(new PointerEvent(type,{bubbles:true,cancelable:true,pointerType:pt,isPrimary:true,relatedTarget:rel||null})); }
+      function escKey(el){ var e=new KeyboardEvent("keydown",{key:"Escape",bubbles:true,cancelable:true}); el.dispatchEvent(e); return e.defaultPrevented; }
+      function want(what,got,w){ if(got!==w) T8.push(what+": the tip "+(got===null?"hidden":"'"+String(got).slice(0,40)+"'")+", want "+(w===null?"hidden":"'"+String(w).slice(0,40)+"'")); }
+      if(!tp||!A||!B||!P){ ck("timeline tips (decision 251): shown on hover and keyboard focus, never on touch; dismissed when the element is activated, back only with a new hover or focus; Esc hides a shown tip and does nothing else",false,"no tip, marker or phase to test"); return; }
+      setPresentation("study"); select(null,null); stopPlay(); setClock(240,{instant:true,force:true,camera:false});
+      if(document.activeElement&&document.activeElement.blur) document.activeElement.blur();
+      /* the keyboard */
+      A.focus({preventScroll:true}); want("a keyboard focus on a marker",tip(),A.dataset.tip);
+      A.click(); want("Enter (its click) on the focused marker",tip(),null);
+      if(!(selection&&selection.kind==="e")) T8.push("the marker's click opened no dossier");
+      escKey(A); if(selection) T8.push("one Esc did not close the dossier ("+selection.kind+":"+selection.id+")"); want("after the Esc",tip(),null);
+      A.blur(); A.focus({preventScroll:true}); want("a new focus on the marker",tip(),A.dataset.tip);
+      var pd=escKey(A); want("Esc on the shown tip",tip(),null); if(!pd||selection) T8.push("Esc on a shown tip did something else (handled "+pd+", selection "+(selection?selection.id:"none")+")");
+      A.blur();
+      /* a mouse */
+      pe(P,"pointerover","mouse",body); want("a mouse over a phase",tip(),P.dataset.tip);
+      pe(P,"pointerdown","mouse"); want("its press",tip(),null);
+      P.focus({preventScroll:true}); want("the focus the press gives",tip(),null);
+      P.click(); want("its click",tip(),null);
+      pe(P,"pointerup","mouse"); pe(P,"pointerout","mouse",body); pe(P,"pointerover","mouse",body); want("the mouse back over the phase",tip(),P.dataset.tip);
+      pe(P,"pointerout","mouse",body); P.blur(); tipHide(true);
+      /* a touch */
+      pe(B,"pointerover","touch",body); want("a touch over a marker",tip(),null);
+      pe(B,"pointerdown","touch"); B.focus({preventScroll:true}); want("the focus a tap gives",tip(),null);
+      pe(B,"pointerup","touch"); pe(B,"pointerout","touch",body); B.click(); want("the tap's click",tip(),null);
+      if(!(selection&&selection.kind==="e")) T8.push("the tap's click opened no dossier");
+      select(null,null); B.blur(); tipHide(true);
+      /* the keyboard and a mouse together */
+      A.focus({preventScroll:true}); pe(B,"pointerover","mouse",body); want("a hover over another marker while one is focused",tip(),B.dataset.tip);
+      pe(B,"pointerout","mouse",body); want("the pointer leaving it",tip(),A.dataset.tip);
+      A.click(); want("Enter on the focused marker",tip(),null);
+      select(null,null); A.blur(); tipHide(true); setClock(c0,{instant:true,force:true,camera:false}); setPresentation(pm);
+      finishTween(); tween=null; landCam.position.copy(cam0[0]); orbitTarget.copy(cam0[1]); landCam.lookAt(orbitTarget); freeCam=cam0[2];
+      ck("timeline tips (decision 251): shown on hover and keyboard focus, never on touch; dismissed when the element is activated, back only with a new hover or focus; Esc hides a shown tip and does nothing else",
+        !T8.length, T8.length?T8.slice(0,6).join("; "):"by the events of a keyboard (focus, Enter, Esc), a mouse (hover, press, click, leave, back) and a touch (press, focus, click) on two event markers and a phase, and the keyboard and a mouse together");
+    })();
+    /* Stage 8, implementation PR 8A (decision 251; docs/STAGE8_SPEC.md section 9.2): a dossier's sources one press from where it opens. In
+       every kind of drawer dossier (a formation's card and its full dossier, a corps's card, an event's, a place's and a terrain line's) the
+       head's "How this is sourced" stands inside the dossier's visible part as it opens, without scrolling, at this page's size; pressed, it
+       opens the sources sheet with the dossier's tagged statements at its head, as the button at its end does (the harness's phone dossier
+       case measures it on a phone) */
+    (function(){
+      var bad=[], n=0, body=document.getElementById("drawer-body"), dr=document.getElementById("drawer"), pm=presentation, c0=clock, sel0=selection, de0=dossierExpanded,
+        still=document.body.classList.contains("st-still");
+      document.body.classList.add("st-still");   /* the dossier at rest, not in its slide */
+      setPresentation("study"); setClock(570,{instant:true,force:true,camera:false});
+      var cases=[["f","sthilaire",false],["f","sthilaire",true],["f","c_iv",false],["e",EVENTS[0].id,false],["t",FEATURES[0].id,false],["a",TERRAIN_LINES[0].n,false]];
+      cases.forEach(function(c){ var what=c[0]+":"+c[1]+(c[2]?" (full)":"");
+        select(null,null); dossierExpanded=c[2]; select(c[0],c[1]); if(dossierExpanded!==c[2]){ dossierExpanded=c[2]; paintDrawer(); }
+        body.scrollTop=0;
+        var b=body.querySelector(".src-head button");
+        if(!b||(b.textContent||"").trim()!==LABELS.dossier.sourced){ bad.push(what+": no “"+LABELS.dossier.sourced+"” at its head"); return; }
+        var r=b.getBoundingClientRect(), vb=body.getBoundingClientRect(), vd=dr.getBoundingClientRect(),
+          top=Math.max(vb.top,vd.top,0), bot=Math.min(vb.bottom,vd.bottom,window.innerHeight);
+        if(!(r.width>0&&r.height>0&&r.top>=top-0.5&&r.bottom<=bot+0.5)) bad.push(what+": its head's button at "+r.top.toFixed(0)+"-"+r.bottom.toFixed(0)+" px, the dossier's visible part "+top.toFixed(0)+"-"+bot.toFixed(0));
+        else n++;
+        b.click(); var m=document.getElementById("modal"), mb=document.getElementById("modal-body");
+        if(!(m.classList.contains("on")&&mb.querySelector("#claims-here"))) bad.push(what+": its head's button opened no sheet with its statements");
+        closeSources(); });
+      select(null,null); dossierExpanded=de0; setClock(c0,{instant:true,force:true,camera:false}); if(sel0) select(sel0.kind,sel0.id); setPresentation(pm);
+      if(!still) document.body.classList.remove("st-still");
+      ck("dossiers: in every kind of drawer dossier the sources are one press from where it opens: its head's “"+LABELS.dossier.sourced+"” inside the dossier's visible part without scrolling, opening the sources sheet with its statements (decision 251)",
+        !bad.length&&n===cases.length, bad.length?bad.join("; "):n+" dossiers at "+window.innerWidth+" x "+window.innerHeight+" (a formation's card and full dossier, a corps's card, an event's, a place's, a terrain line's)");
     })();
     cameraChecks3D(ck);   /* Stage 3D */
     keyChecks3E(ck);      /* Stage 3E */
