@@ -165,7 +165,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   since decision 212 (b) (40 until then); since roadmap step 5 the loss and the restore with the page idle, 0 warnings, deterministic, held at
   0; then, since decision 212 (b), a clock step after the restore, the page idle again with frames drawn: 248 on each of three runs).
 - `npm run check:selftest` (since step 1, decision 132; the CI job): the in-app self-test on one fresh 1366 x 768 page, every check by name
-  against `tools/visual/selftest-manifest.json` (250 since Stage 8 implementation PR 8A: the ribbons rendered at each factor and on the paper map, the tips, the dossiers' sources; 242 since roadmap step 4's K2, the interpolated position's pill; 241 after step 3; 221 after step 2), with the slider, Play and the 3E keys by real key
+  against `tools/visual/selftest-manifest.json` (261 since Stage 8 implementation PR 8B: the arrows' cap, opacities and ground hiding at each factor, the outlines on steep ground and findable;
+  250 since Stage 8 implementation PR 8A: the ribbons rendered at each factor and on the paper map, the tips, the dossiers' sources; 242 since roadmap step 4's K2, the interpolated position's pill; 241 after step 3; 221 after step 2), with the slider, Play and the 3E keys by real key
   presses, since step 3 the live blocks below, and every console message judged; about 15 minutes. `npm run check:report` judges a finished `check:visual` report again without rendering; `npm run
   check:remeasure` is decision 141's one re-measure tool (`tools/visual/remeasure.js`).
 - `npm run check:visual`: 39 fixed views (since roadmap step 6 item 1, decisions 237 (a) and 238 (a), two more phone cases: `phone-402x714-explore`,
@@ -371,11 +372,12 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   is 5 px across on screen, from the eye level, the low Pratzen view and Puntowitz below the plateau's edge, and drawn over the figures, the woods
   and the buildings; the casing a border); the glyphs' check at 64 px; each of the self-test's own renders begins a frame of its own (three r128
   uploads a changed geometry once a frame); the harness's position-confidence share is now the ground cues' as each case shows them (the outlines
-  on the landscape, the filled marks on the paper map), `CONF_SHARE.land` @@CONFLAND@@ (measured on the 8B build, the outlines' baseline), and its
+  on the landscape, the filled marks on the paper map), `CONF_SHARE.land` 0.07, was 0.20 (the largest measured on the 8B build, 6.42% at `eye-zuran` in both browsers, rounded up; question 254), and its
   state check the layer's first setting by presentation (decisions 85, 239).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified build of Stage 8 implementation PR 8A (md5 `870caf24...`, 2,247,866 bytes: decisions 251 (a)
-  and 253 (b), `docs/STAGE8_SPEC.md` §13; re-baselined from the build of decision 236's verdict, md5 `c4793156...`, 2,220,714 bytes: density 1.0
+- `npm run check:baseline` passes only on the unmodified build of Stage 8 implementation PR 8B (md5 `9b20dc4c...`, 2,317,927 bytes: decisions 239 (b)
+  and 241 (a), `docs/STAGE8_SPEC.md` §14; re-baselined from the build of implementation PR 8A, md5 `870caf24...`, 2,247,866 bytes: decisions 251 (a)
+  and 253 (b), §13; that one re-baselined from the build of decision 236's verdict, md5 `c4793156...`, 2,220,714 bytes: density 1.0
   and no shadow under `lowTier`, §15; that one re-baselined from the build of roadmap step 6's decisions 236-238, md5 `fffc4fda...`, 2,220,267 bytes:
   the paper map framed again on a panel's change, its scale bar kept below 1080 px; that one re-baselined from the item 3 Part B build, the phone layout,
   md5 `c9d29c14...`, 2,218,404 bytes; that one re-baselined from PR #58's build, decision 213 (b), md5 `45f8f662...`, 2,200,058 bytes; that one
@@ -552,6 +554,6 @@ the decisions for 8C-8H set direction and constraints only, nothing of them is i
 the readings' reach, the sources at every dossier's head, the claims' notes and sides, the tips; the roads' and streams' ribbons drawn, their
 widths a display convention; `docs/STAGE8_SPEC.md` §13) is built on `claude/blissful-clarke-9axnzp` (draft PR #65, for review). Implementation PR
 8B (decisions 239 (b), 241 (a): the ground under the troops as outlines, "Position confidence" optional and off at first on the landscape, the
-paper map unchanged; the movement arrows capped at 16 px with their fill at 0.62 and the casing a border, every overlay ribbon hidden by the drawn
+paper map's marks unchanged; the movement arrows capped at 16 px with their fill at 0.62 and the casing a border, every overlay ribbon hidden by the drawn
 ground alone, the glyphs at 64 px; `docs/STAGE8_SPEC.md` §14) is built on `claude/blissful-clarke-9axnzp-8b`, stacked on 8A's branch (draft PR
 #66, for review). The next owner decision is 254.

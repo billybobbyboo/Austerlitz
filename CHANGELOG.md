@@ -3,8 +3,9 @@
 ## 2026-10 · Stage 8, implementation PR 8B: the ground under the troops, the arrows and the event glyphs calmed (decisions 239 (b), 241 (a))
 
 **Status: built on `claude/blissful-clarke-9axnzp-8b` (draft PR #66), stacked on implementation PR 8A's branch (its base), for review; not
-merged.** No data changed: `check:data` @@DATA8B@@. The build changed: `austerlitz-command-map.html` **@@SIZE8B@@ bytes, md5 `@@MD58B@@`** (8A's
-build @@SIZE8A@@, `@@MD58A@@`); `check:baseline` moved to it. The record is `docs/STAGE8_SPEC.md` §14.
+merged.** No data changed: `check:data` passes (all 131 declarations byte-identical to its reference). The build changed:
+`austerlitz-command-map.html` **2,317,927 bytes, md5 `9b20dc4ca251e17ddb2468f98f920f38`** (8A's build 2,247,866, `870caf24...`); `check:baseline`
+moved to it. The record is `docs/STAGE8_SPEC.md` §14.
 
 - **Decision 239 (b): the ground under the troops.** On the landscape (both perspective presentations) every formation drawn as figures has a
   thin cased outline of its footprint in its side's colour (1.7 px on a 3.4 px casing centred on the footprint's edge, CSS pixels at every
@@ -14,28 +15,59 @@ build @@SIZE8A@@, `@@MD58A@@`); `check:baseline` moved to it. The record is `doc
   dashed. Kept: a formation reported only under a reading as its filled C zone (decision 91), the eye level's own side as its marks (91), 1x's
   footprints by grade whatever the layer (34). The paper map unchanged: its filled marks, the layer on at first there (decision 85 kept on the
   paper map; the setting kept for each presentation, `CONF_ON`). Never lost under a slope: each outline a patch of the ground's own cells at its
-  lift, its band in screen pixels with its line on the edge, inside the patch whatever the slope (`outlineReach`). The legend's rows follow what is
-  drawn.
+  lift, its band in screen pixels with its line on the edge, inside the patch whatever the slope (`outlineReach`). The legend's rows follow what
+  is drawn.
 - **Decision 241 (a): the arrows and the glyphs.** In the two perspective presentations every movement arrow, and a derived arrow's drawn-on
   part, is at most 16 px across on screen at its casing (each row's casing draped on the drawn ground and projected through the eye at every
   drawn frame whose eye moved, narrowed until it measures under 15.5 px, quantised down in 1.1 steps; never widened; the head in proportion;
   every path, head form, colour, label and the draw-on as before); its fill at 0.62 of its opacity, its casing at its own and now a **border**
   that leaves out what the fill covers (until 8B the casing lay under the whole fill, hidden by its 95%; under a 0.62 fill it would have darkened
-  the side's colour); on the paper map nothing changes (no cap, the fill as before). Every overlay ribbon (the movement arrows, the lines of
-  battle and their ticks, the boundaries, the halt bars) is hidden by the drawn ground alone (one more draw of the field and the apron into a
-  depth texture of the frame's size, when the eye, the size or the ground changed: `GDEPTH`), still drawn over the figures, the woods and the
-  buildings; at the eye level the arrows no longer show through the hills (A-5). The lines of battle, the boundaries and the halt bars keep
-  their widths and opacity. The event glyphs and the objective markers at most 64 px (decision 57's 192 superseded; the paper map as before).
+  the side's colour); on the paper map nothing changes (no cap, the fill and its casing under it as before, `BORDER.U`). Every overlay ribbon
+  (the movement arrows, the lines of battle and their ticks, the boundaries, the halt bars) is hidden by the drawn ground alone (one more draw of
+  the field and the apron into a depth texture of the frame's size, when the eye, the size or the ground changed: `GDEPTH`), still drawn over the
+  figures, the woods and the buildings; at the eye level the arrows no longer show through the hills (A-5). The lines of battle, the boundaries
+  and the halt bars keep their widths and opacity. The event glyphs and the objective markers at most 64 px (decision 57's 192 superseded; the
+  paper map as before).
 - **Found and fixed on the way:** the lines' ticks drawn black (their material, given the ground's hook, lost the atmosphere's uniforms; the
-  fog's division by zero spread by the bloom into black blocks): the hook gives them first, as Part A's ice prototype once needed; the
-  outlines' widths were the render target's pixels (a quarter thinner under the effects' supersampling, a third on a phone): CSS pixels now;
-  the self-test's own renders drew the last frame's geometry where a check had changed it since (three r128 uploads a changed geometry once a
-  frame, and the app has turned the renderer's count reset off since roadmap step 3): each now begins a frame of its own, 8A's ribbon check
-  too; the app's own frames were never affected.
-- **Measured (software WebGL here; the frame's cost on this machine's CPU, comparable between builds, not a GPU's):** @@MEASURED8B@@
-- **Checks (each new one made to fail by putting its change back, `docs/STAGE8_SPEC.md` §14.4):** @@CHECKS8B@@
-- **What a measure now means, and its baseline (§14.5):** @@BASE8B@@
-- **Uncertain or open:** @@OPEN8B@@
+  fog's division by zero spread by the bloom into black blocks): the hook gives them first, as Part A's ice prototype once needed; the outlines'
+  widths were the render target's pixels (a quarter thinner under the effects' supersampling, a third on a phone): CSS pixels now; the
+  self-test's own renders drew the last frame's geometry where a check had changed it since (three r128 uploads a changed geometry once a frame,
+  and the app has turned the renderer's count reset off since roadmap step 3): each now begins a frame of its own, 8A's ribbon check too; the
+  app's own frames were never affected; `check:contrast`'s context-loss case past its bound on 8B's first build (256 warnings, Chromium's own
+  cap, against `CTX_DELETES` 248): the outlines' ground patches, rebuilt whenever their cells changed in number, now grow and are never rebuilt
+  (`groundPatch`), 199 warnings here, the bound unchanged.
+- **Measured (software WebGL here; the frame's cost on this machine's CPU, comparable between builds, not a GPU's):** in nine matching views
+  (`tools/stage8/compare-8.js`, `docs/stage8-evidence/8b/compare/`): the widest movement arrow's casing 19-67.5 px on 8A, 15.3-15.5 on 8B (the
+  lines of battle and the halt bar unchanged; on the paper map 6.3 px on both); the event glyphs 134.8-192 px to 64 and the objective markers
+  65.5-123.8 px to 64 in the views where they were larger; in each landscape view the 31 formations drawn as figures outlined and none filled,
+  but at the eye level, where 19 of the observer's side stay filled (decision 91); the paper map's 31 filled marks as before. Its cost: 147,088
+  more triangles in a frame whose eye moved, and 2 more draw calls in seven of the eight landscape views (the ground's depth pass); the outlines'
+  patches from 1,934 fewer triangles to 20,942 more than 8A's filled marks; on the paper map nothing. With the eye moving, the low Pratzen view
+  took 2.7-3.0 ms more in each of three runs (9.2-9.9 ms on 8A, 11.9-12.9 on 8B, medians of five frames), the other views within their noise;
+  with the eye still no difference beyond the noise.
+- **Checks (each new one made to fail by putting its change back, `docs/STAGE8_SPEC.md` §14.4):** the self-test's manifest from 250 to 261
+  (eleven added: the arrows' cap, opacities and ground hiding at 1x, 4x and 10.33x, the outlines unbroken on steep ground and every formation
+  findable; seven renamed because the decisions change what they assert: 5B's marks draped and drawn at their grades, now the outlines, 6C's side
+  cue, the legend's rows, the glyphs at 64 px), all 261 passing here; `css-test.js` holds decision 241's values and decision 239's first
+  settings, `runtime-test.js` its cues and the depth pass first; the harness's position-confidence share and state check (§14.5). On a copy with
+  the cap, the fill, the ground's test, the border, the outlines' continuity and the 64 px put back the self-test fails ten checks (no row
+  capped, the widest casing 211-218 px; 44 and 49 hidden points drawn at 4x and 10.33x; 7,298 of 8,879 band points drawn) and the manifest the
+  glyphs' renamed check; `css-test.js` and `runtime-test.js` fail on copies with the layer on at first and with the washes back; with the casing
+  a border on the paper map too, the cap check fails at 1x, 4x and 10.33x (the casings under the fill at 3 of 103 points, 103 on the build) and
+  `css-test.js` with it.
+- **What a measure now means, and its baseline (§14.5):** the position-confidence share now measures the ground cues as each case shows them (the
+  frame against the same frame with none, the layer as the case has it; the state check requires each presentation's first setting): on the
+  landscape the outlines, at most 1.89% of the free rectangle (`narrow-1024`) where 8A's filled marks covered up to 18.42%, and the eye level's
+  own side, 6.42% at `eye-zuran` on both builds (decision 91, unchanged); **the landscape's limit lowered from 20% to 7%**, the largest measured
+  (6.42%, the same in both browsers) rounded up, put to the owner as question 254; the paper map's marks as before, its limit 16% unchanged. The map layer drops
+  fewer items in three cases and as many, changed, in one (§14.5); every unobstructed share and the timeline's height unchanged; no limit raised
+  or loosened.
+- **Uncertain or open:** question 254 (the landscape's confidence-share limit, set at 7% as measured); a ground mark seen edge-on (the far side
+  of a hilltop at its horizon, from a low eye) has no area on the screen, so an outline there thins to nothing over a few pixels, as every ground
+  mark has since 5B (the steep-outline check counts these points and passes over them); at the eye level at 4x an overlay ribbon near the eye is
+  seen from below, edge-on, as a thread (its lift above an eye 3 m over the ground; unchanged by 8B, for 8C's low views); the cap's relayout and
+  the ground's depth pass cost a device's GPU what the device runs of 8D and 8H will measure; the five unobstructed shortfalls on CI are `main`'s
+  (8A's record).
 
 ## 2026-10 · Stage 8, implementation PR 8A: the carried fixes and the roads' and streams' ribbons (decisions 251 (a), 253 (b))
 

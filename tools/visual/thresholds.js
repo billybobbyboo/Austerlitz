@@ -202,8 +202,13 @@ const SOLID_BLACK=0.0005, LIGHT_SWEEP=[];
 const SMOKE_SHARE=0.25; module.exports.SMOKE_SHARE=SMOKE_SHARE;   /* Stage 4E: the smoke's share of the free rectangle, at most */
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5): the position-confidence marks' share of the free rectangle as rendered (measure.js
    confShare), at most: on the landscape and on the paper map. Set from the 5B build's harness views (the largest on the landscape
-   19.2%, pratzen-low-1x; on the paper map 15.1%, paper-close: docs/stage5-evidence/5b-after.json), rounded up; never raised */
-const CONF_SHARE={land:0.20, paper:0.16}; module.exports.CONF_SHARE=CONF_SHARE;
+   19.2%, pratzen-low-1x; on the paper map 15.1%, paper-close: docs/stage5-evidence/5b-after.json), rounded up; never raised.
+   Stage 8, implementation PR 8B (decision 239; docs/STAGE8_SPEC.md section 14.5): the harness now measures the ground cues as each case shows
+   them, on the landscape the outlines (and a reported formation's C zone and the eye level's own side, decision 91, where drawn). The
+   landscape's limit lowered from 0.20 to the largest measured on the 8B build, rounded up as 5B rounded: eye-zuran's own side, 6.42% on CI
+   (Chromium 141) and here (Chromium 153) alike; every case without an eye level at most 1.89% (narrow-1024; 1.94% here). Put to the owner as
+   question 254. The paper map's limit unchanged */
+const CONF_SHARE={land:0.07, paper:0.16}; module.exports.CONF_SHARE=CONF_SHARE;
 /* Stage 4E (docs/STAGE4_SPEC.md section F.2): the horizon in the low views [case, factor]; where the apron's far edge stands below
    the true horizon, the gap is drawn in the haze's colour: its mean colour per column within HORIZON_DE (0-255, the largest
    channel) of the sky's just above the horizon */

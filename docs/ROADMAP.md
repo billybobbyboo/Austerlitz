@@ -413,7 +413,8 @@ as the grade weakens; the paper map keeps its filled marks, the layer on at firs
 1x's footprints are kept. In the two perspective presentations every movement arrow is at most 16 px across on screen at its casing, its fill
 at 0.62 of its opacity with the casing a border; every overlay ribbon is hidden by the drawn ground alone; the event glyphs and the objective
 markers are at most 64 px; on the paper map nothing changes. Checks able to fail added for each (§14.4); the harness's position-confidence share
-now measures the ground cues as each case shows them, its landscape limit the outlines' measured baseline (§14.5).
+now measures the ground cues as each case shows them, its landscape limit lowered to their measured baseline (§14.5), put to the owner as
+question 254.
 
 **L1. "The coloured glow underneath troops and divisions (blue for the French, orange for the Russians and Austrians): remove it; it looks
 clunky."**
