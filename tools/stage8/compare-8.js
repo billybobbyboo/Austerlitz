@@ -55,13 +55,13 @@ function measure(){
   var c={filled:0,foot:0,line:0}; Object.keys(units).forEach(function(id){ var r=units[id]; if(r.conf&&r.conf.visible) c.filled++; if(r.foot&&r.foot.visible) c.foot++; if(r.line&&r.line.visible) c.line++; });
   out.cues=c; out.confLayer=!!layerOn.confidence;
   /* the cost */
-  renderer.info.autoReset=false; renderer.info.reset(); if(typeof GDEPTH!=="undefined") GDEPTH.key=null; renderFrame();
+  var ar0=renderer.info.autoReset; renderer.info.autoReset=false; renderer.info.reset(); if(typeof GDEPTH!=="undefined") GDEPTH.key=null; renderFrame();
   out.calls=renderer.info.render.calls; out.tris=renderer.info.render.triangles;
   if(typeof GDEPTH!=="undefined") out.gdepth={tris:GDEPTH.tris, ms:+GDEPTH.ms.toFixed(2), on:GDEPTH.key!==null};
   var g=renderer.getContext(), T=[]; for(var i=0;i<5;i++){ if(typeof GDEPTH!=="undefined") GDEPTH.key=null; var t0=performance.now(); renderFrame(); g.finish(); T.push(performance.now()-t0); }
   T.sort(function(a,b){ return a-b; }); out.ms=+T[2].toFixed(1);
   var T2=[]; for(i=0;i<5;i++){ var t1=performance.now(); renderFrame(); g.finish(); T2.push(performance.now()-t1); } T2.sort(function(a,b){ return a-b; }); out.msCached=+T2[2].toFixed(1);
-  renderer.info.autoReset=true;
+  renderer.info.autoReset=ar0;   /* the app's own setting given back (off since roadmap step 3: its frame resets the count) */
   return out;
 }
 const VARIANTS={ "conf-on":[()=>{ layerOn.confidence=true; if(typeof syncConfButton==="function") syncConfButton(); updateVisibility(); requestRender(3); },

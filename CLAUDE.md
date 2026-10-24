@@ -155,7 +155,7 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   since decision 212 (b) (40 until then); since roadmap step 5 the loss and the restore with the page idle, 0 warnings, deterministic, held at
   0; then, since decision 212 (b), a clock step after the restore, the page idle again with frames drawn: 248 on each of three runs).
 - `npm run check:selftest` (since step 1, decision 132; the CI job): the in-app self-test on one fresh 1366 x 768 page, every check by name
-  against `tools/visual/selftest-manifest.json` (242 since roadmap step 4's K2, the interpolated position's pill; 241 after step 3; 221 after step 2), with the slider, Play and the 3E keys by real key
+  against `tools/visual/selftest-manifest.json` (250 since Stage 8 implementation PR 8A: the ribbons rendered at each factor and on the paper map, the tips, the dossiers' sources; 242 since roadmap step 4's K2, the interpolated position's pill; 241 after step 3; 221 after step 2), with the slider, Play and the 3E keys by real key
   presses, since step 3 the live blocks below, and every console message judged; about 15 minutes. `npm run check:report` judges a finished `check:visual` report again without rendering; `npm run
   check:remeasure` is decision 141's one re-measure tool (`tools/visual/remeasure.js`).
 - `npm run check:visual`: 39 fixed views (since roadmap step 6 item 1, decisions 237 (a) and 238 (a), two more phone cases: `phone-402x714-explore`,
@@ -352,8 +352,9 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   dossier with "How this is sourced" in its visible part, opening the sheet with its statements); the harness's live block `tips` (real mouse and
   keys, and a phone page's taps; feature `TIPS` required) and, on `phone-390-dossier`, the sources at the dossier's head (`srcHead`).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified build of decision 236's verdict (md5 `c4793156...`, 2,220,714 bytes: density 1.0
-  and no shadow under `lowTier`, §15; re-baselined from the build of roadmap step 6's decisions 236-238, md5 `fffc4fda...`, 2,220,267 bytes:
+- `npm run check:baseline` passes only on the unmodified build of Stage 8 implementation PR 8A (md5 `870caf24...`, 2,247,866 bytes: decisions 251 (a)
+  and 253 (b), `docs/STAGE8_SPEC.md` §13; re-baselined from the build of decision 236's verdict, md5 `c4793156...`, 2,220,714 bytes: density 1.0
+  and no shadow under `lowTier`, §15; that one re-baselined from the build of roadmap step 6's decisions 236-238, md5 `fffc4fda...`, 2,220,267 bytes:
   the paper map framed again on a panel's change, its scale bar kept below 1080 px; that one re-baselined from the item 3 Part B build, the phone layout,
   md5 `c9d29c14...`, 2,218,404 bytes; that one re-baselined from PR #58's build, decision 213 (b), md5 `45f8f662...`, 2,200,058 bytes; that one
   re-baselined from PR #57's build `fdc25e82...`, 2,198,549 bytes, itself from the roadmap step 5 build `f6082ae2...`, 2,197,389 bytes, itself from the step 4b part C build `97352160...`, 2,182,537 bytes, itself from the part-B build `02a46c50...`, 2,178,819 bytes, itself from the part-A build with decisions 198-201, `e257d09b...`, 2,167,583 bytes, itself from the first 4b build `2ae24fa3...`, 2,161,604 bytes, itself from the roadmap step 4 build `833743c6...`, 2,159,374 bytes, itself from the roadmap step 3 build `f023ae0e...`, 2,048,277 bytes, itself from the roadmap step 2 build `af98f586...`, 1,927,346 bytes, itself from the step 1 build `7a86548c...` and the Stage 7D build `46773462...`). A task that changes the build moves it on and says so in `CHANGELOG.md`.

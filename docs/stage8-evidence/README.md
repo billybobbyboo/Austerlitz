@@ -41,3 +41,20 @@ Not kept: the sun-lit ice pair (its frame showed no sun on the ice at the hour a
 
 In all, 198 files (this README and the clips' `.gitignore` among them), 52.7 MB: 161 JPEG captures, sheets and stills (39.9 MB), 9 clips
 (12.5 MB), 24 JSON files (0.2 MB), this README, `leads.md` and `clips/record-log.txt`.
+
+## Implementation PR 8A (24 October 2026; `docs/STAGE8_SPEC.md` section 13)
+
+Made after the owner's decisions 239-253, from implementation PR 8A's build (md5 `870caf24e7465206d1a0a994e38265eb`, 2,247,866 bytes), against
+the unchanged build of Part A (`c4793156...`); the width sheets on two development builds of 8A (`9e2af4e4...` and `f19f5f38...`, each JSON's
+`build`), on which the probe draws the ribbons at each factor itself; the dossier shots on 8A's build before its last fix (`9fa6998c...`), which
+changes only where a full dossier opened from a card scrolled down, with the focus inside it, begins (the shots open each dossier by the app's
+own `select`, at its head on both). Here in Chromium 153 (`AUSTERLITZ_CHROME=/opt/pw-browsers/chromium`),
+software WebGL, 1600 x 900 unless named; the harness's captures on CI (Chromium 141). The scripts are in `tools/stage8/` (not bundled).
+
+| path | made by | what |
+|---|---|---|
+| `8a/ribbons/<view>-sheet.jpg`, `8a/ribbons/ribbon-widths-close.json`, `-far.json` | `ribbon-widths.js` (two runs: the five close views, then the Overview, the paper map whole and close and the low Pratzen view at 1x) | section 13.2: the roads' and streams' ribbons culled as before 8A ("off") and drawn at ×1, ×0.7, ×0.5 and ×0.35 of the widths they were built with, each sheet the five frames of one view; each frame's ribbon pixels by kind, draw calls, triangles and time (one frame each: the times are this machine's noise, not a cost) |
+| `8a/compare/<view>-a.jpg`, `-b.jpg`, `-sheet.jpg`, `8a/compare/compare.json` | `compare-8.js --a <Part A's build> --b <8A>` | section 13.2: the ribbons as chosen against the build before 8A, in matching views, with each frame's draw calls, triangles and time |
+| `8a/<state>-a.jpg`, `-b.jpg`, `8a/dossier-shots.json` | `dossier-shots.js --a <Part A's build> --b <8A>` | section 13.1: under Napoleon's headquarters at 08:30 an unknown formation's card and full dossier (`reading-card`, `reading-full`), the same dossier under "everyone" (`everyone-full`), the sources sheet from a disputed event (`claims`), the timeline's tip on hover and after a press (`tip-hover`, `tip-click`), before 8A (`a`) and with it (`b`) |
+| `8a/carried-after.json` | `carried.js` on 8A | section 13.1: Part A's three carried findings measured again on 8A's build by real clicks, keys and taps (`carried.json`, above, is the same script on Part A's build) |
+| `8a/harness/<case>.jpg` | `pair-sheets.py`, from two CI runs' captures | section 13.3: every `check:visual` case, `main`'s build (run 40075295260) beside 8A's (run 40075243524 on `7507e92`, this build), at half size |
