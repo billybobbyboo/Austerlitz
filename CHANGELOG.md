@@ -2,7 +2,7 @@
 
 ## 2026-10 · Stage 8, implementation PR 8B: the ground under the troops, the arrows and the event glyphs calmed (decisions 239 (b), 241 (a))
 
-**Status: built on `claude/blissful-clarke-9axnzp-8b` (draft PR @@PR8B@@), stacked on implementation PR 8A's branch (its base), for review; not
+**Status: built on `claude/blissful-clarke-9axnzp-8b` (draft PR #66), stacked on implementation PR 8A's branch (its base), for review; not
 merged.** No data changed: `check:data` @@DATA8B@@. The build changed: `austerlitz-command-map.html` **@@SIZE8B@@ bytes, md5 `@@MD58B@@`** (8A's
 build @@SIZE8A@@, `@@MD58A@@`); `check:baseline` moved to it. The record is `docs/STAGE8_SPEC.md` §14.
 

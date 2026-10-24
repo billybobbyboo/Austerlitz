@@ -553,4 +553,4 @@ widths a display convention; `docs/STAGE8_SPEC.md` §13) is built on `claude/bli
 8B (decisions 239 (b), 241 (a): the ground under the troops as outlines, "Position confidence" optional and off at first on the landscape, the
 paper map unchanged; the movement arrows capped at 16 px with their fill at 0.62 and the casing a border, every overlay ribbon hidden by the drawn
 ground alone, the glyphs at 64 px; `docs/STAGE8_SPEC.md` §14) is built on `claude/blissful-clarke-9axnzp-8b`, stacked on 8A's branch (draft PR
-@@PR8B@@, for review). The next owner decision is 254.
+#66, for review). The next owner decision is 254.
