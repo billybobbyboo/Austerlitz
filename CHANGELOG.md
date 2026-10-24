@@ -1,5 +1,42 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 8, implementation PR 8B: the ground under the troops, the arrows and the event glyphs calmed (decisions 239 (b), 241 (a))
+
+**Status: built on `claude/blissful-clarke-9axnzp-8b` (draft PR @@PR8B@@), stacked on implementation PR 8A's branch (its base), for review; not
+merged.** No data changed: `check:data` @@DATA8B@@. The build changed: `austerlitz-command-map.html` **@@SIZE8B@@ bytes, md5 `@@MD58B@@`** (8A's
+build @@SIZE8A@@, `@@MD58A@@`); `check:baseline` moved to it. The record is `docs/STAGE8_SPEC.md` §14.
+
+- **Decision 239 (b): the ground under the troops.** On the landscape (both perspective presentations) every formation drawn as figures has a
+  thin cased outline of its footprint in its side's colour (1.7 px on a 3.4 px casing centred on the footprint's edge, CSS pixels at every
+  density), the selected formation's in the selection accent (2.2 on 4.4), and no filled mark: the broad washes are gone from the default
+  perspective views. "Position confidence" is optional there and off at first; switched on, each outline is drawn round its grade's extent (A its
+  footprint, B its frontage doubled, C a disc; decisions 86 and 88 kept), the line thinner as the grade weakens (A 1.7, B 1.4, C 1.1 px), never
+  dashed. Kept: a formation reported only under a reading as its filled C zone (decision 91), the eye level's own side as its marks (91), 1x's
+  footprints by grade whatever the layer (34). The paper map unchanged: its filled marks, the layer on at first there (decision 85 kept on the
+  paper map; the setting kept for each presentation, `CONF_ON`). Never lost under a slope: each outline a patch of the ground's own cells at its
+  lift, its band in screen pixels with its line on the edge, inside the patch whatever the slope (`outlineReach`). The legend's rows follow what is
+  drawn.
+- **Decision 241 (a): the arrows and the glyphs.** In the two perspective presentations every movement arrow, and a derived arrow's drawn-on
+  part, is at most 16 px across on screen at its casing (each row's casing draped on the drawn ground and projected through the eye at every
+  drawn frame whose eye moved, narrowed until it measures under 15.5 px, quantised down in 1.1 steps; never widened; the head in proportion;
+  every path, head form, colour, label and the draw-on as before); its fill at 0.62 of its opacity, its casing at its own and now a **border**
+  that leaves out what the fill covers (until 8B the casing lay under the whole fill, hidden by its 95%; under a 0.62 fill it would have darkened
+  the side's colour); on the paper map nothing changes (no cap, the fill as before). Every overlay ribbon (the movement arrows, the lines of
+  battle and their ticks, the boundaries, the halt bars) is hidden by the drawn ground alone (one more draw of the field and the apron into a
+  depth texture of the frame's size, when the eye, the size or the ground changed: `GDEPTH`), still drawn over the figures, the woods and the
+  buildings; at the eye level the arrows no longer show through the hills (A-5). The lines of battle, the boundaries and the halt bars keep
+  their widths and opacity. The event glyphs and the objective markers at most 64 px (decision 57's 192 superseded; the paper map as before).
+- **Found and fixed on the way:** the lines' ticks drawn black (their material, given the ground's hook, lost the atmosphere's uniforms; the
+  fog's division by zero spread by the bloom into black blocks): the hook gives them first, as Part A's ice prototype once needed; the
+  outlines' widths were the render target's pixels (a quarter thinner under the effects' supersampling, a third on a phone): CSS pixels now;
+  the self-test's own renders drew the last frame's geometry where a check had changed it since (three r128 uploads a changed geometry once a
+  frame, and the app has turned the renderer's count reset off since roadmap step 3): each now begins a frame of its own, 8A's ribbon check
+  too; the app's own frames were never affected.
+- **Measured (software WebGL here; the frame's cost on this machine's CPU, comparable between builds, not a GPU's):** @@MEASURED8B@@
+- **Checks (each new one made to fail by putting its change back, `docs/STAGE8_SPEC.md` §14.4):** @@CHECKS8B@@
+- **What a measure now means, and its baseline (§14.5):** @@BASE8B@@
+- **Uncertain or open:** @@OPEN8B@@
+
 ## 2026-10 · Stage 8, implementation PR 8A: the carried fixes and the roads' and streams' ribbons (decisions 251 (a), 253 (b))
 
 **Status: built on `claude/blissful-clarke-9axnzp` (draft PR #65), for review; not merged.** Begun from `main` at `d86835e` (Stage 8 Part A,
