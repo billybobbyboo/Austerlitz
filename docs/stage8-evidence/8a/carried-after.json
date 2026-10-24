@@ -1,0 +1,331 @@
+{
+ "centring": {
+  "reading": "fr",
+  "clock": "08:30",
+  "candidates": {
+   "unknown": 6,
+   "uncertain": 2,
+   "total": 13
+  },
+  "cases": [
+   {
+    "id": "buxhowden",
+    "know": "unknown",
+    "button": false
+   },
+   {
+    "id": "kienmayer",
+    "know": "unknown",
+    "button": false
+   },
+   {
+    "id": "dok",
+    "know": "unknown",
+    "button": false
+   },
+   {
+    "id": "lang",
+    "know": "unknown",
+    "button": false
+   },
+   {
+    "id": "rg_inf",
+    "button": true,
+    "targetToTrue": 0,
+    "readPos": [
+     388.8,
+     197.8
+    ],
+    "figuresDrawn": false,
+    "nameDrawn": true,
+    "know": "uncertain",
+    "screen": [
+     948,
+     428
+    ]
+   },
+   {
+    "id": "rg_cav",
+    "button": true,
+    "targetToTrue": 0,
+    "readPos": [
+     359.7,
+     190.5
+    ],
+    "figuresDrawn": false,
+    "nameDrawn": true,
+    "know": "uncertain",
+    "screen": [
+     948,
+     428
+    ]
+   }
+  ],
+  "eye": {
+   "id": "sthilaire",
+   "eyeOn": true,
+   "eyeAfter": false,
+   "commandView": "fr",
+   "targetFromFreeCentrePx": 0,
+   "dossierOpen": true,
+   "freeRect": [
+    312,
+    120,
+    1584,
+    736
+   ]
+  }
+ },
+ "sources": [
+  {
+   "vp": "1600x900",
+   "card": {
+    "dossierShown": true,
+    "viewport": [
+     1600,
+     900
+    ],
+    "scrollBox": [
+     35,
+     809
+    ],
+    "scrollHeight": 854,
+    "clientHeight": 774,
+    "compact": true,
+    "expand": [
+     "Full dossier: role, movement, sources"
+    ],
+    "sourced": {
+     "inView": true,
+     "top": 202,
+     "bottom": 230
+    },
+    "claimTags": 3,
+    "notes": [],
+    "accuracy": {
+     "onScreen": true,
+     "top": 771
+    }
+   },
+   "full": {
+    "dossierShown": true,
+    "viewport": [
+     1600,
+     900
+    ],
+    "scrollBox": [
+     35,
+     809
+    ],
+    "scrollHeight": 6061,
+    "clientHeight": 774,
+    "compact": false,
+    "expand": [],
+    "sourced": {
+     "inView": true,
+     "top": 202,
+     "bottom": 230
+    },
+    "claimTags": 10,
+    "notes": [
+     {
+      "inView": false,
+      "top": 5973,
+      "bottom": 5990
+     }
+    ],
+    "accuracy": {
+     "onScreen": true,
+     "top": 771
+    }
+   }
+  },
+  {
+   "vp": "1366x768",
+   "card": {
+    "dossierShown": true,
+    "viewport": [
+     1366,
+     768
+    ],
+    "scrollBox": [
+     35,
+     677
+    ],
+    "scrollHeight": 854,
+    "clientHeight": 642,
+    "compact": true,
+    "expand": [
+     "Full dossier: role, movement, sources"
+    ],
+    "sourced": {
+     "inView": true,
+     "top": 202,
+     "bottom": 230
+    },
+    "claimTags": 3,
+    "notes": [],
+    "accuracy": {
+     "onScreen": true,
+     "top": 639
+    }
+   },
+   "full": {
+    "dossierShown": true,
+    "viewport": [
+     1366,
+     768
+    ],
+    "scrollBox": [
+     35,
+     677
+    ],
+    "scrollHeight": 6061,
+    "clientHeight": 642,
+    "compact": false,
+    "expand": [],
+    "sourced": {
+     "inView": true,
+     "top": 202,
+     "bottom": 230
+    },
+    "claimTags": 10,
+    "notes": [
+     {
+      "inView": false,
+      "top": 5973,
+      "bottom": 5990
+     }
+    ],
+    "accuracy": {
+     "onScreen": true,
+     "top": 639
+    }
+   }
+  },
+  {
+   "vp": "390x844",
+   "card": {
+    "dossierShown": true,
+    "viewport": [
+     390,
+     844
+    ],
+    "scrollBox": [
+     295,
+     723
+    ],
+    "scrollHeight": 626,
+    "clientHeight": 428,
+    "compact": true,
+    "expand": [
+     "Full dossier: role, movement, sources"
+    ],
+    "sourced": {
+     "inView": true,
+     "top": 443,
+     "bottom": 471
+    },
+    "claimTags": 3,
+    "notes": [],
+    "accuracy": {
+     "onScreen": false,
+     "top": 1316
+    }
+   },
+   "full": {
+    "dossierShown": true,
+    "viewport": [
+     390,
+     844
+    ],
+    "scrollBox": [
+     295,
+     723
+    ],
+    "scrollHeight": 4059,
+    "clientHeight": 428,
+    "compact": false,
+    "expand": [],
+    "sourced": {
+     "inView": true,
+     "top": 443,
+     "bottom": 471
+    },
+    "claimTags": 10,
+    "notes": [
+     {
+      "inView": false,
+      "top": 4230,
+      "bottom": 4248
+     }
+    ],
+    "accuracy": {
+     "onScreen": false,
+     "top": 1316
+    }
+   }
+  }
+ ],
+ "tips": {
+  "desktop": {
+   "tabToMarker": {
+    "reached": true,
+    "tip": "09:30: Friant retakes Telnitz, then loses it again",
+    "focus": "09:30, Friant retakes Telnitz, then loses it again",
+    "overFocus": false,
+    "tipBox": [
+     482,
+     838,
+     299,
+     30
+    ]
+   },
+   "enter": {
+    "dossier": true,
+    "tip": null,
+    "focus": "09:30, Friant retakes Telnitz, then loses it again",
+    "overFocus": false,
+    "tipBox": null
+   },
+   "escape1": {
+    "dossier": false,
+    "tip": null,
+    "focus": "09:30, Friant retakes Telnitz, then loses it again",
+    "overFocus": false,
+    "tipBox": null
+   },
+   "hoverPhase": {
+    "tip": "08:45 - 09:30: Soult storms the heights (The Pratzen Strike)",
+    "focus": "09:30, Friant retakes Telnitz, then loses it again",
+    "overFocus": false,
+    "tipBox": [
+     402,
+     822,
+     374,
+     30
+    ]
+   },
+   "clickPhase": {
+    "tip": null,
+    "focus": "08:45 - 09:30, The Pratzen: Soult storms the heights (The Pr",
+    "overFocus": false,
+    "tipBox": null
+   },
+   "pointerAway": {
+    "tip": null,
+    "focus": "08:45 - 09:30, The Pratzen: Soult storms the heights (The Pr",
+    "overFocus": false,
+    "tipBox": null
+   }
+  },
+  "phoneTap": {
+   "tip": null,
+   "drawer": true
+  },
+  "phoneTap3s": {
+   "tip": null,
+   "drawer": true
+  }
+ }
+}

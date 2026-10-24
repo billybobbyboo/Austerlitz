@@ -717,3 +717,18 @@ if(cerrs) process.exitCode=1;
   console.log("the phone layout: "+(herr.length?herr.length+" wrong":"below 720 px the compact timeline, the phases listed, the sheets and the Menu, their words from LABELS; held landscape the phone's timeline (decisions 223-226)"));
   if(herr.length) process.exitCode=1;
 }
+/* Stage 8, implementation PR 8A (decision 253 (b); docs/STAGE8_SPEC.md section 13.2): the roads' and streams' ribbons wound facing up and drawn
+   on both faces, and their widths the display convention recorded: half the widths they were built with, on the landscape and on the paper map.
+   Whether each kind is drawn where it lies is the self-test's rendered check (ribbonVisibility) */
+{
+  const W=fs.readFileSync('world.js','utf8'), rerr=[];
+  if(!/idx\.push\(o,o\+1,p, o\+1,p\+1,p\)/.test(W)) rerr.push("world.js: the ribbons' triangles are not wound facing up (o, o+1, p), (o+1, p+1, p)");
+  const rw=/var RIBBON_W=(\{[^;]*\});/.exec(W); let R=null; try{ R=rw&&Function("return "+rw[1])(); }catch(e){}
+  if(!R) rerr.push("world.js: no RIBBON_W table");
+  else ["land","paper"].forEach(p=>["stream","road"].forEach(g=>{ if(!R[p]||R[p][g]!==0.5) rerr.push("world.js: RIBBON_W."+p+"."+g+" is "+(R[p]&&R[p][g])+", not the recorded 0.5 (section 13.2)"); }));
+  const bw=/function buildWater\([^)]*\)\{[\s\S]*?\n\}/.exec(W), br=/function buildRoads\([^)]*\)\{[\s\S]*?\n\}/.exec(W);
+  [["buildWater",bw,2],["buildRoads",br,4]].forEach(([n,m,k])=>{ const c=m?(m[0].match(/side:THREE\.DoubleSide/g)||[]).length:0; if(c<k) rerr.push("world.js: "+n+" draws "+c+" of its "+k+" ribbon materials on both faces"); });
+  rerr.forEach(e=>console.log("  ! "+e));
+  console.log("roads and streams: "+(rerr.length?rerr.length+" wrong":"wound facing up, drawn on both faces, at half the widths they were built with in both presentations (decision 253)"));
+  if(rerr.length) process.exitCode=1;
+}

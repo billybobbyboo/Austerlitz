@@ -28,7 +28,7 @@ async function fresh(browser,vp,dev){
   const o={viewport:{width:vp[0],height:vp[1]},deviceScaleFactor:dev?3:1};
   if(dev){ o.isMobile=true; o.hasTouch=true; o.userAgent="Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.0 Mobile/15E148 Safari/604.1"; }
   const ctx=await browser.newContext(o), page=await ctx.newPage(); await TR.routeThree(page);
-  await page.goto("file://"+path.join(L.ROOT,"austerlitz-command-map.html")+"?harness=1",{waitUntil:"commit",timeout:180000});
+  await page.goto("file://"+path.resolve(process.env.AUSTERLITZ_HTML||path.join(L.ROOT,"austerlitz-command-map.html"))+"?harness=1",{waitUntil:"commit",timeout:180000});   /* AUSTERLITZ_HTML: another build (8A's before and after) */
   await TR.waitBoot(page,240000,250);
   await page.addStyleTag({content:"*,*::before,*::after{transition:none!important;animation:none!important}"});
   return {ctx,page};

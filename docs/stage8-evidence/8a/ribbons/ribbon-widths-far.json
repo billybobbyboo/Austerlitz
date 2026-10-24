@@ -1,0 +1,240 @@
+{
+ "build": "f19f5f38b1886b47235594bf4cf9935c",
+ "variants": [
+  "off",
+  "1",
+  "0.7",
+  "0.5",
+  "0.35"
+ ],
+ "views": {
+  "overview-field": {
+   "mode": "terrain",
+   "factor": 4,
+   "variants": {
+    "1": {
+     "calls": 832,
+     "tris": 2523605,
+     "ms": 19.5,
+     "px": {
+      "stream": 5236,
+      "bank": 9747,
+      "road": 27504
+     }
+    },
+    "off": {
+     "calls": 832,
+     "tris": 2523605,
+     "ms": 15.8,
+     "px": null
+    },
+    "0.7": {
+     "calls": 832,
+     "tris": 2523605,
+     "ms": 21.9,
+     "px": {
+      "stream": 3667,
+      "bank": 6991,
+      "road": 21915
+     }
+    },
+    "0.5": {
+     "calls": 832,
+     "tris": 2523605,
+     "ms": 9.1,
+     "px": {
+      "stream": 2674,
+      "bank": 4887,
+      "road": 18045
+     }
+    },
+    "0.35": {
+     "calls": 832,
+     "tris": 2523605,
+     "ms": 13.6,
+     "px": {
+      "stream": 2041,
+      "bank": 2973,
+      "road": 14395
+     }
+    }
+   },
+   "restored": {
+    "calls": 832,
+    "tris": 2523605,
+    "ms": 13.4
+   }
+  },
+  "paper-north-up": {
+   "mode": "staff",
+   "factor": 4,
+   "variants": {
+    "1": {
+     "calls": 156,
+     "tris": 240915,
+     "ms": 3.8,
+     "px": {
+      "stream": 2294,
+      "bank": 1225,
+      "road": 6602
+     }
+    },
+    "off": {
+     "calls": 156,
+     "tris": 240915,
+     "ms": 2.6,
+     "px": null
+    },
+    "0.7": {
+     "calls": 156,
+     "tris": 240915,
+     "ms": 6.7,
+     "px": {
+      "stream": 1629,
+      "bank": 761,
+      "road": 4800
+     }
+    },
+    "0.5": {
+     "calls": 156,
+     "tris": 240915,
+     "ms": 2.8,
+     "px": {
+      "stream": 1180,
+      "bank": 451,
+      "road": 3577
+     }
+    },
+    "0.35": {
+     "calls": 156,
+     "tris": 240915,
+     "ms": 5.6,
+     "px": {
+      "stream": 744,
+      "bank": 239,
+      "road": 2668
+     }
+    }
+   },
+   "restored": {
+    "calls": 156,
+    "tris": 240915,
+    "ms": 6.8
+   }
+  },
+  "paper-close": {
+   "mode": "staff",
+   "factor": 4,
+   "variants": {
+    "1": {
+     "calls": 103,
+     "tris": 203455,
+     "ms": 2.3,
+     "px": {
+      "stream": 36936,
+      "bank": 29215,
+      "road": 36285
+     }
+    },
+    "off": {
+     "calls": 103,
+     "tris": 203455,
+     "ms": 2.4,
+     "px": null
+    },
+    "0.7": {
+     "calls": 103,
+     "tris": 203455,
+     "ms": 4.5,
+     "px": {
+      "stream": 28021,
+      "bank": 21701,
+      "road": 22484
+     }
+    },
+    "0.5": {
+     "calls": 103,
+     "tris": 203455,
+     "ms": 3.5,
+     "px": {
+      "stream": 19946,
+      "bank": 15513,
+      "road": 14626
+     }
+    },
+    "0.35": {
+     "calls": 103,
+     "tris": 203455,
+     "ms": 6.7,
+     "px": {
+      "stream": 13658,
+      "bank": 9870,
+      "road": 9315
+     }
+    }
+   },
+   "restored": {
+    "calls": 103,
+    "tris": 203455,
+    "ms": 6.2
+   }
+  },
+  "pratzen-low-1x": {
+   "mode": "terrain",
+   "factor": 1,
+   "variants": {
+    "1": {
+     "calls": 160,
+     "tris": 227787,
+     "ms": 3.6,
+     "px": {
+      "stream": 31840,
+      "bank": 33166,
+      "road": 67663
+     }
+    },
+    "off": {
+     "calls": 160,
+     "tris": 227787,
+     "ms": 8.5,
+     "px": null
+    },
+    "0.7": {
+     "calls": 160,
+     "tris": 227787,
+     "ms": 11.5,
+     "px": {
+      "stream": 22819,
+      "bank": 23058,
+      "road": 53600
+     }
+    },
+    "0.5": {
+     "calls": 160,
+     "tris": 227787,
+     "ms": 12.7,
+     "px": {
+      "stream": 16780,
+      "bank": 18117,
+      "road": 44441
+     }
+    },
+    "0.35": {
+     "calls": 160,
+     "tris": 227787,
+     "ms": 3.9,
+     "px": {
+      "stream": 12145,
+      "bank": 14179,
+      "road": 37314
+     }
+    }
+   },
+   "restored": {
+    "calls": 160,
+    "tris": 227787,
+    "ms": 4.2
+   }
+  }
+ }
+}

@@ -198,6 +198,12 @@ p.note{font-size:var(--t-prose);color:var(--text-muted);line-height:1.55;backgro
 p.hh{font-size:var(--t-ui);color:var(--text-muted);margin:6px 0 0;font-variant-numeric:tabular-nums}
 p.conf{font-size:var(--t-small);color:var(--text-muted);line-height:1.5;margin:0 0 16px}
 .dact{margin-top:6px}
+/* Stage 8, implementation PR 8A (decision 251): the sources one press from where a dossier opens; in the sources sheet's lists a claim's sides
+   (a disputed claim: the side each work supports) and its note, as narrative.js records them */
+.dact.src-head{margin:0 0 12px}
+ul.bul.claim-sides{margin:3px 0 2px}
+ul.bul.claim-sides li{font-size:var(--t-ui);color:var(--text-muted);margin-bottom:2px}
+.claim-note{display:block;font-size:var(--t-ui);color:var(--text-muted);margin-top:2px}
 
 /* ---------- modal ---------- */
 #modal{position:fixed;inset:0;z-index:50;background:rgba(var(--scrim-rgb),.72);display:none;align-items:center;justify-content:center;padding:24px}

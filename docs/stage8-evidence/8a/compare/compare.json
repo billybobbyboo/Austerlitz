@@ -1,0 +1,490 @@
+{
+ "a": {
+  "html": "/tmp/claude-0/-home-user-Austerlitz/86c0008c-ec28-5dfb-983a-1a3fb3a70783/scratchpad/base/austerlitz-command-map.html",
+  "md5": "c4793156103b60bb74151c7d13dbdd9d",
+  "label": "before 8A"
+ },
+ "b": {
+  "html": "/tmp/claude-0/-home-user-Austerlitz/86c0008c-ec28-5dfb-983a-1a3fb3a70783/scratchpad/8a/austerlitz-command-map.html",
+  "md5": "870caf24e7465206d1a0a994e38265eb",
+  "label": "8A"
+ },
+ "views": {
+  "overview-field": {
+   "a": {
+    "widths": {
+     "arrow": [
+      18.7,
+      15.3,
+      9.8,
+      9.6,
+      19,
+      12.7
+     ],
+     "drawon": [],
+     "line": [
+      7.5
+     ],
+     "bound": [],
+     "halt": []
+    },
+    "roleOK": true,
+    "layerArrows": true,
+    "widest": {
+     "arrow": 19,
+     "drawon": null,
+     "line": 7.5,
+     "bound": null,
+     "halt": null
+    },
+    "glyphPx": 43.2,
+    "markerPx": 25.5,
+    "symMax": 192,
+    "cues": {
+     "filled": 31,
+     "foot": 0,
+     "line": 0
+    },
+    "confLayer": true,
+    "calls": 832,
+    "tris": 2523605,
+    "ms": 10.5,
+    "msCached": 10.2,
+    "errors": []
+   },
+   "b": {
+    "widths": {
+     "arrow": [
+      18.7,
+      15.3,
+      9.8,
+      9.6,
+      19,
+      12.7
+     ],
+     "drawon": [],
+     "line": [
+      7.5
+     ],
+     "bound": [],
+     "halt": []
+    },
+    "roleOK": true,
+    "layerArrows": true,
+    "widest": {
+     "arrow": 19,
+     "drawon": null,
+     "line": 7.5,
+     "bound": null,
+     "halt": null
+    },
+    "glyphPx": 43.2,
+    "markerPx": 25.5,
+    "symMax": 192,
+    "cues": {
+     "filled": 31,
+     "foot": 0,
+     "line": 0
+    },
+    "confLayer": true,
+    "calls": 832,
+    "tris": 2523605,
+    "ms": 17.1,
+    "msCached": 14.7,
+    "errors": []
+   }
+  },
+  "village-telnitz": {
+   "a": {
+    "widths": {
+     "arrow": [
+      141.1,
+      50.3
+     ],
+     "drawon": [
+      146.3
+     ],
+     "line": [
+      58.2
+     ],
+     "bound": [],
+     "halt": []
+    },
+    "roleOK": true,
+    "layerArrows": true,
+    "widest": {
+     "arrow": 141.1,
+     "drawon": 146.3,
+     "line": 58.2,
+     "bound": null,
+     "halt": null
+    },
+    "glyphPx": 180.8,
+    "markerPx": 192,
+    "symMax": 192,
+    "cues": {
+     "filled": 30,
+     "foot": 0,
+     "line": 0
+    },
+    "confLayer": true,
+    "calls": 741,
+    "tris": 2483571,
+    "ms": 10,
+    "msCached": 9.1,
+    "errors": []
+   },
+   "b": {
+    "widths": {
+     "arrow": [
+      141.1,
+      50.3
+     ],
+     "drawon": [
+      146.3
+     ],
+     "line": [
+      58.2
+     ],
+     "bound": [],
+     "halt": []
+    },
+    "roleOK": true,
+    "layerArrows": true,
+    "widest": {
+     "arrow": 141.1,
+     "drawon": 146.3,
+     "line": 58.2,
+     "bound": null,
+     "halt": null
+    },
+    "glyphPx": 180.8,
+    "markerPx": 192,
+    "symMax": 192,
+    "cues": {
+     "filled": 30,
+     "foot": 0,
+     "line": 0
+    },
+    "confLayer": true,
+    "calls": 741,
+    "tris": 2483571,
+    "ms": 10,
+    "msCached": 10.6,
+    "errors": []
+   }
+  },
+  "close-sokolnitz": {
+   "a": {
+    "widths": {
+     "arrow": [
+      67.5,
+      60.3
+     ],
+     "drawon": [],
+     "line": [
+      27
+     ],
+     "bound": [],
+     "halt": [
+      14.1
+     ]
+    },
+    "roleOK": true,
+    "layerArrows": true,
+    "widest": {
+     "arrow": 67.5,
+     "drawon": null,
+     "line": 27,
+     "bound": null,
+     "halt": 14.1
+    },
+    "glyphPx": 134.8,
+    "markerPx": 108.8,
+    "symMax": 192,
+    "cues": {
+     "filled": 31,
+     "foot": 0,
+     "line": 0
+    },
+    "confLayer": true,
+    "calls": 781,
+    "tris": 2478159,
+    "ms": 9.1,
+    "msCached": 8.4,
+    "errors": []
+   },
+   "b": {
+    "widths": {
+     "arrow": [
+      67.5,
+      60.3
+     ],
+     "drawon": [],
+     "line": [
+      27
+     ],
+     "bound": [],
+     "halt": [
+      14.1
+     ]
+    },
+    "roleOK": true,
+    "layerArrows": true,
+    "widest": {
+     "arrow": 67.5,
+     "drawon": null,
+     "line": 27,
+     "bound": null,
+     "halt": 14.1
+    },
+    "glyphPx": 134.8,
+    "markerPx": 108.8,
+    "symMax": 192,
+    "cues": {
+     "filled": 31,
+     "foot": 0,
+     "line": 0
+    },
+    "confLayer": true,
+    "calls": 781,
+    "tris": 2478159,
+    "ms": 8.3,
+    "msCached": 7.7,
+    "errors": []
+   }
+  },
+  "goldbach-top": {
+   "a": {
+    "widths": {
+     "arrow": [],
+     "drawon": [],
+     "line": [],
+     "bound": [],
+     "halt": []
+    },
+    "roleOK": true,
+    "layerArrows": true,
+    "widest": {
+     "arrow": null,
+     "drawon": null,
+     "line": null,
+     "bound": null,
+     "halt": null
+    },
+    "glyphPx": 192,
+    "markerPx": 192,
+    "symMax": 192,
+    "cues": {
+     "filled": 31,
+     "foot": 0,
+     "line": 0
+    },
+    "confLayer": true,
+    "calls": 682,
+    "tris": 2477921,
+    "ms": 10.9,
+    "msCached": 10.5,
+    "errors": []
+   },
+   "b": {
+    "widths": {
+     "arrow": [],
+     "drawon": [],
+     "line": [],
+     "bound": [],
+     "halt": []
+    },
+    "roleOK": true,
+    "layerArrows": true,
+    "widest": {
+     "arrow": null,
+     "drawon": null,
+     "line": null,
+     "bound": null,
+     "halt": null
+    },
+    "glyphPx": 192,
+    "markerPx": 192,
+    "symMax": 192,
+    "cues": {
+     "filled": 31,
+     "foot": 0,
+     "line": 0
+    },
+    "confLayer": true,
+    "calls": 682,
+    "tris": 2477921,
+    "ms": 9.7,
+    "msCached": 7.9,
+    "errors": []
+   }
+  },
+  "paper-north-up": {
+   "a": {
+    "widths": {
+     "arrow": [
+      5.6,
+      5.6,
+      3.9,
+      6.3,
+      6.3,
+      6.3
+     ],
+     "drawon": [],
+     "line": [
+      2.7
+     ],
+     "bound": [],
+     "halt": []
+    },
+    "roleOK": true,
+    "layerArrows": true,
+    "widest": {
+     "arrow": 6.3,
+     "drawon": null,
+     "line": 2.7,
+     "bound": null,
+     "halt": null
+    },
+    "glyphPx": 9.7,
+    "markerPx": 7.9,
+    "symMax": 192,
+    "cues": {
+     "filled": 31,
+     "foot": 0,
+     "line": 0
+    },
+    "confLayer": true,
+    "calls": 156,
+    "tris": 240915,
+    "ms": 7.1,
+    "msCached": 4,
+    "errors": []
+   },
+   "b": {
+    "widths": {
+     "arrow": [
+      5.6,
+      5.6,
+      3.9,
+      6.3,
+      6.3,
+      6.3
+     ],
+     "drawon": [],
+     "line": [
+      2.7
+     ],
+     "bound": [],
+     "halt": []
+    },
+    "roleOK": true,
+    "layerArrows": true,
+    "widest": {
+     "arrow": 6.3,
+     "drawon": null,
+     "line": 2.7,
+     "bound": null,
+     "halt": null
+    },
+    "glyphPx": 9.7,
+    "markerPx": 7.9,
+    "symMax": 192,
+    "cues": {
+     "filled": 31,
+     "foot": 0,
+     "line": 0
+    },
+    "confLayer": true,
+    "calls": 156,
+    "tris": 240915,
+    "ms": 2.4,
+    "msCached": 2.4,
+    "errors": []
+   }
+  },
+  "paper-close": {
+   "a": {
+    "widths": {
+     "arrow": [
+      80.8,
+      80.8,
+      49.7
+     ],
+     "drawon": [
+      48.8
+     ],
+     "line": [
+      34.2
+     ],
+     "bound": [],
+     "halt": []
+    },
+    "roleOK": true,
+    "layerArrows": true,
+    "widest": {
+     "arrow": 80.8,
+     "drawon": 48.8,
+     "line": 34.2,
+     "bound": null,
+     "halt": null
+    },
+    "glyphPx": 125.2,
+    "markerPx": 102,
+    "symMax": 192,
+    "cues": {
+     "filled": 31,
+     "foot": 0,
+     "line": 0
+    },
+    "confLayer": true,
+    "calls": 103,
+    "tris": 203455,
+    "ms": 2.8,
+    "msCached": 3.1,
+    "errors": []
+   },
+   "b": {
+    "widths": {
+     "arrow": [
+      80.8,
+      80.8,
+      49.7
+     ],
+     "drawon": [
+      48.8
+     ],
+     "line": [
+      34.2
+     ],
+     "bound": [],
+     "halt": []
+    },
+    "roleOK": true,
+    "layerArrows": true,
+    "widest": {
+     "arrow": 80.8,
+     "drawon": 48.8,
+     "line": 34.2,
+     "bound": null,
+     "halt": null
+    },
+    "glyphPx": 125.2,
+    "markerPx": 102,
+    "symMax": 192,
+    "cues": {
+     "filled": 31,
+     "foot": 0,
+     "line": 0
+    },
+    "confLayer": true,
+    "calls": 103,
+    "tris": 203455,
+    "ms": 3.1,
+    "msCached": 2.7,
+    "errors": []
+   }
+  }
+ }
+}
