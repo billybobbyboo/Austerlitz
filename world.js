@@ -1144,9 +1144,12 @@ function clearViewshed(){ vsMask=null; vsOrigin=null; applyGround(); }
    per unit of half-width (n), and its base width (the width it was built with until 8A); drape lays it at the base width times RIBBON_W's
    factor for its group (the streams with their banks, the roads with their edges) and for the ground drawn (the flat paper map, or the
    landscape: both perspective presentations), so one mesh serves both. RIBBON_W's factors are DISPLAY CONVENTIONS, chosen for reading at the
-   distances each presentation is seen from, and not measured widths of the streams or the roads (docs/STAGE8_SPEC.md section 13) */
+   distances each presentation is seen from, and not measured widths of the streams or the roads (docs/STAGE8_SPEC.md section 13.2): half the
+   widths they were built with, in both presentations, chosen against x1, x0.7 and x0.35 in matching views (tools/stage8/ribbon-widths.js; at
+   x1 the roads were wider than the houses beside them at 4x and the banks a band across the paper map's close view, at x0.35 the streams
+   threads at the Overview and on the whole paper map) */
 var DRAPED=[], RIBBON_STEP=0.5;
-var RIBBON_W={land:{stream:1, road:1}, paper:{stream:1, road:1}};
+var RIBBON_W={land:{stream:0.5, road:0.5}, paper:{stream:0.5, road:0.5}};
 function ribbonWidth(D){ return D.base*RIBBON_W[DISPLAY.flat?"paper":"land"][D.group]; }
 function ribbon(scene,pts,width,yoff,mat,store,kind,group){
   pts=resample(pts,RIBBON_STEP);

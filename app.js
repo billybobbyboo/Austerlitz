@@ -8503,6 +8503,8 @@ var AUSTERLITZ_DEBUG=(function(){
     renderer.getClearColor(cc);
     scene.children.forEach(function(o){ if(o!==groundMesh&&rib.indexOf(o)<0&&o.visible){ o.visible=false; hid.push(o); } });
     renderer.toneMapping=THREE.NoToneMapping; renderer.outputEncoding=THREE.LinearEncoding; renderer.setClearColor(0xffffff,1);
+    renderer.info.reset();   /* a frame of its own: three uploads a changed geometry once a frame (renderer.info.autoReset is off), and the ribbons
+                                may have been draped again (a factor, the paper map) since the last frame drew them */
     try{
       cams.forEach(function(cv){ var row={view:cv[0],built:[0,0,0,0],dbl:[0,0,0,0]};
         [false,true].forEach(function(dbl){ rib.forEach(function(o,i){ o.material=flag(o.userData.drape.kind,keep[i],dbl); });
