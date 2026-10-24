@@ -30,7 +30,7 @@ class Geo{constructor(n=12){this.attributes={position:attr(n,3),normal:attr(n,3)
  rotateX(){return this}
  toNonIndexed(){ if(!this.index) console.warn("THREE.BufferGeometry.toNonIndexed(): BufferGeometry is already non-indexed."); this.index=null; return this }
  computeVertexNormals(){}
- setAttribute(k,v){this.attributes[k]=v;return this} setIndex(){return this}
+ setAttribute(k,v){this.attributes[k]=v;return this} setIndex(i){this.index=Array.isArray(i)?{array:i,count:i.length}:i;return this}   /* as three's: it keeps the index (Stage 8, 8B: groundPatch rewrites its own) */
  setFromPoints(){return this} setDrawRange(){return this} dispose(){}}
 const stub={
  Vector3:REAL.Vector3, Color:Col, Object3D:Obj, Group:Obj,

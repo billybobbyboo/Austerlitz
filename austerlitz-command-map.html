@@ -8010,19 +8010,30 @@ function confPlace(m,g,x,z,yaw,W0,D0,hex,op,cap){
 }
 /* the patch of the drawn ground's own cells (GROUND_NX x GROUND_NZ, the same diagonal as groundY) under a w x d rectangle at
    world (x,z) turned by yaw, every node `lift` above the drawn ground, its uv the rectangle's own frame (the mask's): it lies
-   parallel to the ground everywhere and never cuts under it. Stage 5B's (confPlace), shared since 5D with the skeleton's anchors */
+   parallel to the ground everywhere and never cuts under it. Stage 5B's (confPlace), shared since 5D with the skeleton's anchors.
+   Stage 8, implementation PR 8B: the patch keeps its geometry and grows it only when it needs more room. Until 8B a patch whose cells changed
+   in number (a formation moving across the grid, the outline's reach changing with the eye) was disposed and built again: buffers made and
+   deleted while the clock plays, and after a lost and restored context the deletions three r128 warns of (decision 212 (b)'s bound), which
+   8B's outlines, placed for every formation drawn as figures, would have pushed past the browser's own cap. The room beyond the cells in use
+   is degenerate triangles on the first node, every node it holds standing where the patch does; only the cells in use are drawn */
 function groundPatch(m,U,x,z,yaw,w,d,lift){
   var c=Math.cos(yaw), sn=Math.sin(yaw), ex=Math.abs(w/2*c)+Math.abs(d/2*sn), ez=Math.abs(w/2*sn)+Math.abs(d/2*c);
   var cw=GROUND_W/GROUND_NX, cd=GROUND_D/GROUND_NZ;
   var i0=Math.max(0,Math.floor((x-ex+GROUND_W/2)/cw)), i1=Math.min(GROUND_NX,Math.ceil((x+ex+GROUND_W/2)/cw));
   var j0=Math.max(0,Math.floor((z-ez+GROUND_D/2)/cd)), j1=Math.min(GROUND_NZ,Math.ceil((z+ez+GROUND_D/2)/cd));
-  var nx=Math.max(1,i1-i0), nz=Math.max(1,j1-j0), X1=nx+1, dims=nx+"x"+nz, geo=m.geometry;
-  if(U.dims!==dims){
+  var nx=Math.max(1,i1-i0), nz=Math.max(1,j1-j0), X1=nx+1, nv=X1*(nz+1), ni=nx*nz*6, dims=nx+"x"+nz, geo=m.geometry, PA=geo.attributes.position;
+  if(!PA||PA.count<nv||!geo.index||!geo.index.array||geo.index.count<ni){
+    var cv=Math.max(nv,PA?PA.count:0), ci=Math.max(ni,geo.index?geo.index.count:0);
     geo.dispose(); geo=new THREE.BufferGeometry();
-    geo.setAttribute("position",new THREE.Float32BufferAttribute(new Float32Array(X1*(nz+1)*3),3));
-    geo.setAttribute("uv",new THREE.Float32BufferAttribute(new Float32Array(X1*(nz+1)*2),2));
-    var idx=[]; for(var jj=0;jj<nz;jj++) for(var ii=0;ii<nx;ii++){ var a=ii+X1*jj, b=a+X1, dd=a+1, cc=b+1; idx.push(a,b,dd, cc,dd,b); }
-    geo.setIndex(idx); m.geometry=geo; U.dims=dims;
+    geo.setAttribute("position",new THREE.Float32BufferAttribute(new Float32Array(cv*3),3));
+    geo.setAttribute("uv",new THREE.Float32BufferAttribute(new Float32Array(cv*2),2));
+    geo.setIndex(new THREE.BufferAttribute(cv<65536?new Uint16Array(ci):new Uint32Array(ci),1)); m.geometry=geo; U.dims="";
+  }
+  if(U.dims!==dims){
+    var I=geo.index.array, q=0;
+    for(var jj=0;jj<nz;jj++) for(var ii=0;ii<nx;ii++){ var a=ii+X1*jj, b=a+X1, dd=a+1, cc=b+1; I[q++]=a; I[q++]=b; I[q++]=dd; I[q++]=cc; I[q++]=dd; I[q++]=b; }
+    for(;q<I.length;q++) I[q]=0;
+    geo.index.needsUpdate=true; geo.setDrawRange(0,ni); U.dims=dims;
   }
   var P=geo.attributes.position.array, UV=geo.attributes.uv.array, n=0;
   for(var j=0;j<=nz;j++) for(var i=0;i<=nx;i++){
@@ -8030,6 +8041,7 @@ function groundPatch(m,U,x,z,yaw,w,d,lift){
     P[n*3]=wx; P[n*3+1]=groundY(wx,wz)+lift; P[n*3+2]=wz;
     UV[n*2]=(dx*c-dz*sn)/w+0.5; UV[n*2+1]=(dx*sn+dz*c)/d+0.5; n++;
   }
+  for(var t=nv;t<geo.attributes.position.count;t++){ P[t*3]=P[0]; P[t*3+1]=P[1]; P[t*3+2]=P[2]; UV[t*2]=UV[0]; UV[t*2+1]=UV[1]; }
   geo.attributes.position.needsUpdate=true; geo.attributes.uv.needsUpdate=true;
   if(geo.computeBoundingSphere) geo.computeBoundingSphere();
 }
