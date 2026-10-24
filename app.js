@@ -6906,6 +6906,7 @@ function dossierFeature(id){
     '<p class="dh-sub">'+esc(kindName)+'</p><h2>'+esc(ft.name)+'</h2>'+
     '<p class="dh-cmd">'+esc(ft.sub||"")+'</p></div>';
   wrap.appendChild(head);
+  var srcRefs=[]; wrap.appendChild(srcButton(srcRefs,true));   /* Stage 8, 8A (decision 251): the sources at the head */
   /* heights in metres through GEOREF, the only vertical scale; where the feature is a surveyed
      place its surveyed height is quoted beside the model's (GEOREF.GT, GEOREF.ELEV_SRC) */
   var elM=GEOREF.elevM(hAt(ft.p[0],ft.p[1])), gtk=FEATURE_GT[ft.id], gt=gtk&&GEOREF.GT[gtk];
@@ -6954,7 +6955,8 @@ function dossierFeature(id){
   wrap.appendChild(act);
   wrap.appendChild(el("p","conf",
     "Sightlines are computed from this model's elevations, not the real survey, and take no account of woods, buildings or smoke."));
-  wrap.appendChild(srcButton(claimRefsEnd(cr0)));
+  Array.prototype.push.apply(srcRefs,claimRefsEnd(cr0));
+  wrap.appendChild(srcButton(srcRefs));
   return wrap;
 }
 /* the formations within 34 units of a place at the clock ("Formations nearby now"); Stage 8, implementation PR 8A (decision 251): under a reading,
