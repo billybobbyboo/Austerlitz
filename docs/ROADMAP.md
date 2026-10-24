@@ -394,6 +394,18 @@ live page, with five further opportunities (arrows, label density, woodland, ter
 performance budgets stated before anything is built, the carried findings checked, and two faults found (the roads' and streams' ribbons are
 never drawn, its §9.5; in Study the phase's one message stands under the view switch, its §9.6); the plan is PRs 8A-8H and owner questions 239-253 (its §11). Nothing below is decided by it; no source file, data or build changed.
 
+**The owner's decisions 239-253** (24 October 2026; `docs/STAGE8_SPEC.md` §0.3, each with its qualifications, which are part of the decision;
+§0.3.1 reconciles them with the specification's text; §0.4 names the stages: "Stage 8 Part A" is the specification, "implementation PR 8A" to
+"8H" the eight pull requests of its plan). The decisions for 8C-8H (240, 242-250, 252) set their direction and constraints only: none of
+them is implemented or verified until its own PR says so.
+
+**Implementation PR 8A** (24 October 2026; `docs/STAGE8_SPEC.md` §13; draft, for review): decisions 251 (a) and 253 (b). Under a headquarters
+reading no formation the reading does not know is centred or placed anywhere a visitor could read its place (the dossiers' place rows, an
+aggregate's midpoint, its day-track, a place's nearby list), and an open dossier follows the reading; every drawer dossier has its sources at
+its head; the sources sheet gives each claim's note and each work's side in a dispute; the timeline's tips are dismissed when their element is
+activated and never shown by a touch. The roads', the streams' and their banks' ribbons are drawn (wound facing up, both faces), their widths
+a display convention for each presentation, set against narrower ones in matching views. Checks able to fail added for each (§13.4).
+
 **L1. "The coloured glow underneath troops and divisions (blue for the French, orange for the Russians and Austrians): remove it; it looks
 clunky."**
 - *What it is (fact):* the position-confidence marks (Stage 5B; `CONF`, `confPlace` in `app.js`): every formation's position grade drawn on the

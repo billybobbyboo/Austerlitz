@@ -1158,8 +1158,9 @@ function ribbon(scene,pts,width,yoff,mat,store,kind,group){
     for(var k=0;k<=m;k++){ var f=-1+2*k/m; C[q]=pts[i][0]; C[q+1]=pts[i][1]; N[q]=nx*f; N[q+1]=nz*f; q+=2; }
   }
   /* Stage 8, implementation PR 8A (decision 253; docs/STAGE8_SPEC.md section 9.5): each triangle wound facing up (counter-clockwise seen from
-     above), so the front-sided materials draw it from the eye. Until 8A the order was (o, p, o+1): every triangle faced down whatever the
-     course's direction, and the renderer culled every road, bank and stream ribbon in every view, the paper map's too */
+     above: its normal, and so its light, up), and its materials draw both faces (buildWater, buildRoads). Until 8A the order was (o, p, o+1):
+     every triangle faced down whatever the course's direction, and the front-sided materials let the renderer cull every road, bank and stream
+     ribbon in every view, the paper map's too */
   for(var j=0;j<pts.length-1;j++) for(k=0;k<m;k++){ var o=j*(m+1)+k, p=o+m+1; idx.push(o,o+1,p, o+1,p+1,p); }
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute(new Float32Array(nv*3),3));
@@ -1215,8 +1216,10 @@ function buildWater(scene){
   }
   mere(SATS,28,10.5,-3.85);
   mere(MENI,23,9,-3.95);
-  var bankMat=matte({color:WATER_COL.bank,roughness:0.96});
-  var streamMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.stream),roughness:0.48,metalness:0.0,envMapIntensity:0.18});
+  /* Stage 8, implementation PR 8A (decision 253): the ribbons drawn on both faces (ribbon(): wound facing up), so that a sliver lifted over a
+     crest and facing away from the eye, which the 10.33x relief makes, is drawn as the rest of its ribbon is */
+  var bankMat=matte({color:WATER_COL.bank,roughness:0.96,side:THREE.DoubleSide});
+  var streamMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.stream),roughness:0.48,metalness:0.0,envMapIntensity:0.18,side:THREE.DoubleSide});
   ribbon(scene,GOLDBACH,4.6,0.16,bankMat,waterMeshes,"bank","stream");
   ribbon(scene,GOLDBACH,2.8,0.26,streamMat,waterMeshes,"stream","stream");
   ribbon(scene,LITAVA,5.0,0.16,bankMat,waterMeshes,"bank","stream");
@@ -1227,10 +1230,10 @@ function buildWater(scene){
   });
 }
 function buildRoads(scene){
-  var hi=matte({color:LAND_COL.road.highway,roughness:0.94});
-  var po=matte({color:LAND_COL.road.post,roughness:0.94});
-  var tr=matte({color:LAND_COL.road.track,roughness:0.95});
-  var edge=matte({color:LAND_COL.road.edge,roughness:0.97});
+  var hi=matte({color:LAND_COL.road.highway,roughness:0.94,side:THREE.DoubleSide});   /* Stage 8, 8A: both faces, as the streams' (buildWater) */
+  var po=matte({color:LAND_COL.road.post,roughness:0.94,side:THREE.DoubleSide});
+  var tr=matte({color:LAND_COL.road.track,roughness:0.95,side:THREE.DoubleSide});
+  var edge=matte({color:LAND_COL.road.edge,roughness:0.97,side:THREE.DoubleSide});
   ROADS.forEach(function(r){
     var mat = r.cls==="highway"?hi : r.cls==="post"?po : tr;
     var pts=M2W(r.p);

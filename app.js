@@ -1815,14 +1815,15 @@ function dtNum(v){ return (Math.round(v*100)/100).toString(); }
 function dayTrackModel(id){
   var f=FORMATIONS[id]; if(!f) return null;
   var ids=f.track?[id]:leavesOf(id,[]).filter(function(k){ return !!FORMATIONS[k].track; });
+  /* Stage 8, implementation PR 8A (decision 251): under a reading, a formation it does not know has no day here: none of its plotted places,
+     its legs, its ordered route or its place at the clock is drawn, nor counted in the inset's frame (the frame itself would say where it was) */
+  var hidden=ids.filter(readHidden); ids=ids.filter(function(k){ return hidden.indexOf(k)<0; });
   var all=[];
   ids.forEach(function(k){ anchorList(k).forEach(function(a){ if(a.p){ all.push(W(a.p[0],a.p[1])); (a.via||[]).forEach(function(v){ all.push(W(v[0],v[1])); }); } }); });
-  if(!all.length) return null;
-  var F=dtFrame(all), out={ids:ids,frame:F,leaves:[]};
+  if(!all.length) return hidden.length?{ids:[],hidden:hidden,frame:null,leaves:[],bar:null}:null;
+  var F=dtFrame(all), out={ids:ids,hidden:hidden,frame:F,leaves:[]};
   ids.forEach(function(k){
-    /* Stage 8, implementation PR 8A (decision 251): under a reading, a formation it does not know has no dot and no leg in progress here (its
-       plotted day, the anchors and the legs, is the record and stays) */
-    var hid=readHidden(k), A=anchorList(k).filter(function(a){ return a.p!==null; }), L={id:k,anchors:[],legs:[],dot:null,routes:[],hidden:hid}, cur=hid?null:legAt(k,clock);
+    var A=anchorList(k).filter(function(a){ return a.p!==null; }), L={id:k,anchors:[],legs:[],dot:null,routes:[]}, cur=legAt(k,clock);
     A.forEach(function(a){ var st=stateAt(k,a.ph), pt=F.P(W(a.p[0],a.p[1])), last=L.anchors[L.anchors.length-1];
       var mk={an:a,cf:st?st.cf:"B",timed:!!a.tm};
       if(last&&Math.hypot(pt[0]-last.pt[0],pt[1]-last.pt[1])<DT.MERGE){ last.members.push(mk); last.cf=worseGrade(last.cf,mk.cf); last.timed=last.timed||mk.timed; }
@@ -1830,7 +1831,7 @@ function dayTrackModel(id){
     var AA=anchorList(k);
     for(var i=1;i<AA.length;i++){ var a=AA[i-1], b=AA[i]; if(!a.p||!b.p) continue;
       L.legs.push({a:a,b:b,pts:legPath(a,b).pts.map(function(q){ return F.P(W(q[0],q[1])); }),now:!!(cur&&cur.b===b&&cur.u>0&&cur.u<1)}); }
-    var p=hid?null:posNow(k); if(p) L.dot=F.P(W(p[0],p[1]));
+    var p=posNow(k); if(p) L.dot=F.P(W(p[0],p[1]));
     ["al","fr"].forEach(function(sd){ PLANS[sd].cols.forEach(function(c){ if(c.forms.indexOf(k)>=0) L.routes.push({col:c.n,pts:c.route.map(function(q){ return F.P(W(q[0],q[1])); })}); }); });
     out.leaves.push(L); });
   var kmPx=F.s*GEOREF.UNITS_PER_KM, steps=[0.25,0.5,1,2,3,5], km=steps[0];
@@ -1841,6 +1842,8 @@ function dayTrackModel(id){
 /* the inset as DOM: a figure with the SVG and its key */
 function dayTrackEl(id){
   var M=dayTrackModel(id); if(!M) return null;
+  var R=LABELS.reading, hr=commandView!=="none"?EYES.LABEL[commandView]:"";
+  if(!M.leaves.length){ var f0=el("figure","daytrack"); f0.innerHTML='<figcaption class="dt-key">'+esc(R.noDay.replace("%c",fmtClock(clock)).replace("%r",hr))+'</figcaption>'; f0._model=M; return f0; }   /* Stage 8, 8A (decision 251) */
   var f=FORMATIONS[id], sd=sideOfNation(f.nation), P=TOKENS.sym.paperMap, ink=TOKENS.sym.label.paper.ink, side=TOKENS.sym.side[sd].deep, F=M.frame, leaf=!!f.track;
   var g='<rect x="0" y="0" width="'+DT.W+'" height="'+DT.H+'" fill="'+P.ground.field+'"/>';
   /* the ground, in world units under one transform: woods, villages, the meres, the streams */
@@ -1870,13 +1873,12 @@ function dayTrackEl(id){
     '<text x="'+dtNum(bx+M.bar.px+5)+'" y="'+(by+3.5)+'" font-size="11" fill="currentColor">'+M.bar.km+' km</text></g>';
   g+='<g class="dt-north"><line x1="'+(DT.W-12)+'" y1="20" x2="'+(DT.W-12)+'" y2="8" stroke="'+ink+'" stroke-width="1.4"/><path d="M'+(DT.W-15)+' 11 L'+(DT.W-12)+' 6 L'+(DT.W-9)+' 11 Z" fill="'+ink+'"/><text x="'+(DT.W-24)+'" y="18" font-size="11" fill="currentColor">N</text></g>';
   var fig=el("figure","daytrack");
-  var name=esc(f.name), hasRoute=M.leaves.some(function(L){ return L.routes.length; }), nHid=M.leaves.filter(function(L){ return L.hidden; }).length;
-  var R=LABELS.reading, hr=commandView!=="none"?EYES.LABEL[commandView]:"";
+  var name=esc(f.name), hasRoute=M.leaves.some(function(L){ return L.routes.length; }), nHid=M.hidden.length;
   fig.innerHTML='<div class="dt-map" style="background:'+P.ground.field+'"><svg viewBox="0 0 '+DT.W+' '+DT.H+'" style="color:'+ink+'" role="group" aria-label="'+name+': the plotted day, north up, scale bar '+M.bar.km+' km">'+g+'</svg></div>'+
     '<figcaption class="dt-key">'+(leaf?'Plotted positions (filled A, ring B, small ring C; a tick: an explicit time), the line between them interpolated'+(hasRoute?', the dashed line its ordered route':'')+
-        (nHid?'; '+esc(R.noDot.replace("%c",fmtClock(clock)).replace("%r",hr)):', the dot where it is at '+esc(fmtClock(clock)))+'.'
+        ', the dot where it is at '+esc(fmtClock(clock))+'.'
       :'Its formations\u2019 plotted days together (no aggregate track is drawn: an aggregate has no positions of its own)'+(hasRoute?'; dashed, their ordered routes':'')+
-        (nHid?'; '+esc(R.noDots.replace("%c",fmtClock(clock)).replace("%k",nHid).replace("%r",hr)):'')+'.')+'</figcaption>';
+        (nHid?'; '+esc(R.noDays.replace("%c",fmtClock(clock)).replace("%k",nHid).replace("%r",hr)):'')+'.')+'</figcaption>';
   fig.querySelectorAll(".dt-a").forEach(function(b,k){ if(k===0) b.tabIndex=0;
     function go(){ stopPlay(); setClock(+b.dataset.t); }
     b.addEventListener("click",go); b.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } }); });
@@ -5337,7 +5339,7 @@ var LABELS={
   reading:{unknown:"Not known to %r at %c", noCentre:"%u (a model reading): the map does not centre on it.",
     known:"the mean of the %k of its %n formations on the field known to %r; it need not be where any of them stands",
     known1:"the one of its %n formations on the field known to %r",
-    noDot:"its place at %c is not shown: not known to %r (a model reading)", noDots:"the places at %c of %k of them are not shown: not known to %r (a model reading)"},
+    noDay:"Its day is not shown: not known to %r at %c (a model reading).", noDays:"the days of %k of them are not shown: not known to %r at %c (a model reading)"},
   arrow:{unsettled:"disputed"},   /* owner decision 145 (question 145, 8 October 2026): the shorter form, so the 07:00 place name Augezd is drawn again */
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
      its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with the five glides of
@@ -6221,7 +6223,9 @@ function bindTimeTips(){
   tb.addEventListener("focusin",function(e){ var t=tipOf(e); TIP.focus=t;
     TIP.goneFocus=(t&&TIP.press===t&&Date.now()-TIP.pressT<1000)?t:null; tipSync(true); });
   tb.addEventListener("focusout",function(e){ var t=tipOf(e); if(t&&TIP.focus===t){ TIP.focus=null; TIP.goneFocus=null; } tipSync(true); });
-  tb.addEventListener("click",function(e){ var t=tipOf(e); if(!t) return; TIP.goneHover=t; TIP.goneFocus=t; tipSync(true); },true);
+  /* a click (a mouse's, a tap's or Enter's and Space's on the focused element) dismisses the tip it shows: the hover's if it is hovered, the
+     focus's if it has the focus; a tap's click, which no hover goes with, leaves a later mouse hover its tip */
+  tb.addEventListener("click",function(e){ var t=tipOf(e); if(!t) return; if(TIP.hover===t) TIP.goneHover=t; if(TIP.focus===t) TIP.goneFocus=t; tipSync(true); },true);
   tp.addEventListener("pointerover",function(){ clearTimeout(TIP.hideT); });
   tp.addEventListener("pointerout",function(){ tipSync(false); });
   /* Esc hides a shown tip and does nothing else (the review of 22c77ac: it also ran the app's Esc); a second Esc is the app's */
@@ -6741,8 +6745,9 @@ function dossierFormation(id){
   /* Stage 5G (section F.3): the formation's day as a small north-up map */
   var dtk=dayTrackEl(id);
   if(dtk){ var dsec=sect(f.track?"Its day":"Its formations\u2019 days","",false,"derived"); dsec.appendChild(dtk);
-    var dnote=el("p","dt-note","The formation\u2019s plotted day: anchors graded A/B/C as in the data; the lines between them are this reconstruction\u2019s interpolation, not a recorded route.");
-    dsec.appendChild(dnote); wrap.appendChild(dsec); }
+    if(dtk._model.leaves.length){ var dnote=el("p","dt-note","The formation\u2019s plotted day: anchors graded A/B/C as in the data; the lines between them are this reconstruction\u2019s interpolation, not a recorded route.");
+      dsec.appendChild(dnote); }   /* Stage 8, 8A: none under a reading that does not know it */
+    wrap.appendChild(dsec); }
 
   /* WHEN and WHAT */
   if(f.track){

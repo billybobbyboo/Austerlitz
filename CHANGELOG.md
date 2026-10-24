@@ -1,5 +1,46 @@
 # Austerlitz Command Map — Changelog
 
+## 2026-10 · Stage 8, implementation PR 8A: the carried fixes and the roads' and streams' ribbons (decisions 251 (a), 253 (b))
+
+**Status: built on `claude/blissful-clarke-9axnzp` (draft PR @@PR8A@@), for review; not merged.** Begun from `main` at `d86835e` (Stage 8 Part A,
+PR #64, merged; nothing merged since). "Implementation PR 8A" is the first of the eight pull requests of `docs/STAGE8_SPEC.md` §10's plan; it
+is not "Stage 8 Part A", the specification (§0.4). No data changed: `check:data` @@DATA8A@@. The build changed:
+`austerlitz-command-map.html` **@@SIZE8A@@ bytes, md5 `@@MD58A@@`** (was 2,220,714, `c4793156...`); `check:baseline` moved to it.
+
+- **The owner's decisions 239-253 recorded** (`docs/STAGE8_SPEC.md` §0.3, each with its qualifications; §0.3.1 reconciles them with the text in
+  fourteen points; §0.4 the names). The decisions for 8C-8H (240, 242-250, 252) set their direction and constraints only: nothing of them is
+  implemented. Implementation PR 8B (decisions 239 and 241) follows as a draft PR stacked on this branch.
+- **Decision 251 (a), expanded: what a reading may disclose.** Under "Whose eyes?" a formation the reading does not know is centred nowhere
+  (`focusOn` on `readPos`) and placed nowhere a visitor reads a place: the compact card's and the full dossier's position rows say "Not known to
+  Napoleon's headquarters at 08:30" (`readUnknown`, `LABELS.reading`), the full dossier offers no "Centre the map here" and says why, an
+  aggregate's midpoint is the mean of its known formations only and says so, the day-track draws none of an unknown formation's plotted day (no
+  place, leg, route or dot, none counted in the inset's frame) and says why, a place's "Formations nearby now" leaves it out (`placeNearby`), and
+  an open dossier is painted again when the reading or the clock changes what it would show (`drawerKey`). Reviewed and kept, disclosing no
+  place: an act's and an objective's text, the march row, the Timing row, the ordered route's distance, the plotted positions' clocks and grades,
+  the events (`docs/STAGE8_SPEC.md` §13.1).
+- **The sources one press from where a dossier opens.** "How this is sourced" under the head of every drawer dossier (the compact card, a
+  formation's, an event's, a place's, a chapter's, a terrain line's), in the part shown without scrolling; the button at its end kept.
+- **What a claim rests on.** The sources sheet's head list and its index of claims give each claim's works with their locators, each work's
+  side where the claim is disputed, and the claim's note (`claimWorks`, `claimDetail`): recorded in `narrative.js` since roadmap step 4 and shown
+  nowhere until now.
+- **The timeline's tips.** Shown by a hover (mouse or pen) or the keyboard focus, never by a touch; dismissed when the element is activated
+  (press, click, tap, Enter, Space) and back only with a new hover or focus; Esc hides a shown tip and does nothing else (`TIP`, `tipSync`).
+- **Decision 253 (b): the roads and the streams drawn.** `world.js`'s `ribbon` winds every triangle facing up and the ribbons' materials draw
+  both faces (a sliver lifted over a crest at 10.33x faces away from the eye: front-sided, 7% of one view's road edges were still culled).
+  Their widths are a display convention for each presentation, `RIBBON_W`, times the width each was built with: @@WIDTHS8A@@ No draw call and no
+  triangle added (the ribbons were submitted and culled before); the pixels they cover and their time: @@COST8A@@
+- **Checks that can fail (each made to fail by putting its fix back, `docs/STAGE8_SPEC.md` §13.4):** `runtime-test.js`'s readings and claims
+  blocks; the self-test's rendered ribbon checks (at 1x, 4x, 10.33x and on the paper map), its tips check and its dossiers' sources check (the
+  manifest @@MANIFEST8A@@); the harness's live block `tips` (real mouse, keys and a phone's taps) and the phone dossier's `srcHead`; the height
+  guard classifies the self-test's ribbon check. No existing assertion loosened and no limit moved.
+- **Tools (`tools/stage8/`, not bundled):** `ribbon-widths.js`, `compare-8.js`, `dossier-shots.js`, `pair-sheets.py`; `carried.js` and
+  `tools/stage7/lib.js` take another build and another Chromium (`AUSTERLITZ_HTML`, `AUSTERLITZ_CHROME`).
+- **Verified:** @@VERIFIED8A@@
+- **Environment.** The Playwright here (1.56) wants Chromium 1194; only Chromium 153 (`/opt/pw-browsers/chromium`, 1243) is installed, so every
+  page check ran on it through `AUSTERLITZ_CHROME` (step 6's records name Chromium 141). The unchanged build was measured again here first
+  (`check:visual`'s 39 cases) as the baseline the comparisons read.
+- **Uncertain or open:** @@OPEN8A@@
+
 ## 2026-10 · Stage 8 Part A: appearance and motion, the specification (the owner's notes L1-L5)
 
 **Status: written on `claude/festive-wozniak-vsbtqr` (draft PR #64), for review. No source file, no data file and no build changed:**

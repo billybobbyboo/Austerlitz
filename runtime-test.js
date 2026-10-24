@@ -994,7 +994,8 @@ try{
      does not know has no place anywhere the map gives one, the camera included. Every 30 minutes for both headquarters, every formation of the
      other side on the field: the centring (focusOn, as the dossier's button and the order of battle's rows call it) goes to readPos or nowhere;
      the card's "Where" and the full dossier's "Position at" say the reading's sentence (readUnknown) exactly when it does not know it, and the
-     full dossier then offers no "Centre the map here"; its day-track has no dot and no leg in progress; a place's "Formations nearby now" never
+     full dossier then offers no "Centre the map here"; its day-track draws nothing of its day (no plotted place, leg, route or dot, none in the
+     frame), and an aggregate's draws only the days of the formations the reading knows; a place's "Formations nearby now" never
      lists it. Every corps or column of that side with formations on the field: its midpoint the mean of its known formations (aggReading),
      their number said, or the sentence when none is known. An open dossier follows a change of the reading */
   { let nH=0, nK=0, nAgg=0, nPart=0, nPl=0, nFollow=0; const bad=[], mk=document.createElement, realCM=centreOnMap; let made=[], cm=null;
@@ -1016,13 +1017,15 @@ try{
               if(hf.indexOf(p)<0) bad.push(at+": "+id+"'s dossier does not say "+readUnknown());
               if(btn) bad.push(at+": "+id+"'s dossier offers to centre on it");
               if(hf.indexOf(esc(LABELS.reading.noCentre.replace("%u",readUnknown())))<0) bad.push(at+": "+id+"'s dossier does not say why it does not centre");
-              const M=dayTrackModel(id), L=M&&M.leaves[0];
-              if(L&&(L.dot||L.legs.some(lg=>lg.now))) bad.push(at+": "+id+"'s day-track draws its place at the clock"); }
+              const M=dayTrackModel(id);
+              if(!M||M.leaves.length||M.frame||M.hidden.indexOf(id)<0) bad.push(at+": "+id+"'s day-track draws its day ("+(M?M.leaves.length+" leaves, frame "+!!M.frame:"none")+")");
+              else if(hf.indexOf(esc(LABELS.reading.noDay.replace("%c",fmtClock(clock)).replace("%r",EYES.LABEL[cv])))<0) bad.push(at+": "+id+"'s dossier does not say why its day is not shown"); }
             else { nK++;
               if(hc.indexOf(w)>=0||hf.indexOf(p)>=0) bad.push(at+": "+id+" known, but its place withheld");
               if(!btn) bad.push(at+": "+id+" known, but its dossier offers no centring"); } });
           Object.keys(FORMATIONS).filter(id=>!FORMATIONS[id].track&&sideOfNation(FORMATIONS[id].nation)!==cv&&posNow(id)).forEach(id=>{ nAgg++;
-            const A=aggReading(id); made=[]; dossierFormation(id); const hf=html();
+            const A=aggReading(id); made=[]; dossierFormation(id); const hf=html(), MD=dayTrackModel(id);
+            if(MD&&MD.leaves.some(L=>readHidden(L.id))) bad.push(at+": "+id+"'s day-track draws the day of a formation the reading does not know");
             if(!A.p){ if(hf.indexOf('<dt>Midpoint at '+esc(fmtClock(clock))+'</dt><dd>'+esc(readUnknown())+'</dd>')<0) bad.push(at+": "+id+": none known, but its midpoint shown"); }
             else if(!A.whole){ nPart++;
               if(hf.indexOf(esc(nearestFeature(A.p)))<0||hf.indexOf(esc(EYES.LABEL[cv]))<0) bad.push(at+": "+id+": the midpoint is not its known formations' mean, named"); }
@@ -1039,7 +1042,7 @@ try{
     } finally { document.createElement=mk; centreOnMap=realCM; setCommandView("none"); }
     if(bad.length||!nH||!nK||!nAgg||!nPart||!nFollow) throw new Error("readings, the centring and the dossiers' places (decision 251): "+(bad.slice(0,6).join("; ")||"a case never met")+
       " ("+nH+" hidden, "+nK+" known, "+nAgg+" aggregates, "+nPart+" partly known, "+nFollow+" followed)");
-    console.log("Whose eyes, the centring and the dossiers' places (decision 251): "+nH+" formations withheld (no centring, the reading's sentence in the card and the dossier, no dot), "+
+    console.log("Whose eyes, the centring and the dossiers' places (decision 251): "+nH+" formations withheld (no centring, the reading's sentence in the card and the dossier, no day drawn), "+
       nK+" known at their reading's position; "+nAgg+" corps or columns ("+nPart+" at their known formations' mean); "+nPl+" places' nearby lists; an open dossier followed the reading OK"); }
 
   /* Stage 8, implementation PR 8A (decision 251): the sources sheet gives each claim as recorded: the index and a dossier's list carry every

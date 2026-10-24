@@ -4,7 +4,7 @@
    factor for their group (the streams with their banks; the roads with their edges) and for the presentation (the landscape, both
    perspective presentations; the paper map) times the width they were built with until 8A: display conventions. In each view the frame is
    captured with the ribbons culled ("off": their materials drawing only the back face, which since 8A faces down: what every build before
-   8A drew, the same draw calls and triangles), then at each candidate factor, set for the
+   8A drew, the same draw calls and triangles), then as built (both faces since 8A) at each candidate factor, set for the
    presentation shown and draped again (world.js drape); beside each frame its draw calls and triangles (renderer.info, every pass), the
    ribbons' pixels on screen (each kind painted a flat colour and counted, as tools/stage8/stream-vis.js counts them: stream magenta, bank
    cyan, road and road edge yellow), and the median time of five frames drawn (software WebGL: a CPU measure of the fragments added, not a
@@ -30,14 +30,14 @@ const HTML=path.resolve(process.env.AUSTERLITZ_HTML||path.join(L.ROOT,"austerlit
     await L.applyCase(page,v);
     await page.evaluate(()=>{ if(window.__rw) return;
       var rib=function(){ return DRAPED.filter(function(o){ var k=o.userData.drape&&o.userData.drape.kind; return k==="stream"||k==="bank"||k==="road"||k==="road edge"; }); };
-      window.__rw={W0:JSON.parse(JSON.stringify(RIBBON_W)), rib:rib,
+      window.__rw={W0:JSON.parse(JSON.stringify(RIBBON_W)), rib:rib, side0:rib().map(function(o){ return o.material.side; }),
         /* "off": the ribbons submitted and culled, as before 8A (their materials drawing the back face only, which now faces down) */
         set:function(k){ var M=DISPLAY.flat?"paper":"land";
-          rib().forEach(function(o){ var sd=(k==="off")?THREE.BackSide:THREE.FrontSide; if(o.material.side!==sd){ o.material.side=sd; o.material.needsUpdate=true; } });
+          rib().forEach(function(o,i){ var sd=(k==="off")?THREE.BackSide:window.__rw.side0[i]; if(o.material.side!==sd){ o.material.side=sd; o.material.needsUpdate=true; } });
           if(k!=="off"){ RIBBON_W[M].stream=+k; RIBBON_W[M].road=+k; DRAPED.forEach(drape); }
           requestRender(3); },
         reset:function(){ var W0=window.__rw.W0; ["land","paper"].forEach(function(M){ RIBBON_W[M].stream=W0[M].stream; RIBBON_W[M].road=W0[M].road; });
-          rib().forEach(function(o){ if(o.material.side!==THREE.FrontSide){ o.material.side=THREE.FrontSide; o.material.needsUpdate=true; } }); DRAPED.forEach(drape); requestRender(3); },
+          rib().forEach(function(o,i){ var sd=window.__rw.side0[i]; if(o.material.side!==sd){ o.material.side=sd; o.material.needsUpdate=true; } }); DRAPED.forEach(drape); requestRender(3); },
         cost:function(){ renderer.info.autoReset=false; renderer.info.reset(); renderFrame();
           var c={calls:renderer.info.render.calls, tris:renderer.info.render.triangles}, gl=renderer.getContext(), T=[];
           for(var i=0;i<5;i++){ var t0=performance.now(); renderFrame(); gl.finish(); T.push(performance.now()-t0); }
