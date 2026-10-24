@@ -1,0 +1,297 @@
+{
+ "build": "9e2af4e4a6d524020f249b7eabc14938",
+ "variants": [
+  "off",
+  "1",
+  "0.7",
+  "0.5",
+  "0.35"
+ ],
+ "views": {
+  "village-telnitz": {
+   "mode": "terrain",
+   "factor": 4,
+   "variants": {
+    "1": {
+     "calls": 741,
+     "tris": 2483571,
+     "ms": 11.2,
+     "px": {
+      "stream": 6117,
+      "bank": 4608,
+      "road": 147448
+     }
+    },
+    "off": {
+     "calls": 741,
+     "tris": 2483571,
+     "ms": 14.8,
+     "px": null
+    },
+    "0.7": {
+     "calls": 741,
+     "tris": 2483571,
+     "ms": 22.2,
+     "px": {
+      "stream": 5272,
+      "bank": 1922,
+      "road": 105118
+     }
+    },
+    "0.5": {
+     "calls": 741,
+     "tris": 2483571,
+     "ms": 15.8,
+     "px": {
+      "stream": 4060,
+      "bank": 1519,
+      "road": 75657
+     }
+    },
+    "0.35": {
+     "calls": 741,
+     "tris": 2483571,
+     "ms": 11.4,
+     "px": {
+      "stream": 2862,
+      "bank": 1151,
+      "road": 52682
+     }
+    }
+   },
+   "restored": {
+    "calls": 741,
+    "tris": 2483571,
+    "ms": 19.9
+   }
+  },
+  "village-sokolnitz": {
+   "mode": "terrain",
+   "factor": 4,
+   "variants": {
+    "1": {
+     "calls": 747,
+     "tris": 2474215,
+     "ms": 17.2,
+     "px": {
+      "stream": 32062,
+      "bank": 4277,
+      "road": 12325
+     }
+    },
+    "off": {
+     "calls": 747,
+     "tris": 2474215,
+     "ms": 11.8,
+     "px": null
+    },
+    "0.7": {
+     "calls": 747,
+     "tris": 2474215,
+     "ms": 16.1,
+     "px": {
+      "stream": 21360,
+      "bank": 3537,
+      "road": 9123
+     }
+    },
+    "0.5": {
+     "calls": 747,
+     "tris": 2474215,
+     "ms": 12,
+     "px": {
+      "stream": 14163,
+      "bank": 3840,
+      "road": 7050
+     }
+    },
+    "0.35": {
+     "calls": 747,
+     "tris": 2474215,
+     "ms": 18.1,
+     "px": {
+      "stream": 9555,
+      "bank": 2710,
+      "road": 5651
+     }
+    }
+   },
+   "restored": {
+    "calls": 747,
+    "tris": 2474215,
+    "ms": 13.3
+   }
+  },
+  "close-sokolnitz": {
+   "mode": "terrain",
+   "factor": 4,
+   "variants": {
+    "1": {
+     "calls": 781,
+     "tris": 2478149,
+     "ms": 9.5,
+     "px": {
+      "stream": 11245,
+      "bank": 7941,
+      "road": 20715
+     }
+    },
+    "off": {
+     "calls": 781,
+     "tris": 2478149,
+     "ms": 17,
+     "px": null
+    },
+    "0.7": {
+     "calls": 781,
+     "tris": 2478149,
+     "ms": 10.4,
+     "px": {
+      "stream": 8897,
+      "bank": 5570,
+      "road": 15048
+     }
+    },
+    "0.5": {
+     "calls": 781,
+     "tris": 2478149,
+     "ms": 21.8,
+     "px": {
+      "stream": 6636,
+      "bank": 4041,
+      "road": 10935
+     }
+    },
+    "0.35": {
+     "calls": 781,
+     "tris": 2478149,
+     "ms": 10.6,
+     "px": {
+      "stream": 4714,
+      "bank": 2449,
+      "road": 7724
+     }
+    }
+   },
+   "restored": {
+    "calls": 781,
+    "tris": 2478149,
+    "ms": 18.4
+   }
+  },
+  "goldbach-top": {
+   "mode": "terrain",
+   "factor": 4,
+   "variants": {
+    "1": {
+     "calls": 681,
+     "tris": 2477921,
+     "ms": 21.6,
+     "px": {
+      "stream": 27702,
+      "bank": 41020,
+      "road": 64955
+     }
+    },
+    "off": {
+     "calls": 681,
+     "tris": 2477921,
+     "ms": 41.9,
+     "px": null
+    },
+    "0.7": {
+     "calls": 681,
+     "tris": 2477921,
+     "ms": 10,
+     "px": {
+      "stream": 19799,
+      "bank": 33833,
+      "road": 46983
+     }
+    },
+    "0.5": {
+     "calls": 681,
+     "tris": 2477921,
+     "ms": 11.3,
+     "px": {
+      "stream": 14472,
+      "bank": 28089,
+      "road": 34375
+     }
+    },
+    "0.35": {
+     "calls": 681,
+     "tris": 2477921,
+     "ms": 15.9,
+     "px": {
+      "stream": 11144,
+      "bank": 19526,
+      "road": 25608
+     }
+    }
+   },
+   "restored": {
+    "calls": 681,
+    "tris": 2477921,
+    "ms": 22.9
+   }
+  },
+  "goldbach-noon": {
+   "mode": "terrain",
+   "factor": 4,
+   "variants": {
+    "1": {
+     "calls": 823,
+     "tris": 2509849,
+     "ms": 38.8,
+     "px": {
+      "stream": 3707,
+      "bank": 6379,
+      "road": 8751
+     }
+    },
+    "off": {
+     "calls": 823,
+     "tris": 2509849,
+     "ms": 20,
+     "px": null
+    },
+    "0.7": {
+     "calls": 823,
+     "tris": 2509849,
+     "ms": 23.5,
+     "px": {
+      "stream": 3309,
+      "bank": 5034,
+      "road": 6314
+     }
+    },
+    "0.5": {
+     "calls": 823,
+     "tris": 2509849,
+     "ms": 20.7,
+     "px": {
+      "stream": 2547,
+      "bank": 3919,
+      "road": 4810
+     }
+    },
+    "0.35": {
+     "calls": 823,
+     "tris": 2509849,
+     "ms": 27,
+     "px": {
+      "stream": 1873,
+      "bank": 3262,
+      "road": 3584
+     }
+    }
+   },
+   "restored": {
+    "calls": 823,
+    "tris": 2509849,
+    "ms": 25.9
+   }
+  }
+ }
+}

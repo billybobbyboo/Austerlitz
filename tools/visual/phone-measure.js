@@ -124,6 +124,13 @@
     var items=Array.prototype.slice.call(document.querySelectorAll("#maplayer .ml-item.on")), inF=0;
     items.forEach(function(e){ var r=e.getBoundingClientRect(); if(fr&&r.left>=fr[0]-0.5&&r.top>=fr[1]-0.5&&r.right<=fr[2]+0.5&&r.bottom<=fr[3]+0.5) inF++; });
     return {placed:items.length, inFree:inF, free:fr?fr.map(Math.round):null}; };
+  /* Stage 8, implementation PR 8A (decision 251): an open dossier's sources one press from where it opens: its head's "How this is sourced"
+     (.src-head) inside the dossier's visible part (the drawer's box, its scrolling body's and the screen's) as the dossier stands */
+  A.srcHead=function(){ var dr=document.getElementById("drawer"), body=document.getElementById("drawer-body");
+    if(!dr||!dr.classList.contains("on")||!vis(dr)) return {open:false};
+    var b=body&&body.querySelector(".src-head button"); if(!b) return {open:true, found:false};
+    var r=b.getBoundingClientRect(), vd=dr.getBoundingClientRect(), vb=body.getBoundingClientRect(), top=Math.max(vd.top,vb.top,0), bot=Math.min(vd.bottom,vb.bottom,innerHeight);
+    return {open:true, found:true, inView:r.width>0&&r.height>0&&r.top>=top-0.5&&r.bottom<=bot+0.5, top:Math.round(r.top), bottom:Math.round(r.bottom), box:[Math.round(top),Math.round(bot)], scrollTop:body.scrollTop}; };
   A.summary=function(){ var T=A.targets(), on=T.filter(function(t){ return !t.scrolled; }), ov=A.overlaps(), cut=A.cut(), reach=A.reach();
     return {targets:on.length, scrolled:T.length-on.length,
       fail2_5_8:on.filter(function(t){ return t.under24&&!t.spacingOk&&!t.evmark; }).map(function(t){ return t.el+" "+t.w+"x"+t.h+" '"+t.name+"'"; }),
@@ -132,6 +139,6 @@
       covered:on.filter(function(t){ return t.covered&&!t.evmark; }).map(function(t){ return t.el+" '"+t.name+"' under "+t.covered; }),
       outside:on.filter(function(t){ return t.outside; }).map(function(t){ return t.el+" '"+t.name+"'"+(t.offscreen?" (wholly off)":""); }),
       cut:cut.filter(function(c){ return c.why!=="wholly off the screen"; }), offScreenText:cut.filter(function(c){ return c.why==="wholly off the screen"; }).length,
-      overlaps:ov, panels:A.panels(), reach:reach, small:A.small(), framing:A.framing()}; };
+      overlaps:ov, panels:A.panels(), reach:reach, small:A.small(), framing:A.framing(), srcHead:A.srcHead()}; };
   window.__ph=A; return true;
 })();

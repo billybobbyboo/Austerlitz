@@ -11,7 +11,9 @@ const TR=require("../visual/three-route.js"), THREE_LOCAL=TR.THREE_LOCAL;   /* r
 const MEASURE=fs.readFileSync(path.join(ROOT,"tools","visual","measure.js"),"utf8");
 const TH=require(path.join(ROOT,"tools","visual","thresholds.js"));
 const EVID7=path.join(ROOT,"docs","stage7-evidence");
-async function launch(){ return chromium.launch({args:["--use-angle=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"]}); }
+/* AUSTERLITZ_CHROME, if set, names the Chromium to run, as the harness and check:contrast take it (Stage 8, implementation PR 8A: a container
+   whose Playwright finds no browser of its own pinned build) */
+async function launch(){ return chromium.launch({executablePath:process.env.AUSTERLITZ_CHROME||undefined,args:["--use-angle=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"]}); }
 /* o: {rm: emulate prefers-reduced-motion, harness: false to load without ?harness=1, transitions: true to keep CSS transitions} */
 async function open(browser,vp,o){
   o=o||{};

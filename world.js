@@ -1139,29 +1139,44 @@ function clearViewshed(){ vsMask=null; vsOrigin=null; applyGround(); }
    stands at its lift above groundY, the ground mesh itself, not the analytic height between its vertices; the vertices are
    RIBBON_STEP (0.5 world units, 31 m) apart along the line and across it, so the ribbon follows the 81 m triangles instead of
    cutting through them (at 1 unit, 30 edge midpoints still dipped under the ground at 10.33x; at 0.5, none: drape-2f.js); and
-   when the ground is redrawn (a display factor, the flat paper map) each vertex is draped again (drape). */
+   when the ground is redrawn (a display factor, the flat paper map) each vertex is draped again (drape).
+   Stage 8, implementation PR 8A (decision 253): each ribbon keeps its centre line (c, x and z per vertex) and each vertex's offset across it
+   per unit of half-width (n), and its base width (the width it was built with until 8A); drape lays it at the base width times RIBBON_W's
+   factor for its group (the streams with their banks, the roads with their edges) and for the ground drawn (the flat paper map, or the
+   landscape: both perspective presentations), so one mesh serves both. RIBBON_W's factors are DISPLAY CONVENTIONS, chosen for reading at the
+   distances each presentation is seen from, and not measured widths of the streams or the roads (docs/STAGE8_SPEC.md section 13.2): half the
+   widths they were built with, in both presentations, chosen against x1, x0.7 and x0.35 in matching views (tools/stage8/ribbon-widths.js; at
+   x1 the roads were wider than the houses beside them at 4x and the banks a band across the paper map's close view, at x0.35 the streams
+   threads at the Overview and on the whole paper map) */
 var DRAPED=[], RIBBON_STEP=0.5;
-function ribbon(scene,pts,width,yoff,mat,store,kind){
+var RIBBON_W={land:{stream:0.5, road:0.5}, paper:{stream:0.5, road:0.5}};
+function ribbonWidth(D){ return D.base*RIBBON_W[DISPLAY.flat?"paper":"land"][D.group]; }
+function ribbon(scene,pts,width,yoff,mat,store,kind,group){
   pts=resample(pts,RIBBON_STEP);
-  var m=Math.max(1,Math.ceil(width/RIBBON_STEP)), v=[], idx=[];
+  var wmax=width*Math.max(1,RIBBON_W.land[group],RIBBON_W.paper[group]), m=Math.max(1,Math.ceil(wmax/RIBBON_STEP)), nv=pts.length*(m+1);
+  var C=new Float32Array(nv*2), N=new Float32Array(nv*2), idx=[], q=0;
   for(var i=0;i<pts.length;i++){
     var a=pts[Math.max(0,i-1)], b=pts[Math.min(pts.length-1,i+1)];
-    var dx=b[0]-a[0], dz=b[1]-a[1], L=Math.sqrt(dx*dx+dz*dz)||1;
-    var nx=-dz/L*width/2, nz=dx/L*width/2;
-    for(var k=0;k<=m;k++){ var f=-1+2*k/m, x=pts[i][0]+nx*f, z=pts[i][1]+nz*f; v.push(x,groundY(x,z)+yoff,z); }
+    var dx=b[0]-a[0], dz=b[1]-a[1], L=Math.sqrt(dx*dx+dz*dz)||1, nx=-dz/L, nz=dx/L;
+    for(var k=0;k<=m;k++){ var f=-1+2*k/m; C[q]=pts[i][0]; C[q+1]=pts[i][1]; N[q]=nx*f; N[q+1]=nz*f; q+=2; }
   }
-  for(var j=0;j<pts.length-1;j++) for(k=0;k<m;k++){ var o=j*(m+1)+k, p=o+m+1; idx.push(o,p,o+1, o+1,p,p+1); }
+  /* Stage 8, implementation PR 8A (decision 253; docs/STAGE8_SPEC.md section 9.5): each triangle wound facing up (counter-clockwise seen from
+     above: its normal, and so its light, up), and its materials draw both faces (buildWater, buildRoads). Until 8A the order was (o, p, o+1):
+     every triangle faced down whatever the course's direction, and the front-sided materials let the renderer cull every road, bank and stream
+     ribbon in every view, the paper map's too */
+  for(var j=0;j<pts.length-1;j++) for(k=0;k<m;k++){ var o=j*(m+1)+k, p=o+m+1; idx.push(o,o+1,p, o+1,p+1,p); }
   var g=new THREE.BufferGeometry();
-  g.setAttribute("position",new THREE.Float32BufferAttribute(v,3));
-  g.setIndex(idx); g.computeVertexNormals();
+  g.setAttribute("position",new THREE.Float32BufferAttribute(new Float32Array(nv*3),3));
+  g.setIndex(idx);
   var mesh=new THREE.Mesh(g,mat); scene.add(mesh); if(store) store.push(mesh);
-  mesh.userData.drape={lift:yoff,kind:kind};
+  mesh.userData.drape={lift:yoff,kind:kind,group:group,base:width,c:C,n:N};
+  drape(mesh);
   DRAPED.push(mesh);
   return mesh;
 }
 function drape(o){
-  var P=o.geometry.attributes.position, lift=o.userData.drape.lift;
-  for(var i=0;i<P.count;i++) P.setY(i,groundY(P.getX(i),P.getZ(i))+lift);
+  var D=o.userData.drape, P=o.geometry.attributes.position, lift=D.lift, hw=ribbonWidth(D)/2, C=D.c, N=D.n;
+  for(var i=0;i<P.count;i++){ var x=C[2*i]+N[2*i]*hw, z=C[2*i+1]+N[2*i+1]*hw; P.setXYZ(i,x,groundY(x,z)+lift,z); }
   P.needsUpdate=true; o.geometry.computeVertexNormals(); if(o.geometry.computeBoundingSphere) o.geometry.computeBoundingSphere();
 }
 function resample(pts,step){
@@ -1204,27 +1219,29 @@ function buildWater(scene){
   }
   mere(SATS,28,10.5,-3.85);
   mere(MENI,23,9,-3.95);
-  var bankMat=matte({color:WATER_COL.bank,roughness:0.96});
-  var streamMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.stream),roughness:0.48,metalness:0.0,envMapIntensity:0.18});
-  ribbon(scene,GOLDBACH,4.6,0.16,bankMat,waterMeshes,"bank");
-  ribbon(scene,GOLDBACH,2.8,0.26,streamMat,waterMeshes,"stream");
-  ribbon(scene,LITAVA,5.0,0.16,bankMat,waterMeshes,"bank");
-  ribbon(scene,LITAVA,3.2,0.26,streamMat,waterMeshes,"stream");
+  /* Stage 8, implementation PR 8A (decision 253): the ribbons drawn on both faces (ribbon(): wound facing up), so that a sliver lifted over a
+     crest and facing away from the eye, which the 10.33x relief makes, is drawn as the rest of its ribbon is */
+  var bankMat=matte({color:WATER_COL.bank,roughness:0.96,side:THREE.DoubleSide});
+  var streamMat=new THREE.MeshStandardMaterial({color:lin(WATER_COL.stream),roughness:0.48,metalness:0.0,envMapIntensity:0.18,side:THREE.DoubleSide});
+  ribbon(scene,GOLDBACH,4.6,0.16,bankMat,waterMeshes,"bank","stream");
+  ribbon(scene,GOLDBACH,2.8,0.26,streamMat,waterMeshes,"stream","stream");
+  ribbon(scene,LITAVA,5.0,0.16,bankMat,waterMeshes,"bank","stream");
+  ribbon(scene,LITAVA,3.2,0.26,streamMat,waterMeshes,"stream","stream");
   BROOKS.forEach(function(b){
-    ribbon(scene,b,2.4,0.16,bankMat,waterMeshes,"bank");
-    ribbon(scene,b,1.4,0.26,streamMat,waterMeshes,"stream");
+    ribbon(scene,b,2.4,0.16,bankMat,waterMeshes,"bank","stream");
+    ribbon(scene,b,1.4,0.26,streamMat,waterMeshes,"stream","stream");
   });
 }
 function buildRoads(scene){
-  var hi=matte({color:LAND_COL.road.highway,roughness:0.94});
-  var po=matte({color:LAND_COL.road.post,roughness:0.94});
-  var tr=matte({color:LAND_COL.road.track,roughness:0.95});
-  var edge=matte({color:LAND_COL.road.edge,roughness:0.97});
+  var hi=matte({color:LAND_COL.road.highway,roughness:0.94,side:THREE.DoubleSide});   /* Stage 8, 8A: both faces, as the streams' (buildWater) */
+  var po=matte({color:LAND_COL.road.post,roughness:0.94,side:THREE.DoubleSide});
+  var tr=matte({color:LAND_COL.road.track,roughness:0.95,side:THREE.DoubleSide});
+  var edge=matte({color:LAND_COL.road.edge,roughness:0.97,side:THREE.DoubleSide});
   ROADS.forEach(function(r){
     var mat = r.cls==="highway"?hi : r.cls==="post"?po : tr;
     var pts=M2W(r.p);
-    ribbon(scene, pts, r.w+1.1, 0.26, edge, roadMeshes, "road edge");
-    ribbon(scene, pts, r.w, 0.34, mat, roadMeshes, "road");
+    ribbon(scene, pts, r.w+1.1, 0.26, edge, roadMeshes, "road edge", "road");
+    ribbon(scene, pts, r.w, 0.34, mat, roadMeshes, "road", "road");
   });
 }
 var _wallTex=null, _roofTex=null;

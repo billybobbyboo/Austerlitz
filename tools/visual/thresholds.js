@@ -359,7 +359,9 @@ module.exports.check=function(name,m,spec,opts){
       if(R.depth===0||R.depth===1) return; if(a&&R.depth!==null&&R.depth<=a.depth) return;
       f.push("the feature \u201c"+k+"\u201d is "+(R.depth===null?"not reachable ("+R.state+")":R.depth+" presses away ("+R.via+")")+": every feature on the screen or one named control away"); });
     const fm=PL.framing[name]; if(fm!==undefined&&P.framing.inFree<fm) f.push("framing: "+P.framing.inFree+" of the map layer's "+P.framing.placed+" items inside the free rectangle, below the floor "+fm);
-    const tm=PL.timeline[name]; if(tm!==undefined&&m.timeline&&m.timeline.height>tm) f.push("the timeline is "+m.timeline.height+" px tall (the phone's ceiling here "+tm+")"); }
+    const tm=PL.timeline[name]; if(tm!==undefined&&m.timeline&&m.timeline.height>tm) f.push("the timeline is "+m.timeline.height+" px tall (the phone's ceiling here "+tm+")");
+    /* Stage 8, implementation PR 8A (decision 251): a dossier open on a phone has its sources one press from where it opens (phone-measure.js srcHead) */
+    if(strict&&spec.phone==="dossier"){ const S=P.srcHead; if(!(S&&S.open&&S.found&&S.inView)) f.push("the dossier's head \u201cHow this is sourced\u201d not inside its visible part as it opens: "+JSON.stringify(S)); } }
   if(strict){ requirements(name,m,spec,LIM).forEach(x=>f.push(x)); expectState(name,m,spec).forEach(x=>f.push(x)); }
   return f;
 };
@@ -407,7 +409,8 @@ const REQUIRED_FEATURES={LANDCAM:"Stage 3D: the landscape camera, the real-input
   EYE:"Stage 5E: the eye-level vantage", frButtons:"Stage 7B: the first-run dialog", timelineRow:"Stage 3C: the timeline's control row",
   nowTab:"Stage 3B: the rail's Now tab", DWELL:"Stage 4D: the dwell", KEYS:"Stage 3E: the key table", SUN_DAY:"Stage 4B: the computed sun",
   ATMO:"Stage 4C: the atmosphere", SMOKE:"Stage 4E: smoke in puffs", settle:"Stage 0: AUSTERLITZ_DEBUG.settle",
-  applyCase:"Stage 0: AUSTERLITZ_DEBUG.applyCase", selfTest:"Stage 0: AUSTERLITZ_DEBUG.selfTest", SHORTCUTS:"roadmap step 3: the single-key shortcuts switch (decision 134)"};
+  applyCase:"Stage 0: AUSTERLITZ_DEBUG.applyCase", selfTest:"Stage 0: AUSTERLITZ_DEBUG.selfTest", SHORTCUTS:"roadmap step 3: the single-key shortcuts switch (decision 134)",
+  TIPS:"Stage 8, implementation PR 8A: the timeline's tips dismissed on activation, never shown by a touch (decision 251)"};
 module.exports.REQUIRED_FEATURES=REQUIRED_FEATURES;
 
 /* T-6: the vacuous edges. Watch's caption must show its derived reading (capDerived true) and the ordered routes must draw a route, in every
@@ -589,6 +592,26 @@ function checkLive(live,opts){
   if(req("shortcuts","the single-key shortcuts switch by real key presses (roadmap step 3, decision 134)")){ const S=live.shortcuts;
     if(!(S.onSwitch==="help-keys"&&S.off&&S.off.on===false&&S.off.pressed==="false"&&S.closed&&!S.closed.open&&S.closed.focus==="helpbtn"&&S.same===true&&S.space===true))
       f.push("the shortcuts switch by real key presses: "+JSON.stringify(S)); }
+  /* Stage 8, implementation PR 8A (decision 251; docs/STAGE8_SPEC.md section 9.3): the timeline's tips by real keys, a real mouse and a real tap
+     (harness.js "tips"): a tip shown on a keyboard focus and a mouse's hover, never after a tap; gone when its element is activated (Enter, a
+     click, a tap), one Esc then closing the dossier; back with a new focus or a new hover; Esc on a shown tip hides it and does nothing else;
+     with a marker focused, a hover over another shows that one's, and leaving it the focused one's again */
+  if(req("tips","the timeline's tips by real keys, mouse and touch (Stage 8, implementation PR 8A, decision 251)")){ const T=live.tips, b=[];
+    const is=(o,k)=>!!(o&&o.tip&&o.tip===o[k]), none=o=>!!(o&&o.tip===null);
+    if(!is(T.focus,"focusTip")) b.push("Tab to a marker showed no tip");
+    if(!(none(T.enter)&&/^e:/.test(T.enter.sel||""))) b.push("Enter on it: the dossier not opened, or its tip kept");
+    if(!(none(T.esc)&&T.esc.sel===null)) b.push("one Esc after it: the dossier not closed, or a tip shown");
+    if(!is(T.refocus,"focusTip")) b.push("a new focus showed no tip");
+    if(!(none(T.escTip)&&T.escTip.sel===null&&T.refocus&&T.escTip.focusTip===T.refocus.focusTip)) b.push("Esc on a shown tip did more than hide it");
+    if(!is(T.hover,"want")) b.push("a mouse over a phase showed no tip");
+    if(!none(T.click)) b.push("its click kept the tip");
+    if(!none(T.away)) b.push("a tip shown with the pointer away after the click");
+    if(!is(T.back,"want")) b.push("the mouse back over the phase showed no tip");
+    if(!is(T.mixFocus,"focusTip")||!is(T.mixHover,"want")) b.push("with a marker focused, a hover over another did not show that one's");
+    if(!(T.mixLeave&&T.mixLeave.tip&&T.mixLeave.tip===T.mixLeave.focusTip)) b.push("leaving it, the focused marker's tip not shown again");
+    if(!(none(T.mixEnter)&&/^e:/.test(T.mixEnter.sel||""))) b.push("Enter on the focused marker kept the tip or opened no dossier");
+    if(!(none(T.tap1)&&T.tap1.drawer===true&&none(T.tap3))) b.push("a tap on a phone showed a tip or opened no dossier");
+    if(b.length) f.push("the timeline's tips by real input: "+b.join("; ")+" "+JSON.stringify(T).slice(0,700)); }
   if(so) return f;
   if(req("dwell","the Watch view held in a dwell (Stage 4D)")){ const D=live.dwell, lim=LIM.DROP_LIMIT["pratzen-low"];
     if(D.E!==540||!(D.solid<=SOLID_BLACK)||(D.belowAA||[]).length||!(D.dropped<=lim)||!D.cap||!(D.lit>=1))
