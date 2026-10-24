@@ -3492,8 +3492,8 @@ function readPos(id){
   return aggReading(id).p;
 }
 /* Stage 8, implementation PR 8A (decision 251): under a headquarters reading a formation on the field that the reading does not know has no
-   place anywhere the map gives one: the camera's centring (focusOn), the dossier's place rows and midpoints (posRow), the day-track's dot and
-   its leg in progress (dayTrackModel). readHidden: a formation on the field the reading does not know (a corps or column: none of its
+   place anywhere the map gives one: the camera's centring (focusOn), the dossier's place rows and midpoints (posRow), its day-track (none of
+   its plotted day, dayTrackModel), a place's nearby list (placeNearby). readHidden: a formation on the field the reading does not know (a corps or column: none of its
    formations on the field known, aggReading); readUnknown: the sentence said in its place */
 function readHidden(id){
   if(commandView==="none"||!posNow(id)) return false;
