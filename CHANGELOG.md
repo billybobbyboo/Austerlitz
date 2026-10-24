@@ -2,7 +2,7 @@
 
 ## 2026-10 · Stage 8, implementation PR 8A: the carried fixes and the roads' and streams' ribbons (decisions 251 (a), 253 (b))
 
-**Status: built on `claude/blissful-clarke-9axnzp` (draft PR @@PR8A@@), for review; not merged.** Begun from `main` at `d86835e` (Stage 8 Part A,
+**Status: built on `claude/blissful-clarke-9axnzp` (draft PR #65), for review; not merged.** Begun from `main` at `d86835e` (Stage 8 Part A,
 PR #64, merged; nothing merged since). "Implementation PR 8A" is the first of the eight pull requests of `docs/STAGE8_SPEC.md` §10's plan; it
 is not "Stage 8 Part A", the specification (§0.4). No data changed: `check:data` @@DATA8A@@. The build changed:
 `austerlitz-command-map.html` **@@SIZE8A@@ bytes, md5 `@@MD58A@@`** (was 2,220,714, `c4793156...`); `check:baseline` moved to it.

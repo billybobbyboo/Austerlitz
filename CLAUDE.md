@@ -527,5 +527,5 @@ file, data or build changed; merged (#64). The owner decided questions 239-253 o
 §0.3, the points they settle §0.3.1, the names §0.4: "Stage 8 Part A" is the specification, "implementation PR 8A" to "8H" its plan's pull requests;
 the decisions for 8C-8H set direction and constraints only, nothing of them is implemented). Implementation PR 8A (decisions 251 (a), 253 (b):
 the readings' reach, the sources at every dossier's head, the claims' notes and sides, the tips; the roads' and streams' ribbons drawn, their
-widths a display convention; `docs/STAGE8_SPEC.md` §13) is built on `claude/blissful-clarke-9axnzp` (draft PR @@PR8A@@, for review). The next owner
+widths a display convention; `docs/STAGE8_SPEC.md` §13) is built on `claude/blissful-clarke-9axnzp` (draft PR #65, for review). The next owner
 decision is 254.
