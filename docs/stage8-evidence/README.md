@@ -61,10 +61,10 @@ software WebGL, 1600 x 900 unless named; the harness's captures on CI (Chromium 
 
 ## Implementation PR 8B (24 October 2026; `docs/STAGE8_SPEC.md` section 14)
 
-Made from implementation PR 8B's build (md5 `9b20dc4ca251e17ddb2468f98f920f38`, 2,317,927 bytes) against 8A's (`870caf24...`); the comparison on
-8B's build before its last two changes (`c260697e...`: the ground's patches grown in place of rebuilt, the self-test's outline checks passing on
-both builds; the movement arrows' casing a border on the landscape only, the paper map's arrows as before 8B), here in Chromium 153, software
-WebGL, 1600 x 900; the harness's captures on CI (Chromium 141). The scripts are in `tools/stage8/` (not bundled).
+Made from implementation PR 8B's build (md5 `9b20dc4ca251e17ddb2468f98f920f38`, 2,317,927 bytes) against 8A's (`870caf24...`), here in Chromium
+153, software WebGL, 1600 x 900 (three earlier runs of the comparison on 8B's build before its last two changes, `c260697e...`, gave the same
+draw calls, triangles, widths, sizes and cues; their times are in section 14.2); the harness's captures on CI (Chromium 141). The scripts are in
+`tools/stage8/` (not bundled).
 
 | path | made by | what |
 |---|---|---|

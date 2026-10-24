@@ -35,16 +35,18 @@ moved to it. The record is `docs/STAGE8_SPEC.md` §14.
   and the app has turned the renderer's count reset off since roadmap step 3): each now begins a frame of its own, 8A's ribbon check too; the
   app's own frames were never affected; `check:contrast`'s context-loss case past its bound on 8B's first build (256 warnings, Chromium's own
   cap, against `CTX_DELETES` 248): the outlines' ground patches, rebuilt whenever their cells changed in number, now grow and are never rebuilt
-  (`groundPatch`), 199 warnings here, the bound unchanged.
+  (`groundPatch`), 199 warnings here and 195 on CI, the bound unchanged.
 - **Measured (software WebGL here; the frame's cost on this machine's CPU, comparable between builds, not a GPU's):** in nine matching views
   (`tools/stage8/compare-8.js`, `docs/stage8-evidence/8b/compare/`): the widest movement arrow's casing 19-67.5 px on 8A, 15.3-15.5 on 8B (the
   lines of battle and the halt bar unchanged; on the paper map 6.3 px on both); the event glyphs 134.8-192 px to 64 and the objective markers
   65.5-123.8 px to 64 in the views where they were larger; in each landscape view the 31 formations drawn as figures outlined and none filled,
   but at the eye level, where 19 of the observer's side stay filled (decision 91); the paper map's 31 filled marks as before. Its cost: 147,088
   more triangles in a frame whose eye moved, and 2 more draw calls in seven of the eight landscape views (the ground's depth pass); the outlines'
-  patches from 1,934 fewer triangles to 20,942 more than 8A's filled marks; on the paper map nothing. With the eye moving, the low Pratzen view
-  took 2.7-3.0 ms more in each of three runs (9.2-9.9 ms on 8A, 11.9-12.9 on 8B, medians of five frames), the other views within their noise;
-  with the eye still no difference beyond the noise.
+  patches from 1,934 fewer triangles to 20,942 more than 8A's filled marks; on the paper map nothing. The frame's time on this CPU moves by
+  several milliseconds from run to run of the same builds: with the eye moving, the median of five frames in the low Pratzen view 9.2-10.2 ms on
+  8A and 10.1-12.9 on 8B over four runs (2.7-3.0 ms more in three on 8B's earlier build, 0.1 ms less on this one), in the other views from 6.1 ms
+  less to 9.3 ms more; the depth pass and the outlines may cost this CPU a millisecond or two, which these runs do not resolve; a GPU's cost is
+  for the device runs of 8D and 8H.
 - **Checks (each new one made to fail by putting its change back, `docs/STAGE8_SPEC.md` §14.4):** the self-test's manifest from 250 to 261
   (eleven added: the arrows' cap, opacities and ground hiding at 1x, 4x and 10.33x, the outlines unbroken on steep ground and every formation
   findable; seven renamed because the decisions change what they assert: 5B's marks draped and drawn at their grades, now the outlines, 6C's side

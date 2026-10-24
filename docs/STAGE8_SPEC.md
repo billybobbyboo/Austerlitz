@@ -1885,15 +1885,19 @@ figures keeps a ground cue, its outline, which is also decision 107's side cue);
   on the paper map at their authored size, as before.
 
 **What it costs (measured, software WebGL on this machine's CPU: comparable between the two builds, not a GPU's time; `tools/stage8/compare-8.js`,
-`docs/stage8-evidence/8b/compare/compare.json`, the build before the patches' change below).** In the eight landscape views compared, 147,088 more
+`docs/stage8-evidence/8b/compare/compare.json`, on this build; three earlier runs on 8B's build before its last two changes gave the same calls,
+triangles, widths and cues).** In the eight landscape views compared, 147,088 more
 triangles in a frame whose eye has moved, and 2 more draw calls in seven of them (close on Sokolnitz 781 on both): the ground's depth pass,
 the field and the apron drawn once more (its own JavaScript 0.1-0.6 ms). The outlines' patches against 8A's filled marks: from 1,934 fewer
 triangles to 20,942 more (each patch covers its footprint and the band's reach, where a filled mark covered its grade's extent); with
 Position confidence on, 670-9,956 more than with it off. On the paper map nothing (156 calls, 240,915 triangles, as on 8A).
-With the eye moving (the pass drawn in every frame), the low Pratzen view took 2.7-3.0 ms more in each of three runs (9.2-9.9 ms on 8A, 11.9-12.9
-on 8B, the median of five frames each); the Overview, close on Sokolnitz and the low view with counters moved within their noise (their medians
-+1.0, +1.1 and -2.9 ms). With the eye still (the pass kept) no difference beyond the noise. The cap's relayout runs only in a frame whose eye has
-moved. On a device's GPU these costs are for the device runs (section 8: 8D before, 8H after).
+The frame's time on this CPU moves by several milliseconds from run to run of the same builds. With the eye moving (the pass drawn in every
+frame), the median of five frames: in the low Pratzen view 9.2-10.2 ms on 8A and 10.1-12.9 ms on 8B over four runs (2.7-3.0 ms more in the
+three on 8B's earlier build, 0.1 ms less in the one on this build); at the Overview 11.7-15.7 ms against 12.3-22.6; close on Sokolnitz and in
+the low view with counters from 6.1 ms less to 5.1 ms more; in the other four views, measured in two runs, 0.4-2.2 ms more in both. With the eye
+still (the pass kept) no consistent difference. The depth pass and the outlines may cost this CPU a millisecond or two, which these runs do
+not resolve. The cap's relayout runs only in a frame whose eye has moved. What they cost a GPU is for the device runs (section 8: 8D before,
+8H after).
 
 **The ground's patches (found by the context-loss case, section 14.3).** A patch now keeps its geometry and grows it only when it needs more
 room (`groundPatch`); until 8B a patch whose cells changed in number was disposed and built again, which a moving formation does while the clock
@@ -1913,7 +1917,7 @@ plays.
   `CTX_DELETES`, 248) reached Chromium's own cap on 8B's first build (256 warnings and "too many errors", on CI and here; 8A's build 244 here):
   its arrows' casings carry three more attributes, and the outlines' patches, placed for every formation drawn as figures, were rebuilt whenever
   their cells changed in number. The patches now grow and are never rebuilt (`groundPatch`): at the case's clock step 404 buffers and vertex
-  arrays are deleted, against 884, and the case gives 199 warnings here. The bound is unchanged.
+  arrays are deleted, against 884, and the case gives 199 warnings here and 195 on CI. The bound is unchanged.
 - *The self-test's own renders drew the last frame's geometry.* three r128 uploads a changed geometry once a frame, and the app turns the
   renderer's automatic count reset off (since roadmap step 3: the frame resets it, so the developer readout can split the passes). A check that
   changes a geometry (the outlines laid again by `updateVisibility`, the arrows by the cap, the ribbons draped again for the paper map) and
