@@ -383,6 +383,25 @@ if(cerrs) process.exitCode=1;
   derr.forEach(e=>console.log("  ! "+e));
   console.log("typed data and derived tags: "+(derr.length?derr.length+" wrong":"the troops' and the standards' notes and the Dress type no measure or grade definition, the light no minutes; the place and march rows tagged by posRow and marchRow; paintSituation keeps no clock"));
   if(derr.length) process.exitCode=1; }
+/* Stage 8, implementation PR 8B (decision 241; docs/STAGE8_SPEC.md section 14): the decided values in place: the movement arrows' casing at most
+   16 px on screen and their fill at 0.62 of its opacity, the casing at its own; the event glyphs and the objective markers at most 64 px; the cap
+   and the fill on the movement arrows and their drawn-on parts only, the ground's test on every overlay ribbon and the lines' ticks */
+{
+  const src=fs.readFileSync('app.js','utf8'), aerr=[];
+  if(!/var ARROW_CAP=\{PX:16, Q:1\.1, OP:0\.62, M:0\.97\}/.test(src)) aerr.push("ARROW_CAP is not {PX:16, Q:1.1, OP:0.62, M:0.97}");
+  if(!/var ARROW_EDGE_OP=1;/.test(src)) aerr.push("the casing's opacity is not its own (ARROW_EDGE_OP 1)");
+  if(!/var SYM_MAX_PX=64, SYM_FADE=\[4,12\];/.test(src)) aerr.push("the glyphs' cap is not 64 px");
+  const caps=(src.match(/cap:true, fillOp:ARROW_CAP\.OP, edgeOp:ARROW_EDGE_OP, border:true, ground:true, role:"(arrow|drawon)"/g)||[]).length;
+  if(caps!==2) aerr.push("the cap, the fill and the bordered casing on "+caps+" drawers, not the arrows' and their drawn-on parts'");
+  if(/border:true[^}]*role:"(halt|line|bound)"/.test(src)) aerr.push("a line, boundary or halt bar has a bordered casing");
+  ["halt","line","bound"].forEach(r=>{ if(!new RegExp('ground:true,role:"'+r+'"\\}').test(src)) aerr.push("the "+r+"s are not tested against the ground"); });
+  if(/cap:true[^}]*role:"(halt|line|bound)"/.test(src)) aerr.push("a line, boundary or halt bar is capped");
+  if(!/lm\.onBeforeCompile=groundDepthHook;/.test(src)) aerr.push("the lines' ticks are not tested against the ground");
+  if(!/function groundDepthHook\(sh\)\{\n  atmoUniforms\(sh\);/.test(src)) aerr.push("the ground's hook drops the atmosphere's uniforms (a fogged tick drawn black)");
+  aerr.forEach(e=>console.log("  ! "+e));
+  console.log("arrows and glyphs (decision 241): "+(aerr.length?aerr.length+" wrong":"the cap 16 px, the fill 0.62 and the casing a border on the movement arrows and their drawn-on parts, the glyphs at 64 px, every overlay ribbon and tick tested against the ground"));
+  if(aerr.length) process.exitCode=1;
+}
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by
    a dash or a dotted line, and their colour is the side's from the tokens */
 {

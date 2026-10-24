@@ -954,6 +954,7 @@ try{
     if(!n||bad.length) throw new Error("spatial confidence on the paper map: "+bad.length+" of "+n+" formations without their grade's mark: "+bad.slice(0,4).join(", "));
     console.log("spatial confidence: off at first on the landscape, "+figs.length+" formations drawn as figures at 09:50 each outlined in its side's colour, none filled; on, each outlined at its grade; on at first on the paper map, "+n+" formations each with its grade's mark (decisions 85, 239) OK"); }
 
+
   /* Stage 5D (docs/STAGE5_SPEC.md section B.4; decision 90): the evidence skeleton, dry run. Off by default; on, at 09:50 with nothing
      selected, the legs whose window meets the phase and their anchors, each anchor's mask its grade's; the whole day every leg;
      switched off, nothing left */

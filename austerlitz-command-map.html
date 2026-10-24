@@ -8048,9 +8048,10 @@ var _cfV=new THREE.Vector3();
    (decision 34), a reported-only formation's C zone under a reading and the eye level's own side as its marks (decision 91). The pads stay.
    Widths and opacities are DESIGN VALUES (the Part A prototype's): px on screen */
 var OUTLINE={LINE:1.7, CASE:3.4, SEL_LINE:2.2, SEL_CASE:4.4, GRADE:{A:1.7,B:1.4,C:1.1}, OP:0.95, CASE_OP:0.55, LIFT:0.25, MARGIN:2, Q:1.15,
+  px:{value:1},   /* the target's pixels per CSS pixel (the effects' supersampling and the device's density), set by the frame: widths are CSS px */
   shown:{fr:false,al:false,sel:false,A:false,B:false,C:false}};
 var OUTLINE_VS="varying vec2 vUv;\nvoid main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }";
-var OUTLINE_FS=["uniform vec2 uSize; uniform vec2 uIn; uniform float uDisc; uniform float uLine; uniform float uCase; uniform float uOp; uniform float uCaseOp;",
+var OUTLINE_FS=["uniform vec2 uSize; uniform vec2 uIn; uniform float uDisc; uniform float uLine; uniform float uCase; uniform float uOp; uniform float uCaseOp; uniform float uPx;",
   "uniform vec3 uCol; uniform vec3 uEdge;",
   "varying vec2 vUv;",
   "void main(){",
@@ -8059,10 +8060,10 @@ var OUTLINE_FS=["uniform vec2 uSize; uniform vec2 uIn; uniform float uDisc; unif
   "  float e;",
   "  if(uDisc>0.5) e=length(p)-0.5*uIn.x;",
   "  else { vec2 q=abs(p)-0.5*uIn; e=length(max(q,0.0))+min(max(q.x,q.y),0.0); }",
-  "  float w=max(length(vec2(dFdx(e),dFdy(e))),1e-6), s=e/w;",   /* pixels outside the edge */
-  "  if(s<-0.75||s>uCase+0.75) discard;",
-  "  float band=smoothstep(-0.5,0.5,s)*(1.0-smoothstep(uCase-0.5,uCase+0.5,s));",   /* the casing, antialiased on both sides */
-  "  float line=1.0-smoothstep(0.5*uLine-0.5,0.5*uLine+0.5,abs(s-0.5*uCase));",      /* the line, centred in it */
+  "  float w=max(length(vec2(dFdx(e),dFdy(e))),1e-6), s=e/w, C=uCase*uPx, Lw=uLine*uPx;",   /* the target's pixels outside the edge; the widths in them */
+  "  if(s<-0.75||s>C+0.75) discard;",
+  "  float band=smoothstep(-0.5,0.5,s)*(1.0-smoothstep(C-0.5,C+0.5,s));",   /* the casing, antialiased on both sides */
+  "  float line=1.0-smoothstep(0.5*Lw-0.5,0.5*Lw+0.5,abs(s-0.5*C));",      /* the line, centred in it */
   "  gl_FragColor=vec4(mix(uEdge,uCol,line),band*mix(uCaseOp,uOp,line));",
   "  #include <tonemapping_fragment>",   /* as the built-in materials: the effects' linear target, or the standard path's tone map and sRGB */
   "  #include <encodings_fragment>",
@@ -8070,7 +8071,7 @@ var OUTLINE_FS=["uniform vec2 uSize; uniform vec2 uIn; uniform float uDisc; unif
 function makeOutline(){
   var m=new THREE.Mesh(new THREE.BufferGeometry(),new THREE.ShaderMaterial({vertexShader:OUTLINE_VS,fragmentShader:OUTLINE_FS,
     uniforms:{uSize:{value:new THREE.Vector2(1,1)},uIn:{value:new THREE.Vector2(1,1)},uDisc:{value:0},uLine:{value:OUTLINE.LINE},uCase:{value:OUTLINE.CASE},
-      uOp:{value:OUTLINE.OP},uCaseOp:{value:OUTLINE.CASE_OP},uCol:{value:new THREE.Color()},uEdge:{value:new THREE.Color()}},
+      uOp:{value:OUTLINE.OP},uCaseOp:{value:OUTLINE.CASE_OP},uCol:{value:new THREE.Color()},uEdge:{value:new THREE.Color()},uPx:OUTLINE.px},
     transparent:true,depthWrite:false,side:THREE.DoubleSide,extensions:{derivatives:true}}));
   m.renderOrder=4; m.frustumCulled=false; m.userData.outline={dims:"",key:""};
   return m;
@@ -8651,14 +8652,14 @@ function arrowPts(a){
    dashes (dashRuns); col, edge: fill and casing; lift; world: the points are already world x, z. Meshes go to `add`,
    materials to `mats`. */
 var CHEVRON_NOTCH=0.38;
-function drapeMesh(v,idx,col,op,lift,order,mats,kind,ground){
+function drapeMesh(v,idx,col,op,lift,order,mats,kind,ground,hook){
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute(v,3)); g.setIndex(idx);
   /* over woods and buildings, as the plan ribbons are: an annotation on the map, not an object in the landscape. Stage 8, implementation PR
      8B (decision 241): an overlay's arrow, line, boundary or halt bar (ground) is hidden by the drawn ground alone (GDEPTH), still over the
      figures, woods and buildings */
   var m=new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0,fog:false,depthWrite:false,depthTest:false,side:THREE.DoubleSide});
-  if(ground) m.onBeforeCompile=groundDepthHook;
+  if(hook) m.onBeforeCompile=hook; else if(ground) m.onBeforeCompile=groundDepthHook;   /* hook: a movement arrow's casing, a border (BORDER) */
   m.userData.op=op; mats.push(m);
   var mesh=new THREE.Mesh(g,m); mesh.renderOrder=order; mesh.userData.drape={lift:lift,kind:kind};
   return mesh;
@@ -8686,7 +8687,7 @@ function drapedRibbon(mapPts,o,add,mats){
   /* Stage 8, implementation PR 8B (decision 241): the movement arrows' fill at ARROW_CAP.OP of its opacity (o.fillOp), the casing's own
      (o.edgeOp, else unchanged) */
   [[1.34,o.edge,0.5*(o.edgeOp===undefined?1:o.edgeOp),-0.06],[1.0,o.col,1.0*(o.fillOp===undefined?1:o.fillOp),0]].forEach(function(layer,li){
-    var sc=layer[0], ly=lift+layer[3], v=[], idx=[], runsInfo=[];
+    var sc=layer[0], ly=lift+layer[3], v=[], idx=[], runsInfo=[], fs=[], bd=li===0&&!!o.border;
     var nRows=0;
     runs.forEach(function(r){
       var u0=r[0]*uEnd, u1=o.full?1:Math.min(r[1],1)*uEnd, n=Math.max(2,Math.ceil((u1-u0)*L/1.0));   /* o.full (Stage 4D): the shaft built to the end, drawn to uEnd when whole */
@@ -8697,16 +8698,22 @@ function drapedRibbon(mapPts,o,add,mats){
         var u=u0+(u1-u0)*i/n, pt=curve.getPointAt(u), tg=curve.getTangentAt(u), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1;
         nx/=nl; nz/=nl;
         var hw=(o.w0+(o.w1-o.w0)*(uT>0?Math.min(1,u/uT):0))*sc/2;
-        for(var k=0;k<=m;k++){ var f=-1+2*k/m, x=pt.x+nx*hw*f, z=pt.z+nz*hw*f; v.push(x,groundY(x,z)+ly,z); }
+        for(var k=0;k<=m;k++){ var f=-1+2*k/m, x=pt.x+nx*hw*f, z=pt.z+nz*hw*f; v.push(x,groundY(x,z)+ly,z); fs.push(f); }
       }
       for(i=0;i<n;i++) for(k=0;k<m;k++){ var a=first+i*(m+1)+k, b=a+m+1; idx.push(a,b,a+1, a+1,b,b+1); }
     });
-    var sh=drapeMesh(v,idx,layer[1],layer[2],ly,12+li+ord,mats,"shaft",o.ground), lay={shaft:sh,cols:Math.max(2,Math.ceil(Math.max(o.w0,o.w1)*sc/1.0)),rows:nRows,sc:sc,ly:ly,w0:o.w0,w1:o.w1,uT:uT,runsInfo:runsInfo};
+    var sh=drapeMesh(v,idx,layer[1],layer[2],ly,12+li+ord,mats,"shaft",o.ground,bd?borderShaftHook:null), lay={shaft:sh,cols:Math.max(2,Math.ceil(Math.max(o.w0,o.w1)*sc/1.0)),rows:nRows,sc:sc,ly:ly,w0:o.w0,w1:o.w1,uT:uT,runsInfo:runsInfo};
+    if(bd) sh.geometry.setAttribute("aF",new THREE.Float32BufferAttribute(fs,1));   /* Stage 8, 8B: each vertex's place across the casing */
+    if(li===1&&o.fillOp!==undefined) sh.material.userData.paperK=1/o.fillOp;   /* Stage 8, 8B: on the paper map the fill as before (applyOverlayOpacity) */
     add(sh); out.layers.push(lay);
     if(o.full) shaftEnd(lay,curve,L,uT,uEnd);
     if(o.head){
       var H=ribbonHead(curve,1,headL,headW,sc,ly,o.head);
-      var hm=drapeMesh(H.v,H.idx,layer[1],layer[2],ly,14+li+ord,mats,"head",o.ground);
+      var hm=drapeMesh(H.v,H.idx,layer[1],layer[2],ly,14+li+ord,mats,"head",o.ground,bd?borderHeadHook:null);
+      if(bd){ var Hf=ribbonHead(curve,1,headL,headW,1,ly,o.head), aD=[], aE=[];   /* Stage 8, 8B: each vertex against the fill head's edges */
+        for(var hv=0;hv<H.v.length;hv+=3){ var dd=headInside(Hf,headW,H.v[hv],H.v[hv+2]); aD.push(dd[0],dd[1],dd[2]); aE.push(dd[3],dd[4]); }
+        hm.geometry.setAttribute("aD",new THREE.Float32BufferAttribute(aD,3)); hm.geometry.setAttribute("aE",new THREE.Float32BufferAttribute(aE,2)); }
+      if(li===1&&o.fillOp!==undefined) hm.material.userData.paperK=1/o.fillOp;
       hm.userData.head=o.head; hm.userData.side=li===1?o.side:null; hm.userData.tip=H.tip; hm.userData.base=H.base; if(H.notch) hm.userData.notch=H.notch;
       add(hm); lay.head=hm;
       if(li===0&&o.heads) o.heads.push(hm);   /* the casing's head mesh: labels keep clear of it (2D) */
@@ -8724,40 +8731,63 @@ function drapedRibbon(mapPts,o,add,mats){
    point, the factor quantised down in steps of Q (so the casing stays at or under the cap and the ribbon is laid again only when the scale
    has moved by more than a step); a ribbon whose factors changed is laid again in place (ribbonRelayout: the same vertices, draped at the
    new widths). On the paper map nothing is capped (one scale across the plan; its widths unchanged). PX and Q are DESIGN VALUES (Part A's
-   prototype's PX; decision 241). The fill is drawn at OP of its opacity (decision 241) */
-var ARROW_CAP={PX:16, Q:1.1, OP:0.62}, CAPPED=[], CAP={key:null, n:0, relaid:0};
+   prototype's PX; decision 241); M, the margin under PX each row is aimed at (a row between two of the points read, and the perspective's
+   curvature across a casing seen off the axis), and Q are design values. The fill is drawn at OP of its opacity (decision 241) */
+var ARROW_CAP={PX:16, Q:1.1, OP:0.62, M:0.97}, CAPPED=[], CAP={key:null, n:0, relaid:0};
 /* the casing's own opacity: 8B keeps it (decision 241 lowers the fill; docs/STAGE8_SPEC.md 0.3.1 item 5 and section 14) */
 var ARROW_EDGE_OP=1;
 function capQuant(k){ return !(k<1)?1:Math.pow(ARROW_CAP.Q,Math.floor(Math.log(Math.max(k,1e-6))/Math.log(ARROW_CAP.Q)+1e-9)); }   /* not a number: 1, never capped */
-/* a capped ribbon's centre line on the drawn ground, every unit of its length (x, y, z), with its casing's width there as built, edge to edge
-   on the drawn ground (its rise across a slope counted). Built once: the overlays are built again when the display factor changes */
+/* a capped ribbon's casing as built, every unit of its length: its two edges on the drawn ground at its lift (x, y, z each). Built once: the
+   overlays are built again when the display factor changes */
 function capPts(R){
-  var o=R.o, n=Math.max(2,Math.ceil(R.len)), P=new Float32Array((n+1)*4), uT=o.uTaper||R.uEnd0;
-  for(var j=0;j<=n;j++){ var u=j/n, pt=R.curve.getPointAt(u), tg=R.curve.getTangentAt(u), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1, wc=(o.w0+(o.w1-o.w0)*(uT>0?Math.min(1,u/uT):0))*1.34, h=wc/2;
+  var o=R.o, n=Math.max(2,Math.ceil(R.len)), P=new Float32Array((n+1)*6), uT=o.uTaper||R.uEnd0;
+  for(var j=0;j<=n;j++){ var u=j/n, pt=R.curve.getPointAt(u), tg=R.curve.getTangentAt(u), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1, h=(o.w0+(o.w1-o.w0)*(uT>0?Math.min(1,u/uT):0))*1.34/2;
     nx/=nl; nz/=nl;
-    P[j*4]=pt.x; P[j*4+1]=groundY(pt.x,pt.z)+o.lift; P[j*4+2]=pt.z; P[j*4+3]=Math.hypot(wc,groundY(pt.x+nx*h,pt.z+nz*h)-groundY(pt.x-nx*h,pt.z-nz*h)); }
+    var xl=pt.x+nx*h, zl=pt.z+nz*h, xr=pt.x-nx*h, zr=pt.z-nz*h;
+    P[j*6]=xl; P[j*6+1]=groundY(xl,zl)+o.lift; P[j*6+2]=zl; P[j*6+3]=xr; P[j*6+4]=groundY(xr,zr)+o.lift; P[j*6+5]=zr; }
   return P;
 }
-/* the cap's factor along ribbon R at each of its points: the casing's width there against ARROW_CAP.PX at the distance of its nearer edge from
-   the eye at worst (the centre's distance less half the width; worldPerPx's own rule), quantised down; a row wholly behind the eye keeps 1 */
+/* the cap's factor along ribbon R at each of its points: ARROW_CAP.PX (less the margin M, for a row between two points and the perspective's
+   curvature) over the casing's length on screen there as built, its two edges projected through the eye (a casing seen across the line of
+   sight and one seen receding off the axis alike), quantised down; a row wholly behind the eye keeps 1, a row it passes through is as thin as
+   the quantisation goes */
+var _capM=new THREE.Matrix4();
 function capFactors(R){
-  var P=R.cp, n=P.length/4, K=new Array(n), m=camera.matrixWorldInverse.elements, f=2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))/viewH();
-  for(var j=0;j<n;j++){ var x=P[j*4], y=P[j*4+1], z=P[j*4+2], w3=P[j*4+3], d=-(m[2]*x+m[6]*y+m[10]*z+m[14]);
-    K[j]=!(w3>0)||!isFinite(d)||d+w3/2<=0?1:capQuant(ARROW_CAP.PX*Math.max(d-w3/2,1e-3)*f/w3); }
+  var P=R.cp, n=P.length/6, K=new Array(n), M=_capM.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse).elements,
+      W2=(renderer.domElement.clientWidth||innerWidth)/2, H2=viewH()/2, nr=camera.near;
+  for(var j=0;j<n;j++){ var o=j*6, xa=P[o], ya=P[o+1], za=P[o+2], xb=P[o+3], yb=P[o+4], zb=P[o+5];
+    var wa=M[3]*xa+M[7]*ya+M[11]*za+M[15], wb=M[3]*xb+M[7]*yb+M[11]*zb+M[15];
+    if(!(isFinite(wa)&&isFinite(wb))||(wa<=nr&&wb<=nr)){ K[j]=1; continue; }
+    if(wa<=nr||wb<=nr){ K[j]=capQuant(0); continue; }
+    var ax=(M[0]*xa+M[4]*ya+M[8]*za+M[12])/wa*W2, ay=(M[1]*xa+M[5]*ya+M[9]*za+M[13])/wa*H2,
+        bx=(M[0]*xb+M[4]*yb+M[8]*zb+M[12])/wb*W2, by=(M[1]*xb+M[5]*yb+M[9]*zb+M[13])/wb*H2, Lp=Math.hypot(ax-bx,ay-by);
+    K[j]=Lp>0?capQuant(ARROW_CAP.PX*ARROW_CAP.M/Lp):1; }
   return K;
 }
 function capAt(K,u){ var n=K.length-1, x=Math.max(0,Math.min(n,u*n)), i=Math.floor(x), j=Math.min(n,i+1); return Math.min(K[i],K[j]); }
 /* lay ribbon R again at the cap's factors K (null: none), its head at the factor at its base */
+/* the rows' places on the curve for a shaft ending at uEnd (each row's centre, its normal and its arc length), the same for both layers:
+   read from the curve once for each uEnd the cap gives (the head's factor takes few values), so that laying a ribbon again as the eye moves
+   costs only its vertices' heights on the drawn ground */
+function capRows(R,uEnd){
+  var key=uEnd.toFixed(6), C=R.rowCache||(R.rowCache={}); if(C[key]) return C[key];
+  var o=R.o, out=R.layers[0].runsInfo.map(function(ri){ var u0=ri.r0*uEnd, u1=o.full?1:Math.min(ri.r1,1)*uEnd, n=ri.n, P=new Float32Array((n+1)*5);
+    for(var i=0;i<=n;i++){ var u=u0+(u1-u0)*i/n, pt=R.curve.getPointAt(u), tg=R.curve.getTangentAt(u), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1;
+      P[i*5]=pt.x; P[i*5+1]=pt.z; P[i*5+2]=nx/nl; P[i*5+3]=nz/nl; P[i*5+4]=u; }
+    return P; });
+  C[key]=out; return out;
+}
 function ribbonRelayout(R,K){
   var o=R.o, L=R.len, curve=R.curve, kH=K?capAt(K,R.uEnd0):1, headL=R.headL0*kH, headW=R.headW0*kH, uEnd=(L-headL)/L, uT=o.uTaper||uEnd;
   R.Ks=K; R.uEnd=uEnd; R.headL=headL; R.headW=headW;
+  var rows=capRows(R,uEnd);
   R.layers.forEach(function(lay){
     var A=lay.shaft.geometry.attributes.position, arr=A.array, m=lay.cols;
     lay.moved=null; lay.uT=uT; lay.kAt=K?function(u){ return capAt(K,u); }:null;
-    lay.runsInfo.forEach(function(ri){ var u0=ri.r0*uEnd, u1=o.full?1:Math.min(ri.r1,1)*uEnd;
-      for(var i=0;i<=ri.n;i++){ var u=u0+(u1-u0)*i/ri.n, pt=curve.getPointAt(u), tg=curve.getTangentAt(u), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1;
-        nx/=nl; nz/=nl; var hw=(o.w0+(o.w1-o.w0)*(uT>0?Math.min(1,u/uT):0))*lay.sc/2*(K?capAt(K,u):1);
-        for(var k=0;k<=m;k++){ var f=-1+2*k/m, x=pt.x+nx*hw*f, z=pt.z+nz*hw*f, q=(ri.first+i*(m+1)+k)*3; arr[q]=x; arr[q+1]=groundY(x,z)+lay.ly; arr[q+2]=z; } } });
+    lay.runsInfo.forEach(function(ri,rk){ var P=rows[rk];
+      for(var i=0;i<=ri.n;i++){ var cx=P[i*5], cz=P[i*5+1], nx=P[i*5+2], nz=P[i*5+3], u=P[i*5+4];
+        var hw=(o.w0+(o.w1-o.w0)*(uT>0?Math.min(1,u/uT):0))*lay.sc/2*(K?capAt(K,u):1);
+        for(var k=0;k<=m;k++){ var f=-1+2*k/m, x=cx+nx*hw*f, z=cz+nz*hw*f, q=(ri.first+i*(m+1)+k)*3; arr[q]=x; arr[q+1]=groundY(x,z)+lay.ly; arr[q+2]=z; } } });
     A.needsUpdate=true; lay.shaft.geometry.boundingSphere=null;
     if(o.full) shaftEnd(lay,curve,L,uT,lay.endU!==undefined?lay.endU:uEnd);
     if(lay.head){ var H=ribbonHead(curve,1,headL,headW,lay.sc,lay.ly,o.head), hg=lay.head.geometry, hp=hg.attributes.position;
@@ -8805,6 +8835,30 @@ function groundDepthHook(sh){
     "    if(zf>zg*1.002+0.25) discard;",   /* the ground in front, beyond the depth's precision at that distance */
     "  }"].join("\n"));
 }
+/* ---- Stage 8, implementation PR 8B (decision 241; docs/STAGE8_SPEC.md 0.3.1 item 5 and section 14): a movement arrow's casing a border ----
+   Until 8B a ribbon's casing (1.34 times its width, in the edge colour at half its opacity) lay under the whole of its fill, drawn at 95%,
+   and showed only at the edges. With the fill at ARROW_CAP.OP the casing under it would show through and darken the side's colour; so a
+   movement arrow's casing, and its drawn-on part's (o.border), leaves out what its fill covers, less a tuck of BORDER.TUCK (so that no seam
+   of ground shows between them): its shaft by each vertex's place across it (aF, -1 to 1: the fill covers BORDER.IN of its half-width), its
+   head by each vertex's signed distances to the fill head's edges (aD, aE, the head's width the unit; the cap scales both heads about the
+   arrow's end, which leaves them unchanged). The geometry is the casing's as before (the label layer's obstacles, the measures). What is
+   seen: the fill over the ground at its opacity, edged by its casing. BORDER.TUCK is a design value */
+var BORDER={IN:1/1.34, TUCK:0.02};
+function borderShaftHook(sh){ groundDepthHook(sh);
+  sh.vertexShader=sh.vertexShader.replace("void main() {","attribute float aF; varying float vF;\nvoid main() {\n  vF=aF;");
+  sh.fragmentShader=sh.fragmentShader.replace("void main() {","varying float vF;\nvoid main() {\n  if(abs(vF)<"+(BORDER.IN-BORDER.TUCK).toFixed(4)+") discard;");
+}
+function borderHeadHook(sh){ groundDepthHook(sh);
+  sh.vertexShader=sh.vertexShader.replace("void main() {","attribute vec3 aD; attribute vec2 aE; varying vec3 vD; varying vec2 vE;\nvoid main() {\n  vD=aD; vE=aE;");
+  sh.fragmentShader=sh.fragmentShader.replace("void main() {","varying vec3 vD; varying vec2 vE;\nvoid main() {\n  if(min(min(vD.x,vD.y),vD.z)>"+BORDER.TUCK.toFixed(4)+"&&max(vE.x,vE.y)>"+BORDER.TUCK.toFixed(4)+") discard;");
+}
+/* a point's signed distances (inside positive) to the fill head Hf's edges, its width the unit: the triangle's three (tip to left, the base,
+   right to tip) and, for the Allied chevron, the notch's two (positive on the tip's side; inside the head where one of them is) */
+function headInside(Hf,headW,x,z){
+  var T=Hf.tip, Lp=Hf.base[0], Rp=Hf.base[1], N=Hf.notch, c=[(T[0]+Lp[0]+Rp[0])/3,(T[1]+Lp[1]+Rp[1])/3];
+  function sd(A,B,ref){ var ex=B[0]-A[0], ez=B[1]-A[1], l=Math.hypot(ex,ez)||1, s=(ex*(z-A[1])-ez*(x-A[0]))/l, sr=ex*(ref[1]-A[1])-ez*(ref[0]-A[0]); return (sr>=0?s:-s)/(headW||1); }
+  return [sd(T,Lp,c),sd(Lp,Rp,c),sd(Rp,T,c),N?sd(Lp,N,T):1,N?sd(N,Rp,T):1];
+}
 /* the ground's depth for a frame of w x h drawn with `camera`; returns whether the test is on for it */
 function gdepthPass(w,h){
   var U=GDEPTH.u; U.uGroundOn.value=0;
@@ -8821,11 +8875,12 @@ function gdepthPass(w,h){
   }
   camera.updateMatrixWorld();
   var key=Array.prototype.join.call(camera.matrixWorld.elements,",")+"|"+Array.prototype.join.call(camera.projectionMatrix.elements,",")+"|"+w+"x"+h+"|"+
-    DISPLAY.factor+"|"+groundMesh.geometry.uuid+"|"+(apronMesh?apronMesh.geometry.uuid+(apronMesh.visible?"":"h"):"");
+    DISPLAY.factor+"|"+groundMesh.geometry.uuid+"|"+apronMesh.geometry.uuid;
   if(key!==GDEPTH.key){
     var t0=performance.now(), cc=renderer.getClearColor(new THREE.Color()), ca=renderer.getClearAlpha(), rt0=renderer.getRenderTarget(), tr0=renderer.info.render.triangles;
-    GDEPTH.field.geometry=groundMesh.geometry; GDEPTH.field.matrixWorld.copy(groundMesh.matrixWorld); GDEPTH.field.visible=groundMesh.visible;
-    GDEPTH.apron.geometry=apronMesh.geometry; GDEPTH.apron.matrixWorld.copy(apronMesh.matrixWorld); GDEPTH.apron.visible=apronMesh.visible;
+    /* the field and the apron as drawn (the app never hides either on the landscape; a test that hides them to draw something alone keeps them here) */
+    GDEPTH.field.geometry=groundMesh.geometry; GDEPTH.field.matrixWorld.copy(groundMesh.matrixWorld);
+    GDEPTH.apron.geometry=apronMesh.geometry; GDEPTH.apron.matrixWorld.copy(apronMesh.matrixWorld);
     if(GDEPTH.rt.width!==w||GDEPTH.rt.height!==h) GDEPTH.rt.setSize(w,h);
     renderer.setRenderTarget(GDEPTH.rt); renderer.setClearColor(0xffffff,1); renderer.clear();
     renderer.render(GDEPTH.scene,camera);
@@ -8872,7 +8927,7 @@ function buildArrow(a){
   var r=drapedRibbon(pts,{w0:w[0],w1:w[1],side:a.side,head:a.side==="al"?"chevron":"plain",headW:7.5,headL:6.5,heads:ovHeads,
     runs:a.kind==="axis"?dashRuns(9,0.62):null,   /* an intended route: broken; a retreat happened, so it is solid */
     dense:a.leg?2:0,   /* Stage 4D: a derived arrow kept to its path (its drawn-on part follows the formation) */
-    cap:true, fillOp:ARROW_CAP.OP, edgeOp:ARROW_EDGE_OP, ground:true, role:"arrow",   /* Stage 8, 8B (decision 241) */
+    cap:true, fillOp:ARROW_CAP.OP, edgeOp:ARROW_EDGE_OP, border:true, ground:true, role:"arrow",   /* Stage 8, 8B (decision 241) */
     col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
   var mid=r.curve.getPointAt(0.5);
   /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): an arrow the data marks unsettled (OVERLAYS' interp) carries its mark where its label is read */
@@ -9005,7 +9060,7 @@ function drawOnArrows(){
 var DRAWON_GHOST=0.4;
 function drawOnRibbon(pts,w,col,S,g){
   var r=drapedRibbon(pts,{w0:w[0],w1:w[1],side:null,head:null,full:true,dense:2,uTaper:g.uEnd,order:4,
-    cap:true, fillOp:ARROW_CAP.OP, edgeOp:ARROW_EDGE_OP, ground:true, role:"drawon",   /* Stage 8, 8B (decision 241): as its arrow */
+    cap:true, fillOp:ARROW_CAP.OP, edgeOp:ARROW_EDGE_OP, border:true, ground:true, role:"drawon",   /* Stage 8, 8B (decision 241): as its arrow */
     col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
   g.layers.forEach(function(lay){ [lay.shaft,lay.head].forEach(function(m){ if(m) m.material.userData.op0=m.material.userData.op; }); });
   return r;
@@ -9018,9 +9073,9 @@ function drawOnApply(d){
 }
 function applyOverlayOpacity(){
   var base=layerOn.arrows?0.95:0;
-  var i;
-  for(i=0;i<overlayMats.length;i++) overlayMats[i].opacity=base*ovFadeIn*(overlayMats[i].userData.op||1);
-  for(i=0;i<oldMats.length;i++) oldMats[i].opacity=0.9*ovFadeOut*(oldMats[i].userData.op||1);
+  var i, paper=(mode==="staff");   /* Stage 8, 8B (decision 241): a movement arrow's fill at ARROW_CAP.OP in the perspective presentations; on the paper map as before (paperK) */
+  for(i=0;i<overlayMats.length;i++) overlayMats[i].opacity=base*ovFadeIn*(overlayMats[i].userData.op||1)*(paper&&overlayMats[i].userData.paperK||1);
+  for(i=0;i<oldMats.length;i++) oldMats[i].opacity=0.9*ovFadeOut*(oldMats[i].userData.op||1)*(paper&&oldMats[i].userData.paperK||1);
 }
 
 /* ============================================================
@@ -9549,6 +9604,7 @@ function renderFX(){
   var t0=performance.now();
   camera.layers.set(LAYER_WORLD);
   gdepthPass(FX.rtScene.width,FX.rtScene.height);   /* Stage 8, 8B (decision 241): the ground's own depth, for the overlays */
+  OUTLINE.px.value=FX.rtScene.width/(renderer.domElement.clientWidth||innerWidth);   /* Stage 8, 8B: the outlines' widths in CSS px */
   renderer.setRenderTarget(FX.rtScene);
   renderer.clear();
   renderer.render(scene,camera);
@@ -9622,6 +9678,7 @@ function setFXEnabled(on){
 function renderStandard(){
   camera.layers.enableAll();
   var s=renderer.getDrawingBufferSize(new THREE.Vector2()); gdepthPass(s.x,s.y);   /* Stage 8, 8B (decision 241) */
+  OUTLINE.px.value=s.x/(renderer.domElement.clientWidth||innerWidth);
   renderer.setRenderTarget(null);
   renderer.render(scene,camera);
   GDEPTH.u.uGroundOn.value=0;
@@ -15575,7 +15632,7 @@ var AUSTERLITZ_DEBUG=(function(){
        edge, every 0.5 units, the middle of its band (half the casing beyond the edge, at the outline's own reach there), where the drawn
        ground does not hide it from the eye, must have that colour within 1.5 px. An outline broken into dashes, cut short by its patch or
        sunk under a slope fails */
-    var oc=[], oN=0, oF=0, f0=DISPLAY.factor, vw0=renderer.domElement.clientWidth||innerWidth, vh0=renderer.domElement.clientHeight||innerHeight;
+    var oc=[], oN=0, oF=0, f0=DISPLAY.factor, vw0=renderer.domElement.clientWidth||innerWidth, vh0=renderer.domElement.clientHeight||innerHeight, FLAG3=[1,0,1];   /* the test's flag colour, magenta, never drawn to a visitor */
     var drs=new THREE.Vector2(); renderer.getDrawingBufferSize(drs);
     var ort=new THREE.WebGLRenderTarget(drs.x,drs.y,{minFilter:THREE.NearestFilter,magFilter:THREE.NearestFilter}), obuf=new Uint8Array(drs.x*drs.y*4), sx3=drs.x/vw0, sy3=drs.y/vh0;
     var pz=W(285,289), py=displayHeight(pz[0],pz[1]), near3=new THREE.Vector3(-0.55,0.62,0.56).normalize().multiplyScalar(26), low3=new THREE.Vector3(-1.0,0.13,0.18).normalize().multiplyScalar(40);
@@ -15587,10 +15644,11 @@ var AUSTERLITZ_DEBUG=(function(){
           Object.keys(units).forEach(function(id){ var r=units[id]; if(r.line&&r.line.visible) L.push({id:id,m:r.line}); });
           scene.children.forEach(function(o){ if(o!==groundMesh&&!L.some(function(q){ return q.m===o; })&&o.visible){ o.visible=false; hid.push(o); } });
           L.forEach(function(q){ var u=q.m.material.uniforms; keep.push([u.uCol.value.clone(),u.uEdge.value.clone(),u.uOp.value,u.uCaseOp.value]);
-            u.uCol.value.setRGB(1,0,1); u.uEdge.value.setRGB(1,0,1); u.uOp.value=1; u.uCaseOp.value=1; });
-          renderer.getClearColor(cc); renderer.setClearColor(0x000000,1); renderer.toneMapping=THREE.NoToneMapping; renderer.outputEncoding=THREE.LinearEncoding;
+            u.uCol.value.setRGB(FLAG3[0],FLAG3[1],FLAG3[2]); u.uEdge.value.setRGB(FLAG3[0],FLAG3[1],FLAG3[2]); u.uOp.value=1; u.uCaseOp.value=1; });
+          renderer.getClearColor(cc); renderer.setClearColor(0,1); renderer.toneMapping=THREE.NoToneMapping; renderer.outputEncoding=THREE.LinearEncoding;
+          var px0=OUTLINE.px.value; OUTLINE.px.value=sx3;   /* this target's pixels per CSS pixel */
           try{ camera.updateMatrixWorld(true); renderer.setRenderTarget(ort); renderer.clear(); renderer.render(scene,camera); renderer.readRenderTargetPixels(ort,0,0,drs.x,drs.y,obuf); }
-          finally { renderer.setRenderTarget(null); renderer.setClearColor(cc,ca); renderer.toneMapping=tm; renderer.outputEncoding=oe;
+          finally { OUTLINE.px.value=px0; renderer.setRenderTarget(null); renderer.setClearColor(cc,ca); renderer.toneMapping=tm; renderer.outputEncoding=oe;
             L.forEach(function(q,i){ var u=q.m.material.uniforms, k=keep[i]; u.uCol.value.copy(k[0]); u.uEdge.value.copy(k[1]); u.uOp.value=k[2]; u.uCaseOp.value=k[3]; });
             hid.forEach(function(o){ o.visible=true; }); }
           function flagAt(px,py){ for(var dy=-2;dy<=2;dy++) for(var dx=-2;dx<=2;dx++){ if(dx*dx+dy*dy>2.25*sx3*sx3+0.01) continue; var X=Math.round(px)+dx, Y=Math.round(py)+dy; if(X<0||Y<0||X>=drs.x||Y>=drs.y) continue;
@@ -15600,8 +15658,13 @@ var AUSTERLITZ_DEBUG=(function(){
             if(U.g==="C"){ var R=U.w/2, nC=Math.max(16,Math.ceil(2*Math.PI*R/0.5)); for(var k=0;k<nC;k++){ var a=k/nC*Math.PI*2; pts.push([Math.cos(a)*R,Math.sin(a)*R,Math.cos(a),Math.sin(a)]); } }
             else [[-1,-1,1,-1],[1,-1,1,1],[1,1,-1,1],[-1,1,-1,-1]].forEach(function(e){ var ax=e[0]*U.w/2, az=e[1]*U.d/2, bx=e[2]*U.w/2, bz=e[3]*U.d/2, len=Math.hypot(bx-ax,bz-az), nE=Math.max(1,Math.ceil(len/0.5));
               var nx=(bz-az)/len, nz=-(bx-ax)/len; for(var k=0;k<nE;k++){ var t2=(k+0.5)/nE; pts.push([ax+(bx-ax)*t2,az+(bz-az)*t2,nx,nz]); } });
-            pts.forEach(function(e){ var x=w0[0]+e[0]*c+e[1]*sn, z=w0[1]-e[0]*sn+e[1]*c, ox=e[2]*c+e[3]*sn, oz=-e[2]*sn+e[3]*c, rch=outlineReach(x,z)*U.cas/2;
-              /* the band's middle: its outward normal (in the frame) turned to the world, at half the casing's reach */
+            pts.forEach(function(e){ var x=w0[0]+e[0]*c+e[1]*sn, z=w0[1]-e[0]*sn+e[1]*c, ox=e[2]*c+e[3]*sn, oz=-e[2]*sn+e[3]*c;
+              /* the band's middle, as the shader lays it: half the casing in pixels across the edge as it stands on the screen (the outward
+                 normal's run across the edge's projected line, per world unit, read through the camera at a tenth of a unit) */
+              function sp(px2,pz2){ return new THREE.Vector3(px2,groundY(px2,pz2)+OUTLINE.LIFT,pz2).project(camera); }
+              var p0=sp(x,z), pn=sp(x+ox*0.1,z+oz*0.1), pt2=sp(x-oz*0.1,z+ox*0.1), vx=(pn.x-p0.x)*drs.x/2, vy=(pn.y-p0.y)*drs.y/2, tx2=(pt2.x-p0.x)*drs.x/2, ty2=(pt2.y-p0.y)*drs.y/2, tl=Math.hypot(tx2,ty2);
+              var vperp=tl>1e-9?Math.abs(vx*ty2-vy*tx2)/tl:0; if(!(vperp>1e-4)) return;   /* an edge seen end-on: no band across it to find */
+              var rch=U.cas*sx3/2*0.1/vperp;   /* the casing's CSS px in this target's pixels */
               x+=ox*rch; z+=oz*rch; qv.set(x,groundY(x,z)+OUTLINE.LIFT,z);
               var pr=qv.clone().project(camera); if(pr.z>1||pr.x<-1||pr.x>1||pr.y<-1||pr.y>1) return;
               if(hiddenFrom(Ev,qv)) return;
@@ -16029,10 +16092,15 @@ var AUSTERLITZ_DEBUG=(function(){
     var V3=new THREE.Vector3();
     function lowView(){ var w=W(285,289), ty=groundY(w[0],w[1]), d=new THREE.Vector3(-1,0.13,0.18).normalize().multiplyScalar(70);
       tween=null; camArc=null; freeCam=true; curVantage=null; landCam.position.set(w[0]+d.x,ty+d.y,w[1]+d.z); orbitTarget.set(w[0],ty,w[1]); landCam.lookAt(orbitTarget); clampCamera(); }
+    /* behind the Pratzeberg: the eye a unit above the drawn ground 18 units east of its top, looking west over the crest into the Goldbach's
+       valley, where the crest hides the lower west face (the relief drawn at 4x and 10.33x; at 1x the ribbons, lifted 1.6-2.4 units, stand
+       over the true relief) */
+    function behindView(){ var w=W(285,289), ex=w[0]+18, ez=w[1], tx=w[0]-45, tz=w[1]+5;
+      tween=null; camArc=null; freeCam=true; curVantage=null; landCam.position.set(ex,groundY(ex,ez)+1.0,ez); orbitTarget.set(tx,groundY(tx,tz),tz); landCam.lookAt(orbitTarget); clampCamera(); }
     function at(t,view){ if(EYE.on) eyeLeave(); if(commandView!=="none") setCommandView("none");
       setClock(t,{instant:true,force:true,camera:false}); finishTween();
       if(view==="eye"){ setCommandView("fr"); setClock(t,{instant:true,force:true,camera:false}); finishTween(); if(!eyeEnter()) return false; }
-      else if(view==="low") lowView(); else placeCamera(VANTAGE[view]);
+      else if(view==="low") lowView(); else if(view==="behind") behindView(); else placeCamera(VANTAGE[view]);
       syncViewOffset(true); settle(2,true); camera.updateMatrixWorld(); return true; }
     function hwAt(R,lay,u,uT){ var o=R.o; return (o.w0+(o.w1-o.w0)*(uT>0?Math.min(1,u/uT):0))*lay.sc/2; }
     /* (1) the cap */
@@ -16089,20 +16157,30 @@ var AUSTERLITZ_DEBUG=(function(){
         R.layers.forEach(function(lay,li){ [lay.shaft,lay.head].forEach(function(M){ if(!M) return; var u=M.material.userData, v=u.op0!==undefined?u.op0:u.op;
           if(Math.abs(v-want[li])>1e-9) opBad.push(R.role+" "+(li?"fill":"casing")+" in phase "+ph+" at "+v); }); }); }); }
     rebuildOverlays(keepPh,true); drawOnArrows();
-    ck("arrows (decision 241): a movement arrow's fill, and its drawn-on part's, at "+ARROW_CAP.OP+" of its opacity before 8B, its casing at its own; the lines of battle, the boundaries and the halt bars at theirs, phase by phase",
-      op.arrow>0&&op.line>0&&op.bound>0&&!opBad.length,
-      op.arrow+" arrows, "+op.drawon+" drawn-on parts, "+op.line+" lines, "+op.bound+" boundaries, "+op.halt+" halt bars over the "+PHASES.length+" phases; "+(opBad.length?opBad.length+" WRONG ("+opBad.slice(0,4).join("; ")+")":"each at its opacity"));
+    /* as drawn: the fill against its casing, on the landscape and on the paper map (where the fill is as before 8B), at the clock's phase */
+    var drawnBad=[], drawnN=0;
+    [["terrain",2*ARROW_CAP.OP],["staff",2]].forEach(function(mw){ if(mode!==mw[0]) setMode(mw[0]); setClock(590,{instant:true,force:true,camera:false}); finishTween(); updateVisibility();
+      (curOv.userData.ribbons||[]).forEach(function(R){ var mv=R.role==="arrow"||R.role==="drawon", want=mv?mw[1]:2;
+        [["shaft"],["head"]].forEach(function(k){ var c=R.layers[0][k[0]], f=R.layers[1][k[0]]; if(!c||!f||!(c.material.opacity>0)) return; drawnN++;
+          if(Math.abs(f.material.opacity/c.material.opacity-want)>1e-6) drawnBad.push(R.role+" "+k[0]+" on "+(mw[0]==="staff"?"the paper map":"the landscape")+": fill/casing "+(f.material.opacity/c.material.opacity).toFixed(3)+", want "+want.toFixed(3)); }); }); });
+    setMode("terrain"); updateVisibility();
+    ck("arrows (decision 241): a movement arrow's fill, and its drawn-on part's, at "+ARROW_CAP.OP+" of its opacity before 8B in the two perspective presentations and as before on the paper map, its casing at its own; the lines of battle, the boundaries and the halt bars at theirs, phase by phase",
+      op.arrow>0&&op.line>0&&op.bound>0&&!opBad.length&&drawnN>0&&!drawnBad.length,
+      op.arrow+" arrows, "+op.drawon+" drawn-on parts, "+op.line+" lines, "+op.bound+" boundaries, "+op.halt+" halt bars over the "+PHASES.length+" phases; "+(opBad.length?opBad.length+" WRONG ("+opBad.slice(0,4).join("; ")+")":"each at its opacity")+
+      "; as drawn at 09:50, "+drawnN+" fill-and-casing pairs on the landscape and the paper map"+(drawnBad.length?", WRONG: "+drawnBad.slice(0,4).join("; "):", each fill against its casing as it should be"));
     /* (3) hidden by the drawn ground alone */
     var W0=480, H0=Math.round(480*chh/cw), rt=new THREE.WebGLRenderTarget(W0,H0), rtD=new THREE.WebGLRenderTarget(W0,H0), buf=new Uint8Array(W0*H0*4), bufD=new Uint8Array(W0*H0*4);
-    var dmat=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking}), O={hid:0,hidDrawn:[],vis:0,visGone:[],front:0,frontGone:0,amb:0,views:[]};
+    var dmat=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking}), O={hid:0,hidDrawn:[],vis:0,visGone:[],front:0,frontGone:0,amb:0,views:[],casN:0,casUnder:[],casPx:0}, bufC=new Uint8Array(W0*H0*4);
     function px(x,y,z){ V3.set(x,y,z).project(camera); return [Math.floor((V3.x+1)/2*W0),Math.floor((V3.y+1)/2*H0),V3.z]; }
+    /* the ray from the eye to a point: its lowest clearance over the drawn ground, every 0.25 units, but for the first unit (the eye's own
+       ground) and the last tenth (the point's own) */
     function clear(x,y,z){ var E=camera.position, dx=x-E.x, dy=y-E.y, dz=z-E.z, L=Math.hypot(dx,dy,dz), n=Math.ceil(L/0.25), lo=1e9;
-      for(var i=1;i<n;i++){ var f=i/n; if(L*(1-f)<1.5) break; var qx=E.x+dx*f, qy=E.y+dy*f, qz=E.z+dz*f; lo=Math.min(lo,qy-groundY(qx,qz)); } return lo; }
-    function unpack(b,i){ return b[i]/255/16777216+b[i+1]/255/65536+b[i+2]/255/256+b[i+3]/255; }
+      for(var i=1;i<n;i++){ var f=i/n; if(L*f<1) continue; if(L*(1-f)<0.1) break; var qx=E.x+dx*f, qy=E.y+dy*f, qz=E.z+dz*f; lo=Math.min(lo,qy-groundY(qx,qz)); } return lo; }
+    function unpack(b,i){ return (b[i]/255/16777216+b[i+1]/255/65536+b[i+2]/255/256+b[i+3]/255)*255/256; }   /* three's unpackRGBAToDepth */
     function viewZ(dd){ return camera.near*camera.far/((camera.far-camera.near)*dd-camera.far); }
-    [[510,"eye"],[590,"low"]].forEach(function(c){ if(!at(c[0],c[1])) { O.views.push(c[1]+": not entered"); return; } arrowCap();
+    [[510,"eye"],[590,"low"],[540,"behind"]].forEach(function(c){ if(!at(c[0],c[1])) { O.views.push(c[1]+": not entered"); return; } arrowCap();
       var keepBg=scene.background, keepVis=[], mats=[], cc=renderer.getClearColor(new THREE.Color()), ca=renderer.getClearAlpha();
-      scene.background=null; renderer.setClearColor(0x000000,1);
+      scene.background=null; renderer.setClearColor(0,1);
       /* the figures, woods and buildings, with the ground, nearest first: what stands in front of a point */
       var solid=[groundMesh]; Object.keys(units).forEach(function(id){ var b=units[id].block; if(b&&b.visible) solid.push(b); });
       [world.trees,world.conifers,world.scrub,world.houses,world.roofs,world.spires,world.chimneys].forEach(function(o){ if(o) solid.push(o); });
@@ -16121,25 +16199,35 @@ var AUSTERLITZ_DEBUG=(function(){
         scene.children.forEach(function(o){ keepVis.push([o,o.visible]); if(o!==overlayRoot) o.visible=false; });
         renderer.setRenderTarget(rt); renderer.clear(); gdepthPass(W0,H0); renderer.setRenderTarget(rt); renderer.render(scene,camera); GDEPTH.u.uGroundOn.value=0;
         renderer.readRenderTargetPixels(rt,0,0,W0,H0,buf);
+        /* a movement arrow's casing alone: a border, nothing of it under the fill (BORDER) */
+        var cas=R.role==="arrow"&&R.o.border;
+        if(cas){ R.layers[1].shaft.visible=false; if(R.layers[1].head) R.layers[1].head.visible=false;
+          renderer.setRenderTarget(rt); renderer.clear(); gdepthPass(W0,H0); renderer.setRenderTarget(rt); renderer.render(scene,camera); GDEPTH.u.uGroundOn.value=0;
+          renderer.readRenderTargetPixels(rt,0,0,W0,H0,bufC); R.layers[1].shaft.visible=true; if(R.layers[1].head) R.layers[1].head.visible=true;
+          for(var ci=0;ci<bufC.length;ci+=4) if(bufC[ci]>128) O.casPx++; }
         keepVis.forEach(function(k){ k[0].visible=k[1]; }); keepVis=[]; hidMesh.forEach(function(o){ o.visible=true; }); if(oldOv) oldOv.visible=true;
         var L=R.len, n=Math.max(2,Math.ceil(L)), ly=R.o.lift, f2=2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))/H0, uT=R.o.uTaper||R.uEnd;
         for(var j=0;j<=n;j++){ var u=j/n*(R.o.head?R.uEnd:1), p=R.curve.getPointAt(u), y=groundY(p.x,p.z)+ly, q=px(p.x,y,p.z); if(q[2]<-1||q[2]>1||q[0]<1||q[1]<1||q[0]>=W0-1||q[1]>=H0-1) continue;
           V3.set(p.x,y,p.z).applyMatrix4(camera.matrixWorldInverse); var d=-V3.z, wpx=(R.o.w0+(R.o.w1-R.o.w0)*(uT>0?Math.min(1,u/uT):0))*(R.Ks?capAt(R.Ks,u):1)/(d*f2);
           if(R.o.runs&&!R.o.runs.some(function(r){ return u>=r[0]*R.uEnd+0.02&&u<=r[1]*R.uEnd-0.02; })) continue;   /* between an intended route's dashes */
-          if(wpx<3) continue;
-          var c0=clear(p.x,y,p.z), i4=(q[1]*W0+q[0])*4, lit=buf[i4]>128&&buf[i4+1]>128&&buf[i4+2]>128;
+          if(wpx<5) continue;   /* five pixels across at least: the drawn ribbon's centre is its curve's within a pixel or two */
+          var c0=clear(p.x,y,p.z), i4=(q[1]*W0+q[0])*4, lit=buf[i4]>128&&buf[i4+1]>128&&buf[i4+2]>128, lit3=false;
+          for(var dy=-1;dy<=1;dy++) for(var dx=-1;dx<=1;dx++){ var i5=((q[1]+dy)*W0+q[0]+dx)*4; if(buf[i5]>128&&buf[i5+1]>128&&buf[i5+2]>128) lit3=true; }
           if(c0<-0.5){ O.hid++; if(lit) O.hidDrawn.push(R.role+" at "+fmtClock(c[0])+" from "+c[1]+" (u "+u.toFixed(2)+")"); }
-          else if(c0>0.5){ O.vis++; if(!lit) O.visGone.push(R.role+" at "+fmtClock(c[0])+" from "+c[1]+" (u "+u.toFixed(2)+")");
+          else if(c0>0.5){ O.vis++; if(!lit3) O.visGone.push(R.role+" at "+fmtClock(c[0])+" from "+c[1]+" (u "+u.toFixed(2)+")");
+            if(cas){ O.casN++; if(bufC[i4]>128) O.casUnder.push("at "+fmtClock(c[0])+" from "+c[1]+" (u "+u.toFixed(2)+")"); }
             var zs=-viewZ(unpack(bufD,i4)); if(zs<d-0.5){ O.front++; if(!lit) O.frontGone++; } }
           else O.amb++; } });
       mats.forEach(function(m){ m[0].color.copy(m[1]); m[0].opacity=m[2]; });
       scene.background=keepBg; renderer.setClearColor(cc,ca); renderer.setRenderTarget(null); O.views.push(c[1]+" at "+fmtClock(c[0])+": "+ribs.length+" ribbons"); });
     rt.dispose(); rtD.dispose(); dmat.dispose(); GDEPTH.key=null;
     if(EYE.on) eyeLeave();
-    ck("arrows (decision 241): every overlay ribbon (arrows, lines of battle, boundaries, halt bars) hidden by the drawn ground alone: from Napoleon's eye level and the low Pratzen view, every point of its centre line the ground hides not drawn, every point in sight drawn, also where a figure, a wood or a building stands in front",
-      O.hid>0&&O.vis>0&&!O.hidDrawn.length&&!O.visGone.length,
+    ck("arrows (decision 241): every overlay ribbon (arrows, lines of battle, boundaries, halt bars) hidden by the drawn ground alone: from Napoleon's eye level, the low Pratzen view and behind the Pratzeberg, every point of its centre line the ground hides not drawn, every point in sight drawn, also where a figure, a wood or a building stands in front; a movement arrow's casing a border, none of it under its fill",
+      (fct<2||O.hid>0)&&O.vis>0&&!O.hidDrawn.length&&!O.visGone.length&&O.casN>0&&O.casPx>0&&!O.casUnder.length,
       O.views.join("; ")+": "+O.hid+" points hidden by the ground ("+O.hidDrawn.length+" drawn"+(O.hidDrawn.length?": "+O.hidDrawn.slice(0,3).join("; "):"")+"), "+O.vis+" in sight ("+O.visGone.length+" not drawn"+(O.visGone.length?": "+O.visGone.slice(0,3).join("; "):"")+
-      "), of them "+O.front+" behind a figure, a wood or a building ("+O.frontGone+" not drawn); "+O.amb+" within 0.5 units of the ground's edge, not judged");
+      "), of them "+O.front+" behind a figure, a wood or a building ("+O.frontGone+" not drawn); "+O.amb+" within 0.5 units of the ground's edge, not judged"+
+      (fct<2?" (at 1x the ribbons, lifted 1.6-2.4 units, stand over the true relief: a point hidden is not required)":"")+
+      "; the movement arrows' casings drawn alone: "+O.casPx+" px, a border: at "+O.casN+" points of their centre lines in sight "+(O.casUnder.length?O.casUnder.length+" UNDER THE FILL ("+O.casUnder.slice(0,3).join("; ")+")":"none under the fill"));
     layerOn.arrows=k0.lay; applyOverlayOpacity();
     setCommandView(k0.cv); setClock(k0.clock,{instant:true,force:true,camera:false}); finishTween(); if(mode!==k0.md) setMode(k0.md);
     landCam.position.copy(k0.pos); orbitTarget.copy(k0.tgt); landCam.lookAt(orbitTarget); freeCam=k0.fc; syncViewOffset(true); settle(2,true);
