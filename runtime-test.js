@@ -30,7 +30,7 @@ class Geo{constructor(n=12){this.attributes={position:attr(n,3),normal:attr(n,3)
  rotateX(){return this}
  toNonIndexed(){ if(!this.index) console.warn("THREE.BufferGeometry.toNonIndexed(): BufferGeometry is already non-indexed."); this.index=null; return this }
  computeVertexNormals(){}
- setAttribute(k,v){this.attributes[k]=v;return this} setIndex(){return this}
+ setAttribute(k,v){this.attributes[k]=v;return this} setIndex(i){this.index=Array.isArray(i)?{array:i,count:i.length}:i;return this}   /* as three's: it keeps the index (Stage 8, 8B: groundPatch rewrites its own) */
  setFromPoints(){return this} setDrawRange(){return this} dispose(){}}
 const stub={
  Vector3:REAL.Vector3, Color:Col, Object3D:Obj, Group:Obj,
@@ -51,6 +51,8 @@ const stub={
      this._passes.push(this._target===null?"screen":"rt");
    }
    setRenderTarget(t){this._target=t===undefined?null:t}clear(){}
+   /* Stage 8, implementation PR 8B: the ground's depth pass keeps the clear colour and the target it found */
+   getRenderTarget(){return this._target||null} getClearColor(c){return c} getClearAlpha(){return 1} setClearColor(){}
    getDrawingBufferSize(v){v.x=1600;v.y=900;return v}},
  WebGLRenderTarget:class{constructor(w,h,o){this.width=w;this.height=h;
    this.texture={generateMipmaps:true};Object.assign(this,o||{})}
@@ -97,7 +99,7 @@ const stub={
  Vector4:REAL.Vector4, NearestFilter:1003, FloatType:1015, UnsignedByteType:1009,
  MathUtils:{degToRad:d=>d*Math.PI/180},
  Clock:class{constructor(){this.t=Date.now()}getElapsedTime(){return (Date.now()-this.t)/1000}},
- PCFSoftShadowMap:1,sRGBEncoding:1,ACESFilmicToneMapping:1,BackSide:1,DoubleSide:2,
+ PCFSoftShadowMap:1,sRGBEncoding:1,ACESFilmicToneMapping:1,FrontSide:0,BackSide:1,DoubleSide:2,RGBADepthPacking:3201,
  LinearFilter:1,ClampToEdgeWrapping:1,
 };
 /* T-1 (docs/FINAL_AUDIT.md; roadmap step 1, decision 131): a material's parameters are checked by three.js r128 itself. Each stub
@@ -107,7 +109,7 @@ const stub={
    the app reads back. Until step 1 this was a hand list per material, each a strict subset of r128's: it warned falsely on
    LineBasicMaterial's 'fog' (every r128 material has fog, Material.js:16) and ShaderMaterial was not checked at all. */
 const matNames=["MeshBasicMaterial","MeshPhongMaterial","MeshLambertMaterial","MeshStandardMaterial",
-  "SpriteMaterial","LineBasicMaterial","LineDashedMaterial"];
+  "SpriteMaterial","LineBasicMaterial","LineDashedMaterial","MeshDepthMaterial"];   /* MeshDepthMaterial: Stage 8, 8B's ground depth pass */
 matNames.forEach(n=>{ if(typeof REAL[n]!=="function") throw new Error("three r128 has no "+n);
   stub[n]=function(o){ new REAL[n](o); o=o||{};
   Object.assign(this,o); this.userData={}; this.opacity=o.opacity!==undefined?o.opacity:1;
@@ -783,11 +785,14 @@ try{
   if(!FX.on) throw new Error("post processing failed to initialise");
   for(const m of ["matBright","matBlur","matComp"]) if(!FX[m]) throw new Error(m+" missing");
   renderer._passes=[]; renderer._target=null;
+  const gd0=GDEPTH.n;
   renderFX();
-  const seq=renderer._passes.join(" ");
-  if(!/^rt( rt){6} screen screen$/.test(seq)) throw new Error("unexpected pass order: "+seq);
+  const seq=renderer._passes.join(" "), gdN=GDEPTH.n-gd0;
+  /* Stage 8, implementation PR 8B (decision 241): the ground's own depth, when this frame draws it, first, into its own target */
+  if(gdN>1||!new RegExp("^"+(gdN?"rt ":"")+"rt( rt){6} screen screen$").test(seq)) throw new Error("unexpected pass order: "+seq+" (the ground's depth pass drawn "+gdN+" times)");
   if(scene.background===null) throw new Error("scene background was not restored after the label pass");
-  console.log("render order: "+seq+" OK, background restored");
+  if(GDEPTH.u.uGroundOn.value!==0) throw new Error("the ground's depth test left on after the world pass");
+  console.log("render order: "+seq+" OK"+(gdN?" (the ground's depth pass first)":"")+", background restored, the ground's test off after the world pass");
   sizeFX();
   const grades=[];
   for(let ph=0;ph<PHASES.length;ph++){
@@ -923,24 +928,32 @@ try{
     clock=c0; dwellReset();
     console.log("dwell: the day at 0.5x, 1x, 2x and 4x in its computed length, one dwell at each event start, the clock monotone and never faster than its speed; the toggle mid-day never sends it back OK"); }
 
-  /* Stage 5B (docs/STAGE5_SPEC.md section A.5): spatial confidence, dry run. On by default (decision 85); every formation on the
-     field gets a mark of its confAt grade at the default factor, a patch of the ground's cells; switched off, none is drawn */
-  { if(!layerOn.confidence) throw new Error("position confidence is not on by default");
+  /* Stage 5B (docs/STAGE5_SPEC.md section A.5): spatial confidence, dry run. Since Stage 8, implementation PR 8B (decision 239): off at first
+     on the landscape, where every formation drawn as figures has its outline (the footprint's, in its side's colour) and no filled mark; with
+     the layer on, its outline at its confAt grade's extent, still no filled mark; on the paper map on at first (decision 85 kept there), every
+     formation on the field with its grade's filled mark, as before */
+  { if(layerOn.confidence) throw new Error("position confidence is on at first on the landscape (decision 239)");
     setClock(590,{instant:true,force:true,camera:false}); updateVisibility();
+    const figs=Object.keys(units).filter(id=>units[id].block.visible);
+    const noLine=figs.filter(id=>{ const r=units[id], U=r.line&&r.line.userData.outline; return !(r.line&&r.line.visible&&U&&U.g==="A"&&U.side===sideOfNation(r.f.nation)); });
+    const filled=Object.keys(units).filter(id=>{ const r=units[id]; return r.conf&&r.conf.visible; });
+    if(!figs.length||noLine.length) throw new Error("spatial confidence off: "+noLine.length+" of "+figs.length+" formations drawn as figures without their footprint's outline: "+noLine.slice(0,4).join(", "));
+    if(filled.length) throw new Error("spatial confidence off: a filled mark on the landscape: "+filled.slice(0,4).join(", "));
+    layerOn.confidence=true; updateVisibility();
+    const off=Object.keys(units).filter(id=>{ const r=units[id]; if(!r.block.visible) return false; const U=r.line&&r.line.userData.outline; return !(r.line&&r.line.visible&&U&&U.g===confAt(id,clock).cf); });
+    const filled2=Object.keys(units).filter(id=>{ const r=units[id]; return r.conf&&r.conf.visible; });
+    layerOn.confidence=false; updateVisibility();
+    if(off.length) throw new Error("spatial confidence on: "+off.length+" formations drawn as figures without their grade's outline: "+off.slice(0,4).join(", "));
+    if(filled2.length) throw new Error("spatial confidence on: a filled mark on the landscape: "+filled2.slice(0,4).join(", "));
+    setMode("staff"); updateVisibility();
+    if(!layerOn.confidence) throw new Error("position confidence is not on at first on the paper map (decision 85, kept by decision 239)");
     let n=0, bad=[]; Object.keys(units).forEach(id=>{ const r=units[id], p=posNow(id); if(!p||knowledgeOf(id)==="unknown") return; n++;
       const g=confAt(id,clock).cf; if(!r.conf||!r.conf.visible||r.conf.userData.conf.g!==g||!r.conf.geometry.index) bad.push(id); });
-    if(!n||bad.length) throw new Error("spatial confidence: "+bad.length+" of "+n+" formations without their grade's mark: "+bad.slice(0,4).join(", "));
-    layerOn.confidence=false; updateVisibility();
-    /* Stage 6C (owner decision 107; docs/STAGE6_SPEC.md question 12: "the toggle then switches the grade's encoding, not the ground mark"):
-       switched off, no grade is drawn; what stays is the side footprint, grade A's crisp mark in the side's colour, under every formation
-       drawn as figures, and under nothing else */
-    const left=Object.keys(units).filter(id=>{ const r=units[id]; return r.conf&&r.conf.visible&&!(r.sideMark&&r.block.visible&&r.conf.userData.conf.g==="A"); });
-    const under=Object.keys(units).filter(id=>{ const r=units[id]; return r.block.visible; });
-    const bare=under.filter(id=>{ const r=units[id]; return !(r.conf&&r.conf.visible&&r.sideMark); });
-    layerOn.confidence=true; updateVisibility();
-    if(left.length) throw new Error("spatial confidence switched off, a graded mark still drawn: "+left.join(", "));
-    if(!under.length||bare.length) throw new Error("spatial confidence switched off, no side footprint under: "+bare.join(", "));
-    console.log("spatial confidence: on by default, "+n+" formations at 09:50 each with its grade's mark; switched off no grade drawn, the side footprint under each of "+under.length+" formations drawn as figures (decision 107) OK"); }
+    setMode("terrain"); updateVisibility();
+    if(layerOn.confidence) throw new Error("position confidence still on back on the landscape (decision 239)");
+    if(!n||bad.length) throw new Error("spatial confidence on the paper map: "+bad.length+" of "+n+" formations without their grade's mark: "+bad.slice(0,4).join(", "));
+    console.log("spatial confidence: off at first on the landscape, "+figs.length+" formations drawn as figures at 09:50 each outlined in its side's colour, none filled; on, each outlined at its grade; on at first on the paper map, "+n+" formations each with its grade's mark (decisions 85, 239) OK"); }
+
 
   /* Stage 5D (docs/STAGE5_SPEC.md section B.4; decision 90): the evidence skeleton, dry run. Off by default; on, at 09:50 with nothing
      selected, the legs whose window meets the phase and their anchors, each anchor's mask its grade's; the whole day every leg;

@@ -41,7 +41,12 @@ landscape's fixes in `style.css`; since decision 238 the paper map's field frame
 sources (since Stage 8 implementation PR 8A, decision 251: `readHidden`, `readUnknown` and `LABELS.reading`, no place of a formation a reading does not know in the centring,
 the place rows, a midpoint, a day-track or `placeNearby`, the drawer following the reading through `drawerKey`; "How this is sourced" at every drawer dossier's head,
 `srcButton(refs,true)`; each claim's works, sides and note, `claimWorks`, `claimDetail`; the timeline's tips by hover or focus, dismissed on activation, never by touch,
-`TIP`, `tipSync`), runtime checks |
+`TIP`, `tipSync`), the ground under the troops (since Stage 8 implementation PR 8B, decision 239: `OUTLINE`, `makeOutline`, `outlinePlace`,
+`outlineReach`, the band centred on the extent's edge in CSS pixels, `OUTLINE.px`; "Position confidence" by presentation, `CONF_ON`, `confKey`,
+`syncConfButton`; on the landscape no filled mark under figures, the outline instead, the grade's extent with the layer on) and the arrows calmed
+(decision 241: the cap, `ARROW_CAP`, `capPts`, `capFactors` on the draped casing, `capRows`, `ribbonRelayout`, `arrowCap`; the fill and its
+casing a border, `BORDER`, `borderShaftHook`, `borderHeadHook`, `headInside`; the paper map's fill as before, `paperK`; the drawn ground's own
+depth, `GDEPTH`, `gdepthPass`, `groundDepthHook`; `SYM_MAX_PX` 64), runtime checks |
 | `build.py` | joins the scripts in load order; writes `austerlitz-command-map.html` (the product, committed) and `bundle.js` (for the tests, not committed) |
 | `*test.js`, `audit.js`, `redteam.js` | the regression suite (`binding-test.js`: every arrow bound to the tracks, and the dash rule, since 2C); `tools/run-all.sh` runs it. Since step 1: `redteam.js` section 6a judges every string a visitor can be shown (`tools/lang-scan.js`; `LANG_ALLOW` names each allowed hit with its kind, its reason and the task that removes it: since roadmap step 4, 2 entries, both permanent (the seven superlatives allowed until step 4 attributed or dropped in its K3), each naming its kind, "a statement of method" (`SOURCE_NOTE`'s "the hardest figures of all") and "attributed words" (the Allied plan's stated assumption); an entry added since step 1 names the pattern and step that found it, `LANG_STEP1` (one entry) can only shrink, and an entry whose `until` names a done step, `DONE_STEPS`, fails); a warning fails unless acknowledged by its exact text (`KNOWN_WARN` in `test.js`, `redteam.js`, `sim-test.js`); `runtime-test.js` checks every material against real three r128 and fails on any warning; each suite regenerates the generated modules it reads (`tools/fresh.js`) |
 | `tools/` | `run-all.sh`, the test-module generators (`mk-helpers.js`, `mk-world-mod.js`), the Stage 0 harness (`visual/`), the Stage 2 to Stage 7 measurement scripts (`stage2/`, `stage3/`, `stage4/`, `stage5/`, `stage6/`, `stage7/`, not bundled), the final audit's scripts (`audit/`, not bundled), the type's generator and checks (`fonts/`: `build-fonts.py`, `sources.json`, `manifest.json`, `woff2.js`, `accept-probe.js`; since step 1), `lang-scan.js` and `fresh.js` (since step 1), since roadmap step 3 `visual/three-route.js` (every page tool's one route for three.js, checked against the page's integrity), `visual/boot-check.js` (the six start-up cases, run by `check:contrast`) and `step3/` (`report-diff.js`, two `check:visual` reports compared case by case; `hover-cost.js`, the hover's cost per pointer move; not bundled), since roadmap step 5 `map-frame.js` (the map frame the tests read from world.js's `W`) and `stage2/chronology-text.json` (check:chronology's L9: each cite's statement text, hashed), since roadmap step 6 Part A `step6/` (the frame-time route for the owner's hardware, `perf-route.js`, with its page for a phone, `perf-run.html`, and its run here, `perf-local.js`; the draw-call census, `census.js`, `census-report.js`; a man's size on screen, `size-probe.js`; the level-of-detail prototypes, `lod-probe.js`; the phone probe, `phone-probe.js`, its prototype layouts, `phone-layouts.js`, and `phone-report.js`; since item 3's Part B the portrait framing's measure, `portrait-fit.js`; since item 1's P1 the paper map's frame as a phone enters it, `paper-entry.js`; since decision 236 the phone route, `perf-route.js` run with `{phone:true}`, `perf-run.html?route=phone`, and its rule, `phone-rule.js`; not bundled) and `visual/phone-measure.js` (since step 6 item 3 Part B: the phone measures in the page, read by the harness's phone cases and the phone probe), since roadmap step 4 `step4/` (`statements.js`, the narrative statements of `data.js` and `analysis.js` one per string by ref, with the hash `test.js` holds a claim to; `inventory.js`, the inventory's generator; read by `test.js` and the step's scripts, not bundled), since Stage 8 Part A `stage8/` (the specification's probes and in-page prototypes: `views.js` and `lib.js`, `stills.js`, `label-motion.js`, `label-far.js`, `density.js`, `record.js`, `kit-census.js`, `carried.js`, `gait-check.js`, `legs.js`, `stream-vis.js`, `toast.js`, `pixdiff.py`, `clip-motion.py`, `sheets.py` and `protos/`, each prototype put into the live page and removed after its frame; since implementation PR 8A `ribbon-widths.js` (the ribbons' widths compared), `compare-8.js` (two builds in matching views, with the arrows' widths, the glyphs' sizes, the ground cues and the frame's cost), `dossier-shots.js` (decision 251's dossiers, sheet and tips in two builds) and `pair-sheets.py` (two `check:visual` runs' captures side by side); not bundled), and history (see `docs/SUITE_RECOVERY.md`) |
@@ -107,7 +112,12 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   themes, and its glyph coverage through `tools/lang-scan.js`'s records; since Stage 8 implementation PR 8A `runtime-test.js` holds decision 251's
   readings (every reading every half hour: no formation it does not know centred or placed in a card, a dossier, a midpoint, a day-track or a nearby
   list; an open dossier following the reading) and its claims (every note and every work's side in the index and a dossier's list), and the
-  height guard classifies the self-test's rendered ribbon check; the suites write their output to a private temporary directory.
+  height guard classifies the self-test's rendered ribbon check; since implementation PR 8B `css-test.js` holds decision 241's values (the cap
+  16 px with its margin, the fill 0.62 and the bordered casing on the movement arrows and their drawn-on parts only, the glyphs 64 px, every overlay
+  ribbon and the lines' ticks tested against the ground, the hook keeping the atmosphere's uniforms) and decision 239's first settings and outlines
+  (off at first on the landscape, on on the paper map; no dash; the side's tokens, the selection's accent), and `runtime-test.js` decision 239's
+  cues (each figure-drawn formation outlined, none filled, the grade's outline with the layer on, the paper map's filled marks) and the render's
+  pass order with the ground's depth pass first; the suites write their output to a private temporary directory.
 - `npm run check:data`: must pass unless the task changes data on purpose. It compares against `archive/step5c-45f8f662.html` (PR #58's
   build, decision 213 (b): FORMATIONS, APPEARANCE_SOURCES, COMPOSITION and STATEMENT_CLAIMS changed against PR #57's reference, each in
   `CHANGELOG.md`, 131 identical now); before it, `archive/step5b-fdc25e82.html` (the build of step 5's follow-up, PR #57, decisions 209 (a) and 210 (c): PHASES, FORMATIONS, FEATURES, SOURCE_NOTE, ANALYSIS, COMMAND, PLANS,
@@ -155,7 +165,8 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   since decision 212 (b) (40 until then); since roadmap step 5 the loss and the restore with the page idle, 0 warnings, deterministic, held at
   0; then, since decision 212 (b), a clock step after the restore, the page idle again with frames drawn: 248 on each of three runs).
 - `npm run check:selftest` (since step 1, decision 132; the CI job): the in-app self-test on one fresh 1366 x 768 page, every check by name
-  against `tools/visual/selftest-manifest.json` (250 since Stage 8 implementation PR 8A: the ribbons rendered at each factor and on the paper map, the tips, the dossiers' sources; 242 since roadmap step 4's K2, the interpolated position's pill; 241 after step 3; 221 after step 2), with the slider, Play and the 3E keys by real key
+  against `tools/visual/selftest-manifest.json` (261 since Stage 8 implementation PR 8B: the arrows' cap, opacities and ground hiding at each factor, the outlines on steep ground and findable;
+  250 since Stage 8 implementation PR 8A: the ribbons rendered at each factor and on the paper map, the tips, the dossiers' sources; 242 since roadmap step 4's K2, the interpolated position's pill; 241 after step 3; 221 after step 2), with the slider, Play and the 3E keys by real key
   presses, since step 3 the live blocks below, and every console message judged; about 15 minutes. `npm run check:report` judges a finished `check:visual` report again without rendering; `npm run
   check:remeasure` is decision 141's one re-measure tool (`tools/visual/remeasure.js`).
 - `npm run check:visual`: 39 fixed views (since roadmap step 6 item 1, decisions 237 (a) and 238 (a), two more phone cases: `phone-402x714-explore`,
@@ -351,9 +362,22 @@ others listed in `docs/SUITE_RECOVERY.md`) are history: never run them again; th
   the same ribbons drawn double-sided), its tips check (hover, focus, activation, Esc, touch) and its dossiers' sources check (every kind of drawer
   dossier with "How this is sourced" in its visible part, opening the sheet with its statements); the harness's live block `tips` (real mouse and
   keys, and a phone page's taps; feature `TIPS` required) and, on `phone-390-dossier`, the sources at the dossier's head (`srcHead`).
+  Since Stage 8 implementation PR 8B (decisions 239, 241): the self-test's outline checks (every formation drawn as figures outlined in its side's
+  colour with no filled mark, in Study, Watch and Clean, the layer off and on; never broken on steep ground at 4x and 10.33x: the outlines
+  rendered alone, the line sampled every 0.5 units along every edge, the ground seen within 3 degrees of edge-on passed over and counted; every
+  formation on the field findable by its outline or its name at the Field vantage and the Overview at 20 clocks; the legend's outline rows) and
+  its arrow checks at 1x, 4x and 10.33x (the casing at most 16 px from four vantages, the low Pratzen view and the eye level at three clocks,
+  never wider than built, on its curve, the head in proportion, laid by the frame, the paper map as built; the fill's and the casing's opacities
+  phase by phase and as drawn on both maps; every overlay ribbon hidden by the drawn ground alone, judged at the canvas's size wherever a strip
+  is 5 px across on screen, from the eye level, the low Pratzen view and Puntowitz below the plateau's edge, and drawn over the figures, the woods
+  and the buildings; the casing a border); the glyphs' check at 64 px; each of the self-test's own renders begins a frame of its own (three r128
+  uploads a changed geometry once a frame); the harness's position-confidence share is now the ground cues' as each case shows them (the outlines
+  on the landscape, the filled marks on the paper map), `CONF_SHARE.land` 0.07, was 0.20 (the largest measured on the 8B build, 6.42% at `eye-zuran` in both browsers, rounded up; question 254), and its
+  state check the layer's first setting by presentation (decisions 85, 239).
   No known residual is allowed (the Walther/Nansouty overlap was fixed in the chronology data task).
-- `npm run check:baseline` passes only on the unmodified build of Stage 8 implementation PR 8A (md5 `870caf24...`, 2,247,866 bytes: decisions 251 (a)
-  and 253 (b), `docs/STAGE8_SPEC.md` §13; re-baselined from the build of decision 236's verdict, md5 `c4793156...`, 2,220,714 bytes: density 1.0
+- `npm run check:baseline` passes only on the unmodified build of Stage 8 implementation PR 8B (md5 `9b20dc4c...`, 2,317,927 bytes: decisions 239 (b)
+  and 241 (a), `docs/STAGE8_SPEC.md` §14; re-baselined from the build of implementation PR 8A, md5 `870caf24...`, 2,247,866 bytes: decisions 251 (a)
+  and 253 (b), §13; that one re-baselined from the build of decision 236's verdict, md5 `c4793156...`, 2,220,714 bytes: density 1.0
   and no shadow under `lowTier`, §15; that one re-baselined from the build of roadmap step 6's decisions 236-238, md5 `fffc4fda...`, 2,220,267 bytes:
   the paper map framed again on a panel's change, its scale bar kept below 1080 px; that one re-baselined from the item 3 Part B build, the phone layout,
   md5 `c9d29c14...`, 2,218,404 bytes; that one re-baselined from PR #58's build, decision 213 (b), md5 `45f8f662...`, 2,200,058 bytes; that one
@@ -528,5 +552,8 @@ file, data or build changed; merged (#64). The owner decided questions 239-253 o
 §0.3, the points they settle §0.3.1, the names §0.4: "Stage 8 Part A" is the specification, "implementation PR 8A" to "8H" its plan's pull requests;
 the decisions for 8C-8H set direction and constraints only, nothing of them is implemented). Implementation PR 8A (decisions 251 (a), 253 (b):
 the readings' reach, the sources at every dossier's head, the claims' notes and sides, the tips; the roads' and streams' ribbons drawn, their
-widths a display convention; `docs/STAGE8_SPEC.md` §13) is built on `claude/blissful-clarke-9axnzp` (draft PR #65, for review). The next owner
-decision is 254.
+widths a display convention; `docs/STAGE8_SPEC.md` §13) is built on `claude/blissful-clarke-9axnzp` (draft PR #65, for review). Implementation PR
+8B (decisions 239 (b), 241 (a): the ground under the troops as outlines, "Position confidence" optional and off at first on the landscape, the
+paper map's marks unchanged; the movement arrows capped at 16 px with their fill at 0.62 and the casing a border, every overlay ribbon hidden by the drawn
+ground alone, the glyphs at 64 px; `docs/STAGE8_SPEC.md` §14) is built on `claude/blissful-clarke-9axnzp-8b`, stacked on 8A's branch (draft PR
+#66, for review). The next owner decision is 254.

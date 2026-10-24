@@ -58,3 +58,15 @@ software WebGL, 1600 x 900 unless named; the harness's captures on CI (Chromium 
 | `8a/<state>-a.jpg`, `-b.jpg`, `8a/dossier-shots.json` | `dossier-shots.js --a <Part A's build> --b <8A>` | section 13.1: under Napoleon's headquarters at 08:30 an unknown formation's card and full dossier (`reading-card`, `reading-full`), the same dossier under "everyone" (`everyone-full`), the sources sheet from a disputed event (`claims`), the timeline's tip on hover and after a press (`tip-hover`, `tip-click`), before 8A (`a`) and with it (`b`) |
 | `8a/carried-after.json` | `carried.js` on 8A | section 13.1: Part A's three carried findings measured again on 8A's build by real clicks, keys and taps (`carried.json`, above, is the same script on Part A's build) |
 | `8a/harness/<case>.jpg` | `pair-sheets.py`, from two CI runs' captures | section 13.3: every `check:visual` case, `main`'s build (run 40075295260) beside 8A's (run 40075243524 on `7507e92`, this build), at half size |
+
+## Implementation PR 8B (24 October 2026; `docs/STAGE8_SPEC.md` section 14)
+
+Made from implementation PR 8B's build (md5 `9b20dc4ca251e17ddb2468f98f920f38`, 2,317,927 bytes) against 8A's (`870caf24...`), here in Chromium
+153, software WebGL, 1600 x 900 (three earlier runs of the comparison on 8B's build before its last two changes, `c260697e...`, gave the same
+draw calls, triangles, widths, sizes and cues; their times are in section 14.2); the harness's captures on CI (Chromium 141). The scripts are in
+`tools/stage8/` (not bundled).
+
+| path | made by | what |
+|---|---|---|
+| `8b/compare/<view>-a.jpg`, `-b.jpg`, `-b-conf-on.jpg`, `-sheet.jpg`, `8b/compare/compare.json` | `compare-8.js --a <8A> --b <8B> --b-variants conf-on` | section 14.2: the ground cues, the arrows and the glyphs in nine matching views, 8A beside 8B and 8B with Position confidence on, with each frame's widest casing by role, the glyphs' and the markers' largest size, the cues drawn, draw calls, triangles, time and the ground's depth pass |
+| `8b/harness/<case>.jpg` | `pair-sheets.py`, from two CI runs' captures | section 14.5: every `check:visual` case (the phone cases among them), 8A's build (run 40075243524) beside 8B's (run 40086612769 on `b42e500`, this build), at half size |

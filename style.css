@@ -128,6 +128,11 @@ body.drawer-open .legend{transform:translateX(calc(-1 * var(--draw)))}
 .legend .cfk-a{background:var(--text)}
 .legend .cfk-b{background:linear-gradient(90deg,transparent,var(--text) 30%,var(--text) 70%,transparent)}
 .legend .cfk-c{width:14px;height:14px;margin:0 3px;border-radius:50%;background:radial-gradient(circle,var(--text),transparent 72%)}
+/* Stage 8, implementation PR 8B (decision 239): the outlines' swatches, outlines too (their border the drawing colour, set by paintKey from
+   COLOUR_KEY); the grades' extents by shape and line weight, no hue (decisions 1, 4) */
+.legend .olk{display:block;width:18px;height:8px;flex:0 0 auto;border:2px solid var(--text);background:transparent;box-shadow:0 0 0 1px var(--keyline)}
+.legend .olk-b{width:22px;border-width:1.5px}
+.legend .olk-c{width:13px;height:13px;margin:0 4px;border-width:1px;border-radius:50%}
 /* Stage 5D: the skeleton's anchors by shape (A filled, B ring, C small open ring) and its line, in the text colour */
 .legend .skk{display:block;flex:0 0 auto;box-sizing:border-box;width:9px;height:9px;margin:0 5px;border-radius:50%;opacity:.9}
 .legend .skk-a{background:var(--text)}

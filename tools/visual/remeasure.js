@@ -114,7 +114,7 @@ rows.forEach(x=>console.log(x[0].padEnd(20)+String(x[1]).padStart(10)+String(x[2
 notes.forEach(x=>console.log("  note: "+x));
 console.log("TIMELINE_MAX "+T.TIMELINE_MAX+" (Stage 3C spec; not re-measured): the tallest held view "+tlMax+" px"+(tlMax>T.TIMELINE_MAX?" OVER: fix the CSS, never the limit":"")+
   "; recorded, not held: "+T.TIMELINE_RECORDED.map(n=>n+" "+R[0].cases[n].timeline.height+" px").join(", ")+" (decision 122)");
-console.log("CONF_SHARE land "+T.CONF_SHARE.land+", paper "+T.CONF_SHARE.paper+" (5B, never raised): the largest measured land "+Math.max(...conf.land)+", paper "+Math.max(...conf.paper));
+console.log("CONF_SHARE land "+T.CONF_SHARE.land+", paper "+T.CONF_SHARE.paper+" (5B, never raised; the landscape's lowered by 8B to the outlines' measure, question 254): the largest measured land "+Math.max(...conf.land)+", paper "+Math.max(...conf.paper));
 console.log("SMOKE_SHARE "+T.SMOKE_SHARE+": the largest measured "+smoke+"; LAYER_MS "+T.LAYER_MS+": the slowest pass "+ms+" ms");
 
 /* 6. both runs pass with the proposals */
