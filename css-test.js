@@ -394,12 +394,15 @@ if(cerrs) process.exitCode=1;
   const caps=(src.match(/cap:true, fillOp:ARROW_CAP\.OP, edgeOp:ARROW_EDGE_OP, border:true, ground:true, role:"(arrow|drawon)"/g)||[]).length;
   if(caps!==2) aerr.push("the cap, the fill and the bordered casing on "+caps+" drawers, not the arrows' and their drawn-on parts'");
   if(/border:true[^}]*role:"(halt|line|bound)"/.test(src)) aerr.push("a line, boundary or halt bar has a bordered casing");
+  /* the border in the two perspective presentations only: on the paper map nothing changes (0.3.1 item 4), the casing under the whole fill */
+  if(!/BORDER\.U\.value=paper\?0:1;/.test(src)||(src.match(/sh\.uniforms\.uBorder=BORDER\.U;/g)||[]).length!==2||(src.match(/if\(uBorder>0\.5&&/g)||[]).length!==2)
+    aerr.push("the casing's border is not switched off on the paper map (BORDER.U, uBorder in both hooks)");
   ["halt","line","bound"].forEach(r=>{ if(!new RegExp('ground:true,role:"'+r+'"\\}').test(src)) aerr.push("the "+r+"s are not tested against the ground"); });
   if(/cap:true[^}]*role:"(halt|line|bound)"/.test(src)) aerr.push("a line, boundary or halt bar is capped");
   if(!/lm\.onBeforeCompile=groundDepthHook;/.test(src)) aerr.push("the lines' ticks are not tested against the ground");
   if(!/function groundDepthHook\(sh\)\{\n  atmoUniforms\(sh\);/.test(src)) aerr.push("the ground's hook drops the atmosphere's uniforms (a fogged tick drawn black)");
   aerr.forEach(e=>console.log("  ! "+e));
-  console.log("arrows and glyphs (decision 241): "+(aerr.length?aerr.length+" wrong":"the cap 16 px, the fill 0.62 and the casing a border on the movement arrows and their drawn-on parts, the glyphs at 64 px, every overlay ribbon and tick tested against the ground"));
+  console.log("arrows and glyphs (decision 241): "+(aerr.length?aerr.length+" wrong":"the cap 16 px, the fill 0.62 and the casing a border on the movement arrows and their drawn-on parts (the border in the perspective presentations only), the glyphs at 64 px, every overlay ribbon and tick tested against the ground"));
   if(aerr.length) process.exitCode=1;
 }
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by

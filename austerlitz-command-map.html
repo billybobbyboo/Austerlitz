@@ -8858,15 +8858,17 @@ function groundDepthHook(sh){
    of ground shows between them): its shaft by each vertex's place across it (aF, -1 to 1: the fill covers BORDER.IN of its half-width), its
    head by each vertex's signed distances to the fill head's edges (aD, aE, the head's width the unit; the cap scales both heads about the
    arrow's end, which leaves them unchanged). The geometry is the casing's as before (the label layer's obstacles, the measures). What is
-   seen: the fill over the ground at its opacity, edged by its casing. BORDER.TUCK is a design value */
-var BORDER={IN:1/1.34, TUCK:0.02};
-function borderShaftHook(sh){ groundDepthHook(sh);
+   seen: the fill over the ground at its opacity, edged by its casing. In the two perspective presentations only: on the paper map, where the
+   fill keeps its opacity, nothing changes (0.3.1 item 4) and the casing lies under the whole fill as before 8B (BORDER.U off, set with the
+   opacities by applyOverlayOpacity). BORDER.TUCK is a design value */
+var BORDER={IN:1/1.34, TUCK:0.02, U:{value:1}};
+function borderShaftHook(sh){ groundDepthHook(sh); sh.uniforms.uBorder=BORDER.U;
   sh.vertexShader=sh.vertexShader.replace("void main() {","attribute float aF; varying float vF;\nvoid main() {\n  vF=aF;");
-  sh.fragmentShader=sh.fragmentShader.replace("void main() {","varying float vF;\nvoid main() {\n  if(abs(vF)<"+(BORDER.IN-BORDER.TUCK).toFixed(4)+") discard;");
+  sh.fragmentShader=sh.fragmentShader.replace("void main() {","uniform float uBorder; varying float vF;\nvoid main() {\n  if(uBorder>0.5&&abs(vF)<"+(BORDER.IN-BORDER.TUCK).toFixed(4)+") discard;");
 }
-function borderHeadHook(sh){ groundDepthHook(sh);
+function borderHeadHook(sh){ groundDepthHook(sh); sh.uniforms.uBorder=BORDER.U;
   sh.vertexShader=sh.vertexShader.replace("void main() {","attribute vec3 aD; attribute vec2 aE; varying vec3 vD; varying vec2 vE;\nvoid main() {\n  vD=aD; vE=aE;");
-  sh.fragmentShader=sh.fragmentShader.replace("void main() {","varying vec3 vD; varying vec2 vE;\nvoid main() {\n  if(min(min(vD.x,vD.y),vD.z)>"+BORDER.TUCK.toFixed(4)+"&&max(vE.x,vE.y)>"+BORDER.TUCK.toFixed(4)+") discard;");
+  sh.fragmentShader=sh.fragmentShader.replace("void main() {","uniform float uBorder; varying vec3 vD; varying vec2 vE;\nvoid main() {\n  if(uBorder>0.5&&min(min(vD.x,vD.y),vD.z)>"+BORDER.TUCK.toFixed(4)+"&&max(vE.x,vE.y)>"+BORDER.TUCK.toFixed(4)+") discard;");
 }
 /* a point's signed distances (inside positive) to the fill head Hf's edges, its width the unit: the triangle's three (tip to left, the base,
    right to tip) and, for the Allied chevron, the notch's two (positive on the tip's side; inside the head where one of them is) */
@@ -9090,6 +9092,7 @@ function drawOnApply(d){
 function applyOverlayOpacity(){
   var base=layerOn.arrows?0.95:0;
   var i, paper=(mode==="staff");   /* Stage 8, 8B (decision 241): a movement arrow's fill at ARROW_CAP.OP in the perspective presentations; on the paper map as before (paperK) */
+  BORDER.U.value=paper?0:1;   /* and its casing a border there only: on the paper map under the whole fill, as before 8B (0.3.1 item 4) */
   for(i=0;i<overlayMats.length;i++) overlayMats[i].opacity=base*ovFadeIn*(overlayMats[i].userData.op||1)*(paper&&overlayMats[i].userData.paperK||1);
   for(i=0;i<oldMats.length;i++) oldMats[i].opacity=0.9*ovFadeOut*(oldMats[i].userData.op||1)*(paper&&oldMats[i].userData.paperK||1);
 }
@@ -16169,12 +16172,31 @@ var AUSTERLITZ_DEBUG=(function(){
         lay.runsInfo.forEach(function(ri){ var u0=ri.r0*R.uEnd, u1=R.o.full?1:Math.min(ri.r1,1)*R.uEnd;
           for(var i=0;i<=ri.n;i++){ var q=(ri.first+i*(m+1))*3; if(R.o.full&&lay.moved&&ri.first/(m+1)+i>=lay.moved.row) break;
             if(Math.abs(Math.hypot(A[q+m*3]-A[q],A[q+m*3+2]-A[q+2])/2-hwAt(R,lay,u0+(u1-u0)*i/ri.n,uT0))>1e-4) paperBad++; } }); }); });
+    /* and nothing else changes there (0.3.1 item 4): each movement arrow's casing drawn alone, white over black, lit at its shaft's centre line,
+       under the whole fill as before 8B (in the perspective presentations a border, BORDER; checked in (3)) */
+    var PC={arrows:0,n:0,under:0};
+    (function(){ var W1=Math.round(cw), H1=Math.round(chh), rt1=new THREE.WebGLRenderTarget(W1,H1), b1=new Uint8Array(W1*H1*4), keep=[], hid=[];
+      var keepBg=scene.background, cc=renderer.getClearColor(new THREE.Color()), ca=renderer.getClearAlpha();
+      scene.background=null; renderer.setClearColor(0,1); scene.children.forEach(function(o){ keep.push([o,o.visible]); if(o!==overlayRoot) o.visible=false; });
+      if(oldOv&&oldOv.visible){ oldOv.visible=false; hid.push(oldOv); }
+      CAPPED.forEach(function(R){ if(R.group!==curOv||R.role!=="arrow"||!R.o.border||!R.layers[0].shaft.visible) return; PC.arrows++;
+        var mine=[R.layers[0].shaft,R.layers[0].head].filter(Boolean), off=[];
+        curOv.traverse(function(o){ if((o.isMesh||o.isLine||o.isSprite)&&o.visible&&mine.indexOf(o)<0){ off.push(o); o.visible=false; } });
+        var ms=mine.map(function(M){ return [M.material,M.material.color.clone(),M.material.opacity]; }); ms.forEach(function(m){ m[0].color.setRGB(1,1,1); m[0].opacity=1; });
+        renderer.info.reset(); renderer.setRenderTarget(rt1); renderer.clear(); renderer.render(scene,camera); renderer.readRenderTargetPixels(rt1,0,0,W1,H1,b1);
+        ms.forEach(function(m){ m[0].color.copy(m[1]); m[0].opacity=m[2]; }); off.forEach(function(o){ o.visible=true; });
+        var n=Math.max(2,Math.ceil(R.len));
+        for(var j=1;j<n;j++){ var u=j/n*R.uEnd, p=R.curve.getPointAt(u); if(R.o.runs&&!R.o.runs.some(function(r){ return u>=r[0]*R.uEnd+0.02&&u<=r[1]*R.uEnd-0.02; })) continue;
+          V3.set(p.x,groundY(p.x,p.z)+R.o.lift,p.z).project(camera); var x=Math.floor((V3.x+1)/2*W1), y=Math.floor((V3.y+1)/2*H1); if(x<1||y<1||x>=W1-1||y>=H1-1) continue;
+          PC.n++; if(b1[(y*W1+x)*4]>128) PC.under++; } });
+      hid.forEach(function(o){ o.visible=true; }); keep.forEach(function(k){ k[0].visible=k[1]; });
+      scene.background=keepBg; renderer.setClearColor(cc,ca); renderer.setRenderTarget(null); rt1.dispose(); })();
     setMode("terrain"); updateVisibility();
-    ck("arrows (decision 241): in the two perspective presentations every movement arrow's casing, and its drawn-on part's, at most "+ARROW_CAP.PX+" px across on screen at every drawn row, never wider than built, its centre on the arrow's curve at its lift, the fill and the head in proportion, the head's tip on the arrow's end; laid by the drawn frame for its eye; on the paper map every width as built",
-      S.views===18&&S.rows>0&&S.capped>0&&S.maxPx<=ARROW_CAP.PX+0.5&&!S.wider.length&&!S.offCurve&&!S.drape&&!S.prop&&!S.head.length&&S.wired&&paperN>0&&!paperBad,
+    ck("arrows (decision 241): in the two perspective presentations every movement arrow's casing, and its drawn-on part's, at most "+ARROW_CAP.PX+" px across on screen at every drawn row, never wider than built, its centre on the arrow's curve at its lift, the fill and the head in proportion, the head's tip on the arrow's end; laid by the drawn frame for its eye; on the paper map every width as built and the casing under the whole fill, as before 8B",
+      S.views===18&&S.rows>0&&S.capped>0&&S.maxPx<=ARROW_CAP.PX+0.5&&!S.wider.length&&!S.offCurve&&!S.drape&&!S.prop&&!S.head.length&&S.wired&&paperN>0&&!paperBad&&PC.arrows>0&&PC.n>0&&PC.under===PC.n,
       S.views+" views (the four vantages, the low Pratzen view and Napoleon's eye level at 08:30, 09:50 and 12:00), "+S.ribbons+" movement arrows and drawn-on parts, "+S.rows+" drawn rows on screen ("+S.capped+
       " capped): the widest casing "+S.maxPx.toFixed(2)+" px ("+S.maxAt+"); "+S.wider.length+" rows wider than built"+(S.wider.length?" ("+S.wider.slice(0,3).join("; ")+")":"")+"; "+S.offCurve+" row centres off the curve; "+S.drape+
-      " vertices off their lift; "+S.prop+" fill rows out of proportion; heads "+(S.head.length?"WRONG: "+S.head.slice(0,3).join("; "):"in proportion at their shaft's factor")+"; the frame lays them "+S.wired+"; paper map: "+paperN+" arrows, "+paperBad+" rows not as built");
+      " vertices off their lift; "+S.prop+" fill rows out of proportion; heads "+(S.head.length?"WRONG: "+S.head.slice(0,3).join("; "):"in proportion at their shaft's factor")+"; the frame lays them "+S.wired+"; paper map: "+paperN+" arrows, "+paperBad+" rows not as built; "+PC.arrows+" movement arrows' casings drawn alone, under the fill at "+PC.under+" of "+PC.n+" points of their centre lines");
     /* (2) the opacities, phase by phase */
     var keepPh=curPhase, op={arrow:0,drawon:0,line:0,bound:0,halt:0}, opBad=[];
     for(var ph=0;ph<PHASES.length;ph++){ rebuildOverlays(ph,true);
