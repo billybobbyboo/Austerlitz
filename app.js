@@ -130,7 +130,7 @@ function setTween(slot,fn){
   _tw[slot]=fn||null;
   tween=(_tw.scene||_tw.cam)?_runTween:(tween===_runTween?null:tween);
 }
-var layerOn={symbols:true,arrows:true,labels:true,trails:true,contours:true,analysis:false,events:true,confidence:true,skeleton:false,routes:false};   /* confidence: Stage 5B, decision 85; skeleton: Stage 5D, off; routes: Stage 5F, off (decision 93) */
+var layerOn={symbols:true,arrows:true,labels:true,trails:true,contours:true,analysis:false,events:true,confidence:false,skeleton:false,routes:false};   /* confidence: Stage 5B, decision 85, on; since Stage 8, implementation PR 8B (decision 239), the setting of the presentation shown (CONF_ON): off at first on the landscape, where the app opens; skeleton: Stage 5D, off; routes: Stage 5F, off (decision 93) */
 var goingOn=false;
 var terrainLabels=[];   /* {tl, col, world}: the map layer's terrain-study labels */
 var highlight=null;      /* id -> true, or null for "show everything equally" */
@@ -1588,6 +1588,79 @@ function groundPatch(m,U,x,z,yaw,w,d,lift){
   if(geo.computeBoundingSphere) geo.computeBoundingSphere();
 }
 var _cfV=new THREE.Vector3();
+/* ---- Stage 8, implementation PR 8B (decision 239; docs/STAGE8_SPEC.md sections 2, 14): the ground under the troops as outlines ----
+   In the two perspective presentations (Landscape, Landscape with counters) every formation drawn as figures has a thin cased outline round
+   its footprint on the drawn ground, in its side's colour (TOKENS.sym.side base, the side's edge colour its casing; decision 1: no other
+   hue), and the selected formation (or a selected corps's formations) in the selection accent: no filled wash under the troops. "Position
+   confidence" is there an optional layer, off at first: on, each outline is its grade's extent instead (decision 86: A the footprint, B the
+   frontage doubled, C a disc of the frontage's radius; between anchors the weaker grade, decision 88), its line thinner as the grade weakens.
+   The outline is a patch of the drawn ground's own cells at its lift (groundPatch, as the marks were: it lies on the ground everywhere and
+   never under it), and its band is drawn by the fragment shader just outside the extent, at a constant width on screen (the distance to the
+   extent's edge over its screen-space derivative): never broken into dashes on a slope, never a wash. The patch reaches beyond the extent
+   by the band's width at the formation's distance, twice over, quantised in steps of Q so it is rebuilt only when the scale moves by more.
+   Drawn filled as before: the paper map's marks (its layer on at first; decision 239 keeps its treatment), the 1x footprint by its grade
+   (decision 34), a reported-only formation's C zone under a reading and the eye level's own side as its marks (decision 91). The pads stay.
+   Widths and opacities are DESIGN VALUES (the Part A prototype's): px on screen */
+var OUTLINE={LINE:1.7, CASE:3.4, SEL_LINE:2.2, SEL_CASE:4.4, GRADE:{A:1.7,B:1.4,C:1.1}, OP:0.95, CASE_OP:0.55, LIFT:0.25, MARGIN:2, Q:1.15,
+  shown:{fr:false,al:false,sel:false,A:false,B:false,C:false}};
+var OUTLINE_VS="varying vec2 vUv;\nvoid main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }";
+var OUTLINE_FS=["uniform vec2 uSize; uniform vec2 uIn; uniform float uDisc; uniform float uLine; uniform float uCase; uniform float uOp; uniform float uCaseOp;",
+  "uniform vec3 uCol; uniform vec3 uEdge;",
+  "varying vec2 vUv;",
+  "void main(){",
+  "  vec2 p=(vUv-0.5)*uSize;",
+  /* the signed distance outside the extent's edge, world units: a rectangle uIn (its frame's own axes), or a disc of diameter uIn.x */
+  "  float e;",
+  "  if(uDisc>0.5) e=length(p)-0.5*uIn.x;",
+  "  else { vec2 q=abs(p)-0.5*uIn; e=length(max(q,0.0))+min(max(q.x,q.y),0.0); }",
+  "  float w=max(length(vec2(dFdx(e),dFdy(e))),1e-6), s=e/w;",   /* pixels outside the edge */
+  "  if(s<-0.75||s>uCase+0.75) discard;",
+  "  float band=smoothstep(-0.5,0.5,s)*(1.0-smoothstep(uCase-0.5,uCase+0.5,s));",   /* the casing, antialiased on both sides */
+  "  float line=1.0-smoothstep(0.5*uLine-0.5,0.5*uLine+0.5,abs(s-0.5*uCase));",      /* the line, centred in it */
+  "  gl_FragColor=vec4(mix(uEdge,uCol,line),band*mix(uCaseOp,uOp,line));",
+  "  #include <tonemapping_fragment>",   /* as the built-in materials: the effects' linear target, or the standard path's tone map and sRGB */
+  "  #include <encodings_fragment>",
+  "}"].join("\n");
+function makeOutline(){
+  var m=new THREE.Mesh(new THREE.BufferGeometry(),new THREE.ShaderMaterial({vertexShader:OUTLINE_VS,fragmentShader:OUTLINE_FS,
+    uniforms:{uSize:{value:new THREE.Vector2(1,1)},uIn:{value:new THREE.Vector2(1,1)},uDisc:{value:0},uLine:{value:OUTLINE.LINE},uCase:{value:OUTLINE.CASE},
+      uOp:{value:OUTLINE.OP},uCaseOp:{value:OUTLINE.CASE_OP},uCol:{value:new THREE.Color()},uEdge:{value:new THREE.Color()}},
+    transparent:true,depthWrite:false,side:THREE.DoubleSide,extensions:{derivatives:true}}));
+  m.renderOrder=4; m.frustumCulled=false; m.userData.outline={dims:"",key:""};
+  return m;
+}
+/* place outline m for grade g (A: the footprint; with the layer on, the grade's extent) at world (x,z), yaw, frontage W0 and depth D0, in
+   colour col over casing edge (hex), its line and casing px wide, at opacity k (dimmed formations fainter) */
+/* how far the band reaches across the ground, per px, at a point of the extent: the eye's world units per px over the sine of the angle at
+   which its ray meets the drawn ground there (a slope seen at a grazing angle spreads a pixel over more ground), the sine floored at 0.08 */
+var _olN=new THREE.Vector3(), _olD=new THREE.Vector3();
+function outlineReach(x,z){
+  var y=groundY(x,z); _olD.set(x,y,z).sub(camera.position).normalize();
+  _olN.set(groundY(x-0.5,z)-groundY(x+0.5,z),1,groundY(x,z-0.5)-groundY(x,z+0.5)).normalize();
+  return worldPerPx(_cfV.set(x,y,z))/Math.max(0.08,Math.abs(_olD.dot(_olN)));
+}
+function outlinePlace(m,g,x,z,yaw,W0,D0,col,edge,line,cas,k){
+  var s=confSize(g,W0,D0), disc=(g==="C"), w=s[0], d=s[1], U=m.userData.outline, u=m.material.uniforms, c=Math.cos(yaw), sn=Math.sin(yaw), r=0;
+  /* the band's reach at the extent's centre and at its four corners (or the disc's four points), the largest */
+  [[0,0],[w/2,d/2],[-w/2,d/2],[w/2,-d/2],[-w/2,-d/2]].forEach(function(o){ r=Math.max(r,outlineReach(x+o[0]*c+o[1]*sn,z-o[0]*sn+o[1]*c)); });
+  var q=Math.ceil(Math.log(Math.max(1e-4,OUTLINE.MARGIN*cas*r))/Math.log(OUTLINE.Q)), mg=Math.pow(OUTLINE.Q,q);
+  if(!(mg>0)||!isFinite(mg)) mg=0.5;
+  U.g=g; U.w=w; U.d=d; U.W0=W0; U.D0=D0; U.mg=mg; U.cas=cas; U.line=line;
+  u.uIn.value.set(w,d); u.uSize.value.set(w+2*mg,d+2*mg); u.uDisc.value=disc?1:0; u.uLine.value=line; u.uCase.value=cas;
+  u.uOp.value=OUTLINE.OP*k; u.uCaseOp.value=OUTLINE.CASE_OP*k; u.uCol.value.copy(lin(col)); u.uEdge.value.copy(lin(edge));
+  var lf=EYE.on?EYE.LIFT:OUTLINE.LIFT, mat=m.material;
+  if(mat.polygonOffset!==EYE.on){ mat.polygonOffset=EYE.on; mat.polygonOffsetFactor=-2; mat.polygonOffsetUnits=-2; mat.needsUpdate=true; }
+  var key=[g,x.toFixed(3),z.toFixed(3),yaw.toFixed(4),w.toFixed(3),d.toFixed(3),q,DISPLAY.factor,DISPLAY.flat?1:0,lf].join("|");
+  if(U.key===key) return;
+  U.key=key;
+  groundPatch(m,U,x,z,yaw,w+2*mg,d+2*mg,lf);
+}
+/* Stage 8, implementation PR 8B (decision 239): "Position confidence" kept apart for the two perspective presentations (off at first) and
+   the paper map (on at first, decision 85 kept there); layerOn.confidence is the setting of the presentation shown (setMode), and the Layers
+   panel's one control sets that one */
+var CONF_ON={land:false, paper:true};
+function confKey(){ return mode==="staff"?"paper":"land"; }
+function syncConfButton(){ var b=document.querySelector('.layer-btn[data-l="confidence"]'); if(b) b.setAttribute("aria-pressed",String(!!layerOn.confidence)); }
 /* ---- the evidence skeleton (Stage 5D; docs/STAGE5_SPEC.md section B.3; owner decision 90) ----
    The anchors the clock interpolates between (anchorList: the plotted positions) and the legs it draws between them (legPath, the
    vias included), for the formations in scope, while "Evidence skeleton" is on (off by default). Scope (decision 90): the selected
@@ -2132,11 +2205,14 @@ function arrowPts(a){
    dashes (dashRuns); col, edge: fill and casing; lift; world: the points are already world x, z. Meshes go to `add`,
    materials to `mats`. */
 var CHEVRON_NOTCH=0.38;
-function drapeMesh(v,idx,col,op,lift,order,mats,kind){
+function drapeMesh(v,idx,col,op,lift,order,mats,kind,ground){
   var g=new THREE.BufferGeometry();
   g.setAttribute("position",new THREE.Float32BufferAttribute(v,3)); g.setIndex(idx);
-  /* over woods and buildings, as the plan ribbons are: an annotation on the map, not an object in the landscape */
+  /* over woods and buildings, as the plan ribbons are: an annotation on the map, not an object in the landscape. Stage 8, implementation PR
+     8B (decision 241): an overlay's arrow, line, boundary or halt bar (ground) is hidden by the drawn ground alone (GDEPTH), still over the
+     figures, woods and buildings */
   var m=new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0,fog:false,depthWrite:false,depthTest:false,side:THREE.DoubleSide});
+  if(ground) m.onBeforeCompile=groundDepthHook;
   m.userData.op=op; mats.push(m);
   var mesh=new THREE.Mesh(g,m); mesh.renderOrder=order; mesh.userData.drape={lift:lift,kind:kind};
   return mesh;
@@ -2159,14 +2235,18 @@ function drapedRibbon(mapPts,o,add,mats){
     wp=dp; tOrig=ix.map(function(k){ return k/(wp.length-1); }); }
   var curve=wp.length>2?new THREE.CatmullRomCurve3(wp,false,"centripetal"):new THREE.LineCurve3(wp[0],wp[1]);
   var L=curve.getLength(), headL=o.head?Math.min(o.headL,L*0.6):0, headW=o.head?o.headW*headL/o.headL:0;
-  var uEnd=(L-headL)/L, uT=o.uTaper||uEnd, runs=o.runs||[[0,1]], lift=o.lift, out={curve:curve,len:L,uEnd:uEnd,headL:headL,headW:headW,layers:[],tOrig:tOrig}, ord=o.order||0;
-  [[1.34,o.edge,0.5,-0.06],[1.0,o.col,1.0,0]].forEach(function(layer,li){
-    var sc=layer[0], ly=lift+layer[3], v=[], idx=[];
+  var uEnd=(L-headL)/L, uT=o.uTaper||uEnd, runs=o.runs||[[0,1]], lift=o.lift, out={curve:curve,len:L,uEnd:uEnd,headL:headL,headW:headW,layers:[],tOrig:tOrig,
+    o:o,headL0:headL,headW0:headW,uEnd0:uEnd,Ks:null}, ord=o.order||0;
+  /* Stage 8, implementation PR 8B (decision 241): the movement arrows' fill at ARROW_CAP.OP of its opacity (o.fillOp), the casing's own
+     (o.edgeOp, else unchanged) */
+  [[1.34,o.edge,0.5*(o.edgeOp===undefined?1:o.edgeOp),-0.06],[1.0,o.col,1.0*(o.fillOp===undefined?1:o.fillOp),0]].forEach(function(layer,li){
+    var sc=layer[0], ly=lift+layer[3], v=[], idx=[], runsInfo=[];
     var nRows=0;
     runs.forEach(function(r){
       var u0=r[0]*uEnd, u1=o.full?1:Math.min(r[1],1)*uEnd, n=Math.max(2,Math.ceil((u1-u0)*L/1.0));   /* o.full (Stage 4D): the shaft built to the end, drawn to uEnd when whole */
       nRows=n;
       var wmax=Math.max(o.w0,o.w1)*sc, m=Math.max(2,Math.ceil(wmax/1.0)), first=v.length/3;
+      runsInfo.push({r0:r[0],r1:r[1],n:n,first:first});
       for(var i=0;i<=n;i++){
         var u=u0+(u1-u0)*i/n, pt=curve.getPointAt(u), tg=curve.getTangentAt(u), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1;
         nx/=nl; nz/=nl;
@@ -2175,18 +2255,139 @@ function drapedRibbon(mapPts,o,add,mats){
       }
       for(i=0;i<n;i++) for(k=0;k<m;k++){ var a=first+i*(m+1)+k, b=a+m+1; idx.push(a,b,a+1, a+1,b,b+1); }
     });
-    var sh=drapeMesh(v,idx,layer[1],layer[2],ly,12+li+ord,mats,"shaft"), lay={shaft:sh,cols:Math.max(2,Math.ceil(Math.max(o.w0,o.w1)*sc/1.0)),rows:nRows,sc:sc,ly:ly,w0:o.w0,w1:o.w1,uT:uT};
+    var sh=drapeMesh(v,idx,layer[1],layer[2],ly,12+li+ord,mats,"shaft",o.ground), lay={shaft:sh,cols:Math.max(2,Math.ceil(Math.max(o.w0,o.w1)*sc/1.0)),rows:nRows,sc:sc,ly:ly,w0:o.w0,w1:o.w1,uT:uT,runsInfo:runsInfo};
     add(sh); out.layers.push(lay);
     if(o.full) shaftEnd(lay,curve,L,uT,uEnd);
     if(o.head){
       var H=ribbonHead(curve,1,headL,headW,sc,ly,o.head);
-      var hm=drapeMesh(H.v,H.idx,layer[1],layer[2],ly,14+li+ord,mats,"head");
+      var hm=drapeMesh(H.v,H.idx,layer[1],layer[2],ly,14+li+ord,mats,"head",o.ground);
       hm.userData.head=o.head; hm.userData.side=li===1?o.side:null; hm.userData.tip=H.tip; hm.userData.base=H.base; if(H.notch) hm.userData.notch=H.notch;
       add(hm); lay.head=hm;
       if(li===0&&o.heads) o.heads.push(hm);   /* the casing's head mesh: labels keep clear of it (2D) */
     }
   });
+  if(o.cap){ out.group=curOv; out.cp=capPts(out); CAPPED.push(out); CAP.key=null; }   /* Stage 8, 8B (decision 241): its width follows the camera (arrowCap) */
+  out.role=o.role; if(curOv) (curOv.userData.ribbons||(curOv.userData.ribbons=[])).push(out);   /* Stage 8, 8B: each overlay ribbon by its role (the self-test) */
   return out;
+}
+/* ---- Stage 8, implementation PR 8B (decision 241; docs/STAGE8_SPEC.md section 7.1): the movement arrows calmed ----
+   In the two perspective presentations a movement arrow (and the part of a derived arrow drawn on with the clock) is never wider on screen
+   than ARROW_CAP.PX at its casing: wherever its world width would draw it wider (a low or close view), it is drawn narrower, its head in
+   proportion, every point of its path, its head's form, its colours, its label and its draw-on as before; never widened. The cap is read at
+   every drawn frame (arrowCap, from renderFrame): along each capped ribbon, every unit of its length, the casing's width on screen at that
+   point, the factor quantised down in steps of Q (so the casing stays at or under the cap and the ribbon is laid again only when the scale
+   has moved by more than a step); a ribbon whose factors changed is laid again in place (ribbonRelayout: the same vertices, draped at the
+   new widths). On the paper map nothing is capped (one scale across the plan; its widths unchanged). PX and Q are DESIGN VALUES (Part A's
+   prototype's PX; decision 241). The fill is drawn at OP of its opacity (decision 241) */
+var ARROW_CAP={PX:16, Q:1.1, OP:0.62}, CAPPED=[], CAP={key:null, n:0, relaid:0};
+/* the casing's own opacity: 8B keeps it (decision 241 lowers the fill; docs/STAGE8_SPEC.md 0.3.1 item 5 and section 14) */
+var ARROW_EDGE_OP=1;
+function capQuant(k){ return !(k<1)?1:Math.pow(ARROW_CAP.Q,Math.floor(Math.log(Math.max(k,1e-6))/Math.log(ARROW_CAP.Q)+1e-9)); }   /* not a number: 1, never capped */
+/* a capped ribbon's centre line on the drawn ground, every unit of its length (x, y, z), with its casing's width there as built, edge to edge
+   on the drawn ground (its rise across a slope counted). Built once: the overlays are built again when the display factor changes */
+function capPts(R){
+  var o=R.o, n=Math.max(2,Math.ceil(R.len)), P=new Float32Array((n+1)*4), uT=o.uTaper||R.uEnd0;
+  for(var j=0;j<=n;j++){ var u=j/n, pt=R.curve.getPointAt(u), tg=R.curve.getTangentAt(u), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1, wc=(o.w0+(o.w1-o.w0)*(uT>0?Math.min(1,u/uT):0))*1.34, h=wc/2;
+    nx/=nl; nz/=nl;
+    P[j*4]=pt.x; P[j*4+1]=groundY(pt.x,pt.z)+o.lift; P[j*4+2]=pt.z; P[j*4+3]=Math.hypot(wc,groundY(pt.x+nx*h,pt.z+nz*h)-groundY(pt.x-nx*h,pt.z-nz*h)); }
+  return P;
+}
+/* the cap's factor along ribbon R at each of its points: the casing's width there against ARROW_CAP.PX at the distance of its nearer edge from
+   the eye at worst (the centre's distance less half the width; worldPerPx's own rule), quantised down; a row wholly behind the eye keeps 1 */
+function capFactors(R){
+  var P=R.cp, n=P.length/4, K=new Array(n), m=camera.matrixWorldInverse.elements, f=2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))/viewH();
+  for(var j=0;j<n;j++){ var x=P[j*4], y=P[j*4+1], z=P[j*4+2], w3=P[j*4+3], d=-(m[2]*x+m[6]*y+m[10]*z+m[14]);
+    K[j]=!(w3>0)||!isFinite(d)||d+w3/2<=0?1:capQuant(ARROW_CAP.PX*Math.max(d-w3/2,1e-3)*f/w3); }
+  return K;
+}
+function capAt(K,u){ var n=K.length-1, x=Math.max(0,Math.min(n,u*n)), i=Math.floor(x), j=Math.min(n,i+1); return Math.min(K[i],K[j]); }
+/* lay ribbon R again at the cap's factors K (null: none), its head at the factor at its base */
+function ribbonRelayout(R,K){
+  var o=R.o, L=R.len, curve=R.curve, kH=K?capAt(K,R.uEnd0):1, headL=R.headL0*kH, headW=R.headW0*kH, uEnd=(L-headL)/L, uT=o.uTaper||uEnd;
+  R.Ks=K; R.uEnd=uEnd; R.headL=headL; R.headW=headW;
+  R.layers.forEach(function(lay){
+    var A=lay.shaft.geometry.attributes.position, arr=A.array, m=lay.cols;
+    lay.moved=null; lay.uT=uT; lay.kAt=K?function(u){ return capAt(K,u); }:null;
+    lay.runsInfo.forEach(function(ri){ var u0=ri.r0*uEnd, u1=o.full?1:Math.min(ri.r1,1)*uEnd;
+      for(var i=0;i<=ri.n;i++){ var u=u0+(u1-u0)*i/ri.n, pt=curve.getPointAt(u), tg=curve.getTangentAt(u), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1;
+        nx/=nl; nz/=nl; var hw=(o.w0+(o.w1-o.w0)*(uT>0?Math.min(1,u/uT):0))*lay.sc/2*(K?capAt(K,u):1);
+        for(var k=0;k<=m;k++){ var f=-1+2*k/m, x=pt.x+nx*hw*f, z=pt.z+nz*hw*f, q=(ri.first+i*(m+1)+k)*3; arr[q]=x; arr[q+1]=groundY(x,z)+lay.ly; arr[q+2]=z; } } });
+    A.needsUpdate=true; lay.shaft.geometry.boundingSphere=null;
+    if(o.full) shaftEnd(lay,curve,L,uT,lay.endU!==undefined?lay.endU:uEnd);
+    if(lay.head){ var H=ribbonHead(curve,1,headL,headW,lay.sc,lay.ly,o.head), hg=lay.head.geometry, hp=hg.attributes.position;
+      hp.array.set(H.v); hp.needsUpdate=true; hg.boundingSphere=null;
+      lay.head.userData.tip=H.tip; lay.head.userData.base=H.base; if(H.notch) lay.head.userData.notch=H.notch; } });
+}
+/* every drawn frame: the capped ribbons still drawn (the current phase's overlays and those fading out) laid again where their factors
+   changed; on the paper map, or with the layer off, none is capped (and a ribbon capped before is laid back at its full width) */
+function arrowCap(){
+  var live=overlayRoot?overlayRoot.children:[];
+  CAPPED=CAPPED.filter(function(R){ return live.indexOf(R.group)>=0; });
+  if(!CAPPED.length||!layerOn.arrows) return;   /* hidden: laid again when shown */
+  var on=!camera.isOrthographicCamera&&mode!=="staff";
+  camera.updateMatrixWorld();
+  var key=on?Array.prototype.join.call(camera.matrixWorld.elements,",")+"|"+camera.fov+"|"+viewH()+"|"+CAPPED.length:"off|"+CAPPED.length;
+  if(key===CAP.key) return;
+  CAP.key=key; CAP.n++;
+  CAPPED.forEach(function(R){
+    var K=on?capFactors(R):null; if(K&&K.every(function(k){ return k>=1; })) K=null;
+    var same=(!K&&!R.Ks)||(K&&R.Ks&&K.length===R.Ks.length&&K.every(function(k,i){ return k===R.Ks[i]; }));
+    if(!same){ ribbonRelayout(R,K); CAP.relaid++; } });
+}
+/* ---- Stage 8, implementation PR 8B (decision 241; docs/STAGE8_SPEC.md section 7.1): the overlays hidden by the drawn ground alone ----
+   Until 8B every overlay ribbon was drawn over everything (depthTest false: "an annotation on the map, not an object in the landscape"),
+   so from a low eye the arrows showed through the hills (the audit's A-5). Since 8B, in each drawn frame of the two perspective
+   presentations, the drawn ground (the field and its apron, nothing else) is drawn once more, alone, into GDEPTH.rt (its depth, packed),
+   before the world; and every overlay ribbon (the movement arrows and their drawn-on parts, the lines of battle and their ticks, the
+   boundaries and the halt bars: drapeMesh's `ground`) leaves out a fragment that the ground stands in front of: still drawn over the
+   figures, the woods and the buildings, as 2C meant. On the paper map (flat ground, which hides nothing), and in any render but the frame's
+   own world pass (the self-test's offscreen frames), the test is off (uGroundOn 0) and the overlays are drawn as before. The pass is drawn
+   only while an overlay can be shown, and again only when the eye, the frame's size or the ground has changed (GDEPTH.key); what it costs is
+   counted (GDEPTH.n passes drawn, GDEPTH.ms the last one's time on the CPU, GDEPTH.tris its triangles). */
+var GDEPTH={rt:null, scene:null, field:null, apron:null, key:null, n:0, ms:0, tris:0,
+  u:{tGroundDepth:{value:null}, uGroundRes:{value:new THREE.Vector2(1,1)}, uGroundOn:{value:0}, uGroundNF:{value:new THREE.Vector2(1,1900)}}};
+function groundDepthHook(sh){
+  atmoUniforms(sh);   /* the atmosphere's uniforms first, as every material's own hook gives them (a fogged material, the line's ticks, needs them) */
+  var U=GDEPTH.u; sh.uniforms.tGroundDepth=U.tGroundDepth; sh.uniforms.uGroundRes=U.uGroundRes; sh.uniforms.uGroundOn=U.uGroundOn; sh.uniforms.uGroundNF=U.uGroundNF;
+  sh.fragmentShader=sh.fragmentShader.replace("void main() {",[
+    "uniform sampler2D tGroundDepth; uniform vec2 uGroundRes; uniform float uGroundOn; uniform vec2 uGroundNF;",
+    "#include <packing>",
+    "void main() {",
+    "  if(uGroundOn>0.5){",
+    "    float gd=unpackRGBAToDepth(texture2D(tGroundDepth,gl_FragCoord.xy/uGroundRes));",
+    "    float zf=-perspectiveDepthToViewZ(gl_FragCoord.z,uGroundNF.x,uGroundNF.y), zg=-perspectiveDepthToViewZ(gd,uGroundNF.x,uGroundNF.y);",
+    "    if(zf>zg*1.002+0.25) discard;",   /* the ground in front, beyond the depth's precision at that distance */
+    "  }"].join("\n"));
+}
+/* the ground's depth for a frame of w x h drawn with `camera`; returns whether the test is on for it */
+function gdepthPass(w,h){
+  var U=GDEPTH.u; U.uGroundOn.value=0;
+  if(DISPLAY.flat||mode==="staff"||camera.isOrthographicCamera||!groundMesh||!layerOn.arrows||!overlayRoot) return false;
+  if(!overlayRoot.children.some(function(g){ return g.children.length; })) return false;
+  if(!GDEPTH.rt){
+    var mk=function(src){ var m=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking}); m.side=src.material.side; return m; };
+    GDEPTH.scene=new THREE.Scene(); GDEPTH.scene.autoUpdate=false;
+    GDEPTH.field=new THREE.Mesh(groundMesh.geometry,mk(groundMesh)); GDEPTH.apron=new THREE.Mesh(apronMesh.geometry,mk(apronMesh));
+    [GDEPTH.field,GDEPTH.apron].forEach(function(m){ m.matrixAutoUpdate=false; m.frustumCulled=false; GDEPTH.scene.add(m); });
+    GDEPTH.rt=new THREE.WebGLRenderTarget(2,2,{minFilter:THREE.NearestFilter,magFilter:THREE.NearestFilter,format:THREE.RGBAFormat,depthBuffer:true,stencilBuffer:false});
+    GDEPTH.rt.texture.generateMipmaps=false;
+    U.tGroundDepth.value=GDEPTH.rt.texture;
+  }
+  camera.updateMatrixWorld();
+  var key=Array.prototype.join.call(camera.matrixWorld.elements,",")+"|"+Array.prototype.join.call(camera.projectionMatrix.elements,",")+"|"+w+"x"+h+"|"+
+    DISPLAY.factor+"|"+groundMesh.geometry.uuid+"|"+(apronMesh?apronMesh.geometry.uuid+(apronMesh.visible?"":"h"):"");
+  if(key!==GDEPTH.key){
+    var t0=performance.now(), cc=renderer.getClearColor(new THREE.Color()), ca=renderer.getClearAlpha(), rt0=renderer.getRenderTarget(), tr0=renderer.info.render.triangles;
+    GDEPTH.field.geometry=groundMesh.geometry; GDEPTH.field.matrixWorld.copy(groundMesh.matrixWorld); GDEPTH.field.visible=groundMesh.visible;
+    GDEPTH.apron.geometry=apronMesh.geometry; GDEPTH.apron.matrixWorld.copy(apronMesh.matrixWorld); GDEPTH.apron.visible=apronMesh.visible;
+    if(GDEPTH.rt.width!==w||GDEPTH.rt.height!==h) GDEPTH.rt.setSize(w,h);
+    renderer.setRenderTarget(GDEPTH.rt); renderer.setClearColor(0xffffff,1); renderer.clear();
+    renderer.render(GDEPTH.scene,camera);
+    renderer.setClearColor(cc,ca); renderer.setRenderTarget(rt0);
+    GDEPTH.key=key; GDEPTH.n++; GDEPTH.ms=performance.now()-t0; GDEPTH.tris=renderer.info.render.triangles-tr0;
+  }
+  U.uGroundRes.value.set(w,h); U.uGroundNF.value.set(camera.near,camera.far); U.uGroundOn.value=1;
+  return true;
 }
 /* Stage 4D: a full-length shaft (o.full) drawn from its start to arc length u: the rows up to u, the last of them moved to
    exactly u (draped, at the shaft's width there, uT the arc length where its taper ends); the row moved before is put back first */
@@ -2194,8 +2395,9 @@ function shaftEnd(lay,curve,L,uEnd,u){
   var g=lay.shaft.geometry, A=g.attributes.position, m=lay.cols, n=lay.rows, per=(m+1)*3;
   if(lay.moved){ A.array.set(lay.moved.v,lay.moved.row*per); lay.moved=null; }
   var k=Math.max(1,Math.min(n,Math.ceil(u*n-1e-9)));
+  lay.endU=u;   /* Stage 8, 8B: kept for a re-layout at the cap (ribbonRelayout) */
   if(k<n||u<1){ var row=k, save=A.array.slice(row*per,(row+1)*per), pt=curve.getPointAt(u), tg=curve.getTangentAt(u), nx=-tg.z, nz=tg.x, nl=Math.hypot(nx,nz)||1;
-    nx/=nl; nz/=nl; var hw=(lay.w0+(lay.w1-lay.w0)*(uEnd>0?Math.min(1,u/uEnd):0))*lay.sc/2;
+    nx/=nl; nz/=nl; var hw=(lay.w0+(lay.w1-lay.w0)*(uEnd>0?Math.min(1,u/uEnd):0))*lay.sc/2*(lay.kAt?lay.kAt(u):1);
     for(var j=0;j<=m;j++){ var f=-1+2*j/m, x=pt.x+nx*hw*f, z=pt.z+nz*hw*f, o=row*per+j*3; A.array[o]=x; A.array[o+1]=groundY(x,z)+lay.ly; A.array[o+2]=z; }
     lay.moved={row:row,v:save}; }
   A.needsUpdate=true; g.boundingSphere=null;
@@ -2224,6 +2426,7 @@ function buildArrow(a){
   var r=drapedRibbon(pts,{w0:w[0],w1:w[1],side:a.side,head:a.side==="al"?"chevron":"plain",headW:7.5,headL:6.5,heads:ovHeads,
     runs:a.kind==="axis"?dashRuns(9,0.62):null,   /* an intended route: broken; a retreat happened, so it is solid */
     dense:a.leg?2:0,   /* Stage 4D: a derived arrow kept to its path (its drawn-on part follows the formation) */
+    cap:true, fillOp:ARROW_CAP.OP, edgeOp:ARROW_EDGE_OP, ground:true, role:"arrow",   /* Stage 8, 8B (decision 241) */
     col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
   var mid=r.curve.getPointAt(0.5);
   /* roadmap step 2 (decision 125 (a); docs/FINAL_AUDIT.md H-1): an arrow the data marks unsettled (OVERLAYS' interp) carries its mark where its label is read */
@@ -2243,17 +2446,18 @@ function buildHalt(a,pts){
   var dx=e[0]-p[0], dz=e[1]-p[1], L=Math.hypot(dx,dz)||1, nx=-dz/L, nz=dx/L, h=haltFrontage(a.of)/2;
   var S=TOKENS.sym.side[a.side], col=SIDE_COL[a.side].attack;
   var ends=[[e[0]+nx*h,e[1]+nz*h],[e[0]-nx*h,e[1]-nz*h]];
-  drapedRibbon(ends,{world:true,w0:1.6,w1:1.6,col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
+  drapedRibbon(ends,{world:true,w0:1.6,w1:1.6,col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4,ground:true,role:"halt"},overlayMesh,overlayMats);   /* Stage 8, 8B: hidden by the ground alone */
   if(a.label) addOverlayLabel(a.label,new THREE.Vector3(e[0],groundY(e[0],e[1])+2.4,e[1]));
 }
 function buildLine(l){
   var col=SIDE_COL[l.side].line, S=TOKENS.sym.side[l.side];
-  var r=drapedRibbon(l.pts,{w0:1.1,w1:1.1,col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:1.9},overlayMesh,overlayMats);
+  var r=drapedRibbon(l.pts,{w0:1.1,w1:1.1,col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:1.9,ground:true,role:"line"},overlayMesh,overlayMats);   /* Stage 8, 8B: hidden by the ground alone */
   for(var i=0;i<=14;i++){   /* ticks on the side the line faces: drawn from the line out, both ends on the drawn ground */
     var t=i/14, p=r.curve.getPointAt(t), tg=r.curve.getTangentAt(t);
     var sx=-tg.z, sz=tg.x, sl=Math.hypot(sx,sz)||1, k=(l.side==="fr"?2.6:-2.6)/sl, qx=p.x+sx*k, qz=p.z+sz*k;
     var g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(p.x,groundY(p.x,p.z)+1.9,p.z),new THREE.Vector3(qx,groundY(qx,qz)+1.9,qz)]);
     var lm=new THREE.LineBasicMaterial({color:lin(col),transparent:true,opacity:0,depthTest:false});
+    lm.onBeforeCompile=groundDepthHook;   /* Stage 8, 8B: the line's ticks, hidden by the ground alone */
     overlayMats.push(lm);
     var ln=new THREE.Line(g,lm); ln.renderOrder=13; ln.userData.drape={lift:1.9,kind:"tick"}; ovAdd(ln);
   }
@@ -2263,7 +2467,7 @@ function buildLine(l){
 /* a boundary between commands: one solid thin line in the annotation colour (decision 21), explained in the legend */
 function buildBoundary(b){
   var c=lin(hexNum(TOKENS.sym.label.dark.annotation));
-  var r=drapedRibbon(b.pts,{w0:0.7,w1:0.7,col:c,edge:c,lift:1.6},overlayMesh,overlayMats);
+  var r=drapedRibbon(b.pts,{w0:0.7,w1:0.7,col:c,edge:c,lift:1.6,ground:true,role:"bound"},overlayMesh,overlayMats);   /* Stage 8, 8B: hidden by the ground alone */
   var q=r.curve.getPointAt(0.5);
   if(b.label) addOverlayLabel(b.label,new THREE.Vector3(q.x,groundY(q.x,q.z)+1.6,q.z));
 }
@@ -2355,6 +2559,7 @@ function drawOnArrows(){
 var DRAWON_GHOST=0.4;
 function drawOnRibbon(pts,w,col,S,g){
   var r=drapedRibbon(pts,{w0:w[0],w1:w[1],side:null,head:null,full:true,dense:2,uTaper:g.uEnd,order:4,
+    cap:true, fillOp:ARROW_CAP.OP, edgeOp:ARROW_EDGE_OP, ground:true, role:"drawon",   /* Stage 8, 8B (decision 241): as its arrow */
     col:lin(col).clone().multiplyScalar(0.58),edge:lin(hexNum(S.edge)),lift:2.4},overlayMesh,overlayMats);
   g.layers.forEach(function(lay){ [lay.shaft,lay.head].forEach(function(m){ if(m) m.material.userData.op0=m.material.userData.op; }); });
   return r;
@@ -2897,9 +3102,11 @@ function renderFX(){
   /* 1. the world, linear, into the scene target */
   var t0=performance.now();
   camera.layers.set(LAYER_WORLD);
+  gdepthPass(FX.rtScene.width,FX.rtScene.height);   /* Stage 8, 8B (decision 241): the ground's own depth, for the overlays */
   renderer.setRenderTarget(FX.rtScene);
   renderer.clear();
   renderer.render(scene,camera);
+  GDEPTH.u.uGroundOn.value=0;
   DEV.world=devMark(); DEV.tWorld=performance.now()-t0; t0=performance.now();
 
   /* 2. bright pass, then two blur levels */
@@ -2968,8 +3175,10 @@ function setFXEnabled(on){
 }
 function renderStandard(){
   camera.layers.enableAll();
+  var s=renderer.getDrawingBufferSize(new THREE.Vector2()); gdepthPass(s.x,s.y);   /* Stage 8, 8B (decision 241) */
   renderer.setRenderTarget(null);
   renderer.render(scene,camera);
+  GDEPTH.u.uGroundOn.value=0;
 }
 /* Stage 3D's recession of the fog (fogShift) is gone since 4C: the haze is counted beyond the orbit target (applyAtmo). */
 function renderFrame(){
@@ -2986,6 +3195,7 @@ function renderFrameNow(){
     CAM.violations++; clampCamera();
     if(CAM.violations===1) console.warn("Austerlitz runtime check: a camera path bypassed the ground floor");
   }
+  arrowCap();   /* Stage 8, 8B (decision 241): the movement arrows' widths for this eye */
   var tl=performance.now(); mlLayout(); DEV.tLayer=performance.now()-tl;   /* the map layer: only in a drawn frame (Stage 2D) */
   if(!FX.on){ var t0=performance.now(); renderStandard(); DEV.world=DEV.total=devMark(); DEV.tWorld=performance.now()-t0; DEV.tPost=DEV.tLabels=0; DEV.frames++; return; }
   try{ renderFX(); }
@@ -3196,8 +3406,9 @@ function cleanViewHidesEvents(){ return presentation==="map"; }
    one size. They are world-sized sprites: at the orbit minimum the eye stood 1.8 units from an event glyph drawn 6,100 px wide,
    and the map layer, which keeps labels clear of it, placed nothing. Every harness view but that one draws them at 189 px or less
    (close-sokolnitz), so the cap changes only views closer than those. The layer's obstacle discs shrink and fade with them.
-   Run after updateVisibility has set their opacities (each drawn frame, and settle). */
-var SYM_MAX_PX=192, SYM_FADE=[4,12];
+   Run after updateVisibility has set their opacities (each drawn frame, and settle). Stage 8, implementation PR 8B (decision 241;
+   docs/STAGE8_SPEC.md section 7.1 and 0.3.1 item 6): 64 px, from decision 57's 192, for both (a design value: Part A's `a-calm`). */
+var SYM_MAX_PX=64, SYM_FADE=[4,12];
 function symbolSizes(){
   if(camera.isOrthographicCamera){   /* the paper map: drawn at their authored size, as before (no eye stands among them) */
     var reset=function(o,sp){ o.fade=1; o.r=o.r0; if(sp) sp.scale.set(o.s0,o.s0,1); if(o.op0!==undefined&&sp) sp.material.opacity=o.op0; };
@@ -3995,6 +4206,7 @@ function setMode(m){
   var was=mode;
   mode=m;
   var staff=(m==="staff");
+  layerOn.confidence=CONF_ON[confKey()]; syncConfButton();   /* Stage 8, 8B (decision 239): Position confidence's setting of this presentation */
   /* Stage 2E: the paper map is a true north-up plan (MAPCAM) over the ground drawn flat (decisions 19 and 25) */
   setDrawnFlat(staff);
   camera=staff?paperCam:landCam;
@@ -4561,7 +4773,11 @@ function paintLegend(){
   var counters=layerOn.symbols&&mode!=="terrain"&&!cleanView, land=mode!=="staff";
   /* Stage 6C (section 4.3): the nation rows colour the counters, so they are shown only where counters are drawn; the footprint rows
      also where decision 107's side footprint is drawn (Position confidence off) */
-  var on={nation:counters, foot:land&&(isTrueScale()||!!CONF.shown.side), "arrow-fr":side("fr"), "arrow-al":side("al"),
+  /* Stage 8, 8B (decision 239): the footprint rows at 1x only (the footprint is the formation there); the outline rows for the outlines drawn
+     on screen, by side and the selection, and with Position confidence on the landscape the grades' extents as outlines */
+  var on={nation:counters, foot:land&&isTrueScale(), "arrow-fr":side("fr"), "arrow-al":side("al"),
+          "line-fr":land&&!!OUTLINE.shown.fr, "line-al":land&&!!OUTLINE.shown.al, "line-sel":land&&!!OUTLINE.shown.sel,
+          "lconf-a":land&&!!OUTLINE.shown.A, "lconf-b":land&&!!OUTLINE.shown.B, "lconf-c":land&&!!OUTLINE.shown.C,
           halt:A.some(function(a){ return a.kind==="halt"; }), bound:layerOn.arrows&&(O.bounds||[]).length>0, plan:!!planSide,
           badge:counters, analysis:!!layerOn.analysis, contours:!!layerOn.contours&&!cleanView,
           wood:!land, village:!land,   /* Stage 2E: the paper map's own symbology */
@@ -4569,7 +4785,8 @@ function paintLegend(){
           vine:true,   /* roadmap step 2 (decision 135): the vineyard cover is drawn in every view; whether vines stood there in 1805 is open */
           fog:land&&fogCap(fogAmount(clock))>0.01,   /* Stage 4C: while the valley fog is drawn */
           /* Stage 5B: one row per grade drawn on screen, and the sentence on their sizes; the badge also on the landscape's names */
-          "conf-a":!!CONF.shown.A, "conf-b":!!CONF.shown.B, "conf-c":!!CONF.shown.C, conf:!!(CONF.shown.A||CONF.shown.B||CONF.shown.C),
+          "conf-a":!!CONF.shown.A, "conf-b":!!CONF.shown.B, "conf-c":!!CONF.shown.C,
+          conf:!!(CONF.shown.A||CONF.shown.B||CONF.shown.C||(land&&(OUTLINE.shown.A||OUTLINE.shown.B||OUTLINE.shown.C))),
           /* Stage 5D: the skeleton's rows, for what it draws on screen */
           "skel-a":!!SKEL.shown.A, "skel-b":!!SKEL.shown.B, "skel-c":!!SKEL.shown.C, skel:!!(SKEL.shown.line||SKEL.shown.A||SKEL.shown.B||SKEL.shown.C),
           routes:!!ROUTES.shown,   /* Stage 5F: the ordered routes */
@@ -4880,7 +5097,9 @@ function updateVisibility(){
   var labels = textOn();
   lodEch = wantCorps?"corps":"div";
   /* Stage 5B: which grades are drawn on screen (the legend's rows), and the paper map's cap on a mark's size on screen */
-  var confShown={A:false,B:false,C:false,side:false}, confCap=0;
+  var confShown={A:false,B:false,C:false,side:false}, confCap=0, lineShown={fr:false,al:false,sel:false,A:false,B:false,C:false};
+  /* Stage 8, 8B (decision 239): the selected formation, or a selected corps's formations, outlined in the selection accent */
+  var selSet={}; if(selection&&selection.kind==="f"&&FORMATIONS[selection.id]) leavesOf(selection.id,[]).forEach(function(k){ selSet[k]=1; });
   if(mode==="staff"&&layerOn.confidence){ var frc=MAPCAM.freeRect(); confCap=CONF.CAP*Math.min(frc[2]-frc[0],frc[3]-frc[1]); }
 
   /* which counter the map layer draws (Stage 2D): its position on the map, or none */
@@ -4917,28 +5136,37 @@ function updateVisibility(){
     var dimmed = highlight && !highlight[id];
     rec.block.scale.setScalar(1.25*(mode==="hybrid"?0.86:1)*(dimmed?0.80:1));
     if(rec.block.visible){ poseBlock(rec,id,liveStatus(id,curPhase)); settleBlock(rec); }
-    /* the ground mark (Stage 5B, section A.4): at 1x on the landscape the true-scale footprint (decision 34), drawn by its position
-       grade while "Position confidence" is on and crisp when it is off; elsewhere (4x, 10.33x, the paper map) the grade's mark under
-       the figures or the counters, while it is on (decision 85). rec.foot is the 1x mark, rec.conf every other */
-    var foot1=showBlocks&&trueScale&&!!p&&!unc&&!own5, graded=!!p&&!own5&&(!!layerOn.confidence||unc||ownEye);
-    /* Stage 6C (owner decision 107): a side cue always. With "Position confidence" off, a plain crisp footprint in the side's colour
-       (grade A's mark, whatever the grade) stays under every formation drawn as figures, in Study, Watch and Clean: once coats follow
-       the sources (decision 97) a coat says nothing of side, and the name's mark and the counter are not drawn everywhere */
-    var side7=!graded&&!foot1&&rec.block.visible&&!own5;
-    var mk=foot1?"foot":((graded||side7)&&!CONF.none?"conf":null);
-    rec.sideMark=side7;
+    /* the ground mark (Stage 5B, section A.4): at 1x on the landscape the true-scale footprint (decision 34); on the paper map the grade's
+       mark under the counters while "Position confidence" is on there (decision 85, kept there by decision 239). rec.foot is the 1x mark,
+       rec.conf every other filled mark. Stage 8, implementation PR 8B (decision 239): at 1x the footprint is drawn by its grade whatever the
+       layer (as it was with the layer on); on the landscape at 4x and 10.33x no formation drawn as figures has a filled mark: its outline
+       (rec.line, below) is its ground cue, and the side cue decision 107 asked for (restyled). Filled there still, as decision 91 has them: a
+       formation reported only, as its C zone without figures, and at the eye level the observer's own side, as its marks */
+    var foot1=showBlocks&&trueScale&&!!p&&!unc&&!own5, graded=!!p&&!own5&&((mode==="staff"&&!!layerOn.confidence)||unc||ownEye);
+    var lineOn=showBlocks&&!trueScale&&!!p&&rec.block.visible&&!own5&&!CONF.none;
+    var mk=foot1?"foot":(graded&&!CONF.none?"conf":null);
+    rec.sideMark=lineOn;
+    var fu=rec.block.userData;
     if(mk){
       if(!rec[mk]){ rec[mk]=makeConfMark(); scene.add(rec[mk]); }
       if(!rec.block.visible) poseBlock(rec,id,liveStatus(id,curPhase));
-      var fu=rec.block.userData, g=unc?"C":(graded?confAt(id,clock).cf:"A"), side=TOKENS.sym.side[sideOfNation(f.nation)].base;   /* side7: "A", the footprint */
+      var g=unc?"C":confAt(id,clock).cf, side=TOKENS.sym.side[sideOfNation(f.nation)].base;
       var op=(foot1&&g==="A"?CONF.OP_TRUE:CONF.OP[g])*(dimmed?CONF.DIM:1);
       confPlace(rec[mk],g,wq[0],wq[1],rec.yaw||0,fu.W0*fu.sw,fu.D0*fu.sd,hexNum(side),op,confCap);
       rec[mk].visible=true;
       if(graded&&onScreen(p,0)) confShown[g]=true;
-      if(side7&&onScreen(p,0)) confShown.side=true;   /* the legend's footprint rows */
     }
     if(rec.foot&&mk!=="foot") rec.foot.visible=false;
     if(rec.conf&&mk!=="conf") rec.conf.visible=false;
+    /* the outline (decision 239): the footprint's, or with the layer on the grade's extent; in the accent for the selection */
+    if(lineOn){
+      if(!rec.line){ rec.line=makeOutline(); scene.add(rec.line); }
+      var gl=layerOn.confidence?confAt(id,clock).cf:"A", sdl=sideOfNation(f.nation), SL=TOKENS.sym.side[sdl], sl=!!selSet[id];
+      var lw=sl?OUTLINE.SEL_LINE:layerOn.confidence?OUTLINE.GRADE[gl]:OUTLINE.LINE, cw=sl?OUTLINE.SEL_CASE:2*lw;
+      outlinePlace(rec.line,gl,wq[0],wq[1],rec.yaw||0,fu.W0*fu.sw,fu.D0*fu.sd,hexNum(sl?TOKENS.theme.dark.accent:SL.base),hexNum(sl?TOKENS.sym.keyline:SL.edge),lw,cw,dimmed?CONF.DIM:1);
+      rec.line.visible=true; rec.line.userData.outline.sel=sl; rec.line.userData.outline.side=sdl;
+      if(onScreen(p,0)){ lineShown[sl?"sel":sdl]=true; if(layerOn.confidence) lineShown[gl]=true; }
+    } else if(rec.line) rec.line.visible=false;
 
     /* the formation's name, in the landscape (the map layer draws it) */
     /* Stage 3D (the owner's answer): once the view shows corps (beyond 250 units), corps and army names are drawn at any distance;
@@ -4971,7 +5199,7 @@ function updateVisibility(){
     if(rec.smoke) smokeWant(rec,id,f,p,dimmed);
   });
   smokePlace();   /* Stage 4E: the puffs placed, the cap on screen applied */
-  CONF.shown=confShown;
+  CONF.shown=confShown; OUTLINE.shown=lineShown;
   skelUpdate();   /* Stage 5D */
   routeUpdate();  /* Stage 5F */
 
@@ -5729,6 +5957,7 @@ function buildUI(){
     b.addEventListener("click",function(){
       var k=b.dataset.l, on=b.getAttribute("aria-pressed")==="true";
       layerOn[k]=!on; b.setAttribute("aria-pressed",String(!on));
+      if(k==="confidence") CONF_ON[confKey()]=layerOn.confidence;   /* Stage 8, 8B (decision 239): the presentation shown's own setting */
 
     });
   });
@@ -5899,11 +6128,14 @@ var COLOUR_KEY={
   "side-fr":{word:"blue", hex:TOKENS.sym.side.fr.base}, "side-al":{word:"amber", hex:TOKENS.sym.side.al.base},
   "arrow-fr":{word:"blue", hex:hexOf(SIDE_COL.fr.attack)}, "arrow-al":{word:"amber", hex:hexOf(SIDE_COL.al.attack)},
   /* true scale draws formations as footprints in the side colour (confPlace, since 5B): the legend says so (2D) */
-  "foot-fr":{word:"blue", hex:TOKENS.sym.side.fr.base}, "foot-al":{word:"amber", hex:TOKENS.sym.side.al.base}
+  "foot-fr":{word:"blue", hex:TOKENS.sym.side.fr.base}, "foot-al":{word:"amber", hex:TOKENS.sym.side.al.base},
+  /* Stage 8, implementation PR 8B (decision 239): the outlines on the landscape (outlinePlace), the side's colour and the selection's accent;
+     their swatches are drawn as outlines (paintKey sets their border, not their fill) */
+  "line-fr":{word:"blue", hex:TOKENS.sym.side.fr.base}, "line-al":{word:"amber", hex:TOKENS.sym.side.al.base}, "line-sel":{word:"pale", hex:TOKENS.theme.dark.accent}
 };
 function paintKey(){
   document.querySelectorAll(".legend [data-key]").forEach(function(e){
-    var k=COLOUR_KEY[e.dataset.key]; if(k) e.style.background=k.hex; });
+    var k=COLOUR_KEY[e.dataset.key]; if(!k) return; if(e.classList.contains("olk")) e.style.borderColor=k.hex; else e.style.background=k.hex; });
   document.querySelectorAll(".legend .bnd").forEach(function(e){ e.style.borderTopColor=TOKENS.sym.label.dark.annotation; });
   /* the paper map's woods and village footprints (Stage 2E): the colours world.js draws them in */
   document.querySelectorAll(".legend .psym").forEach(function(e){ var t=TOKENS.sym.paperMap[e.dataset.sym];
@@ -8240,7 +8472,10 @@ var AUSTERLITZ_DEBUG=(function(){
         if(row("badge")!==((mode!=="terrain"&&layerOn.symbols)||(mode==="terrain"&&textOn()))) R.ctx.push(s.n+": the badge row");
         /* Stage 5B: one row per grade drawn on screen, and the sentence on their sizes with any of them */
         ["A","B","C"].forEach(function(g){ if(row("conf-"+g.toLowerCase())!==!!CONF.shown[g]) R.ctx.push(s.n+": the grade "+g+" row"); });
-        if(row("conf")!==!!(CONF.shown.A||CONF.shown.B||CONF.shown.C)) R.ctx.push(s.n+": the grade sizes' row");
+        /* Stage 8, 8B (decision 239): the outlines' rows, by side, the selection and the grades' extents with the layer on */
+        ["fr","al","sel"].forEach(function(k){ if(row("line-"+k)!==(mode!=="staff"&&!!OUTLINE.shown[k])) R.ctx.push(s.n+": the "+k+" outline row"); });
+        ["A","B","C"].forEach(function(g){ if(row("lconf-"+g.toLowerCase())!==(mode!=="staff"&&!!OUTLINE.shown[g])) R.ctx.push(s.n+": the grade "+g+" outline row"); });
+        if(row("conf")!==!!(CONF.shown.A||CONF.shown.B||CONF.shown.C||(mode!=="staff"&&(OUTLINE.shown.A||OUTLINE.shown.B||OUTLINE.shown.C)))) R.ctx.push(s.n+": the grade sizes' row");
         if(row("foot")!==(mode!=="staff"&&isTrueScale())) R.ctx.push(s.n+": the footprint rows");
         if(row("wood")!==(mode==="staff")||row("village")!==(mode==="staff")) R.ctx.push(s.n+": the paper map's wood and village rows");
         if(!row("mere")) R.ctx.push(s.n+": the meres' row (pond outlines schematic)");
@@ -8761,8 +8996,9 @@ var AUSTERLITZ_DEBUG=(function(){
   }
   /* Stage 5B (docs/STAGE5_SPEC.md section A.5): spatial confidence. confChecks runs at each display factor (the drape), confDayChecks
      once (the grade, the size, the colour; the text carrier; the paper map's cap). */
+  /* every ground mark drawn: the filled marks (rec.foot, rec.conf) and, since Stage 8 implementation PR 8B (decision 239), the outlines (rec.line) */
   function confMarks(){ var L=[]; Object.keys(units).forEach(function(id){ var r=units[id];
-    [r.foot,r.conf].forEach(function(m){ if(m&&m.visible&&m.userData.conf&&m.userData.conf.g) L.push({id:id,m:m}); }); }); return L; }
+    [r.foot,r.conf,r.line].forEach(function(m){ var U=m&&(m.userData.conf||m.userData.outline); if(m&&m.visible&&U&&U.g) L.push({id:id,m:m,U:U}); }); }); return L; }
   /* the mark as drawn, sampled every 0.5 units across each of its triangles, against the drawn ground */
   function confDrape(m,L){   /* L: the mark's lift (CONF.LIFT; Stage 5D: the skeleton's anchors, SKEL.MARK_LIFT) */
     var P=m.geometry.attributes.position, I=m.geometry.index.array, n=0, under=0, worst=1e9, lift=0, LL=L===undefined?CONF.LIFT:L;
@@ -8777,10 +9013,13 @@ var AUSTERLITZ_DEBUG=(function(){
   function confChecks(ck,fct){
     var keep=clock, N=0, S=0, U=0, worst=1e9, lift=0, where="";
     [300,590,880].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); finishTween(); settle(6,true);
-      confMarks().forEach(function(q){ var r=confDrape(q.m); N++; S+=r.n; U+=r.under; lift=Math.max(lift,r.lift); if(r.worst<worst){ worst=r.worst; where=q.id+" ("+q.m.userData.conf.g+") at "+fmtClock(t); } }); });
-    ck("spatial confidence: every grade's mark is draped, each vertex at its lift above the drawn ground and no point of it under the ground (section A.5)",
+      var on0=layerOn.confidence;
+      [false,true].forEach(function(cf){ layerOn.confidence=cf; updateVisibility();   /* Stage 8, 8B: the outlines with Position confidence off and on */
+        confMarks().forEach(function(q){ var r=confDrape(q.m); N++; S+=r.n; U+=r.under; lift=Math.max(lift,r.lift); if(r.worst<worst){ worst=r.worst; where=q.id+" ("+q.U.g+(q.m.userData.outline?", outline":"")+") at "+fmtClock(t); } }); });
+      layerOn.confidence=on0; updateVisibility(); });
+    ck("spatial confidence: every grade's mark and every outline is draped, each vertex at its lift above the drawn ground and no point of it under the ground (section A.5; decision 239)",
       N>0&&U===0&&lift<1e-3,
-      N+" marks at 05:00, 09:50 and 14:40, "+S+" points sampled every 0.5 units across their triangles: "+U+" under the ground; the lowest "+(worst===1e9?"-":worst.toFixed(3))+
+      N+" marks and outlines at 05:00, 09:50 and 14:40 (Position confidence off and on), "+S+" points sampled every 0.5 units across their triangles: "+U+" under the ground; the lowest "+(worst===1e9?"-":worst.toFixed(3))+
       " units above it ("+where+"); vertices within "+lift.toExponential(1)+" of their lift");
     setClock(keep,{instant:true,force:true,camera:false}); finishTween();
   }
@@ -8863,8 +9102,9 @@ var AUSTERLITZ_DEBUG=(function(){
     out.push({name:"figures: each drawn battalion, squadron or rider takes a class in proportion to its formation's recorded composition (decision 100: within one unit of its share)",
       ok:nb>0&&!bad2.length, detail:nb+" unit groups in "+Object.keys(units).length+" blocks"+(bad2.length?"; WRONG: "+bad2.slice(0,5).join("; "):"")});
     /* 3. decision 107: a side cue under every formation drawn as figures in the free rectangle, in Study, Watch and Clean, Position confidence
-       on and off: its ground mark, its name's side mark or its counter's band; with it off, the footprint where neither is drawn */
-    var bad3=[], nc=0, v=new THREE.Vector3(), seen={};
+       on and off. Since Stage 8, implementation PR 8B (decision 239, which restyles 107): its outline, in its side's colour, whatever its name
+       or counter, and no filled mark under it */
+    var bad3=[], nc=0, v=new THREE.Vector3(), seen={}; select(null,null);
     if(mode!=="terrain") setMode("terrain");
     var sw=W(285,289), sy=displayHeight(sw[0],sw[1]), near=new THREE.Vector3(-0.55,0.62,0.56).normalize().multiplyScalar(26);
     var VIEWS=[["the Pratzen vantage",VANTAGE.plateau],["close on the Pratzeberg",[sw[0]+near.x,sy+near.y,sw[1]+near.z,sw[0],sy,sw[1]]]];
@@ -8875,13 +9115,70 @@ var AUSTERLITZ_DEBUG=(function(){
           Object.keys(units).forEach(function(id){ var rec=units[id], p=posNow(id); if(!p||!rec.block.visible) return;
             var wq=W(p[0],p[1]); v.set(wq[0],groundY(wq[0],wq[1]),wq[1]).project(camera); var sx=(v.x*0.5+0.5)*VW, sy2=(-v.y*0.5+0.5)*VH;
             if(v.z>1||sx<fr[0]||sx>fr[2]||sy2<fr[1]||sy2>fr[3]) return; nc++; seen[pm+(cf?"+":"-")]=(seen[pm+(cf?"+":"-")]||0)+1;
-            var nm=ML.items["n:"+id], ct=ML.items["c:"+id], text=!!(nm&&nm.state==="on"&&nm.eFrame===ML.frame)||!!(ct&&ct.state==="on"&&ct.eFrame===ML.frame);
-            var ground=!!(rec.conf&&rec.conf.visible)||!!(rec.foot&&rec.foot.visible);
-            if(!ground&&!text) bad3.push(id+" ("+pm+", confidence "+(cf?"on":"off")+", "+V[0]+"): no side cue");
-            else if(!cf&&!text&&!rec.sideMark) bad3.push(id+" ("+pm+", off, "+V[0]+"): its ground mark is not the side footprint"); }); }); }); });
+            var L=rec.line, S=TOKENS.sym.side[sideOfNation(rec.f.nation)], col=lin(hexNum(S.base)), u=L&&L.material.uniforms;
+            if(!(L&&L.visible&&rec.sideMark)) bad3.push(id+" ("+pm+", confidence "+(cf?"on":"off")+", "+V[0]+"): no outline");
+            else if(Math.abs(u.uCol.value.r-col.r)+Math.abs(u.uCol.value.g-col.g)+Math.abs(u.uCol.value.b-col.b)>1e-4) bad3.push(id+" ("+pm+", "+V[0]+"): its outline not its side's colour");
+            else if((rec.conf&&rec.conf.visible)||(rec.foot&&rec.foot.visible)) bad3.push(id+" ("+pm+", confidence "+(cf?"on":"off")+", "+V[0]+"): a filled mark under its figures"); }); }); }); });
     layerOn.confidence=lc; setPresentation(pres);
-    out.push({name:"identity: every formation drawn as figures in the free rectangle carries a side cue on screen, in Study, Watch and Clean, with Position confidence on and off (decision 107)",
+    out.push({name:"identity: every formation drawn as figures in the free rectangle carries a side cue on screen, its outline in its side's colour with no filled mark under it, in Study, Watch and Clean, with Position confidence on and off (decisions 107, 239)",
       ok:nc>0&&!bad3.length, detail:nc+" formation-views at 09:50 from the Pratzen vantage and close on the Pratzeberg ("+Object.keys(seen).map(function(k){ return k+" "+seen[k]; }).join(", ")+")"+(bad3.length?"; WRONG: "+bad3.slice(0,5).join("; "):"")});
+    /* 3b. Stage 8, implementation PR 8B (decision 239: "Prevent outlines from disappearing beneath slopes or appearing unintentionally
+       dashed"): the outlines as rendered. At 4x and 10.33x, from the Pratzen vantage, close on the Pratzeberg and low across its slope, at
+       09:50 with Position confidence off and on, the drawn ground (its depth) and the outlines alone are rendered at the page's size with the
+       camera as it stands into a target of the test's own, every outline in one flat colour at full strength; along every outlined extent's
+       edge, every 0.5 units, the middle of its band (half the casing beyond the edge, at the outline's own reach there), where the drawn
+       ground does not hide it from the eye, must have that colour within 1.5 px. An outline broken into dashes, cut short by its patch or
+       sunk under a slope fails */
+    var oc=[], oN=0, oF=0, f0=DISPLAY.factor, vw0=renderer.domElement.clientWidth||innerWidth, vh0=renderer.domElement.clientHeight||innerHeight;
+    var drs=new THREE.Vector2(); renderer.getDrawingBufferSize(drs);
+    var ort=new THREE.WebGLRenderTarget(drs.x,drs.y,{minFilter:THREE.NearestFilter,magFilter:THREE.NearestFilter}), obuf=new Uint8Array(drs.x*drs.y*4), sx3=drs.x/vw0, sy3=drs.y/vh0;
+    var pz=W(285,289), py=displayHeight(pz[0],pz[1]), near3=new THREE.Vector3(-0.55,0.62,0.56).normalize().multiplyScalar(26), low3=new THREE.Vector3(-1.0,0.13,0.18).normalize().multiplyScalar(40);
+    function hiddenFrom(E,Q){ var d=Q.clone().sub(E), L=d.length(); d.normalize(); for(var s=1;s<L-0.6;s+=Math.max(0.4,s*0.01)){ var x=E.x+d.x*s, z=E.z+d.z*s; if(E.y+d.y*s<groundY(x,z)-0.02) return true; } return false; }
+    [4,GEOREF.EXAG].forEach(function(fct){ setDisplayFactor(fct); var py2=displayHeight(pz[0],pz[1]);
+      [["the Pratzen vantage",VANTAGE.plateau],["close on the Pratzeberg",[pz[0]+near3.x,py2+near3.y,pz[1]+near3.z,pz[0],py2,pz[1]]],["low across the Pratzeberg",[pz[0]+low3.x,py2+low3.y,pz[1]+low3.z,pz[0],py2,pz[1]]]].forEach(function(V){
+        [false,true].forEach(function(cf){ layerOn.confidence=cf; setClock(590,{instant:true,force:true,camera:false}); finishTween(); placeCamera(V[1]); syncViewOffset(true); settle(6); updateVisibility();
+          var L=[], hid=[], keep=[], cc=new THREE.Color(), ca=renderer.getClearAlpha(), tm=renderer.toneMapping, oe=renderer.outputEncoding;
+          Object.keys(units).forEach(function(id){ var r=units[id]; if(r.line&&r.line.visible) L.push({id:id,m:r.line}); });
+          scene.children.forEach(function(o){ if(o!==groundMesh&&!L.some(function(q){ return q.m===o; })&&o.visible){ o.visible=false; hid.push(o); } });
+          L.forEach(function(q){ var u=q.m.material.uniforms; keep.push([u.uCol.value.clone(),u.uEdge.value.clone(),u.uOp.value,u.uCaseOp.value]);
+            u.uCol.value.setRGB(1,0,1); u.uEdge.value.setRGB(1,0,1); u.uOp.value=1; u.uCaseOp.value=1; });
+          renderer.getClearColor(cc); renderer.setClearColor(0x000000,1); renderer.toneMapping=THREE.NoToneMapping; renderer.outputEncoding=THREE.LinearEncoding;
+          try{ camera.updateMatrixWorld(true); renderer.setRenderTarget(ort); renderer.clear(); renderer.render(scene,camera); renderer.readRenderTargetPixels(ort,0,0,drs.x,drs.y,obuf); }
+          finally { renderer.setRenderTarget(null); renderer.setClearColor(cc,ca); renderer.toneMapping=tm; renderer.outputEncoding=oe;
+            L.forEach(function(q,i){ var u=q.m.material.uniforms, k=keep[i]; u.uCol.value.copy(k[0]); u.uEdge.value.copy(k[1]); u.uOp.value=k[2]; u.uCaseOp.value=k[3]; });
+            hid.forEach(function(o){ o.visible=true; }); }
+          function flagAt(px,py){ for(var dy=-2;dy<=2;dy++) for(var dx=-2;dx<=2;dx++){ if(dx*dx+dy*dy>2.25*sx3*sx3+0.01) continue; var X=Math.round(px)+dx, Y=Math.round(py)+dy; if(X<0||Y<0||X>=drs.x||Y>=drs.y) continue;
+              var o=((drs.y-1-Y)*drs.x+X)*4; if(obuf[o]>127&&obuf[o+1]<80&&obuf[o+2]>127) return true; } return false; }
+          var Ev=camera.position.clone(), qv=new THREE.Vector3(), nV=0, fV=0, miss=[];
+          L.forEach(function(q){ var U=q.m.userData.outline, rec=units[q.id], yaw=rec.yaw||0, c=Math.cos(yaw), sn=Math.sin(yaw), P=posNow(q.id), w0=W(P[0],P[1]), pts=[];
+            if(U.g==="C"){ var R=U.w/2, nC=Math.max(16,Math.ceil(2*Math.PI*R/0.5)); for(var k=0;k<nC;k++){ var a=k/nC*Math.PI*2; pts.push([Math.cos(a)*R,Math.sin(a)*R,Math.cos(a),Math.sin(a)]); } }
+            else [[-1,-1,1,-1],[1,-1,1,1],[1,1,-1,1],[-1,1,-1,-1]].forEach(function(e){ var ax=e[0]*U.w/2, az=e[1]*U.d/2, bx=e[2]*U.w/2, bz=e[3]*U.d/2, len=Math.hypot(bx-ax,bz-az), nE=Math.max(1,Math.ceil(len/0.5));
+              var nx=(bz-az)/len, nz=-(bx-ax)/len; for(var k=0;k<nE;k++){ var t2=(k+0.5)/nE; pts.push([ax+(bx-ax)*t2,az+(bz-az)*t2,nx,nz]); } });
+            pts.forEach(function(e){ var x=w0[0]+e[0]*c+e[1]*sn, z=w0[1]-e[0]*sn+e[1]*c, ox=e[2]*c+e[3]*sn, oz=-e[2]*sn+e[3]*c, rch=outlineReach(x,z)*U.cas/2;
+              /* the band's middle: its outward normal (in the frame) turned to the world, at half the casing's reach */
+              x+=ox*rch; z+=oz*rch; qv.set(x,groundY(x,z)+OUTLINE.LIFT,z);
+              var pr=qv.clone().project(camera); if(pr.z>1||pr.x<-1||pr.x>1||pr.y<-1||pr.y>1) return;
+              if(hiddenFrom(Ev,qv)) return;
+              var sxp=(pr.x*0.5+0.5)*drs.x, syp=(-pr.y*0.5+0.5)*drs.y; nV++;
+              if(flagAt(sxp,syp)) fV++; else if(miss.length<3) miss.push(q.id+" at "+x.toFixed(1)+","+z.toFixed(1)); }); });
+          oN+=nV; oF+=fV; if(nV&&fV<0.99*nV) oc.push(fmtFactor(fct)+"\u00d7 "+V[0]+(cf?" (on)":" (off)")+": "+fV+" of "+nV+" points of the bands drawn ("+miss.join("; ")+")"); }); }); });
+    ort.dispose(); setDisplayFactor(f0); layerOn.confidence=lc; setClock(590,{instant:true,force:true,camera:false}); finishTween(); settle(4);
+    out.push({name:"outlines (decision 239): never broken on steep ground: at 4x and 10.33x, low over the Pratzeberg's slopes, with Position confidence off and on, every outlined extent's band drawn along its whole edge wherever the drawn ground does not hide it",
+      ok:oN>0&&!oc.length, detail:oN+" points of the bands, every 0.5 units along every outline in 12 renderings (3 views, 2 factors, the layer off and on): "+oF+" drawn"+(oc.length?"; BROKEN: "+oc.slice(0,4).join("; "):"")});
+    /* 3c. Stage 8, 8B (docs/STAGE8_SPEC.md section 2.5): at the Field vantage and the Overview, at 20 clocks, every formation on the field in the
+       free rectangle is findable: its outline drawn, or its name or counter */
+    var lb=[], lN=0;
+    for(var li=0;li<20;li++){ var lt=T_MIN+30+(T_MAX-T_MIN-60)*li/19;
+      [["the Field vantage",VANTAGE.field],["the Overview",VANTAGE.plan]].forEach(function(V){ setClock(lt,{instant:true,force:true,camera:false}); finishTween();
+        placeCamera(V[1]); syncViewOffset(true); settle(4); updateVisibility(); mlLayout();
+        var fr=landFreeRect(), VW=renderer.domElement.clientWidth||innerWidth, VH=viewH(); camera.updateMatrixWorld(true);
+        Object.keys(units).forEach(function(id){ var rec=units[id], p=posNow(id); if(!p||knowledgeOf(id)==="unknown"||!rec.block.visible) return;
+          var wq=W(p[0],p[1]); v.set(wq[0],groundY(wq[0],wq[1]),wq[1]).project(camera); var sx=(v.x*0.5+0.5)*VW, sy2=(-v.y*0.5+0.5)*VH;
+          if(v.z>1||sx<fr[0]||sx>fr[2]||sy2<fr[1]||sy2>fr[3]) return; lN++;
+          var nm=ML.items["n:"+id], ct=ML.items["c:"+id], text=!!(nm&&nm.state==="on"&&nm.eFrame===ML.frame)||!!(ct&&ct.state==="on"&&ct.eFrame===ML.frame);
+          if(!(rec.line&&rec.line.visible)&&!text) lb.push(id+" at "+fmtClock(lt)+" from "+V[0]); }); }); }
+    out.push({name:"outlines (decision 239): at the Field vantage and the Overview, at 20 clocks, every formation on the field in the free rectangle findable by its outline or its name",
+      ok:lN>0&&!lb.length, detail:lN+" formation-views"+(lb.length?"; NOT FINDABLE: "+lb.slice(0,5).join("; "):"")});
     /* 4. the legend's rows are what is drawn: the nation rows only with counters, the figures' and standards' rows with figures, the footprint
        rows with decision 107's footprint */
     var bad4=[], lg=document.querySelector(".legend");
@@ -8894,11 +9191,14 @@ var AUSTERLITZ_DEBUG=(function(){
       if(!shown("figures")||!shown("standards")) bad4.push(tag+": the figures' or the standards' row hidden where figures are drawn");
       if(c[0]==="terrain"&&!hiddenAll("nation")) bad4.push(tag+": the counters' rows shown without counters");
       if(c[0]==="hybrid"&&layerOn.symbols&&!shown("nation")) bad4.push(tag+": the counters' rows hidden with counters");
-      if(c[0]==="terrain"&&!c[1]&&!shown("foot")) bad4.push(tag+": the footprint rows hidden under the side footprint");
-      if(c[1]&&!hiddenAll("foot")) bad4.push(tag+": the footprint rows shown at 4x with Position confidence on"); });
+      /* Stage 8, 8B (decision 239): at 4x no footprint is drawn (the 1x rows), the outlines' rows for both sides on screen, with the layer on
+         the grades' outline rows */
+      if(!hiddenAll("foot")) bad4.push(tag+": the footprint rows shown at 4x");
+      if(!shown("line-fr")||!shown("line-al")) bad4.push(tag+": the outline rows hidden under the outlined formations");
+      if(c[1]!==(shown("lconf-a")||shown("lconf-b")||shown("lconf-c"))) bad4.push(tag+": the grades' outline rows "+(c[1]?"hidden with":"shown without")+" Position confidence"); });
     setMode("staff"); settle(4); _lgKey=""; paintLegend(); if(!hiddenAll("figures")||!hiddenAll("standards")) bad4.push("paper map: the figures' rows shown without figures");
     setMode("terrain"); layerOn.confidence=lc; settle(4); _lgKey=""; paintLegend();
-    out.push({name:"legend: the rows are what is drawn: the nation colours as the counters' only where counters are drawn; the figures' and the standards' rows where figures are; the footprint rows under decision 107's footprint",
+    out.push({name:"legend: the rows are what is drawn: the nation colours as the counters' only where counters are drawn; the figures' and the standards' rows where figures are; the outline rows under the outlines (decision 239)",
       ok:!bad4.length, detail:"the landscape with Position confidence on and off, Landscape with counters, the paper map"+(bad4.length?"; WRONG: "+bad4.join("; "):"")});
     /* 5. the dossier's Dress names every class with its grade or "not settled" / "disputed", and how it is drawn */
     var bad5=[], nd=0;
@@ -8919,7 +9219,7 @@ var AUSTERLITZ_DEBUG=(function(){
   }
   /* Stage 5B's sizes measured, not recomputed (T-6): the drawn frame of a ground patch (groundPatch: its uv is the w x d rectangle's own
      frame, u=(dx c - dz s)/w+0.5), from its corner nodes: |grad u| = 1/w, |grad v| = 1/d, the centre where u=v=0.5 */
-  function drawnFrame(m){ var P=m.geometry.attributes.position, UV=m.geometry.attributes.uv, X1=+String(m.userData.conf.dims).split("x")[0]+1, a=0, b=X1-1, c=P.count-X1;
+  function drawnFrame(m){ var P=m.geometry.attributes.position, UV=m.geometry.attributes.uv, X1=+String((m.userData.conf||m.userData.outline).dims).split("x")[0]+1, a=0, b=X1-1, c=P.count-X1;
     var dx=P.getX(b)-P.getX(a), dz=P.getZ(c)-P.getZ(a), ux=(UV.getX(b)-UV.getX(a))/dx, uz=(UV.getX(c)-UV.getX(a))/dz, vx=(UV.getY(b)-UV.getY(a))/dx, vz=(UV.getY(c)-UV.getY(a))/dz;
     var du=0.5-UV.getX(a), dv=0.5-UV.getY(a), det=ux*vz-uz*vx;
     return {w:1/Math.hypot(ux,uz), d:1/Math.hypot(vx,vz), x:P.getX(a)+(du*vz-dv*uz)/det, z:P.getZ(a)+(dv*ux-du*vx)/det}; }
@@ -8944,22 +9244,47 @@ var AUSTERLITZ_DEBUG=(function(){
   function confDayChecks(){
     var out=[], keep=clock, md=mode, bad=[], n=0, by={A:0,B:0,C:0}, ms0=MAPCAM.state();
     if(mode!=="terrain") setMode("terrain");
-    /* the grade, its size and its colour, at 20 clocks (decisions 86-88) */
+    /* Stage 8, implementation PR 8B (decision 239): on the landscape every formation drawn as figures is outlined, at 20 clocks: with Position
+       confidence off round its footprint (the A rule, whatever the grade) at OUTLINE.LINE px; with it on round its grade's extent (decisions
+       86-88: A the footprint, B the frontage doubled, C a disc of the frontage's radius) at its grade's width; each outline's frame measured
+       from its geometry (the patch reaches the extent plus its margin on every side), centred on its position, its shape, its side's colour
+       over the side's edge colour, and no filled mark under it. On the paper map, at 3 clocks, every formation's mark filled at its grade in
+       its side's colour with its grade's mask (decision 85 kept there), the layer on there at first */
+    select(null,null);
+    var cf0=layerOn.confidence;
     for(var i=0;i<20;i++){ var t=T_MIN+30+(T_MAX-T_MIN-60)*i/19; setClock(t,{instant:true,force:true,camera:false}); finishTween(); settle(6,true);
+      [false,true].forEach(function(cf){ layerOn.confidence=cf; updateVisibility();
+        Object.keys(units).forEach(function(id){ var r=units[id], p=posNow(id); if(!p||knowledgeOf(id)==="unknown"||!r.block.visible) return;
+          var m=r.line, U=m&&m.userData.outline; n++;
+          if(!m||!m.visible){ bad.push(id+" at "+fmtClock(t)+(cf?" (on)":" (off)")+": no outline"); return; }
+          if(r.conf&&r.conf.visible) bad.push(id+" at "+fmtClock(t)+": a filled mark under its figures");
+          var g=cf?confAt(id,clock).cf:"A", fu=r.block.userData, F=fu.W0*fu.sw, D=fu.D0*fu.sd, sz=CONF_RULE[g](F,D), dr=drawnFrame(m), wq=W(p[0],p[1]), u=m.material.uniforms;
+          var S=TOKENS.sym.side[sideOfNation(r.f.nation)], col=lin(hexNum(S.base)), edge=lin(hexNum(S.edge)), lw=cf?OUTLINE.GRADE[g]:OUTLINE.LINE;
+          if(cf) by[g]++;
+          if(U.g!==g) bad.push(id+" at "+fmtClock(t)+": outlined as "+U.g+", graded "+g+(cf?"":" (off: the footprint)"));
+          else if(Math.abs(dr.w-2*U.mg-sz[0])>1e-3*Math.max(1,sz[0])||Math.abs(dr.d-2*U.mg-sz[1])>1e-3*Math.max(1,sz[1])||Math.abs(u.uIn.value.x-sz[0])>1e-6||Math.abs(u.uIn.value.y-sz[1])>1e-6)
+            bad.push(id+" at "+fmtClock(t)+": "+g+" outlined round "+(dr.w-2*U.mg).toFixed(2)+" x "+(dr.d-2*U.mg).toFixed(2)+", the rule's "+sz[0].toFixed(2)+" x "+sz[1].toFixed(2));
+          else if(Math.hypot(dr.x-wq[0],dr.z-wq[1])>1e-3) bad.push(id+" at "+fmtClock(t)+": the outline centred "+Math.hypot(dr.x-wq[0],dr.z-wq[1]).toFixed(3)+" units off its position");
+          else if((u.uDisc.value>0.5)!==(g==="C")) bad.push(id+": "+g+" outlined as "+(u.uDisc.value>0.5?"a disc":"a rectangle"));
+          else if(Math.abs(u.uCol.value.r-col.r)+Math.abs(u.uCol.value.g-col.g)+Math.abs(u.uCol.value.b-col.b)>1e-4||Math.abs(u.uEdge.value.r-edge.r)+Math.abs(u.uEdge.value.g-edge.g)+Math.abs(u.uEdge.value.b-edge.b)>1e-4) bad.push(id+": not its side's colours");
+          else if(Math.abs(u.uLine.value-lw)>1e-9||Math.abs(u.uCase.value-2*lw)>1e-9) bad.push(id+": a line of "+u.uLine.value+" px on "+u.uCase.value+", want "+lw+" on "+(2*lw)); }); }); }
+    layerOn.confidence=cf0; updateVisibility();
+    var nP=0; setMode("staff"); layerOn.confidence=true;
+    [300,590,880].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); finishTween(); settle(6,true); updateVisibility();
       Object.keys(units).forEach(function(id){ var r=units[id], p=posNow(id); if(!p||knowledgeOf(id)==="unknown") return;
-        var m=isTrueScale()?r.foot:r.conf, U=m&&m.userData.conf; n++;
-        if(!m||!m.visible){ bad.push(id+" at "+fmtClock(t)+": no mark"); return; }
-        var g=confAt(id,clock).cf, fu=r.block.userData, F=fu.W0*fu.sw, D=fu.D0*fu.sd, s=CONF_RULE[g](F,D), dr=drawnFrame(m), wq=W(p[0],p[1]), hex=lin(hexNum(TOKENS.sym.side[sideOfNation(r.f.nation)].base));
-        by[g]++;
-        if(U.g!==g) bad.push(id+" at "+fmtClock(t)+": drawn "+U.g+", graded "+g);
-        else if(Math.abs(dr.w-s[0])>1e-3*Math.max(1,s[0])||Math.abs(dr.d-s[1])>1e-3*Math.max(1,s[1])) bad.push(id+" at "+fmtClock(t)+": "+g+" drawn "+dr.w.toFixed(2)+" x "+dr.d.toFixed(2)+", the rule's "+s[0].toFixed(2)+" x "+s[1].toFixed(2));
-        else if(Math.hypot(dr.x-wq[0],dr.z-wq[1])>1e-3) bad.push(id+" at "+fmtClock(t)+": the mark centred "+Math.hypot(dr.x-wq[0],dr.z-wq[1]).toFixed(3)+" units off its position");
-        else if(Math.abs(m.material.color.r-hex.r)+Math.abs(m.material.color.g-hex.g)+Math.abs(m.material.color.b-hex.b)>1e-4) bad.push(id+": not its side's colour");
-        else if(m.material.map!==confTexture(g)) bad.push(id+": "+g+" drawn with another grade's mask"); }); }
+        var m=r.conf, U=m&&m.userData.conf; nP++;
+        if(!m||!m.visible){ bad.push("paper map, "+id+" at "+fmtClock(t)+": no mark"); return; }
+        if(r.line&&r.line.visible) bad.push("paper map, "+id+": an outline");
+        var g=confAt(id,clock).cf, hex=lin(hexNum(TOKENS.sym.side[sideOfNation(r.f.nation)].base));
+        if(U.g!==g) bad.push("paper map, "+id+" at "+fmtClock(t)+": drawn "+U.g+", graded "+g);
+        else if(Math.abs(m.material.color.r-hex.r)+Math.abs(m.material.color.g-hex.g)+Math.abs(m.material.color.b-hex.b)>1e-4) bad.push("paper map, "+id+": not its side's colour");
+        else if(m.material.map!==confTexture(g)) bad.push("paper map, "+id+": "+g+" drawn with another grade's mask"); }); });
+    setMode("terrain"); layerOn.confidence=CONF_ON.land; updateVisibility();
     var maskBad={A:maskByRule("A"),B:maskByRule("B"),C:maskByRule("C")};
     ["A","B","C"].forEach(function(g){ if(maskBad[g]) bad.push("the "+g+" mask: "+maskBad[g]+" texels against the rule"); });
-    out.push({name:"spatial confidence: every formation on the field is drawn at its position grade (confAt: between anchors the weaker one's), A as its footprint, B as its frontage doubled and C as a zone of its frontage's radius, in its side's colour (section A.5; decisions 86-88)",
-      ok:n>0&&by.A>0&&by.B>0&&by.C>0&&!bad.length, detail:"20 clocks, "+n+" formation-samples: A "+by.A+", B "+by.B+", C "+by.C+"; each mark's frame measured from its geometry against the rule (decisions 86-88), its mask read texel by texel"+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):"")});
+    out.push({name:"spatial confidence: on the landscape every formation drawn as figures is outlined, round its footprint with Position confidence off and round its grade's extent with it on (confAt: between anchors the weaker one's; A its footprint, B its frontage doubled, C a disc of its frontage's radius), in its side's colour, with no filled mark under it; on the paper map its mark filled at its grade (sections A.5, 2.4; decisions 86-88, 239)",
+      ok:n>0&&nP>0&&by.A>0&&by.B>0&&by.C>0&&!bad.length, detail:"20 clocks, "+n+" formation-samples with the layer off and on (on: A "+by.A+", B "+by.B+", C "+by.C+"); each outline's frame measured from its geometry against the rule (decisions 86-88); "+
+        nP+" paper-map marks at 3 clocks, each mask read texel by texel"+(bad.length?"; WRONG: "+bad.slice(0,4).join("; "):"")});
     /* the text carrier: in the landscape every drawn name of a B or C formation carries its badge, and no A name does */
     var nb=0, nn=0, wrong=[];
     [300,590,880].forEach(function(t){ setClock(t,{instant:true,force:true,camera:false}); finishTween(); settle(6); mlLayout();
@@ -8972,7 +9297,7 @@ var AUSTERLITZ_DEBUG=(function(){
     var ws=W(210,362); MAPCAM.centreOn(ws[0],ws[1],0.02,true); settle(6,true);
     var fr=MAPCAM.freeRect(), cap=CONF.CAP*Math.min(fr[2]-fr[0],fr[3]-fr[1]), big=0, capped=0, pm=0;
     var over=[], wpp=worldPerPx(null);
-    confMarks().forEach(function(q){ var U=q.m.userData.conf; if(U.g==="A") return; pm++;
+    confMarks().forEach(function(q){ var U=q.m.userData.conf; if(!U||U.g==="A") return; pm++;
       var px=(U.g==="B"?U.w:Math.max(U.w,U.d))/wpp, foot=(U.g==="B"?U.W0:Math.max(U.W0,U.D0))/wpp, lim=Math.max(cap,foot);
       big=Math.max(big,px); if(px>=cap-0.5&&px<=lim+0.5) capped++; if(px>lim+0.5||px<foot-0.5) over.push(q.id+" "+U.g+" "+px.toFixed(0)+" px (cap "+cap.toFixed(0)+", footprint "+foot.toFixed(0)+")"); });
     out.push({name:"spatial confidence: on the paper map no B frontage or C zone is larger on screen than a quarter of the free rectangle's shorter side, unless the footprint itself is, and none smaller than its footprint (section A.4 item 2)",
@@ -9240,6 +9565,138 @@ var AUSTERLITZ_DEBUG=(function(){
       tris>0&&!under&&off<1e-3, (ROUTES.grp?ROUTES.grp.children.length:0)+" routes, "+tris+" triangles, "+n+" points sampled every 0.5 units: "+under+" under the ground; the lowest "+(worst===1e9?"-":worst.toFixed(4))+
       " units above it; every point within "+off.toExponential(1)+" of the lift "+ROUTES.LIFT);
     layerOn.routes=lo; setClock(keep,{instant:true,force:true,camera:false}); finishTween(); settle(2,true);
+  }
+  /* Stage 8, implementation PR 8B (decision 241; docs/STAGE8_SPEC.md sections 7.1, 0.3.1 items 4-6 and 14): the movement arrows calmed, at a
+     display factor. (1) From every vantage, the low Pratzen view (the harness's case) and Napoleon's eye level, at three clocks: every movement
+     arrow's casing (its drawn-on part's too) at most ARROW_CAP.PX across on screen at every drawn row in front of the eye, never wider than
+     built, every row's centre on the arrow's curve and its vertices at their lift, the fill in proportion, the head at its shaft's factor in
+     its own proportion with its tip on the arrow's end; the drawn frame lays them (arrowCap in renderFrameNow); on the paper map every width as
+     built. (2) The opacities, phase by phase: a movement arrow's fill (and its drawn-on part's) at ARROW_CAP.OP of 2C's, its casing at 2C's;
+     the lines of battle, the boundaries and the halt bars at 2C's. (3) Hidden by the drawn ground alone, from the eye level and the low Pratzen
+     view: every point of every overlay ribbon's centre line that the drawn ground hides from the eye (a ray marched to it passes at least 0.5
+     units under groundY) not drawn, every point it leaves in sight by 0.5 units drawn, and drawn too where a figure, a wood or a building
+     stands in front of it (an annotation over the landscape, as 2C drew it) */
+  function arrowChecks(ck,fct){
+    var k0={md:mode,pos:landCam.position.clone(),tgt:orbitTarget.clone(),fc:freeCam,clock:clock,cv:commandView,lay:layerOn.arrows};
+    if(mode!=="terrain") setMode("terrain");
+    layerOn.arrows=true; applyOverlayOpacity();
+    var V3=new THREE.Vector3();
+    function lowView(){ var w=W(285,289), ty=groundY(w[0],w[1]), d=new THREE.Vector3(-1,0.13,0.18).normalize().multiplyScalar(70);
+      tween=null; camArc=null; freeCam=true; curVantage=null; landCam.position.set(w[0]+d.x,ty+d.y,w[1]+d.z); orbitTarget.set(w[0],ty,w[1]); landCam.lookAt(orbitTarget); clampCamera(); }
+    function at(t,view){ if(EYE.on) eyeLeave(); if(commandView!=="none") setCommandView("none");
+      setClock(t,{instant:true,force:true,camera:false}); finishTween();
+      if(view==="eye"){ setCommandView("fr"); setClock(t,{instant:true,force:true,camera:false}); finishTween(); if(!eyeEnter()) return false; }
+      else if(view==="low") lowView(); else placeCamera(VANTAGE[view]);
+      syncViewOffset(true); settle(2,true); camera.updateMatrixWorld(); return true; }
+    function hwAt(R,lay,u,uT){ var o=R.o; return (o.w0+(o.w1-o.w0)*(uT>0?Math.min(1,u/uT):0))*lay.sc/2; }
+    /* (1) the cap */
+    var cw=renderer.domElement.clientWidth, chh=renderer.domElement.clientHeight;
+    function scr(x,y,z){ V3.set(x,y,z).applyMatrix4(camera.matrixWorldInverse); var d=-V3.z; V3.set(x,y,z).project(camera); return [(V3.x+1)/2*cw,(1-V3.y)/2*chh,d]; }
+    var S={views:0,ribbons:0,rows:0,capped:0,maxPx:0,maxAt:"",wider:[],offCurve:0,drape:0,prop:0,head:[],wired:null}, seen={};
+    [510,590,720].forEach(function(t,ti){ ["field","zuran","plateau","allied","low","eye"].forEach(function(view,vi){
+      if(!at(t,view)) { S.head.push("the eye level not entered at "+fmtClock(t)); return; }
+      if(ti===0&&vi===0){ renderFrame(); var K0=CAP.key; CAP.key=null; arrowCap(); S.wired=(K0===CAP.key); }   /* the drawn frame laid them for this eye */
+      else arrowCap();
+      S.views++;
+      CAPPED.forEach(function(R){ if(R.group!==curOv) return; var o=R.o, uT0=o.uTaper||R.uEnd0, uT=o.uTaper||R.uEnd;
+        if(!seen[R.role+t]) seen[R.role+t]=1; S.ribbons++;
+        R.layers.forEach(function(lay,li){ if(!lay.shaft.visible) return;
+          var A=lay.shaft.geometry.attributes.position.array, m=lay.cols, per=(m+1)*3;
+          lay.runsInfo.forEach(function(ri){ var u0=ri.r0*R.uEnd, u1=o.full?1:Math.min(ri.r1,1)*R.uEnd;
+            for(var i=0;i<=ri.n;i++){ var q=(ri.first+i*(m+1))*3, e=q+m*3, u=u0+(u1-u0)*i/ri.n;
+              if(o.full&&lay.moved&&ri.first/(m+1)+i===lay.moved.row) u=lay.endU;   /* the drawn-on part's moved row, at its end */
+              else if(o.full&&lay.moved&&ri.first/(m+1)+i>lay.moved.row) break;   /* beyond the drawn-on part: not drawn */
+              var cx=(A[q]+A[e])/2, cz=(A[q+2]+A[e+2])/2, pc=R.curve.getPointAt(u), hw=Math.hypot(A[e]-A[q],A[e+2]-A[q+2])/2;
+              if(Math.hypot(cx-pc.x,cz-pc.z)>1e-3) S.offCurve++;
+              if(hw>hwAt(R,lay,u,uT0)+1e-4) S.wider.push(R.role+" at "+fmtClock(t)+" ("+hw.toFixed(3)+" > "+hwAt(R,lay,u,uT0).toFixed(3)+")");
+              for(var k=0;k<=m;k++){ var z=q+k*3, g=Math.abs(A[z+1]-groundY(A[z],A[z+2])-lay.ly); if(g>1e-3) S.drape++; }
+              if(li===1){ var Ac=R.layers[0].shaft.geometry.attributes.position.array, mc=R.layers[0].cols, pc0=(ri.first/(m+1)+i)*(mc+1)*3, hc=Math.hypot(Ac[pc0+mc*3]-Ac[pc0],Ac[pc0+mc*3+2]-Ac[pc0+2])/2;
+                if(Math.abs(hc-hw*1.34)>1e-3) S.prop++; continue; }
+              var a=scr(A[q],A[q+1],A[q+2]), b=scr(A[e],A[e+1],A[e+2]);
+              if(a[2]<=camera.near||b[2]<=camera.near) continue;
+              if(Math.max(a[0],b[0])<0||Math.min(a[0],b[0])>cw||Math.max(a[1],b[1])<0||Math.min(a[1],b[1])>chh) continue;
+              var px=Math.hypot(a[0]-b[0],a[1]-b[1]); S.rows++; if(R.Ks) S.capped++;
+              if(px>S.maxPx){ S.maxPx=px; S.maxAt=R.role+" at "+fmtClock(t)+" from "+view; } } }); });
+        R.layers.forEach(function(lay){ var H=lay.head; if(!H) return; var u=H.userData, bc=[(u.base[0][0]+u.base[1][0])/2,(u.base[0][1]+u.base[1][1])/2];
+          var len=Math.hypot(u.tip[0]-bc[0],u.tip[1]-bc[1]), wid=Math.hypot(u.base[0][0]-u.base[1][0],u.base[0][1]-u.base[1][1]), kH=R.Ks?capAt(R.Ks,R.uEnd0):1, end=R.curve.getPointAt(1);
+          var wantL=R.headL0*kH*lay.sc, over=(lay.sc-1)*R.headL0*kH*0.35, tg=R.curve.getTangentAt(1), tip=[end.x+tg.x*over,end.z+tg.z*over];
+          if(Math.abs(len-wantL)>1e-3||Math.abs(wid/len-R.headW0/R.headL0)>1e-3||Math.hypot(u.tip[0]-tip[0],u.tip[1]-tip[1])>1e-3) S.head.push(R.role+" head at "+fmtClock(t)+" from "+view+": length "+len.toFixed(3)+" (want "+wantL.toFixed(3)+")"); }); }); }); });
+    if(EYE.on) eyeLeave(); setCommandView("none");
+    /* on the paper map: every width as built */
+    setMode("staff"); updateVisibility(); renderFrame();
+    var paperBad=0, paperN=0; CAPPED.forEach(function(R){ if(R.group!==curOv) return; paperN++; if(R.Ks) paperBad++;
+      R.layers.forEach(function(lay){ var A=lay.shaft.geometry.attributes.position.array, m=lay.cols, per=(m+1)*3, uT0=R.o.uTaper||R.uEnd0;
+        lay.runsInfo.forEach(function(ri){ var u0=ri.r0*R.uEnd, u1=R.o.full?1:Math.min(ri.r1,1)*R.uEnd;
+          for(var i=0;i<=ri.n;i++){ var q=(ri.first+i*(m+1))*3; if(R.o.full&&lay.moved&&ri.first/(m+1)+i>=lay.moved.row) break;
+            if(Math.abs(Math.hypot(A[q+m*3]-A[q],A[q+m*3+2]-A[q+2])/2-hwAt(R,lay,u0+(u1-u0)*i/ri.n,uT0))>1e-4) paperBad++; } }); }); });
+    setMode("terrain"); updateVisibility();
+    ck("arrows (decision 241): in the two perspective presentations every movement arrow's casing, and its drawn-on part's, at most "+ARROW_CAP.PX+" px across on screen at every drawn row, never wider than built, its centre on the arrow's curve at its lift, the fill and the head in proportion, the head's tip on the arrow's end; laid by the drawn frame for its eye; on the paper map every width as built",
+      S.views===18&&S.rows>0&&S.capped>0&&S.maxPx<=ARROW_CAP.PX+0.5&&!S.wider.length&&!S.offCurve&&!S.drape&&!S.prop&&!S.head.length&&S.wired&&paperN>0&&!paperBad,
+      S.views+" views (the four vantages, the low Pratzen view and Napoleon's eye level at 08:30, 09:50 and 12:00), "+S.ribbons+" movement arrows and drawn-on parts, "+S.rows+" drawn rows on screen ("+S.capped+
+      " capped): the widest casing "+S.maxPx.toFixed(2)+" px ("+S.maxAt+"); "+S.wider.length+" rows wider than built"+(S.wider.length?" ("+S.wider.slice(0,3).join("; ")+")":"")+"; "+S.offCurve+" row centres off the curve; "+S.drape+
+      " vertices off their lift; "+S.prop+" fill rows out of proportion; heads "+(S.head.length?"WRONG: "+S.head.slice(0,3).join("; "):"in proportion at their shaft's factor")+"; the frame lays them "+S.wired+"; paper map: "+paperN+" arrows, "+paperBad+" rows not as built");
+    /* (2) the opacities, phase by phase */
+    var keepPh=curPhase, op={arrow:0,drawon:0,line:0,bound:0,halt:0}, opBad=[];
+    for(var ph=0;ph<PHASES.length;ph++){ rebuildOverlays(ph,true);
+      (curOv.userData.ribbons||[]).forEach(function(R){ var mv=R.role==="arrow"||R.role==="drawon", want=[0.5,mv?ARROW_CAP.OP:1];
+        op[R.role]=(op[R.role]||0)+1;
+        R.layers.forEach(function(lay,li){ [lay.shaft,lay.head].forEach(function(M){ if(!M) return; var u=M.material.userData, v=u.op0!==undefined?u.op0:u.op;
+          if(Math.abs(v-want[li])>1e-9) opBad.push(R.role+" "+(li?"fill":"casing")+" in phase "+ph+" at "+v); }); }); }); }
+    rebuildOverlays(keepPh,true); drawOnArrows();
+    ck("arrows (decision 241): a movement arrow's fill, and its drawn-on part's, at "+ARROW_CAP.OP+" of its opacity before 8B, its casing at its own; the lines of battle, the boundaries and the halt bars at theirs, phase by phase",
+      op.arrow>0&&op.line>0&&op.bound>0&&!opBad.length,
+      op.arrow+" arrows, "+op.drawon+" drawn-on parts, "+op.line+" lines, "+op.bound+" boundaries, "+op.halt+" halt bars over the "+PHASES.length+" phases; "+(opBad.length?opBad.length+" WRONG ("+opBad.slice(0,4).join("; ")+")":"each at its opacity"));
+    /* (3) hidden by the drawn ground alone */
+    var W0=480, H0=Math.round(480*chh/cw), rt=new THREE.WebGLRenderTarget(W0,H0), rtD=new THREE.WebGLRenderTarget(W0,H0), buf=new Uint8Array(W0*H0*4), bufD=new Uint8Array(W0*H0*4);
+    var dmat=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking}), O={hid:0,hidDrawn:[],vis:0,visGone:[],front:0,frontGone:0,amb:0,views:[]};
+    function px(x,y,z){ V3.set(x,y,z).project(camera); return [Math.floor((V3.x+1)/2*W0),Math.floor((V3.y+1)/2*H0),V3.z]; }
+    function clear(x,y,z){ var E=camera.position, dx=x-E.x, dy=y-E.y, dz=z-E.z, L=Math.hypot(dx,dy,dz), n=Math.ceil(L/0.25), lo=1e9;
+      for(var i=1;i<n;i++){ var f=i/n; if(L*(1-f)<1.5) break; var qx=E.x+dx*f, qy=E.y+dy*f, qz=E.z+dz*f; lo=Math.min(lo,qy-groundY(qx,qz)); } return lo; }
+    function unpack(b,i){ return b[i]/255/16777216+b[i+1]/255/65536+b[i+2]/255/256+b[i+3]/255; }
+    function viewZ(dd){ return camera.near*camera.far/((camera.far-camera.near)*dd-camera.far); }
+    [[510,"eye"],[590,"low"]].forEach(function(c){ if(!at(c[0],c[1])) { O.views.push(c[1]+": not entered"); return; } arrowCap();
+      var keepBg=scene.background, keepVis=[], mats=[], cc=renderer.getClearColor(new THREE.Color()), ca=renderer.getClearAlpha();
+      scene.background=null; renderer.setClearColor(0x000000,1);
+      /* the figures, woods and buildings, with the ground, nearest first: what stands in front of a point */
+      var solid=[groundMesh]; Object.keys(units).forEach(function(id){ var b=units[id].block; if(b&&b.visible) solid.push(b); });
+      [world.trees,world.conifers,world.scrub,world.houses,world.roofs,world.spires,world.chimneys].forEach(function(o){ if(o) solid.push(o); });
+      scene.children.forEach(function(o){ keepVis.push([o,o.visible]); o.visible=solid.indexOf(o)>=0; });
+      scene.overrideMaterial=dmat; renderer.setRenderTarget(rtD); renderer.clear(); renderer.render(scene,camera); scene.overrideMaterial=null;
+      renderer.readRenderTargetPixels(rtD,0,0,W0,H0,bufD);
+      keepVis.forEach(function(k){ k[0].visible=k[1]; });
+      var ribs=(curOv.userData.ribbons||[]).filter(function(R){ return R.role!=="drawon"&&R.layers[0].shaft.visible; });
+      ribs.forEach(function(R){ R.layers.forEach(function(lay){ [lay.shaft,lay.head].forEach(function(M){ if(M){ mats.push([M.material,M.material.color.clone(),M.material.opacity]); } }); }); });
+      /* each ribbon alone, white over black, with the ground's depth for this target */
+      ribs.forEach(function(R,ri){
+        var mine=[]; R.layers.forEach(function(lay){ [lay.shaft,lay.head].forEach(function(M){ if(M) mine.push(M); }); });
+        mats.forEach(function(m){ m[0].color.setRGB(1,1,1); m[0].opacity=1; });
+        var hidMesh=[]; curOv.traverse(function(o){ if(o.isMesh||o.isLine||o.isSprite){ if(mine.indexOf(o)<0&&o.visible){ hidMesh.push(o); o.visible=false; } } });
+        if(oldOv) { oldOv.visible=false; }
+        scene.children.forEach(function(o){ keepVis.push([o,o.visible]); if(o!==overlayRoot) o.visible=false; });
+        renderer.setRenderTarget(rt); renderer.clear(); gdepthPass(W0,H0); renderer.setRenderTarget(rt); renderer.render(scene,camera); GDEPTH.u.uGroundOn.value=0;
+        renderer.readRenderTargetPixels(rt,0,0,W0,H0,buf);
+        keepVis.forEach(function(k){ k[0].visible=k[1]; }); keepVis=[]; hidMesh.forEach(function(o){ o.visible=true; }); if(oldOv) oldOv.visible=true;
+        var L=R.len, n=Math.max(2,Math.ceil(L)), ly=R.o.lift, f2=2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2))/H0, uT=R.o.uTaper||R.uEnd;
+        for(var j=0;j<=n;j++){ var u=j/n*(R.o.head?R.uEnd:1), p=R.curve.getPointAt(u), y=groundY(p.x,p.z)+ly, q=px(p.x,y,p.z); if(q[2]<-1||q[2]>1||q[0]<1||q[1]<1||q[0]>=W0-1||q[1]>=H0-1) continue;
+          V3.set(p.x,y,p.z).applyMatrix4(camera.matrixWorldInverse); var d=-V3.z, wpx=(R.o.w0+(R.o.w1-R.o.w0)*(uT>0?Math.min(1,u/uT):0))*(R.Ks?capAt(R.Ks,u):1)/(d*f2);
+          if(R.o.runs&&!R.o.runs.some(function(r){ return u>=r[0]*R.uEnd+0.02&&u<=r[1]*R.uEnd-0.02; })) continue;   /* between an intended route's dashes */
+          if(wpx<3) continue;
+          var c0=clear(p.x,y,p.z), i4=(q[1]*W0+q[0])*4, lit=buf[i4]>128&&buf[i4+1]>128&&buf[i4+2]>128;
+          if(c0<-0.5){ O.hid++; if(lit) O.hidDrawn.push(R.role+" at "+fmtClock(c[0])+" from "+c[1]+" (u "+u.toFixed(2)+")"); }
+          else if(c0>0.5){ O.vis++; if(!lit) O.visGone.push(R.role+" at "+fmtClock(c[0])+" from "+c[1]+" (u "+u.toFixed(2)+")");
+            var zs=-viewZ(unpack(bufD,i4)); if(zs<d-0.5){ O.front++; if(!lit) O.frontGone++; } }
+          else O.amb++; } });
+      mats.forEach(function(m){ m[0].color.copy(m[1]); m[0].opacity=m[2]; });
+      scene.background=keepBg; renderer.setClearColor(cc,ca); renderer.setRenderTarget(null); O.views.push(c[1]+" at "+fmtClock(c[0])+": "+ribs.length+" ribbons"); });
+    rt.dispose(); rtD.dispose(); dmat.dispose(); GDEPTH.key=null;
+    if(EYE.on) eyeLeave();
+    ck("arrows (decision 241): every overlay ribbon (arrows, lines of battle, boundaries, halt bars) hidden by the drawn ground alone: from Napoleon's eye level and the low Pratzen view, every point of its centre line the ground hides not drawn, every point in sight drawn, also where a figure, a wood or a building stands in front",
+      O.hid>0&&O.vis>0&&!O.hidDrawn.length&&!O.visGone.length,
+      O.views.join("; ")+": "+O.hid+" points hidden by the ground ("+O.hidDrawn.length+" drawn"+(O.hidDrawn.length?": "+O.hidDrawn.slice(0,3).join("; "):"")+"), "+O.vis+" in sight ("+O.visGone.length+" not drawn"+(O.visGone.length?": "+O.visGone.slice(0,3).join("; "):"")+
+      "), of them "+O.front+" behind a figure, a wood or a building ("+O.frontGone+" not drawn); "+O.amb+" within 0.5 units of the ground's edge, not judged");
+    layerOn.arrows=k0.lay; applyOverlayOpacity();
+    setCommandView(k0.cv); setClock(k0.clock,{instant:true,force:true,camera:false}); finishTween(); if(mode!==k0.md) setMode(k0.md);
+    landCam.position.copy(k0.pos); orbitTarget.copy(k0.tgt); landCam.lookAt(orbitTarget); freeCam=k0.fc; syncViewOffset(true); settle(2,true);
   }
   /* Stage 5F: the routes bound to the plans, dashed, depth-tested under the figures, nothing dimmed; the scope and the phase-0 rule;
      the dossier's derived distance; the legend; the paper map; none in Clean */
@@ -9639,6 +10096,7 @@ var AUSTERLITZ_DEBUG=(function(){
       skelChecks(ck,fct);   /* Stage 5D */
       eyesChecks(ck,fct);   /* Stage 5E */
       routeChecks(ck,fct);  /* Stage 5F */
+      arrowChecks(ck,fct);  /* Stage 8, 8B (decision 241) */
     }
     DISPLAY.settings.forEach(atFactor);
     stage2bChecks(bySetting).forEach(function(c){ out.push(c); });

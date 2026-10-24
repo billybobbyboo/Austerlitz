@@ -392,9 +392,16 @@ if(cerrs) process.exitCode=1;
     const body=src.slice(n.start,n.end); if(/setLineDash|LineDashed|dashSize|dashRuns|segment/i.test(body)) cerr.push(n.id.name+" draws a dash"); });
   want.forEach(f=>{ if(!seen[f]) cerr.push(f+" missing"); });
   if(!/confPlace\(rec\[mk\],g,wq\[0\],wq\[1\],rec\.yaw\|\|0,fu\.W0\*fu\.sw,fu\.D0\*fu\.sd,hexNum\(side\)/.test(src)||!/side=TOKENS\.sym\.side\[sideOfNation\(f\.nation\)\]\.base/.test(src)) cerr.push("the marks' colour is not the side's token");
-  if(!/layerOn=\{[^}]*confidence:true/.test(src)) cerr.push("position confidence is not on by default (decision 85)");
+  /* Stage 8, implementation PR 8B (decision 239): the layer's first setting by presentation, off on the landscape (where the app opens) and on
+     on the paper map (decision 85 kept there); the outlines no dash either, in the side's token colour on its edge, the selection's in the accent */
+  if(!/var CONF_ON=\{land:false, paper:true\};/.test(src)||!/layerOn=\{[^}]*confidence:false/.test(src)) cerr.push("position confidence is not off at first on the landscape and on at first on the paper map (decisions 85, 239)");
+  ["makeOutline","outlinePlace","outlineReach"].forEach(f=>{ const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===f);
+    if(!n) cerr.push(f+" missing"); else if(/setLineDash|LineDashed|dashSize|dashRuns|segment/i.test(src.slice(n.start,n.end))) cerr.push(f+" draws a dash"); });
+  { const m=/var OUTLINE_FS=\[([\s\S]*?)\]\.join/.exec(src); if(!m||/dash|fract\(|mod\(/i.test(m[1])) cerr.push("the outline's fragment shader is missing or draws a dash"); }
+  if(!/outlinePlace\(rec\.line,gl,wq\[0\],wq\[1\],rec\.yaw\|\|0,fu\.W0\*fu\.sw,fu\.D0\*fu\.sd,hexNum\(sl\?TOKENS\.theme\.dark\.accent:SL\.base\),hexNum\(sl\?TOKENS\.sym\.keyline:SL\.edge\)/.test(src)||
+     !/SL=TOKENS\.sym\.side\[sdl\]/.test(src)) cerr.push("the outlines' colours are not the side's tokens (the selection's the accent)");
   cerr.forEach(e=>console.log("  ! "+e));
-  console.log("confidence marks: "+(cerr.length?cerr.length+" wrong":"no dash, the side's token colour, on by default"));
+  console.log("confidence marks: "+(cerr.length?cerr.length+" wrong":"no dash, the side's token colour; off at first on the landscape, on at first on the paper map; the outlines no dash, in the side's tokens, the selection's in the accent"));
   if(cerr.length) process.exitCode=1;
 }
 /* Stage 5D (docs/STAGE5_SPEC.md section B.4; decisions 4, 15, 90): the evidence skeleton draws no dash, its colour is the annotation

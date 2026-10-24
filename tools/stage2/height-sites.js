@@ -107,7 +107,11 @@ const CLASS={
   /* Stage 5F: the ordered routes' dashes, clipped to the drawn ground's triangles, at their lift */
   "app.js:routeDrapePoly > v":"presentation","app.js:routeChecks":"test",
   /* Stage 8, implementation PR 8A (decision 253): the self-test's rendered check of the roads' and streams' ribbons, its camera aimed at the drawn ground */
-  "app.js:ribbonVisibility":"test"
+  "app.js:ribbonVisibility":"test",
+  /* Stage 8, implementation PR 8B (decisions 239, 241): the outlines' reach across the drawn ground (the eye's ray against its slope); the
+     arrows' cap read along their centre lines on the drawn ground and the ribbons laid again on it; the self-test's checks of both */
+  "app.js:outlineReach":"presentation","app.js:capPts":"presentation","app.js:ribbonRelayout":"presentation",
+  "app.js:arrowChecks":"test","app.js:arrowChecks > lowView":"test","app.js:arrowChecks > clear":"test","app.js:kitDayChecks > hiddenFrom":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */

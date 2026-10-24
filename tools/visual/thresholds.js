@@ -501,7 +501,10 @@ function expectState(name,m,spec){
   if(s.tween) f.push("state: a camera glide is still running (T-6)");
   if(!Array.isArray(s.viewport)||s.viewport[0]!==spec.viewport[0]||s.viewport[1]!==spec.viewport[1]) f.push("state: the viewport is "+JSON.stringify(s.viewport)+", the case asks "+JSON.stringify(spec.viewport)+" (T-6)");
   const L=s.layers||{};
-  if(reading&&L.confidence!==true) f.push("state: Position confidence is off: decision 85 has it on by default (T-6)");
+  /* Stage 8, implementation PR 8B (decision 239): Position confidence off at first in the two perspective presentations, on at first on the
+     paper map (decision 85, kept there) */
+  const confWant=s.mode==="staff";
+  if(reading&&L.confidence!==confWant) f.push("state: Position confidence is "+(L.confidence?"on":"off")+": decisions 85 and 239 have it "+(confWant?"on at first on the paper map":"off at first on the landscape")+" (T-6)");
   if(L.routes||L.skeleton||s.confNone||s.skelDay) f.push("state: a layer is not at its default before the case's measures: routes "+L.routes+", skeleton "+L.skeleton+" (whole day "+s.skelDay+"), CONF.none "+s.confNone+" (T-6)");
   /* the camera where the case put it (not on a fresh page, and not after the interaction case's real input, which moves it on purpose) */
   if(!spec.fresh&&!spec.interact){ const a=s.applied, c=s.cam;
@@ -516,7 +519,7 @@ function expectState(name,m,spec){
   const t=m.stateAfter;
   if(!t) f.push("state: not recorded after the case's measures (T-6)");
   else { const La=t.layers||{};
-    if(La.confidence!==true||La.routes||La.skeleton||t.confNone||t.skelDay) f.push("state after the case's measures: the layers not given back (confidence "+La.confidence+", routes "+La.routes+", skeleton "+La.skeleton+", whole day "+t.skelDay+", CONF.none "+t.confNone+") (T-6)");
+    if((reading&&La.confidence!==confWant)||La.routes||La.skeleton||t.confNone||t.skelDay) f.push("state after the case's measures: the layers not given back (confidence "+La.confidence+", routes "+La.routes+", skeleton "+La.skeleton+", whole day "+t.skelDay+", CONF.none "+t.confNone+") (T-6)");
     if(!Array.isArray(t.viewport)||t.viewport[0]!==spec.viewport[0]||t.viewport[1]!==spec.viewport[1]) f.push("state after the case's measures: the viewport is "+JSON.stringify(t.viewport)+", not the case's (T-6)"); }
   return f;
 }
