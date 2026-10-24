@@ -109,9 +109,11 @@ const CLASS={
   /* Stage 8, implementation PR 8A (decision 253): the self-test's rendered check of the roads' and streams' ribbons, its camera aimed at the drawn ground */
   "app.js:ribbonVisibility":"test",
   /* Stage 8, implementation PR 8B (decisions 239, 241): the outlines' reach across the drawn ground (the eye's ray against its slope); the
-     arrows' cap read along their centre lines on the drawn ground and the ribbons laid again on it; the self-test's checks of both */
-  "app.js:outlineReach":"presentation","app.js:capPts":"presentation","app.js:ribbonRelayout":"presentation",
-  "app.js:arrowChecks":"test","app.js:arrowChecks > lowView":"test","app.js:arrowChecks > clear":"test","app.js:kitDayChecks > hiddenFrom":"test"
+     arrows' cap, each casing's two edges draped on the drawn ground and projected, and the ribbons laid again on it; the self-test's checks of
+     both (its eye at Puntowitz on the drawn ground, a strip's breadth on screen at its lift, the outlines' bands projected at their lift) */
+  "app.js:outlineReach":"presentation","app.js:capFactors > len":"presentation","app.js:ribbonRelayout":"presentation",
+  "app.js:arrowChecks":"test","app.js:arrowChecks > lowView":"test","app.js:arrowChecks > clear":"test","app.js:arrowChecks > behindView":"test","app.js:arrowChecks > sp2":"test",
+  "app.js:kitDayChecks > hiddenFrom":"test","app.js:kitDayChecks > sp":"test"
 };
 rows.forEach(r=>{ r.where=r.top+(r.inner!==r.top?" > "+r.inner:""); r.cls=CLASS[r.file+":"+r.where]||"UNCLASSIFIED"; });
 /* the model-side exceptions inside presentation functions: the local relief used to choose where marsh symbols go */
