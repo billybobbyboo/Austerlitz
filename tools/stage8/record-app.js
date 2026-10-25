@@ -14,7 +14,7 @@ const CLIPS={
   "hybrid-orbit":{motion:"hybrid-orbit", n:60, note:"Landscape with counters from the Field vantage at 09:30, orbited by a right-button drag of 6 px a frame, 60 frames (2 s), then 30 at rest."},
   "hybrid-zoom":{motion:"hybrid-zoom", n:60, note:"Landscape with counters from the Field vantage at 09:30, the wheel's step every third frame, ten in and ten out, then 30 frames at rest."},
   "paper-zoom":{motion:"paper-zoom", n:60, note:"The paper map as entered at 09:30, the wheel's step every third frame, ten in and ten out, then 30 frames at rest."},
-  "paper-play":{motion:"paper-play", n:120, from:540, note:"The paper map as entered while Play runs at ½x from 09:00 to 09:20 (120 frames, 4 s), then 30 frames at rest."}
+  "paper-play":{motion:"paper-play", n:120, from:540, to:560, max:300, note:"The paper map as entered while Play runs at ½x from 09:00 until the clock reaches 09:20 (the app's own Play: its dwell at the 09:00 event's start held as a visitor sees it), then 30 frames at rest."}
 };
 async function main(argv){
   const opt=f=>{ const i=argv.indexOf(f); return i>=0?argv[i+1]:null; };
@@ -41,15 +41,17 @@ async function main(argv){
       var c=D.centre(); window.__rc={c:c, a:a};
       if(a.kind==="pan") D.down(c[0],c[1],0); if(a.kind==="orbit") D.down(c[0],c[1],2); },{kind:kind, amt:amt, from:C.from||540});
     await shot();
-    for(let i=1;i<=n+rest;i++){
-      await page.evaluate(([i,n])=>{ var D=window.__md, R=window.__rc, a=R.a, c=R.c;
+    let nn=n;   /* a Play clip with "to" plays on until the clock reaches it (at most "max" frames): Play's dwells at event starts hold the clock */
+    for(let i=1;i<=nn+rest;i++){
+      const ck=await page.evaluate(([i,n])=>{ var D=window.__md, R=window.__rc, a=R.a, c=R.c;
         if(i<=n){ if(a.kind==="pan") D.move(c[0]+a.amt*i,c[1],0); else if(a.kind==="orbit") D.move(c[0]+a.amt*i,c[1],2);
           else if(a.kind==="zoom"&&i%3===0) D.wheel(c[0],c[1],i<=n/2?-100:100); }
         if(i===n+1){ if(a.kind==="pan") D.up(c[0]+a.amt*n,c[1],0); if(a.kind==="orbit") D.up(c[0]+a.amt*n,c[1],2); if(a.kind==="play") stopPlay(); }
-        D.frame(); },[i,n]);
+        D.frame(); return clock; },[i,nn]);
+      if(C.to&&i===nn&&ck<C.to&&nn<(C.max||nn)) nn++;
       if(i%EVERY===0) await shot();
     }
-    const info=await page.evaluate(()=>{ var D=window.__md; D.stop(); return {clock:clock, rm:RM, passes:typeof MLS!=="undefined"?MLS.stats.passes:null}; });
+    const info=await page.evaluate(n=>{ var D=window.__md; D.stop(); return {frames:n, clock:fmtClock(clock), rm:RM, passes:typeof MLS!=="undefined"?MLS.stats.passes:null}; },nn);
     await page.close();
     const base=path.join(OUT,CLIP+"-"+tag), enc=L.encode(dir,base,FPS,480);
     made.push({label:B.label, enc, frames:k, secs:((Date.now()-t1)/1000).toFixed(0), info});

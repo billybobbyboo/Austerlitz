@@ -4,10 +4,11 @@
    In the page (inPage, injected by the caller): window.__md, a driver that stops the app's animation loop and runs it one frame at a time on
    a clock of its own (performance.now answers the driver's time, advanced a frame's length at each step), so that every rule that reads the
    wall clock (the input hold, the tweens and glides, Play, the stabiliser's re-placement passes and fades) runs as it would at that frame
-   rate, deterministically and whatever the machine's speed. The motion reaches the app as a visitor's does: pointer and wheel events on the
-   canvas (they set the input hold and run the app's own drag, wheel and orbit handlers), a vantage glide or the paper map's eased move (a
-   tween), Play (the app's own tickClock and Follow). The WebGL draw can be skipped (gl: false; the layout reads nothing it draws), so a
-   motion's frames take milliseconds; the recorder draws them. Nothing is set that the app does not set itself: no harness switch.
+   rate, whatever the machine's speed; each run starts from the state an idle page reaches, past every timer the set-up left (D.start). The
+   motion reaches the app as a visitor's does: pointer and wheel events on the canvas (they set the input hold and run the app's own drag,
+   wheel and orbit handlers), a vantage glide or the paper map's eased move (a tween), Play (the app's own tickClock and Follow). The WebGL
+   draw can be skipped (gl: false; the layout reads nothing it draws), so a motion's frames take milliseconds; the recorder draws them.
+   Nothing is set during a motion that the app does not set itself: no harness switch.
    After each frame, snap() reads every item the layer collected that frame: its state (on, dropped, held, occluded, off screen, under a
    panel), its box and its anchor on the screen, its kind and formation, a remnant fading out where it was drawn.
    In node (measure): Part A's measures over a run's snaps (section 3.2: a jump is an item drawn in two successive frames whose box moved more
@@ -23,15 +24,26 @@
 const inPage=function(){
   if(window.__md) return true;
   var realNow=performance.now.bind(performance), realRaf=window.requestAnimationFrame.bind(window), realRender=null, T=0, on=false, list=[], origCollect=null, origLayout=null, ms=[], broken=false;
+  /* each run starts from the same state whatever the machine's speed: the page's clock never runs back behind the driver's (after a run it
+     goes on from the run's end, at the real rate: shift), and a run starts GAP past every timer the set-up or the last run left (the input
+     hold, 450 ms; a re-placement pass, 333; a fade, 180; a panel's move), on a view marked as reached afresh (the app's own mlReset, as
+     placing the camera does), with no frame pending. Until this was found the driver started at the real clock, behind the last run's end,
+     so the last run's input hold could still be running and the stabiliser begin an episode before the motion did, and the frames left
+     pending set the phase of the re-placement passes: the harness's totals varied by a few counts with the time the set-up took (CI and
+     here, on one build). */
+  var GAP=2000, shift=0, pageNow=function(){ return realNow()+shift; };
   var D={frameMs:1000/30, frames:0, gl:true};
-  D.start=function(o){ o=o||{}; if(on) return D; on=true; D.gl=o.gl!==false; D.frameMs=o.frameMs||1000/30; T=realNow(); D.frames=0; ms=[];
+  D.start=function(o){ o=o||{}; if(on) return D; on=true; D.gl=o.gl!==false; D.frameMs=o.frameMs||1000/30; T=pageNow()+GAP; D.frames=0; ms=[];
     broken=false; window.requestAnimationFrame=function(cb){ if(cb===window.loop){ broken=true; return 0; } return realRaf(cb); };
     performance.now=function(){ return T; };
+    if(typeof mlReset==="function") mlReset("driver");   /* 8C's builds; before 8C the layer has no memory to clear */
+    needFrames=0;   /* no frame pending, as GAP at rest leaves the page (render on demand); the frames left asked for by the set-up or the last
+                       run's end decided how many of the frames before the motion laid the layer out, and so the phase of its passes */
     if(!D.gl&&!realRender){ realRender=renderer.render; renderer.render=function(){}; }
     if(!origCollect){ origCollect=window.mlCollect; window.mlCollect=function(){ var l=origCollect.apply(this,arguments); list=l; return l; }; }
     if(!origLayout){ origLayout=window.mlLayout; window.mlLayout=function(){ var a=realNow(); var r=origLayout.apply(this,arguments); ms.push(realNow()-a); return r; }; }
     return D; };
-  D.stop=function(){ if(!on) return; on=false; performance.now=realNow; window.requestAnimationFrame=realRaf;
+  D.stop=function(){ if(!on) return; on=false; shift=T+GAP-realNow(); performance.now=pageNow; window.requestAnimationFrame=realRaf;
     if(realRender){ renderer.render=realRender; realRender=null; }
     if(origCollect){ window.mlCollect=origCollect; origCollect=null; } if(origLayout){ window.mlLayout=origLayout; origLayout=null; }
     requestRender(3); if(broken) realRaf(window.loop); };   /* the app's own loop goes on: its pending frame, or, if that came and stopped, a new one */
