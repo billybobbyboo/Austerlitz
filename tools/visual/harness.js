@@ -411,7 +411,10 @@ async function interact(page,it,vp){
     AT="motion";
     if(await has(first,"MLS","the map layer in motion: the 16 motions and the four by real input")){
       const MO=require("./motion.js"), MV={runs:[]}, mp=await openPage(browser,[1600,900],"1600x900 motion");
-      const runs=MO.MOTIONS.map(m=>({m:m})).concat(MO.REAL.map(id=>({m:MO.MOTIONS.find(x=>x[0]===id),real:true})),
+      /* the self-test's page (check:selftest, CI): two of the four by real input, the right-button drag and the wheel on the paper map (each
+         real-input motion costs a round trip a frame); check:visual drives all four */
+      const REAL=SELFTEST_ONLY?["hybrid-orbit","paper-zoom"]:MO.REAL;
+      const runs=MO.MOTIONS.map(m=>({m:m})).concat(REAL.map(id=>({m:MO.MOTIONS.find(x=>x[0]===id),real:true})),
         [["hybrid-orbit","sthilaire"],["paper-zoom","sthilaire"]].map(s=>({m:MO.MOTIONS.find(x=>x[0]===s[0]),sel:s[1]})), MO.EXTRA.map(m=>({m:m,extra:m[5]})));
       let vp=null;
       try{
@@ -419,7 +422,9 @@ async function interact(page,it,vp){
         for(const R of runs){ const [id,view,kind,n,amt]=R.m, X=R.extra||{}, t0=Date.now(), V=MO.VIEWS[view];
           if(!vp||vp[0]!==V.viewport[0]||vp[1]!==V.viewport[1]){ vp=V.viewport; await mp.setViewportSize({width:vp[0],height:vp[1]}); await settle(mp); }   /* the phone layout below 720 px */
           await mp.evaluate(()=>{ select(null,null); stopPlay(); });
-          await mp.evaluate(s=>window.__aus.apply(s),V); await settle(mp);
+          /* the view settled without a drawn frame: the motion's frames draw nothing either (the layout reads nothing drawn), and under software
+             WebGL a drawn frame here cost seconds a run */
+          await mp.evaluate(s=>window.__aus.apply(s),V); await mp.evaluate(()=>AUSTERLITZ_DEBUG.settle(90,true));
           await mp.evaluate(MO.inPage);
           const A={kind:kind,n:n,amt:amt,gl:false,room:false,select:R.sel||null,rest:30,pre:8,reading:X.reading||null,touch:!!X.touch};
           const r=R.real?await MO.runReal(mp,A):await mp.evaluate(new Function("a","return ("+MO.RUN.toString()+")(a);"),A);

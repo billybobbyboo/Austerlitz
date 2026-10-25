@@ -176,8 +176,15 @@ async function runBootCases(html,only){
       if(!a.noExt){ st=await p.evaluate(async()=>{ const settle=async()=>{ const t0=performance.now(); let s=0;
           while(performance.now()-t0<120000){ await new Promise(z=>setTimeout(z,100)); if(DEV.state==="idle"){ if(!s) s=performance.now(); else if(performance.now()-s>=500) return true; } else s=0; }
           return false; };
-        const f0=DEV.frames; setClock(PHASES[3].t0,{force:true}); await new Promise(z=>setTimeout(z,300)); const ok=await settle();
-        return {settled:ok,frames:DEV.frames-f0,clock:clock,lost:GL.lost}; }); }
+        /* Stage 8, implementation PR 8C: the step's first frame is waited for before the page is read as idle (DEV.state is set by a frame, so
+           until one is drawn it still says the "idle" of before the step). A step that changes the environment map recompiles the programs
+           that read it, and under software WebGL that first frame comes 2-4 s after the step, as it does before any loss; on 8B's build, whose
+           restored environment map was empty (the audit of 8B, finding A), it came within a second, and a settle begun 0.3 s after the step
+           found the page drawing before its 0.5 s of idle ran out. The judgement below is unchanged */
+        const f0=DEV.frames; setClock(PHASES[3].t0,{force:true}); await new Promise(z=>setTimeout(z,300));
+        const t1=performance.now(); while(DEV.frames===f0&&performance.now()-t1<120000) await new Promise(z=>setTimeout(z,100));
+        const ok=await settle();
+        return {settled:ok,frames:DEV.frames-f0,clock:clock,lost:GL.lost,firstMs:Math.round(performance.now()-t1)}; }); }
       if(a.noExt) bad.push("no WEBGL_lose_context");
       else { if(!a.lost||a.role!=="alert"||!a.vis||!a.button||a.text.indexOf("The 3D view has stopped")!==0||a.low.length) bad.push("lost: "+JSON.stringify(a));
         if(a.after.lost||a.after.text||!(a.after.frames>0)) bad.push("restored: "+JSON.stringify(a.after));

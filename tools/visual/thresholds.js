@@ -217,7 +217,8 @@ const CONF_SHARE={land:0.07, paper:0.16}; module.exports.CONF_SHARE=CONF_SHARE;
    pops at most POPS, flickers at most FLICKER (the owner's starting targets as decided in section 3.5; the owner's word for 8C: "the specified
    starting targets, not permission to change limits automatically"), level-of-detail switches not more than LOD_8B, the build before 8C's in
    the same motions with the same driver (implementation PR 8B's build, measured on it); in every run, the 16, the four by real input and the
-   two with a selection, the three under a headquarters' reading and the finger's pan on the phone layout: no overlap among the drawn items, no
+   two with a selection, the three under a headquarters' reading and the finger's pan on the phone layout (on check:selftest's page two of the
+   four by real input, the right-button drag and the paper map's wheel; check:visual all four): no overlap among the drawn items, no
    never-dropped item hidden in view, no remnant out of rule (under the live items, no pointer, not drawn), nothing drawn or fading that the
    reading does not know, frames read as moving, the view idle at rest after the motion (Play aside); each of the four by real input within
    REAL_TOL of its twin driven in the page (abs, or rel of the twin's count, whichever is larger): the motion read from the browser's own
@@ -638,7 +639,7 @@ function checkLive(live,opts){
   if(req("motion","the map layer in motion: the 16 motions, the four by real input and two with a selection (Stage 8, implementation PR 8C, decision 240 (a))")){
     const R=live.motion.runs||[], base=R.filter(r=>!r.real&&!r.select&&!r.reading&&!r.touch), real=R.filter(r=>r.real), b=[], sum=k=>base.reduce((s,r)=>s+r[k],0);
     if(base.length!==16) b.push(base.length+" of the 16 motions run");
-    if(real.length!==4) b.push(real.length+" of the four motions by real input run");
+    if(real.length!==(so?2:4)) b.push(real.length+" of the "+(so?"two":"four")+" motions by real input run"+(so?" (the self-test's page: the right-button drag and the paper map's wheel)":""));
     if(R.filter(r=>r.select).length!==2) b.push(R.filter(r=>r.select).length+" of the two motions with a selection run");
     if(R.filter(r=>r.reading).length!==3||R.filter(r=>r.touch).length!==1) b.push(R.filter(r=>r.reading).length+" of the three motions under a reading and "+R.filter(r=>r.touch).length+" of the one by a finger run");
     const T={jumps:sum("jumps"), pops:sum("pops"), flicker:sum("flicker"), lod:sum("lod")};
