@@ -207,8 +207,23 @@ const SMOKE_SHARE=0.25; module.exports.SMOKE_SHARE=SMOKE_SHARE;   /* Stage 4E: t
    them, on the landscape the outlines (and a reported formation's C zone and the eye level's own side, decision 91, where drawn). The
    landscape's limit lowered from 0.20 to the largest measured on the 8B build, rounded up as 5B rounded: eye-zuran's own side, 6.42% on CI
    (Chromium 141) and here (Chromium 153) alike; every case without an eye level at most 1.89% (narrow-1024; 1.94% here). Put to the owner as
-   question 254. The paper map's limit unchanged */
+   question 254. The paper map's limit unchanged.
+   Decision 254 (a) (the owner, with implementation PR 8C): the landscape's limit stays 7%. The measure's meaning changed with 8B: on the
+   landscape it is the ground cues as each case shows them (the outlines, a reported formation's C zone and the eye level's own side), no
+   longer the filled confidence marks; a return of the filled washes fails it. The paper map's limit (16%) unchanged */
 const CONF_SHARE={land:0.07, paper:0.16}; module.exports.CONF_SHARE=CONF_SHARE;
+/* Stage 8, implementation PR 8C (decision 240 (a); docs/STAGE8_SPEC.md sections 3.5 and 15): the motion block (harness.js, live.motion; the
+   16 motions of tools/stage8/label-motion.js through the app's own input and frame, tools/visual/motion.js). Over the 16: jumps at most JUMPS,
+   pops at most POPS, flickers at most FLICKER (the owner's starting targets as decided in section 3.5; the owner's word for 8C: "the specified
+   starting targets, not permission to change limits automatically"), level-of-detail switches not more than LOD_8B, the build before 8C's in
+   the same motions with the same driver (implementation PR 8B's build, measured on it); in every run, the 16, the four by real input and the
+   two with a selection, the three under a headquarters' reading and the finger's pan on the phone layout (on check:selftest's page two of the
+   four by real input, the right-button drag and the paper map's wheel; check:visual all four): no overlap among the drawn items, no
+   never-dropped item hidden in view, no remnant out of rule (under the live items, no pointer, not drawn), nothing drawn or fading that the
+   reading does not know, frames read as moving, the view idle at rest after the motion (Play aside); each of the four by real input within
+   REAL_TOL of its twin driven in the page (abs, or rel of the twin's count, whichever is larger): the motion read from the browser's own
+   events too */
+const MOTION={JUMPS:300, POPS:1300, FLICKER:200, LOD_8B:130, REAL_TOL:{abs:6, rel:0.25}}; module.exports.MOTION=MOTION;   /* LOD_8B: implementation PR 8B's build (md5 9b20dc4c...), the 16 motions, Chromium 141 */
 /* Stage 4E (docs/STAGE4_SPEC.md section F.2): the horizon in the low views [case, factor]; where the apron's far edge stands below
    the true horizon, the gap is drawn in the haze's colour: its mean colour per column within HORIZON_DE (0-255, the largest
    channel) of the sky's just above the horizon */
@@ -415,7 +430,8 @@ const REQUIRED_FEATURES={LANDCAM:"Stage 3D: the landscape camera, the real-input
   nowTab:"Stage 3B: the rail's Now tab", DWELL:"Stage 4D: the dwell", KEYS:"Stage 3E: the key table", SUN_DAY:"Stage 4B: the computed sun",
   ATMO:"Stage 4C: the atmosphere", SMOKE:"Stage 4E: smoke in puffs", settle:"Stage 0: AUSTERLITZ_DEBUG.settle",
   applyCase:"Stage 0: AUSTERLITZ_DEBUG.applyCase", selfTest:"Stage 0: AUSTERLITZ_DEBUG.selfTest", SHORTCUTS:"roadmap step 3: the single-key shortcuts switch (decision 134)",
-  TIPS:"Stage 8, implementation PR 8A: the timeline's tips dismissed on activation, never shown by a touch (decision 251)"};
+  TIPS:"Stage 8, implementation PR 8A: the timeline's tips dismissed on activation, never shown by a touch (decision 251)",
+  MLS:"Stage 8, implementation PR 8C: the map layer in motion (decision 240 (a))"};
 module.exports.REQUIRED_FEATURES=REQUIRED_FEATURES;
 
 /* T-6: the vacuous edges. Watch's caption must show its derived reading (capDerived true) and the ordered routes must draw a route, in every
@@ -620,6 +636,28 @@ function checkLive(live,opts){
     if(!(none(T.mixEnter)&&/^e:/.test(T.mixEnter.sel||""))) b.push("Enter on the focused marker kept the tip or opened no dossier");
     if(!(none(T.tap1)&&T.tap1.drawer===true&&none(T.tap3))) b.push("a tap on a phone showed a tip or opened no dossier");
     if(b.length) f.push("the timeline's tips by real input: "+b.join("; ")+" "+JSON.stringify(T).slice(0,700)); }
+  if(req("motion","the map layer in motion: the 16 motions, the four by real input and two with a selection (Stage 8, implementation PR 8C, decision 240 (a))")){
+    const R=live.motion.runs||[], base=R.filter(r=>!r.real&&!r.select&&!r.reading&&!r.touch), real=R.filter(r=>r.real), b=[], sum=k=>base.reduce((s,r)=>s+r[k],0);
+    if(base.length!==16) b.push(base.length+" of the 16 motions run");
+    if(real.length!==(so?2:4)) b.push(real.length+" of the "+(so?"two":"four")+" motions by real input run"+(so?" (the self-test's page: the right-button drag and the paper map's wheel)":""));
+    if(R.filter(r=>r.select).length!==2) b.push(R.filter(r=>r.select).length+" of the two motions with a selection run");
+    if(R.filter(r=>r.reading).length!==3||R.filter(r=>r.touch).length!==1) b.push(R.filter(r=>r.reading).length+" of the three motions under a reading and "+R.filter(r=>r.touch).length+" of the one by a finger run");
+    const T={jumps:sum("jumps"), pops:sum("pops"), flicker:sum("flicker"), lod:sum("lod")};
+    if(!(T.jumps<=MOTION.JUMPS)) b.push("jumps "+T.jumps+" over the 16 motions (limit "+MOTION.JUMPS+")");
+    if(!(T.pops<=MOTION.POPS)) b.push("pops "+T.pops+" (limit "+MOTION.POPS+")");
+    if(!(T.flicker<=MOTION.FLICKER)) b.push("flickers "+T.flicker+" (limit "+MOTION.FLICKER+")");
+    if(!(T.lod<=MOTION.LOD_8B)) b.push("level-of-detail switches "+T.lod+" (the build before 8C: "+MOTION.LOD_8B+")");
+    R.forEach(r=>{ const nm=r.id+(r.real?" by real input":"")+(r.select?" with "+r.select+" selected":"")+(r.reading?" under the "+r.reading+" reading":"")+(r.touch?" by a finger":"");
+      if(r.unknownDrawn) b.push(nm+": "+r.unknownDrawn+" item-frames drawn whose formation the reading does not know");
+      if(r.overlapFrames) b.push(nm+": "+r.overlapFrames+" frames with drawn items overlapping");
+      if(r.keepHidden) b.push(nm+": a never-dropped item hidden in view "+r.keepHidden+" times ("+(r.keepHiddenKeys||[]).join(", ")+")");
+      if(r.remnantBad) b.push(nm+": "+r.remnantBad+" remnants out of rule");
+      if(!(r.moving>0)) b.push(nm+": no frame read as moving");
+      if(r.kind!=="play"&&r.end!=="idle") b.push(nm+": the view not idle at rest after the motion ("+r.end+")"); });
+    real.forEach(r=>{ const t=base.find(x=>x.id===r.id); if(!t){ b.push(r.id+" by real input: no twin"); return; }
+      ["jumps","pops","flicker","lod"].forEach(k=>{ const tol=Math.max(MOTION.REAL_TOL.abs,MOTION.REAL_TOL.rel*t[k]);
+        if(Math.abs(r[k]-t[k])>tol) b.push(r.id+" by real input: "+k+" "+r[k]+", driven in the page "+t[k]+" (tolerance "+tol+")"); }); });
+    if(b.length) f.push("the map layer in motion (decision 240 (a)): "+b.join("; ")+" "+JSON.stringify(T)); }
   if(so) return f;
   if(req("dwell","the Watch view held in a dwell (Stage 4D)")){ const D=live.dwell, lim=LIM.DROP_LIMIT["pratzen-low"];
     if(D.E!==540||!(D.solid<=SOLID_BLACK)||(D.belowAA||[]).length||!(D.dropped<=lim)||!D.cap||!(D.lit>=1))

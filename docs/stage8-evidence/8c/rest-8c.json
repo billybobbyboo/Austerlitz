@@ -1,0 +1,182 @@
+{
+ "build": "04547a28419b2d86aec824931c735e0f",
+ "html": "c8-final2.html",
+ "chromium": "141.0.7390.37",
+ "runs": [
+  {
+   "id": "hybrid-pan",
+   "rest": 21,
+   "fresh": 22,
+   "onlyRestDropped": [
+    "o:Pratzeberg",
+    "p:plateau",
+    "t:goldbach"
+   ],
+   "onlyFreshDropped": [
+    "c:lich",
+    "t:austerlitz"
+   ]
+  },
+  {
+   "id": "hybrid-zoom",
+   "rest": 37,
+   "fresh": 36,
+   "onlyRestDropped": [
+    "o:French hold the crest"
+   ],
+   "onlyFreshDropped": [
+    "c:guard_cav",
+    "t:goldbach"
+   ]
+  },
+  {
+   "id": "hybrid-orbit",
+   "rest": 32,
+   "fresh": 34,
+   "onlyRestDropped": [
+    "c:drouet",
+    "c:legrand",
+    "c:lich",
+    "c:vandamme",
+    "o:Jurczek's Austrians",
+    "o:Kamensky turns about (disputed)",
+    "t:litava"
+   ],
+   "onlyFreshDropped": [
+    "c:guard_cav",
+    "c:nansouty",
+    "o:French hold the crest",
+    "p:plateau",
+    "t:pratzen"
+   ]
+  },
+  {
+   "id": "hybrid-glide",
+   "rest": 27,
+   "fresh": 29,
+   "onlyRestDropped": [
+    "c:kellermann",
+    "t:olmutzroad",
+    "t:pratzeberg"
+   ],
+   "onlyFreshDropped": [
+    "c:nansouty"
+   ]
+  },
+  {
+   "id": "hybrid-play",
+   "rest": 31,
+   "fresh": 30,
+   "onlyRestDropped": [
+    "c:kellermann",
+    "c:lich"
+   ],
+   "onlyFreshDropped": [
+    "c:guard_inf",
+    "c:nansouty",
+    "t:zuran"
+   ]
+  },
+  {
+   "id": "paper-pan",
+   "rest": 26,
+   "fresh": 25,
+   "onlyRestDropped": [],
+   "onlyFreshDropped": [
+    "t:litava"
+   ]
+  },
+  {
+   "id": "paper-zoom",
+   "rest": 25,
+   "fresh": 24,
+   "onlyRestDropped": [],
+   "onlyFreshDropped": [
+    "t:litava"
+   ]
+  },
+  {
+   "id": "paper-glide",
+   "rest": 16,
+   "fresh": 16,
+   "onlyRestDropped": [],
+   "onlyFreshDropped": []
+  },
+  {
+   "id": "paper-play",
+   "rest": 24,
+   "fresh": 24,
+   "onlyRestDropped": [
+    "t:litava"
+   ],
+   "onlyFreshDropped": [
+    "t:zuran"
+   ]
+  },
+  {
+   "id": "land-pan",
+   "rest": 30,
+   "fresh": 30,
+   "onlyRestDropped": [
+    "n:sthilaire"
+   ],
+   "onlyFreshDropped": [
+    "t:pratzen"
+   ]
+  },
+  {
+   "id": "land-zoom",
+   "rest": 41,
+   "fresh": 41,
+   "onlyRestDropped": [],
+   "onlyFreshDropped": []
+  },
+  {
+   "id": "land-orbit",
+   "rest": 38,
+   "fresh": 37,
+   "onlyRestDropped": [
+    "t:litava"
+   ],
+   "onlyFreshDropped": [
+    "t:augezd",
+    "t:goldbach"
+   ]
+  },
+  {
+   "id": "land-play",
+   "rest": 37,
+   "fresh": 36,
+   "onlyRestDropped": [
+    "t:goldbach"
+   ],
+   "onlyFreshDropped": [
+    "t:austerlitz",
+    "t:santon"
+   ]
+  },
+  {
+   "id": "low-pan",
+   "rest": 21,
+   "fresh": 21,
+   "onlyRestDropped": [],
+   "onlyFreshDropped": []
+  },
+  {
+   "id": "low-orbit",
+   "rest": 24,
+   "fresh": 25,
+   "onlyRestDropped": [
+    "t:augezd"
+   ],
+   "onlyFreshDropped": []
+  },
+  {
+   "id": "low-zoom",
+   "rest": 18,
+   "fresh": 18,
+   "onlyRestDropped": [],
+   "onlyFreshDropped": []
+  }
+ ]
+}

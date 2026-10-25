@@ -192,6 +192,34 @@ try{
   select("f","sthilaire"); updateVisibility(); mlLayout(); select(null,null); setMode("terrain");
   console.log("map layer: "+mlPasses+" passes in 3 modes and "+PHASES.length+" phases, every item counted once OK");
 
+  /* Stage 8, implementation PR 8C (decision 240 (a)): the stabiliser, dry run, on the app's own state. A reset gives a fresh view; the eye moved
+     a little each pass under the input hold reads as moving (every item still counted once, the fades on unless reduced motion asks); the hold
+     over, at rest after the motion; reduced motion keeps the hold and drops the fades; the band holds the distance within BAND while a motion
+     source runs and gives the true one at rest */
+  {
+    const realNow=performance.now; let T=Date.now()+1e6; performance.now=()=>T;
+    try{
+      setMode("hybrid"); setPhase(3,true); if(tween) tween(T+9000); lastInput=-1e9; mlReset("test"); updateVisibility(); mlLayout();
+      if(!MLS.fresh||MLS.moving) throw new Error("the stabiliser: the first pass after a reset is not a fresh view");
+      for(const k in ML.items){ if(ML.items[k].eFrame===ML.frame&&ML.items[k].wasOn!==(ML.items[k].state==="on"&&!ML.items[k].forced)) throw new Error("the stabiliser: "+k+" kept no memory of its place"); }
+      let moving=0, fades=0;
+      const pass=()=>{ updateVisibility(); mlLayout(); const s=ML.stats;
+        if(s.items!==s.placed+s.dropped+s.occluded+s.offscreen+s.underPanel) throw new Error("the stabiliser: the items are not each counted once while moving"); };
+      for(const rm of [false,true]){ RM=rm;
+        for(let f=1;f<=10;f++){ T+=33; lastInput=T; landCam.position.x+=0.4; orbitTarget.x+=0.4; landCam.updateMatrixWorld(); pass();
+          if(MLS.moving){ moving++; if(MLS.fadeOn) fades++; if(MLS.fadeOn===rm) throw new Error("the stabiliser: fades "+(rm?"on under reduced motion":"off while moving")); } }
+        T+=1000; pass();
+        if(MLS.moving||!MLS.fromMotion||MLS.fresh) throw new Error("the stabiliser: not at rest after the motion once the hold is over"); }
+      RM=false;
+      if(moving<18||!fades) throw new Error("the stabiliser: "+moving+" of 20 passes read as moving, "+fades+" with fades");
+      lastInput=T; const b=[mlBand(200),mlBand(214),mlBand(217)]; lastInput=-1e9; b.push(mlBand(214));
+      if(b.join(",")!=="200,200,217,214") throw new Error("the band: "+b.join(",")+" (want 200,200,217,214)");
+      mlReset("test"); pass(); if(!MLS.fresh) throw new Error("the stabiliser: a reset does not give a fresh view");
+    } finally { performance.now=realNow; lastInput=-1e9; RM=false; mlReset("test"); }
+    setMode("terrain");
+    console.log("map layer in motion (decision 240 (a)): fresh after a reset, moving under the input hold (fades off under reduced motion), at rest after it, the band 8% OK");
+  }
+
   /* continuous playback: step the clock the way the render loop does */
   setMode("terrain"); setClock(T_MIN,{force:true});
   let frames=0;
@@ -1011,7 +1039,7 @@ try{
      frame), and an aggregate's draws only the days of the formations the reading knows; a place's "Formations nearby now" never
      lists it. Every corps or column of that side with formations on the field: its midpoint the mean of its known formations (aggReading),
      their number said, or the sentence when none is known. An open dossier follows a change of the reading */
-  { let nH=0, nK=0, nAgg=0, nPart=0, nPl=0, nFollow=0; const bad=[], mk=document.createElement, realCM=centreOnMap; let made=[], cm=null;
+  { let nH=0, nK=0, nAgg=0, nPart=0, nPl=0, nFollow=0, nHM=0, nHI=0, nKI=0; const bad=[], mk=document.createElement, realCM=centreOnMap; let made=[], cm=null;
     const html=()=>made.map(x=>x.innerHTML||"").join("\n"), centreBtn=()=>made.some(x=>x.innerHTML==="Centre the map here");
     try{ document.createElement=t=>{ const x=mk(t); made.push(x); return x; }; centreOnMap=function(mp){ cm=mp; };
       ["fr","al"].forEach(cv=>{ setCommandView(cv);
@@ -1032,10 +1060,19 @@ try{
               if(hf.indexOf(esc(LABELS.reading.noCentre.replace("%u",readUnknown())))<0) bad.push(at+": "+id+"'s dossier does not say why it does not centre");
               const M=dayTrackModel(id);
               if(!M||M.leaves.length||M.frame||M.hidden.indexOf(id)<0) bad.push(at+": "+id+"'s day-track draws its day ("+(M?M.leaves.length+" leaves, frame "+!!M.frame:"none")+")");
-              else if(hf.indexOf(esc(LABELS.reading.noDay.replace("%c",fmtClock(clock)).replace("%r",EYES.LABEL[cv])))<0) bad.push(at+": "+id+"'s dossier does not say why its day is not shown"); }
+              else if(hf.indexOf(esc(LABELS.reading.noDay.replace("%c",fmtClock(clock)).replace("%r",EYES.LABEL[cv])))<0) bad.push(at+": "+id+"'s dossier does not say why its day is not shown");
+              /* Stage 8, implementation PR 8C (the audit of 8A and 8B, finding B): its march row says nothing of it now, neither "Marching" nor
+                 "Next move" nor "over the frozen mere" (where it is); the plotted leg's figures under the neutral name */
+              const mr=marchRate(id,clock);
+              if(/<dt>(Marching|Next move)<\/dt>/.test(hf)||hf.indexOf("over the frozen mere")>=0) bad.push(at+": "+id+"'s dossier says what its plotted leg says of it now: "+(hf.match(/<dt>(Marching|Next move)<\/dt>[^]{0,80}/)||["over the frozen mere"])[0]);
+              if(mr){ nHM++; if(mr.ice) nHI++; if(hf.indexOf("<dt>"+LABELS.reading.leg+"</dt>")<0||hf.indexOf(esc(LABELS.reading.legNote.replace("%r",EYES.LABEL[cv]).replace("%c",fmtClock(clock))))<0) bad.push(at+": "+id+"'s plotted leg not given under its neutral name with the reading's note"); } }
             else { nK++;
               if(hc.indexOf(w)>=0||hf.indexOf(p)>=0) bad.push(at+": "+id+" known, but its place withheld");
-              if(!btn) bad.push(at+": "+id+" known, but its dossier offers no centring"); } });
+              if(!btn) bad.push(at+": "+id+" known, but its dossier offers no centring");
+              /* a formation the reading knows: its march row as before (the rule withholds only what the reading does not know) */
+              const mr=marchRate(id,clock);
+              if(mr&&hf.indexOf("<dt>"+(mr.moving?"Marching":"Next move")+"</dt>")<0) bad.push(at+": "+id+" known, but its march row not "+(mr.moving?"Marching":"Next move"));
+              if(mr&&mr.ice){ nKI++; if(hf.indexOf("over the frozen mere")<0) bad.push(at+": "+id+" known, but its leg over the frozen mere not said"); } } });
           Object.keys(FORMATIONS).filter(id=>!FORMATIONS[id].track&&sideOfNation(FORMATIONS[id].nation)!==cv&&posNow(id)).forEach(id=>{ nAgg++;
             const A=aggReading(id); made=[]; dossierFormation(id); const hf=html(), MD=dayTrackModel(id);
             if(MD&&MD.leaves.some(L=>readHidden(L.id))) bad.push(at+": "+id+"'s day-track draws the day of a formation the reading does not know");
@@ -1053,10 +1090,11 @@ try{
         select(null,null); }
       else bad.push("no enemy hidden at 08:30 to open a dossier on");
     } finally { document.createElement=mk; centreOnMap=realCM; setCommandView("none"); }
-    if(bad.length||!nH||!nK||!nAgg||!nPart||!nFollow) throw new Error("readings, the centring and the dossiers' places (decision 251): "+(bad.slice(0,6).join("; ")||"a case never met")+
-      " ("+nH+" hidden, "+nK+" known, "+nAgg+" aggregates, "+nPart+" partly known, "+nFollow+" followed)");
-    console.log("Whose eyes, the centring and the dossiers' places (decision 251): "+nH+" formations withheld (no centring, the reading's sentence in the card and the dossier, no day drawn), "+
-      nK+" known at their reading's position; "+nAgg+" corps or columns ("+nPart+" at their known formations' mean); "+nPl+" places' nearby lists; an open dossier followed the reading OK"); }
+    if(bad.length||!nH||!nK||!nAgg||!nPart||!nFollow||!nHM||!nHI||!nKI) throw new Error("readings, the centring and the dossiers' places (decision 251): "+(bad.slice(0,6).join("; ")||"a case never met")+
+      " ("+nH+" hidden, "+nK+" known, "+nAgg+" aggregates, "+nPart+" partly known, "+nFollow+" followed; march rows: "+nHM+" hidden, "+nHI+" of them over the ice, "+nKI+" known over the ice)");
+    console.log("Whose eyes, the centring and the dossiers' places (decision 251): "+nH+" formations withheld (no centring, the reading's sentence in the card and the dossier, no day drawn, "+
+      nHM+" march rows neutral, "+nHI+" of them over the frozen mere), "+nK+" known at their reading's position ("+nKI+" over the frozen mere said); "+nAgg+" corps or columns ("+nPart+
+      " at their known formations' mean); "+nPl+" places' nearby lists; an open dossier followed the reading OK"); }
 
   /* Stage 8, implementation PR 8A (decision 251): the sources sheet gives each claim as recorded: the index and a dossier's list carry every
      claim's note and, in a dispute, the side each work supports beside that work (narrative.js's by[].side); nothing is typed */

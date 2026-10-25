@@ -1,0 +1,15 @@
+{
+ "build": "base-8b-9b20dc4c.html",
+ "results": [
+  {
+   "name": "context-loss",
+   "ok": true,
+   "line": "context-loss: the notice (an alert with Reload, at AA) while lost, cleared and frames drawn again by the app when restored, idle with no warning, then a clock step drawn; 195 “does not belong to this context” warnings (at most 248)"
+  },
+  {
+   "name": "context-depth",
+   "ok": false,
+   "line": "context-depth: the ground's depth was not drawn again after the restore (passes 2 -> 2): the overlays tested against an empty target; the ground's depth after the restore is not the depth before the loss (49 of 49 texels zero); the frame after the restore differs from the frame before the loss in 238878 pixels (at most 100, the figures hidden)"
+  }
+ ]
+}

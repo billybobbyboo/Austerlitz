@@ -1,0 +1,134 @@
+{
+ "build": "c8-final2.html",
+ "mutations": [
+  {
+   "id": "none",
+   "what": "nothing (the build as it is)",
+   "selfTest": {
+    "checks": 9,
+    "failed": []
+   },
+   "motion": {
+    "totals": {
+     "jumps": 245,
+     "pops": 985,
+     "lod": 130,
+     "flicker": 10
+    },
+    "fails": []
+   }
+  },
+  {
+   "id": "off",
+   "what": "the stabiliser off: every pass laid out afresh, as before 8C",
+   "selfTest": {
+    "checks": 9,
+    "failed": [
+     "while the view moves no two drawn boxes overlap, what is never dropped is drawn, an item d | 291 frames in four motions (a pan and an orbit of Landscape with counters, the paper map's zoom by the wheel and its Play), 228 of them moving, 0 item-frames he",
+     "a leaving item fades out as itself, under the live items and taking no pointer, gone withi | 209 remnant-frames; 82 items kept their places into the rest; MOVED THOUGH ITS PLACE WAS FREE pan c:c_gren, pan o:Levasseur up the Goldbach; at rest after each,",
+     "under reduced motion no fade (no remnant, every drawn item at full opacity), the hold kept | 0 item-frames held in the paper map's zoom"
+    ]
+   },
+   "motion": {
+    "totals": {
+     "jumps": 3439,
+     "pops": 632,
+     "lod": 130,
+     "flicker": 169
+    },
+    "fails": [
+     "jumps 3439"
+    ]
+   }
+  },
+  {
+   "id": "band",
+   "what": "no band: the switches read the true distance while the view moves",
+   "selfTest": {
+    "checks": 9,
+    "failed": [
+     "the level-of-detail switches read a distance held inside the 8% band while the view moves, | from 243.7 units (div) out to 258.7 under a key's hold: corps; at rest corps; WRONG: switched at 251.1 while moving; switched at 252.3 while moving; switched at"
+    ]
+   },
+   "motion": {
+    "totals": {
+     "jumps": 245,
+     "pops": 990,
+     "lod": 130,
+     "flicker": 10
+    },
+    "fails": []
+   }
+  },
+  {
+   "id": "reshuffle",
+   "what": "the full search for every item at rest after motion (a reshuffle)",
+   "selfTest": {
+    "checks": 9,
+    "failed": [
+     "a leaving item fades out as itself, under the live items and taking no pointer, gone withi | 547 remnant-frames; 28 items kept their places into the rest; MOVED THOUGH ITS PLACE WAS FREE pan c:c_gren, orbit c:suchet, paper zoom o:Bagration; at rest afte"
+    ]
+   },
+   "motion": {
+    "totals": {
+     "jumps": 384,
+     "pops": 1023,
+     "lod": 130,
+     "flicker": 12
+    },
+    "fails": [
+     "jumps 384"
+    ]
+   }
+  },
+  {
+   "id": "atonce",
+   "what": "a returning item drawn at once (no re-placement pass, no second pass)",
+   "selfTest": {
+    "checks": 9,
+    "failed": [
+     "while the view moves no two drawn boxes overlap, what is never dropped is drawn, an item d | 291 frames in four motions (a pan and an orbit of Landscape with counters, the paper map's zoom by the wheel and its Play), 228 of them moving, 483 item-frames "
+    ]
+   },
+   "motion": {
+    "totals": {
+     "jumps": 378,
+     "pops": 3167,
+     "lod": 130,
+     "flicker": 1201
+    },
+    "fails": [
+     "jumps 378",
+     "pops 3167",
+     "flickers 1201"
+    ]
+   }
+  },
+  {
+   "id": "keepheld",
+   "what": "the never-dropped items held and hidden like the rest",
+   "selfTest": {
+    "checks": 9,
+    "failed": [
+     "while the view moves no two drawn boxes overlap, what is never dropped is drawn, an item d | 291 frames in four motions (a pan and an orbit of Landscape with counters, the paper map's zoom by the wheel and its Play), 228 of them moving, 4591 item-frames"
+    ]
+   },
+   "motion": {
+    "totals": {
+     "jumps": 214,
+     "pops": 986,
+     "lod": 130,
+     "flicker": 13
+    },
+    "fails": [
+     "hybrid-zoom never-dropped hidden 10",
+     "hybrid-play never-dropped hidden 33",
+     "paper-zoom never-dropped hidden 15",
+     "paper-play never-dropped hidden 36",
+     "land-zoom never-dropped hidden 10",
+     "land-play never-dropped hidden 33"
+    ]
+   }
+  }
+ ]
+}

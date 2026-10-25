@@ -1,0 +1,190 @@
+{
+ "chromium": "153.0.8010.12",
+ "runs": [
+  {
+   "rev": null,
+   "build": "c8-final2.html",
+   "case": "first-run",
+   "ua": "HeadlessChrome/153.0.0.0",
+   "viewport": [
+    1600,
+    900
+   ],
+   "share": 0.6263,
+   "panels": [
+    [
+     ".rail",
+     0,
+     0,
+     300,
+     809
+    ],
+    [
+     ".dispatch",
+     18,
+     136.84,
+     277,
+     2045.92
+    ],
+    [
+     ".timebar",
+     0,
+     809.5,
+     1600,
+     900
+    ],
+    [
+     ".tools",
+     1267.23,
+     20,
+     1578,
+     106
+    ],
+    [
+     "#viewmode",
+     714.49,
+     14,
+     885.51,
+     48
+    ],
+    [
+     "#firstrun",
+     680,
+     575.63,
+     1220,
+     791
+    ]
+   ]
+  },
+  {
+   "rev": null,
+   "build": "c8-final2.html",
+   "case": "first-run-laptop",
+   "ua": "HeadlessChrome/153.0.0.0",
+   "viewport": [
+    1366,
+    768
+   ],
+   "share": 0.5469,
+   "panels": [
+    [
+     ".rail",
+     0,
+     0,
+     300,
+     677
+    ],
+    [
+     ".dispatch",
+     18,
+     136.84,
+     277,
+     2045.92
+    ],
+    [
+     ".timebar",
+     0,
+     677.5,
+     1366,
+     768
+    ],
+    [
+     ".tools",
+     1033.23,
+     20,
+     1344,
+     102
+    ],
+    [
+     "#viewmode",
+     597.49,
+     14,
+     768.51,
+     48
+    ],
+    [
+     "#firstrun",
+     563,
+     443.63,
+     1103,
+     659
+    ]
+   ]
+  },
+  {
+   "rev": null,
+   "build": "c8-final2.html",
+   "case": "narrow-1024",
+   "ua": "HeadlessChrome/153.0.0.0",
+   "viewport": [
+    1024,
+    768
+   ],
+   "share": 0.5334,
+   "panels": [
+    [
+     ".dispatch",
+     16,
+     108,
+     456,
+     665
+    ],
+    [
+     ".timebar",
+     0,
+     677.5,
+     1024,
+     768
+    ],
+    [
+     ".tools",
+     662.2,
+     56,
+     1010,
+     119
+    ],
+    [
+     "#viewmode",
+     426.49,
+     14,
+     597.51,
+     48
+    ]
+   ]
+  },
+  {
+   "rev": null,
+   "build": "c8-final2.html",
+   "case": "phone-844x390-explore",
+   "ua": "HeadlessChrome/153.0.0.0",
+   "viewport": [
+    844,
+    390
+   ],
+   "share": 0.4238,
+   "panels": [
+    [
+     ".timebar",
+     0,
+     299.5,
+     844,
+     390
+    ],
+    [
+     "#viewmode",
+     336.49,
+     14,
+     507.51,
+     48
+    ],
+    [
+     "#firstrun",
+     152,
+     75.63,
+     692,
+     281
+    ]
+   ]
+  }
+ ]
+}

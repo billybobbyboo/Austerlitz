@@ -70,3 +70,31 @@ draw calls, triangles, widths, sizes and cues; their times are in section 14.2);
 |---|---|---|
 | `8b/compare/<view>-a.jpg`, `-b.jpg`, `-b-conf-on.jpg`, `-sheet.jpg`, `8b/compare/compare.json` | `compare-8.js --a <8A> --b <8B> --b-variants conf-on` | section 14.2: the ground cues, the arrows and the glyphs in nine matching views, 8A beside 8B and 8B with Position confidence on, with each frame's widest casing by role, the glyphs' and the markers' largest size, the cues drawn, draw calls, triangles, time and the ground's depth pass |
 | `8b/harness/<case>.jpg` | `pair-sheets.py`, from two CI runs' captures | section 14.5: every `check:visual` case (the phone cases among them), 8A's build (run 40075243524) beside 8B's (run 40086612769 on `b42e500`, this build), at half size |
+
+## Implementation PR 8C (25 October 2026; `docs/STAGE8_SPEC.md` section 15)
+
+Made from implementation PR 8C's build against 8B's (md5 `9b20dc4ca251e17ddb2468f98f920f38`, 2,317,927 bytes), in Chromium 141.0.7390.37, the
+headless shell Playwright 1.56 pins and CI runs (`AUSTERLITZ_CHROME`), software WebGL, 1600 x 900 unless named; one file in Chromium 153
+(`panels-153-8c.json`). `fresh-8c.json` was measured on 8C's build before its last app commit (md5 `0d987a7f...`), which changed only two of the
+self-test's checks (section 15.4): the app's layout, motion and drawing code is the same in both; every other 8C file on the final build
+(`04547a28...`), `mutate-checks.json` on both (its note). The files made through the motion driver (`label-motion-*.json`, `mutate-motion.json`,
+`rest-8c.json`, the clips) were made again with the driver as committed after its fix (section 15.4: each run from the state an idle page
+reaches): every count of the first files the same but 8C's held frames (17,970 to 17,953) and two tracking cells (21,984 drawn
+formation-frames to 21,987, 7,307 hidden to 7,304), all from the two glides. `layer-cost.json` was measured with the driver before its fix:
+it times each pass, which the fix does not change (it changes the state a run starts from). Each JSON names its build. The scripts are in
+`tools/stage8/` and `tools/visual/motion.js` (not bundled).
+
+| path | made by | what |
+|---|---|---|
+| `8c/label-motion-8b.json`, `8c/label-motion-8c.json` | `label-motion.js --app` (AUSTERLITZ_HTML 8B's build, then 8C's) | section 15.6: the 16 motions through the app's own input and frame (30 frames a second on the driver's clock, the WebGL draw skipped), the four that real input can drive again by real input, three under a headquarters' reading, a finger's pan at 390 px and four with Saint-Hilaire's division selected; for each Part A's measures, the held frames, the never-dropped items hidden, the remnants out of rule, the items drawn though the reading does not know them, the end state, the layer's pass time, and the formations followed (each formation's frames drawn, off the screen, behind the ground, out of the layer, hidden by the layout; the longest disappearance; the delay after the layout has room again; jumps, side changes and swaps) |
+| `8c/tables-8c.md` | `tables-8c.js` from the two files above | section 15.6's tables |
+| `8c/layer-cost.json` | `layer-cost.js --ref <8B> --cand <8C> --rounds 3` | section 15.7: the layer's pass time per pass in the 16 motions, the builds interleaved round by round on the idle machine; per motion and over all, the median and the 95th percentile and 8C's excess |
+| `8c/fresh-8c.json` | `fresh-8c.js --ref <8B> --cand <8C>` | section 15.5: every `check:visual` case applied by its spec, each map-layer item's state, box and leader, the drops and their ids, on both builds |
+| `8c/mutate-checks.json`, `8c/mutate-motion.json` | `mutate-8c.js` (`--motion` for the second) | section 15.4: the self-test's 8C block on copies of the build with one rule broken, and the motion block's judgement of the 16 motions on the copies that change the layout |
+| `8c/context-8b.json`, `8c/context-8c.json` | `ctx-8c.js --cases context-depth,context-loss` | section 15.1, finding A: the two context cases on 8B's build and on 8C's |
+| `8c/march-8b.json`, `8c/march-8c.json` | `march-8c.js` | section 15.1, finding B: every hidden formation's march row under both readings at every minute, and the dossiers read by real clicks in the live page, on 8B's build and on 8C's |
+| `8c/unobstructed/panels-141-history.json`, `panels-141-8c.json`, `panels-153-8c.json` | `panels-8c.js` | section 15.1, finding C: the unobstructed share and the panels it subtracts in the five failing cases, on the committed build of every merge from roadmap step 1 (PR #49) to 8B (`95fa28a`) in Chromium 141, and on 8C's in Chromium 141 and 153 |
+| `8c/rest-8c.json` | `rest-8c.js` (AUSTERLITZ_HTML 8C's build) | section 15.2: at rest after each of the 16 motions, the items placed and the dropped ids, against the same view laid out afresh |
+| `8c/label-far-8c.json` | `label-far.js` (AUSTERLITZ_HTML 8C's build) | section 15.3: in Part A's views each drawn item's distance against the eye's distance to its target, and the items drawn at the far step, by kind |
+| `8c/clips/<clip>.mp4` | `record.js --app --clip <clip> --builds 8B=...,8C=... --rm-last` | section 15.8: the motion recorded through the same driver with the WebGL draw kept, every third frame of 30 a second, top to bottom 8B, 8C and 8C under reduced motion (the per-build files and the GIFs it also writes are not kept) |
+| `8c/clips/record-log.txt` | `record.js --app` (its report after each build, gathered) | section 15.8: each clip's frames and the clock at its end |

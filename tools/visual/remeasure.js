@@ -7,6 +7,7 @@
    own append-and-comment style, to paste at the end of the limits, and the table for CHANGELOG.md (constant, was, is, why).
    It stops (exit 2), proposing nothing, when:
    - the two runs are of different builds, or of another build than --html, or in different environments (platform, Chromium, Playwright);
+   - the runs are not on the Chromium CI runs, Playwright's pinned headless shell (Stage 8, implementation PR 8C; --any-browser lifts it);
    - a run is not a full --test run of this harness (a --legacy, --selftest-only or --only run, or a report made before step 1), or lacks a
      case of cases.js;
    - the two runs differ in any measure re-measured here (drops, the unobstructed share, px per km), which would mean a race (font loading,
@@ -67,6 +68,12 @@ R.forEach((r,i)=>{ const M=r.mode;
   CASES.forEach(c=>{ if(!r.cases||!r.cases[c.name]) stop.push("run "+(i+1)+" lacks case "+c.name); });
   if(!r.live||!r.live.fog||!r.live.dwell) stop.push("run "+(i+1)+" lacks the live views held to the drop limits (report.live.fog, .dwell)"); });
 if(!same(r=>r.env&&{platform:r.env.platform,arch:r.env.arch,chromium:r.env.chromium,playwright:r.env.playwright})) stop.push("the two runs' environments differ: "+JSON.stringify(R.map(r=>r.env)));
+/* Stage 8, implementation PR 8C (finding C of the audit of 8A and 8B): a limit is measured on the browser CI judges it with, Playwright's pinned
+   headless shell (node_modules/playwright-core/browsers.json). The five unobstructed baselines CI fails since step 1, 3 and 6 were taken on
+   another Chromium (153, a container's), where the tools' box and the view switch draw 4-11 px narrower (docs/STAGE8_SPEC.md section 15.3).
+   --any-browser lifts this, for a study, never for a limit */
+const PIN=(()=>{ try{ const B=JSON.parse(fs.readFileSync(require.resolve("playwright-core/browsers.json"),"utf8")).browsers.find(b=>b.name==="chromium-headless-shell"); return B&&B.browserVersion; }catch(e){ return null; } })();
+if(!flag("--any-browser")&&R[0].env&&PIN&&R[0].env.chromium!==PIN) stop.push("the runs are on Chromium "+R[0].env.chromium+", not "+PIN+", the headless shell Playwright "+(R[0].env.playwright||"")+" pins and CI runs: a limit measured elsewhere fails on CI");
 if(stop.length){ stop.forEach(s=>console.log("STOP: "+s)); process.exit(2); }
 
 /* 2. the measures, identical in both runs */

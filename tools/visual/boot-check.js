@@ -17,6 +17,9 @@ const path=require("path");
 const { chromium } = require("playwright");
 const TR=require("./three-route.js");
 const BASE_ARGS=["--use-angle=swiftshader","--enable-unsafe-swiftshader","--ignore-gpu-blocklist"];
+/* AUSTERLITZ_CHROME, if set, names the Chromium to run, as the harness and contrast.js take it (Stage 8, implementation PR 8C: a container whose
+   Playwright finds no browser of its own pinned build ran these cases only on CI) */
+const launch=o=>chromium.launch(Object.assign({executablePath:process.env.AUSTERLITZ_CHROME||undefined},o));
 const GUARD=k=>new RegExp("^Austerlitz: start-up failed \\("+k+"\\): ");
 /* the messages each case must produce, and nothing else: [type, RegExp, why, min, max] (min and max 1 unless given). CTX_DELETES: the most
    "does not belong to this context" warnings the context-loss case may give, as measured on the runs below (each run prints its count;
@@ -38,7 +41,11 @@ const EXPECT={
     ["pageerror",/^injected start-up fault$/,"the case's fault, rethrown by boot() after the guard reported it"]],
   "slow":[],
   "context-loss":[["warning",/^WebGL: INVALID_OPERATION: delete(VertexArray)?: object does not belong to this context$/,
-    "three r128 after a restored context: a geometry made before the loss and disposed after it keeps the old context's dispose listener, which deletes buffers and a vertex array of the lost context; the browser ignores them (avoiding it would mean rebuilding the renderer or leaking the geometry). Bound: CTX_DELETES",0,"CTX"]]
+    "three r128 after a restored context: a geometry made before the loss and disposed after it keeps the old context's dispose listener, which deletes buffers and a vertex array of the lost context; the browser ignores them (avoiding it would mean rebuilding the renderer or leaking the geometry). Bound: CTX_DELETES",0,"CTX"]],
+  /* Stage 8, implementation PR 8C (the audit of 8B, finding A): the same warning, should the case's view dispose anything after the restore
+     (none was seen: the view is held still) */
+  "context-depth":[["warning",/^WebGL: INVALID_OPERATION: delete(VertexArray)?: object does not belong to this context$/,
+    "as in context-loss (three r128's dispose listener of the lost context); bound CTX_DELETES",0,"CTX"]]
 };
 async function page(browser,label,route){
   const p=await browser.newPage({viewport:{width:1366,height:768},deviceScaleFactor:1});
@@ -74,7 +81,7 @@ function failState(kind){
   return out;
 }
 async function failCase(name,kind,launchArgs,route,html,init){
-  const browser=await chromium.launch({args:launchArgs}), bad=[];
+  const browser=await launch({args:launchArgs}), bad=[];
   try{
     const {p,log}=await page(browser,name,route);
     if(init) await p.addInitScript(init);
@@ -118,7 +125,7 @@ async function runBootCases(html,only){
     "(function(){ var raf=window.requestAnimationFrame, done=false; window.requestAnimationFrame=function(f){ if(!done&&f&&f.name==='loop'){ done=true; throw new Error('injected start-up fault'); } return raf.call(window,f); }; })();"));
   if(want("no-webgl")) R.push(await failCase("no-webgl","webgl",["--disable-3d-apis","--disable-gpu"],p=>TR.routeThree(p),html));
   /* the slow start: three.js held 21 s; the status line at 20 s, then a normal start with focus on the first card's primary action */
-  if(want("slow")){ const browser=await chromium.launch({args:BASE_ARGS}), bad=[];
+  if(want("slow")){ const browser=await launch({args:BASE_ARGS}), bad=[];
     try{ const {p,log}=await page(browser,"slow",pg=>pg.route(TR.THREE_RE,async r=>{ await new Promise(z=>setTimeout(z,21000)); await r.fulfill({path:local,contentType:"application/javascript",headers:{"access-control-allow-origin":"*"}}); }));
       await p.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:60000});
       await p.waitForFunction(()=>{ const s=document.getElementById("boot-status"); return !!s&&!!s.textContent; },null,{timeout:23000,polling:100}).catch(()=>{});
@@ -137,7 +144,7 @@ async function runBootCases(html,only){
       R.push({name:"slow",ok:!bad.length,line:"slow: "+(bad.length?bad.join("; "):"the status line at 20 s, then a normal start (docked, the rail shown, nothing inert but the closed dossier, focus on the first card's primary action)")});
     } finally { await browser.close(); } }
   /* the context taken away and given back on a normal page */
-  if(want("context-loss")){ const browser=await chromium.launch({args:BASE_ARGS}), bad=[];
+  if(want("context-loss")){ const browser=await launch({args:BASE_ARGS}), bad=[];
     try{ const {p,log}=await page(browser,"context-loss",pg=>TR.routeThree(pg));
       await p.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:60000});
       await TR.waitBoot(p,240000);
@@ -169,8 +176,15 @@ async function runBootCases(html,only){
       if(!a.noExt){ st=await p.evaluate(async()=>{ const settle=async()=>{ const t0=performance.now(); let s=0;
           while(performance.now()-t0<120000){ await new Promise(z=>setTimeout(z,100)); if(DEV.state==="idle"){ if(!s) s=performance.now(); else if(performance.now()-s>=500) return true; } else s=0; }
           return false; };
-        const f0=DEV.frames; setClock(PHASES[3].t0,{force:true}); await new Promise(z=>setTimeout(z,300)); const ok=await settle();
-        return {settled:ok,frames:DEV.frames-f0,clock:clock,lost:GL.lost}; }); }
+        /* Stage 8, implementation PR 8C: the step's first frame is waited for before the page is read as idle (DEV.state is set by a frame, so
+           until one is drawn it still says the "idle" of before the step). A step that changes the environment map recompiles the programs
+           that read it, and under software WebGL that first frame comes 2-4 s after the step, as it does before any loss; on 8B's build, whose
+           restored environment map was empty (the audit of 8B, finding A), it came within a second, and a settle begun 0.3 s after the step
+           found the page drawing before its 0.5 s of idle ran out. The judgement below is unchanged */
+        const f0=DEV.frames; setClock(PHASES[3].t0,{force:true}); await new Promise(z=>setTimeout(z,300));
+        const t1=performance.now(); while(DEV.frames===f0&&performance.now()-t1<120000) await new Promise(z=>setTimeout(z,100));
+        const ok=await settle();
+        return {settled:ok,frames:DEV.frames-f0,clock:clock,lost:GL.lost,firstMs:Math.round(performance.now()-t1)}; }); }
       if(a.noExt) bad.push("no WEBGL_lose_context");
       else { if(!a.lost||a.role!=="alert"||!a.vis||!a.button||a.text.indexOf("The 3D view has stopped")!==0||a.low.length) bad.push("lost: "+JSON.stringify(a));
         if(a.after.lost||a.after.text||!(a.after.frames>0)) bad.push("restored: "+JSON.stringify(a.after));
@@ -183,6 +197,56 @@ async function runBootCases(html,only){
          under the bound */
       if(st&&!(nd-nIdle>0)) bad.push("no \u201cdoes not belong to this context\u201d warning after the clock step (the dispose-after-restore path not run)");
       R.push({name:"context-loss",ok:!bad.length,line:"context-loss: "+(bad.length?bad.join("; "):"the notice (an alert with Reload, at AA) while lost, cleared and frames drawn again by the app when restored, idle with no warning, then a clock step drawn")+"; "+nd+" “does not belong to this context” warnings (at most "+CTX_DELETES+")"});
+    } finally { await browser.close(); } }
+  /* Stage 8, implementation PR 8C (the audit of 8B, finding A): the frame after a restore, the eye and the window unchanged, is the frame before
+     the loss. Until 8C the ground's depth for the overlays (GDEPTH) was drawn again only when its key changed, so with the eye still the overlays
+     were tested against the restored context's empty target until the camera moved; and the environment map (refreshEnvironment) was made again
+     only when the sky's colours moved, so the scene was lit without it. The view: 10.33x at 11:30, low south of Telnitz, where the drawn ground
+     hides part of the overlays (the frame against the same frame with the ground's test off: at least OCCL_MIN pixels, so the case holds the
+     occlusion, not only the overlays' presence). Held: the eye's matrix and the drawing buffer unchanged; the app's own frames after the restore
+     drew the ground's depth again (GDEPTH.n); a grid of its depth texels equal to theirs before the loss; and the app's frame (renderFrame, read
+     back at once) within FRAME_TOL pixels of the frame before the loss, the figures hidden in both reads: after a restore three r128 compiles its
+     programs again in a new order, so coplanar parts of the figures can trade places in the opaque sort (speckle on the men, about 1,600 pixels
+     here; reported, not judged). Measured on the 8B build: the depth pass not drawn again, its texels zero, 238,879 pixels changed; with the
+     ground's depth key cleared but not the environment's, 237,923; with both, 20 */
+  if(want("context-depth")){ const browser=await launch({args:BASE_ARGS}), bad=[], OCCL_MIN=1000, FRAME_TOL=100;
+    try{ const {p,log}=await page(browser,"context-depth",pg=>TR.routeThree(pg));
+      await p.goto("file://"+html+"?harness=1",{waitUntil:"commit",timeout:60000});
+      await TR.waitBoot(p,240000);
+      const a=await p.evaluate(async([OCCL_MIN])=>{ const ext=renderer.getContext().getExtension("WEBGL_lose_context"); if(!ext) return {noExt:true};
+        const idle=async()=>{ const t0=performance.now(); let s=0;
+          while(performance.now()-t0<120000){ await new Promise(z=>setTimeout(z,100)); if(DEV.state==="idle"){ if(!s) s=performance.now(); else if(performance.now()-s>=500) return true; } else s=0; }
+          return false; };
+        closeFirst("explore");
+        const w=W(180,400), ty=displayHeight(w[0],w[1]), d=new THREE.Vector3(0.2,0.12,1.0).normalize().multiplyScalar(90);
+        AUSTERLITZ_DEBUG.applyCase({t:690,presentation:"watch",mode:"terrain",factor:10.33,cam:[w[0]+d.x,ty+d.y,w[1]+d.z,w[0],ty,w[1]]}); AUSTERLITZ_DEBUG.settle(4);
+        requestRender(3); const idle0=await idle();
+        const gl=renderer.getContext(), VW=gl.drawingBufferWidth, VH=gl.drawingBufferHeight;
+        const grab=figures=>{ const hid=[]; if(!figures) for(const id in units){ const b=units[id].block; if(b&&b.visible){ b.visible=false; hid.push(b); } }
+          renderFrame(); hid.forEach(b=>{ b.visible=true; }); const px=new Uint8Array(VW*VH*4); gl.readPixels(0,0,VW,VH,gl.RGBA,gl.UNSIGNED_BYTE,px); return px; };
+        const diff=(x,y)=>{ let n=0; for(let i=0;i<x.length;i+=4) if(Math.abs(x[i]-y[i])>3||Math.abs(x[i+1]-y[i+1])>3||Math.abs(x[i+2]-y[i+2])>3) n++; return n; };
+        const texels=()=>{ const o=[], b=new Uint8Array(4), rt=GDEPTH.rt; if(!rt) return o;
+          for(let j=1;j<8;j++) for(let i=1;i<8;i++){ renderer.readRenderTargetPixels(rt,Math.floor(rt.width*i/8),Math.floor(rt.height*j/8),1,1,b); o.push(b.join(",")); } return o; };
+        const cam0=landCam.matrixWorld.elements.join(","), size0=VW+"x"+VH, A=grab(false), Af=grab(true), T0=texels();
+        const gp=window.gdepthPass; window.gdepthPass=function(){ GDEPTH.u.uGroundOn.value=0; return false; }; const C=grab(false); window.gdepthPass=gp; grab(false);
+        const occl=diff(A,C), n0=GDEPTH.n;
+        ext.loseContext(); await new Promise(z=>setTimeout(z,400)); ext.restoreContext(); await new Promise(z=>setTimeout(z,300));
+        const idle1=await idle(), n1=GDEPTH.n, cam1=landCam.matrixWorld.elements.join(","), size1=gl.drawingBufferWidth+"x"+gl.drawingBufferHeight;
+        const T1=texels(), B=grab(false), Bf=grab(true);
+        return {idle:[idle0,idle1], lost:GL.lost, camSame:cam0===cam1, sizeSame:size0===size1, occl:occl, occlMin:OCCL_MIN, passes:[n0,n1],
+          texels:T0.length, texelsSame:T0.length>0&&T0.join("|")===T1.join("|"), texelZero:T1.filter(s=>s==="0,0,0,0").length,
+          frame:diff(A,B), frameFigures:diff(Af,Bf)}; },[OCCL_MIN]);
+      if(a.noExt) bad.push("no WEBGL_lose_context");
+      else {
+        if(!a.idle[0]||!a.idle[1]) bad.push("the page was not idle within 120 s "+(a.idle[0]?"after the restore":"before the loss"));
+        if(a.lost) bad.push("the context still lost");
+        if(!a.camSame||!a.sizeSame) bad.push("the eye or the drawing buffer moved across the loss (the case needs both still)");
+        if(!(a.occl>=OCCL_MIN)) bad.push("the view's ground hides "+a.occl+" pixels of the overlays (want at least "+OCCL_MIN+": choose a view that holds the occlusion)");
+        if(!(a.passes[1]>a.passes[0])) bad.push("the ground's depth was not drawn again after the restore (passes "+a.passes.join(" -> ")+"): the overlays tested against an empty target");
+        if(!a.texelsSame) bad.push("the ground's depth after the restore is not the depth before the loss ("+a.texelZero+" of "+a.texels+" texels zero)");
+        if(!(a.frame<=FRAME_TOL)) bad.push("the frame after the restore differs from the frame before the loss in "+a.frame+" pixels (at most "+FRAME_TOL+", the figures hidden)"); }
+      bad.push.apply(bad,judgeLog("context-depth",log));
+      R.push({name:"context-depth",ok:!bad.length,line:"context-depth: "+(bad.length?bad.join("; "):"the eye still across a loss and a restore: the ground's depth drawn again ("+a.passes.join(" -> ")+" passes), its "+a.texels+" texels as before, the frame within "+a.frame+" pixels of the frame before the loss (the figures hidden; with them "+a.frameFigures+"), the view's ground hiding "+a.occl+" pixels of the overlays")});
     } finally { await browser.close(); } }
   return R;
 }

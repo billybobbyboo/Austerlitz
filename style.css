@@ -709,6 +709,11 @@ body.st-still *,body.st-still *::before,body.st-still *::after{transition:none!i
 .mlt{font-size:var(--t-ui);line-height:16px;padding:0 5px 1px}
 .mlt-serif{font-family:var(--serif)}
 .mlt-small{font-size:var(--t-small);line-height:15px}
+/* Stage 8, implementation PR 8C (decision 240 (a); app.js MLS): a leaving item fades out where it was drawn, under the live items and taking no
+   pointer; a place's or terrain-study name beyond the far step's distance one type step smaller, t-small to t-micro (decision 16: 10.5 px, its
+   floor for tertiary text; the battle information at t-ui has no step above its 12 px floor) */
+.ml-item.ml-fading{z-index:-1;pointer-events:none}
+.mlt-small.ml-far{font-size:var(--t-micro);line-height:14px}
 .mln{display:flex;align-items:center;gap:5px;font-family:var(--serif)}
 .mln-mark{display:block;width:8px;height:8px;border:1px solid;flex:0 0 auto}
 /* Stage 5B (section A.4 item 4): the name's position-grade badge in the landscape, the counter's badge inline (decision 4), at the

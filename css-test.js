@@ -405,6 +405,47 @@ if(cerrs) process.exitCode=1;
   console.log("arrows and glyphs (decision 241): "+(aerr.length?aerr.length+" wrong":"the cap 16 px, the fill 0.62 and the casing a border on the movement arrows and their drawn-on parts (the border in the perspective presentations only), the glyphs at 64 px, every overlay ribbon and tick tested against the ground"));
   if(aerr.length) process.exitCode=1;
 }
+/* Stage 8, implementation PR 8C (decision 240 (a); docs/STAGE8_SPEC.md sections 3.3, 7.2 and 15): the map layer in motion. The decided values
+   in place (the re-placement pass every 333 ms, two passes with room before an item returns, the band of 8%, fades of 180 ms of wall-clock time,
+   the far step at 1.5 times the eye's distance to its target); the motion read from the app's own state, never from a switch a harness sets;
+   no fade under reduced motion (the hold and the band kept); the band on every distance switch and released at rest; what is never dropped and
+   the keyboard's focus placed by the full search; every discontinuity a fresh view; a remnant under the live items and taking no pointer; the far
+   step only on the names at t-small (decision 16: t-micro, the tertiary floor) */
+{
+  const acorn=require('acorn'), src=fs.readFileSync('app.js','utf8'), css=fs.readFileSync('style.css','utf8'), ast=acorn.parse(src,{ecmaVersion:2020}), merr=[];
+  const fn=name=>{ const n=ast.body.find(q=>q.type==="FunctionDeclaration"&&q.id.name===name); return n?src.slice(n.start,n.end):null; };
+  if(!/var MLS=\{EVERY:333, PASSES:2, BAND:0\.08, FADE_MS:180, JUMP_MIN:5, JUMP_VIEW:0\.6, JUMP_DEG:40, FAR:1\.5,/.test(src))
+    merr.push("MLS is not {EVERY:333, PASSES:2, BAND:0.08, FADE_MS:180, JUMP_MIN:5, JUMP_VIEW:0.6, JUMP_DEG:40, FAR:1.5}");
+  const ms=fn("mlMotionSource");
+  if(!ms||!/return !!\(tween\|\|playing\|\|now-lastInput<INPUT_HOLD_MS\|\|now<panelMoveUntil\); \}$/.test(ms)) merr.push("mlMotionSource does not read the app's own state alone (a tween, Play, an input's hold, a panel's move)");
+  if(/AUSTERLITZ_DEBUG|window\.__|MOVING/.test(ms||"")) merr.push("mlMotionSource reads a switch outside the app's state");
+  if(!/MLS\.fadeOn=!RM&&!MLS\.fresh&&MLS\.fromMotion;/.test(src)) merr.push("the fades are not off under reduced motion and in a fresh view (MLS.fadeOn)");
+  const lay=fn("mlLayout")||"";
+  if(!/if\(!MLS\.fadeOn\) it\.fa=tg;/.test(lay)) merr.push("mlLayout does not draw an item at once where the fades are off");
+  if(!/for\(var ik=0;ik<nk;ik\+\+\)\{ var kt=order\[ik\]; kt\.held=false; if\(!\(mlPlaceItem\(kt,VW,VH,panels,obst\)\|\|mlWrapPlace\(kt,VW,VH,panels,obst\)\)\) kt\.state="dropped"; \}/.test(lay))
+    merr.push("what is never dropped is not placed first by the full search (decision 39)");
+  if(!/if\(s==="build"\|\|it\.el===foc\) return mlPlaceItem\(it,VW,VH,panels,obst\);/.test(lay)) merr.push("the keyboard's focus is not placed by the full search in motion");
+  if(!/it\.room2>=MLS\.PASSES/.test(lay)||!/if\(!MLS\.pass\)\{ it\.held=true; return false; \}/.test(lay)) merr.push("a hidden item does not wait for the re-placement passes");
+  const band=fn("mlBand")||"";
+  if(!/if\(!mlMotionSource\(performance\.now\(\)\)\|\|!\(d>0\)\)\{ MLS\.bandD=null; MLS\.band=\{\}; return d; \}/.test(band)) merr.push("the band is not released at rest (mlBand)");
+  if(!/if\(!\(d>0\)\|\|!mlMotionSource\(performance\.now\(\)\)\) return d;/.test(fn("mlBandAt")||"")) merr.push("the band is not released at rest (mlBandAt)");
+  [["mlBand(viewDist())","the distance switches"],['mlBandAt("near:"+id,',"the landscape's names near the eye"],['mlBandAt("full:"+id,',"the counters' full form"],['mlBandAt("links",',"the plan links"],['mlBandAt("far:"+it.key,',"the far step"]]
+    .forEach(b=>{ if(src.indexOf(b[0])<0) merr.push("the band is not on "+b[1]); });
+  [["setMode","ground"],["setPresentation","presentation"],["setCommandView","reading"],["eyeEnter","eye level"],["eyeLeave","eye level"],["setDisplayFactor","factor"],["glRestored","context"],["endTweens","tween ended at once"]]
+    .forEach(r=>{ const b=fn(r[0]); if(!b) merr.push(r[0]+" missing"); else if(b.indexOf('mlReset("'+r[1]+'")')<0) merr.push(r[0]+" is not a fresh view (mlReset \""+r[1]+"\")"); });
+  if(src.indexOf('mlReset("window")')<0) merr.push("a resize is not a fresh view");
+  const far=fn("mlFar")||"";
+  if(!/if\(!it\.small\|\|camera\.isOrthographicCamera\|\|mode==="staff"\) return false;/.test(far)||!/if\(!\(dt>=1\)\) return false;/.test(far)) merr.push("the far step is not limited to the small names in the perspective presentations with a guarded distance");
+  if(!/it\.small=\/\\bmlt-small\\b\/\.test\(it\.el\.className\)/.test(lay)) merr.push("the far step's items are not the names at t-small (.mlt-small)");
+  if(!/\.ml-item\.ml-fading\{z-index:-1;pointer-events:none\}/.test(css)) merr.push("a remnant is not under the live items without the pointer (.ml-fading)");
+  if(!/\.mlt-small\.ml-far\{font-size:var\(--t-micro\);/.test(css)) merr.push("the far step is not t-micro on .mlt-small");
+  const farRules=css.match(/[^{}]*\.ml-far[^{}]*\{[^}]*\}/g)||[];
+  if(farRules.length!==1) merr.push("ml-far in "+farRules.length+" rules, not the one");
+  if(!/--t-micro:10\.5px/.test(css)) merr.push("t-micro is not 10.5 px (decision 16's tertiary floor)");
+  merr.forEach(e=>console.log("  ! "+e));
+  console.log("map layer in motion (decision 240 (a)): "+(merr.length?merr.length+" wrong":"the pass every 333 ms, two passes with room, the band 8% on every switch and released at rest, fades 180 ms off under reduced motion and in a fresh view, the motion from the app's state, the never-dropped and the focus by the full search, every discontinuity a fresh view, the remnants under the live items without the pointer; the far step at 1.5 on the small names only, t-micro"));
+  if(merr.length) process.exitCode=1;
+}
 /* Stage 5B (docs/STAGE5_SPEC.md section A.5; decisions 4 and 15): the position-confidence marks carry the grade by sharpness, never by
    a dash or a dotted line, and their colour is the side's from the tokens */
 {

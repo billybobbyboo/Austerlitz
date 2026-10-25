@@ -399,14 +399,15 @@ never drawn, its §9.5; in Study the phase's one message stands under the view s
 "8H" the eight pull requests of its plan). The decisions for 8C-8H (240, 242-250, 252) set their direction and constraints only: none of
 them is implemented or verified until its own PR says so.
 
-**Implementation PR 8A** (24 October 2026; `docs/STAGE8_SPEC.md` §13; draft, for review): decisions 251 (a) and 253 (b). Under a headquarters
+**Implementation PR 8A** (24 October 2026; `docs/STAGE8_SPEC.md` §13; merged into `main`, #65): decisions 251 (a) and 253 (b). Under a headquarters
 reading no formation the reading does not know is centred or placed anywhere a visitor could read its place (the dossiers' place rows, an
 aggregate's midpoint, its day-track, a place's nearby list), and an open dossier follows the reading; every drawer dossier has its sources at
 its head; the sources sheet gives each claim's note and each work's side in a dispute; the timeline's tips are dismissed when their element is
 activated and never shown by a touch. The roads', the streams' and their banks' ribbons are drawn (wound facing up, both faces), their widths
 a display convention for each presentation, set against narrower ones in matching views. Checks able to fail added for each (§13.4).
 
-**Implementation PR 8B** (24 October 2026; `docs/STAGE8_SPEC.md` §14; draft, stacked on 8A's branch, for review): decisions 239 (b) and 241 (a).
+**Implementation PR 8B** (24 October 2026; `docs/STAGE8_SPEC.md` §14; merged into 8A's branch, #66, not into `main`: the integration PR #67
+brought it there, merged on 24 October): decisions 239 (b) and 241 (a).
 On the landscape every formation drawn as figures is outlined on the ground in its side's colour, the selected one in the selection accent, with
 no wash under the troops; "Position confidence" is optional there and off at first, and on draws each outline round its grade's extent, thinner
 as the grade weakens; the paper map keeps its filled marks, the layer on at first there; the reported-only C zones, the eye level's own side and
@@ -414,7 +415,22 @@ as the grade weakens; the paper map keeps its filled marks, the layer on at firs
 at 0.62 of its opacity with the casing a border; every overlay ribbon is hidden by the drawn ground alone; the event glyphs and the objective
 markers are at most 64 px; on the paper map nothing changes. Checks able to fail added for each (§14.4); the harness's position-confidence share
 now measures the ground cues as each case shows them, its landscape limit lowered to their measured baseline (§14.5), put to the owner as
-question 254.
+question 254, decided (a) with 8C's brief (the limit stays 7%).
+
+**Implementation PR 8C** (25 October 2026; `docs/STAGE8_SPEC.md` §15; draft PR #68 into `main`, for review): first, in a
+commit of their own, the three findings of the audit of 8A and 8B: a restored WebGL context now draws the ground's depth for the overlays and the
+environment map again (a seventh start-up case in `check:contrast`, `context-depth`); under a reading a formation it does not know has no march
+row saying it moves now or where ("Plotted leg" with the reading's note); the five unobstructed shortfalls CI reports since step 1 are Chromium
+141's rendering of baselines measured on Chromium 153, not a regression of 8A or 8B, and `remeasure.js` now measures only on CI's browser (the
+re-measure put to the owner, question 256). Then decision 240 (a): while the view moves each counter and name keeps its place against its anchor,
+else a place hugging it, else fades out, and comes back after two re-placement passes with room (333 ms apart); the level-of-detail switches
+banded 8% while moving; fades of 180 ms, none under reduced motion; at rest the kept places first (no reshuffle); every view reached without
+motion laid out as before (the 20 `check:visual` cases identical to 8B's, box by box); the far place and terrain-study names a type step smaller
+in the perspective presentations (battle information keeps its size: decision 16, question 255). Over the 16 motions of `label-motion.js`, driven
+through the app's own input: jumps 3,439 on 8B to 245, flickers 172 to 10, the level-of-detail switches 130 as 8B's, pops 636 to 985 (the price the
+owner accepted: items fade out and back instead of jumping); the formations followed are drawn a smaller share of the moving frames (§15.6,
+question 258). A motion block in `check:visual` and `check:selftest`, the self-test 261 to 270 checks, each new check made to fail. Device
+acceptance pending (no owner hardware in the session). Owner questions 255-258.
 
 **L1. "The coloured glow underneath troops and divisions (blue for the French, orange for the Russians and Austrians): remove it; it looks
 clunky."**

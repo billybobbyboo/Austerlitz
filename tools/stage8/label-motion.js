@@ -33,13 +33,21 @@
      333 ms at 30 frames a second); collisions are tested every frame, in priority order, so nothing overlaps; at rest the build's full solve
      with persist. (The approach of tiled-map engines: placements held per label, collisions resolved by hiding, re-placement throttled.)
    node tools/stage8/label-motion.js [--json out.json] [--only motionIds] [--stab none,persist,persist+hold,freeze]
-   Measurement and prototype code only: nothing is written to a source file. */
+   Measurement and prototype code only: nothing is written to a source file.
+   Stage 8, implementation PR 8C: --app measures a build as it is, whatever it holds (8B's, which solves every frame afresh, or 8C's
+   stabiliser), the motion reaching it as a visitor's does: through tools/visual/motion.js, the app's own loop at 30 frames a second on the
+   driver's clock, a drag's pointer events, the wheel's own steps, a vantage's glide, the paper map's eased move, Play with Follow (no MOVING
+   flag: the app reads its own state). The WebGL draw skipped (the layout reads nothing it draws). The same 16 motions, a run at rest of 30
+   frames after each, and four with Saint-Hilaire's division selected (priority); for each: Part A's measures, the formations' tracking and
+   the layer's pass time (real milliseconds, this machine's CPU).
+   node tools/stage8/label-motion.js --app [--json out.json] [--only ids] [--rm]    (the build: AUSTERLITZ_HTML, else the repository's) */
 "use strict";
 const fs=require("fs"), path=require("path");
 const L=require("./lib.js");
 const argv=process.argv.slice(2), opt=f=>{ const i=argv.indexOf(f); return i>=0?argv[i+1]:null; };
 const OUT=opt("--json"), ONLY=opt("--only")?opt("--only").split(","):null;
 const STABS=(opt("--stab")||"none,persist,persist+hold,freeze,anchor,anchor2,anchor2+band").split(",");
+if(argv.includes("--app")){ require("./label-motion-app.js").main({out:OUT, only:ONLY, rm:argv.includes("--rm")}).catch(e=>{ console.error(e); process.exit(1); }); return; }
 
 /* the views: Landscape with counters (hybrid) and the paper map, as a visitor in Study at 09:30 sees them; the landscape's names (terrain)
    from the Field vantage and the low Pratzen view */
