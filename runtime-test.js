@@ -1011,7 +1011,7 @@ try{
      frame), and an aggregate's draws only the days of the formations the reading knows; a place's "Formations nearby now" never
      lists it. Every corps or column of that side with formations on the field: its midpoint the mean of its known formations (aggReading),
      their number said, or the sentence when none is known. An open dossier follows a change of the reading */
-  { let nH=0, nK=0, nAgg=0, nPart=0, nPl=0, nFollow=0; const bad=[], mk=document.createElement, realCM=centreOnMap; let made=[], cm=null;
+  { let nH=0, nK=0, nAgg=0, nPart=0, nPl=0, nFollow=0, nHM=0, nHI=0, nKI=0; const bad=[], mk=document.createElement, realCM=centreOnMap; let made=[], cm=null;
     const html=()=>made.map(x=>x.innerHTML||"").join("\n"), centreBtn=()=>made.some(x=>x.innerHTML==="Centre the map here");
     try{ document.createElement=t=>{ const x=mk(t); made.push(x); return x; }; centreOnMap=function(mp){ cm=mp; };
       ["fr","al"].forEach(cv=>{ setCommandView(cv);
@@ -1032,10 +1032,19 @@ try{
               if(hf.indexOf(esc(LABELS.reading.noCentre.replace("%u",readUnknown())))<0) bad.push(at+": "+id+"'s dossier does not say why it does not centre");
               const M=dayTrackModel(id);
               if(!M||M.leaves.length||M.frame||M.hidden.indexOf(id)<0) bad.push(at+": "+id+"'s day-track draws its day ("+(M?M.leaves.length+" leaves, frame "+!!M.frame:"none")+")");
-              else if(hf.indexOf(esc(LABELS.reading.noDay.replace("%c",fmtClock(clock)).replace("%r",EYES.LABEL[cv])))<0) bad.push(at+": "+id+"'s dossier does not say why its day is not shown"); }
+              else if(hf.indexOf(esc(LABELS.reading.noDay.replace("%c",fmtClock(clock)).replace("%r",EYES.LABEL[cv])))<0) bad.push(at+": "+id+"'s dossier does not say why its day is not shown");
+              /* Stage 8, implementation PR 8C (the audit of 8A and 8B, finding B): its march row says nothing of it now, neither "Marching" nor
+                 "Next move" nor "over the frozen mere" (where it is); the plotted leg's figures under the neutral name */
+              const mr=marchRate(id,clock);
+              if(/<dt>(Marching|Next move)<\/dt>/.test(hf)||hf.indexOf("over the frozen mere")>=0) bad.push(at+": "+id+"'s dossier says what its plotted leg says of it now: "+(hf.match(/<dt>(Marching|Next move)<\/dt>[^]{0,80}/)||["over the frozen mere"])[0]);
+              if(mr){ nHM++; if(mr.ice) nHI++; if(hf.indexOf("<dt>"+LABELS.reading.leg+"</dt>")<0||hf.indexOf(esc(LABELS.reading.legNote.replace("%r",EYES.LABEL[cv]).replace("%c",fmtClock(clock))))<0) bad.push(at+": "+id+"'s plotted leg not given under its neutral name with the reading's note"); } }
             else { nK++;
               if(hc.indexOf(w)>=0||hf.indexOf(p)>=0) bad.push(at+": "+id+" known, but its place withheld");
-              if(!btn) bad.push(at+": "+id+" known, but its dossier offers no centring"); } });
+              if(!btn) bad.push(at+": "+id+" known, but its dossier offers no centring");
+              /* a formation the reading knows: its march row as before (the rule withholds only what the reading does not know) */
+              const mr=marchRate(id,clock);
+              if(mr&&hf.indexOf("<dt>"+(mr.moving?"Marching":"Next move")+"</dt>")<0) bad.push(at+": "+id+" known, but its march row not "+(mr.moving?"Marching":"Next move"));
+              if(mr&&mr.ice){ nKI++; if(hf.indexOf("over the frozen mere")<0) bad.push(at+": "+id+" known, but its leg over the frozen mere not said"); } } });
           Object.keys(FORMATIONS).filter(id=>!FORMATIONS[id].track&&sideOfNation(FORMATIONS[id].nation)!==cv&&posNow(id)).forEach(id=>{ nAgg++;
             const A=aggReading(id); made=[]; dossierFormation(id); const hf=html(), MD=dayTrackModel(id);
             if(MD&&MD.leaves.some(L=>readHidden(L.id))) bad.push(at+": "+id+"'s day-track draws the day of a formation the reading does not know");
@@ -1053,10 +1062,11 @@ try{
         select(null,null); }
       else bad.push("no enemy hidden at 08:30 to open a dossier on");
     } finally { document.createElement=mk; centreOnMap=realCM; setCommandView("none"); }
-    if(bad.length||!nH||!nK||!nAgg||!nPart||!nFollow) throw new Error("readings, the centring and the dossiers' places (decision 251): "+(bad.slice(0,6).join("; ")||"a case never met")+
-      " ("+nH+" hidden, "+nK+" known, "+nAgg+" aggregates, "+nPart+" partly known, "+nFollow+" followed)");
-    console.log("Whose eyes, the centring and the dossiers' places (decision 251): "+nH+" formations withheld (no centring, the reading's sentence in the card and the dossier, no day drawn), "+
-      nK+" known at their reading's position; "+nAgg+" corps or columns ("+nPart+" at their known formations' mean); "+nPl+" places' nearby lists; an open dossier followed the reading OK"); }
+    if(bad.length||!nH||!nK||!nAgg||!nPart||!nFollow||!nHM||!nHI||!nKI) throw new Error("readings, the centring and the dossiers' places (decision 251): "+(bad.slice(0,6).join("; ")||"a case never met")+
+      " ("+nH+" hidden, "+nK+" known, "+nAgg+" aggregates, "+nPart+" partly known, "+nFollow+" followed; march rows: "+nHM+" hidden, "+nHI+" of them over the ice, "+nKI+" known over the ice)");
+    console.log("Whose eyes, the centring and the dossiers' places (decision 251): "+nH+" formations withheld (no centring, the reading's sentence in the card and the dossier, no day drawn, "+
+      nHM+" march rows neutral, "+nHI+" of them over the frozen mere), "+nK+" known at their reading's position ("+nKI+" over the frozen mere said); "+nAgg+" corps or columns ("+nPart+
+      " at their known formations' mean); "+nPl+" places' nearby lists; an open dossier followed the reading OK"); }
 
   /* Stage 8, implementation PR 8A (decision 251): the sources sheet gives each claim as recorded: the index and a dossier's list carry every
      claim's note and, in a dispute, the side each work supports beside that work (narrative.js's by[].side); nothing is typed */

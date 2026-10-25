@@ -7011,7 +7011,18 @@ function bindContextLoss(cv){
     var b=document.createElement("button"); b.type="button"; b.textContent=LABELS.reload; b.addEventListener("click",function(){ location.reload(); }); n.appendChild(b); });
   cv.addEventListener("webglcontextrestored",function(){ GL.lost=false;
     var n=document.getElementById("glnotice"); if(n) n.innerHTML="";
+    glRestored();
     requestRender(3); });
+}
+/* Stage 8, implementation PR 8C (the audit of 8B, finding A): what the app draws once and then keeps by a key is gone with the lost context,
+   and three r128 makes a target again empty: the ground's depth for the overlays (GDEPTH, drawn again only when its key changes: with the eye
+   still, the overlays tested against an empty target until the camera moved) and the environment map (refreshEnvironment, made again only when
+   the sky's colours move, which applyLight reaches only when the clock or the factor changes: the scene without its environment). Their keys
+   are cleared so the next frame draws both again; the environment's old target is dropped, not disposed (its dispose would delete objects of
+   the lost context). check:contrast's "context-depth" case holds the frame after a restore to the frame before the loss */
+function glRestored(){
+  GDEPTH.key=null;
+  envRT=null; _envKey=""; _lightKey=null;
 }
 /* roadmap step 3 (S-6): the preference changed while the page is open. Turned on, what is moving stops where it would end: the opening's played
    stretch arrives at its step (7D's cut), a glide or a phase's tween ends, the view offset jumps; Follow then moves only at event starts and
@@ -12089,7 +12100,9 @@ var LABELS={
   reading:{unknown:"Not known to %r at %c", noCentre:"%u (a model reading): the map does not centre on it.",
     known:"the mean of the %k of its %n formations on the field known to %r; it need not be where any of them stands",
     known1:"the one of its %n formations on the field known to %r",
-    noDay:"Its day is not shown: not known to %r at %c (a model reading).", noDays:"the days of %k of them are not shown: not known to %r at %c (a model reading)"},
+    noDay:"Its day is not shown: not known to %r at %c (a model reading).", noDays:"the days of %k of them are not shown: not known to %r at %c (a model reading)",
+    /* Stage 8, implementation PR 8C: the march row of a formation the reading does not know (marchRow) */
+    leg:"Plotted leg", legNote:"whether it moves now, and where, is not shown: not known to %r at %c (a model reading)"},
   arrow:{unsettled:"disputed"},   /* owner decision 145 (question 145, 8 October 2026): the shorter form, so the 07:00 place name Augezd is drawn again */
   /* Stage 7B (decisions 111, 120): the first-run card's two actions; interface words, no claim. Stage 7C: the primary begins the opening,
      its length in words (a design value: the four stops' 168 words read in 42 to 63 s at 238 to 160 words a minute, with the five glides of
@@ -13425,6 +13438,14 @@ function posRow(id,card){
 }
 function marchRow(id){
   var mr=FORMATIONS[id].track?marchRate(id,clock):null; if(!mr) return "";
+  /* Stage 8, implementation PR 8C (decision 251; the audit of 8A and 8B): under a reading that does not know the formation (readHidden) the row
+     no longer says what its plotted leg says of it now: not "Marching" or "Next move" (whether it moves at this minute) and not "over the frozen
+     mere" (where it is: found in the page at 16:00 under Napoleon's headquarters, the dossiers of Kienmayer's division and of the Left Wing
+     Command "Not known" above "Marching ... over the frozen mere"). The leg's length, time and rate stay, as 8A's review kept them (no place),
+     under a neutral name */
+  if(readHidden(id)) return row(LABELS.reading.leg,
+    mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h "+derivedTag()+' <span class="hh">(the plotted leg\u2019s length over its time window; '+
+    esc(LABELS.reading.legNote.replace("%r",EYES.LABEL[commandView]).replace("%c",fmtClock(clock)))+')</span>');
   return row(mr.moving?"Marching":"Next move",
     mr.km.toFixed(1)+" km in "+Math.round(mr.min)+" min &middot; "+mr.kmh.toFixed(1)+" km/h"+
     (mr.ice?' <span class="hh">over the frozen mere</span>':'')+" "+derivedTag()+' <span class="hh">(the plotted leg\u2019s length over its time window)</span>');

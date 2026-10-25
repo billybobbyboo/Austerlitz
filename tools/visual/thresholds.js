@@ -207,7 +207,10 @@ const SMOKE_SHARE=0.25; module.exports.SMOKE_SHARE=SMOKE_SHARE;   /* Stage 4E: t
    them, on the landscape the outlines (and a reported formation's C zone and the eye level's own side, decision 91, where drawn). The
    landscape's limit lowered from 0.20 to the largest measured on the 8B build, rounded up as 5B rounded: eye-zuran's own side, 6.42% on CI
    (Chromium 141) and here (Chromium 153) alike; every case without an eye level at most 1.89% (narrow-1024; 1.94% here). Put to the owner as
-   question 254. The paper map's limit unchanged */
+   question 254. The paper map's limit unchanged.
+   Decision 254 (a) (the owner, with implementation PR 8C): the landscape's limit stays 7%. The measure's meaning changed with 8B: on the
+   landscape it is the ground cues as each case shows them (the outlines, a reported formation's C zone and the eye level's own side), no
+   longer the filled confidence marks; a return of the filled washes fails it. The paper map's limit (16%) unchanged */
 const CONF_SHARE={land:0.07, paper:0.16}; module.exports.CONF_SHARE=CONF_SHARE;
 /* Stage 4E (docs/STAGE4_SPEC.md section F.2): the horizon in the low views [case, factor]; where the apron's far edge stands below
    the true horizon, the gap is drawn in the haze's colour: its mean colour per column within HORIZON_DE (0-255, the largest
