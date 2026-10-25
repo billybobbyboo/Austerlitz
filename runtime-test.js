@@ -192,6 +192,34 @@ try{
   select("f","sthilaire"); updateVisibility(); mlLayout(); select(null,null); setMode("terrain");
   console.log("map layer: "+mlPasses+" passes in 3 modes and "+PHASES.length+" phases, every item counted once OK");
 
+  /* Stage 8, implementation PR 8C (decision 240 (a)): the stabiliser, dry run, on the app's own state. A reset gives a fresh view; the eye moved
+     a little each pass under the input hold reads as moving (every item still counted once, the fades on unless reduced motion asks); the hold
+     over, at rest after the motion; reduced motion keeps the hold and drops the fades; the band holds the distance within BAND while a motion
+     source runs and gives the true one at rest */
+  {
+    const realNow=performance.now; let T=Date.now()+1e6; performance.now=()=>T;
+    try{
+      setMode("hybrid"); setPhase(3,true); if(tween) tween(T+9000); lastInput=-1e9; mlReset("test"); updateVisibility(); mlLayout();
+      if(!MLS.fresh||MLS.moving) throw new Error("the stabiliser: the first pass after a reset is not a fresh view");
+      for(const k in ML.items){ if(ML.items[k].eFrame===ML.frame&&ML.items[k].wasOn!==(ML.items[k].state==="on"&&!ML.items[k].forced)) throw new Error("the stabiliser: "+k+" kept no memory of its place"); }
+      let moving=0, fades=0;
+      const pass=()=>{ updateVisibility(); mlLayout(); const s=ML.stats;
+        if(s.items!==s.placed+s.dropped+s.occluded+s.offscreen+s.underPanel) throw new Error("the stabiliser: the items are not each counted once while moving"); };
+      for(const rm of [false,true]){ RM=rm;
+        for(let f=1;f<=10;f++){ T+=33; lastInput=T; landCam.position.x+=0.4; orbitTarget.x+=0.4; landCam.updateMatrixWorld(); pass();
+          if(MLS.moving){ moving++; if(MLS.fadeOn) fades++; if(MLS.fadeOn===rm) throw new Error("the stabiliser: fades "+(rm?"on under reduced motion":"off while moving")); } }
+        T+=1000; pass();
+        if(MLS.moving||!MLS.fromMotion||MLS.fresh) throw new Error("the stabiliser: not at rest after the motion once the hold is over"); }
+      RM=false;
+      if(moving<18||!fades) throw new Error("the stabiliser: "+moving+" of 20 passes read as moving, "+fades+" with fades");
+      lastInput=T; const b=[mlBand(200),mlBand(214),mlBand(217)]; lastInput=-1e9; b.push(mlBand(214));
+      if(b.join(",")!=="200,200,217,214") throw new Error("the band: "+b.join(",")+" (want 200,200,217,214)");
+      mlReset("test"); pass(); if(!MLS.fresh) throw new Error("the stabiliser: a reset does not give a fresh view");
+    } finally { performance.now=realNow; lastInput=-1e9; RM=false; mlReset("test"); }
+    setMode("terrain");
+    console.log("map layer in motion (decision 240 (a)): fresh after a reset, moving under the input hold (fades off under reduced motion), at rest after it, the band 8% OK");
+  }
+
   /* continuous playback: step the clock the way the render loop does */
   setMode("terrain"); setClock(T_MIN,{force:true});
   let frames=0;

@@ -575,7 +575,7 @@ function bindContextLoss(cv){
    are cleared so the next frame draws both again; the environment's old target is dropped, not disposed (its dispose would delete objects of
    the lost context). check:contrast's "context-depth" case holds the frame after a restore to the frame before the loss */
 function glRestored(){
-  GDEPTH.key=null;
+  GDEPTH.key=null; mlReset("context");
   envRT=null; _envKey=""; _lightKey=null;
 }
 /* roadmap step 3 (S-6): the preference changed while the page is open. Turned on, what is moving stops where it would end: the opening's played
@@ -586,7 +586,7 @@ function rmChange(e){
   if(RM){ if(OPENING.play) openingArrive(); endTweens(); syncViewOffset(true); drawOnArrows(); }
   requestRender(3);
 }
-function endTweens(){ var n=0; while(tween&&n<4){ tween(performance.now()+1e7); n++; } }
+function endTweens(){ var n=0; if(tween) mlReset("tween ended at once"); while(tween&&n<4){ tween(performance.now()+1e7); n++; } }   /* Stage 8, 8C: a jump (MLS) */
 /* the drawing buffer's density: the screen's, at most 2 (1.0 on a low tier); read at start and on every resize (roadmap step 3, SW-10).
    Roadmap step 6, decision 236: 1.5 on a low tier until the owner's phone runs P3 and P4, whose rule (docs/STEP6_SPEC.md section 14.1, its
    rule 3) picked density 1.0 with the sun casting no shadow (below) for the low tier, a gain on the phone (about 1.5 times the frames a
@@ -2007,6 +2007,7 @@ function syncLandscapeLayers(){
    setting is recorded for the landscape and nothing is redrawn; entering and leaving it redraw the ground (setDrawnFlat). */
 function setDisplayFactor(f){
   if(!(f>0)||f===DISPLAY.factor) return 0;
+  mlReset("factor");   /* Stage 8, 8C: the ground drawn again under the anchors (MLS) */
   if(DISPLAY.flat){ DISPLAY.factor=f; syncLandscapeLayers(); paintExaggeration(); return 0; }
   return redrawGround(function(){ DISPLAY.factor=f; });
 }
@@ -2944,6 +2945,7 @@ function startPhaseTransition(ph,instant,moveCam){
     camArc=setupArc(landCam.position,orbitTarget,new THREE.Vector3(pc[0],pc[1],pc[2]),new THREE.Vector3(pc[3],pc[4],pc[5]));
   }
   var dur=(instant||RM)?1:TRANS_MS, t0=performance.now();
+  if(camMove&&dur===1) mlReset("at once");   /* Stage 8, 8C: the phase's camera at once is a jump (MLS) */
   if(camMove){ curVantage=null;
     setTween("cam",function(now){ var k=Math.min(1,(now-t0)/dur); if(camArc) applyArc(camArc,easeInOut(k)); return k>=1||!camArc; }); }
   setTween("scene",function(now){
@@ -3728,6 +3730,7 @@ function paintCommand(){
 }
 function setCommandView(v){
   commandView=v;
+  mlReset("reading");   /* Stage 8, 8C: what the reading knows changes at once; no remnant of what it no longer knows (MLS) */
   knowKey="";
   document.querySelectorAll(".cmd-btn").forEach(function(b){
     b.setAttribute("aria-pressed", b.dataset.cv===v ? "true":"false");
@@ -3873,6 +3876,7 @@ function eyePlace(){ var p=commandView==="none"?null:posNow(EYES.HQ[commandView]
   var w=W(p[0],p[1]); EYE.pos.set(w[0],groundY(w[0],w[1])+eyeHeight(),w[1]); return true; }
 function eyeEnter(){
   if(commandView==="none") return false;
+  mlReset("eye level");   /* Stage 8, 8C (MLS) */
   if(mode==="staff") setMode("terrain");
   setTween("cam",null);
   if(!eyePlace()) return false;
@@ -3884,6 +3888,7 @@ function eyeEnter(){
 }
 function eyeLeave(){
   if(!EYE.on) return;
+  mlReset("eye level");   /* Stage 8, 8C (MLS) */
   EYE.on=false; landCam.near=EYE.NEAR0; landCam.updateProjectionMatrix();
   if(curVantage==="eye") curVantage=null;
   clampCamera(); landCam.lookAt(orbitTarget); syncLandscapeLayers(); syncFollow(); eyeCaption(); requestRender(3);
@@ -4030,7 +4035,7 @@ function buildPlanLinks(){
 function updatePlanLinks(){
   if(!planLinks||!planSide) return;
   var arr=planLinks.geometry.attributes.position.array, pairs=planLinks.userData.pairs, k=0, drawn=0;
-  var near=viewDist()<190;
+  var near=mlBandAt("links",viewDist())<190;   /* Stage 8, 8C: held inside the band while the view moves */
   for(var i=0;i<pairs.length;i++){
     var show = pairs[i][2] || near ||
                (selection&&selection.kind==="f"&&selection.id===pairs[i][0]);
@@ -4291,6 +4296,7 @@ function openingEnd(how){
 /* ---------------- view modes ---------------- */
 function setMode(m){
   var was=mode;
+  mlReset("ground");   /* Stage 8, 8C: another map, laid out afresh (MLS) */
   mode=m;
   var staff=(m==="staff");
   layerOn.confidence=CONF_ON[confKey()]; syncConfButton();   /* Stage 8, 8B (decision 239): Position confidence's setting of this presentation */
@@ -4448,7 +4454,7 @@ var MAPCAM=(function(){
 /* the scheduler MAPCAM's eased moves run on: the app's tween, on top of a phase change's transition already running
    (as glide does); the move ends when its step returns true. Reduced motion: at once. */
 function mapSchedule(step,ms){
-  if(RM){ step(performance.now()+1e9); return; }
+  if(RM){ mlReset("at once"); step(performance.now()+1e9); return; }   /* Stage 8, 8C: under reduced motion a jump (MLS) */
   setTween("cam",step);   /* Stage 3D: the camera slot; a phase change's fade runs on in its own */
 }
 var ECH_RANK={army:0,corps:1,div:2,bde:3};
@@ -4582,7 +4588,7 @@ function mlCollect(){
   function counter(id,rec){
     var f=FORMATIONS[id], w=W(rec.p[0],rec.p[1]), gy=displayHeight(w[0],w[1]), S=fstate(id);
     var sel=isSel("f",id), inFam=!!(fam&&fam[id]), hov=(ML.hover===id), fo=(foc===id);
-    var near=viewDistTo(_mlV.set(w[0],gy,w[1]))<ML_FULL_DIST;
+    var near=mlBandAt("full:"+id,viewDistTo(_mlV.set(w[0],gy,w[1])))<ML_FULL_DIST;   /* Stage 8, 8C: held inside the band while the view moves */
     var o={st:S.st,cf:S.cf,sel:sel,paper:paper,dim:!!(highlight&&!highlight[id]),know:S.know,full:sel||inFam||hov||fo||near,
            strength:S.strength,commander:shortCommander(f)};
     var it=mlItem("c:"+id,"mlc"+(f.arm==="hq"?" mlc-hq":"")); it.hq=(f.arm==="hq");
@@ -4705,24 +4711,32 @@ function mlFree(x0,y0,w,h,VW,VH,panels,obst){
   if(x0<ML_PAD||y0<ML_PAD||x1>VW-ML_PAD||y1>VH-ML_PAD) return false;
   return !mlHits(x0,y0,x1,y1,panels)&&!mlHits(x0,y0,x1,y1,obst)&&!mlHits(x0,y0,x1,y1,ML.taken);
 }
-/* one item: its anchor, the eight places around it, then the rings (with a leader) */
-function mlPlaceItem(it,VW,VH,panels,obst){
+/* one item: its anchor, the eight places around it, then the rings (with a leader). Stage 8, 8C: local, the places hugging the anchor only
+   (the first candidates: a counter's one, a label's eight, a place name's eight beside its marker; no ring, no row), for an item the
+   stabiliser holds while the view moves (MLS) */
+/* the places hugging an item's anchor, the first the layout tries (Stage 8, 8C: one function, so the self-test reads the same places the
+   stabiliser may move an item to): a place name's eight beside its marker; a counter's frame foot 6 px above the anchor (the paddings are
+   .mlc's, style.css); a label's eight round its anchor. Sets the item's attachment (ox, oy) as the placement does */
+function mlCands(it){
+  var w=it.w, h=it.h, sx=it.sx, sy=it.sy, cl=it.acl+(it.r?it.r*it.ppw:0);
+  if(it.mode==="place"){ var g=7; return [[sx+g,sy-h/2],[sx-w/2,sy-g-h],[sx-g-w,sy-h/2],[sx-w/2,sy+g],[sx+g-2,sy-g-h+2],[sx+g-2,sy+g-2],[sx-g-w+2,sy-g-h+2],[sx-g-w+2,sy+g-2]]; }
+  if(it.mode==="counter"){ var pb=it.hq?12:5; it.ox=5+20; it.oy=13+(h-13-pb)/2+14; return [[sx-it.ox,sy-cl-it.oy]]; }
+  it.ox=w/2; it.oy=h;
+  return [[sx-w/2,sy-cl-h],[sx+2,sy-cl-h],[sx-2-w,sy-cl-h],[sx+cl+2,sy-h/2],[sx-cl-2-w,sy-h/2],[sx-w/2,sy+cl],[sx+2,sy+cl],[sx-2-w,sy+cl]];
+}
+function mlPlaceItem(it,VW,VH,panels,obst,local){
   var w=it.w, h=it.h, sx=it.sx, sy=it.sy;
   if(!(w>0&&h>0)) return false;
-  var cl=it.acl+(it.r?it.r*it.ppw:0), C, i;
+  var cl=it.acl+(it.r?it.r*it.ppw:0), C=mlCands(it), i;
   if(it.mode==="place"){   /* a place name sits beside its marker, never away from it */
-    var m=[sx-5,sy-5,sx+5,sy+5], g=7;
+    var m=[sx-5,sy-5,sx+5,sy+5];
     if(!mlFree(m[0],m[1],10,10,VW,VH,panels,obst)) return false;
-    C=[[sx+g,sy-h/2],[sx-w/2,sy-g-h],[sx-g-w,sy-h/2],[sx-w/2,sy+g],[sx+g-2,sy-g-h+2],[sx+g-2,sy+g-2],[sx-g-w+2,sy-g-h+2],[sx-g-w+2,sy+g-2]];
     ML.taken.push(m);
     for(i=0;i<C.length;i++) if(mlFree(C[i][0],C[i][1],w,h,VW,VH,panels,obst)){ it.mrect=m; return mlTake(it,C[i][0],C[i][1],false); }
     ML.taken.pop(); return false;
   }
-  if(it.mode==="counter"){   /* the frame's foot 6 px above the anchor; the paddings are .mlc's (style.css) */
-    var pb=it.hq?12:5; it.ox=5+20; it.oy=13+(h-13-pb)/2+14; C=[[sx-it.ox,sy-cl-it.oy]]; }
-  else { it.ox=w/2; it.oy=h;
-    C=[[sx-w/2,sy-cl-h],[sx+2,sy-cl-h],[sx-2-w,sy-cl-h],[sx+cl+2,sy-h/2],[sx-cl-2-w,sy-h/2],[sx-w/2,sy+cl],[sx+2,sy+cl],[sx-2-w,sy+cl]]; }
   for(i=0;i<C.length;i++) if(mlFree(C[i][0],C[i][1],w,h,VW,VH,panels,obst)) return mlTake(it,C[i][0],C[i][1],i>0&&it.mode==="counter");
+  if(local) return false;
   /* Stage 2E: on the paper map every label may go as far as what is never dropped does (the far rings, then the rows): the
      plan, framed inside the free part of the screen, is small and dense, and its free room lies around the sheet */
   var far=it.keep||mode==="staff";
@@ -4760,6 +4774,114 @@ function mlLine(s,a,b,C){
   var d='M'+a[0].toFixed(1)+' '+a[1].toFixed(1)+'L'+b[0].toFixed(1)+' '+b[1].toFixed(1);
   s.push('<path d="'+d+'" fill="none" stroke="'+C.cs+'" stroke-width="3" stroke-linecap="round"/><path d="'+d+'" fill="none" stroke="'+C.co+'" stroke-width="1.2"/>');
 }
+/* ---- Stage 8, implementation PR 8C (decision 240 (a); docs/STAGE8_SPEC.md sections 3.4, 7.2 and 15): the map layer in motion ----
+   Until 8C every drawn frame solved the layout from nothing, so while the view moved counters and names darted from place to place (the
+   owner's note L2). anchor2 with the band and fades, as decided:
+   - Motion is the app's own state: a tween (a glide, a phase's camera arc, an eased move of the paper map), Play, the input hold
+     (INPUT_HOLD_MS after a press, the wheel, a key or a drag) or a panel's slide (panelMoveUntil), in a pass whose view (the eye, its
+     projection, the window) or clock changed since the last pass (mlStabBegin). The harness has no switch of its own.
+   - While the view moves, an item drawn in the last pass keeps its place against its own anchor (mem) while that place is free, else takes the
+     first free of the places hugging its anchor (mlPlaceItem's local candidates), else is hidden (held: counted dropped, reachable by hover and
+     the keyboard as every dropped item is) and fades out. An item not drawn in the last pass (held, dropped, new in view) is looked for only in
+     a re-placement pass, every EVERY ms of wall-clock time, and comes back after PASSES such passes in a row with room. What is never dropped
+     (the selection, the hovered, the highlighted family, live events; decision 39) and the item with the keyboard focus (A-2) are placed by the
+     full search in every pass, as before 8C.
+   - The level-of-detail switches (corps or divisions, the brigades, the name ranges, the places, a counter's full form, a name near the eye,
+     the plan links, the far step below) read a distance held inside a band of BAND while the view moves (mlBand, mlBandAt), released at rest.
+   - At rest after motion (fromMotion): the band released; every place that still fits is kept first (in priority order), then the others are
+     placed by the full search in the room left (persist): nothing drawn moves to make room for another, so a view reached through motion may
+     draw other places, and sometimes fewer items, than the same view reached without motion (section 3.4; the items it does not draw
+     reachable by hover and keyboard, decision 39); its level of detail is the true distance's.
+   - A view reached without motion (the first pass after a discontinuity, and every pass at rest until the view next moves) is laid out exactly
+     as before 8C: no memory, no hold, no band, no fade. A discontinuity clears the memory (mlReset): the ground, the presentation, the reading,
+     the eye level, the display factor, a resize, a restored context, a tween ended at once, a move made at once under reduced motion, and any
+     jump a pass finds (mlJump: the clock more than JUMP_MIN minutes from the last pass's, the eye moved more than JUMP_VIEW of its distance or
+     turned more than JUMP_DEG degrees, the paper map's plan moved as far or zoomed by more than JUMP_VIEW, the window resized).
+   - Fades of FADE_MS of wall-clock time while the view moves or after it has moved: an item appearing fades in; a leaving item still collected
+     is drawn at its last place under the live items (.ml-fading: z-index -1, no pointer; the same element, so no second name or stop) as it
+     fades out; an item no longer collected (a level-of-detail switch, a reading that no longer knows it, a layer turned off) leaves at once.
+     None under reduced motion (the hold and the band kept). A counter's content (strength, status, reading) is rebuilt at once, never faded.
+   - The far step (section 7.2): in the two perspective presentations an item whose anchor stands farther from the eye than FAR times the eye's
+     distance to the orbit target is drawn a type step smaller, where decision 16 allows one: a place's or terrain-study name, t-small to t-micro
+     (tertiary at a distance; the harness holds it to its 10.5 px floor). Battle information (formation names, counters, events, the plateau's
+     reading, the arrows' and the objectives' labels) is at t-ui, 12.5 px, and decision 16 holds it at 12 px at least: no smaller step exists
+     (question 255). The item keeps the box it had at its own size for the layout (its place, its room, its hover), so no placement, drop or
+     dropped item changes with the step; the smaller words stand inside that box on the side toward the anchor.
+   The values are design values (Part A's prototype, docs/STAGE8_SPEC.md section 3.3), held by css-test.js. */
+var MLS={EVERY:333, PASSES:2, BAND:0.08, FADE_MS:180, JUMP_MIN:5, JUMP_VIEW:0.6, JUMP_DEG:40, FAR:1.5,
+  moving:false, episode:false, pass:true, lastPass:-1e9, fromMotion:false, fresh:true, fadeOn:false, pend:"start", view:null, bandD:null, band:{},
+  stats:{passes:0, moving:0, rest:0, fresh:0, resets:{}, held:0, fading:0, far:0}};
+function mlMotionSource(now){ return !!(tween||playing||now-lastInput<INPUT_HOLD_MS||now<panelMoveUntil); }
+/* a discontinuity: the next pass lays out a fresh view (no memory), and the band holds nothing */
+function mlReset(why){ if(!MLS.pend) MLS.pend=why||"reset"; MLS.bandD=null; MLS.band={}; }
+/* the band: the distance the switches read, held while the view moves until the true one has moved BAND from it; the true one at rest */
+function mlBand(d){
+  if(!mlMotionSource(performance.now())||!(d>0)){ MLS.bandD=null; MLS.band={}; return d; }
+  if(MLS.bandD===null||Math.abs(d-MLS.bandD)>MLS.BAND*MLS.bandD) MLS.bandD=d;
+  return MLS.bandD;
+}
+function mlBandAt(k,d){
+  if(!(d>0)||!mlMotionSource(performance.now())) return d;
+  var h=MLS.band[k]; if(h===undefined||Math.abs(d-h)>MLS.BAND*h){ MLS.band[k]=d; return d; }
+  return h;
+}
+var _mlE=new THREE.Vector3(), _mlD=new THREE.Vector3();
+function mlViewNow(VW,VH){
+  var v={ortho:!!camera.isOrthographicCamera, W:VW, H:VH, clock:clock, mode:mode};
+  if(v.ortho){ var s=MAPCAM.state(); v.x=s.x; v.z=s.z; v.w=s.wpp; } else { v.e=landCam.position.clone(); v.t=orbitTarget.clone(); }
+  v.key=Array.prototype.join.call(camera.matrixWorld.elements,",")+"|"+Array.prototype.join.call(camera.projectionMatrix.elements,",")+"|"+VW+"x"+VH+"|"+clock;
+  return v;
+}
+/* why the view jumped from the last pass (a) to this one (b), or null */
+function mlJump(a,b){
+  if(a.ortho!==b.ortho||a.mode!==b.mode) return "ground";
+  if(a.W!==b.W||a.H!==b.H) return "window";
+  if(Math.abs(b.clock-a.clock)>MLS.JUMP_MIN) return "clock";
+  if(b.ortho) return (Math.hypot(b.x-a.x,b.z-a.z)>MLS.JUMP_VIEW*a.W*a.w/2||Math.max(b.w/a.w,a.w/b.w)>1+MLS.JUMP_VIEW)?"plan":null;
+  var r0=Math.max(1,a.e.distanceTo(a.t)), mv=(a.e.distanceTo(b.e)+a.t.distanceTo(b.t))/r0;
+  var c=_mlD.copy(a.t).sub(a.e).normalize().dot(_mlE.copy(b.t).sub(b.e).normalize()), ang=Math.acos(Math.max(-1,Math.min(1,c)))*180/Math.PI;
+  return (mv>MLS.JUMP_VIEW||ang>MLS.JUMP_DEG)?"eye":null;
+}
+/* each pass: a fresh view after a discontinuity, else moving (a motion source and a changed view) or at rest; the re-placement pass's clock */
+function mlStabBegin(now,VW,VH){
+  var v=mlViewNow(VW,VH), prev=MLS.view, why=MLS.pend||(prev?mlJump(prev,v):"start");
+  MLS.pend=null; MLS.view=v; MLS.stats.passes++;
+  if(why){ MLS.fresh=true; MLS.fromMotion=false; MLS.moving=false; MLS.episode=false; MLS.pass=true; MLS.lastPass=now; MLS.stats.fresh++;
+    MLS.stats.resets[why]=(MLS.stats.resets[why]||0)+1;
+    for(var k in ML.items){ var it=ML.items[k]; it.mem=null; it.wasOn=false; it.room2=0; }
+  } else {
+    /* in motion from the first pass whose view changed under a motion source, until the source ends: between a wheel's steps or a key's the
+       view stands still for a frame or two, and the gesture goes on */
+    var src=mlMotionSource(now); if(!src) MLS.episode=false; else if(v.key!==prev.key) MLS.episode=true;
+    MLS.fresh=false; MLS.moving=MLS.episode;
+    if(MLS.moving){ MLS.fromMotion=true; MLS.stats.moving++; MLS.pass=now-MLS.lastPass>=MLS.EVERY; if(MLS.pass) MLS.lastPass=now; }
+    else { MLS.pass=true; MLS.lastPass=now; MLS.stats.rest++; }
+  }
+  MLS.fadeOn=!RM&&!MLS.fresh&&MLS.fromMotion;
+}
+/* an offset along one axis, kept against the anchor when an item's size changes: the side toward the anchor stays where it was */
+function mlKeep(d,w0,w1){ return w0===w1||d>=0?d:(d+w0<=0?d+w0-w1:d+(w0-w1)/2); }
+/* the place an item held in the last pass, against its own anchor, if it is still free */
+function mlHoldTry(it,VW,VH,panels,obst){
+  var m=it.mem; if(!m||m.mode!==it.mode||!(it.w>0&&it.h>0)) return false;
+  var x0=it.sx+mlKeep(m.dx,m.w,it.w), y0=it.sy+mlKeep(m.dy,m.h,it.h);
+  if(it.mode==="counter"){ var pb=it.hq?12:5; it.ox=5+20; it.oy=13+(it.h-13-pb)/2+14; x0=it.sx+m.dx; y0=it.sy+m.dy+m.oy-it.oy; }   /* the frame's foot where it stood against the anchor */
+  else { it.ox=it.w/2; it.oy=it.h; }
+  if(it.mode==="place"){ var mk=[it.sx-5,it.sy-5,it.sx+5,it.sy+5]; if(!mlFree(mk[0],mk[1],10,10,VW,VH,panels,obst)) return false;
+    ML.taken.push(mk); if(mlFree(x0,y0,it.w,it.h,VW,VH,panels,obst)){ it.mrect=mk; return mlTake(it,x0,y0,false); } ML.taken.pop(); return false; }
+  return mlFree(x0,y0,it.w,it.h,VW,VH,panels,obst)?mlTake(it,x0,y0,m.lead):false;
+}
+/* a place found in a re-placement pass and given back (the item waits for its second pass): its boxes off the taken list */
+function mlUntake(it){ ML.taken.pop(); if(it.mode==="place") ML.taken.pop(); it.state=""; }
+/* the far step's state: a place's or terrain-study name in a perspective presentation beyond FAR times the eye's distance to its target */
+function mlFar(it){
+  if(!it.small||camera.isOrthographicCamera||mode==="staff") return false;
+  var dt=landCam.position.distanceTo(orbitTarget); if(!(dt>=1)) return false;   /* a degenerate eye: no step */
+  var r=camera.position.distanceTo(it.world)/dt; if(!isFinite(r)) return false;
+  return mlBandAt("far:"+it.key,r)>MLS.FAR;   /* while the view moves, the ratio held inside the band: no flicker at the boundary */
+}
+/* the far step's words inside the box the item has at its own size, on the side toward the anchor */
+function mlAlign(d,w,fw){ return d>=0?0:(d+w<=0?w-fw:(w-fw)/2); }
 /* the pass */
 function mlLayout(){
   if(!ML.root) return;
@@ -4769,7 +4891,7 @@ function mlLayout(){
   camera.updateMatrixWorld();
   mlLegendFit(VW,VH);
   var list=mlCollect(), panels=mlPanels();
-  var st={items:list.length,placed:0,leaders:0,dropped:0,occluded:0,offscreen:0,underPanel:0,keepMissing:[],dropped_:[],ms:0,nodes:0};
+  var st={items:list.length,placed:0,leaders:0,dropped:0,held:0,occluded:0,offscreen:0,underPanel:0,keepMissing:[],dropped_:[],ms:0,nodes:0};
   var elig=[], dirty=[];
   list.forEach(function(it){
     _mlV.copy(it.world).applyMatrix4(camera.matrixWorldInverse);
@@ -4783,20 +4905,54 @@ function mlLayout(){
     it.eFrame=ML.frame; it.state=""; elig.push(it);
     if(!it.disp){ it.el.style.display=""; it.disp=true; it.dirty=true; }
     if(it.wrapped){ it.el.classList.remove("ml-wrap"); it.el.style.maxWidth=""; it.wrapped=false; it.dirty=true; }   /* each pass tries it whole first */
+    if(it.small===undefined) it.small=/\bmlt-small\b/.test(it.el.className);
+    it.far=mlFar(it);   /* Stage 8, 8C: the far step (section 7.2) */
     if(it.dirty) dirty.push(it);
   });
   /* roadmap step 3 (docs/FINAL_AUDIT.md A-2, SW-5): an item that leaves the map with the focus on it hands the focus to the next stop in the
      layer's order that is still on the map, else to the layer itself, never to the page */
   var lostFocus=null;
-  for(var k in ML.items){ var q=ML.items[k]; if(q.eFrame!==ML.frame&&q.disp){ if(document.activeElement===q.el) lostFocus=q; q.el.style.display="none"; q.disp=false; q.on=false; q.el.classList.remove("on"); q.tx=null; } }
-  dirty.forEach(function(it){ var r=it.el.getBoundingClientRect(); it.w=Math.ceil(r.width||0); it.h=Math.ceil(r.height||0); it.dirty=false; });
+  for(var k in ML.items){ var q=ML.items[k];
+    if(q.eFrame!==ML.frame){ q.mem=null; q.wasOn=false; q.room2=0; q.fa=0; q.rem=null; }   /* Stage 8, 8C: out of the layer, nothing kept and no remnant */
+    if(q.eFrame!==ML.frame&&q.disp){ if(document.activeElement===q.el) lostFocus=q; q.el.style.display="none"; q.disp=false; q.on=false; q.el.classList.remove("on"); q.tx=null; } }
+  /* Stage 8, 8C: an item is measured at its own size, the size the layout places (the far step leaves every placement as it was); then the
+     far step's smaller size, drawn inside that box */
+  dirty.forEach(function(it){ if(it.farC){ it.el.classList.remove("ml-far"); it.farC=false; } });
+  dirty.forEach(function(it){ var r=it.el.getBoundingClientRect(); it.w=Math.ceil(r.width||0); it.h=Math.ceil(r.height||0); it.dirty=false; it.fdirty=true; });
+  var fdirty=[];
+  elig.forEach(function(it){ if(it.far!==!!it.farC){ it.el.classList.toggle("ml-far",it.far); it.farC=it.far; it.fdirty=true; } if(it.farC&&it.fdirty) fdirty.push(it); });
+  fdirty.forEach(function(it){ var r=it.el.getBoundingClientRect(); it.fw=Math.ceil(r.width||0); it.fh=Math.ceil(r.height||0); it.fdirty=false; });
   var maxG=mlMaxG(), obst=mlObstacles(VW,VH);
   elig.forEach(function(it){ it.occ=!it.keep&&it.occl&&mlOccluded(it.world,maxG); if(it.occ){ it.state="occluded"; st.occluded++; } });
   var order=elig.filter(function(it){ return !it.occ; }).sort(function(a,b){ return (a.keep!==b.keep)?(a.keep?-1:1):(a.pri-b.pri); });
   ML.taken=[];
+  /* Stage 8, 8C (MLS above): what is never dropped first, by the full search as before; then the rest as the view stands: a fresh view as before
+     8C ("build"), moving ("hold"), at rest after motion ("persist") */
+  var now=performance.now(), foc=document.activeElement, nk=0;
+  mlStabBegin(now,VW,VH);
+  var strat=MLS.moving?"hold":MLS.fromMotion?"persist":"build";
+  while(nk<order.length&&order[nk].keep) nk++;
+  for(var ik=0;ik<nk;ik++){ var kt=order[ik]; kt.held=false; if(!(mlPlaceItem(kt,VW,VH,panels,obst)||mlWrapPlace(kt,VW,VH,panels,obst))) kt.state="dropped"; }
+  function placeRest(it,s){
+    if(s==="build"||it.el===foc) return mlPlaceItem(it,VW,VH,panels,obst);
+    if(it.wasOn&&it.mem){ if(mlHoldTry(it,VW,VH,panels,obst)||mlPlaceItem(it,VW,VH,panels,obst,true)){ it.room2=0; return true; } it.held=true; return false; }
+    if(!MLS.pass){ it.held=true; return false; }
+    if(mlPlaceItem(it,VW,VH,panels,obst)){ it.room2=(it.room2||0)+1; if(it.room2>=MLS.PASSES){ it.room2=0; return true; } mlUntake(it); it.held=true; return false; }
+    it.room2=0; return false;
+  }
+  function runRest(s){
+    if(s==="persist"){   /* at rest after motion: every place that still fits is kept first, in priority order; then the others by the full search,
+                            into the room left: nothing drawn moves to make room for another (no reshuffle) */
+      var later=[];
+      for(var i=nk;i<order.length;i++){ var it=order[i]; it.held=false; if(it.el===foc||!mlHoldTry(it,VW,VH,panels,obst)) later.push(it); }
+      later.forEach(function(it){ if(!mlPlaceItem(it,VW,VH,panels,obst)) it.state="dropped"; });
+      return; }
+    for(var j=nk;j<order.length;j++){ var jt=order[j]; jt.held=false; if(!placeRest(jt,s)) jt.state="dropped"; }
+  }
+  runRest(strat);
   order.forEach(function(it){
-    if(mlPlaceItem(it,VW,VH,panels,obst)||(it.keep&&mlWrapPlace(it,VW,VH,panels,obst))){ st.placed++; if(it.lead) st.leaders++; }
-    else { it.state="dropped"; st.dropped++; st.dropped_.push(it.key); if(it.keep) st.keepMissing.push(it.key); }
+    if(it.state==="on"){ st.placed++; if(it.lead) st.leaders++; }
+    else { st.dropped++; st.dropped_.push(it.key); if(it.held) st.held++; if(it.keep) st.keepMissing.push(it.key); }
   });
   /* roadmap step 3 (docs/FINAL_AUDIT.md A-2; WCAG 2.4.7, 2.4.11): the item with the keyboard focus is always drawn. Laid out last, so that
      nothing else moves: dropped (no free room) or behind the ground, it is drawn over the others at its anchor, above it or below it as a panel
@@ -4812,23 +4968,45 @@ function mlLayout(){
     if(!pick){ var x0=Math.max(4,Math.min(VW-fw-4,cands[0][0])), y0=Math.max(4,Math.min(VH-fh-4,cands[0][1])); pick=[x0,y0,x0+fw,y0+fh]; }
     fit.rect=pick; fit.state="on"; fit.lead=true; fit.forced=true; fit.el.classList.add("ml-forced");
   }
+  /* Stage 8, 8C: what each item held, for the next pass (a place the layout gave it, against its anchor; not the focus's forced place), and
+     its fade: from its alpha toward 1 if drawn, 0 if not, by the wall-clock time since its last pass over FADE_MS; at once where fades are off
+     (a fresh view, reduced motion) or the item is new to the layer. A leaving item with alpha left is a remnant at its last drawn place */
+  var fading=0;
+  elig.forEach(function(it){ var on=it.state==="on", laid=on&&!it.forced&&!!it.rect;
+    it.mem=laid?{dx:it.rect[0]-it.sx, dy:it.rect[1]-it.sy, w:it.w, h:it.h, lead:it.lead, mode:it.mode, oy:it.oy}:null; it.wasOn=laid;
+    if(it.faFrame!==ML.frame-1){ it.fa=0; it.fat=now; it.rem=null; }
+    it.faFrame=ML.frame;
+    var tg=on?1:0;
+    if(!MLS.fadeOn) it.fa=tg; else if(tg!==it.fa){ var df=Math.max(0,now-it.fat)/MLS.FADE_MS; it.fa=tg>it.fa?Math.min(1,it.fa+df):Math.max(0,it.fa-df); }
+    it.fat=now;
+    it.rem=!on&&it.fa>0&&it.lastOn?it.lastOn:null;
+    if(it.fa>0&&it.fa<1) fading++;
+  });
+  MLS.stats.fading=fading;
   /* write: positions, visibility, the leader lines and markers */
-  var K=mode==="staff"?"paper":"dark", C={cs:TOKENS.sym.plate[K],co:TOKENS.sym.label[K].annotation}, s=[];
+  var K=mode==="staff"?"paper":"dark", C={cs:TOKENS.sym.plate[K],co:TOKENS.sym.label[K].annotation}, s=[], nfar=0;
   elig.forEach(function(it){
     var on=it.state==="on";
-    if(on){ var x=Math.round(it.rect[0]), y=Math.round(it.rect[1]), tx=x+","+y;
+    if(on){ var x=Math.round(it.rect[0]), y=Math.round(it.rect[1]), dw=it.w, dh=it.h;
+      if(it.farC&&it.fw>0){ nfar++; x=Math.round(it.rect[0]+mlAlign(it.rect[0]-it.sx,it.w,it.fw)); y=Math.round(it.rect[1]+mlAlign(it.rect[1]-it.sy,it.h,it.fh)); dw=it.fw; dh=it.fh; }   /* Stage 8, 8C: the far step's words inside its box */
+      var tx=x+","+y;
       if(it.tx!==tx){ it.el.style.transform="translate("+x+"px,"+y+"px)"; it.tx=tx; }
+      it.lastOn=[x,y];
       if(it.mode==="counter"){ _mlW.copy(it.ground).project(camera);
         var g=[(_mlW.x*0.5+0.5)*VW,(-_mlW.y*0.5+0.5)*VH], foot=[x+it.ox,y+it.oy];
         mlLine(s,g,it.lead?mlNear([x,y,x+it.w,y+it.h],g[0],g[1]):foot,C); }
-      else if(it.lead) mlLine(s,[it.sx,it.sy],mlNear(it.rect,it.sx,it.sy),C);
+      else if(it.lead) mlLine(s,[it.sx,it.sy],mlNear([x,y,x+dw,y+dh],it.sx,it.sy),C);
       if(it.lead) s.push('<circle cx="'+(it.mode==="counter"?g[0]:it.sx).toFixed(1)+'" cy="'+(it.mode==="counter"?g[1]:it.sy).toFixed(1)+'" r="2.2" fill="'+C.co+'" stroke="'+C.cs+'" stroke-width="1"/>');
       if(it.mode==="place") s.push('<path d="M'+it.sx.toFixed(1)+' '+(it.sy-5).toFixed(1)+'l5 5l-5 5l-5 -5z" fill="'+it.mk[1]+'" stroke="'+it.mk[0]+'" stroke-width="1.6"/>');
     }
+    else if(it.rem){ var rx=it.rem[0]+","+it.rem[1]; if(it.tx!==rx){ it.el.style.transform="translate("+it.rem[0]+"px,"+it.rem[1]+"px)"; it.tx=rx; } }   /* a remnant, where it was drawn */
     if(it.on!==on){ it.el.classList.toggle("on",on); it.on=on; }
-    var op=on&&it.op<1?Math.max(0,it.op):1;
-    if(it.opS!==op){ it.el.style.opacity=op<1?String(op.toFixed(2)):""; it.opS=op; }
+    var rm=!on&&!!it.rem; if(it.remC!==rm){ it.el.classList.toggle("ml-fading",rm); it.remC=rm; }
+    var op=on?(it.op<1?Math.max(0,it.op):1)*it.fa:(rm?it.fa:1), os=(on?op>=1:!rm)?"":String(op.toFixed(2));
+    if(it.opS!==os){ it.el.style.opacity=os; it.opS=os; }
   });
+  MLS.stats.far=nfar;
+  if(fading||MLS.moving) requestRender(1);   /* a fade under way; and one pass more after the last moving one, at rest (the band released) */
   var svg=s.join("");
   if(svg!==ML.svg){ ML.lines.innerHTML=svg; ML.svg=svg; }
   /* the keyboard reaches every item on the map in priority order (section F.1): the layer's children follow it */
@@ -5176,7 +5354,7 @@ function updateVisibility(){
      was at or above its floor before this pass is lifted with the floor after it; one that was already below stays for the render-time guard,
      which counts any camera path that bypassed clampCamera (CAM.violations) */
   var eyeQ=landCam.position, eyeAbove=eyeQ.y>=camFloor(eyeQ.x,eyeQ.z)-1e-6;
-  var dist=viewDist();   /* the paper map: the distance at which the landscape eye would show the ground at its scale */
+  var dist=mlBand(viewDist());   /* the paper map: the distance at which the landscape eye would show the ground at its scale; Stage 8, 8C: held inside the band while the view moves (MLS) */
   var wantCorps = dist>250;
   var showBde = dist<165;
   var showSym = layerOn.symbols && mode!=="terrain" && !cleanView;
@@ -5259,7 +5437,7 @@ function updateVisibility(){
     /* Stage 3D (the owner's answer): once the view shows corps (beyond 250 units), corps and army names are drawn at any distance;
        the Overview fitted to the free rectangle stands 425-536 units out, beyond the 300 that named every formation before */
     var nameRange = (f.ech==="corps"||f.ech==="army")&&dist>250 ? Infinity : f.ech==="bde" ? 170 : (f.arm==="art"||f.arm==="hq") ? 220 : 300;
-    rec.nameShow = labels && mode==="terrain" && !!p && camera.position.distanceTo(rec.block.position)>34 &&
+    rec.nameShow = labels && mode==="terrain" && !!p && mlBandAt("near:"+id,camera.position.distanceTo(rec.block.position))>34 &&
                    (dist<nameRange || (selection&&selection.kind==="f"&&selection.id===id));
     if(rec.trail){
       rec.trail.visible = layerOn.trails && !!p && !cleanView && !dimmed;
@@ -5396,6 +5574,7 @@ function glide(toPos,toTgt,ms,bulge){
   if(EYE.on) eyeLeave();   /* Stage 5E */
   freeCam=false; curVantage=null;
   if(mode==="staff"){ MAPCAM.glideTo(toTgt.x,toTgt.z,mapWppAt(toPos.distanceTo(toTgt)),ms); return; }
+  if(RM) mlReset("at once");   /* Stage 8, 8C: under reduced motion the glide is a jump (MLS) */
   var arc=setupArc(landCam.position,orbitTarget,toPos,toTgt);
   var t0=performance.now(), dur=RM?1:(ms||1500);
   /* a transition already running (a phase change's light and overlay fade) runs on under the glide, in its own slot:
@@ -6183,6 +6362,7 @@ function buildUI(){
   document.addEventListener("transitionend",function(){ requestRender(2); });
   function onResize(){
     requestRender(3);
+    mlReset("window");   /* Stage 8, 8C (MLS) */
     syncDock();
     syncPhone();   /* roadmap step 6 item 3 */
     landCam.aspect=window.innerWidth/window.innerHeight;
@@ -7822,7 +8002,7 @@ function followStep(dtMs){
     var S=dwellStarts(), j=-1; for(var i=0;i<S.length;i++) if(S[i]<=clock+1e-9) j=i;
     if(FOLLOW.ev===null){ FOLLOW.ev=j; return false; }
     if(j===FOLLOW.ev) return false;
-    FOLLOW.ev=j; if(g.T){ FOLLOW.T.copy(g.T); FOLLOW.dist=g.dist; } FOLLOW.dir.copy(g.dir);
+    FOLLOW.ev=j; if(g.T){ FOLLOW.T.copy(g.T); FOLLOW.dist=g.dist; } FOLLOW.dir.copy(g.dir); mlReset("at once");   /* Stage 8, 8C: a jump (MLS) */
   } else {
     var a=1-Math.exp(-(dtMs/1000)/FOLLOW.TAU);
     if(g.T){ var mv=g.T.clone().sub(FOLLOW.T).multiplyScalar(a), cap=FOLLOW.CAP*(dtMs/1000)*worldPerPx(FOLLOW.T), ml=Math.hypot(mv.x,mv.z);
@@ -7844,6 +8024,7 @@ var PRESENT={
 };
 function setPresentation(m){
   closeFirst(null);
+  mlReset("presentation");   /* Stage 8, 8C (MLS) */
   if(!PRESENT[m]) m="study";
   var a=focusedEl(), vmb=!!(a&&a.classList&&a.classList.contains("vm-btn"));   /* roadmap step 3 (SW-5): read before anything is hidden */
   if(m!=="study"&&setLayerPop) setLayerPop(false);   /* roadmap step 3 (docs/FINAL_AUDIT.md SW-9): the Layers panel closes with its opener */
@@ -8069,7 +8250,7 @@ var AUSTERLITZ_DEBUG=(function(){
     var x=_rbc.getContext("2d",{willReadFrequently:true}); x.clearRect(0,0,cv.width,cv.height); x.drawImage(cv,0,0);
     var d=x.getImageData(0,0,cv.width,cv.height); _rbm.set(cv,d); return d;
   }
-  function finishTween(){ var n=0; while(tween&&n<4){ tween(performance.now()+1e7); n++; } }
+  function finishTween(){ var n=0; if(tween) mlReset("tween ended at once"); while(tween&&n<4){ tween(performance.now()+1e7); n++; } }   /* Stage 8, 8C: a jump (MLS) */
   function settle(n,noRender){
     finishTween(); syncViewOffset(true);
     var fk=FK; FK=7.2;
@@ -8079,6 +8260,7 @@ var AUSTERLITZ_DEBUG=(function(){
     return settling;
   }
   function placeCamera(c){   /* an authored camera (a harness case, a preset): re-framed to the drawn ground */
+    mlReset("placed");   /* Stage 8, 8C (MLS) */
     tween=null; camArc=null; freeCam=true; curVantage=null;
     /* the paper map: the preset's target centred in the free part of the screen, at the zoom of its distance (glide) */
     if(mode==="staff"){ MAPCAM.centreOn(c[3],c[5],mapWppAt(Math.hypot(c[0]-c[3],c[1]-c[4],c[2]-c[5])),true); return; }
@@ -11433,6 +11615,159 @@ var AUSTERLITZ_DEBUG=(function(){
       if(!wasOn) setFXEnabled(false);
       ck("visual effects: off and on again builds nothing: the same render targets, materials and quad (docs/FINAL_AUDIT.md SW-7)", !bad.length,
         bad.length?bad.join("; "):"three off-on cycles: built "+b0+" time(s) before and after, "+n0+" render targets made before and after, none disposed ("+tx0+" textures), the same scene target, composite material and quad");
+    })();
+
+    /* Stage 8, implementation PR 8C (decision 240 (a); docs/STAGE8_SPEC.md sections 3.4, 7.2 and 15): the map layer in motion, as MLS lays it
+       out. The app's own frame (loop) runs one frame at a time on a clock of the test's (performance.now answers it, 30 frames a second, as
+       tools/visual/motion.js drives it; the WebGL draw skipped, the layout reading nothing it draws), and the motion reaches the app as a
+       visitor's does: a drag's pointer events on the canvas, the wheel, a key, Play. So the stabiliser reads its own state; nothing is set for
+       it. Checked in each motion (a pan and an orbit of Landscape with counters, the paper map's zoom by the wheel and its Play): no two drawn
+       boxes overlap; what is never dropped is drawn; an item drawn in two frames keeps its place against its anchor or takes one of the places
+       hugging it (mlCands), never a ring or a row; an item appears while the view moves only in a re-placement pass, and one that left comes
+       back no sooner than EVERY ms; a remnant is the item's own element, under the live ones, taking no pointer, gone within FADE_MS; at rest
+       after it, the band released (the layer's items those of the view reached without motion), nothing fading and no frame asked for. Apart: the
+       band; reduced motion; a reading changed while moving; the focused item; a view reached without motion laid out as before any motion; a
+       key that moves nothing; the far step */
+    (function(){
+      var hadNow=Object.prototype.hasOwnProperty.call(performance,"now"), realNow=performance.now, realRaf=window.requestAnimationFrame, realRender=renderer.render;
+      var Tm=realNow.call(performance), FMS=1000/30, keepRM=RM, keepFX=FX.on;
+      function F(n){ for(var i=0;i<(n||1);i++){ Tm+=FMS; loop(); } }
+      function snap(){ var o={}; for(var k in ML.items){ var it=ML.items[k]; if(it.eFrame!==ML.frame) continue;
+          o[k]={st:it.state, x:it.rect?it.rect[0]:0, y:it.rect?it.rect[1]:0, w:it.w, h:it.h, sx:it.sx, sy:it.sy, keep:!!it.keep, rem:!!it.rem, forced:!!it.forced, it:it}; }
+        return {o:o, moving:MLS.moving, pass:MLS.pass, t:Tm}; }
+      function cands(s){ var it=s.it, k={w:it.w,h:it.h,sx:s.sx,sy:s.sy,acl:it.acl,r:it.r,ppw:it.ppw,mode:it.mode,hq:it.hq}; return mlCands(k); }
+      function ov(p,q){ return p.x<q.x+q.w-1&&q.x<p.x+p.w-1&&p.y<q.y+q.h-1&&q.y<p.y+p.h-1; }
+      var R={frames:0, moving:0, overlaps:[], keepHidden:[], moved:[], appeared:[], early:[], rem:0, remBad:[], remLong:[], held:0, restBad:[], rest:[], restKept:0, reshuffled:[], dup:[], foc:[]};
+      /* the items in the layer this pass (its level of detail), with the far step's mark */
+      function inLayer(){ var a=[]; for(var k in ML.items){ var it=ML.items[k]; if(it.eFrame===ML.frame) a.push(k+(it.farC?"*":"")); } return a.sort().join(","); }
+      /* one motion: before frames at rest, the motion's input frame by frame, then frames at rest; every pair of frames judged */
+      function run(label,setup,step,n,rest){
+        setup(); F(6); var P=snap(), left={}, remT={};
+        for(var i=1;i<=n+rest;i++){
+          if(i<=n) step(i); F(1); var S=snap(); R.frames++; if(S.moving) R.moving++;
+          var on=Object.keys(S.o).filter(function(k){ return S.o[k].st==="on"; });
+          for(var a=0;a<on.length;a++) for(var b=a+1;b<on.length;b++) if(!S.o[on[a]].forced&&!S.o[on[b]].forced&&ov(S.o[on[a]],S.o[on[b]])) R.overlaps.push(label+" "+on[a]+" / "+on[b]);
+          Object.keys(S.o).forEach(function(k){ var s=S.o[k], p=P.o[k];
+            if(s.keep&&s.st!=="on") R.keepHidden.push(label+" "+k);
+            if(s.st==="dropped"&&s.it.held) R.held++;
+            if(s.rem){ R.rem++; var e=s.it.el, cs=getComputedStyle(e); if(cs.pointerEvents!=="none"||!(+cs.zIndex<0)||e.classList.contains("on")) R.remBad.push(label+" "+k);
+              if(remT[k]===undefined) remT[k]=Tm; else if(Tm-remT[k]>MLS.FADE_MS+FMS+1) R.remLong.push(label+" "+k); } else delete remT[k];
+            if(!S.moving||!p) return;
+            if(s.st==="on"&&p.st==="on"&&!s.keep&&!s.forced&&!p.forced&&s.it.el!==document.activeElement&&s.w===p.w&&s.h===p.h){   /* a size change (a full form, new words) moves the box by mlKeep */
+              var dx=(s.x-s.sx)-(p.x-p.sx), dy=(s.y-s.sy)-(p.y-p.sy);
+              if(Math.hypot(dx,dy)>1&&!cands(s).some(function(c){ return Math.abs(c[0]-s.x)<=1&&Math.abs(c[1]-s.y)<=1; })) R.moved.push(label+" "+k); }
+            if(s.st==="on"&&p.st!=="on"&&!s.keep&&!s.forced){ if(!S.pass) R.appeared.push(label+" "+k); if(left[k]!==undefined&&Tm-left[k]<MLS.EVERY-1) R.early.push(label+" "+k+" "+Math.round(Tm-left[k])+" ms"); }
+            if(s.st!=="on"&&p.st==="on"&&!s.keep) left[k]=Tm; });
+          if(ML.root.querySelectorAll(".ml-item").length!==Object.keys(ML.items).length) R.dup.push(label);
+          /* the first pass at rest after the motion: nothing drawn moved to make room for another (an item drawn in both passes that moved
+             is one whose last place is no longer free in the layout drawn: tried against its boxes, its own taken out, the panels and symbols) */
+          if(!S.moving&&P.moving){ var VWr=renderer.domElement.clientWidth||innerWidth, VHr=renderer.domElement.clientHeight||innerHeight, pn=mlPanels(), ob=mlObstacles(VWr,VHr);
+            Object.keys(S.o).forEach(function(k){ var s=S.o[k], p=P.o[k];
+              if(!p||s.st!=="on"||p.st!=="on"||s.keep||s.forced||p.forced||s.w!==p.w||s.h!==p.h) return;
+              var dx=(s.x-s.sx)-(p.x-p.sx), dy=(s.y-s.sy)-(p.y-p.sy); if(Math.hypot(dx,dy)<=1){ R.restKept++; return; }
+              var ti=ML.taken.indexOf(s.it.rect); if(ti>=0) ML.taken.splice(ti,1);
+              var free=mlFree(s.sx+(p.x-p.sx),s.sy+(p.y-p.sy),s.w,s.h,VWr,VHr,pn,ob);
+              if(ti>=0) ML.taken.splice(ti,0,s.it.rect);
+              if(free) R.reshuffled.push(label+" "+k); }); }
+          P=S; }
+        /* at rest: the band released, so the level of detail is the true distance's (the same items in the layer, at the same step, as the view
+           reached without motion); nothing fading, no frame asked for. The places persist (section 3.4): counted against the view reached without
+           motion, not held to it */
+        var placed=ML.stats.placed, fad=MLS.stats.fading, need=needFrames, mv=MLS.moving, inL=inLayer();
+        mlReset("test"); updateVisibility(); mlLayout(); var fresh=ML.stats.placed, inF=inLayer();
+        R.rest.push(label+" "+placed+" placed ("+fresh+" reached directly)");
+        if(mv||fad||need>0||inL!==inF) R.restBad.push(label+": moving "+mv+", fading "+fad+", frames asked "+need+(inL!==inF?", the layer's items not the true distance's":""));
+      }
+      var c0=null, fx0=FX.on;
+      try{
+        performance.now=function(){ return Tm; }; window.requestAnimationFrame=function(){ return 0; }; renderer.render=function(){};
+        var V=renderer.domElement, spc=V.setPointerCapture; V.setPointerCapture=function(){};
+        function pev(t,x,y,b,btn){ return new PointerEvent(t,{pointerId:31,isPrimary:true,pointerType:"mouse",clientX:x,clientY:y,buttons:b,button:btn,bubbles:true,cancelable:true}); }
+        function hyb(){ stopPlay(); select(null,null); if(mode!=="hybrid") setMode("hybrid"); setPresentation("study"); setClock(570,{instant:true,force:true,camera:false}); finishTween(); placeCamera(VANTAGE.field); syncViewOffset(true); settle(4,true); c0=freeCentre(); }
+        function pap(){ stopPlay(); select(null,null); if(mode!=="staff") setMode("staff"); setPresentation("study"); setClock(570,{instant:true,force:true,camera:false}); finishTween(); MAPCAM.frameField(true); settle(4,true); var fr=MAPCAM.freeRect(); c0=[Math.round((fr[0]+fr[2])/2),Math.round((fr[1]+fr[3])/2)]; }
+        /* a view reached without motion: laid out, then again after a pan and a jump back, the same */
+        hyb(); F(3); var L1=snap();
+        run("pan",function(){ V.dispatchEvent(pev("pointerdown",c0[0],c0[1],1,0)); },function(i){ V.dispatchEvent(pev("pointermove",c0[0]+8*i,c0[1],1,0)); if(i===45) window.dispatchEvent(pev("pointerup",c0[0]+8*i,c0[1],0,0)); },45,24);
+        hyb(); F(3); var L2=snap(), hist=[];
+        Object.keys(L1.o).concat(Object.keys(L2.o)).forEach(function(k){ var a=L1.o[k], b=L2.o[k]; if(!a||!b||a.st!==b.st||(a.st==="on"&&(Math.abs(a.x-b.x)>0.5||Math.abs(a.y-b.y)>0.5))) hist.push(k); });
+        run("orbit",function(){ V.dispatchEvent(pev("pointerdown",c0[0],c0[1],2,2)); },function(i){ V.dispatchEvent(pev("pointermove",c0[0]+6*i,c0[1],2,2)); if(i===30) window.dispatchEvent(pev("pointerup",c0[0]+6*i,c0[1],0,2)); },30,24);
+        run("paper zoom",pap,function(i){ if(i%3===0) V.dispatchEvent(new WheelEvent("wheel",{deltaY:i<=30?-100:100,clientX:c0[0],clientY:c0[1],bubbles:true,cancelable:true})); },60,24);
+        run("paper play",function(){ pap(); setClock(540,{instant:true,force:true,camera:false}); finishTween(); setSpeed(0.5); F(4); togglePlay(); },function(i){ if(i===60) stopPlay(); },60,24);
+        ck("map layer in motion (decision 240): while the view moves no two drawn boxes overlap, what is never dropped is drawn, an item drawn in two frames keeps its place against its anchor or takes a place hugging it (never a ring or a row), one appears only in a re-placement pass and never back within "+MLS.EVERY+" ms of leaving",
+          R.moving>0&&!R.overlaps.length&&!R.keepHidden.length&&!R.moved.length&&!R.appeared.length&&!R.early.length,
+          R.frames+" frames in four motions (a pan and an orbit of Landscape with counters, the paper map's zoom by the wheel and its Play), "+R.moving+" of them moving, "+R.held+" item-frames held"+
+          (R.overlaps.length?"; OVERLAP "+R.overlaps.slice(0,3).join(", "):"")+(R.keepHidden.length?"; NEVER-DROPPED HIDDEN "+R.keepHidden.slice(0,3).join(", "):"")+(R.moved.length?"; MOVED OFF ITS ANCHOR "+R.moved.slice(0,3).join(", "):"")+
+          (R.appeared.length?"; APPEARED OUTSIDE A PASS "+R.appeared.slice(0,3).join(", "):"")+(R.early.length?"; BACK TOO SOON "+R.early.slice(0,3).join(", "):""));
+        ck("map layer in motion (decision 240): a leaving item fades out as itself, under the live items and taking no pointer, gone within "+MLS.FADE_MS+" ms; at rest after a motion nothing drawn moved to make room for another, the band released (the layer's items those of the view reached without motion), nothing fading, no frame asked for",
+          R.rem>0&&R.restKept>0&&!R.remBad.length&&!R.remLong.length&&!R.dup.length&&!R.restBad.length&&!R.reshuffled.length,
+          R.rem+" remnant-frames"+(R.remBad.length?"; OUT OF RULE "+R.remBad.slice(0,3).join(", "):"")+(R.remLong.length?"; TOO LONG "+R.remLong.slice(0,3).join(", "):"")+(R.dup.length?"; A SECOND ELEMENT in "+R.dup.join(", "):"")+
+          "; "+R.restKept+" items kept their places into the rest"+(R.reshuffled.length?"; MOVED THOUGH ITS PLACE WAS FREE "+R.reshuffled.slice(0,4).join(", "):"")+
+          (R.restBad.length?"; AT REST "+R.restBad.join("; "):"; at rest after each, idle, the level of detail the true distance's: "+R.rest.join(", ")));
+        ck("map layer (decision 240): a view reached without motion is laid out exactly as before the view moved (the stabiliser holds no memory in a fresh view)", !hist.length&&Object.keys(L1.o).length>0,
+          Object.keys(L1.o).length+" items at the Field vantage in Landscape with counters, laid out before a pan and again after the pan and a jump back"+(hist.length?": DIFFERENT "+hist.slice(0,6).join(", "):": the same states and boxes"));
+        /* the band: the Field vantage stands 3% inside the corps switch (250 units); with a key held (the input hold) the eye drawn back along its
+           line 0.5% a frame, across 250, keeps the divisions while the distance is within BAND of the one the switches acted on, and the true
+           distance's corps at rest. (A dolly, the orbit's own placement: LANDCAM.zoomAt re-seats the target under the cursor on its first step,
+           which moves the distance 4-5% at once and would make the check depend on the frame the band first reads) */
+        var bandBad=[], vk=function(){ window.dispatchEvent(new KeyboardEvent("keydown",{key:"Shift",bubbles:true})); };
+        function dolly(k){ sph.setFromVector3(_ov.copy(landCam.position).sub(orbitTarget)); sph.radius*=k; orbitPlace(); requestRender(2); }
+        hyb(); F(3); var d0=viewDist(), e0=lodEch;
+        vk(); F(1);   /* the key held, the view not yet moved: the band takes the distance the switches act on */
+        for(var bi=0;bi<12;bi++){ vk(); dolly(1.005); F(1); if(viewDist()>250&&viewDist()<d0*(1+MLS.BAND)-0.5&&lodEch!=="div") bandBad.push("switched at "+viewDist().toFixed(1)+" while moving"); }
+        var dMid=viewDist(), eMid=lodEch; F(20); var eRest=lodEch;
+        if(!(dMid>250)) bandBad.push("the zoom did not cross 250 ("+dMid.toFixed(1)+")");
+        if(eMid!=="div") bandBad.push("the divisions not kept while moving ("+eMid+")"); if(eRest!=="corps") bandBad.push("not the corps at rest ("+eRest+", "+viewDist().toFixed(1)+")");
+        ck("map layer (decision 240): the level-of-detail switches read a distance held inside the "+(100*MLS.BAND)+"% band while the view moves, the true distance at rest",
+          !bandBad.length&&e0==="div", "from "+d0.toFixed(1)+" units ("+e0+") out to "+dMid.toFixed(1)+" under a key's hold: "+eMid+"; at rest "+eRest+(bandBad.length?"; WRONG: "+bandBad.join("; "):""));
+        /* reduced motion: the hold and the band kept, no fade */
+        var rmBad=[], rmHeld=0; RM=true;
+        pap(); F(4); for(var ri=1;ri<=30;ri++){ if(ri%3===0) V.dispatchEvent(new WheelEvent("wheel",{deltaY:-100,clientX:c0[0],clientY:c0[1],bubbles:true,cancelable:true})); F(1);
+          for(var rk in ML.items){ var rt=ML.items[rk]; if(rt.eFrame!==ML.frame) continue; if(rt.held) rmHeld++;
+            if(rt.rem||rt.el.classList.contains("ml-fading")) rmBad.push("a remnant "+rk); else if(rt.state==="on"&&rt.op>=1&&rt.el.style.opacity!=="") rmBad.push("partly faded "+rk); } }
+        F(24); RM=keepRM;
+        ck("map layer (decision 240): under reduced motion no fade (no remnant, every drawn item at full opacity), the hold kept", !rmBad.length&&rmHeld>0, rmHeld+" item-frames held in the paper map's zoom"+(rmBad.length?"; WRONG: "+rmBad.slice(0,4).join(", "):""));
+        /* a reading changed while the view moves: what the reading does not know leaves at once, no remnant of it */
+        var rdBad=[]; hyb(); V.dispatchEvent(pev("pointerdown",c0[0],c0[1],1,0)); for(var di=1;di<=12;di++){ V.dispatchEvent(pev("pointermove",c0[0]+8*di,c0[1],1,0)); F(1); }
+        setCommandView("al"); F(1);
+        for(var dk in ML.items){ var dt=ML.items[dk]; if(!dt.disp) continue; if(dt.rem||dt.el.classList.contains("ml-fading")) rdBad.push("a remnant "+dk); if(dt.fid&&readHidden(dt.fid)&&dt.el.style.display!=="none") rdBad.push("drawn, not known: "+dk); }
+        window.dispatchEvent(pev("pointerup",c0[0]+96,c0[1],0,0)); setCommandView("none"); F(20);
+        ck("map layer (decision 240): a reading changed while the view moves leaves no label and no remnant of a formation it does not know", !rdBad.length, rdBad.length?rdBad.slice(0,5).join("; "):"the Allied headquarters' reading taken mid-pan: every item shown known to it, none fading");
+        /* the item with the keyboard focus is drawn in every frame of a motion, never held */
+        var fBad=[], fk=null; hyb(); F(2);
+        for(var qk in ML.items){ var qt=ML.items[qk]; if(qt.eFrame===ML.frame&&qt.state==="on"&&!qt.keep&&qt.focusable&&qt.fid){ fk=qk; break; } }
+        if(fk){ ML.items[fk].el.focus({preventScroll:true}); V.dispatchEvent(pev("pointerdown",c0[0],c0[1],1,0));
+          for(var fi=1;fi<=30;fi++){ V.dispatchEvent(pev("pointermove",c0[0]+10*fi,c0[1],1,0)); F(1); var ft=ML.items[fk]; if(ft.eFrame===ML.frame&&ft.state!=="on") fBad.push(fi+": "+ft.state); }
+          window.dispatchEvent(pev("pointerup",c0[0]+300,c0[1],0,0)); ML.items[fk].el.blur(); F(20); }
+        ck("map layer (decision 240): the item with the keyboard focus is drawn in every frame while the view moves (A-2), never held", !!fk&&!fBad.length, fk?fk+" focused through a pan of 30 frames"+(fBad.length?": NOT DRAWN at "+fBad.slice(0,4).join(", "):""):"no item to focus");
+        /* a key that moves nothing: the layer stays at rest */
+        hyb(); F(2); var mv0=MLS.stats.moving; vk(); F(4); vk(); F(4);
+        ck("map layer (decision 240): input that moves nothing leaves the layer at rest (motion is a motion source and a view that changed)", MLS.stats.moving===mv0&&!MLS.moving, (MLS.stats.moving-mv0)+" moving passes after two key presses");
+        /* the far step (section 7.2): close on Sokolnitz the place names beyond FAR times the eye's distance to its target a type step smaller,
+           in the box they have at their own size; nothing else; the layout as it is without the step; none on the paper map */
+        var farBad=[], nF=0, nSm=0; lastInput=-1e9; stopPlay(); setMode("terrain"); setPresentation("watch"); setClock(500,{instant:true,force:true,camera:false}); finishTween();
+        var sw=W(210,362), sty=displayHeight(sw[0],sw[1]), sdv=new THREE.Vector3(-0.62,0.46,0.64).normalize().multiplyScalar(58);
+        placeCamera([sw[0]+sdv.x,sty+sdv.y,sw[1]+sdv.z,sw[0],sty,sw[1]]); syncViewOffset(true); settle(4,true); mlLayout();
+        var dTg=landCam.position.distanceTo(orbitTarget), FL={};
+        for(var gk in ML.items){ var gt=ML.items[gk]; if(gt.eFrame!==ML.frame) continue; FL[gk]=[gt.state,gt.rect?gt.rect.join(","):""];
+          var fr2=camera.position.distanceTo(gt.world)/dTg, hasC=gt.el.classList.contains("ml-far");
+          if(gt.state==="on"&&gt.small){ nSm++; if(hasC!==(fr2>MLS.FAR)) farBad.push(gk+" ratio "+fr2.toFixed(2)+(hasC?" stepped":" not stepped")); }
+          if(hasC&&!gt.small) farBad.push(gk+": battle information stepped (decision 16)");
+          if(hasC&&gt.state==="on"){ nF++; var fpx=parseFloat(getComputedStyle(gt.el).fontSize), bb=gt.el.getBoundingClientRect();
+            if(Math.abs(fpx-10.5)>0.01) farBad.push(gk+" at "+fpx+" px");
+            if(bb.left<gt.rect[0]-1||bb.top<gt.rect[1]-1||bb.right>gt.rect[2]+1||bb.bottom>gt.rect[3]+1) farBad.push(gk+"'s words outside its box"); } }
+        var far0=MLS.FAR; MLS.FAR=1e9; mlReset("test"); mlLayout(); MLS.FAR=far0;
+        for(var hk in FL){ var ht=ML.items[hk]; if(ht.eFrame!==ML.frame||ht.state!==FL[hk][0]||(ht.rect?ht.rect.join(","):"")!==FL[hk][1]) farBad.push(hk+" placed otherwise without the step"); }
+        mlReset("test"); mlLayout(); setMode("staff"); settle(4,true); mlLayout();
+        for(var pk in ML.items){ if(ML.items[pk].eFrame===ML.frame&&ML.items[pk].el.classList.contains("ml-far")) farBad.push(pk+" stepped on the paper map"); }
+        ck("map layer (section 7.2, decision 240): in the low views the place and terrain-study names beyond "+MLS.FAR+" times the eye's distance to its target a type step smaller (10.5 px), in the box their own size gives them, so no item is placed otherwise; battle information never (decision 16); none on the paper map",
+          nF>0&&!farBad.length, nF+" of "+nSm+" place names drawn close on Sokolnitz at the step"+(farBad.length?"; WRONG: "+farBad.slice(0,5).join("; "):"; the layout identical without it; the paper map none"));
+      } catch(err){ ck("map layer in motion (decision 240): the motion checks ran", false, "threw: "+err.message);
+      } finally {
+        if(hadNow) performance.now=realNow; else delete performance.now;
+        window.requestAnimationFrame=realRaf; renderer.render=realRender; if(V) V.setPointerCapture=spc; RM=keepRM;
+        stopPlay(); lastInput=-1e9; panelMoveUntil=0; needFrames=0; lastFrame=0; finishTween(); mlReset("test"); setCommandView("none"); select(null,null);
+        if(document.activeElement&&document.activeElement.parentNode===ML.root) document.activeElement.blur();
+      }
     })();
 
     /* 11. render on demand */

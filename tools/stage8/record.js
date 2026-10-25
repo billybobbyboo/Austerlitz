@@ -9,8 +9,12 @@
    app's own camera functions (a pan, a zoom, an orbit) one step a frame. ?harness=1 is kept (deterministic frames: the smoke does not drift).
    Prototypes (tools/stage8/protos/<file>.js, file:id) are installed before the first frame; the gait is told the play speed it stands for.
    node tools/stage8/record.js --clip id [--variants base,file:id,...] [--out dir] [--fps n] [--vp WxH]
-   Writes <out>/<clip>-<variant>.mp4 and .gif, and <out>/<clip>.mp4/.gif, the variants stacked. Measurement and prototype code only. */
+   Writes <out>/<clip>-<variant>.mp4 and .gif, and <out>/<clip>.mp4/.gif, the variants stacked. Measurement and prototype code only.
+   Stage 8, implementation PR 8C: --app records builds as they are, the motion reaching each as a visitor's does (tools/stage8/record-app.js:
+   tools/visual/motion.js's driver, the WebGL draw kept, every third frame of 30 a second captured), the builds stacked:
+   node tools/stage8/record.js --app --clip id --builds label=file.html,... [--rm-last] [--out dir] [--vp WxH] */
 "use strict";
+if(process.argv.includes("--app")){ require("./record-app.js").main(process.argv.slice(2)).catch(e=>{ console.error(e); process.exit(1); }); return; }
 const fs=require("fs"), path=require("path"), cp=require("child_process");
 const L=require("./lib.js");
 const argv=process.argv.slice(2), opt=f=>{ const i=argv.indexOf(f); return i>=0?argv[i+1]:null; };

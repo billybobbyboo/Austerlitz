@@ -400,6 +400,39 @@ async function interact(page,it,vp){
         if(mk){ await pp.touchscreen.tap(mk.x,mk.y); await pp.waitForTimeout(1000); TP.tap1=await tipOn(pp); await pp.waitForTimeout(2000); TP.tap3=await tipOn(pp); }
       } finally { const cx=pp.context(); await pp.close(); await cx.close(); }
       LIVE.tips=TP; console.log("timeline tips by real input: "+JSON.stringify(TP)); }
+    /* Stage 8, implementation PR 8C (decision 240 (a); docs/STAGE8_SPEC.md sections 3.5 and 15): the map layer in motion. On a page of its own at
+       1600 x 900, the 16 motions of tools/stage8/label-motion.js driven through the app's own input and its own frame on a clock of its own
+       (tools/visual/motion.js: 30 frames a second, the WebGL draw skipped, nothing set that the app does not set), each after a view reached
+       without motion and followed by 30 frames at rest; then the four that real input can drive, by real input (the browser's own pointer
+       and wheel events); two with Saint-Hilaire's division selected (a never-dropped item); three under a headquarters' reading; and a finger's
+       pan with the page 390 px wide (the phone layout). Each motion's jumps, pops, level-of-detail switches, flickers, overlap frames,
+       never-dropped items hidden, remnants out of rule, items drawn that the reading does not know, and the state it ends in. Judged in
+       thresholds.js checkLive (MOTION) */
+    AT="motion";
+    if(await has(first,"MLS","the map layer in motion: the 16 motions and the four by real input")){
+      const MO=require("./motion.js"), MV={runs:[]}, mp=await openPage(browser,[1600,900],"1600x900 motion");
+      const runs=MO.MOTIONS.map(m=>({m:m})).concat(MO.REAL.map(id=>({m:MO.MOTIONS.find(x=>x[0]===id),real:true})),
+        [["hybrid-orbit","sthilaire"],["paper-zoom","sthilaire"]].map(s=>({m:MO.MOTIONS.find(x=>x[0]===s[0]),sel:s[1]})), MO.EXTRA.map(m=>({m:m,extra:m[5]})));
+      let vp=null;
+      try{
+        await settle(mp); await mp.evaluate(()=>closeFirst(null));
+        for(const R of runs){ const [id,view,kind,n,amt]=R.m, X=R.extra||{}, t0=Date.now(), V=MO.VIEWS[view];
+          if(!vp||vp[0]!==V.viewport[0]||vp[1]!==V.viewport[1]){ vp=V.viewport; await mp.setViewportSize({width:vp[0],height:vp[1]}); await settle(mp); }   /* the phone layout below 720 px */
+          await mp.evaluate(()=>{ select(null,null); stopPlay(); });
+          await mp.evaluate(s=>window.__aus.apply(s),V); await settle(mp);
+          await mp.evaluate(MO.inPage);
+          const A={kind:kind,n:n,amt:amt,gl:false,room:false,select:R.sel||null,rest:30,pre:8,reading:X.reading||null,touch:!!X.touch};
+          const r=R.real?await MO.runReal(mp,A):await mp.evaluate(new Function("a","return ("+MO.RUN.toString()+")(a);"),A);
+          const M=MO.measure(r.F,{restFrom:r.restFrom});
+          const ms=r.ms.slice().sort((a,b)=>a-b), q=p=>ms.length?+ms[Math.min(ms.length-1,Math.floor(ms.length*p))].toFixed(2):null;
+          MV.runs.push({id:id, view:view, kind:kind, real:!!R.real, select:R.sel||null, reading:X.reading||null, touch:!!X.touch, frames:M.frames, moving:M.moving, jumps:M.jumps, pops:M.pops, lod:M.lod, flicker:M.flicker,
+            overlapFrames:M.overlapFrames, keepHidden:M.keepHidden, keepHiddenKeys:M.keepHiddenKeys, remnantBad:M.remnantBad, unknownDrawn:M.unknownDrawn, heldFrames:M.heldFrames, restJumps:M.restJumps, restPops:M.restPops,
+            end:M.idle, msMed:q(0.5), msP95:q(0.95), secs:+((Date.now()-t0)/1000).toFixed(1)});
+          const L=MV.runs[MV.runs.length-1];
+          console.log("motion "+(id+(R.real?" (real input)":"")+(R.sel?" ("+R.sel+" selected)":"")+(X.reading?" (the "+X.reading+" reading)":"")+(X.touch?" (a finger, 390 px)":"")).padEnd(40)+" jumps "+L.jumps+" pops "+L.pops+" lod "+L.lod+" flicker "+L.flicker+
+            " overlap "+L.overlapFrames+" keep hidden "+L.keepHidden+" remnants out of rule "+L.remnantBad+" moving "+L.moving+" of "+L.frames+" frames, ends "+L.end+", layer "+L.msMed+"/"+L.msP95+" ms ("+L.secs+" s)"); }
+      } finally { await mp.close(); }
+      LIVE.motion=MV; }
     /* Stage 4D (docs/STAGE4_SPEC.md section D.4; decisions 74, 75): Play by a real key press runs at half speed, its button
        pressed; and the Watch view of the low Pratzen case held in a dwell at the phase-3 event start 09:00 keeps every threshold
        of its view (the darkness limit, map text at AA as rendered, drops within its limit), its event lit and named */

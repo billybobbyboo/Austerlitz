@@ -1,7 +1,7 @@
 {
- "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 9b20dc4ca251e17ddb2468f98f920f38 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
- "md5": "9b20dc4ca251e17ddb2468f98f920f38",
- "count": 261,
+ "note": "tools/visual/selftest-manifest.json (roadmap step 1, T-4): the in-app self-test's checks by name, in run order, from a passing run of build 0d987a7f355a795cef1a8fcf453ba645 (written by check-report.js --write-manifest). The harness (--test, --selftest-only) and check-report.js fail on a check missing, added, renamed or named twice: regenerate it in the commit that changes a check, and record the names added and removed in CHANGELOG.md.",
+ "md5": "0d987a7f355a795cef1a8fcf453ba645",
+ "count": 270,
  "names": [
   "ground: groundY() returns the drawn terrain, the display height, at its vertices (at 1×)",
   "camera: every fixed and computed view is above the ground (at 1×)",
@@ -263,6 +263,15 @@
   "the embedded type: three faces (two Austerlitz Sans, one Austerlitz Serif) loaded before the boot screen lifted, none failed (decision 141)",
   "the embedded type: the interface is set in the embedded faces, as the tokens say (decision 141)",
   "visual effects: off and on again builds nothing: the same render targets, materials and quad (docs/FINAL_AUDIT.md SW-7)",
+  "map layer in motion (decision 240): while the view moves no two drawn boxes overlap, what is never dropped is drawn, an item drawn in two frames keeps its place against its anchor or takes a place hugging it (never a ring or a row), one appears only in a re-placement pass and never back within 333 ms of leaving",
+  "map layer in motion (decision 240): a leaving item fades out as itself, under the live items and taking no pointer, gone within 180 ms; at rest after a motion nothing drawn moved to make room for another, the band released (the layer's items those of the view reached without motion), nothing fading, no frame asked for",
+  "map layer (decision 240): a view reached without motion is laid out exactly as before the view moved (the stabiliser holds no memory in a fresh view)",
+  "map layer (decision 240): the level-of-detail switches read a distance held inside the 8% band while the view moves, the true distance at rest",
+  "map layer (decision 240): under reduced motion no fade (no remnant, every drawn item at full opacity), the hold kept",
+  "map layer (decision 240): a reading changed while the view moves leaves no label and no remnant of a formation it does not know",
+  "map layer (decision 240): the item with the keyboard focus is drawn in every frame while the view moves (A-2), never held",
+  "map layer (decision 240): input that moves nothing leaves the layer at rest (motion is a motion source and a view that changed)",
+  "map layer (section 7.2, decision 240): in the low views the place and terrain-study names beyond 1.5 times the eye's distance to its target a type step smaller (10.5 px), in the box their own size gives them, so no item is placed otherwise; battle information never (decision 16); none on the paper map",
   "render on demand: a view at rest draws nothing; slow drift alone draws at the ambient rate"
  ]
 }

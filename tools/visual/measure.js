@@ -110,7 +110,8 @@
       ROUTES:typeof ROUTES!=="undefined", SKEL:typeof SKEL!=="undefined", EYE:typeof EYE!=="undefined", frButtons:typeof frButtons==="function",
       timelineRow:!!document.getElementById("tb-vm"), nowTab:!!document.getElementById("tab-now"), DWELL:typeof DWELL!=="undefined",
       KEYS:typeof KEYS!=="undefined", SUN_DAY:typeof SUN_DAY!=="undefined", ATMO:typeof ATMO!=="undefined", SMOKE:typeof SMOKE!=="undefined",
-      settle:!!d.settle, applyCase:!!d.applyCase, selfTest:!!d.selfTest, SHORTCUTS:typeof SHORTCUTS!=="undefined", TIPS:typeof tipSync==="function"};
+      settle:!!d.settle, applyCase:!!d.applyCase, selfTest:!!d.selfTest, SHORTCUTS:typeof SHORTCUTS!=="undefined", TIPS:typeof tipSync==="function",
+      MLS:typeof MLS!=="undefined"&&typeof mlStabBegin==="function"};
   }
 
   /* ---- roadmap step 1 (T-1): an app canvas's pixels are read through a canvas the harness owns ----
